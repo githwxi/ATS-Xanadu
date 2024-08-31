@@ -83,7 +83,7 @@ _(*otherwise*) => ( false )
 //
 (*
 val () =
-prerrln
+prerrsln
 ("d2cst_castq: d2c0 = ", d2c0)
 *)
 //

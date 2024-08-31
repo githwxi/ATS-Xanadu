@@ -268,11 +268,11 @@ val d0p2 = p1_d0pat(buf, err)
 //
 (*
 val ( ) =
-prerrln("p1_l0d0p: lab0 = ", lab0)
+prerrsln("p1_l0d0p: lab0 = ", lab0)
 val ( ) =
-prerrln("p1_l0d0p: teq1 = ", teq1)
+prerrsln("p1_l0d0p: teq1 = ", teq1)
 val ( ) =
-prerrln("p1_l0d0p: d0p2 = ", d0p2)
+prerrsln("p1_l0d0p: d0p2 = ", d0p2)
 *)
 //
 in
@@ -292,7 +292,7 @@ val tnd = tok.tnode()
 //
 (*
 val ( ) =
-prerrln
+prerrsln
 ("p1_d0pat_atm: tok =", tok)
 *)
 //
@@ -415,7 +415,7 @@ end(*let*) // end of [ T_IDQUA(...) ]
 let
 (*
 val () =
-prerrln
+prerrsln
 ("p1_d0pat_atm: otherwise: tok = ", tok)
 *)
 in//let
@@ -978,7 +978,7 @@ p1_d0expseq_atm(buf, err)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("p1_d0exp: d0es = ", d0es)
 *)
 //
@@ -1045,11 +1045,11 @@ val d0e2 = p1_d0exp(buf, err)
 //
 (*
 val ( ) =
-prerrln("p1_l0d0e: lab0 = ", lab0)
+prerrsln("p1_l0d0e: lab0 = ", lab0)
 val ( ) =
-prerrln("p1_l0d0e: teq1 = ", teq1)
+prerrsln("p1_l0d0e: teq1 = ", teq1)
 val ( ) =
-prerrln("p1_l0d0e: d0e2 = ", d0e2)
+prerrsln("p1_l0d0e: d0e2 = ", d0e2)
 *)
 //
 in
@@ -1225,10 +1225,10 @@ val tnd = tok.tnode()
 //
 (*
 val ( ) =
-prerrln
+prerrsln
 ("p1_d0exp_atm: e00 =", e00)
 val ( ) =
-prerrln
+prerrsln
 ("p1_d0exp_atm: tok =", tok)
 *)
 //
@@ -1707,9 +1707,9 @@ let
 (*
 val loc =
 tok.lctn((*nil*))
-val ( ) = prerrln
+val ( ) = prerrsln
 ("p1_d0exp_atm(error): loc = ", loc)
-val ( ) = prerrln
+val ( ) = prerrsln
 ("p1_d0exp_atm(error): tok = ", tok)
 *)
 in//let
@@ -2233,7 +2233,7 @@ val tok = buf.getk0()
 //
 (*
 val ( )
-prerrln
+prerrsln
 ("pq_s0exp_anno: tok = ", tok)
 *)
 //
@@ -2265,7 +2265,7 @@ val tok = buf.getk0()
 //
 (*
 val ( )
-prerrln
+prerrsln
 ("pq_s0exp_anno: tok = ", tok)
 *)
 //
@@ -2901,7 +2901,7 @@ val tok = buf.getk0()
 //
 (*
 val ( ) =
-prerrln
+prerrsln
 ("p1_tkend_WHERE: tok = ", tok)
 *)
 //

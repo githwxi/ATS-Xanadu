@@ -175,9 +175,9 @@ val loc0 = d2p0.lctn()
 val t2p0 = d2p0.styp()
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans23_d2pat: loc0 = ", loc0)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans23_d2pat: d2p0 = ", d2p0)
 *)
 //
@@ -265,7 +265,7 @@ D2Pany() = d2p0.node()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("\
 trans23_d2pat: \
 D2Pany: t2p0 = ", t2p0)
@@ -299,10 +299,10 @@ t2p0 = s2typ_hnfiz0(t2p0)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_var(23): d2p0 = ", d2p0)
 val () =
-prerrln
+prerrsln
 ("f0_var(23): t2p0 = ", t2p0)
 *)
 //
@@ -547,13 +547,13 @@ T2Pfun1
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans23_d2pat:f0_dapp:tfun = ",tfun)
 val () =
-prerrln
+prerrsln
 ("trans23_d2pat:f0_dapp:targ = ",targ)
 val () =
-prerrln
+prerrsln
 ("trans23_d2pat:f0_dapp:tres = ",tres)
 *)
 //
@@ -667,7 +667,7 @@ t2p2 = d2p0.styp((*void*))
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_annot(23): t2p2 = ", t2p2)
 *)
 //
@@ -719,7 +719,7 @@ val loc0 = d2e0.lctn()
 val t2p0 = d2e0.styp()
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans23_d2exp: d2e0 = ", d2e0)
 *)
 //
@@ -1296,15 +1296,15 @@ _(*else*) => list_nil(*nil*))
 (*
 val () =
 (
-  prerrln
+  prerrsln
   ("f0_tapp: d3f0 = ", d3f0) )
 val () =
 (
-  prerrln
+  prerrsln
   ("f0_tapp: t2js = ", t2js) )
 val () =
 (
-  prerrln
+  prerrsln
   ("f0_tapp: d2fs = ", d2fs) )
 *)
 //
@@ -1399,13 +1399,13 @@ tfun.node() of
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans23_d2exp:f0_dapp:tfun = ",tfun)
 val () =
-prerrln
+prerrsln
 ("trans23_d2exp:f0_dapp:targ = ",targ)
 val () =
-prerrln
+prerrsln
 ("trans23_d2exp:f0_dapp:tres = ",tres)
 *)
 //
@@ -1961,11 +1961,11 @@ val t2p1 = d3e1.styp((*0*))
 val t2p1 = s2typ_hnfiz0(t2p1)
 (*
 val (  ) =
-prerrln("f0_eval(23): loc0 = ", loc0)
+prerrsln("f0_eval(23): loc0 = ", loc0)
 val (  ) =
-prerrln("f0_eval(23): d3e1 = ", d3e1)
+prerrsln("f0_eval(23): d3e1 = ", d3e1)
 val (  ) =
-prerrln("f0_eval(23): t2p1 = ", t2p1)
+prerrsln("f0_eval(23): t2p1 = ", t2p1)
 *)
 //
 in//let
@@ -2273,7 +2273,7 @@ val t2p2 = s2typ_hnfiz0(t2p2)
 //
 (*
 val () =
-prerrln("f0_annot(23): t2p2 = ", t2p2)
+prerrsln("f0_annot(23): t2p2 = ", t2p2)
 *)
 //
 val d3e1 =
@@ -2484,10 +2484,10 @@ val loc0 = farg.lctn()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans23_f2arg: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans23_f2arg: farg = ", farg)
 *)
 //
@@ -2731,9 +2731,9 @@ end where
 //
 (*
 val () =
-prerrln("trans23_d3pat_tpck: d3p0 = ", d3p0)
+prerrsln("trans23_d3pat_tpck: d3p0 = ", d3p0)
 val () =
-prerrln("trans23_d3pat_tpck: t2p0 = ", t2p0)
+prerrsln("trans23_d3pat_tpck: t2p0 = ", t2p0)
 *)
 //
 }(*where*) // end-of-[trans23_d3pat_tpck(...)]
@@ -2768,11 +2768,11 @@ end where
 (*
 val
 loc0 = d3e0.lctn((*void*))
-val () = prerrln
+val () = prerrsln
   ("trans23_d3exp_tpck: loc0 = ", loc0)
-val () = prerrln
+val () = prerrsln
   ("trans23_d3exp_tpck: d3e0 = ", d3e0)
-val () = prerrln
+val () = prerrsln
   ("trans23_d3exp_tpck: t2p0 = ", t2p0)
 *)
 //

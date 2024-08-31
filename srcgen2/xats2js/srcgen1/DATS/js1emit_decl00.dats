@@ -244,7 +244,7 @@ g_print$out<>() = filr
 //
 in//let
 nindfpr(filr, nind);
-print
+prints
 ("// I1Dextern(",loc0,")\n")
 end//let
 //
@@ -281,7 +281,7 @@ g_print$out<>() = filr
 //
 in//let
 nindfpr(filr, nind);
-print
+prints
 ("// I1Dstatic(",loc0,")\n")
 end//let
 //
@@ -319,7 +319,7 @@ g_print$out<>() = filr
 in//let
 (
 nindfpr(filr, nind);
-print
+prints
 ("// I1Dlocal0(",loc0,")\n"))
 end//let
 //
@@ -361,7 +361,7 @@ g_print$out<>() = filr
 in//let
 (
 nindfpr(filr, nind);
-print
+prints
 ("// I1Dinclude(",loc0,")\n"))
 end//let
 //
@@ -413,9 +413,9 @@ in//let
 //
 if
 prvq
-then print
+then prints
 ("// I1Dprvdclist(",loc0,")\n")
-else print
+else prints
 ("// I1Dvaldclist(",loc0,")\n")
 //
 end//let
@@ -458,7 +458,7 @@ g_print$out<>() = filr
 //
 in//let
 nindfpr(filr, nind);
-print
+prints
 ("// I1Dvardclist(",loc0,")\n")
 end//let
 //
@@ -506,9 +506,9 @@ in//let
 //
 if
 prfq
-then print
+then prints
 ("// I1Dprfdclist(",loc0,")\n")
-else print
+else prints
 ("// I1Dfundclist(",loc0,")\n")
 //
 end//let

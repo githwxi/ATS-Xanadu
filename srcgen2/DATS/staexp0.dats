@@ -222,7 +222,7 @@ val sym = symbl_make_name(rep)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("l0abl_make_name: sym = ", sym)
 *)
 //

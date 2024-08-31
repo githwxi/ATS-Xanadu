@@ -619,7 +619,7 @@ f0_s2exp
 //
 (*
   val (  ) =
-  prerrln("tread30_s2typ: t2p0 = ", t2p0)
+  prerrsln("tread30_s2typ: t2p0 = ", t2p0)
 *)
 //
 }(*where*)//end-of[tread30_s2typ(t2p0,err)]

@@ -67,10 +67,10 @@ case+ lft0 of
 //
 |D4LFTval(t2p0) =>
 (
-  print("D4LFTval(", t2p0, ")"))
+ prints("D4LFTval(", t2p0, ")"))
 |D4LFTvar(t2p0) =>
 (
-  print("D4LFTvar(", t2p0, ")"))
+ prints("D4LFTvar(", t2p0, ")"))
 //
 end (*let*) // end of [d4lft_fprint(out, lft0)]
 

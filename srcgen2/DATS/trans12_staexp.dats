@@ -129,10 +129,10 @@ trans12_sort1
 val
 loc0 = s1t0.lctn()
 val () =
-prerrln
+prerrsln
 ("trans12_sort1: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans12_sort1: s1t0 = ", s1t0)
 *)
 in//let
@@ -260,7 +260,7 @@ let
 //
 (*
 val () =
-prerrln
+prerrsln
 ("\
 trans_sort1: \
 f0_a2pp: s1t0 = ", s1t0)
@@ -342,7 +342,7 @@ trans12_s1tex
 (*
 val loc0 =
 s1t0.lctn((*0*))
-val () = prerrln
+val () = prerrsln
 ("trans12_s1tex: s1t0 = ", s1t0)
 *)
 //
@@ -437,7 +437,7 @@ trans12_s1arglst(env0, s1as)) where
 val
 loc0 = s1ma.lctn()
 val () =
-prerrln("trans12_s1mag: s1ma = ", s1ma)
+prerrsln("trans12_s1mag: s1ma = ", s1ma)
 *)
 //
 } (*where*) // end of [trans12_s1mag(env0,s1ma)
@@ -460,7 +460,7 @@ trans12_sort1(env0, s1t1)) where
 val
 loc0 = t1a0.lctn()
 val () =
-prerrln("trans12_t1arg: t1a0 = ", t1a0)
+prerrsln("trans12_t1arg: t1a0 = ", t1a0)
 *)
 //
 } (*where*) // end of [trans12_t1arg(env0,t1a0)
@@ -482,7 +482,7 @@ trans12_t1arglst(env0, t1as)) where
 val
 loc0 = t1ma.lctn()
 val () =
-prerrln("trans12_t1mag: t1ma = ", t1ma)
+prerrsln("trans12_t1mag: t1ma = ", t1ma)
 *)
 //
 } (*where*) // end of [trans12_t1mag(env0,t1ma)
@@ -497,10 +497,10 @@ trans12_s1exp
 val
 loc0 = s1e0.lctn()
 val () =
-prerrln
+prerrsln
 ("trans12_s1exp: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans12_s1exp: s1e0 = ", s1e0)
 *)
 //
@@ -599,10 +599,10 @@ tr12env_find_s2itm(env0,sid1)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_id0(12): sid1 = ", sid1)
 val () =
-prerrln
+prerrsln
 ("f0_id0(12): sopt = ", sopt)
 *)
 //
@@ -659,10 +659,10 @@ let
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_id0_s2c: s1e0 = ", s1e0)
 val () =
-prerrln
+prerrsln
 ("f0_id0_s2c: s2cs = ", s2cs)
 *)
 //
@@ -703,10 +703,10 @@ S1El1st(s1es) = s1e0.node()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans12_s1exp: f0_l1st: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans12_s1exp: f0_l1st: s1e0 = ", s1e0)
 *)
 //
@@ -746,9 +746,9 @@ S1El2st
 val
 loc0 =
 s1e0.lctn((*0*))
-val () = prerrln
+val () = prerrsln
 ("trans12_s1exp: f0_l2st: loc0 = ", loc0)
-val () = prerrln
+val () = prerrsln
 ("trans12_s1exp: f0_l2st: s1e0 = ", s1e0)
 *)
 //
@@ -844,7 +844,7 @@ S1Euni0(s1qs) = s1f0.node()
 //
 (*
 val () =
-prerrln(
+prerrsln(
 "trans12_s1exp:\
  f0_a1pp_uni0: s1qs = ", s1qs)
 *)
@@ -886,7 +886,7 @@ S1Eexi0
 //
 (*
 val () =
-prerrln(
+prerrsln(
 "trans12_s1exp:\
  f0_a1pp_exi0: s1qs = ", s1qs)
 *)
@@ -1047,10 +1047,10 @@ s1exp_get_s2cstlst(env0,s1f0)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_a1pp_else(12): s1f0 = ", s1f0)
 val () =
-prerrln
+prerrsln
 ("f0_a1pp_else(12): s2cs = ", s2cs)
 *)
 //
@@ -1138,7 +1138,7 @@ in//let
 val loc0 = s1e0.lctn((*void*))
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("f0_a1pp_els1(12): s2ts = ", s2ts)
 *)
 //
@@ -1226,7 +1226,7 @@ let
 //
 (*
 val () =
-prerrln(
+prerrsln(
 "trans12_s1exp:\
  f0_a2pp: s1e0 = ", s1e0)
 *)
@@ -1242,7 +1242,7 @@ s1exp_get_s2cstlst(env0,s1f0)
 //
 (*
 val () =
-prerrln(
+prerrsln(
 "trans12_s1exp:\
  f0_a2pp: s2cs = ", s2cs)
 *)
@@ -1472,11 +1472,11 @@ S1Et1up
 //
 (*
 val ( ) =
-prerrln(
+prerrsln(
 "trans12_s1exp:\
  f0_t1up: loc0 = ", loc0)
 val ( ) =
-prerrln(
+prerrsln(
 "trans12_s1exp:\
  f0_t1up: s1e0 = ", s1e0)
 *)
@@ -1508,11 +1508,11 @@ S1Et2up
 //
 (*
 val ( ) =
-prerrln(
+prerrsln(
 "trans12_s1exp:\
  f0_t2up: loc0 = ", loc0)
 val ( ) =
-prerrln(
+prerrsln(
 "trans12_s1exp:\
  f0_t2up: s1e0 = ", s1e0)
 *)
@@ -1545,11 +1545,11 @@ S1Er1cd
 //
 (*
 val ( ) =
-prerrln(
+prerrsln(
 "trans12_s1exp:\
  f0_r1cd: loc0 = ", loc0)
 val ( ) =
-prerrln(
+prerrsln(
 "trans12_s1exp:\
  f0_r1cd: s1e0 = ", s1e0)
 *)
@@ -1562,7 +1562,7 @@ in//let
 val lses =
 trans12_l1s1elst_impr(env0, lses)
 (*
-val () = prerrln
+val () = prerrsln
 ("trans12_s1exp: f0_r1cd: lses = ", lses)
 *)
 } (*where*) // end of [s2exp_r1cd(...)]
@@ -1585,9 +1585,9 @@ S1Er2cd
 , lss1, lss2) = s1e0.node()
 //
 (*
-val () = prerrln
+val () = prerrsln
 ("trans12_s1exp: f0_r2cd: loc0 = ", loc0)
-val () = prerrln
+val () = prerrsln
 ("trans12_s1exp: f0_r2cd: s1e0 = ", s1e0)
 *)
 //
@@ -1678,10 +1678,10 @@ val loc0 = s1e0.lctn()
 //
 (*
 val (  ) =
-prerrln
+prerrsln
 ("f0_qual0: loc0 = ", loc0)
 val (  ) =
-prerrln
+prerrsln
 ("f0_qual0: s1e0 = ", s1e0)
 *)
 //
@@ -1692,9 +1692,9 @@ val sopt = s2cst_select$any(s2cs)
 //
 (*
 val (  ) =
-prerrln("f0_qual0: s2cs = ", s2cs)
+prerrsln("f0_qual0: s2cs = ", s2cs)
 val (  ) =
-prerrln("f0_qual0: sopt = ", sopt)
+prerrsln("f0_qual0: sopt = ", sopt)
 *)
 //
 in//let
@@ -2143,7 +2143,7 @@ end (*let*) // end of [S1ARGsome(...)]
 ) where {
 (*
   val () =
-  prerrln("trans12_s1arg_tsub: s1a0 = ", s1a0)
+  prerrsln("trans12_s1arg_tsub: s1a0 = ", s1a0)
 *)
 } (*where*) // end of [trans12_s1arg_tsub(env0,s1a0)]
 

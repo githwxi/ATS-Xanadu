@@ -306,9 +306,9 @@ end (*let*) // end-(list_cons(...))
   val
   loc0 = g1e0.lctn()
   val () =
-  prerrln("f0_gexp: loc0 = ", loc0)
+  prerrsln("f0_gexp: loc0 = ", loc0)
   val () =
-  prerrln("f0_gexp: g1e0 = ", g1e0)
+  prerrsln("f0_gexp: g1e0 = ", g1e0)
 *)
 } (*where*) // end of [f0_gexp(g1e0)]
 
@@ -512,7 +512,7 @@ G1Mapps _ => f0_apps(env0, g1m0)
 {
 (*
   val () =
-  prerrln("f0_gmac: g1m0 = ", g1m0)
+  prerrsln("f0_gmac: g1m0 = ", g1m0)
 *)
 } (*where*) // end of [f0_g1m0(env0,g1m0)]
 //
@@ -548,7 +548,7 @@ f0_gmac(env0, g1m0)) where
 //
 (*
 val () =
-prerrln("trans11_g1mac: g1m0 = ", g1m0)
+prerrsln("trans11_g1mac: g1m0 = ", g1m0)
 *)
 //
 } (*where*) // end of [trans11_g1mac(g1m0)]
@@ -563,9 +563,9 @@ f0_apps_els1(env0, g1f0, g1ms)) where
 {
 (*
 val () =
-prerrln("trans11_g1mac_apps: g1f0 = ", g1f0)
+prerrsln("trans11_g1mac_apps: g1f0 = ", g1f0)
 val () =
-prerrln("trans11_g1mac_apps: g1ms = ", g1ms)
+prerrsln("trans11_g1mac_apps: g1ms = ", g1ms)
 *)
 } (*where*) // end-(trans11_g1mac_apps(g1f0,g1ms))
 //
@@ -769,10 +769,10 @@ f0_g1m0
 {
 (*
 val () =
-prerrln
+prerrsln
 ("trans11_g1mac_subs: g1m0 = ", g1m0)
 val () =
-prerrln
+prerrsln
 ("trans11_g1mac_subs: env0 = ", env0)
 *)
 } (*where*) // end of [trans11_g1mac_subs]

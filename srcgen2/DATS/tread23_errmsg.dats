@@ -181,10 +181,10 @@ g_print$out<>() = out
 val
 loc0 = d3p0.lctn()
 val () =
-prerrln
+prerrsln
 ("d3pat_fpemsg: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("d3pat_fpemsg: d3p0 = ", d3p0)
 *)
 //
@@ -202,7 +202,7 @@ if
 let
 val
 loc0 = d3p0.lctn() in // let
-println
+printsln
 ("TREAD23-ERROR:",loc0,":",d3p0)
 end // let // else // end-of-[if]
 ) (* end-of-[ D3Perrck(lvl,d2p1) ] *)
@@ -540,10 +540,10 @@ g_print$out<>() = out
 val
 loc0 = d3e0.lctn()
 val () =
-prerrln
+prerrsln
 ("d3exp_fpemsg: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("d3exp_fpemsg: d3e0 = ", d3e0)
 *)
 //
@@ -561,7 +561,7 @@ if
 let
 val
 loc0 = d3e0.lctn() in // let
-println
+printsln
 ("TREAD23-ERROR:",loc0,":",d3e0)
 end // let // else // end-of-[if]
 ) (* end-of-[ D3Eerrck(lvl,d2e1) ] *)
@@ -813,10 +813,10 @@ g_print$out<>() = out
 val
 loc0 = dcl0.lctn()
 val () =
-prerrln
+prerrsln
 ("d3ecl_fpemsg: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("d3ecl_fpemsg: dcl0 = ", dcl0)
 *)
 //
@@ -835,7 +835,7 @@ if
 let
 val
 loc0 = dcl0.lctn() in // let
-println
+printsln
 ("TREAD23-ERROR:",loc0,":",dcl0)
 end // let // else // end-of-[if]
 ) (* end-of-[ D3Cerrck(lvl,dcl0) ] *)

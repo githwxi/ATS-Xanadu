@@ -390,10 +390,10 @@ t2p0 = s2typ_subst0(t2p0, svts)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("d2con23_tjagize: svts: ", svts)
 val () =
-prerrln
+prerrsln
 ("d2con23_tjagize: t2p0: ", t2p0)
 *)
 //
@@ -460,10 +460,10 @@ t2p0 = s2typ_subst0(t2p0, svts)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("d2cst23_tapqize: svts: ", svts)
 val () =
-prerrln
+prerrsln
 ("d2cst23_tapqize: t2p0: ", t2p0)
 *)
 //
@@ -635,7 +635,7 @@ s2cst_get23_styp
 {
 (*
 val () =
-prerrln
+prerrsln
 ("\
 unify23_s2typ: \
 s2typ_eval$s2cst: s2c0 = ", s2c0)
@@ -683,9 +683,9 @@ s2typ_untopx(s2typ_unargx(t2p0)) }
 //
 (*
 val () =
-prerrln("unify23_s2typ: t2p1 = ", t2p1)
+prerrsln("unify23_s2typ: t2p1 = ", t2p1)
 val () =
-prerrln("unify23_s2typ: t2p2 = ", t2p2)
+prerrsln("unify23_s2typ: t2p2 = ", t2p2)
 *)
 //
 in//let

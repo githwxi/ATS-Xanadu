@@ -349,7 +349,7 @@ endlet // end of [  _(* otherwise *)  ]
 (* ****** ****** *)
 (*
 val (  ) =
-prerrln("tread20_d2ecl: d2cl = ", d2cl)
+prerrsln("tread20_d2ecl: d2cl = ", d2cl)
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -446,10 +446,10 @@ D2Cinclude
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_include(22): loc = ", loc)
 val () =
-prerrln
+prerrsln
 ("f0_include(22): dopt = ", dopt)
 *)
 //
@@ -693,7 +693,7 @@ let
 val e00 = err
 (*
 val ( ) =
-prerrln
+prerrsln
 ("tread20_teqd2exp: d2e2 = ", d2e2)
 *)
 val d2e2 = tread20_d2exp(d2e2, err)

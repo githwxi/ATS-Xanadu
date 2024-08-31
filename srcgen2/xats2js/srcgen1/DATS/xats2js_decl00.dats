@@ -215,7 +215,7 @@ g_print$out<>() = filr
 in//local
 val (  ) =
 ( print("// I1Dextern(")
-; print(tknd, "...", ")\n"))
+; prints(tknd, "...", ")\n"))
 end//local
 //
 val (  ) =
@@ -261,7 +261,7 @@ g_print$out<>() = filr
 in//local
 val (  ) =
 ( print("// I1Dstatic(")
-; print(tknd, "...", ")\n"))
+; prints(tknd, "...", ")\n"))
 end//local
 //
 val (  ) =
@@ -375,7 +375,7 @@ in//let
 (
 nindfpr
 (filr, nind); // indentation
-print
+prints
 ("// I1Dtmpsub(", svts, ")\n"))
 end//let
 //
@@ -428,7 +428,7 @@ in//let
 (
 nindfpr
 (filr, nind); // indentation
-print
+prints
 ("// I1Dinclude(","...",")\n"))
 end//let
 //
@@ -585,8 +585,8 @@ in//let
 (
 nindfpr
 (filr, nind); // indent
-print
-("// I1Dimplmnt0(...)\n"))
+prints
+("// I1Dimplmnt0(","...",")\n"))
 end//let
 //
 val (  ) =

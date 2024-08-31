@@ -919,7 +919,7 @@ D0PARSED(stadyn,nerror,source,parsed)
 {
 (*
 val () =
-prerrln
+prerrsln
 ("d0parsed_make_args:nerror=",nerror)
 *)
 } (*where*) // end-of-[d0parsed_make_args]

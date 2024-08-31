@@ -123,9 +123,9 @@ else
 //
 (*
 val () =
-prerrln("subsort_test: t1 = ", t1)
+prerrsln("subsort_test: t1 = ", t1)
 val () =
-prerrln("subsort_test: t2 = ", t2)
+prerrsln("subsort_test: t2 = ", t2)
 *)
 //
 }(*where*)//end-of-[subsort_test(...)]
@@ -226,7 +226,7 @@ where
 {
 (*
 val () =
-prerrln("implknd_recq: knd = ", knd)
+prerrsln("implknd_recq: knd = ", knd)
 *)
 }(*where*)//end-of-[implknd_recq(knd)]
 //

@@ -2373,7 +2373,7 @@ D2PARSED
 {
 (*
 val () =
-prerrln
+prerrsln
 ("d2parsed_make_args:nerror=",nerror)
 *)
 } (*where*) // end-of-[d2parsed_make_args]

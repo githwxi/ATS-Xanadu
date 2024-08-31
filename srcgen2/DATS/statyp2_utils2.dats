@@ -75,7 +75,7 @@ s2typ_eval$s2var
 //
 (*
 val () =
-prerrln
+prerrsln
 ("s2typ_hnfiz0: t2p0 = ", t2p0)
 *)
 //

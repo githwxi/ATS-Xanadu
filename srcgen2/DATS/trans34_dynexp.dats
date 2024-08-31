@@ -306,11 +306,11 @@ val loc0 = d3p0.lctn()
 val t2p0 = d3p0.styp()
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans34_d3pat: loc0 = ", loc0)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans34_d3pat: d3p0 = ", d3p0)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans34_d3pat: t2p0 = ", t2p0)
 *)
 //
@@ -481,13 +481,13 @@ T2Pfun1
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans34_d3pat:f0_dapp:tfun = ",tfun)
 val () =
-prerrln
+prerrsln
 ("trans34_d3pat:f0_dapp:targ = ",targ)
 val () =
-prerrln
+prerrsln
 ("trans34_d3pat:f0_dapp:tres = ",tres)
 *)
 //
@@ -529,7 +529,7 @@ t2p2 = d3p0.styp((*void*))
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_annot(34): t2p2 = ", t2p2)
 *)
 //
@@ -591,11 +591,11 @@ val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans34_d3exp: loc0 = ", loc0)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans34_d3exp: d3e0 = ", d3e0)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans34_d3exp: t2p0 = ", t2p0)
 *)
 //
@@ -816,13 +816,13 @@ tfun.node() of
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans34_d3exp:f0_dapp:tfun = ",tfun)
 val () =
-prerrln
+prerrsln
 ("trans34_d3exp:f0_dapp:targ = ",targ)
 val () =
-prerrln
+prerrsln
 ("trans34_d3exp:f0_dapp:tres = ",tres)
 *)
 //
@@ -885,10 +885,10 @@ val dvts =
   d2vts_drop_vars(dvts, d2vs))
 //
 val (  ) =
-prerrln("\
+prerrsln("\
 trans34_d3exp:f0_let0: d2vs = ", d2vs)
 val (  ) =
-prerrln("\
+prerrsln("\
 trans34_d3exp:f0_let0: dvts = ", dvts)
 //
 val (  ) =
@@ -967,9 +967,9 @@ optn_cons(dexp))
 ) where // end-of-[let]
 {
 //
-val () = prerrln
+val () = prerrsln
   ( "f1_dexp_vtck: dexp = ", dexp )
-val () = prerrln
+val () = prerrsln
   ( "f1_dexp_vtck: dvts = ", dvts )
 //
 }(*where*)//end-of-[f1_dexp_vtck(...)]
@@ -1362,7 +1362,7 @@ val (  ) = tr34env_popift0(env0)
 //
 (*
 val (  ) =
-prerrln
+prerrsln
 ("trans34_d3thn: dvts = ", dvts)
 *)
 //
@@ -1373,7 +1373,7 @@ val d4e2 = d4exp_dvts(d4e2, dvts)
 {
 //
 val () =
-prerrln("trans34_d3thn: dthn = ", dthn)
+prerrsln("trans34_d3thn: dthn = ", dthn)
 //
 }(*where*)//end-of-[trans34_d3thn(env0,dthn)]
 //
@@ -1401,7 +1401,7 @@ val (  ) = tr34env_popift0(env0)
 //
 (*
 val (  ) =
-prerrln
+prerrsln
 ("trans34_d3els: dvts = ", dvts)
 *)
 //
@@ -1412,7 +1412,7 @@ val d4e3 = d4exp_dvts(d4e3, dvts)
 {
 //
 val () =
-prerrln("trans34_d3els: dels = ", dels)
+prerrsln("trans34_d3els: dels = ", dels)
 //
 }(*where*)//end-of-[trans34_d3els(env0,dels)]
 //
@@ -1428,10 +1428,10 @@ val loc0 = farg.lctn()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans34_f3arg: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans34_f3arg: farg = ", farg)
 *)
 //
@@ -1540,10 +1540,10 @@ val loc0 = farg.lctn()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans34_f4aft: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans34_f4aft: farg = ", farg)
 *)
 //
@@ -1701,13 +1701,13 @@ T2Pfun1
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans34_d4pxp:f0_dapp:tfun = ",tfun)
 val () =
-prerrln
+prerrsln
 ("trans34_d4pxp:f0_dapp:targ = ",targ)
 val () =
-prerrln
+prerrsln
 ("trans34_d4pxp:f0_dapp:tres = ",tres)
 *)
 //
@@ -1726,7 +1726,7 @@ end (*let*) // end of [f0_dapp(env0,d4p0)]
 //
 val () =
 (
-  prerrln("trans34_d4pxp: d4p0 = ", d4p0))
+  prerrsln("trans34_d4pxp: d4p0 = ", d4p0))
 //
 }(*where*)//end-of-[trans34_d4pxp(env0,...)]
 //
@@ -2049,9 +2049,9 @@ end where
 //
 (*
 val () =
-prerrln("trans34_d4pat_tpck: d4p0 = ", d4p0)
+prerrsln("trans34_d4pat_tpck: d4p0 = ", d4p0)
 val () =
-prerrln("trans34_d4pat_tpck: t2p0 = ", t2p0)
+prerrsln("trans34_d4pat_tpck: t2p0 = ", t2p0)
 *)
 //
 } (*where*) // end of [trans34_d4pat_tpck(...)]
@@ -2105,11 +2105,11 @@ t2p0.node() of
 val loc0 = d4e0.lctn((*void*))
 //
 val (  ) =
-prerrln("trans34_d4exp_tpck: loc0 = ", loc0)
+prerrsln("trans34_d4exp_tpck: loc0 = ", loc0)
 val (  ) =
-prerrln("trans34_d4exp_tpck: d4e0 = ", d4e0)
+prerrsln("trans34_d4exp_tpck: d4e0 = ", d4e0)
 val (  ) =
-prerrln("trans34_d4exp_tpck: t2p0 = ", t2p0)
+prerrsln("trans34_d4exp_tpck: t2p0 = ", t2p0)
 //
 *)
 //
@@ -2223,11 +2223,11 @@ auxmain(env0, d4e1, taft))
 val loc0 = d4e0.lctn((*void*))
 //
 val (  ) =
-prerrln("trans34_d4exp_ptck: loc0 = ", loc0)
+prerrsln("trans34_d4exp_ptck: loc0 = ", loc0)
 val (  ) =
-prerrln("trans34_d4exp_ptck: d4e0 = ", d4e0)
+prerrsln("trans34_d4exp_ptck: d4e0 = ", d4e0)
 val (  ) =
-prerrln("trans34_d4exp_ptck: stp1 = ", stp1)
+prerrsln("trans34_d4exp_ptck: stp1 = ", stp1)
 //
 (* ****** ****** *)
 //
@@ -2251,7 +2251,7 @@ tr34env_d2vins_dvts(env0, dvts) }
 ) where
 {
 val (  ) =
-prerrln("trans34_d4ift_dvts: dvts = ", dvts)
+prerrsln("trans34_d4ift_dvts: dvts = ", dvts)
 }(*where*) // end-of-[trans34_d4ift_dvts(...)]
 //
 (* ****** ****** *)
@@ -2271,7 +2271,7 @@ tr34env_d2vins_dvts(env0, dvts) }
 ) where
 {
 val (  ) =
-prerrln("trans34_d4cas_dvts: dvts = ", dvts)
+prerrsln("trans34_d4cas_dvts: dvts = ", dvts)
 }(*where*) // end-of-[trans34_d4cas_dvts(...)]
 //
 (* ****** ****** *)
@@ -2303,10 +2303,10 @@ end//let
 {
 //
 val (  ) =
-prerrln
+prerrsln
 ("trans34_d4arg_dpat: darg = ", darg)
 val (  ) =
-prerrln
+prerrsln
 ("trans34_d4arg_dpat: dpat = ", dpat)
 //
 }(*where*) // end-of-[trans34_d4arg_dpat(...)]
@@ -2327,10 +2327,10 @@ trans34_d4arg_dpat(env0,darg,dpat)
 {
 //
 val (  ) =
-prerrln
+prerrsln
 ("trans34_d4arg_dgpt: darg = ", darg)
 val (  ) =
-prerrln
+prerrsln
 ("trans34_d4arg_dgpt: dgpt = ", dgpt)
 //
 }(*where*) // end-of-[trans34_d4arg_dgpt(...)]
@@ -2367,9 +2367,9 @@ tr34env_d2vins_dset
 ( env0, d2v1, dtyp ); darg
 end//(*let*)//end-of-[f0_var(...)]
 //
-val (  ) = prerrln
+val (  ) = prerrsln
   ("trans34_d4arg_dtyp: darg = ", darg)
-val (  ) = prerrln
+val (  ) = prerrsln
   ("trans34_d4arg_dtyp: dtyp = ", dtyp)
 //
 }(*where*) // end-of-[trans34_d4arg_dtyp(...)]
@@ -2423,13 +2423,15 @@ _(*otherwise*) => (  (*void*)  )
 {
 //
 val () =
-prerrln("auxmain: d4e1 = ", d4e1)
+(
+  prerrsln
+  ("auxmain(34): d4e1 = ", d4e1))
 //
 }(*where*)//end-of-[ f1_main(...) ]
 //
-val (  ) = prerrln
+val (  ) = prerrsln
   ("trans34_d4exp_dset: d4e0 = ", d4e0)
-val (  ) = prerrln
+val (  ) = prerrsln
   ("trans34_d4exp_dset: t2p0 = ", t2p0)
 //
 }(*where*) // end-of-[trans34_d4exp_dset(...)]
@@ -2489,7 +2491,7 @@ tr34env_d2vins_dset
 //
 end(*let*) // end of [f0_var( ... )]
 //
-val (  ) = prerrln
+val (  ) = prerrsln
   ("trans34_d4exp_fold: d4e0 = ", d4e0)
 //
 }(*where*) // end-of-[trans34_d4exp_fold(...)]
@@ -2514,7 +2516,7 @@ trans34_d4pxp(env0, d4p1)}
 ) where
 {
 //
-val (  ) = prerrln
+val (  ) = prerrsln
   ("trans34_d4typ_fold: dtp0 = ", dtp0)
 //
 }(*where*) // end-of-[trans34_d4typ_fold(...)]

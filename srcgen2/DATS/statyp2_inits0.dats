@@ -274,7 +274,7 @@ s2cst_get_styp(s2c0) =
 let
 (*
 val () =
-prerrln
+prerrsln
 ("s2cst_get_styp: s2c0 = ", s2c0)
 *)
 in//let
@@ -288,10 +288,10 @@ s2cst_set_styp(s2c0, styp) =
 let
 (*
 val () =
-prerrln
+prerrsln
 ("s2cst_set_styp: s2c0 = ", s2c0)
 val () =
-prerrln
+prerrsln
 ("s2cst_set_styp: styp = ", styp)
 *)
 in//let

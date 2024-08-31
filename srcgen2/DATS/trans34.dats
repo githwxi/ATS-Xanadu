@@ -67,24 +67,24 @@ in//let
 case+ dlft of
 |D4LFTval(d2v1) =>
 (
-  print("D4LFTval(", d2v1, ")"))
+  prints("D4LFTval(", d2v1, ")"))
 |D4LFTvar(d2v1) =>
 (
-  print("D4LFTvar(", d2v1, ")"))
+  prints("D4LFTvar(", d2v1, ")"))
 //
 (*
 |
 D4LFTpcon
 (tknd, lab1, lft0)
 (
-print
+prints
 ("D4LFTpcon("
 , tknd, ";", lab1, ";", lft0, ")"))
 |
 D4LFTproj
 (tknd, lab1, lft0)
 (
-print
+prints
 ("D4LFTproj("
 , tknd, ";", lab1, ";", lft0, ")"))
 *)
@@ -104,20 +104,20 @@ in//let
 case+ dtyp of
 |D4TYPstp(t2p1) =>
 (
-  print("D4TYPstp(", t2p1, ")"))
+ prints("D4TYPstp(", t2p1, ")"))
 |D4TYPpat(d4p1) =>
 (
-  print("D4TYPpat(", d4p1, ")"))
+ prints("D4TYPpat(", d4p1, ")"))
 //
 (*
 |
 D4TYPpcon(d2c1, dtps) =>
 (
-print("D4TYPpcon(", d2c1, ";", dtps, ")"))
+prints("D4TYPpcon(", d2c1, ";", dtps, ")"))
 |
 D4TYPproj(tknd, dtps) =>
 (
-print("D4TYPpcon(", tknd, ";", dtps, ")"))
+prints("D4TYPpcon(", tknd, ";", dtps, ")"))
 *)
 //
 end(*let*)//end-of-[d4typ_fprint(out, dtyp)]

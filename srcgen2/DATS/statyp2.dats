@@ -243,7 +243,7 @@ let
 val s2t0 = t2p0.sort()
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("s2typ_none1: t2p0 = ", t2p0)
 *)
 //
@@ -261,7 +261,7 @@ let
 val s2t0 = s2e0.sort()
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("s2typ_s2exp: s2e0 = ", s2e0)
 *)
 //

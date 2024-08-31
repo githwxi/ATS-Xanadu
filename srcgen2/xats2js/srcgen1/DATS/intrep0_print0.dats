@@ -132,66 +132,66 @@ i0p0.node() of
 //
 (*
 |I0Pnil() =>
-print("I0Pnil(",")")
+prints("I0Pnil(",")")
 *)
 //
 (* ****** ****** *)
 //
 |I0Pany() =>
-print("I0Pany(",")")
+prints("I0Pany(",")")
 |I0Pvar(d2v) =>
-print("I0Pvar(",d2v,")")
+prints("I0Pvar(",d2v,")")
 //
 (* ****** ****** *)
 //
 |I0Pint(tok) =>
-print("I0Pint(",tok,")")
+prints("I0Pint(",tok,")")
 |I0Pbtf(sym) =>
-print("I0Pbtf(",sym,")")
+prints("I0Pbtf(",sym,")")
 |I0Pchr(tok) =>
-print("I0Pchr(",tok,")")
+prints("I0Pchr(",tok,")")
 |I0Pstr(tok) =>
-print("I0Pstr(",tok,")")
+prints("I0Pstr(",tok,")")
 //
 (* ****** ****** *)
 |I0Pcon(d2c) =>
-print("I0Pcon(",d2c,")")
+prints("I0Pcon(",d2c,")")
 (* ****** ****** *)
 //
 |I0Pbang i0p1 =>
-print("I0Pbang(",i0p1,")")
+prints("I0Pbang(",i0p1,")")
 |I0Pflat i0p1 =>
-print("I0Pflat(",i0p1,")")
+prints("I0Pflat(",i0p1,")")
 |I0Pfree i0p1 =>
-print("I0Pfree(",i0p1,")")
+prints("I0Pfree(",i0p1,")")
 //
 (* ****** ****** *)
 |I0Pdap1 i0f0 =>
-print("I0Pdap1(",i0f0,")")
+prints("I0Pdap1(",i0f0,")")
 (* ****** ****** *)
 //
 |I0Pdapp
 ( i0f0,i0ps ) =>
-print("I0Pdapp(",i0f0,";",i0ps,")")
+prints("I0Pdapp(",i0f0,";",i0ps,")")
 //
 (* ****** ****** *)
 //
 |I0Ptup0(i0ps) =>
-print("I0Ptup0(",i0ps,")")
+prints("I0Ptup0(",i0ps,")")
 |I0Ptup1
 ( tknd,i0ps ) =>
-print("I0Ptup1(",tknd,";",i0ps,")")
+prints("I0Ptup1(",tknd,";",i0ps,")")
 //
 (* ****** ****** *)
 //
 |I0Pnone0() =>
 (
-  print( "I0Pnone0(",")" ))
+  prints( "I0Pnone0(",")" ))
 //
 |I0Pnone1(d3p1) =>
 let
 val loc0 = d3p1.lctn() in//let
-print
+prints
 ("I0Pnone1(", loc0, ";", d3p1, ")") end
 //
 (* ****** ****** *)
@@ -214,38 +214,38 @@ i0e0.node() of
 //
 |I0Eint(int) =>
 (
- print("I0Eint(", int, ")"))
+ prints("I0Eint(", int, ")"))
 |I0Ebtf(btf) =>
 (
- print("I0Ebtf(", btf, ")"))
+ prints("I0Ebtf(", btf, ")"))
 |I0Echr(chr) =>
 (
- print("I0Echr(", chr, ")"))
+ prints("I0Echr(", chr, ")"))
 |I0Estr(str) =>
 (
- print("I0Estr(", str, ")"))
+ prints("I0Estr(", str, ")"))
 //
 (* ****** ****** *)
 //
 |I0Evar(d2v) =>
 (
- print("I0Evar(", d2v, ")"))
+ prints("I0Evar(", d2v, ")"))
 //
 (* ****** ****** *)
 //
 |I0Econ(d2c) =>
 (
- print("I0Econ(", d2c, ")"))
+ prints("I0Econ(", d2c, ")"))
 |I0Ecst(d2c) =>
 (
- print("I0Ecst(", d2c, ")"))
+ prints("I0Ecst(", d2c, ")"))
 //
 (* ****** ****** *)
 //
 |I0Etimp
 (i0e1, timp) =>
 (
-print
+prints
 ("I0Etimp(", i0e1, ";", timp, ")"))
 //
 (* ****** ****** *)
@@ -253,12 +253,12 @@ print
 |I0Etapp
 (  i0f0  ) =>
 (
-  print("I0Etapp(", i0f0, ")"))
+  prints("I0Etapp(", i0f0, ")"))
 //
 |I0Etapq
 (i0f0, tjas) =>
 (
-print
+prints
 ("I0Etapq(", i0f0, ";", tjas, ")"))
 //
 (* ****** ****** *)
@@ -266,32 +266,32 @@ print
 |I0Edap0
 (  i0f0  ) =>
 (
-  print("I0Edap0(", i0f0, ")"))
+  prints("I0Edap0(", i0f0, ")"))
 //
 |I0Edapp
 (i0f0, i0es) =>
-print("I0Edapp(", i0f0, ";", i0es, ")")
+prints("I0Edapp(", i0f0, ";", i0es, ")")
 //
 (* ****** ****** *)
 //
 |I0Epcon
 (lab0, i0e1) =>
-print("I0Epcon(", lab0, ";", i0e1, ")")
+prints("I0Epcon(", lab0, ";", i0e1, ")")
 //
 |I0Epflt
 (lab0, i0e1) =>
-print("I0Epflt(", lab0, ";", i0e1, ")")
+prints("I0Epflt(", lab0, ";", i0e1, ")")
 //
 |I0Eproj
 (lab0, i0e1) =>
-print("I0Eproj(", lab0, ";", i0e1, ")")
+prints("I0Eproj(", lab0, ";", i0e1, ")")
 //
 (* ****** ****** *)
 //
 |I0Elet0
 (dcls, i0e1) =>
 (
-print("I0Elet0(", dcls, ";", i0e1, ")"))
+prints("I0Elet0(", dcls, ";", i0e1, ")"))
 //
 (* ****** ****** *)
 //
@@ -299,74 +299,74 @@ print("I0Elet0(", dcls, ";", i0e1, ")"))
 (test
 ,ithn, iels) =>
 (print("I0Eift0(")
-;print(test, ";", ithn, ";", iels, ")"))
+;prints(test, ";", ithn, ";", iels, ")"))
 //
 |I0Ecas0
 (tknd
 ,i0e1, icls) =>
 (print("I0Ecas0(")
-;print(tknd, ";", i0e1, ";", icls, ")"))
+;prints(tknd, ";", i0e1, ";", icls, ")"))
 //
 (* ****** ****** *)
 //
 |I0Eseqn
 (i0es, i0e1) =>
 (
-print("I0Eseqn(", i0es, ";", i0e1, ")"))
+prints("I0Eseqn(", i0es, ";", i0e1, ")"))
 //
 (* ****** ****** *)
 //
 |I0Etup0
 ( i0es ) =>
-print("I0Etup0(", i0es, ")")
+prints("I0Etup0(", i0es, ")")
 |I0Etup1
 (tknd, i0es) =>
 (
-print("I0Etup1(", tknd, ";", i0es, ")"))
+prints("I0Etup1(", tknd, ";", i0es, ")"))
 |I0Ercd2
 (tknd, lies) =>
 (
-print("I0Ercd2(", tknd, ";", lies, ")"))
+prints("I0Ercd2(", tknd, ";", lies, ")"))
 //
 (* ****** ****** *)
 //
 |I0Elam0
 (tknd,fias,body) =>
 (print("I0Elam0(")
-;print(tknd, ";", fias, ";", body, ")"))
+;prints(tknd, ";", fias, ";", body, ")"))
 //
 |I0Efix0
 (tknd
 ,fid0,fias,body) =>
-(print("I0Efix0(",tknd,";")
-;print(fid0, ";", fias, ";", body, ")"))
+(prints("I0Efix0(",tknd,";")
+;prints(fid0, ";", fias, ";", body, ")"))
 //
 (* ****** ****** *)
 //
 |I0Eaddr
 ( i0e1 ) =>
 (
-  print("I0Eaddr(", i0e1, ")") )//I0Eaddr
+  prints("I0Eaddr(", i0e1, ")") )//I0Eaddr
 //
 |I0Eflat
 ( i0e1 ) =>
 (
-  print("I0Eflat(", i0e1, ")") )//I0Eflat
+  prints("I0Eflat(", i0e1, ")") )//I0Eflat
 //
 |I0Eeval
 ( i0e1 ) =>
 (
-  print("I0Eeval(", i0e1, ")") )//I0Eeval
+  prints("I0Eeval(", i0e1, ")") )//I0Eeval
 //
 |I0Efold
 ( i0e1 ) =>
 (
-  print("I0Efold(", i0e1, ")") )//I0Efold
+  prints("I0Efold(", i0e1, ")") )//I0Efold
 //
 |I0Efree
 ( i0e1 ) =>
 (
-  print("I0Efree(", i0e1, ")") )//I0Efree
+  prints("I0Efree(", i0e1, ")") )//I0Efree
 //
 (* ****** ****** *)
 //
@@ -374,49 +374,50 @@ print("I0Ercd2(", tknd, ";", lies, ")"))
 I0Edl0az
 ( i0e1 ) =>
 (
- print("I0Edl0az(", i0e1, ")") )//de-l0az
+ prints("I0Edl0az(", i0e1, ")") )//de-l0az
 |
 I0Edl1az
 ( i0e1 ) =>
 (
- print("I0Edl1az(", i0e1, ")") )//de-l1az
+ prints("I0Edl1az(", i0e1, ")") )//de-l1az
 //
 |
 I0Edp2tr
 ( i0e1 ) =>
 (
- print("I0Edp2tr(", i0e1, ")") )//de-p2tr
+ prints("I0Edp2tr(", i0e1, ")") )//de-p2tr
 //
 (* ****** ****** *)
 //
 |I0Ewhere
 (i0e1, dcls) =>
 (
- print("I0Ewhere(", i0e1, ";", dcls, ")"))
+ prints("I0Ewhere(", i0e1, ";", dcls, ")"))
 //
 (* ****** ****** *)
 //
 |I0Eassgn
 (i0el, i0er) =>
 (
- print("I0Eassgn(", i0el, ";", i0er, ")"))
+ prints("I0Eassgn(", i0el, ";", i0er, ")"))
 //
 |I0Eraise
 (tknd, iexn) =>
 (
- print("I0Eraise(", tknd, ";", iexn, ")"))
+ prints("I0Eraise(", tknd, ";", iexn, ")"))
 //
 (* ****** ****** *)
 //
 |I0El0azy
 (dknd, i0e1) =>
 (
- print("I0El0azy(", dknd, ";", i0e1, ")"))
+prints
+("I0El0azy(", dknd, ";", i0e1, ")"))
 |I0El1azy
 (dknd
 ,i0e1, i0es) =>
 ( print("I0El1azy(")
-; print( dknd, ";", i0e1, ";", i0es, ")"))
+; prints( dknd, ";", i0e1, ";", i0es, ")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -424,27 +425,27 @@ I0Edp2tr
 |I0Eextnam
 (tknd, gnam) =>
 (
-print("I0Eextnam(", tknd, ";", gnam, ")"))
+prints("I0Eextnam(", tknd, ";", gnam, ")"))
 //
 (* ****** ****** *)
 //
 |I0Esynext
 (tknd, gexp) =>
 (
-print("I0Esynext(", tknd, ";", gexp, ")"))
+prints("I0Esynext(", tknd, ";", gexp, ")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 |I0Enone0() =>
 (
-  print( "I0Enone0(",")" ))
+  prints( "I0Enone0(",")" ))
 |I0Enone1(d3e1) =>
 let
 val
 loc0 = d3e1.lctn() in//let
 (
-  print("I0Enone1(", loc0, ";", d3e1, ")"))
+  prints("I0Enone1(", loc0, ";", d3e1, ")"))
 end//let//end-of-[I0Enone1(d3e1)]
 //
 (* ****** ****** *)
@@ -467,7 +468,7 @@ case+
 farg.node() of
 |FIARGdarg(i0ps) =>
 (
-  print("FIARGdarg(", i0ps, ")"))
+  prints("FIARGdarg(", i0ps, ")"))
 //
 end (*let*) // end of [fiarg_fprint(out,farg)]
 //
@@ -486,10 +487,10 @@ case+
 igua.node() of
 |
 I0GUAexp(i0e1) =>
-print("I0GUAexp(",i0e1,")")
+prints("I0GUAexp(",i0e1,")")
 |
 I0GUAmat(i0e1,i0p2) =>
-print("I0GUAmat(",i0e1,";",i0p2,")")
+prints("I0GUAmat(",i0e1,";",i0p2,")")
 //
 end (*let*) // end of [i0gua_fprint(out,igua)]
 //
@@ -506,10 +507,10 @@ case+
 igpt.node() of
 |
 I0GPTpat(i0p1) =>
-print("I0GPTpat(",i0p1,")")
+prints("I0GPTpat(",i0p1,")")
 |
 I0GPTgua(i0p1,i0gs) =>
-print("I0GPTgua(",i0p1,";",i0gs,")")
+prints("I0GPTgua(",i0p1,";",i0gs,")")
 end (*let*) // end of [i0gpt_fprint(out,igpt)]
 //
 #implfun
@@ -523,10 +524,10 @@ case+
 icls.node() of
 |
 I0CLSgpt(igpt) =>
-print("I0CLSgpt(",igpt,")")
+prints("I0CLSgpt(",igpt,")")
 |
 I0CLScls(i0g1,i0e2) =>
-print("I0CLScls(",i0g1,";",i0e2,")")
+prints("I0CLScls(",i0g1,";",i0e2,")")
 end (*let*) // end of [i0cls_fprint(out,icls)]
 //
 (* ****** ****** *)
@@ -545,16 +546,16 @@ timp.node() of
 (*
 |T0IMPone1
 (  dcl1  ) =>
-print("T0IMPone1(", dcl1 ,")")
+prints("T0IMPone1(", dcl1 ,")")
 *)
 //
 |T0IMPall1
 (d2c1, i0ds) =>
-print("T0IMPall1(",d2c1,";",i0ds,")")
+prints("T0IMPall1(",d2c1,";",i0ds,")")
 //
 |T0IMPallx
 (d2c1, i0ds) =>
-print("T0IMPallx(",d2c1,";",i0ds,")")
+prints("T0IMPallx(",d2c1,";",i0ds,")")
 //
 end (*let*) // end of [t0imp_fprint(...)]
 //
@@ -574,32 +575,32 @@ dcl0.node() of
 //
 |I0Dd3ecl
 (  d3cl  ) =>
-print("I0Dd3ecl(", d3cl, ")")
+prints("I0Dd3ecl(", d3cl, ")")
 //
 (* ****** ****** *)
 //
 |I0Dstatic
 (tknd, dcl1) =>
-print
+prints
 ("I0Dstatic(", tknd, ";", dcl1, ")")
 //
 |I0Dextern
 (tknd, dcl1) =>
-print
+prints
 ("I0Dextern(", tknd, ";", dcl1, ")")
 //
 (* ****** ****** *)
 //
 |I0Dlocal0
 (head, body) =>
-print
+prints
 ("I0Dlocal0(", head, ";", body, ")")
 //
 (* ****** ****** *)
 //
 |I0Dtmpsub
 (svts, idcl) =>
-print
+prints
 ("I0Dtmpsub(", svts, ";", idcl, ")")
 //
 (* ****** ****** *)
@@ -609,7 +610,7 @@ I0Dinclude
 , gsrc, fopt, dopt ) =>
 (
 print("I0Dinclude(");
-print
+prints
 (
 knd0,";",
 tknd,";",gsrc,";",fopt,";","...",")"))
@@ -625,12 +626,12 @@ Sat 20 Jul 2024 07:38:45 PM EDT
 |I0Ddyninit
 ( tknd, gexp) =>
 (
-print("I0Ddyninit(",tknd,";",gexp,")"))
+prints("I0Ddyninit(",tknd,";",gexp,")"))
 //
 |I0Dextcode
 ( tknd, gexp) =>
 (
-print("I0Dextcode(",tknd,";",gexp,")"))
+prints("I0Dextcode(",tknd,";",gexp,")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -638,12 +639,12 @@ print("I0Dextcode(",tknd,";",gexp,")"))
 |I0Dvaldclst
 ( tknd, i0vs) =>
 (
-print("I0Dvaldclst(",tknd,";",i0vs,")"))
+prints("I0Dvaldclst(",tknd,";",i0vs,")"))
 //
 |I0Dvardclst
 ( tknd, i0vs) =>
 (
-print("I0Dvardclst(",tknd,";",i0vs,")"))
+prints("I0Dvardclst(",tknd,";",i0vs,")"))
 //
 (* ****** ****** *)
 //
@@ -651,7 +652,7 @@ print("I0Dvardclst(",tknd,";",i0vs,")"))
 ( tknd
 , d2cs, i0fs) =>
 ( print("I0Dfundclst(")
-; print(tknd, ";", d2cs, ";", i0fs, ")"))
+; prints(tknd, ";", d2cs, ";", i0fs, ")"))
 //
 (* ****** ****** *)
 //
@@ -660,21 +661,21 @@ print("I0Dvardclst(",tknd,";",i0vs,")"))
 , stmp, dimp
 , farg, body) =>
 ( print("I0Dimplmnt0(")
-; print(tknd,";",stmp,";")
-; print(dimp, ";", farg, ";", body, ")"))
+; prints(tknd,";",stmp,";")
+; prints(dimp, ";", farg, ";", body, ")"))
 //
 (* ****** ****** *)
 //
 |I0Dnone0() =>
 (
-  print( "I0Dnone0(",")" ))
+  prints( "I0Dnone0(",")" ))
 //
 |I0Dnone1(d3cl) =>
 let
 val
 loc0 = d3cl.lctn() in//let
 (
-  print("I0Dnone1(", loc0, ";", d3cl, ")"))
+  prints("I0Dnone1(", loc0, ";", d3cl, ")"))
 end//let//end-of-[I0Dnone1(d3cl)]
 //
 (* ****** ****** *)
@@ -697,7 +698,7 @@ i0valdcl_get_tdxp(ival)
 //
 in//let
 (
-print("I0VALDCL(", dpat, ";", tdxp, ")"))
+prints("I0VALDCL(", dpat, ";", tdxp, ")"))
 end(*let*)//end-of-[i0valdcl_fprint(out,ival)]
 
 (* ****** ****** *)
@@ -715,11 +716,11 @@ i0vardcl_get_dini(ivar)
 //
 in//let
 (
-print("I0VARDCL(", dpid, ";", dini, ")"))
+prints("I0VARDCL(", dpid, ";", dini, ")"))
 end(*let*)//end-of-[i0vardcl_fprint(out,ivar)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 i0fundcl_fprint
   (out, ifun) = let
@@ -735,13 +736,13 @@ i0fundcl_get_tdxp(ifun)
 //
 in//let
 (
-print
+prints
 ("I0FUNDCL(",dpid,";",farg,";",tdxp,")"))
 end(*let*)//end-of-[i0fundcl_fprint(out,ifun)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 i0parsed_fprint
   (out, ipar) = let
@@ -763,15 +764,14 @@ i0parsed_get_parsed(ipar)
 //
 in//let
 (
-print
-("I0PARSED(");
-print
+print("I0PARSED(");
+prints
 (stadyn,";",nerror,";",source,";",parsed,")"))
 end (*let*) // end-of-[i0parsed_fprint(out,ipar)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep0_print0.sats] *)
 (***********************************************************************)

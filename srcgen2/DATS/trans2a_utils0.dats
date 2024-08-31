@@ -559,7 +559,7 @@ s2cst_get2a_styp
 {
 (*
 val () =
-prerrln
+prerrsln
 ("\
 unify2a_s2typ: \
 s2typ_eval$s2cst: s2c0 = ", s2c0)
@@ -609,9 +609,9 @@ s2typ_hnfiz0_e1nv
 //
 (*
 val () =
-prerrln("unify2a_s2typ: t2p1 = ", t2p1)
+prerrsln("unify2a_s2typ: t2p1 = ", t2p1)
 val () =
-prerrln("unify2a_s2typ: t2p2 = ", t2p2)
+prerrsln("unify2a_s2typ: t2p2 = ", t2p2)
 *)
 in//let
 unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
@@ -636,7 +636,7 @@ s2cst_get2a_styp
 {
 (*
 val () =
-prerrln
+prerrsln
 ("\
 match2a_s2typ: \
 s2typ_eval$s2cst: s2c0 = ", s2c0)
@@ -668,9 +668,9 @@ s2typ_hnfiz0_e1nv
 //
 (*
 val () =
-prerrln("match2a_s2typ: t2p1 = ", t2p1)
+prerrsln("match2a_s2typ: t2p1 = ", t2p1)
 val () =
-prerrln("match2a_s2typ: t2p2 = ", t2p2)
+prerrsln("match2a_s2typ: t2p2 = ", t2p2)
 *)
 //
 (* ****** ****** *)
@@ -951,8 +951,12 @@ end//let//end-of-[ F2ARGdapp(...) ]
 ) where
 {
 (*
-  val () = prerrln("f0_f2a1: f2a1 = ", f2a1)
-  val () = prerrln("f0_f2a1: tfun = ", tfun)
+  val () =
+  (
+    prerrsln("f0_f2a1(2a): f2a1 = ", f2a1))
+  val () =
+  (
+    prerrsln("f0_f2a1(2a): tfun = ", tfun))
 *)
 } (*where*) // end of [f0_f2a1(env0,f2a1,tfun)]
 //
@@ -987,9 +991,15 @@ end//let
 ) where
 {
 (*
-  val () = prerrln("auxmain: f2as = ", f2as)
-  val () = prerrln("auxmain: tfun = ", tfun)
-  val () = prerrln("auxmain: fres = ", fres)
+val () =
+(
+  prerrsln("auxmain(2a): f2as = ", f2as))
+val () =
+(
+  prerrsln("auxmain(2a): tfun = ", tfun))
+val () =
+(
+  prerrsln("auxmain(2a): fres = ", fres))
 *)
 }(*where*) // end of [auxmain(env0,f2as,tfun,fres)]
 //

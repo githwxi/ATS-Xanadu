@@ -1226,9 +1226,9 @@ end (*let*) // end of [f0_dynconst(dcl,err)]
 //
 (*
 val (  ) =
-prerrln("tread01_d1ecl: loc0 = ", loc0)
+prerrsln("tread01_d1ecl: loc0 = ", loc0)
 val (  ) =
-prerrln("tread01_d1ecl: d1cl = ", d1cl)
+prerrsln("tread01_d1ecl: d1cl = ", d1cl)
 *)
 //
 (* ****** ****** *)

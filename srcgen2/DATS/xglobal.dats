@@ -234,7 +234,7 @@ d1parsed_get_topenv(dpar)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("the_fxtyenv_pvsload:", tenv)
 *)
 //
@@ -449,11 +449,11 @@ let
 //
 (*
 val () =
-prerrln("auxkxs1: k1 = ", k1)
+prerrsln("auxkxs1: k1 = ", k1)
 val () =
-prerrln("auxkxs1: x1 = ", x1)
+prerrsln("auxkxs1: x1 = ", x1)
 val () =
-prerrln("auxkxs1: xs1 = ", xs1)
+prerrsln("auxkxs1: xs1 = ", xs1)
 *)
 //
 in//let
@@ -648,7 +648,7 @@ end (*let*) // end-of-(fpth)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_pvsload: fpth = ", fpth)
 *)
 //
@@ -670,16 +670,16 @@ D2TOPENV
 //
 (*
 val () =
-prerrln("\
+prerrsln("\
 the_tr12env_pvsload:tr11=\n", tr11)
 val () =
-prerrln("\
+prerrsln("\
 the_tr12env_pvsload:tenv=\n", tenv)
 val () =
-prerrln("\
+prerrsln("\
 the_tr12env_pvsload:senv=\n", senv)
 val () =
-prerrln("\
+prerrsln("\
 the_tr12env_pvsload:denv=\n", denv)
 *)
 //
@@ -756,11 +756,11 @@ D2ITMvar(d2v) =>
 (*
 val loc = d2v.lctn((*nil*))
 val ( ) =
-prerrln("\
+prerrsln("\
 TREAD12-WARNING: \
 the_tr12env_pvsload: f0_pvsfini: loc = ", loc)
 val ( ) =
-prerrln("\
+prerrsln("\
 TREAD12-WARNING: \
 the_tr12env_pvsload: f0_pvsfini: d2v = ", d2v)
 *)
@@ -894,7 +894,7 @@ end where
 {
 (*
 val () =
-prerrln
+prerrsln
 ("the_sortenv_pvsfind: key = ", key)
 *)
 }(*where*)//end(the_sortenv_pvsfind(key))
@@ -916,7 +916,7 @@ end where
 {
 (*
 val () =
-prerrln
+prerrsln
 ("the_sexpenv_pvsfind: key = ", key)
 *)
 }(*where*)//end(the_sexpenv_pvsfind(key))
@@ -938,7 +938,7 @@ end where
 {
 (*
 val () =
-prerrln
+prerrsln
 ("the_dexpenv_pvsfind: key = ", key)
 *)
 }(*where*)//end(the_dexpenv_pvsfind(key))

@@ -99,7 +99,7 @@ d4p0.node() of
 (* ****** ****** *)
 //
 val () =
-prerrln("d4pat_freeq: d4p0 = ", d4p0)
+prerrsln("d4pat_freeq: d4p0 = ", d4p0)
 //
 (* ****** ****** *)
 //
@@ -126,7 +126,7 @@ d4e0.node() of
 )
 //
 val () =
-prerrln("d4exp_foldq: d4e0 = ", d4e0)
+prerrsln("d4exp_foldq: d4e0 = ", d4e0)
 //
 }(*where*)//end-of-[d4exp_foldq(d4e0)]
 

@@ -162,11 +162,11 @@ end (*let*) // end of [f0_else(...)]
 (* ****** ****** *)
 (*
 val () =
-prerrln("d2pat_make_dpis: loc0 = ", loc0)
+prerrsln("d2pat_make_dpis: loc0 = ", loc0)
 val () =
-prerrln("d2pat_make_dpis: d1p0 = ", d1p0)
+prerrsln("d2pat_make_dpis: d1p0 = ", d1p0)
 val () =
-prerrln("d2pat_make_dpis: dpis = ", dpis)
+prerrsln("d2pat_make_dpis: dpis = ", dpis)
 *)
 (* ****** ****** *)
 //
@@ -274,11 +274,11 @@ end (*let*) // end of [f0_else(...)]
 (* ****** ****** *)
 (*
 val () =
-prerrln("d2exp_make_dpis: loc0 = ", loc0)
+prerrsln("d2exp_make_dpis: loc0 = ", loc0)
 val () =
-prerrln("d2exp_make_dpis: d1e0 = ", d1e0)
+prerrsln("d2exp_make_dpis: d1e0 = ", d1e0)
 val () =
-prerrln("d2exp_make_dpis: dpis = ", dpis)
+prerrsln("d2exp_make_dpis: dpis = ", dpis)
 *)
 (* ****** ****** *)
 //
@@ -296,10 +296,10 @@ let
 val
 loc0 = d2p0.lctn()
 val () =
-prerrln
+prerrsln
 ("trsym2b_d2pat: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trsym2b_d2pat: d2p0 = ", d2p0)
 *)
 //
@@ -383,13 +383,13 @@ val dpat = drpt.dpat((*void*))
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trsym2b_d2pat: f0_sym0: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trsym2b_d2pat: f0_sym0: d2p0 = ", d2p0)
 val () =
-prerrln
+prerrsln
 ("trsym2b_d2pat: f0_sym0: styp = ", t2p1)
 *)
 //
@@ -451,7 +451,7 @@ D2PTMsome(pval, _) =>
 //
 (*
 val () =
-prerrln("f1_maxes: pmax = ", pmax)
+prerrsln("f1_maxes: pmax = ", pmax)
 *)
 //
 } (*where*) // end of [f1_maxes(...)]
@@ -519,13 +519,13 @@ val dpat = drpt.dpat((*nil*))
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trsym2b_d2pat: f0_cons: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trsym2b_d2pat: f0_cons: d2p0 = ", d2p0)
 val () =
-prerrln
+prerrsln
 ("trsym2b_d2pat: f0_cons: styp = ", t2p1)
 *)
 //
@@ -543,7 +543,7 @@ val d2cs =
   (env0, d2cs, t2p1) )//val(d2cs)
 //
 (*
-val () = prerrln
+val () = prerrsln
 ("\
 trsym2b_d2pat: \
 f0_cons: d2cs(*matched*) = ", d2cs)
@@ -598,7 +598,7 @@ val d2cs =
   (env0, d2cs, tres) )//val(d2cs)
 //
 (*
-val () = prerrln
+val () = prerrsln
 ("\
 trsym2b_d2pat: \
 f0_dap1: d2cs(*matched*) = ", d2cs)
@@ -658,10 +658,10 @@ let
 val
 loc0 = d2e0.lctn()
 val () =
-prerrln
+prerrsln
 ("trsym2b_d2exp: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trsym2b_d2exp: d2e0 = ", d2e0)
 *)
 //
@@ -928,7 +928,7 @@ trsym2b_d2exp(env0, d2e1)) where
 {
 (*
 val () =
-prerrln
+prerrsln
 ("trsym2b_d2exp: D2Eannot: ", d2e0)
 *)
 }
@@ -972,19 +972,19 @@ val dexp = drxp.dexp((*void*))
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_sym0(2b): loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("f0_sym0(2b): d1e0 = ", d1e0)
 val () =
-prerrln
+prerrsln
 ("f0_sym0(2b): t2p1 = ", t2p1)
 val () =
-prerrln
+prerrsln
 ("f0_sym0(2b): dpis = ", dpis)
 val () =
-prerrln
+prerrsln
 ("f0_sym0(2b): drxp = ", drxp)
 *)
 //
@@ -1001,10 +1001,10 @@ match2a_d2ptmlst
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_sym0(2b): t2p1 = ", t2p1)
 val () =
-prerrln
+prerrsln
 ("f0_sym0(2b): dpis = ", dpis)
 *)
 //
@@ -1026,7 +1026,7 @@ list_nil() =>
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_sym0(2b): dpis = ", dpis)
 *)
 //
@@ -1034,7 +1034,7 @@ prerrln
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_sym0(2b): dsym = ", dsym)
 *)
 //
@@ -1076,7 +1076,7 @@ D2PTMsome(pval, _) =>
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f1_maxes(2b): pmax = ", pmax)
 *)
 //
@@ -1132,7 +1132,7 @@ val tsym = dsym.styp()
 //
 (*
 val (  ) =
-prerrln
+prerrsln
 ("f1_sympp(2b): dsym = ", dsym)
 *)
 //
@@ -1222,9 +1222,9 @@ end where
 val loc0 = d2e0.lctn()
 //
 val (  ) =
-prerrln("f0_proj(2b): loc0 = ", loc0)
+prerrsln("f0_proj(2b): loc0 = ", loc0)
 val (  ) =
-prerrln("f0_proj(2b): d2e0 = ", d2e0)
+prerrsln("f0_proj(2b): d2e0 = ", d2e0)
 *)
 } (*where*) // end of [f0_proj(env0, d2e0)]
 
@@ -1257,7 +1257,7 @@ end where
 //
 (*
 val (  ) =
-prerrln("f0_dtsel(2b): d2e0 = ", d2e0)
+prerrsln("f0_dtsel(2b): d2e0 = ", d2e0)
 *)
 //
 } (*where*) // end of [f0_dtsel(env0, d2e0)]

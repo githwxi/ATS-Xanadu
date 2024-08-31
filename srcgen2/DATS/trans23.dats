@@ -81,7 +81,7 @@ val dpar = d2parsed_of_tread20(dpar)
 //
 (*
 val (  ) =
-prerrln("trans03_from_fpath: dpar = ", dpar)
+prerrsln("trans03_from_fpath: dpar = ", dpar)
 *)
 //
 } (*where*)//end-of-[trans03_from_fpath(...)]

@@ -225,7 +225,7 @@ case- fxt of
 //
 (*
 val () =
-prerrln("fixty_prcdv: fxt = ", fxt)
+prerrsln("fixty_prcdv: fxt = ", fxt)
 *)
 //
 } (*where*) // end of [fxopr_prcdv(fxt]
@@ -250,7 +250,7 @@ case- fxt of
 //
 (*
 val () =
-prerrln("fixty_assoc: fxt = ", fxt)
+prerrsln("fixty_assoc: fxt = ", fxt)
 *)
 //
 } (*where*) // end of [fxopr_assoc(fxt)]
@@ -335,10 +335,10 @@ process(itms, list_nil())
 //
 (*
 val () =
-prerrln
+prerrsln
 ("fxitmlst_resolve: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("fxitmlst_resolve: itms = ", itms)
 *)
 //
@@ -621,7 +621,7 @@ case+ ys0 of
     val
     sgn =
     (fixty_prcdv(fx) \cmp fixty_prcdv(fy))
-  in
+  in//let
     if
     (sgn < 0)
     then yreduce(y0 :: xs0, ys0)
@@ -644,7 +644,8 @@ case+ ys0 of
 //
 (*
 | _ (*error*) =>
-  fxitmlst_resolve$oprerr<a>(y0) // HX: deadcode?
+(
+  fxitmlst_resolve$oprerr<a>(y0)) // HX: deadcode???
 *)
 | _ (*error*) =>
   let
@@ -709,12 +710,11 @@ fxitm_get_lctn<a>(itm)
 (*
 val-FXITMatm(atm) = itm
 *)
-val () = prerr ( loc0 )
-val () = prerr (": error(1)")
-//
 val () =
-prerrln
-(": app-fixity cannot be resolved: ", itm)
+prerrs(loc0, ": error(1)")
+//
+val () = prerrsln("\
+: app-fixity cannot be resolved: ", itm)
 //
 in
 $raise
@@ -740,11 +740,11 @@ loc0 =
 fxitm_get_lctn<a>(itm)
 //
 val () =
-prerr("FIXITY-ERROR:")
-val () = prerr( loc0 )
+prerrs
+("FIXITY-ERROR(", loc0, "):")
 val () =
-prerrln
-(": opr-fixity cannot be resolved: ", itm)
+prerrsln("\
+opr-fixity cannot be resolved: ", itm)
 //
 in//let
 $raise
@@ -766,10 +766,11 @@ fxitmlst_resolve$rederr
 let
 //
 val () =
-prerr("FIXITY-ERROR:", loc0)
+prerrs
+("FIXITY-ERROR(", loc0, "):")
 val () =
-prerrln
-(": opr-fixity cannot be resolved: ", itms)
+prerrsln("\
+opr-fixity cannot be resolved: ", itms)
 //
 in//let
 $raise

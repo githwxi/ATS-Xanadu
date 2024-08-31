@@ -91,15 +91,16 @@ d4p.node() of
 _(*otherwise*) =>
 let
 //
-  val loc = d4p.lctn((*void*))
-  val t2p = d4p.styp((*void*))
-//
-  val ( ) = prerrln
-  ("fperr40_d4pat: auxmain: loc = ", loc)
-  val ( ) = prerrln
-  ("fperr40_d4pat: auxmain: t2p = ", t2p)
-  val ( ) = prerrln
-  ("fperr40_d4pat: auxmain: d4p = ", d4p)
+(*
+val loc = d4p.lctn((*void*))
+val t2p = d4p.styp((*void*))
+val ( ) = prerrsln("\
+fperr40_d4pat: auxmain(40): loc = ", loc)
+val ( ) = prerrsln("\
+fperr40_d4pat: auxmain(40): t2p = ", t2p)
+val ( ) = prerrsln("\
+fperr40_d4pat: auxmain(40): d4p = ", d4p)
+*)
 //
 endlet
 //
@@ -120,13 +121,13 @@ let
 val loc0 = d4p0.lctn()
 in//let
 (*
-prerrln
+prerrsln
 ("fperr40_d4pat: loc0 = ", loc0)
 *)
 end//let
 (*
 val () =
-prerrln
+prerrsln
 ("fperr40_d4pat: d4p0 = ", d4p0)
 *)
 //
@@ -146,7 +147,7 @@ let
 val loc0 = d4p0.lctn((*0*))
 in//let
 (*
-prerrln
+prerrsln
 ("FPERR40-ERROR:",loc0,":",d4p0)
 *)
 end//let
@@ -185,11 +186,11 @@ let
   val loc = d4e.lctn((*void*))
   val t2p = d4e.styp((*void*))
 //
-  val ( ) = prerrln
+  val ( ) = prerrsln
   ("fperr40_d4exp: auxmain: loc = ", loc)
-  val ( ) = prerrln
+  val ( ) = prerrsln
   ("fperr40_d4exp: auxmain: t2p = ", t2p)
-  val ( ) = prerrln
+  val ( ) = prerrsln
   ("fperr40_d4exp: auxmain: d4e = ", d4e)
 //
 endlet
@@ -211,13 +212,13 @@ let
 val loc0 = d4e0.lctn()
 in//let
 (*
-prerrln
+prerrsln
 ("fperr40_d4exp: loc0 = ", loc0)
 *)
 end//let
 (*
 val () =
-prerrln
+prerrsln
 ("fperr40_d4exp: d4e0 = ", d4e0)
 *)
 //
@@ -237,7 +238,7 @@ let
 val loc0 = d4e0.lctn((*0*))
 in//let
 (*
-prerrln
+prerrsln
 ("FPERR40-ERROR:",loc0,":",d4e0)
 *)
 end//let

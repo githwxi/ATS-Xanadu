@@ -282,8 +282,9 @@ S2Eerrck _ => s2exp_fpemsg(out, s2e)
 endlet where
 {
 (*
-  val ( ) =
-  prerrln("auxmain: s2e = ", s2e)
+val ( ) =
+(
+prerrsln("auxmain(12): s2e = ", s2e))
 *)
 } (*where*)//end-of-(auxmain(out,s2e))
 //
@@ -468,7 +469,7 @@ g_print$out<>() = out
 //
 (*
 val () =
-prerrln
+prerrsln
 ("d2pat_fpemsg: d2p0 = ", d2p0)
 *)
 //
@@ -754,8 +755,11 @@ D2Eerrck(_,_) => d2exp_fpemsg(out, d2e)
 //
 end where
 {
-  val
-  ( ) = prerrln("auxmain: d2e = ", d2e)
+(*
+val ( ) = 
+(
+  prerrsln("auxmain(12): d2e = ", d2e))
+*)
 } (*where*) // end-of-(auxmain(out,d2e))
 
 (* ****** ****** *)
@@ -772,7 +776,7 @@ g_print$out<>() = out
 //
 (*
 val () =
-prerrln
+prerrsln
 ("d2exp_fpemsg: d2e0 = ", d2e0)
 *)
 //
@@ -1114,7 +1118,7 @@ g_print$out<>() = out
 //
 (*
 val () =
-prerrln
+prerrsln
 ("d2ecl_fpemsg: dcl0 = ", dcl0)
 *)
 //

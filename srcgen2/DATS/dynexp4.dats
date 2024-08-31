@@ -1014,11 +1014,11 @@ D4PARSED
 , t2penv, t3penv, parsed)) where
 {
 (*
-val () = prerrln
+val () = prerrsln
 ("d4parsed_make_args: stadyn = ", stadyn)
-val () = prerrln
+val () = prerrsln
 ("d4parsed_make_args: nerror = ", nerror)
-val () = prerrln
+val () = prerrsln
 ("d4parsed_make_args: source = ", source)
 *)
 } (*where*) // end-of-[d4parsed_make_args]

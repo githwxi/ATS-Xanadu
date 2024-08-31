@@ -237,7 +237,7 @@ endlet // end of [ _(* otherwise *) ]
 {
 (*
 val (  ) =
-prerrln("tread12_sort2: s2t0 = ", s2t0)
+prerrsln("tread12_sort2: s2t0 = ", s2t0)
 *)
 } (*where*)//end[tread12_sort2(s2t0,err)]
 //
@@ -277,7 +277,7 @@ d2cs =
 tread12_d2conlst(d2cs, err)
 (*
 val () =
-prerrln
+prerrsln
 ("tread12_s2cst: d2cs = ", d2cs)
 *)
 }
@@ -290,7 +290,7 @@ tread12_sort2(s2c0.sort(), err)
 {
 (*
 val () =
-prerrln
+prerrsln
 ("tread12_s2cst: s2c0 = ", s2c0)
 *)
 }
@@ -1011,7 +1011,7 @@ S2Etrcd
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_trcd: lses = ", lses)
 *)
 //
@@ -1126,7 +1126,7 @@ end (*let*) // end of [ f0_cast(s2e,err) ]
 //
 (*
 val (  ) =
-prerrln("tread12_s2exp: s2e0 = ", s2e0)
+prerrsln("tread12_s2exp: s2e0 = ", s2e0)
 *)
 //
 } (*where*)//end[ tread12_s2exp(s2e0,err) ]
@@ -1188,7 +1188,7 @@ end (*let*) // end of [S2TEXsub(...)]
 {
 (*
 val () =
-prerrln
+prerrsln
 ("tread12_s2tex(", s2tx = ", s2tx, ")")
 *)
 } (*where*) // end of [tread12_s2tex(...)]

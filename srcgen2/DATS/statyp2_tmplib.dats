@@ -1520,10 +1520,10 @@ f1_xset
 let
 (*
 val () =
-prerrln
+prerrsln
 ("f1_xset: xtp1 = ", xtp1)
 val () =
-prerrln
+prerrsln
 ("f1_xset: t2p2 = ", t2p2)
 *)
 in//let
@@ -1759,9 +1759,9 @@ t2p2 = s2typ_exi0_inst(e1nv, t2p2)
 //
 (*
 val (  ) =
-prerrln("unify00_s2typ: t2p1 = ", t2p1)
+prerrsln("unify00_s2typ: t2p1 = ", t2p1)
 val (  ) =
-prerrln("unify00_s2typ: t2p2 = ", t2p2)
+prerrsln("unify00_s2typ: t2p2 = ", t2p2)
 *)
 //
 (* ****** ****** *)

@@ -978,7 +978,8 @@ val s2e0 = d2c0.sexp()
 //
 (*
 val (  ) =
-prerrln("tread12_d2con: s2e0 = ", s2e0)
+(
+prerrsln("tread12_d2con: s2e0 = ", s2e0))
 *)
 //
 val s2e0 = tread12_s2exp(d2c0.sexp(), err)
@@ -1316,7 +1317,8 @@ end (*let*) // end of [f0_annot(d2p,err)]
 //
 (*
 val (  ) =
-prerrln("tread12_d2pat: d2p0 = ", d2p0)
+(
+prerrsln("tread12_d2pat: d2p0 = ", d2p0))
 *)
 //
 } (*where*)//end[tread12_d2pat(d2p0,err)]
@@ -2254,7 +2256,8 @@ val-D2Esynext _ = d2e.node() in (d2e) end
 //
 (*
 val (  ) =
-(prerrln("tread12_d2exp: d2e0 = ", d2e0))
+(
+prerrsln("tread12_d2exp: d2e0 = ", d2e0))
 *)
 //
 (* ****** ****** *)

@@ -131,7 +131,7 @@ T_INT02
 //
 (*
 val () =
-prerrln("token2sint: tok = ", tok)
+prerrsln("token2sint: tok = ", tok)
 *)
 //
 } (*where*)//end-of-[token2sint(tok)]
@@ -155,7 +155,7 @@ T_INT02
 //
 (*
 val () =
-prerrln("token2dint: tok = ", tok)
+prerrsln("token2dint: tok = ", tok)
 *)
 //
 }(*where*)//end-of-[token2dint(tok)]
@@ -214,7 +214,7 @@ T_CHAR3_blsh(rep) => fchr(rep)
 //
 (*
 val () =
-prerrln("token2schr: tok = ", tok)
+prerrsln("token2schr: tok = ", tok)
 *)
 //
 }(*where*)//end-of-[token2schr(tok)]

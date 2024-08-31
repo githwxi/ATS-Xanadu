@@ -319,10 +319,10 @@ val loc0 = d0p0.lctn()
 (* ****** ****** *)
 (*
 val () =
-prerrln
+prerrsln
 ("trans01_d0pat: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans01_d0pat: d0p0 = ", d0p0)
 *)
 (* ****** ****** *)
@@ -779,10 +779,10 @@ val loc0 = d0e0.lctn()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans01_d0exp: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans01_d0exp: d0e0 = ", d0e0)
 *)
 //
@@ -1867,10 +1867,10 @@ val loc0 = d0g0.lctn()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans01_d0gua: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans01_d0gua: d0g0 = ", d0g0)
 *)
 //
@@ -1905,10 +1905,10 @@ val loc0 = d0g0.lctn()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans01_d0gua: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans01_d0gua: d0g0 = ", d0g0)
 *)
 //
@@ -1943,10 +1943,10 @@ val loc0 = dgt0.lctn()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans01_d0gpt: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans01_d0gpt: dgt0 = ", dgt0)
 *)
 //
@@ -1982,10 +1982,10 @@ val loc0 = dcls.lctn()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans01_d0cls: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans01_d0cls: dcls = ", dcls)
 *)
 //

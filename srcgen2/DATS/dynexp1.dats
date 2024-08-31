@@ -949,7 +949,7 @@ D1PARSED
 {
 (*
 val () =
-prerrln
+prerrsln
 ("d1parsed_make_args:nerror=",nerror)
 *)
 } (*where*) // end-of-[d1parsed_make_args]

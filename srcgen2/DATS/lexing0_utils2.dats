@@ -165,57 +165,54 @@ lexing_lctniz_tnode
 (
 case+ tnd of
 //
-| T_EOF() => ()
-| T_ERR() => ()
+|T_EOF() => ()
+|T_ERR() => ()
 //
-| T_EOL() => pstn1_inc1_nr(pos)
+|T_EOL() => pstn1_inc1_nr(pos)
 //
-| T_BLANK(bs) => pstn1_incs_if(pos, bs)
+|T_BLANK(bs) => pstn1_incs_if(pos, bs)
 //
-| T_CLNLT(cs) => pstn1_incs_if(pos, cs)
-| T_DOTLT(cs) => pstn1_incs_if(pos, cs)
+|T_CLNLT(cs) => pstn1_incs_if(pos, cs)
+|T_DOTLT(cs) => pstn1_incs_if(pos, cs)
 //
-| T_SPCHR(c1) => pstn1_inc1_if(pos, char(c1))
+|T_SPCHR(c1) => pstn1_inc1_if(pos, char(c1))
 //
-| T_IDALP(rep) => pstn1_incs_if(pos, rep)
-| T_IDSYM(rep) => pstn1_incs_if(pos, rep)
-| T_IDDLR(rep) => pstn1_incs_if(pos, rep)
-| T_IDSRP(rep) => pstn1_incs_if(pos, rep)
-| T_IDQUA(rep) => pstn1_incs_if(pos, rep)
+|T_IDALP(rep) => pstn1_incs_if(pos, rep)
+|T_IDSYM(rep) => pstn1_incs_if(pos, rep)
+|T_IDDLR(rep) => pstn1_incs_if(pos, rep)
+|T_IDSRP(rep) => pstn1_incs_if(pos, rep)
+|T_IDQUA(rep) => pstn1_incs_if(pos, rep)
 //
-| T_INT01(rep) => pstn1_incs_if(pos, rep)
-| T_INT02(_, rep) => pstn1_incs_if(pos, rep)
-| T_INT03(_, rep, _) => pstn1_incs_if(pos, rep)
+|T_INT01(rep) => pstn1_incs_if(pos, rep)
+|T_INT02(_, rep) => pstn1_incs_if(pos, rep)
+|T_INT03(_, rep, _) => pstn1_incs_if(pos, rep)
 //
-| T_FLT01(rep) => pstn1_incs_if(pos, rep)
-| T_FLT02(_, rep) => pstn1_incs_if(pos, rep)
-| T_FLT03(_, rep, _) => pstn1_incs_if(pos, rep)
+|T_FLT01(rep) => pstn1_incs_if(pos, rep)
+|T_FLT02(_, rep) => pstn1_incs_if(pos, rep)
+|T_FLT03(_, rep, _) => pstn1_incs_if(pos, rep)
 //
-| T_CHAR1_nil0(rep) => pstn1_incs_if(pos, rep)
-| T_CHAR2_char(rep) => pstn1_incs_if(pos, rep)
-| T_CHAR3_blsh(rep) => pstn1_incs_if(pos, rep)
+|T_CHAR1_nil0(rep) => pstn1_incs_if(pos, rep)
+|T_CHAR2_char(rep) => pstn1_incs_if(pos, rep)
+|T_CHAR3_blsh(rep) => pstn1_incs_if(pos, rep)
 //
-| T_STRN1_clsd(rep, _) => pstn1_incs_if(pos, rep)
-| T_STRN2_ncls(rep, _) => pstn1_incs_if(pos, rep)
+|T_STRN1_clsd(rep, _) => pstn1_incs_if(pos, rep)
+|T_STRN2_ncls(rep, _) => pstn1_incs_if(pos, rep)
 //
-|
-T_CMNT1_line(ini, txt) =>
+|T_CMNT1_line(ini, txt) =>
 (pstn1_incs_if(pos, ini);pstn1_incs_if(pos, txt))
-|
-T_CMNT2_rest(ini, txt) =>
+|T_CMNT2_rest(ini, txt) =>
 (pstn1_incs_if(pos, ini);pstn1_incs_if(pos, txt))
 //
-|
-T_CMNT3_ccbl(lvl, txt) => pstn1_incs_if(pos, txt)
-|
-T_CMNT4_mlbl(lvl, txt) => pstn1_incs_if(pos, txt)
+|T_CMNT3_ccbl(lvl, txt) => pstn1_incs_if(pos, txt)
+|T_CMNT4_mlbl(lvl, txt) => pstn1_incs_if(pos, txt)
 //
-| _ (*   otherwise   *) =>
-  (
-    abort_interr() // HX: internal error
-  ) where
-  { val () =
-    prerrln("lexing_lctniz_tnode: tnd = ", tnd) }
+|_(*    otherwise    *) =>
+(
+  abort_interr()) where // HX: internal error
+{
+val () =
+(
+  prerrsln("lexing_lctniz_tnode: tnd = ", tnd) ) }
 //
 ) (*case*) // end-of-(lexing_lctniz_tnode(pos,tnd))
 //
@@ -224,7 +221,7 @@ T_CMNT4_mlbl(lvl, txt) => pstn1_incs_if(pos, txt)
 local
 
 (* ****** ****** *)
-
+//
 fun
 char2node
 (ch: sint): tnode =
@@ -249,16 +246,16 @@ case+ 0 of
 //
 | _ (* otherwise *) => T_EOF(*nil*)
 end (*let*) // end of [char2node(ch)]
-
+//
 (* ****** ****** *)
-
+//
 #symload
 tnode_search with lexing_tnode_search
-
+//
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
-
+//
 fun
 lexing_tnode2tnode
   (tnd0: tnode): tnode =
@@ -267,11 +264,10 @@ case+ tnd0 of
 |
 T_SPCHR(ch) =>
 let
-  val
-  tnd1 = char2node(ch)
+val tnd1 = char2node(ch)
 in//let
-  case+ tnd1 of
-  | T_EOF() => tnd0 | _ => tnd1
+case+
+tnd1 of T_EOF() => tnd0 | _ => tnd1
 end // end of [T_SPCHR]
 //
 |
@@ -279,16 +275,16 @@ T_IDALP(id) =>
 let
 val tnd1 = tnode_search(id)
 in//let
-case+ tnd1 of
-| T_EOF() => tnd0 | _ => tnd1
+case+
+tnd1 of T_EOF() => tnd0 | _ => tnd1
 end (*let*) // end of [T_IDALP]
 |
 T_IDSYM(id) =>
 let
 val tnd1 = tnode_search(id)
 in//let
-case+ tnd1 of
-| T_EOF() => tnd0 | _ => tnd1
+case+
+tnd1 of T_EOF() => tnd0 | _ => tnd1
 end (*let*) // end of [T_IDSYM]
 //
 |
@@ -296,28 +292,28 @@ T_IDDLR(id) =>
 let
 val tnd1 = tnode_search(id)
 in//let
-case+ tnd1 of
-| T_EOF() => tnd0 | _ => tnd1
+case+
+tnd1 of T_EOF() => tnd0 | _ => tnd1
 end (*let*) // end of [T_IDDLR]
 |
 T_IDSRP(id) =>
 let
 val tnd1 = tnode_search(id)
 in//let
-case+ tnd1 of
-| T_EOF() => tnd0 | _ => tnd1
+case+
+tnd1 of T_EOF() => tnd0 | _ => tnd1
 end (*let*) // end of [T_IDSRP]
 //
-| _ (* rest-of-tnode *) => tnd0
+| _ (* rest-of-tnode *) => (    tnd0    )
 //
-) (*case*) // lexing_tnode2tnode
+) (*case+*) // lexing_tnode2tnode(  ...  )
+//
+(* ****** ****** *)
+//
+end(*local*)//end-of(local(lexing_tnode2tnode))
 
 (* ****** ****** *)
-
-end (*local*) // end of [ local ]
-
-(* ****** ****** *)
-
+//
 fun
 lexing_tnode2token
 ( pos:
@@ -338,7 +334,7 @@ val tnd = lexing_tnode2tnode(tnd)
 val loc = loctn_make_arg3(lcs, ps0, ps1)
 //
 }(*where*)//end-of-[lexing_tnode2token(pos,tnd)]
-
+//
 (* ****** ****** *)
 
 #implfun
@@ -381,11 +377,11 @@ list_vt_cons
 )
 }(*where*)//end-of-[fmain(pos,txs,tys)]
 //
-}(*where*)//end-of-[lexing_lctnize_all(lcs,txs)]
+}(*where*)//end-of-[lexing_lctnize_all(...)]
 
 (* ****** ****** *)
 
-end (*local*) // end of [local]
+end(*local*)//end-of(local(lexing_lctnize_all))
 
 (* ****** ****** *)
 
@@ -451,7 +447,7 @@ _(*rest-of-token*) => loop2(x0, x1, xs, res)
 {
 (*
 val () =
-prerrln
+prerrsln
 ("lexing_preping_all:loop1: x0=", x0)
 *)
 }
@@ -794,10 +790,10 @@ mnusq
 //
 (*
 val () =
-prerrln
+prerrsln
 ("lexing_preping_all: f0_VAL: x0 = ", x0)
 val () =
-prerrln
+prerrsln
 ("lexing_preping_all: f0_VAL: x1 = ", x1)
 *)
 //
@@ -1079,7 +1075,7 @@ _(*otherwise*) => auxloop2(x0, x1, xs)
 {
 (*
 val () =
-prerrln
+prerrsln
 ("lexing_preping_all:loop1: x0 = ", x0)
 *)
 }
@@ -1436,10 +1432,10 @@ mnusq
 //
 (*
 val () =
-prerrln
+prerrsln
 ("lexing_preping_all:f0_VAL: x0 = ", x0)
 val () =
-prerrln
+prerrsln
 ("lexing_preping_all:f0_VAL: x1 = ", x1)
 *)
 //

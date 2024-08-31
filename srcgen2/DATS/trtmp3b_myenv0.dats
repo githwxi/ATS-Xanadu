@@ -264,7 +264,7 @@ tmpstk_nil( ) =>
 ( err := 1;
   pshloc2(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmpstk_locjoin: poploc1: tmpstk_nil")
 }
 //
@@ -273,7 +273,7 @@ tmpstk_let0 _ =>
 ( err := 1;
   pshloc2(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmpstk_locjoin: poploc1: tmpstk_let0")
 }
 | !
@@ -281,7 +281,7 @@ tmpstk_loc2 _ =>
 ( err := 1;
   pshloc2(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmpstk_locjoin: poploc1: tmpstk_loc1")
 }
 ) (*case+*)//end of [poploc1(kxs,kys,err)]
@@ -314,7 +314,7 @@ tmpstk_nil( ) =>
 ( err := 1;
   poploc1(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmpstk_locjoin: poploc2: tmpstk_nil")
 }
 //
@@ -323,7 +323,7 @@ tmpstk_let0 _ =>
 ( err := 1;
   poploc1(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmpstk_locjoin: poploc2: tmpstk_let0")
 }
 | !
@@ -331,7 +331,7 @@ tmpstk_loc1 _ =>
 ( err := 1;
   poploc1(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmpstk_locjoin: poploc2: tmpstk_loc1")
 }
 //
@@ -465,12 +465,12 @@ _(* otherwise *) => (   false   )
 val () =
 prerr("tmpstk_search_dcst:")//val()
 val () =
-prerrln("test: dcl = ", dcl)//val()
+prerrsln("test: dcl = ", dcl)//val()
 //
 val () =
 prerr("tmpstk_search_dcst:")//val()
 val () =
-prerrln("test: d2c = ", d2c)//val()
+prerrsln("test: d2c = ", d2c)//val()
 //
 *)
 //
@@ -536,7 +536,7 @@ tmpstk_loc2(kxs) => loop(kxs,d2c,res)
 //
 (*
 val () =
-prerrln("tmpstk_search_dcst: d2c = ", d2c)
+prerrsln("tmpstk_search_dcst: d2c = ", d2c)
 *)
 //
 }(*where*)//end-of-[tmpstk_search_dcst(...)]

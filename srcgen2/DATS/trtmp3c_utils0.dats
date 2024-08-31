@@ -86,7 +86,7 @@ val nimp = tr3cenv_getnimp(env0)
 //
 (*
 val (  ) =
-prerrln(
+prerrsln(
 "tr3cenv_timp_process: nimp = ", nimp)
 *)
 //
@@ -155,7 +155,7 @@ end//let//end-of-[f0_all1(env0,timp)]
 //
 (*
 val () =
-prerrln
+prerrsln
 ("tr3cenv_timp_process: timp = ", timp)
 *)
 //
@@ -270,7 +270,7 @@ _(*non-tmpr*) => TIMPLall1(d2c0, dcls))
 )
 //
 (*
-val () = prerrln
+val () = prerrsln
 ("tr3cenv_tapq_resolve: dcls = ", dcls)
 *)
 //
@@ -337,7 +337,7 @@ dcl1.node() of
 val (  ) =
 prerr("tr3cenv_tapq_resolve:")
 val (  ) =
-prerrln("implfilter: dcl1 = ", dcl1)
+prerrsln("implfilter: dcl1 = ", dcl1)
 *)
 //
 in//let
@@ -396,7 +396,7 @@ tr3cenv_impltmprecq(env0,dcl1,t2js))
 //
 (*
 val () =
-prerrln("impltmprec: test = ", test)
+prerrsln("impltmprec: test = ", test)
 *)
 //
 }(*where*) // end of [ list_cons(...) ]
@@ -409,10 +409,10 @@ prerrln("impltmprec: test = ", test)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("tr3cenv_tapq_resolve: d2c0 = ", d2c0)
 val () =
-prerrln
+prerrsln
 ("tr3cenv_tapq_resolve: t2js = ", t2js)
 *)
 //
@@ -433,10 +433,10 @@ svts = tr3cenv_getsvts(env0)//val(svts)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("tr3cenv_tapq_resolve: stmp = ", stmp)
 val () =
-prerrln
+prerrsln
 ("tr3cenv_tapq_resolve: svts = ", svts)
 *)
 //
@@ -446,7 +446,7 @@ val t2js =
 //
 (*
 val () =
-(prerrln
+(prerrsln
  ("tr3cenv_tapq_resolve: t2js = ", t2js))
 *)
 //
@@ -456,7 +456,7 @@ val dcls =
 //
 (*
 val (  ) =
-prerrln("tr3cenv_tapq_resolve: dcls = ", dcls)
+prerrsln("tr3cenv_tapq_resolve: dcls = ", dcls)
 *)
 //
 } (*where*)//end-of-[tr3cenv_tapq_resolve(env0,...)]
