@@ -9,9 +9,11 @@ For testing xatslib/JS!
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
 (* ****** ****** *)
+(*
 #include
 "srcgen1\
 /prelude/HATS/prelude_dats.hats"
+*)
 #include
 "srcgen2\
 /prelude/HATS/prelude_dats.hats"

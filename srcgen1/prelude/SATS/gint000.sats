@@ -55,6 +55,9 @@ gint_print(x: gint(k)): void
 (* ****** ****** *)
 //
 fun<>
+sint_print(sint): void
+//
+fun<>
 gint_print_sint(sint): void
 fun<>
 gint_print_uint(uint): void
