@@ -129,8 +129,9 @@ end // end of [g_rand<sint>]
 #impltmp
 {a0:vt
 ,a1:vt}
-g_rand
-<t0up(a0,a1)>() =
+g_rand<
+t0up_vt
+(a0,a1)>() =
 let
 val x0 =
 g_rand<a0>()
@@ -140,8 +141,9 @@ g_rand<a1>() in @(x0, x1) end
 #impltmp
 {a0:vt
 ,a1:vt}
-g_rand
-<t1up(a0,a1)>() =
+g_rand<
+t1up_vt
+(a0,a1)>() =
 let
 val x0 =
 g_rand<a0>()
@@ -150,17 +152,14 @@ g_rand<a1>() in $tup(x0, x1) end
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#sexpdef t0up = t0up3
-#sexpdef t1up = t1up3
-(* ****** ****** *)
-(* ****** ****** *)
 //
 #impltmp
 {a0:vt
 ,a1:vt
 ,a2:vt}
-g_rand
-<t0up(a0,a1,a2)>() =
+g_rand<
+t0up_vt
+(a0,a1,a2)>() =
 let
 val x0 =
 g_rand<a0>()
@@ -172,8 +171,9 @@ g_rand<a2>() in @(x0, x1, x2) end
 {a0:vt
 ,a1:vt
 ,a2:vt}
-g_rand
-<t1up(a0,a1,a2)>() =
+g_rand<
+t1up_vt
+(a0,a1,a2)>() =
 let
 val x0 =
 g_rand<a0>()
