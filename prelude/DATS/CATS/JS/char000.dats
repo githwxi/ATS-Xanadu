@@ -48,7 +48,7 @@ XATS2JS_char_lt
 #extern
 fun
 XATS2JS_char_lt
-(c1: char, c2: char): char = $extnam()
+(c1: char, c2: char): bool = $extnam()
 }
 //
 (* ****** ****** *)
@@ -64,7 +64,7 @@ XATS2JS_char_gt
 #extern
 fun
 XATS2JS_char_gt
-(c1: char, c2: char): char = $extnam()
+(c1: char, c2: char): bool = $extnam()
 }
 //
 (* ****** ****** *)
@@ -80,7 +80,7 @@ XATS2JS_char_eq
 #extern
 fun
 XATS2JS_char_eq
-(c1: char, c2: char): char = $extnam()
+(c1: char, c2: char): bool = $extnam()
 }
 //
 (* ****** ****** *)
@@ -96,7 +96,7 @@ XATS2JS_char_lte
 #extern
 fun
 XATS2JS_char_lte
-(c1: char, c2: char): char = $extnam()
+(c1: char, c2: char): bool = $extnam()
 }
 //
 (* ****** ****** *)
@@ -112,7 +112,7 @@ XATS2JS_char_gte
 #extern
 fun
 XATS2JS_char_gte
-(c1: char, c2: char): char = $extnam()
+(c1: char, c2: char): bool = $extnam()
 }
 //
 (* ****** ****** *)
@@ -128,7 +128,7 @@ XATS2JS_char_neq
 #extern
 fun
 XATS2JS_char_neq
-(c1: char, c2: char): char = $extnam()
+(c1: char, c2: char): bool = $extnam()
 }
 //
 (* ****** ****** *)

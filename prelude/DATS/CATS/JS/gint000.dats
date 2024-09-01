@@ -51,7 +51,7 @@ XATS2JS_sint_lt_sint
 (i1: sint, i2: sint): bool = $extnam()
 }
 //
-#impgtmp
+#impltmp
 <(*tmp*)>
 sint_gt_sint
   (i1, i2) =
@@ -76,6 +76,50 @@ XATS2JS_sint_eq_sint
 #extern
 fun
 XATS2JS_sint_eq_sint
+(i1: sint, i2: sint): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+sint_lte_sint
+  (i1, i2) =
+(
+XATS2JS_sint_lte_sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2JS_sint_lte_sint
+(i1: sint, i2: sint): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_gte_sint
+  (i1, i2) =
+(
+XATS2JS_sint_gte_sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2JS_sint_gte_sint
+(i1: sint, i2: sint): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_neq_sint
+  (i1, i2) =
+(
+XATS2JS_sint_neq_sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2JS_sint_neq_sint
 (i1: sint, i2: sint): bool = $extnam()
 }
 //
