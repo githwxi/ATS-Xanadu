@@ -115,6 +115,48 @@ bool_tostr(btf: bool): strn
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-09-01:
+Sun 01 Sep 2024 04:45:43 PM EDT
+*)
+//
+fun<>
+bool_lt
+{i,j:b0}
+(bool(i), bool(j)): bool(i<j)
+fun<>
+bool_gt
+{i,j:b0}
+(bool(i), bool(j)): bool(i>j)
+fun<>
+bool_eq
+{i,j:b0}
+(bool(i), bool(j)): bool(i=j)
+//
+#symload < with bool_lt of 1000
+#symload > with bool_gt of 1000
+#symload = with bool_eq of 1000
+//
+fun<>
+bool_lte
+{i,j:b0}
+(bool(i), bool(j)): bool(i<=j)
+fun<>
+bool_gte
+{i,j:b0}
+(bool(i), bool(j)): bool(i>=j)
+fun<>
+bool_neq
+{i,j:b0}
+(bool(i), bool(j)): bool(i!=j)
+//
+#symload <= with bool_lte of 1000
+#symload >= with bool_gte of 1000
+#symload != with bool_neq of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <a:t0>
 bool_ifval

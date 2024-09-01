@@ -12,12 +12,23 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 (* ****** ****** *)
 // prelude/DATS
 (* ****** ****** *)
-#staload _ = "prelude/DATS/gbas000.dats"
-#staload _ = "prelude/DATS/gbas001.dats"
-#staload _ = "prelude/DATS/gbas002.dats"
 (* ****** ****** *)
-#staload _ = "prelude/DATS/VT/gbas000_vt.dats"
-#staload _ = "prelude/DATS/VT/gbas001_vt.dats"
+#staload
+_(*BAS*) =
+"prelude/DATS/gbas000.dats"
+#staload
+_(*BAS*) =
+"prelude/DATS/gbas001.dats"
+#staload
+_(*BAS*) =
+"prelude/DATS/gbas002.dats"
+(* ****** ****** *)
+#staload
+_(*BAS*) =
+"prelude/DATS/VT/gbas000_vt.dats"
+#staload
+_(*BAS*) =
+"prelude/DATS/VT/gbas001_vt.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
