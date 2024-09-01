@@ -53,15 +53,15 @@ sint_print(i0: sint): void
 //
 fun<>
 sint_lt_sint
-{i,j:int}
+{i,j:i0}
 (x:sint(i), y:sint(j)): bool(i<j)
 fun<>
 sint_gt_sint
-{i,j:int}
+{i,j:i0}
 (x:sint(i), y:sint(j)): bool(i>j)
 fun<>
 sint_eq_sint
-{i,j:int}
+{i,j:i0}
 (x:sint(i), y:sint(j)): bool(i=j)
 //
 #symload < with sint_lt_sint of 1000
@@ -70,15 +70,15 @@ sint_eq_sint
 //
 fun<>
 sint_lte_sint
-{i,j:int}
+{i,j:i0}
 (x:sint(i), y:sint(j)): bool(i<=j)
 fun<>
 sint_gte_sint
-{i,j:int}
+{i,j:i0}
 (x:sint(i), y:sint(j)): bool(i>=j)
 fun<>
 sint_neq_sint
-{i,j:int}
+{i,j:i0}
 (x:sint(i), y:sint(j)): bool(i!=j)
 //
 #symload <= with sint_lte_sint of 1000
@@ -87,7 +87,7 @@ sint_neq_sint
 //
 fun<>
 sint_cmp_sint
-{i,j:int}
+{i,j:i0}
 (x:sint(i), y:sint(j)): sint(sgn(i-j))
 //
 #symload cmp with sint_cmp_sint of 1000
@@ -97,23 +97,23 @@ sint_cmp_sint
 //
 fun<>
 sint_add_sint
-{i,j:int}
+{i,j:i0}
 (x: sint(i), y: sint(j)): sint(i+j)
 fun<>
 sint_sub_sint
-{i,j:int}
+{i,j:i0}
 (x: sint(i), y: sint(j)): sint(i-j)
 fun<>
 sint_mul_sint
-{i,j:int}
+{i,j:i0}
 (x: sint(i), y: sint(j)): sint(i*j)
 fun<>
 sint_div_sint
-{i,j:int}
+{i,j:i0}
 (x: sint(i), y: sint(j)): sint(i/j)
 fun<>
 sint_mod_sint
-{i,j:int}
+{i,j:i0}
 (x: sint(i), y: sint(j)): sint(i%j)
 //
 #symload + with sint_add_sint of 1000
