@@ -54,6 +54,12 @@ g_si<si>(i0) = (i0)
 (* ****** ****** *)
 //
 #impltmp
+g_print<sint> = sint_print<>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 gasz_length<ni><ut>(ni) = (ni)
 #impltmp
 gseq_length<ni><ut>(ni) = (ni)

@@ -86,13 +86,14 @@ char with char_make_uint of 1000
 (*
 HX-2024-07-29:
 Note that
-[bool_print] may not be
-the same as g_print<bool>
+[char_print] may not be
+the same as g_print<char>
 *)
 //
 fun<>
-char_print(chr: char): void
+char_print(c0: char): void
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>

@@ -548,7 +548,7 @@ fprint_list(out, xs) = let
 //
 implement
 {env}
-list_iforeach$fwork<a><env>
+list_iforitm$work<a><env>
   (i, x, env) = let
   val () =
   if i > 0
@@ -557,9 +557,9 @@ list_iforeach$fwork<a><env>
   // end of [val]
 in
   fprint_val<a>(out, x)
-end // end of [list_iforeach$fwork]
+end // end of [list_iforitm$work]
 //
-val _(*len*) = list_iforeach<a>(xs)
+val _(*len*) = list_iforitm<a>(xs)
 //
 in
   // nothing
