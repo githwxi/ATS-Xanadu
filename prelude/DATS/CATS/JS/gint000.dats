@@ -126,6 +126,79 @@ XATS2JS_sint_neq_sint
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+sint_add_sint
+  (i1, i2) =
+(
+XATS2JS_sint_add_sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2JS_sint_add_sint
+(i1: sint, i2: sint): sint = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_sub_sint
+  (i1, i2) =
+(
+XATS2JS_sint_sub_sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2JS_sint_sub_sint
+(i1: sint, i2: sint): sint = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_mul_sint
+  (i1, i2) =
+(
+XATS2JS_sint_mul_sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2JS_sint_mul_sint
+(i1: sint, i2: sint): sint = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_div_sint
+  (i1, i2) =
+(
+XATS2JS_sint_div_sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2JS_sint_div_sint
+(i1: sint, i2: sint): sint = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_mod_sint
+  (i1, i2) =
+(
+XATS2JS_sint_mod_sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2JS_sint_mod_sint
+(i1: sint, i2: sint): sint = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

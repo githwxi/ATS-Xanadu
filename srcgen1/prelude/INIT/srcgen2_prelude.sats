@@ -47,10 +47,19 @@ For further program verification
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/bool000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/bool000.sats"
+//
+(*
 #include
 "srcgen1/prelude/SATS/char000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/char000.sats"
 //
 (* ****** ****** *)
 //
