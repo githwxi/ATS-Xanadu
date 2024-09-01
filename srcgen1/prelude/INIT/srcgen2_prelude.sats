@@ -128,8 +128,15 @@ For further program verification
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/gint000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/gint000.sats"
+//
+(* ****** ****** *)
+//
 #include
 "srcgen1/prelude/SATS/gflt000.sats"
 #include
@@ -172,8 +179,10 @@ For further program verification
 //
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/synoug0.sats"
+*)
 //
 (* ****** ****** *)
 //

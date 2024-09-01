@@ -64,9 +64,9 @@ sint_eq_sint
 {i,j:int}
 (x:sint(i), y:sint(j)): bool(i=j)
 //
-#symload < with gint_lt_sint_sint of 1000
-#symload > with gint_gt_sint_sint of 1000
-#symload = with gint_eq_sint_sint of 1000
+#symload < with sint_lt_sint of 1000
+#symload > with sint_gt_sint of 1000
+#symload = with sint_eq_sint of 1000
 //
 fun<>
 sint_lte_sint
@@ -84,6 +84,13 @@ sint_neq_sint
 #symload <= with sint_lte_sint of 1000
 #symload >= with sint_gte_sint of 1000
 #symload != with sint_neq_sint of 1000
+//
+fun<>
+sint_cmp_sint
+{i,j:int}
+(x:sint(i), y:sint(j)): sint(sgn(i-j))
+//
+#symload cmp with sint_cmp_sint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
