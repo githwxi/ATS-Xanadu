@@ -38,6 +38,19 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-01:
+Note that
+[sint_print] may not be
+the same as g_print<sint>
+*)
+//
+fun<>
+sint_print(i0: sint): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun<>
 sint_lt_sint
 {i,j:int}

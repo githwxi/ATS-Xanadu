@@ -26,63 +26,62 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(*
-Fri 12 Jul 2024 11:29:01 AM EDT
-*)
+Sun 01 Sep 2024 07:19:48 AM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsfx00.sats"
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef c0 = char
-(* ****** ****** *)
+//
+#impltmp
+sint_print<> =
+XATS2JS_NODE_sint_print
+where
+{
+#extern
+fun
+XATS2JS_NODE_sint_print(b0: sint): void = $extnam()
+}
+//
 (* ****** ****** *)
 //
 #impltmp
-g_0<c0>() = '\000'
-#impltmp
-g_1<c0>() = '\001'
+bool_print<> =
+XATS2JS_NODE_bool_print
+where
+{
+#extern
+fun
+XATS2JS_NODE_bool_print(b0: bool): void = $extnam()
+}
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-g_cmp<char> = char_cmp<>
-//
-(* ****** ****** *)
-//
-(*
-HX:
-This is in [gdbg000.dats]:
-#impltmp
-g_ptype
-< char >
-( (*void*) ) = pstrn("char")
-*)
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-<(*tmp*)>
-char_cmp(c1, c2) =
-(
-if c1 > c2
-then 1 else
-if c1 < c2 then -1 else 0)
+char_print<> =
+XATS2JS_NODE_char_print
+where
+{
+#extern
+fun
+XATS2JS_NODE_char_print(b0: char): void = $extnam()
+}
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-g_print<char> = char_print<>
+strn_print<> =
+XATS2JS_NODE_strn_print
+where
+{
+#extern
+fun
+XATS2JS_NODE_strn_print(cs: strn): void = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -90,4 +89,4 @@ g_print<char> = char_print<>
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_char000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_axrf000.dats] *)

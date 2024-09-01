@@ -124,11 +124,6 @@ bool_ifval
 #symload ifval with bool_ifval of 1000
 //
 (* ****** ****** *)
-//
-// HX-2020-05-30:
-// symbol overloading for bool
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)

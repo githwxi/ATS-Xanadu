@@ -74,4 +74,4 @@ XATS2JS_strn_fmake_fwork
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_axrf000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_strn000.dats] *)

@@ -226,7 +226,7 @@ filter0$test<int>(xy) = (xy % 10 <= 4) } }
 // Sat Jul  2 02:37:39 EDT 2022
 *)
 val ( ) =
-gseq_x2iforeach_f4np
+gseq_x2iforitm_f4np
 ( list(1,3,5),"2468"
 , lam(i:int,x:int,j:int,y:char) =>
   (
@@ -234,7 +234,7 @@ gseq_x2iforeach_f4np
   prerr("(", x, ",", y, ")");
   if ((j+1)%4) = 0 then prerrln();
   )
-) (* end of [gseq_x2iforeach_f4np] *)
+) (* end of [gseq_x2iforitm_f4np] *)
 //
 (* ****** ****** *)
 //
@@ -460,10 +460,10 @@ fenum
 (strx_vt_from(0))
 in//local
 val () =
-foreach(10) where
+foritm(10) where
 {
 #impltmp
-foreach$work<int>(i0) =
+foritm$work<int>(i0) =
 prerrln("linum() = ", linum())
 }
 endloc (*local*) // end of [local(linum)]

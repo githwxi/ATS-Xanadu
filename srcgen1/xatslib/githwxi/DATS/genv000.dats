@@ -144,31 +144,31 @@ endlet // end of [forall$test<x0>(x0)]
 <xs>
 <x0>
 <e1>
-gseq_foreach_e1nv
+gseq_foritm_e1nv
   (xs, e1) =
 (
-gseq_foreach
+gseq_foritm
 < xs >
 < x0 >( xs )) where
 {
 val e1 =
 $UN.datacopy( e1 )
 #impltmp
-foreach$work<x0>(x0) =
+foritm$work<x0>(x0) =
 let
 //
 val e1 =
 $UN.castlin10{e1}(e1)
 val res =
-foreach$work_e1nv<x0>(x0, e1)
+foritm$work_e1nv<x0>(x0, e1)
 //
 in//let
 //
 let
 val e1 = $UN.delinear(e1) in res end
 //
-endlet // end of [foreach$work<x0>(x0)]
-} (*where*) // end-of(gseq_foreach_e1nv)
+endlet // end of [foritm$work<x0>(x0)]
+} (*where*) // end-of(gseq_foritm_e1nv)
 
 (* ****** ****** *)
 
