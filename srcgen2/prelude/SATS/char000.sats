@@ -30,144 +30,20 @@
 //
 (*
 Author: Hongwei Xi
-Sun 01 Sep 2024 04:48:38 PM EDT
+(*
+Sun 01 Sep 2024 04:18:19 PM EDT
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_lt
-(c1, c2) =
-(
-XATS2JS_char_lt
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2JS_char_lt
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_gt
-(c1, c2) =
-(
-XATS2JS_char_gt
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2JS_char_gt
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_eq
-(c1, c2) =
-(
-XATS2JS_char_eq
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2JS_char_eq
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_lte
-(c1, c2) =
-(
-XATS2JS_char_lte
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2JS_char_lte
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_gte
-(c1, c2) =
-(
-XATS2JS_char_gte
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2JS_char_gte
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_neq
-(c1, c2) =
-(
-XATS2JS_char_neq
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2JS_char_neq
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_add_sint
-  (c1, i2) =
-(
-XATS2JS_char_add_sint
-  (c1, i2)) where
-{
-#extern
-fun
-XATS2JS_char_add_sint
-(c1: char, i2: sint): char = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_sub_char
-  (c1, c2) =
-(
-XATS2JS_char_sub_char
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2JS_char_sub_char
-(c1: char, c2: char): sint = $extnam()
-}
-//
+#include
+"./../../../prelude/SATS/char000.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_char000.dats] *)
+(* end of [ATS3/XANADU_srcgen2_prelude_SATS_char000.sats] *)

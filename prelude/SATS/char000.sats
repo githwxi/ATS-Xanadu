@@ -201,9 +201,33 @@ char_cmp
 (* ****** ****** *)
 //
 fun<>
-char_lower(c0: char): char
+char_lower
+(c0: char): char(*0*)
 fun<>
-char_upper(c0: char): char
+char_upper
+(c0: char): char(*0*)
+//
+#symload lower of char_lower of 1000
+#symload upper of char_upper of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+char_add_sint
+{c1:c0
+,i2:i0}
+( c1: char(c1)
+, i2: sint(i2)): char(*0*)
+//
+fun<>
+char_sub_char
+{c1
+,c2:c0}
+( c1: char(c1)
+, c2: char(c2)): sint(c1-c2)
+//
+#symload + with char_add_sint of 1000
+#symload - with char_sub_char of 1000
 //
 (* ****** ****** *)
 //
