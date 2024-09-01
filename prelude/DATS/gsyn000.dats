@@ -604,7 +604,7 @@ end (*let*) // end of [gs_min_a12]
 #impltmp
 < x0:vt >
 gs_free_a1
-  ( x0 ) =
+ (  x0  ) =
 (
   g_free<x0>(x0))
 //
@@ -612,7 +612,7 @@ gs_free_a1
 < x0:vt >
 < x1:vt >
 gs_free_a2
-  (x0, x1) =
+ (x0, x1) =
 (
   g_free<x0>(x0); g_free<x1>(x1))
 //
@@ -621,7 +621,8 @@ gs_free_a2
 < x1:vt >
 < x2:vt >
 gs_free_a3
-  (x0, x1, x2) =
+( x0
+, x1, x2) =
 ( g_free<x0>(x0)
 ; g_free<x1>(x1); g_free<x2>(x2))
 //
@@ -631,7 +632,8 @@ gs_free_a3
 < x2:vt >
 < x3:vt >
 gs_free_a4
-  (x0, x1, x2, x3) =
+( x0, x1
+, x2, x3) =
 ( g_free<x0>(x0); g_free<x1>(x1)
 ; g_free<x2>(x2); g_free<x3>(x3))
 //
@@ -642,9 +644,11 @@ gs_free_a4
 < x3:vt >
 < x4:vt >
 gs_free_a5
-  (x0, x1, x2, x3, x4) =
-( g_free<x0>(x0); g_free<x1>(x1)
-; g_free<x2>(x2); g_free<x3>(x3); g_free<x4>(x4))
+( x0, x1
+, x2, x3, x4) =
+( g_free<x0>(x0)
+; g_free<x1>(x1); g_free<x2>(x2)
+; g_free<x3>(x3); g_free<x4>(x4))
 //
 #impltmp
 < x0:vt >
@@ -654,9 +658,11 @@ gs_free_a5
 < x4:vt >
 < x5:vt >
 gs_free_a6
-  (x0, x1, x2, x3, x4, x5) =
-( g_free<x0>(x0); g_free<x1>(x1); g_free<x2>(x2)
-; g_free<x3>(x3); g_free<x4>(x4); g_free<x5>(x5))
+( x0, x1, x2
+, x3, x4, x5) =
+( g_free<x0>(x0); g_free<x1>(x1)
+; g_free<x2>(x2); g_free<x3>(x3)
+; g_free<x4>(x4); g_free<x5>(x5))
 //
 #impltmp
 < x0:vt >
@@ -667,10 +673,12 @@ gs_free_a6
 < x5:vt >
 < x6:vt >
 gs_free_a7
-  (x0, x1, x2, x3, x4, x5, x6) =
+( x0, x1, x2
+, x3, x4, x5, x6) =
 ( g_free<x0>(x0)
-; g_free<x1>(x1); g_free<x2>(x2); g_free<x3>(x3)
-; g_free<x4>(x4); g_free<x5>(x5); g_free<x6>(x6))
+; g_free<x1>(x1); g_free<x2>(x2)
+; g_free<x3>(x3); g_free<x4>(x4)
+; g_free<x5>(x5); g_free<x6>(x6))
 //
 #impltmp
 < x0:vt >
@@ -682,10 +690,12 @@ gs_free_a7
 < x6:vt >
 < x7:vt >
 gs_free_a8
-  (x0, x1, x2, x3, x4, x5, x6, x7) =
+( x0, x1, x2, x3
+, x4, x5, x6, x7) =
 ( g_free<x0>(x0); g_free<x1>(x1)
-; g_free<x2>(x2); g_free<x3>(x3); g_free<x4>(x4)
-; g_free<x5>(x5); g_free<x6>(x6); g_free<x7>(x7))
+; g_free<x2>(x2); g_free<x3>(x3)
+; g_free<x4>(x4); g_free<x5>(x5)
+; g_free<x6>(x6); g_free<x7>(x7))
 //
 #impltmp
 < x0:vt >
@@ -698,10 +708,13 @@ gs_free_a8
 < x7:vt >
 < x8:vt >
 gs_free_a9
-  (x0, x1, x2, x3, x4, x5, x6, x7, x8) =
-( g_free<x0>(x0); g_free<x1>(x1); g_free<x2>(x2)
-; g_free<x3>(x3); g_free<x4>(x4); g_free<x5>(x5)
-; g_free<x6>(x6); g_free<x7>(x7); g_free<x8>(x8))
+( x0, x1, x2, x3
+, x4, x5, x6, x7, x8) =
+( g_free<x0>(x0)
+; g_free<x1>(x1); g_free<x2>(x2)
+; g_free<x3>(x3); g_free<x4>(x4)
+; g_free<x5>(x5); g_free<x6>(x6)
+; g_free<x7>(x7); g_free<x8>(x8))
 //
 #impltmp
 < x0:vt >
@@ -715,10 +728,13 @@ gs_free_a9
 < x8:vt >
 < x9:vt >
 gs_free_a10
-  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9) =
-( g_free<x0>(x0); g_free<x1>(x1); g_free<x2>(x2)
-; g_free<x3>(x3); g_free<x4>(x4); g_free<x5>(x5)
-; g_free<x6>(x6); g_free<x7>(x7); g_free<x8>(x8); g_free<x9>(x9))
+( x0, x1, x2, x3, x4
+, x5, x6, x7, x8, x9) =
+( g_free<x0>(x0); g_free<x1>(x1)
+; g_free<x2>(x2); g_free<x3>(x3)
+; g_free<x4>(x4); g_free<x5>(x5)
+; g_free<x6>(x6); g_free<x7>(x7)
+; g_free<x8>(x8); g_free<x9>(x9))
 //
 (* ****** ****** *)
 //
@@ -735,10 +751,14 @@ gs_free_a10
 < x9:vt >
 < x10:vt >
 gs_free_a11
-  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10) =
-( g_free<x0>(x0); g_free<x1>(x1); g_free<x2>(x2)
-; g_free<x3>(x3); g_free<x4>(x4); g_free<x5>(x5); g_free<x6>(x6)
-; g_free<x7>(x7); g_free<x8>(x8); g_free<x9>(x9); g_free<x10>(x10))
+( x0, x1, x2, x3, x4
+, x5, x6, x7, x8, x9, x10) =
+( g_free<x0>(x0)
+; g_free<x1>(x1); g_free<x2>(x2)
+; g_free<x3>(x3); g_free<x4>(x4)
+; g_free<x5>(x5); g_free<x6>(x6)
+; g_free<x7>(x7); g_free<x8>(x8)
+; g_free<x9>(x9); g_free<x10>(x10))
 //
 #impltmp
 < x0:vt >
@@ -754,37 +774,76 @@ gs_free_a11
 < x10:vt >
 < x11:vt >
 gs_free_a12
-  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11) =
-( g_free<x0>(x0); g_free<x1>(x1); g_free<x2>(x2); g_free<x3>(x3)
-; g_free<x4>(x4); g_free<x5>(x5); g_free<x6>(x6); g_free<x7>(x7)
-; g_free<x8>(x8); g_free<x9>(x9); g_free<x10>(x10); g_free<x11>(x11))
+( x0, x1, x2, x3, x4, x5
+, x6, x7, x8, x9, x10, x11) =
+( g_free<x0>(x0); g_free<x1>(x1)
+; g_free<x2>(x2); g_free<x3>(x3)
+; g_free<x4>(x4); g_free<x5>(x5)
+; g_free<x6>(x6); g_free<x7>(x7)
+; g_free<x8>(x8); g_free<x9>(x9)
+; g_free<x10>(x10); g_free<x11>(x11))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
+<(*tmp*)>
+gs_work$beg() = ()
+#impltmp
+<(*tmp*)>
+gs_work$sep() = ()
+#impltmp
+<(*tmp*)>
+gs_work$end() = ()
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+gs_work_a0
+ ((*0*) ) =
+(
+gs_work$beg(); gs_work$end())
+//
+#impltmp
 < x0:t0 >
 gs_work_a1
-  ( x0 ) =
+ (  x0  ) =
+let
+val () =
+gs_work$beg() in//let
 (
-  g_work<x0>(x0))
+g_work<x0>(x0); gs_work$end())
+end//let//end-of-[gs_work_a1(...)]
 //
 #impltmp
 < x0:t0 >
 < x1:t0 >
 gs_work_a2
-  (x0, x1) =
+ (x0, x1) =
+let
+val () =
+gs_work$beg() in//let
 (
-  g_work<x0>(x0); g_work<x1>(x1))
+  g_work<x0>(x0); gs_work$sep()
+; g_work<x1>(x1); gs_work$end())
+end//let//end-of-[gs_work_a2(...)]
 //
 #impltmp
 < x0:t0 >
 < x1:t0 >
 < x2:t0 >
 gs_work_a3
-  (x0, x1, x2) =
-( g_work<x0>(x0)
-; g_work<x1>(x1); g_work<x2>(x2))
+( x0
+, x1, x2) =
+let
+val () =
+gs_work$beg() in//let
+(
+  g_work<x0>(x0); gs_work$sep()
+; g_work<x1>(x1); gs_work$sep()
+; g_work<x2>(x2); gs_work$end())
+end//let//end-of-[gs_work_a3(...)]
 //
 #impltmp
 < x0:t0 >
@@ -792,9 +851,17 @@ gs_work_a3
 < x2:t0 >
 < x3:t0 >
 gs_work_a4
-  (x0, x1, x2, x3) =
-( g_work<x0>(x0); g_work<x1>(x1)
-; g_work<x2>(x2); g_work<x3>(x3))
+( x0, x1
+, x2, x3) =
+let
+val () =
+gs_work$beg() in//let
+(
+  g_work<x0>(x0); gs_work$sep()
+; g_work<x1>(x1); gs_work$sep()
+; g_work<x2>(x2); gs_work$sep()
+; g_work<x3>(x3); gs_work$end())
+end//let//end-of-[gs_work_a4(...)]
 //
 #impltmp
 < x0:t0 >
@@ -803,9 +870,18 @@ gs_work_a4
 < x3:t0 >
 < x4:t0 >
 gs_work_a5
-  (x0, x1, x2, x3, x4) =
-( g_work<x0>(x0); g_work<x1>(x1)
-; g_work<x2>(x2); g_work<x3>(x3); g_work<x4>(x4))
+( x0, x1
+, x2, x3, x4) =
+let
+val () =
+gs_work$beg() in//let
+(
+  g_work<x0>(x0); gs_work$sep()
+; g_work<x1>(x1); gs_work$sep()
+; g_work<x2>(x2); gs_work$sep()
+; g_work<x3>(x3); gs_work$sep()
+; g_work<x4>(x4); gs_work$end())
+end//let//end-of-[gs_work_a5(...)]
 //
 #impltmp
 < x0:t0 >
@@ -815,9 +891,19 @@ gs_work_a5
 < x4:t0 >
 < x5:t0 >
 gs_work_a6
-  (x0, x1, x2, x3, x4, x5) =
-( g_work<x0>(x0); g_work<x1>(x1); g_work<x2>(x2)
-; g_work<x3>(x3); g_work<x4>(x4); g_work<x5>(x5))
+( x0, x1, x2
+, x3, x4, x5) =
+let
+val () =
+gs_work$beg() in//let
+(
+  g_work<x0>(x0); gs_work$sep()
+; g_work<x1>(x1); gs_work$sep()
+; g_work<x2>(x2); gs_work$sep()
+; g_work<x3>(x3); gs_work$sep()
+; g_work<x4>(x4); gs_work$sep()
+; g_work<x5>(x5); gs_work$end())
+end//let//end-of-[gs_work_a6(...)]
 //
 #impltmp
 < x0:t0 >
@@ -828,10 +914,20 @@ gs_work_a6
 < x5:t0 >
 < x6:t0 >
 gs_work_a7
-  (x0, x1, x2, x3, x4, x5, x6) =
-( g_work<x0>(x0)
-; g_work<x1>(x1); g_work<x2>(x2); g_work<x3>(x3)
-; g_work<x4>(x4); g_work<x5>(x5); g_work<x6>(x6))
+( x0, x1, x2
+, x3, x4, x5, x6) =
+let
+val () =
+gs_work$beg() in//let
+(
+  g_work<x0>(x0); gs_work$sep()
+; g_work<x1>(x1); gs_work$sep()
+; g_work<x2>(x2); gs_work$sep()
+; g_work<x3>(x3); gs_work$sep()
+; g_work<x4>(x4); gs_work$sep()
+; g_work<x5>(x5); gs_work$sep()
+; g_work<x6>(x6); gs_work$end())
+end//let//end-of-[gs_work_a7(...)]
 //
 #impltmp
 < x0:t0 >
@@ -843,10 +939,21 @@ gs_work_a7
 < x6:t0 >
 < x7:t0 >
 gs_work_a8
-  (x0, x1, x2, x3, x4, x5, x6, x7) =
-( g_work<x0>(x0); g_work<x1>(x1)
-; g_work<x2>(x2); g_work<x3>(x3); g_work<x4>(x4)
-; g_work<x5>(x5); g_work<x6>(x6); g_work<x7>(x7))
+( x0, x1, x2, x3
+, x4, x5, x6, x7) =
+let
+val () =
+gs_work$beg() in//let
+(
+  g_work<x0>(x0); gs_work$sep()
+; g_work<x1>(x1); gs_work$sep()
+; g_work<x2>(x2); gs_work$sep()
+; g_work<x3>(x3); gs_work$sep()
+; g_work<x4>(x4); gs_work$sep()
+; g_work<x5>(x5); gs_work$sep()
+; g_work<x6>(x6); gs_work$sep()
+; g_work<x7>(x7); gs_work$end())
+end//let//end-of-[gs_work_a8(...)]
 //
 #impltmp
 < x0:t0 >
@@ -859,10 +966,22 @@ gs_work_a8
 < x7:t0 >
 < x8:t0 >
 gs_work_a9
-  (x0, x1, x2, x3, x4, x5, x6, x7, x8) =
-( g_work<x0>(x0); g_work<x1>(x1); g_work<x2>(x2)
-; g_work<x3>(x3); g_work<x4>(x4); g_work<x5>(x5)
-; g_work<x6>(x6); g_work<x7>(x7); g_work<x8>(x8))
+( x0, x1, x2, x3
+, x4, x5, x6, x7, x8) =
+let
+val () =
+gs_work$beg() in//let
+(
+  g_work<x0>(x0); gs_work$sep()
+; g_work<x1>(x1); gs_work$sep()
+; g_work<x2>(x2); gs_work$sep()
+; g_work<x3>(x3); gs_work$sep()
+; g_work<x4>(x4); gs_work$sep()
+; g_work<x5>(x5); gs_work$sep()
+; g_work<x6>(x6); gs_work$sep()
+; g_work<x7>(x7); gs_work$sep()
+; g_work<x8>(x8); gs_work$end())
+end//let//end-of-[gs_work_a9(...)]
 //
 #impltmp
 < x0:t0 >
@@ -876,10 +995,23 @@ gs_work_a9
 < x8:t0 >
 < x9:t0 >
 gs_work_a10
-  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9) =
-( g_work<x0>(x0); g_work<x1>(x1); g_work<x2>(x2)
-; g_work<x3>(x3); g_work<x4>(x4); g_work<x5>(x5)
-; g_work<x6>(x6); g_work<x7>(x7); g_work<x8>(x8); g_work<x9>(x9))
+( x0, x1, x2, x3, x4
+, x5, x6, x7, x8, x9) =
+let
+val () =
+gs_work$beg() in//let
+(
+  g_work<x0>(x0); gs_work$sep()
+; g_work<x1>(x1); gs_work$sep()
+; g_work<x2>(x2); gs_work$sep()
+; g_work<x3>(x3); gs_work$sep()
+; g_work<x4>(x4); gs_work$sep()
+; g_work<x5>(x5); gs_work$sep()
+; g_work<x6>(x6); gs_work$sep()
+; g_work<x7>(x7); gs_work$sep()
+; g_work<x8>(x8); gs_work$sep()
+; g_work<x9>(x9); gs_work$end())
+end//let//end-of-[gs_work_a10(...)]
 //
 (* ****** ****** *)
 //
@@ -896,10 +1028,24 @@ gs_work_a10
 < x9:t0 >
 < x10:t0 >
 gs_work_a11
-  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10) =
-( g_work<x0>(x0); g_work<x1>(x1); g_work<x2>(x2)
-; g_work<x3>(x3); g_work<x4>(x4); g_work<x5>(x5); g_work<x6>(x6)
-; g_work<x7>(x7); g_work<x8>(x8); g_work<x9>(x9); g_work<x10>(x10))
+( x0, x1, x2, x3, x4
+, x5, x6, x7, x8, x9, x10) =
+let
+val () =
+gs_work$beg() in//let
+(
+  g_work<x0>(x0); gs_work$sep()
+; g_work<x1>(x1); gs_work$sep()
+; g_work<x2>(x2); gs_work$sep()
+; g_work<x3>(x3); gs_work$sep()
+; g_work<x4>(x4); gs_work$sep()
+; g_work<x5>(x5); gs_work$sep()
+; g_work<x6>(x6); gs_work$sep()
+; g_work<x7>(x7); gs_work$sep()
+; g_work<x8>(x8); gs_work$sep()
+; g_work<x9>(x9); gs_work$sep()
+; g_work<x10>(x10); gs_work$end())
+end//let//end-of-[gs_work_a11(...)]
 //
 #impltmp
 < x0:t0 >
@@ -915,10 +1061,25 @@ gs_work_a11
 < x10:t0 >
 < x11:t0 >
 gs_work_a12
-  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11) =
-( g_work<x0>(x0); g_work<x1>(x1); g_work<x2>(x2); g_work<x3>(x3)
-; g_work<x4>(x4); g_work<x5>(x5); g_work<x6>(x6); g_work<x7>(x7)
-; g_work<x8>(x8); g_work<x9>(x9); g_work<x10>(x10); g_work<x11>(x11))
+( x0, x1, x2, x3, x4, x5
+, x6, x7, x8, x9, x10, x11) =
+let
+val () =
+gs_work$beg() in//let
+(
+  g_work<x0>(x0); gs_work$sep()
+; g_work<x1>(x1); gs_work$sep()
+; g_work<x2>(x2); gs_work$sep()
+; g_work<x3>(x3); gs_work$sep()
+; g_work<x4>(x4); gs_work$sep()
+; g_work<x5>(x5); gs_work$sep()
+; g_work<x6>(x6); gs_work$sep()
+; g_work<x7>(x7); gs_work$sep()
+; g_work<x8>(x8); gs_work$sep()
+; g_work<x9>(x9); gs_work$sep()
+; g_work<x10>(x10); gs_work$sep()
+; g_work<x11>(x11); gs_work$end())
+end//let//end-of-[gs_work_a12(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -926,47 +1087,66 @@ gs_work_a12
 #impltmp
 <(*tmp*)>
 gs_print$beg() = ()
-//
+#impltmp
+<(*tmp*)>
+gs_print$sep() = ()
 #impltmp
 <(*tmp*)>
 gs_print$end() = ()
 (*
 #impltmp
 <(*tmp*)>
-gs_print$end() = strn_print("\n")
+g_print$end() = strn_print("\n")
 *)
 //
 (* ****** ****** *)
-(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+gs_print_a0
+ ((*0*) ) =
+(
+gs_print$beg(); gs_print$end())
 //
 #impltmp
 < x0:t0 >
 gs_print_a1
-  ( x0 ) =
-( gs_print$beg<>();
+ (  x0  ) =
+let
+val () =
+gs_print$beg() in//let
 (
-  g_print<x0>(x0))
-; gs_print$end<>())
+g_print<x0>(x0); gs_print$end())
+end//let//end-of-[gs_print_a1(...)]
 //
 #impltmp
 < x0:t0 >
 < x1:t0 >
 gs_print_a2
-  (x0, x1) =
-( gs_print$beg<>();
-( g_print<x0>(x0); g_print<x1>(x1))
-; gs_print$end<>())
+ (x0, x1) =
+let
+val () =
+gs_print$beg() in//let
+(
+  g_print<x0>(x0); gs_print$sep()
+; g_print<x1>(x1); gs_print$end())
+end//let//end-of-[gs_print_a2(...)]
 //
 #impltmp
 < x0:t0 >
 < x1:t0 >
 < x2:t0 >
 gs_print_a3
-  (x0, x1, x2) =
-( gs_print$beg<>();
-( g_print<x0>(x0)
-; g_print<x1>(x1); g_print<x2>(x2))
-; gs_print$end<>())
+( x0
+, x1, x2) =
+let
+val () =
+gs_print$beg() in//let
+(
+  g_print<x0>(x0); gs_print$sep()
+; g_print<x1>(x1); gs_print$sep()
+; g_print<x2>(x2); gs_print$end())
+end//let//end-of-[gs_print_a3(...)]
 //
 #impltmp
 < x0:t0 >
@@ -974,11 +1154,17 @@ gs_print_a3
 < x2:t0 >
 < x3:t0 >
 gs_print_a4
-  (x0, x1, x2, x3) =
-( gs_print$beg<>();
-( g_print<x0>(x0); g_print<x1>(x1)
-; g_print<x2>(x2); g_print<x3>(x3))
-; gs_print$end<>())
+( x0, x1
+, x2, x3) =
+let
+val () =
+gs_print$beg() in//let
+(
+  g_print<x0>(x0); gs_print$sep()
+; g_print<x1>(x1); gs_print$sep()
+; g_print<x2>(x2); gs_print$sep()
+; g_print<x3>(x3); gs_print$end())
+end//let//end-of-[gs_print_a4(...)]
 //
 #impltmp
 < x0:t0 >
@@ -987,11 +1173,18 @@ gs_print_a4
 < x3:t0 >
 < x4:t0 >
 gs_print_a5
-  (x0, x1, x2, x3, x4) =
-( gs_print$beg<>();
-( g_print<x0>(x0); g_print<x1>(x1)
-; g_print<x2>(x2); g_print<x3>(x3); g_print<x4>(x4))
-; gs_print$end<>())
+( x0, x1
+, x2, x3, x4) =
+let
+val () =
+gs_print$beg() in//let
+(
+  g_print<x0>(x0); gs_print$sep()
+; g_print<x1>(x1); gs_print$sep()
+; g_print<x2>(x2); gs_print$sep()
+; g_print<x3>(x3); gs_print$sep()
+; g_print<x4>(x4); gs_print$end())
+end//let//end-of-[gs_print_a5(...)]
 //
 #impltmp
 < x0:t0 >
@@ -1001,11 +1194,19 @@ gs_print_a5
 < x4:t0 >
 < x5:t0 >
 gs_print_a6
-  (x0, x1, x2, x3, x4, x5) =
-( gs_print$beg<>();
-( g_print<x0>(x0); g_print<x1>(x1); g_print<x2>(x2)
-; g_print<x3>(x3); g_print<x4>(x4); g_print<x5>(x5))
-; gs_print$end<>())
+( x0, x1, x2
+, x3, x4, x5) =
+let
+val () =
+gs_print$beg() in//let
+(
+  g_print<x0>(x0); gs_print$sep()
+; g_print<x1>(x1); gs_print$sep()
+; g_print<x2>(x2); gs_print$sep()
+; g_print<x3>(x3); gs_print$sep()
+; g_print<x4>(x4); gs_print$sep()
+; g_print<x5>(x5); gs_print$end())
+end//let//end-of-[gs_print_a6(...)]
 //
 #impltmp
 < x0:t0 >
@@ -1016,12 +1217,20 @@ gs_print_a6
 < x5:t0 >
 < x6:t0 >
 gs_print_a7
-  (x0, x1, x2, x3, x4, x5, x6) =
-( gs_print$beg<>();
-( g_print<x0>(x0)
-; g_print<x1>(x1); g_print<x2>(x2); g_print<x3>(x3)
-; g_print<x4>(x4); g_print<x5>(x5); g_print<x6>(x6))
-; gs_print$end<>())
+( x0, x1, x2
+, x3, x4, x5, x6) =
+let
+val () =
+gs_print$beg() in//let
+(
+  g_print<x0>(x0); gs_print$sep()
+; g_print<x1>(x1); gs_print$sep()
+; g_print<x2>(x2); gs_print$sep()
+; g_print<x3>(x3); gs_print$sep()
+; g_print<x4>(x4); gs_print$sep()
+; g_print<x5>(x5); gs_print$sep()
+; g_print<x6>(x6); gs_print$end())
+end//let//end-of-[gs_print_a7(...)]
 //
 #impltmp
 < x0:t0 >
@@ -1033,12 +1242,21 @@ gs_print_a7
 < x6:t0 >
 < x7:t0 >
 gs_print_a8
-  (x0, x1, x2, x3, x4, x5, x6, x7) =
-( gs_print$beg<>();
-( g_print<x0>(x0); g_print<x1>(x1)
-; g_print<x2>(x2); g_print<x3>(x3); g_print<x4>(x4)
-; g_print<x5>(x5); g_print<x6>(x6); g_print<x7>(x7))
-; gs_print$end<>())
+( x0, x1, x2, x3
+, x4, x5, x6, x7) =
+let
+val () =
+gs_print$beg() in//let
+(
+  g_print<x0>(x0); gs_print$sep()
+; g_print<x1>(x1); gs_print$sep()
+; g_print<x2>(x2); gs_print$sep()
+; g_print<x3>(x3); gs_print$sep()
+; g_print<x4>(x4); gs_print$sep()
+; g_print<x5>(x5); gs_print$sep()
+; g_print<x6>(x6); gs_print$sep()
+; g_print<x7>(x7); gs_print$end())
+end//let//end-of-[gs_print_a8(...)]
 //
 #impltmp
 < x0:t0 >
@@ -1051,12 +1269,22 @@ gs_print_a8
 < x7:t0 >
 < x8:t0 >
 gs_print_a9
-  (x0, x1, x2, x3, x4, x5, x6, x7, x8) =
-( gs_print$beg<>();
-( g_print<x0>(x0); g_print<x1>(x1); g_print<x2>(x2)
-; g_print<x3>(x3); g_print<x4>(x4); g_print<x5>(x5)
-; g_print<x6>(x6); g_print<x7>(x7); g_print<x8>(x8))
-; gs_print$end<>())
+( x0, x1, x2, x3
+, x4, x5, x6, x7, x8) =
+let
+val () =
+gs_print$beg() in//let
+(
+  g_print<x0>(x0); gs_print$sep()
+; g_print<x1>(x1); gs_print$sep()
+; g_print<x2>(x2); gs_print$sep()
+; g_print<x3>(x3); gs_print$sep()
+; g_print<x4>(x4); gs_print$sep()
+; g_print<x5>(x5); gs_print$sep()
+; g_print<x6>(x6); gs_print$sep()
+; g_print<x7>(x7); gs_print$sep()
+; g_print<x8>(x8); gs_print$end())
+end//let//end-of-[gs_print_a9(...)]
 //
 #impltmp
 < x0:t0 >
@@ -1070,12 +1298,23 @@ gs_print_a9
 < x8:t0 >
 < x9:t0 >
 gs_print_a10
-  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9) =
-( gs_print$beg<>();
-( g_print<x0>(x0); g_print<x1>(x1); g_print<x2>(x2)
-; g_print<x3>(x3); g_print<x4>(x4); g_print<x5>(x5)
-; g_print<x6>(x6); g_print<x7>(x7); g_print<x8>(x8); g_print<x9>(x9))
-; gs_print$end<>())
+( x0, x1, x2, x3, x4
+, x5, x6, x7, x8, x9) =
+let
+val () =
+gs_print$beg() in//let
+(
+  g_print<x0>(x0); gs_print$sep()
+; g_print<x1>(x1); gs_print$sep()
+; g_print<x2>(x2); gs_print$sep()
+; g_print<x3>(x3); gs_print$sep()
+; g_print<x4>(x4); gs_print$sep()
+; g_print<x5>(x5); gs_print$sep()
+; g_print<x6>(x6); gs_print$sep()
+; g_print<x7>(x7); gs_print$sep()
+; g_print<x8>(x8); gs_print$sep()
+; g_print<x9>(x9); gs_print$end())
+end//let//end-of-[gs_print_a10(...)]
 //
 (* ****** ****** *)
 //
@@ -1092,12 +1331,25 @@ gs_print_a10
 < x9:t0 >
 < x10:t0 >
 gs_print_a11
-  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10) =
-( gs_print$beg<>();
-( g_print<x0>(x0); g_print<x1>(x1); g_print<x2>(x2)
-; g_print<x3>(x3); g_print<x4>(x4); g_print<x5>(x5); g_print<x6>(x6)
-; g_print<x7>(x7); g_print<x8>(x8); g_print<x9>(x9); g_print<x10>(x10))
-; gs_print$end<>())
+( x0, x1, x2, x3, x4
+, x5, x6, x7, x8, x9, x10) =
+let
+val () =
+gs_print$beg() in//let
+(
+  g_print<x0>(x0); gs_print$sep()
+; g_print<x1>(x1); gs_print$sep()
+; g_print<x2>(x2); gs_print$sep()
+; g_print<x3>(x3); gs_print$sep()
+; g_print<x4>(x4); gs_print$sep()
+; g_print<x5>(x5); gs_print$sep()
+; g_print<x6>(x6); gs_print$sep()
+; g_print<x7>(x7); gs_print$sep()
+; g_print<x8>(x8); gs_print$sep()
+; g_print<x9>(x9); gs_print$sep()
+; g_print<x10>(x10); gs_print$end()
+)
+end//let//end-of-[gs_print_a11(...)]
 //
 #impltmp
 < x0:t0 >
@@ -1113,12 +1365,26 @@ gs_print_a11
 < x10:t0 >
 < x11:t0 >
 gs_print_a12
-  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11) =
-( gs_print$beg<>();
-( g_print<x0>(x0); g_print<x1>(x1); g_print<x2>(x2); g_print<x3>(x3)
-; g_print<x4>(x4); g_print<x5>(x5); g_print<x6>(x6); g_print<x7>(x7)
-; g_print<x8>(x8); g_print<x9>(x9); g_print<x10>(x10); g_print<x11>(x11))
-; gs_print$end<>())
+( x0, x1, x2, x3, x4, x5
+, x6, x7, x8, x9, x10, x11) =
+let
+val () =
+gs_print$beg() in//let
+(
+  g_print<x0>(x0); gs_print$sep()
+; g_print<x1>(x1); gs_print$sep()
+; g_print<x2>(x2); gs_print$sep()
+; g_print<x3>(x3); gs_print$sep()
+; g_print<x4>(x4); gs_print$sep()
+; g_print<x5>(x5); gs_print$sep()
+; g_print<x6>(x6); gs_print$sep()
+; g_print<x7>(x7); gs_print$sep()
+; g_print<x8>(x8); gs_print$sep()
+; g_print<x9>(x9); gs_print$sep()
+; g_print<x10>(x10); gs_print$sep()
+; g_print<x11>(x11); gs_print$end()
+)
+end//let//end-of-[gs_print_a12(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

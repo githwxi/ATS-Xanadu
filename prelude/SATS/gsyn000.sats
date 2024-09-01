@@ -436,6 +436,18 @@ gs_free_a12(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun<>
+gs_work$beg(): void
+fun<>
+gs_work$end(): void
+fun<>
+gs_work$sep(): void
+//
+(* ****** ****** *)
+//
+fun<>
+gs_work_a0(): void
+//
 fun
 <x0:t0>
 gs_work_a1(x0): void
@@ -573,9 +585,15 @@ fun
 gs_print$beg(): void
 fun
 <(*tmp*)>
+gs_print$sep(): void
+fun
+<(*tmp*)>
 gs_print$end(): void
 //
 (* ****** ****** *)
+//
+fun<>
+gs_print_a0(): void
 //
 fun
 <x0:t0>
