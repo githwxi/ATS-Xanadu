@@ -57,6 +57,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
+#staload "./../SATS/preadx0.sats"
+(* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 #staload "./../SATS/tread01.sats"
 (* ****** ****** *)
@@ -83,13 +85,22 @@ d2parsed_of_filsats
   ( fpth ) =
 d2parsed_of_trans02
 (
-d0parsed_from_fpath(0(*sta*), fpth))
+d0parsed_of_preadx0(dpar)) where
+{
+val dpar =
+d0parsed_from_fpath(0(*sta*), fpth)
+}
+//
 #implfun
 d2parsed_of_fildats
   ( fpth ) =
 d2parsed_of_trans02
 (
-d0parsed_from_fpath(1(*dyn*), fpth))
+d0parsed_of_preadx0(dpar)) where
+{
+val dpar =
+d0parsed_from_fpath(1(*dyn*), fpth)
+}
 //
 (* ****** ****** *)
 //
@@ -98,25 +109,39 @@ d3parsed_of_filsats
   ( fpth ) =
 d3parsed_of_trans03
 (
-d0parsed_from_fpath(0(*sta*), fpth))
+d0parsed_of_preadx0(dpar)) where
+{
+val dpar =
+d0parsed_from_fpath(0(*sta*), fpth)
+}
+//
 #implfun
 d3parsed_of_fildats
   ( fpth ) =
 d3parsed_of_trans03
 (
-d0parsed_from_fpath(1(*dyn*), fpth))
+d0parsed_of_preadx0(dpar)) where
+{
+val dpar =
+d0parsed_from_fpath(1(*dyn*), fpth)
+}
 //
 (* ****** ****** *)
 //
 #implfun
 d2parsed_of_trans02(dpar) =
 let
+//
 val dpar = d1parsed_of_trans01(dpar)
+val dpar = d1parsed_of_tread01(dpar)
+//
 val dpar = d2parsed_of_trans12(dpar)
 val dpar = d2parsed_of_tread12(dpar)
+//
 val dpar = d2parsed_of_trans2a(dpar)
 val (  ) = d2parsed_by_trsym2b(dpar)
 val dpar = d2parsed_of_tread20(dpar) in dpar
+//
 end (*let*) // end of [d2parsed_of_trans02(dpar)]
 //
 (* ****** ****** *)
@@ -124,11 +149,15 @@ end (*let*) // end of [d2parsed_of_trans02(dpar)]
 #implfun
 d3parsed_of_trans03(dpar) =
 let
+//
 val dpar = d2parsed_of_trans02(dpar)
+//
 val dpar = d3parsed_of_trans23(dpar)
 val dpar = d3parsed_of_tread23(dpar)
+//
 val dpar = d3parsed_of_trans3a(dpar)
 val dpar = d3parsed_of_tread30(dpar) in dpar
+//
 end (*let*) // end of [d3parsed_of_trans03(dpar)]
 //
 (* ****** ****** *)

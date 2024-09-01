@@ -34,4 +34,7 @@ test05_gdbg000.dats; \
 $(NODE) --stack-size=4096 \
 $(XATSHOME)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit_dats.js $<
 ########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+########################################################################
 ###################### end of [Makefile_jsemit] ########################

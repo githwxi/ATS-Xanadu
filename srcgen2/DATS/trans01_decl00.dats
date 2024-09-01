@@ -2199,8 +2199,9 @@ WD0CSnone() => WD1CSnone()
 |
 WD0CSsome
 (twhr,topt,dcls,tend) =>
-WD1CSsome(trans01_d0eclist(tenv, dcls))
-) (*case+*)//end-of[trans01_wd0eclseq(tenv,wdcs)]
+(
+  WD1CSsome(trans01_d0eclist(tenv, dcls)))
+)(*case+*)//end-[trans01_wd0eclseq(tenv,wdcs)]
 //
 (* ****** ****** *)
 //
@@ -2208,22 +2209,22 @@ WD1CSsome(trans01_d0eclist(tenv, dcls))
 trans01_d0valdclist
   (  tenv,dcls  ) =
 (
-  list_trans01_fnp(tenv, dcls, trans01_d0valdcl))
+list_trans01_fnp(tenv, dcls, trans01_d0valdcl))
 #implfun
 trans01_d0vardclist
   (  tenv,dcls  ) =
 (
-  list_trans01_fnp(tenv, dcls, trans01_d0vardcl))
+list_trans01_fnp(tenv, dcls, trans01_d0vardcl))
 #implfun
 trans01_d0fundclist
   (  tenv,dcls  ) =
 (
-  list_trans01_fnp(tenv, dcls, trans01_d0fundcl))
+list_trans01_fnp(tenv, dcls, trans01_d0fundcl))
 #implfun
 trans01_d0cstdclist
   (  tenv,dcls  ) =
 (
-  list_trans01_fnp(tenv, dcls, trans01_d0cstdcl))
+list_trans01_fnp(tenv, dcls, trans01_d0cstdcl))
 //
 (* ****** ****** *)
 //
@@ -2231,8 +2232,12 @@ trans01_d0cstdclist
 trans01_d0eclistopt
   (  tenv,dopt  ) =
 (
-  optn_trans01_fnp(tenv, dopt, trans01_d0eclist))
+optn_trans01_fnp(tenv, dopt, trans01_d0eclist))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_trans01_decl00.dats] *)

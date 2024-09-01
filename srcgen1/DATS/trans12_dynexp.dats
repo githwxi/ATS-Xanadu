@@ -6066,7 +6066,7 @@ sqas = trans12_sqarglst(sqas)
 val
 tqas = trans12_tqarglst(tqas)
 //
-// (*
+(*
 val () =
 println!
 ("aux_implmnt0: id2c = ", id2c)
@@ -6078,7 +6078,7 @@ println!
 val () =
 println!
 ("aux_implmnt0: tqas = ", tqas)
-// *)
+*)
 //
 val () =
 auxid2c_tqas(id2c, tqas)
@@ -6328,11 +6328,13 @@ val ((*void*)) =
 }
 //
 in
-  d2ecl_make_node
-  (loc0, D2Csymload(tok, sym, dpi0))
+//
+d2ecl_make_node
+(loc0, D2Csymload(tok, sym, dpi0))
+//
 end // end of [aux_symload]
 
-end // end of [local]
+end // end of [ local(aux_symload) ]
 
 (* ****** ****** *)
 

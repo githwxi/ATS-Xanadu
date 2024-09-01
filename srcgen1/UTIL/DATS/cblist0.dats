@@ -87,7 +87,7 @@ cblist_length($UN.castvwtp1{cblist}(cbs))
 
 implement
 {}(*tmp*)
-cblist_foreach
+cblist_foritm
   (cbs) = loop(cbs) where
 {
 //
@@ -101,11 +101,11 @@ cblist_nil() => ()
 |
 cblist_cons(n, cs, cbs) =>
 (
-cblist_foreach$fwork<>(n, cs); loop(cbs)
+cblist_foritm$work<>(n, cs); loop(cbs)
 )
 )
 //
-} (* end of [cblist_foreach] *)
+} (* end of [cblist_foritm] *)
 
 (* ****** ****** *)
 
