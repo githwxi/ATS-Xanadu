@@ -45,7 +45,7 @@ implement main0() =
 
   val () = assert (2 = length(cbs))
 
-  val () = foreach(cbs) where
+  val () = foritm(cbs) where
   {
     val r = ref<int>(0)
     val out = stdout_ref
@@ -53,7 +53,7 @@ implement main0() =
     fprint_array$sep<>
       (out) = ((*void*))
     implement
-    cblist_foreach$fwork<>
+    cblist_foritm$work<>
       (n, cs) =
     let
       val () =
@@ -74,10 +74,14 @@ implement main0() =
         assertloc( " cblist?!\n" = x );
       // end of [if]
       r[] := succ(r[])
-    end // end of [cblist_foreach$fwork]
+    end // end of [cblist_foritm$work]
   }
 } (* end of [main0] *)
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [test_cblist.dats] *)
+(* end of [ATS3/XANADU_srcgen1_UTIL_TEST_Posix_test_cblist0.dats] *)

@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,19 +37,23 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload
 SYM = "./../SATS/xsymbol.sats"
 #staload
 LAM = "./../SATS/xlabel0.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/filpath.sats"
 (* ****** ****** *)
@@ -68,14 +73,15 @@ LAM = "./../SATS/xlabel0.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 the_drpth_push_lcsrc
-(  source  ) =
+  ( source ) =
 (
 case+ source of
 //
@@ -117,21 +123,18 @@ val () =
 prerrsln("\
 the_drpth_push_lcsrc: source = ", source)
 *)
-} (*where*) // end-of-(the_drpth_push_lcsrc)
-
+}(*where*)//end-(the_drpth_push_lcsrc(...))
+//
 (* ****** ****** *)
-
+//
 #implfun
 the_drpth_pop0_lcsrc
-(  source  ) =
+  ( source ) =
 (
 case+ source of
-|
-LCSRCnone0 _ => ()
-|
-LCSRCsome1(name) => the_drpth_pop0()
-|
-LCSRCfpath(fpth) => the_drpth_pop0()
+|LCSRCnone0 _ => ()
+|LCSRCsome1(name) => the_drpth_pop0()
+|LCSRCfpath(fpth) => the_drpth_pop0()
 ) where
 {
 (*
@@ -139,14 +142,14 @@ val () =
 prerrsln("\
 the_drpth_pop0_lcsrc: source = ", source)
 *)
-} (*where*) // end-of-(the_drpth_pop0_lcsrc)
-
+}(*where*)//end-(the_drpth_pop0_lcsrc(...))
+//
 (* ****** ****** *)
-
+//
 #implfun
 d1parsed_of_trans01
-  (dpar) =
-let
+  ( dpar ) = let
+//
 val stadyn =
 d0parsed_get_stadyn(dpar)
 val nerror =
@@ -164,7 +167,8 @@ val parsed =
 trans01_d0eclistopt(env0, parsed)
 //
 val (   ) =
-the_drpth_pop0_lcsrc(source)
+(
+  the_drpth_pop0_lcsrc(source))
 //
 in//let
 //
@@ -175,13 +179,13 @@ in//let
 d1parsed
 (stadyn,nerror,source,topenv,parsed) end
 //
-end(*let*)//end-of-[d1parsed_trans01(dpar)]
-
+end(*let*)//end-(d1parsed_of_trans01(dpar))
+//
 (* ****** ****** *)
 //
 #implfun
 trans01_from_fpath
-  (stadyn, source) =
+ (stadyn, source) =
 (
 d1parsed_of_trans01(dpar)) where
 {
@@ -205,7 +209,7 @@ list_map_e1nv<x0><y0><e1>(xs, e1)) where
 #vwtpdef e1 = tr01env
 #impltmp
 map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-}(*where*)//end of [list_trans01_fnp(e1,xs,fopr)]
+}(*where*)//end-of-[list_trans01_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
@@ -223,5 +227,8 @@ map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_trans01.dats] *)

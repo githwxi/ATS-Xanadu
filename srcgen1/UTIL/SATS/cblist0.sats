@@ -78,11 +78,11 @@ fun cblist_vt_free(cbs: cblist_vt): void
 (* ****** ****** *)
 
 fun{}
-cblist_foreach(cbs: cblist): void
+cblist_foritm(cbs: cblist): void
 fun{}
-cblist_foreach$fwork{n:int}(size_t(n), arrayref(uchar, n)): void
+cblist_foritm$work{n:int}(size_t(n), arrayref(uchar, n)): void
 //
-overload foreach with cblist_foreach
+overload foritm with cblist_foritm
 //
 (* ****** ****** *)
 

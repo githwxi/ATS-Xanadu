@@ -2215,26 +2215,26 @@ trans01_l0d0elst
 list_trans01_fnp(tenv, ldes, trans01_l0d0e)
 //
 (* ****** ****** *)
-
+//
 #implfun
 trans01_f0arglst
 ( tenv, f0as ) =
 list_trans01_fnp(tenv, f0as, trans01_f0arg)
-
+//
 (* ****** ****** *)
 
 #implfun
 trans01_d0gualst
 ( tenv, d0gs ) =
 list_trans01_fnp(tenv, d0gs, trans01_d0gua)
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 trans01_d0clslst
 ( tenv, d0cs ) =
 list_trans01_fnp(tenv, d0cs, trans01_d0cls)
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -2297,5 +2297,9 @@ auxloop(tenv, d0e1, d0es, list_vt_nil(*0*))
 end//let//end-of-[trans01_d0expseq(tenv,d0es)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_trans01_dynexp.dats] *)

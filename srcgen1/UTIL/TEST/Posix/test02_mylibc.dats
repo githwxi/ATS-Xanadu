@@ -86,5 +86,9 @@ assertloc("xy" = xatsopt_strunq("\"\\170\\171\""))
 } (* end of [main0] *)
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [test_mylibc.dats] *)
+(* end of [ATS3/XANADU_srcgen1_UTIL_TEST_Posix_test_mylibc.dats] *)

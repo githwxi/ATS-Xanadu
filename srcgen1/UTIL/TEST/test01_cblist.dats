@@ -43,10 +43,10 @@ assert(1 = length(cb))
 //
 val () =
 (
-  cblist_foreach(cb) ) where
+  cblist_foritm(cb) ) where
 {
 implement
-cblist_foreach$fwork<> (n, cs) =
+cblist_foritm$work<> (n, cs) =
 {
 //
 val () =
@@ -61,11 +61,15 @@ val () =
 assertloc(char2uchar0(g0ofg1('L')) = cs[3])
 val () =
 assertloc(char2uchar0(g0ofg1('O')) = cs[4])
-} (* end of [cblist_foreach$fwork] *)
+} (* end of [cblist_foritm$work] *)
 }
 //
 } (* end of [main0] *)
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [test_cblist0.dats] *)
+(* end of [ATS3/XANADU_srcgen1_UTIL_TEST_test_cblist0.dats] *)

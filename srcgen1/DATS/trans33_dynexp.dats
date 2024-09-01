@@ -3348,14 +3348,14 @@ D3Cimplmnt2
 , f3as
 , res0, d3e0) = d3cl.node()
 //
-// (*
+(*
 val () =
 println!
 ("aux_implmnt2: d3cl = ", d3cl)
 val () =
 println!
 ("aux_implmnt2: idc1 = ", idc1)
-// *)
+*)
 //
 val
 tres = d3e0.type()
