@@ -21,12 +21,12 @@ Mon 25 Mar 2024 06:06:45 PM EDT
 //
 val ret =
 the_fxtyenv_pvsload()
-val (  ) = prerrln
+val (  ) = prerrsln
 ("the_fxtyenv_pvsload() = ", ret)
 //
 val ret =
 the_tr12env_pvsload()
-val (  ) = prerrln
+val (  ) = prerrsln
 ("the_tr12env_pvsload() = ", ret)
 //
 (* ****** ****** *)
@@ -79,10 +79,10 @@ dpar =
 d3parsed_of_tread30(dpar)
 //
 val ( ) =
-println("dpar = ", dpar)
+printsln("dpar = ", dpar)
 //
 val ( ) =
-prerrln
+prerrsln
 ("FPERR30_D3PARSED(33):")
 val out = g_stderr((*0*))
 val ( ) =
@@ -97,7 +97,7 @@ val dpar = trans03_from_fpath
 //
 val ((*0*)) =
 (
-println
+printsln
 ("parsed(i0) = ", mytest01_dats.parsed()))
 //
 (* ****** ****** *)

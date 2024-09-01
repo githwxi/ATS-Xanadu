@@ -20,12 +20,12 @@ as way to test [xatsopt]
 //
 val ret =
 the_fxtyenv_pvsload()
-val (  ) = prerrln
+val (  ) = prerrsln
 ("the_fxtyenv_pvsload() = ", ret)
 //
 val ret =
 the_tr12env_pvsload()
-val (  ) = prerrln
+val (  ) = prerrsln
 ("the_tr12env_pvsload() = ", ret)
 //
 (* ****** ****** *)
@@ -111,7 +111,7 @@ i0parsed_of_trxd3i0(dpar)
 (*
 val
 (  ) =
-println
+printsln
 ("i0parsed(i0) = ", ipar)
 *)
 //
@@ -124,7 +124,7 @@ d3parsed_of_trans3a(dpar)
 //
 (*
 val ( ) =
-prerrln
+prerrsln
 ("d3parsed(3a) = ", dpar)
 *)
 //
@@ -140,7 +140,7 @@ d3parsed_of_tread30(dpar)
 //
 // (*
 val ( ) =
-prerrln
+prerrsln
 ("d3parsed(33) = ", dpar)
 // *)
 //
@@ -148,7 +148,7 @@ val
 out = g_stderr((*0*))
 //
 val ( ) =
-prerrln
+prerrsln
 ("FPERR30_D3PARSED(4):")
 val ( ) =
 fperr30_d3parsed(out, dpar)

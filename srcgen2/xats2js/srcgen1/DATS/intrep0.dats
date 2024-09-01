@@ -663,7 +663,7 @@ I0PARSED
 //
 (*
 val () =
-prerrln
+prerrsln
 ("i0parsed_make_args:nerror=",nerror)
 *)
 //

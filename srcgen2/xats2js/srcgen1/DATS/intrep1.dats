@@ -758,7 +758,7 @@ I1PARSED
 //
 (*
 val () =
-prerrln
+prerrsln
 ("i1parsed_make_args:nerror=",nerror)
 *)
 //

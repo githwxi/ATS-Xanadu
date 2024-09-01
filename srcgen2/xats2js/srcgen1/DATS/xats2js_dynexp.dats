@@ -632,7 +632,7 @@ let
 (*
 //
 val () =
-prerrln
+prerrsln
 ("xats2js_fjarg: farg = ", farg))
 //
 *)
@@ -687,7 +687,7 @@ let
 (*
 //
 val () =
-prerrln
+prerrsln
 ("xats2js_i1gpt: igpt = ", igpt))
 //
 *)
@@ -713,7 +713,7 @@ let
 (*
 //
 val () =
-prerrln
+prerrsln
 ("xats2js_i1cls: icls = ", icls))
 //
 *)

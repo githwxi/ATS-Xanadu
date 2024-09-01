@@ -38,12 +38,12 @@ Sat 22 Jun 2024 07:51:23 PM EDT
 //
 val ret =
 the_fxtyenv_pvsload()
-val (  ) = prerrln
+val (  ) = prerrsln
 ("the_fxtyenv_pvsload() = ", ret)
 //
 val ret =
 the_tr12env_pvsload()
-val (  ) = prerrln
+val (  ) = prerrsln
 ("the_tr12env_pvsload() = ", ret)
 //
 (* ****** ****** *)
@@ -64,7 +64,7 @@ d3parsed_of_tread30(dpar)
 (*
 val (  ) =
 (
-prerrln
+prerrsln
 ("d3parsed(33) = ", dpar))
 *)
 //
@@ -74,7 +74,7 @@ val
 out = g_stderr((*0*))
 in//let
 //
-prerrln
+prerrsln
 ("FPERR30_D3PARSED:");
 fperr30_d3parsed(out, dpar)
 end//let
@@ -134,7 +134,7 @@ else
 (
 let
 val (  ) =
-prerrln("\
+prerrsln("\
 argv is too short: ", argv)
 end
 )
@@ -145,7 +145,7 @@ val argv =
 (
   XATS2JS_NODE_argv_get((*0*)))
 (*
-val (  ) = prerrln("argv = ", argv)
+val (  ) = prerrsln("argv = ", argv)
 *)
 //
 }(*where*)//end-of-[mymain((*void*))]
