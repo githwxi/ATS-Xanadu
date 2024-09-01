@@ -267,7 +267,7 @@ loop
 {
 //
 val () =
-prerrsln
+prerr1sln
 ("linstk_lamvars:loop: stk0 = ", stk0)
 //
 }(*where*)
@@ -334,7 +334,7 @@ loop
 {
 //
 val () =
-prerrsln
+prerr1sln
 ("linstk_letvars:loop: stk0 = ", stk0)
 //
 }(*where*)
@@ -647,7 +647,7 @@ val
 end where
 {
 val () =
-prerrsln
+prerr1sln
 ("linstk_popift0:loop: stk0 = ", stk0)
 }(*where*) // end of [linstk_popift0(stk)]
 //
@@ -716,7 +716,7 @@ val
 end where
 {
 val () =
-prerrsln
+prerr1sln
 ("linstk_popift0:loop: stk0 = ", stk0)
 } (*where*) // end of [linstk_popcas0(stk)]
 //
@@ -795,7 +795,9 @@ end where
 {
 //
 val () =
-prerrsln("linstk_getlam0: stk0 = ", stk0)
+(
+  prerr1sln
+  ("linstk_getlam0: stk0 = ", stk0) )
 //
 }(*where*) // end of [linstk_getlam0(stk)]
 //
@@ -873,7 +875,9 @@ end where
 {
 //
 val () =
-prerrsln("linstk_getlet0: stk0 = ", stk0)
+(
+  prerr1sln
+  ("linstk_getlet0: stk0 = ", stk0) )
 //
 }(*where*) // end of [linstk_getlet0(stk)]
 //
@@ -951,7 +955,9 @@ end where
 {
 //
 val () =
-prerrsln("linstk_getift0: stk0 = ", stk0)
+(
+  prerr1sln
+  ("linstk_getift0: stk0 = ", stk0) )
 //
 }(*where*) // end of [linstk_getlet0(stk)]
 //
@@ -1029,7 +1035,9 @@ end where
 {
 //
 val () =
-prerrsln("linstk_getcas0: stk0 = ", stk0)
+(
+  prerr1sln
+  ("linstk_getcas0: stk0 = ", stk0) )
 //
 }(*where*) // end of [linstk_getcas0(stk)]
 //
@@ -1851,7 +1859,8 @@ end(*let*)//end-of-[f0_annot(env0,dpat)]
 (* ****** ****** *)
 //
 val () =
-prerrsln("tr34env_insert_dpat: dpat = ", dpat)
+(
+prerrsln("tr34env_insert_dpat: dpat = ", dpat))
 //
 (* ****** ****** *)
 //
@@ -1875,7 +1884,8 @@ tr34env_insert_dpat(env0, dpat)
 {
 //
 val () =
-prerrsln("tr34env_insert_dgpt: dgpt = ", dgpt)
+(
+prerrsln("tr34env_insert_dgpt: dgpt = ", dgpt))
 //
 }(*where*)//end-of-[tr34env_insert_dgpt(env0,dgpt)]
 //
@@ -1896,7 +1906,8 @@ tr34env_insert_dpatlst(env0, d4ps)
 {
 //
 val () =
-prerrsln("tr34env_insert_farg: farg = ", farg)
+(
+prerrsln("tr34env_insert_farg: farg = ", farg))
 //
 }(*where*)//end-of-[tr34env_insert_farg(env0,farg)]
 //
@@ -1987,7 +1998,8 @@ end(*let*) // end-of-[list_cons(...)]
 )(*case+*) // end-of-[auxmain(env0,dvts)]
 //
 val () =
-prerrsln("tr34env_d2vtck_dvts: dvts = ", dvts)
+(
+prerrsln("tr34env_d2vtck_dvts: dvts = ", dvts))
 //
 }(*where*)//end of [tr34env_d2vtck_dvts(env0,dvts)]
 

@@ -775,7 +775,7 @@ let
 //
 (*
 val () =
-prerrln
+prerrsln
 ("i1valjs1: ival = ", ival)
 *)
 //
@@ -970,7 +970,7 @@ let
 //
 (*
 val () =
-prerrln
+prerrsln
 ("i1insjs1: iins = ", iins)
 *)
 //
@@ -1105,7 +1105,7 @@ let
 //
 (*
 val () =
-prerrln
+prerrsln
 ("i1cmpjs1: icmp = ", icmp)
 *)
 //
@@ -1400,13 +1400,13 @@ end where
 //
 (*
 val () =
-( prerrln
+( prerrsln
   ("f0_i1tnmvalcls: itnm = ", itnm))
 val () =
-( prerrln
+( prerrsln
   ("f0_i1tnmvalcls: ival = ", ival))
 val () =
-( prerrln
+( prerrsln
   ("f0_i1tnmvalcls: icl0 = ", icl0))
 *)
 //

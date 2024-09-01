@@ -94,7 +94,7 @@ let
 (*
 //
 val () =
-prerrln
+prerrsln
 ("xats2js_i1dcl: dcl0 = ", dcl0))
 //
 *)
@@ -230,7 +230,7 @@ end where
 val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
-prerrln("f0_extern(x2js): dcl0 = ", dcl0)
+prerrsln("f0_extern(x2js): dcl0 = ", dcl0)
 *)
 //
 }(*where*) // end of [f0_extern(env0,dcl0)]
@@ -276,7 +276,7 @@ end where
 val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
-prerrln("f0_static(x2js): dcl0 = ", dcl0)
+prerrsln("f0_static(x2js): dcl0 = ", dcl0)
 *)
 //
 }(*where*) // end of [f0_static(env0,dcl0)]
@@ -340,7 +340,7 @@ end where
 val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
-prerrln("f0_local0(x2js): dcl0 = ", dcl0)
+prerrsln("f0_local0(x2js): dcl0 = ", dcl0)
 *)
 //
 }(*where*) // end of [f0_local0(env0,dcl0)]
@@ -389,7 +389,7 @@ end where
 val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
-prerrln("f0_tmpsub(x2js): dcl0 = ", dcl0)
+prerrsln("f0_tmpsub(x2js): dcl0 = ", dcl0)
 *)
 //
 }(*where*) // end of [f0_tmpsub(env0,dcl0)]
@@ -447,7 +447,7 @@ end where
 val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
-prerrln("f0_include(x2js): dcl0 = ", dcl0)
+prerrsln("f0_include(x2js): dcl0 = ", dcl0)
 *)
 //
 }(*where*) // end of [f0_include(env0,dcl0)]
@@ -482,7 +482,7 @@ end where // end-of-[let]
 val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
-prerrln("f0_valdclst(x2js): dcl0 = ", dcl0)
+prerrsln("f0_valdclst(x2js): dcl0 = ", dcl0)
 *)
 //
 }(*where*) // end of [f0_valdclst(env0,dcl0)]
@@ -512,7 +512,7 @@ end where
 val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
-prerrln("f0_vardclst(x2js): dcl0 = ", dcl0)
+prerrsln("f0_vardclst(x2js): dcl0 = ", dcl0)
 *)
 //
 }(*where*) // end of [f0_vardclst(env0,dcl0)]
@@ -547,7 +547,7 @@ end where // end-of-[let]
 val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
-prerrln("f0_fundclst(x2js): dcl0 = ", dcl0)
+prerrsln("f0_fundclst(x2js): dcl0 = ", dcl0)
 *)
 //
 }(*where*) // end of [f0_fundclst(env0,dcl0)]
@@ -626,7 +626,7 @@ end where
 val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
-prerrln("f0_implmnt0(x2js): dcl0 = ", dcl0)
+prerrsln("f0_implmnt0(x2js): dcl0 = ", dcl0)
 *)
 //
 }(*where*) // end of [f0_fundclst(env0,dcl0)]
@@ -657,7 +657,7 @@ val nind = envx2js_get_nind(env0)
 //
 val (  ) =
 (
-  prerrln("xats2js_dimp: dimp = ", dimp))
+  prerrsln("xats2js_dimp: dimp = ", dimp))
 }(*where*)//end-of-[xats2js_dimpl(env0,dimp)]
 //
 (* ****** ****** *)
@@ -712,7 +712,7 @@ val nind = envx2js_get_nind(env0)
 //
 val (  ) =
 (
-  prerrln("xats2js_t1imp: timp = ", timp))
+  prerrsln("xats2js_t1imp: timp = ", timp))
 //
 }(*where*)//end-of-[xats2js_t1imp(env0,timp)]
 //
@@ -738,9 +738,9 @@ xats2js_i1bnd(env0, dpat)
 (* ****** ****** *)
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("xats2js_i1valdcl: dpat = ", dpat)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("xats2js_i1valdcl: tdxp = ", tdxp)
 *)
 //
@@ -822,9 +822,9 @@ xats2js_i1bnd(env0, dpid)
 (* ****** ****** *)
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("xats2js_i1vardcl: dvar = ", dvar)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("xats2js_i1vardcl: dini = ", tdxp)
 *)
 //
@@ -897,11 +897,11 @@ end//let
 (* ****** ****** *)
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("xats2js_i1fundcl: dvar = ", dvar)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("xats2js_i1fundcl: fjas = ", fjas)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("xats2js_i1fundcl: tdxp = ", tdxp)
 *)
 //

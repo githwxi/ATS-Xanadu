@@ -109,7 +109,7 @@ val stmp = timp.stmp((*void*))
 //
 (*
 val (  ) =
-prerrln("trxd3i0_timpl: timp = ", timp)
+prerrsln("trxd3i0_timpl: timp = ", timp)
 *)
 //
 }(*where*)//end-of-[trxd3i0_timpl(env0,...)]
@@ -443,7 +443,7 @@ end where
 (*
 val loc0 = d3cl.lctn()
 val (  ) =
-prerrln("f0_valdclst(d3i0): d3cl = ", d3cl)
+prerrsln("f0_valdclst(d3i0): d3cl = ", d3cl)
 *)
 //
 }(*where*) // end of [f0_valdclst(env0,d3cl)]
@@ -474,7 +474,7 @@ end where
 (*
 val loc0 = d3cl.lctn()
 val (  ) =
-prerrln("f0_vardclst(d3i0): d3cl = ", d3cl)
+prerrsln("f0_vardclst(d3i0): d3cl = ", d3cl)
 *)
 //
 }(*where*) // end of [f0_vardclst(env0,d3cl)]
@@ -512,7 +512,7 @@ end where
 val loc0 = d3cl.lctn((*void*))
 //
 val (  ) =
-prerrln("f0_fundclst(d3i0): d3cl = ", d3cl)
+prerrsln("f0_fundclst(d3i0): d3cl = ", d3cl)
 *)
 //
 }(*where*) // end of [f0_fundclst(env0,d3cl)]
@@ -557,9 +557,9 @@ end where // end-of-[let]
 val loc0 = d3cl.lctn((*void*))
 //
 val (  ) =
-prerrln("f0_implmnt0(d3i0): loc0 = ", loc0)
+prerrsln("f0_implmnt0(d3i0): loc0 = ", loc0)
 val (  ) =
-prerrln("f0_implmnt0(d3i0): d3cl = ", d3cl)
+prerrsln("f0_implmnt0(d3i0): d3cl = ", d3cl)
 *)
 //
 } (*where*) // end of [f0_implmnt0(env0,d3cl)]
@@ -572,10 +572,10 @@ val loc0 = d3cl.lctn((*void*))
 //
 val (  ) =
 (
-  prerrln("trxd3i0_d3ecl: loc0 = ", loc0) )
+  prerrsln("trxd3i0_d3ecl: loc0 = ", loc0) )
 val () =
 (
-  prerrln("trxd3i0_d3ecl: d3cl = ", d3cl) )
+  prerrsln("trxd3i0_d3ecl: d3cl = ", d3cl) )
 *)
 //
 (* ****** ****** *)
@@ -666,9 +666,9 @@ val tdxp =
 d3fundcl_get_tdxp(dfun)
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trxd3i0_d3fundcl: f3as = ", f3as)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trxd3i0_d3fundcl: tdxp = ", tdxp)
 *)
 //
@@ -678,9 +678,9 @@ val tdxp =
 trxd3i0_teqd3exp(env0, tdxp)
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trxd3i0_d3fundcl: f3as = ", f3as)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trxd3i0_d3fundcl: tdxp = ", tdxp)
 *)
 //

@@ -478,7 +478,7 @@ D3Pannot
 (*
 val (  ) =
 (
-prerrln("trxd3i0_d3pat: d3p0 = ", d3p0))
+prerrsln("trxd3i0_d3pat: d3p0 = ", d3p0))
 *)
 //
 (* ****** ****** *)
@@ -1562,7 +1562,7 @@ end (*let*) // end of [f0_synext(env0,d3e0)]
 (*
 val (  ) =
 (
-prerrln("trxd3i0_d3exp: d3e0 = ", d3e0))
+prerrsln("trxd3i0_d3exp: d3e0 = ", d3e0))
 *)
 //
 (* ****** ****** *)
@@ -1615,11 +1615,11 @@ end//let//end-of-[D3GUAmat(...)]
 ) where
 {
 //
-  val loc0 = dgua.lctn((*void*))
+val loc0 = dgua.lctn((*void*))
 //
 (*
-  val (  ) =
-  prerrln("trxd3i0_d3gua: dgua = ", dgua)
+val (  ) =
+prerrsln("trxd3i0_d3gua: dgua = ", dgua)
 *)
 //
 }(*where*)//end-of-[trxd3i0_d3gua(env0,...)]
@@ -1635,7 +1635,7 @@ val loc0 = dgpt.lctn()
 (*
 val
 val () =
-prerrln
+prerrsln
 ("trxd3i0_d3gpt: dgpt = ", dgpt)
 *)
 //
@@ -1678,7 +1678,7 @@ val loc0 = d3c0.lctn()
 (*
 val
 val () =
-prerrln
+prerrsln
 ("trxd3i0_d3cls: d3c0 = ", d3c0)
 *)
 //

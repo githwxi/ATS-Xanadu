@@ -157,7 +157,7 @@ let
 (*
 //
 val () =
-prerrln
+prerrsln
 ("js1emit_i1dcl: dcl0 = ", dcl0))
 //
 *)

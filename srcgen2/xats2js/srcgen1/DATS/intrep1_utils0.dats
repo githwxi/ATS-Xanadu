@@ -168,7 +168,7 @@ case+ fjas of
 //
 (*
 val () =
-prerrln("t1imp_i1cmpq: timp = ", timp)
+prerrsln("t1imp_i1cmpq: timp = ", timp)
 *)
 //
 }(*where*)//end-of-[t1imp_i1cmpq( timp )]
@@ -219,7 +219,7 @@ idcl.node() of
 //
 (*
 val () =
-prerrln("t1imp_i1dclq: timp = ", timp)
+prerrsln("t1imp_i1dclq: timp = ", timp)
 *)
 //
 }(*where*)//end-of-[t1imp_i1dclq( timp )]

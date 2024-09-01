@@ -81,7 +81,7 @@ d3parsed_of_tread30(dpar)
 (*
 val (  ) =
 (
-prerrln
+prerrsln
 ("d3parsed(33) = ", dpar))
 *)
 //
@@ -90,7 +90,7 @@ let
 val
 out = g_stderr((*0*))
 in//let
-prerrln
+prerrsln
 ("FPERR30_D3PARSED:");
 fperr30_d3parsed(out, dpar)
 end//let
@@ -155,7 +155,7 @@ val (  ) =
 if
 (ret1 > 0)
 then
-prerrln
+prerrsln
 ("The fixity-defs loaded!")
 //
 val ret2 =
@@ -163,14 +163,14 @@ the_tr12env_pvsload((*0*))
 val (  ) =
 if
 (ret2 > 0)
-then prerrln
+then prerrsln
 ("The trans12-defs loaded!")
 }
 else
 (
 let
 val (  ) =
-prerrln("\
+prerrsln("\
 [argv] is too short: ", argv)
 end//let
 )
@@ -181,7 +181,7 @@ val argv =
 (
   XATS2JS_NODE_argv_get((*0*)))
 (*
-val (  ) = prerrln("argv = ", argv)
+val (  ) = prerrsln("argv = ", argv)
 *)
 //
 }(*where*)//end-of-[mymain((*void*))]
