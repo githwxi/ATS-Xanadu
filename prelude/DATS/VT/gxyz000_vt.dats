@@ -261,6 +261,23 @@ foritm$work<x0> = foritm$work1<x0>
 #impltmp
 < xs:t0 >
 < x0:t0 >
+gseq_foritm0_f1un
+  (xs, work) =
+(
+  gseq_foritm_f1un<xs><x0>(xs, work))
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_foritm1_f1un
+  (xs, work) =
+(
+  gseq_foritm_f1un<xs><x0>(xs, work))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
 gseq_rforitm0(xs) =
 (
   gseq_rforitm<xs><x0>(xs))
@@ -281,6 +298,21 @@ where
 #impltmp
 rforitm$work<x0> = rforitm$work1<x0>
 }
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_rforitm0_f1un
+  (xs, work) =
+(
+  gseq_rforitm_f1un<xs><x0>(xs, work))
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_rforitm1_f1un
+  (xs, work) =
+(
+  gseq_rforitm_f1un<xs><x0>(xs, work))
 //
 (* ****** ****** *)
 //
@@ -308,6 +340,22 @@ where
 iforitm$work<x0> = iforitm$work1<x0>
 }
 //
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_iforitm0_f2un
+  (xs, work) =
+(
+  gseq_iforitm_f2un<xs><x0>(xs, work))
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_iforitm1_f2un
+  (xs, work) =
+(
+  gseq_iforitm_f2un<xs><x0>(xs, work))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -333,59 +381,6 @@ where
 #impltmp
 irforitm$work<x0> = irforitm$work1<x0>
 }
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_foritm0_f1un
-  (xs, work) =
-(
-  gseq_foritm_f1un<xs><x0>(xs, work))
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_foritm1_f1un
-  (xs, work) =
-(
-  gseq_foritm_f1un<xs><x0>(xs, work))
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_rforitm0_f1un
-  (xs, work) =
-(
-  gseq_rforitm_f1un<xs><x0>(xs, work))
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_rforitm1_f1un
-  (xs, work) =
-(
-  gseq_rforitm_f1un<xs><x0>(xs, work))
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_iforitm0_f2un
-  (xs, work) =
-(
-  gseq_iforitm_f2un<xs><x0>(xs, work))
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_iforitm1_f2un
-  (xs, work) =
-(
-  gseq_iforitm_f2un<xs><x0>(xs, work))
-//
-(* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
@@ -591,6 +586,7 @@ HX-2024-08-05:
 Mon 05 Aug 2024 05:49:43 PM EDT
 *)
 //
+(*
 #impltmp
 < xs: t0 >
 < x0: t0 >
@@ -599,9 +595,11 @@ gseq_strmize0 = gseq_strmize<xs><x0>
 < xs: t0 >
 < x0: t0 >
 gseq_strmize1 = gseq_strmize<xs><x0>
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs: t0 >
 < x0: t0 >
@@ -610,6 +608,7 @@ gseq_rstrmize0 = gseq_rstrmize<xs><x0>
 < xs: t0 >
 < x0: t0 >
 gseq_rstrmize1 = gseq_rstrmize<xs><x0>
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

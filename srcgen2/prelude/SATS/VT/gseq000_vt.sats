@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 27 Jul 2024 01:32:19 PM EDT
+Mon 02 Sep 2024 10:39:15 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,38 +39,17 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2024-07-29:
-Sat 03 Aug 2024 05:17:21 PM EDT
-*)
+#include
+"./../../../../prelude/SATS/VT/gseq000_vt.sats"
+#include
+"./../../../../prelude/SATS/VT/gseq001_vt.sats"
+#include
+"./../../../../prelude/SATS/VT/gseq002_vt.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_strmize = gseq_strmize0<xs><x0>
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_strqize = gseq_strqize0<xs><x0>
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_rstrmize = gseq_rstrmize0<xs><x0>
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_rstrqize = gseq_rstrqize0<xs><x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gxyz000.dats] *)
+(* end of [ATS3/XANADU_srcgen2_prelude_SATS_VT_gseq000_vt.sats] *)
