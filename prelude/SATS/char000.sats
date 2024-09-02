@@ -107,6 +107,7 @@ char_neqz
 #symload neqz with char_neqz of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun<>
 char_equal
@@ -123,31 +124,6 @@ char_noteq
 #symload noteq with char_noteq of 1000
 //
 (* ****** ****** *)
-//
-fun<>
-char_add_sint
-(c1: char, i2: sint): char
-(*
-fun<>
-add_char_sint
-(c1: char, i2: sint): char
-*)
-#symload + with char_add_sint of 1000
-//
-fun<>
-char_sub_char
-{c1,c2:c0}
-( c1: char(c1)
-, c2: char(c2)): sint(c1 - c2)
-(*
-fun<>
-sub_char_char
-{c1,c2:c0}
-( c1: char(c1)
-, c2: char(c2)): sint(c1 - c2)
-*)
-#symload - with char_sub_char of 1000
-//
 (* ****** ****** *)
 //
 fun<>
@@ -199,6 +175,7 @@ char_cmp
 #symload cmp with char_cmp of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun<>
 char_lower
@@ -207,15 +184,16 @@ fun<>
 char_upper
 (c0: char): char(*0*)
 //
-#symload lower of char_lower of 1000
-#symload upper of char_upper of 1000
+#symload lower with char_lower of 1000
+#symload upper with char_upper of 1000
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
 char_add_sint
 {c1:c0
-,i2:i0}
+;i2:i0}
 ( c1: char(c1)
 , i2: sint(i2)): char(*0*)
 //
@@ -229,6 +207,7 @@ char_sub_char
 #symload + with char_add_sint of 1000
 #symload - with char_sub_char of 1000
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
