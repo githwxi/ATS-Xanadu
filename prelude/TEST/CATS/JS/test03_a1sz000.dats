@@ -10,9 +10,6 @@ For testing xatslib/JS!
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"srcgen1\
-/prelude/HATS/prelude_dats.hats"
-#include
 "srcgen2\
 /prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
@@ -21,12 +18,8 @@ For testing xatslib/JS!
 /prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
 #include
-"srcgen1\
-/prelude/HATS/CATS/JS/prelude_dats.hats"
-(* ****** ****** *)
-#staload _ =
-"srcgen1\
-/prelude/DATS/CATS/JS/Node/g_print.dats"
+"srcgen2\
+/prelude/HATS/prelude_NODE_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -37,7 +30,8 @@ with a1sz_make_nfun of 1000
 //
 val N = 10
 val A0 =
-arrsz(N, lam(i) => (i+1))
+arrsz
+(N, lam(i:sint) => (i+1))
 val () =
 prints
 ("A0(", type(A0), ") = ", A0, "\n")
@@ -49,7 +43,8 @@ fun
 fact(n: nint) =
 GSEQ
 (
-arrsz(n, lam(i) => i+1)).prod()
+arrsz
+(n, lam(i:sint) => i+1)).prod()
 //
 val () =
 prints("fact(10) = ", fact(10), "\n")

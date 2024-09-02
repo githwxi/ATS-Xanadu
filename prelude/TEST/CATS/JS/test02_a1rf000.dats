@@ -30,7 +30,8 @@ with a1rf_make_nfun of 1000
 //
 val N = 10
 val A0 =
-array(N, lam(i) => (i+1))
+array
+(N, lam(i:sint) => (i+1))
 val () =
 prints
 ("A0(", type(A0), ") = ", A0, "\n")
@@ -48,7 +49,8 @@ fun
 fact(n: nint) =
 GSEQ
 (
-array(n, lam(i) => i+1)).prod()
+array
+(n, lam(i:sint) => i+1)).prod()
 where
 {
 #impltmp
