@@ -135,7 +135,7 @@ gseq_forall
 <a1rf(x0)><x0>
   ( A ) =
 (
-gseq_forall1
+gasz_forall
 <a1rf(x0)><x0>(A)) where
 {
 #impltmp

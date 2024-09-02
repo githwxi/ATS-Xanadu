@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 01 Sep 2024 04:18:19 PM EDT
+Mon 02 Sep 2024 02:10:11 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,13 +39,15 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"./../../../prelude/SATS/gint000.sats"
+"./../../../../prelude/SATS/VT/gbas000_vt.sats"
 #include
-"./../../../prelude/SATS/gint001.sats"
+"./../../../../prelude/SATS/VT/gbas001_vt.sats"
+#include
+"./../../../../prelude/SATS/VT/gbas002_vt.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_prelude_SATS_gint000.sats] *)
+(* end of [ATS3/XANADU_srcgen2_prelude_SATS_VT_gbas000_vt.sats] *)
