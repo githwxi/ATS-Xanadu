@@ -67,6 +67,8 @@ let XATSVAR1 = (init) => XATSROOT([init])
 let XATSADDR = (addr) => addr // HX: no-op
 let XATSFLAT = (addr) => XATS000_lvget(addr)
 //
+let XATSDP2TR = (addr) => XATS000_lvget(addr)
+//
 ////////////////////////////////////////////////////////////////////////////////////
 
 let XATSCTAG = (_, t) => t

@@ -297,8 +297,14 @@ and i1ins =
 //
 (* ****** ****** *)
 //
-|I1INSl0azy of (d1exp,i1cmp(*lazy-thunk*))
-|I1INSl1azy of (d1exp,i1cmp,i1cmplst(*frees*))
+|I1INSl0azy of 
+(d1exp(*dknd*), i1cmp(*lazy-thunk*))
+|I1INSl1azy of
+(d1exp(*dknd*), i1cmp,i1cmplst(*frees*))
+//
+(* ****** ****** *)
+//
+|I1INSdp2tr of (i1val(*addof*)) // deref
 //
 (* ****** ****** *)
 //

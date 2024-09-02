@@ -466,9 +466,17 @@ prints("I1INSdl1az(",i1f0,")"))
 //
 |I1INSl1azy
 (dknd, icmp, i1fs) =>
-( print("I1INSl1azy(")
-; prints
-  (dknd, ";", icmp, ";", i1fs, ")"))
+(
+print("I1INSl1azy(");
+prints
+(dknd, ";", icmp, ";", i1fs, ")"))
+//
+(* ****** ****** *)
+//
+|I1INSdp2tr
+(   iptr   ) =>
+(
+  prints("I1INSdp2tr(", iptr, ")"))
 //
 (* ****** ****** *)
 //
