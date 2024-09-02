@@ -276,6 +276,50 @@ gseq_append10
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< a: vt >
+list_vt_rappend00
+  (xs, ys) =
+(
+  loop(xs, ys)) where
+{
+//
+fnx
+loop
+{m,n:nat} .<m>.
+( xs0
+: list_vt(a, m)
+, ys0
+: list_vt(a, n)
+) : list_vt(a, m+n) =
+(
+case+ xs0 of
+| ~
+list_vt_nil
+( (*void*) ) => ys0
+| @
+list_vt_cons(_, _) =>
+let
+  val xs1 = xs0.1
+  val ( ) = xs0.1 := ys0
+in
+(
+  $fold(xs0); loop(xs1, xs0) )
+end // end of [list_vt_cons(...)]
+)(*case+*)//end-of-[loop(xs0, ys0)]
+//
+}(*where*)//end-of-[list_vt_rappend00(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+list_vt_reverse0(xs) =
+list_vt_rappend00<a>(xs, list_vt_nil(*void*))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

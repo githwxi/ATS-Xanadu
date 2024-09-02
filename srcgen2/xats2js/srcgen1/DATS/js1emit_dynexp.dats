@@ -162,7 +162,7 @@ ipat.node() of
 (
 prints
 ("XATSCTAG("
-,'"', name, '"', ", ", ctag, ")")
+,'"', name, '"', ",", ctag, ")")
 ) where
 {
   val ctag = d2con_get_ctag(d2c0)
@@ -1034,11 +1034,15 @@ i1valjs1_list(filr,i1vs);strnfpr(filr,"))"))
 //
 (* ****** ****** *)
 //
+|I1INSpcon
+(lab0, i1v1) =>
+(
+prints("XATSPCON(", i1v1, ",", lab0, ")"))
+//
 |I1INSpflt
 (lab0, i1v1) =>
 (
 prints("XATSPFLT(", i1v1, "[", lab0, "]", ")"))
-//
 |I1INSproj
 (lab0, i1v1) =>
 (

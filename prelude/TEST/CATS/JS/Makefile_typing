@@ -8,6 +8,7 @@ all:: test02
 all:: test03
 all:: test04
 all:: test05
+all:: test06
 ########################################################################
 test01: \
 test01_a0rf000.dats; \
@@ -31,6 +32,11 @@ $(XATSHOME)/srcgen2/UTIL/xatsopt_typing_dats.js $<
 ########################################################################
 test05: \
 test05_gdbg000.dats; \
+$(NODE) --stack-size=4096 \
+$(XATSHOME)/srcgen2/UTIL/xatsopt_typing_dats.js $<
+########################################################################
+test06: \
+test06_list000.dats; \
 $(NODE) --stack-size=4096 \
 $(XATSHOME)/srcgen2/UTIL/xatsopt_typing_dats.js $<
 ########################################################################
