@@ -420,6 +420,8 @@ gs_free_a12(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11): void
 //
 (* ****** ****** *)
 //
+#symload free with gs_free_a1
+//
 #symload frees with gs_free_a1
 #symload frees with gs_free_a2
 #symload frees with gs_free_a3
@@ -564,6 +566,9 @@ gs_work_a12(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11): void
 //
 (* ****** ****** *)
 //
+#symload work with gs_work_a1
+//
+#symload works with gs_work_a0
 #symload works with gs_work_a1
 #symload works with gs_work_a2
 #symload works with gs_work_a3
@@ -711,6 +716,9 @@ gs_print_a12(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11): void
 //
 (* ****** ****** *)
 //
+#symload print with gs_print_a1
+//
+#symload prints with gs_print_a0
 #symload prints with gs_print_a1
 #symload prints with gs_print_a2
 #symload prints with gs_print_a3
