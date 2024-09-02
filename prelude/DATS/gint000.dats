@@ -46,6 +46,12 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef ut = unit
 (* ****** ****** *)
 (* ****** ****** *)
+#impltmp
+g_0<si>() = ( 0 )
+#impltmp
+g_1<si>() = ( 1 )
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 g_si<si>(i0) = (i0)
@@ -54,7 +60,38 @@ g_si<si>(i0) = (i0)
 (* ****** ****** *)
 //
 #impltmp
-g_print<sint> = sint_print<>
+g_lt<si> = sint_lt_sint<>
+#impltmp
+g_gt<si> = sint_gt_sint<>
+#impltmp
+g_eq<si> = sint_eq_sint<>
+//
+#impltmp
+g_lte<si> = sint_lte_sint<>
+#impltmp
+g_gte<si> = sint_gte_sint<>
+#impltmp
+g_neq<si> = sint_neq_sint<>
+//
+#impltmp
+g_cmp<si> = sint_cmp_sint<>
+//
+(* ****** ****** *)
+//
+#impltmp
+g_add<si> = sint_add_sint<>
+#impltmp
+g_sub<si> = sint_sub_sint<>
+#impltmp
+g_mul<si> = sint_mul_sint<>
+#impltmp
+g_div<si> = sint_div_sint<>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print<si> = sint_print<>
 //
 (* ****** ****** *)
 (* ****** ****** *)
