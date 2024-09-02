@@ -67,8 +67,6 @@ let XATSVAR1 = (init) => XATSROOT([init])
 let XATSADDR = (addr) => addr // HX: no-op
 let XATSFLAT = (addr) => XATS000_lvget(addr)
 //
-let XATSDP2TR = (addr) => XATS000_lvget(addr)
-//
 ////////////////////////////////////////////////////////////////////////////////////
 
 let XATSCTAG = (_, t) => t
@@ -94,6 +92,9 @@ let XATS000_fold = (pcon) => null
 let XATS000_free = (pcon) => null
 
 ////////////////////////////////////////////////////////////////////////////////////
+//
+let XATS000_dp2tr =
+  (p2tr) => XATS000_lvget(p2tr)
 //
 let XATS000_dl0az = (dlaz) => dlaz()
 let XATS000_dl1az = (dlaz) => dlaz(1)
