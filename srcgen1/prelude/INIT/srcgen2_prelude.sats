@@ -237,10 +237,24 @@ HX: homogeneous tuples
 //
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/list000.sats"
+*)
+#include
+"srcgen1/prelude/SATS/list000.sats"
+//
+(* ****** ****** *)
+//
+(*
 #include
 "srcgen1/prelude/SATS/optn000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/optn000.sats"
+//
+(* ****** ****** *)
+//
 #include
 "srcgen1/prelude/SATS/strm000.sats"
 //
