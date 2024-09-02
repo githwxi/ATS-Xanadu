@@ -370,7 +370,7 @@ fun
 <r0:vt>
 gseq_ifolditm_f3un
 ( xs: xs
-, r0: r0, fopr: (r0,i0,x0)->(r0)): (r0)
+, r0: r0, fopr: (r0,ni,x0)->(r0)): (r0)
 //
 #symload ifolditm with gseq_ifolditm_f3un of 0100
 #symload ifolditm_fun with gseq_ifolditm_f3un of 0100
@@ -381,7 +381,7 @@ fun
 <r0:vt>
 gseq_irfolditm_f3un
 ( xs: xs
-, r0: r0, fopr: (r0,i0,x0)->(r0)): (r0)
+, r0: r0, fopr: (r0,ni,x0)->(r0)): (r0)
 //
 #symload irfolditm with gseq_irfolditm_f3un of 0100
 #symload irfolditm_fun with gseq_irfolditm_f3un of 0100
@@ -447,7 +447,7 @@ fun
 <r0:vt>
 gseq_ifoldall_f3un
 ( xs: xs
-, r0: r0, fopr: (r0,i0,x0)->(r0)): (r0)
+, r0: r0, fopr: (r0,ni,x0)->(r0)): (r0)
 //
 #symload ifoldall with gseq_ifoldall_f3un of 0100
 #symload ifoldall_fun with gseq_ifoldall_f3un of 0100
@@ -458,7 +458,7 @@ fun
 <r0:vt>
 gseq_irfoldall_f3un
 ( xs: xs
-, r0: r0, fopr: (r0,i0,x0)->(r0)): (r0)
+, r0: r0, fopr: (r0,ni,x0)->(r0)): (r0)
 //
 #symload irfoldall with gseq_irfoldall_f3un of 0100
 #symload irfoldall_fun with gseq_irfoldall_f3un of 0100
