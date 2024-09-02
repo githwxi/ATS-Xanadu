@@ -71,21 +71,38 @@ For further program verification
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/gnum000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/gnum000.sats"
+//
+(* ****** ****** *)
+//
+(*
 #include
 "srcgen1/prelude/SATS/gord000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/gord000.sats"
 //
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/gcls000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/gcls000.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/gfor000.sats"
+*)
 //
 (* ****** ****** *)
 //
@@ -117,8 +134,12 @@ For further program verification
 //
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/gasz000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/gasz000.sats"
 //
 (* ****** ****** *)
 //
@@ -139,8 +160,12 @@ For further program verification
 //
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/gsyn000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/gsyn000.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
