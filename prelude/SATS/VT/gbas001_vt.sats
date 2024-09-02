@@ -111,15 +111,6 @@ forall$test1(x0: !x0): bool
 //
 fun
 <x0:vt>
-rforall$test0(x0: ~x0): bool
-fun
-<x0:vt>
-rforall$test1(x0: !x0): bool
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
 exists$test0(x0: ~x0): bool
 fun
 <x0:vt>
@@ -127,10 +118,49 @@ exists$test1(x0: !x0): bool
 //
 fun
 <x0:vt>
+rforall$test0(x0: ~x0): bool
+fun
+<x0:vt>
+rforall$test1(x0: !x0): bool
+//
+fun
+<x0:vt>
 rexists$test0(x0: ~x0): bool
 fun
 <x0:vt>
 rexists$test1(x0: !x0): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+iforall$test0(ni, ~x0): bool
+fun
+<x0:vt>
+iforall$test1(ni, !x0): bool
+//
+fun
+<x0:vt>
+iexists$test0(ni, ~x0): bool
+fun
+<x0:vt>
+iexists$test1(ni, !x0): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+irforall$test0(ni, ~x0): bool
+fun
+<x0:vt>
+irforall$test1(ni, !x0): bool
+//
+fun
+<x0:vt>
+irexists$test0(ni, ~x0): bool
+fun
+<x0:vt>
+irexists$test1(ni, !x0): bool
 //
 (* ****** ****** *)
 //
@@ -148,6 +178,20 @@ fun
 <x0:vt>
 rforitm$work1(x0: !x0): void
 //
+fun
+<x0:vt>
+iforitm$work0(ni, ~x0): void
+fun
+<x0:vt>
+iforitm$work1(ni, !x0): void
+//
+fun
+<x0:vt>
+irforitm$work0(ni, ~x0): void
+fun
+<x0:vt>
+irforitm$work1(ni, !x0): void
+//
 (* ****** ****** *)
 //
 fun
@@ -158,18 +202,6 @@ fun
 <x0:vt>
 <r0:vt>
 folditm$fopr1(r0, !x0): (r0)
-//
-fun
-<x0:vt>
-<r0:vt>
-foldall$fopr0(r0, ~x0): (bool, r0)
-fun
-<x0:vt>
-<r0:vt>
-foldall$fopr1(r0, !x0): (bool, r0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 <x0:vt>
@@ -189,7 +221,25 @@ fun
 <r0:vt>
 ifolditm$fopr1(r0, ni, !x0): (r0)
 //
+fun
+<x0:vt>
+<r0:vt>
+irfolditm$fopr0(ni, ~x0, r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+irfolditm$fopr1(ni, !x0, r0): (r0)
+//
 (* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+foldall$fopr0(r0, ~x0): (bool, r0)
+fun
+<x0:vt>
+<r0:vt>
+foldall$fopr1(r0, !x0): (bool, r0)
 //
 fun
 <x0:vt>
@@ -208,6 +258,15 @@ fun
 <x0:vt>
 <r0:vt>
 ifoldall$fopr1(r0, ni, !x0): (bool, r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+irfoldall$fopr0(ni, ~x0, r0): (bool, r0)
+fun
+<x0:vt>
+<r0:vt>
+irfoldall$fopr1(ni, !x0, r0): (bool, r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

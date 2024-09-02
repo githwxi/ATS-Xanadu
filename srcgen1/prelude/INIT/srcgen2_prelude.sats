@@ -49,30 +49,26 @@ For further program verification
 //
 (*
 #include
-"srcgen1/prelude/SATS/bool000.sats"
-*)
-#include
-"srcgen2/prelude/SATS/bool000.sats"
-//
-(*
-#include
-"srcgen1/prelude/SATS/char000.sats"
-*)
-#include
-"srcgen2/prelude/SATS/char000.sats"
-//
-(* ****** ****** *)
-//
-#include
 "srcgen1/prelude/SATS/gbas000.sats"
 #include
 "srcgen1/prelude/SATS/gbas001.sats"
+*)
+#include
+"srcgen2/prelude/SATS/gbas000.sats"
+#include
+"srcgen2/prelude/SATS/VT/gbas000_vt.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/gdbg000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/gdbg000.sats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #include
@@ -91,17 +87,33 @@ For further program verification
 #include
 "srcgen1/prelude/SATS/gfor000.sats"
 //
+(* ****** ****** *)
+//
+(*
 #include
 "srcgen1/prelude/SATS/gfun000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/gfun000.sats"
 //
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/gseq000.sats"
 #include
 "srcgen1/prelude/SATS/gseq001.sats"
+*)
+//
+#include
+"srcgen2/prelude/SATS/gseq000.sats"
+//
+(* ****** ****** *)
+//
+(*
 #include
 "srcgen1/prelude/SATS/gseqn00.sats"
+*)
 //
 (* ****** ****** *)
 //
@@ -135,6 +147,22 @@ For further program verification
 #include
 "srcgen1/prelude/SATS/rand000.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+#include
+"srcgen1/prelude/SATS/bool000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/bool000.sats"
+//
+(*
+#include
+"srcgen1/prelude/SATS/char000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/char000.sats"
+//
 (* ****** ****** *)
 //
 (*
@@ -195,8 +223,10 @@ For further program verification
 //
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/xunimpl.sats"
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -212,10 +242,19 @@ For viewtypes (that is, linear types)
 //
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/VT/gseq000_vt.sats"
+*)
+#include
+"srcgen2/prelude/SATS/VT/gseq000_vt.sats"
+//
+(* ****** ****** *)
+//
+(*
 #include
 "srcgen1/prelude/SATS/VT/gseqn00_vt.sats"
+*)
 //
 (* ****** ****** *)
 //
@@ -259,13 +298,17 @@ For viewtypes (that is, linear types)
 //
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/VT/synoug0_vt.sats"
+*)
 //
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/VT/xunimpl_vt.sats"
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
