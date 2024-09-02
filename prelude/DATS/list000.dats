@@ -285,6 +285,24 @@ case+ xs of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+(*
+HX-2024-09-01:
+Mon 02 Sep 2024 06:16:45 PM EDT
+*)
+//
+#impltmp
+<(*tmp*)>
+list_make_nfun
+  (n0, f0) =
+list_fmake_fwork<>
+(
+lam(work) =>
+foritm(n0, //HX:it may not be
+  lam(i0) => work(f0(i0))))//efficient!
+//
+(* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2024-08-16:
 Note that

@@ -39,13 +39,16 @@ let XATSCAPP = (_, capp) => capp
 let XATSCAST = (_, args) => args[0]
 
 ////////////////////////////////////////////////////////////////////////////////////
-
+//
+let XATSPCON =
+  (pcon, argi) => pcon[argi+1]
+//
 let XATSPFLT = (pflt) => pflt
 let XATSPROJ = (proj) => proj
 let XATSP0RJ = (p0rj) => p0rj
 let XATSP1RJ = (_, p1rj) => p1rj
 let XATSP1CN = (_, p1cn) => p1cn
-
+//
 ////////////////////////////////////////////////////////////////////////////////////
 //
 let XATSTRCD = (knd0) => knd0
