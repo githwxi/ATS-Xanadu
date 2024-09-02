@@ -24,7 +24,8 @@ For testing xatslib/JS!
 (* ****** ****** *)
 
 val AB =
-strn(26, lam(i) => 'a'+i)
+strn_make_nfun
+(26, lam(i) => 'a'+i)
 val () = prints("AB = ", AB, "\n")
 //
 val BA = strn_reverse(AB)
