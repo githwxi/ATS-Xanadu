@@ -75,6 +75,47 @@ XATS2JS_sint_neq_sint
 }
 //
 ////////////////////////////////////////////////////////////////////////.
+//
+function
+XATS2JS_sint_add_sint
+  (i1, i2)
+{
+  return (i1 + i2) // HX: add
+}
+//
+//
+function
+XATS2JS_sint_sub_sint
+  (i1, i2)
+{
+  return (i1 - i2) // HX: sub
+}
+//
+//
+function
+XATS2JS_sint_mul_sint
+  (i1, i2)
+{
+  return (i1 * i2) // HX: mul
+}
+//
+//
+function
+XATS2JS_sint_div_sint
+  (i1, i2)
+{
+  return (i1 / i2) // HX: div
+}
+//
+//
+function
+XATS2JS_sint_mod_sint
+  (i1, i2)
+{
+  return (i1 % i2) // HX: mod
+}
+//
+////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 // end of [ATS3/XANADU_prelude_DATS_CATS_JS_gint000.cats]
 ////////////////////////////////////////////////////////////////////////.

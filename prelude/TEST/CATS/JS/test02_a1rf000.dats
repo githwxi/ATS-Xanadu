@@ -10,9 +10,6 @@ For testing xatslib/JS!
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"srcgen1\
-/prelude/HATS/prelude_dats.hats"
-#include
 "srcgen2\
 /prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
@@ -21,12 +18,8 @@ For testing xatslib/JS!
 /prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
 #include
-"srcgen1\
-/prelude/HATS/CATS/JS/prelude_dats.hats"
-(* ****** ****** *)
-#staload _ =
-"srcgen1\
-/prelude/DATS/CATS/JS/Node/g_print.dats"
+"srcgen2\
+/prelude/HATS/prelude_NODE_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
