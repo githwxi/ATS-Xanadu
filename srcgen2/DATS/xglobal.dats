@@ -61,7 +61,9 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
 #staload "./../SATS/trans12.sats"
+#staload "./../SATS/tread12.sats"
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
@@ -659,6 +661,14 @@ val
 dpar = d1parsed_of_trans01(dpar)
 val
 dpar = d2parsed_of_trans12(dpar)
+//
+(*
+val
+dpar = d2parsed_of_tread12(dpar)
+val () =
+prerrsln
+("f0_pvsload(12): dpar = ", dpar)
+*)
 //
 in//let
 //

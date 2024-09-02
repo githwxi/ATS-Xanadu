@@ -44,27 +44,23 @@ Authoremail: gmhwxiATgmailDOTcom
 HX-2024-07-13:
 We should probably
 not go higher to handle z3!!!
+*)
 #abstype
 z2tup_type
 (xs:t0,ys:t0) <= (xs,ys)
 #sexpdef z2tup = z2tup_type
-HX-2024-09-02:
-This one is now in [tupl000.dats]
-Mon 02 Sep 2024 11:54:45 AM EDT
-*)
 //
-(*
 fun
 <xs:t0>
 <ys:t0>
 z2tup_make
-( xs, ys ): z2tup(xs, ys)
+(xs:xs, ys:ys): z2tup(xs, ys)
 fun
 <xs:t0>
 <ys:t0>
 z2tup_unmk
-(z2tup(xs, ys)): @(xs, ys)
-*)
+( ztup
+: z2tup(xs, ys)): @( xs, ys )
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -318,27 +314,23 @@ HX-2024-08-04:
 We should probably
 not go higher to handle x3!!!
 Sun 04 Aug 2024 08:10:45 AM EDT
+*)
 #abstype
 x2tup_type
 (xs:t0,ys:t0) <= (xs,ys)
 #sexpdef x2tup = x2tup_type
-HX-2024-09-02:
-This one is in [tupl000.dats]!
-Mon 02 Sep 2024 11:54:45 AM EDT
-*)
 //
-(*
 fun
 <xs:t0>
 <ys:t0>
 x2tup_make
-( xs, ys ): x2tup(xs, ys)
+(xs:xs, ys:ys): x2tup(xs, ys)
 fun
 <xs:t0>
 <ys:t0>
 x2tup_unmk
-(x2tup(xs, ys)): @(xs, ys)
-*)
+( xtup
+: x2tup(xs, ys)): @( xs, ys )
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -105,47 +105,6 @@ t1up2_t0
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstype
-z2tup_type
-(a0:t0,a1:t0) <= (a0,a1)
-#abstype
-x2tup_type
-(a0:t0,a1:t0) <= (a0,a1)
-#sexpdef z2tup = z2tup_type
-#sexpdef x2tup = x2tup_type
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a0:t0>
-<a1:t0>
-z2tup_make
-( x1: a0
-, x2: a1): z2tup(a0,a1)
-fun
-<a0:t0>
-<a1:t0>
-z2tup_unmk
-(ztup: z2tup(a0,a1)): @(a0,a1)
-//
-(* ****** ****** *)
-//
-fun
-<a0:t0>
-<a1:t0>
-x2tup_make
-( x1: a0
-, x2: a1): x2tup(a0,a1)
-fun
-<a0:t0>
-<a1:t0>
-x2tup_unmk
-(xtup: x2tup(a0,a1)): @(a0,a1)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (*
 HX-2024-08-17:
 *)

@@ -267,7 +267,7 @@ HX: homogeneous tuples
 "srcgen1/prelude/SATS/list000.sats"
 *)
 #include
-"srcgen1/prelude/SATS/list000.sats"
+"srcgen2/prelude/SATS/list000.sats"
 //
 (* ****** ****** *)
 //
