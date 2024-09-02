@@ -318,15 +318,34 @@ For viewtypes (that is, linear types)
 #include
 "srcgen1/prelude/SATS/VT/axsz000_vt.sats"
 //
+(* ****** ****** *)
+//
+(*
 #include
 "srcgen1/prelude/SATS/VT/list000_vt.sats"
+*)
+#include
+"srcgen2/prelude/SATS/VT/list000_vt.sats"
+//
+(* ****** ****** *)
+//
+(*
 #include
 "srcgen1/prelude/SATS/VT/optn000_vt.sats"
+*)
+#include
+"srcgen2/prelude/SATS/VT/optn000_vt.sats"
 //
+(* ****** ****** *)
+//
+(*
 #include
 "srcgen1/prelude/SATS/VT/strm000_vt.sats"
 #include
 "srcgen1/prelude/SATS/VT/strm001_vt.sats"
+*)
+#include
+"srcgen2/prelude/SATS/VT/strm000_vt.sats"
 //
 (* ****** ****** *)
 //
