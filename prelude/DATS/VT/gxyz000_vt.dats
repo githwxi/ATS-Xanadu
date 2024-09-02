@@ -39,6 +39,16 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{ x0:t0 }
+g_print0<x0> = g_print<x0>
+#impltmp
+{ x0:t0 }
+g_print1<x0> = g_print<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-07-29:
 Sat 03 Aug 2024 05:17:37 PM EDT
