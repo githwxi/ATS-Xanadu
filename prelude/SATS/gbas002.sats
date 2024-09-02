@@ -44,13 +44,14 @@ Authoremail: gmhwxiATgmailDOTcom
 HX-2024-07-13:
 We should probably
 not go higher to handle z3!!!
-*)
-(* ****** ****** *)
-(* ****** ****** *)
 #abstype
 z2tup_type
 (xs:t0,ys:t0) <= (xs,ys)
 #sexpdef z2tup = z2tup_type
+HX-2024-09-02:
+This one is now in [tupl000.dats]
+Mon 02 Sep 2024 11:54:45 AM EDT
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -317,12 +318,14 @@ HX-2024-08-04:
 We should probably
 not go higher to handle x3!!!
 Sun 04 Aug 2024 08:10:45 AM EDT
-*)
-//
 #abstype
 x2tup_type
 (xs:t0,ys:t0) <= (xs,ys)
 #sexpdef x2tup = x2tup_type
+HX-2024-09-02:
+This one is in [tupl000.dats]!
+Mon 02 Sep 2024 11:54:45 AM EDT
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
