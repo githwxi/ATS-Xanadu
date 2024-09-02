@@ -592,6 +592,28 @@ val (  ) =
 }(*where*)//end-of-[i1val_dl1az(env0,...)]
 //
 (* ****** ****** *)
+//
+fun
+i1val_dp2tr
+( env0:
+! envi0i1
+, loc0: loc_t
+, i1v0: i1val
+  (*left-value*)): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val itnm = i1tnm_new0((*0*))
+val iins = I1INSdp2tr( i1v0 )
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_dp2tr(env0,...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -713,28 +735,6 @@ val (  ) =
 (
   envi0i1_insert_ilet(env0, ilet) )
 }(*where*)//end-of-[i1val_l1azy(env0,...)]
-//
-(* ****** ****** *)
-//
-fun
-i1val_dp2tr
-( env0:
-! envi0i1
-, loc0: loc_t
-, i1v0: i1val
-  (*left-value*)): i1val =
-(
-i1val_tnm(loc0, itnm)) where
-{
-//
-val itnm = i1tnm_new0((*0*))
-val iins = I1INSdp2tr( i1v0 )
-val ilet = I1LETnew1(itnm, iins)
-//
-val (  ) =
-(
-  envi0i1_insert_ilet(env0, ilet) )
-}(*where*)//end-of-[i1val_dp2tr(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1195,6 +1195,7 @@ iexp.node() of
 //
 |I0Edl0az _ => f0_dl0az(env0, iexp)
 |I0Edl1az _ => f0_dl1az(env0, iexp)
+//
 |I0Edp2tr _ => f0_dp2tr(env0, iexp)
 //
 (* ****** ****** *)
@@ -2584,7 +2585,7 @@ trxi0i1_i0exp(env0, i0e1)
 {
 //
 val-I0Edp2tr(i0e1) = iexp.node() }
-(*where*)//end-of-[f0_proj(env0,iexp)]
+(*where*)//end-of-[f0_dp2tr(env0,iexp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

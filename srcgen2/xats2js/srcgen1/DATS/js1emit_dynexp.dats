@@ -1090,6 +1090,13 @@ xtrcdjs1(filr,tknd);strnfpr(filr,", ")
 //
 (* ****** ****** *)
 //
+|I1INSdp2tr
+(   i1v1   ) =>
+(strnfpr(filr,"XATS000_dp2tr(")
+;i1valjs1(filr,i1v1);strnfpr(filr,")"))
+//
+(* ****** ****** *)
+//
 |
 _(*otherwise*) => i1ins_fprint(filr,iins)
 (* ****** ****** *)
