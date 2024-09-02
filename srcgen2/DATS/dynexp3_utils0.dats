@@ -1837,7 +1837,7 @@ end(*let*) // end of [ D3Ctmpsub(...) ]
 //
 } where {
 //
-(*
+// (*
 //
 val () =
 let
@@ -1851,7 +1851,7 @@ prerrsln("tmpmatch_d3cl_t2js: d3cl = ", d3cl)
 val () =
 prerrsln("tmpmatch_d3cl_t2js: t2js = ", t2js)
 //
-*)
+// *)
 //
 }(*where*)//end-of-[tmpmatch_d3cl_t2js(d3cl,t2js)]
 //

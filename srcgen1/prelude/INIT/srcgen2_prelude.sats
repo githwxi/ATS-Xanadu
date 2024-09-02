@@ -209,10 +209,33 @@ For further program verification
 //
 (* ****** ****** *)
 //
+(*
+(*
+HX: homogeneous tuples
+*)
 #include
 "srcgen1/prelude/SATS/tupn000.sats"
 #include
 "srcgen1/prelude/SATS/tupn001.sats"
+*)
+//
+(* ****** ****** *)
+//
+(*
+#include
+"srcgen1/prelude/SATS/tupl000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/tupl000.sats"
+//
+(* ****** ****** *)
+//
+(*
+#include
+"srcgen1/prelude/SATS/utpl000.sats"
+*)
+//
+(* ****** ****** *)
 //
 #include
 "srcgen1/prelude/SATS/list000.sats"
@@ -220,11 +243,6 @@ For further program verification
 "srcgen1/prelude/SATS/optn000.sats"
 #include
 "srcgen1/prelude/SATS/strm000.sats"
-//
-#include
-"srcgen1/prelude/SATS/tupl000.sats"
-#include
-"srcgen1/prelude/SATS/utpl000.sats"
 //
 (* ****** ****** *)
 //
@@ -310,8 +328,14 @@ For viewtypes (that is, linear types)
 #include
 "srcgen1/prelude/SATS/VT/strm001_vt.sats"
 //
+(* ****** ****** *)
+//
+(*
 #include
 "srcgen1/prelude/SATS/VT/tupl000_vt.sats"
+*)
+#include
+"srcgen2/prelude/SATS/VT/tupl000_vt.sats"
 //
 (* ****** ****** *)
 //
