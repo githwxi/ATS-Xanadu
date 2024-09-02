@@ -310,10 +310,18 @@ For viewtypes (that is, linear types)
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #include
-"srcgen1/prelude/SATS/VT/gcls000_vt.sats"
-//
+"srcgen2/prelude/SATS/VT/gnum000_vt.sats"
+(* ****** ****** *)
+#include
+"srcgen2/prelude/SATS/VT/gord000_vt.sats"
+(* ****** ****** *)
+#include
+"srcgen2/prelude/SATS/VT/gfun000_vt.sats"
+(* ****** ****** *)
+#include
+"srcgen2/prelude/SATS/VT/gcls000_vt.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -332,13 +340,21 @@ For viewtypes (that is, linear types)
 //
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/VT/gasz000_vt.sats"
+*)
+#include
+"srcgen2/prelude/SATS/VT/gasz000_vt.sats"
 //
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/VT/gsyn000_vt.sats"
+*)
+#include
+"srcgen2/prelude/SATS/VT/gsyn000_vt.sats"
 //
 (* ****** ****** *)
 //
