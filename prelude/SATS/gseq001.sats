@@ -490,7 +490,6 @@ fun
 gseq_map_ares_f1un
 (xs: xs, fopr: (x0)->(y0)): (ys)
 //
-#symload map with gseq_map_ares_f1un of 0100
 #symload map_fun with gseq_map_ares_f1un of 0100
 //
 fun
@@ -499,7 +498,6 @@ fun
 gseq_map_self_f1un
 (xs: xs, fopr: (x0)->(x0)): (xs)
 //
-#symload map with gseq_map_self_f1un of 0110
 #symload map_fun with gseq_map_self_f1un of 0110
 //
 (* ****** ****** *)

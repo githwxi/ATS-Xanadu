@@ -324,17 +324,42 @@ HX-2024-07-28:
 Sun 28 Jul 2024 01:52:55 PM EDT
 *)
 //
+(* ****** ****** *)
+//
+(*
+fun
+<x0:vt>
+strm_vt_strqize0
+(xs: strm_vt(x0)): strq_vt(x0)
+#symload strqize0 with strm_vt_strqize0 of 1000
+*)
+//
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 strm_vt_listize0
 (xs: strm_vt(x0)): list_vt(x0)
 fun
 <x0:vt>
+strq_vt_listize0
+{n0:i0}
+(xs: strq_vt(x0,n0)): list_vt(x0,n0)
+//
+fun
+<x0:vt>
 strm_vt_rlistize0
 (xs: strm_vt(x0)): list_vt(x0)
+fun
+<x0:vt>
+strq_vt_rlistize0
+{n0:i0}
+(xs: strq_vt(x0,n0)): list_vt(x0,n0)
 //
 #symload listize0 with strm_vt_listize0 of 1000
+#symload listize0 with strq_vt_listize0 of 1000
 #symload rlistize0 with strm_vt_rlistize0 of 1000
+#symload rlistize0 with strq_vt_rlistize0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
