@@ -208,6 +208,15 @@ HX-2024-07-27:
 Sat 27 Jul 2024 05:56:34 PM EDT
 *)
 //
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+list_vt_append0 =
+list_vt_append00<a>(*void*)
+//
+(* ****** ****** *)
+//
 #impltmp
 < a: vt >
 list_vt_append00
@@ -278,6 +287,13 @@ gseq_append10
 //
 #impltmp
 < a: vt >
+list_vt_rappend0 =
+list_vt_rappend00<a>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
 list_vt_rappend00
   (xs, ys) =
 (
@@ -316,6 +332,10 @@ end // end of [list_vt_cons(...)]
 < a: vt >
 list_vt_reverse0(xs) =
 list_vt_rappend00<a>(xs, list_vt_nil(*void*))
+//
+#impltmp
+< a: vt >
+list_vt_rappend0 = list_vt_rappend00<a>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
