@@ -513,6 +513,20 @@ gseq_map_f1un_list<list(x0)><x0><y0>(*void*)
 //
 #impltmp
 < x0:t0 >
+< y0:vt >
+list_map_vt =
+gseq_map_llist<list(x0)><x0><y0>(*void*)
+#impltmp
+< x0:t0 >
+< y0:vt >
+list_map_f1un_vt =
+gseq_map_f1un_llist<list(x0)><x0><y0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
 < y0:t0 >
 list_maprev =
 gseq_map_rlist<list(x0)><x0><y0>(*void*)
@@ -521,6 +535,19 @@ gseq_map_rlist<list(x0)><x0><y0>(*void*)
 < y0:t0 >
 list_maprev_f1un =
 gseq_map_f1un_rlist<list(x0)><x0><y0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< y0:vt >
+list_maprev_vt =
+gseq_map_rllist<list(x0)><x0><y0>(*void*)
+#impltmp
+< x0:t0 >
+< y0:vt >
+list_maprev_f1un_vt =
+gseq_map_f1un_rllist<list(x0)><x0><y0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
