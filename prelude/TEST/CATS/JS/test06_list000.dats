@@ -35,6 +35,9 @@ val zs =
 maprev(xs, lam(i:sint) => i*i)
 val () = prints("zs = ", zs, "\n")
 //
+val () =
+prints("yszs = ", appends(ys, zs), '\n')
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -132,6 +132,14 @@ Wed 17 Jul 2024 05:27:03 PM EDT
 //
 fun
 <a:t0>
+list_extend
+{n:i0}
+( xs
+: list(a, n)
+, y0: a(*elt*)): list(a, n+1)
+//
+fun
+<a:t0>
 list_append
 {m,n:i0}
 ( xs: list(a, m)
