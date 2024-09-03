@@ -40,6 +40,15 @@ strn000
 strn000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/strn000.cats >> $(PRELUDE_JS)
 ###############################################################
+prelude:: \
+axrf000
+axrf000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/JS/axrf000.cats >> $(PRELUDE_JS)
+prelude:: \
+axsz000
+axsz000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/JS/axsz000.cats >> $(PRELUDE_JS)
+###############################################################
 ###############################################################
 xatslib:: ; \
 echo "//" `date` > $(XATSLIB_JS)
