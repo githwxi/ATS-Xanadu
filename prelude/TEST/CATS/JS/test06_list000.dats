@@ -24,10 +24,16 @@ For testing xatslib/JS!
 (* ****** ****** *)
 //
 val xs =
-list(10, lam(i:sint) => i)
+list
+(10, lam(i:sint) => i)
 val () = prints("xs = ", xs, "\n")
 //
-val ys = list_maprev
+val ys =
+map(xs, lam(i:sint) => i*i)
+val () = prints("ys = ", ys, "\n")
+val zs =
+maprev(xs, lam(i:sint) => i*i)
+val () = prints("zs = ", zs, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
