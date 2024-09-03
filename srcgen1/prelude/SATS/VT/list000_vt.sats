@@ -230,7 +230,7 @@ list_vt_reverse1
 (* ****** ****** *)
 fun
 <a:vt>
-list_vt_rappend0
+list_vt_rappend00
 {m,n:int}
 ( xs: ~list_vt(a, m)
 , ys: ~list_vt(a, n)): list_vt(a, m+n)

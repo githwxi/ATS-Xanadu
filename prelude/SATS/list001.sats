@@ -174,6 +174,48 @@ list_fmake_fwork
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-03:
+Tue 03 Sep 2024 01:11:20 PM EDT
+*)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_map
+{ln:nat}
+(xs: list(x0, ln)): list(y0, ln)
+fun
+<x0:t0>
+<y0:t0>
+list_map_f1un
+{ln:nat}
+(xs: list(x0, ln), (x0)->y0): list(y0, ln)
+//
+#symload map with list_map of 1000
+#symload map with list_map_f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_maprev
+{ln:nat}
+(xs: list(x0, ln)): list(y0, ln)
+fun
+<x0:t0>
+<y0:t0>
+list_maprev_f1un
+{ln:nat}
+(xs: list(x0, ln), (x0)->y0): list(y0, ln)
+//
+#symload maprev with list_maprev of 1000
+#symload maprev with list_maprev_f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

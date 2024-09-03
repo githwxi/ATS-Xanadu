@@ -354,17 +354,16 @@ end // end of [let]
 #impltmp
 <a>(*tmp*)
 list_vt_reverse0(xs) =
-list_vt_rappend0<a>(xs, list_vt_nil())
+list_vt_rappend00<a>(xs, list_vt_nil())
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-list_vt_rappend0
+list_vt_rappend00
   (xs, ys) =
 (
-  loop(xs, ys)
-) where
+  loop(xs, ys)) where
 {
 //
 fnx
@@ -389,7 +388,7 @@ in
 end // end of [list_vt_cons]
 ) (* end of [loop] *)
 //
-} (* end of [list_vt_rappend0] *)
+} (* end of [list_vt_rappend00] *)
 
 (* ****** ****** *)
 
@@ -398,8 +397,7 @@ end // end of [list_vt_cons]
 list_vt_rappend10
   (xs, ys) =
 (
-  loop(xs, ys)
-) where
+  loop(xs, ys)) where
 {
 //
 fnx
@@ -432,8 +430,7 @@ end // end of [list_vt_cons]
 list_vt_rappend11
   (xs, ys) =
 (
-  loop(xs, ys)
-) where
+  loop(xs, ys)) where
 {
 //
 fnx

@@ -493,6 +493,38 @@ fwork(lam(x0) => fmake$fwork$work<x0>(x0)))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-03:
+Tue 03 Sep 2024 01:16:12 PM EDT
+*)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+list_map =
+gseq_map_list<list(x0)><x0><y0>(*void*)
+#impltmp
+< x0:t0 >
+< y0:t0 >
+list_map_f1un =
+gseq_map_f1un_list<list(x0)><x0><y0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+list_maprev =
+gseq_map_rlist<list(x0)><x0><y0>(*void*)
+#impltmp
+< x0:t0 >
+< y0:t0 >
+list_maprev_f1un =
+gseq_map_f1un_rlist<list(x0)><x0><y0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

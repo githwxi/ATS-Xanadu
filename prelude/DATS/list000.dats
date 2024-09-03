@@ -292,7 +292,7 @@ Mon 02 Sep 2024 06:16:45 PM EDT
 *)
 //
 #impltmp
-<(*tmp*)>
+< x0:t0 >
 list_make_nfun
   (n0, f0) =
 list_fmake_fwork<>
