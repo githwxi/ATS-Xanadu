@@ -27,6 +27,8 @@ val xs =
 list(10, lam(i:sint) => i)
 val () = prints("xs = ", xs, "\n")
 //
+val ys = list_maprev
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
