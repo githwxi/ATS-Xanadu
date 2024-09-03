@@ -122,6 +122,12 @@ list_vt_copy
 //
 fun
 <x0:vt>
+list_vt_append0
+{n1,n2:i0}
+( xs: ~list_vt(x0,n1)
+, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+fun
+<x0:vt>
 list_vt_append00
 {n1,n2:i0}
 ( xs: ~list_vt(x0,n1)
