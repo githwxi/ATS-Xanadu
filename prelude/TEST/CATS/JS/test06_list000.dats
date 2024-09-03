@@ -44,4 +44,4 @@ prints("yszs = ", appends(ys, zs), '\n')
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_TEST_CATS_JS_test05_list000.dats] *)
+(* end of [ATS3/XANADU_prelude_TEST_CATS_JS_test06_list000.dats] *)

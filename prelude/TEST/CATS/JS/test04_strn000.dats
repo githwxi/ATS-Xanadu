@@ -22,10 +22,9 @@ For testing xatslib/JS!
 /prelude/HATS/prelude_NODE_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-
-val AB =
-strn_make_nfun
-(26, lam(i) => 'a'+i)
+//
+val AB = strn
+(26, lam(i:sint) => 'a'+i)
 val () = prints("AB = ", AB, "\n")
 //
 val BA = strn_reverse(AB)
@@ -33,7 +32,9 @@ val () = prints("BA = ", BA, "\n")
 //
 val ABAB = appends(AB, AB)
 val () = prints("ABAB = ", ABAB, "\n")
-
+val ABBA = appends(AB, BA)
+val () = prints("ABBA = ", ABBA, "\n")
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
