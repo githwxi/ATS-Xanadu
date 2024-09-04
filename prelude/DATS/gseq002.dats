@@ -410,7 +410,7 @@ gseq_z2forcmp
 where
 {
 #impltmp
-z2forcmp$fcmp<x0> = g_cmp<x0>
+z2forcmp$test<x0> = g_cmp<x0>
 }(*where*)//end-of-[gseq_cmp(xs,ys)]
 //
 #impltmp
@@ -431,7 +431,7 @@ strm_vt_z2forcmp0<x0><y0>(xs, ys))
 where
 {
 #impltmp
-z2forcmp$fcmp0<x0><y0> = z2forcmp$fcmp<x0><y0>
+z2forcmp$test0<x0><y0> = z2forcmp$test<x0><y0>
 }
 end where
 {

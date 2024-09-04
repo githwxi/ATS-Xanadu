@@ -141,16 +141,16 @@ end(*let*) // end-of-[list_btwe_vt(s1,f2)]
 //
 #impltmp
 <a>(*tmp*)
-list_make_nval
+list_make_ncpy
   (n0, x0) =
 (
 list_vt2t
-(list_make_nval_vt<a>(n0, x0))
+(list_make_ncpy_vt<a>(n0, x0))
 )
 //
 #impltmp
 <a>(*tmp*)
-list_make_nval_vt
+list_make_ncpy_vt
   (n0, x0) =
 (
 loop(n0, list_vt_nil())
@@ -172,7 +172,7 @@ loop
 ( pre(i0)
 , list_vt_cons(x0, xs)) else xs
 )
-} (* end of [list_make_nval_vt] *)
+} (* end of [list_make_ncpy_vt] *)
 //
 (* ****** ****** *)
 //

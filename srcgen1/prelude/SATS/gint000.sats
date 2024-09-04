@@ -72,23 +72,36 @@ gint_parse_uint(strn): uint
 (* ****** ****** *)
 //
 fun<>
+sint_neg
+{i:int}(x: sint(i)): sint(-i)
+fun<>
 gint_neg_sint
 {i:int}(x: sint(i)): sint(-i)
 //
 (* ****** ****** *)
 //
 fun<>
-gint_abs_sint
-{i:int}(x: sint(i)): sint(abs(i))
+sint_suc
+{i:int}(x: sint(i)): sint(i+1)
+fun<>
+gint_suc_sint
+{i:int}(x: sint(i)): sint(i+1)
+//
+fun<>
+sint_pre
+{i:int}(x: sint(i)): sint(i-1)
+fun<>
+gint_pre_sint
+{i:int}(x: sint(i)): sint(i-1)
 //
 (* ****** ****** *)
 //
 fun<>
-gint_suc_sint
-{i:int}(x: sint(i)): sint(i+1)
+sint_abs
+{i:int}(x: sint(i)): sint(abs(i))
 fun<>
-gint_pre_sint
-{i:int}(x: sint(i)): sint(i-1)
+gint_abs_sint
+{i:int}(x: sint(i)): sint(abs(i))
 //
 (* ****** ****** *)
 //

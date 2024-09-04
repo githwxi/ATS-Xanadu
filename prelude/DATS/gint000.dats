@@ -77,6 +77,7 @@ g_neq<si> = sint_neq_sint<>
 g_cmp<si> = sint_cmp_sint<>
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 g_add<si> = sint_add_sint<>
@@ -92,6 +93,30 @@ g_div<si> = sint_div_sint<>
 //
 #impltmp
 g_print<si> = sint_print<>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+sint_neg( i1 ) = ( 0 - i1 )
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+sint_suc( i1 ) = ( i1 + 1 )
+#impltmp
+<(*tmp*)>
+sint_pre( i1 ) = ( i1 - 1 )
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+sint_abs( i1 ) =
+(
+if i1 >= 0 then i1 else -i1)
 //
 (* ****** ****** *)
 (* ****** ****** *)

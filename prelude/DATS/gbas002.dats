@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -34,6 +35,62 @@ Sun 14 Jul 2024 12:24:44 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a0:t0 >
+< a1:t0 >
+z2tup_make
+( x1, x2 ) =
+(
+  $UN.castxy@(x1, x2))
+#impltmp
+< a0:t0 >
+< a1:t0 >
+z2tup_unmk
+ ( ztup ) = $UN.castxy(ztup)
+//
+#impltmp
+{ a0:t0
+, a1:t0 }
+g_ptype
+<z2tup(a0,a1)>
+(  (*void*)  ) =
+( pstrn"z2tup("
+; g_ptype<a0>(); pstrn(",")
+; g_ptype<a1>(); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a0:t0 >
+< a1:t0 >
+x2tup_make
+( x1, x2 ) =
+(
+  $UN.castxy@(x1, x2))
+#impltmp
+< a0:t0 >
+< a1:t0 >
+x2tup_unmk
+ ( xtup ) = $UN.castxy(xtup)
+//
+#impltmp
+{ a0:t0
+, a1:t0 }
+g_ptype
+<x2tup(a0,a1)>
+(  (*void*)  ) =
+( pstrn"x2tup("
+; g_ptype<a0>(); pstrn(",")
+; g_ptype<a1>(); pstrn(")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)

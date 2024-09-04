@@ -52,6 +52,34 @@ sint_print(i0: sint): void
 (* ****** ****** *)
 //
 fun<>
+sint_neg
+{i:i0}(x: sint(i)): sint(-i)
+#symload - with sint_neg of 1000
+#symload neg with sint_neg of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+sint_suc
+{i:i0}(x: sint(i)): sint(i+1)
+fun<>
+sint_pre
+{i:i0}(x: sint(i)): sint(i-1)
+//
+#symload suc with sint_suc of 1000
+#symload pre with sint_pre of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+sint_abs
+{i:i0}(x: sint(i)): sint(abs(i))
+#symload abs with sint_abs of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
 sint_lt_sint
 {i,j:i0}
 (x:sint(i), y:sint(j)): bool(i<j)

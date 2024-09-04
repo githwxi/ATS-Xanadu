@@ -88,6 +88,33 @@ g_ptype
 //
 #impltmp
 { a0:t0
+, a1:t0
+, a2:t0 }
+g_ptype
+<t0up(a0,a1,a2)>
+(  (*void*)  ) =
+( pstrn"t0up3("
+; g_ptype<a0>(); pstrn(",")
+; g_ptype<a1>(); pstrn(",")
+; g_ptype<a2>(); pstrn(")"))
+//
+#impltmp
+{ a0:t0
+, a1:t0
+, a2:t0 }
+g_ptype
+<t1up(a0,a1,a2)>
+(  (*void*)  ) =
+( pstrn"t1up3("
+; g_ptype<a0>(); pstrn(",")
+; g_ptype<a1>(); pstrn(",")
+; g_ptype<a2>(); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ a0:t0
 , a1:t0 }
 g_print
 <t0up(a0,a1)>
@@ -111,52 +138,64 @@ end // end of [g_print<t0up2>(tup)]
 (* ****** ****** *)
 //
 #impltmp
-< a0:t0 >
-< a1:t0 >
-z2tup_make
-( x1, x2 ) =
-(
-  $UN.castxy@(x1, x2))
-#impltmp
-< a0:t0 >
-< a1:t0 >
-z2tup_unmk
- ( ztup ) = $UN.castxy(ztup)
-//
-#impltmp
 { a0:t0
-, a1:t0 }
-g_ptype
-<z2tup(a0,a1)>
-(  (*void*)  ) =
-( pstrn"z2tup("
-; g_ptype<a0>(); pstrn(",")
-; g_ptype<a1>(); pstrn(")"))
+, a1:t0
+, a2:t0 }
+g_print
+<t0up(a0,a1,a2)>
+  ( tup ) =
+let
 //
+val () =
+  strn_print("@(")
+val () =
+  g_print<a0>(tup.0)
+//
+val () = pstrn(",")
+val () =
+  g_print<a1>(tup.1)
+//
+val () = pstrn(",")
+val () =
+  g_print<a2>(tup.2)
+//
+val () = strn_print(")")
+//
+end // end of [g_print<t0up3>(tup)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-< a0:t0 >
-< a1:t0 >
-x2tup_make
-( x1, x2 ) =
-(
-  $UN.castxy@(x1, x2))
-#impltmp
-< a0:t0 >
-< a1:t0 >
-x2tup_unmk
- ( xtup ) = $UN.castxy(xtup)
-//
-#impltmp
 { a0:t0
-, a1:t0 }
-g_ptype
-<x2tup(a0,a1)>
-(  (*void*)  ) =
-( pstrn"x2tup("
-; g_ptype<a0>(); pstrn(",")
-; g_ptype<a1>(); pstrn(")"))
+, a1:t0
+, a2:t0
+, a3:t0 }
+g_print
+<t0up(a0,a1,a2,a3)>
+  ( tup ) =
+let
+//
+val () =
+  strn_print("@(")
+val () =
+  g_print<a0>(tup.0)
+//
+val () = pstrn(",")
+val () =
+  g_print<a1>(tup.1)
+//
+val () = pstrn(",")
+val () =
+  g_print<a2>(tup.2)
+//
+val () = pstrn(",")
+val () =
+  g_print<a3>(tup.3)
+//
+val () = strn_print(")")
+//
+end // end of [g_print<t0up4>(tup)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

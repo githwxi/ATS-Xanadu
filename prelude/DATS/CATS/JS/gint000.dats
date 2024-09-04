@@ -39,6 +39,22 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 <(*tmp*)>
+sint_neg
+  ( i1 ) =
+(
+XATS2JS_sint_neg
+  ( i1 )) where
+{
+#extern
+fun
+XATS2JS_sint_neg
+(i1: sint): sint = $extnam() }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 sint_lt_sint
   (i1, i2) =
 (

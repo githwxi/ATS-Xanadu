@@ -62,12 +62,13 @@ Sun 04 Aug 2024 05:41:59 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#vwtpdef
+#typedef
 t0up1_t0
 (a0: t0) = @(  a0  )
 #vwtpdef
 t0up1_vt
 (a0: vt) = @(  a0  )
+//
 #typedef
 t1up1_t0
 (a0: t0) = $tup_t0(a0)
@@ -90,12 +91,12 @@ t0up2_t0
 t0up2_vt
 (a0:vt,a1:vt) = @(a0,a1)
 //
+#typedef
+t1up2_t0
+(a0:t0,a1:t0) = $tup_t0(a0,a1)
 #vwtpdef
 t1up2_vt
 (a0:vt,a1:vt) = $tup_vt(a0,a1)
-#vwtpdef
-t1up2_t0
-(a0:t0,a1:t0) = $tup_t0(a0,a1)
 //
 #sexpdef t0up = t0up2_t0//len-2
 #sexpdef t1up = t1up2_t0//len-2

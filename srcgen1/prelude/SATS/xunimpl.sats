@@ -523,6 +523,13 @@ strn_map$make_gseq(xs: xs): strn
 (* ****** ****** *)
 //
 fun<>
+strn_make_ncpy
+{n0:i0}
+(n0:nint(n0),ch:cgtz): strn(n0)
+#symload
+strn with strn_make_ncpy of 1000
+//
+fun<>
 strn_make_nfun
 {n0:i0}
 (n0: nint(n0)

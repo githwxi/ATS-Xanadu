@@ -6,6 +6,7 @@
 CAT=cat
 ###############################################################
 PRELUDED=$(XATSHOME)/prelude
+XATSLIBD=$(XATSHOME)/xatslib
 ###############################################################
 PRELUDE_JS=xats2js_prelude.js
 XATSLIB_JS=xats2js_xatslib.js
@@ -54,6 +55,16 @@ xatslib:: ; \
 echo "//" `date` > $(XATSLIB_JS)
 xatslib:: ; \
 $(CAT) xats2js_xatslib_hd >> $(XATSLIB_JS)
+###############################################################
+xatslib:: \
+Array00
+Array00: ; \
+$(CAT) $(XATSLIBD)/DATS/CATS/JS/Array00.cats >> $(XATSLIB_JS)
+###############################################################
+xatslib:: \
+Hsmap00
+Hsmap00: ; \
+$(CAT) $(XATSLIBD)/DATS/CATS/JS/Hsmap00.cats >> $(XATSLIB_JS)
 ###############################################################
 ###############################################################
 # end of [Makefile]

@@ -36,6 +36,29 @@ Authoremail: gmhwxiATgmailDOTcom
 ////////////////////////////////////////////////////////////////////////.
 //
 function
+XATS2JS_strn_cmp
+  (x1, x2)
+{
+  var df
+  var i0 = 0
+  var n1 = x1.length;
+  var n2 = x2.length;
+  var n0 =
+  (n1 <= n2) ? n1 : n2;
+  while (i0 < n0) {
+    df =
+    x1.charCodeAt(i0)
+    -
+    x2.charCodeAt(i0)
+    if (df !== 0) return df;
+    i0 = (  i0 + 1  )
+  }
+  return (      n1 - n2      );
+}
+//
+////////////////////////////////////////////////////////////////////////.
+//
+function
 XATS2JS_strn_length
   (cs)
 {

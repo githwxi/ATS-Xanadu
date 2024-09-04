@@ -54,6 +54,28 @@ XATS2JS_strn_length
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-04:
+Wed 04 Sep 2024 04:52:34 AM EDT
+*)
+//
+#impltmp
+<(*tmp*)>
+strn_cmp
+  (x1, x2) =
+(
+XATS2JS_strn_cmp
+  (x1, x2)) where
+{
+#extern
+fun
+XATS2JS_strn_cmp
+(x1: strn, x2: strn): nint = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <(*tmp*)>
 strn_fmake_fwork

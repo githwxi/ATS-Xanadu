@@ -39,7 +39,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #impltmp
 { a0:vt
 , a1:vt }
@@ -49,17 +48,67 @@ g_print1
 let
 //
 val () =
-  strn_print("@(")
-val () =
-  g_print1<a0>(tup.0)
+(
+  strn_print("@("))
 //
+val () = g_print1<a0>(tup.0)
 val () = pstrn(",")
-val () =
-  g_print1<a1>(tup.1)
+val () = g_print1<a1>(tup.1)
 //
 val () = strn_print(")")
 //
 end // end of [g_print1<t0up2>(tup)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+#impltmp
+{ a0:vt
+, a1:vt
+, a2:vt }
+g_print1
+<t0up_vt(a0,a1,a2)>
+  ( tup ) =
+let
+//
+val () =
+  strn_print("@(")
+//
+val () = g_print1<a0>(tup.0)
+val () = pstrn(",")
+val () = g_print1<a1>(tup.1)
+val () = pstrn(",")
+val () = g_print1<a2>(tup.2)
+//
+val () = strn_print(")")
+//
+end // end of [g_print1<t0up3>(tup)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ a0:t0
+, a1:t0 }
+g_copy<t0up_vt(a0,a1)>(tup) = (tup)
+#impltmp
+{ a0:t0
+, a1:t0 }
+g_free<t0up_vt(a0,a1)>(tup) = ((*0*))
+//
+(* ****** ****** *)
+//
+#impltmp
+{ a0:t0
+, a2:t0
+, a1:t0 }
+g_copy<t0up_vt(a0,a1,a2)>(tup) = (tup)
+#impltmp
+{ a0:t0
+, a1:t0
+, a2:t0 }
+g_free<t0up_vt(a0,a1,a2)>(tup) = ((*0*))
 //
 (* ****** ****** *)
 (* ****** ****** *)
