@@ -47,6 +47,40 @@ prints("yszs = ", appends(ys, zs), '\n')
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val x2s = list_c2hoose_lstrm(xs)
+val ( ) = print1s("x2s = ", listize0(x2s), "\n")
+val x3s = list_c3hoose_lstrm(xs)
+val ( ) = print1s("x3s = ", listize0(x3s), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () = print1s
+("rlistize(",10,") = ", rlistize(GSEQ(10)),"\n")
+val () = print1s
+("rlistize(",xs,") = ", rlistize(GSEQ(xs)),"\n")
+//
+(* ****** ****** *)
+//
+val N = 10
+val () = print1s
+("listize(",N,") = ",listize(GSEQ_nint0(N)),"\n")
+val () = print1s
+("rlistize(",N,") = ",rlistize(GSEQ_nint0(N)),"\n")
+//
+(* ****** ****** *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val xs2 =
+list_fmake_fwork<sint>
+(lam(work)=>(foritm(xs, work);rforitm(xs, work)))
+val ( ) = prints("list_fmake_fwork(...) = ", xs2, "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
