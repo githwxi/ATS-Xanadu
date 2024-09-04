@@ -29,7 +29,13 @@ For testing xatslib/JS!
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val () =
+prints("Hello from [mydiary]!", "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_TEST_CATS_JS_mydiary.dats] *)
+(* end of [ATS3/XANADU_xatslib_TEST_CATS_JS_test99_mydiary.dats] *)
