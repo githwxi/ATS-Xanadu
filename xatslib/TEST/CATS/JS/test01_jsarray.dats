@@ -58,6 +58,12 @@ jsarray_make_ncpy
 val () =
 prints("An(", type(An), ") = ", An, "\n")
 //
+(* ****** ****** *)
+//
+val ( ) = prints("sAn = ", sum(An), "\n")
+//
+(* ****** ****** *)
+//
 val xs =
 GSEQ(An).listize((*0*))
 val () =
@@ -66,6 +72,23 @@ val xs = list_vt2t{sint}(xs)
 val () =
 print1s("xs(", type(xs), ") = ", xs, "\n")
 //
+(* ****** ****** *)
+val () = print1s
+("rlistize(",An,") = ",rlistize(GSEQ(An)),"\n")
+val () = print1s
+("rlistize(",An,") = ",rlistize(GASZ(An)),"\n")
+(* ****** ****** *)
+//
+val () =
+prints("An = ", An, "\n") where
+{
+  val () = mapref(An, lam(x:sint) => x+x)
+}
+val () = prints
+("map_list(An) = "
+, map_list(An, lam(x:sint) => x*x), "\n")
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val ys =
@@ -135,8 +158,31 @@ forall
 (GSEQ(xs), lam(x) => x >= 0)
 val () = prints("b0 = ", b0, "\n")
 val rb0 =
-rforall(GSEQ(xs), lam(x) => x >= 0)
+rforall
+(GSEQ(xs), lam(x) => x >= 0)
 val ( ) = prints("rb0 = ", rb0, "\n")
+//
+(* ****** ****** *)
+//
+val b1 =
+forall
+(GASZ(An), lam(x) => x <= 0)
+val ( ) = (prints("b1 = ", b1, "\n"))
+val rb1 =
+rforall
+(GASZ(An), lam(x) => x <= 0)
+val ( ) = (prints("rb1 = ", rb1, "\n"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val An2 =
+jsarray_fmake_fwork{sint}
+(
+lam(work)=>
+(foritm(An, work);rforitm(An, work)))
+val ( ) =
+prints("jsarray_fmake_fwork(...) = ", An2, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
