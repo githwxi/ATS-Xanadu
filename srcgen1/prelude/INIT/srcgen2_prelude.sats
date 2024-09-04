@@ -199,8 +199,12 @@ For further program verification
 //
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/gflt000.sats"
+*)
+#include
+"srcgen2/prelude/SATS/gflt000.sats"
 //
 (* ****** ****** *)
 //
