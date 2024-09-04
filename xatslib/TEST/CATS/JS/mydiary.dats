@@ -27,66 +27,13 @@ For testing xatslib/JS!
 //
 (* ****** ****** *)
 //
-val xs = GSEQ(An).listize((*0*))
-val () = print1s("xs = ", xs, "\n")
-//
-(* ****** ****** *)
-//
-val xs = list_vt2t(xs)
-val () = prints("xs = ", xs, "\n")
-//
 val xs2 = appends(xs, xs)
 val () = prints("xs2 = ", xs2, "\n")
 //
 (* ****** ****** *)
 //
-val ys =
-gseq_imap_list
-<xs><x0><y0>(An) where
-{
-#typedef x0 = nint
-#typedef y0 = nint
-#typedef xs = jsa0(nint)
-#impltmp
-imap$fopr
-<x0><y0>(i0, x0) = i0*x0*x0 + 1
-}
-val () = prints("ys = ", ys, "\n")
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val zs =
-gseq_irmap_list
-<xs><x0><z0>(An) where
-{
-#typedef x0 = nint
-#typedef z0 = nint
-#typedef xs = jsa0(nint)
-#impltmp
-irmap$fopr
-<x0><z0>(i0, x0) = i0*x0*x0 + 1
-}
-val () = prints("zs = ", zs, "\n")
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 val sAn = sum(An)
 val ( ) = prints("sAn = ", sAn, "\n")
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-list$sint_sum(xs) =
-gseq_sum<list(sint)><sint>(xs)
-#symload sum with list$sint_sum
-//
-val sys = sum(ys)
-val ( ) = prints("sys = ", sys, "\n")
-val szs = sum(zs)
-val ( ) = prints("szs = ", szs, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -104,22 +51,6 @@ val () = prints
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-val () = prints
-("fact(0) = ", fc_bool(muls()), "\n")
-val () = prints
-("fact(10) = "
-, muls(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), "\n")
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val b0 =
-forall(GSEQ(xs), lam(x) => x >= 0)
-val ( ) = prints("b0 = ", b0, "\n")
-val rb0 =
-rforall(GSEQ(xs), lam(x) => x >= 0)
-val ( ) = prints("rb0 = ", rb0, "\n")
 //
 (*
 val b1 =

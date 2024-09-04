@@ -164,6 +164,47 @@ list_vt_irfoldall0
 (* ****** ****** *)
 //
 (*
+HX-2024-09-04:
+Wed 04 Sep 2024 06:29:48 AM EDT
+*)
+//
+fun
+<x0:vt>
+list_vt_strmize0
+(xs: ~list_vt(x0)): strm_vt(x0)
+fun
+<x0:vt>
+list_vt_strqize0
+{n:int}
+(xs: ~list_vt(x0, n)): strq_vt(x0, n)
+//
+fun
+<x0:vt>
+list_vt_rstrmize0
+(xs: ~list_vt(x0)): strm_vt(x0)
+fun
+<x0:vt>
+list_vt_rstrqize0
+{n:int}
+(xs: ~list_vt(x0, n)): strq_vt(x0, n)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+list_vt_listize0
+{n:int}
+(xs: ~list_vt(x0, n)): list_vt(x0, n)
+fun
+<x0:vt>
+list_vt_rlistize0
+{n:int}
+(xs: ~list_vt(x0, n)): list_vt(x0, n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-07-31:
 Wed 31 Jul 2024 03:16:49 AM EDT
 *)

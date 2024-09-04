@@ -118,8 +118,10 @@ fun
 gasz_forall_f1un
 (xs: xs, test: (!x0)->bool): bool
 //
+(*
 #symload forall with gasz_forall_f1un of 0100
 #symload forall_fun with gasz_forall_f1un of 0100
+*)
 //
 fun
 <xs:t0>
@@ -127,8 +129,10 @@ fun
 gasz_exists_f1un
 (xs: xs, test: (!x0)->bool): bool
 //
+(*
 #symload exists with gasz_exists_f1un of 0100
 #symload exists_fun with gasz_exists_f1un of 0100
+*)
 //
 fun
 <xs:t0>
@@ -136,8 +140,10 @@ fun
 gasz_rforall_f1un
 (xs: xs, test: (!x0)->bool): bool
 //
+(*
 #symload rforall with gasz_rforall_f1un of 0100
 #symload rforall_fun with gasz_rforall_f1un of 0100
+*)
 //
 fun
 <xs:t0>
@@ -145,8 +151,10 @@ fun
 gasz_rexists_f1un
 (xs: xs, test: (!x0)->bool): bool
 //
+(*
 #symload rexists with gasz_rexists_f1un of 0100
 #symload rexists_fun with gasz_rexists_f1un of 0100
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -187,8 +195,10 @@ fun
 gasz_mapref_c1bv
 (xs: xs, fopr: (~x0)->(x0)): void
 //
+(*
 #symload mapref with gasz_mapref_c1bv of 0100
 #symload mapref_cbv with gasz_mapref_c1bv of 0100
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -215,8 +225,10 @@ fun
 gasz_imapref_c2bv
 (xs: xs, fopr: (ni, ~x0)->(x0)): void
 //
+(*
 #symload imapref with gasz_imapref_c2bv of 0100
 #symload imapref_cbv with gasz_imapref_c2bv of 0100
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
