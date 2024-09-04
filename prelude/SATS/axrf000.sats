@@ -158,11 +158,13 @@ a1rf_make_nfun
 , f0: nint(n) -> a): a1rf(a, n)
 //
 #symload
+a1rf with a1rf_make_ncpy of 1000
+#symload
 a1rf with a1rf_make_nfun of 1000
 #symload
-a1rf_ncpy with a1rf_make_ncpy of 1000
+array with a1rf_make_ncpy of 1000
 #symload
-a1rf_nfun with a1rf_make_nfun of 1000
+array with a1rf_make_nfun of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
