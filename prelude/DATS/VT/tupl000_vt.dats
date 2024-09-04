@@ -42,6 +42,28 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 { a0:vt
 , a1:vt }
+g_print0
+<t0up_vt(a0,a1)>
+  ( tup ) =
+let
+//
+val () =
+(
+  strn_print("@("))
+//
+val () = g_print0<a0>(tup.0)
+val () = pstrn(",")
+val () = g_print0<a1>(tup.1)
+//
+val () = strn_print(")")
+//
+end // end of [g_print0<t0up2>(tup)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{ a0:vt
+, a1:vt }
 g_print1
 <t0up_vt(a0,a1)>
   ( tup ) =
@@ -62,6 +84,29 @@ end // end of [g_print1<t0up2>(tup)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{ a0:vt
+, a1:vt
+, a2:vt }
+g_print0
+<t0up_vt(a0,a1,a2)>
+  ( tup ) =
+let
+//
+val () =
+  strn_print("@(")
+//
+val () = g_print0<a0>(tup.0)
+val () = pstrn(",")
+val () = g_print0<a1>(tup.1)
+val () = pstrn(",")
+val () = g_print0<a2>(tup.2)
+//
+val () = strn_print(")")
+//
+end // end of [g_print0<t0up3>(tup)]
+//
+(* ****** ****** *)
 //
 #impltmp
 { a0:vt
