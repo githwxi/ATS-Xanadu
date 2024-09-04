@@ -24,7 +24,10 @@ For testing xatslib/JS!
 (* ****** ****** *)
 //
 val ns = list(10, 1)
-val () = prints("ns = ", ns, "\n")
+val () =
+prints("ns = ", ns, "\n")
+val () = prints
+("|ns| = ", length(ns), "\n")
 //
 val xs =
 list

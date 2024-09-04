@@ -24,7 +24,12 @@ For testing xatslib/JS!
 (* ****** ****** *)
 //
 val A9 = strn(9, 'a')
-val () = prints("A9 = ", A9, "\n")
+val () =
+prints("A9 = ", A9, "\n")
+val () = prints
+("|A9| = ", length(A9), "\n")
+//
+(* ****** ****** *)
 //
 val AB = strn
 (26, lam(i:sint) => 'a'+i)

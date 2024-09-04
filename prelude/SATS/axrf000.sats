@@ -148,14 +148,14 @@ fun
 <a:t0>
 a1rf_make_ncpy
  {n:i0|n>0}
-(n: sint(n), x:a): a1rf(a, n)
+( n:sint(n), x:a ): a1rf(a, n)
 //
 fun
 <a:vt>
 a1rf_make_nfun
  {n:i0|n>0}
-( n: sint(n)
-, f: nint(n) -> a): a1rf(a, n)
+( n0: sint(n)
+, f0: nint(n) -> a): a1rf(a, n)
 //
 #symload
 a1rf with a1rf_make_nfun of 1000
