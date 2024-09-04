@@ -63,7 +63,7 @@ g_print<bool> = bool_print<>
 <(*tmp*)>
 bool_neg(b0) =
 (
-if (b0) then true else false)
+if b0 then false else (true))
 //
 (* ****** ****** *)
 (* ****** ****** *)
