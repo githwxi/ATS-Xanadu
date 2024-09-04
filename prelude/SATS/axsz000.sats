@@ -93,11 +93,13 @@ a1sz_make_nfun
 , f: nint(n) -> a): a1sz(a, n)
 //
 #symload
+a1sz with a1sz_make_ncpy of 1000
+#symload
 a1sz with a1sz_make_nfun of 1000
 #symload
-a1sz_ncpy with a1sz_make_ncpy of 1000
+arrsz with a1sz_make_ncpy of 1000
 #symload
-a1sz_nfun with a1sz_make_nfun of 1000
+arrsz with a1sz_make_nfun of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

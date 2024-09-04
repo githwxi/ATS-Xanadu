@@ -5,16 +5,6 @@ For testing xatslib/JS!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#symload
-array with
-a1rf_make_ncpy of 1000
-#symload
-array with
-a1rf_make_nfun of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
 #staload _ =
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
