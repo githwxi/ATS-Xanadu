@@ -5,6 +5,16 @@ For testing xatslib/JS!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#symload
+array with
+a1rf_make_ncpy of 1000
+#symload
+array with
+a1rf_make_nfun of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #staload _ =
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
@@ -23,26 +33,35 @@ For testing xatslib/JS!
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#symload array
-with a1rf_make_nfun of 1000
-//
-(* ****** ****** *)
-//
-val N = 10
 val A0 =
-array
-(N, lam(i:sint) => (i+1))
+array(10, 1)
 val () =
-prints
-("A0(", type(A0), ") = ", A0, "\n")
+(
+prints("A0 = ", A0, "\n"))
 where
 {
 #impltmp
 { x0:t0 }
-gasz_length<a1rf(x0)><x0>(A) = ( N )
-}
+gasz_length
+<a1rf(x0)><x0>(A) = ( 10 ) }
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+val N = 10
+val A1 =
+array
+(N, lam(i:sint) => (i+1))
+val () =
+prints
+("A1(",type(A1),") = ",A1,"\n")
+where
+{
+#impltmp
+{ x0:t0 }
+gasz_length<a1rf(x0)><x0>(A1) = (N)
+}
+//
 (* ****** ****** *)
 //
 fun

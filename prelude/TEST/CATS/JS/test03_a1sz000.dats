@@ -5,6 +5,16 @@ For testing xatslib/JS!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#symload
+arrsz with
+a1sz_make_ncpy of 1000
+#symload
+arrsz with
+a1sz_make_nfun of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #staload _ =
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
@@ -23,8 +33,11 @@ For testing xatslib/JS!
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#symload arrsz
-with a1sz_make_nfun of 1000
+val A0 =
+arrsz(10, 1)
+val () =
+(
+prints("A0 = ", A0, "\n"))
 //
 (* ****** ****** *)
 //
