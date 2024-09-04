@@ -178,18 +178,20 @@ jshsmap_set$at
 (* ****** ****** *)
 //
 #extern
-fun<>
+fun
+<k:t0>
+<x:vt>
 jshsmap_listize
-{k:t0}{x:vt}
 (map: jsm0(k,x)): list_vt@(k,x)
 #symload listize with jshsmap_listize of 1000
 //
 (* ****** ****** *)
 //
 #extern
-fun<>
+fun
+<k:t0>
+<x:vt>
 jshsmap_strmize
-{k:t0}{x:vt}
 (map: jsm0(k,x)): strm_vt@(k,x)
 //
 #symload strmize with jshsmap_strmize of 1000
@@ -197,9 +199,10 @@ jshsmap_strmize
 (* ****** ****** *)
 //
 #extern
-fun<>
+fun
+<k:t0>
+<x:vt>
 jshsmap_rlistize
-{k:t0}{x:vt}
 (map: jsm0(k,x)): list_vt@(k,x)
 #symload rlistize with jshsmap_rlistize of 1000
 //
@@ -225,15 +228,17 @@ jshsmap_forall_f2un
 (* ****** ****** *)
 //
 #extern
-fun<>
+fun
+<k:t0>
+<x:vt>
 jshsmap_search$tst
- {k:t0}{x:vt}
 (map: jsm0(k,x), key: k): bool
 //
 #extern
 fun
+<k:t0>
+<x:vt>
 jshsmap_search$cpy
-{k:t0}{x:vt}
 (map: jsm0(k,x), key: k): optn_vt(x)
 //
 (* ****** ****** *)
@@ -481,16 +486,18 @@ XATS2JS_jshsmap_forall_f2un
 (* ****** ****** *)
 //
 #impltmp
-<(*tmp*)>
+< k: t0 >
+< x: vt >
 jshsmap_listize
-{k:t0}{x:vt}(xs) =
+  ( xs ) =
 list_vt_reverse0<(k,x)>
-(jshsmap_rlistize<>{k}{x}(xs))
+(jshsmap_rlistize<k><x>(xs))
 //
 #impltmp
-<(*tmp*)>
+< k: t0 >
+< x: vt >
 jshsmap_rlistize
-{k:t0}{x:vt}(xs) =
+ ( xs ) =
 (
   gseq_rlistize1<jsm0(k,x)><(k,x)>(xs))
 //
@@ -679,9 +686,10 @@ XATS2JS_jshsmap_iter_next$work
 (* ****** ****** *)
 //
 #impltmp
-<(*tmp*)>
+< k: t0 >
+< x: vt >
 jshsmap_strmize
-{k:t0}{x:vt}(map) =
+  ( map ) =
 (
 auxmain
 (jshsmap_iter(map)))

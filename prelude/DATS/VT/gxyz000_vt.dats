@@ -39,6 +39,20 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX:
+See [gbas000.dats]
+#impltmp
+{ x0:t0 }
+g_copy<x0>(x0) = x0
+#impltmp
+{ x0:t0 }
+g_free<x0>(x0) = ()
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 { x0:t0 }
 g_print0<x0> = g_print<x0>

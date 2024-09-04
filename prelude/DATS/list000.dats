@@ -330,6 +330,27 @@ case+ xs of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0:t0 >
+list_make_1val
+(x1) =
+list_cons(x1, list_nil(*0*))
+#impltmp
+< x0:t0 >
+list_make_2val
+(x1, x2) =
+list_cons(x1,
+list_cons(x2, list_nil(*0*)))
+#impltmp
+< x0:t0 >
+list_make_3val
+(x1, x2, x3) =
+list_cons(x1,
+list_cons(x2,
+list_cons(x3, list_nil(*0*))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2024-09-01:

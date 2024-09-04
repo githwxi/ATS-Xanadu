@@ -197,7 +197,7 @@ strmcon_vt_cons
 (
 let
 val sgn =
-z2forcmp$fcmp0
+z2forcmp$test0
 <x0><y0>(x1, y1) in
 if sgn = 0
 then auxmain(xs, ys)

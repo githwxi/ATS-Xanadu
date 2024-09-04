@@ -91,23 +91,23 @@ irz2forall$test1
 fun
 <x0:vt>
 <y0:vt>
-z2forcmp$fcmp0
+z2forcmp$test0
 (x0: ~x0, y0: ~y0): sint
 fun
 <x0:vt>
 <y0:vt>
-z2forcmp$fcmp1
+z2forcmp$test1
 (x0: !x0, y0: !y0): sint
 //
 fun
 <x0:vt>
 <y0:vt>
-iz2forcmp$fcmp0
+iz2forcmp$test0
 (i0: ni, x0: ~x0, y0: ~y0): sint
 fun
 <x0:vt>
 <y0:vt>
-iz2forcmp$fcmp1
+iz2forcmp$test1
 (i0: ni, x0: !x0, y0: !y0): sint
 //
 (* ****** ****** *)

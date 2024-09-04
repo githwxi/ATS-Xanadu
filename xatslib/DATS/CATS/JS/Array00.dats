@@ -878,14 +878,14 @@ gasz_listize<jsa0(a)><a>
 *)
 //
 #extern
-fun<>
+fun
+<a:vt>
 jsarray_listize
-{ a:vt }
 ( A0:jsa0( a )): list_vt(a)
 #impltmp
-<(*tmp*)>
+< a: vt >
 jsarray_listize
- {a:vt}( xs ) =
+ ( xs ) =
 (
   gasz_listize<jsa0(a)><a>(xs))
 #symload listize with jsarray_listize of 1000
@@ -893,27 +893,27 @@ jsarray_listize
 (* ****** ****** *)
 //
 #extern
-fun<>
+fun
+<a:vt>
 jsarray_strmize
-{ a:vt }
 ( A0:jsa0( a )): strm_vt(a)
 #impltmp
-<(*tmp*)>
+< a: vt >
 jsarray_strmize
- {a:vt}( xs ) =
+ ( xs ) =
 (
   gasz_strmize<jsa0(a)><a>(xs))
 #symload strmize with jsarray_strmize of 1000
 //
 #extern
-fun<>
+fun
+<a:vt>
 jsarray_strqize
-{ a:vt }
 ( A0:jsa0( a )): strq_vt(a)
 #impltmp
-<(*tmp*)>
+< a: vt >
 jsarray_strqize
- {a:vt}( xs ) =
+ ( xs ) =
 (
   gasz_strqize<jsa0(a)><a>(xs))
 #symload strqize with jsarray_strqize of 1000

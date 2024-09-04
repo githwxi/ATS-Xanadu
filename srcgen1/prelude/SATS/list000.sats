@@ -82,12 +82,28 @@ list_btwe_vt
 //
 fun
 <a:t0>
-list_make_nval
+list_make_1val
+( x1: a): list(a, 1)
+fun
+<a:t0>
+list_make_2val
+(x1: a, x2: a): list(a, 2)
+fun
+<a:t0>
+list_make_3val
+(x1: a
+,x2: a, x3: a): list(a, 3)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_make_ncpy
 {n:nat}
 (n:sint(n),x:a): list(a,n)
 fun
 <a:t0>
-list_make_nval_vt
+list_make_ncpy_vt
 {n:nat}
 (n:sint(n),x:a): list_vt(a,n)
 //

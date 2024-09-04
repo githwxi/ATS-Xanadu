@@ -330,7 +330,8 @@ end // end of [g_print1<t1up>(tup)]
 {a0:vt
 ,a1:vt}
 g_print1
-<t0up_vt
+<
+t0up_vt
 ( a0,a1 )>(tup) =
 let
 val () = t0up_print$beg()
@@ -344,7 +345,8 @@ end // end of [g_print1<t0up2_vt>(tup)]
 {a0:vt
 ,a1:vt}
 g_print1
-<t1up_vt
+<
+t1up_vt
 ( a0,a1 )>(tup) =
 let
 val () = t1up_print$beg()
@@ -362,7 +364,8 @@ end // end of [g_print1<t1up2_vt>(tup)]
 ,a1:vt
 ,a2:vt}
 g_print1
-<t0up_vt
+<
+t0up_vt
 (a0,a1,a2)>(tup) =
 let
 val () = t0up_print$beg(   )
@@ -379,7 +382,8 @@ end // end of [g_print1<t0up3_vt>(tup)]
 ,a1:vt
 ,a2:vt}
 g_print1
-<t1up_vt
+<
+t1up_vt
 (a0,a1,a2)>(tup) =
 let
 val () = t1up_print$beg()
@@ -400,9 +404,9 @@ end // end of [g_print1<t1up3_vt>(tup)]
 ,a2:vt
 ,a3:vt}
 g_print1
-<t0up4
-(a0,a1
-,a2,a3)>(tup) =
+<
+t0up_vt
+(a0,a1,a2,a3)>(tup) =
 let
 val () = t0up_print$beg()
 val () = g_print1<a0>(tup.0)
@@ -421,9 +425,9 @@ end // end of [g_print1<t0up4>(tup)]
 ,a2:vt
 ,a3:vt}
 g_print1
-<t1up4
-(a0,a1
-,a2,a3)>(tup) =
+<
+t1up_vt
+(a0,a1,a2,a3)>(tup) =
 let
 val () = t1up_print$beg()
 val () = g_print1<a0>(tup.0)

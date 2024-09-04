@@ -39,8 +39,6 @@ test01:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
 test01:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
-test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
 ############
 test01:: ; \
 $(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
@@ -56,8 +54,6 @@ test02:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
 test02:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
-test02:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
 ############
 test02:: ; \
 $(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
@@ -73,8 +69,6 @@ test03:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
 test03:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
-test03:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
 ############
 test03:: ; \
 $(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
@@ -90,8 +84,6 @@ test04:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
 test04:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
-test04:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
 ############
 test04:: ; \
 $(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
@@ -107,8 +99,6 @@ test05:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
 test05:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
-test05:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
 ############
 test05:: ; \
 $(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
@@ -124,8 +114,6 @@ test06:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
 test06:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
-test06:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
 ############
 test06:: ; \
 $(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js

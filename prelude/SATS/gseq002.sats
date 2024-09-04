@@ -127,6 +127,13 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
+gseq_z2forcmp(xs: xs, ys: ys): sint
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
 gseq_rz2forall(xs: xs, ys: ys): bool
 fun
 <xs:t0>

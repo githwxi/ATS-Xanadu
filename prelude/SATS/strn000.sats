@@ -62,7 +62,7 @@ strn_cmp
 ( xs: strn
 , ys: strn): sint(*sign*)
 #symload
-compare with strn_cmp of 1000
+cmp with strn_cmp of 1000
 //
 (*
 fun<>
