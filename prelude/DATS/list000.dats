@@ -338,6 +338,16 @@ Mon 02 Sep 2024 06:16:45 PM EDT
 //
 #impltmp
 < x0:t0 >
+list_make_ncpy
+  (n0, x0) =
+list_fmake_fwork<>
+(
+lam(work) =>
+foritm(n0, //HX:it may not be
+  lam(i0) => work(x0)))//efficient!
+//
+#impltmp
+< x0:t0 >
 list_make_nfun
   (n0, f0) =
 list_fmake_fwork<>
