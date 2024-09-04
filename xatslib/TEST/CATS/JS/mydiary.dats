@@ -21,44 +21,9 @@ For testing xatslib/JS!
 "xatslib/HATS/xatslib_JS_dats.hats"
 //
 (* ****** ****** *)
-#include
-"srcgen1\
-/prelude/HATS/CATS/JS/prelude_dats.hats"
-(* ****** ****** *)
-#staload _ =
-"srcgen1\
-/prelude/DATS/CATS/JS/Node/g_print.dats"
-(* ****** ****** *)
 (* ****** ****** *)
 //
-val A1 =
-jsarray(1)
-val A2 =
-jsarray("1", "2")
-val A3 =
-jsarray("1", "2", "3")
 //
-val () =
-prints("A3(", type(A3), ") = ", A3, "\n")
-//
-val An =
-jsarray_make_ncpy
-( 10, -1(*init*) )
-//
-val () =
-prints("An(", type(An), ") = ", An, "\n")
-//
-val An =
-jsarray_make_nfun
-( 10, lam(i) => i+1)
-//
-val () =
-prints("An(", type(An), ") = ", An, "\n")
-//
-val A4 = appends(A3, A3)
-//
-val () =
-prints("A4(", type(A4), ") = ", A4, "\n")
 //
 (* ****** ****** *)
 //

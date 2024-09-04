@@ -58,14 +58,14 @@ iforall0 with strm_vt_iforall0 of 1000
 //
 fun
 <x0:vt>
-strm_vt_forall0_c1fr
+strm_vt_forall0_f1un
 ( xs: strm_vt(x0)
 , test: (~x0)-<cfr>bool): bool
 //
 #symload
-forall0 with strm_vt_forall0_c1fr of 1000
+forall0 with strm_vt_forall0_f1un of 1000
 #symload
-forall0_cfr with strm_vt_forall0_c1fr of 1000
+forall0_cfr with strm_vt_forall0_f1un of 1000
 //
 fun
 <x0:vt>
@@ -97,14 +97,14 @@ iforitm0 with strm_vt_iforitm0 of 1000
 //
 fun
 <x0:vt>
-strm_vt_foritm0_c1fr
+strm_vt_foritm0_f1un
 ( xs: strm_vt(x0)
 , work: (~x0)-<cfr>void): void
 //
 #symload
-foritm0 with strm_vt_foritm0_c1fr of 1000
+foritm0 with strm_vt_foritm0_f1un of 1000
 #symload
-foritm0_cfr with strm_vt_foritm0_c1fr of 1000
+foritm0_cfr with strm_vt_foritm0_f1un of 1000
 //
 fun
 <x0:vt>

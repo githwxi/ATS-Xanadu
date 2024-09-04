@@ -602,12 +602,12 @@ Mon 05 Aug 2024 05:49:43 PM EDT
 //
 (*
 #impltmp
-< xs: t0 >
-< x0: t0 >
+< xs:t0 >
+< x0:t0 >
 gseq_strmize0 = gseq_strmize<xs><x0>
 #impltmp
-< xs: t0 >
-< x0: t0 >
+< xs:t0 >
+< x0:t0 >
 gseq_strmize1 = gseq_strmize<xs><x0>
 *)
 //
@@ -615,8 +615,8 @@ gseq_strmize1 = gseq_strmize<xs><x0>
 //
 (*
 #impltmp
-< xs: t0 >
-< x0: t0 >
+< xs:t0 >
+< x0:t0 >
 gseq_rstrmize0 = gseq_rstrmize<xs><x0>
 #impltmp
 < xs: t0 >
@@ -636,7 +636,7 @@ gasz<t0><vt>?
 //
 HX-2024-08-10:
 Sat 10 Aug 2024 10:37:25 AM EDT
-We can certainly used instead:
+We can certainly use instead:
 gasz_vt<t0><vt> for gasz<t0><vt>
 It does seem that this desgin of
 supporting gasz<t0><vt> makes some
