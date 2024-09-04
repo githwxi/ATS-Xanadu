@@ -510,7 +510,7 @@ writing these boilerplates?
 //
 #impltmp
 { x0:t0 }
-gseq_strmize
+gseq_strmize0
 <jsa0(x0)><x0> =
 gasz_strmize<jsa0(x0)><x0>(*0*)
 #impltmp
@@ -521,7 +521,7 @@ gasz_strmize<jsa0(x0)><x0>(*0*)
 //
 #impltmp
 { x0:t0 }
-gseq_rstrmize
+gseq_rstrmize0
 <jsa0(x0)><x0> =
 gasz_rstrmize<jsa0(x0)><x0>(*0*)
 #impltmp

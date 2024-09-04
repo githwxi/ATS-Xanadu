@@ -45,6 +45,12 @@ prints("A3(", type(A3), ") = ", A3, "\n")
 //
 (* ****** ****** *)
 //
+val A4 = appends(A3, A3)
+val () =
+prints("A4(", type(A4), ") = ", A4, "\n")
+//
+(* ****** ****** *)
+//
 val An =
 jsarray_make_ncpy
 ( 10, -1(*init*) )

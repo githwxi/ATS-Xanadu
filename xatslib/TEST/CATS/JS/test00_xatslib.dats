@@ -30,7 +30,8 @@ For testing xatslib/JS!
 (* ****** ****** *)
 //
 val () =
-prints("Hello form [test00_xatslib]!", "\n")
+prints
+("Hello form [test00_xatslib]!", "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
