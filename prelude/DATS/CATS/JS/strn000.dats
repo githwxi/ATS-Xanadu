@@ -99,9 +99,12 @@ Thu 05 Sep 2024 11:11:27 AM EDT
 *)
 //
 #impltmp
-strn_print<> =
+<(*tmp*)>
+strn_print
+  ( cs ) =
+(
 XATS2JS_strn_print
-where
+  ( cs )) where
 {
 #extern
 fun

@@ -222,9 +222,12 @@ Thu 05 Sep 2024 11:11:27 AM EDT
 *)
 //
 #impltmp
-sint_print<> =
+<(*tmp*)>
+sint_print
+  ( i0 ) =
+(
 XATS2JS_sint_print
-where
+  ( i0 )) where
 {
 #extern
 fun

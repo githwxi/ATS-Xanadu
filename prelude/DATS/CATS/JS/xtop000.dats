@@ -30,159 +30,71 @@
 //
 (*
 Author: Hongwei Xi
-Sun 01 Sep 2024 04:48:38 PM EDT
+Thu 05 Sep 2024 11:54:02 AM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-<(*tmp*)>
-char_lt
-(c1, c2) =
-(
-XATS2JS_char_lt
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2JS_char_lt
-(c1: char, c2: char): bool = $extnam()
-}
+#abstype
+console_type
+#typedef
+console = console_type
 //
 (* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_gt
-(c1, c2) =
-(
-XATS2JS_char_gt
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2JS_char_gt
-(c1: char, c2: char): bool = $extnam()
-}
-//
 (* ****** ****** *)
 //
-#impltmp
-<(*tmp*)>
-char_eq
-(c1, c2) =
-(
-XATS2JS_char_eq
-  (c1, c2)) where
-{
 #extern
-fun
-XATS2JS_char_eq
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
+fun<>
+console_log
+{t0:t0}(x0: t0): void
 //
 #impltmp
 <(*tmp*)>
-char_lte
-(c1, c2) =
+console_log
+  ( x0 ) =
 (
-XATS2JS_char_lte
-  (c1, c2)) where
+XATS2JS_console_log
+  ( x0 )) where
 {
 #extern
 fun
-XATS2JS_char_lte
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_gte
-(c1, c2) =
-(
-XATS2JS_char_gte
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2JS_char_gte
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_neq
-(c1, c2) =
-(
-XATS2JS_char_neq
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2JS_char_neq
-(c1: char, c2: char): bool = $extnam()
+XATS2JS_console_log
+{t0:t0}(x0: t0): void = $extnam()
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-<(*tmp*)>
-char_add_sint
-  (c1, i2) =
-(
-XATS2JS_char_add_sint
-  (c1, i2)) where
-{
 #extern
-fun
-XATS2JS_char_add_sint
-(c1: char, i2: sint): char = $extnam()
-}
+fun<>
+the_print_store_log(): void
+//
+#extern
+fun<>
+the_print_store_flush(): strn
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-char_sub_char
-  (c1, c2) =
-(
-XATS2JS_char_sub_char
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2JS_char_sub_char
-(c1: char, c2: char): sint = $extnam()
-}
+the_print_store_log() =
+console_log(the_print_store_flush())
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-09-05:
-Thu 05 Sep 2024 11:11:27 AM EDT
-*)
 //
 #impltmp
 <(*tmp*)>
-char_print
-  ( c0 ) =
+the_print_store_flush
+  ((*void*)) =
 (
-XATS2JS_char_print
-  ( c0 )) where
+XATS2JS_the_print_store_flush
+  ((*void*))) where
 {
 #extern
 fun
-XATS2JS_char_print(c0: char): void = $extnam()
+XATS2JS_the_print_store_flush(): strn = $extnam()
 }
 //
 (* ****** ****** *)
@@ -191,4 +103,4 @@ XATS2JS_char_print(c0: char): void = $extnam()
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_char000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_strn000.dats] *)
