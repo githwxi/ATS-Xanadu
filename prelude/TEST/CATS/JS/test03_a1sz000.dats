@@ -17,9 +17,11 @@ For testing prelude/JS!
 "srcgen2\
 /prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
+(*
 #include
 "srcgen2\
 /prelude/HATS/prelude_NODE_dats.hats"
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -51,6 +53,11 @@ arrsz
 //
 val () =
 prints("fact(10) = ", fact(10), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () = console_log(the_print_store_flush())
 //
 (* ****** ****** *)
 (* ****** ****** *)

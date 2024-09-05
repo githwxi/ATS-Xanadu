@@ -808,6 +808,8 @@ optn_vt2t
 {a:t0}{b:b0}
 (xs: optn_vt(a, b)): optn(a, b)
 //
+#symload vt2t with optn_vt2t of 1000
+//
 (* ****** ****** *)
 //
 (*
@@ -911,6 +913,8 @@ fcast
 list_vt2t
 {a:t0}{n:i0}
 (xs: list_vt(a, n)): list(a, n)
+//
+#symload vt2t with list_vt2t of 1000
 //
 (* ****** ****** *)
 //

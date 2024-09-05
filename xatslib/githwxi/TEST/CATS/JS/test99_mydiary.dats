@@ -15,84 +15,38 @@ Sat 03 Aug 2024 03:08:26 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"srcgen1\
-/prelude/HATS/prelude_dats.hats"
-#include
 "srcgen2\
 /prelude/HATS/prelude_dats.hats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-07-21:
-Sun 21 Jul 2024 11:06:11 PM EDT
-*)
-//
 #include
 "xatslib\
-/HATS/xatslib_JS_dats.hats"
+/githwxi/HATS/githwxi_dats.hats"
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
-#include
-"srcgen1\
-/prelude\
-/HATS/CATS/JS/prelude_dats.hats"
-//
 (* ****** ****** *)
 #include
 "srcgen2\
 /prelude/HATS/prelude_JS_dats.hats"
-(* ****** ****** *)
-#staload _ =
-"srcgen1\
-/prelude\
-/DATS/CATS/JS/Node/g_print.dats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload "./../HATS/githwxi_dats.hats"
+#include
+"xatslib/HATS/xatslib_JS_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<a:t0>
-quicksort
-( xs
-: list(a)): list(a) =
-(
-  qsort(xs)) where
-{
-fun
-qsort(xs) =
-(
-case+ xs of
-|
-list_nil() =>
-list_nil()
-|
-list_cons(x0, xs) =>
-let
-val
-(ys, zs) =
-list_partit
-(xs, _ <= x0)
-in//let
-appends
-(qsort(ys), list@(x0), qsort(zs))
-end//let
-)
-}
-//
-val () =
-prints("qsort(9...1) = ",
-list_rmake(range_ibtw(1, 10)), "\n")
+#include
+"srcgen2\
+/prelude/HATS/prelude_NODE_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-////
+//
+val xs = range_ibtw(1, 10)
+val () = prints("xs = ", xs, "\n")
+val xs = vt2t(GASZ(xs).listize())
+val () = print1s("xs = ", xs, "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val AB =
 strn
 (26, lam(i)=>'a'+i)
@@ -120,6 +74,9 @@ g_add<strn> = strn_append
 val () =
 prints("ABAB = ", ABAB, "\n")
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val
 rABAB =
 strn$rconcat(@(AB, AB))
@@ -132,6 +89,41 @@ strn$concat(@(AB, AB, AB))
 val () =
 prints("ABABAB = ", ABABAB, "\n")
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+<a:t0>
+quicksort
+( xs
+: list(a)): list(a) =
+(
+  qsort(xs)) where
+{
+fun
+qsort(xs) =
+(
+case+ xs of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(x0, xs) =>
+let
+val
+(ys, zs) =
+list_partit
+(xs, lam(x1) => x1\cmp(x0) <= 0)
+in//let
+appends
+(qsort(ys), list@(x0), qsort(zs))
+end//let
+)
+}
+*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 ////
 (* ****** ****** *)
@@ -314,4 +306,4 @@ print1s("rlistize(GSEQ_x2make(GSEQ(xs), GSEQ(ys))) = ", rxys, "\n")
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_JS_githwxi_TEST_mydiary.dats] *)
+(* end of [ATS3/XANADU_xatslib_JS_githwxi_TEST_test99_mydiary.dats] *)
