@@ -193,6 +193,43 @@ t1up4
 ,a2:vt,a3:vt) = $tup(a0,a1,a2,a3)
 *)
 (* ****** ****** *)
+//
+#typedef
+t0up5_t0
+(a0: t0
+,a1: t0
+,a2: t0
+,a3: t0
+,a4: t0) = @(a0,a1,a2,a3,a4)
+#vwtpdef
+t0up5_vt
+(a0: vt
+,a1: vt
+,a2: vt
+,a3: vt
+,a4: vt) = @(a0,a1,a2,a3,a4)
+//
+#typedef
+t1up5_t0
+(a0: t0
+,a1: t0
+,a2: t0
+,a3: t0
+,a4: t0) = $tup_t0(a0,a1,a2,a3,a4)
+#vwtpdef
+t1up5_vt
+(a0: vt
+,a1: vt
+,a2: vt
+,a3: vt
+,a4: vt) = $tup_vt(a0,a1,a2,a3,a4)
+//
+#sexpdef t0up = t0up5_t0//len-3
+#sexpdef t1up = t1up5_t0//len-3
+#sexpdef t0up_vt = t0up5_vt//len-3
+#sexpdef t1up_vt = t1up5_vt//len-3
+//
+(*
 #vwtpdef
 t0up5
 (a0:vt
@@ -203,7 +240,50 @@ t1up5
 (a0:vt
 ,a1:vt,a2:vt
 ,a3:vt,a4:vt) = $tup(a0,a1,a2,a3,a4)
+*)
+//
 (* ****** ****** *)
+//
+#typedef
+t0up6_t0
+(a0: t0
+,a1: t0
+,a2: t0
+,a3: t0
+,a4: t0
+,a5: t0) = @(a0,a1,a2,a3,a4,a5)
+#vwtpdef
+t0up6_vt
+(a0: vt
+,a1: vt
+,a2: vt
+,a3: vt
+,a4: vt
+,a5: vt) = @(a0,a1,a2,a3,a4,a5)
+//
+#typedef
+t1up6_t0
+(a0: t0
+,a1: t0
+,a2: t0
+,a3: t0
+,a4: t0
+,a5: t0) = $tup_t0(a0,a1,a2,a3,a4,a5)
+#vwtpdef
+t1up6_vt
+(a0: vt
+,a1: vt
+,a2: vt
+,a3: vt
+,a4: vt
+,a5: vt) = $tup_vt(a0,a1,a2,a3,a4,a5)
+//
+#sexpdef t0up = t0up6_t0//len-3
+#sexpdef t1up = t1up6_t0//len-3
+#sexpdef t0up_vt = t0up6_vt//len-3
+#sexpdef t1up_vt = t1up6_vt//len-3
+//
+(*
 #vwtpdef
 t0up6
 (a0:vt,a1:vt
@@ -214,6 +294,8 @@ t1up6
 (a0:vt,a1:vt
 ,a2:vt,a3:vt
 ,a4:vt,a5:vt) = $tup(a0,a1,a2,a3,a4,a5)
+*)
+//
 (* ****** ****** *)
 #vwtpdef
 t0up7

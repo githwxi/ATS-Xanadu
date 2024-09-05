@@ -138,6 +138,23 @@ test06:: \
 test06_list000.dats; \
 $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
 ########################################################################
+########################################################################
+test99:: ; \
+echo "//" `date` > $@_out.js
+############
+test99:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
+test99:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
+############
+test99:: ; \
+$(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
+############
+test99:: \
+test99_mydiary.dats; \
+$(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+########################################################################
+########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f test??_out.js

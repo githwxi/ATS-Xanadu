@@ -1636,14 +1636,15 @@ strmcon_vt_nil() =>
 | ~
 strmcon_vt_cons(y0, ys) =>
 let
-  val
-  sgn =
-  z2forcmp$fcmp0<x0><y0>(x0, y0)
+val
+sgn =
+z2forcmp$test0<x0><y0>(x0, y0)
 in
-  if
-  (sgn = 0)
-  then loop(xs, ys)
-  else (g_free(xs); g_free(ys); sgn)
+(
+if
+(sgn = 0)
+then loop(xs, ys)
+else (g_free(xs); g_free(ys); sgn))
 end // end of [strmcon_vt_cons]
 )
 ) (*case+*)//end of [loop(xs,ys)]
@@ -1895,7 +1896,7 @@ strmcon_vt_cons(y0, ys) =>
 let
 val
 sgn =
-iz2forcmp$fcmp0<x0><y0>(i0, x0, y0)
+iz2forcmp$test0<x0><y0>(i0, x0, y0)
 in
   if
   (sgn = 0)
