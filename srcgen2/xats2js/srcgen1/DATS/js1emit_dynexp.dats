@@ -671,7 +671,8 @@ iforitm$work
 (
 case+ ch of
 | '"' =>
-(
+strn_fprint(filr, "\"")
+(*
 if
 (0 = i0)
 then
@@ -682,7 +683,8 @@ if
 then
 strn_fprint(filr, "\"")
 else
-strn_fprint(filr, "\\\""))
+strn_fprint(filr, "\\\"")
+*)
 //
 | '\n' => strn_fprint(filr, "\\n")
 | '\t' => strn_fprint(filr, "\\t")
