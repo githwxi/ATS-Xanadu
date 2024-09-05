@@ -442,13 +442,13 @@ timp.node() of
 case+ dopt of
 |
 optn_nil() =>
-prints("T1IMPall1(", ")")
+prints("T1IMPall1(", dcst, ")")
 |
 optn_cons(idcl) =>
 let
 val loc0 = idcl.lctn((*0*))
-val (  ) =
-prints("T1IMPall1(", loc0, ")")
+val (  ) = prints("\
+T1IMPall1(", dcst, ", ", loc0, ")")
 end//let
 )
 //
@@ -458,17 +458,17 @@ end//let
 case+ dopt of
 |
 optn_nil() =>
-prints("T1IMPallx(", ")")
+prints("T1IMPallx(", dcst, ")")
 |
 optn_cons(idcl) =>
 let
 val loc0 = idcl.lctn((*0*))
-val (  ) =
-prints("T1IMPallx(", loc0, ")")
+val (  ) = prints("\
+T1IMPallx(", dcst, ", ", loc0, ")")
 end//let
 )
 //
-end(*let*)//end(t1imploc(filr,timp))
+end(*let*)//end-of(t1imploc(filr,timp))
 //
 (* ****** ****** *)
 //
@@ -492,12 +492,12 @@ timp.node() of
 case+ dopt of
 |
 optn_nil() =>
-prints("T1IMPall1(", ")")
+prints("T1IMPall1(", dcst, ")")
 |
 optn_cons(idcl) =>
 let
-val (  ) =
-prints("T1IMPall1(", idcl, ")")
+val (  ) = prints("\
+T1IMPall1(", dcst, ", ", idcl, ")")
 end//let
 )
 //
@@ -507,12 +507,12 @@ end//let
 case+ dopt of
 |
 optn_nil() =>
-prints("T1IMPallx(", ")")
+prints("T1IMPallx(", dcst, ")")
 |
 optn_cons(idcl) =>
 let
-val (  ) =
-prints("T1IMPallx(", idcl, ")")
+val (  ) = prints("\
+T1IMPallx(", dcst, ", ", idcl, ")")
 end//let
 )
 //
@@ -1509,18 +1509,16 @@ case+ iins of
 (* ****** ****** *)
 //
 |I1INStimp
-(i0e1, timp) =>
+(i0f1, timp) =>
 let
 //
 val
 iopt = t1imp_i1cmpq(timp)
 //
-(*
-val () =
-(
+val () = (
 nindstrnfpr
-(filr, nind, "// ");i0expfpr(filr, i0e1);fprintln(filr))
-*)
+(filr, nind, "// ");
+i0expfpr(filr, i0f1);fprintln(filr))
 //
 in//let
 //

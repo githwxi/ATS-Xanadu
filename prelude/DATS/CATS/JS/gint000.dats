@@ -215,6 +215,25 @@ XATS2JS_sint_mod_sint
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+(*
+HX-2024-09-05:
+Thu 05 Sep 2024 11:11:27 AM EDT
+*)
+//
+#impltmp
+sint_print<> =
+XATS2JS_sint_print
+where
+{
+#extern
+fun
+XATS2JS_sint_print(c0: sint): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

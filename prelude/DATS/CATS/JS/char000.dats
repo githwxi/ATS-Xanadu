@@ -167,6 +167,24 @@ XATS2JS_char_sub_char
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-05:
+Thu 05 Sep 2024 11:11:27 AM EDT
+*)
+//
+#impltmp
+char_print<> =
+XATS2JS_char_print
+where
+{
+#extern
+fun
+XATS2JS_char_print(c0: char): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
