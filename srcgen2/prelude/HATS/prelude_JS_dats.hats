@@ -12,6 +12,12 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload // XTOP
+"prelude/DATS/CATS/JS/xtop000.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload _ =
 "prelude/DATS/CATS/JS/bool000.dats"
 //

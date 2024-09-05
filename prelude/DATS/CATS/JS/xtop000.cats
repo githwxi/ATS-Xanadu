@@ -35,6 +35,15 @@ Authoremail: gmhwxiATgmailDOTcom
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 //
+function
+XATS2JS_console_log
+  (x0)
+{
+  return console.log(x0) // HX: void
+}
+//
+////////////////////////////////////////////////////////////////////////.
+//
 const
 XATS2JS_the_print_store = [] // HX: for prints?
 //
@@ -43,6 +52,35 @@ XATS2JS_the_prout_store = [] // HX: for general output
 //
 const
 XATS2JS_the_prerr_store = [] // HX: for reporting errors
+//
+////////////////////////////////////////////////////////////////////////.
+//
+function
+XATS2JS_the_print_store_flush
+  ( /*void*/ )
+{
+  let cs =
+  XATS2JS_the_print_store.join("")
+  XATS2JS_the_print_store.length = 0; return cs
+}
+//
+function
+XATS2JS_the_prout_store_flush
+  ( /*void*/ )
+{
+  let cs =
+  XATS2JS_the_prout_store.join("")
+  XATS2JS_the_prout_store.length = 0; return cs
+}
+//
+function
+XATS2JS_the_prerr_store_flush
+  ( /*void*/ )
+{
+  let cs =
+  XATS2JS_the_prerr_store.join("")
+  XATS2JS_the_prerr_store.length = 0; return cs
+}
 //
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
