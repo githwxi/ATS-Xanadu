@@ -49,6 +49,7 @@ test00:: ; \
 npx google-closure-compiler -W QUIET \
   --compilation_level ADVANCED --js=$@_out.js --js_output_file=$@_out2.js
 ########################################################################
+########################################################################
 test01:: ; \
 echo "//" `date` > $@_out.js
 ############
@@ -57,12 +58,14 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
 test01:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
 ############
-test01:: ; \
-$(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
-############
 test01:: \
 test01_a0rf000.dats; \
 $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+############
+test01:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level ADVANCED --js=$@_out.js --js_output_file=$@_out2.js
+########################################################################
 ########################################################################
 test02:: ; \
 echo "//" `date` > $@_out.js
@@ -72,12 +75,14 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
 test02:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
 ############
-test02:: ; \
-$(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
-############
 test02:: \
 test02_a1rf000.dats; \
 $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+############
+test02:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level ADVANCED --js=$@_out.js --js_output_file=$@_out2.js
+########################################################################
 ########################################################################
 test03:: ; \
 echo "//" `date` > $@_out.js
