@@ -31,7 +31,7 @@ For testing xatslib/JS!
 //
 val () =
 prints
-("Hello form [test00_xatslib]!", "\n")
+("Hello from [test00_xatslib]!", "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

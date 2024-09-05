@@ -1,7 +1,7 @@
 (* ****** ****** *)
 (*
 HX-2024-08-09:
-For testing xatslib/JS!
+For testing prelude/JS!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
