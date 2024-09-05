@@ -22,6 +22,11 @@ prelude:: ; \
 $(CAT) xats2js_prelude_hd >> $(PRELUDE_JS)
 ###############################################################
 prelude:: \
+xtop000
+xtop000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/JS/xtop000.cats >> $(PRELUDE_JS)
+###############################################################
+prelude:: \
 gint000
 gint000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/gint000.cats >> $(PRELUDE_JS)

@@ -228,7 +228,7 @@ where
 {
 #extern
 fun
-XATS2JS_sint_print(c0: sint): void = $extnam()
+XATS2JS_sint_print(i0: sint): void = $extnam()
 }
 //
 (* ****** ****** *)
