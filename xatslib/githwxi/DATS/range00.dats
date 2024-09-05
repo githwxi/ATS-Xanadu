@@ -176,7 +176,7 @@ auxloop
 ( lb: si
 , ub: si): bool = // lb <= ub
 if
-forall$test<si>(ub)
+rforall$test<si>(ub)
 then
 (
 if
@@ -275,13 +275,13 @@ end(*let*)//end-of-[range_ibtw_inter(r1,r2)]
 fcast // fun
 GSEQ_make_range_ibtw
 (xs: range_ibtw): GSEQ(range_ibtw, sint)
-#symload GSEQ with GSEQ_make_range_ibtw//of(0)
+#symload GSEQ with GSEQ_make_range_ibtw of 1000
 //
 #extern
 fcast // fun
 GASZ_make_range_ibtw
 (xs: range_ibtw): GASZ(range_ibtw, sint)
-#symload GASZ with GASZ_make_range_ibtw//of(0)
+#symload GASZ with GASZ_make_range_ibtw of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

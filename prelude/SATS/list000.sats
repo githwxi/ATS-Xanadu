@@ -72,20 +72,43 @@ list_make_3val
 (x1: a
 ,x2: a, x3: a): list(a, 3)
 //
+#symload
+list_sing with list_make_1val
+#symload
+list_pair with list_make_2val
+//
+#symload
+list_1val with list_make_1val
+#symload
+list_2val with list_make_2val
+#symload
+list_3val with list_make_3val
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_make_t0up1
+(tup: t0up(a)): list(a, 1)
+fun
+<a:t0>
+list_make_t0up2
+(tup: t0up(a, a)): list(a, 2)
+fun
+<a:t0>
+list_make_t0up3
+(tup: t0up(a, a, a)): list(a, 3)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #symload
-list_sing with list_make_1val of 1000
+list with list_make_t0up1 of 1000
 #symload
-list_1val with list_make_1val of 1000
-//
+list with list_make_t0up2 of 1000
 #symload
-list_pair with list_make_2val of 1000
-#symload
-list_2val with list_make_2val of 1000
-//
-#symload
-list_3val with list_make_3val of 1000
+list with list_make_t0up3 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

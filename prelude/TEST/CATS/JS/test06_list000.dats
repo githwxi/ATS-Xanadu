@@ -17,9 +17,11 @@ For testing prelude/JS!
 "srcgen2\
 /prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
+(*
 #include
 "srcgen2\
 /prelude/HATS/prelude_NODE_dats.hats"
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -77,6 +79,11 @@ val xs2 =
 list_fmake_fwork<sint>
 (lam(work)=>(foritm(xs, work);rforitm(xs, work)))
 val ( ) = prints("list_fmake_fwork(...) = ", xs2, "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () = console_log(the_print_store_flush( (*void*) ))
 //
 (* ****** ****** *)
 (* ****** ****** *)
