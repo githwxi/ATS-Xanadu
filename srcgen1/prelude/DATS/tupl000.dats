@@ -450,10 +450,9 @@ end // end of [g_print1<t1up4>(tup)]
 ,a3:vt
 ,a4:vt}
 g_print1
-<t0up5
-(a0
-,a1,a2
-,a3,a4)>(tup) =
+<t0up_vt
+(a0,a1
+,a2,a3,a4)>(tup) =
 let
 val () = t0up_print$beg()
 val () = g_print1<a0>(tup.0)
@@ -475,10 +474,9 @@ end // end of [g_print1<t0up5>(tup)]
 ,a3:vt
 ,a4:vt}
 g_print1
-<t1up5
-(a0
-,a1,a2
-,a3,a4)>(tup) =
+<t1up5_vt
+(a0,a1
+,a2,a3,a4)>(tup) =
 let
 val () = t1up_print$beg()
 val () = g_print1<a0>(tup.0)
@@ -503,10 +501,9 @@ end // end of [g_print1<t1up5>(tup)]
 ,a4:vt
 ,a5:vt}
 g_print1
-<t0up6
-(a0,a1
-,a2,a3
-,a4,a5)>(tup) =
+<t0up6_vt
+(a0,a1,a2
+,a3,a4,a5)>(tup) =
 let
 val () = t0up_print$beg()
 val () = g_print1<a0>(tup.0)
@@ -531,10 +528,9 @@ end // end of [g_print1<t0up6>(tup)]
 ,a4:vt
 ,a5:vt}
 g_print1
-<t1up6
-(a0,a1
-,a2,a3
-,a4,a5)>(tup) =
+<t1up6_vt
+(a0,a1,a2
+,a3,a4,a5)>(tup) =
 let
 val () = t1up_print$beg()
 val () = g_print1<a0>(tup.0)
@@ -551,6 +547,7 @@ val () = g_print1<a5>(tup.5)
 val () = t1up_print$end((*nil*))
 end // end of [g_print1<t1up6>(tup)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -858,10 +855,12 @@ val () = t1up_print$end((*nil*))
 end // end of [g_print1<t1up10>(tup)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2023-08-13:
 tuples as sequences
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -877,6 +876,8 @@ then false else
 (
   forall$test<a1>(tup.1)) )
 // end of [gseq_forall<t2up>(tup)]
+//
+(* ****** ****** *)
 //
 #impltmp
 {a0:t0
@@ -898,6 +899,8 @@ then false else
 (
   forall$test<a2>(tup.2)) )
 // end of [gseq_forall<t3up>(tup)]
+//
+(* ****** ****** *)
 //
 #impltmp
 {a0:t0
@@ -924,6 +927,8 @@ then false else
 (
   forall$test<a3>(tup.3)) )
 // end of [gseq_forall<t4up>(tup)]
+//
+(* ****** ****** *)
 //
 #impltmp
 {a0:t0
@@ -956,6 +961,8 @@ then false else
 (
   forall$test<a4>(tup.4)) )
 // end of [gseq_forall<t5up>(tup)]
+//
+(* ****** ****** *)
 //
 #impltmp
 {a0:t0
@@ -994,6 +1001,7 @@ then false else
   forall$test<a5>(tup.5)) )
 // end of [gseq_forall<t6up>(tup)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -1072,7 +1080,7 @@ gseq_foritm
 // end of [gseq_foritm<t6up>(tup)]
 //
 (* ****** ****** *)
-
+//
 #impltmp
 {xs:t0
 ,x0:t0
@@ -1091,9 +1099,9 @@ val
 put2z(ztup) in//in
 gseq_z2foritm_f2un<xs><x0><ys><y0>
 (xs, ys, lam(x0, y0) => work@(x0, y0)) end
-
+//
 (* ****** ****** *)
-
+//
 #impltmp
 {xs:t0
 ,x0:t0
@@ -1112,7 +1120,11 @@ val
 put2x(xtup) in//in
 gseq_x2foritm_f2un<xs><x0><ys><y0>
 (xs, ys, lam(x0, y0) => work@(x0, y0)) end
-
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_prelude_DATS_tupl000.dats] *)

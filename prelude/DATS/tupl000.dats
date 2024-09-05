@@ -200,6 +200,89 @@ end // end of [g_print<t0up4>(tup)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{ a0:t0
+, a1:t0
+, a2:t0
+, a3:t0
+, a4:t0 }
+g_print
+<t0up(a0,a1,a2,a3,a4)>
+  ( tup ) =
+let
+//
+val () =
+  strn_print("@(")
+val () =
+  g_print<a0>(tup.0)
+//
+val () = pstrn(",")
+val () =
+  g_print<a1>(tup.1)
+//
+val () = pstrn(",")
+val () =
+  g_print<a2>(tup.2)
+//
+val () = pstrn(",")
+val () =
+  g_print<a3>(tup.3)
+//
+val () = pstrn(",")
+val () =
+  g_print<a4>(tup.4)
+//
+val () = strn_print(")")
+//
+end // end of [g_print<t0up5>(tup)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ a0:t0
+, a1:t0
+, a2:t0
+, a3:t0
+, a4:t0
+, a5:t0 }
+g_print
+<t0up(a0,a1,a2,a3,a4,a5)>
+  ( tup ) =
+let
+//
+val () =
+  strn_print("@(")
+val () =
+  g_print<a0>(tup.0)
+//
+val () = pstrn(",")
+val () =
+  g_print<a1>(tup.1)
+//
+val () = pstrn(",")
+val () =
+  g_print<a2>(tup.2)
+//
+val () = pstrn(",")
+val () =
+  g_print<a3>(tup.3)
+//
+val () = pstrn(",")
+val () =
+  g_print<a4>(tup.4)
+//
+val () = pstrn(",")
+val () =
+  g_print<a5>(tup.5)
+//
+val () = strn_print(")")
+//
+end // end of [g_print<t0up6>(tup)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

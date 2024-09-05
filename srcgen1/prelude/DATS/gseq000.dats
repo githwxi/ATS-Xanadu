@@ -202,7 +202,7 @@ gseq_z2forcmp
 ) where
 {
 #impltmp
-z2forcmp$fcmp<x0><x0> = g_cmp<x0>
+z2forcmp$test<x0><x0> = g_cmp<x0>
 }(*where*)//end-of-[gseq_cmp/z2forcmp]
 //
 (* ****** ****** *)
@@ -2419,7 +2419,7 @@ gseq_z2forcmp
 ) where
 {
 #impltmp
-z2forcmp$fcmp<x0><x0> = g_cmp<x0> }
+z2forcmp$test<x0><x0> = g_cmp<x0> }
 //(*where*)//end-of-[gseq_z2cmp/z2forcmp(...)]
 //
 (* ****** ****** *)
@@ -2525,7 +2525,7 @@ strm_vt_z2forcmp0<x0><y0>
 ) where
 {
 #impltmp
-z2forcmp$fcmp0<x0><y0> = z2forcmp$fcmp<x0><y0>
+z2forcmp$test0<x0><y0> = z2forcmp$test<x0><y0>
 } (*where*) // end of [gseq_z2forcmp(...)]
 //
 (* ****** ****** *)
@@ -2699,8 +2699,8 @@ strm_vt_iz2forcmp0<x0><y0>(xs, ys)
 ) where
 {
 #impltmp
-iz2forcmp$fcmp0
-<x0><y0>(*x0,y0*) = iz2forcmp$fcmp<x0><y0>
+iz2forcmp$test0
+<x0><y0>(*x0,y0*) = iz2forcmp$test<x0><y0>
 } endlet // end-of-[gseq_iz2forcmp(xs,ys)]
 //
 (* ****** ****** *)
@@ -3550,7 +3550,7 @@ gseq_z2forcmp
 <xs><x0><ys><y0>(xs,ys)) where
 {
 #impltmp
-z2forcmp$fcmp<x0><y0>(x0,y0) = f0(x0,y0)
+z2forcmp$test<x0><y0>(x0,y0) = f0(x0,y0)
 } (*where*)//gseq_z2forcmp_f2un(xs,ys,f0)
 (* ****** ****** *)
 //
@@ -3655,7 +3655,7 @@ gseq_iz2forcmp
 <xs><x0><ys><y0>(xs,ys)) where
 {
 #impltmp
-iz2forcmp$fcmp
+iz2forcmp$test
 <    x0,y0    >(i0, x0, y0) = f0(i0, x0, y0)
 }(*where*)//end(gseq_iz2forcmp_c3fr(xs,ys,f0))
 (* ****** ****** *)
