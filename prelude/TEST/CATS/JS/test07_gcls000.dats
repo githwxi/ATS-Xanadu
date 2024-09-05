@@ -1,6 +1,6 @@
 (* ****** ****** *)
 (*
-HX-2024-08-09:
+HX-2024-09-05:
 For testing prelude/JS!
 *)
 (* ****** ****** *)
@@ -17,42 +17,42 @@ For testing prelude/JS!
 "srcgen2\
 /prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
+(*
 #include
 "srcgen2\
 /prelude/HATS/prelude_NODE_dats.hats"
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () = prints
-("Hello from [test99_mydiary]!", "\n")
+#define
+GZ2SEQ(xs, ys) =
+GSEQ_z2make(GSEQ(xs), GSEQ(ys))
+#define
+GX2SEQ(xs, ys) =
+GSEQ_x2make(GSEQ(xs), GSEQ(ys))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val AB =
-strn(26, lam(i)=>'a'+i)
-val () = prints("AB = ", AB, "\n")
+val xs = list@(1, 2, 3)
+val ys = list@(10,20,30)
+val () = prints("xs = ", xs, "\n")
+val () = prints("ys = ", ys, "\n")
 //
 (* ****** ****** *)
 //
-val abc = prefix(AB, 3)
-val xyz = suffix(AB, 23)
-val ( ) = prints("abc = ", abc, "\n")
-val ( ) = prints("xyz = ", xyz, "\n")
+val ztup = GZ2SEQ(xs, ys)
+val zxys = rlistize(ztup)
+val (  ) =
+prints("ztup = ", ztup, "\n")
+val (  ) =
+print1s("rlistize(ztup) = ", zxys, "\n")
 //
 (* ****** ****** *)
-//
-val AB2 = g_ncpy(AB, 2) // 2*AB
-val ( ) = prints("AB2 = ", AB2, "\n")
-//
 (* ****** ****** *)
 //
-val ABAB =
-adds(AB, AB) where
-{
-  #impltmp
-  g_add<strn> = strn_append }
-val (  ) = prints("ABAB = ", ABAB, "\n")
+val () = console_log(the_print_store_flush( (*void*) ))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -60,4 +60,4 @@ val (  ) = prints("ABAB = ", ABAB, "\n")
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_TEST_CATS_JS_test99_mydiary.dats] *)
+(* end of [ATS3/XANADU_prelude_TEST_CATS_JS_test06_list000.dats] *)

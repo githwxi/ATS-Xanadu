@@ -39,44 +39,6 @@ Sat 03 Aug 2024 03:08:26 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val xs = range_ibtw(1, 10)
-val () = prints("xs = ", xs, "\n")
-val xs = vt2t(GASZ(xs).listize())
-val () = print1s("xs = ", xs, "\n")
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val AB =
-strn
-(26, lam(i)=>'a'+i)
-val () =
-prints("AB = ", AB, "\n")
-//
-val abc = prefix(AB, 3)
-val xyz = suffix(AB, 23)
-val () =
-prints("abc = ", abc, "\n")
-val () =
-prints("xyz = ", xyz, "\n")
-//
-val AB2 = AB\ncpy(2)
-val () =
-prints("AB2 = ", AB2, "\n")
-//
-val
-ABAB =
-adds(AB, AB) where
-{
-#impltmp
-g_add<strn> = strn_append
-}
-val () =
-prints("ABAB = ", ABAB, "\n")
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 val
 rABAB =
 strn$rconcat(@(AB, AB))
@@ -261,22 +223,6 @@ val () = print1s("rlistize(xs) = ", rlistize(GSEQ(xs)), "\n")
 //
 (* ****** ****** *)
 //
-#define
-GZ2SEQ(xs, ys) =
-GSEQ_z2make(GSEQ(xs), GSEQ(ys))
-#define
-GX2SEQ(xs, ys) =
-GSEQ_x2make(GSEQ(xs), GSEQ(ys))
-//
-val ys =
-list(10,20,30,40,50)
-val ztup = GZ2SEQ(xs, ys)
-val zxys = rlistize(ztup)
-val ( ) =
-prints("ztup = ", ztup, "\n")
-val ( ) =
-print1s("rlistize(ztup) = ", zxys, "\n")
-////
 val () =
 irforitm
 ( GSEQ(ys)

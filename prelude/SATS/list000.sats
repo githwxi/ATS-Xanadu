@@ -89,39 +89,13 @@ list_3val with list_make_3val
 //
 fun
 <a:t0>
-list_make_t0up1
-(tup: t0up(a)): list(a, 1)
-fun
-<a:t0>
-list_make_t0up2
-(tup: t0up(a, a)): list(a, 2)
-fun
-<a:t0>
-list_make_t0up3
-(tup: t0up(a, a, a)): list(a, 3)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#symload
-list with list_make_t0up1 of 1000
-#symload
-list with list_make_t0up2 of 1000
-#symload
-list with list_make_t0up3 of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
 list_make_ncpy
 {n:nat}
 (n0: sint(n), x0: a): list(a, n)
 #symload
 list with list_make_ncpy of 1000
 #symload
-list_ncpy with list_make_ncpy of 1000
+list_ncpy with list_make_ncpy//of 1000
 //
 fun
 <a:t0>
@@ -132,7 +106,7 @@ list_make_nfun
 #symload
 list with list_make_nfun of 1000
 #symload
-list_nfun with list_make_nfun of 1000
+list_nfun with list_make_nfun//of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -288,7 +262,7 @@ fun
 <x0:t0>
 list_make_t0up3
 (tup: t0up(x0,x0,x0)): list(x0,3)
-(*
+//
 fun
 <x0:t0>
 list_make_t0up4
@@ -301,16 +275,17 @@ fun
 <x0:t0>
 list_make_t0up6
 (tup: t0up(x0,x0,x0,x0,x0,x0)): list(x0,6)
-*)
+//
+(* ****** ****** *)
 //
 #symload list with list_make_t0up1 of 1000
 #symload list with list_make_t0up2 of 1000
 #symload list with list_make_t0up3 of 1000
-(*
+//
 #symload list with list_make_t0up4 of 1000
 #symload list with list_make_t0up5 of 1000
 #symload list with list_make_t0up6 of 1000
-*)
+//
 //
 (* ****** ****** *)
 (* ****** ****** *)
