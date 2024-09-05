@@ -353,38 +353,6 @@ list_cons(x3, list_nil(*0*))))
 (* ****** ****** *)
 //
 (*
-HX-2024-09-05:
-Thu 05 Sep 2024 05:21:51 PM EDT
-*)
-//
-#impltmp
-< x0:t0 >
-list_make_t0up1(xs) =
-(
-  list_make_1val<x0>(xs.0))
-//
-#impltmp
-< x0:t0 >
-list_make_t0up2(xs) =
-(
-  list_make_2val<x0>(x0, x1))
-where
-{
-  val x0 = xs.0 and x1 = xs.1 }
-//
-#impltmp
-< x0:t0 >
-list_make_t0up3(xs) =
-let
-val @(x0, x1, x2) = xs in//let
-(
-  list_make_3val<x0>(x0, x1, x1))
-end//let//end-of-[list_make_t0up3]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
 HX-2024-09-01:
 Mon 02 Sep 2024 06:16:45 PM EDT
 *)
@@ -481,18 +449,49 @@ gseq_map_list<xs><x0>(xs))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-05:
+Thu 05 Sep 2024 05:21:51 PM EDT
+*)
+//
 #impltmp
 < x0:t0 >
-list_make_t0up1 =
-list_make_gseq<t0up(x0)><x0>
+list_make_t0up1(xs) =
+(
+  list_make_1val<x0>(xs.0))
+//
 #impltmp
 < x0:t0 >
-list_make_t0up2 =
-list_make_gseq<t0up(x0,x0)><x0>
+list_make_t0up2(xs) =
+(
+  list_make_2val<x0>(x0, x1))
+where
+{
+  val x0 = xs.0 and x1 = xs.1 }
+//
 #impltmp
 < x0:t0 >
-list_make_t0up3 =
-list_make_gseq<t0up(x0,x0,x0)><x0>
+list_make_t0up3(xs) =
+let
+val @(x0, x1, x2) = xs in//let
+(
+  list_make_3val<x0>(x0, x1, x2))
+end//let//end-of-[list_make_t0up3]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_make_t0up4 =
+list_make_gseq<t0up(x0,x0,x0,x0)><x0>
+#impltmp
+< x0:t0 >
+list_make_t0up5 =
+list_make_gseq<t0up(x0,x0,x0,x0,x0)><x0>
+#impltmp
+< x0:t0 >
+list_make_t0up5 =
+list_make_gseq<t0up(x0,x0,x0,x0,x0,x0)><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
