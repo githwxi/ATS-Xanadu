@@ -93,6 +93,24 @@ XATS2JS_strn_fmake_fwork
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-05:
+Thu 05 Sep 2024 11:11:27 AM EDT
+*)
+//
+#impltmp
+strn_print<> =
+XATS2JS_strn_print
+where
+{
+#extern
+fun
+XATS2JS_strn_print(cs: strn): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
