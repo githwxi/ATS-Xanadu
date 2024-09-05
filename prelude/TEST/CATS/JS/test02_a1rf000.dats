@@ -17,9 +17,11 @@ For testing prelude/JS!
 "srcgen2\
 /prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
+(*
 #include
 "srcgen2\
 /prelude/HATS/prelude_NODE_dats.hats"
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -68,6 +70,11 @@ gasz_length<a1rf(x0)><x0>(A) = n }
 //
 val () =
 prints("fact(10) = ", fact(10), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () = console_log(the_print_store_flush())
 //
 (* ****** ****** *)
 (* ****** ****** *)
