@@ -21,9 +21,11 @@ For testing prelude/JS!
 "srcgen2\
 /prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
+(*
 #include
 "srcgen2\
 /prelude/HATS/prelude_NODE_dats.hats"
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -120,6 +122,11 @@ val () = prints
 //
 val () = prints
 ("slice(\"abcde\", 1, 3)=", slice("abcde", 1, 3), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () = console_log(the_print_store_flush())
 //
 (* ****** ****** *)
 (* ****** ****** *)

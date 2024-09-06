@@ -130,6 +130,43 @@ $UN.gasz_lset$at$raw
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-06:
+Fri 06 Sep 2024 04:39:23 PM EDT
+*)
+//
+#impltmp
+< a: t0 >
+a1sz_make_list
+  ( xs ) =
+a1sz_fmake_fwork<a>
+(
+lam(work) =>
+GSEQ(xs).foritm(lam(x) => work(x)))
+//
+(* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+a1sz_make_ncpy
+  (n, x) =
+a1sz_fmake_fwork<a>
+(
+lam(work) =>
+GSEQ(n).foritm(lam(i) => work( x )))
+//
+#impltmp
+< a: vt >
+a1sz_make_nfun
+  (n, f) =
+a1sz_fmake_fwork
+(
+lam(work) =>
+GSEQ(n).foritm(lam(i) => work(f(i))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

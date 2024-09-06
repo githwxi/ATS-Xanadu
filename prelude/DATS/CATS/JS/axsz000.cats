@@ -58,6 +58,19 @@ XATS2JS_a1sz_lset$at
 }
 //
 ////////////////////////////////////////////////////////////////////////.
+/*
+HX-2024-09-06:
+Fri 06 Sep 2024 04:18:38 PM EDT
+*/
+//
+function
+XATS2JS_a1sz_make_none
+  ( n )
+{
+  var A = new Array(n)
+  return A // HX: A = [?, ?, ..., ?]
+}
+////////////////////////////////////////////////////////////////////////.
 //
 /*
 HX-2024-08-15:
@@ -69,7 +82,7 @@ XATS2JS_a1sz_make_ncpy
   (n, x)
 {
   var i = 0
-  var A = new Array(n);
+  var A = new Array(n)
   while (i < n) {
     A[i] = (x); i += 1
   }
@@ -81,7 +94,7 @@ XATS2JS_a1sz_make_nfun
   (n, f)
 {
   var i = 0
-  var A = new Array(n);
+  var A = new Array(n)
   while (i < n) {
     A[i] = f(i); i += 1
   }

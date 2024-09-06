@@ -99,6 +99,29 @@ XATS2JS_a1sz_lset$at
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-06:
+Fri 06 Sep 2024 03:24:35 PM EDT
+*)
+//
+#impltmp
+< x0:t0 >
+a1sz_make_none
+  ( asz ) =
+(
+XATS2JS_a1sz_make_none
+  ( asz )) where
+{
+#extern
+fun
+XATS2JS_a1sz_make_none
+{n:nat}
+(asz: nint(n)): a1sz(x0, n) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < a: t0 >
 a1sz_make_ncpy
@@ -139,7 +162,7 @@ Sat 17 Aug 2024 07:33:26 PM EDT
 *)
 //
 #impltmp
-< x0:t0 >
+< x0:vt >
 a1sz_fmake_fwork
   (fwork) =
 (
@@ -149,9 +172,10 @@ XATS2JS_a1sz_fmake_fwork
 #extern
 fun
 XATS2JS_a1sz_fmake_fwork
-{ x0:t0 }
-( fwork
-: ((x0) -> void) -> void): a1sz(x0) = $extnam()
+{ x0:vt }
+(
+fwork:
+((~x0) -> void) -> void): a1sz(x0) = $extnam()
 }
 //
 (* ****** ****** *)
