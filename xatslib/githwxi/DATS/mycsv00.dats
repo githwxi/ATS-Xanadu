@@ -9,14 +9,18 @@ Some simple stuff for CSV-handling
 (* ****** ****** *)
 //
 fun<>
-mycsv00_csv$parse_opt
+mycsv00_csv$parse$opt
   (line: strn): optn_vt(arrsz(strn))
 //
 (* ****** ****** *)
 //
 fun<>
-mycsv00$file_csv$$parse_opt
-  (file: strn): optn_vt(list_vt(arrsz(strn)))
+mycsv00$file_csv$$parse$opt_lstrm
+  (file: strn): optn_vt(strm_vt(optn_vt(arrsz(strn))))
+//
+fun<>
+mycsv00$file_csv$$parse$opt_llist
+  (file: strn): optn_vt(list_vt(optn_vt(arrsz(strn))))
 //
 (* ****** ****** *)
 (* ****** ****** *)

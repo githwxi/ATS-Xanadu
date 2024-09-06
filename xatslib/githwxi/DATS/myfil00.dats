@@ -9,8 +9,12 @@ Some simple stuff for handling files
 (* ****** ****** *)
 //
 fun<>
-myfil00$file_line$strmize
-  (file: strn): strm_vt(strn)
+myfil00$file_line$strmize$opt
+  (file: strn): optn_vt(strm_vt(strn))
+//
+fun<>
+myfil00$file_line$listize$opt
+  (file: strn): optn_vt(list_vt(strn))
 //
 (* ****** ****** *)
 (* ****** ****** *)
