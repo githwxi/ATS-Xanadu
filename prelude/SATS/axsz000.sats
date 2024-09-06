@@ -93,7 +93,8 @@ a1sz_make_list
  {n:i0}
 (xs: list(a, n)): a1sz(a, n)
 //
-#symload a1sz with a1sz_make_list of 1000
+#symload
+a1sz with a1sz_make_list of 1000
 //
 (* ****** ****** *)
 //

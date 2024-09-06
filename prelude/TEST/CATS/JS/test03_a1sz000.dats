@@ -58,7 +58,7 @@ prints("fact(10) = ", fact(10), "\n")
 (* ****** ****** *)
 //
 val xs =
-list(10, lam(i) => i)
+list(10, lam(i) => i*i)
 val ys = a1sz_make_list(xs)
 val () =
 prints("ys(", type(ys), ") = ", ys, "\n")
