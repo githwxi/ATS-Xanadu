@@ -232,19 +232,6 @@ val () = prints("\n")
 val rys = rlistize(GSEQ(ys))
 val ( ) = print1s("rys = ", rys, "\n")
 ////
-val rxys =
-rlistize(GZ2SEQ(xs, ys))
-val ( ) =
-print1s("rlistize(GSEQ_z2make(GSEQ(xs), GSEQ(ys))) = ", rxys, "\n")
-//
-val xys =
-listize(GX2SEQ(xs, ys))
-val ( ) =
-print1s("listize(GSEQ_x2make(GSEQ(xs), GSEQ(ys))) = ", xys, "\n")
-val rxys =
-rlistize(GX2SEQ(xs, ys))
-val ( ) =
-print1s("rlistize(GSEQ_x2make(GSEQ(xs), GSEQ(ys))) = ", rxys, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

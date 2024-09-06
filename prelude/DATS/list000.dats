@@ -473,25 +473,70 @@ where
 < x0:t0 >
 list_make_t0up3(xs) =
 let
-val @(x0, x1, x2) = xs in//let
+val @(x0, x1, x2) = xs in
 (
   list_make_3val<x0>(x0, x1, x2))
 end//let//end-of-[list_make_t0up3]
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < x0:t0 >
 list_make_t0up4 =
 list_make_gseq<t0up(x0,x0,x0,x0)><x0>
+*)
+#impltmp
+< x0:t0 >
+list_make_t0up4(xs) =
+let
+val
+@(x0, x1, x2, x3) = xs in
+(
+list_cons(x0,
+  list_make_3val<x0>(x1, x2, x3)))
+end//let//end-of-[list_make_t0up4(xs)]
+//
+(*
 #impltmp
 < x0:t0 >
 list_make_t0up5 =
 list_make_gseq<t0up(x0,x0,x0,x0,x0)><x0>
+*)
 #impltmp
 < x0:t0 >
-list_make_t0up5 =
+list_make_t0up5(xs) =
+let
+//
+val
+@(x0, x1, x2, x3, x4) = xs in
+(
+list_cons(x0,
+list_cons(x1,
+  list_make_3val<x0>(x2, x3, x4))))
+end//let//end-of-[list_make_t0up5(xs)]
+//
+(*
+#impltmp
+< x0:t0 >
+list_make_t0up6 =
 list_make_gseq<t0up(x0,x0,x0,x0,x0,x0)><x0>
+*)
+#impltmp
+< x0:t0 >
+list_make_t0up6(xs) =
+let
+//
+val
+@(x0, x1, x2, x3, x4, x5) = xs
+//
+in//let
+(
+list_cons(x0,
+list_cons(x1,
+list_cons(x2,
+  list_make_3val<x0>(x3, x4, x5)))))
+end//let//end-of-[list_make_t0up6(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

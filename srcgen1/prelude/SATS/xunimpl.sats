@@ -1592,6 +1592,19 @@ fun
 list_make_t0up3
 (tup: t0up(x0,x0,x0)): list(x0,3)
 //
+fun
+<x0:t0>
+list_make_t0up4
+(tup: t0up(x0,x0,x0,x0)): list(x0,4)
+fun
+<x0:t0>
+list_make_t0up5
+(tup: t0up(x0,x0,x0,x0,x0)): list(x0,5)
+fun
+<x0:t0>
+list_make_t0up6
+(tup: t0up(x0,x0,x0,x0,x0,x0)): list(x0,6)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

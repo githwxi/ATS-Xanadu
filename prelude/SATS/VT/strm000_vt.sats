@@ -77,6 +77,21 @@ strq_vt_length0
 //
 fun
 <x0:vt>
+strm_vt_concat0
+( xss
+: strm_vt
+( strm_vt(x0) )): strm_vt(x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_append0
+( xs: strm_vt(x0)
+, ys: strm_vt(x0)): strm_vt(x0)
+fun
+<x0:vt>
 strm_vt_append00
 ( xs: strm_vt(x0)
 , ys: strm_vt(x0)): strm_vt(x0)
