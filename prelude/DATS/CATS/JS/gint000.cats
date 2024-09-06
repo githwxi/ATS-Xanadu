@@ -92,7 +92,6 @@ XATS2JS_sint_add_sint
   return (i1 + i2) // HX: add
 }
 //
-//
 function
 XATS2JS_sint_sub_sint
   (i1, i2)
@@ -108,14 +107,12 @@ XATS2JS_sint_mul_sint
   return (i1 * i2) // HX: mul
 }
 //
-//
 function
 XATS2JS_sint_div_sint
   (i1, i2)
 {
-  return (i1 / i2) // HX: div
+  return Math.trunc(i1 / i2)
 }
-//
 //
 function
 XATS2JS_sint_mod_sint
