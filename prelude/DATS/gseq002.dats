@@ -216,6 +216,46 @@ x2rforall$test<x0><y0>(x0, y0) = rforall$test@(x0, y0)
 (* ****** ****** *)
 //
 (*
+HX-2024-09-05:
+Thu 05 Sep 2024 08:13:20 PM EDT
+*)
+#impltmp
+{ xs:t0
+, x0:t0
+, ys:t0
+, y0:t0 }
+gseq_strmize
+<
+gx2seq
+(xs,x0,ys,y0)><(x0,y0)>
+  (xsys) =
+let
+//
+#typedef
+xy = @(x0, y0)
+//
+val
+@(xs, ys) =
+x2tup_unmk(xsys)
+val xs = GSEQ_unmk(xs)
+and ys = GSEQ_unmk(ys)
+//
+in//let
+strm_vt_concat0<xy>
+(
+gseq_map_f1un_lstrm
+<xs><x0><strm_vt(xy)>
+(
+xs,
+lam(x0) =>
+gseq_map_f1un_lstrm<ys><y0><xy>(ys,lam(y0)=>(x0,y0)))
+)
+end//let//end-of-[gseq_strmize<gx2seq(...)><...>]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-08-05:
 Mon 05 Aug 2024 06:21:53 PM EDT
 *)
@@ -555,7 +595,7 @@ Sun 04 Aug 2024 07:26:14 AM EDT
 (*
 HX-2024-08-04:
 This one is BUGGY!!!
-Can you spot the cause :)
+Can you spot the SUBTLE cause :)
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -572,7 +612,9 @@ forall$test<x0>(x0) =
 gseq_forall<ys><y0>(ys)) where
 {
 #impltmp
-forall$test<y0>(y0) = x2forall$test<x0><y0>(x0, y0)
+forall$test<y0>(y0) =
+(
+  x2forall$test<x0><y0>(x0, y0))
 }(*where*)
 }(*where*)//end-of-[gseq_x2forall(xs, ys)]
 *)
