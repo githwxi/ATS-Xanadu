@@ -146,6 +146,17 @@ a0rf_lset
 //
 fun
 <a:t0>
+a1rf_make_list
+ {n:i0}
+(xs: list(a, n)): a1rf(a, n)
+//
+#symload
+a1rf with a1rf_make_list of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
 a1rf_make_ncpy
  {n:i0|n>0}
 ( n:sint(n), x:a ): a1rf(a, n)
