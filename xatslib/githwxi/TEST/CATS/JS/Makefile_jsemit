@@ -43,6 +43,24 @@ test01_range00.dats; \
 $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
 ########################################################################
 ########################################################################
+test02:: ; \
+echo "//" `date` > $@_out.js
+############
+test02:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
+test02:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
+test02:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
+############
+test02:: ; \
+$(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
+############
+test02:: \
+test02_qlist00.dats; \
+$(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+########################################################################
+########################################################################
 test99:: ; \
 echo "//" `date` > $@_out.js
 ############

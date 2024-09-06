@@ -5,6 +5,10 @@ For testing prelude/JS!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 #staload _ =
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
@@ -38,10 +42,73 @@ val () = prints("AB = ", AB, "\n")
 val BA = strn_reverse(AB)
 val () = prints("BA = ", BA, "\n")
 //
-val ABAB = appends(AB, AB)
+val
+ABAB = appends(AB, AB)
 val () = prints("ABAB = ", ABAB, "\n")
-val ABBA = appends(AB, BA)
+val
+ABBA = appends(AB, BA)
 val () = prints("ABBA = ", ABBA, "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
+rABAB = strn$rconcat(@(AB, AB))
+val () = prints("rABAB = ", rABAB, "\n")
+//
+val
+ABABAB = strn$concat(@(AB, AB, AB))
+val () = prints("ABABAB = ", ABABAB, "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val wrd0 = "hello"
+val wrds =
+list_fmake_fwork<strn>
+(
+lam(work) =>
+GASZ(wrd0).iforitm(
+lam(i, ci) => GASZ(26).foritm
+(
+  lam(j) =>
+  let
+    val cj = 'a'+j
+  in
+    if ci = cj
+    then () else work
+    ($UN.strn_fset$at$raw(wrd0, i, cj))
+  end
+)
+)
+)
+//
+val (  ) = prints("wrds = ", wrds, "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val wrds =
+list_fmake_fwork<strn>
+(
+lam(work) =>
+GSEQ(wrd0).iforitm
+(
+  lam(i, ci) => GASZ(26).foritm
+  (
+    lam(j) =>
+    let
+      val cj = 'a'+j
+    in
+      if ci = cj
+      then () else work
+      ($UN.strn_fset$at$raw(wrd0, i, cj))
+    end
+  )
+)
+)
+//
+val (  ) = prints("wrds = ", wrds, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
