@@ -9,6 +9,8 @@ NODE=node
 ########################################################################
 ########################################################################
 all:: test01
+all:: test02
+all:: test03
 all:: test99
 ########################################################################
 ########################################################################
@@ -35,12 +37,13 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
 test01:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
 ############
-test01:: ; \
-$(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
-############
 test01:: \
 test01_range00.dats; \
 $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+############
+test01:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level ADVANCED --js=$@_out.js --js_output_file=$@_out2.js
 ########################################################################
 ########################################################################
 test02:: ; \
@@ -53,12 +56,13 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
 test02:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
 ############
-test02:: ; \
-$(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
-############
 test02:: \
 test02_qlist00.dats; \
 $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+############
+test02:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level ADVANCED --js=$@_out.js --js_output_file=$@_out2.js
 ########################################################################
 ########################################################################
 test03:: ; \

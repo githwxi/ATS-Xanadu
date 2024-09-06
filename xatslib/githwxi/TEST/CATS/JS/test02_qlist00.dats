@@ -33,9 +33,11 @@ Thu 05 Sep 2024 05:36:54 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen2\
 /prelude/HATS/prelude_NODE_dats.hats"
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -54,6 +56,11 @@ val () = prints("sum(xs) = ", sum(GSEQ(xs)), "\n")
 val () = prints("prod(xs) = ", prod(GSEQ(xs)), "\n")
 val () = print1s("listize(xs) = ", listize(GSEQ(xs)), "\n")
 val () = print1s("rlistize(xs) = ", rlistize(GSEQ(xs)), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () = console_log(the_print_store_flush())
 //
 (* ****** ****** *)
 (* ****** ****** *)
