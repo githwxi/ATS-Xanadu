@@ -81,6 +81,24 @@ a2sz_vt(x0:vt) = [m:i0;n:i0] a2sz_vt(x0,m,n)
 //
 fun
 <a:t0>
+a1sz_make_none
+ {n:i0}
+(n0: nint(n)): a1sz(?a, n)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+a1sz_make_list
+ {n:i0}
+(xs: list(a, n)): a1sz(a, n)
+//
+#symload a1sz with a1sz_make_list of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
 a1sz_make_ncpy
  {n:i0|n>0}
 (n: sint(n), x:a): a1sz(a, n)

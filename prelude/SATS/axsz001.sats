@@ -78,10 +78,11 @@ fun
 a1sz_fmake((*void*)): a1sz(x0)
 *)
 fun
-<x0:t0>
+<x0:vt>
 a1sz_fmake_fwork
-( fwork
-: ((x0)->void)->void): a1sz(x0)//HX:3rd-order!
+(
+fwork:
+((~x0)->void)->void): a1sz(x0)//HX:3rd-order!
 //
 (* ****** ****** *)
 (* ****** ****** *)
