@@ -14,6 +14,7 @@ Thu 05 Sep 2024 05:36:54 PM EDT
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #include
 "srcgen2\
 /prelude/HATS/prelude_dats.hats"
@@ -41,10 +42,9 @@ Thu 05 Sep 2024 05:36:54 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val xs = range_ibtw(1, 10)
-val () = prints("xs = ", xs, "\n")
-val xs = vt2t(GASZ(xs).listize())
-val () = print1s("xs = ", xs, "\n")
+val ds =
+nint_dgt$listize(123456789)
+val () = print1s("ds = ", ds, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -57,4 +57,4 @@ val () = console_log(the_print_store_flush())
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_JS_githwxi_TEST_test01_range00.dats] *)
+(* end of [ATS3/XANADU_xatslib_JS_githwxi_TEST_test01_qlist00.dats] *)
