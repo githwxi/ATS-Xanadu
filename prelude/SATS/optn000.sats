@@ -57,6 +57,15 @@ optn_nilq
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<a:t0>
+optn_head
+(xs: optn(a, tt)): ( a )
+//
+#symload head with optn_head of 1000
+//
+(* ****** ****** *)
+//
 (*
 HX-2024-09-07:
 This one can be polymorphic

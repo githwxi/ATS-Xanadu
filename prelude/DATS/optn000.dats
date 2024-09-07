@@ -83,6 +83,17 @@ case+ xs of
 (* ****** ****** *)
 //
 #impltmp
+< a: t0 >
+optn_head
+  ( xs ) =
+(
+case+ xs of
+| optn_cons(x0) => (x0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 { x0:t0 }
 gseq_nil
 <optn(x0)><x0>
@@ -98,6 +109,7 @@ gseq_nilq
 <optn(x0)><x0>
  (  xs  ) = optn_nilq{x0}(xs)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

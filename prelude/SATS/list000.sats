@@ -57,6 +57,24 @@ list_nilq
 (xs: list(a,n)): bool(n=0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_head
+{n:i0|n>0}
+(xs: list(a,n)): ( a )
+fun
+<a:t0>
+list_tail
+{n:i0|n>0}
+(xs: list(a,n)): list(a,n-1)
+//
+#symload head with list_head of 1000
+#symload tail with list_tail of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <a:t0>
