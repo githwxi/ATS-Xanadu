@@ -144,6 +144,8 @@ test06:: ; \
 $(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
 test06:: ; \
 $(CAT) $(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/myfil00.cats >> $@_out.js
+test06:: ; \
+$(CAT) $(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/mycsv00.cats >> $@_out.js
 ############
 test06:: \
 test06_mycsv00.dats; \

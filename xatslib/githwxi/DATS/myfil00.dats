@@ -50,23 +50,6 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-<(*tmp*)>
-myfil00$fpath_readall$work
-  (fpath, work) =
-(
-XATS2JS_NODE_myfil00$fpath_readall$work
-  (fpath, work)) where
-{
-#extern
-fun
-XATS2JS_NODE_myfil00$fpath_readall$work
-  (fpath: strn, work: (strn)->void): void = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

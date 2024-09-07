@@ -3,7 +3,7 @@
 (*
 HX-2024-07-21:
 This is for loading
-ATS3_XANADU/xatslib/JS/DATS
+ATS3_XANADU/xatslib/githwxi/DATS
 *)
 (* ****** ****** *)
 (* ****** ****** *)
