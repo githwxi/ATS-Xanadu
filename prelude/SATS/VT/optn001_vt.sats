@@ -26,67 +26,42 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-Sun 01 Sep 2024 07:19:48 AM EDT
+(*
+Fri 06 Sep 2024 11:55:56 PM EDT
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-sint_print<> =
-XATS2JS_NODE_sint_print
-where
-{
-#extern
 fun
-XATS2JS_NODE_sint_print(b0: sint): void = $extnam()
-}
+<x0:vt>
+optn_vt_forall0
+(xs: ~optn_vt(x0)): bool
 //
-(* ****** ****** *)
-//
-#impltmp
-bool_print<> =
-XATS2JS_NODE_bool_print
-where
-{
-#extern
 fun
-XATS2JS_NODE_bool_print(b0: bool): void = $extnam()
-}
+<x0:vt>
+optn_vt_rforall0
+(xs: ~optn_vt(x0)): bool
 //
-(* ****** ****** *)
-//
-#impltmp
-char_print<> =
-XATS2JS_NODE_char_print
-where
-{
-#extern
 fun
-XATS2JS_NODE_char_print(b0: char): void = $extnam()
-}
+<x0:vt>
+optn_vt_iforall0
+(xs: ~optn_vt(x0)): bool
 //
-(* ****** ****** *)
-//
-#impltmp
-strn_print<> =
-XATS2JS_NODE_strn_print
-where
-{
-#extern
 fun
-XATS2JS_NODE_strn_print(cs: strn): void = $extnam()
-}
+<x0:vt>
+optn_vt_irforall0
+(xs: ~optn_vt(x0)): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_NODE_node000.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_optn001_vt.sats] *)

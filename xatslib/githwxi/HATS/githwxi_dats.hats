@@ -19,6 +19,9 @@ ATS3_XANADU/xatslib/JS/DATS
 #staload "./../DATS/gtree00.dats"
 (* ****** ****** *)
 (* ****** ****** *)
+#staload "./../DATS/myfil00.dats"
+(* ****** ****** *)
+(* ****** ****** *)
 (*
 HX: for linearly typed interfaces
 *)

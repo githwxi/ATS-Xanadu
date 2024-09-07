@@ -30,63 +30,92 @@
 //
 (*
 Author: Hongwei Xi
-Sun 01 Sep 2024 07:19:48 AM EDT
+(*
+Fri 06 Sep 2024 11:49:28 PM EDT
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-sint_print<> =
-XATS2JS_NODE_sint_print
-where
-{
-#extern
-fun
-XATS2JS_NODE_sint_print(b0: sint): void = $extnam()
-}
-//
-(* ****** ****** *)
+(*
+HX-2024-09-06:
+Fri 06 Sep 2024 11:49:42 PM EDT
+*)
 //
 #impltmp
-bool_print<> =
-XATS2JS_NODE_bool_print
-where
-{
-#extern
-fun
-XATS2JS_NODE_bool_print(b0: bool): void = $extnam()
-}
+{ x0:vt }
+gseq_sep
+<optn_vt(x0)><x0>() = ","
+#impltmp
+{ x0:vt }
+gseq_end
+<optn_vt(x0)><x0>() = ")"
+#impltmp
+{ x0:vt }
+gseq_beg
+<optn_vt(x0)><x0>() = "optn_vt("
 //
 (* ****** ****** *)
 //
 #impltmp
-char_print<> =
-XATS2JS_NODE_char_print
-where
-{
-#extern
-fun
-XATS2JS_NODE_char_print(b0: char): void = $extnam()
-}
-//
-(* ****** ****** *)
+{ x0:vt }
+g_print0
+<optn_vt(x0)>(xs) =
+(
+gseq_print0<optn_vt(x0)><x0>(xs)
+)(*let*)//end-[g_print0<optn_vt>]
 //
 #impltmp
-strn_print<> =
-XATS2JS_NODE_strn_print
-where
-{
-#extern
-fun
-XATS2JS_NODE_strn_print(cs: strn): void = $extnam()
-}
+{ x0:vt }
+g_print1
+<optn_vt(x0)>(xs) =
+(
+gseq_print1<optn_vt(x0)><x0>(xs)
+)(*let*)//end-[g_print1<optn_vt>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(*
+#impltmp
+< x0:t0 >
+optn_vt_length0 =
+gseq_length0<optn_vt(x0)><x0>
+*)
+//
+#impltmp
+< x0:vt >
+optn_vt_length0
+  (xs) =
+(
+case+ xs of
+| ~
+optn_vt_nil() => 0 | ~optn_vt_cons _ => 1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+#impltmp
+< x0:t0 >
+optn_vt_length1 =
+gseq_length1<optn_vt(x0)><x0>
+*)
+//
+#impltmp
+< x0:vt >
+optn_vt_length1
+  (xs) =
+(
+case+ xs of
+| optn_vt_nil() => 0 | optn_vt_cons _ => 1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_NODE_node000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_VT_optn000_vt.dats] *)
