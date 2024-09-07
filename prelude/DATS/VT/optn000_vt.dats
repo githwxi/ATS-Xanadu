@@ -39,6 +39,32 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+optn_vt_nil_
+  ((*0*)) =
+  optn_vt_nil((*0*))
+#impltmp
+< a: vt >
+optn_vt_cons_
+  (  x  ) =
+(
+  optn_vt_cons( x ))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+optn_vt_uncons0
+  (xs) =
+(
+case+ xs of
+| ~optn_vt_cons(x0) => x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-09-06:
 Fri 06 Sep 2024 11:49:42 PM EDT
@@ -80,13 +106,13 @@ gseq_print1<optn_vt(x0)><x0>(xs)
 //
 (*
 #impltmp
-< x0:t0 >
+< a :vt >
 optn_vt_length0 =
 gseq_length0<optn_vt(x0)><x0>
 *)
 //
 #impltmp
-< x0:vt >
+< a: vt >
 optn_vt_length0
   (xs) =
 (
@@ -99,13 +125,13 @@ optn_vt_nil() => 0 | ~optn_vt_cons _ => 1)
 //
 (*
 #impltmp
-< x0:t0 >
+< a: vt >
 optn_vt_length1 =
 gseq_length1<optn_vt(x0)><x0>
 *)
 //
 #impltmp
-< x0:vt >
+< a: vt >
 optn_vt_length1
   (xs) =
 (

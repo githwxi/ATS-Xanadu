@@ -469,7 +469,7 @@ in//let
   not(b0)
   then
   $UN.p2tr_get<x0>(p0)
-  else get$at$exn0<xs><x0>(i0)
+  else get$at$exn0<xs><x0>(xs, i0)
 end//let//end-of-[gseq_get$at0(xs, i0)]
 //
 (* ****** ****** *)

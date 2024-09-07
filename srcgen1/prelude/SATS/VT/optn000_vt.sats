@@ -52,6 +52,14 @@ optn_vt_cons_
 ( x0 : a ): optn_vt(a, tt)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+optn_vt_uncons0
+(xs: optn_vt(a, tt)): (a)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <a:vt>
@@ -139,10 +147,28 @@ optn_vt_forall1(xs: !optn_vt(x0)): bool
 //
 fun
 <x0:vt>
+optn_vt_rforall0(xs: ~optn_vt(x0)): bool
+fun
+<x0:vt>
+optn_vt_rforall1(xs: ~optn_vt(x0)): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 optn_vt_foritm0(xs: ~optn_vt(x0)): void
 fun
 <x0:vt>
 optn_vt_foritm1(xs: !optn_vt(x0)): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+optn_vt_rforitm0(xs: ~optn_vt(x0)): void
+fun
+<x0:vt>
+optn_vt_rforitm1(xs: !optn_vt(x0)): void
 //
 (* ****** ****** *)
 //

@@ -38,6 +38,44 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun<>
+optn_vt_nil_
+{a:vt}
+((*0*)): optn_vt(a,ff)
+//
+fun
+<a:vt>
+optn_vt_cons_
+( x: a ): optn_vt(a,tt)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+optn_vt_uncons0
+(xs: optn_vt(a, tt)): (a)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+optn_vt_length0
+{b0:b0}
+(xs:
+~optn_vt(x0,n0)): sint(b2i(b0))
+//
+fun
+<x0:vt>
+optn_vt_length1
+{b0:b0}
+(xs:
+!optn_vt(x0,n0)): sint(b2i(b0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
