@@ -54,6 +54,35 @@ xs: list_vt(a,n)): list_vt(a,n+1)
 //
 fun
 <a:vt>
+list_vt_head0
+{n:i0|n>0}
+(xs: ~list_vt(a,n)): (a)
+fun
+<a:vt>
+list_vt_head1
+{n:i0|n>0}
+(xs: !list_vt(a,n)): (a)
+fun
+<a:vt>
+list_vt_tail0
+{n:i0|n>0}
+(xs: ~list_vt(a,n)): list_vt(a,n-1)
+fun
+<a:vt>
+list_vt_tail1
+{n:i0|n>0}
+(xs: !list_vt(a,n)): list_vt(a,n-1)
+//
+#symload head0 with list_vt_head0 of 1000
+#symload head1 with list_vt_head1 of 1000
+#symload tail0 with list_vt_tail0 of 1000
+#symload tail1 with list_vt_tail1 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
 list_vt_make_1val
 (x1: a): list_vt(a,1)
 fun

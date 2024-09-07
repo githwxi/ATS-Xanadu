@@ -53,18 +53,6 @@ gseq_copy( !xs ): (xs)
 fun
 <xs:vt>
 <x0:vt>
-gseq_nil0((*nil*)): (xs)
-fun
-<xs:vt>
-<x0:vt>
-gseq_cons0(x0, xs): (xs)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
 gseq_max0(xs: ~xs): (x0)
 fun
 <xs:vt>
@@ -103,6 +91,7 @@ gseq_min$opt1
   (xs: !xs): optn_vt(x0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:vt>
@@ -128,6 +117,18 @@ gseq_prod1(xs: !xs): (x0)
 #symload prod0 with gseq_prod0 of 0100
 #symload prod1 with gseq_prod1 of 0100
 *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_nil0((*nil*)): (xs)
+fun
+<xs:vt>
+<x0:vt>
+gseq_cons0(x0, xs): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -172,12 +173,12 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_head$opt0
-  (xs : ~xs): optn_vt(x0)
+  ( xs: ~xs ): optn_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 gseq_head$opt1
-  (xs : !xs): optn_vt(x0)
+  ( xs: !xs ): optn_vt(x0)
 //
 (*
 #symload head0 with gseq_head0 of 0100
@@ -185,6 +186,31 @@ gseq_head$opt1
 #symload head0 with gseq_head$opt0 of 0100
 #symload head0 with gseq_head$opt1 of 0100
 *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_tail0(xs: ~xs): (xs)
+fun
+<xs:vt>
+<x0:vt>
+gseq_tail$opt0
+  ( xs: ~xs ): optn_vt(xs)
+//
+(*
+#symload tail0 with gseq_tail0 of 0100
+#symload tail0 with gseq_tail$opt0 of 0100
+*)
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_uncons0(xs: ~xs): (x0, xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)

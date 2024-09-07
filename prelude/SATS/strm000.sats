@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 02 Sep 2024 02:43:08 PM EDT
+Sat 07 Sep 2024 07:21:46 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -38,60 +38,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
-optn_vt_nil_
-{a:vt}
-((*0*)): optn_vt(a,ff)
-//
-fun
-<a:vt>
-optn_vt_cons_
-( x: a ): optn_vt(a,tt)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-optn_vt_head0
-(xs: optn_vt(a, tt)): (a)
-(*
-fun
-<a:vt>
-optn_vt_uncons0
-(xs: optn_vt(a, tt)): (a)
-*)
-//
-#symload head0 with optn_vt_head0 of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-optn_vt_length0
-{b0:b0}
-(xs:
-~optn_vt(x0,n0)): sint(b2i(b0))
-//
-(*
-HX-2024-09-07:
-This one can be polymorphic!
-*)
-fun
-<x0:vt>
-optn_vt_length1
-{b0:b0}
-(xs:
-!optn_vt(x0,n0)): sint(b2i(b0))
-//
-#symload length0 with optn_vt_length0 of 1000
-#symload length1 with optn_vt_length1 of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_VT_optn000_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_strm000.sats] *)
