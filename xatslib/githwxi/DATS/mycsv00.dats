@@ -7,20 +7,60 @@ Some simple stuff for CSV-handling
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+#staload "./../DATS/strn000.dats"
+(* ****** ****** *)
+#staload "./../DATS/myfil00.dats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun<>
-mycsv00_csv$parse$opt
-  (line: strn): optn_vt(arrsz(strn))
+mycsv00$line_csv$parse$opt
+  (line: strn): optn_vt(a1sz(strn))
 //
 (* ****** ****** *)
 //
 fun<>
-mycsv00$file_csv$$parse$opt_lstrm
-  (file: strn): optn_vt(strm_vt(optn_vt(arrsz(strn))))
+mycsv00$fpath_csv$$parse$opt_lstrm
+  (fpath: strn): optn_vt(strm_vt(optn_vt(a1sz(strn))))
 //
-fun<>
-mycsv00$file_csv$$parse$opt_llist
-  (file: strn): optn_vt(list_vt(optn_vt(arrsz(strn))))
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+mycsv00$fpath_csv$$parse$opt_lstrm
+  (fpath) =
+let
+//
+val opt0 =
+myfil00$fpath_readall$opt<>(fpath)
+//
+in//let
+//
+case+ opt0 of
+| ~
+optn_vt_nil() =>
+(
+  optn_vt_nil())
+| ~
+optn_vt_cons(chrs) =>
+let
+//
+#typedef x0 = strn
+#vwtpdef y0 =
+optn_vt(a1sz(strn))
+//
+#impltmp
+map$fopr0<x0><y0>(line) =
+(
+  mycsv00$line_csv$parse$opt<>(line))
+in//let
+optn_vt_cons
+(
+strm_vt_map0<x0><y0>(strn_line$strmize<>(chrs)))
+end//let
+//
+end//let//end-of-[mycsv00$fpath_csv$$parse$opt_lstrm]
 //
 (* ****** ****** *)
 (* ****** ****** *)
