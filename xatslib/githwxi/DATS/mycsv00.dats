@@ -42,6 +42,31 @@ mycsv00$fpath_csv$$parse$opt_lstrm
 //
 #impltmp
 <(*tmp*)>
+mycsv00$line_csv$parse$opt
+  (fpath) =
+let
+//
+#vwtpdef
+r0 = // res
+optn_vt(a1sz(strn))
+//
+var r0: r0 =
+optn_vt_nil((*nil*))
+val p0 = $addr( r0 )
+//
+in//let
+mycsv00$line_csv$parse$work
+(
+fpath,
+lam(cs) =>
+$UN.p2tr_set<r0>(p0, optn_vt_cons(cs))); r0
+end//let
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 mycsv00$fpath_csv$$parse$opt_a1sz
   (fpath) =
 (
@@ -67,7 +92,8 @@ mycsv00$fpath_csv$$parse$opt_lstrm
 let
 //
 val opt0 =
-myfil00$fpath_readall$opt<>(fpath)
+(
+ myfil00$fpath_readall$opt<>(fpath))
 //
 in//let
 //

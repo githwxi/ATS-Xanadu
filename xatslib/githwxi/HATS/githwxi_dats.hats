@@ -20,6 +20,7 @@ ATS3_XANADU/xatslib/JS/DATS
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../DATS/myfil00.dats"
+#staload "./../DATS/mycsv00.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 (*
