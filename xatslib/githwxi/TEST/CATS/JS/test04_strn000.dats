@@ -42,8 +42,10 @@ Fri 06 Sep 2024 10:18:54 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val cs = "a\nb\nc\nd\n"
+val cs = "a\nbc\n\ndef\nghij\n"
 val cz = strn_line$strmize(cs)
+//
+val () = print0s("cz = ", cz, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
