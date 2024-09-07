@@ -7,7 +7,7 @@ Some simple stuff for CSV-handling
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../../../mycsv00.dats"
+#staload "./../../mycsv00.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
