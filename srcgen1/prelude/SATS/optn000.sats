@@ -73,13 +73,23 @@ optn_forall
 {b:b0}(xs: optn(a, b)): bool
 fun
 <a:t0>
-optn_foritm
-{b:b0}(xs: optn(a, b)): void
+optn_rforall
+{b:b0}(xs: optn(a, b)): bool
+fun
+<a:t0>
+optn_iforall
+{b:b0}(xs: optn(a, b)): bool
+fun
+<a:t0>
+optn_irforall
+{b:b0}(xs: optn(a, b)): bool
+//
+(* ****** ****** *)
 //
 fun
 <a:t0>
-optn_rforall
-{b:b0}(xs: optn(a, b)): bool
+optn_foritm
+{b:b0}(xs: optn(a, b)): void
 fun
 <a:t0>
 optn_rforitm
@@ -97,6 +107,7 @@ fun
 optn_rlistize
 {b:b0}
 (optn(a, b)): list_vt(a, b2i(b))
+//
 (* ****** ****** *)
 //
 fun
