@@ -382,6 +382,37 @@ strq_vt_rlistize0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:vt>
+strm_vt_a1rfize0
+(xs: strm_vt(x0)): a1rf_vt(x0)
+fun
+<x0:vt>
+strq_vt_a1rfize0
+{n0:i0}
+(xs: strq_vt(x0,n0)): a1rf_vt(x0,n0)
+//
+#symload a1rfize0 with strm_vt_a1rfize0 of 1000
+#symload a1rfize0 with strq_vt_a1rfize0 of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_a1szize0
+(xs: strm_vt(x0)): a1sz_vt(x0)
+fun
+<x0:vt>
+strq_vt_a1szize0
+{n0:i0}
+(xs: strq_vt(x0,n0)): a1sz_vt(x0,n0)
+//
+#symload a1szize0 with strm_vt_a1szize0 of 1000
+#symload a1szize0 with strq_vt_a1szize0 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

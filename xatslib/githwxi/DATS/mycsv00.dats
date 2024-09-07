@@ -20,10 +20,36 @@ mycsv00$line_csv$parse$opt
 (* ****** ****** *)
 //
 fun<>
+mycsv00$fpath_csv$$parse$opt_a1sz
+  (fpath: strn)
+: optn_vt(a1sz(optn_vt(a1sz(strn))))
+//
+fun<>
 mycsv00$fpath_csv$$parse$opt_lstrm
-  (fpath: strn): optn_vt(strm_vt(optn_vt(a1sz(strn))))
+  (fpath: strn)
+: optn_vt(strm_vt(optn_vt(a1sz(strn))))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+mycsv00$fpath_csv$$parse$opt_a1sz
+  (fpath) =
+(
+case+ opt0 of
+| ~
+optn_vt_nil() =>
+optn_vt_nil()
+| ~
+optn_vt_cons(xs) =>
+optn_vt_cons(a1sz_make_lstrm(xs))
+) where
+{
+val opt0 =
+mycsv00$fpath_csv$$parse$opt_lstrm(fpath)
+}
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -46,9 +72,12 @@ optn_vt_nil() =>
 optn_vt_cons(chrs) =>
 let
 //
-#typedef x0 = strn
+#typedef
+line = strn
+#typedef x0 =
+(    line    )
 #vwtpdef y0 =
-optn_vt(a1sz(strn))
+optn_vt(a1sz(line))
 //
 #impltmp
 map$fopr0<x0><y0>(line) =
