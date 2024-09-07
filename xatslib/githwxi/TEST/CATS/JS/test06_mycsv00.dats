@@ -38,6 +38,12 @@ Sat 07 Sep 2024 02:40:27 PM EDT
 /prelude/HATS/prelude_NODE_dats.hats"
 //
 (* ****** ****** *)
+//
+#include
+"xatslib\
+/githwxi/HATS/githwxi_NODE_dats.hats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val opt0 =
@@ -54,7 +60,7 @@ strm_vt_iforall0_f2un
 opts,
 lam(i, x) =>
 if (i >= 10)
-then true else (print0s("x = ", x, "\n"); false)))
+then false else (print0s("x = ", x, "\n"); true)))
 //
 (* ****** ****** *)
 (* ****** ****** *)

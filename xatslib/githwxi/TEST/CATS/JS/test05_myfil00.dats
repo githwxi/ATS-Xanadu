@@ -38,6 +38,12 @@ Fri 06 Sep 2024 11:15:23 PM EDT
 /prelude/HATS/prelude_NODE_dats.hats"
 //
 (* ****** ****** *)
+//
+#include
+"xatslib\
+/githwxi/HATS/githwxi_NODE_dats.hats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val opt =
