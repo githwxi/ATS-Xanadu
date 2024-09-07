@@ -60,23 +60,23 @@ fun
 <x0:vt>
 strm_vt_forall0_f1un
 ( xs: strm_vt(x0)
-, test: (~x0)-<cfr>bool): bool
+, test: (~x0) -> bool): bool
 //
 #symload
 forall0 with strm_vt_forall0_f1un of 1000
 #symload
-forall0_cfr with strm_vt_forall0_f1un of 1000
+forall0_fun with strm_vt_forall0_f1un of 1000
 //
 fun
 <x0:vt>
-strm_vt_iforall0_c2fr
+strm_vt_iforall0_f2un
 ( xs: strm_vt(x0)
-, test: (ni, ~x0)-<cfr>bool): bool
+, test: (ni,~x0)->bool): bool
 //
 #symload
-iforall0 with strm_vt_iforall0_c2fr of 1000
+iforall0 with strm_vt_iforall0_f2un of 1000
 #symload
-iforall0_cfr with strm_vt_iforall0_c2fr of 1000
+iforall0_fun with strm_vt_iforall0_f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -99,23 +99,23 @@ fun
 <x0:vt>
 strm_vt_foritm0_f1un
 ( xs: strm_vt(x0)
-, work: (~x0)-<cfr>void): void
+, work: (~x0) -> void): void
 //
 #symload
 foritm0 with strm_vt_foritm0_f1un of 1000
 #symload
-foritm0_cfr with strm_vt_foritm0_f1un of 1000
+foritm0_fun with strm_vt_foritm0_f1un of 1000
 //
 fun
 <x0:vt>
-strm_vt_iforitm0_c2fr
+strm_vt_iforitm0_f2un
 ( xs: strm_vt(x0)
-, work: (ni, ~x0)-<cfr>void): void
+, work: (ni,~x0) -> void): void
 //
 #symload
-iforitm0 with strm_vt_iforitm0_c2fr of 1000
+iforitm0 with strm_vt_iforitm0_f2un of 1000
 #symload
-iforitm0_cfr with strm_vt_iforitm0_c2fr of 1000
+iforitm0_fun with strm_vt_iforitm0_f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -139,28 +139,28 @@ ifolditm0 with strm_vt_ifolditm0 of 1000
 fun
 <x0:vt>
 <r0:vt>
-strm_vt_folditm0_c2fr
+strm_vt_folditm0_f2un
 ( xs
 : strm_vt(x0), r0: r0
-, fopr: (r0, ~x0)-<cfr> (r0)): (r0)
+, fopr: (r0, ~x0) -> (r0)): (r0)
 //
 #symload
-folditm0 with strm_vt_folditm0_c2fr of 1000
+folditm0 with strm_vt_folditm0_f2un of 1000
 #symload
-folditm0_cfr with strm_vt_folditm0_c2fr of 1000
+folditm0_fun with strm_vt_folditm0_f2un of 1000
 //
 fun
 <x0:vt>
 <r0:vt>
-strm_vt_ifolditm0_c3fr
+strm_vt_ifolditm0_f3un
 ( xs
 : strm_vt(x0), r0: r0
-, fopr: (r0, ni, ~x0)-<cfr> (r0)): (r0)
+, fopr: (r0, ni, ~x0) -> (r0)): (r0)
 //
 #symload
-ifolditm0 with strm_vt_ifolditm0_c3fr of 1000
+ifolditm0 with strm_vt_ifolditm0_f3un of 1000
 #symload
-ifolditm0_cfr with strm_vt_ifolditm0_c3fr of 1000
+ifolditm0_fun with strm_vt_ifolditm0_f3un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -179,28 +179,28 @@ strm_vt_ifoldall0
 fun
 <x0:vt>
 <r0:vt>
-strm_vt_foldall0_c2fr
+strm_vt_foldall0_f2un
 ( xs
 : strm_vt(x0), r0: r0
-, fopr: (r0, ~x0)-<cfr> (bool,r0)): (r0)
+, fopr: (r0, ~x0) -> (bool,r0)): (r0)
 //
 #symload
-foldall0 with strm_vt_foldall0_c2fr of 1000
+foldall0 with strm_vt_foldall0_f2un of 1000
 #symload
-foldall0_cfr with strm_vt_foldall0_c2fr of 1000
+foldall0_fun with strm_vt_foldall0_f2un of 1000
 //
 fun
 <x0:vt>
 <r0:vt>
-strm_vt_ifoldall0_c3fr
+strm_vt_ifoldall0_f3un
 ( xs
 : strm_vt(x0), r0: r0
-, fopr: (ni, r0, ~x0)-<cfr> (bool,r0)): (r0)
+, fopr: (ni, r0, ~x0) -> (bool,r0)): (r0)
 //
 #symload
-ifoldall0 with strm_vt_ifoldall0_c3fr of 1000
+ifoldall0 with strm_vt_ifoldall0_f3un of 1000
 #symload
-ifoldall0_cfr with strm_vt_ifoldall0_c3fr of 1000
+ifoldall0_fun with strm_vt_ifoldall0_f3un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -275,10 +275,10 @@ strm_vt_filter0_f1un
 //
 fun
 <x0:vt>
-strm_vt_ifilter0_f1un
+strm_vt_ifilter0_f2un
 ( xs: strm_vt(x0)
 , test: (ni,!x0) -> bool): strm_vt(x0)
-#symload ifilter0 with strm_vt_ifilter0_f1un of 1000
+#symload ifilter0 with strm_vt_ifilter0_f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
