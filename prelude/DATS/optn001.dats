@@ -30,31 +30,87 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 07 Sep 2024 08:18:49 AM EDT
+Sat 07 Sep 2024 08:21:15 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
-fun
-<x0:t0>
-optn_forall(xs: optn(x0)): bool
-fun
-<x0:t0>
-optn_rforall(xs: optn(x0)): bool
-fun
-<x0:t0>
-optn_iforall(xs: optn(x0)): bool
-fun
-<x0:t0>
-optn_irforall(xs: optn(x0)): bool
+#impltmp
+< x0:t0 >
+optn_forall
+  ( xs ) = 
+(
+case+ xs of
+|optn_nil() => true
+|optn_cons(x0) => forall$test<x0>(x0)
+)
 //
-#symload forall with optn_forall of 1000
-#symload rforall with optn_rforall of 1000
-#symload iforall with optn_iforall of 1000
-#symload irforall with optn_irforall of 1000
+#impltmp
+{ x0:t0 }
+gseq_forall
+<optn(x0)><x0> = optn_forall<x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+optn_rforall
+  ( xs ) = 
+(
+case+ xs of
+|optn_nil() => true
+|optn_cons(x0) => rforall$test<x0>(x0)
+)
+//
+#impltmp
+{ x0:t0 }
+gseq_rforall
+<optn(x0)><x0> = optn_rforall<x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+optn_iforall
+  ( xs ) = 
+(
+case+ xs of
+|
+optn_nil() => true
+|
+optn_cons(x0) => iforall$test<x0>(0, x0)
+)
+//
+#impltmp
+{ x0:t0 }
+gseq_iforall
+<optn(x0)><x0> = optn_iforall<x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+optn_irforall
+  ( xs ) = 
+(
+case+ xs of
+|
+optn_nil() => true
+|
+optn_cons(x0) => irforall$test<x0>(0, x0)
+)
+//
+#impltmp
+{ x0:t0 }
+gseq_irforall
+<optn(x0)><x0> = optn_irforall<x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -62,4 +118,4 @@ optn_irforall(xs: optn(x0)): bool
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_optn001.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_optn001.dats] *)
