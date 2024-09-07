@@ -29,6 +29,9 @@ Sat 07 Sep 2024 02:40:27 PM EDT
 /prelude/HATS/prelude_JS_dats.hats"
 #include
 "xatslib/HATS/xatslib_JS_dats.hats"
+#include
+"xatslib\
+/githwxi/HATS/githwxi_JS_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -36,9 +39,6 @@ Sat 07 Sep 2024 02:40:27 PM EDT
 #include
 "srcgen2\
 /prelude/HATS/prelude_NODE_dats.hats"
-//
-(* ****** ****** *)
-//
 #include
 "xatslib\
 /githwxi/HATS/githwxi_NODE_dats.hats"

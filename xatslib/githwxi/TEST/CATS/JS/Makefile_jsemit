@@ -116,10 +116,10 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
 test05:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
 ############
-test05:: ; \
-$(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
-test05:: ; \
-$(CAT) $(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/myfil00.cats >> $@_out.js
+test05:: ; $(CAT) \
+$(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
+test05:: ; $(CAT) \
+$(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/myfil00.cats >> $@_out.js
 ############
 test05:: \
 test05_myfil00.dats; \
@@ -140,12 +140,12 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
 test06:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
 ############
-test06:: ; \
-$(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
-test06:: ; \
-$(CAT) $(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/myfil00.cats >> $@_out.js
-test06:: ; \
-$(CAT) $(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/mycsv00.cats >> $@_out.js
+test06:: ; $(CAT) \
+$(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
+test06:: ; $(CAT) \
+$(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/mycsv00.cats >> $@_out.js
+test06:: ; $(CAT) \
+$(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/myfil00.cats >> $@_out.js
 ############
 test06:: \
 test06_mycsv00.dats; \
