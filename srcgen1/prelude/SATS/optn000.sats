@@ -51,12 +51,20 @@ optn_cons_
 fun<>
 optn_nilq
 {a:t0}{b:b0}
-(xs: optn(a, b)): bool(b=ff)
+(xs: optn(a, b)): bool(~b)
 fun<>
 optn_consq
 {a:t0}{b:b0}
-(xs: optn(a, b)): bool(b=tt)
+(xs: optn(a, b)): bool( b )
 //
+(* ****** ****** *)
+//
+fun
+<a:t0>
+optn_head
+(xs: optn(a, tt)): (  a  )
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

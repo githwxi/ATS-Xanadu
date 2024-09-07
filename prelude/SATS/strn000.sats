@@ -58,6 +58,34 @@ strn_consq
 (* ****** ****** *)
 //
 fun<>
+strn_lt
+(xs:strn, ys:strn): bool
+fun<>
+strn_gt
+(xs:strn, ys:strn): bool
+fun<>
+strn_eq
+(xs:strn, ys:strn): bool
+fun<>
+strn_lte
+(xs:strn, ys:strn): bool
+fun<>
+strn_gte
+(xs:strn, ys:strn): bool
+fun<>
+strn_neq
+(xs:strn, ys:strn): bool
+//
+#symload < with strn_lt of 1000
+#symload > with strn_gt of 1000
+#symload = with strn_eq of 1000
+#symload <= with strn_lte of 1000
+#symload >= with strn_gte of 1000
+#symload != with strn_neq of 1000
+//
+(* ****** ****** *)
+//
+fun<>
 strn_cmp
 ( xs: strn
 , ys: strn): sint(*sign*)

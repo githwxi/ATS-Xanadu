@@ -49,8 +49,26 @@ g_0<strn>
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+strn_lt<> = g_lt<strn>
+#impltmp
+strn_gt<> = g_gt<strn>
+#impltmp
+strn_eq<> = g_eq<strn>
+//
+#impltmp
+strn_lte<> = g_lte<strn>
+#impltmp
+strn_gte<> = g_gte<strn>
+#impltmp
+strn_neq<> = g_neq<strn>
+//
+(* ****** ****** *)
+//
 #impltmp
 g_cmp<strn> = strn_cmp<>
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

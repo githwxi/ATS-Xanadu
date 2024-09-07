@@ -54,6 +54,22 @@ g_1<c0>() = '\001'
 (* ****** ****** *)
 //
 #impltmp
+char_lt<> = g_lt<char>
+#impltmp
+char_gt<> = g_gt<char>
+#impltmp
+char_eq<> = g_eq<char>
+//
+#impltmp
+char_lte<> = g_lte<char>
+#impltmp
+char_gte<> = g_gte<char>
+#impltmp
+char_neq<> = g_neq<char>
+//
+(* ****** ****** *)
+//
+#impltmp
 g_cmp<char> = char_cmp<>
 //
 (* ****** ****** *)

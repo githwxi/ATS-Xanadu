@@ -15,12 +15,50 @@ Fri 06 Sep 2024 09:38:26 PM EDT
 //
 #extern
 fun<>
+word$alphaq
+( ch: char ): bool
+#extern
+fun<>
+strn_word$strmize
+(cs: strn): strm_vt(strn)
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
 strn_line$strmize
 (cs: strn): strm_vt(strn)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-09-07:
+This default is
+just for English words!
+Sat 07 Sep 2024 10:07:27 AM EDT
+*)
+#impltmp
+word$alphaq<>(ch) =
+let
+val df = (ch - 'a')
+in//let
+if
+(if 0 <= df then df < 26 else false)
+then true else
+let
+val df = (ch - 'A')
+in//let
+(if 0 <= df then df < 26 else false)
+end//let
+end//let//end-of-[word$alphaq<>(ch)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <(*tmp*)>
-strn_line$strmize
+strn_word$strmize
   ( cs ) =
 (
   auxmain()) where
@@ -61,14 +99,27 @@ val c0 =
 (
 $UN.strn_get$at$raw(cs, i0+j0))
 in//let
-if
-(c0 != '\n')
+if word$alphaq<>(c0)
 then (work(c0); true) else false end))
 )
 }
 //
 end//let//$llazy//end-of-(auxmain(...))
 //
+}(*where*)//end-of-[strn_word$strmize(cs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_line$strmize
+  ( cs ) =
+(
+strn_word$strmize(cs)
+) where
+{
+#impltmp word$alphaq<>(ch) = (ch != '\n')
 }(*where*)//end-of-[strn_line$strmize(cs)]
 //
 (* ****** ****** *)
