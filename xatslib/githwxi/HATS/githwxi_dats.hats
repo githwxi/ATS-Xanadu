@@ -8,8 +8,8 @@ ATS3_XANADU/xatslib/JS/DATS
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../DATS/gint000.dats"
-(* ****** ****** *)
 #staload "./../DATS/strn000.dats"
+#staload "./../DATS/list000.dats"
 (* ****** ****** *)
 #staload "./../DATS/qlist00.dats"
 (* ****** ****** *)
