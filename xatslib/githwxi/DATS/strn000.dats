@@ -51,6 +51,8 @@ val cs =
 strn_fmake_fwork
 (
 lam(work) =>
+void
+(
 GSEQ(ln-i0).forall(
 lam(j0) =>
 let
@@ -62,8 +64,7 @@ $UN.strn_get$at$raw(cs, i0+j0))
 in//let
 if
 (c0 != '\n')
-then (work(c0); true) else false end//let
-)
+then (work(c0); true) else false end))
 )
 }
 //
