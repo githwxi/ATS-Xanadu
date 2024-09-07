@@ -5,6 +5,8 @@
 ########################################################################
 CAT=cat
 ECHO=echo
+########################################################################
+BUN=bun
 NODE=node
 ########################################################################
 ########################################################################
@@ -47,7 +49,10 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
 ############
 test00:: \
 test00_prelude.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+$(BUN) run $(SRCGEN2_XATS2JS) $< >> $@_out.js
+# test00:: \
+# test00_prelude.dats; \
+# $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
 ############
 test00:: ; \
 npx google-closure-compiler -W QUIET \
@@ -207,9 +212,24 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
 test99:: ; \
 $(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
 ############
+# HX-2024-09-07:
+# Bun:
+# real	0m4.238s
+# user	0m10.453s
+# sys	0m0.423s
+# Node:
+# real	0m3.944s
+# user	0m8.653s
+# sys	0m0.322s
+# Bun seems slower than Node!
+############
 test99:: \
 test99_mydiary.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+$(BUN) run $(SRCGEN2_XATS2JS) $< >> $@_out.js
+############
+# test99:: \
+# test99_mydiary.dats; \
+# $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
