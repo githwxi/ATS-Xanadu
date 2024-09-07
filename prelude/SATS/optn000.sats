@@ -57,6 +57,21 @@ optn_nilq
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-07:
+This one can be polymorphic
+*)
+fun
+<a:t0>
+optn_length
+{b:b0}
+(xs:optn(a,b)): sint(b2i(b))
+//
+#symload length with optn_length of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

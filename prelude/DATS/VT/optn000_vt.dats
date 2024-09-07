@@ -56,7 +56,7 @@ optn_vt_cons_
 //
 #impltmp
 < a: vt >
-optn_vt_uncons0
+optn_vt_head0
   (xs) =
 (
 case+ xs of

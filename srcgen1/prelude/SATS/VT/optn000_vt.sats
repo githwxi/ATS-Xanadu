@@ -56,8 +56,15 @@ optn_vt_cons_
 //
 fun
 <a:vt>
+optn_vt_head0
+(xs: optn_vt(a, tt)): (a)
+(*
+fun
+<a:vt>
 optn_vt_uncons0
 (xs: optn_vt(a, tt)): (a)
+*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
