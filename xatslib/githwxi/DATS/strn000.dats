@@ -51,8 +51,7 @@ val cs =
 strn_fmake_fwork
 (
 lam(work) =>
-void
-(
+g_void(
 GSEQ(ln-i0).forall(
 lam(j0) =>
 let
