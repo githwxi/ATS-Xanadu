@@ -38,13 +38,73 @@ Sat 03 Aug 2024 03:08:26 PM EDT
 //
 (* ****** ****** *)
 (* ****** ****** *)
+val f0 =
+lam(x:sint) => @(x, x=x)
+val () =
+prints
+("type(f0) = ", type(f0), "\n")
+(* ****** ****** *)
+val b0 =
+GSEQ("abcde").exists(lam(c)=>c='f')
+val () = prints
+("exists(\"abcde\", 'f') = ", b0, "\n")
+(* ****** ****** *)
+(* ****** ****** *)
 //
-(*
+#extern
 fun
 <a:t0>
-quicksort
-( xs
-: list(a)): list(a) =
+list_partit
+( xs: list(a)
+, test: a -> bool): @(list(a), list(a))
+//
+#impltmp
+< a: t0 >
+list_partit
+(xs, test) =
+(
+  loop(xs, ys, zs)
+) where
+{
+//
+val ys = list_vt_nil()
+val zs = list_vt_nil()
+//
+fun
+loop(xs, ys, zs) =
+case+ xs of
+| list_nil() =>
+(
+vt2t(ys), vt2t(zs)) where
+{
+val ys = list_vt_reverse0(ys)
+val zs = list_vt_reverse0(zs)}
+| list_cons(x1, xs) =>
+if
+test(x1)
+then
+loop(xs, ys, zs) where
+{
+  val ys = list_vt_cons(x1, ys) }
+else
+loop(xs, ys, zs) where
+{
+  val zs = list_vt_cons(x1, zs) }
+//
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+<a:t0>
+list_quicksort(xs: list(a)): list(a)
+//
+#impltmp
+< a: t0 >
+list_quicksort
+  ( xs ) =
 (
   qsort(xs)) where
 {
@@ -58,47 +118,41 @@ list_nil()
 |
 list_cons(x0, xs) =>
 let
+//
 val
 (ys, zs) =
 list_partit
-(xs, lam(x1) => x1\cmp(x0) <= 0)
+(xs, lam(x1) => g_cmp(x1, x0) <= 0)
+//
+(*
+val () =
+prints("qsort: ys = ", ys, "\n")
+val () =
+prints("qsort: zs = ", zs, "\n")
+*)
+//
 in//let
-appends
-(qsort(ys), list@(x0), qsort(zs))
+appends(qsort(ys), list@(x0), qsort(zs))
 end//let
 )
 }
-*)
 //
-(* ****** ****** *)
-////
-(* ****** ****** *)
-val f0 =
-lam(x:int) => @(x, x=x)
-val () =
-prints
-("type(f0) = ", type(f0), "\n")
-(* ****** ****** *)
-(*
-val b0 =
-GASZ("abcde").exists(lam(c)=>c='f')
-*)
-(* ****** ****** *)
-////
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val xs = list(10, lam(i) => 10 - i)
 //
-val () =
-irforitm
-( GSEQ(ys)
-, lam(i, y) =>
-prints("(i, x) = (", i, ",", y, ")"))
-val () = prints("\n")
+(* ****** ****** *)
+(* ****** ****** *)
 //
-val rys = rlistize(GSEQ(ys))
-val ( ) = print1s("rys = ", rys, "\n")
-////
+val rxs = rlistize(GSEQ(xs))
+val ( ) = print1s("rys = ", rxs, "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () = prints
+("sort(", xs, ") = ", list_quicksort(xs), "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

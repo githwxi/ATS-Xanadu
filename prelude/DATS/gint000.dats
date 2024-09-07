@@ -122,6 +122,18 @@ if i1 >= 0 then i1 else -i1)
 (* ****** ****** *)
 //
 #impltmp
+<(*tmp*)>
+sint_cmp_sint
+  (i1, i2) =
+(
+if
+(i1 < i2) then -1 else
+(if (i1 > i2) then 1 else 0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 gasz_length<ni><ut>(ni) = (ni)
 #impltmp
 gseq_length<ni><ut>(ni) = (ni)

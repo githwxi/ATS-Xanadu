@@ -439,6 +439,7 @@ trxd3i0_d3patlst(env0, d3ps)
 //
 in//let
 //
+(*
 if
 (
 if
@@ -446,7 +447,7 @@ not(
 list_singq(i0ps))
 then (false) else
 trcdtok_fltq(tknd))
-then list_head(i0ps) else
+then list_head(i0ps) else*)
 (
   i0pat(loc0, I0Ptup1(tknd, i0ps)))
 // else // end-of-[if]
@@ -1108,6 +1109,7 @@ val i0es =
 //
 in//let
 //
+(*
 if
 (
 if
@@ -1115,7 +1117,7 @@ not(
 list_singq(i0es))
 then (false) else
 trcdtok_fltq(tknd))
-then list_head(i0es) else
+then list_head(i0es) else*)
 (
   i0exp(loc0, I0Etup1(tknd, i0es)))
 end(*let*)//end-of-[f0_tup1(env0,d3e0)]
