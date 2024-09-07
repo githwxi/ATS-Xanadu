@@ -54,52 +54,9 @@ val () = prints
 #extern
 fun
 <a:t0>
-list_partit
-( xs: list(a)
-, test: a -> bool): @(list(a), list(a))
-//
-#impltmp
-< a: t0 >
-list_partit
-(xs, test) =
-(
-  loop(xs, ys, zs)
-) where
-{
-//
-val ys = list_vt_nil()
-val zs = list_vt_nil()
-//
-fun
-loop(xs, ys, zs) =
-case+ xs of
-| list_nil() =>
-(
-vt2t(ys), vt2t(zs)) where
-{
-val ys = list_vt_reverse0(ys)
-val zs = list_vt_reverse0(zs)}
-| list_cons(x1, xs) =>
-if
-test(x1)
-then
-loop(xs, ys, zs) where
-{
-  val ys = list_vt_cons(x1, ys) }
-else
-loop(xs, ys, zs) where
-{
-  val zs = list_vt_cons(x1, zs) }
-//
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#extern
-fun
-<a:t0>
 list_quicksort(xs: list(a)): list(a)
+//
+(* ****** ****** *)
 //
 #impltmp
 < a: t0 >
@@ -122,7 +79,8 @@ let
 val
 (ys, zs) =
 list_partit
-(xs, lam(x1) => g_cmp(x1, x0) <= 0)
+(xs
+,lam(x1)=>(x1\g_cmp(x0)) <= 0)
 //
 (*
 val () =
@@ -142,7 +100,8 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val xs = list(10, lam(i) => g_sqr(5-i))
+val xs =
+list(11, lam(i) => g_sqr(5-i))
 //
 (* ****** ****** *)
 (* ****** ****** *)
