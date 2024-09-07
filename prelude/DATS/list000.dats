@@ -69,32 +69,73 @@ list_cons_
 ( x1, xs ) = list_cons(x1, xs)
 //
 (* ****** ****** *)
+//
+#impltmp
+< (*0*) >
+list_nilq
+{a:t0}(xs) =
+(
+case+ xs of
+| list_nil() => true
+| list_cons(_, _) => false)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 { x0:t0 }
 gseq_nil
 <list(x0)><x0>
-((*void*)) = list_nil(*void*)
+((*void*)) =
+(
+  list_nil(*void*))
 #impltmp
 { x0:t0 }
 gseq_cons
 <list(x0)><x0>
-( x0, xs ) = list_cons(x0, xs)
+( x0, xs ) =
+(
+  list_cons(x0, xs))
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 { x0:t0 }
 gseq_nilq
 <list(x0)><x0>
- (  xs  ) = (list_nilq{x0}(xs))
+ (  xs  ) = list_nilq{x0}(xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+$UN.gseq_head$raw
+<list(x0)><x0>(xs) =
+(
+case- xs of
+| list_cons(x0, xs) => x0)
+#impltmp
+{ x0:t0 }
+$UN.gseq_tail$raw
+<list(x0)><x0>(xs) =
+(
+case- xs of
+| list_cons(x0, xs) => xs)
+//
+#impltmp
+{ x0:t0 }
+$UN.gseq_uncons$raw
+<list(x0)><x0>( xs ) =
+(
+case- xs of
+|list_cons(x0, xs) => (x0, xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
+HX-2024-07-17:
 Wed 17 Jul 2024 09:49:09 PM EDT
 *)
 //
@@ -116,8 +157,7 @@ gseq_beg
 g_print
 <list(x0)>(xs) =
 (
-gseq_print<list(x0)><x0>(xs)
-)(*let*)//end-[g_print<list>]
+gseq_print<list(x0)><x0>(xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -385,30 +425,6 @@ Note that
 [list_fmake] and list_fmake_fwork]
 are both implemented in [list001.dats]
 *)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-{ x0:t0 }
-$UN.gseq_head$raw
-< list(x0) >< x0 >(xs) =
-let
-  val-list_cons(x0, xs) = xs in x0 end
-#impltmp
-{ x0:t0 }
-$UN.gseq_tail$raw
-< list(x0) >< x0 >(xs) =
-let
-  val-list_cons(x0, xs) = xs in xs end
-//
-#impltmp
-{ x0:t0 }
-$UN.gseq_uncons$raw
-< list(x0) >< x0 >(xs) =
-let
-  val-list_cons(x0, xs) = xs in (x0, xs)
-end(*let*)//end-of-[gseq_uncons$raw<list>]
 //
 (* ****** ****** *)
 (* ****** ****** *)

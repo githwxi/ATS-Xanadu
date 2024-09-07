@@ -115,13 +115,18 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
 test05:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
 ############
+test05:: ; \
+$(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
+test05:: ; \
+$(CAT) $(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/myfil00.cats >> $@_out.js
+############
 test05:: \
 test05_myfil00.dats; \
 $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
 ############
 test05:: ; \
 npx google-closure-compiler -W QUIET \
-  --compilation_level ADVANCED --js=$@_out.js --js_output_file=$@_out2.js
+  --compilation_level SIMPLE --js=$@_out.js --js_output_file=$@_out1.js
 ########################################################################
 ########################################################################
 test99:: ; \

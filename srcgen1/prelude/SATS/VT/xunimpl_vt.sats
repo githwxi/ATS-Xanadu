@@ -574,7 +574,7 @@ fun
 <xs:vt>
 <x0:vt>
 get$at$exn0
-  (i0: ni): x0
+(xs: ~xs, i0: ni): x0
 fun
 <xs:vt>
 <x0:vt>
@@ -1623,6 +1623,38 @@ strm_vt_z2rlistize0
 (xs: strm_vt(x0), ys: strm_vt(y0)): list_vt@(x0, y0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+optn_vt_iforall0(xs: ~optn_vt(x0)): bool
+fun
+<x0:vt>
+optn_vt_iforall1(xs: !optn_vt(x0)): bool
+//
+fun
+<x0:vt>
+optn_vt_irforall0(xs: ~optn_vt(x0)): bool
+fun
+<x0:vt>
+optn_vt_irforall1(xs: !optn_vt(x0)): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+optn_vt_iforitm0(xs: ~optn_vt(x0)): void
+fun
+<x0:vt>
+optn_vt_iforitm1(xs: !optn_vt(x0)): void
+//
+fun
+<x0:vt>
+optn_vt_irforitm0(xs: ~optn_vt(x0)): void
+fun
+<x0:vt>
+optn_vt_irforitm1(xs: !optn_vt(x0)): void
+//
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

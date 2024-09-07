@@ -168,6 +168,15 @@ g_ptype<t0>((*0*)); pstrn(")"))
 #impltmp
 { t0:t0 }
 g_ptype
+<optn(t0)>
+( (*void*) ) =
+(
+pstrn("optn(");
+g_ptype<t0>((*0*)); pstrn(")"))
+//
+#impltmp
+{ t0:t0 }
+g_ptype
 <strm(t0)>
 ( (*void*) ) =
 (
@@ -183,6 +192,15 @@ g_ptype
 ( (*void*) ) =
 (
 pstrn("list_vt(");
+g_ptype<vt>((*0*)); pstrn(")"))
+//
+#impltmp
+{ vt:vt }
+g_ptype
+<optn_vt(vt)>
+( (*void*) ) =
+(
+pstrn("optn_vt(");
 g_ptype<vt>((*0*)); pstrn(")"))
 //
 #impltmp

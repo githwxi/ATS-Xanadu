@@ -33,11 +33,9 @@ Fri 06 Sep 2024 11:15:23 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 #include
 "srcgen2\
 /prelude/HATS/prelude_NODE_dats.hats"
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -46,12 +44,19 @@ val opt =
 myfil00$fpath_readall$opt
 ( "./test05_myfil00.dats" )
 //
-val () = print0s("opt = ", opt, "\n")
+val lines =
+strn_line$strmize(cs)
+where{
+val-optn_vt_cons(cs) = opt }
+//
+val () = print0s("lines = ", lines, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 val () = console_log(the_print_store_flush())
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
