@@ -132,7 +132,9 @@ prints("qsort: zs = ", zs, "\n")
 *)
 //
 in//let
-appends(qsort(ys), list@(x0), qsort(zs))
+(
+ appends
+ (qsort(ys), list@(x0), qsort(zs)))
 end//let
 )
 }
@@ -140,13 +142,13 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val xs = list(10, lam(i) => 10 - i)
+val xs = list(10, lam(i) => g_sqr(5-i))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 val rxs = rlistize(GSEQ(xs))
-val ( ) = print1s("rys = ", rxs, "\n")
+val ( ) = print1s("rxs = ", rxs, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
