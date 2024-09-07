@@ -29,65 +29,32 @@
 ////////////////////////////////////////////////////////////////////////.
 /*
 Author: Hongwei Xi
-Sun 01 Sep 2024 08:04:48 AM EDT
+Fri 06 Sep 2024 11:30:22 PM EDT
 Authoremail: gmhwxiATgmailDOTcom
 */
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
+/*
+It is already in
+[prelude/.../node000.cats]
 const
-XATS2JS_NODE_fs =
-require('node:fs')
-// HX: the same as require('fs')
+XATS2JS_NODE_fs = require('node:fs')
+*/
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_g_print
-  (x0)
+XATS2JS_NODE_myfil00$fpath_readall$work
+  (fpath, work)
 {
-  let rep = x0.toString();
-  process.stdout.write(rep);
-  return; // XATS2JS_NODE_g_print
+  try {
+    work(
+    XATS2JS_NODE_fs.readFileSync(fpath).toString())
+  } catch (error) {
+    console.log
+    (`XATS2JS_NODE_myfil00$fpath_readall$work(error): fpath = ${fpath}`)
+  }
 }
 //
-////////////////////////////////////////////////////////////////////////.
-//
-function
-XATS2JS_NODE_sint_print
-  (i0)
-{
-  XATS2JS_NODE_g_print(i0);
-  return; // XATS2JS_NODE_sint_print
-}
-////////////////////////////////////////////////////////////////////////.
-//
-function
-XATS2JS_NODE_bool_print
-  (b0)
-{
-  XATS2JS_NODE_g_print(b0);
-  return; // XATS2JS_NODE_bool_print
-}
-////////////////////////////////////////////////////////////////////////.
-//
-function
-XATS2JS_NODE_char_print
-  (c0)
-{
-  let cs =
-  String.fromCharCode(c0)
-  XATS2JS_NODE_g_print(cs);
-  return; // XATS2JS_NODE_char_print
-}
-//
-////////////////////////////////////////////////////////////////////////.
-//
-function
-XATS2JS_NODE_strn_print
-  (cs)
-{
-  XATS2JS_NODE_g_print(cs);
-  return; // XATS2JS_NODE_strn_print
-}
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 // end of [ATS3/XANADU_prelude_DATS_CATS_JS_NODE_node000.cats]
