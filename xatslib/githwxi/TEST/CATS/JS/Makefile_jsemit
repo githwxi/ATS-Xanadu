@@ -11,6 +11,7 @@ NODE=node
 all:: test01
 all:: test02
 all:: test03
+all:: test04
 all:: test99
 ########################################################################
 ########################################################################
@@ -80,6 +81,25 @@ test03_gint000.dats; \
 $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
 ############
 test03:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level ADVANCED --js=$@_out.js --js_output_file=$@_out2.js
+########################################################################
+########################################################################
+test04:: ; \
+echo "//" `date` > $@_out.js
+############
+test04:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
+test04:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
+test04:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
+############
+test04:: \
+test04_strn000.dats; \
+$(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+############
+test04:: ; \
 npx google-closure-compiler -W QUIET \
   --compilation_level ADVANCED --js=$@_out.js --js_output_file=$@_out2.js
 ########################################################################
