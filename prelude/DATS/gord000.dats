@@ -84,6 +84,19 @@ g_cmp<x0>(x1, x2) >= 0)
 //
 #impltmp
 < x0:t0 >
+g_eq(x1, x2) =
+(
+g_cmp<x0>(x1, x2) = 0)
+#impltmp
+< x0:t0 >
+g_neq(x1, x2) =
+(
+g_cmp<x0>(x1, x2) != 0)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
 g_cmp(x1, x2) =
 (
 if

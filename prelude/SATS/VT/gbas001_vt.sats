@@ -321,21 +321,18 @@ filter$test0(x0: ~x0): bool
 //
 fun
 <x0:vt>
-<y0:vt>
 filter$test1(x0: !x0): bool
 fun
 <x0:vt>
-<y0:vt>
 rfilter$test1(x0: !x0): bool
 fun
 <x0:vt>
-<y0:vt>
 ifilter$test1(x0: !x0): bool
 fun
 <x0:vt>
-<y0:vt>
 irfilter$test1(x0: !x0): bool
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

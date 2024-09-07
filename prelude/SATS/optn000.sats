@@ -52,7 +52,7 @@ optn_cons_
 fun<>
 optn_nilq
 {a:t0}{b:i0}
-(xs: optn(a,b)): bool(b)
+(xs: optn(a,b)): bool(~b)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -60,7 +60,7 @@ optn_nilq
 fun
 <a:t0>
 optn_head
-(xs: optn(a, tt)): ( a )
+(xs: optn(a, tt)): (  a  )
 //
 #symload head with optn_head of 1000
 //

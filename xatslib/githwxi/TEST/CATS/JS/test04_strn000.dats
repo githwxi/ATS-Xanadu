@@ -42,9 +42,16 @@ Fri 06 Sep 2024 10:18:54 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val cs = "a; bc; def; ghij;"
+val cz = strn_word$strmize(cs)
+val cz =
+filter0(cz, lam(cs) => cs != "")
+val () = print0s("cz = ", cz, "\n")
+//
+(* ****** ****** *)
+//
 val cs = "a\nbc\n\ndef\nghij\n"
 val cz = strn_line$strmize(cs)
-//
 val () = print0s("cz = ", cz, "\n")
 //
 (* ****** ****** *)

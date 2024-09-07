@@ -271,7 +271,7 @@ $llazy
 {
 (*
 HX-2024-07-13:
-[auxloop] nees to
+[auxloop] needs to
 be tail-recursive!
 *)
 fnx
@@ -301,6 +301,17 @@ else
 )
 }(*where*)//end-of-[strm_vt_filter0(xs)]
 //
+#impltmp
+< x0:vt >
+strm_vt_filter0_f1un
+  (xs, test) =
+(
+strm_vt_filter0<x0>(xs))
+where
+{
+#impltmp filter$test1<x0>(x0) = test(x0)
+}
+//
 (*
 HX-2024-07-10:
 Implementing the most specific one.
@@ -313,6 +324,7 @@ It is not harm to keep it here as a reference.
 gseq_filter0_lstrm
 <strm_vt(x0)><x0> = strm_vt_filter0<x0>(*void*)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -355,6 +367,18 @@ else
 g_free<x0>(x1); auxloop(i0+1, !xs)) end
 )
 }(*where*)//end-of-[strm_vt_ifilter0(xs)]
+//
+#impltmp
+< x0:vt >
+strm_vt_ifilter0_f1un
+  (xs, test) =
+(
+strm_vt_ifilter0<x0>(xs))
+where
+{
+#impltmp
+ifilter$test1<x0>(i0, x0) = test(i0, x0)
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)

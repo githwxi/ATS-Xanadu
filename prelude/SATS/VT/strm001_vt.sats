@@ -237,6 +237,7 @@ strq_vt_imap0
 #symload imap0 with strq_vt_imap0 of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <x0:vt>
@@ -263,6 +264,23 @@ strq_vt_ifilter0
 #symload ifilter0 with strm_vt_ifilter0 of 1000
 #symload ifilter0 with strq_vt_ifilter0 of 1000
 //
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_filter0_f1un
+( xs: strm_vt(x0)
+, test: (!x0) -> bool): strm_vt(x0)
+#symload filter0 with strm_vt_filter0_f1un of 1000
+//
+fun
+<x0:vt>
+strm_vt_ifilter0_f1un
+( xs: strm_vt(x0)
+, test: (ni,!x0) -> bool): strm_vt(x0)
+#symload ifilter0 with strm_vt_ifilter0_f1un of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
