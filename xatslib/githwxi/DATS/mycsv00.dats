@@ -13,17 +13,25 @@ Some simple stuff for CSV-handling
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
 fun<>
 mycsv00$line_csv$parse$opt
   (line: strn): optn_vt(a1sz(strn))
 //
+#extern
+fun<>
+mycsv00$line_csv$parse$work
+  (line: strn, work: a1sz(strn)->void): void
+//
 (* ****** ****** *)
 //
+#extern
 fun<>
 mycsv00$fpath_csv$$parse$opt_a1sz
   (fpath: strn)
 : optn_vt(a1sz(optn_vt(a1sz(strn))))
 //
+#extern
 fun<>
 mycsv00$fpath_csv$$parse$opt_lstrm
   (fpath: strn)
