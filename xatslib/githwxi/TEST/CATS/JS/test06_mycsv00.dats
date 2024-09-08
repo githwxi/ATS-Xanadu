@@ -53,6 +53,7 @@ mycsv00$fpath_csv$parse$opt_lstrm
 val opts = opts
 where{val-optn_vt_cons(opts) = opt0}
 //
+(*
 val () =
 g_void(
 strm_vt_iforall0_f2un
@@ -60,7 +61,31 @@ strm_vt_iforall0_f2un
 opts,
 lam(i, x) =>
 if (i >= 10)
-then false else (print0s("x = ", x, "\n"); true)))
+then false else
+(print0s("x = ", x, "\n"); true)))
+*)
+//
+local
+//
+#impltmp
+< xs:vt >
+< x0:vt >gseq_sep() = "\n"
+#impltmp
+{ x0:vt }
+gseq_end
+<strm_vt(x0)><x0>() = "\n)"
+#impltmp
+{ x0:vt }
+gseq_beg
+<strm_vt(x0)><x0>() = "strm_vt(\n"
+//
+#impltmp
+< xs:vt >
+< x0:vt >gseq_prlen() = 20
+//
+in//local
+val () = print0s("opts = ", opts, "\n")
+end//local
 //
 (* ****** ****** *)
 (* ****** ****** *)
