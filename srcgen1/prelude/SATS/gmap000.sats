@@ -83,7 +83,20 @@ fun
 <itm:t0>
 gmap_search$exn
 (kxs: map, key: key): (itm)
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
+gmap_search$opt
+(kxs: map, key: key): optn_vt(itm)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-09-08:
+These are in [srcgen2]:
+*)
 fun
 <map:t0>
 <key:t0>
@@ -96,13 +109,8 @@ fun
 <itm:vt>
 gmap_search$cpy
 (kxs: map, key: key): optn_vt(itm)
-fun
-<map:t0>
-<key:t0>
-<itm:vt>
-gmap_search$opt
-(kxs: map, key: key): optn_vt(itm)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
