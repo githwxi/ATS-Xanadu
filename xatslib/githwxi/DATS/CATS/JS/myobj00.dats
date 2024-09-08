@@ -7,12 +7,35 @@ Sat 07 Sep 2024 08:37:22 PM EDT
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+#staload
+"xatslib\
+/DATS/CATS/JS/Hsmap00.dats"
+(* ****** ****** *)
+(* ****** ****** *)
 #staload "./../../myobj00.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #absimpl
 hmap_tbox(a:t0) = jshsmap(strn, a)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+hmap_make_nil
+ ((*void*)) = jshsmap_make_nil<>()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+hmap_insert$new
+ (map, k0, x0) =
+(
+ jshsmap_insert$new<>(map, k0, x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
