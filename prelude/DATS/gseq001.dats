@@ -45,6 +45,33 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 < xs:t0 >
 < x0:t0 >
+gseq_strmize =
+gseq_strmize0<xs><x0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_strqize =
+gseq_strqize0<xs><x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_rstrmize =
+gseq_rstrmize0<xs><x0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_rstrqize =
+gseq_rstrqize0<xs><x0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
 gseq_listize
   ( xs ) =
 (

@@ -26,12 +26,11 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Sat 27 Jul 2024 01:32:19 PM EDT
+Sun 08 Sep 2024 10:45:33 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,10 +38,62 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2024-07-29:
-Sat 03 Aug 2024 05:17:21 PM EDT
-*)
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_size(kxs: map): nint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_beg((*void*)): void
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_end((*void*)): void
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_sep((*void*)): void
+//
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_print(kxs: map): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<map:t0>
+<key:t0
+,itm:vt>
+gmap_keyq
+(kxs: map, key: key): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<map:t0>
+<key:t0
+,itm:vt>
+gmap_search$tst
+(kxs: map, key: key): bool
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_search$cpy
+(kxs: map, key: key): optn_vt(itm)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -50,4 +101,4 @@ Sat 03 Aug 2024 05:17:21 PM EDT
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gxyz000.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gmap000.sats] *)
