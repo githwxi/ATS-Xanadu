@@ -20,6 +20,12 @@ hmap_tbox(a:t0)
 #typedef
 hmap(a:t0) = hmap_tbox(a)
 //
+#extern
+fun
+<a:t0>
+hmap_nil((*0*)): hmap(a)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype dtval =
