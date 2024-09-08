@@ -40,23 +40,23 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
+< xs:vt >
+< x0:vt >
 gseq_sep((*void*)) = ","
 #impltmp
-< xs:t0 >
-< x0:t0 >
+< xs:vt >
+< x0:vt >
 gseq_end((*void*)) = ")"
 #impltmp
-< xs:t0 >
-< x0:t0 >
+< xs:vt >
+< x0:vt >
 gseq_beg((*void*)) = "gseq("
 //
 (* ****** ****** *)
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
+< xs:vt >
+< x0:vt >
 gseq_prlen((*void*)) = (-1)
 //
 (* ****** ****** *)
