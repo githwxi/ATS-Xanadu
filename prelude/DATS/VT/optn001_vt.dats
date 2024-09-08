@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 08 Sep 2024 12:39:45 PM EDT
+Fri 06 Sep 2024 11:56:52 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -40,85 +40,83 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-< m0:vt >
-< k0:vt >
 < x0:vt >
-gmap_sep((*void*)) = ","
-#impltmp
-< m0:vt >
-< k0:vt >
-< x0:vt >
-gmap_end((*void*)) = "}"
-#impltmp
-< m0:vt >
-< k0:vt >
-< x0:vt >
-gmap_beg((*void*)) = "gmap{"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< m0:t0 >
-< k0:t0 >
-< x0:vt >
-gmap_keyq(map, k0) =
-gseq_exists0
+optn_vt_forall0
+  ( xs ) = 
 (
-gmap_key$strmize
-<m0><k0><x0>(map)) where
-{
-#impltmp
-exists$test0<k0>(k1) = g_equal<k0>(k0, k1)
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
+case+ xs of
+| ~
+optn_vt_nil() => true
+| ~
+optn_vt_cons(x0) => forall$test0<x0>(x0)
+)
 //
 #impltmp
-< m0:t0 >
-< k0:t0 >
-< x0:t0 >
-gmap_search$tst
- (map, k0) =
-let
-#typedef kx = @(k0, x0) in
-gseq_consq0(
-strm_vt_filter0_f1un(
-gseq_strmize<m0><(k0,x0)>(map),
-lam(kx:kx) => g_equal<k0>(k0, kx.0))) end
+{ x0:vt }
+gseq_forall0
+<optn_vt(x0)><x0> = optn_vt_forall0<x0>(*void*)
 //
 (* ****** ****** *)
 //
 #impltmp
-< m0:t0 >
-< k0:t0 >
-< x0:t0 >
-gmap_search$cpy
- (map, k0) =
+< x0:vt >
+optn_vt_rforall0
+  ( xs ) = 
 (
-case+ opt0 of
+case+ xs of
 | ~
-optn_vt_nil() => optn_vt_nil()
+optn_vt_nil() => true
 | ~
-optn_vt_cons(kx) => optn_vt_cons(kx.1)
-) where
-{
+optn_vt_cons(x0) => rforall$test0<x0>(x0)
+)
 //
-#typedef kx = (k0, x0)
+#impltmp
+{ x0:vt }
+gseq_rforall0
+<optn_vt(x0)><x0> = optn_vt_rforall0<x0>(*void*)
 //
-val opt0 =
-gseq_head$opt0
-<strm_vt(kx)><kx>(
-strm_vt_filter0_f1un<kx>(
-gmap_keyval$strmize<m0><k0><x0>(map), lam(kx) => g_equal<k0>(k0, kx.0)))
+(* ****** ****** *)
 //
-}
+#impltmp
+< x0:vt >
+optn_vt_iforall0
+  ( xs ) = 
+(
+case+ xs of
+| ~
+optn_vt_nil() => true
+| ~
+optn_vt_cons(x0) => iforall$test0<x0>(0, x0)
+)
+//
+#impltmp
+{ x0:vt }
+gseq_iforall0
+<optn_vt(x0)><x0> = optn_vt_iforall0<x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+optn_vt_irforall0
+  ( xs ) = 
+(
+case+ xs of
+| ~
+optn_vt_nil() => true
+| ~
+optn_vt_cons(x0) => irforall$test0<x0>(0, x0)
+)
+//
+#impltmp
+{ x0:vt }
+gseq_irforall0
+<optn_vt(x0)><x0> = optn_vt_irforall0<x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gmap000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_VT_optn001_vt.dats] *)

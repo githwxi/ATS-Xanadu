@@ -56,7 +56,7 @@ gmap_print$keyval
 fun
 <map:t0>
 <key:t0>
-<itm:t0>
+<itm:vt>
 gmap_keyq
 (kxs: map, key: key): bool
 //
@@ -65,7 +65,7 @@ gmap_keyq
 fun
 <map:t0>
 <key:t0>
-<itm:t0>
+<itm:vt>
 gmap_make_nil((*0*)): (map)
 //
 (* ****** ****** *)
