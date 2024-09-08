@@ -39,7 +39,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<map:t0>
+<map:vt>
 <key:t0>
 <itm:vt>
 gmap_nil((*0*)): map
@@ -56,21 +56,27 @@ gmap_size(kxs: map): nint
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-08:
+For print0/1 as well
+*)
 fun
-<map:t0>
+<map:vt>
 <key:t0>
 <itm:vt>
-gmap_beg((*void*)): void
+gmap_beg((*void*)): strn
 fun
-<map:t0>
+<map:vt>
 <key:t0>
 <itm:vt>
-gmap_end((*void*)): void
+gmap_end((*void*)): strn
 fun
-<map:t0>
+<map:vt>
 <key:t0>
 <itm:vt>
-gmap_sep((*void*)): void
+gmap_sep((*void*)): strn
+//
+(* ****** ****** *)
 //
 fun
 <map:t0>
@@ -83,8 +89,8 @@ gmap_print(kxs: map): void
 //
 fun
 <map:t0>
-<key:t0
-,itm:vt>
+<key:t0>
+<itm:vt>
 gmap_keyq
 (kxs: map, key: key): bool
 //
@@ -103,8 +109,8 @@ gmap_strmize
 //
 fun
 <map:t0>
-<key:t0
-,itm:vt>
+<key:t0>
+<itm:vt>
 gmap_search$tst
 (kxs: map, key: key): bool
 fun
