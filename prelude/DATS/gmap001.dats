@@ -43,11 +43,31 @@ Authoremail: gmhwxiATgmailDOTcom
 <map:t0>
 <key:vt>
 <itm:vt>
-gmap_key$strmize(map) =
-strm_vt_map$fopr0<(key,val)>
+gmap_key$strmize
+  ( map ) =
+let
+//
+val kxs =
 (
 gmap_keyval$strmize
-<map><key><val>(map), lam(kx) => kx.0)
+< map >< key >< itm >(map))
+//
+in//let
+(
+strm_vt_map0<kx>(kxs)) where
+{
+#vwtpdef kx = (key,itm)
+#impltmp map$fopr0<kx>(kx) = kx.0}
+end//let//end(gmap_key$strmize(map))
+//
+(* ****** ****** *)
+//
+#impltmp
+<map:t0>
+<key:vt>
+<itm:vt>
+gmap_keyval$strmize =
+gseq_strmize1<map><(key,itm)>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
