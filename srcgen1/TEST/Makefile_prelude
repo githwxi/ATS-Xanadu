@@ -82,6 +82,8 @@ $(XATSOPT) -s $(PRELUDE)/SATS/gasz002.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gmap000.sats
 all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gmap001.sats
+all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gcls000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gsyn000.sats
@@ -315,6 +317,8 @@ all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gasz002.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gmap000.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gmap001.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gcls000.dats
 all0_dats:: ; \
