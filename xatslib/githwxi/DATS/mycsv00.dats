@@ -27,13 +27,13 @@ mycsv00$line_csv$parse$work
 //
 #extern
 fun<>
-mycsv00$fpath_csv$$parse$opt_a1sz
+mycsv00$fpath_csv$parse$opt_a1sz
   (fpath: strn)
 : optn_vt(a1sz(optn_vt(a1sz(strn))))
 //
 #extern
 fun<>
-mycsv00$fpath_csv$$parse$opt_lstrm
+mycsv00$fpath_csv$parse$opt_lstrm
   (fpath: strn)
 : optn_vt(strm_vt(optn_vt(a1sz(strn))))
 //
@@ -43,7 +43,7 @@ mycsv00$fpath_csv$$parse$opt_lstrm
 #impltmp
 <(*tmp*)>
 mycsv00$line_csv$parse$opt
-  (fpath) =
+  (line) =
 let
 //
 #vwtpdef
@@ -57,7 +57,7 @@ val p0 = $addr( r0 )
 in//let
 mycsv00$line_csv$parse$work
 (
-fpath,
+line,
 lam(cs) =>
 $UN.p2tr_set<r0>(p0, optn_vt_cons(cs))); r0
 end//let
@@ -67,7 +67,7 @@ end//let
 //
 #impltmp
 <(*tmp*)>
-mycsv00$fpath_csv$$parse$opt_a1sz
+mycsv00$fpath_csv$parse$opt_a1sz
   (fpath) =
 (
 case+ opt0 of
@@ -80,14 +80,14 @@ optn_vt_cons(a1sz_make_lstrm(xs))
 ) where
 {
 val opt0 =
-mycsv00$fpath_csv$$parse$opt_lstrm(fpath)
+mycsv00$fpath_csv$parse$opt_lstrm(fpath)
 }
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-mycsv00$fpath_csv$$parse$opt_lstrm
+mycsv00$fpath_csv$parse$opt_lstrm
   (fpath) =
 let
 //
@@ -123,7 +123,7 @@ optn_vt_cons
 strm_vt_map0<x0><y0>(strn_line$strmize<>(chrs)))
 end//let
 //
-end//let//end-of-[mycsv00$fpath_csv$$parse$opt_lstrm]
+end//let//end-of-[mycsv00$fpath_csv$parse$opt_lstrm]
 //
 (* ****** ****** *)
 (* ****** ****** *)

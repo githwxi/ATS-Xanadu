@@ -14,21 +14,51 @@ fun
 <x0:t0>
 <y0:t0>
 fmap_list
-(fmap: x0 -> y0): list(x0) -> list(y0)
+( fmap
+: x0 -> y0)
+: list(x0) -> list(y0)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+fmap_list(fopr) =
+(
+  lam(xs) => xs.map_fun(fopr))
+//
+(* ****** ****** *)
 //
 #extern
 fun
 <x0:t0>
 <y0:t0>
 fmap_optn
-(fmap: x0 -> y0): optn(x0) -> optn(y0)
+( fmap
+: x0 -> y0)
+: optn(x0) -> optn(y0)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+fmap_optn(fopr) =
+(
+  lam(xs) => xs.map_fun(fopr))
+//
+(* ****** ****** *)
 //
 #extern
 fun
 <x0:t0>
 <y0:t0>
 fmap_strm
-(fmap: x0 -> y0): strm(x0) -> strm(y0)
+( fmap: x0 -> y0)
+: strm(x0) -> strm(y0)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+fmap_strm(fopr) =
+(
+  lam(xs) => xs.map_fun(fopr))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -47,7 +47,7 @@ Sat 07 Sep 2024 02:40:27 PM EDT
 (* ****** ****** *)
 //
 val opt0 =
-mycsv00$fpath_csv$$parse$opt_lstrm
+mycsv00$fpath_csv$parse$opt_lstrm
 (        "./DATA/QQQ.csv"        )
 //
 val opts = opts
