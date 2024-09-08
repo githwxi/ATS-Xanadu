@@ -80,6 +80,8 @@ $(XATSOPT) -s $(PRELUDE)/SATS/gasz001.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gasz002.sats
 all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gmap000.sats
+all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gcls000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gsyn000.sats

@@ -40,20 +40,34 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-< xs:vt >
+< m0:vt >
+< k0:vt >
 < x0:vt >
 gmap_sep((*void*)) = ","
 #impltmp
-< xs:vt >
+< m0:vt >
+< k0:vt >
 < x0:vt >
-gseq_end((*void*)) = "}"
+gmap_end((*void*)) = "}"
 #impltmp
-< xs:vt >
+< m0:vt >
+< k0:vt >
 < x0:vt >
-gseq_beg((*void*)) = "gmap{"
+gmap_beg((*void*)) = "gmap{"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+< m0:t0 >
+< k0:t0 >
+< x0:t0 >
+gmap_search$tst
+ (map, k0) =
+head$opt(
+filter0_fun(
+gseq_strmize
+<m0><(k0,x0)>(map), lam(kx) => g_equal<k0>(k0, kx.0)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
