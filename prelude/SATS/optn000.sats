@@ -51,7 +51,7 @@ optn_cons_
 //
 fun<>
 optn_nilq
-{a:t0}{b:i0}
+{a:t0}{b:b0}
 (xs: optn(a,b)): bool(~b)
 //
 (* ****** ****** *)

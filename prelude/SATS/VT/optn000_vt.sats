@@ -72,7 +72,7 @@ fun
 optn_vt_length0
 {b0:b0}
 (xs:
-~optn_vt(x0,n0)): sint(b2i(b0))
+~optn_vt(x0,b0)): sint(b2i(b0))
 //
 (*
 HX-2024-09-07:
@@ -83,7 +83,7 @@ fun
 optn_vt_length1
 {b0:b0}
 (xs:
-!optn_vt(x0,n0)): sint(b2i(b0))
+!optn_vt(x0,b0)): sint(b2i(b0))
 //
 #symload length0 with optn_vt_length0 of 1000
 #symload length1 with optn_vt_length1 of 1000
