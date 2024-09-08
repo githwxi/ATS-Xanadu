@@ -70,6 +70,28 @@ gseq_free0(xs: ~xs): void
 fun
 <xs:vt>
 <x0:vt>
+gseq_head0(xs: ~xs): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_head$opt0
+  ( xs: ~xs ): optn_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_head1(xs: !xs): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_head$opt1
+  ( xs: !xs ): optn_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_head1_raw(!xs): (x0)
 fun
 <xs:vt>

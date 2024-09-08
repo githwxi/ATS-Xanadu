@@ -272,6 +272,7 @@ strm_vt_filter0_f1un
 ( xs: strm_vt(x0)
 , test: (!x0) -> bool): strm_vt(x0)
 #symload filter0 with strm_vt_filter0_f1un of 1000
+#symload filter0_fun with strm_vt_filter0_f1un of 1000
 //
 fun
 <x0:vt>
@@ -279,6 +280,7 @@ strm_vt_ifilter0_f2un
 ( xs: strm_vt(x0)
 , test: (ni,!x0) -> bool): strm_vt(x0)
 #symload ifilter0 with strm_vt_ifilter0_f2un of 1000
+#symload ifilter0_fun with strm_vt_ifilter0_f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

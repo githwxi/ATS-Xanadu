@@ -173,30 +173,46 @@ fun
 gseq_cmp(xs, xs): sint
 //
 (* ****** ****** *)
-
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_beg((*0*)): strn
+fun
+<xs:vt>
+<x0:vt>
+gseq_end((*0*)): strn
+fun
+<xs:vt>
+<x0:vt>
+gseq_sep((*0*)): strn
+//
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
 gseq_print(xs: xs): void
+//
 fun
 <xs:t0>
 <x0:t0>
-gseq_print$beg((*void*)): void
+gseq_print$beg((*0*)): void
 fun
 <xs:t0>
 <x0:t0>
-gseq_print$end((*void*)): void
+gseq_print$end((*0*)): void
 fun
 <xs:t0>
 <x0:t0>
-gseq_print$sep((*void*)): void
-
+gseq_print$sep((*0*)): void
+//
 (* ****** ****** *)
 
 fun
 <xs:t0>
 <x0:t0>
-gseq_length(xs): nint
+gseq_length(xs: xs): nint
 
 (* ****** ****** *)
 //
@@ -209,37 +225,37 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_foldl(xs, r0): r0
+gseq_foldl(xs, r0): (r0)
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_foldr(xs, r0): r0
+gseq_foldr(xs, r0): (r0)
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
-g_exists(xs): bool
+g_exists(xs: xs): bool
 fun
 <xs:t0>
-g_forall(xs): bool
+g_forall(xs: xs): bool
 fun
 <xs:t0>
-g_foritm(xs): void
+g_foritm(xs: xs): void
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_exists(xs): bool
+gseq_exists(xs: xs): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_forall(xs): bool
+gseq_forall(xs: xs): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_foritm(xs): void
+gseq_foritm(xs: xs): void
 //
 (* ****** ****** *)
 //

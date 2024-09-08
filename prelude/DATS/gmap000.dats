@@ -64,10 +64,36 @@ gmap_beg((*void*)) = "gmap{"
 < x0:t0 >
 gmap_search$tst
  (map, k0) =
-head$opt(
-filter0_fun(
-gseq_strmize
-<m0><(k0,x0)>(map), lam(kx) => g_equal<k0>(k0, kx.0)))
+let
+#typedef kx = @(k0, x0) in
+gseq_consq0(
+strm_vt_filter0_f1un(
+gseq_strmize<m0><(k0,x0)>(map),
+lam(kx:kx) => g_equal<k0>(k0, kx.0))) end
+//
+#impltmp
+< m0:t0 >
+< k0:t0 >
+< x0:t0 >
+gmap_search$cpy
+ (map, k0) =
+(
+case+ opt0 of
+| ~
+optn_vt_nil() => optn_vt_nil()
+| ~
+optn_vt_cons(kx) => optn_vt_cons(kx.1)
+) where
+{
+//
+#typedef kx = (k0, x0)
+//
+val opt0 =
+gseq_head$opt0
+<strm_vt(kx)><kx>(
+strm_vt_filter0_f1un<kx>(
+gseq_strmize<m0><(k0,x0)>(map), lam(kx) => g_equal<k0>(k0, kx.0)))
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)

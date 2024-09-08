@@ -6,17 +6,21 @@
 //
 *)
 (* ****** ****** *)
-#impltmp
-<map>
-<key,itm>
-gmap_size(kxs) =
-strm_vt_length0
-(gmap_strmize<map><key,itm>(kxs))
 (* ****** ****** *)
 //
 #impltmp
 <map>
-<key,itm>
+<key><itm>
+gmap_size(kxs) =
+strm_vt_length0
+(gmap_strmize<map><key><itm>(kxs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<map>
+<key><itm>
 gmap_print(kxs) =
 let
 //
@@ -45,14 +49,14 @@ if
 then gmap_print$sep<>()
 val () =
 gmap_print$keyval
-< key , itm >(kx1.0, kx1.1)
+< key >< itm >(kx1.0, kx1.1)
 }
 ) (* end of [loop] *)
 in//let
 gmap_print$beg<>();
 loop
 ( 0(*i0*)
-, gmap_strmize<map><key,itm>(kxs));
+, gmap_strmize<map><key><itm>(kxs));
 gmap_print$end<>();
 end (*let*) // end of [gmap_print(kxs)]
 //
@@ -66,7 +70,7 @@ gmap_print$end<>() = ()
 gmap_print$sep<>() = strn_print(";")
 //
 #impltmp
-<key,itm>
+<key><itm>
 gmap_print$keyval
   (k0, x0) =
 (
@@ -77,26 +81,26 @@ strn_print<>("->"); g_print<itm>( x0 )
 //
 #impltmp
 <map>
-<key,itm>
+<key><itm>
 gmap_search
 (kxs, k0) =
 let
 val opt =
 gmap_search$opt
-<map><key,itm>(kxs, k0)
+<map><key><itm>(kxs, k0)
 in
 case+ opt of
 | ~
 optn_vt_nil() =>
 gmap_search$exn
-<map><key,itm>(kxs, k0)
+<map><key><itm>(kxs, k0)
 | ~
 optn_vt_cons(x0) => ( x0 ) // found!
 end(*let*)//end-of[gmap_search(kxs,k0)]
 //
 #impltmp
 <map>
-<key,itm>
+<key><itm>
 gmap_search$exn
   (kxs, k0) = $raise NotFoundExn((*0*))
 //
@@ -104,14 +108,14 @@ gmap_search$exn
 //
 #impltmp
 <map>
-<key,itm>
+<key><itm>
 gmap_search$opt
 (kxs, k0) =
 try
 optn_vt_cons
 (
 gmap_search
-<map><key,itm>(kxs, k0)) with
+<map><key><itm>(kxs, k0)) with
 |
 ~NotFoundExn() => optn_vt_nil((*0*))
 endtry//end-of-[gmap_search$opt(kxs,k0)]
@@ -120,13 +124,13 @@ endtry//end-of-[gmap_search$opt(kxs,k0)]
 //
 #impltmp
 <map>
-<key,itm>
+<key><itm>
 gmap_keyq
 (kxs, k0) =
 strm_vt_exists0<key>
 (
 gmap_strmize_key
-<map><key,itm>(kxs)
+<map><key><itm>(kxs)
 ) where // end-of(strm_vt_exists0<key>)
 {
 #impltmp
@@ -137,7 +141,7 @@ exists$test0<key>(k1)=g_equal<key>(k0,k1)
 //
 #impltmp
 <map>
-<key,itm>
+<key><itm>
 gmap_strmize_key(kxs) =
 let
 #impltmp
@@ -151,7 +155,7 @@ end(*let*)//end-of-[gmap_strmize_key(kxs)]
 //
 #impltmp
 <map>
-<key,itm>
+<key><itm>
 gmap_strmize_itm(kxs) =
 let
 #impltmp
@@ -180,42 +184,42 @@ gmap_strmize
 //
 #impltmp
 <map>
-<key,itm>
+<key><itm>
 gmap_unlist(kxs) =
 gmap_unstrm_vt
-<map><key,itm>
+<map><key><itm>
 (list_strmize<(key,itm)>(kxs))
 //
 (* ****** ****** *)
 //
 #impltmp
 <map>
-<key,itm>
+<key><itm>
 gmap_unstrm(kxs) =
 gmap_unstrm_vt
-<map><key,itm>
+<map><key><itm>
 (strm_strmize<(key,itm)>(kxs))
 //
 (* ****** ****** *)
 //
 #impltmp
 <map>
-<key,itm>
+<key><itm>
 gmap_unlist_vt(kxs) =
 gmap_unstrm_vt
-<map><key,itm>
+<map><key><itm>
 (list_vt_strmize0<(key,itm)>(kxs))
 //
 (* ****** ****** *)
 //
 #impltmp
 <map>
-<key,itm>
+<key><itm>
 gmap_unstrm_vt(kxs) =
 let
 val map =
 gmap_make_nil
-<map><key,itm>((*nil*))
+<map><key><itm>((*nil*))
 var map = map
 val ( ) = loop(map, kxs) in map
 end where
@@ -241,7 +245,7 @@ strmcon_vt_cons(kx1, kxs) =>
 {
 val opt =
 gmap_insert$opt
-<map><key,itm>(map, kx1.0, kx1.1)
+<map><key><itm>(map, kx1.0, kx1.1)
 val ( ) =
 (
 case+ opt of

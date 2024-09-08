@@ -198,21 +198,6 @@ gseq_prod(xs: xs): (x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_beg((*0*)): strn
-fun
-<xs:vt>
-<x0:vt>
-gseq_end((*0*)): strn
-fun
-<xs:vt>
-<x0:vt>
-gseq_sep((*0*)): strn
-//
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
 gseq_prlen((*0*)): sint
 //
 (* ****** ****** *)
