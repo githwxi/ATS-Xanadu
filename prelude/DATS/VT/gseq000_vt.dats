@@ -139,26 +139,63 @@ Wed 17 Jul 2024 09:55:22 PM EDT
 < x0:vt >
 gseq_print0(xs) =
 let
+//
 val () =
 strn_print<>
 (gseq_beg<xs><x0>())
+//
 val () =
 (
-gseq_iforitm0<xs><x0>(xs)
+if
+(n0 >= 0)
+then
+g_void
+(
+gseq_iforall0<xs><x0>(xs))
+else
+(
+gseq_iforitm0<xs><x0>(xs))
 ) where
 {
+//
+val n0 =
+(
+ gseq_prlen<xs><x0>((*0*)))
+//
 #impltmp
-iforitm$work0<x0>(ni, x0) =
+iforitm$work0<x0>
+  (i0, x0) =
 (
   g_print0<x0>(x0)) where
 {
 val () =
-if ni > 0 then
-strn_print<>(gseq_sep<xs><x0>())
+if i0 > 0 then
+strn_print(gseq_sep<xs><x0>())}
+//
+#impltmp
+iforall$test0<x0>
+  (i0, x0) =
+(
+if
+(i0 >= n0)
+then
+(
+strn_print
+(  "..."  ); false)
+else
+(
+g_print0<x0>(x0); true))
+where
+{
+val () =
+if i0 > 0 then
+strn_print(gseq_sep<xs><x0>())}
+//
 }
-}
+//
 val () =
 strn_print<>(gseq_end<xs><x0>())
+//
 endlet // end-of-[gseq_print0(xs)]
 //
 (* ****** ****** *)
