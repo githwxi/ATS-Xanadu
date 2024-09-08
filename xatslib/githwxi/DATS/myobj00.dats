@@ -15,8 +15,10 @@ Sat 07 Sep 2024 08:37:22 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#abstype
+hmap_tbox(a:t0)
 #typedef
-hmap(a:t0) = jshsmap(strn, a)
+hmap(a:t0) = hmap_tbox(a)
 //
 (* ****** ****** *)
 //
