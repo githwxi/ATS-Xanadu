@@ -17,9 +17,11 @@ For testing xatslib/JS!
 "srcgen2\
 /prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
+(*
 #include
 "srcgen2\
 /prelude/HATS/prelude_NODE_dats.hats"
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -32,6 +34,11 @@ For testing xatslib/JS!
 val () =
 prints
 ("Hello from [test00_xatslib]!", "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () = the_print_store_log( (*void*) )
 //
 (* ****** ****** *)
 (* ****** ****** *)

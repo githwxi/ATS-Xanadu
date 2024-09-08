@@ -42,6 +42,15 @@ fun
 <map:t0>
 <key:t0>
 <itm:vt>
+gmap_nil((*0*)): map
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
 gmap_size(kxs: map): nint
 //
 (* ****** ****** *)
@@ -84,6 +93,16 @@ gmap_keyq
 //
 fun
 <map:t0>
+<key:t0>
+<itm:vt>
+gmap_strmize
+(kxs: map): strm_vt@(key, itm)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<map:t0>
 <key:t0
 ,itm:vt>
 gmap_search$tst
@@ -94,6 +113,133 @@ fun
 <itm:vt>
 gmap_search$cpy
 (kxs: map, key: key): optn_vt(itm)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-09-08:
+These are for imperative maps!
+*)
+(*
+HX-2024-09-08:
+Using [getout$old] if [key]
+is known in the given map [map]
+*)
+#extern
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_getout$any
+(kxs: map, key: key): itm
+#extern
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_getout$old
+(kxs: map, key: key): itm
+#extern
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_getout$opt
+(kxs: map, key: key): optn_vt(itm)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-09-08:
+These are for imperative maps!
+*)
+(*
+HX-2024-09-08
+Using [insert$new] if [key] is
+known not in the given map [map]
+*)
+#extern
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_insert$any
+(kxs: map
+,key: key, itm: itm): void
+#extern
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_insert$new
+(kxs: map
+,key: key, itm: itm): void
+#extern
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_insert$opt
+(kxs: map
+,key: key, itm: itm): optn_vt(itm)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-09-08
+These are for functional maps!
+*)
+//
+#extern
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
+gmap_getout$any
+(kxs: map, key: key): map
+#extern
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
+gmap_getout$old
+(kxs: map, key: key): map
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
+gmap_getout$opt
+( kxs: map
+, key: key): (map, optn_vt(itm))
+//
+#extern
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
+gmap_finsert$any
+(kxs: map
+,key: key, itm: itm): map
+#extern
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
+gmap_finsert$new
+(kxs: map
+,key: key, itm: itm): map
+#extern
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
+gmap_finsert$opt
+( kxs: map
+, key: key
+, itm: itm): (map, optn_vt(itm))
 //
 (* ****** ****** *)
 (* ****** ****** *)

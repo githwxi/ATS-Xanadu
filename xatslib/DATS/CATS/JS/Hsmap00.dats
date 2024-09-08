@@ -261,12 +261,12 @@ jshsmap_delete
 //
 (*
 HX-2024-08-10:
-Using [getout$any] if [key]
+Using [getout$old] if [key]
 is known in the given map [map]
 *)
 #extern
 fun<>
-jshsmap_getout$any
+jshsmap_getout$old
  {k:t0}{x:vt}
 (map: jsm0(k,x), key: k): ( x )
 #extern
@@ -279,12 +279,12 @@ jshsmap_getout$opt
 //
 (*
 HX-2024-08-10:
-Using [insert$any] if [key]
-is known not in the given map [map]
+Using [insert$new] if [key] is
+known not in the given map [map]
 *)
 #extern
 fun<>
-jshsmap_insert$any
+jshsmap_insert$new
  {k:t0}{x:vt}
 (map: jsm0(k,x), key: k, itm: x): void
 #extern
@@ -559,7 +559,7 @@ XATS2JS_jshsmap_insert$raw
 //
 #impltmp
 <(*tmp*)>
-jshsmap_getout$any
+jshsmap_getout$old
   (map, key) =
 (    itm     ) where
 {
@@ -572,7 +572,7 @@ jshsmap_getout$opt<>(map, key) }
 //
 #impltmp
 <(*tmp*)>
-jshsmap_insert$any
+jshsmap_insert$new
   (map, k, x) =
 let
 val-

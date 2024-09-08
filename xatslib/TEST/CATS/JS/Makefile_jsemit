@@ -18,6 +18,10 @@ testall:: test00; $(NODE) $<_out.js
 testall:: test01; $(NODE) $<_out.js
 testall:: test02; $(NODE) $<_out.js
 ########################################################################
+testall1:: test00; $(NODE) $<_out1.js
+########################################################################
+testall2:: test00; $(NODE) $<_out2.js
+########################################################################
 ########################################################################
 SRCGEN2_SRCGENX=\
 $(XATSHOME)/srcgen2/xats2js/srcgenx
@@ -37,12 +41,17 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
 test00:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
 ############
-test00:: ; \
-$(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
-############
 test00:: \
 test00_xatslib.dats; \
 $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+############
+test00:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level SIMPLE --js=$@_out.js --js_output_file=$@_out1.js
+############
+test00:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level ADVANCED --js=$@_out.js --js_output_file=$@_out2.js
 ########################################################################
 ########################################################################
 test01:: ; \
