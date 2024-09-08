@@ -20,10 +20,21 @@ hmap_tbox(a:t0)
 #typedef
 hmap(a:t0) = hmap_tbox(a)
 //
+(* ****** ****** *)
+//
 #extern
 fun
 <a:t0>
-hmap_nil((*0*)): hmap(a)
+hmap_make_nil((*0*)): hmap(a)
+//
+(* ****** ****** *)
+//
+#extern
+fun
+<a:t0>
+hmap_insert$new
+( map
+: hmap(a), k0: strn, x0: a): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -183,6 +194,18 @@ fun<>
 myobj_fmake_fwork
 ( fwork
 : ((strn, dtval)->void)->void): myobj
+//
+#impltmp
+<(*tmp*)>
+myobj_fmake_fwork
+  (fwork) =
+let
+val obj = hmap_make_nil()
+in//let
+fwork(
+lam(k0, x0) =>
+  hmap_insert$new(obj, k0, x0)); (obj)
+end//let//end-of-[myobj_fmake_fwork(fwork)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
