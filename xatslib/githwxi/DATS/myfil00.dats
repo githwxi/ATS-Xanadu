@@ -19,7 +19,7 @@ myfil00$fpath_readall$opt
 //
 #extern
 fun<>
-myfil00$fpath_readall$work
+myfil00$fpath_readall$fwork
   (fpath: strn, work: (strn)->void): void
 //
 (* ****** ****** *)
@@ -40,7 +40,7 @@ optn_vt_nil((*0*))
 val p0 = $addr(r0)
 //
 in//let
-myfil00$fpath_readall$work
+myfil00$fpath_readall$fwork
 (
 fpath,
 lam(cs) =>

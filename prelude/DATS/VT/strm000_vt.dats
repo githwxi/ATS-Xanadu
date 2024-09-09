@@ -79,6 +79,16 @@ gseq_print0<strm_vt(x0)><x0>(xs)
 //
 #impltmp
 < x0:vt >
+strm_vt_free(xs) = $free(xs)
+#impltmp
+< x0:vt >
+strm_vt_eval(xs) = $eval(xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
 g_make0_lstrm
 <strm_vt(x0)>(xs) = (xs)//identity
 #impltmp
@@ -96,49 +106,6 @@ g_make0_lstrm
 { x0:vt }
 g_make0_lstrq
 <x0><list_vt(x0)> = strq_vt_listize0<x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:vt >
-strm_vt_forall0 =
-gseq_forall0<strm_vt(x0)><x0>
-#impltmp
-< x0:vt >
-strm_vt_foritm0 =
-gseq_foritm0<strm_vt(x0)><x0>
-//
-(* ****** ****** *)
-//
-#impltmp
-< x0:vt >
-strm_vt_forall0
-  ( xs ) =
-(
-  auxmain(xs)) where
-{
-fun
-auxmain
-( xs
-: strm_vt(x0)): bool =
-(
-case+ !xs of
-| ~
-strmcon_vt_nil() => true
-| ~
-strmcon_vt_cons(x1, xs) =>
-(
-if
-forall$test0<x0>(x1)
-then
-auxmain(xs) else (free(xs); false)))
-}(*where*)//end-of-[strm_vt_forall0(xs)]
-//
-#impltmp
-{ x0:vt }
-gseq_forall0
-<strm_vt(x0)><x0> = strm_vt_forall0<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

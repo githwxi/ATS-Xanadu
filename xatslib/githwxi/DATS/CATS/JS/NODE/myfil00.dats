@@ -14,21 +14,21 @@ Some simple stuff for handling files
 (*
 #extern
 fun<>
-myfil00$fpath_readall$work
+myfil00$fpath_readall$fwork
   (fpath: strn, work: (strn)->void): void
 *)
 //
 #impltmp
 <(*tmp*)>
-myfil00$fpath_readall$work
+myfil00$fpath_readall$fwork
   (fpath, work) =
 (
-XATS2JS_NODE_myfil00$fpath_readall$work
+XATS2JS_NODE_myfil00$fpath_readall$fwork
   (fpath, work)) where
 {
 #extern
 fun
-XATS2JS_NODE_myfil00$fpath_readall$work
+XATS2JS_NODE_myfil00$fpath_readall$fwork
   (fpath: strn, work: (strn)->void): void = $extnam()
 }
 //

@@ -14,21 +14,21 @@ Some simple stuff for CSV-handling
 (*
 #extern
 fun<>
-mycsv00$line_csv$parse$work
+mycsv00$line_csv$parse$fwork
   (line: strn, work: a1sz(strn)->void): void
 *)
 //
 #impltmp
 <(*tmp*)>
-mycsv00$line_csv$parse$work
+mycsv00$line_csv$parse$fwork
   (line, work) =
 (
-XATS2JS_NODE_mycsv00$line_csv$parse$work
+XATS2JS_NODE_mycsv00$line_csv$parse$fwork
   (line, work)) where
 {
 #extern
 fun
-XATS2JS_NODE_mycsv00$line_csv$parse$work
+XATS2JS_NODE_mycsv00$line_csv$parse$fwork
   (line: strn, work: a1sz(strn)->void): void = $extnam()
 }
 //

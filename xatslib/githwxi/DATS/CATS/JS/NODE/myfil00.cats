@@ -43,7 +43,7 @@ XATS2JS_NODE_fs = require('node:fs')
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_myfil00$fpath_readall$work
+XATS2JS_NODE_myfil00$fpath_readall$fwork
   (fpath, work)
 {
   try {
@@ -51,7 +51,7 @@ XATS2JS_NODE_myfil00$fpath_readall$work
     XATS2JS_NODE_fs.readFileSync(fpath).toString())
   } catch (error) {
     console.log
-    (`XATS2JS_NODE_myfil00$fpath_readall$work(error): fpath = ${fpath}`)
+    (`XATS2JS_NODE_myfil00$fpath_readall$fwork(error): fpath = ${fpath}`)
   }
 }
 //

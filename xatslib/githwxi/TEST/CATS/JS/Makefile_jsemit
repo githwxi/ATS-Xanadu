@@ -14,6 +14,8 @@ all:: test03
 all:: test04
 all:: test05
 all:: test06
+all:: test07
+all:: test08
 all:: test99
 ########################################################################
 ########################################################################
@@ -173,6 +175,32 @@ $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
 test07:: ; \
 npx google-closure-compiler -W QUIET \
   --compilation_level SIMPLE --js=$@_out.js --js_output_file=$@_out1.js
+########################################################################
+########################################################################
+test08:: ; \
+echo "//" `date` > $@_out.js
+############
+test08:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
+test08:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
+test08:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
+############
+test08:: ; $(CAT) \
+$(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
+test08:: ; $(CAT) \
+$(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/mycsv00.cats >> $@_out.js
+test08:: ; $(CAT) \
+$(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/myfil00.cats >> $@_out.js
+############
+test08:: \
+test08_volctrl.dats; \
+$(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+############
+# test08:: ; \
+# npx google-closure-compiler -W QUIET \
+#  --compilation_level SIMPLE --js=$@_out.js --js_output_file=$@_out1.js
 ########################################################################
 ########################################################################
 test99:: ; \

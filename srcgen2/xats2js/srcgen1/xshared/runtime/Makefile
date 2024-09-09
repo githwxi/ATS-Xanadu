@@ -47,6 +47,11 @@ strn000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/strn000.cats >> $(PRELUDE_JS)
 ###############################################################
 prelude:: \
+gbas000
+gbas000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/JS/gbas000.cats >> $(PRELUDE_JS)
+###############################################################
+prelude:: \
 axrf000
 axrf000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/axrf000.cats >> $(PRELUDE_JS)

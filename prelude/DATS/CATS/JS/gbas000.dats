@@ -26,84 +26,85 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(*
-Sun 21 Jul 2024 02:16:49 PM EDT
-*)
+Mon 09 Sep 2024 08:48:13 AM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
 //
-fun
-<xs:t0>
-<x0:vt>
-gasz_length(xs: xs): nint
+#extern
+fun<>
+strn_sint$parse$fwork
+( rep0: strn
+, work: (sint)->void): void
 //
-(* ****** ****** *)
+#impltmp
+g_parse$opt
+< sint >
+( rep0 ) =
+list_head$opt
+(
+list_fmake_fwork
+(
+lam(work) =>
+strn_sint$parse$fwork(rep0, work)))
 //
+#impltmp
+<(*tmp*)>
+strn_sint$parse$fwork
+  (rep0, work) =
+(
+XATS2JS_strn_sint$parse$fwork
+  (rep0, work)) where
+{
+#extern
 fun
-<xs:t0>
-<x0:t0>
-gasz_get$at
-(xs: xs,i0: ni): (x0)
-fun
-<xs:t0>
-<x0:t0>
-gasz_set$at
-(xs: xs, i0: ni, x0: x0): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_lget$at
-(xs: xs
-,i0: ni): (owed(x0) | x0)
-fun
-<xs:t0>
-<x0:vt>
-gasz_lset$at
-(pf: owed(x0)
-|xs: xs, i0: ni, x0: x0): void
+XATS2JS_strn_sint$parse$fwork
+(rep0: strn, work:(sint)->void): void = $extnam()
+}
 //
 (* ****** ****** *)
-(* ****** ****** *)
+//
+#extern
+fun<>
+strn_dflt$parse$fwork
+( rep0: strn
+, work: (dflt)->void): void
+//
+#impltmp
+g_parse$opt
+< dflt >
+( rep0 ) =
+list_head$opt
+(
+list_fmake_fwork
+(
+lam(work) =>
+strn_dflt$parse$fwork(rep0, work)))
+//
+#impltmp
+<(*tmp*)>
+strn_dflt$parse$fwork
+  (rep0, work) =
+(
+XATS2JS_strn_dflt$parse$fwork
+  (rep0, work)) where
+{
+#extern
 fun
-<xs:t0>
-<x0:vt>
-gasz_cget$at
-(xs: xs, i0: ni): (x0)
-(* ****** ****** *)
-fun
-<xs:t0>
-<x0:vt>
-gasz_setf$at
-(xs: xs, i0: ni, x0: x0): void
-(* ****** ****** *)
-fun
-<xs:t0>
-<x0:vt>
-gasz_cget$at$opt
-(xs: xs, i0: ni): optn_vt(x0)
-(* ****** ****** *)
-fun
-<xs:t0>
-<x0:vt>
-gasz_setf$at$opt
-(xs: xs, i0: ni, x0: x0): optn_vt(x0)
+XATS2JS_strn_dflt$parse$fwork
+(rep0: strn, work:(dflt)->void): void = $extnam()
+}
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gasz000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_gint000.dats] *)
