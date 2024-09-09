@@ -50,7 +50,7 @@ XATS2JS_strn_dflt$parse$fwork
   (rep0, work)
 {
   let f0 = parseFloat(rep0)
-  if (!isNaN(i0)) { work(f0) }; return
+  if (!isNaN(f0)) { work(f0) }; return
 }
 //
 ////////////////////////////////////////////////////////////////////////.

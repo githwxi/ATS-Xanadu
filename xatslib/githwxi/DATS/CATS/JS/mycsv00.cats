@@ -60,7 +60,8 @@ XATS2JS_NODE_mycsv00$line_csv$parse$fwork
 {
   try {
     let parsed =
-    XATS2JS_NODE_Papa.parse(line); work(parsed.data[0])
+    XATS2JS_NODE_Papa.parse(line);
+    if (parsed.data.length > 0) work(parsed.data[0]);
   } catch (error) {
     console.log
     (`XATS2JS_NODE_mycsv00$fpath_readall$fwork(error): line = ${line}`)
