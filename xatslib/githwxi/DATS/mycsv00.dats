@@ -20,7 +20,7 @@ mycsv00$line_csv$parse$opt
 //
 #extern
 fun<>
-mycsv00$line_csv$parse$work
+mycsv00$line_csv$parse$fwork
   (line: strn, work: a1sz(strn)->void): void
 //
 (* ****** ****** *)
@@ -55,7 +55,7 @@ optn_vt_nil((*nil*))
 val p0 = $addr( r0 )
 //
 in//let
-mycsv00$line_csv$parse$work
+mycsv00$line_csv$parse$fwork
 (
 line,
 lam(cs) =>

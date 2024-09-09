@@ -1,8 +1,8 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2024-09-07:
-Sat 07 Sep 2024 02:40:27 PM EDT
+HX-2024-09-09:
+Mon 09 Sep 2024 11:18:07 AM EDT
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -48,43 +48,22 @@ Sat 07 Sep 2024 02:40:27 PM EDT
 //
 val opt0 =
 mycsv00$fpath_csv$parse$opt_lstrm
-(        "./DATA/QQQ.csv"        )
+  (      "./DATA/QQQ.csv"      )
 //
 val opts = opts
-where{val-optn_vt_cons(opts) = opt0}
+where{
+  val-optn_vt_cons(opts) = opt0 }
 //
-(* ****** ****** *)
-(*
-val () =
-g_void(
-strm_vt_iforall0_f2un
-(
-opts,
-lam(i, x) =>
-if (i >= 10)
-then false else
-(print0s("x = ", x, "\n"); true)))
-*)
+val (  ) = prints
+("type(opts) = ", type(opts), "\n")
 //
-local
+val opts = !opts
+val-
+strmcon_vt_cons(hdr0, opts) = (opts)
 //
-#vwtpdef
-x0 = optn_vt(a1sz(strn))
-#vwtpdef xs = strm_vt(x0)
-//
-#impltmp
-gseq_sep<xs><x0>() = "\n"
-#impltmp
-gseq_end<xs><x0>() = "\n)"
-#impltmp
-gseq_beg<xs><x0>() = "strm_vt(\n"
-//
-#impltmp
-gseq_prlen<xs><x0>() = 10
-//
-in//local
-val () = print0s("opts = ", opts, "\n")
-end//local
+val-
+optn_vt_cons(hdr0) = hdr0
+val (  ) = prints("hdr0 = ", hdr0, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -99,4 +78,4 @@ val () = console_log(the_print_store_flush())
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_JS_githwxi_TEST_test06_mycsv00.dats] *)
+(* end of [ATS3/XANADU_xatslib_JS_githwxi_TEST_test08_volctrl.dats] *)

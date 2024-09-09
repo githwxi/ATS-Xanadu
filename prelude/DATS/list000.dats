@@ -83,6 +83,41 @@ case+ xs of
 (* ****** ****** *)
 //
 #impltmp
+< x0:t0 >
+list_head(xs) =
+(case+ xs of
+|list_cons(x0, xs) => x0)
+#impltmp
+< x0:t0 >
+list_tail(xs) =
+(case+ xs of
+|list_cons(x0, xs) => xs)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_head$opt(xs) =
+(
+case+ xs of
+|list_nil
+((*nil*)) => optn_vt_nil()
+|list_cons
+( x0,xs ) => optn_vt_cons(x0))
+#impltmp
+< x0:t0 >
+list_tail$opt(xs) =
+(
+case+ xs of
+|list_nil
+((*nil*)) => optn_vt_nil()
+|list_cons
+( x0,xs ) => optn_vt_cons(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 { x0:t0 }
 gseq_nil
 <list(x0)><x0>
@@ -112,23 +147,20 @@ gseq_nilq
 { x0:t0 }
 $UN.gseq_head$raw
 <list(x0)><x0>(xs) =
-(
-case- xs of
-| list_cons(x0, xs) => x0)
+(case- xs of
+|list_cons(x0, xs) => x0)
 #impltmp
 { x0:t0 }
 $UN.gseq_tail$raw
 <list(x0)><x0>(xs) =
-(
-case- xs of
-| list_cons(x0, xs) => xs)
+(case- xs of
+|list_cons(x0, xs) => xs)
 //
 #impltmp
 { x0:t0 }
 $UN.gseq_uncons$raw
 <list(x0)><x0>( xs ) =
-(
-case- xs of
+(case- xs of
 |list_cons(x0, xs) => (x0, xs))
 //
 (* ****** ****** *)

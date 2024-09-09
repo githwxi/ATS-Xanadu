@@ -63,7 +63,7 @@ fun
 <xs:t0>
 <x0:vt>
 get$at$exn
-(xs: xs, i0: ni): x0
+(xs: xs, i0: ni): (x0)
 fun
 <xs:t0>
 <x0:vt>
@@ -74,6 +74,19 @@ fun
 <x0:t0>
 fset$at$exn
 (xs:xs,i0:ni,x0:x0): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+cget$at$exn
+(xs: xs, i0: ni): (x0)
+fun
+<xs:t0>
+<x0:vt>
+setf$at$exn
+(xs:xs,i0:ni,x0:x0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
