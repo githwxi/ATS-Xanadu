@@ -57,6 +57,13 @@ gseq_beg((*void*)) = "gseq("
 #impltmp
 < xs:vt >
 < x0:vt >
+gseq_omit((*void*)) = "..."
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
 gseq_prlen((*void*)) = (-1)
 //
 (* ****** ****** *)

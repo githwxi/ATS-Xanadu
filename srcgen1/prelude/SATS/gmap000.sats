@@ -145,20 +145,22 @@ gmap_foritm(kxs: map): void
 fun
 <map:t0>
 <key:t0>
-<itm:t0>
+<itm:vt>
 gmap_strmize
 (kxs: map): strm_vt(@(key, itm))
 (* ****** ****** *)
+//
 fun
 <map:t0>
 <key:t0>
-<itm:t0>
+<itm:vt>
 gmap_strmize_key(map): strm_vt(key)
 fun
 <map:t0>
 <key:t0>
-<itm:t0>
+<itm:vt>
 gmap_strmize_itm(map): strm_vt(itm)
+//
 (* ****** ****** *)
 (*
 HX: For initializing a gmap

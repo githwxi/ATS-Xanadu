@@ -67,21 +67,19 @@ then false else
 //
 local
 //
-#impltmp
-< xs:vt >
-< x0:vt >gseq_sep() = "\n"
-#impltmp
-{ x0:vt }
-gseq_end
-<strm_vt(x0)><x0>() = "\n)"
-#impltmp
-{ x0:vt }
-gseq_beg
-<strm_vt(x0)><x0>() = "strm_vt(\n"
+#vwtpdef
+x0 = optn_vt(a1sz(strn))
+#vwtpdef xs = strm_vt(x0)
 //
 #impltmp
-< xs:vt >
-< x0:vt >gseq_prlen() = 20
+gseq_sep<xs><x0>() = "\n"
+#impltmp
+gseq_end<xs><x0>() = "\n)"
+#impltmp
+gseq_beg<xs><x0>() = "strm_vt(\n"
+//
+#impltmp
+gseq_prlen<xs><x0>() = 20
 //
 in//local
 val () = print0s("opts = ", opts, "\n")
