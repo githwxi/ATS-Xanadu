@@ -136,6 +136,11 @@ gseq_sep((*0*)): strn
 fun
 <xs:vt>
 <x0:vt>
+gseq_omit((*0*)): strn
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_prlen((*0*)): sint
 //
 fun

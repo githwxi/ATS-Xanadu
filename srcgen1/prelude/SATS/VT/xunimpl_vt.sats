@@ -1679,17 +1679,20 @@ strm_vt_ifilter0_f2un
 //
 fun
 <x0:vt>
-strm_vt_forall0_f1un
-(xs: strm_vt(x0), test: (~x0)->bool): bool
-#symload forall0 with strm_vt_forall0_f1un of 1000
-#symload forall0_fun with strm_vt_forall0_f1un of 1000
-//
-fun
-<x0:vt>
 strm_vt_iforall0_f2un
 (xs: strm_vt(x0), test: (ni,~x0)->bool): bool
 #symload iforall0 with strm_vt_iforall0_f2un of 1000
 #symload iforall0_fun with strm_vt_iforall0_f2un of 1000
+//
+fun
+<x0:vt>
+strm_vt_iforitm0_f2un
+(xs: strm_vt(x0), test: (ni,~x0)->void): void
+#symload iforitm0 with strm_vt_iforitm0_f2un of 1000
+#symload iforitm0_fun with strm_vt_iforitm0_f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

@@ -47,6 +47,11 @@ fun
 <map:t0>
 <key:vt>
 <itm:vt>
+gmap_val$strmize(map): strm_vt(itm)
+fun
+<map:t0>
+<key:vt>
+<itm:vt>
 gmap_keyval$strmize(map): strm_vt@(key, itm)
 //
 (* ****** ****** *)

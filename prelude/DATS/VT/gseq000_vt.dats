@@ -177,11 +177,16 @@ iforall$test0<x0>
   (i0, x0) =
 (
 if
-(i0 >= n0)
+(i0>=n0)
+//
 then
 (
+  false ) where
+{
+val () =
 strn_print
-(  "..."  ); false)
+(gseq_omit<xs><x0>()) }
+//
 else
 (
 g_print0<x0>(x0); true))
