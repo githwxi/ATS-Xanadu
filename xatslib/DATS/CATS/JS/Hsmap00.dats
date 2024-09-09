@@ -228,17 +228,15 @@ jshsmap_forall_f2un
 (* ****** ****** *)
 //
 #extern
-fun
-<k:t0>
-<x:vt>
+fun<>
 jshsmap_search$tst
+ {k:t0}{x:vt}
 (map: jsm0(k,x), key: k): bool
 //
 #extern
-fun
-<k:t0>
-<x:vt>
+fun<>
 jshsmap_search$cpy
+ {k:t0}{x:vt}
 (map: jsm0(k,x), key: k): optn_vt(x)
 //
 (* ****** ****** *)
@@ -506,6 +504,24 @@ jshsmap_rlistize
 //
 #impltmp
 <(*tmp*)>
+jshsmap_search$tst
+  (map, key) =
+(
+XATS2JS_jshsmap_search$tst
+  (map, key)) where
+{
+#extern
+fun
+XATS2JS_jshsmap_search$tst
+ {k:t0}{x:vt}
+(map: jsm0(k,x), key: k): bool = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 UN_jshsmap_get$at$raw
   (map, key) =
 (
@@ -575,9 +591,25 @@ jshsmap_getout$opt<>(map, key) }
 jshsmap_insert$new
   (map, k, x) =
 let
-val-
-~optn_vt_nil() =
-jshsmap_insert$opt<>(map, k, x) end
+val-false =
+jshsmap_search$tst<>(map, k)
+in//let
+UN_jshsmap_insert$raw<>(map, k, x)
+end//let
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jshsmap_insert$opt
+  (map, k, x) =
+(
+  opt ) where
+{
+val opt =
+jshsmap_getout$opt<>(map, k)
+val ( ) =
+UN_jshsmap_insert$raw<>(map, k, x) }
 //
 (* ****** ****** *)
 (* ****** ****** *)

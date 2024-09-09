@@ -24,11 +24,26 @@ hmap_tbox(a:t0) = jshsmap(strn, a)
 //
 #impltmp
 < a: t0 >
+hmap_strmize
+ (map) = jshsmap_strmize(map)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: t0 >
 hmap_make_nil
  ((*void*)) = jshsmap_make_nil<>()
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+hmap_insert$obj
+ (map, k0, x0) =
+(
+ jshsmap_insert$opt<>(map, k0, x0))
 //
 #impltmp
 < a: t0 >

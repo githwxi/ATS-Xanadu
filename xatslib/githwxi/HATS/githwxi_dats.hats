@@ -20,7 +20,10 @@ ATS3_XANADU/xatslib/githwxi/DATS
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../DATS/myfil00.dats"
+(* ****** ****** *)
 #staload "./../DATS/mycsv00.dats"
+(* ****** ****** *)
+#staload "./../DATS/myobj00.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 (*
