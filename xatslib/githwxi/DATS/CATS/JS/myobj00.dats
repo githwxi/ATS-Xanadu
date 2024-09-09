@@ -40,7 +40,17 @@ hmap_make_nil
 //
 #impltmp
 < a: t0 >
-hmap_insert$obj
+hmap_search$opt
+ (map, k0) =
+(
+ jshsmap_search$opt<>(map, k0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+hmap_insert$opt
  (map, k0, x0) =
 (
  jshsmap_insert$opt<>(map, k0, x0))

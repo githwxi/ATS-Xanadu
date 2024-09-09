@@ -54,17 +54,19 @@ prints
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 val
 obj0 = myobj_make_nil()
 val () = prints("obj0 = ", obj0, "\n")
 //
 val () =
-hmap_insert$new(obj0, "a", DTVsint(0))
+hmap_insert$new(obj0, "a", DTVsint(1))
 val () =
-hmap_insert$new(obj0, "b", DTVsint(1))
+hmap_insert$new(obj0, "b", DTVsint(2))
 val () = prints("obj0 = ", obj0, "\n")
 //
+val () = prints
+("a+b = ", sint(obj0["a"])+sint(obj0["b"]))
 //
 (* ****** ****** *)
 (* ****** ****** *)

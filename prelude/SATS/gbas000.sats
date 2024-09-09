@@ -37,6 +37,9 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <a:t0>
@@ -64,6 +67,15 @@ g_work(x : a): void
 fun
 <a:t0>
 g_test(x : a): bool
+//
+fun
+<a0:t0>
+g_iwork
+(i0:ni,x0:a0): void
+fun
+<a0:t0>
+g_itest
+(i0:ni,x0:a0): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)

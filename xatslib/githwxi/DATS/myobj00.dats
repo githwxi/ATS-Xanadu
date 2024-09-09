@@ -45,13 +45,19 @@ hmap_make_nil((*0*)): hmap(a)
 #extern
 fun
 <a:t0>
+hmap_search$opt
+( map
+: hmap(a), k0: strn): optn_vt(a)
+//
+(* ****** ****** *)
+//
+#extern
+fun
+<a:t0>
 hmap_insert$opt
 ( map
 : hmap(a)
 , k0: strn, x0: a): optn_vt(a)
-//
-(* ****** ****** *)
-//
 #extern
 fun
 <a:t0>
@@ -184,18 +190,19 @@ g_print
 < dtval >
 (  dtv  ) =
 (
-praux(dtv)) where
+auxpr(dtv)) where
 {
 //
 fun
-praux
+auxpr
 (dtv: dtval): void =
 let
 //
 #impltmp
-g_print<dtval> = praux
+g_print<dtval> = auxpr
 //
 in//let
+//
 case+ dtv of
 //
 |DTVunit(ut) =>
@@ -218,9 +225,29 @@ case+ dtv of
 (
  prints("DTVstrn(", s0, ")"))
 //
-end//let//end-of-[praux(dtv)]
+|DTVa1sz(a0) =>
+(
+ prints("DTVa1sz(", a0, ")"))
+|DTVhmap(hm) =>
+(
+ prints("DTVhmap(", hm, ")"))
 //
-}
+|DTVf1un(f1) =>
+(
+ prints("DTVf1un(", f1, ")"))
+|DTVf2un(f2) =>
+(
+ prints("DTVf2un(", f2, ")"))
+|DTVf3un(f3) =>
+(
+ prints("DTVf3un(", f3, ")"))
+|DTVfxun(fx) =>
+(
+ prints("DTVfxun(", fx, ")"))
+//
+end//let//end-of-[ auxpr(dtv) ]
+//
+}//where//end(g_print<dtval>(dtv)]
 //
 (* ****** ****** *)
 //
@@ -299,9 +326,44 @@ let val-DTVfxun(fx) = dtv in fx end
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#typedef myobj(*void*) = hmap(dtval)
+#typedef
+myobj(*void*) = hmap(dtval)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<>
+myobj_get$at
+(obj
+:myobj, k0: strn): dtval
+#extern
+fun<>
+myobj_get$at$opt
+(obj
+:myobj, k0: strn): optn_vt(dtval)
+//
+#impltmp
+<(*tmp*)>
+myobj_get$at
+ (obj, k0) =
+(
+case+ opt of
+| ~optn_vt_cons(dtv) => dtv
+) where
+{
+val opt =
+myobj_get$at$opt<>(obj, k0) }
+//
+#impltmp
+<(*tmp*)>
+myobj_get$at$opt
+ (obj, k0) =
+(
+  hmap_search$opt<>(obj, k0))
+//
+#symload [] with myobj_get$at of 1000
+//
 (* ****** ****** *)
 //
 #extern
