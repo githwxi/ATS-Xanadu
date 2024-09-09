@@ -15,10 +15,23 @@ Sat 07 Sep 2024 08:37:22 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstype
+#abstbox
 hmap_tbox(a:t0)
 #typedef
 hmap(a:t0) = hmap_tbox(a)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+<a:t0>
+hmap_strmize
+( map
+: hmap(a)): strm_vt@(strn,a)
+//
+#symload
+strmize with hmap_strmize of 1000
 //
 (* ****** ****** *)
 //
@@ -32,9 +45,58 @@ hmap_make_nil((*0*)): hmap(a)
 #extern
 fun
 <a:t0>
+hmap_insert$opt
+( map
+: hmap(a)
+, k0: strn, x0: a): optn_vt(a)
+//
+(* ****** ****** *)
+//
+#extern
+fun
+<a:t0>
 hmap_insert$new
 ( map
 : hmap(a), k0: strn, x0: a): void
+//
+#impltmp
+< a: t0 >
+hmap_insert$new
+ (map, k0, x0) =
+(
+case+ opt of
+| ~optn_vt_nil() => ()
+) where
+{
+val opt =
+(
+  hmap_insert$opt<a>(map, k0, x0))
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+{ a: t0 }
+g_ptype
+<hmap(a)>() =
+(
+strn_print"hmap(";
+g_ptype<a>();strn_print")")
+//
+#impltmp
+{ a: t0 }
+g_print
+<hmap(a)>(map) =
+(
+gseq_print0
+<strm_vt(kx)><kx>
+(hmap_strmize<a>(map)))
+where
+{
+#typedef kx = (strn, a)
+#vwtpdef kxs = strm_vt(kx)
+#impltmp
+gseq_beg<kxs><kx>() = "hmap(" }
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -63,7 +125,7 @@ datatype dtval =
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #extern
 fun<>
 dtval_un_sint
@@ -106,6 +168,59 @@ dtval_un_f2un
 fun<>
 dtval_un_fxun
 (dtv: dtval): (a1sz(dtval))->dtval
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_ptype
+< dtval >
+( (*0*) ) = strn_print<>("dtval")
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+< dtval >
+(  dtv  ) =
+(
+praux(dtv)) where
+{
+//
+fun
+praux
+(dtv: dtval): void =
+let
+//
+#impltmp
+g_print<dtval> = praux
+//
+in//let
+case+ dtv of
+//
+|DTVunit(ut) =>
+(
+ prints("DTVunit(", ")"))
+//
+|DTVsint(i0) =>
+(
+ prints("DTVsint(", i0, ")"))
+|DTVbool(b0) =>
+(
+ prints("DTVbool(", b0, ")"))
+|DTVchar(c0) =>
+(
+ prints("DTVchar(", c0, ")"))
+|DTVdflt(f0) =>
+(
+ prints("DTVdflt(", f0, ")"))
+|DTVstrn(s0) =>
+(
+ prints("DTVstrn(", s0, ")"))
+//
+end//let//end-of-[praux(dtv)]
+//
+}
 //
 (* ****** ****** *)
 //
@@ -191,6 +306,17 @@ let val-DTVfxun(fx) = dtv in fx end
 //
 #extern
 fun<>
+myobj_make_nil(): myobj
+//
+#impltmp
+<(*tmp*)>
+myobj_make_nil
+ ( (*void*) ) = hmap_make_nil<>()
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
 myobj_fmake_fwork
 ( fwork
 : ((strn, dtval)->void)->void): myobj
@@ -200,7 +326,8 @@ myobj_fmake_fwork
 myobj_fmake_fwork
   (fwork) =
 let
-val obj = hmap_make_nil()
+val obj =
+myobj_make_nil<>((*0*))
 in//let
 fwork(
 lam(k0, x0) =>
