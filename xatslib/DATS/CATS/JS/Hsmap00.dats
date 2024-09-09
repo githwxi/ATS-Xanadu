@@ -235,8 +235,8 @@ jshsmap_search$tst
 //
 #extern
 fun<>
-jshsmap_search$cpy
- {k:t0}{x:vt}
+jshsmap_search$opt
+ {k:t0}{x:t0} // HX: not(x:vt)
 (map: jsm0(k,x), key: k): optn_vt(x)
 //
 (* ****** ****** *)
@@ -516,6 +516,27 @@ XATS2JS_jshsmap_search$tst
  {k:t0}{x:vt}
 (map: jsm0(k,x), key: k): bool = $extnam()
 }
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jshsmap_search$opt
+  (map, key) =
+let
+val
+test =
+jshsmap_search$tst<>(map, key)
+in//let
+if
+test
+then
+optn_vt_cons
+(
+UN_jshsmap_get$at$raw<>(map, key))
+else
+(optn_vt_nil(      (*void*)      ))
+end//let//end-of-[jshsmap_search$opt]
 //
 (* ****** ****** *)
 (* ****** ****** *)
