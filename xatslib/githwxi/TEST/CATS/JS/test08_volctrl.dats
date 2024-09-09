@@ -80,7 +80,7 @@ lam(work) =>
 work
 ("Date"    , f0_strn(row[0]));
 work
-("Volume"  , f0_dflt(row[6]));
+("Volume"  , f0_sint(row[6]));
 work
 ("AdjClose", f0_dflt(row[5])))
 ) where
@@ -88,6 +88,10 @@ work
 fun
 f0_strn
 (rep: strn): dtval = DTVstrn(rep)
+fun
+f0_sint
+(rep: strn): dtval =
+DTVsint(head0(g_parse$opt<sint>(rep)))
 fun
 f0_dflt
 (rep: strn): dtval =
