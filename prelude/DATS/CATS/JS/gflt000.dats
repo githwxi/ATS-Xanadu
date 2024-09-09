@@ -26,84 +26,34 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(*
-Fri 26 Jul 2024 09:27:30 AM EDT
-*)
+Mon 09 Sep 2024 06:12:39 PM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
-sflt_print(sf: sflt): void
-fun<>
-dflt_print(df: dflt): void
+(*
+HX-2024-09-05:
+Mon 09 Sep 2024 06:13:03 PM EDT
+*)
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun<>
-dflt_lt_dflt
-(f1: dflt, f2: dflt): bool
-fun<>
-dflt_gt_dflt
-(f1: dflt, f2: dflt): bool
-fun<>
-dflt_eq_dflt
-(f1: dflt, f2: dflt): bool
-//
-#symload < with dflt_lt_dflt of 1000
-#symload > with dflt_gt_dflt of 1000
-#symload = with dflt_eq_dflt of 1000
-//
-fun<>
-dflt_lte_dflt
-(f1: dflt, f2: dflt): bool
-fun<>
-dflt_gte_dflt
-(f1: dflt, f2: dflt): bool
-fun<>
-dflt_neq_dflt
-(f1: dflt, f2: dflt): bool
-//
-#symload <= with dflt_lte_dflt of 1000
-#symload >= with dflt_gte_dflt of 1000
-#symload != with dflt_neq_dflt of 1000
-//
-(* ****** ****** *)
-//
-fun<>
-dflt_cmp_dflt(f1: dflt, f2: dflt): sint
-#symload cmp with dflt_cmp_dflt of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun<>
-dflt_add_dflt
-(f1: dflt, f2: dflt): dflt
-fun<>
-dflt_sub_dflt
-(f1: dflt, f2: dflt): dflt
-fun<>
-dflt_mul_dflt
-(f1: dflt, f2: dflt): dflt
-fun<>
-dflt_div_dflt
-(f1: dflt, f2: dflt): dflt
-fun<>
-dflt_mod_dflt
-(f1: dflt, f2: dflt): dflt
-//
-#symload + with dflt_add_dflt of 1000
-#symload - with dflt_sub_dflt of 1000
-#symload * with dflt_mul_dflt of 1000
-#symload / with dflt_div_dflt of 1000
-#symload % with dflt_mod_dflt of 1000
+#impltmp
+<(*tmp*)>
+dflt_print
+  ( f0 ) =
+(
+XATS2JS_dflt_print
+  ( f0 )) where
+{
+#extern
+fun
+XATS2JS_dflt_print(f0: dflt): void = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -111,4 +61,4 @@ dflt_mod_dflt
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gflt000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_gint000.dats] *)

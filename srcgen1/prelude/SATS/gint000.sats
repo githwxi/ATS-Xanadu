@@ -309,7 +309,7 @@ gint_mod_sint_sint
 , y: sint(j)): sint(mod(i,j)) // = $ext()
 //
 (* ****** ****** *)
-
+//
 fun<>
 gint_add_uint_uint
 {i,j:int}

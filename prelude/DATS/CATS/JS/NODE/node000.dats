@@ -74,6 +74,18 @@ XATS2JS_NODE_char_print(b0: char): void = $extnam()
 (* ****** ****** *)
 //
 #impltmp
+dflt_print<> =
+XATS2JS_NODE_dflt_print
+where
+{
+#extern
+fun
+XATS2JS_NODE_dflt_print(f0: dflt): void = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
 strn_print<> =
 XATS2JS_NODE_strn_print
 where

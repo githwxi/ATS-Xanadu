@@ -30,80 +30,70 @@
 (*
 Author: Hongwei Xi
 (*
-Fri 26 Jul 2024 09:27:30 AM EDT
+Mon 09 Sep 2024 06:17:35 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef ni = nint
+#typedef si = sint
+#typedef df = dflt
+(* ****** ****** *)
+(* ****** ****** *)
+#impltmp
+g_0<df>() = (0.0)
+#impltmp
+g_1<df>() = (1.0)
+(* ****** ****** *)
+(* ****** ****** *)
 //
-fun<>
-sflt_print(sf: sflt): void
-fun<>
-dflt_print(df: dflt): void
+#impltmp
+g_lt<df> = dflt_lt_dflt<>
+#impltmp
+g_gt<df> = dflt_gt_dflt<>
+#impltmp
+g_eq<df> = dflt_eq_dflt<>
+//
+#impltmp
+g_lte<df> = dflt_lte_dflt<>
+#impltmp
+g_gte<df> = dflt_gte_dflt<>
+#impltmp
+g_neq<df> = dflt_neq_dflt<>
+//
+#impltmp
+g_cmp<df> = dflt_cmp_dflt<>
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
-dflt_lt_dflt
-(f1: dflt, f2: dflt): bool
-fun<>
-dflt_gt_dflt
-(f1: dflt, f2: dflt): bool
-fun<>
-dflt_eq_dflt
-(f1: dflt, f2: dflt): bool
-//
-#symload < with dflt_lt_dflt of 1000
-#symload > with dflt_gt_dflt of 1000
-#symload = with dflt_eq_dflt of 1000
-//
-fun<>
-dflt_lte_dflt
-(f1: dflt, f2: dflt): bool
-fun<>
-dflt_gte_dflt
-(f1: dflt, f2: dflt): bool
-fun<>
-dflt_neq_dflt
-(f1: dflt, f2: dflt): bool
-//
-#symload <= with dflt_lte_dflt of 1000
-#symload >= with dflt_gte_dflt of 1000
-#symload != with dflt_neq_dflt of 1000
-//
-(* ****** ****** *)
-//
-fun<>
-dflt_cmp_dflt(f1: dflt, f2: dflt): sint
-#symload cmp with dflt_cmp_dflt of 1000
+#impltmp
+g_add<df> = dflt_add_dflt<>
+#impltmp
+g_sub<df> = dflt_sub_dflt<>
+#impltmp
+g_mul<df> = dflt_mul_dflt<>
+#impltmp
+g_div<df> = dflt_div_dflt<>
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
-dflt_add_dflt
-(f1: dflt, f2: dflt): dflt
-fun<>
-dflt_sub_dflt
-(f1: dflt, f2: dflt): dflt
-fun<>
-dflt_mul_dflt
-(f1: dflt, f2: dflt): dflt
-fun<>
-dflt_div_dflt
-(f1: dflt, f2: dflt): dflt
-fun<>
-dflt_mod_dflt
-(f1: dflt, f2: dflt): dflt
+#impltmp
+g_print<df> = dflt_print<>
 //
-#symload + with dflt_add_dflt of 1000
-#symload - with dflt_sub_dflt of 1000
-#symload * with dflt_mul_dflt of 1000
-#symload / with dflt_div_dflt of 1000
-#symload % with dflt_mod_dflt of 1000
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+dflt_neg( f1 ) = (0.0 - f1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -111,4 +101,4 @@ dflt_mod_dflt
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gflt000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_gflt000.dats] *)

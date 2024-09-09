@@ -71,27 +71,26 @@ val (  ) = prints("hdr0 = ", hdr0, "\n")
 row = a1sz(strn)
 //
 fun
-myrow_opt$make
-( opt
-: optn_vt(row)
-) : myobj =
+myrow_make
+(row: row): myobj =
 myobj_fmake_fwork
 (
 lam(work) =>
 (
-case+ opt of
-| ~
-optn_vt_nil() => ()
-| ~
-optn_vt_cons(row) =>
-(
-work("Date"    , dflt(row[0]));
-work("AdjClose", dflt(row[5])))
-)
+work
+("Date"    , f0_strn(row[0]));
+work
+("Volume"  , f0_dflt(row[6]));
+work
+("AdjClose", f0_dflt(row[5])))
 ) where
 {
 fun
-dflt(rep: strn): dtval =
+f0_strn
+(rep: strn): dtval = DTVstrn(rep)
+fun
+f0_dflt
+(rep: strn): dtval =
 DTVdflt(head0(g_parse$opt<dflt>(rep)))
 }
 //
@@ -107,7 +106,13 @@ lam(work) =>
 strm_vt_foritm0_f1un
 (
 opts,
-lam(opt) => work(myrow_opt$make(opt))))
+lam(opt) =>
+(
+case+ opt of
+| ~
+optn_vt_nil() => ()
+| ~
+optn_vt_cons(row) => work(myrow_make(row)))))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -115,6 +120,9 @@ lam(opt) => work(myrow_opt$make(opt))))
 val rows = myrows_opts$make(opts)
 val (  ) =
 prints("|rows| = ", length(rows), "\n")
+//
+val (  ) = prints("rows[0] = ", rows[0], "\n")
+val (  ) = prints("rows[1] = ", rows[1], "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

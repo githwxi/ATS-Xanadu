@@ -53,6 +53,11 @@ gflt_ui_dflt(uint): dflt
 (* ****** ****** *)
 //
 fun<>
+sflt_print(sf: sflt): void
+fun<>
+dflt_print(df: dflt): void
+//
+fun<>
 gflt_print_sflt( sflt ): void
 fun<>
 gflt_print_dflt( dflt ): void
@@ -60,11 +65,21 @@ gflt_print_dflt( dflt ): void
 (* ****** ****** *)
 //
 fun<>
+sflt_neg( f0: sflt ): sflt
+fun<>
+dflt_neg( f0: dflt ): dflt
+//
+fun<>
 gflt_neg_sflt( f0: sflt ): sflt
 fun<>
 gflt_neg_dflt( f0: dflt ): dflt
 //
 (* ****** ****** *)
+//
+fun<>
+sflt_abs( f0: sflt ): sflt
+fun<>
+dflt_abs( f0: dflt ): dflt
 //
 fun<>
 gflt_abs_sflt( f0: sflt ): sflt
@@ -84,6 +99,7 @@ fun<>
 gflt_pre_dflt( f0: dflt ): dflt
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun<>
 gflt_lt_sflt_sflt(sflt, sflt): bool
@@ -100,6 +116,30 @@ fun<>
 gflt_neq_sflt_sflt(sflt, sflt): bool
 //
 (* ****** ****** *)
+//
+fun<>
+dflt_lt_dflt
+(f1: dflt, f2: dflt): bool
+fun<>
+dflt_gt_dflt
+(f1: dflt, f2: dflt): bool
+fun<>
+dflt_eq_dflt
+(f1: dflt, f2: dflt): bool
+//
+fun<>
+dflt_lte_dflt
+(f1: dflt, f2: dflt): bool
+fun<>
+dflt_gte_dflt
+(f1: dflt, f2: dflt): bool
+fun<>
+dflt_neq_dflt
+(f1: dflt, f2: dflt): bool
+//
+fun<>
+dflt_cmp_dflt
+(f1: dflt, f2: dflt): sint
 //
 fun<>
 gflt_lt_dflt_dflt(dflt, dflt): bool
@@ -124,6 +164,7 @@ fun<>
 gflt_cmp_dflt_dflt(dflt, dflt): sint
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun<>
 gflt_add_sflt_sflt(sflt, sflt): sflt
@@ -139,6 +180,22 @@ gflt_mod_sflt_sflt(sflt, sflt): sflt
 (* ****** ****** *)
 //
 fun<>
+dflt_add_dflt
+(f1: dflt, f2: dflt): dflt
+fun<>
+dflt_sub_dflt
+(f1: dflt, f2: dflt): dflt
+fun<>
+dflt_mul_dflt
+(f1: dflt, f2: dflt): dflt
+fun<>
+dflt_div_dflt
+(f1: dflt, f2: dflt): dflt
+fun<>
+dflt_mod_dflt
+(f1: dflt, f2: dflt): dflt
+//
+fun<>
 gflt_add_dflt_dflt(dflt, dflt): dflt
 fun<>
 gflt_sub_dflt_dflt(dflt, dflt): dflt
@@ -149,6 +206,7 @@ gflt_div_dflt_dflt(dflt, dflt): dflt
 fun<>
 gflt_mod_dflt_dflt(dflt, dflt): dflt
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
