@@ -66,6 +66,57 @@ optn_vt_cons(hdr0) = hdr0
 val (  ) = prints("hdr0 = ", hdr0, "\n")
 //
 (* ****** ****** *)
+//
+#typedef
+row = a1sz(strn)
+//
+fun
+myrow_opt$make
+( opt
+: optn_vt(row)
+) : myobj =
+myobj_fmake_fwork
+(
+lam(work) =>
+(
+case+ opt of
+| ~
+optn_vt_nil() => ()
+| ~
+optn_vt_cons(row) =>
+(
+work("Date"    , dflt(row[0]));
+work("AdjClose", dflt(row[5])))
+)
+) where
+{
+fun
+dflt(rep: strn): dtval =
+DTVdflt(head0(g_parse$opt<dflt>(rep)))
+}
+//
+(* ****** ****** *)
+//
+fun
+myrows_opts$make
+( opts
+: strm_vt(
+  optn_vt(row))): a1sz(myobj) =
+a1sz_fmake_fwork(
+lam(work) =>
+strm_vt_foritm0_f1un
+(
+opts,
+lam(opt) => work(myrow_opt$make(opt))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val rows = myrows_opts$make(opts)
+val (  ) =
+prints("|rows| = ", length(rows), "\n")
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

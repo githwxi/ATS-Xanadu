@@ -80,7 +80,7 @@ gseq_end<xs><x0>() = "\n)"
 gseq_beg<xs><x0>() = "strm_vt(\n"
 //
 #impltmp
-gseq_prlen<xs><x0>() = 10
+gseq_prlen<xs><x0>() = (20)
 //
 in//local
 val () = print0s("opts = ", opts, "\n")
