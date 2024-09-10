@@ -129,8 +129,10 @@ fun
 list_make_ncpy
 {n:nat}
 (n0: sint(n), x0: a): list(a, n)
+(*
 #symload
 list with list_make_ncpy of 1000
+*)
 #symload
 list_ncpy with list_make_ncpy//of 1000
 //

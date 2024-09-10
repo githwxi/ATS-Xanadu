@@ -58,12 +58,13 @@ prints("fact(10) = ", fact(10), "\n")
 (* ****** ****** *)
 //
 val xs =
-list(10, lam(i) => i*i)
+list
+(10, lam(i:nint) => i*i)
 val ys = a1sz_make_list(xs)
 val () =
 prints("ys(", type(ys), ") = ", ys, "\n")
 val () = (
-GSEQ(ys).foritm(lam(x) => prints(x));print("\n"))
+GSEQ(ys).foritm(lam(x) => print(x));print("\n"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
