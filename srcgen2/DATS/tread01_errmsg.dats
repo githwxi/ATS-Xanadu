@@ -53,6 +53,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
+#staload "./../SATS/preadx0.sats"
 #staload "./../SATS/tread01.sats"
 (* ****** ****** *)
 #define FPEMSG_ERRVL 2
@@ -167,8 +168,9 @@ if
 >FPEMSG_ERRVL) then () else
 let
 val loc0 = g1e0.lctn() in
-printsln
-("TREAD01-ERROR:",loc0,":",g1e0)
+printsln();
+printsln("\
+TREAD01-ERROR:",loc0,":",g1e0)
 end
 )
 | _(* otherwise *) => (  (*skipped*)  )
@@ -1267,17 +1269,32 @@ val () =
   d1cstdclist_fpemsg(out, d1cs)
 endlet // end-of-(D1Cdynconst(_,_,_))
 //
-| D1Cnone0() => ( (*void*) )
-| D1Cnone1(d0cl) => ( (*void*) )
+(* ****** ****** *)
+//
+|D1Cnone0() => ((*void*))
+//
+|D1Cnone1(d0cl) =>
+(
+  d0ecl_fpemsg(out, d0cl))
 //
 |
-D1Cerrck(_,_) => d1ecl_fpemsg(out, dcl)
+D1Cerrck
+(lvl1,dcl1) => d1ecl_fpemsg(out, dcl)
+//
+(* ****** ****** *)
 //
 end where
 {
 (*
-  val () = prerrsln
-  ("d1ecl_fpemsg:auxmain: dcl = ", dcl)
+//
+val
+loc = dcl.lctn()
+//
+val () = prerrsln
+("d1ecl_fpemsg:auxmain: loc = ", loc)
+val () = prerrsln
+("d1ecl_fpemsg:auxmain: dcl = ", dcl)
+//
 *)
 }(*where*) // end-of-[auxmain( out,dcl )]
 

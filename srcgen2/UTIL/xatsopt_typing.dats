@@ -110,37 +110,39 @@ mymain_work
 (fpth: strn): void =
 let
 //
-val (  ) =
+val ( ) =
 let
 //
-val out = g_stderr((*0*))
+(*
+val (   ) =
+prerrsln("dpar3 = ", dpar3)
+*)
 //
 in//let
 //
-(
 prerrsln
-("FPERR20_D2PARSED:");
-fperr20_d2parsed(out, dpar))
+("FPERR30_D3PARSED:");
+fperr30_d3parsed(out, dpar3)
 //
 end//let
 //
 end where
 {
 //
-val dpar =
+val out =
+(
+  g_stderr((*0*)))
+//
+val dpar3 =
 if
 (
 fpath_satsq(fpth))
 then
 (
-  d2parsed_of_filsats(fpth))//then
+  d3parsed_of_filsats(fpth))//then
 else
 (
-  d2parsed_of_fildats(fpth))//else
-//
-val () =
-(
-  prerrsln("dpar(20) = ", dpar))
+  d3parsed_of_fildats(fpth))//else
 //
 }(*where*)//end-of-[mymain_work(fpth)]
 //
