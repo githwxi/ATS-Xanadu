@@ -45,6 +45,11 @@ detop1{a0:vt}(x0: ?a0): (a0)
 (* ****** ****** *)
 //
 fcast
+castxy{ax:t0}{ay:t0}(ax):(ay)
+fcast
+castyx{ay:t0}{ax:t0}(ax):(ay)
+//
+fcast
 cast01{a0:t0}{a1:t0}(a0):(a1)
 fcast
 cast10{a1:t0}{a0:t0}(a0):(a1)
@@ -57,6 +62,13 @@ fcast
 enlinear{a0:vt}(?!a0): (  a0  )
 //
 (* ****** ****** *)
+//
+fcast
+castxy0
+{ax:vt}{ay:vt}(ax):(ay)
+fcast
+castyx0
+{ay:vt}{ax:vt}(ax):(ay)
 //
 fcast
 castlin01{a0:vt}{a1:vt}(a0):(a1)

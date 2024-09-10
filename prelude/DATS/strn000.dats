@@ -87,6 +87,15 @@ g_ptype
 #impltmp
 g_print<strn> = strn_print<>
 //
+(*
+#impltmp
+g_print
+<strn>(cs) =
+(
+strn_print("\"");
+strn_print(cs);strn_print("\""))
+*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -325,23 +325,23 @@ xintenv_free_dapp
 (* ****** ****** *)
 //
 fun
-xintenv_d2crch_opt
+xintenv_d2crch$opt
 ( env0:
 ! xintenv
 , d2c0: d2cst ) : optn_vt(irval)
 fun
-xintenv_d2vrch_opt
+xintenv_d2vrch$opt
 ( env0:
 ! xintenv
 , d2v0: d2var ) : optn_vt(irval)
 //
 fun
-xintenv_d2cins_any
+xintenv_d2cins$any
 ( env0:
 ! xintenv
 , d2c0: d2cst, irv1: irval): void
 fun
-xintenv_d2vins_any
+xintenv_d2vins$any
 ( env0:
 ! xintenv
 , d2v0: d2var, irv1: irval): void
