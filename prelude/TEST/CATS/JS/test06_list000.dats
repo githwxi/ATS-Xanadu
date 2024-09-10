@@ -25,7 +25,8 @@ For testing prelude/JS!
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val ns = list(10, 1)
+val ns =
+list_ncpy(10, 1)
 val () =
 prints("ns = ", ns, "\n")
 val () = prints
