@@ -268,7 +268,7 @@ the_irvar_search(d2v0)
 optn_cons(irv0) => irv0) where
 {
 val opt0 =
-xintenv_d2vrch_opt(env0, d2v0) }
+xintenv_d2vrch$opt(env0, d2v0) }
 //
 end(*let*)//end-of-[f0_var(env0,ire0)]
 //
@@ -326,7 +326,7 @@ the_ircst_search(d2c0)
 optn_cons(irv0) => irv0) where
 {
 val opt0 =
-xintenv_d2crch_opt(env0, d2c0) }
+xintenv_d2crch$opt(env0, d2c0) }
 //
 end(*let*)//end-of-[f0_cst(env0,ire0)]
 //
@@ -657,7 +657,7 @@ case- irv1 of
 case- lab1 of
 | LABint(idx1) =>
 (
-  a1rsz_get_at(irvs, idx1) ) )
+  a1rsz_get$at(irvs, idx1) ) )
 //
 end(*let*)//end-of-[f0_pcon(env0,ire0)]
 //
@@ -698,7 +698,7 @@ case- irv1 of
 case- lab1 of
 | LABint(idx1) =>
 (
-  a1rsz_get_at(irvs, idx1) )
+  a1rsz_get$at(irvs, idx1) )
 )(* end-of-[IRVtup0(irvs)] *)
 //
 |IRVtup1
@@ -707,7 +707,7 @@ case- lab1 of
 case- lab1 of
 | LABint(idx1) =>
 (
-  a1rsz_get_at(irvs, idx1) )
+  a1rsz_get$at(irvs, idx1) )
 )(* end-of-[IRVtup1(tknd,irvs)] *)
 //
 |IRVrcd2
@@ -724,7 +724,7 @@ where
 val tmp1 = symbl_get_stmp(sym1)
 val opt1 =
 (
-  tmpmap_search_opt(livs, tmp1))
+  tmpmap_search$opt(livs, tmp1))
 }
 )(* end-of-[IRVrcd2(tknd,livs)] *)
 //
