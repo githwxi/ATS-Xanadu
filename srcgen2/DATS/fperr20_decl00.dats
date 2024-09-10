@@ -52,7 +52,11 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+#staload "./../SATS/tread01.sats"
+#staload "./../SATS/tread12.sats"
+(* ****** ****** *)
 #staload "./../SATS/fperr20.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #define FPERR20_ERRVL 2
 (* ****** ****** *)
@@ -73,13 +77,13 @@ local
 fun
 auxmain
 ( out: FILR
-, dcl: d2ecl): void =
+, dcl0: d2ecl): void =
 let
 #impltmp
 g_print$out<>() = out
 in//let
 case+
-dcl.node() of
+dcl0.node() of
 //
 |
 D2Cstatic
@@ -193,26 +197,33 @@ val () = fperr20_s2cstlst(s2cs)
 *)
 endlet // end of [ D2Cdatatype(...) ]
 //
-| D2Cnone0() => ( (*void*) )
-| D2Cnone1(d1cl) => ( (*void*) )
-| D2Cnone2(d2cl) => ( (*void*) )
-|
-D2Cerrck(_,_) => fperr20_d2ecl(out, dcl)
+(* ****** ****** *)
+//
+|D2Cnone0 _ => ( (*void*) )
+|D2Cnone1
+(  d1cl  ) => d1ecl_fpemsg(out, d1cl)
+|D2Cnone2
+(  d2cl  ) => fperr20_d2ecl(out, d2cl)
+//
+|D2Cerrck
+(lvl1,dcl1) => fperr20_d2ecl(out, dcl0)
+//
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
 let
-//
-  val
-  loc = dcl.lctn()
-  val () = prerrsln
-  ("fperr20_d2ecl: auxmain: loc = ", loc)
-  val () = prerrsln
-  ("fperr20_d2ecl: auxmain: dcl = ", dcl)
-//
+val
+loc0 = dcl0.lctn()
+val () = prerrsln
+("fperr20_d2ecl: auxmain: loc0 = ", loc0)
+val () = prerrsln
+("fperr20_d2ecl: auxmain: dcl0 = ", dcl0)
 endlet
 //
-end (*let*) // end-of-[ auxmain(out, dcl) ]
+(* ****** ****** *)
+//
+end (*let*) // end-of-[ auxmain(out, dcl0) ]
 
 (* ****** ****** *)
 in(* in-of-local *)
@@ -255,8 +266,9 @@ if
 >FPERR20_ERRVL) then () else
 let
 val loc0 = dcl0.lctn() in
-printsln
-("FPERR20-ERROR:",loc0,":",dcl0)
+printsln();
+printsln("\
+FPERR20-ERROR:", loc0, ":", dcl0)
 end
 )
 //

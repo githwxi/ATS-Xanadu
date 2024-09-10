@@ -207,10 +207,8 @@ then ((*void*)) else
 let
 val loc0 = d2p0.lctn()
 in//let
-(*
-prerrsln
-("FPERR20-ERROR:",loc0,":",d2p0)
-*)
+printsln("\
+FPERR20-ERROR:", loc0, ":", d2p0)
 end//let
 )
 | _(* otherwise *) => (  (* skipped *)  )
@@ -519,10 +517,11 @@ if
 then ((*void*)) else
 let
 val
-loc0 = d2e0.lctn() in // let
-printsln
-("FPERR20-ERROR:",loc0,":",d2e0)
-end // let // else // end-of-[if]
+loc0 = d2e0.lctn()
+in//let
+printsln("\
+FPERR20-ERROR:", loc0, ":", d2e0)
+end//let
 //
 ) (* end-of-[D2Eerrck(lvl, d2e1)] *)
 | // non-D2Eerrck // ... // ... // ...

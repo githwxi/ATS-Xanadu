@@ -53,6 +53,7 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
+#staload "./../SATS/fperr20.sats"
 #staload "./../SATS/fperr30.sats"
 (* ****** ****** *)
 #define FPERR30_ERRVL 2
@@ -74,7 +75,7 @@ local
 fun
 auxmain
 ( out: FILR
-, dcl: d3ecl): void =
+, dcl0: d3ecl): void =
 let
 //
 #impltmp
@@ -83,7 +84,7 @@ g_print$out<>() = out
 in//let
 //
 case+
-dcl.node() of
+dcl0.node() of
 //
 |D3Cstatic
 (tknd, dcl1) =>
@@ -189,26 +190,34 @@ val () = fperr30_d3exp(out, dexp)
 //
 endlet//end of [ D3Cimplmnt0(...) ]
 //
-|D3Cnone0 _ => ( (*void*) )
-|D3Cnone1 _ => () | D3Cnone2 _ => ()
+(* ****** ****** *)
 //
-|
-D3Cerrck(_,_) => fperr30_d3ecl(out, dcl)
+|D3Cnone0 _ => ( (*void*) )
+|D3Cnone1
+(  d2cl  ) => fperr20_d2ecl(out, d2cl)
+|D3Cnone2
+(  d3cl  ) => fperr30_d3ecl(out, d3cl)
+//
+|D3Cerrck
+(lvl1,dcl1) => fperr30_d3ecl(out, dcl0)
+//
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
 let
+val
+loc0 = dcl0.lctn()
 //
-  val
-  loc = dcl.lctn()
-  val () = prerrsln
-  ("fperr30_d3ecl: auxmain: loc = ", loc)
-  val () = prerrsln
-  ("fperr30_d3ecl: auxmain: dcl = ", dcl)
+val () = prerrsln
+("fperr30_d3ecl: auxmain: loc0 = ", loc0)
+val () = prerrsln
+("fperr30_d3ecl: auxmain: dcl0 = ", dcl0)
+endlet
 //
-end (*let*) // end-of-[ (* otherwise *) ]
+(* ****** ****** *)
 //
-end (*let*) // end-of-[ auxmain(out, dcl) ]
+end (*let*) // end-of-[ auxmain(out, dcl0) ]
 
 (* ****** ****** *)
 in(* in-of-local *)
@@ -228,7 +237,7 @@ val loc0 = dcl0.lctn()
 in//let
 (*
 prerrsln
-("fperr30_d3pat: loc0 = ", loc0)
+("fperr30_d3ecl: loc0 = ", loc0)
 *)
 end//let
 (*
@@ -245,14 +254,17 @@ dcl0.node() of
 |
 D3Cerrck(lvl, d3cl)  =>
 (
-auxmain( out, d3cl );
+(
+auxmain(out, d3cl));
 if
 (lvl
->FPERR30_ERRVL) then () else
+>FPERR30_ERRVL)
+then ((*void*)) else
 let
 val loc0 = dcl0.lctn() in
-printsln
-("FPERR30-ERROR:",loc0,":",dcl0)
+printsln();
+printsln("\
+FPERR30-ERROR:", loc0, ":", dcl0)
 end
 )
 //

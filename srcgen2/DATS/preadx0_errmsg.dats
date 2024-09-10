@@ -259,8 +259,10 @@ case+ id0 of
 I0DNTsome _ => ()
 |
 I0DNTnone(tok) =>
-printsln
-("PREADX0-ERROR:",tok.lctn(),":",id0)
+let
+val loc = tok.lctn() in
+printsln("\
+PREADX0-ERROR:", loc, ":", id0) end
 end (*let*)//end-of-[i0dnt_fpemsg(out,id0)]
 //
 (* ****** ****** *)
@@ -277,8 +279,10 @@ case+ lab of
 I0DNTsome _ => ()
 |
 I0DNTnone(tok) =>
-printsln
-("PREADX0-ERROR:",tok.lctn(),":",lab)
+let
+val loc = tok.lctn() in
+printsln("\
+PREADX0-ERROR:", loc, ":", lab) end
 end (*let*)//end-of-[l0abl_fpemsg(out,lab)]
 //
 (* ****** ****** *)
@@ -295,8 +299,10 @@ case+ int of
 T0INTsome _ => ()
 |
 T0INTnone(tok) =>
-printsln
-("PREADX0-ERROR:",tok.lctn(),":",int)
+let
+val loc = tok.lctn() in
+printsln("\
+PREADX0-ERROR:", loc, ":", int) end
 end (*let*)//end-of-[t0int_fpemsg(out,int)]
 //
 #implfun
@@ -368,6 +374,7 @@ printsln
 ("PREADX0-ERROR:",loc,":",g0e)
 *)
 endlet // end of [G0Eerrck(lvl,ge1)]
+//
 | _(* otherwise *) => ( (*void*) )
 //
 end(*let*)//end-of(g0exp_fpemsg(out,g0e))
@@ -1784,8 +1791,10 @@ dcl.node() of
 D0Cerrck(lvl, d1c)  =>
 (
 auxmain( out, d1c );
-printsln
-("PREADX0-ERROR:",dcl.lctn(),":",dcl))
+(
+printsln();
+printsln("\
+PREADX0-ERROR:",dcl.lctn(),":",dcl)))
 //
 | _(* otherwise *) => ((*void*))
 end (*let*)//end-of(d0ecl_fpemsg(out,dcl))
@@ -2097,7 +2106,7 @@ T_RPAREN() => ((*void*))
 |
 _(*non-T_RPAREN*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(), ":",tok0)
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 end (*let*) // end of [token_RPAREN_fpemsg]
 //
 #implfun
@@ -2439,8 +2448,12 @@ case+
 tqa.node() of
 |
 T0QAGnone(tok) =>
-prints
-("PREADX0-ERROR:",tqa.lctn(),":",tqa)
+let
+val loc = tqa.lctn()
+in//let
+printsln
+("PREADX0-ERROR:", loc, ":", tqa)
+end//let
 |
 T0QAGsome
 (tbeg,q0as,tend) =>
