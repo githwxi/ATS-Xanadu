@@ -635,7 +635,7 @@ IRPARSED
 {
 (*
 val () =
-prerrln
+prerrsln
 ("irparsed_make_args:nerror=",nerror)
 *)
 } (*where*) // end-of-[irparsed_make_args]

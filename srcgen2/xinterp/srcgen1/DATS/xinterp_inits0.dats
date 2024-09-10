@@ -80,7 +80,7 @@ f0_d2ecl
 let
 //
 val () =
-prerrln
+prerrsln
 ("f0_d2ecl: d2cl = ", d2cl)
 //
 in//let
@@ -156,11 +156,11 @@ XATSHOME =
 the_XATSHOME()
 //
 val dpar =
-d2parsed_from_fpath
+trans02_from_fpath
 (
-1//stadyn
-,
-XATSHOME ^ "/srcgen1/prelude/HATS/CATS/Xint/prelude_dats.hats")
+1(*dats*),
+XATSHOME ^
+"/srcgen1/prelude/HATS/CATS/Xint/prelude_dats.hats")
 val dopt =
 d2parsed_get_parsed(dpar)
 //
@@ -224,7 +224,7 @@ end (* end of [D2ITMcst] *)
 end where
 {
 val () =
-prerrln("the_d2cst_find: name = ", name)
+prerrsln("the_d2cst_find: name = ", name)
 } (*where*)//end-of-[the_d2cst_find(...)]
 //
 (* ****** ****** *)
@@ -458,10 +458,10 @@ let
 //
 (*
 val () =
-prerrln
+prerrsln
 ("gint_add_sint_sint: x = ", x)
 val () =
-prerrln
+prerrsln
 ("gint_add_sint_sint: y = ", y)
 *)
 //
@@ -475,10 +475,10 @@ let
 //
 (*
 val () =
-prerrln
+prerrsln
 ("gint_sub_sint_sint: x = ", x)
 val () =
-prerrln
+prerrsln
 ("gint_sub_sint_sint: y = ", y)
 *)
 //
@@ -565,7 +565,8 @@ local
 (* ****** ****** *)
 //
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
 //
 (* ****** ****** *)
 //
@@ -585,38 +586,38 @@ end (*let*) // end-of(xinterp_strn_vt2t)
 (* ****** ****** *)
 //
 fun
-xinterp_strn_get_at
+xinterp_strn_get$at
   (x: irval
   ,i: irval): irval =
 let
 val-IRVstr(x) = x
 val-IRVint(i) = i in//let
-IRVchr(strn_get_at<>(x, i))
-end (*let*) // end-of(xinterp_strn_get_at)
+IRVchr(strn_get$at<>(x, i))
+end (*let*) // end-of(xinterp_strn_get$at)
 //
 fun
-xinterp_strn_head_opt
+xinterp_strn_head$opt
   (x: irval): irval =
 let
 val-IRVstr(x) = x in//let
-IRVchr(strn_head_opt<>(x))
-end (*let*) // end-of(xinterp_strn_get_at)
+IRVchr(strn_head$opt<>(x))
+end (*let*) // end-of(xinterp_strn_head$opt)
 //
 fun
-xinterp_strn_head_raw
+xinterp_strn_head$raw
   (x: irval): irval =
 let
 val-IRVstr(x) = x in//let
-IRVchr(strn_head_raw<>(x))
-end (*let*) // end-of(xinterp_strn_get_at)
+IRVchr($UN.strn_head$raw<>(x))
+end (*let*) // end-of(xinterp_strn_head$raw)
 //
 fun
-xinterp_strn_tail_raw
+xinterp_strn_tail$raw
   (x: irval): irval =
 let
 val-IRVstr(x) = x in//let
-IRVstr(strn_tail_raw<>(x))
-end (*let*) // end-of(xinterp_strn_get_at)
+IRVstr($UN.strn_tail$raw<>(x))
+end (*let*) // end-of(xinterp_strn_tail$raw)
 //
 (* ****** ****** *)
 //
@@ -634,7 +635,7 @@ end (*let*) // end-of(xinterp_strtmp_vt_alloc)
 (* ****** ****** *)
 //
 fun
-xinterp_strtmp_vt_set_at
+xinterp_strtmp_vt_set$at
   (x: irval
   ,i: irval
   ,c: irval): irval =
@@ -646,8 +647,8 @@ let
 val x =
 $UN.castlin10{strtmp_vt}(x)
 in//let
-strtmp_vt_set_at<>(x, i, c); IRVnil() end
-end (*let*) // end-of(xinterp_strtmp_vt_set_at)
+strtmp_vt_set$at<>(x, i, c); IRVnil() end
+end (*let*) // end-of(xinterp_strtmp_vt_set$at)
 //
 (* ****** ****** *)
 in//local
@@ -664,28 +665,28 @@ val () =
 the_ircst_insval
 (
 the_d2cst_find
-("XINTERP_strn_get_at"),
-IRVfun(firfun2(xinterp_strn_get_at)))//val
+("XINTERP_strn_get$at"),
+IRVfun(firfun2(xinterp_strn_get$at)))//val
 //
 val () =
 the_ircst_insval
 (
 the_d2cst_find
-("XINTERP_strn_head_opt"),
-IRVfun(firfun1(xinterp_strn_head_opt)))//val
+("XINTERP_strn_head$opt"),
+IRVfun(firfun1(xinterp_strn_head$opt)))//val
 val () =
 the_ircst_insval
 (
 the_d2cst_find
-("XINTERP_strn_head_raw"),
-IRVfun(firfun1(xinterp_strn_head_raw)))//val
+("XINTERP_strn_head$raw"),
+IRVfun(firfun1(xinterp_strn_head$raw)))//val
 //
 val () =
 the_ircst_insval
 (
 the_d2cst_find
-("XINTERP_strn_tail_raw"),
-IRVfun(firfun1(xinterp_strn_tail_raw)))//val
+("XINTERP_strn_tail$raw"),
+IRVfun(firfun1(xinterp_strn_tail$raw)))//val
 //
 (* ****** ****** *)
 //
@@ -700,8 +701,8 @@ val () =
 the_ircst_insval
 (
 the_d2cst_find
-("XINTERP_strtmp_vt_set_at"),
-IRVfun(firfun3(xinterp_strtmp_vt_set_at)))//val
+("XINTERP_strtmp_vt_set$at"),
+IRVfun(firfun3(xinterp_strtmp_vt_set$at)))//val
 //
 (* ****** ****** *)
 end (*local*) // end-of- [local(strn_operations)]

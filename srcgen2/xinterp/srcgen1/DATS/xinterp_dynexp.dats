@@ -222,10 +222,10 @@ _(*otherwise*) =>
 val loc0 = ire0.lctn((*void*))
 //
 val (  ) =
-prerrln
+prerrsln
 ( "xinterp_irexp: loc0 = ", loc0 )
 val (  ) =
-prerrln
+prerrsln
 ( "xinterp_irexp: ire0 = ", ire0 ) }
 //
 ) where // end of [case+of(ire0.node)]
@@ -300,10 +300,10 @@ IREcst(d2c0) = ire0.node()
 //
 // (*
 val () =
-prerrln
+prerrsln
 ("f0_cst: d2c0 = ", d2c0)
 val () =
-prerrln
+prerrsln
 ("f0_cst: tknd = ", d2c0.tknd())
 // *)
 //
@@ -479,11 +479,11 @@ $raise XINTERP_IREXP(ire0)) where
 {
 //
 val () =
-prerrln
+prerrsln
 ("\
 xinterp_irexp:f0_dapp: irf0 = ", irf0)
 val () =
-prerrln
+prerrsln
 ("\
 xinterp_irexp:f0_dapp: ire0 = ", ire0)
 //
@@ -671,7 +671,7 @@ f0_proj
 let
 //
 val () =
-prerrln
+prerrsln
 ("f0_proj: ire0 = ", ire0)
 //
 val-
@@ -685,7 +685,7 @@ val irv1 =
 //
 val (  ) =
 (
- prerrln
+ prerrsln
  ("f0_proj: irv1 = ", irv1))
 //
 in//let
@@ -1079,9 +1079,9 @@ irv1 =
   xinterp_irexp(env0, ire1))
 //
 val () =
-prerrln("f0_flat: ire1 = ", ire1)
+prerrsln("f0_flat: ire1 = ", ire1)
 val () =
-prerrln("f0_flat: irv1 = ", irv1)
+prerrsln("f0_flat: irv1 = ", irv1)
 //
 in//let
 //
@@ -1364,9 +1364,9 @@ val-IREnone0() = ire0.node((*0*))
 // (*
 val loc0 = ire0.lctn()
 val (  ) =
-prerrln("xinterp_irexp: loc0 = ", loc0)
+prerrsln("xinterp_irexp: loc0 = ", loc0)
 val (  ) =
-prerrln("xinterp_irexp: ire0 = ", ire0)
+prerrsln("xinterp_irexp: ire0 = ", ire0)
 // *)
 //
 (* ****** ****** *)
@@ -1540,9 +1540,9 @@ end//let//end-of-[list_cons(ircl,dcls)]
 //
 (*
 val () =
-prerrln("xinterp_irclslst: dcls = ", dcls)
+prerrsln("xinterp_irclslst: dcls = ", dcls)
 val () =
-prerrln("xinterp_irclslst: irv0 = ", irv0)
+prerrsln("xinterp_irclslst: irv0 = ", irv0)
 *)
 //
 }(*where*)//end[xinterp_irclslst(env0,dcls,irv0)]

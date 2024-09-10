@@ -170,9 +170,9 @@ $raise XINTERP_IRDCL(ird0)) where
 //
 val loc0 = ird0.lctn((*void*))
 val (  ) =
-prerrln("xinterp_irdcl: loc0 = ", loc0)
+prerrsln("xinterp_irdcl: loc0 = ", loc0)
 val (  ) =
-prerrln("xinterp_irdcl: ird0 = ", ird0)
+prerrsln("xinterp_irdcl: ird0 = ", ird0)
 //
 }(*where*)
 //
@@ -527,7 +527,7 @@ end(*let*)//end-of-[f0_implmnt0(env0,ird0)]
 //
 val () =
 (
-  prerrln("xinterp_irdcl: ird0 = ", ird0) )
+  prerrsln("xinterp_irdcl: ird0 = ", ird0) )
 //
 } (*where*)//end of [xinterp_irdcl(env0,ird0)]
 //
@@ -569,13 +569,13 @@ $raise XINTERP_IRVALDCL(dval)) where
 val loc0 =
 irvaldcl_get_lctn(dval)
 val (  ) =
-prerrln("xinterp_irvaldcl: ERROR!!!")
+prerrsln("xinterp_irvaldcl: ERROR!!!")
 val (  ) =
-prerrln("xinterp_irvaldcl: loc0 = ", loc0)
+prerrsln("xinterp_irvaldcl: loc0 = ", loc0)
 val (  ) =
-prerrln("xinterp_irvaldcl: dpat = ", dpat)
+prerrsln("xinterp_irvaldcl: dpat = ", dpat)
 val (  ) =
-prerrln("xinterp_irvaldcl: irv1 = ", irv1)
+prerrsln("xinterp_irvaldcl: irv1 = ", irv1)
 }
 //
 end(*let*)//end-of-[TEQIREXPsome(teq0,ire1)]

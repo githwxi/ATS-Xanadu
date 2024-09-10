@@ -44,7 +44,8 @@ Authoremail: gmhwxiATgmailDOTcom
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -96,12 +97,12 @@ in//let
 (
 let
 val () =
-list_foreach
+list_foritm
 <l0irv>(livs) in rcd2 end
 ) where
 {
 #impltmp
-foreach$work
+foritm$work
 <l0irv>(lirv) =
 let
 val+IRLAB(lab, irv) = lirv
@@ -114,10 +115,10 @@ val tmp =
 (
   $SYM.symbl_get_stmp(sym) )
 in//let
-tmpmap_insert_any(rcd2,tmp,irv)
+tmpmap_insert$any(rcd2,tmp,irv)
 end//let
 //
-end//let//end(foreach$work(lirv))
+end//let//end(foritm$work(lirv))
 } endlet//end-of-[irvalrcd_make_list]
 //
 (* ****** ****** *)
@@ -156,13 +157,13 @@ case- irv1 of
 case- lab1 of
 | LABint(idx1) =>
 (
-  a1rsz_get_at(irvs, idx1))))
+  a1rsz_get$at(irvs, idx1))))
 //
 ) where
 {
 //
 val () =
-( prerrln
+( prerrsln
   ("irlft_deget: lval = ", lval))
 //
 }(*where*)//end-[irlft_deget(...)]
@@ -194,16 +195,16 @@ case- irv1 of
 case- lab1 of
 | LABint(idx1) =>
 (
-a1rsz_set_at(irvs,idx1,rval))))
+a1rsz_set$at(irvs,idx1,rval))))
 //
 ) where
 {
 //
 val () =
-( prerrln
+( prerrsln
   ("irlft_deset: lval = ", lval))
 val () =
-( prerrln
+( prerrsln
   ("irlft_deset: rval = ", rval))
 //
 }(*where*)//end-[irlft_deset(...)]
@@ -275,9 +276,9 @@ and tag2 = d2c2.ctag()
 //
 (*
 val () =
-prerrln("f0_capp: tag1 = ", tag1)
+prerrsln("f0_capp: tag1 = ", tag1)
 val () =
-prerrln("f0_capp: tag2 = ", tag2)
+prerrsln("f0_capp: tag2 = ", tag2)
 *)
 //
 in//let
@@ -360,10 +361,10 @@ let
 #typedef ys = irvalseq
 //
 #impltmp
-z2forall$test<x0,y0> = irpat_valck
+z2forall$test<x0><y0> = irpat_valck
 //
 in//let
-gseq_z2forall<xs,ys><x0,y0>(irps,irvs)
+gseq_z2forall<xs><x0><ys><y0>(irps,irvs)
 end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
 //
 in//local
@@ -439,10 +440,10 @@ let
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_capp: irp0 = ", irp0)
 val () =
-prerrln
+prerrsln
 ("f0_capp: irv0 = ", irv0)
 *)
 //
@@ -503,10 +504,10 @@ let
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_tup1: irp0 = ", irp0)
 val () =
-prerrln
+prerrsln
 ("f0_tup1: irv0 = ", irv0)
 *)
 //
@@ -532,9 +533,9 @@ end(*let*)//end-of-[ f0_tup1(irp0, irv0) ]
 //
 (*
 val () =
-prerrln("irpat_match: irp0 = ", irp0)
+prerrsln("irpat_match: irp0 = ", irp0)
 val () =
-prerrln("irpat_match: irv0 = ", irv0)
+prerrsln("irpat_match: irv0 = ", irv0)
 *)
 //
 (* ****** ****** *)
@@ -549,14 +550,14 @@ irvar_match
 ( env0
 , d2v0, irv0) =
 (
-xintenv_d2vins_any(env0, d2v0, irv0)
+xintenv_d2vins$any(env0, d2v0, irv0)
 ) where
 {
 //
 val () =
-prerrln("irvar_match: d2v0 = ", d2v0)
+prerrsln("irvar_match: d2v0 = ", d2v0)
 val () =
-prerrln("irvar_match: irv0 = ", irv0)
+prerrsln("irvar_match: irv0 = ", irv0)
 //
 }(*where*)//end-of-[irvar_match(env0,d2v0,irv0)]
 //
@@ -567,14 +568,14 @@ ircst_match
 ( env0
 , d2c0, irv0) =
 (
-xintenv_d2cins_any(env0, d2c0, irv0)
+xintenv_d2cins$any(env0, d2c0, irv0)
 ) where
 {
 //
 val () =
-prerrln("ircst_match: d2c0 = ", d2c0)
+prerrsln("ircst_match: d2c0 = ", d2c0)
 val () =
-prerrln("ircst_match: irv0 = ", irv0)
+prerrsln("ircst_match: irv0 = ", irv0)
 //
 }(*where*)//end-of-[ircst_match(env0,d2c0,irv0)]
 //
@@ -594,9 +595,9 @@ where
 //
 (*
 val () =
-prerrln("fiarg_match: fia0 = ", fia0)
+prerrsln("fiarg_match: fia0 = ", fia0)
 val () =
-prerrln("fiarg_match: irvs = ", irvs)
+prerrsln("fiarg_match: irvs = ", irvs)
 *)
 //
 }(*where*)//end-of-[fiarg_match(env0,fia0,irvs)]
@@ -607,7 +608,7 @@ prerrln("fiarg_match: irvs = ", irvs)
 irpcapp_match_lft
 (env0, irv0, irps) =
 (
-gseq_iforeach<xs><x0>(irps)
+gseq_iforitm<xs><x0>(irps)
 ) where
 {
 //
@@ -618,7 +619,7 @@ gseq_iforeach<xs><x0>(irps)
 val e1 = $UN.datacopy(env0)
 //
 #impltmp
-iforeach$work
+iforitm$work
 <x0>(i0 , x0) =
 (
 case+ x0.node() of
@@ -666,7 +667,7 @@ let
 val e1 = $UN.datacopy(env0)
 //
 #impltmp
-z2foreach$work
+z2foritm$work
 <x0, y0>
 (x0, y0) =
 let
@@ -678,13 +679,14 @@ val e1 = $UN.delinear(e1) in () end
 //
 (*
 val () =
-prerrln("irpatlst_match: irps = ", irps)
+prerrsln("irpatlst_match: irps = ", irps)
 val () =
-prerrln("irpatlst_match: irvs = ", irvs)
+prerrsln("irpatlst_match: irvs = ", irvs)
 *)
 //
 in//let
-  gseq_z2foreach<xs,ys><x0,y0>(irps, irvs)
+(
+gseq_z2foritm<xs><x0><ys><y0>(irps, irvs))
 end(*let*)//end-of-[irpatlst_match<...>(...)]
 //
 in//local
@@ -695,10 +697,10 @@ irpatlst_match_lst
 let
 (*
 val () =
-prerrln
+prerrsln
 ("irpatlst_match_lst: irps = ", irps)
 val () =
-prerrln
+prerrsln
 ("irpatlst_match_lst: irvs = ", irvs)
 *)
 in//let
@@ -711,10 +713,10 @@ irpatlst_match_tup
 let
 (*
 val () =
-prerrln
+prerrsln
 ("irpatlst_match_tup: irps = ", irps)
 val () =
-prerrln
+prerrsln
 ("irpatlst_match_tup: irvs = ", irvs)
 *)
 in//let

@@ -227,7 +227,7 @@ irstk_dvar
 (* ****** ****** *)
 //
 fun
-irstk_d2crch_opt
+irstk_d2crch$opt
 ( stk0:
 ! irstk
 , d2c0
@@ -242,7 +242,7 @@ irstk_lam0(stk1) =>
 optn_vt_nil((*void*))
 | !
 irstk_let0(stk1) =>
-irstk_d2crch_opt(stk1, d2c0)
+irstk_d2crch$opt(stk1, d2c0)
 //
 | !
 irstk_dcst
@@ -251,20 +251,20 @@ if
 (d2c0 = d2c1)
 then optn_vt_cons(irv1) else
 (
-  irstk_d2crch_opt(stk1, d2c0))
+  irstk_d2crch$opt(stk1, d2c0))
 //
 | !
 irstk_dvar
 (d2v1, irv1, stk1) =>
 (
-  irstk_d2crch_opt(stk1, d2c0))
+  irstk_d2crch$opt(stk1, d2c0))
 //
-)(*case+*)//end-of-[irstk_d2crch_opt]
+)(*case+*)//end-of-[irstk_d2crch$opt]
 //
 (* ****** ****** *)
 //
 fun
-irstk_d2vrch_opt
+irstk_d2vrch$opt
 ( stk0:
 ! irstk
 , d2v0
@@ -279,7 +279,7 @@ irstk_lam0(stk1) =>
 optn_vt_nil((*void*))
 | !
 irstk_let0(stk1) =>
-irstk_d2vrch_opt(stk1, d2v0)
+irstk_d2vrch$opt(stk1, d2v0)
 //
 | !
 irstk_dvar
@@ -288,15 +288,15 @@ if
 (d2v0 = d2v1)
 then optn_vt_cons(irv1) else
 (
-  irstk_d2vrch_opt(stk1, d2v0))
+  irstk_d2vrch$opt(stk1, d2v0))
 //
 | !
 irstk_dcst
 (d2v1, irv1, stk1) =>
 (
-  irstk_d2vrch_opt(stk1, d2v0))
+  irstk_d2vrch$opt(stk1, d2v0))
 //
-)(*case+*)//end-of-[irstk_d2vrch_opt]
+)(*case+*)//end-of-[irstk_d2vrch$opt]
 //
 (* ****** ****** *)
 in//local
@@ -457,7 +457,7 @@ XINTENV(cmap, vmap, stk1) = env1 }
 (* ****** ****** *)
 //
 #implfun
-xintenv_d2crch_opt
+xintenv_d2crch$opt
   ( env0, d2c0 ) =
 (
 case+ env0 of
@@ -466,26 +466,26 @@ XINTENV
 (cmap, vmap, stk0) =>
 let
 val opt0 =
-irstk_d2crch_opt(stk0, d2c0)
+irstk_d2crch$opt(stk0, d2c0)
 in//let
 case+ opt0 of
 | ~
-optn_nil() =>
+optn_vt_nil() =>
 let
 val
 tmp0 = d2cst_get_stmp(d2c0)
 in//let
-  tmpmap_search_opt(cmap, tmp0)
+  tmpmap_search$opt(cmap, tmp0)
 end//let
 | ~
 optn_vt_cons(irv0) => optn_vt_cons(irv0)
 end//let
-)(*case+*)//end-of-[xintenv_d2crch_opt(...)]
+)(*case+*)//end-of-[xintenv_d2crch$opt(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-xintenv_d2vrch_opt
+xintenv_d2vrch$opt
   ( env0, d2v0 ) =
 (
 case+ env0 of
@@ -494,7 +494,7 @@ XINTENV
 (cmap, vmap, stk0) =>
 let
 val opt0 =
-irstk_d2vrch_opt(stk0, d2v0)
+irstk_d2vrch$opt(stk0, d2v0)
 in//let
 case+ opt0 of
 | ~
@@ -503,17 +503,17 @@ let
 val
 tmp0 = d2var_get_stmp(d2v0)
 in//let
-  tmpmap_search_opt(vmap, tmp0)
+  tmpmap_search$opt(vmap, tmp0)
 end//let
 | ~
 optn_vt_cons(irv0) => optn_vt_cons(irv0)
 end//let
-)(*case+*)//end-of-[xintenv_d2vrch_opt(...)]
+)(*case+*)//end-of-[xintenv_d2vrch$opt(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-xintenv_d2cins_any
+xintenv_d2cins$any
 (env0, d2c0, irv1) =
 (
 case+ env0 of
@@ -533,14 +533,14 @@ else
 let
   val tmp0 = d2cst_get_stmp(d2c0)
 in//let
-  tmpmap_insert_any(cmap, tmp0, irv1)
+  tmpmap_insert$any(cmap, tmp0, irv1)
 end//let
-)(*case+*)//end-of-[xintenv_d2cins_any(...)]
+)(*case+*)//end-of-[xintenv_d2cins$any(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-xintenv_d2vins_any
+xintenv_d2vins$any
 (env0, d2v0, irv1) =
 (
 case+ env0 of
@@ -560,9 +560,9 @@ else
 let
   val tmp0 = d2var_get_stmp(d2v0)
 in//let
-  tmpmap_insert_any(vmap, tmp0, irv1)
+  tmpmap_insert$any(vmap, tmp0, irv1)
 end//let//else
-)(*case+*)//end-of-[xintenv_d2vins_any(...)]
+)(*case+*)//end-of-[xintenv_d2vins$any(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -596,7 +596,7 @@ case+ opt1 of
 {
 val opt1 =
 (
-  tmpmap_search_opt(the_cmap,tmp0))
+  tmpmap_search$opt(the_cmap,tmp0))
 }
 end//let//end-of-[the_ircst_search(d2c0)]
 //
@@ -612,14 +612,14 @@ the_ircst_insval
 val tmp0 = d2cst_get_stmp(d2c0)
 //
 val (  ) =
-prerrln
+prerrsln
 ("the_ircst_insval: d2c0 = ", d2c0)
 val (  ) =
-prerrln
+prerrsln
 ("the_ircst_insval: irv1 = ", irv1)
 //
 in//let
-tmpmap_insert_any(the_cmap, tmp0, irv1)
+tmpmap_insert$any(the_cmap, tmp0, irv1)
 end(*let*) // end-of-[ the_ircst_insval(...) ]
 //
 (* ****** ****** *)

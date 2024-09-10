@@ -59,7 +59,7 @@ in//let
 case+ lab of
 |
 IRLAB(l01, x02) =>
-print("IRLAB(",l01,";",x02,")")
+prints("IRLAB(",l01,";",x02,")")
 end(*let*)//end-of-[irlab_fprint]
 //
 #impltmp

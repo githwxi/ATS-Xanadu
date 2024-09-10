@@ -93,47 +93,47 @@ irp0.node() of
 //
 |
 IRPany _ =>
-print("IRPany(", ")")
+prints("IRPany(", ")")
 |
 IRPvar(d2v) =>
-print("IRPvar(", d2v, ")")
+prints("IRPvar(", d2v, ")")
 //
 |
 IRPint(int) =>
-print("IRPint(", int, ")")
+prints("IRPint(", int, ")")
 |
 IRPbtf(btf) =>
-print("IRPbtf(", btf, ")")
+prints("IRPbtf(", btf, ")")
 |
 IRPchr(chr) =>
-print("IRPchr(", chr, ")")
+prints("IRPchr(", chr, ")")
 |
 IRPflt(flt) =>
-print("IRPflt(", flt, ")")
+prints("IRPflt(", flt, ")")
 |
 IRPstr(str) =>
-print("IRPstr(", str, ")")
+prints("IRPstr(", str, ")")
 //
 |
 IRPbang(irp1) =>
-print("IRPbang(", irp1, ")")
+prints("IRPbang(", irp1, ")")
 //
 |
 IRPcapp(d2c1, irps) =>
-print("IRPcapp(", d2c1, ";", irps, ")")
+prints("IRPcapp(", d2c1, ";", irps, ")")
 //
 |
 IRPtup0(irps) =>
-print("IRPtup0(", irps, ")")
+prints("IRPtup0(", irps, ")")
 |
 IRPtup1(tknd, irps) =>
-print("IRPtup1(", tknd, ";", irps, ")")
+prints("IRPtup1(", tknd, ";", irps, ")")
 |
 IRPrcd2(tknd, lips) =>
-print("IRPrcd2(", tknd, ";", lips, ")")
+prints("IRPrcd2(", tknd, ";", lips, ")")
 //
-|IRPnone0() => print( "IRPnone0(",")" )
-|IRPnone1(d3p1) => print("IRPnone1(", d3p1, ")")
+|IRPnone0() => prints( "IRPnone0(",")" )
+|IRPnone1(d3p1) => prints("IRPnone1(", d3p1, ")")
 //
 end(*let*)//end-of-[irpat_fprint(out, irp0)]
 //
@@ -153,37 +153,37 @@ ire0.node() of
 //
 |IREvar(d2v) =>
 (
- print("IREvar(", d2v, ")"))
+ prints("IREvar(", d2v, ")"))
 //
 |IREint(int) =>
 (
- print("IREint(", int, ")"))
+ prints("IREint(", int, ")"))
 |IREbtf(btf) =>
 (
- print("IREbtf(", btf, ")"))
+ prints("IREbtf(", btf, ")"))
 |IREchr(chr) =>
 (
- print("IREchr(", chr, ")"))
+ prints("IREchr(", chr, ")"))
 |IREstr(str) =>
 (
- print("IREstr(", str, ")"))
+ prints("IREstr(", str, ")"))
 //
 |IREtop(sym) =>
 (
- print("IREtop(", sym, ")"))
+ prints("IREtop(", sym, ")"))
 //
 |IREcon(d2c) =>
 (
- print("IREcon(", d2c, ")"))
+ prints("IREcon(", d2c, ")"))
 |IREcst(d2c) =>
 (
- print("IREcst(", d2c, ")"))
+ prints("IREcst(", d2c, ")"))
 //
 (* ****** ****** *)
 //
 |IREtimp
 ( dcst, dimp) =>
-print
+prints
 ("IREtimp(", dcst, ";", dimp, ")")
 //
 (* ****** ****** *)
@@ -191,10 +191,10 @@ print
 |IREdap0
 ( irf0 ) =>
 (
- print("IREdap0(", irf0, ")") )
+ prints("IREdap0(", irf0, ")") )
 |IREdapp
 ( irf0, ires) =>
-print
+prints
 ("IREdapp(", irf0, ";", ires, ")")
 //
 (* ****** ****** *)
@@ -202,19 +202,19 @@ print
 |IREpcon
 ( tknd
 , lab1, ire1) =>
-print
+prints
 ("IREpcon(",tknd,";",lab1,";",ire1,")")
 |IREproj
 ( tknd
 , lab1, ire1) =>
-print
+prints
 ("IREproj(",tknd,";",lab1,";",ire1,")")
 //
 (* ****** ****** *)
 //
 |IRElet0
 ( irds, ire1) =>
-print("IRElet0(", irds, ";", ire1, ")")
+prints("IRElet0(", irds, ";", ire1, ")")
 //
 (* ****** ****** *)
 //
@@ -222,106 +222,106 @@ print("IRElet0(", irds, ";", ire1, ")")
 ( test
 , ithn, iels) =>
 (print("IREift0(")
-;print(test, ";", ithn, ";", iels, ")"))
+;prints(test, ";", ithn, ";", iels, ")"))
 //
 |IREcas0
 ( tknd
 , ire1, dcls) =>
 (print("IREcas0(")
-;print(tknd, ";", ire1, ";", dcls, ")"))
+;prints(tknd, ";", ire1, ";", dcls, ")"))
 //
 (* ****** ****** *)
 //
 |IREseqn
 ( ires, ire1) =>
 (
-print("IREseqn(", ires, ";", ire1, ")"))
+prints("IREseqn(", ires, ";", ire1, ")"))
 //
 (* ****** ****** *)
 //
 |IREtup0
 ( ires ) =>
-print("IREtup0(", ires, ")")
+prints("IREtup0(", ires, ")")
 |IREtup1
 ( tknd, ires) =>
-print("IREtup1(", tknd, ";", ires, ")")
+prints("IREtup1(", tknd, ";", ires, ")")
 |IRErcd2
 ( tknd, lies) =>
-print("IRErcd2(", tknd, ";", lies, ")")
+prints("IRErcd2(", tknd, ";", lies, ")")
 //
 (* ****** ****** *)
 //
 |IRElam0
 (tknd,fias,body) =>
 (print("IRElam0(")
-;print(tknd, ";", fias, ";", body, ")"))
+;prints(tknd, ";", fias, ";", body, ")"))
 //
 |IREfix0
 (tknd
 ,fid0,fias,body) =>
-(print("IREfix0(",tknd,";")
-;print(fid0, ";", fias, ";", body, ")"))
+(prints("IREfix0(",tknd,";")
+;prints(fid0, ";", fias, ";", body, ")"))
 //
 (* ****** ****** *)
 //
 |IREaddr
 ( ire1 ) =>
 (
-  print("IREaddr(", ire1, ")") )
+  prints("IREaddr(", ire1, ")") )
 |IREflat
 ( ire1 ) =>
 (
-  print("IREflat(", ire1, ")") )
+  prints("IREflat(", ire1, ")") )
 //
 (* ****** ****** *)
 |IREfold
 ( ire1 ) =>
 (
-  print("IREfold(", ire1, ")") )
+  prints("IREfold(", ire1, ")") )
 (* ****** ****** *)
 |IREfree
 ( ire1 ) =>
 (
-  print("IREfree(", ire1, ")") )
+  prints("IREfree(", ire1, ")") )
 (* ****** ****** *)
 //
 |
 IREdp2tr
 ( ire1 ) =>
 (
-  print("IREdp2tr(", ire1, ")") )
+  prints("IREdp2tr(", ire1, ")") )
 //
 |
 IREdl0az
 ( ire1 ) =>
 (
-  print("IREdl0az(", ire1, ")") )
+  prints("IREdl0az(", ire1, ")") )
 |
 IREdl1az
 ( ire1 ) =>
 (
-  print("IREdl1az(", ire1, ")") )
+  prints("IREdl1az(", ire1, ")") )
 //
 (* ****** ****** *)
 //
 |
 IREwhere
 ( ire1, irds) =>
-print("IREwhere(", ire1, ";", irds, ")")
+prints("IREwhere(", ire1, ";", irds, ")")
 //
 (* ****** ****** *)
 //
 |
 IREassgn
 ( lval, rval) =>
-print("IREassgn(", lval, ";", rval, ")")
+prints("IREassgn(", lval, ";", rval, ")")
 //
 (* ****** ****** *)
 //
 |
 IREraise
 ( tknd, ire1) =>
-print("IREraise(", tknd, ";", ire1, ")")
+prints("IREraise(", tknd, ";", ire1, ")")
 //
 (* ****** ****** *)
 //
@@ -329,17 +329,17 @@ print("IREraise(", tknd, ";", ire1, ")")
 IREl0azy
 ( ire1 ) =>
 (
-  print("IREl0azy(", ire1, ")") )
+  prints("IREl0azy(", ire1, ")") )
 //
 |
 IREl1azy
 ( ire1, ires ) =>
-print("IREl1azy(", ire1, ";", ires, ")")
+prints("IREl1azy(", ire1, ";", ires, ")")
 //
 (* ****** ****** *)
 //
-|IREnone0() => print(  "IREnone0(",")"  )
-|IREnone1(d3e1) => print("IREnone1(", d3e1, ")")
+|IREnone0() => prints(  "IREnone0(",")"  )
+|IREnone1(d3e1) => prints("IREnone1(", d3e1, ")")
 //
 (* ****** ****** *)
 //
@@ -359,10 +359,10 @@ case+
 dgua.node() of
 |
 IRGUAexp(ire1) =>
-print("IRGUAexp(",ire1,")")
+prints("IRGUAexp(",ire1,")")
 |
 IRGUAmat(ire1,irp2) =>
-print("IRGUAmat(",ire1,";",irp2,")")
+prints("IRGUAmat(",ire1,";",irp2,")")
 //
 end(*let*)//end-of-[irgua_fprint(out,dgua)]
 //
@@ -379,10 +379,10 @@ case+
 dgpt.node() of
 |
 IRGPTpat(irp1) =>
-print("IRGPTpat(",irp1,")")
+prints("IRGPTpat(",irp1,")")
 |
 IRGPTgua(irp1,irgs) =>
-print("IRGPTgua(",irp1,";",irgs,")")
+prints("IRGPTgua(",irp1,";",irgs,")")
 end(*let*)//end-of-[irgpt_fprint(out, dgpt)]
 //
 #implfun
@@ -396,10 +396,10 @@ case+
 dcls.node() of
 |
 IRCLSgpt(dgpt) =>
-print("IRCLSgpt(",dgpt,")")
+prints("IRCLSgpt(",dgpt,")")
 |
 IRCLScls(irg1,ire2) =>
-print("IRCLScls(",irg1,";",ire2,")")
+prints("IRCLScls(",irg1,";",ire2,")")
 end(*let*)//end-of-[ircls_fprint(out, ircl)]
 //
 (* ****** ****** *)
@@ -418,16 +418,16 @@ ird0.node() of
 //
 |IRDd3ecl
 (  ird1  ) =>
-print("IRDd3ecl(", ird1, ")")
+prints("IRDd3ecl(", ird1, ")")
 //
 |IRDtmpsub
 (svts, ird1) =>
-print
+prints
 ("IRDtmpsub(", svts, ";", ird1, ")")
 //
 |IRDlocal0
 (head, body) =>
-print
+prints
 ("IRDlocal0(", head, ";", body, ")")
 //
 |IRDinclude
@@ -435,7 +435,7 @@ print
 ,gsrc,fopt,dopt ) =>
 (
 print("IRDinclude(");
-print
+prints
 (knd0,";"
 ,tknd,";",gsrc,";",fopt,";","...",")"))
 //
@@ -443,12 +443,12 @@ print
 (tknd, irvs) =>
 (
 print
-("IRDvaldclst(");print(tknd,";",irvs,")"))
+("IRDvaldclst(");prints(tknd,";",irvs,")"))
 |IRDvardclst
 (tknd, irvs) =>
 (
 print
-("IRDvardclst(");print(tknd,";",irvs,")"))
+("IRDvardclst(");prints(tknd,";",irvs,")"))
 //
 |IRDfundclst
 (tknd
@@ -456,7 +456,7 @@ print
 ,d2cs,irfs) =>
 (
 print("IRDfundclst(");
-print(tknd,";",tqas,";",d2cs,";",irfs,")"))
+prints(tknd,";",tqas,";",d2cs,";",irfs,")"))
 //
 |IRDimplmnt0
 (tknd
@@ -466,12 +466,12 @@ print(tknd,";",tqas,";",d2cs,";",irfs,")"))
 ,farg,body) =>
 (
 print("IRDimplmnt0(");
-print(tknd,";",stmp,";");
-print(sqas,";",tqas,";");
-print(dqid,";",tias,";",farg,";",body,")"))
+prints(tknd,";",stmp,";");
+prints(sqas,";",tqas,";");
+prints(dqid,";",tias,";",farg,";",body,")"))
 //
-|IRDnone0() => print(   "IRDnone0(",")"   )
-|IRDnone1(d3cl) => print("IRDnone1(", d3cl, ")")
+|IRDnone0() => prints(   "IRDnone0(",")"   )
+|IRDnone1(d3cl) => prints("IRDnone1(", d3cl, ")")
 //
 end(*let*)//end-of-[irdcl_fprint(out, ird0)]
 //
@@ -490,7 +490,7 @@ irvaldcl_get_tdxp(dval)
 #impltmp g_print$out<>() = out
 //
 in//let
-print("IRVALDCL(", dpat, ";", tdxp, ")")
+prints("IRVALDCL(", dpat, ";", tdxp, ")")
 end(*let*)//end-of-[irvaldcl_fprint(out,dval)]
 //
 #implfun
@@ -507,7 +507,7 @@ irvardcl_get_dini(dvar)
 #impltmp g_print$out<>() = out
 //
 in//let
-print
+prints
 ("IRVARDCL(",dpid,";",vpid,";",dini,")")
 end(*let*)//end-of-[irvardcl_fprint(out,dvar)]
 //
@@ -528,7 +528,7 @@ irfundcl_get_tdxp(dfun)
 //
 in//let
 (
-print
+prints
 ("IRFUNDCL(",dpid,";",farg,";",tdxp,")"))
 end(*let*)//end-of-[irfundcl_fprint(out,dfun)]
 //

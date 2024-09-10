@@ -72,77 +72,77 @@ in//let
 case+ irv0 of
 |
 IRVnil() =>
-print("IRVnil(", ")")
+prints("IRVnil(", ")")
 //
 |IRVint(int) =>
-print("IRVint(", int, ")")
+prints("IRVint(", int, ")")
 //
 |IRVbtf(btf) =>
-print("IRVbtf(", btf, ")")
+prints("IRVbtf(", btf, ")")
 |IRVchr(chr) =>
-print("IRVchr(", chr, ")")
+prints("IRVchr(", chr, ")")
 //
 |IRVflt(flt) =>
-print("IRVflt(", flt, ")")
+prints("IRVflt(", flt, ")")
 |IRVstr(str) =>
-print("IRVstr(", str, ")")
+prints("IRVstr(", str, ")")
 //
 (* ****** ****** *)
 //
 |IRVcon(d2c) =>
-print("IRVcon(", d2c, ")")
+prints("IRVcon(", d2c, ")")
 //
 (* ****** ****** *)
 //
 |IRVlft(lval) =>
-print("IRVlft(", lval, ")")
+prints("IRVlft(", lval, ")")
 //
 (* ****** ****** *)
 //
 |IRVcapp
 ( d2c1 , irvs ) =>
-print
+prints
 ("IRVcapp(", d2c1, ";", irvs, ")")
 //
 (* ****** ****** *)
 //
 |IRVptr(ptr) =>
-print("IRVptr(", "...", ")")
+prints("IRVptr(", "...", ")")
 //
 (* ****** ****** *)
 //
 |IRVfun(fopr) =>
-print("IRVfun(", "...", ")")
+prints("IRVfun(", "...", ")")
 //
 (* ****** ****** *)
 //
 |IRVtup0(irvs) =>
-print("IRVtup0(", irvs, ")")
+prints("IRVtup0(", irvs, ")")
 //
 |IRVtup1
 ( tknd , irvs ) =>
-print
+prints
 ("IRVtup1(", tknd, ";", irvs, ")")
 //
 |IRVrcd2
 ( tknd , livs ) =>
-print
+prints
 ("IRVrcd2(", tknd, ";", "...", ")")
 //
 (* ****** ****** *)
 //
 |IRVlam0
 (farg, body, fenv) =>
-print
+prints
 ("IRVlam0(", farg, ";", "...", ")")
 |IRVfix0
 (fid0, farg, body, fenv) =>
-print
+prints
 ("IRVfix0("
 , fid0, ";", farg, ";", "...", ")")
 |IRVfixs
 (fid0, farg, body, irvs, fenv) =>
-print
+prints
 ("IRVfixs("
 , fid0, ";"
 , farg, ";", irvs, ";", "...", ")")
@@ -152,17 +152,17 @@ print
 |IRVl0azy
 ( body , fenv ) =>
 (
-  print( "IRVl0azy(", "...", ")") )
+  prints( "IRVl0azy(", "...", ")") )
 //
 |IRVl1azy
 (body, ires, fenv) =>
-print
+prints
 ("IRVl1azy(", "...", ";", "...", ")")
 //
 (* ****** ****** *)
 //
-|IRVnone0(    ) => print("IRVnone0(", ")")
-|IRVnone1(ire1) => print("IRVnone1(", ire1, ")")
+|IRVnone0(    ) => prints("IRVnone0(", ")")
+|IRVnone1(ire1) => prints("IRVnone1(", ire1, ")")
 //
 (* ****** ****** *)
 //
@@ -183,11 +183,11 @@ in//let
 case+ lval of
 |
 IRLFTref0(ropt) =>
-print("IRLFTref0(", ropt, ")")
+prints("IRLFTref0(", ropt, ")")
 |
 IRLFTpcon
 (tknd, lab1, irv1) =>
-print
+prints
 ("IRLFTpcon("
 , tknd, ";", lab1, ";", irv1, ")")
 //

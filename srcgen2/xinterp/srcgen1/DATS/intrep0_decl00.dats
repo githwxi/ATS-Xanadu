@@ -274,10 +274,10 @@ D3Cvaldclst
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_valdclst: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("f0_valdclst: d3cl = ", d3cl)
 *)
 //
@@ -316,10 +316,10 @@ D3Cvardclst
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_vardclst: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("f0_vardclst: d3cl = ", d3cl)
 *)
 //
@@ -353,10 +353,10 @@ D3Cfundclst
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_fundclst: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("f0_fundclst: d3cl = ", d3cl)
 *)
 //
@@ -415,7 +415,7 @@ end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
 //
 val () =
 (
-  prerrln("trxd3ir_d3ecl: d3cl = ", d3cl) )
+prerrsln("trxd3ir_d3ecl: d3cl = ", d3cl) )
 //
 (* ****** ****** *)
 //
@@ -507,7 +507,7 @@ end where
 //
 (*
 val () =
-prerrln("trxd3ir_d3fundcl: dfun = ", dfun)
+prerrsln("trxd3ir_d3fundcl: dfun = ", dfun)
 *)
 //
 }(*where*)//end-of-[trxd3ir_d3fundcl(env0,dfun)]

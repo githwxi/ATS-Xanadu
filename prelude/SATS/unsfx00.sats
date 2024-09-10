@@ -257,6 +257,14 @@ gasz_lset$at$raw
 |xs: xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_head$raw
+( cs: strn ): cgtz
+fun<>
+strn_tail$raw
+( cs: strn ): strn
 //
 fun<>
 strn_get$at$raw

@@ -138,6 +138,10 @@ else
 (
   d2parsed_of_fildats(fpth))//else
 //
+val () =
+(
+  prerrsln("dpar(20) = ", dpar))
+//
 }(*where*)//end-of-[mymain_work(fpth)]
 //
 (* ****** ****** *)

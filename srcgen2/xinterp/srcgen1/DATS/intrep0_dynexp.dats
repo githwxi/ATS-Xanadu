@@ -442,7 +442,7 @@ irpat(loc0, IRPcapp(d2c1, irps))
 end where
 {
 val () =
-prerrln
+prerrsln
 ("\
 trxd3ir_d3pat:f0_dapp: d3p0 = ", d3p0)
 }(*where*)//end-of-[f0_dapp(env0,d3p0)]
@@ -549,7 +549,7 @@ trxd3ir_d3pat(env0, d3p1)) where
 (* ****** ****** *)
 //
 val () =
-prerrln("trxd3ir_d3pat: d3p0 = ", d3p0)
+prerrsln("trxd3ir_d3pat: d3p0 = ", d3p0)
 //
 (* ****** ****** *)
 //
@@ -1517,7 +1517,7 @@ f0_none0
 (* ****** ****** *)
 //
 val (  ) =
-prerrln("trxd3ir_d3exp: d3e0 = ", d3e0)
+prerrsln("trxd3ir_d3exp: d3e0 = ", d3e0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1573,7 +1573,7 @@ val loc0 = dgua.lctn( (*void*) )
 //
 (*
 val (  ) =
-prerrln("trans3a_d3gua: dgua = ", dgua)
+prerrsln("trans3a_d3gua: dgua = ", dgua)
 *)
 //
 }(*where*)//end-of-[trans3a_d3gua(env0,...)]
@@ -1589,7 +1589,7 @@ val loc0 = dgpt.lctn()
 (*
 val
 val () =
-prerrln
+prerrsln
 ("trxd3ir_d3gpt: dgpt = ", dgpt)
 *)
 //
@@ -1661,9 +1661,9 @@ val loc0 = d3cl.lctn( (*void*) )
 //
 (*
 val (  ) =
-prerrln("trxd3ir_d3cls: loc0 = ", loc0)
+prerrsln("trxd3ir_d3cls: loc0 = ", loc0)
 val (  ) =
-prerrln("trxd3ir_d3cls: d3cl = ", d3cl)
+prerrsln("trxd3ir_d3cls: d3cl = ", d3cl)
 *)
 //
 }(*where*)//end-of-[trxd3ir_d3cls(env0,...)]
