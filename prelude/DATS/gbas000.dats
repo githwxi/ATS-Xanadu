@@ -67,7 +67,25 @@ g_copy<x0>(obj) = obj
 (* ****** ****** *)
 //
 #impltmp
-g_print<unit>(_) = strn_print("unit")
+g_print
+<unit>(ut) = strn_print("unit")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+g_parse(rep) =
+(
+case+ opt of
+| ~optn_vt_cons(x0) => x0
+) where
+{
+  val opt = g_parse$opt<x0>(rep)
+}(*where*)//end-of-[g_parse(rep)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
