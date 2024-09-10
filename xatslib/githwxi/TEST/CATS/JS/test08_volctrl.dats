@@ -91,11 +91,15 @@ f0_strn
 fun
 f0_sint
 (rep: strn): dtval =
-DTVsint(head0(g_parse$opt<sint>(rep)))
+(
+DTVsint(sint)
+) where{ val sint=g_parse<sint>(rep) }
 fun
 f0_dflt
 (rep: strn): dtval =
-DTVdflt(head0(g_parse$opt<dflt>(rep)))
+(
+  DTVdflt(dflt)
+) where{ val dflt=g_parse<dflt>(rep) }
 }
 //
 (* ****** ****** *)

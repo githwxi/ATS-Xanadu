@@ -42,6 +42,11 @@ char000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/char000.cats >> $(PRELUDE_JS)
 ###############################################################
 prelude:: \
+gflt000
+gflt000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/JS/gflt000.cats >> $(PRELUDE_JS)
+###############################################################
+prelude:: \
 strn000
 strn000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/strn000.cats >> $(PRELUDE_JS)
