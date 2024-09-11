@@ -186,6 +186,10 @@ js1emit_dats
 js1emit_dats: ; \
 $(XATSOPT) --dynamic DATS/js1emit.dats
 all_dats:: \
+js1emit_utils0_dats
+js1emit_utils0_dats: ; \
+$(XATSOPT) --dynamic DATS/js1emit_utils0.dats
+all_dats:: \
 js1emit_dynexp_dats
 js1emit_dynexp_dats: ; \
 $(XATSOPT) --dynamic DATS/js1emit_dynexp.dats

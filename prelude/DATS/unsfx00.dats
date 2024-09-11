@@ -200,7 +200,7 @@ end(*let*)//end-of-[$UN.gasz_setf$at$raw(...)]
 //
 #impltmp
 <(*tmp*)>
-strn_head$raw(cs) = strn_get$at$raw<>(cs, 0)
+$UN.strn_head$raw(cs) = $UN.strn_get$at$raw<>(cs, 0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

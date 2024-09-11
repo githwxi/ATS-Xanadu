@@ -194,6 +194,8 @@ list_map_f1un
 //
 #symload map with list_map of 1000
 #symload map with list_map_f1un of 1000
+#symload map_fun with list_map_f1un of 1000
+#symload list_map with list_map_f1un of 1000
 //
 (* ****** ****** *)
 //
@@ -212,6 +214,8 @@ list_map_f1un_vt
 //
 #symload map_vt with list_map_vt of 1000
 #symload map_vt with list_map_f1un_vt of 1000
+#symload map_fun_vt with list_map_f1un_vt of 1000
+#symload list_map_vt with list_map_f1un_vt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -231,6 +235,8 @@ list_maprev_f1un
 //
 #symload maprev with list_maprev of 1000
 #symload maprev with list_maprev_f1un of 1000
+#symload maprev_fun with list_maprev_f1un of 1000
+#symload list_maprev with list_maprev_f1un of 1000
 //
 (* ****** ****** *)
 //
@@ -249,6 +255,8 @@ list_maprev_f1un_vt
 //
 #symload maprev_vt with list_maprev_vt of 1000
 #symload maprev_vt with list_maprev_f1un_vt of 1000
+#symload maprev_fun_vt with list_maprev_f1un_vt of 1000
+#symload list_maprev_vt with list_maprev_f1un_vt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

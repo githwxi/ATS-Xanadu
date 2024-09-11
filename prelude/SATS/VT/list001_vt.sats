@@ -228,6 +228,43 @@ list_vt_nchoose0_lstrm$llist
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:vt>
+<y0:vt>
+list_vt_map0
+{ln:nat}
+(xs: ~list_vt(x0, ln)): list_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+list_vt_map1
+{ln:nat}
+(xs: !list_vt(x0, ln)): list_vt(y0, ln)
+//
+#symload map0 with list_vt_map0 of 1000
+#symload map1 with list_vt_map1 of 1000
+//
+fun
+<x0:vt>
+<y0:vt>
+list_vt_map0_f1un
+{ln:nat}
+(xs:
+~list_vt(x0, ln), (~x0)->y0): list_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+list_vt_map1_f1un
+{ln:nat}
+(xs:
+!list_vt(x0, ln), (!x0)->y0): list_vt(y0, ln)
+//
+#symload map0_fun with list_vt_map0_f1un of 1000
+#symload map1_fun with list_vt_map1_f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

@@ -921,6 +921,9 @@ list_vt2t
 (*
 #symload nil with list_nil
 #symload cons with list_cons
+*)
+//
+(*
 #symload nil with list_vt_nil
 #symload cons with list_vt_cons
 #symload lnil with list_vt_nil

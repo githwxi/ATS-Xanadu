@@ -57,6 +57,29 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 fun
+i0intjs1
+(filr:FILR,tint:token): void
+fun
+i0btfjs1
+(filr:FILR,btf0:sym_t): void
+fun
+i0chrjs1
+(filr:FILR,tchr:token): void
+fun
+i0strjs1
+(filr:FILR,tstr:token): void
+//
+(* ****** ****** *)
+//
+fun
+i0pckjs1
+(filr:FILR
+,ival:i1val,ipat:i0pat): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 fjas1js1
 ( filr
 : FILR, fjas:fjarglst): void
@@ -69,13 +92,6 @@ i1valjs1
 fun
 l1i1vjs1
 (filr:FILR,liv0:l1i1v): void
-//
-(* ****** ****** *)
-//
-fun
-i0pckjs1
-(filr:FILR
-,ival:i1val,ipat:i0pat): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

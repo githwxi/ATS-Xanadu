@@ -272,6 +272,24 @@ ipat.node() of
 |I0Pany _ => ((*void*))
 |I0Pvar _ => ((*void*))
 //
+(*
+|I0Pint _ =>
+(
+ f0_int0(b0, ival, ipat))
+|I0Pbtf _ =>
+(
+ f0_btf0(b0, ival, ipat))
+|I0Pchr _ =>
+(
+ f0_chr0(b0, ival, ipat))
+*)
+|I0Pstr _ =>
+(
+ f0_str0(b0, ival, ipat))
+//
+|I0Pdap1 _ =>
+(
+  f0_dap1(b0, ival, ipat))
 |I0Pdapp _ =>
 (
   f0_dapp(b0, ival, ipat))
@@ -287,6 +305,56 @@ conj(b0); prints('"',ipat,'"'))
 //end-of-[f0_ipat(b0,ival,ipat)]
 //
 (* ****** ****** *)
+//
+and
+f0_str0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pstr
+(  tstr  ) = ipat.node()
+//
+#impltmp
+g_print
+<token>(x) = i0strjs1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valjs1(filr, x)
+//
+in//let
+(conj(b0)
+;print("XATS000_streq(")
+;prints(ival, ", ", tstr, ")"))
+end(*let*)//end-of-[f0_str0(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_dap1
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pdap1
+(  i0f0  ) = ipat.node()
+//
+#impltmp
+g_print
+<i0pat>(x) = i0ctgjs1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valjs1(filr, x)
+//
+in//let
+(conj(b0)
+;print("XATS000_ctgeq(")
+;prints(ival, ", ", i0f0, ")"))
+end(*let*)//end-of-[f0_dap1(...)]
 //
 and
 f0_dapp
@@ -561,150 +629,6 @@ _(* else *) => print("...I1DCL...")
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-i1intjs1
-( filr: FILR
-, tint: token): void =
-(
-case-
-tint.node() of
-|T_INT01
-(  rep  ) => prints
-("XATSINT1(", rep, ")")
-|T_INT02
-(bas,rep) => prints
-("XATSINT2(",bas,",",rep,")")
-|T_INT03
-(bas
-,rep,sfx) => prints
-("XATSINT3("
-,bas, ",", rep, ",", sfx, ")")
-) where
-{
-#impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i1intjs1(...)]
-//
-(* ****** ****** *)
-//
-fun
-i1btfjs1
-( filr: FILR
-, btf0: symbl): void =
-(
-if
-(btf0 = TRUE_symbl)
-then print("XATSBOOL(true)")
-else print("XATSBOOL(false)")
-) where
-{
-#impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i1btfjs1(...)]
-//
-(* ****** ****** *)
-//
-fun
-i1chrjs1
-( filr: FILR
-, tchr: token): void =
-(
-//
-case-
-tchr.node() of
-|
-T_CHAR1_nil0 _ =>
-prints("XATSCNUL(", ")")
-|
-T_CHAR2_char(rep) =>
-prints("XATSCHAR(", rep, ")")
-|
-T_CHAR3_blsh(rep) =>
-prints("XATSCHAR(", rep, ")")
-//
-) where
-{
-#impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i1chrjs1(...)]
-//
-(* ****** ****** *)
-//
-fun
-i1strjs1
-( filr: FILR
-, tstr: token): void =
-let
-//
-#impltmp
-g_print$out<>() = filr
-//
-in//let
-//
-case-
-tstr.node() of
-|
-T_STRN1_clsd
-( rep1,len2 ) =>
-(
-print
-("XATSSTRN(");
-f0_strn(rep1, len2); print(")"))
-|
-T_STRN2_ncls
-( rep1,len2 ) =>
-(
-print
-("XATSSTRN(\"");
-f0_strn(rep1, len2); print("\")"))
-//
-end where // end-of-[let]
-{
-//
-fun
-f0_strn
-(rep1: strn
-,len2: sint): void =
-(
-strn_iforitm(rep1)) where
-{
-#impltmp
-iforitm$work
-<cgtz>(i0, ch) =
-(
-case+ ch of
-| '"' =>
-strn_fprint(filr, "\"")
-(*
-if
-(0 = i0)
-then
-strn_fprint(filr, "\"")
-else
-if
-(i0+1 = len2)
-then
-strn_fprint(filr, "\"")
-else
-strn_fprint(filr, "\\\"")
-*)
-//
-| '\n' => strn_fprint(filr, "\\n")
-| '\t' => strn_fprint(filr, "\\t")
-//
-| '\b' => strn_fprint(filr, "\\b")
-| '\f' => strn_fprint(filr, "\\f")
-//
-| '\g' => strn_fprint(filr, "\\g")
-//
-| '\v' => strn_fprint(filr, "\\v")
-//
-| _(*else*) => char_fprint(filr, ch)
-)
-}
-//
-}(*where*)//end-of-[i1strjs1(filr,tstr)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #implfun
 fjas1js1
 (filr,fjas) =
@@ -791,16 +715,16 @@ ival.node() of
 (* ****** ****** *)
 (* ****** ****** *)
 |I1Vint
-( tint ) => i1intjs1(filr,tint)
+( tint ) => i0intjs1(filr,tint)
 (* ****** ****** *)
 |I1Vbtf
-( btf0 ) => i1btfjs1(filr,btf0)
+( btf0 ) => i0btfjs1(filr,btf0)
 (* ****** ****** *)
 |I1Vchr
-( tchr ) => i1chrjs1(filr,tchr)
+( tchr ) => i0chrjs1(filr,tchr)
 (* ****** ****** *)
 |I1Vstr
-( tstr ) => i1strjs1(filr,tstr)
+( tstr ) => i0strjs1(filr,tstr)
 (* ****** ****** *)
 (* ****** ****** *)
 //
