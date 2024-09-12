@@ -105,7 +105,7 @@ case+ fopt of
   fsrch_dnm1base(dir0, base)
 ) where
 { val
-  dir0 = the_XATSHOME((*nil*)) }
+  dir0 = the_XATSHOME_get<>() }
 |optn_cons _ => (      fopt      )
 //
 endlet // end-of-[fsrch_includes(base)]

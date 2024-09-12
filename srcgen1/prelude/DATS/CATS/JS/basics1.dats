@@ -512,18 +512,18 @@ XATS2JS_jsobjmap_insert$opt
 g_print
 <jsobjmap(k0,x0)>(kxs) =
 gmap_print
-<jsobjmap(k0,x0)><k0,x0>(kxs)
+<jsobjmap(k0,x0)><k0><x0>(kxs)
 (* ****** ****** *)
 //
 #impltmp
 {k0:t0}
 {x0:t0}
 gmap_strmize
-<jsobjmap(k0,x0)><k0,x0>(kxs) =
+<jsobjmap(k0,x0)><k0><x0>(kxs) =
 strm_vt_map0
 (
 gmap_strmize_key
-<jsobjmap(k0,x0)><k0,x0>(kxs)
+<jsobjmap(k0,x0)><k0><x0>(kxs)
 ) where
 {
 #impltmp map$fopr0<k0><(k0,x0)>(k0) =
@@ -533,16 +533,16 @@ val-
 XATS2JS_jsobjmap_search$opt(kxs, k0) in (k0, x0)
 end
 } (*where*)
-// end(gmap_strmize<jsobjmap(k0,x0)><k0,x0>(kxs))
+// end(gmap_strmize<jsobjmap(k0,x0)><k0><x0>(kxs))
 //
 #impltmp
 {k0:t0}
 {x0:t0}
 gmap_strmize_key
-<jsobjmap(k0,x0)><k0,x0>(kxs) =
+<jsobjmap(k0,x0)><k0><x0>(kxs) =
 (
 XATS2JS_jsarray_strmize(XATS2JS_jsobjmap_keys(kxs)))
-//end-of(gmap_strmize_key<jsobjmap(k0,x0)><k0,x0>(kxs))
+//end-of(gmap_strmize_key<jsobjmap(k0,x0)><k0><x0>(kxs))
 //
 (* ****** ****** *)
 

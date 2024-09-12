@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -33,6 +34,14 @@ Start Time: April, 2020
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+the_XATSHOME_get
+( (*void*) ): strn
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
