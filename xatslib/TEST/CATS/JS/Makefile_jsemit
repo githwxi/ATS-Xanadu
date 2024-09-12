@@ -111,5 +111,6 @@ $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f test??_out.js
+cleanall:: ; rm -f test??_out?.js
 ########################################################################
 ###################### end of [Makefile_jsemit] ########################
