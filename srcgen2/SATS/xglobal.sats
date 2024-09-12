@@ -118,10 +118,7 @@ D3E = "./dynexp3.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-fun
-the_XATSHOME(): strn
-*)
+fun the_XATSHOME(): strn
 //
 (* ****** ****** *)
 (* ****** ****** *)

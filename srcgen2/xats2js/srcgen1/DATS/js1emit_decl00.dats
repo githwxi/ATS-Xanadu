@@ -642,39 +642,38 @@ TEQI1CMPnone
 |
 TEQI1CMPsome
 (teq1, icmp) =>
-(
-f0_i1tnmcmp
-(env0, itnm, icmp)) where
-{
+let
 //
-val
-ival = i1cmp_get_ival(icmp)
-//
-val
-filr = envx2js_get_filr(env0)
-val
-nind = envx2js_get_nind(env0)
+val ival =
+i1cmp_get_ival(icmp)
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
 //
 val () =
 (
 nindstrnfpr
-(filr, nind, "XATS000_patck("))
+(filr, nind, "let ");
+i1tnmfpr
+(filr, itnm);fprintln(filr))
+//
+// HX: for computing ival
 val () =
-(
-i0pckjs1
-(filr, ival, ipat);strnfpr(filr, ")");fprintln(filr))
+f0_i1tnmcmp(env0, itnm, icmp)
 //
 val () =
 (
 nindstrnfpr
-(filr, nind, "let ");i1tnmfpr(filr, itnm);fprintln(filr))
+(filr, nind, "XATS000_patck(");
+i0pckjs1(filr, ival, ipat);
+strnfpr(filr, ")");fprintln(filr))
 //
-}(*where*)
-)
+endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
 //
 (* ****** ****** *)
 //
-end where
+end where//end-of-let(js1emit_i1valdcl(...)]
 {
 //
 val (  ) =
@@ -689,8 +688,6 @@ in//let
 (
  nindstrnfpr(filr, nind, "// I1VALDCL\n"))
 end//let//end-of-[val()]
-//
-(* ****** ****** *)
 //
 fun
 f0_i1tnmcmp

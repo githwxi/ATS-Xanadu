@@ -100,12 +100,13 @@ fopt = fsrch_dnmsbase(dirs, base)
 in//let
 //
 case+ fopt of
+//
 |optn_nil() => 
-(
-  fsrch_dnm1base(dir0, base)
-) where
-{ val
-  dir0 = the_XATSHOME_get<>() }
+let
+  val dir0 = the_XATSHOME()
+in//let
+  fsrch_dnm1base(dir0, base) end
+//
 |optn_cons _ => (      fopt      )
 //
 endlet // end-of-[fsrch_includes(base)]

@@ -155,16 +155,16 @@ val (  ) =
 if
 (ret1 > 0)
 then
-prerrsln
-("The fixity-defs loaded!")
+prerrsln("\
+// The fixity-defs loaded!")
 //
 val ret2 =
 the_tr12env_pvsload((*0*))
 val (  ) =
 if
 (ret2 > 0)
-then prerrsln
-("The trans12-defs loaded!")
+then prerrsln("\
+// The trans12-defs loaded!")
 }
 else
 (
@@ -177,11 +177,19 @@ end//let
 ) where
 {
 //
+val (  ) =
+prerrsln("\
+// Welcome from ATS3/Xanadu!")
+val (  ) =
+prerrsln("\
+// XATSHOME = ", the_XATSHOME())
+//
 val argv =
 (
-  XATS2JS_NODE_argv_get((*0*)))
+  XATS2JS_NODE_argv_get((*void*)))
 (*
-val (  ) = prerrsln("argv = ", argv)
+val (  ) = prerrsln
+("// xats2js_jsemit: argv = ", argv)
 *)
 //
 }(*where*)//end-of-[mymain((*void*))]
