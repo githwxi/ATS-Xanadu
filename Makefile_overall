@@ -1,0 +1,45 @@
+############################################################
+############################################################
+# HX-2024-09-12:
+# For building various tools of ATS3-Xanadu
+# It is assumed that ATS-Postiats is already installed
+# Note that the current xats2js-in-ats3 (for compiling ATS3
+# into JS) is written in ATS3
+############################################################
+############################################################
+all:: srcgen1_xats2js
+all:: srcgen2_libxatsopt
+all:: srcgen2_xatsopt_typing
+all:: srcgen2_libxats2js
+all:: srcgen2_xats2js_jsemit
+############################################################
+#
+# STEP~1 for building xats2js-in-ats2:
+#
+srcgen1_xats2js:: ; \
+time make -C srcgen1 -f Makefile_patsopt xatsopt
+srcgen1_xats2js:: ; \
+time make -C srcgen1 -f Makefile_patsopt libxatsopt
+srcgen1_xats2js:: ; \
+time make -C srcgen1/xats2js/srcgenx -f Makefile_patsopt xats2js
+#
+############################################################
+#
+# STEP~2 for building xatsopt_typing
+#
+srcgen2_libxatsopt:: ; \
+time make -C srcgen2 -f Makefile_xats2js libxatsopt
+srcgen2_xatsopt_typing:: ; \
+time make -C srcgen2/UTIL -f Makefile_xats2js xatsopt_typing
+#
+############################################################
+#
+# STEP~3 for building xats2js_jsemit
+#
+srcgen2_libxats2js:: ; \
+time make -C srcgen2/xats2js/srcgenx -f Makefile_xats2js libxats2js
+srcgen2_xats2js_jsemit:: ; \
+time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xats2js xats2js_jsemit
+#
+############################################################
+############################################################

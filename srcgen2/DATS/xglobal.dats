@@ -96,13 +96,7 @@ For getting 'S{XATSHOME}'
 //
 in//local
 //
-(*
 #implfun
-the_XATSHOME() =
-"/home/hwxi/Research/ATS-Xanadu"
-*)
-//
-fun
 the_XATSHOME() =
 the_XATSHOME_get<>((*void*))
 //
