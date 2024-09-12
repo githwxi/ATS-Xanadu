@@ -2457,7 +2457,7 @@ XATS2JS_jsarray_strmize(a1x1)
         // { // val-implmnt
         // } // val-implmnt
         var // const // implval/fun
-        gint_gte_sint_sint_441685_3038_ = XATS2JS_gint_gte_sint_sint
+        gint_gte_sint_sint_747611_3667_ = XATS2JS_gint_gte_sint_sint
         xtmp5 = XATS2JS_gint_gte_sint_sint(a2x1, xtmp1)
       }
       if (xtmp5)
@@ -2481,7 +2481,7 @@ XATS2JS_jsarray_strmize(a1x1)
               // { // val-implmnt
               // } // val-implmnt
               var // const // implval/fun
-              gint_add_sint_sint_441685_3985_ = XATS2JS_gint_add_sint_sint
+              gint_add_sint_sint_747611_4862_ = XATS2JS_gint_add_sint_sint
               xtmp9 = XATS2JS_gint_add_sint_sint(a2x1, 1)
             }
             xtmp8 = auxmain_2197_(xtmp9)
@@ -2610,15 +2610,15 @@ XATS2JS_jsarray_strmize(a1x1)
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics1.dats@(7155(line=509,offs=1)--7253(line=515,offs=30))
+// ./../../../.././prelude/DATS/CATS/JS/basics1.dats@(7155(line=509,offs=1)--7254(line=515,offs=31))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics1.dats@(7277(line=518,offs=1)--7540(line=535,offs=13))
+// ./../../../.././prelude/DATS/CATS/JS/basics1.dats@(7278(line=518,offs=1)--7543(line=535,offs=13))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics1.dats@(7604(line=538,offs=1)--7732(line=544,offs=53))
+// ./../../../.././prelude/DATS/CATS/JS/basics1.dats@(7608(line=538,offs=1)--7737(line=544,offs=53))
 // L1DCLnone0()
 
 
@@ -3254,14 +3254,14 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6332(line=396,offs=1)--6371(line=396,offs=40))
 // L1DCLnone0()
   {
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9684(line=747,offs=1)--10065(line=779,offs=9))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9677(line=747,offs=1)--10058(line=779,offs=9))
     function
-    strm_vt_map0_541685_4631_(a2x1)
+    strm_vt_map0_847611_4630_(a2x1)
     {
       let xtmp112
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9750(line=755,offs=1)--10029(line=778,offs=12))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9743(line=755,offs=1)--10022(line=778,offs=12))
       function
-      auxmain_9753_(a3x1)
+      auxmain_9746_(a3x1)
       {
         let xtmp97
         let xtmp110
@@ -3303,12 +3303,12 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
             case 2:
             xtmp101 = xtmp99[1]
             xtmp102 = xtmp99[2]
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9925(line=773,offs=3)--9957(line=774,offs=24))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9918(line=773,offs=3)--9950(line=774,offs=24))
             {
               {
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6332(line=396,offs=1)--6371(line=396,offs=40))
                 function
-                map$fopr0_541685_3102_(a5x1)
+                map$fopr0_847611_3142_(a5x1)
                 {
                   let xtmp105
                   {
@@ -3316,12 +3316,12 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
                   }
                   return xtmp105
                 } // function // map$fopr0(24)
-                xtmp103 = map$fopr0_541685_3102_(xtmp101)
+                xtmp103 = map$fopr0_847611_3142_(xtmp101)
               }
             } // val(H0Pvar(y0(95)))
             {
               {
-                xtmp107 = auxmain_9753_(xtmp102)
+                xtmp107 = auxmain_9746_(xtmp102)
               }
               xtmp106 = [2, xtmp103, xtmp107]
             }
@@ -3342,29 +3342,29 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
           let xtmp107
           let xtmp108
           {
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(25321(line=1962,offs=1)--25373(line=1964,offs=37))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(25297(line=1963,offs=1)--25349(line=1965,offs=37))
             // { // val-implmnt
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(1820(line=153,offs=1)--1870(line=155,offs=31))
             function
-            strm_vt_free_541685_2268_(a5x1)
+            strm_vt_free_847611_2268_(a5x1)
             {
               return XATS2JS_llazy_free(a5x1)
             } // function // strm_vt_free(28)
             // } // val-implmnt
             var // const // implval/fun
-            g_free_541685_1640_ = strm_vt_free_541685_2268_
-            xtmp108 = strm_vt_free_541685_2268_(a3x1)
+            g_free_847611_1680_ = strm_vt_free_847611_2268_
+            xtmp108 = strm_vt_free_847611_2268_(a3x1)
           }
         } // lam-function
         xtmp97 = XATS2JS_new_llazy(xtmp110,xtmp111)
         return xtmp97
       } // function // auxmain(26)
       {
-        xtmp112 = auxmain_9753_(a2x1)
+        xtmp112 = auxmain_9746_(a2x1)
       }
       return xtmp112
     } // function // strm_vt_map0(25)
-    xtmp94 = strm_vt_map0_541685_4631_(a1x1)
+    xtmp94 = strm_vt_map0_847611_4630_(a1x1)
   }
   return xtmp94
 } // function // XATS2JS_strm_vt_map0_f1un(23)
@@ -3383,14 +3383,14 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6695(line=419,offs=3)--6733(line=419,offs=41))
 // L1DCLnone0()
   {
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10129(line=783,offs=1)--10611(line=826,offs=13))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10122(line=783,offs=1)--10604(line=826,offs=13))
     function
-    strm_vt_filter0_541685_4819_(a2x1)
+    strm_vt_filter0_847611_4818_(a2x1)
     {
       let xtmp138
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10201(line=791,offs=1)--10606(line=824,offs=8))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10194(line=791,offs=1)--10599(line=824,offs=8))
       function
-      auxmain_10204_(a3x1)
+      auxmain_10197_(a3x1)
       {
         let a3y1;
         let xtmp118
@@ -3401,7 +3401,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
           let xtmp119
           let xtmp120
           {
-            xtmp119 = auxloop_10289_(a3x1)
+            xtmp119 = auxloop_10282_(a3x1)
           }
           return xtmp119 // lam-fun
         } // lam-function
@@ -3409,18 +3409,18 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
           let xtmp119
           let xtmp120
           {
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(25321(line=1962,offs=1)--25373(line=1964,offs=37))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(25297(line=1963,offs=1)--25349(line=1965,offs=37))
             // { // val-implmnt
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(1820(line=153,offs=1)--1870(line=155,offs=31))
             function
-            strm_vt_free_541685_2268_(a5x1)
+            strm_vt_free_847611_2268_(a5x1)
             {
               return XATS2JS_llazy_free(a5x1)
             } // function // strm_vt_free(28)
             // } // val-implmnt
             var // const // implval/fun
-            g_free_541685_1640_ = strm_vt_free_541685_2268_
-            xtmp120 = strm_vt_free_541685_2268_(a3x1)
+            g_free_847611_1680_ = strm_vt_free_847611_2268_
+            xtmp120 = strm_vt_free_847611_2268_(a3x1)
           }
         } // lam-function
         xtmp118 = XATS2JS_new_llazy(xtmp122,xtmp123)
@@ -3429,7 +3429,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
         return xtmp118
       } // function // auxmain(32)
       function
-      auxloop_10289_(a3x1)
+      auxloop_10282_(a3x1)
       {
         let a3y1;
         let xtmp125
@@ -3472,7 +3472,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
           {
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6695(line=419,offs=3)--6733(line=419,offs=41))
             function
-            filter$test1_541685_4071_(a4x1)
+            filter$test1_847611_4111_(a4x1)
             {
               let xtmp132
               {
@@ -3480,25 +3480,25 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
               }
               return xtmp132
             } // function // filter$test1(30)
-            xtmp130 = filter$test1_541685_4071_(xtmp128)
+            xtmp130 = filter$test1_847611_4111_(xtmp128)
           }
           if (xtmp130)
           { // then
             {
               {
-                xtmp133 = auxmain_10204_(xtmp129)
+                xtmp133 = auxmain_10197_(xtmp129)
               }
               xtmp125 = [2, xtmp128, xtmp133]
             }
 } // if-then
           else
           { // else
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10516(line=821,offs=3)--10535(line=821,offs=22))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10509(line=821,offs=3)--10528(line=821,offs=22))
             {
               {
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6650(line=416,offs=3)--6680(line=417,offs=22))
                 function
-                g_free_541685_1640_(a4x1)
+                g_free_847611_1680_(a4x1)
                 {
                   let xtmp136
                   {
@@ -3506,7 +3506,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
                   }
                   return xtmp136
                 } // function // g_free(27)
-                xtmp134 = g_free_541685_1640_(xtmp128)
+                xtmp134 = g_free_847611_1680_(xtmp128)
               }
               //L1PCKxpat(H0Pnil(); L1VALtmp(tmp(134)));
               //L1CMDmatch(H0Pnil(); L1VALtmp(tmp(134)));
@@ -3526,11 +3526,11 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
         return xtmp125
       } // function // auxloop(33)
       {
-        xtmp138 = auxmain_10204_(a2x1)
+        xtmp138 = auxmain_10197_(a2x1)
       }
       return xtmp138
     } // function // strm_vt_filter0(31)
-    xtmp115 = strm_vt_filter0_541685_4819_(a1x1)
+    xtmp115 = strm_vt_filter0_847611_4818_(a1x1)
   }
   return xtmp115
 } // function // XATS2JS_strm_vt_filter0_f1un(29)

@@ -1,8 +1,10 @@
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 Basics
 for Xats2js/Node
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 #staload
 "srcgen1\
@@ -14,19 +16,36 @@ for Xats2js/Node
 /xatslib\
 /githwxi/SATS/githwxi.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+the_XATSHOME_get() =
+(
+XATS2JS_NODE_the_XATSHOME_get
+  ( (*void*) )) where
+{
+#extern
+fun
+XATS2JS_NODE_the_XATSHOME_get
+  ((*void*)): strn = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #extern
 fun
 XATS2JS_NODE_g_stdin
-((*void*)): FILR = $extnam()
+  ((*void*)): FILR = $extnam()
 #extern
 fun
 XATS2JS_NODE_g_stdout
-((*void*)): FILR = $extnam()
+  ((*void*)): FILR = $extnam()
 #extern
 fun
 XATS2JS_NODE_g_stderr
-((*void*)): FILR = $extnam()
+  ((*void*)): FILR = $extnam()
 //
 #impltmp
 g_stdin< > = XATS2JS_NODE_g_stdin
@@ -48,7 +67,7 @@ XATS2JS_NODE_fs_rexists(path)
 #extern
 fun
 XATS2JS_NODE_fs_rexists
-(path: strn): bool = $extnam()
+  (path: strn): bool = $extnam()
 }
 //
 (* ****** ****** *)
@@ -74,7 +93,7 @@ end where
 #extern
 fun
 XATS2JS_NODE_fs_readFileSync
-(path: strn): stropt = $extnam()
+  (path: strn): stropt = $extnam()
 } (* end of [fpath_strmize_char] *)
 
 (* ****** ****** *)
@@ -125,5 +144,9 @@ XATS2JS_NODE_gflt_fprint_dflt:
 gflt_fprint_dflt<> = XATS2JS_NODE_gflt_fprint_dflt
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_githwxi_DATSCATS_JS_NODE_basics0.dats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_DATS_CATS_JS_NODE_basics0.dats] *)
