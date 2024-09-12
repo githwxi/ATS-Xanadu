@@ -272,7 +272,6 @@ ipat.node() of
 |I0Pany _ => ((*void*))
 |I0Pvar _ => ((*void*))
 //
-(*
 |I0Pint _ =>
 (
  f0_int0(b0, ival, ipat))
@@ -282,7 +281,6 @@ ipat.node() of
 |I0Pchr _ =>
 (
  f0_chr0(b0, ival, ipat))
-*)
 |I0Pstr _ =>
 (
  f0_str0(b0, ival, ipat))
@@ -303,6 +301,84 @@ _(*non-I0Pcon*) =>
 (
 conj(b0); prints('"',ipat,'"'))
 //end-of-[f0_ipat(b0,ival,ipat)]
+//
+(* ****** ****** *)
+//
+and
+f0_int0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pint
+(  tint  ) = ipat.node()
+//
+#impltmp
+g_print
+<token>(x) = i0intjs1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valjs1(filr, x)
+//
+in//let
+(conj(b0)
+;print("XATS000_inteq(")
+;prints(ival, ", ", tint, ")"))
+end(*let*)//end-of-[f0_int0(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_btf0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pbtf
+(  btf0  ) = ipat.node()
+//
+#impltmp
+g_print
+<sym_t>(x) = i0btfjs1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valjs1(filr, x)
+//
+in//let
+(conj(b0)
+;print("XATS000_btfeq(")
+;prints(ival, ", ", btf0, ")"))
+end(*let*)//end-of-[f0_btf0(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_chr0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pchr
+(  tchr  ) = ipat.node()
+//
+#impltmp
+g_print
+<token>(x) = i0chrjs1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valjs1(filr, x)
+//
+in//let
+(conj(b0)
+;print("XATS000_chreq(")
+;prints(ival, ", ", tchr, ")"))
+end(*let*)//end-of-[f0_chr0(...)]
 //
 (* ****** ****** *)
 //

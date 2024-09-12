@@ -71,10 +71,17 @@ let XATSADDR = (addr) => addr // HX: no-op
 let XATSFLAT = (addr) => XATS000_lvget(addr)
 //
 ////////////////////////////////////////////////////////////////////////.
-
+//
 let XATSCTAG = (_, t) => t
+//
+let XATS000_inteq = (x, y) => (x===y)
+let XATS000_btfeq = (x, y) => (x===y)
+let XATS000_chreq = (x, y) => (x===y)
+//
+let XATS000_streq = (x, y) => (x == y)
+//
 let XATS000_ctgeq = (v, t) => (v[0] == t)
-
+//
 ////////////////////////////////////////////////////////////////////////.
 
 let XATS000_casef = function()
