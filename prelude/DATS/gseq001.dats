@@ -1615,7 +1615,7 @@ strm_vt_filter0<x0>
 where
 {
 #impltmp
-filter$test0<x0> = filter$test<x0>
+filter$test1<x0> = filter$test<x0>
 }
 #impltmp
 < xs:t0 >
@@ -1628,7 +1628,7 @@ strq_vt_filter0<x0>
 where
 {
 #impltmp
-filter$test0<x0> = filter$test<x0>
+filter$test1<x0> = filter$test<x0>
 }
 //
 #impltmp

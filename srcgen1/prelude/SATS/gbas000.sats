@@ -275,9 +275,11 @@ takeif$test1(x0: !x0): bool
 fun
 <x0:t0>
 filter$test(x0: x0): bool
+(*
 fun
 <x0:vt>
-filter$test0(x0: !x0): bool
+filter$test0(x0: ~x0): bool
+*)
 fun
 <x0:vt>
 filter$test1(x0: !x0): bool
@@ -598,9 +600,11 @@ itakeif$test1(nint, !x0): bool
 fun
 <x0:t0>
 ifilter$test(nint, x0): bool
+(*
 fun
 <x0:vt>
 ifilter$test0(nint, !x0): bool
+*)
 fun
 <x0:vt>
 ifilter$test1(nint, !x0): bool

@@ -1026,7 +1026,7 @@ strm_vt_mapopt0<x0><y0>(xs)
 map$fopr0
 <x0><y0> = map$fopr<x0><y0>
 #impltmp
-filter$test0<x0> = filter$test<x0> }
+filter$test1<x0> = filter$test<x0> }
 end // end-of(impltmp)
 //end-(gseq_mapopt_lstrm/strmize(...))
 //
@@ -1141,7 +1141,7 @@ strm_vt_filter0
 ) where
 {
 #impltmp
-filter$test0<x0> = filter$test<x0>
+filter$test1<x0> = filter$test<x0>
 }(*where*)//end-of[gseq_filter_lstrm(xs)]
 
 (* ****** ****** *)
@@ -2329,7 +2329,7 @@ strm_vt_imapopt0<x0><y0>(xs)
 imap$fopr0
 <x0><y0> = imap$fopr<x0><y0>
 #impltmp
-ifilter$test0<x0> = ifilter$test<x0>
+ifilter$test1<x0> = ifilter$test<x0>
 }
 end//end-of-(gseq_imap_lstrm/strmize(xs))
 

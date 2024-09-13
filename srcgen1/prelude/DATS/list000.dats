@@ -1371,7 +1371,7 @@ For gmap-operations
 {k0:t0}
 {x0:t0}
 gmap_make_nil
-<list@(k0,x0)><k0,x0>
+<list@(k0,x0)><k0><x0>
   ((*void*)) =
 (
   list_nil((*void*)) )
@@ -1382,7 +1382,7 @@ gmap_make_nil
 {k0:t0}
 {x0:t0}
 gmap_keyq
-<list@(k0,x0)><k0,x0>
+<list@(k0,x0)><k0><x0>
   (kxs, key) =
 (
   loop(kxs)) where
@@ -1409,7 +1409,7 @@ g_equal<k0>
 {k0:t0}
 {x0:t0}
 gmap_search$opt
-<list@(k0,x0)><k0,x0>
+<list@(k0,x0)><k0><x0>
 (kxs, key) =
 (
   loop(kxs)) where
@@ -1438,7 +1438,7 @@ then optn_vt_cons(kx1.1) else loop(kxs)
 {k0:t0}
 {x0:t0}
 gmap_insert$opt
-<list@(k0,x0)><k0,x0>
+<list@(k0,x0)><k0><x0>
 (kxs, key, itm) =
 optn_vt_nil(*void*) where
 {
@@ -1453,14 +1453,14 @@ val () =
 {x0:t0}
 gmap_strmize
 <
-list@(k0,x0)><k0,x0>(*0*) =
-list_strmize<(k0,x0)>(*0*)
+list@(k0,x0)><k0><x0>(*0*) =
+list_strmize<(k0, x0)>(*0*)
 //
 #impltmp
 {k0:t0}
 {x0:t0}
 gmap_strmize_key
-<list@(k0,x0)><k0,x0>(kxs) =
+<list@(k0,x0)><k0><x0>(kxs) =
 (
 gseq_map_lstrm<kxs><k0>(kxs)
 ) where
@@ -1472,7 +1472,7 @@ gseq_map_lstrm<kxs><k0>(kxs)
 {k0:t0}
 {x0:t0}
 gmap_strmize_itm
-<list@(k0,x0)><k0,x0>(kxs) =
+<list@(k0,x0)><k0><x0>(kxs) =
 (
 gseq_map_lstrm<kxs><x0>(kxs)
 ) where
