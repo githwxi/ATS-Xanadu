@@ -120,8 +120,21 @@ strq_vt_free(strq_vt(a)): void
 //
 fun
 <a:vt>
+strm_vt_head0
+  (xs: strm_vt(a)): ( a )
+fun
+<a:vt>
 strm_vt_tail0
   (xs: strm_vt(a)): strm_vt(a)
+//
+fun
+<a:vt>
+strm_vt_head$opt0
+  (xs: strm_vt(a)): optn_vt(a)
+fun
+<a:vt>
+strm_vt_tail$opt0
+  (xs: strm_vt(a)): optn_vt(strm_vt(a))
 //
 (* ****** ****** *)
 //

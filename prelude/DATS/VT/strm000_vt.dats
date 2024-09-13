@@ -276,6 +276,58 @@ strmcon_vt_cons(x0, auxmain(xs, ys))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-13:
+Fri 13 Sep 2024 02:56:33 PM EDT
+*)
+//
+#impltmp
+< x0:vt >
+strm_vt_head0
+  ( xs ) =
+( case+ !xs of
+| ~strmcon_vt_cons(x1, xs) =>
+let val () = $free(xs) in x1 end)
+//
+#impltmp
+< x0:vt >
+strm_vt_tail0
+  ( xs ) =
+( case+ !xs of
+| ~strmcon_vt_cons(x1, xs) =>
+let val () = g_free<x0>(x1) in xs end)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strm_vt_head$opt0
+  ( xs ) =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() => optn_vt_nil(*void*)
+| ~
+strmcon_vt_cons(x1, xs) => let
+val () = $free(xs) in optn_vt_cons(x1) end
+)
+//
+#impltmp
+< x0:vt >
+strm_vt_tail$opt0
+  ( xs ) =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() => optn_vt_nil(*void*)
+| ~
+strmcon_vt_cons(x1, xs) => let
+val () = g_free<x0>(x1) in optn_vt_cons(xs) end
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
