@@ -3090,7 +3090,7 @@ endlet // end of [l0d0e_RBRACE_cons1]
 preadx0_d0eclseq_WHERE
   (dcls, err) =
 (
-case+ dcls of
+case- dcls of
 |
 d0eclseq_WHERE
 (tbeg, topt, d0cs, tend) =>
@@ -3103,32 +3103,56 @@ preadx0_d0eclist(d0cs, err)
 //
 val (  ) =
 (
-case+ tend of
+case- tend of
 |
 tkend_WHERE_cons1
 (     tok1     ) =>
 (
 case+
 tok1.node() of
+//
+| T_ENDWHR() =>
+(
+case+ topt of
+|optn_nil _  => (  (*void*)  )
+|optn_cons _ => (err := err+1))
+//
+| T_RBRACE() =>
+(
+case+ topt of
+|optn_nil _  => (err := err+1)
+|optn_cons _ => (  (*void*)  ))
+//
 |
-T_ENDWHR() =>
-( case+ topt of
-| optn_nil() => ()
-| optn_cons _ => (err := err+1))
-|
-T_RBRACE() =>
-(case+ topt of
-| optn_nil() =>
-  (err := err+1) | optn_cons _ => ())
-)
-) (*case+*) // end of [val()]
+_(*otherwise*) => ( err := err+1 )
+//
+) where
+{
+(*
+//
+val loc1 = tok1.lctn()
+val (  ) = prerrsln("\
+preadx0_d0eclseq_WHERE: loc1 = ", loc1)
+//
+*)
+}
+) where
+{
+//
+(*
+val (  ) = prerrsln("\
+preadx0_d0eclseq_WHERE: tend = ", tend)
+*)
+//
+}(*where*)//(*case+*)//end-of-[ val(  ) ]
 //
 in
 if
 (err=e00)
 then (dcls)
 else
-d0eclseq_WHERE(tbeg, topt, d0cs, tend)
+(
+  d0eclseq_WHERE(tbeg, topt, d0cs, tend))
 endlet // end of [d0eclseq_WHERE(_,_,_,_)]
 ) (*case+*)//end(preadx0_d0eclseq_WHERE(dcls,err))
 //  
