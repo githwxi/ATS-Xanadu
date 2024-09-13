@@ -11,12 +11,14 @@ Sun 01 Sep 2024 08:14:07 AM EDT
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-#include
-"./../../../prelude/HATS/prelude_NODE_dats.hats"
+//
+#staload _ =
+"prelude/DATS/CATS/JS/NODE/node000.dats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 //
-(* end of [ATS3_XANADU_srcgen2_prelude_prelude_NODE_dats.hats] *)
+(* end of [ATS3_XANADU_prelude_prelude_NODE_dats.hats] *)
