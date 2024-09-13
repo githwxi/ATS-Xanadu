@@ -55,12 +55,33 @@ optn_vt_cons_
 (* ****** ****** *)
 //
 #impltmp
-< a: vt >
+<(*tmp*)>
+optn_vt_nilq1
+  (xs) =
+(
+case+ xs of
+|
+optn_vt_nil() => true
+|
+optn_vt_cons _ => false)
+//
+#impltmp
+{ x0:vt }
+gseq_nilq1
+<optn_vt(x0)><x0> =
+optn_vt_nilq1<>{x0}(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
 optn_vt_head0
   (xs) =
 (
 case+ xs of
-| ~optn_vt_cons(x0) => x0)
+| ~
+optn_vt_cons(x0) => (x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -1317,7 +1317,7 @@ val deid = p1_d0eid(buf, err)
 val tend = p1_RPAREN(buf, err)
 val loc0 = tbeg.lctn() + tend.lctn()
 //
-in
+in//let
 err := e00;
 d0exp_make_node(loc0, D0Eopid(deid))
 end(*let*) // end-of-[  T_OP3(_)  ]

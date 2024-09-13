@@ -79,6 +79,35 @@ strm_vt_eval
 //
 fun
 <x0:vt>
+strm_vt_head0
+(xs: strm_vt(x0)): (x0)
+fun
+<x0:vt>
+strm_vt_tail0
+(xs: strm_vt(x0)): strm_vt(x0))
+//
+#symload head0 with strm_vt_head0
+#symload tail0 with strm_vt_tail0
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_head$opt0
+(xs: strm_vt(x0)): optn_vt(x0)
+fun
+<x0:vt>
+strm_vt_tail$opt0
+(xs: strm_vt(x0)): optn_vt(strm_vt(x0))
+//
+#symload head$opt0 with strm_vt_head$opt0
+#symload tail$opt0 with strm_vt_tail$opt0
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 strm_vt_length0
 (xs: strm_vt(x0)): (nint)
 fun
