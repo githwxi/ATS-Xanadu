@@ -84,7 +84,7 @@ strm_vt_head0
 fun
 <x0:vt>
 strm_vt_tail0
-(xs: strm_vt(x0)): strm_vt(x0))
+(xs: strm_vt(x0)): strm_vt(x0)
 //
 #symload head0 with strm_vt_head0
 #symload tail0 with strm_vt_tail0
