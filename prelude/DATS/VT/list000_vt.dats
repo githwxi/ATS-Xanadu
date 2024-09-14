@@ -40,6 +40,46 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
+HX-2024-09-14:
+Sat 14 Sep 2024 11:40:03 AM EDT
+*)
+//
+#impltmp
+< a: vt >
+list_vt_make_1val
+  ( x1 ) =
+list_vt_cons(x1, list_vt_nil)
+#impltmp
+< a: vt >
+list_vt_make_2val
+  (x1, x2) =
+list_vt_cons(x1,
+list_vt_cons(x2, list_vt_nil))
+#impltmp
+< a: vt >
+list_vt_make_3val
+  (x1, x2, x3) =
+list_vt_cons(x1,
+list_vt_cons(x2,
+list_vt_cons(x3, list_vt_nil)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-09-14:
+Sat 14 Sep 2024 11:40:03 AM EDT
+*)
+//
+#impltmp
+< a: vt >
+list_vt_make_nfun =
+nint_map_f1un_llist<a>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-07-17:
 Wed 17 Jul 2024 10:06:19 PM EDT
 *)

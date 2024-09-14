@@ -122,7 +122,7 @@ list_vt_make_nfun
 #symload
 list_vt with list_vt_make_nfun
 #symload
-list_vt_make with list_vt_make_nfun
+list_vt_nfun with list_vt_make_nfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
