@@ -60,6 +60,17 @@ g_ptype<t0>((*0*)); pstrn(")"))
 (* ****** ****** *)
 //
 #impltmp
+{ x0:t0 }
+gseq_nil
+<optn(x0)><x0>
+  ((*void*)) =
+(
+  optn_nil((*0*)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 <(*tmp*)>
 optn_nil_
  ((*0*)) = optn_nil()
@@ -68,6 +79,7 @@ optn_nil_
 optn_cons_
  (  x0  ) = optn_cons(x0)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -78,6 +90,12 @@ optn_nilq
 case+ xs of
 | optn_nil() => true
 | optn_cons(_) => false)
+//
+#impltmp
+{ x0:t0 }
+gseq_nilq
+<optn(x0)><x0> =
+optn_nilq<>{x0}(* void *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -90,24 +108,10 @@ optn_head
 case+ xs of
 | optn_cons(x0) => (x0))
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #impltmp
 { x0:t0 }
-gseq_nil
-<optn(x0)><x0>
-  ((*void*)) =
-(
-  optn_nil((*0*)))
-//
-(* ****** ****** *)
-//
-#impltmp
-{ x0:t0 }
-gseq_nilq
-<optn(x0)><x0>
- (  xs  ) = optn_nilq{x0}(xs)
+gseq_head
+<optn(x0)><x0> = optn_nilq<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -161,8 +165,13 @@ optn_length
   (xs) =
 (
 case+ xs of
-|
-optn_nil() => 0 | optn_cons _ => 1)
+| optn_nil() => 0
+| optn_cons(_, _) => 1)//impl
+//
+#impltmp
+{ x0:t0 }
+gseq_length
+<optn(x0)><x0> = optn_length<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
