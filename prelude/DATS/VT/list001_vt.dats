@@ -316,11 +316,9 @@ let
 //
 end(*let*)//end-of-[ list_vt_map0(...) ]
 //
-(* ****** ****** *)
-//
 #impltmp
-< x0:t0 >
-< y0:t0 >
+< x0:vt >
+< y0:vt >
 list_vt_map0_f1un
   (xs, f0) =
 (
@@ -328,6 +326,56 @@ list_vt_map0_f1un
 {
 #impltmp map$fopr0<x0><y0>(x0) = f0(x0)
 }(*where*)//end-of-[list_vt_map0_f1un(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+list_vt_maprev0
+  ( xs ) =
+(
+let
+val ys =
+list_vt_nil() in loop(xs, ys)
+end//let
+) where
+{
+//
+fnx
+loop
+{i,j:nat}.<i>.
+( xs
+: list_vt(x0, i)
+, ys
+: list_vt(y0, j))
+: list_vt(y0, i+j) =
+(
+case+ xs of
+| ~
+list_vt_nil() => ys
+| ~
+list_vt_cons(x0, xs) =>
+let
+  val y0 =
+  map$fopr0<x0><y0>(x0)
+in
+  loop(xs, list_vt_cons(y0, ys))
+end//let//end-of-[list_vt_cons(...)]
+)
+//
+}(*where*)//end-of-[list_vt_maprev0(...)]
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+list_vt_maprev0_f1un
+  (xs, f0) =
+(
+  list_vt_maprev0<x0><y0>(xs)) where
+{
+#impltmp map$fopr0<x0><y0>(x0) = f0(x0)
+}(*where*)//end-of-[list_vt_maprev0_f1un(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
