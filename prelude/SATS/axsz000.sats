@@ -94,7 +94,7 @@ a1sz_make_list
 (xs: list(a, n)): a1sz(a, n)
 //
 #symload
-a1sz with a1sz_make_list of 1000
+a1sz with a1sz_make_list//of 1000
 //
 (* ****** ****** *)
 //
@@ -112,13 +112,13 @@ a1sz_make_nfun
 , f: nint(n) -> a): a1sz(a, n)
 //
 #symload
-a1sz with a1sz_make_ncpy of 1000
+a1sz with a1sz_make_ncpy//of 1000
 #symload
-a1sz with a1sz_make_nfun of 1000
+a1sz with a1sz_make_nfun//of 1000
 #symload
-arrsz with a1sz_make_ncpy of 1000
+arrsz with a1sz_make_ncpy//of 1000
 #symload
-arrsz with a1sz_make_nfun of 1000
+arrsz with a1sz_make_nfun//of 1000
 //
 (* ****** ****** *)
 //
@@ -134,9 +134,9 @@ a1sz_make_lstrq
 (xs:strq_vt(a, n)): a1sz(a, n)
 //
 #symload
-a1sz with a1sz_make_lstrm of 1000
+a1sz with a1sz_make_lstrm//of 1000
 #symload
-a1sz with a1sz_make_lstrq of 1000
+a1sz with a1sz_make_lstrq//of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
