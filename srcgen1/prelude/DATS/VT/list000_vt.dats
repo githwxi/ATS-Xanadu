@@ -715,7 +715,7 @@ in
   let
   var r0: list_vt(y0)
   val () = loop(xs, r0) in r0 end
-end (*let*)//end of [list_map0_vt(...)]
+end (*let*)//end of [list_vt_map0_vt(...)]
 //
 (* ****** ****** *)
 

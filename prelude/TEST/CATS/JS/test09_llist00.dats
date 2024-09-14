@@ -26,7 +26,12 @@ For testing prelude/JS!
 (* ****** ****** *)
 //
 val ns =
-list_vt_nfun(10, lam(i) => i)
+list_vt_nfun
+(10, lam(i) => i)
+//
+val ns =
+map0_fun(ns, lam(i:sint)=>i*i)
+//
 val () = print0s("ns = ", ns, "\n")
 //
 (* ****** ****** *)

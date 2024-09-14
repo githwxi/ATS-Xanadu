@@ -271,6 +271,67 @@ gseq_strmize0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-14:
+Sat 14 Sep 2024 03:04:03 PM EDT
+*)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+list_vt_map0
+  ( xs ) = let
+//
+fnx
+loop
+{i:nat}.<i>.
+( xs
+: ~list_vt(x0,i)
+, r0
+: &(?list_vt(y0)) >> list_vt(y0,i)
+) : void =
+(
+case+ xs of
+| ~
+list_vt_nil() =>
+(r0 := list_vt_nil())
+| ~
+list_vt_cons(x0, xs) =>
+let
+val y0 =
+map$fopr0<x0><y0>(x0)
+val () =
+(r0 := list_vt_cons(y0, _))
+in
+(
+  loop(xs, r0.1); $fold(r0))
+end
+) (* end of [loop] *)
+//
+in
+//
+let
+  var r0: list_vt(y0)
+  val () = loop(xs, r0) in r0 end//let
+//
+end(*let*)//end-of-[ list_vt_map0(...) ]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+list_vt_map0_f1un
+  (xs, f0) =
+(
+  list_vt_map0<x0><y0>(xs)) where
+{
+#impltmp map$fopr0<x0><y0>(x0) = f0(x0)
+}(*where*)//end-of-[list_vt_map0_f1un(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
