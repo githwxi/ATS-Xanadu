@@ -161,7 +161,7 @@ fun
 <a:t0>
 bool_ifval
 {b:b0}
-(b: bool(b), x: a, y: a): (a)
+(b: bool(b), x: a, y: a): (a) // fun
 //
 #symload ifval with bool_ifval of 1000
 //
