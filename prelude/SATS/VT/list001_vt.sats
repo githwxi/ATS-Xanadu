@@ -228,6 +228,11 @@ list_vt_nchoose0_lstrm$llist
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-14:
+Sat 14 Sep 2024 03:34:58 PM EDT
+*)
+//
 fun
 <x0:vt>
 <y0:vt>
@@ -250,17 +255,63 @@ fun
 list_vt_map0_f1un
 {ln:nat}
 (xs:
-~list_vt(x0, ln), (~x0)->y0): list_vt(y0, ln)
+~list_vt(x0, ln)
+,fopr: (  ~x0  ) -> y0): list_vt(y0, ln)
 fun
 <x0:vt>
 <y0:vt>
 list_vt_map1_f1un
 {ln:nat}
 (xs:
-!list_vt(x0, ln), (!x0)->y0): list_vt(y0, ln)
+!list_vt(x0, ln)
+,fopr: (  !x0  ) -> y0): list_vt(y0, ln)
 //
 #symload map0_fun with list_vt_map0_f1un of 1000
 #symload map1_fun with list_vt_map1_f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-09-14:
+Sat 14 Sep 2024 03:34:58 PM EDT
+*)
+//
+fun
+<x0:vt>
+<y0:vt>
+list_vt_maprev0
+{ln:nat}
+(xs: ~list_vt(x0, ln)): list_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+list_vt_maprev1
+{ln:nat}
+(xs: !list_vt(x0, ln)): list_vt(y0, ln)
+//
+#symload maprev0 with list_vt_maprev0 of 1000
+#symload maprev1 with list_vt_maprev1 of 1000
+//
+fun
+<x0:vt>
+<y0:vt>
+list_vt_maprev0_f1un
+{ln:nat}
+(xs:
+~list_vt(x0, ln)
+,fopr: (  ~x0  ) -> y0): list_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+list_vt_maprev1_f1un
+{ln:nat}
+(xs:
+!list_vt(x0, ln)
+,fopr: (  !x0  ) -> y0): list_vt(y0, ln)
+//
+#symload maprev0_fun with list_vt_maprev0_f1un of 1000
+#symload maprev1_fun with list_vt_maprev1_f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
