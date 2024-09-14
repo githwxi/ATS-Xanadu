@@ -372,14 +372,14 @@ end(*let*)//else//end-of-[if]
 //
 #impltmp
 < y0:vt >
-nint_map_lstrm_f1un
+nint_map_f1un_lstrm
   (ni, fopr) =
 (
 nint_map_lstrm<y0>(ni))
 where
 { #impltmp
   map$fopr<ni><y0>(i0) = fopr( i0 )
-}(*where*)//end-[nint_map_lstrm_f1un]
+}(*where*)//end-[nint_map_f1un_lstrm]
 //
 (* ****** ****** *)
 //
@@ -409,14 +409,14 @@ end(*let*)//else//end-of-[if]
 //
 #impltmp
 < y0:vt >
-nint_rmap_lstrm_f1un
+nint_rmap_f1un_lstrm
   (ni, fopr) =
 (
 nint_rmap_lstrm<y0>(ni))
 where
 { #impltmp
   rmap$fopr<ni><y0>(i0) = fopr( i0 )
-}(*where*)//end-[nint_rmap_lstrm_f1un]
+}(*where*)//end-[nint_rmap_f1un_lstrm]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -458,6 +458,19 @@ end(*let*)//else//end-of-[if(...)]
 //
 }(*where*)//end-[nint_map_llist(ni)]
 //
+#impltmp
+< y0:vt >
+nint_map_f1un_llist
+  (ni, fopr) =
+(
+nint_map_llist
+<  y0  >(  ni  )) where
+{
+#impltmp
+map$fopr<ni><y0>( i0 ) = fopr( i0 )
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -491,6 +504,18 @@ end(*let*)//else//end-of-[if(...)]
 )
 //
 }(*where*)//end-[nint_map_llist(ni)]
+//
+#impltmp
+< y0:vt >
+nint_rmap_f1un_llist
+  (ni, fopr) =
+(
+nint_rmap_llist
+<  y0  >(  ni  )) where
+{
+#impltmp
+rmap$fopr<ni><y0>( i0 ) = fopr( i0 )
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
