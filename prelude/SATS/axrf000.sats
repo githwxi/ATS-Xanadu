@@ -94,11 +94,12 @@ a2rf_vt(x0:vt) = [m:i0;n:i0] a2rf_vt(x0,m,n)
 //
 fun
 <a:vt>
-a0rf_make_1val
-  (elem: a): a0rf(a)
+a0rf_make_1val(x1: a): a0rf(a)
 //
 #symload
-a0rf with a0rf_make_1val of 1000
+a0rf with a0rf_make_1val// of 1000
+#symload
+a0rf_1val with a0rf_make_1val// of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -151,7 +152,7 @@ a1rf_make_list
 (xs: list(a, n)): a1rf(a, n)
 //
 #symload
-a1rf with a1rf_make_list of 1000
+a1rf with a1rf_make_list//of 1000
 //
 (* ****** ****** *)
 //
@@ -169,13 +170,13 @@ a1rf_make_nfun
 , f0: nint(n) -> a): a1rf(a, n)
 //
 #symload
-a1rf with a1rf_make_ncpy of 1000
+a1rf with a1rf_make_ncpy//of 1000
 #symload
-a1rf with a1rf_make_nfun of 1000
+a1rf with a1rf_make_nfun//of 1000
 #symload
-array with a1rf_make_ncpy of 1000
+array with a1rf_make_ncpy//of 1000
 #symload
-array with a1rf_make_nfun of 1000
+array with a1rf_make_nfun//of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

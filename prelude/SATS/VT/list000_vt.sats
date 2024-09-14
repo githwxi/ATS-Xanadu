@@ -98,11 +98,31 @@ list_vt_make_3val
 (* ****** ****** *)
 //
 #symload
-llist_sing with list_vt_make_1val
+list_vt_sing with list_vt_make_1val
 #symload
-llist_pair with list_vt_make_2val
+list_vt_pair with list_vt_make_2val
+//
 #symload
-llist_triple with list_vt_make_3val
+list_vt_1val with list_vt_make_1val
+#symload
+list_vt_2val with list_vt_make_2val
+#symload
+list_vt_3val with list_vt_make_2val
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+list_vt_make_nfun
+{n:nat}
+(n0: sint(n)
+,f0: nintlt(n)->(a)): list_vt(a, n)
+//
+#symload
+list_vt with list_vt_make_nfun
+#symload
+list_vt_make with list_vt_make_nfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -138,9 +158,9 @@ list_vt_make0_lstrq
 (xs: strq_vt(x0,n0)): list_vt(x0,n0)
 //
 #symload
-llist_make0 with list_vt_make0_lstrm
+list_vt_make0 with list_vt_make0_lstrm
 #symload
-llist_make0 with list_vt_make0_lstrq
+list_vt_make0 with list_vt_make0_lstrq
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -185,6 +205,16 @@ list_vt_append10
 //
 (* ****** ****** *)
 //
+#symload
+append0 with list_vt_append0 of 1000
+#symload
+append00 with list_vt_append00 of 1000
+#symload
+append10 with list_vt_append10 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 list_vt_reverse0
@@ -196,8 +226,10 @@ list_vt_reverse1
 {n0:i0}
 (xs: !list_vt(x0,n0)): list_vt(x0,n0)
 //
-#symload reverse0 with list_reverse0 of 1000
-#symload reverse1 with list_reverse1 of 1000
+#symload
+reverse0 with list_vt_reverse0 of 1000
+#symload
+reverse1 with list_vt_reverse1 of 1000
 //
 (* ****** ****** *)
 //
@@ -205,24 +237,33 @@ fun
 <x0:vt>
 list_vt_rappend0
 {n1,n2:i0}
-( xs: ~list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+( xs
+: ~list_vt(x0,n1)
+, ys
+: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
 fun
 <x0:vt>
 list_vt_rappend00
 {n1,n2:i0}
-( xs: ~list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+( xs
+: ~list_vt(x0,n1)
+, ys
+: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
 fun
 <x0:vt>
 list_vt_rappend10
 {n1,n2:i0}
-( xs: !list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+( xs
+: !list_vt(x0,n1)
+, ys
+: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
 //
-#symload rappend0 with list_rappend0 of 1000
-#symload rappend00 with list_rappend00 of 1000
-#symload rappend10 with list_rappend10 of 1000
+#symload
+rappend0 with list_vt_rappend0 of 1000
+#symload
+rappend00 with list_vt_rappend00 of 1000
+#symload
+rappend10 with list_vt_rappend10 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -40,12 +40,10 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun<>
 optn_nil_
-{a:t0}
-((*0*)): optn(a,ff)
+{a:t0}((*0*)): optn(a,ff)
 fun
 <a:t0>
-optn_cons_
-(x0:(a)): optn(a,tt)
+optn_cons_(x0:(a)): optn(a,tt)
 //
 (* ****** ****** *)
 //
@@ -64,6 +62,19 @@ optn_head
 //
 #symload head with optn_head of 1000
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:t0>
+optn_make_1val(a): optn(a,tt)
+//
+#symload
+optn with optn_make_1val// of 1000
+#symload
+optn_1val with optn_make_1val// of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

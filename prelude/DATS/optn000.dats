@@ -75,7 +75,7 @@ gseq_nil
 optn_nil_
  ((*0*)) = optn_nil()
 #impltmp
-< x0:t0 >
+< a: t0 >
 optn_cons_
  (  x0  ) = optn_cons(x0)
 //
@@ -111,7 +111,7 @@ case+ xs of
 #impltmp
 { x0:t0 }
 gseq_head
-<optn(x0)><x0> = optn_nilq<x0>
+<optn(x0)><x0> = optn_head<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -160,13 +160,20 @@ gseq_print<optn(x0)><x0>(xs))
 (* ****** ****** *)
 //
 #impltmp
+< a: t0 >
+optn_make_1val = optn_cons_<a>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 < x0:t0 >
 optn_length
   (xs) =
 (
 case+ xs of
-| optn_nil() => 0
-| optn_cons(_, _) => 1)//impl
+| optn_nil( ) => 0
+| optn_cons(_) => 1)//impltmp
 //
 #impltmp
 { x0:t0 }

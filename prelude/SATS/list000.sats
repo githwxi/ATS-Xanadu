@@ -140,10 +140,11 @@ fun
 <a:t0>
 list_make_nfun
 {n:nat}
-( x0: (a)
-, f0: nintlt(n)->(a)): list(a, n)
+(n0: sint(n)
+,f0: nintlt(n)->(a)): list(a, n)
+//
 #symload
-list with list_make_nfun of 1000
+list with list_make_nfun//of 1000
 #symload
 list_nfun with list_make_nfun//of 1000
 //
@@ -156,7 +157,8 @@ list_length
 {n:i0}
 (xs: list(a, n)): sint(n)
 //
-#symload length with list_length of 1000
+#symload
+length with list_length of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

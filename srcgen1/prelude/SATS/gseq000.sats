@@ -113,6 +113,15 @@ gseq_copy(xs): (xs)
 fun
 <xs:t0>
 <x0:t0>
+gseq_head(xs): x0
+fun
+<xs:t0>
+<x0:t0>
+gseq_tail(xs): xs
+//
+fun
+<xs:t0>
+<x0:t0>
 gseq_head$exn(xs): x0
 fun
 <xs:t0>
