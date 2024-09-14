@@ -119,6 +119,11 @@ list_vt_length1
 {n0:i0}
 (xs: !list_vt(x0,n0)): sint(n0)
 //
+#symload
+length0 with list_vt_length0 of 1000
+#symload
+length1 with list_vt_length1 of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -130,7 +135,7 @@ fun
 <x0:vt>
 list_vt_make0_lstrq
 {n0:i0}
-(xs: strq_vt(x0, n0)): list_vt(x0, n0)
+(xs: strq_vt(x0,n0)): list_vt(x0,n0)
 //
 #symload
 llist_make0 with list_vt_make0_lstrm
@@ -144,7 +149,10 @@ fun
 <x0:vt>
 list_vt_copy
  {n0:i0}
-( xs: ~list_vt(x0,n0)): list_vt(x0,n0)
+( xs
+: !list_vt(x0,n0)): list_vt(x0,n0)
+//
+#symload copy with list_vt_copy of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -153,21 +161,27 @@ fun
 <x0:vt>
 list_vt_append0
 {n1,n2:i0}
-( xs: ~list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+( xs
+: ~list_vt(x0,n1)
+, ys
+: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
 fun
 <x0:vt>
 list_vt_append00
 {n1,n2:i0}
-( xs: ~list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+( xs
+: ~list_vt(x0,n1)
+, ys
+: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
 //
 fun
 <x0:vt>
 list_vt_append10
 {n1,n2:i0}
-( xs: !list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+( xs
+: !list_vt(x0,n1)
+, ys
+: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
 //
 (* ****** ****** *)
 //
@@ -176,28 +190,39 @@ fun
 list_vt_reverse0
 {n0:i0}
 (xs: ~list_vt(x0,n0)): list_vt(x0,n0)
-//
 fun
 <x0:vt>
 list_vt_reverse1
 {n0:i0}
 (xs: !list_vt(x0,n0)): list_vt(x0,n0)
 //
+#symload reverse0 with list_reverse0 of 1000
+#symload reverse1 with list_reverse1 of 1000
+//
 (* ****** ****** *)
 //
+fun
+<x0:vt>
+list_vt_rappend0
+{n1,n2:i0}
+( xs: ~list_vt(x0,n1)
+, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
 fun
 <x0:vt>
 list_vt_rappend00
 {n1,n2:i0}
 ( xs: ~list_vt(x0,n1)
 , ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
-//
 fun
 <x0:vt>
 list_vt_rappend10
 {n1,n2:i0}
 ( xs: !list_vt(x0,n1)
 , ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+//
+#symload rappend0 with list_rappend0 of 1000
+#symload rappend00 with list_rappend00 of 1000
+#symload rappend10 with list_rappend10 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -207,6 +232,9 @@ GLSEQ_make0_list_vt
 {a:vt}
 (xs: list_vt(a)): GLSEQ(list_vt(a), a)
 #symload GLSEQ with GLSEQ_make0_list_vt of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

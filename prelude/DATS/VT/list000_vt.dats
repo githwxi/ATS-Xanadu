@@ -333,10 +333,6 @@ end // end of [list_vt_cons(...)]
 list_vt_reverse0(xs) =
 list_vt_rappend00<a>(xs, list_vt_nil(*void*))
 //
-#impltmp
-< a: vt >
-list_vt_rappend0 = list_vt_rappend00<a>(*void*)
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
