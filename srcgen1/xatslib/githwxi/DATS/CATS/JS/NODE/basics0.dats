@@ -1,8 +1,8 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-Basics
-for Xats2js/Node
+Basics for
+srcgen1/xatslib/JS/NODE/.
 *)
 (* ****** ****** *)
 (* ****** ****** *)

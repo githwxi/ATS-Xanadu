@@ -87,11 +87,11 @@ $(ECHO) "/* ****** ****** */\n" >> xats2js_prelude_node.js
 #
 xats2js_prelude_node:: ; \
 $(CAT) \
-$(MYHOME)/prelude/DATS/CATS/JS/Node/g_print.cats >> xats2js_prelude_node.js
+$(MYHOME)/prelude/DATS/CATS/JS/NODE/g_print.cats >> xats2js_prelude_node.js
 #
 xats2js_prelude_node:: ; \
 $(CAT) \
-$(MYHOME)/prelude/DATS/CATS/JS/Node/process.cats >> xats2js_prelude_node.js
+$(MYHOME)/prelude/DATS/CATS/JS/NODE/process.cats >> xats2js_prelude_node.js
 #
 ######
 xats2js_xatslib_node:: ; \
@@ -105,7 +105,7 @@ $(ECHO) "/* ****** ****** */\n" >> xats2js_xatslib_node.js
 #
 xats2js_xatslib_node:: ; \
 $(CAT) \
-$(MYHOME)/xatslib/githwxi/DATS/CATS/JS/Node/basics0.cats >> xats2js_xatslib_node.js
+$(MYHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.cats >> xats2js_xatslib_node.js
 #
 ######
 clean:: ; rm -f *~

@@ -1,7 +1,10 @@
 (* ****** ****** *)
+(* ****** ****** *)
 (*
-Print for Xats2js/Node
+Primitive prints for
+srcgen1/prelude/JS/NODE/.
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
