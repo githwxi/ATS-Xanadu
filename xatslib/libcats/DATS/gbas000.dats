@@ -13,8 +13,15 @@ from the C programming language system
 (* ****** ****** *)
 //
 #abstbox
-FILR_tbox==p0tr(*FILE*)
-#typedef FILR = FILR_tbox
+FILEref==p0tr(*FILE*)
+#typedef FILR = FILEref
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:t0>
+g_prerr(obj:(a)): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -85,6 +92,14 @@ fprint with FILR_print_strn of 1000
 (* ****** ****** *)
 //
 #impltmp
+< a: t0 >
+g_prerr(obj) =
+FILR_gprint(g_stderr<>(), obj)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 g_print<sint>(i0) =
 FILR_print_sint(g_stdout<>(), i0)
 #impltmp
@@ -96,10 +111,12 @@ FILR_print_char(g_stdout<>(), c0)
 //
 #impltmp
 g_print<dflt>(f0) =
-FILR_print_dflt(g_stdout<>(), f0)
+(
+  FILR_print_dflt(g_stdout<>(), f0))
 #impltmp
 g_print<strn>(cs) =
-FILR_print_strn(g_stdout<>(), cs)
+(
+  FILR_print_strn(g_stdout<>(), cs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
