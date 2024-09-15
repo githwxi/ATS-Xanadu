@@ -39,6 +39,16 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <a:vt>
+a1rf_strmize
+  (A: a1rf(a)): strm_vt(a)
+//
+#symload strmize with a1rf_strmize of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
 a1rf_forall_size
 {n:nat}
 (A:a1rf(a,n), n:sint(n)): bool

@@ -99,6 +99,8 @@ gseq_istrqize
 (*
 HX: for [gs_forall]
 HX: for [gs_exists]
+HX: for [gs_iforall]
+HX: for [gs_iexists]
 *)
 fun
 <xs:t0>
@@ -106,6 +108,14 @@ g_forall(xs: xs): bool
 fun
 <xs:t0>
 g_exists(xs: xs): bool
+fun
+<xs:t0>
+g_iforall(xs: xs): bool
+fun
+<xs:t0>
+g_iexists(xs: xs): bool
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -248,6 +258,11 @@ HX: for [gs_foritm]
 fun
 <xs:t0>
 g_foritm(xs: xs): void
+fun
+<xs:t0>
+g_iforitm(xs: xs): void
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>

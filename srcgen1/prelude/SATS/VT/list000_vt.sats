@@ -156,13 +156,11 @@ list_vt_make_3val
 (x1: a
 ,x2: a, x3: a): list_vt(a,3)
 //
-(*
 fun
 <a:vt>
 list_vt_make_ncpy
 {n:nat}
 (n0:sint(n), x0:a): list_vt(a,n)
-*)
 //
 fun
 <a:vt>

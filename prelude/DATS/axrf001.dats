@@ -116,6 +116,13 @@ owed_vt_return0(pf, x0) in btf end
 (* ****** ****** *)
 //
 #impltmp
+< x0:vt >
+a1rf_strmize =
+gasz_strmize<a1rf(x0)><x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
 { x0:t0 }
 gseq_strmize
 <a1rf(x0)><x0> =

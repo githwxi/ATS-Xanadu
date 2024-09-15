@@ -42,6 +42,16 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <a:vt>
+a1sz_strmize
+  (A: a1sz(a)): strm_vt(a)
+//
+#symload strmize with a1sz_strmize of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
 a1sz_forall(A: a1sz(a)): bool
 fun
 <a:vt>
