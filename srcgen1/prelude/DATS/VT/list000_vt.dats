@@ -180,7 +180,7 @@ list_vt_cons(_, xs) => loop(xs, ln+1)
 
 #impltmp
 <a>(*tmp*)
-list_vt_make_nval
+list_vt_make_ncpy
   (n0, x0) = let
 //
 fnx
@@ -207,7 +207,7 @@ in
 let
 var r0: list_vt(a) in loop(n0, r0); r0
 end
-end (* end of [list_vt_make_nval] *)
+end (* end of [list_vt_make_ncpy] *)
 
 (* ****** ****** *)
 

@@ -42,6 +42,27 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+< x0:vt >
+a1sz_strmize =
+gasz_strmize<a1sz(x0)><x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+gseq_strmize
+<a1sz(x0)><x0> =
+gasz_strmize<a1sz(x0)><x0>(*void*)
+#impltmp
+{ x0:vt }
+gseq_strmize1
+<a1sz(x0)><x0> =
+gasz_strmize<a1sz(x0)><x0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 { a: vt }
 g_forall<a1sz(a)> =
 gasz_forall<a1sz(a)><a>

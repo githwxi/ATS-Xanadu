@@ -727,17 +727,29 @@ endlet // end of [D2Etapp(...)]
 |
 D2Edapp
 (d2f0,npf1,d2es) =>
-(*
-HX-2023-07-07:
-Handling arguments first!
-*)
 let
-  val () =
-  trsym2b_d2exp(env0, d2f0)
+//
+val () =
+trsym2b_d2exp(env0, d2f0)
+//
 end where
 {
-  val () =
-  trsym2b_d2explst(env0, d2es)
+//
+(*
+val () =
+(
+ trsym2b_d2exp(env0, d2f0))
+*)
+//
+(*
+HX-2023-07-07:
+Handling the arguments first!
+*)
+//
+val () =
+(
+ trsym2b_d2explst(env0, d2es))
+//
 } (*where*) // end of [D2Edapp]
 //
 |

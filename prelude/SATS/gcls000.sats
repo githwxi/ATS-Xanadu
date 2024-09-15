@@ -196,8 +196,8 @@ GSEQ_irforall
 //
 #symload forall with GSEQ_forall of 1000
 #symload rforall with GSEQ_rforall of 1000
-#symload iforall with GSEQ_rforall of 1000
-#symload irforall with GSEQ_rforall of 1000
+#symload iforall with GSEQ_iforall of 1000
+#symload irforall with GSEQ_irforall of 1000
 //
 (* ****** ****** *)
 //
@@ -297,8 +297,8 @@ GSEQ_irforitm
 //
 #symload foritm with GSEQ_foritm of 1000
 #symload rforitm with GSEQ_rforitm of 1000
-#symload iforitm with GSEQ_rforitm of 1000
-#symload irforitm with GSEQ_rforitm of 1000
+#symload iforitm with GSEQ_iforitm of 1000
+#symload irforitm with GSEQ_irforitm of 1000
 //
 (* ****** ****** *)
 //
@@ -386,8 +386,8 @@ GSEQ(xs,x0), r0: r0): (r0)
 //
 #symload folditm with GSEQ_folditm of 1000
 #symload rfolditm with GSEQ_rfolditm of 1000
-#symload ifolditm with GSEQ_rfolditm of 1000
-#symload irfolditm with GSEQ_rfolditm of 1000
+#symload ifolditm with GSEQ_ifolditm of 1000
+#symload irfolditm with GSEQ_irfolditm of 1000
 //
 (* ****** ****** *)
 //
