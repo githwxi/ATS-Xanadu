@@ -56,7 +56,7 @@ srcgen1\
 #staload
 "\
 srcgen1\
-/xatslib/githwxi/DATS/CATS/JS/Node/basics0.dats"
+/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
 //
 // #endif // end of [ifdef(_XATSOPT_JS_)]
 //

@@ -11,19 +11,9 @@ Some simple stuff for handling files
 "prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-"./../../libcats/DATS/gbas000.dats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun<>
-myfil00$FILR_close
-  (filr: FILR): void
-//
-fun<>
-myfil00$fpath_open$opt
-  (fpath: strn): FILRopt_vt
-//
+#include
+"xatslib\
+/libcats/HATS/libcats_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -67,22 +57,64 @@ end//let
 //
 #extern
 fun<>
-myfil00_output(): void
+myfil00_output
+  ( (*void*) ): void
+//
+(* ****** ****** *)
 //
 #extern
 fun<>
-myfil00$myfil_make$opt_stdout
-  (fpath: strn): bool(*succ/fail*)
+myfil00$FILR_close
+  (filr: FILR): void
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
+myfil00$fpath_createWrite$opt
+  (fpath: strn): FILRopt_vt
+#extern
+fun<>
+myfil00$fpath_createWrite$fwork
+  (fpath: strn, work: (FILR)->void): void
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+myfil00$fpath_createWrite$opt
+  (fpath) =
+let
+//
+#vwtpdef
+r0 = // res
+optn_vt(FILR)
+//
+var r0: r0 =
+optn_vt_nil((*0*))
+val p0 = $addr(r0)
+//
+in//let
+myfil00$fpath_createWrite$fwork
+(
+fpath,
+lam(cs) =>
+$UN.p2tr_set<r0>(p0, optn_vt_cons(cs))); r0
+end//let
+//
+(* ****** ****** *)
+//
+#extern
+fun<> // HX: succ/fail: true/false
+myfil00$myfil_make$opt_stdout(fpath: strn): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 myfil00$myfil_make$opt_stdout
   (fpath) =
-let
-//
-val opt =
-myfil00$fpath_open$opt(fpath)
-//
-in//let
+(
 //
 case+ opt of
 | ~
@@ -102,7 +134,10 @@ val () =
 where{
   #impltmp g_stdout<>() = out } } )
 //
-end(*let*)//end-of-[myfil00$myfil_make$opt_stdout(...)]
+) where
+{
+  val opt = myfil00$fpath_createWrite$opt(fpath)
+}(*where*)//end-of-[myfil00$myfil_make$opt_stdout(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

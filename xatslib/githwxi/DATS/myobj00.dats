@@ -228,9 +228,19 @@ case+ dtv of
 |DTVa1sz(a0) =>
 (
  prints("DTVa1sz(", a0, ")"))
+//
 |DTVhmap(hm) =>
+(*
+HX-2024-09-16:
+Handling recursion is tricky!
+*)
+(*
 (
+HX-2024-09-16: BUGGY!!!
  prints("DTVhmap(", hm, ")"))
+*)
+(prints
+ ("DTVhmap(", type(hm), ")"))
 //
 |DTVf1un(f1) =>
 (
