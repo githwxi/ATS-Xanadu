@@ -52,61 +52,61 @@ XATS2JS_NODE_g_stderr()
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_FILR_gprint
-  (out, x0)
+XATS2JS_NODE_g_fprint
+  (x0, out)
 {
   out.write(x0.toString());
-  return; // XATS2JS_NODE_FILR_gprint
+  return; // XATS2JS_NODE_g_fprint
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_FILR_print_sint
+XATS2JS_NODE_sint_fprint
   (out, i0)
 {
-  XATS2JS_NODE_FILR_gprint(out, i0);
-  return; // XATS2JS_NODE_FILR_print_sint
+  XATS2JS_NODE_g_fprint(out, i0);
+  return; // XATS2JS_NODE_sint_fprint
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_FILR_print_bool
+XATS2JS_NODE_bool_fprint
   (out, b0)
 {
-  XATS2JS_NODE_FILR_gprint(out, b0);
-  return; // XATS2JS_NODE_FILR_print_bool
+  XATS2JS_NODE_g_fprint(out, b0);
+  return; // XATS2JS_NODE_bool_fprint
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_FILR_print_char
+XATS2JS_NODE_char_fprint
   (out, c0)
 {
-  XATS2JS_NODE_FILR_gprint(out, c0);
-  return; // XATS2JS_NODE_FILR_print_char
+  XATS2JS_NODE_g_fprint(out, c0);
+  return; // XATS2JS_NODE_char_fprint
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_FILR_print_dflt
-  (out, f0)
+XATS2JS_NODE_dflt_fprint
+  (f0, out)
 {
-  XATS2JS_NODE_FILR_gprint(out, f0);
-  return; // XATS2JS_NODE_FILR_print_dflt
+  XATS2JS_NODE_g_fprint(f0, out);
+  return; // XATS2JS_NODE_dflt_fprint
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_FILR_print_strn
-  (out, cs)
+XATS2JS_NODE_strn_fprint
+  (cs, out)
 {
-  XATS2JS_NODE_FILR_gprint(out, cs);
-  return; // XATS2JS_NODE_FILR_print_strn
+  XATS2JS_NODE_g_fprint(cs, out);
+  return; // XATS2JS_NODE_strn_fprint
 }
 //
 ////////////////////////////////////////////////////////////////////////.

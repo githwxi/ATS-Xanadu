@@ -44,52 +44,47 @@ g_stderr((*void*)): FILR
 //
 (*
 HX-2024-09-15:
-Should FILR_print_obj
-be used for FILR_gprint?
 Sun 15 Sep 2024 05:46:08 PM EDT
 *)
 #extern
 fun
 <x0:t0>
-FILR_gprint
-(out: FILR, obj: a): void
-//
-#symload
-fprint with FILR_gprint of 0100
+g_fprint
+(obj: a, out: FILR): void
 //
 (* ****** ****** *)
 //
 #extern
 fun<>
-FILR_print_sint
-(out: FILR, obj: sint): void
+sint_fprint
+(obj: sint, out: FILR): void
 #extern
 fun<>
-FILR_print_bool
-(out: FILR, obj: bool): void
+bool_fprint
+(obj: bool, out: FILR): void
 #extern
 fun<>
-FILR_print_char
-(out: FILR, obj: char): void
+char_fprint
+(obj: char, out: FILR): void
 #extern
 fun<>
-FILR_print_dflt
-(out: FILR, obj: dflt): void
+dflt_fprint
+(obj: dflt, out: FILR): void
 #extern
 fun<>
-FILR_print_strn
-(out: FILR, obj: strn): void
+strn_fprint
+(obj: strn, out: FILR): void
 //
 #symload
-fprint with FILR_print_sint of 1000
+fprint with sint_fprint of 1000
 #symload
-fprint with FILR_print_bool of 1000
+fprint with bool_fprint of 1000
 #symload
-fprint with FILR_print_char of 1000
+fprint with char_fprint of 1000
 #symload
-fprint with FILR_print_dflt of 1000
+fprint with dflt_fprint of 1000
 #symload
-fprint with FILR_print_strn of 1000
+fprint with strn_fprint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -97,36 +92,36 @@ fprint with FILR_print_strn of 1000
 #impltmp
 < a: t0 >
 g_prerr(obj) =
-FILR_gprint(g_stderr<>(), obj)
+g_fprint(obj, g_stderr<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 g_print<sint>(i0) =
-FILR_print_sint(g_stdout<>(), i0)
+sint_fprint(i0, g_stdout<>())
 #impltmp
 g_print<bool>(b0) =
-FILR_print_bool(g_stdout<>(), b0)
+bool_fprint(b0, g_stdout<>())
 #impltmp
 g_print<char>(c0) =
-FILR_print_char(g_stdout<>(), c0)
+char_fprint(c0, g_stdout<>())
 //
 #impltmp
 g_print<dflt>(f0) =
 (
-  FILR_print_dflt(g_stdout<>(), f0))
+  dflt_fprint(f0, g_stdout<>()))
 #impltmp
 g_print<strn>(cs) =
 (
-  FILR_print_strn(g_stdout<>(), cs))
+  strn_fprint(cs, g_stdout<>()))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
-FILR_gprint(out, obj) =
+g_fprint(obj, out) =
 let
 #impltmp
 g_stdout<>() = out in g_print<x0>(obj) end
@@ -137,4 +132,4 @@ g_stdout<>() = out in g_print<x0>(obj) end
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_githwxi_DATS_gint000.dats] *)
+(* end of [ATS3/XANADU_xatslib_libcats_DATS_gbas000.dats] *)
