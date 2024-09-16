@@ -30,6 +30,8 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 "prelude/DATS/CATS/JS/char000.dats"
 #staload _ =
 "prelude/DATS/CATS/JS/gint000.dats"
+#staload _ =
+"prelude/DATS/CATS/JS/gflt000.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
