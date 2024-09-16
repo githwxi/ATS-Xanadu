@@ -226,6 +226,8 @@ $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
 test08:: ; $(CAT) \
 $(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/mycsv00.cats >> $@_out.js
 test08:: ; $(CAT) \
+$(XATSHOME)/xatslib/libcats/DATS/CATS/JS/NODE/gbas000.cats >> $@_out.js
+test08:: ; $(CAT) \
 $(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/myfil00.cats >> $@_out.js
 ############
 test08:: \

@@ -11,19 +11,9 @@ Mon 16 Sep 2024 10:27:18 AM EDT
 //
 #extern
 fun
-dtval_print_
-( dtv: dtval ): void
-#extern
-fun
 dtval_fprint_
 ( dtv
 : dtval, out: FILR): void
-//
-#impltmp
-dtval_print_
-  ( dtv ) =
-(
-  g_print<dtval>(dtv))
 #impltmp
 dtval_fprint_
   ( dtv, out ) =
@@ -33,6 +23,11 @@ g_stdout<>() = out
 in//let
   g_print<dtval>(dtv) end//let
 //
+#impltmp
+g_print
+<dtval>(dtv) =
+dtval_fprint_
+(dtv, g_stdout<>((*void*)))
 #impltmp
 g_fprint<dtval> = dtval_fprint_
 //
