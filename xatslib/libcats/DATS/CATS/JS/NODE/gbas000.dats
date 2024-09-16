@@ -56,7 +56,7 @@ where{
 #extern
 fun
 XATS2JS_NODE_sint_fprint
-  (out: FILR, obj: sint): void = $extnam()
+  (obj: sint, out: FILR): void = $extnam()
 }(*where*)
 //
 (* ****** ****** *)
@@ -68,7 +68,7 @@ where{
 #extern
 fun
 XATS2JS_NODE_bool_fprint
-  (out: FILR, obj: bool): void = $extnam()
+  (obj: bool, out: FILR): void = $extnam()
 }(*where*)
 //
 (* ****** ****** *)
@@ -80,7 +80,7 @@ where{
 #extern
 fun
 XATS2JS_NODE_char_fprint
-  (out: FILR, obj: char): void = $extnam()
+  (obj: char, out: FILR): void = $extnam()
 }(*where*)
 //
 (* ****** ****** *)
@@ -92,7 +92,7 @@ where{
 #extern
 fun
 XATS2JS_NODE_dflt_fprint
-  (out: FILR, obj: dflt): void = $extnam()
+  (obj: dflt, out: FILR): void = $extnam()
 }(*where*)
 //
 (* ****** ****** *)
@@ -104,7 +104,7 @@ where{
 #extern
 fun
 XATS2JS_NODE_strn_fprint
-  (out: FILR, obj: strn): void = $extnam()
+  (obj: strn, out: FILR): void = $extnam()
 }(*where*)
 //
 (* ****** ****** *)
