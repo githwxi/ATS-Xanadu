@@ -20,6 +20,9 @@ Mon 09 Sep 2024 11:18:07 AM EDT
 /prelude/HATS/prelude_dats.hats"
 #include
 "xatslib\
+/libcats/HATS/libcats_dats.hats"
+#include
+"xatslib\
 /githwxi/HATS/githwxi_dats.hats"
 //
 (* ****** ****** *)
@@ -31,18 +34,27 @@ Mon 09 Sep 2024 11:18:07 AM EDT
 "xatslib/HATS/xatslib_JS_dats.hats"
 #include
 "xatslib\
+/libcats/HATS/libcats_JS_dats.hats"
+#include
+"xatslib\
 /githwxi/HATS/githwxi_JS_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #include
 "srcgen2\
 /prelude/HATS/prelude_NODE_dats.hats"
 #include
 "xatslib\
+/libcats/HATS/libcats_NODE_dats.hats"
+#include
+"xatslib\
 /githwxi/HATS/githwxi_NODE_dats.hats"
-//
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"xatslib\
+/githwxi/HATS/githwxi_DETMP_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -117,17 +117,30 @@ datatype dtval =
 | DTVdflt of dflt
 | DTVstrn of strn
 //
-| DTVa1sz of a1sz(dtval)
+|
+DTVa1sz of a1sz(dtval)
+|
+DTVhmap of hmap(dtval)
 //
-| DTVhmap of hmap(dtval)
+|
+DTVf1un of
+(dtval) -> dtval
+|
+DTVf2un of
+(dtval, dtval) -> dtval
+|
+DTVf3un of
+(dtval, dtval, dtval) -> dtval
+|
+DTVfxun of (a1sz(dtval)) -> dtval
 //
-| DTVf1un of
-  (dtval) -> dtval
-| DTVf2un of
-  (dtval, dtval) -> dtval
-| DTVf3un of
-  (dtval, dtval, dtval) -> dtval
-| DTVfxun of (a1sz(dtval)) -> dtval
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<>
+dtval_print
+(dtv: dtval): void//fun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -186,11 +199,11 @@ g_ptype
 (* ****** ****** *)
 //
 #impltmp
-g_print
-< dtval >
+<(*tmp*)>
+dtval_print
 (  dtv  ) =
 (
-auxpr(dtv)) where
+  auxpr(dtv)) where
 {
 //
 fun
@@ -257,8 +270,15 @@ HX-2024-09-16: BUGGY!!!
 //
 end//let//end-of-[ auxpr(dtv) ]
 //
-}//where//end(g_print<dtval>(dtv)]
+}//where//end(dtval_print<>(dtv)]
 //
+(* ****** ****** *)
+//
+#impltmp
+g_print
+< dtval > = dtval_print<>(*void*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
