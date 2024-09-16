@@ -13,9 +13,12 @@ from the C programming language system
 (* ****** ****** *)
 //
 #abstbox
-FILEref==p0tr(*FILE*)
+FILEref == p0tr(*FILE*)
 #typedef FILR = FILEref
 //
+(* ****** ****** *)
+#vwtpdef
+FILRopt_vt = optn_vt(FILR)
 (* ****** ****** *)
 (* ****** ****** *)
 //

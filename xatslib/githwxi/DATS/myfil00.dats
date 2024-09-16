@@ -11,6 +11,21 @@ Some simple stuff for handling files
 "prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#staload
+"./../../libcats/DATS/gbas000.dats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+myfil00$FILR_close
+  (filr: FILR): void
+//
+fun<>
+myfil00$fpath_open$opt
+  (fpath: strn): FILRopt_vt
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #extern
 fun<>
@@ -52,8 +67,42 @@ end//let
 //
 #extern
 fun<>
+myfil00_output(): void
+//
+#extern
+fun<>
 myfil00$myfil_make$opt_stdout
-  ( fpath: strn ): bool(*succ/fail*)
+  (fpath: strn): bool(*succ/fail*)
+//
+#impltmp
+myfil00$myfil_make$opt_stdout
+  (fpath) =
+let
+//
+val opt =
+myfil00$fpath_open$opt(fpath)
+//
+in//let
+//
+case+ opt of
+| ~
+optn_vt_nil() => false
+| ~
+optn_vt_cons(out) =>
+(
+true
+where{
+val () =
+myfil00$FILR_close(out) }
+where{
+//
+val () =
+(
+  myfil00_output<>((*void*)))
+where{
+  #impltmp g_stdout<>() = out } } )
+//
+end(*let*)//end-of-[myfil00$myfil_make$opt_stdout(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
