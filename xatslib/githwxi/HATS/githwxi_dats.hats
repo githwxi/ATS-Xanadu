@@ -23,7 +23,10 @@ ATS3_XANADU/xatslib/githwxi/DATS
 (* ****** ****** *)
 #staload "./../DATS/mycsv00.dats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #staload "./../DATS/myobj00.dats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 (*
@@ -38,5 +41,4 @@ HX: for linearly typed interfaces
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3_XANADU/xatslib/githwxi/HATS/githwxi_JS_dats.hats] *)
-
+(* end of [ATS3_XANADU/xatslib/githwxi/HATS/githwxi_dats.hats] *)

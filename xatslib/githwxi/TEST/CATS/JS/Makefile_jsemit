@@ -197,6 +197,10 @@ test07:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
 test07:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
+test07:: ; $(CAT) \
+$(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
+test07:: ; $(CAT) \
+$(XATSHOME)/xatslib/libcats/DATS/CATS/JS/NODE/gbas000.cats >> $@_out.js
 ############
 test07:: \
 test07_myobj00.dats; \
