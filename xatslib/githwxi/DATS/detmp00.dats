@@ -11,12 +11,21 @@ Mon 16 Sep 2024 10:27:18 AM EDT
 //
 #extern
 fun
-myobj00$dtval_fprint_
+dtval_print_
+( dtv: dtval ): void
+#extern
+fun
+dtval_fprint_
 ( dtv
 : dtval, out: FILR): void
 //
 #impltmp
-myobj00$dtval_fprint_
+dtval_print_
+  ( dtv ) =
+(
+  g_print<dtval>(dtv))
+#impltmp
+dtval_fprint_
   ( dtv, out ) =
 let
 #impltmp
@@ -25,9 +34,7 @@ in//let
   g_print<dtval>(dtv) end//let
 //
 #impltmp
-g_print
-<dtval>(dtv) =
-myobj00$dtval_fprint_(dtv, g_stdout<>())
+g_fprint<dtval> = dtval_fprint_
 //
 (* ****** ****** *)
 (* ****** ****** *)
