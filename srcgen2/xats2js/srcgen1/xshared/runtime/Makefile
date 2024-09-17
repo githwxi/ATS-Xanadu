@@ -10,11 +10,14 @@ XATSLIBD=$(XATSHOME)/xatslib
 ###############################################################
 PRELUDE_JS=xats2js_prelude.js
 XATSLIB_JS=xats2js_xatslib.js
+PRELUDE_NODE_JS=xats2js_prelude_node.js
+XATSLIB_NODE_JS=xats2js_xatslib_node.js
 ###############################################################
 all::
 ###############################################################
 all:: prelude
 all:: xatslib
+all:: prelude_node
 ###############################################################
 prelude:: ; \
 echo "//" `date` > $(PRELUDE_JS)
@@ -80,6 +83,14 @@ xatslib:: \
 Hsmap00
 Hsmap00: ; \
 $(CAT) $(XATSLIBD)/DATS/CATS/JS/Hsmap00.cats >> $(XATSLIB_JS)
+###############################################################
+###############################################################
+prelude_node:: ; \
+echo "//" `date` > $(PRELUDE_NODE_JS)
+prelude_node:: ; \
+$(CAT) xats2js_prelude_node_hd >> $(PRELUDE_NODE_JS)
+prelude_node:: ; $(CAT) \
+$(PRELUDED)/DATS/CATS/JS/NODE/node000.cats >> $(PRELUDE_NODE_JS)
 ###############################################################
 ###############################################################
 # end of [Makefile]
