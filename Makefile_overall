@@ -9,9 +9,9 @@
 ############################################################
 all:: srcgen1_xats2js
 all:: srcgen2_libxatsopt
-all:: srcgen2_xatsopt_typing
+all:: srcgen2_xatsopt_tcheck00
 all:: srcgen2_libxats2js
-all:: srcgen2_xats2js_jsemit
+all:: srcgen2_xats2js_jsemit00
 ############################################################
 #
 # STEP~1 for building xats2js-in-ats2:
@@ -25,21 +25,21 @@ time make -C srcgen1/xats2js/srcgenx -f Makefile_patsopt xats2js
 #
 ############################################################
 #
-# STEP~2 for building xatsopt_typing
+# STEP~2 for building xatsopt_tcheck00
 #
 srcgen2_libxatsopt:: ; \
 time make -C srcgen2 -f Makefile_xats2js libxatsopt
-srcgen2_xatsopt_typing:: ; \
-time make -C srcgen2/UTIL -f Makefile_xats2js xatsopt_typing
+srcgen2_xatsopt_tcheck00:: ; \
+time make -C srcgen2/UTIL -f Makefile_xats2js xatsopt_tcheck00
 #
 ############################################################
 #
-# STEP~3 for building xats2js_jsemit
+# STEP~3 for building xats2js_jsemit00
 #
 srcgen2_libxats2js:: ; \
 time make -C srcgen2/xats2js/srcgenx -f Makefile_xats2js libxats2js
-srcgen2_xats2js_jsemit:: ; \
-time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xats2js xats2js_jsemit
+srcgen2_xats2js_jsemit00:: ; \
+time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xats2js xats2js_jsemit00
 #
 ############################################################
 ############################################################
