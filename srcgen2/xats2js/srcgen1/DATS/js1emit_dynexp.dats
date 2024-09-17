@@ -107,6 +107,15 @@ strn_fprint(filr,"\n"))//endfun
 (* ****** ****** *)
 //
 fun
+loctnfpr
+(filr: FILR
+,loc0: loctn): void =
+(
+loctn_fprint(filr,loc0))//endfun
+//
+(* ****** ****** *)
+//
+fun
 i0expfpr
 (filr: FILR
 ,iexp: i0exp): void =
@@ -1515,8 +1524,15 @@ case+ iins of
 let
 //
 val
+loc1 = i0f1.lctn((*0*))
+//
+val
 iopt = t1imp_i1cmpq(timp)
 //
+val () = (
+nindstrnfpr
+(filr, nind, "// ");
+loctnfpr(filr, loc1);fprintln(filr))
 val () = (
 nindstrnfpr
 (filr, nind, "// ");

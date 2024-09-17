@@ -216,16 +216,29 @@ val-
 I0Dlocal0
 (head, body) = dcl0.node()
 //
+(*
+HX-2024-09-16:
+This way of handling
+local-in-end is okay as
+unam is used for comparison
+*)
+//
+(*
 val (  ) =
 envi0i1_pshloc1(env0)
+*)
 val head =
 trxi0i1_i0dclist(env0, head)
+(*
 val (  ) =
 envi0i1_pshloc2(env0)
+*)
 val body =
 trxi0i1_i0dclist(env0, body)
 //
+(*
 val (  ) = envi0i1_locjoin(env0)
+*)
 //
 in//let
 (
