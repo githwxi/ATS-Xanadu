@@ -11,11 +11,11 @@ Mon 16 Sep 2024 10:27:18 AM EDT
 //
 #extern
 fun
-dtval_fprint_
+dtval_fprint__
 ( dtv
 : dtval, out: FILR): void
 #impltmp
-dtval_fprint_
+dtval_fprint__
   ( dtv, out ) =
 let
 #impltmp
@@ -29,7 +29,7 @@ g_print
 dtval_fprint_
 (dtv, g_stdout<>((*void*)))
 #impltmp
-g_fprint<dtval> = dtval_fprint_
+g_fprint<dtval> = dtval_fprint__
 //
 (* ****** ****** *)
 (* ****** ****** *)
