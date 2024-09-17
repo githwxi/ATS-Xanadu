@@ -29,128 +29,97 @@
 (*
 Author: Hongwei Xi
 //
-Thu 29 Aug 2024 08:38:27 AM EDT
+Thu 29 Aug 2024 09:18:40 AM EDT
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
 (* ****** ****** *)
 (* ****** ****** *)
 #include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+#include
 "./../HATS/libxatsopt.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dats.hats"
-(* ****** ****** *)
-(* ****** ****** *)
 //
-fun
-fpath_satsq
-(fp: strn): bool =
-let
+#staload
+"./../SATS/intrep0.sats"
+#staload
+"./../SATS/intrep1.sats"
+#staload
+"./../SATS/trxd3i0.sats"
+#staload
+"./../SATS/trxi0i1.sats"
+#staload
+"./../SATS/xats2js.sats"
+#staload
+"./../SATS/js1emit.sats"
 //
-val n0 =
-strn_length(fp)
-//
-in//in
-//
-if
-(n0 <= 4)
-then false else
-(
-if(fp[n0-1]!='s')
-then (false) else
-if(fp[n0-2]!='t')
-then (false) else
-if(fp[n0-3]!='a')
-then (false) else
-if(fp[n0-4]!='s')
-then (false) else
-if(fp[n0-5]!='.')
-then (false) else (true))
-//
-end//let//end-of-[fpath_satsq(fp)]
-//
-(* ****** ****** *)
-//
-fun
-fpath_datsq
-(fp: strn): bool =
-let
-//
-val n0 =
-strn_length(fp)
-//
-in//in
-//
-if
-(n0 <= 4)
-then false else
-(
-if(fp[n0-1]!='s')
-then (false) else
-if(fp[n0-2]!='t')
-then (false) else
-if(fp[n0-3]!='a')
-then (false) else
-if(fp[n0-4]!='d')
-then (false) else
-if(fp[n0-5]!='.')
-then (false) else (true))
-//
-end//let//end-of-[fpath_datsq(fp)]
+#staload _ =
+"./../DATS/xats2js_tmplib.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 mymain_work
-(fpth: strn): void =
+(fpath: string): void =
 let
 //
-val ( ) =
-let
+val dpar =
+d3parsed_of_trtmp3b(dpar)
+val dpar =
+d3parsed_of_trtmp3c(dpar)
+val dpar =
+d3parsed_of_tread30(dpar)
 //
 (*
-val (   ) =
-prerrsln("dpar3 = ", dpar3)
+val (  ) =
+(
+prerrsln
+("d3parsed(33) = ", dpar))
 *)
+//
+val (  ) =
+let
+val
+out = g_stderr((*0*))
+in//let
+prerrsln
+("FPERR30_D3PARSED:");
+fperr30_d3parsed(out, dpar)
+end//let
+//
+val ipar =
+(
+  i0parsed_of_trxd3i0(dpar))
+//
+val ipar =
+(
+  i1parsed_of_trxi0i1(ipar))
 //
 in//let
 //
-prerrsln
-("FPERR30_D3PARSED:");
-fperr30_d3parsed(out, dpar3)
-//
+let
+val
+filr = g_stdout<>()
+in//let
+(
+  js1emit_i1parsed(filr, ipar))
 end//let
 //
 end where
 {
-//
-val out =
-(
-  g_stderr((*0*)))
-//
-val dpar3 =
-if
-(
-fpath_satsq(fpth))
-then
-(
-  d3parsed_of_filsats(fpth))//then
-else
-(
-  d3parsed_of_fildats(fpth))//else
-//
-}(*where*)//end-of-[mymain_work(fpth)]
+val dpar = d3parsed_of_fildats(fpath)
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-local
-//
 #staload
 "\
 srcgen1\
@@ -161,10 +130,8 @@ srcgen1\
 "\
 srcgen1\
 /prelude\
-/DATS/CATS/JS/Node/process.dats"
-//
+/DATS/CATS/JS/NODE/process.dats"
 (* ****** ****** *)
-in//local
 (* ****** ****** *)
 //
 val () =
@@ -178,8 +145,8 @@ if
 length(argv) >= 3
 then
 (
-  mymain_work(argv[2])
-) where
+  mymain_work(argv[2]))
+where
 {
 //
 val ret1 =
@@ -187,7 +154,8 @@ the_fxtyenv_pvsload((*0*))
 val (  ) =
 if
 (ret1 > 0)
-then prerrsln("\
+then
+prerrsln("\
 // The fixity-defs loaded!")
 //
 val ret2 =
@@ -197,7 +165,6 @@ if
 (ret2 > 0)
 then prerrsln("\
 // The trans12-defs loaded!")
-//
 }
 else
 (
@@ -222,7 +189,7 @@ val argv =
   XATS2JS_NODE_argv_get((*void*)))
 (*
 val (  ) = prerrsln
-("// xatsopt_typing: argv = ", argv)
+("// xats2js_jsemit: argv = ", argv)
 *)
 //
 }(*where*)//end-of-[mymain((*void*))]
@@ -230,11 +197,9 @@ val (  ) = prerrsln
 }(*where*)//end-of-[val() = mymain()]
 //
 (* ****** ****** *)
-endloc//end-of-local(val() = mymain())
-(* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_UTIL_xatstop_typing.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_UTIL_xats2js_jsemit00.dats] *)
