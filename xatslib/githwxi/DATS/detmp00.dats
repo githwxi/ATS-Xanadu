@@ -26,7 +26,7 @@ in//let
 #impltmp
 g_print
 <dtval>(dtv) =
-dtval_fprint_
+dtval_fprint__
 (dtv, g_stdout<>((*void*)))
 #impltmp
 g_fprint<dtval> = dtval_fprint__

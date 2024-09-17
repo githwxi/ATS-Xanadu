@@ -207,6 +207,7 @@ then ((*void*)) else
 let
 val loc0 = d2p0.lctn()
 in//let
+printsln();
 printsln("\
 FPERR20-ERROR:", loc0, ":", d2p0)
 end//let
@@ -519,6 +520,7 @@ let
 val
 loc0 = d2e0.lctn()
 in//let
+printsln();
 printsln("\
 FPERR20-ERROR:", loc0, ":", d2e0)
 end//let

@@ -170,6 +170,7 @@ let
 val
 loc0 = d3p0.lctn((*0*))
 in//let
+printsln();
 printsln("\
 FPERR30-ERROR:", loc0, ":", d3p0)
 end//let
@@ -393,6 +394,7 @@ let
 val
 loc0 = d3e0.lctn()
 in//let
+printsln();
 printsln("\
 FPERR30-ERROR:", loc0, ":", d3e0)
 end//let
