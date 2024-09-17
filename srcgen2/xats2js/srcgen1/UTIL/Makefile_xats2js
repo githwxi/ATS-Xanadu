@@ -1,6 +1,8 @@
 ########################################################################
 #
-# For compiling xats2js_jsemit to JS
+# HX-2024-09-01:
+# For compiling
+# xats2js_jsemit00 to JavaScript
 #
 ########################################################################
 #
@@ -34,9 +36,9 @@ XATS2JS_XATSLIB_NODE="$(XSHARED)/runtime/xats2js_xatslib_node.js"
 ########################################################################
 #
 all:: \
-xats2js_jsemit
-xats2js_jsemit:: \
-xats2js_jsemit.dats ; \
+xats2js_jsemit00
+xats2js_jsemit00:: \
+xats2js_jsemit00.dats ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \
@@ -54,7 +56,7 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 clean:: ; rm -f *~
 #
 cleanall:: clean
-cleanall:: ; rm -f ./xats2js_jsemit_dats.js
+cleanall:: ; rm -f ./xats2js_jsemit??_dats.js
 #
 ########################################################################
 ###################### end of [Makefile_xats2js] #######################

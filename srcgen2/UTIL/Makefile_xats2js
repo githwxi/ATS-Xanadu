@@ -1,6 +1,8 @@
 ########################################################################
 #
-# For compiling xatsopt_typing to JS
+# HX-2024-09-01:
+# For compiling
+# xatsopt_tcheck00 to JavaScript
 #
 ########################################################################
 #
@@ -33,9 +35,9 @@ XATS2JS_XATSLIB_NODE="$(XSHARED)/runtime/xats2js_xatslib_node.js"
 ########################################################################
 #
 all:: \
-xatsopt_typing
-xatsopt_typing:: \
-xatsopt_typing.dats ; \
+xatsopt_tcheck00
+xatsopt_tcheck00:: \
+xatsopt_tcheck00.dats ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \
@@ -52,7 +54,7 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 clean:: ; rm -f *~
 #
 cleanall:: clean
-cleanall:: ; rm -f ./xatsopt_typing_dats.js
+cleanall:: ; rm -f ./xatsopt_tcheck??_dats.js
 #
 ########################################################################
 ###################### end of [Makefile_xats2js] #######################
