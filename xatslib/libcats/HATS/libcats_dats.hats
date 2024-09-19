@@ -10,6 +10,8 @@ ATS3_XANADU/xatslib/libcats/DATS/CATS/JS
 (* ****** ****** *)
 #staload "./../DATS/gbas000.dats"
 (* ****** ****** *)
+#staload "./../DATS/gsyn000.dats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

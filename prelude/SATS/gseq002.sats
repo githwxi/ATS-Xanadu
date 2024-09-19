@@ -625,7 +625,7 @@ fun
 <y0:t0>
 GSEQ_z2make
 ( xs: GSEQ(xs, x0)
-, ys: GSEQ(ys, y0)): GSEQ(gz2seq(xs,x0,ys,y0), (x0,y0))
+, ys: GSEQ(ys, y0)): GSEQ(gz2seq(xs,x0,ys,y0),(x0,y0))
 //
 fun
 <xs:t0>
@@ -634,7 +634,7 @@ fun
 <y0:t0>
 GSEQ_x2make
 ( xs: GSEQ(xs, x0)
-, ys: GSEQ(ys, y0)): GSEQ(gx2seq(xs,x0,ys,y0), (x0,y0))
+, ys: GSEQ(ys, y0)): GSEQ(gx2seq(xs,x0,ys,y0),(x0,y0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
