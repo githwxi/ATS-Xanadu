@@ -484,7 +484,8 @@ assert(b0, "jshsmap_get$at")
 //
 in//let
 //
-UN_jshsmap_get$at$raw<>(A, k))
+(
+  UN_jshsmap_get$at$raw<>(A, k))
 end//let//end-of-[jshsmap_get$at(...)]
 //
 #impltmp
@@ -492,7 +493,7 @@ end//let//end-of-[jshsmap_get$at(...)]
 jshsmap_set$at
   (A, k, x) =
 (
-UN_jshsmap_set$at$raw<>(A, k, x))
+  UN_jshsmap_set$at$raw<>(A, k, x))
 //jshsmap_set$at: keyq(A,k) may be true!
 //
 (* ****** ****** *)
