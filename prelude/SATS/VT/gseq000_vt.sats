@@ -266,9 +266,7 @@ gseq_get$at$opt1
 (xs: !xs, i0: ni): optn_vt(x0)
 //
 (*
-#symload get$at0 with gseq_get$at0 of 0100
 #symload get$at1 with gseq_get$at1 of 0100
-#symload get$at$opt0 with gseq_get$at$opt0 of 0100
 #symload get$atopt$1 with gseq_get$atopt$1 of 0100
 *)
 (* ****** ****** *)
