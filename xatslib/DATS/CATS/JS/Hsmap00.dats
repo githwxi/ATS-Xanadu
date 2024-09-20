@@ -160,6 +160,15 @@ jshsmap with jshsmap_make0_llist of 1000
 //
 #extern
 fun<>
+jshsmap_keyq
+ {k:t0}{x:vt}
+(A: jsm0(k,x), k: k): bool
+#symload keyq with jshsmap_keyq of 1000
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
 jshsmap_get$at
  {k:t0}{x:t0}
 (A: jsm0(k,x), k: k): ( x )
@@ -409,7 +418,7 @@ foritm$work<(k,x)>(kx) =
 let
 val (k, x) = kx in
 UN_jshsmap_insert$raw(map, k, x)
-end//let//end-of-[forithm$work(...)]
+end//let//endof[forithm$work(...)]
 }
 end//let//end-of-[jshsmap_make_list]
 //
@@ -438,7 +447,7 @@ foritm$work0<(k,x)>(kx) =
 let
 val (k, x) = kx in
 UN_jshsmap_insert$raw(map, k, x)
-end//let//end-of-[forithm$work0(...)]
+end//let//endof[forithm$work0(...)]
 }
 end//let//end-of-[jshsmap_make0_llist]
 //
@@ -447,16 +456,44 @@ end//let//end-of-[jshsmap_make0_llist]
 //
 #impltmp
 <(*tmp*)>
-jshsmap_get$at
+jshsmap_keyq
   (A, k) =
 (
+XATS2jS_jshsmap_keyq
+  (A, k)) where
+{
+#extern
+fun
+XATS2JS_jshsmap_keyq
+ {k:t0}{x:vt}
+(A:jsm0(k,x), k:k): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jshsmap_get$at
+  (A, k) =
+let
+//
+val b0 =
+jshsmap_keyq(A, k)
+val () =
+assert(b0, "jshsmap_get$at")
+//
+in//let
+//
 UN_jshsmap_get$at$raw<>(A, k))
+end//let//end-of-[jshsmap_get$at(...)]
+//
 #impltmp
 <(*tmp*)>
 jshsmap_set$at
   (A, k, x) =
 (
 UN_jshsmap_set$at$raw<>(A, k, x))
+//jshsmap_set$at: keyq(A,k) may be true!
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -817,6 +854,59 @@ gseq_strmize1
 <jsm0(k,x)><(k,x)> = jshsmap_strmize<>{k}{x}
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-09-20:
+Fri Sep 20 10:48:22 AM EDT 2024
+*)
+//
+#extern
+fun<>
+jshsmap_get$at$opt
+ {k:t0}{x:t0}
+// HX: nil if !keyq(k)
+// HX: cons(old) if keyq(k)
+(A: jsm0(k,x), k: k): optn_vt(x)
+#extern
+fun<>
+jshsmap_set$at$opt
+ {k:t0}{x:t0}
+// HX: nil if !keyq(k)
+// HX: cons(old) if keyq(k)
+(A: jsm0(k,x), k: k, x: x): optn_vt(x)
+//
+#symload get$at$opt with jshsmap_get$at$opt of 1000
+#symload set$at$opt with jshsmap_set$at$opt of 1000
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jshsmap_get$at$opt
+  (A, k) =
+if
+jshsmap_keyq(A, k)
+then
+optn_vt_cons(
+UN_jshsmap_get$at$raw<>(A,k))
+else optn_vt_nil()//else//end-of-[if]
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jshsmap_set$at$opt
+  (A, k, x) =
+let
+//
+val opt =
+jshsmap_get$at$opt<>(A, k)
+//
+in//let
+  UN_jshsmap_get$at$raw<>(A, k, x); opt
+end//let//end-of-[jshsmap_set$at$opt(A,k,x)]
+//
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)

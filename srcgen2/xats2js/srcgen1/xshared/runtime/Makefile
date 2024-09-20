@@ -30,6 +30,16 @@ xtop000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/xtop000.cats >> $(PRELUDE_JS)
 ###############################################################
 prelude:: \
+gbas000
+gbas000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/JS/gbas000.cats >> $(PRELUDE_JS)
+###############################################################
+prelude:: \
+gdbg000
+gdbg000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/JS/gdbg000.cats >> $(PRELUDE_JS)
+###############################################################
+prelude:: \
 gint000
 gint000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/gint000.cats >> $(PRELUDE_JS)
@@ -53,11 +63,6 @@ prelude:: \
 strn000
 strn000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/strn000.cats >> $(PRELUDE_JS)
-###############################################################
-prelude:: \
-gbas000
-gbas000: ; \
-$(CAT) $(PRELUDED)/DATS/CATS/JS/gbas000.cats >> $(PRELUDE_JS)
 ###############################################################
 prelude:: \
 axrf000

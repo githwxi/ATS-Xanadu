@@ -77,29 +77,41 @@ gasz_lset$at
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:vt>
 gasz_cget$at
 (xs: xs, i0: ni): (x0)
-(* ****** ****** *)
 fun
 <xs:t0>
 <x0:vt>
 gasz_setf$at
 (xs: xs, i0: ni, x0: x0): void
+//
 (* ****** ****** *)
+//
+(*
+HX-2024-09-20:
+nil() is returned
+if [i0] is out of bounds
+*)
 fun
 <xs:t0>
 <x0:vt>
 gasz_cget$at$opt
 (xs: xs, i0: ni): optn_vt(x0)
-(* ****** ****** *)
+(*
+HX-2024-09-20:
+cons(x0) is returned
+if [i0] is out of bounds
+*)
 fun
 <xs:t0>
 <x0:vt>
 gasz_setf$at$opt
 (xs: xs, i0: ni, x0: x0): optn_vt(x0)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

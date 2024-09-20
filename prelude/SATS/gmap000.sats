@@ -101,6 +101,47 @@ fun
 <map:t0>
 <key:t0>
 <itm:vt>
+gmap_cget$at
+(kxs: map, key: key): itm
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_cget$at$opt
+// HX: nil if !keyq(key)
+// HX: cons(old) if keyq(key)
+(kxs: map, key: key): optn_vt(itm)
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-09-20:
+These are for imperative maps!
+*)
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_setf$at
+(kxs: map
+,key: key, itm: itm): void
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
+gmap_setf$at$opt
+// HX: nil if !keyq(key)
+// HX: cons(old) if keyq(key)
+(kxs: map
+,key: key, itm: itm): optn_vt(itm)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<map:t0>
+<key:t0>
+<itm:vt>
 gmap_strmize
 (kxs: map): strm_vt@(key, itm)
 //
@@ -127,6 +168,7 @@ gmap_search$cpy
 HX-2024-09-08:
 These are for imperative maps!
 *)
+//
 (*
 HX-2024-09-08:
 Using [getout$old] if [key]
