@@ -118,13 +118,13 @@ let
 //
   val loc = d3p.lctn((*void*))
   val t2p = d3p.styp((*void*))
-//
   val ( ) = prerrsln
   ("fperr30_d3pat: auxmain: loc = ", loc)
   val ( ) = prerrsln
   ("fperr30_d3pat: auxmain: t2p = ", t2p)
   val ( ) = prerrsln
   ("fperr30_d3pat: auxmain: d3p = ", d3p)
+//
 endlet
 //
 end (*let*) // end-of-[ auxmain(out, d3p) ]
@@ -212,8 +212,7 @@ in//let
 case+
 d3e.node() of
 //
-|
-D3Esapp
+|D3Esapp
 (d3f0,s2es) =>
 let
 val () =
@@ -224,8 +223,7 @@ fperr30_s2explst(out, s2es)
 *)
 endlet
 //
-|
-D3Etapp
+|D3Etapp
 (d3f0,s2es) =>
 let
 val () =
@@ -236,8 +234,7 @@ fperr30_s2explst(out, s2es)
 *)
 endlet
 //
-|
-D3Edapp
+|D3Edapp
 (d3f0
 ,npf1, d3es) =>
 let
@@ -245,64 +242,76 @@ val () =
 fperr30_d3exp(out, d3f0)
 val () =
 fperr30_d3explst(out, d3es)
-endlet
+endlet//end-of-[D3Edapp]
 //
-|
-D3Elet0
+|D3Epcon
+(tknd
+,lab1, d3e1) =>
+let
+val () =
+fperr30_d3exp(out, d3e1)
+endlet//end-of-[D3Epcon]
+|D3Eproj
+(tknd
+,lab1, d3e1) =>
+let
+val () =
+fperr30_d3exp(out, d3e1)
+endlet//end-of-[D3Eproj]
+//
+|D3Elet0
 (dcls, d3e1) =>
 (
 fperr30_d3exp(out, d3e1))
 where
 {
 val () =
-fperr30_d3eclist(out, dcls) }
-//(*where*)//end-of-[D3Elet0]
+fperr30_d3eclist(out, dcls)
+}(*where*)//end-of-[D3Elet0]
 //
-|
-D3Eift0
-(d3e1,dthn,dels) =>
+|D3Eift0
+(d3e1
+,dthn, dels) =>
 let
-  val () =
-  fperr30_d3exp(out, d3e1)
-  val () =
-  fperr30_d3expopt(out, dthn)
-  val () =
-  fperr30_d3expopt(out, dels)
-endlet
+val () =
+fperr30_d3exp(out, d3e1)
+val () =
+fperr30_d3expopt(out, dthn)
+val () =
+fperr30_d3expopt(out, dels)
+endlet//end-of-[D3Eift0(...)]
 //
-|
-D3Ecas0
-(tknd,d3e1,dcls) =>
+|D3Ecas0
+(tknd
+,d3e1, dcls) =>
 let
-  val () =
-  fperr30_d3exp(out, d3e1)
-  val () =
-  fperr30_d3clslst(out, dcls)
-endlet
+val () =
+fperr30_d3exp(out, d3e1)
+val () =
+fperr30_d3clslst(out, dcls)
+endlet//end-of-[D3Ecas0(...)]
 //
-|
-D3Eseqn
-( d3es, d3e1) =>
+|D3Eseqn
+(d3es, d3e1) =>
+(
+fperr30_d3exp(out, d3e1))
+where
+{
+val () =
+fperr30_d3explst(out, d3es)}
+//(*where*)//end-of-[D3Eseqn]
+//
+|D3Ewhere
+(d3e1, dcls) =>
 (
   fperr30_d3exp(out, d3e1))
 where
-{ val () =
-  fperr30_d3explst(out, d3es)
-}(*where*)//end-of-[D3Eseqn]
+{val () =
+ fperr30_d3eclist(out, dcls)}
+//(*where*)//end-of-[D3Ewhere]
 //
-|
-D3Ewhere
-( d3e1, dcls) =>
-(
-  fperr30_d3exp(out, d3e1))
-where
-{ val () =
-  fperr30_d3eclist(out, dcls)
-}(*where*)//end-of-[D3Ewhere]
-//
-|
-D3Eassgn
-( d3el, d3er) =>
+|D3Eassgn
+(d3el, d3er) =>
 let
 val () =
 (
@@ -314,9 +323,21 @@ end(*let*)//end-of-[D3Eassgn]
 //
 (* ****** ****** *)
 //
-|
-D3Et2pck
-( d3e1, t2p2) =>
+|D3Elabck
+(d3e1, lab2) =>
+let
+val () =
+(
+  fperr30_d3exp(out, d3e1) )
+(*
+val () =
+(
+  fperr30_label(out, lab2) )
+*)
+end(*let*)//end-of-[D3Elabck]
+//
+|D3Et2pck
+(d3e1, t2p2) =>
 let
 val () =
 (
