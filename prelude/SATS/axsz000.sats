@@ -144,7 +144,8 @@ a1sz with a1sz_make_lstrq//of 1000
 fun
 <a:vt>
 a1sz_length
-{n:i0}(asz: a1sz(a, n)): sint(n)
+{n:i0}
+(asz: a1sz(a, n)): sint(n)
 #symload length with a1sz_length of 1000
 //
 (* ****** ****** *)

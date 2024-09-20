@@ -162,15 +162,15 @@ jshsmap with jshsmap_make0_llist of 1000
 fun<>
 jshsmap_get$at
  {k:t0}{x:t0}
-(A: jsm0(k,x), k: k): (x)
+(A: jsm0(k,x), k: k): ( x )
 #extern
 fun<>
 jshsmap_set$at
  {k:t0}{x:t0}
 (A: jsm0(k,x), k:k, x:x): void
 //
-#symload [] with jshsmap_get$at of 1000
-#symload [] with jshsmap_set$at of 1000
+#symload [ ] with jshsmap_get$at of 1000
+#symload [ ] with jshsmap_set$at of 1000
 #symload get$at with jshsmap_get$at of 1000
 #symload set$at with jshsmap_set$at of 1000
 //
@@ -311,6 +311,8 @@ UN_jshsmap_set$at$raw
  {k:t0}{x:t0}
 (map: jsm0(k,x), key: k, itm: x): void
 //
+(* ****** ****** *)
+//
 (*
 HX-2024-08-09:
 This assume that [key] is not in [map]
@@ -444,6 +446,22 @@ end//let//end-of-[jshsmap_make0_llist]
 (* ****** ****** *)
 //
 #impltmp
+<(*tmp*)>
+jshsmap_get$at
+  (A, k) =
+(
+UN_jshsmap_get$at$raw<>(A, k))
+#impltmp
+<(*tmp*)>
+jshsmap_set$at
+  (A, k, x) =
+(
+UN_jshsmap_set$at$raw<>(A, k, x))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 { k: t0
 , x: t0 }
 gseq_forall
@@ -451,7 +469,7 @@ gseq_forall
   ( kxs ) =
 jshsmap_forall_f2un<>
 (kxs
-,lam(k,x) => forall$test@(k,x))
+,lam(k, x) => forall$test@(k, x))
 //
 #impltmp
 { k: t0
@@ -461,7 +479,7 @@ gseq_forall1
   ( kxs ) =
 jshsmap_forall_f2un<>
 (kxs
-,lam(k,x) => forall$test1@(k,x))
+,lam(k, x) => forall$test1@(k, x))
 //
 #impltmp
 <(*tmp*)>

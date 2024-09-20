@@ -123,20 +123,42 @@ i0chrjs1
 //
 case-
 tchr.node() of
-|
-T_CHAR1_nil0 _ =>
+|T_CHAR1_nil0 _ =>
 prints("XATSCNUL(", ")")
-|
-T_CHAR2_char(rep) =>
+|T_CHAR2_char(rep) =>
 prints("XATSCHAR(", rep, ")")
-|
-T_CHAR3_blsh(rep) =>
+|T_CHAR3_blsh(rep) =>
 prints("XATSCHAR(", rep, ")")
 //
 ) where
 {
 #impltmp g_print$out<>() = filr
 }(*where*)//end-of-[i0chrjs1(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0fltjs1
+(filr, tflt) =
+(
+//
+case-
+tflt.node() of
+|T_FLT01
+(  rep  ) => prints
+("XATSFLT1(", rep, ")")
+|T_FLT02
+(bas,rep) => prints
+("XATSFLT2(",bas,",",rep,")")
+|T_FLT03
+(bas
+,rep,sfx) => prints
+("XATSFLT3("
+,bas, ",", rep, ",", sfx, ")")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i0fltjs1(...)]
 //
 (* ****** ****** *)
 //
@@ -152,15 +174,13 @@ in//let
 //
 case-
 tstr.node() of
-|
-T_STRN1_clsd
+|T_STRN1_clsd
 ( rep1,len2 ) =>
 (
 print
 ("XATSSTRN(");
 f0_strn(rep1, len2); print(")"))
-|
-T_STRN2_ncls
+|T_STRN2_ncls
 ( rep1,len2 ) =>
 (
 print
@@ -200,12 +220,15 @@ strn_fprint(filr, "\\\"")
 //
 | '\n' => strn_fprint(filr, "\\n")
 | '\t' => strn_fprint(filr, "\\t")
+| '\r' => strn_fprint(filr, "\\r")
+//
+(*
+| '\a' => strn_fprint(filr, "\\a")
+| '\g' => strn_fprint(filr, "\\g")
+*)
 //
 | '\b' => strn_fprint(filr, "\\b")
 | '\f' => strn_fprint(filr, "\\f")
-//
-| '\g' => strn_fprint(filr, "\\g")
-//
 | '\v' => strn_fprint(filr, "\\v")
 //
 | _(*else*) => char_fprint(filr, ch)

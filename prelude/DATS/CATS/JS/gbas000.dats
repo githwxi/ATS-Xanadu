@@ -107,4 +107,4 @@ XATS2JS_strn_dflt$parse$fwork
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_gint000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_gbas000.dats] *)

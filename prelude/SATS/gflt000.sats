@@ -39,9 +39,31 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun<>
-sflt_print(sf: sflt): void
+sflt_print(sflt): void
 fun<>
-dflt_print(df: dflt): void
+dflt_print(dflt): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+dflt_abs(df: dflt): dflt
+#symload abs with dflt_abs of 1000
+//
+fun<>
+dflt_neg(df: dflt): dflt
+#symload - with dflt_neg of 1000
+#symload neg with dflt_neg of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+dflt_sqrt(df: dflt): dflt
+#symload sqrt with dflt_sqrt of 1000
+fun<>
+dflt_cbrt(df: dflt): dflt
+#symload cbrt with dflt_cbrt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -104,6 +126,56 @@ dflt_mod_dflt
 #symload * with dflt_mul_dflt of 1000
 #symload / with dflt_div_dflt of 1000
 #symload % with dflt_mod_dflt of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+dflt_add_sint
+(f1: dflt, i2: sint): dflt
+fun<>
+sint_add_dflt
+(i1: sint, f2: dflt): dflt
+//
+fun<>
+dflt_sub_sint
+(f1: dflt, i2: sint): dflt
+fun<>
+sint_sub_dflt
+(i1: sint, f2: dflt): dflt
+//
+fun<>
+dflt_mul_sint
+(f1: dflt, i2: sint): dflt
+fun<>
+sint_mul_dflt
+(i1: sint, f2: dflt): dflt
+//
+fun<>
+dflt_div_sint
+(f1: dflt, i2: sint): dflt
+fun<>
+sint_div_dflt
+(i1: sint, f2: dflt): dflt
+//
+fun<>
+dflt_mod_sint
+(f1: dflt, i2: sint): dflt
+//
+(* ****** ****** *)
+//
+#symload + with dflt_add_sint of 1000
+#symload + with sint_add_dflt of 1000
+//
+#symload - with dflt_sub_sint of 1000
+#symload - with sint_sub_dflt of 1000
+//
+#symload * with dflt_mul_sint of 1000
+#symload * with sint_mul_dflt of 1000
+//
+#symload / with dflt_div_sint of 1000
+#symload / with sint_div_dflt of 1000
+//
+#symload % with dflt_mod_sint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

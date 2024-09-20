@@ -66,6 +66,9 @@ fun
 i0chrjs1
 (filr:FILR,tchr:token): void
 fun
+i0fltjs1
+(filr:FILR,tflt:token): void
+fun
 i0strjs1
 (filr:FILR,tstr:token): void
 //
