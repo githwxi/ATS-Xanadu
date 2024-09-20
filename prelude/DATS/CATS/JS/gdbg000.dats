@@ -26,98 +26,30 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(*
-Mon 05 Aug 2024 10:10:05 PM EDT
-*)
+Fri Sep 20 08:59:26 AM EDT 2024
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2024-08-05:
-Mon 05 Aug 2024 10:17:21 PM EDT
-ATS3 amply enables programmers to
-implement debugging support from the
-"outside"; the point to be stressed here
-is that these programmers are not supposed
-to have any direct access to the internals
-of the ATS3/Xanadu implemnetation!
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#abstype
-type_vw_t0(a:vw) <= unit
-#sexpdef type = type_vw_t0
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun<>
-g_type
-{t0:t0}(x0: t0): type(t0)
-fun<>
-g_vwtp
-{vt:vt}(x0: !vt): type(vt)
-fun<>
-g_prop
-{pf:pf}(x0: pf|): type(pf)
-fun<>
-g_view
-{vw:vw}(x0: !vw|): type(vw)
-//
-#symload type with g_type of 0100
-#symload vwtp with g_vwtp of 0100
-#symload prop with g_prop of 0100
-#symload view with g_view of 0100
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-08-06:
-These are the Number~1
-functions for debugging
-*)
-//
-fun
-<vt:vt>
-g_debug( x0:vt ): ( vt )
-//
-fun
-<vw:vw>
-g_psort((*void*)): ( void )
-fun
-<vw:vw>
-g_ptype((*void*)): ( void )
-//
-(* ****** ****** *)
-//
-#symload debug with g_debug of 0100
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun<>
-bool_assert
-(cond: bool): void
-fun<>
-assert$errmsg
-( (*void*) ): strn
-fun<>
+#impltmp
+<(*tmp*)>
 bool_assert_errmsg
-(cond: bool, msg: strn): void
-//
-#symload
-assert with bool_assert of 1000
-#symload
-assert with bool_assert_errmsg of 1000
+  (cond, emsg) =
+(
+XATS2JS_bool_assert_errmsg
+  (cond, emsg)) where
+{
+#extern
+fun
+XATS2JS_bool_assert_errmsg
+(cond: bool, emsg: strm): void = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -125,4 +57,4 @@ assert with bool_assert_errmsg of 1000
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gdbg000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_gdbg000.dats] *)

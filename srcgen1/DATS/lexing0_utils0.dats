@@ -1315,14 +1315,17 @@ val c0 = int2char0(i0)
 in
 //
 ifcase
-| isSQUOTE(c0) =>
-  T_CHAR_slash
-  (lexbuf_get_fullseg(buf))
-| _ (* else *) => let
-    val () = lexbuf_unget(buf, i0)
-  in
-    T_CHAR_slash(lexbuf_get_fullseg(buf))
-  end // end of [non-closing-SQUOTE]
+|
+isSQUOTE(c0) =>
+T_CHAR_slash
+(lexbuf_get_fullseg(buf))
+|
+_ (* else *) =>
+let
+  val () = lexbuf_unget(buf, i0)
+in
+  T_CHAR_slash(lexbuf_get_fullseg(buf))
+end // end of [non-closing-SQUOTE]
 //
 end // end of [loop12]
 //

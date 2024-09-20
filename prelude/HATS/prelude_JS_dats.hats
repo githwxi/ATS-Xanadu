@@ -20,6 +20,8 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 //
 #staload _ =
 "prelude/DATS/CATS/JS/gbas000.dats"
+#staload _ =
+"prelude/DATS/CATS/JS/gdbg000.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -290,6 +290,9 @@ ipat.node() of
 |I0Pchr _ =>
 (
  f0_chr0(b0, ival, ipat))
+|I0Pflt _ =>
+(
+ f0_flt0(b0, ival, ipat))
 |I0Pstr _ =>
 (
  f0_str0(b0, ival, ipat))
@@ -388,6 +391,32 @@ in//let
 ;print("XATS000_chreq(")
 ;prints(ival, ", ", tchr, ")"))
 end(*let*)//end-of-[f0_chr0(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_flt0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pflt
+(  tflt  ) = ipat.node()
+//
+#impltmp
+g_print
+<token>(x) = i0fltjs1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valjs1(filr, x)
+//
+in//let
+(conj(b0)
+;print("XATS000_flteq(")
+;prints(ival, ", ", tflt, ")"))
+end(*let*)//end-of-[f0_flt0(...)]
 //
 (* ****** ****** *)
 //
@@ -807,6 +836,9 @@ ival.node() of
 (* ****** ****** *)
 |I1Vchr
 ( tchr ) => i0chrjs1(filr,tchr)
+(* ****** ****** *)
+|I1Vflt
+( tflt ) => i0fltjs1(filr,tflt)
 (* ****** ****** *)
 |I1Vstr
 ( tstr ) => i0strjs1(filr,tstr)

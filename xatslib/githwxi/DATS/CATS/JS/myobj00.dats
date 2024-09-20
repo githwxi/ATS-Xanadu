@@ -40,6 +40,22 @@ hmap_make_nil
 //
 #impltmp
 < a: t0 >
+hmap_get$at
+ (map, k0) =
+(
+ jshsmap_get$at<>(map, k0))
+#impltmp
+< a: t0 >
+hmap_set$at
+ (map, k0, x0) =
+(
+ jshsmap_set$at<>(map, k0, x0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: t0 >
 hmap_search$opt
  (map, k0) =
 (

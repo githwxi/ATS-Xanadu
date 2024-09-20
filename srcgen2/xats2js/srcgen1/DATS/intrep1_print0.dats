@@ -102,12 +102,16 @@ i1v0.node() of
 |I1Vnil() =>
 prints("I1Vnil(",")")
 //
+(* ****** ****** *)
+//
 |I1Vint(int) =>
 prints("I1Vint(",int,")")
 |I1Vbtf(btf) =>
 prints("I1Vbtf(",btf,")")
 |I1Vchr(chr) =>
 prints("I1Vchr(",chr,")")
+|I1Vflt(flt) =>
+prints("I1Vflt(",flt,")")
 |I1Vstr(str) =>
 prints("I1Vstr(",str,")")
 //

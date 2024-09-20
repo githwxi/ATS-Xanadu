@@ -219,12 +219,14 @@ g_ptype<vt>((*0*)); pstrn(")"))
 HX-2024-08-06:
 Tue 06 Aug 2024 07:17:33 AM EDT
 *)
+//
 #impltmp
 { vw:vw }
 g_print
 <type(vw)>(_(*0*)) =
 (
-g_ptype<vw>();pstrn":";g_psort<vw>())
+g_ptype<vw>((*void*));
+pstrn":";g_psort<vw>((*void*)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -233,6 +235,24 @@ g_ptype<vw>();pstrn":";g_psort<vw>())
 < xs:vt >
 < x0:vt >
 gseq_prlen((*void*)) = 10(*default*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+assert$errmsg() =
+"gdbg000: [assert] failed!"
+//
+#impltmp
+<(*tmp*)>
+bool_assert(cond) =
+let
+val emsg =
+assert$errmsg<>() in//let
+(
+  bool_assert_errmsg<>(cond, emsg))
+end(*let*)//end-of-[bool_assert(cond)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

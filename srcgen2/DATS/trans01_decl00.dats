@@ -165,12 +165,20 @@ val c1 = src0[i1]
 val ch =
 (
 case+ 0 of
+//
 | _ when c1 = 'n' => '\n'
-| _ when c1 = 'r' => '\r'
 | _ when c1 = 't' => '\t'
+| _ when c1 = 'r' => '\r'
+//
+(*
+| _ when c1 = 'a' => '\a'
+| _ when c1 = 'g' => '\g'
+*)
+//
 | _ when c1 = 'b' => '\b'
 | _ when c1 = 'f' => '\f'
 | _ when c1 = 'v' => '\v'
+//
 | _ (* otherwise *) => c1): char
 //
 in//let

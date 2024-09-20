@@ -37,6 +37,245 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+g_si<dflt>
+  ( i1 ) =
+(
+XATS2JS_si2dflt
+  ( i1 )) where
+{
+#extern
+fcast
+XATS2JS_si2dflt
+(i1: sint): dflt = $extnam() }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+dflt_neg
+  ( f1 ) =
+(
+XATS2JS_dflt_neg
+  ( f1 )) where
+{
+#extern
+fun
+XATS2JS_dflt_neg
+(f1: dflt): dflt = $extnam() }
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+dflt_abs
+  ( f1 ) =
+(
+XATS2JS_dflt_abs
+  ( f1 )) where
+{
+#extern
+fun
+XATS2JS_dflt_abs
+(f1: dflt): dflt = $extnam() }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+dflt_sqrt
+  ( f1 ) =
+(
+XATS2JS_dflt_sqrt
+  ( f1 )) where
+{
+#extern
+fun
+XATS2JS_dflt_sqrt
+(f1: dflt): dflt = $extnam() }
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+dflt_cbrt
+  ( f1 ) =
+(
+XATS2JS_dflt_cbrt
+  ( f1 )) where
+{
+#extern
+fun
+XATS2JS_dflt_cbrt
+(f1: dflt): dflt = $extnam() }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+dflt_lt_dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_lt_dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_lt_dflt
+(f1: dflt, f2: dflt): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+dflt_gt_dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_gt_dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_gt_dflt
+(f1: dflt, f2: dflt): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+dflt_eq_dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_eq_dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_eq_dflt
+(f1: dflt, f2: dflt): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+dflt_lte_dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_lte_dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_lte_dflt
+(f1: dflt, f2: dflt): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+dflt_gte_dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_gte_dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_gte_dflt
+(f1: dflt, f2: dflt): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+dflt_neq_dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_neq_dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_neq_dflt
+(f1: dflt, f2: dflt): bool = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+dflt_add_dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_add_dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_add_dflt
+(f1: dflt, f2: dflt): dflt = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+dflt_sub_dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_sub_dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_sub_dflt
+(f1: dflt, f2: dflt): dflt = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+dflt_mul_dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_mul_dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_mul_dflt
+(f1: dflt, f2: dflt): dflt = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+dflt_div_dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_div_dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_div_dflt
+(f1: dflt, f2: dflt): dflt = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+dflt_mod_dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_mod_dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_mod_dflt
+(f1: dflt, f2: dflt): dflt = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-09-05:
 Mon 09 Sep 2024 06:13:03 PM EDT

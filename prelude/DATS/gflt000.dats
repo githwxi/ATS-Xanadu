@@ -98,6 +98,61 @@ dflt_neg( f1 ) = (0.0 - f1)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+dflt_add_sint
+  (f1, i2) =
+dflt_add_dflt(f1, g_si<dflt>(i2))
+#impltmp
+<(*tmp*)>
+dflt_sub_sint
+  (f1, i2) =
+dflt_sub_dflt(f1, g_si<dflt>(i2))
+//
+#impltmp
+<(*tmp*)>
+dflt_mul_sint
+  (f1, i2) =
+dflt_mul_dflt(f1, g_si<dflt>(i2))
+#impltmp
+<(*tmp*)>
+dflt_div_sint
+  (f1, i2) =
+dflt_div_dflt(f1, g_si<dflt>(i2))
+//
+#impltmp
+<(*tmp*)>
+dflt_mod_sint
+  (f1, i2) =
+dflt_mod_dflt(f1, g_si<dflt>(i2))
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+sint_add_dflt
+  (i1, f2) =
+dflt_add_dflt(g_si<dflt>(i1), f2)
+#impltmp
+<(*tmp*)>
+sint_sub_dflt
+  (i1, f2) =
+dflt_sub_dflt(g_si<dflt>(i1), f2)
+//
+#impltmp
+<(*tmp*)>
+sint_mul_dflt
+  (i1, f2) =
+dflt_mul_dflt(g_si<dflt>(i1), f2)
+#impltmp
+<(*tmp*)>
+sint_div_dflt
+  (i1, f2) =
+dflt_div_dflt(g_si<dflt>(i1), f2)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

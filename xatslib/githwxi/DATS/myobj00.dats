@@ -45,6 +45,24 @@ hmap_make_nil((*0*)): hmap(a)
 #extern
 fun
 <a:t0>
+hmap_get$at
+( map
+: hmap(a), k:strn): ( a )
+#symload [ ] with hmap_get$at
+//
+#extern
+fun
+<a:t0>
+hmap_set$at
+( map
+: hmap(a), k:strn, x:a): void
+#symload [ ] with hmap_set$at
+//
+(* ****** ****** *)
+//
+#extern
+fun
+<a:t0>
 hmap_search$opt
 ( map
 : hmap(a), k0: strn): optn_vt(a)
