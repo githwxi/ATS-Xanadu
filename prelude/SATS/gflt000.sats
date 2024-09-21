@@ -59,6 +59,16 @@ dflt_neg(df: dflt): dflt
 (* ****** ****** *)
 //
 fun<>
+dflt_sqr(df: dflt): dflt
+#symload sqr with dflt_sqr of 1000
+fun<>
+dflt_cbr(df: dflt): dflt
+#symload cbr with dflt_cbr of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
 dflt_sqrt(df: dflt): dflt
 #symload sqrt with dflt_sqrt of 1000
 fun<>

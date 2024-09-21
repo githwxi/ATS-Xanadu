@@ -93,7 +93,36 @@ g_print<df> = dflt_print<>
 //
 #impltmp
 <(*tmp*)>
-dflt_neg( f1 ) = (0.0 - f1)
+dflt_neg( f1 ) = (0.0-f1)
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+dflt_abs( f1 ) =
+if
+(f1 >= 0.0)
+then f1 else dflt_neg<>(f1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+dflt_suc( f1 ) =(f1+1.0)
+#impltmp
+<(*tmp*)>
+dflt_pre( f1 ) =(f1-1.0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+dflt_sqr( f1 ) = (f1*f1)
+#impltmp
+<(*tmp*)>
+dflt_cbr( f1 ) = (f1*f1*f1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
