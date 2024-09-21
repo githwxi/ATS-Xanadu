@@ -6,7 +6,6 @@ Sun 15 Sep 2024 05:54:50 PM EDT
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #staload "./../../../gbas000.dats"
 (* ****** ****** *)
 (* ****** ****** *)
@@ -106,6 +105,28 @@ fun
 XATS2JS_NODE_strn_fprint
   (obj: strn, out: FILR): void = $extnam()
 }(*where*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef
+argv = a1sz(strn)
+//
+#extern
+fun<>
+process_argv(): argv
+//
+#impltmp
+<(*tmp*)>
+process_argv() =
+(
+XATS2JS_NODE_process_argv
+  ((*void*))) where
+{
+#extern
+fun//fun
+XATS2JS_NODE_process_argv(): argv = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
