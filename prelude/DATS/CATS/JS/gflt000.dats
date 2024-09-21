@@ -276,6 +276,7 @@ XATS2JS_dflt_mod_dflt
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
 (*
 HX-2024-09-05:
 Mon 09 Sep 2024 06:13:03 PM EDT
@@ -292,6 +293,66 @@ XATS2JS_dflt_print
 #extern
 fun
 XATS2JS_dflt_print(f0: dflt): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-09-21:
+Sat Sep 21 03:31:11 PM EDT 2024
+*)
+//
+#impltmp
+<(*tmp*)>
+dflt_ceil
+  ( df ) =
+(
+XATS2JS_dflt_ceil
+  ( df )) where
+{
+#extern
+fun
+XATS2JS_dflt_ceil(df: dflt): dflt = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+dflt_floor
+  ( df ) =
+(
+XATS2JS_dflt_floor
+  ( df )) where
+{
+#extern
+fun
+XATS2JS_dflt_floor(df: dflt): dflt = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+dflt_round
+  ( df ) =
+(
+XATS2JS_dflt_round
+  ( df )) where
+{
+#extern
+fun
+XATS2JS_dflt_round(df: dflt): dflt = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+dflt_trunc
+  ( df ) =
+(
+XATS2JS_dflt_trunc
+  ( df )) where
+{
+#extern
+fun
+XATS2JS_dflt_trunc(df: dflt): dflt = $extnam()
 }
 //
 (* ****** ****** *)

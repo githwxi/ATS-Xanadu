@@ -242,6 +242,19 @@ gflt_cmp_sint_dflt(sint, dflt): sint
 (* ****** ****** *)
 //
 fun<>
+sint_add_dflt
+(i1: sint, f2: dflt): dflt
+fun<>
+sint_sub_dflt
+(i1: sint, f2: dflt): dflt
+fun<>
+sint_mul_dflt
+(i1: sint, f2: dflt): dflt
+fun<>
+sint_div_dflt
+(i1: sint, f2: dflt): dflt
+//
+fun<>
 gflt_add_sint_dflt(sint, dflt): dflt
 fun<>
 gflt_sub_sint_dflt(sint, dflt): dflt
@@ -249,6 +262,24 @@ fun<>
 gflt_mul_sint_dflt(sint, dflt): dflt
 fun<>
 gflt_div_sint_dflt(sint, dflt): dflt
+//
+(* ****** ****** *)
+//
+fun<>
+dflt_add_sint
+(f1: dflt, i2: sint): dflt
+fun<>
+dflt_sub_sint
+(f1: dflt, i2: sint): dflt
+fun<>
+dflt_mul_sint
+(f1: dflt, i2: sint): dflt
+fun<>
+dflt_div_sint
+(f1: dflt, i2: sint): dflt
+fun<>
+dflt_mod_sint
+(f1: dflt, i2: sint): dflt
 //
 fun<>
 gflt_add_dflt_sint(dflt, sint): dflt
@@ -258,6 +289,8 @@ fun<>
 gflt_mul_dflt_sint(dflt, sint): dflt
 fun<>
 gflt_div_dflt_sint(dflt, sint): dflt
+fun<>
+gflt_mod_dflt_sint(dflt, sint): dflt
 //
 (* ****** ****** *)
 (* ****** ****** *)

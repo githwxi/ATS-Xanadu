@@ -180,6 +180,28 @@ dflt_mod_sint
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-09-21:
+Sat Sep 21 03:28:45 PM EDT 2024
+*)
+//
+fun<>
+dflt_ceil(df: dflt): dflt//fun<>
+fun<>
+dflt_floor(df: dflt): dflt//fun<>
+fun<>
+dflt_round(df: dflt): dflt//fun<>
+fun<>
+dflt_trunc(df: dflt): dflt//fun<>
+//
+#symload ceil with dflt_ceil of 1000
+#symload floor with dflt_floor of 1000
+#symload round with dflt_round of 1000
+#symload trunc with dflt_trunc of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
