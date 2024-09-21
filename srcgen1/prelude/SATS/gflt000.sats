@@ -89,6 +89,16 @@ gflt_abs_dflt( f0: dflt ): dflt
 (* ****** ****** *)
 //
 fun<>
+sflt_suc( f0: sflt ): sflt
+fun<>
+dflt_suc( f0: dflt ): dflt
+//
+fun<>
+sflt_pre( f0: sflt ): sflt
+fun<>
+dflt_pre( f0: dflt ): dflt
+//
+fun<>
 gflt_suc_sflt( f0: sflt ): sflt
 fun<>
 gflt_suc_dflt( f0: dflt ): dflt
@@ -97,6 +107,29 @@ fun<>
 gflt_pre_sflt( f0: sflt ): sflt
 fun<>
 gflt_pre_dflt( f0: dflt ): dflt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+sflt_sqr( f0: sflt ): sflt
+fun<>
+dflt_sqr( f0: dflt ): dflt
+//
+fun<>
+sflt_cbr( f0: sflt ): sflt
+fun<>
+dflt_cbr( f0: dflt ): dflt
+//
+fun<>
+gflt_sqr_sflt( f0: sflt ): sflt
+fun<>
+gflt_sqr_dflt( f0: dflt ): dflt
+//
+fun<>
+gflt_cbr_sflt( f0: sflt ): sflt
+fun<>
+gflt_cbr_dflt( f0: dflt ): dflt
 //
 (* ****** ****** *)
 (* ****** ****** *)
