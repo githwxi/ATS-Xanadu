@@ -109,10 +109,10 @@ then f1 else dflt_neg<>(f1)
 //
 #impltmp
 <(*tmp*)>
-dflt_suc( f1 ) =(f1+1.0)
+dflt_suc( f1 ) = (f1+1.0)
 #impltmp
 <(*tmp*)>
-dflt_pre( f1 ) =(f1-1.0)
+dflt_pre( f1 ) = (f1-1.0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

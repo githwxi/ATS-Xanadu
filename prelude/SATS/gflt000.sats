@@ -107,9 +107,94 @@ dflt_neq_dflt
 #symload != with dflt_neq_dflt of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun<>
-dflt_cmp_dflt(f1: dflt, f2: dflt): sint
+sint_lt_dflt
+(i1: sint, f2: dflt): bool
+fun<>
+dflt_lt_sint
+(f1: dflt, i2: sint): bool
+//
+#symload < with sint_lt_dflt of 1000
+#symload < with dflt_lt_sint of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+sint_gt_dflt
+(i1: sint, f2: dflt): bool
+fun<>
+dflt_gt_sint
+(f1: dflt, i2: sint): bool
+//
+#symload > with sint_gt_dflt of 1000
+#symload > with dflt_gt_sint of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+sint_eq_dflt
+(i1: sint, f2: dflt): bool
+fun<>
+dflt_eq_sint
+(f1: dflt, i2: sint): bool
+//
+#symload = with sint_eq_dflt of 1000
+#symload = with dflt_eq_sint of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+sint_lte_dflt
+(i1: sint, f2: dflt): bool
+fun<>
+dflt_lte_sint
+(f1: dflt, i2: sint): bool
+//
+#symload <= with sint_lte_dflt of 1000
+#symload <= with dflt_lte_sint of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+sint_gte_dflt
+(i1: sint, f2: dflt): bool
+fun<>
+dflt_gte_sint
+(f1: dflt, i2: sint): bool
+//
+#symload >= with sint_gte_dflt of 1000
+#symload >= with dflt_gte_sint of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+sint_neq_dflt
+(i1: sint, f2: dflt): bool
+fun<>
+dflt_neq_sint
+(f1: dflt, i2: sint): bool
+//
+#symload != with sint_neq_dflt of 1000
+#symload != with dflt_neq_sint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+dflt_cmp_dflt
+(f1: dflt, f2: dflt): sint
+//
+fun<>
+sint_cmp_dflt
+(i1: sint, f2: dflt): sint
+fun<>
+dflt_cmp_sint
+(f1: dflt, i2: sint): sint
+//
+#symload cmp with dflt_cmp_dflt of 1000
+#symload cmp with dflt_cmp_dflt of 1000
 #symload cmp with dflt_cmp_dflt of 1000
 //
 (* ****** ****** *)
