@@ -24,18 +24,25 @@ mycsv00$line_csv$parse$fwork
   (line: strn, work: a1sz(strn)->void): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<>
+mycsv00$strn_csv$parse_a1sz
+  (chrs: strn): a1sz(optn_vt(a1sz(strn)))
+#extern
+fun<>
+mycsv00$strn_csv$parse_lstrm
+  (chrs: strn): strm_vt(optn_vt(a1sz(strn)))
 //
 #extern
 fun<>
 mycsv00$fpath_csv$parse$opt_a1sz
-  (fpath: strn)
-: optn_vt(a1sz(optn_vt(a1sz(strn))))
-//
+(fpath: strn): optn_vt(a1sz(optn_vt(a1sz(strn))))
 #extern
 fun<>
 mycsv00$fpath_csv$parse$opt_lstrm
-  (fpath: strn)
-: optn_vt(strm_vt(optn_vt(a1sz(strn))))
+(fpath: strn): optn_vt(strm_vt(optn_vt(a1sz(strn))))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -59,8 +66,48 @@ mycsv00$line_csv$parse$fwork
 (
 line,
 lam(cs) =>
-$UN.p2tr_set<r0>(p0, optn_vt_cons(cs))); r0
-end//let
+$UN.p2tr_set
+<r0>(p0, optn_vt_cons(cs))); ( r0 )
+end//let//end-of-[mycsv00$line_csv$parse$opt]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+mycsv00$strn_csv$parse_a1sz
+  (chrs) =
+let
+#vwtpdef y0 = optn_vt(a1sz(strn))
+in//let
+(
+a1sz_make_lstrm<y0>
+(mycsv00$strn_csv$parse_lstrm(chrs)))
+end//let//end-of[mycsv00$strn_csv$parse_a1sz]
+//
+#impltmp
+<(*tmp*)>
+mycsv00$strn_csv$parse_lstrm
+  (chrs) =
+let
+//
+#typedef
+line = strn
+#typedef x0 =
+(    line    )
+#vwtpdef y0 =
+optn_vt(a1sz(line))
+//
+#impltmp
+map$fopr0<x0><y0>(line) =
+(
+  mycsv00$line_csv$parse$opt<>(line))
+in//let
+(
+  strm_vt_map0<x0><y0>(lines)) where
+{
+  val lines = strn_line$strmize<>(chrs) }
+end//let//end-of-[mycsv00$strn_csv$parse_lstrm]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -93,7 +140,7 @@ let
 //
 val opt0 =
 (
- myfil00$fpath_readall$opt<>(fpath))
+myfil00$fpath_readall$opt<>(fpath))
 //
 in//let
 //

@@ -63,7 +63,7 @@ XATS2JS_NODE_mycsv00$line_csv$parse$fwork
     if (parsed.data.length > 0) work(parsed.data[0]);
   } catch (error) {
     console.log
-    (`XATS2JS_NODE_mycsv00$fpath_readall$fwork(error): line = ${line}`)
+    (`XATS2JS_NODE_mycsv00$line_csv$parse$fwork(error): line = ${line}`)
   } ; return // HX-2024-09-07: end-of-try: void is returned
 }
 //
