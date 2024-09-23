@@ -111,6 +111,24 @@ list_irforitm(xs: list(x0)): void
 #symload irforitm with list_irforitm of 1000
 //
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+list_foritm_f1un
+( xs
+: list(x0), work: (x0) -> void): void
+#symload foritm with list_foritm_f1un of 1000
+#symload foritm_fun with list_foritm_f1un of 1000
+//
+fun
+<x0:t0>
+list_iforitm_f2un
+( xs
+: list(x0), work: (ni,x0) -> void): void
+#symload iforitm with list_iforitm_f2un of 1000
+#symload iforitm_fun with list_iforitm_f2un of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
