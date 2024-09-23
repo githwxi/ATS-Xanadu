@@ -245,13 +245,23 @@ rforitm$work<x0> = rforitm$work1<x0>
 //
 #impltmp
 < x0:t0 >
-list_iforitm = gseq_iforitm<list(x0)><x0>
+list_iforitm =
+gseq_iforitm<list(x0)><x0>(* void *)
+#impltmp
+< x0:t0 >
+list_irforitm =
+gseq_irforitm<list(x0)><x0>(* void *)
 //
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
-list_irforitm = gseq_irforitm<list(x0)><x0>
+list_foritm_f1un =
+gseq_foritm_f1un<list(x0)><x0>(* void *)
+#impltmp
+< x0:t0 >
+list_iforitm_f2un =
+gseq_iforitm_f2un<list(x0)><x0>(* void *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
