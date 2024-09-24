@@ -75,7 +75,9 @@ list_cons(x1, xs) =>
 let
 val test =
 forall$test<x0>(x1) in
-if test then loop(xs) else false end)
+(
+if test
+then loop(xs) else false) end)
 }
 //
 #impltmp
@@ -89,7 +91,7 @@ gseq_forall0
 list_forall<x0>(xs) where
 {
 #impltmp
-forall$test<x0>(x0) = forall$test0<x0>(x0)
+forall$test<x0> = forall$test0<x0>
 }
 #impltmp
 { x0:t0 }
@@ -98,7 +100,7 @@ gseq_forall1
 list_forall<x0>(xs) where
 {
 #impltmp
-forall$test<x0>(x0) = forall$test1<x0>(x0)
+forall$test<x0> = forall$test1<x0>
 }
 //
 (* ****** ****** *)
@@ -126,7 +128,7 @@ gseq_rforall0
 list_rforall<x0>(xs) where
 {
 #impltmp
-rforall$test<x0>(x0) = rforall$test0<x0>(x0)
+rforall$test<x0> = rforall$test0<x0>
 }
 #impltmp
 { x0:t0 }
@@ -135,18 +137,31 @@ gseq_rforall1
 list_rforall<x0>(xs) where
 {
 #impltmp
-rforall$test<x0>(x0) = rforall$test1<x0>(x0)
+rforall$test<x0> = rforall$test1<x0>
 }
 //
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
-list_iforall = gseq_iforall<list(x0)><x0>
+list_iforall =
+gseq_iforall<list(x0)><x0>(* void *)
 //
 #impltmp
 < x0:t0 >
-list_irforall = gseq_irforall<list(x0)><x0>
+list_irforall =
+gseq_irforall<list(x0)><x0>(* void *)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_forall_f1un =
+gseq_forall_f1un<list(x0)><x0>(* void *)
+#impltmp
+< x0:t0 >
+list_iforall_f2un =
+gseq_iforall_f2un<list(x0)><x0>(* void *)
 //
 (* ****** ****** *)
 (* ****** ****** *)

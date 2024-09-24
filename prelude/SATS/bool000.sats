@@ -48,6 +48,17 @@ the_bool_false: bool(ff)
 //
 (* ****** ****** *)
 //
+(*
+#symload
+tru with the_bool_true//of 1000
+#symload
+fls with the_bool_false//of 1000
+#symload true with the_bool_true
+#symload false with the_bool_false
+*)
+//
+(* ****** ****** *)
+//
 fun<>
 bool_neg
 {b:bool}

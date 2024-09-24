@@ -672,6 +672,43 @@ list_irforitm(xs: list(x0)): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:t0>
+list_forall_f1un
+( xs
+: list(x0), work: (x0) -> bool): bool
+#symload forall with list_forall_f1un of 1000
+#symload forall_fun with list_forall_f1un of 1000
+//
+fun
+<x0:t0>
+list_iforall_f2un
+( xs
+: list(x0), work: (ni,x0) -> bool): bool
+#symload iforall with list_iforall_f2un of 1000
+#symload iforall_fun with list_iforall_f2un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_foritm_f1un
+( xs
+: list(x0), work: (x0) -> void): void
+#symload foritm with list_foritm_f1un of 1000
+#symload foritm_fun with list_foritm_f1un of 1000
+//
+fun
+<x0:t0>
+list_iforitm_f2un
+( xs
+: list(x0), work: (ni,x0) -> void): void
+#symload iforitm with list_iforitm_f2un of 1000
+#symload iforitm_fun with list_iforitm_f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 Wed 17 Jul 2024 02:13:39 PM EDT
 *)
