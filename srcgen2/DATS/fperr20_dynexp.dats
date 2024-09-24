@@ -247,8 +247,7 @@ in//let
 case+
 d2e.node() of
 //
-|
-D2Esym0
+|D2Esym0
 (drxp,d1e1,dpis) =>
 let
 val () =
@@ -258,8 +257,7 @@ endlet
 //
 (* ****** ****** *)
 //
-|
-D2Esapp
+|D2Esapp
 (d2f0,s2es) =>
 let
 val () =
@@ -269,8 +267,7 @@ val () =
 fperr20_s2explst(out, s2es)
 *)
 endlet
-|
-D2Etapp
+|D2Etapp
 (d2f0,s2es) =>
 let
 val () =
@@ -281,8 +278,7 @@ fperr20_s2explst(out, s2es)
 *)
 endlet
 //
-|
-D2Edapp
+|D2Edapp
 (d2f0
 ,npf1, d2es) =>
 let
@@ -294,8 +290,7 @@ endlet
 //
 (* ****** ****** *)
 //
-|
-D2Eproj
+|D2Eproj
 (tknd
 ,drxp
 ,dlab, dtup) =>
@@ -307,8 +302,7 @@ end(*let*)//end-of-[D2Eproj]
 //
 (* ****** ****** *)
 //
-|
-D2Elet0
+|D2Elet0
 (dcls, d2e1) =>
 (
   fperr20_d2exp(out, d2e1))
@@ -317,8 +311,7 @@ where
 val () =
 fperr20_d2eclist(out, dcls)
 }(*where*)//end-of-[D2Elet0]
-|
-D2Ewhere
+|D2Ewhere
 (d2e1, dcls) =>
 (
   fperr20_d2exp(out, d2e1))
@@ -330,8 +323,7 @@ fperr20_d2eclist(out, dcls)
 //
 (* ****** ****** *)
 //
-|
-D2Eift0
+|D2Eift0
 (d2e1,dthn,dels) =>
 let
   val () =
@@ -342,8 +334,7 @@ let
   fperr20_d2expopt(out, dels)
 endlet
 //
-|
-D2Ecas0
+|D2Ecas0
 (tknd,d2e1,dcls) =>
 let
   val () =
@@ -354,8 +345,7 @@ endlet
 //
 (* ****** ****** *)
 //
-|
-D2Eseqn
+|D2Eseqn
 (d2es, d2e1) =>
 (
 fperr20_d2exp
@@ -366,26 +356,58 @@ fperr20_d2explst(out, d2es) }
 //
 (* ****** ****** *)
 //
-|
-D2Etup0
+|D2Etup0
 (npf1, d2es) =>
 let
 val () =
 fperr20_d2explst(out, d2es) end
-|
-D2Etup1
+|D2Etup1
 ( tknd
 , npf1, d2es) =>
 let
 val () =
 fperr20_d2explst(out, d2es) end
-|
-D2Ercd2
+|D2Ercd2
 ( tknd
 , npf1, ldes) =>
 let
 val () =
 fperr20_l2d2elst(out, ldes) end
+//
+(* ****** ****** *)
+//
+|D2Elam0
+( tknd
+, f2as, sres
+, arrw, dexp) =>
+let
+//
+val () =
+fperr20_f2arglst(out, f2as)
+//
+(*
+val () = fperr20_s2res(out, sres)
+*)
+val () = fperr20_d2exp(out, dexp)
+//
+endlet
+//
+|D2Efix0
+( tknd
+, dpid
+, f2as, sres
+, arrw, dexp) =>
+let
+//
+val () =
+fperr20_f2arglst(out, f2as)
+//
+(*
+val () = fperr20_s2res(out, sres)
+*)
+val () = fperr20_d2exp(out, dexp)
+//
+endlet
 //
 (* ****** ****** *)
 //
