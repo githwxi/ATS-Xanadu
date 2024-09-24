@@ -94,6 +94,25 @@ list_irforall(xs: list(x0)): bool
 //
 fun
 <x0:t0>
+list_forall_f1un
+( xs
+: list(x0), work: (x0) -> bool): bool
+#symload forall with list_forall_f1un of 1000
+#symload forall_fun with list_forall_f1un of 1000
+//
+fun
+<x0:t0>
+list_iforall_f2un
+( xs
+: list(x0), work: (ni,x0) -> bool): bool
+#symload iforall with list_iforall_f2un of 1000
+#symload iforall_fun with list_iforall_f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
 list_foritm(xs: list(x0)): void
 fun
 <x0:t0>
