@@ -39,21 +39,21 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun<>
-strm_vt_nil_
+strm_vt_nil
 {a:vt}(): strm_vt(a)
 fun<>
-strq_vt_nil_
+strq_vt_nil
 {a:vt}(): strq_vt(a,0)
 //
 fun
 <a:vt>
-strm_vt_cons_
+strm_vt_cons
 (
 x0: (a),
 xs: strm_vt(a)): strm_vt(a)
 fun
 <a:vt>
-strq_vt_cons_
+strq_vt_cons
 {n:i0}
 (
 x0: (a),

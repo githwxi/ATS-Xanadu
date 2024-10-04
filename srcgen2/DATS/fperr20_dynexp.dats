@@ -247,6 +247,8 @@ in//let
 case+
 d2e.node() of
 //
+(* ****** ****** *)
+//
 |D2Esym0
 (drxp,d1e1,dpis) =>
 let
@@ -411,37 +413,53 @@ endlet
 //
 (* ****** ****** *)
 //
-|
-D2Eaddr(d2e1) =>
+|D2Eaddr(d2e1) =>
 let
 val () = fperr20_d2exp(out, d2e1)
 endlet
-|
-D2Eview(d2e1) =>
+|D2Eview(d2e1) =>
 let
 val () = fperr20_d2exp(out, d2e1)
 endlet
 //
 (* ****** ****** *)
 //
-|
-D2Eeval(d2e1) =>
+|D2Eeval(d2e1) =>
 let
 val () = fperr20_d2exp(out, d2e1)
 endlet
-|
-D2Efree(d2e1) =>
+|D2Efree(d2e1) =>
 let
 val () = fperr20_d2exp(out, d2e1)
 endlet
 //
-|
-D2Eassgn
+(* ****** ****** *)
+//
+|D2Eassgn
 (d2el, d2er) =>
 let
 val () = fperr20_d2exp(out, d2el)
 val () = fperr20_d2exp(out, d2er)
 endlet
+//
+(* ****** ****** *)
+//
+|D2Ebrget
+(dpis, d2es) =>
+(
+let
+val () =
+(
+ fperr20_d2explst(out, d2es))end)
+|D2Ebrset
+(dpis, d2es) =>
+(
+let
+val () =
+(
+ fperr20_d2explst(out, d2es))end)
+//
+(* ****** ****** *)
 //
 |
 D2Eraise
@@ -449,6 +467,8 @@ D2Eraise
 let
 val () = fperr20_d2exp(out, d2e1)
 endlet
+//
+(* ****** ****** *)
 //
 |
 D2El0azy

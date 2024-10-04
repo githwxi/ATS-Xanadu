@@ -93,6 +93,41 @@ g_print<df> = dflt_print<>
 //
 #impltmp
 <(*tmp*)>
+dflt_lt_sint
+  (f1, i2) =
+dflt_lt_dflt(f1, g_si<dflt>(i2))
+#impltmp
+<(*tmp*)>
+dflt_gt_sint
+  (f1, i2) =
+dflt_gt_dflt(f1, g_si<dflt>(i2))
+#impltmp
+<(*tmp*)>
+dflt_eq_sint
+  (f1, i2) =
+dflt_eq_dflt(f1, g_si<dflt>(i2))
+//
+#impltmp
+<(*tmp*)>
+dflt_lte_sint
+  (f1, i2) =
+dflt_lte_dflt(f1, g_si<dflt>(i2))
+#impltmp
+<(*tmp*)>
+dflt_gte_sint
+  (f1, i2) =
+dflt_gte_dflt(f1, g_si<dflt>(i2))
+#impltmp
+<(*tmp*)>
+dflt_neq_sint
+  (f1, i2) =
+dflt_neq_dflt(f1, g_si<dflt>(i2))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 dflt_neg( f1 ) = (0.0-f1)
 //
 (* ****** ****** *)
