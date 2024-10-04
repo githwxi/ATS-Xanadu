@@ -39,6 +39,21 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+<(*tmp*)>
+strm_vt_nil() =
+$llazy
+(strmcon_vt_nil(*void*))
+//
+#impltmp
+< a: vt >
+strm_vt_cons(x0, xs) =
+$llazy
+(strmcon_vt_cons(x0, xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 { x0:vt }
 g_free//~xs
 <strm_vt(x0)>(xs) = $free(xs)
