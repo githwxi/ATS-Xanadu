@@ -1316,6 +1316,8 @@ s2typ_subst0
 s2typ_subst0_e1nv<e1nv>(e1nv,t2p0,svts)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 s2typ_exi0_abst
 ( e1nv: !e1nv
@@ -1324,6 +1326,8 @@ fun
 s2typ_uni0_abst
 ( e1nv: !e1nv
 , t2p0: s2typ): s2typ = t2p0
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
@@ -1349,7 +1353,7 @@ map$fopr
 <x0><y0>(s2v1) =
 @(s2v1, s2typ_xtv(x2t2p_make()))
 //
-}(*where*)//end of [f0_inst_s2vs]
+}(*where*)//end of [f0_inst_s2vs(s2vs)]
 //
 in//local
 //
@@ -1372,7 +1376,9 @@ e1nv,
 s2typ_subst0(e1nv,t2p1,svts) )
 endlet // end of [T2Pexi0(...)]
 | _(* non-T2Pexi0 *) => (  t2p0  )
-)(*case+*)//end-of-[s2typ_exi0_inst]
+)(*case+*)//end-of-[s2typ_exi0_inst(...)]
+//
+(* ****** ****** *)
 //
 fun
 s2typ_uni0_inst
@@ -1393,10 +1399,11 @@ e1nv,
 s2typ_subst0(e1nv,t2p1,svts) )
 endlet // end of [T2Puni0(...)]
 | _(* non-T2Puni0 *) => (  t2p0  )
-)(*case+*)//end-of-[s2typ_uni0_inst]
+)(*case+*)//end-of-[s2typ_uni0_inst(...)]
 //
-endloc // end-of-[s2typ_exi0/uni0_inst]
+endloc // end-of-[s2typ_exi0/uni0_inst(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1512,6 +1519,7 @@ t2p2.node() of
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f1_xset
@@ -1531,6 +1539,7 @@ unify00_s2typ$xset<>(xtp1, t2p2)
 end (*let*) // end of [f1_xset(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_xtv1
@@ -1538,22 +1547,26 @@ f0_xtv1
 , t2p1: s2typ
 , t2p2: s2typ): (bool) =
 let
+//
 val-
 T2Pxtv(xtp1) = t2p1.node()
+//
 in//let
+//
 case+
 t2p2.node() of
 |T2Pxtv(xtp2) =>
 if
 (xtp1 = xtp2)
 then true else
-(f1_xset(xtp1, t2p2); true)
+(f1_xset(xtp1, t2p2); true)//endof(IF)
 |_(*non-T2Pxtv*) =>
 if
 s2typ_xtpck0
 ( t2p2, xtp1 )
 then false else
-(f1_xset(xtp1, t2p2); true)
+(f1_xset(xtp1, t2p2); true)//endof(IF)
+//
 end (*let*) // end of [f0_xtv1(e1nv,...)]
 //
 (* ****** ****** *)
@@ -1564,16 +1577,21 @@ f0_xtv2
 , t2p1: s2typ
 , t2p2: s2typ): (bool) =
 let
+//
 val-
 T2Pxtv(xtp2) = t2p2.node()
+//
 in//let
+//
 if
 s2typ_xtpck0
 ( t2p1, xtp2 )
 then false else
-(f1_xset(xtp2, t2p1); true)
+(f1_xset(xtp2, t2p1); true)//endof(IF)
+//
 end (*let*) // end of [f0_xtv2(e1nv,...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1595,6 +1613,8 @@ unify00_s2typ(e1nv, tp11, tp21)
 //
 end (*let*) // end of [f0_top0(e1nv,...)]
 //
+(* ****** ****** *)
+//
 fun
 f0_top1
 ( e1nv: !e1nv
@@ -1614,6 +1634,7 @@ unify00_s2typ(e1nv, tp11, tp21)
 //
 end (*let*) // end of [f0_top1(e1nv,...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1646,6 +1667,7 @@ end (*let*) // end of [T2Papps(...)]
 //
 end (*let*) // end of [f0_apps(e1nv,...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1681,6 +1703,7 @@ end (*let*) // end of [T2Pfun1(...)]
 end (*let*) // end of [f0_fun1(e1nv,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_text
@@ -1708,6 +1731,7 @@ unify00_s2typlst
 //
 end (*let*) // end of [f0_text(e1nv,...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1740,6 +1764,7 @@ unify00_l2t2plst
 end (*let*) // end of [f0_trcd(e1nv,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 val
 t2p1 =
@@ -1749,12 +1774,14 @@ t2p2 =
 unify00_s2typ$hnfz(e1nv, t2p2)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 val
 t2p1 = s2typ_uni0_inst(e1nv, t2p1)
 val
 t2p2 = s2typ_exi0_inst(e1nv, t2p2)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -1764,6 +1791,7 @@ val (  ) =
 prerrsln("unify00_s2typ: t2p2 = ", t2p2)
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 } (*where*) // end of [unify00_s2typ(e1nv,...)]
