@@ -160,9 +160,9 @@ let
   val
   loc = d2p.lctn()
   val () = prerrsln
-  ("fperr20_d2pat: auxmain: loc = ", loc)
+  ("fperr20_d2pat:auxmain: loc = ", loc)
   val () = prerrsln
-  ("fperr20_d2pat: auxmain: d2p = ", d2p)
+  ("fperr20_d2pat:auxmain: d2p = ", d2p)
 endlet
 //
 end (*let*) // end-of-[ auxmain(out, d2p) ]
@@ -233,6 +233,197 @@ D2LAB(lab,d2p1) => fperr20_d2pat(out,d2p1)
 
 local
 
+(* ****** ****** *)
+//
+fun
+auxdexp
+( out: FILR
+, d2e: d2exp): void =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+//
+case+
+d2e.node() of
+|D2Eint _ => print(d2e)
+|D2Ebtf _ => print(d2e)
+|D2Echr _ => print(d2e)
+|D2Eflt _ => print(d2e)
+|D2Estr _ => print(d2e)
+//
+|D2Ei00 _ => print(d2e)
+|D2Eb00 _ => print(d2e)
+|D2Ec00 _ => print(d2e)
+|D2Ef00 _ => print(d2e)
+|D2Es00 _ => print(d2e)
+//
+(* ****** ****** *)
+//
+|D2Etop _ => print(d2e)
+//
+(* ****** ****** *)
+//
+|D2Evar _ => print(d2e)
+//
+|D2Econ _ => print(d2e)
+|D2Ecst _ => print(d2e)
+//
+(* ****** ****** *)
+//
+|D2Econs _ => print(d2e)
+|D2Ecsts _ => print(d2e)
+//
+(* ****** ****** *)
+//
+|D2Esym0 _ =>
+prints("D2Esym0(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Esapp _ =>
+prints("D2Esapp(", "...", ")")
+|D2Etapp _ =>
+prints("D2Etapp(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Edap0 _ =>
+prints("D2Edap0(", "...", ")")
+|D2Edapp _ =>
+prints("D2Edapp(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Eproj _ =>
+prints("D2Eproj(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Elet0 _ =>
+prints("D2Elet0(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Eift0 _ =>
+prints("D2Eift0(", "...", ")")
+|D2Ecas0 _ => 
+prints("D2Ecas0(", "...", ")")
+//
+|D2Eseqn _ =>
+prints("D2Eseqn(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Etup0 _ =>
+prints("D2Etup0(", "...", ")")
+|D2Etup1 _ =>
+prints("D2Etup1(", "...", ")")
+|D2Ercd2 _ =>
+prints("D2Ercd2(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Elam0 _ =>
+prints("D2Elam0(", "...", ")")
+|D2Efix0 _ =>
+prints("D2Efix0(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Etry0 _ =>
+prints("D2Etry0(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Eaddr _ =>
+prints("D2Eaddr(", "...", ")")
+|D2Eview _ =>
+prints("D2Eview(", "...", ")")
+//
+|D2Eeval _ =>
+prints("D2Eeval(", "...", ")")
+//
+|D2Efold _ =>
+prints("D2Efold(", "...", ")")
+//
+|D2Efree _ =>
+prints("D2Efree(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Ewhere _ =>
+prints("D2Ewhere(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Eassgn _ =>
+prints("D2Eassgn(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Ebrget _ =>
+prints("D2Ebrget(", "...", ")")
+|D2Ebrset _ =>
+prints("D2Ebrset(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Edtsel _ =>
+prints("D2Edtsel(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2El0azy _ =>
+prints("D2El0azy(", "...", ")")
+|D2El1azy _ =>
+prints("D2El1azy(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Eannot _ =>
+prints("D2Eannot(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D2Elabck
+(d2e1, lab2) =>
+( print("D2Elabck(")
+; auxdexp(out, d2e1);
+; print(";"); prints(lab2, ")"))
+//
+|D2Et2pck
+(d2e1, t2p2) =>
+( print("D2Et2pck(")
+; auxdexp(out, d2e1);
+; print(";"); prints(t2p2, ")"))
+//
+(* ****** ****** *)
+//
+|
+D2Eerrck(lvl0, d2e1) =>
+( print("D2Eerrck(")
+; print(lvl0); print(";")
+; auxdexp(out, d2e1); print(")"))
+
+//
+|
+_(*otherwise*) =>
+let
+  val
+  loc = d2e.lctn((*0*))
+  val () = prerrsln
+  ("fperr20_d2exp:auxdexp: loc = ", loc)
+  val () = prerrsln
+  ("fperr20_d2exp:auxdexp: d2e = ", d2e)
+endlet
+//
+end (*let*) // end-of-[ auxdexp(out, d2e) ]
+//
+(* ****** ****** *)
+//
 fun
 auxmain
 ( out: FILR
@@ -512,9 +703,9 @@ let
   val
   loc = d2e.lctn((*0*))
   val () = prerrsln
-  ("fperr20_d2exp: auxmain: loc = ", loc)
+  ("fperr20_d2exp:auxmain: loc = ", loc)
   val () = prerrsln
-  ("fperr20_d2exp: auxmain: d2e = ", d2e)
+  ("fperr20_d2exp:auxmain: d2e = ", d2e)
 endlet
 //
 end (*let*) // end-of-[ auxmain(out, d2e) ]
@@ -559,8 +750,14 @@ if
 >FPERR20_ERRVL)
 then ((*void*)) else
 let
+//
 val
-loc0 = d2e0.lctn()
+loc0 = d2e0.lctn((*0*))
+//
+#impltmp
+g_print
+<d2exp>(d2e) = auxdexp(out, d2e)
+//
 in//let
 printsln();
 printsln("\

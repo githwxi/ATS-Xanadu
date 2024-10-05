@@ -884,6 +884,8 @@ d2exp_node =
 |D2Ef00 of (dflt) // float
 |D2Es00 of (strn) // string
 //
+(* ****** ****** *)
+//
 |D2Etop of (sym_t)
 //
 (* ****** ****** *)
@@ -988,6 +990,7 @@ D2Etry0 of
 (* ****** ****** *)
 //
 |D2Eeval of (d2exp)//eval-fun//$eval
+//
 |D2Efold of (d2exp)//open-con//$fold
 //
 (*
@@ -1039,10 +1042,14 @@ D2Edtsel of
 , d2ptmlst
 , sint(*npf*), d2explstopt(*args*) )
 //
+(* ****** ****** *)
+//
 |
 D2Eraise of
 (
  token(*$RAISE*), d2exp(*lin-exn*) )
+//
+(* ****** ****** *)
 //
 |
 D2El0azy of // nonlin-lazy-eval
@@ -1054,14 +1061,20 @@ D2El1azy of // linear-lazy-eval
 d1exp(*$LLAZY*),
 d2exp(*lin-thunk*), d2explst(*frees*))
 //
+(* ****** ****** *)
+//
 |
 D2Eannot of
 ( d2exp
 , s1exp(*given*), s2exp(*trans*))
 //
+(* ****** ****** *)
+//
 |
 D2Eg1mac of
 (g1mac(*unknown*))//HX: temp or error!
+//
+(* ****** ****** *)
 //
 |
 D2Elabck of (d2exp, label)//HX: casting
