@@ -417,13 +417,11 @@ d3exp_make_node(loc0,D3Econ(dcon))
 in//let
 //
 case+ t2js of
-|
-list_nil _ =>
+|list_nil _ =>
 let
   val () = d3e0.styp(t2p0) in d3e0
 end // let // end of [list_nil(...)]
-|
-list_cons _ =>
+|list_cons _ =>
 (
   d3exp_make_tpnd
   (loc0, t2p0, D3Etapq(d3e0, t2js)) )

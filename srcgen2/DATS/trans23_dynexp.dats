@@ -233,6 +233,12 @@ d3pat_make_tpnd
 |D2Pflat _ => f0_flat(env0, d2p0)
 |D2Pfree _ => f0_free(env0, d2p0)
 //
+(*
+HX-2024-10-04:
+[D2Pdap0] should have
+been eliminated at this point!
+*)
+|D2Pdap0 _ => f0_dap0(env0, d2p0)
 |D2Pdap1 _ => f0_dap1(env0, d2p0)
 |D2Pdapp _ => f0_dapp(env0, d2p0)
 //
@@ -343,11 +349,19 @@ d2con23_tjagize(loc0, d2c1)
 //
 val
 d3p0 =
-d3pat_make_node(loc0, D3Pcon(d2c1))
+(
+  d3pat_make_tpnd
+  (loc0, t2p0, D3Pcon(d2c1)))
 //
 in//let
+//
+case+ t2js of
+|list_nil _ => d3p0
+|list_cons _ =>
+(
   d3pat_make_tpnd
-  (loc0, t2p0, D3Ptapq(d3p0, t2js))
+  (loc0, t2p0, D3Ptapq(d3p0, t2js)))
+//
 end(*let*)//end-of-[f0_con(env0,d2p0)]
 //
 (* ****** ****** *)
@@ -460,6 +474,24 @@ D2Pcons
 in//let
   trans23_d2pat(env0, drpt.dpat())
 end (*let*)//end-of-[f0_cons(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dap0
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+let
+//
+val loc0 = d2p0.lctn()
+//
+val tres = s2typ_none0()
+//
+in//let
+(
+d3pat(loc0, tres, D3Pnone1(d2p0)))
+end (*let*) // end of [f0_dap0(env0,d2p0)]
 //
 (* ****** ****** *)
 //
@@ -2734,6 +2766,8 @@ val () =
 prerrsln("trans23_d3pat_tpck: d3p0 = ", d3p0)
 val () =
 prerrsln("trans23_d3pat_tpck: t2p0 = ", t2p0)
+val () = prerrsln("\
+trans23_d3pat_tpck: d3p0.styp() = ", d3p0.styp())
 *)
 //
 }(*where*) // end-of-[trans23_d3pat_tpck(...)]

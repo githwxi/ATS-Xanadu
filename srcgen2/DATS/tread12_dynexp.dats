@@ -997,22 +997,25 @@ d2p0.node() of
 |D2Pvar _ => d2p0
 |D2Pany _ => d2p0
 //
-|D2Pi00 _ => d2p0
-|D2Pb00 _ => d2p0
-|D2Pc00 _ => d2p0
-|D2Ps00 _ => d2p0
-//
 |D2Pint _ => d2p0
 |D2Pbtf _ => d2p0
 |D2Pchr _ => d2p0
 |D2Pflt _ => d2p0
 |D2Pstr _ => d2p0
 //
+|D2Pi00 _ => d2p0
+|D2Pb00 _ => d2p0
+|D2Pc00 _ => d2p0
+|D2Ps00 _ => d2p0
+//
 |D2Pcon _ => d2p0
 //
 |D2Pcons _ => d2p0
 //
+(*
+// HX: removed!
 |D2Psym0 _ => d2p0
+*)
 //
 |D2Pbang _ => f0_bang(d2p0, err)
 |D2Pflat _ => f0_flat(d2p0, err)
@@ -1183,19 +1186,68 @@ val-
 D2Pdapp
 (d2f0
 ,npf1, d2ps) = d2p.node()
+//
 val
-d2f0 = tread12_d2pat(d2f0, err)
+d2f0 =
+(
+  tread12_d2pat(d2f0, err))
 val
-d2ps = tread12_d2patlst(d2ps, err)
+d2ps =
+(
+  tread12_d2patlst(d2ps, err))
+//
+val () =
+// HX: [d2f0] is required to
+f1_conq(d2f0, err) // be a d2con!
+//
 in//let
-if
+//
+if // if
 (err=e00)
 then (d2p) else
 let
+//
 val loc = d2p.lctn() in
 d2pat_dapp_errck(loc,d2f0,npf1,d2ps)
-end (*let*) // end-of-[else]
-end (*let*) // end of [f0_dapp(d2p,err)]
+//
+end (*let*) // else // end-of-[if]
+end where
+{
+//
+fun
+f1_conq
+(d2p: d2pat
+,err: &sint >> _): void =
+(
+case+
+d2p.node() of
+//
+|D2Pcon
+(  d2c1  ) => ((*void*))
+//
+|D2Pbang
+(  d2p1  ) => f1_conq(d2p1, err)
+|D2Pflat
+(  d2p1  ) => f1_conq(d2p1, err)
+|D2Pfree
+(  d2p1  ) => f1_conq(d2p1, err)
+//
+|D2Psapp
+( d2p1, s2vs ) => f1_conq(d2p1, err)
+//
+|_(*otherwise*) => (err := (err + 1))
+) where
+{
+//
+(*
+val () =
+prerrsln("\
+tread12_d2pat:f0_dapp:f1_conq: d2p = ", d2p)
+*)
+//
+}(*case+*) // end-of-[f1_conq(d2p,err)]
+//
+} (*where*) // end of [f0_dapp(d2p,err)]
 //
 (* ****** ****** *)
 //
