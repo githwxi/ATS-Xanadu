@@ -198,6 +198,210 @@ D3LAB(lab,d3p1) => fperr30_d3pat(out,d3p1)
 
 local
 
+(* ****** ****** *)
+//
+fun
+auxdexp
+( out: FILR
+, d3e: d3exp): void =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+//
+case+
+d3e.node() of
+//
+(* ****** ****** *)
+//
+|D3Eint _ => print(d3e)
+|D3Ebtf _ => print(d3e)
+|D3Echr _ => print(d3e)
+|D3Eflt _ => print(d3e)
+|D3Estr _ => print(d3e)
+//
+|D3Ei00 _ => print(d3e)
+|D3Eb00 _ => print(d3e)
+|D3Ec00 _ => print(d3e)
+|D3Ef00 _ => print(d3e)
+|D3Es00 _ => print(d3e)
+//
+(* ****** ****** *)
+//
+|D3Etop _ => print(d3e)
+//
+(* ****** ****** *)
+//
+|D3Evar _ => print(d3e)
+//
+|D3Econ _ => print(d3e)
+|D3Ecst _ => print(d3e)
+//
+(* ****** ****** *)
+//
+|D3Etimp _ =>
+prints("D3Etimp(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Esapp _ =>
+prints("D3Esapp(", "...", ")")
+|D3Esapq _ =>
+prints("D3Esapq(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Etapp _ =>
+prints("D3Etapp(", "...", ")")
+|D3Etapq _ =>
+prints("D3Etapq(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Edap0 _ =>
+prints("D3Edap0(", "...", ")")
+|D3Edapp _ =>
+prints("D3Edapp(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Epcon _ =>
+prints("D3Epcon(", "...", ")")
+|D3Eproj _ =>
+prints("D3Eproj(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Elet0 _ =>
+prints("D3Elet0(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Eift0 _ =>
+prints("D3Eift0(", "...", ")")
+|D3Ecas0 _ => 
+prints("D3Ecas0(", "...", ")")
+//
+|D3Eseqn _ =>
+prints("D3Eseqn(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Etup0 _ =>
+prints("D3Etup0(", "...", ")")
+|D3Etup1 _ =>
+prints("D3Etup1(", "...", ")")
+|D3Ercd2 _ =>
+prints("D3Ercd2(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Elam0 _ =>
+prints("D3Elam0(", "...", ")")
+|D3Efix0 _ =>
+prints("D3Efix0(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Etry0 _ =>
+prints("D3Etry0(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Eaddr _ =>
+prints("D3Eaddr(", "...", ")")
+|D3Eview _ =>
+prints("D3Eview(", "...", ")")
+|D3Eflat _ =>
+prints("D3Eflat(", "...", ")")
+//
+|D3Eeval _ =>
+prints("D3Eeval(", "...", ")")
+//
+|D3Efold _ =>
+prints("D3Efold(", "...", ")")
+//
+|D3Efree _ =>
+prints("D3Efree(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Ewhere _ =>
+prints("D3Ewhere(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Edp2tr _ =>
+prints("D3Edp2tr(", "...", ")")
+//
+|D3Edl0az _ =>
+prints("D3Edl0az(", "...", ")")
+|D3Edl1az _ =>
+prints("D3Edl1az(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Eassgn _ =>
+prints("D3Eassgn(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Eraise _ =>
+prints("D3Eraise(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3El0azy _ =>
+prints("D3El0azy(", "...", ")")
+|D3El1azy _ =>
+prints("D3El1azy(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Eannot _ =>
+prints("D3Eannot(", "...", ")")
+//
+(* ****** ****** *)
+//
+|D3Elabck
+(d3e1, lab2) =>
+( print("D3Elabck(")
+; auxdexp(out, d3e1)
+; print(";"); prints(lab2, ")"))
+//
+|D3Et2pck
+(d3e1, t2p2) =>
+( print("D3Et2pck(")
+; auxdexp(out, d3e1)
+; print(";"); prints(t2p2, ")"))
+//
+(* ****** ****** *)
+//
+|D3Eerrck
+(lvl0, d3e1) =>
+( print("D3Eerrck(")
+; print(lvl0); print(";")
+; auxdexp(out, d3e1); print(")"))
+//
+(* ****** ****** *)
+//
+|
+_(*otherwise*) =>
+let
+  val
+  loc = d3e.lctn((*0*))
+  val () = prerrsln
+  ("fperr30_d3exp:auxdexp: loc = ", loc)
+  val () = prerrsln
+  ("fperr30_d3exp:auxdexp: d3e = ", d3e)
+endlet
+//
+end (*let*) // end-of-[ auxdexp(out, d3e) ]
+//
+(* ****** ****** *)
+//
 fun
 auxmain
 ( out: FILR
@@ -373,7 +577,9 @@ val ( ) = prerrsln
 endlet
 //
 end (*let*) // end-of-[ auxmain(out, d3e) ]
-
+//
+(* ****** ****** *)
+//
 in//local
 //
 #implfun
@@ -412,8 +618,14 @@ if
 >FPERR30_ERRVL)
 then ((*void*)) else
 let
+//
 val
 loc0 = d3e0.lctn()
+//
+#impltmp
+g_print
+<d3exp>(d3e) = auxdexp(out, d3e)
+//
 in//let
 printsln();
 printsln("\

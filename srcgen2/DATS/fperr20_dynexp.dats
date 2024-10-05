@@ -391,23 +391,24 @@ prints("D2Eannot(", "...", ")")
 |D2Elabck
 (d2e1, lab2) =>
 ( print("D2Elabck(")
-; auxdexp(out, d2e1);
+; auxdexp(out, d2e1)
 ; print(";"); prints(lab2, ")"))
 //
 |D2Et2pck
 (d2e1, t2p2) =>
 ( print("D2Et2pck(")
-; auxdexp(out, d2e1);
+; auxdexp(out, d2e1)
 ; print(";"); prints(t2p2, ")"))
 //
 (* ****** ****** *)
 //
-|
-D2Eerrck(lvl0, d2e1) =>
+|D2Eerrck
+(lvl0, d2e1) =>
 ( print("D2Eerrck(")
 ; print(lvl0); print(";")
 ; auxdexp(out, d2e1); print(")"))
-
+//
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
