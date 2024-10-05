@@ -379,6 +379,20 @@ prints("D3Eannot(", "...", ")")
 //
 (* ****** ****** *)
 //
+|D3Enone0() =>
+(
+ prints("D3Enone0(", ")"))
+//
+|D3Enone1(d2e1) =>
+(
+ prints("D3Enone1(", d2e1, ")"))
+//
+|D3Enone2(d3e1) =>
+(
+ prints("D3Enone2(", d3e1, ")"))
+//
+(* ****** ****** *)
+//
 |D3Eerrck
 (lvl0, d3e1) =>
 ( print("D3Eerrck(")
