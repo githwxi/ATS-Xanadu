@@ -402,6 +402,20 @@ prints("D2Eannot(", "...", ")")
 //
 (* ****** ****** *)
 //
+|D2Enone0() =>
+(
+ prints("D2Enone0(", ")"))
+//
+|D2Enone1(d1e1) =>
+(
+ prints("D2Enone1(", d1e1, ")"))
+//
+|D2Enone2(d2e1) =>
+(
+ prints("D2Enone2(", d2e1, ")"))
+//
+(* ****** ****** *)
+//
 |D2Eerrck
 (lvl0, d2e1) =>
 ( print("D2Eerrck(")
