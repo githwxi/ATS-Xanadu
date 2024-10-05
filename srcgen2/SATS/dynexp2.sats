@@ -987,11 +987,16 @@ D2Etry0 of
 |D2Eaddr of (d2exp)//left-val//$addr
 |D2Eview of (d2exp)//left-val//$view
 //
+(*
+HX-2024-10-05: there is only D3Eflat!
+|D2Eflat of (d2exp)//left-val-content
+*)
+//
 (* ****** ****** *)
 //
-|D2Eeval of (d2exp)//eval-fun//$eval
+|D2Eeval of (d2exp)//eval-builtin-fun
 //
-|D2Efold of (d2exp)//open-con//$fold
+|D2Efold of (d2exp)//open-con-folding
 //
 (*
 HX-2024-01-01:
@@ -1007,36 +1012,33 @@ it may be of other uses in the future
 D2Ewhere of
 (
 d2exp//let(binds)in(scope)end 
-(*scope*), d2eclist(*binds*) )
+(*scope*), d2eclist(*declares*))
 //
 (* ****** ****** *)
 //
 |
 D2Eassgn of // l-val := r-val
-(d2exp(*l-val*), d2exp(*r-val*))
+( d2exp(*l-val*), d2exp(*r-val*))
+//
+(* ****** ****** *)
 //
 (*
-|
-D2Eaexch of // l-val :=> r-val
-(d2exp(*l-val*), d2exp(*r-val*))
-|
-D2Ebexch of // l-val :=: r-val
-(d2exp(*l-val*), d2exp(*r-val*))
+|D2Eaexch of // l-val :=> r-val
+( d2exp(*l-val*), d2exp(*r-val*))
+|D2Ebexch of // l-val :=: r-val
+( d2exp(*l-val*), d2exp(*r-val*))
 *)
 //
 (* ****** ****** *)
 //
-|
-D2Ebrget of // HX: arr[idx]
+|D2Ebrget of // HX: arr[idx]
 ( d2ptmlst, d2explst(*arr+idx*))
-|
-D2Ebrset of // HX: arr[idx] := val
+|D2Ebrset of // HX: arr[idx] := val
 ( d2ptmlst, d2explst(*arr+idx+val*))
 //
 (* ****** ****** *)
 //
-|
-D2Edtsel of
+|D2Edtsel of
 ( token
 , label
 , d2ptmlst
@@ -1066,13 +1068,12 @@ d2exp(*lin-thunk*), d2explst(*frees*))
 |
 D2Eannot of
 ( d2exp
-, s1exp(*given*), s2exp(*trans*))
+, s1exp(*given*), s2exp(*translated*))
 //
 (* ****** ****** *)
 //
-|
-D2Eg1mac of
-(g1mac(*unknown*))//HX: temp or error!
+|D2Eg1mac of //HX: this one is
+(g1mac(*unknown*))//temporary or error!
 //
 (* ****** ****** *)
 //
