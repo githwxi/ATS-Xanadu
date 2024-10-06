@@ -537,6 +537,18 @@ optn_vt_nil() =>
 end//end-of-[s2cst_get2a_styp(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+deuni2a_s2typ
+(env0, t2p0) =
+(
+  s2typ_elim_unis(t2p0))
+(*
+// HX-2024-10-05: [env0] is unused!
+*)
+//
+(* ****** ****** *)
 //
 #implfun
 unify2a_s2typ
@@ -568,10 +580,10 @@ s2typ_eval$s2cst: s2c0 = ", s2c0)
 //
 #impltmp
 s2typ_eval$s2var
-<e1nv>(env0,s2v0) =
+<e1nv>(e1nv,s2v0) =
 ( // HX-2023-07-21: support for
   optn_vt_nil((*void*)) // GRDT?
-) // end-of-[s2typ_eval$s2var(...)]
+) // end-of-[s2typ_eval$s2var(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -587,7 +599,7 @@ case+ t2p0.node() of
 |T2Ptop1
 ( t2p1 ) => f0_detop(t2p1)
 |
-_(*otherwise*) => ( t2p0 )) // f0_detop
+_(*otherwise*) => ( t2p0 ))//f0_detop(_)
 *)
 //
 #impltmp
