@@ -121,5 +121,9 @@ tmpmap_insert$any
   tmpmap(itm), key: key, itm: itm): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****************************************** *)
+(* ****************************************** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_SATS_xstamp0.sats] *)

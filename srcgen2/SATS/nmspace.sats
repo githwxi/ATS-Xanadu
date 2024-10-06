@@ -65,5 +65,9 @@ the_nmspace_find_f1un
 // end of [the_nmspace_find_f1un]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****************************************** *)
+(* ****************************************** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_SATS_nmspace.sats] *)
