@@ -226,5 +226,9 @@ stkmap_insmix$kxs
 : list_vt@(key,itm), mix: (itm,itm)->itm): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****************************************** *)
+(* ****************************************** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_SATS_xsymmap.sats] *)

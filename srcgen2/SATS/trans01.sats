@@ -826,5 +826,9 @@ trans01_from_fpath
 (stadyn: sint, source: strn(*fpath*)): d1parsed
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****************************************** *)
+(* ****************************************** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_SATS_trans01.sats] *)

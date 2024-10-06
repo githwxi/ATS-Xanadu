@@ -161,11 +161,16 @@ fperr40_d4parsed
 ( out: FILR, dpar: d4parsed ): void//end-fun
 //
 (* ****** ****** *)
+//
 fun
 fperr40_d4explstopt(FILR, d4explstopt): void
 fun
 fperr40_d4eclistopt(FILR, d4eclistopt): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****************************************** *)
+(* ****************************************** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_SATS_fperr40.sats] *)
