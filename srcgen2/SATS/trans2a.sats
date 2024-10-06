@@ -602,6 +602,14 @@ trans2a_d2eclistopt
 ! tr2aenv, dopt: d2eclistopt): d2eclistopt
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+deuni2a_s2typ
+( env0:
+! tr2aenv, t2p0: s2typ): s2typ
+//
+(* ****** ****** *)
 //
 fun
 unify2a_s2typ // effectful
@@ -609,16 +617,16 @@ unify2a_s2typ // effectful
 ! tr2aenv
 , t2p1:s2typ, t2p2:s2typ): (bool)
 fun
+match2a_s2typ // testing-only
+( env0:
+! tr2aenv
+, t2p1:s2typ, t2p2:s2typ): (bool)
+//
+fun
 unify2a_s2typlst // effectful
 ( env0:
 ! tr2aenv
 , tps1:s2typlst, tps2:s2typ): bool
-//
-fun
-match2a_s2typ // testing-only
-( env0:
-! tr2aenv
-, t2p1:s2typ, t2p2:s2typ): bool
 fun
 match2a_s2typlst // testing-only
 ( env0:
@@ -630,6 +638,7 @@ match2a_s2typlst // testing-only
 #symload unify2a with unify2a_s2typlst
 #symload match2a with match2a_s2typlst
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -664,13 +673,14 @@ trans2a_d2patlst_tpkcs // HX: reversed
 ( env0:
 ! tr2aenv,d2ps:d2patlst,t2ps:s2typlst): d2patlst
 //
-(*
+(* ****** ****** *)
+//
 fun
 trans2a_d2explst_tpcks
 ( env0:
 ! tr2aenv,d2es:d2explst,t2ps:s2typlst): d2explst
-*)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -689,5 +699,9 @@ trans2a_f2arglst_elim
 , f2as:f2arglst, tfun:s2typ): (f2arglst,s2typ)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****************************************** *)
+(* ****************************************** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_SATS_trans2a.sats] *)
