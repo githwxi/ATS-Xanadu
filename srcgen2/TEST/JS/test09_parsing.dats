@@ -107,85 +107,85 @@ pq_fun_test pq_fun_test_strn
 val opt =
 p1_fun_test<t0int>("123", p1_t0int)
 val ( ) =
-prerrln("p1_t0int(\"123\") = ", opt)
+prerrsln("p1_t0int(\"123\") = ", opt)
 val opt =
 p1_fun_test<t0int>("int?+", p1_t0int)
 val ( ) =
-prerrln("p1_t0int(\"int?+\") = ", opt)
+prerrsln("p1_t0int(\"int?+\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<t0chr>("'0'", p1_t0chr)
 val ( ) =
-prerrln("p1_t0chr(\"'0'\") = ", opt)
+prerrsln("p1_t0chr(\"'0'\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<t0flt>("3.14", p1_t0flt)
 val ( ) =
-prerrln("p1_t0flt(\"3.14\") = ", opt)
+prerrsln("p1_t0flt(\"3.14\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<t0str>("\"Hello!\"", p1_t0str)
 val ( ) =
-prerrln("p1_t0str(\"\"Hello!\"\") = ", opt)
+prerrsln("p1_t0str(\"\"Hello!\"\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<l0abl>("12345", p1_l0abl)
 val ( ) =
-prerrln("p1_l0abl(\"12345\") = ", opt)
+prerrsln("p1_l0abl(\"12345\") = ", opt)
 val opt =
 p1_fun_test<l0abl>("label", p1_l0abl)
 val ( ) =
-prerrln("p1_l0abl(\"label\") = ", opt)
+prerrsln("p1_l0abl(\"label\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<i0dnt>("@", p1_i0dnt)
 val ( ) =
-prerrln("p1_i0dnt(\"@\") = ", opt)
+prerrsln("p1_i0dnt(\"@\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<i0dnt>("<>", p1_i0dnt)
 val ( ) =
-prerrln("p1_i0dnt(\"<>\") = ", opt)
+prerrsln("p1_i0dnt(\"<>\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<i0dnt>("i0dnt", p1_i0dnt)
 val ( ) =
-prerrln("p1_i0dnt(\"i0dnt\") = ", opt)
+prerrsln("p1_i0dnt(\"i0dnt\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<i0dnt>("0idnt", p1_i0dnt)
 val ( ) =
-prerrln("p1_i0dnt(\"0idnt\") = ", opt)
+prerrsln("p1_i0dnt(\"0idnt\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<sort0>("type", p1_sort0)
 val ( ) =
-prerrln("p1_sort0(\"type\") = ", opt)
+prerrsln("p1_sort0(\"type\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<sort0>("(int,chr.1)", p1_sort0)
 val ( ) =
-prerrln("p1_sort0(\"(int,chr.1)\") = ", opt)
+prerrsln("p1_sort0(\"(int,chr.1)\") = ", opt)
 
 (* ****** ****** *)
 
@@ -215,39 +215,39 @@ val ( ) = sort0opt_fpemsg(g_stderr(), opt)
 val opt =
 p1_fun_test<s0exp>("sint", p1_s0exp)
 val ( ) =
-prerrln("p1_s0exp(\"sint\") = ", opt)
+prerrsln("p1_s0exp(\"sint\") = ", opt)
 val opt =
 p1_fun_test<s0exp>("(sint,bool)", p1_s0exp)
 val ( ) =
-prerrln("p1_s0exp(\"(sint,bool)\") = ", opt)
+prerrsln("p1_s0exp(\"(sint,bool)\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<s0exp>("(bool:bsrt)", p1_s0exp)
 val ( ) =
-prerrln("p1_s0exp(\"(bool:bsrt)\") = ", opt)
+prerrsln("p1_s0exp(\"(bool:bsrt)\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<s0exp>("@{l1=sint,l2=bool}", p1_s0exp)
 val ( ) =
-prerrln("p1_s0exp(\"@{l1=sint,l2=bool}\") = ", opt)
+prerrsln("p1_s0exp(\"@{l1=sint,l2=bool}\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<s0exp>("lam(x0:int) => x0+x0", p1_s0exp)
 val ( ) =
-prerrln("p1_s0exp(\"lam(x0:int) => x0+x0\") = ", opt)
+prerrsln("p1_s0exp(\"lam(x0:int) => x0+x0\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<s0exp>("op(1)", p1_s0exp)
 val ( ) =
-prerrln("p1_s0exp(\"op(1)\") = ", opt)
+prerrsln("p1_s0exp(\"op(1)\") = ", opt)
 val opt = preadx0_s0expopt(opt, the_err)
 val ( ) = s0expopt_fpemsg(g_stderr(), opt)
 
@@ -256,7 +256,7 @@ val ( ) = s0expopt_fpemsg(g_stderr(), opt)
 val opt =
 p1_fun_test<s0exp>("-<clo>", p1_s0exp)
 val ( ) =
-prerrln("p1_s0exp(\"-<clo>\") = ", opt)
+prerrsln("p1_s0exp(\"-<clo>\") = ", opt)
 val opt = preadx0_s0expopt(opt, the_err)
 val ( ) = s0expopt_fpemsg(g_stderr(), opt)
 
@@ -265,14 +265,14 @@ val ( ) = s0expopt_fpemsg(g_stderr(), opt)
 val opt =
 p1_fun_test<s0exp>("{a:int}int(a)->void", p1_s0exp)
 val ( ) =
-prerrln("p1_s0exp(\"{a:int}int(a)->void\") = ", opt)
+prerrsln("p1_s0exp(\"{a:int}int(a)->void\") = ", opt)
 
 (* ****** ****** *)
 
 val opt =
 p1_fun_test<s0exp>("#[a:int|a>0]int(a)->void", p1_s0exp)
 val ( ) =
-prerrln("p1_s0exp(\"#[a:int|a>0]int(a)->void\") = ", opt)
+prerrsln("p1_s0exp(\"#[a:int|a>0]int(a)->void\") = ", opt)
 
 (* ****** ****** *)
 

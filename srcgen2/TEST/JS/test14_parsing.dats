@@ -154,7 +154,7 @@ in//local
 //
 val
 (  ) =
-prerrln("p1_fun_test(0)")
+prerrsln("p1_fun_test(0)")
 //
 val
 opt1 =
@@ -166,7 +166,7 @@ val opt1 = preadx0(opt1, err) where { var err: sint = 0 }
 //
 val
 (  ) =
-prerrln("p1_fun_test(1)")
+prerrsln("p1_fun_test(1)")
 //
 val
 opt2 =
@@ -178,13 +178,13 @@ val opt2 = preadx0(opt2, err) where { var err: sint = 0 }
 //
 val
 (  ) =
-prerrln("p1_fun_test(2)")
+prerrsln("p1_fun_test(2)")
 //
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/bool000.dats\") =\n", opt1)
+prerrsln("p1_fun_test(\"./../../../prelude/DATS/bool000.dats\") =\n", opt1)
 //
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/char000.dats\") =\n", opt2)
+prerrsln("p1_fun_test(\"./../../../prelude/DATS/char000.dats\") =\n", opt2)
 //
 (* ****** ****** *)
 //

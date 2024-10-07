@@ -33,16 +33,16 @@
 (* ****** ****** *)
 //
 val () =
-prerrln
+prerrsln
 ("the_symbl_nil = ", the_symbl_nil)
 //
 (* ****** ****** *)
 //
-val () = prerrln("sym1 = ", symbl("sym1"))
-val () = prerrln("sym2 = ", symbl("sym2"))
-val () = prerrln("sym1 = ", symbl("sym1"))
-val () = prerrln("sym2 = ", symbl("sym2"))
-val () = prerrln("sym3 = ", symbl("sym3"))
+val () = prerrsln("sym1 = ", symbl("sym1"))
+val () = prerrsln("sym2 = ", symbl("sym2"))
+val () = prerrsln("sym1 = ", symbl("sym1"))
+val () = prerrsln("sym2 = ", symbl("sym2"))
+val () = prerrsln("sym3 = ", symbl("sym3"))
 //
 (* ****** ****** *)
 

@@ -398,12 +398,12 @@
 val ret =
 the_fxtyenv_pvsload()
 val (  ) =
-prerrln("the_fxtyenv_pvsload() = ", ret)
+prerrsln("the_fxtyenv_pvsload() = ", ret)
 //
 val ret =
 the_tr12env_pvsload()
 val (  ) =
-prerrln("the_tr12env_pvsload() = ", ret)
+prerrsln("the_tr12env_pvsload() = ", ret)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -443,7 +443,7 @@ srcgen1\
 "\
 srcgen1\
 /prelude\
-/DATS/CATS/JS/Node/process.dats"
+/DATS/CATS/JS/NODE/process.dats"
 (* ****** ****** *)
 val () =
 mymain() where
@@ -456,7 +456,7 @@ mytest(argv[2])) where
 {
   val argv =
   XATS2JS_NODE_argv_get()
-  val (  ) = prerrln("argv = ", argv)
+  val (  ) = prerrsln("argv = ", argv)
 } (*where*)//end-of-[ mymain((*void*)) ]
 //
 }

@@ -16,21 +16,21 @@
 (* ****** ****** *)
 
 val () =
-prerrln("PROPSORT = ", PROPSORT)
+prerrsln("PROPSORT = ", PROPSORT)
 val () =
-prerrln("VIEWSORT = ", VIEWSORT)
+prerrsln("VIEWSORT = ", VIEWSORT)
 val () =
-prerrln("TBOXSORT = ", TBOXSORT)
+prerrsln("TBOXSORT = ", TBOXSORT)
 val () =
-prerrln("TFLTSORT = ", TFLTSORT)
+prerrsln("TFLTSORT = ", TFLTSORT)
 val () =
-prerrln("TYPESORT = ", TYPESORT)
+prerrsln("TYPESORT = ", TYPESORT)
 val () =
-prerrln("VTBXSORT = ", VTBXSORT)
+prerrsln("VTBXSORT = ", VTBXSORT)
 val () =
-prerrln("VTFTSORT = ", VTFTSORT)
+prerrsln("VTFTSORT = ", VTFTSORT)
 val () =
-prerrln("VWTPSORT = ", VWTPSORT)
+prerrsln("VWTPSORT = ", VWTPSORT)
 
 (* ****** ****** *)
 //
@@ -39,10 +39,10 @@ let
 val
 k1 = 10
 in//let
-prerrln("sortbox(",k1,")=",sortbox(k1));
-prerrln("sortlin(",k1,")=",sortlin(k1));
-prerrln("sortprf(",k1,")=",sortprf(k1));
-prerrln("sortpol(",k1,")=",sortpol(k1));
+prerrsln("sortbox(",k1,")=",sortbox(k1));
+prerrsln("sortlin(",k1,")=",sortlin(k1));
+prerrsln("sortprf(",k1,")=",sortprf(k1));
+prerrsln("sortpol(",k1,")=",sortpol(k1));
 end // end of [let]
 //
 val () =
@@ -50,74 +50,74 @@ let
 val
 k1 = 15
 in//let
-prerrln("sortbox(",k1,")=",sortbox(k1));
-prerrln("sortlin(",k1,")=",sortlin(k1));
-prerrln("sortprf(",k1,")=",sortprf(k1));
-prerrln("sortpol(",k1,")=",sortpol(k1));
+prerrsln("sortbox(",k1,")=",sortbox(k1));
+prerrsln("sortlin(",k1,")=",sortlin(k1));
+prerrsln("sortprf(",k1,")=",sortprf(k1));
+prerrsln("sortpol(",k1,")=",sortpol(k1));
 end // end of [let]
 //
 (* ****** ****** *)
 
 val () =
-prerrln("DCKval() = ", DCKval())
+prerrsln("DCKval() = ", DCKval())
 val () =
-prerrln("DCKfun() = ", DCKfun())
+prerrsln("DCKfun() = ", DCKfun())
 val () =
-prerrln("DCKpraxi() = ", DCKpraxi())
+prerrsln("DCKpraxi() = ", DCKpraxi())
 val () =
-prerrln("DCKprfun() = ", DCKprfun())
+prerrsln("DCKprfun() = ", DCKprfun())
 val () =
-prerrln("DCKprval() = ", DCKprval())
+prerrsln("DCKprval() = ", DCKprval())
 val () =
-prerrln("DCKfcast() = ", DCKfcast())
+prerrsln("DCKfcast() = ", DCKfcast())
 
 (* ****** ****** *)
 
 val () =
-prerrln("VLKval() = ", VLKval())
+prerrsln("VLKval() = ", VLKval())
 val () =
-prerrln("VLKvlp() = ", VLKvlp())
+prerrsln("VLKvlp() = ", VLKvlp())
 val () =
-prerrln("VLKvln() = ", VLKvln())
+prerrsln("VLKvln() = ", VLKvln())
 val () =
-prerrln("VLKprval() = ", VLKprval())
+prerrsln("VLKprval() = ", VLKprval())
 
 (* ****** ****** *)
 
 val () =
-println("FNKfn0() = ", FNKfn0())
+prerrsln("FNKfn0() = ", FNKfn0())
 val () =
-proutln("FNKfn1() = ", FNKfn1())
+prerrsln("FNKfn1() = ", FNKfn1())
 val () =
-prerrln("FNKfnx() = ", FNKfnx())
+prerrsln("FNKfnx() = ", FNKfnx())
 val () =
-prerrln("FNKpraxi() = ", FNKpraxi())
+prerrsln("FNKpraxi() = ", FNKpraxi())
 val () =
-prerrln("FNKprfun() = ", FNKprfun())
+prerrsln("FNKprfun() = ", FNKprfun())
 val () =
-prerrln("FNKfcast() = ", FNKfcast())
+prerrsln("FNKfcast() = ", FNKfcast())
 
 (* ****** ****** *)
 
 val () =
-prerrln("CSKcas0() = ", CSKcas0())
+prerrsln("CSKcas0() = ", CSKcas0())
 val () =
-prerrln("CSKcasp() = ", CSKcasp())
+prerrsln("CSKcasp() = ", CSKcasp())
 val () =
-prerrln("CSKcasn() = ", CSKcasn())
+prerrsln("CSKcasn() = ", CSKcasn())
 
 (* ****** ****** *)
 
 val () =
-prerrln("IMPLgen() = ", IMPLgen())
+prerrsln("IMPLgen() = ", IMPLgen())
 val () =
-prerrln("IMPLprf() = ", IMPLprf())
+prerrsln("IMPLprf() = ", IMPLprf())
 val () =
-prerrln("IMPLval() = ", IMPLval())
+prerrsln("IMPLval() = ", IMPLval())
 val () =
-prerrln("IMPLfun() = ", IMPLfun())
+prerrsln("IMPLfun() = ", IMPLfun())
 val () =
-prerrln("IMPLtmp() = ", IMPLtmp())
+prerrsln("IMPLtmp() = ", IMPLtmp())
 
 (* ****** ****** *)
 

@@ -163,7 +163,7 @@ p1_fun_test<d0eclist>
 //
 // (*
 val ( ) =
-prerrln("opt = ", opt)
+prerrsln("opt = ", opt)
 // *)
 //
 val opt = preadx0(opt, err)
@@ -181,7 +181,7 @@ where { val out = g_stderr<>() }
 //
 (*
 val ( ) =
-prerrln
+prerrsln
 ("p1_fun_test(\"./miscell.dats\") =\n", opt)
 *)
 //

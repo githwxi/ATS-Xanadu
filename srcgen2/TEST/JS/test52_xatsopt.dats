@@ -17,12 +17,12 @@ Testing [trans34]
 //
 val ret =
 the_fxtyenv_pvsload()
-val (  ) = prerrln
+val (  ) = prerrsln
 ("the_fxtyenv_pvsload() = ", ret)
 //
 val ret =
 the_tr12env_pvsload()
-val (  ) = prerrln
+val (  ) = prerrsln
 ("the_tr12env_pvsload() = ", ret)
 //
 (* ****** ****** *)
@@ -47,7 +47,7 @@ val dpar =
 //
 val (  ) =
 (
-  prerrln("dpar(34) = ", dpar))
+  prerrsln("dpar(34) = ", dpar))
 //
 in//let
 //
@@ -69,7 +69,7 @@ srcgen1\
 "\
 srcgen1\
 /prelude\
-/DATS/CATS/JS/Node/process.dats"
+/DATS/CATS/JS/NODE/process.dats"
 (* ****** ****** *)
 val () =
 mymain() where
@@ -82,7 +82,7 @@ mytest(argv[2])) where
 {
   val argv =
   XATS2JS_NODE_argv_get()
-  val (  ) = prerrln("argv = ", argv)
+  val (  ) = prerrsln("argv = ", argv)
 } (*where*)//end-of-[ mymain((*void*)) ]
 //
 }

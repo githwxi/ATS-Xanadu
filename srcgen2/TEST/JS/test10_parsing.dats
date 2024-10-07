@@ -189,7 +189,7 @@ where { val out = g_stderr<>() }
 //
 // (*
 val ( ) =
-prerrln("p1_fun_test(\"./DATA/basics0.sats\") =\n", opt)
+prerrsln("p1_fun_test(\"./DATA/basics0.sats\") =\n", opt)
 // *)
 //
 (* ****** ****** *)

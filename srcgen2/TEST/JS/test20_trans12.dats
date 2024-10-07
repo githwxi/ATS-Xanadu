@@ -264,7 +264,7 @@ list_print$sep<>() = print("\n")
 val ret =
 the_fxtyenv_pvsload()
 val (  ) =
-prerrln
+prerrsln
 ("the_fxtyenv_pvsload() = ", ret)
 //
 (* ****** ****** *)
@@ -302,7 +302,7 @@ in
 end
 //
 val (  ) =
-prerrln
+prerrsln
 ("d1parsed_from_fpath(\"./DATA/mytest1.sats\") =\n", dpar)
 //
 (* ****** ****** *)
@@ -312,7 +312,7 @@ val dpar = d2parsed_of_trans12(dpar)
 (* ****** ****** *)
 //
 val (  ) =
-prerrln
+prerrsln
 ("d2parsed_from_fpath(\"./DATA/mytest1.sats\") =\n", dpar)
 //
 (* ****** ****** *)
