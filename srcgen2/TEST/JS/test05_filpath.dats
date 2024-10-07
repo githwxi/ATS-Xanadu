@@ -24,18 +24,18 @@
 (* ****** ****** *)
 
 val () =
-prerrln("theDirSep = ", theDirSep_get())
+prerrsln("theDirSep = ", theDirSep_get())
 val () =
-prerrln("theCurDir = ", theCurDir_get())
+prerrsln("theCurDir = ", theCurDir_get())
 val () =
-prerrln("theParDir = ", theParDir_get())
+prerrsln("theParDir = ", theParDir_get())
 
 (* ****** ****** *)
 
 val () =
 let
 val dpx = "./.." in
-prerrln
+prerrsln
 ("drpth(", '"', dpx, '"', ") = ", drpth(dpx))
 end // end of [val ()]
 
@@ -50,7 +50,7 @@ gseq_group_lstrm(fpx) where
   #impltmp
   group$test<cgtz>(ch) = (ch != DS) }
 
-val ( ) = prerrln("nms = ", listize0(nms))
+val ( ) = prerrsln("nms = ", listize0(nms))
 
 (* ****** ****** *)
 
@@ -58,8 +58,8 @@ val ( ) =
 let
 val fpx = "../../../a/ab/abc/abcd"
 in
-prerrln("fpx = ", fpx);
-prerrln("fpath_normq(fpx) = ", fpath_normq(fpx))
+prerrsln("fpx = ", fpx);
+prerrsln("fpath_normq(fpx) = ", fpath_normq(fpx))
 end
 
 (* ****** ****** *)
@@ -68,8 +68,8 @@ val ( ) =
 let
 val fpx = "./a/../ab/../abc/../../abcde"
 in
-prerrln("fpx = ", fpx);
-prerrln("fpath_normize(fpx) = ", fpath_normize(fpx))
+prerrsln("fpx = ", fpx);
+prerrsln("fpath_normize(fpx) = ", fpath_normize(fpx))
 end
 
 (* ****** ****** *)

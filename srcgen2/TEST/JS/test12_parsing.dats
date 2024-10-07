@@ -158,7 +158,7 @@ err:
 sint = 0
 //
 val () =
-prerrln("p1_fun_test(0)")
+prerrsln("p1_fun_test(0)")
 // (*
 val opt =
 p1_fun_test<d0eclist>
@@ -166,7 +166,7 @@ p1_fun_test<d0eclist>
 // *)
 //
 val () =
-prerrln("p1_fun_test(1)")
+prerrsln("p1_fun_test(1)")
 //
 (*
 val opt =
@@ -182,7 +182,7 @@ optn_cons(preadx0_d0eclist(dcls, err))
 //
 // (*
 val ( ) =
-prerrln("p1_fun_test(\"./../../../docgenx/SYNTAX/ATS3-ConcreteSyntax.dats\") =\n", opt)
+prerrsln("p1_fun_test(\"./../../../docgenx/SYNTAX/ATS3-ConcreteSyntax.dats\") =\n", opt)
 // *)
 //
 (* ****** ****** *)

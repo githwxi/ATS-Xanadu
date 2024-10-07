@@ -451,6 +451,14 @@ T_SRP_SYMLOAD() =>
 prints("T_SRP_SYMLOAD(", ")")
 //
 |
+T_SRP_STALOAD() =>
+prints("T_SRP_STALOAD(", ")")
+//
+|
+T_SRP_DYNINIT() =>
+prints("T_SRP_DYNINIT(", ")")
+//
+|
 T_SRP_INCLUDE() =>
 prints("T_SRP_INCLUDE(", ")")
 (*
@@ -458,10 +466,6 @@ prints("T_SRP_INCLUDE(", ")")
 T_SRP_INPASTE() =>
 prints("T_SRP_INPASTE(", ")")
 *)
-//
-|
-T_SRP_STALOAD() =>
-prints("T_SRP_STALOAD(", ")")
 //
 |
 T_SRP_EXTCODE() =>

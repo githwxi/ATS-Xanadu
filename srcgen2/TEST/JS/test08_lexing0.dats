@@ -79,84 +79,84 @@ val buf1 = lxbf1_make0_cstrx(csrc1)
 (* ****** ****** *)
 
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf1) = ", lxbf1_lexing_tnode(buf1))
 
 (* ****** ****** *)
 (*
-val (  ) = prerrln("ALNUMq('a') = ", ALNUMq('a'))
-val (  ) = prerrln("ALNUMq('z') = ", ALNUMq('z'))
-val (  ) = prerrln("ALNUMq('0') = ", ALNUMq('0'))
-val (  ) = prerrln("ALNUMq('9') = ", ALNUMq('9'))
-val (  ) = prerrln("ALNUMq('_') = ", ALNUMq('_'))
-val (  ) = prerrln("ALNUM_q('a') = ", ALNUM_q('a'))
-val (  ) = prerrln("ALNUM_q('z') = ", ALNUM_q('z'))
-val (  ) = prerrln("ALNUM_q('0') = ", ALNUM_q('0'))
-val (  ) = prerrln("ALNUM_q('9') = ", ALNUM_q('9'))
-val (  ) = prerrln("ALNUM_q('_') = ", ALNUM_q('_'))
-val (  ) = prerrln("ALNUM_q('.') = ", ALNUM_q('.'))
-val (  ) = prerrln("XDIGITq('0') = ", XDIGITq('0'))
-val (  ) = prerrln("XDIGITq('a') = ", XDIGITq('a'))
-val (  ) = prerrln("XDIGITq('f') = ", XDIGITq('f'))
-val (  ) = prerrln("XDIGITq('g') = ", XDIGITq('g'))
-val (  ) = prerrln("XDIGITq('A') = ", XDIGITq('A'))
-val (  ) = prerrln("XDIGITq('F') = ", XDIGITq('F'))
-val (  ) = prerrln("XDIGITq('G') = ", XDIGITq('G'))
+val (  ) = prerrsln("ALNUMq('a') = ", ALNUMq('a'))
+val (  ) = prerrsln("ALNUMq('z') = ", ALNUMq('z'))
+val (  ) = prerrsln("ALNUMq('0') = ", ALNUMq('0'))
+val (  ) = prerrsln("ALNUMq('9') = ", ALNUMq('9'))
+val (  ) = prerrsln("ALNUMq('_') = ", ALNUMq('_'))
+val (  ) = prerrsln("ALNUM_q('a') = ", ALNUM_q('a'))
+val (  ) = prerrsln("ALNUM_q('z') = ", ALNUM_q('z'))
+val (  ) = prerrsln("ALNUM_q('0') = ", ALNUM_q('0'))
+val (  ) = prerrsln("ALNUM_q('9') = ", ALNUM_q('9'))
+val (  ) = prerrsln("ALNUM_q('_') = ", ALNUM_q('_'))
+val (  ) = prerrsln("ALNUM_q('.') = ", ALNUM_q('.'))
+val (  ) = prerrsln("XDIGITq('0') = ", XDIGITq('0'))
+val (  ) = prerrsln("XDIGITq('a') = ", XDIGITq('a'))
+val (  ) = prerrsln("XDIGITq('f') = ", XDIGITq('f'))
+val (  ) = prerrsln("XDIGITq('g') = ", XDIGITq('g'))
+val (  ) = prerrsln("XDIGITq('A') = ", XDIGITq('A'))
+val (  ) = prerrsln("XDIGITq('F') = ", XDIGITq('F'))
+val (  ) = prerrsln("XDIGITq('G') = ", XDIGITq('G'))
 *)
 (* ****** ****** *)
 (*
-val (  ) = prerrln("IDFSTq('z') = ", IDFSTq( 'z' ))
-val (  ) = prerrln("IDFSTq('X') = ", IDFSTq( 'X' ))
-val (  ) = prerrln("IDFSTq('_') = ", IDFSTq( '_' ))
-val (  ) = prerrln("IDFSTq('%') = ", IDFSTq( '%' ))
-val (  ) = prerrln("IDSYMq('%') = ", IDSYMq( '%' ))
-val (  ) = prerrln("IDSYMq(':') = ", IDSYMq( ':' ))
-val (  ) = prerrln("IDSYMq('@') = ", IDSYMq( '@' ))
-val (  ) = prerrln("IDSYMq('#') = ", IDSYMq( '#' ))
-val (  ) = prerrln("IDSYMq('$') = ", IDSYMq( '$' ))
-val (  ) = prerrln("IDFSTq('\'') = ", IDFSTq( '\'' ))
-val (  ) = prerrln("IDRSTq('\'') = ", IDRSTq( '\'' ))
+val (  ) = prerrsln("IDFSTq('z') = ", IDFSTq( 'z' ))
+val (  ) = prerrsln("IDFSTq('X') = ", IDFSTq( 'X' ))
+val (  ) = prerrsln("IDFSTq('_') = ", IDFSTq( '_' ))
+val (  ) = prerrsln("IDFSTq('%') = ", IDFSTq( '%' ))
+val (  ) = prerrsln("IDSYMq('%') = ", IDSYMq( '%' ))
+val (  ) = prerrsln("IDSYMq(':') = ", IDSYMq( ':' ))
+val (  ) = prerrsln("IDSYMq('@') = ", IDSYMq( '@' ))
+val (  ) = prerrsln("IDSYMq('#') = ", IDSYMq( '#' ))
+val (  ) = prerrsln("IDSYMq('$') = ", IDSYMq( '$' ))
+val (  ) = prerrsln("IDFSTq('\'') = ", IDFSTq( '\'' ))
+val (  ) = prerrsln("IDRSTq('\'') = ", IDRSTq( '\'' ))
 *)
 (* ****** ****** *)
 val (  ) =
-prerrln("SLASHq('/') = ", SLASHq( '/' ))
+prerrsln("SLASHq('/') = ", SLASHq( '/' ))
 val (  ) =
-prerrln("SLASH4q('//Hello?!') = ", SLASH4q("//Hello?!"))
+prerrsln("SLASH4q('//Hello?!') = ", SLASH4q("//Hello?!"))
 val (  ) =
-prerrln("SLASH4q('////Hello?!') = ", SLASH4q("////Hello?!"))
+prerrsln("SLASH4q('////Hello?!') = ", SLASH4q("////Hello?!"))
 (* ****** ****** *)
 //
 val buf1 =
@@ -166,7 +166,7 @@ lxbf1_make_strn
 )
 //
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf1) = ", lxbf1_lexing_tnodelst(buf1))
 //
 (* ****** ****** *)
@@ -178,7 +178,7 @@ lxbf1_make_strn
 )
 //
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf2) = ", lxbf1_lexing_tnodelst(buf2))
 //
 (* ****** ****** *)
@@ -190,7 +190,7 @@ lxbf1_make_strn
 )
 //
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf3) = ", lxbf1_lexing_tnodelst(buf3))
 //
 (* ****** ****** *)
@@ -202,7 +202,7 @@ lxbf1_make_strn
 )
 //
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf4) = ", lxbf1_lexing_tnodelst(buf4))
 //
 (* ****** ****** *)
@@ -215,7 +215,7 @@ lxbf1_make_strn
 )
 //
 val (  ) =
-prerrln
+prerrsln
 ("lexing(buf5) = ", lxbf1_lexing_tnodelst(buf5))
 *)
 //
@@ -238,7 +238,7 @@ gseq_print$sep() = g_print("\n")
 g_print<token>(tok) =
 print(tok.lctn(), ":", tok.node())
 in//local
-val (  ) = prerrln("lexing(buf5): toks =\n", toks)
+val (  ) = prerrsln("lexing(buf5): toks =\n", toks)
 end//local
 //
 (* ****** ****** *)
@@ -273,7 +273,7 @@ gseq_print$sep() = g_print("\n")
 g_print<token>(tok) =
 print(tok.lctn(), ":", tok.node())
 in//local
-val (  ) = prerrln("lexing(buf6): toks =\n", toks)
+val (  ) = prerrsln("lexing(buf6): toks =\n", toks)
 end//local
 //
 (* ****** ****** *)

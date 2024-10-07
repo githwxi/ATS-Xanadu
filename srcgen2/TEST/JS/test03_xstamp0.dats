@@ -22,45 +22,45 @@ val
 tmper1=stamper_new()
 (* ****** ****** *)
 val () =
-prerrln
+prerrsln
 ( "nilq(nil) = "
 , nilq(the_stamp_nil))
 val () =
-prerrln
+prerrsln
 ( "nilq(nil) = "
 , neqz(the_stamp_nil))
 (* ****** ****** *)
 val () =
-prerrln
+prerrsln
 ("the_stamp_nil = ", the_stamp_nil)
 (* ****** ****** *)
 //
 val (  ) =
-prerrln("tmp1 = ", tmper0.getinc())
+prerrsln("tmp1 = ", tmper0.getinc())
 val (  ) =
-prerrln("tmp2 = ", tmper0.getinc())
+prerrsln("tmp2 = ", tmper0.getinc())
 //
 val
 tmp3 =
 tmper0.getinc() and tmp4 = tmper0.getinc()
 //
 val (  ) =
-prerrln("cmp(tmp3, tmp3) = ", tmp3 \cmp tmp3)
+prerrsln("cmp(tmp3, tmp3) = ", tmp3 \cmp tmp3)
 val (  ) =
-prerrln("cmp(tmp3, tmp4) = ", tmp3 \cmp tmp4)
+prerrsln("cmp(tmp3, tmp4) = ", tmp3 \cmp tmp4)
 val (  ) =
-prerrln("cmp(tmp4, tmp3) = ", tmp4 \cmp tmp3)
+prerrsln("cmp(tmp4, tmp3) = ", tmp4 \cmp tmp3)
 val (  ) =
-prerrln("cmp(tmp4, tmp4) = ", tmp4 \cmp tmp4)
+prerrsln("cmp(tmp4, tmp4) = ", tmp4 \cmp tmp4)
 //
 val (  ) = tmper1.tmpset(1000)
 //
 val (  ) =
-prerrln("tmper1.getinc() = ", tmper1.getinc())
+prerrsln("tmper1.getinc() = ", tmper1.getinc())
 val (  ) =
-prerrln("tmper1.getinc() = ", tmper1.getinc())
+prerrsln("tmper1.getinc() = ", tmper1.getinc())
 val (  ) =
-prerrln("tmper1.getinc() = ", tmper1.getinc())
+prerrsln("tmper1.getinc() = ", tmper1.getinc())
 //
 (* ****** ****** *)
 

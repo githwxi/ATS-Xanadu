@@ -18,9 +18,9 @@
 (* ****** ****** *)
 //
 val () =
-prerrln("T_EOF() = ", T_EOF())
+prerrsln("T_EOF() = ", T_EOF())
 val () =
-prerrln("T_ERR() = ", T_ERR())
+prerrsln("T_ERR() = ", T_ERR())
 //
 (* ****** ****** *)
 

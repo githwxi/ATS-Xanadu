@@ -326,12 +326,12 @@ print(tok.lctn(), ":", tok.node())
 val ret =
 the_fxtyenv_pvsload()
 val (  ) =
-prerrln("the_fxtyenv_pvsload() = ", ret)
+prerrsln("the_fxtyenv_pvsload() = ", ret)
 //
 val ret =
 the_tr12env_pvsload()
 val (  ) =
-prerrln("the_tr12env_pvsload() = ", ret)
+prerrsln("the_tr12env_pvsload() = ", ret)
 //
 (* ****** ****** *)
 in//local
@@ -370,7 +370,7 @@ d1parsed_fpemsg( out, dpar ) end // let
 //
 val
 (  ) =
-prerrln
+prerrsln
 ("d1parsed_from_fpath(\"./DATA/mytest1.dats\") =\n", dpar)
 //
 (* ****** ****** *)
@@ -412,7 +412,7 @@ fperr20_d2parsed(g_stderr(), dpar)
 (* ****** ****** *)
 //
 val (  ) =
-prerrln
+prerrsln
 ("d2parsed_from_fpath(\"./DATA/mytest1.dats\") =\n", dpar)
 //
 (* ****** ****** *)
