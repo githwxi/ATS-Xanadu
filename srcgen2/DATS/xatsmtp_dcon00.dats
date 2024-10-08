@@ -69,7 +69,8 @@ where
 g_print$out<>() = out
 //
 fun
-f0_decl(dcon: d2con): void =
+f0_decl
+(dcon: d2con): void =
 let
 val name = dcon.name()
 in//let
@@ -78,7 +79,8 @@ printsln
 end//let
 //
 fun
-f0_impl(dcon: d2con): void =
+f0_impl
+(dcon: d2con): void =
 let
 val name = dcon.name()
 in//let
@@ -86,7 +88,7 @@ printsln
 ("#impltmp\n",name,"$name<>() = ",'"',name,'"')
 end//let
 //
-}(*where*)//end-of-[d2con_name$fun$emit(...)]
+}(*where*)//end-of-[d2con_name$fun$emit(out,dcon)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -104,24 +106,27 @@ where
 g_print$out<>() = out
 //
 fun
-f0_decl(dcon: d2con): void =
+f0_decl
+(dcon: d2con): void =
 let
-val ctag = dcon.ctag()
+val name = dcon.name()
 in//let
 printsln
-("#extern\n","fun<>\n",ctag,"$ctag(): sint")
+("#extern\n","fun<>\n",name,"$ctag(): sint")
 end//let
 //
 fun
-f0_impl(dcon: d2con): void =
+f0_impl
+(dcon: d2con): void =
 let
+val name = dcon.name()
 val ctag = dcon.ctag()
 in//let
 printsln
-("#impltmp\n",ctag,"$ctag<>() = ",'"',ctag,'"')
+("#impltmp\n",name,"$ctag<>() = ",'"',ctag,'"')
 end//let
 //
-}(*where*)//end-of-[d2con_ctag$fun$emit(...)]
+}(*where*)//end-of-[d2con_ctag$fun$emit(out,dcon)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
