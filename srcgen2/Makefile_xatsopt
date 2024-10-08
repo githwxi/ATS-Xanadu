@@ -894,6 +894,15 @@ xdepend_decl00_dats: ; $(XATSOPT) --dynamic DATS/xdepend_decl00.dats
 
 ######
 all_dats:: \
+xatsmtp_dats
+xatsmtp_dats: ; $(XATSOPT) --dynamic DATS/xatsmtp.dats
+all_dats:: \
+xatsmtp_dcon00_dats
+xatsmtp_dcon00_dats: ; $(XATSOPT) --dynamic DATS/xatsmtp_dcon00.dats
+######
+
+######
+all_dats:: \
 xatsopt_dats
 xatsopt_dats: ; $(XATSOPT) --dynamic DATS/xatsopt.dats
 all_dats:: \
