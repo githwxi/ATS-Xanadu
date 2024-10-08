@@ -45,8 +45,10 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+(* ****** ****** *)
 #staload
 _(*TRANS12*) = "./trans12.dats"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
@@ -71,6 +73,9 @@ _(*TRANS12*) = "./trans12.dats"
 #staload "./../SATS/trans12.sats"
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
+#staload "./../SATS/xatsmtp.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #symload name with symbl_get_name
 (* ****** ****** *)
@@ -2831,8 +2836,19 @@ dcls = f0_wdeclseq(env0, wdcs)
 val () = // HX: processing [d2cs]
 trans12_d1tsclst(env0, d1ts, s2cs)
 //
+val () = () where
+{
+//
+val out = g_stdout<>((*0*))
+//
+val ( ) =
+s2cstlst_d2cs$ctag$fun$emit(out,s2cs)
+val ( ) =
+s2cstlst_d2cs$name$fun$emit(out,s2cs) }
+//
 in//let
-  d2ecl(loc0, D2Cdatatype(d1cl, s2cs))
+(
+  d2ecl(loc0, D2Cdatatype(d1cl, s2cs)))
 end (*let*) // end of [f0_datatype(env0,d1cl)]
 //
 and

@@ -52,6 +52,7 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 (* ****** ****** *)
@@ -62,6 +63,16 @@ d2con_name$fun$emit
 fun//<>
 d2con_ctag$fun$emit
 (out: FILR, dcon: d2con): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+s2cstlst_d2cs$name$fun$emit
+(out: FILR, s2cs: s2cstlst): void
+fun
+s2cstlst_d2cs$ctag$fun$emit
+(out: FILR, s2cs: s2cstlst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

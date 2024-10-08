@@ -717,7 +717,11 @@ f0_excptcon
 ! tr23env
 , d2cl: d2ecl): d3ecl =
 let
-val-D2Cexcptcon _ = d2cl.node()
+//
+val-
+D2Cexcptcon
+(d1cl, d2cs) = d2cl.node((*0*))
+//
 in//let
 d3ecl_make_node(d2cl.lctn(), D3Cd2ecl(d2cl))
 end (*let*) // end of [f0_excptcon(env0,d2cl)]
@@ -728,7 +732,11 @@ f0_datatype
 ! tr23env
 , d2cl: d2ecl): d3ecl =
 let
-val-D2Cdatatype _ = d2cl.node()
+//
+val-
+D2Cdatatype
+(d1cl, s2cs) = d2cl.node((*0*))
+//
 in//let
 d3ecl_make_node(d2cl.lctn(), D3Cd2ecl(d2cl))
 end (*let*) // end of [f0_datatype(env0,d2cl)]
