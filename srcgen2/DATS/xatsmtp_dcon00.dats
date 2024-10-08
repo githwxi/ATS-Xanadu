@@ -52,8 +52,11 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xatsmtp.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #symload name with d2con_get_name
 #symload ctag with d2con_get_ctag
+(* ****** ****** *)
+#symload d2cs with s2cst_get_d2cs
 (* ****** ****** *)
 //
 #impltmp
@@ -127,6 +130,89 @@ printsln
 end//let
 //
 }(*where*)//end-of-[d2con_ctag$fun$emit(out,dcon)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+s2cstlst_d2cs$name$fun$emit
+  (out, s2cs) =
+let
+//
+fun
+f0_scst
+(out: FILR
+,scst: s2cst): void =
+(
+case+
+scst.d2cs() of
+| ~
+optn_vt_cons
+(d2cs) =>
+(
+list_foritm<d2con>(d2cs)
+) where
+{
+#impltmp
+foritm$work
+<d2con>(dcon) =
+d2con_name$fun$emit(out, dcon)
+}
+)
+//
+in//let
+(
+list_foritm<s2cst>(s2cs)
+) where
+{
+//
+#impltmp
+foritm$work
+<s2cst>(scst) = f0_scst(out, scst)
+//
+}
+end(*let*)//end-[s2cstlst_d2cs$name$fun$emit(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+s2cstlst_d2cs$ctag$fun$emit
+  (out, s2cs) =
+let
+//
+fun
+f0_scst
+(out: FILR
+,scst: s2cst): void =
+(
+case+
+scst.d2cs() of
+| ~
+optn_vt_cons
+(d2cs) =>
+(
+list_foritm<d2con>(d2cs)
+) where
+{
+#impltmp
+foritm$work
+<d2con>(dcon) =
+d2con_ctag$fun$emit(out, dcon)
+}
+)
+//
+in//let
+(
+list_foritm<s2cst>(s2cs)
+) where
+{
+//
+#impltmp
+foritm$work
+<s2cst>(scst) = f0_scst(out, scst)
+//
+}
+end(*let*)//end-[s2cstlst_d2cs$ctag$fun$emit(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
