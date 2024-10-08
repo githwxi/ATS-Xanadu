@@ -40,6 +40,23 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
+HX:
+This one is also
+implemented in [gdbg000.dats]:
+*)
+#impltmp
+{ vt:vt }
+g_ptype
+<list_vt(vt)>
+( (*void*) ) =
+(
+pstrn("list_vt(");
+g_ptype<vt>((*0*)); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-09-14:
 Sat 14 Sep 2024 11:40:03 AM EDT
 *)
