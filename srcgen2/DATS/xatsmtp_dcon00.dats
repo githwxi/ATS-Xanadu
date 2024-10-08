@@ -53,6 +53,7 @@ ATS_PACKNAME
 #staload "./../SATS/xatsmtp.sats"
 (* ****** ****** *)
 #symload name with d2con_get_name
+#symload ctag with d2con_get_ctag
 (* ****** ****** *)
 //
 #impltmp
@@ -86,6 +87,44 @@ printsln
 end//let
 //
 }(*where*)//end-of-[d2con_name$fun$emit(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+d2con_ctag$fun$emit
+  (out, dcon) =
+let
+val () = f0_decl(dcon)
+val () = f0_impl(dcon) end
+where
+{
+//
+#impltmp
+g_print$out<>() = out
+//
+fun
+f0_decl(dcon: d2con): void =
+let
+val ctag = dcon.ctag()
+in//let
+printsln
+("#extern\n","fun<>\n",ctag,"$ctag(): sint")
+end//let
+//
+fun
+f0_impl(dcon: d2con): void =
+let
+val ctag = dcon.ctag()
+in//let
+printsln
+("#impltmp\n",ctag,"$ctag<>() = ",'"',ctag,'"')
+end//let
+//
+}(*where*)//end-of-[d2con_ctag$fun$emit(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
