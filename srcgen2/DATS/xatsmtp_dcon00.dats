@@ -26,26 +26,22 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Mon Oct  7 08:31:46 PM EDT 2024
+Mon Oct  7 09:52:03 PM EDT 2024
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-(*
-HX-2024-10-07:
-For general support
-of meta-programming in ATS3
-*)
-(* ****** ****** *)
-(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
@@ -54,19 +50,44 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+#staload "./../SATS/xatsmtp.sats"
+(* ****** ****** *)
+#symload name with d2con_get_name
 (* ****** ****** *)
 //
-fun//<>
+#impltmp
 d2con_name$fun$emit
-(out: FILR, dcon: d2con): void
-fun//<>
-d2con_ctag$fun$emit
-(out: FILR, dcon: d2con): void
+  (out, dcon) =
+let
+val () = f0_decl(dcon)
+val () = f0_impl(dcon) end
+where
+{
 //
-(* ****** ****** *)
-(* ****** ****** *)
+#impltmp
+g_print$out<>() = out
 //
-(* ****************************************** *)
-(* ****************************************** *)
+fun
+f0_decl(dcon: d2con): void =
+let
+val name = dcon.name()
+in//let
+printsln
+("#extern\n","fun<>\n",name,"$name(): strn")
+end//let
+//
+fun
+f0_impl(dcon: d2con): void =
+let
+val name = dcon.name()
+in//let
+printsln
+("#impltmp\n",name,"$name<>() = ",'"',name,'"')
+end//let
+//
+}(*where*)//end-of-[d2con_name$fun$emit(...)]
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_SATS_xatsmtp.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xatsmtp_dcon00.dats] *)
