@@ -113,7 +113,7 @@ srcgen1\
 "\
 srcgen1\
 /prelude\
-/DATS/CATS/JS/Node/process.dats"
+/DATS/CATS/JS/NODE/process.dats"
 (* ****** ****** *)
 val () =
 mymain() where

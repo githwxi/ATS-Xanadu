@@ -234,6 +234,10 @@ xdepend_sats
 xdepend_sats: ; $(XATSOPT) --static SATS/xdepend.sats
 ######
 all_sats:: \
+xatsmtp_sats
+xatsmtp_sats: ; $(XATSOPT) --static SATS/xatsmtp.sats
+######
+all_sats:: \
 xatsopt_sats
 xatsopt_sats: ; $(XATSOPT) --static SATS/xatsopt.sats
 ######

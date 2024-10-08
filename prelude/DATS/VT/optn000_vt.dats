@@ -39,6 +39,23 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX:
+This one is also
+implemented in [gdbg000.dats]:
+*)
+#impltmp
+{ vt:vt }
+g_ptype
+<optn_vt(vt)>
+( (*void*) ) =
+(
+pstrn("optn_vt(");
+g_ptype<vt>((*0*)); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <(*tmp*)>
 optn_vt_nil_
