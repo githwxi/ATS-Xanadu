@@ -675,7 +675,7 @@ let
 //
 val
 (svts, tfun) =
-trans2a_d2cst_elim
+trans2a_d2cst_inst
 ( env0
 , loc0, d2c0, tqas, tias)
 val

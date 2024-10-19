@@ -47,6 +47,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
@@ -121,6 +123,7 @@ in//let
 end (*let*) // end of [s2typ_fun1(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 s2typ_elim_unis
@@ -151,11 +154,12 @@ list_maprev
 map$fopr
 <x0><y0>
 ( s2v1 ) =
-@(s2v1, t2p2) where
+(
+@(s2v1, t2p2)) where
 { val t2p2 =
   s2typ_var(s2var_copy(s2v1)) }
-}(*where*) // end of [f0_svs1(...)]
-}(*where*) // end of [s2typ_elim_unis(t2p0)]
+}(*where*)//end-of-[f0_svs1(...)]
+}(*where*)//end-of-[s2typ_elim_unis(...)]
 //
 (* ****** ****** *)
 //
@@ -306,7 +310,7 @@ d1exp_make_node
 end(*let*)//end-of-[d2exp_sym0_styp(...)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 s2typ_fun1_f2arglst
 ( f2as, f2cl, tres ) =
@@ -540,17 +544,6 @@ end//end-of-[s2cst_get2a_styp(...)]
 (* ****** ****** *)
 //
 #implfun
-deuni2a_s2typ
-(env0, t2p0) =
-(
-  s2typ_elim_unis(t2p0))
-(*
-// HX-2024-10-05: [env0] is unused!
-*)
-//
-(* ****** ****** *)
-//
-#implfun
 unify2a_s2typ
 (env0, t2p1, t2p2) =
 let
@@ -694,16 +687,71 @@ end (*let*) // end of [match2a_s2typ(env0,...)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+deuni2a_s2typ
+(env0, t2p0) =
+(
+s2typ_inst_unis(t2p0))
+(*
+// HX-2024-10-05:
+// [env0] is unused! *)
+where
+{
+//
+fun
+s2typ_inst_unis
+( t2p0: s2typ ): s2typ =
+(
+//
+case+
+t2p0.node() of
+|T2Puni0(svs1, t2p1) =>
+let
+val svts = f0_svs1(svs1)
+in//let
+s2typ_inst_unis
+(s2typ_subst0(t2p1, svts))
+end
+|_(*non-T2Puni0*) => (t2p0)
+//
+) where
+{
+fun
+f0_svs1
+(svs1: s2varlst): s2vts =
+(
+list_maprev
+< x0 >< y0 >(svs1)) where
+{
+#typedef x0 = s2var
+#typedef y0 = (s2var, s2typ)
+#impltmp
+map$fopr
+<x0><y0>
+( s2v1 ) =
+(
+@(s2v1, t2p2)) where
+{ val t2p2 =
+  s2typ_new0_x2tp(loctn_dummy())
+}(*where*)
+}(*where*)//end-of-[f0_svs1(...)]
+}(*where*)//end-of-[s2typ_inst_unis(t2p0)]
+//
+}(*where*)//end-of-[deuni2a_s2typ(env0,t2p0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 fun
-trans2a_d2cst_elim
+trans2a_d2cst_inst
 ( env0:
 ! tr2aenv
 , d2c0: d2cst
 , tqas: t2qas, tias: t2ias): @(s2vts, s2typ)
 *)
 #implfun
-trans2a_d2cst_elim
+trans2a_d2cst_inst
 ( env0
 , loc0
 , d2c0, tqas, tias) =
@@ -759,8 +807,14 @@ case+ svs1 of
 case+ ses2 of
 |list_nil() =>
 let
+//
+(*
+HX-2024-10-07:
+For instantiation!
+*)
 val t2p2 = 
 s2typ_new0_x2tp(loc0)
+//
 val svts =
 list_cons((s2v1, t2p2), svts)
 in//let
@@ -875,7 +929,7 @@ end where // end-of-[let(val(tfun))]
   val svts =
   f0_tqs1_tqs2_tis2(tqs1, tqas, tias, svts) }
 end//let2
-end (*let*) // end of [trans2a_d2cst_elim(env0,...)]
+end(*let*)//end-of-[trans2a_d2cst_inst(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -1070,12 +1124,12 @@ in//let
   d2patlst_lftize( d2ps, t2ps )
 end//let//end-of-[list_cons(...)]
 //
-) (*case+*) // end [list_cons(...)]
-) (*case+*) // end [d2patlst_lftize_tpkcs(...)]
+)(*case+*)//end-of-[list_cons(...)]
+)(*case+*)//end-of-[d2patlst_lftize_tpkcs(...)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end-[trans2a_f2arglst_elim(env0,...)]
+}(*where*)//end-of-[trans2a_f2arglst_elim(env0,...)]
 
 (* ****** ****** *)
 
