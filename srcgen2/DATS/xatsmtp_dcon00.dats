@@ -55,6 +55,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload name with d2con_get_name
 #symload ctag with d2con_get_ctag
+#symload narg with d2con_get_narg
 (* ****** ****** *)
 #symload d2cs with s2cst_get_d2cs
 (* ****** ****** *)
@@ -78,7 +79,8 @@ let
 val name = dcon.name()
 in//let
 printsln
-("#extern\n","fun<>\n",name,"$name(): strn")
+("#extern\n"
+,"fun<>\n","$DCON_",name,"$name(): strn")
 end//let
 //
 fun
@@ -88,12 +90,12 @@ let
 val name = dcon.name()
 in//let
 printsln
-("#impltmp\n",name,"$name<>() = ",'"',name,'"')
+("#impltmp\n"
+,"$DCON_",name,"$name<>() = ",'"',name,'"')
 end//let
 //
 }(*where*)//end-of-[d2con_name$fun$emit(out,dcon)]
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -115,7 +117,8 @@ let
 val name = dcon.name()
 in//let
 printsln
-("#extern\n","fun<>\n",name,"$ctag(): sint")
+("#extern\n"
+,"fun<>\n","$DCON_",name,"$ctag(): sint")
 end//let
 //
 fun
@@ -126,10 +129,79 @@ val name = dcon.name()
 val ctag = dcon.ctag()
 in//let
 printsln
-("#impltmp\n",name,"$ctag<>() = ",'"',ctag,'"')
+("#impltmp\n"
+,"$DCON_",name,"$ctag<>() = ",'(',ctag,')')
 end//let
 //
 }(*where*)//end-of-[d2con_ctag$fun$emit(out,dcon)]
+//
+(* ****** ****** *)
+//
+#impltmp
+d2con_narg$fun$emit
+  (out, dcon) =
+let
+val () = f0_decl(dcon)
+val () = f0_impl(dcon) end
+where
+{
+//
+#impltmp
+g_print$out<>() = out
+//
+fun
+f0_decl
+(dcon: d2con): void =
+let
+val name = dcon.name()
+in//let
+printsln
+("#extern\n"
+,"fun<>\n","$DCON_",name,"$narg(): sint")
+end//let
+//
+fun
+f0_impl
+(dcon: d2con): void =
+let
+val name = dcon.name()
+val narg = dcon.narg()
+in//let
+printsln
+("#impltmp\n"
+,"$DCON_",name,"$narg<>() = ",'(',narg,')')
+end//let
+//
+}(*where*)//end-of-[d2con_narg$fun$emit(out,dcon)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+d2con_dcon$pat$emit
+  (out, dcon) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+val name = dcon.name()
+val narg = dcon.narg()
+//
+in//
+(
+print(name); print("(");
+foritm(narg); print(")")
+) where
+{
+#impltmp
+foritm$work<>(i0) =
+(
+  prints("ca", i0)) where
+{ val () =
+  if (i0 > 0) then print(",") }
+}
+end(*let*)//end-of-[d2con_dcon$pat$emit(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -213,6 +285,47 @@ foritm$work
 //
 }
 end(*let*)//end-[s2cstlst_d2cs$ctag$fun$emit(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+s2cstlst_d2cs$narg$fun$emit
+  (out, s2cs) =
+let
+//
+fun
+f0_scst
+(out: FILR
+,scst: s2cst): void =
+(
+case+
+scst.d2cs() of
+| ~
+optn_vt_cons
+(d2cs) =>
+(
+list_foritm<d2con>(d2cs)
+) where
+{
+#impltmp
+foritm$work
+<d2con>(dcon) =
+d2con_narg$fun$emit(out, dcon)
+}
+)
+//
+in//let
+(
+list_foritm<s2cst>(s2cs)
+) where
+{
+//
+#impltmp
+foritm$work
+<s2cst>(scst) = f0_scst(out, scst)
+//
+}
+end(*let*)//end-[s2cstlst_d2cs$narg$fun$emit(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

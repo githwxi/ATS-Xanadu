@@ -1275,7 +1275,11 @@ d2con2a_s2typ(loc0, d2c1)
 //
 (*
 val (  ) = prerrsln("\
+trans2a_d2exp:f0_con: loc0 = ", loc0)
+val (  ) = prerrsln("\
 trans2a_d2exp:f0_con: d2c1 = ", d2c1)
+val (  ) = prerrsln("\
+trans2a_d2exp:f0_con: t2p0 = ", t2p0)
 val (  ) = prerrsln("\
 trans2a_d2exp:f0_con: tqas = ", d2c1.tqas())
 *)
@@ -1941,9 +1945,19 @@ tfun = d2f0.styp((*0*))
 val
 tfun = s2typ_hnfiz0(tfun)
 //
+(*
+val (  ) = prerrsln("\
+trans2a_d2exp:f0_dapp_elses: loc0 = ", loc0)
+val (  ) = prerrsln("\
+trans2a_d2exp:f0_dapp_elses: d2f0 = ", d2f0)
+*)
 val tfun =
 (
   deuni2a_s2typ(env0, tfun))
+(*
+val (  ) = prerrsln("\
+trans2a_d2exp:f0_dapp_elses: tfun = ", tfun)
+*)
 //
 in(*let1*)
 //
@@ -1956,6 +1970,7 @@ We handle two scenarios:
 case+
 tfun.node() of
 //
+// (*
 |
 T2Pfun1
 (_, _, t2ps, tres) =>
@@ -1968,6 +1983,7 @@ in(*let2*)
 d2exp_make_tpnd
 (loc0, tres, D2Edapp(d2f0, npf1, d2es))
 end(*let2*)
+// *)
 //
 |
 _(*non-T2Pfun1*) =>

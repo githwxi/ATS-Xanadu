@@ -63,6 +63,15 @@ d2con_name$fun$emit
 fun//<>
 d2con_ctag$fun$emit
 (out: FILR, dcon: d2con): void
+fun//<>
+d2con_narg$fun$emit
+(out: FILR, dcon: d2con): void
+//
+(* ****** ****** *)
+//
+fun
+d2con_dcon$pat$emit
+(out: FILR, dcon: d2con): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -72,6 +81,9 @@ s2cstlst_d2cs$name$fun$emit
 (out: FILR, s2cs: s2cstlst): void
 fun
 s2cstlst_d2cs$ctag$fun$emit
+(out: FILR, s2cs: s2cstlst): void
+fun
+s2cstlst_d2cs$narg$fun$emit
 (out: FILR, s2cs: s2cstlst): void
 //
 (* ****** ****** *)

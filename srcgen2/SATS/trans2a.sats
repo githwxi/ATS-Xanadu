@@ -684,19 +684,21 @@ trans2a_d2explst_tpcks
 (* ****** ****** *)
 //
 fun
-trans2a_d2cst_elim
+trans2a_d2cst_inst
 ( env0:
 ! tr2aenv
 , loc0: loc_t
 , d2c0: d2cst
-, tqas: t2qas, tias: t2ias): (s2vts, s2typ)
+, tqas: t2qas, tias: t2ias): @(s2vts,s2typ)
+//
+(* ****** ****** *)
 //
 fun
 trans2a_f2arglst_elim
 ( env0:
 ! tr2aenv
 , loc0: loc_t
-, f2as:f2arglst, tfun:s2typ): (f2arglst,s2typ)
+, f2as:f2arglst, tfun:s2typ): @(f2arglst,s2typ)
 //
 (* ****** ****** *)
 (* ****** ****** *)
