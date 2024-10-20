@@ -332,6 +332,16 @@ nindfpr
 (filr, "// I1INSlam0-end");
 )
 //
+|I1INSfix0 _ =>
+(
+//
+f0_fix0(env0, iins);
+//
+nindfpr
+(filr, nind); strnfpr
+(filr, "// I1INSfix0-end");
+)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -437,6 +447,7 @@ val () = envx2js_decnind(env0, 2)
 end//let//end-of-[f0_let0(env0,iins)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_ift0
@@ -515,6 +526,7 @@ val () = envx2js_decnind(env0, 2)
 end//let//end-of-[f0_cas0(env0,iins)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_lam0
@@ -548,6 +560,43 @@ val () = envx2js_decnind(env0, 2)
 //
 end//let//end-of-[f0_lam0(env0,iins)]
 //
+(* ****** ****** *)
+//
+fun
+f0_fix0
+( env0:
+! envx2js
+, iins: i1ins): void =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+val-
+I1INSfix0
+( tknd
+, dvar
+, fjas, icmp) = iins
+//
+val () =
+(
+prints
+("I1INSfix0("
+, tknd, ";", dvar, ";");
+prints(fjas,";","...",")\n"))
+//
+val () =
+envx2js_incnind(env0, 2)
+//
+val () = // HX: body
+(
+  xats2js_i1cmp( env0, icmp ))
+//
+val () = envx2js_decnind(env0, 2)
+//
+end//let//end-of-[f0_fix0(env0,iins)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -616,6 +665,7 @@ val () = envx2js_decnind(env0, 2)
 //
 end//let//end-of-[f0_l1azy(env0,iins)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[i1insfpr(env0,iins)]

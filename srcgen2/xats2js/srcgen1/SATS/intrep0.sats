@@ -481,10 +481,16 @@ i0exp_node =
 (* ****** ****** *)
 //
 |I0Elam0 of
-(token(*knd*),fiarglst(*arg*), i0exp)
+(token(*knd*),fiarglst(*arg*),i0exp)
 |I0Efix0 of
 (token(*knd*)
-,d2var(*fid*),fiarglst(*arg*), i0exp)
+,d2var(*fid*),fiarglst(*arg*),i0exp)
+//
+(* ****** ****** *)
+//
+|I0Etry0 of
+(token(*$TRY*)
+,i0exp(*normal*),i0clslst(*handles*))
 //
 (* ****** ****** *)
 //

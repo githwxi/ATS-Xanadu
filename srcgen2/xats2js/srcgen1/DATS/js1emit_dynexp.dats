@@ -1640,6 +1640,7 @@ nindstrnfpr(filr, nind, "} // endlet\n"))
 end//let//end-of-[I1INSlet0(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I1INSift0
 (itst
@@ -1720,6 +1721,7 @@ nindstrnfpr(filr, nind, "} while (false) // end(do)\n"))
 end//let//end-of-[I1INScas0(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I1INSlam0
 (tknd
@@ -1731,8 +1733,7 @@ i1tnmfpr(filr, itnm);
 strnfpr(filr," = function ");
 fjas1js1(filr, fjas);
 strnfpr(filr, " { // lam0(");
-tokenfpr(filr, tknd);
-strnfpr(filr, ")");fprintln(filr);
+tokenfpr(filr, tknd);strnfpr(filr, ")\n");
 (
 envx2js_incnind
 ( env0,2(*++*) );
@@ -1742,6 +1743,31 @@ envx2js_decnind
 ( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(lam0)\n"))
 )
 //
+(* ****** ****** *)
+//
+|I1INSfix0
+(tknd
+,dvar
+,fjas, icmp) =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr," = function ");
+d2varfpr(filr, dvar); //fvar
+fjas1js1(filr, fjas); //farg
+strnfpr(filr, " { // fix0(");
+tokenfpr(filr, tknd);strnfpr(filr, ")\n");
+(
+envx2js_incnind
+( env0,2(*++*) );
+js1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
+(
+envx2js_decnind
+( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(fix0)\n"))
+)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1INSl0azy
@@ -1778,6 +1804,7 @@ envx2js_decnind
 )
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
@@ -1786,6 +1813,7 @@ nindstrnfpr
 (filr, nind, "let ");
 i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1insjs1(filr, iins);fprintln(filr))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 )(*end-of-[I1LETnew1(itnm,iins)]*)
