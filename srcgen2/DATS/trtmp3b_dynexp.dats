@@ -130,6 +130,8 @@ d3e0.node() of
 |D3Elam0 _ => f0_lam0(env0, d3e0)
 |D3Efix0 _ => f0_fix0(env0, d3e0)
 //
+|D3Etry0 _ => f0_try0(env0, d3e0)
+//
 |D3Eaddr _ => f0_addr(env0, d3e0)
 |D3Eview _ => f0_view(env0, d3e0)
 |D3Eflat _ => f0_flat(env0, d3e0)
@@ -184,6 +186,7 @@ end where // end-of-[trtmp3b_d3exp(...)]
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_sapp
@@ -235,6 +238,7 @@ in//let
   (loc0, t2p0, D3Esapq(d3f0, t2ps)) )
 end(*let*)//end-of-[ f0_sapq(env0,d3e0) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -314,6 +318,7 @@ val () = prerrsln
 } (*where*) // end of [f0_tapq(env0,d3e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_dap0
@@ -366,6 +371,7 @@ d3exp_make_tpnd
 end (*let*)//end-of-[ f0_dapp(env0,d3e0) ]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_pcon
@@ -416,6 +422,7 @@ d3exp_make_tpnd
 end (*let*)//end-of-[ f0_proj(env0,d3e0) ]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_let0
@@ -449,6 +456,7 @@ in//let
   (loc0, t2p0, D3Elet0(dcls, d3e1)))
 end (*let*) // end of [f0_let0(env0,d3e0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -508,6 +516,7 @@ d3exp_make_tpnd
 end (*let*) // end of [f0_cas0(env0,d3e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_seqn
@@ -534,6 +543,7 @@ in//let
 d3exp(loc0, t2p0, D3Eseqn(d3es, d3e1))
 end (*let*)//end-of-[ f0_seqn(env0,d3e0) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -610,6 +620,7 @@ d3exp_make_tpnd
 (loc0, t2p0, D3Ercd2(knd0, npf1, ldes))
 end (*let*) // end-of-[f0_rcd2(env0,d3e0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -689,6 +700,36 @@ D3Efix0
 ( tknd, d2v1, f3as, sres, arrw, body) )
 end (*let*) // end of [f0_fix0(env0,d3e0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_try0
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Etry0
+(tknd
+,d3e1,dcls) = d3e0.node()
+//
+val d3e1 =
+  trtmp3b_d3exp(env0, d3e1)
+val dcls =
+  trtmp3b_d3clslst(env0, dcls)
+//
+in//let
+d3exp_make_tpnd
+(loc0, t2p0, D3Ecas0(tknd, d3e1, dcls))
+//
+end (*let*) // end of [f0_try0(env0,d3e0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
