@@ -491,6 +491,13 @@ prints
 //
 (* ****** ****** *)
 //
+|I1INSraise
+(tknd, iexn) => // iexp: i1val
+(
+ prints("I1INSassgn(", iexn, ")"))
+//
+(* ****** ****** *)
+//
 |I1INSassgn
 (i1vl, i1vr) =>
 (

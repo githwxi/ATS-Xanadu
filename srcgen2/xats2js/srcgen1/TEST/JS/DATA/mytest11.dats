@@ -35,4 +35,9 @@ val (   ) = println("fact(10) = ", fact(10))
 (* ****** ****** *)
 (* ****** ****** *)
 
+val () = $raise ErrorExn()
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (* end of [ATS3/XATS2JS_TEST_JS_DATA_mytest11.dats] *)
