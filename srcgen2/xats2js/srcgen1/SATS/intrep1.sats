@@ -277,6 +277,11 @@ and i1ins =
 (token // kind
 ,fjarglst(*args*),i1cmp(*body*))
 //
+|I1INSfix0 of
+(token // kind
+,d2var // fix-var
+,fjarglst(*args*),i1cmp(*body*))
+//
 (* ****** ****** *)
 //
 |I1INSflat of
@@ -389,13 +394,14 @@ For consed left-values
 |I1Vlam0 of
 ( token(*knd*)
 , fjarglst(*args*), i1cmp(*body*))
-*)
 //
 |I1Vfix0 of
 ( token(*knd*)
 , d2var(*fid*)
 , fjarglst(*args*), i1cmp(*body*))
+*)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 (*
 |I1Vl0azy of
@@ -406,11 +412,13 @@ For consed left-values
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I1Vextnam of
 (
 token(*$EXTNAM*), i1val, g1nam)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1Vnone0 of () | I1Vnone1 of (i0exp)

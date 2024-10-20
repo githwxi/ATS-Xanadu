@@ -343,6 +343,14 @@ prints("I0Ercd2(", tknd, ";", lies, ")"))
 //
 (* ****** ****** *)
 //
+|I0Etry0
+(tknd
+,i0e1, icls) =>
+(print("I0Etry0(")
+;prints(tknd, ";", i0e1, ";", icls, ")"))
+//
+(* ****** ****** *)
+//
 |I0Eaddr
 ( i0e1 ) =>
 (

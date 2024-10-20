@@ -98,7 +98,7 @@ end//let
 //
 end where
 {
-val dpar = d3parsed_of_filsats(fpath)
+val dpar = d3parsed_of_fildats(fpath)
 }
 //
 (* ****** ****** *)

@@ -6,32 +6,23 @@
 (* ****** ****** *)
 //
 #include
-"srcgen1\
-/prelude/HATS/prelude_dats.hats"
+"srcgen2\
+/prelude\
+/HATS/prelude_dats.hats"
 #include
 "srcgen2\
-/prelude/HATS/prelude_dats.hats"
-(* ****** ****** *)
-//
-#include
-"srcgen1\
 /prelude\
-/HATS/CATS/JS/prelude_dats.hats"
-//
-(* ****** ****** *)
-//
-#staload _ =
-"srcgen1\
-/prelude\
-/DATS/CATS/JS/Node/g_print.dats"
-//
-(* ****** ****** *)
-#staload
-"xatslib/JS/SATS/Array.sats"
-#staload
-"xatslib/JS/DATS/Array01.dats"
+/HATS/prelude_JS_dats.hats"
 #include
-"xatslib/JS/HATS/xatslib_JS_dats.hats"
+"srcgen2\
+/prelude\
+/HATS/prelude_NODE_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"xatslib/HATS/xatslib_JS_dats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -45,6 +36,7 @@ $synext("A"):jsarray(sint,3)
 //
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val A =
@@ -89,7 +81,8 @@ val () =
 //
 val B =
 jsarray
-(map_lstrm(10,lam(i)=>i+1))
+(map_lstrm
+(10,lam(i:nint)=>i+1))
 val () = println("B = ", B)
 //
 (* ****** ****** *)

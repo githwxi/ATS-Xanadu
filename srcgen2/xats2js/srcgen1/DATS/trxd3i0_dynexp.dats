@@ -608,6 +608,10 @@ i0exp
 //
 (* ****** ****** *)
 //
+|D3Etry0 _ => f0_try0(env0, d3e0)
+//
+(* ****** ****** *)
+//
 |D3Eaddr _ => f0_addr(env0, d3e0)
 |D3Eflat _ => f0_flat(env0, d3e0)
 //
@@ -971,6 +975,7 @@ in//let
 end(*let*)//end-of-[f0_let0(env0,d3e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_ift0
@@ -1025,6 +1030,7 @@ i0exp_make_node
 end(*let*)//end-of-[f0_cas0(env0,d3e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_seqn
@@ -1052,6 +1058,7 @@ in//let
   (loc0, I0Eseqn( i0es, i0e1 )) )
 end(*let*)//end-of-[f0_seqn(env0,d3e0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1152,6 +1159,7 @@ in//let
 end(*let*)//end-of-[f0_rcd2(env0,d3e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_lam0
@@ -1212,6 +1220,34 @@ i0exp_make_node
 //
 end(*let*)//end-of-[f0_fix0(env0,d3e0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_try0
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Etry0
+( tknd
+, d3e1, dcls) = d3e0.node()
+//
+val i0e1 =
+trxd3i0_d3exp(env0, d3e1)
+val dcls =
+trxd3i0_d3clslst(env0, dcls)
+//
+in//let
+i0exp_make_node
+(loc0, I0Etry0(tknd, i0e1, dcls))
+end(*let*)//end-of-[f0_try0(env0,d3e0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
