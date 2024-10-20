@@ -1144,8 +1144,17 @@ xtrcdjs1(filr,tknd);strnfpr(filr,", ")
 //
 (* ****** ****** *)
 //
+|I1INSraise
+(tknd, i1v0) =>
+(
+strnfpr(filr, "XATS000_raise(");
+i1valjs1(filr, i1v0);strnfpr(filr, ")"))
+//
+(* ****** ****** *)
+//
 |
 _(*otherwise*) => i1ins_fprint(filr,iins)
+//
 (* ****** ****** *)
 end(*let*) // end-of-[i1insjs1(env0,iins)]
 //
@@ -1525,15 +1534,6 @@ i1valjs1(filr, i1v0);strnfpr(filr, ")\n"))
 //
 (* ****** ****** *)
 //
-|I1INSraise
-(tknd, i1v0) =>
-(
-nindstrnfpr
-(filr, nind, "XATS000_raise(");
-i1valjs1(filr, i1v0);strnfpr(filr, ")\n"))
-//
-(* ****** ****** *)
-//
 |I1INSassgn
 (i1vl, i1vr) =>
 (
@@ -1558,6 +1558,118 @@ nindfpr(filr, nind);i1insjs1(filr, iins);fprintln(filr))
 //
 case+ iins of
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSdapp _ =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");
+i1insjs1(filr, iins);fprintln(filr))
+//
+(* ****** ****** *)
+//
+|I1INSpcon _ =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");
+i1insjs1(filr, iins);fprintln(filr))
+//
+|I1INSpflt _ =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");
+i1insjs1(filr, iins);fprintln(filr))
+//
+|I1INSproj _ =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");
+i1insjs1(filr, iins);fprintln(filr))
+//
+(* ****** ****** *)
+//
+|I1INStup0 _ =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");
+i1insjs1(filr, iins);fprintln(filr))
+//
+|I1INStup1 _ =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");
+i1insjs1(filr, iins);fprintln(filr))
+//
+|I1INSrcd2 _ =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");
+i1insjs1(filr, iins);fprintln(filr))
+//
+(* ****** ****** *)
+//
+|I1INSflat _ =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");
+i1insjs1(filr, iins);fprintln(filr))
+//
+(* ****** ****** *)
+//
+|I1INSdl0az _ =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");
+i1insjs1(filr, iins);fprintln(filr))
+//
+|I1INSdl1az _ =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");
+i1insjs1(filr, iins);fprintln(filr))
+//
+(* ****** ****** *)
+//
+|I1INSdp2tr _ =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");
+i1insjs1(filr, iins);fprintln(filr))
+//
+(* ****** ****** *)
+//
+|I1INSraise _ =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");
+i1insjs1(filr, iins);fprintln(filr))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1INStimp
@@ -1613,6 +1725,7 @@ nindstrnfpr
 //
 end//let//end-of-[I1INStimp(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1INSlet0
@@ -1815,8 +1928,7 @@ envx2js_decnind
 (* ****** ****** *)
 (* ****** ****** *)
 //
-|
-_(*otherwise*) =>
+| _(*otherwise*) =>
 (
 nindstrnfpr
 (filr, nind, "let ");
