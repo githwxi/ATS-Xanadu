@@ -519,7 +519,11 @@ i0exp_node =
 |I0Eassgn of
 (i0exp(*l-val*),i0exp(*r-val*))//assign
 //
+(* ****** ****** *)
+//
 |I0Eraise of (token, i0exp(*lin-exn*) )
+//
+(* ****** ****** *)
 //
 |I0El0azy of // nonlin-lazy-eval
 ( d1exp(*$L0AZY*), i0exp(*non-thunk*) )

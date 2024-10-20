@@ -297,21 +297,24 @@ and i1ins =
 //
 (* ****** ****** *)
 //
-|I1INSdl0az of (i1val) // l0azy-fun
-|I1INSdl1az of (i1val) // l1azy-fun
+|I1INSdl0az of (i1val)//l0azy-fun
+|I1INSdl1az of (i1val)//l1azy-fun
 //
 (* ****** ****** *)
 //
 |I1INSl0azy of 
-(d1exp(*dknd*), i1cmp(*lazy-thunk*))
+(d1exp(*dknd*),i1cmp(*lazy-thunk*))
 |I1INSl1azy of
-(d1exp(*dknd*), i1cmp,i1cmplst(*frees*))
+(d1exp(*dknd*),i1cmp,i1cmplst(*frees*))
 //
 (* ****** ****** *)
 //
 |I1INSdp2tr of (i1val(*addof*)) // deref
 //
 (* ****** ****** *)
+//
+|I1INSraise of
+(token(*tknd*), i1val(*except-con*))
 //
 |I1INSassgn of (i1val(*l-val*),i1val(*r-val*))
 //

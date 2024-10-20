@@ -711,6 +711,33 @@ val (  ) =
 (* ****** ****** *)
 //
 fun
+i1val_raise
+( env0:
+! envi0i1
+, loc0: loc_t
+, tknd: token
+, i1v0: i1val
+  (*except-con*)): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val itnm = i1tnm_new0((*0*))
+//
+val
+iins = I1INSraise(tknd, i1v0)
+//
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_raise(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1val_l0azy
 ( env0:
 ! envi0i1
@@ -1236,9 +1263,7 @@ iexp.node() of
 //
 (* ****** ****** *)
 //
-(*
 |I0Eraise _ => f0_raise(env0, iexp)
-*)
 //
 (* ****** ****** *)
 //
@@ -2281,8 +2306,7 @@ val loc0 = iexp.lctn()
 //
 val-
 I0Ewhere
-(
-body, dcls) = iexp.node()
+( body, dcls) = iexp.node()
 //
 val (  ) =
 envi0i1_pshlet0(env0)
@@ -2342,6 +2366,41 @@ prerrsln("f0_assgn(01): iexp = ", iexp))
 }(*where*)//end-of-[f0_assgn(env0,iexp)]
 //
 (* ****** ****** *)
+//
+fun
+f0_raise
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Eraise
+( tknd, i0e1) = iexp.node() 
+//
+val i1v1 =
+(
+  trxi0i1_i0exp(env0, i0e1))
+//
+in//let
+(
+i1val_raise(env0,loc0,tknd,i1v1))
+//
+end where // end-of-[let]
+{
+//
+(*
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrsln("f0_raise(01): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_raise(env0,iexp)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -2355,7 +2414,7 @@ val loc0 = iexp.lctn()
 //
 val-
 I0El0azy
-(dknd,body) = iexp.node()
+( dknd, body) = iexp.node()
 //
 val (  ) =
 envi0i1_pshlam0(env0)
@@ -2369,7 +2428,8 @@ ilts = envi0i1_poplam0( env0 )
 val icmp = I1CMPcons(ilts, iret)
 //
 in//let
-  i1val_l0azy(env0,loc0,dknd,icmp)
+(
+i1val_l0azy(env0,loc0,dknd,icmp))
 end where
 {
 //
@@ -2395,8 +2455,8 @@ val loc0 = iexp.lctn()
 //
 val-
 I0El1azy
-(dknd
-,body,i0fs) = iexp.node()
+( dknd
+, body, i0fs) = iexp.node()
 //
 val (  ) =
 envi0i1_pshlam0(env0)
