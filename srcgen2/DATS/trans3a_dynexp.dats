@@ -673,6 +673,7 @@ endlet where
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_int
@@ -701,6 +702,7 @@ f0_str
 , d3e0: d3exp): d3exp = d3e0//end-of-fun
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_i00
@@ -728,6 +730,7 @@ f0_s00
 ! tr3aenv
 , d3e0: d3exp): d3exp = d3e0//end-of-fun
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -821,6 +824,7 @@ val t2p0 = trans3a_s2typ(env0, t2p0)
 }(*where*)//end-of-[ f0_top(env0,d3e0) ]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_sapp
@@ -878,6 +882,7 @@ in//let
   (loc0, t2p0, D3Esapq(d3f0, t2ps)) )
 end(*let*)//end-of-[ f0_sapq(env0,d3e0) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -961,6 +966,7 @@ _ (*non-D3Ecst*) => (     d3e0     ) )
 end(*let*)//end-of-[ f0_tapq(env0,d3e0) ]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_dap0
@@ -1020,6 +1026,7 @@ d3exp_make_tpnd
 (loc0, t2p0, D3Edapp(d3f0, npf1, d3es))
 end (*let*)//end-of-[ f0_dapp(env0,d3e0) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1081,6 +1088,7 @@ d3exp_make_tpnd
 end (*let*)//end-of-[ f0_proj(env0,d3e0) ]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_let0
@@ -1118,6 +1126,7 @@ in//let
   (loc0, t2p0, D3Elet0(dcls, d3e1)))
 end (*let*)//end-of-[ f0_let0(env0,d3e0) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1187,6 +1196,7 @@ d3exp_make_tpnd
 end (*let*) // end of [f0_cas0(env0,d3e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_seqn
@@ -1217,6 +1227,7 @@ in//let
 d3exp(loc0, t2p0, D3Eseqn(d3es, d3e1))
 end (*let*)//end-of-[ f0_seqn(env0,d3e0) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1306,6 +1317,7 @@ d3exp_make_tpnd
 (loc0, t2p0, D3Ercd2(knd0, npf1, ldes))
 end (*let*)//end-of-[ f0_rcd2(env0,d3e0) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1406,6 +1418,7 @@ D3Efix0
 end (*let*) // end of [f0_fix0(env0,d3e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_try0
@@ -1438,6 +1451,7 @@ d3exp_make_tpnd
 (loc0, t2p0, D3Etry0(tknd, d3e1, dcls))
 end (*let*) // end of [f0_try0(env0,d3e0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1528,6 +1542,7 @@ in//let
   d3exp(loc0, t2p0, D3Eflat(d3e1)) )
 end (*let*) // end of [f0_flat(env0,...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
