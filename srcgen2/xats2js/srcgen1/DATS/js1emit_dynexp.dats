@@ -1298,6 +1298,7 @@ nindstrnfpr(filr, nind, "} // endtimp(");d2cst_fprint(filr, dcst);strnfpr(filr, 
 end//let//end-of-[f0_t1imp(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 and
 f0_i1cmpret
@@ -1327,6 +1328,7 @@ i1valjs1(filr, ival);fprintln(filr)
 end//let
 end//let//end-of-[f0_i1cmpret(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -1361,6 +1363,7 @@ end//let
 //
 end//let//end-of-[f0_i1tnmcmp(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1399,6 +1402,7 @@ i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
 //
 end(*let*)//end-of-[f0_i1valgpt(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1475,6 +1479,8 @@ val () =
 //
 }(*where*)//end-of-[f0_i1tnmvalcls(...)]
 //
+(* ****** ****** *)
+//
 fun
 f0_i1tnmvalclslst
 ( env0:
@@ -1504,8 +1510,12 @@ list_cons(icl1, icls) =>
 )(*case+*)//end-of-[f0_i1tnmvalclslst(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 in//let
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 case+ ilet of
 //
@@ -1548,127 +1558,50 @@ i1valjs1(filr, i1vr);strnfpr(filr, ")\n"))
 (
 nindfpr(filr, nind);i1insjs1(filr, iins);fprintln(filr))
 //
-)(*end-of-[I1LETnew0(iins)]*)
+(* ****** ****** *)
+//
+)(*case+*)//end-of-[I1LETnew0(iins)]
 //
 (* ****** ****** *)
 //
 |I1LETnew1
 (itnm, iins) =>
+let
+//
+fun
+f1_i1ins
+(iins: i1ins): void =
 (
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");
+i1insjs1(filr, iins);fprintln(filr))
+//
+in//let
 //
 case+ iins of
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-|I1INSdapp _ =>
-(
-nindstrnfpr
-(filr, nind, "let ");
-i1tnmfpr(filr, itnm);
-strnfpr(filr, " = ");
-i1insjs1(filr, iins);fprintln(filr))
-//
+|I1INSdapp _ => f1_i1ins(iins)
 (* ****** ****** *)
-//
-|I1INSpcon _ =>
-(
-nindstrnfpr
-(filr, nind, "let ");
-i1tnmfpr(filr, itnm);
-strnfpr(filr, " = ");
-i1insjs1(filr, iins);fprintln(filr))
-//
-|I1INSpflt _ =>
-(
-nindstrnfpr
-(filr, nind, "let ");
-i1tnmfpr(filr, itnm);
-strnfpr(filr, " = ");
-i1insjs1(filr, iins);fprintln(filr))
-//
-|I1INSproj _ =>
-(
-nindstrnfpr
-(filr, nind, "let ");
-i1tnmfpr(filr, itnm);
-strnfpr(filr, " = ");
-i1insjs1(filr, iins);fprintln(filr))
-//
+|I1INSpcon _ => f1_i1ins(iins)
+|I1INSpflt _ => f1_i1ins(iins)
+|I1INSproj _ => f1_i1ins(iins)
 (* ****** ****** *)
-//
-|I1INStup0 _ =>
-(
-nindstrnfpr
-(filr, nind, "let ");
-i1tnmfpr(filr, itnm);
-strnfpr(filr, " = ");
-i1insjs1(filr, iins);fprintln(filr))
-//
-|I1INStup1 _ =>
-(
-nindstrnfpr
-(filr, nind, "let ");
-i1tnmfpr(filr, itnm);
-strnfpr(filr, " = ");
-i1insjs1(filr, iins);fprintln(filr))
-//
-|I1INSrcd2 _ =>
-(
-nindstrnfpr
-(filr, nind, "let ");
-i1tnmfpr(filr, itnm);
-strnfpr(filr, " = ");
-i1insjs1(filr, iins);fprintln(filr))
-//
+|I1INStup0 _ => f1_i1ins(iins)
+|I1INStup1 _ => f1_i1ins(iins)
+|I1INSrcd2 _ => f1_i1ins(iins)
 (* ****** ****** *)
-//
-|I1INSflat _ =>
-(
-nindstrnfpr
-(filr, nind, "let ");
-i1tnmfpr(filr, itnm);
-strnfpr(filr, " = ");
-i1insjs1(filr, iins);fprintln(filr))
-//
+|I1INSflat _ => f1_i1ins(iins)
 (* ****** ****** *)
-//
-|I1INSdl0az _ =>
-(
-nindstrnfpr
-(filr, nind, "let ");
-i1tnmfpr(filr, itnm);
-strnfpr(filr, " = ");
-i1insjs1(filr, iins);fprintln(filr))
-//
-|I1INSdl1az _ =>
-(
-nindstrnfpr
-(filr, nind, "let ");
-i1tnmfpr(filr, itnm);
-strnfpr(filr, " = ");
-i1insjs1(filr, iins);fprintln(filr))
-//
+|I1INSdl0az _ => f1_i1ins(iins)
+|I1INSdl1az _ => f1_i1ins(iins)
 (* ****** ****** *)
-//
-|I1INSdp2tr _ =>
-(
-nindstrnfpr
-(filr, nind, "let ");
-i1tnmfpr(filr, itnm);
-strnfpr(filr, " = ");
-i1insjs1(filr, iins);fprintln(filr))
-//
+|I1INSdp2tr _ => f1_i1ins(iins)
 (* ****** ****** *)
-//
-|I1INSraise _ =>
-(
-nindstrnfpr
-(filr, nind, "let ");
-i1tnmfpr(filr, itnm);
-strnfpr(filr, " = ");
-i1insjs1(filr, iins);fprintln(filr))
-//
+|I1INSraise _ => f1_i1ins(iins)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -1928,7 +1861,7 @@ envx2js_decnind
 (* ****** ****** *)
 (* ****** ****** *)
 //
-| _(*otherwise*) =>
+| _(* otherwise *) =>
 (
 nindstrnfpr
 (filr, nind, "let ");
@@ -1937,7 +1870,10 @@ i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1insjs1(filr, iins);fprintln(filr))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-)(*end-of-[I1LETnew1(itnm,iins)]*)
+end(*let*)//end-of-[I1LETnew1(itnm,iins)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 end(*let*)//end-of-[js1emit_i1let(env0,ilet)]
 //
