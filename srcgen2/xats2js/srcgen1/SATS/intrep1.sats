@@ -287,7 +287,10 @@ and i1ins =
 |I1INStry0 of
 (token(*$TRY*)
 ,i1cmp
- (*normal*),i1clslst(*handles*))
+ (*normal*)
+,i1val // HX: caught exception!
+ (*excptn*),i1clslst(*handles*))
+ 
 //
 (* ****** ****** *)
 //

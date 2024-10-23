@@ -345,6 +345,19 @@ nindfpr
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I1INStry0 _ =>
+(
+//
+f0_try0(env0, iins);
+//
+nindfpr
+(filr, nind); strnfpr
+(filr, "// I1INStry0-end");
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |I1INSl0azy _ =>
 (
 //
@@ -595,6 +608,41 @@ val () = // HX: body
 val () = envx2js_decnind(env0, 2)
 //
 end//let//end-of-[f0_fix0(env0,iins)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_try0
+( env0:
+! envx2js
+, iins: i1ins): void =
+let
+//
+val-
+I1INStry0
+( tknd
+, icmp
+, iexn, icls) = iins
+//
+#impltmp
+g_print$out<>() = filr
+//
+val () =
+(
+prints
+("I1INStry0(",tknd,";");
+prints(icmp,";","...",")\n"))
+//
+val () =
+envx2js_incnind(env0, 2)
+//
+val () =
+xats2js_i1clslst(env0, icls)
+//
+val () = envx2js_decnind(env0, 2)
+//
+end//let//end-of-[f0_try0(env0,iins)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
