@@ -284,6 +284,13 @@ and i1ins =
 //
 (* ****** ****** *)
 //
+|I1INStry0 of
+(token(*$TRY*)
+,i1cmp
+ (*normal*),i1clslst(*handles*))
+//
+(* ****** ****** *)
+//
 |I1INSflat of
 (i1val(*leftval*)) // de-leftval
 //

@@ -386,25 +386,6 @@ prints
 //
 (* ****** ****** *)
 //
-|I1INSlam0
-(tknd
-,fjas, icmp) =>
-( print
-( "I1INSlam0(" )
-; prints
-( tknd,";",fjas,";",icmp,")"))
-//
-|I1INSfix0
-(tknd, dvar
-,fjas, icmp) =>
-( print
-( "I1INSfix0(" )
-; prints
-( tknd,";"
-, dvar,";",fjas,";",icmp,")"))
-//
-(* ****** ****** *)
-//
 |I1INSpcon
 (dlab, icon) =>
 ( print("I1INSpcon(")
@@ -442,6 +423,34 @@ prints
 (print("I1INScas0(");
  prints
  (cask,";",i1v1,";",icls,")"))
+//
+(* ****** ****** *)
+//
+|I1INSlam0
+(tknd
+,fjas, icmp) =>
+( print
+( "I1INSlam0(" )
+; prints
+( tknd,";",fjas,";",icmp,")"))
+//
+|I1INSfix0
+(tknd, dvar
+,fjas, icmp) =>
+( print
+( "I1INSfix0(" )
+; prints
+( tknd,";"
+, dvar,";",fjas,";",icmp,")"))
+//
+(* ****** ****** *)
+//
+|I1INStry0
+(tknd
+,icmp, icls) =>
+(print("I1INStry0(");
+ prints
+ (tknd,";",icmp,";",icls,")"))
 //
 (* ****** ****** *)
 //

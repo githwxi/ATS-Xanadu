@@ -510,6 +510,34 @@ val (  ) =
 (* ****** ****** *)
 //
 fun
+i1val_try0
+( env0:
+! envi0i1
+, loc0: loc_t
+, tknd: token
+, icmp: i1cmp
+, icls: i1clslst): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val
+itnm = i1tnm_new0((*void*))
+val
+iins =
+(
+  I1INStry0(tknd, icmp, icls))
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_try0(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1val_p0rj
 ( env0:
 ! envi0i1
@@ -1233,6 +1261,10 @@ iexp.node() of
 //
 |I0Elam0 _ => f0_lam0(env0, iexp)
 |I0Efix0 _ => f0_fix0(env0, iexp)
+//
+(* ****** ****** *)
+//
+|I0Etry0 _ => f0_try0(env0, iexp)
 //
 (* ****** ****** *)
 //
@@ -2058,6 +2090,36 @@ in//let
 (
   i1val_fix0
   (env0,loc0,tknd,dvar,fjas,icmp))
+end(*let*)//end-of-[f0_fix0(env0,iexp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_try0
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Etry0
+(tknd
+,i0e1,icls) = iexp.node()
+//
+val icmp =
+(
+ trxi0i1_i0blk(env0, i0e1))
+//
+val icls =
+trxi0i1_i0clslst(env0, icls)
+//
+in//let
+(
+  i1val_try0
+  (env0, loc0, tknd, icmp, icls))
 end(*let*)//end-of-[f0_fix0(env0,iexp)]
 //
 (* ****** ****** *)

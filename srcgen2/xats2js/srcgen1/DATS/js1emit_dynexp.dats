@@ -1745,7 +1745,7 @@ end//let//end-of-[I1INSift0(...)]
 (* ****** ****** *)
 //
 |I1INScas0
-(cknd
+(cask
 ,i1v1, icls) =>
 let
 val () =
@@ -1820,6 +1820,15 @@ js1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
 (
 envx2js_decnind
 ( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(fix0)\n"))
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INStry0
+(tknd
+,i1v1, icls) =>
+(
 )
 //
 (* ****** ****** *)
