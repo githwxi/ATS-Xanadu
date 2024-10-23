@@ -135,12 +135,14 @@ i1val_make_node(loc,I1Vtop(sym)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
 i1val_tnm
 ( loc0: loc_t
 , itnm: i1tnm): i1val =
 (
 i1val_make_node(loc0,I1Vtnm(itnm)))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -516,6 +518,7 @@ i1val_try0
 , loc0: loc_t
 , tknd: token
 , icmp: i1cmp
+, iexn: i1val
 , icls: i1clslst): i1val =
 (
 i1val_tnm(loc0, itnm)) where
@@ -523,10 +526,12 @@ i1val_tnm(loc0, itnm)) where
 //
 val
 itnm = i1tnm_new0((*void*))
+//
 val
 iins =
 (
-  I1INStry0(tknd, icmp, icls))
+ I1INStry0(tknd,icmp,iexn,icls))
+//
 val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
@@ -2113,14 +2118,18 @@ val icmp =
 (
  trxi0i1_i0blk(env0, i0e1))
 //
+val iexn =
+i1val_tnm(loc0, i1tnm_new0())
+//
 val icls =
-trxi0i1_i0clslst(env0, icls)
+(
+ trxi0i1_i0clslst(env0, icls))
 //
 in//let
 (
   i1val_try0
-  (env0, loc0, tknd, icmp, icls))
-end(*let*)//end-of-[f0_fix0(env0,iexp)]
+  (env0,loc0,tknd,icmp,iexn,icls))
+end(*let*)//end-of-[f0_try0(env0,iexp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

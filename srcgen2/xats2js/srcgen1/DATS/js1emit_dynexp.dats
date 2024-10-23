@@ -1827,9 +1827,37 @@ envx2js_decnind
 //
 |I1INStry0
 (tknd
-,i1v1, icls) =>
+,icmp
+,iexn, icls) =>
+let
+val () =
 (
-)
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);strnfpr(filr, " // try\n"))
+//
+val () =
+(
+nindfpr(filr, nind);
+strnfpr(filr, "try {\n");
+f0_i1tnmcmp(env0, itnm, icmp);
+strnfpr(filr, "} catch(");i1valjs1(filr, iexn);strnfpr(filr, ") {\n"))
+//
+val () = // enter
+envx2js_incnind(env0,2(*++*))
+//
+val () =
+f0_i1tnmvalclslst
+( env0,itnm,iexn,icls(*list*) )
+//
+val () =
+(
+  envx2js_decnind(env0,2(*--*)))//leave
+//
+val () =
+(
+nindstrnfpr(filr, nind, "} // end(catch) // end(try)\n"))
+end//let//end-of-[I1INScas0(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

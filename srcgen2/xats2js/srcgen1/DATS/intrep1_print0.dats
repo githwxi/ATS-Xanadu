@@ -447,10 +447,13 @@ prints
 //
 |I1INStry0
 (tknd
-,icmp, icls) =>
-(print("I1INStry0(");
- prints
- (tknd,";",icmp,";",icls,")"))
+,icmp
+,iexn, icls) =>
+( print
+( "I1INStry0(" )
+; prints
+( tknd,";"
+, icmp,";",iexn,";",icls,")"))
 //
 (* ****** ****** *)
 //
