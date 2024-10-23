@@ -1838,10 +1838,10 @@ i1tnmfpr(filr, itnm);strnfpr(filr, " // try\n"))
 //
 val () =
 (
-nindfpr(filr, nind);
-strnfpr(filr, "try {\n");
-f0_i1tnmcmp(env0, itnm, icmp);
-strnfpr(filr, "} catch(");i1valjs1(filr, iexn);strnfpr(filr, ") {\n"))
+nindstrnfpr
+(filr, nind, "try {\n");f0_i1tnmcmp(env0, itnm, icmp);
+nindstrnfpr
+(filr, nind, "} catch(");i1valjs1(filr, iexn);strnfpr(filr, ") {\n"))
 //
 val () = // enter
 envx2js_incnind(env0,2(*++*))
