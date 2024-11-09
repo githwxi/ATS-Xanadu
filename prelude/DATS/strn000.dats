@@ -315,7 +315,8 @@ $UN.strn_fset$at$raw
   (cs, i0, c0) =
 strn_fmake_fwork<>
 (
-lam(work) => iforitm(cs,
+lam(work) =>
+strn_iforitm_f2un(cs,
 lam(i1,c1) =>
 (if (i0 = i1) then work(c0) else work(c1))))
 //
