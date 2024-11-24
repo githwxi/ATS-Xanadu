@@ -64,10 +64,9 @@ strx_vt2t
 //
 (* ****** ****** *)
 //
-fun
-<a:vt>
+fun<>
 strm_vt_nil
-((*void*)): strm_vt(a)
+{a:vt}((*void*)): strm_vt(a)
 //
 fun
 <a:vt>

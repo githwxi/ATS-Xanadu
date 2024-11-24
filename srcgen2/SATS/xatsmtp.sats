@@ -69,20 +69,20 @@ d2con_narg$fun$emit
 //
 (* ****** ****** *)
 //
-fun
+fun//<>
 d2con_dcon$pat$emit
 (out: FILR, dcon: d2con): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
+fun//<>
 s2cstlst_d2cs$name$fun$emit
 (out: FILR, s2cs: s2cstlst): void
-fun
+fun//<>
 s2cstlst_d2cs$ctag$fun$emit
 (out: FILR, s2cs: s2cstlst): void
-fun
+fun//<>
 s2cstlst_d2cs$narg$fun$emit
 (out: FILR, s2cs: s2cstlst): void
 //

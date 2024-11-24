@@ -38,7 +38,7 @@ strxcon_vt_cons(x0, xs)
 strmcon_vt_sing
 (  x0  ) =
 strmcon_vt_cons
-(x0, strm_vt_nil<a>())
+(x0, strm_vt_nil<>{a}())
 #impltmp
 <a>(*tmp*)
 strmcon_vt_pair
