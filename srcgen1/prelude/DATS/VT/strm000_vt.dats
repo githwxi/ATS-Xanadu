@@ -101,7 +101,7 @@ end // end of [let]
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
+<>(*tmp*)
 strm_vt_nil() =
 (
 $llazy
@@ -124,8 +124,8 @@ strmcon_vt_cons(x0, xs)) )
 <a>(*tmp*)
 strm_vt_sing(x0) =
 (
-  strm_vt_cons<a>
-  (x0, strm_vt_nil<a>()) )
+strm_vt_cons<a>
+(x0, strm_vt_nil<>{a}()) )
 //
 (* ****** ****** *)
 //

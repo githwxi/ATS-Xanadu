@@ -83,7 +83,7 @@ $(XATSOPT) -d $(XATSLIB1)/haskell/DATS/traversable.dats
 all1_githwxi_CATS:: ; \
 $(XATSOPT) -d $(XATSLIB1)/githwxi/DATS/CATS/Xint/basics0.dats
 all1_githwxi_CATS:: ; \
-$(XATSOPT) -d $(XATSLIB1)/githwxi/DATS/CATS/JS/Node/basics0.dats
+$(XATSOPT) -d $(XATSLIB1)/githwxi/DATS/CATS/JS/NODE/basics0.dats
 ############
 
 ###############################################################
