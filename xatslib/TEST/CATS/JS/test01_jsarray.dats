@@ -155,22 +155,23 @@ prints("xs = ", xs, "\n")
 *)
 val b0 =
 forall
-(GSEQ(xs), lam(x) => x >= 0)
+(GSEQ(xs), lam(x:sint) => x >= 0)
 val () = prints("b0 = ", b0, "\n")
+//
 val rb0 =
 rforall
-(GSEQ(xs), lam(x) => x >= 0)
+(GSEQ(xs), lam(x:sint) => x >= 0)
 val ( ) = prints("rb0 = ", rb0, "\n")
 //
 (* ****** ****** *)
 //
 val b1 =
 forall
-(GASZ(An), lam(x) => x <= 0)
+(GASZ(An), lam(x:sint) => x <= 0)
 val ( ) = (prints("b1 = ", b1, "\n"))
 val rb1 =
 rforall
-(GASZ(An), lam(x) => x <= 0)
+(GASZ(An), lam(x:sint) => x <= 0)
 val ( ) = (prints("rb1 = ", rb1, "\n"))
 //
 (* ****** ****** *)
