@@ -4,7 +4,8 @@
 # For building various tools of ATS3-Xanadu
 # It is assumed that ATS-Postiats is already installed
 # Note that the current xats2js-in-ats3 (for compiling ATS3
-# into JS) is written in ATS3
+# into JS) is written in ATS3, that is, ATS3 has already been
+# bootstrapped via JavaScript.
 ############################################################
 ############################################################
 all:: srcgen1_xats2js
