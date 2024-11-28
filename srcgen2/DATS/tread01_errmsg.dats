@@ -730,6 +730,7 @@ D1Eift0
 d1exp_fpemsg(out, d1e1);
 d1expopt_fpemsg(out, dthn);
 d1expopt_fpemsg(out, dels))
+// end-of-[ D1Eif0( ... ) ]
 //
 |
 D1Ecas0
@@ -737,6 +738,7 @@ D1Ecas0
 (
 d1exp_fpemsg(out, d1e1);
 d1clslst_fpemsg(out, d1cs))
+// end-of-[ D1Ecas0( ... ) ]
 //
 |
 D1Elet0(d1cs, d1e1) =>
@@ -745,7 +747,7 @@ d1exp_fpemsg
 ( out, d1e1 )) where
 {
 val () =
-d1eclist_fpemsg(out, d1cs)}
+d1eclist_fpemsg(out, d1cs) }
 |
 D1Ewhere(d1e1, d1cs) =>
 (
@@ -753,28 +755,27 @@ d1exp_fpemsg
 ( out, d1e1 )) where
 {
 val () =
-d1eclist_fpemsg(out, d1cs)}
+d1eclist_fpemsg(out, d1cs) }
 //
 |
 D1Ebrckt(d1es) =>
 (
-d1explst_fpemsg(out, d1es))
+d1explst_fpemsg(out, d1es) )
 |
 D1Edtsel
 (tknd, lab1, dopt) =>
 (
-d1expopt_fpemsg(out, dopt))
+d1expopt_fpemsg(out, dopt) )
 //
 |
 D1Et1up(tknd,d1es) =>
 (
-d1explst_fpemsg(out, d1es))
+d1explst_fpemsg(out, d1es) )
 |
 D1Et2up
 (tknd, des1, des2) =>
-(
-d1explst_fpemsg(out, des1);
-d1explst_fpemsg(out, des2))
+( d1explst_fpemsg(out, des1)
+; d1explst_fpemsg(out, des2) )
 //
 |
 D1Elam0

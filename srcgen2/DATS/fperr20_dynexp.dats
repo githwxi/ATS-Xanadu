@@ -312,6 +312,8 @@ prints("D2Eift0(", "...", ")")
 |D2Ecas0 _ => 
 prints("D2Ecas0(", "...", ")")
 //
+(* ****** ****** *)
+//
 |D2Eseqn _ =>
 prints("D2Eseqn(", "...", ")")
 //
@@ -615,6 +617,18 @@ val () = fperr20_s2res(out, sres)
 *)
 val () = fperr20_d2exp(out, dexp)
 //
+endlet
+//
+(* ****** ****** *)
+//
+|D2Etry0
+(tknd,d2e1,dcls) =>
+let
+val () =
+  fperr20_d2exp(out, d2e1)
+val () =
+(
+  fperr20_d2clslst(out, dcls) )
 endlet
 //
 (* ****** ****** *)

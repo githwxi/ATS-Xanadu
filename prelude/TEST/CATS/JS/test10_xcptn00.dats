@@ -29,7 +29,10 @@ Sat Nov  9 12:36:14 AM EST 2024
 (*
 val () = $raise ErrorExn()
 *)
-val () = $raise ErrmsgExn("ErrmsgExn")
+val () =
+try
+$raise ErrmsgExn("ErrmsgExn")
+with ErrmsgExn(msg) => prints("msg = ", msg, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -284,6 +284,8 @@ prints("D3Eift0(", "...", ")")
 |D3Ecas0 _ => 
 prints("D3Ecas0(", "...", ")")
 //
+(* ****** ****** *)
+//
 |D3Eseqn _ =>
 prints("D3Eseqn(", "...", ")")
 //
@@ -487,6 +489,8 @@ val () =
 fperr30_d3eclist(out, dcls)
 }(*where*)//end-of-[D3Elet0]
 //
+(* ****** ****** *)
+//
 |D3Eift0
 (d3e1
 ,dthn, dels) =>
@@ -509,6 +513,8 @@ val () =
 fperr30_d3clslst(out, dcls)
 endlet//end-of-[D3Ecas0(...)]
 //
+(* ****** ****** *)
+//
 |D3Eseqn
 (d3es, d3e1) =>
 (
@@ -519,6 +525,20 @@ val () =
 fperr30_d3explst(out, d3es)}
 //(*where*)//end-of-[D3Eseqn]
 //
+(* ****** ****** *)
+//
+|D3Etry0
+(tknd
+,d3e1, dcls) =>
+let
+val () =
+fperr30_d3exp(out, d3e1)
+val () =
+fperr30_d3clslst(out, dcls)
+endlet//end-of-[D3Etry0(...)]
+//
+(* ****** ****** *)
+//
 |D3Ewhere
 (d3e1, dcls) =>
 (
@@ -527,6 +547,8 @@ where
 {val () =
  fperr30_d3eclist(out, dcls)}
 //(*where*)//end-of-[D3Ewhere]
+//
+(* ****** ****** *)
 //
 |D3Eassgn
 (d3el, d3er) =>

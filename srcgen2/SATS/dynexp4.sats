@@ -471,6 +471,12 @@ token(*knd*), sint(*npf*), l4d4elst)
 //
 (* ****** ****** *)
 //
+|D4Etry0 of
+( token(*$TRY*)
+, d4exp(*norm*), d4clslst(*handles*))
+//
+(* ****** ****** *)
+//
 |D4Eflat of (d4exp)//left-val-content
 //
 (* ****** ****** *)

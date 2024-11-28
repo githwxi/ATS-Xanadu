@@ -158,6 +158,10 @@ d3e0.node() of
 //
 (* ****** ****** *)
 //
+|D3Etry0 _ => f0_try0(env0, d3e0)
+//
+(* ****** ****** *)
+//
 |D3Eaddr _ => f0_addr(env0, d3e0)
 |D3Eview _ => f0_view(env0, d3e0)
 |D3Eflat _ => f0_flat(env0, d3e0)
