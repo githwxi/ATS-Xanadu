@@ -1843,6 +1843,11 @@ nindstrnfpr
 nindstrnfpr
 (filr, nind, "} catch(");i1valjs1(filr, iexn);strnfpr(filr, ") {\n"))
 //
+val () =
+(
+nindstrnfpr
+(filr, nind, "do {\n"))
+//
 val () = // enter
 envx2js_incnind(env0,2(*++*))
 //
@@ -1853,6 +1858,10 @@ f0_i1tnmvalclslst
 val () =
 (
   envx2js_decnind(env0,2(*--*)))//leave
+//
+val () =
+(
+nindstrnfpr(filr, nind, "} while (false) // end(do)\n"))
 //
 val () =
 (

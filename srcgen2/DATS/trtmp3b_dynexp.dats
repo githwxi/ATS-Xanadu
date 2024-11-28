@@ -725,7 +725,7 @@ val dcls =
 //
 in//let
 d3exp_make_tpnd
-(loc0, t2p0, D3Ecas0(tknd, d3e1, dcls))
+(loc0, t2p0, D3Etry0(tknd, d3e1, dcls))
 //
 end (*let*) // end of [f0_try0(env0,d3e0)]
 //

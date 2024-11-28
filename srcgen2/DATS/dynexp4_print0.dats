@@ -304,6 +304,16 @@ D4Efix0
 (* ****** ****** *)
 //
 |
+D4Etry0
+( tknd
+, d4e1, dcls) =>
+(
+print("D4Etry0(");
+prints( tknd, ";",d4e1, ";",dcls,")"))
+//
+(* ****** ****** *)
+//
+|
 D4Eflat
 (   d4e1   ) =>
 prints("D4Eflat(",d4e1,")") // left-val
