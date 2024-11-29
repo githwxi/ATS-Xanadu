@@ -79,6 +79,9 @@ _(*DATS*)="./../DATS/js1emit.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload lctn with d2con_get_lctn
+#symload lctn with d2cst_get_lctn
+(* ****** ****** *)
 #symload lctn with i1val_get_lctn
 (* ****** ****** *)
 #symload lctn with i1cmp_get_lctn
@@ -95,6 +98,36 @@ _(*DATS*)="./../DATS/js1emit.dats"
 (* ****** ****** *)
 #symload filr with envx2js_get_filr
 #symload nind with envx2js_get_nind
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
+EXCPTCON_BASE = 10000
+//
+(* ****** ****** *)
+//
+fun
+d2con_ctag$get
+(dcon: d2con): sint =
+let
+//
+val
+ctag =
+d2con_get_ctag(dcon)
+//
+in//let
+//
+if ctag >= 0
+then ctag else
+let
+val loc0 = dcon.lctn()
+in//let
+EXCPTCON_BASE + 
+postn_get_ntot(loc0.pbeg())
+end//let
+//
+end//end-of-[d2con_ctag$get]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -148,10 +181,16 @@ d2ctgjs1
 (filr: FILR
 ,dcon: d2con): void =
 let
-#impltmp
-g_print$out<>() = filr
+//
+val ctag =
+d2con_ctag$get(dcon)
+//
 in//let
-print(d2con_get_ctag(dcon))
+(
+  print(ctag) ) where
+{
+#impltmp g_print$out<>() = filr
+}
 end(*let*)//end-of-[d2ctgjs1(...)]
 //
 (* ****** ****** *)
@@ -174,7 +213,7 @@ prints
 ,'"', name, '"', ",", ctag, ")")
 ) where
 {
-  val ctag = d2con_get_ctag(d2c0)
+  val ctag = d2con_ctag$get(d2c0)
   val name = d2con_get_name(d2c0) }
 //
 |

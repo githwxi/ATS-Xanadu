@@ -27,10 +27,12 @@ Sat Nov  9 12:36:14 AM EST 2024
 (* ****** ****** *)
 //
 (*
-val () = $raise ErrorExn()
 *)
 val () =
 try
+(*
+$raise ErrorExn();
+*)
 $raise ErrmsgExn("ErrmsgExn")
 with ErrmsgExn(msg) => prints("msg = ", msg, "\n")
 //
