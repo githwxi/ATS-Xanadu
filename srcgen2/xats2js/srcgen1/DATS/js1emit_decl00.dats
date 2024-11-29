@@ -114,9 +114,10 @@ lctnfpr
  loctn_fprint(filr,loc0))//endfun
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
-dimplcst
+dicstfpr
 (filr: FILR
 ,dimp: dimpl): void =
 (
@@ -586,7 +587,7 @@ else
 //
 (
 nindstrnfpr
-(filr, nind, "let ");dimplcst(filr, dimp);
+(filr, nind, "let ");dicstfpr(filr, dimp);
 strnfpr(filr," = function ");fjas1js1(filr, fjas));
 (
 strnfpr(filr," { // impl\n");

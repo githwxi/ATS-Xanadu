@@ -51,12 +51,29 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 #
 ########################################################################
 #
+all:: \
+xats2js_pyemit00
+xats2js_pyemit00:: \
+xats2js_pyemit00.dats ; \
+$(CAT) \
+$(XATS2JS_PRELUDE) > $@_dats.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(CAT) \
+$(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
+$(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
+$(CAT) $(LIBXATS2JS_JS) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
+#
+########################################################################
+#
 # HX: for cleaning up
 #
 clean:: ; rm -f *~
 #
 cleanall:: clean
 cleanall:: ; rm -f ./xats2js_jsemit??_dats.js
+cleanall:: ; rm -f ./xats2js_pyemit??_dats.js
 #
 ########################################################################
 ###################### end of [Makefile_xats2js] #######################
