@@ -94,24 +94,22 @@ fun
 auxlst(xs) =
 (
 case+ xs of
-|
-tree_nil
+|tree_nil
 ((*void*)) => 0
-|
-tree_cons
+|tree_cons
 (xs1, _, xs3) =>
 let
 val h1 = auxlst(xs1)
-val h3 = auxlst(xs3)
+and h3 = auxlst(xs3)
 in//let
 if
 abs(h1-h3) <= 1
 then
-1+max(h1, h3) else $raise NotAVL()
+1+max(h1,h3) else $raise NotAVL()
 end//let//end-of-[tree_cons]
 )
 //
-} (*where*) // end of [tree_AVLq]
+} (*where*) // end of [tree_AVLq(xs)]
 //
 (* ****** ****** *)
 
