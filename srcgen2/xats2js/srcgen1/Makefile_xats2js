@@ -54,6 +54,7 @@ intrep1.sats \
 trxi0i1.sats \
 xats2js.sats \
 js1emit.sats \
+py1emit.sats \
 
 ######
 
@@ -80,6 +81,10 @@ js1emit.dats \
 js1emit_utils0.dats \
 js1emit_dynexp.dats \
 js1emit_decl00.dats \
+py1emit.dats \
+py1emit_utils0.dats \
+py1emit_dynexp.dats \
+py1emit_decl00.dats \
 xats2js_tmplib.dats \
 
 ########################################################################

@@ -235,7 +235,6 @@ clean:: ; rm -f ./HATS/*~
 cleanall:: clean
 ######
 cleanall:: ; rm -f BUILD/JS/*.js
-cleanall:: ; rm -f BUILD/PY/*.py
 ######
 
 ######################## end of [Makefile] ##############################
