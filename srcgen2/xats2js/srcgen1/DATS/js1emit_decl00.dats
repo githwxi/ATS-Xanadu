@@ -79,6 +79,7 @@ Authoremail: gmhwxiATgmailDOTcom
 _(*DATS*)="./../DATS/js1emit.dats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #symload node with dimpl_get_node
 (* ****** ****** *)
 (*
@@ -980,5 +981,5 @@ js1emit_i1dclistopt
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_js1emit_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_js1emit_decl00.dats] *)
 (***********************************************************************)
