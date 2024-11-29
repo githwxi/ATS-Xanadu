@@ -72,6 +72,11 @@ js1emit_sats
 js1emit_sats: ; \
 $(XATSOPT) --static SATS/js1emit.sats
 ######
+all_sats:: \
+py1emit_sats
+py1emit_sats: ; \
+$(XATSOPT) --static SATS/py1emit.sats
+######
 
 ######
 #
@@ -199,6 +204,13 @@ js1emit_decl00_dats: ; \
 $(XATSOPT) --dynamic DATS/js1emit_decl00.dats
 ######
 
+######
+all_dats:: \
+py1emit_dats
+py1emit_dats: ; \
+$(XATSOPT) --dynamic DATS/py1emit.dats
+######
+
 ########################################################################
 
 testall:: ; make all > /dev/null
@@ -223,6 +235,7 @@ clean:: ; rm -f ./HATS/*~
 cleanall:: clean
 ######
 cleanall:: ; rm -f BUILD/JS/*.js
+cleanall:: ; rm -f BUILD/PY/*.py
 ######
 
 ######################## end of [Makefile] ##############################
