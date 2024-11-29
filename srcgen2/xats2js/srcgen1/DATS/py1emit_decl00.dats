@@ -81,6 +81,50 @@ _(*DATS*)="./../DATS/py1emit.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+fprintln
+(filr: FILR): void =
+(
+ strn_fprint(filr,"\n"))//endfun
+//
+(* ****** ****** *)
+//
+fun
+lctnfpr
+(filr: FILR
+,loc0: loc_t): void =
+(
+ loctn_fprint(filr,loc0))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+py1emit_i1dcl
+( env0,dcl0 ) =
+let
+(*
+//
+val () =
+prerrsln
+("py1emit_i1dcl: dcl0 = ", dcl0))
+//
+*)
+in//let
+//
+case+
+dcl0.node() of
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|_(*otherwise*) => xats2js_i1dcl(env0, dcl0)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+end where
+{
+}(*where*)//end-of-[py1emit_i1dcl(env0,dcl0)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
