@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Fri Nov 29 04:22:27 PM EST 2024
+Fri Nov 29 04:20:01 PM EST 2024
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -45,31 +45,16 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #include
-"./../HATS/mytmplib00.hats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload // LAB =
-"./../../../SATS/xlabel0.sats"
-#staload // SYM =
-"./../../../SATS/xsymbol.sats"
-//
-#staload // LOC =
-"./../../../SATS/locinfo.sats"
-//
-#staload // LEX =
-"./../../../SATS/lexing0.sats"
-//
-#staload // D2E =
-"./../../../SATS/dynexp2.sats"
+"./../HATS/libxatsopt.hats"
+#include
+"./../HATS/libxats2js.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/intrep0.sats"
-#staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xats2js.sats"
 #staload "./../SATS/py1emit.sats"
 //
 (* ****** ****** *)
@@ -84,5 +69,5 @@ _(*DATS*)="./../DATS/py1emit.dats"
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_py1emit_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_py1emit_utils0.dats] *)
 (***********************************************************************)

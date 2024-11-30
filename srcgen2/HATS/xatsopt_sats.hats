@@ -20,9 +20,11 @@ For ATS3/XATSOPT
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #staload
 "srcgen1\
 /xatslib/githwxi/SATS/genv000.sats"
+*)
 //
 (* ****** ****** *)
 //

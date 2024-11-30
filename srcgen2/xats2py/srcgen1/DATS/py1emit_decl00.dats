@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Fri Nov 29 04:20:01 PM EST 2024
+Fri Nov 29 04:23:24 PM EST 2024
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -50,23 +50,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload // LAB =
-"./../../../SATS/xlabel0.sats"
-#staload // SYM =
-"./../../../SATS/xsymbol.sats"
-//
-#staload // LOC =
-"./../../../SATS/locinfo.sats"
-//
-#staload // LEX =
-"./../../../SATS/lexing0.sats"
+#include
+"./../HATS/libxatsopt.hats"
+#include
+"./../HATS/libxats2js.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/intrep0.sats"
-#staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xats2js.sats"
 #staload "./../SATS/py1emit.sats"
 //
 (* ****** ****** *)
@@ -77,9 +68,98 @@ _(*DATS*)="./../DATS/py1emit.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+fprintln
+(filr: FILR): void =
+(
+ strn_fprint(filr,"\n"))//endfun
+//
+(* ****** ****** *)
+//
+fun
+lctnfpr
+(filr: FILR
+,loc0: loc_t): void =
+(
+ loctn_fprint(filr,loc0))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+py1emit_i1dcl
+( env0,dcl0 ) =
+let
+(*
+//
+val () =
+prerrsln
+("py1emit_i1dcl: dcl0 = ", dcl0))
+//
+*)
+in//let
+//
+case+
+dcl0.node() of
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|_(*otherwise*) => xats2js_i1dcl(env0, dcl0)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+end where
+{
+}(*where*)//end-of-[py1emit_i1dcl(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+py1emit_i1dclist
+  (env0, dcls) =
+(
+  list_py1emit_fnp(env0, dcls, py1emit_i1dcl))
+(*where*)//end-of-[py1emit_i1dclist(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+py1emit_i1valdclist
+  (env0, i1vs) =
+(
+  list_py1emit_fnp(env0, i1vs, py1emit_i1valdcl))
+//
+(* ****** ****** *)
+//
+#implfun
+py1emit_i1vardclist
+  (env0, i1vs) =
+(
+  list_py1emit_fnp(env0, i1vs, py1emit_i1vardcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+py1emit_i1fundclist
+  (env0, i1fs) =
+(
+  list_py1emit_fnp(env0, i1fs, py1emit_i1fundcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+py1emit_i1dclistopt
+  (env0, dopt) =
+(
+  optn_py1emit_fnp(env0, dopt, py1emit_i1dclist))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_py1emit_utils0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_py1emit_dynexp.dats] *)
 (***********************************************************************)

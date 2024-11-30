@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,10 +37,12 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 #define
 XATSOPT "./../../.."
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 #include
 "./../../..\
@@ -47,6 +50,7 @@ XATSOPT "./../../.."
 #include
 "./../../..\
 /HATS/xatsopt_dats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 #include
 "./../HATS/mytmplib00.hats"

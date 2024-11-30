@@ -2,7 +2,7 @@
 ########################################################################
 #
 # For compiling with xats2js
-# Sat 22 Jun 2024 05:23:36 PM EDT
+# Sat Nov 30 03:23:22 PM EST 2024
 #
 ########################################################################
 ########################################################################
@@ -50,39 +50,15 @@ XATS2JS_XATSLIB_NODE=\
 ######
 
 SRCSATS := \
-intrep0.sats \
-trxd3i0.sats \
-intrep1.sats \
-trxi0i1.sats \
-xats2js.sats \
-js1emit.sats \
+py1emit.sats \
 
 ######
 
 SRCDATS := \
-intrep0.dats \
-intrep0_print0.dats \
-intrep0_utils0.dats \
-trxd3i0.dats \
-trxd3i0_myenv0.dats \
-trxd3i0_dynexp.dats \
-trxd3i0_decl00.dats \
-intrep1.dats \
-intrep1_print0.dats \
-intrep1_utils0.dats \
-trxi0i1.dats \
-trxi0i1_myenv0.dats \
-trxi0i1_dynexp.dats \
-trxi0i1_decl00.dats \
-xats2js.dats \
-xats2js_myenv0.dats \
-xats2js_dynexp.dats \
-xats2js_decl00.dats \
-xats2js_tmplib.dats \
-js1emit.dats \
-js1emit_utils0.dats \
-js1emit_dynexp.dats \
-js1emit_decl00.dats \
+py1emit.dats \
+py1emit_utils0.dats \
+py1emit_dynexp.dats \
+py1emit_decl00.dats \
 
 ########################################################################
 OBJSATS := \

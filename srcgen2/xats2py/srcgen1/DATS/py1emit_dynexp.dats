@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Fri Nov 29 04:23:24 PM EST 2024
+Fri Nov 29 04:22:27 PM EST 2024
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -50,27 +50,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload // SYM =
-"./../../../SATS/xsymbol.sats"
-//
-#staload // LOC =
-"./../../../SATS/locinfo.sats"
-//
-#staload // S1E =
-"./../../../SATS/staexp1.sats"
-//
-#staload // D2E =
-"./../../../SATS/dynexp2.sats"
+#include
+"./../HATS/libxatsopt.hats"
+#include
+"./../HATS/libxats2js.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/intrep0.sats"
-#staload "./../SATS/intrep1.sats"
-//
-(* ****** ****** *)
-//
-#staload "./../SATS/xats2js.sats"
 #staload "./../SATS/py1emit.sats"
 //
 (* ****** ****** *)
@@ -80,50 +67,6 @@ _(*DATS*)="./../DATS/py1emit.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-fun
-fprintln
-(filr: FILR): void =
-(
- strn_fprint(filr,"\n"))//endfun
-//
-(* ****** ****** *)
-//
-fun
-lctnfpr
-(filr: FILR
-,loc0: loc_t): void =
-(
- loctn_fprint(filr,loc0))//endfun
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-py1emit_i1dcl
-( env0,dcl0 ) =
-let
-(*
-//
-val () =
-prerrsln
-("py1emit_i1dcl: dcl0 = ", dcl0))
-//
-*)
-in//let
-//
-case+
-dcl0.node() of
-//
-(* ****** ****** *)
-(* ****** ****** *)
-|_(*otherwise*) => xats2js_i1dcl(env0, dcl0)
-(* ****** ****** *)
-(* ****** ****** *)
-//
-end where
-{
-}(*where*)//end-of-[py1emit_i1dcl(env0,dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
