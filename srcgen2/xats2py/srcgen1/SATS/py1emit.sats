@@ -49,9 +49,8 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/intrep0.sats"
-#staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xats2js.sats"
+#include
+"./../HATS/libxats2js.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
