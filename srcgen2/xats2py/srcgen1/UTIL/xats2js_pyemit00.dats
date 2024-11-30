@@ -42,26 +42,15 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/libxatsopt.hats"
+#include
+"./../HATS/libxats2js.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../SATS/intrep0.sats"
-#staload
-"./../SATS/intrep1.sats"
-#staload
-"./../SATS/trxd3i0.sats"
-#staload
-"./../SATS/trxi0i1.sats"
-#staload
-"./../SATS/xats2js.sats"
-#staload
-"./../SATS/py1emit.sats"
-//
-#staload _ =
-"./../DATS/xats2js_tmplib.dats"
+#staload "./../SATS/py1emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -13,6 +13,12 @@ Sat 30 Nov 2024 03:52:49 PM
 /xats2js/srcgen1/SATS/intrep0.sats"
 #staload "./../../..\
 /xats2js/srcgen1/SATS/intrep1.sats"
+//
+#staload "./../../..\
+/xats2js/srcgen1/SATS/trxd3i0.sats"
+#staload "./../../..\
+/xats2js/srcgen1/SATS/trxi0i1.sats"
+//
 #staload "./../../..\
 /xats2js/srcgen1/SATS/xats2js.sats"
 //
