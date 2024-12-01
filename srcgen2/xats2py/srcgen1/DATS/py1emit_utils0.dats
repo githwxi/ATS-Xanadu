@@ -65,6 +65,43 @@ _(*DATS*)="./../DATS/py1emit.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0intpy1
+(filr, tint) =
+(
+case-
+tint.node() of
+|T_INT01
+(  rep  ) => prints
+("XATSINT1(", rep, ")")
+|T_INT02
+(bas,rep) => prints
+("XATSINT2(",bas,",",rep,")")
+|T_INT03
+(bas
+,rep,sfx) => prints
+("XATSINT3("
+,bas, ",", rep, ",", sfx, ")")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i0intpy1(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0btfpy1
+(filr, btf0) =
+(
+if
+(btf0 = TRUE_symbl)
+then print("XATSBOOL(true)")
+else print("XATSBOOL(false)")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i0btfpy1(...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

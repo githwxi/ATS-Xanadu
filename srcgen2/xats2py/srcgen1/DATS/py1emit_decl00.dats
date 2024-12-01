@@ -67,6 +67,23 @@ _(*DATS*)="./../DATS/py1emit.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload node with dimpl_get_node
+(* ****** ****** *)
+(*
+#symload ival with i1cmp_get_ival
+#symload ilts with i1cmp_get_ilts
+*)
+(* ****** ****** *)
+#symload lctn with i1dcl_get_lctn
+#symload node with i1dcl_get_node
+(* ****** ****** *)
+#symload filr with envx2js_get_filr
+#symload nind with envx2js_get_nind
+(* ****** ****** *)
+#symload
+py1emit_fjas1 with py1emit_fjarglst
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 fprintln
@@ -146,6 +163,39 @@ dcl0.node() of
 |I1Dstatic _ =>
 (
   f0_static(env0, dcl0))
+//
+(* ****** ****** *)
+//
+|I1Dlocal0 _ =>
+(
+  f0_local0(env0, dcl0))
+//
+(* ****** ****** *)
+//
+|I1Dinclude _ =>
+(
+  f0_include(env0, dcl0))
+//
+(* ****** ****** *)
+//
+|I1Dvaldclst _ =>
+(
+  f0_valdclst(env0, dcl0))
+|I1Dvardclst _ =>
+(
+  f0_vardclst(env0, dcl0))
+//
+(* ****** ****** *)
+//
+|I1Dfundclst _ =>
+(
+  f0_fundclst(env0, dcl0))
+//
+(* ****** ****** *)
+//
+|I1Dimplmnt0 _ =>
+(
+  f0_implmnt0(env0, dcl0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
