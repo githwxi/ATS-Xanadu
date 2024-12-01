@@ -240,6 +240,143 @@ end(*let*)//end-of-[f0_local0(env0,dcl0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+f0_include
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = dcl0.node()
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+(
+nindfpr(filr, nind);
+prints
+("## I1Dinclude(",loc0,")\n"))
+end//let
+//
+in//let
+(
+case+ dopt of
+|optn_nil() => ( (*void*) )
+|optn_cons(dcls) =>
+(
+  py1emit_i1dclist(env0, dcls)))
+end(*let*)//end-of-[f0_include(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val filr =
+  env0.filr((*void*))
+val nind =
+  env0.nind((*void*))
+val loc0 =
+  dcl0.lctn((*void*))
+//
+val-
+I1Dvaldclst
+(tknd, i1vs) = dcl0.node()
+//
+val
+prvq =
+(
+  valtok_prvq( tknd ))
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+(
+  nindfpr(filr, nind));
+//
+if
+prvq
+then prints
+("## I1Dprvdclist(",loc0,")\n")
+else prints
+("## I1Dvaldclist(",loc0,")\n")
+//
+end//let
+//
+val (  ) =
+if
+prvq
+then
+(
+ xats2js_i1valdclist(env0, i1vs))
+else
+(
+ py1emit_i1valdclist(env0, i1vs))
+//
+end(*let*)//end-of-[f0_valdclst(env0,dcl0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dvardclst
+(tknd, i1vs) = dcl0.node()
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+nindfpr(filr, nind);
+prints
+("## I1Dvardclist(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+ py1emit_i1vardclist(env0, i1vs))
+//
+end(*let*)//end of [f0_vardclst(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 }(*where*)//end-of-[py1emit_i1dcl(env0,dcl0)]
 //
 (* ****** ****** *)
