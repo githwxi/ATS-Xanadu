@@ -2,7 +2,7 @@
 #
 # HX-2024-11-30:
 # For compiling
-# xats2js_pyemit00 to JavaScript
+# xats2py_pyemit00 to JavaScript
 # The compiler is srcgen1/xats2js
 #
 ########################################################################
@@ -33,9 +33,9 @@ XATS2JS_XATSLIB_NODE="$(XSHARED)/runtime/xats2js_xatslib_node.js"
 ########################################################################
 #
 all:: \
-xats2js_pyemit00
-xats2js_pyemit00:: \
-xats2js_pyemit00.dats ; \
+xats2py_pyemit00
+xats2py_pyemit00:: \
+xats2py_pyemit00.dats ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \
@@ -54,7 +54,7 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 clean:: ; rm -f *~
 #
 cleanall:: clean
-cleanall:: ; rm -f ./xats2js_pyemit??_dats.js
+cleanall:: ; rm -f ./xats2py_pyemit??_dats.js
 #
 ########################################################################
 ###################### end of [Makefile_xats2js] #######################
