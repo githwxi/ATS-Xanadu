@@ -86,6 +86,42 @@ lctnfpr
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+dicstfpr
+(filr: FILR
+,dimp: dimpl): void =
+(
+case+
+dimp.node() of
+|DIMPLone1
+(  dcst  ) =>
+(
+  d2cstfpr(filr, dcst))
+|DIMPLone2
+(dcst, svts) =>
+(
+  d2cstfpr(filr, dcst))
+|DIMPLall1
+(dqid, d2cs) =>
+(
+  d1qid_fprint(filr, dqid))
+|DIMPLopt2
+(dqid, _, _) =>
+(
+  d1qid_fprint(filr, dqid)))
+//
+(* ****** ****** *)
+//
+fun
+dimplfpr
+(filr: FILR
+,dimp: dimpl): void =
+(
+ dimpl_fprint(filr,dimp))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 py1emit_i1dcl
 ( env0,dcl0 ) =
@@ -373,6 +409,140 @@ val (  ) =
  py1emit_i1vardclist(env0, i1vs))
 //
 end(*let*)//end of [f0_vardclst(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val filr =
+  env0.filr((*void*))
+val nind =
+  env0.nind((*void*))
+val loc0 =
+  dcl0.lctn((*void*))
+//
+val-
+I1Dfundclst
+(tknd
+,d2cs, i1fs) = dcl0.node()
+//
+val prfq =
+(
+  funtok_prfq( tknd ))
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+(
+  nindfpr(filr, nind));
+//
+if
+prfq
+then prints
+("## I1Dprfdclist(",loc0,")\n")
+else prints
+("## I1Dfundclist(",loc0,")\n")
+//
+end//let
+//
+val (  ) =
+if
+prfq
+then
+(
+ xats2js_i1fundclist(env0, i1fs))
+else
+(
+ py1emit_i1fundclist(env0, i1fs))
+//
+end(*let*)//end-of-[f0_fundclst(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dimplmnt0
+( tknd
+, stmp, dimp
+, fjas, icmp) = dcl0.node()
+//
+in//let
+//
+let
+//
+fun
+f1_i1cmpret
+( env0:
+! envx2js
+, icmp: i1cmp): void =
+let
+val filr = envx2js_get_filr(env0)
+val nind = envx2js_get_nind(env0)
+in//let
+let
+val ival = icmp.ival()
+val (  ) = py1emit_i1cmp(env0, icmp)
+in//let
+nindstrnfpr
+(filr, nind, "return ");i1valpy1(filr, ival);fprintln(filr)
+end//let
+end//let//end-of-[f1_i1cmpret(...)]
+//
+in//let
+//
+nindstrnfpr
+(filr,nind,"## I1Dimplmnt0(");
+lctnfpr(filr,loc0);strnfpr(filr,")\n");
+//
+if
+dimpl_tempq(dimp)
+then
+(
+nindstrnfpr
+(filr,nind,"## I1Dimplmnt0(");
+dimplfpr(filr,dimp);strnfpr(filr,"):timp\n"))
+else
+(
+//
+(
+nindstrnfpr
+(filr, nind, "let ");dicstfpr(filr, dimp);
+strnfpr(filr," = function ");fjas1py1(filr, fjas));
+(
+strnfpr(filr," { // impl\n");
+(envx2js_incnind(env0,2(*++*))
+;py1emit_fjarglst(env0, fjas);f1_i1cmpret(env0, icmp));
+(envx2js_decnind(env0,2(*--*))
+;nindstrnfpr(filr, nind, "} // endfun(impl)");fprintln(filr)))
+//
+)//endif
+//
+end(*let*)
+//
+end(*let*)//end-of-[f0_implmnt0(env0,dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
