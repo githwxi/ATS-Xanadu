@@ -103,6 +103,15 @@ case+
 dcl0.node() of
 //
 (* ****** ****** *)
+//
+|I1Dextern _ =>
+(
+  f0_extern(env0, dcl0))
+|I1Dstatic _ =>
+(
+  f0_static(env0, dcl0))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 |_(*otherwise*) => xats2js_i1dcl(env0, dcl0)
 (* ****** ****** *)
@@ -110,6 +119,127 @@ dcl0.node() of
 //
 end where
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_extern
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dextern
+(tknd, dcl1) = dcl0.node()
+//
+val
+(  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+nindfpr(filr, nind);
+prints
+("## I1Dextern(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+  xats2js_i1dcl( env0, dcl1 ))
+//
+end(*let*)//end-of-[f0_extern(env0,dcl0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_static
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dstatic
+(tknd, dcl1) = dcl0.node()
+//
+val
+(  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+nindfpr(filr, nind);
+prints
+("## I1Dstatic(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+  xats2js_i1dcl( env0, dcl1 ))
+//
+end(*let*)//end-of-[f0_static(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_local0
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dlocal0
+(head, body) = dcl0.node()
+//
+val
+(  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+(
+nindfpr(filr, nind);
+prints
+("## I1Dlocal0(",loc0,")\n"))
+end//let
+//
+val () =
+(
+  py1emit_i1dclist(env0, head))
+val () =
+(
+  py1emit_i1dclist(env0, body))
+//
+end(*let*)//end-of-[f0_local0(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 }(*where*)//end-of-[py1emit_i1dcl(env0,dcl0)]
 //
 (* ****** ****** *)
