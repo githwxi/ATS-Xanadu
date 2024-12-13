@@ -662,7 +662,7 @@ val () =
 (
 nindstrnfpr
 (filr, nind, "let ");
-i1tnmfpr
+i1tnmjs1
 (filr, itnm);fprintln(filr))
 //
 // HX: for computing ival
@@ -720,13 +720,14 @@ js1emit_i1letlst(env0, ilts)
 val () =
 let
 nindfpr(filr, nind);
-i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
+i1tnmjs1(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
 end//let
 //
 end//let//end-of-[f0_i1tnmcmp(...)]
 //
 }(*where*)//end-of-[js1emit_i1valdcl(env0,dcl0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -768,7 +769,7 @@ HX-2024-06-07:
 w/o initialization
 *)
 nindfpr(filr, nind);
-strnfpr(filr, "let ");i1tnmfpr(filr, itnm);
+strnfpr(filr, "let ");i1tnmjs1(filr, itnm);
 strnfpr(filr, " = XATSVAR0(");strnfpr(filr, ")\n")
 //
 end//let//end-of-[TEQI1CMPnone]
@@ -791,7 +792,7 @@ HX-2024-06-07:
 with initialization
 *)
 nindfpr(filr, nind);
-strnfpr(filr, "let ");i1tnmfpr(filr, itnm);
+strnfpr(filr, "let ");i1tnmjs1(filr, itnm);
 strnfpr(filr, " = XATSVAR1(");i1valjs1(filr, ival);strnfpr(filr, ")\n")
 //
 end//let//end-of-[TEQI1CMPsome]

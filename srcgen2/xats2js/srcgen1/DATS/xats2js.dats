@@ -141,7 +141,7 @@ nindfpr(filr, nind);strnfpr(filr, strn))
 i1tnmfpr
 ( filr,itnm ) =
 (
-prints("tnm", stmp)) where
+prints("xtnm", stmp)) where
 {
 //
 #impltmp g_print$out<>() = filr

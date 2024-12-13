@@ -66,6 +66,22 @@ _(*DATS*)="./../DATS/py1emit.dats"
 (* ****** ****** *)
 //
 #implfun
+i1tnmpy1
+( filr,itnm ) =
+(
+prints("pytnm", stmp)) where
+{
+//
+#impltmp g_print$out<>() = filr
+//
+val stmp = i1tnm_get_stmp(itnm)
+//
+}(*where*)//end-of-[i1tnmpy1(filr,itnm)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i0intpy1
 (filr, tint) =
 (

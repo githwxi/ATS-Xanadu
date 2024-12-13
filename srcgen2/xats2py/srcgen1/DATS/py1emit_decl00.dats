@@ -603,6 +603,213 @@ end(*let*)//end-of-[f0_implmnt0(env0,dcl0)]
 (* ****** ****** *)
 //
 #implfun
+py1emit_i1valdcl
+  (env0, idcl) = let
+//
+(* ****** ****** *)
+//
+val dpat =
+i1valdcl_get_dpat(idcl)
+val tdxp =
+i1valdcl_get_tdxp(idcl)
+//
+(* ****** ****** *)
+//
+val ipat =
+(
+case+ dpat of
+|I1BNDcons(_,ipat,_) => ipat)
+val itnm =
+(
+case+ dpat of
+|I1BNDcons(itnm,_,_) => itnm)
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+case+ tdxp of
+//
+|
+TEQI1CMPnone
+( (*void*) ) => ( (*void*) )
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+//
+val ival =
+i1cmp_get_ival(icmp)
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+//
+val () =
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmpy1
+(filr, itnm);fprintln(filr))
+//
+// HX: for computing ival
+val () =
+f0_i1tnmcmp(env0, itnm, icmp)
+//
+val () =
+(
+nindstrnfpr
+(filr, nind, "XATS000_patck(");
+i0pckpy1(filr, ival, ipat);
+strnfpr(filr, ")");fprintln(filr))
+//
+endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
+//
+(* ****** ****** *)
+//
+end where//end-of-let(py1emit_i1valdcl(...)]
+{
+//
+val (  ) =
+let
+val filr =
+(
+envx2js_get_filr(env0))
+val nind =
+(
+envx2js_get_nind(env0))
+in//let
+(
+ nindstrnfpr(filr, nind, "// I1VALDCL\n"))
+end//let//end-of-[val()]
+//
+fun
+f0_i1tnmcmp
+( env0:
+! envx2js
+, itnm: i1tnm
+, icmp: i1cmp): void =
+let
+//
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+//
+val
+ival = i1cmp_get_ival(icmp)
+val
+ilts = i1cmp_get_ilts(icmp)
+//
+val () =
+py1emit_i1letlst(env0, ilts)
+//
+val () =
+let
+nindfpr(filr, nind);
+i1tnmpy1(filr, itnm);strnfpr(filr, " = ");i1valpy1(filr, ival);fprintln(filr)
+end//let
+//
+end//let//end-of-[f0_i1tnmcmp(...)]
+//
+}(*where*)//end-of-[py1emit_i1valdcl(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+py1emit_i1vardcl
+  (env0, idcl) = let
+//
+(* ****** ****** *)
+//
+val dpid =
+i1vardcl_get_dpid(idcl)
+val tdxp =
+i1vardcl_get_dini(idcl)
+//
+(* ****** ****** *)
+//
+val itnm =
+(
+case+ dpid of
+|I1BNDcons(itnm,_,_) => itnm)
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+case+ tdxp of
+//
+|
+TEQI1CMPnone
+( (*void*) ) =>
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+in//let
+//
+(*
+HX-2024-06-07:
+w/o initialization
+*)
+nindfpr(filr, nind);
+strnfpr(filr, "let ");i1tnmpy1(filr, itnm);
+strnfpr(filr, " = XATSVAR0(");strnfpr(filr, ")\n")
+//
+end//let//end-of-[TEQI1CMPnone]
+//
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val ival = i1cmp_get_ival(icmp)
+val (  ) = py1emit_i1cmp(env0, icmp)
+//
+in//let
+//
+(*
+HX-2024-06-07:
+with initialization
+*)
+nindfpr(filr, nind);
+strnfpr(filr, "let ");i1tnmpy1(filr, itnm);
+strnfpr(filr, " = XATSVAR1(");i1valpy1(filr, ival);strnfpr(filr, ")\n")
+//
+end//let//end-of-[TEQI1CMPsome]
+//
+) (*case+*) // end-of-( teqi1exp )
+//
+(* ****** ****** *)
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+(
+envx2js_get_filr(env0))
+val nind =
+(
+envx2js_get_nind(env0))
+in//let
+(
+ nindstrnfpr(filr, nind, "## I1VARDCL\n"))
+end//let//end-of-[val()]
+//
+}(*where*)//end-of-[py1emit_i1vardcl(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 py1emit_i1dclist
   (env0, dcls) =
 (

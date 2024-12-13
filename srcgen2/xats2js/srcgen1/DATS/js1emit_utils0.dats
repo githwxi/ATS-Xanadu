@@ -78,6 +78,22 @@ _(*DATS*)="./../DATS/js1emit.dats"
 (* ****** ****** *)
 //
 #implfun
+i1tnmjs1
+( filr,itnm ) =
+(
+prints("jstnm", stmp)) where
+{
+//
+#impltmp g_print$out<>() = filr
+//
+val stmp = i1tnm_get_stmp(itnm)
+//
+}(*where*)//end-of-[i1tnmjs1(filr,itnm)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i0intjs1
 (filr, tint) =
 (
