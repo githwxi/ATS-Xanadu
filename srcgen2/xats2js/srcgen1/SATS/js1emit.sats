@@ -57,6 +57,13 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 fun
+i1tnmjs1
+(filr:FILR,itnm:i1tnm): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i0intjs1
 (filr:FILR,tint:token): void
 fun

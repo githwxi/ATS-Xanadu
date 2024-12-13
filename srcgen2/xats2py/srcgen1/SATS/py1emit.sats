@@ -56,6 +56,13 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 fun
+i1tnmpy1
+(filr:FILR,itnm:i1tnm): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i0intpy1
 (filr:FILR,tint:token): void
 fun
