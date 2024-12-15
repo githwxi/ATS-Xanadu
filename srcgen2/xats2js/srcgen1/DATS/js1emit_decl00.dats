@@ -212,7 +212,7 @@ dcl0.node() of
 //
 (* ****** ****** *)
 (* ****** ****** *)
-|_(*otherwise*) => xats2js_i1dcl(env0, dcl0)
+|_(*otherwise*) => f0_otherwise(env0, dcl0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -606,6 +606,33 @@ strnfpr(filr," { // impl\n");
 end(*let*)
 //
 end(*let*)//end-of-[f0_implmnt0(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_otherwise
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val filr = envx2js_get_filr(env0)
+val nind = envx2js_get_nind(env0)
+//
+in//let
+//
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+loctn_fprint
+(filr, loc0); fprintln(filr);
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+i1dcl_fprint(filr, dcl0); fprintln(filr)
+//
+end(*let*)//end-of-[f0_otherwise(env0,dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

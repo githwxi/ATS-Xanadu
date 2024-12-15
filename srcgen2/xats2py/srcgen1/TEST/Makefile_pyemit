@@ -26,7 +26,7 @@ $(XATSHOME)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit00_dats.js
 ########################################################################
 ########################################################################
 test00:: ; \
-echo "//" `date` > $@_out.py
+echo "##" `date` > $@_out.py
 ############
 # test00:: ; \
 # $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
