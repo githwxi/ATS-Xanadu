@@ -128,11 +128,11 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_z2forall_f2un
+gasz_z2forall$f2un
 (xs: xs, ys: ys, test: (!x0, !y0)->bool): bool
 //
-#symload z2forall with gasz_z2forall_f2un of 0100
-#symload z2forall_fun with gasz_z2forall_f2un of 0100
+#symload z2forall with gasz_z2forall$f2un of 0100
+#symload z2forall$fun with gasz_z2forall$f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -219,11 +219,11 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_x2forall_f2un
+gasz_x2forall$f2un
 (xs: xs, ys: ys, test: (!x0, !y0)->bool): bool
 //
-#symload x2forall with gasz_x2forall_f2un of 0100
-#symload x2forall_fun with gasz_x2forall_f2un of 0100
+#symload x2forall with gasz_x2forall$f2un of 0100
+#symload x2forall$fun with gasz_x2forall$f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

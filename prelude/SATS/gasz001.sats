@@ -115,45 +115,45 @@ gasz_irforall(xs: xs): bool
 fun
 <xs:t0>
 <x0:vt>
-gasz_forall_f1un
+gasz_forall$f1un
 (xs: xs, test: (!x0)->bool): bool
 //
 (*
-#symload forall with gasz_forall_f1un of 0100
-#symload forall_fun with gasz_forall_f1un of 0100
+#symload forall with gasz_forall$f1un of 0100
+#symload forall$fun with gasz_forall$f1un of 0100
 *)
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_exists_f1un
+gasz_exists$f1un
 (xs: xs, test: (!x0)->bool): bool
 //
 (*
-#symload exists with gasz_exists_f1un of 0100
-#symload exists_fun with gasz_exists_f1un of 0100
+#symload exists with gasz_exists$f1un of 0100
+#symload exists$fun with gasz_exists$f1un of 0100
 *)
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_rforall_f1un
+gasz_rforall$f1un
 (xs: xs, test: (!x0)->bool): bool
 //
 (*
-#symload rforall with gasz_rforall_f1un of 0100
-#symload rforall_fun with gasz_rforall_f1un of 0100
+#symload rforall with gasz_rforall$f1un of 0100
+#symload rforall$fun with gasz_rforall$f1un of 0100
 *)
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_rexists_f1un
+gasz_rexists$f1un
 (xs: xs, test: (!x0)->bool): bool
 //
 (*
-#symload rexists with gasz_rexists_f1un of 0100
-#symload rexists_fun with gasz_rexists_f1un of 0100
+#symload rexists with gasz_rexists$f1un of 0100
+#symload rexists$fun with gasz_rexists$f1un of 0100
 *)
 //
 (* ****** ****** *)

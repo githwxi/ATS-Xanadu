@@ -55,11 +55,11 @@ fun
 a1sz_forall(A: a1sz(a)): bool
 fun
 <a:vt>
-a1sz_forall_f1un
+a1sz_forall$f1un
 (A: a1sz(a), test: (!a) -> bool): bool
 //
 #symload forall with a1sz_forall of 1000
-#symload forall with a1sz_forall_f1un of 1000
+#symload forall with a1sz_forall$f1un of 1000
 //
 (* ****** ****** *)
 //
@@ -68,11 +68,11 @@ fun
 a1sz_rforall(A: a1sz(a)): bool
 fun
 <a:vt>
-a1sz_rforall_f1un
+a1sz_rforall$f1un
 (A: a1sz(a), test: (!a) -> bool): bool
 //
 #symload rforall with a1sz_rforall of 1000
-#symload rforall with a1sz_rforall_f1un of 1000
+#symload rforall with a1sz_rforall$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -166,13 +166,13 @@ fun
 <xs:t0>
 <x0:vt>
 <y0:vt>
-gasz_map_f1un_a1sz
+gasz_map$f1un_a1sz
 (xs: xs, fopr: (!x0)->(y0)): a1sz(y0)
-#symload map_a1sz with gasz_map_f1un_a1sz of 0100
+#symload map_a1sz with gasz_map$f1un_a1sz of 0100
 (*
 HX-2024-08-18:
 This is another way to name the function:
-#symload map_a1sz with gasz_map_a1sz__f1un of 0100
+#symload map_a1sz with gasz_map_a1sz_$f1un of 0100
 *)
 //
 (* ****** ****** *)
@@ -181,9 +181,9 @@ fun
 <xs:t0>
 <x0:vt>
 <y0:vt>
-gasz_map_f1un_la1sz
+gasz_map$f1un_la1sz
 (xs: xs, fopr: (!x0)->(y0)): a1sz_vt(y0)
-#symload map_la1sz with gasz_map_f1un_la1sz of 0100
+#symload map_la1sz with gasz_map$f1un_la1sz of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

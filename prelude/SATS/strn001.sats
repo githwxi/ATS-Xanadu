@@ -98,24 +98,24 @@ Fri 16 Aug 2024 05:08:22 PM EDT
 *)
 //
 fun<>
-strn_forall_f1un
+strn_forall$f1un
 (cs: strn, test: (cgtz)->bool): bool
-#symload forall with strn_forall_f1un of 1000
+#symload forall with strn_forall$f1un of 1000
 //
 fun<>
-strn_rforall_f1un
+strn_rforall$f1un
 (cs: strn, test: (cgtz)->bool): bool
-#symload rforall with strn_rforall_f1un of 1000
+#symload rforall with strn_rforall$f1un of 1000
 //
 fun<>
-strn_iforall_f2un
+strn_iforall$f2un
 (cs: strn, test: (ni,cgtz)->bool): bool
-#symload iforall with strn_iforall_f2un of 1000
+#symload iforall with strn_iforall$f2un of 1000
 //
 fun<>
-strn_irforall_f2un
+strn_irforall$f2un
 (cs: strn, test: (ni,cgtz)->bool): bool
-#symload irforall with strn_irforall_f2un of 1000
+#symload irforall with strn_irforall$f2un of 1000
 //
 (* ****** ****** *)
 //
@@ -150,24 +150,24 @@ Fri 16 Aug 2024 05:08:22 PM EDT
 *)
 //
 fun<>
-strn_foritm_f1un
+strn_foritm$f1un
 (cs: strn, work: (cgtz)->void): void
-#symload foritm with strn_foritm_f1un of 1000
+#symload foritm with strn_foritm$f1un of 1000
 //
 fun<>
-strn_rforitm_f1un
+strn_rforitm$f1un
 (cs: strn, work: (cgtz)->void): void
-#symload rforitm with strn_rforitm_f1un of 1000
+#symload rforitm with strn_rforitm$f1un of 1000
 //
 fun<>
-strn_iforitm_f2un
+strn_iforitm$f2un
 (cs: strn, work: (ni,cgtz)->void): void
-#symload iforitm with strn_iforitm_f2un of 1000
+#symload iforitm with strn_iforitm$f2un of 1000
 //
 fun<>
-strn_irforitm_f2un
+strn_irforitm$f2un
 (cs: strn, work: (ni,cgtz)->void): void
-#symload irforitm with strn_irforitm_f2un of 1000
+#symload irforitm with strn_irforitm$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

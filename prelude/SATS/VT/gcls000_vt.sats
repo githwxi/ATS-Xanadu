@@ -93,22 +93,22 @@ GLSEQ_forall1
 fun
 <xs:vt>
 <x0:vt>
-GLSEQ_forall0_f1un
+GLSEQ_forall0$f1un
 ( gseq: ~GLSEQ(xs, x0)
 , test: ( ~x0 ) -> bool): bool
 //
-#symload forall0 with GLSEQ_forall0_f1un of 1000
-#symload forall0_fun with GLSEQ_forall0_f1un of 1000
+#symload forall0 with GLSEQ_forall0$f1un of 1000
+#symload forall0$fun with GLSEQ_forall0$f1un of 1000
 //
 fun
 <xs:vt>
 <x0:vt>
-GLSEQ_forall1_f1un
+GLSEQ_forall1$f1un
 ( gseq: !GLSEQ(xs, x0)
 , test: ( !x0 ) -> bool): bool
 //
-#symload forall1 with GLSEQ_forall1_f1un of 1000
-#symload forall1_fun with GLSEQ_forall1_f1un of 1000
+#symload forall1 with GLSEQ_forall1$f1un of 1000
+#symload forall1$fun with GLSEQ_forall1$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -130,22 +130,22 @@ GLSEQ_rforall1
 fun
 <xs:vt>
 <x0:vt>
-GLSEQ_rforall0_f1un
+GLSEQ_rforall0$f1un
 ( gseq: ~GLSEQ(xs, x0)
 , test: ( ~x0 ) -> bool): bool
 //
-#symload rforall0 with GLSEQ_rforall0_f1un of 1000
-#symload rforall0_fun with GLSEQ_rforall0_f1un of 1000
+#symload rforall0 with GLSEQ_rforall0$f1un of 1000
+#symload rforall0$fun with GLSEQ_rforall0$f1un of 1000
 //
 fun
 <xs:vt>
 <x0:vt>
-GLSEQ_rforall1_f1un
+GLSEQ_rforall1$f1un
 ( gseq: !GLSEQ(xs, x0)
 , test: ( !x0 ) -> bool): bool
 //
-#symload rforall1 with GLSEQ_rforall1_f1un of 1000
-#symload rforall1_fun with GLSEQ_rforall1_f1un of 1000
+#symload rforall1 with GLSEQ_rforall1$f1un of 1000
+#symload rforall1$fun with GLSEQ_rforall1$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -167,22 +167,22 @@ GLSEQ_iforall1
 fun
 <xs:vt>
 <x0:vt>
-GLSEQ_iforall0_f2un
+GLSEQ_iforall0$f2un
 ( gseq: ~GLSEQ(xs, x0)
 , test: (ni, ~x0) -> bool): bool
 //
-#symload iforall0 with GLSEQ_iforall0_f2un of 1000
-#symload iforall0_fun with GLSEQ_iforall0_f2un of 1000
+#symload iforall0 with GLSEQ_iforall0$f2un of 1000
+#symload iforall0$fun with GLSEQ_iforall0$f2un of 1000
 //
 fun
 <xs:vt>
 <x0:vt>
-GLSEQ_iforall1_f2un
+GLSEQ_iforall1$f2un
 ( gseq: !GLSEQ(xs, x0)
 , test: (ni, !x0) -> bool): bool
 //
-#symload iforall1 with GLSEQ_iforall1_f2un of 1000
-#symload iforall1_fun with GLSEQ_iforall1_f2un of 1000
+#symload iforall1 with GLSEQ_iforall1$f2un of 1000
+#symload iforall1$fun with GLSEQ_iforall1$f2un of 1000
 //
 (* ****** ****** *)
 //
@@ -203,22 +203,22 @@ GLSEQ_irforall1
 fun
 <xs:vt>
 <x0:vt>
-GLSEQ_irforall0_f2un
+GLSEQ_irforall0$f2un
 ( gseq: ~GLSEQ(xs, x0)
 , test: (ni, ~x0) -> bool): bool
 //
-#symload irforall0 with GLSEQ_irforall0_f2un of 1000
-#symload irforall0_fun with GLSEQ_irforall0_f2un of 1000
+#symload irforall0 with GLSEQ_irforall0$f2un of 1000
+#symload irforall0$fun with GLSEQ_irforall0$f2un of 1000
 //
 fun
 <xs:vt>
 <x0:vt>
-GLSEQ_irforall1_f2un
+GLSEQ_irforall1$f2un
 ( gseq: !GLSEQ(xs, x0)
 , test: (ni, !x0) -> bool): bool
 //
-#symload irforall1 with GLSEQ_irforall1_f2un of 1000
-#symload irforall1_fun with GLSEQ_irforall1_f2un of 1000
+#symload irforall1 with GLSEQ_irforall1$f2un of 1000
+#symload irforall1$fun with GLSEQ_irforall1$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
