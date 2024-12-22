@@ -252,7 +252,7 @@ list_vt_map1
 fun
 <x0:vt>
 <y0:vt>
-list_vt_map0_f1un
+list_vt_map0$f1un
 {ln:nat}
 (xs:
 ~list_vt(x0, ln)
@@ -260,14 +260,14 @@ list_vt_map0_f1un
 fun
 <x0:vt>
 <y0:vt>
-list_vt_map1_f1un
+list_vt_map1$f1un
 {ln:nat}
 (xs:
 !list_vt(x0, ln)
 ,fopr: (  !x0  ) -> y0): list_vt(y0, ln)
 //
-#symload map0_fun with list_vt_map0_f1un of 1000
-#symload map1_fun with list_vt_map1_f1un of 1000
+#symload map0$fun with list_vt_map0$f1un of 1000
+#symload map1$fun with list_vt_map1$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -296,7 +296,7 @@ list_vt_maprev1
 fun
 <x0:vt>
 <y0:vt>
-list_vt_maprev0_f1un
+list_vt_maprev0$f1un
 {ln:nat}
 (xs:
 ~list_vt(x0, ln)
@@ -304,14 +304,14 @@ list_vt_maprev0_f1un
 fun
 <x0:vt>
 <y0:vt>
-list_vt_maprev1_f1un
+list_vt_maprev1$f1un
 {ln:nat}
 (xs:
 !list_vt(x0, ln)
 ,fopr: (  !x0  ) -> y0): list_vt(y0, ln)
 //
-#symload maprev0_fun with list_vt_maprev0_f1un of 1000
-#symload maprev1_fun with list_vt_maprev1_f1un of 1000
+#symload maprev0$fun with list_vt_maprev0$f1un of 1000
+#symload maprev1$fun with list_vt_maprev1$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

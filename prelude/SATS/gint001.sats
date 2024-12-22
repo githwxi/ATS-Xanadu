@@ -87,16 +87,16 @@ irforall with nint_irforall of 1000
 (* ****** ****** *)
 //
 fun<>
-nint_forall_f1un
+nint_forall$f1un
 (ni: nint, test: (ni)->bool): bool
 #symload
-forall with nint_forall_f1un of 1000
+forall with nint_forall$f1un of 1000
 //
 fun<>
-nint_rforall_f1un
+nint_rforall$f1un
 (ni: nint, test: (ni)->bool): bool
 #symload
-rforall with nint_rforall_f1un of 1000
+rforall with nint_rforall$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -139,16 +139,16 @@ irforitm with nint_irforitm of 1000
 (* ****** ****** *)
 //
 fun<>
-nint_foritm_f1un
+nint_foritm$f1un
 (ni: nint, work: (ni)->void): void
 #symload
-foritm with nint_foritm_f1un of 1000
+foritm with nint_foritm$f1un of 1000
 //
 fun<>
-nint_rforitm_f1un
+nint_rforitm$f1un
 (ni: nint, work: (ni)->void): void
 #symload
-rforitm with nint_rforitm_f1un of 1000
+rforitm with nint_rforitm$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -160,7 +160,7 @@ nint_map_llist
 (xs: nint(n0)): list_vt(y0, n0)
 fun
 <y0:vt>
-nint_map_f1un_llist
+nint_map$f1un_llist
  {n0:i0}
 (xs: nint(n0)
 ,f0: nintlt(n0)->y0): list_vt(y0, n0)
@@ -168,9 +168,9 @@ nint_map_f1un_llist
 #symload
 map_llist with nint_map_llist of 1000
 #symload
-map_llist with nint_map_f1un_llist of 1000
+map_llist with nint_map$f1un_llist of 1000
 #symload
-map_fun_llist with nint_map_f1un_llist of 1000
+map$fun_llist with nint_map$f1un_llist of 1000
 //
 (* ****** ****** *)
 //
@@ -181,7 +181,7 @@ nint_rmap_llist
 (xs: nint(n0)): list_vt(y0, n0)
 fun
 <y0:vt>
-nint_rmap_f1un_llist
+nint_rmap$f1un_llist
  {n0:i0}
 (xs: nint(n0)
 ,f0: nintlt(n0)->y0): list_vt(y0, n0)
@@ -189,9 +189,9 @@ nint_rmap_f1un_llist
 #symload
 rmap_llist with nint_rmap_llist of 1000
 #symload
-rmap_llist with nint_rmap_f1un_llist of 1000
+rmap_llist with nint_rmap$f1un_llist of 1000
 #symload
-rmap_fun_llist with nint_rmap_f1un_llist of 1000
+rmap$fun_llist with nint_rmap$f1un_llist of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -210,14 +210,14 @@ map_lstrm with nint_map_lstrm of 1000
 //
 fun
 <y0:vt>
-nint_map_f1un_lstrm
+nint_map$f1un_lstrm
 ( xs: nint
 , fopr: ( nint )->(y0)): strm_vt(y0)
 //
 #symload
-map_lstrm with nint_map_f1un_lstrm of 1000
+map_lstrm with nint_map$f1un_lstrm of 1000
 #symload
-map_fun_lstrm with nint_map_f1un_lstrm of 1000
+map$fun_lstrm with nint_map$f1un_lstrm of 1000
 //
 (* ****** ****** *)
 //
@@ -230,14 +230,14 @@ rmap_lstrm with nint_rmap_lstrm of 1000
 //
 fun
 <y0:vt>
-nint_rmap_f1un_lstrm
+nint_rmap$f1un_lstrm
 ( xs: nint
 , fopr: ( nint )->(y0)): strm_vt(y0)
 //
 #symload
-rmap_lstrm with nint_rmap_f1un_lstrm of 1000
+rmap_lstrm with nint_rmap$f1un_lstrm of 1000
 #symload
-rmap_fun_lstrm with nint_rmap_f1un_lstrm of 1000
+rmap$fun_lstrm with nint_rmap$f1un_lstrm of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -94,19 +94,19 @@ list_irforall(xs: list(x0)): bool
 //
 fun
 <x0:t0>
-list_forall_f1un
+list_forall$f1un
 ( xs
 : list(x0), test: (x0) -> bool): bool
-#symload forall with list_forall_f1un of 1000
-#symload forall_fun with list_forall_f1un of 1000
+#symload forall with list_forall$f1un of 1000
+#symload forall$fun with list_forall$f1un of 1000
 //
 fun
 <x0:t0>
-list_iforall_f2un
+list_iforall$f2un
 ( xs
 : list(x0), test: (ni,x0) -> bool): bool
-#symload iforall with list_iforall_f2un of 1000
-#symload iforall_fun with list_iforall_f2un of 1000
+#symload iforall with list_iforall$f2un of 1000
+#symload iforall$fun with list_iforall$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -133,19 +133,19 @@ list_irforitm(xs: list(x0)): void
 //
 fun
 <x0:t0>
-list_foritm_f1un
+list_foritm$f1un
 ( xs
 : list(x0), work: (x0) -> void): void
-#symload foritm with list_foritm_f1un of 1000
-#symload foritm_fun with list_foritm_f1un of 1000
+#symload foritm with list_foritm$f1un of 1000
+#symload foritm$fun with list_foritm$f1un of 1000
 //
 fun
 <x0:t0>
-list_iforitm_f2un
+list_iforitm$f2un
 ( xs
 : list(x0), work: (ni,x0) -> void): void
-#symload iforitm with list_iforitm_f2un of 1000
-#symload iforitm_fun with list_iforitm_f2un of 1000
+#symload iforitm with list_iforitm$f2un of 1000
+#symload iforitm$fun with list_iforitm$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -166,11 +166,11 @@ fun
 list_c2hoose$forall(list(x0)): bool
 fun
 <x0:t0>
-list_c2hoose$forall_f2un
+list_c2hoose$forall$f2un
 (xs:list(x0), test:(x0,x0)->bool): bool
 //
 #symload c2hoose$forall with list_c2hoose$forall
-#symload c2hoose$forall with list_c2hoose$forall_f2un
+#symload c2hoose$forall with list_c2hoose$forall$f2un
 //
 (* ****** ****** *)
 //
@@ -186,11 +186,11 @@ fun
 list_c3hoose$forall(list(x0)): bool
 fun
 <x0:t0>
-list_c3hoose$forall_f3un
+list_c3hoose$forall$f3un
 (xs:list(x0), test:(x0,x0,x0)->bool): bool
 //
 #symload c3hoose$forall with list_c3hoose$forall
-#symload c3hoose$forall with list_c3hoose$forall_f3un
+#symload c3hoose$forall with list_c3hoose$forall$f3un
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -225,14 +225,14 @@ list_map
 fun
 <x0:t0>
 <y0:t0>
-list_map_f1un
+list_map$f1un
 {ln:nat}
 (xs: list(x0, ln), (x0)->y0): list(y0, ln)
 //
 #symload map with list_map of 1000
-#symload map with list_map_f1un of 1000
-#symload map_fun with list_map_f1un of 1000
-#symload list_map with list_map_f1un of 1000
+#symload map with list_map$f1un of 1000
+#symload map$fun with list_map$f1un of 1000
+#symload list_map with list_map$f1un of 1000
 //
 (* ****** ****** *)
 //
@@ -245,14 +245,14 @@ list_map_vt
 fun
 <x0:t0>
 <y0:vt>
-list_map_f1un_vt
+list_map$f1un_vt
 {ln:nat}
 (xs: list(x0, ln), (x0)->y0): list_vt(y0, ln)
 //
 #symload map_vt with list_map_vt of 1000
-#symload map_vt with list_map_f1un_vt of 1000
-#symload map_fun_vt with list_map_f1un_vt of 1000
-#symload list_map_vt with list_map_f1un_vt of 1000
+#symload map_vt with list_map$f1un_vt of 1000
+#symload map$fun_vt with list_map$f1un_vt of 1000
+#symload list_map_vt with list_map$f1un_vt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -266,14 +266,14 @@ list_maprev
 fun
 <x0:t0>
 <y0:t0>
-list_maprev_f1un
+list_maprev$f1un
 {ln:nat}
 (xs: list(x0, ln), (x0)->y0): list(y0, ln)
 //
 #symload maprev with list_maprev of 1000
-#symload maprev with list_maprev_f1un of 1000
-#symload maprev_fun with list_maprev_f1un of 1000
-#symload list_maprev with list_maprev_f1un of 1000
+#symload maprev with list_maprev$f1un of 1000
+#symload maprev$fun with list_maprev$f1un of 1000
+#symload list_maprev with list_maprev$f1un of 1000
 //
 (* ****** ****** *)
 //
@@ -286,14 +286,14 @@ list_maprev_vt
 fun
 <x0:t0>
 <y0:vt>
-list_maprev_f1un_vt
+list_maprev$f1un_vt
 {ln:nat}
 (xs: list(x0, ln), (x0)->y0): list_vt(y0, ln)
 //
 #symload maprev_vt with list_maprev_vt of 1000
-#symload maprev_vt with list_maprev_f1un_vt of 1000
-#symload maprev_fun_vt with list_maprev_f1un_vt of 1000
-#symload list_maprev_vt with list_maprev_f1un_vt of 1000
+#symload maprev_vt with list_maprev$f1un_vt of 1000
+#symload maprev$fun_vt with list_maprev$f1un_vt of 1000
+#symload list_maprev_vt with list_maprev$f1un_vt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

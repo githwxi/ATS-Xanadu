@@ -204,72 +204,72 @@ GSEQ_irforall
 fun
 <xs:t0>
 <x0:t0>
-GSEQ_forall_f1un
+GSEQ_forall$f1un
 ( gseq: GSEQ(xs, x0)
 , test: ( x0 )->bool): bool
 //
-#symload forall with GSEQ_forall_f1un of 1000
-#symload forall_fun with GSEQ_forall_f1un of 1000
+#symload forall with GSEQ_forall$f1un of 1000
+#symload forall$fun with GSEQ_forall$f1un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-GSEQ_exists_f1un
+GSEQ_exists$f1un
 ( gseq: GSEQ(xs, x0)
 , test: ( x0 )->bool): bool
 //
-#symload exists with GSEQ_exists_f1un of 1000
-#symload exists_fun with GSEQ_exists_f1un of 1000
+#symload exists with GSEQ_exists$f1un of 1000
+#symload exists$fun with GSEQ_exists$f1un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-GSEQ_rforall_f1un
+GSEQ_rforall$f1un
 ( gseq: GSEQ(xs, x0)
 , test: ( x0 )->bool): bool
 //
-#symload rforall with GSEQ_rforall_f1un of 1000
-#symload rforall_fun with GSEQ_rforall_f1un of 1000
+#symload rforall with GSEQ_rforall$f1un of 1000
+#symload rforall$fun with GSEQ_rforall$f1un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-GSEQ_rexists_f1un
+GSEQ_rexists$f1un
 ( gseq: GSEQ(xs, x0)
 , test: ( x0 )->bool): bool
 //
-#symload rexists with GSEQ_rexists_f1un of 1000
-#symload rexists_fun with GSEQ_rexists_f1un of 1000
+#symload rexists with GSEQ_rexists$f1un of 1000
+#symload rexists$fun with GSEQ_rexists$f1un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-GSEQ_iforall_f2un
+GSEQ_iforall$f2un
 ( gseq: GSEQ(xs, x0)
 , test: (ni, x0)->bool): bool
 //
-#symload iforall with GSEQ_iforall_f2un of 1000
-#symload iforall_fun with GSEQ_iforall_f2un of 1000
+#symload iforall with GSEQ_iforall$f2un of 1000
+#symload iforall$fun with GSEQ_iforall$f2un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-GSEQ_irforall_f2un
+GSEQ_irforall$f2un
 ( gseq: GSEQ(xs, x0)
 , test: (ni, x0)->bool): bool
 //
-#symload irforall with GSEQ_irforall_f2un of 1000
-#symload irforall_fun with GSEQ_irforall_f2un of 1000
+#symload irforall with GSEQ_irforall$f2un of 1000
+#symload irforall$fun with GSEQ_irforall$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -305,48 +305,48 @@ GSEQ_irforitm
 fun
 <xs:t0>
 <x0:t0>
-GSEQ_foritm_f1un
+GSEQ_foritm$f1un
 ( gseq: GSEQ(xs, x0)
 , test: ( x0 )->void): void
 //
-#symload foritm with GSEQ_foritm_f1un of 1000
-#symload foritm_fun with GSEQ_foritm_f1un of 1000
+#symload foritm with GSEQ_foritm$f1un of 1000
+#symload foritm$fun with GSEQ_foritm$f1un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-GSEQ_rforitm_f1un
+GSEQ_rforitm$f1un
 ( gseq: GSEQ(xs, x0)
 , test: ( x0 )->void): void
 //
-#symload rforitm with GSEQ_rforitm_f1un of 1000
-#symload rforitm_fun with GSEQ_rforitm_f1un of 1000
+#symload rforitm with GSEQ_rforitm$f1un of 1000
+#symload rforitm$fun with GSEQ_rforitm$f1un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-GSEQ_iforitm_f2un
+GSEQ_iforitm$f2un
 ( gseq: GSEQ(xs, x0)
 , test: (ni, x0)->void): void
 //
-#symload iforitm with GSEQ_iforitm_f2un of 1000
-#symload iforitm_fun with GSEQ_iforitm_f2un of 1000
+#symload iforitm with GSEQ_iforitm$f2un of 1000
+#symload iforitm$fun with GSEQ_iforitm$f2un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-GSEQ_irforitm_f2un
+GSEQ_irforitm$f2un
 ( gseq: GSEQ(xs, x0)
 , test: (ni, x0)->void): void
 //
-#symload irforitm with GSEQ_irforitm_f2un of 1000
-#symload irforitm_fun with GSEQ_irforitm_f2un of 1000
+#symload irforitm with GSEQ_irforitm$f2un of 1000
+#symload irforitm$fun with GSEQ_irforitm$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -395,13 +395,13 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-GSEQ_folditm_f2un
+GSEQ_folditm$f2un
 ( gseq
 : GSEQ(xs, x0), r0: r0
 , fopr: (r0, x0)->(r0)): (r0)
 //
-#symload folditm with GSEQ_folditm_f2un of 1000
-#symload folditm_fun with GSEQ_folditm_f2un of 1000
+#symload folditm with GSEQ_folditm$f2un of 1000
+#symload folditm$fun with GSEQ_folditm$f2un of 1000
 //
 (* ****** ****** *)
 //
@@ -409,13 +409,13 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-GSEQ_rfolditm_f2un
+GSEQ_rfolditm$f2un
 ( gseq
 : GSEQ(xs, x0), r0: r0
 , fopr: (x0, r0)->(r0)): (r0)
 //
-#symload rfolditm with GSEQ_rfolditm_f2un of 1000
-#symload rfolditm_fun with GSEQ_rfolditm_f2un of 1000
+#symload rfolditm with GSEQ_rfolditm$f2un of 1000
+#symload rfolditm$fun with GSEQ_rfolditm$f2un of 1000
 //
 (* ****** ****** *)
 //
@@ -423,13 +423,13 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-GSEQ_ifolditm_f3un
+GSEQ_ifolditm$f3un
 ( gseq
 : GSEQ(xs, x0), r0: r0
 , fopr: (r0, ni, x0)->(r0)): (r0)
 //
-#symload ifolditm with GSEQ_ifolditm_f3un of 1000
-#symload ifolditm_fun with GSEQ_ifolditm_f3un of 1000
+#symload ifolditm with GSEQ_ifolditm$f3un of 1000
+#symload ifolditm$fun with GSEQ_ifolditm$f3un of 1000
 //
 (* ****** ****** *)
 //
@@ -437,13 +437,13 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-GSEQ_irfolditm_f3un
+GSEQ_irfolditm$f3un
 ( gseq
 : GSEQ(xs, x0), r0: r0
 , fopr: (ni, x0, r0)->(r0)): (r0)
 //
-#symload irfolditm with GSEQ_irfolditm_f3un of 1000
-#symload irfolditm_fun with GSEQ_irfolditm_f3un of 1000
+#symload irfolditm with GSEQ_irfolditm$f3un of 1000
+#symload irfolditm$fun with GSEQ_irfolditm$f3un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -541,48 +541,48 @@ GASZ_irforall
 fun
 <xs:t0>
 <x0:vt>
-GASZ_forall_f1un
+GASZ_forall$f1un
 ( gasz: GASZ(xs, x0)
 , test: ( !x0 )->bool): bool
 //
-#symload forall with GASZ_forall_f1un of 1000
-#symload forall_fun with GASZ_forall_f1un of 1000
+#symload forall with GASZ_forall$f1un of 1000
+#symload forall$fun with GASZ_forall$f1un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:vt>
-GASZ_exists_f1un
+GASZ_exists$f1un
 ( gasz: GASZ(xs, x0)
 , test: ( !x0 )->bool): bool
 //
-#symload exists with GASZ_exists_f1un of 1000
-#symload exists_fun with GASZ_exists_f1un of 1000
+#symload exists with GASZ_exists$f1un of 1000
+#symload exists$fun with GASZ_exists$f1un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:vt>
-GASZ_rforall_f1un
+GASZ_rforall$f1un
 ( gasz: GASZ(xs, x0)
 , test: ( !x0 )->bool): bool
 //
-#symload rforall with GASZ_rforall_f1un of 1000
-#symload rforall_fun with GASZ_rforall_f1un of 1000
+#symload rforall with GASZ_rforall$f1un of 1000
+#symload rforall$fun with GASZ_rforall$f1un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:vt>
-GASZ_rexists_f1un
+GASZ_rexists$f1un
 ( gasz: GASZ(xs, x0)
 , test: ( !x0 ) -> bool): bool
 //
-#symload rexists with GASZ_rexists_f1un of 1000
-#symload rexists_fun with GASZ_rexists_f1un of 1000
+#symload rexists with GASZ_rexists$f1un of 1000
+#symload rexists$fun with GASZ_rexists$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

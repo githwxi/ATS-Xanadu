@@ -160,11 +160,11 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_z2forall_f2un
+gseq_z2forall$f2un
 (xs: xs, ys: ys, test: (x0, y0)->bool): bool
 //
-#symload z2forall with gseq_z2forall_f2un of 0100
-#symload z2forall_fun with gseq_z2forall_f2un of 0100
+#symload z2forall with gseq_z2forall$f2un of 0100
+#symload z2forall$fun with gseq_z2forall$f2un of 0100
 //
 (* ****** ****** *)
 //
@@ -205,11 +205,11 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_z2foritm_f2un
+gseq_z2foritm$f2un
 (xs: xs, ys: ys, work: (x0, y0)->void): void
 //
-#symload z2foritm with gseq_z2foritm_f2un of 0100
-#symload z2foritm_fun with gseq_z2foritm_f2un of 0100
+#symload z2foritm with gseq_z2foritm$f2un of 0100
+#symload z2foritm$fun with gseq_z2foritm$f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -430,11 +430,11 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2forall_f2un
+gseq_x2forall$f2un
 (xs: xs, ys: ys, test: (x0, y0)->bool): bool
 //
-#symload x2forall with gseq_x2forall_f2un of 0100
-#symload x2forall_fun with gseq_x2forall_f2un of 0100
+#symload x2forall with gseq_x2forall$f2un of 0100
+#symload x2forall$fun with gseq_x2forall$f2un of 0100
 //
 (* ****** ****** *)
 //
@@ -475,11 +475,11 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2foritm_f2un
+gseq_x2foritm$f2un
 (xs: xs, ys: ys, work: (x0, y0)->void): void
 //
-#symload x2foritm with gseq_x2foritm_f2un of 0100
-#symload x2foritm_fun with gseq_x2foritm_f2un of 0100
+#symload x2foritm with gseq_x2foritm$f2un of 0100
+#symload x2foritm$fun with gseq_x2foritm$f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
