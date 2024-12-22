@@ -130,7 +130,7 @@ val xyz =
 let
 val x = code('x')
 in
-strn_tabulate_cfr
+strn_tabulate_f1un
 (3, lam(i) => char(x+i))
 end // end of [val]
 val () =

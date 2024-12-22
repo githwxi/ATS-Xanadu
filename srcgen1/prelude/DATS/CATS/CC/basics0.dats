@@ -167,116 +167,116 @@ char_noteq<> = XATS2CC_char_noteq
 //
 #extern
 fun
-XATS2CC_gint_neg_sint
+XATS2CC_gint_neg$sint
 {i:int}
 ( x0
 : sint(i)): sint(-i) = $extnam()
 #impltmp
-gint_neg_sint<> = XATS2CC_gint_neg_sint
+gint_neg$sint<> = XATS2CC_gint_neg$sint
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2CC_gint_abs_sint
+XATS2CC_gint_abs$sint
 {i:int}
 ( x0
 : sint(i)): sint(abs(i)) = $extnam()
 #impltmp
-gint_abs_sint<> = XATS2CC_gint_abs_sint
+gint_abs$sint<> = XATS2CC_gint_abs$sint
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2CC_gint_suc_sint
+XATS2CC_gint_suc$sint
 {i:int}
 ( x0
 : sint(i)): sint(i+1) = $extnam()
 #extern
 fun
-XATS2CC_gint_pre_sint
+XATS2CC_gint_pre$sint
 {i:int}
 ( x0
 : sint(i)): sint(i-1) = $extnam()
 #impltmp
-gint_suc_sint<> = XATS2CC_gint_suc_sint
+gint_suc$sint<> = XATS2CC_gint_suc$sint
 #impltmp
-gint_pre_sint<> = XATS2CC_gint_pre_sint
+gint_pre$sint<> = XATS2CC_gint_pre$sint
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2CC_gint_lt_sint_sint
+XATS2CC_gint_lt$sint$sint
 {i,j:int}
 ( x1
 : sint(i)
 , x2
 : sint(j)): bool(i<j) = $extnam()
 #impltmp
-gint_lt_sint_sint<> = XATS2CC_gint_lt_sint_sint
+gint_lt$sint$sint<> = XATS2CC_gint_lt$sint$sint
 //
 #extern
 fun
-XATS2CC_gint_gt_sint_sint
+XATS2CC_gint_gt$sint$sint
 {i,j:int}
 ( x1
 : sint(i)
 , x2
 : sint(j)): bool(i>j) = $extnam()
 #impltmp
-gint_gt_sint_sint<> = XATS2CC_gint_gt_sint_sint
+gint_gt$sint$sint<> = XATS2CC_gint_gt$sint$sint
 //
 #extern
 fun
-XATS2CC_gint_eq_sint_sint
+XATS2CC_gint_eq$sint$sint
 {i,j:int}
 ( x1
 : sint(i)
 , x2
 : sint(j)): bool(i=j) = $extnam()
 #impltmp
-gint_eq_sint_sint<> = XATS2CC_gint_eq_sint_sint
+gint_eq$sint$sint<> = XATS2CC_gint_eq$sint$sint
 //
 #extern
 fun
-XATS2CC_gint_lte_sint_sint
+XATS2CC_gint_lte$sint$sint
 {i,j:int}
 ( x1
 : sint(i)
 , x2
 : sint(j)): bool(i<=j) = $extnam()
 #impltmp
-gint_lte_sint_sint<> = XATS2CC_gint_lte_sint_sint
+gint_lte$sint$sint<> = XATS2CC_gint_lte$sint$sint
 //
 #extern
 fun
-XATS2CC_gint_gte_sint_sint
+XATS2CC_gint_gte$sint$sint
 {i,j:int}
 ( x1
 : sint(i)
 , x2
 : sint(j)): bool(i>=j) = $extnam()
 #impltmp
-gint_gte_sint_sint<> = XATS2CC_gint_gte_sint_sint
+gint_gte$sint$sint<> = XATS2CC_gint_gte$sint$sint
 //
 #extern
 fun
-XATS2CC_gint_neq_sint_sint
+XATS2CC_gint_neq$sint$sint
 {i,j:int}
 ( x1
 : sint(i)
 , x2
 : sint(j)): bool(i!=j) = $extnam()
 #impltmp
-gint_neq_sint_sint<> = XATS2CC_gint_neq_sint_sint
+gint_neq$sint$sint<> = XATS2CC_gint_neq$sint$sint
 //
 (* ****** ****** *)
 
 #extern
 fun
-XATS2CC_gint_cmp_sint_sint
+XATS2CC_gint_cmp$sint$sint
 {i,j:int}
 ( x1
 : sint(i)
@@ -284,61 +284,61 @@ XATS2CC_gint_cmp_sint_sint
 : sint(j))
 : sint(sgn(i-j)) = $extnam((*self*))
 #impltmp
-gint_cmp_sint_sint<> = XATS2CC_gint_cmp_sint_sint
+gint_cmp$sint$sint<> = XATS2CC_gint_cmp$sint$sint
 
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2CC_gint_add_sint_sint
+XATS2CC_gint_add$sint$sint
 {i,j:int}
 ( x1
 : sint(i)
 , x2
 : sint(j)): sint( i+j ) = $extnam()
 #impltmp
-gint_add_sint_sint<> = XATS2CC_gint_add_sint_sint
+gint_add$sint$sint<> = XATS2CC_gint_add$sint$sint
 #extern
 fun
-XATS2CC_gint_sub_sint_sint
+XATS2CC_gint_sub$sint$sint
 {i,j:int}
 ( x1
 : sint(i)
 , x2
 : sint(j)): sint( i-j ) = $extnam()
 #impltmp
-gint_sub_sint_sint<> = XATS2CC_gint_sub_sint_sint
+gint_sub$sint$sint<> = XATS2CC_gint_sub$sint$sint
 //
 #extern
 fun
-XATS2CC_gint_mul_sint_sint
+XATS2CC_gint_mul$sint$sint
 {i,j:int}
 ( x1
 : sint(i)
 , x2
 : sint(j)): sint( i*j ) = $extnam()
 #impltmp
-gint_mul_sint_sint<> = XATS2CC_gint_mul_sint_sint
+gint_mul$sint$sint<> = XATS2CC_gint_mul$sint$sint
 #extern
 fun
-XATS2CC_gint_div_sint_sint
+XATS2CC_gint_div$sint$sint
 {i,j:int}
 ( x1
 : sint(i)
 , x2
 : sint(j)): sint( i/j ) = $extnam()
 #impltmp
-gint_div_sint_sint<> = XATS2CC_gint_div_sint_sint
+gint_div$sint$sint<> = XATS2CC_gint_div$sint$sint
 #extern
 fun
-XATS2CC_gint_mod_sint_sint
+XATS2CC_gint_mod$sint$sint
 {i,j:int}
 ( x1
 : sint(i)
 , x2
 : sint(j)): sint(mod(i,j)) = $extnam()
 #impltmp
-gint_mod_sint_sint<> = XATS2CC_gint_mod_sint_sint
+gint_mod$sint$sint<> = XATS2CC_gint_mod$sint$sint
 //
 (* ****** ****** *)
 //
@@ -357,259 +357,259 @@ gflt_si_dflt<> = XATS2CC_gflt_si_dflt
 //
 #extern
 fun
-XATS2CC_gflt_neg_dflt
+XATS2CC_gflt_neg$dflt
   ( x0: dflt ): dflt = $extnam()
 #impltmp
-gflt_neg_dflt<> = XATS2CC_gflt_neg_dflt
+gflt_neg$dflt<> = XATS2CC_gflt_neg$dflt
 //
 #extern
 fun
-XATS2CC_gflt_abs_dflt
+XATS2CC_gflt_abs$dflt
   ( x0: dflt ): dflt = $extnam()
 #impltmp
-gflt_abs_dflt<> = XATS2CC_gflt_abs_dflt
+gflt_abs$dflt<> = XATS2CC_gflt_abs$dflt
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2CC_gflt_suc_dflt
+XATS2CC_gflt_suc$dflt
   ( x0: dflt ): dflt = $extnam()
 #impltmp
-gflt_suc_dflt<> = XATS2CC_gflt_suc_dflt
+gflt_suc$dflt<> = XATS2CC_gflt_suc$dflt
 #extern
 fun
-XATS2CC_gflt_pre_dflt
+XATS2CC_gflt_pre$dflt
   ( x0: dflt ): dflt = $extnam()
 #impltmp
-gflt_pre_dflt<> = XATS2CC_gflt_pre_dflt
+gflt_pre$dflt<> = XATS2CC_gflt_pre$dflt
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2CC_gflt_lt_dflt_dflt
+XATS2CC_gflt_lt$dflt$dflt
 ( x1: dflt, x2: dflt ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_gt_dflt_dflt
+XATS2CC_gflt_gt$dflt$dflt
 ( x1: dflt, x2: dflt ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_eq_dflt_dflt
+XATS2CC_gflt_eq$dflt$dflt
 ( x1: dflt, x2: dflt ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_lte_dflt_dflt
+XATS2CC_gflt_lte$dflt$dflt
 ( x1: dflt, x2: dflt ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_gte_dflt_dflt
+XATS2CC_gflt_gte$dflt$dflt
 ( x1: dflt, x2: dflt ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_neq_dflt_dflt
+XATS2CC_gflt_neq$dflt$dflt
 ( x1: dflt, x2: dflt ): bool = $extnam()
 //
 #impltmp
-gflt_lt_dflt_dflt<> = XATS2CC_gflt_lt_dflt_dflt
+gflt_lt$dflt$dflt<> = XATS2CC_gflt_lt$dflt$dflt
 #impltmp
-gflt_gt_dflt_dflt<> = XATS2CC_gflt_gt_dflt_dflt
+gflt_gt$dflt$dflt<> = XATS2CC_gflt_gt$dflt$dflt
 #impltmp
-gflt_eq_dflt_dflt<> = XATS2CC_gflt_eq_dflt_dflt
+gflt_eq$dflt$dflt<> = XATS2CC_gflt_eq$dflt$dflt
 #impltmp
-gflt_lte_dflt_dflt<> = XATS2CC_gflt_lte_dflt_dflt
+gflt_lte$dflt$dflt<> = XATS2CC_gflt_lte$dflt$dflt
 #impltmp
-gflt_gte_dflt_dflt<> = XATS2CC_gflt_gte_dflt_dflt
+gflt_gte$dflt$dflt<> = XATS2CC_gflt_gte$dflt$dflt
 #impltmp
-gflt_neq_dflt_dflt<> = XATS2CC_gflt_neq_dflt_dflt
+gflt_neq$dflt$dflt<> = XATS2CC_gflt_neq$dflt$dflt
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2CC_gflt_cmp_dflt_dflt
+XATS2CC_gflt_cmp$dflt$dflt
 ( x1: dflt, x2: dflt ): sint = $extnam()
 #impltmp
-gflt_cmp_dflt_dflt<> = XATS2CC_gflt_cmp_dflt_dflt
+gflt_cmp$dflt$dflt<> = XATS2CC_gflt_cmp$dflt$dflt
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2CC_gflt_add_dflt_dflt
+XATS2CC_gflt_add$dflt$dflt
 ( x1: dflt, x2: dflt ): dflt = $extnam()
 #extern
 fun
-XATS2CC_gflt_sub_dflt_dflt
+XATS2CC_gflt_sub$dflt$dflt
 ( x1: dflt, x2: dflt ): dflt = $extnam()
 #extern
 fun
-XATS2CC_gflt_mul_dflt_dflt
+XATS2CC_gflt_mul$dflt$dflt
 ( x1: dflt, x2: dflt ): dflt = $extnam()
 #extern
 fun
-XATS2CC_gflt_div_dflt_dflt
+XATS2CC_gflt_div$dflt$dflt
 ( x1: dflt, x2: dflt ): dflt = $extnam()
 //
 #impltmp
-gflt_add_dflt_dflt<> = XATS2CC_gflt_add_dflt_dflt
+gflt_add$dflt$dflt<> = XATS2CC_gflt_add$dflt$dflt
 #impltmp
-gflt_sub_dflt_dflt<> = XATS2CC_gflt_sub_dflt_dflt
+gflt_sub$dflt$dflt<> = XATS2CC_gflt_sub$dflt$dflt
 #impltmp
-gflt_mul_dflt_dflt<> = XATS2CC_gflt_mul_dflt_dflt
+gflt_mul$dflt$dflt<> = XATS2CC_gflt_mul$dflt$dflt
 #impltmp
-gflt_div_dflt_dflt<> = XATS2CC_gflt_div_dflt_dflt
+gflt_div$dflt$dflt<> = XATS2CC_gflt_div$dflt$dflt
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2CC_gflt_lt_dflt_sint
+XATS2CC_gflt_lt$dflt$sint
 ( x0: dflt, y0: sint ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_gt_dflt_sint
+XATS2CC_gflt_gt$dflt$sint
 ( x0: dflt, y0: sint ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_eq_dflt_sint
+XATS2CC_gflt_eq$dflt$sint
 ( x0: dflt, y0: sint ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_lte_dflt_sint
+XATS2CC_gflt_lte$dflt$sint
 ( x0: dflt, y0: sint ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_gte_dflt_sint
+XATS2CC_gflt_gte$dflt$sint
 ( x0: dflt, y0: sint ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_neq_dflt_sint
+XATS2CC_gflt_neq$dflt$sint
 ( x0: dflt, y0: sint ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_cmp_dflt_sint
+XATS2CC_gflt_cmp$dflt$sint
 ( x0: dflt, y0: sint ): sint = $extnam()
 //
 #impltmp
-gflt_lt_dflt_sint<> = XATS2CC_gflt_lt_dflt_sint
+gflt_lt$dflt$sint<> = XATS2CC_gflt_lt$dflt$sint
 #impltmp
-gflt_gt_dflt_sint<> = XATS2CC_gflt_gt_dflt_sint
+gflt_gt$dflt$sint<> = XATS2CC_gflt_gt$dflt$sint
 #impltmp
-gflt_eq_dflt_sint<> = XATS2CC_gflt_eq_dflt_sint
+gflt_eq$dflt$sint<> = XATS2CC_gflt_eq$dflt$sint
 #impltmp
-gflt_lte_dflt_sint<> = XATS2CC_gflt_lte_dflt_sint
+gflt_lte$dflt$sint<> = XATS2CC_gflt_lte$dflt$sint
 #impltmp
-gflt_gte_dflt_sint<> = XATS2CC_gflt_gte_dflt_sint
+gflt_gte$dflt$sint<> = XATS2CC_gflt_gte$dflt$sint
 #impltmp
-gflt_neq_dflt_sint<> = XATS2CC_gflt_neq_dflt_sint
+gflt_neq$dflt$sint<> = XATS2CC_gflt_neq$dflt$sint
 //
 #impltmp
-gflt_cmp_dflt_sint<> = XATS2CC_gflt_cmp_dflt_sint
+gflt_cmp$dflt$sint<> = XATS2CC_gflt_cmp$dflt$sint
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2CC_gflt_lt_sint_dflt
+XATS2CC_gflt_lt$sint$dflt
 ( x0: sint, y0: dflt ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_gt_sint_dflt
+XATS2CC_gflt_gt$sint$dflt
 ( x0: sint, y0: dflt ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_eq_sint_dflt
+XATS2CC_gflt_eq$sint$dflt
 ( x0: sint, y0: dflt ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_lte_sint_dflt
+XATS2CC_gflt_lte$sint$dflt
 ( x0: sint, y0: dflt ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_gte_sint_dflt
+XATS2CC_gflt_gte$sint$dflt
 ( x0: sint, y0: dflt ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_neq_sint_dflt
+XATS2CC_gflt_neq$sint$dflt
 ( x0: sint, y0: dflt ): bool = $extnam()
 #extern
 fun
-XATS2CC_gflt_cmp_sint_dflt
+XATS2CC_gflt_cmp$sint$dflt
 ( x0: sint, y0: dflt ): sint = $extnam()
 //
 #impltmp
-gflt_lt_sint_dflt<> = XATS2CC_gflt_lt_sint_dflt
+gflt_lt$sint$dflt<> = XATS2CC_gflt_lt$sint$dflt
 #impltmp
-gflt_gt_sint_dflt<> = XATS2CC_gflt_gt_sint_dflt
+gflt_gt$sint$dflt<> = XATS2CC_gflt_gt$sint$dflt
 #impltmp
-gflt_eq_sint_dflt<> = XATS2CC_gflt_eq_sint_dflt
+gflt_eq$sint$dflt<> = XATS2CC_gflt_eq$sint$dflt
 #impltmp
-gflt_lte_sint_dflt<> = XATS2CC_gflt_lte_sint_dflt
+gflt_lte$sint$dflt<> = XATS2CC_gflt_lte$sint$dflt
 #impltmp
-gflt_gte_sint_dflt<> = XATS2CC_gflt_gte_sint_dflt
+gflt_gte$sint$dflt<> = XATS2CC_gflt_gte$sint$dflt
 #impltmp
-gflt_neq_sint_dflt<> = XATS2CC_gflt_neq_sint_dflt
+gflt_neq$sint$dflt<> = XATS2CC_gflt_neq$sint$dflt
 //
 #impltmp
-gflt_cmp_sint_dflt<> = XATS2CC_gflt_cmp_sint_dflt
-//
-(* ****** ****** *)
-//
-#extern
-fun
-XATS2CC_gflt_add_dflt_sint
-( x0: dflt, y0: sint ): dflt = $extnam()
-#extern
-fun
-XATS2CC_gflt_sub_dflt_sint
-( x0: dflt, y0: sint ): dflt = $extnam()
-#extern
-fun
-XATS2CC_gflt_mul_dflt_sint
-( x0: dflt, y0: sint ): dflt = $extnam()
-#extern
-fun
-XATS2CC_gflt_div_dflt_sint
-( x0: dflt, y0: sint ): dflt = $extnam()
-//
-#impltmp
-gflt_add_dflt_sint<> = XATS2CC_gflt_add_dflt_sint
-#impltmp
-gflt_sub_dflt_sint<> = XATS2CC_gflt_sub_dflt_sint
-#impltmp
-gflt_mul_dflt_sint<> = XATS2CC_gflt_mul_dflt_sint
-#impltmp
-gflt_div_dflt_sint<> = XATS2CC_gflt_div_dflt_sint
+gflt_cmp$sint$dflt<> = XATS2CC_gflt_cmp$sint$dflt
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2CC_gflt_add_sint_dflt
+XATS2CC_gflt_add$dflt$sint
+( x0: dflt, y0: sint ): dflt = $extnam()
+#extern
+fun
+XATS2CC_gflt_sub$dflt$sint
+( x0: dflt, y0: sint ): dflt = $extnam()
+#extern
+fun
+XATS2CC_gflt_mul$dflt$sint
+( x0: dflt, y0: sint ): dflt = $extnam()
+#extern
+fun
+XATS2CC_gflt_div$dflt$sint
+( x0: dflt, y0: sint ): dflt = $extnam()
+//
+#impltmp
+gflt_add$dflt$sint<> = XATS2CC_gflt_add$dflt$sint
+#impltmp
+gflt_sub$dflt$sint<> = XATS2CC_gflt_sub$dflt$sint
+#impltmp
+gflt_mul$dflt$sint<> = XATS2CC_gflt_mul$dflt$sint
+#impltmp
+gflt_div$dflt$sint<> = XATS2CC_gflt_div$dflt$sint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2CC_gflt_add$sint$dflt
 ( x0: sint, y0: dflt ): dflt = $extnam()
 #extern
 fun
-XATS2CC_gflt_sub_sint_dflt
+XATS2CC_gflt_sub$sint$dflt
 ( x0: sint, y0: dflt ): dflt = $extnam()
 #extern
 fun
-XATS2CC_gflt_mul_sint_dflt
+XATS2CC_gflt_mul$sint$dflt
 ( x0: sint, y0: dflt ): dflt = $extnam()
 #extern
 fun
-XATS2CC_gflt_div_sint_dflt
+XATS2CC_gflt_div$sint$dflt
 ( x0: sint, y0: dflt ): dflt = $extnam()
 //
 #impltmp
-gflt_add_sint_dflt<> = XATS2CC_gflt_add_sint_dflt
+gflt_add$sint$dflt<> = XATS2CC_gflt_add$sint$dflt
 #impltmp
-gflt_sub_sint_dflt<> = XATS2CC_gflt_sub_sint_dflt
+gflt_sub$sint$dflt<> = XATS2CC_gflt_sub$sint$dflt
 #impltmp
-gflt_mul_sint_dflt<> = XATS2CC_gflt_mul_sint_dflt
+gflt_mul$sint$dflt<> = XATS2CC_gflt_mul$sint$dflt
 #impltmp
-gflt_div_sint_dflt<> = XATS2CC_gflt_div_sint_dflt
+gflt_div$sint$dflt<> = XATS2CC_gflt_div$sint$dflt
 //
 (* ****** ****** *)
 //

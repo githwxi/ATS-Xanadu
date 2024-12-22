@@ -80,75 +80,75 @@ sint_abs
 (* ****** ****** *)
 //
 fun<>
-sint_lt_sint
+sint_lt$sint
 {i,j:i0}
 (x:sint(i), y:sint(j)): bool(i<j)
 fun<>
-sint_gt_sint
+sint_gt$sint
 {i,j:i0}
 (x:sint(i), y:sint(j)): bool(i>j)
 fun<>
-sint_eq_sint
+sint_eq$sint
 {i,j:i0}
 (x:sint(i), y:sint(j)): bool(i=j)
 //
-#symload < with sint_lt_sint of 1000
-#symload > with sint_gt_sint of 1000
-#symload = with sint_eq_sint of 1000
+#symload < with sint_lt$sint of 1000
+#symload > with sint_gt$sint of 1000
+#symload = with sint_eq$sint of 1000
 //
 fun<>
-sint_lte_sint
+sint_lte$sint
 {i,j:i0}
 (x:sint(i), y:sint(j)): bool(i<=j)
 fun<>
-sint_gte_sint
+sint_gte$sint
 {i,j:i0}
 (x:sint(i), y:sint(j)): bool(i>=j)
 fun<>
-sint_neq_sint
+sint_neq$sint
 {i,j:i0}
 (x:sint(i), y:sint(j)): bool(i!=j)
 //
-#symload <= with sint_lte_sint of 1000
-#symload >= with sint_gte_sint of 1000
-#symload != with sint_neq_sint of 1000
+#symload <= with sint_lte$sint of 1000
+#symload >= with sint_gte$sint of 1000
+#symload != with sint_neq$sint of 1000
 //
 fun<>
-sint_cmp_sint
+sint_cmp$sint
 {i,j:i0}
 (x:sint(i), y:sint(j)): sint(sgn(i-j))
 //
-#symload cmp with sint_cmp_sint of 1000
+#symload cmp with sint_cmp$sint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
-sint_add_sint
+sint_add$sint
 {i,j:i0}
 (x: sint(i), y: sint(j)): sint(i+j)
 fun<>
-sint_sub_sint
+sint_sub$sint
 {i,j:i0}
 (x: sint(i), y: sint(j)): sint(i-j)
 fun<>
-sint_mul_sint
+sint_mul$sint
 {i,j:i0}
 (x: sint(i), y: sint(j)): sint(i*j)
 fun<>
-sint_div_sint
+sint_div$sint
 {i,j:i0}
 (x: sint(i), y: sint(j)): sint(i/j)
 fun<>
-sint_mod_sint
+sint_mod$sint
 {i,j:i0}
 (x: sint(i), y: sint(j)): sint(i%j)
 //
-#symload + with sint_add_sint of 1000
-#symload - with sint_sub_sint of 1000
-#symload * with sint_mul_sint of 1000
-#symload / with sint_div_sint of 1000
-#symload % with sint_mod_sint of 1000
+#symload + with sint_add$sint of 1000
+#symload - with sint_sub$sint of 1000
+#symload * with sint_mul$sint of 1000
+#symload / with sint_div$sint of 1000
+#symload % with sint_mod$sint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

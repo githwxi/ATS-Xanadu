@@ -40,5 +40,4 @@ val () = the_print_store_log( (*void*) )
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test00_xats2js.dats] *)

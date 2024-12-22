@@ -74,50 +74,50 @@ g_neqrf<sint> = g_noteq<sint>
 (* ****** ****** *)
 
 #impltmp
-g_print<sint> = gint_print_sint<>
+g_print<sint> = gint_print$sint<>
 
 (* ****** ****** *)
 //
 #impltmp
-g_neg<sint> = gint_neg_sint<>
+g_neg<sint> = gint_neg$sint<>
 //
 #impltmp
-g_suc<sint> = gint_suc_sint<>
+g_suc<sint> = gint_suc$sint<>
 #impltmp
-g_pre<sint> = gint_pre_sint<>
+g_pre<sint> = gint_pre$sint<>
 //
 (* ****** ****** *)
 
 #impltmp
-g_lt<sint> = gint_lt_sint_sint<>
+g_lt<sint> = gint_lt$sint$sint<>
 #impltmp
-g_gt<sint> = gint_gt_sint_sint<>
+g_gt<sint> = gint_gt$sint$sint<>
 #impltmp
-g_eq<sint> = gint_eq_sint_sint<>
+g_eq<sint> = gint_eq$sint$sint<>
 #impltmp
-g_lte<sint> = gint_lte_sint_sint<>
+g_lte<sint> = gint_lte$sint$sint<>
 #impltmp
-g_gte<sint> = gint_gte_sint_sint<>
+g_gte<sint> = gint_gte$sint$sint<>
 #impltmp
-g_neq<sint> = gint_neq_sint_sint<>
+g_neq<sint> = gint_neq$sint$sint<>
 
 (* ****** ****** *)
 
 #impltmp
-g_cmp<sint> = gint_cmp_sint_sint<>
+g_cmp<sint> = gint_cmp$sint$sint<>
 #impltmp
-g_cmp<uint> = gint_cmp_uint_uint<>
+g_cmp<uint> = gint_cmp$uint$uint<>
 
 (* ****** ****** *)
 
 #impltmp
-g_add<sint> = gint_add_sint_sint<>
+g_add<sint> = gint_add$sint$sint<>
 #impltmp
-g_sub<sint> = gint_sub_sint_sint<>
+g_sub<sint> = gint_sub$sint$sint<>
 #impltmp
-g_mul<sint> = gint_mul_sint_sint<>
+g_mul<sint> = gint_mul$sint$sint<>
 #impltmp
-g_div<sint> = gint_div_sint_sint<>
+g_div<sint> = gint_div$sint$sint<>
 
 (* ****** ****** *)
 
@@ -133,22 +133,22 @@ g_parse<uint> = gint_parse_uint<>
 (* ****** ****** *)
 //
 #impltmp
-gint_nilq_sint<>(xs) = (xs <= 0)
+gint_nilq$sint<>(xs) = (xs <= 0)
 #impltmp
-gint_consq_sint<>(xs) = (xs >= 1)
+gint_consq$sint<>(xs) = (xs >= 1)
 //
 (*
 #impltmp
-gint_nilq_uint<>(xs) = (xs <= 0u)
+gint_nilq$uint<>(xs) = (xs <= 0u)
 #impltmp
-gint_consq_uint<>(xs) = (xs >= 1u)
+gint_consq$uint<>(xs) = (xs >= 1u)
 *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <r0:vwtp>
-gint_foldl_sint
+gint_foldl$sint
 (xs , r0) =
 loop(x0, r0) where
 {
@@ -163,13 +163,13 @@ if
 x0 >= xs then r0 else
 loop(x0+1, foldl$fopr<x0><r0>(r0, x0))
 //
-} (*where*) // end-of-[gint_foldl_sint]
+} (*where*) // end-of-[gint_foldl$sint]
 //
 (* ****** ****** *)
 //
 #impltmp
 <r0:vwtp>
-gint_foldr_sint
+gint_foldr$sint
 (xs , r0) =
 loop(x0, r0) where
 {
@@ -185,12 +185,12 @@ if
 (loop
  (x0-1, foldr$fopr<x0><r0>(x0-1, r0)))
 //
-} (*where*) // end-of-[gint_foldr_sint]
+} (*where*) // end-of-[gint_foldr$sint]
 //
 (* ****** ****** *)
 
 #impltmp
-gint_forall_sint<>
+gint_forall$sint<>
   (xs) =
 ( loop(0) ) where
 {
@@ -209,12 +209,12 @@ forall$test<x0>(x0)
   then loop(suc(x0)) else false
 ) (* then *)
 else true // end of [else]
-} (* end of [gint_forall_sint] *)
+} (* end of [gint_forall$sint] *)
 //
 (* ****** ****** *)
 //
 #impltmp
-gint_foritm_sint<>
+gint_foritm$sint<>
   (xs) =
 ( loop(0) ) where
 {
@@ -231,12 +231,12 @@ loop(suc(x0)) where
 {
 val () = foritm$work<x0>(x0)
 } else ((*void*)) //end(else)
-} (* end of [gint_foritm_sint] *)
+} (* end of [gint_foritm$sint] *)
 //
 (* ****** ****** *)
 //
 #impltmp
-gint_rforall_sint<>
+gint_rforall$sint<>
   (xs) =
 ( loop(xs) ) where
 {
@@ -257,13 +257,13 @@ rforall$test<x0>(xs)
 then loop(xs) else false
 end(*let*)// end-of-[then]
 else true // end-of-[else]
-} (* end of [gint_rforall_sint] *)
+} (* end of [gint_rforall$sint] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <>(*tmp*)
-gint_listize_sint
+gint_listize$sint
   {i}(xs) =
 ( if
   (xs <= 0)
@@ -272,7 +272,7 @@ gint_listize_sint
 //
 #impltmp
 <>(*tmp*)
-gint_rlistize_sint
+gint_rlistize$sint
   {i}(xs) =
 ( if
   (xs <= 0)
@@ -388,7 +388,7 @@ strmcon_vt_cons
 //
 #impltmp
 <>(*tmp*)
-gint_strmize_sint
+gint_strmize$sint
   (i0) =
 (
 if
@@ -433,25 +433,25 @@ in(*in-of-local*)
 (* ****** ****** *)
 //
 #impltmp
-gseq_nilq<xs><x0> = gint_nilq_sint<>
+gseq_nilq<xs><x0> = gint_nilq$sint<>
 #impltmp
-gseq_consq<xs><x0> = gint_consq_sint<>
+gseq_consq<xs><x0> = gint_consq$sint<>
 //
 (* ****** ****** *)
 //
 #impltmp
-gseq_forall<xs><x0> = gint_forall_sint<>
+gseq_forall<xs><x0> = gint_forall$sint<>
 #impltmp
-gseq_foritm<xs><x0> = gint_foritm_sint<>
+gseq_foritm<xs><x0> = gint_foritm$sint<>
 #impltmp
-gseq_rforall<xs><x0> = gint_rforall_sint<>
+gseq_rforall<xs><x0> = gint_rforall$sint<>
 //
 (* ****** ****** *)
 //
 #impltmp
-gseq_listize<xs><x0> = gint_listize_sint<>
+gseq_listize<xs><x0> = gint_listize$sint<>
 #impltmp
-gseq_strmize<xs><x0> = gint_strmize_sint<>
+gseq_strmize<xs><x0> = gint_strmize$sint<>
 //
 (* ****** ****** *)
 
@@ -465,10 +465,10 @@ Tue Aug 15 08:23:58 EDT 2023
 *)
 //
 #impltmp
-gint_repeat_sint_f0un
+gint_repeat$sint_f0un
 <(*none*)>(sint, work) =
 (
-  gint_foritm_sint<>(sint)) where
+  gint_foritm$sint<>(sint)) where
 {
   #impltmp foritm$work<nint>(_) = work() }
 //
