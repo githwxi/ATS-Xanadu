@@ -224,95 +224,95 @@ gint_uint2sint<> = XINTERP_gint_uint2sint
 //
 #extern
 fun
-XINTERP_gint_print_sint
+XINTERP_gint_print$sint
 ( x0
 : sint): void = $extnam()
 #extern
 fun
-XINTERP_gint_print_uint
+XINTERP_gint_print$uint
 ( x0
 : uint): void = $extnam()
 //
 #impltmp
-gint_print_sint<> = XINTERP_gint_print_sint
+gint_print$sint<> = XINTERP_gint_print$sint
 #impltmp
-gint_print_uint<> = XINTERP_gint_print_uint
+gint_print$uint<> = XINTERP_gint_print$uint
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_gint_fprint_sint
+XINTERP_gint_fprint$sint
 ( fr
 : FILR
 , x0
 : sint): void = $extnam()
 #extern
 fun
-XINTERP_gint_fprint_uint
+XINTERP_gint_fprint$uint
 ( fr
 : FILR
 , x0
 : uint): void = $extnam()
 //
 #impltmp
-gint_fprint_sint<> =
-  XINTERP_gint_fprint_sint(*FILR,uint*)
+gint_fprint$sint<> =
+  XINTERP_gint_fprint$sint(*FILR,uint*)
 #impltmp
-gint_fprint_uint<> =
-  XINTERP_gint_fprint_uint(*FILR,uint*)
+gint_fprint$uint<> =
+  XINTERP_gint_fprint$uint(*FILR,uint*)
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_gint_neg_sint
+XINTERP_gint_neg$sint
 {i:int}
 ( x0
 : sint(i)): sint(-i)
 = $extnam( (*self*) )
 #impltmp
-gint_neg_sint<> = XINTERP_gint_neg_sint
+gint_neg$sint<> = XINTERP_gint_neg$sint
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_gint_abs_sint
+XINTERP_gint_abs$sint
 {i:int}
 ( x0
 : sint(i))
 : sint(abs(i)) = $extnam()
 #impltmp
-gint_abs_sint<> = XINTERP_gint_abs_sint
+gint_abs$sint<> = XINTERP_gint_abs$sint
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_gint_suc_sint
+XINTERP_gint_suc$sint
 {i:int}
 ( x0
 : sint(i))
 : sint(i+1) = $extnam((*0*))
 #extern
 fun
-XINTERP_gint_pre_sint
+XINTERP_gint_pre$sint
 {i:int}
 ( x0
 : sint(i))
 : sint(i-1) = $extnam((*0*))
 //
 #impltmp
-gint_suc_sint<> = XINTERP_gint_suc_sint
+gint_suc$sint<> = XINTERP_gint_suc$sint
 #impltmp
-gint_pre_sint<> = XINTERP_gint_pre_sint
+gint_pre$sint<> = XINTERP_gint_pre$sint
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_gint_lt_sint_sint
+XINTERP_gint_lt$sint$sint
 {i,j:int}
 ( x
 : sint(i)
@@ -320,11 +320,11 @@ XINTERP_gint_lt_sint_sint
 : sint(j))
 : bool(i<j) = $extnam((*0*))
 #impltmp
-gint_lt_sint_sint<> = XINTERP_gint_lt_sint_sint
+gint_lt$sint$sint<> = XINTERP_gint_lt$sint$sint
 //
 #extern
 fun
-XINTERP_gint_gt_sint_sint
+XINTERP_gint_gt$sint$sint
 {i,j:int}
 ( x
 : sint(i)
@@ -332,11 +332,11 @@ XINTERP_gint_gt_sint_sint
 : sint(j))
 : bool(i>j) = $extnam((*0*))
 #impltmp
-gint_gt_sint_sint<> = XINTERP_gint_gt_sint_sint
+gint_gt$sint$sint<> = XINTERP_gint_gt$sint$sint
 //
 #extern
 fun
-XINTERP_gint_eq_sint_sint
+XINTERP_gint_eq$sint$sint
 {i,j:int}
 ( x
 : sint(i)
@@ -344,11 +344,11 @@ XINTERP_gint_eq_sint_sint
 : sint(j))
 : bool(i=j) = $extnam((*0*))
 #impltmp
-gint_eq_sint_sint<> = XINTERP_gint_eq_sint_sint
+gint_eq$sint$sint<> = XINTERP_gint_eq$sint$sint
 //
 #extern
 fun
-XINTERP_gint_lte_sint_sint
+XINTERP_gint_lte$sint$sint
 {i,j:int}
 ( x
 : sint(i)
@@ -356,11 +356,11 @@ XINTERP_gint_lte_sint_sint
 : sint(j))
 : bool(i<=j) = $extnam((*0*))
 #impltmp
-gint_lte_sint_sint<> = XINTERP_gint_lte_sint_sint
+gint_lte$sint$sint<> = XINTERP_gint_lte$sint$sint
 //
 #extern
 fun
-XINTERP_gint_gte_sint_sint
+XINTERP_gint_gte$sint$sint
 {i,j:int}
 ( x
 : sint(i)
@@ -368,11 +368,11 @@ XINTERP_gint_gte_sint_sint
 : sint(j))
 : bool(i>=j) = $extnam((*0*))
 #impltmp
-gint_gte_sint_sint<> = XINTERP_gint_gte_sint_sint
+gint_gte$sint$sint<> = XINTERP_gint_gte$sint$sint
 //
 #extern
 fun
-XINTERP_gint_neq_sint_sint
+XINTERP_gint_neq$sint$sint
 {i,j:int}
 ( x
 : sint(i)
@@ -380,13 +380,13 @@ XINTERP_gint_neq_sint_sint
 : sint(j))
 : bool(i!=j) = $extnam((*0*))
 #impltmp
-gint_neq_sint_sint<> = XINTERP_gint_neq_sint_sint
+gint_neq$sint$sint<> = XINTERP_gint_neq$sint$sint
 //
 (* ****** ****** *)
 
 #extern
 fun
-XINTERP_gint_cmp_sint_sint
+XINTERP_gint_cmp$sint$sint
 {i,j:int}
 ( x
 : sint(i)
@@ -394,13 +394,13 @@ XINTERP_gint_cmp_sint_sint
 : sint(j))
 : sint(sgn(i-j)) = $extnam()
 #impltmp
-gint_cmp_sint_sint<> = XINTERP_gint_cmp_sint_sint
+gint_cmp$sint$sint<> = XINTERP_gint_cmp$sint$sint
 
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_gint_add_sint_sint
+XINTERP_gint_add$sint$sint
 {i,j:int}
 ( x
 : sint(i)
@@ -408,10 +408,10 @@ XINTERP_gint_add_sint_sint
 : sint(j))
 : sint(i+j) = $extnam((*0*))
 #impltmp
-gint_add_sint_sint<> = XINTERP_gint_add_sint_sint
+gint_add$sint$sint<> = XINTERP_gint_add$sint$sint
 #extern
 fun
-XINTERP_gint_sub_sint_sint
+XINTERP_gint_sub$sint$sint
 {i,j:int}
 ( x
 : sint(i)
@@ -419,11 +419,11 @@ XINTERP_gint_sub_sint_sint
 : sint(j))
 : sint(i-j) = $extnam((*0*))
 #impltmp
-gint_sub_sint_sint<> = XINTERP_gint_sub_sint_sint
+gint_sub$sint$sint<> = XINTERP_gint_sub$sint$sint
 //
 #extern
 fun
-XINTERP_gint_mul_sint_sint
+XINTERP_gint_mul$sint$sint
 {i,j:int}
 ( x
 : sint(i)
@@ -431,10 +431,10 @@ XINTERP_gint_mul_sint_sint
 : sint(j))
 : sint(i*j) = $extnam((*0*))
 #impltmp
-gint_mul_sint_sint<> = XINTERP_gint_mul_sint_sint
+gint_mul$sint$sint<> = XINTERP_gint_mul$sint$sint
 #extern
 fun
-XINTERP_gint_div_sint_sint
+XINTERP_gint_div$sint$sint
 {i,j:int}
 ( x
 : sint(i)
@@ -442,11 +442,11 @@ XINTERP_gint_div_sint_sint
 : sint(j))
 : sint(i/j) = $extnam((*0*))
 #impltmp
-gint_div_sint_sint<> = XINTERP_gint_div_sint_sint
+gint_div$sint$sint<> = XINTERP_gint_div$sint$sint
 //
 #extern
 fun
-XINTERP_gint_mod_sint_sint
+XINTERP_gint_mod$sint$sint
 {i,j:int}
 ( x
 : sint(i)
@@ -454,7 +454,7 @@ XINTERP_gint_mod_sint_sint
 : sint(j))
 : sint(mod(i,j)) = $extnam()
 #impltmp
-gint_mod_sint_sint<> = XINTERP_gint_mod_sint_sint
+gint_mod$sint$sint<> = XINTERP_gint_mod$sint$sint
 //
 (* ****** ****** *)
 //
@@ -473,122 +473,122 @@ gflt_si_dflt<> = XINTERP_gflt_si_dflt
 //
 #extern
 fun
-XINTERP_gflt_neg_dflt
+XINTERP_gflt_neg$dflt
 ( x0: dflt ): dflt = $extnam()
 #impltmp
-gflt_neg_dflt<> = XINTERP_gflt_neg_dflt
+gflt_neg$dflt<> = XINTERP_gflt_neg$dflt
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_gflt_abs_dflt
+XINTERP_gflt_abs$dflt
 ( x0: dflt ): dflt = $extnam()
 #impltmp
-gflt_abs_dflt<> = XINTERP_gflt_abs_dflt
+gflt_abs$dflt<> = XINTERP_gflt_abs$dflt
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_gflt_suc_dflt
+XINTERP_gflt_suc$dflt
 ( x0: dflt ): dflt = $extnam()
 #impltmp
-gflt_suc_dflt<> = XINTERP_gflt_suc_dflt
+gflt_suc$dflt<> = XINTERP_gflt_suc$dflt
 #extern
 fun
-XINTERP_gflt_pre_dflt
+XINTERP_gflt_pre$dflt
 ( x0: dflt ): dflt = $extnam()
 #impltmp
-gflt_pre_dflt<> = XINTERP_gflt_pre_dflt
+gflt_pre$dflt<> = XINTERP_gflt_pre$dflt
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_gflt_lt_dflt_dflt
+XINTERP_gflt_lt$dflt$dflt
 ( x0: dflt
 , y0: dflt ): bool = $extnam()
 #extern
 fun
-XINTERP_gflt_gt_dflt_dflt
+XINTERP_gflt_gt$dflt$dflt
 ( x0: dflt
 , y0: dflt ): bool = $extnam()
 #extern
 fun
-XINTERP_gflt_eq_dflt_dflt
+XINTERP_gflt_eq$dflt$dflt
 ( x0: dflt
 , y0: dflt ): bool = $extnam()
 #extern
 fun
-XINTERP_gflt_lte_dflt_dflt
+XINTERP_gflt_lte$dflt$dflt
 ( x0: dflt
 , y0: dflt ): bool = $extnam()
 #extern
 fun
-XINTERP_gflt_gte_dflt_dflt
+XINTERP_gflt_gte$dflt$dflt
 ( x0: dflt
 , y0: dflt ): bool = $extnam()
 #extern
 fun
-XINTERP_gflt_neq_dflt_dflt
+XINTERP_gflt_neq$dflt$dflt
 ( x0: dflt
 , y0: dflt ): bool = $extnam()
 //
 #impltmp
-gflt_lt_dflt_dflt<> = XINTERP_gflt_lt_dflt_dflt
+gflt_lt$dflt$dflt<> = XINTERP_gflt_lt$dflt$dflt
 #impltmp
-gflt_gt_dflt_dflt<> = XINTERP_gflt_gt_dflt_dflt
+gflt_gt$dflt$dflt<> = XINTERP_gflt_gt$dflt$dflt
 #impltmp
-gflt_eq_dflt_dflt<> = XINTERP_gflt_eq_dflt_dflt
+gflt_eq$dflt$dflt<> = XINTERP_gflt_eq$dflt$dflt
 #impltmp
-gflt_lte_dflt_dflt<> = XINTERP_gflt_lte_dflt_dflt
+gflt_lte$dflt$dflt<> = XINTERP_gflt_lte$dflt$dflt
 #impltmp
-gflt_gte_dflt_dflt<> = XINTERP_gflt_gte_dflt_dflt
+gflt_gte$dflt$dflt<> = XINTERP_gflt_gte$dflt$dflt
 #impltmp
-gflt_neq_dflt_dflt<> = XINTERP_gflt_neq_dflt_dflt
+gflt_neq$dflt$dflt<> = XINTERP_gflt_neq$dflt$dflt
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_gflt_cmp_dflt_dflt
+XINTERP_gflt_cmp$dflt$dflt
 ( x0: dflt
 , y0: dflt ): sint = $extnam()
 #impltmp
-gflt_cmp_dflt_dflt<> = XINTERP_gflt_cmp_dflt_dflt
+gflt_cmp$dflt$dflt<> = XINTERP_gflt_cmp$dflt$dflt
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_gflt_add_dflt_dflt
+XINTERP_gflt_add$dflt$dflt
 ( x0: dflt
 , y0: dflt ): dflt = $extnam()
 #extern
 fun
-XINTERP_gflt_sub_dflt_dflt
+XINTERP_gflt_sub$dflt$dflt
 ( x0: dflt
 , y0: dflt ): dflt = $extnam()
 #extern
 fun
-XINTERP_gflt_mul_dflt_dflt
+XINTERP_gflt_mul$dflt$dflt
 ( x0: dflt
 , y0: dflt ): dflt = $extnam()
 #extern
 fun
-XINTERP_gflt_div_dflt_dflt
+XINTERP_gflt_div$dflt$dflt
 ( x0: dflt
 , y0: dflt ): dflt = $extnam()
 //
 #impltmp
-gflt_add_dflt_dflt<> = XINTERP_gflt_add_dflt_dflt
+gflt_add$dflt$dflt<> = XINTERP_gflt_add$dflt$dflt
 #impltmp
-gflt_sub_dflt_dflt<> = XINTERP_gflt_sub_dflt_dflt
+gflt_sub$dflt$dflt<> = XINTERP_gflt_sub$dflt$dflt
 #impltmp
-gflt_mul_dflt_dflt<> = XINTERP_gflt_mul_dflt_dflt
+gflt_mul$dflt$dflt<> = XINTERP_gflt_mul$dflt$dflt
 #impltmp
-gflt_div_dflt_dflt<> = XINTERP_gflt_div_dflt_dflt
+gflt_div$dflt$dflt<> = XINTERP_gflt_div$dflt$dflt
 //
 (* ****** ****** *)
 //

@@ -251,12 +251,12 @@ fun<>
 nint_digitize
  (n0: nint): strm_vt(nintlt(10))
 fun<>
-nint_digitize_base
+nint_digitize$base
 {base:i0|base >= 2}
 (nint, sint(base)): strm_vt(nintlt(base))
 //
 #symload digitize with nint_digitize of 1000
-#symload digitize with nint_digitize_base of 1000
+#symload digitize with nint_digitize$base of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

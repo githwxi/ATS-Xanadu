@@ -156,14 +156,14 @@ fun<>
 strn_fprint(FILR, strn): void
 //
 fun<>
-gint_fprint_sint(FILR, sint): void
+gint_fprint$sint(FILR, sint): void
 fun<>
-gint_fprint_uint(FILR, uint): void
+gint_fprint$uint(FILR, uint): void
 //
 fun<>
-gflt_fprint_sflt(FILR, sflt): void
+gflt_fprint$sflt(FILR, sflt): void
 fun<>
-gflt_fprint_dflt(FILR, dflt): void
+gflt_fprint$dflt(FILR, dflt): void
 //
 (* ****** ****** *)
 //

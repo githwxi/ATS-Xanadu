@@ -49,7 +49,7 @@ val _ =
 auxlst(xs) in true
 end
 with ~NotAVL() => false
-end where
+endtry where
 {
 //
 excptcon NotAVL

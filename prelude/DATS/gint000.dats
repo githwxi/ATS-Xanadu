@@ -60,33 +60,33 @@ g_si<si>(i0) = (i0)
 (* ****** ****** *)
 //
 #impltmp
-g_lt<si> = sint_lt_sint<>
+g_lt<si> = sint_lt$sint<>
 #impltmp
-g_gt<si> = sint_gt_sint<>
+g_gt<si> = sint_gt$sint<>
 #impltmp
-g_eq<si> = sint_eq_sint<>
+g_eq<si> = sint_eq$sint<>
 //
 #impltmp
-g_lte<si> = sint_lte_sint<>
+g_lte<si> = sint_lte$sint<>
 #impltmp
-g_gte<si> = sint_gte_sint<>
+g_gte<si> = sint_gte$sint<>
 #impltmp
-g_neq<si> = sint_neq_sint<>
+g_neq<si> = sint_neq$sint<>
 //
 #impltmp
-g_cmp<si> = sint_cmp_sint<>
+g_cmp<si> = sint_cmp$sint<>
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-g_add<si> = sint_add_sint<>
+g_add<si> = sint_add$sint<>
 #impltmp
-g_sub<si> = sint_sub_sint<>
+g_sub<si> = sint_sub$sint<>
 #impltmp
-g_mul<si> = sint_mul_sint<>
+g_mul<si> = sint_mul$sint<>
 #impltmp
-g_div<si> = sint_div_sint<>
+g_div<si> = sint_div$sint<>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -123,7 +123,7 @@ if i1 >= 0 then i1 else -i1)
 //
 #impltmp
 <(*tmp*)>
-sint_cmp_sint
+sint_cmp$sint
   (i1, i2) =
 (
 if

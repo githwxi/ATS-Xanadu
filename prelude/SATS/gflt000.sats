@@ -79,198 +79,198 @@ dflt_cbrt(df: dflt): dflt
 (* ****** ****** *)
 //
 fun<>
-dflt_lt_dflt
+dflt_lt$dflt
 (f1: dflt, f2: dflt): bool
 fun<>
-dflt_gt_dflt
+dflt_gt$dflt
 (f1: dflt, f2: dflt): bool
 fun<>
-dflt_eq_dflt
+dflt_eq$dflt
 (f1: dflt, f2: dflt): bool
 //
-#symload < with dflt_lt_dflt of 1000
-#symload > with dflt_gt_dflt of 1000
-#symload = with dflt_eq_dflt of 1000
+#symload < with dflt_lt$dflt of 1000
+#symload > with dflt_gt$dflt of 1000
+#symload = with dflt_eq$dflt of 1000
 //
 fun<>
-dflt_lte_dflt
+dflt_lte$dflt
 (f1: dflt, f2: dflt): bool
 fun<>
-dflt_gte_dflt
+dflt_gte$dflt
 (f1: dflt, f2: dflt): bool
 fun<>
-dflt_neq_dflt
+dflt_neq$dflt
 (f1: dflt, f2: dflt): bool
 //
-#symload <= with dflt_lte_dflt of 1000
-#symload >= with dflt_gte_dflt of 1000
-#symload != with dflt_neq_dflt of 1000
+#symload <= with dflt_lte$dflt of 1000
+#symload >= with dflt_gte$dflt of 1000
+#symload != with dflt_neq$dflt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
-sint_lt_dflt
+sint_lt$dflt
 (i1: sint, f2: dflt): bool
 fun<>
-dflt_lt_sint
+dflt_lt$sint
 (f1: dflt, i2: sint): bool
 //
-#symload < with sint_lt_dflt of 1000
-#symload < with dflt_lt_sint of 1000
+#symload < with sint_lt$dflt of 1000
+#symload < with dflt_lt$sint of 1000
 //
 (* ****** ****** *)
 //
 fun<>
-sint_gt_dflt
+sint_gt$dflt
 (i1: sint, f2: dflt): bool
 fun<>
-dflt_gt_sint
+dflt_gt$sint
 (f1: dflt, i2: sint): bool
 //
-#symload > with sint_gt_dflt of 1000
-#symload > with dflt_gt_sint of 1000
+#symload > with sint_gt$dflt of 1000
+#symload > with dflt_gt$sint of 1000
 //
 (* ****** ****** *)
 //
 fun<>
-sint_eq_dflt
+sint_eq$dflt
 (i1: sint, f2: dflt): bool
 fun<>
-dflt_eq_sint
+dflt_eq$sint
 (f1: dflt, i2: sint): bool
 //
-#symload = with sint_eq_dflt of 1000
-#symload = with dflt_eq_sint of 1000
+#symload = with sint_eq$dflt of 1000
+#symload = with dflt_eq$sint of 1000
 //
 (* ****** ****** *)
 //
 fun<>
-sint_lte_dflt
+sint_lte$dflt
 (i1: sint, f2: dflt): bool
 fun<>
-dflt_lte_sint
+dflt_lte$sint
 (f1: dflt, i2: sint): bool
 //
-#symload <= with sint_lte_dflt of 1000
-#symload <= with dflt_lte_sint of 1000
+#symload <= with sint_lte$dflt of 1000
+#symload <= with dflt_lte$sint of 1000
 //
 (* ****** ****** *)
 //
 fun<>
-sint_gte_dflt
+sint_gte$dflt
 (i1: sint, f2: dflt): bool
 fun<>
-dflt_gte_sint
+dflt_gte$sint
 (f1: dflt, i2: sint): bool
 //
-#symload >= with sint_gte_dflt of 1000
-#symload >= with dflt_gte_sint of 1000
+#symload >= with sint_gte$dflt of 1000
+#symload >= with dflt_gte$sint of 1000
 //
 (* ****** ****** *)
 //
 fun<>
-sint_neq_dflt
+sint_neq$dflt
 (i1: sint, f2: dflt): bool
 fun<>
-dflt_neq_sint
+dflt_neq$sint
 (f1: dflt, i2: sint): bool
 //
-#symload != with sint_neq_dflt of 1000
-#symload != with dflt_neq_sint of 1000
+#symload != with sint_neq$dflt of 1000
+#symload != with dflt_neq$sint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
-dflt_cmp_dflt
+dflt_cmp$dflt
 (f1: dflt, f2: dflt): sint
 //
 fun<>
-sint_cmp_dflt
+sint_cmp$dflt
 (i1: sint, f2: dflt): sint
 fun<>
-dflt_cmp_sint
+dflt_cmp$sint
 (f1: dflt, i2: sint): sint
 //
-#symload cmp with dflt_cmp_dflt of 1000
-#symload cmp with dflt_cmp_dflt of 1000
-#symload cmp with dflt_cmp_dflt of 1000
+#symload cmp with dflt_cmp$dflt of 1000
+#symload cmp with dflt_cmp$dflt of 1000
+#symload cmp with dflt_cmp$dflt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
-dflt_add_dflt
+dflt_add$dflt
 (f1: dflt, f2: dflt): dflt
 fun<>
-dflt_sub_dflt
+dflt_sub$dflt
 (f1: dflt, f2: dflt): dflt
 fun<>
-dflt_mul_dflt
+dflt_mul$dflt
 (f1: dflt, f2: dflt): dflt
 fun<>
-dflt_div_dflt
+dflt_div$dflt
 (f1: dflt, f2: dflt): dflt
 fun<>
-dflt_mod_dflt
+dflt_mod$dflt
 (f1: dflt, f2: dflt): dflt
 //
-#symload + with dflt_add_dflt of 1000
-#symload - with dflt_sub_dflt of 1000
-#symload * with dflt_mul_dflt of 1000
-#symload / with dflt_div_dflt of 1000
-#symload % with dflt_mod_dflt of 1000
+#symload + with dflt_add$dflt of 1000
+#symload - with dflt_sub$dflt of 1000
+#symload * with dflt_mul$dflt of 1000
+#symload / with dflt_div$dflt of 1000
+#symload % with dflt_mod$dflt of 1000
 //
 (* ****** ****** *)
 //
 fun<>
-dflt_add_sint
+dflt_add$sint
 (f1: dflt, i2: sint): dflt
 fun<>
-sint_add_dflt
+sint_add$dflt
 (i1: sint, f2: dflt): dflt
 //
 fun<>
-dflt_sub_sint
+dflt_sub$sint
 (f1: dflt, i2: sint): dflt
 fun<>
-sint_sub_dflt
+sint_sub$dflt
 (i1: sint, f2: dflt): dflt
 //
 fun<>
-dflt_mul_sint
+dflt_mul$sint
 (f1: dflt, i2: sint): dflt
 fun<>
-sint_mul_dflt
+sint_mul$dflt
 (i1: sint, f2: dflt): dflt
 //
 fun<>
-dflt_div_sint
+dflt_div$sint
 (f1: dflt, i2: sint): dflt
 fun<>
-sint_div_dflt
+sint_div$dflt
 (i1: sint, f2: dflt): dflt
 //
 fun<>
-dflt_mod_sint
+dflt_mod$sint
 (f1: dflt, i2: sint): dflt
 //
 (* ****** ****** *)
 //
-#symload + with dflt_add_sint of 1000
-#symload + with sint_add_dflt of 1000
+#symload + with dflt_add$sint of 1000
+#symload + with sint_add$dflt of 1000
 //
-#symload - with dflt_sub_sint of 1000
-#symload - with sint_sub_dflt of 1000
+#symload - with dflt_sub$sint of 1000
+#symload - with sint_sub$dflt of 1000
 //
-#symload * with dflt_mul_sint of 1000
-#symload * with sint_mul_dflt of 1000
+#symload * with dflt_mul$sint of 1000
+#symload * with sint_mul$dflt of 1000
 //
-#symload / with dflt_div_sint of 1000
-#symload / with sint_div_dflt of 1000
+#symload / with dflt_div$sint of 1000
+#symload / with sint_div$dflt of 1000
 //
-#symload % with dflt_mod_sint of 1000
+#symload % with dflt_mod$sint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
