@@ -83,11 +83,11 @@ It can also be readily done to write the runtime-library in ES3 directly.
 
 ########################################################################
 ########################################################################
-
+What is a project in ATS3 like?
 (*
 Fri 05 Jul 2024 05:58:48 PM EDT
 *)
-What is a project in ATS3 like?
+########################################################################
 
 Let us say that the home directory for the project is MYPROJ.
 One should probably have a file MYPROJ/README for describing
@@ -114,8 +114,11 @@ MYPROJ/BUILD: For storing the files generated from building MYPROJ
 
 ########################################################################
 ########################################################################
-
 What is lense in ATS3?
+(*
+Sun Dec 22 10:13:24 PM EST 2024
+*)
+########################################################################
 
 I coined the word 'lense' in 2024, which loosely corresponds to the
 word 'tense'. Of course, I have been aware the notion of lense since
@@ -132,6 +135,18 @@ use the suffix '0' (resp. '1') in the name of a function to indicate
 that its action is consumptive (resp. non-consumptive). For instance,
 the consumptive lense of 'read' is 'read0' and the non-consumptive lense
 of 'read' is 'read1'.
+
+########################################################################
+########################################################################
+(*
+Sun Dec 22 10:17:32 PM EST 2024
+*)
+Some conventions for naming a function in ATS3.
+
+I expect widely extended support for many forms of meta-programming in
+ATS3. While one can indeed name a function in ATS3 in whatever way that
+is preferred, there are some grammar-like conventions that one can follow
+so as to greatly simplify the task of searching for a needed function.
 
 ########################################################################
 ########################################################################
