@@ -35,7 +35,7 @@ have access to a real computer for only ONE hour during the entire
 semester. Basically, we had to write code on paper and double-check it
 before typing the code into a computer. I can now remember very little
 about what I learned in the class except for the fact that I did enjoy
-programming HUGELY. I voluntarily did homework for some of my
+programming IMMENSELY. I voluntarily did homework for some of my
 classmates so that I could use their alloted computer time. However,
 after the programming class, I did not get a chance to continue
 programming. I switched back to studying mathematical logic.
@@ -111,6 +111,27 @@ MYPROJ/DOCS: For documentation of all sorts
 MyPROJ/TEST: For storing testing code of all sorts
 
 MYPROJ/BUILD: For storing the files generated from building MYPROJ
+
+########################################################################
+########################################################################
+
+What is lense in ATS3?
+
+I coined the word 'lense' in 2024, which loosely corresponds to the
+word 'tense'. Of course, I have been aware the notion of lense since
+ATSproto, the prototype of ATS (referred to as ATS0), which I
+implemented during the summer of 2003. I used OCaml for the implementation.
+
+Generally speaking, a verb can indicate two kinds of use of its
+object: consumptive use and non-consumptive use. For instance, in the
+sentence "I eat a cake", the verb 'eat' makes consumptive use; in the
+sentence, "I read a book", the verb 'read' makes non-consumptive
+use. In programming, the name of a function is often chosen to be a
+verb that indicates the action performed by a call to the function. We
+use the suffix '0' (resp. '1') in the name of a function to indicate
+that its action is consumptive (resp. non-consumptive). For instance,
+the consumptive lense of 'read' is 'read0' and the non-consumptive lense
+of 'read' is 'read1'.
 
 ########################################################################
 ########################################################################
