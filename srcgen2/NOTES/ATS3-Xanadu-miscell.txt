@@ -142,11 +142,45 @@ of 'read' is 'read1'.
 Sun Dec 22 10:17:32 PM EST 2024
 *)
 Some conventions for naming a function in ATS3.
+########################################################################
 
 I expect widely extended support for many forms of meta-programming in
 ATS3. While one can indeed name a function in ATS3 in whatever way that
-is preferred, there are some grammar-like conventions that one can follow
-so as to greatly simplify the task of searching for a needed function.
+one sees fit, there are some grammar-like conventions that one can and
+probably should follow so as to greatly simplify the task of searching
+for a named function based on its functionality. Let us see some examples.
+
+The function for concatenating two given lists is declared as follows:
+
+fun
+<a:type>
+list_append$list_list(xs: list(a), ys: list(a)): list(a)
+
+There are three parts in the name 'list_append$list_list' that are separated
+by the symbol '_'.
+
+1. The 1st part 'list' states that the first argument 'xs' is a list.
+2. The 2nd part 'append$list' indicates that the verb name of the function
+   is 'append' and it takes an additional argument 'ys' that is a list.
+3. The 3rd part 'list' states that the return value of the function is a list.
+
+Some short names can be introduced for 'list_append$list_list' as follows:
+
+#symload append with list_append$list_list
+#symload list_append with list_append$list_list
+
+The function for flattening a given list of strings into a string is
+declared as follows:
+
+fun
+<a:type>
+list$strn_flatten_list(xss: list(strn)): strn
+
+The function for flattening a given list of lists is declared as follows:
+
+fun
+<a:type>
+list$list_flatten_list(xss: list(list(a))): list(a)
 
 ########################################################################
 ########################################################################
