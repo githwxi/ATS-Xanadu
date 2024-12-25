@@ -156,12 +156,12 @@ gseq_irforall<list(x0)><x0>(* void *)
 //
 #impltmp
 < x0:t0 >
-list_forall_f1un =
-gseq_forall_f1un<list(x0)><x0>(* void *)
+list_forall$f1un =
+gseq_forall$f1un<list(x0)><x0>(* void *)
 #impltmp
 < x0:t0 >
-list_iforall_f2un =
-gseq_iforall_f2un<list(x0)><x0>(* void *)
+list_iforall$f2un =
+gseq_iforall$f2un<list(x0)><x0>(* void *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -271,12 +271,12 @@ gseq_irforitm<list(x0)><x0>(* void *)
 //
 #impltmp
 < x0:t0 >
-list_foritm_f1un =
-gseq_foritm_f1un<list(x0)><x0>(* void *)
+list_foritm$f1un =
+gseq_foritm$f1un<list(x0)><x0>(* void *)
 #impltmp
 < x0:t0 >
-list_iforitm_f2un =
-gseq_iforitm_f2un<list(x0)><x0>(* void *)
+list_iforitm$f2un =
+gseq_iforitm$f2un<list(x0)><x0>(* void *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -394,7 +394,7 @@ c2hoose$forall$test<x0>(x2.0, x2.1)
 //
 #impltmp
 < x0:t0 >
-list_c2hoose$forall_f2un
+list_c2hoose$forall$f2un
   (xs, test) =
 (
 list_c2hoose$forall<x0>(xs)
@@ -402,7 +402,7 @@ list_c2hoose$forall<x0>(xs)
 {
 #impltmp
 c2hoose$forall$test<x0>(x1, x2) = test(x1, x2)
-}(*where*)//end-of-[list_c2hoose$forall_f2un(...)]
+}(*where*)//end-of-[list_c2hoose$forall$f2un(...)]
 //
 (* ****** ****** *)
 //
@@ -462,7 +462,7 @@ c3hoose$forall$test<x0>(x3.0, x3.1, x3.2)
 //
 #impltmp
 < x0:t0 >
-list_c3hoose$forall_f3un
+list_c3hoose$forall$f3un
   (xs, test) =
 (
 list_c3hoose$forall<x0>(xs)
@@ -470,7 +470,7 @@ list_c3hoose$forall<x0>(xs)
 {
 #impltmp
 c3hoose$forall$test<x0>(x1, x2, x3) = test(x1, x2, x3)
-}(*where*)//end-of-[list_c3hoose$forall_f3un(...)]
+}(*where*)//end-of-[list_c3hoose$forall$f3un(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -531,8 +531,8 @@ gseq_map_list<list(x0)><x0><y0>(*void*)
 #impltmp
 < x0:t0 >
 < y0:t0 >
-list_map_f1un =
-gseq_map_f1un_list<list(x0)><x0><y0>(*void*)
+list_map$f1un =
+gseq_map$f1un_list<list(x0)><x0><y0>(*void*)
 //
 (* ****** ****** *)
 //
@@ -544,8 +544,8 @@ gseq_map_llist<list(x0)><x0><y0>(*void*)
 #impltmp
 < x0:t0 >
 < y0:vt >
-list_map_f1un_vt =
-gseq_map_f1un_llist<list(x0)><x0><y0>(*void*)
+list_map$f1un_vt =
+gseq_map$f1un_llist<list(x0)><x0><y0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -558,8 +558,8 @@ gseq_map_rlist<list(x0)><x0><y0>(*void*)
 #impltmp
 < x0:t0 >
 < y0:t0 >
-list_maprev_f1un =
-gseq_map_f1un_rlist<list(x0)><x0><y0>(*void*)
+list_maprev$f1un =
+gseq_map$f1un_rlist<list(x0)><x0><y0>(*void*)
 //
 (* ****** ****** *)
 //
@@ -571,8 +571,8 @@ gseq_map_rllist<list(x0)><x0><y0>(*void*)
 #impltmp
 < x0:t0 >
 < y0:vt >
-list_maprev_f1un_vt =
-gseq_map_f1un_rllist<list(x0)><x0><y0>(*void*)
+list_maprev$f1un_vt =
+gseq_map$f1un_rllist<list(x0)><x0><y0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
