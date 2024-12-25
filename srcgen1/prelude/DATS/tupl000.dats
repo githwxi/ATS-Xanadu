@@ -1086,7 +1086,7 @@ gseq_foritm
 ,x0:t0
 ,ys:t0
 ,y0:t0}
-gseq_foritm_f1un
+gseq_foritm$f1un
 <
 z2tup
 (xs,ys)>
@@ -1097,7 +1097,7 @@ let
 val
 (xs, ys) =
 put2z(ztup) in//in
-gseq_z2foritm_f2un<xs><x0><ys><y0>
+gseq_z2foritm$f2un<xs><x0><ys><y0>
 (xs, ys, lam(x0, y0) => work@(x0, y0)) end
 //
 (* ****** ****** *)
@@ -1107,7 +1107,7 @@ gseq_z2foritm_f2un<xs><x0><ys><y0>
 ,x0:t0
 ,ys:t0
 ,y0:t0}
-gseq_foritm_f1un
+gseq_foritm$f1un
 <
 x2tup
 (xs,ys)>
@@ -1118,7 +1118,7 @@ let
 val
 (xs, ys) =
 put2x(xtup) in//in
-gseq_x2foritm_f2un<xs><x0><ys><y0>
+gseq_x2foritm$f2un<xs><x0><ys><y0>
 (xs, ys, lam(x0, y0) => work@(x0, y0)) end
 //
 (* ****** ****** *)

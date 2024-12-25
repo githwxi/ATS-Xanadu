@@ -174,7 +174,7 @@ a1sz_fmake_fwork<a>
 (
 lam(work) =>
 (
-  strm_vt_foritm0_f1un<a>(xs, work)))
+  strm_vt_foritm0$f1un<a>(xs, work)))
 //
 (* ****** ****** *)
 (* ****** ****** *)

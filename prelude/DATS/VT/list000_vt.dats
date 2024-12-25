@@ -91,7 +91,7 @@ Sat 14 Sep 2024 11:40:03 AM EDT
 #impltmp
 < a: vt >
 list_vt_make_nfun =
-nint_map_f1un_llist<a>(*void*)
+nint_map$f1un_llist<a>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

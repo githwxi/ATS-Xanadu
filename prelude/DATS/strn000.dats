@@ -285,7 +285,7 @@ in//let
 strn_fmake_fwork<> 
 (
 lam(work) => // HX: inefficent?
-gseq_foritm_f1un<xs><x0>
+gseq_foritm$f1un<xs><x0>
 ( xs
 , lam(c0)=>work(map$fopr<x0><c0>(c0))))
 end//let//end-of-[strn_map$make_gseq(xs)]
@@ -316,7 +316,7 @@ $UN.strn_fset$at$raw
 strn_fmake_fwork<>
 (
 lam(work) =>
-strn_iforitm_f2un(cs,
+strn_iforitm$f2un(cs,
 lam(i1,c1) =>
 (if (i0 = i1) then work(c0) else work(c1))))
 //

@@ -104,14 +104,14 @@ f1un_not
 (* ****** ****** *)
 //
 fun<>
-f0un_repeat_nint
+f0un_repeat$nint
 ( f0
 : f0un(void), ni: nint): void
 fun<>
 nint_repeat$f0un
 (times: nint, f0: f0un(void)): void
 //
-#symload repeat with f0un_repeat_nint
+#symload repeat with f0un_repeat$nint
 #symload repeat with nint_repeat$f0un
 //
 (* ****** ****** *)

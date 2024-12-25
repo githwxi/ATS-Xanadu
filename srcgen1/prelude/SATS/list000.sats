@@ -443,7 +443,7 @@ list_tabulate
 (n0: nint(n0)): list(x0,n0)//end-fun
 fun
 <x0:t0>
-list_tabulate_f1un
+list_tabulate$f1un
 {n:int}
 (n0: nint(n)
 ,f0: nintlt(n) -> x0): list(x0,n)
@@ -625,36 +625,36 @@ list_subsetize_vt
 fun
 <x0:t0>
 <y0:t0>
-list_map_f1un
+list_map$f1un
 {n:int}
 (xs:list(x0,n), f0:(x0)->(y0)): list(y0,n)
 fun
 <x0:t0>
 <y0:vt>
-list_map_f1un_vt
+list_map$f1un_vt
 {n:int}
 (xs:list(x0,n), f0:(x0)->(y0)): list_vt(y0,n)
 //
-#symload map_fun with list_map_f1un of 1000
-#symload map_fun_vt with list_map_f1un_vt of 1000
+#symload map$fun with list_map$f1un of 1000
+#symload map$fun_vt with list_map$f1un_vt of 1000
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <y0:t0>
-list_maprev_f1un
+list_maprev$f1un
 {n:int}
 (xs:list(x0,n), f0:(x0)->(y0)): list(y0,n)
 fun
 <x0:t0>
 <y0:vt>
-list_maprev_f1un_vt
+list_maprev$f1un_vt
 {n:int}
 (xs:list(x0,n), f0:(x0)->(y0)): list_vt(y0,n)
 //
-#symload maprev_fun with list_maprev_f1un of 1000
-#symload maprev_fun_vt with list_maprev_f1un_vt of 1000
+#symload maprev$fun with list_maprev$f1un of 1000
+#symload maprev$fun_vt with list_maprev$f1un_vt of 1000
 //
 (* ****** ****** *)
 //

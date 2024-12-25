@@ -176,14 +176,14 @@ gseq_forall<nint><ni> = nint_forall<>
 //
 #impltmp
 <>(*tmp*)
-nint_forall_f1un
+nint_forall$f1un
   (ni, test) =
 (
   nint_forall<>(ni)) where
 {
 #impltmp
 forall$test<ni>(i0) = test(   i0   )
-}(*where*)//end-of-[nint_forall_f1un]
+}(*where*)//end-of-[nint_forall$f1un]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -218,14 +218,14 @@ rforall$test<ni> = rforall$test1<ni>
 //
 #impltmp
 <>(*tmp*)
-nint_rforall_f1un
+nint_rforall$f1un
   (ni, test) =
 (
   nint_rforall<>(ni)) where
 {
 #impltmp
 rforall$test<ni>(i0) = test(   i0   )
-}(*where*)//end-of-[nint_rforall_f1un]
+}(*where*)//end-of-[nint_rforall$f1un]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -236,14 +236,14 @@ nint_foritm =
 gseq_foritm<nint><ni>(*void*)
 #impltmp
 <>(*tmp*)
-nint_foritm_f1un
+nint_foritm$f1un
   (cs, work) =
 (
   nint_foritm<>(cs)) where
 {
 #impltmp
 foritm$work<ni>(i0) = work(   i0   )
-}(*where*)//end-of-[nint_foritm_f1un]
+}(*where*)//end-of-[nint_foritm$f1un]
 //
 (* ****** ****** *)
 //
@@ -253,14 +253,14 @@ nint_rforitm =
 gseq_rforitm<nint><ni>(*void*)
 #impltmp
 <>(*tmp*)
-nint_rforitm_f1un
+nint_rforitm$f1un
   (cs, work) =
 (
   nint_rforitm<>(cs)) where
 {
 #impltmp
 rforitm$work<ni>(i0) = work(   i0   )
-}(*where*)//end-of-[nint_rforitm_f1un]
+}(*where*)//end-of-[nint_rforitm$f1un]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -372,14 +372,14 @@ end(*let*)//else//end-of-[if]
 //
 #impltmp
 < y0:vt >
-nint_map_f1un_lstrm
+nint_map$f1un_lstrm
   (ni, fopr) =
 (
 nint_map_lstrm<y0>(ni))
 where
 { #impltmp
   map$fopr<ni><y0>(i0) = fopr( i0 )
-}(*where*)//end-[nint_map_f1un_lstrm]
+}(*where*)//end-[nint_map$f1un_lstrm]
 //
 (* ****** ****** *)
 //
@@ -409,14 +409,14 @@ end(*let*)//else//end-of-[if]
 //
 #impltmp
 < y0:vt >
-nint_rmap_f1un_lstrm
+nint_rmap$f1un_lstrm
   (ni, fopr) =
 (
 nint_rmap_lstrm<y0>(ni))
 where
 { #impltmp
   rmap$fopr<ni><y0>(i0) = fopr( i0 )
-}(*where*)//end-[nint_rmap_f1un_lstrm]
+}(*where*)//end-[nint_rmap$f1un_lstrm]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -460,7 +460,7 @@ end(*let*)//else//end-of-[if(...)]
 //
 #impltmp
 < y0:vt >
-nint_map_f1un_llist
+nint_map$f1un_llist
   (ni, fopr) =
 (
 nint_map_llist
@@ -507,7 +507,7 @@ end(*let*)//else//end-of-[if(...)]
 //
 #impltmp
 < y0:vt >
-nint_rmap_f1un_llist
+nint_rmap$f1un_llist
   (ni, fopr) =
 (
 nint_rmap_llist

@@ -45,8 +45,8 @@ strm_vt_forall0 =
 gseq_forall0<strm_vt(x0)><x0>
 #impltmp
 < x0:vt >
-strm_vt_forall0_f1un =
-gseq_forall0_f1un<strm_vt(x0)><x0>
+strm_vt_forall0$f1un =
+gseq_forall0$f1un<strm_vt(x0)><x0>
 //
 #impltmp
 < x0:vt >
@@ -54,8 +54,8 @@ strm_vt_iforall0 =
 gseq_iforall0<strm_vt(x0)><x0>
 #impltmp
 < x0:vt >
-strm_vt_iforall0_f2un =
-gseq_iforall0_f2un<strm_vt(x0)><x0>
+strm_vt_iforall0$f2un =
+gseq_iforall0$f2un<strm_vt(x0)><x0>
 *)
 //
 (* ****** ****** *)
@@ -66,8 +66,8 @@ strm_vt_foritm0 =
 gseq_foritm0<strm_vt(x0)><x0>
 #impltmp
 < x0:vt >
-strm_vt_foritm0_f1un =
-gseq_foritm0_f1un<strm_vt(x0)><x0>
+strm_vt_foritm0$f1un =
+gseq_foritm0$f1un<strm_vt(x0)><x0>
 //
 (*
 #impltmp
@@ -76,8 +76,8 @@ strm_vt_iforitm0 =
 gseq_iforitm0<strm_vt(x0)><x0>
 #impltmp
 < x0:vt >
-strm_vt_iforitm0_f2un =
-gseq_iforitm0_f2un<strm_vt(x0)><x0>
+strm_vt_iforitm0$f2un =
+gseq_iforitm0$f2un<strm_vt(x0)><x0>
 *)
 //
 (* ****** ****** *)
@@ -117,7 +117,7 @@ gseq_forall0
 //
 #impltmp
 < x0:t0 >
-strm_vt_forall0_f1un
+strm_vt_forall0$f1un
   (xs, test) =
 (
 strm_vt_forall0
@@ -125,12 +125,12 @@ strm_vt_forall0
 {
 #impltmp
 forall$test0<x0>(x0) = test(x0)
-}(*where*)//end-of-[strm_vt_forall0_f1un]
+}(*where*)//end-of-[strm_vt_forall0$f1un]
 //
 #impltmp
 { x0:vt }
-gseq_forall0_f1un
-<strm_vt(x0)><x0> = strm_vt_forall0_f1un<x0>
+gseq_forall0$f1un
+<strm_vt(x0)><x0> = strm_vt_forall0$f1un<x0>
 //
 (* ****** ****** *)
 //
@@ -164,7 +164,7 @@ else (free(xs); false)))//end-of-[if]
 //
 #impltmp
 < x0:vt >
-strm_vt_iforall0_f2un
+strm_vt_iforall0$f2un
   (xs, test) =
 (
 strm_vt_iforall0<x0>(xs))
@@ -180,8 +180,8 @@ gseq_iforall0
 <strm_vt(x0)><x0> = strm_vt_iforall0<x0>
 #impltmp
 { x0:vt }
-gseq_iforall0_f2un
-<strm_vt(x0)><x0> = strm_vt_iforall0_f2un<x0>
+gseq_iforall0$f2un
+<strm_vt(x0)><x0> = strm_vt_iforall0$f2un<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -319,7 +319,7 @@ else
 //
 #impltmp
 < x0:vt >
-strm_vt_filter0_f1un
+strm_vt_filter0$f1un
   (xs, test) =
 (
 strm_vt_filter0<x0>(xs))
@@ -386,7 +386,7 @@ g_free<x0>(x1); auxloop(i0+1, !xs)) end
 //
 #impltmp
 < x0:vt >
-strm_vt_ifilter0_f2un
+strm_vt_ifilter0$f2un
   (xs, test) =
 (
 strm_vt_ifilter0<x0>(xs))

@@ -119,29 +119,29 @@ strn_fprint<> = XATS2JS_NODE_strn_fprint
 //
 #extern
 fun
-XATS2JS_NODE_gint_fprint_sint:
+XATS2JS_NODE_gint_fprint$sint:
 (FILR, sint) -> void = $extnam()
 #impltmp
-gint_fprint_sint<> = XATS2JS_NODE_gint_fprint_sint
+gint_fprint$sint<> = XATS2JS_NODE_gint_fprint$sint
 #extern
 fun
-XATS2JS_NODE_gint_fprint_uint:
+XATS2JS_NODE_gint_fprint$uint:
 (FILR, uint) -> void = $extnam()
 #impltmp
-gint_fprint_uint<> = XATS2JS_NODE_gint_fprint_uint
+gint_fprint$uint<> = XATS2JS_NODE_gint_fprint$uint
 //
 #extern
 fun
-XATS2JS_NODE_gflt_fprint_sflt:
+XATS2JS_NODE_gflt_fprint$sflt:
 (FILR, sflt) -> void = $extnam()
 #impltmp
-gflt_fprint_sflt<> = XATS2JS_NODE_gflt_fprint_sflt
+gflt_fprint$sflt<> = XATS2JS_NODE_gflt_fprint$sflt
 #extern
 fun
-XATS2JS_NODE_gflt_fprint_dflt:
+XATS2JS_NODE_gflt_fprint$dflt:
 (FILR, dflt) -> void = $extnam()
 #impltmp
-gflt_fprint_dflt<> = XATS2JS_NODE_gflt_fprint_dflt
+gflt_fprint$dflt<> = XATS2JS_NODE_gflt_fprint$dflt
 //
 (* ****** ****** *)
 (* ****** ****** *)
