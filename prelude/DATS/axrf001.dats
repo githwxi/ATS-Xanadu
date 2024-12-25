@@ -179,7 +179,7 @@ gasz_rforall<a1rf(x0)><x0>(* void *)
 //
 #impltmp
 < x0:vt >
-a1rf_forall_size
+a1rf_forall$size
   (A, n) =
 let
 #impltmp
@@ -187,18 +187,18 @@ gasz_length
 <a1rf(x0)><x0>(A) = (n)
 in//let
   gasz_forall<a1rf(x0)><x0>(A)
-end//let//end-of-[a1rf_forall_size]
+end//let//end-of-[a1rf_forall$size]
 //
 #impltmp
 < x0:vt >
-a1rf_forall_size_f1un
+a1rf_forall$size$f1un
   (A, n, test) =
 (
-  a1rf_forall_size<x0>(A, n))
+  a1rf_forall$size<x0>(A, n))
 where
 { #impltmp
   forall$test1<x0>(x0) = test(x0) }
-(*where*)//end-of-[a1rf_forall_size_f1un]
+(*where*)//end-of-[a1rf_forall$size$f1un]
 //
 (* ****** ****** *)
 (* ****** ****** *)

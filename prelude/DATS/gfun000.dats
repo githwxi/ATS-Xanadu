@@ -89,13 +89,13 @@ f1un_not
 //
 #impltmp
 <(*tmp*)>
-f0un_repeat_nint
+f0un_repeat$nint
 (f0, times) =
 nint_foritm(times) where
 {
 #impltmp
 foritm$work<ni>(_) = f0((*void*))
-}(*where*)//end(f0un_repeat_nint(f0))
+}(*where*)//end(f0un_repeat$nint(f0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -107,7 +107,7 @@ Sat 24 Aug 2024 06:29:59 PM EDT
 //
 #impltmp
 < r0:vt >
-f_trace_f0un
+f_trace$f0un
  (msg, f00) =
 lam((*0*)) => let
 //
@@ -124,7 +124,7 @@ val () = print1s
 #impltmp
 < a1:t0 >
 < r0:vt >
-f_trace_f1un
+f_trace$f1un
  (msg, f00) =
 lam(x1:a1) => let
 //
@@ -142,7 +142,7 @@ val () = print1s
 < a1:t0 >
 < a2:t0 >
 < r0:vt >
-f_trace_f2un
+f_trace$f2un
  (msg, f00) =
 lam
 (x1:a1,x2:a2) => let
@@ -164,7 +164,7 @@ val () = print1s
 < a2:t0 >
 < a3:t0 >
 < r0:vt >
-f_trace_f3un
+f_trace$f3un
  (msg, f00) =
 lam
 (x1:a1
@@ -196,7 +196,7 @@ Sat 31 Aug 2024 10:36:59 AM EDT
 < a3:t0 >
 < a4:t0 >
 < r0:vt >
-f_trace_f4un
+f_trace$f4un
  (msg, f00) =
 lam
 (x1:a1,x2:a2
@@ -225,7 +225,7 @@ val () = print1s
 < a4:t0 >
 < a5:t0 >
 < r0:vt >
-f_trace_f5un
+f_trace$f5un
  (msg, f00) =
 lam
 (x1:a1
@@ -260,7 +260,7 @@ print1s(msg, ": res0 = ", r0, "\n") in r0 end
 < a5:t0 >
 < a6:t0 >
 < r0:vt >
-f_trace_f6un
+f_trace$f6un
  (msg, f00) =
 lam
 (x1:a1,x2:a2

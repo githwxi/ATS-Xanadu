@@ -1452,7 +1452,7 @@ f1un_not
 ( f0
 : f1un(a1,bool)): f1un(a1,bool)
 fun<>
-f0un_repeat_nint
+f0un_repeat$nint
 ( f0
 : f0un(void), times: nint): void
 //

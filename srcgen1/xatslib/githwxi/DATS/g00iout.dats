@@ -274,13 +274,13 @@ char_print<> = g_print<char>
 #impltmp
 strn_print<> = g_print<strn>
 #impltmp
-gint_print_sint<> = g_print<sint>
+gint_print$sint<> = g_print<sint>
 #impltmp
-gint_print_uint<> = g_print<uint>
+gint_print$uint<> = g_print<uint>
 #impltmp
-gflt_print_sflt<> = g_print<sflt>
+gflt_print$sflt<> = g_print<sflt>
 #impltmp
-gflt_print_dflt<> = g_print<dflt>
+gflt_print$dflt<> = g_print<dflt>
 //
 #impltmp
 g_print<bool>(x0) =
@@ -294,17 +294,17 @@ strn_fprint<>(g_print$out<>(), x0)
 //
 #impltmp
 g_print<sint>(x0) =
-gint_fprint_sint<>(g_print$out<>(), x0)
+gint_fprint$sint<>(g_print$out<>(), x0)
 #impltmp
 g_print<uint>(x0) =
-gint_fprint_uint<>(g_print$out<>(), x0)
+gint_fprint$uint<>(g_print$out<>(), x0)
 //
 #impltmp
 g_print<sflt>(x0) =
-gflt_fprint_sflt<>(g_print$out<>(), x0)
+gflt_fprint$sflt<>(g_print$out<>(), x0)
 #impltmp
 g_print<dflt>(x0) =
-gflt_fprint_dflt<>(g_print$out<>(), x0)
+gflt_fprint$dflt<>(g_print$out<>(), x0)
 //
 (* ****** ****** *)
 

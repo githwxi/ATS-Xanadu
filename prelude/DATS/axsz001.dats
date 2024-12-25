@@ -81,14 +81,14 @@ a1sz_forall =
 gasz_forall<a1sz(x0)><x0>
 #impltmp
 < x0:vt >
-a1sz_forall_f1un
+a1sz_forall$f1un
   (A, test) =
 (
 a1sz_forall<x0>(A)) where
 {
 #impltmp
 forall$test1<x0>(x0) = test(x0)
-}(*where*)//end(a1sz_forall_f1un)
+}(*where*)//end(a1sz_forall$f1un)
 //
 #impltmp
 { x0:t0 }
@@ -110,14 +110,14 @@ a1sz_rforall =
 gasz_rforall<a1sz(x0)><x0>
 #impltmp
 { x0:vt }
-a1sz_rforall_f1un
+a1sz_rforall$f1un
   (A, test) =
 (
 a1sz_rforall<x0>(A)) where
 {
 #impltmp
 rforall$test1<x0>(x0) = test(x0)
-}(*where*)//end(a1sz_rforall_f1un)
+}(*where*)//end(a1sz_rforall$f1un)
 //
 #impltmp
 { x0:t0 }
@@ -211,7 +211,7 @@ end(*let*)//end-of-[gasz_map_a1sz(xs)]
 < xs:t0 >
 < x0:vt >
 < y0:vt >
-gasz_map_f1un_a1sz
+gasz_map$f1un_a1sz
   (xs, fopr) =
 (
   gasz_map_a1sz(xs))

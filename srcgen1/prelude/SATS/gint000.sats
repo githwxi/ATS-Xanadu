@@ -445,7 +445,7 @@ gint_map_llist_nint
 (* ****** ****** *)
 //
 fun<>
-gint_repeat$sint_f0un
+gint_repeat$sint$f0un
 ( i0: sint
 , work: ((*void*))->void): void
 //
@@ -600,7 +600,7 @@ cmp with gint_cmp$uint$uint of 1000
 (*
 Tue Aug 15 08:19:43 EDT 2023
 *)
-#symload repeat_fun with gint_repeat$sint_f0un of 1000
+#symload repeat$fun with gint_repeat$sint$f0un of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 

@@ -47,7 +47,7 @@ digitize$base
 //
 #extern
 fun<>
-gint_digitize_sint
+gint_digitize$sint
 {n:nat}
 (n0: sint(n)): list_vt(sint)
 //
@@ -60,16 +60,16 @@ rdigitize$base
 //
 #extern
 fun<>
-gint_rdigitize_sint
+gint_rdigitize$sint
 {n:nat}
 (n0: sint(n)): strm_vt(sint)
 //
 (* ****** ****** *)
 //
 #symload
-digitize with gint_digitize_sint
+digitize with gint_digitize$sint
 #symload
-rdigitize with gint_rdigitize_sint
+rdigitize with gint_rdigitize$sint
 //
 (* ****** ****** *)
 //
@@ -84,7 +84,7 @@ rdigitize$base((*void*)) = 10
 
 #impltmp
 <>(*tmp*)
-gint_digitize_sint
+gint_digitize$sint
   (n0) =
 (
 loop(n0, list_vt_nil())
@@ -110,19 +110,19 @@ if
 then (r0)
 else let
   val d0 =
-  gint_mod_sint_sint(n0, b0)
+  gint_mod$sint$sint(n0, b0)
 in
 loop(n0 / b0, list_vt_cons(d0, r0))
 end
 )
 //
-} (*where*) // [gint_digitize_sint]
+} (*where*) // [gint_digitize$sint]
 
 (* ****** ****** *)
 
 #impltmp
 <>(*tmp*)
-gint_rdigitize_sint
+gint_rdigitize$sint
   (n0) =
 ( auxmain(n0) ) where
 {
@@ -145,13 +145,13 @@ if
 then strmcon_vt_nil()
 else let
 val d0 =
-gint_mod_sint_sint(n0, b0)
+gint_mod$sint$sint(n0, b0)
 in
 strmcon_vt_cons(d0, auxmain(n0/b0))
 end // end of [else] // end-of-if
 )
 //
-} (*where*) // [gint_rdigitize_sint]
+} (*where*) // [gint_rdigitize$sint]
 
 (* ****** ****** *)
 //

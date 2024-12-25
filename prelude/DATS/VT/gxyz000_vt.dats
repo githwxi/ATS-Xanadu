@@ -175,68 +175,68 @@ irforall$test<x0> = irforall$test1<x0>
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_forall0_f1un
+gseq_forall0$f1un
   (xs, test) =
 (
-  gseq_forall_f1un<xs><x0>(xs, test))
+  gseq_forall$f1un<xs><x0>(xs, test))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_forall1_f1un
+gseq_forall1$f1un
   (xs, test) =
 (
-  gseq_forall_f1un<xs><x0>(xs, test))
+  gseq_forall$f1un<xs><x0>(xs, test))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_rforall0_f1un
+gseq_rforall0$f1un
   (xs, test) =
 (
-  gseq_rforall_f1un<xs><x0>(xs, test))
+  gseq_rforall$f1un<xs><x0>(xs, test))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_rforall1_f1un
+gseq_rforall1$f1un
   (xs, test) =
 (
-  gseq_rforall_f1un<xs><x0>(xs, test))
+  gseq_rforall$f1un<xs><x0>(xs, test))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_iforall0_f2un
+gseq_iforall0$f2un
   (xs, test) =
 (
-  gseq_iforall_f2un<xs><x0>(xs, test))
+  gseq_iforall$f2un<xs><x0>(xs, test))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_iforall1_f2un
+gseq_iforall1$f2un
   (xs, test) =
 (
-  gseq_iforall_f2un<xs><x0>(xs, test))
+  gseq_iforall$f2un<xs><x0>(xs, test))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_irforall0_f2un
+gseq_irforall0$f2un
   (xs, test) =
 (
-  gseq_irforall_f2un<xs><x0>(xs, test))
+  gseq_irforall$f2un<xs><x0>(xs, test))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_irforall1_f2un
+gseq_irforall1$f2un
   (xs, test) =
 (
-  gseq_irforall_f2un<xs><x0>(xs, test))
+  gseq_irforall$f2un<xs><x0>(xs, test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -275,17 +275,17 @@ foritm$work<x0> = foritm$work1<x0>
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_foritm0_f1un
+gseq_foritm0$f1un
   (xs, work) =
 (
-  gseq_foritm_f1un<xs><x0>(xs, work))
+  gseq_foritm$f1un<xs><x0>(xs, work))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_foritm1_f1un
+gseq_foritm1$f1un
   (xs, work) =
 (
-  gseq_foritm_f1un<xs><x0>(xs, work))
+  gseq_foritm$f1un<xs><x0>(xs, work))
 //
 (* ****** ****** *)
 //
@@ -316,17 +316,17 @@ rforitm$work<x0> = rforitm$work1<x0>
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_rforitm0_f1un
+gseq_rforitm0$f1un
   (xs, work) =
 (
-  gseq_rforitm_f1un<xs><x0>(xs, work))
+  gseq_rforitm$f1un<xs><x0>(xs, work))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_rforitm1_f1un
+gseq_rforitm1$f1un
   (xs, work) =
 (
-  gseq_rforitm_f1un<xs><x0>(xs, work))
+  gseq_rforitm$f1un<xs><x0>(xs, work))
 //
 (* ****** ****** *)
 //
@@ -357,17 +357,17 @@ iforitm$work<x0> = iforitm$work1<x0>
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_iforitm0_f2un
+gseq_iforitm0$f2un
   (xs, work) =
 (
-  gseq_iforitm_f2un<xs><x0>(xs, work))
+  gseq_iforitm$f2un<xs><x0>(xs, work))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_iforitm1_f2un
+gseq_iforitm1$f2un
   (xs, work) =
 (
-  gseq_iforitm_f2un<xs><x0>(xs, work))
+  gseq_iforitm$f2un<xs><x0>(xs, work))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -399,17 +399,17 @@ irforitm$work<x0> = irforitm$work1<x0>
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_irforitm0_f2un
+gseq_irforitm0$f2un
   (xs, work) =
 (
-  gseq_irforitm_f2un<xs><x0>(xs, work))
+  gseq_irforitm$f2un<xs><x0>(xs, work))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_irforitm1_f2un
+gseq_irforitm1$f2un
   (xs, work) =
 (
-  gseq_irforitm_f2un<xs><x0>(xs, work))
+  gseq_irforitm$f2un<xs><x0>(xs, work))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -444,18 +444,18 @@ folditm$fopr<x0><r0> = folditm$fopr1<x0><r0>
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-gseq_folditm0_f2un
+gseq_folditm0$f2un
   (xs, r0, fopr) =
 (
-gseq_folditm_f2un<xs><x0><r0>(xs, r0, fopr))
+gseq_folditm$f2un<xs><x0><r0>(xs, r0, fopr))
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-gseq_folditm1_f2un
+gseq_folditm1$f2un
   (xs, r0, fopr) =
 (
-gseq_folditm_f2un<xs><x0><r0>(xs, r0, fopr))
+gseq_folditm$f2un<xs><x0><r0>(xs, r0, fopr))
 //
 (* ****** ****** *)
 //
@@ -489,18 +489,18 @@ rfolditm$fopr<x0><r0> = rfolditm$fopr1<x0><r0>
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-gseq_rfolditm0_f2un
+gseq_rfolditm0$f2un
   (xs, r0, fopr) =
 (
-gseq_rfolditm_f2un<xs><x0><r0>(xs, r0, fopr))
+gseq_rfolditm$f2un<xs><x0><r0>(xs, r0, fopr))
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-gseq_rfolditm1_f2un
+gseq_rfolditm1$f2un
   (xs, r0, fopr) =
 (
-gseq_rfolditm_f2un<xs><x0><r0>(xs, r0, fopr))
+gseq_rfolditm$f2un<xs><x0><r0>(xs, r0, fopr))
 //
 (* ****** ****** *)
 //
@@ -534,18 +534,18 @@ ifolditm$fopr<x0><r0> = ifolditm$fopr1<x0><r0>
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-gseq_ifolditm0_f3un
+gseq_ifolditm0$f3un
   (xs, r0, fopr) =
 (
-gseq_ifolditm_f3un<xs><x0><r0>(xs, r0, fopr))
+gseq_ifolditm$f3un<xs><x0><r0>(xs, r0, fopr))
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-gseq_ifolditm1_f3un
+gseq_ifolditm1$f3un
   (xs, r0, fopr) =
 (
-gseq_ifolditm_f3un<xs><x0><r0>(xs, r0, fopr))
+gseq_ifolditm$f3un<xs><x0><r0>(xs, r0, fopr))
 //
 (* ****** ****** *)
 //
@@ -579,18 +579,18 @@ irfolditm$fopr<x0><r0> = irfolditm$fopr1<x0><r0>
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-gseq_irfolditm0_f3un
+gseq_irfolditm0$f3un
   (xs, r0, fopr) =
 (
-gseq_irfolditm_f3un<xs><x0><r0>(xs, r0, fopr))
+gseq_irfolditm$f3un<xs><x0><r0>(xs, r0, fopr))
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-gseq_irfolditm1_f3un
+gseq_irfolditm1$f3un
   (xs, r0, fopr) =
 (
-gseq_irfolditm_f3un<xs><x0><r0>(xs, r0, fopr))
+gseq_irfolditm$f3un<xs><x0><r0>(xs, r0, fopr))
 //
 (* ****** ****** *)
 (* ****** ****** *)

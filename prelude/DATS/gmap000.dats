@@ -84,7 +84,7 @@ gmap_search$tst
 let
 #typedef kx = @(k0, x0) in
 gseq_consq0(
-strm_vt_filter0_f1un(
+strm_vt_filter0$f1un(
 gseq_strmize<m0><(k0,x0)>(map),
 lam(kx:kx) => g_equal<k0>(k0, kx.0))) end
 //
@@ -110,7 +110,7 @@ optn_vt_cons(kx) => optn_vt_cons(kx.1)
 val opt0 =
 gseq_head$opt0
 <strm_vt(kx)><kx>(
-strm_vt_filter0_f1un<kx>(
+strm_vt_filter0$f1un<kx>(
 gmap_keyval$strmize<m0><k0><x0>(map), lam(kx) => g_equal<k0>(k0, kx.0)))
 //
 }

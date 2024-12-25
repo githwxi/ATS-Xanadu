@@ -57,16 +57,16 @@ strn_fprint<> = XINTERP_strn_fprint
 //
 #extern
 fun
-XINTERP_gint_fprint_sint:
+XINTERP_gint_fprint$sint:
 (FILR, sint) -> void = $extnam()
 #impltmp
-gint_fprint_sint<> = XINTERP_gint_fprint_sint
+gint_fprint$sint<> = XINTERP_gint_fprint$sint
 #extern
 fun
-XINTERP_gint_fprint_uint:
+XINTERP_gint_fprint$uint:
 (FILR, uint) -> void = $extnam()
 #impltmp
-gint_fprint_uint<> = XINTERP_gint_fprint_uint
+gint_fprint$uint<> = XINTERP_gint_fprint$uint
 //
 (* ****** ****** *)
 //

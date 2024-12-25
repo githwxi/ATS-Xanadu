@@ -83,7 +83,7 @@ end//let//end-of-[GLSEQ_forall1(gseq)]
 #impltmp
 < xs:vt >
 < x0:vt >
-GLSEQ_forall0_f1un
+GLSEQ_forall0$f1un
   (gseq, test) =
 (
 GLSEQ_forall0<xs><x0>(gseq)) where
@@ -94,7 +94,7 @@ GLSEQ_forall0<xs><x0>(gseq)) where
 #impltmp
 < xs:vt >
 < x0:vt >
-GLSEQ_forall1_f1un
+GLSEQ_forall1$f1un
   (gseq, test) =
 (
 GLSEQ_forall1<xs><x0>(gseq)) where

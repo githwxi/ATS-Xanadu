@@ -465,7 +465,7 @@ Tue Aug 15 08:23:58 EDT 2023
 *)
 //
 #impltmp
-gint_repeat$sint_f0un
+gint_repeat$sint$f0un
 <(*none*)>(sint, work) =
 (
   gint_foritm$sint<>(sint)) where

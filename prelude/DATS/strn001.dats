@@ -73,14 +73,14 @@ val c0 =
 //
 #impltmp
 <>(*tmp*)
-strn_forall_f1un
+strn_forall$f1un
   (cs, test) =
 (
   strn_forall<>(cs)) where
 {
 #impltmp
 forall$test<cgtz>(ch) = test(ch)
-}(*where*)//end-of-[strn_forall_f1un]
+}(*where*)//end-of-[strn_forall$f1un]
 //
 #impltmp
 gseq_forall
@@ -120,14 +120,14 @@ val c0 =
 //
 #impltmp
 <>(*tmp*)
-strn_rforall_f1un
+strn_rforall$f1un
   (cs, test) =
 (
   strn_rforall<>(cs)) where
 {
 #impltmp
 rforall$test<cgtz>(ch) = test(ch)
-}(*where*)//end-of-[strn_rforall_f1un]
+}(*where*)//end-of-[strn_rforall$f1un]
 //
 #impltmp
 gseq_rforall
@@ -186,7 +186,7 @@ val c0 =
 //
 #impltmp
 <>(*tmp*)
-strn_iforall_f2un
+strn_iforall$f2un
   (cs, test) =
 (
   strn_iforall<>(cs)) where
@@ -218,7 +218,7 @@ gseq_irforall<strn><cgtz>
 //
 #impltmp
 <>(*tmp*)
-strn_irforall_f2un
+strn_irforall$f2un
   (cs, test) =
 (
   strn_irforall<>(cs)) where
@@ -236,7 +236,7 @@ strn_foritm =
 gseq_foritm<strn><cgtz>
 #impltmp
 <>(*tmp*)
-strn_foritm_f1un
+strn_foritm$f1un
   (cs, work) =
 (
   strn_foritm<>(cs)) where
@@ -253,7 +253,7 @@ strn_rforitm =
 gseq_rforitm<strn><cgtz>
 #impltmp
 <>(*tmp*)
-strn_rforitm_f1un
+strn_rforitm$f1un
   (cs, work) =
 (
   strn_rforitm<>(cs)) where
@@ -270,7 +270,7 @@ strn_iforitm =
 gseq_iforitm<strn><cgtz>
 #impltmp
 <>(*tmp*)
-strn_iforitm_f2un
+strn_iforitm$f2un
   (cs, work) =
 (
   strn_iforitm<>(cs)) where
@@ -287,7 +287,7 @@ strn_irforitm =
 gseq_irforitm<strn><cgtz>
 #impltmp
 <>(*tmp*)
-strn_irforitm_f2un
+strn_irforitm$f2un
   (cs, work) =
 (
   strn_irforitm<>(cs)) where
@@ -334,8 +334,8 @@ in//let
 strn_fmake_fwork<>
 (
 lam(work) =>
-gseq_foritm_f1un<xs><x0>(xs,
-lam(cs) => strn_foritm_f1un<>(cs, work)))
+gseq_foritm$f1un<xs><x0>(xs,
+lam(cs) => strn_foritm$f1un<>(cs, work)))
 end(*let*)//end-of-[gseq_strn$concat( xs )]
 //
 #impltmp
@@ -349,8 +349,8 @@ in//let
 strn_fmake_fwork<>
 (
 lam(work) =>
-gseq_rforitm_f1un<xs><x0>(xs,
-lam(cs) => strn_rforitm_f1un<>(cs, work)))
+gseq_rforitm$f1un<xs><x0>(xs,
+lam(cs) => strn_rforitm$f1un<>(cs, work)))
 end(*let*)//end-of-[gseq_strn$rconcat( xs )]
 //
 (* ****** ****** *)
