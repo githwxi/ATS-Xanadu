@@ -29,7 +29,7 @@ val ns =
 list_vt_nfun
 (10, lam(i) => i)
 val ns =
-map0_fun(ns, lam(i:sint)=>i*i)
+map0$fun(ns, lam(i:sint)=>i*i)
 val () = print0s("ns = ", ns, "\n")
 //
 (* ****** ****** *)
@@ -39,7 +39,7 @@ val ns =
 list_vt_nfun
 (10, lam(i) => i)
 val ns =
-maprev0_fun(ns, lam(i:sint)=>i*i)
+maprev0$fun(ns, lam(i:sint)=>i*i)
 val () = print0s("ns = ", ns, "\n")
 //
 (* ****** ****** *)
