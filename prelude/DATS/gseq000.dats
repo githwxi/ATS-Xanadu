@@ -182,8 +182,8 @@ gseq_fmake_fwork<xs><x0>
 (
 lam(work) =>
 (
-gseq_foritm_f1un<xs><x0>(xs, work);
-gseq_foritm0_f1un<ys><x0>(ys, work)))
+gseq_foritm$f1un<xs><x0>(xs, work);
+gseq_foritm0$f1un<ys><x0>(ys, work)))
 //
 (* ****** ****** *)
 //
@@ -211,8 +211,8 @@ gseq_fmake_fwork<xs><x0>
 (
 lam(work) =>
 (
-gseq_foritm0_f1un<ys><x0>(ys, work)
-;gseq_foritm_f1un<xs><x0>(xs, work)))
+gseq_foritm0$f1un<ys><x0>(ys, work)
+;gseq_foritm$f1un<xs><x0>(xs, work)))
 //
 (* ****** ****** *)
 //
@@ -244,7 +244,7 @@ gseq_fmake_fwork<xs><x0>
 (
 lam(work) =>
 (
-gseq_rforitm_f1un<xs><x0>(xs, work)))
+gseq_rforitm$f1un<xs><x0>(xs, work)))
 //
 #impltmp
 < xs:t0 >
@@ -256,8 +256,8 @@ gseq_fmake_fwork<xs><x0>
 (
 lam(work) =>
 (
-gseq_rforitm_f1un<xs><x0>(xs, work);
-gseq_foritm0_f1un<ys><x0>(ys, work)))
+gseq_rforitm$f1un<xs><x0>(xs, work);
+gseq_foritm0$f1un<ys><x0>(ys, work)))
 //
 (* ****** ****** *)
 (* ****** ****** *)

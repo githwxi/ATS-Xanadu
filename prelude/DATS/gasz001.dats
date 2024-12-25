@@ -184,14 +184,14 @@ end//let//end-of-[gasz_forall(xs)]
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_forall_f1un
+gasz_forall$f1un
   (xs, test) =
 (
 gasz_forall
 <xs><x0>(xs)) where {
 #impltmp
 forall$test1<x0>(x0) = test(x0)//impl
-}(*where*)//end-of-[gasz_forall_f1un(xs)]
+}(*where*)//end-of-[gasz_forall$f1un(xs)]
 //
 (* ****** ****** *)
 //
@@ -213,14 +213,14 @@ end//let//end-of-[gasz_exists(xs)]
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_exists_f1un
+gasz_exists$f1un
   (xs, test) =
 (
 gasz_exists
 <xs><x0>(xs)) where {
 #impltmp
 exists$test1<x0>(x0) = test(x0)//impl
-}(*where*)//end-of-[gasz_exists_f1un(xs)]
+}(*where*)//end-of-[gasz_exists$f1un(xs)]
 //
 (* ****** ****** *)
 //
@@ -265,7 +265,7 @@ end//let//end-of-[gasz_rforall(xs)]
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_rforall_f1un
+gasz_rforall$f1un
   (xs, test) =
 (
 gasz_rforall
@@ -273,7 +273,7 @@ gasz_rforall
 {
 #impltmp
 rforall$test1<x0>(x0) = test(x0)//impl
-}(*where*)//end-of-[gasz_rforall_f1un(xs)]
+}(*where*)//end-of-[gasz_rforall$f1un(xs)]
 //
 (* ****** ****** *)
 //
@@ -295,14 +295,14 @@ end//let//end-of-[gasz_rexists(xs)]
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_rexists_f1un
+gasz_rexists$f1un
   (xs, test) =
 (
 gasz_rexists
 <xs><x0>(xs)) where {
 #impltmp
 rexists$test1<x0>(x0) = test(x0)//impl
-}(*where*)//end-of-[gasz_rexists_f1un(xs)]
+}(*where*)//end-of-[gasz_rexists$f1un(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
