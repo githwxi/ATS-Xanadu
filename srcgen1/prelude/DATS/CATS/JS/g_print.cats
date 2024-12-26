@@ -47,33 +47,33 @@ return; // XATS2JS_char_print
 }
 /* ****** ****** */
 function
-XATS2JS_gint_print_sint
+XATS2JS_gint_print$sint
   (x0)
 {
 XATS2JS_g_print(x0);
-return; // gint_print_sint
+return; // gint_print$sint
 }
 function
-XATS2JS_gint_print_uint
+XATS2JS_gint_print$uint
   (x0)
 {
 XATS2JS_g_print(x0);
-return; // gint_print_uint
+return; // gint_print$uint
 }
 /* ****** ****** */
 function
-XATS2JS_gflt_print_sflt
+XATS2JS_gflt_print$sflt
   (x0)
 {
 XATS2JS_g_print(x0);
-return; // gint_print_sflt
+return; // gint_print$sflt
 }
 function
-XATS2JS_gflt_print_dflt
+XATS2JS_gflt_print$dflt
   (x0)
 {
 XATS2JS_g_print(x0);
-return; // gint_print_dflt
+return; // gint_print$dflt
 }
 /* ****** ****** */
 function

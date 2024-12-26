@@ -318,23 +318,23 @@ gint_lxor$uint<> = XATS2JS_gint_lxor$uint
 //
 #extern
 fun
-XATS2JS_gint_asrn_sint
-(x:sint, n:nint):sint = $extnam()
+XATS2JS_gint_asrn$sint
+(x: sint, n: nint):sint = $extnam()
 #extern
 fun
-XATS2JS_gint_lsln_uint
-(x:uint, n:nint):uint = $extnam()
+XATS2JS_gint_lsln$uint
+(x: uint, n: nint):uint = $extnam()
 #extern
 fun
-XATS2JS_gint_lsrn_uint
-(x:uint, n:nint):uint = $extnam()
+XATS2JS_gint_lsrn$uint
+(x: uint, n: nint):uint = $extnam()
 //
 #impltmp
-gint_asrn_sint<> = XATS2JS_gint_asrn_sint
+gint_asrn$sint<> = XATS2JS_gint_asrn$sint
 #impltmp
-gint_lsln_uint<> = XATS2JS_gint_lsln_uint
+gint_lsln$uint<> = XATS2JS_gint_lsln$uint
 #impltmp
-gint_lsrn_uint<> = XATS2JS_gint_lsrn_uint
+gint_lsrn$uint<> = XATS2JS_gint_lsrn$uint
 //
 (* ****** ****** *)
 //
@@ -878,13 +878,13 @@ let
 //
 #extern
 fun
-XATS2JS_strn_forall_f1un
+XATS2JS_strn_forall$f1un
 ( cs: strn
 , f0: (cgtz) -> bool): bool
 = $extnam((*self*))//native
 //
 in
-XATS2JS_strn_forall_f1un
+XATS2JS_strn_forall$f1un
 ( cs
 , lam(c0) => forall$test<cgtz>(c0))
 end//let//end-of-[strn_forall<>(cs)]
@@ -975,14 +975,14 @@ XATS2JS_strn_vt_length1
 //
 #impltmp
 strn_vt_forall0<>(cs) =
-XATS2JS_strn_vt_forall_f1un
+XATS2JS_strn_vt_forall$f1un
 ( cs
 , lam(c0) =>
   forall$test0<cgtz>(c0) ) where
 {
 #extern
 fun
-XATS2JS_strn_vt_forall_f1un
+XATS2JS_strn_vt_forall$f1un
 ( cs: ~strn_vt
 , f0:
   (cgtz) -> bool): bool = $extnam()
@@ -992,14 +992,14 @@ XATS2JS_strn_vt_forall_f1un
 //
 #impltmp
 strn_vt_forall1<>(cs) =
-XATS2JS_strn_vt_forall_f1un
+XATS2JS_strn_vt_forall$f1un
 ( cs
 , lam(c0) =>
   forall$test1<cgtz>(c0) ) where
 {
 #extern
 fun
-XATS2JS_strn_vt_forall_f1un
+XATS2JS_strn_vt_forall$f1un
 ( cs: !strn_vt
 , f0:
   (cgtz) -> bool): bool = $extnam()
@@ -1009,14 +1009,14 @@ XATS2JS_strn_vt_forall_f1un
 //
 #impltmp
 strn_vt_rforall0<>(cs) =
-XATS2JS_strn_vt_rforall_f1un
+XATS2JS_strn_vt_rforall$f1un
 ( cs
 , lam(c0) =>
   rforall$test0<cgtz>(c0) ) where
 {
 #extern
 fun
-XATS2JS_strn_vt_rforall_f1un
+XATS2JS_strn_vt_rforall$f1un
 ( cs: ~strn_vt
 , f0:
   (cgtz) -> bool): bool = $extnam()
@@ -1026,14 +1026,14 @@ XATS2JS_strn_vt_rforall_f1un
 //
 #impltmp
 strn_vt_rforall1<>(cs) =
-XATS2JS_strn_vt_rforall_f1un
+XATS2JS_strn_vt_rforall$f1un
 ( cs
 , lam(c0) =>
   rforall$test1<cgtz>(c0) ) where
 {
 #extern
 fun
-XATS2JS_strn_vt_rforall_f1un
+XATS2JS_strn_vt_rforall$f1un
 ( cs: !strn_vt
 , f0:
   (cgtz) -> bool): bool = $extnam()

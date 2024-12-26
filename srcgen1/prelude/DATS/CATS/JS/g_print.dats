@@ -31,48 +31,48 @@ XATS2JS_char_print
 (* ****** ****** *)
 //
 #impltmp
-gint_print_sint<> =
-XATS2JS_gint_print_sint
+gint_print$sint<> =
+XATS2JS_gint_print$sint
 where
 {
 #extern
 fun
-XATS2JS_gint_print_sint
+XATS2JS_gint_print$sint
 ( x0: sint ): void = $extnam()
 }
 //
 #impltmp
-gint_print_uint<> =
-XATS2JS_gint_print_uint
+gint_print$uint<> =
+XATS2JS_gint_print$uint
 where
 {
 #extern
 fun
-XATS2JS_gint_print_uint
+XATS2JS_gint_print$uint
 ( x0: uint ): void = $extnam()
 }
 //
 (* ****** ****** *)
 //
 #impltmp
-gflt_print_sflt<> =
-XATS2JS_gflt_print_sflt
+gflt_print$sflt<> =
+XATS2JS_gflt_print$sflt
 where
 {
 #extern
 fun
-XATS2JS_gflt_print_sflt
+XATS2JS_gflt_print$sflt
 ( x0: sflt ): void = $extnam()
 }
 //
 #impltmp
-gflt_print_dflt<> =
-XATS2JS_gflt_print_dflt
+gflt_print$dflt<> =
+XATS2JS_gflt_print$dflt
 where
 {
 #extern
 fun
-XATS2JS_gflt_print_dflt
+XATS2JS_gflt_print$dflt
 ( x0: dflt ): void = $extnam()
 }
 //

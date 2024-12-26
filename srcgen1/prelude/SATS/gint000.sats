@@ -125,11 +125,11 @@ gint_lxor$uint(x: uint, y: uint): uint
 //
 (* ****** ****** *)
 fun<> // arith r-shift: sign-filling
-gint_asrn_sint(x: sint, n: nint): sint
+gint_asrn$sint(x: sint, n: nint): sint
 fun<> // logic l-shift: zero-filling
-gint_lsln_uint(x: uint, n: nint): uint
+gint_lsln$uint(x: uint, n: nint): uint
 fun<> // logic r-shift: zero-filling
-gint_lsrn_uint(x: uint, n: nint): uint
+gint_lsrn$uint(x: uint, n: nint): uint
 (* ****** ****** *)
 //
 fun<>
@@ -481,9 +481,9 @@ gint_repeat$sint$f0un
 //
 (* ****** ****** *)
 //
-#symload asrn with gint_asrn_sint of 1000
-#symload lsln with gint_lsln_uint of 1000
-#symload lsrn with gint_lsrn_uint of 1000
+#symload asrn with gint_asrn$sint of 1000
+#symload lsln with gint_lsln$uint of 1000
+#symload lsrn with gint_lsrn$uint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

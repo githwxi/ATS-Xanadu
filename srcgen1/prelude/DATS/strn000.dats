@@ -630,7 +630,7 @@ strn_vt2t(strn_vt_tabulate<n0>(n0))
 //
 #impltmp
 <>(*tmp*)
-strn_tabulate_f1un
+strn_tabulate$f1un
 {n}
 (n0, f0) =
 (
@@ -642,7 +642,7 @@ tabulate$fopr<cgtz><n>(i0) = f0(i0)
 }
 #impltmp
 <>(*tmp*)
-strn_vt_tabulate_f1un
+strn_vt_tabulate$f1un
 {n}
 (n0, f0) =
 (
