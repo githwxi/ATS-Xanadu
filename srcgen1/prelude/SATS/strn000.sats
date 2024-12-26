@@ -443,7 +443,7 @@ strn_tabulate
 ( n0: sint(n) ) : strn(n)
 //
 fun<>
-strn_tabulate_f1un
+strn_tabulate$f1un
 {n:nat}
 ( n0
 : sint(n)

@@ -275,7 +275,7 @@ local
 fun
 DLRDT
 (nm0: strn): strn =
-strn_tabulate_f1un
+strn_tabulate$f1un
 (
 n0 + 2,
 lam i0 => fopr i0)

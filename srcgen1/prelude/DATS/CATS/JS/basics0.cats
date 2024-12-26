@@ -211,14 +211,14 @@ XATS2JS_sint_isxdigit
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_gint_neg_sint
+XATS2JS_gint_neg$sint
   (  x0  )
 {
     return (-x0); // neg
 }
 //
 function
-XATS2JS_gint_abs_sint
+XATS2JS_gint_abs$sint
   (  x0  )
 {
     if (x0 >= 0)
@@ -231,26 +231,26 @@ XATS2JS_gint_abs_sint
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_gint_suc_sint
+XATS2JS_gint_suc$sint
   (  x0  )
 {
     return (x0 + 1); // +1
 }
 function
-XATS2JS_gint_suc_uint
+XATS2JS_gint_suc$uint
   (  x0  )
 {
     return (x0 + 1); // +1
 }
 //
 function
-XATS2JS_gint_pre_sint
+XATS2JS_gint_pre$sint
   (  x0  )
 {
     return (x0 - 1); // -1
 }
 function
-XATS2JS_gint_pre_uint
+XATS2JS_gint_pre$uint
   (  x0  )
 {
     return (x0 - 1); // -1
@@ -259,25 +259,25 @@ XATS2JS_gint_pre_uint
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_gint_lnot_uint
+XATS2JS_gint_lnot$uint
   (  x0  )
 {
   return (~x0); // lnot
 }
 function
-XATS2JS_gint_lor2_uint
+XATS2JS_gint_lor2$uint
   (x0, y0)
 {
   return (x0|y0); // lor2
 }
 function
-XATS2JS_gint_land_uint
+XATS2JS_gint_land$uint
   (x0, y0)
 {
   return (x0&y0); // land
 }
 function
-XATS2JS_gint_lxor_uint
+XATS2JS_gint_lxor$uint
   (x0, y0)
 {
   return (x0^y0); // lxor
@@ -286,19 +286,19 @@ XATS2JS_gint_lxor_uint
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_gint_asrn_sint
+XATS2JS_gint_asrn$sint
   (x0, n0)
 {
     return (x0>>n0); // asrn
 }
 function
-XATS2JS_gint_lsln_uint
+XATS2JS_gint_lsln$uint
   (x0, n0)
 {
     return (x0<<n0); // lsln
 }
 function
-XATS2JS_gint_lsrn_uint
+XATS2JS_gint_lsrn$uint
   (x0, n0)
 {
     return (x0>>>n0); // lsrn
@@ -307,26 +307,26 @@ XATS2JS_gint_lsrn_uint
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_gint_lt_sint_sint
+XATS2JS_gint_lt$sint$sint
   (x1, x2)
 {
     return (x1 < x2); // lt
 }
 function
-XATS2JS_gint_lt_uint_uint
+XATS2JS_gint_lt$uint$uint
   (x1, x2)
 {
     return (x1 < x2); // lt
 }
 /* ****** ****** */
 function
-XATS2JS_gint_gt_sint_sint
+XATS2JS_gint_gt$sint$sint
   (x1, x2)
 {
     return (x1 > x2); // gt
 }
 function
-XATS2JS_gint_gt_uint_uint
+XATS2JS_gint_gt$uint$uint
   (x1, x2)
 {
     return (x1 > x2); // gt
@@ -335,13 +335,13 @@ XATS2JS_gint_gt_uint_uint
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_gint_eq_sint_sint
+XATS2JS_gint_eq$sint$sint
   (x1, x2)
 {
     return (x1 === x2); // eq
 }
 function
-XATS2JS_gint_eq_uint_uint
+XATS2JS_gint_eq$uint$uint
   (x1, x2)
 {
     return (x1 === x2); // eq
@@ -350,13 +350,13 @@ XATS2JS_gint_eq_uint_uint
 /* ****** ****** */
 //
 function
-XATS2JS_gint_lte_sint_sint
+XATS2JS_gint_lte$sint$sint
   (x1, x2)
 {
     return (x1 <= x2); // lte
 }
 function
-XATS2JS_gint_lte_uint_uint
+XATS2JS_gint_lte$uint$uint
   (x1, x2)
 {
     return (x1 <= x2); // lte
@@ -365,13 +365,13 @@ XATS2JS_gint_lte_uint_uint
 /* ****** ****** */
 //
 function
-XATS2JS_gint_gte_sint_sint
+XATS2JS_gint_gte$sint$sint
   (x1, x2)
 {
     return (x1 >= x2); // gte
 }
 function
-XATS2JS_gint_gte_uint_uint
+XATS2JS_gint_gte$uint$uint
   (x1, x2)
 {
     return (x1 >= x2); // gte
@@ -380,13 +380,13 @@ XATS2JS_gint_gte_uint_uint
 /* ****** ****** */
 //
 function
-XATS2JS_gint_neq_sint_sint
+XATS2JS_gint_neq$sint$sint
   (x1, x2)
 {
     return (x1 !== x2); // neq
 }
 function
-XATS2JS_gint_neq_uint_uint
+XATS2JS_gint_neq$uint$uint
   (x1, x2)
 {
     return (x1 !== x2); // neq
@@ -395,7 +395,7 @@ XATS2JS_gint_neq_uint_uint
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_gint_cmp_sint_sint
+XATS2JS_gint_cmp$sint$sint
   (x1, x2)
 {
     if (x1 < x2)
@@ -405,7 +405,7 @@ XATS2JS_gint_cmp_sint_sint
     // end of [if]
 }
 function
-XATS2JS_gint_cmp_uint_uint
+XATS2JS_gint_cmp$uint$uint
   (x1, x2)
 {
     if (x1 < x2)
@@ -417,28 +417,28 @@ XATS2JS_gint_cmp_uint_uint
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_gint_add_sint_sint
+XATS2JS_gint_add$sint$sint
   (x1, x2)
 {
     return (x1 + x2); // add
 }
 /* ****** ****** */
 function
-XATS2JS_gint_sub_sint_sint
+XATS2JS_gint_sub$sint$sint
   (x1, x2)
 {
     return (x1 - x2); // sub
 }
 /* ****** ****** */
 function
-XATS2JS_gint_mul_sint_sint
+XATS2JS_gint_mul$sint$sint
   (x1, x2)
 {
     return (x1 * x2); // mul
 }
 /* ****** ****** */
 function
-XATS2JS_gint_mod_sint_sint
+XATS2JS_gint_mod$sint$sint
   (x1, x2)
 {
     return (x1 % x2); // mod
@@ -446,7 +446,7 @@ XATS2JS_gint_mod_sint_sint
 /* ****** ****** */
 //
 function
-XATS2JS_gint_div_sint_sint
+XATS2JS_gint_div$sint$sint
   (x1, x2)
 { 
 //
@@ -827,7 +827,7 @@ XATS2JS_strtmp_vt_set$at
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_strn_forall_f1un
+XATS2JS_strn_forall$f1un
   (cs, f0)
 {
     var i0;
@@ -838,13 +838,13 @@ XATS2JS_strn_forall_f1un
 	var c0 = cs.charCodeAt(i0);
 	if(!f0(c0)){res = false; break;}
     }
-    return res; // strn_forall_f1un
+    return res; // strn_forall$f1un
 }
 //
 /* ****** ****** */
 //
 function
-XATS2JS_strn_rforall_f1un
+XATS2JS_strn_rforall$f1un
   (cs, f0)
 {
     var i0;
@@ -855,13 +855,13 @@ XATS2JS_strn_rforall_f1un
 	var c0 = cs.charCodeAt(i0-1);
 	if(!f0(c0)){res = false; break;}
     }
-    return res; // strn_rforall_f1un
+    return res; // strn_rforall$f1un
 }
 //
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_strn_vt_forall_f1un
+XATS2JS_strn_vt_forall$f1un
   (cs, f0)
 {
     var i0;
@@ -871,13 +871,13 @@ XATS2JS_strn_vt_forall_f1un
     {
 	if(!f0(cs[i0])){res = false; break;}
     }
-    return res; // strn_vt_forall_f1un
+    return res; // strn_vt_forall$f1un
 }
 //
 /* ****** ****** */
 //
 function
-XATS2JS_strn_vt_rforall_f1un
+XATS2JS_strn_vt_rforall$f1un
   (cs, f0)
 {
     var i0;
@@ -887,7 +887,7 @@ XATS2JS_strn_vt_rforall_f1un
     {
 	if(!f0(cs[i0-1])){res = false; break;}
     }
-    return res; // strn_vt_rforall_f1un
+    return res; // strn_vt_rforall$f1un
 }
 //
 ////////////////////////////////////////////////////////////////

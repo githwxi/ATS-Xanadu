@@ -77,35 +77,35 @@ XATS2JS_NODE_strn_fprint
 /* ****** ****** */
 //
 function
-XATS2JS_NODE_gint_fprint_sint
+XATS2JS_NODE_gint_fprint$sint
   (out, obj)
 {
   XATS2JS_NODE_g_fprint(out, obj);
-  return ; // XATS2JS_NODE_gint_fprint_sint
+  return ; // XATS2JS_NODE_gint_fprint$sint
 }
 function
-XATS2JS_NODE_gint_fprint_uint
+XATS2JS_NODE_gint_fprint$uint
   (out, obj)
 {
   XATS2JS_NODE_g_fprint(out, obj);
-  return ; // XATS2JS_NODE_gint_fprint_uint
+  return ; // XATS2JS_NODE_gint_fprint$uint
 }
 //
 /* ****** ****** */
 //
 function
-XATS2JS_NODE_gflt_fprint_sflt
+XATS2JS_NODE_gflt_fprint$sflt
   (out, obj)
 {
   XATS2JS_NODE_g_fprint(out, obj);
-  return ; // XATS2JS_NODE_gflt_fprint_sflt
+  return ; // XATS2JS_NODE_gflt_fprint$sflt
 }
 function
-XATS2JS_NODE_gflt_fprint_dflt
+XATS2JS_NODE_gflt_fprint$dflt
   (out, obj)
 {
   XATS2JS_NODE_g_fprint(out, obj);
-  return ; // XATS2JS_NODE_gflt_fprint_dflt
+  return ; // XATS2JS_NODE_gflt_fprint$dflt
 }
 //
 /* ****** ****** */

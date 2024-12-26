@@ -379,14 +379,14 @@ XATS2JS_streax_vt_uncons_funs
 //
 #extern
 fun
-XATS2JS_strm_vt_map0_f1un
+XATS2JS_strm_vt_map0$f1un
 {x0:vt}
 {y0:vt}
 ( xs: strm_vt(x0)
 , f0: (x0) -> (y0)): strm_vt(y0) = $extnam()
 //
 #implfun
-XATS2JS_strm_vt_map0_f1un
+XATS2JS_strm_vt_map0$f1un
 {x0}{y0}
 (xs, f0) =
 (
@@ -394,19 +394,19 @@ strm_vt_map0<x0><y0>(xs)
 ) where
 {
 #impltmp map$fopr0<x0><y0>(x0) = f0(x0)
-} (* end of [XATS2JS_strm_vt_map0_f1un] *)
+} (* end of [XATS2JS_strm_vt_map0$f1un] *)
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_strm_vt_filter0_f1un
+XATS2JS_strm_vt_filter0$f1un
 {x0:vt}
 ( xs: strm_vt(x0)
 , f0: (x0) -> bool): strm_vt(x0) = $extnam()
 //
 #implfun
-XATS2JS_strm_vt_filter0_f1un
+XATS2JS_strm_vt_filter0$f1un
 {x0}(xs, f0) =
 (
 strm_vt_filter0<x0>(xs)
@@ -418,7 +418,7 @@ strm_vt_filter0<x0>(xs)
 //
   #impltmp filter$test1<x0>(x0) = f0(x0)
 //
-} (* end of [XATS2JS_strm_vt_filter0_f1un] *)
+} (* end of [XATS2JS_strm_vt_filter0$f1un] *)
 //
 (* ****** ****** *)
 //
