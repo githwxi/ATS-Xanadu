@@ -42,12 +42,12 @@ Authoremail: gmhwxiATgmailDOTcom
 char_lt
 (c1, c2) =
 (
-XATS2JS_char_lt
+XATS2PY_char_lt
   (c1, c2)) where
 {
 #extern
 fun
-XATS2JS_char_lt
+XATS2PY_char_lt
 (c1: char, c2: char): bool = $extnam()
 }
 //
@@ -58,12 +58,12 @@ XATS2JS_char_lt
 char_gt
 (c1, c2) =
 (
-XATS2JS_char_gt
+XATS2PY_char_gt
   (c1, c2)) where
 {
 #extern
 fun
-XATS2JS_char_gt
+XATS2PY_char_gt
 (c1: char, c2: char): bool = $extnam()
 }
 //
@@ -74,12 +74,12 @@ XATS2JS_char_gt
 char_eq
 (c1, c2) =
 (
-XATS2JS_char_eq
+XATS2PY_char_eq
   (c1, c2)) where
 {
 #extern
 fun
-XATS2JS_char_eq
+XATS2PY_char_eq
 (c1: char, c2: char): bool = $extnam()
 }
 //
@@ -90,12 +90,12 @@ XATS2JS_char_eq
 char_lte
 (c1, c2) =
 (
-XATS2JS_char_lte
+XATS2PY_char_lte
   (c1, c2)) where
 {
 #extern
 fun
-XATS2JS_char_lte
+XATS2PY_char_lte
 (c1: char, c2: char): bool = $extnam()
 }
 //
@@ -106,12 +106,12 @@ XATS2JS_char_lte
 char_gte
 (c1, c2) =
 (
-XATS2JS_char_gte
+XATS2PY_char_gte
   (c1, c2)) where
 {
 #extern
 fun
-XATS2JS_char_gte
+XATS2PY_char_gte
 (c1: char, c2: char): bool = $extnam()
 }
 //
@@ -122,12 +122,12 @@ XATS2JS_char_gte
 char_neq
 (c1, c2) =
 (
-XATS2JS_char_neq
+XATS2PY_char_neq
   (c1, c2)) where
 {
 #extern
 fun
-XATS2JS_char_neq
+XATS2PY_char_neq
 (c1: char, c2: char): bool = $extnam()
 }
 //
@@ -139,12 +139,12 @@ XATS2JS_char_neq
 char_add$sint
   (c1, i2) =
 (
-XATS2JS_char_add$sint
+XATS2PY_char_add$sint
   (c1, i2)) where
 {
 #extern
 fun
-XATS2JS_char_add$sint
+XATS2PY_char_add$sint
 (c1: char, i2: sint): char = $extnam()
 }
 //
@@ -155,12 +155,12 @@ XATS2JS_char_add$sint
 char_sub$char
   (c1, c2) =
 (
-XATS2JS_char_sub$char
+XATS2PY_char_sub$char
   (c1, c2)) where
 {
 #extern
 fun
-XATS2JS_char_sub$char
+XATS2PY_char_sub$char
 (c1: char, c2: char): sint = $extnam()
 }
 //
@@ -177,12 +177,12 @@ Thu 05 Sep 2024 11:11:27 AM EDT
 char_print
   ( c0 ) =
 (
-XATS2JS_char_print
+XATS2PY_char_print
   ( c0 )) where
 {
 #extern
 fun
-XATS2JS_char_print(c0: char): void = $extnam()
+XATS2PY_char_print(c0: char): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -191,4 +191,4 @@ XATS2JS_char_print(c0: char): void = $extnam()
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_char000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_char000.dats] *)
