@@ -191,21 +191,21 @@ char_upper
 (* ****** ****** *)
 //
 fun<>
-char_add_sint
+char_add$sint
 {c1:c0
 ;i2:i0}
 ( c1: char(c1)
 , i2: sint(i2)): char(*0*)
 //
 fun<>
-char_sub_char
+char_sub$char
 {c1
 ,c2:c0}
 ( c1: char(c1)
 , c2: char(c2)): sint(c1-c2)
 //
-#symload + with char_add_sint of 1000
-#symload - with char_sub_char of 1000
+#symload + with char_add$sint of 1000
+#symload - with char_sub$char of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

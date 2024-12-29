@@ -77,7 +77,7 @@ XATS2JS_char_neq
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_char_add_sint
+XATS2JS_char_add$sint
   (c1, i2)
 {
   let c2 = c1+i2
@@ -85,7 +85,7 @@ XATS2JS_char_add_sint
 }
 //
 function
-XATS2JS_char_sub_char
+XATS2JS_char_sub$char
   (c1, c2)
 {
   return (c1 - c2) // HX: char=int8
