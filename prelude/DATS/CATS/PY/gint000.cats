@@ -51,9 +51,9 @@ def XATS2PY_sint_gte_sint(i1, i2):
   return (i1 >= i2) ## HX: gte
 ##
 def XATS2PY_sint_eq_sint(i1, i2):
-  return (i1 === i2) ## HX: equal
+  return (i1 == i2) ## HX: equal
 def XATS2PY_sint_neq_sint(i1, i2):
-  return (i1 !== i2) ## HX: noteq
+  return (i1 != i2) ## HX: noteq
 ##
 ########################################################################.
 ##

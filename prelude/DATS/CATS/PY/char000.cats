@@ -51,12 +51,11 @@ def XATS2PY_char_neq(c1, c2):
 ##
 ########################################################################.
 ##
-def XATS2PY_char_add$sint(c1, i2):
+def XATS2PY_char_add_sint(c1, i2):
   c2 = c1+i2
   return (c2%256) ## HX: char=int8
-}
 ##
-def XATS2PY_char_sub$char(c1, c2):
+def XATS2PY_char_sub_char(c1, c2):
   return (c1 - c2) ## HX: char=int8
 ##
 ########################################################################.

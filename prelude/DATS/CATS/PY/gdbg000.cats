@@ -36,7 +36,7 @@
 ########################################################################.
 ##
 def XATS2PY_bool_assert_errmsg(cond, emsg):
-  if (!cond):
+  if not(cond):
     raise Exception("XATS2PY_bool_assert_errmsg: emsg = " + emsg)
   return ## HX: void is returned!
 ##

@@ -36,11 +36,11 @@ Authoremail: gmhwxiATgmailDOTcom
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_bool_assert_errmsg
+XATS2JS_bool_assert$errmsg
   (cond, emsg)
 {
   if (!cond) {
-    throw new Error("XATS2JS_bool_assert_errmsg: emsg = " + emsg)
+    throw new Error("XATS2JS_bool_assert$errmsg: emsg = " + emsg)
   } ; return // HX: void is returned!
 }
 //
