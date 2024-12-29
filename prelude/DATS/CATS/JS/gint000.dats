@@ -55,160 +55,160 @@ XATS2JS_sint_neg
 //
 #impltmp
 <(*tmp*)>
-sint_lt_sint
+sint_lt$sint
   (i1, i2) =
 (
-XATS2JS_sint_lt_sint
+XATS2JS_sint_lt$sint
   (i1, i2)) where
 {
 #extern
 fun
-XATS2JS_sint_lt_sint
+XATS2JS_sint_lt$sint
 (i1: sint, i2: sint): bool = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-sint_gt_sint
+sint_gt$sint
   (i1, i2) =
 (
-XATS2JS_sint_gt_sint
+XATS2JS_sint_gt$sint
   (i1, i2)) where
 {
 #extern
 fun
-XATS2JS_sint_gt_sint
+XATS2JS_sint_gt$sint
 (i1: sint, i2: sint): bool = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-sint_eq_sint
+sint_eq$sint
   (i1, i2) =
 (
-XATS2JS_sint_eq_sint
+XATS2JS_sint_eq$sint
   (i1, i2)) where
 {
 #extern
 fun
-XATS2JS_sint_eq_sint
-(i1: sint, i2: sint): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-sint_lte_sint
-  (i1, i2) =
-(
-XATS2JS_sint_lte_sint
-  (i1, i2)) where
-{
-#extern
-fun
-XATS2JS_sint_lte_sint
-(i1: sint, i2: sint): bool = $extnam()
-}
-//
-#impltmp
-<(*tmp*)>
-sint_gte_sint
-  (i1, i2) =
-(
-XATS2JS_sint_gte_sint
-  (i1, i2)) where
-{
-#extern
-fun
-XATS2JS_sint_gte_sint
-(i1: sint, i2: sint): bool = $extnam()
-}
-//
-#impltmp
-<(*tmp*)>
-sint_neq_sint
-  (i1, i2) =
-(
-XATS2JS_sint_neq_sint
-  (i1, i2)) where
-{
-#extern
-fun
-XATS2JS_sint_neq_sint
+XATS2JS_sint_eq$sint
 (i1: sint, i2: sint): bool = $extnam()
 }
 //
 (* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+sint_lte$sint
+  (i1, i2) =
+(
+XATS2JS_sint_lte$sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2JS_sint_lte$sint
+(i1: sint, i2: sint): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_gte$sint
+  (i1, i2) =
+(
+XATS2JS_sint_gte$sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2JS_sint_gte$sint
+(i1: sint, i2: sint): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_neq$sint
+  (i1, i2) =
+(
+XATS2JS_sint_neq$sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2JS_sint_neq$sint
+(i1: sint, i2: sint): bool = $extnam()
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-sint_add_sint
+sint_add$sint
   (i1, i2) =
 (
-XATS2JS_sint_add_sint
+XATS2JS_sint_add$sint
   (i1, i2)) where
 {
 #extern
 fun
-XATS2JS_sint_add_sint
+XATS2JS_sint_add$sint
 (i1: sint, i2: sint): sint = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-sint_sub_sint
+sint_sub$sint
   (i1, i2) =
 (
-XATS2JS_sint_sub_sint
+XATS2JS_sint_sub$sint
   (i1, i2)) where
 {
 #extern
 fun
-XATS2JS_sint_sub_sint
+XATS2JS_sint_sub$sint
 (i1: sint, i2: sint): sint = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-sint_mul_sint
+sint_mul$sint
   (i1, i2) =
 (
-XATS2JS_sint_mul_sint
+XATS2JS_sint_mul$sint
   (i1, i2)) where
 {
 #extern
 fun
-XATS2JS_sint_mul_sint
+XATS2JS_sint_mul$sint
 (i1: sint, i2: sint): sint = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-sint_div_sint
+sint_div$sint
   (i1, i2) =
 (
-XATS2JS_sint_div_sint
+XATS2JS_sint_div$sint
   (i1, i2)) where
 {
 #extern
 fun
-XATS2JS_sint_div_sint
+XATS2JS_sint_div$sint
 (i1: sint, i2: sint): sint = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-sint_mod_sint
+sint_mod$sint
   (i1, i2) =
 (
-XATS2JS_sint_mod_sint
+XATS2JS_sint_mod$sint
   (i1, i2)) where
 {
 #extern
 fun
-XATS2JS_sint_mod_sint
+XATS2JS_sint_mod$sint
 (i1: sint, i2: sint): sint = $extnam()
 }
 //

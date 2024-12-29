@@ -73,39 +73,39 @@ XATS2JS_dflt_cbrt
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_dflt_lt_dflt
+XATS2JS_dflt_lt$dflt
   (f1, f2)
 {
   return (f1 < f2) // HX: lt
 }
 function
-XATS2JS_dflt_gt_dflt
+XATS2JS_dflt_gt$dflt
   (f1, f2)
 {
   return (f1 > f2) // HX: gt
 }
 //
 function
-XATS2JS_dflt_lte_dflt
+XATS2JS_dflt_lte$dflt
   (f1, f2)
 {
   return (f1 <= f2) // HX: lte
 }
 function
-XATS2JS_dflt_gte_dflt
+XATS2JS_dflt_gte$dflt
   (f1, f2)
 {
   return (f1 >= f2) // HX: gte
 }
 //
 function
-XATS2JS_dflt_eq_dflt
+XATS2JS_dflt_eq$dflt
   (f1, f2)
 {
   return (f1 === f2) // HX: equal
 }
 function
-XATS2JS_dflt_neq_dflt
+XATS2JS_dflt_neq$dflt
   (f1, f2)
 {
   return (f1 !== f2) // HX: noteq
@@ -114,14 +114,14 @@ XATS2JS_dflt_neq_dflt
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_dflt_add_dflt
+XATS2JS_dflt_add$dflt
   (f1, f2)
 {
   return (f1 + f2) // HX: add
 }
 //
 function
-XATS2JS_dflt_sub_dflt
+XATS2JS_dflt_sub$dflt
   (f1, f2)
 {
   return (f1 - f2) // HX: sub
@@ -129,21 +129,21 @@ XATS2JS_dflt_sub_dflt
 //
 //
 function
-XATS2JS_dflt_mul_dflt
+XATS2JS_dflt_mul$dflt
   (f1, f2)
 {
   return (f1 * f2) // HX: mul
 }
 //
 function
-XATS2JS_dflt_div_dflt
+XATS2JS_dflt_div$dflt
   (f1, f2)
 {
   return (f1 / f2) // HX: div
 }
 //
 function
-XATS2JS_dflt_mod_dflt
+XATS2JS_dflt_mod$dflt
   (f1, f2)
 {
   return (f1 % f2) // HX: mod

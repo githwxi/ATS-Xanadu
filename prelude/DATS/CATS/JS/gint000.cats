@@ -45,39 +45,39 @@ XATS2JS_sint_neg
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_sint_lt_sint
+XATS2JS_sint_lt$sint
   (i1, i2)
 {
   return (i1 < i2) // HX: lt
 }
 function
-XATS2JS_sint_gt_sint
+XATS2JS_sint_gt$sint
   (i1, i2)
 {
   return (i1 > i2) // HX: gt
 }
 //
 function
-XATS2JS_sint_lte_sint
+XATS2JS_sint_lte$sint
   (i1, i2)
 {
   return (i1 <= i2) // HX: lte
 }
 function
-XATS2JS_sint_gte_sint
+XATS2JS_sint_gte$sint
   (i1, i2)
 {
   return (i1 >= i2) // HX: gte
 }
 //
 function
-XATS2JS_sint_eq_sint
+XATS2JS_sint_eq$sint
   (i1, i2)
 {
   return (i1 === i2) // HX: equal
 }
 function
-XATS2JS_sint_neq_sint
+XATS2JS_sint_neq$sint
   (i1, i2)
 {
   return (i1 !== i2) // HX: noteq
@@ -86,36 +86,35 @@ XATS2JS_sint_neq_sint
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_sint_add_sint
+XATS2JS_sint_add$sint
   (i1, i2)
 {
   return (i1 + i2) // HX: add
 }
 //
 function
-XATS2JS_sint_sub_sint
+XATS2JS_sint_sub$sint
   (i1, i2)
 {
   return (i1 - i2) // HX: sub
 }
 //
-//
 function
-XATS2JS_sint_mul_sint
+XATS2JS_sint_mul$sint
   (i1, i2)
 {
   return (i1 * i2) // HX: mul
 }
 //
 function
-XATS2JS_sint_div_sint
+XATS2JS_sint_div$sint
   (i1, i2)
 {
   return Math.trunc(i1 / i2)
 }
 //
 function
-XATS2JS_sint_mod_sint
+XATS2JS_sint_mod$sint
   (i1, i2)
 {
   return (i1 % i2) // HX: mod
