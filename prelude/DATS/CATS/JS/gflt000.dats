@@ -116,15 +116,15 @@ XATS2JS_dflt_cbrt
 //
 #impltmp
 <(*tmp*)>
-dflt_lt_dflt
+dflt_lt$dflt
   (f1, f2) =
 (
-XATS2JS_dflt_lt_dflt
+XATS2JS_dflt_lt$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2JS_dflt_lt_dflt
+XATS2JS_dflt_lt$dflt
 (f1: dflt, f2: dflt): bool = $extnam()
 }
 //
@@ -133,143 +133,143 @@ XATS2JS_dflt_lt_dflt
 dflt_gt_dflt
   (f1, f2) =
 (
-XATS2JS_dflt_gt_dflt
+XATS2JS_dflt_gt$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2JS_dflt_gt_dflt
+XATS2JS_dflt_gt$dflt
 (f1: dflt, f2: dflt): bool = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-dflt_eq_dflt
+dflt_eq$dflt
   (f1, f2) =
 (
-XATS2JS_dflt_eq_dflt
+XATS2JS_dflt_eq$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2JS_dflt_eq_dflt
-(f1: dflt, f2: dflt): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-dflt_lte_dflt
-  (f1, f2) =
-(
-XATS2JS_dflt_lte_dflt
-  (f1, f2)) where
-{
-#extern
-fun
-XATS2JS_dflt_lte_dflt
-(f1: dflt, f2: dflt): bool = $extnam()
-}
-//
-#impltmp
-<(*tmp*)>
-dflt_gte_dflt
-  (f1, f2) =
-(
-XATS2JS_dflt_gte_dflt
-  (f1, f2)) where
-{
-#extern
-fun
-XATS2JS_dflt_gte_dflt
-(f1: dflt, f2: dflt): bool = $extnam()
-}
-//
-#impltmp
-<(*tmp*)>
-dflt_neq_dflt
-  (f1, f2) =
-(
-XATS2JS_dflt_neq_dflt
-  (f1, f2)) where
-{
-#extern
-fun
-XATS2JS_dflt_neq_dflt
+XATS2JS_dflt_eq$dflt
 (f1: dflt, f2: dflt): bool = $extnam()
 }
 //
 (* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+dflt_lte$dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_lte$dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_lte$dflt
+(f1: dflt, f2: dflt): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+dflt_gte$dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_gte$dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_gte$dflt
+(f1: dflt, f2: dflt): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+dflt_neq$dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_neq$dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_neq$dflt
+(f1: dflt, f2: dflt): bool = $extnam()
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-dflt_add_dflt
+dflt_add$dflt
   (f1, f2) =
 (
-XATS2JS_dflt_add_dflt
+XATS2JS_dflt_add$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2JS_dflt_add_dflt
+XATS2JS_dflt_add$dflt
 (f1: dflt, f2: dflt): dflt = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-dflt_sub_dflt
+dflt_sub$dflt
   (f1, f2) =
 (
-XATS2JS_dflt_sub_dflt
+XATS2JS_dflt_sub$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2JS_dflt_sub_dflt
+XATS2JS_dflt_sub$dflt
 (f1: dflt, f2: dflt): dflt = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-dflt_mul_dflt
+dflt_mul$dflt
   (f1, f2) =
 (
-XATS2JS_dflt_mul_dflt
+XATS2JS_dflt_mul$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2JS_dflt_mul_dflt
+XATS2JS_dflt_mul$dflt
 (f1: dflt, f2: dflt): dflt = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-dflt_div_dflt
+dflt_div$dflt
   (f1, f2) =
 (
-XATS2JS_dflt_div_dflt
+XATS2JS_dflt_div$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2JS_dflt_div_dflt
+XATS2JS_dflt_div$dflt
 (f1: dflt, f2: dflt): dflt = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-dflt_mod_dflt
+dflt_mod$dflt
   (f1, f2) =
 (
-XATS2JS_dflt_mod_dflt
+XATS2JS_dflt_mod$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2JS_dflt_mod_dflt
+XATS2JS_dflt_mod$dflt
 (f1: dflt, f2: dflt): dflt = $extnam()
 }
 //
