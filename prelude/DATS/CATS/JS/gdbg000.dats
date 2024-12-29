@@ -39,15 +39,15 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 <(*tmp*)>
-bool_assert_errmsg
+bool_assert$errmsg
   (cond, emsg) =
 (
-XATS2JS_bool_assert_errmsg
+XATS2JS_bool_assert$errmsg
   (cond, emsg)) where
 {
 #extern
 fun
-XATS2JS_bool_assert_errmsg
+XATS2JS_bool_assert$errmsg
 (cond: bool, emsg: strm): void = $extnam()
 }
 //

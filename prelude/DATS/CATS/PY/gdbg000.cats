@@ -29,38 +29,19 @@
 ########################################################################.
 ##
 ## Author: Hongwei Xi
-## Sun Dec 29 11:11:53 AM EST 2024
+## Sun Dec 29 12:43:44 PM EST 2024
 ## Authoremail: gmhwxiATgmailDOTcom
 ##
 ########################################################################.
 ########################################################################.
 ##
-def XATS2PY_char_lt(c1, c2):
-  return (c1 < c2) ## HX: lt
-def XATS2PY_char_gt(c1, c2):
-  return (c1 > c2) ## HX: gt
-def XATS2PY_char_eq(c1, c2):
-  return (c1 == c2) ## HX: eq
-##
-def XATS2PY_char_lte(c1, c2):
-  return (c1 <= c2) ## HX: lte
-def XATS2PY_char_gte(c1, c2):
-  return (c1 >= c2) ## HX: gte
-def XATS2PY_char_neq(c1, c2):
-  return (c1 != c2) ## HX: noteq
-##
-########################################################################.
-##
-def XATS2PY_char_add$sint(c1, i2):
-  c2 = c1+i2
-  return (c2%256) ## HX: char=int8
-}
-##
-def XATS2PY_char_sub$char(c1, c2):
-  return (c1 - c2) ## HX: char=int8
+def XATS2PY_bool_assert_errmsg(cond, emsg):
+  if (!cond):
+    raise Exception("XATS2PY_bool_assert_errmsg: emsg = " + emsg)
+  return ## HX: void is returned!
 ##
 ########################################################################.
 ########################################################################.
-## end of [ATS3/XANADU_prelude_DATS_CATS_PY_char000.cats]
+## end of [ATS3/XANADU_prelude_DATS_CATS_PY_gdbg000.cats]
 ########################################################################.
 ########################################################################.

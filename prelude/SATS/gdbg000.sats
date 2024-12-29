@@ -111,13 +111,13 @@ fun<>
 assert$errmsg
 ( (*void*) ): strn
 fun<>
-bool_assert_errmsg
+bool_assert$errmsg
 (cond: bool, msg: strn): void
 //
 #symload
 assert with bool_assert of 1000
 #symload
-assert with bool_assert_errmsg of 1000
+assert with bool_assert$errmsg of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
