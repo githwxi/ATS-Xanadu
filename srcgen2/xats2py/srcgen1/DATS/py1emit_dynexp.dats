@@ -224,6 +224,21 @@ in//let
 case+
 ival.node() of
 //
+(* ****** ****** *)
+(* ****** ****** *)
+|I1Vnil
+((*0*)) => prints("[", "]")
+(* ****** ****** *)
+(* ****** ****** *)
+|I1Vint
+( tint ) => i0intpy1(filr,tint)
+(* ****** ****** *)
+(* ****** ****** *)
+|I1Vtnm
+( itnm ) => i1tnmpy1(filr,itnm)
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |
 _(*otherwise*) => i1val_fprint(filr,ival)
 //
