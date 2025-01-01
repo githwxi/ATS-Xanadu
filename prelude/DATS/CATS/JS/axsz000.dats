@@ -36,12 +36,14 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #absimpl
 a1sz_vt_i0_tx
-(a: vt, n: i0) = $extbox("jsarray")
+(a: vt, n: i0) = $extbox("a1sz_tx")
 #absimpl
 a1sz_vt_i0_vx
-(a: vt, n: i0) = $extbox("jsarray")
+(a: vt, n: i0) = $extbox("a1sz_vx")
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

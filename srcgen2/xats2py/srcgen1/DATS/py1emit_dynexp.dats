@@ -138,7 +138,73 @@ in
   i0pat_allq(ipat)
   then print("True")
   else f0_ipat(0(*conj*), ival, ipat) )
-end(*let*)//end-(i0pckjs1(filr,ival,ipat))
+end(*let*)//end-(i0pckpy1(filr,ival,ipat))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fjas1py1
+(filr,fjas) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+fnx
+loop1
+(i0: sint
+,fjas: fjarglst): void =
+(
+case+ fjas of
+|
+list_nil
+((*void*)) => ((*0*))
+|
+list_cons
+(fja1, fjas) =>
+(
+  loop2(i0, fja1, fjas))
+)
+//
+and
+loop2
+(i0: sint
+,fja1: fjarg
+,fjas: fjarglst): void =
+(
+case+
+fja1.node() of
+|FJARGdarg(i1bs) =>
+(
+  loop3(i0, i1bs, fjas))
+)
+//
+and
+loop3
+(i0: sint
+,i1bs: i1bndlst
+,fjas: fjarglst): void =
+(
+case+ i1bs of
+|
+list_nil() =>
+(
+  loop1(i0, fjas))
+|
+list_cons(_, i1bs) =>
+( if
+  (i0 > 1)
+  then
+  print(", ")
+; prints("arg", i0)
+; loop3(i0+1, i1bs, fjas))
+)
+//
+in
+(print("(")
+;loop1(1(*i0*),fjas);print(")"))
+end(*let*)//end-of-[fjas1py1(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -174,6 +240,35 @@ end where
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+i1valpy1_list
+( filr: FILR
+, i1vs: i1valist): void =
+(
+list_iforitm(i1vs)) where
+{
+#typedef x0 = i1val
+#typedef xs = i1valist
+#impltmp
+iforitm$work<x0>(i0, x0) =
+(
+if
+(i0 >= 1)
+then
+strnfpr(filr,", ");i1valpy1(filr, x0))
+}(*where*)//end-of-[i1valpy1_list(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+py1emit_i1cmp
+( env0,icmp ) =
+xats2js_i1cmp( env0,icmp ) // implfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 py1emit_i1let
 ( env0,ilet ) =
@@ -187,6 +282,84 @@ py1emit_i1letlst
   (env0, ilts) =
 (
   list_py1emit_fnp(env0, ilts, py1emit_i1let))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+py1emit_fjarglst
+  (env0, fjas) =
+(
+  loop1(1(*i0*), fjas)) where
+{
+//
+val filr =
+(
+  envx2js_get_filr(env0))
+val nind =
+(
+  envx2js_get_nind(env0))
+//
+fnx
+loop1
+( i0: sint
+, fjas: fjarglst): void =
+(
+case+ fjas of
+|
+list_nil
+( (*void*) ) => ( (*void*) )
+|
+list_cons
+(fja1, fjas) => loop2(i0, fja1, fjas)
+)
+//
+and
+loop2
+( i0: sint
+, fja1: fjarg
+, fjas: fjarglst): void =
+(
+case+
+fja1.node() of
+|
+FJARGdarg(i1bs) => loop3(i0, i1bs, fjas)
+)
+//
+and
+loop3
+( i0: sint
+, i1bs: i1bndlst
+, fjas: fjarglst): void =
+(
+case+ i1bs of
+|
+list_nil() =>
+loop1(i0, fjas)
+|
+list_cons(ibnd, i1bs) =>
+(
+  loop3(i0+1, i1bs, fjas)) where
+{
+//
+#impltmp
+g_print$out<>() = filr
+//
+#impltmp g_print
+<i1tnm>(itnm) = i1tnmpy1(filr, itnm)
+//
+val () =
+case+ ibnd of
+|
+I1BNDcons(itnm, i0p1, dvvs) =>
+(
+nindfpr(filr,nind);
+(
+prints("let ", itnm, " = ", "arg", i0, "\n")))
+}
+)
+//
+}(*where*)//end-of-[py1emit_fjarglst(env0,fjas)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
