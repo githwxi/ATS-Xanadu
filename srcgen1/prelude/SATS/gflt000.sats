@@ -70,7 +70,7 @@ fun<>
 dflt_neg( f0: dflt ): dflt
 //
 fun<>
-gflt_neg_sflt( f0: sflt ): sflt
+gflt_neg$sflt( f0: sflt ): sflt
 fun<>
 gflt_neg$dflt( f0: dflt ): dflt
 //
@@ -82,7 +82,7 @@ fun<>
 dflt_abs( f0: dflt ): dflt
 //
 fun<>
-gflt_abs_sflt( f0: sflt ): sflt
+gflt_abs$sflt( f0: sflt ): sflt
 fun<>
 gflt_abs$dflt( f0: dflt ): dflt
 //
@@ -99,12 +99,12 @@ fun<>
 dflt_pre( f0: dflt ): dflt
 //
 fun<>
-gflt_suc_sflt( f0: sflt ): sflt
+gflt_suc$sflt( f0: sflt ): sflt
 fun<>
 gflt_suc$dflt( f0: dflt ): dflt
 //
 fun<>
-gflt_pre_sflt( f0: sflt ): sflt
+gflt_pre$sflt( f0: sflt ): sflt
 fun<>
 gflt_pre$dflt( f0: dflt ): dflt
 //
@@ -122,12 +122,12 @@ fun<>
 dflt_cbr( f0: dflt ): dflt
 //
 fun<>
-gflt_sqr_sflt( f0: sflt ): sflt
+gflt_sqr$sflt( f0: sflt ): sflt
 fun<>
 gflt_sqr$dflt( f0: dflt ): dflt
 //
 fun<>
-gflt_cbr_sflt( f0: sflt ): sflt
+gflt_cbr$sflt( f0: sflt ): sflt
 fun<>
 gflt_cbr$dflt( f0: dflt ): dflt
 //
@@ -135,18 +135,18 @@ gflt_cbr$dflt( f0: dflt ): dflt
 (* ****** ****** *)
 //
 fun<>
-gflt_lt_sflt_sflt(sflt, sflt): bool
+gflt_lt$sflt$sflt(sflt, sflt): bool
 fun<>
-gflt_gt_sflt_sflt(sflt, sflt): bool
+gflt_gt$sflt$sflt(sflt, sflt): bool
 fun<>
-gflt_eq_sflt_sflt(sflt, sflt): bool
+gflt_eq$sflt$sflt(sflt, sflt): bool
 //
 fun<>
-gflt_lte_sflt_sflt(sflt, sflt): bool
+gflt_lte$sflt$sflt(sflt, sflt): bool
 fun<>
-gflt_gte_sflt_sflt(sflt, sflt): bool
+gflt_gte$sflt$sflt(sflt, sflt): bool
 fun<>
-gflt_neq_sflt_sflt(sflt, sflt): bool
+gflt_neq$sflt$sflt(sflt, sflt): bool
 //
 (* ****** ****** *)
 //
@@ -191,7 +191,7 @@ gflt_neq$dflt$dflt(dflt, dflt): bool
 (* ****** ****** *)
 //
 fun<>
-gflt_cmp_sflt_sflt(sflt, sflt): sint
+gflt_cmp$sflt$sflt(sflt, sflt): sint
 //
 fun<>
 gflt_cmp$dflt$dflt(dflt, dflt): sint
@@ -200,15 +200,15 @@ gflt_cmp$dflt$dflt(dflt, dflt): sint
 (* ****** ****** *)
 //
 fun<>
-gflt_add_sflt_sflt(sflt, sflt): sflt
+gflt_add$sflt$sflt(sflt, sflt): sflt
 fun<>
-gflt_sub_sflt_sflt(sflt, sflt): sflt
+gflt_sub$sflt$sflt(sflt, sflt): sflt
 fun<>
-gflt_mul_sflt_sflt(sflt, sflt): sflt
+gflt_mul$sflt$sflt(sflt, sflt): sflt
 fun<>
-gflt_div_sflt_sflt(sflt, sflt): sflt
+gflt_div$sflt$sflt(sflt, sflt): sflt
 fun<>
-gflt_mod_sflt_sflt(sflt, sflt): sflt
+gflt_mod$sflt$sflt(sflt, sflt): sflt
 //
 (* ****** ****** *)
 //
@@ -350,21 +350,21 @@ gflt_mod$dflt$sint(dflt, sint): dflt
 (* ****** ****** *)
 //
 #symload
-cmp with gflt_cmp_sflt_sflt of 1001
+cmp with gflt_cmp$sflt$sflt of 1001
 //
-#symload < with gflt_lt_sflt_sflt of 1001
-#symload > with gflt_gt_sflt_sflt of 1001
-#symload = with gflt_eq_sflt_sflt of 1001
+#symload < with gflt_lt$sflt$sflt of 1001
+#symload > with gflt_gt$sflt$sflt of 1001
+#symload = with gflt_eq$sflt$sflt of 1001
 //
-#symload <= with gflt_lte_sflt_sflt of 1001
-#symload >= with gflt_gte_sflt_sflt of 1001
-#symload != with gflt_neq_sflt_sflt of 1001
+#symload <= with gflt_lte$sflt$sflt of 1001
+#symload >= with gflt_gte$sflt$sflt of 1001
+#symload != with gflt_neq$sflt$sflt of 1001
 //
 (* ****** ****** *)
-#symload + with gflt_add_sflt_sflt of 1001
-#symload - with gflt_sub_sflt_sflt of 1001
-#symload * with gflt_mul_sflt_sflt of 1001
-#symload / with gflt_div_sflt_sflt of 1001
+#symload + with gflt_add$sflt$sflt of 1001
+#symload - with gflt_sub$sflt$sflt of 1001
+#symload * with gflt_mul$sflt$sflt of 1001
+#symload / with gflt_div$sflt$sflt of 1001
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -39,18 +39,19 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #absimpl
 a0rf_vt_tx
-(  a:vt  ) = $extbox("jsarray")
+(  a:vt  ) = $extbox("a0rf_tx")
 #absimpl
 a0rf_vt_vx
-(  a:vt  ) = $extbox("jsarray")
+(  a:vt  ) = $extbox("a0rf_vx")
+//
 (* ****** ****** *)
 //
 #absimpl
 a1rf_vt_i0_tx
-( a:vt,n:i0 ) = $extbox("jsarray")
+( a:vt,n:i0 ) = $extbox("a1rf_tx")
 #absimpl
 a1rf_vt_i0_vx
-( a:vt,n:i0 ) = $extbox("jsarray")
+( a:vt,n:i0 ) = $extbox("a1rf_vx")
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,72 +30,28 @@
 //
 (*
 Author: Hongwei Xi
-Thu 05 Sep 2024 11:54:02 AM EDT
+Wed Jan  1 03:28:47 PM EST 2025
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstype
-console_type
-#typedef
-console = console_type
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#extern
-fun<>
-console_log
-{t0:t0}(x0: t0): void
-//
-#impltmp
-<(*tmp*)>
-console_log
-  ( x0 ) =
-(
-XATS2JS_console_log
-  ( x0 )) where
-{
-#extern
-fun
-XATS2JS_console_log
-{t0:t0}(x0: t0): void = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#extern
-fun<>
-the_print_store_log(): void
-//
-#extern
-fun<>
-the_print_store_flush(): strn
+#absimpl
+a0rf_vt_tx
+(  a:vt  ) = $extbox("a0rf_tx")
+#absimpl
+a0rf_vt_vx
+(  a:vt  ) = $extbox("a0rf_vx")
 //
 (* ****** ****** *)
 //
-#impltmp
-<(*tmp*)>
-the_print_store_log() =
-console_log(the_print_store_flush())
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-the_print_store_flush
-  ((*void*)) =
-(
-XATS2JS_the_print_store_flush
-  ((*void*))) where
-{
-#extern
-fun
-XATS2JS_the_print_store_flush(): strn = $extnam()
-}
+#absimpl
+a1rf_vt_i0_tx
+( a:vt,n:i0 ) = $extbox("a1rf_tx")
+#absimpl
+a1rf_vt_i0_vx
+( a:vt,n:i0 ) = $extbox("a1rf_vx")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -103,4 +59,4 @@ XATS2JS_the_print_store_flush(): strn = $extnam()
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_xtop000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_axrf000.dats] *)

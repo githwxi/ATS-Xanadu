@@ -674,10 +674,9 @@ envx2js_get_nind(env0)
 //
 val () =
 (
+i1tnmpy1(filr, itnm);
 nindstrnfpr
-(filr, nind, "let ");
-i1tnmpy1
-(filr, itnm);fprintln(filr))
+(filr, nind, " = None\n"))
 //
 // HX: for computing ival
 val () =
@@ -783,8 +782,8 @@ HX-2024-06-07:
 w/o initialization
 *)
 nindfpr(filr, nind);
-strnfpr(filr, "let ");i1tnmpy1(filr, itnm);
-strnfpr(filr, " = XATSVAR0(");strnfpr(filr, ")\n")
+i1tnmpy1(filr, itnm);
+strnfpr(filr, " = XATSVAR0()\n")
 //
 end//let//end-of-[TEQI1CMPnone]
 //
@@ -806,8 +805,9 @@ HX-2024-06-07:
 with initialization
 *)
 nindfpr(filr, nind);
-strnfpr(filr, "let ");i1tnmpy1(filr, itnm);
-strnfpr(filr, " = XATSVAR1(");i1valpy1(filr, ival);strnfpr(filr, ")\n")
+i1tnmpy1(filr, itnm);
+strnfpr(filr, " = XATSVAR1(");
+i1valpy1(filr, ival);strnfpr(filr, ")\n")
 //
 end//let//end-of-[TEQI1CMPsome]
 //
@@ -832,6 +832,100 @@ in//let
 end//let//end-of-[val()]
 //
 }(*where*)//end-of-[py1emit_i1vardcl(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+py1emit_i1fundcl
+  (env0, ifun) = let
+//
+(* ****** ****** *)
+//
+val dvar =
+i1fundcl_get_dpid(ifun)
+val fjas =
+i1fundcl_get_farg(ifun)
+val tdxp =
+i1fundcl_get_tdxp(ifun)
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+(
+nindfpr(filr, nind);strnfpr(filr, "def ");
+d2varfpr(filr, dvar);
+fjas1py1(filr, fjas);strnfpr(filr, ":\n"))
+end//let
+//
+(* ****** ****** *)
+//
+val (  ) = // enter
+(
+  envx2js_pshlam0(env0) )
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+//
+val ival = icmp.ival()
+//
+val (  ) =
+(
+  py1emit_fjas1(env0, fjas))
+val (  ) =
+(
+  py1emit_i1cmp(env0, icmp))
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+(
+nindfpr(filr, nind);
+strnfpr(filr, "return ");i1valpy1(filr, ival);fprintln(filr))
+end//let
+//
+(* ****** ****** *)
+end//let
+(* ****** ****** *)
+) (*case+*) // end-of-(teqi1exp)
+//
+val (  ) = envx2js_poplam0(env0)//leave
+//
+(* ****** ****** *)
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+(
+envx2js_get_filr(env0))
+val nind =
+(
+envx2js_get_nind(env0))
+in//let
+(
+ nindstrnfpr(filr, nind, "## I1FUNDCL\n"))
+end//let//end-of-[val()]
+//
+}(*where*)//end-of-[py1emit_i1fundcl(env0,ifun)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

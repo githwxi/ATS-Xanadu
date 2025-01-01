@@ -56,187 +56,187 @@ g_ui<dflt> = gflt_ui_dflt<>
 (* ****** ****** *)
 
 #impltmp
-g_print<sflt> = gflt_print_sflt<>
+g_print<sflt> = gflt_print$sflt<>
 #impltmp
-g_print<dflt> = gflt_print_dflt<>
+g_print<dflt> = gflt_print$dflt<>
 
 (* ****** ****** *)
 //
 #impltmp
-g_neg<sflt> = gflt_neg_sflt<>
+g_neg<sflt> = gflt_neg$sflt<>
 #impltmp
-g_neg<dflt> = gflt_neg_dflt<>
+g_neg<dflt> = gflt_neg$dflt<>
 //
 #impltmp
-g_abs<sflt> = gflt_abs_sflt<>
+g_abs<sflt> = gflt_abs$sflt<>
 #impltmp
-g_abs<dflt> = gflt_abs_dflt<>
+g_abs<dflt> = gflt_abs$dflt<>
 //
 #impltmp
-g_suc<sflt> = gflt_suc_sflt<>
+g_suc<sflt> = gflt_suc$sflt<>
 #impltmp
-g_pre<sflt> = gflt_pre_sflt<>
+g_pre<sflt> = gflt_pre$sflt<>
 #impltmp
-g_suc<dflt> = gflt_suc_dflt<>
+g_suc<dflt> = gflt_suc$dflt<>
 #impltmp
-g_pre<dflt> = gflt_pre_dflt<>
-//
-(* ****** ****** *)
-//
-#impltmp
-g_lt<sflt> = gflt_lt_sflt_sflt<>
-#impltmp
-g_gt<sflt> = gflt_gt_sflt_sflt<>
-#impltmp
-g_eq<sflt> = gflt_eq_sflt_sflt<>
-#impltmp
-g_lte<sflt> = gflt_lte_sflt_sflt<>
-#impltmp
-g_gte<sflt> = gflt_gte_sflt_sflt<>
-#impltmp
-g_neq<sflt> = gflt_neq_sflt_sflt<>
-//
-#impltmp
-g_lt<dflt> = gflt_lt_dflt_dflt<>
-#impltmp
-g_gt<dflt> = gflt_gt_dflt_dflt<>
-#impltmp
-g_eq<dflt> = gflt_eq_dflt_dflt<>
-#impltmp
-g_lte<dflt> = gflt_lte_dflt_dflt<>
-#impltmp
-g_gte<dflt> = gflt_gte_dflt_dflt<>
-#impltmp
-g_neq<dflt> = gflt_neq_dflt_dflt<>
-//
-(* ****** ****** *)
-
-#impltmp
-g_cmp<sflt> = gflt_cmp_sflt_sflt<>
-#impltmp
-g_cmp<dflt> = gflt_cmp_dflt_dflt<>
-
-(* ****** ****** *)
-//
-#impltmp
-g_add<sflt> = gflt_add_sflt_sflt<>
-#impltmp
-g_sub<sflt> = gflt_sub_sflt_sflt<>
-#impltmp
-g_mul<sflt> = gflt_mul_sflt_sflt<>
-#impltmp
-g_div<sflt> = gflt_div_sflt_sflt<>
-//
-#impltmp
-g_add<dflt> = gflt_add_dflt_dflt<>
-#impltmp
-g_sub<dflt> = gflt_sub_dflt_dflt<>
-#impltmp
-g_mul<dflt> = gflt_mul_dflt_dflt<>
-#impltmp
-g_div<dflt> = gflt_div_dflt_dflt<>
+g_pre<dflt> = gflt_pre$dflt<>
 //
 (* ****** ****** *)
 //
 #impltmp
-<>(*tmp*)
-gflt_lt_dflt_sint(f1, i2) =
-gflt_lt_dflt_dflt(f1, g_si(i2))
+g_lt<sflt> = gflt_lt$sflt$sflt<>
 #impltmp
-<>(*tmp*)
-gflt_gt_dflt_sint(f1, i2) =
-gflt_gt_dflt_dflt(f1, g_si(i2))
+g_gt<sflt> = gflt_gt$sflt$sflt<>
 #impltmp
-<>(*tmp*)
-gflt_eq_dflt_sint(f1, i2) =
-gflt_eq_dflt_dflt(f1, g_si(i2))
+g_eq<sflt> = gflt_eq$sflt$sflt<>
 #impltmp
-<>(*tmp*)
-gflt_lte_dflt_sint(f1, i2) =
-gflt_lte_dflt_dflt(f1, g_si(i2))
+g_lte<sflt> = gflt_lte$sflt$sflt<>
 #impltmp
-<>(*tmp*)
-gflt_gte_dflt_sint(f1, i2) =
-gflt_gte_dflt_dflt(f1, g_si(i2))
+g_gte<sflt> = gflt_gte$sflt$sflt<>
 #impltmp
-<>(*tmp*)
-gflt_neq_dflt_sint(f1, i2) =
-gflt_neq_dflt_dflt(f1, g_si(i2))
+g_neq<sflt> = gflt_neq$sflt$sflt<>
 //
 #impltmp
-<>(*tmp*)
-gflt_cmp_dflt_sint(f1, i2) =
-gflt_cmp_dflt_dflt(f1, g_si(i2))
-//
-(* ****** ****** *)
-//
+g_lt<dflt> = gflt_lt$dflt$dflt<>
 #impltmp
-<>(*tmp*)
-gflt_lt_sint_dflt(i1, f2) =
-gflt_lt_dflt_dflt(g_si(i1), f2)
+g_gt<dflt> = gflt_gt$dflt$dflt<>
 #impltmp
-<>(*tmp*)
-gflt_gt_sint_dflt(i1, f2) =
-gflt_gt_dflt_dflt(g_si(i1), f2)
+g_eq<dflt> = gflt_eq$dflt$dflt<>
 #impltmp
-<>(*tmp*)
-gflt_eq_sint_dflt(i1, f2) =
-gflt_eq_dflt_dflt(g_si(i1), f2)
+g_lte<dflt> = gflt_lte$dflt$dflt<>
 #impltmp
-<>(*tmp*)
-gflt_lte_sint_dflt(i1, f2) =
-gflt_lte_dflt_dflt(g_si(i1), f2)
+g_gte<dflt> = gflt_gte$dflt$dflt<>
 #impltmp
-<>(*tmp*)
-gflt_gte_sint_dflt(i1, f2) =
-gflt_gte_dflt_dflt(g_si(i1), f2)
-#impltmp
-<>(*tmp*)
-gflt_neq_sint_dflt(i1, f2) =
-gflt_neq_dflt_dflt(g_si(i1), f2)
-//
-#impltmp
-<>(*tmp*)
-gflt_cmp_sint_dflt(i1, f2) =
-gflt_cmp_dflt_dflt(g_si(i1), f2)
+g_neq<dflt> = gflt_neq$dflt$dflt<>
 //
 (* ****** ****** *)
 
 #impltmp
-<>(*tmp*)
-gflt_add_sint_dflt(i1, f2) =
-gflt_add_dflt_dflt(g_si(i1), f2)
+g_cmp<sflt> = gflt_cmp$sflt$sflt<>
+#impltmp
+g_cmp<dflt> = gflt_cmp$dflt$dflt<>
+
+(* ****** ****** *)
+//
+#impltmp
+g_add<sflt> = gflt_add$sflt$sflt<>
+#impltmp
+g_sub<sflt> = gflt_sub$sflt$sflt<>
+#impltmp
+g_mul<sflt> = gflt_mul$sflt$sflt<>
+#impltmp
+g_div<sflt> = gflt_div$sflt$sflt<>
+//
+#impltmp
+g_add<dflt> = gflt_add$dflt$dflt<>
+#impltmp
+g_sub<dflt> = gflt_sub$dflt$dflt<>
+#impltmp
+g_mul<dflt> = gflt_mul$dflt$dflt<>
+#impltmp
+g_div<dflt> = gflt_div$dflt$dflt<>
+//
+(* ****** ****** *)
+//
 #impltmp
 <>(*tmp*)
-gflt_sub_sint_dflt(i1, f2) =
-gflt_sub_dflt_dflt(g_si(i1), f2)
+gflt_lt$dflt$sint(f1, i2) =
+gflt_lt$dflt$dflt(f1, g_si(i2))
 #impltmp
 <>(*tmp*)
-gflt_mul_sint_dflt(i1, f2) =
-gflt_mul_dflt_dflt(g_si(i1), f2)
+gflt_gt$dflt$sint(f1, i2) =
+gflt_gt$dflt$dflt(f1, g_si(i2))
 #impltmp
 <>(*tmp*)
-gflt_div_sint_dflt(i1, f2) =
-gflt_div_dflt_dflt(g_si(i1), f2)
+gflt_eq$dflt$sint(f1, i2) =
+gflt_eq$dflt$dflt(f1, g_si(i2))
+#impltmp
+<>(*tmp*)
+gflt_lte$dflt$sint(f1, i2) =
+gflt_lte$dflt$dflt(f1, g_si(i2))
+#impltmp
+<>(*tmp*)
+gflt_gte$dflt$sint(f1, i2) =
+gflt_gte$dflt$dflt(f1, g_si(i2))
+#impltmp
+<>(*tmp*)
+gflt_neq$dflt$sint(f1, i2) =
+gflt_neq$dflt$dflt(f1, g_si(i2))
+//
+#impltmp
+<>(*tmp*)
+gflt_cmp$dflt$sint(f1, i2) =
+gflt_cmp$dflt$dflt(f1, g_si(i2))
+//
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+gflt_lt$sint$dflt(i1, f2) =
+gflt_lt$dflt$dflt(g_si(i1), f2)
+#impltmp
+<>(*tmp*)
+gflt_gt$sint$dflt(i1, f2) =
+gflt_gt$dflt$dflt(g_si(i1), f2)
+#impltmp
+<>(*tmp*)
+gflt_eq$sint$dflt(i1, f2) =
+gflt_eq$dflt$dflt(g_si(i1), f2)
+#impltmp
+<>(*tmp*)
+gflt_lte$sint$dflt(i1, f2) =
+gflt_lte$dflt$dflt(g_si(i1), f2)
+#impltmp
+<>(*tmp*)
+gflt_gte$sint$dflt(i1, f2) =
+gflt_gte$dflt$dflt(g_si(i1), f2)
+#impltmp
+<>(*tmp*)
+gflt_neq$sint$dflt(i1, f2) =
+gflt_neq$dflt$dflt(g_si(i1), f2)
+//
+#impltmp
+<>(*tmp*)
+gflt_cmp$sint$dflt(i1, f2) =
+gflt_cmp$dflt$dflt(g_si(i1), f2)
+//
+(* ****** ****** *)
+
+#impltmp
+<>(*tmp*)
+gflt_add$sint$dflt(i1, f2) =
+gflt_add$dflt$dflt(g_si(i1), f2)
+#impltmp
+<>(*tmp*)
+gflt_sub$sint$dflt(i1, f2) =
+gflt_sub$dflt$dflt(g_si(i1), f2)
+#impltmp
+<>(*tmp*)
+gflt_mul$sint$dflt(i1, f2) =
+gflt_mul$dflt$dflt(g_si(i1), f2)
+#impltmp
+<>(*tmp*)
+gflt_div$sint$dflt(i1, f2) =
+gflt_div$dflt$dflt(g_si(i1), f2)
 
 (* ****** ****** *)
 
 #impltmp
 <>(*tmp*)
-gflt_add_dflt_sint(f1, i2) =
-gflt_add_dflt_dflt(f1, g_si(i2))
+gflt_add$dflt$sint(f1, i2) =
+gflt_add$dflt$dflt(f1, g_si(i2))
 #impltmp
 <>(*tmp*)
-gflt_sub_dflt_sint(f1, i2) =
-gflt_sub_dflt_dflt(f1, g_si(i2))
+gflt_sub$dflt$sint(f1, i2) =
+gflt_sub$dflt$dflt(f1, g_si(i2))
 #impltmp
 <>(*tmp*)
-gflt_mul_dflt_sint(f1, i2) =
-gflt_mul_dflt_dflt(f1, g_si(i2))
+gflt_mul$dflt$sint(f1, i2) =
+gflt_mul$dflt$dflt(f1, g_si(i2))
 #impltmp
 <>(*tmp*)
-gflt_div_dflt_sint(f1, i2) =
-gflt_div_dflt_dflt(f1, g_si(i2))
+gflt_div$dflt$sint(f1, i2) =
+gflt_div$dflt$dflt(f1, g_si(i2))
 
 (* ****** ****** *)
 

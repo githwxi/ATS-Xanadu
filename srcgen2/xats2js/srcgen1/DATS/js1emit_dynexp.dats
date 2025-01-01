@@ -1040,7 +1040,7 @@ if
 (i0 >= 1)
 then
 strnfpr(filr,", ");l1i1vjs1(filr, x0))
-}(*where*)//end-of-[i1valjs1_list(...)]
+}(*where*)//end-of-[l1i1vjs1_list(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
