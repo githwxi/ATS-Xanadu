@@ -233,6 +233,7 @@ let
 g_print$out<>() = filr
 //
 in//let
+//
 nindfpr(filr, nind);
 prints
 ("## I1Dextern(",loc0,")\n")
@@ -240,7 +241,8 @@ end//let
 //
 val (  ) =
 (
-  xats2js_i1dcl( env0, dcl1 ))
+nindstrnfpr(filr, nind, "## ");
+i1dcl_fprint(filr, dcl1); fprintln(filr))
 //
 end(*let*)//end-of-[f0_extern(env0,dcl0)]
 //
@@ -578,15 +580,14 @@ else
 (
 //
 (
-nindstrnfpr
-(filr, nind, "let ");dicstfpr(filr, dimp);
+nindfpr(filr, nind);dicstfpr(filr, dimp);
 strnfpr(filr," = function ");fjas1py1(filr, fjas));
 (
-strnfpr(filr," { // impl\n");
+strnfpr(filr," ## impl\n");
 (envx2js_incnind(env0,2(*++*))
 ;py1emit_fjarglst(env0, fjas);f1_i1cmpret(env0, icmp));
 (envx2js_decnind(env0,2(*--*))
-;nindstrnfpr(filr, nind, "} // endfun(impl)");fprintln(filr)))
+;nindstrnfpr(filr, nind, "## endfun(impl)");fprintln(filr)))
 //
 )//endif
 //
@@ -611,13 +612,11 @@ val nind = envx2js_get_nind(env0)
 //
 in//let
 //
-nindfpr(filr, nind);
-strnfpr(filr, "## ");
-loctn_fprint
-(filr, loc0); fprintln(filr);
-nindfpr(filr, nind);
-strnfpr(filr, "## ");
-i1dcl_fprint(filr, dcl0); fprintln(filr)
+(
+nindstrnfpr
+(filr, nind, "## ");loctn_fprint(filr, loc0);fprintln(filr);
+nindstrnfpr
+(filr, nind, "## ");i1dcl_fprint(filr, dcl0);fprintln(filr))
 //
 end(*let*)//end-of-[f0_otherwise(env0,dcl0)]
 //
