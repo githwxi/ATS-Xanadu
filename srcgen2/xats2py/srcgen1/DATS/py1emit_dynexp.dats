@@ -783,8 +783,10 @@ d2cst_fprint
 (filr, dcst)) where
 {
 val () =
-strnfpr
-(filr, "XATS000_undef() ## timp: ") }
+strnfpr(filr, "()")
+val () =
+strnfpr(filr, ": ## timp: ")
+}
 //
 |optn_cons
 (  idcl  ) =>
@@ -796,11 +798,9 @@ I1Dimplmnt0
 , stmp, dimp
 , fjas, icmp) =>
 (
-strnfpr
-(filr,"function ");fjas1py1(filr, fjas);
-(
-strnfpr(filr, " ## timp: ");
-d2cst_fprint(filr, dcst);fprintln(filr));
+fjas1py1(filr, fjas);
+strnfpr(filr, ": ## timp: ");
+d2cst_fprint(filr, dcst);fprintln(filr);
 (
 envx2js_incnind(env0,2(*++*));
 py1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
@@ -966,8 +966,9 @@ nindstrnfpr
 (filr, nind, "## ");
 t1impdcl(filr, timp);fprintln(filr);
 //
-nindfpr(filr, nind);i1tnmpy1(filr, itnm);
-strnfpr(filr, " = ");f0_t1imp(env0, timp);fprintln(filr))
+nindstrnfpr
+(filr, nind, "def ");
+i1tnmpy1(filr, itnm);f0_t1imp(env0, timp);fprintln(filr))
 |
 optn_cons(icmp) =>
 (

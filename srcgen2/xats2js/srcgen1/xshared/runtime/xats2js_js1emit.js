@@ -18,7 +18,7 @@ let XATSTOP0 = undefined
 //
 let XATSINT1 = (i0) => i0
 let XATSBOOL = (b0) => b0
-let XATSFLT1 = (i0) => i0
+let XATSFLT1 = (f0) => f0
 /*
 let XATSSFLT = (sf) => sf
 let XATSDFLT = (df) => df
