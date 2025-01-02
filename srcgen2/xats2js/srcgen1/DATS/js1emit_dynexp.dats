@@ -1381,7 +1381,7 @@ HX-2024-06-22:
 Note that the temporary [itnm]
 is assumed to have been introduced
 *)
-fun
+and
 f0_i1tnmcmp
 ( env0:
 ! envx2js
