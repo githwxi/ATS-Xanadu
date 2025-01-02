@@ -148,6 +148,7 @@ loctnfpr
 loctn_fprint(filr,loc0))//endfun
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 i0expfpr
@@ -156,6 +157,7 @@ i0expfpr
 (
 i0exp_fprint(filr,iexp))//endfun
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -850,7 +852,8 @@ end(*let*)//end-of-[fjas1js1(...)]
 (* ****** ****** *)
 //
 #implfun
-i1valjs1(filr, ival) =
+i1valjs1
+(filr, ival) =
 let
 //
 (*
@@ -986,7 +989,8 @@ end where
 (* ****** ****** *)
 //
 #implfun
-l1i1vjs1(filr, liv0) =
+l1i1vjs1
+(filr, liv0) =
 let
 val+
 I1LAB(lab1, i1v2) = liv0
@@ -1196,6 +1200,7 @@ i1valjs1(filr, i1v0);strnfpr(filr, ")"))
 _(*otherwise*) => i1ins_fprint(filr,iins)
 //
 (* ****** ****** *)
+//
 end(*let*) // end-of-[i1insjs1(env0,iins)]
 //
 (* ****** ****** *)
