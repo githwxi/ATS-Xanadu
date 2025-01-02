@@ -1308,16 +1308,18 @@ dopt = t1imp_i1dclq(timp)
 in//let
 //
 case+ dopt of
-|
-optn_nil
+//
+|optn_nil
 ((*void*)) =>
 (
 d2cst_fprint
 (filr, dcst)) where
-{ val () =
-  strnfpr(filr, "undefined // timp: ")}
-|
-optn_cons
+{
+val () =
+strnfpr
+(filr, "XATS000_undef() // timp: ") }
+//
+|optn_cons
 (  idcl  ) =>
 (
 case+

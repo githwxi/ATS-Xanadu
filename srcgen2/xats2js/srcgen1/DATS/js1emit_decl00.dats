@@ -246,6 +246,7 @@ let
 g_print$out<>() = filr
 //
 in//let
+//
 nindfpr(filr, nind);
 prints
 ("// I1Dextern(",loc0,")\n")
