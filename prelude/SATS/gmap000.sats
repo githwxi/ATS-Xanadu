@@ -255,6 +255,7 @@ fun
 <itm:t0>
 gmap_getout$old
 (kxs: map, key: key): map
+#extern
 fun
 <map:t0>
 <key:t0>
@@ -262,6 +263,9 @@ fun
 gmap_getout$opt
 ( kxs: map
 , key: key): (map, optn_vt(itm))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #extern
 fun

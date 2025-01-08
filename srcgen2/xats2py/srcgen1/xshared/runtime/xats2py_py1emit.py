@@ -40,11 +40,11 @@ def XATSPCON(pcon, argi): return pcon[argi+1]
 ##
 ########################################################################.
 ##
-def XATSTRCD(knd0): knd0
+def XATSTRCD(knd0): return knd0
 ##
-def XATSTUP0(tpl0): tpl0
-def XATSTUP1(knd0, tpl1): tpl1
-def XATSRCD2(knd0, rcd2): rcd2
+def XATSTUP0(tpl0): return tpl0
+def XATSTUP1(knd0, tpl1): return tpl1
+def XATSRCD2(knd0, rcd2): return rcd2
 ##
 ########################################################################.
 ##
@@ -72,19 +72,20 @@ def XATS000_streq(x, y): return (x == y)
 def XATS000_ctgeq(v, t): return (v[0] == t)
 ##
 ########################################################################.
-
+##
 def XATS000_casef():
   raise Exception("XATS000_casef")
-
+##
 def XATS000_patck(pck):
   if not(pck):
     raise Exception("XATS000_patck")
-
+  ## end-of(if)
+##
 ########################################################################.
-
+##
 def XATS000_fold(pcon): return None
 def XATS000_free(pcon): return None
-
+##
 ########################################################################.
 ##
 def XATS000_dp2tr(p2tr):
