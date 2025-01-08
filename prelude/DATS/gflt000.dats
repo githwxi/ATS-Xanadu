@@ -93,33 +93,33 @@ g_print<df> = dflt_print<>
 //
 #impltmp
 <(*tmp*)>
-dflt_lt_sint
+dflt_lt$sint
   (f1, i2) =
 dflt_lt$dflt(f1, g_si<dflt>(i2))
 #impltmp
 <(*tmp*)>
-dflt_gt_sint
+dflt_gt$sint
   (f1, i2) =
 dflt_gt$dflt(f1, g_si<dflt>(i2))
 #impltmp
 <(*tmp*)>
-dflt_eq_sint
+dflt_eq$sint
   (f1, i2) =
 dflt_eq$dflt(f1, g_si<dflt>(i2))
 //
 #impltmp
 <(*tmp*)>
-dflt_lte_sint
+dflt_lte$sint
   (f1, i2) =
 dflt_lte$dflt(f1, g_si<dflt>(i2))
 #impltmp
 <(*tmp*)>
-dflt_gte_sint
+dflt_gte$sint
   (f1, i2) =
 dflt_gte$dflt(f1, g_si<dflt>(i2))
 #impltmp
 <(*tmp*)>
-dflt_neq_sint
+dflt_neq$sint
   (f1, i2) =
 dflt_neq$dflt(f1, g_si<dflt>(i2))
 //
