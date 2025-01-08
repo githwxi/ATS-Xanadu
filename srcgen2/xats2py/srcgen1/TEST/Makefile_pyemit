@@ -30,10 +30,10 @@ $(XATSHOME)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit00_dats.js
 test00:: ; \
 echo "##" `date` > $@_out.py
 ############
-# test00:: ; \
-# $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
-# test00:: ; \
-# $(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+test00:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+test00:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
 ############
 test00:: \
 test00_xats2py.dats; \
@@ -45,6 +45,11 @@ $(BUN) run $(SRCGEN2_XATS2PY) $< >> $@_out.py
 ########################################################################
 test01:: ; \
 echo "##" `date` > $@_out.py
+############
+test01:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+test01:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
 ############
 test01:: \
 test01_xats2py.dats; \
