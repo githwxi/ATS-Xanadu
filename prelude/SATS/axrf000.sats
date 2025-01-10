@@ -52,7 +52,7 @@ a0rf_vt(a0:vt) = a0rf_vt_vx(a0)
 //
 #abstbox
 a1rf_vt_i0_tx(a:vt,n:i0)
-#abstbox
+#absvtbx
 a1rf_vt_i0_vx(a:vt,n:i0)
 //
 #typedef
@@ -72,7 +72,7 @@ a1rf_vt(x0:vt) = [n:i0] a1rf_vt(x0,n)
 //
 #abstbox
 a2rf_vt_i0_i0_tx(a:vt,m:i0,n:i0)
-#abstbox
+#absvtbx
 a2rf_vt_i0_i0_vx(a:vt,m:i0,n:i0)
 //
 #typedef

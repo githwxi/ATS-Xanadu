@@ -39,7 +39,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #abstbox
 a1sz_vt_i0_tx(a:vt,n:i0)
-#abstbox
+#absvtbx
 a1sz_vt_i0_vx(a:vt,n:i0)
 //
 #typedef
