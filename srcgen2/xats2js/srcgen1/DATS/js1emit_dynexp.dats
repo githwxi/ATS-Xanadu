@@ -780,7 +780,7 @@ _(* else *) => print("...I1DCL...")
 //
 }(*where*)//end-of-[g_print<i1dcl>]
 //
-}(*where*)//end(t1imploc(filr,timp))
+}(*where*)//end-of(t1impdcl(filr,timp))
 //
 (* ****** ****** *)
 (* ****** ****** *)

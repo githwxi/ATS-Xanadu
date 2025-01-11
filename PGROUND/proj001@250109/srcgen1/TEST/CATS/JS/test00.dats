@@ -33,4 +33,4 @@ prints("Hello from [test00.dats]\n")
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS-XANADU/PGROUND/proj001-2025-01-09/srcgen1/TEST/CATS/JS/test00.dats] *)
+(* end of [ATS-XANADU/PGROUND/proj001@250109/srcgen1/TEST/CATS/JS/test00.dats] *)
