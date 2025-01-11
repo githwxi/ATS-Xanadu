@@ -664,18 +664,14 @@ TEQI1CMPsome
 (teq1, icmp) =>
 let
 //
-val ival =
-i1cmp_get_ival(icmp)
-val filr =
-envx2js_get_filr(env0)
-val nind =
-envx2js_get_nind(env0)
+val ival = i1cmp_get_ival(icmp)
+val filr = envx2js_get_filr(env0)
+val nind = envx2js_get_nind(env0)
 //
 val () =
 (
-i1tnmpy1(filr, itnm);
-nindstrnfpr
-(filr, nind, " = None\n"))
+nindfpr(filr, nind);
+i1tnmpy1(filr, itnm);strnfpr(filr, " = None\n"))
 //
 // HX: for computing ival
 val () =
@@ -685,14 +681,13 @@ val () =
 (
 nindstrnfpr
 (filr, nind, "XATS000_patck(");
-i0pckpy1(filr, ival, ipat);
-strnfpr(filr, ")");fprintln(filr))
+i0pckpy1(filr, ival, ipat);strnfpr(filr, ")\n"))
 //
 endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
 //
 (* ****** ****** *)
 //
-end where//end-of-let(py1emit_i1valdcl(...)]
+end where // end-of-let( py1emit_i1valdcl(...) ]
 {
 //
 val (  ) =
@@ -975,5 +970,5 @@ py1emit_i1dclistopt
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_py1emit_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_DATS_py1emit_dynexp.dats] *)
 (***********************************************************************)
