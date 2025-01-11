@@ -543,6 +543,18 @@ ival.node() of
 |I1Vint
 ( tint ) => i0intpy1(filr,tint)
 (* ****** ****** *)
+|I1Vbtf
+( btf0 ) => i0btfpy1(filr,btf0)
+(* ****** ****** *)
+|I1Vchr
+( tchr ) => i0chrpy1(filr,tchr)
+(* ****** ****** *)
+|I1Vflt
+( tflt ) => i0fltpy1(filr,tflt)
+(* ****** ****** *)
+|I1Vstr
+( tstr ) => i0strpy1(filr,tstr)
+(* ****** ****** *)
 (* ****** ****** *)
 |I1Vtnm
 ( itnm ) => i1tnmpy1(filr,itnm)
@@ -1169,5 +1181,5 @@ nindfpr(filr,nind);prints(itnm, " = ", "arg", i0, "\n"))
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_py1emit_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_DATS_py1emit_dynexp.dats] *)
 (***********************************************************************)

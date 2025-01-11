@@ -15,7 +15,7 @@ For testing xats2py!
 (* ****** ****** *)
 #include
 "srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
+/prelude/HATS/prelude_PY_dats.hats"
 (* ****** ****** *)
 (*
 #include
@@ -28,11 +28,6 @@ For testing xats2py!
 val () =
 prints
 ("Hello from [test00_xats2py]!", "\n")
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val () = the_print_store_log( (*void*) )
 //
 (* ****** ****** *)
 (* ****** ****** *)

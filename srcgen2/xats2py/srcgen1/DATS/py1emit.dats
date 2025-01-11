@@ -112,5 +112,5 @@ case+ xs of
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_py1emit.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_DATS_py1emit.dats] *)
 (***********************************************************************)
