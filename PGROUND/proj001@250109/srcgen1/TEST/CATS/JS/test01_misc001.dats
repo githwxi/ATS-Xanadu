@@ -1,8 +1,8 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2025-01-09:
-Thu Jan  9 11:32:33 PM EST 2025
+HX-2025-01-10:
+Fri Jan 10 10:58:08 PM EST 2025
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -25,7 +25,18 @@ Thu Jan  9 11:32:33 PM EST 2025
 (* ****** ****** *)
 //
 val () =
-prints("Hello from [test00.dats]\n")
+prints("Hello from [test01.dats]\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include "./../../../DATS/misc001.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () = prints("fact1(10) = ", fact1(10), "\n")
+val () = prints("fact2(10) = ", fact2(10), "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -33,4 +44,4 @@ prints("Hello from [test00.dats]\n")
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS-XANADU/PGROUND/proj001-2025-01-09/srcgen1/TEST/CATS/JS/test00.dats] *)
+(* end of [ATS-XANADU/PGROUND/proj001@250109/srcgen1/TEST/CATS/JS/test01_misc001.dats] *)
