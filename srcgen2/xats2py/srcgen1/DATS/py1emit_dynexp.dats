@@ -448,7 +448,7 @@ _(* else *) => print("...I1DCL...")
 //
 }(*where*)//end-of-[g_print<i1dcl>]
 //
-}(*where*)//end(t1imploc(filr,timp))
+}(*where*)//end-of(t1impdcl(filr,timp))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -668,6 +668,31 @@ strnfpr
 i1valpy1(filr,i1f0);strnfpr(filr,"(");
 i1valpy1_list(filr,i1vs);strnfpr(filr,"))"))
 )
+)
+//
+(* ****** ****** *)
+//
+|I1INSpcon
+(lab0, i1v1) =>
+(
+prints("XATSPCON(", i1v1, ",", lab0, ")"))
+//
+|I1INSpflt
+(lab0, i1v1) =>
+(
+prints("XATSPFLT(", i1v1, "[", lab0, "]", ")"))
+|I1INSproj
+(lab0, i1v1) =>
+(
+prints("XATSPROJ(", i1v1, "[", lab0, "]", ")"))
+//
+(* ****** ****** *)
+//
+|I1INStup0
+(   i1vs   ) =>
+(
+strnfpr(filr,"XATSTUP0(");
+strnfpr(filr,"[");i1valpy1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
 )
 //
 (* ****** ****** *)
@@ -980,7 +1005,8 @@ t1impdcl(filr, timp);fprintln(filr);
 //
 nindstrnfpr
 (filr, nind, "def ");
-i1tnmpy1(filr, itnm);f0_t1imp(env0, timp);fprintln(filr))
+i1tnmpy1(filr, itnm);
+f0_t1imp(env0, timp);fprintln(filr))
 |
 optn_cons(icmp) =>
 (
@@ -990,11 +1016,14 @@ val () =
 (
 //
 nindstrnfpr
-(filr, nind, "## ");t1imploc(filr, timp);fprintln(filr);
+(filr, nind, "## ");
+t1imploc(filr, timp);fprintln(filr);
 nindstrnfpr
-(filr, nind, "## ");t1impdcl(filr, timp);fprintln(filr);
+(filr, nind, "## ");
+t1impdcl(filr, timp);fprintln(filr);
 //
-nindfpr(filr, nind);i1tnmpy1(filr, itnm);fprintln(filr))}
+nindfpr(filr, nind);
+i1tnmpy1(filr, itnm);strnfpr(filr, " = None\n"))}
 //
 end//let//end-of-[I1INStimp(...)]
 //
