@@ -104,7 +104,7 @@ lctnfpr
 (* ****** ****** *)
 //
 fun
-dicstfpr
+dicstpy1
 (filr: FILR
 ,dimp: dimpl): void =
 (
@@ -113,11 +113,11 @@ dimp.node() of
 |DIMPLone1
 (  dcst  ) =>
 (
-  d2cstfpr(filr, dcst))
+  d2cstpy1(filr, dcst))
 |DIMPLone2
 (dcst, svts) =>
 (
-  d2cstfpr(filr, dcst))
+  d2cstpy1(filr, dcst))
 |DIMPLall1
 (dqid, d2cs) =>
 (
@@ -580,7 +580,7 @@ else
 (
 //
 (
-nindfpr(filr, nind);dicstfpr(filr, dimp);
+nindfpr(filr, nind);dicstpy1(filr, dimp);
 strnfpr(filr," = function ");fjas1py1(filr, fjas));
 (
 strnfpr(filr," ## impl\n");
