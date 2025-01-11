@@ -117,7 +117,7 @@ lctnfpr
 (* ****** ****** *)
 //
 fun
-dicstfpr
+dicstjs1
 (filr: FILR
 ,dimp: dimpl): void =
 (
@@ -593,7 +593,7 @@ else
 //
 (
 nindstrnfpr
-(filr, nind, "let ");dicstfpr(filr, dimp);
+(filr, nind, "let ");dicstjs1(filr, dimp);
 strnfpr(filr," = function ");fjas1js1(filr, fjas));
 (
 strnfpr(filr," { // impl\n");

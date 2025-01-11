@@ -560,13 +560,13 @@ ival.node() of
 ( itnm ) => i1tnmpy1(filr,itnm)
 (* ****** ****** *)
 |I1Vcon
-( dcon ) => d2confpr(filr,dcon)
+( dcon ) => d2conpy1(filr,dcon)
 (* ****** ****** *)
 |I1Vcst
-( dcst ) => d2cstfpr(filr,dcst)
+( dcst ) => d2cstpy1(filr,dcst)
 (* ****** ****** *)
 |I1Vvar
-( dvar ) => d2varfpr(filr,dvar)
+( dvar ) => d2varpy1(filr,dvar)
 (* ****** ****** *)
 (* ****** ****** *)
 //
