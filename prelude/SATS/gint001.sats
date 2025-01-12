@@ -169,8 +169,6 @@ nint_map$f1un_llist
 map_llist with nint_map_llist of 1000
 #symload
 map_llist with nint_map$f1un_llist of 1000
-#symload
-map$fun_llist with nint_map$f1un_llist of 1000
 //
 (* ****** ****** *)
 //
@@ -190,8 +188,6 @@ nint_rmap$f1un_llist
 rmap_llist with nint_rmap_llist of 1000
 #symload
 rmap_llist with nint_rmap$f1un_llist of 1000
-#symload
-rmap$fun_llist with nint_rmap$f1un_llist of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -216,8 +212,6 @@ nint_map$f1un_lstrm
 //
 #symload
 map_lstrm with nint_map$f1un_lstrm of 1000
-#symload
-map$fun_lstrm with nint_map$f1un_lstrm of 1000
 //
 (* ****** ****** *)
 //
@@ -236,8 +230,6 @@ nint_rmap$f1un_lstrm
 //
 #symload
 rmap_lstrm with nint_rmap$f1un_lstrm of 1000
-#symload
-rmap$fun_lstrm with nint_rmap$f1un_lstrm of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -292,6 +284,11 @@ fun
 nint_rfolditm$f2un
 (xs: nint
 ,r0: r0, fopr: (ni, r0)-> r0): (r0)
+//
+#symload
+folditm with nint_folditm$f2un of 1000
+#symload
+rfolditm with nint_rfolditm$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
