@@ -3,7 +3,10 @@
 
 fun
 fact1(n: sint): sint =
-if n >= 1 then n * fact1(n-1) else 1
+(
+if
+(n >= 1)
+then n * fact1(n-1) else 1)
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -14,9 +17,9 @@ let
 #typedef x0 = sint
 #typedef r0 = sint
 in//let
-nint_folditm$f2un<r0>
+folditm
 (n, 1, lam(r: r0, i: x0) => r*(i+1))
-end//let
+end//let//end-of-[fact2(n)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -43,7 +46,7 @@ gseq_folditm0
 #typedef r0 = sint
 #vwtpdef xs = strm_vt(x0)
 #impltmp
-folditm$fopr0<sint><sint>(r, x) = r * (x+1)
+folditm$fopr0<x0><r0>(r, x) = r * (x+1)
 }
 
 (* ****** ****** *)

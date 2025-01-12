@@ -922,6 +922,16 @@ case+ iins of
 //
 (* ****** ****** *)
 //
+|I1INSassgn
+(i1vl, i1vr) =>
+(
+nindstrnfpr
+(filr, nind, "XATS000_assgn(");
+i1valpy1(filr, i1vl);strnfpr(filr, ", ");
+i1valpy1(filr, i1vr);strnfpr(filr, ")\n"))
+//
+(* ****** ****** *)
+//
 |_(*otherwise*) =>
 (
 nindfpr(filr, nind);i1inspy1(filr, iins);fprintln(filr))
