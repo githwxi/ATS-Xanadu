@@ -15,6 +15,25 @@ loop(0, 1) where {
   if i < n then loop(i+1, r*(i+1)) else r
 }
 
+(* ****** ****** *)
+(* ****** ****** *)
+
+fun
+fact3(n: sint): sint =
+gseq_folditm0
+<xs><x0><r0>
+(nint_strmize(n), 1(*r*)) where
+{
+#typedef x0 = sint
+#typedef r0 = sint
+#vwtpdef xs = strm_vt(x0)
+#impltmp
+folditm$fopr0<sint><sint>(r, x) = r * (x+1)
+}
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
