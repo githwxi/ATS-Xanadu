@@ -126,11 +126,11 @@ dimp.node() of
 |DIMPLone1
 (  dcst  ) =>
 (
-  d2cstfpr(filr, dcst))
+  d2cstjs1(filr, dcst))
 |DIMPLone2
 (dcst, svts) =>
 (
-  d2cstfpr(filr, dcst))
+  d2cstjs1(filr, dcst))
 |DIMPLall1
 (dqid, d2cs) =>
 (

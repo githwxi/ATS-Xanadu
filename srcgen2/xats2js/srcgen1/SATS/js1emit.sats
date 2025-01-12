@@ -57,6 +57,23 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 fun
+d2conjs1
+(filr
+:FILR, dcon: d2con): void
+fun
+d2cstjs1
+(filr
+:FILR, dcst: d2cst): void
+//
+fun
+d2varjs1
+(filr
+:FILR, dvar: d2var): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1tnmjs1
 (filr:FILR,itnm:i1tnm): void
 //
