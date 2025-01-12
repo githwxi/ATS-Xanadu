@@ -261,6 +261,41 @@ nint_digitize$base
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-01-10:
+Sun Jan 12 09:44:35 AM EST 2025
+*)
+//
+fun
+<r0:vt>
+nint_folditm
+(xs: nint, r0: r0): void
+fun
+<r0:vt>
+nint_rfolditm
+(xs: nint, r0: r0): void
+//
+#symload
+folditm with nint_folditm of 1000
+#symload
+rfolditm with nint_rfolditm of 1000
+//
+(* ****** ****** *)
+//
+fun
+<r0:vt>
+nint_folditm$f2un
+(xs: nint
+,r0: r0, fopr: (r0, ni)-> r0): (r0)
+fun
+<r0:vt>
+nint_rfolditm$f2un
+(xs: nint
+,r0: r0, fopr: (ni, r0)-> r0): (r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

@@ -545,6 +545,34 @@ gseq_rstrqize<nint><ni> = gasz_rstrqize<nint><ni>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-01-12:
+Sun Jan 12 10:08:30 AM EST 2025
+*)
+//
+#impltmp
+< r0:vt >
+nint_folditm =
+gseq_folditm<nint><ni><r0>(*void*)
+#impltmp
+< r0:vt >
+nint_rfolditm =
+gseq_rfolditm<nint><ni><r0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< r0:vt >
+nint_folditm$f2un =
+gseq_folditm$f2un<nint><ni><r0>(*void*)
+#impltmp
+< r0:vt >
+nint_rfolditm$f2un =
+gseq_rfolditm$f2un<nint><ni><r0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

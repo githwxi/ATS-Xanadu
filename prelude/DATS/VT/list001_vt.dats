@@ -319,13 +319,13 @@ end(*let*)//end-of-[ list_vt_map0(...) ]
 #impltmp
 < x0:vt >
 < y0:vt >
-list_vt_map0_f1un
+list_vt_map0$f1un
   (xs, f0) =
 (
   list_vt_map0<x0><y0>(xs)) where
 {
 #impltmp map$fopr0<x0><y0>(x0) = f0(x0)
-}(*where*)//end-of-[list_vt_map0_f1un(...)]
+}(*where*)//end-of-[list_vt_map0$f1un(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -369,13 +369,45 @@ end//let//end-of-[list_vt_cons(...)]
 #impltmp
 < x0:vt >
 < y0:vt >
-list_vt_maprev0_f1un
+list_vt_maprev0$f1un
   (xs, f0) =
 (
   list_vt_maprev0<x0><y0>(xs)) where
 {
 #impltmp map$fopr0<x0><y0>(x0) = f0(x0)
-}(*where*)//end-of-[list_vt_maprev0_f1un(...)]
+}(*where*)//end-of-[list_vt_maprev0$f1un(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-01-12:
+Sun Jan 12 09:23:42 AM EST 2025
+*)
+//
+#impltmp
+< x0:vt >
+< r0:vt >
+list_vt_folditm0 =
+gseq_folditm0<list_vt(x0)><x0><r0>
+//
+#impltmp
+< x0:vt >
+< r0:vt >
+list_vt_rfolditm0 =
+gseq_rfolditm0<list_vt(x0)><x0><r0>
+//
+#impltmp
+< x0:vt >
+< r0:vt >
+list_vt_ifolditm0 =
+gseq_ifolditm0<list_vt(x0)><x0><r0>
+//
+#impltmp
+< x0:vt >
+< r0:vt >
+list_vt_irfolditm0 =
+gseq_irfolditm0<list_vt(x0)><x0><r0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
