@@ -38,6 +38,7 @@ prints("Hello from [test01.dats]\n")
 val () = prints("fact1(10) = ", fact1(10), "\n")
 val () = prints("fact2(10) = ", fact2(10), "\n")
 val () = prints("fact3(10) = ", fact3(10), "\n")
+val () = prints("fact4(10) = ", fact4(10), "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

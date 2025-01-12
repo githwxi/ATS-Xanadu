@@ -10,18 +10,33 @@ if n >= 1 then n * fact1(n-1) else 1
 
 fun
 fact2(n: sint): sint =
-loop(0, 1) where {
-  fun loop(i, r) =
-  if i < n then loop(i+1, r*(i+1)) else r
-}
+let
+#typedef x0 = sint
+#typedef r0 = sint
+in//let
+nint_folditm$f2un<r0>
+(n, 1, lam(r: r0, i: x0) => r*(i+1))
+end//let
 
 (* ****** ****** *)
 (* ****** ****** *)
 
 fun
 fact3(n: sint): sint =
+(
+  loop(0, 1) ) where
+{
+fun loop(i, r) =
+if i < n then loop(i+1, r*(i+1)) else r
+}
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+fun
+fact4(n: sint): sint =
 gseq_folditm0
-<xs><x0><r0>
+<xs><x0>< r0 >
 (nint_strmize(n), 1(*r*)) where
 {
 #typedef x0 = sint

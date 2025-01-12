@@ -432,6 +432,39 @@ strmcon_vt_cons
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+(*
+HX-2025-01-12:
+Sun Jan 12 09:30:32 AM EST 2025
+*)
+//
+#impltmp
+< x0:vt >
+< r0:vt >
+strm_vt_folditm0 =
+gseq_folditm0<strm_vt(x0)><x0><r0>
+#impltmp
+< x0:vt >
+< r0:vt >
+strm_vt_ifolditm0 =
+gseq_ifolditm0<strm_vt(x0)><x0><r0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+< r0:vt >
+strm_vt_folditm0$f2un =
+gseq_folditm0$f2un<strm_vt(x0)><x0><r0>
+#impltmp
+< x0:vt >
+< r0:vt >
+strm_vt_ifolditm0$f3un =
+gseq_ifolditm0$f3un<strm_vt(x0)><x0><r0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
