@@ -30,11 +30,35 @@ then x * fact1(x-1) else 1
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
+fun
+fact2
+(x: sint): sint =
+(
+case+ x <= 0 of
+| true => 1
+| false => x * fact2(x-1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fact3
+(x: sint): sint =
+(
+case+ x of
+| _ when(x>0) => x*fact3(x-1) | _ => 1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () =
 prints("fact1(10) = ", fact1(10), "\n")
+val () =
+prints("fact2(10) = ", fact2(10), "\n")
+val () =
+prints("fact3(10) = ", fact3(10), "\n")
+//
 val () = console_log(the_print_store_flush())
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

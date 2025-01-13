@@ -89,7 +89,9 @@ _(*DATS*)="./../DATS/js1emit.dats"
 #symload ival with i1cmp_get_ival
 #symload ilts with i1cmp_get_ilts
 (* ****** ****** *)
+#symload node with i1gua_get_node
 #symload node with i1cls_get_node
+#symload node with i1gpt_get_node
 (* ****** ****** *)
 #symload node with t1imp_get_node
 (* ****** ****** *)
@@ -1430,14 +1432,34 @@ in//let
 //
 case+
 igpt.node() of
-|
-I1GPTpat
-(  ibnd  ) =>
+//
+|I1GPTpat
+(   ibnd   ) =>
 (
 case+ ibnd of
 I1BNDcons
 (itnm,ipat,dvvs) =>
 (
+nindstrnfpr
+(filr, nind, "// "); prints(igpt, "\n");
+nindstrnfpr
+(filr, nind, "if (");
+i0pckjs1(filr, ival, ipat);strnfpr(filr, ") { // gpt\n");
+nindstrnfpr
+(filr, nind+2, "let "); // HX: [itnm] is new for each clause!
+i1tnmjs1(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
+)(* end-of-[I1BNDcons(...)] *)
+)
+//
+|I1GPTgua
+(ibnd, i1gs) =>
+(
+case+ ibnd of
+I1BNDcons
+(itnm,ipat,dvvs) =>
+(
+nindstrnfpr
+(filr, nind, "// "); prints(igpt, "\n");
 nindstrnfpr
 (filr, nind, "if (");
 i0pckjs1(filr, ival, ipat);strnfpr(filr, ") { // gpt\n");
@@ -1461,10 +1483,17 @@ f0_i1tnmvalcls
 , icl0: i1cls): void =
 let
 //
-val filr =
-envx2js_get_filr(env0)
-val nind =
-envx2js_get_nind(env0)
+(*
+val () =
+prerrsln
+("f0_i1tnmvalcls: itnm = ", itnm)
+val () =
+prerrsln
+("f0_i1tnmvalcls: ival = ", ival)
+val () =
+prerrsln
+("f0_i1tnmvalcls: icl0 = ", icl0)
+*)
 //
 in//let
 //
@@ -1480,29 +1509,7 @@ strnfpr(filr, "// { // cls\n"))
 //
 val () =
 (
-  f0_i1valgpt(env0, ival, igpt))
-//
-val () =
-let
-val () =
-(
-  envx2js_incnind(env0,2(*++*)))
-//
-val () =
-(
-  f0_i1tnmcmp(env0, itnm, icmp))
-//
-val () =
-(
-nindfpr(filr, nind+2);
-strnfpr(filr, "break // cls\n"))
-//
-val () =
-(
-  envx2js_decnind(env0,2(*--*))) end
-//
-val () =
-nindstrnfpr(filr, nind, "} // gpt\n")
+  f1_i1clscls(env0, igpt, icmp))
 //
 val () =
 nindstrnfpr(filr, nind, "// } // cls\n")
@@ -1512,17 +1519,184 @@ end//let//end(I1CLScls(igpt,icmp))
 end where
 {
 //
-(*
+val filr = envx2js_get_filr(env0)
+val nind = envx2js_get_nind(env0)
+//
+fun
+f1_i1clscls
+( env0:
+! envx2js
+, igpt: i1gpt
+, icmp: i1cmp): void =
+(
+case+
+igpt.node() of
+|I1GPTpat _ =>
+f1_i1clscls_pat(env0, igpt, icmp)
+|I1GPTgua _ =>
+f1_i1clscls_gua(env0, igpt, icmp))
+//
+and
+f1_i1clscls_pat
+( env0:
+! envx2js
+, igpt: i1gpt
+, icmp: i1cmp): void =
+let
 val () =
-( prerrsln
-  ("f0_i1tnmvalcls: itnm = ", itnm))
+(
+  f0_i1valgpt(env0, ival, igpt))
+//
 val () =
-( prerrsln
-  ("f0_i1tnmvalcls: ival = ", ival))
+let
+//
 val () =
-( prerrsln
-  ("f0_i1tnmvalcls: icl0 = ", icl0))
-*)
+(
+  envx2js_incnind(env0,2(*++*)))
+val () =
+(
+  f0_i1tnmcmp(env0, itnm, icmp))
+val () =
+(
+  envx2js_decnind(env0,2(*--*)))
+//
+in//let
+(
+  nindfpr(filr, nind+2);
+  strnfpr(filr, "break // cls\n"))
+end//let
+//
+val () =
+nindstrnfpr(filr, nind, "} // gpt\n")
+//
+end//let//end(f1_i1clscls_pat(igpt,icmp))
+//
+(* ****** ****** *)
+//
+and
+f1_i1clscls_gua
+( env0:
+! envx2js
+, igpt: i1gpt
+, icmp: i1cmp): void =
+let
+//
+val tbrk =
+i1tnm_new0( (*void*) )
+//
+fun
+tbrkjs1
+( filr: FILR
+, tbrk: i1tnm): void =
+(
+  i1tnmjs1(filr, tbrk))
+//
+val () =
+(
+f0_i1valgpt(env0, ival, igpt))
+//
+val () =
+(
+envx2js_incnind(env0,2(*++*)))
+//
+val () =
+(
+nindstrnfpr(filr, nind+2, "let ");
+tbrkjs1(filr, tbrk);strnfpr(filr, " = false\n");
+nindfpr(filr, nind+2);strnfpr(filr, "do { // gua\n")
+)
+//
+val () =
+(
+envx2js_incnind(env0,2(*++*)))
+//
+val () =
+(
+f2_i1gualst(env0, i1gs)) where
+{
+//
+fun
+f2_i1gua
+( env0:
+! envx2js
+, igua: i1gua): void =
+(
+case+
+igua.node() of
+|
+I1GUAexp(icmp) =>
+(
+js1emit_i1cmp(env0, icmp)) where
+{
+val () =
+(
+nindfpr(filr, nind+4); prints
+("// I1GUAexp: igua = ", igua, "\n"))
+}
+|
+I1GUAmat(icmp, ibnd) =>
+(
+nindfpr(filr, nind+4); prints
+("// I1GUAmat: igua = ", igua, "\n"))
+)
+//
+and
+f2_i1gualst
+( env0:
+! envx2js
+, i1gs: i1gualst): void =
+(
+case+ i1gs of
+|
+list_nil() => ()
+|
+list_cons(i1g1, i1gs) =>
+let
+val () =
+  f2_i1gua(env0, i1g1)
+val () =
+  f2_i1gualst(env0, i1gs) end
+)(*case+*)//endof-(f2_i1gualst)
+//
+val-
+I1GPTgua(_, i1gs) = igpt.node()
+//
+}
+//
+val () =
+(
+  f0_i1tnmcmp(env0, itnm, icmp))
+val () =
+(
+  envx2js_decnind(env0,2(*--*)))
+val () =
+(
+  envx2js_decnind(env0,2(*--*)))
+//
+val () =
+(
+nindfpr(filr, nind+2);
+strnfpr(filr, "} while (false) // end(do)\n"))
+val () =
+(
+  f2_igptbrk(filr, nind+2)) where
+{
+fun
+f2_igptbrk
+( filr: FILR
+, nind: sint): void =
+(
+nindfpr(filr, nind);strnfpr(filr, "if (");
+tbrkjs1(filr, tbrk);strnfpr(filr, ") break // cls\n"))
+}
+//
+val () =
+(
+  nindstrnfpr(filr, nind, "} // gpt\n"))
+//
+end//let//end(f1_i1clscls_gua(igpt,icmp))
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[f0_i1tnmvalcls(...)]
 //
