@@ -4,12 +4,15 @@
 *~
 \#*
 .\#*
+*.exe
 *_?ats.o
 *_?ats.c
-*.exe
-srcgen/xats/xatsopt
-srcgen/xint/BUILD/*
-srcgen/xint/xinterp
-srcgen/xint/BUILD/*
+test*_out.js
+test*_out.py
+test*_out1.js
+test*_out2.js
+srcgen2/BUILD/JS
+srcgen2/xats2js/srcgen1/BUILD/JS
+srcgen2/xats2py/srcgen1/BUILD/JS
 
 ###### end of [.gitignore] ######
