@@ -1681,10 +1681,18 @@ I1GPTgua(_, i1gs) = igpt.node()
 }
 //
 val () =
-( nindfpr
-  (filr, nind+4);
-  tbrkjs1(filr, tbrk);
-  strnfpr(filr, " = (true)\n"))
+(
+//
+(*
+HX-2025-01-13:
+For dismissing the guard
+*)
+//
+nindfpr
+(filr, nind+4);
+tbrkjs1(filr, tbrk);
+strnfpr(filr, 
+  " = (true) // deguarded!\n"))
 //
 val () =
 (

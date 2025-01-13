@@ -3451,10 +3451,23 @@ d2gpt_make_node
 ( loc0
 , D2GPTgua(d2p1, d2gs)) where
 {
+//
 val
-d2p1 = trans12_d1pat(env0, d1p1)
+d2p1 =
+trans12_d1pat(env0, d1p1)
+//
+val () =
+tr12env_pshlam0(env0)//enter
+//
+val () =
+tr12env_add0_d2pat(env0, d2p1)
 val
-d2gs = trans12_d1gualst(env0, d1gs) }
+d2gs =
+(
+  trans12_d1gualst(env0, d1gs))
+//
+val//exit
+((*void*)) = tr12env_poplam0(env0) }
 //
 end (*let*) // end of [trans12_d1gpt(env0,dgpt)]
 
@@ -3503,12 +3516,13 @@ d2cls_make_node
 , D2CLScls(dgpt, d2e1)) where
 {
 //
-val () =
-tr12env_pshlam0(env0)
-//
 val
 dgpt =
 trans12_d1gpt(env0, dgpt)
+//
+val () =
+tr12env_pshlam0(env0)//enter
+//
 val () =
 tr12env_add0_d2gpt(env0, dgpt)
 val
