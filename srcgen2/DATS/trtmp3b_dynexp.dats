@@ -55,6 +55,9 @@ _(*Trtmp3b*) = "./trtmp3b.dats"
 #symload lctn with d3exp_get_lctn
 #symload node with d3exp_get_node
 (* ****** ****** *)
+#symload lctn with d3gua_get_lctn
+#symload node with d3gua_get_node
+(* ****** ****** *)
 #symload lctn with d3gpt_get_lctn
 #symload node with d3gpt_get_node
 (* ****** ****** *)
@@ -1124,6 +1127,7 @@ D3Esynext
 } (*where*)//end-of-[trtmp3b_d3exp(env0,d3e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trtmp3b_l3d3e
@@ -1137,6 +1141,46 @@ D3LAB
 in//let
 D3LAB(lab0, trtmp3b_d3exp(env0, d3e1))
 end (*let*)//end-of-[trtmp3b_l3d3e(env0,ld3e)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trtmp3b_d3gua
+  (env0, dgua) = let
+//
+val loc0 = dgua.lctn()
+//
+(*
+val
+val () =
+prerrsln
+("trtmp3b_d3gua: dgua = ", dgua)
+*)
+//
+in//let
+//
+case+
+dgua.node() of
+|
+D3GUAexp(dexp) =>
+let
+val dexp =
+trtmp3b_d3exp(env0, dexp)
+in//let
+d3gua(loc0, D3GUAexp(dexp))
+end//let
+//
+|
+D3GUAmat(dexp, dpat) =>
+let
+val dexp =
+trtmp3b_d3exp(env0, dexp)
+in//let
+d3gua(loc0, D3GUAmat(dexp, dpat))
+end//let
+//
+end(*let*)//end-of-[trtmp3b_d3gua(env0,dgpt)]
 //
 (* ****** ****** *)
 //
@@ -1160,7 +1204,18 @@ dgpt.node() of
 |
 D3GPTpat(d3p1) => dgpt//nothing
 |
-D3GPTgua(d3p1, d3gs) => dgpt//nothing
+D3GPTgua(d3p1, d3gs) =>
+let
+//
+val loc0 =
+dgpt.lctn((*void*))
+val d3gs =
+trtmp3b_d3gualst(env0, d3gs)
+//
+in//let
+(
+  d3gpt(loc0, D3GPTgua(d3p1, d3gs)))
+end//let
 //
 end(*let*)//end-of-[trtmp3b_d3gpt(env0,dgpt)]
 //
@@ -1230,6 +1285,7 @@ TEQD3EXPsome(teq1, d3e2) where
 (*case+*)//end-of(trtmp3b_teqd3exp(env0,tdxp))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trtmp3b_d3explst
@@ -1252,6 +1308,15 @@ trtmp3b_l3d3elst
   list_trtmp3b_fnp(env0, ldes, trtmp3b_l3d3e))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trtmp3b_d3gualst
+( env0, d3gs ) =
+(
+  list_trtmp3b_fnp(env0, d3gs, trtmp3b_d3gua))
+//
+(* ****** ****** *)
 //
 #implfun
 trtmp3b_d3clslst
@@ -1260,5 +1325,9 @@ trtmp3b_d3clslst
   list_trtmp3b_fnp(env0, dcls, trtmp3b_d3cls))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_trtmp3b_dynexp.dats] *)
