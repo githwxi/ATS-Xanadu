@@ -1601,9 +1601,12 @@ envx2js_incnind(env0,2(*++*)))
 //
 val () =
 (
-nindstrnfpr(filr, nind+2, "let ");
-tbrkjs1(filr, tbrk);strnfpr(filr, " = false\n");
-nindfpr(filr, nind+2);strnfpr(filr, "do { // gua\n")
+nindstrnfpr
+(filr, nind+2, "let ");
+tbrkjs1(filr, tbrk);
+strnfpr(filr, " = false\n");
+nindfpr(filr, nind+2);
+strnfpr(filr, "do { // gua\n")
 )
 //
 val () =
@@ -1625,8 +1628,22 @@ case+
 igua.node() of
 |
 I1GUAexp(icmp) =>
+let
+//
+val ival =
+i1cmp_get_ival(icmp)
+val (  ) =
+js1emit_i1cmp(env0, icmp)
+//
+in//let
 (
-js1emit_i1cmp(env0, icmp)) where
+nindfpr
+(filr, nind+4);
+strnfpr
+(filr, "if (");
+i1valjs1(filr, ival);
+strnfpr(filr, ") {} else break\n"))
+end where // end-of-[let]
 {
 val () =
 (
@@ -1662,6 +1679,12 @@ val-
 I1GPTgua(_, i1gs) = igpt.node()
 //
 }
+//
+val () =
+( nindfpr
+  (filr, nind+4);
+  tbrkjs1(filr, tbrk);
+  strnfpr(filr, " = (true)\n"))
 //
 val () =
 (
