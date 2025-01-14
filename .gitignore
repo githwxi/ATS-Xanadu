@@ -15,4 +15,6 @@ srcgen2/BUILD/JS
 srcgen2/xats2js/srcgen1/BUILD/JS
 srcgen2/xats2py/srcgen1/BUILD/JS
 
+result
+
 ###### end of [.gitignore] ######
