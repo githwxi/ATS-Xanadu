@@ -7,6 +7,8 @@
 *.exe
 *_?ats.o
 *_?ats.c
+*_?ats.js
+*_?ats.py
 test*_out.js
 test*_out.py
 test*_out1.js

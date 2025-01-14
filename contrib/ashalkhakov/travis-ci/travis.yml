@@ -1,0 +1,53 @@
+---
+os:
+  - linux
+
+language: c
+
+node_js:
+  - "5.10.1"
+
+env:
+  - export NODE_VERSION="5.10.1"
+
+addons:
+  apt:
+    packages:
+      - libgc-dev
+      - libgmp-dev
+
+before_install:
+  - date
+  - export PATSHOME=${HOME}/ATS2
+  - export PATH=${PATH}:${PATSHOME}/bin
+  - export XATSHOME=${TRAVIS_BUILD_DIR}
+  - export GCC=gcc
+  - export CLANG=clang
+
+install:
+  # $XATSHOME/travis-ci/install-ats2.sh 0.4.0
+  # $XATSHOME/travis-ci/install-ats2.sh 0.4.1
+  - $XATSHOME/travis-ci/install-ats2.sh 0.4.2
+
+after_install:
+  - date
+
+before_script:
+  - date
+
+script:
+  # Building ATS2
+  - cd ${PATSHOME}
+  - ./configure&&make CC=${GCC} all
+  # Building Xanadu
+  - cd ${XATSHOME}/srcgen
+  - echo 'running unit-tests...'
+  - (cd xutl/TEST && make testall)
+  - (cd xutl/TEST/Posix && make testall)
+  - echo 'building ATS-Xanadu...'
+  - (cd xats && make all)
+  - echo 'running integration tests...'
+  - (cd xats/TEST && make XATSOPT=./../xatsopt testall)
+
+after_script:
+  - date
