@@ -54,12 +54,11 @@ cleanall:: ; rm -f test??_out.js
 cleanall:: ; rm -f test??_out?.js
 ########################################################################
 ########################################################################
-SRCGEN2_SRCGENX=\
-$(XATSHOME)/srcgen2/xats2js/srcgenx
-SRCGEN2_XSHARED=\
-$(XATSHOME)/srcgen2/xats2js/srcgenx/xshared/runtime
-XATS2JS_JSEMIT00=\
-./../../../../../../TOOLING/xats2js/UTIL/xats2js_jsemit00_dats.js
+SRCGEN2=./../../../../../../../../srcgen2
+XATS2JS=./../../../../../../srcgen2/xats2js
+########################################################################
+SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
+XATS2JS_JSEMIT00=$(XATS2JS)/srcgen1/UTIL/xats2js_jsemit00_dats.js
 ########################################################################
 ########################################################################
 

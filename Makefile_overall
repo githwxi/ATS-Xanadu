@@ -16,6 +16,7 @@ all:: srcgen2_xats2js_jsemit00
 all:: srcgen2_libxats2py
 all:: srcgen2_xats2py_pyemit00
 ############################################################
+############################################################
 #
 # STEP~1 for building xats2js-in-ats2:
 #
@@ -24,7 +25,7 @@ time make -C srcgen1 -f Makefile_patsopt xatsopt
 srcgen1_xats2js:: ; \
 time make -C srcgen1 -f Makefile_patsopt libxatsopt
 srcgen1_xats2js:: ; \
-time make -C srcgen1/xats2js/srcgenx -f Makefile_patsopt xats2js
+time make -C srcgen1/xats2js/srcgen1 -f Makefile_patsopt xats2js
 #
 ############################################################
 #
@@ -40,16 +41,27 @@ time make -C srcgen2/UTIL -f Makefile_xats2js xatsopt_tcheck00
 # STEP~3 for building xats2js_jsemit00
 #
 srcgen2_libxats2js:: ; \
-time make -C srcgen2/xats2js/srcgenx -f Makefile_xats2js libxats2js
+time make -C srcgen2/xats2js/srcgen1 -f Makefile_xats2js libxats2js
 srcgen2_xats2js_jsemit00:: ; \
 time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xats2js xats2js_jsemit00
+############################################################
 #
 # STEP~4 for building xats2py_pyemit00
 #
 srcgen2_libxats2py:: ; \
-time make -C srcgen2/xats2py/srcgenx -f Makefile_xats2js libxats2py
+time make -C srcgen2/xats2py/srcgen1 -f Makefile_xats2js libxats2py
 srcgen2_xats2py_pyemit00:: ; \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xats2js xats2py_pyemit00
 #
+############################################################
+############################################################
+cleanall:: ; \
+make -C srcgen1 -f Makefile_patsopt cleanall
+cleanall:: ; \
+make -C srcgen2 -f Makefile_xats2js cleanall
+cleanall:: ; \
+make -C srcgen2/xats2py/srcgen1 -f Makefile_xats2js cleanall
+cleanall:: ; \
+make -C srcgen2/xats2js/srcgen1 -f Makefile_xats2js cleanall
 ############################################################
 ############################################################

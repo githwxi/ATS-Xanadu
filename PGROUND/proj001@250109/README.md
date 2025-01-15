@@ -1,4 +1,4 @@
-# How to program a project in ATS3?
+# How to set up a project in ATS3?
 
 ## Build Status
 
@@ -23,3 +23,8 @@ ROOT/srcgen2 for containing the source code of this new
 implementation. When we have more than one implementations of PROJ, we
 can set the link ROOT/srcgenx to the directory containing the default
 implementation.
+
+In ROOT/srcgen1, we may create directories of the names SATS, DATS,
+and HATS for storing files with name extensions sats, dats, and hats,
+respectively. Also, we may have a directory TEST for storing testing
+code.
