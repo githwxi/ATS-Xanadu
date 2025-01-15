@@ -27,13 +27,11 @@ MYTEST="."
 ######
 XSHARED="${XATSJSD}/xshared"
 ######
-XATS2JS="${XATSJSD}/bin/xats2js"
-######
 SRCGEN1=./../../../../srcgen1
 SRCGEN2=./../../../../srcgen2
 ######
 XATSJSD=\
-./../../../../srcgen1/xats2js/srcgen1
+$(SRCGEN1)/srcgen1/xats2js/srcgen1
 ######
 XATS2JS_PRELUDE=\
 "$(XSHARED)/runtime/xats2js_prelude.js"
@@ -42,10 +40,14 @@ XATS2JS_PRELUDE_NODE=\
 XATS2JS_XATSLIB_NODE=\
 "$(XSHARED)/runtime/xats2js_xatslib_node.js"
 ########################################################################
+#
+XATS2JS=./../../srcgen1/xats2js/bin/xats2js
+#
 # XATS2JS=\
 # nix run \
 # github:GZGavinZhao/ATS-Xanadu/nixify\#xats2js \
 # --extra-experimental-features flakes --extra-experimental-features nix-command --
+#
 ########################################################################
 
 SRCSATS := \
