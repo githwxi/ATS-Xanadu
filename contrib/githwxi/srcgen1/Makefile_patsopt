@@ -1,0 +1,275 @@
+######
+#
+# HX: For
+# building xatsopt via patsopt
+#
+######
+
+AR=ar
+CP=cp
+MV=mv
+CC=gcc
+SED=sed
+CPF=cp -f
+MVF=mv -f
+RMF=rm -f
+WCL=wc -l
+
+######
+#
+PATSCC=$(PATSHOME)/bin/patscc
+PATSOPT=$(PATSHOME)/bin/patsopt
+#
+# PATSOPT=$(PATSHOME)/bin/patsopt --gline
+#
+PATSOPT=\
+nix --extra-experimental-features nix-command \
+    --extra-experimental-features flakes run github:githwxi/ATS-Postiats\#patsopt --
+######
+#
+CFLAGS=
+#
+# CFLAGS=-g
+# CFLAGS=-g -O
+# CFLAGS=-g -O2
+#
+GCFLAG=
+GCFLAG=-DATS_MEMALLOC_LIBC
+GCFLAG=-DATS_MEMALLOC_GCBDW
+#
+LIBGC=
+LIBGC=-lgc
+#
+######
+SRCGEN1=./../../../srcgen1
+######
+
+SRCSATS := \
+xbasics.sats \
+xstamp0.sats \
+xsymbol.sats \
+xsymmap.sats \
+xsymenv.sats \
+xlabel0.sats \
+xfixity.sats \
+xglobal.sats \
+xerrory.sats \
+filpath.sats \
+filsrch.sats \
+locinfo.sats \
+lexbuf0.sats \
+lexing0.sats \
+staexp0.sats \
+dynexp0.sats \
+parsing.sats \
+synread.sats \
+staexp1.sats \
+dynexp1.sats \
+trans01.sats \
+tread01.sats \
+effect0.sats \
+staexp2.sats \
+statyp2.sats \
+dynexp2.sats \
+nmspace.sats \
+trans12.sats \
+tread12.sats \
+dynexp3.sats \
+trans23.sats \
+tread23.sats \
+trans33.sats \
+tread33.sats \
+trans3t.sats \
+trans3x.sats \
+tread3x.sats \
+intrep0.sats \
+trcmp30.sats \
+xatsopt.sats \
+
+SRCDATS := \
+xbasics.dats \
+xstamp0.dats \
+xsymbol.dats \
+xsymmap.dats \
+xsymenv.dats \
+xlabel0.dats \
+xfixity.dats \
+xglobal.dats \
+xerrory.dats \
+filpath.dats \
+filsrch.dats \
+locinfo.dats \
+lexbuf0.dats \
+lexing0_token0.dats \
+lexing0_kword0.dats \
+lexing0_utils0.dats \
+staexp0.dats \
+dynexp0.dats \
+staexp0_print0.dats \
+dynexp0_print0.dats \
+parsing_basics.dats \
+parsing_tokbuf.dats \
+parsing_staexp.dats \
+parsing_dynexp.dats \
+synread_basics.dats \
+synread_staexp.dats \
+synread_dynexp.dats \
+staexp1.dats \
+dynexp1.dats \
+staexp1_print0.dats \
+dynexp1_print0.dats \
+trans01_basics.dats \
+trans01_envmap.dats \
+trans01_staexp.dats \
+trans01_dynexp.dats \
+tread01_staexp.dats \
+tread01_dynexp.dats \
+effect0.dats \
+staexp2.dats \
+statyp2.dats \
+dynexp2.dats \
+staexp2_inits0.dats \
+statyp2_inits0.dats \
+staexp2_utils1.dats \
+staexp2_utils2.dats \
+staexp2_s2cst0.dats \
+staexp2_print0.dats \
+statyp2_utils0.dats \
+statyp2_unify0.dats \
+statyp2_print0.dats \
+dynexp2_d2con0.dats \
+dynexp2_d2cst0.dats \
+dynexp2_d2var0.dats \
+dynexp2_print0.dats \
+nmspace.dats \
+gmacro1_define.dats \
+dmacro2_macdef.dats \
+trans12_basics.dats \
+trans12_envmap.dats \
+trans12_staexp.dats \
+trans12_dynexp.dats \
+tread12_staexp.dats \
+tread12_dynexp.dats \
+dynexp3.dats \
+dynexp3_print0.dats \
+dynexp3_utils0.dats \
+trans23_utils0.dats \
+trans23_dynexp.dats \
+tread23_dynexp.dats \
+trans33_utils0.dats \
+trans33_envmap.dats \
+trans33_dynexp.dats \
+tread33_dynexp.dats \
+trans3t_envmap.dats \
+trans3t_dynexp.dats \
+trans3x_envmap.dats \
+trans3x_dynexp.dats \
+tread3x_dynexp.dats \
+intrep0.dats \
+intrep0_print0.dats \
+intrep0_utils0.dats \
+intrep0_jsoniz.dats \
+intrep0_statyp.dats \
+intrep0_dynexp.dats \
+trcmp30_utils0.dats \
+trcmp30_envmap.dats \
+trcmp30_statyp.dats \
+trcmp30_dynexp.dats \
+xatsopt_utils0.dats xatsopt_mymain.dats \
+
+######
+BUILDCC=BUILD/CC
+######
+INCLUDE=-I"$(SRCGEN1)"
+######
+OBJSATS = \
+$(patsubst %.sats, BUILD/CC/%_sats.o, $(SRCSATS))
+OBJDATS = \
+$(patsubst %.dats, BUILD/CC/%_dats.o, $(SRCDATS))
+######
+
+######
+all:: xatsopt
+######
+#all:: ; echo "make xatsopt"
+#all:: ; echo "make srclines"
+#all:: ; echo "make libxatsopt"
+######
+#
+xatsopt: \
+BUILD/CC/xatsopt; $(MVF) $< ./bin/.
+BUILD/CC/xatsopt: \
+$(SRCGEN1)/DATS/xatsopt.dats $(OBJSATS) $(OBJDATS); \
+$(PATSCC) -cleanaft -o $@ $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC)
+#
+######
+
+srclines:: ; $(WCL) ./?ATS/*.?ats
+srclines:: ; $(WCL) ./UTIL/?ATS/*.?ats
+srclines:: ; $(WCL) ./UTIL/?ATS/Posix/*.?ats
+
+######
+
+libxatsopt: \
+$(OBJSATS) $(OBJDATS) \
+BUILD/CC/libxatsopt_dats.o; \
+($(AR) -r $@.a $^ && $(MVF) $@.a ./lib/.)
+BUILD/CC/libxatsopt_dats.o: \
+$(SRCGEN1)/DATS/xatsopt.dats; $(PATSCC) $(INCLUDE) -DATS __LIBXATSOPT__ -o $@ -c $<
+
+######
+
+BUILD/CC/%_sats.c: \
+$(SRCGEN1)/SATS/%.sats ; $(PATSOPT) -o $@ --static $<
+BUILD/CC/%_dats.c: \
+$(SRCGEN1)/DATS/%.dats ; $(PATSOPT) -o $@ --dynamic $<
+
+######
+
+BUILD/CC/%_sats.o: \
+BUILD/CC/%_sats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
+BUILD/CC/%_dats.o: \
+BUILD/CC/%_dats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) $(GCFLAG) -o $@ -c $<
+
+######
+#
+# HX-2018-10-07:
+# '--output-a .depend' means
+# appending instead of overwriting
+#
+SATS_SRCSATS := \
+$(patsubst %.sats, SATS/%.sats, $(SRCSATS))
+DATS_SRCDATS := \
+$(patsubst %.dats, DATS/%.dats, $(SRCDATS))
+#
+depend:: ; $(RMF) .depend
+#
+depend:: ; \
+$(PATSOPT) --output-a .depend --depgen -s $(SATS_SRCSATS)
+depend:: ; \
+$(PATSOPT) --output-a .depend --depgen -d $(DATS_SRCDATS)
+depend:: ; \
+$(PATSOPT) --output-a .depend --depgen -d DATS/xatsopt.dats
+#
+depend:: ; \
+$(SED) -i -e 's/^SATS/BUILD\/CC/' -e 's/^DATS/BUILD\/CC/' .depend
+#
+-include .depend
+#
+######
+#
+# For cleaning
+#
+######
+clean:: ; $(RMF) xatsopt_dats.c
+clean:: ; $(RMF) BUILD/CC/*_?ats.c
+clean:: ; $(RMF) BUILD/CC/*_?ats.o
+######
+cleanall:: clean
+cleanall:: ; $(RMF) ./.depend
+cleanall:: ; $(RMF) ./bin/xatsopt
+cleanall:: ; $(RMF) ./bin/xatsopt.sh
+cleanall:: ; $(RMF) ./lib/libxatsopt.a
+######
+
+################## end of [Makefile_patsopt] ##################
