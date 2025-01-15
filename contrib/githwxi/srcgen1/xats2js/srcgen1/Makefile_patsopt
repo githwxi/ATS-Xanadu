@@ -13,8 +13,8 @@ RMF=rm -f
 MAKE=make
 
 ######
-XATSOPT="./.."
-SRCGEN1=./../../../../srcgen1
+XATSOPT="./../.."
+SRCGEN1=./../../../../../srcgen1
 ######
 #
 PATSCC=$(PATSHOME)/bin/patscc

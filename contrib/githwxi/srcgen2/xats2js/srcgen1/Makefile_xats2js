@@ -2,8 +2,8 @@
 ########################################################################
 #
 # For compiling with xats2js
-# Sat Nov 30 03:23:22 PM EST 2024
-# Mon Jan 13 11:25:29 PM EST 2025
+# Sat 22 Jun 2024 05:23:36 PM EDT
+# Mon Jan 13 10:31:46 PM EST 2025
 #
 ########################################################################
 ########################################################################
@@ -27,11 +27,10 @@ MYTEST="."
 ######
 XSHARED="${XATSJSD}/xshared"
 ######
-SRCGEN1=./../../../../srcgen1
-SRCGEN2=./../../../../srcgen2
+SRCGEN1=./../../../../../srcgen1
+SRCGEN2=./../../../../../srcgen2
 ######
-XATSJSD=\
-$(SRCGEN1)/srcgen1/xats2js/srcgen1
+XATSJSD=$(SRCGEN1)/xats2js/srcgen1
 ######
 XATS2JS_PRELUDE=\
 "$(XSHARED)/runtime/xats2js_prelude.js"
@@ -41,7 +40,7 @@ XATS2JS_XATSLIB_NODE=\
 "$(XSHARED)/runtime/xats2js_xatslib_node.js"
 ########################################################################
 #
-XATS2JS=./../../srcgen1/xats2js/bin/xats2js
+XATS2JS=./../../../srcgen1/xats2js/bin/xats2js
 #
 # XATS2JS=\
 # nix run \
@@ -51,15 +50,39 @@ XATS2JS=./../../srcgen1/xats2js/bin/xats2js
 ########################################################################
 
 SRCSATS := \
-py1emit.sats \
+intrep0.sats \
+trxd3i0.sats \
+intrep1.sats \
+trxi0i1.sats \
+xats2js.sats \
+js1emit.sats \
 
 ######
 
 SRCDATS := \
-py1emit.dats \
-py1emit_utils0.dats \
-py1emit_dynexp.dats \
-py1emit_decl00.dats \
+intrep0.dats \
+intrep0_print0.dats \
+intrep0_utils0.dats \
+trxd3i0.dats \
+trxd3i0_myenv0.dats \
+trxd3i0_dynexp.dats \
+trxd3i0_decl00.dats \
+intrep1.dats \
+intrep1_print0.dats \
+intrep1_utils0.dats \
+trxi0i1.dats \
+trxi0i1_myenv0.dats \
+trxi0i1_dynexp.dats \
+trxi0i1_decl00.dats \
+xats2js.dats \
+xats2js_myenv0.dats \
+xats2js_dynexp.dats \
+xats2js_decl00.dats \
+xats2js_tmplib.dats \
+js1emit.dats \
+js1emit_utils0.dats \
+js1emit_dynexp.dats \
+js1emit_decl00.dats \
 
 ########################################################################
 ########################################################################
@@ -73,13 +96,13 @@ all:: $(OBJDATS)
 ########################################################################
 cleanall:: ; rm -f BUILD/JS/*_dats.js
 ########################################################################
-libxats2py:: $(OBJDATS); \
-$(CAT) $(OBJDATS) > lib/libxats2py.js
+libxats2js:: $(OBJDATS); \
+$(CAT) $(OBJDATS) > lib/libxats2js.js
 ########################################################################
-XATS2PY_SRCGEN1=$(SRCGEN2)/xats2py/srcgen1
+XATS2JS_SRCGEN1=$(SRCGEN2)/xats2js/srcgen1
 ########################################################################
 BUILD/JS/%_dats.js: \
-$(XATS2PY_SRCGEN1)/DATS/%.dats; $(XATS2JS) --output-w $@ --dynamic $<
+$(XATS2JS_SRCGEN1)/DATS/%.dats; $(XATS2JS) --output-w $@ --dynamic $<
 ########################################################################
 ########################################################################
 

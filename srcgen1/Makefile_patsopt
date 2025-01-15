@@ -22,12 +22,6 @@ PATSOPT=$(PATSHOME)/bin/patsopt
 #
 # PATSOPT=$(PATSHOME)/bin/patsopt --gline
 #
-NIXATS2=nix-shell -p ats2 --run
-#
-ifndef IN_NIX_SHELL
-PATSOPT=\
-nix --extra-experimental-features nix-command --extra-experimental-features flakes run github:githwxi/ATS-Postiats\#patsopt --
-endif
 ######
 #
 CFLAGS=
