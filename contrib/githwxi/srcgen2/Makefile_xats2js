@@ -21,8 +21,6 @@ ECHO=echo
 NODE=node
 NODE=node --stack-size=4096
 ######
-MYTEST="."
-######
 SRCGEN1=./../../../srcgen1
 SRCGEN2=./../../../srcgen2
 ######
