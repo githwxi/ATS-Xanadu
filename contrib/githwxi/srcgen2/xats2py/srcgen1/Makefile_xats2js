@@ -23,8 +23,6 @@ ECHO=echo
 NODE=node
 NODE=node --stack-size=4096
 ######
-MYTEST="."
-######
 XSHARED="${XATSJSD}/xshared"
 ######
 SRCGEN1=./../../../../../srcgen1
