@@ -21,10 +21,14 @@ CATS_JS_FILES := $(wildcard $(CATS_DIR)/JS/*.cats)
 JS_OUTPUTS := $(patsubst $(DATS_DIR)/%.dats,$(BUILD_JS_DIR)/%_dats.js,$(DATS_FILES)) \
 						  $(patsubst $(DATS_JS_DIR)/%.dats,$(BUILD_JS_DIR)/JS/%_dats.js,$(DATS_JS_FILES))
 
+# Main target to build all files
+all: builddir xatslib
+
 # Make sure build directory exists
 builddir:
 	mkdir -pv $(BUILD_DIR)
 	mkdir -pv $(BUILD_JS_DIR)
+	mkdir -pv $(BUILD_JS_DIR)/JS
 
 # Rule to compile .dats to .js
 $(BUILD_JS_DIR)/%_dats.js: $(DATS_DIR)/%.dats
@@ -41,8 +45,5 @@ xatslib: $(CATS_JS_FILES) $(JS_OUTPUTS)
 # Clean target
 clean:
 	rm -rf $(BUILD_DIR)
-
-# Main target to build all files
-all: builddir xatslib
 
 .PHONY: all clean
