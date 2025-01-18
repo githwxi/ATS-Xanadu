@@ -5,6 +5,7 @@ NODE=node
 
 XATS2JS=$(XATSHOME)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit00_dats.js
 SRCGEN2_XSHARED=$(XATSHOME)/srcgen2/xats2js/srcgenx/xshared/runtime
+GAVINZ_XATSLIB=$(XATSHOME)/contrib/gavinz/xatslib/BUILD/xatslib.js
 
 # Directories
 DATS_DIR := DATS
@@ -33,6 +34,7 @@ $(MAIN): $(JS_FILES)
 	$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@
 	$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@
 	$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude_node.js >> $@
+	$(CAT) $(GAVINZ_XATSLIB) >> $@
 	$(CAT) $< >> $@
 
 run: $(MAIN)
