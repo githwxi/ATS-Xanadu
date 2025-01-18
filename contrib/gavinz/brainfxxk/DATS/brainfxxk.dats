@@ -3,36 +3,28 @@
 #include "srcgen2/prelude/HATS/prelude_JS_dats.hats"
 #include "srcgen2/prelude/HATS/prelude_NODE_dats.hats"
 
-(* ****** ****** *)
-(* ****** ****** *)
-//
+#staload "contrib/gavinz/xatslib/SATS/proc000.sats"
+#staload "contrib/gavinz/xatslib/SATS/file000.sats"
+
 val UCHARMAX = 255
 val TAPESIZE = 4096
 (*
 #define UCHARMAX 255
 #define TAPE_SIZE 4096 // not supported
 *)
-//
-(* ****** ****** *)
-(* ****** ****** *)
 
 #typedef cell = uint
 #typedef mptr = uint
 // #typedef mstate = a1rf(uint, 4096)
-
-(* ****** ****** *)
 
 excptcon Overflow of ()
 excptcon Underflow of ()
 excptcon RBNotFound of ()
 excptcon LBNotFound of ()
 
-(* ****** ****** *)
-(* ****** ****** *)
-
 fun max(x, y) = if x >= y then x else y
 
-fun interp {pl:nat} (prog: string): void = let
+fun interp {pl:nat} (prog: strn): void = let
   val proglen: int(pl) = (strn_length prog)
   and state: a1rf(int) = a1rf_make_ncpy(TAPESIZE, 0)
   
@@ -108,12 +100,10 @@ in
   loop(0, 0)
 end
 
-val () = interp("\
->++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+++++++..+++.>>++++++[<+++++++>-]<+\
-+.------------.>++++++[<+++++++++>-]<+.<.+++.------.--------.>>>++++[<++++++++>-\
-]<+.")
+val input_path: strn = argv_get()[2]
 
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+val () = prints("Interpreting: ", input_path, "\n")
 
-(* end of [ATS-Xanadu/PGROUND/proj002@250110/srcgen1/DATS/brainfxxk.dats] *)
+val input_program: strn = read_file(input_path)
+
+val () = interp(input_program)
