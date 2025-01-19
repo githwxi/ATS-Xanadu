@@ -34,12 +34,17 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload
 GLB = "./../SATS/xglobal.sats"
@@ -47,6 +52,7 @@ GLB = "./../SATS/xglobal.sats"
 #staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
@@ -129,15 +135,26 @@ end(*let*)//end-of(symbl_make_name)
 end (*local*) // end of [local]
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 symbl_cmp
-(  x,y  ) =
-(  x.stmp() \cmp y.stmp()  )
+( x1, x2 ) =
+stamp_cmp
+(x1.stmp(), x2.stmp())
+//
 (* ****** ****** *)
+//
 #implfun
-symbl_nilq(sym) = (sym = the_symbl_nil)
+symbl_nilq(sym) =
+symbl_cmp
+(sym, the_symbl_nil) = 0
 #implfun
-symbl_neqz(sym) = (sym != the_symbl_nil)
+symbl_neqz(sym) =
+symbl_cmp
+(sym, the_symbl_nil) != 0
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
