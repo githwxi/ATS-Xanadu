@@ -52,61 +52,72 @@ all_dats:: \
 xbasics_dats
 xbasics_dats: \
 $(SRCGEN2)/DATS/xbasics.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 all_dats:: \
 xbasics_print0_dats
 xbasics_print0_dats: \
 $(SRCGEN2)/DATS/xbasics.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
 all_dats:: \
 xsynoug_dats
 xsynoug_dats: \
 $(SRCGEN2)/DATS/xsynoug.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
 all_dats:: \
 xerrory_dats
 xerrory_dats: \
 $(SRCGEN2)/DATS/xerrory.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
 all_dats:: \
 xstamp0_dats
 xstamp0_dats: \
 $(SRCGEN2)/DATS/xstamp0.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 all_dats:: \
 xstamp0_print0_dats
 xstamp0_print0_dats: \
 $(SRCGEN2)/DATS/xstamp0.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 all_dats:: \
 xstamp0_tmpmap_dats
 xstamp0_tmpmap_dats: \
 $(SRCGEN2)/DATS/xstamp0.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
 all_dats:: \
 xsymbol_dats
 xsymbol_dats: \
 $(SRCGEN2)/DATS/xsymbol.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 all_dats:: \
 xsymbol_print0_dats
 xsymbol_print0_dats: \
 $(SRCGEN2)/DATS/xsymbol.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 all_dats:: \
 xsymbol_mymap0_dats
 xsymbol_mymap0_dats: \
 $(SRCGEN2)/DATS/xsymbol.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 all_dats:: \
 xsymbol_inits0_dats
 xsymbol_inits0_dats: \
 $(SRCGEN2)/DATS/xsymbol.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+all_dats:: \
+xlabel0_dats
+xlabel0_dats: \
+$(SRCGEN2)/DATS/xlabel0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+all_dats:: \
+xlabel0_print0_dats
+xlabel0_print0_dats: \
+$(SRCGEN2)/DATS/xlabel0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -122,6 +133,8 @@ cleanall:: ; rm -f xsymbol_dats_out.js
 cleanall:: ; rm -f xsymbol_print0_dats_out.js
 cleanall:: ; rm -f xsymbol_mymap0_dats_out.js
 cleanall:: ; rm -f xsymbol_inits0_dats_out.js
+cleanall:: ; rm -f xlabel0_dats_out.js
+cleanall:: ; rm -f xlabel0_print0_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
