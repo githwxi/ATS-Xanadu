@@ -7,8 +7,7 @@ For ATS3/XATSOPT
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"\
-srcgen1\
+"srcgen1\
 /prelude\
 /HATS/prelude_dats.hats"
 (* ****** ****** *)
@@ -17,8 +16,7 @@ srcgen1\
 // #ifdef(_XATSOPT_JS_)
 //
 #include
-"\
-srcgen1\
+"srcgen1\
 /prelude\
 /HATS/CATS/JS/prelude_dats.hats"
 //
@@ -27,22 +25,18 @@ srcgen1\
 (* ****** ****** *)
 (* ****** ****** *)
 #staload _ =
-"\
-srcgen1\
+"srcgen1\
 /xatslib/libcats/DATS/synoug0.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload _ =
-"\
-srcgen1\
+"srcgen1\
 /xatslib/githwxi/DATS/genv000.dats"
 #staload _ =
-"\
-srcgen1\
+"srcgen1\
 /xatslib/githwxi/DATS/f00path.dats"
 #staload _ =
-"\
-srcgen1\
+"srcgen1\
 /xatslib/githwxi/DATS/g00iout.dats"
 (* ****** ****** *)
 (* ****** ****** *)
@@ -54,8 +48,7 @@ srcgen1\
 // #ifdef(_XATSOPT_JS_)
 //
 #staload
-"\
-srcgen1\
+"srcgen1\
 /xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
 //
 // #endif // end of [ifdef(_XATSOPT_JS_)]

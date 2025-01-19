@@ -10,6 +10,40 @@ NODE=node
 SRCGEN2=./../../../srcgen2
 XATS2JS=./../../../srcgen2/xats2js
 ########################################################################
+########################################################################
+all_sats:: \
+xbasics_sats
+xbasics_sats: \
+$(SRCGEN2)/SATS/xbasics.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+all_sats:: \
+xsynoug_sats
+xsynoug_sats: \
+$(SRCGEN2)/SATS/xsynoug.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+all_sats:: \
+xerrory_sats
+xerrory_sats: \
+$(SRCGEN2)/SATS/xerrory.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+all_sats:: \
+xstamp0_sats
+xstamp0_sats: \
+$(SRCGEN2)/SATS/xstamp0.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+all_sats:: \
+xsymbol_sats
+xsymbol_sats: \
+$(SRCGEN2)/SATS/xsymbol.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+########################################################################
+all_dats:: \
+xbasics_dats
 xbasics_dats: \
 $(SRCGEN2)/DATS/xbasics.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> $@_out.js
@@ -20,6 +54,8 @@ cleanall:: ; rm -f *~
 cleanall:: ; rm -f xbasics_dats_out.js
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
+########################################################################
+XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_dats.js
 XATS2JS_JSEMIT00=$(XATS2JS)/srcgen1/UTIL/xats2js_jsemit00_dats.js
 ########################################################################
 ########################################################################
