@@ -52,19 +52,25 @@ all_dats:: \
 xbasics_dats
 xbasics_dats: \
 $(SRCGEN2)/DATS/xbasics.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> $@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
 ########################################################################
 all_dats:: \
 xbasics_print0_dats
 xbasics_print0_dats: \
 $(SRCGEN2)/DATS/xbasics.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> $@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
 ########################################################################
 all_dats:: \
 xsynoug_dats
 xsynoug_dats: \
 $(SRCGEN2)/DATS/xsynoug.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> $@_out.js
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
+########################################################################
+all_dats:: \
+xerrory_dats
+xerrory_dats: \
+$(SRCGEN2)/DATS/xerrory.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< >> BUILD/$@_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -72,6 +78,7 @@ cleanall:: ; rm -f *~
 cleanall:: ; rm -f xbasics_dats_out.js
 cleanall:: ; rm -f xbasics_print0_dats_out.js
 cleanall:: ; rm -f xsynoug_dats_out.js
+cleanall:: ; rm -f xerrory_dats_out.js
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
