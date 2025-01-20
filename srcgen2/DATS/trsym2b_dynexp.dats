@@ -688,12 +688,17 @@ d2e0.node() of
 *)
 //
 (*
+| D2Etop _ => ()
+*)
+//
+(*
 | D2Econ _ => ()
 | D2Ecst _ => ()
 *)
 //
 (*
-| D2Etop _ => ()
+| D2Econs _ => ()
+| D2Ecsts _ => ()
 *)
 //
 |D2Esym0 _ =>
