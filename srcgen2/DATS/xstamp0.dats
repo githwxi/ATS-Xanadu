@@ -72,12 +72,12 @@ end (*local*) // end of [local]
 (* ****** ****** *)
 
 local
-
+//
 #absimpl
 stamper_tbox = a0ref(uint)
-
+//
 in//local
-
+//
 (*
 HX: [stamp(0)] is special
 *)

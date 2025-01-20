@@ -194,6 +194,10 @@ print(name); print("(");
 foritm(narg); print(")")
 ) where
 {
+//
+#symload foritm
+with gint_foritm$sint of 1001
+//
 #impltmp
 foritm$work<>(i0) =
 (

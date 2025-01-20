@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -34,20 +35,24 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/parsing.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
-
+//
 datavwtp
 tkbf0 =
 |
@@ -57,10 +62,10 @@ TKBF0 of
 ( a1ptr(token, n)
 , sint(n) (*asz*)
 , sint(i) (*idx*) )
-
+//
 #absimpl tmark_type = sint
 #absimpl tkbf0_vtbx = tkbf0
-
+//
 (* ****** ****** *)
 
 in//local
