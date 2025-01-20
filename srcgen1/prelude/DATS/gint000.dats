@@ -122,6 +122,17 @@ g_div<sint> = gint_div$sint$sint<>
 (* ****** ****** *)
 
 #impltmp
+g_add<uint> = gint_add$uint$uint<>
+#impltmp
+g_sub<uint> = gint_sub$uint$uint<>
+#impltmp
+g_mul<uint> = gint_mul$uint$uint<>
+#impltmp
+g_div<uint> = gint_div$uint$uint<>
+
+(* ****** ****** *)
+
+#impltmp
 g_parse<sint> = gint_parse_sint<>
 #impltmp
 g_parse<uint> = gint_parse_uint<>

@@ -468,6 +468,24 @@ XATS2JS_gint_div$sint$sint
 //
 ////////////////////////////////////////////////////////////////
 //
+// HX-2025-01-20:
+//
+function
+XATS2JS_gint_add$uint$uint
+  (x1, x2)
+{
+    return (x1 + x2); // add
+}
+//
+function
+XATS2JS_gint_sub$uint$uint
+  (x1, x2)
+{
+    return (x1 - x2); // sub
+}
+//
+////////////////////////////////////////////////////////////////
+//
 /* ****** ****** */
 //
 // HX-2022-06-06:
@@ -2116,219 +2134,233 @@ XATSOPT_strn_append_uint
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8518(line=564,offs=1)--8573(line=566,offs=31))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8463(line=560,offs=1)--8557(line=566,offs=36))
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8574(line=567,offs=1)--8620(line=568,offs=38))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8558(line=567,offs=1)--8616(line=568,offs=50))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8655(line=573,offs=1)--8713(line=575,offs=33))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8625(line=570,offs=1)--8728(line=576,offs=36))
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8714(line=576,offs=1)--8762(line=577,offs=40))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8729(line=577,offs=1)--8787(line=578,offs=50))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8774(line=580,offs=1)--8832(line=582,offs=33))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8877(line=587,offs=1)--8932(line=589,offs=31))
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8833(line=583,offs=1)--8881(line=584,offs=40))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8933(line=590,offs=1)--8979(line=591,offs=38))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8916(line=589,offs=1)--8974(line=591,offs=33))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9014(line=596,offs=1)--9072(line=598,offs=33))
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(8975(line=592,offs=1)--9023(line=593,offs=40))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9073(line=599,offs=1)--9121(line=600,offs=40))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9032(line=595,offs=1)--9090(line=597,offs=33))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9133(line=603,offs=1)--9191(line=605,offs=33))
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9091(line=598,offs=1)--9139(line=599,offs=40))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9192(line=606,offs=1)--9240(line=607,offs=40))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9174(line=604,offs=1)--9244(line=606,offs=41))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9275(line=612,offs=1)--9333(line=614,offs=33))
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9253(line=608,offs=1)--9323(line=610,offs=41))
-
-
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9332(line=612,offs=1)--9402(line=614,offs=41))
-
-
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9411(line=616,offs=1)--9482(line=618,offs=41))
-
-
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9491(line=620,offs=1)--9562(line=622,offs=41))
-
-
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9571(line=624,offs=1)--9642(line=626,offs=41))
-
-
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9646(line=628,offs=1)--9702(line=629,offs=48))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9334(line=615,offs=1)--9382(line=616,offs=40))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9703(line=630,offs=1)--9759(line=631,offs=48))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9391(line=618,offs=1)--9449(line=620,offs=33))
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9450(line=621,offs=1)--9498(line=622,offs=40))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9760(line=632,offs=1)--9816(line=633,offs=48))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9533(line=627,offs=1)--9603(line=629,offs=41))
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9612(line=631,offs=1)--9682(line=633,offs=41))
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9691(line=635,offs=1)--9761(line=637,offs=41))
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9770(line=639,offs=1)--9841(line=641,offs=41))
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9850(line=643,offs=1)--9921(line=645,offs=41))
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9930(line=647,offs=1)--10001(line=649,offs=41))
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10005(line=651,offs=1)--10061(line=652,offs=48))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9817(line=634,offs=1)--9875(line=635,offs=50))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10062(line=653,offs=1)--10118(line=654,offs=48))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9876(line=636,offs=1)--9934(line=637,offs=50))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10119(line=655,offs=1)--10175(line=656,offs=48))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(9935(line=638,offs=1)--9993(line=639,offs=50))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10176(line=657,offs=1)--10234(line=658,offs=50))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10028(line=644,offs=1)--10099(line=646,offs=41))
-
-
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10100(line=647,offs=1)--10158(line=648,offs=50))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10235(line=659,offs=1)--10293(line=660,offs=50))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10193(line=653,offs=1)--10264(line=655,offs=41))
-
-
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10273(line=657,offs=1)--10344(line=659,offs=41))
-
-
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10353(line=661,offs=1)--10424(line=663,offs=41))
-
-
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10433(line=665,offs=1)--10504(line=667,offs=41))
-
-
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10508(line=669,offs=1)--10566(line=670,offs=50))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10294(line=661,offs=1)--10352(line=662,offs=50))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10567(line=671,offs=1)--10625(line=672,offs=50))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10387(line=667,offs=1)--10458(line=669,offs=41))
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10459(line=670,offs=1)--10517(line=671,offs=50))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10626(line=673,offs=1)--10684(line=674,offs=50))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10552(line=676,offs=1)--10623(line=678,offs=41))
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10632(line=680,offs=1)--10703(line=682,offs=41))
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10712(line=684,offs=1)--10783(line=686,offs=41))
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10792(line=688,offs=1)--10863(line=690,offs=41))
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10867(line=692,offs=1)--10925(line=693,offs=50))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10685(line=675,offs=1)--10743(line=676,offs=50))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10926(line=694,offs=1)--10984(line=695,offs=50))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10830(line=686,offs=1)--10941(line=696,offs=18))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10985(line=696,offs=1)--11043(line=697,offs=50))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(10965(line=699,offs=1)--11083(line=708,offs=20))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11044(line=698,offs=1)--11102(line=699,offs=50))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11084(line=709,offs=1)--11205(line=718,offs=21))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11189(line=709,offs=1)--11300(line=719,offs=18))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11232(line=722,offs=1)--11345(line=732,offs=16))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11324(line=722,offs=1)--11442(line=731,offs=20))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11346(line=733,offs=1)--11459(line=743,offs=16))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11443(line=732,offs=1)--11564(line=741,offs=21))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11460(line=744,offs=1)--11573(line=754,offs=16))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11591(line=745,offs=1)--11704(line=755,offs=16))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11600(line=758,offs=1)--11716(line=768,offs=17))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11705(line=756,offs=1)--11818(line=766,offs=16))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11717(line=769,offs=1)--11833(line=779,offs=17))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11819(line=767,offs=1)--11932(line=777,offs=16))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11834(line=780,offs=1)--11950(line=790,offs=17))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11959(line=781,offs=1)--12075(line=791,offs=17))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(11974(line=793,offs=1)--12090(line=803,offs=17))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(12076(line=792,offs=1)--12192(line=802,offs=17))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(12134(line=807,offs=1)--12267(line=817,offs=22))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(12193(line=803,offs=1)--12309(line=813,offs=17))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(12271(line=819,offs=1)--12404(line=829,offs=22))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(12333(line=816,offs=1)--12449(line=826,offs=17))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(12451(line=834,offs=1)--12585(line=845,offs=20))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(12493(line=830,offs=1)--12626(line=840,offs=22))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(12612(line=849,offs=1)--12733(line=858,offs=22))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(12630(line=842,offs=1)--12763(line=852,offs=22))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(12760(line=862,offs=1)--12877(line=871,offs=20))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(12810(line=857,offs=1)--12944(line=868,offs=20))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(12904(line=875,offs=1)--13119(line=890,offs=9))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(12971(line=872,offs=1)--13092(line=881,offs=22))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(13199(line=895,offs=1)--13331(line=904,offs=24))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(13119(line=885,offs=1)--13236(line=894,offs=20))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(13358(line=908,offs=1)--13504(line=919,offs=23))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(13263(line=898,offs=1)--13478(line=913,offs=9))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(13531(line=923,offs=1)--13677(line=933,offs=23))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(13558(line=918,offs=1)--13690(line=927,offs=24))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(13704(line=937,offs=1)--13858(line=947,offs=25))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(13717(line=931,offs=1)--13863(line=942,offs=23))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(13905(line=952,offs=1)--14038(line=961,offs=24))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(13890(line=946,offs=1)--14036(line=956,offs=23))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(14039(line=962,offs=1)--14172(line=971,offs=24))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(14063(line=960,offs=1)--14217(line=970,offs=25))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(14219(line=976,offs=1)--14431(line=989,offs=28))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(14264(line=975,offs=1)--14397(line=984,offs=24))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(14496(line=993,offs=1)--14708(line=1006,offs=28))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(14398(line=985,offs=1)--14531(line=994,offs=24))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(14773(line=1010,offs=1)--14989(line=1023,offs=29))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(14578(line=999,offs=1)--14790(line=1012,offs=28))
 // L1DCLnone0()
 
 
-// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(15055(line=1027,offs=1)--15271(line=1040,offs=29))
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(14855(line=1016,offs=1)--15067(line=1029,offs=28))
+// L1DCLnone0()
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(15132(line=1033,offs=1)--15348(line=1046,offs=29))
+// L1DCLnone0()
+
+
+// ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(15414(line=1050,offs=1)--15630(line=1063,offs=29))
 // L1DCLnone0()
 
 
@@ -2457,7 +2489,7 @@ XATS2JS_jsarray_strmize(a1x1)
         // { // val-implmnt
         // } // val-implmnt
         var // const // implval/fun
-        gint_gte$sint$sint_878091_3667_ = XATS2JS_gint_gte$sint$sint
+        gint_gte$sint$sint_978453_3667_ = XATS2JS_gint_gte$sint$sint
         xtmp5 = XATS2JS_gint_gte$sint$sint(a2x1, xtmp1)
       }
       if (xtmp5)
@@ -2481,7 +2513,7 @@ XATS2JS_jsarray_strmize(a1x1)
               // { // val-implmnt
               // } // val-implmnt
               var // const // implval/fun
-              gint_add$sint$sint_878091_4862_ = XATS2JS_gint_add$sint$sint
+              gint_add$sint$sint_978453_4862_ = XATS2JS_gint_add$sint$sint
               xtmp9 = XATS2JS_gint_add$sint$sint(a2x1, 1)
             }
             xtmp8 = auxmain_2197_(xtmp9)
@@ -3256,7 +3288,7 @@ XATS2JS_strm_vt_map0$f1un(a1x1, a1x2)
   {
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9674(line=747,offs=1)--10055(line=779,offs=9))
     function
-    strm_vt_map0_978091_4814_(a2x1)
+    strm_vt_map0_978453_4814_(a2x1)
     {
       let xtmp112
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9740(line=755,offs=1)--10019(line=778,offs=12))
@@ -3308,7 +3340,7 @@ XATS2JS_strm_vt_map0$f1un(a1x1, a1x2)
               {
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6332(line=396,offs=1)--6371(line=396,offs=40))
                 function
-                map$fopr0_978091_3142_(a5x1)
+                map$fopr0_978453_3142_(a5x1)
                 {
                   let xtmp105
                   {
@@ -3316,7 +3348,7 @@ XATS2JS_strm_vt_map0$f1un(a1x1, a1x2)
                   }
                   return xtmp105
                 } // function // map$fopr0(24)
-                xtmp103 = map$fopr0_978091_3142_(xtmp101)
+                xtmp103 = map$fopr0_978453_3142_(xtmp101)
               }
             } // val(H0Pvar(y0(95)))
             {
@@ -3346,14 +3378,14 @@ XATS2JS_strm_vt_map0$f1un(a1x1, a1x2)
             // { // val-implmnt
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(1817(line=153,offs=1)--1867(line=155,offs=31))
             function
-            strm_vt_free_978091_2269_(a5x1)
+            strm_vt_free_978453_2269_(a5x1)
             {
               return XATS2JS_llazy_free(a5x1)
             } // function // strm_vt_free(28)
             // } // val-implmnt
             var // const // implval/fun
-            g_free_978091_1680_ = strm_vt_free_978091_2269_
-            xtmp108 = strm_vt_free_978091_2269_(a3x1)
+            g_free_978453_1680_ = strm_vt_free_978453_2269_
+            xtmp108 = strm_vt_free_978453_2269_(a3x1)
           }
         } // lam-function
         xtmp97 = XATS2JS_new_llazy(xtmp110,xtmp111)
@@ -3364,7 +3396,7 @@ XATS2JS_strm_vt_map0$f1un(a1x1, a1x2)
       }
       return xtmp112
     } // function // strm_vt_map0(25)
-    xtmp94 = strm_vt_map0_978091_4814_(a1x1)
+    xtmp94 = strm_vt_map0_978453_4814_(a1x1)
   }
   return xtmp94
 } // function // XATS2JS_strm_vt_map0$f1un(23)
@@ -3385,7 +3417,7 @@ XATS2JS_strm_vt_filter0$f1un(a1x1, a1x2)
   {
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10119(line=783,offs=1)--10601(line=826,offs=13))
     function
-    strm_vt_filter0_978091_5002_(a2x1)
+    strm_vt_filter0_978453_5002_(a2x1)
     {
       let xtmp138
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10191(line=791,offs=1)--10596(line=824,offs=8))
@@ -3413,14 +3445,14 @@ XATS2JS_strm_vt_filter0$f1un(a1x1, a1x2)
             // { // val-implmnt
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(1817(line=153,offs=1)--1867(line=155,offs=31))
             function
-            strm_vt_free_978091_2269_(a5x1)
+            strm_vt_free_978453_2269_(a5x1)
             {
               return XATS2JS_llazy_free(a5x1)
             } // function // strm_vt_free(28)
             // } // val-implmnt
             var // const // implval/fun
-            g_free_978091_1680_ = strm_vt_free_978091_2269_
-            xtmp120 = strm_vt_free_978091_2269_(a3x1)
+            g_free_978453_1680_ = strm_vt_free_978453_2269_
+            xtmp120 = strm_vt_free_978453_2269_(a3x1)
           }
         } // lam-function
         xtmp118 = XATS2JS_new_llazy(xtmp122,xtmp123)
@@ -3472,7 +3504,7 @@ XATS2JS_strm_vt_filter0$f1un(a1x1, a1x2)
           {
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6695(line=419,offs=3)--6733(line=419,offs=41))
             function
-            filter$test1_978091_4117_(a4x1)
+            filter$test1_978453_4117_(a4x1)
             {
               let xtmp132
               {
@@ -3480,7 +3512,7 @@ XATS2JS_strm_vt_filter0$f1un(a1x1, a1x2)
               }
               return xtmp132
             } // function // filter$test1(30)
-            xtmp130 = filter$test1_978091_4117_(xtmp128)
+            xtmp130 = filter$test1_978453_4117_(xtmp128)
           }
           if (xtmp130)
           { // then
@@ -3498,7 +3530,7 @@ XATS2JS_strm_vt_filter0$f1un(a1x1, a1x2)
               {
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6650(line=416,offs=3)--6680(line=417,offs=22))
                 function
-                g_free_978091_1680_(a4x1)
+                g_free_978453_1680_(a4x1)
                 {
                   let xtmp136
                   {
@@ -3506,7 +3538,7 @@ XATS2JS_strm_vt_filter0$f1un(a1x1, a1x2)
                   }
                   return xtmp136
                 } // function // g_free(27)
-                xtmp134 = g_free_978091_1680_(xtmp128)
+                xtmp134 = g_free_978453_1680_(xtmp128)
               }
               //L1PCKxpat(H0Pnil(); L1VALtmp(tmp(134)));
               //L1CMDmatch(H0Pnil(); L1VALtmp(tmp(134)));
@@ -3530,7 +3562,7 @@ XATS2JS_strm_vt_filter0$f1un(a1x1, a1x2)
       }
       return xtmp138
     } // function // strm_vt_filter0(31)
-    xtmp115 = strm_vt_filter0_978091_5002_(a1x1)
+    xtmp115 = strm_vt_filter0_978453_5002_(a1x1)
   }
   return xtmp115
 } // function // XATS2JS_strm_vt_filter0$f1un(29)

@@ -556,6 +556,29 @@ gint_mod$sint$sint<> = XATS2JS_gint_mod$sint$sint
 //
 (* ****** ****** *)
 //
+#extern
+fun
+XATS2JS_gint_add$uint$uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): uint( i+j ) = $extnam()
+#impltmp
+gint_add$uint$uint<> = XATS2JS_gint_add$uint$uint
+#extern
+fun
+XATS2JS_gint_sub$uint$uint
+{i,j:int | i >= j}
+( x
+: uint(i)
+, y
+: uint(j)): uint( i-j ) = $extnam()
+#impltmp
+gint_sub$uint$uint<> = XATS2JS_gint_sub$uint$uint
+//
+(* ****** ****** *)
+//
 // prelude/SATS/gflt000.sats
 //
 (* ****** ****** *)

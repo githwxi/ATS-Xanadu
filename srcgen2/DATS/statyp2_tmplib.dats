@@ -1753,10 +1753,12 @@ T2Ptrcd
 , npf2, lts2) =>
 (
 if
+bool_mul
+(
 trcdknd_equal
 (knd1 , knd2)
-*
-(npf1 = npf2)
+,
+(npf1 = npf2))
 then
 unify00_l2t2plst
 (e1nv, lts1, lts2) else false)
