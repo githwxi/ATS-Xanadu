@@ -759,7 +759,8 @@ let
 val dis = kx1.1
 in//let
 if // if
-length(dis) <= 1
+list_length
+(   dis   ) <= 1
 then ( ans ) else
 (
 case+

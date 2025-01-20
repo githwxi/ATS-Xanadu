@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,14 +37,17 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload
 SYM = "./../SATS/xsymbol.sats"
@@ -67,6 +71,7 @@ LAM = "./../SATS/xlabel0.sats"
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #symload
 TRUE with $SYM.TRUE_symbl
@@ -105,6 +110,10 @@ gseq_foldl
 <strn>
 <cgtz><sint>(rep, 0) where
 {
+//
+#symload -
+with sub_char_char of 1001
+//
 #impltmp
 foldl$fopr
 <cgtz><sint>
@@ -178,6 +187,10 @@ gseq_foldl
 <strn>
 <cgtz><sint>(rep, 0)) where
 {
+//
+#symload -
+with sub_char_char of 1001
+//
 #impltmp
 foldl$fopr
 <cgtz><sint>

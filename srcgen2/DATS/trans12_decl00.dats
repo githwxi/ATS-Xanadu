@@ -208,10 +208,13 @@ fint_rep_bas
 gseq_foldl
 <strn><cgtz><sint>(rep, 0) where
 {
+//
+#symload - with sub_char_char of 1001
+//
 #impltmp
 foldl$fopr
 <cgtz><sint>(r0, c0) = r0*bas+(c0-'0')
-}
+}(*where*)//end-of-[fint_rep_bas(...)]
 //
 (* ****** ****** *)
 //
