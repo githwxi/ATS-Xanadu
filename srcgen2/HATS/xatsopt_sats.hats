@@ -17,11 +17,27 @@ For ATS3/XATSOPT
 "srcgen1\
 /prelude/SATS/gint000.sats"
 //
+#staload
+"srcgen1\
+/prelude/SATS/strn000.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"srcgen1\
+/prelude/SATS/gseq000.sats"
+//
 (* ****** ****** *)
 //
 #staload
 "srcgen1\
 /prelude/SATS/synoug0.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"srcgen1\
+/prelude/SATS/VT/gseq000_vt.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
