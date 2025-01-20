@@ -47,6 +47,24 @@ xlabel0_sats: \
 $(SRCGEN2)/SATS/xlabel0.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
+all_sats:: \
+xglobal_sats
+xglobal_sats: \
+$(SRCGEN2)/SATS/xglobal.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+all_sats:: \
+filpath_sats
+filpath_sats: \
+$(SRCGEN2)/SATS/filpath.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+all_sats:: \
+locinfo_sats
+locinfo_sats: \
+$(SRCGEN2)/SATS/locinfo.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
 ########################################################################
 all_dats:: \
 xbasics_dats
@@ -151,6 +169,17 @@ filpath_search_dats: \
 $(SRCGEN2)/DATS/filpath_search.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
+all_dats:: \
+locinfo_dats
+locinfo_dats: \
+$(SRCGEN2)/DATS/locinfo.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+all_dats:: \
+locinfo_print0_dats
+locinfo_print0_dats: \
+$(SRCGEN2)/DATS/locinfo_print0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -173,6 +202,8 @@ cleanall:: ; rm -f BUILD/filpath_print0_dats_out.js
 cleanall:: ; rm -f BUILD/filpath_drpth0_dats_out.js
 cleanall:: ; rm -f BUILD/filpath_fpath0_dats_out.js
 cleanall:: ; rm -f BUILD/filpath_search_dats_out.js
+cleanall:: ; rm -f BUILD/locinfo_dats_out.js
+cleanall:: ; rm -f BUILD/locinfo_print0_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
