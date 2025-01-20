@@ -34,14 +34,17 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
@@ -49,7 +52,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #symload name with drpth_get_name
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -139,7 +144,8 @@ if
 then
 (
 if
-cdir[i0]=base[i0]
+char_eq
+(cdir[i0], base[i0])
 then
 loop(i0+1, n0) else false)
 else

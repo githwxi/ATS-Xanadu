@@ -135,6 +135,21 @@ filpath_print0_dats
 filpath_print0_dats: \
 $(SRCGEN2)/DATS/filpath_print0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+all_dats:: \
+filpath_drpth0_dats
+filpath_drpth0_dats: \
+$(SRCGEN2)/DATS/filpath_drpth0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+all_dats:: \
+filpath_fpath0_dats
+filpath_fpath0_dats: \
+$(SRCGEN2)/DATS/filpath_fpath0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+all_dats:: \
+filpath_search_dats
+filpath_search_dats: \
+$(SRCGEN2)/DATS/filpath_search.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -157,6 +172,7 @@ cleanall:: ; rm -f BUILD/filpath_dats_out.js
 cleanall:: ; rm -f BUILD/filpath_print0_dats_out.js
 cleanall:: ; rm -f BUILD/filpath_drpth0_dats_out.js
 cleanall:: ; rm -f BUILD/filpath_fpath0_dats_out.js
+cleanall:: ; rm -f BUILD/filpath_search_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
