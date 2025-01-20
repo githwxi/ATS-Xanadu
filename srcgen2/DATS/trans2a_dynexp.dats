@@ -961,10 +961,12 @@ d2e0.node() of
 |D2Ef00 _ => f0_f00(env0, d2e0)
 |D2Es00 _ => f0_s00(env0, d2e0)
 //
+|D2Etop _ => f0_top(env0, d2e0)
+//
 |D2Econ _ => f0_con(env0, d2e0)
 |D2Ecst _ => f0_cst(env0, d2e0)
 //
-|D2Etop _ => f0_top(env0, d2e0)
+|D2Ecsts _ => f0_csts(env0, d2e0)
 //
 |D2Esym0 _ => f0_sym0(env0, d2e0)
 //
@@ -1220,6 +1222,29 @@ val-D2Es00(str) = d2e0.node()
 (* ****** ****** *)
 //
 fun
+f0_top
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Etop(sym1) = d2e0.node()
+//
+in//let
+(
+d2exp_make_tpnd
+( loc0
+, t2p0, D2Etop(sym1))) where
+{ val
+  t2p0 = s2typ_new0_x2tp(loc0) }
+end (*let*) // end-of-[f0_top(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_var
 ( env0:
 ! tr2aenv
@@ -1326,25 +1351,38 @@ trans2a_d2exp:f0_cst: tqas = ", d2c1.tqas())
 (* ****** ****** *)
 //
 fun
-f0_top
+f0_csts
 ( env0:
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 let
+(*
+val () = prerrsln("\
+trans2a_d2exp:f0_csts: d2cs = ", d2cs)
+*)
+in//in
+d2exp_make_tpnd
+( loc0
+, t2p0, D2Ecsts(d2cs))
+end where // end-of-let
+{
 //
 val loc0 = d2e0.lctn()
 //
 val-
-D2Etop(sym1) = d2e0.node()
+D2Ecsts(d2cs) = d2e0.node()
 //
-in//let
+val t2p0 =
 (
-d2exp_make_tpnd
-( loc0
-, t2p0, D2Etop(sym1))) where
-{ val
-  t2p0 = s2typ_new0_x2tp(loc0) }
-end (*let*) // end-of-[f0_top(env0,d2e0)]
+case+ d2cs of
+|
+list_cons
+(d2c1, _) =>
+d2cst2a_s2typ( loc0, d2c1 )
+|
+list_nil((*void*)) => s2typ_none0())
+//
+}(*where*) // end-of-[f0_cst(env0,d2e0)]
 //
 (* ****** ****** *)
 //

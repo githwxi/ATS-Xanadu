@@ -1403,10 +1403,10 @@ d3e0.node() of
 |D3Ef00 _ => d3e0
 |D3Es00 _ => d3e0
 //
+|D3Etop _ => d3e0
+//
 |D3Econ _ => d3e0
 |D3Ecst _ => d3e0
-//
-|D3Etop _ => d3e0
 //
 |D3Esapp _ => f0_sapp(d3e0, err)
 |D3Esapq _ => f0_sapq(d3e0, err)
