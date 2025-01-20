@@ -811,10 +811,13 @@ d3exp_make_tpnd
 |D2Etop _ => f0_top(env0, d2e0)
 //
 (* ****** ****** *)
+//
 |D2Econ _ => f0_con(env0, d2e0)
 |D2Ecst _ => f0_cst(env0, d2e0)
+//
 (* ****** ****** *)
 //
+|D2Econs _ => f0_cons(env0, d2e0)
 |D2Ecsts _ => f0_csts(env0, d2e0)
 //
 (* ****** ****** *)
@@ -906,6 +909,7 @@ d3exp_make_tpnd
 end (*let*) // end of [f0_top(env0,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_var
@@ -936,6 +940,7 @@ d3exp_make_tpnd
 //
 end (*let*) // end of [f0_var(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -971,6 +976,30 @@ in//let
 //(*let*)//end-of-[f0_cst(env0,d2e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_cons
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+val loc0 = d2e0.lctn()
+//
+val-
+D2Econs(d2cs) = d2e0.node()
+//
+in//let
+case+ d2cs of
+| list_nil() =>
+(
+  d3exp_none1(d2e0))
+| list_cons(d2c1, _) =>
+(
+  d2con23_tapqize(loc0, d2c1)) endlet
+//(*let*)//end-of-[f0_cons(env0,d2e0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_csts
@@ -993,6 +1022,7 @@ case+ d2cs of
   d2cst23_tapqize(loc0, d2c1)) endlet
 //(*let*)//end-of-[f0_csts(env0,d2e0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
