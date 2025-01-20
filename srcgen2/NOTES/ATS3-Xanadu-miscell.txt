@@ -142,7 +142,6 @@ of 'read' is 'read1'.
 Sun Dec 22 10:17:32 PM EST 2024
 *)
 Some conventions for naming a function in ATS3.
-########################################################################
 
 I expect widely extended support for many forms of meta-programming in
 ATS3. While one can indeed name a function in ATS3 in whatever way that
@@ -181,6 +180,25 @@ The function for flattening a given list of lists is declared as follows:
 fun
 <a:type>
 list$list_flatten_list(xss: list(list(a))): list(a)
+
+(*
+Mon Jan 20 10:36:46 AM EST 2025
+*)
+
+The verb 'make' is special in the sense that it requires that
+the type of the returned value precedes it. For instance, the following
+function turns a list of chars into a string:
+
+fun strn_make_list(cs: list(char)): strn
+
+(or if we attempt to be more precise:
+
+fun strn_make_list$char(cs: list(char)): strn
+
+)
+
+If 'make' was not treated specially, this function would be given
+the name 'list_make_strn' (or list$char_make_strn)
 
 ########################################################################
 ########################################################################
