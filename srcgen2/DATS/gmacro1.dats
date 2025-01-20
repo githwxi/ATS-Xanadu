@@ -36,14 +36,17 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
@@ -54,6 +57,7 @@ ATS_PACKNAME
 #staload "./../SATS/gmacro1.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -67,6 +71,7 @@ ATS_PACKNAME
 #symload lctn with d1exp_get_lctn
 #symload node with d1exp_get_node
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 fint_rep_bas
@@ -77,10 +82,14 @@ fint_rep_bas
 gseq_foldl
 <strn><cgtz><sint>(rep, 0) where
 {
+//
+#symload - with sub_char_char of 1001
+//
 #impltmp
 foldl$fopr
 <cgtz><sint>(r0, c0) = r0*bas+(c0-'0')
-}
+//
+}(*where*)//end-of-[fint_rep_bas(...)]
 //
 (* ****** ****** *)
 

@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,14 +37,17 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload
 _(*TRANS12*) = "./trans12.dats"
@@ -68,6 +72,7 @@ _(*TRANS12*) = "./trans12.dats"
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans12.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -94,6 +99,7 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #symload node with d2pat_get_node
 #symload node with d2exp_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
