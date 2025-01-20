@@ -93,7 +93,7 @@ stkmap_nil() => true | _ => false
 //
 #implfun
 stkmap_topq
-  {itm}(map) =
+{itm:tbox}(map) =
 (
   loop(map) ) where
 {
@@ -131,7 +131,7 @@ case- map of ~stkmap_nil() => ())
 //
 #implfun
 stkmap_poptop0
-  {itm}(map) = let
+{itm:tbox}(map) = let
 //
 fnx
 loop
@@ -174,7 +174,7 @@ end (*let*)//end-[stkmap_poptop0(map)]
 //
 #implfun
 stkmap_pshlam0
-  {itm}(map) =
+{itm:tbox}(map) =
 (
   map := stkmap_lam0(map))
 //(*end of [stkmap_pshlam0{itm}(map)]*)
@@ -183,7 +183,7 @@ stkmap_pshlam0
 //
 #implfun
 stkmap_pshlet0
-  {itm}(map) =
+{itm:tbox}(map) =
 (
   map := stkmap_let0(map))
 //(*end of [stkmap_pshlet0{itm}(map)]*)
@@ -192,7 +192,7 @@ stkmap_pshlet0
 //
 #implfun
 stkmap_pshloc1
-  {itm}(map) =
+{itm:tbox}(map) =
 (
   map := stkmap_loc1(map))
 //(*end of [stkmap_pshloc1{itm}(map)]*)
@@ -201,7 +201,7 @@ stkmap_pshloc1
 //
 #implfun
 stkmap_pshloc2
-  {itm}(map) =
+{itm:tbox}(map) =
 (
   map := stkmap_loc2(map))
 //(*end of [stkmap_pshloc2{itm}(map)]*)
@@ -210,7 +210,7 @@ stkmap_pshloc2
 //
 #implfun
 stkmap_poplam0
-  {itm}(map) = let
+{itm:tbox}(map) = let
 //
 fnx
 loop
@@ -254,7 +254,7 @@ end (*let*) // end-[stkmap_poplam0(map)]
 //
 #implfun
 stkmap_poplet0
-  {itm}(map) = let
+{itm:tbox}(map) = let
 //
 fnx
 loop
@@ -298,7 +298,7 @@ end (*let*) // end-[stkmap_poplet0(map)]
 //
 #implfun
 stkmap_poploc0
-  {itm}(map) = let
+{itm:tbox}(map) = let
 //
 #vwtpdef
 kxs = stkmap(itm)
@@ -406,7 +406,7 @@ end (*let*) // end of [stkmap_poploc0(map)]
 //
 #implfun
 stkmap_search$opt
-  {itm}
+{ itm:tbox }
 ( map, key ) =
 (
   loop(map, key)) where
@@ -448,7 +448,7 @@ optn_vt_cons(x1) else loop(kxs,k0))
 //
 #implfun
 stkmap_insert$any
-  {itm}
+{ itm:tbox }
 ( map, key, itm ) =
 (
   map := stkmap_cons(key, itm, map) )
@@ -457,7 +457,8 @@ stkmap_insert$any
 
 #implfun
 stkmap_insert$kxs
-{itm}( map, kxs ) =
+{ itm:tbox }
+( map, kxs ) =
 (
 map :=
 loop(map, kxs)) where
@@ -562,7 +563,7 @@ endloc (*local*) // end of [ local(stkmap) ]
 
 #implfun
 stkmap_insmix$any
-  {itm}
+  {itm:tbox}
 ( map
 , k0, x0, mix ) =
 let
@@ -584,7 +585,7 @@ end (*let*)//end(stkmap_insmix$any(map,k0,x0,mix))
 
 #implfun
 stkmap_insmix$kxs
-  {itm}
+  {itm:tbox}
 ( map, kxs, mix ) =
 (
 loop(map, kxs)) where

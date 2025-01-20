@@ -85,7 +85,8 @@ XATS2JS_jsobjmap_make_nil<key>()
 (* ****** ****** *)
 //
 #implfun
-topmap_strmize{itm}(map) =
+topmap_strmize
+{itm:tbox}(map) =
 (
 gmap_strmize<gmap><key><itms>(map)
 ) where
@@ -97,15 +98,15 @@ gmap_strmize<gmap><key><itms>(map)
 
 #implfun
 topmap_search$opt
-  {itm}(map, key) =
+  {itm:tbox}
+  (map, key) =
 let
 //
 #typedef
 itms = list(itm)
 //
 val
-key =
-g0u2s(uint(key.stmp()))
+key = g0u2s(uint(key.stmp()))
 val
 opt = 
 XATS2JS_jsobjmap_search$opt<key>{itms}(map,key)
@@ -128,7 +129,7 @@ end (*let*) // end of [topmap_search$opt(...]
 
 #implfun
 topmap_insert$any
-  {itm}
+  {itm:tbox}
   (map, key, itm) =
 let
 //
@@ -170,7 +171,8 @@ endloc (*local*) // end of [  local(topmap)  ]
 
 #implfun
 topmap_insert$kxs
-{itm}( map, kxs ) =
+  {itm:tbox}
+  (map, kxs) =
 (
 loop(map, kxs) ) where
 {
@@ -199,7 +201,7 @@ loop(map, kxs) where {
 
 #implfun
 topmap_insmix$any
-  {itm}
+  {itm:tbox}
 ( map
 , k0, x0, mix ) =
 let
@@ -221,7 +223,7 @@ end (*let*)//end(topmap_insmix$any(map,k0,x0,mix))
 
 #implfun
 topmap_insmix$kxs
-  {itm}
+  {itm:tbox}
 ( map, kxs, mix ) =
 (
 loop(map, kxs)) where
