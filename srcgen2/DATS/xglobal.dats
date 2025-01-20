@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,14 +37,17 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #staload UN =
 "srcgen1\
 /prelude/SATS/unsafex.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
 #staload "./../SATS/xsymbol.sats"
@@ -67,11 +71,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2022-11-11:
 Many of the global structures are
 for the main purpose of debugging!
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef fxtyenv = topmap(fixty)
