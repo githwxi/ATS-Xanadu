@@ -9,7 +9,19 @@ For ATS3/XATSOPT
 //
 #staload
 "srcgen1\
+/prelude/SATS/bool000.sats"
+#staload
+"srcgen1\
+/prelude/SATS/char000.sats"
+#staload
+"srcgen1\
 /prelude/SATS/gint000.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"srcgen1\
+/prelude/SATS/synoug0.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
