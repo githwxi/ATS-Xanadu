@@ -866,14 +866,16 @@ end (*let*) // end of [pq_SRP_THEN(...)]
 //
 (*
 #implfun
-ps_p1fun{a}
+ps_p1fun
+{ a:tx }
 (buf, err, pfn) =
 list_vt_reverse0
 (pr_p1fun(buf,err,pfn))
 *)
 //
 #implfun
-ps_p1fun{a}
+ps_p1fun
+{ a:tx }
 (buf, err, pfn) = let
 //
 val e00 = err
@@ -907,9 +909,9 @@ end(*let*)//end-of(ps_p1fun(buf,err,pfn))
 (*
 #implfun
 ps_sep_p1fun
-{a}
-( buf
-, err, fsp, pfn) =
+{ a:tx }
+( buf, err
+, fsp, pfn ) =
 list_vt_reverse0
 (
 pr_sep_p1fun
@@ -917,9 +919,10 @@ pr_sep_p1fun
 *)
 //
 #implfun
-ps_sep_p1fun{a}
-( buf
-, err, fsp, pfn) = let
+ps_sep_p1fun
+{ a:tx }
+( buf, err
+, fsp, pfn ) = let
 //
 val e00 = err
 val fst = pfn(buf, err)
@@ -969,7 +972,7 @@ end//end-of(ps_sep_p1fun(buf,err,fsp,pfn))
 //
 #implfun
 ps_AND_p1fun
-{a}
+{ a:tx }
 (buf, err, pfn) =
 ps_sep_p1fun
 (buf, err, tnode_ANDq, pfn)
@@ -986,7 +989,7 @@ case+ tnd of
 //
 #implfun
 ps_BAR_p1fun
-{a}
+{ a:tx }
 (buf, err, pfn) =
 ps_sep_p1fun
 (buf, err, tnode_BARq, pfn)
@@ -1003,7 +1006,7 @@ case+ tnd of
 //
 #implfun
 ps_COMMA_p1fun
-{a}
+{ a:tx }
 (buf, err, pfn) =
 ps_sep_p1fun
 (buf, err, tnode_COMMAq, pfn)
@@ -1021,7 +1024,7 @@ case+ tnd of
 //
 #implfun
 ps_SMCLN_p1fun
-{a}
+{ a:tx }
 (buf, err, pfn) =
 ps_sep_p1fun
 (buf, err, tnode_SMCLNq, pfn)
@@ -1039,7 +1042,7 @@ case+ tnd of
 //
 #implfun
 ps_BSCLN_p1fun
-{a}
+{ a:tx }
 (buf, err, pfn) =
 ps_sep_p1fun
 (buf, err, tnode_BSCLNq, pfn)
