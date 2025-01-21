@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -34,20 +35,30 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+#symload getk0 with tokbuf_getk0
+#symload getk1 with tokbuf_getk1
+#symload skip1 with tokbuf_skip1
+(* ****** ****** *)
+(* ****** ****** *)
 #symload node with token_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -276,8 +287,11 @@ case+ tnd of
 #implfun
 p1_EQ0(buf, err) =
 let
+//
 val e00 = err
-val tok = buf.getk0()
+val tok =
+tokbuf_getk0(buf)
+//
 in//let
 case+
 tok.node() of
@@ -286,7 +300,8 @@ T_EQ0() =>
 let val () = buf.skip1() in tok end
 |
 _(* non-EQ0 *) =>
-let val () = (err := e00 + 1) in tok end
+let
+val () = (err := e00 + 1) in tok end
 end (*let*)//end-of-[p1_EQ0(buf,err)]
 
 #implfun
@@ -321,7 +336,8 @@ T_GT0() =>
 let val () = buf.skip1() in tok end
 |
 _(* non-GT0 *) =>
-let val () = (err := e00 + 1) in tok end
+let
+val () = (err := e00 + 1) in tok end
 end (*let*)//end-of-[p1_GT0(buf,err)]
 
 (* ****** ****** *)
@@ -339,7 +355,8 @@ T_BAR() =>
 let val () = buf.skip1() in tok end
 |
 _(* non-BAR *) =>
-let val () = (err := e00 + 1) in tok end
+let
+val () = (err := e00 + 1) in tok end
 end (*let*) // end of [p1_BAR(buf,err)]
 //
 #implfun
