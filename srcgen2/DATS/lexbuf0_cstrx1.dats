@@ -34,39 +34,41 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS\
-/xatsopt_sats.hats"
-#include
-"./../HATS\
-/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload
-"./../SATS/locinfo.sats"
 (* ****** ****** *)
-#staload
-"./../SATS/lexbuf0.sats"
+#include
+"./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-#symload
-char with char_make_sint
+(* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
+#staload "./../SATS/lexbuf0.sats"
+(* ****** ****** *)
+#symload char with char_make_sint
 (* ****** ****** *)
 
 local
-
+//
 datavwtp
-lxbf1 =
+lxbf1_ =
 LXBF1 of
-( strx_vt(sint) // char source
-, list_vt(char) // unget-stack
-, list_vt(char) // getc1-stack
-) (* end of [lxbf1] *)
-
-#absimpl lxbf1_vtbx = lxbf1
-
+(
+strx_vt(sint)//char source
+,
+list_vt(char)//unget-stack
+,
+list_vt(char)//getc1-stack
+)(* end-[datavwtp(lxbf1)] *)
+//
+#absimpl
+lxbf1_vtbx = lxbf1_(* void *)
+//
 (* ****** ****** *)
 
 in//local
@@ -102,16 +104,18 @@ then
 let
 val cc1 = char(ci1)
 in
-buf.1 := cons_vt(cc1, buf.1); ci1
+buf.1 :=
+cons_vt(cc1, buf.1); ci1
 end else ci1 // end-of(if)
 )
 ) where
 {
-val buf0 = (buf.0: strx_vt(sint))
+val buf0 =
+(buf.0: strx_vt(sint))
 }
 | // !
 list_vt_cons
-( cc1, ccs ) => char_code(  cc1  )
+( cc1, ccs ) => char_code(cc1)
 //
 end (*let*) // end of [lxbf1_getc0]
 
@@ -145,12 +149,14 @@ then
 let
 val cc1 = char(ci1)
 in//let
-buf.2 := cons_vt(cc1, buf.2); ci1
+buf.2 :=
+cons_vt(cc1, buf.2); ci1
 end else ci1 // end-of(if)
 )
 ) where
 {
-  val buf0 = (buf.0: strx_vt(sint))
+  val buf0 =
+  (buf.0: strx_vt(sint))
 }
 | ~
 list_vt_cons
@@ -159,9 +165,9 @@ list_vt_cons
 let
 val ci1 = char_code(cc1)
 in//let
-  buf.1 := ccs
-; buf.2 := cons_vt(cc1, buf.2); ci1
-end
+buf.1 := ccs;
+buf.2 := cons_vt(cc1, buf.2); ci1
+end//let
 )
 //
 end (*let*) // end of [lxbf1_getc1]
@@ -211,8 +217,10 @@ val clst =
 list_vt_reverse0(buf.2)
 //
 in//let
-  buf.2 := nil_vt()
-; (   $fold(buf); clst   )
+buf.2 :=
+(nil_vt():list_vt(char))
+;
+(   $fold(buf); clst   )
 end // end of [lxbf1_take_clst]
 
 (* ****** ****** *)
