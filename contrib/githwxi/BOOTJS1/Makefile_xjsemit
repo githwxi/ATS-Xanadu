@@ -83,6 +83,18 @@ lexing0_sats: \
 $(SRCGEN2)/SATS/lexing0.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
+boot_sats:: \
+staexp0_sats
+staexp0_sats: \
+$(SRCGEN2)/SATS/staexp0.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+boot_sats:: \
+dynexp0_sats
+dynexp0_sats: \
+$(SRCGEN2)/SATS/dynexp0.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
 ########################################################################
 boot_dats:: \
 xbasics_dats
@@ -266,6 +278,29 @@ lexing0_utils2_dats: \
 $(SRCGEN2)/DATS/lexing0_utils2.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
+boot_dats:: \
+staexp0_dats
+staexp0_dats: \
+$(SRCGEN2)/DATS/staexp0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+staexp0_print0_dats
+staexp0_print0_dats: \
+$(SRCGEN2)/DATS/staexp0_print0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+boot_dats:: \
+dynexp0_dats
+dynexp0_dats: \
+$(SRCGEN2)/DATS/dynexp0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+dynexp0_print0_dats
+dynexp0_print0_dats: \
+$(SRCGEN2)/DATS/dynexp0_print0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f BUILD/xbasics_dats_out.js
@@ -302,6 +337,10 @@ cleanall:: ; rm -f BUILD/lexing0_kword0_dats_out.js
 cleanall:: ; rm -f BUILD/lexing0_mymap0_dats_out.js
 cleanall:: ; rm -f BUILD/lexing0_utils1_dats_out.js
 cleanall:: ; rm -f BUILD/lexing0_utils2_dats_out.js
+cleanall:: ; rm -f BUILD/staexp0_dats_out.js
+cleanall:: ; rm -f BUILD/staexp0_print0_dats_out.js
+cleanall:: ; rm -f BUILD/dynexp0_dats_out.js
+cleanall:: ; rm -f BUILD/dynexp0_print0_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
