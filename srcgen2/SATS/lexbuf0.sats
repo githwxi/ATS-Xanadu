@@ -57,36 +57,47 @@ LOC = "./locinfo.sats"
 #vwtpdef lxbf2 = lxbf2_vtbx
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #typedef
 lxbf0_getc0
 ( obj:vt ) = (!obj) -> sint
 #typedef
 lxbf0_getc1
 ( obj:vt ) = (!obj) -> sint
-
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 fun
 lxbf1_getc0: // get char
 lxbf0_getc0(lxbf1) // and stay
 fun
 lxbf1_getc1: // get char
 lxbf0_getc1(lxbf1) // and incby1
-(* ****** ****** *)
+*)
+fun
+lxbf1_getc0(obj: !lxbf1): sint
+fun
+lxbf1_getc1(obj: !lxbf1): sint
+//
 #symload getc0 with lxbf1_getc0
 #symload getc1 with lxbf1_getc1
+//
+(* ****** ****** *)
 (* ****** ****** *)
 fun
 lxbf1_unget // undo [getc1]
 (buf: !lxbf1, ci0: sint): sint
-(* ****** ****** *)
 #symload unget with lxbf1_unget
+(* ****** ****** *)
 (* ****** ****** *)
 fun
 lxbf1_take_clst // get the char
 (buf: !lxbf1): list_vt(char) // seg
-(* ****** ****** *)
 #symload tclst with lxbf1_take_clst
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -104,6 +115,7 @@ lxbf1_make0_cstrx // lxbf1 bases on a
 (inp: ~strx_vt(sint)): lxbf1 // stream
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2022-06-12:
@@ -111,36 +123,54 @@ HX-2022-06-12:
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 fun
 lxbf2_getc0: // get char
 lxbf0_getc0(lxbf2) // and stay
 fun
 lxbf2_getc1: // get char
 lxbf0_getc1(lxbf2) // and incby1
-(* ****** ****** *)
+*)
+fun
+lxbf2_getc0(obj: !lxbf2): sint
+fun
+lxbf2_getc1(obj: !lxbf2): sint
+//
 #symload getc0 with lxbf2_getc0
 #symload getc1 with lxbf2_getc1
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 lxbf2_unget // it undoes
 (buf: !lxbf2): sint // 1 getc1-op
-(* ****** ****** *)
 #symload unget with lxbf2_unget
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 lxbf2_copy_pbeg // get the
 (buf: !lxbf2): pos_t // beg-postn
 fun
 lxbf2_copy_pcur // get the
 (buf: !lxbf2): pos_t // cur-postn
+//
+#symload cpbeg with lxbf2_copy_pbeg
+#symload cpcur with lxbf2_copy_pcur
+//
 (* ****** ****** *)
+//
 fun
 lxbf2_take_clst // get the char
 (buf: !lxbf2): list_vt(char) // seg
-(* ****** ****** *)
-#symload cpbeg with lxbf2_copy_pbeg
-#symload cpcur with lxbf2_copy_pcur
+//
 #symload tclst with lxbf2_take_clst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

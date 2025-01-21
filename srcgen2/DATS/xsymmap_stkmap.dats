@@ -57,7 +57,7 @@ local
 (* ****** ****** *)
 //
 datavwtp
-stkmap(itm:type) =
+stkmap_(itm:type) =
 //
 | stkmap_nil of ()
 //
@@ -72,7 +72,7 @@ stkmap(itm:type) =
 (* ****** ****** *)
 //
 #absimpl
-stkmap_vtbx(itm:type) = stkmap(itm)
+stkmap_vtbx(itm:type) = stkmap_(itm)
 //
 (* ****** ****** *)
 

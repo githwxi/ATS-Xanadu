@@ -55,25 +55,32 @@ ATS_PACKNAME
 local
 
 (* ****** ****** *)
-
+//
 datavwtp
 pstn1 =
 PSTN1 of
 ( sint(*ntot*)
-, sint(*nrow*), sint(*ncol*))
-
+, sint(*nrow*)
+, sint(*ncol*)) // pstn1
+//
 datavwtp
-lxbf2 =
+lxbf2_ =
 LXBF2 of
-( pstn1 // start
-, pstn1 // current
-, strx_vt(sint) // char source
-, list_vt(char) // unget-stack
-, list_vt(char) // getc1-stack
-) (* end of [lxbf2] *)
-
-#absimpl lxbf2_vtbx = lxbf2
-
+(
+pstn1 // start
+,
+pstn1 // current
+,
+strx_vt(sint)//char source
+,
+list_vt(char)//unget-stack
+,
+list_vt(char)//getc1-stack
+) (* end-[datavwtp(lxbf2)] *)
+//
+#absimpl
+lxbf2_vtbx = lxbf2_(* void *)
+//
 (* ****** ****** *)
 //
 fun
@@ -371,10 +378,17 @@ val clst =
 list_vt_reverse0(buf.4)
 //
 in//let
-  pstn1_free(buf.0)
-; buf.4 := nil_vt()
-; buf.0 := copy(buf.1)
-; (   $fold(buf); clst   )
+//
+(
+pstn1_free(buf.0);
+buf.0 :=
+pstn1_copy(buf.1))
+;
+buf.4 :=
+(nil_vt():list_vt(char))
+;
+(   $fold(buf); clst   )
+//
 end // end of [lxbf2_take_clst]
 
 (* ****** ****** *)

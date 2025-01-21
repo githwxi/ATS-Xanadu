@@ -36,14 +36,17 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
@@ -63,6 +66,13 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with s2cst_get_lctn
+#symload sort with s2cst_get_sort
+#symload d2cs with s2cst_get_d2cs
+(* ****** ****** *)
+#symload lctn with d2con_get_lctn
+#symload styp with d2con_get_styp
+(* ****** ****** *)
 #symload lctn with d2pat_get_lctn
 #symload node with d2pat_get_node
 #symload lctn with d2exp_get_lctn
@@ -70,6 +80,81 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload lctn with d2ecl_get_lctn
 #symload node with d2ecl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fperr20_d2conlst
+( out: FILR
+, d2cs: d2conlst): void =
+(
+case+ d2cs of
+|
+list_nil() => ()
+|
+list_cons(d2c1, d2cs) =>
+let
+val loc1 = d2c1.lctn()
+val t2p1 = d2c1.styp()
+val (  ) =
+(
+printsln("\
+FPERR20-ERROR:",
+loc1,":",d2c1,"(",t2p1,")"))
+in//let
+(
+  fperr20_d2conlst(out, d2cs))
+end//let//end-of-[list_cons(...)]
+) where
+{
+  #impltmp g_print$out<>() = out
+}(*where*)//end-of-[fperr20_d2conlst]
+//
+(* ****** ****** *)
+//
+fun
+fperr20_s2cstlst
+( out: FILR
+, s2cs: s2cstlst): void =
+(
+case+ s2cs of
+|
+list_nil() => ()
+|
+list_cons(s2c1, s2cs) =>
+let
+//
+val loc1 = s2c1.lctn()
+val s2t1 = s2c1.sort()
+val opt1 = s2c1.d2cs()
+//
+val (  ) =
+(
+printsln("\
+FPERR20-ERROR:",
+loc1,":",s2c1,"(",s2t1,")"))
+//
+val (  ) =
+(
+case+ opt1 of
+| ~
+optn_vt_nil() => ()
+| ~
+optn_vt_cons(d2cs) =>
+(
+  fperr20_d2conlst(out, d2cs))
+)
+//
+in//let
+(
+  fperr20_s2cstlst(out, s2cs))
+end//let//end-of-[list_cons(...)]
+) where
+{
+  #impltmp g_print$out<>() = out
+}(*where*)//end-of-[fperr20_s2cstlst]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
@@ -182,19 +267,18 @@ val () = fperr20_s2res(out, sres)
 val () = fperr20_d2exp(out, dexp)
 endlet // end of [ D2Cimplmnt0(...) ]
 //
+(* ****** ****** *)
+//
 |D2Cexcptcon
 (d1cl, d2cs) =>
 let
-(*
-val () = fperr20_d2conlst(d2cs)
-*)
+val () = fperr20_d2conlst(out, d2cs)
 endlet // end of [ D2Cexcptcon(...) ]
+//
 |D2Cdatatype
 (d1cl, s2cs) =>
 let
-(*
-val () = fperr20_s2cstlst(s2cs)
-*)
+val () = fperr20_s2cstlst(out, s2cs)
 endlet // end of [ D2Cdatatype(...) ]
 //
 (* ****** ****** *)
@@ -204,6 +288,8 @@ endlet // end of [ D2Cdatatype(...) ]
 (  d1cl  ) => d1ecl_fpemsg(out, d1cl)
 |D2Cnone2
 (  d2cl  ) => fperr20_d2ecl(out, d2cl)
+//
+(* ****** ****** *)
 //
 |D2Cerrck
 (lvl1,dcl1) => fperr20_d2ecl(out, dcl0)
