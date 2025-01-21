@@ -11,208 +11,220 @@ SRCGEN2=./../../../srcgen2
 XATS2JS=./../../../srcgen2/xats2js
 ########################################################################
 ########################################################################
-all_sats:: \
+boot_sats:: \
 xbasics_sats
 xbasics_sats: \
 $(SRCGEN2)/SATS/xbasics.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
-all_sats:: \
+boot_sats:: \
 xsynoug_sats
 xsynoug_sats: \
 $(SRCGEN2)/SATS/xsynoug.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
-all_sats:: \
+boot_sats:: \
 xerrory_sats
 xerrory_sats: \
 $(SRCGEN2)/SATS/xerrory.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
-all_sats:: \
+boot_sats:: \
 xstamp0_sats
 xstamp0_sats: \
 $(SRCGEN2)/SATS/xstamp0.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
-all_sats:: \
+boot_sats:: \
 xsymbol_sats
 xsymbol_sats: \
 $(SRCGEN2)/SATS/xsymbol.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
-all_sats:: \
+boot_sats:: \
 xlabel0_sats
 xlabel0_sats: \
 $(SRCGEN2)/SATS/xlabel0.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
-all_sats:: \
+boot_sats:: \
 xglobal_sats
 xglobal_sats: \
 $(SRCGEN2)/SATS/xglobal.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
-all_sats:: \
+boot_sats:: \
 filpath_sats
 filpath_sats: \
 $(SRCGEN2)/SATS/filpath.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
-all_sats:: \
+boot_sats:: \
 locinfo_sats
 locinfo_sats: \
 $(SRCGEN2)/SATS/locinfo.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
-all_sats:: \
+boot_sats:: \
 xsymmap_sats
 xsymmap_sats: \
 $(SRCGEN2)/SATS/xsymmap.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
+boot_sats:: \
+lexbuf0_sats
+lexbuf0_sats: \
+$(SRCGEN2)/SATS/lexbuf0.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
-all_dats:: \
+boot_sats:: \
+lexing0_sats
+lexing0_sats: \
+$(SRCGEN2)/SATS/lexing0.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+########################################################################
+boot_dats:: \
 xbasics_dats
 xbasics_dats: \
 $(SRCGEN2)/DATS/xbasics.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 xbasics_print0_dats
 xbasics_print0_dats: \
 $(SRCGEN2)/DATS/xbasics_print0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
-all_dats:: \
+boot_dats:: \
 xsynoug_dats
 xsynoug_dats: \
 $(SRCGEN2)/DATS/xsynoug.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
-all_dats:: \
+boot_dats:: \
 xerrory_dats
 xerrory_dats: \
 $(SRCGEN2)/DATS/xerrory.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
-all_dats:: \
+boot_dats:: \
 xstamp0_dats
 xstamp0_dats: \
 $(SRCGEN2)/DATS/xstamp0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 xstamp0_print0_dats
 xstamp0_print0_dats: \
 $(SRCGEN2)/DATS/xstamp0_print0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 xstamp0_tmpmap_dats
 xstamp0_tmpmap_dats: \
 $(SRCGEN2)/DATS/xstamp0_tmpmap.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
-all_dats:: \
+boot_dats:: \
 xsymbol_dats
 xsymbol_dats: \
 $(SRCGEN2)/DATS/xsymbol.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 xsymbol_print0_dats
 xsymbol_print0_dats: \
 $(SRCGEN2)/DATS/xsymbol_print0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 xsymbol_mymap0_dats
 xsymbol_mymap0_dats: \
 $(SRCGEN2)/DATS/xsymbol_mymap0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 xsymbol_inits0_dats
 xsymbol_inits0_dats: \
 $(SRCGEN2)/DATS/xsymbol_inits0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
-all_dats:: \
+boot_dats:: \
 xlabel0_dats
 xlabel0_dats: \
 $(SRCGEN2)/DATS/xlabel0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 xlabel0_print0_dats
 xlabel0_print0_dats: \
 $(SRCGEN2)/DATS/xlabel0_print0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
-all_dats:: \
+boot_dats:: \
 xglobal_dats
 xglobal_dats: \
 $(SRCGEN2)/DATS/xglobal.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
-all_dats:: \
+boot_dats:: \
 filpath_dats
 filpath_dats: \
 $(SRCGEN2)/DATS/filpath.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 filpath_print0_dats
 filpath_print0_dats: \
 $(SRCGEN2)/DATS/filpath_print0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 filpath_drpth0_dats
 filpath_drpth0_dats: \
 $(SRCGEN2)/DATS/filpath_drpth0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 filpath_fpath0_dats
 filpath_fpath0_dats: \
 $(SRCGEN2)/DATS/filpath_fpath0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 filpath_search_dats
 filpath_search_dats: \
 $(SRCGEN2)/DATS/filpath_search.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
-all_dats:: \
+boot_dats:: \
 locinfo_dats
 locinfo_dats: \
 $(SRCGEN2)/DATS/locinfo.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 locinfo_print0_dats
 locinfo_print0_dats: \
 $(SRCGEN2)/DATS/locinfo_print0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
-all_dats:: \
+boot_dats:: \
 xsymmap_dats
 xsymmap_dats: \
 $(SRCGEN2)/DATS/xsymmap.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 xsymmap_topmap_dats
 xsymmap_topmap_dats: \
 $(SRCGEN2)/DATS/xsymmap_topmap.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 xsymmap_stkmap_dats
 xsymmap_stkmap_dats: \
 $(SRCGEN2)/DATS/xsymmap_stkmap.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
-all_dats:: \
+boot_dats:: \
 lexbuf0_dats
 lexbuf0_dats: \
 $(SRCGEN2)/DATS/lexbuf0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 lexbuf0_cstrx1_dats
 lexbuf0_cstrx1_dats: \
 $(SRCGEN2)/DATS/lexbuf0_cstrx1.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
-all_dats:: \
+boot_dats:: \
 lexbuf0_cstrx2_dats
 lexbuf0_cstrx2_dats: \
 $(SRCGEN2)/DATS/lexbuf0_cstrx2.dats; \
