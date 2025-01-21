@@ -378,12 +378,12 @@ lexing0_dats
 lexing0_dats: ; $(XATSOPT) --dynamic DATS/lexing0.dats
 ######
 all_dats:: \
-lexing0_kword0_dats
-lexing0_kword0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_kword0.dats
-######
-all_dats:: \
 lexing0_token0_dats
 lexing0_token0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_token0.dats
+######
+all_dats:: \
+lexing0_kword0_dats
+lexing0_kword0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_kword0.dats
 ######
 all_dats:: \
 lexing0_print0_dats
