@@ -1046,6 +1046,9 @@ case+ f2as of
 }
 |list_cons(f2a1, f2as) =>
 let
+//
+val tfun = s2typ_hnfiz0(tfun)
+//
 val
 (f2a1, tres) = f0_f2a1(env0, f2a1, tfun)
 in//let

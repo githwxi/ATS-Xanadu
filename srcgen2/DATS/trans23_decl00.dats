@@ -843,7 +843,7 @@ end//let
 (*let*)//end-of-[trans23_d2vardcl(env0,dvar)]
 
 (* ****** ****** *)
-
+//
 #implfun
 trans23_d2fundcl
   (env0, dfun) = let
@@ -889,7 +889,7 @@ in//let
 d3fundcl(loc0,dvar,f3as,sres,tdxp,wsxp)
 end//let
 (*let*)//end-of-[trans23_d2fundcl(env0,dfun)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
