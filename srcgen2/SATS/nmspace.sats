@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,10 +37,12 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #abstbox nmitm_tbox // ptr
 #typedef nmitm = nmitm_tbox
 //
+(* ****** ****** *)
 (* ****** ****** *)
 fun
 the_nmspace_top0((*void*)): nmitm

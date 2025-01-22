@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,6 +37,28 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+SYM = "./xsymbol.sats"
+//
+#staload
+LAB = "./xlabel0.sats"
+#staload
+LOC = "./locinfo.sats"
+//
+#staload
+LEX = "./lexing0.sats"
+//
+(* ****** ****** *)
+//
+#staload
+S1E = "./staexp1.sats"
+#staload
+D1E = "./dynexp1.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
@@ -43,11 +66,7 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-//
-#staload
-LAB = "./xlabel0.sats"
-#staload
-LOC = "./locinfo.sats"
+(* ****** ****** *)
 //
 #typedef lab_t = $LAB.lab_t
 #typedef label = $LAB.label
@@ -56,21 +75,11 @@ LOC = "./locinfo.sats"
 //
 (* ****** ****** *)
 //
-#staload
-SYM = "./xsymbol.sats"
-#staload
-LEX = "./lexing0.sats"
-//
 #typedef sym_t = $SYM.sym_t
 #typedef symbl = $SYM.symbl
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
-//
-#staload
-S1E = "./staexp1.sats"
-#staload
-D1E = "./dynexp1.sats"
 //
 #typedef g1exp = $S1E.g1exp
 #typedef g1arg = $S1E.g1arg

@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -34,12 +35,6 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 //
 #staload
@@ -47,17 +42,28 @@ LAB = "./xlabel0.sats"
 #staload
 LOC = "./locinfo.sats"
 //
+#staload
+SYM = "./xsymbol.sats"
+#staload
+LEX = "./lexing0.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #typedef lab_t = $LAB.lab_t
 #typedef label = $LAB.label
 #typedef loc_t = $LOC.loc_t
 #typedef loctn = $LOC.loctn
 //
 (* ****** ****** *)
-//
-#staload
-SYM = "./xsymbol.sats"
-#staload
-LEX = "./lexing0.sats"
 //
 #typedef sym_t = $SYM.sym_t
 #typedef token = $LEX.token

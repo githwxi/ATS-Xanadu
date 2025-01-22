@@ -36,19 +36,21 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#define
-ATS_PACKNAME // namespace
-"ATS3.XANADU.xatsopt-20220500"
-(* ****** ****** *)
-(* ****** ****** *)
 //
 #staload
 LEX = "./lexing0.sats"
+//
 #staload
 S0E = "./staexp0.sats"
 #staload
 D0E = "./dynexp0.sats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+#define
+ATS_PACKNAME // namespace
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef tnode = $LEX.tnode

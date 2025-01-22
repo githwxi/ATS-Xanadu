@@ -34,12 +34,6 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-#define
-ATS_PACKNAME // namespace
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload
 LEX = "./lexing0.sats"
@@ -48,6 +42,15 @@ LEX = "./lexing0.sats"
 S0E = "./staexp0.sats"
 #staload
 D0E = "./dynexp0.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+#define
+ATS_PACKNAME // namespace
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 (* ****** ****** *)
 #typedef token = $LEX.token
 (* ****** ****** *)

@@ -26,10 +26,12 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2023-12-26:
 For linearity checking!!!
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -41,12 +43,6 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 //
 #staload
@@ -64,6 +60,7 @@ ATS_PACKNAME
 #staload
   MAP = "./xsymmap.sats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
@@ -90,6 +87,15 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #typedef lab_t = $LAB.lab_t
 #typedef label = $LAB.label
@@ -109,9 +115,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #typedef
- fpath = ($FP0.fpath)
+  fpath = $FP0.fpath
 #typedef
- fpathopt = ($FP0.fpathopt)
+  fpathopt = $FP0.fpathopt
 //
 (* ****** ****** *)
 #typedef tnode = $LEX.tnode
