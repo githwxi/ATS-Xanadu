@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -34,6 +35,13 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#staload
+FP0 = "./filpath.sats"
+(* ****** ****** *)
+#typedef fpath = $FP0.fpath
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
@@ -41,7 +49,6 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload FP0 = "./filpath.sats"
 (* ****** ****** *)
 (*
 HX-2022-06-10:
@@ -57,8 +64,6 @@ char sequence), the starting position (loc.pbeg)
 of the range, and the ending position (loc.pend).
 *)
 (* ****** ****** *)
-#typedef
-fpath = $FP0.fpath
 (* ****** ****** *)
 //
 datatype

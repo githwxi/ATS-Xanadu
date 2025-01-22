@@ -59,6 +59,15 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #staload "./xbasics.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #typedef stamp = $TMP.stamp
 //
@@ -75,15 +84,6 @@ LEX = "./lexing0.sats"
 #typedef sym_t = $SYM.sym_t
 #typedef token = $LEX.token
 //
-(* ****** ****** *)
-(* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-(* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
 //

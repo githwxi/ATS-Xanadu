@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,12 +37,6 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-#define
-ATS_PACKNAME // namespace
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload
 LEX = "./lexing0.sats"
@@ -52,6 +47,15 @@ S2E = "./staexp2.sats"
 T2P = "./statyp2.sats"
 #staload
 D3E = "./dynexp3.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+#define
+ATS_PACKNAME // namespace
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 (* ****** ****** *)
 #typedef token = $LEX.token
 (* ****** ****** *)
