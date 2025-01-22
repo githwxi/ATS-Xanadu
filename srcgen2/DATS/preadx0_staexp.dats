@@ -579,7 +579,8 @@ end (*let*) // end of [sort0_lpar_errck]
 (* ****** ****** *)
 //
 #implfun
-preadx0_sort0(s0t, err) =
+preadx0_sort0
+  (s0t, err) =
 (
 case+
 s0t.node() of
@@ -1059,7 +1060,10 @@ case+ opt of
 optn_nil() => s0a
 |
 optn_cons(s0t) =>
-(preadx0_sort0(s0t, err); s0a)
+let
+val s0t = 
+preadx0_sort0
+  (s0t, err) in s0a end//let
 ) where
 {
 val () =
@@ -1224,9 +1228,25 @@ preadx0_s0qua
 case+
 s0q.node() of
 |
-S0QUAsome _ => s0q
+S0QUAprop
+(  s0e  ) => s0q
+where {
+val s0e =
+preadx0_s0exp(s0e, err)
+}
 |
-S0QUAnone _ => (err := err + 1; s0q)
+S0QUAvars
+(ids, opt) => s0q
+where {
+val ids =
+preadx0_i0dntlst(ids, err)
+val opt =
+preadx0_sort0opt(opt, err)
+}
+(*
+|S0QUAsome _ => s0q
+|S0QUAnone _ => (err := err + 1; s0q)
+*)
 ) (*case*) // end of [preadx0_s0qua(s0q,err)]
 //
 #implfun
@@ -1347,7 +1367,7 @@ val ( ) =
 (
 case+
 id0.node() of
-| ID0NTsome _ => ()
+| I0DNTsome _ => ()
 | _(* else *) => (err := err+1)
 )
 //
@@ -1670,7 +1690,8 @@ S0LAB
 //
 val ( ) =
 (
-case+ lab of
+case+
+lab.node() of
 |
 L0ABLsome _ => ()
 |

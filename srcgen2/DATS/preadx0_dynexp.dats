@@ -1348,7 +1348,8 @@ D0LAB
 //
 val ( ) =
 (
-case+ lab of
+case+
+lab.node() of
 |
 L0ABLsome _ => ()
 |
@@ -2243,7 +2244,8 @@ D0LAB
 //
 val ( ) =
 (
-case+ lab of
+case+
+lab.node() of
 |
 L0ABLsome _ => ()
 |

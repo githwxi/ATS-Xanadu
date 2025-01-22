@@ -101,6 +101,12 @@ parsing_sats: \
 $(SRCGEN2)/SATS/parsing.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
+boot_sats:: \
+preadx0_sats
+preadx0_sats: \
+$(SRCGEN2)/SATS/preadx0.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
 ########################################################################
 boot_dats:: \
 xbasics_dats
@@ -342,6 +348,32 @@ parsing_decl00_dats: \
 $(SRCGEN2)/DATS/parsing_decl00.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
+boot_dats:: \
+preadx0_dats
+preadx0_dats: \
+$(SRCGEN2)/DATS/preadx0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+preadx0_staexp_dats
+preadx0_staexp_dats: \
+$(SRCGEN2)/DATS/preadx0_staexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+preadx0_dynexp_dats
+preadx0_dynexp_dats: \
+$(SRCGEN2)/DATS/preadx0_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+preadx0_decl00_dats
+preadx0_decl00_dats: \
+$(SRCGEN2)/DATS/preadx0_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+preadx0_errmsg_dats
+preadx0_errmsg_dats: \
+$(SRCGEN2)/DATS/preadx0_errmsg.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -390,6 +422,11 @@ cleanall:: ; rm -f BUILD/parsing_utils0_dats_out.js
 cleanall:: ; rm -f BUILD/parsing_staexp_dats_out.js
 cleanall:: ; rm -f BUILD/parsing_dynexp_dats_out.js
 cleanall:: ; rm -f BUILD/parsing_decl00_dats_out.js
+cleanall:: ; rm -f BUILD/preadx0_dats_out.js
+cleanall:: ; rm -f BUILD/preadx0_staexp_dats_out.js
+cleanall:: ; rm -f BUILD/preadx0_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/preadx0_decl00_dats_out.js
+cleanall:: ; rm -f BUILD/preadx0_errmsg_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
