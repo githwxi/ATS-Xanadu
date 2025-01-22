@@ -91,12 +91,12 @@ endloc(*local*)//end-(local(d0pat_annotopt))
 local
 //
 datatype
-d0pat =
+d0pat_ =
 D0PAT of
 (
 loctn, d0pat_node)
 #absimpl
-d0pat_tbox = d0pat
+d0pat_tbox = d0pat_
 //
 in (* in-of-local *)
 //
@@ -122,12 +122,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-f0arg =
+f0arg_ =
 F0ARG of
 (
 loctn, f0arg_node)
 #absimpl
-f0arg_tbox = f0arg
+f0arg_tbox = f0arg_
 //
 in (* in-of-local *)
 //
@@ -183,12 +183,12 @@ endloc(*local*)//end-(local(d0exp_annotopt))
 local
 //
 datatype
-d0exp =
+d0exp_ =
 D0EXP of
 (
 loctn, d0exp_node)
 #absimpl
-d0exp_tbox = d0exp
+d0exp_tbox = d0exp_
 //
 in (* in-of-local *)
 //
@@ -214,12 +214,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-d0gua =
+d0gua_ =
 D0GUA of
 (
 loctn, d0gua_node)
 #absimpl
-d0gua_tbox = d0gua
+d0gua_tbox = d0gua_
 //
 in (* in-of-local *)
 //
@@ -245,12 +245,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-d0cls =
+d0cls_ =
 D0CLS of
 (
 loctn, d0cls_node)
 #absimpl
-d0cls_tbox = d0cls
+d0cls_tbox = d0cls_
 //
 in (* in-of-local *)
 //
@@ -276,12 +276,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-d0gpt =
+d0gpt_ =
 D0GPT of
 (
 loctn, d0gpt_node)
 #absimpl
-d0gpt_tbox = d0gpt
+d0gpt_tbox = d0gpt_
 //
 in (* in-of-local *)
 //
@@ -307,12 +307,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-q0arg =
+q0arg_ =
 Q0ARG of
 (
 loctn, q0arg_node)
 #absimpl
-q0arg_tbox = q0arg
+q0arg_tbox = q0arg_
 //
 in (* in-of-local *)
 //
@@ -338,12 +338,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-s0qag =
+s0qag_ =
 S0QAG of
 (
 loctn, s0qag_node)
 #absimpl
-s0qag_tbox = s0qag
+s0qag_tbox = s0qag_
 //
 in (* in-of-local *)
 //
@@ -369,12 +369,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-t0qag =
+t0qag_ =
 T0QAG of
 (
 loctn, t0qag_node)
 #absimpl
-t0qag_tbox = t0qag
+t0qag_tbox = t0qag_
 //
 in (* in-of-local *)
 //
@@ -400,12 +400,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-t0iag =
+t0iag_ =
 T0IAG of
 (
 loctn, t0iag_node)
 #absimpl
-t0iag_tbox = t0iag
+t0iag_tbox = t0iag_
 //
 in (* in-of-local *)
 //
@@ -431,12 +431,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-a0typ =
+a0typ_ =
 A0TYP of
 (
 loctn, a0typ_node)
 #absimpl
-a0typ_tbox = a0typ
+a0typ_tbox = a0typ_
 //
 in (* in-of-local *)
 //
@@ -462,12 +462,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-d0arg =
+d0arg_ =
 D0ARG of
 (
 loctn, d0arg_node)
 #absimpl
-d0arg_tbox = d0arg
+d0arg_tbox = d0arg_
 //
 in (* in-of-local *)
 //
@@ -493,12 +493,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-d0ecl =
+d0ecl_ =
 D0ECL of
 (
 loctn, d0ecl_node)
 #absimpl
-d0ecl_tbox = d0ecl
+d0ecl_tbox = d0ecl_
 //
 in (* in-of-local *)
 //
@@ -524,14 +524,14 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-d0cstdcl =
+d0cstdcl_ =
 D0CSTDCL of
 ( loc_t
 , d0pid
 , d0arglst,s0res,d0res)
 //
 #absimpl
-d0cstdcl_tbox = d0cstdcl
+d0cstdcl_tbox = d0cstdcl_
 //
 in//local
 //
@@ -602,14 +602,14 @@ endloc (*local*) // end of [ local(d0cstdcl) ]
 local
 //
 datatype
-d0valdcl =
+d0valdcl_ =
 D0VALDCL of
 ( loc_t
 , d0pat
 , teqd0exp, wths0exp)
 //
 #absimpl
-d0valdcl_tbox = d0valdcl
+d0valdcl_tbox = d0valdcl_
 //
 in//local
 
@@ -665,7 +665,7 @@ endloc (*local*) // end of [ local(d0valdcl) ]
 local
 //
 datatype
-d0vardcl =
+d0vardcl_ =
 D0VARDCL of
 ( loc_t
 , d0pid
@@ -673,7 +673,7 @@ D0VARDCL of
 , s0expopt, teqd0exp)
 //
 #absimpl
-d0vardcl_tbox = d0vardcl
+d0vardcl_tbox = d0vardcl_
 //
 in//local
 
@@ -739,7 +739,7 @@ endloc (*local*) // end of [ local(d0vardcl) ]
 local
 //
 datatype
-d0fundcl =
+d0fundcl_ =
 D0FUNDCL of
 ( loc_t
 , d0pid
@@ -747,7 +747,7 @@ D0FUNDCL of
 , teqd0exp, wths0exp)
 //
 #absimpl
-d0fundcl_tbox = d0fundcl
+d0fundcl_tbox = d0fundcl_
 //
 in//local
 
@@ -836,7 +836,7 @@ endloc (*local*) // end of [ local(d0fundcl) ]
 local
 //
 datatype
-d0parsed =
+d0parsed_ =
 D0PARSED of
 (
 sint  // stadyn
@@ -848,7 +848,7 @@ lcsrc // source
 d0eclistopt)//program
 //
 #absimpl
-d0parsed_tbox = d0parsed
+d0parsed_tbox = d0parsed_
 //
 in//local
 

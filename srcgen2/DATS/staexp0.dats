@@ -104,12 +104,12 @@ endloc (*local*) // end of [local]
 local
 //
 datatype
-i0dnt =
+i0dnt_ =
 I0DNT of
 (
 loctn, i0dnt_node)
 #absimpl
-i0dnt_tbox = i0dnt
+i0dnt_tbox = i0dnt_
 //
 in (* in-of-local *)
 
@@ -148,12 +148,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-l0abl =
+l0abl_ =
 L0ABL of
 (
 loctn, l0abl_node)
 #absimpl
-l0abl_tbox = l0abl
+l0abl_tbox = l0abl_
 //
 in (* in-of-local *)
 //
@@ -237,12 +237,12 @@ end // end of [l0abl_make_name]
 local
 //
 datatype
-s0ymb =
+s0ymb_ =
 S0YMB of
 (
 loctn, s0ymb_node)
 #absimpl
-s0ymb_tbox = s0ymb
+s0ymb_tbox = s0ymb_
 //
 in (* in-of-local *)
 //
@@ -268,12 +268,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-g0nam =
+g0nam_ =
 G0NAM of
 (
 loctn, g0nam_node)
 #absimpl
-g0nam_tbox = g0nam
+g0nam_tbox = g0nam_
 //
 in (* in-of-local *)
 //
@@ -299,12 +299,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-g0exp =
+g0exp_ =
 G0EXP of
 (
 loctn, g0exp_node)
 #absimpl
-g0exp_tbox = g0exp
+g0exp_tbox = g0exp_
 //
 in (* in-of-local *)
 //
@@ -330,12 +330,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-g0mag =
+g0mag_ =
 G0MAG of
 (
 loctn, g0mag_node)
 #absimpl
-g0mag_tbox = g0mag
+g0mag_tbox = g0mag_
 //
 in (* in-of-local *)
 //
@@ -361,12 +361,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-sort0 =
+sort0_ =
 SORT0 of
 (
 loctn, sort0_node)
 #absimpl
-sort0_tbox = sort0
+sort0_tbox = sort0_
 //
 in (* in-of-local *)
 //
@@ -392,12 +392,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-s0tcn =
+s0tcn_ =
 S0TCN of
 (
 loctn, s0tcn_node)
 #absimpl
-s0tcn_tbox = s0tcn
+s0tcn_tbox = s0tcn_
 //
 in (* in-of-local *)
 //
@@ -423,12 +423,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-d0tst =
+d0tst_ =
 D0TST of
 (
 loctn, d0tst_node)
 #absimpl
-d0tst_tbox = d0tst
+d0tst_tbox = d0tst_
 //
 in (* in-of-local *)
 //
@@ -454,12 +454,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-s0arg =
+s0arg_ =
 S0ARG of
 (
 loctn, s0arg_node)
 #absimpl
-s0arg_tbox = s0arg
+s0arg_tbox = s0arg_
 //
 in (* in-of-local *)
 //
@@ -485,12 +485,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-s0mag =
+s0mag_ =
 S0MAG of
 (
 loctn, s0mag_node)
 #absimpl
-s0mag_tbox = s0mag
+s0mag_tbox = s0mag_
 //
 in (* in-of-local *)
 //
@@ -516,12 +516,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-t0arg =
+t0arg_ =
 T0ARG of
 (
 loctn, t0arg_node)
 #absimpl
-t0arg_tbox = t0arg
+t0arg_tbox = t0arg_
 //
 in (* in-of-local *)
 //
@@ -547,12 +547,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-t0mag =
+t0mag_ =
 T0MAG of
 (
 loctn, t0mag_node)
 #absimpl
-t0mag_tbox = t0mag
+t0mag_tbox = t0mag_
 //
 in (* in-of-local *)
 //
@@ -578,12 +578,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-s0qua =
+s0qua_ =
 S0QUA of
 (
 loctn, s0qua_node)
 #absimpl
-s0qua_tbox = s0qua
+s0qua_tbox = s0qua_
 //
 in (* in-of-local *)
 //
@@ -654,12 +654,12 @@ endloc (*local*) // end-of-[local]
 local
 //
 datatype
-s0tdf =
+s0tdf_ =
 S0TDF of
 (
 loctn, s0tdf_node)
 #absimpl
-s0tdf_tbox = s0tdf
+s0tdf_tbox = s0tdf_
 //
 in (* in-of-local *)
 //
@@ -704,12 +704,12 @@ end//let
 local
 //
 datatype
-s0exp =
+s0exp_ =
 S0EXP of
 (
 loctn, s0exp_node)
 #absimpl
-s0exp_tbox = s0exp
+s0exp_tbox = s0exp_
 //
 in (* in-of-local *)
 //
@@ -744,12 +744,12 @@ l0s0e_get_node
 local
 //
 datatype
-s0uni =
+s0uni_ =
 S0UNI of
 (
 loctn, s0uni_node)
 #absimpl
-s0uni_tbox = s0uni
+s0uni_tbox = s0uni_
 //
 in (* in-of-local *)
 //
@@ -775,12 +775,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-d0tcn =
+d0tcn_ =
 D0TCN of
 (
 loctn, d0tcn_node)
 #absimpl
-d0tcn_tbox = d0tcn
+d0tcn_tbox = d0tcn_
 //
 in (* in-of-local *)
 //
@@ -806,12 +806,12 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-d0typ =
+d0typ_ =
 D0TYP of
 (
 loctn, d0typ_node)
 #absimpl
-d0typ_tbox = d0typ
+d0typ_tbox = d0typ_
 //
 in (* in-of-local *)
 //

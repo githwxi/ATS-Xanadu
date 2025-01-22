@@ -56,6 +56,9 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with l0abl_get_lctn
+#symload node with l0abl_get_node
+(* ****** ****** *)
 #symload lctn with g0exp_get_lctn
 #symload node with g0exp_get_node
 (* ****** ****** *)
@@ -254,7 +257,8 @@ let
 #impltmp
 g_print$out<>() = out
 in//let
-case+ id0 of
+case+
+id0.node() of
 |
 I0DNTsome _ => ()
 |
@@ -274,11 +278,12 @@ let
 #impltmp
 g_print$out<>() = out
 in//let
-case+ lab of
+case+
+lab.node() of
 |
-I0DNTsome _ => ()
+L0ABLsome _ => ()
 |
-I0DNTnone(tok) =>
+L0ABLnone(tok) =>
 let
 val loc = tok.lctn() in
 printsln("\
@@ -306,7 +311,7 @@ PREADX0-ERROR:", loc, ":", int) end
 end (*let*)//end-of-[t0int_fpemsg(out,int)]
 //
 #implfun
-t0int_fpemsg
+t0chr_fpemsg
 (out, chr) =
 let
 #impltmp
