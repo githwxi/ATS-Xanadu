@@ -34,19 +34,24 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 #typedef int0 = sint
 #typedef btf0 = bool
 #typedef chr0 = char
 #typedef str0 = strn
 *)
+//
 (* ****** ****** *)
 #symload &  with land of 0
 #symload << with lsln of 0

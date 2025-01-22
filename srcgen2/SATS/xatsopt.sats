@@ -36,30 +36,34 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#staload
+S0E = "./staexp0.sats"
+#staload
+S1E = "./staexp1.sats"
+#staload
+S2E = "./staexp2.sats"
+#staload
+T2P = "./statyp2.sats"
+(* ****** ****** *)
+#staload
+D0E = "./dynexp0.sats"
+#staload
+D1E = "./dynexp1.sats"
+#staload
+D2E = "./dynexp2.sats"
+#staload
+D3E = "./dynexp3.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload
-S0E = "./../SATS/staexp0.sats"
-#staload
-S1E = "./../SATS/staexp1.sats"
-#staload
-S2E = "./../SATS/staexp2.sats"
-#staload
-T2P = "./../SATS/statyp2.sats"
-(* ****** ****** *)
-#staload
-D0E = "./../SATS/dynexp0.sats"
-#staload
-D1E = "./../SATS/dynexp1.sats"
-#staload
-D2E = "./../SATS/dynexp2.sats"
-#staload
-D3E = "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 //
 #absvwtp

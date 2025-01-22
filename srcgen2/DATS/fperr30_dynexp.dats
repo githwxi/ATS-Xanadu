@@ -375,9 +375,15 @@ prints("D3Eannot(", "...", ")")
 //
 |D3Et2pck
 (d3e1, t2p2) =>
+let
+val
+t2p1 = d3e1.styp()
+in//let
 ( print("D3Et2pck(")
 ; auxdexp(out, d3e1)
+; print(";"); print(t2p1)
 ; print(";"); prints(t2p2, ")"))
+end//let//end-of-[D3Et2pck(...)]
 //
 (* ****** ****** *)
 //

@@ -36,19 +36,22 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+SYM = "./xsymbol.sats"
+#typedef key = $SYM.sym_t
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-//
-#staload
-SYM = "./xsymbol.sats"
-//
-#typedef key = $SYM.sym_t
-//
 (* ****** ****** *)
 //
 #abstbox

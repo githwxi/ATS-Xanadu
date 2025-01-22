@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -34,21 +35,27 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload
 SYM = "./xsymbol.sats"
-
+#typedef sym_t = $SYM.sym_t
+//
+(* ****** ****** *)
 (* ****** ****** *)
 datatype label =
-| LABint of sint
-| LABsym of $SYM.sym_t
+| LABint of sint  // .int
+| LABsym of sym_t // .sym
+// end of [datatype(label)]
 (* ****** ****** *)
 #typedef lab_t = label
 (* ****** ****** *)
@@ -57,7 +64,9 @@ datatype label =
 #typedef label = label_tbox
 *)
 (* ****** ****** *)
-fun label_none(): label
+(* ****** ****** *)
+fun label_none(): ( label )
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -67,6 +76,7 @@ label_eq(label, label): bool
 fun
 label_cmp(label, label): sint
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

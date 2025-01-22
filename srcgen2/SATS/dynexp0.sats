@@ -34,21 +34,27 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #staload
 LAB = "./xlabel0.sats"
-#staload
-LOC = "./locinfo.sats"
 //
 #typedef lab_t = $LAB.lab_t
 #typedef label = $LAB.label
+//
+(* ****** ****** *)
+//
+#staload
+LOC = "./locinfo.sats"
 //
 #typedef loc_t = $LOC.loc_t
 #typedef loctn = $LOC.loctn

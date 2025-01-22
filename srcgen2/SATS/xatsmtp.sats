@@ -44,16 +44,17 @@ of meta-programming in ATS3
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
+#staload "./staexp2.sats"
+#staload "./dynexp2.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/staexp2.sats"
-#staload "./../SATS/dynexp2.sats"
+#include
+"./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //

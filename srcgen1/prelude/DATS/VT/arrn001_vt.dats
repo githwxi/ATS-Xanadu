@@ -4,26 +4,24 @@ HX: for arrays with size
 Wed Dec 20 23:11:33 EST 2023
 *)
 (* ****** ****** *)
-(*
-#staload
-"./..\
-/SATS/arrn000.sats"
-#staload
-"./..\
-/SATS/VT/arrn000_vt.sats"
-*)
-(* ****** ****** *)
 //
 #staload UN =
 "srcgen1\
 /prelude/SATS/unsafex.sats"
 //
 (* ****** ****** *)
+(*
+#staload
+"./../../SATS/arrn000.sats"
+#staload
+"./../../SATS/VT/arrn000_vt.sats"
+*)
+(* ****** ****** *)
 //
 local
 //
 datavwtp
-a1psz_dt //
+a1psz_ //
 (a:vwtp,int(*sz*)) =
 {n:int}
 A1PSZ of
@@ -31,7 +29,7 @@ A1PSZ of
 //
 #absimpl
 a1psz_vt_i0_x0
-( a:vt, n:i0 ) = a1psz_dt(a, n)
+( a:vt, n:i0 ) = a1psz_(a, n)
 //
 (* ****** ****** *)
 in(*local*)

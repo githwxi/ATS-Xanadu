@@ -41,10 +41,12 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/parsing.sats"
@@ -54,7 +56,7 @@ ATS_PACKNAME
 local
 //
 datavwtp
-tkbf0 =
+tkbf0_ =
 |
 {n:pos}
 {i:nat}
@@ -64,7 +66,7 @@ TKBF0 of
 , sint(i) (*idx*) )
 //
 #absimpl tmark_type = sint
-#absimpl tkbf0_vtbx = tkbf0
+#absimpl tkbf0_vtbx = tkbf0_
 //
 (* ****** ****** *)
 
@@ -79,8 +81,9 @@ case+ buf of
 | ~
 TKBF0
 ( A0
-, n0
-, i0) => a1ptr_free(A0, n0)
+, n0, i0) =>
+(
+  a1ptr_free<token>(A0, n0))
 ) (*case*)//end-of(tokbuf_free)
 //
 (* ****** ****** *)

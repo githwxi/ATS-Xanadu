@@ -34,14 +34,24 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+//
+#staload
+SYM = "./xsymbol.sats"
+#typedef sym_t = $SYM.sym_t
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/xatsopt_sats.hats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun theDirSep_get(): char
@@ -124,7 +134,7 @@ fpath_get_fnm1
 #symload fnm1 with fpath_get_fnm1
 fun
 fpath_get_fnm2
-(fpx: fpath): symbl // fnorm
+(fpx: fpath): sym_t // fnorm
 #symload fnm2 with fpath_get_fnm2
 (* ****** ****** *)
 //

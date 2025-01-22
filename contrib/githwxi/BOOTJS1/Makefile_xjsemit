@@ -316,6 +316,11 @@ parsing_basics_dats
 parsing_basics_dats: \
 $(SRCGEN2)/DATS/parsing_basics.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+parsing_tokbuf_dats
+parsing_tokbuf_dats: \
+$(SRCGEN2)/DATS/parsing_tokbuf.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -360,6 +365,7 @@ cleanall:: ; rm -f BUILD/dynexp0_dats_out.js
 cleanall:: ; rm -f BUILD/dynexp0_print0_dats_out.js
 cleanall:: ; rm -f BUILD/parsing_dats_out.js
 cleanall:: ; rm -f BUILD/parsing_basics_dats_out.js
+cleanall:: ; rm -f BUILD/parsing_tokbuf_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
