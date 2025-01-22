@@ -35,46 +35,54 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
+//
+#staload
+SYM = "./xsymbol.sats"
+//
+(* ****** ****** *)
+//
+#staload
+LAB = "./xlabel0.sats"
+//
+#staload
+LOC = "./locinfo.sats"
+//
+(* ****** ****** *)
+//
+#staload
+LEX = "./lexing0.sats"
+//
+#staload
+S0E = "./staexp0.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
 //
-#staload
-LAB = "./xlabel0.sats"
+#typedef sym_t = $SYM.sym_t
+//
+(* ****** ****** *)
 //
 #typedef lab_t = $LAB.lab_t
 #typedef label = $LAB.label
 //
 (* ****** ****** *)
 //
-#staload
-LOC = "./locinfo.sats"
-//
 #typedef loc_t = $LOC.loc_t
 #typedef loctn = $LOC.loctn
 #typedef lcsrc = $LOC.lcsrc
 //
 (* ****** ****** *)
-//
-#staload
-SYM = "./xsymbol.sats"
-#staload
-LEX = "./lexing0.sats"
-//
-#typedef sym_t = $SYM.sym_t
-#typedef token = $LEX.token
-//
 (* ****** ****** *)
-//
-#staload
-S0E = "./staexp0.sats"
-//
+#typedef token = $LEX.token
 (* ****** ****** *)
 #typedef l0abl = $S0E.l0abl
 (* ****** ****** *)
@@ -230,6 +238,7 @@ S0E = "./staexp0.sats"
 #typedef i0mpldcl = i0mpldcl_tbox
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 datatype
 d0lab(x0:type) =
@@ -240,9 +249,8 @@ D0LAB of
 fun
 <x0:t0>
 d0lab_get_itm
-(dlab: d0lab(x0)): x0
-#symload
-itm with d0lab_get_itm
+(dlab: d0lab(x0)): (x0)
+#symload itm with d0lab_get_itm
 //
 (* ****** ****** *)
 //

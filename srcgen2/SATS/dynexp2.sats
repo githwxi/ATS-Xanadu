@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,12 +37,6 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 //
 #staload
@@ -77,8 +72,17 @@ S2E = "./staexp2.sats"
 T2P = "./statyp2.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
 #typedef
-tag_t = sint// for ctags
+tag_t = sint//HX: for ctags
 (* ****** ****** *)
 //
 #typedef lab_t = $LAB.lab_t
@@ -91,10 +95,8 @@ tag_t = sint// for ctags
 #typedef symbl = $SYM.symbl
 (* ****** ****** *)
 //
-#typedef
-fpath = $FP0.fpath
-#typedef
-fpathopt = ($FP0.fpathopt)
+#typedef fpath = $FP0.fpath
+#typedef fpathopt = $FP0.fpathopt
 //
 (* ****** ****** *)
 //

@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,12 +37,6 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 //
 #staload
@@ -78,6 +73,16 @@ S2E = "./staexp2.sats"
 T2P = "./statyp2.sats"
 #staload
 D2E = "./dynexp2.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef lab_t = $LAB.lab_t

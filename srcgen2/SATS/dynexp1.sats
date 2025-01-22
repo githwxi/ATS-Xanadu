@@ -36,12 +36,6 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 //
 #staload
@@ -49,28 +43,11 @@ LAB = "./xlabel0.sats"
 #staload
 LOC = "./locinfo.sats"
 //
-#typedef lab_t = $LAB.lab_t
-#typedef label = $LAB.label
 //
-#typedef loc_t = $LOC.loc_t
-#typedef loctn = $LOC.loctn
-#typedef lcsrc = $LOC.lcsrc
-//
-(* ****** ****** *)
 #staload
 LEX = "./lexing0.sats"
-#typedef token = $LEX.token
-(* ****** ****** *)
-//
 #staload
 FP0 = "./filpath.sats"
-//
-#typedef
-fpath = $FP0.fpath
-#typedef
-fpathopt = $FP0.fpathopt
-//
-(* ****** ****** *)
 //
 #staload
 MAP = "./xsymmap.sats"
@@ -88,6 +65,33 @@ D0E = "./dynexp0.sats"
 #staload "./xbasics.sats"
 (* ****** ****** *)
 #staload "./staexp1.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef lab_t = $LAB.lab_t
+#typedef label = $LAB.label
+//
+#typedef loc_t = $LOC.loc_t
+#typedef loctn = $LOC.loctn
+#typedef lcsrc = $LOC.lcsrc
+//
+(* ****** ****** *)
+#typedef token = $LEX.token
+(* ****** ****** *)
+//
+#typedef fpath = $FP0.fpath
+#typedef fpathopt = $FP0.fpathopt
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #abstbox d1pat_tbox // ptr
@@ -129,23 +133,27 @@ d1lab(itm:type) =
 |D1LAB of
 (label, itm(*elt*))
 //
+(* ****** ****** *)
+//
+#typedef
+d0lab(x0:t0) = $D0E.d0lab(x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <x0:t0>
 d1lab_get_itm
-(dlab: d1lab(x0)): x0
-#symload
-itm with d1lab_get_itm
+(dlab: d1lab(x0)): (x0)
+#symload itm with d1lab_get_itm
 //
 (* ****** ****** *)
-#typedef
-d0lab(x0:t0)=$D0E.d0lab(x0)
 (* ****** ****** *)
 //
 fun
 <x0:type>
 d1lab_fprint
-(out
-:FILR, lab:d1lab(x0)): void
+(out:FILR, lab:d1lab(x0)): void
 //
 (* ****** ****** *)
 //

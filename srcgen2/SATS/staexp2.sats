@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,25 +37,30 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 //
 #staload
 TMP = "./xstamp0.sats"
 //
-#typedef stamp = $TMP.stamp
-//
 (* ****** ****** *)
 //
 #staload
+SYM = "./xsymbol.sats"
+//
+#staload
 LAB = "./xlabel0.sats"
+//
 #staload
 LOC = "./locinfo.sats"
+//
+#staload
+LEX = "./lexing0.sats"
+//
+(* ****** ****** *)
+#staload "./xbasics.sats"
+(* ****** ****** *)
+//
+#typedef stamp = $TMP.stamp
 //
 #typedef lab_t = $LAB.lab_t
 #typedef label = $LAB.label
@@ -64,17 +70,21 @@ LOC = "./locinfo.sats"
 #typedef lcsrc = $LOC.lcsrc
 //
 (* ****** ****** *)
-//
-#staload
-SYM = "./xsymbol.sats"
-#staload
-LEX = "./lexing0.sats"
+(* ****** ****** *)
 //
 #typedef sym_t = $SYM.sym_t
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
-#staload "./xbasics.sats"
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
@@ -86,9 +96,8 @@ S2LAB of
 fun
 <x0:t0>
 s2lab_get_itm
-(slab: s2lab(x0)): x0
-#symload
-itm with s2lab_get_itm
+(slab: s2lab(x0)): (x0)
+#symload itm with s2lab_get_itm
 //
 (* ****** ****** *)
 #abstbox t2abs_tbox // ptr
