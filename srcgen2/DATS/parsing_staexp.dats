@@ -1009,7 +1009,7 @@ val g0e2 =
 val g0e3 =
   p1_g0exp_ELSE(buf, err)
 //
-val topt = optn_nil{token}()
+val topt = optn_nil((*token*))
 //
 (*
   val topt = pq_ENDIF(buf, err)
