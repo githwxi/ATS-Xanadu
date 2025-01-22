@@ -34,15 +34,22 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+TMP = "./xstamp0.sats"
+#typedef stamp = $TMP.stamp
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload
-TMP = "./../SATS/xstamp0.sats"
 (* ****** ****** *)
 //
 #abstbox symbl_tbox // ptr
@@ -50,8 +57,6 @@ TMP = "./../SATS/xstamp0.sats"
 #typedef symbl = symbl_tbox
 #typedef sym_t = symbl_tbox
 //
-(* ****** ****** *)
-#typedef stamp = $TMP.stamp
 (* ****** ****** *)
 //
 val

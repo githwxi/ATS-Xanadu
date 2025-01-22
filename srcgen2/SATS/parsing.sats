@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -34,13 +35,11 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./..\
-/HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME // namespace
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload

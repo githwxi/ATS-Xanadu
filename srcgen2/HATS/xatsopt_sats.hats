@@ -77,12 +77,14 @@ For ATS3/XATSOPT
 /prelude/SATS/VT/strm001_vt.sats"
 //
 (* ****** ****** *)
+//
 #staload
 "srcgen1\
 /prelude/SATS/VT/arrn000_vt.sats"
 #staload
 "srcgen1\
 /prelude/SATS/VT/arrn001_vt.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
