@@ -36,15 +36,6 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
-(* ****** ****** *)
-(* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-(* ****** ****** *)
 //
 #staload
 SYM = "./xsymbol.sats"
@@ -52,10 +43,22 @@ SYM = "./xsymbol.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
+//
 datatype label =
-| LABint of sint  // .int
-| LABsym of sym_t // .sym
-// end of [datatype(label)]
+|
+LABint of sint  // obj.int
+|
+LABsym of sym_t // obj.sym
+// end of [ datatype(label) ]
 (* ****** ****** *)
 #typedef lab_t = label
 (* ****** ****** *)
@@ -65,7 +68,10 @@ datatype label =
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-fun label_none(): ( label )
+//
+fun // *NONE*
+label_none((*void*)): label
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

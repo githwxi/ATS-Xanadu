@@ -34,18 +34,22 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 (* ****** ****** *)
 #abstype stamp_type <= uint
 #typedef stamp = stamp_type
 (* ****** ****** *)
 #abstbox stamper_tbox // ptr
 #typedef stamper = stamper_tbox
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val

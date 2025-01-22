@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,31 +37,46 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2023-06-23:
 linearity is erased
 but boxity is not erases!!!
 *)
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 //
 #staload
 TMP = "./xstamp0.sats"
 //
-#typedef stamp = $TMP.stamp
-//
-(* ****** ****** *)
+#staload
+SYM = "./xsymbol.sats"
 //
 #staload
 LAB = "./xlabel0.sats"
 #staload
 LOC = "./locinfo.sats"
+//
+#staload
+LEX = "./lexing0.sats"
+//
+(* ****** ****** *)
+#staload "./xbasics.sats"
+(* ****** ****** *)
+#staload "./xstamp0.sats"
+(* ****** ****** *)
+#staload "./staexp2.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef stamp = $TMP.stamp
 //
 #typedef lab_t = $LAB.lab_t
 #typedef label = $LAB.label
@@ -69,22 +85,10 @@ LOC = "./locinfo.sats"
 #typedef loctn = $LOC.loctn
 #typedef lcsrc = $LOC.lcsrc
 //
-(* ****** ****** *)
-//
-#staload
-SYM = "./xsymbol.sats"
-#staload
-LEX = "./lexing0.sats"
-//
 #typedef sym_t = $SYM.sym_t
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
-#staload "./xbasics.sats"
-(* ****** ****** *)
-#staload "./xstamp0.sats"
-(* ****** ****** *)
-#staload "./staexp2.sats"
 (* ****** ****** *)
 //
 #abstbox x2t2p_tbox

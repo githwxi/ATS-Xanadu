@@ -41,19 +41,24 @@ ATS_PACKNAME
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/xlabel0.sats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
-//
-#implfun
-label_none
-((*void*)) = LABsym(symbl("*NONE*"))
-//
 (* ****** ****** *)
 //
 #implfun
-label_cmp(lab1, lab2) =
+label_none
+((*void*)) =
+LABsym(symbl("*NONE*"))//fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+label_cmp
+(lab1, lab2) =
 (
 case+ lab1 of
 |LABint(i1) =>
@@ -69,5 +74,9 @@ case+ lab2 of
 |LABsym(s2) => symbl_cmp(s1, s2)))//end
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xlabel0.dats] *)

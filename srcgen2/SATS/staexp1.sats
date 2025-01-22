@@ -36,36 +36,46 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
-(* ****** ****** *)
+//
+#staload
+SYM = "./xsymbol.sats"
 //
 #staload
 LAB = "./xlabel0.sats"
 #staload
 LOC = "./locinfo.sats"
 //
-#typedef lab_t = $LAB.lab_t
-#typedef label = $LAB.label
-#typedef loc_t = $LOC.loc_t
-#typedef loctn = $LOC.loctn
-//
-(* ****** ****** *)
-//
-#staload
-SYM = "./xsymbol.sats"
 #staload
 LEX = "./lexing0.sats"
 //
+#staload
+S0E = "./staexp0.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #typedef sym_t = $SYM.sym_t
+//
+#typedef lab_t = $LAB.lab_t
+#typedef label = $LAB.label
+//
+#typedef loc_t = $LOC.loc_t
+#typedef loctn = $LOC.loctn
+//
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
-#staload S0E = "./staexp0.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -85,13 +95,12 @@ S1LAB of
 fun
 <x0:t0>
 s1lab_get_itm
-(slab: s1lab(x0)): x0
-#symload
-itm with s1lab_get_itm
+(slab: s1lab(x0)): (x0)
+#symload itm with s1lab_get_itm
 //
 (* ****** ****** *)
 #typedef
-s0lab(x0:t0)=$S0E.s0lab(x0)
+s0lab(x0:t0) = $S0E.s0lab(x0)
 (* ****** ****** *)
 //
 fun
