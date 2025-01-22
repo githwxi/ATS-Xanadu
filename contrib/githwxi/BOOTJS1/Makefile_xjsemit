@@ -321,6 +321,26 @@ parsing_tokbuf_dats
 parsing_tokbuf_dats: \
 $(SRCGEN2)/DATS/parsing_tokbuf.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+parsing_utils0_dats
+parsing_utils0_dats: \
+$(SRCGEN2)/DATS/parsing_utils0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+parsing_staexp_dats
+parsing_staexp_dats: \
+$(SRCGEN2)/DATS/parsing_staexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+parsing_dynexp_dats
+parsing_dynexp_dats: \
+$(SRCGEN2)/DATS/parsing_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+parsing_decl00_dats
+parsing_decl00_dats: \
+$(SRCGEN2)/DATS/parsing_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -366,6 +386,10 @@ cleanall:: ; rm -f BUILD/dynexp0_print0_dats_out.js
 cleanall:: ; rm -f BUILD/parsing_dats_out.js
 cleanall:: ; rm -f BUILD/parsing_basics_dats_out.js
 cleanall:: ; rm -f BUILD/parsing_tokbuf_dats_out.js
+cleanall:: ; rm -f BUILD/parsing_utils0_dats_out.js
+cleanall:: ; rm -f BUILD/parsing_staexp_dats_out.js
+cleanall:: ; rm -f BUILD/parsing_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/parsing_decl00_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime

@@ -948,7 +948,7 @@ T_SRP_SYMLOAD() => let
   | optn_nil
     ((*void*)) =>
     (tknd.lctn() + dqid.lctn())
-  | optn_vt_cons
+  | optn_cons
     (  g0e1  ) =>
     (tknd.lctn() + g0e1.lctn())
   ) : loc_t // end of [ val(lrec) ]
