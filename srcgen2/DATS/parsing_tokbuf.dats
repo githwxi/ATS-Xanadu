@@ -98,9 +98,15 @@ in
 ($fold(buf); tok) where
 {
 val tok =
-(if
+(
+if
 i0 < n0
-then A0[i0] else A0[n0-1]) }
+then
+(
+ a1ptr_get$at1(A0, i0))
+else
+(
+ a1ptr_get$at1(A0, n0-1))) }
 end (*let*) // end of [tokbuf_getk0]
 
 (* ****** ****** *)
@@ -119,8 +125,13 @@ val tok =
 (
 if
 (i1 < n0)
-then A0[i1] else A0[n0-1]
-) : token // end-of-[val]
+then
+(
+  a1ptr_get$at1(A0, i1))
+else
+(
+  a1ptr_get$at1(A0, n0-1))
+) : token // end-[val(tok)]
 }
 end where
 {
