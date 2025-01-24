@@ -257,18 +257,22 @@ prerrsln("fixty_assoc: fxt = ", fxt)
 //
 (* ****** ****** *)
 //
-#implfun
+#impltmp
+< a:t0 >
 fxopr_prcdv(itm) =
 let
 val-
-FXITMopr(_, fxt) = itm in fixty_prcdv(fxt)
+FXITMopr
+(_, fxty) = itm in fixty_prcdv(fxty)
 end (*let*) // end of [ fxopr_prcdv(itm) ]
 //
-#implfun
+#impltmp
+< a:t0 >
 fxopr_assoc(itm) =
 let
 val-
-FXITMopr(_, fxt) = itm in fixty_assoc(fxt)
+FXITMopr
+(_, fxty) = itm in fixty_assoc(fxty)
 end (*let*) // end of [ fxopr_assoc(itm) ]
 //
 (* ****** ****** *)
