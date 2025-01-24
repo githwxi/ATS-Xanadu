@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,24 +37,33 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+TMP = "./xstamp0.sats"
+//
+#staload
+SYM = "./xsymbol.sats"
+//
+#staload
+FP0 = "./filpath.sats"
+//
+#staload
+MAP = "./xsymmap.sats"
+//
+#staload
+FIX = "./xfixity.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload
-TMP = "./xstamp0.sats"
-(* ****** ****** *)
-#staload
-SYM = "./xsymbol.sats"
-(* ****** ****** *)
-#staload
-FP0 = "./filpath.sats"
-(* ****** ****** *)
-#staload
-MAP = "./xsymmap.sats"
 (* ****** ****** *)
 #typedef sym_t = $SYM.sym_t
 #typedef fpath = $FP0.fpath
@@ -66,9 +76,6 @@ tmpmap(a:t0)= $TMP.tmpmap(a)
 #typedef
 topmap(a:t0)= $MAP.topmap(a)
 (* ****** ****** *)
-//
-#staload
-FIX = "./xfixity.sats"
 //
 #typedef fixty = $FIX.fixty
 //

@@ -43,6 +43,7 @@ LOC = "./locinfo.sats"
 #include
 "./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"

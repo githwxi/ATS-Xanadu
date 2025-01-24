@@ -91,6 +91,10 @@ lexing0_sats
 lexing0_sats: ; $(XATSOPT) --static SATS/lexing0.sats
 ######
 all_sats:: \
+xfixity_sats
+xfixity_sats: ; $(XATSOPT) --static SATS/xfixity.sats
+######
+all_sats:: \
 staexp0_sats
 staexp0_sats: ; $(XATSOPT) --static SATS/staexp0.sats
 ######
@@ -125,10 +129,6 @@ xsymmap_sats: ; $(XATSOPT) --static SATS/xsymmap.sats
 all_sats:: \
 xsymenv_sats
 xsymenv_sats: ; $(XATSOPT) --static SATS/xsymenv.sats
-######
-all_sats:: \
-xfixity_sats
-xfixity_sats: ; $(XATSOPT) --static SATS/xfixity.sats
 ######
 all_sats:: \
 trans01_sats
@@ -403,6 +403,12 @@ lexing0_utils2_dats: ; $(XATSOPT) --dynamic DATS/lexing0_utils2.dats
 
 ######
 all_dats:: \
+xfixity_dats
+xfixity_dats: ; $(XATSOPT) --dynamic DATS/xfixity.dats
+######
+
+######
+all_dats:: \
 staexp0_dats
 staexp0_dats: ; $(XATSOPT) --dynamic DATS/staexp0.dats
 ######
@@ -471,12 +477,6 @@ preadx0_decl00_dats: ; $(XATSOPT) --dynamic DATS/preadx0_decl00.dats
 all_dats:: \
 preadx0_errmsg_dats
 preadx0_errmsg_dats: ; $(XATSOPT) --dynamic DATS/preadx0_errmsg.dats
-######
-
-######
-all_dats:: \
-xfixity_dats
-xfixity_dats: ; $(XATSOPT) --dynamic DATS/xfixity.dats
 ######
 
 ######
