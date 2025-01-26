@@ -2390,14 +2390,23 @@ end (*let*) // end-of-then(ASSGN)
 //
 else 
 let
+//
 val
 d2f0 = trans12_d1exp(env0, d1f0)
 val
 d2e1 = trans12_d1exp(env0, d1e1)
 val
 d2e2 = trans12_d1exp(env0, d1e2)
+//
 in//let
-d2exp_a2pp(loc0, d2f0, d2e1, d2e2)
+//
+(
+my_d2exp_dapp
+(loc0, d2f0, npf1, d2es) ) where
+{
+val npf1 = (-1)
+val d2es = list_pair(d2e1, d2e2) }
+//
 end (*let*) // end-of-else(~ASSGN)
 //
 end where
@@ -2409,11 +2418,9 @@ ASSGNq
 (
 case+
 d1e.node() of
-|
-D1Eid0(sym) =>
+| D1Eid0(sym) =>
 ( sym = ASSGN_symbl )
-|
-_ (* non-D1Eid0 *) => false)
+| _(*non-D1Eid0*) => false)//endof(fun)
 //
 } (*where*) // end of [f0_a2pp(env0,d1e0)]
 
