@@ -244,7 +244,7 @@ my_d2pat_sapp
 , d2f0: d2pat
 , s2vs: s2varlst): d2pat =
 (
-case-
+case+
 d2f0.node() of
 |
 D2Pdap0(d2f0) =>
@@ -255,7 +255,7 @@ d2pat_sapp(loc0, d2f0, s2vs))
 _ (* non-D2Pdap0 *) =>
 (
 d2pat_sapp(loc0, d2f0, s2vs))
-) (*case-*) // end of [my_d2pat_sapp]
+) (*case+*) // end of [my_d2pat_sapp]
 //
 (* ****** ****** *)
 //
@@ -366,7 +366,7 @@ my_d2exp_sapp
 , d2f0: d2exp
 , s2es: s2explst): d2exp =
 (
-case-
+case+
 d2f0.node() of
 |
 D2Edap0(d2f0) =>
@@ -377,7 +377,7 @@ d2exp_sapp(loc0, d2f0, s2es)
 |
 _(* non-D2Edap0 *) =>
 d2exp_sapp(loc0, d2f0, s2es)
-) (*case-*) // end-of-[my_d2exp_sapp]
+) (*case+*) // end-of-[my_d2exp_sapp]
 //
 (* ****** ****** *)
 //
@@ -387,7 +387,7 @@ my_d2exp_tapp
 , d2f0: d2exp
 , s2es: s2explst): d2exp =
 (
-case-
+case+
 d2f0.node() of
 |
 D2Edap0(d2f0) =>
@@ -398,7 +398,7 @@ d2exp_tapp(loc0, d2f0, s2es)
 |
 _ (* non-D2Edap0 *) =>
 d2exp_tapp(loc0, d2f0, s2es)
-) (*case-*) // end-of-[my_d2exp_tapp]
+) (*case+*) // end-of-[my_d2exp_tapp]
 //
 (* ****** ****** *)
 //
@@ -1137,15 +1137,39 @@ D1Pa2pp
 ( d1f0
 , d1p1, d1p2) = d1p0.node()
 //
+(*
+val () =
+(
+prerrsln("\
+trans12_d1pat:\
+f0_a2pp: d1f0 = ", d1f0))//val()
+*)
+//
 val
 d2f0 = trans12_d1pat(env0, d1f0)
+//
+(*
+val () =
+(
+prerrsln("\
+trans12_d1pat:\
+f0_a2pp: d2f0 = ", d2f0))//val()
+*)
+//
 val
 d2p1 = trans12_d1pat(env0, d1p1)
 val
 d2p2 = trans12_d1pat(env0, d1p2)
 //
 in//let
-d2pat_a2pp(loc0, d2f0, d2p1, d2p2)
+//
+let
+val npf1 = (-1)
+val d2ps = list_pair(d2p1, d2p2)
+in//let
+my_d2pat_dapp(loc0, d2f0, npf1, d2ps)
+end//let
+//
 end (*let*) // end of [f0_a2pp(env0,d1p0)]
 //
 (* ****** ****** *)
