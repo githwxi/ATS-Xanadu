@@ -266,20 +266,14 @@ case-
 tok.node() of
 |
 T_STRN1_clsd(rep, len) =>
-strn_tabulate(len-2) where
-{
-#impltmp
-tabulate$fopr
-  <cgtz>(i) = strn_get$at(rep, i+1)
-}
+strn_tabulate$f1un
+( len-2
+, lam(i) => strn_get$at(rep, i+1))
 |
 T_STRN2_ncls(rep, len) =>
-strn_tabulate(len-1) where
-{
-#impltmp
-tabulate$fopr
-  <cgtz>(i) = strn_get$at(rep, i+1)
-}
+strn_tabulate$f1un
+( len-1
+, lam(i) => strn_get$at(rep, i+1))
 )(*case-*)//end-of-[token2sstr(tok)]
 
 #implfun

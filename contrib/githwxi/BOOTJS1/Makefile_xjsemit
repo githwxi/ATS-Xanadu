@@ -125,6 +125,12 @@ gmacro1_sats: \
 $(SRCGEN2)/SATS/gmacro1.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
+boot_sats:: \
+trans01_sats
+trans01_sats: \
+$(SRCGEN2)/SATS/trans01.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
 ########################################################################
 boot_dats:: \
 xbasics_dats
@@ -431,6 +437,37 @@ gmacro1_print0_dats: \
 $(SRCGEN2)/DATS/gmacro1_print0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
+boot_dats:: \
+trans01_dats
+trans01_dats: \
+$(SRCGEN2)/DATS/trans01.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans01_myenv0_dats
+trans01_myenv0_dats: \
+$(SRCGEN2)/DATS/trans01_myenv0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans01_utils0_dats
+trans01_utils0_dats: \
+$(SRCGEN2)/DATS/trans01_utils0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans01_staexp_dats
+trans01_staexp_dats: \
+$(SRCGEN2)/DATS/trans01_staexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans01_dynexp_dats
+trans01_dynexp_dats: \
+$(SRCGEN2)/DATS/trans01_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans01_decl00_dats
+trans01_decl00_dats: \
+$(SRCGEN2)/DATS/trans01_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -491,6 +528,12 @@ cleanall:: ; rm -f BUILD/dynexp1_dats_out.js
 cleanall:: ; rm -f BUILD/dynexp1_print0_dats_out.js
 cleanall:: ; rm -f BUILD/gmacro1_dats_out.js
 cleanall:: ; rm -f BUILD/gmacro1_print0_dats_out.js
+cleanall:: ; rm -f BUILD/trans01_dats_out.js
+cleanall:: ; rm -f BUILD/trans01_myenv0_dats_out.js
+cleanall:: ; rm -f BUILD/trans01_utils0_dats_out.js
+cleanall:: ; rm -f BUILD/trans01_staexp_dats_out.js
+cleanall:: ; rm -f BUILD/trans01_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/trans01_decl00_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime

@@ -66,7 +66,9 @@ _(*TRANS01*) = "./trans01.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
+(*
 #sexpdef fxitm = fxitm
+*)
 (* ****** ****** *)
 #typedef i0dnt = i0dnt
 #typedef g1efx = fxitm(g1exp)
@@ -677,13 +679,16 @@ G0Eift0 _ => f0_ift0(tenv, g0e0)
 G0Eapps _ => f0_apps(tenv, g0e0)
 //
 |
-G0Elist _ => f0_lpar(tenv, g0e0)
+G0Elpar _ => f0_lpar(tenv, g0e0)
 //
 |
-G0Enone1 _ =>
-FXITMatm
-(
-g1exp(g0e0.lctn(),G1Enone1(g0e0)))
+_(*otherwise*) =>
+let
+val loc0 = g0e0.lctn()
+in//let
+( FXITMatm
+  (g1exp(loc0, G1Enone1(g0e0))))
+end//let
 ) where
 {
 //

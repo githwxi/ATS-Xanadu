@@ -68,7 +68,9 @@ _(*TRANS01*) = "./trans01.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
+(*
 #sexpdef fxitm = fxitm
+*)
 (* ****** ****** *)
 #typedef d1pfx = fxitm(d1pat)
 #typedef d1efx = fxitm(d1exp)
