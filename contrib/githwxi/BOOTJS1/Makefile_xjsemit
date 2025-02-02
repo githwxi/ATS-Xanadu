@@ -119,6 +119,12 @@ dynexp1_sats: \
 $(SRCGEN2)/SATS/dynexp1.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
+boot_sats:: \
+gmacro1_sats
+gmacro1_sats: \
+$(SRCGEN2)/SATS/gmacro1.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
 ########################################################################
 boot_dats:: \
 xbasics_dats
@@ -414,6 +420,17 @@ dynexp1_print0_dats: \
 $(SRCGEN2)/DATS/dynexp1_print0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
+boot_dats:: \
+gmacro1_dats
+gmacro1_dats: \
+$(SRCGEN2)/DATS/gmacro1.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+gmacro1_print0_dats
+gmacro1_print0_dats: \
+$(SRCGEN2)/DATS/gmacro1_print0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -472,6 +489,8 @@ cleanall:: ; rm -f BUILD/staexp1_dats_out.js
 cleanall:: ; rm -f BUILD/staexp1_print0_dats_out.js
 cleanall:: ; rm -f BUILD/dynexp1_dats_out.js
 cleanall:: ; rm -f BUILD/dynexp1_print0_dats_out.js
+cleanall:: ; rm -f BUILD/gmacro1_dats_out.js
+cleanall:: ; rm -f BUILD/gmacro1_print0_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
