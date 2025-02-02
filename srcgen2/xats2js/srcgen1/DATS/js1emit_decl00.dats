@@ -131,14 +131,12 @@ dimp.node() of
 (dcst, svts) =>
 (
   d2cstjs1(filr, dcst))
-|DIMPLall1
-(dqid, d2cs) =>
+//
+|DIMPLnon1
+(  dqid  ) =>
 (
   d1qid_fprint(filr, dqid))
-|DIMPLopt2
-(dqid, _, _) =>
-(
-  d1qid_fprint(filr, dqid)))
+)(*case+*)//end-of-(dicstjs1)
 //
 (* ****** ****** *)
 //

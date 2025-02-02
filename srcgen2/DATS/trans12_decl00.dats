@@ -2882,23 +2882,15 @@ f1_dqid
 , dqid: d1qid): dimpl =
 (
 if
-(*
-HX-2025-02-02:
-Too restrictive:
-list_singq(d2cs)
-*)
-list_consq(d2cs)
+list_nilq(d2cs)
 then
-let
-val
-d2c1 = d2cs.head()
-in
-dimpl
-(loc0, DIMPLone1(d2c1))
-end
+dimpl(loc0, DIMPLnon1(dqid))
 else
-dimpl // d2cs = list_nil()
-(loc0, DIMPLall1(dqid, d2cs))
+let
+val d2c1 = d2cs.head()
+in
+dimpl(loc0, DIMPLone1(d2c1))
+end
 ) where
 {
 //
@@ -3025,22 +3017,20 @@ val tqas =
 case-
 dimp.node() of
 //
+|DIMPLnon1
+(  dqid  ) =>
+(
+trans12_t1qaglst
+(  env0, tqas  ))//DIMPnon1
+//
 |DIMPLone1
-(   d2c1   ) =>
+(  d2c1  ) =>
 (
 trans12_t1qaglst_wth
 ( env0, tqas, t2qs )) where
 {
 val
 t2qs = d2cst_get_tqas(d2c1)}
-//
-(*
-HX-2024-01-07:
-Should this be disallowed?
-*)
-|DIMPLall1
-(dqid, d2cs) =>
-trans12_t1qaglst(env0, tqas)
 //
 ) : t2qaglst//end(val(tqas))
 //
