@@ -111,21 +111,18 @@ dimpl_tempq
 (
 case+
 dimp.node() of
-|
-DIMPLone1
+//
+|DIMPLnon1
+(  dqid  ) => (false)
+//
+|DIMPLone1
 (  d2c1  ) => d2cst_tempq(d2c1)
-|
-DIMPLone2
+//
+|DIMPLone2
 (
 d2c1,svts) => d2cst_tempq(d2c1)
-| 
-DIMPLall1
-(
-dqid,d2cs) => d2cstlst_tempq(d2cs)
-|
-DIMPLopt2
-(_,d2cs,_) => d2cstlst_tempq(d2cs)
-)
+//
+)(*case+*)//end-of-[dimpl_tempq]
 //
 (* ****** ****** *)
 //

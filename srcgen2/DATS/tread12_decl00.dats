@@ -1338,21 +1338,13 @@ tread12_dimpl
 (
 case+
 dimp.node() of
-|
-DIMPLone1 _ => dimp
 //
-|
-DIMPLall1
-(dqid, d2cs) => dimp where
-{
-val () =
-(
-case+ d2cs of
-|list_nil() =>
-(err := err+1) | list_cons _ => ())
-}
+|DIMPLone1 _ => dimp
+|DIMPLone2 _ => dimp
 //
-|DIMPLopt2(dqid, d2cs, dopt) => dimp
+|DIMPLnon1 _ => dimp
+where{
+  val () = (err := err+1) }
 //
 ) where
 {

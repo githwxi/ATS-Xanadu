@@ -106,7 +106,7 @@ fun
 g1env_addlst
 ( genv: g1env
 , gids: g1ids
-, g1ms: g1maclst) =
+, g1ms: g1maclst): g1env =
 (
 case+ gids of
 |

@@ -365,16 +365,16 @@ in//let
 //
 case+
 dimp.node() of
+//
+|DIMPnon1 _ => ( (*nothing*) )
+//
 |DIMPLone1
 (  d2c1  ) =>
-(
-tr3aenv_d2cins$any(env0, d2c1, d3cl) )
+tr3aenv_d2cins$any(env0, d2c1, d3cl)
 |DIMPLone2
 (d2c1, svts) =>
 (
 tr3aenv_d2cins$any(env0, d2c1, d3cl) )
-| // HX: DIMPLall1/DIMPLopt2
-_ (* otherwise *) => ( (* nothing *) )
 //
 end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
 //

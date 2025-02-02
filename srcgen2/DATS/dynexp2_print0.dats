@@ -1165,29 +1165,20 @@ let
 #implfun
 g_print$out<>() = out
 in//let
+//
 case+
 dimp.node() of
-//
-|
-DIMPLone1
-(  d2c1  ) =>
-prints("DIMPLone1(",d2c1,")")
+|DIMPLnon1(dqid) =>
+(
+  prints("DIMPLnon1(",dqid,")"))
+|DIMPLone1(d2c1) =>
+(
+  prints("DIMPLone1(",d2c1,")"))
 |
 DIMPLone2
 (d2c1, svts) =>
-prints
-("DIMPLone2(",d2c1,";",svts,")")
-//
-|
-DIMPLall1
-(dqid, d2cs) =>
-prints
-("DIMPLall1(",dqid,";",d2cs,")")
-|
-DIMPLopt2
-(dqid,dcs1,dcs2) =>
-prints
-("DIMPLopt2(",dqid,";",dcs1,";",dcs2,")")
+( prints
+  ("DIMPLone2(",d2c1,";",svts,")"))
 //
 end (*let*) // end of [dimpl_fprint(...)]
 //

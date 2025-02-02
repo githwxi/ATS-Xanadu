@@ -154,6 +154,18 @@ dynexp2_sats: \
 $(SRCGEN2)/SATS/dynexp2.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
+boot_sats:: \
+nmspace_sats
+nmspace_sats: \
+$(SRCGEN2)/SATS/nmspace.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+boot_sats:: \
+trans12_sats
+trans12_sats: \
+$(SRCGEN2)/SATS/trans12.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
 ########################################################################
 boot_dats:: \
 xbasics_dats
@@ -583,6 +595,43 @@ dynexp2_print0_dats
 dynexp2_print0_dats: \
 $(SRCGEN2)/DATS/dynexp2_print0.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+dynexp2_utils0_dats
+dynexp2_utils0_dats: \
+$(SRCGEN2)/DATS/dynexp2_utils0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+boot_dats:: \
+nmspace_dats
+nmspace_dats: \
+$(SRCGEN2)/DATS/nmspace.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans11_myenv0_dats
+trans11_myenv0_dats: \
+$(SRCGEN2)/DATS/trans11_myenv0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans12_myenv0_dats
+trans12_myenv0_dats: \
+$(SRCGEN2)/DATS/trans12_myenv0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans11_gmacro_dats
+trans11_gmacro_dats: \
+$(SRCGEN2)/DATS/trans11_gmacro.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans12_gmacro_dats
+trans12_gmacro_dats: \
+$(SRCGEN2)/DATS/trans12_gmacro.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+boot_dats:: \
+trans12_dats
+trans12_dats: \
+$(SRCGEN2)/DATS/trans12.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -668,6 +717,13 @@ cleanall:: ; rm -f BUILD/statyp2_utils2_dats_out.js
 cleanall:: ; rm -f BUILD/statyp2_tmplib_dats_out.js
 cleanall:: ; rm -f BUILD/dynexp2_dats_out.js
 cleanall:: ; rm -f BUILD/dynexp2_print0_dats_out.js
+cleanall:: ; rm -f BUILD/dynexp2_utils0_dats_out.js
+cleanall:: ; rm -f BUILD/nmspace_dats_out.js
+cleanall:: ; rm -f BUILD/trans12_dats_out.js
+cleanall:: ; rm -f BUILD/trans11_myenv0_dats_out.js
+cleanall:: ; rm -f BUILD/trans12_myenv0_dats_out.js
+cleanall:: ; rm -f BUILD/trans11_gmacro_dats_out.js
+cleanall:: ; rm -f BUILD/trans12_gmacro_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime

@@ -190,7 +190,9 @@ dimpl_make_node
 (loc1, DIMPLone2(d2c0, svts))
 //
 end//let
+//
 | _(* otherwise *) => ( dimp )
+//
 )
 //
 (*
