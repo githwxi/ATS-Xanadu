@@ -107,6 +107,18 @@ preadx0_sats: \
 $(SRCGEN2)/SATS/preadx0.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
+boot_sats:: \
+staexp1_sats
+staexp1_sats: \
+$(SRCGEN2)/SATS/staexp1.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+boot_sats:: \
+dynexp1_sats
+dynexp1_sats: \
+$(SRCGEN2)/SATS/dynexp1.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
 ########################################################################
 boot_dats:: \
 xbasics_dats
@@ -380,6 +392,28 @@ preadx0_errmsg_dats: \
 $(SRCGEN2)/DATS/preadx0_errmsg.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
+boot_dats:: \
+staexp1_dats
+staexp1_dats: \
+$(SRCGEN2)/DATS/staexp1.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+staexp1_print0_dats
+staexp1_print0_dats: \
+$(SRCGEN2)/DATS/staexp1_print0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+boot_dats:: \
+dynexp1_dats
+dynexp1_dats: \
+$(SRCGEN2)/DATS/dynexp1.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+dynexp1_print0_dats
+dynexp1_print0_dats: \
+$(SRCGEN2)/DATS/dynexp1_print0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -434,6 +468,10 @@ cleanall:: ; rm -f BUILD/preadx0_staexp_dats_out.js
 cleanall:: ; rm -f BUILD/preadx0_dynexp_dats_out.js
 cleanall:: ; rm -f BUILD/preadx0_decl00_dats_out.js
 cleanall:: ; rm -f BUILD/preadx0_errmsg_dats_out.js
+cleanall:: ; rm -f BUILD/staexp1_dats_out.js
+cleanall:: ; rm -f BUILD/staexp1_print0_dats_out.js
+cleanall:: ; rm -f BUILD/dynexp1_dats_out.js
+cleanall:: ; rm -f BUILD/dynexp1_print0_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
