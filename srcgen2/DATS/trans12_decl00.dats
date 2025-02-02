@@ -2882,17 +2882,22 @@ f1_dqid
 , dqid: d1qid): dimpl =
 (
 if
+(*
+HX-2025-02-02:
+Too restrictive:
 list_singq(d2cs)
+*)
+list_consq(d2cs)
 then
 let
 val
 d2c1 = d2cs.head()
 in
 dimpl
-(loc0,DIMPLone1(d2c1))
+(loc0, DIMPLone1(d2c1))
 end
 else
-dimpl
+dimpl // d2cs = list_nil()
 (loc0, DIMPLall1(dqid, d2cs))
 ) where
 {

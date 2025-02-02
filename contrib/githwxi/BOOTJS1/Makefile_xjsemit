@@ -142,6 +142,11 @@ staexp2_sats
 staexp2_sats: \
 $(SRCGEN2)/SATS/staexp2.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+boot_sats:: \
+statyp2_sats
+statyp2_sats: \
+$(SRCGEN2)/SATS/statyp2.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
 boot_sats:: \
 dynexp2_sats
@@ -518,9 +523,54 @@ staexp2_dats: \
 $(SRCGEN2)/DATS/staexp2.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 boot_dats:: \
+statyp2_dats
+statyp2_dats: \
+$(SRCGEN2)/DATS/statyp2.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
 staexp2_print0_dats
 staexp2_print0_dats: \
 $(SRCGEN2)/DATS/staexp2_print0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+statyp2_print0_dats
+statyp2_print0_dats: \
+$(SRCGEN2)/DATS/statyp2_print0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+staexp2_inits0_dats
+staexp2_inits0_dats: \
+$(SRCGEN2)/DATS/staexp2_inits0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+statyp2_inits0_dats
+statyp2_inits0_dats: \
+$(SRCGEN2)/DATS/statyp2_inits0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+staexp2_utils1_dats
+staexp2_utils1_dats: \
+$(SRCGEN2)/DATS/staexp2_utils1.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+staexp2_utils2_dats
+staexp2_utils2_dats: \
+$(SRCGEN2)/DATS/staexp2_utils2.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+statyp2_utils1_dats
+statyp2_utils1_dats: \
+$(SRCGEN2)/DATS/statyp2_utils1.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+statyp2_utils2_dats
+statyp2_utils2_dats: \
+$(SRCGEN2)/DATS/statyp2_utils2.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+statyp2_tmplib_dats
+statyp2_tmplib_dats: \
+$(SRCGEN2)/DATS/statyp2_tmplib.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
 boot_dats:: \
@@ -606,7 +656,16 @@ cleanall:: ; rm -f BUILD/tread01_dynexp_dats_out.js
 cleanall:: ; rm -f BUILD/tread01_decl00_dats_out.js
 cleanall:: ; rm -f BUILD/tread01_errmsg_dats_out.js
 cleanall:: ; rm -f BUILD/staexp2_dats_out.js
+cleanall:: ; rm -f BUILD/statyp2_dats_out.js
 cleanall:: ; rm -f BUILD/staexp2_print0_dats_out.js
+cleanall:: ; rm -f BUILD/statyp2_print0_dats_out.js
+cleanall:: ; rm -f BUILD/staexp2_inits0_dats_out.js
+cleanall:: ; rm -f BUILD/statyp2_inits0_dats_out.js
+cleanall:: ; rm -f BUILD/staexp2_utils1_dats_out.js
+cleanall:: ; rm -f BUILD/statyp2_utils1_dats_out.js
+cleanall:: ; rm -f BUILD/staexp2_utils2_dats_out.js
+cleanall:: ; rm -f BUILD/statyp2_utils2_dats_out.js
+cleanall:: ; rm -f BUILD/statyp2_tmplib_dats_out.js
 cleanall:: ; rm -f BUILD/dynexp2_dats_out.js
 cleanall:: ; rm -f BUILD/dynexp2_print0_dats_out.js
 ########################################################################
