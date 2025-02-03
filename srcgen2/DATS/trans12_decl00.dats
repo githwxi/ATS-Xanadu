@@ -144,6 +144,7 @@ _(*TRANS12*) = "./trans12.dats"
 #symload node with d1ecl_get_node
 (* ****** ****** *)
 #symload lctn with s2cst_get_lctn
+#symload sort with s2cst_get_sort
 (* ****** ****** *)
 #symload name with s2var_get_name
 (* ****** ****** *)
@@ -1683,10 +1684,11 @@ if
 list_singq(s2cs)
 then // HX: sort-checking
 let
-  val
-  s2c1 = s2cs.head((*nil*))
-in
-  f2_svss(svss, s2c1.sort())
+val
+s2c1 = s2cs.head((*void*))
+in//let
+(
+f2_svss(svss, s2c1.sort()))
 end // then // end-of-[ if ]
 end (*let*) // end of [val()]
 //
@@ -3469,7 +3471,7 @@ trans12_d1tcnlst
 (env0, tcns, s2c0, svss)
 //
 val (  ) =
-gseq_iforitm(d2cs) where
+list_iforitm(d2cs) where
 {
 #impltmp
 iforitm$work
