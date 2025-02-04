@@ -208,6 +208,18 @@ trans23_sats: \
 $(SRCGEN2)/SATS/trans23.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
+boot_sats:: \
+tread23_sats
+tread23_sats: \
+$(SRCGEN2)/SATS/tread23.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+boot_sats:: \
+trans3a_sats
+trans3a_sats: \
+$(SRCGEN2)/SATS/trans3a.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
 ########################################################################
 boot_dats:: \
 xbasics_dats
@@ -837,6 +849,53 @@ trans23_decl00_dats: \
 $(SRCGEN2)/DATS/trans23_decl00.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
+boot_dats:: \
+tread23_dats
+tread23_dats: \
+$(SRCGEN2)/DATS/tread23.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+tread23_dynexp_dats
+tread23_dynexp_dats: \
+$(SRCGEN2)/DATS/tread23_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+tread23_decl00_dats
+tread23_decl00_dats: \
+$(SRCGEN2)/DATS/tread23_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+tread23_errmsg_dats
+tread23_errmsg_dats: \
+$(SRCGEN2)/DATS/tread23_errmsg.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+boot_dats:: \
+trans3a_dats
+trans3a_dats: \
+$(SRCGEN2)/DATS/trans3a.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans3a_myenv0_dats
+trans3a_myenv0_dats: \
+$(SRCGEN2)/DATS/trans3a_myenv0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans3a_staexp_dats
+trans3a_staexp_dats: \
+$(SRCGEN2)/DATS/trans3a_staexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans3a_dynexp_dats
+trans3a_dynexp_dats: \
+$(SRCGEN2)/DATS/trans3a_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans3a_decl00_dats
+trans3a_decl00_dats: \
+$(SRCGEN2)/DATS/trans3a_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -990,6 +1049,17 @@ cleanall:: ; rm -f BUILD/trans23_myenv0_dats_out.js
 cleanall:: ; rm -f BUILD/trans23_utils0_dats_out.js
 cleanall:: ; rm -f BUILD/trans23_dynexp_dats_out.js
 cleanall:: ; rm -f BUILD/trans23_decl00_dats_out.js
+########################################################################
+cleanall:: ; rm -f BUILD/tread23_dats_out.js
+cleanall:: ; rm -f BUILD/tread23_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/tread23_decl00_dats_out.js
+cleanall:: ; rm -f BUILD/tread23_errmsg_dats_out.js
+########################################################################
+cleanall:: ; rm -f BUILD/trans3a_dats_out.js
+cleanall:: ; rm -f BUILD/trans3a_myenv0_dats_out.js
+cleanall:: ; rm -f BUILD/trans3a_staexp_dats_out.js
+cleanall:: ; rm -f BUILD/trans3a_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/trans3a_decl00_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
