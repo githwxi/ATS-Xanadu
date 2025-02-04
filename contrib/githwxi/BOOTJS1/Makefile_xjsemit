@@ -166,6 +166,42 @@ trans12_sats: \
 $(SRCGEN2)/SATS/trans12.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
+boot_sats:: \
+tread12_sats
+tread12_sats: \
+$(SRCGEN2)/SATS/tread12.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+boot_sats:: \
+trans2a_sats
+trans2a_sats: \
+$(SRCGEN2)/SATS/trans2a.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+boot_sats:: \
+trsym2b_sats
+trsym2b_sats: \
+$(SRCGEN2)/SATS/trsym2b.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+boot_sats:: \
+tread20_sats
+tread20_sats: \
+$(SRCGEN2)/SATS/tread20.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+boot_sats:: \
+fperr20_sats
+fperr20_sats: \
+$(SRCGEN2)/SATS/fperr20.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+boot_sats:: \
+dynexp3_sats
+dynexp3_sats: \
+$(SRCGEN2)/SATS/dynexp3.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
 ########################################################################
 boot_dats:: \
 xbasics_dats
@@ -648,36 +684,168 @@ trans12_decl00_dats: \
 $(SRCGEN2)/DATS/trans12_decl00.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
+boot_dats:: \
+tread12_dats
+tread12_dats: \
+$(SRCGEN2)/DATS/tread12.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+tread12_staexp_dats
+tread12_staexp_dats: \
+$(SRCGEN2)/DATS/tread12_staexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+tread12_dynexp_dats
+tread12_dynexp_dats: \
+$(SRCGEN2)/DATS/tread12_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+tread12_decl00_dats
+tread12_decl00_dats: \
+$(SRCGEN2)/DATS/tread12_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+tread12_errmsg_dats
+tread12_errmsg_dats: \
+$(SRCGEN2)/DATS/tread12_errmsg.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+boot_dats:: \
+trans2a_dats
+trans2a_dats: \
+$(SRCGEN2)/DATS/trans2a.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans2a_myenv0_dats
+trans2a_myenv0_dats: \
+$(SRCGEN2)/DATS/trans2a_myenv0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans2a_utils0_dats
+trans2a_utils0_dats: \
+$(SRCGEN2)/DATS/trans2a_utils0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans2a_dynexp_dats
+trans2a_dynexp_dats: \
+$(SRCGEN2)/DATS/trans2a_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trans2a_decl00_dats
+trans2a_decl00_dats: \
+$(SRCGEN2)/DATS/trans2a_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+boot_dats:: \
+trsym2b_dats
+trsym2b_dats: \
+$(SRCGEN2)/DATS/trsym2b.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trsym2b_utils0_dats
+trsym2b_utils0_dats: \
+$(SRCGEN2)/DATS/trsym2b_utils0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trsym2b_dynexp_dats
+trsym2b_dynexp_dats: \
+$(SRCGEN2)/DATS/trsym2b_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trsym2b_decl00_dats
+trsym2b_decl00_dats: \
+$(SRCGEN2)/DATS/trsym2b_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+boot_dats:: \
+tread20_dats
+tread20_dats: \
+$(SRCGEN2)/DATS/tread20.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+tread20_dynexp_dats
+tread20_dynexp_dats: \
+$(SRCGEN2)/DATS/tread20_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+tread20_decl00_dats
+tread20_decl00_dats: \
+$(SRCGEN2)/DATS/tread20_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+boot_dats:: \
+fperr20_dats
+fperr20_dats: \
+$(SRCGEN2)/DATS/fperr20.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+fperr20_dynexp_dats
+fperr20_dynexp_dats: \
+$(SRCGEN2)/DATS/fperr20_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+fperr20_decl00_dats
+fperr20_decl00_dats: \
+$(SRCGEN2)/DATS/fperr20_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+boot_dats:: \
+dynexp3_dats
+dynexp3_dats: \
+$(SRCGEN2)/DATS/dynexp3.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+dynexp3_print0_dats
+dynexp3_print0_dats: \
+$(SRCGEN2)/DATS/dynexp3_print0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+dynexp3_utils0_dats
+dynexp3_utils0_dats: \
+$(SRCGEN2)/DATS/dynexp3_utils0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
+########################################################################
 cleanall:: ; rm -f BUILD/xbasics_dats_out.js
 cleanall:: ; rm -f BUILD/xbasics_print0_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/xsynoug_dats_out.js
 cleanall:: ; rm -f BUILD/xerrory_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/xstamp0_dats_out.js
 cleanall:: ; rm -f BUILD/xstamp0_print0_dats_out.js
 cleanall:: ; rm -f BUILD/xstamp0_tmpmap_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/xsymbol_dats_out.js
 cleanall:: ; rm -f BUILD/xsymbol_print0_dats_out.js
 cleanall:: ; rm -f BUILD/xsymbol_mymap0_dats_out.js
 cleanall:: ; rm -f BUILD/xsymbol_inits0_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/xlabel0_dats_out.js
 cleanall:: ; rm -f BUILD/xlabel0_print0_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/xglobal_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/filpath_dats_out.js
 cleanall:: ; rm -f BUILD/filpath_print0_dats_out.js
 cleanall:: ; rm -f BUILD/filpath_drpth0_dats_out.js
 cleanall:: ; rm -f BUILD/filpath_fpath0_dats_out.js
 cleanall:: ; rm -f BUILD/filpath_search_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/locinfo_dats_out.js
 cleanall:: ; rm -f BUILD/locinfo_print0_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/xsymmap_dats_out.js
 cleanall:: ; rm -f BUILD/xsymmap_topmap_dats_out.js
 cleanall:: ; rm -f BUILD/xsymmap_stkmap_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/lexbuf0_dats_out.js
 cleanall:: ; rm -f BUILD/lexbuf0_cstrx1_dats_out.js
 cleanall:: ; rm -f BUILD/lexbuf0_cstrx2_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/lexing0_dats_out.js
 cleanall:: ; rm -f BUILD/lexing0_print0_dats_out.js
 cleanall:: ; rm -f BUILD/lexing0_token0_dats_out.js
@@ -685,11 +853,14 @@ cleanall:: ; rm -f BUILD/lexing0_kword0_dats_out.js
 cleanall:: ; rm -f BUILD/lexing0_mymap0_dats_out.js
 cleanall:: ; rm -f BUILD/lexing0_utils1_dats_out.js
 cleanall:: ; rm -f BUILD/lexing0_utils2_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/xfixity_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/staexp0_dats_out.js
 cleanall:: ; rm -f BUILD/staexp0_print0_dats_out.js
 cleanall:: ; rm -f BUILD/dynexp0_dats_out.js
 cleanall:: ; rm -f BUILD/dynexp0_print0_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/parsing_dats_out.js
 cleanall:: ; rm -f BUILD/parsing_basics_dats_out.js
 cleanall:: ; rm -f BUILD/parsing_tokbuf_dats_out.js
@@ -697,28 +868,35 @@ cleanall:: ; rm -f BUILD/parsing_utils0_dats_out.js
 cleanall:: ; rm -f BUILD/parsing_staexp_dats_out.js
 cleanall:: ; rm -f BUILD/parsing_dynexp_dats_out.js
 cleanall:: ; rm -f BUILD/parsing_decl00_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/preadx0_dats_out.js
 cleanall:: ; rm -f BUILD/preadx0_staexp_dats_out.js
 cleanall:: ; rm -f BUILD/preadx0_dynexp_dats_out.js
 cleanall:: ; rm -f BUILD/preadx0_decl00_dats_out.js
 cleanall:: ; rm -f BUILD/preadx0_errmsg_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/staexp1_dats_out.js
 cleanall:: ; rm -f BUILD/staexp1_print0_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/dynexp1_dats_out.js
 cleanall:: ; rm -f BUILD/dynexp1_print0_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/gmacro1_dats_out.js
 cleanall:: ; rm -f BUILD/gmacro1_print0_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/trans01_dats_out.js
 cleanall:: ; rm -f BUILD/trans01_myenv0_dats_out.js
 cleanall:: ; rm -f BUILD/trans01_utils0_dats_out.js
 cleanall:: ; rm -f BUILD/trans01_staexp_dats_out.js
 cleanall:: ; rm -f BUILD/trans01_dynexp_dats_out.js
 cleanall:: ; rm -f BUILD/trans01_decl00_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/tread01_dats_out.js
 cleanall:: ; rm -f BUILD/tread01_staexp_dats_out.js
 cleanall:: ; rm -f BUILD/tread01_dynexp_dats_out.js
 cleanall:: ; rm -f BUILD/tread01_decl00_dats_out.js
 cleanall:: ; rm -f BUILD/tread01_errmsg_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/staexp2_dats_out.js
 cleanall:: ; rm -f BUILD/statyp2_dats_out.js
 cleanall:: ; rm -f BUILD/staexp2_print0_dats_out.js
@@ -730,10 +908,13 @@ cleanall:: ; rm -f BUILD/statyp2_utils1_dats_out.js
 cleanall:: ; rm -f BUILD/staexp2_utils2_dats_out.js
 cleanall:: ; rm -f BUILD/statyp2_utils2_dats_out.js
 cleanall:: ; rm -f BUILD/statyp2_tmplib_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/dynexp2_dats_out.js
 cleanall:: ; rm -f BUILD/dynexp2_print0_dats_out.js
 cleanall:: ; rm -f BUILD/dynexp2_utils0_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/nmspace_dats_out.js
+########################################################################
 cleanall:: ; rm -f BUILD/trans12_dats_out.js
 cleanall:: ; rm -f BUILD/trans11_myenv0_dats_out.js
 cleanall:: ; rm -f BUILD/trans12_myenv0_dats_out.js
@@ -742,6 +923,34 @@ cleanall:: ; rm -f BUILD/trans12_gmacro_dats_out.js
 cleanall:: ; rm -f BUILD/trans12_staexp_dats_out.js
 cleanall:: ; rm -f BUILD/trans12_dynexp_dats_out.js
 cleanall:: ; rm -f BUILD/trans12_decl00_dats_out.js
+cleanall:: ; rm -f BUILD/tread12_dats_out.js
+cleanall:: ; rm -f BUILD/tread12_staexp_dats_out.js
+cleanall:: ; rm -f BUILD/tread12_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/tread12_decl00_dats_out.js
+cleanall:: ; rm -f BUILD/tread12_errmsg_dats_out.js
+########################################################################
+cleanall:: ; rm -f BUILD/trans2a_dats_out.js
+cleanall:: ; rm -f BUILD/trans2a_myenv0_dats_out.js
+cleanall:: ; rm -f BUILD/trans2a_utils0_dats_out.js
+cleanall:: ; rm -f BUILD/trans2a_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/trans2a_decl00_dats_out.js
+########################################################################
+cleanall:: ; rm -f BUILD/trsym2b_dats_out.js
+cleanall:: ; rm -f BUILD/trsym2b_utils0_dats_out.js
+cleanall:: ; rm -f BUILD/trsym2b_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/trsym2b_decl00_dats_out.js
+########################################################################
+cleanall:: ; rm -f BUILD/tread20_dats_out.js
+cleanall:: ; rm -f BUILD/tread20_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/tread20_decl00_dats_out.js
+########################################################################
+cleanall:: ; rm -f BUILD/fperr20_dats_out.js
+cleanall:: ; rm -f BUILD/fperr20_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/fperr20_decl00_dats_out.js
+########################################################################
+cleanall:: ; rm -f BUILD/dynexp3_dats_out.js
+cleanall:: ; rm -f BUILD/dynexp3_print0_dats_out.js
+cleanall:: ; rm -f BUILD/dynexp3_utils0_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime

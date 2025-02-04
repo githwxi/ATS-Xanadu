@@ -1016,14 +1016,19 @@ D2Cstaload
 , g1e1, fopt, dopt) =>
 (
 case+ dopt of
-|
-optn_nil() => ()
-|
-optn_cons@(shrd, dpar) =>
+//
+|S2TALOADnone
+(  (*void*)  ) => ()
+|S2TALOADfenv
+(  __fenv__  ) => ()
+//
+|S2TALOADdpar
+( shrd, dpar ) =>
 let
 val () =
   d2parsed_fpemsg(out, dpar)
-endlet
+endlet//end-of-[S2TALOADdpar]
+//
 ) (*case+*)//end-(D2Cstaload(...))
 //
 |
@@ -1193,7 +1198,8 @@ D2ARGdyn2
 simpl_fpemsg
   (out, simp) =
 (
-case+ simp of
+case+
+simp.node() of
 |SIMPLall1
 (sqid, s2cs) => ()
 |SIMPLopt2
