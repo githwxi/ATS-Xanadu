@@ -220,6 +220,24 @@ trans3a_sats: \
 $(SRCGEN2)/SATS/trans3a.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
+boot_sats:: \
+trtmp3b_sats
+trtmp3b_sats: \
+$(SRCGEN2)/SATS/trtmp3b.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+boot_sats:: \
+trtmp3c_sats
+trtmp3c_sats: \
+$(SRCGEN2)/SATS/trtmp3c.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
+boot_sats:: \
+tread30_sats
+tread30_sats: \
+$(SRCGEN2)/SATS/tread30.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
 ########################################################################
 boot_dats:: \
 xbasics_dats
@@ -896,6 +914,79 @@ trans3a_decl00_dats: \
 $(SRCGEN2)/DATS/trans3a_decl00.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
+boot_dats:: \
+trtmp3b_dats
+trtmp3b_dats: \
+$(SRCGEN2)/DATS/trtmp3b.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trtmp3b_myenv0_dats
+trtmp3b_myenv0_dats: \
+$(SRCGEN2)/DATS/trtmp3b_myenv0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trtmp3b_utils0_dats
+trtmp3b_utils0_dats: \
+$(SRCGEN2)/DATS/trtmp3b_utils0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trtmp3b_dynexp_dats
+trtmp3b_dynexp_dats: \
+$(SRCGEN2)/DATS/trtmp3b_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trtmp3b_decl00_dats
+trtmp3b_decl00_dats: \
+$(SRCGEN2)/DATS/trtmp3b_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+boot_dats:: \
+trtmp3c_dats
+trtmp3c_dats: \
+$(SRCGEN2)/DATS/trtmp3c.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trtmp3c_myenv0_dats
+trtmp3c_myenv0_dats: \
+$(SRCGEN2)/DATS/trtmp3c_myenv0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trtmp3c_utils0_dats
+trtmp3c_utils0_dats: \
+$(SRCGEN2)/DATS/trtmp3c_utils0.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trtmp3c_dynexp_dats
+trtmp3c_dynexp_dats: \
+$(SRCGEN2)/DATS/trtmp3c_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+trtmp3c_decl00_dats
+trtmp3c_decl00_dats: \
+$(SRCGEN2)/DATS/trtmp3c_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
+boot_dats:: \
+tread30_dats
+tread30_dats: \
+$(SRCGEN2)/DATS/tread30.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+tread30_staexp_dats
+tread30_staexp_dats: \
+$(SRCGEN2)/DATS/tread30_staexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+tread30_dynexp_dats
+tread30_dynexp_dats: \
+$(SRCGEN2)/DATS/tread30_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+tread30_decl00_dats
+tread30_decl00_dats: \
+$(SRCGEN2)/DATS/tread30_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -1060,6 +1151,23 @@ cleanall:: ; rm -f BUILD/trans3a_myenv0_dats_out.js
 cleanall:: ; rm -f BUILD/trans3a_staexp_dats_out.js
 cleanall:: ; rm -f BUILD/trans3a_dynexp_dats_out.js
 cleanall:: ; rm -f BUILD/trans3a_decl00_dats_out.js
+########################################################################
+cleanall:: ; rm -f BUILD/trtmp3b_dats_out.js
+cleanall:: ; rm -f BUILD/trtmp3b_myenv0_dats_out.js
+cleanall:: ; rm -f BUILD/trtmp3b_utils0_dats_out.js
+cleanall:: ; rm -f BUILD/trtmp3b_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/trtmp3b_decl00_dats_out.js
+########################################################################
+cleanall:: ; rm -f BUILD/trtmp3c_dats_out.js
+cleanall:: ; rm -f BUILD/trtmp3c_myenv0_dats_out.js
+cleanall:: ; rm -f BUILD/trtmp3c_utils0_dats_out.js
+cleanall:: ; rm -f BUILD/trtmp3c_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/trtmp3c_decl00_dats_out.js
+########################################################################
+cleanall:: ; rm -f BUILD/tread30_dats_out.js
+cleanall:: ; rm -f BUILD/tread30_staexp_dats_out.js
+cleanall:: ; rm -f BUILD/tread30_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/tread30_decl00_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime

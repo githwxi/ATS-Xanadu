@@ -301,7 +301,7 @@ val () = prerrsln
 }
 //
 | !
-tmqstk_svts =>
+tmqstk_svts _ =>
 ( err := 1;
   pshloc2(kxs, kys, err)) where
 {
@@ -309,7 +309,7 @@ val () = prerrsln
 ("tmqstk_locjoin: poploc1: tmqstk_svts")
 }
 | !
-tmqstk_timp =>
+tmqstk_timp _ =>
 ( err := 1;
   pshloc2(kxs, kys, err)) where
 {
@@ -961,8 +961,10 @@ val+
 //
 in//let
 //
-(
-  tmqstk_locjoin(tmqstk); $fold(env0))
+let
+ val err =
+ tmqstk_locjoin(tmqstk) in $fold(env0)
+end//let
 //
 end(*let*)//end-of-(tr3cenv_locjoin(env0))
 //
