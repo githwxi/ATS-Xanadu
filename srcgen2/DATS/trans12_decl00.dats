@@ -3021,9 +3021,8 @@ dimp.node() of
 //
 |DIMPLnon1
 (  dqid  ) =>
-(
 trans12_t1qaglst
-(  env0, tqas  ))//DIMPnon1
+(  env0, tqas  )//DIMPLnon1
 //
 |DIMPLone1
 (  d2c1  ) =>

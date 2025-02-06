@@ -80,10 +80,9 @@ in//let
 let
 val t3penv = tr3aenv_free_top(env0)
 in//let
-d3parsed
-(stadyn
+d3parsed(stadyn
 ,nerror,source,t1penv,t2penv,t3penv,parsed)
-end
+end//let
 end (*let*) // end of [d3parsed_trans3a(dpar)]
 
 (* ****** ****** *)

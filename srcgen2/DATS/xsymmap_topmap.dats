@@ -275,8 +275,10 @@ fun
 auxkey
 (k0: int) =
 let
+//
 val opt =
 the_xsymbls_search(k0)
+//
 in//let
 //
 case+ opt of
@@ -284,9 +286,9 @@ case+ opt of
 optn_vt_nil
 ( (*void*) ) =>
 (
-prints("(nil)"))
+  print("(nil)"))
 | ~
-optn_vt_cons(sym) => prints(sym)
+optn_vt_cons(sym) => print(sym)
 //
 end (*let*) // end of [auxkey(k0)]
 //
