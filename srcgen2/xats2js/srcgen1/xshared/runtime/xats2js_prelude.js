@@ -1,4 +1,4 @@
-// Fri Dec 27 01:17:45 PM EST 2024
+// Thu Feb 6 05:36:49 AM EST 2025
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 /*
@@ -194,11 +194,11 @@ Authoremail: gmhwxiATgmailDOTcom
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_bool_assert_errmsg
+XATS2JS_bool_assert$errmsg
   (cond, emsg)
 {
   if (!cond) {
-    throw new Error("XATS2JS_bool_assert_errmsg: emsg = " + emsg)
+    throw new Error("XATS2JS_bool_assert$errmsg: emsg = " + emsg)
   } ; return // HX: void is returned!
 }
 //
@@ -504,7 +504,7 @@ XATS2JS_char_neq
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_char_add_sint
+XATS2JS_char_add$sint
   (c1, i2)
 {
   let c2 = c1+i2
@@ -512,7 +512,7 @@ XATS2JS_char_add_sint
 }
 //
 function
-XATS2JS_char_sub_char
+XATS2JS_char_sub$char
   (c1, c2)
 {
   return (c1 - c2) // HX: char=int8
@@ -527,6 +527,15 @@ XATS2JS_char_print
   let cs = String.fromCharCode(c0)
   XATS2JS_the_print_store.push(cs); return
 }
+//
+////////////////////////////////////////////////////////////////////////.
+//
+/*
+HX-2025-01-10: from gavinz
+Sun Jan 19 01:11:19 AM EST 2025
+*/
+function
+XATS2JS_char_make_sint( i0 ) { return i0 }
 //
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
