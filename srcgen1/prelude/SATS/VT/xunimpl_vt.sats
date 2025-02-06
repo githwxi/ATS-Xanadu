@@ -224,52 +224,6 @@ irfilter$test1(ni, !x0): bool
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-fun
-<xs:vt>
-<x0:vt>
-gseq_foritm0(xs: ~xs): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_foritm1(xs: !xs): void
-*)
-//
-(*
-fun
-<xs:vt>
-<x0:vt>
-gseq_rforitm0(xs: ~xs): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_rforitm1(xs: !xs): void
-*)
-//
-(*
-fun
-<xs:vt>
-<x0:vt>
-gseq_iforitm0(xs: ~xs): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_iforitm1(xs: !xs): void
-*)
-//
-(*
-fun
-<xs:vt>
-<x0:vt>
-gseq_irforitm0(xs: ~xs): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_irforitm1(xs: !xs): void
-*)
-//
-(* ****** ****** *)
-//
 fun
 <xs:vt>
 <x0:vt>
@@ -302,17 +256,6 @@ fun
 <x0:vt>
 <r0:vt>
 gseq_ifolditm1(!xs, r0): ( r0 )
-//
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
-gseq_irfolditm0(~xs, r0): ( r0 )
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
-gseq_irfolditm1(!xs, r0): ( r0 )
 //
 (* ****** ****** *)
 //
@@ -348,17 +291,6 @@ fun
 <x0:vt>
 <r0:vt>
 gseq_ifoldall1(!xs, r0): ( r0 )
-//
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
-gseq_irfoldall0(~xs, r0): ( r0 )
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
-gseq_irfoldall1(!xs, r0): ( r0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -661,6 +593,17 @@ gseq_fset$at$opt0(xs: ~xs, i0: ni, x0: ~x0): optn_vt(xs)
 fun
 <xs:vt>
 <x0:vt>
+gseq_irforitm0(~xs): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_irforitm1(!xs): void
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_irforall0(~xs): bool
 fun
 <xs:vt>
@@ -676,14 +619,18 @@ fun
 <x0:vt>
 gseq_irexists1(!xs): bool
 //
+(* ****** ****** *)
+//
 fun
 <xs:vt>
 <x0:vt>
-gseq_irforitm0(~xs): void
+<r0:vt>
+gseq_irfolditm0(~xs, r0): ( r0 )
 fun
 <xs:vt>
 <x0:vt>
-gseq_irforitm1(!xs): void
+<r0:vt>
+gseq_irfolditm1(!xs, r0): ( r0 )
 //
 (* ****** ****** *)
 //
@@ -691,23 +638,12 @@ fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
-gseq_irfolditm0(~xs, r0): (r0)
+gseq_irfoldall0(~xs, r0): ( r0 )
 fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
-gseq_irfolditm1(!xs, r0): (r0)
-//
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
-gseq_irfoldall0(~xs, r0): (r0)
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
-gseq_irfoldall1(!xs, r0): (r0)
+gseq_irfoldall1(!xs, r0): ( r0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1286,6 +1222,36 @@ strm_vt_foritm0$f1un
 foritm0 with strm_vt_foritm0$f1un of 1000
 #symload
 foritm0$fun with strm_vt_foritm0$f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_folditm0$f2un
+( xs
+: strm_vt(x0), r0: r0
+, fopr: (r0, ~x0) -> (r0)): (r0)
+//
+#symload
+folditm0 with strm_vt_folditm0$f2un of 1000
+#symload
+folditm0$fun with strm_vt_folditm0$f2un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_ifolditm0$f3un
+( xs
+: strm_vt(x0), r0: r0
+, fopr: (r0, ni, ~x0) -> (r0)): (r0)
+//
+#symload
+ifolditm0 with strm_vt_ifolditm0$f3un of 1000
+#symload
+ifolditm0$fun with strm_vt_ifolditm0$f3un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

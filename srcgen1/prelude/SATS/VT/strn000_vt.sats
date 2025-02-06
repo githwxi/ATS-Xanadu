@@ -375,7 +375,7 @@ strn_vt_tabulate
 ( n0: int(n) ) : strn_vt(n)
 //
 fun<>
-strn_vt_tabulate_f1un
+strn_vt_tabulate$f1un
 {n:nat}
 ( n0
 : int(n)

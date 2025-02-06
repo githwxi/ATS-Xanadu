@@ -643,7 +643,7 @@ tabulate$fopr<cgtz><n>(i0) = f0(i0)
 #impltmp
 <>(*tmp*)
 strn_vt_tabulate$f1un
-{n}
+{n:i0}
 (n0, f0) =
 (
 strn_vt_tabulate<n>(n0)
