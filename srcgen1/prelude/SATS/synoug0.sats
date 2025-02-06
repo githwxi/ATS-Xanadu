@@ -825,6 +825,7 @@ gs_print_n10
 (* ****** ****** *)
 //
 #symload print with gs_print_n1
+//
 #symload prints with gs_print_n0
 (*
 #symload prints with gs_print_n1

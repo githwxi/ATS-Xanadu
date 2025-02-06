@@ -65,6 +65,10 @@ ATS_PACKNAME
 #symload lctn with dimpl_get_lctn
 #symload node with dimpl_get_node
 (* ****** ****** *)
+(* ****** ****** *)
+#staload _ = "./xsymmap_topmap.dats"
+(* ****** ****** *)
+(* ****** ****** *)
 
 local
 //
@@ -105,11 +109,16 @@ D3TOPENVsome(map1)
 ) where
 {
 //
+// (*
+val () =
+prerrsln("\
+tr3aenv_free_top: map1 = ", map1)
+// *)
+//
 var
 stkmap = map2
 //
-val nerr =
-stkmap_poptop0(stkmap)
+val nerr = stkmap_poptop0(stkmap)
 //
 val (  ) = stkmap_free_nil(stkmap) }
 )(*case+*)//end-of-(tr3aenv_free_top(env0))
@@ -267,14 +276,14 @@ let
 val x0 = dcls//d3eclist
 val k0 = d2c0.name((*0*))
 //
-(*
+// (*
 val () =
 prerrsln
 ("tr3aenv_d2cins$any: k0 = ", k0)
 val () =
 prerrsln
 ("tr3aenv_d2cins$any: x0 = ", x0)
-*)
+// *)
 //
 val+
 @TR3AENV
@@ -353,6 +362,7 @@ f0_implmnt0
 ( env0:
 ! tr3aenv, d3cl: d3ecl): void =
 let
+//
 val-
 D3Cimplmnt0
 ( tknd
@@ -361,12 +371,14 @@ D3Cimplmnt0
 , dimp//dcst
 , tias, f3as
 , sres, dexp) = d3cl.node()
+//
 in//let
 //
 case+
 dimp.node() of
 //
-|DIMPnon1 _ => ( (*nothing*) )
+|DIMPLnon1
+((*void*)) => ( (*nothing*) )
 //
 |DIMPLone1
 (  d2c1  ) =>
@@ -392,6 +404,14 @@ in//let
 (
   tr3aenv_insert_d3ecl(env0, dtmp) )
 end(*let*)//end-of-[f0_tmplocal(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+// (*
+val () =
+( prerrsln
+  ("tr3aenv_insert_d3ecl: d3cl = ", d3cl) )
+// *)
 //
 (* ****** ****** *)
 //

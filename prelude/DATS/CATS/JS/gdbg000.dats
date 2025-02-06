@@ -48,7 +48,7 @@ XATS2JS_bool_assert$errmsg
 #extern
 fun
 XATS2JS_bool_assert$errmsg
-(cond: bool, emsg: strm): void = $extnam()
+(cond: bool, emsg: strn): void = $extnam()
 }
 //
 (* ****** ****** *)
