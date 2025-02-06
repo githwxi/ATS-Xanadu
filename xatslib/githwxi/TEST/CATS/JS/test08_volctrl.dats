@@ -123,7 +123,7 @@ myrows_opts$make
   optn_vt(row))): a1sz(myobj) =
 a1sz_fmake_fwork(
 lam(work) =>
-strm_vt_foritm0_f1un
+strm_vt_foritm0$f1un
 (
 opts,
 lam(opt) =>

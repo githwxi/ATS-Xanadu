@@ -101,7 +101,8 @@ end//let
 (* ****** ****** *)
 //
 val xs =
-list(11, lam(i) => g_sqr(5-i))
+list_make_nfun<sint>
+(11, lam(i) => g_sqr(5-i))
 //
 (* ****** ****** *)
 (* ****** ****** *)
