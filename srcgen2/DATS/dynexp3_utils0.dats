@@ -196,11 +196,11 @@ end//let
 //
 )
 //
-// (*
+(*
 val (  ) =
 prerrsln
 ("f0_implmnt0: dimp = ", dimp)
-// *)
+*)
 //
 in//let
 //
@@ -236,14 +236,14 @@ end(*let*)//end-of-[f0_implmnt0(...)]
 //
 (* ****** ****** *)
 //
-// (*
+(*
 val () =
 prerrsln("d3ecl_impsub: knd0 = ", knd0)
 val () =
 prerrsln("d3ecl_impsub: tsub = ", tsub)
 val () =
 prerrsln("d3ecl_impsub: d3cl = ", d3cl)
-// *)
+*)
 //
 (* ****** ****** *)
 //
@@ -486,11 +486,12 @@ val-T_IMPLMNT(knd0) = tknd.node()
 ) where
 {
 //
-// (*
-  val () =
+(*
+val () =
+(
   prerrsln
-  ("d3ecl_impltmprq: d3cl = ", d3cl)
-// *)
+  ("d3ecl_impltmprq: d3cl = ", d3cl))
+*)
 //
 }(*where*)//end-of-[d3ecl_impltmprq(d3cl)]
 //
@@ -537,12 +538,12 @@ val
 tenv =
 d3parsed_get_t3penv(dpar)
 //
-// (*
+(*
 val () = prerrsln
 ("static_search_dcst: shrd = ", shrd)
 val () = prerrsln
 ("static_search_dcst: tenv = ", tenv)
-// *)
+*)
 //
 in//let
 //
@@ -566,12 +567,12 @@ end(*end-of-[S3TALOADdpar(sknd,dpar)]*)
 //
 end//let//end-of-[f0_staload(d3cl,d2c0)]
 //
-// (*
+(*
 val () =
 prerrsln("static_search_dcst: d3cl = ", d3cl)
 val () =
 prerrsln("static_search_dcst: d2c0 = ", d2c0)
-// *)
+*)
 //
 }(*where*) // end of [static_search_dcst(...)]
 

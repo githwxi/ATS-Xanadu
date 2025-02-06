@@ -92,7 +92,7 @@ prerrsln
 trtmp3b_d3ecl
 ( env0, d3cl ) = let
 //
-// (*
+(*
 val
 loc0 = d3cl.lctn()
 val () =
@@ -101,7 +101,7 @@ prerrsln
 val () =
 prerrsln
 ("trtmp3b_d3ecl: d3cl = ", d3cl)
-// *)
+*)
 //
 in//let
 //
@@ -247,7 +247,7 @@ D3Cstaload
 ,tknd, gsrc
 ,fopt, dopt) = d3cl.node()
 //
-// (*
+(*
 val () = prerrsln
 ("f0_staload(3b): knd0 = ", knd0)
 val () = prerrsln
@@ -256,7 +256,7 @@ val () = prerrsln
 ("f0_staload(3b): gsrc = ", gsrc)
 val () = prerrsln
 ("f0_staload(3b): dopt = ", dopt)
-// *)
+*)
 //
 in//let
 if

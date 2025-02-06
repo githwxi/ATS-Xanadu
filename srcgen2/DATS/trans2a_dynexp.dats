@@ -2047,7 +2047,7 @@ We handle two scenarios:
 case+
 tfun.node() of
 //
-// (*
+// (* //
 |
 T2Pfun1
 (_, _, t2ps, tres) =>
@@ -2060,7 +2060,7 @@ in(*let2*)
 d2exp_make_tpnd
 (loc0, tres, D2Edapp(d2f0, npf1, d2es))
 end(*let2*)
-// *)
+// *) //
 //
 |
 _(*non-T2Pfun1*) =>
