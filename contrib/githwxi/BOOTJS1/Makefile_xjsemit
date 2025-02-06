@@ -238,6 +238,12 @@ tread30_sats: \
 $(SRCGEN2)/SATS/tread30.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
 ########################################################################
+boot_sats:: \
+fperr30_sats
+fperr30_sats: \
+$(SRCGEN2)/SATS/fperr30.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $<
+########################################################################
 ########################################################################
 boot_dats:: \
 xbasics_dats
@@ -987,6 +993,22 @@ tread30_decl00_dats: \
 $(SRCGEN2)/DATS/tread30_decl00.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
 ########################################################################
+boot_dats:: \
+fperr30_dats
+fperr30_dats: \
+$(SRCGEN2)/DATS/fperr30.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+fperr30_dynexp_dats
+fperr30_dynexp_dats: \
+$(SRCGEN2)/DATS/fperr30_dynexp.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+boot_dats:: \
+fperr30_decl00_dats
+fperr30_decl00_dats: \
+$(SRCGEN2)/DATS/fperr30_decl00.dats; \
+$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > BUILD/$@_out.js
+########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -1168,6 +1190,10 @@ cleanall:: ; rm -f BUILD/tread30_dats_out.js
 cleanall:: ; rm -f BUILD/tread30_staexp_dats_out.js
 cleanall:: ; rm -f BUILD/tread30_dynexp_dats_out.js
 cleanall:: ; rm -f BUILD/tread30_decl00_dats_out.js
+########################################################################
+cleanall:: ; rm -f BUILD/fperr30_dats_out.js
+cleanall:: ; rm -f BUILD/fperr30_dynexp_dats_out.js
+cleanall:: ; rm -f BUILD/fperr30_decl00_dats_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime

@@ -12,6 +12,9 @@
 #include
 "srcgen2\
 /prelude/HATS/prelude_JS_dats.hats"
+#include
+"srcgen2\
+/prelude/HATS/prelude_NODE_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

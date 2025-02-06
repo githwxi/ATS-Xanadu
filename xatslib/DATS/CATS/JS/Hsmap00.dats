@@ -459,7 +459,7 @@ end//let//end-of-[jshsmap_make0_llist]
 jshsmap_keyq
   (A, k) =
 (
-XATS2jS_jshsmap_keyq
+XATS2JS_jshsmap_keyq
   (A, k)) where
 {
 #extern
@@ -890,7 +890,7 @@ if
 jshsmap_keyq(A, k)
 then
 optn_vt_cons(
-UN_jshsmap_get$at$raw<>(A,k))
+UN_jshsmap_get$at$raw<>(A, k))
 else optn_vt_nil()//else//end-of-[if]
 //
 (* ****** ****** *)
@@ -905,7 +905,7 @@ val opt =
 jshsmap_get$at$opt<>(A, k)
 //
 in//let
-  UN_jshsmap_get$at$raw<>(A, k, x); opt
+  UN_jshsmap_set$at$raw<>(A, k, x); opt
 end//let//end-of-[jshsmap_set$at$opt(A,k,x)]
 //
 (* ****** ****** *)
