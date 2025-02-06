@@ -261,11 +261,11 @@ Sun Jan 12 09:44:35 AM EST 2025
 fun
 <r0:vt>
 nint_folditm
-(xs: nint, r0: r0): void
+(xs: nint, r0: r0): (r0)
 fun
 <r0:vt>
 nint_rfolditm
-(xs: nint, r0: r0): void
+(xs: nint, r0: r0): (r0)
 //
 #symload
 folditm with nint_folditm of 1000

@@ -262,7 +262,7 @@ strm_vt_tabulate
 (n0: sint(n)): strm_vt( a )
 fun
 <a:vt>
-strm_vt_tabulate_f1un
+strm_vt_tabulate$f1un
 {n:nat}
 (
 n0: sint(n),

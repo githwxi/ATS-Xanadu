@@ -1007,8 +1007,8 @@ D3Cinclude
     val () =
     (
     case+ id2c of
-    |IMPLD2CST2 _ => ()
-    |_(*non-IMPLD2CST2*) =>
+    | IMPLD2CST2 _ => ()
+    | _(*non-IMPLD2CST2*) =>
     (
     prerrln!
     (loc0, ": ***TRERR33***");

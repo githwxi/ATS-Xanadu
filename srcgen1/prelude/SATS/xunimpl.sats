@@ -392,6 +392,33 @@ nint_rforitm$f1un
 rforitm with nint_rforitm$f1un of 1000
 //
 (* ****** ****** *)
+//
+fun
+<r0:vt>
+nint_folditm(xs:nint, r0:r0): (r0)
+fun
+<r0:vt>
+nint_rfolditm(xs:nint, r0:r0): (r0)
+//
+(* ****** ****** *)
+//
+fun
+<r0:vt>
+nint_folditm$f2un
+( xs: nint
+, r0: r0, fopr: (r0, ni)-> r0): (r0)
+fun
+<r0:vt>
+nint_rfolditm$f2un
+( xs: nint
+, r0: r0, fopr: (ni, r0)-> r0): (r0)
+//
+#symload
+folditm with nint_folditm$f2un of 1000
+#symload
+rfolditm with nint_rfolditm$f2un of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

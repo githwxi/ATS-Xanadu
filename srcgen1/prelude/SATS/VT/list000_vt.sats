@@ -297,7 +297,7 @@ list_vt_tabulate
 (n0: sint(n)): list_vt(a, n)
 fun
 <a:vt>
-list_vt_tabulate_f1un
+list_vt_tabulate$f1un
 {n:nat}
 (
 n0: sint(n),
@@ -413,14 +413,14 @@ list_vt_maprev1
 fun
 <x0:vt>
 <y0:vt>
-list_vt_map0_f1un
+list_vt_map0$f1un
 {ln:nat}
 (xs:
 ~list_vt(x0, ln), (~x0)->y0): list_vt(y0, ln)
 fun
 <x0:vt>
 <y0:vt>
-list_vt_maprev0_f1un
+list_vt_maprev0$f1un
 {ln:nat}
 (xs:
 ~list_vt(x0, ln), (~x0)->y0): list_vt(y0, ln)
@@ -430,14 +430,14 @@ list_vt_maprev0_f1un
 fun
 <x0:vt>
 <y0:vt>
-list_vt_map1_f1un
+list_vt_map1$f1un
 {ln:nat}
 (xs:
 !list_vt(x0, ln), (!x0)->y0): list_vt(y0, ln)
 fun
 <x0:vt>
 <y0:vt>
-list_vt_maprev1_f1un
+list_vt_maprev1$f1un
 {ln:nat}
 (xs:
 !list_vt(x0, ln), (!x0)->y0): list_vt(y0, ln)

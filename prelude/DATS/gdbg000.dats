@@ -251,7 +251,7 @@ let
 val emsg =
 assert$errmsg<>() in//let
 (
-  bool_assert_errmsg<>(cond, emsg))
+  bool_assert$errmsg<>(cond, emsg))
 end(*let*)//end-of-[bool_assert(cond)]
 //
 (* ****** ****** *)

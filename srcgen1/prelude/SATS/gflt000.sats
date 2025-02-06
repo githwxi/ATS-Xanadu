@@ -243,19 +243,19 @@ gflt_mod$dflt$dflt(dflt, dflt): dflt
 (* ****** ****** *)
 //
 fun<>
-dflt_lt_sint(dflt, sint): bool
+dflt_lt$sint(dflt, sint): bool
 fun<>
-dflt_gt_sint(dflt, sint): bool
+dflt_gt$sint(dflt, sint): bool
 fun<>
-dflt_eq_sint(dflt, sint): bool
+dflt_eq$sint(dflt, sint): bool
 fun<>
-dflt_lte_sint(dflt, sint): bool
+dflt_lte$sint(dflt, sint): bool
 fun<>
-dflt_gte_sint(dflt, sint): bool
+dflt_gte$sint(dflt, sint): bool
 fun<>
-dflt_neq_sint(dflt, sint): bool
+dflt_neq$sint(dflt, sint): bool
 fun<>
-dflt_cmp_sint(dflt, sint): sint
+dflt_cmp$sint(dflt, sint): sint
 //
 fun<>
 gflt_lt$dflt$sint(dflt, sint): bool
