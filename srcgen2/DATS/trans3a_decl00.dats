@@ -300,22 +300,26 @@ val dpar =
 d3parsed_of_trans3a(dpar)
 val (  ) =
 the_d3tmpenv_pvsadd0(fnm2,dpar)
-// (*
+//
+(*
 val (  ) =
 prerrsln
 ("f0_staload(3a): dpar = ", dpar)
-// *)
+*)
+//
 } (* end-of-[optn_vt_nil(...)] *)
 | ~
 optn_vt_cons(dpar) =>
 (
 S3TALOADdpar(shrd, dpar)) where
 {
-// (*
+//
+(*
 val (  ) =
 prerrsln
 ("f0_staload(3a): dpar = ", dpar)
-// *)
+*)
+//
 } (* end-of-[optn_vt_cons(...)] *)
 //
 end//let//end-of-[optn_cons(...)]
@@ -503,12 +507,12 @@ end where
 val
 loc0 = d3cl.lctn((*void*)) // HX: enter
 //
-// (*
+(*
 val (  ) =
 prerrsln("f0_implmnt0(3a): loc0 = ", loc0)
 val (  ) =
 prerrsln("f0_implmnt0(3a): d3cl = ", d3cl)
-// *)
+*)
 //
 }(*where*)//end of [f0_implmnt0(env0,d3cl)]
 //

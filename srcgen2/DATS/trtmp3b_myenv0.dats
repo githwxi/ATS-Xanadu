@@ -415,10 +415,10 @@ tmpstk_insert_decl
   (stk0, d3cl) =
 let
 //
-// (*
+(*
 val () = prerrsln
 ("tmpstk_insert_decl: d3cl = ", d3cl)
-// *)
+*)
 //
 val tag0 =
 the_tmpstk_stamp_new() in//let
@@ -466,7 +466,7 @@ _(* otherwise *) => (   false   )
 ) where
 {
 //
-// (*
+(*
 //
 val () =
 prerr("tmpstk_search_dcst:")//val()
@@ -478,7 +478,7 @@ prerr("tmpstk_search_dcst:")//val()
 val () =
 prerrsln("test: d2c = ", d2c)//val()
 //
-// *)
+*)
 //
 }(*where*) // end of [test(dcl, d2c)]
 //
@@ -540,11 +540,12 @@ tmpstk_loc2(kxs) => loop(kxs,d2c,res)
 //
 )(*case+*) // end of [loop(kxs,d2c,res)]
 //
-// (*
+(*
 val () =
-( prerrsln
+(
+  prerrsln
   ("tmpstk_search_dcst: dcst = ", dcst))
-// *)
+*)
 //
 }(*where*)//end-of-[tmpstk_search_dcst(...)]
 //
