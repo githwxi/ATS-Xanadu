@@ -94,6 +94,44 @@ _(*DATS*)="./../DATS/trxi0i1.dats"
 #symload node with i1val_get_node
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+i1val_i00
+(loc:loc_t
+,i00:(sint)): i1val =
+(
+i1val_make_node(loc,I1Vi00(i00)))
+//
+fun
+i1val_b00
+(loc:loc_t
+,b00:(bool)): i1val =
+(
+i1val_make_node(loc,I1Vb00(b00)))
+//
+fun
+i1val_c00
+(loc:loc_t
+,c00:(char)): i1val =
+(
+i1val_make_node(loc,I1Vc00(c00)))
+//
+fun
+i1val_f00
+(loc:loc_t
+,f00:(dflt)): i1val =
+(
+i1val_make_node(loc,I1Vf00(f00)))
+//
+fun
+i1val_s00
+(loc:loc_t
+,s00:(strn)): i1val =
+(
+i1val_make_node(loc,I1Vs00(s00)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 fun
 i1val_int
 ( loc: loc_t
@@ -1216,11 +1254,21 @@ trxi0i1_i0exp
 case+
 iexp.node() of
 //
+(* ****** ****** *)
+//
 |I0Eint _ => f0_int(env0, iexp)
 |I0Ebtf _ => f0_btf(env0, iexp)
 |I0Echr _ => f0_chr(env0, iexp)
 |I0Eflt _ => f0_flt(env0, iexp)
 |I0Estr _ => f0_str(env0, iexp)
+//
+(* ****** ****** *)
+//
+|I0Ei00 _ => f0_i00(env0, iexp)
+|I0Eb00 _ => f0_b00(env0, iexp)
+|I0Ec00 _ => f0_c00(env0, iexp)
+|I0Ef00 _ => f0_f00(env0, iexp)
+|I0Es00 _ => f0_s00(env0, iexp)
 //
 (* ****** ****** *)
 |I0Etop _ => f0_top(env0, iexp)
@@ -1395,6 +1443,72 @@ f0_str
 {
   val loc = iexp.lctn()
   val-I0Estr(tok) = iexp.node() }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_i00
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_i00(loc, i00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Ei00(i00) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_b00
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_b00(loc, b00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Eb00(b00) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_c00
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_c00(loc, c00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Ec00(c00) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_f00
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_f00(loc, f00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Ef00(f00) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_s00
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_s00(loc, s00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Es00(s00) = iexp.node() }
 //
 (* ****** ****** *)
 (* ****** ****** *)

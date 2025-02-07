@@ -117,6 +117,19 @@ prints("I1Vstr(",str,")")
 //
 (* ****** ****** *)
 //
+|I1Vi00(i00) =>
+prints("I1Vi00(",i00,")")
+|I1Vb00(b00) =>
+prints("I1Vb00(",b00,")")
+|I1Vc00(c00) =>
+prints("I1Vc00(",c00,")")
+|I1Vf00(f00) =>
+prints("I1Vf00(",f00,")")
+|I1Vs00(s00) =>
+prints("I1Vs00(",s00,")")
+//
+(* ****** ****** *)
+//
 |I1Vtop(sym) =>
 prints("I1Vtop(",sym,")")
 //
