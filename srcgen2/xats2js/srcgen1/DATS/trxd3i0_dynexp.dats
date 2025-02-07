@@ -540,6 +540,29 @@ i0exp
 (d3e0.lctn(), I0Estr(tok))
 //
 (* ****** ****** *)
+//
+|D3Ei00
+( i00 ) =>
+i0exp
+(d3e0.lctn(), I0Ei00(i00))
+|D3Eb00
+( b00 ) =>
+i0exp
+(d3e0.lctn(), I0Eb00(b00))
+|D3Ec00
+( c00 ) =>
+i0exp
+(d3e0.lctn(), I0Ec00(c00))
+|D3Ef00
+( f00 ) =>
+i0exp
+(d3e0.lctn(), I0Ef00(f00))
+|D3Es00
+( s00 ) =>
+i0exp
+(d3e0.lctn(), I0Es00(s00))
+//
+(* ****** ****** *)
 |D3Etop
 ( sym ) =>
 i0exp

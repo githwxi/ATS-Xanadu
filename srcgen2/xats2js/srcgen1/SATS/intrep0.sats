@@ -407,11 +407,21 @@ i0pat_make_node
 datatype
 i0exp_node =
 //
+(* ****** ****** *)
+//
 |I0Eint of token
 |I0Ebtf of sym_t
 |I0Echr of token
 |I0Eflt of token
 |I0Estr of token
+//
+(* ****** ****** *)
+//
+|I0Ei00 of (sint)
+|I0Eb00 of (bool)
+|I0Ec00 of (char)
+|I0Ef00 of (dflt)
+|I0Es00 of (strn)
 //
 (* ****** ****** *)
 |I0Etop of (sym_t)

@@ -336,12 +336,20 @@ i1val_node =
 //
 |I1Vnil of ()
 //
+(* ****** ****** *)
+//
 |I1Vint of token
 |I1Vbtf of sym_t
 |I1Vchr of token
 |I1Vflt of token
 |I1Vstr of token
 //
+(* ****** ****** *)
+|I1Vi00 of (sint)
+|I1Vb00 of (bool)
+|I1Vc00 of (char)
+|I1Vf00 of (dflt)
+|I1Vs00 of (strn)
 (* ****** ****** *)
 //
 |I1Vtop of (sym_t)
