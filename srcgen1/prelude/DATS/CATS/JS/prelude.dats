@@ -8,12 +8,14 @@ UN = // for casting
 "srcgen1\
 /prelude/SATS/unsafex.sats"
 (* ****** ****** *)
+(*
 #staload _ = 
 "srcgen1\
 /prelude/DATS/strm000.dats"
 #staload _ = 
 "srcgen1\
 /prelude/DATS/VT/strm000_vt.dats"
+*)
 (* ****** ****** *)
 (*
 #implfun
@@ -387,7 +389,8 @@ XATS2JS_strm_vt_map0$f1un
 //
 #implfun
 XATS2JS_strm_vt_map0$f1un
-{x0}{y0}
+{x0:vt}
+{y0:vt}
 (xs, f0) =
 (
 strm_vt_map0<x0><y0>(xs)
@@ -407,7 +410,8 @@ XATS2JS_strm_vt_filter0$f1un
 //
 #implfun
 XATS2JS_strm_vt_filter0$f1un
-{x0}(xs, f0) =
+{x0:vt}
+(xs, f0) =
 (
 strm_vt_filter0<x0>(xs)
 ) where

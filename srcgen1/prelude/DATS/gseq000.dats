@@ -816,6 +816,7 @@ end(*let*)//end-(gseq_make0_lstrm(xx))
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <xs>
 <x0>(*tmp*)
@@ -826,6 +827,7 @@ gseq_tabulate
  gseq_make0_lstrm<xs><x0>
  (strm_vt_tabulate<x0><n0>( n0 ))
 ) // end-of-[gseq_vt_tabulate(n0)]
+*)
 //
 (* ****** ****** *)
 //
@@ -3273,6 +3275,7 @@ gseq_foritm<xs><x0>(xs)) where
 //(*where*)//end-[gseq_foritm$f1un(xs,f0)]
 (* ****** ****** *)
 //
+(*
 #impltmp
 <xs><x0>
 gseq_tabulate$f1un
@@ -3285,6 +3288,7 @@ gseq_tabulate<xs><x0><n0>(n0)
 #impltmp
 tabulate$fopr<x0><n0>( i0 ) = f0( i0 ) }
 //(*where*)//end-[gseq_tabulate$f1un(n0,f0)]
+*)
 //
 (* ****** ****** *)
 //

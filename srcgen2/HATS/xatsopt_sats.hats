@@ -16,6 +16,9 @@ For ATS3/XATSOPT
 #staload
 "srcgen1\
 /prelude/SATS/gint000.sats"
+#staload
+"srcgen1\
+/prelude/SATS/gflt000.sats"
 //
 #staload
 "srcgen1\

@@ -464,6 +464,7 @@ HX-2019-10:
 Quite an informative example:
 *)
 //
+(*
 #impltmp
 <a>(*tmp*)
 list_vt_tabulate$f1un
@@ -475,6 +476,7 @@ tabulate$fopr<a><n>(i0) = f0(i0)
 in
   list_vt_tabulate<a><n>(n0)
 end // end of [list_vt_tabulate$f1un]
+*)
 //
 (* ****** ****** *)
 //

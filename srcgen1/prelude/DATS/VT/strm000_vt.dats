@@ -621,7 +621,7 @@ else
 } (*where*) // end-of-[strm_vt_sortedq0(xs)]
 
 (* ****** ****** *)
-
+(*
 #impltmp
 <a>(*tmp*)
 <n:i0>(*tmp*)
@@ -646,9 +646,10 @@ strmcon_vt_cons(x0, auxmain(suc(i0)))
 end // let // end-of-[ auxmain(i0) ]
 )
 }(*where*) // end of [strm_vt_tabulate(n0)]
-
+*)
 (* ****** ****** *)
 //
+(*
 #impltmp
 <a>(*tmp*)
 strm_vt_tabulate$f1un
@@ -659,6 +660,7 @@ strm_vt_tabulate<a><n>(n0)
 { #impltmp
   tabulate$fopr<a><n>(i0) = f0(  i0  )
 }(*where*) // end-of-[strm_vt_tabulate$f1un]
+*)
 //
 (* ****** ****** *)
 
