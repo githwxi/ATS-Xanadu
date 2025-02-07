@@ -1722,6 +1722,7 @@ end (*let*) // end of [g_print<s2var>(s2v0)]
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 #impltmp
@@ -1746,6 +1747,7 @@ end (*let*) // end of [g_print<s2typ>(t2p0)]
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 #impltmp
@@ -1763,6 +1765,7 @@ end (*let*) // end of [g_print<d2var>(d2v0)]
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 #impltmp
@@ -1776,6 +1779,7 @@ end (*let*) // end of [g_print<d2pat>(d2p0)]
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 #impltmp
@@ -1788,6 +1792,7 @@ in//let
 end (*let*) // end of [g_print<d2exp>(d2e0)]
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xatsopt_tmplib.dats] *)

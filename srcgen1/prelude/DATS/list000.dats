@@ -938,6 +938,7 @@ HX-2019-10:
 Quite an informative example:
 *)
 //
+(*
 #impltmp
 <a>(*tmp*)
 list_tabulate$f1un
@@ -951,6 +952,7 @@ list_tabulate<a><n>(n0)
 tabulate$fopr<a><n>(i0) = f0(i0)
 //
 } (*where*) // end of [list_tabulate$f1un]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1485,33 +1487,39 @@ gseq_map_lstrm<kxs><x0>(kxs)
 //
 (*
 For gseqn-operations
-*)
 #staload
 "prelude/SATS/gseqn00.sats"
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 {a:t0}
 gseqn_head<listn(a)><a> = list_head<a>
 #impltmp
 {a:t0}
 gseqn_tail<listn(a)><a> = list_tail<a>
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 {a:t0}
 gseqn_nilq<listn(a)><a> = list_nilq{a}
 #impltmp
 {a:t0}
 gseqn_consq<listn(a)><a> = list_consq{a}
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 {a:t0}
 gseqn_length<listn(a)><a> = list_length<a>
+*)
 //
 (* ****** ****** *)
 

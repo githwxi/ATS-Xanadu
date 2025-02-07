@@ -54,5 +54,6 @@ For ATS3/XATSOPT
 // #endif // end of [ifdef(_XATSOPT_JS_)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_HATS_xatsopt_dats.hats] *)
