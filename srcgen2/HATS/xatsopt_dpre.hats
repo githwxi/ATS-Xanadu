@@ -59,11 +59,11 @@ For ATS3/XATSOPT
 "srcgen1/prelude/DATS/strm000.dats"
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
+#include
 "srcgen1/prelude/DATS/synoug0.dats"
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
+#include
 "srcgen1/prelude/DATS/unsafex.dats"
 (* ****** ****** *)
 (* ****** ****** *)
@@ -96,6 +96,9 @@ For ATS3/XATSOPT
 #include
 "srcgen1/prelude/DATS/CATS/JS/unsafex.dats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+#symload print with g_print of 0101 // > 0100
 (* ****** ****** *)
 (* ****** ****** *)
 #staload _(*local*) = "./../DATS/xatsopt_tmplib.dats"
