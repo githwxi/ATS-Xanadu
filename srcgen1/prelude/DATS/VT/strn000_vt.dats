@@ -322,9 +322,10 @@ $UN.castlin01
 //
 (* ****** ****** *)
 
-#impltmp<>
+#impltmp
+<>(*tmp*)
 strn_vt_make_strn
-  {n}(cs) =
+  {n:int}(cs) =
 (
 UN_strn_vt_cast(p0)
 ) where
@@ -341,13 +342,13 @@ where
 //
 val n0 = strn_length<>(cs)
 //
-#sexpdef stmp = strtmp1_vt
-//
 fnx
 loop
 {i:nat
 |i<=n}.<n-i>.
-( p0: stmp(n)
+( p0:
+! strtmp_vt
+  (   n   )
 , i0: sint(i)
 , cs: strn(n)): void =
 (
@@ -365,7 +366,8 @@ loop(p0, suc(i0), cs)) where
 
 (* ****** ****** *)
 
-#impltmp<>
+#impltmp
+<>(*tmp*)
 strn_vt_make_list
   {n}(cs) =
 (
@@ -409,7 +411,8 @@ strtmp_vt_set$at<>(p0, i0, c0) } )
 
 (* ****** ****** *)
 
-#impltmp<>
+#impltmp
+<>(*tmp*)
 strn_vt_make0_llist
   {n}(cs) =
 (
@@ -493,6 +496,7 @@ strntrm_vt_concat0<>(list_vt_strmize0(css))
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <n0:i0>(*tmp*)
 strn_vt_tabulate
@@ -536,9 +540,11 @@ strtmp_vt_set$at<>(p0, i0, c0)
 ) (* end-of-of[loop(p0, i0)] *)
 //
 } (*where*)//end-of-[strn_vt_tabulate]
-
+*)
+//
 (* ****** ****** *)
 //
+(*
 #impltmp
 <>(*tmp*)
 strn_vt_tabulate$f1un
@@ -550,6 +556,7 @@ strn_vt_tabulate<n>(n0)
 #impltmp
 tabulate$fopr<cgtz><n>(i0) = f0(i0)
 }
+*)
 //
 (* ****** ****** *)
 //

@@ -1095,20 +1095,32 @@ stropt1
 string_i0_vx(n:i0) <= p0tr
 #absvwtp
 stropt_i0_vx(n:i0) <= p0tr
+#absvwtp
+strtmp_i0_vx(n:i0) <= p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #vwtpdef
 string0_vt =
-[n:i0] string_i0_vx(n)
+[n: i0] string_i0_vx(n)
 #vwtpdef
 string1_vt
-(n:i0) = string_i0_vx( n )
+(n: i0) = string_i0_vx( n )
 //
 #vwtpdef
 stropt0_vt =
-[n:i0] stropt_i0_vx(n)
+[n: i0] stropt_i0_vx(n)
 #vwtpdef
 stropt1_vt
-(n:i0) = stropt_i0_vx( n )
+(n: i0) = stropt_i0_vx( n )
+//
+#vwtpdef
+strtmp0_vt =
+[n: i0] strtmp_i0_vx(n)
+#vwtpdef
+strtmp1_vt
+(n: i0) = strtmp_i0_vx( n )
 //
 (* ****** ****** *)
 //
@@ -1118,17 +1130,23 @@ stropt1_vt
 #sexpdef strn_vt = string0_vt
 #sexpdef strn_vt = string1_vt
 //
-#vwtpdef string_vt = string0_vt
+#vwtpdef string_vt(*0*) = string0_vt
 #vwtpdef string_vt(n:i0) = string1_vt(n)
 //
 (* ****** ****** *)
 //
-#vwtpdef lstropt = stropt0_vt
+#vwtpdef lstropt(*0*) = stropt0_vt
 #vwtpdef lstropt(n:i0) = stropt1_vt(n)
 //
-#vwtpdef stropt_vt = stropt0_vt
+#vwtpdef stropt_vt(*0*) = stropt0_vt
 #vwtpdef stropt_vt(n:i0) = stropt1_vt(n)
 //
+(* ****** ****** *)
+//
+#vwtpdef strtmp_vt(*0*) = strtmp0_vt
+#vwtpdef strtmp_vt(n:i0) = strtmp1_vt(n)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 (*
 //

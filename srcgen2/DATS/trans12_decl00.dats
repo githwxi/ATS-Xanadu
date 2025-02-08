@@ -36,18 +36,22 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-_(*TRANS12*) = "./trans12.dats"
+//
+#include
+"./../HATS/xatsopt_sats.hats"
+(*
+#include
+"./../HATS/xatsopt_dats.hats"
+*)
+#include
+"./../HATS/xatsopt_dpre.hats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
@@ -75,6 +79,10 @@ _(*TRANS12*) = "./trans12.dats"
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
 #staload "./../SATS/xatsmtp.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
+_(* TRANS12 *) = "./trans12.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 #symload name with symbl_get_name

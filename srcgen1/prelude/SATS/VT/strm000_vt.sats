@@ -629,5 +629,8 @@ rlistize0 with strm_vt_rlistize0 of 1000
 #symload foritm0 with strm_vt_foritm0 of 1000
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_strm000_vt.sats] *)

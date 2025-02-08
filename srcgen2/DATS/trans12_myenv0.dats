@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,14 +37,23 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/xatsopt_sats.hats"
+(*
+#include
+"./../HATS/xatsopt_dats.hats"
+*)
+#include
+"./../HATS/xatsopt_dpre.hats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
@@ -61,6 +71,7 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans12.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #symload node with token_get_node
 (* ****** ****** *)
@@ -81,16 +92,19 @@ ATS_PACKNAME
 #symload node with f2arg_get_node
 #symload node with d2gpt_get_node
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #typedef sortmap = topmap(s2tex)
 #typedef sexpmap = topmap(s2itm)
 #typedef dexpmap = topmap(d2itm)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #staload _ = "./xsymmap_stkmap.dats"
 #staload _ = "./staexp2_print0.dats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 local

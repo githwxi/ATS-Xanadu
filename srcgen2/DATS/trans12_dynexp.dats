@@ -43,14 +43,17 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #include
 "./../HATS/xatsopt_sats.hats"
+(*
 #include
 "./../HATS/xatsopt_dats.hats"
+*)
+#include
+"./../HATS/xatsopt_dpre.hats"
+//
 (* ****** ****** *)
-(* ****** ****** *)
-#staload
-_(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
@@ -72,6 +75,10 @@ _(*TRANS12*) = "./trans12.dats"
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans12.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
+_(* TRANS12 *) = "./trans12.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with token_get_lctn

@@ -78,11 +78,28 @@ For ATS3/XATSOPT
 "srcgen1/prelude/DATS/VT/gseq000_vt.dats"
 (* ****** ****** *)
 #include
+"srcgen1/prelude/DATS/VT/strn000_vt.dats"
+(* ****** ****** *)
+#include
 "srcgen1/prelude/DATS/VT/list000_vt.dats"
 #include
 "srcgen1/prelude/DATS/VT/optn000_vt.dats"
+//
 #include
 "srcgen1/prelude/DATS/VT/strm000_vt.dats"
+#include
+"srcgen1/prelude/DATS/VT/strm001_vt.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"srcgen1/xatslib/githwxi/DATS/genv000.dats"
+#include
+"srcgen1/xatslib/githwxi/DATS/f00path.dats"
+#include
+"srcgen1/xatslib/githwxi/DATS/g00iout.dats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -105,9 +122,6 @@ For ATS3/XATSOPT
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#symload print with g_print of 0101 // > 0100
-(* ****** ****** *)
-(* ****** ****** *)
 //
 #impltmp
 < a:vt >
@@ -125,6 +139,56 @@ strn_tabulate$f1un
 strn_vt2t
 (strn_vt_tabulate$f1un<>(n0, fopr)))
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+strn_vt_tabulate$f1un
+{n0: i0}
+(n0, fopr) =
+(
+UN_strn_vt_cast(p0))
+where
+{
+//
+val p0 =
+strtmp_vt_alloc<>(n0)
+//
+val i0 = 0(*start*)
+val () = loop(p0, i0)
+//
+} where
+{
+//
+#sexpdef
+stmp = strtmp1_vt
+//
+fnx
+loop
+{i0:nat
+|i0<=n0}
+.<n0-i0>.
+( p0: stmp(n0)
+, i0: sint(i0)): void =
+(
+if
+(i0 < n0)
+then
+(
+loop(p0, suc(i0))) where
+{
+val c0 = fopr(i0)
+val () =
+strtmp_vt_set$at<>(p0, i0, c0)
+}
+) (* end-of-of[loop(p0, i0)] *)
+//
+} (*where*)//end-of-[strn_vt_tabulate]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#symload print with g_print of 0101 // > 0100
 (* ****** ****** *)
 (* ****** ****** *)
 #staload _(*local*) = "./../DATS/xatsopt_tmplib.dats"

@@ -124,5 +124,8 @@ strn_rand_length
 {n:nat}(ln: sint(n)): strn_vt( n )
 //
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [srcgen1_xatslib_githwxi_SATS_githwxi.sats] *)
