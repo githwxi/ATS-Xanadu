@@ -40,10 +40,20 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #include
 "./../HATS/xatsopt_sats.hats"
+(*
 #include
 "./../HATS/xatsopt_dats.hats"
+*)
+#include
+"./../HATS/xatsopt_dpre.hats"
+//
+#include
+"srcgen1/xatslib/githwxi\
+/DATS/CATS/JS/NODE/basics0.dats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"

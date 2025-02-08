@@ -91,33 +91,15 @@ stropt_vt2t
 //
 (*
 HX-2020-09-27:
+(Please see prelude/basics0.sats)
 Note that [strtmp_vt] and [string_vt] are
 assumed to be of the same representation.
-The former is actually a temporary of the
-latter:
-A string_vt construction is cemented with
-a call to the cast-function UN_string_vt_cast,
-which itself is just a no-op.
+//
+The former is actually a temporary of the latter:
+A string_vt construction is cemented with a call to the
+cast-function UN_string_vt_cast, which itself is just a no-op.
+//
 *)
-//
-#absvwtp
-strtmp_i0_vx(n:int) <= p0tr
-//
-(* ****** ****** *)
-//
-#vwtpdef
-strtmp0_vt =
-[n: int] strtmp_i0_vx(n)
-#vwtpdef
-strtmp1_vt
-(n: int) = strtmp_i0_vx( n )
-//
-(* ****** ****** *)
-//
-#vwtpdef
-strtmp_vt(*nil*) = strtmp0_vt
-#vwtpdef
-strtmp_vt(n:int) = strtmp1_vt(n)
 //
 (* ****** ****** *)
 //
