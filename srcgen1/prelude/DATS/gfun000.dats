@@ -62,13 +62,11 @@ end(*let*)//end-of-[gfun_enum_strx_vt]
 //
 (* ****** ****** *)
 //
-(*
 #impltmp
 <xs><x0>
 gfun_memberq_gseq(xs) =
 (
 lam(x0)=>gseq_memberq<xs><x0>(xs,x0))
-*)
 //
 (* ****** ****** *)
 //
