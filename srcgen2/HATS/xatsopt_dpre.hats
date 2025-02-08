@@ -108,6 +108,25 @@ For ATS3/XATSOPT
 #symload print with g_print of 0101 // > 0100
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+< a:vt >
+a0ref_make_1val(x0) =
+a0ptr2ref(a0ptr_make0_1val<a>(x0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+strn_tabulate$f1un
+(n0, fopr) =
+(
+strn_vt2t
+(strn_vt_tabulate$f1un<>(n0, fopr)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #staload _(*local*) = "./../DATS/xatsopt_tmplib.dats"
 (* ****** ****** *)
 (* ****** ****** *)
