@@ -14,12 +14,15 @@ For ATS3/XATSOPT
 #include
 "srcgen1/prelude/DATS/gnum000.dats"
 (* ****** ****** *)
+//
 #include
 "srcgen1/prelude/DATS/gseq000.dats"
+//
 (*
 #include
 "srcgen1/prelude/DATS/gseqn00.dats"
 *)
+//
 (* ****** ****** *)
 #include
 "srcgen1/prelude/DATS/gmap000.dats"
@@ -46,11 +49,26 @@ For ATS3/XATSOPT
 "srcgen1/prelude/DATS/gflt000.dats"
 (* ****** ****** *)
 #include
+"srcgen1/prelude/DATS/strn000.dats"
+(* ****** ****** *)
+#include
 "srcgen1/prelude/DATS/list000.dats"
 #include
 "srcgen1/prelude/DATS/optn000.dats"
 #include
 "srcgen1/prelude/DATS/strm000.dats"
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
+"srcgen1/prelude/DATS/synoug0.dats"
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
+"srcgen1/prelude/DATS/unsafex.dats"
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"srcgen1/prelude/DATS/VT/gseq000_vt.dats"
 (* ****** ****** *)
 #include
 "srcgen1/prelude/DATS/VT/list000_vt.dats"
