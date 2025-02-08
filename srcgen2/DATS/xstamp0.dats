@@ -43,8 +43,13 @@ ATS_PACKNAME
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(*
 #include
 "./../HATS/xatsopt_dats.hats"
+*)
+#include
+"./../HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
