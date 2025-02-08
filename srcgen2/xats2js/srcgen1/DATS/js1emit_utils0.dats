@@ -229,19 +229,60 @@ end(*let*)//end-of-[d2varjs1(env0,dvar)]
 (* ****** ****** *)
 //
 #implfun
-i1tnmjs1
-( filr,itnm ) =
+i0i00js1
+(filr, i00) =
 (
-prints("jstnm", stmp)) where
+prints
+("XATSINT0(", i00, ")")
+) where
 {
-//
 #impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i0i00js1(...)]
 //
-val stmp = i1tnm_get_stmp(itnm)
+#implfun
+i0b00js1
+(filr, b00) =
+(
+prints
+("XATSBTF0(", b00, ")")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i0b00js1(...)]
 //
-}(*where*)//end-of-[i1tnmjs1(filr,itnm)]
+#implfun
+i0c00js1
+(filr, c00) =
+(
+prints
+("XATSCHR0(", c00, ")")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i0c00js1(...)]
 //
-(* ****** ****** *)
+#implfun
+i0f00js1
+(filr, f00) =
+(
+prints
+("XATSFLT0(", f00, ")")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i0f00js1(...)]
+//
+#implfun
+i0s00js1
+(filr, s00) =
+(
+prints
+("XATSSTR0(", s00, ")")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i0s00js1(...)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -403,6 +444,22 @@ strn_fprint(filr, "\\\"")
 }
 //
 }(*where*)//end-of-[i0strjs1(filr,tstr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1tnmjs1
+( filr,itnm ) =
+(
+prints("jstnm", stmp)) where
+{
+//
+#impltmp g_print$out<>() = filr
+//
+val stmp = i1tnm_get_stmp(itnm)
+//
+}(*where*)//end-of-[i1tnmjs1(filr,itnm)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

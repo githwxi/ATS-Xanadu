@@ -74,10 +74,21 @@ d2varjs1
 (* ****** ****** *)
 //
 fun
-i1tnmjs1
-(filr:FILR,itnm:i1tnm): void
+i0i00js1
+(filr:FILR,int0:sint): void
+fun
+i0b00js1
+(filr:FILR,btf0:bool): void
+fun
+i0c00js1
+(filr:FILR,chr0:char): void
+fun
+i0f00js1
+(filr:FILR,flt0:dflt): void
+fun
+i0s00js1
+(filr:FILR,str0:strn): void
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -96,6 +107,14 @@ fun
 i0strjs1
 (filr:FILR,tstr:token): void
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1tnmjs1
+(filr:FILR,itnm:i1tnm): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
