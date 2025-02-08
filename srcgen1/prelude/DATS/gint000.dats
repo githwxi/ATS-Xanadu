@@ -75,6 +75,8 @@ g_neqrf<sint> = g_noteq<sint>
 
 #impltmp
 g_print<sint> = gint_print$sint<>
+#impltmp
+g_print<uint> = gint_print$uint<>
 
 (* ****** ****** *)
 //

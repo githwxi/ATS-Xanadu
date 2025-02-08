@@ -29,11 +29,11 @@ ATS3_XANADU_srcgen1_prelude/DATS
 #staload _ = "./../DATS/gint000.dats"
 #staload _ = "./../DATS/gflt000.dats"
 (* ****** ****** *)
+#staload _ = "./../DATS/strn000.dats"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload _ = "./../DATS/arrn000.dats"
 #staload _ = "./../DATS/arrn001.dats"
-(* ****** ****** *)
-#staload _ = "./../DATS/strn000.dats"
 (* ****** ****** *)
 #staload _ = "./../DATS/list000.dats"
 #staload _ = "./../DATS/optn000.dats"

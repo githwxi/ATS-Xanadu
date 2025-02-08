@@ -21,6 +21,15 @@ For ATS3/XATSOPT
 /prelude/SATS/gseq000.sats"
 //
 (* ****** ****** *)
+(*
+#staload
+"srcgen1\
+/prelude/SATS/gfor000.sats"
+#staload
+"srcgen1\
+/prelude/SATS/gfun000.sats"
+*)
+(* ****** ****** *)
 //
 #staload
 "srcgen1\

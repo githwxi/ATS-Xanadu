@@ -51,6 +51,13 @@ For ATS3/XATSOPT
 #include
 "srcgen1/prelude/DATS/strn000.dats"
 (* ****** ****** *)
+(*
+#include
+"srcgen1/prelude/DATS/arrn000.dats"
+#include
+"srcgen1/prelude/DATS/arrn001.dats"
+*)
+(* ****** ****** *)
 #include
 "srcgen1/prelude/DATS/list000.dats"
 #include
