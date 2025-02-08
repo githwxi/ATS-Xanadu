@@ -1813,6 +1813,7 @@ a0ref_print$end<>() = print(xend)
 //HX: list-printing
 (* ****** ****** *)
 //
+(*
 #impltmp
 {a0:t0}
 {n0:i0}
@@ -1827,6 +1828,7 @@ a1ref_print1<a0>{n0}(A0, n0)
 //
 val n0 = a1ref_length<a0><n0>(A0)
 } (*where*) // end-of-[g_print(A0)]
+*)
 //
 #impltmp
 {a0:t0}
@@ -1837,13 +1839,13 @@ g_print<a1rsz(a0)> = a1rsz_print1<a0>
 #impltmp
 <a0>(*tmp*)
 a1ref_print1
-{n0}(A0, n0) =
+{n0:i0}(A0, n0) =
 (
 gseq_print1
 <A0><a0>(A0)) where
 {
 //
-#typedef A0 = a1ref(a0)
+#typedef A0 = a1ref(a0, n0)
 //
 #impltmp
 a1ref_length<a0><n0>(A0) = n0
@@ -1868,7 +1870,7 @@ gseq_print$sep1
 #impltmp
 <a0>(*tmp*)
 a1rsz_print1
-{n0}(A0, n0) =
+{n0:i0}( A0 ) =
 (
 gseq_print1
 <A0><a0>(A0)) where

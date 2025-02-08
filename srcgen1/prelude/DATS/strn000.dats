@@ -229,7 +229,7 @@ in//let
 end // end of [strn_append_vt]
 //
 (* ****** ****** *)
-
+(*
 #impltmp<>
 strn_reverse
 {n0}(cs) =
@@ -258,9 +258,9 @@ in
 end (*let*)//tabulate$fopr(...)
 //
 end//let//end-of-[strn_reverse(cs)]
-
+*)
 (* ****** ****** *)
-
+(*
 #impltmp<>
 strn_reverse_vt
 {n0}(cs) =
@@ -289,7 +289,7 @@ in
 end (*let*)//strn_reverse_vt
 //
 end//end-of-[strn_reverse_vt(cs)]
-
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -619,15 +619,18 @@ gseq_concat_lstrn<strm(strn)>(css)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <n0>(*tmp*)
 strn_tabulate(n0) =
 (
 strn_vt2t(strn_vt_tabulate<n0>(n0))
 )
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <>(*tmp*)
 strn_tabulate$f1un
@@ -652,6 +655,7 @@ strn_vt_tabulate<n>(n0)
 #impltmp
 tabulate$fopr<cgtz><n>(i0) = f0(i0)
 }
+*)
 //
 (* ****** ****** *)
 //
@@ -724,8 +728,8 @@ if
 (i0 >= n1)
 then true else
 let
-val c1 = s1[i0]
-val c2 = s2[n2-n1+i0]
+val c1 = s1[i0]: char
+val c2 = s2[n2-n1+i0]: char
 in//let
 if
 (c1 = c2) then loop(n1,i0+1) else false

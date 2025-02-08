@@ -9,6 +9,21 @@ For ATS3/XATSOPT
 //
 #staload
 "srcgen1\
+/prelude/SATS/gbas000.sats"
+#staload
+"srcgen1\
+/prelude/SATS/gord000.sats"
+#staload
+"srcgen1\
+/prelude/SATS/gnum000.sats"
+#staload
+"srcgen1\
+/prelude/SATS/gseq000.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"srcgen1\
 /prelude/SATS/bool000.sats"
 #staload
 "srcgen1\
@@ -28,27 +43,6 @@ For ATS3/XATSOPT
 //
 #staload
 "srcgen1\
-/prelude/SATS/synoug0.sats"
-//
-(* ****** ****** *)
-//
-#staload
-"srcgen1\
-/prelude/SATS/gbas000.sats"
-#staload
-"srcgen1\
-/prelude/SATS/gord000.sats"
-#staload
-"srcgen1\
-/prelude/SATS/gnum000.sats"
-#staload
-"srcgen1\
-/prelude/SATS/gseq000.sats"
-//
-(* ****** ****** *)
-//
-#staload
-"srcgen1\
 /prelude/SATS/list000.sats"
 #staload
 "srcgen1\
@@ -57,6 +51,13 @@ For ATS3/XATSOPT
 "srcgen1\
 /prelude/SATS/strm000.sats"
 //
+(* ****** ****** *)
+//
+#staload
+"srcgen1\
+/prelude/SATS/synoug0.sats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
