@@ -162,15 +162,12 @@ sort2_int(token2sint(tok))
 //
 |S1Ta0pp _ => sort2_none1(s1t0)
 //
-|
-S1Ta1pp _ => f0_a1pp(env0, s1t0)
-|
-S1Ta2pp _ => f0_a2pp(env0, s1t0)
+|S1Ta1pp _ => f0_a1pp(env0, s1t0)
+|S1Ta2pp _ => f0_a2pp(env0, s1t0)
 //
-|
-S1Tlist _ => f0_list(env0, s1t0)
+|S1Tlist _ => f0_list(env0, s1t0)
 //
-| S1Tqual _ => sort2_none1(s1t0)
+| S1Tqual0 _ => sort2_none1(s1t0)
 //
 | S1Tnone0() => sort2_none1(s1t0)
 | S1Tnone1(s0t0) => sort2_none1(s1t0)

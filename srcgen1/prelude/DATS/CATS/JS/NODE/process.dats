@@ -1,17 +1,15 @@
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-"./../basics1.dats"
+#staload "./../basics1.dats"
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef
-argv = jsarray(strn)
+#typedef argv = jsarray(strn)
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_NODE_argv_get
+XATS2JS_NODE_argv$get
   ((*void*)): argv = $extnam()
 //
 (* ****** ****** *)

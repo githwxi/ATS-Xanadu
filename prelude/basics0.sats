@@ -1487,6 +1487,97 @@ fc_list_vt{a:vt}
 (* ****** ****** *)
 (* ****** ****** *)
 //
+// HX: singleton
+// HX: 1-dimensional
+// HX: 2-dimensional
+//
+(* ****** ****** *)
+//
+#abstbox
+a0ref_vt_tx(elem:vwtp)
+#typedef
+a0ref(a:vt) = a0ref_vt_tx(a)
+//
+(* ****** ****** *)
+//
+#abstbox
+a1ref_vt_i0_tx(elem:vt,ntot:i0)
+#abstbox
+a1rsz_vt_i0_x0(elem:vt, ntot:i0)
+//
+#typedef
+a1ref(a:vt,n:i0) = a1ref_vt_i0_tx(a, n)
+#typedef
+a1rsz(a:vt,n:i0) = a1rsz_vt_i0_x0(a, n)
+//
+(* ****** ****** *)
+//
+#abstbox
+a2ref_vt_i0_i0_tx(elem:vt,nrow:i0,ncol:i0)
+#abstbox
+a2rsz_vt_i0_i0_x0(elem:vt,nrow:i0,ncol:i0)
+//
+#typedef
+a2ref(a:vt,m:i0,n:i0) = a2ref_vt_i0_i0_tx(a, m, n)
+#typedef
+a2rsz(a:vt,m:i0,n:i0) = a2rsz_vt_i0_i0_x0(a, m, n)
+//
+(* ****** ****** *)
+//
+#typedef
+a1rsz(a:vt) = [n:i0] a1rsz(a, n)
+#typedef
+a2rsz(a:vt) = [m:i0;n:i0] a2rsz(a, m, n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+// HX: singleton
+// HX: 1-dimensional
+// HX: 2-dimensional
+//
+(* ****** ****** *)
+//
+#absvtbx
+a0ptr_vt_vx(elem:vwtp)
+//
+#vwtpdef
+a0ptr(a:vt) = a0ptr_vt_vx(a)
+//
+(* ****** ****** *)
+//
+#absvtbx
+a1ptr_vt_i0_vx(elem:vt,ntot:i0)
+#absvtbx
+a1psz_vt_i0_vx(elem:vt,ntot:i0)
+//
+#vwtpdef
+a1ptr(a:vt,n:i0) = a1ptr_vt_i0_vx(a, n)
+#vwtpdef
+a1psz(a:vt,n:i0) = a1psz_vt_i0_vx(a, n)
+//
+(* ****** ****** *)
+//
+#absvtbx
+a2ptr_vt_i0_i0_vx(elem:vt,nrow:i0,ncol:i0)
+#absvtbx
+a2psz_vt_i0_i0_vx(elem:vt,nrow:i0,ncol:i0)
+//
+#vwtpdef
+a2ptr(a:vt,m:i0,n:i0) = a2ptr_vt_i0_i0_vx(a, m, n)
+#vwtpdef
+a2psz(a:vt,m:i0,n:i0) = a2psz_vt_i0_i0_vx(a, m, n)
+//
+(* ****** ****** *)
+//
+#vwtpdef
+a1psz(a:vt) = [n:i0] a1psz(a, n)
+#vwtpdef
+a2psz(a:vt) = [m:i0;n:i0] a2psz(a, m, n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

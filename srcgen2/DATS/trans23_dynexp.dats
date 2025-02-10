@@ -109,41 +109,8 @@ _(*TRANS23*) = "./trans23.dats"
 #symload d3exp with d3exp_make_node
 #symload d3exp with d3exp_make_tpnd
 (* ****** ****** *)
-//
-fun
-<a:t0>
-<b:t0>
-list_ziprev
-( xs
-: list(a)
-, ys
-: list(b))
-: list@(a, b) =
-(
-  ziprev(xs, ys)) where
-{
-fun
-ziprev(xs, ys) =
-(
-case+ xs of
-|
-list_nil() =>
-list_nil((*0*))
-|
-list_cons(x1, xs) =>
-(
-case+ ys of
-|
-list_nil() =>
-list_nil((*0*))
-|
-list_cons(y1, ys) =>
-list_cons
-((x1, y1), ziprev(xs, ys))))}//tmp
-//
 (* ****** ****** *)
-//
-fun
+fn0
 s2typ_new0_x2tp
 ( loc0: loc_t ): s2typ =
 (
@@ -164,6 +131,44 @@ case+ svts of
 s2typ_subst0(t2p0, svts))
 )(*case+*) // s2typ_subst0
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+<a:t0>
+<b:t0>
+list_ziprev
+( xs: list(a)
+, ys: list(b)): list@(a, b)
+//
+#impltmp
+<a:t0>
+<b:t0>
+list_ziprev
+  (xs, ys) =
+(
+  ziprev(xs, ys)) where
+{
+fun
+ziprev(xs, ys) =
+(
+case+ xs of
+|
+list_nil() => list_nil()
+|
+list_cons(x1, xs) =>
+(
+case+ ys of
+|
+list_nil() => list_nil()
+|
+list_cons(y1, ys) =>
+list_cons
+((x1, y1), ziprev(xs, ys))))
+}(*where*)//end-of-(list_ziprev)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

@@ -26,71 +26,17 @@
 *)
 
 (* ****** ****** *)
-//
-// For pure arrays in C
-//
 (* ****** ****** *)
+//
+(*
+For pure arrays in C
+*)
 //
 (*
 Author: Hongwei Xi
 Start Time: May 28, 2020
 Authoremail: gmhwxiATgmailDOTcom
 *)
-//
-(* ****** ****** *)
-// HX: singleton
-(* ****** ****** *)
-//
-#absvtbx
-a0ptr_vt_vx
-(elem:vwtp)
-//
-#vwtpdef
-a0ptr(a:vt) = a0ptr_vt_vx(a)
-//
-(* ****** ****** *)
-// HX: 1-dimensional
-(* ****** ****** *)
-//
-#absvtbx
-a1ptr_vt_i0_vx
-(elem:vt,ntot:i0)
-#absvtbx
-a1psz_vt_i0_vx
-(elem:vt,ntot:i0)
-//
-#vwtpdef
-a1ptr(a:vt,n:i0) = a1ptr_vt_i0_vx(a, n)
-#vwtpdef
-a1psz(a:vt,n:i0) = a1psz_vt_i0_vx(a, n)
-//
-(* ****** ****** *)
-// HX: 2-dimensional
-(* ****** ****** *)
-//
-#absvtbx
-a2ptr_vt_i0_i0_vx
-(elem:vt,nrow:i0,ncol:i0)
-#absvtbx
-a2psz_vt_i0_i0_vx
-(elem:vt,nrow:i0,ncol:i0)
-//
-#vwtpdef
-a2ptr
-(a:vt
-,m:i0,n:i0) = a2ptr_vt_i0_i0_vx(a, m, n)
-#vwtpdef
-a2psz
-(a:vt
-,m:i0,n:i0) = a2psz_vt_i0_i0_vx(a, m, n)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#vwtpdef
-a1psz(a:vt) = [n:i0] a1psz(a, n)
-#vwtpdef
-a2psz(a:vt) = [m:i0;n:i0] a2psz(a, m, n)
 //
 (* ****** ****** *)
 (* ****** ****** *)

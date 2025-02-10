@@ -26,47 +26,18 @@
 *)
 
 (* ****** ****** *)
-//
-// For pure arrays in C
-//
 (* ****** ****** *)
 //
+(*
+For pure arrays in C
+*)
+//
+(* ****** ****** *)
 (*
 Author: Hongwei Xi
 Wed Dec 20 22:43:58 EST 2023
 Authoremail: gmhwxiATgmailDOTcom
 *)
-//
-(* ****** ****** *)
-// HX: 1-dimensional
-(* ****** ****** *)
-//
-#abstbox
-a1rsz_vt_i0_x0
-(elem:vt, ntot:i0)
-//
-#typedef
-a1rsz(a:vt,n:i0) = a1rsz_vt_i0_x0(a, n)
-//
-(* ****** ****** *)
-// HX: 2-dimensional
-(* ****** ****** *)
-//
-#abstbox
-a2rsz_vt_i0_i0_x0
-(elem:vt,nrow:i0,ncol:i0)
-//
-#typedef
-a2rsz
-(a:vt
-,m:i0,n:i0) = a2rsz_vt_i0_i0_x0(a, m, n)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef
-a1rsz(a:vt) = [n:i0] a1rsz(a, n)
-#typedef
-a2rsz(a:vt) = [m:i0;n:i0] a2rsz(a, m, n)
 (* ****** ****** *)
 (* ****** ****** *)
 //

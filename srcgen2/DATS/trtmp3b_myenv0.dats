@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,14 +37,23 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/xatsopt_sats.hats"
+(*
+#include
+"./../HATS/xatsopt_dats.hats"
+*)
+#include
+"./../HATS/xatsopt_dpre.hats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
@@ -663,8 +673,10 @@ val+
 //
 in//let
 //
-(
-  tmpstk_locjoin(tmpstk); $fold(env0))
+let
+val err =
+tmpstk_locjoin(tmpstk) in $fold(env0)
+end // end-of-(let)
 //
 end(*let*)//end-of-(tr3benv_locjoin(env0))
 //

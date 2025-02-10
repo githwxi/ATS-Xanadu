@@ -355,7 +355,9 @@ end // end of [else]
 gseq_forall
   (xs) =
 strm_vt_forall0<x0>
-(gseq_strmize<xs><x0>(xs)) where
+(
+gseq_strmize<xs><x0>(xs))
+where
 {
   #impltmp
   forall$test0<x0> = forall$test<x0>
@@ -369,13 +371,17 @@ gseq_foritm(xs) =
 let
 val
 test =
-gseq_forall<xs><x0>(xs) where
+(
+gseq_forall<xs><x0>(xs))
+where
 {
-#impltmp
-forall$test<x0>(x0) =
-let
-val () =
-foritm$work<x0>(x0) in true end
+//
+  #impltmp
+  forall$test<x0>(x0) =
+  let
+  val () =
+  foritm$work<x0>(x0) in true end
+//
 } (*where*) // end of [ val(test) ]
 in//let
   // nothing

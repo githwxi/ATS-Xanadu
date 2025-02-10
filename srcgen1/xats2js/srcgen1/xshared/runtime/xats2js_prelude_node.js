@@ -90,7 +90,7 @@ Process for Xats2js/Node
 /* ****** ****** */
 //
 function
-XATS2JS_NODE_argv_get
+XATS2JS_NODE_argv$get
   (/*void*/)
 {
   return process.argv; }

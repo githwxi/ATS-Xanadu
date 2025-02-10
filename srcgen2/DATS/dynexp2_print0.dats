@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,14 +37,23 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/xatsopt_sats.hats"
+(*
+#include
+"./../HATS/xatsopt_dats.hats"
+*)
+#include
+"./../HATS/xatsopt_dpre.hats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #staload
 _(*?*) = "./lexing0_print0.dats"
@@ -1162,7 +1172,7 @@ end (*let*) // end of [simpl_fprint(...)]
 dimpl_fprint
 (out, dimp) =
 let
-#implfun
+#impltmp
 g_print$out<>() = out
 in//let
 //
