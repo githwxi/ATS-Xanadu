@@ -43,12 +43,19 @@ Mon 11 Mar 2024 02:29:52 PM EDT
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
+(*
 #include
 "./../../..\
 /HATS/xatsopt_dats.hats"
+*)
+#include
+"./../../..\
+/HATS/xatsopt_dpre.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #include
@@ -56,13 +63,6 @@ XATSOPT "./../../.."
 #staload
 UN = "prelude/SATS/unsafe.sats"
 //
-(* ****** ****** *)
-#include
-"./../../..\
-/HATS/xatsopt_sats.hats"
-#include
-"./../../..\
-/HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #include
 "./../HATS/mytmplib00.hats"
