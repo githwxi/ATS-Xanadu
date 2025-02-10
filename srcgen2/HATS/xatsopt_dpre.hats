@@ -6,6 +6,10 @@ For ATS3/XATSOPT
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+#symload // > 0100
+print with g_print of 0101
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "srcgen1/prelude/DATS/gbas000.dats"
 (* ****** ****** *)
@@ -69,6 +73,9 @@ For ATS3/XATSOPT
 #include
 "srcgen1/prelude/DATS/synoug0.dats"
 (* ****** ****** *)
+#include
+"srcgen1/prelude/DATS/tupl000.dats"
+(* ****** ****** *)
 (* ****** ****** *)
 #include
 "srcgen1/prelude/DATS/unsafex.dats"
@@ -80,6 +87,16 @@ For ATS3/XATSOPT
 #include
 "srcgen1/prelude/DATS/VT/strn000_vt.dats"
 (* ****** ****** *)
+//
+#include
+"srcgen1/prelude/DATS/VT/arrn000_vt.dats"
+(*
+#include
+"srcgen1/prelude/DATS/VT/arrn001_vt.dats"
+*)
+//
+(* ****** ****** *)
+//
 #include
 "srcgen1/prelude/DATS/VT/list000_vt.dats"
 #include
@@ -91,15 +108,8 @@ For ATS3/XATSOPT
 "srcgen1/prelude/DATS/VT/strm001_vt.dats"
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
 #include
-"srcgen1/xatslib/githwxi/DATS/genv000.dats"
-#include
-"srcgen1/xatslib/githwxi/DATS/f00path.dats"
-#include
-"srcgen1/xatslib/githwxi/DATS/g00iout.dats"
-//
+"srcgen1/prelude/DATS/VT/synoug0_vt.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -124,9 +134,70 @@ For ATS3/XATSOPT
 (* ****** ****** *)
 //
 #impltmp
+< a:t0 >
+a0ref_get(A0) =
+(
+a0ref_dtget<a>(A0))
+//
+#impltmp
+< a:vt >
+a0ref_exch(A0, x0) =
+(
+$UN.castlin10{a}(x1)
+) where
+{
+//
+val x1 =
+(
+  a0ref_dtget<a>(A0))
+//
+val x0 =
+(
+  $UN.castlin10{?a}(x0))
+//
+val A1 =
+$UN.cast10{a0ref(?a)}(A0)
+//
+val () =
+XATS2JS_a0ref_set{?a}(A1, x0)
+where
+{
+#extern
+fun
+XATS2JS_a0ref_set
+{a:t0}
+( A0
+: a0ref(a)
+, x0 : (a)) : void = $extnam() }
+//
+} (*where*) // a0ref_exch(A0, x0)
+//
+(* ****** ****** *)
+//
+#impltmp
 < a:vt >
 a0ref_make_1val(x0) =
 a0ptr2ref(a0ptr_make0_1val<a>(x0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+strn_forall<>(cs) =
+let
+//
+#extern
+fun
+XATS2JS_strn_forall$f1un
+( cs: strn
+, f0: (cgtz) -> bool): bool
+= $extnam((*self*))//native
+//
+in
+XATS2JS_strn_forall$f1un
+( cs
+, lam(c0) => forall$test<cgtz>(c0))
+end//let//end-of-[strn_forall<>(cs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -188,11 +259,32 @@ strtmp_vt_set$at<>(p0, i0, c0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#symload print with g_print of 0101 // > 0100
+//
+#include
+"srcgen1/xatslib/libcats/DATS/synoug0.dats"
+//
+(* ****** ****** *)
+//
+#include
+"srcgen1/xatslib/githwxi/DATS/genv000.dats"
+#include
+"srcgen1/xatslib/githwxi/DATS/f00path.dats"
+#include
+"srcgen1/xatslib/githwxi/DATS/g00iout.dats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #staload _(*local*) = "./../DATS/xatsopt_tmplib.dats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#include
+"srcgen1/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_HATS_xatsopt_dpre.hats] *)

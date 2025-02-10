@@ -81,7 +81,6 @@ list_trsym2b_fnp
 , (!tr2aenv, x0) -> void): void
 fun
 <x0:t0>
-<y0:t0>
 optn_trsym2b_fnp
 ( e1:
 ! tr2aenv

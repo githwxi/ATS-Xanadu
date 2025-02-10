@@ -39,10 +39,16 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../HATS/libxatsopt.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #include
 "./../HATS/xatsopt_sats.hats"
+(*
 #include
 "./../HATS/xatsopt_dats.hats"
+*)
+#include
+"./../HATS/xatsopt_dpre.hats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -151,17 +157,12 @@ else
 //
 local
 //
-#staload
-"\
-srcgen1\
-/prelude\
-/DATS/CATS/JS/basics1.dats"
-(* ****** ****** *)
-#staload
-"\
-srcgen1\
-/prelude\
-/DATS/CATS/JS/NODE/process.dats"
+#typedef
+argv = jsarray(strn)
+#extern
+fun
+XATS2JS_NODE_argv$get
+  ((*void*)): argv = $extnam()
 //
 (* ****** ****** *)
 in//local
@@ -219,7 +220,7 @@ prerrsln("\
 //
 val argv =
 (
-  XATS2JS_NODE_argv_get((*void*)))
+  XATS2JS_NODE_argv$get((*void*)))
 (*
 val (  ) = prerrsln
 ("// xatsopt_typing: argv = ", argv)

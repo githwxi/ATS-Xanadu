@@ -38,47 +38,6 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-//
-// HX-2020-06-10:
-// Note that
-// [array_vt] is included
-//
-(* ****** ****** *)
-// HX: singleton
-(* ****** ****** *)
-//
-#abstbox
-a0ref_vt_tx
-(elem:vwtp)
-//
-#typedef
-a0ref(a:vt) = a0ref_vt_tx(a)
-//
-(* ****** ****** *)
-// HX: 1-dimensional
-(* ****** ****** *)
-//
-#abstbox
-a1ref_vt_i0_tx
-(elem:vt,ntot:i0)
-//
-#typedef
-a1ref(a:vt,n:i0) = a1ref_vt_i0_tx(a, n)
-//
-(* ****** ****** *)
-// HX: 2-dimensional
-(* ****** ****** *)
-//
-#abstbox
-a2ref_vt_i0_i0_tx
-(elem:vt,nrow:i0,ncol:i0)
-//
-#typedef
-a2ref
-(a:vt
-,m:i0,n:i0) = a2ref_vt_i0_i0_tx(a, m, n)
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

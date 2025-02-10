@@ -1081,6 +1081,7 @@ gseq_foritm
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 {xs:t0
 ,x0:t0
@@ -1096,12 +1097,14 @@ z2tup
 let
 val
 (xs, ys) =
-put2z(ztup) in//in
+z2tup_decode(ztup) in//in
 gseq_z2foritm$f2un<xs><x0><ys><y0>
 (xs, ys, lam(x0, y0) => work@(x0, y0)) end
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 {xs:t0
 ,x0:t0
@@ -1117,9 +1120,10 @@ x2tup
 let
 val
 (xs, ys) =
-put2x(xtup) in//in
+x2tup_decode(xtup) in//in
 gseq_x2foritm$f2un<xs><x0><ys><y0>
 (xs, ys, lam(x0, y0) => work@(x0, y0)) end
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

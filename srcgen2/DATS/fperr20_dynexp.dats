@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,14 +37,23 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/xatsopt_sats.hats"
+(*
+#include
+"./../HATS/xatsopt_dats.hats"
+*)
+#include
+"./../HATS/xatsopt_dpre.hats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
@@ -53,6 +63,7 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/fperr20.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #define FPERR20_ERRVL 2
 (* ****** ****** *)
@@ -73,6 +84,7 @@ ATS_PACKNAME
 #symload node with d2gpt_get_node
 #symload lctn with d2cls_get_lctn
 #symload node with d2cls_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 
 local

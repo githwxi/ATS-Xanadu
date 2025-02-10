@@ -455,18 +455,26 @@ a0ptr_free<a>(A0) = ()
 //
 (* ****** ****** *)
 //
+#impltmp
+{ a:t0 }
+a0ref_get<a> =
+XATS2JS_a0ref_get where
+{
 #extern
 fun
 XATS2JS_a0ref_get
 {a:t0}
 ( A0
 : a0ref(a)): ( a ) = $extnam()
-#impltmp
-{ a:t0 }
-a0ref_get<a> = XATS2JS_a0ref_get
+}
 //
 (* ****** ****** *)
 //
+#impltmp
+{ a:t0 }
+a0ref_set<a> =
+XATS2JS_a0ref_set where
+{
 #extern
 fun
 XATS2JS_a0ref_set
@@ -474,9 +482,7 @@ XATS2JS_a0ref_set
 ( A0
 : a0ref(a)
 , x0 : (a)) : void = $extnam()
-#impltmp
-{ a:t0 }
-a0ref_set<a> = XATS2JS_a0ref_set
+}
 //
 (* ****** ****** *)
 //

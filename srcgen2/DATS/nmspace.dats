@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,22 +37,33 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #staload UN =
 "srcgen1\
 /prelude/SATS/unsafex.sats"
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/xatsopt_sats.hats"
+(*
+#include
+"./../HATS/xatsopt_dats.hats"
+*)
+#include
+"./../HATS/xatsopt_dpre.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #staload "./../SATS/nmspace.sats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #vwtpdef
@@ -263,8 +275,8 @@ val ( ) = nmitmlst2_vt_free(xss)
 (* ****** ****** *)
 
 #implfun
-the_nmspace_find_f1un
-  {a}(fopr) = let
+the_nmspace_find$f1un
+  {a:tx}(fopr) = let
 //
 #typedef
 fopr_t =
@@ -339,7 +351,7 @@ optn_vt_nil() => ans where
 }
 | _(*optn_vt_cons(itm)*) => ans)
 //
-end(*let*)//end-of-[the_nmspace_find_f1un]
+end(*let*)//end-of-[the_nmspace_find$f1un]
 
 (* ****** ****** *)
 

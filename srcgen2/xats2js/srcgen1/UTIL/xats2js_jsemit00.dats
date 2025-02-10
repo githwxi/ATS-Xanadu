@@ -38,9 +38,15 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
+(*
 #include
 "./../../..\
 /HATS/xatsopt_dats.hats"
+*)
+#include
+"./../../..\
+/HATS/xatsopt_dpre.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 #include
 "./../HATS/libxatsopt.hats"
@@ -60,8 +66,20 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 "./../SATS/js1emit.sats"
 //
+(* ****** ****** *)
+//
 #staload _ =
 "./../DATS/xats2js_tmplib.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef
+argv = jsarray(strn)
+#extern
+fun
+XATS2JS_NODE_argv$get
+  ((*void*)): argv = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -120,19 +138,6 @@ val dpar = d3parsed_of_fildats(fpath)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-"\
-srcgen1\
-/prelude\
-/DATS/CATS/JS/basics1.dats"
-(* ****** ****** *)
-#staload
-"\
-srcgen1\
-/prelude\
-/DATS/CATS/JS/NODE/process.dats"
-(* ****** ****** *)
-(* ****** ****** *)
 //
 val () =
 mymain() where
@@ -186,7 +191,7 @@ prerrsln("\
 //
 val argv =
 (
-  XATS2JS_NODE_argv_get((*void*)))
+  XATS2JS_NODE_argv$get((*void*)))
 (*
 val (  ) = prerrsln
 ("// xats2js_jsemit: argv = ", argv)

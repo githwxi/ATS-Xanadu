@@ -144,8 +144,12 @@ let
 val A0 =
 a1ptr_alloc(n0)
 val () =
-gseq_iforitm(xs) where
+(
+gseq_iforitm
+<xs><a>( xs )) where
 {
+#vwtpdef
+xs = list(a, n)
 #impltmp
 iforitm$work<a>(i, x) =
 let
@@ -169,8 +173,12 @@ let
 val A0 =
 a1ptr_alloc(n0)
 val () =
-gseq_iforitm0(xs) where
+(
+gseq_iforitm0
+<xs><a>( xs )) where
 {
+#vwtpdef
+xs = list_vt(a, n)
 #impltmp
 iforitm$work0<a>(i, x) =
 let
@@ -193,6 +201,7 @@ For implementing g-ops
 *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 {a:vt}
 {n:i0}
@@ -203,6 +212,7 @@ a1ptr_free(A0, n0)
 ) where
 {
   val n0 = a1ptr_length1(A0) }//where
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
