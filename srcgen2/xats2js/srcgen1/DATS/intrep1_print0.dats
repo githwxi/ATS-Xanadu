@@ -727,7 +727,8 @@ dcl0.node() of
 //
 |I1Di0dcl
 (  dcl1  ) =>
-prints("I1Di0dcl(", dcl1, ")")
+(
+prints("I1Di0dcl(", dcl1, ")"))
 //
 (* ****** ****** *)
 //

@@ -59,6 +59,17 @@ ATS_PACKNAME
 //
 #implfun
 //<>(*tmp*)
+token_fprint
+  (out, tok) =
+(
+tnode_fprint(out, tok.node())
+)(*end-of-[token_fprint(...)]*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+//<>(*tmp*)
 tnode_fprint
   (out, tnd) =
 (
@@ -115,7 +126,8 @@ T_INT02(bas, rep) =>
 prints("T_INT02(", bas, ";", rep, ")")
 |
 T_INT03(bas, rep, sfx) =>
-prints("T_INT03(", bas, ";", rep, ";", sfx, ")")
+prints
+("T_INT03(", bas, ";", rep, ";", sfx, ")")
 //
 |
 T_FLT01(rep) =>
@@ -125,7 +137,8 @@ T_FLT02(bas, rep) =>
 prints("T_FLT02(", bas, ";", rep, ")")
 |
 T_FLT03(bas, rep, sfx) =>
-prints("T_FLT03(", bas, ";", rep, ";", sfx, ")")
+prints
+("T_FLT03(", bas, ";", rep, ";", sfx, ")")
 //
 |
 T_CHAR1_nil0(rep) =>
@@ -139,10 +152,22 @@ prints("T_CHAR3_blsh(", rep, ")")
 //
 |
 T_STRN1_clsd(rep, len) =>
-prints("T_STRN1_clsd(", rep, ";", len, ")")
+(
+prints
+("T_STRN1_clsd(", rep, ";", len, ")")
+) where
+{
+#impltmp g_print<strn> = my_strn_print
+}
 |
 T_STRN2_ncls(rep, len) =>
-prints("T_STRN2_ncls(", rep, ";", len, ")")
+(
+prints
+("T_STRN2_ncls(", rep, ";", len, ")")
+) where
+{
+#impltmp g_print<strn> = my_strn_print
+}
 //
 |
 T_CMNT1_line(ag1, ag2) =>
@@ -159,7 +184,7 @@ prints("T_CMNT4_mlbl(", lvl, ";", rep, ")")
 //
 (*
 HX-2022-06-15:
-The rest of for secondary tokens that are
+The rest for secondary tokens that are
 generated from the primary ones (that are
 obtained directly from lexing some source)
 *)
@@ -441,6 +466,8 @@ prints("T_SRP_NONFIX(", ")")
 T_SRP_FIXITY(knd) =>
 prints("T_SRP_FIXITY(", knd, ")")
 //
+(* ****** ****** *)
+//
 |T_SRP_STATIC() =>
 prints("T_SRP_STATIC(", ")")
 |T_SRP_EXTERN() =>
@@ -449,6 +476,8 @@ prints("T_SRP_EXTERN(", ")")
 prints("T_SRP_STAVAL(", ")")
 |T_SRP_EXTVAL() =>
 prints("T_SRP_EXTVAL(", ")")
+//
+(* ****** ****** *)
 //
 |
 T_SRP_DEFINE() =>
@@ -486,19 +515,71 @@ prints("T_SRP_EXTCODE(", ")")
 //
 ) where
 {
-#impltmp g_print$out<>() = out
-}(*where*)//end-of(tnode_fprint)
 //
-(* ****** ****** *)
-//
-#implfun
-//<>(*tmp*)
-token_fprint
-  (out, tok) =
+fun
+my_strn_print
+(rep: strn): void =
 (
-  tnode_fprint(out, tok.node())
-)
+  loop1( 0 ) ) where
+{
+//
+val n0 =
+strn_length(rep)
+//
+fnx
+loop1
+(i0: nint): void =
+if
+(i0 >= n0)
+then ((*0*)) else
+let
+//
+  val c0 = rep[i0]
+//
+in//let
+//
+if
+(c0 = '\\')
+then loop2(i0+1) else
+(
+char_fprint
+(out,  c0 ); loop1(i0+1))
+end//let//end-of-[loop1(i0)]
+//
+and
+loop2
+(i1: nint): void =
+if
+(i1 >= n0)
+then
+(
+char_fprint
+(out, '\\')) else
+let
+  val c1 = rep[i1]
+in (*let*)
+if
+(c1 = '\n')
+then loop1(i1+1) else
+(
+char_fprint
+(out, '\\');
+char_fprint
+(out,  c1 ); loop1(i1+1))
+end//let//end-of-[loop1(i1)]
+//
+#impltmp g_print$out<>() = out
+//
+}(*where*)//end-of-(my_strn_print)
 //
 (* ****** ****** *)
+//
+}(*where*)//end-of(tnode_fprint(out,node))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_lexing0_print0.dats] *)
