@@ -516,12 +516,17 @@ prints("T_SRP_EXTCODE(", ")")
 ) where
 {
 //
+#impltmp
+g_print$out
+< (*nil*) >((*void*)) = out
+//
+} where
+{
+//
 fun
 my_strn_print
 (rep: strn): void =
-(
-  loop1( 0 ) ) where
-{
+let
 //
 val n0 =
 strn_length(rep)
@@ -568,11 +573,9 @@ char_fprint
 (out,  c1 ); loop1(i1+1))
 end//let//end-of-[loop1(i1)]
 //
-#impltmp g_print$out<>() = out
-//
-}(*where*)//end-of-(my_strn_print)
-//
-(* ****** ****** *)
+in
+  let val i0 = 0 in loop1(i0) end
+end(*let*)//end-of-(my_strn_print(rep))
 //
 }(*where*)//end-of(tnode_fprint(out,node))
 //
