@@ -183,26 +183,6 @@ a0ptr2ref(a0ptr_make0_1val<a>(x0))
 (* ****** ****** *)
 //
 #impltmp
-strn_forall<>(cs) =
-let
-//
-#extern
-fun
-XATS2JS_strn_forall$f1un
-( cs: strn
-, f0: (cgtz) -> bool): bool
-= $extnam((*self*))//native
-//
-in
-XATS2JS_strn_forall$f1un
-( cs
-, lam(c0) => forall$test<cgtz>(c0))
-end//let//end-of-[strn_forall<>(cs)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
 <>(*tmp*)
 strn_tabulate$f1un
 (n0, fopr) =
