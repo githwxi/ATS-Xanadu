@@ -38,6 +38,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
@@ -49,6 +50,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../../..\
 /HATS/xatsopt_dpre.hats"
+//
 (* ****** ****** *)
 #include
 "./../HATS/mytmplib00.hats"
@@ -255,16 +257,44 @@ prints
 #impltmp g_print$out<>() = filr
 }(*where*)//end-of-[i0b00js1(...)]
 //
+(* ****** ****** *)
+//
 #implfun
 i0c00js1
 (filr, c00) =
 (
-prints
-("XATSCHR0(", c00, ")")
+print(
+"XATSCHR0(\"");
+f0_char( c00 );print("\")")
 ) where
 {
 #impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i0c00js1(...)]
+} where
+{
+fun
+f0_char
+(ch: char): void =
+(
+case+ ch of
+//
+| '\n' => strn_fprint(filr, "\\n")
+| '\t' => strn_fprint(filr, "\\t")
+| '\r' => strn_fprint(filr, "\\r")
+//
+(*
+| '\a' => strn_fprint(filr, "\\a")
+| '\g' => strn_fprint(filr, "\\g")
+*)
+//
+| '\b' => strn_fprint(filr, "\\b")
+| '\f' => strn_fprint(filr, "\\f")
+| '\v' => strn_fprint(filr, "\\v")
+//
+| _(*else*) => char_fprint(filr, ch)
+)
+}(*where*)//end-of-[i0c00js1(filr,c00)]
+//
+(* ****** ****** *)
 //
 #implfun
 i0f00js1
@@ -275,19 +305,33 @@ prints
 ) where
 {
 #impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i0f00js1(...)]
+}(*where*)//end-of-[i0f00js1(filr,f00)]
+//
+(* ****** ****** *)
 //
 #implfun
 i0s00js1
 (filr, s00) =
 (
-prints
-("XATSSTR0(", s00, ")")
+print(
+"XATSSTR0(\"");
+f0_strn( s00 ); print("\")")
 ) where
 {
-#impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i0s00js1(...)]
 //
+fun
+f0_strn
+(cs: strn): void =
+let
+val () =
+  strn_fprint(filr, cs) end//let
+//
+#impltmp
+g_print$out<(*nil*)>((*void*)) = filr
+//
+}(*where*)//end-of-[i0s00js1(filr,s00)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -310,7 +354,7 @@ tint.node() of
 ) where
 {
 #impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i0intjs1(...)]
+}(*where*)//end-of-[i0intjs1(filr,tint)]
 //
 (* ****** ****** *)
 //
@@ -325,7 +369,7 @@ else print("XATSBOOL(false)")
 ) where
 {
 #impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i0btfjs1(...)]
+}(*where*)//end-of-[i0btfjs1(filr,btf0)]
 //
 (* ****** ****** *)
 //
@@ -346,7 +390,7 @@ prints("XATSCHAR(", rep, ")")
 ) where
 {
 #impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i0chrjs1(...)]
+}(*where*)//end-of-[i0chrjs1(filr,tchr)]
 //
 (* ****** ****** *)
 //
@@ -380,75 +424,80 @@ i0strjs1
 ( filr, tstr) =
 let
 //
+fun
+f0_strn
+( rep1: strn
+, len2: sint): void =
+let
+//
+val n0 =
+strn_length(rep1)
+//
+fnx
+loop1
+(i0: nint): void =
+if
+(i0 >= n0)
+then ((*0*)) else
+let
+//
+  val c0 = rep1[i0]
+//
+in//let
+//
+if
+(c0 = '\\')
+then loop2(i0+1) else
+(
+char_fprint
+(filr,  c0 ); loop1(i0+1))
+end//let//end-of-[loop1(i0)]
+//
+and
+loop2
+(i1: nint): void =
+if
+(i1 >= n0)
+then
+(
+char_fprint
+(filr, '\\')) else
+let
+  val c1 = rep1[i1]
+in (*let*)
+if
+(c1 = '\n')
+then loop1(i1+1) else
+(
+char_fprint
+(filr, '\\');
+char_fprint
+(filr,  c1 ); loop1(i1+1))
+end//let//end-of-[loop1(i1)]
+//
+in
+let val i0 = 0 in loop1(i0) end
+end(*let*)//end-of-(f0_strn(rep))
+//
 #impltmp
-g_print$out<>() = filr
+g_print$out<(*nil*)>((*void*)) = filr
 //
 in//let
 //
 case-
 tstr.node() of
+//
 |T_STRN1_clsd
 ( rep1,len2 ) =>
-(
-print
-("XATSSTRN(");
-f0_strn(rep1, len2); print(")"))
+( print("XATSSTRN(");
+  f0_strn(rep1, len2); print(")"))
+//
 |T_STRN2_ncls
 ( rep1,len2 ) =>
-(
-print
-("XATSSTRN(\"");
-f0_strn(rep1, len2); print("\")"))
+( print("XATSSTRN(");
+  f0_strn(rep1, len2); print("\")"))
 //
-end where // end-of-[let]
-{
-//
-fun
-f0_strn
-(rep1: strn
-,len2: sint): void =
-(
-strn_iforitm(rep1)) where
-{
-#impltmp
-iforitm$work
-<cgtz>(i0, ch) =
-(
-case+ ch of
-| '"' =>
-strn_fprint(filr, "\"")
-(*
-if
-(0 = i0)
-then
-strn_fprint(filr, "\"")
-else
-if
-(i0+1 = len2)
-then
-strn_fprint(filr, "\"")
-else
-strn_fprint(filr, "\\\"")
-*)
-//
-| '\n' => strn_fprint(filr, "\\n")
-| '\t' => strn_fprint(filr, "\\t")
-| '\r' => strn_fprint(filr, "\\r")
-//
-(*
-| '\a' => strn_fprint(filr, "\\a")
-| '\g' => strn_fprint(filr, "\\g")
-*)
-//
-| '\b' => strn_fprint(filr, "\\b")
-| '\f' => strn_fprint(filr, "\\f")
-| '\v' => strn_fprint(filr, "\\v")
-//
-| _(*else*) => char_fprint(filr, ch)
-)
-}
-//
-}(*where*)//end-of-[i0strjs1(filr,tstr)]
+end(*let*)//end-of-[i0strjs1(filr,tstr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

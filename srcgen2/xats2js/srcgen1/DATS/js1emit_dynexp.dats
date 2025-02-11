@@ -897,6 +897,14 @@ ival.node() of
 //
 |I1Vi00
 ( int0 ) => i0i00js1(filr,int0)
+|I1Vb00
+( btf0 ) => i0b00js1(filr,btf0)
+|I1Vc00
+( chr0 ) => i0c00js1(filr,chr0)
+|I1Vf00
+( flt0 ) => i0f00js1(filr,flt0)
+|I1Vs00
+( str0 ) => i0s00js1(filr,str0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
