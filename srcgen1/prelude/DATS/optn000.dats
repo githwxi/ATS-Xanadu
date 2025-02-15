@@ -72,7 +72,7 @@ optn_consq(xs) =
 (
 case+ xs of
 | optn_nil() => false
-| optn_cons(x0) => (true))
+| optn_cons(x0) => true)
 //
 (* ****** ****** *)
 //
@@ -81,8 +81,8 @@ case+ xs of
 optn_length(xs) =
 (
 case+ xs of
-| none() => 0 | some(x0) => 1
-)
+| optn_nil() => ( 0 )
+| optn_cons(x0) => ( 1 ))
 //
 (* ****** ****** *)
 //
