@@ -125,15 +125,10 @@ with XATS2JS_jsarray_set$at of 1000
 //
 #extern
 fun
+<x0:t0>
 XATS2JS_jsarray_strmize
-{x0:t0}
 ( xs
 : jsarray(x0)): strm_vt(x0) = $extnam()
-//
-(*
-#symload strmize
-with XATS2JS_jsarray_strmize of 1000
-*)
 //
 (* ****** ****** *)
 #impltmp
@@ -147,13 +142,13 @@ gseq_print
 {x0:t0}
 gseq_strmize
 <jsarray(x0)><x0>(xs) =
-XATS2JS_jsarray_strmize(xs)
+XATS2JS_jsarray_strmize<x0>(xs)
 (* ****** ****** *)
 //
-#implfun
-XATS2JS_jsarray_strmize
+#impltmp
 {x0:t0}
-(  xs  ) =
+XATS2JS_jsarray_strmize
+<  x0  >(  xs  ) =
 (
   auxmain(0)) where
 {
@@ -179,7 +174,7 @@ XATS2JS_jsarray_strmize
     end // end of [else]
   ) (* end of [auxmain] *)
 //
-} (* end of [XATS2JS_jsarray_strmize] *)
+} (* end of [XATS2JS_jsarray_strmize<x0>] *)
 //
 (* ****** ****** *)
 //
@@ -212,6 +207,7 @@ XATS2JS_jsobjmap_keys
 ( map
 : jsobjmap(k0, x0)): jsarray(k0) = $extnam()
 }(*where*)//end(XATS2JS_jsobjmap_keys<int0>]
+//
 #impltmp
 XATS2JS_jsobjmap_keys
 <strn>(map) =
@@ -563,7 +559,7 @@ let
 val-
 ~optn_vt_cons(x0) =
 XATS2JS_jsobjmap_search$opt(kxs, k0) in (k0, x0)
-end
+end//let
 } (*where*)
 // end(gmap_strmize<jsobjmap(k0,x0)><k0><x0>(kxs))
 //
