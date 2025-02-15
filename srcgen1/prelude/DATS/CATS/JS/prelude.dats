@@ -18,7 +18,7 @@ UN = // for casting
 *)
 (* ****** ****** *)
 (*
-#implfun
+#impltmp
 {a:vt} // HX: This is
 g_free<a>(x0) = () // for JS!!!
 *)
