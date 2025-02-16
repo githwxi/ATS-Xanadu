@@ -1,0 +1,296 @@
+##################################################################
+##################################################################
+SED=sed
+##################################################################
+
+SRCDATS := \
+xbasics.dats \
+xbasics_print0.dats \
+xsynoug.dats \
+xerrory.dats \
+xglobal.dats \
+xstamp0.dats \
+xstamp0_print0.dats \
+xstamp0_tmpmap.dats \
+xsymbol.dats \
+xsymbol_print0.dats \
+xsymbol_mymap0.dats \
+xsymbol_inits0.dats \
+xlabel0.dats \
+xlabel0_print0.dats \
+filpath.dats \
+filpath_print0.dats \
+filpath_drpth0.dats \
+filpath_fpath0.dats \
+filpath_search.dats \
+locinfo.dats \
+locinfo_print0.dats \
+xsymmap.dats \
+xsymmap_topmap.dats \
+xsymmap_stkmap.dats \
+lexbuf0.dats \
+lexbuf0_cstrx1.dats \
+lexbuf0_cstrx2.dats \
+lexing0.dats \
+lexing0_print0.dats \
+lexing0_mymap0.dats \
+lexing0_kword0.dats \
+lexing0_token0.dats \
+lexing0_utils1.dats \
+lexing0_utils2.dats \
+staexp0.dats \
+staexp0_print0.dats \
+dynexp0.dats \
+dynexp0_print0.dats \
+parsing.dats \
+parsing_basics.dats \
+parsing_tokbuf.dats \
+parsing_utils0.dats \
+parsing_staexp.dats \
+parsing_dynexp.dats \
+parsing_decl00.dats \
+preadx0.dats \
+preadx0_staexp.dats \
+preadx0_dynexp.dats \
+preadx0_decl00.dats \
+preadx0_errmsg.dats \
+xfixity.dats \
+staexp1.dats \
+staexp1_print0.dats \
+dynexp1.dats \
+dynexp1_print0.dats \
+gmacro1.dats \
+gmacro1_print0.dats \
+trans01.dats \
+trans01_myenv0.dats \
+trans01_utils0.dats \
+trans01_staexp.dats \
+trans01_dynexp.dats \
+trans01_decl00.dats \
+tread01.dats \
+tread01_staexp.dats \
+tread01_dynexp.dats \
+tread01_decl00.dats \
+tread01_errmsg.dats \
+staexp2.dats \
+statyp2.dats \
+staexp2_print0.dats \
+statyp2_print0.dats \
+staexp2_inits0.dats \
+statyp2_inits0.dats \
+staexp2_utils1.dats \
+staexp2_utils2.dats \
+statyp2_utils1.dats \
+statyp2_utils2.dats \
+statyp2_tmplib.dats \
+dynexp2.dats \
+dynexp2_print0.dats \
+dynexp2_utils0.dats \
+nmspace.dats \
+trans12.dats \
+trans11_myenv0.dats \
+trans12_myenv0.dats \
+trans11_gmacro.dats \
+trans12_gmacro.dats \
+trans12_staexp.dats \
+trans12_dynexp.dats \
+trans12_decl00.dats \
+tread12_errmsg.dats \
+tread12.dats \
+tread12_staexp.dats \
+tread12_dynexp.dats \
+tread12_decl00.dats \
+trans2a.dats \
+trans2a_myenv0.dats \
+trans2a_utils0.dats \
+trans2a_dynexp.dats \
+trans2a_decl00.dats \
+trsym2b.dats \
+trsym2b_utils0.dats \
+trsym2b_dynexp.dats \
+trsym2b_decl00.dats \
+tread20.dats \
+tread20_dynexp.dats \
+tread20_decl00.dats \
+fperr20.dats \
+fperr20_dynexp.dats \
+fperr20_decl00.dats \
+dynexp3.dats \
+dynexp3_print0.dats \
+dynexp3_utils0.dats \
+trans23.dats \
+trans23_myenv0.dats \
+trans23_utils0.dats \
+trans23_dynexp.dats \
+trans23_decl00.dats \
+tread23.dats \
+tread23_dynexp.dats \
+tread23_decl00.dats \
+tread23_errmsg.dats \
+trans3a.dats \
+trans3a_myenv0.dats \
+trans3a_staexp.dats \
+trans3a_dynexp.dats \
+trans3a_decl00.dats \
+trtmp3b.dats \
+trtmp3b_myenv0.dats \
+trtmp3b_utils0.dats \
+trtmp3b_dynexp.dats \
+trtmp3b_decl00.dats \
+trtmp3c.dats \
+trtmp3c_myenv0.dats \
+trtmp3c_utils0.dats \
+trtmp3c_dynexp.dats \
+trtmp3c_decl00.dats \
+tread30.dats \
+tread30_staexp.dats \
+tread30_dynexp.dats \
+tread30_decl00.dats \
+fperr30.dats \
+fperr30_dynexp.dats \
+fperr30_decl00.dats \
+# dynexp4.dats \
+# dynexp4_print0.dats \
+# dynexp4_utils0.dats \
+# trans34.dats \
+# trans34_print0.dats \
+# trans34_myenv0.dats \
+# trans34_utils0.dats \
+# trans34_dynexp.dats \
+# trans34_decl00.dats \
+# fperr40.dats \
+# fperr40_dynexp.dats \
+# fperr40_decl00.dats \
+# xdepend.dats \
+# xdepend_myenv0.dats \
+# xdepend_dynexp.dats \
+# xdepend_decl00.dats \
+# xatsmtp.dats \
+# xatsmtp_dcon00.dats \
+# xatsopt.dats \
+# xatsopt_tmplib.dats \
+# xatsopt_utils0.dats \
+##################################################################
+OBJDATS := \
+$(patsubst %.dats, %_dats, $(SRCDATS))
+##################################################################
+rename:: $(OBJDATS)
+##################################################################
+##################################################################
+xbasics_dats: ; \
+$(SED) -i -e 's/jstnm/js001tnm/' $@_out.js
+xbasics_print0_dats: ; \
+$(SED) -i -e 's/jstnm/js002tnm/' $@_out.js
+##################################################################
+xsynoug_dats: ; \
+$(SED) -i -e 's/jstnm/js003tnm/' $@_out.js
+##################################################################
+xerrory_dats: ; \
+$(SED) -i -e 's/jstnm/js004tnm/' $@_out.js
+##################################################################
+xglobal_dats: ; \
+$(SED) -i -e 's/jstnm/js005tnm/' $@_out.js
+##################################################################
+xstamp0_dats: ; \
+$(SED) -i -e 's/jstnm/js006tnm/' $@_out.js
+xstamp0_print0_dats: ; \
+$(SED) -i -e 's/jstnm/js007tnm/' $@_out.js
+xstamp0_tmpmap_dats: ; \
+$(SED) -i -e 's/jstnm/js008tnm/' $@_out.js
+##################################################################
+xsymbol_dats: ; \
+$(SED) -i -e 's/jstnm/js009tnm/' $@_out.js
+xsymbol_print0_dats: ; \
+$(SED) -i -e 's/jstnm/js010tnm/' $@_out.js
+xsymbol_mymap0_dats: ; \
+$(SED) -i -e 's/jstnm/js011tnm/' $@_out.js
+xsymbol_inits0_dats: ; \
+$(SED) -i -e 's/jstnm/js012tnm/' $@_out.js
+##################################################################
+xlabel0_dats: ; \
+$(SED) -i -e 's/jstnm/js013tnm/' $@_out.js
+xlabel0_print0_dats: ; \
+$(SED) -i -e 's/jstnm/js014tnm/' $@_out.js
+##################################################################
+filpath_dats: ; \
+$(SED) -i -e 's/jstnm/js015tnm/' $@_out.js
+filpath_print0_dats: ; \
+$(SED) -i -e 's/jstnm/js016tnm/' $@_out.js
+filpath_drpth0_dats: ; \
+$(SED) -i -e 's/jstnm/js017tnm/' $@_out.js
+filpath_fpath0_dats: ; \
+$(SED) -i -e 's/jstnm/js018tnm/' $@_out.js
+filpath_search_dats: ; \
+$(SED) -i -e 's/jstnm/js019tnm/' $@_out.js
+##################################################################
+locinfo_dats: ; \
+$(SED) -i -e 's/jstnm/js020tnm/' $@_out.js
+locinfo_print0_dats: ; \
+$(SED) -i -e 's/jstnm/js021tnm/' $@_out.js
+##################################################################
+xsymmap_dats: ; \
+$(SED) -i -e 's/jstnm/js022tnm/' $@_out.js
+xsymmap_topmap_dats: ; \
+$(SED) -i -e 's/jstnm/js023tnm/' $@_out.js
+xsymmap_stkmap_dats: ; \
+$(SED) -i -e 's/jstnm/js024tnm/' $@_out.js
+##################################################################
+lexbuf0_dats: ; \
+$(SED) -i -e 's/jstnm/js025tnm/' $@_out.js
+lexbuf0_cstrx1_dats: ; \
+$(SED) -i -e 's/jstnm/js026tnm/' $@_out.js
+lexbuf0_cstrx2_dats: ; \
+$(SED) -i -e 's/jstnm/js027tnm/' $@_out.js
+##################################################################
+lexing0_dats: ; \
+$(SED) -i -e 's/jstnm/js028tnm/' $@_out.js
+lexing0_print0_dats: ; \
+$(SED) -i -e 's/jstnm/js029tnm/' $@_out.js
+lexing0_mymap0_dats: ; \
+$(SED) -i -e 's/jstnm/js030tnm/' $@_out.js
+lexing0_kword0_dats: ; \
+$(SED) -i -e 's/jstnm/js031tnm/' $@_out.js
+lexing0_token0_dats: ; \
+$(SED) -i -e 's/jstnm/js032tnm/' $@_out.js
+lexing0_utils1_dats: ; \
+$(SED) -i -e 's/jstnm/js033tnm/' $@_out.js
+lexing0_utils2_dats: ; \
+$(SED) -i -e 's/jstnm/js034tnm/' $@_out.js
+##################################################################
+staexp0_dats: ; \
+$(SED) -i -e 's/jstnm/js035tnm/' $@_out.js
+staexp0_print0_dats: ; \
+$(SED) -i -e 's/jstnm/js036tnm/' $@_out.js
+##################################################################
+dynexp0_dats: ; \
+$(SED) -i -e 's/jstnm/js037tnm/' $@_out.js
+dynexp0_print0_dats: ; \
+$(SED) -i -e 's/jstnm/js038tnm/' $@_out.js
+##################################################################
+parsing_dats: ; \
+$(SED) -i -e 's/jstnm/js039tnm/' $@_out.js
+parsing_basics_dats: ; \
+$(SED) -i -e 's/jstnm/js040tnm/' $@_out.js
+parsing_tokbuf_dats: ; \
+$(SED) -i -e 's/jstnm/js041tnm/' $@_out.js
+parsing_utils0_dats: ; \
+$(SED) -i -e 's/jstnm/js042tnm/' $@_out.js
+parsing_staexp_dats: ; \
+$(SED) -i -e 's/jstnm/js043tnm/' $@_out.js
+parsing_dynexp_dats: ; \
+$(SED) -i -e 's/jstnm/js044tnm/' $@_out.js
+parsing_decl00_dats: ; \
+$(SED) -i -e 's/jstnm/js045tnm/' $@_out.js
+##################################################################
+preadx0_dats: ; \
+$(SED) -i -e 's/jstnm/js046tnm/' $@_out.js
+preadx0_staexp_dats: ; \
+$(SED) -i -e 's/jstnm/js047tnm/' $@_out.js
+preadx0_dynexp_dats: ; \
+$(SED) -i -e 's/jstnm/js048tnm/' $@_out.js
+preadx0_decl00_dats: ; \
+$(SED) -i -e 's/jstnm/js049tnm/' $@_out.js
+preadx0_errmsg_dats: ; \
+$(SED) -i -e 's/jstnm/js050tnm/' $@_out.js
+##################################################################
+##################################################################

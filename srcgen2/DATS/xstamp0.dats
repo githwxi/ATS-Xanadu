@@ -88,14 +88,15 @@ HX: [stamp(0)] is special
 *)
 #implfun
 stamper_new
-  ( ) = a0ref_make_1val(1u)
+  ( ) =
+(
+a0ref_make_1val(g0s2u(1)))
 //
 #implfun
 stamper_tmpset
   (obj, cnt) =
 (
- a0ref_set(obj, g0s2u(cnt))
-)
+a0ref_set(obj, g0s2u(cnt)))
 //
 #implfun
 stamper_getinc
@@ -112,12 +113,14 @@ end (*local*) // end of [local]
 (* ****** ****** *)
 //
 #implfun
-stamp_nilq(tmp) = (tmp.uint() = 0u)
+stamp_nilq
+(   tmp   ) = (tmp.uint() = g0s2u(0))
 //
 (* ****** ****** *)
 //
 #implfun
-stamp_cmp(x1, x2) = x1.uint()\cmp(x2.uint())
+stamp_cmp
+(tmp1, tmp2) = tmp1.uint()\cmp(tmp2.uint())
 //
 (* ****** ****** *)
 

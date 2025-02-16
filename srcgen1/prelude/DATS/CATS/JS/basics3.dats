@@ -25,7 +25,7 @@ Native arrays for xats2js
 (* ****** ****** *)
 (*
 HX-2020-11-23:
-Hashmaps for Xats2js
+Basics3 for Xats2js
 based on the native JS objmaps 
 *)
 (* ****** ****** *)

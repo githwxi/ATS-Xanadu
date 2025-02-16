@@ -113,6 +113,7 @@ SLASH4q(cs: strn): bool
 #extern
 fun
 LPARENq(ck: char): bool
+#extern
 fun
 RPARENq(ch: char): bool
 (* ****** ****** *)

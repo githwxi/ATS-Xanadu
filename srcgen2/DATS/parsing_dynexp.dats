@@ -601,6 +601,7 @@ p1_d0expseq_atm: p1_fun(d0explst)
 #extern
 fun
 p1_d0exp_THEN: p1_fun(d0exp_THEN)
+#extern
 fun
 p1_d0exp_ELSE: p1_fun(d0exp_ELSE)
 //

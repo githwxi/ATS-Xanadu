@@ -1032,8 +1032,10 @@ preadx0_d0fundcl: fpreadx0(d0fundcl)
 fun
 preadx0_d0cstdcl: fpreadx0(d0cstdcl)
 (* ****** ****** *)
+#extern
 fun
 preadx0_teqd0exp: fpreadx0(teqd0exp)
+#extern
 fun
 preadx0_wths0exp: fpreadx0(wths0exp)
 (* ****** ****** *)

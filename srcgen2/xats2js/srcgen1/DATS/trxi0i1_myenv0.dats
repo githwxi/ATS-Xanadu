@@ -77,11 +77,13 @@ d2vtop = $MAP.topmap(i1val)
 d2vstk = $MAP.stkmap(i1val)
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #symload lctn with d2var_get_lctn
 (*
 #symload name with d2var_get_name
 *)
 #symload unam with d2var_get_unam
+//
 (* ****** ****** *)
 //
 #symload

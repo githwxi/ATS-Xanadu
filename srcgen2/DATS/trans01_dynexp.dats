@@ -1909,44 +1909,6 @@ end (*let*) // end of [trans01_d0gua(d0g0)]
 (* ****** ****** *)
 
 #implfun
-trans01_d0gua
-  (tenv, d0g0) =
-let
-//
-val loc0 = d0g0.lctn()
-//
-(*
-val () =
-prerrsln
-("trans01_d0gua: loc0 = ", loc0)
-val () =
-prerrsln
-("trans01_d0gua: d0g0 = ", d0g0)
-*)
-//
-in//let
-case+
-d0g0.node() of
-|
-D0GUAexp(d0e1) =>
-d1gua_make_node
-(loc0, D1GUAexp(d1e1)) where
-{
-val
-d1e1 = trans01_d0exp(tenv, d0e1) }
-|
-D0GUAmat(d0e1,tkas,d0p2) =>
-d1gua_make_node
-(loc0, D1GUAmat(d1e1, d1p2)) where
-{
-val d1e1 = trans01_d0exp(tenv, d0e1)
-val d1p2 = trans01_d0pat(tenv, d0p2)
-}
-end (*let*) // end of [trans01_d0gua(d0g0)]
-
-(* ****** ****** *)
-
-#implfun
 trans01_d0gpt
   (tenv, dgt0) =
 let
