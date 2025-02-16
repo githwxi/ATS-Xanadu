@@ -245,7 +245,11 @@ OBJDATS := \
 $(patsubst %.dats, BUILD/%_dats_out.js, $(SRCDATS))
 ########################################################################
 ########################################################################
-boot:: $(OBJDATS)
+boot:: boot_sats
+boot_sats:: $(OBJSATS)
+########################################################################
+boot:: boot_dats
+boot_dats:: $(OBJDATS)
 ########################################################################
 libxatsopt:: $(OBJDATS); \
 $(CAT) $(OBJDATS) > lib/libxatsopt.js
@@ -253,7 +257,7 @@ $(CAT) $(OBJDATS) > lib/libxatsopt.js
 ########################################################################
 BUILD/%_sats_out.js: \
 $(SRCGEN2)/SATS/%.sats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > $@
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $< > $@
 BUILD/%_dats_out.js: \
 $(SRCGEN2)/DATS/%.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > $@

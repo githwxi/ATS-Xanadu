@@ -38,14 +38,19 @@ $(ECHO) "'use strict';\n" >> xats2js_prelude.js
 xats2js_prelude:: ; \
 $(CAT) \
 $(MYHOME)/prelude/DATS/CATS/JS/basics0.cats >> xats2js_prelude.js
+xats2js_prelude:: ; \
+$(CAT) \
+$(MYHOME)/prelude/DATS/CATS/JS/basics1.cats >> xats2js_prelude.js
+xats2js_prelude:: ; \
+$(CAT) \
+$(MYHOME)/prelude/DATS/CATS/JS/basics2.cats >> xats2js_prelude.js
+xats2js_prelude:: ; \
+$(CAT) \
+$(MYHOME)/prelude/DATS/CATS/JS/basics3.cats >> xats2js_prelude.js
 #
 xats2js_prelude:: ; \
 $(CAT) \
 $(MYHOME)/prelude/DATS/CATS/JS/runtime.cats >> xats2js_prelude.js
-#
-xats2js_prelude:: ; \
-$(CAT) \
-$(MYHOME)/prelude/DATS/CATS/JS/prelude.cats >> xats2js_prelude.js
 #
 xats2js_prelude:: ; \
 $(CAT) \
@@ -57,23 +62,12 @@ $(MYHOME)/prelude/DATS/CATS/JS/g_print.cats >> xats2js_prelude.js
 #
 xats2js_prelude:: ; \
 $(CAT) \
-$(MYHOME)/prelude/DATS/CATS/JS/basics1.cats >> xats2js_prelude.js
-#
-xats2js_prelude:: ; \
-$(CAT) \
 $(MYHOME)/prelude/DATS/CATS/JS/xatsopt.cats >> xats2js_prelude.js
 #
 xats2js_prelude:: ; \
 $(XATS2JS) \
---output-a xats2js_prelude.js -d $(MYHOME)/prelude/DATS/CATS/JS/basics0.dats
-#
-xats2js_prelude:: ; \
-$(XATS2JS) \
---output-a xats2js_prelude.js -d $(MYHOME)/prelude/DATS/CATS/JS/basics1.dats
-#
-xats2js_prelude:: ; \
-$(XATS2JS) \
---output-a xats2js_prelude.js -d $(MYHOME)/prelude/DATS/CATS/JS/prelude.dats
+--output-a \
+xats2js_prelude.js -d $(MYHOME)/prelude/DATS/CATS/JS/basics0.dats
 #
 ######
 xats2js_prelude_node:: ; \

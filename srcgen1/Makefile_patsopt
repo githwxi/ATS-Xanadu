@@ -88,8 +88,8 @@ xsymbol.dats \
 xsymmap.dats \
 xsymenv.dats \
 xlabel0.dats \
-xfixity.dats \
 xglobal.dats \
+xfixity.dats \
 xerrory.dats \
 filpath.dats \
 filsrch.dats \

@@ -113,13 +113,16 @@ print with g_print of 0101
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/DATS/CATS/JS/basics0.dats"
+*)
 #include
 "srcgen1/prelude/DATS/CATS/JS/basics1.dats"
-//
 #include
-"srcgen1/prelude/DATS/CATS/JS/prelude.dats"
+"srcgen1/prelude/DATS/CATS/JS/basics2.dats"
+#include
+"srcgen1/prelude/DATS/CATS/JS/basics3.dats"
 //
 #include
 "srcgen1/prelude/DATS/CATS/JS/g_eqref.dats"

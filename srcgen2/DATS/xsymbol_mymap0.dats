@@ -40,8 +40,12 @@ ATS_PACKNAME
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+(*
 #include
 "./../HATS/xatsopt_dats.hats"
+*)
+#include
+"./../HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
@@ -63,7 +67,7 @@ local
 "\
 srcgen1\
 /prelude\
-/DATS/CATS/JS/basics1.dats"
+/DATS/CATS/JS/basics3.dats"
 (* ****** ****** *)
 #absimpl
 mymap_tbox = jsobjmap(key, itm)

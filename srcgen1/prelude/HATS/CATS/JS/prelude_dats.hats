@@ -8,10 +8,12 @@ ATS3_XANADU_prelude/DATS/CATS/JS
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #staload _ = "./../../../DATS/CATS/JS/basics0.dats"
+*)
 #staload _ = "./../../../DATS/CATS/JS/basics1.dats"
-//
-#staload _ = "./../../../DATS/CATS/JS/prelude.dats"
+#staload _ = "./../../../DATS/CATS/JS/basics2.dats"
+#staload _ = "./../../../DATS/CATS/JS/basics3.dats"
 //
 #staload _ = "./../../../DATS/CATS/JS/g_eqref.dats"
 //
