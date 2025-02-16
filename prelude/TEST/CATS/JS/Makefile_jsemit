@@ -57,12 +57,15 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
 test00:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
 ############
-test00:: \
-test00_prelude.dats; \
-$(BUN) run $(SRCGEN2_XATS2JS) $< >> $@_out.js
+# HX-2025-02-16:
+# Using [bun] seems not working!!!
 # test00:: \
 # test00_prelude.dats; \
-# $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+# $(BUN) run $(SRCGEN2_XATS2JS) $< >> $@_out.js
+############
+test00:: \
+test00_prelude.dats; \
+$(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
 ############
 test00:: ; \
 npx google-closure-compiler -W QUIET \

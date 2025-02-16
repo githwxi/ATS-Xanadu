@@ -1,577 +1,1144 @@
 (* ****** ****** *)
-(* ****** ****** *)
 (*
-HX-2025-02-10:
-Some needed templates
-are in [./basics0.dats]
-*)
-(* ****** ****** *)
-(* ****** ****** *)
-(*
-HX-2020-11-09:
-Native arrays for Xats2js
-*)
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#abstbox
-jsobj_tbox(*void*)
-#typedef
-jsobj = jsobj_tbox
-//
-(* ****** ****** *)
-//
-#abstbox
-jsarray_tbox(x0:vt)
-#sexpdef
-jsarray = jsarray_tbox
-//
-(* ****** ****** *)
-(*
-HX-2020-11-23:
-Hashmaps for Xats2js
-based on the native JS objmaps 
+Basics1 for Xats2js
+// char, bool,
+// ints, floats, string
 *)
 (* ****** ****** *)
 //
-#abstbox
-jsobjmap_tbox
-(k0:t0, x0:vt)
+#staload
+UN = // for casting
+"srcgen1\
+/prelude/SATS/unsafex.sats"
 //
-#sexpdef
-jsobjmap = jsobjmap_tbox
+(* ****** ****** *)
 (*
-#typedef
-jsobjmap
-( k0: t0
-, x0: vt) = jsobjmap_tbox(k0, x0)
+//prelude/SATS/bool000.sats
 *)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-// XATS2JS/jsobj
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_jsobj_get$at
-( obj
-: jsobj
-, key
-: string): jsobj = $extnam()
-#extern
-fun
-XATS2JS_jsobj_set$at
-( obj
-: jsobj
-, key
-: string
-, itm: jsobj): void = $extnam()
-//
-#symload
-[] with XATS2JS_jsobj_get$at
-#symload
-[] with XATS2JS_jsobj_set$at
-#symload
-get$at with XATS2JS_jsobj_get$at
-#symload
-set$at with XATS2JS_jsobj_set$at
-//
-(* ****** ****** *)
-//
-// XATS2JS/jsarray:
-//
-(* ****** ****** *)
-#extern
-fun
-XATS2JS_jsarray_length
-{x0:t0}
-( xs
-: jsarray(x0)): nint = $extnam()
-(* ****** ****** *)
-#extern
-fun
-XATS2JS_jsarray_get$at
-{x0:t0}
-( xs
-: jsarray(x0)
-, i0: nint(*ind*)): x0 = $extnam()
-#extern
-fun
-XATS2JS_jsarray_set$at
-  {x0:t0}
-( xs
-: jsarray(x0)
-, i0: nint, x0: x0): void = $extnam()
-(* ****** ****** *)
-#symload size
-with XATS2JS_jsarray_length of 1000
-#symload length
-with XATS2JS_jsarray_length of 1000
-(* ****** ****** *)
-#symload []
-with XATS2JS_jsarray_get$at of 1000
-#symload []
-with XATS2JS_jsarray_set$at of 1000
-(* ****** ****** *)
-#symload get$at
-with XATS2JS_jsarray_get$at of 1000
-#symload set$at
-with XATS2JS_jsarray_set$at of 1000
-(* ****** ****** *)
-//
-#extern
-fun
-<x0:t0>
-XATS2JS_jsarray_strmize
-( xs
-: jsarray(x0)): strm_vt(x0) = $extnam()
-//
-(* ****** ****** *)
-#impltmp
-{x0:t0}
-g_print
-<jsarray(x0)>(xs) =
-gseq_print
-<jsarray(x0)><x0>(xs)
-(* ****** ****** *)
-#impltmp
-{x0:t0}
-gseq_strmize
-<jsarray(x0)><x0>(xs) =
-XATS2JS_jsarray_strmize<x0>(xs)
-(* ****** ****** *)
+XATS2JS_bool_neg
+{b0:bool}
+( b0
+: bool(b0)
+)
+: bool(~b0) = $extnam()
 //
 #impltmp
-{x0:t0}
-XATS2JS_jsarray_strmize
-<  x0  >(  xs  ) =
-(
-  auxmain(0)) where
-{
-//
-  val n0 = length(xs)
-//
-  fun
-  auxmain
-  (i0: sint): strm_vt(x0) =
-  $llazy
-  (
-    if
-    (i0 >= n0)
-    then
-    (
-      strmcon_vt_nil((*void*))
-    )
-    else
-    let
-      val x0 = xs.get$at(i0)
-    in
-      strmcon_vt_cons(x0, auxmain(i0+1))
-    end // end of [else]
-  ) (* end of [auxmain] *)
-//
-} (* end of [XATS2JS_jsarray_strmize<x0>] *)
+<(*tmp*)>
+bool_neg = XATS2JS_bool_neg
 //
 (* ****** ****** *)
 //
-// XATS2JS/jsobjmap:
-//
-(* ****** ****** *)
-#typedef int0 = sint
-(* ****** ****** *)
 #extern
 fun
-<k0:t0>
-XATS2JS_jsobjmap_keys
-{x0:vt}
-( map
-: jsobjmap(k0, x0)): jsarray(k0)
-(* ****** ****** *)
+XATS2JS_bool_add
+{b1,b2:bool}
+( b1
+: bool(b1)
+, b2
+: bool(b2)
+)
+: bool(b1+b2) = $extnam()
+#extern
+fun
+XATS2JS_bool_mul
+{b1,b2:bool}
+( b1
+: bool(b1)
+, b2
+: bool(b2)
+)
+: bool(b1*b2) = $extnam()
 //
 #impltmp
-XATS2JS_jsobjmap_keys
-<int0>(map) =
-XATS2JS_jsobjmap_keys(map)
-where{
-//
-#typedef k0 = int0
-//
-#extern
-fun
-XATS2JS_jsobjmap_keys
-{x0:vt}
-( map
-: jsobjmap(k0, x0)): jsarray(k0) = $extnam()
-}(*where*)//end(XATS2JS_jsobjmap_keys<int0>]
-//
+<(*tmp*)>
+bool_add = XATS2JS_bool_add
 #impltmp
-XATS2JS_jsobjmap_keys
-<strn>(map) =
-XATS2JS_jsobjmap_keys(map)
-where{
-//
-#typedef k0 = strn
-//
-#extern
-fun
-XATS2JS_jsobjmap_keys
-{x0:vt}
-( map
-: jsobjmap(k0, x0)): jsarray(k0) = $extnam()
-}(*where*)//end(XATS2JS_jsobjmap_keys<strn>]
-//
-(* ****** ****** *)
-//
-#extern
-fun
-<k0:t0>
-XATS2JS_jsobjmap_keyq
-{x0:vt}
-( map
-: jsobjmap(k0, x0), key: k0): bool
-//
-(* ****** ****** *)
-//
-#impltmp
-XATS2JS_jsobjmap_keyq
-<int0>(map, key) =
-XATS2JS_jsobjmap_keyq(map, key)
-where{
-//
-#typedef k0 = int0
-//
-#extern
-fun
-XATS2JS_jsobjmap_keyq
-{x0:vt}
-( map
-: jsobjmap(k0, x0), key: k0): bool = $extnam()
-}(*where*)//end-of(XATS2JS_jsobjmap_keyq<int0>]
-#impltmp
-XATS2JS_jsobjmap_keyq
-<strn>(map, key) =
-XATS2JS_jsobjmap_keyq(map, key)
-where{
-//
-#typedef k0 = strn
-//
-#extern
-fun
-XATS2JS_jsobjmap_keyq
-{x0:vt}
-( map
-: jsobjmap(k0, x0), key: k0): bool = $extnam()
-}(*where*)//end-of(XATS2JS_jsobjmap_keyq<strn>]
-//
-(* ****** ****** *)
-#extern
-fun
-<k0:t0>
-XATS2JS_jsobjmap_make_nil
-{x0:t0}
-((*void*)): jsobjmap(k0, x0)
-(* ****** ****** *)
-#impltmp
-XATS2JS_jsobjmap_make_nil
-<int0>((*0*)) =
-XATS2JS_jsobjmap_make_nil((*0*))
-where
-{
-//
-#typedef k0 = int0
-//
-#extern
-fun
-XATS2JS_jsobjmap_make_nil
-{x0:t0}
-((*void*)): jsobjmap(k0, x0) = $extnam()
-}
-#impltmp
-XATS2JS_jsobjmap_make_nil
-<strn>((*0*)) =
-XATS2JS_jsobjmap_make_nil((*0*))
-where{
-//
-#typedef k0 = strn
-//
-#extern
-fun
-XATS2JS_jsobjmap_make_nil
-{x0:t0}
-((*void*)): jsobjmap(k0, x0) = $extnam()
-//
-} (*where*) // [XATS2JS_jsobjmap_make_nil]
-(* ****** ****** *)
-#extern
-fun
-<k0:t0>
-XATS2JS_jsobjmap_search$opt
-{x0:t0}
-( map
-: jsobjmap(k0, x0), key: k0): optn_vt(x0)
-(* ****** ****** *)
-//
-#impltmp
-XATS2JS_jsobjmap_search$opt
-<int0>(map, key) =
-XATS2JS_jsobjmap_search$opt(map, key)
-where {
-//
-#typedef k0 = int0
-//
-#extern
-fun
-XATS2JS_jsobjmap_search$opt
-{x0:t0}
-( map
-: jsobjmap(k0, x0), key: k0): optn_vt(x0) = $extnam()
-} (*where*) // end-[XATS2JS_jsobjmap_search$opt<int0>]
-#impltmp
-XATS2JS_jsobjmap_search$opt
-<strn>(map, key) =
-XATS2JS_jsobjmap_search$opt(map, key)
-where {
-//
-#typedef k0 = strn
-//
-#extern
-fun
-XATS2JS_jsobjmap_search$opt
-{x0:t0}
-( map
-: jsobjmap(k0, x0), key: k0): optn_vt(x0) = $extnam()
-} (*where*) // end-[XATS2JS_jsobjmap_search$opt<strn>]
+<(*tmp*)>
+bool_mul = XATS2JS_bool_mul
 //
 (* ****** ****** *)
 //
 (*
-#extern
-fun
-<k0:t0>
-XATS2JS_jsobjmap_remove
-{x0:vt}
-( map
-: jsobjmap(k0, x0), key: k0): bool
+//prelude/SATS/char000.sats
 *)
 //
-#extern
-fun
-<k0:t0>
-XATS2JS_jsobjmap_remove$any
-{x0:vt}
-( map
-: jsobjmap(k0, x0), key: k0): void
-#extern
-fun
-<k0:t0>
-XATS2JS_jsobjmap_remove$opt
-{x0:vt}
-( map
-: jsobjmap(k0, x0), key: k0): optn_vt(x0)
+// [char] is a (small) number
 //
 (* ****** ****** *)
 //
 #impltmp
-XATS2JS_jsobjmap_remove$any
-<int0>(map, key) =
-XATS2JS_jsobjmap_remove$any(map, key)
-where
-{
-//
-#typedef k0 = int0
-//
-#extern
-fun
-XATS2JS_jsobjmap_remove$any
-{x0:vt}
-( map
-: jsobjmap(k0, x0), key: k0): void = $extnam()
-}
-#impltmp
-XATS2JS_jsobjmap_remove$any
-<strn>(map, key) =
-XATS2JS_jsobjmap_remove$any(map, key)
-where
-{
-//
-#typedef k0 = strn
-//
-#extern
-fun
-XATS2JS_jsobjmap_remove$any
-{x0:vt}
-( map
-: jsobjmap(k0, x0), key: k0): void = $extnam()
-}
+<(*tmp*)>
+char_code
+(   c0   ) = $UN.cast01( c0 )
 //
 #impltmp
-XATS2JS_jsobjmap_remove$opt
-<int0>(map, key) =
-XATS2JS_jsobjmap_remove$opt(map, key)
-where
-{
-//
-#typedef k0 = int0
-//
-#extern
-fun
-XATS2JS_jsobjmap_remove$opt
-{x0:vt}
-( map
-: jsobjmap(k0, x0), key: k0): optn_vt(x0) = $extnam()
-}
+<(*tmp*)>
+char_make_code
+(   i0   ) = $UN.cast01( i0 )
 #impltmp
-XATS2JS_jsobjmap_remove$opt
-<strn>(map, key) =
-XATS2JS_jsobjmap_remove$opt(map, key)
-where
-{
+<(*tmp*)>
+char_make_sint
+(   i0   ) = $UN.cast01( i0 )
+#impltmp
+<(*tmp*)>
+char_make_uint
+(   i0   ) = $UN.cast01( i0 )
 //
-#typedef k0 = strn
+// HX-2022-06-12:
+// It is deprecated
 //
-#extern
-fun
-XATS2JS_jsobjmap_remove$opt
-{x0:vt}
-( map
-: jsobjmap(k0, x0), key: k0): optn_vt(x0) = $extnam()
-}
+#impltmp
+<(*tmp*)>
+sint_make_char
+(   c0   ) = $UN.cast01( c0 )
 //
 (* ****** ****** *)
+#extern
+fun
+XATS2JS_char_cmp
+( c1
+: char
+, c2
+: char): sint = $extnam()
+#impltmp
+<(*tmp*)>
+char_cmp = XATS2JS_char_cmp
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_char_eqz
+( c0
+: char): bool = $extnam()
+#impltmp
+<(*tmp*)>
+char_eqz = XATS2JS_char_eqz
+#extern
+fun
+<(*tmp*)>
+XATS2JS_char_neqz
+( c0
+: char): bool = $extnam()
+#impltmp
+char_neqz = XATS2JS_char_neqz
+(* ****** ****** *)
+#extern
+fun
+XATS2JS_char_equal
+( c1: char
+, c2: char): bool = $extnam()
+#impltmp
+<(*tmp*)>
+char_equal = XATS2JS_char_equal
+#extern
+fun
+XATS2JS_char_noteq
+( c1: char
+, c2: char): bool = $extnam()
+#impltmp
+<(*tmp*)>
+char_noteq = XATS2JS_char_noteq
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_char_isalpha
+( c0: char ): bool = $extnam()
+#extern
+fun
+XATS2JS_sint_isalpha
+( c0: sint ): bool = $extnam()
+//
+#impltmp
+<(*tmp*)>
+char_isalpha = XATS2JS_char_isalpha
+#impltmp
+<(*tmp*)>
+sint_isalpha = XATS2JS_sint_isalpha
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_char_isalnum
+( c0: char ): bool = $extnam()
+#extern
+fun
+XATS2JS_sint_isalnum
+( c0: sint ): bool = $extnam()
+//
+#impltmp
+<(*tmp*)>
+char_isalnum = XATS2JS_char_isalnum
+#impltmp
+<(*tmp*)>
+sint_isalnum = XATS2JS_sint_isalnum
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_char_isdigit
+( c0: char ): bool = $extnam()
+#extern
+fun
+XATS2JS_sint_isdigit
+( c0: sint ): bool = $extnam()
+//
+#impltmp
+<(*tmp*)>
+char_isdigit = XATS2JS_char_isdigit
+#impltmp
+<(*tmp*)>
+sint_isdigit = XATS2JS_sint_isdigit
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_char_isxdigit
+( c0: char ): bool = $extnam()
+#extern
+fun
+XATS2JS_sint_isxdigit
+( c0: sint ): bool = $extnam()
+//
+#impltmp
+<(*tmp*)>
+char_isxdigit = XATS2JS_char_isxdigit
+#impltmp
+<(*tmp*)>
+sint_isxdigit = XATS2JS_sint_isxdigit
+//
+(* ****** ****** *)
+//
+//prelude/SATS/gint000.sats
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_sint2uint
+  ( x0: sint ): uint = $extnam()
+#extern
+fun
+XATS2JS_gint_uint2sint
+  ( x0: uint ): sint = $extnam()
+//
+#impltmp
+<(*tmp*)>
+gint_sint2uint =
+XATS2JS_gint_sint2uint(*sint->uint*)
+#impltmp
+<(*tmp*)>
+gint_uint2sint =
+XATS2JS_gint_uint2sint(*uint->sint*)
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_parse_sint
+  ( x0: strn ): sint = $extnam()
+#extern
+fun
+XATS2JS_gint_parse_uint
+  ( x0: strn ): uint = $extnam()
+//
+#impltmp
+<(*tmp*)>
+gint_parse_sint = XATS2JS_gint_parse_sint
+#impltmp
+<(*tmp*)>
+gint_parse_uint = XATS2JS_gint_parse_uint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_neg$sint
+{i:int}
+( x0
+: sint(i)): sint(-i) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_neg$sint = XATS2JS_gint_neg$sint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_abs$sint
+{i:int}
+( x0
+: sint(i)): sint(abs(i)) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_abs$sint = XATS2JS_gint_abs$sint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_suc$sint
+{i:int}
+( x0
+: sint(i)): sint(i+1) = $extnam()
+#extern
+fun
+XATS2JS_gint_suc$uint
+{i:int}
+( x0
+: uint(i)): uint(i+1) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_suc$sint = XATS2JS_gint_suc$sint
+#impltmp
+<(*tmp*)>
+gint_suc$uint = XATS2JS_gint_suc$uint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_pre$sint
+{i:int}
+( x0
+: sint(i)): sint(i-1) = $extnam()
+#extern
+fun
+XATS2JS_gint_pre$uint
+{i:int|i>0}
+( x0
+: uint(i)): uint(i-1) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_pre$sint = XATS2JS_gint_pre$sint
+#impltmp
+<(*tmp*)>
+gint_pre$uint = XATS2JS_gint_pre$uint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_lnot$uint
+(    x:uint    ):uint = $extnam()
+#extern
+fun
+XATS2JS_gint_lor2$uint
+(x:uint, y:uint):uint = $extnam()
+#extern
+fun
+XATS2JS_gint_land$uint
+(x:uint, y:uint):uint = $extnam()
+#extern
+fun
+XATS2JS_gint_lxor$uint
+(x:uint, y:uint):uint = $extnam()
+//
+#impltmp
+<(*tmp*)>
+gint_lnot$uint = XATS2JS_gint_lnot$uint
+#impltmp
+<(*tmp*)>
+gint_lor2$uint = XATS2JS_gint_lor2$uint
+#impltmp
+<(*tmp*)>
+gint_land$uint = XATS2JS_gint_land$uint
+#impltmp
+<(*tmp*)>
+gint_lxor$uint = XATS2JS_gint_lxor$uint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_asrn$sint
+(x: sint, n: nint):sint = $extnam()
+#extern
+fun
+XATS2JS_gint_lsln$uint
+(x: uint, n: nint):uint = $extnam()
+#extern
+fun
+XATS2JS_gint_lsrn$uint
+(x: uint, n: nint):uint = $extnam()
+//
+#impltmp
+<(*tmp*)>
+gint_asrn$sint = XATS2JS_gint_asrn$sint
+#impltmp
+<(*tmp*)>
+gint_lsln$uint = XATS2JS_gint_lsln$uint
+#impltmp
+<(*tmp*)>
+gint_lsrn$uint = XATS2JS_gint_lsrn$uint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_lt$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): bool(i<j) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_lt$sint$sint = XATS2JS_gint_lt$sint$sint
+#extern
+fun
+XATS2JS_gint_lt$uint$uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): bool(i<j) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_lt$uint$uint = XATS2JS_gint_lt$uint$uint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_gt$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): bool(i>j) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_gt$sint$sint = XATS2JS_gint_gt$sint$sint
+#extern
+fun
+XATS2JS_gint_gt$uint$uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): bool(i>j) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_gt$uint$uint = XATS2JS_gint_gt$uint$uint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_eq$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): bool(i=j) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_eq$sint$sint = XATS2JS_gint_eq$sint$sint
+#extern
+fun
+XATS2JS_gint_eq$uint$uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): bool(i=j) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_eq$uint$uint = XATS2JS_gint_eq$uint$uint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_lte$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): bool(i<=j) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_lte$sint$sint = XATS2JS_gint_lte$sint$sint
+#extern
+fun
+XATS2JS_gint_lte$uint$uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): bool(i<=j) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_lte$uint$uint = XATS2JS_gint_lte$uint$uint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_gte$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): bool(i>=j) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_gte$sint$sint = XATS2JS_gint_gte$sint$sint
+#extern
+fun
+XATS2JS_gint_gte$uint$uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): bool(i>=j) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_gte$uint$uint = XATS2JS_gint_gte$uint$uint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_neq$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): bool(i!=j) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_neq$sint$sint = XATS2JS_gint_neq$sint$sint
+#extern
+fun
+XATS2JS_gint_neq$uint$uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): bool(i!=j) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_neq$uint$uint = XATS2JS_gint_neq$uint$uint
+//
+(* ****** ****** *)
+
+#extern
+fun
+XATS2JS_gint_cmp$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j))
+: sint(sgn(i-j)) = $extnam((*self*))
+#impltmp
+<(*tmp*)>
+gint_cmp$sint$sint = XATS2JS_gint_cmp$sint$sint
+
+#extern
+fun
+XATS2JS_gint_cmp$uint$uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j))
+: sint(sgn(i-j)) = $extnam((*self*))
+#impltmp
+<(*tmp*)>
+gint_cmp$uint$uint = XATS2JS_gint_cmp$uint$uint
+
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_add$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): sint( i+j ) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_add$sint$sint = XATS2JS_gint_add$sint$sint
+//
+#extern
+fun
+XATS2JS_gint_sub$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): sint( i-j ) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_sub$sint$sint = XATS2JS_gint_sub$sint$sint
+//
+#extern
+fun
+XATS2JS_gint_mul$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): sint( i*j ) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_mul$sint$sint = XATS2JS_gint_mul$sint$sint
+#extern
+fun
+XATS2JS_gint_div$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): sint( i/j ) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_div$sint$sint = XATS2JS_gint_div$sint$sint
+#extern
+fun
+XATS2JS_gint_mod$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): sint(mod(i,j)) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_mod$sint$sint = XATS2JS_gint_mod$sint$sint
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gint_add$uint$uint
+{i,j:int}
+( x
+: uint(i)
+, y
+: uint(j)): uint( i+j ) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_add$uint$uint = XATS2JS_gint_add$uint$uint
+#extern
+fun
+XATS2JS_gint_sub$uint$uint
+{i,j:int | i >= j}
+( x
+: uint(i)
+, y
+: uint(j)): uint( i-j ) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_sub$uint$uint = XATS2JS_gint_sub$uint$uint
+//
+(* ****** ****** *)
+//
+// prelude/SATS/gflt000.sats
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gflt_si_dflt
+( x0: sint ): dflt = $extnam()
+#impltmp
+gflt_si_dflt<> = XATS2JS_gflt_si_dflt
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gflt_neg$dflt
+  ( x0: dflt ): dflt = $extnam()
+#impltmp
+gflt_neg$dflt<> = XATS2JS_gflt_neg$dflt
+//
+#extern
+fun
+XATS2JS_gflt_abs$dflt
+  ( x0: dflt ): dflt = $extnam()
+#impltmp
+gflt_abs$dflt<> = XATS2JS_gflt_abs$dflt
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gflt_suc$dflt
+  ( x0: dflt ): dflt = $extnam()
+#impltmp
+gflt_suc$dflt<> = XATS2JS_gflt_suc$dflt
+#extern
+fun
+XATS2JS_gflt_pre$dflt
+  ( x0: dflt ): dflt = $extnam()
+#impltmp
+gflt_pre$dflt<> = XATS2JS_gflt_pre$dflt
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gflt_lt$dflt$dflt
+( x0: dflt, y0: dflt ): bool = $extnam()
+#extern
+fun
+XATS2JS_gflt_gt$dflt$dflt
+( x0: dflt, y0: dflt ): bool = $extnam()
+#extern
+fun
+XATS2JS_gflt_eq$dflt$dflt
+( x0: dflt, y0: dflt ): bool = $extnam()
+#extern
+fun
+XATS2JS_gflt_lte$dflt$dflt
+( x0: dflt, y0: dflt ): bool = $extnam()
+#extern
+fun
+XATS2JS_gflt_gte$dflt$dflt
+( x0: dflt, y0: dflt ): bool = $extnam()
+#extern
+fun
+XATS2JS_gflt_neq$dflt$dflt
+( x0: dflt, y0: dflt ): bool = $extnam()
+//
+#impltmp
+gflt_lt$dflt$dflt<> = XATS2JS_gflt_lt$dflt$dflt
+#impltmp
+gflt_gt$dflt$dflt<> = XATS2JS_gflt_gt$dflt$dflt
+#impltmp
+gflt_eq$dflt$dflt<> = XATS2JS_gflt_eq$dflt$dflt
+#impltmp
+gflt_lte$dflt$dflt<> = XATS2JS_gflt_lte$dflt$dflt
+#impltmp
+gflt_gte$dflt$dflt<> = XATS2JS_gflt_gte$dflt$dflt
+#impltmp
+gflt_neq$dflt$dflt<> = XATS2JS_gflt_neq$dflt$dflt
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gflt_cmp$dflt$dflt
+( x0: dflt, y0: dflt ): sint = $extnam()
+#impltmp
+gflt_cmp$dflt$dflt<> = XATS2JS_gflt_cmp$dflt$dflt
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_gflt_add$dflt$dflt
+( x0: dflt, y0: dflt ): dflt = $extnam()
+#extern
+fun
+XATS2JS_gflt_sub$dflt$dflt
+( x0: dflt, y0: dflt ): dflt = $extnam()
+#extern
+fun
+XATS2JS_gflt_mul$dflt$dflt
+( x0: dflt, y0: dflt ): dflt = $extnam()
+#extern
+fun
+XATS2JS_gflt_div$dflt$dflt
+( x0: dflt, y0: dflt ): dflt = $extnam()
+//
+#impltmp
+gflt_add$dflt$dflt<> = XATS2JS_gflt_add$dflt$dflt
+#impltmp
+gflt_sub$dflt$dflt<> = XATS2JS_gflt_sub$dflt$dflt
+#impltmp
+gflt_mul$dflt$dflt<> = XATS2JS_gflt_mul$dflt$dflt
+#impltmp
+gflt_div$dflt$dflt<> = XATS2JS_gflt_div$dflt$dflt
+//
+(* ****** ****** *)
+//
 (*
-#extern
-fun
-<k0:t0>
-XATS2JS_jsobjmap_insert
-{x0:vt}
-( map
-: jsobjmap(k0, x0), key: k0, itm: x0): bool
+//prelude/SATS/strn000.sats
 *)
 //
-#extern
-fun
-<k0:t0>
-XATS2JS_jsobjmap_insert$any
-{x0:vt}
-( map
-: jsobjmap(k0, x0), key: k0, itm: x0): void
-#extern
-fun
-<k0:t0>
-XATS2JS_jsobjmap_insert$opt
-{x0:vt}
-( map
-: jsobjmap(k0, x0), key: k0, itm: x0): optn_vt(x0)
-//
 (* ****** ****** *)
 //
 #impltmp
-XATS2JS_jsobjmap_insert$any
-<int0>(map, key, itm) =
-XATS2JS_jsobjmap_insert$any(map, key, itm)
-where {
-//
-#typedef k0 = int0
-//
-#extern
-fun
-XATS2JS_jsobjmap_insert$any
-{x0:t0}
-( map
-: jsobjmap(k0, x0), key: k0, itm: x0): void = $extnam()
-} (*where*) // end-of-[XATS2JS_jsobjmap_insert$any<int0>]
-#impltmp
-XATS2JS_jsobjmap_insert$any
-<strn>(map, key, itm) =
-XATS2JS_jsobjmap_insert$any(map, key, itm)
-where {
-//
-#typedef k0 = strn
-//
-#extern
-fun
-XATS2JS_jsobjmap_insert$any
-{x0:t0}
-( map
-: jsobjmap(k0, x0), key: k0, itm: x0): void = $extnam()
-} (*where*) // end-of-[XATS2JS_jsobjmap_insert$any<strn>]
-//
-#impltmp
-XATS2JS_jsobjmap_insert$opt
-<int0>(map, key, itm) =
-XATS2JS_jsobjmap_insert$opt(map, key, itm)
+strn_vt2t<> =
+XATS2JS_strn_vt2t
 where
 {
-//
-#typedef k0 = int0
-//
 #extern
 fun
-XATS2JS_jsobjmap_insert$opt
-{x0:t0}
-( map
-: jsobjmap(k0, x0), key: k0, itm: x0): optn_vt(x0) = $extnam()
+XATS2JS_strn_vt2t
+(cs
+:strn_vt):strn = $extnam()
+}
+(* ****** ****** *)
+//
+#impltmp
+stropt_nilq<> =
+XATS2JS_stropt_nilq
+where
+{
+#extern
+fun
+XATS2JS_stropt_nilq
+(opt: stropt): bool = $extnam()
 }
 #impltmp
-XATS2JS_jsobjmap_insert$opt
-<strn>(map, key, itm) =
-XATS2JS_jsobjmap_insert$opt(map, key, itm)
+stropt_consq<> =
+XATS2JS_stropt_consq
 where
 {
-//
-#typedef k0 = strn
-//
 #extern
 fun
-XATS2JS_jsobjmap_insert$opt
-{x0:t0}
-( map
-: jsobjmap(k0, x0), key: k0, itm: x0): optn_vt(x0) = $extnam()
+XATS2JS_stropt_consq
+(opt: stropt): bool = $extnam()
 }
 //
 (* ****** ****** *)
+//
 #impltmp
-{k0:t0}
-{x0:t0}
-g_print
-<jsobjmap(k0,x0)>(kxs) =
-gmap_print
-<jsobjmap(k0,x0)><k0><x0>(kxs)
+strn_lt<> =
+XATS2JS_strn_lt
+where
+{
+#extern
+fun
+XATS2JS_strn_lt
+(x1: strn
+,x2: strn): bool = $extnam()
+}
+#impltmp
+strn_gt<> =
+XATS2JS_strn_gt
+where
+{
+#extern
+fun
+XATS2JS_strn_gt
+(x1: strn
+,x2: strn): bool = $extnam()
+}
+#impltmp
+strn_eq<> =
+XATS2JS_strn_eq
+where
+{
+#extern
+fun
+XATS2JS_strn_eq
+(x1: strn
+,x2: strn): bool = $extnam()
+}
+//
 (* ****** ****** *)
 //
 #impltmp
-{k0:t0}
-{x0:t0}
-gmap_strmize
-<jsobjmap(k0,x0)><k0><x0>(kxs) =
-strm_vt_map0
-(
-gmap_strmize_key
-<jsobjmap(k0,x0)><k0><x0>(kxs)
-) where
+strn_lte<> =
+XATS2JS_strn_lte
+where
 {
-#impltmp map$fopr0<k0><(k0,x0)>(k0) =
+#extern
+fun
+XATS2JS_strn_lte
+(x1: strn
+,x2: strn): bool = $extnam()
+}
+#impltmp
+strn_gte<> =
+XATS2JS_strn_gte
+where
+{
+#extern
+fun
+XATS2JS_strn_gte
+(x1: strn
+,x2: strn): bool = $extnam()
+}
+#impltmp
+strn_neq<> =
+XATS2JS_strn_neq
+where
+{
+#extern
+fun
+XATS2JS_strn_neq
+(x1: strn
+,x2: strn): bool = $extnam()
+}
+(* ****** ****** *)
+//
+#impltmp
+strn_cmp<> =
+XATS2JS_strn_cmp
+where
+{
+#extern
+fun
+XATS2JS_strn_cmp
+(x1: strn
+,x2: strn): sint = $extnam()
+}
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+$UN.strn_head$raw =
+XATS2JS_strn_head$raw
+where
+{
+#extern
+fun
+XATS2JS_strn_head$raw
+(cs: strn): char = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+$UN.strn_tail$raw =
+XATS2JS_strn_tail$raw
+where
+{
+#extern
+fun
+XATS2JS_strn_tail$raw
+(cs: strn): strn = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_get$at =
+XATS2JS_strn_get$at
+where
+{
+#extern
+fun
+XATS2JS_strn_get$at
+( cs
+: strn,i0: sint): char = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+strn_head$opt<> =
+XATS2JS_strn_head$opt
+where
+{
+#extern
+fun
+XATS2JS_strn_head$opt
+(cs: strn): char = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+strn_length<> =
+XATS2JS_strn_length
+where
+{
+#extern
+fun
+XATS2JS_strn_length
+(cs : strn) : nint = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+strn_forall<>(cs) =
 let
-val-
-~optn_vt_cons(x0) =
-XATS2JS_jsobjmap_search$opt(kxs, k0) in (k0, x0)
-end//let
-} (*where*)
-// end(gmap_strmize<jsobjmap(k0,x0)><k0><x0>(kxs))
 //
-#impltmp
-{k0:t0}
-{x0:t0}
-gmap_strmize_key
-<jsobjmap(k0,x0)><k0><x0>(kxs) =
-(
-XATS2JS_jsarray_strmize(XATS2JS_jsobjmap_keys(kxs)))
-//end-of(gmap_strmize_key<jsobjmap(k0,x0)><k0><x0>(kxs))
+#extern
+fun
+XATS2JS_strn_forall$f1un
+( cs: strn
+, f0: (cgtz) -> bool): bool
+= $extnam((*self*))//native
+//
+in
+XATS2JS_strn_forall$f1un
+( cs
+, lam(c0) => forall$test<cgtz>(c0))
+end//let//end-of-[strn_forall<>(cs)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+strtmp_vt_alloc<> =
+XATS2JS_strtmp_vt_alloc
+where
+{
+#extern
+fun
+XATS2JS_strtmp_vt_alloc
+(bsz:sint): strtmp_vt = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_vt_get$at =
+XATS2JS_strn_vt_get$at
+where
+{
+#extern
+fun
+XATS2JS_strn_vt_get$at
+( cs
+: strn_vt
+, i0:sint(*ind*)): char = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_vt_set$at =
+XATS2JS_strn_vt_set$at
+where
+{
+#extern
+fun
+XATS2JS_strn_vt_set$at
+( cs:strn_vt
+, i0:sint, c0:char): void = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strtmp_vt_set$at =
+XATS2JS_strtmp_vt_set$at
+where
+{
+#extern
+fun
+XATS2JS_strtmp_vt_set$at
+( cs:strtmp_vt
+, i0:sint, c0:char): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_vt_length0 =
+XATS2JS_strn_vt_length0
+where
+{
+#extern
+fun
+XATS2JS_strn_vt_length0
+(cs : !strn_vt) : nint = $extnam()
+}
+#impltmp
+<(*tmp*)>
+strn_vt_length1 =
+XATS2JS_strn_vt_length1
+where
+{
+#extern
+fun
+XATS2JS_strn_vt_length1
+(cs : !strn_vt) : nint = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_vt_forall0(cs) =
+XATS2JS_strn_vt_forall$f1un
+( cs
+, lam(c0) =>
+  forall$test0<cgtz>(c0) ) where
+{
+#extern
+fun
+XATS2JS_strn_vt_forall$f1un
+( cs: ~strn_vt
+, f0:
+  (cgtz) -> bool): bool = $extnam()
+} (*where*) // end of [strn_vt_forall0]
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_vt_forall1(cs) =
+XATS2JS_strn_vt_forall$f1un
+( cs
+, lam(c0) =>
+  forall$test1<cgtz>(c0) ) where
+{
+#extern
+fun
+XATS2JS_strn_vt_forall$f1un
+( cs: !strn_vt
+, f0:
+  (cgtz) -> bool): bool = $extnam()
+} (*where*) // end of [strn_vt_forall1]
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_vt_rforall0(cs) =
+XATS2JS_strn_vt_rforall$f1un
+( cs
+, lam(c0) =>
+  rforall$test0<cgtz>(c0) ) where
+{
+#extern
+fun
+XATS2JS_strn_vt_rforall$f1un
+( cs: ~strn_vt
+, f0:
+  (cgtz) -> bool): bool = $extnam()
+} (*where*) // end of [strn_vt_rforall0]
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_vt_rforall1(cs) =
+XATS2JS_strn_vt_rforall$f1un
+( cs
+, lam(c0) =>
+  rforall$test1<cgtz>(c0) ) where
+{
+#extern
+fun
+XATS2JS_strn_vt_rforall$f1un
+( cs: !strn_vt
+, f0:
+  (cgtz) -> bool): bool = $extnam()
+} (*where*) // end of [strn_vt_rforall1]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics1.dats] *)
