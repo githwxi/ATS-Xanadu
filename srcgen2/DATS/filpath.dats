@@ -58,7 +58,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 local
-
+//
 (*
 #if
 (_FILESYS_UNIX_LIKE_)
@@ -69,7 +69,7 @@ val theParDir: strn = ".."
 (*
 // #endif // end-of(#if)
 *)
-
+//
 in//local
 //
 #implfun
