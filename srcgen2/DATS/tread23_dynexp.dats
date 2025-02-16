@@ -2750,12 +2750,9 @@ tread23_d3clslst
 list_tread23_fnp(d3cs, err, tread23_d3cls)
 //
 (* ****** ****** *)
-//
-#implfun
-tread23_d3eclist
-  (  dcls, err  ) =
-list_tread23_fnp(dcls, err, tread23_d3ecl)
-//
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_tread23_dynexp.dats] *)

@@ -58,34 +58,37 @@ ATS_PACKNAME
 //
 fun
 POLPOS
-(x:int):int=(x+0010(*08*))
+(x:int):int=(x+8(*010*))
 fun
 POLNEG
-(x:int):int=(x+0100(*64*))
+(x:int):int=(x+64(*0100*))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
 sortbox(knd) =
-g0u2s(g0s2u(knd) & g0s2u(01))
+g0u2s(g0s2u(knd) & g0s2u(1))
 
 #implfun
 sortlin(knd) =
 g0u2s
-((g0s2u(knd)>>1) & g0s2u(01))
+((g0s2u(knd)>>1) & g0s2u(1))
 
 #implfun
 sortprf(knd) =
 g0u2s
-((g0s2u(knd)>>2) & g0s2u(01))
+((g0s2u(knd)>>2) & g0s2u(1))
 
 #implfun
 sortpol(knd) =
 let
 val knd = (knd >> 3)
 in//let
-if knd <= 1 then knd else (-1)
+//
+( if
+  knd <= 1 then knd else -1)
+//
 end // end of [sortpol]
 
 (* ****** ****** *)
@@ -94,13 +97,13 @@ end // end of [sortpol]
 sortpolpos
   (knd) = POLPOS
 (
- g0u2s(g0s2u(knd) & g0s2u(07))
+ g0u2s(g0s2u(knd) & g0s2u(7))
 )
 #implfun
 sortpolneg
   (knd) = POLNEG
 (
- g0u2s(g0s2u(knd) & g0s2u(07))
+ g0u2s(g0s2u(knd) & g0s2u(7))
 )
 //
 (* ****** ****** *)
