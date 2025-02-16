@@ -12,6 +12,7 @@ XATS2JS=./../../../../srcgen2/xats2js
 ########################################################################
 LIBXATSOPT_JS="./../lib/libxatsopt.js"
 ########################################################################
+XATS2JS_JS1EMIT="$(SRCGEN2_XSHARED)/xats2js_js1emit.js"
 XATS2JS_PRELUDE="$(SRCGEN2_XSHARED)/xats2js_prelude.js"
 XATS2JS_PRELUDE_NODE="$(SRCGEN2_XSHARED)/xats2js_prelude_node.js"
 ########################################################################
@@ -20,7 +21,9 @@ boot:: \
 xatsopt_tcheck00_dats
 xatsopt_tcheck00_dats: ; \
 $(CAT) \
-$(XATS2JS_PRELUDE) > $@_out.js && \
+$(XATS2JS_JS1EMIT) > $@_out.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE) >> $@_out.js && \
 $(CAT) \
 $(XATS2JS_PRELUDE_NODE) >> $@_out.js && \
 $(CAT) $(LIBXATSOPT_JS) >> $@_out.js && \

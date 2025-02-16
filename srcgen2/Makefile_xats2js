@@ -186,11 +186,11 @@ trans12_gmacro.dats \
 trans12_staexp.dats \
 trans12_dynexp.dats \
 trans12_decl00.dats \
-tread12_errmsg.dats \
 tread12.dats \
 tread12_staexp.dats \
 tread12_dynexp.dats \
 tread12_decl00.dats \
+tread12_errmsg.dats \
 trans2a.dats \
 trans2a_myenv0.dats \
 trans2a_utils0.dats \
