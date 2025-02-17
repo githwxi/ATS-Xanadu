@@ -51,9 +51,6 @@ ATS_PACKNAME
 "./../HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-GLB = "./../SATS/xglobal.sats"
-(* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
@@ -126,7 +123,7 @@ val () =
 symbl_insert$any(sym)
 //
 val () =
-$GLB.the_xsymbls_insert(sym)
+the_xsymbls_insert(sym)
 //
 }(*where*)//end-of(sym)
 end(*let*)//end-of(optn_vt_nil)
@@ -224,6 +221,65 @@ XATSOPT_strn_append_uint
 (name: strn, stmp: uint): strn = $extnam()
 }
 //
+(* ****** ****** *)
+(* ****** ****** *)
+
+local
+//
+(* ****** ****** *)
+#typedef key = sint
+#typedef itm = sym_t
+(* ****** ****** *)
+#symload
+stmp with symbl_get_stmp
+(* ****** ****** *)
+#staload
+"\
+srcgen1\
+/prelude/DATS/CATS/JS/basics1.dats"
+(* ****** ****** *)
+//
+val
+the_xsymbls =
+XATS2JS_jsobjmap_make_nil<key>{itm}()
+//
+in//local
+//
+(* ****** ****** *)
+//
+#implfun
+the_xsymbls_search
+  (  key  ) =
+let
+val map = the_xsymbls
+in//let
+XATS2JS_jsobjmap_search$opt<key>(map,key)
+end (*let*) // end of [the_xsymbls_search(key)]
+//
+(* ****** ****** *)
+//
+#implfun
+the_xsymbls_insert
+  (    sym    ) =
+let
+//
+val k0 =
+sym.stmp()
+val k0 =
+g0u2s(uint(k0))
+//
+val x0 = sym
+//
+val map = the_xsymbls
+//
+in//let
+XATS2JS_jsobjmap_insert$any<key>(map,k0,x0)
+end (*let*)//end of [the_xsymbls_insert(sym)]
+//
+(* ****** ****** *)
+//
+end (*local*) // end of [local(the_xsymbls_...)]
+
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

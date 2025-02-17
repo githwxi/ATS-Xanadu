@@ -192,9 +192,23 @@ tokbuf_make0_llist
   TKBF0(A0, n0, i0)
 ) where
 {
-  val i0 = 0
-  val n0 = list_vt_length1(tks)
-  val A0 = a1ptr_make0_llist(tks)
+val i0 = 0
+val n0 = list_vt_length1(tks)
+//
+(*
+val () =
+prerrsln("\
+tokbuf_make0_llist: n0 = ", n0)
+*)
+//
+val A0 = a1ptr_make0_llist(tks)
+} where
+{
+// (*
+val () =
+prerr1sln
+("tokbuf_make0_llist: tks = ", tks)
+// *)
 }(*where*)//end-of-[tokbuf_make0_llist]
 //
 (* ****** ****** *)

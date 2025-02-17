@@ -88,6 +88,52 @@ let XATS000_streq = (x, y) => (x == y)
 let XATS000_ctgeq = (v, t) => (v[0] == t)
 //
 ////////////////////////////////////////////////////////////////////////.
+////////////////////////////////////////////////////////////////////////.
+function
+XATS2JS_optn_nil()
+{
+  return XATSCAPP("optn_nil", [0])
+}
+function
+XATS2JS_optn_cons(x0)
+{
+  return XATSCAPP("optn_cons", [1, x0])
+}
+////////////////////////////////////////////////////////////////////////.
+function
+XATS2JS_list_nil()
+{
+  return XATSCAPP("list_nil", [0])
+}
+function
+XATS2JS_list_cons(x0, xs)
+{
+  return XATSCAPP("list_cons", [1, x0, xs])
+}
+////////////////////////////////////////////////////////////////////////.
+function
+XATS2JS_optn_vt_nil()
+{
+  return XATSCAPP("optn_vt_nil", [0])
+}
+function
+XATS2JS_optn_vt_cons(x0)
+{
+  return XATSCAPP("optn_vt_cons", [1, x0])
+}
+////////////////////////////////////////////////////////////////////////.
+function
+XATS2JS_list_vt_nil()
+{
+  return XATSCAPP("list_vt_nil", [0])
+}
+function
+XATS2JS_list_vt_cons(x0, xs)
+{
+  return XATSCAPP("list_vt_cons", [1, x0, xs])
+}
+////////////////////////////////////////////////////////////////////////.
+////////////////////////////////////////////////////////////////////////.
 
 let XATS000_casef = function()
   {

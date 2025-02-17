@@ -277,6 +277,18 @@ symbl_extend_stamp
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-02-17:
+These are moved from [xglobal.sats]
+*)
+fun
+the_xsymbls_insert(sym: sym_t): void
+fun
+the_xsymbls_search(key:sint): optn_vt(sym_t)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****************************************** *)
 (* ****************************************** *)
 
