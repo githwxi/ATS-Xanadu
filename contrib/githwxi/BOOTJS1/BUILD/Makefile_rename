@@ -8,7 +8,6 @@ xbasics.dats \
 xbasics_print0.dats \
 xsynoug.dats \
 xerrory.dats \
-xglobal.dats \
 xstamp0.dats \
 xstamp0_print0.dats \
 xstamp0_tmpmap.dats \
@@ -18,6 +17,10 @@ xsymbol_mymap0.dats \
 xsymbol_inits0.dats \
 xlabel0.dats \
 xlabel0_print0.dats \
+xsymmap.dats \
+xsymmap_topmap.dats \
+xsymmap_stkmap.dats \
+xglobal.dats \
 filpath.dats \
 filpath_print0.dats \
 filpath_drpth0.dats \
@@ -25,9 +28,6 @@ filpath_fpath0.dats \
 filpath_search.dats \
 locinfo.dats \
 locinfo_print0.dats \
-xsymmap.dats \
-xsymmap_topmap.dats \
-xsymmap_stkmap.dats \
 lexbuf0.dats \
 lexbuf0_cstrx1.dats \
 lexbuf0_cstrx2.dats \
@@ -177,194 +177,194 @@ $(patsubst %.dats, %_dats, $(SRCDATS))
 rename:: $(OBJDATS)
 ##################################################################
 ##################################################################
-xbasics_dats: ; $(SED) -i -e 's/jstnm/js001tnm/' $@_out.js
-xbasics_print0_dats: ; $(SED) -i -e 's/jstnm/js002tnm/' $@_out.js
+xbasics_dats: ; $(SED) -i -e 's/jstnm/js001tnm/g' $@_out.js
+xbasics_print0_dats: ; $(SED) -i -e 's/jstnm/js002tnm/g' $@_out.js
 ##################################################################
-xsynoug_dats: ; $(SED) -i -e 's/jstnm/js003tnm/' $@_out.js
+xsynoug_dats: ; $(SED) -i -e 's/jstnm/js003tnm/g' $@_out.js
 ##################################################################
-xerrory_dats: ; $(SED) -i -e 's/jstnm/js004tnm/' $@_out.js
+xerrory_dats: ; $(SED) -i -e 's/jstnm/js004tnm/g' $@_out.js
 ##################################################################
-xglobal_dats: ; $(SED) -i -e 's/jstnm/js005tnm/' $@_out.js
+xglobal_dats: ; $(SED) -i -e 's/jstnm/js005tnm/g' $@_out.js
 ##################################################################
-xstamp0_dats: ; $(SED) -i -e 's/jstnm/js006tnm/' $@_out.js
-xstamp0_print0_dats: ; $(SED) -i -e 's/jstnm/js007tnm/' $@_out.js
-xstamp0_tmpmap_dats: ; $(SED) -i -e 's/jstnm/js008tnm/' $@_out.js
+xstamp0_dats: ; $(SED) -i -e 's/jstnm/js006tnm/g' $@_out.js
+xstamp0_print0_dats: ; $(SED) -i -e 's/jstnm/js007tnm/g' $@_out.js
+xstamp0_tmpmap_dats: ; $(SED) -i -e 's/jstnm/js008tnm/g' $@_out.js
 ##################################################################
-xsymbol_dats: ; $(SED) -i -e 's/jstnm/js009tnm/' $@_out.js
-xsymbol_print0_dats: ; $(SED) -i -e 's/jstnm/js010tnm/' $@_out.js
-xsymbol_mymap0_dats: ; $(SED) -i -e 's/jstnm/js011tnm/' $@_out.js
-xsymbol_inits0_dats: ; $(SED) -i -e 's/jstnm/js012tnm/' $@_out.js
+xsymbol_dats: ; $(SED) -i -e 's/jstnm/js009tnm/g' $@_out.js
+xsymbol_print0_dats: ; $(SED) -i -e 's/jstnm/js010tnm/g' $@_out.js
+xsymbol_mymap0_dats: ; $(SED) -i -e 's/jstnm/js011tnm/g' $@_out.js
+xsymbol_inits0_dats: ; $(SED) -i -e 's/jstnm/js012tnm/g' $@_out.js
 ##################################################################
-xlabel0_dats: ; $(SED) -i -e 's/jstnm/js013tnm/' $@_out.js
-xlabel0_print0_dats: ; $(SED) -i -e 's/jstnm/js014tnm/' $@_out.js
+xlabel0_dats: ; $(SED) -i -e 's/jstnm/js013tnm/g' $@_out.js
+xlabel0_print0_dats: ; $(SED) -i -e 's/jstnm/js014tnm/g' $@_out.js
 ##################################################################
-filpath_dats: ; $(SED) -i -e 's/jstnm/js015tnm/' $@_out.js
-filpath_print0_dats: ; $(SED) -i -e 's/jstnm/js016tnm/' $@_out.js
-filpath_drpth0_dats: ; $(SED) -i -e 's/jstnm/js017tnm/' $@_out.js
-filpath_fpath0_dats: ; $(SED) -i -e 's/jstnm/js018tnm/' $@_out.js
-filpath_search_dats: ; $(SED) -i -e 's/jstnm/js019tnm/' $@_out.js
+filpath_dats: ; $(SED) -i -e 's/jstnm/js015tnm/g' $@_out.js
+filpath_print0_dats: ; $(SED) -i -e 's/jstnm/js016tnm/g' $@_out.js
+filpath_drpth0_dats: ; $(SED) -i -e 's/jstnm/js017tnm/g' $@_out.js
+filpath_fpath0_dats: ; $(SED) -i -e 's/jstnm/js018tnm/g' $@_out.js
+filpath_search_dats: ; $(SED) -i -e 's/jstnm/js019tnm/g' $@_out.js
 ##################################################################
-locinfo_dats: ; $(SED) -i -e 's/jstnm/js020tnm/' $@_out.js
-locinfo_print0_dats: ; $(SED) -i -e 's/jstnm/js021tnm/' $@_out.js
+locinfo_dats: ; $(SED) -i -e 's/jstnm/js020tnm/g' $@_out.js
+locinfo_print0_dats: ; $(SED) -i -e 's/jstnm/js021tnm/g' $@_out.js
 ##################################################################
-xsymmap_dats: ; $(SED) -i -e 's/jstnm/js022tnm/' $@_out.js
-xsymmap_topmap_dats: ; $(SED) -i -e 's/jstnm/js023tnm/' $@_out.js
-xsymmap_stkmap_dats: ; $(SED) -i -e 's/jstnm/js024tnm/' $@_out.js
+xsymmap_dats: ; $(SED) -i -e 's/jstnm/js022tnm/g' $@_out.js
+xsymmap_topmap_dats: ; $(SED) -i -e 's/jstnm/js023tnm/g' $@_out.js
+xsymmap_stkmap_dats: ; $(SED) -i -e 's/jstnm/js024tnm/g' $@_out.js
 ##################################################################
-lexbuf0_dats: ; $(SED) -i -e 's/jstnm/js025tnm/' $@_out.js
-lexbuf0_cstrx1_dats: ; $(SED) -i -e 's/jstnm/js026tnm/' $@_out.js
-lexbuf0_cstrx2_dats: ; $(SED) -i -e 's/jstnm/js027tnm/' $@_out.js
+lexbuf0_dats: ; $(SED) -i -e 's/jstnm/js025tnm/g' $@_out.js
+lexbuf0_cstrx1_dats: ; $(SED) -i -e 's/jstnm/js026tnm/g' $@_out.js
+lexbuf0_cstrx2_dats: ; $(SED) -i -e 's/jstnm/js027tnm/g' $@_out.js
 ##################################################################
-lexing0_dats: ; $(SED) -i -e 's/jstnm/js028tnm/' $@_out.js
-lexing0_print0_dats: ; $(SED) -i -e 's/jstnm/js029tnm/' $@_out.js
-lexing0_mymap0_dats: ; $(SED) -i -e 's/jstnm/js030tnm/' $@_out.js
-lexing0_kword0_dats: ; $(SED) -i -e 's/jstnm/js031tnm/' $@_out.js
-lexing0_token0_dats: ; $(SED) -i -e 's/jstnm/js032tnm/' $@_out.js
-lexing0_utils1_dats: ; $(SED) -i -e 's/jstnm/js033tnm/' $@_out.js
-lexing0_utils2_dats: ; $(SED) -i -e 's/jstnm/js034tnm/' $@_out.js
+lexing0_dats: ; $(SED) -i -e 's/jstnm/js028tnm/g' $@_out.js
+lexing0_print0_dats: ; $(SED) -i -e 's/jstnm/js029tnm/g' $@_out.js
+lexing0_mymap0_dats: ; $(SED) -i -e 's/jstnm/js030tnm/g' $@_out.js
+lexing0_kword0_dats: ; $(SED) -i -e 's/jstnm/js031tnm/g' $@_out.js
+lexing0_token0_dats: ; $(SED) -i -e 's/jstnm/js032tnm/g' $@_out.js
+lexing0_utils1_dats: ; $(SED) -i -e 's/jstnm/js033tnm/g' $@_out.js
+lexing0_utils2_dats: ; $(SED) -i -e 's/jstnm/js034tnm/g' $@_out.js
 ##################################################################
-staexp0_dats: ; $(SED) -i -e 's/jstnm/js035tnm/' $@_out.js
-staexp0_print0_dats: ; $(SED) -i -e 's/jstnm/js036tnm/' $@_out.js
+staexp0_dats: ; $(SED) -i -e 's/jstnm/js035tnm/g' $@_out.js
+staexp0_print0_dats: ; $(SED) -i -e 's/jstnm/js036tnm/g' $@_out.js
 ##################################################################
-dynexp0_dats: ; $(SED) -i -e 's/jstnm/js037tnm/' $@_out.js
-dynexp0_print0_dats: ; $(SED) -i -e 's/jstnm/js038tnm/' $@_out.js
+dynexp0_dats: ; $(SED) -i -e 's/jstnm/js037tnm/g' $@_out.js
+dynexp0_print0_dats: ; $(SED) -i -e 's/jstnm/js038tnm/g' $@_out.js
 ##################################################################
-parsing_dats: ; $(SED) -i -e 's/jstnm/js039tnm/' $@_out.js
-parsing_basics_dats: ; $(SED) -i -e 's/jstnm/js040tnm/' $@_out.js
-parsing_tokbuf_dats: ; $(SED) -i -e 's/jstnm/js041tnm/' $@_out.js
-parsing_utils0_dats: ; $(SED) -i -e 's/jstnm/js042tnm/' $@_out.js
-parsing_staexp_dats: ; $(SED) -i -e 's/jstnm/js043tnm/' $@_out.js
-parsing_dynexp_dats: ; $(SED) -i -e 's/jstnm/js044tnm/' $@_out.js
-parsing_decl00_dats: ; $(SED) -i -e 's/jstnm/js045tnm/' $@_out.js
+parsing_dats: ; $(SED) -i -e 's/jstnm/js039tnm/g' $@_out.js
+parsing_basics_dats: ; $(SED) -i -e 's/jstnm/js040tnm/g' $@_out.js
+parsing_tokbuf_dats: ; $(SED) -i -e 's/jstnm/js041tnm/g' $@_out.js
+parsing_utils0_dats: ; $(SED) -i -e 's/jstnm/js042tnm/g' $@_out.js
+parsing_staexp_dats: ; $(SED) -i -e 's/jstnm/js043tnm/g' $@_out.js
+parsing_dynexp_dats: ; $(SED) -i -e 's/jstnm/js044tnm/g' $@_out.js
+parsing_decl00_dats: ; $(SED) -i -e 's/jstnm/js045tnm/g' $@_out.js
 ##################################################################
-preadx0_dats: ; $(SED) -i -e 's/jstnm/js046tnm/' $@_out.js
-preadx0_staexp_dats: ; $(SED) -i -e 's/jstnm/js047tnm/' $@_out.js
-preadx0_dynexp_dats: ; $(SED) -i -e 's/jstnm/js048tnm/' $@_out.js
-preadx0_decl00_dats: ; $(SED) -i -e 's/jstnm/js049tnm/' $@_out.js
-preadx0_errmsg_dats: ; $(SED) -i -e 's/jstnm/js050tnm/' $@_out.js
+preadx0_dats: ; $(SED) -i -e 's/jstnm/js046tnm/g' $@_out.js
+preadx0_staexp_dats: ; $(SED) -i -e 's/jstnm/js047tnm/g' $@_out.js
+preadx0_dynexp_dats: ; $(SED) -i -e 's/jstnm/js048tnm/g' $@_out.js
+preadx0_decl00_dats: ; $(SED) -i -e 's/jstnm/js049tnm/g' $@_out.js
+preadx0_errmsg_dats: ; $(SED) -i -e 's/jstnm/js050tnm/g' $@_out.js
 ##################################################################
-xfixity_dats: ; $(SED) -i -e 's/jstnm/js051tnm/' $@_out.js
+xfixity_dats: ; $(SED) -i -e 's/jstnm/js051tnm/g' $@_out.js
 ##################################################################
-staexp1_dats: ; $(SED) -i -e 's/jstnm/js052tnm/' $@_out.js
-staexp1_print0_dats: ; $(SED) -i -e 's/jstnm/js053tnm/' $@_out.js
+staexp1_dats: ; $(SED) -i -e 's/jstnm/js052tnm/g' $@_out.js
+staexp1_print0_dats: ; $(SED) -i -e 's/jstnm/js053tnm/g' $@_out.js
 ##################################################################
-dynexp1_dats: ; $(SED) -i -e 's/jstnm/js054tnm/' $@_out.js
-dynexp1_print0_dats: ; $(SED) -i -e 's/jstnm/js055tnm/' $@_out.js
+dynexp1_dats: ; $(SED) -i -e 's/jstnm/js054tnm/g' $@_out.js
+dynexp1_print0_dats: ; $(SED) -i -e 's/jstnm/js055tnm/g' $@_out.js
 ##################################################################
-gmacro1_dats: ; $(SED) -i -e 's/jstnm/js056tnm/' $@_out.js
-gmacro1_print0_dats: ; $(SED) -i -e 's/jstnm/js057tnm/' $@_out.js
+gmacro1_dats: ; $(SED) -i -e 's/jstnm/js056tnm/g' $@_out.js
+gmacro1_print0_dats: ; $(SED) -i -e 's/jstnm/js057tnm/g' $@_out.js
 ##################################################################
-trans01_dats: ; $(SED) -i -e 's/jstnm/js058tnm/' $@_out.js
-trans01_myenv0_dats: ; $(SED) -i -e 's/jstnm/js059tnm/' $@_out.js
-trans01_utils0_dats: ; $(SED) -i -e 's/jstnm/js060tnm/' $@_out.js
-trans01_staexp_dats: ; $(SED) -i -e 's/jstnm/js061tnm/' $@_out.js
-trans01_dynexp_dats: ; $(SED) -i -e 's/jstnm/js062tnm/' $@_out.js
-trans01_decl00_dats: ; $(SED) -i -e 's/jstnm/js063tnm/' $@_out.js
+trans01_dats: ; $(SED) -i -e 's/jstnm/js058tnm/g' $@_out.js
+trans01_myenv0_dats: ; $(SED) -i -e 's/jstnm/js059tnm/g' $@_out.js
+trans01_utils0_dats: ; $(SED) -i -e 's/jstnm/js060tnm/g' $@_out.js
+trans01_staexp_dats: ; $(SED) -i -e 's/jstnm/js061tnm/g' $@_out.js
+trans01_dynexp_dats: ; $(SED) -i -e 's/jstnm/js062tnm/g' $@_out.js
+trans01_decl00_dats: ; $(SED) -i -e 's/jstnm/js063tnm/g' $@_out.js
 ##################################################################
-tread01_dats: ; $(SED) -i -e 's/jstnm/js064tnm/' $@_out.js
-tread01_staexp_dats: ; $(SED) -i -e 's/jstnm/js065tnm/' $@_out.js
-tread01_dynexp_dats: ; $(SED) -i -e 's/jstnm/js066tnm/' $@_out.js
-tread01_decl00_dats: ; $(SED) -i -e 's/jstnm/js067tnm/' $@_out.js
-tread01_errmsg_dats: ; $(SED) -i -e 's/jstnm/js068tnm/' $@_out.js
+tread01_dats: ; $(SED) -i -e 's/jstnm/js064tnm/g' $@_out.js
+tread01_staexp_dats: ; $(SED) -i -e 's/jstnm/js065tnm/g' $@_out.js
+tread01_dynexp_dats: ; $(SED) -i -e 's/jstnm/js066tnm/g' $@_out.js
+tread01_decl00_dats: ; $(SED) -i -e 's/jstnm/js067tnm/g' $@_out.js
+tread01_errmsg_dats: ; $(SED) -i -e 's/jstnm/js068tnm/g' $@_out.js
 ##################################################################
-staexp2_dats: ; $(SED) -i -e 's/jstnm/js069tnm/' $@_out.js
-staexp2_print0_dats: ; $(SED) -i -e 's/jstnm/js070tnm/' $@_out.js
+staexp2_dats: ; $(SED) -i -e 's/jstnm/js069tnm/g' $@_out.js
+staexp2_print0_dats: ; $(SED) -i -e 's/jstnm/js070tnm/g' $@_out.js
 ##################################################################
-statyp2_dats: ; $(SED) -i -e 's/jstnm/js071tnm/' $@_out.js
-statyp2_print0_dats: ; $(SED) -i -e 's/jstnm/js072tnm/' $@_out.js
+statyp2_dats: ; $(SED) -i -e 's/jstnm/js071tnm/g' $@_out.js
+statyp2_print0_dats: ; $(SED) -i -e 's/jstnm/js072tnm/g' $@_out.js
 ##################################################################
-staexp2_inits0_dats: ; $(SED) -i -e 's/jstnm/js073tnm/' $@_out.js
-statyp2_inits0_dats: ; $(SED) -i -e 's/jstnm/js074tnm/' $@_out.js
+staexp2_inits0_dats: ; $(SED) -i -e 's/jstnm/js073tnm/g' $@_out.js
+statyp2_inits0_dats: ; $(SED) -i -e 's/jstnm/js074tnm/g' $@_out.js
 ##################################################################
-staexp2_utils1_dats: ; $(SED) -i -e 's/jstnm/js075tnm/' $@_out.js
-staexp2_utils2_dats: ; $(SED) -i -e 's/jstnm/js076tnm/' $@_out.js
-statyp2_utils1_dats: ; $(SED) -i -e 's/jstnm/js077tnm/' $@_out.js
-statyp2_utils2_dats: ; $(SED) -i -e 's/jstnm/js078tnm/' $@_out.js
+staexp2_utils1_dats: ; $(SED) -i -e 's/jstnm/js075tnm/g' $@_out.js
+staexp2_utils2_dats: ; $(SED) -i -e 's/jstnm/js076tnm/g' $@_out.js
+statyp2_utils1_dats: ; $(SED) -i -e 's/jstnm/js077tnm/g' $@_out.js
+statyp2_utils2_dats: ; $(SED) -i -e 's/jstnm/js078tnm/g' $@_out.js
 ##################################################################
-statyp2_tmplib_dats: ; $(SED) -i -e 's/jstnm/js079tnm/' $@_out.js
+statyp2_tmplib_dats: ; $(SED) -i -e 's/jstnm/js079tnm/g' $@_out.js
 ##################################################################
-dynexp2_dats: ; $(SED) -i -e 's/jstnm/js080tnm/' $@_out.js
-dynexp2_print0_dats: ; $(SED) -i -e 's/jstnm/js081tnm/' $@_out.js
-dynexp2_utils0_dats: ; $(SED) -i -e 's/jstnm/js082tnm/' $@_out.js
+dynexp2_dats: ; $(SED) -i -e 's/jstnm/js080tnm/g' $@_out.js
+dynexp2_print0_dats: ; $(SED) -i -e 's/jstnm/js081tnm/g' $@_out.js
+dynexp2_utils0_dats: ; $(SED) -i -e 's/jstnm/js082tnm/g' $@_out.js
 ##################################################################
-nmspace_dats: ; $(SED) -i -e 's/jstnm/js083tnm/' $@_out.js
+nmspace_dats: ; $(SED) -i -e 's/jstnm/js083tnm/g' $@_out.js
 ##################################################################
-trans12_dats: ; $(SED) -i -e 's/jstnm/js084tnm/' $@_out.js
-trans11_myenv0_dats: ; $(SED) -i -e 's/jstnm/js085tnm/' $@_out.js
-trans12_myenv0_dats: ; $(SED) -i -e 's/jstnm/js086tnm/' $@_out.js
-trans11_gmacro_dats: ; $(SED) -i -e 's/jstnm/js087tnm/' $@_out.js
-trans12_gmacro_dats: ; $(SED) -i -e 's/jstnm/js088tnm/' $@_out.js
-trans12_staexp_dats: ; $(SED) -i -e 's/jstnm/js089tnm/' $@_out.js
-trans12_dynexp_dats: ; $(SED) -i -e 's/jstnm/js090tnm/' $@_out.js
-trans12_decl00_dats: ; $(SED) -i -e 's/jstnm/js091tnm/' $@_out.js
+trans12_dats: ; $(SED) -i -e 's/jstnm/js084tnm/g' $@_out.js
+trans11_myenv0_dats: ; $(SED) -i -e 's/jstnm/js085tnm/g' $@_out.js
+trans12_myenv0_dats: ; $(SED) -i -e 's/jstnm/js086tnm/g' $@_out.js
+trans11_gmacro_dats: ; $(SED) -i -e 's/jstnm/js087tnm/g' $@_out.js
+trans12_gmacro_dats: ; $(SED) -i -e 's/jstnm/js088tnm/g' $@_out.js
+trans12_staexp_dats: ; $(SED) -i -e 's/jstnm/js089tnm/g' $@_out.js
+trans12_dynexp_dats: ; $(SED) -i -e 's/jstnm/js090tnm/g' $@_out.js
+trans12_decl00_dats: ; $(SED) -i -e 's/jstnm/js091tnm/g' $@_out.js
 ##################################################################
-tread12_dats: ; $(SED) -i -e 's/jstnm/js092tnm/' $@_out.js
-tread12_staexp_dats: ; $(SED) -i -e 's/jstnm/js093tnm/' $@_out.js
-tread12_dynexp_dats: ; $(SED) -i -e 's/jstnm/js094tnm/' $@_out.js
-tread12_decl00_dats: ; $(SED) -i -e 's/jstnm/js095tnm/' $@_out.js
-tread12_errmsg_dats: ; $(SED) -i -e 's/jstnm/js096tnm/' $@_out.js
+tread12_dats: ; $(SED) -i -e 's/jstnm/js092tnm/g' $@_out.js
+tread12_staexp_dats: ; $(SED) -i -e 's/jstnm/js093tnm/g' $@_out.js
+tread12_dynexp_dats: ; $(SED) -i -e 's/jstnm/js094tnm/g' $@_out.js
+tread12_decl00_dats: ; $(SED) -i -e 's/jstnm/js095tnm/g' $@_out.js
+tread12_errmsg_dats: ; $(SED) -i -e 's/jstnm/js096tnm/g' $@_out.js
 ##################################################################
-trans2a_dats: ; $(SED) -i -e 's/jstnm/js097tnm/' $@_out.js
-trans2a_myenv0_dats: ; $(SED) -i -e 's/jstnm/js098tnm/' $@_out.js
-trans2a_utils0_dats: ; $(SED) -i -e 's/jstnm/js099tnm/' $@_out.js
-trans2a_dynexp_dats: ; $(SED) -i -e 's/jstnm/js100tnm/' $@_out.js
-trans2a_decl00_dats: ; $(SED) -i -e 's/jstnm/js101tnm/' $@_out.js
+trans2a_dats: ; $(SED) -i -e 's/jstnm/js097tnm/g' $@_out.js
+trans2a_myenv0_dats: ; $(SED) -i -e 's/jstnm/js098tnm/g' $@_out.js
+trans2a_utils0_dats: ; $(SED) -i -e 's/jstnm/js099tnm/g' $@_out.js
+trans2a_dynexp_dats: ; $(SED) -i -e 's/jstnm/js100tnm/g' $@_out.js
+trans2a_decl00_dats: ; $(SED) -i -e 's/jstnm/js101tnm/g' $@_out.js
 ##################################################################
-trsym2b_dats: ; $(SED) -i -e 's/jstnm/js102tnm/' $@_out.js
-trsym2b_utils0_dats: ; $(SED) -i -e 's/jstnm/js103tnm/' $@_out.js
-trsym2b_dynexp_dats: ; $(SED) -i -e 's/jstnm/js104tnm/' $@_out.js
-trsym2b_decl00_dats: ; $(SED) -i -e 's/jstnm/js105tnm/' $@_out.js
+trsym2b_dats: ; $(SED) -i -e 's/jstnm/js102tnm/g' $@_out.js
+trsym2b_utils0_dats: ; $(SED) -i -e 's/jstnm/js103tnm/g' $@_out.js
+trsym2b_dynexp_dats: ; $(SED) -i -e 's/jstnm/js104tnm/g' $@_out.js
+trsym2b_decl00_dats: ; $(SED) -i -e 's/jstnm/js105tnm/g' $@_out.js
 ##################################################################
-tread20_dats: ; $(SED) -i -e 's/jstnm/js106tnm/' $@_out.js
-tread20_dynexp_dats: ; $(SED) -i -e 's/jstnm/js107tnm/' $@_out.js
-tread20_decl00_dats: ; $(SED) -i -e 's/jstnm/js108tnm/' $@_out.js
+tread20_dats: ; $(SED) -i -e 's/jstnm/js106tnm/g' $@_out.js
+tread20_dynexp_dats: ; $(SED) -i -e 's/jstnm/js107tnm/g' $@_out.js
+tread20_decl00_dats: ; $(SED) -i -e 's/jstnm/js108tnm/g' $@_out.js
 ##################################################################
-fperr20_dats: ; $(SED) -i -e 's/jstnm/js109tnm/' $@_out.js
-fperr20_dynexp_dats: ; $(SED) -i -e 's/jstnm/js110tnm/' $@_out.js
-fperr20_decl00_dats: ; $(SED) -i -e 's/jstnm/js111tnm/' $@_out.js
+fperr20_dats: ; $(SED) -i -e 's/jstnm/js109tnm/g' $@_out.js
+fperr20_dynexp_dats: ; $(SED) -i -e 's/jstnm/js110tnm/g' $@_out.js
+fperr20_decl00_dats: ; $(SED) -i -e 's/jstnm/js111tnm/g' $@_out.js
 ##################################################################
-dynexp3_dats: ; $(SED) -i -e 's/jstnm/js112tnm/' $@_out.js
-dynexp3_print0_dats: ; $(SED) -i -e 's/jstnm/js113tnm/' $@_out.js
-dynexp3_utils0_dats: ; $(SED) -i -e 's/jstnm/js114tnm/' $@_out.js
+dynexp3_dats: ; $(SED) -i -e 's/jstnm/js112tnm/g' $@_out.js
+dynexp3_print0_dats: ; $(SED) -i -e 's/jstnm/js113tnm/g' $@_out.js
+dynexp3_utils0_dats: ; $(SED) -i -e 's/jstnm/js114tnm/g' $@_out.js
 ##################################################################
-trans23_dats: ; $(SED) -i -e 's/jstnm/js115tnm/' $@_out.js
-trans23_myenv0_dats: ; $(SED) -i -e 's/jstnm/js116tnm/' $@_out.js
-trans23_utils0_dats: ; $(SED) -i -e 's/jstnm/js117tnm/' $@_out.js
-trans23_dynexp_dats: ; $(SED) -i -e 's/jstnm/js118tnm/' $@_out.js
-trans23_decl00_dats: ; $(SED) -i -e 's/jstnm/js119tnm/' $@_out.js
+trans23_dats: ; $(SED) -i -e 's/jstnm/js115tnm/g' $@_out.js
+trans23_myenv0_dats: ; $(SED) -i -e 's/jstnm/js116tnm/g' $@_out.js
+trans23_utils0_dats: ; $(SED) -i -e 's/jstnm/js117tnm/g' $@_out.js
+trans23_dynexp_dats: ; $(SED) -i -e 's/jstnm/js118tnm/g' $@_out.js
+trans23_decl00_dats: ; $(SED) -i -e 's/jstnm/js119tnm/g' $@_out.js
 ##################################################################
-tread23_dats: ; $(SED) -i -e 's/jstnm/js120tnm/' $@_out.js
-tread23_dynexp_dats: ; $(SED) -i -e 's/jstnm/js121tnm/' $@_out.js
-tread23_decl00_dats: ; $(SED) -i -e 's/jstnm/js122tnm/' $@_out.js
-tread23_errmsg_dats: ; $(SED) -i -e 's/jstnm/js123tnm/' $@_out.js
+tread23_dats: ; $(SED) -i -e 's/jstnm/js120tnm/g' $@_out.js
+tread23_dynexp_dats: ; $(SED) -i -e 's/jstnm/js121tnm/g' $@_out.js
+tread23_decl00_dats: ; $(SED) -i -e 's/jstnm/js122tnm/g' $@_out.js
+tread23_errmsg_dats: ; $(SED) -i -e 's/jstnm/js123tnm/g' $@_out.js
 ##################################################################
-trans3a_dats: ; $(SED) -i -e 's/jstnm/js124tnm/' $@_out.js
-trans3a_myenv0_dats: ; $(SED) -i -e 's/jstnm/js125tnm/' $@_out.js
-trans3a_staexp_dats: ; $(SED) -i -e 's/jstnm/js126tnm/' $@_out.js
-trans3a_dynexp_dats: ; $(SED) -i -e 's/jstnm/js127tnm/' $@_out.js
-trans3a_decl00_dats: ; $(SED) -i -e 's/jstnm/js128tnm/' $@_out.js
+trans3a_dats: ; $(SED) -i -e 's/jstnm/js124tnm/g' $@_out.js
+trans3a_myenv0_dats: ; $(SED) -i -e 's/jstnm/js125tnm/g' $@_out.js
+trans3a_staexp_dats: ; $(SED) -i -e 's/jstnm/js126tnm/g' $@_out.js
+trans3a_dynexp_dats: ; $(SED) -i -e 's/jstnm/js127tnm/g' $@_out.js
+trans3a_decl00_dats: ; $(SED) -i -e 's/jstnm/js128tnm/g' $@_out.js
 ##################################################################
-trtmp3b_dats: ; $(SED) -i -e 's/jstnm/js129tnm/' $@_out.js
-trtmp3b_myenv0_dats: ; $(SED) -i -e 's/jstnm/js130tnm/' $@_out.js
-trtmp3b_utils0_dats: ; $(SED) -i -e 's/jstnm/js131tnm/' $@_out.js
-trtmp3b_staexp_dats: ; $(SED) -i -e 's/jstnm/js132tnm/' $@_out.js
-trtmp3b_dynexp_dats: ; $(SED) -i -e 's/jstnm/js133tnm/' $@_out.js
-trtmp3b_decl00_dats: ; $(SED) -i -e 's/jstnm/js134tnm/' $@_out.js
+trtmp3b_dats: ; $(SED) -i -e 's/jstnm/js129tnm/g' $@_out.js
+trtmp3b_myenv0_dats: ; $(SED) -i -e 's/jstnm/js130tnm/g' $@_out.js
+trtmp3b_utils0_dats: ; $(SED) -i -e 's/jstnm/js131tnm/g' $@_out.js
+trtmp3b_staexp_dats: ; $(SED) -i -e 's/jstnm/js132tnm/g' $@_out.js
+trtmp3b_dynexp_dats: ; $(SED) -i -e 's/jstnm/js133tnm/g' $@_out.js
+trtmp3b_decl00_dats: ; $(SED) -i -e 's/jstnm/js134tnm/g' $@_out.js
 ##################################################################
-trtmp3c_dats: ; $(SED) -i -e 's/jstnm/js135tnm/' $@_out.js
-trtmp3c_myenv0_dats: ; $(SED) -i -e 's/jstnm/js136tnm/' $@_out.js
-trtmp3c_utils0_dats: ; $(SED) -i -e 's/jstnm/js137tnm/' $@_out.js
-trtmp3c_staexp_dats: ; $(SED) -i -e 's/jstnm/js138tnm/' $@_out.js
-trtmp3c_dynexp_dats: ; $(SED) -i -e 's/jstnm/js139tnm/' $@_out.js
-trtmp3c_decl00_dats: ; $(SED) -i -e 's/jstnm/js140tnm/' $@_out.js
+trtmp3c_dats: ; $(SED) -i -e 's/jstnm/js135tnm/g' $@_out.js
+trtmp3c_myenv0_dats: ; $(SED) -i -e 's/jstnm/js136tnm/g' $@_out.js
+trtmp3c_utils0_dats: ; $(SED) -i -e 's/jstnm/js137tnm/g' $@_out.js
+trtmp3c_staexp_dats: ; $(SED) -i -e 's/jstnm/js138tnm/g' $@_out.js
+trtmp3c_dynexp_dats: ; $(SED) -i -e 's/jstnm/js139tnm/g' $@_out.js
+trtmp3c_decl00_dats: ; $(SED) -i -e 's/jstnm/js140tnm/g' $@_out.js
 ##################################################################
-tread30_dats: ; $(SED) -i -e 's/jstnm/js141tnm/' $@_out.js
-tread30_staexp_dats: ; $(SED) -i -e 's/jstnm/js142tnm/' $@_out.js
-tread30_dynexp_dats: ; $(SED) -i -e 's/jstnm/js143tnm/' $@_out.js
-tread30_decl00_dats: ; $(SED) -i -e 's/jstnm/js144tnm/' $@_out.js
+tread30_dats: ; $(SED) -i -e 's/jstnm/js141tnm/g' $@_out.js
+tread30_staexp_dats: ; $(SED) -i -e 's/jstnm/js142tnm/g' $@_out.js
+tread30_dynexp_dats: ; $(SED) -i -e 's/jstnm/js143tnm/g' $@_out.js
+tread30_decl00_dats: ; $(SED) -i -e 's/jstnm/js144tnm/g' $@_out.js
 ##################################################################
-fperr30_dats: ; $(SED) -i -e 's/jstnm/js145tnm/' $@_out.js
-fperr30_dynexp_dats: ; $(SED) -i -e 's/jstnm/js146tnm/' $@_out.js
-fperr30_decl00_dats: ; $(SED) -i -e 's/jstnm/js147tnm/' $@_out.js
+fperr30_dats: ; $(SED) -i -e 's/jstnm/js145tnm/g' $@_out.js
+fperr30_dynexp_dats: ; $(SED) -i -e 's/jstnm/js146tnm/g' $@_out.js
+fperr30_decl00_dats: ; $(SED) -i -e 's/jstnm/js147tnm/g' $@_out.js
 ##################################################################
 ##################################################################

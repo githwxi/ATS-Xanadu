@@ -91,10 +91,20 @@ end(*let*)//end-of(trans00_from_fpath(...))
 //
 (* ****** ****** *)
 //
+(*
 #implfun
-d0parsed_from_fpath = trans00_from_fpath//alias
+d0parsed_from_fpath = trans00_from_fpath
+*)
+#implfun
+d0parsed_from_fpath
+(stadyn, source) =
+(
+trans00_from_fpath(stadyn, source))//implfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_parsing.dats] *)

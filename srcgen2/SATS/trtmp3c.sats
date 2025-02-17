@@ -345,6 +345,11 @@ trtmp3c_l3d3e
 (* ****** ****** *)
 //
 fun
+trtmp3c_d3gua
+( env0:
+! tr3cenv,dgua:d3gua):d3gua//fun
+//
+fun
 trtmp3c_d3gpt
 ( env0:
 ! tr3cenv,dgpt:d3gpt):d3gpt//fun
@@ -398,6 +403,13 @@ fun
 trtmp3c_l3d3elst
 ( env0:
 ! tr3cenv,ldes:l3d3elst):l3d3elst
+//
+(* ****** ****** *)
+//
+fun
+trtmp3c_d3gualst
+( env0:
+! tr3cenv,d3gs:d3gualst):d3gualst
 //
 (* ****** ****** *)
 //

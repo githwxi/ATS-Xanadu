@@ -99,6 +99,27 @@ sint_make_char
 (* ****** ****** *)
 #extern
 fun
+XATS2JS_char_eq
+( c1
+: char
+, c2
+: char): bool = $extnam()
+#impltmp
+<(*tmp*)>
+char_eq = XATS2JS_char_eq
+#extern
+fun
+XATS2JS_char_neq
+( c1
+: char
+, c2
+: char): bool = $extnam()
+#impltmp
+<(*tmp*)>
+char_neq = XATS2JS_char_neq
+(* ****** ****** *)
+#extern
+fun
 XATS2JS_char_cmp
 ( c1
 : char
