@@ -5,6 +5,7 @@
 ########################################################################
 CAT=cat
 ECHO=echo
+MAKE=make
 NODE=node
 ########################################################################
 SRCGEN2=./../../../srcgen2
@@ -74,7 +75,6 @@ xbasics.dats \
 xbasics_print0.dats \
 xsynoug.dats \
 xerrory.dats \
-xglobal.dats \
 xstamp0.dats \
 xstamp0_print0.dats \
 xstamp0_tmpmap.dats \
@@ -84,6 +84,10 @@ xsymbol_mymap0.dats \
 xsymbol_inits0.dats \
 xlabel0.dats \
 xlabel0_print0.dats \
+xsymmap.dats \
+xsymmap_topmap.dats \
+xsymmap_stkmap.dats \
+xglobal.dats \
 filpath.dats \
 filpath_print0.dats \
 filpath_drpth0.dats \
@@ -91,9 +95,6 @@ filpath_fpath0.dats \
 filpath_search.dats \
 locinfo.dats \
 locinfo_print0.dats \
-xsymmap.dats \
-xsymmap_topmap.dats \
-xsymmap_stkmap.dats \
 lexbuf0.dats \
 lexbuf0_cstrx1.dats \
 lexbuf0_cstrx2.dats \
@@ -251,7 +252,10 @@ boot_sats:: $(OBJSATS)
 boot:: boot_dats
 boot_dats:: $(OBJDATS)
 ########################################################################
-libxatsopt:: $(OBJDATS); \
+libxatsopt: \
+$(OBJDATS); \
+$(MAKE) -C BUILD \
+-f Makefile_rename && \
 $(CAT) $(OBJDATS) > lib/libxatsopt.js
 ########################################################################
 ########################################################################

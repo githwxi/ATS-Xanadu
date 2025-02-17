@@ -28,6 +28,21 @@ XATS2JS_bool_mul
 ////////////////////////////////////////////////////////////////
 //
 function
+XATS2JS_char_eq
+  (c1, c2)
+{
+  return (c1===c2); // eq
+}
+function
+XATS2JS_char_neq
+  (c1, c2)
+{
+  return (c1!==c2); // neq
+}
+//
+////////////////////////////////////////////////////////////////
+//
+function
 XATS2JS_char_cmp
   (c1, c2)
 {

@@ -1212,9 +1212,11 @@ case+
 dgpt.node() of
 //
 |
-D3GPTpat(d3p1) => dgpt//nothing
+D3GPTpat
+(  d3p1  ) => dgpt
 |
-D3GPTgua(d3p1, d3gs) =>
+D3GPTgua
+(d3p1, d3gs) =>
 let
 //
 val loc0 =

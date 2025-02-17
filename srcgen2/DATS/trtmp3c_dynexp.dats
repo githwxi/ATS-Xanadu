@@ -1255,9 +1255,22 @@ case+
 dgpt.node() of
 //
 |
-D3GPTpat(d3p1) => dgpt//nothing
+D3GPTpat
+(  d3p1  ) => dgpt
 |
-D3GPTgua(d3p1, d3gs) => dgpt//nothing
+D3GPTgua
+(d3p1, d3gs) =>
+let
+//
+val loc0 =
+dgpt.lctn((*void*))
+val d3gs =
+trtmp3c_d3gualst(env0, d3gs)
+//
+in//let
+(
+  d3gpt(loc0, D3GPTgua(d3p1, d3gs)))
+end//let
 //
 end(*let*)//end-of-[trtmp3c_d3gpt(env0,dgpt)]
 //
@@ -1362,5 +1375,25 @@ trtmp3c_d3clslst
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+trtmp3c_d3gualst
+( env0, d3gs ) =
+(
+  list_trtmp3c_fnp(env0, d3gs, trtmp3c_d3gua))
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3c_d3clslst
+( env0, dcls ) =
+(
+  list_trtmp3c_fnp(env0, dcls, trtmp3c_d3cls))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_trtmp3c_dynexp.dats] *)
