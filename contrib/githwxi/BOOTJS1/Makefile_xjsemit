@@ -61,12 +61,12 @@ trtmp3b.sats \
 trtmp3c.sats \
 tread30.sats \
 fperr30.sats \
+xglobal.sats \
+xatsopt.sats \
 # dynexp4.sats \
 # trans34.sats \
 # tread34.sats \
 # fperr40.sats \
-# xglobal.sats \
-# xatsopt.sats \
 
 ######
 
@@ -216,6 +216,9 @@ tread30_decl00.dats \
 fperr30.dats \
 fperr30_dynexp.dats \
 fperr30_decl00.dats \
+xatsopt.dats \
+xatsopt_tmplib.dats \
+xatsopt_utils0.dats \
 # dynexp4.dats \
 # dynexp4_print0.dats \
 # dynexp4_utils0.dats \
@@ -234,9 +237,6 @@ fperr30_decl00.dats \
 # xdepend_decl00.dats \
 # xatsmtp.dats \
 # xatsmtp_dcon00.dats \
-# xatsopt.dats \
-# xatsopt_tmplib.dats \
-# xatsopt_utils0.dats \
 
 ########################################################################
 ########################################################################

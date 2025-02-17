@@ -19,7 +19,9 @@ ATS3_XANADU_prelude/DATS/CATS/JS
 //
 #staload _ = "./../../../DATS/CATS/JS/g_print.dats"
 //
+(*
 #staload _ = "./../../../DATS/CATS/JS/unsafex.dats"
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

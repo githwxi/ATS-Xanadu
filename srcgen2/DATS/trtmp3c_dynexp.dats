@@ -1238,6 +1238,45 @@ end(*let*)//end-of-[trtmp3c_l3d3e(env0,ld3e)]
 (* ****** ****** *)
 //
 #implfun
+trtmp3c_d3gua
+  (env0, dgua) = let
+//
+val loc0 = dgua.lctn()
+//
+(*
+val
+val () =
+prerrsln
+("trtmp3c_d3gua: dgua = ", dgua)
+*)
+//
+in//let
+//
+case+
+dgua.node() of
+|
+D3GUAexp(dexp) =>
+let
+val dexp =
+trtmp3c_d3exp(env0, dexp)
+in//let
+d3gua(loc0, D3GUAexp(dexp))
+end//let
+//
+|
+D3GUAmat(dexp, dpat) =>
+let
+val dexp =
+trtmp3c_d3exp(env0, dexp)
+in//let
+d3gua(loc0, D3GUAmat(dexp, dpat))
+end//let
+//
+end(*let*)//end-of-[trtmp3c_d3gua(env0,dgpt)]
+//
+(* ****** ****** *)
+//
+#implfun
 trtmp3c_d3gpt
   (env0, dgpt) = let
 //
@@ -1364,14 +1403,6 @@ trtmp3c_l3d3elst
 ( env0, ldes ) =
 (
   list_trtmp3c_fnp(env0, ldes, trtmp3c_l3d3e))
-//
-(* ****** ****** *)
-//
-#implfun
-trtmp3c_d3clslst
-( env0, dcls ) =
-(
-  list_trtmp3c_fnp(env0, dcls, trtmp3c_d3cls))
 //
 (* ****** ****** *)
 (* ****** ****** *)

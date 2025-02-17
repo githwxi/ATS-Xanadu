@@ -129,16 +129,6 @@ fun the_XATSHOME(): strn
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-fun
-the_xsymbls_insert
-(   sym: sym_t   ): void
-fun
-the_xsymbls_search
-(key:sint): optn_vt(sym_t)
-//
-(* ****** ****** *)
-(* ****** ****** *)
 fun
 the_xatsopt_include
   ( (*void*) ): list(strn)

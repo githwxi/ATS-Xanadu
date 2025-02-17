@@ -130,8 +130,10 @@ print with g_print of 0101
 #include
 "srcgen1/prelude/DATS/CATS/JS/g_print.dats"
 //
+(*
 #include
 "srcgen1/prelude/DATS/CATS/JS/unsafex.dats"
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
