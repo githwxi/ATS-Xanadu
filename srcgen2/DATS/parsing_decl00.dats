@@ -1130,15 +1130,13 @@ end // end of [T_SRP_FIXITY(k0)]
 | _(* else *) =>
 let
 //
-val () = buf.skip1()
-//
 (*
 val () =
 prerrsln("fp_d0ecl(else): tok = ", tok)
 *)
 //
 in//let
-(err := e00 + 1; d0ecl(tok.lctn(), D0Ctkerr(tok)))
+(err := e00+1; d0ecl(tok.lctn(), D0Ctkerr(tok)))
 end//let
 //
 (* ****** ****** *)
