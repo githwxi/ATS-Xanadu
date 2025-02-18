@@ -20,7 +20,8 @@ For testing xatslib/JS!
 "prelude/DATS/CATS/JS/gint000.dats"
 //
 (* ****** ****** *)
-val sum = 1 + 2
+val () =
+prints("Hello from [mydebug]!", "\n")
 (* ****** ****** *)
 (* ****** ****** *)
 //

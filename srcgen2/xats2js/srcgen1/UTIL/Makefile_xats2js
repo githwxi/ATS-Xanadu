@@ -30,6 +30,7 @@ $(XATSHOME)/srcgen1/xats2js/srcgenx
 LIBXATS2JS_JS="./../lib/libxats2js.js"
 LIBXATSOPT_JS="./../../../lib/libxatsopt.js"
 ########################################################################
+XATS2JS_JS1EMIT="$(XSHARED)/runtime/xats2js_js1emit.js"
 XATS2JS_PRELUDE="$(XSHARED)/runtime/xats2js_prelude.js"
 XATS2JS_PRELUDE_NODE="$(XSHARED)/runtime/xats2js_prelude_node.js"
 XATS2JS_XATSLIB_NODE="$(XSHARED)/runtime/xats2js_xatslib_node.js"
@@ -40,7 +41,9 @@ xats2js_jsemit00
 xats2js_jsemit00:: \
 xats2js_jsemit00.dats ; \
 $(CAT) \
-$(XATS2JS_PRELUDE) > $@_dats.js && \
+$(XATS2JS_JS1EMIT) > $@_dats.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE) >> $@_dats.js && \
 $(CAT) \
 $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
 $(CAT) \

@@ -65,7 +65,7 @@ datavwtp
 lxbf1_ =
 LXBF1 of
 (
-strx_vt(sint)//char source
+strx_vt(sint)//char~source
 ,
 list_vt(char)//unget-stack
 ,
@@ -109,7 +109,7 @@ if
 then
 let
 val cc1 = char(ci1)
-in
+in//let
 buf.1 :=
 cons_vt(cc1, buf.1); ci1
 end else ci1 // end-of(if)

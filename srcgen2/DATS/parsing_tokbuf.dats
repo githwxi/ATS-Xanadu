@@ -91,7 +91,7 @@ TKBF0
 ) (*case*)//end-of(tokbuf_free)
 //
 (* ****** ****** *)
-
+//
 #implfun
 tokbuf_getk0(buf) =
 let
@@ -99,7 +99,8 @@ val+
 @TKBF0
 (A0, n0, i0) = buf
 in
-($fold(buf); tok) where
+(
+  $fold(buf); tok) where
 {
 val tok =
 (
@@ -112,35 +113,44 @@ else
 (
  a1ptr_get$at1(A0, n0-1))) }
 end (*let*) // end of [tokbuf_getk0]
-
+//
 (* ****** ****** *)
 //
 #implfun
 tokbuf_getk1(buf) =
 let
 //
-val i1 = i0
+(*
+val () =
+prerrsln("\
+tokbuf_getk1: n0 = ", n0)
+val () =
+prerrsln("\
+tokbuf_getk1: i0 = ", i0)
+*)
 //
-in
-( i0 := i1+1
-; $fold(buf); tok) where
-{
 val tok =
 (
 if
-(i1 < n0)
+(i0 < n0)
 then
 (
-  a1ptr_get$at1(A0, i1))
+  a1ptr_get$at1(A0, i0))
 else
 (
   a1ptr_get$at1(A0, n0-1))
 ) : token // end-[val(tok)]
-}
-end where
+//
+in
+//
+let
+val () =
+buf.2 := i0+1
+val () = $fold(buf) in tok end
+//
+end where // end-of-[let]
 {
-  val+
-  @TKBF0(A0, n0, !i0) = buf
+  val+ @TKBF0(A0, n0, i0) = buf
 } (*where*) // end of [tokbuf_getk1]
 //
 (* ****** ****** *)
@@ -149,14 +159,18 @@ end where
 tokbuf_skip1(buf) =
 let
 //
-val i1 = i0
-//
-in
-  i0 := i1+1; $fold(buf)
-end where
+val () =
+buf.2 := i0+1 in $fold(buf)
+end where // end-of-[let]
 {
-  val+
-  @TKBF0(A0, n0, !i0) = buf
+//
+val+ @TKBF0(A0, n0, i0) = buf
+//
+(*
+val () =
+prerrsln("tokbuf_skip1: i0 = ", i0)
+*)
+//
 } (*where*) // end of [tokbuf_skip1]
 //
 (* ****** ****** *)
@@ -175,8 +189,7 @@ tokbuf_mark_set
   (buf, mrk) = let
 //
 val+
-@TKBF0
-(A0, n0, !i0) = buf in i0 := mrk
+@TKBF0 _ = buf in (buf.2 := mrk)
 //
 end (*let*)//end-of-[tokbuf_mark_set]
 //
