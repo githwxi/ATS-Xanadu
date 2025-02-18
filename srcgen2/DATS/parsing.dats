@@ -91,15 +91,17 @@ end(*let*)//end-of(trans00_from_fpath(...))
 //
 (* ****** ****** *)
 //
-(*
-#implfun
-d0parsed_from_fpath = trans00_from_fpath
-*)
 #implfun
 d0parsed_from_fpath
 (stadyn, source) =
 (
-trans00_from_fpath(stadyn, source))//implfun
+  trans00_from_fpath( stadyn, source )
+) where
+{
+val () =
+prerrsln
+("d0parsed_from_fpath: source = ", source)
+}(*where*)//end-of-[d0parsed_from_fpath(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

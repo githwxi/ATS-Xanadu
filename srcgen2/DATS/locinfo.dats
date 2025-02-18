@@ -66,7 +66,7 @@ loctn_cmp(lc1, lc2) =
 (* ****** ****** *)
 
 local
-
+//
 datatype
 postn =
 POSTN of
@@ -74,7 +74,7 @@ POSTN of
 , sint(*nrow*)
 , sint(*ncol*))
 #absimpl postn_tbox = postn
-
+//
 in//local
 
 #implfun
@@ -196,7 +196,7 @@ in
 end (*let*) // end-of(loctn_make_fpath)
 //
 (* ****** ****** *)
-
+//
 #implfun
 add_loctn_loctn(lc1, lc2) =
 let
@@ -206,11 +206,11 @@ val
 pb1 = lc1.pbeg() and pb2 = lc2.pbeg()
 val
 pe1 = lc1.pend() and pe2 = lc2.pend()
-in
+in//let
 loctn_make_arg3
 (lcs, g_min(pb1, pb2), g_max(pe1, pe2))
-end (*let*) // end of [add_loctn_loctn]
-
+end(*let*)//end-of-[add_loctn_loctn(...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

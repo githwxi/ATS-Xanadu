@@ -57,6 +57,8 @@ test01:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
 test01:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
+test01:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude_node.js >> $@_out.js
 ############
 test01:: \
 test01_xats2js.dats; \

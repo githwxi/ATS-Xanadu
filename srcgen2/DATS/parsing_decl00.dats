@@ -436,8 +436,11 @@ val tnd = tok.tnode()
 //
 (*
 val () =
-prerrsln
-("fp_d0ecl: tok=", tok)
+prerrsln("\
+fp_d0ecl: f00 = ", f00)
+val () =
+prerrsln("\
+fp_d0ecl: tok = ", tok)
 *)
 //
 fun
@@ -1122,8 +1125,23 @@ d0ecl_make_node(lres, D0Cfixity(tknd,dnts,opt1))
 end // end of [T_SRP_FIXITY(k0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 | _(* else *) =>
+let
+//
+val () = buf.skip1()
+//
+(*
+val () =
+prerrsln("fp_d0ecl(else): tok = ", tok)
+*)
+//
+in//let
 (err := e00 + 1; d0ecl(tok.lctn(), D0Ctkerr(tok)))
+end//let
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end (*let*) // end-of-[ fp_d0ecl( f00, buf, err ) ]
@@ -1147,8 +1165,16 @@ loop
 : list_vt(d0ecl)
 ) : list_vt(d0ecl) =
 let
+//
 val
 dcl = fp_d0ecl(f00, buf, err)
+//
+(*
+val () =
+prerrsln("\
+fp_d0eclseq: loop: dcl = ", dcl)
+*)
+//
 in//let
 if
 (err = e00)

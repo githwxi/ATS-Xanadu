@@ -347,5 +347,50 @@ if
 //
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
+function
+XATS2JS_optn_nil()
+{
+  return [1]
+} // function // XATS2JS_optn_nil
+function
+XATS2JS_optn_cons(x0)
+{
+  return [2, x0]
+} // function // XATS2JS_optn_cons
+////////////////////////////////////////////////////////////////
+function
+XATS2JS_list_nil()
+{
+  return [1]
+} // function // XATS2JS_list_nil
+function
+XATS2JS_list_cons(x0, xs)
+{
+  return [2, x0, xs]
+} // function // XATS2JS_list_cons
+////////////////////////////////////////////////////////////////
+function
+XATS2JS_optn_vt_nil()
+{
+  return [1]
+} // function // XATS2JS_optn_vt_nil
+function
+XATS2JS_optn_vt_cons(x0)
+{
+  return [2, x0]
+} // function // XATS2JS_optn_vt_cons
+////////////////////////////////////////////////////////////////
+function
+XATS2JS_list_vt_nil()
+{
+  return [1]
+} // function // XATS2JS_list_vt_nil
+function
+XATS2JS_list_vt_cons(x0, xs)
+{
+  return [2, x0, xs]
+} // function // XATS2JS_list_vt_cons
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
 /* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_runtime.cats] */

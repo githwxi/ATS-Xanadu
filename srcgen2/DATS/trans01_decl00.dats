@@ -713,18 +713,27 @@ list_nil() => ()
 |
 list_cons
 (id0, id0s) => let
+//
 val tok =
 trans01_i0dnt(tenv, id0)
+//
+(*
+val ( ) =
+prerrsln("\
+f0_fixity:loop: id0 = ", id0)
+val ( ) =
+prerrsln("\
+f0_fixity:loop: tok = ", tok)
+*)
+//
 val sym =
 (
 case-
 tok.node() of
-|
-T_IDALP(nam) => symbl(nam)
-|
-T_IDSYM(nam) => symbl(nam)
-|
-T_IDDLR(nam) => symbl(nam)): sym_t
+| T_IDALP(nam) => symbl(nam)
+| T_IDSYM(nam) => symbl(nam)
+| T_IDDLR(nam) => symbl(nam)
+) : sym_t // end-of-[val(sym)]
 //
 in//let
 loop(tenv, id0s) where

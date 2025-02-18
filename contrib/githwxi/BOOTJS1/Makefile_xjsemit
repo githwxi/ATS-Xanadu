@@ -255,7 +255,7 @@ boot_dats:: $(OBJDATS)
 libxatsopt: \
 $(OBJDATS); \
 $(MAKE) -C BUILD \
--f Makefile_rename && \
+-f ./../Makefile_xrename && \
 $(CAT) $(OBJDATS) > lib/libxatsopt.js
 ########################################################################
 ########################################################################
