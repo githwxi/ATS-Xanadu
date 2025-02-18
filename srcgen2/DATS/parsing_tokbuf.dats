@@ -217,11 +217,11 @@ tokbuf_make0_llist: n0 = ", n0)
 val A0 = a1ptr_make0_llist(tks)
 } where
 {
-// (*
+(*
 val () =
 prerr1sln
 ("tokbuf_make0_llist: tks = ", tks)
-// *)
+*)
 }(*where*)//end-of-[tokbuf_make0_llist]
 //
 (* ****** ****** *)

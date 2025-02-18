@@ -106,10 +106,10 @@ app_prcdv = 70
 #implval
 imp_prcdv = 10
 (* ****** ****** *)
-
+//
 #implfun
 prcdv_decode(cdv) = cdv
-
+//
 #implfun
 prcdv_encode(cdv) =
 (
@@ -120,7 +120,7 @@ then PRCDV_MIN else
 if
 (cdv>=PRCDV_MAX)
 then PRCDV_MAX else cdv))
-
+//
 (* ****** ****** *)
 #implval
 the_prcdv_neginf = PRCDV_MIN
