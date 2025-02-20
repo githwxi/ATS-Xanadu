@@ -36,6 +36,14 @@ Authoremail: gmhwxiATgmailDOTcom
 ////////////////////////////////////////////////////////////////////////.
 //
 function
+XATS2JS_char_make_int
+  (code)
+{
+  // We store chars as an int
+  return code
+}
+//
+function
 XATS2JS_char_lt
   (c1, c2)
 {
