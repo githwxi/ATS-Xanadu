@@ -31,7 +31,7 @@ strn_strxize
 ("Hello, world!")) where
 {
 #impltmp
-map0$fopr
+map$fopr0
 <char><sint>(cc) =
 let
 val ci = char_code(cc)
@@ -48,7 +48,7 @@ strn_strxize
 ("Hello, world!")) where
 {
 #impltmp
-map0$fopr
+map$fopr0
 <char><sint>(cc) =
 let
 val ci = char_code(cc)
