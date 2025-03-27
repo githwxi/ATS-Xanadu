@@ -130,7 +130,7 @@ XATS2JS_dflt_lt$dflt
 //
 #impltmp
 <(*tmp*)>
-dflt_gt_dflt
+dflt_gt$dflt
   (f1, f2) =
 (
 XATS2JS_dflt_gt$dflt

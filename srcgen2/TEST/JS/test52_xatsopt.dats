@@ -71,6 +71,7 @@ srcgen1\
 /prelude\
 /DATS/CATS/JS/NODE/process.dats"
 (* ****** ****** *)
+//
 val () =
 mymain() where
 {
@@ -81,11 +82,12 @@ mymain((*void*)) =
 mytest(argv[2])) where
 {
   val argv =
-  XATS2JS_NODE_argv_get()
+  XATS2JS_NODE_argv$get()
   val (  ) = prerrsln("argv = ", argv)
 } (*where*)//end-of-[ mymain((*void*)) ]
 //
 }
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

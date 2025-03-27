@@ -50,7 +50,7 @@ gseq_group_lstrm(fpx) where
   #impltmp
   group$test<cgtz>(ch) = (ch != DS) }
 
-val ( ) = prerrsln("nms = ", listize0(nms))
+val ( ) = prerr1sln("nms = ", listize0(nms))
 
 (* ****** ****** *)
 
