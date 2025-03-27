@@ -63,7 +63,7 @@ strn_strxize
 ("H e l l o, w o r l d !")) where
 {
 #impltmp
-map0$fopr
+map$fopr0
 <char><sint>(cc) =
 let
 val ci = char_code(cc)
@@ -166,7 +166,7 @@ lxbf1_make_strn
 )
 //
 val (  ) =
-prerrsln
+prerr1sln
 ("lexing(buf1) = ", lxbf1_lexing_tnodelst(buf1))
 //
 (* ****** ****** *)
@@ -178,7 +178,7 @@ lxbf1_make_strn
 )
 //
 val (  ) =
-prerrsln
+prerr1sln
 ("lexing(buf2) = ", lxbf1_lexing_tnodelst(buf2))
 //
 (* ****** ****** *)
@@ -190,7 +190,7 @@ lxbf1_make_strn
 )
 //
 val (  ) =
-prerrsln
+prerr1sln
 ("lexing(buf3) = ", lxbf1_lexing_tnodelst(buf3))
 //
 (* ****** ****** *)
@@ -202,7 +202,7 @@ lxbf1_make_strn
 )
 //
 val (  ) =
-prerrsln
+prerr1sln
 ("lexing(buf4) = ", lxbf1_lexing_tnodelst(buf4))
 //
 (* ****** ****** *)
@@ -215,7 +215,7 @@ lxbf1_make_strn
 )
 //
 val (  ) =
-prerrsln
+prerr1sln
 ("lexing(buf5) = ", lxbf1_lexing_tnodelst(buf5))
 *)
 //
@@ -236,9 +236,9 @@ gseq_print$end() = ()
 gseq_print$sep() = g_print("\n")
 #impltmp
 g_print<token>(tok) =
-print(tok.lctn(), ":", tok.node())
+prints(tok.lctn(), ":", tok.node())
 in//local
-val (  ) = prerrsln("lexing(buf5): toks =\n", toks)
+val (  ) = prerr1sln("lexing(buf5): toks =\n", toks)
 end//local
 //
 (* ****** ****** *)
@@ -271,9 +271,9 @@ gseq_print$end() = ()
 gseq_print$sep() = g_print("\n")
 #impltmp
 g_print<token>(tok) =
-print(tok.lctn(), ":", tok.node())
+prints(tok.lctn(), ":", tok.node())
 in//local
-val (  ) = prerrsln("lexing(buf6): toks =\n", toks)
+val (  ) = prerr1sln("lexing(buf6): toks =\n", toks)
 end//local
 //
 (* ****** ****** *)
