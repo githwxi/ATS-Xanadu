@@ -353,6 +353,10 @@ ipat.node() of
 (
   f0_dapp(b0, ival, ipat))
 //
+|I0Pbang _ =>
+(
+  f0_bang(b0, ival, ipat))
+//
 |I0Pfree _ =>
 (
   f0_free(b0, ival, ipat))
@@ -543,6 +547,20 @@ in//let
 ;prints(ival,", ",i0f0, ")")
 ;f0_ipatlst(b0+1,0,ival,ipat,i0ps))
 end(*let*)//end-of-[f0_dapp(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_bang
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+(
+f0_ipat(b0, ival, i0p1)
+) where
+{
+val-I0Pbang(i0p1) = ipat.node()
+}(*where*)//end-of-[f0_bang(...)]
 //
 (* ****** ****** *)
 //

@@ -107,7 +107,7 @@ list_vt_1val with list_vt_make_1val
 #symload
 list_vt_2val with list_vt_make_2val
 #symload
-list_vt_3val with list_vt_make_2val
+list_vt_3val with list_vt_make_3val
 //
 (* ****** ****** *)
 (* ****** ****** *)
