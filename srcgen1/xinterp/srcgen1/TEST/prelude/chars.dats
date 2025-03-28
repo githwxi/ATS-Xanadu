@@ -126,6 +126,9 @@ and c = abc[2]
 //
 (* ****** ****** *)
 //
+val xyz = "xyz"
+//
+(*
 val xyz =
 let
 val x = code('x')
@@ -136,6 +139,7 @@ end // end of [val]
 val () =
 ( g_print("xyz = ")
 ; g_print( xyz ); g_print('\n'))
+*)
 //
 (* ****** ****** *)
 //
