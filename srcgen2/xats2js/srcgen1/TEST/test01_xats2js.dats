@@ -48,8 +48,8 @@ fun
 fact3
 (x: sint): sint =
 (
-case+ x of
-_ when(x>0) => x*fact3(x-1) | _ => 1)
+case+ x of _
+when(x>0) => x*fact3(x-1) | _ => 1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
