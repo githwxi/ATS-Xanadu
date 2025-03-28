@@ -54,12 +54,33 @@ case+ x of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+fact4(x: sint): sint =
+(
+loop(x, r); r) where
+{
+var r: sint = 1
+fun loop(x: sint, r: &sint): void =
+(
+if
+(x > 0) then
+(r := x * r; loop(x-1, r)) else ())
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () =
 prints("fact1(10) = ", fact1(10), "\n")
 val () =
 prints("fact2(10) = ", fact2(10), "\n")
 val () =
 prints("fact3(10) = ", fact3(10), "\n")
+val () =
+prints("fact4(10) = ", fact4(10), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 val () = console_log(the_print_store_flush())
 //
