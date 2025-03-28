@@ -49,7 +49,7 @@ fact3
 (x: sint): sint =
 (
 case+ x of
-| _ when(x>0) => x*fact3(x-1) | _ => 1)
+_ when(x>0) => x*fact3(x-1) | _ => 1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -64,10 +64,8 @@ var r: sint = 1
 fun
 loop(x: &sint, r: &sint): void =
 (
-if
-(x > 0) then
-( r := x * r
-; x := x - 1; loop(x-1, r)) else ())
+if (x > 0) then
+(r := x * r; x := x - 1; loop(x, r)))
 }
 //
 (* ****** ****** *)
