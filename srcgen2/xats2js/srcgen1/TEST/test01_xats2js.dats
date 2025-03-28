@@ -59,12 +59,15 @@ fact4(x: sint): sint =
 (
 loop(x, r); r) where
 {
+var x: sint = x
 var r: sint = 1
-fun loop(x: sint, r: &sint): void =
+fun
+loop(x: &sint, r: &sint): void =
 (
 if
 (x > 0) then
-(r := x * r; loop(x-1, r)) else ())
+( r := x * r
+; x := x - 1; loop(x-1, r)) else ())
 }
 //
 (* ****** ****** *)
