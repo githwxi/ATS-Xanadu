@@ -515,41 +515,7 @@ cons1_errvl
 fun
 cons2_errvl
 ( d0es
-: d0explst): sint =
-(
-case+ d0es of
-| list_nil
-( (* void *) ) => ( 0 )
-| list_cons
-( d0e1, d0es ) =>
-(
-  cons2_errvl_loop(d0e1, d0es))
-)
-//
-and
-cons2_errvl_loop
-( d0e1
-: d0exp
-, d0es
-: d0explst): sint =
-(
-case+ d0es of
-|
-list_nil((*void*)) =>
-(
-(*
-HX-2025-03-29:
-For handling: ( ...; )
-*)
-case+
-d0e1.node() of
-| D0Etkerr(terr) => ( 0 )
-| _(*non-D0Etkerr*) => errvl(d0e1)
-)
-|
-list_cons(d0e2, d0es) => maxs
-(errvl(d0e1), cons2_errvl_loop(d0e2, d0es))
-)
+: d0explst): sint = d0exp_errvl(d0es)
 //
 }(*where*)//end-of-[d0exp_errvl_drp0]
 //
@@ -3033,17 +2999,17 @@ preadx0_d0exp_RPAREN
 (
 //
 case+ drp0 of
+//
 |
 d0exp_RPAREN_cons0
 (      tend      ) =>
 (
 case+
 tend.node() of
-|
-T_RPAREN() => drp0
-|
-_(*non-T_RPAREN*) => (err := err+1; drp0)
-)
+|T_RPAREN() => drp0
+|_(*non-T_RPAREN*) =>
+( err := err + 1; drp0 ) )
+//
 |
 d0exp_RPAREN_cons1
 (tsep, d0es, tend) =>
@@ -3057,8 +3023,7 @@ in//let
 //
 case+
 tend.node() of
-|
-T_RPAREN() =>
+|T_RPAREN() =>
 (
 if
 (err=e00)
@@ -3066,8 +3031,7 @@ then (drp0)
 else
 d0exp_RPAREN_cons1(tsep, d0es, tend)
 )
-|
-_(*non-T_RPAREN*) =>
+|_(*non-T_RPAREN*) =>
 ( err := err+1
 ; d0exp_RPAREN_cons1(tsep,d0es,tend))
 //
@@ -3080,13 +3044,74 @@ let
 val e00 = err
 //
 val d0es =
-preadx0_d0explst(d0es, err)
+(
+(*
+HX-2025-03-29:
+For handling ( ...; )
+*)
+cons2_d0explst(d0es, err))
+where
+{
+fun
+cons2_d0explst
+( xs: d0explst
+, err: &sint >> _): d0explst =
+(
+case+ xs of
+|
+list_nil() =>
+list_nil( (*void*) )
+|
+list_cons(x1, xs) =>
+(
+cons2_d0explst_a2(x1, xs, err))
+)
+//
+and
+cons2_d0explst_a2
+( x1: d0exp
+, xs: d0explst
+, err: &sint >> _): d0explst =
+(
+case+ xs of
+|
+list_nil() =>
+(
+case+ x1.node() of
+|
+D0Etkerr _ =>
+list_nil( (*void*) )
+|
+_(*non-D0Etkerr*) =>
+(
+  list_cons(d0e1, list_nil())
+) where
+{
+val
+d0e1 = preadx0_d0exp(x1, err) }
+)
+|
+list_cons(x2, xs) =>
+let
+//
+val
+d0e1 = preadx0_d0exp(x1, err)
+//
+in//let
+//
+list_cons(d0e1,
+  cons2_d0explst_a2(x2, xs, err))
+//
+end//let
+)(*case+*)//end-of-[cons2_d0explst_a2]
+//
+}(*where*)//end-of-[    val(d0es)    ]
+//
 in//let
 //
 case+
 tend.node() of
-|
-T_RPAREN() =>
+|T_RPAREN() =>
 (
 if
 (err=e00)
@@ -3094,8 +3119,7 @@ then (drp0)
 else
 d0exp_RPAREN_cons2(tsep, d0es, tend)
 )
-|
-_(*non-T_RPAREN*) =>
+|_(*non-T_RPAREN*) =>
 ( err := err+1
 ; d0exp_RPAREN_cons2(tsep,d0es,tend))
 //

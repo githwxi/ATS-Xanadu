@@ -2820,6 +2820,9 @@ token_RPAREN_fpemsg(out, tend)
 |
 d0exp_RPAREN_cons1
 (tbar, d0es, tend) => d0explst_fpemsg(out,d0es)
+|
+d0exp_RPAREN_cons2
+(tbar, d0es, tend) => d0explst_fpemsg(out,d0es)
 )
 //
 #implfun
