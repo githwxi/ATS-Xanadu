@@ -61,14 +61,16 @@ XATSOPT "./../../.."
 "./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+#staload // LAB =
+"./../../../SATS/xlabel0.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
-//
-(* ****** ****** *)
-//
 #staload "./../SATS/trxi0i1.sats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
@@ -745,6 +747,7 @@ val (  ) =
 }(*where*)//end-of-[i1val_fold(env0,...)]
 //
 (* ****** ****** *)
+//
 fun
 i1val_free
 ( env0:
@@ -1036,6 +1039,7 @@ envi0i1_insert_dvar(env0, dvar, ival)
 }(*where*)//end-of-[f0_var(env0, ...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_bang
@@ -1049,8 +1053,65 @@ val-
 I0Pbang i0p1 = ipat.node()
 //
 in//let
-  trxi0i1_i0bnd(env0,i0p1,ival)
-end(*let*)//end-of-[f0_bang(env0, ...)]
+//
+let
+  val ival = f1_addr(ival)
+in//let
+(
+trxi0i1_i0bnd(env0,i0p1,ival))
+end//let
+//
+end where
+{
+//
+fun
+f1_addr
+(ival: i1val): i1val =
+(
+case+
+ival.node() of
+//
+|I1Vp1cn
+(_, i1v0, idx1) =>
+let
+//
+val lctn = ival.lctn()
+val lab1 = LABint(idx1)
+//
+in//let
+(
+  i1val_make_node
+  (lctn, I1Vlpcn(lab1, i1v0)))
+end//let
+//
+|I1Vp1rj
+(_, i1v0, idx1) =>
+let
+val lctn = ival.lctn()
+val lab1 = LABint(idx1)
+in//let
+(
+  i1val_make_node
+  (lctn, I1Vlpbx(lab1, i1v0)))
+end//let
+//
+|I1Vp2rj
+(_, i1v0, lab1) =>
+let
+val lctn = ival.lctn()
+in//let
+(
+  i1val_make_node
+  (lctn, I1Vlpbx(lab1, i1v0)))
+end//let
+//
+| _(*otherwise: non-proj*) => (ival)
+//
+) (*case+*) // end of [f1_addr(ival)]
+//
+}(*where*)//end-of-[f0_bang(env0, ...)]
+//
+(* ****** ****** *)
 //
 fun
 f0_flat
@@ -1067,6 +1128,8 @@ in//let
   trxi0i1_i0bnd(env0,i0p1,ival)
 end(*let*)//end-of-[f0_flat(env0, ...)]
 //
+(* ****** ****** *)
+//
 fun
 f0_free
 ( env0:
@@ -1082,6 +1145,7 @@ in//let
   trxi0i1_i0bnd(env0,i0p1,ival)
 end(*let*)//end-of-[f0_free(env0, ...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
