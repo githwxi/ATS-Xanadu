@@ -1,0 +1,35 @@
+########################################################################
+########################################################################
+NODE=\
+node --stack_size=8192
+########################################################################
+all:: xbasics
+all:: xbasics_print0
+all:: xsynoug
+all:: xerrory
+all:: xstamp0
+all:: xstamp0_print0
+all:: xstamp0_tmpmap
+########################################################################
+xbasics: ; \
+$(NODE) $(XATSOPT_TCHECK00) $(SRCGEN2)/DATS/$@.dats
+xbasics_print0: ; \
+$(NODE) $(XATSOPT_TCHECK00) $(SRCGEN2)/DATS/$@.dats
+########################################################################
+xsynoug: ; \
+$(NODE) $(XATSOPT_TCHECK00) $(SRCGEN2)/DATS/$@.dats
+xerrory: ; \
+$(NODE) $(XATSOPT_TCHECK00) $(SRCGEN2)/DATS/$@.dats
+########################################################################
+xstamp0: ; \
+$(NODE) $(XATSOPT_TCHECK00) $(SRCGEN2)/DATS/$@.dats
+xstamp0_print0: ; \
+$(NODE) $(XATSOPT_TCHECK00) $(SRCGEN2)/DATS/$@.dats
+xstamp0_tmpmap: ; \
+$(NODE) $(XATSOPT_TCHECK00) $(SRCGEN2)/DATS/$@.dats
+########################################################################
+SRCGEN2=./../../../../srcgen2
+########################################################################
+XATSOPT_TCHECK00=./../UTIL/xatsopt_tcheck00_dats_out.js
+########################################################################
+########################################################################
