@@ -519,11 +519,13 @@ end (*let*) // end of [non-sta-met]
 end (*let*) // end of [ p1_f0arg(buf,err) ]
 
 (* ****** ****** *)
-#impltmp
+//
+#implfun
 p1_f0argseq
   (buf, err) =
 (
 list_vt2t(ps_p1fun{f0arg}(buf,err,p1_f0arg)))
+//
 (* ****** ****** *)
 //
 #implfun

@@ -62,7 +62,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 d2cst_castq(d2c0) =
 (
 case+
@@ -91,11 +91,11 @@ prerrsln
 //
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 d2cst_tempq(d2c0) =
 list_consq
 (d2cst_get_tqas(d2c0))
-#impltmp
+#implfun
 d2cstlst_tempq(d2cs) =
 list_exists(d2cs) where
 {
@@ -105,7 +105,7 @@ exists$test<x0> = d2cst_tempq }
 //
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 dimpl_tempq
 (  dimp  ) =
 (

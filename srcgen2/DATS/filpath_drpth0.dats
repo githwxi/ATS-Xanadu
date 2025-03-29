@@ -74,7 +74,7 @@ end // end of [drpth_get_name]
 
 (* ****** ****** *)
 
-#impltmp
+#implfun
 drpth_make_name(dnm) = DRPTH(dnm)
 
 end (*local*) // end of [local(drpth)]
