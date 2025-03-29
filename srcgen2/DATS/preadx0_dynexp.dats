@@ -407,22 +407,23 @@ d0exp_errvl with d0exp_errvl_a3
 //
 #extern
 fun
-d0exp_errvl_list
+d0exp_errvl_d0es
 (d0es: d0explst): sint
 #symload
-d0exp_errvl with d0exp_errvl_list
-#symload errvl with d0exp_errvl_list
+d0exp_errvl with d0exp_errvl_d0es
+#symload errvl with d0exp_errvl_d0es
 //
 #implfun
-d0exp_errvl_list(d0es) =
+d0exp_errvl_d0es(d0es) =
 (
 case+ d0es of
 |
 list_nil((*nil*)) => 0
 |
-list_cons(d0e1,d0es) => maxs
-(d0exp_errvl(d0e1), d0exp_errvl(d0es))
-) (*case+*)//end-of-[d0exp_errvl_list]
+list_cons(d0e1,d0es) =>
+(
+  maxs(errvl(d0e1), errvl(d0es)))
+) (*case+*)//end-of-[d0exp_errvl_d0es]
 //
 (* ****** ****** *)
 #extern
@@ -499,8 +500,58 @@ d0exp_RPAREN_cons0
 (      tok      ) => 0
 |
 d0exp_RPAREN_cons1
-( tkb, des, tke ) => d0exp_errvl(des)
+( tkb, des, tke ) => cons1_errvl(des)
+|
+d0exp_RPAREN_cons2
+( tkb, des, tke ) => cons2_errvl(des)
+) where
+{
+//
+fun
+cons1_errvl
+( d0es
+: d0explst): sint = d0exp_errvl(d0es)
+//
+fun
+cons2_errvl
+( d0es
+: d0explst): sint =
+(
+case+ d0es of
+| list_nil
+( (* void *) ) => ( 0 )
+| list_cons
+( d0e1, d0es ) =>
+(
+  cons2_errvl_loop(d0e1, d0es))
 )
+//
+and
+cons2_errvl_loop
+( d0e1
+: d0exp
+, d0es
+: d0explst): sint =
+(
+case+ d0es of
+|
+list_nil((*void*)) =>
+(
+(*
+HX-2025-03-29:
+For handling: ( ...; )
+*)
+case+
+d0e1.node() of
+| D0Etkerr(terr) => ( 0 )
+| _(*non-D0Etkerr*) => errvl(d0e1)
+)
+|
+list_cons(d0e2, d0es) => maxs
+(errvl(d0e1), cons2_errvl_loop(d0e2, d0es))
+)
+//
+}(*where*)//end-of-[d0exp_errvl_drp0]
 //
 (* ****** ****** *)
 //
@@ -512,6 +563,7 @@ l0d0e_errvl_a1
 fun
 l0d0e_errvl_list
 (ldes: l0d0elst): sint
+//
 (* ****** ****** *)
 #symload
 errvl with l0d0e_errvl_a1

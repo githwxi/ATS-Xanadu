@@ -25,7 +25,7 @@ Thu Jan  9 11:32:33 PM EST 2025
 (* ****** ****** *)
 //
 val () =
-prints("Hello from [test00.dats]\n")
+prints("Hello from [test00.dats]", "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
