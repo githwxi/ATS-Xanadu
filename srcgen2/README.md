@@ -27,3 +27,20 @@ Linux machine was fixed quickly.
 )
 
 ############################################################
+
+HX-2025-03-29:
+(*
+Sat Mar 29 12:50:35 PM EDT 2025
+*)
+Finally, ATS3-Xanadu/srcgen2 has been bootstrapped!!!
+More precised, the following compiler generated from the
+source ATS3/Xanadu/srcgen2:
+
+ATS-Xanadu/srcgen2/xats2js/srcgen1/UTIL/xats2js_jsemit00_dats.js
+
+successfully compiles the source itself into some JS code
+for type-checking the source:
+
+ATS-Xanadu/contrib/githwxi/BOOTJS1/UTIL/xatsopt_tcheck00_dats_out.js
+
+############################################################

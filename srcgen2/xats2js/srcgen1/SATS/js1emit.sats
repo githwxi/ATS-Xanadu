@@ -144,7 +144,6 @@ l1i1vjs1
 //
 fun
 <x0:t0>
-<y0:t0>
 list_js1emit_fnp
 ( e1:
 ! envx2js
@@ -152,7 +151,6 @@ list_js1emit_fnp
 , (!envx2js, x0) -> void): void
 fun
 <x0:t0>
-<y0:t0>
 optn_js1emit_fnp
 ( e1:
 ! envx2js

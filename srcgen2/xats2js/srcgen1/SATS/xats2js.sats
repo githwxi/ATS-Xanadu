@@ -113,7 +113,6 @@ envx2js_poplet0
 //
 fun
 <x0:t0>
-<y0:t0>
 list_xats2js_fnp
 ( e1:
 ! envx2js
@@ -121,7 +120,6 @@ list_xats2js_fnp
 , (!envx2js, x0) -> void): void
 fun
 <x0:t0>
-<y0:t0>
 optn_xats2js_fnp
 ( e1:
 ! envx2js

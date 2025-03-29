@@ -3231,7 +3231,7 @@ list_cons
 case+
 fia1.node() of
 |
-FIARGdapp _ =>
+FIARGdarg _ =>
 list_cons(fja1, fjas) where
 {
 //

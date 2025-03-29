@@ -1,22 +1,24 @@
-################## Start of [README] ##################
-
+#################### Start of [README] ####################
+//
 HX-2024-07-03:
 (*
 Wed 03 Jul 2024 09:21:50 AM EDT
 *)
+//
 ATS3/Xanadu/srcgen1:
 This project was the first attempt to implement ATS3!
 It started around April, 2018 and produced a typechecker
 (xatsopt) and then a compiler (xats2js) by November, 2020.
-
-############
-
-############
+//
+Note that ATS3/Xanadu/srcgen1 is written in ATS2 and the
+compiler for the project is ATS2/Postiats.
+//
+############################################################
 # UTIL:
-############
+############################################################
 
-For utilities needed by xats that are platform-dependent.
+For utilities needed by XATS that are platform-dependent.
 
-################## Finish of [README] ##################
+#################### Finish of [README] ####################
 
 

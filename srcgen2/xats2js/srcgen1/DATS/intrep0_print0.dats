@@ -57,13 +57,6 @@ XATSOPT "./../../.."
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#include
-"share/atspre_staload.hats"
-#staload
-UN = "prelude/SATS/unsafe.sats"
-//
-(* ****** ****** *)
 #include
 "./../HATS/mytmplib00.hats"
 (* ****** ****** *)

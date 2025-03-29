@@ -72,9 +72,9 @@ iltlst = list(i1let)
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef
-d2vtop = $MAP.topmap(i1val)
+d2vtop = (*$MAP*)topmap(i1val)
 #vwtpdef
-d2vstk = $MAP.stkmap(i1val)
+d2vstk = (*$MAP*)stkmap(i1val)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -86,10 +86,9 @@ d2vstk = $MAP.stkmap(i1val)
 //
 (* ****** ****** *)
 //
+(*
 #symload
 stkmap_nilq with $MAP.stkmap_nilq(*cbv*)
-//
-(* ****** ****** *)
 //
 #symload
 stkmap_pshlam0 with $MAP.stkmap_pshlam0(*cbr*)
@@ -107,8 +106,6 @@ stkmap_poplet0 with $MAP.stkmap_poplet0(*cbr*)
 #symload
 stkmap_poploc0 with $MAP.stkmap_poploc0(*cbr*)
 //
-(* ****** ****** *)
-//
 #symload
 topmap_make_nil with $MAP.topmap_make_nil(*void*)
 #symload
@@ -116,8 +113,6 @@ stkmap_make_nil with $MAP.stkmap_make_nil(*void*)
 //
 #symload
 stkmap_free_nil with $MAP.stkmap_free_nil(*void*)
-//
-(* ****** ****** *)
 //
 #symload
 topmap_search$opt with $MAP.topmap_search$opt(*cbr*)
@@ -128,6 +123,8 @@ stkmap_search$opt with $MAP.stkmap_search$opt(*cbr*)
 topmap_insert$any with $MAP.topmap_insert$any(*cbr*)
 #symload
 stkmap_insert$any with $MAP.stkmap_insert$any(*cbr*)
+//
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
