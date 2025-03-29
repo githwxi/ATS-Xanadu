@@ -195,7 +195,7 @@ strn_append_uint
 ( name: strn
 , stmp: uint): strn
 //
-#impltmp
+#implfun
 symbl_extend_stamp
   (sym0, stmp) =
 let
@@ -208,7 +208,7 @@ symbl_make_name
 (strn_append_uint(name, uint))
 end//let//end-of-[symbl_extend_stamp]
 //
-#impltmp
+#implfun
 strn_append_uint
   (name, stmp) =
 (

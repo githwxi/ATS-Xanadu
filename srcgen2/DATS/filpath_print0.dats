@@ -56,7 +56,7 @@ ATS_PACKNAME
 #staload "./../SATS/filpath.sats"
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 drpth_fprint(out, dpx) =
 (
 prints
@@ -68,7 +68,7 @@ prints
 //
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 fpath_fprint(out, fpx) =
 (
 prints
@@ -80,7 +80,7 @@ prints
 //
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 fname_fprint(out, fnm) =
 (
 case+ fnm of

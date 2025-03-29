@@ -174,7 +174,7 @@ end (*let*) // end of [fkndq1(base)]
 
 in (*in-of-local*)
 
-#implmnt
+#implfun
 fsrch_combined(fnm0) =
 let
 //

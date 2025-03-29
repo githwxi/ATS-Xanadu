@@ -63,7 +63,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 trans00_from_fpath
   (stadyn, source) =
 let

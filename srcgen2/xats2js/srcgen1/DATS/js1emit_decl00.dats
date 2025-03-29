@@ -55,15 +55,18 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload // BAS =
+"./../../../SATS/xbasics.sats"
+//
 #staload // SYM =
 "./../../../SATS/xsymbol.sats"
-//
 #staload // LOC =
 "./../../../SATS/locinfo.sats"
+#staload // LEX =
+"./../../../SATS/lexing0.sats"
 //
 #staload // S1E =
 "./../../../SATS/staexp1.sats"
-//
 #staload // D2E =
 "./../../../SATS/dynexp2.sats"
 //
@@ -556,6 +559,17 @@ I1Dimplmnt0
 , stmp, dimp
 , fjas, icmp) = dcl0.node()
 //
+fun
+implfunq
+( tknd: token): bool =
+(
+case+ iknd of
+|
+IMPLfun() => true | _ => false
+) where
+{ val-
+  T_IMPLMNT(iknd) = tknd.node() }
+//
 in//let
 //
 let
@@ -602,8 +616,19 @@ strnfpr(filr," = function ");fjas1js1(filr, fjas));
 strnfpr(filr," { // impl\n");
 (envx2js_incnind(env0,2(*++*))
 ;js1emit_fjarglst(env0, fjas);f1_i1cmpret(env0, icmp));
+//
+if
+implfunq(tknd)
+then // then
 (envx2js_decnind(env0,2(*--*))
-;nindstrnfpr(filr, nind, "} // endfun(impl)");fprintln(filr)))
+;nindstrnfpr(filr, nind, "} // endfun(impl)");fprintln(filr))
+else // else
+(
+envx2js_decnind(env0,2(*--*));
+nindstrnfpr(filr, nind, "} () // endgen(impl)");fprintln(filr)
+)
+//
+)
 //
 )//endif
 //

@@ -304,7 +304,7 @@ endloc (*local*) // end of [local(tr3aenv...)]
 
 (* ****** ****** *)
 
-#impltmp
+#implfun
 tr3aenv_insert_d3ecl
   (env0, d3cl) =
 (
