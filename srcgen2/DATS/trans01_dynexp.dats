@@ -1358,7 +1358,52 @@ d1exp
 val des1 =
   trans01_d0explst(tenv, des1)
 val des2 =
-  trans01_d0explst(tenv, des2)
+(
+case+ des2 of
+|
+list_nil() => list_nil()
+|
+list_cons(x1, xs) =>
+f1_cons2_d0explst(tenv, x1, xs))
+where
+{
+(*
+HX-2025-03-29:
+For handling ( ...; )
+*)
+fun
+f1_cons2_d0explst
+( tenv:
+! tr01env
+, x1: d0exp
+, xs: d0explst): d1explst =
+(
+case+ xs of
+|
+list_nil() =>
+(
+case+ x1.node() of
+|
+D0Etkerr _ => list_nil()
+|
+_(*non-D0Etkerr*) =>
+(
+  list_sing(d1e1)) where
+{
+val d1e1 =
+  trans01_d0exp(tenv, x1) }
+)
+|
+list_cons(x2, xs) =>
+let
+val d1e1 =
+  trans01_d0exp(tenv, x1)
+in//let
+list_cons(d1e1,
+  f1_cons2_d0explst(tenv, x2, xs))
+end//let
+)
+}(*where*)//end-of-[  val(des2)  ]
 }
 //
 endlet // end of [ D0Elpar(_,_,_) ]

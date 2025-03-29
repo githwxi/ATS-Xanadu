@@ -59,4 +59,4 @@ val () = console_log(the_print_store_flush())
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test01_xats2js.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test02_xats2js.dats] *)
