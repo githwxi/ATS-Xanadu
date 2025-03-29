@@ -73,7 +73,7 @@ libxats2js: \
 $(OBJDATS); \
 $(MAKE) -C BUILD \
 -f ./../Makefile_xrename && \
-$(CAT) $(OBJDATS) > lib/libxatsopt.js
+$(CAT) $(OBJDATS) > lib/libxats2js.js
 ########################################################################
 ########################################################################
 BUILD/%_sats_out.js: \
