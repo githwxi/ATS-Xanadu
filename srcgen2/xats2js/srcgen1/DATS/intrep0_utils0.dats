@@ -80,6 +80,7 @@ i0pat_allq
 (
 case+
 i0p0.node() of
+//
 |I0Pvar _ => true
 |I0Pany _ => true
 //
@@ -98,7 +99,9 @@ I0Ptup1
 |
 I0Prcd2
 (tknd, lips) => f0_lips(lips)
+//
 | _(*otherwise*) => (  false  ))
+//
 where
 {
 fun
