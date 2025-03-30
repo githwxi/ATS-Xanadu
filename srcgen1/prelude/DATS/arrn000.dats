@@ -150,6 +150,7 @@ A C-style implementation
 that SHOULD work in general
 *)
 //
+(*
 #impltmp
 < a:t0 >
 a1ref_listize
@@ -179,7 +180,8 @@ let
 val () =
 g_x1forint<n>(n0) in $UN.castlin10(res)
 end
-end // end of [a1ref_listize]
+end // end of [a1ref_listize(...A0...)]
+*)
 //
 (* ****** ****** *)
 //
@@ -189,6 +191,7 @@ A C-style implementation
 that SHOULD work in general
 *)
 //
+(*
 #impltmp
 < a:t0 >
 a1ref_rlistize
@@ -215,10 +218,12 @@ let
 val () =
 g_x1forint<n>(n0) in $UN.castlin10(res)
 end
-end // end of [a1ref_rlistize]
+end // end of [a1ref_rlistize(...A0...)]
+*)
 //
 (* ****** ****** *)
-
+//
+(*
 #impltmp
 < a:vt >
 a1ref_strmize
@@ -247,9 +252,11 @@ strmcon_vt_cons
 (get$at(A0, i0), auxmain(suc(i0)))
 ) (* end of [auxmain] *)
 } (*where*) // end-of(a1ref_strmize)
-
+*)
+//
 (* ****** ****** *)
 //
+(*
 #impltmp
 <a:t0>
 a1ref_forall
@@ -278,6 +285,7 @@ end // then
 else false // else // end of [if]
 //
 } (*where*) // end-of-[a1ref_forall]
+*)
 //
 (*
 #implfun
@@ -291,6 +299,7 @@ a1ref_length<?><?>(...) = ...
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < a:t0 >
 a1ref_foritm
@@ -318,9 +327,11 @@ then
 }
 //
 } (*where*) // end-of(a1ref_foritm)
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <a:t0>
 a1ref_rforall
@@ -347,9 +358,11 @@ end // then
 else false // else // end of [if]
 //
 }(*where*)//end-of-[a1ref_rforall]
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < a:vt >
 a1ref_forall1
@@ -381,9 +394,11 @@ end // then
 else false // else // end of [if]
 //
 }(*where*)//end-of-[a1ref_forall1]
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < a:vt >
 a1ref_foritm1
@@ -414,9 +429,11 @@ then
 }
 //
 }(*where*)//end-of-[a1ref_foritm1]
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < a:vt >
 a1ref_rforall1
@@ -446,6 +463,7 @@ end // then
 else false // else // end of [if]
 //
 }(*where*)//end-of-[a1ref_rforall1]
+*)
 //
 (* ****** ****** *)
 //
@@ -453,11 +471,13 @@ else false // else // end of [if]
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 {a:t0}
 {n:i0}
 gseq_length
 <a1ref(a,n)><a> = a1ref_length<a><n>
+*)
 //
 (* ****** ****** *)
 //

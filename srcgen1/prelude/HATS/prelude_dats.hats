@@ -34,6 +34,7 @@ ATS3_XANADU_srcgen1_prelude/DATS
 (* ****** ****** *)
 #staload _ = "./../DATS/arrn000.dats"
 #staload _ = "./../DATS/arrn001.dats"
+#staload _ = "./../DATS/axsz000.dats"
 (* ****** ****** *)
 #staload _ = "./../DATS/list000.dats"
 #staload _ = "./../DATS/optn000.dats"
@@ -64,7 +65,7 @@ ATS3_XANADU_srcgen1_prelude/DATS
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 //
 (* end of [ATS3_XANADU_srcgen1_prelude_HATS_prelude_dats.hats] *)
