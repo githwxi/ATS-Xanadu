@@ -136,7 +136,7 @@ tmpstk_nilq
 (   stk0   ) =
 (
 case+ stk0 of
-| !
+| // !
 tmpstk_nil() => true
 | _(*non-nil*) => false
 ) (* end of [tmpstk_nilq(stk0)] *)
@@ -179,19 +179,19 @@ loop
 , err: &sint >> _): tmpstk =
 (
 case+ kxs of
-| !
+| // !
 tmpstk_nil() => kxs // err = 0
 //
-| ~
+| ~ //
 tmpstk_decl
 (k1, x1, kxs) => loop(kxs, err)
 //
-| !
+| // !
 tmpstk_let0 _ => (err := 1; kxs)
 //
-| !
+| // !
 tmpstk_loc1 _ => (err := 1; kxs)
-| !
+| // !
 tmpstk_loc2 _ => (err := 1; kxs)
 //
 ) (*case+*)//end-of-[loop(kxs, err)]
@@ -218,19 +218,19 @@ loop
 , err: &sint >> _): tmpstk =
 (
 case+ kxs of
-| ~
+| ~ //
 tmpstk_let0
 (   kxs   ) => kxs // err = 0
-| ~
+| ~ //
 tmpstk_decl
 (k1, x1, kxs) => loop(kxs, err)
 //
-| !
+| // !
 tmpstk_nil( ) => (err := 1; kxs)
 //
-| !
+| // !
 tmpstk_loc1 _ => (err := 1; kxs)
-| !
+| // !
 tmpstk_loc2 _ => (err := 1; kxs)
 //
 ) (*case+*) // end of [loop(kxs,err)]
@@ -259,17 +259,17 @@ poploc1
 , err: &sint >> _): tmpstk =
 (
 case+ kxs of
-| ~
+| ~ //
 tmpstk_loc1
 (   kxs   ) =>
 (
   pshloc2(kxs, kys, err))
-| ~
+| ~ //
 tmpstk_decl
 (k1, x1, kxs) =>
 (
   poploc1(kxs, kys, err))
-| !
+| // !
 tmpstk_nil( ) =>
 ( err := 1;
   pshloc2(kxs, kys, err)) where
@@ -278,7 +278,7 @@ val () = prerrsln
 ("tmpstk_locjoin: poploc1: tmpstk_nil")
 }
 //
-| !
+| // !
 tmpstk_let0 _ =>
 ( err := 1;
   pshloc2(kxs, kys, err)) where
@@ -286,7 +286,7 @@ tmpstk_let0 _ =>
 val () = prerrsln
 ("tmpstk_locjoin: poploc1: tmpstk_let0")
 }
-| !
+| // !
 tmpstk_loc2 _ =>
 ( err := 1;
   pshloc2(kxs, kys, err)) where
@@ -305,12 +305,12 @@ poploc2
 , err: &sint >> _): tmpstk =
 (
 case+ kxs of
-| ~
+| ~ //
 tmpstk_loc2
 (   kxs   ) =>
 (
   poploc1(kxs, kys, err))
-| ~
+| ~ //
 tmpstk_decl
 (k1, x1, kxs) =>
 (
@@ -319,7 +319,7 @@ where {
 val kys = tmpstk_decl(k1, x1, kys)
 } (*where*)//end-of-[tmpstk_decl(...)]
 //
-| !
+| // !
 tmpstk_nil( ) =>
 ( err := 1;
   poploc1(kxs, kys, err)) where
@@ -328,7 +328,7 @@ val () = prerrsln
 ("tmpstk_locjoin: poploc2: tmpstk_nil")
 }
 //
-| !
+| // !
 tmpstk_let0 _ =>
 ( err := 1;
   poploc1(kxs, kys, err)) where
@@ -336,7 +336,7 @@ tmpstk_let0 _ =>
 val () = prerrsln
 ("tmpstk_locjoin: poploc2: tmpstk_let0")
 }
-| !
+| // !
 tmpstk_loc1 _ =>
 ( err := 1;
   poploc1(kxs, kys, err)) where
@@ -356,9 +356,9 @@ pshloc2
 , err: &sint >> _): tmpstk =
 (
 case- kys of
-| ~
+| ~ //
 tmpstk_nil() => kxs
-| ~
+| ~ //
 tmpstk_decl
 (k1, x1, kys) =>
 (
@@ -391,28 +391,28 @@ tmpstk_getstmp
 (
 case+ stk0 of
 //
-| !
+| // !
 tmpstk_decl
 (stmp, _, _) => ( stmp )
 //
-| !
+| // !
 tmpstk_let0
 (   stk0   ) =>
 (
   tmpstk_getstmp(stk0))
 //
-| !
+| // !
 tmpstk_loc1
 (   stk0   ) =>
 (
   tmpstk_getstmp(stk0))
-| !
+| // !
 tmpstk_loc2
 (   stk0   ) =>
 (
   tmpstk_getstmp(stk0))
 //
-| !
+| // !
 tmpstk_nil() => the_stamp_nil
 //
 ) (*case+*) // end of [tmpstk_getstmp(stk0)]
@@ -518,10 +518,10 @@ loop
 (
 case+ kxs of
 //
-| !
+| // !
 tmpstk_nil() => ( res )
 //
-| !
+| // !
 tmpstk_decl
 (tmp, dcl, kxs) =>
 loop(kxs, d2c, res) where
@@ -541,11 +541,11 @@ val res =
   list_vt_cons(dcl, res) else res)
 }
 //
-| !
+| // !
 tmpstk_let0(kxs) => loop(kxs,d2c,res)
-| !
+| // !
 tmpstk_loc1(kxs) => loop(kxs,d2c,res)
-| !
+| // !
 tmpstk_loc2(kxs) => loop(kxs,d2c,res)
 //
 )(*case+*) // end of [loop(kxs,d2c,res)]
@@ -579,7 +579,7 @@ tr3benv_free_top
   (  env0  ) =
 (
 case+ env0 of
-| ~
+| ~ //
 TR3BENV
 (map1, map2) =>
 let
