@@ -28,26 +28,36 @@ Sat 29 Jun 2024 08:11:02 PM EDT
 
 My early experience on programming:
 
-In 1984, I took a programming class on Algol 60 when I was a junior at
-Nanjing University, China. This was my first exposure to programming
-on a real computer. Please note that each of us in the class could
-have access to a real computer for only ONE hour during the entire
-semester. Basically, we had to write code on paper and double-check it
-before typing the code into a computer. I can now remember very little
-about what I learned in the class except for the fact that I did enjoy
-programming IMMENSELY. I voluntarily did homework for some of my
-classmates so that I could use their alloted computer time. However,
-after the programming class, I did not get a chance to continue
-programming. I switched back to studying mathematical logic.
+In 1984, I took a programming class on Algol 60 when I was a junior
+at Nanjing University, China. This was my first exposure to
+programming on a real computer. Please note that each of us in the
+class could have access to a real computer for only ONE hour during
+the entire semester. Basically, we had to write code on paper and
+double-check it before typing the code into a computer. I can now
+remember very little about what I learned in the class except for the
+fact that I did enjoy programming IMMENSELY. I voluntarily did
+homework for some of my classmates so that I could use their alloted
+computer time. However, after the programming class, I did not get a
+chance to continue programming. I switched back to studying
+mathematical logic.
 
 As far as programming is of the concern, I did practically next to
-nothing between 1985 and 1990. I suppose I learned a little bit about
-Pascal and Basic, though.
+nothing between 1985 and 1990. I spent most of my time learning
+recursion theory and I did my Master's thesis in the field of degrees
+of computability. I suppose I learned a little bit about Pascal and
+Basic, though.
 
-I moved to Shanghai Jiao Tong University in 1988. I started to learn C
-around 1990. I used Turbo C (running on MS-DOS) for learning C, which
-was a popular integrated development environment (IDE) and compiler
-for the C programming language from Borland.
+I joined Shanghai Jiao Tong University in July 1988. I started to
+learn C around 1990. I used Turbo C (running on MS-DOS) for learning
+C, which was a popular integrated development environment (IDE) and
+compiler for the C programming language from Borland.
+
+I became a PhD student in the Mathematics Department at Carnegie
+Mellon University (CMU) in 1992. I arrived in Pittsburgh on the 24th
+of June and immediately started working as a research assistant under
+the supervision of Prof. Peter Andrews. And for the first time, I
+programmed in LISP, which I enjoyed very much. By the way, switching
+from MS DOS to UNIX brought me tremendous joy, too.
 
 ########################################################################
 ########################################################################
@@ -108,9 +118,9 @@ MYPROJ/HATS:
 For various loading scripts (for loading SATS files and DATS files)
 
 MYPROJ/DOCS: For documentation of all sorts
-MyPROJ/TEST: For storing testing code of all sorts
+MYPROJ/TEST: For storing testing code of all sorts
 
-MYPROJ/BUILD: For storing the files generated from building MYPROJ
+MYPROJ/OUTS: For storing the files generated from building MYPROJ
 
 ########################################################################
 ########################################################################
