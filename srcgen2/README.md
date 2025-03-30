@@ -39,8 +39,9 @@ source ATS3/Xanadu/srcgen2:
 ATS-Xanadu/srcgen2/xats2js/srcgen1/UTIL/xats2js_jsemit00_dats.js
 
 successfully compiles the source itself into some JS code
-for type-checking the source:
+that is able to compile the source (into JS code):
 
 ATS-Xanadu/contrib/githwxi/BOOTJS1/UTIL/xatsopt_tcheck00_dats_out.js
+ATS-Xanadu/contrib/githwxi/BOOTJS1/xats2js/srcgen1/UTIL/xats2js_jsemit00_dats_out.js
 
 ############################################################
