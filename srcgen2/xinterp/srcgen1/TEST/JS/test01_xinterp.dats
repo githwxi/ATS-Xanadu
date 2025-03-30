@@ -8,9 +8,14 @@ as way to test [xatsopt]
 #include
 "./../../../..\
 /HATS/xatsopt_sats.hats"
+(*
 #include
 "./../../../..\
 /HATS/xatsopt_dats.hats"
+*)
+#include
+"./../../../..\
+/HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 #include
 "./../../HATS/libxatsopt.hats"
