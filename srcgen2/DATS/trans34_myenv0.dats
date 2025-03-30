@@ -428,7 +428,7 @@ loop
 , err: &sint >> _): linstk =
 (
 case+ kxs of
-| !
+| (*!*)
 linstk_nil() => kxs // err = 0
 //
 | ~
@@ -452,14 +452,14 @@ linstk_dlft
 (k1, x1, kxs) => loop(kxs, err)
 *)
 //
-| !
+| // !
 linstk_lam0 _ => (err := 1; kxs)
-| !
+| // !
 linstk_let0 _ => (err := 1; kxs)
 //
-| !
+| // !
 linstk_ift0 _ => (err := 1; kxs)
-| !
+| // !
 linstk_cas0 _ => (err := 1; kxs)
 //
 ) (*case+*)//end-of-[loop(kxs, err)]
@@ -513,15 +513,15 @@ linstk_dlft
 (d2v,lft,kxs) => loop(kxs, err)
 *)
 //
-| !
+| // !
 linstk_nil( ) => (err := 1; kxs)
 //
-| !
+| // !
 linstk_let0 _ => (err := 1; kxs)
 //
-| !
+| // !
 linstk_ift0 _ => (err := 1; kxs)
-| !
+| // !
 linstk_cas0 _ => (err := 1; kxs)
 //
 ) (*case+*) // end of [loop(kxs,err)]
@@ -570,15 +570,15 @@ linstk_dlft
 (d2v,lft,kxs) => loop(kxs, err)
 *)
 //
-| !
+| // !
 linstk_nil( ) => (err := 1; kxs)
 //
-| !
+| // !
 linstk_lam0 _ => (err := 1; kxs)
 //
-| !
+| // !
 linstk_ift0 _ => (err := 1; kxs)
-| !
+| // !
 linstk_cas0 _ => (err := 1; kxs)
 //
 (* ****** ****** *)
@@ -629,18 +629,18 @@ linstk_dlft
 (d2v,lft,kxs) => loop(kxs, err)
 *)
 //
-| !
+| // !
 linstk_nil( ) => (err := 1; kxs)
 //
-| !
+| // !
 linstk_lam0 _ => (err := 1; kxs)
-| !
+| // !
 linstk_let0 _ => (err := 1; kxs)
 //
-| !
+| // !
 linstk_cas0 _ => (err := 1; kxs)
 //
-| !
+| // !
 linstk_dvar _ => (err := 1; kxs)
 //
 (* ****** ****** *)
@@ -701,15 +701,15 @@ linstk_dlft
 (d2v,lft,kxs) => loop(kxs, err)
 *)
 //
-| !
+| // !
 linstk_nil( ) => (err := 1; kxs)
 //
-| !
+| // !
 linstk_lam0 _ => (err := 1; kxs)
-| !
+| // !
 linstk_let0 _ => (err := 1; kxs)
 //
-| !
+| // !
 linstk_ift0 _ => (err := 1; kxs)
 //
 (* ****** ****** *)
@@ -750,14 +750,14 @@ loop
 (
 case- kxs of
 //
-| !
+| // !
 linstk_nil
  ((*00*)) => res
-| !
+| // !
 linstk_lam0
 (   stk   ) => res
 //
-| !
+| // !
 linstk_dvar
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -766,7 +766,7 @@ val res =
 list_vt_cons(@(d2v,dtp), res)
 }
 //
-| !
+| // !
 linstk_dget
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -774,7 +774,7 @@ loop(kxs, res) where
 val res =
 list_vt_cons(@(d2v,dtp), res)
 }
-| !
+| // !
 linstk_dset
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -783,7 +783,7 @@ val res =
 list_vt_cons(@(d2v,dtp), res)
 }
 //
-| !
+| // !
 linstk_dvtp
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -830,14 +830,14 @@ loop
 (
 case- kxs of
 //
-| !
+| // !
 linstk_nil
  ((*00*)) => res
-| !
+| // !
 linstk_let0
 (   stk   ) => res
 //
-| !
+| // !
 linstk_dvar
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -846,7 +846,7 @@ val res =
 list_vt_cons(@(d2v,dtp), res)
 }
 //
-| !
+| // !
 linstk_dget
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -854,7 +854,7 @@ loop(kxs, res) where
 val res =
 list_vt_cons(@(d2v,dtp), res)
 }
-| !
+| // !
 linstk_dset
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -863,7 +863,7 @@ val res =
 list_vt_cons(@(d2v,dtp), res)
 }
 //
-| !
+| // !
 linstk_dvtp
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -910,14 +910,14 @@ loop
 (
 case- kxs of
 //
-| !
+| // !
 linstk_nil
  ((*00*)) => res
-| !
+| // !
 linstk_ift0
 (   stk   ) => res
 //
-| !
+| // !
 linstk_dvar
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -926,7 +926,7 @@ val res =
 list_vt_cons(@(d2v,dtp), res)
 }
 //
-| !
+| // !
 linstk_dget
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -934,7 +934,7 @@ loop(kxs, res) where
 val res =
 list_vt_cons(@(d2v,dtp), res)
 }
-| !
+| // !
 linstk_dset
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -943,7 +943,7 @@ val res =
 list_vt_cons(@(d2v,dtp), res)
 }
 //
-| !
+| // !
 linstk_dvtp
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -990,14 +990,14 @@ loop
 (
 case- kxs of
 //
-| !
+| // !
 linstk_nil
  ((*00*)) => res
-| !
+| // !
 linstk_cas0
 (   stk   ) => res
 //
-| !
+| // !
 linstk_dvar
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -1006,7 +1006,7 @@ val res =
 list_vt_cons(@(d2v,dtp), res)
 }
 //
-| !
+| // !
 linstk_dget
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -1014,7 +1014,7 @@ loop(kxs, res) where
 val res =
 list_vt_cons(@(d2v,dtp), res)
 }
-| !
+| // !
 linstk_dset
 (d2v,dtp,kxs) =>
 loop(kxs, res) where
@@ -1023,7 +1023,7 @@ val res =
 list_vt_cons(@(d2v,dtp), res)
 }
 //
-| !
+| // !
 linstk_dvtp
 (d2v,dtp,kxs) =>
 loop(kxs, res) where

@@ -506,7 +506,8 @@ end(*let*)//end-of-[i0strjs1(filr,tstr)]
 i1tnmjs1
 ( filr,itnm ) =
 (
-prints("jstnm", stmp)) where
+prints
+("jsx", "tnm", stmp)) where
 {
 //
 #impltmp g_print$out<>() = filr

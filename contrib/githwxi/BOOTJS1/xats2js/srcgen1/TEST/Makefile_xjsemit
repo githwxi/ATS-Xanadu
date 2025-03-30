@@ -1,0 +1,49 @@
+########################################################################
+########################################################################
+NODE=\
+node --stack_size=8192
+########################################################################
+all:: xbasics
+all:: xbasics_print0
+all:: xsynoug
+all:: xerrory
+all:: xstamp0
+all:: xstamp0_print0
+all:: xstamp0_tmpmap
+########################################################################
+xbasics: ; \
+$(NODE) $(XATS2JS_JSEMIT00) \
+$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
+xbasics_print0: ; \
+$(NODE) $(XATS2JS_JSEMIT00) \
+$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
+########################################################################
+xsynoug: ; \
+$(NODE) $(XATS2JS_JSEMIT00) \
+$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
+xerrory: ; \
+$(NODE) $(XATS2JS_JSEMIT00) \
+$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
+########################################################################
+xstamp0: ; \
+$(NODE) $(XATS2JS_JSEMIT00) \
+$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
+xstamp0_print0: ; \
+$(NODE) $(XATS2JS_JSEMIT00) \
+$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
+xstamp0_tmpmap: ; \
+$(NODE) $(XATS2JS_JSEMIT00) \
+$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
+########################################################################
+SRCGEN2=./../../../../../../srcgen2
+########################################################################
+# HX-2025-03-29:
+# bootstrapped verison
+XATS2JS_JSEMIT00=./../UTIL/xats2js_jsemit00_dats_out.js
+########################################################################
+# HX-2025-03-29:
+# ATS2-compiled verison
+# XATS2JS_JSEMIT00=\
+# $(SRCGEN2)/xats2js/srcgen1/UTIL/xats2js_jsemit00_dats.js
+########################################################################
+########################################################################
