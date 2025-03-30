@@ -41,9 +41,14 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
+(*
 #include
 "./../../..\
 /HATS/xatsopt_dats.hats"
+*)
+#include
+"./../../..\
+/HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 #include
 "./../HATS/mytmplib00.hats"
@@ -118,14 +123,11 @@ dimp.node() of
 (dcst, svts) =>
 (
   d2cstpy1(filr, dcst))
-|DIMPLall1
-(dqid, d2cs) =>
+|DIMPLnon1
+(  dqid  ) =>
 (
   d1qid_fprint(filr, dqid))
-|DIMPLopt2
-(dqid, _, _) =>
-(
-  d1qid_fprint(filr, dqid)))
+)(*case+*)//end-of-(dicstpy1)
 //
 (* ****** ****** *)
 //

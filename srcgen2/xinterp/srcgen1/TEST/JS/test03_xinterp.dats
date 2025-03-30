@@ -8,9 +8,14 @@ as way to test [xatsopt]
 #include
 "./../../../..\
 /HATS/xatsopt_sats.hats"
+(*
 #include
 "./../../../..\
 /HATS/xatsopt_dats.hats"
+*)
+#include
+"./../../../..\
+/HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 #include
 "./../../HATS/libxatsopt.hats"
@@ -18,12 +23,12 @@ as way to test [xatsopt]
 //
 val ret =
 the_fxtyenv_pvsload()
-val (  ) = prerrln
+val (  ) = prerrsln
 ("the_fxtyenv_pvsload() = ", ret)
 //
 val ret =
 the_tr12env_pvsload()
-val (  ) = prerrln
+val (  ) = prerrsln
 ("the_tr12env_pvsload() = ", ret)
 //
 (* ****** ****** *)
@@ -79,7 +84,7 @@ dpar =
 d3parsed_of_trans3a(dpar)
 //
 val ( ) =
-prerrln
+prerrsln
 ("d3parsed(3a) = ", dpar)
 //
 val
@@ -90,33 +95,31 @@ dpar =
 d3parsed_of_trtmp3c(dpar)
 val
 dpar =
-d3parsed_of_tread33(dpar)
+d3parsed_of_tread30(dpar)
 //
 val ( ) =
-prerrln
-("d3parsed(33) = ", dpar)
-//
-//
-val
-out = g_stderr((*0*))
+prerrsln
+("d3parsed(30) = ", dpar)
 //
 val ( ) =
-prerrln
-("FPERR33_D3PARSED(4):")
+prerrsln
+("FPERR30_D3PARSED(30):")
+val out = g_stderr((*0*))
 val ( ) =
-fperr33_d3parsed(out, dpar)
+fperr30_d3parsed(out, dpar)
 //
 } where
 {
-val dpar = d3parsed_from_fpath
-(1(*dyn*), "./DATA/mytest03.dats") }
+val dpar =
+  d3parsed_of_fildats
+  ( "./DATA/mytest03.dats" ) }
 //
 val ( ) =
 xinterp_irparsed(mytest03_dats) where
 {
 val ((*0*)) =
 (
-println
+printsln
 ("parsed(ir) = ", mytest03_dats.parsed()))
 } (*where*) // end of [xinterp_irparsed(...)]
 //
