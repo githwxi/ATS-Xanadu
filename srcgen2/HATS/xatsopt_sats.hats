@@ -52,6 +52,15 @@ For ATS3/XATSOPT
 //
 #staload
 "srcgen1\
+/prelude/SATS/arrn000.sats"
+#staload
+"srcgen1\
+/prelude/SATS/arrn001.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"srcgen1\
 /prelude/SATS/list000.sats"
 #staload
 "srcgen1\
@@ -87,6 +96,15 @@ For ATS3/XATSOPT
 //
 #staload
 "srcgen1\
+/prelude/SATS/VT/arrn000_vt.sats"
+#staload
+"srcgen1\
+/prelude/SATS/VT/arrn001_vt.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"srcgen1\
 /prelude/SATS/VT/list000_vt.sats"
 #staload
 "srcgen1\
@@ -98,17 +116,6 @@ For ATS3/XATSOPT
 #staload
 "srcgen1\
 /prelude/SATS/VT/strm001_vt.sats"
-//
-(* ****** ****** *)
-//
-#staload
-"srcgen1\
-/prelude/SATS/VT/arrn000_vt.sats"
-(*
-#staload
-"srcgen1\
-/prelude/SATS/VT/arrn001_vt.sats"
-*)
 //
 (* ****** ****** *)
 //

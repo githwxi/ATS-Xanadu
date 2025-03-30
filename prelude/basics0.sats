@@ -1564,16 +1564,14 @@ a2ptr_vt_i0_i0_vx(elem:vt,nrow:i0,ncol:i0)
 a2psz_vt_i0_i0_vx(elem:vt,nrow:i0,ncol:i0)
 //
 #vwtpdef
-a2ptr(a:vt,m:i0,n:i0) = a2ptr_vt_i0_i0_vx(a, m, n)
+a2ptr(a:vt,m:i0,n:i0) = a2ptr_vt_i0_i0_vx(a,m,n)
 #vwtpdef
-a2psz(a:vt,m:i0,n:i0) = a2psz_vt_i0_i0_vx(a, m, n)
+a2psz(a:vt,m:i0,n:i0) = a2psz_vt_i0_i0_vx(a,m,n)
 //
 (* ****** ****** *)
 //
-#vwtpdef
-a1psz(a:vt) = [n:i0] a1psz(a, n)
-#vwtpdef
-a2psz(a:vt) = [m:i0;n:i0] a2psz(a, m, n)
+#vwtpdef a1psz(a:vt) = [n:i0] a1psz(a, n)
+#vwtpdef a2psz(a:vt) = [m:i0;n:i0] a2psz(a, m, n)
 //
 (* ****** ****** *)
 (* ****** ****** *)

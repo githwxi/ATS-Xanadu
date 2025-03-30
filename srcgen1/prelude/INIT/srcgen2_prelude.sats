@@ -218,10 +218,12 @@ For further program verification
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #include
 "srcgen1/prelude/SATS/arrn000.sats"
 #include
 "srcgen1/prelude/SATS/arrn001.sats"
+*)
 //
 (* ****** ****** *)
 //
@@ -372,10 +374,18 @@ For viewtypes (that is, linear types)
 #include
 "srcgen1/prelude/SATS/VT/arrn001_vt.sats"
 //
+(* ****** ****** *)
+//
+(*
 #include
 "srcgen1/prelude/SATS/VT/axrf000_vt.sats"
 #include
 "srcgen1/prelude/SATS/VT/axsz000_vt.sats"
+*)
+#include
+"srcgen2/prelude/SATS/VT/axrf000_vt.sats"
+#include
+"srcgen2/prelude/SATS/VT/axsz000_vt.sats"
 //
 (* ****** ****** *)
 //
@@ -448,5 +458,8 @@ UNSF(*unsafe*) = "srcgen1/prelude/SATS/unsafex.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_prelude_INIT_srcgen2_prelude.sats] *)

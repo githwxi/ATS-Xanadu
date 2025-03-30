@@ -121,4 +121,45 @@ val A0 =
 (* ****** ****** *)
 (* ****** ****** *)
 
+#impltmp
+< a:vt >
+a1rsz_strmize
+  {n}(A0) =
+(
+  auxmain(0(*i0*))
+) where
+{
+//
+val n0 =
+(
+  a1rsz_length<>(A0))
+//
+fun
+auxmain
+{i:nat
+|i<=n}
+(i0: sint(i)): strm_vt(a) =
+$llazy
+(
+if
+(i0 >= n0)
+then
+strmcon_vt_nil((*void*))
+else
+strmcon_vt_cons
+(a1rsz_get$at(A0, i0), auxmain(suc(i0)))
+) (* end of [auxmain] *)
+} (*where*) // end-of(a1rsz_strmize(...A0...))
+
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+gseq_strmize
+<a1rsz(a)><a>(AZ) = a1rsz_strmize<a>(AZ)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+
 (* end of [ATS3/XANADU_srcgen1_prelude_DATS_axsz000.dats] *)

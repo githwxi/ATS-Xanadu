@@ -231,10 +231,13 @@ gseq_strmize<mylist2(a)><a> = mylist2_strmize<a>
 
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 val xsys_mul = gseq_mul<mylist2(sint)><sint>(xsys)
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest03.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xinterp/srcgen1/TEST/JS/DATA/mytest03.dats] *)

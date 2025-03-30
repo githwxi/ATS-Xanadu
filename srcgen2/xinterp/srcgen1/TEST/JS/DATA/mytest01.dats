@@ -151,5 +151,8 @@ val ((*0*)) = foo(myint)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest01.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xinterp/srcgen1/TEST/JS/DATA/mytest01.dats] *)
