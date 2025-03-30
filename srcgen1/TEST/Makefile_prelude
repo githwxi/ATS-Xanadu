@@ -457,6 +457,8 @@ all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/arrn000.dats
 all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/arrn001.dats
+all1_dats:: ; \
+$(XATSOPT) -d $(PRELUDE1)/DATS/axsz000.dats
 
 all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/list000.dats
@@ -529,7 +531,9 @@ $(XATSOPT) -d $(PRELUDE1)/DATS/CATS/JS/basics0.dats
 all1_JS_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/CATS/JS/basics1.dats
 all1_JS_dats:: ; \
-$(XATSOPT) -d $(PRELUDE1)/DATS/CATS/JS/prelude.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/CATS/JS/basics2.dats
+all1_JS_dats:: ; \
+$(XATSOPT) -d $(PRELUDE1)/DATS/CATS/JS/basics3.dats
 all1_JS_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/CATS/JS/unsafex.dats
   

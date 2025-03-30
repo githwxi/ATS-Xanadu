@@ -8,12 +8,12 @@ Syntactic candies :)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-(*
+// (*
 #staload
 "./../SATS/libcats.sats"
 #staload
 "./../SATS/synoug0.sats"
-*)
+// *)
 (* ****** ****** *)
 (* ****** ****** *)
 //
