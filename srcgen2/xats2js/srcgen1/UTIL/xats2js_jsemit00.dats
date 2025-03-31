@@ -68,8 +68,10 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
+(*
 #staload _ =
 "./../DATS/xats2js_tmplib.dats"
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
