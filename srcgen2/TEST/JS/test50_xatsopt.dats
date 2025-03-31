@@ -433,18 +433,18 @@ val dpar = d3parsed_of_fildats(fpath)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-"\
-srcgen1\
-/prelude\
-/DATS/CATS/JS/basics1.dats"
-(* ****** ****** *)
-#staload
-"\
-srcgen1\
-/prelude\
-/DATS/CATS/JS/NODE/process.dats"
-(* ****** ****** *)
+//
+local
+//
+#typedef
+argv = jsarray(strn)
+#extern
+fun
+XATS2JS_NODE_argv$get
+  ((*void*)): argv = $extnam()
+//
+in//local
+//
 val () =
 mymain() where
 {
@@ -455,11 +455,14 @@ mymain((*void*)) =
 mytest(argv[2])) where
 {
   val argv =
-  XATS2JS_NODE_argv_get()
+  XATS2JS_NODE_argv$get()
   val (  ) = prerrsln("argv = ", argv)
 } (*where*)//end-of-[ mymain((*void*)) ]
 //
 }
+//
+end(*local*)//end-of-[ val () = mymain() ]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
