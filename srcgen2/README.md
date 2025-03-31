@@ -1,15 +1,11 @@
 ############################################################
-
-# [ATS3](http://www.ats-lang.org/) - ATS/Xanadu
-
 ############################################################
-
 A Programming Language System to
 Unleash the Potentials of Types and Templates!
-
-## Project Description
-
+############################################################
 This project attempts to implement ATS3 in ATS3.
+############################################################
+############################################################
 
 HX-2022-06-16:
 For the time being, ATS3-Xanadu/srcgen1/xats2js
@@ -44,4 +40,15 @@ that is able to compile the source (into JS code):
 ATS-Xanadu/contrib/githwxi/BOOTJS1/UTIL/xatsopt_tcheck00_dats_out.js
 ATS-Xanadu/contrib/githwxi/BOOTJS1/xats2js/srcgen1/UTIL/xats2js_jsemit00_dats_out.js
 
+Please see [xglobal.dats] for the prelude loaded by default.
+Note that the following SATS file is loaded for the purpose of
+bridging srcgen1 and srcgen2:
+
+ATS-Xanadu/srcgen1/prelude/INIT/srcgen2_prelude.sats
+
+As the current design is primarily "forced" due to the need for
+bootstrapping, I intend to re-implement the prelude-loading part of
+ATS3 so as to better accommodate programming of general-purpose.
+
+############################################################
 ############################################################

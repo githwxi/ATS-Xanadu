@@ -27,6 +27,7 @@ LIBXATSOPT_JS="./../../../lib/libxatsopt.js"
 LIBXATS2JS_JS=\
 "./../../../xats2js/srcgenx/lib/libxats2js.js"
 ########################################################################
+XATS2JS_JS1EMIT="$(XSHARED)/runtime/xats2js_js1emit.js"
 XATS2JS_PRELUDE="$(XSHARED)/runtime/xats2js_prelude.js"
 XATS2JS_PRELUDE_NODE="$(XSHARED)/runtime/xats2js_prelude_node.js"
 XATS2JS_XATSLIB_NODE="$(XSHARED)/runtime/xats2js_xatslib_node.js"
@@ -37,7 +38,9 @@ xats2py_pyemit00
 xats2py_pyemit00:: \
 xats2py_pyemit00.dats ; \
 $(CAT) \
-$(XATS2JS_PRELUDE) > $@_dats.js && \
+$(XATS2JS_JS1EMIT) > $@_dats.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE) >> $@_dats.js && \
 $(CAT) \
 $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
 $(CAT) \
