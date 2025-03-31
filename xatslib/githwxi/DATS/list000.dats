@@ -59,4 +59,4 @@ loop(xs, ys, zs) where
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_githwxi_DATS_gint000.dats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_DATS_list000.dats] *)

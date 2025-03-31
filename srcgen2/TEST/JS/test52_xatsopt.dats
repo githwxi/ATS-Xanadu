@@ -7,9 +7,14 @@ Testing [trans34]
 #include
 "./../..\
 /HATS/xatsopt_sats.hats"
+(*
 #include
 "./../..\
 /HATS/xatsopt_dats.hats"
+*)
+#include
+"./../..\
+/HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 #include
 "./../../HATS/libxatsopt.hats"
@@ -59,18 +64,17 @@ val dpar = d3parsed_of_fildats(fpath)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-"\
-srcgen1\
-/prelude\
-/DATS/CATS/JS/basics1.dats"
-(* ****** ****** *)
-#staload
-"\
-srcgen1\
-/prelude\
-/DATS/CATS/JS/NODE/process.dats"
-(* ****** ****** *)
+//
+local
+//
+#typedef
+argv = jsarray(strn)
+#extern
+fun
+XATS2JS_NODE_argv$get
+  ((*void*)): argv = $extnam()
+//
+in//local
 //
 val () =
 mymain() where
@@ -87,6 +91,8 @@ mytest(argv[2])) where
 } (*where*)//end-of-[ mymain((*void*)) ]
 //
 }
+//
+end(*local*)//end-of-[ val () = mymain() ]
 //
 (* ****** ****** *)
 (* ****** ****** *)
