@@ -34,12 +34,24 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+#include
+"./../HATS/xatsopt_dats.hats"
+*)
+#include
+"./../HATS/xatsopt_dpre.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#staload "./../SATS/xerrory.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 excptcon
@@ -48,7 +60,6 @@ excptcon // HX:internal
 FatalErrorExn_interr of ()
 //
 (* ****** ****** *)
-#staload "./../SATS/xerrory.sats"
 (* ****** ****** *)
 
 local
@@ -75,8 +86,11 @@ in
   $raise FatalErrorExn_interr((*void*))
 end // end of [abort]
 
-end (*local*) // end of [ local ]
+end (*local*) // end of [ local(xerrory) ]
 
-(* ****** ****** *)
-
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xerrory.dats] *)
+(***********************************************************************)

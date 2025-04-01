@@ -149,7 +149,7 @@ else
 strmcon_vt_cons
 (a1rsz_get$at(A0, i0), auxmain(suc(i0)))
 ) (* end of [auxmain] *)
-} (*where*) // end-of(a1rsz_strmize(...A0...))
+} (*where*) // end-of(a1rsz_strmize(A0))
 
 (* ****** ****** *)
 (* ****** ****** *)
