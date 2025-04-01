@@ -21,7 +21,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 <(*tmp*)>
-d2exp$root_work
+d2exp$top_work
   (  d2e0  ) =
 (
 case+
@@ -47,7 +47,16 @@ d2e0.node() of
 (
   d2exp$D2Evar_work(d2e0))
 //
-)(*case+*)//end-of-[d2exp_work(d2e0)]
+| D2Elet0 _ =>
+(
+  d2exp$D2Elet0_work(d2e0))
+//
+| _(*otherwise*) =>
+(
+  printsln
+  ("d2exp$top_work: d2e0 = ", d2e0))
+//
+)(*case+*)//end-of-[d2exp$top_work(d2e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -83,6 +92,7 @@ let
 //
 val () =
 d2eclist_work(dcls)
+//
 val () = d2exp_work(d2e1)
 //
 end where

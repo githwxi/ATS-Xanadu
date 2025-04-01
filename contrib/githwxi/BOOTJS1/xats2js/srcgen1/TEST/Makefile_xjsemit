@@ -1,41 +1,180 @@
 ########################################################################
 ########################################################################
-NODE=\
-node --stack_size=8192
+NODE=node
 ########################################################################
-all:: xbasics
-all:: xbasics_print0
-all:: xsynoug
-all:: xerrory
-all:: xstamp0
-all:: xstamp0_print0
-all:: xstamp0_tmpmap
-########################################################################
-xbasics: ; \
-$(NODE) $(XATS2JS_JSEMIT00) \
-$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
-xbasics_print0: ; \
-$(NODE) $(XATS2JS_JSEMIT00) \
-$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
-########################################################################
-xsynoug: ; \
-$(NODE) $(XATS2JS_JSEMIT00) \
-$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
-xerrory: ; \
-$(NODE) $(XATS2JS_JSEMIT00) \
-$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
-########################################################################
-xstamp0: ; \
-$(NODE) $(XATS2JS_JSEMIT00) \
-$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
-xstamp0_print0: ; \
-$(NODE) $(XATS2JS_JSEMIT00) \
-$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
-xstamp0_tmpmap: ; \
-$(NODE) $(XATS2JS_JSEMIT00) \
-$(SRCGEN2)/DATS/$@.dats > OUTS/$@_dats_out.js
+#
+SRCDATS := \
+xbasics.dats \
+xbasics_print0.dats \
+xsynoug.dats \
+xerrory.dats \
+xstamp0.dats \
+xstamp0_print0.dats \
+xstamp0_tmpmap.dats \
+xsymbol.dats \
+xsymbol_print0.dats \
+xsymbol_mymap0.dats \
+xsymbol_inits0.dats \
+xlabel0.dats \
+xlabel0_print0.dats \
+xsymmap.dats \
+xsymmap_topmap.dats \
+xsymmap_stkmap.dats \
+xglobal.dats \
+filpath.dats \
+filpath_print0.dats \
+filpath_drpth0.dats \
+filpath_fpath0.dats \
+filpath_search.dats \
+locinfo.dats \
+locinfo_print0.dats \
+lexbuf0.dats \
+lexbuf0_cstrx1.dats \
+lexbuf0_cstrx2.dats \
+lexing0.dats \
+lexing0_print0.dats \
+lexing0_mymap0.dats \
+lexing0_kword0.dats \
+lexing0_token0.dats \
+lexing0_utils1.dats \
+lexing0_utils2.dats \
+staexp0.dats \
+staexp0_print0.dats \
+dynexp0.dats \
+dynexp0_print0.dats \
+parsing.dats \
+parsing_basics.dats \
+parsing_tokbuf.dats \
+parsing_utils0.dats \
+parsing_staexp.dats \
+parsing_dynexp.dats \
+parsing_decl00.dats \
+preadx0.dats \
+preadx0_staexp.dats \
+preadx0_dynexp.dats \
+preadx0_decl00.dats \
+preadx0_errmsg.dats \
+xfixity.dats \
+staexp1.dats \
+staexp1_print0.dats \
+dynexp1.dats \
+dynexp1_print0.dats \
+gmacro1.dats \
+gmacro1_print0.dats \
+trans01.dats \
+trans01_myenv0.dats \
+trans01_utils0.dats \
+trans01_staexp.dats \
+trans01_dynexp.dats \
+trans01_decl00.dats \
+tread01.dats \
+tread01_staexp.dats \
+tread01_dynexp.dats \
+tread01_decl00.dats \
+tread01_errmsg.dats \
+staexp2.dats \
+statyp2.dats \
+staexp2_print0.dats \
+statyp2_print0.dats \
+staexp2_inits0.dats \
+statyp2_inits0.dats \
+staexp2_utils1.dats \
+staexp2_utils2.dats \
+statyp2_utils1.dats \
+statyp2_utils2.dats \
+statyp2_tmplib.dats \
+dynexp2.dats \
+dynexp2_print0.dats \
+dynexp2_utils0.dats \
+nmspace.dats \
+trans12.dats \
+trans11_myenv0.dats \
+trans12_myenv0.dats \
+trans11_gmacro.dats \
+trans12_gmacro.dats \
+trans12_staexp.dats \
+trans12_dynexp.dats \
+trans12_decl00.dats \
+tread12.dats \
+tread12_staexp.dats \
+tread12_dynexp.dats \
+tread12_decl00.dats \
+tread12_errmsg.dats \
+trans2a.dats \
+trans2a_myenv0.dats \
+trans2a_utils0.dats \
+trans2a_dynexp.dats \
+trans2a_decl00.dats \
+trsym2b.dats \
+trsym2b_utils0.dats \
+trsym2b_dynexp.dats \
+trsym2b_decl00.dats \
+tread20.dats \
+tread20_dynexp.dats \
+tread20_decl00.dats \
+fperr20.dats \
+fperr20_dynexp.dats \
+fperr20_decl00.dats \
+dynexp3.dats \
+dynexp3_print0.dats \
+dynexp3_utils0.dats \
+trans23.dats \
+trans23_myenv0.dats \
+trans23_utils0.dats \
+trans23_dynexp.dats \
+trans23_decl00.dats \
+tread23.dats \
+tread23_dynexp.dats \
+tread23_decl00.dats \
+tread23_errmsg.dats \
+trans3a.dats \
+trans3a_myenv0.dats \
+trans3a_staexp.dats \
+trans3a_dynexp.dats \
+trans3a_decl00.dats \
+trtmp3b.dats \
+trtmp3b_myenv0.dats \
+trtmp3b_utils0.dats \
+trtmp3b_dynexp.dats \
+trtmp3b_decl00.dats \
+trtmp3c.dats \
+trtmp3c_myenv0.dats \
+trtmp3c_utils0.dats \
+trtmp3c_dynexp.dats \
+trtmp3c_decl00.dats \
+tread30.dats \
+tread30_staexp.dats \
+tread30_dynexp.dats \
+tread30_decl00.dats \
+fperr30.dats \
+fperr30_dynexp.dats \
+fperr30_decl00.dats \
+xatsopt.dats \
+xatsopt_tmplib.dats \
+xatsopt_utils0.dats \
+#
 ########################################################################
 SRCGEN2=./../../../../../../srcgen2
+########################################################################
+OBJDATS := \
+$(patsubst %.dats, OUTS/%_dats_out.js, $(SRCDATS))
+########################################################################
+########################################################################
+all:: all_dats
+all_dats:: $(OBJDATS)
+########################################################################
+clean:: ; rm -f *~
+########################################################################
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/*_dats_out.js
+########################################################################
+########################################################################
+#
+OUTS/%_dats_out.js: \
+$(SRCGEN2)/DATS/%.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) $< > $@
+#
+########################################################################
 ########################################################################
 # HX-2025-03-29:
 # bootstrapped verison

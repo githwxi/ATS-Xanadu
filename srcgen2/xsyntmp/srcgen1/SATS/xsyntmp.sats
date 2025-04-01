@@ -20,9 +20,9 @@ fun<>
 d2ecl_work(dexp: d2exp): void
 //
 fun<>
-d2exp$root_work(dexp: d2exp): void
+d2exp$top_work(dexp: d2exp): void
 fun<>
-d2ecl$root_work(dexp: d2exp): void
+d2ecl$top_work(dexp: d2exp): void
 //
 (* ****** ****** *)
 //
