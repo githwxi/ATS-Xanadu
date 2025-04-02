@@ -13,6 +13,12 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+#staload
+"./../../../SATS/dynexp2.sats"
+#staload
+"./../../../SATS/dynexp3.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun<>
 d2exp_work(dexp: d2exp): void
@@ -35,8 +41,6 @@ d2expopt_work(dopt: d2expopt): void
 //
 fun<>
 d2eclist_work(dcls: d2eclist): void
-fun<>
-d2eclopt_work(dopt: d2eclopt): void
 //
 (* ****** ****** *)
 //
@@ -77,6 +81,9 @@ fun<>
 d3exp$D3Eflt_work(dexp: d3exp): void
 fun<>
 d3exp$D3Estr_work(dexp: d3exp): void
+//
+fun<>
+d3exp$D3Elet0_work(dexp: d3exp): void
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

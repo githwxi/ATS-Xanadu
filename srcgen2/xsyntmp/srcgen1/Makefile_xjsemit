@@ -10,22 +10,22 @@ BUN=bun
 NODE=node
 ########################################################################
 ########################################################################
-all:: \
-xsyntmp_d2exp
-########################################################################
-########################################################################
-SRCGEN2_SRCGENX=\
-$(XATSHOME)/srcgen2/xats2js/srcgenx
-SRCGEN2_XSHARED=\
-$(XATSHOME)/srcgen2/xats2js/srcgenx/xshared/runtime
+SRCGEN2_XATSOPT=\
+$(XATSHOME)/srcgen2/UTIL/xatsopt_tcheck00_dats.js
 SRCGEN2_XATS2JS=\
 $(XATSHOME)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit00_dats.js
 ########################################################################
+all::
 ########################################################################
-xsyntmp_d2exp:: ; \
-echo "//" `date` > OUTS/$@_dats_out.js
+all:: \
+xsyntmp_sats
+xsyntmp_sats:: \
+SATS/xsyntmp.sats; \
+$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $< >> OUTS/$@_sats_out.00
 ############
-xsyntmp_d2exp:: \
+all:: \
+xsyntmp_d2exp_dats
+xsyntmp_d2exp_dats:: \
 DATS/xsyntmp_d2exp.dats; \
 $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_dats_out.js
 ########################################################################
