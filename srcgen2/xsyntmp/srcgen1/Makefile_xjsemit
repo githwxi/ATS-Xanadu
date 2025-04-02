@@ -21,18 +21,26 @@ all:: \
 xsyntmp_sats
 xsyntmp_sats:: \
 SATS/xsyntmp.sats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $< >> OUTS/$@_sats_out.00
+$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $< >> OUTS/$@_out.00
 ############
 all:: \
 xsyntmp_d2exp_dats
 xsyntmp_d2exp_dats:: \
 DATS/xsyntmp_d2exp.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_dats_out.js
+$(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
+########################################################################
+all:: \
+xsyntmp_d2ecl_dats
+xsyntmp_d2ecl_dats:: \
+DATS/xsyntmp_d2ecl.dats; \
+$(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/xsyntmp_sats_out.00
 cleanall:: ; rm -f OUTS/xsyntmp_d2exp_dats_out.js
+cleanall:: ; rm -f OUTS/xsyntmp_d2ecl_dats_out.js
 ########################################################################
 ########################################################################
 ###################### end of [Makefile_xjsemit] #######################
