@@ -23,12 +23,12 @@ Authoremail: gmhwxiATgmailDOTcom
 fun<>
 d2exp_work(dexp: d2exp): void
 fun<>
-d2ecl_work(dexp: d2exp): void
+d2ecl_work(d2cl: d2ecl): void
 //
 fun<>
-d2exp$top_work(dexp: d2exp): void
+d2exp$top_work(d2e0: d2exp): void
 fun<>
-d2ecl$top_work(dexp: d2exp): void
+d2ecl$top_work(d2cl: d2ecl): void
 //
 (* ****** ****** *)
 //
@@ -60,6 +60,12 @@ d2exp$D2Evar_work(dexp: d2exp): void
 //
 fun<>
 d2exp$D2Elet0_work(dexp: d2exp): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+d2ecl$D2Clocal0_work(d2cl: d2ecl): void
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
