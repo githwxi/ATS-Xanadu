@@ -31,9 +31,27 @@ d2ecl$top_work(dcl0) =
 case+
 dcl0.node() of
 //
+| D2Cstatic _ =>
+(
+  d2ecl$D2Cstatic_work(dcl0))
+| D2Cextern _ =>
+(
+  d2ecl$D2Cextern_work(dcl0))
+//
 | D2Clocal0 _ =>
 (
   d2ecl$D2Clocal0_work(dcl0))
+//
+| D2Csymload _ =>
+(
+  d2ecl$D2Csymload_work(dcl0))
+//
+| D2Cinclude _ =>
+(
+  d2ecl$D2Cinclude_work(dcl0))
+| D2Cstaload _ =>
+(
+  d2ecl$D2Cstaload_work(dcl0))
 //
 | _(*otherwise*) =>
 (
