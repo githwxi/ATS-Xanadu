@@ -65,7 +65,20 @@ d2exp$D2Elet0_work(dexp: d2exp): void
 (* ****** ****** *)
 //
 fun<>
+d2ecl$D2Cstatic_work(d2cl: d2ecl): void
+fun<>
+d2ecl$D2Cextern_work(d2cl: d2ecl): void
+//
+fun<>
 d2ecl$D2Clocal0_work(d2cl: d2ecl): void
+//
+fun<>
+d2ecl$D2Csymload_work(d2cl: d2ecl): void
+//
+fun<>
+d2ecl$D2Cinclude_work(d2cl: d2ecl): void
+fun<>
+d2ecl$D2Cstaload_work(d2cl: d2ecl): void
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
