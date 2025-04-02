@@ -59,6 +59,27 @@ optn_irforall(xs: optn(x0)): bool
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:t0>
+optn_foritm(xs: optn(x0)): void
+fun
+<x0:t0>
+optn_rforitm(xs: optn(x0)): void
+fun
+<x0:t0>
+optn_iforitm(xs: optn(x0)): void
+fun
+<x0:t0>
+optn_irforitm(xs: optn(x0)): void
+//
+#symload foritm with optn_foritm of 1000
+#symload rforitm with optn_rforitm of 1000
+#symload iforitm with optn_iforitm of 1000
+#symload irforitm with optn_irforitm of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
