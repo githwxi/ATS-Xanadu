@@ -14,6 +14,11 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../../../SATS/dynexp2.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/xsyntmp.sats"
 //
 (* ****** ****** *)
@@ -51,10 +56,12 @@ d2e0.node() of
 (
   d2exp$D2Elet0_work(d2e0))
 //
+(*
 | _(*otherwise*) =>
 (
   printsln
   ("d2exp$top_work: d2e0 = ", d2e0))
+*)
 //
 )(*case+*)//end-of-[d2exp$top_work(d2e0)]
 //
