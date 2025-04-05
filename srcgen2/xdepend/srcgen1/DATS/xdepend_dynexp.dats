@@ -52,10 +52,48 @@ Authoremail: gmhwxiATgmailDOTcom
 _(*XDEPEND*) = "./xdepend.dats"
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
-xd2penv_d2exp(env0, dexp) = ()
-
+xd2penv_d2exp(env0, dexp) =
+(
+case+
+dexp.node() of
+//
+| D2Elet0 _ =>
+  f0_let0(env0, dexp)
+//
+| _(*otherwise*) => ( (*void*) )
+//
+) where
+{
+(*
+val () = printsln
+("xd2penv_d2exp: dexp = ", dexp)
+*)
+//
+fun
+f0_let0
+( env0:
+! xd2penv
+, dexp: d2exp): void =
+let
+//
+val-
+D2Elet0
+(dcls, d2e1) = dexp.node()
+//
+in//let
+//
+(
+  xd2penv_d2exp(env0, d2e1)
+) where
+{ val () =
+  xd2penv_d2eclist(env0, dcls) }
+//
+end//let
+//
+}(*where*)//end-of-[xd2penv_d2exp(...)]
+//
 (* ****** ****** *)
 
 #implfun
