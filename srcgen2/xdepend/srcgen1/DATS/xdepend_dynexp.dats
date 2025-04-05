@@ -38,29 +38,18 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
+//
+#staload
+"./../SATS/xdepend.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #include
-"./../HATS/xatsopt_sats.hats"
-(*
-#include
-"./../HATS/xatsopt_dats.hats"
-*)
-#include
-"./../HATS/xatsopt_dpre.hats"
-//
+"./../HATS/libxatsopt.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
 _(*XDEPEND*) = "./xdepend.dats"
-(* ****** ****** *)
-#staload "./../SATS/dynexp2.sats"
-(* ****** ****** *)
-#staload "./../SATS/xdepend.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 
