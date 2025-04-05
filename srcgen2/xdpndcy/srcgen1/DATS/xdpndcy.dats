@@ -40,7 +40,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
-"./../SATS/xdepend.sats"
+"./../SATS/xdpndcy.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -50,7 +50,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #implfun
-xdepend_d2parsed
+xdpndcy_d2parsed
   (  dpar  ) = let
 //
 (*
@@ -79,7 +79,7 @@ in//let
   val (  ) =
   xd2penv_d2eclistopt(env0, parsed) }
 //
-end (*let*) // end of [xdepend_d2parsed(dpar)]
+end (*let*) // end of [xdpndcy_d2parsed(dpar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -118,4 +118,4 @@ case+ xs of
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_DATS_xdepend.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xdpndcy_srcgen1_xdpndcy.dats] *)

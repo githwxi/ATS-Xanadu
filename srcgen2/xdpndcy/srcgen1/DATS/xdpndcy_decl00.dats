@@ -27,24 +27,20 @@
 
 (* ****** ****** *)
 (* ****** ****** *)
-(*
-HX-2024-07-05:
-For gathering dependency info!
-HX-2024-07-06:
-This also serves as a precursor to
-a future implementation of certain
-generic tree processing combinators.
-*)
-(* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Fri 05 Jul 2024 09:18:43 PM EDT
+Sat 06 Jul 2024 10:45:01 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"./../SATS/xdpndcy.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -52,83 +48,115 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../HATS/libxatsopt.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#absvtbx xd2penv_vtbx
-#vwtpdef xd2penv = xd2penv_vtbx
-//
+#staload
+_(*XDPNDCY*) = "./xdpndcy.dats"
+(* ****** ****** *)
+(* ****** ****** *)
+#symload lctn with d2ecl_get_lctn
+#symload node with d2ecl_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-xd2penv_make_nil
-  ( (*void*) ): xd2penv
-fun
-xd2penv_free_top
-  (env0: ~xd2penv): d2eclist
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-list_xd2penv_fnp
-( e1:
-! xd2penv
-, xs: list(x0)
-, (!xd2penv, x0) -> void): void
-fun
-<x0:t0>
-<y0:t0>
-optn_xd2penv_fnp
-( e1:
-! xd2penv
-, xs: optn(x0)
-, (!xd2penv, x0) -> void): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-xd2penv_d2exp
-( env0:
-! xd2penv, d2e0: d2exp): void
-//
-fun
+#implfun
 xd2penv_d2ecl
+( env0,d2cl ) =
+(
+case+
+d2cl.node() of
+|
+D2Clocal0 _ =>
+f0_local0(env0, d2cl)
+//
+|D2Cinclude _ =>
+f0_include(env0, d2cl)
+|D2Cstaload _ =>
+f0_staload(env0, d2cl)
+//
+| _(*otherwise*) => ( (*void*) )
+//
+) where
+{
+//
+fun
+f0_local0
 ( env0:
-! xd2penv, d2cl: d2ecl): void
+! xd2penv
+, d2cl: d2ecl): void =
+let
+//
+val-
+D2Clocal0
+(head, body) = d2cl.node()
+//
+val () =
+xd2penv_d2eclist(env0, head)
+val () =
+xd2penv_d2eclist(env0, body)
+//
+end//let//end-of-[f0_local0(env0,d2cl)]
 //
 (* ****** ****** *)
 //
 fun
-xd2penv_d2explst
+f0_include
 ( env0:
-! xd2penv, d2es: d2explst): void
+! xd2penv
+, d2cl: d2ecl): void =
+let
 //
-(* ****** ****** *)
+val-
+D2Cinclude _ = d2cl.node()
+//
+val () =
+prerrsln
+("f0_include(dp): d2cl = ", d2cl)
+//
+end//let//end-of-[f0_include(env0,d2cl)]
 //
 fun
-xd2penv_d2eclist
+f0_staload
 ( env0:
-! xd2penv, dcls: d2eclist): void
+! xd2penv
+, d2cl: d2ecl): void =
+let
+//
+val-
+D2Cstaload _ = d2cl.node()
+//
+val () =
+prerrsln
+("f0_staload(dp): d2cl = ", d2cl)
+//
+end//let//end-of-[f0_staload(env0,d2cl)]
 //
 (* ****** ****** *)
 //
-fun
-xd2penv_d2eclistopt
-( env0:
-! xd2penv, dopt: optn(d2eclist)): void
+(*
+val () =
+(
+  prerrsln("xd2penv_d2ecl: d2cl = ", d2cl))
+*)
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
-fun
-xdepend_d2parsed(dpar: d2parsed): d2eclist
+}(*where*)//end-of-[xd2penv_d2ecl(env0,d2cl)]
 //
 (* ****** ****** *)
+//
+#implfun
+xd2penv_d2eclist(env0, dcls) =
+(
+  list_xd2penv_fnp(env0, dcls, xd2penv_d2ecl))
+//
 (* ****** ****** *)
 //
-(* ****************************************** *)
-(* ****************************************** *)
+#implfun
+xd2penv_d2eclistopt(env0, dopt) =
+(
+case+ dopt of
+| optn_nil((*0*)) => ( (*void*) )
+| optn_cons(dcls) => xd2penv_d2eclist(env0, dcls))
+//
+(* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_SATS_xdepend.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xdpndcy_srcgen1_xdpndcy_decl00.dats] *)

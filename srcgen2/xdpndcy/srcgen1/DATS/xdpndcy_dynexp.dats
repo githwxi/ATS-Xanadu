@@ -40,7 +40,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
-"./../SATS/xdepend.sats"
+"./../SATS/xdpndcy.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -49,7 +49,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-_(*XDEPEND*) = "./xdepend.dats"
+_(*XDPNDCY*) = "./xdpndcy.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -103,4 +103,4 @@ list_xd2penv_fnp(env0, d2es, xd2penv_d2exp)
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_DATS_xdepend_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xdpndcy_srcgen1_xdpndcy_dynexp.dats] *)

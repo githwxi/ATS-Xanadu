@@ -27,20 +27,24 @@
 
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2024-07-05:
+For gathering dependency info!
+HX-2024-07-06:
+This also serves as a precursor to
+a future implementation of certain
+generic tree processing combinators.
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Sat 06 Jul 2024 07:34:54 PM EDT
+Fri 05 Jul 2024 09:18:43 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload
-"./../SATS/xdepend.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -48,42 +52,83 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../HATS/libxatsopt.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-_(*XDEPEND*) = "./xdepend.dats"
-(* ****** ****** *)
-(* ****** ****** *)
 //
-local
-//
-datavwtp
-xd2penv =
-XD2PENV of (d2eclist)
-//
-#absimpl xd2penv_vtbx = xd2penv
+#absvtbx xd2penv_vtbx
+#vwtpdef xd2penv = xd2penv_vtbx
 //
 (* ****** ****** *)
-in//local
 (* ****** ****** *)
 //
-#implfun
+fun
 xd2penv_make_nil
-  ( (*void*) ) =
-(
-  XD2PENV(list_nil(*void*)))
-//
-(* ****** ****** *)
-//
-#implfun
+  ( (*void*) ): xd2penv
+fun
 xd2penv_free_top
-  (   env0   ) =
-let
-val~XD2PENV(dcls) = env0 in dcls end//let
-//
-(* ****** ****** *)
-//
-endloc (*local*) // end of [ local(xd2penv...) ]
+  (env0: ~xd2penv): d2eclist
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+list_xd2penv_fnp
+( e1:
+! xd2penv
+, xs: list(x0)
+, (!xd2penv, x0) -> void): void
+fun
+<x0:t0>
+<y0:t0>
+optn_xd2penv_fnp
+( e1:
+! xd2penv
+, xs: optn(x0)
+, (!xd2penv, x0) -> void): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xd2penv_d2exp
+( env0:
+! xd2penv, d2e0: d2exp): void
+//
+fun
+xd2penv_d2ecl
+( env0:
+! xd2penv, d2cl: d2ecl): void
+//
+(* ****** ****** *)
+//
+fun
+xd2penv_d2explst
+( env0:
+! xd2penv, d2es: d2explst): void
+//
+(* ****** ****** *)
+//
+fun
+xd2penv_d2eclist
+( env0:
+! xd2penv, dcls: d2eclist): void
+//
+(* ****** ****** *)
+//
+fun
+xd2penv_d2eclistopt
+( env0:
+! xd2penv, dopt: optn(d2eclist)): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xdpndcy_d2parsed(dpar: d2parsed): d2eclist
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****************************************** *)
+(* ****************************************** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_DATS_xdepend_myenv0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xdpndcy_srcgen1_xdpndcy.sats] *)
