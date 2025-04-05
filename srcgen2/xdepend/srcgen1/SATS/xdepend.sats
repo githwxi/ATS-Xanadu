@@ -49,31 +49,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-(* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
+"./../HATS/libxatsopt.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #absvtbx xd2penv_vtbx
 #vwtpdef xd2penv = xd2penv_vtbx
-//
-(* ****** ****** *)
-//
-#staload D2E = "./dynexp2.sats"
-//
-(* ****** ****** *)
-//
-#typedef d2exp = $D2E.d2exp
-#typedef d2ecl = $D2E.d2ecl
-//
-#typedef d2explst = $D2E.d2explst
-#typedef d2eclist = $D2E.d2eclist
-//
-#typedef d2parsed = $D2E.d2parsed
 //
 (* ****** ****** *)
 (* ****** ****** *)
