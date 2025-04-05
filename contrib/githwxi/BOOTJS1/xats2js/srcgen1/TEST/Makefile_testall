@@ -208,31 +208,9 @@ $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) $< > $@
 #
 ########################################################################
 ########################################################################
-S1XSHRD=$(SRCGEN1)/xats2js/srcgenx/xshared/runtime
-S2XSHRD=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
-########################################################################
-########################################################################
-# HX-2025-03-29:
+# HX-2025-04-04:
 # bootstrapped verison
-XATS2JS_JSEMIT00=./../UTIL/xats2js_jsemit00_dats_out.js
-########################################################################
-########################################################################
-#
-xats2js_jsemit00_dats: ; \
-$(CAT) \
-$(S2XSHRD)/xats2js_js1emit.js > $@_out.js && \
-$(CAT) \
-$(S1XSHRD)/xats2js_prelude.js >> $@_out.js && \
-$(CAT) \
-$(S1XSHRD)/xats2js_prelude_node.js >> $@_out.js && \
-$(CAT) \
-$(S1XSHRD)/xats2js_xatslib_node.js >> $@_out.js && \
-$(CAT) OUTS/libxatsopt_libxats2js.js >> $@_out.js && \
-$(NODE) \
---stack-size=8192 \
-$(XATS2JS_JSEMIT00) \
-$(SRCGEN2)/xats2js/srcgen1/UTIL/xats2js_jsemit00.dats >> $@_out.js
-#
+XATS2JS_JSEMIT00=./xats2js_jsemit00_dats_out.js
 ########################################################################
 ########################################################################
 libxatsopt_libxats2js: \
