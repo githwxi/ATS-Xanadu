@@ -218,6 +218,10 @@ XATS2JS_JSEMIT00=./../UTIL/xats2js_jsemit00_dats_out.js
 ########################################################################
 ########################################################################
 #
+# HX-2025-04-05:
+# The [S1XSHRD] is used here as
+# the code in [srcgen1/prelude] requires it.
+#
 xats2js_jsemit00_dats: ; \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js > $@_out.js && \
