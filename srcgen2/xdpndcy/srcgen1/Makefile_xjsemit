@@ -23,15 +23,15 @@ cleanall:: ; rm -f BUILD/*_dats_out.js
 ########################################################################
 
 SRCSATS := \
-xdepend.sats \
+xdpndcy.sats \
 
 ########################################################################
 
 SRCDATS := \
-xdepend.dats \
-xdepend_myenv0.dats \
-xdepend_dynexp.dats \
-xdepend_decl00.dats \
+xdpndcy.dats \
+xdpndcy_myenv0.dats \
+xdpndcy_dynexp.dats \
+xdpndcy_decl00.dats \
 
 ########################################################################
 ########################################################################

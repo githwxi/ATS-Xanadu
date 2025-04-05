@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 06 Jul 2024 10:45:01 AM EDT
+Sat 06 Jul 2024 07:34:54 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -40,7 +40,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
-"./../SATS/xdepend.sats"
+"./../SATS/xdpndcy.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -49,114 +49,41 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-_(*XDEPEND*) = "./xdepend.dats"
+_(*XDPNDCY*) = "./xdpndcy.dats"
 (* ****** ****** *)
 (* ****** ****** *)
-#symload lctn with d2ecl_get_lctn
-#symload node with d2ecl_get_node
+//
+local
+//
+datavwtp
+xd2penv =
+XD2PENV of (d2eclist)
+//
+#absimpl xd2penv_vtbx = xd2penv
+//
 (* ****** ****** *)
+in//local
 (* ****** ****** *)
 //
 #implfun
-xd2penv_d2ecl
-( env0,d2cl ) =
+xd2penv_make_nil
+  ( (*void*) ) =
 (
-case+
-d2cl.node() of
-|
-D2Clocal0 _ =>
-f0_local0(env0, d2cl)
-//
-|D2Cinclude _ =>
-f0_include(env0, d2cl)
-|D2Cstaload _ =>
-f0_staload(env0, d2cl)
-//
-| _(*otherwise*) => ( (*void*) )
-//
-) where
-{
-//
-fun
-f0_local0
-( env0:
-! xd2penv
-, d2cl: d2ecl): void =
-let
-//
-val-
-D2Clocal0
-(head, body) = d2cl.node()
-//
-val () =
-xd2penv_d2eclist(env0, head)
-val () =
-xd2penv_d2eclist(env0, body)
-//
-end//let//end-of-[f0_local0(env0,d2cl)]
-//
-(* ****** ****** *)
-//
-fun
-f0_include
-( env0:
-! xd2penv
-, d2cl: d2ecl): void =
-let
-//
-val-
-D2Cinclude _ = d2cl.node()
-//
-val () =
-prerrsln
-("f0_include(dp): d2cl = ", d2cl)
-//
-end//let//end-of-[f0_include(env0,d2cl)]
-//
-fun
-f0_staload
-( env0:
-! xd2penv
-, d2cl: d2ecl): void =
-let
-//
-val-
-D2Cstaload _ = d2cl.node()
-//
-val () =
-prerrsln
-("f0_staload(dp): d2cl = ", d2cl)
-//
-end//let//end-of-[f0_staload(env0,d2cl)]
-//
-(* ****** ****** *)
-//
-(*
-val () =
-(
-  prerrsln("xd2penv_d2ecl: d2cl = ", d2cl))
-*)
-//
-(* ****** ****** *)
-//
-}(*where*)//end-of-[xd2penv_d2ecl(env0,d2cl)]
+  XD2PENV(list_nil(*void*)))
 //
 (* ****** ****** *)
 //
 #implfun
-xd2penv_d2eclist(env0, dcls) =
-(
-  list_xd2penv_fnp(env0, dcls, xd2penv_d2ecl))
+xd2penv_free_top
+  (   env0   ) =
+let
+val~XD2PENV(dcls) = env0 in dcls end//let
 //
 (* ****** ****** *)
 //
-#implfun
-xd2penv_d2eclistopt(env0, dopt) =
-(
-case+ dopt of
-| optn_nil((*0*)) => ( (*void*) )
-| optn_cons(dcls) => xd2penv_d2eclist(env0, dcls))
+endloc (*local*) // end of [ local(xd2penv...) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_DATS_xdepend_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xdpndcy_srcgen1_xdpndcy_myenv0.dats] *)
