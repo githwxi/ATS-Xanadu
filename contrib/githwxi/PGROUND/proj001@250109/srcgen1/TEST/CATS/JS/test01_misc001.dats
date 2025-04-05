@@ -11,16 +11,13 @@ Fri Jan 10 10:58:08 PM EST 2025
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
+"prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
+"prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
+"prelude/HATS/prelude_NODE_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
