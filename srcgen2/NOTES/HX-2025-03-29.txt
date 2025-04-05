@@ -1,12 +1,14 @@
 ##################################################################
 (*
 Sat Mar 29 09:42:28 PM EDT 2025
+Sat Apr 05 02:09:52 PM EDT 2025
 *)
 ##################################################################
 
 Hi, there,
 
-HX-2025-06-29:
+HX-2025-03-29:
+HX-2025-04-05:
 
 Finally, I have BOOTSTRAPPED ATS3/Xanadu successfully as of
 today. I did feel a bit emotional at the moment when the following
@@ -18,6 +20,14 @@ It was still May of 2008, nearly 17 years ago, when I was
 able to bootstrap ATS for the first time; it was ATS1/Anairiats,
 and the assistant compiler for this bootstrapping was ATS1/Geizella,
 (written in OCaml).
+
+We can use the above compiler to generate the following one:
+
+ATS-Xanadu/contrib/githwxi/BOOTJS1/xats2js/srcgen1/TEST/xats2js_jsemit00_dats_out.js
+
+which can in turn generate itself. Hence, bootstrapping for ATS3 has been accomplished.
+
+Cheers!
   
 ##################################################################
 
