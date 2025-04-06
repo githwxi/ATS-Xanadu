@@ -44,6 +44,7 @@ xdpndcy.sats \
 
 SRCDATS := \
 xdpndcy.dats \
+xdpndcy_tmplib.dats \
 xdpndcy_myenv0.dats \
 xdpndcy_dynexp.dats \
 xdpndcy_decl00.dats \
