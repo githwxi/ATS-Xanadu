@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 06 Jul 2024 10:45:01 AM EDT
+Sun Apr  6 03:06:28 PM EDT 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -47,12 +47,12 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../HATS/libxatsopt.hats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #include
-"./../HATS/mytmplib00.hats"
-(* ****** ****** *)
-(* ****** ****** *)
-#staload
-_(*XDPNDCY*) = "./xdpndcy.dats"
+"xatslib\
+/libcats/HATS/libcats_dats.hats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with d2ecl_get_lctn
@@ -60,106 +60,75 @@ _(*XDPNDCY*) = "./xdpndcy.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
+fun
+g1exp_fprint
+(gexp: g1exp, out0: FILR): void
+#extern
+fun
+d2ecl_fprint
+(d2cl: d2ecl, out0: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#impltmp
+g_fprint<g1exp> = g1exp_fprint(*0*)
+#impltmp
+g_fprint<d2ecl> = d2ecl_fprint(*0*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
-xd2penv_d2ecl
-( env0,d2cl ) =
+g1exp_fprint
+(gexp, out0) =
+(
+case+
+gexp.node() of
+//
+| G1Estr(tokn) =>
+(
+case+
+tokn.node() of
+|
+T_STRN1_clsd
+(str1, len2) =>
+(
+  strn_fprint(str1, out0))
+|
+T_STRN2_ncls
+(str1, len2) =>
+(
+  strn_fprint(str1, out0))
+| _(*otherwise*) => ((*void*))
+)
+//
+| _(*otherwise*) => (   (*void*)   )
+//
+)(* end-of-[g1exp_fprint(gexp,out0)] *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d2ecl_fprint
+(d2cl, out0) =
 (
 case+
 d2cl.node() of
-|
-D2Clocal0 _ =>
-f0_local0(env0, d2cl)
 //
-|D2Cinclude _ =>
-f0_include(env0, d2cl)
-|D2Cstaload _ =>
-f0_staload(env0, d2cl)
-//
-| _(*otherwise*) => ( (*void*) )
-//
-) where
-{
-//
-fun
-f0_local0
-( env0:
-! xd2penv
-, d2cl: d2ecl): void =
-let
-//
-val-
-D2Clocal0
-(head, body) = d2cl.node()
-//
-val () =
-xd2penv_d2eclist(env0, head)
-val () =
-xd2penv_d2eclist(env0, body)
-//
-end//let//end-of-[f0_local0(env0,d2cl)]
-//
-(* ****** ****** *)
-//
-fun
-f0_include
-( env0:
-! xd2penv
-, d2cl: d2ecl): void =
-let
-//
-val-
-D2Cinclude _ = d2cl.node()
-//
-val () =
-prerrsln
-("f0_include(dp): d2cl = ", d2cl)
-//
-end//let//end-of-[f0_include(env0,d2cl)]
-//
-fun
-f0_staload
-( env0:
-! xd2penv
-, d2cl: d2ecl): void =
-let
-//
-val-
-D2Cstaload _ = d2cl.node()
-//
-val () =
-prerrsln
-("f0_staload(dp): d2cl = ", d2cl)
-//
-end//let//end-of-[f0_staload(env0,d2cl)]
-//
-(* ****** ****** *)
-//
-(*
-val () =
-( prerrsln
-  ("xd2penv_d2ecl: d2cl = ", d2cl))
-*)
-//
-(* ****** ****** *)
-//
-}(*where*)//end-of-[xd2penv_d2ecl(env0,d2cl)]
-//
-(* ****** ****** *)
-//
-#implfun
-xd2penv_d2eclist(env0, dcls) =
+| D2Cstaload
+( stdy, tokn
+, gsrc, fopt, sopt) =>
 (
-  list_xd2penv_fnp(env0, dcls, xd2penv_d2ecl))
+  g1exp_fprint(gsrc, out0))
+//
+| _(*otherwise*) => (   (*void*)   )
+)
 //
 (* ****** ****** *)
-//
-#implfun
-xd2penv_d2eclistopt(env0, dopt) =
-(
-case+ dopt of
-| optn_nil((*0*)) => ( (*void*) )
-| optn_cons(dcls) => xd2penv_d2eclist(env0, dcls))
-//
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xdpndcy_srcgen1_xdpndcy_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xdpndcy_srcgen1_xdpndcy_tmplib.dats] *)

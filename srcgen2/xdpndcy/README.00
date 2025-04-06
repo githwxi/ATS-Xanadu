@@ -1,0 +1,7 @@
+############################################################
+############################################################
+This project attempts to implement a tool for outputing
+file dependency for a given SATS or DATS file. This can be
+used to generate dependency list for Makefile.
+############################################################
+############################################################

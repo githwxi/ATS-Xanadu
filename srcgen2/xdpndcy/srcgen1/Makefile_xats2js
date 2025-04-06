@@ -1,0 +1,69 @@
+########################################################################
+########################################################################
+#
+# For compiling with xats2js
+# Sun Apr  6 01:35:09 PM EDT 2025
+#
+########################################################################
+########################################################################
+AR=ar
+CP=cp
+MV=mv
+CC=gcc
+SED=sed
+CPF=cp -f
+MVF=mv -f
+RMF=rm -f
+WCL=wc -l
+########################################################################
+CAT=cat
+CPF=cp -f
+ECHO=echo
+NODE=node --stack-size=4096
+########################################################################
+XSHARED="${XATSJSD}/xshared"
+XATS2JS="${XATSJSD}/bin/xats2js"
+XATSJSD="./../../../srcgen1/xats2js/srcgen1"
+########################################################################
+# XATS2JS=\
+# nix run github:GZGavinZhao/ATS-Xanadu/nixify\#xats2js \
+# --extra-experimental-features flakes --extra-experimental-features nix-command --
+########################################################################
+XATS2JS_PRELUDE=\
+"$(XSHARED)/runtime/xats2js_prelude.js"
+XATS2JS_PRELUDE_NODE=\
+"$(XSHARED)/runtime/xats2js_prelude_node.js"
+XATS2JS_XATSLIB_NODE=\
+"$(XSHARED)/runtime/xats2js_xatslib_node.js"
+########################################################################
+
+SRCSATS := \
+xdpndcy.sats \
+
+########################################################################
+
+SRCDATS := \
+xdpndcy.dats \
+xdpndcy_myenv0.dats \
+xdpndcy_dynexp.dats \
+xdpndcy_decl00.dats \
+
+########################################################################
+OBJSATS := \
+$(patsubst %.sats, BUILD/JS/%_sats.js, $(SRCSATS))
+OBJDATS := \
+$(patsubst %.dats, BUILD/JS/%_dats.js, $(SRCDATS))
+########################################################################
+all:: $(OBJDATS)
+########################################################################
+libxdpndcy:: $(OBJDATS); \
+$(CAT) $(OBJDATS) > lib/libxdpndcy.js
+########################################################################
+BUILD/JS/%_dats.js: \
+DATS/%.dats; $(XATS2JS) --output-w $@ --dynamic $<
+########################################################################
+cleanall:: ; rm -f BUILD/JS/*_dats.js
+########################################################################
+########################################################################
+
+#################### end of [Makefile_xats2js] ##########################
