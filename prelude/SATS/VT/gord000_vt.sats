@@ -38,6 +38,44 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<a:vt>
+g_lt00(~a, ~a): bool
+fun
+<a:vt>
+g_lt11(!a, !a): bool
+//
+fun
+<a:vt>
+g_gt00(~a, ~a): bool
+fun
+<a:vt>
+g_gt11(!a, !a): bool
+//
+fun
+<a:vt>
+g_lte00(~a, ~a): bool
+fun
+<a:vt>
+g_lte11(!a, !a): bool
+//
+fun
+<a:vt>
+g_gte00(~a, ~a): bool
+fun
+<a:vt>
+g_gte11(!a, !a): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+g_cmp00(~a, ~a): sint
+fun
+<a:vt>
+g_cmp11(!a, !a): sint
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
