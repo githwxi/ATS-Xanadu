@@ -38,6 +38,53 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{a:t0}
+g_lt00<a> = g_lt<a>
+#impltmp
+{a:t0}
+g_lt11<a> = g_lt<a>
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+g_gt00<a> = g_gt<a>
+#impltmp
+{a:t0}
+g_gt11<a> = g_gt<a>
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+g_lte00<a> = g_lte<a>
+#impltmp
+{a:t0}
+g_lte11<a> = g_lte<a>
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+g_gte00<a> = g_gte<a>
+#impltmp
+{a:t0}
+g_gte11<a> = g_gte<a>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+g_cmp00<a> = g_cmp<a>
+#impltmp
+{a:t0}
+g_cmp11<a> = g_cmp<a>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
