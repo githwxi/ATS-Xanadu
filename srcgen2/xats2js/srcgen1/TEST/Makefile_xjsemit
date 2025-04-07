@@ -19,6 +19,7 @@ all:: test05
 all:: test06
 all:: test07
 all:: test08
+all:: test09
 ########################################################################
 ########################################################################
 testall:: test00; $(NODE) $<_out.js
@@ -29,6 +30,8 @@ testall:: test04; $(NODE) $<_out.js
 testall:: test05; $(NODE) $<_out.js
 testall:: test06; $(NODE) $<_out.js
 testall:: test07; $(NODE) $<_out.js
+testall:: test08; $(NODE) $<_out.js
+testall:: test09; $(NODE) $<_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_SRCGENX=\
@@ -182,6 +185,23 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude_node.js >> $@_out.js
 ############
 test08:: \
 test08_xats2js.dats; \
+$(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+########################################################################
+########################################################################
+test09:: ; \
+echo "//" `date` > $@_out.js
+############
+test09:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
+test09:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
+test09:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
+test09:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude_node.js >> $@_out.js
+############
+test09:: \
+test09_xats2js.dats; \
 $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
 ########################################################################
 ########################################################################
