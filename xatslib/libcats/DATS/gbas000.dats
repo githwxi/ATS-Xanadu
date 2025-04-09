@@ -89,14 +89,16 @@ fprint with strn_fprint of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 < x0:t0 >
 g_print(obj) =
 (
 g_fprint<x0>
 (obj, g_stdout<>((*void*))))
+*)
 #impltmp
-< a: t0 >
+< x0:t0 >
 g_prerr(obj) =
 (
 g_fprint<x0>
