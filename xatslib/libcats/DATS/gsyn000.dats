@@ -434,81 +434,81 @@ end//let//end-of-[gs_prerr_a8(...)]
 <(*tmp*)>
 gs_prerrln_a0
  ((*0*) ) =
-(gs_prerr_a0<>((*0*)); strn_prerr("\n"))
+(gs_prerr_a0<>((*0*)); g_prerr("\n"))
 #impltmp
 < x0:t0 >
 gs_prerrln_a1
  (  x0  ) =
-(gs_prerr_a1<x0>( x0 ); strn_prerr("\n"))
+(gs_prerr_a1<x0>( x0 ); g_prerr("\n"))
 #impltmp
 < x0:t0 >
-< x1:t1 >
+< x1:t0 >
 gs_prerrln_a2
  (x0, x1) =
-(gs_prerr_a2<x0,x1>(x0,x1); strn_prerr("\n"))
+(gs_prerr_a2<x0><x1>(x0,x1); g_prerr("\n"))
 #impltmp
 < x0:t0 >
-< x1:t1 >
-< x2:t2 >
+< x1:t0 >
+< x2:t0 >
 gs_prerrln_a3
 ( x0
 , x1, x2) =
-(gs_prerr_a3<x0,x1,x2>(x0,x1,x2); strn_prerr("\n"))
+(gs_prerr_a3<x0><x1><x2>(x0,x1,x2); g_prerr("\n"))
 #impltmp
 < x0:t0 >
-< x1:t1 >
-< x2:t2 >
-< x3:t3 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
 gs_prerrln_a4
 ( x0, x1
 , x2, x3) =
-(gs_prerr_a4<x0,x1,x2,x3>(x0,x1,x2,x3); strn_prerr("\n"))
+(gs_prerr_a4<x0><x1><x2><x3>(x0,x1,x2,x3); g_prerr("\n"))
 #impltmp
 < x0:t0 >
-< x1:t1 >
-< x2:t2 >
-< x3:t3 >
-< x4:t4 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
 gs_prerrln_a5
 ( x0, x1
 , x2, x3, x4) =
-(gs_prerr_a5<x0,x1,x2,x3,x4>(x0,x1,x2,x3,x4); strn_prerr("\n"))
+(gs_prerr_a5<x0><x1><x2><x3><x4>(x0,x1,x2,x3,x4); g_prerr("\n"))
 #impltmp
 < x0:t0 >
-< x1:t1 >
-< x2:t2 >
-< x3:t3 >
-< x4:t4 >
-< x5:t5 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
 gs_prerrln_a6
 ( x0, x1, x2
 , x3, x4, x5) =
-(gs_prerr_a6<x0,x1,x2,x3,x4,x5>(x0,x1,x2,x3,x4,x5); strn_prerr("\n"))
+(gs_prerr_a6<x0><x1><x2><x3><x4><x5>(x0,x1,x2,x3,x4,x5); g_prerr("\n"))
 #impltmp
 < x0:t0 >
-< x1:t1 >
-< x2:t2 >
-< x3:t3 >
-< x4:t4 >
-< x5:t5 >
-< x6:t6 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
 gs_prerrln_a7
 ( x0, x1, x2
 , x3, x4, x5, x6) =
-(gs_prerr_a7<x0,x1,x2,x3,x4,x5,x6>(x0,x1,x2,x3,x4,x5,x6); strn_prerr("\n"))
+(gs_prerr_a7<x0><x1><x2><x3><x4><x5><x6>(x0,x1,x2,x3,x4,x5,x6); g_prerr("\n"))
 #impltmp
 < x0:t0 >
-< x1:t1 >
-< x2:t2 >
-< x3:t3 >
-< x4:t4 >
-< x5:t5 >
-< x6:t6 >
-< x7:t7 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
 gs_prerrln_a8
 ( x0, x1, x2, x3
 , x4, x5, x6, x7) =
-(gs_prerr_a8<x0,x1,x2,x3,x4,x5,x6,x7>(x0,x1,x2,x3,x4,x5,x6,x7); strn_prerr("\n"))
+(gs_prerr_a8<x0><x1><x2><x3><x4><x5><x6><x7>(x0,x1,x2,x3,x4,x5,x6,x7); g_prerr("\n"))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -49,14 +49,23 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include
-"xatslib\
-/libcats/HATS/libcats_dats.hats"
+#symload
+  node with token_get_node
+#symload
+  node with g1exp_get_node
+#symload
+  node with d2ecl_get_node
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#symload lctn with d2ecl_get_lctn
-#symload node with d2ecl_get_node
+//
+#include
+"xatslib\
+/libcats/HATS/libcats_dats.hats"
+#include
+"xatslib\
+/libcats/HATS/libcats_NODE_dats.hats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -70,6 +79,15 @@ d2ecl_fprint
 (d2cl: d2ecl, out0: FILR): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#impltmp
+g_print
+<d2ecl>(d2cl) =
+d2ecl_fprint(d2cl, g_stdout())
+#impltmp
+g_prerr
+<d2ecl>(d2cl) =
+d2ecl_fprint(d2cl, g_stderr())
 (* ****** ****** *)
 #impltmp
 g_fprint<g1exp> = g1exp_fprint(*0*)

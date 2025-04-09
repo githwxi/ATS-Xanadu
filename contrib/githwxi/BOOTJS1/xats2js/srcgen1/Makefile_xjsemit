@@ -22,7 +22,7 @@ cleanall:: ; rm -f BUILD/*_dats_out.js
 SRCGEN2=./../../../../../srcgen2
 XATS2JS=./../../../../../srcgen2/xats2js
 ########################################################################
-
+#
 SRCSATS := \
 intrep0.sats \
 intrep1.sats \
@@ -30,9 +30,9 @@ trxd3i0.sats \
 trxi0i1.sats \
 xats2js.sats \
 js1emit.sats \
-
+#
 ########################################################################
-
+#
 SRCDATS := \
 intrep0.dats \
 intrep0_print0.dats \
@@ -57,7 +57,7 @@ js1emit.dats \
 js1emit_utils0.dats \
 js1emit_dynexp.dats \
 js1emit_decl00.dats \
-
+#
 ########################################################################
 ########################################################################
 OBJSATS := \
@@ -72,12 +72,6 @@ boot_sats:: $(OBJSATS)
 boot:: boot_dats
 boot_dats:: $(OBJDATS)
 ########################################################################
-libxats2js: \
-$(OBJDATS); \
-$(MAKE) -C BUILD \
--f ./../Makefile_xrename && \
-$(CAT) $(OBJDATS) > lib/libxats2js.js
-########################################################################
 ########################################################################
 BUILD/%_sats_out.js: \
 $(XATS2JS)/srcgen1/SATS/%.sats; \
@@ -91,5 +85,9 @@ SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
 XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_dats.js
 XATS2JS_JSEMIT00=$(XATS2JS)/srcgen1/UTIL/xats2js_jsemit00_dats.js
+########################################################################
+########################################################################
+libxats2js: $(OBJDATS); \
+$(MAKE) -f Makefile_xrename && $(CAT) $(OBJDATS) > lib/libxats2js.js
 ########################################################################
 ########################################################################

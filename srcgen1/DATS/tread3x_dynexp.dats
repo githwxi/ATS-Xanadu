@@ -841,7 +841,14 @@ val () = tread3x_d3eclist(body)
     )
   }
 //
-| D3Cstaload _ => ()
+| D3Cstaload _ => (    (*void*)    )
+//
+| D3Cabstype _ => (    (*void*)    )
+| D3Cabsopen _ => (    (*void*)    )
+| D3Cabsimpl _ => (    (*void*)    )
+//
+| D3Cexcptcon _ => (    (*void*)    )
+| D3Cdatatype _ => (    (*void*)    )
 //
 | D3Cvardclst
   ( knd, mopt, v3ds ) =>

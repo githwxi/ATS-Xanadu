@@ -47,6 +47,19 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../HATS/libxatsopt.hats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"xatslib\
+/libcats\
+/HATS/libcats_dats.hats"
+#include
+"xatslib\
+/libcats\
+/HATS/libcats_NODE_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/mytmplib00.hats"
 (* ****** ****** *)
@@ -112,7 +125,7 @@ D2Cinclude _ = d2cl.node()
 //
 val () =
 prerrsln
-("f0_include(dp): d2cl = ", d2cl)
+("f0_include(xdpndcy): d2cl = ", d2cl)
 //
 end//let//end-of-[f0_include(env0,d2cl)]
 //
@@ -128,7 +141,7 @@ D2Cstaload _ = d2cl.node()
 //
 val () =
 prerrsln
-("f0_staload(dp): d2cl = ", d2cl)
+("f0_staload(xdpndcy): d2cl = ", d2cl)
 //
 end//let//end-of-[f0_staload(env0,d2cl)]
 //

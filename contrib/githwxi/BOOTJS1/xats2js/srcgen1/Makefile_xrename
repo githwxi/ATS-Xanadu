@@ -2,7 +2,19 @@
 ##################################################################
 SED=sed
 ##################################################################
-
+N001="X"
+N002=$(N001) $(N001)
+N004=$(N002) $(N002)
+N008=$(N004) $(N004)
+N016=$(N008) $(N008)
+N032=$(N016) $(N016)
+N064=$(N032) $(N032)
+N128=$(N064) $(N064)
+N256=$(N128) $(N128)
+N512=$(N256) $(N256)
+NFILE=$(N064) $(N032) $(N004) # 100=064+032+004
+##################################################################
+#
 SRCDATS := \
 intrep0.dats \
 intrep0_print0.dats \
@@ -27,41 +39,15 @@ js1emit.dats \
 js1emit_utils0.dats \
 js1emit_dynexp.dats \
 js1emit_decl00.dats \
-
+#
 ##################################################################
-OBJDATS := \
+OBJDATS = \
 $(patsubst %.dats, %_dats, $(SRCDATS))
 ##################################################################
-rename:: $(OBJDATS)
+xrename:: $(OBJDATS)
 ##################################################################
-##################################################################
-intrep0_dats: ; $(SED) -i -e 's/jsxtnm/js1001tnm/g' $@_out.js
-intrep0_print0_dats: ; $(SED) -i -e 's/jsxtnm/js1002tnm/g' $@_out.js
-intrep0_utils0_dats: ; $(SED) -i -e 's/jsxtnm/js1003tnm/g' $@_out.js
-##################################################################
-intrep1_dats: ; $(SED) -i -e 's/jsxtnm/js1004tnm/g' $@_out.js
-intrep1_print0_dats: ; $(SED) -i -e 's/jsxtnm/js1005tnm/g' $@_out.js
-intrep1_utils0_dats: ; $(SED) -i -e 's/jsxtnm/js1006tnm/g' $@_out.js
-##################################################################
-trxd3i0_dats: ; $(SED) -i -e 's/jsxtnm/js1007tnm/g' $@_out.js
-trxd3i0_myenv0_dats: ; $(SED) -i -e 's/jsxtnm/js1008tnm/g' $@_out.js
-trxd3i0_dynexp_dats: ; $(SED) -i -e 's/jsxtnm/js1009tnm/g' $@_out.js
-trxd3i0_decl00_dats: ; $(SED) -i -e 's/jsxtnm/js1010tnm/g' $@_out.js
-##################################################################
-trxi0i1_dats: ; $(SED) -i -e 's/jsxtnm/js1011tnm/g' $@_out.js
-trxi0i1_myenv0_dats: ; $(SED) -i -e 's/jsxtnm/js1012tnm/g' $@_out.js
-trxi0i1_dynexp_dats: ; $(SED) -i -e 's/jsxtnm/js1013tnm/g' $@_out.js
-trxi0i1_decl00_dats: ; $(SED) -i -e 's/jsxtnm/js1014tnm/g' $@_out.js
-##################################################################
-xats2js_dats: ; $(SED) -i -e 's/jsxtnm/js1015tnm/g' $@_out.js
-xats2js_myenv0_dats: ; $(SED) -i -e 's/jsxtnm/js1016tnm/g' $@_out.js
-xats2js_dynexp_dats: ; $(SED) -i -e 's/jsxtnm/js1017tnm/g' $@_out.js
-xats2js_decl00_dats: ; $(SED) -i -e 's/jsxtnm/js1018tnm/g' $@_out.js
-xats2js_tmplib_dats: ; $(SED) -i -e 's/jsxtnm/js1019tnm/g' $@_out.js
-##################################################################
-js1emit_dats: ; $(SED) -i -e 's/jsxtnm/js1020tnm/g' $@_out.js
-js1emit_utils0_dats: ; $(SED) -i -e 's/jsxtnm/js1021tnm/g' $@_out.js
-js1emit_dynexp_dats: ; $(SED) -i -e 's/jsxtnm/js1022tnm/g' $@_out.js
-js1emit_decl00_dats: ; $(SED) -i -e 's/jsxtnm/js1023tnm/g' $@_out.js
+%_dats: ; \
+$(eval NFILE=$(NFILE) X) \
+$(SED) -i -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' BUILD/$@_out.js
 ##################################################################
 ##################################################################

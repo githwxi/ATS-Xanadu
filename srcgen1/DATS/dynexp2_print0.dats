@@ -1003,7 +1003,7 @@ case- x0.node() of
   (knd0, tqas, d2cs) =>
   fprint!
   ( out
-  , "D2Cynconst("
+  , "D2Cdynconst("
   , knd0, "; ", tqas, "; ", d2cs, ")")
 //
 | D2Cfundclst

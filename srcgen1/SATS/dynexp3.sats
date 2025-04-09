@@ -914,8 +914,10 @@ d3ecl_node =
   ( token(*abskind*)
   , impls2cst, s2exp(*definition*) )
 //
-| D3Cexcptcon of (d1ecl(*src*), d2conlst)
-| D3Cdatatype of (d1ecl(*src*), s2cstlst)
+|
+D3Cexcptcon of (d1ecl(*src*), d2conlst)
+|
+D3Cdatatype of (d1ecl(*src*), s2cstlst)
 //
 |
 D3Cfundclst of
