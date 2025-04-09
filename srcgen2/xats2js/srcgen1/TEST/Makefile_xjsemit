@@ -51,6 +51,7 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
 test00:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
 ############
+# HX: stack overflow
 # test00:: \
 # test00_xats2js.dats; \
 # $(BUN) run $(XATS2JS_JSEMIT00) $< >> $@_out.js
