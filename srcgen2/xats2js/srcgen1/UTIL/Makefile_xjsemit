@@ -4,10 +4,9 @@
 ########################################################################
 ########################################################################
 CAT=cat
+SED=sed
 ECHO=echo
 NODE=node
-########################################################################
-BOOTJS1=./..
 ########################################################################
 SRCGEN1=./../../../../srcgen1
 SRCGEN2=./../../../../srcgen2
@@ -19,7 +18,7 @@ S2XSHRD=\
 $(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
 all:: \
-xatsopt_tcheck00_dats
+xats2js_jsemit00_dats
 ########################################################################
 ########################################################################
 #
@@ -29,7 +28,11 @@ xatsopt_tcheck00_dats
 #
 ########################################################################
 #
-xatsopt_tcheck00_dats: ; \
+# HX-2025-04-05:
+# The [S1XSHRD] is used here as
+# the code in [srcgen1/prelude] requires it.
+#
+xats2js_jsemit00_dats: ; \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js > $@_out.js && \
 $(CAT) \
@@ -38,16 +41,18 @@ $(CAT) \
 $(S1XSHRD)/xats2js_prelude_node.js >> $@_out.js && \
 $(CAT) \
 $(S1XSHRD)/xats2js_xatslib_node.js >> $@_out.js && \
-$(CAT) $(BOOTJS1)/lib/libxatsopt.js >> $@_out.js && \
-$(NODE) --stack-size=4096 \
-$(XATS2JS_JSEMIT00) $(SRCGEN2)/UTIL/xatsopt_tcheck00.dats >> $@_out.js
+$(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
+$(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_out.js && \
+$(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
+$(XATS2JS)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_out.js && \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xats2js_jsemit00.dats >> $@_out.js
 #
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; rm -f xatsopt_tcheck00_dats_out.js
+cleanall:: ; rm -f xats2js_jsemit00_dats_out.js
 ########################################################################
 ########################################################################
 XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_dats.js
