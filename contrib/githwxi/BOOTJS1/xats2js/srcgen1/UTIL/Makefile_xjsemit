@@ -19,7 +19,7 @@ $(SRCGEN1)/xats2js/srcgenx/xshared/runtime
 S2XSHRD=\
 $(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
-boot:: \
+all:: \
 xats2js_jsemit00_dats
 ########################################################################
 ########################################################################
@@ -44,9 +44,9 @@ $(S1XSHRD)/xats2js_prelude_node.js >> $@_out.js && \
 $(CAT) \
 $(S1XSHRD)/xats2js_xatslib_node.js >> $@_out.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
-$(BOOTJS1)/lib/libxatsopt.js | $(CAT) - >> $@_out.js && \
+$(BOOTJS1)/lib/lib2xatsopt.js | $(CAT) - >> $@_out.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
-$(BOOTJS1)/xats2js/srcgen1/lib/libxats2js.js | $(CAT) - >> $@_out.js && \
+$(BOOTJS1)/xats2js/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_out.js && \
 $(NODE) --stack-size=4096 \
 $(XATS2JS_JSEMIT00) $(SRCGEN2)/xats2js/srcgen1/UTIL/xats2js_jsemit00.dats >> $@_out.js
 #

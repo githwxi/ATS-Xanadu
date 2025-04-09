@@ -23,13 +23,13 @@ Linux machine was fixed quickly.
 )
 
 ############################################################
-
-HX-2025-03-29:
+//
 (*
 Sat Mar 29 12:50:35 PM EDT 2025
 *)
+HX-2025-03-29:
 Finally, ATS3-Xanadu/srcgen2 has been bootstrapped!!!
-More precised, the following compiler generated from the
+More precisely, the following compiler generated from the
 source ATS3/Xanadu/srcgen2:
 
 ATS-Xanadu/srcgen2/xats2js/srcgen1/UTIL/xats2js_jsemit00_dats.js
@@ -47,8 +47,35 @@ bridging srcgen1 and srcgen2:
 ATS-Xanadu/srcgen1/prelude/INIT/srcgen2_prelude.sats
 
 As the current design is primarily "forced" due to the need for
-bootstrapping, I intend to re-implement the prelude-loading part of
-ATS3 so as to better accommodate programming of general-purpose.
-
+bootstrapping, I intend to re-implement the prelude-loading part
+of ATS3 so as to better accommodate programming for general-purpose.
+//
+############################################################
+//
+(*
+Wed Apr  9 01:11:53 PM EDT 2025
+*)
+HX-2025-04-09:
+There are 3 Makefiles:
+//
+Makefile_xatsopt:
+type-checking with the srcgen1-xatsopt
+//
+Makefile_xats2js:
+compiling to JS with the srcgen1-xats2js;
+the library code generated is lib1xatopt
+(where lib1 refers to srcgen1)
+//
+Makefile_xjsemit:
+compiling to JS with the srcgen2-xjsemit
+the library code generated is lib2xatopt
+(where lib2 refers to srcgen2)
+//
+(
+Makefile_xtcheck:
+This one is not present.
+If added, it does type-checking with srcge2-xtcheck.
+)
+//
 ############################################################
 ############################################################
