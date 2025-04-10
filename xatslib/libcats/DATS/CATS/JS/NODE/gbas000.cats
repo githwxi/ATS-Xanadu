@@ -63,9 +63,9 @@ XATS2JS_NODE_g_fprint
 //
 function
 XATS2JS_NODE_sint_fprint
-  (out, i0)
+  (i0, out)
 {
-  XATS2JS_NODE_g_fprint(out, i0);
+  XATS2JS_NODE_g_fprint(i0, out);
   return; // XATS2JS_NODE_sint_fprint
 }
 //
@@ -73,9 +73,9 @@ XATS2JS_NODE_sint_fprint
 //
 function
 XATS2JS_NODE_bool_fprint
-  (out, b0)
+  (b0, out)
 {
-  XATS2JS_NODE_g_fprint(out, b0);
+  XATS2JS_NODE_g_fprint(b0, out);
   return; // XATS2JS_NODE_bool_fprint
 }
 //
@@ -83,9 +83,9 @@ XATS2JS_NODE_bool_fprint
 //
 function
 XATS2JS_NODE_char_fprint
-  (out, c0)
+  (c0, out)
 {
-  XATS2JS_NODE_g_fprint(out, c0);
+  XATS2JS_NODE_g_fprint(c0, out);
   return; // XATS2JS_NODE_char_fprint
 }
 //

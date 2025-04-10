@@ -38,14 +38,26 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #staload
 "./../SATS/xdpndcy.sats"
-//
-(* ****** ****** *)
 (* ****** ****** *)
 #include
 "./../HATS/libxatsopt.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"xatslib\
+/libcats\
+/HATS/libcats_dats.hats"
+#include
+"xatslib\
+/libcats\
+/HATS/libcats_NODE_dats.hats"
+//
+(* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload

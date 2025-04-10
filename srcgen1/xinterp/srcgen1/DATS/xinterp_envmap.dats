@@ -677,12 +677,12 @@ bool_fprint
 ( x: irval
 , y: irval): irval =
 let
-val-IRVptr(x) = x
-val-IRVbtf(y) = y
+val-IRVbtf(x) = x
+val-IRVptr(y) = y
 in//let
 let
 val () =
-fprint($UN.cast(x), y) in IRVnil() end
+fprint($UN.cast(y), x) in IRVnil() end
 end // end of [bool_fprint]
 
 (* ****** ****** *)
@@ -766,12 +766,12 @@ char_fprint
 ( x: irval
 , y: irval): irval =
 let
-val-IRVptr(x) = x
-val-IRVchr(y) = y
+val-IRVchr(x) = x
+val-IRVptr(y) = y
 in//let
 let
 val () =
-fprint($UN.cast(x), y) in IRVnil() end
+fprint($UN.cast(y), x) in IRVnil() end
 end // end of [char_fprint]
 
 (* ****** ****** *)
@@ -979,24 +979,24 @@ gint_fprint$sint
 ( x: irval
 , y: irval): irval =
 let
-val-IRVptr(x) = x
-val-IRVint(y) = y
+val-IRVint(x) = x
+val-IRVptr(y) = y
 in//let
 let
 val () =
-fprint($UN.cast(x), y) in IRVnil() end
+fprint($UN.cast(y), x) in IRVnil() end
 end // end of [gint_fprint$sint]
 fun
 gint_fprint$uint
 ( x: irval
 , y: irval): irval =
 let
-val-IRVptr(x) = x
-val-IRVuii(y) = y
+val-IRVuii(x) = x
+val-IRVptr(y) = y
 in//let
 let
 val () =
-fprint($UN.cast(x), y) in IRVnil() end
+fprint($UN.cast(y), x) in IRVnil() end
 end // end of [gint_fprint$uint]
 //
 (* ****** ****** *)
@@ -1202,12 +1202,12 @@ strn_fprint
 ( x: irval
 , y: irval): irval =
 let
-val-IRVptr(x) = x
-val-IRVstr(y) = y
+val-IRVstr(x) = x
+val-IRVptr(y) = y
 in//let
 let
 val () =
-fprint($UN.cast(x), y) in IRVnil() end
+fprint($UN.cast(y), x) in IRVnil() end
 end (*let*) // end-of(strn_fprint)
 //
 (* ****** ****** *)

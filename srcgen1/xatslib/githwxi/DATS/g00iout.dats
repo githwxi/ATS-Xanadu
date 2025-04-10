@@ -284,27 +284,27 @@ gflt_print$dflt<> = g_print<dflt>
 //
 #impltmp
 g_print<bool>(x0) =
-bool_fprint<>(g_print$out<>(), x0)
+bool_fprint<>(x0, g_print$out<>())
 #impltmp
 g_print<char>(x0) =
-char_fprint<>(g_print$out<>(), x0)
+char_fprint<>(x0, g_print$out<>())
 #impltmp
 g_print<strn>(x0) =
-strn_fprint<>(g_print$out<>(), x0)
+strn_fprint<>(x0, g_print$out<>())
 //
 #impltmp
 g_print<sint>(x0) =
-gint_fprint$sint<>(g_print$out<>(), x0)
+gint_fprint$sint<>(x0, g_print$out<>())
 #impltmp
 g_print<uint>(x0) =
-gint_fprint$uint<>(g_print$out<>(), x0)
+gint_fprint$uint<>(x0, g_print$out<>())
 //
 #impltmp
 g_print<sflt>(x0) =
-gflt_fprint$sflt<>(g_print$out<>(), x0)
+gflt_fprint$sflt<>(x0, g_print$out<>())
 #impltmp
 g_print<dflt>(x0) =
-gflt_fprint$dflt<>(g_print$out<>(), x0)
+gflt_fprint$dflt<>(x0, g_print$out<>())
 //
 (* ****** ****** *)
 
