@@ -38,10 +38,8 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #staload
 "./../SATS/xdpndcy.sats"
-//
 (* ****** ****** *)
 (* ****** ****** *)
 #include
@@ -58,7 +56,6 @@ Authoremail: gmhwxiATgmailDOTcom
 /libcats\
 /HATS/libcats_NODE_dats.hats"
 //
-(* ****** ****** *)
 (* ****** ****** *)
 #include
 "./../HATS/mytmplib00.hats"

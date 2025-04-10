@@ -101,45 +101,45 @@ XATS2JS_NODE_fs_readFileSync
 #extern
 fun
 XATS2JS_NODE_bool_fprint:
-(FILR, bool) -> void = $extnam()
+(bool, FILR) -> void = $extnam()
 #impltmp
 bool_fprint<> = XATS2JS_NODE_bool_fprint
 #extern
 fun
 XATS2JS_NODE_char_fprint:
-(FILR, char) -> void = $extnam()
+(char, FILR) -> void = $extnam()
 #impltmp
 char_fprint<> = XATS2JS_NODE_char_fprint
 #extern
 fun
 XATS2JS_NODE_strn_fprint:
-(FILR, strn) -> void = $extnam()
+(strn, FILR) -> void = $extnam()
 #impltmp
 strn_fprint<> = XATS2JS_NODE_strn_fprint
 //
 #extern
 fun
 XATS2JS_NODE_gint_fprint$sint:
-(FILR, sint) -> void = $extnam()
+(sint, FILR) -> void = $extnam()
 #impltmp
 gint_fprint$sint<> = XATS2JS_NODE_gint_fprint$sint
 #extern
 fun
 XATS2JS_NODE_gint_fprint$uint:
-(FILR, uint) -> void = $extnam()
+(uint, FILR) -> void = $extnam()
 #impltmp
 gint_fprint$uint<> = XATS2JS_NODE_gint_fprint$uint
 //
 #extern
 fun
 XATS2JS_NODE_gflt_fprint$sflt:
-(FILR, sflt) -> void = $extnam()
+(sflt, FILR) -> void = $extnam()
 #impltmp
 gflt_fprint$sflt<> = XATS2JS_NODE_gflt_fprint$sflt
 #extern
 fun
 XATS2JS_NODE_gflt_fprint$dflt:
-(FILR, dflt) -> void = $extnam()
+(dflt, FILR) -> void = $extnam()
 #impltmp
 gflt_fprint$dflt<> = XATS2JS_NODE_gflt_fprint$dflt
 //

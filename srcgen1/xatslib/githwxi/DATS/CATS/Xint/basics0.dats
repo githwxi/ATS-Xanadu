@@ -39,32 +39,32 @@ g_stderr< > = XINTERP_g_stderr
 #extern
 fun
 XINTERP_bool_fprint:
-(FILR, bool) -> void = $extnam()
+(bool, FILR) -> void = $extnam()
 #impltmp
 bool_fprint<> = XINTERP_bool_fprint
 #extern
 fun
 XINTERP_char_fprint:
-(FILR, char) -> void = $extnam()
+(char, FILR) -> void = $extnam()
 #impltmp
 char_fprint<> = XINTERP_char_fprint
 #extern
 fun
 XINTERP_strn_fprint:
-(FILR, strn) -> void = $extnam()
+(strn, FILR) -> void = $extnam()
 #impltmp
 strn_fprint<> = XINTERP_strn_fprint
 //
 #extern
 fun
 XINTERP_gint_fprint$sint:
-(FILR, sint) -> void = $extnam()
+(sint, FILR) -> void = $extnam()
 #impltmp
 gint_fprint$sint<> = XINTERP_gint_fprint$sint
 #extern
 fun
 XINTERP_gint_fprint$uint:
-(FILR, uint) -> void = $extnam()
+(uint, FILR) -> void = $extnam()
 #impltmp
 gint_fprint$uint<> = XINTERP_gint_fprint$uint
 //

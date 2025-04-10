@@ -42,7 +42,7 @@ XATS2JS_NODE_the_XATSHOME_get
 //
 function
 XATS2JS_NODE_g_fprint
-  (out, obj)
+  (obj, out)
 {
   out.write(obj.toString());
   return; // XATS2JS_NODE_g_fprint
@@ -52,25 +52,25 @@ XATS2JS_NODE_g_fprint
 //
 function
 XATS2JS_NODE_bool_fprint
-  (out, obj)
+  (obj, out)
 {
-  XATS2JS_NODE_g_fprint(out, obj);
+  XATS2JS_NODE_g_fprint(obj, out);
   return ; // XATS2JS_NODE_bool_fprint
 }
 function
 XATS2JS_NODE_char_fprint
-  (out, obj)
+  (obj, out)
 {
   let
   rep = String.fromCharCode(obj);
-  XATS2JS_NODE_g_fprint(out, rep);
+  XATS2JS_NODE_g_fprint(rep, out);
   return ; // XATS2JS_NODE_char_fprint
 }
 function
 XATS2JS_NODE_strn_fprint
-  (out, obj)
+  (obj, out)
 {
-  XATS2JS_NODE_g_fprint(out, obj);
+  XATS2JS_NODE_g_fprint(obj, out);
   return ; // XATS2JS_NODE_strn_fprint
 }
 //
@@ -78,16 +78,16 @@ XATS2JS_NODE_strn_fprint
 //
 function
 XATS2JS_NODE_gint_fprint$sint
-  (out, obj)
+  (obj, out)
 {
-  XATS2JS_NODE_g_fprint(out, obj);
+  XATS2JS_NODE_g_fprint(obj, out);
   return ; // XATS2JS_NODE_gint_fprint$sint
 }
 function
 XATS2JS_NODE_gint_fprint$uint
-  (out, obj)
+  (obj, out)
 {
-  XATS2JS_NODE_g_fprint(out, obj);
+  XATS2JS_NODE_g_fprint(obj, out);
   return ; // XATS2JS_NODE_gint_fprint$uint
 }
 //
@@ -95,16 +95,16 @@ XATS2JS_NODE_gint_fprint$uint
 //
 function
 XATS2JS_NODE_gflt_fprint$sflt
-  (out, obj)
+  (obj, out)
 {
-  XATS2JS_NODE_g_fprint(out, obj);
+  XATS2JS_NODE_g_fprint(obj, out);
   return ; // XATS2JS_NODE_gflt_fprint$sflt
 }
 function
 XATS2JS_NODE_gflt_fprint$dflt
-  (out, obj)
+  (obj, out)
 {
-  XATS2JS_NODE_g_fprint(out, obj);
+  XATS2JS_NODE_g_fprint(obj, out);
   return ; // XATS2JS_NODE_gflt_fprint$dflt
 }
 //

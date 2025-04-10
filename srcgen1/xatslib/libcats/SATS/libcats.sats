@@ -149,21 +149,21 @@ fprint1_ptr
 (* ****** ****** *)
 //
 fun<>
-bool_fprint(FILR, bool): void
+bool_fprint(bool, FILR): void
 fun<>
-char_fprint(FILR, char): void
+char_fprint(char, FILR): void
 fun<>
-strn_fprint(FILR, strn): void
+strn_fprint(strn, FILR): void
 //
 fun<>
-gint_fprint$sint(FILR, sint): void
+gint_fprint$sint(sint, FILR): void
 fun<>
-gint_fprint$uint(FILR, uint): void
+gint_fprint$uint(uint, FILR): void
 //
 fun<>
-gflt_fprint$sflt(FILR, sflt): void
+gflt_fprint$sflt(sflt, FILR): void
 fun<>
-gflt_fprint$dflt(FILR, dflt): void
+gflt_fprint$dflt(dflt, FILR): void
 //
 (* ****** ****** *)
 //

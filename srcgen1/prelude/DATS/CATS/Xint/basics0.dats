@@ -71,10 +71,8 @@ bool_print<> = XINTERP_bool_print
 #extern
 fun
 XINTERP_bool_fprint
-( fr
-: FILR
-, b0
-: bool): void = $extnam()
+( btf: bool
+, out: FILR): void = $extnam()
 #impltmp
 bool_fprint<> = XINTERP_bool_fprint
 //
@@ -166,10 +164,8 @@ char_print<> = XINTERP_char_print
 #extern
 fun
 XINTERP_char_fprint
-( fr
-: FILR
-, c0
-: char): void = $extnam()
+( chr: char
+, out: FILR): void = $extnam()
 #impltmp
 char_fprint<> = XINTERP_char_fprint
 //
@@ -243,24 +239,20 @@ gint_print$uint<> = XINTERP_gint_print$uint
 #extern
 fun
 XINTERP_gint_fprint$sint
-( fr
-: FILR
-, x0
-: sint): void = $extnam()
+( int: sint
+, out: FILR): void = $extnam()
 #extern
 fun
 XINTERP_gint_fprint$uint
-( fr
-: FILR
-, x0
-: uint): void = $extnam()
+( unt: uint
+, out: FILR): void = $extnam()
 //
 #impltmp
 gint_fprint$sint<> =
-  XINTERP_gint_fprint$sint(*FILR,uint*)
+  XINTERP_gint_fprint$sint(*sint,FILR*)
 #impltmp
 gint_fprint$uint<> =
-  XINTERP_gint_fprint$uint(*FILR,uint*)
+  XINTERP_gint_fprint$uint(*uint,FILR*)
 //
 (* ****** ****** *)
 //
