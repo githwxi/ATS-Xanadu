@@ -57,13 +57,14 @@ $(patsubst %.dats, BUILD/JS/%_dats.js, $(SRCDATS))
 ########################################################################
 all:: $(OBJDATS)
 ########################################################################
-libxdpndcy:: $(OBJDATS); \
-$(CAT) $(OBJDATS) > lib/libxdpndcy.js
+lib1xdpndcy:: $(OBJDATS); \
+$(CAT) $(OBJDATS) > lib/lib1xdpndcy.js
 ########################################################################
 BUILD/JS/%_dats.js: \
 DATS/%.dats; $(XATS2JS) --output-w $@ --dynamic $<
 ########################################################################
-cleanall:: ; rm -f BUILD/JS/*_dats.js
+cleanall:: ; rm -f BUILD/JS/*_dats_out.js
+cleanall:: ; rm -f BUILD/JS/*_dats_out?.js
 ########################################################################
 ########################################################################
 

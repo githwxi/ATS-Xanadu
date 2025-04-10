@@ -16,9 +16,8 @@ all:: lib2xats2js
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; rm -f BUILD/*_sats_out.js
-cleanall:: ; rm -f BUILD/*_dats_out0.js
-cleanall:: ; rm -f BUILD/*_dats_out1.js
+cleanall:: ; rm -f BUILD/JS/*_sats_out.js
+cleanall:: ; rm -f BUILD/JS/*_dats_out?.js
 ########################################################################
 ########################################################################
 SRCGEN2=./../../../srcgen2
@@ -63,11 +62,11 @@ js1emit_decl00.dats \
 ########################################################################
 ########################################################################
 OUTSATS := \
-$(patsubst %.sats, BUILD/%_sats_out.js, $(SRCSATS))
+$(patsubst %.sats, BUILD/JS/%_sats_out.js, $(SRCSATS))
 OUT0DATS := \
-$(patsubst %.dats, BUILD/%_dats_out0.js, $(SRCDATS))
+$(patsubst %.dats, BUILD/JS/%_dats_out0.js, $(SRCDATS))
 OUT1DATS := \
-$(patsubst %.dats, BUILD/%_dats_out1.js, $(SRCDATS))
+$(patsubst %.dats, BUILD/JS/%_dats_out1.js, $(SRCDATS))
 ########################################################################
 ########################################################################
 boot:: \
@@ -79,10 +78,10 @@ boot_dats
 boot_dats:: $(OUT0DATS)
 ########################################################################
 ########################################################################
-BUILD/%_sats_out.js: \
+BUILD/JS/%_sats_out.js: \
 $(XATS2JS)/srcgen1/SATS/%.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $< > $@
-BUILD/%_dats_out0.js: \
+BUILD/JS/%_dats_out0.js: \
 $(XATS2JS)/srcgen1/DATS/%.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > $@
 ########################################################################
@@ -105,8 +104,8 @@ N256=$(N128) $(N128)
 N512=$(N256) $(N256)
 NFILE=$(N064) $(N032) $(N004) # 100=064+032+004
 ##################################################################
-BUILD/%_dats_out1.js: \
-BUILD/%_dats_out0.js; \
+BUILD/JS/%_dats_out1.js: \
+BUILD/JS/%_dats_out0.js; \
 $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' $< > $@
 ##################################################################
