@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -29,7 +29,7 @@
 (*
 Author: Hongwei Xi
 //
-Thu 29 Aug 2024 09:18:40 AM EDT
+Wed Apr  9 08:47:19 PM EDT 2025
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -53,12 +53,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/intrep0.sats"
-#staload "./../SATS/intrep1.sats"
-#staload "./../SATS/trxd3i0.sats"
-#staload "./../SATS/trxi0i1.sats"
-#staload "./../SATS/xats2js.sats"
-#staload "./../SATS/js1emit.sats"
+#staload "./../SATS/xdpndcy.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -79,18 +74,7 @@ mymain_work
 let
 //
 val dpar =
-d3parsed_of_trtmp3b(dpar)
-val dpar =
-d3parsed_of_trtmp3c(dpar)
-val dpar =
-d3parsed_of_tread30(dpar)
-//
-(*
-val (  ) =
-(
-prerrsln
-("d3parsed(33) = ", dpar))
-*)
+d2parsed_of_tread20(dpar)
 //
 val (  ) =
 let
@@ -98,31 +82,25 @@ val
 out = g_stderr((*0*))
 in//let
 prerrsln
-("FPERR30_D3PARSED:");
-fperr30_d3parsed(out, dpar)
+("FPERR20_D2PARSED:");
+fperr20_d2parsed(out, dpar)
 end//let
-//
-val ipar =
-(
-  i0parsed_of_trxd3i0(dpar))
-//
-val ipar =
-(
-  i1parsed_of_trxi0i1(ipar))
 //
 in//let
 //
 let
-val
-filr = g_stdout<>()
+val filr = g_stdout<>()
+val dcls = xdpndcy_d2parsed(dpar)
 in//let
-(
-  js1emit_i1parsed(filr, ipar))
+//
+printsln
+("xdpndcy_output00: dcls = ", dcls)
+//
 end//let
 //
 end where
 {
-val dpar = d3parsed_of_fildats(fpath)
+val dpar = d2parsed_of_fildats(fpath)
 }
 //
 (* ****** ****** *)
@@ -196,4 +174,4 @@ val (  ) = prerrsln
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_UTIL_xats2js_jsemit00.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_UTIL_xdpndcy_output00.dats] *)

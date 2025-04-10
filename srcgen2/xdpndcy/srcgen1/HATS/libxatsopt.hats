@@ -52,6 +52,18 @@ Sat Apr 05 02:57:21 PM 2025
 #staload
 "./../../../SATS/dynexp2.sats"
 (* ****** ****** *)
+//
+#staload
+"./../../../SATS/tread20.sats"
+#staload
+"./../../../SATS/fperr20.sats"
+//
+(* ****** ****** *)
+//
+#staload "./../../../SATS/xatsopt.sats"
+#staload "./../../../SATS/xglobal.sats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
