@@ -50,7 +50,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 <x0>
 i0lab_fprint
-  (out, lab) = let
+ (lab, out) = let
 //
 #impltmp
 g_print$out<>() = out
@@ -65,59 +65,59 @@ end(*let*)//end-of-[i0lab_fprint]
 #impltmp
 {x0:t0}
 g_print<i0lab(x0)>(ilab) =
-i0lab_fprint(g_print$out<>(), ilab)
+i0lab_fprint(ilab, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 g_print
-<i0pat>(i0p) =
-i0pat_fprint(g_print$out<>(), i0p)
+<i0pat>(i0p0) =
+i0pat_fprint(i0p0, g_print$out<>())
 //
 #impltmp
 g_print
-<i0exp>(i0e) =
-i0exp_fprint(g_print$out<>(), i0e)
+<i0exp>(i0e0) =
+i0exp_fprint(i0e0, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 g_print
-<fiarg>(fia) =
-fiarg_fprint(g_print$out<>(), fia)
+<fiarg>(fia0) =
+fiarg_fprint(fia0, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print
-<i0gua>(gua) =
-i0gua_fprint(g_print$out<>(), gua)
+<i0gua>(gua0) =
+i0gua_fprint(gua0, g_print$out<>())
 //
 #impltmp
 g_print
-<i0gpt>(gpt) =
-i0gpt_fprint(g_print$out<>(), gpt)
+<i0gpt>(gpt0) =
+i0gpt_fprint(gpt0, g_print$out<>())
 //
 #impltmp
 g_print
-<i0cls>(cls) =
-i0cls_fprint(g_print$out<>(), cls)
+<i0cls>(cls0) =
+i0cls_fprint(cls0, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 g_print<t0imp>(timp) =
-t0imp_fprint(g_print$out<>(), timp)
+t0imp_fprint(timp, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print
 <i0dcl>(idcl) =
-i0dcl_fprint(g_print$out<>(), idcl)
+i0dcl_fprint(idcl, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -125,7 +125,7 @@ i0dcl_fprint(g_print$out<>(), idcl)
 #impltmp
 <x0>
 i1lab_fprint
-  (out, lab) = let
+ (lab, out) = let
 //
 #impltmp
 g_print$out<>() = out
@@ -140,7 +140,7 @@ end(*let*)//end-of-[i1lab_fprint]
 #impltmp
 {x0:t0}
 g_print<i1lab(x0)>(ilab) =
-i1lab_fprint(g_print$out<>(), ilab)
+i1lab_fprint(ilab, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -149,107 +149,107 @@ i1lab_fprint(g_print$out<>(), ilab)
 #impltmp
 g_print
 <i1arg>(iarg) =
-i1arg_fprint(g_print$out<>(), iarg)
+i1arg_fprint(iarg, g_print$out<>())
 *)
 //
 #impltmp
 g_print
 <i1opr>(iopr) =
-i1opr_fprint(g_print$out<>(), iopr)
+i1opr_fprint(iopr, g_print$out<>())
 //
 #impltmp
 g_print
 <i1tnm>(itnm) =
-i1tnm_fprint(g_print$out<>(), itnm)
+i1tnm_fprint(itnm, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print
 <i1val>(ival) =
-i1val_fprint(g_print$out<>(), ival)
+i1val_fprint(ival, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print
 <i1let>(ilet) =
-i1let_fprint(g_print$out<>(), ilet)
+i1let_fprint(ilet, g_print$out<>())
 #impltmp
 g_print
 <i1ins>(iins) =
-i1ins_fprint(g_print$out<>(), iins)
+i1ins_fprint(iins, g_print$out<>())
 //
 #impltmp
 g_print
 <i1bnd>(ibnd) =
-i1bnd_fprint(g_print$out<>(), ibnd)
+i1bnd_fprint(ibnd, g_print$out<>())
 #impltmp
 g_print
 <i1cmp>(icmp) =
-i1cmp_fprint(g_print$out<>(), icmp)
+i1cmp_fprint(icmp, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print
 <fjarg>(farg) =
-fjarg_fprint(g_print$out<>(), farg)
+fjarg_fprint(farg, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print
 <i1gua>(gua) =
-i1gua_fprint(g_print$out<>(), gua)
+i1gua_fprint(gua, g_print$out<>())
 //
 #impltmp
 g_print
 <i1gpt>(gpt) =
-i1gpt_fprint(g_print$out<>(), gpt)
+i1gpt_fprint(gpt, g_print$out<>())
 //
 #impltmp
 g_print
 <i1cls>(cls) =
-i1cls_fprint(g_print$out<>(), cls)
+i1cls_fprint(cls, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<t1imp>(timp) =
-t1imp_fprint(g_print$out<>(), timp)
+t1imp_fprint(timp, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print
 <i1dcl>(idcl) =
-i1dcl_fprint(g_print$out<>(), idcl)
+i1dcl_fprint(idcl, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 g_print<i0valdcl>(ival) =
-i0valdcl_fprint(g_print$out<>(), ival)
+i0valdcl_fprint(ival, g_print$out<>())
 #impltmp
 g_print<i0vardcl>(ivar) =
-i0vardcl_fprint(g_print$out<>(), ivar)
+i0vardcl_fprint(ivar, g_print$out<>())
 #impltmp
 g_print<i0fundcl>(ifun) =
-i0fundcl_fprint(g_print$out<>(), ifun)
+i0fundcl_fprint(ifun, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<i1valdcl>(ival) =
-i1valdcl_fprint(g_print$out<>(), ival)
+i1valdcl_fprint(ival, g_print$out<>())
 #impltmp
 g_print<i1vardcl>(ivar) =
-i1vardcl_fprint(g_print$out<>(), ivar)
+i1vardcl_fprint(ivar, g_print$out<>())
 #impltmp
 g_print<i1fundcl>(ifun) =
-i1fundcl_fprint(g_print$out<>(), ifun)
+i1fundcl_fprint(ifun, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -301,7 +301,7 @@ g_print
 <i0parsed>(ipar) =
 let
 val () =
-i0parsed_fprint(g_print$out<>(), ipar)end
+i0parsed_fprint(ipar, g_print$out<>())end
 //
 (* ****** ****** *)
 //
@@ -310,7 +310,7 @@ g_print
 <i1parsed>(ipar) =
 let
 val () =
-i1parsed_fprint(g_print$out<>(), ipar)end
+i1parsed_fprint(ipar, g_print$out<>())end
 //
 (* ****** ****** *)
 (* ****** ****** *)

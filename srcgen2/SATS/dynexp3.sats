@@ -265,8 +265,8 @@ d2lab(x0:t0)=$D2E.d2lab(x0)
 fun
 <x0:type>
 d3lab_fprint
-( out
-: FILR, lab: d3lab(x0)): void
+( lab
+: d3lab(x0), out: FILR): void
 //
 (* ****** ****** *)
 #typedef l3d3p = d3lab(d3pat)
@@ -342,7 +342,7 @@ D3Pt2pck of (d3pat, s2typ)//HX: casting
 //
 (* ****** ****** *)
 fun
-d3pat_fprint:(FILR,d3pat)->void
+d3pat_fprint:(d3pat, FILR)->void
 (* ****** ****** *)
 fun
 d3pat_get_lctn(d3pat): loc_t
@@ -589,7 +589,7 @@ d3ecl_impltmprq(d3ecl): bool
 //
 (* ****** ****** *)
 fun
-d3exp_fprint:(FILR,d3exp)->void
+d3exp_fprint:(d3exp, FILR)->void
 (* ****** ****** *)
 fun
 d3exp_get_lctn(d3exp): ( loc_t )
@@ -659,7 +659,7 @@ F3ARGsapq of (s2varlst(*synd*))
 (* ****** ****** *)
 //
 fun
-f3arg_fprint:(FILR,f3arg)->void
+f3arg_fprint:(f3arg, FILR)->void
 //
 (* ****** ****** *)
 fun
@@ -697,11 +697,11 @@ d3gpt_node =
 (* ****** ****** *)
 //
 fun
-d3gua_fprint:(FILR,d3gua)->void
+d3gua_fprint:(d3gua, FILR)->void
 fun
-d3gpt_fprint:(FILR,d3gpt)->void
+d3gpt_fprint:(d3gpt, FILR)->void
 fun
-d3cls_fprint:(FILR,d3cls)->void
+d3cls_fprint:(d3cls, FILR)->void
 //
 (* ****** ****** *)
 //
@@ -789,8 +789,7 @@ recursive version(trtmp3c)
 //
 fun
 timpl_fprint
-(
-  out:FILR, timp:timpl):(void)
+(timp:timpl, out:FILR):(void)
 //
 (* ****** ****** *)
 //
@@ -949,8 +948,7 @@ S3TALOADdpar of (sint(*0/1*),d3parsed(*shared*))
 (* ****** ****** *)
 fun
 d3ecl_fprint
-(
-  out:FILR, d3cl:d3ecl):(void)
+(d3cl:d3ecl, out:FILR): void
 (* ****** ****** *)
 fun
 d3ecl_none0(loc0:loc_t):(d3ecl)
@@ -1018,14 +1016,14 @@ d3ecl_make_node
 (* ****** ****** *)
 fun
 d3valdcl_fprint
-(out: FILR, dval: d3valdcl): void
+(dval: d3valdcl, out: FILR): void
 fun
 d3vardcl_fprint
-(out: FILR, dvar: d3vardcl): void
+(dvar: d3vardcl, out: FILR): void
 (* ****** ****** *)
 fun
 d3fundcl_fprint
-(out: FILR, dfun: d3fundcl): void
+(dfun: d3fundcl, out: FILR): void
 (* ****** ****** *)
 (* ****** ****** *)
 fun
@@ -1136,7 +1134,7 @@ d3topenv =
 //
 fun
 d3parsed_fprint
-(out:FILR, dpar:d3parsed): void
+(dpar:d3parsed, out:FILR): void
 //
 (* ****** ****** *)
 #typedef d1topenv = $D1E.d1topenv

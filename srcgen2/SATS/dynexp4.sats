@@ -246,8 +246,8 @@ d3lab(x0:t0)=$D3E.d3lab(x0)
 fun
 <x0:type>
 d4lab_fprint
-( out
-: FILR, lab: d4lab(x0)): void
+( lab
+: d4lab(x0),out:FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -302,8 +302,7 @@ datatype dvtck =
 //
 fun
 dvtck_fprint
-(
-  out:FILR, vtck:dvtck):(void)
+(vtck:dvtck, out:FILR): (void)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -351,14 +350,14 @@ d4pat_node =
 (* ****** ****** *)
 //
 fun
-d4pat_freeq(d4p0:d4pat):(bool)
+d4pat_freeq
+( d4p0: d4pat ): bool//test
 //
 (* ****** ****** *)
 //
 fun
 d4pat_fprint
-(
-  out:FILR, d4p0:d4pat):(void)
+(d4p0:d4pat, out:FILR):(void)
 //
 (* ****** ****** *)
 //
@@ -516,14 +515,14 @@ token(*knd*), sint(*npf*), l4d4elst)
 (* ****** ****** *)
 //
 fun
-d4exp_foldq(d4e0:d4exp):(bool)
+d4exp_foldq
+( d4e0: d4exp ): bool//test
 //
 (* ****** ****** *)
 //
 fun
 d4exp_fprint
-(
-  out:FILR, d4e0:d4exp):(void)
+(d4e0:d4exp, out:FILR):(void)
 //
 (* ****** ****** *)
 //
@@ -592,7 +591,7 @@ F4ARGsapq of (s2varlst(*synd*))
 (* ****** ****** *)
 //
 fun
-f4arg_fprint:(FILR,f4arg)->void
+f4arg_fprint:(f4arg, FILR)->void
 //
 (* ****** ****** *)
 fun
@@ -631,11 +630,11 @@ d4gpt_node =
 (* ****** ****** *)
 //
 fun
-d4gua_fprint:(FILR,d4gua)->void
+d4gua_fprint:(d4gua, FILR)->void
 fun
-d4gpt_fprint:(FILR,d4gpt)->void
+d4gpt_fprint:(d4gpt, FILR)->void
 fun
-d4cls_fprint:(FILR,d4cls)->void
+d4cls_fprint:(d4cls, FILR)->void
 //
 (* ****** ****** *)
 //
@@ -757,9 +756,7 @@ D4Cerrck of
 //
 (* ****** ****** *)
 fun
-d4ecl_fprint
-(
-  out:FILR, d4cl:d4ecl):(void)
+d4ecl_fprint:(d4ecl, FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -786,14 +783,14 @@ d4ecl_make_node
 (* ****** ****** *)
 fun
 d4valdcl_fprint
-(out: FILR, dval: d4valdcl): void
+(dval: d4valdcl, out: FILR): void
 fun
 d4vardcl_fprint
-(out: FILR, dvar: d4vardcl): void
+(dvar: d4vardcl, out: FILR): void
 (* ****** ****** *)
 fun
 d4fundcl_fprint
-(out: FILR, dfun: d4fundcl): void
+(dfun: d4fundcl, out: FILR): void
 (* ****** ****** *)
 fun
 d4valdcl_get_lctn:(d4valdcl)->loc_t
@@ -902,7 +899,7 @@ d4fundcl_make_args
 //
 fun
 d4parsed_fprint
-(out:FILR, dpar:d4parsed): void
+(dpar:d4parsed, out:FILR): void
 //
 (* ****** ****** *)
 #typedef d1topenv = $D1E.d1topenv

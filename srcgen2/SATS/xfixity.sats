@@ -64,7 +64,7 @@ val app_assoc: assoc
 val imp_assoc: assoc
 (* ****** ****** *)
 fun
-assoc_fprint:(FILR,assoc)->void
+assoc_fprint:(assoc,FILR)->void
 (* ****** ****** *)
 //
 #abstype
@@ -102,7 +102,7 @@ prcdv_encode(cdv:sint):prcdv
 #symload prcdv with prcdv_encode
 (* ****** ****** *)
 fun
-prcdv_fprint:(FILR,prcdv)->void
+prcdv_fprint:(prcdv,FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -158,17 +158,6 @@ val postplus_fixty: fixty
 and postmnus_fixty: fixty
 //
 (* ****** ****** *)
-fun
-fixty_prcdv(fxt: fixty): prcdv
-fun
-fixty_assoc(fxt: fixty): assoc
-(* ****** ****** *)
-fun
-fixty_fprint:(FILR,fixty)->void
-fun
-<a:t0>
-fxitm_fprint:(FILR,fxitm(a))->void
-(* ****** ****** *)
 //
 #typedef
 fxitmlst
@@ -177,9 +166,21 @@ fxitmlst
 (* ****** ****** *)
 //
 fun
-fixty_prcdv: (fixty)->prcdv
+fixty_fprint
+( fxty
+: fixty, filr: FILR): void
 fun
-fixty_assoc: (fixty)->assoc
+<a:t0>
+fxitm_fprint
+( fxty
+: fxitm(a), filr: FILR):void
+//
+(* ****** ****** *)
+//
+fun
+fixty_prcdv:( fixty )->prcdv
+fun
+fixty_assoc:( fixty )->assoc
 //
 (* ****** ****** *)
 //

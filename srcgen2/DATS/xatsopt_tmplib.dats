@@ -88,36 +88,36 @@ ATS_PACKNAME
 g_print
 <dctkind>(dck) =
 dctkind_fprint
-(g_print$out<>(), dck) // xbasics
+(dck, g_print$out<>()) // xbasics
 //
 #impltmp
 g_print
 <valkind>(vlk) =
 valkind_fprint
-(g_print$out<>(), vlk) // xbasics
+(vlk, g_print$out<>()) // xbasics
 #impltmp
 g_print
 <varkind>(vlk) =
 varkind_fprint
-(g_print$out<>(), vlk) // xbasics
+(vlk, g_print$out<>()) // xbasics
 //
 #impltmp
 g_print
 <funkind>(fnk) =
 funkind_fprint
-(g_print$out<>(), fnk) // xbasics
+(fnk, g_print$out<>()) // xbasics
 //
 #impltmp
 g_print
 <caskind>(csk) =
 caskind_fprint
-(g_print$out<>(), csk) // xbasics
+(csk, g_print$out<>()) // xbasics
 //
 #impltmp
 g_print
 <implknd>(knd) =
 implknd_fprint
-(g_print$out<>(), knd) // xbasics
+(knd, g_print$out<>()) // xbasics
 //
 (* ****** ****** *)
 //
@@ -130,7 +130,7 @@ f2clknd_equal(k1, k2)
 g_print
 <f2clknd>(knd) =
 f2clknd_fprint
-(g_print$out<>(), knd) // xbasics
+(knd, g_print$out<>()) // xbasics
 //
 (* ****** ****** *)
 //
@@ -143,7 +143,7 @@ trcdknd_equal(k1, k2)
 g_print
 <trcdknd>(knd) =
 trcdknd_fprint
-(g_print$out<>(), knd) // xbasics
+(knd, g_print$out<>()) // xbasics
 //
 (* ****** ****** *)
 #impltmp
@@ -154,7 +154,7 @@ the_stamp_nil
 g_cmp<stamp> = stamp_cmp
 #impltmp
 g_print<stamp>(sym) =
-stamp_fprint(g_print$out<>(), sym)
+stamp_fprint(sym, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_0<symbl>
@@ -164,24 +164,24 @@ the_symbl_nil
 g_cmp<symbl> = symbl_cmp
 #impltmp
 g_print<symbl>(sym) =
-symbl_fprint(g_print$out<>(), sym)
+symbl_fprint(sym, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_cmp<label> = label_cmp
 #impltmp
 g_print<label>(lab) =
-label_fprint(g_print$out<>(), lab)
+label_fprint(lab, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<drpth>(dpx) =
-drpth_fprint(g_print$out<>(), dpx)
+drpth_fprint(dpx, g_print$out<>())
 #impltmp
 g_print<fpath>(fpx) =
-fpath_fprint(g_print$out<>(), fpx)
+fpath_fprint(fpx, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<fname>(fnm) =
-fname_fprint(g_print$out<>(), fnm)
+fname_fprint(fnm, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_cmp<postn> = postn_cmp
@@ -189,43 +189,43 @@ g_cmp<postn> = postn_cmp
 g_cmp<loctn> = loctn_cmp
 #impltmp
 g_print<lcsrc>(lcs) =
-lcsrc_fprint(g_print$out<>(), lcs)
+lcsrc_fprint(lcs, g_print$out<>())
 #impltmp
 g_print<postn>(pos) =
-postn_fprint(g_print$out<>(), pos)
+postn_fprint(pos, g_print$out<>())
 #impltmp
 g_print<loctn>(loc) =
-loctn_fprint(g_print$out<>(), loc)
+loctn_fprint(loc, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<tnode>(tnd) =
-tnode_fprint(g_print$out<>(), tnd)
+tnode_fprint(tnd, g_print$out<>())
 #impltmp
 g_print<token>(tok) =
-token_fprint(g_print$out<>(), tok)
+token_fprint(tok, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<t0int>(tok) =
-t0int_fprint(g_print$out<>(), tok)
+t0int_fprint(tok, g_print$out<>())
 #impltmp
 g_print<t0chr>(tok) =
-t0chr_fprint(g_print$out<>(), tok)
+t0chr_fprint(tok, g_print$out<>())
 #impltmp
 g_print<t0flt>(tok) =
-t0flt_fprint(g_print$out<>(), tok)
+t0flt_fprint(tok, g_print$out<>())
 #impltmp
 g_print<t0str>(tok) =
-t0str_fprint(g_print$out<>(), tok)
+t0str_fprint(tok, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<i0dnt>(id0) =
-i0dnt_fprint(g_print$out<>(), id0)
+i0dnt_fprint(id0, g_print$out<>())
 #impltmp
 g_print<l0abl>(lab) =
-l0abl_fprint(g_print$out<>(), lab)
+l0abl_fprint(lab, g_print$out<>())
 #impltmp
 g_print<s0ymb>(sym) =
-s0ymb_fprint(g_print$out<>(), sym)
+s0ymb_fprint(sym, g_print$out<>())
 (* ****** ****** *)
 //
 (*
@@ -237,14 +237,14 @@ xsymmap: topmap, stkmap
 g_print
 <topmap(x0)>(map) =
 topmap_fprint<x0>
-( g_print$out<>( (*void*) ), map )
+( map, g_print$out<>( (*void*) ) )
 //
 #impltmp
 {x0:t0}
 g_print1
 <stkmap(x0)>(map) =
 stkmap_fprint1<x0>
-( g_print$out<>( (*void*) ), map )
+( map, g_print$out<>( (*void*) ) )
 //
 (* ****** ****** *)
 
@@ -272,13 +272,13 @@ S0LAB(l0,tk,x0) => (x0))
 fun
 <x0:type>
 s0lab_fprint
-(out: FILR, lab: s0lab(x0)): void
+(lab: s0lab(x0), out: FILR): void
 *)
 //
 #impltmp
 <x0>
 s0lab_fprint
-  (out, lab) = let
+  (lab, out) = let
 //
 #impltmp
 g_print$out<>() = out
@@ -293,7 +293,7 @@ end(*let*)//end-of-[s0lab_fprint]
 #impltmp
 {x0:t0}
 g_print<s0lab(x0)>(lab) =
-s0lab_fprint(g_print$out<>(), lab)
+s0lab_fprint(lab, g_print$out<>())
 //
 (* ****** ****** *)
 (*
@@ -315,13 +315,13 @@ D0LAB(l0,tk,x0) => (x0))
 fun
 <x0:type>
 d0lab_fprint
-(out: FILR, lab: d0lab(x0)): void
+(lab: d0lab(x0), out: FILR): void
 *)
 //
 #impltmp
 <x0>
 d0lab_fprint
-  (out, lab) = let
+  (lab, out) = let
 //
 #impltmp
 g_print$out<>() = out
@@ -336,254 +336,258 @@ end(*let*)//end-of-[d0lab_fprint]
 #impltmp
 {x0:t0}
 g_print<d0lab(x0)>(lab) =
-d0lab_fprint(g_print$out<>(), lab)
+d0lab_fprint(lab, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<s0qid>(qid) =
-s0qid_fprint(g_print$out<>(), qid)
+s0qid_fprint(qid, g_print$out<>())
 #impltmp
 g_print<d0qid>(qid) =
-d0qid_fprint(g_print$out<>(), qid)
+d0qid_fprint(qid, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<g0nam>(gnm) =
-g0nam_fprint(g_print$out<>(), gnm)
+g0nam_fprint(gnm, g_print$out<>())
 #impltmp
 g_print<g0exp>(g0e) =
-g0exp_fprint(g_print$out<>(), g0e)
+g0exp_fprint(g0e, g_print$out<>())
 #impltmp
 g_print<g0mag>(gma) =
-g0mag_fprint(g_print$out<>(), gma)
+g0mag_fprint(gma, g_print$out<>())
 //
 (* ****** ****** *)
+//
 #impltmp
 g_print<g0exp_THEN>(gthn) =
-g0exp_THEN_fprint(g_print$out<>(), gthn)
+g0exp_THEN_fprint(gthn, g_print$out<>())
 #impltmp
 g_print<g0exp_ELSE>(gels) =
-g0exp_ELSE_fprint(g_print$out<>(), gels)
+g0exp_ELSE_fprint(gels, g_print$out<>())
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 g_print<sort0>(s0t) =
-sort0_fprint(g_print$out<>(), s0t)
+sort0_fprint(s0t, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<s0tcn>(tcn) =
-s0tcn_fprint(g_print$out<>(), tcn)
+s0tcn_fprint(tcn, g_print$out<>())
 #impltmp
 g_print<d0tst>(dst) =
-d0tst_fprint(g_print$out<>(), dst)
+d0tst_fprint(dst, g_print$out<>())
 #impltmp
 g_print<s0tdf>(tdf) =
-s0tdf_fprint(g_print$out<>(), tdf)
+s0tdf_fprint(tdf, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<s0arg>(sag) =
-s0arg_fprint(g_print$out<>(), sag)
+s0arg_fprint(sag, g_print$out<>())
 #impltmp
 g_print<s0mag>(smg) =
-s0mag_fprint(g_print$out<>(), smg)
+s0mag_fprint(smg, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<t0arg>(tag) =
-t0arg_fprint(g_print$out<>(), tag)
+t0arg_fprint(tag, g_print$out<>())
 #impltmp
 g_print<t0mag>(tmg) =
-t0mag_fprint(g_print$out<>(), tmg)
+t0mag_fprint(tmg, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<s0qua>(s0q) =
-s0qua_fprint(g_print$out<>(), s0q)
+s0qua_fprint(s0q, g_print$out<>())
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 g_print<s0exp>(s0e) =
-s0exp_fprint(g_print$out<>(), s0e)
+s0exp_fprint(s0e, g_print$out<>())
 #impltmp
 g_print<s0exp_RPAREN>(srp0) =
-s0exp_RPAREN_fprint(g_print$out<>(), srp0)
+s0exp_RPAREN_fprint(srp0, g_print$out<>())
 #impltmp
 g_print<l0s0e_RBRACE>(lsrb) =
-l0s0e_RBRACE_fprint(g_print$out<>(), lsrb)
+l0s0e_RBRACE_fprint(lsrb, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<s0uni>(s0u) =
-s0uni_fprint(g_print$out<>(), s0u)
+s0uni_fprint(s0u, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<d0tcn>(dtc) =
-d0tcn_fprint(g_print$out<>(), dtc)
+d0tcn_fprint(dtc, g_print$out<>())
 #impltmp
 g_print<d0typ>(dtp) =
-d0typ_fprint(g_print$out<>(), dtp)
+d0typ_fprint(dtp, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<d0pat>(d0p) =
-d0pat_fprint(g_print$out<>(), d0p)
+d0pat_fprint(d0p, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<f0arg>(f0a) =
-f0arg_fprint(g_print$out<>(), f0a)
+f0arg_fprint(f0a, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d0gua>(d0g) =
-d0gua_fprint(g_print$out<>(), d0g)
+d0gua_fprint(d0g, g_print$out<>())
 #impltmp
 g_print<d0gpt>(dgt) =
-d0gpt_fprint(g_print$out<>(), dgt)
+d0gpt_fprint(dgt, g_print$out<>())
 #impltmp
 g_print<d0cls>(d0c) =
-d0cls_fprint(g_print$out<>(), d0c)
+d0cls_fprint(d0c, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d0exp>(d0e) =
-d0exp_fprint(g_print$out<>(), d0e)
+d0exp_fprint(d0e, g_print$out<>())
 //
 #impltmp
 g_print<d0ecl>(dcl) =
-d0ecl_fprint(g_print$out<>(), dcl)
+d0ecl_fprint(dcl, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<s0eff>(seff) =
-s0eff_fprint(g_print$out<>(), seff)
+s0eff_fprint(seff, g_print$out<>())
 #impltmp
 g_print<s0res>(sres) =
-s0res_fprint(g_print$out<>(), sres)
+s0res_fprint(sres, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<t0qua>(tqua) =
-t0qua_fprint(g_print$out<>(), tqua)
+t0qua_fprint(tqua, g_print$out<>())
 #impltmp
 g_print<t0inv>(tinv) =
-t0inv_fprint(g_print$out<>(), tinv)
+t0inv_fprint(tinv, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<f0unarrw>(arrw) =
-f0unarrw_fprint(g_print$out<>(), arrw)
+f0unarrw_fprint(arrw, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<q0arg>(qarg) =
-q0arg_fprint(g_print$out<>(), qarg)
+q0arg_fprint(qarg, g_print$out<>())
 //
 #impltmp
 g_print<s0qag>(sqag) =
-s0qag_fprint(g_print$out<>(), sqag)
+s0qag_fprint(sqag, g_print$out<>())
 #impltmp
 g_print<t0qag>(tqag) =
-t0qag_fprint(g_print$out<>(), tqag)
+t0qag_fprint(tqag, g_print$out<>())
 //
 #impltmp
 g_print<t0iag>(tiag) =
-t0iag_fprint(g_print$out<>(), tiag)
+t0iag_fprint(tiag, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<a0typ>(a0tp) =
-a0typ_fprint(g_print$out<>(), a0tp)
+a0typ_fprint(a0tp, g_print$out<>())
 #impltmp
 g_print<d0arg>(d0ag) =
-d0arg_fprint(g_print$out<>(), d0ag)
+d0arg_fprint(d0ag, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<g0edf>(gedf) =
-g0edf_fprint(g_print$out<>(), gedf)
+g0edf_fprint(gedf, g_print$out<>())
 #impltmp
 g_print<d0edf>(dedf) =
-d0edf_fprint(g_print$out<>(), dedf)
+d0edf_fprint(dedf, g_print$out<>())
 #impltmp
 g_print<a0tdf>(atdf) =
-a0tdf_fprint(g_print$out<>(), atdf)
+a0tdf_fprint(atdf, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<d0res>(dres) =
-d0res_fprint(g_print$out<>(), dres)
+d0res_fprint(dres, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<precopt>(opt) =
-precopt_fprint(g_print$out<>(), opt)
+precopt_fprint(opt, g_print$out<>())
 #impltmp
 g_print<precmod>(pmd) =
-precmod_fprint(g_print$out<>(), pmd)
+precmod_fprint(pmd, g_print$out<>())
 #impltmp
 g_print<precint>(int) =
-precint_fprint(g_print$out<>(), int)
+precint_fprint(int, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<d0cstdcl>(dcst) =
-d0cstdcl_fprint(g_print$out<>(), dcst)
+d0cstdcl_fprint(dcst, g_print$out<>())
 (* ****** ****** *)
 #impltmp
-g_print<d0valdcl>(d0cl) =
-d0valdcl_fprint(g_print$out<>(), d0cl)
+g_print<d0valdcl>(dval) =
+d0valdcl_fprint(dval, g_print$out<>())
 #impltmp
-g_print<d0vardcl>(d0cl) =
-d0vardcl_fprint(g_print$out<>(), d0cl)
+g_print<d0vardcl>(dvar) =
+d0vardcl_fprint(dvar, g_print$out<>())
 #impltmp
-g_print<d0fundcl>(d0cl) =
-d0fundcl_fprint(g_print$out<>(), d0cl)
+g_print<d0fundcl>(dfun) =
+d0fundcl_fprint(dfun, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<d0parsed>(dpar) =
-d0parsed_fprint(g_print$out<>(), dpar)
+d0parsed_fprint(dpar, g_print$out<>())
 (* ****** ****** *)
 #impltmp
-g_print<wd0eclseq>(wdcs) =
-wd0eclseq_fprint(g_print$out<>(), wdcs)
+g_print<wd0eclseq>(wdcls) =
+wd0eclseq_fprint(wdcls, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<d0exp_THEN>(dthn) =
-d0exp_THEN_fprint(g_print$out<>(), dthn)
+d0exp_THEN_fprint(dthn, g_print$out<>())
 #impltmp
 g_print<d0exp_ELSE>(dels) =
-d0exp_ELSE_fprint(g_print$out<>(), dels)
+d0exp_ELSE_fprint(dels, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<tkend_WHERE>(tend) =
-tkend_WHERE_fprint(g_print$out<>(), tend)
+tkend_WHERE_fprint(tend, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<d0pat_RPAREN>(drp0) =
-d0pat_RPAREN_fprint(g_print$out<>(), drp0)
+d0pat_RPAREN_fprint(drp0, g_print$out<>())
 #impltmp
 g_print<l0d0p_RBRACE>(ldrb) =
-l0d0p_RBRACE_fprint(g_print$out<>(), ldrb)
+l0d0p_RBRACE_fprint(ldrb, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d0exp_RPAREN>(drp0) =
-d0exp_RPAREN_fprint(g_print$out<>(), drp0)
+d0exp_RPAREN_fprint(drp0, g_print$out<>())
 #impltmp
 g_print<l0d0e_RBRACE>(ldrb) =
-l0d0e_RBRACE_fprint(g_print$out<>(), ldrb)
+l0d0e_RBRACE_fprint(ldrb, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<d0eclseq_WHERE>(dcls) =
-d0eclseq_WHERE_fprint(g_print$out<>(), dcls)
+d0eclseq_WHERE_fprint(dcls, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
@@ -636,13 +640,13 @@ slab of S1LAB(l0, x0) => (x0))
 fun
 <x0:type>
 s1lab_fprint
-(out: FILR, lab: s1lab(x0)): void
+(lab: s1lab(x0), out: FILR): void
 *)
 //
 #impltmp
 <x0>
 s1lab_fprint
-  (out, lab) = let
+  (lab, out) = let
 //
 #impltmp
 g_print$out<>() = out
@@ -657,7 +661,7 @@ end(*let*)//end-of-[s1lab_fprint]
 #impltmp
 {x0:t0}
 g_print<s1lab(x0)>(lab) =
-s1lab_fprint(g_print$out<>(), lab)
+s1lab_fprint(lab, g_print$out<>())
 //
 (* ****** ****** *)
 (*
@@ -679,13 +683,13 @@ D1LAB(l0, x0) => (x0))
 fun
 <x0:type>
 d1lab_fprint
-(out: FILR, lab: d1lab(x0)): void
+(lab: d1lab(x0), out: FILR): void
 *)
 //
 #impltmp
 <x0>
 d1lab_fprint
-  (out, lab) = let
+  (lab, out) = let
 //
 #impltmp
 g_print$out<>() = out
@@ -700,13 +704,13 @@ end(*let*)//end-of-[d1lab_fprint]
 #impltmp
 {x0:t0}
 g_print<d1lab(x0)>(lab) =
-d1lab_fprint(g_print$out<>(), lab)
+d1lab_fprint(lab, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<assoc>(asc) =
-assoc_fprint(g_print$out<>(), asc)
+assoc_fprint(asc, g_print$out<>())
 //
 (* ****** ****** *)
 //
@@ -714,207 +718,207 @@ assoc_fprint(g_print$out<>(), asc)
 g_cmp<prcdv> = cmp_prcdv_prcdv
 #impltmp
 g_print<prcdv>(cdv) =
-prcdv_fprint(g_print$out<>(), cdv)
+prcdv_fprint(cdv, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<fixty>(fxt) =
-fixty_fprint(g_print$out<>(), fxt)
+fixty_fprint(fxt, g_print$out<>())
 //
 #impltmp
 {a:t0}
 g_print<fxitm(a)>(fxi) =
-fxitm_fprint<a>(g_print$out<>(), fxi)
+fxitm_fprint<a>(fxi, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
-g_print<s1qid>(qid) =
-s1qid_fprint(g_print$out<>(), qid)
+g_print<s1qid>(sqid) =
+s1qid_fprint(sqid, g_print$out<>())
 #impltmp
-g_print<d1qid>(qid) =
-d1qid_fprint(g_print$out<>(), qid)
+g_print<d1qid>(dqid) =
+d1qid_fprint(dqid, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<g1nam>(gnm) =
-g1nam_fprint(g_print$out<>(), gnm)
+g1nam_fprint(gnm, g_print$out<>())
 #impltmp
 g_print<g1exp>(g1e) =
-g1exp_fprint(g_print$out<>(), g1e)
+g1exp_fprint(g1e, g_print$out<>())
 //
 #impltmp
 g_print<g1arg>(g1a) =
-g1arg_fprint(g_print$out<>(), g1a)
+g1arg_fprint(g1a, g_print$out<>())
 #impltmp
 g_print<g1mag>(gma) =
-g1mag_fprint(g_print$out<>(), gma)
+g1mag_fprint(gma, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<sort1>(s1t) =
-sort1_fprint(g_print$out<>(), s1t)
+sort1_fprint(s1t, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<s1tcn>(tcn) =
-s1tcn_fprint(g_print$out<>(), tcn)
+s1tcn_fprint(tcn, g_print$out<>())
 #impltmp
 g_print<d1tst>(dst) =
-d1tst_fprint(g_print$out<>(), dst)
+d1tst_fprint(dst, g_print$out<>())
 #impltmp
 g_print<s1tdf>(tdf) =
-s1tdf_fprint(g_print$out<>(), tdf)
+s1tdf_fprint(tdf, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<s1arg>(s1a) =
-s1arg_fprint(g_print$out<>(), s1a)
+s1arg_fprint(s1a, g_print$out<>())
 #impltmp
 g_print<s1mag>(s1m) =
-s1mag_fprint(g_print$out<>(), s1m)
+s1mag_fprint(s1m, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<t1arg>(t1a) =
-t1arg_fprint(g_print$out<>(), t1a)
+t1arg_fprint(t1a, g_print$out<>())
 #impltmp
 g_print<t1mag>(t1m) =
-t1mag_fprint(g_print$out<>(), t1m)
+t1mag_fprint(t1m, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<s1qua>(s1q) =
-s1qua_fprint(g_print$out<>(), s1q)
+s1qua_fprint(s1q, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<s1uni>(s1u) =
-s1uni_fprint(g_print$out<>(), s1u)
+s1uni_fprint(s1u, g_print$out<>())
 #impltmp
 g_print<d1tcn>(dtc) =
-d1tcn_fprint(g_print$out<>(), dtc)
+d1tcn_fprint(dtc, g_print$out<>())
 #impltmp
 g_print<d1typ>(dtp) =
-d1typ_fprint(g_print$out<>(), dtp)
+d1typ_fprint(dtp, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<s1exp>(s1e) =
-s1exp_fprint(g_print$out<>(), s1e)
+s1exp_fprint(s1e, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d1pat>(d1p) =
-d1pat_fprint(g_print$out<>(), d1p)
+d1pat_fprint(d1p, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<d1gua>(d1g) =
-d1gua_fprint(g_print$out<>(), d1g)
+d1gua_fprint(d1g, g_print$out<>())
 #impltmp
 g_print<d1gpt>(d1g) =
-d1gpt_fprint(g_print$out<>(), d1g)
+d1gpt_fprint(d1g, g_print$out<>())
 #impltmp
 g_print<d1cls>(dcl) =
-d1cls_fprint(g_print$out<>(), dcl)
+d1cls_fprint(dcl, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d1exp>(d1e) =
-d1exp_fprint(g_print$out<>(), d1e)
+d1exp_fprint(d1e, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d1ecl>(dcl) =
-d1ecl_fprint(g_print$out<>(), dcl)
+d1ecl_fprint(dcl, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<f1arg>(f1a) =
-f1arg_fprint(g_print$out<>(), f1a)
+f1arg_fprint(f1a, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d1gua>(d1g) =
-d1gua_fprint(g_print$out<>(), d1g)
+d1gua_fprint(d1g, g_print$out<>())
 #impltmp
 g_print<d1gpt>(dgt) =
-d1gpt_fprint(g_print$out<>(), dgt)
+d1gpt_fprint(dgt, g_print$out<>())
 #impltmp
 g_print<d1cls>(d1c) =
-d1cls_fprint(g_print$out<>(), d1c)
+d1cls_fprint(d1c, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<s1eff>(seff) =
-s1eff_fprint(g_print$out<>(), seff)
+s1eff_fprint(seff, g_print$out<>())
 #impltmp
 g_print<s1res>(sres) =
-s1res_fprint(g_print$out<>(), sres)
+s1res_fprint(sres, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<t1qua>(tqua) =
-t1qua_fprint(g_print$out<>(), tqua)
+t1qua_fprint(tqua, g_print$out<>())
 #impltmp
 g_print<t1inv>(tinv) =
-t1inv_fprint(g_print$out<>(), tinv)
+t1inv_fprint(tinv, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<f1unarrw>(arrw) =
-f1unarrw_fprint(g_print$out<>(), arrw)
+f1unarrw_fprint(arrw, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<q1arg>(qarg) =
-q1arg_fprint(g_print$out<>(), qarg)
+q1arg_fprint(qarg, g_print$out<>())
 //
 #impltmp
 g_print<s1qag>(sqag) =
-s1qag_fprint(g_print$out<>(), sqag)
+s1qag_fprint(sqag, g_print$out<>())
 #impltmp
 g_print<t1qag>(tqag) =
-t1qag_fprint(g_print$out<>(), tqag)
+t1qag_fprint(tqag, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<t1iag>(tiag) =
-t1iag_fprint(g_print$out<>(), tiag)
+t1iag_fprint(tiag, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<a1typ>(a1tp) =
-a1typ_fprint(g_print$out<>(), a1tp)
+a1typ_fprint(a1tp, g_print$out<>())
 #impltmp
 g_print<d1arg>(d1ag) =
-d1arg_fprint(g_print$out<>(), d1ag)
+d1arg_fprint(d1ag, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<a1tdf>(atdf) =
-a1tdf_fprint(g_print$out<>(), atdf)
+a1tdf_fprint(atdf, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<d1cstdcl>(dcst) =
-d1cstdcl_fprint(g_print$out<>(), dcst)
+d1cstdcl_fprint(dcst, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<d1valdcl>(dval) =
-d1valdcl_fprint(g_print$out<>(), dval)
+d1valdcl_fprint(dval, g_print$out<>())
 #impltmp
 g_print<d1vardcl>(dvar) =
-d1vardcl_fprint(g_print$out<>(), dvar)
+d1vardcl_fprint(dvar, g_print$out<>())
 #impltmp
 g_print<d1fundcl>(dfun) =
-d1fundcl_fprint(g_print$out<>(), dfun)
+d1fundcl_fprint(dfun, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
@@ -927,11 +931,11 @@ case+ tenv of
 (* ****** ****** *)
 #impltmp
 g_print<d1parsed>(dpar) =
-d1parsed_fprint(g_print$out<>(), dpar)
+d1parsed_fprint(dpar, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<wd1eclseq>(wdcs) =
-wd1eclseq_fprint(g_print$out<>(), wdcs)
+wd1eclseq_fprint(wdcs, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
@@ -974,7 +978,7 @@ let
 val out =
 g_print$out<>()
 in//let
-  g1mac_fprint(out, g1m0) end
+  g1mac_fprint(g1m0, out) end
 #impltmp
 g_print
 <g1env>(genv) =
@@ -982,7 +986,7 @@ let
 val out =
 g_print$out<>()
 in//let
-  g1env_fprint(out, genv) end
+  g1env_fprint(genv, out) end
 //
 (* ****** ****** *)
 
@@ -1080,13 +1084,13 @@ slab of S2LAB(l0, x0) => (x0))
 fun
 <x0:type>
 s2lab_fprint
-(out: FILR, lab: s2lab(x0)): void
+(lab: s2lab(x0), out: FILR): void
 *)
 //
 #impltmp
 <x0>
 s2lab_fprint
-  (out, lab) = let
+  (lab, out) = let
 //
 #impltmp
 g_print$out<>() = out
@@ -1101,7 +1105,7 @@ end(*let*)//end-of-[s2lab_fprint]
 #impltmp
 {x0:t0}
 g_print<s2lab(x0)>(lab) =
-s2lab_fprint(g_print$out<>(), lab)
+s2lab_fprint(lab, g_print$out<>())
 //
 (* ****** ****** *)
 (*
@@ -1128,7 +1132,7 @@ d2lab_fprint
 #impltmp
 <x0>
 d2lab_fprint
-  (out, lab) = let
+  (lab, out) = let
 //
 #impltmp
 g_print$out<>() = out
@@ -1143,190 +1147,190 @@ end(*let*)//end-of-[d2lab_fprint]
 #impltmp
 {x0:t0}
 g_print<d2lab(x0)>(lab) =
-d2lab_fprint(g_print$out<>(), lab)
+d2lab_fprint(lab, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<t2abs>(t2a) =
-t2abs_fprint(g_print$out<>(), t2a)
+t2abs_fprint(t2a, g_print$out<>())
 //
 #impltmp
 g_print<t2bas>(t2b) =
-t2bas_fprint(g_print$out<>(), t2b)
+t2bas_fprint(t2b, g_print$out<>())
 //
 #impltmp
 g_print<t2dat>(t2d) =
-t2dat_fprint(g_print$out<>(), t2d)
+t2dat_fprint(t2d, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<sort2>(s2t) =
-sort2_fprint(g_print$out<>(), s2t)
+sort2_fprint(s2t, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<s2cst>(s2c) =
-s2cst_fprint(g_print$out<>(), s2c)
+s2cst_fprint(s2c, g_print$out<>())
 #impltmp
 g_print<s2var>(s2v) =
-s2var_fprint(g_print$out<>(), s2v)
+s2var_fprint(s2v, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<s2arg>(s2a) =
-s2arg_fprint(g_print$out<>(), s2a)
+s2arg_fprint(s2a, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<s2exp>(s2e) =
-s2exp_fprint(g_print$out<>(), s2e)
+s2exp_fprint(s2e, g_print$out<>())
 #impltmp
 g_print<s2typ>(stp) =
-s2typ_fprint(g_print$out<>(), stp)
+s2typ_fprint(stp, g_print$out<>())
 #impltmp
 g_print<x2t2p>(xtp) =
-x2t2p_fprint(g_print$out<>(), xtp)
+x2t2p_fprint(xtp, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<s2tex>(stx) =
-s2tex_fprint(g_print$out<>(), stx)
+s2tex_fprint(stx, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<s2itm>(s2i) =
-s2itm_fprint(g_print$out<>(), s2i)
+s2itm_fprint(s2i, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<d2con>(d2c) =
-d2con_fprint(g_print$out<>(), d2c)
+d2con_fprint(d2c, g_print$out<>())
 #impltmp
 g_print<d2cst>(d2c) =
-d2cst_fprint(g_print$out<>(), d2c)
+d2cst_fprint(d2c, g_print$out<>())
 //
 #impltmp
 g_print<d2var>(d2v) =
-d2var_fprint(g_print$out<>(), d2v)
+d2var_fprint(d2v, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d2itm>(d2i) =
-d2itm_fprint(g_print$out<>(), d2i)
+d2itm_fprint(d2i, g_print$out<>())
 #impltmp
 g_print<d2ptm>(dpi) =
-d2ptm_fprint(g_print$out<>(), dpi)
+d2ptm_fprint(dpi, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d2pat>(d2p) =
-d2pat_fprint(g_print$out<>(), d2p)
+d2pat_fprint(d2p, g_print$out<>())
 #impltmp
 g_print<d2rpt>(drf) =
-d2rpt_fprint(g_print$out<>(), drf)
+d2rpt_fprint(drf, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d2exp>(d2e) =
-d2exp_fprint(g_print$out<>(), d2e)
+d2exp_fprint(d2e, g_print$out<>())
 #impltmp
 g_print<d2rxp>(drf) =
-d2rxp_fprint(g_print$out<>(), drf)
+d2rxp_fprint(drf, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<f2arg>(f2a) =
-f2arg_fprint(g_print$out<>(), f2a)
+f2arg_fprint(f2a, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d2gua>(d2g) =
-d2gua_fprint(g_print$out<>(), d2g)
+d2gua_fprint(d2g, g_print$out<>())
 #impltmp
 g_print<d2gpt>(d2g) =
-d2gpt_fprint(g_print$out<>(), d2g)
+d2gpt_fprint(d2g, g_print$out<>())
 #impltmp
 g_print<d2cls>(dcl) =
-d2cls_fprint(g_print$out<>(), dcl)
+d2cls_fprint(dcl, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d2ecl>(dcl) =
-d2ecl_fprint(g_print$out<>(), dcl)
+d2ecl_fprint(dcl, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<s2eff>(seff) =
-s2eff_fprint(g_print$out<>(), seff)
+s2eff_fprint(seff, g_print$out<>())
 #impltmp
 g_print<s2res>(sres) =
-s2res_fprint(g_print$out<>(), sres)
+s2res_fprint(sres, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<s2qag>(sqag) =
-s2qag_fprint(g_print$out<>(), sqag)
+s2qag_fprint(sqag, g_print$out<>())
 #impltmp
 g_print<t2qag>(tqag) =
-t2qag_fprint(g_print$out<>(), tqag)
+t2qag_fprint(tqag, g_print$out<>())
 #impltmp
 g_print<t2iag>(tiag) =
-t2iag_fprint(g_print$out<>(), tiag)
+t2iag_fprint(tiag, g_print$out<>())
 //
 #impltmp
 g_print<t2jag>(tjag) =
-t2jag_fprint(g_print$out<>(), tjag)
+t2jag_fprint(tjag, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<a2tdf>(atdf) =
-a2tdf_fprint(g_print$out<>(), atdf)
+a2tdf_fprint(atdf, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<simpl>(simp) =
-simpl_fprint(g_print$out<>(), simp)
+simpl_fprint(simp, g_print$out<>())
 #impltmp
 g_print<dimpl>(dimp) =
-dimpl_fprint(g_print$out<>(), dimp)
+dimpl_fprint(dimp, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<d2arg>(darg) =
-d2arg_fprint(g_print$out<>(), darg)
+d2arg_fprint(darg, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
 g_print<d2valdcl>(dval) =
-d2valdcl_fprint(g_print$out<>(), dval)
+d2valdcl_fprint(dval, g_print$out<>())
 #impltmp
 g_print<d2vardcl>(dvar) =
-d2vardcl_fprint(g_print$out<>(), dvar)
+d2vardcl_fprint(dvar, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d2fundcl>(dfun) =
-d2fundcl_fprint(g_print$out<>(), dfun)
+d2fundcl_fprint(dfun, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d2cstdcl>(dcst) =
-d2cstdcl_fprint(g_print$out<>(), dcst)
+d2cstdcl_fprint(dcst, g_print$out<>())
 //
 (* ****** ****** *)
 #impltmp
 g_print<d2parsed>(dpar) =
-d2parsed_fprint(g_print$out<>(), dpar)
+d2parsed_fprint(dpar, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
@@ -1407,7 +1411,7 @@ d3lab_fprint
 #impltmp
 <x0>
 d3lab_fprint
-  (out, lab) = let
+  (lab, out) = let
 //
 #impltmp
 g_print$out<>() = out
@@ -1422,61 +1426,61 @@ end(*let*)//end-of-[d3lab_fprint]
 #impltmp
 {x0:t0}
 g_print<d3lab(x0)>(dlab) =
-d3lab_fprint(g_print$out<>(), dlab)
+d3lab_fprint(dlab, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d3pat>(dpat) =
-d3pat_fprint(g_print$out<>(), dpat)
+d3pat_fprint(dpat, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d3exp>(dexp) =
-d3exp_fprint(g_print$out<>(), dexp)
+d3exp_fprint(dexp, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<f3arg>(farg) =
-f3arg_fprint(g_print$out<>(), farg)
+f3arg_fprint(farg, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d3gua>(dgua) =
-d3gua_fprint(g_print$out<>(), dgua)
+d3gua_fprint(dgua, g_print$out<>())
 #impltmp
 g_print<d3gpt>(dgpt) =
-d3gpt_fprint(g_print$out<>(), dgpt)
+d3gpt_fprint(dgpt, g_print$out<>())
 #impltmp
 g_print<d3cls>(dcls) =
-d3cls_fprint(g_print$out<>(), dcls)
+d3cls_fprint(dcls, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<timpl>(timp) =
-timpl_fprint(g_print$out<>(), timp)
+timpl_fprint(timp, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d3ecl>(d3cl) =
-d3ecl_fprint(g_print$out<>(), d3cl)
+d3ecl_fprint(d3cl, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d3valdcl>(dval) =
-d3valdcl_fprint(g_print$out<>(), dval)
+d3valdcl_fprint(dval, g_print$out<>())
 #impltmp
 g_print<d3vardcl>(dvar) =
-d3vardcl_fprint(g_print$out<>(), dvar)
+d3vardcl_fprint(dvar, g_print$out<>())
 #impltmp
 g_print<d3fundcl>(dfun) =
-d3fundcl_fprint(g_print$out<>(), dfun)
+d3fundcl_fprint(dfun, g_print$out<>())
 //
 (* ****** ****** *)
 //
@@ -1502,7 +1506,7 @@ prints("D3TOPENVsome(", tmap, ")"))end
 //
 #impltmp
 g_print<d3parsed>(dpar) =
-d3parsed_fprint(g_print$out<>(), dpar)
+d3parsed_fprint(dpar, g_print$out<>())
 //
 (* ****** ****** *)
 //
@@ -1573,7 +1577,7 @@ d4lab_fprint
 #impltmp
 <x0>(*tmp*)
 d4lab_fprint
-  (out, lab) = let
+  (lab, out) = let
 //
 #impltmp
 g_print$out<>() = out
@@ -1588,69 +1592,69 @@ end(*let*)//end-of-[d4lab_fprint]
 #impltmp
 {x0:t0}
 g_print<d4lab(x0)>(dlab) =
-d4lab_fprint(g_print$out<>(), dlab)
+d4lab_fprint(dlab, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 g_print<dvtck>(vtck) =
-dvtck_fprint(g_print$out<>(), vtck)
+dvtck_fprint(vtck, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d4pat>(dpat) =
-d4pat_fprint(g_print$out<>(), dpat)
+d4pat_fprint(dpat, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d4exp>(dexp) =
-d4exp_fprint(g_print$out<>(), dexp)
+d4exp_fprint(dexp, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<f4arg>(farg) =
-f4arg_fprint(g_print$out<>(), farg)
+f4arg_fprint(farg, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d4gua>(dgua) =
-d4gua_fprint(g_print$out<>(), dgua)
+d4gua_fprint(dgua, g_print$out<>())
 #impltmp
 g_print<d4gpt>(dgpt) =
-d4gpt_fprint(g_print$out<>(), dgpt)
+d4gpt_fprint(dgpt, g_print$out<>())
 #impltmp
 g_print<d4cls>(dcls) =
-d4cls_fprint(g_print$out<>(), dcls)
+d4cls_fprint(dcls, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d4ecl>(d4cl) =
-d4ecl_fprint(g_print$out<>(), d4cl)
+d4ecl_fprint(d4cl, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<d4valdcl>(dval) =
-d4valdcl_fprint(g_print$out<>(), dval)
+d4valdcl_fprint(dval, g_print$out<>())
 #impltmp
 g_print<d4vardcl>(dvar) =
-d4vardcl_fprint(g_print$out<>(), dvar)
+d4vardcl_fprint(dvar, g_print$out<>())
 #impltmp
 g_print<d4fundcl>(dfun) =
-d4fundcl_fprint(g_print$out<>(), dfun)
+d4fundcl_fprint(dfun, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 g_print<d4parsed>(dpar) =
-d4parsed_fprint(g_print$out<>(), dpar)
+d4parsed_fprint(dpar, g_print$out<>())
 //
 (* ****** ****** *)
 //
@@ -1678,18 +1682,18 @@ endlet // end-of-[g_print<teqd4exp>(tdxp)]
 //
 #impltmp
 g_print<d4lft>(dlft) =
-d4lft_fprint(g_print$out<>(), dlft)//trans34
+d4lft_fprint(dlft, g_print$out<>())//trans34
 //
 #impltmp
 g_print<d4typ>(dtyp) =
-d4typ_fprint(g_print$out<>(), dtyp)//trans34
+d4typ_fprint(dtyp, g_print$out<>())//trans34
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print1<linstk>(stk0) =
 linstk_fprint1
-( g_print$out<>( (*nil*) ), stk0 )//trans34
+( stk0 , g_print$out<>( (*nil*) ) )//trans34
 //
 (* ****** ****** *)
 (* ****** ****** *)

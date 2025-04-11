@@ -320,9 +320,9 @@ val T0IDALP_NONE : tnode
 (* ****** ****** *)
 //
 fun//<>
-tnode_fprint(FILR, tnode): void
+tnode_fprint(tnode, FILR): void
 fun//<>
-token_fprint(FILR, token): void
+token_fprint(token, FILR): void
 //
 (* ****** ****** *)
 //

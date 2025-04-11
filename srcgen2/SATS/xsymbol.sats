@@ -84,7 +84,7 @@ symbl_cmp(symbl, symbl): sint
 //
 fun//<>
 symbl_fprint
-(out: FILR, sym: symbl): void
+(sym0: symbl, filr: FILR): void
 //
 (* ****** ****** *)
 //

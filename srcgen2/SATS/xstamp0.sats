@@ -69,7 +69,7 @@ stamp_cmp(stamp, stamp): sint
 (* ****** ****** *)
 //
 fun//<>
-stamp_fprint(FILR, stamp): void
+stamp_fprint(stamp, FILR): void
 //
 (* ****** ****** *)
 //

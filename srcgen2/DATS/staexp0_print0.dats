@@ -63,7 +63,7 @@ _(*?*) = "./lexing0_print0.dats"
 
 #implfun
 t0int_fprint
-(out, int) =
+( int, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -81,7 +81,7 @@ end (*let*) // end of [t0int_fprint]
 
 #implfun
 t0chr_fprint
-(out, chr) =
+( chr, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -99,7 +99,7 @@ end (*let*) // end of [t0chr_fprint]
 
 #implfun
 t0flt_fprint
-(out, flt) =
+( flt, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -117,7 +117,7 @@ end (*let*) // end of [t0flt_fprint]
 
 #implfun
 t0str_fprint
-(out, str) =
+( str, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -135,7 +135,7 @@ end (*let*) // end of [t0str_fprint]
 
 #implfun
 i0dnt_fprint
-(out, id0) =
+( id0, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -154,7 +154,7 @@ end (*let*) // end of [i0dnt_fprint]
 
 #implfun
 l0abl_fprint
-(out, lab) =
+( lab, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -173,7 +173,7 @@ end (*let*) // end of [l0abl_fprint]
 
 #implfun
 s0ymb_fprint
-(out, sym) =
+( sym, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -206,7 +206,7 @@ s0lab_fprint
 //
 #implfun
 s0qid_fprint
-(out, qid) =
+( qid, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -223,7 +223,7 @@ end (*let*) // end of [s0qid_fprint]
 //
 #implfun
 d0qid_fprint
-(out, qid) =
+( qid, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -242,7 +242,7 @@ end (*let*) // end of [d0qid_fprint]
 
 #implfun
 g0nam_fprint
-(out, g0n) =
+( g0n, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -283,13 +283,13 @@ G0Ntkerr(tok) =>
 (
   prints("G0Ntkerr(", tok, ")"))//G0Ntkerr
 //
-end (*let*) // end of [g0nam_fprint(out,g0n)]
+end (*let*) // end of [g0nam_fprint(g0n,out)]
 
 (* ****** ****** *)
 
 #implfun
 g0exp_fprint
-(out, g0e) =
+( g0e, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -341,15 +341,15 @@ G0Etkerr(tok) =>
 G0Eerrck
 (lvl(*err*),ge1) =>
 (
-  prints("G0Eerrck(",lvl,";",ge1,")"))//errck
+prints("G0Eerrck(",lvl,";",ge1,")"))//errck
 //
-end (*let*) // end of [g0exp_fprint(out, g0e)]
+end (*let*) // end of [g0exp_fprint(g0e,out)]
 
 (* ****** ****** *)
 
 #implfun
 g0mag_fprint
-(out, gma) =
+( gma, out ) =
 (
 case+
 gma.node() of
@@ -371,13 +371,13 @@ prints
 ) where
 {
   #impltmp g_print$out<>() = out
-} (*where*) // end of [g0mag_fprint(out, gma)]
+} (*where*) // end of [g0mag_fprint(gma,out)]
 
 (* ****** ****** *)
 
 #implfun
 sort0_fprint
-( out, s0t ) =
+( s0t, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -422,49 +422,49 @@ S0Terrck
 (
   prints("S0Terrck(",lvl,";",st1,")"))
 //
-end (*let*)//end-of-[sort0_fprint(out,s0t)]
+end (*let*)//end-of-[sort0_fprint(s0t,out)]
 
 (* ****** ****** *)
 
 #implfun
 s0tcn_fprint
-( out, tcn ) =
+( stcn, out ) =
 let
 #impltmp
 g_print$out<>() = out
 in//let
 //
 case+
-tcn.node() of
+stcn.node() of
 |
 S0TCNnode(id0, stq) =>
 prints("S0TCNnode(",id0,";",stq,")")
-end (*let*) // end of [s0tcn_fprint]
+end (*let*) // end of [s0tcn_fprint(...)]
 
 (* ****** ****** *)
 
 #implfun
 d0tst_fprint
-( out, dst ) =
+( dtst, out ) =
 let
 #impltmp
 g_print$out<>() = out
 in//let
 //
 case+
-dst.node() of
+dtst.node() of
 |
 D0TSTnode(tid0,teq1,topt,stcs) =>
 (
 prints("D0TSTnode(",tid0);
 prints(";",teq1,";",topt,";",stcs,")"))
-end (*let*) // end of [d0tst_fprint]
+end (*let*) // end of [d0tst_fprint(...)]
 
 (* ****** ****** *)
 
 #implfun
 s0arg_fprint
-( out, s0a ) =
+( s0a, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -485,7 +485,7 @@ end (*let*) // end of [s0arg_fprint]
 
 #implfun
 t0arg_fprint
-( out, t0a ) =
+( t0a, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -506,7 +506,7 @@ end (*let*) // end of [t0arg_fprint(out,t0a)]
 
 #implfun
 s0mag_fprint
-( out, s0m ) =
+( s0m, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -525,13 +525,13 @@ S0MAGlist(tbeg, s0as, tend) =>
 prints
 ("S0MAGlist(",tbeg,";",s0as,";",tend,")")
 //
-end (*let*)//end of [s0mag_fprint(out,s0m)]
+end (*let*)//end of [s0mag_fprint(s0m,out)]
 
 (* ****** ****** *)
 
 #implfun
 t0mag_fprint
-( out, t0m ) =
+( t0m, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -552,13 +552,13 @@ T0MAGlist(tbeg, t0as, tend) =>
 prints
 ("T0MAGlist(",tbeg,";",t0as,";",tend,")")
 //
-end (*let*)//end of [t0mag_fprint(out,t0m)]
+end (*let*)//end of [t0mag_fprint(t0m,out)]
 
 (* ****** ****** *)
 
 #implfun
 s0qua_fprint
-( out, s0q ) =
+( s0q, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -573,13 +573,13 @@ prints("S0QUAprop(", s0e, ")")
 S0QUAvars(ids, tres) =>
 prints("S0QUAvars(", ids, ";", tres, ")")
 //
-end (*let*)//end of [s0qua_fprint(out,s0q)]
+end (*let*)//end of [s0qua_fprint(s0q,out)]
 
 (* ****** ****** *)
 
 #implfun
 s0exp_fprint
-( out, s0e ) =
+( s0e, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -687,13 +687,13 @@ S0Eerrck
 (
   prints("S0Eerrck(", lvl, ";", se1,")"))
 //
-end (*let*) // end-of-[ s0exp_fprint(out, s0e) ]
+end (*let*) // end-of-[ s0exp_fprint(s0e,out) ]
 
 (* ****** ****** *)
 
 #implfun
 s0tdf_fprint
-( out, stdf ) =
+( stdf, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -713,13 +713,13 @@ S0TDFtsub
 print("S0TDFtsub(");
 prints(tbeg,";",s0a1,";"); prints(tbar,";",s0es,";",tend,")"))
 //
-end (*let*) // end of [s0tdf_fprint(out,stdf)]
+end (*let*) // end of [s0tdf_fprint(stdf,out)]
 
 (* ****** ****** *)
 
 #implfun
 g0exp_THEN_fprint
-  (out, gthn) =
+  ( gthn, out ) =
 (
 case+ gthn of
 |
@@ -728,10 +728,10 @@ prints("g0exp_THEN(", tok, ";", g0e, ")")
 ) where
 {
   #impltmp g_print$out<>() = out
-} (*where*) // end of [g0exp_THEN_fprint(out,gthn)]
+} (*where*) // end of [g0exp_THEN_fprint(gthn,out)]
 #implfun
 g0exp_ELSE_fprint
-  (out, gels) =
+  ( gels, out ) =
 (
 case+ gels of
 |
@@ -740,13 +740,13 @@ prints("g0exp_ELSE(", tok, ";", g0e, ")")
 ) where
 {
   #impltmp g_print$out<>() = out
-} (*where*) // end of [g0exp_ELSE_fprint(out,gels)]
+} (*where*) // end of [g0exp_ELSE_fprint(gels,out)]
 
 (* ****** ****** *)
 
 #implfun
 s0exp_RPAREN_fprint
-  (out, srp) =
+  ( srp, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -758,13 +758,13 @@ case+ srp of
 |s0exp_RPAREN_cons1(tok1, s0es, tok2) =>
 (
  prints("s0exp_RPAREN_cons1(",tok1,";",s0es,";",tok2,")"))
-end (*let*) // end of [s0exp_RPAREN_fprint(out,srp)]
+end (*let*) // end of [s0exp_RPAREN_fprint(srp,out)]
 
 (* ****** ****** *)
 
 #implfun
 l0s0e_RBRACE_fprint
-  (out, lsrb) =
+  ( lsrb, out ) =
 let
 //
 #impltmp
@@ -778,13 +778,13 @@ case+ lsrb of
 |l0s0e_RBRACE_cons1(tok1, lses, tok2) =>
 (
  prints("l0s0e_RBRACE_cons1(",tok1,";",lses,";",tok2,")"))
-end (*let*) // end of [l0s0e_RBRACE_fprint(out,lsrb)]
+end (*let*) // end of [l0s0e_RBRACE_fprint(lsrb,out)]
 
 (* ****** ****** *)
 
 #implfun
 s0uni_fprint
-  (out, s0u) =
+( s0u, out ) =
 let
 //
 #impltmp
@@ -801,45 +801,45 @@ s0u.node() of
 (
  prints("S0UNIsome(",tbeg,";",s0qs,";",tend,")"))
 //
-end (*let*) // end of [s0uni_fprint(out,s0u)]
+end (*let*) // end of [s0uni_fprint(s0u,out)]
 
 (* ****** ****** *)
 
 #implfun
 d0tcn_fprint
-( out, tcn ) =
+( dtcn, out ) =
 let
 #impltmp
 g_print$out<>() = out
 in//let
 //
 case+
-tcn.node() of
+dtcn.node() of
 |D0TCNnode
 (s0us, deid, s0is, tres) =>
 (
 print("D0TCNnode(");
 prints(s0us,";",deid,";",s0is,";",tres,")"))
-end (*let*) // end of [d0tcn_fprint(out,tcn)]
+end (*let*) // end of [d0tcn_fprint(dtcn,out)]
 
 (* ****** ****** *)
 
 #implfun
 d0typ_fprint
-( out, typ ) =
+( dtyp, out ) =
 let
 #impltmp
 g_print$out<>() = out
 in//let
 //
 case+
-typ.node() of
+dtyp.node() of
 |D0TYPnode
 (deid, tmas, tres, teq1, dtcs) =>
 (
 prints("D0TYPnode(",deid,";");
 prints(tmas,";",tres,";",teq1,";",dtcs,")"))
-end (*let*) // end of [d0typ_fprint(out,typ)]
+end (*let*) // end of [d0typ_fprint(dtyp,out)]
 
 (* ****** ****** *)
 (* ****** ****** *)

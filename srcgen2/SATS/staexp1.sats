@@ -107,7 +107,7 @@ s0lab(x0:t0) = $S0E.s0lab(x0)
 fun
 <x0:type>
 s1lab_fprint
-(out: FILR, lab: s1lab(x0)): void
+(lab: s1lab(x0), out: FILR): void
 //
 (* ****** ****** *)
 //
@@ -213,9 +213,9 @@ G1Eerrck of (int(*lvl*), g1exp)//HX:tread-error
 //
 (* ****** ****** *)
 fun
-g1nam_fprint:(FILR,g1nam)->void
+g1nam_fprint:(g1nam,FILR)->void
 fun
-g1exp_fprint:(FILR,g1exp)->void
+g1exp_fprint:(g1exp,FILR)->void
 (* ****** ****** *)
 fun
 g1exp_get_lctn(g1exp): loc_t
@@ -258,9 +258,9 @@ where
 }
 (* ****** ****** *)
 fun
-g1arg_fprint:(FILR,g1arg)->void
+g1arg_fprint:(g1arg,FILR)->void
 fun
-g1mag_fprint:(FILR,g1mag)->void
+g1mag_fprint:(g1mag,FILR)->void
 (* ****** ****** *)
 fun
 g1arg_get_lctn(g1arg): loc_t
@@ -374,8 +374,8 @@ d1qid_get_lctn(d1qid): loc_t
 #symload lctn with s1qid_get_lctn
 #symload lctn with d1qid_get_lctn
 //
-fun s1qid_fprint:(FILR,s1qid)->void
-fun d1qid_fprint:(FILR,d1qid)->void
+fun s1qid_fprint:(s1qid,FILR)->void
+fun d1qid_fprint:(d1qid,FILR)->void
 //
 (* ****** ****** *)
 //
@@ -416,7 +416,7 @@ S1Terrck of (int(*lvl*), sort1)//HX:tread-error
 (* ****** ****** *)
 //
 fun
-sort1_fprint:(FILR,sort1)->void
+sort1_fprint:(sort1,FILR)->void
 //
 (* ****** ****** *)
 //
@@ -506,7 +506,7 @@ S1Eerrck of (int(*lvl*), s1exp)//HX:tread-error
 (* ****** ****** *)
 //
 fun
-s1exp_fprint:(FILR,s1exp)->void
+s1exp_fprint:(s1exp,FILR)->void
 //
 (* ****** ****** *)
 //
@@ -543,7 +543,7 @@ S1TCNnode of (token, sort1opt)
 //
 (* ****** ****** *)
 fun
-s1tcn_fprint:(FILR,s1tcn)->void
+s1tcn_fprint:(s1tcn,FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -570,7 +570,7 @@ D1TSTnode of
 //
 (* ****** ****** *)
 fun
-d1tst_fprint:(FILR,d1tst)->void
+d1tst_fprint:(d1tst,FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -599,7 +599,7 @@ S1TDFtsub of (s1arg, s1explst)
 //
 (* ****** ****** *)
 fun
-s1tdf_fprint:(FILR,s1tdf)->void
+s1tdf_fprint:(s1tdf,FILR)->void
 (* ****** ****** *)
 fun
 s1tdf_get_lctn(s1tdf): loc_t
@@ -625,7 +625,7 @@ S1ARGsome of (token, sort1opt)
 //
 (* ****** ****** *)
 fun
-s1arg_fprint:(FILR,s1arg)->void
+s1arg_fprint:(s1arg,FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -651,7 +651,7 @@ S1MAGlist of (s1arglst)
 //
 (* ****** ****** *)
 fun
-s1mag_fprint:(FILR,s1mag)->void
+s1mag_fprint:(s1mag,FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -685,7 +685,7 @@ T1ARGsome of (sort1, tokenopt)
 //
 (* ****** ****** *)
 fun
-t1arg_fprint:(FILR,t1arg)->void
+t1arg_fprint:(t1arg,FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -716,7 +716,7 @@ T1MAGlist of t1arglst(*arglst*)
 //
 (* ****** ****** *)
 fun
-t1mag_fprint:(FILR,t1mag)->void
+t1mag_fprint:(t1mag,FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -749,7 +749,7 @@ S1QUAvars of
 //
 (* ****** ****** *)
 fun
-s1qua_fprint:(FILR,s1qua)->void
+s1qua_fprint:(s1qua,FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -776,7 +776,7 @@ S1UNIsome of (s1qualst)
 //
 (* ****** ****** *)
 fun
-s1uni_fprint:(FILR,s1uni)->void
+s1uni_fprint:(s1uni,FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -807,7 +807,7 @@ D1TCNnode of
 //
 (* ****** ****** *)
 fun
-d1tcn_fprint:(FILR,d1tcn)->void
+d1tcn_fprint:(d1tcn,FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -837,7 +837,7 @@ D1TYPnode of
 //
 (* ****** ****** *)
 fun
-d1typ_fprint:(FILR,d1typ)->void
+d1typ_fprint:(d1typ,FILR)->void
 (* ****** ****** *)
 //
 fun

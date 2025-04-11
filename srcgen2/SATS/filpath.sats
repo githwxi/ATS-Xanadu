@@ -144,15 +144,17 @@ fun
 fpath_make_relative
 ( gvn0: strn
 , fnm1: strn): fpath // relative
-#symload
-fpath with fpath_make_absolute of 0
-#symload
-fpath with fpath_make_relative of 0
+#symload fpath
+with fpath_make_absolute // of 0
+#symload fpath
+with fpath_make_relative // of 0
 //
 (* ****** ****** *)
 //
-fun drpth_fprint(FILR, drpth): void
-fun fpath_fprint(FILR, fpath): void
+fun
+drpth_fprint(drpth, FILR): void
+fun
+fpath_fprint(fpath, FILR): void
 //
 (* ****** ****** *)
 //
@@ -169,7 +171,7 @@ fnameopt_vt = optn_vt(fname)
 //
 (* ****** ****** *)
 fun
-fname_fprint(FILR, fname): void
+fname_fprint(fname, FILR): void
 (* ****** ****** *)
 fun
 fsrch_absolute(base: strn): fpathopt

@@ -85,9 +85,9 @@ _(*DATS*)="./../DATS/xats2js.dats"
 //
 fun
 fprintln
-(out: FILR): void =
+(out0: FILR): void =
 (
- strn_fprint(out,"\n"))//endfun
+ strn_fprint("\n",out0))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -167,7 +167,7 @@ envx2js_get_nind(env0)
 in//let
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-i1dcl_fprint(filr, dcl0); fprintln(filr)
+i1dcl_fprint(dcl0, filr); fprintln(filr)
 end//let
 //
 (* ****** ****** *)
@@ -191,7 +191,7 @@ in//let
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
 loctn_fprint
-(filr, loc0); fprintln(filr) end
+(loc0, filr); fprintln(filr) end
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -650,7 +650,7 @@ xats2js_dimpl
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
 dimpl_fprint
-(filr, dimp); fprintln(filr)
+(dimp, filr); fprintln(filr)
 //
 ) where
 {
@@ -800,7 +800,7 @@ i1valdcl_get_dpat(iprv)
 in//let
 nindstrnfpr
 (filr, nind, "// I1PRVDCL: ");
-i1bnd_fprint(filr, dpat); fprintln(filr)
+i1bnd_fprint(dpat, filr); fprintln(filr)
 end(*let*)//end-of-[xats2js_i1prvdcl(env0,iprv)]
 //
 (* ****** ****** *)
@@ -970,7 +970,7 @@ i1fundcl_get_dpid(iprf)
 in//let
 nindstrnfpr
 (filr, nind, "// I1PRFDCL: ");
-d2var_fprint(filr, dvar); fprintln(filr)
+d2var_fprint(dvar, filr); fprintln(filr)
 end(*let*)//end-of-[xats2js_i1prfdcl(env0,iprf)]
 //
 (* ****** ****** *)

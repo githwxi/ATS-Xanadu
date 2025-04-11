@@ -53,7 +53,7 @@ _(*?*) = "./xsymbol_print0.dats"
 //
 #implfun
 label_fprint
-(out, lab) =
+( lab, out ) =
 (
 case+ lab of
 | LABint(int) =>

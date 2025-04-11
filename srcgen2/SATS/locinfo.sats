@@ -75,7 +75,7 @@ lcsrc =
 (* ****** ****** *)
 fun
 lcsrc_fprint
-(out:FILR,src:lcsrc): void
+(src:lcsrc, out:FILR): void
 (* ****** ****** *)
 //
 #abstbox postn_tbox
@@ -113,7 +113,7 @@ postn_make_int3
 //
 (* ****** ****** *)
 fun
-postn_fprint: (FILR, postn) -> void
+postn_fprint: (postn, FILR) -> void
 (* ****** ****** *)
 //
 fun loctn_get_lsrc(loctn): lcsrc
@@ -129,7 +129,7 @@ fun
 loctn_dummy(): loctn
 (* ****** ****** *)
 fun
-loctn_fprint: (FILR, loctn) -> void
+loctn_fprint: (loctn, FILR) -> void
 (* ****** ****** *)
 fun
 loctn_make_arg3

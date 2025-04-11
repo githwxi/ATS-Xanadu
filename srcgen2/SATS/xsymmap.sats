@@ -94,10 +94,14 @@ topmap_strmize
 //
 fun
 <x0:t0>
-topmap_fprint(FILR,topmap(x0)):void
+topmap_fprint
+( map
+: topmap(x0), out:FILR):void
 fun
 <x0:t0>
-stkmap_fprint1(FILR,!stkmap(x0)):void
+stkmap_fprint1
+( map:
+! stkmap(x0), out:FILR):void
 //
 (* ****** ****** *)
 //

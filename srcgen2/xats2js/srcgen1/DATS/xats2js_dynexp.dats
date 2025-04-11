@@ -78,26 +78,26 @@ _(*DATS*)="./../DATS/xats2js.dats"
 //
 fun
 fprintln
-(out: FILR): void =
+(out0: FILR): void =
 (
- strn_fprint(out,"\n"))//endfun
+ strn_fprint("\n",out0))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 i1bndfpr
-( out: FILR
+( out0: FILR
 , ibnd: i1bnd): void =
 (
- i1bnd_fprint(out, ibnd))//endfun
+ i1bnd_fprint(ibnd, out0))//endfun
 //
 fun
 i1gptfpr
-(out: FILR
+(out0: FILR
 ,igpt: i1gpt): void =
 (
- i1gpt_fprint(out, igpt))//endfun
+ i1gpt_fprint(igpt, out0))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -107,8 +107,7 @@ i1valfpr
 ( filr: FILR
 , ival: i1val): void =
 (
-  i1val_fprint( filr, ival )
-)(*where*)//end-of-[i1valfpr(env0,ival)]
+ i1val_fprint(ival, filr))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -316,13 +315,13 @@ nindfpr
 (*
 |I1INStup0 _ => 
 (
- i1ins_fprint(filr, iins))
+ i1ins_fprint(iins, filr))
 |I1INStup1 _ => 
 (
- i1ins_fprint(filr, iins))
+ i1ins_fprint(iins, filr))
 |I1INSrcd2 _ => 
 (
- i1ins_fprint(filr, iins))
+ i1ins_fprint(iins, filr))
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -387,7 +386,8 @@ nindfpr
 //
 |_(*rest-of-I1INS...*) =>
 (
-  i1ins_fprint(filr, iins)))
+  i1ins_fprint(iins, filr)))
+(*case+*)//end-of-[i1insfpr(...)]
 //
 (* ****** ****** *)
 //

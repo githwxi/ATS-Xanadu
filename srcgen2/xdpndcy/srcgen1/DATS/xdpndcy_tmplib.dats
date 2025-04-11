@@ -134,6 +134,12 @@ d2ecl_fprint
 case+
 d2cl.node() of
 //
+| D2Cinclude
+( stdy, tokn
+, gsrc, fopt, dopt) =>
+(
+  g1exp_fprint(gsrc, out0))
+//
 | D2Cstaload
 ( stdy, tokn
 , gsrc, fopt, sopt) =>

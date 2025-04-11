@@ -154,7 +154,7 @@ d1lab_get_itm
 fun
 <x0:type>
 d1lab_fprint
-(out:FILR, lab:d1lab(x0)): void
+(lab:d1lab(x0), out:FILR): void
 //
 (* ****** ****** *)
 //
@@ -329,7 +329,7 @@ D1Perrck of (sint(*lvl*), d1pat)//HX:tread01-error
 //
 (* ****** ****** *)
 fun
-d1pat_fprint:(FILR,d1pat)->void
+d1pat_fprint:(d1pat, FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -367,7 +367,7 @@ f1arg_node =
 //
 (* ****** ****** *)
 fun
-f1arg_fprint:(FILR,f1arg)->void
+f1arg_fprint:(f1arg, FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -441,11 +441,11 @@ d1gpt_node =
 (* ****** ****** *)
 //
 fun
-d1gua_fprint:(FILR,d1gua)->void
+d1gua_fprint:(d1gua, FILR)->void
 fun
-d1gpt_fprint:(FILR,d1gpt)->void
+d1gpt_fprint:(d1gpt, FILR)->void
 fun
-d1cls_fprint:(FILR,d1cls)->void
+d1cls_fprint:(d1cls, FILR)->void
 //
 (* ****** ****** *)
 //
@@ -636,23 +636,23 @@ s1res =
 //
 (* ****** ****** *)
 fun
-d1exp_fprint:(FILR,d1exp)->void
+d1exp_fprint:(d1exp, FILR)->void
 (* ****** ****** *)
 //
 fun
-s1eff_fprint:(FILR,s1eff)->void
+s1eff_fprint:(s1eff, FILR)->void
 fun
-s1res_fprint:(FILR,s1res)->void
+s1res_fprint:(s1res, FILR)->void
 //
 (* ****** ****** *)
 fun
-t1qua_fprint: (FILR, t1qua)->void
+t1qua_fprint: (t1qua, FILR)->void
 fun
-t1inv_fprint: (FILR, t1inv)->void
+t1inv_fprint: (t1inv, FILR)->void
 (* ****** ****** *)
 fun
 f1unarrw_fprint
-(out: FILR, arrw: f1unarrw): void
+(arrw: f1unarrw, out: FILR): void
 (* ****** ****** *)
 //
 fun
@@ -706,11 +706,11 @@ T1QAGnone of token
 //
 (* ****** ****** *)
 fun
-q1arg_fprint(FILR, q1arg): void
+q1arg_fprint(q1arg, FILR): void
 fun
-s1qag_fprint(FILR, s1qag): void
+s1qag_fprint(s1qag, FILR): void
 fun
-t1qag_fprint(FILR, t1qag): void
+t1qag_fprint(t1qag, FILR): void
 (* ****** ****** *)
 //
 fun
@@ -762,7 +762,7 @@ T1IAGnone of token
 //
 (* ****** ****** *)
 fun
-t1iag_fprint(FILR, t1iag): void
+t1iag_fprint(t1iag, FILR): void
 (* ****** ****** *)
 fun
 t1iag_get_lctn(t1iag): loc_t
@@ -801,9 +801,9 @@ HX-2022-07-25:
 Directly implemented in xatsopt_tmplib
 *)
 fun
-teqd1exp_fprint:(FILR, teqd1exp)->void
+teqd1exp_fprint:(teqd1exp, FILR)->void
 fun
-wths1exp_fprint:(FILR, wths1exp)->void
+wths1exp_fprint:(wths1exp, FILR)->void
 *)
 (* ****** ****** *)
 //
@@ -968,13 +968,14 @@ where
 //
 (* ****** ****** *)
 fun
-d1ecl_fprint:(FILR,d1ecl)->void
+d1ecl_fprint:(d1ecl, FILR)->void
 (* ****** ****** *)
 fun
-a1tdf_fprint:(FILR,a1tdf)->void
+a1tdf_fprint:(a1tdf, FILR)->void
 (* ****** ****** *)
 fun
-wd1eclseq_fprint:(FILR,wd1eclseq)->void
+wd1eclseq_fprint
+(wdcls:wd1eclseq,out0:FILR): void
 (* ****** ****** *)
 //
 fun
@@ -1029,9 +1030,9 @@ where
 (* ****** ****** *)
 //
 fun
-a1typ_fprint(FILR, a1typ): void
+a1typ_fprint(a1typ, FILR): void
 fun
-d1arg_fprint(FILR, d1arg): void
+d1arg_fprint(d1arg, FILR): void
 //
 (* ****** ****** *)
 fun
@@ -1059,13 +1060,13 @@ d1arg_make_node
 (* ****** ****** *)
 fun
 d1valdcl_fprint
-(out: FILR, dval: d1valdcl): void
+(dval: d1valdcl, out: FILR): void
 fun
 d1vardcl_fprint
-(out: FILR, dvar: d1vardcl): void
+(dvar: d1vardcl, out: FILR): void
 fun
 d1fundcl_fprint
-(out: FILR, dfun: d1fundcl): void
+(dfun: d1fundcl, out: FILR): void
 (* ****** ****** *)
 fun
 d1valdcl_get_lctn:(d1valdcl)->loc_t
@@ -1164,7 +1165,7 @@ D1CSTDCL of @{
 //
 fun
 d1cstdcl_fprint
-(out: FILR, dcst: d1cstdcl): void
+(dcst: d1cstdcl, out: FILR): void
 //
 (* ****** ****** *)
 //
@@ -1211,7 +1212,7 @@ D1TOPENV of
 //
 fun
 d1parsed_fprint
-(out: FILR, dpar: d1parsed): void
+(dpar: d1parsed, out: FILR): void
 //
 fun
 d1parsed_get_stadyn:(d1parsed)->sint

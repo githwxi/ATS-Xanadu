@@ -58,7 +58,7 @@ ATS_PACKNAME
 //
 #implfun
 lcsrc_fprint
-  (out, src) = let
+( src, out ) = let
 //
 #impltmp
 g_print$out<>() = out
@@ -79,7 +79,7 @@ end (*let*) // end of [lcsrc_fprint]
 
 #implfun
 postn_fprint
-  (out, pos) = let
+( pos, out ) = let
 //
 val ntot = pos.ntot()
 val nrow = pos.nrow()
@@ -99,7 +99,7 @@ end(*let*)//end of [postn_fprint(...)]
 
 #implfun
 loctn_fprint
-  (out, loc) = let
+( loc, out ) = let
 //
 val lsrc = loc.lsrc()
 val pbeg = loc.pbeg()
@@ -111,7 +111,7 @@ in//let
 (
 prints
 (lsrc, "@(", pbeg, "--", pend, ")"))
-end(*let*)//end of [loctn_fprint(out,loc)]
+end(*let*)//end of [loctn_fprint(loc,out)]
 
 (* ****** ****** *)
 (* ****** ****** *)

@@ -138,7 +138,7 @@ x2t2p with x2t2p_make_lctn
 //
 (* ****** ****** *)
 fun
-x2t2p_fprint(FILR,x2t2p): void
+x2t2p_fprint(x2t2p,FILR): void
 (* ****** ****** *)
 //
 fun
@@ -293,7 +293,7 @@ s2typ_dataq(s2typ): bool
 (* ****** ****** *)
 //
 fun
-s2typ_fprint:(FILR,s2typ)->void
+s2typ_fprint:(s2typ, FILR)->void
 //
 (* ****** ****** *)
 fun

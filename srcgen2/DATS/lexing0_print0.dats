@@ -60,9 +60,9 @@ ATS_PACKNAME
 #implfun
 //<>(*tmp*)
 token_fprint
-  (out, tok) =
+( tok, out ) =
 (
-tnode_fprint(out, tok.node())
+tnode_fprint(tok.node(), out)
 )(*end-of-[token_fprint(...)]*)
 //
 (* ****** ****** *)
@@ -71,7 +71,7 @@ tnode_fprint(out, tok.node())
 #implfun
 //<>(*tmp*)
 tnode_fprint
-  (out, tnd) =
+( tnd, out ) =
 (
 case+ tnd of
 //
@@ -548,7 +548,7 @@ if
 then loop2(i0+1) else
 (
 char_fprint
-(out,  c0 ); loop1(i0+1))
+(c0 , out ); loop1(i0+1))
 end//let//end-of-[loop1(i0)]
 //
 and
@@ -559,7 +559,7 @@ if
 then
 (
 char_fprint
-(out, '\\')) else
+('\\', out)) else
 let
   val c1 = rep[i1]
 in (*let*)
@@ -568,16 +568,16 @@ if
 then loop1(i1+1) else
 (
 char_fprint
-(out, '\\');
+('\\', out);
 char_fprint
-(out,  c1 ); loop1(i1+1))
+( c1 , out); loop1(i1+1))
 end//let//end-of-[loop1(i1)]
 //
 in
   let val i0 = 0 in loop1(i0) end
 end(*let*)//end-of-(my_strn_print(rep))
 //
-}(*where*)//end-of(tnode_fprint(out,node))
+}(*where*)//end-of(tnode_fprint(node,out))
 //
 (* ****** ****** *)
 (* ****** ****** *)

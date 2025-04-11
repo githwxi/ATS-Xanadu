@@ -66,7 +66,7 @@ _(*?*) = "./lexing0_print0.dats"
 
 #implfun
 d4lft_fprint
-(out, lft0) =
+( lft0, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -81,7 +81,7 @@ case+ lft0 of
 (
  prints("D4LFTvar(", t2p0, ")"))
 //
-end (*let*) // end of [d4lft_fprint(out, lft0)]
+end (*let*) // end of [d4lft_fprint(lft0,out)]
 
 (* ****** ****** *)
 (* ****** ****** *)

@@ -213,8 +213,8 @@ I0LAB of (label, x0(*elt*))
 fun
 <x0:type>
 i0lab_fprint
-( out: FILR
-, lab: i0lab( x0 )): (void)
+(lab
+:i0lab(x0),out:FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -253,7 +253,7 @@ fiarglstopt = optn(fiarglst)
 //
 fun
 fiarg_fprint
-(out:FILR,fia0:fiarg): void
+(fia0:fiarg,out0:FILR): void
 //
 (* ****** ****** *)
 fun
@@ -375,7 +375,7 @@ i0pat_allq(i0p0:i0pat):bool
 //
 fun
 i0pat_fprint
-(out:FILR, i0p0:i0pat): void
+(i0p0:i0pat, out0:FILR): void
 //
 (* ****** ****** *)
 //
@@ -559,7 +559,7 @@ i0exp_node =
 //
 fun
 i0exp_fprint
-(out:FILR, i0e0:i0exp): void
+(i0e0:i0exp, out0:FILR): void
 //
 (* ****** ****** *)
 //
@@ -607,11 +607,11 @@ i0gpt_node =
 (* ****** ****** *)
 //
 fun
-i0gua_fprint:(FILR,i0gua)->void
+i0gua_fprint:(i0gua,FILR)->void
 fun
-i0gpt_fprint:(FILR,i0gpt)->void
+i0gpt_fprint:(i0gpt,FILR)->void
 fun
-i0cls_fprint:(FILR,i0cls)->void
+i0cls_fprint:(i0cls,FILR)->void
 //
 (* ****** ****** *)
 //
@@ -673,8 +673,7 @@ t0imp_node =
 //
 fun
 t0imp_fprint
-(
-  out:FILR, timp:t0imp):(void)
+(timp:t0imp, out0:FILR):(void)
 //
 (* ****** ****** *)
 //
@@ -782,7 +781,7 @@ I0Dimplmnt0 of
 //
 fun
 i0dcl_fprint
-(out:FILR, dcl0:i0dcl): void
+(dcl0:i0dcl, out0:FILR): void
 //
 (* ****** ****** *)
 //
@@ -809,14 +808,14 @@ i0dcl_make_node
 (* ****** ****** *)
 fun
 i0valdcl_fprint
-(out: FILR, ival: i0valdcl): void
+(ival: i0valdcl, out0: FILR): void
 fun
 i0vardcl_fprint
-(out: FILR, ivar: i0vardcl): void
+(ivar: i0vardcl, out0: FILR): void
 (* ****** ****** *)
 fun
 i0fundcl_fprint
-(out: FILR, ifun: i0fundcl): void
+(ifun: i0fundcl, out0: FILR): void
 (* ****** ****** *)
 (* ****** ****** *)
 fun
@@ -889,7 +888,7 @@ i0fundcl_make_args
 //
 fun
 i0parsed_fprint
-(out:FILR, ipar:i0parsed): void
+(ipar:i0parsed, out0:FILR): void
 //
 (* ****** ****** *)
 //

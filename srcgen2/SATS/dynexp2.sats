@@ -294,8 +294,8 @@ d1lab(x0:t0)=$D1E.d1lab(x0)
 fun
 <x0:type>
 d2lab_fprint
-( out
-: FILR, lab: d2lab(x0)): void
+( lab
+: d2lab(x0), out: FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -309,7 +309,7 @@ datatype x2nam =
 //
 fun
 x2nam_fprint
-(out:FILR, xnam:x2nam): void
+(xnam:x2nam, out:FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -364,11 +364,11 @@ val the_d2var_nil: d2var//val
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-d2con_fprint:(FILR,d2con)->void
+d2con_fprint:(d2con, FILR)->void
 fun
-d2cst_fprint:(FILR,d2cst)->void
+d2cst_fprint:(d2cst, FILR)->void
 fun
-d2var_fprint:(FILR,d2var)->void
+d2var_fprint:(d2var, FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -601,18 +601,18 @@ where
 //
 (* ****** ****** *)
 fun
-d2itm_fprint: (FILR,d2itm)->void
+d2itm_fprint:(d2itm, FILR)->void
 fun
-d2ptm_fprint: (FILR,d2ptm)->void
+d2ptm_fprint:(d2ptm, FILR)->void
 (* ****** ****** *)
 fun
-s2qag_fprint: (FILR,s2qag)->void
+s2qag_fprint:(s2qag, FILR)->void
 fun
-t2qag_fprint: (FILR,t2qag)->void
+t2qag_fprint:(t2qag, FILR)->void
 fun
-t2iag_fprint: (FILR,t2iag)->void
+t2iag_fprint:(t2iag, FILR)->void
 fun
-t2jag_fprint: (FILR,t2jag)->void
+t2jag_fprint:(t2jag, FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -768,9 +768,9 @@ D2Pt2pkc of (d2pat, s2typ)//HX: reversed
 //
 (* ****** ****** *)
 fun
-d2pat_fprint:(FILR,d2pat)->void
+d2pat_fprint:(d2pat, FILR)->void
 fun
-d2rpt_fprint:(FILR,d2rpt)->void
+d2rpt_fprint:(d2rpt, FILR)->void
 (* ****** ****** *)
 fun
 d2pat_get_lctn(d2pat): loc_t
@@ -1124,14 +1124,14 @@ s2res =
 //
 (* ****** ****** *)
 fun
-d2exp_fprint:(FILR,d2exp)->void
+d2exp_fprint:(d2exp, FILR)->void
 fun
-d2rxp_fprint:(FILR,d2rxp)->void
+d2rxp_fprint:(d2rxp, FILR)->void
 (* ****** ****** *)
 fun
-s2eff_fprint:(FILR,s2eff)->void
+s2eff_fprint:(s2eff, FILR)->void
 fun
-s2res_fprint:(FILR,s2res)->void
+s2res_fprint:(s2res, FILR)->void
 (* ****** ****** *)
 fun
 d2exp_get_lctn(d2exp): loc_t
@@ -1264,7 +1264,7 @@ F2ARGmets of (s2explst(*mets*))
 (* ****** ****** *)
 //
 fun
-f2arg_fprint:(FILR,f2arg)->void
+f2arg_fprint:(f2arg, FILR)->void
 //
 (* ****** ****** *)
 fun
@@ -1303,11 +1303,11 @@ d2gpt_node =
 (* ****** ****** *)
 //
 fun
-d2gua_fprint:(FILR,d2gua)->void
+d2gua_fprint:(d2gua, FILR)->void
 fun
-d2gpt_fprint:(FILR,d2gpt)->void
+d2gpt_fprint:(d2gpt, FILR)->void
 fun
-d2cls_fprint:(FILR,d2cls)->void
+d2cls_fprint:(d2cls, FILR)->void
 //
 (* ****** ****** *)
 //
@@ -1544,15 +1544,15 @@ S2TALOADdpar of
 //
 (* ****** ****** *)
 fun
-d2ecl_fprint:(FILR,d2ecl)->void
+d2ecl_fprint:(d2ecl, FILR)->void
 (* ****** ****** *)
 fun
-simpl_fprint:(FILR,simpl)->void
+simpl_fprint:(simpl, FILR)->void
 fun
-dimpl_fprint:(FILR,dimpl)->void
+dimpl_fprint:(dimpl, FILR)->void
 (* ****** ****** *)
 fun
-a2tdf_fprint:(FILR,a2tdf)->void
+a2tdf_fprint:(a2tdf, FILR)->void
 (* ****** ****** *)
 fun
 d2ecl_get_lctn(d2ecl): ( loc_t )
@@ -1635,7 +1635,7 @@ D2ARGdyn2 of (sint(*npf*), s2explst)
 //
 (* ****** ****** *)
 fun
-d2arg_fprint:(FILR,d2arg)->void
+d2arg_fprint:(d2arg, FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -1678,18 +1678,18 @@ s2cst_set_d2cs
 (* ****** ****** *)
 fun
 d2valdcl_fprint
-(out: FILR, dval: d2valdcl): void
+(dval: d2valdcl, out: FILR): void
 fun
 d2vardcl_fprint
-(out: FILR, dvar: d2vardcl): void
+(dvar: d2vardcl, out: FILR): void
 (* ****** ****** *)
 fun
 d2fundcl_fprint
-(out: FILR, dfun: d2fundcl): void
+(dfun: d2fundcl, out: FILR): void
 (* ****** ****** *)
 fun
 d2cstdcl_fprint
-(out: FILR, dcst: d2cstdcl): void
+(dcst: d2cstdcl, out: FILR): void
 (* ****** ****** *)
 (* ****** ****** *)
 fun
@@ -1858,7 +1858,7 @@ d2expenv with f2env_get_d2expenv
 //
 fun
 d2parsed_fprint
-(out: FILR, dpar: d2parsed):(void)
+(dpar: d2parsed, out: FILR): void
 //
 (* ****** ****** *)
 //

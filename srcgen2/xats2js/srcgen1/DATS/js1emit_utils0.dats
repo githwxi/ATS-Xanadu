@@ -117,7 +117,7 @@ fun
 xsymjs1
 ( filr: FILR
 , xsym: symbl): void =
-symbl_fprint(filr, xsym)
+symbl_fprint(xsym, filr)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -130,7 +130,8 @@ d2confpr(filr, dcon)
 *)
 let
 //
-val name = dcon.name((*0*))
+val
+name = dcon.name((*0*))
 //
 in//let
 (
@@ -277,20 +278,20 @@ f0_char
 (
 case+ ch of
 //
-| '\n' => strn_fprint(filr, "\\n")
-| '\t' => strn_fprint(filr, "\\t")
-| '\r' => strn_fprint(filr, "\\r")
+| '\n' => strn_fprint("\\n", filr)
+| '\t' => strn_fprint("\\t", filr)
+| '\r' => strn_fprint("\\r", filr)
 //
 (*
-| '\a' => strn_fprint(filr, "\\a")
-| '\g' => strn_fprint(filr, "\\g")
+| '\a' => strn_fprint("\\a", filr)
+| '\g' => strn_fprint("\\g", filr)
 *)
 //
-| '\b' => strn_fprint(filr, "\\b")
-| '\f' => strn_fprint(filr, "\\f")
-| '\v' => strn_fprint(filr, "\\v")
+| '\b' => strn_fprint("\\b", filr)
+| '\f' => strn_fprint("\\f", filr)
+| '\v' => strn_fprint("\\v", filr)
 //
-| _(*else*) => char_fprint(filr, ch)
+| _(*else*) => char_fprint(ch, filr)
 )
 }(*where*)//end-of-[i0c00js1(filr,c00)]
 //
@@ -324,7 +325,7 @@ f0_strn
 (cs: strn): void =
 let
 val () =
-  strn_fprint(filr, cs) end//let
+  strn_fprint(cs, filr) end//let
 //
 #impltmp
 g_print$out<(*nil*)>((*void*)) = filr
@@ -450,7 +451,7 @@ if
 then loop2(i0+1) else
 (
 char_fprint
-(filr,  c0 ); loop1(i0+1))
+( c0 , filr); loop1(i0+1))
 end//let//end-of-[loop1(i0)]
 //
 and
@@ -461,7 +462,7 @@ if
 then
 (
 char_fprint
-(filr, '\\')) else
+('\\', filr)) else
 let
   val c1 = rep1[i1]
 in (*let*)
@@ -470,9 +471,9 @@ if
 then loop1(i1+1) else
 (
 char_fprint
-(filr, '\\');
+('\\', filr);
 char_fprint
-(filr,  c1 ); loop1(i1+1))
+( c1 , filr); loop1(i1+1))
 end//let//end-of-[loop1(i1)]
 //
 in

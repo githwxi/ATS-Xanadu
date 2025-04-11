@@ -266,8 +266,8 @@ $(patsubst %.dats, BUILD/JS/%_dats.js, $(SRCDATS))
 ########################################################################
 all:: $(OBJDATS)
 ########################################################################
-libxatsopt:: $(OBJDATS); \
-$(CAT) $(OBJDATS) > lib/libxatsopt.js
+lib1xatsopt:: $(OBJDATS); \
+$(CAT) $(OBJDATS) > lib/lib1xatsopt.js
 ########################################################################
 BUILD/JS/%_dats.js: \
 DATS/%.dats; $(XATS2JS) --output-w $@ --dynamic $<

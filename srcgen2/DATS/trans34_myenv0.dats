@@ -166,7 +166,7 @@ stk0 of ~linstk_nil() => ())
 #impltmp
 g_print1<linstk>(stk0) =
 linstk_fprint1
-(g_print$out<>( (*nil*) ), stk0)
+(stk0, g_print$out<>((*nil*)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1056,7 +1056,7 @@ val () =
 //
 #implfun
 linstk_fprint1
-  (out, stk0) =
+ (stk0, out0) =
 (
 //
 case+ stk0 of
@@ -1105,9 +1105,9 @@ print1(d2v1,";",dtp1,";",stk1,")"))
 {
 //
 #impltmp
-g_print$out<>((*void*)) = (   out   )
+g_print$out<>((*void*)) = (   out0   )
 //
-}(*where*)//endof(linstk_fprint1(out,stk0))
+}(*where*)//endof(linstk_fprint1(stk0,out0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

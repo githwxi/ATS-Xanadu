@@ -58,7 +58,7 @@ ATS_PACKNAME
 
 #implfun
 symbl_fprint
-(out, sym) =
+( sym, out ) =
 ( print(sym.name())
 (*
 ; prints("(", sym.stmp(), ")")

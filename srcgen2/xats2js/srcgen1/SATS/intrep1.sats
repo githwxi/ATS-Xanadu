@@ -77,8 +77,8 @@ I1LAB of (label, x0(*elt*))
 fun
 <x0:type>
 i1lab_fprint
-( out: FILR
-, lab: i1lab( x0 )): (void)
+( lab
+: i1lab(x0),out:FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -193,17 +193,17 @@ i1tnm_new0( (*void*) ): i1tnm
 (* ****** ****** *)
 //
 fun
-i1opr_fprint(FILR, i1opr): void
+i1opr_fprint(i1opr, FILR): void
 //
 (* ****** ****** *)
 //
 (*
 fun
-i1arg_fprint(FILR, i1arg): void
+i1arg_fprint(i1arg, FILR): void
 *)
 //
 fun
-i1tnm_fprint(FILR, i1tnm): void
+i1tnm_fprint(i1tnm, FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -465,18 +465,18 @@ where
 (* ****** ****** *)
 //
 fun
-i1let_fprint:(FILR,i1let)->void
+i1let_fprint:(i1let, FILR)->void
 //
 fun
-i1bnd_fprint:(FILR,i1bnd)->void
+i1bnd_fprint:(i1bnd, FILR)->void
 fun
-i1cmp_fprint:(FILR,i1cmp)->void
+i1cmp_fprint:(i1cmp, FILR)->void
 //
 fun
-i1ins_fprint:(FILR,i1ins)->void
+i1ins_fprint:(i1ins, FILR)->void
 //
 fun
-i1val_fprint:(FILR,i1val)->void
+i1val_fprint:(i1val, FILR)->void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -562,7 +562,7 @@ fjarglstopt = optn(fjarglst)
 //
 fun
 fjarg_fprint
-(out:FILR,farg:fjarg): void
+(farg:fjarg,out0:FILR): void
 //
 (* ****** ****** *)
 fun
@@ -598,13 +598,13 @@ i1gpt_node =
 //
 fun
 i1gua_fprint
-(out:FILR,igua:i1gua): void
+(igua:i1gua, out0:FILR): void
 fun
 i1gpt_fprint
-(out:FILR,igpt:i1gpt): void
+(igpt:i1gpt, out0:FILR): void
 fun
 i1cls_fprint
-(out:FILR,icls:i1cls): void
+(icls:i1cls, out0:FILR): void
 //
 (* ****** ****** *)
 //
@@ -677,8 +677,7 @@ t1imp_i1dclq
 //
 fun
 t1imp_fprint
-(
-  out:FILR, timp:t1imp):(void)
+(timp:t1imp, out0:FILR):(void)
 //
 (* ****** ****** *)
 //
@@ -787,7 +786,8 @@ where
 //
 fun
 i1dcl_fprint
-(out:FILR,idcl:i1dcl): ( void )
+(
+idcl:i1dcl,out0:FILR): ( void )
 //
 (* ****** ****** *)
 //
@@ -814,14 +814,14 @@ i1dcl_make_node
 (* ****** ****** *)
 fun
 i1valdcl_fprint
-(out: FILR, ival: i1valdcl): void
+(ival:i1valdcl, out0:FILR): void
 fun
 i1vardcl_fprint
-(out: FILR, ivar: i1vardcl): void
+(ivar:i1vardcl, out0:FILR): void
 (* ****** ****** *)
 fun
 i1fundcl_fprint
-(out: FILR, ifun: i1fundcl): void
+(ifun:i1fundcl, out0:FILR): void
 (* ****** ****** *)
 (* ****** ****** *)
 fun
@@ -890,7 +890,7 @@ i1fundcl_make_args
 //
 fun
 i1parsed_fprint
-(out:FILR, ipar:i1parsed): void
+(ipar:i1parsed, out0:FILR): void
 //
 (* ****** ****** *)
 //

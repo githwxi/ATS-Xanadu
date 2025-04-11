@@ -60,7 +60,7 @@ ATS_PACKNAME
 #implfun
 //<>(*tmp*)
 dctkind_fprint
-  (out, dck) =
+  (dck, out) =
 (
 case+ dck of
 |
@@ -89,7 +89,7 @@ DCKnspec() => print("DCKnspec")
 #implfun
 //<>(*tmp*)
 valkind_fprint
-  (out, vlk) = let
+  (vlk, out) = let
 //
 #impltmp g_print$out<>() = out
 //
@@ -113,7 +113,7 @@ end(*let*)//end-of(valkind_fprint)
 #implfun
 //<>(*tmp*)
 varkind_fprint
-  (out, vrk) = let
+  (vrk, out) = let
 //
 #impltmp g_print$out<>() = out
 //
@@ -129,7 +129,7 @@ end(*let*)//end-of(varkind_fprint)
 #implfun
 //<>(*tmp*)
 funkind_fprint
-  (out, fnk) = let
+  (fnk, out) = let
 //
 #impltmp g_print$out<>() = out
 //
@@ -157,7 +157,7 @@ end(*let*)//end-of(funkind_fprint)
 #implfun
 //<>(*tmp*)
 caskind_fprint
-  (out, csk) = let
+  (csk, out) = let
 //
 #impltmp g_print$out<>() = out
 //
@@ -180,7 +180,7 @@ end(*let*)//end-of(caskind_fprint)
 #implfun
 //<>(*tmp*)
 implknd_fprint
-  (out, knd) = let
+  (knd, out) = let
 //
 #impltmp g_print$out<>() = out
 //
@@ -209,7 +209,7 @@ end(*let*)//end-of(implknd_fprint(...))
 #implfun
 //<>(*tmp*)
 f2clknd_fprint
-  (out, f2cl) = let
+  (f2cl, out) = let
 //
 #impltmp g_print$out<>() = out
 //
@@ -241,7 +241,7 @@ end(*let*)//end-of(f2clknd_fprint)
 #implfun
 //<>(*tmp*)
 trcdknd_fprint
-  (out, tknd) = let
+  (tknd, out) = let
 //
 #impltmp g_print$out<>() = out
 //
@@ -265,7 +265,7 @@ TRCDflt2
 (  tnm1  ) => print("TRCDflt2(",tnm1,")")
 *)
 //
-end(*let*)//end-of(trcdknd_fprint(out,tknd))
+end(*let*)//end-of(trcdknd_fprint(tknd,out))
 //
 (* ****** ****** *)
 (* ****** ****** *)

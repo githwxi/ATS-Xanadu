@@ -81,7 +81,7 @@ _(*?*) = "./lexing0_print0.dats"
 
 #implfun
 t2abs_fprint
-(out, tabs) =
+( tabs, out ) =
 let
 //
 #impltmp
@@ -94,13 +94,13 @@ val tmp =
 //
 in//let
   prints(sym, "(", tmp, ")")
-end(*let*)//end-of-[t2abs_fprint(out,tabs)]
+end(*let*)//end-of-[t2abs_fprint(tabs,out)]
 
 (* ****** ****** *)
 
 #implfun
 t2dat_fprint
-(out, tdat) =
+( tdat, out ) =
 let
 //
 #impltmp
@@ -113,13 +113,13 @@ val tmp =
 //
 in//let
   prints(sym, "(", tmp, ")")
-end(*let*)//end-of-[t2dat_fprint(out,tdat)]
+end(*let*)//end-of-[t2dat_fprint(tdat,out)]
 
 (* ****** ****** *)
 
 #implfun
 t2bas_fprint
-(out, tbas) =
+( tbas, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -136,13 +136,13 @@ prints("T2Btdat(", tdat, ")")
 |
 T2Bimpr(knd0, name) =>
 prints("T2Bimpr(", knd0, ";", name, ")")
-end (*let*)//end-of-[t2bas_fprint(out,tbas)]
+end (*let*)//end-of-[t2bas_fprint(tbas,out)]
 
 (* ****** ****** *)
 
 #implfun
 sort2_fprint
-(out, s2t0) =
+( s2t0, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -189,13 +189,13 @@ S2Terrck(lvl0,s2t1) =>
 (
   prints("S2Terrck(",lvl0,";",s2t1,")"))
 //
-end (*let*) // end of [sort2_fprint(out, s2t0)]
+end (*let*) // end of [sort2_fprint(s2t0,out)]
 
 (* ****** ****** *)
 
 #implfun
 s2arg_fprint
-(out, s2a0) =
+( s2a0, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -204,17 +204,19 @@ in//let
 case+
 s2a0.node() of
 |S2Avar(s2v1) =>
-prints("S2Avar(", s2v1, ")")
+(
+  prints("S2Avar(", s2v1, ")"))
 |S2Atck(s2v1, s2t2) =>
-prints("S2Atck(",s2v1,";",s2t2,")")
+(
+  prints("S2Atck(",s2v1,";",s2t2,")"))
 //
-end (*let*) // end of [s2arg_fprint(out, s2a0)]
+end (*let*) // end of [s2arg_fprint(s2a0,out)]
 //
 (* ****** ****** *)
 
 #implfun
 s2tex_fprint
-(out, s2tx) =
+( s2tx, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -228,13 +230,13 @@ prints("S2TEXsrt(", s2t1, ")")
 S2TEXsub(s2vs, s2ps) =>
 prints("S2TEXsub(", s2vs, ";", s2ps, ")")
 //
-end (*let*) // end of [s2tex_fprint(out, s2tx)]
+end (*let*) // end of [s2tex_fprint(s2tx,out)]
 
 (* ****** ****** *)
 
 #implfun
 s2cst_fprint
-(out, s2c0) =
+( s2c0, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -243,13 +245,13 @@ in//let
 (*
 ; prints(":", s2cst_get_sort(s2c0))
 *)
-end (*let*)//end of [s2cst_fprint(out, s2c0)]
+end (*let*)//end of [s2cst_fprint(s2c0,out)]
 
 (* ****** ****** *)
 
 #implfun
 s2var_fprint
-(out, s2v0) =
+( s2v0, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -259,13 +261,13 @@ in//let
 (*
 ; prints("[", s2v0.sort(), "]")
 *)
-end (*let*) // end of [s2var_fprint(out, s2v0)]
+end (*let*) // end of [s2var_fprint(s2v0,out)]
 
 (* ****** ****** *)
 
 #implfun
 s2exp_fprint
-(out, s2e0) =
+( s2e0, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -391,13 +393,13 @@ S2Enone2(s2e1) => prints("S2Enone2(",s2e1,")")
 |S2Eerrck // HX: tread-error
 (lvl0,s2e1) => prints("S2Eerrck(",lvl0,";",s2e1,")")
 //
-end (*let*) // end of [s2exp_fprint(out, s2e0)]
+end (*let*) // end of [ s2exp_fprint(s2e0,out) ]
 
 (* ****** ****** *)
 //
 #implfun
 s2itm_fprint
-(out, s2i0) =
+( s2i0, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -416,7 +418,7 @@ prints("S2ITMcst(", s2cs, ")")
 S2ITMenv(envs) =>
 prints("S2ITMenv(", "...", ")")
 //
-end (*let*) // end of [s2itm_fprint(out, s2i0)]
+end (*let*) // end of [s2itm_fprint(s2i0,out)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

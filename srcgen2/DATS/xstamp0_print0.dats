@@ -58,7 +58,7 @@ ATS_PACKNAME
 //
 #implfun
 stamp_fprint
-  (out, tmp) =
+( tmp, out ) =
 (
   print(tmp.uint())) where
 {

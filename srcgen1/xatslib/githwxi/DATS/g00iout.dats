@@ -307,5 +307,9 @@ g_print<dflt>(x0) =
 gflt_fprint$dflt<>(x0, g_print$out<>())
 //
 (* ****** ****** *)
-
-(* end of [ATS3/XANADU_xatslib_githwxi_g00iout.dats] *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+//
+(* end of [ATS3/XANADU_srcgen1_xatslib_githwxi_g00iout.dats] *)
