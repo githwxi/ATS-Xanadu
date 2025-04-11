@@ -105,7 +105,7 @@ val c0 =
 case+ c0 of
 | '$' => '_' | _ => c0)
 in
-  char_fprint(filr, c0) end
+  char_fprint(c0, filr) end
 }
 end // end of [xsympy1(filr,xsym)]
 //
@@ -367,35 +367,35 @@ iforitm$work
 (
 case+ ch of
 | '"' =>
-strn_fprint(filr, "\"")
+strn_fprint("\"", filr)
 (*
 if
 (0 = i0)
 then
-strn_fprint(filr, "\"")
+strn_fprint("\"", filr)
 else
 if
 (i0+1 = len2)
 then
-strn_fprint(filr, "\"")
+strn_fprint("\"", filr)
 else
-strn_fprint(filr, "\\\"")
+strn_fprint("\\\"", filr)
 *)
 //
-| '\n' => strn_fprint(filr, "\\n")
-| '\t' => strn_fprint(filr, "\\t")
-| '\r' => strn_fprint(filr, "\\r")
+| '\n' => strn_fprint("\\n", filr)
+| '\t' => strn_fprint("\\t", filr)
+| '\r' => strn_fprint("\\r", filr)
 //
 (*
-| '\a' => strn_fprint(filr, "\\a")
-| '\g' => strn_fprint(filr, "\\g")
+| '\a' => strn_fprint("\\a", filr)
+| '\g' => strn_fprint("\\g", filr)
 *)
 //
-| '\b' => strn_fprint(filr, "\\b")
-| '\f' => strn_fprint(filr, "\\f")
-| '\v' => strn_fprint(filr, "\\v")
+| '\b' => strn_fprint("\\b", filr)
+| '\f' => strn_fprint("\\f", filr)
+| '\v' => strn_fprint("\\v", filr)
 //
-| _(*else*) => char_fprint(filr, ch)
+| _(*else*) => char_fprint(ch, filr)
 )
 }
 //
