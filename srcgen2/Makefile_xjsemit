@@ -263,7 +263,7 @@ boot:: \
 boot_dats
 boot_dats:: $(OUT0DATS)
 ########################################################################
--include depend_xjsemit
+-include .depend_xjsemit
 ########################################################################
 #
 BUILD/JS/%_sats_out.js: \
