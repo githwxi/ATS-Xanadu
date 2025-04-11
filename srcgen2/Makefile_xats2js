@@ -266,7 +266,7 @@ $(patsubst %.dats, BUILD/JS/%_dats.js, $(SRCDATS))
 ########################################################################
 all:: $(OBJDATS)
 ########################################################################
--include depend_xats2js
+-include .depend_xats2js
 ########################################################################
 lib1xatsopt:: $(OBJDATS); \
 $(CAT) $(OBJDATS) > lib/lib1xatsopt.js
