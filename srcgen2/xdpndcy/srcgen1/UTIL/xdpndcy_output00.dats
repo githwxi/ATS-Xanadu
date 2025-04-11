@@ -38,11 +38,6 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
-(*
-#include
-"./../../..\
-/HATS/xatsopt_dats.hats"
-*)
 #include
 "./../../..\
 /HATS/xatsopt_dpre.hats"
@@ -51,6 +46,8 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../HATS/libxatsopt.hats"
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 //
 #staload "./../SATS/xdpndcy.sats"
@@ -76,6 +73,7 @@ let
 val dpar =
 d2parsed_of_tread20(dpar)
 //
+(*
 val (  ) =
 let
 val
@@ -85,6 +83,7 @@ prerrsln
 ("FPERR20_D2PARSED:");
 fperr20_d2parsed(out, dpar)
 end//let
+*)
 //
 in//let
 //

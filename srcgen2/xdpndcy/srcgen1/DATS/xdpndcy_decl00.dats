@@ -118,7 +118,20 @@ f0_include
 let
 //
 val-
-D2Cinclude _ = d2cl.node()
+D2Cinclude
+( stdy
+, tokn, gsrc
+, fopt, dopt) = d2cl.node()
+//
+(*
+val () =
+(
+case+ dopt of
+| optn_nil() => ()
+| optn_cons(dcls) =>
+(
+  xd2penv_d2eclist(env0, dcls)))
+*)
 //
 val () =
 prerrsln
@@ -135,6 +148,9 @@ let
 //
 val-
 D2Cstaload _ = d2cl.node()
+//
+val ((*0*)) =
+xd2penv_insert$d2ecl(env0, d2cl)
 //
 val () =
 prerrsln
