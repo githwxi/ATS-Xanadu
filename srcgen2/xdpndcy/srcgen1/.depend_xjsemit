@@ -1,0 +1,19 @@
+########################################################################
+########################################################################
+BUILD/JS/xdpndcy_dats_out0.js:: SATS/xdpndcy.sats
+########################################################################
+BUILD/JS/xdpndcy_tmplib_dats_out0.js:: SATS/xdpndcy.sats
+########################################################################
+BUILD/JS/xdpndcy_myenv0_dats_out0.js:: SATS/xdpndcy.sats
+BUILD/JS/xdpndcy_myenv0_dats_out0.js:: DATS/xdpndcy.dats
+BUILD/JS/xdpndcy_myenv0_dats_out0.js:: DATS/xdpndcy_tmplib.dats
+########################################################################
+BUILD/JS/xdpndcy_dynexp_dats_out0.js:: SATS/xdpndcy.sats
+BUILD/JS/xdpndcy_dynexp_dats_out0.js:: DATS/xdpndcy.dats
+BUILD/JS/xdpndcy_dynexp_dats_out0.js:: DATS/xdpndcy_tmplib.dats
+########################################################################
+BUILD/JS/xdpndcy_decl00_dats_out0.js:: SATS/xdpndcy.sats
+BUILD/JS/xdpndcy_decl00_dats_out0.js:: DATS/xdpndcy.dats
+BUILD/JS/xdpndcy_decl00_dats_out0.js:: DATS/xdpndcy_tmplib.dats
+########################################################################
+########################################################################
