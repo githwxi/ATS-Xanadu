@@ -10,7 +10,7 @@ MAKE=make
 NODE=node
 ########################################################################
 ########################################################################
-all:: lib2xats2js
+all:: lib2xats2py
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -22,42 +22,19 @@ cleanall:: ; rm -f BUILD/JS/*_dats_out?.js
 ########################################################################
 SRCGEN2=./../../../srcgen2
 XATS2JS=./../../../srcgen2/xats2js
+XATS2PY=./../../../srcgen2/xats2py
 ########################################################################
 #
 SRCSATS := \
-intrep0.sats \
-intrep1.sats \
-trxd3i0.sats \
-trxi0i1.sats \
-xats2js.sats \
-js1emit.sats \
+py1emit.sats \
 #
 ########################################################################
 #
 SRCDATS := \
-intrep0.dats \
-intrep0_print0.dats \
-intrep0_utils0.dats \
-intrep1.dats \
-intrep1_print0.dats \
-intrep1_utils0.dats \
-trxd3i0.dats \
-trxd3i0_myenv0.dats \
-trxd3i0_dynexp.dats \
-trxd3i0_decl00.dats \
-trxi0i1.dats \
-trxi0i1_myenv0.dats \
-trxi0i1_dynexp.dats \
-trxi0i1_decl00.dats \
-xats2js.dats \
-xats2js_myenv0.dats \
-xats2js_dynexp.dats \
-xats2js_decl00.dats \
-xats2js_tmplib.dats \
-js1emit.dats \
-js1emit_utils0.dats \
-js1emit_dynexp.dats \
-js1emit_decl00.dats \
+py1emit.dats \
+py1emit_utils0.dats \
+py1emit_dynexp.dats \
+py1emit_decl00.dats \
 #
 ########################################################################
 ########################################################################
@@ -108,6 +85,6 @@ BUILD/JS/%_dats_out0.js; \
 $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' $< > $@
 ##################################################################
-lib2xats2js: $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xats2js.js
+lib2xats2py: $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xats2py.js
 ########################################################################
 ########################################################################

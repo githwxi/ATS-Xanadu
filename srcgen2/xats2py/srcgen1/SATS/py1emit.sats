@@ -38,11 +38,6 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-(*
-#define
-XATSOPT "./../../.."
-*)
-(* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
@@ -124,7 +119,6 @@ l1i1vpy1
 //
 fun
 <x0:t0>
-<y0:t0>
 list_py1emit_fnp
 ( e1:
 ! envx2js
@@ -132,7 +126,6 @@ list_py1emit_fnp
 , (!envx2js, x0) -> void): void
 fun
 <x0:t0>
-<y0:t0>
 optn_py1emit_fnp
 ( e1:
 ! envx2js
