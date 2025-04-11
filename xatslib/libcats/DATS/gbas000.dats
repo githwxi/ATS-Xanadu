@@ -24,6 +24,9 @@ FILRopt_vt = optn_vt(FILR)
 //
 fun
 <a:t0>
+g_prout(obj:(a)): void
+fun
+<a:t0>
 g_prerr(obj:(a)): void
 //
 (* ****** ****** *)
@@ -38,6 +41,14 @@ g_stdout((*void*)): FILR
 #extern
 fun<>
 g_stderr((*void*)): FILR
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
+g_print$out((*void*)): FILR
+#impltmp
+g_print$out<>() = g_stdout()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -89,14 +100,13 @@ fprint with strn_fprint of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 #impltmp
 < x0:t0 >
-g_print(obj) =
+g_prout(obj) =
 (
 g_fprint<x0>
 (obj, g_stdout<>((*void*))))
-*)
+//
 #impltmp
 < x0:t0 >
 g_prerr(obj) =
@@ -109,22 +119,22 @@ g_fprint<x0>
 //
 #impltmp
 g_print<sint>(i0) =
-sint_fprint(i0, g_stdout<>())
+sint_fprint(i0, g_print$out<>())
 #impltmp
 g_print<bool>(b0) =
-bool_fprint(b0, g_stdout<>())
+bool_fprint(b0, g_print$out<>())
 #impltmp
 g_print<char>(c0) =
-char_fprint(c0, g_stdout<>())
+char_fprint(c0, g_print$out<>())
 //
 #impltmp
 g_print<dflt>(f0) =
 (
-  dflt_fprint(f0, g_stdout<>()))
+dflt_fprint(f0, g_print$out<>())
 #impltmp
 g_print<strn>(cs) =
 (
-  strn_fprint(cs, g_stdout<>()))
+strn_fprint(cs, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -132,9 +142,11 @@ g_print<strn>(cs) =
 #impltmp
 < x0:t0 >
 g_fprint(obj, out) =
-let
-#impltmp
-g_stdout<>() = out in g_print<x0>(obj) end
+(
+  g_print<x0>(obj)) where
+{
+  #impltmp g_print$out<>() = out
+}(*where*)//end-of-[g_fprint(obj,out)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

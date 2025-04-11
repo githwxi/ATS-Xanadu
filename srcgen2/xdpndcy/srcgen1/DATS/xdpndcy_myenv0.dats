@@ -77,7 +77,18 @@ xd2penv_make_nil
 xd2penv_free_top
   (   env0   ) =
 let
-val~XD2PENV(dcls) = env0 in dcls end//let
+val ~
+XD2PENV(dcls) = env0 in dcls end//let
+//
+(* ****** ****** *)
+//
+#implfun
+xd2penv_insert$d2ecl
+  (env0, d2cl) =
+let
+val XD2PENV(!dcls) = env0
+in//let
+  dcls := list_cons(d2cl, dcls) end//let
 //
 (* ****** ****** *)
 //
