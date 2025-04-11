@@ -128,7 +128,7 @@ fun
 fprintln
 (filr: FILR): void =
 (
-strn_fprint(filr,"\n"))//endfun
+strn_fprint("\n",filr))//endfun
 //
 (* ****** ****** *)
 //
@@ -137,7 +137,7 @@ loctnfpr
 (filr: FILR
 ,loc0: loctn): void =
 (
-loctn_fprint(filr,loc0))//endfun
+loctn_fprint(loc0,filr))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -147,7 +147,7 @@ i0expfpr
 (filr: FILR
 ,iexp: i0exp): void =
 (
-i0exp_fprint(filr,iexp))//endfun
+i0exp_fprint(iexp,filr))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -576,12 +576,12 @@ ival.node() of
 (* ****** ****** *)
 //
 |
-_(*otherwise*) => i1val_fprint(filr,ival)
+_(*else*) => i1val_fprint(ival,filr)
 //
 end where
 {
 //
-  #impltmp g_print$out<>() = filr
+  #impltmp g_print$out<>() = ( filr )
 //
   #impltmp
   g_print<i1val>(x) = i1valpy1(filr, x)
@@ -703,7 +703,7 @@ strnfpr(filr,"[");i1valpy1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
 (* ****** ****** *)
 (* ****** ****** *)
 |
-_(*otherwise*) => i1ins_fprint(filr,iins)
+_(*otherwise*) => i1ins_fprint(iins,filr)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -728,7 +728,7 @@ in//let
 case+ icmp of
 (* ****** ****** *)
 |
-_(*otherwise*) => i1cmp_fprint(filr,icmp)
+_(*otherwise*) => i1cmp_fprint(icmp,filr)
 (* ****** ****** *)
 end(*let*) // end-of-[i1cmppy1(env0,icmp)]
 //
@@ -822,7 +822,7 @@ case+ dopt of
 ((*void*)) =>
 (
 d2cst_fprint
-(filr, dcst)) where
+(dcst, filr)) where
 {
 val () =
 strnfpr(filr, "()")
@@ -842,13 +842,13 @@ I1Dimplmnt0
 (
 fjas1py1(filr, fjas);
 strnfpr(filr, ": ## timp: ");
-d2cst_fprint(filr, dcst);fprintln(filr);
+d2cst_fprint(dcst, filr);fprintln(filr);
 (
 envx2js_incnind(env0,2(*++*));
 py1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
 (
 envx2js_decnind(env0,2(*--*));
-nindstrnfpr(filr, nind, "## endtimp(");d2cst_fprint(filr, dcst);strnfpr(filr, ")")))
+nindstrnfpr(filr, nind, "## endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")")))
 )
 //
 end//let//end-of-[f0_t1imp(...)]

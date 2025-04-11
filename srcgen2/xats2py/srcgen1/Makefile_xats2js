@@ -68,8 +68,10 @@ $(patsubst %.dats, BUILD/JS/%_dats.js, $(SRCDATS))
 ########################################################################
 all:: $(OBJDATS)
 ########################################################################
-libxats2py:: $(OBJDATS); \
-$(CAT) $(OBJDATS) > lib/libxats2py.js
+-include .depend_xats2js
+########################################################################
+lib1xats2py:: $(OBJDATS); \
+$(CAT) $(OBJDATS) > lib/lib1xats2py.js
 ########################################################################
 BUILD/JS/%_dats.js: \
 DATS/%.dats; $(XATS2JS) --output-w $@ --dynamic $<

@@ -1,0 +1,8 @@
+########################################################################
+########################################################################
+BUILD/JS/py1emit_dats_out0.py:: SATS/py1emit.sats
+BUILD/JS/py1emit_utils0_out0_dats.py:: SATS/py1emit.sats
+BUILD/JS/py1emit_dynexp_out0_dats.py:: SATS/py1emit.sats
+BUILD/JS/py1emit_decl00_out0_dats.py:: SATS/py1emit.sats
+########################################################################
+########################################################################

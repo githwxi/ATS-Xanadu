@@ -94,7 +94,7 @@ fun
 fprintln
 (filr: FILR): void =
 (
- strn_fprint(filr,"\n"))//endfun
+ strn_fprint("\n", filr))//endfun
 //
 (* ****** ****** *)
 //
@@ -103,7 +103,7 @@ lctnfpr
 (filr: FILR
 ,loc0: loc_t): void =
 (
- loctn_fprint(filr,loc0))//endfun
+ loctn_fprint(loc0, filr))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -126,7 +126,7 @@ dimp.node() of
 |DIMPLnon1
 (  dqid  ) =>
 (
-  d1qid_fprint(filr, dqid))
+  d1qid_fprint(dqid, filr))
 )(*case+*)//end-of-(dicstpy1)
 //
 (* ****** ****** *)
@@ -136,7 +136,7 @@ dimplfpr
 (filr: FILR
 ,dimp: dimpl): void =
 (
- dimpl_fprint(filr,dimp))//endfun
+ dimpl_fprint(dimp, filr))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -244,7 +244,7 @@ end//let
 val (  ) =
 (
 nindstrnfpr(filr, nind, "## ");
-i1dcl_fprint(filr, dcl1); fprintln(filr))
+i1dcl_fprint(dcl1, filr); fprintln(filr))
 //
 end(*let*)//end-of-[f0_extern(env0,dcl0)]
 //
@@ -616,9 +616,9 @@ in//let
 //
 (
 nindstrnfpr
-(filr, nind, "## ");loctn_fprint(filr, loc0);fprintln(filr);
+(filr, nind, "## ");loctn_fprint(loc0, filr);fprintln(filr);
 nindstrnfpr
-(filr, nind, "## ");i1dcl_fprint(filr, dcl0);fprintln(filr))
+(filr, nind, "## ");i1dcl_fprint(dcl0, filr);fprintln(filr))
 //
 end(*let*)//end-of-[f0_otherwise(env0,dcl0)]
 //
