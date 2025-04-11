@@ -940,6 +940,87 @@ XATS2JS_strn_vt_rforall$f1un
 //
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
+// HX-2025-04-11: For bridging [srcgen1] and [srcgen2]
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+function
+XATS2JS_sint_neg
+  (  x0  )
+{
+    return XATS2JS_gint_neg$sint(x0);
+}
+function
+XATS2JS_sint_abs
+  (  x0  )
+{
+    return XATS2JS_gint_abs$sint(x0);
+}
+//
+function
+XATS2JS_sint_lt$sint
+  (x0, y0)
+{
+  return XATS2JS_gint_lt$sint$sint(x0, y0);
+}
+function
+XATS2JS_sint_gt$sint
+  (x0, y0)
+{
+  return XATS2JS_gint_gt$sint$sint(x0, y0);
+}
+function
+XATS2JS_sint_eq$sint
+  (x0, y0)
+{
+  return XATS2JS_gint_eq$sint$sint(x0, y0);
+}
+//
+function
+XATS2JS_sint_lte$sint
+  (x0, y0)
+{
+  return XATS2JS_gint_lte$sint$sint(x0, y0);
+}
+function
+XATS2JS_sint_gte$sint
+  (x0, y0)
+{
+  return XATS2JS_gint_gte$sint$sint(x0, y0);
+}
+function
+XATS2JS_sint_neq$sint
+  (x0, y0)
+{
+  return XATS2JS_gint_neq$sint$sint(x0, y0);
+}
+//
+function
+XATS2JS_sint_add$sint
+  (x0, y0)
+{
+  return XATS2JS_gint_add$sint$sint(x0, y0);
+}
+function
+XATS2JS_sint_sub$sint
+  (x0, y0)
+{
+  return XATS2JS_gint_sub$sint$sint(x0, y0);
+}
+function
+XATS2JS_sint_mul$sint
+  (x0, y0)
+{
+  return XATS2JS_gint_mul$sint$sint(x0, y0);
+}
+function
+XATS2JS_sint_div$sint
+  (x0, y0)
+{
+  return XATS2JS_gint_div$sint$sint(x0, y0);
+}
+//
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
 /* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics1.cats] */
 ////////////////////////////////////////////////////////////////

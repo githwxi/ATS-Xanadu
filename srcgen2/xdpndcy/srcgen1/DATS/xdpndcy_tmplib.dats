@@ -102,28 +102,31 @@ d2ecl_fprint
 (* ****** ****** *)
 //
 #impltmp
-g_print<strn>(x0) =
+strn_print<> = g_print<strn>
+#impltmp
+g_prerr<strn>(x0) =
 strn_fprint<>(x0, g_stderr<>())
+#impltmp
+g_print<strn>(x0) =
+strn_fprint<>(x0, g_print$out<>())
+//
+(* ****** ****** *)
 //
 #impltmp
 g_prerr
 <g1exp>(gexp) =
 g1exp_fprint(gexp, g_stderr<>())
 #impltmp
-g_prerr
-<d2ecl>(d2cl) =
-d2ecl_fprint(d2cl, g_stderr<>())
+g_print
+<g1exp>(gexp) =
+g1exp_fprint(gexp, g_print$out<>())
 //
 (* ****** ****** *)
 //
 #impltmp
-g_print<strn>(x0) =
-strn_fprint<>(x0, g_print$out<>())
-//
-#impltmp
-g_print
-<g1exp>(gexp) =
-g1exp_fprint(gexp, g_print$out<>())
+g_prerr
+<d2ecl>(d2cl) =
+d2ecl_fprint(d2cl, g_stderr<>())
 #impltmp
 g_print
 <d2ecl>(d2cl) =

@@ -47,6 +47,8 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../HATS/libxatsopt.hats"
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 //
 #implfun
@@ -71,7 +73,7 @@ d2parsed_get_parsed(dpar)
 //
 in//let
 //
-(
+list_reverse(
   xd2penv_free_top(env0)) where
 {
   val env0 =
