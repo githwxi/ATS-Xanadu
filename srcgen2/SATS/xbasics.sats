@@ -129,7 +129,7 @@ dctkind =
 //
 fun//<>
 dctkind_fprint
-(out: FILR, dck: dctkind): void
+(dck: dctkind, out: FILR): void
 //
 (* ****** ****** *)
 //
@@ -163,7 +163,7 @@ valkind =
 //
 fun//<>
 valkind_fprint
-(out: FILR, vlk: valkind): void
+(vlk: valkind, out: FILR): void
 //
 (* ****** ****** *)
 fun
@@ -182,7 +182,7 @@ varkind =
 //
 fun//<>
 varkind_fprint
-(out: FILR, vlk: varkind): void
+(vrk: varkind, out: FILR): void
 //
 (* ****** ****** *)
 //
@@ -211,7 +211,7 @@ prf, prfn0, prfn1, prfun
 (* ****** ****** *)
 fun//<>
 funkind_fprint
-(out: FILR, fnk: funkind): void
+(fnk: funkind, out: FILR): void
 (* ****** ****** *)
 fun
 funkind_recq(fnk: funkind): bool
@@ -234,7 +234,7 @@ caskind =
 (* ****** ****** *)
 fun//<>
 caskind_fprint
-(out: FILR, csk: caskind): void
+(csk: caskind, out: FILR): void
 (* ****** ****** *)
 //
 datatype
@@ -256,7 +256,7 @@ implknd_recq(knd0: implknd): bool
 (* ****** ****** *)
 //
 fun
-implknd_fprint(FILR, implknd): void
+implknd_fprint(implknd, FILR): void
 //
 (* ****** ****** *)
 //
@@ -289,7 +289,7 @@ f2clknd_equal
 (fcl1:f2clknd, fcl2:f2clknd): bool
 (* ****** ****** *)
 fun
-f2clknd_fprint: (FILR, f2clknd)->void
+f2clknd_fprint: (f2clknd, FILR)->void
 (* ****** ****** *)
 datatype
 trcdknd =
@@ -312,7 +312,7 @@ trcdknd_equal
 (knd1:trcdknd, knd2:trcdknd): bool
 (* ****** ****** *)
 fun
-trcdknd_fprint: (FILR, trcdknd)->void
+trcdknd_fprint: (trcdknd, FILR)->void
 (* ****** ****** *)
 (* ****** ****** *)
 //

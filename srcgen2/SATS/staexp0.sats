@@ -142,16 +142,16 @@ datatype t0str =
 (* ****** ****** *)
 fun
 t0int_fprint
-(out:FILR, int:t0int): void
+(int:t0int, out:FILR): void
 fun
 t0chr_fprint
-(out:FILR, chr:t0chr): void
+(chr:t0chr, out:FILR): void
 fun
 t0flt_fprint
-(out:FILR, flt:t0flt): void
+(flt:t0flt, out:FILR): void
 fun
 t0str_fprint
-(out:FILR, str:t0str): void
+(str:t0str, out:FILR): void
 //
 (* ****** ****** *)
 //
@@ -262,11 +262,11 @@ t0str_get_lctn(t0str): loc_t
 //
 (* ****** ****** *)
 fun
-i0dnt_fprint:(FILR,i0dnt)->void
+i0dnt_fprint:(i0dnt,FILR)->void
 fun
-l0abl_fprint:(FILR,l0abl)->void
+l0abl_fprint:(l0abl,FILR)->void
 fun
-s0ymb_fprint:(FILR,s0ymb)->void
+s0ymb_fprint:(s0ymb,FILR)->void
 (* ****** ****** *)
 //
 datatype
@@ -366,7 +366,7 @@ itm with s0lab_get_itm
 fun
 <x0:type>
 s0lab_fprint
-(out: FILR, lab: s0lab(x0)): void
+(lab: s0lab(x0), out: FILR): void
 //
 (* ****** ****** *)
 //
@@ -441,18 +441,18 @@ G0MAGdarg of
 //
 (* ****** ****** *)
 fun
-g0nam_fprint:(FILR,g0nam)->void
+g0nam_fprint:(g0nam,FILR)->void
 fun
-g0exp_fprint:(FILR,g0exp)->void
+g0exp_fprint:(g0exp,FILR)->void
 fun
-g0mag_fprint:(FILR,g0mag)->void
-(* ****** ****** *)
+g0mag_fprint:(g0mag,FILR)->void
+(* ****** ****** n,*)
 fun
 g0exp_THEN_fprint
-(out:FILR, g0e:g0exp_THEN): void
+(g0e:g0exp_THEN, out:FILR): void
 fun
 g0exp_ELSE_fprint
-(out:FILR, g0e:g0exp_ELSE): void
+(g0e:g0exp_ELSE, out:FILR): void
 (* ****** ****** *)
 //
 fun
@@ -517,8 +517,8 @@ d0qid_get_lctn(d0qid): loc_t
 #symload lctn with s0qid_get_lctn
 #symload lctn with d0qid_get_lctn
 //
-fun s0qid_fprint:(FILR,s0qid)->void
-fun d0qid_fprint:(FILR,d0qid)->void
+fun s0qid_fprint:(s0qid,FILR)->void
+fun d0qid_fprint:(d0qid,FILR)->void
 //
 (* ****** ****** *)
 //
@@ -559,7 +559,7 @@ S0Terrck of (int(*lvl*), sort0)//HX:pread-error
 (* ****** ****** *)
 fun
 sort0_fprint
-(out:FILR, s0t:sort0): void
+(s0t:sort0, out:FILR): void
 (* ****** ****** *)
 //
 fun
@@ -585,13 +585,13 @@ S0TCNnode of (s0eid,sort0opt)
 (* ****** ****** *)
 fun
 s0tcn_fprint
-(out: FILR, tcn: s0tcn): void
+(tcn: s0tcn, out: FILR): void
 (* ****** ****** *)
 //
 fun
-s0tcn_get_lctn(s0tcn): loc_t
+s0tcn_get_lctn(tcn:s0tcn): loc_t
 fun
-s0tcn_get_node(s0tcn): s0tcn_node
+s0tcn_get_node(tcn:s0tcn): s0tcn_node
 //
 #symload lctn with s0tcn_get_lctn
 #symload node with s0tcn_get_node
@@ -614,7 +614,7 @@ D0TSTnode of
 (* ****** ****** *)
 fun
 d0tst_fprint
-(out:FILR, dst:d0tst): void
+(dst:d0tst, out:FILR): void
 (* ****** ****** *)
 //
 fun
@@ -644,7 +644,7 @@ S0TDFtsub of
 (* ****** ****** *)
 fun
 s0tdf_fprint
-(out:FILR, tdf:s0tdf): void
+(tdf:s0tdf, out:FILR): void
 (* ****** ****** *)
 //
 fun
@@ -680,10 +680,10 @@ S0MAGlist of
 (* ****** ****** *)
 fun
 s0arg_fprint
-(out:FILR, s0a:s0arg): void
+(s0a:s0arg, out:FILR): void
 fun
 s0mag_fprint
-(out:FILR, sma:s0mag): void
+(sma:s0mag, out:FILR): void
 (* ****** ****** *)
 //
 fun
@@ -734,10 +734,10 @@ T0MAGlist of
 (* ****** ****** *)
 fun
 t0arg_fprint
-(out:FILR, tag:t0arg): void
+(tag:t0arg, out:FILR): void
 fun
 t0mag_fprint
-(out:FILR, tmg:t0mag): void
+(tmg:t0mag, out:FILR): void
 (* ****** ****** *)
 //
 fun
@@ -783,7 +783,7 @@ S0QUAvars of (i0dntlst, sort0opt)
 (* ****** ****** *)
 fun
 s0qua_fprint
-(out:FILR, s0q:s0qua): void
+(s0q:s0qua, out:FILR): void
 (* ****** ****** *)
 //
 fun
@@ -892,13 +892,13 @@ l0s0e_RBRACE_cons1 of (token, l0s0elst, token)
 //
 fun
 s0exp_fprint
-(out:FILR, s0e:s0exp): void
+(s0e:s0exp, out:FILR): void
 fun
 s0exp_RPAREN_fprint
-(out:FILR, srp:s0exp_RPAREN): void
+(srp:s0exp_RPAREN, out:FILR): void
 fun
 l0s0e_RBRACE_fprint
-(out:FILR, lsrb:l0s0e_RBRACE): void
+(lsrb:l0s0e_RBRACE, out:FILR): void
 //
 (* ****** ****** *)
 //
@@ -959,13 +959,13 @@ D0TYPnode of
 (* ****** ****** *)
 fun
 s0uni_fprint
-(out:FILR, s0e:s0uni): void
+(s0e:s0uni, out:FILR): void
 fun
 d0tcn_fprint
-(out:FILR, s0e:d0tcn): void
+(tcn:d0tcn, out:FILR): void
 fun
 d0typ_fprint
-(out:FILR, s0e:d0typ): void
+(d0t:d0typ, out:FILR): void
 (* ****** ****** *)
 fun
 s0uni_get_lctn(s0uni): loc_t

@@ -61,7 +61,7 @@ ATS_PACKNAME
 //
 #implfun
 g1mac_fprint
-( out, g1m0 ) =
+( g1m0, out ) =
 let
 //
 #impltmp
@@ -122,7 +122,8 @@ G1Mlist(g1ms) =>
   prints("G1Mlist(", g1ms, ")"))
 //
 |
-G1Msubs(g1e1,genv) =>
+G1Msubs
+(g1e1,genv) =>
 prints("G1Msubs(", g1e1, ";", genv, ")")
 //
 |
@@ -130,7 +131,7 @@ G1Mnone0() => prints( "G1Mnone0(" , ")" )
 |
 G1Mnone1(g1e1) => prints("G1Mnone1(", g1e1, ")")
 //
-end (*let*) // end of [ g1mac_fprint(out, g1m0) ]
+end (*let*) // end of [ g1mac_fprint( g1m0,out ) ]
 //
 (* ****** ****** *)
 

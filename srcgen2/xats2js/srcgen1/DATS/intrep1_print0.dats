@@ -95,10 +95,10 @@ XATSOPT "./../../.."
 //
 #implfun
 i1val_fprint
-(out, i1v0) =
+(i1v0, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+
@@ -328,17 +328,17 @@ prints("I1Vl0azy(", dknd, ";", icmp, ")"))
 //
 (* ****** ****** *)
 //
-end(*let*)//end-of-[i1val_fprint(out, i1v0)]
+end(*let*)//end-of-[i1val_fprint(i1v0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 i1ins_fprint
-(out, iins) =
+(iins, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+ iins of
@@ -538,17 +538,17 @@ prints
 //
 (* ****** ****** *)
 //
-end(*let*)//end-of-[i1ins_fprint(out, iins)]
+end(*let*)//end-of-[i1ins_fprint(iins,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 i1let_fprint
-(out, ilet) =
+(ilet, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+ ilet of
@@ -559,23 +559,23 @@ case+ ilet of
 ( prints
   ("I1LETnew1(", itnm, ";", iins, ")"))
 //
-end(*let*)//end-of-[i1let_fprint(out, ilet)]
+end(*let*)//end-of-[i1let_fprint(ilet,out0)]
 //
 (* ****** ****** *)
 //
 #implfun
 i1bnd_fprint
-(out, ibnd) =
+(ibnd, out0) =
 let
 //
 #impltmp
 g_print$out
-<(*0*)>((*0*)) = out
+<(*0*)>((*0*)) = out0
 //
 #impltmp
 g_print
 <d2var>( dvar ) =
-d2var_fprint(out, dvar)
+d2var_fprint(dvar, out0)
 //
 in//let
 //
@@ -585,33 +585,33 @@ case+ ibnd of
 ( print("I1BNDcons(")
 ; prints(itnm, ";", ipat, ";", dsub, ")"))
 //
-end(*let*)//end-of-[i1bnd_fprint(out, ibnd)]
+end(*let*)//end-of-[i1bnd_fprint(ibnd,out0)]
 //
 (* ****** ****** *)
 //
 #implfun
 i1cmp_fprint
-(out, icmp) =
+(icmp, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+ icmp of
 |I1CMPcons(ilts, ival) =>
 prints("I1CMPcons(", ilts, ";", ival, ")")
 //
-end(*let*)//end-of-[i1cmp_fprint(out, icmp)]
+end(*let*)//end-of-[i1cmp_fprint(icmp,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 fjarg_fprint
-(out, farg) =
+(farg, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+
@@ -620,17 +620,17 @@ farg.node() of
 (
   prints("FJARGdarg(", i1bs, ")"))
 //
-end (*let*) // end of [fjarg_fprint(out,farg)]
+end(*let*)//end-of-[fjarg_fprint(farg,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 i1gua_fprint
-(out, igua) =
+(igua, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+
@@ -642,16 +642,16 @@ prints("I1GUAexp(",icmp,")")
 I1GUAmat(icmp,ibnd) =>
 prints("I1GUAmat(",icmp,";",ibnd,")")
 //
-end (*let*) // end of [i1gua_fprint(out,igua)]
+end(*let*)//end-of-[i1gua_fprint(igua,out0)]
 //
 (* ****** ****** *)
 //
 #implfun
 i1gpt_fprint
-(out, igpt) =
+(igpt, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 case+
 igpt.node() of
@@ -661,34 +661,36 @@ prints("I1GPTpat(",ibnd,")")
 |
 I1GPTgua(ibnd,i1gs) =>
 prints("I1GPTgua(",ibnd,";",i1gs,")")
-end (*let*) // end of [i1gpt_fprint(out,igpt)]
+end(*let*)//end-of-[i1gpt_fprint(igpt,out0)]
 //
 #implfun
 i1cls_fprint
-(out, icls) =
+(icls, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 case+
 icls.node() of
 |
 I1CLSgpt(igpt) =>
-prints("I1CLSgpt(",igpt,")")
+(
+  prints("I1CLSgpt(",igpt,")"))
 |
 I1CLScls(igpt,icmp) =>
-prints("I1CLScls(",igpt,";",icmp,")")
-end (*let*) // end of [i1cls_fprint(out,icls)]
+(
+  prints("I1CLScls(",igpt,";",icmp,")"))
+end (*let*) // end of [i1cls_fprint(icls,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 t1imp_fprint
-(out, timp) =
+(timp, out0) =
 let
 #implfun
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 case+
 timp.node() of
@@ -707,17 +709,17 @@ prints("T1IMPall1(",d2c1,";",dopt,")")
 (d2c1, dopt) =>
 prints("T1IMPallx(",d2c1,";",dopt,")")
 //
-end (*let*) // end of [t1imp_fprint(...)]
+end(*let*)//end-of-[t1imp_fprint(timp,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 i1dcl_fprint
-(out, dcl0) =
+(dcl0, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+
@@ -805,51 +807,51 @@ I1Dimplmnt0
 //
 (* ****** ****** *)
 //
-end(*let*)//end-of-[i1dcl_fprint(out, dcl0)]
+end(*let*)//end-of-[i1dcl_fprint(dcl0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 i1valdcl_fprint
-  (out, ival) = let
+  (ival, out0) = let
 //
 val dpat =
 i1valdcl_get_dpat(ival)
 val tdxp =
 i1valdcl_get_tdxp(ival)
 //
-#impltmp g_print$out<>() = out
+#impltmp g_print$out<>() = out0
 //
 in//let
 (
 prints("I1VALDCL(", dpat, ";", tdxp, ")"))
-end(*let*)//end-of-[i1valdcl_fprint(out,ival)]
+end(*let*)//end-of-[i1valdcl_fprint(ival,out0)]
 //
 (* ****** ****** *)
 //
 #implfun
 i1vardcl_fprint
-  (out, ivar) = let
+  (ivar, out0) = let
 //
 val dpid =
 i1vardcl_get_dpid(ivar)
 val dini =
 i1vardcl_get_dini(ivar)
 //
-#impltmp g_print$out<>() = out
+#impltmp g_print$out<>() = out0
 //
 in//let
 (
 prints("I1VARDCL(", dpid, ";", dini, ")"))
-end(*let*)//end-of-[i1vardcl_fprint(out,ivar)]
+end(*let*)//end-of-[i1vardcl_fprint(ivar,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 i1fundcl_fprint
-  (out, ifun) = let
+  (ifun, out0) = let
 //
 val dpid =
 i1fundcl_get_dpid(ifun)
@@ -858,16 +860,19 @@ i1fundcl_get_farg(ifun)
 val tdxp =
 i1fundcl_get_tdxp(ifun)
 //
-#impltmp g_print$out<>() = out
+#impltmp g_print$out<>() = out0
 //
 in//let
 (
 prints
 ("I1FUNDCL(",dpid,";",farg,";",tdxp,")"))
-end(*let*)//end-of-[i1fundcl_fprint(out,ifun)]
+end(*let*)//end-of-[i1fundcl_fprint(ifun,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 //
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep1_print0.dats] *)

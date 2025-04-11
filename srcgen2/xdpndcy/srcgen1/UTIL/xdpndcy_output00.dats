@@ -102,8 +102,7 @@ end//let
 //
 end where
 {
-val dpar = d2parsed_of_fildats(fpath)
-}
+val dpar = d2parsed_of_fildats(fpath)}
 //
 (* ****** ****** *)
 (* ****** ****** *)

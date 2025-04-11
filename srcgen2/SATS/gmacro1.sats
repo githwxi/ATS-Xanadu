@@ -170,10 +170,10 @@ where
 //
 (* ****** ****** *)
 fun
-g1mac_fprint:(FILR,g1mac)->void
+g1mac_fprint:(g1mac, FILR)->void
 (* ****** ****** *)
 fun
-g1env_fprint:(FILR,g1env)->void
+g1env_fprint:(g1env, FILR)->void
 (* ****** ****** *)
 (*
 // HX-2022-12-09:

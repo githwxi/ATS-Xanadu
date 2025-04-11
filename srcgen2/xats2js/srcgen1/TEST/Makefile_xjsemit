@@ -39,7 +39,7 @@ $(XATSHOME)/srcgen2/xats2js/srcgenx
 SRCGEN2_XSHARED=\
 $(XATSHOME)/srcgen2/xats2js/srcgenx/xshared/runtime
 ########################################################################
-# XATS2JS_JSEMIT00=./../UTIL/xats2js_jsemit00_dats.js
+XATS2JS_JSEMIT00=./../UTIL/xats2js_jsemit00_dats.js
 XATS2JS_JSEMIT00=./../UTIL/xats2js_jsemit00_dats_out.js
 ########################################################################
 ########################################################################

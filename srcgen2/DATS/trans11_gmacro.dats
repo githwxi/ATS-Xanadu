@@ -168,7 +168,7 @@ end (*local*) // end of [local(g1env)]
 //
 #implfun
 g1env_fprint
-( out, genv ) =
+( genv, out ) =
 let
 val
 genv =
@@ -178,7 +178,7 @@ prints("G1ENV(", genv, ")")
 end where
 {
   #impltmp g_print$out<>() = out
-} (*where*) // end of [g1env_fprint]
+} (*where*) // end of [g1env_fprint(...)]
 //
 (* ****** ****** *)
 

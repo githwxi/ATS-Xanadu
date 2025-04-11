@@ -265,7 +265,7 @@ loop(map, kxs) where {
 #impltmp
 <itm:t0>
 topmap_fprint
-  (out, map) =
+ (tmap, out) =
 let
 //
 #impltmp
@@ -274,7 +274,7 @@ g_print$out<>() = out
 in//let
 auxloop
 (
-topmap_strmize(map)
+topmap_strmize(tmap)
 ) where
 {
 //
@@ -327,7 +327,7 @@ printsln(" -> ", list_head(kx1.1))
 } (*where*)
 ) (*case+*) // end of [ auxloop(kxs) ]
 }
-end (*let*) // end of [topmap_fprint(out,map)]
+end (*let*) // end of [topmap_fprint(tmap,out)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

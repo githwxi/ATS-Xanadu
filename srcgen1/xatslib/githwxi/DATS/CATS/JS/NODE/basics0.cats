@@ -140,4 +140,4 @@ XATS2JS_NODE_fs_readFileSync
 /* ****** ****** *//* ****** ****** *//* ****** ****** */
 /* ****** ****** *//* ****** ****** *//* ****** ****** */
 
-/* end of [ATS3/XANADU_xatslib_githwxi_DATS_CATS_JS_NODE_basics0.cats] */
+/* end of [ATS3/XANADU_srcgen1_xatslib_githwxi_DATS_CATS_JS_NODE_basics0.cats] */

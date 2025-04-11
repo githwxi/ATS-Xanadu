@@ -258,7 +258,7 @@ d0lab_get_itm
 fun
 <x0:type>
 d0lab_fprint
-(out: FILR, lab: d0lab(x0)): void
+(lab: d0lab(x0), out: FILR): void
 //
 (* ****** ****** *)
 //
@@ -350,15 +350,15 @@ F0ARGmets of
 //
 (* ****** ****** *)
 fun
-d0pat_fprint(FILR, d0pat): void
+d0pat_fprint(d0pat, FILR): void
 fun
-f0arg_fprint(FILR, f0arg): void
+f0arg_fprint(f0arg, FILR): void
 fun
 d0pat_RPAREN_fprint
-(out:FILR, drp0:d0pat_RPAREN): void
+(drp0:d0pat_RPAREN, out:FILR): void
 fun
 l0d0p_RBRACE_fprint
-(out:FILR, ldrb:l0d0p_RBRACE): void
+(ldrb:l0d0p_RBRACE, out:FILR): void
 (* ****** ****** *)
 //
 fun
@@ -668,59 +668,59 @@ D0GPTgua of
 //
 fun
 d0exp_fprint
-(out:FILR, d0e:d0exp): void
+(d0e:d0exp, out:FILR): void
 //
 (* ****** ****** *)
 //
 fun
 d0cls_fprint
-(out:FILR, dcl:d0cls): void
+(dcl:d0cls, out:FILR): void
 fun
 d0gua_fprint
-(out:FILR, d0g:d0gua): void
+(d0g:d0gua, out:FILR): void
 fun
 d0gpt_fprint
-(out:FILR, d0g:d0gpt): void
+(d0g:d0gpt, out:FILR): void
 //
 (* ****** ****** *)
 //
 fun
-s0eff_fprint:(FILR,s0eff)->void
+s0eff_fprint:(s0eff,FILR)->void
 fun
-s0res_fprint:(FILR,s0res)->void
+s0res_fprint:(s0res,FILR)->void
 //
 (* ****** ****** *)
 fun
-t0qua_fprint: (FILR, t0qua)->void
+t0qua_fprint:(t0qua,FILR)->void
 fun
-t0inv_fprint: (FILR, t0inv)->void
+t0inv_fprint:(t0inv,FILR)->void
 (* ****** ****** *)
 fun
 f0unarrw_fprint
-(out: FILR, arrw: f0unarrw): void
+(arrw: f0unarrw, out: FILR): void
 (* ****** ****** *)
 fun
 d0exp_THEN_fprint
-(out:FILR, dthn:d0exp_THEN): void
+(dthn:d0exp_THEN, out:FILR): void
 fun
 d0exp_ELSE_fprint
-(out:FILR, dels:d0exp_ELSE): void
+(dels:d0exp_ELSE, out:FILR): void
 (* ****** ****** *)
 fun
 tkend_WHERE_fprint
-(out:FILR, twhr:tkend_WHERE): void
+(twhr:tkend_WHERE, out:FILR): void
 (* ****** ****** *)
 fun
 d0exp_RPAREN_fprint
-(out:FILR, drp0:d0exp_RPAREN): void
+(drp0:d0exp_RPAREN, out:FILR): void
 fun
 l0d0e_RBRACE_fprint
-(out:FILR, ldrb:l0d0e_RBRACE): void
+(ldrb:l0d0e_RBRACE, out:FILR): void
 //
 (* ****** ****** *)
 fun
 d0eclseq_WHERE_fprint
-(out:FILR, dcls:d0eclseq_WHERE): void
+(dcls:d0eclseq_WHERE, out:FILR): void
 (* ****** ****** *)
 //
 fun
@@ -805,7 +805,7 @@ q0arg_node =
 //
 (* ****** ****** *)
 fun
-q0arg_fprint(FILR, q0arg): void
+q0arg_fprint(q0arg, FILR): void
 (* ****** ****** *)
 //
 fun
@@ -841,9 +841,9 @@ T0QAGsome of // <...>
 //
 (* ****** ****** *)
 fun
-s0qag_fprint(FILR, s0qag): void
+s0qag_fprint(s0qag, FILR): void
 fun
-t0qag_fprint(FILR, t0qag): void
+t0qag_fprint(t0qag, FILR): void
 (* ****** ****** *)
 //
 fun
@@ -884,7 +884,7 @@ T0IAGsome of // <...>
 (token, s0explst, token)
 (* ****** ****** *)
 fun
-t0iag_fprint(FILR, t0iag): void
+t0iag_fprint(t0iag, FILR): void
 (* ****** ****** *)
 fun
 t0iag_get_lctn(t0iag): loc_t
@@ -1129,31 +1129,31 @@ where
 (* ****** ****** *)
 fun
 d0ecl_fprint
-(out:FILR, dcl:d0ecl): void
+(dcl:d0ecl, out:FILR): void
 (* ****** ****** *)
 fun
 g0edf_fprint
-(out:FILR, gedf:g0edf): void
+(gedf:g0edf, out:FILR): void
 fun
 d0edf_fprint
-(out:FILR, dedf:d0edf): void
+(dedf:d0edf, out:FILR): void
 fun
 a0tdf_fprint
-(out:FILR, atdf:a0tdf): void
+(atdf:a0tdf, out:FILR): void
 (* ****** ****** *)
 fun
 precopt_fprint
-(out:FILR, opt:precopt): void
+(opt:precopt, out:FILR): void
 fun
 precmod_fprint
-(out:FILR, pmd:precmod): void
+(pmd:precmod, out:FILR): void
 fun
 precint_fprint
-(out:FILR, int:precint): void
+(int:precint, out:FILR): void
 (* ****** ****** *)
 fun
 wd0eclseq_fprint
-(out:FILR, wdcs:wd0eclseq): void
+(wdcs:wd0eclseq, out:FILR): void
 (* ****** ****** *)
 //
 fun
@@ -1203,9 +1203,9 @@ a0typlstopt = optn(a0typlst) }
 //
 (* ****** ****** *)
 fun
-a0typ_fprint(FILR, a0typ): void
+a0typ_fprint(a0typ, FILR): void
 fun
-d0arg_fprint(FILR, d0arg): void
+d0arg_fprint(d0arg, FILR): void
 (* ****** ****** *)
 //
 fun
@@ -1246,7 +1246,7 @@ D0RESsome of (token(*T_EQ0*),d0exp)
 (* ****** ****** *)
 //
 fun
-d0res_fprint: (FILR, d0res) -> void
+d0res_fprint: (d0res, FILR) -> void
 //
 (* ****** ****** *)
 //
@@ -1266,13 +1266,13 @@ WTHS0EXPsome of (token(*WTH*), s0exp)
 (* ****** ****** *)
 fun
 d0valdcl_fprint
-(out: FILR, d0cl: d0valdcl): void
+(d0cl: d0valdcl, out: FILR): void
 fun
 d0vardcl_fprint
-(out: FILR, d0cl: d0vardcl): void
+(d0cl: d0vardcl, out: FILR): void
 fun
 d0fundcl_fprint
-(out: FILR, d0cl: d0fundcl): void
+(d0cl: d0fundcl, out: FILR): void
 (* ****** ****** *)
 fun
 d0valdcl_get_lctn:(d0valdcl)->loc_t
@@ -1367,7 +1367,7 @@ D0CSTDCL of @{
 //
 fun
 d0cstdcl_fprint
-(out: FILR,dcst: d0cstdcl): void
+(dcst: d0cstdcl, out: FILR): void
 //
 fun
 d0cstdcl_get_lctn:(d0cstdcl)->loc_t
@@ -1408,7 +1408,7 @@ d0eclistopt = optn(d0eclist)
 //
 fun
 d0parsed_fprint
-(out: FILR, dpar: d0parsed): void
+(dpar: d0parsed, out: FILR): void
 //
 fun
 d0parsed_get_stadyn:(d0parsed)->sint

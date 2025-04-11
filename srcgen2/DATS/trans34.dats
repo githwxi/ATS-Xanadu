@@ -67,10 +67,10 @@ ATS_PACKNAME
 //
 #implfun
 d4lft_fprint
-(out, dlft) =
+(dlft, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+ dlft of
@@ -98,16 +98,16 @@ prints
 , tknd, ";", lab1, ";", lft0, ")"))
 *)
 //
-end(*let*)//end-of-[d4lft_fprint(out, dlft)]
+end(*let*)//end-of-[d4lft_fprint(dlft,out0)]
 //
 (* ****** ****** *)
 //
 #implfun
 d4typ_fprint
-(out, dtyp) =
+(dtyp, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+ dtyp of
@@ -122,14 +122,16 @@ case+ dtyp of
 |
 D4TYPpcon(d2c1, dtps) =>
 (
-prints("D4TYPpcon(", d2c1, ";", dtps, ")"))
+prints
+("D4TYPpcon(", d2c1, ";", dtps, ")"))
 |
 D4TYPproj(tknd, dtps) =>
 (
-prints("D4TYPpcon(", tknd, ";", dtps, ")"))
+prints
+("D4TYPpcon(", tknd, ";", dtps, ")"))
 *)
 //
-end(*let*)//end-of-[d4typ_fprint(out, dtyp)]
+end(*let*)//end-of-[d4typ_fprint(dtyp,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

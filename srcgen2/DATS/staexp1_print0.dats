@@ -111,7 +111,7 @@ _(*?*) = "./lexing0_print0.dats"
 
 #implfun
 g1arg_fprint
-(out, g1a) =
+( g1a, out ) =
 (
 case+
 g1a.node() of
@@ -126,7 +126,7 @@ prints("G1ARGnode(",tok,")")
 //
 #implfun
 s1qid_fprint
-(out, qid) =
+( qid, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -143,7 +143,7 @@ end (*let*) // end of [s1qid_fprint]
 //
 #implfun
 d1qid_fprint
-(out, qid) =
+( qid, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -162,7 +162,7 @@ end (*let*) // end of [d1qid_fprint]
 //
 #implfun
 g1mag_fprint
-(out, gma) =
+( gma, out ) =
 (
 case+
 gma.node() of
@@ -181,7 +181,7 @@ prints("G1MAGdarg(",g1as,")")
 
 #implfun
 g1nam_fprint
-( out, g1n ) =
+( g1n, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -214,13 +214,13 @@ case+ g1n of
 | G1Nnone1(g1n1) =>
   prints("G1Nnone1(",g1n1,")")
 //
-end (*let*) // end of [g1nam_fprint(out,g1n)]
+end (*let*) // end of [g1nam_fprint(g1n,out)]
 
 (* ****** ****** *)
 
 #implfun
 g1exp_fprint
-( out, g1e ) =
+( g1e, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -284,13 +284,13 @@ G1Enone1(g0e1) => prints("G1Enone1(",g0e1,")")
 G1Eerrck
 (lvl(*err*),g1e1) => prints("G1Eerrck(",lvl,";",g1e1,")")
 //
-end (*let*) // end of [g1exp_fprint(out,g1e)]
+end (*let*) // end of [g1exp_fprint(g1e,out)]
 
 (* ****** ****** *)
 
 #implfun
 sort1_fprint
-( out, s1t ) =
+( s1t, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -347,12 +347,12 @@ S1Tnone1(s0t1) => prints("S1Tnone1(", s0t1 ,")")
 S1Terrck
 (lvl(*err*),s1t1) => prints("S1Terrck(",lvl,";",s1t1,")")
 //
-end (*let*) // end of [sort1_fprint(out,s1t)]
+end (*let*) // end of [sort1_fprint(s1t,out)]
 
 (* ****** ****** *)
 #implfun
 s1tcn_fprint
-( out, tcn ) =
+( tcn, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -367,7 +367,7 @@ end (*let*) // end of [s1tcn_fprint]
 (* ****** ****** *)
 #implfun
 d1tst_fprint
-( out, dst ) =
+( dst, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -379,12 +379,12 @@ dst.node() of
 D1TSTnode(tid0,stcs) =>
 (
 prints("D1TSTnode(",tid0,";",stcs,")"))
-end (*let*) // end of [d1tst_fprint]
+end (*let*) // end of [d1tst_fprint(...)]
 (* ****** ****** *)
 
 #implfun
 s1arg_fprint
-( out, s1a ) =
+( s1a, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -396,13 +396,13 @@ s1a.node() of
 S1ARGsome(sid0, tres) =>
 prints("S1ARGsome(",sid0,";",tres,")")
 //
-end (*let*) // end of [s1arg_fprint]
+end (*let*) // end of [s1arg_fprint(...)]
 
 (* ****** ****** *)
 //
 #implfun
 s1mag_fprint
-( out, s1m ) =
+( s1m, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -414,13 +414,13 @@ s1m.node() of
 S1MAGlist(s1as) =>
 prints("S1MAGlist(",s1as,")")
 //
-end (*let*)//end of [s1mag_fprint(out,s1m)]
+end (*let*)//end of [s1mag_fprint(s1m,out)]
 //
 (* ****** ****** *)
 
 #implfun
 t1arg_fprint
-( out, t1a ) =
+( t1a, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -432,13 +432,13 @@ t1a.node() of
 T1ARGsome(s1t1, topt) =>
 prints("T1ARGsome(",s1t1,";",topt,")")
 //
-end (*let*) // end of [t1arg_fprint]
+end (*let*) // end of [t1arg_fprint(...)]
 
 (* ****** ****** *)
 //
 #implfun
 t1mag_fprint
-( out, t1m ) =
+( t1m, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -450,13 +450,13 @@ t1m.node() of
 T1MAGlist(t1as) =>
 prints("T1MAGlist(",t1as,")")
 //
-end (*let*)//end of [t1mag_fprint(out,t1m)]
+end (*let*)//end of [t1mag_fprint(t1m,out)]
 //
 (* ****** ****** *)
 //
 #implfun
 s1qua_fprint
-( out, s1q ) =
+( s1q, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -471,13 +471,13 @@ prints("S1QUAprop(",s1e,")")
 S1QUAvars
 (toks, topt) =>
 prints("S1QUAvars(",toks,";",topt,")")
-end (*let*) // end-of-[s1qua_fprint(out,err)]
+end (*let*) // end-of-[s1qua_fprint(err,out)]
 //
 (* ****** ****** *)
 
 #implfun
 s1exp_fprint
-( out, s1e ) =
+( s1e, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -583,13 +583,13 @@ S1Enone1(s0e1) => prints("S1Enone1(", s0e1 ,")")
 S1Eerrck
 (lvl(*err*),s1e1) => prints("S1Eerrck(",lvl,";",s1e1,")")
 //
-end (*let*) // end of [s1exp_fprint(out,s1e)]
+end (*let*) // end of [s1exp_fprint(s1e,out)]
 
 (* ****** ****** *)
 //
 #implfun
 s1uni_fprint
-( out, s1u ) =
+( s1u, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -599,16 +599,16 @@ s1u.node() of
 |
 S1UNIsome(s1qs) =>
 prints("S1UNIsome(",s1qs,")")
-end (*let*) // end-of-[s1uni_fprint(out,err)]
+end (*let*) // end-of-[s1uni_fprint(err,out)]
 //
 (* ****** ****** *)
 
 #implfun
 s1tdf_fprint
-( out, stdf ) =
+(stdf, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+
@@ -624,16 +624,16 @@ S1TDFtsub(s1a1,s1es) =>
   prints("S1TDFtsub(",s1a1,";",s1es,")")
 )
 //
-end (*let*) // end of [s1tdf_fprint(out,stdf)]
+end (*let*) // end of [s1tdf_fprint(stdf,out)]
 
 (* ****** ****** *)
 
 #implfun
 d1tcn_fprint
-( out, dtcn ) =
+(dtcn, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+
@@ -646,16 +646,16 @@ D1TCNnode
 print("D1TCNnode(");
 prints(s1us,";",deid,";",s1es,";",sres,")"))
 //
-end (*let*) // end of [d1tcn_fprint(out,dtcn)]
+end (*let*) // end of [d1tcn_fprint(dtcn,out)]
 
 (* ****** ****** *)
 
 #implfun
 d1typ_fprint
-( out, dtyp ) =
+(dtyp, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+
@@ -668,7 +668,7 @@ D1TYPnode
 print("D1TYPnode(");
 prints(deid,";",tmas,";",tres,";",tcns,")"))
 //
-end (*let*) // end of [d1typ_fprintyyyyyyy(out,dtyp)]
+end (*let*) // end of [d1typ_fprint(dtyp,out)]
 
 (* ****** ****** *)
 

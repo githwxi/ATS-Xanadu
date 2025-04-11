@@ -371,11 +371,11 @@ in // in-of-local
 //
 #implfun
 i1opr_fprint
-(out, iopr) =
+(iopr, out0) =
 let
 //
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 //
 val+I1OPR(name) = iopr
 //
@@ -417,11 +417,11 @@ i1tnm_new0() =
 //
 #implfun
 i1tnm_fprint
-(out, itnm) =
+(itnm, out0) =
 let
 //
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 //
 val+I1TNM(stmp) = itnm
 //

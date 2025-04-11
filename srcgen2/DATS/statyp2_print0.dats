@@ -73,7 +73,7 @@ _(*?*) = "./lexing0_print0.dats"
 //
 #implfun
 x2t2p_fprint
-(out , xt2p) =
+( xt2p, out ) =
 let
 val
 t2p0 = xt2p.styp()
@@ -90,13 +90,13 @@ prints
 end where
 {
   #impltmp g_print$out<>() = out
-} (*where*) // end of [x2t2p_fprint(out,xt2p)]
+} (*where*) // end of [x2t2p_fprint(xt2p,out)]
 //
 (* ****** ****** *)
 //
 #implfun
 s2typ_fprint
-(out , t2p0) =
+( t2p0, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -202,7 +202,7 @@ T2Ps2exp(s2e1) => prints("T2Ps2exp(",s2e1,")")
 |T2Perrck // HX: tread-error
 (lvl0,t2p1) => prints("T2Perrck(",lvl0,";",t2p1,")")
 //
-end (*let*) // end of [s2typ_fprint(out,t2p0)]
+end (*let*) // end of [s2typ_fprint(t2p0,out)]
 //
 (* ****** ****** *)
 

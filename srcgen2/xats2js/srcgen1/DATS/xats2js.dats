@@ -122,7 +122,7 @@ tok.node() of
 strnfpr
 (filr, strn) =
 (
- strn_fprint(filr, strn))//end-fun
+strn_fprint(strn, filr))//end-fun
 //
 #implfun
 nindfpr
@@ -130,7 +130,7 @@ nindfpr
 if nind > 0 then
 (
 strn_fprint
-(filr, " "); nindfpr(filr, nind-1))
+(" ", filr); nindfpr(filr, nind-1))
 //
 #implfun
 nindstrnfpr
@@ -144,12 +144,14 @@ nindfpr(filr, nind);strnfpr(filr, strn))
 //
 #implfun
 i1tnmfpr
-( filr,itnm ) =
+(filr, itnm) =
 (
-prints("xtnm", stmp)) where
+prints("xtnm", stmp)
+) where
 {
 //
-#impltmp g_print$out<>() = filr
+#impltmp
+g_print$out<>() = filr
 //
 val stmp = i1tnm_get_stmp(itnm)
 //
@@ -160,10 +162,10 @@ val stmp = i1tnm_get_stmp(itnm)
 //
 #implfun
 tokenfpr
-( filr,tok0 ) =
+(filr, tok0) =
 let
 (
-  token_fprint(filr, tok0))
+  token_fprint(tok0, filr))
 end(*let*)//end-of-[tokenfpr(env0,tok0)]
 //
 (* ****** ****** *)
@@ -178,7 +180,7 @@ val name = dcon.name((*0*))
 in//let
 (
 symbl_fprint
-(filr, name);
+(name, filr);
 strnfpr(filr, "_");
 fprint_loctn_as_stamp
 (filr, dcon.lctn((*void*))))
@@ -220,12 +222,15 @@ fun
 f0_none
 (dcst: d2cst): void =
 let
-val lctn = dcst.lctn((*0*))
-val name = dcst.name((*0*))
+//
+val
+lctn = dcst.lctn((*0*))
+val
+name = dcst.name((*0*))
 //
 in//let
 symbl_fprint
-(filr, name);strnfpr(filr, "_");
+(name, filr);strnfpr(filr, "_");
 fprint_loctn_as_stamp(filr, lctn)end
 //
 fun
@@ -234,16 +239,17 @@ f0_some
 ,dexp: d2exp): void =
 let
 //
-val name = dcst.name((*0*))
+val
+name = dcst.name((*0*))
 //
 val-
 D2Eextnam
-(tknd, gnam) = dexp.node((*0*))
+(tknd,gnam) = dexp.node((*0*))
 //
 in//let
 case+ gnam of
 |
-_(* else *) => symbl_fprint(filr,name)
+_(* else *) => symbl_fprint(name,filr)
 end(*let*)//end-of-[f0_some(dcst,dexp)]
 //
 }(*where*)
@@ -256,12 +262,13 @@ d2varfpr
 ( filr,dvar ) =
 let
 //
-val name = dvar.name((*0*))
+val
+name = dvar.name((*0*))
 //
 in//let
 (
 symbl_fprint
-(filr, name);
+(name, filr);
 strnfpr(filr, "_");
 fprint_loctn_as_stamp
 (filr, dvar.lctn((*void*))))

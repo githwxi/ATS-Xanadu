@@ -86,7 +86,7 @@ label_cmp(label, label): sint
 (* ****** ****** *)
 //
 fun
-label_fprint(FILR, label): void
+label_fprint(lab0: label, filr: FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

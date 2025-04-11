@@ -183,7 +183,7 @@ s1lab(x0:t0)=$S1E.s1lab(x0)
 fun
 <x0:type>
 s2lab_fprint
-(out: FILR, lab: s2lab(x0)): void
+(lab: s2lab(x0), out: FILR): void
 //
 (* ****** ****** *)
 //
@@ -256,13 +256,13 @@ t2dat_make_name(sym_t): t2dat
 (* ****** ****** *)
 //
 fun
-t2abs_fprint:(FILR,t2abs)->void
+t2abs_fprint:(t2abs,FILR)->void
 fun
-t2bas_fprint:(FILR,t2bas)->void
+t2bas_fprint:(t2bas,FILR)->void
 fun
-t2dat_fprint:(FILR,t2dat)->void
+t2dat_fprint:(t2dat,FILR)->void
 fun
-sort2_fprint:(FILR,sort2)->void
+sort2_fprint:(sort2,FILR)->void
 //
 (* ****** ****** *)
 fun
@@ -334,9 +334,9 @@ fun
 sort2_none1(s1t0: sort1): sort2
 (* ****** ****** *)
 fun
-s2cst_fprint:(FILR,s2cst)->void
+s2cst_fprint:(s2cst,FILR)->void
 fun
-s2var_fprint:(FILR,s2var)->void
+s2var_fprint:(s2var,FILR)->void
 (* ****** ****** *)
 //
 fun
@@ -518,7 +518,7 @@ s2arg_node =
 //
 (* ****** ****** *)
 fun
-s2arg_fprint:(FILR,s2arg)->void
+s2arg_fprint:(s2arg,FILR)->void
 (* ****** ****** *)
 (*
 fun
@@ -552,7 +552,7 @@ S2TEXsub of
 (* ****** ****** *)
 fun
 s2tex_fprint
-( out: FILR, stex: s2tex ): void
+(stex: s2tex, filr: FILR): void
 (* ****** ****** *)
 //
 datatype
@@ -670,16 +670,17 @@ S2Extv of (x2s2e) // ext-variable
 //
 (* ****** ****** *)
 fun
-s2exp_fprint:(FILR,s2exp)->void
+s2exp_fprint
+(s2e0:s2exp,filr:FILR): void
 (* ****** ****** *)
 fun
-s2exp_get_sort(s2exp): sort2
+s2exp_get_sort( s2exp ): sort2
 fun
-l2s2e_get_sort(l2s2e): sort2
+l2s2e_get_sort( l2s2e ): sort2
 fun
-s2exp_get_node(s2exp): s2exp_node
+s2exp_get_node( s2exp ): s2exp_node
 fun
-l2s2e_get_node(l2s2e): s2exp_node
+l2s2e_get_node( l2s2e ): s2exp_node
 (* ****** ****** *)
 #symload sort with s2exp_get_sort
 #symload sort with l2s2e_get_sort
@@ -799,7 +800,8 @@ S2ITMenv of
 //
 (* ****** ****** *)
 fun
-s2itm_fprint:(FILR,s2itm)->void
+s2itm_fprint
+(s2i0:s2itm,filr:FILR): void
 (* ****** ****** *)
 (*
 // HX-2022-10-01:

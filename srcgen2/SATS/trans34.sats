@@ -242,8 +242,7 @@ d4lft =
 //
 fun
 d4lft_fprint
-( out
-: FILR, dlft: d4lft): void
+(dlft:d4lft, out:FILR): void
 //
 (* ****** ****** *)
 //
@@ -276,8 +275,7 @@ d4typ_get_styp
 //
 fun
 d4typ_fprint
-( out
-: FILR, dtyp: d4typ): void
+(dtyp:d4typ, out:FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -338,8 +336,8 @@ vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 //
 fun
 linstk_fprint1
-( out
-: FILR, stk: !linstk): void
+( stk:
+! linstk, out:FILR):(void)
 //
 (* ****** ****** *)
 //

@@ -57,7 +57,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
-drpth_fprint(out, dpx) =
+drpth_fprint
+( dpx, out ) =
 (
 prints
 ("DRPTH(", dpx.name(), ")")
@@ -69,7 +70,8 @@ prints
 (* ****** ****** *)
 //
 #implfun
-fpath_fprint(out, fpx) =
+fpath_fprint
+( fpx, out ) =
 (
 prints
 ("FPATH(", fpx.fnm1(), ")")
@@ -81,7 +83,8 @@ prints
 (* ****** ****** *)
 //
 #implfun
-fname_fprint(out, fnm) =
+fname_fprint
+( fnm, out ) =
 (
 case+ fnm of
 |
@@ -98,7 +101,7 @@ prints("FNMbase(", name, ")")
 the_drpth_fprint
   (out) =
 drpth_fprint
-( out, dir0 ) where
+( dir0, out ) where
 {
 val
 dir0 = the_drpth_get() }
@@ -117,9 +120,9 @@ in//let
 {
 #impltmp
 foritm$work
-<drpth>(dir) = drpth_fprint(out, dir)
+<drpth>(dir) = drpth_fprint(dir, out)
 }
-end//let//end-of-[the_drpthlst_fprint]
+end//let//end-of-[the_drpthlst_fprint(...)]
 //
 (* ****** ****** *)
 

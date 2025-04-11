@@ -70,7 +70,7 @@ imp_assoc = ASSOCrgt()
 //
 #implfun
 assoc_fprint
-(out, asc) =
+( asc, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -79,7 +79,7 @@ case+ asc of
 | ASSOCnon() => print("ASSOCnon")
 | ASSOClft() => print("ASSOClft")
 | ASSOCrgt() => print("ASSOCrgt")
-end (*let*) // end of [assoc_fprint]
+end (*let*) // end of [assoc_fprint(asc,out)]
 //
 (* ****** ****** *)
 
@@ -165,8 +165,8 @@ exists_prcdv = prcdv( 0 )
 #implval
 bslash_prcdv =
 prcdv(app_prcdv.decd()+1)
-#implval
-inftmp_prcdv = prcdv ( 0 ) // for temp-infixity
+#implval // HX: this one is for
+inftmp_prcdv = prcdv ( 0 )//temp-infixity
 (* ****** ****** *)
 //
 #implfun
@@ -178,12 +178,12 @@ cmp_prcdv_prcdv
 //
 #implfun
 prcdv_fprint
- (out, cdv) =
+ (cdv, out ) =
 (
 print(cdv.decd())) where
 {
 #implfun g_print$out<>() = out
-} (*where*)//end-of-(prcdv_fprint)
+} (*where*)//end-of-(prcdv_fprint(cdv,out))
 //
 (* ****** ****** *)
 #implval
@@ -289,7 +289,7 @@ end (*let*) // end of [ fxopr_assoc(itm) ]
 #impltmp
 <a>(*tmp*)
 fxitm_fprint
-( out, fxi ) =
+( fxi, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -297,17 +297,19 @@ in//let
 case+ fxi of
 |
 FXITMatm(itm) =>
-prints("FXITMatm(",itm,")")
+(
+  prints("FXITMatm(",itm,")"))
 |
 FXITMopr(itm,fxt) =>
-prints("FXITMopr(",itm,";",fxt,")")
-end (*let*) // end of [fixty_fprint(out,fxi)]
+(
+  prints("FXITMopr(",itm,";",fxt,")"))
+end (*let*) // end of [fixty_fprint(fxi,out)]
 //
 (* ****** ****** *)
 //
 #implfun
 fixty_fprint
-( out, fxt ) =
+( fxt, out ) =
 let
 #impltmp
 g_print$out<>() = out
@@ -315,20 +317,26 @@ in//let
 case+ fxt of
 |
 FIXTYnon() =>
-prints("FIXTYnon(",")")
+(
+  prints("FIXTYnon(",")"))
 |
 FIXTYpre(p1) =>
-prints("FIXTYpre(", p1, ")")
+(
+  prints("FIXTYpre(", p1, ")"))
 |
 FIXTYpos(p1) =>
-prints("FIXTYpos(", p1, ")")
+(
+  prints("FIXTYpos(", p1, ")"))
 |
 FIXTYinf(p1, a2) =>
-prints("FIXTYinf(",p1,";",a2,")")
+(
+  prints("FIXTYinf(",p1,";",a2,")"))
 |
 FIXTYpreinf(p1, p2, a3) =>
-prints("FIXTYpreinf(",p1,";",p2,";",a3,")")
-end (*let*) // end of [fixty_fprint(out,fxt)]
+(
+  prints
+  ("FIXTYpreinf(",p1,";",p2,";",a3,")"))
+end (*let*) // end of [fixty_fprint(fxt,out)]
 //
 (* ****** ****** *)
 

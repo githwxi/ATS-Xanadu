@@ -104,17 +104,17 @@ XATSOPT "./../../.."
 //
 #implfun
 i0pat_fprint
-(out, i0p0) =
+(i0p0, out0) =
 let
 //
 #impltmp
 g_print$out
-<(*0*)>((*0*)) = out
+<(*0*)>((*0*)) = out0
 //
 #impltmp
 g_print
 <d2var>( dvar ) =
-d2var_fprint(out, dvar)
+d2var_fprint(dvar, out0)
 //
 in//let
 //
@@ -189,17 +189,17 @@ prints
 //
 (* ****** ****** *)
 //
-end(*let*)//end-of-[i0pat_fprint(out, i0p0)]
+end(*let*)//end-of-[i0pat_fprint(i0p0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 i0exp_fprint
-(out, i0e0) =
+(i0e0, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+
@@ -465,23 +465,23 @@ let
 val
 loc0 = d3e1.lctn() in//let
 (
-  prints("I0Enone1(", loc0, ";", d3e1, ")"))
+prints("I0Enone1(", loc0, ";", d3e1, ")"))
 end//let//end-of-[I0Enone1(d3e1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-end(*let*)//end-of-[i0exp_fprint(out, i0e0)]
+end(*let*)//end-of-[i0exp_fprint(i0e0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 fiarg_fprint
-(out, farg) =
+(farg, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+
@@ -490,17 +490,17 @@ farg.node() of
 (
   prints("FIARGdarg(", i0ps, ")"))
 //
-end (*let*) // end of [fiarg_fprint(out,farg)]
+end(*let*)//end-of-[fiarg_fprint(farg,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 i0gua_fprint
-(out, igua) =
+(igua, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+
@@ -512,16 +512,16 @@ prints("I0GUAexp(",i0e1,")")
 I0GUAmat(i0e1,i0p2) =>
 prints("I0GUAmat(",i0e1,";",i0p2,")")
 //
-end (*let*) // end of [i0gua_fprint(out,igua)]
+end(*let*)//end-of-[i0gua_fprint(igua,out0)]
 //
 (* ****** ****** *)
 //
 #implfun
 i0gpt_fprint
-(out, igpt) =
+(igpt, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 case+
 igpt.node() of
@@ -531,14 +531,14 @@ prints("I0GPTpat(",i0p1,")")
 |
 I0GPTgua(i0p1,i0gs) =>
 prints("I0GPTgua(",i0p1,";",i0gs,")")
-end (*let*) // end of [i0gpt_fprint(out,igpt)]
+end(*let*)//end-of-[i0gpt_fprint(igpt,out0)]
 //
 #implfun
 i0cls_fprint
-(out, icls) =
+(icls, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 case+
 icls.node() of
@@ -548,17 +548,17 @@ prints("I0CLSgpt(",igpt,")")
 |
 I0CLScls(i0g1,i0e2) =>
 prints("I0CLScls(",i0g1,";",i0e2,")")
-end (*let*) // end of [i0cls_fprint(out,icls)]
+end(*let*)//end-of-[i0cls_fprint(icls,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 t0imp_fprint
-(out, timp) =
+(timp, out0) =
 let
 #implfun
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 case+
 timp.node() of
@@ -577,17 +577,17 @@ prints("T0IMPall1(",d2c1,";",i0ds,")")
 (d2c1, i0ds) =>
 prints("T0IMPallx(",d2c1,";",i0ds,")")
 //
-end (*let*) // end of [t0imp_fprint(...)]
+end(*let*)//end-of-[t0imp_fprint(timp,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 i0dcl_fprint
-(out, dcl0) =
+(dcl0, out0) =
 let
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 in//let
 //
 case+
@@ -695,55 +695,55 @@ let
 val
 loc0 = d3cl.lctn() in//let
 (
-  prints("I0Dnone1(", loc0, ";", d3cl, ")"))
+prints("I0Dnone1(", loc0, ";", d3cl, ")"))
 end//let//end-of-[I0Dnone1(d3cl)]
 //
 (* ****** ****** *)
 //
-end(*let*)//end-of-[i0dcl_fprint(out, dcl0)]
+end(*let*)//end-of-[i0dcl_fprint(dcl0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
 i0valdcl_fprint
-  (out, ival) = let
+  (ival, out0) = let
 //
 val dpat =
 i0valdcl_get_dpat(ival)
 val tdxp =
 i0valdcl_get_tdxp(ival)
 //
-#impltmp g_print$out<>() = out
+#impltmp g_print$out<>() = out0
 //
 in//let
 (
 prints("I0VALDCL(", dpat, ";", tdxp, ")"))
-end(*let*)//end-of-[i0valdcl_fprint(out,ival)]
+end(*let*)//end-of-[i0valdcl_fprint(ival,out0)]
 
 (* ****** ****** *)
 //
 #implfun
 i0vardcl_fprint
-  (out, ivar) = let
+  (ivar, out0) = let
 //
 val dpid =
 i0vardcl_get_dpid(ivar)
 val dini =
 i0vardcl_get_dini(ivar)
 //
-#impltmp g_print$out<>() = out
+#impltmp g_print$out<>() = out0
 //
 in//let
 (
 prints("I0VARDCL(", dpid, ";", dini, ")"))
-end(*let*)//end-of-[i0vardcl_fprint(out,ivar)]
+end(*let*)//end-of-[i0vardcl_fprint(ivar,out0)]
 //
 (* ****** ****** *)
 //
 #implfun
 i0fundcl_fprint
-  (out, ifun) = let
+  (ifun, out0) = let
 //
 val dpid =
 i0fundcl_get_dpid(ifun)
@@ -752,20 +752,20 @@ i0fundcl_get_farg(ifun)
 val tdxp =
 i0fundcl_get_tdxp(ifun)
 //
-#impltmp g_print$out<>() = out
+#impltmp g_print$out<>() = out0
 //
 in//let
 (
 prints
 ("I0FUNDCL(",dpid,";",farg,";",tdxp,")"))
-end(*let*)//end-of-[i0fundcl_fprint(out,ifun)]
+end(*let*)//end-of-[i0fundcl_fprint(ifun,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 i0parsed_fprint
-  (out, ipar) = let
+  (ipar, out0) = let
 //
 val
 stadyn =
@@ -780,17 +780,20 @@ val
 parsed =
 i0parsed_get_parsed(ipar)
 //
-#impltmp g_print$out<>() = out
+#impltmp g_print$out<>() = out0
 //
 in//let
 (
 print("I0PARSED(");
 prints
 (stadyn,";",nerror,";",source,";",parsed,")"))
-end (*let*) // end-of-[i0parsed_fprint(out,ipar)]
+end(*let*)//end-of-[i0parsed_fprint(ipar,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 //
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep0_print0.sats] *)
