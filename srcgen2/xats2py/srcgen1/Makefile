@@ -1,1 +1,1 @@
-Makefile_xatsopt
+Makefile_xats2js
