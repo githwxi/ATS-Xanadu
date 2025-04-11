@@ -1,0 +1,5 @@
+########################################################################
+BUILD/JS/interp0_dats_out0.js:: SATS/interp0.sats
+BUILD/JS/interp0_print0_dats_out0.js:: SATS/interp0.sats
+BUILD/JS/interp0_utils0_dats_out0.js:: SATS/interp0.sats
+########################################################################

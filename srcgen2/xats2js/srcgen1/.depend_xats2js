@@ -1,0 +1,61 @@
+########################################################################
+BUILD/JS/interp0_dats.js:: SATS/interp0.sats
+BUILD/JS/interp0_print0_dats.js:: SATS/interp0.sats
+BUILD/JS/interp0_utils0_dats.js:: SATS/interp0.sats
+########################################################################
+BUILD/JS/interp1_dats.js:: SATS/interp1.sats
+BUILD/JS/interp1_print0_dats.js:: SATS/interp1.sats
+BUILD/JS/interp1_utils0_dats.js:: SATS/interp1.sats
+########################################################################
+BUILD/JS/trxd3i0_dats.js:: SATS/interp0.sats
+BUILD/JS/trxd3i0_dats.js:: SATS/trxd3i0.sats
+BUILD/JS/trxd3i0_myenv0_dats.js:: SATS/interp0.sats
+BUILD/JS/trxd3i0_myenv0_dats.js:: SATS/trxd3i0.sats
+BUILD/JS/trxd3i0_dynexp_dats.js:: SATS/interp0.sats
+BUILD/JS/trxd3i0_dynexp_dats.js:: SATS/trxd3i0.sats
+BUILD/JS/trxd3i0_decl00_dats.js:: SATS/interp0.sats
+BUILD/JS/trxd3i0_decl00_dats.js:: SATS/trxd3i0.sats
+########################################################################
+BUILD/JS/trxi0i1_dats.js:: SATS/interp0.sats
+BUILD/JS/trxi0i1_dats.js:: SATS/interp1.sats
+BUILD/JS/trxi0i1_dats.js:: SATS/trxi0i1.sats
+BUILD/JS/trxi0i1_myenv0_dats.js:: SATS/interp0.sats
+BUILD/JS/trxi0i1_myenv0_dats.js:: SATS/interp1.sats
+BUILD/JS/trxi0i1_myenv0_dats.js:: SATS/trxi0i1.sats
+BUILD/JS/trxi0i1_dynexp_dats.js:: SATS/interp0.sats
+BUILD/JS/trxi0i1_dynexp_dats.js:: SATS/interp1.sats
+BUILD/JS/trxi0i1_dynexp_dats.js:: SATS/trxi0i1.sats
+BUILD/JS/trxi0i1_decl00_dats.js:: SATS/interp0.sats
+BUILD/JS/trxi0i1_decl00_dats.js:: SATS/interp1.sats
+BUILD/JS/trxi0i1_decl00_dats.js:: SATS/trxi0i1.sats
+########################################################################
+BUILD/JS/xats2js_dats.js:: SATS/interp0.sats
+BUILD/JS/xats2js_dats.js:: SATS/interp1.sats
+BUILD/JS/xats2js_dats.js:: SATS/xats2js.sats
+BUILD/JS/xats2js_myenv0_dats.js:: SATS/interp0.sats
+BUILD/JS/xats2js_myenv0_dats.js:: SATS/interp1.sats
+BUILD/JS/xats2js_myenv0_dats.js:: SATS/xats2js.sats
+BUILD/JS/xats2js_dynexp_dats.js:: SATS/interp0.sats
+BUILD/JS/xats2js_dynexp_dats.js:: SATS/interp1.sats
+BUILD/JS/xats2js_dynexp_dats.js:: SATS/xats2js.sats
+BUILD/JS/xats2js_decl00_dats.js:: SATS/interp0.sats
+BUILD/JS/xats2js_decl00_dats.js:: SATS/interp1.sats
+BUILD/JS/xats2js_decl00_dats.js:: SATS/xats2js.sats
+########################################################################
+BUILD/JS/js1emit_dats.js:: SATS/interp0.sats
+BUILD/JS/js1emit_dats.js:: SATS/interp1.sats
+BUILD/JS/js1emit_dats.js:: SATS/xats2js.sats
+BUILD/JS/js1emit_dats.js:: SATS/js1emit.sats
+BUILD/JS/js1emit_utils0_dats.js:: SATS/interp0.sats
+BUILD/JS/js1emit_utils0_dats.js:: SATS/interp1.sats
+BUILD/JS/js1emit_utils0_dats.js:: SATS/xats2js.sats
+BUILD/JS/js1emit_utils0_dats.js:: SATS/js1emit.sats
+BUILD/JS/js1emit_dynexp_dats.js:: SATS/interp0.sats
+BUILD/JS/js1emit_dynexp_dats.js:: SATS/interp1.sats
+BUILD/JS/js1emit_dynexp_dats.js:: SATS/xats2js.sats
+BUILD/JS/js1emit_dynexp_dats.js:: SATS/js1emit.sats
+BUILD/JS/js1emit_decl00_dats.js:: SATS/interp0.sats
+BUILD/JS/js1emit_decl00_dats.js:: SATS/interp1.sats
+BUILD/JS/js1emit_decl00_dats.js:: SATS/xats2js.sats
+BUILD/JS/js1emit_decl00_dats.js:: SATS/js1emit.sats
+########################################################################
