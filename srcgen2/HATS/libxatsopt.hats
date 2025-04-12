@@ -25,7 +25,6 @@ Tue Jan 23 00:01:55 EST 2024
 (* ****** ****** *)
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
-#staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans12.sats"
 #staload "./../SATS/tread12.sats"
@@ -45,12 +44,6 @@ Tue Jan 23 00:01:55 EST 2024
 #staload "./../SATS/tread30.sats"
 (* ****** ****** *)
 #staload "./../SATS/fperr30.sats"
-(* ****** ****** *)
-#staload "./../SATS/trans34.sats"
-(* ****** ****** *)
-#staload "./../SATS/tread34.sats"
-(* ****** ****** *)
-#staload "./../SATS/fperr40.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"

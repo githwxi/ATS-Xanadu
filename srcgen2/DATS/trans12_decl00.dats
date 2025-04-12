@@ -78,8 +78,6 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
-#staload "./../SATS/xatsmtp.sats"
-(* ****** ****** *)
 (* ****** ****** *)
 #staload
 _(* TRANS12 *) = "./trans12.dats"
