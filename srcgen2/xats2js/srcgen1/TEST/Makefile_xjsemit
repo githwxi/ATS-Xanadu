@@ -7,6 +7,7 @@ CAT=cat
 ECHO=echo
 ########################################################################
 BUN=bun
+QJS=qjs
 NODE=node
 ########################################################################
 ########################################################################
@@ -75,8 +76,8 @@ test01:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
 test01:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
-test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude_node.js >> $@_out.js
+############
+# HX-2025-04-11: The generated code can be run with QJS!
 ############
 test01:: \
 test01_xats2js.dats; \
