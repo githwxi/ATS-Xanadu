@@ -3,7 +3,8 @@
 A Programming Language System to
 Unleash the Potentials of Types and Templates!
 ############################################################
-This project attempts to implement ATS3 in ATS3.
+This project attempts to implement ATS3 in ATS3 and then
+implement ATS3-extensions for meta-programming and beyond.
 ############################################################
 ############################################################
 
