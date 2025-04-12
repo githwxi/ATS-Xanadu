@@ -210,28 +210,8 @@ fperr30_sats
 fperr30_sats: ; $(XATSOPT) --static SATS/fperr30.sats
 ######
 all_sats:: \
-dynexp4_sats
-dynexp4_sats: ; $(XATSOPT) --static SATS/dynexp4.sats
-######
-all_sats:: \
-trans34_sats
-trans34_sats: ; $(XATSOPT) --static SATS/trans34.sats
-######
-all_sats:: \
-tread34_sats
-tread34_sats: ; $(XATSOPT) --static SATS/tread34.sats
-######
-all_sats:: \
-fperr40_sats
-fperr40_sats: ; $(XATSOPT) --static SATS/fperr40.sats
-######
-all_sats:: \
 xglobal_sats
 xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
-######
-all_sats:: \
-xatsmtp_sats
-xatsmtp_sats: ; $(XATSOPT) --static SATS/xatsmtp.sats
 ######
 all_sats:: \
 xatsopt_sats
@@ -826,60 +806,6 @@ fperr30_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr30_dynexp.dats
 all_dats:: \
 fperr30_decl00_dats
 fperr30_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr30_decl00.dats
-######
-
-######
-all_dats:: \
-dynexp4_dats
-dynexp4_dats: ; $(XATSOPT) --dynamic DATS/dynexp4.dats
-all_dats:: \
-dynexp4_print0_dats
-dynexp4_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp4_print0.dats
-all_dats:: \
-dynexp4_utils0_dats
-dynexp4_utils0_dats: ; $(XATSOPT) --dynamic DATS/dynexp4_utils0.dats
-######
-
-######
-all_dats:: \
-trans34_dats
-trans34_dats: ; $(XATSOPT) --dynamic DATS/trans34.dats
-all_dats:: \
-trans34_print0_dats
-trans34_print0_dats: ; $(XATSOPT) --dynamic DATS/trans34_print0.dats
-all_dats:: \
-trans34_myenv0_dats
-trans34_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans34_myenv0.dats
-all_dats:: \
-trans34_utils0_dats
-trans34_utils0_dats: ; $(XATSOPT) --dynamic DATS/trans34_utils0.dats
-all_dats:: \
-trans34_dynexp_dats
-trans34_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans34_dynexp.dats
-all_dats:: \
-trans34_decl00_dats
-trans34_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans34_decl00.dats
-######
-
-######
-all_dats:: \
-fperr40_dats
-fperr40_dats: ; $(XATSOPT) --dynamic DATS/fperr40.dats
-all_dats:: \
-fperr40_dynexp_dats
-fperr40_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr40_dynexp.dats
-all_dats:: \
-fperr40_decl00_dats
-fperr40_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr40_decl00.dats
-######
-
-######
-all_dats:: \
-xatsmtp_dats
-xatsmtp_dats: ; $(XATSOPT) --dynamic DATS/xatsmtp.dats
-all_dats:: \
-xatsmtp_dcon00_dats
-xatsmtp_dcon00_dats: ; $(XATSOPT) --dynamic DATS/xatsmtp_dcon00.dats
 ######
 
 ######

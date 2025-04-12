@@ -267,6 +267,10 @@ strtmp_vt_set$at<>(p0, i0, c0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-04-12:
+This needs to be changed if NODE is replaced by QJS.
+*)
 #include
 "srcgen1/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
 //
