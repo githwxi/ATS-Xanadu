@@ -1,5 +1,20 @@
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"srcgen2\
+/prelude/HATS/prelude_dats.hats"
+//
+#include
+"srcgen2\
+/prelude/HATS/prelude_JS_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #extern
 fun<a:t0>

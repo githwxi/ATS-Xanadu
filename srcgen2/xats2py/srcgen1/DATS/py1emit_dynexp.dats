@@ -320,6 +320,57 @@ end(*let*)//end-(i0pckpy1(filr,ival,ipat))
 (* ****** ****** *)
 //
 fun
+xtrcdpy1
+(filr: FILR
+,tknd: token): void =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+case+
+tknd.node() of
+//
+|T_TRCD10(knd0) =>
+(
+prints("XATSTRCD(", knd0, ")"))
+|T_TRCD20(knd0) =>
+(
+prints("XATSTRCD(", knd0, ")"))
+//
+|_(*otherwise*) =>
+(
+prints
+("XATSTRCD(", "'", tknd, "'", ")"))
+//
+end(*let*)//end-of-[xtrcdpy1(filr,tknd)]
+//
+(* ****** ****** *)
+//
+fun
+labelpy1
+(filr: FILR
+,lab0: label): void =
+(
+case+ lab0 of
+|
+LABint(int) => print(int)
+|
+LABsym(sym) =>
+let
+val nam =
+symbl_get_name(sym) in//let
+  prints("'", nam, "'") end//let
+) where
+{
+//
+  #impltmp g_print$out<>() = filr
+//
+}(*where*)//end-of-[labelpy1(filr,lab0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 t1imploc
 (filr: FILR
 ,timp: t1imp): void =
@@ -575,6 +626,33 @@ ival.node() of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I1Vaddr(i1v1) =>
+(
+  prints("XATSADDR(", i1v1, ")") )
+|I1Vaexp(i0e1) =>
+(
+  prints("XATSAEXP(", i0e1, ")") )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|I1Vp0rj
+( itup,pind ) =>
+(
+prints
+("XATSP0RJ(",itup,"[",pind,"]", ")"))
+(* ****** ****** *)
+|I1Vp1rj
+( trcd
+, itup, pind) =>
+(
+print("XATSP1RJ(");
+prints
+(trcd, ", ", itup, "[", pind, "]", ")")
+) where
+{ #impltmp
+  g_print<token>(x) = xtrcdpy1(filr,x) }
+(* ****** ****** *)
+(* ****** ****** *)
 |
 _(*else*) => i1val_fprint(ival,filr)
 //
@@ -587,6 +665,25 @@ end where
   g_print<i1val>(x) = i1valpy1(filr, x)
 //
 }(*where*)//end-of-[ i1valpy1(filr,ival) ]
+//
+(* ****** ****** *)
+//
+#implfun
+l1i1vpy1
+(filr, liv0) =
+let
+val+
+I1LAB(lab1, i1v2) = liv0
+in//let
+(
+prints(lab1, ": ", i1v2)) where
+{
+  #impltmp
+  g_print<label>(x) = labelpy1(filr, x)
+  #impltmp
+  g_print<i1val>(x) = i1valpy1(filr, x)
+}
+end(*end*)//end-of-[ l1i1vpy1(filr,ival) ]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -610,6 +707,26 @@ strnfpr(filr,", ");i1valpy1(filr, x0))
 }(*where*)//end-of-[i1valpy1_list(...)]
 //
 (* ****** ****** *)
+//
+fun
+l1i1vpy1_list
+( filr: FILR
+, livs: l1i1vlst): void =
+(
+list_iforitm(livs)) where
+{
+#typedef x0 = l1i1v
+#typedef xs = l1i1vlst
+#impltmp
+iforitm$work<x0>(i0, x0) =
+(
+if
+(i0 >= 1)
+then
+strnfpr(filr,", ");l1i1vpy1(filr, x0))
+}(*where*)//end-of-[l1i1vpy1_list(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -623,6 +740,13 @@ val () =
 prerrsln
 ("i1inspy1: iins = ", iins)
 *)
+//
+#impltmp
+g_print
+<label>(x) = labelpy1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valpy1(filr, x)
 //
 in//let
 //
@@ -699,6 +823,48 @@ prints("XATSPROJ(", i1v1, "[", lab0, "]", ")"))
 strnfpr(filr,"XATSTUP0(");
 strnfpr(filr,"[");i1valpy1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
 )
+//
+|I1INStup1
+(tknd, i1vs) =>
+(
+strnfpr(filr,"XATSTUP1(");
+xtrcdpy1(filr,tknd);strnfpr(filr,", ")
+;strnfpr(filr,"[");i1valpy1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
+)
+//
+|I1INSrcd2
+(tknd, livs) =>
+(
+strnfpr(filr,"XATSRCD2(");
+xtrcdpy1(filr,tknd);strnfpr(filr,", ")
+;strnfpr(filr,"{");l1i1vpy1_list(filr,livs);strnfpr(filr,"}");strnfpr(filr,")")
+)
+//
+(* ****** ****** *)
+//
+|I1INSflat
+(   i1v1   ) =>
+(strnfpr(filr,"XATSFLAT(")
+;i1valpy1(filr,i1v1);strnfpr(filr,")"))
+//
+(* ****** ****** *)
+//
+|I1INSdl0az
+(   i1v1   ) =>
+(strnfpr(filr,"XATS000_dl0az(")
+;i1valpy1(filr,i1v1);strnfpr(filr,")"))
+//
+|I1INSdl1az
+(   i1v1   ) =>
+(strnfpr(filr,"XATS000_dl1az(")
+;i1valpy1(filr,i1v1);strnfpr(filr,")"))
+//
+(* ****** ****** *)
+//
+|I1INSdp2tr
+(   i1v1   ) =>
+(strnfpr(filr,"XATS000_dp2tr(")
+;i1valpy1(filr,i1v1);strnfpr(filr,")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
