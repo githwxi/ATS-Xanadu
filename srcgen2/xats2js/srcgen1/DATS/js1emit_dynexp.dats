@@ -330,6 +330,8 @@ ipat.node() of
 |I0Pany _ => ((*void*))
 |I0Pvar _ => ((*void*))
 //
+(* ****** ****** *)
+//
 |I0Pint _ =>
 (
  f0_int0(b0, ival, ipat))
@@ -346,12 +348,16 @@ ipat.node() of
 (
  f0_str0(b0, ival, ipat))
 //
+(* ****** ****** *)
+//
 |I0Pdap1 _ =>
 (
   f0_dap1(b0, ival, ipat))
 |I0Pdapp _ =>
 (
   f0_dapp(b0, ival, ipat))
+//
+(* ****** ****** *)
 //
 |I0Ptup0 _ =>
 (
@@ -365,6 +371,8 @@ ipat.node() of
   f0_rcd2(b0, ival, ipat))
 *)
 //
+(* ****** ****** *)
+//
 |I0Pbang _ =>
 (
   f0_bang(b0, ival, ipat))
@@ -372,6 +380,8 @@ ipat.node() of
 |I0Pfree _ =>
 (
   f0_free(b0, ival, ipat))
+//
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
@@ -610,8 +620,6 @@ f0_ipat(b0, ival, i0p1)
 {
 val-I0Pbang(i0p1) = ipat.node()
 }(*where*)//end-of-[f0_bang(...)]
-//
-(* ****** ****** *)
 //
 and
 f0_free
@@ -1795,7 +1803,7 @@ val () =
 val () =
 (
 nindfpr(filr, nind+2);
-strnfpr(filr, "} while (false) // end(do)\n"))
+strnfpr(filr, "} while (false) // end-of(do)\n"))
 val () =
 (
   f2_igptbrk(filr, nind+2)) where
@@ -1817,7 +1825,7 @@ end//let//end(f1_i1clscls_gua(igpt,icmp))
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[f0_i1tnmvalcls(...)]
+}(*where*)//end-of-[f0_i1tnmvalcls(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -1847,7 +1855,7 @@ end//let
 list_cons(icl1, icls) =>
 ( f0_i1tnmvalcls(env0,itnm,ival,icl1)
 ; f0_i1tnmvalclslst(env0,itnm,ival,icls) )
-)(*case+*)//end-of-[f0_i1tnmvalclslst(...)]
+)(*case+*)//end-of-[f0_i1tnmvalclslst(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2112,7 +2120,7 @@ val () =
 //
 val () =
 (
-nindstrnfpr(filr, nind, "} while (false) // end(do)\n"))
+nindstrnfpr(filr, nind, "} while (false) // end-of(do)\n"))
 end//let//end-of-[I1INScas0(...)]
 //
 (* ****** ****** *)
@@ -2201,11 +2209,11 @@ val () =
 //
 val () =
 (
-nindstrnfpr(filr, nind, "} while (false) // end(do)\n"))
+nindstrnfpr(filr, nind, "} while (false) // end-of(do)\n"))
 //
 val () =
 (
-nindstrnfpr(filr, nind, "} // end(catch) // end(try)\n"))
+nindstrnfpr(filr, nind, "} // end(catch) // end-of(try)\n"))
 end//let//end-of-[I1INScas0(...)]
 //
 (* ****** ****** *)
