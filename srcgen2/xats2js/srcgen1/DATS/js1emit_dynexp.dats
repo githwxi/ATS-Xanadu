@@ -2214,7 +2214,7 @@ nindstrnfpr(filr, nind, "} while (false) // end-of(do)\n"))
 val () =
 (
 nindstrnfpr(filr, nind, "} // end(catch) // end-of(try)\n"))
-end//let//end-of-[I1INScas0(...)]
+end//let//end-of-[I1INStry0(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

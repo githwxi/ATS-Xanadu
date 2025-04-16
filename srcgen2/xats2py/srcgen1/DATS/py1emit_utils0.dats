@@ -229,7 +229,8 @@ end(*let*)//end-of-[d2varpy1(env0,dvar)]
 i1tnmpy1
 ( filr,itnm ) =
 (
-prints("pytnm", stmp)) where
+prints
+("pyx", "tnm", stmp)) where
 {
 //
 #impltmp g_print$out<>() = filr
