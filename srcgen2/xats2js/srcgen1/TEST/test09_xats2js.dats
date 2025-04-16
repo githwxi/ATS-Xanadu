@@ -6,11 +6,14 @@
 (* ****** ****** *)
 //
 #include
-"prelude/HATS/prelude_dats.hats"
+"srcgen2\
+/prelude/HATS/prelude_dats.hats"
 #include
-"prelude/HATS/prelude_JS_dats.hats"
+"srcgen2\
+/prelude/HATS/prelude_JS_dats.hats"
 #include
-"prelude/HATS/prelude_NODE_dats.hats"
+"srcgen2\
+/prelude/HATS/prelude_NODE_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
