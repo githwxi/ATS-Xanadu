@@ -582,10 +582,10 @@ else
 (
 //
 (
-nindfpr(filr, nind);dicstpy1(filr, dimp);
-strnfpr(filr," = function ");fjas1py1(filr, fjas));
+nindfpr(filr, nind);strnfpr(filr, "def ");
+dicstpy1(filr, dimp);
+fjas1py1(filr, fjas);strnfpr(filr, ": ## impl\n"));
 (
-strnfpr(filr," ## impl\n");
 (envx2js_incnind(env0,2(*++*))
 ;py1emit_fjarglst(env0, fjas);f1_i1cmpret(env0, icmp));
 (envx2js_decnind(env0,2(*--*))
@@ -855,7 +855,7 @@ in//let
 (
 nindfpr(filr, nind);strnfpr(filr, "def ");
 d2varfpr(filr, dvar);
-fjas1py1(filr, fjas);strnfpr(filr, ":\n"))
+fjas1py1(filr, fjas);strnfpr(filr, ": ## fun\n"))
 end//let
 //
 (* ****** ****** *)

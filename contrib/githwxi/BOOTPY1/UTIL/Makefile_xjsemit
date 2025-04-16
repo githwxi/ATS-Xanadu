@@ -7,50 +7,39 @@ CAT=cat
 ECHO=echo
 NODE=node
 ########################################################################
-BOOTJS1=./..
+BOOTPY1=./..
 ########################################################################
-SRCGEN1=./../../../../srcgen1
 SRCGEN2=./../../../../srcgen2
-XATS2JS=./../../../../srcgen2/xats2js
+XATS2PY=./../../../../srcgen2/xats2py
 ########################################################################
-S1XSHRD=\
-$(SRCGEN1)/xats2js/srcgenx/xshared/runtime
 S2XSHRD=\
-$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
+$(SRCGEN2)/xats2py/srcgenx/xshared/runtime
 ########################################################################
 all:: \
 xatsopt_tcheck00_dats
 ########################################################################
 ########################################################################
 #
-# HX-2025-03-29:
-# $(S1XSHRD) is used since the library code for
-# ATS3-Xanadu/source2 is largely shared with ATS3-Xanadu/source1
-#
-########################################################################
-#
 xatsopt_tcheck00_dats: ; \
 $(CAT) \
-$(S2XSHRD)/xats2js_js1emit.js > $@_out.js && \
+$(S2XSHRD)/xats2py_py1emit.py > $@_out.py && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude.js >> $@_out.js && \
+$(S2XSHRD)/xats2py_prelude.py >> $@_out.py && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude_node.js >> $@_out.js && \
-$(CAT) \
-$(S1XSHRD)/xats2js_xatslib_node.js >> $@_out.js && \
-$(CAT) $(BOOTJS1)/lib/lib2xatsopt.js >> $@_out.js && \
+$(S2XSHRD)/xats2py_xatslib.py >> $@_out.py && \
+$(CAT) $(BOOTPY1)/lib/lib2xatsopt.py >> $@_out.py && \
 $(NODE) --stack-size=4096 \
-$(XATS2JS_JSEMIT00) $(SRCGEN2)/UTIL/xatsopt_tcheck00.dats >> $@_out.js
+$(XATS2PY_PYEMIT00) $(SRCGEN2)/UTIL/xatsopt_tcheck00.dats >> $@_out.py
 #
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; rm -f xatsopt_tcheck00_dats_out.js
+cleanall:: ; rm -f xatsopt_tcheck00_dats_out.py
 ########################################################################
 ########################################################################
 XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_dats.js
-XATS2JS_JSEMIT00=$(XATS2JS)/srcgen1/UTIL/xats2js_jsemit00_dats.js
+XATS2PY_PYEMIT00=$(XATS2PY)/srcgen1/UTIL/xats2py_pyemit00_dats.js
 ########################################################################
 ########################################################################

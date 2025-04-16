@@ -1592,7 +1592,7 @@ nindfpr(filr, nind);
 tbrkpy1(filr, tbrk);
 strnfpr(filr, " = False\n");
 nindfpr(filr, nind+2);
-strnfpr(filr, "while (True): ## do { // gua\n")
+strnfpr(filr, "while True: ## do { // gua\n")
 )
 //
 val () =
@@ -1693,7 +1693,7 @@ val () =
 val () =
 (
 nindfpr(filr, nind+2);
-strnfpr(filr,"## } while (True) // end-of(do)\n"))
+strnfpr(filr,"## } while True // end-of(do)\n"))
 //
 val () =
 (
@@ -1940,9 +1940,10 @@ val () =
 (
 case+ iels of
 |optn_nil() =>
+(
 nindstrnfpr
-(filr
-,nind, "## else\n")
+(filr, nind,
+"## else: None\n"))//no-else
 |optn_cons(icmp) =>
 (
 nindstrnfpr
@@ -1972,7 +1973,7 @@ val () =
 (
 nindstrnfpr
 (filr, nind,
-"while (True): ## do {\n"))
+"while True: ## do {\n"))
 //
 val () = // enter
 envx2js_incnind(env0,2(*++*))
@@ -1989,8 +1990,55 @@ val () =
 (
 nindstrnfpr
 (filr, nind+2, "break\n");
-nindstrnfpr(filr, nind, "## while (True) // end-of(do)\n"))
+nindstrnfpr(filr, nind, "## while True // end-of(do)\n"))
 end//let//end-of-[I1INScas0(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSlam0
+(tknd
+,fjas, icmp) =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmpy1(filr, itnm);
+strnfpr(filr," = function ");
+fjas1py1(filr, fjas);
+strnfpr(filr, " { // lam0(");
+tokenfpr(filr, tknd);strnfpr(filr, ")\n");
+(
+envx2js_incnind
+( env0,2(*++*) );
+py1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
+(
+envx2js_decnind
+( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(lam0)\n"))
+)
+//
+(* ****** ****** *)
+//
+|I1INSfix0
+(tknd
+,dvar
+,fjas, icmp) =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmpy1(filr, itnm);
+strnfpr(filr," = function ");
+d2varfpr(filr, dvar); //fvar
+fjas1py1(filr, fjas); //farg
+strnfpr(filr, " { // fix0(");
+tokenfpr(filr, tknd);strnfpr(filr, ")\n");
+(
+envx2js_incnind
+( env0,2(*++*) );
+py1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
+(
+envx2js_decnind
+( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(fix0)\n"))
+)
 //
 (* ****** ****** *)
 (* ****** ****** *)
