@@ -4,13 +4,9 @@
 #include
 "srcgen2\
 /prelude/HATS/prelude_dats.hats"
-//
 #include
 "srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
-#include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
+/prelude/HATS/prelude_PY_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -114,8 +110,9 @@ then (xrr.rr.1) else (xrr.rr.0))
 (* ****** ****** *)
 (* ****** ****** *)
 val () =
-prints("fibo4(10) = ", fibo4(10), "\n")
+(
+  prints("fibo4(10) = ", fibo4(10), "\n"))
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_xats2js_srcgen1_TEST_test05_xats2js.dats] *)
+(* end of [ATS3/XANADU_xats2py_srcgen1_TEST_test05_xats2py.dats] *)
