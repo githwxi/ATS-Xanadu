@@ -1686,7 +1686,7 @@ nindfpr
 (filr, nind+4);
 tbrkpy1(filr, tbrk);
 strnfpr(filr, 
-  " = (true) // deguarded!\n"))
+  " = (True) ## deguarded!\n"))
 //
 val () =
 (
