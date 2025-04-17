@@ -1596,8 +1596,8 @@ envx2js_incnind(env0,2(*++*)))
 //
 val () =
 (
-nindfpr(filr, nind);
-tbrkpy1(filr, tbrk);
+nindfpr(filr, nind+2);
+tbrkpy1(filr, (tbrk));
 strnfpr(filr, " = False\n");
 nindfpr(filr, nind+2);
 strnfpr(filr, "while True: ## do { // gua\n")
