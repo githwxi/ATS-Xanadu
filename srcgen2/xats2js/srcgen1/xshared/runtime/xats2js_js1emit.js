@@ -135,9 +135,9 @@ XATS2JS_list_vt_cons(x0, xs)
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 
-let XATS000_casef = function()
+let XATS000_cfail = function()
   {
-    throw new Error("XATS000_casef");
+    throw new Error("XATS000_cfail");
   }
 
 let XATS000_patck = function(pck)

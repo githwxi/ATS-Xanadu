@@ -1849,7 +1849,7 @@ in//let
 (
 nindstrnfpr
 (filr,nind,
-"XATS000_casef()");fprintln(filr))
+"XATS000_cfail()");fprintln(filr))
 end//let
 |
 list_cons(icl1, icls) =>
