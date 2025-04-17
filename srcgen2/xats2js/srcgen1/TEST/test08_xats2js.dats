@@ -21,68 +21,6 @@
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-//
-#extcode
-"
-var A = [1,2,3]
-"(*end-of-[extcode]*)
-val A =
-$synext("A"):jsarray(sint,3)
-//
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val A =
-jsarray_3val(1, 3, 2)
-val () =
-(
-  prints("A = ", A, "\n"))
-//
-val () = A.sortref()
-val () =
-(
-  prints("A = ", A, "\n"))
-//
-(* ****** ****** *)
-//
-val () =
-A.foritm(
-lam(x:nint) => prints(x, "\n"))
-//
-(* ****** ****** *)
-//
-val iA =
-gseq_ifolditm
-<xs><x0><r0>(A, 0) where
-{
-#typedef r0 = sint
-#typedef x0 = sint
-#typedef xs = jsarray(sint)
-#impltmp
-ifolditm$fopr
-< r0 > < x0 >
-(r0, i0, x0) = r0 + (i0+1)*x0
-}
-//
-val () =
-(
-  prints("iA = ", iA, "\n"))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val B =
-jsarray
-(
-map_lstrm(10,lam(i:nint)=>i+1))
-val () = prints("B = ", B, "\n")
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 fun
 cube(x1: sint): sint =
 let
@@ -195,29 +133,110 @@ fact1_prod_tail
 (* ****** ****** *)
 //
 val () = prints
-("mytest12:nsum0_tail(10)=",nsum0_tail(10),"\n")
+("nsum0_tail(10)=",nsum0_tail(10),"\n")
 val () = prints
-("mytest12:fact1_prod_tail(10)=",fact1_prod_tail(10),"\n")
+("fact1_prod_tail(10)=",fact1_prod_tail(10),"\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val xs1 = list_pair(1, 2)
-val xs2 = list_pair(3, 4)
-val ( ) = prints("xs1 = ", xs1, "\n")
-val ( ) = prints("xs2 = ", xs2, "\n")
-val ( ) = prints("|xs1| = ", length(xs1), "\n")
-val ( ) = prints("|xs2| = ", length(xs2), "\n")
+val
+xs1 = list_pair(1, 2)
+val
+xs2 = list_pair(3, 4)
+val ( ) =
+prints("xs1 = ", xs1, "\n")
+val ( ) =
+prints("xs2 = ", xs2, "\n")
+val ( ) =
+prints
+("|xs1| = ", length(xs1), "\n")
+val ( ) =
+prints
+("|xs2| = ", length(xs2), "\n")
 //
-val xs3 = append(xs1, xs2)
-val ( ) = prints("xs3 = ", xs3, "\n")
-val ( ) = prints("|xs3| = ", length(xs3), "\n")
+val
+xs3 = append(xs1, xs2)
+val ( ) =
+prints("xs3 = ", xs3, "\n")
+val ( ) =
+prints
+("|xs3| = ", length(xs3), "\n")
 //
-val xs4 = reverse(  xs3  )
-val ( ) = prints("xs4 = ", xs4, "\n")
-val ( ) = prints("|xs4| = ", length(xs4), "\n")
+val
+xs4 = reverse(  xs3  )
+val ( ) =
+prints("xs4 = ", xs4, "\n")
+val ( ) =
+prints
+("|xs4| = ", length(xs4), "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+//
+#extcode
+"
+var A = [1,2,3]
+"(*end-of-[extcode]*)
+val A =
+$synext("A"):jsarray(sint,3)
+//
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val A =
+jsarray_3val(1, 3, 2)
+val () =
+(
+  prints("A = ", A, "\n"))
+//
+val () = A.sortref()
+val () =
+(
+  prints("A = ", A, "\n"))
+//
+(* ****** ****** *)
+//
+val () =
+A.foritm(
+lam(x:nint) => prints(x, "\n"))
+//
+(* ****** ****** *)
+//
+val iA =
+gseq_ifolditm
+<xs><x0><r0>(A, 0) where
+{
+#typedef r0 = sint
+#typedef x0 = sint
+#typedef xs = jsarray(sint)
+#impltmp
+ifolditm$fopr
+< r0 > < x0 >
+(r0, i0, x0) = r0 + (i0+1)*x0
+}
+//
+val () =
+(
+  prints("iA = ", iA, "\n"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val B =
+jsarray
+(
+map_lstrm(10,lam(i:nint)=>i+1))
+val () = prints("B = ", B, "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_xats2js_srcgen1_TEST_test08_xats2js.dats] *)

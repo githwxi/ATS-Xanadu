@@ -1748,7 +1748,7 @@ in//let
 (
 nindstrnfpr
 (filr,nind,
-"XATS000_casef()");fprintln(filr))
+"XATS000_cfail()");fprintln(filr))
 end//let
 |
 list_cons(icl1, icls) =>
@@ -1825,6 +1825,8 @@ case+ iins of
 |I1INSdl1az _ => f1_i1ins(iins)
 (* ****** ****** *)
 |I1INSdp2tr _ => f1_i1ins(iins)
+(* ****** ****** *)
+|I1INSraise _ => f1_i1ins(iins)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -2101,6 +2103,37 @@ val () =
 (
 nindstrnfpr(filr, nind, "## } // end(except) // end-of(try)\n"))
 end//let//end-of-[I1INStry0(...)]
+//
+(* ****** ****** *)
+//
+|I1INSl0azy
+(dknd, icmp) =>
+(
+nindstrnfpr
+(filr, nind, "def ");
+i1tnmpy1(filr, itnm);strnfpr(filr, "(): ## { // l1azy\n");
+(
+envx2js_incnind
+( env0,2(*++*) );f0_i1cmpret(env0, icmp);
+(
+envx2js_decnind
+( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(l0azy)\n")))
+)
+//
+|I1INSl1azy
+(dknd
+,icmp, cmps) =>
+(
+nindstrnfpr
+(filr, nind, "def ");
+i1tnmpy1(filr, itnm);strnfpr(filr, "(tlaz): ## { // l1azy\n");
+(
+envx2js_incnind
+( env0,2(*++*) );f0_i1cmpret(env0, icmp);
+(
+envx2js_decnind
+( env0,2(*--*) );nindstrnfpr(filr, nind, "## } // endfun(l1azy)\n")))
+)
 //
 (* ****** ****** *)
 (* ****** ****** *)
