@@ -109,6 +109,31 @@ test05_xats2py.dats; \
 $(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
 ########################################################################
 ########################################################################
+test06:: ; \
+echo "##" `date` > $@_out.py
+############
+test06:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+test06:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+############
+test06:: \
+test06_xats2py.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+########################################################################
+test07:: ; \
+echo "##" `date` > $@_out.py
+############
+test07:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+test07:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+############
+test07:: \
+test07_xats2py.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+########################################################################
+########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f test??_out.py

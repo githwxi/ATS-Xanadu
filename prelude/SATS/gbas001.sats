@@ -134,6 +134,19 @@ rfolditm$fopr(x0, r0): (r0)
 fun
 <x0:t0>
 <r0:vt>
+ifolditm$fopr
+(res: r0, pos: ni, itm: x0): (r0)
+fun
+<x0:t0>
+<r0:vt>
+irfolditm$fopr
+(pos: ni, itm: x0, res: r0): (r0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<r0:vt>
 foldall$fopr(r0, x0): (bool, r0)
 fun
 <x0:t0>
