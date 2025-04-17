@@ -2011,11 +2011,10 @@ end//let//end-of-[I1INScas0(...)]
 ,fjas, icmp) =>
 (
 nindstrnfpr
-(filr, nind, "let ");
+(filr, nind, "def ");
 i1tnmpy1(filr, itnm);
-strnfpr(filr," = function ");
 fjas1py1(filr, fjas);
-strnfpr(filr, " { // lam0(");
+strnfpr(filr, ": ## { // lam0(");
 tokenfpr(filr, tknd);strnfpr(filr, ")\n");
 (
 envx2js_incnind
@@ -2023,7 +2022,7 @@ envx2js_incnind
 py1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
 (
 envx2js_decnind
-( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(lam0)\n"))
+( env0,2(*--*) );nindstrnfpr(filr, nind, "## } // end(lam0)\n"))
 )
 //
 (* ****** ****** *)
@@ -2033,21 +2032,31 @@ envx2js_decnind
 ,dvar
 ,fjas, icmp) =>
 (
-nindstrnfpr
-(filr, nind, "let ");
+//
+nindfpr(filr, nind);
 i1tnmpy1(filr, itnm);
-strnfpr(filr," = function ");
+strnfpr(filr," = None\n");
+//
+nindstrnfpr
+(filr, nind, "def ");
 d2varfpr(filr, dvar); //fvar
 fjas1py1(filr, fjas); //farg
-strnfpr(filr, " { // fix0(");
+strnfpr(filr, ": ## { // fix0(");
 tokenfpr(filr, tknd);strnfpr(filr, ")\n");
+//
 (
 envx2js_incnind
 ( env0,2(*++*) );
-py1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
+py1emit_fjarglst
+( env0,fjas(*args*) );f0_i1cmpret(env0, icmp));
+//
 (
 envx2js_decnind
-( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(fix0)\n"))
+( env0,2(*--*) );
+nindstrnfpr(filr, nind, "## } // end(fix0)\n"));
+//
+nindfpr(filr, nind);i1tnmpy1(filr, itnm);
+strnfpr(filr," = ");d2varfpr(filr, dvar);fprintln(filr)
 )
 //
 (* ****** ****** *)
@@ -2111,13 +2120,13 @@ end//let//end-of-[I1INStry0(...)]
 (
 nindstrnfpr
 (filr, nind, "def ");
-i1tnmpy1(filr, itnm);strnfpr(filr, "(): ## { // l1azy\n");
+i1tnmpy1(filr, itnm);strnfpr(filr, "(): ## { // l0azy\n");
 (
 envx2js_incnind
 ( env0,2(*++*) );f0_i1cmpret(env0, icmp);
 (
 envx2js_decnind
-( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(l0azy)\n")))
+( env0,2(*--*) );nindstrnfpr(filr, nind, "## } // end(l0azy)\n")))
 )
 //
 |I1INSl1azy
@@ -2132,7 +2141,7 @@ envx2js_incnind
 ( env0,2(*++*) );f0_i1cmpret(env0, icmp);
 (
 envx2js_decnind
-( env0,2(*--*) );nindstrnfpr(filr, nind, "## } // endfun(l1azy)\n")))
+( env0,2(*--*) );nindstrnfpr(filr, nind, "## } // end(l1azy)\n")))
 )
 //
 (* ****** ****** *)
