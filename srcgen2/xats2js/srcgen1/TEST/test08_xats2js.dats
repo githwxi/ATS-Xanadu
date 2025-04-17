@@ -45,10 +45,7 @@ val () = A.sortref()
 val () =
 (
   prints("A = ", A, "\n"))
-////
-(* ****** ****** *)
-val () =
-A.mapref(lam x => x*x)
+//
 (* ****** ****** *)
 //
 val () =
@@ -66,44 +63,22 @@ gseq_ifolditm
 #typedef xs = jsarray(sint)
 #impltmp
 ifolditm$fopr
-<r0><x0>(r0, i0, x0) = r0 + (i0+1)*x0
+< r0 > < x0 >
+(r0, i0, x0) = r0 + (i0+1)*x0
 }
 //
 val () =
 (
-prints("iA = ", iA, "\n"))
+  prints("iA = ", iA, "\n"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 val B =
 jsarray
-(map_lstrm
-(10,lam(i:nint)=>i+1))
-val () =
 (
-  prints("B = ", B, "\n"))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val AB =
-jsarray_append(A, B)
-val () = prints("AB = ", AB, "\n")
-val BA =
-jsarray_prepend(A, B)
-val () = prints("BA = ", BA, "\n")
-val A1B =
-jsarray_rappend(A, B)
-val () = prints("A1B = ", A1B, "\n")
-val () =
-A1B.sortref() where
-{
-#typedef x0 = sint
-#impltmp
-g_cmp11<x0,x0>(x, y) = y - x
-}
-val () = prints("A1B = ", A1B, "\n")
+map_lstrm(10,lam(i:nint)=>i+1))
+val () = prints("B = ", B, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -168,20 +143,6 @@ length3
 (* ****** ****** *)
 //
 fun
-length4
-(xs: list(sint)): sint =
-(
-list_foldl<x0><r0>(xs, 0))
-where
-{
-#typedef x0 = sint
-#typedef r0 = sint
-#impltmp foldl$fopr<x0><r0>(r0, x0) = r0+1 }
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
 fact2
 ( n0: sint): sint =
 let
@@ -220,7 +181,7 @@ fun
 nsum0_tail
   (x: sint): sint =
 (
-  sum0(tail0(strmize(x+1))))//fun
+  sum0(tail0(nint_strmize(x+1))))
 //
 (* ****** ****** *)
 //
@@ -228,7 +189,7 @@ fun
 fact1_prod_tail
   (x: sint): sint =
 (
-  prod0(tail0(strmize(x+1))))//fun
+  prod0(tail0(nint_strmize(x+1))))
 //
 (* ****** ****** *)
 (* ****** ****** *)

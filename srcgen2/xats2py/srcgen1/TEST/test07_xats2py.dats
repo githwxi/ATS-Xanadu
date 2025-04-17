@@ -10,10 +10,7 @@
 /prelude/HATS/prelude_dats.hats"
 #include
 "srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
-#include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
+/prelude/HATS/prelude_PY_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -38,8 +35,6 @@ tree_nil of ()
 |
 tree_cons of
 (tree(a), a, tree(a))
-//
-(* ****** ****** *)
 //
 #extern
 fun
@@ -92,7 +87,7 @@ end
 
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 val t0 = tree_nil()
 val t1 = tree_cons(t0, 1, t0)
 val t2 = tree_cons(t0, 2, t0)
@@ -100,10 +95,11 @@ val t3 = tree_cons(t0, 3, t1)
 val t4 = tree_cons(t0, 4, t2)
 val t5 = tree_cons(t3, 5, t4)
 val t6 = tree_cons(t2, 6, t5)
+//
 val () = prints("isAVL(t5) = ", tree_isAVL(t5), "\n")
 val () = prints("isAVL(t6) = ", tree_isAVL(t6), "\n")
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_xats2js_srcgen1_TEST_test07_xats2js.dats] *)
+(* end of [ATS3/XANADU_xats2py_srcgen1_TEST_test07_xats2py.dats] *)

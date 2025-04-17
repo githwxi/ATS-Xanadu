@@ -1188,6 +1188,14 @@ xtrcdpy1(filr,tknd);strnfpr(filr,", ")
 ;i1valpy1(filr,i1v1);strnfpr(filr,")"))
 //
 (* ****** ****** *)
+//
+|I1INSraise
+(tknd, i1v0) =>
+(
+strnfpr(filr, "XATS000_raise(");
+i1valpy1(filr, i1v0);strnfpr(filr, ")"))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 |
 _(*otherwise*) => i1ins_fprint(iins,filr)
@@ -1988,9 +1996,9 @@ val () =
 //
 val () =
 (
-nindstrnfpr
-(filr, nind+2, "break\n");
-nindstrnfpr(filr, nind, "## while True // end-of(do)\n"))
+nindfpr(filr, nind);
+strnfpr(filr,"## } while True // end-of(do)\n"))
+//
 end//let//end-of-[I1INScas0(...)]
 //
 (* ****** ****** *)
@@ -2039,6 +2047,60 @@ py1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
 envx2js_decnind
 ( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(fix0)\n"))
 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INStry0
+(tknd
+,icmp
+,iexn, icls) =>
+let
+val () =
+(
+nindfpr(filr, nind);
+i1tnmpy1(filr, itnm);strnfpr(filr, " = None\n"))
+//
+val () =
+(
+nindstrnfpr
+(filr, nind, "try:\n");
+//
+envx2js_incnind(env0,2(*++*));
+f0_i1tnmcmp(env0, itnm, icmp);
+envx2js_decnind(env0,2(*--*));
+//
+nindstrnfpr
+(filr, nind, "except X2PYExcptn as exn:\n");
+nindfpr(filr, nind+2);
+i1valpy1(filr, iexn);strnfpr(filr, " = exn.args[0]\n"))
+//
+val () =
+(
+nindstrnfpr
+(filr, nind+2,
+"while True: ## do {\n"))
+//
+val () = // enter
+envx2js_incnind(env0,2+2(*++*))
+//
+val () =
+f0_i1tnmvalclslst
+( env0,itnm,iexn,icls(*list*) )
+//
+val () =
+(
+  envx2js_decnind(env0,2+2(*--*)))//leave
+//
+val () =
+(
+nindfpr(filr, nind+2);
+strnfpr(filr,"## } while True // end-of(do)\n"))
+//
+val () =
+(
+nindstrnfpr(filr, nind, "## } // end(except) // end-of(try)\n"))
+end//let//end-of-[I1INStry0(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
