@@ -1699,9 +1699,9 @@ val () =
 (
 nindstrnfpr
 (filr, nind+2, "let ");
-tbrkjs1(filr, tbrk);
+tbrkjs1(filr, ( tbrk ));
 strnfpr(filr, " = false\n");
-nindfpr(filr, nind+2);
+nindfpr(filr, nind + 2);
 strnfpr(filr, "do { // gua\n")
 )
 //
