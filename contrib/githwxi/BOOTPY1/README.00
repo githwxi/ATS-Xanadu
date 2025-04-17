@@ -1,0 +1,13 @@
+############################################################
+(*
+Thu Apr 17 09:09:54 AM EDT 2025
+*)
+############################################################
+HX-2025-04-17:
+This project attempts to present a way to bootstrap
+ATS3 that leads to the generation of a compiler-in-py
+for translating ATS3 to Python. Doing so requires that
+the JS specifics in the compiler source be replaced with
+the corresponding PY specifics.
+############################################################
+############################################################
