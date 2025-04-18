@@ -963,13 +963,13 @@ f0_pvsload
 //
 val () =
 f0_pvsload
-(
-0(*sta*),"/prelude/INIT/excptn0.sats")
+( 0(*sta*)
+, "/prelude/INIT/srcgen2_xsetup0.sats")
 //
 val () =
 f0_pvsload
 ( 0(*sta*)
-, "/prelude/INIT/srcgen2_xsetup0.sats")
+, "/prelude/INIT/srcgen2_excptn0.sats")
 //
 (* ****** ****** *)
 //

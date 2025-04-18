@@ -18,9 +18,6 @@ $(SRCGEN1)/xats2js/srcgenx/xshared/runtime
 S2XSHRD=\
 $(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
-all:: \
-xats2py_pyemit00_dats
-########################################################################
 ########################################################################
 #
 # HX-2025-03-29:
@@ -33,6 +30,8 @@ xats2py_pyemit00_dats
 # The [S1XSHRD] is used here as
 # the code in [srcgen1/prelude] requires it.
 #
+all:: \
+xats2py_pyemit00_dats
 xats2py_pyemit00_dats: ; \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js > $@_out.js && \
@@ -49,6 +48,25 @@ $(XATS2JS)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_out.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
 $(XATS2PY)/srcgen1/lib/lib2xats2py.js | $(CAT) - >> $@_out.js && \
 $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xats2py_pyemit00.dats >> $@_out.js
+#
+all:: \
+xats2py_pyemit01_dats
+xats2py_pyemit01_dats: ; \
+$(CAT) \
+$(S2XSHRD)/xats2js_js1emit.js > $@_out.js && \
+$(CAT) \
+$(S1XSHRD)/xats2js_prelude.js >> $@_out.js && \
+$(CAT) \
+$(S1XSHRD)/xats2js_prelude_node.js >> $@_out.js && \
+$(CAT) \
+$(S1XSHRD)/xats2js_xatslib_node.js >> $@_out.js && \
+$(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
+$(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_out.js && \
+$(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
+$(XATS2JS)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_out.js && \
+$(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
+$(XATS2PY)/srcgen1/lib/lib2xats2py.js | $(CAT) - >> $@_out.js && \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xats2py_pyemit01.dats >> $@_out.js
 #
 ########################################################################
 ########################################################################

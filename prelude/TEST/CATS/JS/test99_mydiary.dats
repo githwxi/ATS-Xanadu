@@ -9,17 +9,14 @@ For testing prelude/JS!
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
-(* ****** ****** *)
+"prelude/HATS/prelude_dats.hats"
 #include
-"srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
-(* ****** ****** *)
+"prelude/HATS/prelude_JS_dats.hats"
 #include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
+"prelude/HATS/prelude_NODE_dats.hats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
