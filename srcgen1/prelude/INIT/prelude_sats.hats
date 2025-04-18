@@ -56,6 +56,7 @@ Fri Apr 18 11:04:46 AM EDT 2025
 "srcgen1/prelude/SATS/gasz000.sats"
 //
 (* ****** ****** *)
+//
 #include
 "srcgen1/prelude/SATS/gmap000.sats"
 #include
@@ -127,8 +128,48 @@ Fri Apr 18 11:04:46 AM EDT 2025
 #include
 "srcgen1/prelude/SATS/xunimpl.sats"
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+// HX: for linear stuff
+//
+#include
+"srcgen1/prelude/SATS/VT/gcls000_vt.sats"
+//
+#include
+"srcgen1/prelude/SATS/VT/gseq000_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/gasz000_vt.sats"
+//
+#include
+"srcgen1/prelude/SATS/VT/gsyn000_vt.sats"
+//
+#include
+"srcgen1/prelude/SATS/VT/strn000_vt.sats"
+//
+#include
+"srcgen1/prelude/SATS/VT/arrn000_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/arrn001_vt.sats"
+//
+#include
+"srcgen1/prelude/SATS/VT/list000_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/optn000_vt.sats"
+//
+#include
+"srcgen1/prelude/SATS/VT/strm000_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/strm001_vt.sats"
+//
+#include
+"srcgen1/prelude/SATS/VT/synoug0_vt.sats"
+//
+#include
+"srcgen1/prelude/SATS/VT/xunimpl_vt.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

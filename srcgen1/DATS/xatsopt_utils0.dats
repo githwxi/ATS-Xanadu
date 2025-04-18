@@ -850,6 +850,10 @@ the_prelude_load
 (* ****** ****** *)
 //
 (*
+(*
+HX-2025-04-18:
+It does not work with the_prelude_overload!
+*)
 val () =
 the_prelude_load
 ( XATSENV
