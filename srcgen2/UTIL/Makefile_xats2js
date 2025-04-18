@@ -58,6 +58,7 @@ clean:: ; rm -f *~
 #
 cleanall:: clean
 cleanall:: ; rm -f ./xatsopt_tcheck??_dats.js
+cleanall:: ; rm -f ./xatsopt_tcheck??_dats_out.js
 #
 ########################################################################
 ###################### end of [Makefile_xats2js] #######################
