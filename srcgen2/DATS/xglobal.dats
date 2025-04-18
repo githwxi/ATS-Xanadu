@@ -224,9 +224,12 @@ endloc // end of [the_fxtyenv_pvs(load|find)]
 local
 //
 (* ****** ****** *)
+//
 val
 the_gmacenv = topmap_make_nil()
+//
 (* ****** ****** *)
+//
 val
 the_sortenv = topmap_make_nil()
 val
@@ -239,14 +242,14 @@ in//local
 (* ****** ****** *)
 //
 #implfun
-the_gmacenv_pvs() = (the_gmacenv)
+the_gmacenv_pvstmap() = (the_gmacenv)
 //
 #implfun
-the_sortenv_pvs() = (the_sortenv)
+the_sortenv_pvstmap() = (the_sortenv)
 #implfun
-the_sexpenv_pvs() = (the_sexpenv)
+the_sexpenv_pvstmap() = (the_sexpenv)
 #implfun
-the_dexpenv_pvs() = (the_dexpenv)
+the_dexpenv_pvstmap() = (the_dexpenv)
 //
 end(*loc*) // end of [local(the_(tsd)env_pvs)]
 
@@ -277,7 +280,8 @@ in//let
   auxloop(env0, kxss)) where
 {
 //
-val env0 = the_gmacenv_pvs()
+val
+env0 = the_gmacenv_pvstmap()
 //
 fun
 auxkxs1
@@ -335,7 +339,8 @@ in//let
   auxloop(env0, kxss)) where
 {
 //
-val env0 = the_sortenv_pvs()
+val
+env0 = the_sortenv_pvstmap()
 //
 fun
 auxkxs1
@@ -387,7 +392,8 @@ in//let
   auxloop(env0, kxss)) where
 {
 //
-val env0 = the_sexpenv_pvs()
+val
+env0 = the_sexpenv_pvstmap()
 //
 fun
 auxkxs1
@@ -456,7 +462,8 @@ in//let
   auxloop(env0, kxss)) where
 {
 //
-val env0 = the_dexpenv_pvs()
+val
+env0 = the_dexpenv_pvstmap()
 //
 fun
 auxkxs1
@@ -531,7 +538,10 @@ val VWTP = VWTP_symbl
 //
 (* ****** ****** *)
 local
-val env0 = the_sortenv_pvs()
+//
+val
+env0 = the_sortenv_pvstmap()
+//
 in//local
 //
 val () =
@@ -741,7 +751,8 @@ in
   auxmain(kxs, false) ) where
 {
   val kxs =
-  topmap_strmize(the_dexpenv_pvs()) }
+  topmap_strmize
+  (the_dexpenv_pvstmap((*void*))) }
 //
 end (*let*) // end of [f1_dexpenv(...)]
 //
@@ -755,8 +766,104 @@ filpath_pvsload
 f0_pvsload(knd0, fpth)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
-the_tr12env_pvsload
+the_gmacenv_pvsfind
+  (   key   ) =
+if
+(the_times[] = 0)
+then
+optn_vt_nil(*void*) else
+let
+//
+val
+topmap = the_gmacenv_pvstmap()
+//
+in//let
+  topmap_search$opt(topmap, key)
+end (*let*) // [the_gmacenv_pvsfind]
+//
+(* ****** ****** *)
+//
+#implfun
+the_sortenv_pvsfind
+  (   key   ) =
+if
+(the_times[] = 0)
+then
+optn_vt_nil(*void*) else
+let
+//
+val
+topmap = the_sortenv_pvstmap()
+//
+in//let
+  topmap_search$opt(topmap, key)
+end where
+{
+(*
+val () =
+prerrsln
+("the_sortenv_pvsfind: key = ", key)
+*)
+}(*where*)//end(the_sortenv_pvsfind(key))
+//
+(* ****** ****** *)
+//
+#implfun
+the_sexpenv_pvsfind
+  (   key   ) =
+if
+(the_times[] = 0)
+then
+optn_vt_nil(*void*) else
+let
+//
+val
+topmap = the_sexpenv_pvstmap()
+//
+in//let
+  topmap_search$opt(topmap, key)
+end where
+{
+(*
+val () =
+prerrsln
+("the_sexpenv_pvsfind: key = ", key)
+*)
+}(*where*)//end(the_sexpenv_pvsfind(key))
+//
+(* ****** ****** *)
+//
+#implfun
+the_dexpenv_pvsfind
+  (   key   ) =
+if
+(the_times[] = 0)
+then
+optn_vt_nil(*void*) else
+let
+//
+val
+topmap = the_dexpenv_pvstmap()
+//
+in//let
+  topmap_search$opt(topmap, key)
+end where
+{
+(*
+val () =
+prerrsln
+("the_dexpenv_pvsfind: key = ", key)
+*)
+}(*where*)//end(the_dexpenv_pvsfind(key))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+the_tr12env_pvsl00d
   ((*void*)) =
 let
 val n0 =
@@ -825,89 +932,9 @@ f0_pvsfini((*nil*)) // top-level declarations
 //
 (* ****** ****** *)
 //
-end (*let*) // end of [the_tr12env_pvsload(...)]
+end (*let*) // end of [the_tr12env_pvsl00d(...)]
 //
 (* ****** ****** *)
-//
-#implfun
-the_gmacenv_pvsfind
-  (   key   ) =
-if
-(the_times[] = 0)
-then
-optn_vt_nil(*void*) else
-let
-val topmap = the_gmacenv_pvs()
-in//let
-  topmap_search$opt(topmap, key)
-end (*let*) // [the_gmacenv_pvsfind]
-//
-(* ****** ****** *)
-//
-#implfun
-the_sortenv_pvsfind
-  (   key   ) =
-if
-(the_times[] = 0)
-then
-optn_vt_nil(*void*) else
-let
-val topmap = the_sortenv_pvs()
-in//let
-  topmap_search$opt(topmap, key)
-end where
-{
-(*
-val () =
-prerrsln
-("the_sortenv_pvsfind: key = ", key)
-*)
-}(*where*)//end(the_sortenv_pvsfind(key))
-//
-(* ****** ****** *)
-//
-#implfun
-the_sexpenv_pvsfind
-  (   key   ) =
-if
-(the_times[] = 0)
-then
-optn_vt_nil(*void*) else
-let
-val topmap = the_sexpenv_pvs()
-in//let
-  topmap_search$opt(topmap, key)
-end where
-{
-(*
-val () =
-prerrsln
-("the_sexpenv_pvsfind: key = ", key)
-*)
-}(*where*)//end(the_sexpenv_pvsfind(key))
-//
-(* ****** ****** *)
-//
-#implfun
-the_dexpenv_pvsfind
-  (   key   ) =
-if
-(the_times[] = 0)
-then
-optn_vt_nil(*void*) else
-let
-val topmap = the_dexpenv_pvs()
-in//let
-  topmap_search$opt(topmap, key)
-end where
-{
-(*
-val () =
-prerrsln
-("the_dexpenv_pvsfind: key = ", key)
-*)
-}(*where*)//end(the_dexpenv_pvsfind(key))
-//
 (* ****** ****** *)
 //
 end(*loc*) // end of [the_tr12env_pvs(load|find)]

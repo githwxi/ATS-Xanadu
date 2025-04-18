@@ -150,26 +150,29 @@ filpath_pvsload
 (knd0:sint,fpth:strn):void
 //
 fun
-the_tr12env_pvsload
+the_tr12env_pvsl00d
+  ( (*void*) ): sint(*0/1*)
+fun
+the_tr12env_pvsl01d
   ( (*void*) ): sint(*0/1*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-the_gmacenv_pvs
+the_gmacenv_pvstmap
   ((*void*)): topmap(g1mac)
 //
 (* ****** ****** *)
 //
 fun
-the_sortenv_pvs
+the_sortenv_pvstmap
   ((*void*)): topmap(s2tex)
 fun
-the_sexpenv_pvs
+the_sexpenv_pvstmap
   ((*void*)): topmap(s2itm)
 fun
-the_dexpenv_pvs
+the_dexpenv_pvstmap
   ((*void*)): topmap(d2itm)
 //
 (* ****** ****** *)
