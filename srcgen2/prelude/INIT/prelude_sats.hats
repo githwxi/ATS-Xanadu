@@ -462,4 +462,4 @@ UNSF(*unsafe*) = "srcgen1/prelude/SATS/unsafex.sats"
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen1_prelude_INIT_srcgen2_prelude.sats] *)
+(* end of [ATS3/XANADU_srcgen2_prelude_INIT_prelude_sats.hats] *)

@@ -126,9 +126,10 @@ HX-2023-07-18; nothing
 in//local
 //
 #implfun
-the_xatsopt_include() = list_nil( (*void*) )
+the_xatsopt_include
+  ( (*void*) ) = list_nil( (*void*) )
 //
-end (*local*) // end-[local(the_xatsopt_include)]
+endloc//end-[local(the_xatsopt_include)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -140,8 +141,9 @@ topenv with
 d1parsed_get_topenv
 //
 val
-the_times =
-a0ref_make_1val(0)
+the_ntime =
+(
+a0ref_make_1val(0))
 val
 the_fxtyenv =
 a0ref_make_1val
@@ -161,9 +163,9 @@ the_fxtyenv_pvsload
   ((*void*)) =
 let
 val n0 =
-the_times[]
+the_ntime[]
 val () =
-(the_times[] := n0+1)
+(the_ntime[] := n0+1)
 in//let
 if
 (n0 > 0)
@@ -208,7 +210,7 @@ end (*let*) // end of [ f0_pvsload ]
 the_fxtyenv_pvsfind
   (   key   ) =
 if
-(the_times[] = 0)
+(the_ntime[] = 0)
 then
 optn_vt_nil(*void*) else
 let
@@ -217,7 +219,7 @@ in//let
   topmap_search$opt(topmap, key)
 end (*let*) // [the_fxtyenv_pvsfind]
 //
-endloc // end of [the_fxtyenv_pvs(load|find)]
+endloc//end-of-[the_fxtyenv_pvs(load|find)]
 //
 (* ****** ****** *)
 
@@ -251,7 +253,7 @@ the_sexpenv_pvstmap() = (the_sexpenv)
 #implfun
 the_dexpenv_pvstmap() = (the_dexpenv)
 //
-end(*loc*) // end of [local(the_(tsd)env_pvs)]
+end(*loc*)//end of [local(the_(tsd)env_pvs)]
 
 (* ****** ****** *)
 
@@ -515,7 +517,9 @@ t2penv with
 d2parsed_get_t2penv
 (* ****** ****** *)
 val
-the_times = a0ref_make_1val(0)
+the_ntime =
+(
+a0ref_make_1val(0))
 (* ****** ****** *)
 //
 fun
@@ -772,7 +776,7 @@ f0_pvsload(knd0, fpth)
 the_gmacenv_pvsfind
   (   key   ) =
 if
-(the_times[] = 0)
+(the_ntime[] = 0)
 then
 optn_vt_nil(*void*) else
 let
@@ -790,7 +794,7 @@ end (*let*) // [the_gmacenv_pvsfind]
 the_sortenv_pvsfind
   (   key   ) =
 if
-(the_times[] = 0)
+(the_ntime[] = 0)
 then
 optn_vt_nil(*void*) else
 let
@@ -815,7 +819,7 @@ prerrsln
 the_sexpenv_pvsfind
   (   key   ) =
 if
-(the_times[] = 0)
+(the_ntime[] = 0)
 then
 optn_vt_nil(*void*) else
 let
@@ -840,7 +844,7 @@ prerrsln
 the_dexpenv_pvsfind
   (   key   ) =
 if
-(the_times[] = 0)
+(the_ntime[] = 0)
 then
 optn_vt_nil(*void*) else
 let
@@ -867,9 +871,9 @@ the_tr12env_pvsl00d
   ((*void*)) =
 let
 val n0 =
-the_times[]
+the_ntime[]
 val () =
-(the_times[] := n0+1)
+(the_ntime[] := n0+1)
 in//let
 //
 if
@@ -893,33 +897,26 @@ val () =
 f0_pvsload
 (
 0(*sta*),
-"/srcgen1/prelude/INIT/excptn0.sats")
-//
-(* ****** ****** *)
-//
-(*
-val () =
-f0_pvsload
-(
-0(*sta*),
-"/srcgen1/prelude/INIT/xsetup0.sats")
-*)
-//
-(* ****** ****** *)
+"\
+/srcgen2\
+/prelude/INIT/srcgen2_xsetup0.sats")
 //
 val () =
 f0_pvsload
 (
 0(*sta*),
-"/srcgen1/prelude/INIT/srcgen2_xsetup0.sats")
+"\
+/srcgen2\
+/prelude/INIT/srcgen2_excptn0.sats")
+//
+(* ****** ****** *)
 //
 val () =
 f0_pvsload
 (
 0(*sta*),
-"/srcgen1/prelude/INIT/srcgen2_prelude.sats")
+"/srcgen2/prelude/INIT/prelude_sats.hats")
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 // HX-2023-01-09:
@@ -928,7 +925,7 @@ f0_pvsfini((*nil*)) // top-level declarations
 //
 (* ****** ****** *)
 //
-} (*where*) // if-then-else( the_times[] > 0 )
+} (*where*) // if-then-else( the_ntime[] > 0 )
 //
 (* ****** ****** *)
 //
@@ -937,8 +934,69 @@ end (*let*) // end of [the_tr12env_pvsl00d(...)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-end(*loc*) // end of [the_tr12env_pvs(load|find)]
-
+#implfun
+the_tr12env_pvsl01d
+  ((*void*)) =
+let
+val n0 =
+the_ntime[]
+val () =
+(the_ntime[] := n0+1)
+in//let
+//
+if
+(n0 > 0)
+then (0) else (1) where
+{
+//
+(* ****** ****** *)
+//
+val () = f0_pvsinit((*void*))
+//
+(* ****** ****** *)
+//
+val () =
+f0_pvsload
+(0(*sta*),"/prelude/basics0.sats") 
+//
+(* ****** ****** *)
+//
+val () =
+f0_pvsload
+(
+0(*sta*),"/prelude/INIT/excptn0.sats")
+//
+val () =
+f0_pvsload
+( 0(*sta*)
+, "/prelude/INIT/srcgen2_xsetup0.sats")
+//
+(* ****** ****** *)
+//
+val () =
+f0_pvsload(
+0(*sta*),"/prelude/INIT/prelude_sats.hats"
+)(*f0_pvsload*)
+//
+(* ****** ****** *)
+//
+// HX-2023-01-09:
+val ans = // Issuing warnings for shadowed
+f0_pvsfini((*nil*)) // top-level declarations
+//
+(* ****** ****** *)
+//
+} (*where*) // if-then-else( the_ntime[] > 0 )
+//
+(* ****** ****** *)
+//
+end (*let*) // end of [the_tr12env_pvsl01d(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+end (*loc*) // end-of-[the_tr12env_pvs(load|find)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

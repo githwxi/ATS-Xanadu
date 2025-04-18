@@ -54,6 +54,24 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 #
 ########################################################################
 #
+all:: \
+xats2js_jsemit01
+xats2js_jsemit01:: \
+xats2js_jsemit01.dats ; \
+$(CAT) \
+$(XATS2JS_JS1EMIT) > $@_dats.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE) >> $@_dats.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(CAT) \
+$(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
+$(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
+$(CAT) $(LIBXATS2JS_JS) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
+#
+########################################################################
+#
 # HX: for cleaning up
 #
 clean:: ; rm -f *~

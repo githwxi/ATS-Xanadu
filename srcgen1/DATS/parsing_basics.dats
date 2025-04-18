@@ -901,9 +901,22 @@ end // end of [Some_vt]
 //
 end // for [filename: given]
 //
-) (* parser_from_filpath_toplevel *)
-end // end of [local]
+) where
+{
+(*
+#symload prerr with prerr_filpath_full2
+val () = prerrln!
+("parse_from_filpath_toplevel: fp0 = ", fp0)
+*)
+}(*where*)//end-of(parse_from_filpath_toplevel)
 
 (* ****** ****** *)
 
-(* end of [xats_parsing_basics.dats] *)
+end // end-of-[local(parse_from_......_toplevel)]
+
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+
+(* end of [ATS-Xanadu/srcgen1/DATS/xats_parsing_basics.dats] *)
