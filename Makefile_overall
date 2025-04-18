@@ -87,7 +87,7 @@ srcgen2_lib1xats2py:: ; \
 time make -C srcgen2/xats2py/srcgen1 -f Makefile_xats2js lib1xats2py
 srcgen2_xats2js_xats2py_pyemit00:: ; \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xats2js xats2py_pyemit00
-srcgen2_xats2js_xats2py_pyemit00:: ; \
+srcgen2_xats2js_xats2py_pyemit01:: ; \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xats2js xats2py_pyemit01
 #
 srcgen2_lib2xats2py:: ; \
