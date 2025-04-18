@@ -21,7 +21,7 @@ $(XATSHOME)/srcgen2/xats2py/srcgenx
 SRCGEN2_XSHARED=\
 $(XATSHOME)/srcgen2/xats2py/srcgenx/xshared/runtime
 SRCGEN2_XATS2PY=\
-$(XATSHOME)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_dats.js
+$(XATSHOME)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_dats_out.js
 ########################################################################
 ########################################################################
 test00:: ; \
@@ -34,6 +34,19 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
 ############
 test00:: \
 test00_prelude.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+########################################################################
+########################################################################
+test01:: ; \
+echo "##" `date` > $@_out.py
+############
+test01:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+test01:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+############
+test01:: \
+test01_a0rf000.dats; \
 $(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
 ########################################################################
 ########################################################################
