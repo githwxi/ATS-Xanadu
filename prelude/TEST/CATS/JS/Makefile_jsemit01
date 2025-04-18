@@ -46,8 +46,6 @@ $(XATSHOME)/srcgen2/xats2js/srcgenx
 SRCGEN2_XSHARED=\
 $(XATSHOME)/srcgen2/xats2js/srcgenx/xshared/runtime
 SRCGEN2_XATS2JS=\
-$(XATSHOME)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit00_dats.js
-SRCGEN2_XATS2JS=\
 $(XATSHOME)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit01_dats.js
 ########################################################################
 ########################################################################
@@ -277,4 +275,4 @@ cleanall:: ; rm -f test??_out.js
 cleanall:: ; rm -f test??_out?.js
 ########################################################################
 ########################################################################
-###################### end of [Makefile_jsemit] ########################
+##################### end of [Makefile_jsemit01] #######################

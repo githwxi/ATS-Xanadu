@@ -32,38 +32,38 @@ $(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 #
 ########################################################################
 all:: \
-xats2js_jsemit00_out
-xats2js_jsemit00_out: ; \
+xats2js_jsemit00
+xats2js_jsemit00: ; \
 $(CAT) \
-$(S2XSHRD)/xats2js_js1emit.js > $@_out.js && \
+$(S2XSHRD)/xats2js_js1emit.js > $@_dats_out.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude.js >> $@_out.js && \
+$(S1XSHRD)/xats2js_prelude.js >> $@_dats_out.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude_node.js >> $@_out.js && \
+$(S1XSHRD)/xats2js_prelude_node.js >> $@_dats_out.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_xatslib_node.js >> $@_out.js && \
+$(S1XSHRD)/xats2js_xatslib_node.js >> $@_dats_out.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
-$(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_out.js && \
+$(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_dats_out.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
-$(XATS2JS)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_out.js && \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xats2js_jsemit00.dats >> $@_out.js
+$(XATS2JS)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_dats_out.js && \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xats2js_jsemit00.dats >> $@_dats_out.js
 #
 all:: \
-xats2js_jsemit01_out
-xats2js_jsemit01_out: ; \
+xats2js_jsemit01
+xats2js_jsemit01: ; \
 $(CAT) \
-$(S2XSHRD)/xats2js_js1emit.js > $@_out.js && \
+$(S2XSHRD)/xats2js_js1emit.js > $@_dats_out.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude.js >> $@_out.js && \
+$(S1XSHRD)/xats2js_prelude.js >> $@_dats_out.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude_node.js >> $@_out.js && \
+$(S1XSHRD)/xats2js_prelude_node.js >> $@_dats_out.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_xatslib_node.js >> $@_out.js && \
+$(S1XSHRD)/xats2js_xatslib_node.js >> $@_dats_out.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
-$(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_out.js && \
+$(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_dats_out.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
-$(XATS2JS)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_out.js && \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xats2js_jsemit01.dats >> $@_out.js
+$(XATS2JS)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_dats_out.js && \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xats2js_jsemit01.dats >> $@_dats_out.js
 #
 ########################################################################
 ########################################################################
