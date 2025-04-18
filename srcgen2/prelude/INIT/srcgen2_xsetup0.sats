@@ -132,4 +132,4 @@ the_s2exp_a1ptr(*void*) = a1ptr_view
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen1_prelude_INIT_srcgen2_xsetup0.sats] *)
+(* end of [ATS3/XANADU_srcgen2_prelude_INIT_srcgen2_xsetup0.sats] *)

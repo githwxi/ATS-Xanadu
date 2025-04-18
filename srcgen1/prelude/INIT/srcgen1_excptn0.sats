@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -27,88 +27,53 @@
 
 (* ****** ****** *)
 //
+// Author: Hongwei Xi
+// Authoremail: gmhwxiATgmailDOTcom
+//
+// This one should be loaded after xsetup.sats
+//
+(* ****** ****** *)
+//
 (*
-HX-2019-09-09:
-These types should
-be able to be re-defined!
+HX-2024-01-11:
+For general errors
+Thu Jan 11 20:32:29 EST 2024
+*)
+excptcon
+ErrorExn of ((*void*))
+excptcon
+ErrmsgExn of ( string )
+//
+(* ****** ****** *)
+//
+// HX-2020-03-05:
+// For out-of-range subscripting
+//
+excptcon
+SubemptyExn of ((*void*))
+excptcon
+SubscriptExn of ((*void*))
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-15:
+Generally undefined value
 *)
 //
-(* ****** ****** *)
-//
-#typedef
-the_void_ctype = void
+excptcon
+UndefinedExn of ((*void*))
 //
 (* ****** ****** *)
 //
-#typedef
-the_sint_ctype = sint0
-#typedef
-the_uint_ctype = uint0
+// For indicating the failure of
+excptcon AssertExn of () // an assertion
+// For indicating something expected
+excptcon NotFoundExn of () // to be found but not
 //
 (* ****** ****** *)
 //
-#typedef
-the_bool_ctype = bool0
-#typedef
-the_char_ctype = char0
-//
-(* ****** ****** *)
-//
-#typedef
-the_slint_ctype = slint0
-#typedef
-the_ulint_ctype = ulint0
-//
-#typedef
-the_sllint_ctype = sllint0
-#typedef
-the_ullint_ctype = ullint0
-//
-#typedef
-the_string_ctype = string0
-//
-(* ****** ****** *)
-//
-#typedef
-the_p1tr_ctype = p1tr0
-#typedef
-the_p2tr_ctype(a:vt) = p2tr(a)
-//
-(* ****** ****** *)
-//
-// single precision
-#typedef the_sflt_ctype = sflt
-// double precision
-#typedef the_dflt_ctype = dflt
-// ldouble precision
-#typedef the_ldflt_ctype = ldflt
-//
-(* ****** ****** *)
-//
-#typedef
-the_list_ctype(a:t0) = list(a)
-#vwtpdef
-the_llist_ctype(a:vt) = list_vt(a)
-//
-(* ****** ****** *)
-//
-#typedef
-the_optn_ctype(a:t0) = optn(a)
-#vwtpdef
-the_loptn_ctype(a:vt) = optn_vt(a)
-//
-(* ****** ****** *)
-//
-#typedef
-the_lazy_ctype(a:t0) = lazy(a)
-#vwtpdef
-the_llazy_ctype(a:vt) = lazy_vt(a)
-//
-(* ****** ****** *)
-//
-#vwtpdef
-the_excptn_ctype(*void*) = excptn_vt
-//
-(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_INIT_xsetup0.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_INIT_srcgen1_excptn0.sats] *)
