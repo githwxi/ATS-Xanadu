@@ -848,9 +848,11 @@ let val () = (err := e00 + 1) in tok end
 end (*let*) // end of [p1_ENDLOC(...)]
 
 (* ****** ****** *)
-
+//
+(*
 #implfun
-pq_SRP_THEN(buf, err) =
+pq_SRP_THEN0
+(buf, err) =
 let
 //
 val tok = buf.getk0()
@@ -859,13 +861,14 @@ in//let
 case+
 tok.node() of
 |
-T_SRP_THEN() =>
+T_SRP_THEN0() =>
 optn_cons(tok) where
 { val () = buf.skip1() }
 |
-_ (* non-SRP_THEN *) => optn_nil()
-end (*let*) // end of [pq_SRP_THEN(...)]
-
+_ (* non-SRP_THEN0 *) => optn_nil()
+end (*let*) // end of [pq_SRP_THEN0(...)]
+*)
+//
 (* ****** ****** *)
 //
 (*

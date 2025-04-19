@@ -252,34 +252,39 @@ fun p1_ENDTRY: p1_fun(token)
 fun pq_ENDTRY: pq_fun(token)
 //
 (* ****** ****** *)
-
-fun pq_SRP_THEN: pq_fun(token)
-
+//
+(*
+fun
+pq_SRP_THEN0: pq_fun(token)
+fun
+p1_SRP_ENDIF: pq_fun(token)
+*)
+//
 (* ****** ****** *)
 
-fun t0_t0int(tnode): bool
-fun t0_t0chr(tnode): bool
-fun t0_t0flt(tnode): bool
-fun t0_t0str(tnode): bool
+fun t0_t0int(tnode): (bool)
+fun t0_t0chr(tnode): (bool)
+fun t0_t0flt(tnode): (bool)
+fun t0_t0str(tnode): (bool)
 
 (* ****** ****** *)
-fun t0_dtsel(tnode): bool
+fun t0_dtsel(tnode): (bool)
 (* ****** ****** *)
 
-fun t0_g0nid(tnode): bool
-fun t0_g0eid(tnode): bool
+fun t0_g0nid(tnode): (bool)
+fun t0_g0eid(tnode): (bool)
 
-fun t0_s0tid(tnode): bool
-fun t0_s0aid(tnode): bool
-fun t0_s0eid(tnode): bool
+fun t0_s0tid(tnode): (bool)
+fun t0_s0aid(tnode): (bool)
+fun t0_s0eid(tnode): (bool)
 
-fun t0_d0pid(tnode): bool
-fun t0_d0eid(tnode): bool
+fun t0_d0pid(tnode): (bool)
+fun t0_d0eid(tnode): (bool)
 
 (* ****** ****** *)
 //
 fun
-t0_dctkind: tnode -> bool
+t0_dctkind: tnode -> (bool)
 //
 (* ****** ****** *)
 

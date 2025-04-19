@@ -385,6 +385,26 @@ val () = kwdins("$synext", T_DLR_SYNEXT)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-04-19:
+For if-guarded declarations
+Sat Apr 19 02:58:45 PM EDT 2025
+*)
+val () = kwdins("#if"    , T_SRP_IFEXP )
+val () = kwdins("#ifexp" , T_SRP_IFEXP )
+//
+val () = kwdins("#then"  , T_SRP_THEN0 )
+val () = kwdins("#then0" , T_SRP_THEN0 )
+//
+val () = kwdins("#else"  , T_SRP_ELSE1 )
+val () = kwdins("#else1" , T_SRP_ELSE1 )
+//
+val () = kwdins("#elsif" , T_SRP_ELSIF )
+//
+val () = kwdins("#endif" , T_SRP_ENDIF )
+//
+(* ****** ****** *)
+//
 (* HX: for IDSRP-keywords in ATS3 *)
 //
 val () = kwdins("#infix0", T0SRP_INFIX0)

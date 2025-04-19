@@ -254,17 +254,28 @@ datatype tnode =
   | T_DLR_EXTNAM of () // $exname
   | T_DLR_EXISTS of () // $exists
 //
+(* ****** ****** *)
+//
 (*
 HX-2024-07-19:
 Fri 19 Jul 2024 10:07:36 PM EDT
 *)
   | T_DLR_SYNEXT of () // $synext
 //
-  | T_SRP_THEN of ()
-  | T_SRP_ELSE of ()
-  | T_SRP_IFDEC of int(*kind*)
-  | T_SRP_ELSIF of int(*kind*)
-  | T_SRP_ENDIF of ()
+(* ****** ****** *)
+//
+(*
+HX-2025-04-19:
+For if-guarded declarations
+Sat Apr 19 02:58:45 PM EDT 2025
+*)
+  | T_SRP_IFEXP of () // #ifexp
+  | T_SRP_THEN0 of () // #then1
+  | T_SRP_ELSE1 of () // #else1
+  | T_SRP_ELSIF of () // #elsif
+  | T_SRP_ENDIF of () // #endif
+//
+(* ****** ****** *)
 //
   | T_SRP_NONFIX of ()
   | T_SRP_FIXITY of int(*kind*)

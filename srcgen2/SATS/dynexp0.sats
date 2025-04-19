@@ -1071,6 +1071,19 @@ D0Ctkskp of (token) // parsing is to continue
 |
 D0Cerrck of (sint(*lvl*), d0ecl)//pread0x-error
 //
+(* ****** ****** *)
+//
+(*
+HX-2025-04-19:
+For if-guarded declarations
+*)
+|D0Cifexp of (token, g0exp)
+|D0Celsif of (token, g0exp)
+|D0Cthen0 of ( token ) // optional
+|D0Celse1 of ( token ) | D0Cendif of ( token )
+//
+(* ****** ****** *)
+//
 // HX-2022-06-22: end-of-[ datatype(d0ecl_node) ]
 //
 (* ****** ****** *)
