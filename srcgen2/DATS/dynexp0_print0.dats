@@ -801,11 +801,30 @@ prints("D0Cimplmnt0(",tknd,";");
 prints(s0qs,";",t0qs,";",dqid,";");
 prints(t0is,";",farg,";",sres,";",teq1,";",d0e2,")"))
 //
+(*
+HX-2025-04-19:
+For if-guarded declarations
+*)
+|
+D0Cifexp(tknd, gexp) =>
+(
+  prints("D0ifexp(",tknd,";",gexp,")"))//#ifexp(gexp)
+|
+D0Celsif(tknd, gexp) =>
+(
+  prints("D0elsif(",tknd,";",gexp,")"))//#elsif(gexp)
+|
+D0Cthen0(tknd) => prints("D0Cthen0(",tknd,")")//#then0
+|
+D0Celse1(tknd) => prints("D0Celse1(",tknd,")")//#else1
+|
+D0Cendif(tknd) => prints("D0Cendif(",tknd,")")//#endif
+//
 |
 D0Cerrck
 (lvl(*err-level*),dcl) => prints("D0Cerrck(",lvl,";",dcl,")")
 //
-end (*let*) // end of [d0ecl_fprint(dcl,out)]
+end (*let*) // end-of-[  d0ecl_fprint(  dcl  ,  out  )  ]
 
 (* ****** ****** *)
 //

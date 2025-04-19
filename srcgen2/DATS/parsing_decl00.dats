@@ -1026,7 +1026,7 @@ let
   val lres = tknd.lctn()+g0e1.lctn()
 in//let
 err := e00;
-d0ecl_make_node(lres, D0Cdyninit(tknd, g0e1))
+d0ecl_make_node(lres, D0Cdynxgen(tknd, g0e1))
 end (*let*) // end of [T_SRP_DYNXGEN(...)]
 *)
 //
@@ -1039,10 +1039,12 @@ Sat 20 Jul 2024 01:37:18 PM EDT
 |
 T_SRP_EXTCODE() =>
 let
-  val tknd = tok
-  val (  ) = buf.skip1()
-  val g0e1 = p1_g0exp(buf, err)
-  val lres = tknd.lctn()+g0e1.lctn()
+//
+val tknd = tok
+val (  ) = buf.skip1()
+val g0e1 = p1_g0exp(buf, err)
+val lres = tknd.lctn()+g0e1.lctn()
+//
 in//let
 err := e00;
 d0ecl_make_node(lres, D0Cextcode(tknd, g0e1))
@@ -1051,92 +1053,151 @@ end (*let*) // end of [T_SRP_EXTCODE(...)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+| T_SRP_THEN0() =>
+let
+val tknd = tok
+val (  ) = buf.skip1()
+in//let
+(
+let
+val lres = tknd.lctn() in
+d0ecl_make_node(lres, D0Cthen0(tknd))end)
+end (*let*) // end of [T_SRP_THEN0( ... )]
+| T_SRP_ELSE1() =>
+let
+val tknd = tok
+val (  ) = buf.skip1()
+in//let
+(
+let
+val lres = tknd.lctn() in//let
+d0ecl_make_node(lres, D0Celse1(tknd))end)
+end (*let*) // end of [T_SRP_ELSE1( ... )]
+| T_SRP_ENDIF() =>
+let
+val tknd = tok
+val (  ) = buf.skip1()
+in//let
+(
+let
+val lres = tknd.lctn() in//let
+d0ecl_make_node(lres, D0Cendif(tknd))end)
+end (*let*) // end of [T_SRP_ENDIF( ... )]
+//
+| T_SRP_IFEXP() =>
+let
+val tknd = tok
+val (  ) = buf.skip1()
+val g0e1 = p1_g0exp(buf, err)
+val lres = tknd.lctn()+g0e1.lctn()
+//
+in//let
+(err := e00
+;d0ecl_make_node(lres, D0Cifexp(tknd, g0e1)))
+end (*let*) // end of [T_SRP_IFEXP( ... )]
+| T_SRP_ELSIF() =>
+let
+val tknd = tok
+val (  ) = buf.skip1()
+val g0e1 = p1_g0exp(buf, err)
+val lres = tknd.lctn()+g0e1.lctn()
+//
+in//let
+(err := e00
+;d0ecl_make_node(lres, D0Celsif(tknd, g0e1)))
+end (*let*) // end of [T_SRP_ELSIF( ... )]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 | T_SRP_NONFIX() =>
 let
 //
-  val tknd = tok
-  val (  ) = buf.skip1()
+val tknd = tok
+val (  ) = buf.skip1()
 //
-  val dnts =
-  p1_i0dntseq(buf, err)
+val dnts =
+p1_i0dntseq(buf, err)
 //
-  val lres =
+val lres =
+(
+case+ dnts of
+| list_nil _ =>
+  tknd.lctn((*void*))
+| list_cons _ =>
   (
-    case+ dnts of
-    | list_nil _ => tknd.lctn()
-    | list_cons _ =>
-      (
-      tknd.lctn()+dnt1.lctn()
-      ) where
-      {
-        val dnt1 = list_last(dnts)
-      } (*where*) // end of [list_cons]
-  ) : loc_t // end of [ val(lres) ]
+  tknd.lctn()+dnt1.lctn()
+  ) where
+  {
+    val dnt1 = list_last(dnts)
+  } (*where*)//end-of-[list_cons]
+) : loc_t // end of [ val(lres) ]
 //
 in//let
-err := e00;
-d0ecl_make_node(lres, D0Cnonfix(tknd, dnts))
+(err := e00
+;d0ecl_make_node(lres, D0Cnonfix(tknd, dnts)))
 end (*let*) // end of [ T_SRP_NONFIX ]
 //
 |
 T_SRP_FIXITY(k0) =>
 let
 //
-  val tknd = tok
-  val loc0 = tok.lctn()
-  val (  ) = buf.skip1()
+val tknd = tok
+val loc0 = tok.lctn()
+val (  ) = buf.skip1()
 //
-  val dnts =
-    p1_i0dntseq(buf, err)
-  val tok1 = buf.getk0( )
-  val opt1 =
-  (
-    case+
-    tok1.node() of
-    | T_OF0() =>
-      p1_precopt
-      (buf, err) where
-      {
-        val () = buf.skip1()
-      }
-    | _(* non-T_OF0 *) => PRECnil0()
-  ) : precopt // end of [val]
+val dnts =
+  p1_i0dntseq(buf, err)
+val tok1 = buf.getk0( )
+val opt1 =
+(
+  case+
+  tok1.node() of
+  | T_OF0() =>
+    p1_precopt
+    (buf, err) where
+    {
+      val () = buf.skip1()
+    }
+  | _(* non-T_OF0 *) => PRECnil0()
+) : precopt // end of [val]
 //
-  val lopt = precopt_lctn(opt1)
-  val lopt =
+val lopt =
+  precopt_lctn(opt1)
+val lopt =
+(
+case+ lopt of
+| // keep
+optn_vt_cons _ => lopt
+| ~ // free
+optn_vt_nil( ) =>
+(
+case+ dnts of
+| list_nil() =>
   (
-  case+ lopt of
-  | // keep
-  optn_vt_cons _ => lopt
-  | ~ // free
-  optn_vt_nil( ) =>
-  (
-    case+ dnts of
-    | list_nil() =>
-      (
-        optn_vt_nil()
-      )
-    | list_cons _ =>
-      (
-        optn_vt_cons(dnt1.lctn())
-      ) where
-      {
-        val dnt1 = list_last(dnts)
-      }
+    optn_vt_nil()
   )
-  ) : optn_vt(loc_t) // end of [val]
-//
-  val lres =
+| list_cons _ =>
   (
-    case+ lopt of
-    | ~optn_vt_nil() => loc0
-    | ~optn_vt_cons(loc1) => loc0 + loc1
-  ) : loc_t // end of [val(lres)]
+    optn_vt_cons(dnt1.lctn())
+  ) where
+  {
+    val dnt1 = list_last(dnts)
+  }
+)
+) : optn_vt(loc_t)//end(val(lopt))
+//
+val lres =
+(
+  case+ lopt of
+  | ~optn_vt_nil() => loc0
+  | ~optn_vt_cons(loc1) => loc0 + loc1
+) : loc_t // end of [ val(lres) ]
 //
 in//let
 err := e00;
 d0ecl_make_node(lres, D0Cfixity(tknd,dnts,opt1))
-end // end of [T_SRP_FIXITY(k0)]
+end (*let*) // end of [ T_SRP_FIXITY(k0) ]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1146,11 +1207,13 @@ let
 //
 (*
 val () =
-prerrsln("fp_d0ecl(else): tok = ", tok)
+(
+  prerrsln("fp_d0ecl(else): tok = ", tok))
 *)
 //
 in//let
-(err := e00+1; d0ecl(tok.lctn(), D0Ctkerr(tok)))
+(
+  err := e00+1; d0ecl(tok.lctn(), D0Ctkerr(tok)))
 end//let
 //
 (* ****** ****** *)

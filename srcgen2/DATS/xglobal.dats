@@ -290,18 +290,33 @@ auxkxs1
 ( env0
 : gmacenv, kxs1: kxs_t): void =
 let
+//
 val (k1, xs1) = kxs1
 val-list_cons(x1, xs1) = (xs1)
+//
 in//let
 //
 (
 case- opt of
+(*
+| ~
+optn_vt_nil() => (  (*none*)  )
+*)
 | ~
 optn_vt_cons(k1) =>
 topmap_insert$any(env0, k1, x1))
 where
 {
   val opt = the_xsymbls_search(k1) }
+where
+{
+//
+val () = prerrsln("\
+the_gmacenv_pvsmrgw: auxkxs1: k1 = ", k1)
+val () = prerrsln("\
+the_gmacenv_pvsmrgw: auxkxs1: x1 = ", x1)
+//
+}(*where*)
 //
 end (*let*) // end of [auxkxs1(env0,kxs1)]
 //

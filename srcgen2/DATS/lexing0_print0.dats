@@ -443,25 +443,29 @@ T_DLR_SYNEXT() =>
 prints("T_DLR_SYNEXT(", ")")
 //
 (* ****** ****** *)
-|
-T_SRP_THEN() =>
-prints("T_SRP_THEN(", ")")
-|
-T_SRP_ELSE() =>
-prints("T_SRP_ELSE(", ")")
-|
-T_SRP_ENDIF() =>
-prints("T_SRP_ENDIF(", ")")
-|
-T_SRP_IFDEC(knd) =>
-prints("T_SRP_IFDEC(", knd, ")")
-|
-T_SRP_ELSIF(knd) =>
-prints("T_SRP_ELSIF(", knd, ")")
+//
+|T_SRP_THEN0() =>
+(
+prints("T_SRP_THEN0(", ")"))
+|T_SRP_ELSE1() =>
+(
+prints("T_SRP_ELSE1(", ")"))
+|T_SRP_ENDIF() =>
+(
+prints("T_SRP_ENDIF(", ")"))
+|T_SRP_IFEXP() =>
+(
+prints("T_SRP_IFEXP(", ")"))
+|T_SRP_ELSIF() =>
+(
+prints("T_SRP_ELSIF(", ")"))
+//
+(* ****** ****** *)
 //
 |
 T_SRP_NONFIX() =>
-prints("T_SRP_NONFIX(", ")")
+(
+prints("T_SRP_NONFIX(", ")"))
 |
 T_SRP_FIXITY(knd) =>
 prints("T_SRP_FIXITY(", knd, ")")
@@ -469,22 +473,28 @@ prints("T_SRP_FIXITY(", knd, ")")
 (* ****** ****** *)
 //
 |T_SRP_STATIC() =>
-prints("T_SRP_STATIC(", ")")
+(
+prints("T_SRP_STATIC(", ")"))
 |T_SRP_EXTERN() =>
-prints("T_SRP_EXTERN(", ")")
+(
+prints("T_SRP_EXTERN(", ")"))
 |T_SRP_STAVAL() =>
-prints("T_SRP_STAVAL(", ")")
+(
+prints("T_SRP_STAVAL(", ")"))
 |T_SRP_EXTVAL() =>
-prints("T_SRP_EXTVAL(", ")")
+(
+prints("T_SRP_EXTVAL(", ")"))
 //
 (* ****** ****** *)
 //
-|
-T_SRP_DEFINE() =>
-prints("T_SRP_DEFINE(", ")")
-|
-T_SRP_MACDEF() =>
-prints("T_SRP_MACDEF(", ")")
+|T_SRP_DEFINE() =>
+(
+prints("T_SRP_DEFINE(", ")"))
+|T_SRP_MACDEF() =>
+(
+prints("T_SRP_MACDEF(", ")"))
+//
+(* ****** ****** *)
 //
 |
 T_SRP_SYMLOAD() =>

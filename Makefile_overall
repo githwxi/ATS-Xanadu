@@ -31,18 +31,25 @@ all:: srcgen2_xjsemit_xats2py_pyemit01
 #
 ############################################################
 ############################################################
+#
 cleanall:: ; \
 make -C srcgen1 -f Makefile_patsopt cleanall
+#
 cleanall:: ; \
 make -C srcgen2 -f Makefile_xats2js cleanall
+cleanall:: ; \
+make -C srcgen2 -f Makefile_xjsemit cleanall
+#
 cleanall:: ; \
 make -C srcgen2/xats2js/srcgen1 -f Makefile_xats2js cleanall
 cleanall:: ; \
 make -C srcgen2/xats2js/srcgen1 -f Makefile_xjsemit cleanall
+#
 cleanall:: ; \
 make -C srcgen2/xats2py/srcgen1 -f Makefile_xats2js cleanall
 cleanall:: ; \
 make -C srcgen2/xats2py/srcgen1 -f Makefile_xjsemit cleanall
+#
 ############################################################
 ############################################################
 #
