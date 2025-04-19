@@ -408,11 +408,15 @@ val () = kwdins("#inpaste", T_SRP_INPASTE)
 *)
 //
 val () = kwdins("#staload", T_SRP_STALOAD)
+//
 val () = kwdins("#symload", T_SRP_SYMLOAD)
 //
 (* ****** ****** *)
 //
 val () = kwdins("#dyninit", T_SRP_DYNINIT)
+(*
+val () = kwdins("#dynxgen", T_SRP_DYNXGEN)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -428,15 +432,15 @@ val () = kwdins("#extcode", T_SRP_EXTCODE)
 //
 end where
 {
-  #symload
-  kwdins with lexing_tnode_insert
-} (*where*) // end-of-(xatsopt_kword_init)
-
+#symload
+kwdins with lexing_tnode_insert//shorthand
+}(*where*)//end-of-[xatsopt_kword_init(...)]
+//
 in//local
-
+//
 val () = lexing_kword_init((*void*))
-
-end (*local*) // end of [ local ]
+//
+end(*loc*)//end-of-[local(lexing_kword_init)]
 
 (* ****** ****** *)
 //
