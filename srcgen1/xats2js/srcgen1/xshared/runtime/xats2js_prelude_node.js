@@ -1,9 +1,6 @@
 /* ****** ****** */
-/*
-XATS2JS_PRELUDE_NODE
-*/
+// XATS2JS_PRELUDE_NODE
 /* ****** ****** */
-
 /* ****** ****** */
 /*
 G_print for Xats2js/Node

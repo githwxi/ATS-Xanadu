@@ -7,7 +7,7 @@
 ########################################################################
 CAT=cat
 CPF=cp -f
-ECHO=echo
+ECHO=printf
 ########################################################################
 MYROOT0=./../../../../.
 XATS2JS="./../../bin/xats2js"
@@ -27,10 +27,10 @@ echo "Please do 'make xats2js_xatslib_node'!"
 #
 xats2js_js1emit:: ; \
 $(ECHO) \
-"/* ****** ****** */" > xats2js_js1emit.js \
+"/* ****** ****** */\n" > xats2js_js1emit.js \
 && \
 $(ECHO) \
-"// XATS2JS_JS1EMIT" >> xats2js_js1emit.js \
+"// XATS2JS_JS1EMIT\n" >> xats2js_js1emit.js \
 && \
 $(ECHO) \
 "/* ****** ****** */\n" >> xats2js_js1emit.js \
@@ -46,10 +46,10 @@ $(MYROOT0)/prelude/DATS/CATS/JS/runtime.cats >> xats2js_js1emit.js
 #
 xats2js_prelude:: ; \
 $(ECHO) \
-"/* ****** ****** */" > xats2js_prelude.js \
+"/* ****** ****** */\n" > xats2js_prelude.js \
 && \
 $(ECHO) \
-"// XATS2JS_PRELUDE" >> xats2js_prelude.js \
+"// XATS2JS_PRELUDE\n" >> xats2js_prelude.js \
 && \
 $(ECHO) \
 "/* ****** ****** */\n" >> xats2js_prelude.js \
@@ -85,10 +85,10 @@ $(MYROOT0)/prelude/DATS/CATS/JS/xatsopt.cats >> xats2js_prelude.js
 ########################################################################
 xats2js_prelude_node:: ; \
 $(ECHO) \
-"/* ****** ****** */" > xats2js_prelude_node.js \
+"/* ****** ****** */\n" > xats2js_prelude_node.js \
 && \
 $(ECHO) \
-"/*\nXATS2JS_PRELUDE_NODE\n*/" >> xats2js_prelude_node.js \
+"// XATS2JS_PRELUDE_NODE\n" >> xats2js_prelude_node.js \
 && \
 $(ECHO) "/* ****** ****** */\n" >> xats2js_prelude_node.js
 #
@@ -104,10 +104,10 @@ $(MYROOT0)/prelude/DATS/CATS/JS/NODE/process.cats >> xats2js_prelude_node.js
 ########################################################################
 xats2js_xatslib_node:: ; \
 $(ECHO) \
-"/* ****** ****** */" > xats2js_xatslib_node.js \
+"/* ****** ****** */\n" > xats2js_xatslib_node.js \
 && \
 $(ECHO) \
-"/*\nXATS2JS_XATSLIB_NODE\n*/" >> xats2js_xatslib_node.js \
+"// XATS2JS_XATSLIB_NODE\n" >> xats2js_xatslib_node.js \
 && \
 $(ECHO) "/* ****** ****** */\n" >> xats2js_xatslib_node.js
 #
