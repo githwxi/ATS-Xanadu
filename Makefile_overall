@@ -16,13 +16,17 @@ all:: srcgen2_xatsopt_tcheck00
 #
 all:: srcgen2_lib1xats2js
 all:: srcgen2_xats2js_xats2js_jsemit00
-all:: srcgen2_lib2xats2js
 all:: srcgen2_xats2js_xats2js_jsemit01
+all:: srcgen2_lib2xats2js
+all:: srcgen2_xjsemit_xats2js_jsemit00
+all:: srcgen2_xjsemit_xats2js_jsemit01
 #
 all:: srcgen2_lib1xats2py
 all:: srcgen2_xats2js_xats2py_pyemit00
-all:: srcgen2_lib2xats2py
 all:: srcgen2_xats2js_xats2py_pyemit01
+all:: srcgen2_lib2xats2py
+all:: srcgen2_xjsemit_xats2py_pyemit00
+all:: srcgen2_xjsemit_xats2py_pyemit01
 #
 ############################################################
 ############################################################
