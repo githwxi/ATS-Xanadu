@@ -1002,9 +1002,13 @@ D0Csymload of
 |
 D0Cinclude of
 (sint(*s/d*), token, g0exp)//inclusion
+//
 |
 D0Cstaload of
 (sint(*s/d*), token, g0exp)//staloading
+//
+|
+D0Cstaxgen of (token, g0exp)//staxgening
 |
 D0Cdyninit of (token, g0exp)//initization
 //

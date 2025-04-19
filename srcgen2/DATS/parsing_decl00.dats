@@ -1004,6 +1004,7 @@ d0ecl_make_node
 end (*let*) // end of [T_SRP_STALOAD(...)]
 //
 (* ****** ****** *)
+//
 |
 T_SRP_DYNINIT() =>
 let
@@ -1015,6 +1016,19 @@ in//let
 err := e00;
 d0ecl_make_node(lres, D0Cdyninit(tknd, g0e1))
 end (*let*) // end of [T_SRP_DYNINIT(...)]
+(*
+|
+T_SRP_DYNXGEN() =>
+let
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val g0e1 = p1_g0exp(buf, err)
+  val lres = tknd.lctn()+g0e1.lctn()
+in//let
+err := e00;
+d0ecl_make_node(lres, D0Cdyninit(tknd, g0e1))
+end (*let*) // end of [T_SRP_DYNXGEN(...)]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

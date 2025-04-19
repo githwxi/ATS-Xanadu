@@ -497,6 +497,11 @@ prints("T_SRP_STALOAD(", ")")
 |
 T_SRP_DYNINIT() =>
 prints("T_SRP_DYNINIT(", ")")
+(*
+|
+T_SRP_DYNXGEN() =>
+prints("T_SRP_DYNXGEN(", ")")
+*)
 //
 |
 T_SRP_INCLUDE() =>

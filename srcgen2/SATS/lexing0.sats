@@ -281,10 +281,15 @@ Fri 19 Jul 2024 10:07:36 PM EDT
   | T_SRP_SYMLOAD of () // #symload
 //
   | T_SRP_STALOAD of () // #staload
+//
 (*
   | T_SRP_TMPLOAD of () // #tmpload
 *)
+//
   | T_SRP_DYNINIT of () // #dyninit
+(*
+  | T_SRP_DYNXGEN of () // #dynxgen
+*)
 //
   | T_SRP_INCLUDE of () // #include
 (*

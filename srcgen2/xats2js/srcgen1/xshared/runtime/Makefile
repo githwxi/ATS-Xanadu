@@ -4,7 +4,7 @@
 ########################################################################
 ########################################################################
 CAT=cat
-ECHO=printf
+PRINTF=printf
 ########################################################################
 PRELUDED=$(XATSHOME)/prelude
 XATSLIBD=$(XATSHOME)/xatslib
@@ -21,7 +21,7 @@ all:: xatslib
 all:: prelude_node
 ########################################################################
 prelude:: ; \
-$(ECHO) "%s%s\n" \
+$(PRINTF) "%s%s\n" \
 "// " "`date`" > $(PRELUDE_JS)
 prelude:: ; \
 $(CAT) xats2js_prelude_hd >> $(PRELUDE_JS)
