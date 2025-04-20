@@ -68,9 +68,14 @@ MAP = "./../SATS/xsymmap.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
+//
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/gmacro1.sats"
 #staload "./../SATS/dynexp1.sats"
+//
+#staload "./../SATS/trans01.sats"
+#staload "./../SATS/trans12.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -88,8 +93,10 @@ datatype g1val =
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
 #typedef
 gmacenv = $MAP.topmap(g1mac)
+*)
 (* ****** ****** *)
 //
 #extern
@@ -131,12 +138,198 @@ prints("G1Vid0(", sym, ")")
 }(*where*)//end-of-[g1val_fprint(...)]
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print
+<g1val>(gval) =
+g1val_fprint(gval, g_print$out<>())
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun
+g1mac_eval // HX: first-order!
+(tenv: !tr12env, gmac: g1mac): g1val
+//
+#extern
+fun
 g1exp_eval // HX: first-order!
-(genv: gmacenv, gexp: g1exp): g1val
+(tenv: !tr12env, gexp: g1exp): g1val
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+#implfun
+g1mac_eval
+(tenv, gmac) =
+(
+case+ gmac of
+//
+|G1Mid0(sym) =>
+(
+  f0_id0(tenv, gmac))
+//
+(* ****** ****** *)
+//
+|G1Mint(int) => G1Vint(int)
+|G1Mbtf(btf) => G1Vbtf(btf)
+|G1Mchr(chr) => G1Vchr(chr)
+|G1Mflt(flt) => G1Vflt(flt)
+|G1Mstr(str) => G1Vstr(str)
+//
+(* ****** ****** *)
+//
+|_(*otherwise*) => G1Vnone((*void*))
+//
+) where
+{
+//
+fun
+f0_id0
+( tenv:
+! tr12env
+, gmac: g1mac): g1val =
+let
+//
+val-G1Mid0(sym0) = gmac
+//
+val
+opt0 =
+tr12env_find_g1mac(tenv, sym0)
+//
+in//let
+case+ opt0 of
+| ~
+optn_vt_nil
+( (*void*) ) => G1Vnone((*void*))
+| ~
+optn_vt_cons
+(   gmac   ) => g1mac_eval(tenv, gmac)
+end // let // end-of-[f0_id0(tenv,gmac)]
+//
+(* ****** ****** *)
+//
+val () =
+(
+  prerrsln("g1mac_eval: gmac = ", gmac))
+//
+}(*where*)//end-of-[g1mac_eval(tenv,gmac)]
+//
+(* ****** ****** *)
+//
+#implfun
+g1exp_eval
+(tenv, gexp) =
+(
+case+
+gexp.node() of
+//
+|G1Eid0(sym0) =>
+(
+  f0_id0(tenv, gexp))
+//
+|G1Eint(tint) =>
+(
+  G1Vint(token2sint(tint)))
+(*
+|G1Ebtf(tbtf) =>
+(
+  G1Vbtf(token2sbtf(tbtf)))
+*)
+|G1Echr(tchr) =>
+(
+  G1Vchr(token2schr(tchr)))
+|G1Eflt(tflt) =>
+(
+  G1Vflt(token2sflt(tflt)))
+|G1Estr(tstr) =>
+(
+  G1Vstr(token2sstr(tstr)))
+//
+|G1Ea1pp
+( gfun, g1e1) =>
+(
+  g1val_a1pp(gfun, g1v1)
+) where
+{
+//
+val
+gfun = g1exp_eval(tenv, gfun)
+val
+g1v1 = g1exp_eval(tenv, g1e1)
+//
+}(*where*)//end-of-[G1Ea1pp(...)]
+//
+|G1Ea2pp
+( gfun
+, g1e1, g1e2) =>
+(
+g1val_a2pp(gfun, g1v1, g1v2))
+where
+{
+//
+val
+gfun = g1exp_eval(tenv, gfun)
+val
+g1v1 = g1exp_eval(tenv, g1e1)
+val
+g1v2 = g1exp_eval(tenv, g1e2)
+//
+}(*where*)//end-of-[G1Ea2pp(...)]
+//
+|
+_(*otherwise*) => G1Vnone((*none*))
+//
+) where
+{
+//
+(* ****** ****** *)
+//
+fun
+g1val_a1pp
+( gfun: g1val
+, g1v1: g1val): g1val = G1Vnone()
+//
+fun
+g1val_a2pp
+( gfun: g1val
+, g1v1: g1val
+, g1v2: g1val): g1val = G1Vnone()
+//
+(* ****** ****** *)
+//
+fun
+f0_id0
+( tenv:
+! tr12env
+, gexp: g1exp): g1val =
+let
+//
+val-
+G1Eid0(sym0) = gexp.node()
+//
+val
+opt0 =
+tr12env_find_g1mac(tenv, sym0)
+//
+in//let
+case+ opt0 of
+| ~
+optn_vt_nil
+( (*void*) ) => G1Vnone((*void*))
+| ~
+optn_vt_cons
+(   gmac   ) => g1mac_eval(tenv, gmac)
+end // let // end-of-[f0_id0(tenv,gmac)]
+//
+(* ****** ****** *)
+//
+val () =
+prerrsln("g1exp_eval: gexp = ", gexp)
+//
+}(*where*)//end-of-[g1exp_eval(tenv,gexp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

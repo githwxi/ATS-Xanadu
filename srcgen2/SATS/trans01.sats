@@ -424,8 +424,14 @@ tr01env_insmix$any
 fun token2sint: token -> sint
 fun token2dint: token -> sint
 (* ****** ****** *)
+//
 fun symbl2sbtf: symbl -> bool
 fun symbl2dbtf: symbl -> bool
+(*
+fun token2sbtf: symbl -> bool
+fun token2dbtf: symbl -> bool
+*)
+//
 (* ****** ****** *)
 fun token2schr: token -> char
 fun token2dchr: token -> char
