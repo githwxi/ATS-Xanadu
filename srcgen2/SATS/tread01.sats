@@ -170,6 +170,7 @@ ATS_PACKNAME // namespace
 #typedef d1arglst = $D1E.d1arglst
 (* ****** ****** *)
 #typedef d1eclist = $D1E.d1eclist
+#typedef d1eclopt = $D1E.d1eclopt
 (* ****** ****** *)
 #typedef q1arglst = $D1E.q1arglst
 #typedef s1qaglst = $D1E.s1qaglst
@@ -356,6 +357,8 @@ tread01_d1arglst: ftread01(d1arglst)
 (* ****** ****** *)
 fun
 tread01_d1eclist: ftread01(d1eclist)
+fun
+tread01_d1eclopt: ftread01(d1eclopt)
 (* ****** ****** *)
 fun
 tread01_q1arglst: ftread01(q1arglst)

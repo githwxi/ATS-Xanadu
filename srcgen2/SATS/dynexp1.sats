@@ -940,6 +940,26 @@ D1Cnone0 of ((*void*)) | D1Cnone1 of (d0ecl)
 |
 D1Cerrck of (sint(*lvl*), d1ecl)//tread0x-error
 //
+(* ****** ****** *)
+(*
+HX-2025-04-19:
+For if-guarded declarations
+These are temporary constructs
+generated during trans01_dparsed!
+*)
+//
+| D1Cendif of (token) // #endif
+| D1Cthen0 of (d1eclist) // #then0
+| D1Celse1 of (d1eclist) // #else1 // #elsif
+| D1Cifexp of
+( g1exp(*test*)
+, d1eclopt(*then*), d1eclopt(*else*), d1eclopt)
+| D1Celsif of
+( g1exp(*test*)
+, d1eclopt(*then*), d1eclopt(*else*), d1eclopt)
+//
+(* ****** ****** *)
+//
 // HX-2022-??-??: end-of-[ datatype(d1ecl_node) ]
 //
 (* ****** ****** *)

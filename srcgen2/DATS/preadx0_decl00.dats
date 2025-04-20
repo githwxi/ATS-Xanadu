@@ -1376,15 +1376,63 @@ D0Cdatatype _ => f0_datatype(dcl, err)
 |
 D0Cdynconst _ => f0_dynconst(dcl, err)
 //
-| // HX: ignored!
-D0Ctkerr(tok) => ( dcl )
+(* ****** ****** *)
+//
+| // HX: ignored for now and
+D0Ctkerr(tok) => ( dcl ) // catch later
 |
-D0Ctkskp _ =>
+D0Ctkskp(tok) =>
 let
 val lvl = 1
 in//let
 (err := err + 1; d0ecl_errck(lvl, dcl))
-end (*let*) // end of [D0Ctkskp _]
+end (*let*) // end of [ D0Ctkskp(tok) ]
+//
+(* ****** ****** *)
+//
+(*
+HX-2025-04-19:
+For if-guarded declarations!
+*)
+|D0Cthen0 _ => ( dcl )
+|D0Celse1 _ => ( dcl )
+|D0Cendif _ => ( dcl )
+//
+|D0Cifexp(tok, g0e) =>
+let
+//
+val lvl = 0
+val e00 = err
+val g0e = preadx0_g0exp(g0e, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d0ecl_errck
+( lvl+1
+, d0ecl_make_node
+  (dcl.lctn(), D0Cifexp(tok, g0e)))
+end//let//end-of-[D0Cifexp(tok,g0e)]
+//
+|D0Celsif(tok, g0e) =>
+let
+//
+val lvl = 0
+val e00 = err
+val g0e = preadx0_g0exp(g0e, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d0ecl_errck
+( lvl+1
+, d0ecl_make_node
+  (dcl.lctn(), D0Celsif(tok, g0e)))
+end//let//end-of-[D0Celsif(tok,g0e)]
+//
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
@@ -1392,9 +1440,9 @@ let
 val lvl = 1
 in//let
 (err := err + 1; d0ecl_errck(lvl, dcl))
-end (*let*) // end of [_(*otherwise*)]
+end (*let*) // end of [ _(*otherwise*) ]
 //
-) where // end of [ case+(dcl.node()) ]
+) where // end-of-[ case+of(dcl.node()) ]
 {
 //
 (* ****** ****** *)
