@@ -499,7 +499,7 @@ val
 loc0 = d0cl.lctn()
 val () =
 prerrsln
-("trans01_decl: d0cl = ", d0cl)
+("trans01_d0ecl: d0cl = ", d0cl)
 *)
 //
 in//let
@@ -633,6 +633,14 @@ case+ tok.node() of
 (
  d1ecl_none0(d0cl.lctn()))
 |_(*else*) => d1ecl_none1(d0cl))
+//
+(*
+|D0Cthen0 _ => ... // #then0
+|D0Celse1 _ => ... // #else1
+|D0Cendif _ => ... // #endif
+|D0Cifexp(_, gexp) => ... // #ifexp
+|D0Celsif(_, gexp) => ... // #elsif
+*)
 //
 |
 _ (*otherwise*) => d1ecl_none1(d0cl)
@@ -2178,42 +2186,406 @@ d1cstdcl_make_args(loc0,dpid,darg,sres,dres)
 end (*let*)//end-of-[trans01_d0cstdcl(tenv,dcst)]
 
 (* ****** ****** *)
-
+//
+(*
+HX-2025-04-19:
+This does not handle if-guarded declarations!
 #implfun
 trans01_d0eclist
   (tenv, dcls) =
-list_trans01_fnp(tenv, dcls, trans01_d0ecl)
-
+(
+  list_trans01_fnp(tenv, dcls, trans01_d0ecl))
+*)
+//
+(*
+HX-2025-04-19:
+This one is for handling if-guarded declarations!
+*)
+#implfun
+trans01_d0eclist
+  (tenv, dcls) =
+(
+//
+let
+//
+val
+dres =
+list_vt_nil() in//let
+//
+list_vt2t
+(
+list_vt_reverse0
+(
+f0_d0eclist(tenv,dcls,dres)))
+end//end-of-[let]
+//
+) where // end-of-[let]
+{
+//
+#vwtpdef
+d1eclist_vt = list_vt( d1ecl )
+//
+fun
+d1cls_vt2t_reverse0
+( dcls
+: list_vt(d1ecl)): d1eclist =
+list_vt2t(list_vt_reverse0(dcls))
+//
+//
+fun
+f1_then0
+( tenv:
+! tr01env
+, dcl0: d0ecl
+, dcls: d0eclist)
+: (d1eclopt, d0eclist) =
+(
+case+ dcls of
+|
+list_nil
+( (*void*) ) =>
+(dthn, dcls) where
+{
+val dthn = optn_nil() }
+|
+list_cons
+(dcl1, d2ls) =>
+(
+case+
+dcl1.node() of
+//
+|
+D0Cthen0 _ => 
+let
+val dres = list_vt_nil()
+val
+(dres, dcls) =
+f1_d0eclist(tenv, d2ls, dres)
+in//let
+(
+  opt1, dcls) where
+{
+val loc1 =
+dcl1.lctn((*void*))
+val opt1 = optn_cons
+(d1ecl(loc1, D1Cthen0(dres))) }
+end//let//end-of-[D0Cthen0(...)]
+//
+|
+_(*non-D0Cthen0*) =>
+let
+val dres = list_vt_nil()
+val
+(dres, dcls) =
+f1_d0eclist(tenv, dcls, dres)
+in//let
+(
+  opt1, dcls) where
+{
+val loc1 =
+dcl0.lctn((*void*))
+val opt1 = optn_cons
+(d1ecl(loc1, D1Cthen0(dres))) }
+end//let//end-of-[non-D0Cthen0()]
+//
+)(*case+*)//end-of(list_cons(...))
+//
+)(*case+*)//end-of-[f1_then0(...)]
+//
+and
+f1_else1
+( tenv:
+! tr01env
+, dcl0: d0ecl
+, dcls: d0eclist)
+: (d1eclopt, d0eclist) =
+(
+case+ dcls of
+|
+list_nil
+( (*void*) ) =>
+(dels, dcls) where
+{
+val dels = optn_nil() }
+//
+|
+list_cons
+(dcl1, d2ls) =>
+(
+case+
+dcl1.node() of
+//
+|
+D0Celse1 _ => 
+let
+val dres = list_vt_nil()
+val
+(dres, dcls) =
+f1_d0eclist(tenv, d2ls, dres)
+in//let
+(
+  opt1, dcls) where
+{
+val loc1 =
+dcl1.lctn((*void*))
+val opt1 = optn_cons
+(d1ecl(loc1, D1Celse1(dres))) }
+end//let//end-of-[D0Celse1(...)]
+//
+|
+D0Celsif
+(tknd, gexp) =>
+let
+//
+val
+(dthn, dcls) =
+f1_then0(tenv, dcl1, d2ls)
+val
+(dels, dcls) =
+f1_else1(tenv, dcl1, d2ls)
+val
+(dend, dcls) =
+f1_endif(tenv, dcl1, d2ls)
+//
+in//let
+//
+(
+  opt1, dcls) where
+{
+val loc1 =
+dcl1.lctn((*void*))
+val gexp =
+trans01_g0exp(tenv, gexp)
+val opt1 =
+optn_cons
+(
+d1ecl(loc1,
+D1Celsif(gexp,dthn,dels,dend)))
+}
+//
+end//let//end-of-[D0Celsif(...)]
+//
+|
+_(*non-D0Celse1/D0Celsif*) =>
+let
+  val dels =
+  optn_nil() in (dels, dcls) end
+//
+)(*case+*)//end-of(list_cons(...))
+//
+)(*case+*)//end-of-[f1_else1(...)]
+//
+and
+f1_endif
+( tenv:
+! tr01env
+, dcl0: d0ecl
+, dcls: d0eclist)
+: (d1eclopt, d0eclist) =
+(
+case+ dcls of
+|
+list_nil
+( (*void*) ) =>
+(dels, dcls) where
+{
+val dels = optn_nil() }
+//
+|
+list_cons
+(dcl1, d2ls) =>
+(
+case+
+dcl1.node() of
+//
+|
+D0Cendif(tend) => 
+(
+  opt1, d2ls) where
+{
+val loc1 =
+dcl1.lctn((*void*))
+val opt1 = optn_cons
+(d1ecl(loc1, D1Cendif(tend))) }
+//
+|
+_(*non-D0Celse1*) =>
+let
+  val dels =
+  optn_nil() in (dels, dcls) end
+//
+)(*case+*)//end-of(list_cons(...))
+//
+)(*case+*)//end-of-[f1_endif(...)]
+//
+and
+f1_d0ecl
+( tenv:
+! tr01env
+, dcl0: d0ecl
+, dcls: d0eclist)
+: (d1ecl, d0eclist) =
+(
+//
+case+
+dcl0.node() of
+|
+D0Cifexp
+(tknd, gexp) =>
+let
+//
+val
+(dthn, dcls) =
+f1_then0(tenv, dcl0, dcls)
+val
+(dels, dcls) =
+f1_else1(tenv, dcl0, dcls)
+val
+(dend, dcls) =
+f1_endif(tenv, dcl0, dcls)
+//
+in//let
+//
+(
+  dcl0, dcls) where
+{
+val loc0 =
+dcl0.lctn((*void*))
+val gexp =
+trans01_g0exp(tenv, gexp)
+val dcl0 =
+(
+d1ecl(loc0,
+D1Cifexp(gexp,dthn,dels,dend)))
+}
+//
+end//let//end-of-[D0Cifexp(...)]
+|
+_(*non-D0Cifexp*) =>
+(
+  dcl0, dcls) where
+{
+val
+dcl0 = trans01_d0ecl(tenv, dcl0) }
+//
+)(*case+*)//end-of-[f1_d0ecl(tenv,...)]
+//
+and
+f1_d0eclist
+( tenv:
+! tr01env
+, dcls: d0eclist
+, dres: d1eclist_vt)
+: (d1eclist, d0eclist) =
+(
+case+ dcls of
+//
+|list_nil
+((*void*)) =>
+(dres, dcls) where{
+val
+dres = d1cls_vt2t_reverse0(dres) }
+//
+|list_cons
+(dcl1, d2ls) =>
+(
+case+ 
+dcl1.node() of
+//
+|D0Celse1 _ =>
+(dres, dcls) where{
+val
+dres = d1cls_vt2t_reverse0(dres) }
+|D0Celsif _ =>
+(dres, dcls) where{
+val
+dres = d1cls_vt2t_reverse0(dres) }
+|D0Cendif _ =>
+(dres, dcls) where{
+val
+dres = d1cls_vt2t_reverse0(dres) }
+//
+| _(*otherwise*) =>
+(
+f1_d0eclist
+(tenv, dcls, dres)) where
+{
+val
+( dcl1
+, dcls) =
+(
+  f1_d0ecl(tenv, dcl1, d2ls))
+val dres = list_vt_cons(dcl1, dres) }
+)(*case+*)//end-of-[list_cons(...)]
+)(*case+*)//end-[f1_d0eclist(tenv,...)]
+//
+fun
+f0_d0eclist
+( tenv:
+! tr01env
+, dcls
+: d0eclist
+, dres
+: d1eclist_vt): d1eclist_vt =
+(
+case+ dcls of
+|
+list_nil() => dres
+|
+list_cons(dcl1, d2ls) =>
+let
+val
+( dcl1
+, dcls ) =
+f1_d0ecl(tenv, dcl1, d2ls)
+val dres =
+(
+  list_vt_cons(dcl1, dres))
+in//let
+(
+  f0_d0eclist(tenv, dcls, dres))
+end//let//end-of-[list_cons(dcl1,d2ls)]
+)(*case+*)//end-of-[f0_d0eclist(tenv,dcls)]
+}(*where*)//end-of-[trans01_d0eclist(tenv,dcls)]
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 trans01_q0arglst
   (tenv, q0as) =
-list_trans01_fnp(tenv, q0as, trans01_q0arg)
+(
+  list_trans01_fnp(tenv, q0as, trans01_q0arg))
 #implfun
 trans01_s0qaglst
   (tenv, sqas) =
-list_trans01_fnp(tenv, sqas, trans01_s0qag)
+(
+  list_trans01_fnp(tenv, sqas, trans01_s0qag))
 #implfun
 trans01_t0qaglst
   (tenv, tqas) =
-list_trans01_fnp(tenv, tqas, trans01_t0qag)
+(
+  list_trans01_fnp(tenv, tqas, trans01_t0qag))
 #implfun
 trans01_t0iaglst
   (tenv, tias) =
-list_trans01_fnp(tenv, tias, trans01_t0iag)
-
+(
+  list_trans01_fnp(tenv, tias, trans01_t0iag))
+//
 (* ****** ****** *)
 //
 #implfun
 trans01_a0typlst
   (tenv, a0ts) =
-list_trans01_fnp(tenv, a0ts, trans01_a0typ)
+(
+  list_trans01_fnp(tenv, a0ts, trans01_a0typ))
 #implfun
 trans01_d0arglst
   (tenv, d0as) =
-list_trans01_fnp(tenv, d0as, trans01_d0arg)
+(
+  list_trans01_fnp(tenv, d0as, trans01_d0arg))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -2228,7 +2600,7 @@ WD0CSsome
 (twhr,topt,dcls,tend) =>
 (
   WD1CSsome(trans01_d0eclist(tenv, dcls)))
-)(*case+*)//end-[trans01_wd0eclseq(tenv,wdcs)]
+)(*case+*)//end-of-[trans01_wd0eclseq(tenv,wdcs)]
 //
 (* ****** ****** *)
 //
@@ -2236,22 +2608,22 @@ WD0CSsome
 trans01_d0valdclist
   (  tenv,dcls  ) =
 (
-list_trans01_fnp(tenv, dcls, trans01_d0valdcl))
+  list_trans01_fnp(tenv, dcls, trans01_d0valdcl))
 #implfun
 trans01_d0vardclist
   (  tenv,dcls  ) =
 (
-list_trans01_fnp(tenv, dcls, trans01_d0vardcl))
+  list_trans01_fnp(tenv, dcls, trans01_d0vardcl))
 #implfun
 trans01_d0fundclist
   (  tenv,dcls  ) =
 (
-list_trans01_fnp(tenv, dcls, trans01_d0fundcl))
+  list_trans01_fnp(tenv, dcls, trans01_d0fundcl))
 #implfun
 trans01_d0cstdclist
   (  tenv,dcls  ) =
 (
-list_trans01_fnp(tenv, dcls, trans01_d0cstdcl))
+  list_trans01_fnp(tenv, dcls, trans01_d0cstdcl))
 //
 (* ****** ****** *)
 //
@@ -2259,7 +2631,7 @@ list_trans01_fnp(tenv, dcls, trans01_d0cstdcl))
 trans01_d0eclistopt
   (  tenv,dopt  ) =
 (
-optn_trans01_fnp(tenv, dopt, trans01_d0eclist))
+  optn_trans01_fnp(tenv, dopt, trans01_d0eclist))
 //
 (* ****** ****** *)
 (* ****** ****** *)

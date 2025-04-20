@@ -1284,18 +1284,95 @@ endlet // end-of-(D1Cdynconst(_,_,_))
 //
 |D1Cnone0() => ((*void*))
 //
-|D1Cnone1(d0cl) =>
+|D1Cnone1
+(  d0cl  ) =>
 (
-  d0ecl_fpemsg(out, d0cl))
+  d0ecl_fpemsg(out, d0cl))//D1Cnone1
 //
-|
-D1Cerrck
-(lvl1,dcl1) => d1ecl_fpemsg(out, dcl)
+(* ****** ****** *)
+//
+|D1Cthen0
+(  dcls  ) =>
+let
+//
+val () =
+(
+  d1eclist_fpemsg(out, dcls))
+//
+endlet // end-of-( D1Cthen0( dcls ) )
+//
+|D1Celse1
+(  dcls  ) =>
+let
+//
+val () =
+(
+  d1eclist_fpemsg(out, dcls))
+//
+endlet // end-of-( D1Celse1( dcls ) )
+//
+(* ****** ****** *)
+//
+| D1Cifexp
+( tknd, dthn
+, dels, dend) =>
+let
+//
+val () =
+(
+  d1eclopt_fpemsg(out, dthn))
+val () =
+(
+  d1eclopt_fpemsg(out, dels))
+//
+(*
+val () = d1eclopt_fpemsg(out, dend)
+*)
+//
+endlet // end-of-(D1Cifexp(tknd,...))
+//
+| D1Celsif
+( tknd, dthn
+, dels, dend) =>
+let
+//
+val () =
+(
+  d1eclopt_fpemsg(out, dthn))
+val () =
+(
+  d1eclopt_fpemsg(out, dels))
+//
+(*
+val () = d1eclopt_fpemsg(out, dend)
+*)
+//
+endlet // end-of-(D1Celsif(tknd,...))
+//
+(* ****** ****** *)
+//
+| D1Cerrck
+( lvl1, dcl1) => d1ecl_fpemsg(out, dcl)
 //
 (* ****** ****** *)
 //
 end where
 {
+//
+fun
+d1eclopt_fpemsg
+( out
+: FILR
+, dopt
+: d1eclopt): void =
+(
+case+ dopt of
+|optn_nil() => ()
+|optn_cons(d1cl) =>
+(
+  d1ecl_fpemsg(out, d1cl))
+)(*case+*)//end-of-[d1eclopt_fpemsg]
+//
 (*
 //
 val

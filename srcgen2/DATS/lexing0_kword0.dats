@@ -481,5 +481,9 @@ end(*loc*)//end-of-[local(lexing_kword_init)]
 #implval T0IDALP_NONE = T_IDALP("*NONE*")
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_lexing0_kword0.dats] *)

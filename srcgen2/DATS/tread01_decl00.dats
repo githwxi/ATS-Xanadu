@@ -99,6 +99,76 @@ d1ecl
 (* ****** ****** *)
 //
 fun
+d1ecl_then0_errck
+( loc0
+: loc_t
+, dcls
+: d1eclist): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+( lvl+1
+, d1ecl(loc0, D1Cthen0(dcls)) )
+end(*let*)//end-of-[d1ecl_then0_errck]
+//
+fun
+d1ecl_else1_errck
+( loc0
+: loc_t
+, dcls
+: d1eclist): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+( lvl+1
+, d1ecl(loc0, D1Celse1(dcls)) )
+end(*let*)//end-of-[d1ecl_else1_errck]
+//
+(* ****** ****** *)
+//
+fun
+d1ecl_ifexp_errck
+( loc0: loc_t
+, gexp: g1exp
+, dthn: d1eclopt
+, dels: d1eclopt
+, dend: d1eclopt): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(
+lvl+1,
+d1ecl_make_node
+(
+loc0,
+D1Cifexp(gexp, dthn, dels, dend)))
+end(*let*)//end-of-[d1ecl_ifexp_errck]
+//
+fun
+d1ecl_elsif_errck
+( loc0: loc_t
+, gexp: g1exp
+, dthn: d1eclopt
+, dels: d1eclopt
+, dend: d1eclopt): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(
+lvl+1,
+d1ecl_make_node
+(
+loc0,
+D1Celsif(gexp, dthn, dels, dend)))
+end(*let*)//end-of-[d1ecl_elsif_errck]
+//
+(* ****** ****** *)
+//
+fun
 d1ecl_static_errck
 ( loc0: loc_t
 , tknd: token
@@ -541,6 +611,14 @@ d1cl.node() of
 |D1Cnone0 _ => d1cl
 |D1Cd0ecl _ => d1cl
 //
+(*
+|D1Cendif _ => (d1cl)
+*)
+|D1Cthen0 _ => f0_then0(d1cl, err)
+|D1Celse1 _ => f0_else1(d1cl, err)
+|D1Cifexp _ => f0_ifexp(d1cl, err)
+|D1Celsif _ => f0_elsif(d1cl, err)
+//
 |
 D1Cstatic _ => f0_static(d1cl, err)
 |
@@ -563,6 +641,8 @@ D1Csortdef _ => f0_sortdef(d1cl, err)
 |
 D1Csexpdef _ => f0_sexpdef(d1cl, err)
 //
+(* ****** ****** *)
+//
 |
 D1Cabstype _ => f0_abstype(d1cl, err)
 |
@@ -570,20 +650,28 @@ D1Cabsopen _ => d1cl//HX:fixity-less
 |
 D1Cabsimpl _ => f0_absimpl(d1cl, err)
 //
+(* ****** ****** *)
+//
 |
 D1Csymload _ => f0_symload(d1cl, err)
+//
+(* ****** ****** *)
 //
 |
 D1Cinclude _ => f0_include(d1cl, err)
 |
 D1Cstaload _ => f0_staload(d1cl, err)
 //
+(* ****** ****** *)
+//
 |
 D1Cdyninit _ => f0_dyninit(d1cl, err)
 //
 (* ****** ****** *)
+//
 |
 D1Cextcode _ => f0_extcode(d1cl, err)
+//
 (* ****** ****** *)
 //
 |
@@ -607,19 +695,113 @@ D1Cdatatype _ => f0_datatype(d1cl, err)
 |
 D1Cdynconst _ => f0_dynconst(d1cl, err)
 //
+(* ****** ****** *)
 |
 _(*otherwise*) =>
 let
-val lvl = 1
-in//let
-( err := err+1; d1ecl_errck(lvl, d1cl) )
-endlet // end of [ _(* otherwise *) ]
+val lvl0 = (1) in//let
+(err := err+1; d1ecl_errck(lvl0, d1cl))
+endlet // end-of-[  _(* otherwise *)  ]
 //
-) where // end of [case+(d1cl.node())]
+(* ****** ****** *)
+//
+) where // end of [case+of(d1cl.node())]
 {
 (* ****** ****** *)
 //
 val loc0 = d1cl.lctn()
+//
+(* ****** ****** *)
+//
+fun
+f0_then0
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+val e00 = err
+val-
+D1Cthen0
+(  dcls  ) = dcl.node()
+val dcls =
+tread01_d1eclist(dcls, err)
+in//let
+if // if
+(err=e00)
+then dcl else
+d1ecl_then0_errck(dcl.lctn(), dcls)
+end//let//end-of-[f0_then0(dcl,err)]
+//
+fun
+f0_else1
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+val e00 = err
+val-
+D1Celse1
+(  dcls  ) = dcl.node()
+val dcls =
+tread01_d1eclist(dcls, err)
+in//let
+if // if
+(err=e00)
+then dcl else
+d1ecl_else1_errck(dcl.lctn(), dcls)
+end//let//end-of-[f0_else1(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_ifexp
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cifexp
+( tknd, dthn
+, dels, dend) = dcl.node()
+//
+val dthn =
+tread01_d1eclopt(dthn, err)
+val dels =
+tread01_d1eclopt(dels, err)
+//
+in
+if
+(err=e00)
+then dcl else
+d1ecl_ifexp_errck
+(dcl.lctn(), tknd, dthn, dels, dend)
+end (*let*) // end-of-[f0_ifexp(dcl,err)]
+//
+fun
+f0_elsif
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Celsif
+( tknd, dthn
+, dels, dend) = dcl.node()
+//
+val dthn =
+tread01_d1eclopt(dthn, err)
+val dels =
+tread01_d1eclopt(dels, err)
+//
+in
+if
+(err=e00)
+then dcl else
+d1ecl_elsif_errck
+(dcl.lctn(), tknd, dthn, dels, dend)
+end (*let*) // end-of-[f0_elsif(dcl,err)]
 //
 (* ****** ****** *)
 //
@@ -642,7 +824,7 @@ if
 (err=e00)
 then dcl else
 d1ecl_static_errck(dcl.lctn(),tknd,dcl1)
-end (*let*) // end of [ f0_static(dcl,err) ]
+end (*let*) // end-of-[f0_static(dcl,err)]
 //
 fun
 f0_extern
@@ -663,7 +845,7 @@ if
 (err=e00)
 then dcl else
 d1ecl_extern_errck(dcl.lctn(),tknd,dcl1)
-end (*let*) // end of [ f0_extern(dcl,err) ]
+end (*let*) // end-of-[f0_extern(dcl,err)]
 //
 (* ****** ****** *)
 //
@@ -690,7 +872,7 @@ if
 then (dcl) else
 d1ecl_define_errck
 ( dcl.lctn(), tknd, geid, gmas, gopt )
-end (*let*) // end of [ f0_define(dcl,err) ]
+end (*let*) // end-of-[f0_define(dcl,err)]
 //
 (* ****** ****** *)
 //
@@ -717,7 +899,7 @@ if
 (err=e00)
 then dcl else
 d1ecl_local0_errck( loc, dcs1, dcs2 )
-end (*let*) // end of [ f0_local0(dcl,err) ]
+end (*let*) // end-of-[f0_local0(dcl,err)]
 //
 (* ****** ****** *)
 //
@@ -1692,6 +1874,11 @@ endlet // end-of-[tread01_d1cstdcl(out,dcst)]
 tread01_d1eclist
   (  dcls, err  ) =
 list_tread01_fnp(dcls, err, tread01_d1ecl)
+//
+#implfun
+tread01_d1eclopt
+  (  dcls, err  ) =
+optn_tread01_fnp(dcls, err, tread01_d1ecl)
 //
 (* ****** ****** *)
 //
