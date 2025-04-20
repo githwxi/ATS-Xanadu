@@ -2529,10 +2529,17 @@ f0_d0eclist
 : d1eclist_vt): d1eclist_vt =
 (
 case+ dcls of
-|
-list_nil() => dres
-|
-list_cons(dcl1, d2ls) =>
+//
+|list_nil
+((*void*)) => dres
+//
+|list_cons
+(dcl1, d2ls) =>
+(
+case+
+dcl1.node() of
+//
+| D0Cifexp _ =>
 let
 val
 ( dcl1
@@ -2542,9 +2549,23 @@ val dres =
 (
   list_vt_cons(dcl1, dres))
 in//let
+  f0_d0eclist(tenv, dcls, dres)
+end(*let*)//end-of-[D0Cifexp(...)]
+//
+| _(*non-D0Cifexp*) =>
+let
+val dcl1 =
+trans01_d0ecl(tenv, dcl1)
+val dres =
+(
+  list_vt_cons(dcl1, dres))
+in//let
 (
   f0_d0eclist(tenv, dcls, dres))
-end//let//end-of-[list_cons(dcl1,d2ls)]
+end(*let*)//end-of-[non-D0Cifexp(...)]
+//
+)(*case+*)//end-of-[list_cons(dcl1,d2ls)]
+//
 )(*case+*)//end-of-[f0_d0eclist(tenv,dcls)]
 //
 }(*where*)//end-of-[trans01_d0eclist(tenv,dcls)]
