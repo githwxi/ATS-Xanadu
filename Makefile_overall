@@ -13,6 +13,7 @@ all:: srcgen1_xats2js
 #
 all:: srcgen2_lib1xatsopt
 all:: srcgen2_xatsopt_tcheck00
+all:: srcgen2_xatsopt_tcheck01
 #
 all:: srcgen2_lib1xats2js
 all:: srcgen2_xats2js_xats2js_jsemit00
