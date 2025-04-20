@@ -1494,6 +1494,15 @@ D2Cnone1 of ( d1ecl ) | D2Cnone2 of ( d2ecl )
 |D2Cerrck of
  (sint(*lvl*), d2ecl(*err*))//HX:tread12-error
 //
+(* ****** ****** *)
+//
+(*
+HX-2025-04-20: for if-guarded declarations!
+*)
+|D2Cthen0 of (d2eclist) |D2Celse1 of (d2eclist)
+//
+(* ****** ****** *)
+//
 // HX-2022-??-??: end-of-[ datatype(d2ecl_node) ]
 //
 (* ****** ****** *)

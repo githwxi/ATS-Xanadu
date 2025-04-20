@@ -913,8 +913,107 @@ D1Cimplmnt0 _ => f0_implmnt0(env0, d1cl)
 |
 D1Cdynconst _ => f0_dynconst(env0, d1cl)
 //
-|D1Cnone0 // HX: it is an unharmful decl
- ( (*void*) ) => d2ecl_none0(d1cl.lctn())
+|
+D1Cnone0 // HX: it is an unharmful decl
+(  (*nil*)  ) => d2ecl_none0(d1cl.lctn())
+//
+(* ****** ****** *)
+//
+|D1Cthen0
+(   d1cls   ) =>
+(
+d2ecl_make_node
+(d1cl.lctn(), D2Cthen0(d2cls)))
+where
+{ val
+  d2cls = trans12_d1eclist(env0, d1cls)
+}(*where*) // end-of-[ D1Cthen0(d1cls) ]
+//
+|D1Celse1
+(   d1cls   ) =>
+(
+d2ecl_make_node
+(d1cl.lctn(), D2Celse1(d2cls))
+) where
+{ val
+  d2cls = trans12_d1eclist(env0, d1cls)
+}(*where*) // end-of-[ D1Celse1(d1cls) ]
+//
+(* ****** ****** *)
+//
+|D1Cifexp
+( gexp
+, dthn
+, dels, dend) =>
+let
+val loc0 = d1cl.lctn()
+val
+test =
+tr12env_eval_ifexp(env0, gexp)
+in//let
+//
+if
+test
+then
+(
+case+ dthn of
+|
+optn_nil((*0*)) =>
+(
+  d2ecl_none0(loc0))
+|
+optn_cons(dcl1) =>
+trans12_d1eclist(env0, dcls))//then
+else
+(
+case+ dels of
+|
+optn_nil((*0*)) =>
+(
+  d2ecl_none0(loc0))
+|
+optn_cons(dcl1) =>
+trans12_d1eclist(env0, dcl1))//else//if
+//
+end(*let*) // end-of-[D1Cifexp(gexp,...)]
+//
+|D1Celsif
+( gexp
+, dthn
+, dels, dend) =>
+let
+val loc0 = d1cl.lctn()
+val
+test =
+tr12env_eval_ifexp(env0, gexp)
+in//let
+//
+if
+test
+then
+(
+case+ dthn of
+|
+optn_nil((*0*)) =>
+(
+  d2ecl_none0(loc0))
+|
+optn_cons(dcl1) =>
+trans12_d1eclist(env0, dcls))//then
+else
+(
+case+ dels of
+|
+optn_nil((*0*)) =>
+(
+  d2ecl_none0(loc0))
+|
+optn_cons(dcl1) =>
+trans12_d1eclist(env0, dcl1))//else//if
+//
+end(*let*) // end-of-[D1Celsif(gexp,...)]
+//
+(* ****** ****** *)
 //
 |_(*otherwise*) =>
 let
