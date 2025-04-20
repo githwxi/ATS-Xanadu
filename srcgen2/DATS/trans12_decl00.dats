@@ -963,7 +963,7 @@ optn_nil((*0*)) =>
   d2ecl_none0(loc0))
 |
 optn_cons(dcl1) =>
-trans12_d1eclist(env0, dcls))//then
+trans12_d1ecl(env0, dcl1))//then
 else
 (
 case+ dels of
@@ -973,7 +973,7 @@ optn_nil((*0*)) =>
   d2ecl_none0(loc0))
 |
 optn_cons(dcl1) =>
-trans12_d1eclist(env0, dcl1))//else//if
+trans12_d1ecl(env0, dcl1))//else//if
 //
 end(*let*) // end-of-[D1Cifexp(gexp,...)]
 //
@@ -999,7 +999,7 @@ optn_nil((*0*)) =>
   d2ecl_none0(loc0))
 |
 optn_cons(dcl1) =>
-trans12_d1eclist(env0, dcls))//then
+trans12_d1ecl(env0, dcl1))//then
 else
 (
 case+ dels of
@@ -1009,7 +1009,7 @@ optn_nil((*0*)) =>
   d2ecl_none0(loc0))
 |
 optn_cons(dcl1) =>
-trans12_d1eclist(env0, dcl1))//else//if
+trans12_d1ecl(env0, dcl1))//else//if
 //
 end(*let*) // end-of-[D1Celsif(gexp,...)]
 //
