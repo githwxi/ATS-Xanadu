@@ -677,8 +677,13 @@ in//let
 case+
 dcl0.node() of
 //
+(* ****** ****** *)
+//
 |D3Cd2ecl(d2cl) =>
-prints("D3Cd2ecl(",d2cl,")")
+(
+  prints("D3Cd2ecl(",d2cl,")"))
+//
+(* ****** ****** *)
 //
 |
 D3Cstatic(tknd,dcl1) =>
@@ -687,13 +692,23 @@ prints("D3Cstatic(",tknd,";",dcl1,")")
 D3Cextern(tknd,dcl1) =>
 prints("D3Cextern(",tknd,";",dcl1,")")
 //
+(* ****** ****** *)
+//
 |
 D3Ctmpsub(svts,dcl1) =>
 prints("D3Ctmpsub(",svts,";",dcl1,")")
 //
+(* ****** ****** *)
+//
+|D3Cd3clst(  dcls  ) =>
+(
+  prints("D3Cdecls(",dcls,")"))
+//
 |
 D3Clocal0(head, body) =>
 prints( "D3Clocal(",head,";",body,")" )
+//
+(* ****** ****** *)
 //
 |
 D3Cabsopen
@@ -707,6 +722,8 @@ D3Cabsimpl
 print("D3Cabsimpl(");
 prints(tknd, ";", simp, ";", sdef, ")")
 )
+//
+(* ****** ****** *)
 //
 |
 D3Cinclude

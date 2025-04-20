@@ -128,6 +128,22 @@ dcl0.node() of
 |D2Cd1ecl _ => ()
 |D2Cerrck _ => ()
 *)
+//
+|
+D2Cthen0
+(  dcls  ) =>
+let
+val () =
+trsym2b_d2eclist(env0, dcls)
+endlet//end-of-(D2Cthen0(...))
+|
+D2Celse1
+(  dcls  ) =>
+let
+val () =
+trsym2b_d2eclist(env0, dcls)
+endlet//end-of-(D2Celse1(...))
+//
 |
 D2Cstatic
 (tknd, dcl1) =>

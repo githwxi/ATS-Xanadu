@@ -93,19 +93,30 @@ end (*let*) // end-of(d2ecl_errck)
 (* ****** ****** *)
 //
 fun
-d2ecl_local0_errck
+d2ecl_then0_errck
 ( loc0
 : loc_t
-, dcs1
-: d2eclist
-, dcs2
+, dcls
 : d2eclist): d2ecl =
 let
 val lvl = 0
 in//let
 d2ecl_errck
-(lvl+1,d2ecl(loc0,D2Clocal0(dcs1,dcs2)))
-end (*let*) // end of [d2ecl_local0_errck]
+(lvl+1, d2ecl(loc0, D2Cthen0(dcls)))
+end (*let*) // end-of(d2ecl_then0_errck)
+//
+fun
+d2ecl_else1_errck
+( loc0
+: loc_t
+, dcls
+: d2eclist): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1, d2ecl(loc0, D2Celse1(dcls)))
+end (*let*) // end-of(d2ecl_else1_errck)
 //
 (* ****** ****** *)
 //
@@ -136,6 +147,22 @@ d2ecl_errck
 end (*let*)//end-of-[d2ecl_extern_errck]
 //
 (* ****** ****** *)
+//
+fun
+d2ecl_local0_errck
+( loc0
+: loc_t
+, dcs1
+: d2eclist
+, dcs2
+: d2eclist): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1,d2ecl(loc0,D2Clocal0(dcs1,dcs2)))
+end (*let*) // end of [d2ecl_local0_errck]
+//
 (* ****** ****** *)
 //
 fun
@@ -301,18 +328,24 @@ d2cl.node() of
 //
 |D2Csymload _ => d2cl
 //
-|
-D2Cstatic _ => f0_static(d2cl, err)
-|
-D2Cextern _ => f0_extern(d2cl, err)
+(* ****** ****** *)
 //
-|
-D2Clocal0 _ => f0_local0(d2cl, err)
+|D2Cthen0 _ => f0_then0(d2cl, err)
+|D2Celse1 _ => f0_else1(d2cl, err)
 //
-|
-D2Cinclude _ => f0_include(d2cl, err)
-|
-D2Cstaload _ => f0_staload(d2cl, err)
+(* ****** ****** *)
+//
+|D2Cstatic _ => f0_static(d2cl, err)
+|D2Cextern _ => f0_extern(d2cl, err)
+//
+(* ****** ****** *)
+//
+|D2Clocal0 _ => f0_local0(d2cl, err)
+//
+(* ****** ****** *)
+//
+|D2Cinclude _ => f0_include(d2cl, err)
+|D2Cstaload _ => f0_staload(d2cl, err)
 //
 (* ****** ****** *)
 //
@@ -321,47 +354,87 @@ HX-2024-07-20:
 Sat 20 Jul 2024 08:02:15 PM EDT
 *)
 //
-|
-D2Cdyninit _ => f0_dyninit(d2cl, err)
-|
-D2Cextcode _ => f0_extcode(d2cl, err)
+|D2Cdyninit _ => f0_dyninit(d2cl, err)
+|D2Cextcode _ => f0_extcode(d2cl, err)
 //
 (* ****** ****** *)
 //
-|
-D2Cvaldclst _ => f0_valdclst(d2cl, err)
-|
-D2Cvardclst _ => f0_vardclst(d2cl, err)
-|
-D2Cfundclst _ => f0_fundclst(d2cl, err)
+|D2Cvaldclst _ => f0_valdclst(d2cl, err)
+|D2Cvardclst _ => f0_vardclst(d2cl, err)
+|D2Cfundclst _ => f0_fundclst(d2cl, err)
 //
-|
-D2Cimplmnt0 _ => f0_implmnt0(d2cl, err)
+(* ****** ****** *)
 //
-|
-D2Cexcptcon _ => f0_excptcon(d2cl, err)
-|
-D2Cdatatype _ => f0_datatype(d2cl, err)
+|D2Cimplmnt0 _ => f0_implmnt0(d2cl, err)
 //
-|
-D2Cdynconst _ => f0_dynconst(d2cl, err)
+(* ****** ****** *)
+//
+|D2Cexcptcon _ => f0_excptcon(d2cl, err)
+|D2Cdatatype _ => f0_datatype(d2cl, err)
+//
+|D2Cdynconst _ => f0_dynconst(d2cl, err)
+//
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
 let
 val lvl0 = 1
 in//let
-(err := err+1; d2ecl_errck(lvl0, d2cl))
-endlet // end of [  _(* otherwise *)  ]
+(
+  err := err+1; d2ecl_errck(lvl0, d2cl))
+endlet // end of [   _(* otherwise *)   ]
 //
-) where// end of [ case+(d2cl.node()) ]
+) where// end of [ case+of(d2cl.node()) ]
 {
 (* ****** ****** *)
-(*
-val (  ) =
-prerrsln("tread20_d2ecl: d2cl = ", d2cl)
-*)
-(* ****** ****** *)
+//
+fun
+f0_then0
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cthen0
+(  dcls  ) = dcl.node()
+//
+val dcls =
+(
+  tread20_d2eclist(dcls, err))
+//
+in
+if
+(err=e00)
+then dcl else
+d2ecl_then0_errck(dcl.lctn(), dcls)
+end (*let*) // end of [ f0_then0(dcl,err) ]
+//
+fun
+f0_else1
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Celse1
+(  dcls  ) = dcl.node()
+//
+val dcls =
+(
+  tread20_d2eclist(dcls, err))
+//
+in
+if
+(err=e00)
+then dcl else
+d2ecl_else1_errck(dcl.lctn(), dcls)
+end (*let*) // end of [ f0_else1(dcl,err) ]
+//
 (* ****** ****** *)
 //
 fun
@@ -662,7 +735,7 @@ f0_excptcon
 let
 val-
 D2Cexcptcon
-(d1cl, d2cs) = dcl.node() in (  dcl  ) end
+(d1cl, d2cs) = dcl.node() in (dcl) end//fun
 //
 fun
 f0_datatype
@@ -671,7 +744,7 @@ f0_datatype
 let
 val-
 D2Cdatatype
-(d1cl, s2cs) = dcl.node() in (  dcl  ) end
+(d1cl, s2cs) = dcl.node() in (dcl) end//fun
 //
 (* ****** ****** *)
 //
@@ -682,8 +755,17 @@ f0_dynconst
 let
 val-
 D2Cdynconst
-(tknd,tqas,d2cs) = dcl.node() in (dcl) end
+(tknd,tqas,d2cs) = dcl.node() in (dcl) end//fun
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+val (  ) =
+(
+  prerrsln("tread20_d2ecl: d2cl = ", d2cl))
+*)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 } (*where*) // end of [tread20_d2ecl(d2cl,err)]
