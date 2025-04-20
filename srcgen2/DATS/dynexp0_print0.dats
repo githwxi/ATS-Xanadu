@@ -656,30 +656,31 @@ prints
 |
 D0Cstatic
 (tknd,dcl1) =>
-prints
-("D0Cstatic(",tknd,";",dcl1,")")
+(
+  prints("D0Cstatic(",tknd,";",dcl1,")"))
 |
 D0Cextern
 (tknd,dcl1) =>
-prints
-("D0Cextern(",tknd,";",dcl1,")")
+(
+  prints("D0Cextern(",tknd,";",dcl1,")"))
 //
 |
 D0Cdefine
 (tknd,geid,gmas,gedf) =>
 (
-prints("D0Cdefine(",tknd,";");
-prints(geid,";",gmas,";",gedf,")"))
+prints("D0Cdefine(");
+prints(tknd,";",geid,";",gmas,";",gedf,")"))
 |
 D0Cmacdef
 (tknd,geid,gmas,dedf) =>
 (
-prints("D0Cmacdef(",tknd,";");
-prints(geid,";",gmas,";",dedf,")"))
+prints("D0Cmacdef(");
+prints(tknd,";",geid,";",gmas,";",dedf,")"))
 //
 |
 D0Clocal0
-(tknd,head,tin1,body,tend) =>
+(tknd
+,head,tin1,body,tend) =>
 (
 prints("D0Clocal0(",tknd,";");
 prints(head,";",tin1,";",body,";",tend,")"))
@@ -687,21 +688,20 @@ prints(head,";",tin1,";",body,";",tend,")"))
 |
 D0Cabssort
 (tknd,tid0) =>
-prints
-("D0Cabssort(",tknd,";",tid0,")")
+(
+  prints("D0Cabssort(",tknd,";",tid0,")"))
 |
 D0Cstacst0
 (tknd
 ,seid,tmas,tcln,s0t0) =>
 (
 prints("D0Cstacst0(",tknd,";");
-prints(seid,";",tmas,";");prints(tcln,";",s0t0,")"))
+prints(seid,";",tmas,";",tcln,";",s0t0,")"))
 |
 D0Csortdef
 (tknd,tid0,teq1,def2) =>
-(
-prints("D0Csortdef(",tknd,";");
-prints(tid0,";",teq1,";",def2,")"))
+prints
+("D0Csortdef(",tknd,";",tid0,";",teq1,";",def2,")")
 //
 |
 D0Csexpdef
@@ -750,6 +750,12 @@ prints
 D0Cdyninit(tknd,g0e1) =>
 (
   prints("D0Cdyninit(",tknd,";",g0e1,")") )
+(*
+|
+D0Cdynxgen(tknd,g0e1) =>
+(
+  prints("D0Cdynxgen(",tknd,";",g0e1,")") )
+*)
 //
 (* ****** ****** *)
 //
@@ -794,8 +800,7 @@ prints("D0Cdynconst(",tknd,";",tqas,";",dcls,")")
 //
 |
 D0Cimplmnt0
-(tknd,s0qs,t0qs,dqid
-,t0is,farg,sres,teq1,d0e2) =>
+(tknd,s0qs,t0qs,dqid,t0is,farg,sres,teq1,d0e2) =>
 (
 prints("D0Cimplmnt0(",tknd,";");
 prints(s0qs,";",t0qs,";",dqid,";");

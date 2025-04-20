@@ -1008,9 +1008,11 @@ D0Cstaload of
 (sint(*s/d*), token, g0exp)//staloading
 //
 |
-D0Cstaxgen of (token, g0exp)//staxgening
+D0Cdyninit of (token, g0exp)//initizing
+(*
 |
-D0Cdyninit of (token, g0exp)//initization
+D0Cdynxgen of (token, g0exp)//dynxgening
+*)
 //
 (*
 HX-2024-07-20:
