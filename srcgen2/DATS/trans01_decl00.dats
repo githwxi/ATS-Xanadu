@@ -2546,6 +2546,7 @@ in//let
   f0_d0eclist(tenv, dcls, dres))
 end//let//end-of-[list_cons(dcl1,d2ls)]
 )(*case+*)//end-of-[f0_d0eclist(tenv,dcls)]
+//
 }(*where*)//end-of-[trans01_d0eclist(tenv,dcls)]
 //
 (* ****** ****** *)
