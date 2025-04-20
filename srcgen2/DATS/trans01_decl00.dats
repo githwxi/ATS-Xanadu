@@ -2561,7 +2561,7 @@ val dres =
   list_vt_cons(dcl1, dres))
 in//let
 (
-  f0_d0eclist(tenv, dcls, dres))
+  f0_d0eclist(tenv, d2ls, dres))
 end(*let*)//end-of-[non-D0Cifexp(...)]
 //
 )(*case+*)//end-of-[list_cons(dcl1,d2ls)]
