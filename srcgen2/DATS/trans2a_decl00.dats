@@ -138,6 +138,13 @@ d2cl.node() of
 |D2Cd1ecl _ => d2cl
 |D2Cerrck _ => d2cl
 //
+|D2Cthen0 _ =>
+(
+f0_then0(env0, d2cl))
+|D2Celse1 _ =>
+(
+f0_else1(env0, d2cl))
+//
 |D2Cstatic _ =>
 (
 f0_static(env0, d2cl))
@@ -209,6 +216,50 @@ end (*let*) // end of [_(*otherwise*)] // temp
 //
 end where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_then0
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cthen0
+(  dcls  ) = d2cl.node()
+//
+val dcls =
+trans2a_d2eclist(env0, dcls)
+//
+in//let
+(
+  d2ecl(loc0, D2Cthen0( dcls )) )
+end(*let*)//end-of-[f0_then0(env0,d2cl)]
+//
+fun
+f0_else1
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Celse1
+(  dcls  ) = d2cl.node()
+//
+val dcls =
+trans2a_d2eclist(env0, dcls)
+//
+in//let
+(
+  d2ecl(loc0, D2Celse1( dcls )) )
+end(*let*)//end-of-[f0_else1(env0,d2cl)]
 //
 (* ****** ****** *)
 //

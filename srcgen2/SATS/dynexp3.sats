@@ -824,25 +824,41 @@ TEQD3EXPsome of (token(*EQ0*), d3exp)
 datatype
 d3ecl_node =
 //
+(* ****** ****** *)
+//
 |D3Cd2ecl of (d2ecl)
 //
+(* ****** ****** *)
+//
 |D3Cstatic of
- (token(*STATIC*), d3ecl)
+(token(*STATIC*), d3ecl)
 |D3Cextern of
- (token(*EXTERN*), d3ecl)
+(token(*EXTERN*), d3ecl)
+//
+(* ****** ****** *)
 //
 |D3Ctmpsub of
- (s2vts(*tmpsub*), d3ecl)
+(s2vts(*tmpsub*), d3ecl)
+//
+(* ****** ****** *)
+//
+|D3Cd3clst of (d3eclist)
+//
+(* ****** ****** *)
 //
 |D3Clocal0 of
 ( d3eclist(*local-head*)
 , d3eclist(*local-body*))
+//
+(* ****** ****** *)
 //
 |D3Cabsopen of
 (token(*ABSOPEN*), simpl)
 |D3Cabsimpl of
 (token(*ABSIMPL*)
 ,simpl(*s2c*),s2exp(*def*))
+//
+(* ****** ****** *)
 //
 |D3Cinclude of
 ( sint(*s/d*)
@@ -866,8 +882,10 @@ Sat 20 Jul 2024 02:17:15 PM EDT
 *)
 |
 D3Cdyninit of
-(token
- (*DYNLOAD*), g1exp(*fpath*))
+( token
+(*DYNLOAD*), g1exp(*fpath*) )
+//
+(* ****** ****** *)
 //
 (*
 HX-2024-07-20:
@@ -875,8 +893,8 @@ Sat 20 Jul 2024 02:17:15 PM EDT
 *)
 |
 D3Cextcode of
-(token
- (*EXTCODE*), g1exp(*xcode*))
+( token
+(*EXTCODE*), g1exp(*srcode*) )
 //
 (* ****** ****** *)
 //

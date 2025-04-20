@@ -195,6 +195,16 @@ d3ecl_make_node
 (loc0, D3Cd2ecl(d2cl))
 end//end-of-[D2Cd1ecl]
 //
+(* ****** ****** *)
+//
+|D2Cthen0 _ =>
+(
+  f0_then0(env0, d2cl))
+|D2Celse1 _ =>
+(
+  f0_else1(env0, d2cl))
+//
+(* ****** ****** *)
 //
 |D2Cstatic _ =>
 (
@@ -280,6 +290,46 @@ in//let
 end (*let*) // end of [_(*otherwise*)] // temp
 //
 end where {
+//
+(* ****** ****** *)
+//
+fun
+f0_then0
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cthen0
+(  dcls  ) = d2cl.node()
+val dcls =
+trans23_d2eclist(env0, dcls)
+in//let
+(
+  d3ecl(loc0, D3Cd3clst(dcls)) )
+end//let//end-of-[f0_then0(env0,d2cl)]
+//
+fun
+f0_else1
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Celse1
+(  dcls  ) = d2cl.node()
+val dcls =
+trans23_d2eclist(env0, dcls)
+in//let
+(
+  d3ecl(loc0, D3Cd3clst(dcls)) )
+end//let//end-of-[f0_else1(env0,d2cl)]
 //
 (* ****** ****** *)
 //

@@ -93,6 +93,21 @@ end (*let*) // end-of(d3ecl_errck)
 (* ****** ****** *)
 //
 fun
+d3ecl_d3clst_errck
+( loc0
+: loc_t
+, dcls
+: d3eclist): d3ecl =
+let
+val lvl = 0
+in//let
+d3ecl_errck
+(lvl+1, d3ecl(loc0, D3Cd3clst( dcls )))
+end (*let*) // end of [d3ecl_local0_errck]
+//
+(* ****** ****** *)
+//
+fun
 d3ecl_local0_errck
 ( loc0
 : loc_t
@@ -241,12 +256,22 @@ d3cl.node() of
 |D3Cstatic _ => d3cl
 |D3Cextern _ => d3cl
 //
+(* ****** ****** *)
+//
+|D3Cd3clst _ =>
+(
+f0_d3clst(d3cl, err))
+//
 |D3Clocal0 _ =>
 (
 f0_local0(d3cl, err))
 //
+(* ****** ****** *)
+//
 |D3Cabsopen _ => (d3cl)
 |D3Cabsimpl _ => (d3cl)
+//
+(* ****** ****** *)
 //
 |
 D3Cinclude _ => f0_include(d3cl, err)
@@ -274,19 +299,50 @@ D3Cvardclst _ => f0_vardclst(d3cl, err)
 |
 D3Cfundclst _ => f0_fundclst(d3cl, err)
 //
+(* ****** ****** *)
+//
 |
 D3Cimplmnt0 _ => f0_implmnt0(d3cl, err)
+//
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
 let
 val lvl0 = 1
 in//let
-(err := err+1; d3ecl_errck(lvl0, d3cl))
-endlet // end of [  _(* otherwise *)  ]
+(
+  err := err+1; d3ecl_errck(lvl0, d3cl))
+endlet // end-of-[    _(*otherwise*)    ]
 //
-) where// end of [ case+(d3cl.node()) ]
+) where// end of [ case+of(d3cl.node()) ]
 {
+(* ****** ****** *)
+//
+fun
+f0_d3clst
+( dcl: d3ecl
+, err: &sint >> _): d3ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D3Cd3clst
+(  dcls  ) = dcl.node()
+//
+val dcls =
+tread30_d3eclist(dcls, err)
+//
+in
+if
+(err=e00)
+then dcl else
+(
+  d3ecl_d3clst_errck( loc, dcls ) )
+end (*let*) // end of [ f0_local0(dcl,err) ]
+//
 (* ****** ****** *)
 //
 fun
