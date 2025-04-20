@@ -769,7 +769,19 @@ tread01_d1eclopt(dthn, err)
 val dels =
 tread01_d1eclopt(dels, err)
 //
-in
+val (  ) =
+(
+case+ dend of
+|
+optn_cons _ => ( (*void*) )
+|
+(*
+HX-2025-04-20:
+[#endif] is needed explicitly!
+*)
+_(*optn_nil*) => (err := err+1))
+//
+in//let
 if
 (err=e00)
 then dcl else
@@ -795,8 +807,14 @@ tread01_d1eclopt(dthn, err)
 val dels =
 tread01_d1eclopt(dels, err)
 //
-in
-if
+val (  ) =
+(
+case+ dend of
+|optn_nil() => ( (*void*) )
+|optn_cons _ => (err := err+1))
+//
+in//let
+if // if
 (err=e00)
 then dcl else
 d1ecl_elsif_errck

@@ -1394,9 +1394,11 @@ end (*let*) // end of [ D0Ctkskp(tok) ]
 HX-2025-04-19:
 For if-guarded declarations!
 *)
+//
+|D0Cendif _ => ( dcl )
+//
 |D0Cthen0 _ => ( dcl )
 |D0Celse1 _ => ( dcl )
-|D0Cendif _ => ( dcl )
 //
 |D0Cifexp(tok, g0e) =>
 let
