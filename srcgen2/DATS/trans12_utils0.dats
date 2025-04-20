@@ -334,6 +334,38 @@ prerrsln("g1exp_eval: gexp = ", gexp)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+tr12env_eval_ifexp
+(  tenv, gexp  ) =
+let
+//
+val gval =
+g1exp_eval(tenv, gexp)
+//
+val (  ) =
+prerrsln("\
+tr12env_eval_ifexp: gexp = ", gexp)
+val (  ) =
+prerrsln("\
+tr12env_eval_ifexp: gval = ", gval)
+//
+in//let
+//
+case+ gval of
+//
+|G1Vbtf(btf) => btf
+|G1Vint(int) =>
+(if int != 0 then true else false)
+|G1Vstr(str) =>
+(if str != "" then true else false)
+//
+|_(*otherwise*) => (     false     )
+//
+end//let//end-of-[tr12env_eval_ifexp(tenv,gexp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

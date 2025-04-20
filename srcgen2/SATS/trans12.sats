@@ -520,10 +520,23 @@ fun
 tr12env_locjoin(env: !tr12env): void
 //
 (* ****** ****** *)
+//
+(*
+HX-2025-04-20:
+For if-guarded declarations!
+*)
+fun
+tr12env_eval_ifexp
+(env0: !tr12env , gexp: g1exp): bool
+//
+(* ****** ****** *)
+//
 fun // HX: it does accumulative
 tr12env_add1_s2cst // insertion
 (env0: !tr12env , s2c0: s2cst): void
+//
 (* ****** ****** *)
+//
 fun // HX: insertion is not
 tr12env_add0_s2var // accumulative
 (env0: !tr12env , s2v0: s2var): void
@@ -533,14 +546,18 @@ tr12env_add0_s2qag // accumulative
 fun // HX: insertion is not
 tr12env_add0_t2qag // accumulative
 (env0: !tr12env , tqa0: t2qag): void
+//
 (* ****** ****** *)
+//
 fun // HX: insertion is done
 tr12env_add1_d2con // accumulatively
 (env0: !tr12env , d2c0: d2con): void
 fun // HX: insertion is done
 tr12env_add1_d2cst // accumulatively
 (env0: !tr12env , d2c0: d2cst): void
+//
 (* ****** ****** *)
+//
 fun
 tr12env_add0_d2var
 (env0: !tr12env , d2v0: d2var): void
@@ -553,7 +570,9 @@ tr12env_add0_f2arg
 fun
 tr12env_add0_d2gpt
 (env0: !tr12env , dgpt: d2gpt): void
+//
 (* ****** ****** *)
+//
 fun
 tr12env_add0_s2varlst
 (env0: !tr12env, s2vs: s2varlst): void
@@ -563,21 +582,27 @@ tr12env_add0_s2qaglst
 fun
 tr12env_add0_t2qaglst
 (env0: !tr12env, tqas: t2qaglst): void
+//
 (* ****** ****** *)
+//
 fun
 tr12env_add1_d2conlst
 (env0: !tr12env, d2cs: d2conlst): void
 fun
 tr12env_add1_d2cstlst
 (env0: !tr12env, d2cs: d2cstlst): void
+//
 (* ****** ****** *)
+//
 fun
 tr12env_add0_d2varlst
 (env0: !tr12env, d2vs: d2varlst): void
 fun
 tr12env_add0_d2varopt
 (env0: !tr12env, opt0: d2varopt): void
+//
 (* ****** ****** *)
+//
 fun
 tr12env_add0_d2patlst
 (env0: !tr12env, d2ps: d2patlst): void
@@ -587,27 +612,34 @@ tr12env_add0_l2d2plst
 fun
 tr12env_add0_f2arglst
 (env0: !tr12env, f2as: f2arglst): void
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #symload
 tr12env_add0_s2vs with tr12env_add0_s2varlst
 #symload
 tr12env_add0_sqas with tr12env_add0_s2qaglst
 #symload
 tr12env_add0_tqas with tr12env_add0_t2qaglst
+//
 (* ****** ****** *)
+//
 #symload
 tr12env_add1_d2cs with tr12env_add1_d2conlst
 #symload
 tr12env_add1_d2cs with tr12env_add1_d2cstlst
-(* ****** ****** *)
+//
 #symload
 tr12env_add0_d2vs with tr12env_add0_d2varlst
-(* ****** ****** *)
+//
 #symload
 tr12env_add0_d2ps with tr12env_add0_d2patlst
-(* ****** ****** *)
+//
 #symload
 tr12env_add0_f2as with tr12env_add0_f2arglst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1074,17 +1106,20 @@ trans12_d1cstdcl
 //
 fun
 trans12_d1cstdclist
-( env0: !tr12env
-, tknd: ( token )
+( env0:
+! tr12env
+, tknd: (token)
 , d1cs: d1cstdclist, tqas: t2qaglst): d2cstdclist
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 trans12_d1eclistopt
-( env0
-: !tr12env, dopt: d1eclistopt): d2eclistopt
+( env0:
+! tr12env, srcode: d1eclistopt): d2eclistopt
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
