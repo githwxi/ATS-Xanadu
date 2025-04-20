@@ -180,15 +180,14 @@ g1env_fprint:(g1env, FILR)->void
 // For trans11-functions
 *)
 (* ****** ****** *)
-#absvtbx tr11env_vtbx
-#vwtpdef
-tr11env = tr11env_vtbx
-(* ****** ****** *)
 #staload
 MAP = "./xsymmap.sats"
 (* ****** ****** *)
 #typedef
 gmacmap = $MAP.topmap(g1mac)
+(* ****** ****** *)
+#absvtbx tr11env_vtbx
+#vwtpdef tr11env = tr11env_vtbx
 (* ****** ****** *)
 //
 fun
@@ -232,7 +231,8 @@ tr11env_search$opt
 fun
 tr11env_insert$any
 ( env0:
-! tr11env, key: sym_t, itm: g1mac): void
+! tr11env
+, key0: sym_t, itm1: g1mac): void
 //
 (* ****** ****** *)
 //
