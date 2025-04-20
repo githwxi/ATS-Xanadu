@@ -2342,10 +2342,13 @@ val
 f1_then0(tenv, dcl1, d2ls)
 val
 (dels, dcls) =
-f1_else1(tenv, dcl1, d2ls)
+f1_else1(tenv, dcl1, dcls)
+(*
 val
 (dend, dcls) =
-f1_endif(tenv, dcl1, d2ls)
+f1_endif(tenv, dcl1, dcls)
+*)
+val dend = optn_nil(*void*)
 //
 in//let
 //

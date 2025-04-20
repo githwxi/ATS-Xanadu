@@ -150,7 +150,7 @@ g1env_search$opt
 case+ genv of
 |
 list_nil() =>
-optn_vt_nil()
+optn_vt_nil(*void*)
 |
 list_cons((x1, v1), genv) =>
 (
