@@ -238,7 +238,7 @@ HX-2023-06-02: for static loading
 (* ****** ****** *)
 //
 fun
-the_d1parenv_pvs
+the_d1parenv_pvstmap
   ((*void*)): topmap(d1parsed)
 //
 fun
@@ -266,7 +266,7 @@ the_d2cstmap_xnmadd0
 (* ****** ****** *)
 //
 fun
-the_d2parenv_pvs
+the_d2parenv_pvstmap
   ((*void*)): topmap(d2parsed)
 //
 fun
@@ -280,7 +280,7 @@ the_d2parenv_pvsadd0
 (* ****** ****** *)
 //
 fun
-the_d3parenv_pvs
+the_d3parenv_pvstmap
   ((*void*)): topmap(d3parsed)
 //
 fun
@@ -293,7 +293,7 @@ the_d3parenv_pvsadd0
 (* ****** ****** *)
 //
 fun
-the_d3tmpenv_pvs
+the_d3tmpenv_pvstmap
   ((*void*)): topmap(d3parsed)
 //
 fun
@@ -307,6 +307,10 @@ the_d3tmpenv_pvsadd0
 (* ****** ****** *)
 //
 fun
+the_gmacenv_allist
+  ( (*void*) ): list@(sym_t, g1mac)
+//
+fun
 the_sortenv_allist
   ( (*void*) ): list@(sym_t, s2tex)
 fun
@@ -317,28 +321,46 @@ the_dexpenv_allist
   ( (*void*) ): list@(sym_t, d2itm)
 //
 (* ****** ****** *)
+//
+fun
+the_gmacenv_allist_print(): void
+fun
+the_gmacenv_allist_prerr(): void
+fun
+the_gmacenv_allist_fprint(out0: FILR): void
+//
+(* ****** ****** *)
+//
 fun
 the_sortenv_allist_print(): void
 fun
 the_sortenv_allist_prerr(): void
 fun
-the_sortenv_allist_fprint( out:FILR ): void
+the_sortenv_allist_fprint(out0: FILR): void
+//
 (* ****** ****** *)
+//
 fun
 the_sexpenv_allist_print(): void
 fun
 the_sexpenv_allist_prerr(): void
 fun
-the_sexpenv_allist_fprint( out:FILR ): void
+the_sexpenv_allist_fprint(out0: FILR): void
+//
 (* ****** ****** *)
+//
 fun
 the_dexpenv_allist_print(): void
 fun
 the_dexpenv_allist_prerr(): void
 fun
-the_dexpenv_allist_fprint( out:FILR ): void
+the_dexpenv_allist_fprint(out0: FILR): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+the_gmacenv_allist_add0(sym_t, g1mac): void
 //
 fun
 the_sortenv_allist_add0(sym_t, s2tex): void

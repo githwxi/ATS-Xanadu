@@ -1041,29 +1041,41 @@ end(*loc*) // end of [the_d2cstmap_xnm(srch|find)]
 (* ****** ****** *)
 
 local
-
+//
 (* ****** ****** *)
+//
 val
-the_d1parenv = topmap_make_nil()
+the_d1parenv =
+topmap_make_nil((*void*))
 val
-the_d2parenv = topmap_make_nil()
+the_d2parenv =
+topmap_make_nil((*void*))
 val
-the_d3parenv = topmap_make_nil()
+the_d3parenv =
+topmap_make_nil((*void*))
 val
-the_d3tmpenv = topmap_make_nil()
+the_d3tmpenv =
+topmap_make_nil((*void*))
+//
 (* ****** ****** *)
-
+//
 in(*local*)
-
+//
 (* ****** ****** *)
+//
 #implfun
-the_d1parenv_pvs() = (the_d1parenv)
+the_d1parenv_pvstmap
+  ( (*void*) ) = (the_d1parenv)
 #implfun
-the_d2parenv_pvs() = (the_d2parenv)
+the_d2parenv_pvstmap
+  ( (*void*) ) = (the_d2parenv)
 #implfun
-the_d3parenv_pvs() = (the_d3parenv)
+the_d3parenv_pvstmap
+  ( (*void*) ) = (the_d3parenv)
 #implfun
-the_d3tmpenv_pvs() = (the_d3tmpenv)
+the_d3tmpenv_pvstmap
+  ( (*void*) ) = (the_d3tmpenv)
+//
 (* ****** ****** *)
 #implfun
 the_d1parenv_pvsfind(key) =
@@ -1097,11 +1109,37 @@ end (*loc*) // end-[local(the_d1/d2/d3parenv_pvs)]
 (* ****** ****** *)
 
 local
-
+//
 val
 the_list =
 a0ref_make_1val(list_nil())
+//
+in//local
+//
+#implfun
+the_gmacenv_allist
+  ((*void*)) = a0ref_get(the_list)
+//
+#implfun
+the_gmacenv_allist_add0
+  ( k0, x0 ) =
+let
+val kxs = a0ref_get(the_list)
+in
+a0ref_set
+(the_list, list_cons(@(k0, x0), kxs))
+end(*let*)//end-[the_gmacenv_allist_add0]
+//
+end(*loc*)//end-of-[local(the_gmacenv_allist(...))]
 
+(* ****** ****** *)
+
+local
+//
+val
+the_list =
+a0ref_make_1val(list_nil())
+//
 in//local
 //
 #implfun
@@ -1175,15 +1213,18 @@ end(*loc*)//end-of-[local(the_dexpenv_allist(...))]
 (* ****** ****** *)
 //
 #implfun
+the_gmacenv_allist_print
+  ((*void*)) =
+the_gmacenv_allist_fprint(g_stdout())
+//
+#implfun
 the_sortenv_allist_print
   ((*void*)) =
 the_sortenv_allist_fprint(g_stdout())
-//
 #implfun
 the_sexpenv_allist_print
   ((*void*)) =
 the_sexpenv_allist_fprint(g_stdout())
-//
 #implfun
 the_dexpenv_allist_print
   ((*void*)) =
@@ -1192,29 +1233,67 @@ the_dexpenv_allist_fprint(g_stdout())
 (* ****** ****** *)
 //
 #implfun
+the_gmacenv_allist_prerr
+  ((*void*)) =
+the_gmacenv_allist_fprint(g_stderr())
+//
+#implfun
 the_sortenv_allist_prerr
   ((*void*)) =
 the_sortenv_allist_fprint(g_stderr())
-//
 #implfun
 the_sexpenv_allist_prerr
   ((*void*)) =
 the_sexpenv_allist_fprint(g_stderr())
-//
 #implfun
 the_dexpenv_allist_prerr
   ((*void*)) =
 the_dexpenv_allist_fprint(g_stderr())
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
-the_sortenv_allist_fprint
-  (   out   ) =
+the_gmacenv_allist_fprint
+  (   out0   ) =
 let
 //
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
+val kxs = the_gmacenv_allist()
+//
+in//let
+(
+auxloop(kxs)) where
+{
+fun
+auxloop
+(kxs: list@(sym_t, g1mac)): void =
+(
+case+ kxs of
+|
+list_nil() => ()
+|
+list_cons(kx1, kxs) =>
+(
+auxloop(kxs)) where
+{
+val () = printsln
+("the_gmacenv_allist:","(",kx1.0," -> ",kx1.1,")")
+}
+)(*case+*)//end-of-[auxloop(kxs)]
+}(*where*)//end-of-[auxloop(kxs)]
+end(*let*)//end-of-[the_gmacenv_allist_fprint(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+the_sortenv_allist_fprint
+  (   out0   ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
 val kxs = the_sortenv_allist()
 //
 in//let
@@ -1239,6 +1318,74 @@ val () = printsln
 )(*case+*)//end-of-[auxloop(kxs)]
 }(*where*)//end-of-[auxloop(kxs)]
 end(*let*)//end-of-[the_sortenv_allist_fprint(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+the_sexpenv_allist_fprint
+  (   out0   ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+val kxs = the_sexpenv_allist()
+//
+in//let
+(
+auxloop(kxs)) where
+{
+fun
+auxloop
+(kxs: list@(sym_t, s2itm)): void =
+(
+case+ kxs of
+|
+list_nil() => ()
+|
+list_cons(kx1, kxs) =>
+(
+auxloop(kxs)) where
+{
+val () = printsln
+("the_sexpenv_allist:","(",kx1.0," -> ",kx1.1,")")
+}
+)(*case+*)//end-of-[auxloop(kxs)]
+}(*where*)//end-of-[auxloop(kxs)]
+end(*let*)//end-of-[the_sexpenv_allist_fprint(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+the_dexpenv_allist_fprint
+  (   out0   ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+val kxs = the_dexpenv_allist()
+//
+in//let
+(
+auxloop(kxs)) where
+{
+fun
+auxloop
+(kxs: list@(sym_t, d2itm)): void =
+(
+case+ kxs of
+|
+list_nil() => ()
+|
+list_cons(kx1, kxs) =>
+(
+auxloop(kxs)) where
+{
+val () = printsln
+("the_dexpenv_allist:","(",kx1.0," -> ",kx1.1,")")
+}
+)(*case+*)//end-of-[auxloop(kxs)]
+}(*where*)//end-of-[auxloop(kxs)]
+end(*let*)//end-of-[the_dexpenv_allist_fprint(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
