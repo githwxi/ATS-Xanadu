@@ -177,23 +177,35 @@ in//let
 case+
 dcl0.node() of
 //
-|
-D2Cstatic
+|D2Cthen0
+(   dcls   ) =>
+let
+val () =
+fperr20_d2eclist(out, dcls)
+endlet//end-of(D2Cthen0(...))
+|D2Celse1
+(   dcls   ) =>
+let
+val () =
+fperr20_d2eclist(out, dcls)
+endlet//end-of(D2Celse1(...))
+//
+|D2Cstatic
 (tknd, dcl1) =>
 let
 val () =
-fperr20_d2ecl(out, dcl1)
+(
+  fperr20_d2ecl(out, dcl1))
 endlet//end-of(D2Cstatic(_,_))
-|
-D2Cextern
+|D2Cextern
 (tknd, dcl1) =>
 let
 val () =
-fperr20_d2ecl(out, dcl1)
+(
+  fperr20_d2ecl(out, dcl1))
 endlet//end-of(D2Cextern(_,_))
 //
-|
-D2Clocal0
+|D2Clocal0
 (dcs1, dcs2) =>
 let
 val () =

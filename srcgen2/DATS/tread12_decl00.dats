@@ -96,6 +96,34 @@ end (*let*) // end-of(d2ecl_errck)
 (* ****** ****** *)
 //
 fun
+d2ecl_then0_errck
+( loc0
+: loc_t
+, dcls
+: d2eclist): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1, d2ecl(loc0, D2Cthen0( dcls )))
+end (*let*) // end of [d2ecl_then0_errck]
+//
+fun
+d2ecl_else1_errck
+( loc0
+: loc_t
+, dcls
+: d2eclist): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1, d2ecl(loc0, D2Celse1( dcls )))
+end (*let*) // end of [d2ecl_else1_errck]
+//
+(* ****** ****** *)
+//
+fun
 d2ecl_static_errck
 ( loc0: loc_t
 , tknd: token
@@ -462,39 +490,45 @@ d2cl.node() of
 |D2Cnone0 _ => d2cl
 |D2Cd1ecl _ => d2cl
 //
-|
-D2Cstatic _ => f0_static(d2cl, err)
-|
-D2Cextern _ => f0_extern(d2cl, err)
+(* ****** ****** *)
 //
-|
-D2Clocal0 _ => f0_local0(d2cl, err)
+|D2Cthen0 _ => f0_then0(d2cl, err)
+|D2Celse1 _ => f0_else1(d2cl, err)
 //
-|
-D2Cabssort _ => f0_abssort(d2cl, err)
+(* ****** ****** *)
 //
-|
-D2Cstacst0 _ => f0_stacst0(d2cl, err)
+|D2Cstatic _ => f0_static(d2cl, err)
+|D2Cextern _ => f0_extern(d2cl, err)
 //
-|
-D2Csortdef _ => f0_sortdef(d2cl, err)
-|
-D2Csexpdef _ => f0_sexpdef(d2cl, err)
+(* ****** ****** *)
 //
-|
-D2Cabstype _ => f0_abstype(d2cl, err)
-|
-D2Cabsopen _ => f0_absopen(d2cl, err)
-|
-D2Cabsimpl _ => f0_absimpl(d2cl, err)
+|D2Clocal0 _ => f0_local0(d2cl, err)
 //
-|
-D2Csymload _ => f0_symload(d2cl, err)
+(* ****** ****** *)
 //
-|
-D2Cinclude _ => f0_include(d2cl, err)
-|
-D2Cstaload _ => f0_staload(d2cl, err)
+|D2Cabssort _ => f0_abssort(d2cl, err)
+//
+|D2Cstacst0 _ => f0_stacst0(d2cl, err)
+//
+(* ****** ****** *)
+//
+|D2Csortdef _ => f0_sortdef(d2cl, err)
+|D2Csexpdef _ => f0_sexpdef(d2cl, err)
+//
+(* ****** ****** *)
+//
+|D2Cabstype _ => f0_abstype(d2cl, err)
+|D2Cabsopen _ => f0_absopen(d2cl, err)
+|D2Cabsimpl _ => f0_absimpl(d2cl, err)
+//
+(* ****** ****** *)
+//
+|D2Csymload _ => f0_symload(d2cl, err)
+//
+(* ****** ****** *)
+//
+|D2Cinclude _ => f0_include(d2cl, err)
+|D2Cstaload _ => f0_staload(d2cl, err)
 //
 (* ****** ****** *)
 //
@@ -503,10 +537,9 @@ HX-2024-07-20:
 Sat 20 Jul 2024 01:50:44 PM EDT
 *)
 //
-|
-D2Cdyninit _ => f0_dyninit(d2cl, err)
-|
-D2Cextcode _ => f0_extcode(d2cl, err)
+|D2Cdyninit _ => f0_dyninit(d2cl, err)
+//
+|D2Cextcode _ => f0_extcode(d2cl, err)
 //
 (* ****** ****** *)
 //
@@ -540,13 +573,59 @@ in//let
 err := err+1; d2ecl_errck(lvl0, d2cl))
 endlet // end of [  _(* otherwise *)  ]
 //
-) where// end of [ case+(d2cl.node()) ]
+) where// end of [ case+of(d2cl.node()) ]
 {
+//
 (* ****** ****** *)
-(*
-val (  ) =
-prerrsln("tread12_d2ecl: d2cl = ", d2cl)
-*)
+//
+fun
+f0_then0
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cthen0
+(   dcls   ) = dcl.node()
+//
+val dcls =
+tread12_d2eclist(dcls, err)
+//
+in
+if
+(err=e00)
+then dcl else
+let
+val loc = dcl.lctn() in
+  d2ecl_then0_errck(loc, dcls) end
+end (*let*) // end-of-[f0_then0(dcl,err)]
+//
+fun
+f0_else1
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Celse1
+(   dcls   ) = dcl.node()
+//
+val dcls =
+tread12_d2eclist(dcls, err)
+//
+in
+if
+(err=e00)
+then dcl else
+let
+val loc = dcl.lctn() in
+  d2ecl_else1_errck(loc, dcls) end
+end (*let*) // end-of-[f0_else1(dcl,err)]
+//
 (* ****** ****** *)
 //
 fun
@@ -561,7 +640,9 @@ val-
 D2Cstatic
 ( tknd, dcl1) = dcl.node()
 //
-val dcl1 = tread12_d2ecl(dcl1, err)
+val dcl1 =
+(
+  tread12_d2ecl(dcl1, err))
 //
 in
 if
@@ -1258,6 +1339,12 @@ then (dcl) else
 d2ecl_dynconst_errck(loc, tknd, tqas, d2cs)
 end (*let*) // end of [f0_dynconst(dcl,err)]
 //
+(* ****** ****** *)
+(*
+val (  ) =
+(
+  prerrsln("tread12_d2ecl: d2cl = ", d2cl))
+*)
 (* ****** ****** *)
 //
 } (*where*) // end of [tread12_d2ecl(d2cl,err)]
