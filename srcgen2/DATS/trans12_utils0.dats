@@ -256,8 +256,6 @@ gexp.node() of
 {
 //
 val
-gfun = g1exp_eval(tenv, gfun)
-val
 g1v1 = g1exp_eval(tenv, g1e1)
 //
 }(*where*)//end-of-[G1Ea1pp(...)]
@@ -270,8 +268,6 @@ g1val_a2pp(gfun, g1v1, g1v2))
 where
 {
 //
-val
-gfun = g1exp_eval(tenv, gfun)
 val
 g1v1 = g1exp_eval(tenv, g1e1)
 val
@@ -289,14 +285,119 @@ _(*otherwise*) => G1Vnone((*none*))
 //
 fun
 g1val_a1pp
-( gfun: g1val
-, g1v1: g1val): g1val = G1Vnone()
+( gfun: g1exp
+, g1v1: g1val): g1val =
+(
+case+
+gfun.node() of
+|
+_(*otherwise*) => G1Vnone(*void*)
+) where
+{
+//
+val () =
+prerrsln
+("g1val_a2pp: gfun = ", gfun)
+val () =
+prerrsln("g1val_a2pp: g1v1 = ", g1v1)
+//
+}(*where*)//end-of-[g1val_a1pp(gfun,...)]
+//
+(* ****** ****** *)
 //
 fun
 g1val_a2pp
-( gfun: g1val
+( gfun: g1exp
 , g1v1: g1val
-, g1v2: g1val): g1val = G1Vnone()
+, g1v2: g1val): g1val =
+(
+case+
+gfun.node() of
+//
+|
+G1Eid0(sym0) =>
+let
+//
+val opnm = sym0.name()
+//
+in//let
+//
+case+ opnm of
+|"==" => f0_eq2(g1v1, g1v2)
+|_(*unknown*) => G1Vnone((*0*))
+//
+end(*let*)//end-of-[G1Eid0(sym0)]
+//
+|
+_(*otherwise*) => G1Vnone((*void*))
+) where
+{
+//
+#symload
+name
+with
+$SYM.symbl_get_name
+//
+fun
+f0_eq2
+( g1v1: g1val
+, g1v2: g1val): g1val =
+(
+case+ g1v1 of
+//
+|G1Vint(int1) =>
+(
+case+ g1v2 of
+|G1Vint(int2) =>
+(
+  G1Vbtf(int1=int2))
+|_(*otherwise*) => G1Vnone((*0*)))
+//
+|G1Vbtf(btf1) =>
+(
+case+ g1v2 of
+|G1Vbtf(btf2) =>
+(
+  G1Vbtf(btf1=btf2))
+|_(*otherwise*) => G1Vnone((*0*)))
+//
+|G1Vchr(chr1) =>
+(
+case+ g1v2 of
+|G1Vchr(chr2) =>
+(
+  G1Vbtf(chr1=chr2))
+|_(*otherwise*) => G1Vnone((*0*)))
+//
+|G1Vflt(flt1) =>
+(
+case+ g1v2 of
+|G1Vflt(flt2) =>
+(
+  G1Vbtf(flt1=flt2))
+|_(*otherwise*) => G1Vnone((*0*)))
+//
+|G1Vstr(str1) =>
+(
+case+ g1v2 of
+|G1Vstr(str2) =>
+(
+  G1Vbtf(str1=str2))
+|_(*otherwise*) => G1Vnone((*0*)))
+//
+)(*case+*)//end-of-[f0_eq2(g1v1,g1v2)]
+//
+val () =
+(
+prerrsln("g1val_a2pp: gfun = ", gfun))
+val () =
+(
+prerrsln("g1val_a2pp: g1v1 = ", g1v1))
+val () =
+(
+prerrsln("g1val_a2pp: g1v2 = ", g1v2))
+//
+}(*where*)//end-of-[g1val_a2pp(gfun,...)]
 //
 (* ****** ****** *)
 //
