@@ -879,6 +879,25 @@ prerrsln
 }(*where*)//end(the_dexpenv_pvsfind(key))
 //
 (* ****** ****** *)
+//
+#implfun
+the_gmacenv_pvsadd0
+  (key, itm) =
+let
+//
+val
+topmap = the_gmacenv_pvstmap()
+//
+// (*
+val () =
+the_gmacenv_allist_add0(key, itm)
+// *)
+//
+in//let
+topmap_insert$any(topmap, key, itm)
+end(*let*)//end[the_gmacenv_pvsadd0(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

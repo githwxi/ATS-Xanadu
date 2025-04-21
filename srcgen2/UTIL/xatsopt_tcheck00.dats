@@ -206,6 +206,24 @@ if
 then prerrsln("\
 // The trans12-defs loaded!")
 //
+//
+val (  ) =
+argv$loop(3) where
+{
+//
+val alen = length(argv)
+//
+fun
+argv$loop(i0: sint): void =
+if
+(i0 >= alen)
+then () else
+argv$loop(i0+1) where{
+val () =
+xatsopt_flag$pvsadd0(argv[i0]) }
+//
+}
+//
 }
 else
 (

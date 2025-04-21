@@ -342,6 +342,7 @@ f0_not
 (
 case+ g1v1 of
 |G1Vbtf(btf1) => G1Vbtf(~btf1)
+|G1Vint(int1) => G1Vbtf(int1!=0)
 |_(*non-G1Vbtf*) => G1Vnone((*0*)))
 //
 fun
