@@ -275,6 +275,21 @@ g1v2 = g1exp_eval(tenv, g1e2)
 //
 }(*where*)//end-of-[G1Ea2pp(...)]
 //
+|G1Elist(g1es) =>
+(
+case+ g1es of
+|list_nil
+((*void*)) =>
+G1Vnone((*0*))
+|list_cons
+(g1e1, ges2) =>
+(
+case+ ges2 of
+|list_nil() =>
+(g1exp_eval(tenv, g1e1))
+|list_cons _ => G1Vnone((*0*)))
+)(*case+*)//end-of-[G1Elist(g1es)]
+//
 |
 _(*otherwise*) => G1Vnone((*none*))
 //
@@ -290,10 +305,52 @@ g1val_a1pp
 (
 case+
 gfun.node() of
+//
+|
+G1Eid0(sym0) =>
+let
+//
+val opnm = sym0.name()
+//
+in//let
+//
+case+ opnm of
+//
+|"!" => f0_not(g1v1)
+|"~" => f0_not(g1v1)
+|"-" => f0_neg(g1v1)
+(*
+|"not" => f0_not(g1v1)
+*)
+//
+|_(*unknown*) => G1Vnone((*0*))
+//
+end(*let*)//end-of-[G1Eid0(sym0)]
 |
 _(*otherwise*) => G1Vnone(*void*)
 ) where
 {
+//
+#symload
+name
+with
+$SYM.symbl_get_name
+//
+fun
+f0_not
+(g1v1: g1val): g1val =
+(
+case+ g1v1 of
+|G1Vbtf(btf1) => G1Vbtf(~btf1)
+|_(*non-G1Vbtf*) => G1Vnone((*0*)))
+//
+fun
+f0_neg
+(g1v1: g1val): g1val =
+(
+case+ g1v1 of
+|G1Vint(int1) => G1Vint(-int1)
+|_(*non-G1Vbtf*) => G1Vnone((*0*)))
 //
 val () =
 prerrsln
@@ -323,8 +380,14 @@ val opnm = sym0.name()
 in//let
 //
 case+ opnm of
+//
 |"==" => f0_eq2(g1v1, g1v2)
 |"!=" => f0_neq(g1v1, g1v2)
+//
+// HX: no short-cuts!
+|"&&" => f0_conj(g1v1, g1v2)
+|"||" => f0_disj(g1v1, g1v2)
+//
 |_(*unknown*) => G1Vnone((*0*))
 //
 end(*let*)//end-of-[G1Eid0(sym0)]
@@ -402,10 +465,32 @@ f0_eq2(g1v1, g1v2)
 in//let
 //
 case+ gres of
-|G1Vbtf(btf) => G1Vbtf(~btf)
+|G1Vbtf(btf0) => G1Vbtf(~btf0)
 |_(*non-G1Vbtf*) => G1Vnone((*0*))
 //
 end(*let*)//end-of-[f0_neq(g1v1,g1v2)]
+//
+(* ****** ****** *)
+//
+fun
+f0_conj
+( g1v1: g1val
+, g1v2: g1val): g1val =
+(
+case+ g1v1 of
+|G1Vbtf(btf1) =>
+(if btf1 then g1v2 else g1v1)
+|_(*non-G1Vbtf*) => G1Vnone((*0*)))
+//
+fun
+f0_disj
+( g1v1: g1val
+, g1v2: g1val): g1val =
+(
+case+ g1v1 of
+|G1Vbtf(btf1) =>
+(if btf1 then g1v1 else g1v2)
+|_(*non-G1Vbtf*) => G1Vnone((*0*)))
 //
 (* ****** ****** *)
 //
