@@ -842,9 +842,7 @@ d3ecl_node =
 //
 (* ****** ****** *)
 //
-|D3Cd3clst of (d3eclist)
-//
-(* ****** ****** *)
+|D3Cdclst0 of (d3eclist)
 //
 |D3Clocal0 of
 ( d3eclist(*local-head*)

@@ -309,7 +309,7 @@ val dcls =
 trans23_d2eclist(env0, dcls)
 in//let
 (
-  d3ecl(loc0, D3Cd3clst(dcls)) )
+  d3ecl(loc0, D3Cdclst0(dcls)) )
 end//let//end-of-[f0_then0(env0,d2cl)]
 //
 fun
@@ -328,7 +328,7 @@ val dcls =
 trans23_d2eclist(env0, dcls)
 in//let
 (
-  d3ecl(loc0, D3Cd3clst(dcls)) )
+  d3ecl(loc0, D3Cdclst0(dcls)) )
 end//let//end-of-[f0_else1(env0,d2cl)]
 //
 (* ****** ****** *)

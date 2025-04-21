@@ -168,6 +168,9 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
+|I1Ddclst0 _ =>
+(
+  f0_dclst0(env0, dcl0))
 |I1Dlocal0 _ =>
 (
   f0_local0(env0, dcl0))
@@ -286,6 +289,25 @@ val (  ) =
 end(*let*)//end-of-[f0_static(env0,dcl0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dclst0
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val-
+I1Ddclst0
+(   dcls   ) = dcl0.node()
+//
+val () =
+(
+  py1emit_i1dclist(env0, dcls))
+//
+end(*let*)//end-of-[f0_dclst0(env0,dcl0)]
+//
 (* ****** ****** *)
 //
 fun

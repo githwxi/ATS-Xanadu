@@ -152,6 +152,10 @@ end//let//end(D3Cd2ecl)
 //
 (* ****** ****** *)
 //
+|D3Cdclst0 _ =>
+(
+  f0_dclst0(env0, d3cl))
+//
 |D3Clocal0 _ =>
 (
   f0_local0(env0, d3cl))
@@ -271,6 +275,31 @@ i0dcl(loc0, I0Dextern(tknd, dcl1))
 end//let//end-of-[f0_extern(env0,d3cl)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dclst0
+( env0: 
+! envd3i0
+, d3cl: d3ecl): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+val-
+D3Cdclst0
+(   dcls   ) = d3cl.node()
+//
+val
+dcls =
+trxd3i0_d3eclist(env0, dcls)
+//
+in//let
+//
+(
+  i0dcl(loc0, I0Ddclst0( dcls )))
+//
+end//let//end-of-[f0_dclst0(env0,d3cl)]
+//
 (* ****** ****** *)
 //
 fun

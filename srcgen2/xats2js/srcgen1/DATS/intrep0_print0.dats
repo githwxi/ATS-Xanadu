@@ -611,6 +611,11 @@ prints
 //
 (* ****** ****** *)
 //
+|I0Ddclst0
+(   dcls   ) =>
+(
+  prints("I0Ddclst0(", dcls, ")"))
+//
 |I0Dlocal0
 (head, body) =>
 prints

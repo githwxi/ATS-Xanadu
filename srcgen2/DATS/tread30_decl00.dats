@@ -93,7 +93,7 @@ end (*let*) // end-of(d3ecl_errck)
 (* ****** ****** *)
 //
 fun
-d3ecl_d3clst_errck
+d3ecl_dclst0_errck
 ( loc0
 : loc_t
 , dcls
@@ -102,8 +102,8 @@ let
 val lvl = 0
 in//let
 d3ecl_errck
-(lvl+1, d3ecl(loc0, D3Cd3clst( dcls )))
-end (*let*) // end of [d3ecl_local0_errck]
+(lvl+1, d3ecl(loc0, D3Cdclst0( dcls )))
+end (*let*) // end of [d3ecl_dclst0_errck]
 //
 (* ****** ****** *)
 //
@@ -258,9 +258,9 @@ d3cl.node() of
 //
 (* ****** ****** *)
 //
-|D3Cd3clst _ =>
+|D3Cdclst0 _ =>
 (
-f0_d3clst(d3cl, err))
+f0_dclst0(d3cl, err))
 //
 |D3Clocal0 _ =>
 (
@@ -320,7 +320,7 @@ endlet // end-of-[    _(*otherwise*)    ]
 (* ****** ****** *)
 //
 fun
-f0_d3clst
+f0_dclst0
 ( dcl: d3ecl
 , err: &sint >> _): d3ecl =
 let
@@ -329,7 +329,7 @@ val e00 = err
 val loc = dcl.lctn()
 //
 val-
-D3Cd3clst
+D3Cdclst0
 (  dcls  ) = dcl.node()
 //
 val dcls =
@@ -340,8 +340,8 @@ if
 (err=e00)
 then dcl else
 (
-  d3ecl_d3clst_errck( loc, dcls ) )
-end (*let*) // end of [ f0_local0(dcl,err) ]
+  d3ecl_dclst0_errck( loc, dcls ) )
+end (*let*) // end of [ f0_dclst0(dcl,err) ]
 //
 (* ****** ****** *)
 //

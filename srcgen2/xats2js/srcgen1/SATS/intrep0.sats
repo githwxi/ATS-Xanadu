@@ -727,6 +727,7 @@ i0dcl_node =
 //
 (* ****** ****** *)
 //
+|I0Ddclst0 of (i0dclist)
 |I0Dlocal0 of
 ( i0dclist(*local-head*)
 , i0dclist(*local-body*))

@@ -700,13 +700,12 @@ prints("D3Ctmpsub(",svts,";",dcl1,")")
 //
 (* ****** ****** *)
 //
-|D3Cd3clst(  dcls  ) =>
+|D3Cdclst0(  dcls  ) =>
 (
-  prints("D3Cdecls(",dcls,")"))
-//
+prints("D3Cdclst0(", dcls, ")"))
 |
-D3Clocal0(head, body) =>
-prints( "D3Clocal(",head,";",body,")" )
+D3Clocal0(head,body) =>
+prints("D3Clocal0(",head,";",body,")")
 //
 (* ****** ****** *)
 //

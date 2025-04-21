@@ -119,6 +119,9 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
+|I1Ddclst0 _ =>
+(
+  f0_dclst0(env0, dcl0))
 |I1Dlocal0 _ =>
 (
   f0_local0(env0, dcl0))
@@ -287,6 +290,36 @@ prerrsln("f0_static(x2js): dcl0 = ", dcl0)
 }(*where*) // end of [f0_static(env0,dcl0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dclst0
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val-
+I1Ddclst0
+(   dcls   ) = dcl0.node()
+//
+val () =
+(
+  xats2js_i1dclist(env0, dcls))
+//
+end where
+{
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrsln("f0_dclst0(x2js): dcl0 = ", dcl0)
+*)
+//
+}(*where*) // end of [f0_dclst0(env0,dcl0)]
+//
 (* ****** ****** *)
 //
 fun
