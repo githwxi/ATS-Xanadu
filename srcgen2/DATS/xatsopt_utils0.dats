@@ -54,10 +54,19 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#staload "./../SATS/xsymbol.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/staexp0.sats"
+//
 #staload "./../SATS/staexp1.sats"
+#staload "./../SATS/gmacro1.sats"
+//
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
+//
 (* ****** ****** *)
 #staload "./../SATS/dynexp0.sats"
 #staload "./../SATS/dynexp1.sats"
@@ -90,9 +99,14 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload "./../SATS/xglobal.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 xatsopt_flag$split
-  (arg0) =
+  ( arg0 ) =
 (
 //
 if // if
@@ -183,6 +197,46 @@ prerrsln
 // *)
 //
 }(*where*)//end-of-[xatsopt_flag$split]
+//
+(* ****** ****** *)
+//
+#implfun
+xatsopt_flag$pvsadd0
+  ( arg0 ) =
+let
+val opt1 =
+xatsopt_flag$split(arg0)
+in//let
+//
+case+ opt1 of
+| ~
+optn_vt_nil
+( (*void*) ) => ((*void*))
+| ~
+optn_vt_cons
+@(key1, opt2) =>
+(
+the_gmacenv_pvsadd0(key1, itm2)
+) where
+{
+//
+fun
+f0_g1mstr
+( str0
+: strn): g1mac = G1Mstr(str0)
+//
+val key1 = symbl_make_name(key1)
+//
+val itm2 =
+(
+case+ opt2 of
+| ~
+optn_vt_nil((*0*)) => G1Mint(1)
+| ~
+optn_vt_cons(str2) => f0_g1mstr(str2))
+}
+//
+end(*let*)//end-of-[xatsopt_flag$addenv]
 //
 (* ****** ****** *)
 (* ****** ****** *)
