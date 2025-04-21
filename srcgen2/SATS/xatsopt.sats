@@ -81,18 +81,35 @@ argv(n:i0) = argv_i0_vx(n:i0)
 //
 (* ****** ****** *)
 //
+(*
+HX-2025-04-21:
+a flag of the form
+--$(key)=$(val)
+splits into ($(key), $(val))
+*)
+fun
+xatsopt_flag$split
+  (arg0: strn)
+: optn_vt@(strn,optn_vt(strn))//fun
+//
+(* ****** ****** *)
+//
+(*
 fun
 xatsopt_main0
 {n:int|n >= 1}
 (argc: sint(n), argv: !argv(n)): void
+*)
 //
 (* ****** ****** *)
 //
+(*
 fun
 echo_argc_argv
   {n:nat}
 ( out0: FILEref
 , argc: sint(n), argv: !argv(n)): void
+*)
 //
 (* ****** ****** *)
 //
@@ -121,8 +138,8 @@ d3parsed_of_fildats(fpth: string): d3parsed
 fun
 d3parsed_of_trans03(dpar: d0parsed): d3parsed
 //
-(* ****** ****** *)
-(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 //
 (* ****************************************** *)
 (* ****************************************** *)
