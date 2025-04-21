@@ -324,6 +324,7 @@ in//let
 //
 case+ opnm of
 |"==" => f0_eq2(g1v1, g1v2)
+|"!=" => f0_neq(g1v1, g1v2)
 |_(*unknown*) => G1Vnone((*0*))
 //
 end(*let*)//end-of-[G1Eid0(sym0)]
@@ -387,15 +388,40 @@ case+ g1v2 of
 //
 )(*case+*)//end-of-[f0_eq2(g1v1,g1v2)]
 //
+(* ****** ****** *)
+//
+fun
+f0_neq
+( g1v1: g1val
+, g1v2: g1val): g1val =
+let
+//
+val gres =
+f0_eq2(g1v1, g1v2)
+//
+in//let
+//
+case+ gres of
+|G1Vbtf(btf) => G1Vbtf(~btf)
+|_(*non-G1Vbtf*) => G1Vnone((*0*))
+//
+end(*let*)//end-of-[f0_neq(g1v1,g1v2)]
+//
+(* ****** ****** *)
+//
 val () =
 (
-prerrsln("g1val_a2pp: gfun = ", gfun))
+prerrsln//gfun:g1exp
+("g1val_a2pp: gfun = ", gfun))//val
+//
 val () =
 (
 prerrsln("g1val_a2pp: g1v1 = ", g1v1))
 val () =
 (
 prerrsln("g1val_a2pp: g1v2 = ", g1v2))
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[g1val_a2pp(gfun,...)]
 //
