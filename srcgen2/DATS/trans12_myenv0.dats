@@ -1128,11 +1128,13 @@ TR12ENV
 val () =
 tr11env_insert$any(tr11, k0, x0)
 //
+// (*
+val () =
+the_gmacenv_allist_add0( k0, x0 )
+// *)
 (*
 val () =
-the_tr11env_allist_add0( k0, x0 )
-val () =
-the_tr11env_allist_prerr((*void*))
+the_gmacenv_allist_prerr((*void*))
 *)
 //
 in//let
@@ -1164,6 +1166,8 @@ sortenv_insert$any(tenv, k0, x0)
 (*
 val () =
 the_sortenv_allist_add0( k0, x0 )
+*)
+(*
 val () =
 the_sortenv_allist_prerr((*void*))
 *)
@@ -1197,6 +1201,8 @@ sexpenv_insert$any(senv, k0, x0)
 (*
 val () =
 the_sexpenv_allist_add0( k0, x0 )
+*)
+(*
 val () =
 the_sexpenv_allist_prerr((*void*))
 *)
@@ -1230,6 +1236,8 @@ dexpenv_insert$any(denv, k0, x0)
 (*
 val () =
 the_dexpenv_allist_add0( k0, x0 )
+*)
+(*
 val () =
 the_dexpenv_allist_prerr((*void*))
 *)

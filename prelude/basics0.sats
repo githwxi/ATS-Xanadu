@@ -26,6 +26,17 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#define
+XATSPACK="ATS-Xanadu"
+(*
+#define
+XATSPACK="ATS3-Xanadu"
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 // Author: Hongwei Xi
 // Authoremail: gmhwxiATgmailDOTcom
@@ -33,6 +44,7 @@
 // This one was
 // there at the very beginning of ATS
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 // sort for true
@@ -75,12 +87,13 @@
 (* ****** ****** *)
 //
 #sortdef i0 = int
+//
 #sortdef a0 = addr
 #sortdef b0 = bool
 #sortdef c0 = char
 //
 #sortdef p0 = prop
-#sortdef pf = prop
+#sortdef pp = prop
 #sortdef v0 = view
 #sortdef vw = view
 #sortdef t0 = type
@@ -1563,15 +1576,15 @@ a2ptr_vt_i0_i0_vx(elem:vt,nrow:i0,ncol:i0)
 #absvtbx
 a2psz_vt_i0_i0_vx(elem:vt,nrow:i0,ncol:i0)
 //
-#vwtpdef
-a2ptr(a:vt,m:i0,n:i0) = a2ptr_vt_i0_i0_vx(a,m,n)
-#vwtpdef
-a2psz(a:vt,m:i0,n:i0) = a2psz_vt_i0_i0_vx(a,m,n)
+#vwtpdef a2ptr
+(a:vt,m:i0,n:i0) = a2ptr_vt_i0_i0_vx(a,m,n)
+#vwtpdef a2psz
+(a:vt,m:i0,n:i0) = a2psz_vt_i0_i0_vx(a,m,n)
 //
 (* ****** ****** *)
 //
 #vwtpdef a1psz(a:vt) = [n:i0] a1psz(a, n)
-#vwtpdef a2psz(a:vt) = [m:i0;n:i0] a2psz(a, m, n)
+#vwtpdef a2psz(a:vt) = [m:i0;n:i0] a2psz(a,m,n)
 //
 (* ****** ****** *)
 (* ****** ****** *)
