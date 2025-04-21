@@ -96,6 +96,8 @@ in//let
 case+
 dcl0.node() of
 //
+(* ****** ****** *)
+//
 |D3Cstatic
 (tknd, dcl1) =>
 let
@@ -108,6 +110,15 @@ let
 val () =
 fperr30_d3ecl(out, dcl1)
 endlet//end-of(D3Cextern(_,_))
+//
+(* ****** ****** *)
+//
+|D3Cdclst0
+(   dcls   ) =>
+let
+val () =
+fperr30_d3eclist(out, dcls)
+endlet // end of [D3Cdclst0(...)]
 //
 |D3Clocal0
 (dcs1, dcs2) =>

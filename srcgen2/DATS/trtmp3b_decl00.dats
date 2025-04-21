@@ -118,19 +118,24 @@ d3cl.node() of
 |D3Cstatic _ => d3cl
 |D3Cextern _ => d3cl
 //
+(* ****** ****** *)
+//
+|D3Cdclst0 _ =>
+(
+f0_dclst0(env0, d3cl))
 |D3Clocal0 _ =>
 (
 f0_local0(env0, d3cl))
 //
-|
-D3Cabsopen _ => (d3cl)
-|
-D3Cabsimpl _ => (d3cl)
+(* ****** ****** *)
 //
-|
-D3Cinclude _ => f0_include(env0, d3cl)
-|
-D3Cstaload _ => f0_staload(env0, d3cl)
+|D3Cabsopen _ => (d3cl)
+|D3Cabsimpl _ => (d3cl)
+//
+(* ****** ****** *)
+//
+|D3Cinclude _ => f0_include(env0, d3cl)
+|D3Cstaload _ => f0_staload(env0, d3cl)
 //
 (* ****** ****** *)
 //
@@ -138,10 +143,8 @@ D3Cstaload _ => f0_staload(env0, d3cl)
 HX-2024-07-20:
 Sat 20 Jul 2024 07:22:10 PM EDT
 *)
-|
-D3Cdyninit _ => f0_dyninit(env0, d3cl)
-|
-D3Cextcode _ => f0_extcode(env0, d3cl)
+|D3Cdyninit _ => f0_dyninit(env0, d3cl)
+|D3Cextcode _ => f0_extcode(env0, d3cl)
 //
 (* ****** ****** *)
 //
@@ -167,6 +170,31 @@ endlet where
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dclst0
+( env0
+: !tr3benv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cdclst0
+(   dcls   ) = d3cl.node()
+//
+val dcls =
+trtmp3b_d3eclist(env0, dcls)
+//
+in//let
+//
+(
+  d3ecl(loc0, D3Cdclst0( dcls )))
+//
+end(*let*)//end-of-[f0_dclst0(env0,d3cl)]
+//
 (* ****** ****** *)
 //
 fun

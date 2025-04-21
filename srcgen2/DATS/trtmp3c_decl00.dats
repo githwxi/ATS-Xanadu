@@ -102,6 +102,9 @@ d3cl.node() of
 |D3Cstatic _ => d3cl
 |D3Cextern _ => d3cl
 //
+|D3Cdclst0 _ =>
+(
+f0_dclst0(env0, d3cl))
 |D3Clocal0 _ =>
 (
 f0_local0(env0, d3cl))
@@ -151,6 +154,31 @@ endlet where
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dclst0
+( env0
+: !tr3cenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cdclst0
+(   dcls   ) = d3cl.node()
+//
+val dcls =
+trtmp3c_d3eclist(env0, dcls)
+//
+in//let
+//
+(
+  d3ecl(loc0, D3Cdclst0( dcls )))
+//
+end(*let*)//end-of-[f0_dclst0(env0,d3cl)]
+//
 (* ****** ****** *)
 //
 fun

@@ -125,6 +125,20 @@ end (*let*)//end-of-[d3ecl_extern_errck]
 (* ****** ****** *)
 //
 fun
+d3ecl_dclst0_errck
+( loc0
+: loc_t
+, dcls
+: d3eclist): d3ecl =
+let
+val lvl = 0
+in//let
+d3ecl_errck
+(lvl+1, d3ecl(loc0, D3Cdclst0( dcls )))
+end (*let*) // end of [d3ecl_dclst0_errck]
+//
+//
+fun
 d3ecl_local0_errck
 ( loc0
 : loc_t
@@ -269,18 +283,20 @@ d3cl.node() of
 |D3Cabsopen _ => d3cl
 |D3Cabsimpl _ => d3cl
 //
-|
-D3Cstatic _ => f0_static(d3cl, err)
-|
-D3Cextern _ => f0_extern(d3cl, err)
+(* ****** ****** *)
 //
-|
-D3Clocal0 _ => f0_local0(d3cl, err)
+|D3Cstatic _ => f0_static(d3cl, err)
+|D3Cextern _ => f0_extern(d3cl, err)
 //
-|
-D3Cinclude _ => f0_include(d3cl, err)
-|
-D3Cstaload _ => f0_staload(d3cl, err)
+(* ****** ****** *)
+//
+|D3Cdclst0 _ => f0_dclst0(d3cl, err)
+|D3Clocal0 _ => f0_local0(d3cl, err)
+//
+(* ****** ****** *)
+//
+|D3Cinclude _ => f0_include(d3cl, err)
+|D3Cstaload _ => f0_staload(d3cl, err)
 //
 (* ****** ****** *)
 //
@@ -341,8 +357,12 @@ in
 if
 (err=e00)
 then dcl else
-d3ecl_static_errck(dcl.lctn(),tknd,dcl1)
-end (*let*) // end of [ f0_static(dcl,err) ]
+let
+val loc0 = dcl.lctn()
+in//let
+d3ecl_static_errck(loc0,tknd,dcl1)
+end//let//end(else)
+end(*let*)//end-of-[f0_static(dcl,err)]
 //
 fun
 f0_extern
@@ -362,10 +382,40 @@ in
 if
 (err=e00)
 then dcl else
-d3ecl_extern_errck(dcl.lctn(),tknd,dcl1)
-end (*let*) // end of [ f0_extern(dcl,err) ]
+let
+val loc = dcl.lctn()
+in//let
+d3ecl_extern_errck(loc,tknd,dcl1)
+end//let//end(else)
+end(*let*)//end-of-[f0_extern(dcl,err)]
 //
 (* ****** ****** *)
+//
+fun
+f0_dclst0
+( dcl: d3ecl
+, err: &sint >> _): d3ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D3Cdclst0
+(   dcls   ) = dcl.node()
+//
+val dcls =
+tread23_d3eclist(dcls, err)
+//
+in//let
+//
+if
+(err=e00)
+then dcl else
+(
+  d3ecl_dclst0_errck( loc, dcls ))
+//
+end(*let*)//end-of-[f0_dclst0(dcl,err)]
 //
 fun
 f0_local0
@@ -389,8 +439,8 @@ in
 if
 (err=e00)
 then dcl else
-d3ecl_local0_errck( loc, dcs1, dcs2 )
-end (*let*) // end of [ f0_local0(dcl,err) ]
+d3ecl_local0_errck(loc, dcs1, dcs2)
+end(*let*)//end-of-[f0_local0(dcl,err)]
 //
 (* ****** ****** *)
 //
