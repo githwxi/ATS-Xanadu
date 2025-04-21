@@ -49,6 +49,7 @@ ATS_PACKNAME
 #include
 "./../HATS/xatsopt_dats.hats"
 *)
+#include
 "./../HATS/xatsopt_dpre.hats"
 //
 (* ****** ****** *)
@@ -174,12 +175,12 @@ f1_substr
 //
 }(*where*)//end-of-[f0_flag$split(...)]
 //
-(*
+// (*
 val () =
 (
 prerrsln
 ("xatsopt_flag$split: arg0 = ", arg0))
-*)
+// *)
 //
 }(*where*)//end-of-[xatsopt_flag$split]
 //
