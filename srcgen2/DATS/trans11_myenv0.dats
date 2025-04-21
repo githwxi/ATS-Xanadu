@@ -282,7 +282,7 @@ end (*let*)//end-of(tr11env_insert$any(tr11,k0,x0))
 //
 (* ****** ****** *)
 
-end (*local*) // end of [local(tr11env)]
+end (*local*) // end of [local( tr11env(various) )]
 
 (* ****** ****** *)
 

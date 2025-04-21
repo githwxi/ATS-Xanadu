@@ -150,10 +150,12 @@ else
 (
   d3parsed_of_fildats(fpth))//else
 //
-val () = the_gmacenv_allist_print()
-val () = the_sortenv_allist_print()
-val () = the_sexpenv_allist_print()
-val () = the_dexpenv_allist_print()
+val () =
+prerrsln("mymain_work(allist):")
+val () = the_gmacenv_allist_prerr()
+val () = the_sortenv_allist_prerr()
+val () = the_sexpenv_allist_prerr()
+val () = the_dexpenv_allist_prerr()
 //
 }(*where*)//end-of-[mymain_work(fpth)]
 //
