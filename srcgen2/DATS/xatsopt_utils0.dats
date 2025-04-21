@@ -36,14 +36,22 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/xatsopt_sats.hats"
+(*
+#include
+"./../HATS/xatsopt_dats.hats"
+*)
+"./../HATS/xatsopt_dpre.hats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/staexp1.sats"
@@ -79,6 +87,104 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xatsopt.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xatsopt_flag$split
+  (arg0) =
+(
+//
+if // if
+len0 <= 2
+then
+optn_vt_nil((*0*))
+else
+(
+if
+(
+(arg0[0]!='-')
+* // HX: conj
+(arg0[1]!='-'))
+then
+optn_vt_nil((*0*))
+else
+optn_vt_cons(
+f0_flag$split(arg0)))
+//
+) where
+{
+//
+val
+len0 =
+strn_length(arg0)
+//
+fun
+f0_flag$split
+(cs: strn): @(
+strn, optn_vt(strn)) =
+let
+//
+val pos1 =
+f1_eqpos(cs, 2(*i0*))
+//
+in//let
+//
+if // if
+(pos1 < 0)
+then // then
+(
+  key1, optn_vt_nil())
+where{
+val
+key1 =
+f1_substr(cs, 2, len0)}
+else // else
+(key1, optn_vt_cons(itm2))
+where{
+val
+key1 = f1_substr(cs, 2, pos1)
+val
+itm2 = f1_substr(cs,pos1+1,len0)}
+//  
+end where // end-of-[let]
+{
+//
+fnx
+f1_eqpos
+( cs: strn
+, i0: sint): sint =
+if
+(i0 >= len0)
+then -1 else
+(
+if
+(
+cs[i0] = '=')
+then (  i0  )
+else f1_eqpos(cs, i0+1))
+//
+fn0
+f1_substr
+( cs: strn
+, i0: sint
+, j0: sint): strn =
+(
+  strn_tabulate$f1un
+  (j0-i0, lam(i1) => cs[i0+i1]))
+//
+}(*where*)//end-of-[f0_flag$split(...)]
+//
+(*
+val () =
+(
+prerrsln
+("xatsopt_flag$split: arg0 = ", arg0))
+*)
+//
+}(*where*)//end-of-[xatsopt_flag$split]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 d2parsed_of_filsats
@@ -100,7 +206,7 @@ d0parsed_of_preadx0(dpar)) where
 {
 val dpar =
 d0parsed_from_fpath(1(*dyn*), fpth)
-}
+}(*where*)//end-of-[d2parsed_of_fildats]
 //
 (* ****** ****** *)
 //
@@ -124,8 +230,9 @@ d0parsed_of_preadx0(dpar)) where
 {
 val dpar =
 d0parsed_from_fpath(1(*dyn*), fpth)
-}
+}(*where*)//end-of-[d3parsed_of_fildats]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -163,7 +270,7 @@ end (*let*) // end of [d3parsed_of_trans03(dpar)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xatsopt_utils0.dats] *)

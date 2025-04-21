@@ -31,9 +31,9 @@
 #define
 XATSPACK="ATS-Xanadu@20220500"
 (*
-#define
+#define // HX: first start
 XATSPACK="ATS-Xanadu@20180400"
-#define
+#define // HX: more explicit
 XATSPACK="ATS3-Xanadu@20220500"
 *)
 //
