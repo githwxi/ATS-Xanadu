@@ -1016,30 +1016,37 @@ end (*loc*) // end-of-[the_tr12env_pvs(load|find)]
 (* ****** ****** *)
 
 local
-
+//
 val
-the_d2cstmap = tmpmap_make_nil()
-
+the_d2cstmap =
+tmpmap_make_nil((*void*))
+//
 in(*local*)
-
+//
 (* ****** ****** *)
+//
 #implfun
 the_d2cstmap_xnm() = (the_d2cstmap)
+//
 (* ****** ****** *)
+//
 #implfun
 the_d2cstmap_xnmfind(key) =
 tmpmap_search$opt(the_d2cstmap, key)
+//
 (* ****** ****** *)
+//
 #implfun
 the_d2cstmap_xnmadd0(key, itm) =
 tmpmap_insert$any(the_d2cstmap, key, itm)
+//
 (* ****** ****** *)
-
+//
 end(*loc*) // end of [the_d2cstmap_xnm(srch|find)]
 
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 local
 //
 (* ****** ****** *)
@@ -1077,6 +1084,7 @@ the_d3tmpenv_pvstmap
   ( (*void*) ) = (the_d3tmpenv)
 //
 (* ****** ****** *)
+//
 #implfun
 the_d1parenv_pvsfind(key) =
 topmap_search$opt(the_d1parenv, key)
@@ -1089,7 +1097,9 @@ topmap_search$opt(the_d3parenv, key)
 #implfun
 the_d3tmpenv_pvsfind(key) =
 topmap_search$opt(the_d3tmpenv, key)
+//
 (* ****** ****** *)
+//
 #implfun
 the_d1parenv_pvsadd0(key, itm) =
 topmap_insert$any(the_d1parenv, key, itm)
@@ -1102,9 +1112,11 @@ topmap_insert$any(the_d3parenv, key, itm)
 #implfun
 the_d3tmpenv_pvsadd0(key, itm) =
 topmap_insert$any(the_d3tmpenv, key, itm)
+//
 (* ****** ****** *)
+//
 end (*loc*) // end-[local(the_d1/d2/d3parenv_pvs)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
