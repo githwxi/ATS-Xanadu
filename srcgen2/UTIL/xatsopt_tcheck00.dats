@@ -221,10 +221,10 @@ prerrsln("\
 val argv =
 (
   XATS2JS_NODE_argv$get((*void*)))
-(*
-val (  ) = prerrsln
-("// xatsopt_typing: argv = ", argv)
-*)
+//
+val (  ) =
+prerrsln("\
+// xatsopt_tcheck00: argv = ", argv)
 //
 }(*where*)//end-of-[mymain((*void*))]
 //

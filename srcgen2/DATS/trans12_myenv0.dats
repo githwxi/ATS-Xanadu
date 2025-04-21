@@ -106,6 +106,12 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2025-04-21:
+Note that gmacenv is handled in tr11env!
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 
 local
 //
