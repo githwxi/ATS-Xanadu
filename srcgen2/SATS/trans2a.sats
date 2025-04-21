@@ -215,15 +215,6 @@ d2cfn_fix_xtyp
 (* ****** ****** *)
 //
 fun
-x2t2p_make_dvar
-( d2v0 : d2var ): x2t2p
-#symload
-x2t2p with x2t2p_make_dvar
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
 d2exp_sym0_styp
 ( loc0:loc_t
 , name:sym_t
