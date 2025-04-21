@@ -92,6 +92,9 @@ xatsopt_flag$split
   (arg0: strn)
 : optn_vt@(strn,optn_vt(strn))//fun
 //
+fun
+xatsopt_flag$pvsadd0(arg0:strn):void
+//
 (* ****** ****** *)
 //
 (*

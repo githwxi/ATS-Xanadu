@@ -218,6 +218,13 @@ the_dexpenv_pvsfind
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+the_gmacenv_pvsadd0
+(key: sym_t, itm: g1mac): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2023-06-02: for static loading
 *)
