@@ -728,12 +728,13 @@ i1dcl_node =
 (* ****** ****** *)
 //
 |I1Dextern of
-(token(*kind*),i1dcl)
+(token(*kind*), i1dcl)
 |I1Dstatic of
-(token(*kind*),i1dcl)
+(token(*kind*), i1dcl)
 //
 (* ****** ****** *)
 //
+|I1Ddclst0 of (i1dclist)
 |I1Dlocal0 of
 (i1dclist(*local-head*)
 ,i1dclist(*local-body*))
