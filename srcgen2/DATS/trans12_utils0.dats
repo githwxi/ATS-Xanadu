@@ -449,6 +449,8 @@ case+ g1v2 of
   G1Vbtf(str1=str2))
 |_(*otherwise*) => G1Vnone((*0*)))
 //
+|_(*otherwise*) => G1Vnone((*void*))
+//
 )(*case+*)//end-of-[f0_eq2(g1v1,g1v2)]
 //
 (* ****** ****** *)

@@ -53,11 +53,18 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
+xatsopt_version
+  ((*0*)) =
+"0(major).0(minor).0(micro)"
+//
+(* ****** ****** *)
+//
+#implfun
 xatsopt_fprint_version
-  (out) =
+  ( out ) =
 let
   #impltmp
-  g_print$out<>() = g_stdout<>()
+  g_print$out<>() = ( out )
 in//let
   g_print(xatsopt_version((*void*)))
 end//let//end-of-[xatsopt_fprint_version(out)]

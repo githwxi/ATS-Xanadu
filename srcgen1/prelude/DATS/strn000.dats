@@ -696,7 +696,7 @@ then
 loop(tail(s1), tail(s2)) else false)
 endlet // end of [loop(s1, s2)]
 endlet // end of [loop(s1, s2)]
-} (*where*)//end-of-[strn_prefix(s1,s2)]
+} (*where*)//end-of-[strn_prefixq(s1,s2)]
 //
 (* ****** ****** *)
 //
