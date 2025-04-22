@@ -11,11 +11,6 @@ For testing xatslib/JS!
 *)
 (* ****** ****** *)
 //
-(*
-#include
-"prelude/DATS/CATS/JS/gint000.dats"
-*)
-//
 #staload _ =
 "prelude/DATS/CATS/JS/gint000.dats"
 //
