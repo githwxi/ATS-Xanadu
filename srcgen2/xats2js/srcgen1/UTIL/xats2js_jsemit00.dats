@@ -154,7 +154,7 @@ where
 val ret1 =
 the_fxtyenv_pvsload((*0*))
 val (  ) =
-if
+if // if
 (ret1 > 0)
 then
 prerrsln("\
@@ -163,7 +163,7 @@ prerrsln("\
 val ret2 =
 the_tr12env_pvsl00d((*nil*))
 val (  ) =
-if
+if // if
 (ret2 > 0)
 then prerrsln("\
 // The trans12-defs loaded!")
@@ -184,9 +184,10 @@ argv$loop(i0+1))
 where{
 val argi = argv[i0]
 val (  ) =
-xatsopt_flag$pvsadd0(argi) }
+xatsopt_flag$pvsadd0(argi)
+}(*where*)//argv$loop(i0+1)
 //
-}(*where*)
+}(*where*)//argv$loop(  3  )
 //
 }(*where*)//then//end-of-(if)
 else
@@ -212,8 +213,8 @@ val argv =
 (
   XATS2JS_NODE_argv$get((*void*)))
 (*
-val (  ) = prerrsln
-("// xats2js_jsemit: argv = ", argv)
+val (  ) = prerrsln("\
+// xats2js_jsemit00: argv = ", argv)
 *)
 //
 }(*where*)//end-of-[mymain((*void*))]
