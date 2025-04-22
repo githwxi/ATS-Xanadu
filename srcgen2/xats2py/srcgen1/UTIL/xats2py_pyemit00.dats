@@ -72,7 +72,7 @@ XATS2JS_NODE_argv$get
 //
 fun
 mymain_work
-(fpath: string): void =
+(fpth: string): void =
 let
 //
 val dpar =
@@ -119,8 +119,13 @@ end//let
 //
 end where
 {
-val dpar = d3parsed_of_fildats(fpath)
-}
+val dpar = d3parsed_of_fildats(fpth)
+(*
+val (  ) =
+prerrsln("mymain_work(allist):")
+val (  ) = the_gmacenv_allist_prerr()
+*)
+}(*where*)//end-of-[mymain_work(fpth)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -132,7 +137,7 @@ mymain() where
 fun
 mymain((*void*)) =
 (
-if
+if // if
 length(argv) >= 3
 then
 (
@@ -156,13 +161,36 @@ if
 (ret2 > 0)
 then prerrsln("\
 // The trans12-defs loaded!")
-}
+//
+val (  ) =
+argv$loop(3) where
+{
+//
+val alen = length(argv)
+//
+fun
+argv$loop(i0: sint): void =
+if
+(i0 >= alen)
+then () else
+(
+argv$loop(i0+1))
+where{
+val argi = argv[i0]
+val (  ) =
+  xatsopt_flag$pvsadd0(argi)
+}(*where*)//argv$loop(i0+1)
+//
+}(*where*)//argv$loop(  3  )
+//
+}(*where*)//then//end-of-(if)
 else
 (
 let
 val (  ) =
-prerrsln("\
-[argv] is too short: ", argv)
+(
+prerrsln("ERROR: \
+no source is given: ", argv))
 end//let
 )
 ) where
@@ -179,8 +207,8 @@ val argv =
 (
   XATS2JS_NODE_argv$get((*void*)))
 (*
-val (  ) = prerrsln
-("// xats2js_jsemit: argv = ", argv)
+val (  ) = prerrsln("\
+// xats2py_pyemit00: argv = ", argv)
 *)
 //
 }(*where*)//end-of-[mymain((*void*))]

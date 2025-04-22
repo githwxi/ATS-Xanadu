@@ -49,7 +49,7 @@ test00:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
 ############
 test00:: \
-test00_xatslib.dats; \
+test00_xbasics.dats; \
 $(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> $@_out.js
 ############
 test00:: ; \
