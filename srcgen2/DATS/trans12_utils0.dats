@@ -211,9 +211,11 @@ end // let // end-of-[f0_id0(tenv,gmac)]
 //
 (* ****** ****** *)
 //
+(*
 val () =
 (
   prerrsln("g1mac_eval: gmac = ", gmac))
+*)
 //
 }(*where*)//end-of-[g1mac_eval(tenv,gmac)]
 //
@@ -353,11 +355,13 @@ case+ g1v1 of
 |G1Vint(int1) => G1Vint(-int1)
 |_(*non-G1Vbtf*) => G1Vnone((*0*)))
 //
+(*
 val () =
 prerrsln
-("g1val_a2pp: gfun = ", gfun)
+("g1val_a1pp: gfun = ", gfun)
 val () =
-prerrsln("g1val_a2pp: g1v1 = ", g1v1)
+prerrsln("g1val_a1pp: g1v1 = ", g1v1)
+*)
 //
 }(*where*)//end-of-[g1val_a1pp(gfun,...)]
 //
@@ -497,6 +501,7 @@ case+ g1v1 of
 //
 (* ****** ****** *)
 //
+(*
 val () =
 (
 prerrsln//gfun:g1exp
@@ -508,6 +513,7 @@ prerrsln("g1val_a2pp: g1v1 = ", g1v1))
 val () =
 (
 prerrsln("g1val_a2pp: g1v2 = ", g1v2))
+*)
 //
 (* ****** ****** *)
 //
@@ -541,8 +547,10 @@ end // let // end-of-[f0_id0(tenv,gmac)]
 //
 (* ****** ****** *)
 //
+(*
 val () =
 prerrsln("g1exp_eval: gexp = ", gexp)
+*)
 //
 }(*where*)//end-of-[g1exp_eval(tenv,gexp)]
 //
@@ -557,12 +565,14 @@ let
 val gval =
 g1exp_eval(tenv, gexp)
 //
+(*
 val (  ) =
 prerrsln("\
 tr12env_eval_ifexp: gexp = ", gexp)
 val (  ) =
 prerrsln("\
 tr12env_eval_ifexp: gval = ", gval)
+*)
 //
 in//let
 //
