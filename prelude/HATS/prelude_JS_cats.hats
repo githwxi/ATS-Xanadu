@@ -12,15 +12,15 @@ Sat Apr 19 11:36:36 AM EDT 2025
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#extcode
-file"prelude/DATS/CATS/JS/xtop000.cats"
+#extcode file
+"prelude/DATS/CATS/JS/xtop000.cats"
 //
 (* ****** ****** *)
 //
-#extcode
-file"prelude/DATS/CATS/JS/gbas000.cats"
-#extcode
-file"prelude/DATS/CATS/JS/gdbg000.cats"
+#extcode file
+"prelude/DATS/CATS/JS/gbas000.cats"
+#extcode file
+"prelude/DATS/CATS/JS/gdbg000.cats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

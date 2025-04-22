@@ -75,7 +75,7 @@ XATS2JS_NODE_argv$get
 //
 fun
 mymain_work
-(fpath: string): void =
+(fpth: string): void =
 let
 //
 val dpar =
@@ -89,17 +89,17 @@ d3parsed_of_tread30(dpar)
 val (  ) =
 (
 prerrsln
-("d3parsed(33) = ", dpar))
+("d3parsed(30) = ", dpar))
 *)
 //
 val (  ) =
 let
 val
-out = g_stderr((*0*))
+out0 = g_stderr((*0*))
 in//let
 prerrsln
 ("FPERR30_D3PARSED:");
-fperr30_d3parsed(out, dpar)
+fperr30_d3parsed(out0, dpar)
 end//let
 //
 val ipar =
@@ -122,8 +122,16 @@ end//let
 //
 end where
 {
-val dpar = d3parsed_of_fildats(fpath)
-}
+//
+val
+dpar = d3parsed_of_fildats(fpth)
+//
+(*
+val (  ) =
+prerrsln("mymain_work(allist):")
+val (  ) = the_gmacenv_allist_prerr()
+*)
+}(*where*)//end-of-[mymain_work(fpth)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -159,13 +167,35 @@ if
 (ret2 > 0)
 then prerrsln("\
 // The trans12-defs loaded!")
-}
+//
+val (  ) =
+argv$loop(3) where
+{
+//
+val alen = length(argv)
+//
+fun
+argv$loop(i0: sint): void =
+if
+(i0 >= alen)
+then () else
+(
+argv$loop(i0+1))
+where{
+val argi = argv[i0]
+val (  ) =
+xatsopt_flag$pvsadd0(argi) }
+//
+}(*where*)
+//
+}(*where*)//then//end-of-(if)
 else
 (
 let
 val (  ) =
-prerrsln("\
-[argv] is too short: ", argv)
+(
+prerrsln("ERROR: \
+no source is given: ", argv))
 end//let
 )
 ) where

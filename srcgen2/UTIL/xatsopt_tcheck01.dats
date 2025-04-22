@@ -121,25 +121,25 @@ let
 //
 // (*
 val (   ) =
-prerrsln("dpar3 = ", dpar3)
+prerrsln("dpar = ", dpar)
 // *)
 //
 in//let
 //
 prerrsln
 ("FPERR30_D3PARSED:");
-fperr30_d3parsed(out, dpar3)
+fperr30_d3parsed(out0, dpar)
 //
 end//let
 //
 end where
 {
 //
-val out =
+val out0 =
 (
   g_stderr((*0*)))
 //
-val dpar3 =
+val dpar =
 if
 (
 fpath_satsq(fpth))
@@ -149,6 +149,12 @@ then
 else
 (
   d3parsed_of_fildats(fpth))//else
+//
+(*
+val () =
+prerrsln("mymain_work(allist):")
+val () = the_gmacenv_allist_prerr()
+*)
 //
 }(*where*)//end-of-[mymain_work(fpth)]
 //
@@ -186,45 +192,64 @@ then
 val ret1 =
 the_fxtyenv_pvsload((*0*))
 val (  ) =
-if
-(ret1 > 0)
+if(ret1 > 0)
 then prerrsln("\
 // The fixity-defs loaded!")
 //
 val ret2 =
-the_tr12env_pvsl01d((*nil*))
+the_tr12env_pvsl01d((*0*))
 val (  ) =
-if
-(ret2 > 0)
+if(ret2 > 0)
 then prerrsln("\
 // The trans12-defs loaded!")
 //
-}
+val (  ) =
+argv$loop(3) where
+{
+//
+val alen = length(argv)
+//
+fun
+argv$loop(i0: sint): void =
+if
+(i0 >= alen)
+then () else
+(
+argv$loop(i0+1))
+where{
+val argi = argv[i0]
+val (  ) =
+xatsopt_flag$pvsadd0(argi) }
+//
+}(*where*)
+//
+}(*where*)//then//end-of-(if)
 else
 (
 let
 val (  ) =
-prerrsln("\
-[argv] is too short: ", argv)
+(
+prerrsln("ERROR: \
+no source is given: ", argv))
 end//let
 )
 ) where
 {
 //
 val (  ) =
-prerrsln("\
-// Welcome from ATS3/Xanadu!")
+prerrsln
+("// Welcome from ATS3/Xanadu!")
 val (  ) =
-prerrsln("\
-// XATSHOME = ", the_XATSHOME())
+prerrsln
+("// XATSHOME = ", the_XATSHOME())
 //
 val argv =
 (
   XATS2JS_NODE_argv$get((*void*)))
-(*
-val (  ) = prerrsln
-("// xatsopt_typing: argv = ", argv)
-*)
+//
+val (  ) =
+prerrsln("\
+// xatsopt_tcheck01: argv = ", argv)
 //
 }(*where*)//end-of-[mymain((*void*))]
 //
