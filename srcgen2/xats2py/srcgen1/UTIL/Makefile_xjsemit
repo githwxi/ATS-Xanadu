@@ -7,6 +7,7 @@ CAT=cat
 SED=sed
 ECHO=echo
 NODE=node
+PRINTF=printf
 ########################################################################
 SRCGEN1=./../../../../srcgen1
 SRCGEN2=./../../../../srcgen2
