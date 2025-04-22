@@ -30,5 +30,5 @@ HX: for linearly typed interfaces
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3_XANADU/xatslib/HATS/xatslib_JS_dats.hats] *)
+(* end of [ATS3_XANADU/xatslib/b0asics/HATS/b0asics_JS_dats.hats] *)
 
