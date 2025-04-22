@@ -10,21 +10,18 @@ For testing xatslib/JS!
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
+"prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
+"prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
+"prelude/HATS/prelude_NODE_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #include
-"./../../../HATS/xatslib_JS_dats.hats"
+"./../../../HATS/xbasics_JS_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
