@@ -12,11 +12,12 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"./../../../xatslib/HATS/xatslib_JS_dats.hats"
+"./../../..\
+/xatslib/xbasics/HATS/xbasics_JS_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 //
-(* end of [ATS3_XANADU_srcgen2_xatslib_xatslib_JS_dats.hats] *)
+(* end of [ATS3_XANADU_srcgen2_xatslib_xbasics_JS_dats.hats] *)
