@@ -178,7 +178,8 @@ argv$loop(i0+1))
 where{
 val argi = argv[i0]
 val (  ) =
-  xatsopt_flag$pvsadd0(argi)
+(
+xatsopt_flag$pvsadd0(argi))
 }(*where*)//argv$loop(i0+1)
 //
 }(*where*)//argv$loop(  3  )
