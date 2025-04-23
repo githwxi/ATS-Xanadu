@@ -252,6 +252,13 @@ gexp.node() of
 //
 |G1Ea1pp
 ( gfun, g1e1) =>
+if
+ISDFQ(gfun)
+then
+(
+  g1exp_edfq(tenv, g1e1)
+)
+else
 (
   g1val_a1pp(gfun, g1v1)
 ) where
@@ -300,6 +307,57 @@ _(*otherwise*) => G1Vnone((*none*))
 //
 (* ****** ****** *)
 //
+#symload
+name
+with
+$SYM.symbl_get_name
+//
+(* ****** ****** *)
+//
+fun
+ISDFQ
+(gfun: g1exp): bool =
+(
+case+
+gfun.node() of
+| G1Eid0(sym0) =>
+(
+case+
+sym0.name() of
+| "dfq" => true
+| _(*else*) => false)
+//
+| _(*non-G1Eid0*) => false
+)
+//
+(* ****** ****** *)
+//
+fun
+g1exp_edfq
+( tenv:
+! tr12env
+, gexp: g1exp): g1val =
+(
+case+
+gexp.node() of
+|
+G1Eid0(sym0) =>
+(
+case+ opt0 of
+| ~
+optn_vt_nil _ => G1Vbtf(false)
+| ~
+optn_vt_cons _ => G1Vbtf(true))
+where
+{
+  val
+  opt0 =
+  tr12env_find_g1mac(tenv,sym0) }
+| _(*non-G1Eid0*) => G1Vbtf(false)
+)(*case+*)//end-of-[g1exp_edfq(...)]
+//
+(* ****** ****** *)
+//
 fun
 g1val_a1pp
 ( gfun: g1exp
@@ -332,11 +390,6 @@ end(*let*)//end-of-[G1Eid0(sym0)]
 _(*otherwise*) => G1Vnone(*void*)
 ) where
 {
-//
-#symload
-name
-with
-$SYM.symbl_get_name
 //
 fun
 f0_not
@@ -401,11 +454,6 @@ end(*let*)//end-of-[G1Eid0(sym0)]
 _(*otherwise*) => G1Vnone((*void*))
 ) where
 {
-//
-#symload
-name
-with
-$SYM.symbl_get_name
 //
 fun
 f0_eq2

@@ -4640,7 +4640,7 @@ end // end of [#SYMLOAD(...)]
   in
     err := e0;
     d0ecl_make_node(loc_res, D0Celsif(tok, g0e1, topt))
-  end // end of [SRP_IFDEC(knd)]
+  end // end of [SRP_ELSIF(knd)]
 //
 |
 _ (* errorcase *) =>
