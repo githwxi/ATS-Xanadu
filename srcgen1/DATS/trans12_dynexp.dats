@@ -582,7 +582,7 @@ in
   trg1mac_dpat(loc0, g1m0)
 end
 //
-end // end of [auxid0]
+end // end of [auxid0(d1p0)]
 
 and
 auxid0_d1pat
@@ -4082,7 +4082,7 @@ the_gmacenv_add(sym0, gmac)
 in
 d2ecl_make_node
 ( loc0 , D2Cd1ecl( d1cl ) )
-end // end of [aux_define]
+end // end-of-[aux_define(d1cl)]
 
 (* ****** ****** *)
 
@@ -4114,7 +4114,7 @@ d2ecl_make_node
 , D2Cinclude
   (tok, src1, knd2, fopt, body))
 //
-end // end of [aux_include(d1cl)]
+end // end-of-[aux_include(d1cl)]
 
 (* ****** ****** *)
 

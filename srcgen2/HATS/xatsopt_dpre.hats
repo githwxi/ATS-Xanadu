@@ -117,31 +117,6 @@ print with g_print of 0101
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-#include
-"srcgen1/prelude/DATS/CATS/JS/basics0.dats"
-*)
-#include
-"srcgen1/prelude/DATS/CATS/JS/basics1.dats"
-#include
-"srcgen1/prelude/DATS/CATS/JS/basics2.dats"
-#include
-"srcgen1/prelude/DATS/CATS/JS/basics3.dats"
-//
-#include
-"srcgen1/prelude/DATS/CATS/JS/g_eqref.dats"
-//
-#include
-"srcgen1/prelude/DATS/CATS/JS/g_print.dats"
-//
-(*
-#include
-"srcgen1/prelude/DATS/CATS/JS/unsafex.dats"
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #impltmp
 < a:t0 >
 a0ref_get(A0) =
@@ -263,7 +238,46 @@ strtmp_vt_set$at<>(p0, i0, c0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload _(*local*) = "./../DATS/xatsopt_tmplib.dats"
+#define
+_XATSOPT_JS_ = 1
+(* ****** ****** *)
+//
+(*
+HX-2025-04-23:
+This needs to be changed
+if JavaScript is replaced by Python!
+*)
+(*
+#ifdef(_XATSOPT_JS_)
+*)
+//
+(*
+#include
+"srcgen1/prelude/DATS/CATS/JS/basics0.dats"
+*)
+//
+#include
+"srcgen1/prelude/DATS/CATS/JS/basics1.dats"
+#include
+"srcgen1/prelude/DATS/CATS/JS/basics2.dats"
+#include
+"srcgen1/prelude/DATS/CATS/JS/basics3.dats"
+//
+#include
+"srcgen1/prelude/DATS/CATS/JS/g_eqref.dats"
+//
+#include
+"srcgen1/prelude/DATS/CATS/JS/g_print.dats"
+//
+(*
+#include
+"srcgen1/prelude/DATS/CATS/JS/unsafex.dats"
+*)
+//
+(*
+#endif // end-of-[------ifdef(_XATSOPT_JS_)------]
+*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -271,8 +285,23 @@ strtmp_vt_set$at<>(p0, i0, c0)
 HX-2025-04-12:
 This needs to be changed if NODE is replaced by QJS.
 *)
+(* ****** ****** *)
+#define
+_XATSOPT_JS_NODE_ = 1
+(* ****** ****** *)
+(*
+#ifdef(_XATSOPT_JS_NODE_)
+*)
 #include
 "srcgen1/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
+(*
+#endif // end-of-[------ifdef(_XATSOPT_JS_NODE_)------]
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload _(*mytmplib*) = "./../DATS/xatsopt_tmplib.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

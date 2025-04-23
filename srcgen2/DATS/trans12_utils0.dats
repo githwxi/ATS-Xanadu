@@ -340,6 +340,7 @@ g1exp_edfq
 (
 case+
 gexp.node() of
+//
 |
 G1Eid0(sym0) =>
 (
@@ -353,6 +354,7 @@ where
   val
   opt0 =
   tr12env_find_g1mac(tenv,sym0) }
+//
 | _(*non-G1Eid0*) => G1Vbtf(false)
 )(*case+*)//end-of-[g1exp_edfq(...)]
 //

@@ -1357,6 +1357,8 @@ d2ecl_node =
 | D2Cextern of
   (token(*EXTERN*), d2ecl)
 //
+| D2Cdclst of
+  (d2eclist)//#then//#else
 | D2Clocal of
   (d2eclist(*local*), d2eclist)
 //
