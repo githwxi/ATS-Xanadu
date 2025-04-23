@@ -888,14 +888,18 @@ case- x0.node() of
   (out, "D2Cd1ecl(", d1cl, ")")
 //
 | D2Cstatic
-  (tok, d2cl) =>
+  (tok0, d2cl) =>
   fprint!
   (out, "D2Cstatic(", d2cl, ")")
 | D2Cextern
-  (tok, d2cl) =>
+  (tok0, d2cl) =>
   fprint!
   (out, "D2Cextern(", d2cl, ")")
 //
+| D2Cdclst
+  (   dcls   ) =>
+  fprint!
+  ( out, "D2Cdclst(", dcls, ")")
 | D2Clocal
   (head, body) =>
   fprint!

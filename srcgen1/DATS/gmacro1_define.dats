@@ -71,13 +71,14 @@ fprint_val<g1mac>
 )
 //
 (* ****** ****** *)
-abstype g1mid_tbox = ptr
 (* ****** ****** *)
+abstype g1mid_tbox = ptr
 typedef g1mid = g1mid_tbox
 typedef g1mas = List0(g1mid)
 (* ****** ****** *)
 abstbox g1menv_tbox = ptr
 typedef g1menv = g1menv_tbox
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype g1mac =
@@ -116,9 +117,10 @@ datatype g1mac =
 where g1maclst = List0(g1mac) // lists
 //
 (* ****** ****** *)
-absimpl g1mid_tbox = sym_t
 (* ****** ****** *)
+absimpl g1mid_tbox = sym_t
 absimpl g1mac_tbox = g1mac
+(* ****** ****** *)
 (* ****** ****** *)
 //
 implement

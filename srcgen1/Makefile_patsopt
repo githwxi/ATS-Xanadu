@@ -143,6 +143,7 @@ trans12_basics.dats \
 trans12_envmap.dats \
 trans12_staexp.dats \
 trans12_dynexp.dats \
+trans12_dynutl.dats \
 tread12_staexp.dats \
 tread12_dynexp.dats \
 dynexp3.dats \

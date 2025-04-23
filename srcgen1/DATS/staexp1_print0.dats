@@ -58,14 +58,20 @@ _(*TMP*) =
 #staload "./../SATS/staexp1.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 implement
 fprint_val<token> = fprint_token
+implement
+fprint_val<sym_t> = fprint_symbol
 //
 (* ****** ****** *)
 //
 implement
 fprint_val<g1nam> = fprint_g1nam
+implement
+fprint_val<g1val> = fprint_g1val
+//
 implement
 fprint_val<g1exp> = fprint_g1exp
 //
@@ -77,33 +83,33 @@ implement
 fprint_val<g1marg> = fprint_g1marg
 //
 (* ****** ****** *)
-
+//
 implement
 fprint_val<sort1> = fprint_sort1
-
+//
 (* ****** ****** *)
-
+//
 implement
 fprint_val<s1rtcon> = fprint_s1rtcon
 implement
 fprint_val<d1tsort> = fprint_d1tsort
 implement
 fprint_val<s1rtdef> = fprint_s1rtdef
-
+//
 (* ****** ****** *)
-
+//
 implement
 fprint_val<s1arg> = fprint_s1arg
 implement
 fprint_val<s1marg> = fprint_s1marg
-
+//
 (* ****** ****** *)
-
+//
 implement
 fprint_val<t1arg> = fprint_t1arg
 implement
 fprint_val<t1marg> = fprint_t1marg
-
+//
 (* ****** ****** *)
 //
 implement
@@ -115,21 +121,22 @@ implement
 fprint_val<s1exp> = fprint_s1exp
 //
 (* ****** ****** *)
-
+//
 implement
 fprint_val<d1atype> = fprint_d1atype
 implement
 fprint_val<d1atcon> = fprint_d1atcon
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 implement
 print_g1nam(x0) =
 fprint_g1nam(stdout_ref, x0)
 implement
 prerr_g1nam(x0) =
 fprint_g1nam(stderr_ref, x0)
-
+//
 implement
 fprint_g1nam
   (out, gnm0) =
@@ -167,8 +174,56 @@ fprint!(out, "G1Nnone0(", ")")
 G1Nnone1(tok) =>
 fprint!(out, "G1Nnone1(", tok, ")")
 //
-) (* end of [fprint_g1nam] *)
-
+)(*case+*)//end-of-[fprint_g1nam(x0)]
+//
+(* ****** ****** *)
+//
+implement
+print_g1val(x0) =
+fprint_g1val(stdout_ref, x0)
+implement
+prerr_g1val(x0) =
+fprint_g1val(stderr_ref, x0)
+//
+implement
+fprint_g1val
+  (out, x0) =
+(
+case+ x0 of
+//
+|
+G1Vint(int) =>
+fprint!(out, "G1Vint(", int, ")")
+|
+G1Vbtf(btf) =>
+fprint!(out, "G1Vbtf(", btf, ")")
+|
+G1Vchr(chr) =>
+fprint!(out, "G1Vchr(", chr, ")")
+|
+G1Vflt(flt) =>
+fprint!(out, "G1Vflt(", flt, ")")
+|
+G1Vstr(str) =>
+fprint!(out, "G1Vstr(", str, ")")
+//
+|
+G1Vid0(sym) =>
+fprint!(out, "G1Vid0(", sym, ")")
+//
+| G1Vnone
+( (*void*) ) =>
+(
+  fprint!(out, "G1Vnone(", ")") )
+//
+) where
+{
+(*
+  symload
+  fprint with $SYM.fprint_symbol
+*)
+}(*where*)//end-of-[fprint_g1val(x0)]
+//
 (* ****** ****** *)
 
 implement

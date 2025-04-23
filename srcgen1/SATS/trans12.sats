@@ -72,36 +72,61 @@ symintr trans12 // too much?
 *)
 (* ****** ****** *)
 //
+typedef g1nam = $S1E.g1nam
+typedef g1val = $S1E.g1val
+//
 typedef g1exp = $S1E.g1exp
 //
-typedef g1mac = $S1E.g1mac
 (*
 HX-2020-10-17:
 Note that g1mac is defined
-in the [g1maro_define.dats]
+in the [gmacro1_define.dats]
 *)
 //
+typedef g1mac = $S1E.g1mac
+typedef g1maclst = List0(g1mac)
+//
+vtypedef g1menv = symmap(g1mac)
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-04-23:
+For if-guarded decls!
+*)
+fun
+ifexp_eval(g1exp): bool
+//
+fun
+g1exp_edfq(g1exp): g1val
+fun
+g1exp_eval(g1exp): g1val
+fun
+g1mac_eval(g1mac): g1val
+//
+(* ****** ****** *)
+//
 fun
 trans11_g1exp(g1exp): g1mac
 fun
 trans11_g1mac(g1mac): g1mac
 //
 (* ****** ****** *)
-typedef g1maclst = List0(g1mac)
-(* ****** ****** *)
+//
 fun
 trans11_g1mac_apps
-(g1f0: g1mac, g1ms: g1maclst): g1mac
+( g1f0
+: g1mac,g1ms:g1maclst): g1mac
+//
 (* ****** ****** *)
+//
 fun
 trans11_g1mdef
 ( gmas: $S1E.g1marglst
 , def1: $S1E.g1expopt): g1mac
+//
 (* ****** ****** *)
-//
-vtypedef g1menv = symmap(g1mac)
-//
 (* ****** ****** *)
 //
 typedef sort1 = $S1E.sort1

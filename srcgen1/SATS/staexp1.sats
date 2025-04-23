@@ -26,15 +26,18 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 // Author: Hongwei Xi
 // Start Time: August, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
@@ -56,7 +59,9 @@ typedef tokenopt = $LEX.tokenopt
 typedef tokenlst = $LEX.tokenlst
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #staload S0E = "./staexp0.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype g1nam =
@@ -81,6 +86,21 @@ g1namlst = List0(g1nam)
 and
 g1namopt = Option(g1nam)
 //
+(* ****** ****** *)
+//
+datatype g1val =
+//
+| G1Vint of (int)
+| G1Vbtf of (bool)
+| G1Vchr of (char)
+| G1Vflt of (double)
+| G1Vstr of (string)
+//
+| G1Vid0 of ( sym_t )
+//
+| G1Vnone of ((*void*))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 abstbox g1exp_tbox = ptr
 abstype g1mac_tbox = ptr
@@ -142,6 +162,19 @@ fprint_g1nam : fprint_type(g1nam)
 overload print with print_g1nam
 overload prerr with prerr_g1nam
 overload fprint with fprint_g1nam
+//
+(* ****** ****** *)
+//
+fun
+print_g1val : print_type(g1val)
+fun
+prerr_g1val : prerr_type(g1val)
+fun
+fprint_g1val : fprint_type(g1val)
+//
+overload print with print_g1val
+overload prerr with prerr_g1val
+overload fprint with fprint_g1val
 //
 (* ****** ****** *)
 //
