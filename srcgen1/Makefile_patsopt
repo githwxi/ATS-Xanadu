@@ -117,6 +117,7 @@ trans01_basics.dats \
 trans01_envmap.dats \
 trans01_staexp.dats \
 trans01_dynexp.dats \
+trans01_dynutl.dats \
 tread01_staexp.dats \
 tread01_dynexp.dats \
 effect0.dats \

@@ -35,7 +35,7 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
-// Wed Apr 23 04:38:44 PM EDT 2025
+// Wed Apr 23 01:09:27 PM EDT 2025
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
@@ -51,106 +51,5 @@
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#staload
-SYM = "./../SATS/xsymbol.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload "./../SATS/mylib00.sats"
-#staload "./../DATS/mylib00.dats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload "./../SATS/xbasics.sats"
-//
-(* ****** ****** *)
-//
-#staload "./../SATS/xerrory.sats"
-//
-(* ****** ****** *)
 
-#staload "./../SATS/xlabel0.sats"
-#staload "./../SATS/lexing0.sats"
-
-(* ****** ****** *)
-
-#staload "./../SATS/locinfo.sats"
-
-(* ****** ****** *)
-
-#staload "./../SATS/staexp0.sats"
-#staload "./../SATS/dynexp0.sats"
-
-(* ****** ****** *)
-
-#staload "./../SATS/staexp1.sats"
-#staload "./../SATS/dynexp1.sats"
-
-(* ****** ****** *)
-
-#staload "./../SATS/staexp2.sats"
-#staload "./../SATS/statyp2.sats"
-#staload "./../SATS/dynexp2.sats"
-
-(* ****** ****** *)
-
-#staload "./../SATS/trans01.sats"
-#staload "./../SATS/trans12.sats"
-
-(* ****** ****** *)
-(* ****** ****** *)
-//
-implement
-g1exp_edfq(gexp) =
-(
-case+
-gexp.node() of
-//
-|
-G1Eid0(sym0) =>
-(
-case+ opt0 of
-| ~
-None_vt _ => G1Vbtf(false)
-| ~
-Some_vt _ => G1Vbtf( true ))
-where
-{
-val
-opt0 = the_gmacenv_find(sym0) }
-//
-| _(*non-G1Eid0*) => G1Vbtf(false)
-//
-)(*case+*)//end-of-[g1exp_edfq(...)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-implement
-g1mac_eval(gmac) =
-(
-//
-case+ gmac of
-| _(* otherwise *) => G1Vbtf(false)
-//
-)(*case+*)//end-of-[g1mac_eval(...)]
-//
-(* ****** ****** *)
-//
-implement
-g1exp_eval(gexp) =
-(
-//
-case+
-gexp.node() of
-| _(* otherwise *) => G1Vbtf(false)
-//
-)(*case+*)//end-of-[g1exp_eval(...)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-
-(* end of [xats_trans12_dynutl.dats] *)
+(* end of [xats_trans01_dynutl.dats] *)
