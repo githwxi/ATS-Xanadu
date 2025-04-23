@@ -227,16 +227,18 @@ T_TRCD24_ = T_TRCD2(4)
 macdef
 T_SRP_IFEXP_ = T_SRP_IFDEC(0)
 macdef
-T_SRP_IFDEF_ = T_SRP_IFDEC(2)
+T_SRP_IFDEF_ = T_SRP_IFDEC(1)
 macdef
 T_SRP_ELSIF_ = T_SRP_ELSIF(0)
 //
+(*
 macdef
-T_SRP_IFNEXP_ = T_SRP_IFDEC(1)
+T_SRP_IFNEXP_ = T_SRP_IFDEC(2)
 macdef
 T_SRP_IFNDEF_ = T_SRP_IFDEC(3)
 macdef
 T_SRP_ELSIFN_ = T_SRP_ELSIF(1)
+*)
 //
 (* ****** ****** *)
 //
@@ -530,17 +532,23 @@ myins("$exists", T_DLR_EXISTS)
 val () =
   myins("#if", T_SRP_IFEXP_)
 val () =
-  myins("#ifn", T_SRP_IFNEXP_)
+  myins("#ifexp", T_SRP_IFEXP_)
 //
 val () =
   myins("#ifdef", T_SRP_IFDEF_)
-val () =
-  myins("#ifndef", T_SRP_IFNDEF_)
 //
 val () =
   myins("#elsif", T_SRP_ELSIF_)
+(*
+val () =
+  myins("#ifn", T_SRP_IFNEXP_)
+val () =
+  myins("#ifnexp", T_SRP_IFNEXP_)
+val () =
+  myins("#ifndef", T_SRP_IFNDEF_)
 val () =
   myins("#elsifn", T_SRP_ELSIFN_)
+*)
 //
 val () = myins("#then", T_SRP_THEN)
 val () = myins("#else", T_SRP_ELSE)
