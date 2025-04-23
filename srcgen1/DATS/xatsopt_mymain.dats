@@ -224,6 +224,7 @@ end // end of [local]
 #dynload "./trans01_envmap.dats"
 #dynload "./trans01_staexp.dats"
 #dynload "./trans01_dynexp.dats"
+#dynload "./trans01_dynutl.dats"
 //
 #dynload "./tread01_staexp.dats"
 #dynload "./tread01_dynexp.dats"
