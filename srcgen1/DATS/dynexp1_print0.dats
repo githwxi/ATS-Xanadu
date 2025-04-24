@@ -974,15 +974,16 @@ case+ x0.node() of
   fprint!(out, "D1Cexcptcon(", knd, "; ", dcons, ")")
 //
 | D1Cdatatype
-  (knd, dtyps, wopt) =>
+  (knd, dtps, wopt) =>
   fprint!
   ( out
-  , "D1Cdatatype(", knd, "; ", dtyps, "; ", wopt, ")")
+  , "D1Cdatatype(", knd, "; ", dtps, "; ", wopt, ")")
 //
 | D1Cdynconst
   (tok, tqas, d1cs) =>
   fprint!
-  (out, "D1Cdynconst(", tok, "; ", tqas, "; ", d1cs, ")")
+  ( out
+  , "D1Cdynconst(", tok, "; ", tqas, "; ", d1cs, ")")
 //
 | D1Cvaldclst
   (tok, mopt, d1cs) =>
@@ -996,31 +997,49 @@ case+ x0.node() of
   , "D1Cvardclst(", tok, "; ", mopt, "; ", d1cs, ")")
 //
 | D1Cimplmnt0
-  ( tok, mopt, sqas, tqas
+  ( tknd, mopt, sqas, tqas
   , dqid, tias, f1as, res0, teq1, d1e2) =>
   fprint!
   ( out
   , "D1Cimplmnt0("
-  , tok, "; ", mopt, "; ", sqas, "; ", tqas, "; "
+  , tknd, "; ", mopt, "; ", sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f1as, "; ", res0, "; ", teq1, "; ", d1e2, ")")
 //
-| D1Celse(tok) =>
-  fprint!(out, "D1Celse(", tok, ")")
+(* ****** ****** *)
+//
 | D1Cendif(tok) =>
   fprint!(out, "D1Cendif(", tok, ")")
-| D1Cifdec(tok, g1e1, topt) =>
+| D1Cthen0(dcls) =>
+  fprint!(out, "D1Cthen0(", dcls, ")")
+| D1Celse1(dcls) =>
+  fprint!(out, "D1Celse1(", dcls, ")")
+| D1Cifdec(gexp, dthn, dels, dend) =>
   fprint!
-  (out, "D1Cifdec(", tok, "; ", g1e1, "; ", topt, ")")
-| D1Celsif(tok, g1e1, topt) =>
+  ( out, "D1Cifdec("
+  , gexp, "; ", dthn, "; ", dels, ";", dend, ")")
+| D1Celsif(gexp, dthn, dels, dend) =>
   fprint!
-  (out, "D1Celsif(", tok, "; ", g1e1, "; ", topt, ")")
+  ( out, "D1Celsif("
+  , gexp, "; ", dthn, "; ", dels, ";", dend, ")")
 //
-| D1Ctokerr(d0c0) => fprint!(out, "D1Ctokerr(", d0c0, ")")
+(* ****** ****** *)
 //
 (*
-| _(*rest-of-d1ecl*) =>
-    fprint!(out, "fprint_d1ecl: D1C...: not-yet-implemented")
+// HX: error indication
 *)
+|
+D1Ctokerr(d0c0) => fprint!(out, "D1Ctokerr(", d0c0, ")")
+//
+(* ****** ****** *)
+//
+(*
+|
+_ (*rest-of-d1ecl*) =>
+(
+fprint!(out, "fprint_d1ecl: D1C...: not-yet-implemented"))
+*)
+//
+(* ****** ****** *)
 //
 ) (* end of [fprint_d1ecl] *)
 

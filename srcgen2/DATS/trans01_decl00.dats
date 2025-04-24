@@ -2223,14 +2223,16 @@ end//end-of-[let]
 {
 //
 #vwtpdef
-d1eclist_vt = list_vt( d1ecl )
+d1eclist_vt = list_vt(d1ecl)
 //
 fun
 d1cls_vt2t_reverse0
 ( dcls
 : list_vt(d1ecl)): d1eclist =
-list_vt2t(list_vt_reverse0(dcls))
+list_vt2t
+(list_vt_reverse0<d1ecl>(dcls))
 //
+(* ****** ****** *)
 //
 fun
 f1_then0

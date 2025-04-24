@@ -3278,7 +3278,7 @@ val-I0DNTsome(tok) = seid.node((*void*))
 //
 (*
 val () =
-println!("trans01_d0ecl: ")
+println!("trans01_decl: ")
 val () =
 println!("aux_abstype: tok = ", tok)
 val () =
@@ -3660,6 +3660,8 @@ in
 case+
 d0cl.node() of
 //
+| D0Cnone _ => d1ecl_none1(d0cl)
+//
 | D0Cfixity _ => aux_fixity(d0cl)
 | D0Cnonfix _ => aux_nonfix(d0cl)
 //
@@ -3727,50 +3729,41 @@ d0cl.node() of
 //
 | D0Cimplmnt0 _ => aux_implmnt0(d0cl)
 //
-| D0Celse(tok1) =>
-  (
-  d1ecl_make_node(loc0, D1Celse(tok1))
-  )
-| D0Cendif(tok1) =>
-  (
-  d1ecl_make_node(loc0, D1Cendif(tok1))
-  )
-| D0Cifdec
-  (tok1, test, topt) =>
-  let
-  val test = trans01_gexp(test)
-  in
-    d1ecl_make_node
-    (loc0, D1Cifdec(tok1, test, topt))
-  end
-| D0Celsif
-  (tok1, test, topt) =>
-  let
-  val test = trans01_gexp(test)
-  in
-    d1ecl_make_node
-    (loc0, D1Celsif(tok1, test, topt))
-  end
-//
-| D0Cnone _ => d1ecl_none1(d0cl)
+(*
+| D0Cthen0 _ => ... // #then0
+| D0Celse1 _ => ... // #else1
+| D0Cendif _ => ... // #endif
+| D0Cifexp(_, gexp) => ... // #ifexp
+| D0Celsif(_, gexp) => ... // #elsif
+*)
 //
 | D0Ctokerr _ =>
-  (
-    d1ecl_make_node(loc0, D1Ctokerr(d0cl))
-  )
+(
+  d1ecl_make_node(loc0, D1Ctokerr(d0cl))
+)
 //
-(*
-| _ (*rest-of-d0ecl*) =>
-  (
-    println!
-    (loc0, ": trans01_decl: d0cl = ", d0cl); exit(1)
-  ) (* end of [D0C...] *)
-*)    
+| _(*D0C...*) =>
+(
+  exit(1) ) where
+{
+val () =
+(
+  println!
+  (loc0, ": trans01_decl: d0cl = ", d0cl))
+} (* where *)
+(* end of [rest-of-d0ecl] *)
 //
-end // end of [trans01_decl]
+//
+end // end of [trans01_decl(d0cl)]
 
 (* ****** ****** *)
-
+//
+(*
+(*
+// HX-2025-04-23:
+// This one does not
+// handle if-guarded declarations!
+*)
 implement
 trans01_declist
   (d0cs) =
@@ -3785,6 +3778,9 @@ list_vt2t(d1cs) where
     list_map$fopr<d0ecl><d1ecl> = trans01_decl
   }
 } (* end of [trans01_declist] *)
+*)
+//
+(* ****** ****** *)
 
 end // end of [local]
 

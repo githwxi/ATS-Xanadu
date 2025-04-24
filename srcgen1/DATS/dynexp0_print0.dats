@@ -1217,7 +1217,7 @@ case+ x0.node() of
   , tok, "; ", mopt, "; ", sqas, "; ", tqas, "; "
   , dqid, "; ", tias, "; ", f0as, "; ", res0, "; ", teq1, "; ", d0e2, ")")
 //
-| D0Celse(tok) =>
+| D0Celse1(tok) =>
   fprint!(out, "D0Celse(", tok, ")")
 | D0Cendif(tok) =>
   fprint!(out, "D0Cendif(", tok, ")")

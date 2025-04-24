@@ -4595,7 +4595,7 @@ end // end of [#SYMLOAD(...)]
 //
   in
     err := e0;
-    d0ecl_make_node(loc_res, D0Celse(tok))
+    d0ecl_make_node(loc_res, D0Celse1(tok))
   end
 | T_SRP_ENDIF() => let
 //
