@@ -1323,68 +1323,109 @@ in(* in-of-let *)
 case+
 d3cl.node() of
 //
-| D3Cd2ecl _ => d3cl
+|
+D3Cd2ecl _ => d3cl
 //
-| D3Cstatic
-  (tok(*STATIC*), d3c1) =>
-  (
-  d3ecl_make_node
-  ( loc0
-  , D3Cstatic(tok, d3c1))
-  ) where
-  { val
-    d3c1 = trans3t_decl(env0, d3c1)
-  }
-| D3Cextern
-  (tok(*EXTERN*), d3c1) =>
-  (
-  d3ecl_make_node
-  ( loc0
-  , D3Cextern(tok, d3c1))
-  ) where
-  { val
-    d3c1 = trans3t_decl(env0, d3c1)
-  }
+|
+D3Cstatic
+(tok0, d3c1) =>
+(
+d3ecl_make_node
+( loc0
+, D3Cstatic(tok0, d3c1))
+) where
+{
+val
+d3c1 =
+(
+  trans3t_decl(env0, d3c1))
+}(*where*)//end-of-[D3Cstatic]
 //
-| D3Clocal
-  (head, body) =>
-  let
+|
+D3Cextern
+(tok0, d3c1) =>
+(
+d3ecl_make_node
+( loc0
+, D3Cextern(tok0, d3c1))
+) where
+{
+val
+d3c1 =
+(
+  trans3t_decl(env0, d3c1))
+}(*where*)//end-of-[D3Cextern]
 //
-    val () =
-    implenv_add_loc1(env0)
-    val
-    head =
-    trans3t_declist(env0, head)
+(* ****** ****** *)
 //
-    val () =
-    implenv_add_loc2(env0)
-    val
-    body =
-    trans3t_declist(env0, body)
+|
+D3Cdclst
+(  dcls  ) =>
+(
+d3ecl_make_node
+(loc0, D3Cdclst(dcls))
+) where
+{
 //
-  in
-    let
-    val () =
-    implenv_pop_loc12(env0) in
-    d3ecl_make_node(loc0, D3Clocal(head, body))
-    end
-  end
+val
+dclst =
+trans3t_declist(env0, dcls)
+}(*where*)//end-of-[D3Cdclst(...)]
 //
-| D3Cinclude _ =>
-  let
-    val d3cl =
-    aux_include(env0, d3cl) in d3cl
-  end // end of [D3Cinclude]
-| D3Cstaload _ =>
-  let
-    val d3cl =
-    aux_staload(env0, d3cl) in d3cl
-  end // end of [D3Cstaload]
+|
+D3Clocal
+(head, body) =>
+let
 //
-| D3Cfundclst _ => aux_fundclst(env0, d3cl)
+val () =
+implenv_add_loc1(env0)
+val
+head =
+trans3t_declist(env0, head)
 //
-| D3Cvaldclst _ => aux_valdclst(env0, d3cl)
-| D3Cvardclst _ => aux_vardclst(env0, d3cl)
+val () =
+implenv_add_loc2(env0)
+val
+body =
+trans3t_declist(env0, body)
+//
+in//let
+//
+let
+val () =
+implenv_pop_loc12(env0)
+in//let
+(
+d3ecl_make_node
+(loc0, D3Clocal(head, body)))
+end//let
+//
+end(*let*)//end-of-[D3Clocal(...)]
+//
+(* ****** ****** *)
+//
+|
+D3Cinclude _ =>
+let
+val d3cl =
+aux_include(env0, d3cl) in d3cl
+end(*let*)//end-of-[D3Cinclude(...)]
+|
+D3Cstaload _ =>
+let
+val d3cl =
+aux_staload(env0, d3cl) in d3cl
+end(*let*)//end-of-[D3Cstaload(...)]
+//
+(* ****** ****** *)
+//
+|
+D3Cvaldclst _ => aux_valdclst(env0, d3cl)
+|
+D3Cvardclst _ => aux_vardclst(env0, d3cl)
+//
+|
+D3Cfundclst _ => aux_fundclst(env0, d3cl)
 //
 | D3Cimplmnt1 _ => d3cl
 | D3Cimplmnt2 _ => d3cl

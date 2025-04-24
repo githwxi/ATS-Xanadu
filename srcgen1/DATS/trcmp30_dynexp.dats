@@ -3436,40 +3436,57 @@ in(*in-of-local*)
 case+
 d3cl.node() of
 //
+(* ****** ****** *)
+//
 |
 D3Cstatic
-(tok, d3cl) => let
+(tok0, d3cl) => let
   val
   hdcl =
   trcmp30_decl(env0, d3cl)
 in
-  h0dcl_make_node
-  (loc0, H0Cstatic(tok, hdcl))
-end
+h0dcl_make_node
+(loc0, H0Cstatic(tok0, hdcl))
+end//let//end-of-[D3Cstatic(...)]
 |
 D3Cextern
-(tok, d3cl) => let
+(tok0, d3cl) => let
 val
 hdcl =
 trcmp30_decl(env0, d3cl)
 in
-  h0dcl_make_node
-  (loc0, H0Cextern(tok, hdcl))
-end
+h0dcl_make_node
+(loc0, H0Cextern(tok0, hdcl))
+end//let//end-of-[D3Cextern(...)]
+//
+(* ****** ****** *)
+//
+|
+D3Cdclst
+(  dcls  ) =>
+(
+h0dcl_make_node
+(loc0, H0Cdclst(dcls))
+) where
+{
+val dcls =
+trcmp30_declist(env0, dcls)
+}(*where*)//end-of-[D3Cdclst(...)]
 //
 |
 D3Clocal
 (head, body) => let
-val
-head =
+val head =
 trcmp30_declist(env0, head)
-val
-body =
+val body =
 trcmp30_declist(env0, body)
 in
-  h0dcl_make_node
-  ( loc0, H0Clocal(head, body) )
-end
+(
+h0dcl_make_node
+(loc0, H0Clocal(head, body)))
+end(*let*)//end-of-[D3Clocal(...)]
+//
+(* ****** ****** *)
 //
 |
 D3Cinclude _ => aux_include(env0, d3cl)

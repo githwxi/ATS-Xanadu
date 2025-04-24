@@ -160,7 +160,6 @@ g1exp_eval // HX: first-order!
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #implfun
 g1mac_eval
 (tenv, gmac) =
@@ -256,7 +255,7 @@ if
 ISDFQ(gfun)
 then
 (
-  g1exp_edfq(tenv, g1e1)
+  g1exp_defq(tenv, g1e1)
 )
 else
 (
@@ -273,8 +272,8 @@ g1v1 = g1exp_eval(tenv, g1e1)
 ( gfun
 , g1e1, g1e2) =>
 (
-g1val_a2pp(gfun, g1v1, g1v2))
-where
+g1val_a2pp
+(gfun, g1v1, g1v2)) where
 {
 //
 val
@@ -287,11 +286,10 @@ g1v2 = g1exp_eval(tenv, g1e2)
 |G1Elist(g1es) =>
 (
 case+ g1es of
-|list_nil
-((*void*)) =>
-G1Vnone((*0*))
-|list_cons
-(g1e1, ges2) =>
+|list_nil((*0*)) =>
+(
+  G1Vnone((*void*)))
+|list_cons(g1e1, ges2) =>
 (
 case+ ges2 of
 |list_nil() =>
@@ -324,7 +322,7 @@ gfun.node() of
 (
 case+
 sym0.name() of
-| "dfq" => true
+| "defq" => true
 | _(*else*) => false)
 //
 | _(*non-G1Eid0*) => false
@@ -333,7 +331,7 @@ sym0.name() of
 (* ****** ****** *)
 //
 fun
-g1exp_edfq
+g1exp_defq
 ( tenv:
 ! tr12env
 , gexp: g1exp): g1val =
@@ -356,7 +354,7 @@ where
   tr12env_find_g1mac(tenv,sym0) }
 //
 | _(*non-G1Eid0*) => G1Vbtf(false)
-)(*case+*)//end-of-[g1exp_edfq(...)]
+)(*case+*)//end-of-[g1exp_defq(...)]
 //
 (* ****** ****** *)
 //

@@ -7217,7 +7217,13 @@ case+ test of
 |
 G1Vbtf
 (test) => test | _ => false
-) : bool//end-of-[val(test)]
+) : bool // end-of-[val(test)]
+//
+(*
+val (  ) =
+println!
+("trans12_decl: test = ", test)
+*)
 //
 in//let
 //

@@ -1146,10 +1146,17 @@ H0Cstatic of
 H0Cextern of
 (token(*EXTERN*), h0dcl)
 //
+(* ****** ****** *)
+//
+|
+H0Cdclst of ( h0dclist )
+//
 |
 H0Clocal of
 ( h0dclist(*head*)
-, h0dclist(*body*))
+, h0dclist(*body*))//H0Clocal
+//
+(* ****** ****** *)
 //
 |
 H0Cinclude of
@@ -1159,9 +1166,13 @@ H0Cinclude of
 , filpathopt
 , h0dclistopt) // file inclusion
 //
+(* ****** ****** *)
+//
 |
 H0Cabstype of
 (htcst, h0typopt(*def*))
+//
+(* ****** ****** *)
 //
 |
 H0Cexcptcon of (h0conlst)
@@ -1169,11 +1180,7 @@ H0Cexcptcon of (h0conlst)
 |
 H0Cdatatype of (htcstlst)
 //
-|
-H0Cfundclst of
-( token(*knd*)
-, decmodopt
-, htqarglst, h0fundeclist)
+(* ****** ****** *)
 //
 |
 H0Cvaldclst of
@@ -1185,12 +1192,22 @@ H0Cvardclst of
 , decmodopt, h0vardeclist)
 //
 |
+H0Cfundclst of
+( token(*knd*)
+, decmodopt
+, htqarglst, h0fundeclist)
+//
+(* ****** ****** *)
+//
+|
 H0Cimplmnt3 of
 ( token(*impkind*)
 , stamp(*unicity*)
 , decmodopt
 , htqargopt
 , h0cst, htiarg, h0faglst, h0exp)
+//
+(* ****** ****** *)
 //
 |
 H0Cnone1 of (dataptr) // HX: for ignores

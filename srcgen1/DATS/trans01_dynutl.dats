@@ -301,7 +301,7 @@ then gexp else
 let
 val
 gid0 = // HX: defined?
-$SYM.symbol_make("dfq")
+$SYM.symbol_make("defq")
 val
 gfun =
 g1exp_make_node(loc0, G1Eid0(gid0))
