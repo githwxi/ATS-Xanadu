@@ -202,11 +202,25 @@ fprint!( out, "G1Mdexp(", d1e1, ")" )
 end (*let*) // end of [fprint_g1mac]
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
+implement
+g1mac_eval(gmac) =
+(
+//
+case+ gmac of
+|
+_(* otherwise *) => G1Vbtf(false)
+//
+)(*case+*)//end-of-[g1mac_eval(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 local
 
 (* ****** ****** *)
-
+//
 fun
 auxarg0
 ( g1a0
@@ -221,6 +235,7 @@ T_IDENT_alp(nm) => symbol_make(nm)
 T_IDENT_sym(nm) => symbol_make(nm)
 //
 ) (* end of [auxarg] *)
+//
 and
 auxargs
 ( g1as
@@ -229,27 +244,31 @@ list_vt2t
 (
 list_map<
 g1arg><g1mid>(g1as)) where
-{ implement
-  list_map$fopr<
+{
+implement
+list_map$fopr<
   g1arg><g1mid>(g1a) = auxarg0(g1a)
-} (*where*) // end of [auxargs]
-
+} (*where*) // end of [auxargs(g1as)]
+//
 (* ****** ****** *)
-
+//
 fun
 auxmarg
 (g1ma: g1marg): g1mas =
 (
 case-
 g1ma.node() of
+//
 (*
 | G1MARGsarg(g1as) => list_nil()
 *)
+//
 | G1MARGdarg(g1as) => auxargs(g1as)
-) (* end of [auxmarg] *)
-
+//
+) (*case-*) // end-of-[auxmarg(g1ma)]
+//
 (* ****** ****** *)
-
+//
 fun
 auxg1e0
 ( g1e0
@@ -346,19 +365,22 @@ G1Enone0((*void*)) => G1Mnone0()
 |
 _ (*rest-of-g1exp*) => G1Mnone1(g1e0)
 )
+//
 and
 auxg1es
 ( g1es
 : g1explst): g1maclst =
 list_vt2t
 (
-list_map<g1exp><g1mac>(g1es) where
+list_map<
+  g1exp><g1mac>(g1es) where
 {
 implement
-list_map$fopr<g1exp><g1mac>(g1e) = auxg1e0(g1e)
-}
-) (* end of [auxg1es] *)
-
+list_map$fopr<
+  g1exp><g1mac>(g1e) = auxg1e0(g1e) }
+//
+) (* list_vt2t *) // end of [auxg1es(g1es)]
+//
 (* ****** ****** *)
 
 fun

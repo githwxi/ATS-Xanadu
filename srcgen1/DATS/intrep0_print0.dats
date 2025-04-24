@@ -914,6 +914,8 @@ fprint_h0dcl(out, x0) =
 case+
 x0.node() of
 //
+(* ****** ****** *)
+//
 |
 H0Cstatic
 (tok, hdcl) =>
@@ -927,12 +929,21 @@ fprint!
 ( out
 , "H0Cextern(", tok, "; ", hdcl, ")")
 //
+(* ****** ****** *)
+//
+|
+H0Cdclst
+(  dcls  ) =>
+fprint!(out, "H0Cdclst(", dcls, ")")
+//
 |
 H0Clocal
 (head, body) =>
 fprint!
 ( out
 , "H0Clocal(", head, "; ", body, ")")
+//
+(* ****** ****** *)
 //
 |
 H0Cinclude
@@ -955,12 +966,16 @@ H0Cinclude
   | Some _ => "Some(<hdcls>)"): string
 }
 //
+(* ****** ****** *)
+//
 |
 H0Cabstype
 (htc1, def2) =>
 fprint!
 ( out
 , "H0Cabstype(", htc1, "; ", def2)
+//
+(* ****** ****** *)
 //
 |
 H0Cvaldclst
@@ -977,6 +992,8 @@ fprint!
 , "H0Cvardclst("
 , knd, "; ", mopt, "; ", hvds, ")")
 //
+(* ****** ****** *)
+//
 |
 H0Cfundclst
 (knd, mopt, tqas, hfds) =>
@@ -985,12 +1002,16 @@ fprint!
 , "H0Cfundclst("
 , knd, "; ", mopt, "; ", tqas, "; ", hfds, ")")
 //
+(* ****** ****** *)
+//
 |
 H0Cexcptcon(hdcs) =>
 fprint!(out, "H0Cexcptcon(", hdcs, ")")
 |
 H0Cdatatype(htcs) =>
 fprint!(out, "H0Cdatatype(", htcs, ")")
+//
+(* ****** ****** *)
 //
 |
 H0Cimplmnt3
@@ -1005,6 +1026,8 @@ fprint!
 , mopt, "; "
 , tqas, "; "
 , hdc1, "; ", htia, "; ", hfas, "; ", body, ")")
+//
+(* ****** ****** *)
 //
 |
 H0Cnone1(d3cl) =>

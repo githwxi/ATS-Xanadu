@@ -99,7 +99,7 @@ fun
 ifexp_eval(g1exp): bool
 //
 fun
-g1exp_edfq(g1exp): g1val
+g1exp_defq(g1exp): g1val
 fun
 g1exp_eval(g1exp): g1val
 fun
