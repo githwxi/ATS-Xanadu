@@ -145,7 +145,8 @@ list_cons(@(gid1, g1m1), genv) }
 fun
 g1env_search$opt
 ( genv
-: g1env, x0: g1id0): g1macopt_vt =
+: g1env
+, gid0: g1id0): g1macopt_vt =
 (
 case+ genv of
 |
@@ -155,9 +156,9 @@ optn_vt_nil(*void*)
 list_cons((x1, v1), genv) =>
 (
 if
-(x0 = x1)
+(gid0 = x1)
 then optn_vt_cons(v1)
-else g1env_search$opt(genv, x0)))
+else g1env_search$opt(genv, gid0)))
 // end-[g1env_search$opt(genv, ...)]
 //
 (* ****** ****** *)
@@ -262,8 +263,10 @@ G1Ea1pp
 let
 val
 g1f0 = f0_gexp(g1f0)
-in
-  G1Mapps(g1f0, g1ms) where
+in//let
+(
+  G1Mapps(g1f0, g1ms)
+) where
 {
 val
 g1ms =
@@ -277,7 +280,8 @@ _(*non-G1Elist*) =>
 let
 val
 g1m1 =
-f0_gexp(g1e1) in list_sing(g1m1) end
+f0_gexp(g1e1) in list_sing(g1m1)
+end//let
 )
 }
 end (*let*) // end of [G1Ea1pp(...)]

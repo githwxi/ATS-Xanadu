@@ -193,6 +193,12 @@ g1exp_node =
 //
 | G1Ea0pp of ((*nil*))//apply
 //
+(*
+HX-2025-04-24:
+The arg of G1Ea1pp can be
+G1Elist, which is only handled
+where g1exp is translated to g1mac
+*)
 | G1Ea1pp of
   (g1exp(*fun*), g1exp(*arg*))
 | G1Ea2pp of
