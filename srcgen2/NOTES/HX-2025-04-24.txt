@@ -7,13 +7,13 @@ Thu Apr 24 12:52:13 PM EDT 2025
 Hi, there,
 
 ATS3:
-Writing correct code productively
-Corretness through advanced types
-Productivity through code sharing and meta-programming
+For constructing quality code productively
 
-Finally, I have added support for if-guarded declarations.
-The first release of ATS3 (ATS3-0.0.0-alpha01) will be out
-imminently :)
+1. Corretness through advanced types
+2. Productivity through code sharing and meta-programming
+
+I have just added support for if-guarded declarations.
+The first release ATS3-alpha.0.1 will be out imminently :)
 
 In the future, unless there are VERY strong reasons, I should
 refrain from using additional features in the implementation of
