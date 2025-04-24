@@ -28,9 +28,8 @@ NODE=node --stack-size=4096
 ######
 MYTEST="."
 ######
-XSHARED="${XATSJSD}/xshared"
-######
-XATS2JS="${XATSJSD}/bin/xats2js"
+XSHARED=${XATSJSD}/xshared
+XATS2JS=${XATSJSD}/bin/xats2js
 ######
 # XATS2JS=\
 # nix run \

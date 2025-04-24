@@ -7167,11 +7167,72 @@ end // end of [D1Clocal]
 //
 | D1Cimplmnt0 _ => aux_implmnt0(d1cl)
 //
+(* ****** ****** *)
+//
+| D1Cthen0
+(   d1cls   ) =>
+(
+  d2ecl_make_node
+  (d1cl.loc(), D2Cdclst(d2cls)))
+where
+{
+  val d2cls = trans12_declist(d1cls)
+}(*where*) // end-of-[D1Cthen0(d1cls)]
+//
+| D1Celse1
+(   d1cls   ) =>
+(
+  d2ecl_make_node
+  (d1cl.loc(), D2Cdclst(d2cls))
+) where
+{
+  val d2cls = trans12_declist(d1cls)
+}(*where*) // end-of-[D1Celse1(d1cls)]
+//
+(* ****** ****** *)
+//
+|D1Cifexp
+( gexp
+, dthn
+, dels, dend) =>
+let
+//
+val loc0 = d1cl.loc()
+//
+val
+test = g1exp_eval(gexp)
+val
+test = 
+(
+case+ test of
+|
+G1Vbtf
+(test) => test | _ => false)
+//
+in//let
+//
+if
+test
+then
+(
+case+ dthn of
+|None() => d2ecl_none0(loc0)
+|Some(dcl1) =>trans12_decl(dcl1))
+else
+(
+case+ dels of
+|None() => d2ecl_none0(loc0)
+|Some(dcl1) => trans12_decl(dcl1))//if
+//
+end(*let*) // end-of-[D1Cifexp(gexp,...)]
+//
+(* ****** ****** *)
+//
 | _(*rest-of-D1ECL*) => d2ecl_none1(d1cl)
 //
-end // end of [trans12_decl]
+end // end of [trans12_decl(d1cl)]
 
-end // end of [local]
+end // end of [local(implement(trans12_decl))]
 
 (* ****** ****** *)
 

@@ -295,7 +295,7 @@ _XATSOPT_JS_NODE_ = 1
 #include
 "srcgen1/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
 (*
-#endif // end-of-[------ifdef(_XATSOPT_JS_NODE_)------]
+#endif // end-of-[------#ifdef(_XATSOPT_JS_NODE_)------]
 *)
 //
 (* ****** ****** *)
