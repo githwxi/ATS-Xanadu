@@ -252,7 +252,7 @@ gexp.node() of
 |G1Ea1pp
 ( gfun, g1e1) =>
 if
-ISDFQ(gfun)
+ISDEFQ(gfun)
 then
 (
   g1exp_defq(tenv, g1e1)
@@ -313,7 +313,7 @@ $SYM.symbl_get_name
 (* ****** ****** *)
 //
 fun
-ISDFQ
+ISDEFQ
 (gfun: g1exp): bool =
 (
 case+
@@ -335,7 +335,16 @@ g1exp_defq
 ( tenv:
 ! tr12env
 , gexp: g1exp): g1val =
-(
+let
+//
+(*
+val () =
+prerrsln
+("g1exp_defq: gexp = ", gexp)
+*)
+//
+in//let
+//
 case+
 gexp.node() of
 //
@@ -348,13 +357,28 @@ optn_vt_nil _ => G1Vbtf(false)
 | ~
 optn_vt_cons _ => G1Vbtf(true))
 where
-{
-  val
-  opt0 =
-  tr12env_find_g1mac(tenv,sym0) }
+{ val opt0 =
+  tr12env_find_g1mac(tenv,sym0)
+}(*where*)//endof-(optn_vt_cons)
 //
-| _(*non-G1Eid0*) => G1Vbtf(false)
-)(*case+*)//end-of-[g1exp_defq(...)]
+|
+G1Elist(g1es) =>
+(
+case+ g1es of
+|
+list_nil((*void*)) => G1Vbtf(false)
+|
+list_cons(g1e1, g1es) =>
+(
+if
+list_nilq(g1es) then
+g1exp_defq(tenv, g1e1) else G1Vbtf(false))
+)(*case+*)//end-of-[G1Elist(...)]
+//
+|
+_(*non-G1Eid0*) => G1Vbtf(  false  )
+//
+end(*let*)//end-of-[g1exp_defq(gexp)]
 //
 (* ****** ****** *)
 //
