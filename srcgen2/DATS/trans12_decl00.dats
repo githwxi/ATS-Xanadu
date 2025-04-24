@@ -925,8 +925,9 @@ D1Cnone0 // HX: it is an unharmful decl
 d2ecl_make_node
 (d1cl.lctn(), D2Cthen0(d2cls)))
 where
-{ val
-  d2cls = trans12_d1eclist(env0, d1cls)
+{
+val
+d2cls = trans12_d1eclist(env0, d1cls)
 }(*where*) // end-of-[ D1Cthen0(d1cls) ]
 //
 |D1Celse1
@@ -935,8 +936,9 @@ where
 d2ecl_make_node
 (d1cl.lctn(), D2Celse1(d2cls))
 ) where
-{ val
-  d2cls = trans12_d1eclist(env0, d1cls)
+{
+val
+d2cls = trans12_d1eclist(env0, d1cls)
 }(*where*) // end-of-[ D1Celse1(d1cls) ]
 //
 (* ****** ****** *)
@@ -946,10 +948,19 @@ d2ecl_make_node
 , dthn
 , dels, dend) =>
 let
+//
 val loc0 = d1cl.lctn()
+//
 val
 test =
 tr12env_eval_ifexp(env0, gexp)
+//
+(*
+val () =
+prerrsln("\
+trans12_d1ecl: D1Cifexp: test = ", test)
+*)
+//
 in//let
 //
 if
@@ -982,10 +993,19 @@ end(*let*) // end-of-[D1Cifexp(gexp,...)]
 , dthn
 , dels, dend) =>
 let
+//
 val loc0 = d1cl.lctn()
+//
 val
 test =
 tr12env_eval_ifexp(env0, gexp)
+//
+(*
+val () =
+prerrsln("\
+trans12_d1ecl: D1Celsif: test = ", test)
+*)
+//
 in//let
 //
 if
@@ -2026,8 +2046,8 @@ D1Cinclude
 //
 (*
 val () =
-prerrsln(
-"f0_include(12): dopt = ", dopt)
+prerrsln("\
+f0_include(12): dopt = ", dopt)
 *)
 //
 val dopt =
