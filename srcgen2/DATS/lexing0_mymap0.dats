@@ -66,10 +66,14 @@ ATS_PACKNAME
 local
 
 (* ****** ****** *)
+//
+(*
 #staload
-"\
-srcgen1\
-/prelude/DATS/CATS/JS/basics1.dats"
+"srcgen1\
+/prelude\
+/DATS/CATS/JS/basics3.dats"
+*)
+//
 (* ****** ****** *)
 
 #typedef key = strn

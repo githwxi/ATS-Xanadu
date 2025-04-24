@@ -897,6 +897,9 @@ datatype
 l1dcl_node =
 //
 |
+L1DCLdclst of
+(  l1dclist  )
+|
 L1DCLlocal of
 ( l1dclist(*head*)
 , l1dclist(*body*))

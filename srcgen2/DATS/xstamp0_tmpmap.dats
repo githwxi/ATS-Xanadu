@@ -43,15 +43,16 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #include
 "./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
 (*
 #include
 "./../HATS/xatsopt_dats.hats"
 *)
 #include
 "./../HATS/xatsopt_dpre.hats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
@@ -61,10 +62,14 @@ ATS_PACKNAME
 local
 
 (* ****** ****** *)
+//
+(*
 #staload
-"\
-srcgen1\
-/prelude/DATS/CATS/JS/basics1.dats"
+"srcgen1\
+/prelude\
+/DATS/CATS/JS/basics3.dats"
+*)
+//
 (* ****** ****** *)
 
 #typedef key = sint
