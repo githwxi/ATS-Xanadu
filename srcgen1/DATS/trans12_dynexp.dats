@@ -7233,13 +7233,15 @@ then
 (
 case+ dthn of
 |None() =>
-d2ecl_dclst_nil(loc0)
-|Some(dcl1) =>trans12_decl(dcl1))
+(
+  d2ecl_dclst_nil(loc0))
+|Some(dcl1) => trans12_decl(dcl1))
 else
 (
 case+ dels of
 |None() =>
-d2ecl_dclst_nil(loc0)
+(
+  d2ecl_dclst_nil(loc0))
 |Some(dcl1) => trans12_decl(dcl1))//if
 //
 end(*let*) // end-of-[D1Cifexp(gexp,...)]

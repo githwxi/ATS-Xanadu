@@ -233,10 +233,14 @@ local
 #symload
 stmp with symbl_get_stmp
 (* ****** ****** *)
+//
+(*
 #staload
-"\
-srcgen1\
-/prelude/DATS/CATS/JS/basics1.dats"
+"srcgen1\
+/prelude\
+/DATS/CATS/JS/basics3.dats"
+*)
+//
 (* ****** ****** *)
 //
 val

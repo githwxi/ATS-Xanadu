@@ -3480,6 +3480,18 @@ case+
 dcl0.node() of
 //
 |
+L1DCLdclst
+(  dcls  ) =>
+{
+val () =
+fprint(fout, "// { // dclst\n")
+val () =
+js1emit_l1dclist(fout, nind, dcls)
+val () =
+fprint(fout, "// } // end-of-dclst\n")
+}
+//
+|
 L1DCLlocal
 (head, body) =>
 {

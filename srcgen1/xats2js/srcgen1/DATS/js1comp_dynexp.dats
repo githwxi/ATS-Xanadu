@@ -2990,7 +2990,31 @@ case+ opt0 of
 local
 
 (* ****** ****** *)
-
+//
+fun
+aux_dclst
+( env0:
+! compenv
+, dcl0: h0dcl): l1dcl =
+let
+//
+val
+loc0 = dcl0.loc()
+val-
+H0Cdclst
+( dcls ) = dcl0.node()
+//
+val dcls =
+js1comp_h0dclist(env0, dcls)
+//
+in
+(
+  l1dcl_make_node
+  ( loc0, L1DCLdclst(dcls) ) )
+end(*let*)//end-of-[aux_dclst(dcl0)]
+//
+(* ****** ****** *)
+//
 fun
 aux_local
 ( env0:
@@ -3002,7 +3026,7 @@ loc0 = dcl0.loc()
 val-
 H0Clocal
 ( head
-, body) = dcl0.node()
+, body ) = dcl0.node()
 //
 val head =
 js1comp_h0dclist(env0, head)
@@ -3011,11 +3035,11 @@ js1comp_h0dclist(env0, body)
 //
 in
 l1dcl_make_node
-( loc0, L1DCLlocal( head, body ) )
-end // end of [aux_local]
-
+(loc0, L1DCLlocal(head, body))
+end(*let*)//end-of-[aux_local(dcl0)]
+//
 (* ****** ****** *)
-
+//
 fun
 aux_include
 ( env0:
@@ -3059,10 +3083,12 @@ end where
 {
 (*
 val () =
-println!("aux_include: dcl0 = ", dcl0)
+(
+  println!
+  ("aux_include: dcl0 = ", dcl0))
 *)
-} (*where*) // end of [aux_include]
-
+}(*where*)//end-of-[aux_include(dcl0)]
+//
 (* ****** ****** *)
 //
 (*
@@ -3161,7 +3187,7 @@ val () = js1comp_dvarpop_fun0(env0)
 in
 l1dcl_make_node
 (loc0, L1DCLfundclst(knd0, mopt, lfds))
-end // end of [aux_fundclst_fun]
+end(*let*)//end-of-[aux_fundclst_fun(...)]
 //
 and
 aux_fundclst_tmp
@@ -3176,7 +3202,7 @@ HX: should template be compiled?
 *)
 in
 l1dcl_make_node(loc0, L1DCLnone0(*void*))
-end // end of [aux_fundclst_tmp]
+end(*let*)//end-of-[aux_fundclst_tmp(...)]
 //
 (* ****** ****** *)
 //
@@ -3203,7 +3229,7 @@ js1comp_hvaldeclist(env0, hvds)
 in
 l1dcl_make_node
 (loc0, L1DCLvaldclst(knd0, mopt, lvds))
-end // end of [aux_valdclst]
+end(*let*)//end-[aux_valdclst(env0,dcl0)]
 //
 (* ****** ****** *)
 
@@ -3225,7 +3251,7 @@ js1comp_hvardeclist(env0, hvds)
 in
 l1dcl_make_node
 (loc0, L1DCLvardclst(knd0, mopt, lvds))
-end // end of [aux_vardclst]
+end(*let*)//end-[aux_vardclst(env0,dcl0)]
 
 (* ****** ****** *)
 
@@ -3362,7 +3388,7 @@ l1dcl_make_node
 (loc0, L1DCLimplmnt3(knd0, mopt, limp))
 end
 //
-end // end of [aux_implmnt3_none]
+end(*let*)//end-of-[aux_implmnt3_none(...)]
 //
 and
 aux_implmnt3_some
@@ -3373,7 +3399,7 @@ let
 val loc0 = dcl0.loc()
 in
 l1dcl_make_node(loc0, L1DCLnone0(*none*))
-end // end of [aux_implmnt3_some]
+end(*let*)//end-of-[aux_implmnt3_some(...)]
 
 (* ****** ****** *)
 
@@ -3459,7 +3485,7 @@ end // end of [val()=auxhdcs()]
 in
 l1dcl_make_node
 (loc0, L1DCLexcptcon(hdcs, blk0(*init*)))
-end // end of [aux_excptcon]
+end(*let*)//end-of-[aux_excptcon(env0,dcl0)]
 
 (* ****** ****** *)
 
@@ -3491,6 +3517,9 @@ H0Cextern
 js1comp_h0dcl
 ( env0, dcl1 )
 //
+|
+H0Cdclst _ =>
+aux_dclst(env0, dcl0)
 |
 H0Clocal _ =>
 aux_local(env0, dcl0)

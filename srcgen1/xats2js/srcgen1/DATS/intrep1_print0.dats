@@ -800,6 +800,10 @@ fprint!(out, "L1DCLcons(", xs, ")")
 *)
 //
 |
+L1DCLdclst
+(  dcls  ) =>
+fprint!(out, "L1DCLdclst(", dcls, ")")
+|
 L1DCLlocal
 (head, body) =>
 fprint!
