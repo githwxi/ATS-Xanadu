@@ -248,7 +248,8 @@ if JavaScript is replaced by Python!
 #define
 _XATSOPT_JS_ = 1
 //
-#ifdef(_XATSOPT_JS_)
+#if
+defq(_XATSOPT_JS_)
 //
 (*
 #include
@@ -287,7 +288,8 @@ This needs to be changed if NODE is replaced by QJS.
 #define
 _XATSOPT_JS_NODE_ = 1
 //
-#ifdef(_XATSOPT_JS_NODE_)
+#if
+defq(_XATSOPT_JS_NODE_)
 #include
 "srcgen1/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
 #endif // end-of-[------#ifdef(_XATSOPT_JS_NODE_)------]

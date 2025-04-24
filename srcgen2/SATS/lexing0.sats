@@ -269,6 +269,7 @@ HX-2025-04-19:
 For if-guarded declarations
 Sat Apr 19 02:58:45 PM EDT 2025
 *)
+  | T_SRP_IFDEF of () // #ifdef
   | T_SRP_IFEXP of () // #ifexp
   | T_SRP_THEN0 of () // #then1
   | T_SRP_ELSE1 of () // #else1
