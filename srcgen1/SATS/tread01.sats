@@ -194,6 +194,8 @@ tread01_d1explst: treader01(d1explst)
 fun//{}
 tread01_d1ecl: treader01(d1ecl)
 fun//{}
+tread01_d1eclopt: treader01(d1eclopt)
+fun//{}
 tread01_d1eclist: treader01(d1eclist)
 //
 (* ****** ****** *)

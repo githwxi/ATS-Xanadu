@@ -3535,27 +3535,57 @@ D3Cextern
   d3c1 = trans33_decl(env0, d3c1)
 }
 //
+(* ****** ****** *)
+//
+| D3Cdclst
+(   dcls   ) => let
+//
+  overload
+  d3ecl
+  with d3ecl_make_node
+//
+  val
+  dcls =
+  trans33_declist(env0, dcls)
+//
+in//let
+(
+  d3ecl(loc0, D3Cdclst(dcls)) )
+end//let//end-of-[D3Cdclst(dcls)]
+//
+(* ****** ****** *)
+//
 | D3Clocal
-  (head, body) => let
-    val () =
-    abstenv_add_loc1(env0)
-    val
-    head =
-    trans33_declist(env0, head)
+( head, body ) => let
 //
-    val () =
-    abstenv_add_loc2(env0)
-    val
-    body =
-    trans33_declist(env0, body)
+  overload
+  d3ecl
+  with d3ecl_make_node
 //
-  in
-  let
-    val () = abstenv_pop_loc12(env0)
-  in
-    d3ecl_make_node(loc0, D3Clocal(head, body))
-  end
-  end
+  val () =
+  abstenv_add_loc1(env0)
+  val
+  head =
+  trans33_declist(env0, head)
+//
+  val () =
+  abstenv_add_loc2(env0)
+  val
+  body =
+  trans33_declist(env0, body)
+//
+in//let
+//
+let
+  val () =
+  abstenv_pop_loc12(env0)
+in//let
+  d3ecl(loc0, D3Clocal(head, body))
+end//let
+//
+end // let // end-of-[D3Clocal(head,body)]
+//
+(* ****** ****** *)
 //
 | D3Cinclude _ =>
   let
@@ -3566,6 +3596,8 @@ D3Cextern
   val d3cl =
   aux_staload(env0, d3cl) in d3cl
   end
+//
+(* ****** ****** *)
 //
 | D3Cabstype _ => d3cl
 | D3Cabsopen _ => aux_absopen(env0, d3cl)

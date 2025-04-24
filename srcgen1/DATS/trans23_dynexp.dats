@@ -3414,35 +3414,59 @@ d2cl.node() of
   d3ecl_make_node
   (loc0, D3Cd2ecl(d2cl))
 //
+(* ****** ****** *)
+//
 | D2Cstatic
-  (tok, d2c) =>
-  let
-    val
-    d3c = trans23_decl(d2c)
-  in
-    d3ecl_make_node
-    (loc0, D3Cstatic(tok, d3c))
-  end
+( tok0, d2cl ) =>
+let
+val
+d3cl = trans23_decl(d2cl)
+in//let
+d3ecl_make_node
+(loc0, D3Cstatic(tok0, d3cl))
+end // let // end-of-[D2Cstatic]
 | D2Cextern
-  (tok, d2c) =>
-  let
-    val
-    d3c = trans23_decl(d2c)
-  in
-    d3ecl_make_node
-    (loc0, D3Cextern(tok, d3c))
-  end
+( tok0, d2cl ) =>
+let
+//
+val
+d3cl = trans23_decl(d2cl)
+//
+in//let
+d3ecl_make_node
+(loc0, D3Cextern(tok0, d3cl))
+end // let // end-of-[D2Cextern]
+//
+(* ****** ****** *)
+//
+| D2Cdclst
+(   dcls   ) =>
+(
+  d3ecl_make_node
+  (loc0, D3Cdclst(dcls))
+) where {
+  val dcls =
+  (
+    trans23_declist(dcls))
+} (*where*) // end-of-[D2Cdclst]
 //
 | D2Clocal
-  (head, body) => let
-    val
-    head = trans23_declist(head)
-    val
-    body = trans23_declist(body)
-  in
-    d3ecl_make_node
-    ( loc0, D3Clocal(head, body) )
-  end
+( head, body) =>
+let
+//
+  val head =
+  (
+    trans23_declist(head))
+  val body =
+  (
+    trans23_declist(body))
+//
+in
+  d3ecl_make_node
+  (loc0, D3Clocal(head, body))
+end (*let*) // end-of-[D2Clocal]
+//
+(* ****** ****** *)
 //
 | D2Cinclude _ => aux_include(d2cl)
 | D2Cstaload _ => aux_staload(d2cl)

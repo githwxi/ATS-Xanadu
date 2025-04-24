@@ -910,12 +910,27 @@ x0.node() of
 | D3Cd2ecl(d2c) =>
   fprint!(out, "D3Cd2ecl(", d2c, ")")
 //
+(* ****** ****** *)
+//
 | D3Cstatic
   (tok, d3c) =>
   fprint!(out, "D3Cstatic(", d3c, ")")
 | D3Cextern
   (tok, d3c) =>
   fprint!(out, "D3Cextern(", d3c, ")")
+//
+(* ****** ****** *)
+//
+| D3Cdclst(dcls) =>
+  fprint!
+  (out, "D3Cdclst(", dcls, ")")
+//
+| D3Clocal(head, body) =>
+  fprint!
+  ( out
+  , "D3Clocal(", head, "; ", body, ")")
+//
+(* ****** ****** *)
 //
 | D3Cinclude
   ( tok0
@@ -937,10 +952,7 @@ x0.node() of
     | Some _ => "Some(<d3cls>)"): string
   }
 //
-| D3Clocal(head, body) =>
-  fprint!
-  ( out
-  , "D3Clocal(", head, "; ", body, ")")
+(* ****** ****** *)
 //
 | D3Cstaload
   ( tok0

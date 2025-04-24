@@ -164,6 +164,8 @@ val () =
 (
  tread01_g1expopt(def1))
 }
+//
+(* ****** ****** *)
 |
 D1Clocal(head, body) =>
 {
@@ -172,6 +174,8 @@ val () =
 val () =
   tread01_d1eclist(body)
 } (* end of [D1Clocal] *)
+//
+(* ****** ****** *)
 //
 |
 D1Cinclude
@@ -202,6 +206,8 @@ D1Cinclude
     tread01_dq0eid(dqid)
 *)
 }
+//
+(* ****** ****** *)
 //
 | D1Cstacst0
 ( tok0, sid0
@@ -366,6 +372,30 @@ D1Cimplmnt0
 //
 }
 //
+(* ****** ****** *)
+//
+| D1Cendif(tokn) => ((*void*))
+//
+| D1Cthen0(dcls) =>
+{
+  val () = tread01_d1eclist(dcls)
+}
+| D1Celse1(dcls) =>
+{
+  val () = tread01_d1eclist(dcls)
+}
+//
+| D1Cifexp
+( gexp, dthn, dels, dend) =>
+{
+  val () = tread01_g1exp(gexp)
+  val () = tread01_d1eclopt(dthn)
+  val () = tread01_d1eclopt(dels)
+  val () = tread01_d1eclopt(dend)
+}
+//
+(* ****** ****** *)
+//
 | _(* rest-of-d1ecl *) =>
   (
     prerrln!(loc0, ": tread01_d1ecl: d1cl = ", d1cl)
@@ -377,13 +407,28 @@ end // end of [tread01_d1ecl]
 //
 implement
 //{}(*tmp*)
-tread01_d1eclist(dcls) =
+tread01_d1eclopt
+  ( dopt ) =
+(
+case+ dopt of
+| None() => ( (*void*) )
+| Some(d1cl) => tread01_d1ecl(d1cl)
+) (* end of [tread01_d1eclopt] *)
+//
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_d1eclist
+  ( dcls ) =
 (
 list_foritm<d1ecl>(dcls)
 ) where
 {
-implement(env)
-list_foritm$work<d1ecl><env>(dcl, env) = tread01_d1ecl(dcl)
+implement
+(  env  )
+list_foritm$work<
+  d1ecl><env>(dcl, env) = tread01_d1ecl(dcl)
 } (* end of [tread01_d1eclist] *)
 //
 (* ****** ****** *)
