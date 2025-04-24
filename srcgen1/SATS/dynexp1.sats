@@ -1043,7 +1043,7 @@ For if-guarded declarations!
 | D1Cendif of (token) // #endif
 | D1Cthen0 of (d1eclist) // #then0
 | D1Celse1 of (d1eclist) // #else1 // #elsif
-| D1Cifdec of // #if(exp)
+| D1Cifexp of // #if(exp)
 ( g1exp(*test*)
 , d1eclopt(*then*), d1eclopt(*else*), d1eclopt)
 | D1Celsif of // #elsif(exp)

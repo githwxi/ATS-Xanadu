@@ -2093,7 +2093,7 @@ list_cons(x0, xs) =>
 (
 case+
 x0.node() of
-| D0Celse _ =>
+| D0Celse1 _ =>
   auxmain(xs, ys) where
   {
     val ys = aux_else(x0, ys)
@@ -2229,7 +2229,7 @@ end
 list_vt_cons(y0, ys) =>
 (
 case+ y0.node() of
-| D0Celse _ =>
+| D0Celse1 _ =>
   (
     aux_endif(x0, ys)
   )

@@ -1013,9 +1013,9 @@ case+ x0.node() of
   fprint!(out, "D1Cthen0(", dcls, ")")
 | D1Celse1(dcls) =>
   fprint!(out, "D1Celse1(", dcls, ")")
-| D1Cifdec(gexp, dthn, dels, dend) =>
+| D1Cifexp(gexp, dthn, dels, dend) =>
   fprint!
-  ( out, "D1Cifdec("
+  ( out, "D1Cifexp("
   , gexp, "; ", dthn, "; ", dels, ";", dend, ")")
 | D1Celsif(gexp, dthn, dels, dend) =>
   fprint!

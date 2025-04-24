@@ -62,6 +62,8 @@ LOC = "./../SATS/locinfo.sats"
 //
 #staload "./../SATS/xbasics.sats"
 //
+#staload "./../SATS/lexing0.sats"
+//
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 //
@@ -286,9 +288,31 @@ in//let
 {
 val loc0 = dcl0.loc((*0*))
 val gexp = trans01_gexp(gexp)
+//
+val gexp =
+(
+case-
+tknd.node() of
+|
+T_SRP_IFDEC(knd0) =>
+if
+knd0 = 0
+then gexp else
+let
+val
+gid0 = // HX: defined?
+$SYM.symbol_make("dfq")
+val
+gfun =
+g1exp_make_node(loc0, G1Eid0(gid0))
+in//let
+g1exp_make_node(loc0, G1Eapp1(gfun, gexp))
+end//let
+)
+//
 val dcl0 =
 (
-d1ecl(loc0, D1Cifdec(gexp, dthn, dels, dend)))
+d1ecl(loc0, D1Cifexp(gexp, dthn, dels, dend)))
 }
 //
 end//let//end-of-[D0Cifdec(...)]
