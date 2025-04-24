@@ -1315,7 +1315,7 @@ for skipping synerr:
   , dq0eid, ti0arglst, f0arglst
   , effs0expopt, token(*EQ*), d0exp(*body*))
 //
-| D0Celse of (token) // optional
+| D0Celse1 of (token) // optional
 | D0Cendif of (token) // required
 | D0Cifdec of (token, g0exp, tokenopt) // #if(gexp) ...
 | D0Celsif of (token, g0exp, tokenopt) // #elsif(gexp) ...

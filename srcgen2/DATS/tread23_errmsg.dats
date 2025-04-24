@@ -39,8 +39,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
+ATS_PACKNAME "\
+ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
 //

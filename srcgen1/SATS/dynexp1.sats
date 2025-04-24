@@ -1036,10 +1036,19 @@ D1Cimplmnt0 of
 , dq0eid(*qualid*)
 , ti1arglst, f1arglst, effs1expopt, token, d1exp)
 //
-| D1Celse of (token) // opt
-| D1Cendif of (token) // req
-| D1Cifdec of (token, g1exp, tokenopt) // #if(exp)
-| D1Celsif of (token, g1exp, tokenopt) // #elsif(exp)
+(*
+HX-2025-04-23:
+For if-guarded declarations!
+*)
+| D1Cendif of (token) // #endif
+| D1Cthen0 of (d1eclist) // #then0
+| D1Celse1 of (d1eclist) // #else1 // #elsif
+| D1Cifdec of // #if(exp)
+( g1exp(*test*)
+, d1eclopt(*then*), d1eclopt(*else*), d1eclopt)
+| D1Celsif of // #elsif(exp)
+( g1exp(*test*)
+, d1eclopt(*then*), d1eclopt(*else*), d1eclopt)
 //
 | D1Ctokerr of (d0ecl) // HX: for error indication
 //
