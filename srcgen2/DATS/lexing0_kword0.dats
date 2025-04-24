@@ -391,6 +391,7 @@ For if-guarded declarations
 Sat Apr 19 02:58:45 PM EDT 2025
 *)
 val () = kwdins("#if"    , T_SRP_IFEXP )
+val () = kwdins("#ifdef" , T_SRP_IFDEF )
 val () = kwdins("#ifexp" , T_SRP_IFEXP )
 //
 val () = kwdins("#then"  , T_SRP_THEN0 )

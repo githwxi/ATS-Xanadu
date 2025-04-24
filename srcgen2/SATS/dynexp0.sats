@@ -1079,6 +1079,7 @@ D0Cerrck of (sint(*lvl*), d0ecl)//pread0x-error
 HX-2025-04-19:
 For if-guarded declarations
 *)
+|D0Cifdef of (token, g0exp)
 |D0Cifexp of (token, g0exp)
 |D0Celsif of (token, g0exp)
 |D0Cthen0 of ( token ) // optional
