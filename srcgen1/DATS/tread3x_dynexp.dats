@@ -805,50 +805,80 @@ in(*in-of-let*)
 case+
 d3cl.node() of
 //
-|
-D3Cd2ecl(d2c) => ()
+(* ****** ****** *)
 //
-|
-D3Cstatic(tok, d3c1) =>
+|D3Cd2ecl _ => ()
+//
+(* ****** ****** *)
+//
+|D3Cstatic
+(tok0, d3c1) =>
 {
-  val () = tread3x_d3ecl(d3c1)
+val () =
+(
+tread3x_d3ecl(d3c1))
 }
-|
-D3Cextern(tok, d3c1) =>
+//
+|D3Cextern
+(tok0, d3c1) =>
 {
-  val () = tread3x_d3ecl(d3c1)
+val () =
+(
+tread3x_d3ecl(d3c1))
 }
-|
-D3Clocal(head, body) =>
+//
+(* ****** ****** *)
+//
+|D3Cdclst
+(  dcls  ) =>
 {
-val () = tread3x_d3eclist(head)
-val () = tread3x_d3eclist(body)
+val () =
+tread3x_d3eclist(dcls)
+} (* end of [D3Cdclst] *)
+//
+|D3Clocal
+(head, body) =>
+{
+val () =
+tread3x_d3eclist(head)
+val () =
+tread3x_d3eclist(body)
 } (* end of [D3Clocal] *)
+//
+(* ****** ****** *)
 //
 | D3Cinclude
   ( tok
   , src, knd
   , fopt, body) =>
-  {
-    val () =
+{
+  val () =
+  (
+  case+ body of
+  | None() => ()
+  | Some(d3cs) =>
     (
-    case+ body of
-    | None() => ()
-    | Some(d3cs) =>
-      (
-        tread3x_d3eclist(d3cs)
-      )
+      tread3x_d3eclist(d3cs)
     )
-  }
+  )
+}
+//
+(* ****** ****** *)
 //
 | D3Cstaload _ => (    (*void*)    )
+//
+(* ****** ****** *)
 //
 | D3Cabstype _ => (    (*void*)    )
 | D3Cabsopen _ => (    (*void*)    )
 | D3Cabsimpl _ => (    (*void*)    )
 //
+(* ****** ****** *)
+//
 | D3Cexcptcon _ => (    (*void*)    )
 | D3Cdatatype _ => (    (*void*)    )
+//
+(* ****** ****** *)
 //
 | D3Cvardclst
   ( knd, mopt, v3ds ) =>
@@ -860,6 +890,7 @@ val () = tread3x_d3eclist(body)
     ("tread3x_d3ecl: D3Cvaldecl: v3ds = ", v3ds)
 *)
   }
+//
 | D3Cvaldclst
   ( knd, mopt, v3ds ) =>
   {
@@ -894,6 +925,8 @@ val () = tread3x_d3eclist(body)
 *)
   }
 //
+(* ****** ****** *)
+//
 | D3Cimplmnt3
   ( tok0
   , stmp, mopt
@@ -916,10 +949,14 @@ val () = tread3x_d3eclist(body)
     }
   ) (* D3Cimplmnt3 *)
 //
+(* ****** ****** *)
+//
 | _(* rest-of-d3ecl *) =>
-  {
-    val () = println!(loc0, ": tread3x_d3ecl(", d3cl, ")")
-  }
+{
+  val () = println!(loc0, ": tread3x_d3ecl(", d3cl, ")")
+}
+//
+(* ****** ****** *)
 //
 end // end of [tread3x_d3ecl]
 

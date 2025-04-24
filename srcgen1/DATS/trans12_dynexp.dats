@@ -7199,6 +7199,15 @@ let
 //
 val loc0 = d1cl.loc()
 //
+(*
+val (  ) =
+println!
+("trans12_decl: loc0 = ", loc0)
+val (  ) =
+println!
+("trans12_decl: d1cl = ", d1cl)
+*)
+//
 val
 test = g1exp_eval(gexp)
 val
@@ -7207,7 +7216,8 @@ test =
 case+ test of
 |
 G1Vbtf
-(test) => test | _ => false)
+(test) => test | _ => false
+) : bool//end-of-[val(test)]
 //
 in//let
 //
@@ -7216,12 +7226,14 @@ test
 then
 (
 case+ dthn of
-|None() => d2ecl_none0(loc0)
+|None() =>
+d2ecl_dclst_nil(loc0)
 |Some(dcl1) =>trans12_decl(dcl1))
 else
 (
 case+ dels of
-|None() => d2ecl_none0(loc0)
+|None() =>
+d2ecl_dclst_nil(loc0)
 |Some(dcl1) => trans12_decl(dcl1))//if
 //
 end(*let*) // end-of-[D1Cifexp(gexp,...)]

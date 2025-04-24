@@ -902,25 +902,47 @@ in
 case+
 d3cl.node() of
 //
-|
-D3Cd2ecl(d2c) => ()
+(* ****** ****** *)
 //
-|
-D3Cstatic(tok, d3c1) =>
+|D3Cd2ecl _ => ()
+//
+(* ****** ****** *)
+//
+|D3Cstatic
+(tok0, d3c1) =>
 {
-  val () = tread33_d3ecl(d3c1)
+val () =
+(
+tread33_d3ecl(d3c1))
 }
-|
-D3Cextern(tok, d3c1) =>
+//
+|D3Cextern
+(tok0, d3c1) =>
 {
-  val () = tread33_d3ecl(d3c1)
+val () =
+(
+tread33_d3ecl(d3c1))
 }
-|
-D3Clocal(head, body) =>
+//
+(* ****** ****** *)
+//
+|D3Cdclst
+(  dcls  ) =>
 {
-val () = tread33_d3eclist(head)
-val () = tread33_d3eclist(body)
+val () =
+tread33_d3eclist(dcls)
+} (* end of [D3Cdclst] *)
+//
+|D3Clocal
+(head, body) =>
+{
+val () =
+tread33_d3eclist(head)
+val () =
+tread33_d3eclist(body)
 } (* end of [D3Clocal] *)
+//
+(* ****** ****** *)
 //
 |
 D3Cinclude
@@ -928,13 +950,15 @@ D3Cinclude
 , src, knd
 , fopt, dopt ) =>
 (
-  case+ dopt of
-  | None() => ()
-  | Some(dcls) =>
-    {
-      val () = tread33_d3eclist(dcls)
-    }
+case+ dopt of
+| None() => ()
+| Some(dcls) =>
+{
+  val () = tread33_d3eclist(dcls)
+}
 )
+//
+(* ****** ****** *)
 //
 | D3Cstaload _ => (    (*void*)    )
 //
@@ -944,17 +968,6 @@ D3Cinclude
 //
 | D3Cexcptcon _ => (    (*void*)    )
 | D3Cdatatype _ => (    (*void*)    )
-//
-| D3Cfundclst
-  (knd, mopt, tqas, f3ds) =>
-  {
-    val () = tread33_d3fundeclist(f3ds)
-(*
-    val () =
-    println!
-    ("tread33_d3ecl: D3Cfundecl: f3ds = ", f3ds)
-*)
-  }
 //
 | D3Cvaldclst
   (knd, mopt, v3ds) =>
@@ -977,42 +990,56 @@ D3Cinclude
 *)
   }
 //
+| D3Cfundclst
+  (knd, mopt, tqas, f3ds) =>
+  {
+    val () = tread33_d3fundeclist(f3ds)
+(*
+    val () =
+    println!
+    ("tread33_d3ecl: D3Cfundecl: f3ds = ", f3ds)
+*)
+  }
+//
+(* ****** ****** *)
+//
 | D3Cimplmnt1
   ( tok
   , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
-  {
-    val () =
-    tread33_f3arglst(f3as)
+{
+  val () =
+  tread33_f3arglst(f3as)
 (*
-    val () =
-    tread33_ti3arg(ti3a)
-    val () =
-    tread33_ti2arglst(ti2s)
-    val () = tread33_d3exp(d3e0)
+  val () =
+  tread33_ti3arg(ti3a)
+  val () =
+  tread33_ti2arglst(ti2s)
+  val () = tread33_d3exp(d3e0)
 *)
-  }
+}
+//
 | D3Cimplmnt2
   ( tok
   , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
-  {
-    val () =
-    tread33_f3arglst(f3as)
+{
+  val () =
+  tread33_f3arglst(f3as)
 (*
-    val () =
-    tread33_ti3arg(ti3a)
-    val () =
-    tread33_ti2arglst(ti2s)
+  val () =
+  tread33_ti3arg(ti3a)
+  val () =
+  tread33_ti2arglst(ti2s)
 *)
-    val () = tread33_d3exp(d3e0)
+  val () = tread33_d3exp(d3e0)
 //
-    val () =
-    (
+  val () =
+  (
     case+ id2c of
     | IMPLD2CST2 _ => ()
     | _(*non-IMPLD2CST2*) =>
@@ -1022,14 +1049,14 @@ D3Cinclude
     prerrln!
     ( loc0
     , ": TRERR33(D3Cimplmnt2): id2c = ", id2c ))
-    )
+  )
 //
-    val-
-    IMPLD2CST2
-    (dqid, d2cs, d2ct) = id2c
+  val-
+  IMPLD2CST2
+  (dqid, d2cs, d2ct) = id2c
 //
-    val () =
-    (
+  val () =
+  (
     case+ d2ct of
     | Some _ => ()
     | None _ => let
@@ -1042,14 +1069,14 @@ D3Cinclude
       ( loc0
       , ": TRERR33(D3Cimplmnt2): id2c = ", id2c )
       end // end of [None()]
-    )
+  )
 //
 (*
-    val () =
-    println!
-    ("tread33_d3ecl: D3Cimplmnt2: d3cl = ", d3cl)
+  val () =
+  println!
+  ("tread33_d3ecl: D3Cimplmnt2: d3cl = ", d3cl)
 *)
-  }
+}
 //
 | D3Cimplmnt3
   ( tok
@@ -1057,31 +1084,35 @@ D3Cinclude
   , sqas, tqas
   , id2c, ti3a, ti2s
   , f3as, res0, d3e0) =>
-  {
+{
 //
 (*
-    val () =
-    tread33_ti3arg(ti3a)
+  val () =
+  tread33_ti3arg(ti3a)
 *)
-    val () =
-    tread33_ti2arglst(ti2s)
+  val () =
+  tread33_ti2arglst(ti2s)
 //
-    val () =
-    tread33_f3arglst(f3as)
+  val () =
+  tread33_f3arglst(f3as)
 //
-    val () = tread33_d3exp(d3e0)
+  val () = tread33_d3exp(d3e0)
 //
 (*
-    val () =
-    println!
-    ("tread33_d3ecl: D3Cimplmnt3: d3cl = ", d3cl)
+  val () =
+  println!
+  ("tread33_d3ecl: D3Cimplmnt3: d3cl = ", d3cl)
 *)
-  }
+}
+//
+(* ****** ****** *)
 //
 | _(* rest-of-d3ecl *) =>
-  {
-    val () = println!(loc0, ": tread33_d3ecl(", d3cl, ")")
-  }
+{
+  val () = println!(loc0, ": tread33_d3ecl(", d3cl, ")")
+}
+//
+(* ****** ****** *)
 //
 end // end of [tread33_d3ecl]
 

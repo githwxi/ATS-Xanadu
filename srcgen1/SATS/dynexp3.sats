@@ -889,6 +889,7 @@ d3ecl_node =
 | D3Cextern of
   (token(*EXTERN*), d3ecl)
 //
+| D3Cdclst of ( d3eclist )
 | D3Clocal of
   (d3eclist(*local*), d3eclist)
 //

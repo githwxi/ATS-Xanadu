@@ -714,25 +714,37 @@ d2cl.node() of
 | D2Cd1ecl _ => ()
 //
 | D2Cstatic
-  (tok, d2c1) =>
-  {
-    val () =
-    tread12_d2ecl(d2c1)
-  }
+( tok0, d2c1 ) =>
+{
+  val () =
+  tread12_d2ecl(d2c1)
+}
 | D2Cextern
-  (tok, d2c1) =>
-  {
-    val () =
-    tread12_d2ecl(d2c1)
-  }
+( tok0, d2c1) =>
+{
+  val () =
+  tread12_d2ecl(d2c1)
+}
 //
-| D2Clocal(head, body) =>
-  {
-    val () =
-    tread12_d2eclist(head)
-    val () =
-    tread12_d2eclist(body)
-  } (* end of [D2Clocal] *)
+(* ****** ****** *)
+//
+| D2Cdclst
+(   dcls   ) =>
+{
+  val () =
+  tread12_d2eclist(dcls)
+}
+//
+| D2Clocal
+( head, body ) =>
+{
+  val () =
+  tread12_d2eclist(head)
+  val () =
+  tread12_d2eclist(body)
+} (* end of [D2Clocal] *)
+//
+(* ****** ****** *)
 //
 | D2Cinclude
   ( tok

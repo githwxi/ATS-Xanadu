@@ -825,22 +825,30 @@ d2ecl_make_node
 end // end of [local]
 
 (* ****** ****** *)
-
+//
 implement
 d2ecl_none0
-(loc0) =
+  (loc0) =
 d2ecl_make_node
 (
   loc0, D2Cnone0()
 )
 implement
 d2ecl_none1
-(d0c0) =
+  (d0c0) =
 d2ecl_make_node
 (
-  d0c0.loc(), D2Cnone1(d0c0)
+d0c0.loc(), D2Cnone1(d0c0)
 )
-
+//
+(* ****** ****** *)
+//
+implement
+d2ecl_dclst_nil
+  ( loc0 ) =
+d2ecl_make_node
+(loc0, D2Cdclst(list_nil()))
+//
 (* ****** ****** *)
 
 local

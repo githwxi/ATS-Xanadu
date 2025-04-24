@@ -1494,6 +1494,9 @@ fun
 d2ecl_none1(d1c: d1ecl): d2ecl
 //
 fun
+d2ecl_dclst_nil(loc: loc_t): d2ecl
+//
+fun
 d2ecl_make_node
 (loc: loc_t, node: d2ecl_node): d2ecl
 //
