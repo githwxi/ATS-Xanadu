@@ -26,7 +26,7 @@ val A0 =
 array(10, 1)
 val () =
 (
-prints("A0 = ", A0, "\n"))
+  printsln("A0 = ", A0))
 where
 {
 #impltmp
@@ -42,8 +42,8 @@ val A1 =
 array
 (N, lam(i:sint) => (i+1))
 val () =
-prints
-("A1(",type(A1),") = ",A1,"\n")
+printsln
+("A1(", type(A1), ") = ", A1)
 where
 {
 #impltmp
@@ -66,7 +66,8 @@ where
 gasz_length<a1rf(x0)><x0>(A) = n }
 //
 val () =
-prints("fact(10) = ", fact(10), "\n")
+(
+  printsln("fact(10) = ", fact(10)))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -21,7 +21,7 @@ val A0 =
 arrsz(10, 1)
 val () =
 (
-prints("A0 = ", A0, "\n"))
+  printsln("A0 = ", A0))
 //
 (* ****** ****** *)
 //
@@ -30,8 +30,8 @@ val A0 =
 arrsz
 (N, lam(i:sint) => (i+1))
 val () =
-prints
-("A0(", type(A0), ") = ", A0, "\n")
+printsln
+("A0(", type(A0), ") = ", A0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -44,7 +44,7 @@ arrsz
 (n, lam(i:sint) => i+1)).prod()
 //
 val () =
-prints("fact(10) = ", fact(10), "\n")
+printsln("fact(10) = ", fact(10))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -54,9 +54,11 @@ list
 (10, lam(i:nint) => i*i)
 val ys = a1sz_make_list(xs)
 val () =
-prints("ys(", type(ys), ") = ", ys, "\n")
-val () = (
-GSEQ(ys).foritm(lam(x) => print(x));print("\n"))
+printsln("ys(", type(ys), ") = ", ys)
+val () =
+(
+GSEQ(ys).foritm
+  (lam(x) => print( x )); printsln())
 //
 (* ****** ****** *)
 (* ****** ****** *)

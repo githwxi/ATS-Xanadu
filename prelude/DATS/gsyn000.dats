@@ -1387,6 +1387,140 @@ gs_print$beg() in//let
 end//let//end-of-[gs_print_a12(...)]
 //
 (* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+gs_println_a0
+ ((*0*)) =
+(
+  gs_print_a0<>((*0*)); g_print("\n"))
+//
+#impltmp
+< x0:t0 >
+gs_println_a1
+ (  x0  ) =
+(
+  gs_print_a1<x0>( x0 ); g_print("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+gs_println_a2
+ (x0, x1) =
+(
+  gs_print_a2<x0><x1>(x0,x1); g_print("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+gs_println_a3
+( x0
+, x1, x2) =
+(
+  gs_print_a3<x0><x1><x2>(x0,x1,x2); g_print("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+gs_println_a4
+( x0, x1
+, x2, x3) =
+(
+  gs_print_a4<x0><x1><x2><x3>(x0,x1,x2,x3); g_print("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+gs_println_a5
+( x0, x1
+, x2, x3, x4) =
+(
+  gs_print_a5<x0><x1><x2><x3><x4>(x0,x1,x2,x3,x4); g_print("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+gs_println_a6
+( x0, x1, x2
+, x3, x4, x5) =
+(
+  gs_print_a6<x0><x1><x2><x3><x4><x5>(x0,x1,x2,x3,x4,x5); g_print("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+gs_println_a7
+( x0, x1, x2
+, x3, x4, x5, x6) =
+(
+  gs_print_a7<x0><x1><x2><x3><x4><x5><x6>(x0,x1,x2,x3,x4,x5,x6); g_print("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+gs_println_a8
+( x0, x1, x2, x3
+, x4, x5, x6, x7) =
+(
+  gs_print_a8<x0><x1><x2><x3><x4><x5><x6><x7>(x0,x1,x2,x3,x4,x5,x6,x7); g_print("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+< x8:t0 >
+gs_println_a9
+( x0
+, x1, x2, x3, x4
+, x5, x6, x7, x8) =
+(
+  gs_print_a9<x0><x1><x2><x3><x4><x5><x6><x7><x8>(x0,x1,x2,x3,x4,x5,x6,x7,x8); g_print("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+< x8:t0 >
+< x9:t0 >
+gs_println_a10
+( x0, x1
+, x2, x3, x4, x5
+, x6, x7, x8, x9) =
+(
+  gs_print_a10<x0><x1><x2><x3><x4><x5><x6><x7><x8><x9>(x0,x1,x2,x3,x4,x5,x6,x7,x8,x9); g_print("\n"))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
