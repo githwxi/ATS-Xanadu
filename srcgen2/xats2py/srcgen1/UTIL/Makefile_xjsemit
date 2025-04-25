@@ -48,7 +48,8 @@ $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
 $(XATS2JS)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_dats_out.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
 $(XATS2PY)/srcgen1/lib/lib2xats2py.js | $(CAT) - >> $@_dats_out.js && \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xats2py_pyemit00.dats >> $@_dats_out.js
+$(NODE) \
+  --stack-size=8192 $(XATS2JS_JSEMIT00) xats2py_pyemit00.dats >> $@_dats_out.js
 #
 all:: \
 xats2py_pyemit01
@@ -67,7 +68,13 @@ $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
 $(XATS2JS)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_dats_out.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
 $(XATS2PY)/srcgen1/lib/lib2xats2py.js | $(CAT) - >> $@_dats_out.js && \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xats2py_pyemit01.dats >> $@_dats_out.js
+$(NODE) \
+  --stack-size=8192 $(XATS2JS_JSEMIT00) xats2py_pyemit01.dats >> $@_dats_out.js
+#
+xats2py_pyemit01_opt0: ; \
+npx google-closure-compiler \
+  -W QUIET --compilation_level SIMPLE \
+  --js=xats2py_pyemit01_dats_out.js --js_output_file=xats2py_pyemit01_dats_opt0.js
 #
 ########################################################################
 ########################################################################

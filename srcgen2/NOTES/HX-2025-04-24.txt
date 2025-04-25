@@ -9,7 +9,7 @@ Hi, there,
 ATS3:
 For constructing quality code productively
 
-1. Corretness through advanced types
+1. Correctness through advanced types
 2. Productivity through code sharing and meta-programming
 
 I have just added support for if-guarded declarations.
