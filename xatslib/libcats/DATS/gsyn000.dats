@@ -54,6 +54,40 @@ Thu Sep 19 04:30:48 PM EDT 2024
 //
 #extern
 fun<>
+gs_prout$beg
+  ( (*void*) ): void
+#extern
+fun<>
+gs_prout$sep
+  ( (*void*) ): void
+#extern
+fun<>
+gs_prout$end
+  ( (*void*) ): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+gs_prout$beg() = ((*void*))
+#impltmp
+<(*tmp*)>
+gs_prout$sep() = ((*void*))
+#impltmp
+<(*tmp*)>
+gs_prout$end() = ((*void*))
+(*
+#impltmp
+<(*tmp*)>
+g_prout$end() = strn_prout("\n")
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<>
 gs_prerr$beg
   ( (*void*) ): void
 #extern
@@ -433,19 +467,25 @@ end//let//end-of-[gs_prerr_a8(...)]
 #impltmp
 <(*tmp*)>
 gs_prerrln_a0
- ((*0*) ) =
-(gs_prerr_a0<>((*0*)); g_prerr("\n"))
+ ((*00*)) =
+(
+  gs_prerr_a0<>((*0*)); g_prerr("\n"))
+//
 #impltmp
 < x0:t0 >
 gs_prerrln_a1
  (  x0  ) =
-(gs_prerr_a1<x0>( x0 ); g_prerr("\n"))
+(
+  gs_prerr_a1<x0>( x0 ); g_prerr("\n"))
+//
 #impltmp
 < x0:t0 >
 < x1:t0 >
 gs_prerrln_a2
  (x0, x1) =
-(gs_prerr_a2<x0><x1>(x0,x1); g_prerr("\n"))
+(
+  gs_prerr_a2<x0><x1>(x0,x1); g_prerr("\n"))
+//
 #impltmp
 < x0:t0 >
 < x1:t0 >
@@ -453,7 +493,9 @@ gs_prerrln_a2
 gs_prerrln_a3
 ( x0
 , x1, x2) =
-(gs_prerr_a3<x0><x1><x2>(x0,x1,x2); g_prerr("\n"))
+(
+  gs_prerr_a3<x0><x1><x2>(x0,x1,x2); g_prerr("\n"))
+//
 #impltmp
 < x0:t0 >
 < x1:t0 >
@@ -462,7 +504,9 @@ gs_prerrln_a3
 gs_prerrln_a4
 ( x0, x1
 , x2, x3) =
-(gs_prerr_a4<x0><x1><x2><x3>(x0,x1,x2,x3); g_prerr("\n"))
+(
+  gs_prerr_a4<x0><x1><x2><x3>(x0,x1,x2,x3); g_prerr("\n"))
+//
 #impltmp
 < x0:t0 >
 < x1:t0 >
@@ -472,7 +516,9 @@ gs_prerrln_a4
 gs_prerrln_a5
 ( x0, x1
 , x2, x3, x4) =
-(gs_prerr_a5<x0><x1><x2><x3><x4>(x0,x1,x2,x3,x4); g_prerr("\n"))
+(
+  gs_prerr_a5<x0><x1><x2><x3><x4>(x0,x1,x2,x3,x4); g_prerr("\n"))
+//
 #impltmp
 < x0:t0 >
 < x1:t0 >
@@ -483,7 +529,9 @@ gs_prerrln_a5
 gs_prerrln_a6
 ( x0, x1, x2
 , x3, x4, x5) =
-(gs_prerr_a6<x0><x1><x2><x3><x4><x5>(x0,x1,x2,x3,x4,x5); g_prerr("\n"))
+(
+  gs_prerr_a6<x0><x1><x2><x3><x4><x5>(x0,x1,x2,x3,x4,x5); g_prerr("\n"))
+//
 #impltmp
 < x0:t0 >
 < x1:t0 >
@@ -495,7 +543,9 @@ gs_prerrln_a6
 gs_prerrln_a7
 ( x0, x1, x2
 , x3, x4, x5, x6) =
-(gs_prerr_a7<x0><x1><x2><x3><x4><x5><x6>(x0,x1,x2,x3,x4,x5,x6); g_prerr("\n"))
+(
+  gs_prerr_a7<x0><x1><x2><x3><x4><x5><x6>(x0,x1,x2,x3,x4,x5,x6); g_prerr("\n"))
+//
 #impltmp
 < x0:t0 >
 < x1:t0 >
@@ -508,7 +558,8 @@ gs_prerrln_a7
 gs_prerrln_a8
 ( x0, x1, x2, x3
 , x4, x5, x6, x7) =
-(gs_prerr_a8<x0><x1><x2><x3><x4><x5><x6><x7>(x0,x1,x2,x3,x4,x5,x6,x7); g_prerr("\n"))
+(
+  gs_prerr_a8<x0><x1><x2><x3><x4><x5><x6><x7>(x0,x1,x2,x3,x4,x5,x6,x7); g_prerr("\n"))
 //
 (* ****** ****** *)
 (* ****** ****** *)

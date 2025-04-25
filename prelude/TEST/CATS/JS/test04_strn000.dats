@@ -24,36 +24,36 @@ For testing prelude/JS!
 //
 val A9 = strn(9, 'a')
 val () =
-prints("A9 = ", A9, "\n")
-val () = prints
-("|A9| = ", length(A9), "\n")
+printsln("A9 = ", A9)
+val () =
+printsln("|A9| = ", length(A9))
 //
 (* ****** ****** *)
 //
 val AB = strn
 (26, lam(i:sint) => 'a'+i)
-val () = prints("AB = ", AB, "\n")
+val () = printsln("AB = ", AB)
 //
 val BA = strn_reverse(AB)
-val () = prints("BA = ", BA, "\n")
+val () = printsln("BA = ", BA)
 //
 val
 ABAB = appends(AB, AB)
-val () = prints("ABAB = ", ABAB, "\n")
+val () = printsln("ABAB = ", ABAB)
 val
 ABBA = appends(AB, BA)
-val () = prints("ABBA = ", ABBA, "\n")
+val () = printsln("ABBA = ", ABBA)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 val
 rABAB = strn$rconcat(@(AB, AB))
-val () = prints("rABAB = ", rABAB, "\n")
+val () = printsln("rABAB = ", rABAB)
 //
 val
 ABABAB = strn$concat(@(AB, AB, AB))
-val () = prints("ABABAB = ", ABABAB, "\n")
+val () = printsln("ABABAB = ", ABABAB)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -66,19 +66,16 @@ lam(work) =>
 GASZ(wrd0).iforitm(
 lam(i, ci) => GASZ(26).foritm
 (
-  lam(j) =>
-  let
-    val cj = 'a'+j
-  in
-    if ci = cj
-    then () else work
-    ($UN.strn_fset$at$raw(wrd0, i, cj))
-  end
-)
-)
-)
+lam(j) =>
+let
+  val cj = 'a'+j
+in
+if ci = cj
+then () else work
+($UN.strn_fset$at$raw(wrd0, i, cj))
+end)))
 //
-val (  ) = prints("wrds = ", wrds, "\n")
+val (  ) = printsln("wrds = ", wrds)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -89,32 +86,31 @@ list_fmake_fwork<strn>
 lam(work) =>
 GSEQ(wrd0).iforitm
 (
-  lam(i, ci) => GASZ(26).foritm
-  (
-    lam(j) =>
-    let
-      val cj = 'a'+j
-    in
-      if ci = cj
-      then () else work
-      ($UN.strn_fset$at$raw(wrd0, i, cj))
-    end
-  )
-)
-)
+lam(i, ci) => GASZ(26).foritm
+(
+lam(j) =>
+let
+  val cj = 'a'+j
+in
+if ci = cj
+then () else work
+($UN.strn_fset$at$raw(wrd0, i, cj))
+end)))
 //
-val (  ) = prints("wrds = ", wrds, "\n")
+val (  ) = printsln("wrds = ", wrds)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () = prints
-("prefix(\"abcde\", 3)=", prefix("abcde", 3), "\n")
-val () = prints
-("suffix(\"abcde\", 3)=", suffix("abcde", 3), "\n")
+val () =
+printsln
+("prefix(\"abcde\", 3)=", prefix("abcde", 3))
+val () =
+printsln
+("suffix(\"abcde\", 3)=", suffix("abcde", 3))
 //
-val () = prints
-("slice(\"abcde\", 1, 3)=", slice("abcde", 1, 3), "\n")
+val () = printsln
+("slice(\"abcde\", 1, 3)=", slice("abcde", 1, 3))
 //
 (* ****** ****** *)
 (* ****** ****** *)

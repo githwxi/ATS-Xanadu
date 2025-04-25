@@ -732,6 +732,8 @@ gs_print_a12(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11): void
 #symload prints with gs_print_a11
 #symload prints with gs_print_a12
 //
+(* ****** ****** *)
+//
 (*
 HX-2024-07-31:
 Wed 31 Jul 2024 07:34:41 PM EDT
@@ -739,6 +741,110 @@ How about supporting
 the following style of macro form:
 #define printsln@xs (prints@xs; println())
 *)
+//
+(* ****** ****** *)
+//
+fun<>
+gs_println_a0(): void
+//
+fun
+<x0:t0>
+gs_println_a1(x0): void
+fun
+<x0:t0>
+<x1:t0>
+gs_println_a2(x0, x1): void
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+gs_println_a3(x0, x1, x2): void
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+gs_println_a4(x0, x1, x2, x3): void
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+gs_println_a5(x0, x1, x2, x3, x4): void
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+gs_println_a6(x0, x1, x2, x3, x4, x5): void
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+gs_println_a7(x0, x1, x2, x3, x4, x5, x6): void
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+gs_println_a8(x0, x1, x2, x3, x4, x5, x6, x7): void
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+gs_println_a9(x0, x1, x2, x3, x4, x5, x6, x7, x8): void
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+<x9:t0>
+gs_println_a10(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9): void
+//
+(* ****** ****** *)
+//
+#symload println with gs_println_a1
+//
+#symload printsln with gs_println_a0
+#symload printsln with gs_println_a1
+#symload printsln with gs_println_a2
+#symload printsln with gs_println_a3
+#symload printsln with gs_println_a4
+#symload printsln with gs_println_a5
+#symload printsln with gs_println_a6
+#symload printsln with gs_println_a7
+#symload printsln with gs_println_a8
+#symload printsln with gs_println_a9
+#symload printsln with gs_println_a10
 //
 (* ****** ****** *)
 (* ****** ****** *)

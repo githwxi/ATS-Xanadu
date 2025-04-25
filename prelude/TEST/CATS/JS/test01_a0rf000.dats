@@ -24,17 +24,17 @@ with a0rf_make_1val of 1000
 //
 val A0 = ref(0)
 val () =
-prints("A0(", type(A0), ") = ", A0, "\n")
+printsln("A0(", type(A0), ") = ", A0)
 //
 (* ****** ****** *)
 //
 val x0 = get(A0)
 val () =
-prints("x0(", type(x0), ") = ", x0, "\n")
+printsln("x0(", type(x0), ") = ", x0)
 //
 val () = set(A0, 10)
 val () =
-prints("A0(", type(A0), ") = ", A0, "\n")
+printsln("A0(", type(A0), ") = ", A0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
