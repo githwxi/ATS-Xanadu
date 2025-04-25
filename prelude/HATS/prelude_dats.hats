@@ -27,6 +27,12 @@ _(*BAS*) =
 (* ****** ****** *)
 //
 #staload
+_(*DBG*) =
+"prelude/DATS/gdbg000.dats"
+//
+(* ****** ****** *)
+//
+#staload
 _(*BAS*) =
 "prelude/DATS/VT/gbas000_vt.dats"
 #staload
