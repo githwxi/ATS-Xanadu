@@ -54,6 +54,14 @@ g_1<b0>() = (true)
 (* ****** ****** *)
 //
 #impltmp
+bool_print<>(b0) =
+(
+if (b0)
+then pstrn("true")
+else pstrn("false"))
+//end-of-(bool_print<>(b0))
+//
+#impltmp
 g_print<bool> = bool_print<>
 //
 (* ****** ****** *)
