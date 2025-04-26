@@ -42,6 +42,16 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef cgtz =
 [c:c0 | c > 0] char(c)
 //
+#typedef
+strnlst = list(strn)
+#typedef
+strnopt = optn(strn)
+//
+#vwtpdef
+strnllst = list_vt(strn)
+#vwtpdef
+strnlopt = optn_vt(strn)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

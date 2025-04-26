@@ -78,6 +78,44 @@ g_min( x0, x0 ): (x0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-04-25:
+generic zero-comparisons
+*)
+//
+fun
+<x0:t0>
+g_ltz( x0: x0 ): (bool)
+fun
+<x0:t0>
+g_gtz( x0: x0 ): (bool)
+fun
+<x0:t0>
+g_eqz( x0: x0 ): (bool)
+//
+fun
+<x0:t0>
+g_ltez( x0: x0 ): (bool)
+fun
+<x0:t0>
+g_gtez( x0: x0 ): (bool)
+fun
+<x0:t0>
+g_neqz( x0: x0 ): (bool)
+//
+(* ****** ****** *)
+//
+#symload ltz with g_ltz of 0100
+#symload gtz with g_gtz of 0100
+#symload eqz with g_eqz of 0100
+//
+#symload ltez with g_ltez of 0100
+#symload gtez with g_gtez of 0100
+#symload neqz with g_neqz of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

@@ -35,6 +35,17 @@ g_prerr(obj:(a)): void
 fun<>
 g_stdin((*void*)): FILR
 //
+(* ****** ****** *)
+//
+#extern
+fun
+<(*tmp*)>
+g_stdin$line$opt
+  ((*0*)): optn_vt(strn)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #extern
 fun<>
 g_stdout((*void*)): FILR
@@ -46,9 +57,12 @@ g_stderr((*void*)): FILR
 //
 #extern
 fun<>
-g_print$out((*void*)): FILR
+g_print$out((*0*)): FILR
+//
 #impltmp
-g_print$out<>() = g_stdout()
+g_print$out
+< (*tmp*) >
+( (*nil*) ) = g_stdout<>()
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -211,4 +211,14 @@ If 'make' was not treated specially, this function would be given
 the name 'list_make_strn' (or list$char_make_strn)
 
 ########################################################################
+(*
+Sat Apr 26 02:52:11 PM EDT 2025
+*)
+The 'g' in the prefix 'g_' means either 'generic' or 'global'.
+
+For instance, we have g_equal(x, y) and g_stdout(); the 'g' is
+the name of the former means 'generic'; the 'g' in the name of
+the latter means 'global'.
+
+########################################################################
 ########################################################################

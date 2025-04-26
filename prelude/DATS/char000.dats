@@ -46,9 +46,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-g_0<c0>() = '\000'
+g_0<c0>() = ('\0')
 #impltmp
-g_1<c0>() = '\001'
+g_1<c0>() = ('\1')
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -72,6 +72,7 @@ char_neq<> = g_neq<char>
 #impltmp
 g_cmp<char> = char_cmp<>
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -99,6 +100,20 @@ if c1 < c2 then -1 else 0)
 //
 #impltmp
 g_print<char> = char_print<>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-04-06:
+*)
+#impltmp
+char_eqz<> = g_eqz<char>
+#impltmp
+char_neqz<>(c0) = not(char_eqz(c0))
+(*
+Sat Apr 26 12:51:25 PM EDT 2025
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

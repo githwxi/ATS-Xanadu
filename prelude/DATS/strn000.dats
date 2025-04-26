@@ -119,6 +119,13 @@ gseq_cmp<xs><x0>(xs, ys) end
 (* ****** ****** *)
 //
 #impltmp
+gasz_length
+<strn><char> = strn_length<>(*0*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 strn_gmake
 <list(cgtz)> = strn_make_list<>
 //
