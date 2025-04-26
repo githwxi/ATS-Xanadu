@@ -104,14 +104,15 @@ g_s3el
 //
 fun
 <a:vt>
-g_input(): a
+u_input
+((*void*)): ( a )
 fun
 <a:vt>
-g_input$exn
-((*void*)): a
+u_input$exn
+((*void*)): ( a )
 fun
 <a:vt>
-g_input$opt
+u_input$opt
 ((*void*)): optn_vt(a)
 //
 (* ****** ****** *)
@@ -119,11 +120,11 @@ g_input$opt
 fun
 <a:vt>
 g_parse
-(rep: strn): a
+(rep: strn): ( a )
 fun
 <a:vt>
 g_parse$exn
-(rep: strn): a
+(rep: strn): ( a )
 fun
 <a:vt>
 g_parse$opt

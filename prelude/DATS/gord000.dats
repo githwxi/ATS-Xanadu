@@ -111,15 +111,46 @@ g_lt<x0>(x2, x1) then -1 else 0
 //
 #impltmp
 < x0:t0 >
+g_ltz(x0) =
+g_lt<x0>(x0, g_0<x0>((*void*)))
+#impltmp
+< x0:t0 >
+g_gtz(x0) =
+g_gt<x0>(x0, g_0<x0>((*void*)))
+#impltmp
+< x0:t0 >
+g_eqz(x0) =
+g_eq<x0>(x0, g_0<x0>((*void*)))
+//
+#impltmp
+< x0:t0 >
+g_ltez(x0) =
+g_lte<x0>(x0, g_0<x0>((*void*)))
+#impltmp
+< x0:t0 >
+g_gtez(x0) =
+g_gte<x0>(x0, g_0<x0>((*void*)))
+#impltmp
+< x0:t0 >
+g_neqz(x0) =
+g_neq<x0>(x0, g_0<x0>((*void*)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
 g_max(x1, x2) =
-if
-g_gte<x0>(x1, x2) then x1 else x2
+(
+if // if
+g_gte<x0>(x1, x2) then x1 else x2)
 //
 #impltmp
 < x0:t0 >
 g_min(x1, x2) =
-if
-g_lte<x0>(x1, x2) then x1 else x2
+(
+if // if
+g_lte<x0>(x1, x2) then x1 else x2)
 //
 (* ****** ****** *)
 (* ****** ****** *)

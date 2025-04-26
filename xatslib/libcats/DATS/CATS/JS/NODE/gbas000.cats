@@ -51,6 +51,9 @@ XATS2JS_NODE_g_stderr()
 //
 ////////////////////////////////////////////////////////////////////////.
 //
+// HX-2025-04-26:
+// [write] is done synchronously!
+//
 function
 XATS2JS_NODE_g_fprint
   (x0, out)

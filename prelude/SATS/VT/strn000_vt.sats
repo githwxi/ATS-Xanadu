@@ -37,6 +37,12 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#vwtpdef
+lstrnllst = list_vt(strn_vt)
+#vwtpdef
+lstrnlopt = optn_vt(strn_vt)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun<>
 strn_vt_length0

@@ -99,38 +99,46 @@ g_neqrf(a, a): bool
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+(*
+HX-2025-04-26:
+Is this a good idea?
+*)
 fun
 <a:vt>
 g_input
 ((*void*)): (  a  )
-//
 fun
 <a:vt>
 g_input$exn
 ((*void*)): (  a  )
-//
 fun
 <a:vt>
 g_input$opt
 ((*void*)): optn_vt(a)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+(*
+HX-2025-04-26:
+Is this a good idea?
+*)
 fun
 <a:vt>
 g_parse
 (rep: strn): (  a  )
-//
 fun
 <a:vt>
 g_parse$exn
 (rep: strn): (  a  )
-//
 fun
 <a:vt>
 g_parse$opt
 (rep: strn): optn_vt(a)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
