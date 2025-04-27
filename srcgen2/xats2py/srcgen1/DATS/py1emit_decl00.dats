@@ -876,7 +876,7 @@ val nind = env0.nind()
 in//let
 (
 nindfpr(filr, nind);strnfpr(filr, "def ");
-d2varfpr(filr, dvar);
+d2varpy1(filr, dvar);
 fjas1py1(filr, fjas);strnfpr(filr, ": ## fun\n"))
 end//let
 //

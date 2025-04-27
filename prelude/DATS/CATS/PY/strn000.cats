@@ -61,7 +61,7 @@ def XATS2PY_strn_print(cs):
 ##
 ########################################################################.
 ##
-def XATS2JS_strn_get_at_raw(cs, i0):
+def XATS2PY_strn_get_at_raw(cs, i0):
   return ord(cs[i0]) # PY is charless
 ##
 ########################################################################.
