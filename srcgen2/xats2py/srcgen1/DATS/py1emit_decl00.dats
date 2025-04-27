@@ -41,11 +41,6 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
-(*
-#include
-"./../../..\
-/HATS/xatsopt_dats.hats"
-*)
 #include
 "./../../..\
 /HATS/xatsopt_dpre.hats"
@@ -63,6 +58,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload "./../SATS/xats2py.sats"
 #staload "./../SATS/py1emit.sats"
 //
 (* ****** ****** *)
@@ -284,7 +280,7 @@ end//let
 //
 val (  ) =
 (
-  xats2js_i1dcl( env0, dcl1 ))
+  xats2py_i1dcl( env0, dcl1 ))
 //
 end(*let*)//end-of-[f0_static(env0,dcl0)]
 //
@@ -443,7 +439,7 @@ if
 prvq
 then
 (
- xats2js_i1valdclist(env0, i1vs))
+ xats2py_i1valdclist(env0, i1vs))
 else
 (
  py1emit_i1valdclist(env0, i1vs))
@@ -537,7 +533,7 @@ if
 prfq
 then
 (
- xats2js_i1fundclist(env0, i1fs))
+ xats2py_i1fundclist(env0, i1fs))
 else
 (
  py1emit_i1fundclist(env0, i1fs))

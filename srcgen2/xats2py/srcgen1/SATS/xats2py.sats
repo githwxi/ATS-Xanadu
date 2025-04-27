@@ -26,91 +26,71 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-Wed Jan  1 03:28:47 PM EST 2025
+(*
+Sun Apr 27 02:14:39 PM EDT 2025
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#absimpl
-a0rf_vt_tx
-(  a:vt  ) = $extbox("a0rf_tx")
-#absimpl
-a0rf_vt_vx
-(  a:vt  ) = $extbox("a0rf_vx")
-//
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/libxats2js.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
-#absimpl
-a1rf_vt_i0_tx
-( a:vt,n:i0 ) = $extbox("a1rf_tx")
-#absimpl
-a1rf_vt_i0_vx
-( a:vt,n:i0 ) = $extbox("a1rf_vx")
+#vwtpdef envx2py = envx2js
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
-#impltmp
-< a: vt >
-a0rf_lget
-  ( A ) =
-(
-XATS2PY_a0rf_lget
-  ( A )) where
-{
-#extern
 fun
-XATS2PY_a0rf_lget
-{a:vt}
-( A
-: a0rf(a))
-: (owed(a) | a) = $extnam()
-}
-//
-#impltmp
-< a: vt >
-a0rf_lset
-(f | A, x) =
-(
-XATS2PY_a0rf_lset
-  (f | A, x)) where
-{
-#extern
+<x0:t0>
+list_xats2py_fnp
+( e1:
+! envx2py
+, xs: list(x0)
+, (!envx2py, x0) -> void): void
 fun
-XATS2PY_a0rf_lset
-{a:vt}
-(f:owed(a)
-|A:a0rf(a), x:a): void = $extnam()
-}
+<x0:t0>
+optn_xats2py_fnp
+( e1:
+! envx2py
+, xs: optn(x0)
+, (!envx2py, x0) -> void): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< a: vt >
-a0rf_make_1val
-  ( x1 ) =
-(
-XATS2PY_a0rf_make_1val
-  ( x1 )) where
-{
-#extern
 fun
-XATS2PY_a0rf_make_1val
-{a:vt}( x1: a ): a0rf(a) = $extnam()
-}
+xats2py_i1dcl
+(env0: !envx2py, dcl0: i1dcl): void
 //
-(* ****** ****** *)
-(* ****** ****** *)
+fun
+xats2py_i1valdcl
+(env0: !envx2py, ival: i1valdcl): void
+fun
+xats2py_i1fundcl
+(env0: !envx2py, ifun: i1fundcl): void
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_axrf000.dats] *)
+fun
+xats2py_i1valdclist
+(env0: !envx2py, i1vs: i1valdclist): void
+fun
+xats2py_i1fundclist
+(env0: !envx2py, i1fs: i1fundclist): void
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_xats2py_srcgen1_SATS_xats2py.sats] *)
+(***********************************************************************)

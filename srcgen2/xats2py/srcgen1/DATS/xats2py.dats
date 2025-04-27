@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,87 +30,61 @@
 //
 (*
 Author: Hongwei Xi
-Wed Jan  1 03:28:47 PM EST 2025
+//
+Fri Nov 29 04:00:58 PM EST 2024
+//
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#absimpl
-a0rf_vt_tx
-(  a:vt  ) = $extbox("a0rf_tx")
-#absimpl
-a0rf_vt_vx
-(  a:vt  ) = $extbox("a0rf_vx")
-//
+(*
+#define
+XATSOPT "./../../.."
+*)
+(* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
-#absimpl
-a1rf_vt_i0_tx
-( a:vt,n:i0 ) = $extbox("a1rf_tx")
-#absimpl
-a1rf_vt_i0_vx
-( a:vt,n:i0 ) = $extbox("a1rf_vx")
+#include
+"./../HATS/libxats2js.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
-#impltmp
-< a: vt >
-a0rf_lget
-  ( A ) =
-(
-XATS2PY_a0rf_lget
-  ( A )) where
-{
-#extern
-fun
-XATS2PY_a0rf_lget
-{a:vt}
-( A
-: a0rf(a))
-: (owed(a) | a) = $extnam()
-}
-//
-#impltmp
-< a: vt >
-a0rf_lset
-(f | A, x) =
-(
-XATS2PY_a0rf_lset
-  (f | A, x)) where
-{
-#extern
-fun
-XATS2PY_a0rf_lset
-{a:vt}
-(f:owed(a)
-|A:a0rf(a), x:a): void = $extnam()
-}
+#staload "./../SATS/xats2py.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-< a: vt >
-a0rf_make_1val
-  ( x1 ) =
+<x0>(*tmp*)
+list_xats2py_fnp
+( e1, xs, fopr ) =
 (
-XATS2PY_a0rf_make_1val
-  ( x1 )) where
+list_foritm_e1nv<x0><e1>(xs, e1)) where
 {
-#extern
-fun
-XATS2PY_a0rf_make_1val
-{a:vt}( x1: a ): a0rf(a) = $extnam()
-}
+#vwtpdef e1 = envx2py
+#impltmp
+foritm$work_e1nv<x0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [list_xats2py_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+optn_xats2py_fnp
+( e1, xs, fopr ) =
+(
+case+ xs of
+| optn_nil() => () | optn_cons(x1) => fopr(e1, x1))
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_axrf000.dats] *)
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_DATS_xats2py.dats] *)
+(***********************************************************************)
