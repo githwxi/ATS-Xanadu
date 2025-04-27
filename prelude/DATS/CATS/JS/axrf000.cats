@@ -37,61 +37,61 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 function
 XATS2JS_a0rf_lget
-  ( A )
+  ( A0 )
 {
-  return A[0]
+  return A0[0]
 }
 function
 XATS2JS_a0rf_lset
-  (A, x)
+  (A0, x1)
 {
-  A[0] = x; return
+  A0[0] = x1; return
 }
 //
 function
 XATS2JS_a0rf_make_1val
   ( x0 )
 {
-  return [x0] // HX: [a0rf] is singleton
+  return [x0] // HX: singleton
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 //
 function
 XATS2JS_a1rf_lget$at
-  (A, i)
+  (A0, i0)
 {
-  return A[i]
+  return A0[i0]
 }
 function
 XATS2JS_a1rf_lset$at
-  (A, i, x)
+  (A0, i0, x1)
 {
-  A[i] = x; return
+  A0[i0] = x1; return
 }
 //
 function
 XATS2JS_a1rf_make_ncpy
-  (n, x)
+  (n0, x0)
 {
-  var i = 0
-  var A = new Array(n);
-  while (i < n) {
-    A[i] = (x); i += 1
+  var i0 = 0
+  var A0 = new Array(n0);
+  while (i0 < n0) {
+    A0[i0] = x0; i0 = i0 + 1
   }
-  return A // HX: A = [x, x, ..., x]
+  return A0 // HX: A0=[x0, x0, ..., x0]
 }
 //
 function
 XATS2JS_a1rf_make_nfun
-  (n, f)
+  (n0, fopr)
 {
-  var i = 0
-  var A = new Array(n);
-  while (i < n) {
-    A[i] = f(i); i += 1
+  var i0 = 0
+  var A0 = new Array(n0);
+  while (i0 < n0) {
+    A0[i0] = fopr(i0); i0 = i0 + 1
   }
-  return A // HX: A = [f(0),f(1),...,f(n)]
+  return A0 // HX: A0 = [fopr(0),...,fopr(n-1)]
 }
 //
 ////////////////////////////////////////////////////////////////////////.

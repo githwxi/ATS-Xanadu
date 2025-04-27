@@ -1,4 +1,4 @@
-## Sun Apr 27 02:09:49 PM EDT 2025
+## Sun Apr 27 07:17:28 PM EDT 2025
 ########################################################################
 ########################################################################
 ##
@@ -563,11 +563,33 @@ def XATS2PY_strn_fmake_fwork(fwork):
 ##
 def XATS2PY_a0rf_lget(A):
   return A[0]
-def XATS2PY_a0rf_lset(A, x):
-  A[0] = x; return
+def XATS2PY_a0rf_lset(A, x1):
+  A[0] = x1; return
 ##
 def XATS2PY_a0rf_make_1val(x0):
-  return [x0] ## HX: [a0rf] is singleton
+  return [x0] ## HX: singleton
+##
+########################################################################.
+########################################################################.
+##
+def XATS2PY_a1rf_lget_at(A, i0):
+  return A[i0]
+def XATS2PY_a1rf_lset_at(A, i0, x1):
+  A[i0] = x1; return
+##
+def XATS2PY_a1rf_make_ncpy(n0, x0):
+  i0 = 0
+  A0 = []
+  while (i0 < n0):
+    A0.append(x0); i0 = i0 + 1
+  return A0 ## HX: A0 = [x0, x0, ..., x0]
+##
+def XATS2PY_a1rf_make_nfun(n0, fopr):
+  i0 = 0
+  A0 = []
+  while (i0 < n0):
+    A0.append(fopr(i0)); i0 = i0 + 1
+  return A0 ## HX: A0 = [fopr(0),...,fopr(n)]
 ##
 ########################################################################.
 ########################################################################.
@@ -607,6 +629,41 @@ def XATS2PY_a0rf_make_1val(x0):
 ## Author: Hongwei Xi
 ## Wed Jan  8 02:46:14 AM EST 2025
 ## Authoremail: gmhwxiATgmailDOTcom
+##
+########################################################################.
+########################################################################.
+##
+def XATS2PY_a1sz_length(A0):
+  return len(A0)
+##
+########################################################################.
+##
+def XATS2PY_a1sz_lget_at(A0, i0):
+  return A0[i0]
+def XATS2PY_a1sz_lset_at(A0, i0, x1):
+  A0[i0] = x1; return
+##
+########################################################################.
+##
+def XATS2PY_a1sz_make_ncpy(n0, x0):
+  i0 = 0
+  A0 = []
+  while (i0 < n0):
+    A0.append(x0); i0 = i0 + 1
+  return A0 ## HX: A0 = [x0, ..., x0]
+##
+def XATS2PY_a1sz_make_nfun(n0, fopr):
+  i0 = 0
+  A0 = []
+  while (i0 < n0):
+    A0.append(fopr(i0)); i0 = i0 + 1
+  return A0 ## HX: A0 = [fopr(0),...,fopr(n-1)]
+##
+########################################################################.
+##
+def XATS2PY_a1sz_fmake_fwork(fwork):
+  A0 = []
+  fwork(lambda x0: A0.append(x0)); return A0
 ##
 ########################################################################.
 ########################################################################.

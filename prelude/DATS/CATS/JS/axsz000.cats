@@ -37,24 +37,24 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 function
 XATS2JS_a1sz_length
-  (A, i)
+  ( A0 )
 {
-  return A.length // HX: length field!
+  return A0.length
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 //
 function
 XATS2JS_a1sz_lget$at
-  (A, i)
+  (A0, i0)
 {
-  return A[i]
+  return A0[i0]
 }
 function
 XATS2JS_a1sz_lset$at
-  (A, i, x)
+  (A0, i0, x1)
 {
-  A[i] = x; return // HX: void is returned!
+  A0[i0] = x1; return
 }
 //
 ////////////////////////////////////////////////////////////////////////.
@@ -65,10 +65,10 @@ Fri 06 Sep 2024 04:18:38 PM EDT
 //
 function
 XATS2JS_a1sz_make_none
-  ( n )
+  ( n0 )
 {
-  var A = new Array(n)
-  return A // HX: A = [?, ?, ..., ?]
+  var A0 = new Array(n0)
+  return A0 // HX: A0 = [?, ..., ?]
 }
 ////////////////////////////////////////////////////////////////////////.
 //
@@ -79,26 +79,26 @@ Thu 15 Aug 2024 01:50:45 PM EDT
 //
 function
 XATS2JS_a1sz_make_ncpy
-  (n, x)
+  (n0, x0)
 {
-  var i = 0
-  var A = new Array(n)
-  while (i < n) {
-    A[i] = (x); i += 1
+  var i0 = 0
+  var A0 = new Array(n0)
+  while (i0 < n0) {
+    A0[i0] = x0; i0 = i0 + 1
   }
-  return A // HX: A = [x, x, ..., x]
+  return A0 // HX: A0 = [x0, ..., x0]
 }
 //
 function
 XATS2JS_a1sz_make_nfun
-  (n, f)
+  (n0, fopr)
 {
-  var i = 0
-  var A = new Array(n)
-  while (i < n) {
-    A[i] = f(i); i += 1
+  var i0 = 0
+  var A0 = new Array(n0)
+  while (i0 < n0) {
+    A0[i0] = fopr(i0); i0 = i0 + 1
   }
-  return A // HX: A = [f(0),f(1),...,f(n)]
+  return A0 // HX: A0 = [fopr(0),...,fopr(n-1)]
 }
 //
 ////////////////////////////////////////////////////////////////////////.

@@ -37,11 +37,33 @@
 ##
 def XATS2PY_a0rf_lget(A):
   return A[0]
-def XATS2PY_a0rf_lset(A, x):
-  A[0] = x; return
+def XATS2PY_a0rf_lset(A, x1):
+  A[0] = x1; return
 ##
 def XATS2PY_a0rf_make_1val(x0):
-  return [x0] ## HX: [a0rf] is singleton
+  return [x0] ## HX: singleton
+##
+########################################################################.
+########################################################################.
+##
+def XATS2PY_a1rf_lget_at(A, i0):
+  return A[i0]
+def XATS2PY_a1rf_lset_at(A, i0, x1):
+  A[i0] = x1; return
+##
+def XATS2PY_a1rf_make_ncpy(n0, x0):
+  i0 = 0
+  A0 = []
+  while (i0 < n0):
+    A0.append(x0); i0 = i0 + 1
+  return A0 ## HX: A0 = [x0, x0, ..., x0]
+##
+def XATS2PY_a1rf_make_nfun(n0, fopr):
+  i0 = 0
+  A0 = []
+  while (i0 < n0):
+    A0.append(fopr(i0)); i0 = i0 + 1
+  return A0 ## HX: A0 = [fopr(0),...,fopr(n)]
 ##
 ########################################################################.
 ########################################################################.

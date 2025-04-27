@@ -110,7 +110,77 @@ XATS2PY_a0rf_make_1val
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+#impltmp
+< a: vt >
+a1rf_lget$at
+  (A, i) =
+(
+XATS2PY_a1rf_lget$at
+  (A, i)) where
+{
+#extern
+fun
+XATS2PY_a1rf_lget$at
+{a:vt}
+( A
+: a1rf(a)
+, i: nint): (owed(a) | a) = $extnam()
+}
+//
+#impltmp
+< a: vt >
+a1rf_lset$at
+  (f | A, i, x) =
+(
+XATS2PY_a1rf_lset$at
+  (f | A, i, x)) where
+{
+#extern
+fun
+XATS2PY_a1rf_lset$at
+{a:vt}
+(f:owed(a)
+|A:a1rf(a),i:nint,x:a): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+a1rf_make_ncpy
+  (n, x) =
+(
+XATS2PY_a1rf_make_ncpy
+  (n, x)) where
+{
+#extern
+fun
+XATS2PY_a1rf_make_ncpy
+{a:t0}(n:nint, x:a): a1rf(a) = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+a1rf_make_nfun
+  (n, f) =
+(
+XATS2PY_a1rf_make_nfun
+  (n, f)) where
+{
+#extern
+fun
+XATS2PY_a1rf_make_nfun
+{a:t0}
+(n:nint, f:(nint)->(a)): a1rf(a) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_DATS_CATS_PY_axrf000.dats] *)
