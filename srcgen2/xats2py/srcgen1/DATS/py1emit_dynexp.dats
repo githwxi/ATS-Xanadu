@@ -1770,6 +1770,24 @@ case+ iins of
 //
 (* ****** ****** *)
 //
+|I1INSfold
+(  i1v0  ) =>
+(
+nindstrnfpr
+(filr, nind, "XATS000_fold(");
+i1valpy1(filr, i1v0);strnfpr(filr, ")\n"))
+//
+(* ****** ****** *)
+//
+|I1INSfree
+(  i1v0  ) =>
+(
+nindstrnfpr
+(filr, nind, "XATS000_free(");
+i1valpy1(filr, i1v0);strnfpr(filr, ")\n"))
+//
+(* ****** ****** *)
+//
 |I1INSassgn
 (i1vl, i1vr) =>
 (
