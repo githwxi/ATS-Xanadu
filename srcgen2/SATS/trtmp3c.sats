@@ -187,7 +187,7 @@ d3eclistopt = $D3E.d3eclistopt
 (* ****** ****** *)
 //
 fun
-tmqstk_nilq( !tmqstk ): bool
+tmqstk_nilq1( !tmqstk ): bool
 //
 (* ****** ****** *)
 //
