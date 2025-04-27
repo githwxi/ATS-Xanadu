@@ -330,6 +330,32 @@ lam(i1,c1) =>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+strn_make0_llist
+  ( cs ) =
+let
+//
+#vwtpdef
+env = list_vt(cgtz)
+//
+fun fwork
+( cs: env
+, work: cgtz->void) =
+(
+case+ cs of
+| ~
+list_vt_nil() => ()
+| ~
+list_vt_cons(c1, cs) =>
+(work(c1); fwork(cs, work)))
+//
+in//let
+//
+(
+  strn_fmake0_env$fwork<env>(cs, fwork))
+end(*let*)//end-of-[strn_make0_llist(cs)]
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

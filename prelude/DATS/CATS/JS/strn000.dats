@@ -87,7 +87,8 @@ XATS2JS_strn_fmake_fwork
 #extern
 fun
 XATS2JS_strn_fmake_fwork
-(fwork: ((cgtz)->void)->void): strn = $extnam()
+( fwork
+: ((cgtz)->void)->void): strn = $extnam()
 }
 //
 (* ****** ****** *)
@@ -109,6 +110,44 @@ XATS2JS_strn_print
 #extern
 fun
 XATS2JS_strn_print(cs: strn): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-04-26:
+Sat Apr 26 08:48:02 PM EDT 2025
+*)
+//
+#impltmp
+<env:vt>
+strn_fmake0_env$fwork
+  (env, fwork) =
+(
+XATS2JS_strn_fmake0_env$fwork
+  (env, fwork)) where
+{
+#extern
+fun
+XATS2JS_strn_fmake0_env$fwork
+( env: env, fwork
+: (env, cgtz->void)->void, env: env): strn = $extnam()
+}
+//
+#impltmp
+<env:vt>
+strn_fmake1_env$fwork
+  (env, fwork) =
+(
+XATS2JS_strn_fmake1_env$fwork
+  (env, fwork)) where
+{
+#extern
+fun
+XATS2JS_strn_fmake1_env$fwork
+( env: !env, fwork
+: (!env, cgtz->void)->void, env: env): strn = $extnam()
 }
 //
 (* ****** ****** *)
