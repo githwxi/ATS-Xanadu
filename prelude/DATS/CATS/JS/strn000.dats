@@ -131,8 +131,8 @@ XATS2JS_strn_fmake0_env$fwork
 #extern
 fun
 XATS2JS_strn_fmake0_env$fwork
-( env: env, fwork
-: (env, cgtz->void)->void, env: env): strn = $extnam()
+( env: env
+, fwork: (env, cgtz->void)->void): strn = $extnam()
 }
 //
 #impltmp
@@ -146,8 +146,8 @@ XATS2JS_strn_fmake1_env$fwork
 #extern
 fun
 XATS2JS_strn_fmake1_env$fwork
-( env: !env, fwork
-: (!env, cgtz->void)->void, env: env): strn = $extnam()
+( env: !env
+, fwork: (!env, cgtz->void)->void): strn = $extnam()
 }
 //
 (* ****** ****** *)
