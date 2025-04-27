@@ -13,6 +13,15 @@ For testing prelude/JS!
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+#impltmp
+sint_print
+<(*tmp*)>(x0) = console_log(x0)
+#impltmp
+strn_print
+<(*tmp*)>(x0) = console_log(x0)
+*)
+(* ****** ****** *)
 //
 #include
 "prelude/HATS/prelude_dats.hats"
@@ -20,11 +29,12 @@ For testing prelude/JS!
 "prelude/HATS/prelude_JS_dats.hats"
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
-val A9 = strn(9, 'a')
+val A9 =
+strn_make_ncpy(9, 'a')
 val () =
-printsln("A9 = ", A9)
+(
+  printsln("A9 = ", A9))
 val () =
 printsln("|A9| = ", length(A9))
 //
@@ -102,6 +112,26 @@ val (  ) = printsln("wrds = ", wrds)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val ab0 =
+strn_make_nfun
+(26, lam(i) => 'a'+i)
+//
+val ab1 = listize(ab0)
+val ab1 = strn_make0_llist(ab1)
+val ( ) = printsln("ab1 = ", ab1)
+//
+val ab2 = strmize(ab0)
+val ab2 = strn_make0_lstrm(ab2)
+val ( ) = printsln("ab2 = ", ab2)
+//
+val ( ) =
+printsln("ab1 = ", strn(listize(ab0)))
+val ( ) =
+printsln("ab2 = ", strn(strmize(ab0)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () =
 printsln
 ("prefix(\"abcde\", 3)=", prefix("abcde", 3))
@@ -109,13 +139,24 @@ val () =
 printsln
 ("suffix(\"abcde\", 3)=", suffix("abcde", 3))
 //
+// HX-2025-04-27:
+val () = // out-of-bounds
+printsln // error cannot be caught yet!
+("prefix(\"abcde\", 6)=", prefix("abcde", 6))
+val () =
+printsln
+("suffix(\"abcde\", 6)=", suffix("abcde", 6))
+//
 val () = printsln
-("slice(\"abcde\", 1, 3)=", slice("abcde", 1, 3))
+("slice(\"abcde\", 1, 1)=", slice("abcde", 1, 1))
+val () = printsln
+("slice(\"abcde\", 1, 2)=", slice("abcde", 1, 2))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () = console_log(the_print_store_flush())
+val () = console_log
+("the_print_store:\n" + (the_print_store_flush()))
 //
 (* ****** ****** *)
 (* ****** ****** *)

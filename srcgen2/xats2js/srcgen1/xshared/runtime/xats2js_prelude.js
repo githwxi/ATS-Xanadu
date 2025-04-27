@@ -1,4 +1,4 @@
-// Fri Apr 11 04:49:46 PM EDT 2025
+// Sun Apr 27 10:02:42 AM EDT 2025
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 /*
@@ -833,6 +833,30 @@ XATS2JS_strn_print
   ( cs )
 {
   XATS2JS_the_print_store.push(cs); return
+}
+//
+////////////////////////////////////////////////////////////////////////.
+//
+/*
+HX-2025-04-26:
+Sat Apr 26 08:48:02 PM EDT 2025
+*/
+//
+function
+XATS2JS_strn_fmake0_env$fwork
+  (env, fwork)
+{
+  var cs = []
+  fwork(env, (ch) => {cs.push(ch);return})
+  return String.fromCharCode.apply(null, cs)
+}
+function
+XATS2JS_strn_fmake1_env$fwork
+  (env, fwork)
+{
+  var cs = []
+  fwork(env, (ch) => {cs.push(ch);return})
+  return String.fromCharCode.apply(null, cs)
 }
 //
 ////////////////////////////////////////////////////////////////////////.

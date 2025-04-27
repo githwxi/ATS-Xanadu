@@ -50,6 +50,19 @@ test01_a0rf000.dats; \
 $(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
 ########################################################################
 ########################################################################
+test05:: ; \
+echo "##" `date` > $@_out.py
+############
+test05:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+test05:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+############
+test05:: \
+test05_gdbg000.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+########################################################################
+########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f test??_out.py

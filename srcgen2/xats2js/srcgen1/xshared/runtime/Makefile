@@ -83,13 +83,13 @@ $(CAT) xats2js_xatslib_hd >> $(XATSLIB_JS)
 ########################################################################
 xatslib:: \
 Array00
-Array00: ; \
-$(CAT) $(XATSLIBD)/DATS/CATS/JS/Array00.cats >> $(XATSLIB_JS)
+Array00: ; $(CAT) \
+$(XATSLIBD)/xbasics/DATS/CATS/JS/Array00.cats >> $(XATSLIB_JS)
 ########################################################################
 xatslib:: \
 Hsmap00
-Hsmap00: ; \
-$(CAT) $(XATSLIBD)/DATS/CATS/JS/Hsmap00.cats >> $(XATSLIB_JS)
+Hsmap00: ; $(CAT) \
+$(XATSLIBD)/xbasics/DATS/CATS/JS/Hsmap00.cats >> $(XATSLIB_JS)
 ########################################################################
 ########################################################################
 prelude_node:: ; \

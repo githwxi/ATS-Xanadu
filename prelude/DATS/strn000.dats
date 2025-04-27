@@ -136,6 +136,10 @@ strn_gmake0
 strn_gmake1
 <list_vt(cgtz)> = strn_make1_llist<>
 //
+#impltmp
+strn_gmake0
+<strm_vt(cgtz)> = strn_make0_lstrm<>
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -357,7 +361,6 @@ strn_fmake0_env$fwork<env>(cs, fwork))
 end(*let*)//end-of-[strn_make0_llist(cs)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
@@ -384,6 +387,34 @@ in//let
 (
 strn_fmake1_env$fwork<env>(cs, fwork))
 end(*let*)//end-of-[strn_make1_llist(cs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_make0_lstrm
+  ( cs ) =
+let
+//
+#vwtpdef
+env = strm_vt(cgtz)
+//
+fun fwork
+( cs: env
+, work: cgtz->void) =
+(
+case+ !cs of
+| ~
+strmcon_vt_nil() => ()
+| ~
+strmcon_vt_cons(c1, cs) =>
+(work(c1); fwork(cs, work)))
+//
+in//let
+//
+(
+strn_fmake0_env$fwork<env>(cs, fwork))
+end(*let*)//end-of-[strn_make0_lstrm(cs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
