@@ -49,4 +49,4 @@ val strn_xyz = strn_append("x", "yz")
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_TEST_CATS_JS_test05_gdbg000.dats] *)
+(* end of [ATS3/XANADU_prelude_TEST_CATS_PY_test05_gdbg000.dats] *)

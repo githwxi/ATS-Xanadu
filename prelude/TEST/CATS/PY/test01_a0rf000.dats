@@ -1,7 +1,7 @@
 (* ****** ****** *)
 (*
-HX-2024-08-09:
-For testing prelude/JS!
+HX-2025-04-27:
+For testing prelude/PY!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -43,4 +43,4 @@ prints("A0(", type(A0), ") = ", A0, "\n")
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_TEST_CATS_JS_test01_a0rf000.dats] *)
+(* end of [ATS3/XANADU_prelude_TEST_CATS_PY_test01_a0rf000.dats] *)
