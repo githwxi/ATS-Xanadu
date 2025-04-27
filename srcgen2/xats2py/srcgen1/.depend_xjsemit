@@ -1,8 +1,11 @@
 ########################################################################
+BUILD/JS/xats2py_dats_out0.js: SATS/xats2py.sats
+BUILD/JS/xats2py_dynexp_dats_out0.js: SATS/xats2py.sats
+BUILD/JS/xats2py_decl00_dats_out0.js: SATS/xats2py.sats
 ########################################################################
-BUILD/JS/py1emit_dats_out0.js:: SATS/py1emit.sats
-BUILD/JS/py1emit_utils0_dats_out0.js:: SATS/py1emit.sats
-BUILD/JS/py1emit_dynexp_dats_out0.js:: SATS/py1emit.sats
-BUILD/JS/py1emit_decl00_dats_out0.js:: SATS/py1emit.sats
+BUILD/JS/py1emit_dats_out0.js: SATS/py1emit.sats
+BUILD/JS/py1emit_utils0_dats_out0.js: SATS/py1emit.sats
+BUILD/JS/py1emit_dynexp_dats_out0.js: SATS/py1emit.sats
+BUILD/JS/py1emit_decl00_dats_out0.js: SATS/xats2py.sats SATS/py1emit.sats
 ########################################################################
 ########################################################################

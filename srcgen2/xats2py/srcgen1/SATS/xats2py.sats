@@ -71,8 +71,32 @@ optn_xats2py_fnp
 (* ****** ****** *)
 //
 fun
+xats2py_i1let
+(env0: !envx2py, ilet: i1let): void
+fun
+xats2py_i1ins
+(env0: !envx2py, iins: i1ins): void
+//
+fun
+xats2py_i1bnd
+(env0: !envx2py, ibnd: i1bnd): void
+//
+fun
+xats2py_i1cmp
+(env0: !envx2py, icmp: i1cmp): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 xats2py_i1dcl
 (env0: !envx2py, dcl0: i1dcl): void
+//
+fun
+xats2py_i1dclist
+(env0: !envx2py, dcls: i1dclist): void
+//
+(* ****** ****** *)
 //
 fun
 xats2py_i1valdcl
@@ -87,6 +111,12 @@ xats2py_i1valdclist
 fun
 xats2py_i1fundclist
 (env0: !envx2py, i1fs: i1fundclist): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#define envx2py_get_filr = envx2js_get_filr
+#define envx2py_get_nind = envx2js_get_nind
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
