@@ -309,12 +309,12 @@ end//let//end-of-[strn_map$make_gseq(xs)]
 $UN.strn_get$at$raw
   (cs, i0) =
 (
-XATS2JS_strn_get$at$raw
+XATS000_strn_get$at$raw
   (cs, i0)) where
 {
 #extern
 fun
-XATS2JS_strn_get$at$raw
+XATS000_strn_get$at$raw
   (cs: strn, i0: nint): cgtz = $extnam()
 }
 //

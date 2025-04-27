@@ -73,6 +73,12 @@ XATS2JS_strn_get$at$raw
 {
   return cs.charCodeAt(i0) // HX: ascii
 }
+function
+XATS000_strn_get$at$raw
+  (cs, i0)
+{
+  return XATS2JS_strn_get$at$raw(cs, i0)
+}
 //
 ////////////////////////////////////////////////////////////////////////.
 //

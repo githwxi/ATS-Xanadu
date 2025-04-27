@@ -75,6 +75,18 @@ test03:: \
 test03_a1sz000.dats; \
 $(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
 ########################################################################
+test04:: ; \
+echo "##" `date` > $@_out.py
+############
+test04:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+test04:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+############
+test04:: \
+test04_strn000.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+########################################################################
 test05:: ; \
 echo "##" `date` > $@_out.py
 ############

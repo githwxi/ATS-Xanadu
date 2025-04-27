@@ -63,14 +63,30 @@ def XATS2PY_strn_print(cs):
 ##
 def XATS2PY_strn_get_at_raw(cs, i0):
   return ord(cs[i0]) # PY is charless
+def XATS000_strn_get_at_raw(cs, i0):
+  return XATS2PY_strn_get_at_raw(cs, i0)
 ##
 ########################################################################.
 ##
 def XATS2PY_strn_fmake_fwork(fwork):
-  cs = []
-  fwork(lambda ch: cs.append(chr(ch)))
-  return "".join(cs)
+  res = []
+  fwork(lambda ch: res.append(chr(ch)))
+  return "".join(res)
 ##
+########################################################################.
+##
+def \
+XATS2PY_strn_fmake0_env_fwork(env, fwork):
+  res = []
+  fwork(env, lambda ch: res.append(chr(ch)))
+  return "".join(res)
+def \
+XATS2PY_strn_fmake1_env_fwork(env, fwork):
+  res = []
+  fwork(env, lambda ch: res.append(chr(ch)))
+  return "".join(res)
+##
+########################################################################.
 ########################################################################.
 ## end of [ATS3/XANADU_prelude_DATS_CATS_PY_strn000.cats]
 ########################################################################.
