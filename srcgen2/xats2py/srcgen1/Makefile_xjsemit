@@ -26,11 +26,14 @@ XATS2PY=./../../../srcgen2/xats2py
 ########################################################################
 #
 SRCSATS := \
+xats2py.sats \
 py1emit.sats \
 #
 ########################################################################
 #
 SRCDATS := \
+xats2py.dats \
+xats2py_decl00.dats \
 py1emit.dats \
 py1emit_utils0.dats \
 py1emit_dynexp.dats \

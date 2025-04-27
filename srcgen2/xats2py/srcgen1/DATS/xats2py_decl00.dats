@@ -30,87 +30,38 @@
 //
 (*
 Author: Hongwei Xi
-Wed Jan  1 03:28:47 PM EST 2025
+(*
+Sun Apr 27 02:29:07 PM EDT 2025
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
-//
-#absimpl
-a0rf_vt_tx
-(  a:vt  ) = $extbox("a0rf_tx")
-#absimpl
-a0rf_vt_vx
-(  a:vt  ) = $extbox("a0rf_vx")
-//
-(* ****** ****** *)
-//
-#absimpl
-a1rf_vt_i0_tx
-( a:vt,n:i0 ) = $extbox("a1rf_tx")
-#absimpl
-a1rf_vt_i0_vx
-( a:vt,n:i0 ) = $extbox("a1rf_vx")
-//
+#include
+"./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"./../HATS/libxatsopt.hats"
+#include
+"./../HATS/libxats2js.hats"
 //
-#impltmp
-< a: vt >
-a0rf_lget
-  ( A ) =
-(
-XATS2PY_a0rf_lget
-  ( A )) where
-{
-#extern
-fun
-XATS2PY_a0rf_lget
-{a:vt}
-( A
-: a0rf(a))
-: (owed(a) | a) = $extnam()
-}
+(* ****** ****** *)
 //
-#impltmp
-< a: vt >
-a0rf_lset
-(f | A, x) =
-(
-XATS2PY_a0rf_lset
-  (f | A, x)) where
-{
-#extern
-fun
-XATS2PY_a0rf_lset
-{a:vt}
-(f:owed(a)
-|A:a0rf(a), x:a): void = $extnam()
-}
+#staload
+_(*DATS*)="./../DATS/xats2py.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< a: vt >
-a0rf_make_1val
-  ( x1 ) =
-(
-XATS2PY_a0rf_make_1val
-  ( x1 )) where
-{
-#extern
-fun
-XATS2PY_a0rf_make_1val
-{a:vt}( x1: a ): a0rf(a) = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_axrf000.dats] *)
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_DATS_xats2py_decl00.dats] *)
+(***********************************************************************)
