@@ -77,9 +77,9 @@ optn_vt_nilq1
   (xs) =
 (
 case+ xs of
-|
+| !
 optn_vt_nil() => true
-|
+| !
 optn_vt_cons _ => false)
 //
 #impltmp
@@ -174,7 +174,8 @@ optn_vt_length1
   (xs) =
 (
 case+ xs of
-| optn_vt_nil() => 0 | optn_vt_cons _ => 1)
+| !
+optn_vt_nil() => 0 | !optn_vt_cons _ => 1)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -129,7 +129,9 @@ tmqstk_free_nil
 (stk0: ~tmqstk): void =
 (
 case- stk0 of
-| ~tmqstk_nil() => ((*void*)))
+| ~ // free
+tmqstk_nil() => ((*void*)))
+(*case-*)//end(tmqstk_free_nil)
 //
 (* ****** ****** *)
 (*
@@ -139,14 +141,15 @@ in//local
 (* ****** ****** *)
 //
 #implfun
-tmqstk_nilq
+tmqstk_nilq1
 (   stk0   ) =
 (
 case+ stk0 of
 | // !
-tmqstk_nil() => true
-| _(*non-nil*) => false
-) (* end of [tmqstk_nilq(stk0)] *)
+tmqstk_nil() => (true)
+| _ // keep
+(*non-tmqstk_nil*) => false
+) (* end of [tmqstk_nilq1(stk0)] *)
 //
 (* ****** ****** *)
 //

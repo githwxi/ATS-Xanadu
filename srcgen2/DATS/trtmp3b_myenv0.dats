@@ -120,8 +120,11 @@ fun
 tmpstk_free_nil
 (stk0: ~tmpstk): void =
 (
-case- stk0 of
-| ~tmpstk_nil() => ((*void*)))
+case-
+stk0 of
+| ~
+tmpstk_nil() => ((*void*)))
+(*case-*)//end(tmpstk_free_nil)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -132,14 +135,15 @@ in//local
 (* ****** ****** *)
 //
 #implfun
-tmpstk_nilq
+tmpstk_nilq1
 (   stk0   ) =
 (
 case+ stk0 of
 | // !
-tmpstk_nil() => true
-| _(*non-nil*) => false
-) (* end of [tmpstk_nilq(stk0)] *)
+tmpstk_nil() => (true)
+| _ // !
+(*non-tmpstk_nil*) => false
+)(*case+*)//end(tmpstk_nilq1(stk0))
 //
 (* ****** ****** *)
 //
@@ -148,7 +152,7 @@ tmpstk_pshlet0
   (  stk0  ) =
 (
   stk0 := tmpstk_let0(stk0))
-//(*end of [tmpstk_pshlet0(stk0)]*)
+(* end-of-[tmpstk_pshlet0(stk0)] *)
 //
 (* ****** ****** *)
 //
@@ -157,14 +161,14 @@ tmpstk_pshloc1
   (  stk0  ) =
 (
   stk0 := tmpstk_loc1(stk0))
-//(*end of [tmpstk_pshloc1(stk0)]*)
+(* end-of-[tmpstk_pshloc1(stk0)] *)
 //
 #implfun
 tmpstk_pshloc2
   (  stk0  ) =
 (
   stk0 := tmpstk_loc2(stk0))
-//(*end of [tmpstk_pshloc2(stk0)]*)
+(* end-of-[tmpstk_pshloc2(stk0)] *)
 //
 (* ****** ****** *)
 //

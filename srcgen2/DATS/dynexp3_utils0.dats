@@ -1315,8 +1315,8 @@ T2Pvar
 //
 fun
 h2_search
-( svts
-: !s2vts_vt): s2typopt_vt =
+( svts:
+! s2vts_vt): s2typopt_vt =
 (
 case+ svts of
 | // !

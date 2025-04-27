@@ -1697,6 +1697,20 @@ gseq_fmake_fwork(fwork: ((x0)->void)->void): xs
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<env:vt>
+strn_fmake0_env$fwork
+( env: env
+, fwork: (env, cgtz->void)->void): strn//HX:3rd-order!
+fun
+<env:vt>
+strn_fmake1_env$fwork
+( env: !env
+, fwork: (!env, cgtz->void)->void): strn//HX:3rd-order!
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

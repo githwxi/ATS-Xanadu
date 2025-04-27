@@ -198,9 +198,9 @@ loop
 ,j0: sint(j)): sint(i+j) =
 (
 case+ xs of
-|
+| !
 list_vt_nil() => j0
-|
+| !
 list_vt_cons(x1, xs) => loop(xs, j0+1))
 }
 //
@@ -234,10 +234,10 @@ loop
 (
 //
 case+ xs of
-| // !
+| !
 list_vt_nil() =>
 (r0 := list_vt_nil())
-| // !
+| !
 list_vt_cons(x0, xs) =>
 let
 val x0 = g_copy<a>(x0)
