@@ -71,10 +71,10 @@ $(XATS2PY)/srcgen1/lib/lib2xats2py.js | $(CAT) - >> $@_dats_out.js && \
 $(NODE) \
   --stack-size=8192 $(XATS2JS_JSEMIT00) xats2py_pyemit01.dats >> $@_dats_out.js
 #
-xats2py_pyemit01_opt0: ; \
+xats2py_pyemit01_opt1: ; \
 npx google-closure-compiler \
   -W QUIET --compilation_level SIMPLE \
-  --js=xats2py_pyemit01_dats_out.js --js_output_file=xats2py_pyemit01_dats_opt0.js
+  --js=xats2py_pyemit01_dats_out.js --js_output_file=xats2py_pyemit01_dats_opt1.js
 #
 ########################################################################
 ########################################################################
