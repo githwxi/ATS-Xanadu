@@ -78,13 +78,13 @@ $(CAT) xats2py_xatslib_hd >> $(XATSLIB_PY)
 ###############################################################
 xatslib:: \
 Array00
-Array00: ; \
-$(CAT) $(XATSLIBD)/DATS/CATS/PY/Array00.cats >> $(XATSLIB_PY)
+Array00: ; $(CAT) \
+$(XATSLIBD)/xbasics/DATS/CATS/PY/Array00.cats >> $(XATSLIB_PY)
 ###############################################################
 xatslib:: \
 Hsmap00
-Hsmap00: ; \
-$(CAT) $(XATSLIBD)/DATS/CATS/PY/Hsmap00.cats >> $(XATSLIB_PY)
+Hsmap00: ; $(CAT) \
+$(XATSLIBD)/xbasics/DATS/CATS/PY/Hsmap00.cats >> $(XATSLIB_PY)
 ###############################################################
 ###############################################################
 # end of [Makefile]
