@@ -64,97 +64,144 @@ _(*DATS*)="./../DATS/xats2py.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#implfun
-xats2py_i1valdcl
-  (env0, ival) = let
-//
-(* ****** ****** *)
-//
-val dpat =
-i1valdcl_get_dpat(ival)
-val tdxp =
-i1valdcl_get_tdxp(ival)
-//
-(* ****** ****** *)
-//
-val (  ) =
-xats2py_i1bnd(env0, dpat)
-//
-(* ****** ****** *)
-//
-(*
-val (  ) = prerrsln
-("xats2py_i1valdcl: dpat = ", dpat)
-val (  ) = prerrsln
-("xats2py_i1valdcl: tdxp = ", tdxp)
-*)
-//
-(* ****** ****** *)
-//
-val (  ) =
+fun
+fprintln
+(out0: FILR): void =
 (
-case+ tdxp of
-|
-TEQI1CMPnone
-( (*void*) ) => ((*void*))
-|
-TEQI1CMPsome
-(teq1, icmp) =>
-let
-val (  ) =
-(
-  xats2py_i1cmp(env0, icmp))
-end//let
-) (*case+*) // end-of-( teqi1exp )
+ strn_fprint("\n",out0))//endfun
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-end where
-{
+fun
+i1bndfpr
+( out0: FILR
+, ibnd: i1bnd): void =
+(
+ i1bnd_fprint(ibnd, out0))//endfun
 //
-val (  ) =
+fun
+i1gptfpr
+(out0: FILR
+,igpt: i1gpt): void =
+(
+ i1gpt_fprint(igpt, out0))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1valfpr
+( filr: FILR
+, ival: i1val): void =
+(
+ i1val_fprint(ival, filr))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+xats2py_i1let
+( env0,ilet ) =
 let
+//
 val filr =
 envx2py_get_filr(env0)
 val nind =
 envx2py_get_nind(env0)
+//
+in//let
+nindfpr(filr, nind);
+strnfpr(filr, "## ");
+i1letfpr(env0, ilet); fprintln(filr)
+end where
+{
+//
+fun
+i1letfpr
+( env0:
+! envx2py
+, ilet: i1let): void =
+(
+i1let_fprint(ilet, filr)
+) where
+{
+  val filr = envx2py_get_filr(env0) }
+//
+}(*where*)//end-of-[xats2py_i1let(env0,ilet)]
+//
+(* ****** ****** *)
+//
+fun
+xats2py_i1letlst
+( env0:
+! envx2py
+, ilts: i1letlst): void =
+(
+  list_xats2py_fnp(env0, ilts, xats2py_i1let))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2py_i1bnd
+( env0,ibnd ) =
+let
+//
+val filr =
+envx2py_get_filr(env0)
+val nind =
+envx2py_get_nind(env0)
+//
 in//let
 (
-nindstrnfpr(filr, nind, "## I1VALDCL\n"))
-end//let
-//
-}(*where*)//end-of-[xats2py_i1valdcl(env0,ival)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-xats2py_i1dclist
-  (env0, dcls) =
-(
-  list_xats2py_fnp(env0, dcls, xats2py_i1dcl))
+nindfpr(filr, nind);
+strnfpr(filr, "## ");
+i1bndfpr(filr, ibnd); fprintln(filr))
+end(*let*)//end-of-[xats2py_i1bnd(env0,ibnd)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2py_i1valdclist
-  (env0, i1vs) =
-(
-  list_xats2py_fnp(env0, i1vs, xats2py_i1valdcl))
+xats2py_i1cmp
+( env0,icmp ) =
+let
 //
-(* ****** ****** *)
-(* ****** ****** *)
+val filr =
+envx2py_get_filr(env0)
+val nind =
+envx2py_get_nind(env0)
 //
-#implfun
-xats2py_i1fundclist
-  (env0, i1fs) =
+in//let
+//
+case+ icmp of
+|
+I1CMPcons
+(ilts, ival) =>
 (
-  list_xats2py_fnp(env0, i1fs, xats2py_i1fundcl))
+nindfpr(filr, nind);
+strnfpr
+(filr,"## I1CMP:start\n");
+//
+(
+nindfpr(filr, nind);
+strnfpr
+(filr, "## I1CMP(ival):");
+i1valfpr(  filr , ival  )) where
+{
+val () =
+(
+  xats2py_i1letlst(env0, ilts)) };
+//
+strnfpr(filr, " ## I1CMP:return\n");
+)
+//
+end(*let*)//end-of-[xats2py_i1cmp(env0,icmp)]
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_DATS_xats2py_decl00.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_DATS_xats2py_dynexp.dats] *)
 (***********************************************************************)
