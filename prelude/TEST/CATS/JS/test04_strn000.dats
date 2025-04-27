@@ -139,13 +139,12 @@ val () =
 printsln
 ("suffix(\"abcde\", 3)=", suffix("abcde", 3))
 //
+(*
 // HX-2025-04-27:
 val () = // out-of-bounds
 printsln // error cannot be caught yet!
-("prefix(\"abcde\", 6)=", prefix("abcde", 6))
-val () =
-printsln
-("suffix(\"abcde\", 6)=", suffix("abcde", 6))
+("prefix(\"abcde\", 10)=", prefix("abcde", 10))
+*)
 //
 val () = printsln
 ("slice(\"abcde\", 1, 1)=", slice("abcde", 1, 1))

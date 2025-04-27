@@ -104,6 +104,39 @@ XATS2PY_strn_print(cs: strn): void = $extnam()
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<env:vt>
+strn_fmake0_env$fwork
+  (env, fwork) =
+(
+XATS2PY_strn_fmake0_env_fwork
+  (env, fwork)) where
+{
+#extern
+fun
+XATS2PY_strn_fmake0_env_fwork
+( env: env
+, fwork: (env, cgtz->void)->void): strn = $extnam()
+}
+//
+#impltmp
+<env:vt>
+strn_fmake1_env$fwork
+  (env, fwork) =
+(
+XATS2PY_strn_fmake1_env_fwork
+  (env, fwork)) where
+{
+#extern
+fun
+XATS2PY_strn_fmake1_env_fwork
+( env: !env
+, fwork: (!env, cgtz->void)->void): strn = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
