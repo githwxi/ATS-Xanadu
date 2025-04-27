@@ -21,6 +21,8 @@ $(XATSHOME)/srcgen2/xats2py/srcgenx
 SRCGEN2_XSHARED=\
 $(XATSHOME)/srcgen2/xats2py/srcgenx/xshared/runtime
 SRCGEN2_XATS2PY=\
+$(XATSHOME)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_dats.js
+SRCGEN2_XATS2PY=\
 $(XATSHOME)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_dats_out.js
 ########################################################################
 ########################################################################

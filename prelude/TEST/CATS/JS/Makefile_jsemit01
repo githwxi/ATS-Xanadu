@@ -45,6 +45,8 @@ testall2:: test00; $(NODE) $<_out2.js
 SRCGEN2_XSHARED=\
 $(XATSHOME)/srcgen2/xats2js/srcgenx/xshared/runtime
 SRCGEN2_XATS2JS=\
+$(XATSHOME)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit01_dats.js
+SRCGEN2_XATS2JS=\
 $(XATSHOME)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit01_dats_out.js
 ########################################################################
 ########################################################################
