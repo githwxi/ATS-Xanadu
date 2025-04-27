@@ -189,6 +189,10 @@ list_cons(d3p1, d3ps) =>
 //
 in
 //
+(*
+HX-2025-04-27:
+This is not used!!!
+*)
 fun
 d3pat_leftize
 (d3p0: d3pat): void =
@@ -287,7 +291,7 @@ val
 in
   d3pat_make_node
   (loc0, d3p1.type(), D3Pflat(d3p1))
-end // end of [auxflat]
+end(*let*)//end-of-[auxflat(env0,d3p0)]
 
 (* ****** ****** *)
 

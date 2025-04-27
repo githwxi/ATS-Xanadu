@@ -1052,14 +1052,30 @@ let
 val-
 I0Pbang i0p1 = ipat.node()
 //
+(*
+val () =
+prerrsln
+("f0_bang: ipat = ", ipat)
+val () =
+prerrsln
+("f0_bang: ival = ", ival)
+*)
+//
 in//let
 //
-let
-  val ival = f1_addr(ival)
-in//let
+case+
+i0p1.node() of
+|
+I0Pvar _ =>
 (
-trxi0i1_i0bnd(env0,i0p1,ival))
-end//let
+trxi0i1_i0bnd
+(env0, i0p1, ival)
+) where
+{
+val ival = f1_addr(ival)}
+|
+_(*non-I0Pvar*) =>
+trxi0i1_i0bnd(env0,i0p1,ival)
 //
 end where
 {

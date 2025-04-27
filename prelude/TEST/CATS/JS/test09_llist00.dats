@@ -18,9 +18,26 @@ For testing prelude/JS!
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+length
+(xs: !list_vt(sint)): nint =
+case+ xs of
+| !
+list_vt_nil() => 0
+| !
+list_vt_cons(_, xs) => 1+length(xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val ns =
 list_vt_nfun
 (10, lam(i) => i)
+//
+val ln = length(ns)
+val () =
+printsln("ln = ", ln)
+//
 val ns =
 map0$fun(ns, lam(i:sint)=>i*i)
 val () = print0s("ns = ", ns, "\n")
