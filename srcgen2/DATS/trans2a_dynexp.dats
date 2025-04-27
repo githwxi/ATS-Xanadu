@@ -140,9 +140,50 @@ T2Plft(t2p1) => t2p1
 _(*otherwise*) => s2typ_lft(t2p0)
 )
 //
+(* ****** ****** *)
+//
 (*
-HX:
-For leftization!
+HX: For leftization!
+*)
+//
+fun
+d2pat_bang
+(d2p0: d2pat): (void) =
+(
+case+
+d2p0.node() of
+//
+|
+D2Pvar(d2v1) =>
+let
+val
+t2p1 = d2v1.styp((*0*))
+in//let
+  d2v1.styp(s2typ_bang(t2p1))
+end//let
+(*
+|
+D2Paref(d2v1, d2p2) =>
+let
+val
+t2p1 = d2v1.styp((*0*))
+in//let
+  d2v1.styp(s2typ_bang(t2p1))
+end//let
+*)
+|
+D2Pannot
+(d2p1, _, _) => d2pat_bang(d2p1)
+|
+_(*non-D2Pvar*) => ( (*ignored*) )
+//
+)(*case+*)//end-of-[d2pat_bang(d2p0)]
+//
+(* ****** ****** *)
+//
+(*
+(*
+HX: For leftization!
 *)
 fun
 d2pat_bang
@@ -152,8 +193,7 @@ case+
 d2p0.node() of
 //
 |
-D2Pvar
-(  d2v1  ) =>
+D2Pvar(d2v1) =>
 let
 val
 t2p1 = d2v1.styp((*0*))
@@ -162,15 +202,16 @@ in//let
 end//let
 //
 |
-D2Pbang
-(  d2p1  ) => d2pat_bang(d2p1)
+D2Pbang(d2p1) => d2pat_bang(d2p1)
 //
 |
 D2Pdapp
-(d2f0
-,npf1, d2ps) => d2patlst_bang(d2ps)
+( d2f0
+, npf1, d2ps) => d2patlst_bang(d2ps)
 //
-| _(*otherwise*) => ( (*ignored*) ) )
+|
+_(* otherwise *) => ( (* ignored *) )
+)(*case+*)//end-of-[d2pat_bang(d2p0)]
 //
 and
 d2patlst_bang
@@ -184,7 +225,8 @@ list_cons(d2p1, d2ps) =>
 (
 d2pat_bang(d2p1); d2patlst_bang(d2ps)
 )
-)
+)(*case+*)//end-of-[d2patlst_bang(d2ps)]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
