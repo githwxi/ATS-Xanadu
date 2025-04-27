@@ -100,7 +100,7 @@ i1valfpr
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 xats2py_i1let
 ( env0,ilet ) =
 let
@@ -128,17 +128,16 @@ i1let_fprint(ilet, filr)
 {
   val filr = envx2py_get_filr(env0) }
 //
-}(*where*)//end-of-[xats2py_i1let(env0,ilet)]
+(* ****** ****** *)
+//
+(*
+val (  ) =
+printsln("xats2py_i1let: ilet = ", ilet)
+*)
 //
 (* ****** ****** *)
 //
-fun
-xats2py_i1letlst
-( env0:
-! envx2py
-, ilts: i1letlst): void =
-(
-  list_xats2py_fnp(env0, ilts, xats2py_i1let))
+}(*where*)//end-of-[xats2py_i1let(env0,ilet)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -158,7 +157,19 @@ in//let
 nindfpr(filr, nind);
 strnfpr(filr, "## ");
 i1bndfpr(filr, ibnd); fprintln(filr))
-end(*let*)//end-of-[xats2py_i1bnd(env0,ibnd)]
+end where
+{
+//
+(* ****** ****** *)
+//
+(*
+val (  ) =
+printsln("xats2py_i1bnd: ibnd = ", ibnd)
+*)
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[xats2py_i1bnd(env0,ibnd)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -197,7 +208,29 @@ val () =
 strnfpr(filr, " ## I1CMP:return\n");
 )
 //
-end(*let*)//end-of-[xats2py_i1cmp(env0,icmp)]
+end where
+{
+//
+(* ****** ****** *)
+//
+(*
+val (  ) =
+printsln("xats2py_i1cmp: icmp = ", icmp)
+*)
+//
+(* ****** ****** *)
+//
+fun
+xats2py_i1letlst
+( env0:
+! envx2py
+, ilts: i1letlst): void =
+(
+list_xats2py_fnp(env0, ilts, xats2py_i1let))
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[xats2py_i1cmp(env0,icmp)]
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
