@@ -53,6 +53,12 @@ x0: (a),
 xs: strm_vt(a)): strm_vt(a)
 fun
 <a:vt>
+strx_vt_cons
+(
+x0: (a),
+xs: strx_vt(a)): strx_vt(a)
+fun
+<a:vt>
 strq_vt_cons
 {n:i0}
 (
@@ -123,8 +129,8 @@ fun
 <x0:vt>
 strm_vt_concat0
 ( xss
-: strm_vt
-( strm_vt(x0) )): strm_vt(x0)
+: ~strm_vt
+ ( strm_vt(x0) )): strm_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

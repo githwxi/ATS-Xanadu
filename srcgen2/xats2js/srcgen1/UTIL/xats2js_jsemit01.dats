@@ -136,71 +136,81 @@ val (  ) = the_gmacenv_allist_prerr()
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () =
-mymain() where
+fun
+argv$loop
+(argv: argv): void =
+(
+  loop(3)) where
 {
 //
+val n0 = length(argv)
+//
 fun
-mymain((*void*)) =
-(
+loop(i0: sint): void =
 if
-length(argv) >= 3
+(i0 < n0)
 then
 (
-  mymain_work(argv[2]))
-where
+  loop(i0+1)) where
 {
+val () =
+xatsopt_flag$pvsadd0(argv[i0])
+}
+}(*where*)//end-of-[argv$loop(argv)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+mymain_main(): void =
+let
+//
+val alen = length(argv)
+//
+val (  ) =
+if
+(
+alen >= 3)
+then
+let // let
 //
 val ret1 =
 the_fxtyenv_pvsload((*0*))
 val (  ) =
-if
+if // if
 (ret1 > 0)
 then
 prerrsln("\
 // The fixity-defs loaded!")
-//
 val ret2 =
 the_tr12env_pvsl01d((*nil*))
 val (  ) =
-if
+if // if
 (ret2 > 0)
 then prerrsln("\
 // The trans12-defs loaded!")
 //
 val (  ) =
-argv$loop(3) where
-{
+xatsopt_flag$pvsadd0("--_XATS2JS_=1")
 //
-val alen = length(argv)
+in//let
+(
+argv$loop(argv); mymain_work(argv[2]))
+endlet // let // if(length(argv) >= 3)
 //
-fun
-argv$loop(i0: sint): void =
+val (  ) =
 if
-(i0 >= alen)
-then () else
 (
-argv$loop(i0+1))
-where{
-val argi = argv[i0]
+alen<=2)
+then
+let//let
 val (  ) =
 (
-xatsopt_flag$pvsadd0(argi))
-}(*where*)//argv$loop(i0+1)
+prerrsln
+("ERROR: no source is given: ", argv))
+endlet // let // if(length(argv) <= 2)
 //
-}(*where*)//argv$loop(  3  )
-//
-}(*where*)//then//end-of-(if)
-else
-(
-let
-val (  ) =
-(
-prerrsln("ERROR: \
-no source is given: ", argv))
-end//let
-)
-) where
+endlet where
 {
 //
 val (  ) =
@@ -214,18 +224,19 @@ val argv =
 (
   XATS2JS_NODE_argv$get((*void*)))
 (*
-val (  ) = prerrsln
-("// xats2js_jsemit: argv = ", argv)
+val (  ) = prerrsln("\
+// xats2js_jsemit00: argv = ", argv)
 *)
 //
-}(*where*)//end-of-[mymain((*void*))]
+}(*where*)//end-of-[mymain_main(...)]
 //
-}(*where*)//end-of-[val() = mymain()]
-//
+(* ****** ****** *)
+(* ****** ****** *)
+val ((*entry*)) = mymain_main((*void*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_UTIL_xats2js_jsemit01.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_UTIL_xats2js_jsemit00.dats] *)
