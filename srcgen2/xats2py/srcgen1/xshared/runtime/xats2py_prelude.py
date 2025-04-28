@@ -1,4 +1,4 @@
-## Sun Apr 27 07:42:04 PM EDT 2025
+## Mon Apr 28 02:44:16 AM EDT 2025
 ########################################################################
 ########################################################################
 ##
@@ -521,6 +521,8 @@ def XATS2PY_strn_fmake_fwork(fwork):
   res = []
   fwork(lambda ch: res.append(chr(ch)))
   return "".join(res)
+def XATS000_strn_fmake_fwork(fwork):
+  return XATS2PY_strn_fmake_fwork(fwork)
 ##
 ########################################################################.
 ##
@@ -534,6 +536,11 @@ XATS2PY_strn_fmake1_env_fwork(env, fwork):
   res = []
   fwork(env, lambda ch: res.append(chr(ch)))
   return "".join(res)
+##
+def XATS000_strn_fmake0_env_fwork(env, fwork):
+  return XATS2PY_strn_fmake0_env_fwork(env, fwork)
+def XATS000_strn_fmake1_env_fwork(env, fwork):
+  return XATS2PY_strn_fmake1_env_fwork(env, fwork)
 ##
 ########################################################################.
 ########################################################################.

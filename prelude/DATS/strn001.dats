@@ -359,18 +359,64 @@ end(*let*)//end-of-[gseq_strn$rconcat( xs )]
 (*
 HX-2024-08-16:
 Fri 16 Aug 2024 05:22:41 PM EDT
-#impltmp
-<(*tmp*)>
-strn_fmake_fwork(fwork) = (* ...... *)
-HX-2024-08-16: Externally!
-For instance, one JS version
-can be found in [DATS/CATS/JS/strn000.dats]
 *)
 //
+#impltmp
+<(*tmp*)>
+strn_fmake_fwork
+  (fwork) =
+(
+XATS000_strn_fmake_fwork
+  (fwork)) where
+{
+#extern
+fun
+XATS000_strn_fmake_fwork
+( fwork
+: ((cgtz)->void)->void): strn = $extnam()
+}
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(*
+HX-2025-04-26:
+Sat Apr 26 08:48:02 PM EDT 2025
+*)
+//
+#impltmp
+<env:vt>
+strn_fmake0_env$fwork
+  (env, fwork) =
+(
+XATS000_strn_fmake0_env$fwork
+  (env, fwork)) where
+{
+#extern
+fun
+XATS000_strn_fmake0_env$fwork
+( env: env
+, fwork: (env, cgtz->void)->void): strn = $extnam()
+}
+//
+#impltmp
+<env:vt>
+strn_fmake1_env$fwork
+  (env, fwork) =
+(
+XATS000_strn_fmake1_env$fwork
+  (env, fwork)) where
+{
+#extern
+fun
+XATS000_strn_fmake1_env$fwork
+( env: !env
+, fwork: (!env, cgtz->void)->void): strn = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_strn001.dats] *)
+(***********************************************************************)
