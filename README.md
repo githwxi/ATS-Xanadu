@@ -46,6 +46,9 @@ Here are some [details](https://groups.google.com/g/ats-lang-users/c/C3-PWokjYTA
 on the release of ATS3-alpha.0.1. Please see [XATSHOME](https://github.com/githwxi/XATSHOME)
 for instructions.
 
+- You need 'node' or 'nodejs' for running the ATS3-to-JS-in-ATS3.js compiler.
+- You need 'node' or 'nodejs' for running the ATS3-to-PY-in-ATS3.js compiler.
+
 ## Developing ATS3
 
 ## Documenting ATS3
