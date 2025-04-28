@@ -59,7 +59,8 @@ XATS2PY_a1sz_length
 fun
 XATS2PY_a1sz_length
 {a:vt}
-{n:i0}(A: a1sz(a, n)): sint(n) = $extnam()
+{n:i0}
+(A: a1sz(a, n)): sint(n) = $extnam()
 }
 //
 (* ****** ****** *)

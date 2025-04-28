@@ -91,6 +91,13 @@ XATS2JS_strn_fmake_fwork
   return String.fromCharCode.apply(null, cs)
 }
 //
+function
+XATS000_strn_fmake_fwork
+  (fwork)
+{
+  return XATS2JS_strn_fmake_fwork(fwork)
+}
+//
 ////////////////////////////////////////////////////////////////////////.
 //
 function
@@ -122,6 +129,19 @@ XATS2JS_strn_fmake1_env$fwork
   var cs = []
   fwork(env, (ch) => {cs.push(ch);return})
   return String.fromCharCode.apply(null, cs)
+}
+//
+function
+XATS000_strn_fmake0_env$fwork
+  (env, fwork)
+{
+  return XATS2JS_strn_fmake0_env$fwork(env, fwork)
+}
+function
+XATS000_strn_fmake1_env$fwork
+  (env, fwork)
+{
+  return XATS2JS_strn_fmake1_env$fwork(env, fwork)
 }
 //
 ////////////////////////////////////////////////////////////////////////.

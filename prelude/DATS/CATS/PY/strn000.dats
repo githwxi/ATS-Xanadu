@@ -73,23 +73,6 @@ XATS2PY_strn_cmp
 //
 #impltmp
 <(*tmp*)>
-strn_fmake_fwork
-  (fwork) =
-(
-XATS2PY_strn_fmake_fwork
-  (fwork)) where
-{
-#extern
-fun
-XATS2PY_strn_fmake_fwork
-(fwork: ((cgtz)->void)->void): strn = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
 strn_print
   ( cs ) =
 (
@@ -99,39 +82,6 @@ XATS2PY_strn_print
 #extern
 fun
 XATS2PY_strn_print(cs: strn): void = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<env:vt>
-strn_fmake0_env$fwork
-  (env, fwork) =
-(
-XATS2PY_strn_fmake0_env_fwork
-  (env, fwork)) where
-{
-#extern
-fun
-XATS2PY_strn_fmake0_env_fwork
-( env: env
-, fwork: (env, cgtz->void)->void): strn = $extnam()
-}
-//
-#impltmp
-<env:vt>
-strn_fmake1_env$fwork
-  (env, fwork) =
-(
-XATS2PY_strn_fmake1_env_fwork
-  (env, fwork)) where
-{
-#extern
-fun
-XATS2PY_strn_fmake1_env_fwork
-( env: !env
-, fwork: (!env, cgtz->void)->void): strn = $extnam()
 }
 //
 (* ****** ****** *)
