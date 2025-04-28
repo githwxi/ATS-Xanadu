@@ -41,11 +41,10 @@ uses algebraic types (while ATS2 uses dependent types).
 
 ## Installing ATS3
 
-ATS3 is not ready for release yet.
-
-Please see
-[http://www.ats-lang.org/Downloads.html](http://www.ats-lang.org/Downloads.html) for
-instructions after it is officially released.
+ATS3 is available for testing.
+Here are some [details](https://groups.google.com/g/ats-lang-users/c/C3-PWokjYTA)
+on the release of ATS3-alpha.0.1. Please see [XATSHOME](https://github.com/githwxi/XATSHOME)
+for instructions.
 
 ## Developing ATS3
 
