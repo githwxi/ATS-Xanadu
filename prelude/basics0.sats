@@ -88,13 +88,16 @@ XATSPACK="ATS3-Xanadu@20220500"
 //
 (* ****** ****** *)(* ****** ****** *)
 //
-#sortdef i0 = int
+#sortdef i0 = int0
 //
 #sortdef a0 = addr
 #sortdef b0 = bool
 #sortdef c0 = char
 //
 #sortdef p0 = prop
+(*
+#sortdef pf = prop
+*)
 #sortdef pp = prop
 #sortdef v0 = view
 #sortdef vw = view
@@ -107,6 +110,8 @@ XATSPACK="ATS3-Xanadu@20220500"
 #sortdef vx = vtbx
 //
 (* ****** ****** *)(* ****** ****** *)
+#sortdef int = int0
+(* ****** ****** *)(* ****** ****** *)
 //
 datasort
 ints_sort =
@@ -117,8 +122,9 @@ ints_cons of
 (int, ints_sort)
 //
 #sortdef
-ints = ints_sort // sequences
+ints = ints_sort // int-seqs
 //
+(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 //
 (*

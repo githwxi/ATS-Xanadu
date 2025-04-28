@@ -253,6 +253,11 @@ end (*local*) // end of [local(t2dat)]
 (* ****** ****** *)
 //
 #implfun
+sort2_int(i0) = S2Tint(i0)
+//
+(* ****** ****** *)
+//
+#implfun
 sort2_none0() = S2Tnone0()
 #implfun
 sort2_none1(s1t0) = S2Tnone1(s1t0)
@@ -476,7 +481,7 @@ endloc (*local*) // end of [local(s2arg)]
 #implfun
 s2exp_int(int) =
 let
-val s2t0 = the_sort2_int in
+val s2t0 = the_sort2_int0 in
 s2exp_make_node(s2t0, S2Eint(int))
 end (*let*) // end of [s2exp_int(int)]
 (* ****** ****** *)

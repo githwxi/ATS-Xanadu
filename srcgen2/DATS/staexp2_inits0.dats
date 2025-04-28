@@ -69,8 +69,8 @@ ATS_PACKNAME
 local
 //
 val
-s2tb_int =
-T2Bpred($SYM.INT_symbl)
+s2tb_int0 =
+T2Bpred($SYM.INT0_symbl)
 val
 s2tb_bool =
 T2Bpred($SYM.BOOL_symbl)
@@ -122,7 +122,7 @@ T2Bimpr
 in(*local*)
 //
 #implval
-the_sort2_int = S2Tbas(s2tb_int)
+the_sort2_int0 = S2Tbas(s2tb_int0)
 #implval
 the_sort2_addr = S2Tbas(s2tb_addr)
 #implval

@@ -2597,7 +2597,7 @@ trans12_staload_find
 local
 //
 val
-s2tx_int = S2TXTsrt(the_sort2_int)
+s2tx_int0 = S2TXTsrt(the_sort2_int0)
 val
 s2tx_addr = S2TXTsrt(the_sort2_addr)
 val
@@ -2623,7 +2623,7 @@ s2tx_vwtp = S2TXTsrt(the_sort2_vwtp)
 in (* in-of-local *)
 //
 val () =
-the_sortenv_padd($SYM.INT_symbol, s2tx_int)
+the_sortenv_padd($SYM.INT0_symbol, s2tx_int0)
 val () =
 the_sortenv_padd($SYM.ADDR_symbol, s2tx_addr)
 val () =

@@ -72,7 +72,7 @@ case+ s2t0 of
 (
 case+ tbas of
 | T2Bpred(name) =>
-  (name = INT_symbl)
+  (name = INT0_symbl)
 | _(*non-T2Bpred*) => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
