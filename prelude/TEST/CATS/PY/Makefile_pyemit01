@@ -22,18 +22,21 @@ all:: test08
 all:: test09
 all:: test10
 ########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/test??_out.py
 ########################################################################
-testall:: test00; $(PYTHON) $<_out.py
-testall:: test01; $(PYTHON) $<_out.py
-testall:: test02; $(PYTHON) $<_out.py
-testall:: test03; $(PYTHON) $<_out.py
-testall:: test04; $(PYTHON) $<_out.py
-testall:: test05; $(PYTHON) $<_out.py
-testall:: test06; $(PYTHON) $<_out.py
-testall:: test07; $(PYTHON) $<_out.py
-testall:: test08; $(PYTHON) $<_out.py
-testall:: test09; $(PYTHON) $<_out.py
-testall:: test10; $(PYTHON) $<_out.py
+testall:: test00; $(PYTHON) OUTS/$<_out.py
+testall:: test01; $(PYTHON) OUTS/$<_out.py
+testall:: test02; $(PYTHON) OUTS/$<_out.py
+testall:: test03; $(PYTHON) OUTS/$<_out.py
+testall:: test04; $(PYTHON) OUTS/$<_out.py
+testall:: test05; $(PYTHON) OUTS/$<_out.py
+testall:: test06; $(PYTHON) OUTS/$<_out.py
+testall:: test07; $(PYTHON) OUTS/$<_out.py
+testall:: test08; $(PYTHON) OUTS/$<_out.py
+testall:: test09; $(PYTHON) OUTS/$<_out.py
+testall:: test10; $(PYTHON) OUTS/$<_out.py
 ########################################################################
 ########################################################################
 SRCGEN2_SRCGENX=\
@@ -47,154 +50,149 @@ $(XATSHOME)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_dats_out.js
 ########################################################################
 ########################################################################
 test00:: ; \
-echo "##" `date` > $@_out.py
+echo "##" `date` > OUTS/$@_out.py
 ############
 test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
 ############
 test00:: \
 test00_prelude.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
 test01:: ; \
-echo "##" `date` > $@_out.py
+echo "##" `date` > OUTS/$@_out.py
 ############
 test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
 ############
 test01:: \
 test01_a0rf000.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
 test02:: ; \
-echo "##" `date` > $@_out.py
+echo "##" `date` > OUTS/$@_out.py
 ############
 test02:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test02:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
 ############
 test02:: \
 test02_a1rf000.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
 ########################################################################
 test03:: ; \
-echo "##" `date` > $@_out.py
+echo "##" `date` > OUTS/$@_out.py
 ############
 test03:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test03:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
 ############
 test03:: \
 test03_a1sz000.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
 test04:: ; \
-echo "##" `date` > $@_out.py
+echo "##" `date` > OUTS/$@_out.py
 ############
 test04:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test04:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
 ############
 test04:: \
 test04_strn000.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
 test05:: ; \
-echo "##" `date` > $@_out.py
+echo "##" `date` > OUTS/$@_out.py
 ############
 test05:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test05:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
 ############
 test05:: \
 test05_gdbg000.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
 test06:: ; \
-echo "##" `date` > $@_out.py
+echo "##" `date` > OUTS/$@_out.py
 ############
 test06:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test06:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
 ############
 test06:: \
 test06_list000.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
 test07:: ; \
-echo "##" `date` > $@_out.py
+echo "##" `date` > OUTS/$@_out.py
 ############
 test07:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test07:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
 ############
 test07:: \
 test07_gseq000.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
 test08:: ; \
-echo "##" `date` > $@_out.py
+echo "##" `date` > OUTS/$@_out.py
 ############
 test08:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test08:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
 ############
 test08:: \
 test08_optn000.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
 test09:: ; \
-echo "##" `date` > $@_out.py
+echo "##" `date` > OUTS/$@_out.py
 ############
 test09:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test09:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
 ############
 test09:: \
 test09_llist00.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
 test10:: ; \
-echo "##" `date` > $@_out.py
+echo "##" `date` > OUTS/$@_out.py
 ############
 test10:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test10:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
 ############
 test10:: \
 test10_xcptn00.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
 test99:: ; \
-echo "##" `date` > $@_out.py
+echo "##" `date` > OUTS/$@_out.py
 ############
 test99:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test99:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
 ############
 test99:: \
 test99_mydiary.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
-########################################################################
-########################################################################
-clean:: ; rm -f *~
-cleanall:: ; rm -f *~
-cleanall:: ; rm -f test??_out.py
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
 ########################################################################
 ##################### end of [Makefile_pyemit01] #######################
