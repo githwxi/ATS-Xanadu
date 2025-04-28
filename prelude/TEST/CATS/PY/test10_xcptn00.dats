@@ -1,8 +1,8 @@
 (* ****** ****** *)
 (*
-HX-2024-11-09:
-For testing prelude/JS!
-Sat Nov  9 12:36:14 AM EST 2024
+HX-2025-04-28:
+For testing prelude/PY!
+Mon Apr 28 12:20:00 AM EDT 2025
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -14,7 +14,7 @@ Sat Nov  9 12:36:14 AM EST 2024
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
-"prelude/HATS/prelude_JS_dats.hats"
+"prelude/HATS/prelude_PY_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -25,8 +25,7 @@ try
   $raise ErrorExn();
 *)
   $raise ErrmsgExn("ErrmsgExn")
-with
-ErrmsgExn(msg) => prints("msg = ", msg, "\n")
+with ErrmsgExn(msg) => prints("msg = ", msg, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -128,12 +127,8 @@ val (  ) =
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () = console_log(the_print_store_flush( (*void*) ))
-//
-(* ****** ****** *)
-(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_TEST_CATS_JS_test10_xcptn00.dats] *)
+(* end of [ATS3/XANADU_prelude_TEST_CATS_PY_test10_xcptn00.dats] *)

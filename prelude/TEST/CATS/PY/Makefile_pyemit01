@@ -11,9 +11,29 @@ PYTHON=python3
 ########################################################################
 ########################################################################
 all:: test00
+all:: test01
+all:: test02
+all:: test03
+all:: test04
+all:: test05
+all:: test06
+all:: test07
+all:: test08
+all:: test09
+all:: test10
 ########################################################################
 ########################################################################
 testall:: test00; $(PYTHON) $<_out.py
+testall:: test01; $(PYTHON) $<_out.py
+testall:: test02; $(PYTHON) $<_out.py
+testall:: test03; $(PYTHON) $<_out.py
+testall:: test04; $(PYTHON) $<_out.py
+testall:: test05; $(PYTHON) $<_out.py
+testall:: test06; $(PYTHON) $<_out.py
+testall:: test07; $(PYTHON) $<_out.py
+testall:: test08; $(PYTHON) $<_out.py
+testall:: test09; $(PYTHON) $<_out.py
+testall:: test10; $(PYTHON) $<_out.py
 ########################################################################
 ########################################################################
 SRCGEN2_SRCGENX=\
@@ -145,6 +165,18 @@ $(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
 ############
 test09:: \
 test09_llist00.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
+########################################################################
+test10:: ; \
+echo "##" `date` > $@_out.py
+############
+test10:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
+test10:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+############
+test10:: \
+test10_xcptn00.dats; \
 $(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> $@_out.py
 ########################################################################
 test99:: ; \
