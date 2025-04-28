@@ -61,8 +61,8 @@ XATSPACK="ATS3-Xanadu@20220500"
 // predicative sorts
 //
 (*
-#abssort int
-// [int] is built-in
+#abssort int0
+// [int0] is built-in
 #abssort addr
 // [addr] is built-in
 #abssort bool//tt,ff
@@ -70,7 +70,7 @@ XATSPACK="ATS3-Xanadu@20220500"
 #abssort char//[0,256)
 // [char] is built-in
 #abssort float
-// [string] is built-in
+// [float] is built-in
 #abssort string
 // [string] is built-in
 *)
