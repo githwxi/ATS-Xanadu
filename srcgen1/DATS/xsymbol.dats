@@ -442,7 +442,7 @@ LRBRACK_symbol = symbol_make("[]")
 (* ****** ****** *)
 //
 implement
-INT_symbol = symbol_make("int")
+INT0_symbol = symbol_make("int0")
 //
 implement
 ADDR_symbol = symbol_make("addr")

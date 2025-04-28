@@ -542,7 +542,7 @@ f0_pvsinit(): void =
 let
 //
 (* ****** ****** *)
-val INT = INT_symbl
+val INT0 = INT0_symbl
 val BOOL = BOOL_symbl
 val ADDR = ADDR_symbl
 val CHAR = CHAR_symbl
@@ -566,7 +566,7 @@ in//local
 val () =
 topmap_insert$any
 ( env0
-, INT, S2TEXsrt(the_sort2_int))
+, INT0, S2TEXsrt(the_sort2_int0))
 val () =
 topmap_insert$any
 ( env0

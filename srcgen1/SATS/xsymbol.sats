@@ -150,6 +150,7 @@ val LRBRACK_symbol : symbol // symbol("[]")
 
 val INT_symbol : symbol // int sort
 
+val INT0_symbol : symbol // int0 sort
 val ADDR_symbol : symbol // addr sort
 val BOOL_symbol : symbol // bool sort
 val CHAR_symbol : symbol // char sort

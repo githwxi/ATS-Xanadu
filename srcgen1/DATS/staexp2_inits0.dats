@@ -54,7 +54,7 @@ local
 #staload "./../SATS/xbasics.sats"
 //
 val
-s2tb_int = T2BASpre($SYM.INT_symbol)
+s2tb_int0 = T2BASpre($SYM.INT0_symbol)
 //
 val
 s2tb_addr = T2BASpre($SYM.ADDR_symbol)
@@ -114,7 +114,7 @@ s2tb_vtflt =
 in // in of [local]
 //
 implement
-the_sort2_int = S2Tbas(s2tb_int)
+the_sort2_int0 = S2Tbas(s2tb_int0)
 //
 implement
 the_sort2_addr = S2Tbas(s2tb_addr)

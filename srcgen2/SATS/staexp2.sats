@@ -295,7 +295,7 @@ t2dat_set_s2cs
 (* ****** ****** *)
 //
 val
-the_sort2_int : sort2
+the_sort2_int0 : sort2
 val
 the_sort2_addr : sort2
 val

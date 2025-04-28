@@ -112,7 +112,7 @@ HX-2022-10-01: Various symbols
 #implval PFREE_symbl = symbl("~")
 (* ****** ****** *)
 //
-#implval INT_symbl = symbl("int")
+#implval INT0_symbl = symbl("int0")
 #implval ADDR_symbl = symbl("addr")
 #implval BOOL_symbl = symbl("bool")
 #implval CHAR_symbl = symbl("char")

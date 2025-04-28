@@ -83,9 +83,27 @@ val () = staexp2_initize()
 //
 *)
 (* ****** ****** *)
-
+//
 implement
 sort2_is_int
+  (s2t0) =
+(
+  sort2_is_int0(s2t0)
+) (* end of [sort2_is_int] *)
+//
+implement
+sort2_is_fun
+  (s2t0) =
+(
+case+ s2t0 of
+| S2Tfun _ => true
+| _ (* non-S2Tfun *) => false
+) (* end of [sort2_is_fun] *)
+//
+(* ****** ****** *)
+
+implement
+sort2_is_int0
   (s2t0) =
 (
 case+ s2t0 of
@@ -93,10 +111,11 @@ case+ s2t0 of
 (
 case+ s2tb of
 | T2BASpre(pre) =>
-  (pre = INT_symbol) | _ => false
+  (pre = INT0_symbol) | _ => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
-) (* end of [sort2_is_int] *)
+) (* end of [sort2_is_int0] *)
+
 implement
 sort2_is_addr
   (s2t0) =
@@ -186,17 +205,6 @@ case+ s2tb of
 ) (* end of [sort2_is_xstr] *)
 *)
 //
-(* ****** ****** *)
-
-implement
-sort2_is_fun
-  (s2t0) =
-(
-case+ s2t0 of
-| S2Tfun _ => true
-| _ (* non-S2Tfun *) => false
-) (* end of [sort2_is_fun] *)
-
 (* ****** ****** *)
 //
 implement
@@ -583,76 +591,92 @@ TYRECflt2(nm2)) => (nm1 = nm2)
 //
 implement
 s2exp_int(i0) = let
-  val
-  s2t = the_sort2_int
-in
-  s2exp_make_node(s2t, S2Eint(i0))
-end // end of [s2exp_int]
+val
+s2t = the_sort2_int0
+in//let
+(
+s2exp_make_node(s2t, S2Eint(i0)))
+end(*let*)//end-of-[s2exp_int(i0)]
 //
 (*
 implement
 s2exp_irp(rep) = let
-  val
-  s2t = the_sort2_int
-in
-  s2exp_make_node(s2t, S2Eirp(rep))
-end // end of [s2exp_irp]
+val
+s2t = the_sort2_int0
+in//let
+(
+s2exp_make_node(s2t, S2Eirp(rep)))
+end(*let*)//end of [s2exp_irp(rep)]
 *)
 //
 (* ****** ****** *)
 
 implement
 s2exp_btf(b0) = let
-  val
-  s2t = the_sort2_bool
-in
-  s2exp_make_node(s2t, S2Ebtf(b0))
-end // end of [s2exp_btf]
+val
+s2t = the_sort2_bool
+in//let
+(
+s2exp_make_node(s2t, S2Ebtf(b0)))
+end(*let*)//end-of-[s2exp_btf(b0)]
 
 implement
 s2exp_chr(c0) = let
-  val
-  s2t = the_sort2_char
-in
-  s2exp_make_node(s2t, S2Echr(c0))
-end // end of [s2exp_chr]
+val
+s2t = the_sort2_char
+in//let
+(
+s2exp_make_node(s2t, S2Echr(c0)))
+end(*let*)//end-of-[s2exp_chr(c0)]
 
 (* ****** ****** *)
 
 implement
-s2exp_str(str) = let
-  val
-  s2t = the_sort2_cstr
-in
-  s2exp_make_node(s2t, S2Estr(str))
-end // end of [s2exp_str]
+s2exp_str(str) =
+let
+val
+s2t = the_sort2_cstr
+//
+in//let
+(
+s2exp_make_node(s2t, S2Estr(str)))
+end(*let*)//end-of-[s2exp_str(str)]
 
 (* ****** ****** *)
 
 implement
-s2exp_cst(s2c) = let
-  val s2t = s2c.sort()
-in
-  s2exp_make_node(s2t, S2Ecst(s2c))
-end // end of [s2exp_cst]
+s2exp_cst(s2c) =
+let
+val
+s2t = s2c.sort((*0*))
+in//let
+(
+s2exp_make_node(s2t, S2Ecst(s2c)))
+end(*let*)//end-of-[s2exp_cst(s2c)]
 
 (* ****** ****** *)
 
 implement
-s2exp_var(s2v) = let
-  val s2t = s2v.sort()
-in
-  s2exp_make_node(s2t, S2Evar(s2v))
-end // end of [s2exp_var]
+s2exp_var(s2v) =
+let
+val
+s2t = s2v.sort((*0*))
+in//let
+(
+s2exp_make_node(s2t, S2Evar(s2v)))
+end(*let*)//end-of-[s2exp_var(s2v)]
 
 (* ****** ****** *)
 
 implement
-s2exp_xtv(xtv) = let
-  val s2t = xtv.sort()
-in
-  s2exp_make_node(s2t, S2Extv(xtv))
-end // end of [s2exp_xtv]
+s2exp_xtv(xtv) =
+let
+val
+s2t = xtv.sort((*0*))
+in//let
+(
+s2exp_make_node(s2t, S2Extv(xtv)))
+end(*let*)//end-of-[s2exp_xtv(xtv)]
 
 (* ****** ****** *)
 //
@@ -668,7 +692,7 @@ println!("s2exp_cprf: s2e = ", s2e)
 val s2t = the_sort2_prop
 //
 in
-  s2exp_make_node(s2t, S2Ecprf(loc, s2e))
+s2exp_make_node(s2t, S2Ecprf(loc, s2e))
 end // end of [s2exp_cprf]
 //
 implement
@@ -683,7 +707,7 @@ println!("s2exp_ctcd: s2e = ", s2e)
 val s2t = the_sort2_type
 //
 in
-  s2exp_make_node(s2t, S2Ectcd(loc, s2e))
+s2exp_make_node(s2t, S2Ectcd(loc, s2e))
 end // end of [s2exp_ctcd]
 //
 implement
@@ -698,7 +722,7 @@ println!("s2exp_cimp: s2e = ", s2e)
 val s2t = the_sort2_type
 //
 in
-  s2exp_make_node(s2t, S2Ecimp(loc, s2e))
+s2exp_make_node(s2t, S2Ecimp(loc, s2e))
 end // end of [s2exp_cimp]
 //
 implement
@@ -715,7 +739,7 @@ println!("s2exp_cast: s2t = ", s2t)
 #endif//__XATSOPT_DEBUG__
 //
 in
-  s2exp_make_node(s2t, S2Ecast(loc, s2e, s2t))
+s2exp_make_node(s2t, S2Ecast(loc, s2e, s2t))
 end // end of [s2exp_cast]
 //
 (* ****** ****** *)

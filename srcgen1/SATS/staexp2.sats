@@ -172,7 +172,7 @@ sort2lstopt = Option(sort2lst)
 (* ****** ****** *)
 //
 val
-the_sort2_int : sort2
+the_sort2_int0 : sort2
 //
 val
 the_sort2_addr : sort2
@@ -231,6 +231,13 @@ the_sort2_none : sort2
 //
 fun
 sort2_is_int(sort2): bool
+fun
+sort2_is_fun(sort2): bool
+
+(* ****** ****** *)
+//
+fun
+sort2_is_int0(sort2): bool
 //
 fun
 sort2_is_addr(sort2): bool
@@ -253,11 +260,6 @@ fun
 sort2_is_xstr(sort2): bool
 *)
 //
-(* ****** ****** *)
-
-fun
-sort2_is_fun(sort2): bool
-
 (* ****** ****** *)
 
 fun
