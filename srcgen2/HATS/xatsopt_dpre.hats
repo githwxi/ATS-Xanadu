@@ -240,16 +240,28 @@ strtmp_vt_set$at<>(p0, i0, c0)
 (* ****** ****** *)
 //
 (*
-HX-2025-04-23:
-This needs to be changed
-if JavaScript is replaced by Python!
+HX-2025-04-28:
+For compiling to Python3
 *)
 //
-#define
-_XATSOPT_JS_ = 1
+#if
+defq(_XATS2PY_)
+#then
+//
+//
+#endif // #ifdef(_XATS2PY_)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-04-23:
+For compiling to JavaScript
+*)
 //
 #if
-defq(_XATSOPT_JS_)
+defq(_XATS2JS_)
+#then
 //
 (*
 #include
@@ -274,25 +286,28 @@ defq(_XATSOPT_JS_)
 "srcgen1/prelude/DATS/CATS/JS/unsafex.dats"
 *)
 //
-#endif // end-of-[------ifdef(_XATSOPT_JS_)------]
+#endif // end-of-[------ifdef(_XATS2JS_)------]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
 HX-2025-04-12:
-This needs to be changed if NODE is replaced by QJS.
+For compiling to JavaScript with Node
 *)
-(* ****** ****** *)
-//
-#define
-_XATSOPT_JS_NODE_ = 1
 //
 #if
-defq(_XATSOPT_JS_NODE_)
-#include
-"srcgen1/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
-#endif // end-of-[------#ifdef(_XATSOPT_JS_NODE_)------]
+defq(_XATS2JS_)
+#define 
+_XATS2JS_NODE_=1
+#endif//ifdef(_XATS2JS_)
+//
+#if
+_XATS2JS_NODE_==1
+#then
+#include "srcgen1\
+/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
+#endif // end-of-[-----#ifdef(_XATS2JS_NODE_)-----]
 //
 (* ****** ****** *)
 (* ****** ****** *)

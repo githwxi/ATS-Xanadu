@@ -97,6 +97,22 @@ This one is included by [DATS/unsfx00.dats]
 #staload _ = "prelude/DATS/strm000.dats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#staload _ = "prelude/DATS/CATS/gbas000.dats"
+//
+#staload _ = "prelude/DATS/CATS/bool000.dats"
+#staload _ = "prelude/DATS/CATS/char000.dats"
+//
+#staload _ = "prelude/DATS/CATS/gint000.dats"
+#staload _ = "prelude/DATS/CATS/gflt000.dats"
+//
+#staload _ = "prelude/DATS/CATS/strn000.dats"
+//
+#staload _ = "prelude/DATS/CATS/axrf000.dats"
+#staload _ = "prelude/DATS/CATS/axsz000.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #staload _ = "prelude/DATS/VT/gnum000_vt.dats"
 #staload _ = "prelude/DATS/VT/gord000_vt.dats"
 #staload _ = "prelude/DATS/VT/gfun000_vt.dats"
@@ -131,7 +147,9 @@ The code in this file serves as
 *)
 #staload _ = "prelude/DATS/VT/gxyz000_vt.dats"
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 //
+(***********************************************************************)
 (* end of [ATS3_XANADU_prelude_prelude_dats.hats] *)
+(***********************************************************************)

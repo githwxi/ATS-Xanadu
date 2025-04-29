@@ -306,22 +306,6 @@ end//let//end-of-[strn_map$make_gseq(xs)]
 //
 #impltmp
 <(*tmp*)>
-$UN.strn_get$at$raw
-  (cs, i0) =
-(
-XATS000_strn_get$at$raw
-  (cs, i0)) where
-{
-#extern
-fun
-XATS000_strn_get$at$raw
-  (cs: strn, i0: nint): cgtz = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
 $UN.strn_fset$at$raw
   (cs, i0, c0) =
 strn_fmake_fwork<>
