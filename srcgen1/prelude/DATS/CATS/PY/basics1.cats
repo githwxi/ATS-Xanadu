@@ -112,101 +112,45 @@ def XATS2PY_sint_lohexq(ch):
 ##
 ################################################################
 ##
-def
-XATS2PY_char_isxdigit
-  (  ch  )
-{
-  return (XATS2PY_char_isdigit(ch) || XATS2PY_char_lohexq(ch) || XATS2PY_char_uphexq(ch));
-}
-def
-XATS2PY_sint_isxdigit
-  (  ch  )
-{
-  return (XATS2PY_sint_isdigit(ch) || XATS2PY_sint_lohexq(ch) || XATS2PY_sint_uphexq(ch));
-}
+def XATS2PY_char_isxdigit(ch):
+  return (XATS2PY_char_isdigit(ch) or XATS2PY_char_lohexq(ch) or XATS2PY_char_uphexq(ch))
+def XATS2PY_sint_isxdigit(ch):
+  return (XATS2PY_sint_isdigit(ch) or XATS2PY_sint_lohexq(ch) or XATS2PY_sint_uphexq(ch))
 ##
 ################################################################
 ##
-/* ****** ****** */
-##
-##prelude/gint000.sats
-##
-/* ****** ****** */
+## prelude/gint000.sats
 ##
 ################################################################
 ##
-def
-XATS2PY_gint_neg_sint
-  (  x0  )
-{
-    return (-x0); ## neg
-}
+def XATS2PY_gint_neg_sint(x0):
+  return (-x0) ## sint_neg(x0)
 ##
-def
-XATS2PY_gint_abs_sint
-  (  x0  )
-{
-    if (x0 >= 0)
-	return ( x0); ## abs
-    else
-	return (-x0); ## abs
-    ## end of [if]
-}
+def XATS2PY_gint_abs_sint(x0):
+  return x0 if (x0 >= 0) else (-x0)
 ##
 ################################################################
 ##
-def
-XATS2PY_gint_suc_sint
-  (  x0  )
-{
-    return (x0 + 1); ## +1
-}
-def
-XATS2PY_gint_suc_uint
-  (  x0  )
-{
-    return (x0 + 1); ## +1
-}
+def XATS2PY_gint_suc_sint(x0):
+  return (x0 + 1) ## plus one
+def XATS2PY_gint_suc_uint(x0):
+  return (x0 + 1) ## plus one
 ##
-def
-XATS2PY_gint_pre_sint
-  (  x0  )
-{
-    return (x0 - 1); ## -1
-}
-def
-XATS2PY_gint_pre_uint
-  (  x0  )
-{
-    return (x0 - 1); ## -1
-}
+def XATS2PY_gint_pre_sint(x0):
+  return (x0 - 1) ## minus one
+def XATS2PY_gint_pre_uint(x0):
+  return (x0 - 1) ## minus one
 ##
 ################################################################
 ##
-def
-XATS2PY_gint_lnot_uint
-  (  x0  )
-{
-  return (~x0); ## lnot
-}
-def
-XATS2PY_gint_lor2_uint
-  (x0, y0)
-{
-  return (x0|y0); ## lor2
-}
-def
-XATS2PY_gint_land_uint
-  (x0, y0)
-{
-  return (x0&y0); ## land
-}
-def
-XATS2PY_gint_lxor_uint
-  (x0, y0)
-{
-  return (x0^y0); ## lxor
-}
+def XATS2PY_gint_lnot_uint(x0):
+  return (~x0) ## bitwise NEG
+def XATS2PY_gint_lor2_uint(x0, y0):
+  return (x0|y0); ## bitwise OR
+def XATS2PY_gint_land_uint(x0, y0):
+  return (x0&y0); ## bitwise AND
+def XATS2PY_gint_lxor_uint(x0, y0):
+  return (x0^y0); ## bitwise XOR
 ##
 ################################################################
 ##
