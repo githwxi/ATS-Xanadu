@@ -684,15 +684,15 @@ XATS2JS_strn_vt2t
 //
 function
 XATS2JS_strn_nilq
-  (  opt  )
+  (  cs  )
 {
-    return(opt==="");
+    return(0===cs.length);
 }
 function
 XATS2JS_strn_consq
-  (  opt  )
+  (  cs  )
 {
-    return(opt!=="");
+    return(0!==cs.length);
 }
 /* ****** ****** */
 //
@@ -700,13 +700,13 @@ function
 XATS2JS_stropt_nilq
   (  opt  )
 {
-    return(opt===null);
+    return(opt===null); // stropt_noneq
 }
 function
 XATS2JS_stropt_consq
   (  opt  )
 {
-    return(opt!==null);
+    return(opt!==null); // stropt_someq
 }
 //
 ////////////////////////////////////////////////////////////////
@@ -925,7 +925,10 @@ XATS2JS_strn_vt_rforall$f1un
 //
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
-// HX-2025-04-11: For bridging [srcgen1] and [srcgen2]
+/*
+HX-2025-04-11:
+For bridging [srcgen1] and [srcgen2]
+*/
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 function
