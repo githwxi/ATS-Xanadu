@@ -6,60 +6,59 @@
 CAT=cat
 ECHO=echo
 NODE=node
+PRINTF=printf
 ########################################################################
 ########################################################################
 all:: test00
 all:: test01
-########################################################################
-########################################################################
-testall:: test00; $(NODE) $<_out.js
-testall:: test01; $(NODE) $<_out.js
-########################################################################
-########################################################################
-test00:: ; \
-echo "//" `date` > $@_out.js
-############
-test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
-test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
-test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
-test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude_node.js >> $@_out.js
-############
-test00:: test00.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) $< >> $@_out.js
-########################################################################
-########################################################################
-test01:: ; \
-echo "//" `date` > $@_out.js
-############
-test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
-test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
-test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
-test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude_node.js >> $@_out.js
-############
-test01:: test01_misc001.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) $< >> $@_out.js
-########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f test??_out.js
 cleanall:: ; rm -f test??_out?.js
 ########################################################################
+testall:: test00; $(NODE) $<_out.js
+testall:: test01; $(NODE) $<_out.js
+########################################################################
+########################################################################
+test00:: ; \
+printf "// %s\n" "`date`" > $@_out.js
+############
+test00:: ; $(CAT) \
+$(S2XSHRD)/runtime/xats2js_js1emit.js >> $@_out.js
+test00:: ; $(CAT) \
+$(S2XSHRD)/runtime/xats2js_prelude.js >> $@_out.js
+test00:: ; $(CAT) \
+$(S2XSHRD)/runtime/xats2js_xatslib.js >> $@_out.js
+test00:: ; $(CAT) \
+$(S2XSHRD)/runtime/xats2js_prelude_node.js >> $@_out.js
+############
+test00:: test00.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> $@_out.js
+########################################################################
+########################################################################
+test01:: ; \
+printf "// %s\n" "`date`" > $@_out.js
+############
+test01:: ; $(CAT) \
+$(S2XSHRD)/runtime/xats2js_js1emit.js >> $@_out.js
+test01:: ; $(CAT) \
+$(S2XSHRD)/runtime/xats2js_prelude.js >> $@_out.js
+test01:: ; $(CAT) \
+$(S2XSHRD)/runtime/xats2js_xatslib.js >> $@_out.js
+test01:: ; $(CAT) \
+$(S2XSHRD)/runtime/xats2js_prelude_node.js >> $@_out.js
+############
+test01:: \
+test01_misc001.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> $@_out.js
+########################################################################
 ########################################################################
 SRCGEN2=./../../../../../../../../srcgen2
-XATS2JS=./../../../../../../BOOTJS1/xats2js
+BOOTJS1=./../../../../../../../githwxi/BOOTJS1
 ########################################################################
-SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
-XATS2JS_JSEMIT00=$(XATS2JS)/srcgen1/UTIL/xats2js_jsemit00_dats_out.js
+S2XSHRD=$(SRCGEN2)/xats2js/srcgenx/xshared
+XATS2JS_JSEMIT01=$(BOOTJS1)/xats2js/srcgen1/UTIL/xats2js_jsemit01_dats_out.js
 ########################################################################
 ########################################################################
-
-###################### end of [Makefile_jsemit] ########################
+###################### end of [Makefile_jsemit01] ######################
