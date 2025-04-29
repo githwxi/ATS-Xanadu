@@ -31,6 +31,10 @@ all:: srcgen2_xjsemit_xats2py_pyemit00
 all:: srcgen2_xjsemit_xats2py_pyemit01
 #
 ############################################################
+#
+testall:: prelude_TEST_CATS_JS
+testall:: prelude_TEST_CATS_PY
+#
 ############################################################
 #
 cleanall:: ; \
@@ -40,6 +44,11 @@ cleanall:: ; \
 make -C srcgen2 -f Makefile_xats2js cleanall
 cleanall:: ; \
 make -C srcgen2 -f Makefile_xjsemit cleanall
+#
+cleanall:: ; \
+make -C prelude/TEST/CATS/JS -f Makefile_jsemit01 cleanall
+cleanall:: ; \
+make -C prelude/TEST/CATS/PY -f Makefile_pyemit01 cleanall
 #
 cleanall:: ; \
 make -C srcgen1/xats2js/srcgen1 -f Makefile_patsopt cleanall
@@ -70,27 +79,27 @@ time make -C srcgen1/xats2js/srcgen1 -f Makefile_patsopt xats2js
 #
 # STEP~2 for building xatsopt_tcheck00
 #
-srcgen2_lib1xatsopt:: ; \
+srcgen2_lib1xatsopt: ; \
 time make -C srcgen2 -f Makefile_xats2js lib1xatsopt
-srcgen2_xats2js_xatsopt_tcheck00:: ; \
+srcgen2_xats2js_xatsopt_tcheck00: ; \
 time make -C srcgen2/UTIL -f Makefile_xats2js xatsopt_tcheck00
 #
 ############################################################
 #
 # STEP~3 for building xats2js_jsemit00
 #
-srcgen2_lib1xats2js:: ; \
+srcgen2_lib1xats2js: ; \
 time make -C srcgen2/xats2js/srcgen1 -f Makefile_xats2js lib1xats2js
-srcgen2_xats2js_xats2js_jsemit00:: ; \
+srcgen2_xats2js_xats2js_jsemit00: ; \
 time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xats2js xats2js_jsemit00
 #
 ############################################################
 #
 # STEP~4 for building xats2py_pyemit00
 #
-srcgen2_lib1xats2py:: ; \
+srcgen2_lib1xats2py: ; \
 time make -C srcgen2/xats2py/srcgen1 -f Makefile_xats2js lib1xats2py
-srcgen2_xats2js_xats2py_pyemit00:: ; \
+srcgen2_xats2js_xats2py_pyemit00: ; \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xats2js xats2py_pyemit00
 #
 ############################################################
@@ -102,27 +111,33 @@ time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xats2js xats2py_pyemit00
 # STEP~5 for boostrapping xats2js_pyemit00
 # STEP~5 for boostrapping xats2js_pyemit01
 #
-srcgen2_lib2xatsopt:: ; \
+srcgen2_lib2xatsopt: ; \
 time make -C srcgen2 -f Makefile_xjsemit lib2xatsopt
-srcgen2_lib2xats2js:: ; \
+srcgen2_lib2xats2js: ; \
 time make -C srcgen2/xats2js/srcgen1 -f Makefile_xjsemit lib2xats2js
-srcgen2_lib2xats2py:: ; \
+srcgen2_lib2xats2py: ; \
 time make -C srcgen2/xats2py/srcgen1 -f Makefile_xjsemit lib2xats2py
 #
-srcgen2_xjsemit_xatsopt_tcheck00:: ; \
+srcgen2_xjsemit_xatsopt_tcheck00: ; \
 time make -C srcgen2/UTIL -f Makefile_xjsemit xatsopt_tcheck00
-srcgen2_xjsemit_xatsopt_tcheck01:: ; \
+srcgen2_xjsemit_xatsopt_tcheck01: ; \
 time make -C srcgen2/UTIL -f Makefile_xjsemit xatsopt_tcheck01
 #
-srcgen2_xjsemit_xats2js_jsemit00:: ; \
+srcgen2_xjsemit_xats2js_jsemit00: ; \
 time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit00
-srcgen2_xjsemit_xats2js_jsemit01:: ; \
+srcgen2_xjsemit_xats2js_jsemit01: ; \
 time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit01
 #
-srcgen2_xjsemit_xats2py_pyemit00:: ; \
+srcgen2_xjsemit_xats2py_pyemit00: ; \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xjsemit xats2py_pyemit00
-srcgen2_xjsemit_xats2py_pyemit01:: ; \
+srcgen2_xjsemit_xats2py_pyemit01: ; \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xjsemit xats2py_pyemit01
+#
+############################################################
+############################################################
+#
+prelude_TEST_CATS_JS: ; make -C prelude/TEST/CATS/JS -f Makefile_jsemit01 testall
+prelude_TEST_CATS_PY: ; make -C prelude/TEST/CATS/PY -f Makefile_pyemit01 testall
 #
 ############################################################
 ############################################################
