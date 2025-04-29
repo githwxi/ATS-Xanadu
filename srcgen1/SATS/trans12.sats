@@ -493,6 +493,18 @@ the_qualist_find_sym
 (* ****** ****** *)
 //
 fun
+g1mac_none((*void*)): g1mac
+//
+fun
+g1mac_make_int(int): g1mac
+fun
+g1mac_make_btf(bool): g1mac
+fun
+g1mac_make_str(string): g1mac
+//
+(* ****** ****** *)
+//
+fun
 the_gmacenv_add
 (gid: sym_t, def: g1mac): void
 (*

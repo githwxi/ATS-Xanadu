@@ -124,6 +124,19 @@ absimpl g1mac_tbox = g1mac
 (* ****** ****** *)
 //
 implement
+g1mac_none() = G1Mnone0()
+//
+implement
+g1mac_make_int(int) = G1Mint(int)
+implement
+g1mac_make_btf(btf) = G1Mbtf(btf)
+implement
+g1mac_make_str(str) = G1Mstr(str)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+implement
 print_g1mac
 (g1m) =
 fprint_g1mac(stdout_ref, g1m)

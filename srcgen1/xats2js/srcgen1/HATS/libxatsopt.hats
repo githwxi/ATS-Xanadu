@@ -56,8 +56,14 @@ XATSOPT_targetloc "./../../.."
 (* ****** ****** *)
 #staload S1E =
   "{$XATSOPT}/SATS/staexp1.sats"
+#staload D1E =
+  "{$XATSOPT}/SATS/dynexp1.sats"
+(* ****** ****** *)
 #staload S2E =
   "{$XATSOPT}/SATS/staexp2.sats"
+(* ****** ****** *)
+#staload TRS12 =
+  "{$XATSOPT}/SATS/trans12.sats"
 (* ****** ****** *)
 #staload TRD33 =
   "{$XATSOPT}/SATS/tread33.sats"
@@ -78,4 +84,4 @@ XATSOPT_targetloc "./../../.."
 //
 (* ****** ****** *)
 
-(* end of [libxats2js.hats] *)
+(* end of [libxatsopt.hats] *)
