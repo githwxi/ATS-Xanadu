@@ -59,7 +59,7 @@ UN="prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #include
-"./../HATS/libxats2js.hats"
+"./../HATS/libxatsopt.hats"
 #staload $XATSOPT(*open-it*)
 //
 (* ****** ****** *)
@@ -537,16 +537,16 @@ prval vbox(pf) = pf0
 
 fun
 theOutFname_set
- (fname: Stropt) = () where
+(fname: Stropt) = () where
 {
 //
 prval vbox(pf) = pf0
 //
   val () = theOutFname := fname
 //
-} // end of [theOutFname_set]
+} // end of [theOutFname_set(fname)]
 
-end // end of [local]
+end // end of [local(theOutFname_get/set)]
 
 (* ****** ****** *)
 
@@ -652,6 +652,18 @@ fprintln!
 
 local
 //
+fun
+define_name
+(nam: string): void =
+{
+val def =
+$TRS12.g1mac_none()
+val sym =
+$SYM.symbol_make(nam)
+val ( ) =
+$TRS12.the_gmacenv_add(sym, def)
+}
+//
 static
 fun
 process_stdin
@@ -746,6 +758,11 @@ val () =
 val
 (pf0 | ()) =
 $FP0.the_filpathlst_push(fp0)
+//
+val () =
+define_name("_XATS2JS_")
+val () =
+define_name("_SRCGEN1_XATS2JS_")
 //
 val
 p0kg =
@@ -1332,9 +1349,9 @@ in
 //
 if (st0.nxerror > 0) then $ERR.abort()
 //
-end // end of [xats2js_main0]
+end // end of [xats2js_main0(argc,argv)]
 
-end // end of [local]
+end // end of [local(implement(xats2js_main0))]
 
 (* ****** ****** *)
 

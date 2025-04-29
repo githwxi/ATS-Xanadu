@@ -111,6 +111,16 @@ end//let//end-of-[fpath_datsq(fp)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef
+argv = jsarray(strn)
+#extern
+fun
+XATS2JS_NODE_argv$get
+  ((*void*)): argv = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 mymain_work
 (fpth: strn): void =
@@ -161,102 +171,105 @@ val () = the_gmacenv_allist_prerr()
 (* ****** ****** *)
 (* ****** ****** *)
 //
-local
-//
-#typedef
-argv = jsarray(strn)
-#extern
 fun
-XATS2JS_NODE_argv$get
-  ((*void*)): argv = $extnam()
-//
-(* ****** ****** *)
-in//local
-(* ****** ****** *)
-//
-val () =
-mymain() where
+argv$loop
+(argv: argv): void =
+(
+  loop(3)) where
 {
 //
+val n0 = length(argv)
+//
 fun
-mymain((*void*)) =
-(
+loop(i0: sint): void =
 if
-length(argv) >= 3
+(i0 < n0)
 then
 (
-  mymain_work(argv[2])
-) where
+  loop(i0+1)) where
 {
+val () =
+xatsopt_flag$pvsadd0(argv[i0])
+}
+}(*where*)//end-of-[argv$loop(argv)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+mymain_main(): void =
+let
+//
+val alen = length(argv)
+//
+val (  ) =
+if
+(
+alen >= 3)
+then
+let // let
 //
 val ret1 =
 the_fxtyenv_pvsload((*0*))
 val (  ) =
-if(ret1 > 0)
-then prerrsln("\
+if // if
+(ret1 > 0)
+then
+prerrsln("\
 // The fixity-defs loaded!")
-//
 val ret2 =
-the_tr12env_pvsl00d((*0*))
+the_tr12env_pvsl00d((*nil*))
 val (  ) =
-if(ret2 > 0)
+if // if
+(ret2 > 0)
 then prerrsln("\
 // The trans12-defs loaded!")
 //
 val (  ) =
-argv$loop(3) where
-{
+xatsopt_flag$pvsadd0("--_XATSOPT_")
+val (  ) =
+xatsopt_flag$pvsadd0("--_SRCGEN2_XATSOPT_")
 //
-val alen = length(argv)
+in//let
+(
+argv$loop(argv); mymain_work(argv[2]))
+endlet // let // if(length(argv) >= 3)
 //
-fun
-argv$loop(i0: sint): void =
+val (  ) =
 if
-(i0 >= alen)
-then () else
 (
-argv$loop(i0+1))
-where{
-val argi = argv[i0]
-val (  ) =
-xatsopt_flag$pvsadd0(argi) }
-//
-}(*where*)
-//
-}(*where*)//then//end-of-(if)
-else
-(
-let
+alen<=2)
+then
+let//let
 val (  ) =
 (
-prerrsln("ERROR: \
-no source is given: ", argv))
-end//let
-)
-) where
+prerrsln
+("ERROR: no source is given: ", argv))
+endlet // let // if(length(argv) <= 2)
+//
+endlet where
 {
 //
 val (  ) =
-prerrsln
-("// Welcome from ATS3/Xanadu!")
+prerrsln("\
+// Welcome from ATS3/Xanadu!")
 val (  ) =
-prerrsln
-("// XATSHOME = ", the_XATSHOME())
+prerrsln("\
+// XATSHOME = ", the_XATSHOME())
 //
 val argv =
 (
   XATS2JS_NODE_argv$get((*void*)))
+(*
+val (  ) = prerrsln("\
+// xats2js_jsemit00: argv = ", argv)
+*)
 //
-val (  ) =
-prerrsln("\
-// xatsopt_tcheck00: argv = ", argv)
-//
-}(*where*)//end-of-[mymain((*void*))]
-//
-}(*where*)//end-of-[val() = mymain()]
+}(*where*)//end-of-[mymain_main(...)]
 //
 (* ****** ****** *)
-endloc//end-of-local(val() = mymain())
+(* ****** ****** *)
+val ((*entry*)) = mymain_main((*void*))
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -39,7 +39,7 @@ Sun Nov 12 12:13:13 EST 2023
 (* ****** ****** *)
 //
 #include
-"./../HATS/libxats2js.hats"
+"./../HATS/libxatsopt.hats"
 //
 (* ****** ****** *)
 #staload $INTREP0(*open-it*)

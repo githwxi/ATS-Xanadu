@@ -247,8 +247,6 @@ For compiling to Python3
 #if
 defq(_XATS2PY_)
 #then
-//
-//
 #endif // #ifdef(_XATS2PY_)
 //
 (* ****** ****** *)
@@ -298,16 +296,17 @@ For compiling to JavaScript with Node
 //
 #if
 defq(_XATS2JS_)
-#define 
+#define
 _XATS2JS_NODE_=1
 #endif//ifdef(_XATS2JS_)
 //
 #if
-_XATS2JS_NODE_==1
+defq
+(_XATS2JS_NODE_)
 #then
 #include "srcgen1\
 /xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
-#endif // end-of-[-----#ifdef(_XATS2JS_NODE_)-----]
+#endif // end-of-[-----#if(_XATS2JS_NODE_==1)-----]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -189,7 +189,9 @@ then prerrsln("\
 // The trans12-defs loaded!")
 //
 val (  ) =
-xatsopt_flag$pvsadd0("--_XATS2PY_=1")
+xatsopt_flag$pvsadd0("--_XATS2PY_")
+val (  ) =
+xatsopt_flag$pvsadd0("--_SRCGEN2_XATS2PY_")
 //
 in//let
 (
