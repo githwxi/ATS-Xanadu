@@ -143,12 +143,12 @@ val A1 =
 $UN.cast10{a0ref(?a)}(A0)
 //
 val () =
-XATS2JS_a0ref_set{?a}(A1, x0)
+XATSOPT_a0ref_set{?a}(A1, x0)
 where
 {
 #extern
 fun
-XATS2JS_a0ref_set
+XATSOPT_a0ref_set
 {a:t0}
 ( A0
 : a0ref(a)
