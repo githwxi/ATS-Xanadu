@@ -50,6 +50,22 @@ $(BOOTJS1)/xats2js/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_out.js && \
 $(NODE) --stack-size=4096 \
 $(XATS2JS_JSEMIT00) $(SRCGEN2)/xats2js/srcgen1/UTIL/xats2js_jsemit00.dats >> $@_out.js
 #
+xats2js_jsemit01_dats: ; \
+$(CAT) \
+$(S2XSHRD)/xats2js_js1emit.js > $@_out.js && \
+$(CAT) \
+$(S1XSHRD)/xats2js_prelude.js >> $@_out.js && \
+$(CAT) \
+$(S1XSHRD)/xats2js_prelude_node.js >> $@_out.js && \
+$(CAT) \
+$(S1XSHRD)/xats2js_xatslib_node.js >> $@_out.js && \
+$(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
+$(BOOTJS1)/lib/lib2xatsopt.js | $(CAT) - >> $@_out.js && \
+$(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
+$(BOOTJS1)/xats2js/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_out.js && \
+$(NODE) --stack-size=4096 \
+$(XATS2JS_JSEMIT00) $(SRCGEN2)/xats2js/srcgen1/UTIL/xats2js_jsemit01.dats >> $@_out.js
+#
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~

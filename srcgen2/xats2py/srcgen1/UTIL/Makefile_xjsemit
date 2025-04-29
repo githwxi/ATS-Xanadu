@@ -11,8 +11,8 @@ PRINTF=printf
 ########################################################################
 SRCGEN1=./../../../../srcgen1
 SRCGEN2=./../../../../srcgen2
-XATS2JS=./../../../../srcgen2/xats2js
-XATS2PY=./../../../../srcgen2/xats2py
+XATSJSD=./../../../../srcgen2/xats2js
+XATSPYD=./../../../../srcgen2/xats2py
 ########################################################################
 S1XSHRD=\
 $(SRCGEN1)/xats2js/srcgenx/xshared/runtime
@@ -45,9 +45,9 @@ $(S1XSHRD)/xats2js_xatslib_node.js >> $@_dats_out.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
 $(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_dats_out.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
-$(XATS2JS)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_dats_out.js && \
+$(XATSJSD)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_dats_out.js && \
 $(SED) -E 's/jsx(...)tnm/js3\1tnm/g' \
-$(XATS2PY)/srcgen1/lib/lib2xats2py.js | $(CAT) - >> $@_dats_out.js && \
+$(XATSPYD)/srcgen1/lib/lib2xats2py.js | $(CAT) - >> $@_dats_out.js && \
 $(NODE) \
   --stack-size=8192 $(XATS2JS_JSEMIT00) xats2py_pyemit00.dats >> $@_dats_out.js
 #
@@ -65,9 +65,9 @@ $(S1XSHRD)/xats2js_xatslib_node.js >> $@_dats_out.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
 $(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_dats_out.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
-$(XATS2JS)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_dats_out.js && \
+$(XATSJSD)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_dats_out.js && \
 $(SED) -E 's/jsx(...)tnm/js3\1tnm/g' \
-$(XATS2PY)/srcgen1/lib/lib2xats2py.js | $(CAT) - >> $@_dats_out.js && \
+$(XATSPYD)/srcgen1/lib/lib2xats2py.js | $(CAT) - >> $@_dats_out.js && \
 $(NODE) \
   --stack-size=8192 $(XATS2JS_JSEMIT00) xats2py_pyemit01.dats >> $@_dats_out.js
 #
@@ -87,7 +87,7 @@ cleanall:: ; rm -f xats2py_pyemit00_dats_opt1.js
 cleanall:: ; rm -f xats2py_pyemit01_dats_opt1.js
 ########################################################################
 ########################################################################
-XATS2JS_JSEMIT00=$(XATS2JS)/srcgen1/UTIL/xats2js_jsemit00_dats.js
-XATS2JS_JSEMIT00=$(XATS2JS)/srcgen1/UTIL/xats2js_jsemit00_dats_out.js
+XATS2JS_JSEMIT00=$(XATSJSD)/srcgen1/UTIL/xats2js_jsemit00_dats.js
+XATS2JS_JSEMIT00=$(XATSJSD)/srcgen1/UTIL/xats2js_jsemit00_dats_out.js
 ########################################################################
 ########################################################################

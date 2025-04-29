@@ -34,10 +34,23 @@ XATS2JS_NODE_the_XATSHOME_get
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+//
+(*
+HX-2025-04-28:
+For async programming!
+*)
+//
 #extern
 fun
 XATS2JS_NODE_g_stdin
   ((*void*)): FILR = $extnam()
+//
+#impltmp
+g_stdin< > = XATS2JS_NODE_g_stdin
+//
+*)
+//
 #extern
 fun
 XATS2JS_NODE_g_stdout
@@ -47,8 +60,6 @@ fun
 XATS2JS_NODE_g_stderr
   ((*void*)): FILR = $extnam()
 //
-#impltmp
-g_stdin< > = XATS2JS_NODE_g_stdin
 #impltmp
 g_stdout< > = XATS2JS_NODE_g_stdout
 #impltmp
