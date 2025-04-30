@@ -36,7 +36,7 @@ Authoremail: gmhwxiATgmailDOTcom
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jshsmap_size
+XATS2JS_jshmap_size
   (map)
 {
   return map.size // HX: field!
@@ -45,7 +45,7 @@ XATS2JS_jshsmap_size
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jshsmap_make_nil
+XATS2JS_jshmap_make_nil
   (   )
 {
   var map = new Map(); return map
@@ -54,7 +54,7 @@ XATS2JS_jshsmap_make_nil
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jshsmap_keyq
+XATS2JS_jshmap_keyq
   (map, key)
 {
   return map.has(key) // HX: bool
@@ -63,7 +63,7 @@ XATS2JS_jshsmap_keyq
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jshsmap_search$tst
+XATS2JS_jshmap_search$tst
   (map, key)
 {
   return map.has(key) // HX: bool
@@ -73,23 +73,23 @@ XATS2JS_jshsmap_search$tst
 //
 /*
 fun<>
-UN_jshsmap_get$at$raw
+UN_jshmap_get$at$raw
  {k:t0}{x:t0}
-(map: jshsmap(k,x), key: k): ( x )
+(map: jshmap(k,x), key: k): ( x )
 fun<>
-UN_jshsmap_set$at$raw
+UN_jshmap_set$at$raw
  {k:t0}{x:t0}
-(map: jshsmap(k,x), key: k, itm: x): void
+(map: jshmap(k,x), key: k, itm: x): void
 */
 //
 function
-XATS2JS_jshsmap_get$at$raw
+XATS2JS_jshmap_get$at$raw
   (map, key)
 {
   return map.get(key)
 }
 function
-XATS2JS_jshsmap_set$at$raw
+XATS2JS_jshmap_set$at$raw
   (map, key, itm)
 {
   map.set(key, itm); return // HX: void
@@ -98,7 +98,7 @@ XATS2JS_jshsmap_set$at$raw
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jshsmap_insert$raw
+XATS2JS_jshmap_insert$raw
   (map, key, itm)
 {
   map.set(key, itm); return // HX: void
@@ -107,7 +107,7 @@ XATS2JS_jshsmap_insert$raw
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jshsmap_forall_f2un
+XATS2JS_jshmap_forall$f2un
   (map, test)
 {
   for (const kx of map.entries()) {
@@ -123,14 +123,14 @@ HX-2024-08-14:
 Wed 14 Aug 2024 03:38:56 PM EDT
 */
 function
-XATS2JS_jshsmap_iter_make
+XATS2JS_jshmap_iter_make
   ( A )
 {
-  return A.entries() // HX: Hsmap iterator
+  return A.entries() // HX: Hmap iterator
 }
 //
 function
-XATS2JS_jshsmap_iter_next$work
+XATS2JS_jshmap_iter_next$work
   (iter, work)
 {
   var next = iter.next()
@@ -143,7 +143,7 @@ XATS2JS_jshsmap_iter_next$work
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 //
-// end of [ATS3/XANADU_xatslib_DATS_CATS_JS_Hsmap00.cats]
+// end of [ATS3/XANADU_xatslib_xbasics_DATS_CATS_JS_hashmap0.cats]
 //
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////

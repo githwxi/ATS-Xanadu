@@ -36,7 +36,7 @@ Authoremail: gmhwxiATgmailDOTcom
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_length
+XATS2JS_jsdasz_length
   ( A )
 {
   return A.length
@@ -45,13 +45,13 @@ XATS2JS_jsarray_length
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_get$at
+XATS2JS_jsdasz_get$at
   (A, i)
 {
   return A[i]
 }
 function
-XATS2JS_jsarray_set$at
+XATS2JS_jsdasz_set$at
   (A, i, x)
 {
   return (A[i] = x)
@@ -60,7 +60,7 @@ XATS2JS_jsarray_set$at
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_make_ncpy
+XATS2JS_jsdasz_make_ncpy
   (n, x) // HX: [x]: nonlin
 {
   let i
@@ -73,7 +73,7 @@ XATS2JS_jsarray_make_ncpy
 }
 //
 function
-XATS2JS_jsarray_make_nfun
+XATS2JS_jsdasz_make_nfun
   (n, f)
 {
   let i
@@ -88,19 +88,19 @@ XATS2JS_jsarray_make_nfun
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_make0_1val
+XATS2JS_jsdasz_make0_1val
   ( x1 )
 {
   return [x1]; // len = 1
 }
 function
-XATS2JS_jsarray_make0_2val
+XATS2JS_jsdasz_make0_2val
   ( x1, x2 )
 {
   return [x1, x2]; // len = 2
 }
 function
-XATS2JS_jsarray_make0_3val
+XATS2JS_jsdasz_make0_3val
   ( x1, x2, x3 )
 {
   return [x1, x2, x3]; // len = 3
@@ -112,7 +112,7 @@ XATS2JS_jsarray_make0_3val
 // Thu 25 Jul 2024 06:03:30 PM EDT
 //
 function
-XATS2JS_jsarray_fmake_fwork
+XATS2JS_jsdasz_fmake_fwork
   (fwork)
 {
   let A = []
@@ -122,7 +122,7 @@ XATS2JS_jsarray_fmake_fwork
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_forall_f1un
+XATS2JS_jsdasz_forall$f1un
   (A, test)
 {
   let i0
@@ -137,7 +137,7 @@ XATS2JS_jsarray_forall_f1un
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_rforall_f1un
+XATS2JS_jsdasz_rforall$f1un
   (A, test)
 {
   let i0
@@ -152,7 +152,7 @@ XATS2JS_jsarray_rforall_f1un
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_mapref_f1un
+XATS2JS_jsdasz_mapref$f1un
   (A, fopr)
 {
   let i0
@@ -167,7 +167,7 @@ XATS2JS_jsarray_mapref_f1un
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_sortref_f2un
+XATS2JS_jsdasz_sortref_f2un
   (A, cmpr)
 {
   A.sort(cmpr); return // HX: [A] is mutated!
@@ -176,7 +176,7 @@ XATS2JS_jsarray_sortref_f2un
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_iforall_f2un
+XATS2JS_jsdasz_iforall_f2un
   (A, test)
 {
   let i0
@@ -191,7 +191,7 @@ XATS2JS_jsarray_iforall_f2un
 // HX-2024-08-09:
 // This is likely to be less efficient!
 function
-XATS2JS_jsarray_iforall_f2un
+XATS2JS_jsdasz_iforall_f2un
   (A, test)
 {
   for (const ix of A.entries()) {
@@ -208,14 +208,14 @@ HX-2024-08-14:
 Wed 14 Aug 2024 03:37:41 PM EDT
 */
 function
-XATS2JS_jsarray_iter_make
+XATS2JS_jsdasz_iter_make
   ( A )
 {
   return A.entries() // HX: Array iterator
 }
 //
 function
-XATS2JS_jsarray_iter_next$work
+XATS2JS_jsdasz_iter_next$work
   (iter, work)
 {
   var next = iter.next()
@@ -228,7 +228,7 @@ XATS2JS_jsarray_iter_next$work
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 //
-// end of [ATS3/XANADU_xatslib_DATS_CATS_JS_Array00.cats]
+// end of [ATS3/XANADU_xatslib_xbasics_DATS_CATS_JS_dynarr0.cats]
 //
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////

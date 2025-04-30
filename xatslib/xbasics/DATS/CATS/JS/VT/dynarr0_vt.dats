@@ -49,19 +49,18 @@ do need to keep things simple.
 (* ****** ****** *)
 #typedef ni = nint
 (* ****** ****** *)
-(* ****** ****** *)
-#staload "./../Array00.dats"
+#staload "./../dynarr0.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fcast
-UN_jsarray_t2vt
-{a:vt}(A: jsa0(a)): jsla(a)
+UN_jsdasz_t2vt
+{a:vt}(A: jsa1(a)): jsla(a)
 #extern
 fcast
-UN_jsarray_vt2t
-{a:vt}(A: !jsla(a)): jsa0(a)
+UN_jsdasz_vt2t
+{a:vt}(A: !jsla(a)): jsa1(a)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -72,7 +71,7 @@ g_ptype
 <jsla(a)>
 ( (*void*) ) =
 (
-pstrn"jsarray_vt(";
+pstrn"jsdasz_vt(";
 g_ptype<a>();pstrn")")
 //
 (* ****** ****** *)
@@ -91,7 +90,7 @@ let
 #impltmp
 gseq_sep<xs><x0>() = ","
 #impltmp
-gseq_beg<xs><x0>() = "jsarray_vt("
+gseq_beg<xs><x0>() = "jsdasz_vt("
 #impltmp
 gseq_end<xs><x0>() = ")"
 in//let
@@ -103,7 +102,7 @@ end//end-of-[g_print1<jsla(a)>]
 //
 #extern
 fun<>
-jsarray_vt_make_ncpy
+jsdasz_vt_make_ncpy
  {a:t0}(n:nint, x:a): jsla(a)
 //
 (* ****** ****** *)
@@ -116,35 +115,35 @@ Fri 26 Jul 2024 10:52:28 AM EDT
 //
 #extern
 fun<>
-jsarray_vt_make_jsarray
- {a:vt}(A: jsa0(a)): jsla(a)
+jsdasz_vt_make_jsdasz
+ {a:vt}(A: jsa1(a)): jsla(a)
 //
 #symload
-jsarray_vt
-with jsarray_vt_make_jsarray of 1000
+jsdasz_vt
+with jsdasz_vt_make_jsdasz of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun<>
-jsarray_vt_make0_1val
+jsdasz_vt_make0_1val
  {a:vt}( x1: (a) ): jsla(a)
 #extern
 fun<>
-jsarray_vt_make0_2val
+jsdasz_vt_make0_2val
  {a:vt}( x1:a, x2:a ): jsla(a)
 #extern
 fun<>
-jsarray_vt_make0_3val
+jsdasz_vt_make0_3val
  {a:vt}( x1:a, x2:a, x3:a ): jsla(a)
 //
 #symload
-jsarray_vt with jsarray_vt_make0_1val of 1000
+jsdasz_vt with jsdasz_vt_make0_1val of 1000
 #symload
-jsarray_vt with jsarray_vt_make0_2val of 1000
+jsdasz_vt with jsdasz_vt_make0_2val of 1000
 #symload
-jsarray_vt with jsarray_vt_make0_3val of 1000
+jsdasz_vt with jsdasz_vt_make0_3val of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -160,55 +159,55 @@ fwork_vt(a:vt) =
 //
 #extern
 fun<>
-jsarray_vt_make_fwork
+jsdasz_vt_make_fwork
 {a:vt}
 (fwork: ~fwork(a)): jsla(a)
 //
 #symload
-jsarray_vt with jsarray_vt_make_fwork of 1000
+jsdasz_vt with jsdasz_vt_make_fwork of 1000
 //
 (* ****** ****** *)
 //
 #extern
 fun<>
-jsarray_vt_make0_lstrm
+jsdasz_vt_make0_lstrm
  {a:vt}(xs: ~strm_vt(a)): jsla(a)
 #extern
 fun<>
-jsarray_vt_make0_lstrq
+jsdasz_vt_make0_lstrq
  {a:vt}(xs: ~strq_vt(a)): jsla(a)
 //
 #symload
-jsarray_vt with jsarray_vt_make0_lstrm of 1000
+jsdasz_vt with jsdasz_vt_make0_lstrm of 1000
 #symload
-jsarray_vt with jsarray_vt_make0_lstrq of 1000
+jsdasz_vt with jsdasz_vt_make0_lstrq of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun<>
-jsarray_vt_length1
+jsdasz_vt_length1
  {a:vt}(A: !jsla(a)): nint
 //
-#symload length1 with jsarray_vt_length1 of 1000
+#symload length1 with jsdasz_vt_length1 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun<>
-jsarray_vt_get$at1
+jsdasz_vt_get$at1
  {a:t0}//HX: it's t0; not vt
 (A: !jsla(a), i:nint): (a)
 #extern
 fun<>
-jsarray_vt_set$at1
+jsdasz_vt_set$at1
  {a:t0}//HX: it's t0; not vt
 (A: !jsla(a), i:nint, x:a): void
 //
-#symload get$at1 with jsarray_vt_get$at1 of 1000
-#symload set$at1 with jsarray_vt_set$at1 of 1000
+#symload get$at1 with jsdasz_vt_get$at1 of 1000
+#symload set$at1 with jsdasz_vt_set$at1 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -222,17 +221,17 @@ Thu 25 Jul 2024 06:42:41 AM EDT
 //
 #extern
 fun<>
-jsarray_vt_getn$at1
+jsdasz_vt_getn$at1
  {a:t0}{n:nat}
 (A: !jsla(a,n), i:nintlt(n)): (a)
 #extern
 fun<>
-jsarray_vt_setn$at1
+jsdasz_vt_setn$at1
  {a:t0}{n:nat}
 (A: !jsla(a,n), i:nintlt(n), x:a): void
 //
-#symload getn_at with jsarray_vt_getn$at1 of 1000
-#symload setn_at with jsarray_vt_setn$at1 of 1000
+#symload getn_at with jsdasz_vt_getn$at1 of 1000
+#symload setn_at with jsdasz_vt_setn$at1 of 1000
 //
 *)
 (* ****** ****** *)
@@ -240,65 +239,65 @@ jsarray_vt_setn$at1
 //
 #extern
 fun<>
-jsarray_vt_strmize0
+jsdasz_vt_strmize0
 {a:vt}(A: ~jsla(a)): strm_vt(a)
 #extern
 fun<>
-jsarray_vt_strqize0
+jsdasz_vt_strqize0
 {a:vt}(A: ~jsla(a)): strq_vt(a)
 //
-#symload strmize0 with jsarray_vt_strmize0 of 1000
-#symload strqize0 with jsarray_vt_strqize0 of 1000
+#symload strmize0 with jsdasz_vt_strmize0 of 1000
+#symload strqize0 with jsdasz_vt_strqize0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun<>
-jsarray_vt_forall1_f1un
+jsdasz_vt_forall1$f1un
  {a:vt}
 ( A:
 ! jsla(a)
 , test: (~a) -> bool): bool
 //
 #symload
-forall1 with jsarray_vt_forall1_f1un of 1000
+forall1 with jsdasz_vt_forall1$f1un of 1000
 //
 (* ****** ****** *)
 //
 #extern
 fun<>
-jsarray_vt_rforall1_f1un
+jsdasz_vt_rforall1$f1un
  {a:vt}
 ( A:
 ! jsla(a)
 , test: (~a) -> bool): bool
 //
 #symload
-rforall1 with jsarray_vt_rforall1_f1un of 1000
+rforall1 with jsdasz_vt_rforall1$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun<>
-jsarray_vt_mapref1_f1un
+jsdasz_vt_mapref1$f1un
  {a:vt}
 ( A:
 ! jsla(a)
 , fopr: (~a) -> (a)): void
 #extern
 fun<>
-jsarray_vt_imapref1_f1un
+jsdasz_vt_imapref1$f1un
  {a:vt}
 ( A:
 ! jsla(a)
 , fopr: (ni, ~a) -> (a)): void
 //
 #symload
-mapref1 with jsarray_vt_mapref1_f1un of 1000
+mapref1 with jsdasz_vt_mapref1$f1un of 1000
 #symload
-imapref1 with jsarray_vt_imapref1_f1un of 1000
+imapref1 with jsdasz_vt_imapref1$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -306,20 +305,20 @@ imapref1 with jsarray_vt_imapref1_f1un of 1000
 #extern
 fun
 <a:vt>
-jsarray_vt_sortref1
+jsdasz_vt_sortref1
 ( A: !jsla(a) ): void
 #extern
 fun<>
-jsarray_vt_sortref1_f2un
+jsdasz_vt_sortref1$f2un
  {a:vt}
 ( A:
 ! jsla(a)
 , cmpr: (!a, !a) -> sint): void
 //
 #symload
-sortref1 with jsarray_vt_sortref1 of 1000
+sortref1 with jsdasz_vt_sortref1 of 1000
 #symload
-sortref1 with jsarray_vt_sortref1_f2un of 1000
+sortref1 with jsdasz_vt_sortref1$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -328,14 +327,14 @@ sortref1 with jsarray_vt_sortref1_f2un of 1000
 { x0:vt }
 gseq_length1
 <jsla(x0)><x0> =
-jsarray_vt_length1<>{x0}
+jsdasz_vt_length1<>{x0}
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_length1
+jsdasz_vt_length1
   ( A ) =
 (
-jsarray_length<>(UN_jsarray_vt2t(A)))
+jsdasz_length<>(UN_jsdasz_vt2t(A)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -344,69 +343,69 @@ jsarray_length<>(UN_jsarray_vt2t(A)))
 { x0:t0 }
 gasz_get$at1
 <jsla(x0)><x0> =
-jsarray_vt_get$at1<>{x0}(*void*)
+jsdasz_vt_get$at1<>{x0}(*void*)
 #impltmp
 { x0:t0 }
 gasz_set$at1
 <jsla(x0)><x0> =
-jsarray_vt_set$at1<>{x0}(*void*)
+jsdasz_vt_set$at1<>{x0}(*void*)
 //
 #impltmp
 { x0:t0 }
 $UN.gasz_get$at$raw1
 <jsla(x0)><x0> =
-jsarray_vt_get$at1<>{x0}(*void*)
+jsdasz_vt_get$at1<>{x0}(*void*)
 #impltmp
 { x0:t0 }
 $UN.gasz_set$at$raw1
 <jsla(x0)><x0> =
-jsarray_vt_set$at1<>{x0}(*void*)
+jsdasz_vt_set$at1<>{x0}(*void*)
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_get$at1
+jsdasz_vt_get$at1
   {a}(A, i) =
 (
-jsarray_get$at<>(UN_jsarray_vt2t(A), i))
+jsdasz_get$at<>(UN_jsdasz_vt2t(A), i))
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_set$at1
+jsdasz_vt_set$at1
   {a}(A, i, x) =
 (
-jsarray_set$at<>(UN_jsarray_vt2t(A), i, x))
+jsdasz_set$at<>(UN_jsdasz_vt2t(A), i, x))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_make_ncpy
+jsdasz_vt_make_ncpy
   (n, x) =
 (
-UN_jsarray_t2vt(jsarray_make_ncpy<>(n, x)))
+UN_jsdasz_t2vt(jsdasz_make_ncpy<>(n, x)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_make0_1val
+jsdasz_vt_make0_1val
   ( x1 ) =
 (
-  UN_jsarray_t2vt(jsarray_make0_1val<>(x1)))
+  UN_jsdasz_t2vt(jsdasz_make0_1val<>(x1)))
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_make0_2val
+jsdasz_vt_make0_2val
   (x1, x2) =
-UN_jsarray_t2vt(jsarray_make0_2val<>(x1, x2))
+UN_jsdasz_t2vt(jsdasz_make0_2val<>(x1, x2))
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_make0_3val
+jsdasz_vt_make0_3val
   (x1, x2, x3) =
-UN_jsarray_t2vt(jsarray_make0_3val<>(x1, x2, x3))
+UN_jsdasz_t2vt(jsdasz_make0_3val<>(x1, x2, x3))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -432,16 +431,16 @@ gseq_forall1
 <jsla(x0)><x0>
   ( A ) =
 (
-jsarray_vt_forall1_f1un<>
+jsdasz_vt_forall1$f1un<>
 (A
 ,lam(x)=>forall$test1<x0>(x)))
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_forall1_f1un
+jsdasz_vt_forall1$f1un
   (A, test) =
 (
-jsarray_forall_f1un<>(UN_jsarray_vt2t(A), test))
+jsdasz_forall$f1un<>(UN_jsdasz_vt2t(A), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -452,51 +451,51 @@ gseq_rforall1
 <jsla(x0)><x0>
   ( A ) =
 (
-jsarray_vt_rforall1_f1un<>
+jsdasz_vt_rforall1$f1un<>
 (A
 ,lam(x)=>rforall$test1<x0>(x)))
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_rforall1_f1un
+jsdasz_vt_rforall1$f1un
   (A, test) =
 (
-jsarray_rforall_f1un<>(UN_jsarray_vt2t(A), test))
+jsdasz_rforall$f1un<>(UN_jsdasz_vt2t(A), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_mapref1_f1un
+jsdasz_vt_mapref1$f1un
   (A, fopr) =
 (
-jsarray_mapref_f1un<>(UN_jsarray_vt2t(A), fopr))
+jsdasz_mapref$f1un<>(UN_jsdasz_vt2t(A), fopr))
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_imapref1_f1un
+jsdasz_vt_imapref1$f1un
   (A, fopr) =
 (
-jsarray_imapref_f1un<>(UN_jsarray_vt2t(A), fopr))
+jsdasz_imapref$f1un<>(UN_jsdasz_vt2t(A), fopr))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 < a: vt >
-jsarray_vt_sortref1
+jsdasz_vt_sortref1
   ( A ) =
 (
-jsarray_vt_sortref1_f2un<>
+jsdasz_vt_sortref1$f2un<>
 (A, lam(x,y)=>g_cmp11<a>(x, y)))
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_sortref1_f2un
+jsdasz_vt_sortref1$f2un
   (A, cmpr) =
 (
-jsarray_sortref_f2un<>(UN_jsarray_vt2t(A), cmpr))
+jsdasz_sortref$f2un<>(UN_jsdasz_vt2t(A), cmpr))
 //
 (* ****** ****** *)
 (* ****** ****** *)
