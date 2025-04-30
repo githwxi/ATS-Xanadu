@@ -312,13 +312,19 @@ defq(_XATS2JS_)
 _XATS2JS_NODE_=1
 #endif//ifdef(_XATS2JS_)
 //
+(* ****** ****** *)
+//
+#include
+"srcgen1/xatslib/libcats/DATS/CATS/libcats.dats"
+//
+(* ****** ****** *)
 #if
 defq
 (_XATS2JS_NODE_)
 #then
-#include "srcgen1\
-/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
-#endif // end-of-[-----#if(_XATS2JS_NODE_==1)-----]
+#include
+"srcgen1/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
+#endif//end-of-[---------#ifdef(_XATS2JS_NODE_)---------]
 //
 (* ****** ****** *)
 (* ****** ****** *)
