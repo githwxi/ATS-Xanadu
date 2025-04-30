@@ -115,12 +115,14 @@ XATS2JS_NODE_bool_fprint:
 (bool, FILR) -> void = $extnam()
 #impltmp
 bool_fprint<> = XATS2JS_NODE_bool_fprint
+//
 #extern
 fun
 XATS2JS_NODE_char_fprint:
 (char, FILR) -> void = $extnam()
 #impltmp
 char_fprint<> = XATS2JS_NODE_char_fprint
+//
 #extern
 fun
 XATS2JS_NODE_strn_fprint:
