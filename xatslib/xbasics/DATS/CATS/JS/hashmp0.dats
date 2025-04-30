@@ -39,38 +39,37 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX: For hashmap support in JS
+HX:
+For hashmap support in JS
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+#staload
+UN = "prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 #abstbox
-jshsmap_tbox(k:t0,x:vt)
+jshmap_tbox(k:t0,x:vt)
 #absvtbx
-jshsmap_vtbx(k:t0,x:vt)
+jshmap_vtbx(k:t0,x:vt)
+(* ****** ****** *)
+#sexpdef jsm1 = jshmap_tbox
+#sexpdef jslm = jshmap_vtbx
 (* ****** ****** *)
 #typedef
-jshsmap
-(k:t0
-,x:vt) = jshsmap_tbox(k,x)
+jshmap(k:t0,x:vt) = jshmap_tbox(k,x)
 #vwtpdef
-jshsmap_vt
-(k:t0
-,x:vt) = jshsmap_vtbx(k,x)
-(* ****** ****** *)
-#sexpdef jsm0 = jshsmap
-#sexpdef jslm = jshsmap_vt
-(* ****** ****** *)
-(* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsfx00.sats"
+jshmap_vt(k:t0,x:vt) = jshmap_vtbx(k,x)
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fcast
-jshsmap_vt2t
+jshmap_vt2t
 {k:t0}{x:vt}
-(map: jslm(k,x)): jsm0(k,x)
+(map: jslm(k,x)): jsm1(k,x)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -79,12 +78,14 @@ jshsmap_vt2t
 { k: t0
 , x: vt }
 g_ptype
-<jsm0(k,x)>
+<jsm1(k,x)>
 ( (*nil*) ) =
 (
-pstrn"jshsmap(";
+pstrn
+"jshmap(";
 g_ptype<k>();pstrn",";
-g_ptype<x>();pstrn")")//impl
+g_ptype<x>();pstrn")")
+//end-of-(impltmp(g_ptype<jsm1(k,x)>))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -93,24 +94,24 @@ g_ptype<x>();pstrn")")//impl
 { k: t0
 , x: vt }
 g_print
-<jsm0(k,x)>
+<jsm1(k,x)>
   ( map ) =
 let
 //
 #vwtpdef x0 = @(k,x)
-#typedef xs = jsm0(k,x)
+#typedef xs = jsm1(k,x)
 //
 #impltmp
 gseq_sep<xs><x0>() = ","
 #impltmp
 gseq_end<xs><x0>() = ")"
 #impltmp
-gseq_beg<xs><x0>() = "jshsmap("
+gseq_beg<xs><x0>() = "jshmap("
 //
 in//let
 (
   gseq_print1<xs><x0>(map) )
-end//end-of-[g_print<jsm0(k,x)>]
+end(*let*)//end-of-[impltmp(g_print<jsm1(k,x)>)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -118,70 +119,70 @@ end//end-of-[g_print<jsm0(k,x)>]
 #impltmp
 { k: t0
 , x: vt }
-g_forall<jsm0(k,x)> =
-gseq_forall1<jsm0(k,x)><(k,x)>
+g_forall<jsm1(k,x)> =
+gseq_forall1<jsm1(k,x)><(k,x)>
 //
 #impltmp
 { k: t0
 , x: vt }
-g_foritm<jsm0(k,x)> =
-gseq_foritm1<jsm0(k,x)><(k,x)>
+g_foritm<jsm1(k,x)> =
+gseq_foritm1<jsm1(k,x)><(k,x)>
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun<>
-jshsmap_make_nil
+jshmap_make_nil
  {k:t0}{x:vt}
-(    (*nil*)    ): jsm0(k,x)
+(    (*nil*)    ): jsm1(k,x)
 //
 #extern
 fun<>
-jshsmap_make_list
+jshmap_make_list
  {k:t0}{x:t0}
-( kxs:list@(k,x) ): jsm0(k,x)
+( kxs:list@(k,x) ): jsm1(k,x)
 //
 #symload
-jshsmap with jshsmap_make_nil of 1000
+jshmap with jshmap_make_nil of 1000
 #symload
-jshsmap with jshsmap_make_list of 1000
+jshmap with jshmap_make_list of 1000
 //
 #extern
 fun<>
-jshsmap_make0_llist
+jshmap_make0_llist
  {k:t0}{x:vt}
-( kxs:list_vt@(k,x) ): jsm0(k,x)
+( kxs:list_vt@(k,x) ): jsm1(k,x)
 #symload
-jshsmap with jshsmap_make0_llist of 1000
+jshmap with jshmap_make0_llist of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun<>
-jshsmap_keyq
+jshmap_keyq
  {k:t0}{x:vt}
-(A: jsm0(k,x), k: k): bool
-#symload keyq with jshsmap_keyq of 1000
+(A: jsm1(k,x), k: k): bool
+#symload keyq with jshmap_keyq of 1000
 //
 (* ****** ****** *)
 //
 #extern
 fun<>
-jshsmap_get$at
+jshmap_get$at
  {k:t0}{x:t0}
-(A: jsm0(k,x), k: k): ( x )
+(A: jsm1(k,x), k: k): ( x )
 #extern
 fun<>
-jshsmap_set$at
+jshmap_set$at
  {k:t0}{x:t0}
-(A: jsm0(k,x), k:k, x:x): void
+(A: jsm1(k,x), k:k, x:x): void
 //
-#symload [ ] with jshsmap_get$at of 1000
-#symload [ ] with jshsmap_set$at of 1000
-#symload get$at with jshsmap_get$at of 1000
-#symload set$at with jshsmap_set$at of 1000
+#symload [ ] with jshmap_get$at of 1000
+#symload [ ] with jshmap_set$at of 1000
+#symload get$at with jshmap_get$at of 1000
+#symload set$at with jshmap_set$at of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -190,9 +191,9 @@ jshsmap_set$at
 fun
 <k:t0>
 <x:vt>
-jshsmap_listize
-(map: jsm0(k,x)): list_vt@(k,x)
-#symload listize with jshsmap_listize of 1000
+jshmap_listize
+(map: jsm1(k,x)): list_vt@(k,x)
+#symload listize with jshmap_listize of 1000
 //
 (* ****** ****** *)
 //
@@ -200,10 +201,10 @@ jshsmap_listize
 fun
 <k:t0>
 <x:vt>
-jshsmap_strmize
-(map: jsm0(k,x)): strm_vt@(k,x)
+jshmap_strmize
+(map: jsm1(k,x)): strm_vt@(k,x)
 //
-#symload strmize with jshsmap_strmize of 1000
+#symload strmize with jshmap_strmize of 1000
 //
 (* ****** ****** *)
 //
@@ -211,9 +212,9 @@ jshsmap_strmize
 fun
 <k:t0>
 <x:vt>
-jshsmap_rlistize
-(map: jsm0(k,x)): list_vt@(k,x)
-#symload rlistize with jshsmap_rlistize of 1000
+jshmap_rlistize
+(map: jsm1(k,x)): list_vt@(k,x)
+#symload rlistize with jshmap_rlistize of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -226,27 +227,27 @@ in a hashmap.
 *)
 #extern
 fun<>
-jshsmap_forall_f2un
+jshmap_forall_f2un
  {k:t0}{x:vt}
-( map: jsm0(k,x)
+( map: jsm1(k,x)
 , test: (k, !x) -> bool): bool
 //
-#symload forall with jshsmap_forall_f2un of 1000
+#symload forall with jshmap_forall_f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun<>
-jshsmap_search$tst
+jshmap_search$tst
  {k:t0}{x:vt}
-(map: jsm0(k,x), key: k): bool
+(map: jsm1(k,x), key: k): bool
 //
 #extern
 fun<>
-jshsmap_search$opt
+jshmap_search$opt
  {k:t0}{x:t0} // HX: not(x:vt)
-(map: jsm0(k,x), key: k): optn_vt(x)
+(map: jsm1(k,x), key: k): optn_vt(x)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -254,15 +255,15 @@ jshsmap_search$opt
 (*
 HX-2024-08-10:
 Sat 10 Aug 2024 12:18:20 PM EDT
-jshsmap_delete(map) = map.delete
+jshmap_delete(map) = map.delete
 Note that:
-[jshsmap_delete$raw] is not needed!
+[jshmap_delete$raw] is not needed!
 *)
 #extern
 fun<>
-jshsmap_delete
+jshmap_delete
   {k:t0}{x:t0}
-(map: jsm0(k,x), key: k): void
+(map: jsm1(k,x), key: k): void
 //
 (* ****** ****** *)
 //
@@ -273,14 +274,14 @@ is known in the given map [map]
 *)
 #extern
 fun<>
-jshsmap_getout$old
+jshmap_getout$old
  {k:t0}{x:vt}
-(map: jsm0(k,x), key: k): ( x )
+(map: jsm1(k,x), key: k): ( x )
 #extern
 fun<>
-jshsmap_getout$opt
+jshmap_getout$opt
  {k:t0}{x:vt}
-(map: jsm0(k,x), key: k): optn_vt(x)
+(map: jsm1(k,x), key: k): optn_vt(x)
 //
 (* ****** ****** *)
 //
@@ -291,14 +292,14 @@ known not in the given map [map]
 *)
 #extern
 fun<>
-jshsmap_insert$new
+jshmap_insert$new
  {k:t0}{x:vt}
-(map: jsm0(k,x), key: k, itm: x): void
+(map: jsm1(k,x), key: k, itm: x): void
 #extern
 fun<>
-jshsmap_insert$opt
+jshmap_insert$opt
  {k:t0}{x:vt}
-(map: jsm0(k,x), key: k, itm: x): optn_vt(x)
+(map: jsm1(k,x), key: k, itm: x): optn_vt(x)
 //
 (* ****** ****** *)
 //
@@ -311,14 +312,14 @@ to implement some safe functions.
 *)
 #extern
 fun<>
-UN_jshsmap_get$at$raw
+UN_jshmap_get$at$raw
  {k:t0}{x:t0}
-(map: jsm0(k,x), key: k): ( x )
+(map: jsm1(k,x), key: k): ( x )
 #extern
 fun<>
-UN_jshsmap_set$at$raw
+UN_jshmap_set$at$raw
  {k:t0}{x:t0}
-(map: jsm0(k,x), key: k, itm: x): void
+(map: jsm1(k,x), key: k, itm: x): void
 //
 (* ****** ****** *)
 //
@@ -328,82 +329,82 @@ This assume that [key] is not in [map]
 *)
 #extern
 fun<>
-UN_jshsmap_insert$raw
+UN_jshmap_insert$raw
  {k:t0}{x:vt}
-(map: jsm0(k,x), key: k, itm: x): void
+(map: jsm1(k,x), key: k, itm: x): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun<>
-jshsmap_size
+jshmap_size
  {k:t0}{x:vt}
-( map: jsm0(k,x)): (nint)
+( map: jsm1(k,x)): (nint)
 //
 #impltmp
 <(*tmp*)>
-jshsmap_size
+jshmap_size
  {k:t0}{x:vt}
  (    map    ) =
 (
-XATS2JS_jshsmap_size
+XATS2JS_jshmap_size
  (    map    )) where
 {
 #extern
 fun
-XATS2JS_jshsmap_size
+XATS2JS_jshmap_size
  {k:t0}{x:vt}
-(map: jsm0(k,x)): nint = $extnam()
+(map: jsm1(k,x)): nint = $extnam()
 }
 //
 #impltmp
 { k: t0
 , x: t0 }
 gseq_length
-<jsm0(k,x)><(k,x)>
+<jsm1(k,x)><(k,x)>
   ( kxs ) =
 (
-  jshsmap_size<>{k}{x}(kxs))
+  jshmap_size<>{k}{x}(kxs))
 //
 #impltmp
 { k: t0
 , x: vt }
 gseq_length1
-<jsm0(k,x)><(k,x)>
+<jsm1(k,x)><(k,x)>
   ( kxs ) =
 (
-  jshsmap_size<>{k}{x}(kxs))
+  jshmap_size<>{k}{x}(kxs))
 //
-#symload size with jshsmap_size of 1000
+#symload size with jshmap_size of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jshsmap_make_nil
+jshmap_make_nil
  {k:t0}{x:vt}() =
 (
-XATS2JS_jshsmap_make_nil
+XATS2JS_jshmap_make_nil
   ( (*void*) )) where
 {
 #extern
 fun
-XATS2JS_jshsmap_make_nil
- {k:t0}{x:vt}(): jsm0(k,x) = $extnam()
+XATS2JS_jshmap_make_nil
+ {k:t0}{x:vt}(): jsm1(k,x) = $extnam()
 }
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jshsmap_make_list
+jshmap_make_list
  {k:t0}{x:t0}(kxs) =
 let
 //
 val map =
-jshsmap_make_nil<>()
+jshmap_make_nil<>()
 //
 in//let
 (
@@ -417,22 +418,22 @@ list_foritm<(k,x)>(kxs) }
 foritm$work<(k,x)>(kx) =
 let
 val (k, x) = kx in
-UN_jshsmap_insert$raw(map, k, x)
+UN_jshmap_insert$raw(map, k, x)
 end//let//endof[forithm$work(...)]
 }
-end//let//end-of-[jshsmap_make_list]
+end//let//end-of-[jshmap_make_list]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jshsmap_make0_llist
+jshmap_make0_llist
  {k:t0}{x:vt}(kxs) =
 let
 //
 val map =
-jshsmap_make_nil<>()
+jshmap_make_nil<>()
 //
 in//let
 (
@@ -446,55 +447,55 @@ list_vt_foritm0<(k,x)>(kxs) }
 foritm$work0<(k,x)>(kx) =
 let
 val (k, x) = kx in
-UN_jshsmap_insert$raw(map, k, x)
+UN_jshmap_insert$raw(map, k, x)
 end//let//endof[forithm$work0(...)]
 }
-end//let//end-of-[jshsmap_make0_llist]
+end//let//end-of-[jshmap_make0_llist]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jshsmap_keyq
+jshmap_keyq
   (A, k) =
 (
-XATS2JS_jshsmap_keyq
+XATS2JS_jshmap_keyq
   (A, k)) where
 {
 #extern
 fun
-XATS2JS_jshsmap_keyq
+XATS2JS_jshmap_keyq
  {k:t0}{x:vt}
-(A:jsm0(k,x), k:k): bool = $extnam()
+(A:jsm1(k,x), k:k): bool = $extnam()
 }
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jshsmap_get$at
+jshmap_get$at
   (A, k) =
 let
 //
 val b0 =
-jshsmap_keyq(A, k)
+jshmap_keyq(A, k)
 val () =
-assert(b0, "jshsmap_get$at")
+assert(b0, "jshmap_get$at")
 //
 in//let
 //
 (
-  UN_jshsmap_get$at$raw<>(A, k))
-end//let//end-of-[jshsmap_get$at(...)]
+  UN_jshmap_get$at$raw<>(A, k))
+end//let//end-of-[jshmap_get$at(...)]
 //
 #impltmp
 <(*tmp*)>
-jshsmap_set$at
+jshmap_set$at
   (A, k, x) =
 (
-  UN_jshsmap_set$at$raw<>(A, k, x))
-//jshsmap_set$at: keyq(A,k) may be true!
+  UN_jshmap_set$at$raw<>(A, k, x))
+//jshmap_set$at: keyq(A,k) may be true!
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -503,9 +504,9 @@ jshsmap_set$at
 { k: t0
 , x: t0 }
 gseq_forall
-<jsm0(k,x)><(k,x)>
+<jsm1(k,x)><(k,x)>
   ( kxs ) =
-jshsmap_forall_f2un<>
+jshmap_forall_f2un<>
 (kxs
 ,lam(k, x) => forall$test@(k, x))
 //
@@ -513,25 +514,25 @@ jshsmap_forall_f2un<>
 { k: t0
 , x: vt }
 gseq_forall1
-<jsm0(k,x)><(k,x)>
+<jsm1(k,x)><(k,x)>
   ( kxs ) =
-jshsmap_forall_f2un<>
+jshmap_forall_f2un<>
 (kxs
 ,lam(k, x) => forall$test1@(k, x))
 //
 #impltmp
 <(*tmp*)>
-jshsmap_forall_f2un
+jshmap_forall_f2un
   (map, test) =
 (
-XATS2JS_jshsmap_forall_f2un
+XATS2JS_jshmap_forall_f2un
   (map, test)) where
 {
 #extern
 fun
-XATS2JS_jshsmap_forall_f2un
+XATS2JS_jshmap_forall_f2un
  {k:t0}{x:vt}
-( map: jsm0(k,x)
+( map: jsm1(k,x)
 , test
 : (k, !x) -> bool): bool = $extnam()
 }
@@ -542,90 +543,90 @@ XATS2JS_jshsmap_forall_f2un
 #impltmp
 < k: t0 >
 < x: vt >
-jshsmap_listize
+jshmap_listize
   ( xs ) =
 list_vt_reverse0<(k,x)>
-(jshsmap_rlistize<k><x>(xs))
+(jshmap_rlistize<k><x>(xs))
 //
 #impltmp
 < k: t0 >
 < x: vt >
-jshsmap_rlistize
+jshmap_rlistize
  ( xs ) =
 (
-  gseq_rlistize1<jsm0(k,x)><(k,x)>(xs))
+  gseq_rlistize1<jsm1(k,x)><(k,x)>(xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jshsmap_search$tst
+jshmap_search$tst
   (map, key) =
 (
-XATS2JS_jshsmap_search$tst
+XATS2JS_jshmap_search$tst
   (map, key)) where
 {
 #extern
 fun
-XATS2JS_jshsmap_search$tst
+XATS2JS_jshmap_search$tst
  {k:t0}{x:vt}
-(map: jsm0(k,x), key: k): bool = $extnam()
+(map: jsm1(k,x), key: k): bool = $extnam()
 }
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jshsmap_search$opt
+jshmap_search$opt
   (map, key) =
 let
 val
 test =
-jshsmap_search$tst<>(map, key)
+jshmap_search$tst<>(map, key)
 in//let
 if
 test
 then
 optn_vt_cons
 (
-UN_jshsmap_get$at$raw<>(map, key))
+UN_jshmap_get$at$raw<>(map, key))
 else
 (optn_vt_nil(      (*void*)      ))
-end//let//end-of-[jshsmap_search$opt]
+end//let//end-of-[jshmap_search$opt]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-UN_jshsmap_get$at$raw
+UN_jshmap_get$at$raw
   (map, key) =
 (
-XATS2JS_jshsmap_get$at$raw
+XATS2JS_jshmap_get$at$raw
   (map, key)) where
 {
 #extern
 fun
-XATS2JS_jshsmap_get$at$raw
+XATS2JS_jshmap_get$at$raw
  {k:t0}{x:t0}
-(map: jsm0(k,x), key: k): ( x ) = $extnam()
+(map: jsm1(k,x), key: k): ( x ) = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-UN_jshsmap_set$at$raw
+UN_jshmap_set$at$raw
   (map, key, itm) =
 (
-XATS2JS_jshsmap_set$at$raw
+XATS2JS_jshmap_set$at$raw
   (map, key, itm)) where
 {
 #extern
 fun
-XATS2JS_jshsmap_set$at$raw
+XATS2JS_jshmap_set$at$raw
  {k:t0}{x:t0}
 ( map
-: jsm0(k,x), key:k, itm:x): void = $extnam()
+: jsm1(k,x), key:k, itm:x): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -633,18 +634,18 @@ XATS2JS_jshsmap_set$at$raw
 //
 #impltmp
 <(*tmp*)>
-UN_jshsmap_insert$raw
+UN_jshmap_insert$raw
   (map, key, itm) =
 (
-XATS2JS_jshsmap_insert$raw
+XATS2JS_jshmap_insert$raw
   (map, key, itm)) where
 {
 #extern
 fun
-XATS2JS_jshsmap_insert$raw
+XATS2JS_jshmap_insert$raw
  {k:t0}{x:vt}
 ( map
-: jsm0(k,x), key: k, itm: x): void = $extnam()
+: jsm1(k,x), key: k, itm: x): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -652,56 +653,56 @@ XATS2JS_jshsmap_insert$raw
 //
 #impltmp
 <(*tmp*)>
-jshsmap_getout$old
+jshmap_getout$old
   (map, key) =
 (    itm     ) where
 {
 val-
 ~optn_vt_cons(itm) =
-jshsmap_getout$opt<>(map, key) }
+jshmap_getout$opt<>(map, key) }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jshsmap_insert$new
+jshmap_insert$new
   (map, k, x) =
 let
 val-false =
-jshsmap_search$tst<>(map, k)
+jshmap_search$tst<>(map, k)
 in//let
-UN_jshsmap_insert$raw<>(map, k, x)
+UN_jshmap_insert$raw<>(map, k, x)
 end//let
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jshsmap_insert$opt
+jshmap_insert$opt
   (map, k, x) =
 (
   opt ) where
 {
 val opt =
-jshsmap_getout$opt<>(map, k)
+jshmap_getout$opt<>(map, k)
 val ( ) =
-UN_jshsmap_insert$raw<>(map, k, x) }
+UN_jshmap_insert$raw<>(map, k, x) }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
 HX-2024-08-13:
-[jshsmap] is not a gasz!
+[jshmap] is not a gasz!
 *)
 #extern
 fcast // fun
-GSEQ_make_jshsmap
+GSEQ_make_jshmap
 {k:t0}{x:t0}
-( map: jsm0(k, x))
-: GSEQ(jsm0(k, x), @(k, x))
-#symload GSEQ with GSEQ_make_jshsmap of 1000
+( map: jsm1(k, x))
+: GSEQ(jsm1(k, x), @(k, x))
+#symload GSEQ with GSEQ_make_jshmap of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -713,7 +714,7 @@ Fri 09 Aug 2024 08:24:11 AM EDT
 *)
 //
 #absvwtp
-jshsmap_iter(k:t0,x:vt)
+jshmap_iter(k:t0,x:vt)
 //
 (* ****** ****** *)
 //
@@ -722,11 +723,11 @@ jshsmap_iter(k:t0,x:vt)
 , x: vt }
 g_ptype
 <
-jshsmap_iter(k,x)>
+jshmap_iter(k,x)>
 (    (*void*)    ) =
 (
 pstrn
-"jshsmap_iter(";
+"jshmap_iter(";
 g_ptype<k>(); pstrn",";
 g_ptype<x>(); pstrn")")
 //
@@ -734,17 +735,17 @@ g_ptype<x>(); pstrn")")
 //
 #extern
 fun<>
-jshsmap_iter_make
+jshmap_iter_make
 {k:t0}{x:vt}
 (map
-:jshsmap(k,x)): jshsmap_iter(k,x)
+:jshmap(k,x)): jshmap_iter(k,x)
 //
 #extern
 fun<>
-jshsmap_iter_next$work
+jshmap_iter_next$work
 {k:t0}{x:vt}
 ( iter:
-! jshsmap_iter(k,x)
+! jshmap_iter(k,x)
 , work
 : (k(*key*), !x(*itm*)) -> void): bool
 //
@@ -752,44 +753,44 @@ jshsmap_iter_next$work
 //
 #impltmp
 <(*tmp*)>
-jshsmap_iter_make
+jshmap_iter_make
   ( map ) =
 (
-XATS2JS_jshsmap_iter_make
+XATS2JS_jshmap_iter_make
   ( map )) where
 {
 #extern
 fun
-XATS2JS_jshsmap_iter_make
+XATS2JS_jshmap_iter_make
 {k:t0}{x:vt}
 ( map
-: jshsmap(k,x))
-: jshsmap_iter(k,x) = $extnam()
+: jshmap(k,x))
+: jshmap_iter(k,x) = $extnam()
 }
 #symload
-jshsmap_iter with jshsmap_iter_make of 1000
+jshmap_iter with jshmap_iter_make of 1000
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jshsmap_iter_next$work
+jshmap_iter_next$work
   (iter, work) =
 (
-XATS2JS_jshsmap_iter_next$work
+XATS2JS_jshmap_iter_next$work
   (iter, work)) where
 {
 #extern
 fun
-XATS2JS_jshsmap_iter_next$work
+XATS2JS_jshmap_iter_next$work
 {k:t0}{x:vt}
 ( iter:
-! jshsmap_iter(k, x)
+! jshmap_iter(k, x)
 , work
 : (k(*key*), !x(*itm*))->void): bool = $extnam()
 }
 //
-#symload next$work with jshsmap_iter_next$work of 1000
+#symload next$work with jshmap_iter_next$work of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -797,16 +798,16 @@ XATS2JS_jshsmap_iter_next$work
 #impltmp
 < k: t0 >
 < x: vt >
-jshsmap_strmize
+jshmap_strmize
   ( map ) =
 (
 auxmain
-(jshsmap_iter(map)))
+(jshmap_iter(map)))
 where
 {
 //
 #vwtpdef
-iter = jshsmap_iter(k,x)
+iter = jshmap_iter(k,x)
 //
 var vk: k
 var vx: x
@@ -826,7 +827,7 @@ $UN.p2tr_set<k>(pk, k);
 $UN.p2tr_set<x>(px, g_copy<x>(x)))
 //
 val wrkd =
-jshsmap_iter_next$work<>(iter, work)
+jshmap_iter_next$work<>(iter, work)
 //
 in//let
 //
@@ -846,13 +847,13 @@ end//let//else//end-of-[if(not(wrkd))]
 //
 end(*let*)//end-of-[auxmain(iter):strm_vt]
 //
-}(*where*)//end-of-[jshsmap_strmize<>(map)]
+}(*where*)//end-of-[jshmap_strmize<>(map)]
 //
 #impltmp
 { k: t0
 , x: vt }
 gseq_strmize1
-<jsm0(k,x)><(k,x)> = jshsmap_strmize<>{k}{x}
+<jsm1(k,x)><(k,x)> = jshmap_strmize<>{k}{x}
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -864,53 +865,53 @@ Fri Sep 20 10:48:22 AM EDT 2024
 //
 #extern
 fun<>
-jshsmap_get$at$opt
+jshmap_get$at$opt
  {k:t0}{x:t0}
 // HX: nil if !keyq(k)
 // HX: cons(old) if keyq(k)
-(A: jsm0(k,x), k: k): optn_vt(x)
+(A: jsm1(k,x), k: k): optn_vt(x)
 #extern
 fun<>
-jshsmap_set$at$opt
+jshmap_set$at$opt
  {k:t0}{x:t0}
 // HX: nil if !keyq(k)
 // HX: cons(old) if keyq(k)
-(A: jsm0(k,x), k: k, x: x): optn_vt(x)
+(A: jsm1(k,x), k: k, x: x): optn_vt(x)
 //
-#symload get$at$opt with jshsmap_get$at$opt of 1000
-#symload set$at$opt with jshsmap_set$at$opt of 1000
+#symload get$at$opt with jshmap_get$at$opt of 1000
+#symload set$at$opt with jshmap_set$at$opt of 1000
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jshsmap_get$at$opt
+jshmap_get$at$opt
   (A, k) =
 if
-jshsmap_keyq(A, k)
+jshmap_keyq(A, k)
 then
 optn_vt_cons(
-UN_jshsmap_get$at$raw<>(A, k))
+UN_jshmap_get$at$raw<>(A, k))
 else optn_vt_nil()//else//end-of-[if]
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jshsmap_set$at$opt
+jshmap_set$at$opt
   (A, k, x) =
 let
 //
 val opt =
-jshsmap_get$at$opt<>(A, k)
+jshmap_get$at$opt<>(A, k)
 //
 in//let
-  UN_jshsmap_set$at$raw<>(A, k, x); opt
-end//let//end-of-[jshsmap_set$at$opt(A,k,x)]
+  UN_jshmap_set$at$raw<>(A, k, x); opt
+end//let//end-of-[jshmap_set$at$opt(A,k,x)]
 //
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_DATS_CATS_JS_Hsmap00.dats] *)
+(* end of [ATS3/XANADU_xatslib_xbasics_DATS_CATS_JS_hashmap0.dats] *)

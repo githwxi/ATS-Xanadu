@@ -46,21 +46,20 @@ For hashmap support in JS
 (* ****** ****** *)
 #typedef ni = nint
 (* ****** ****** *)
-(* ****** ****** *)
-#staload "./../Hsmap00.dats"
+#staload "./../hashmp0.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fcast
-UN_jshsmap_t2vt
+UN_jshmap_t2vt
 {k:t0}
-{x:vt}(A: jsm0(k,x)): jslm(k,x)
+{x:vt}(A: jsm1(k,x)): jslm(k,x)
 #extern
 fcast
 UN_jsarray_vt2t
 {k:t0}
-{x:vt}(A: !jslm(k,x)): jsm0(k,x)
+{x:vt}(A: !jslm(k,x)): jsm1(k,x)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -73,9 +72,10 @@ g_ptype
 <jslm(k,x)>
 ( (*void*) ) =
 (
-pstrn"jshsmap_vt(";
+pstrn"jshmap_vt(";
 g_ptype<k>();pstrn",";
 g_ptype<x>();pstrn")")
+//end-of-(impltmp(g_ptype<jslm(k,x)>))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -94,12 +94,12 @@ let
 #impltmp
 gseq_sep<xs><x0>() = ","
 #impltmp
-gseq_beg<xs><x0>() = "jshsmap_vt("
+gseq_beg<xs><x0>() = "jshmap_vt("
 #impltmp
 gseq_end<xs><x0>() = ")"
 in//let
   gseq_print1<xs><x0>(xs)
-end//end-of-[g_print1<jslm(k,x)>]
+end//end-of-[impltmp(g_print1<jslm(k,x)>)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -2,14 +2,15 @@
 ### beg of [ATS3_XANADU/xatslib/JS/TEST/Makefile_xatslib]
 ############################################################
 ############################################################
+XATSHOME=./../../../../../../
 XATS2JS1=\
-./../../../../../srcgen1/xats2js/srcgenx/bin/xats2js
+$(XATSHOME)/srcgen1/xats2js/srcgenx/bin/xats2js
 ############################################################
-all1_dats:: ; $(XATS2JS1) -d ./../Array00.dats
-all1_dats:: ; $(XATS2JS1) -d ./../Hsmap00.dats
+all1_dats:: ; $(XATS2JS1) -d ./../dynarr0.dats
+all1_dats:: ; $(XATS2JS1) -d ./../hashmp0.dats
 ############################################################
-all1_dats:: ; $(XATS2JS1) -d ./../VT/Array00_vt.dats
-all1_dats:: ; $(XATS2JS1) -d ./../VT/Hsmap00_vt.dats
+all1_dats:: ; $(XATS2JS1) -d ./../VT/dynarr0_vt.dats
+all1_dats:: ; $(XATS2JS1) -d ./../VT/hashmp0_vt.dats
 ############################################################
 ### end of [ATS3_XANADU/xatslib/JS/TEST/Makefile_xatslib]
 ############################################################
