@@ -85,6 +85,18 @@ print with g_print of 0101
 "srcgen1/prelude/DATS/unsafex.dats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#include
+"srcgen1/prelude/DATS/CATS/bool000.dats"
+#include
+"srcgen1/prelude/DATS/CATS/char000.dats"
+#include
+"srcgen1/prelude/DATS/CATS/gint000.dats"
+#include
+"srcgen1/prelude/DATS/CATS/strn000.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "srcgen1/prelude/DATS/VT/gseq000_vt.dats"
 (* ****** ****** *)

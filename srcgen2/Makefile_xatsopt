@@ -55,6 +55,10 @@ xbasics_sats
 xbasics_sats: ; $(XATSOPT) --static SATS/xbasics.sats
 ######
 all_sats:: \
+xlibext_sats
+xlibext_sats: ; $(XATSOPT) --static SATS/xlibext.sats
+######
+all_sats:: \
 xsynoug_sats
 xsynoug_sats: ; $(XATSOPT) --static SATS/xsynoug.sats
 ######
@@ -596,6 +600,10 @@ trans11_gmacro_dats: ; $(XATSOPT) --dynamic DATS/trans11_gmacro.dats
 all_dats:: \
 trans12_gmacro_dats
 trans12_gmacro_dats: ; $(XATSOPT) --dynamic DATS/trans12_gmacro.dats
+######
+all_dats:: \
+trans12_utils0_dats
+trans12_utils0_dats: ; $(XATSOPT) --dynamic DATS/trans12_utils0.dats
 ######
 all_dats:: \
 trans12_staexp_dats
