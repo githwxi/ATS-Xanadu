@@ -37,7 +37,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../../SATS/libcats.sats"
+#staload
+"./../../SATS/libcats.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

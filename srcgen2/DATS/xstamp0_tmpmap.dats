@@ -55,31 +55,21 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload "./../SATS/xlibext.sats"
 #staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 
 local
-
-(* ****** ****** *)
-//
-(*
-#staload
-"srcgen1\
-/prelude\
-/DATS/CATS/JS/basics3.dats"
-*)
 //
 (* ****** ****** *)
-
 #typedef key = sint
-
 (* ****** ****** *)
-
+//
 #absimpl
 tmpmap_tbox
-(itm:type) = jsobjmap(key, itm)
-
+(itm:type) = mydict(key, itm)
+//
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
@@ -87,7 +77,7 @@ in//local
 #implfun
 tmpmap_make_nil
   ( (*nil*) ) =
-XATS2JS_jsobjmap_make_nil<key>()
+mydict_make_nil<key>((*void*))
 
 (* ****** ****** *)
 //
@@ -95,10 +85,10 @@ XATS2JS_jsobjmap_make_nil<key>()
 tmpmap_strmize
   {itm:tbox}(map) =
 (
-gmap_strmize<gmap><key><itm>(map)
-) where
+gmap_strmize
+<gmap><key><itm>(map)) where
 {
-  #typedef gmap = jsobjmap(key, itm) }
+#typedef gmap = mydict(key, itm) }
 //
 (* ****** ****** *)
 //
@@ -111,9 +101,9 @@ val key = g0u2s(uint(key))
 //
 in//let
 //
-XATS2JS_jsobjmap_search$opt<key>{itm}(map,key)
+mydict_search$opt<key>{itm}(map, key)
 //
-end (*let*) // end of [tmpmap_search$opt(...)]
+end(*let*)//end-of-[tmpmap_search$opt(...)]
 //
 (* ****** ****** *)
 //
@@ -126,9 +116,9 @@ val key = g0u2s(uint(key))
 //
 in//let
 //
-XATS2JS_jsobjmap_insert$any<key>{itm}(map,key,itm)
+mydict_insert$any<key>{itm}(map,key,itm)
 //
-end (*let*) // end of [tmpmap_insert$any(...)]
+end(*let*)//end-of-[tmpmap_insert$any(...)]
 //
 (* ****** ****** *)
 

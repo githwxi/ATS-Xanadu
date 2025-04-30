@@ -817,6 +817,19 @@ fprintln!
 
 local
 //
+fun
+define_name
+(nam: string): void =
+{
+val def =
+g1mac_none()
+val sym =
+$SYM.symbol_make(nam)
+val ( ) =
+the_gmacenv_add(sym, def)
+}
+//(*end-of-[define_name]*)
+//
 static
 fun
 process_stdin
@@ -910,6 +923,11 @@ val () =
 val
 (pf0 | ()) =
 $FP0.the_filpathlst_push(fp0)
+//
+val () =
+define_name("_XATSOPT_")
+val () =
+define_name("_SRCGEN1_XATSOPT_")
 //
 val
 p0kg =

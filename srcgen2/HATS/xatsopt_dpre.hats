@@ -95,6 +95,9 @@ print with g_print of 0101
 #include
 "srcgen1/prelude/DATS/CATS/strn000.dats"
 //
+#include
+"srcgen1/prelude/DATS/CATS/arrn000.dats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #include
@@ -251,6 +254,14 @@ strtmp_vt_set$at<>(p0, i0, c0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+_(*local*) = "./../DATS/xlibext.dats"
+#staload
+_(*local*) = "./../DATS/xatsopt_tmplib.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2025-04-28:
 For compiling to Python3
@@ -325,11 +336,6 @@ defq
 #include
 "srcgen1/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
 #endif//end-of-[---------#ifdef(_XATS2JS_NODE_)---------]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload _(*mytmplib*) = "./../DATS/xatsopt_tmplib.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

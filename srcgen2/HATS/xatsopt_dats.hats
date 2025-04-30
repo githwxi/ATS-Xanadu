@@ -29,6 +29,8 @@ For ATS3/XATSOPT
 (* ****** ****** *)
 (* ****** ****** *)
 #staload _
+(*local*) = "./../DATS/xlibext.dats"
+#staload _
 (*local*) = "./../DATS/xatsopt_tmplib.dats"
 (* ****** ****** *)
 (* ****** ****** *)
