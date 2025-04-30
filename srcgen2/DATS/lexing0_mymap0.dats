@@ -44,16 +44,13 @@ ATS_PACKNAME
 //
 #include
 "./../HATS/xatsopt_sats.hats"
-(*
-#include
-"./../HATS/xatsopt_dats.hats"
-*)
 #include
 "./../HATS/xatsopt_dpre.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
+#staload "./../SATS/xlibext.sats"
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
@@ -64,53 +61,45 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 local
-
-(* ****** ****** *)
-//
-(*
-#staload
-"srcgen1\
-/prelude\
-/DATS/CATS/JS/basics3.dats"
-*)
 //
 (* ****** ****** *)
-
+//
 #typedef key = strn
 #typedef itm = tnode
-
+//
 (* ****** ****** *)
-
+//
 #absimpl
-mymap_tbox = jsobjmap(key, itm)
-
+mymap_tbox = mydict(key, itm)
+//
 (* ****** ****** *)
-
+//
 val
-mymaper: mymap =
-XATS2JS_jsobjmap_make_nil<key>{itm}()
-
-in//local
-
+_MYMAP_: mymap =
+mydict_make_nil<key>{itm}((*0*))
+//
+in(*local*)
+//
 #implfun
 lexing_tnode_search
   (   k0   ) =
 (
 case+ opt of
-| ~optn_vt_nil() => T_EOF
-| ~optn_vt_cons(tnd) => tnd
-) where
+| ~
+optn_vt_nil() => T_EOF
+| ~
+optn_vt_cons(tnd) => (tnd)) where
 {
 val opt =
-XATS2JS_jsobjmap_search$opt<key>{itm}(mymaper, k0)
+mydict_search$opt<key>{itm}(_MYMAP_, k0)
 }
-
+//
 #implfun
 lexing_tnode_insert
   ( k0, x0 ) =
-XATS2JS_jsobjmap_insert$any<key>{itm}(mymaper, k0, x0)
-
-end (*local*) // end of [local]
+mydict_insert$any<key>{itm}(_MYMAP_, k0, x0)
+//
+end(*loc*)//end-of-[local(lexing_tnode(search/insert))]
 
 (* ****** ****** *)
 

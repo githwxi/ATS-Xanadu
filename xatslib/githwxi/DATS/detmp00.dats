@@ -14,7 +14,7 @@ fun
 dtval_fprint__
 ( dtv
 : dtval, out: FILR): void
-#impltmp
+#implfun
 dtval_fprint__
   ( dtv, out ) =
 let

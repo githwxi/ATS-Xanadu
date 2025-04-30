@@ -6,76 +6,59 @@ Mon 09 Sep 2024 11:18:07 AM EDT
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsfx00.sats"
-(* ****** ****** *)
-(* ****** ****** *)
-#staload _ =
-"prelude/DATS/gdbg000.dats"
-(* ****** ****** *)
-(* ****** ****** *)
 //
 #include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
+"prelude/HATS/prelude_dats.hats"
 #include
-"xatslib\
-/libcats/HATS/libcats_dats.hats"
+"xatslib/libcats/HATS/libcats_dats.hats"
 #include
-"xatslib\
-/githwxi/HATS/githwxi_dats.hats"
+"xatslib/githwxi/HATS/githwxi_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
+"prelude/HATS/prelude_JS_dats.hats"
 #include
-"xatslib/HATS/xatslib_JS_dats.hats"
+"xatslib/xbasics/HATS/xbasics_JS_dats.hats"
 #include
-"xatslib\
-/libcats/HATS/libcats_JS_dats.hats"
+"xatslib/libcats/HATS/libcats_JS_dats.hats"
 #include
-"xatslib\
-/githwxi/HATS/githwxi_JS_dats.hats"
+"xatslib/githwxi/HATS/githwxi_JS_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
+"prelude/HATS/prelude_NODE_dats.hats"
 #include
-"xatslib\
-/libcats/HATS/libcats_NODE_dats.hats"
+"xatslib/libcats/HATS/libcats_NODE_dats.hats"
 #include
-"xatslib\
-/githwxi/HATS/githwxi_NODE_dats.hats"
+"xatslib/githwxi/HATS/githwxi_NODE_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"xatslib\
-/githwxi/HATS/githwxi_DETMP_dats.hats"
+"xatslib/githwxi/HATS/githwxi_DETMP_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 val opt0 =
 mycsv00$fpath_csv$parse$opt_lstrm
-  (      "./DATA/QQQ.csv"      )
+("./DATA/QQQ.csv")
 //
-val opts = opts
-where{
-  val-optn_vt_cons(opts) = opt0 }
+val opts =
+opts where
+{val-optn_vt_cons(opts) = opt0}
 //
-val (  ) = prints
-("type(opts) = ", type(opts), "\n")
+val (  ) =
+prints("\
+type(opts) = ", type(opts), "\n")
 //
 val opts = !opts
 val-
-strmcon_vt_cons(hdr0, opts) = (opts)
+strmcon_vt_cons(opt1, opts) = opts
 //
-val-
-optn_vt_cons(hdr0) = hdr0
-val (  ) = prints("hdr0 = ", hdr0, "\n")
+val (  ) =
+printsln("hdr0 = ", hdr0)
+where{val-optn_vt_cons(hdr0) = opt1}
 //
 (* ****** ****** *)
 //
@@ -104,14 +87,14 @@ fun
 f0_sint
 (rep: strn): dtval =
 (
-DTVsint(sint)
-) where{ val sint=g_parse<sint>(rep) }
+  DTVsint(sint)
+) where{val sint=g_parse<sint>(rep)}
 fun
 f0_dflt
 (rep: strn): dtval =
 (
   DTVdflt(dflt)
-) where{ val dflt=g_parse<dflt>(rep) }
+) where{val dflt=g_parse<dflt>(rep)}
 }
 //
 (* ****** ****** *)
@@ -139,10 +122,10 @@ optn_vt_cons(row) => work(myrow_make(row)))))
 //
 val rows = myrows_opts$make(opts)
 val (  ) =
-prints("|rows| = ", length(rows), "\n")
+printsln("|rows| = ", length(rows))
 //
-val (  ) = prints("rows[0] = ", rows[0], "\n")
-val (  ) = prints("rows[1] = ", rows[1], "\n")
+val (  ) = printsln("rows[0] = ", rows[0])
+val (  ) = printsln("rows[1] = ", rows[1])
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -9,7 +9,8 @@ Sat 07 Sep 2024 08:37:22 PM EDT
 (* ****** ****** *)
 #staload
 "xatslib\
-/DATS/CATS/JS/Hsmap00.dats"
+/xbasics\
+/DATS/CATS/JS/hashmp0.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../../myobj00.dats"
@@ -17,7 +18,7 @@ Sat 07 Sep 2024 08:37:22 PM EDT
 (* ****** ****** *)
 //
 #absimpl
-hmap_tbox(a:t0) = jshsmap(strn, a)
+hmap_tbox(a:t0) = jshmap(strn, a)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -25,7 +26,7 @@ hmap_tbox(a:t0) = jshsmap(strn, a)
 #impltmp
 < a: t0 >
 hmap_strmize
- (map) = jshsmap_strmize(map)
+ (map) = jshmap_strmize(map)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -33,7 +34,7 @@ hmap_strmize
 #impltmp
 < a: t0 >
 hmap_make_nil
- ((*void*)) = jshsmap_make_nil<>()
+ ((*void*)) = jshmap_make_nil<>()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -43,13 +44,13 @@ hmap_make_nil
 hmap_get$at
  (map, k0) =
 (
- jshsmap_get$at<>(map, k0))
+ jshmap_get$at<>(map, k0))
 #impltmp
 < a: t0 >
 hmap_set$at
  (map, k0, x0) =
 (
- jshsmap_set$at<>(map, k0, x0))
+ jshmap_set$at<>(map, k0, x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -59,7 +60,7 @@ hmap_set$at
 hmap_search$opt
  (map, k0) =
 (
- jshsmap_search$opt<>(map, k0))
+ jshmap_search$opt<>(map, k0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -69,14 +70,14 @@ hmap_search$opt
 hmap_insert$opt
  (map, k0, x0) =
 (
- jshsmap_insert$opt<>(map, k0, x0))
+ jshmap_insert$opt<>(map, k0, x0))
 //
 #impltmp
 < a: t0 >
 hmap_insert$new
  (map, k0, x0) =
 (
- jshsmap_insert$new<>(map, k0, x0))
+ jshmap_insert$new<>(map, k0, x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

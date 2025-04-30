@@ -77,23 +77,25 @@ $(CAT) $(PRELUDED)/DATS/CATS/JS/axsz000.cats >> $(PRELUDE_JS)
 ########################################################################
 ########################################################################
 xatslib:: ; \
-echo "//" `date` > $(XATSLIB_JS)
+$(PRINTF) "%s%s\n" \
+"// " "`date`" > $(XATSLIB_JS)
 xatslib:: ; \
 $(CAT) xats2js_xatslib_hd >> $(XATSLIB_JS)
 ########################################################################
 xatslib:: \
-Array00
-Array00: ; $(CAT) \
-$(XATSLIBD)/xbasics/DATS/CATS/JS/Array00.cats >> $(XATSLIB_JS)
+dynarr0
+dynarr0: ; $(CAT) \
+$(XATSLIBD)/xbasics/DATS/CATS/JS/dynarr0.cats >> $(XATSLIB_JS)
 ########################################################################
 xatslib:: \
-Hsmap00
-Hsmap00: ; $(CAT) \
-$(XATSLIBD)/xbasics/DATS/CATS/JS/Hsmap00.cats >> $(XATSLIB_JS)
+hashmp0
+hashmp0: ; $(CAT) \
+$(XATSLIBD)/xbasics/DATS/CATS/JS/hashmp0.cats >> $(XATSLIB_JS)
 ########################################################################
 ########################################################################
 prelude_node:: ; \
-echo "//" `date` > $(PRELUDE_NODE_JS)
+$(PRINTF) "%s%s\n" \
+"// " "`date`" > $(PRELUDE_NODE_JS)
 prelude_node:: ; \
 $(CAT) xats2js_prelude_node_hd >> $(PRELUDE_NODE_JS)
 prelude_node:: ; $(CAT) \

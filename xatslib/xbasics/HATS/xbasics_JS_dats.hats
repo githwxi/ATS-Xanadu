@@ -8,10 +8,10 @@ ATS3_XANADU/xatslib/JS/DATS
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-"./../DATS/CATS/JS/Array00.dats"
+"./../DATS/CATS/JS/dynarr0.dats"
 (* ****** ****** *)
 #staload
-"./../DATS/CATS/JS/Hsmap00.dats"
+"./../DATS/CATS/JS/hashmp0.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 (*
@@ -20,14 +20,14 @@ HX: for linearly typed interfaces
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-"./../DATS/CATS/JS/VT/Array00_vt.dats"
+"./../DATS/CATS/JS/VT/dynarr0_vt.dats"
 (* ****** ****** *)
 #staload
-"./../DATS/CATS/JS/VT/Hsmap00_vt.dats"
+"./../DATS/CATS/JS/VT/hashmp0_vt.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3_XANADU/xatslib/b0asics/HATS/xbasics_JS_dats.hats] *)
+(* end of [ATS3_XANADU/xatslib/xbasics/HATS/xbasics_JS_dats.hats] *)
