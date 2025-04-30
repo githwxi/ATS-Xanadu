@@ -15,29 +15,22 @@ Sat 03 Aug 2024 03:08:26 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
+"prelude/HATS/prelude_dats.hats"
 #include
-"xatslib\
-/githwxi/HATS/githwxi_dats.hats"
+"xatslib/githwxi/HATS/githwxi_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
+"prelude/HATS/prelude_JS_dats.hats"
 #include
-"xatslib/HATS/xatslib_JS_dats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
+"prelude/HATS/prelude_NODE_dats.hats"
 #include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
+"xatslib/xbasics/HATS/xbasics_JS_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 val f0 =
 lam(x:sint) => @(x, x=x)
 val () =

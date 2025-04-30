@@ -122,9 +122,10 @@ g_input$opt
 (* ****** ****** *)
 //
 (*
-(*
 HX-2025-04-26:
 Is this a good idea?
+BTW, naming convention:
+'parse' is like 'strn$make'
 *)
 fun
 <a:vt>
@@ -138,7 +139,6 @@ fun
 <a:vt>
 g_parse$opt
 (rep: strn): optn_vt(a)
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

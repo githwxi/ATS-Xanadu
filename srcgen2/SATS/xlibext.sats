@@ -42,7 +42,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #abstbox
 mydict_type
 (key:type,itm:type)
-#typedef mydict = mydict_type
+#sexpdef mydict = mydict_type
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -6,17 +6,17 @@ Sun 15 Sep 2024 05:54:50 PM EDT
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-#abstype
-NodeJS_ReadStream
-#abstype
-NodeJS_WriteStream
-#typedef
-NodeJS_ReadStream = FILR
-#typedef
-NodeJS_WriteStream = FILR
+//
+#staload
+"./../../../gbas000.dats"
+//
 (* ****** ****** *)
-(* ****** ****** *)
-#staload "./../../../gbas000.dats"
+//
+#abstype NodeJS_ReadStream
+#abstype NodeJS_WriteStream
+#typedef NodeJS_ReadStream = FILR
+#typedef NodeJS_WriteStream = FILR
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -1,4 +1,4 @@
-// Mon Apr 28 02:47:47 AM EDT 2025
+// Wed Apr 30 02:03:16 PM EDT 2025
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 /*
@@ -45,7 +45,7 @@ Authoremail: gmhwxiATgmailDOTcom
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_length
+XATS2JS_jsdasz_length
   ( A )
 {
   return A.length
@@ -54,13 +54,13 @@ XATS2JS_jsarray_length
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_get$at
+XATS2JS_jsdasz_get$at
   (A, i)
 {
   return A[i]
 }
 function
-XATS2JS_jsarray_set$at
+XATS2JS_jsdasz_set$at
   (A, i, x)
 {
   return (A[i] = x)
@@ -69,7 +69,7 @@ XATS2JS_jsarray_set$at
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_make_ncpy
+XATS2JS_jsdasz_make_ncpy
   (n, x) // HX: [x]: nonlin
 {
   let i
@@ -82,7 +82,7 @@ XATS2JS_jsarray_make_ncpy
 }
 //
 function
-XATS2JS_jsarray_make_nfun
+XATS2JS_jsdasz_make_nfun
   (n, f)
 {
   let i
@@ -97,19 +97,19 @@ XATS2JS_jsarray_make_nfun
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_make0_1val
+XATS2JS_jsdasz_make0_1val
   ( x1 )
 {
   return [x1]; // len = 1
 }
 function
-XATS2JS_jsarray_make0_2val
+XATS2JS_jsdasz_make0_2val
   ( x1, x2 )
 {
   return [x1, x2]; // len = 2
 }
 function
-XATS2JS_jsarray_make0_3val
+XATS2JS_jsdasz_make0_3val
   ( x1, x2, x3 )
 {
   return [x1, x2, x3]; // len = 3
@@ -121,7 +121,7 @@ XATS2JS_jsarray_make0_3val
 // Thu 25 Jul 2024 06:03:30 PM EDT
 //
 function
-XATS2JS_jsarray_fmake_fwork
+XATS2JS_jsdasz_fmake_fwork
   (fwork)
 {
   let A = []
@@ -131,7 +131,7 @@ XATS2JS_jsarray_fmake_fwork
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_forall_f1un
+XATS2JS_jsdasz_forall$f1un
   (A, test)
 {
   let i0
@@ -146,7 +146,7 @@ XATS2JS_jsarray_forall_f1un
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_rforall_f1un
+XATS2JS_jsdasz_rforall$f1un
   (A, test)
 {
   let i0
@@ -161,7 +161,7 @@ XATS2JS_jsarray_rforall_f1un
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_mapref_f1un
+XATS2JS_jsdasz_mapref$f1un
   (A, fopr)
 {
   let i0
@@ -176,7 +176,7 @@ XATS2JS_jsarray_mapref_f1un
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_sortref_f2un
+XATS2JS_jsdasz_sortref_f2un
   (A, cmpr)
 {
   A.sort(cmpr); return // HX: [A] is mutated!
@@ -185,7 +185,7 @@ XATS2JS_jsarray_sortref_f2un
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_iforall_f2un
+XATS2JS_jsdasz_iforall_f2un
   (A, test)
 {
   let i0
@@ -200,7 +200,7 @@ XATS2JS_jsarray_iforall_f2un
 // HX-2024-08-09:
 // This is likely to be less efficient!
 function
-XATS2JS_jsarray_iforall_f2un
+XATS2JS_jsdasz_iforall_f2un
   (A, test)
 {
   for (const ix of A.entries()) {
@@ -217,14 +217,14 @@ HX-2024-08-14:
 Wed 14 Aug 2024 03:37:41 PM EDT
 */
 function
-XATS2JS_jsarray_iter_make
+XATS2JS_jsdasz_iter_make
   ( A )
 {
   return A.entries() // HX: Array iterator
 }
 //
 function
-XATS2JS_jsarray_iter_next$work
+XATS2JS_jsdasz_iter_next$work
   (iter, work)
 {
   var next = iter.next()
@@ -237,7 +237,7 @@ XATS2JS_jsarray_iter_next$work
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 //
-// end of [ATS3/XANADU_xatslib_DATS_CATS_JS_Array00.cats]
+// end of [ATS3/XANADU_xatslib_xbasics_DATS_CATS_JS_dynarr0.cats]
 //
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
@@ -279,7 +279,7 @@ Authoremail: gmhwxiATgmailDOTcom
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jshsmap_size
+XATS2JS_jshmap_size
   (map)
 {
   return map.size // HX: field!
@@ -288,7 +288,7 @@ XATS2JS_jshsmap_size
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jshsmap_make_nil
+XATS2JS_jshmap_make_nil
   (   )
 {
   var map = new Map(); return map
@@ -297,7 +297,7 @@ XATS2JS_jshsmap_make_nil
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jshsmap_keyq
+XATS2JS_jshmap_keyq
   (map, key)
 {
   return map.has(key) // HX: bool
@@ -306,7 +306,7 @@ XATS2JS_jshsmap_keyq
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jshsmap_search$tst
+XATS2JS_jshmap_search$tst
   (map, key)
 {
   return map.has(key) // HX: bool
@@ -316,23 +316,23 @@ XATS2JS_jshsmap_search$tst
 //
 /*
 fun<>
-UN_jshsmap_get$at$raw
+UN_jshmap_get$at$raw
  {k:t0}{x:t0}
-(map: jshsmap(k,x), key: k): ( x )
+(map: jshmap(k,x), key: k): ( x )
 fun<>
-UN_jshsmap_set$at$raw
+UN_jshmap_set$at$raw
  {k:t0}{x:t0}
-(map: jshsmap(k,x), key: k, itm: x): void
+(map: jshmap(k,x), key: k, itm: x): void
 */
 //
 function
-XATS2JS_jshsmap_get$at$raw
+XATS2JS_jshmap_get$at$raw
   (map, key)
 {
   return map.get(key)
 }
 function
-XATS2JS_jshsmap_set$at$raw
+XATS2JS_jshmap_set$at$raw
   (map, key, itm)
 {
   map.set(key, itm); return // HX: void
@@ -341,7 +341,7 @@ XATS2JS_jshsmap_set$at$raw
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jshsmap_insert$raw
+XATS2JS_jshmap_insert$raw
   (map, key, itm)
 {
   map.set(key, itm); return // HX: void
@@ -350,7 +350,7 @@ XATS2JS_jshsmap_insert$raw
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jshsmap_forall_f2un
+XATS2JS_jshmap_forall$f2un
   (map, test)
 {
   for (const kx of map.entries()) {
@@ -366,14 +366,14 @@ HX-2024-08-14:
 Wed 14 Aug 2024 03:38:56 PM EDT
 */
 function
-XATS2JS_jshsmap_iter_make
+XATS2JS_jshmap_iter_make
   ( A )
 {
-  return A.entries() // HX: Hsmap iterator
+  return A.entries() // HX: Hmap iterator
 }
 //
 function
-XATS2JS_jshsmap_iter_next$work
+XATS2JS_jshmap_iter_next$work
   (iter, work)
 {
   var next = iter.next()
@@ -386,7 +386,7 @@ XATS2JS_jshsmap_iter_next$work
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 //
-// end of [ATS3/XANADU_xatslib_DATS_CATS_JS_Hsmap00.cats]
+// end of [ATS3/XANADU_xatslib_xbasics_DATS_CATS_JS_hashmap0.cats]
 //
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////

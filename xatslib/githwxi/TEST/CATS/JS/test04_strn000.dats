@@ -16,28 +16,21 @@ Fri 06 Sep 2024 10:18:54 PM EDT
 (* ****** ****** *)
 //
 #include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
-#include
-"xatslib\
-/githwxi/HATS/githwxi_dats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-#include
-"srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
-#include
-"xatslib/HATS/xatslib_JS_dats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
+"prelude/HATS/prelude_dats.hats"
 (*
 #include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
+"prelude/HATS/prelude_NODE_dats.hats"
 *)
+#include
+"xatslib/githwxi/HATS/githwxi_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"prelude/HATS/prelude_JS_dats.hats"
+#include
+"xatslib/xbasics/HATS/xbasics_JS_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
