@@ -30,50 +30,70 @@
 //
 (*
 Author: Hongwei Xi
-(*
-Tue Apr 29 09:47:28 PM EDT 2025
-*)
+Wed Apr 30 10:41:58 AM EDT 2025
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstbox
-mydict_type
-(key:type,itm:type)
-#typedef mydict = mydict_type
+#staload
+"./../../../../SATS/libcats.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
 fun
-<key:type>
-mydict_make_nil
-{itm:type}((*void*)): mydict(key, itm)
+XATS2JS_NODE_bool_fprint:
+(bool, FILR) -> void = $extnam()
+#impltmp
+bool_fprint<> = XATS2JS_NODE_bool_fprint
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
+#extern
 fun
-<key:type>
-mydict_search$opt
-{itm:tbox}
-( map
-: mydict(key, itm), key: key): optn_vt(itm)
+XATS2JS_NODE_char_fprint:
+(char, FILR) -> void = $extnam()
+#impltmp
+char_fprint<> = XATS2JS_NODE_char_fprint
 //
-(* ****** ****** *)
-//
+#extern
 fun
-<key:type>
-mydict_insert$any
-{itm:tbox}
-( map
-: mydict(key, itm), key: key, itm: itm): void
+XATS2JS_NODE_strn_fprint:
+(strn, FILR) -> void = $extnam()
+#impltmp
+strn_fprint<> = XATS2JS_NODE_strn_fprint
+//
+#extern
+fun
+XATS2JS_NODE_gint_fprint$sint:
+(sint, FILR) -> void = $extnam()
+#impltmp
+gint_fprint$sint<> = XATS2JS_NODE_gint_fprint$sint
+#extern
+fun
+XATS2JS_NODE_gint_fprint$uint:
+(uint, FILR) -> void = $extnam()
+#impltmp
+gint_fprint$uint<> = XATS2JS_NODE_gint_fprint$uint
+//
+#extern
+fun
+XATS2JS_NODE_gflt_fprint$sflt:
+(sflt, FILR) -> void = $extnam()
+#impltmp
+gflt_fprint$sflt<> = XATS2JS_NODE_gflt_fprint$sflt
+#extern
+fun
+XATS2JS_NODE_gflt_fprint$dflt:
+(dflt, FILR) -> void = $extnam()
+#impltmp
+gflt_fprint$dflt<> = XATS2JS_NODE_gflt_fprint$dflt
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_SATS_xlibext.sats] *)
-(***********************************************************************)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+
+(* end of [ATS3/XANADU_srcgen1_xatslib_libcats_DATS_CATS_JS_libcats.dats] *)

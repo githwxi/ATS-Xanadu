@@ -31,49 +31,69 @@
 (*
 Author: Hongwei Xi
 (*
-Tue Apr 29 09:47:28 PM EDT 2025
+Wed Apr 30 10:13:30 AM EDT 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#abstbox
-mydict_type
-(key:type,itm:type)
-#typedef mydict = mydict_type
-//
+#staload "./../SATS/xlibext.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
+#impltmp
 <key:type>
 mydict_make_nil
-{itm:type}((*void*)): mydict(key, itm)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
+{itm:tbox}((*void*)) =
+XATSOPT_mydict_make_nil((*void*))
+where{
+#extern
 fun
+XATSOPT_mydict_make_nil
+{key:type}
+{itm:tbox}
+((*void*)): mydict(key, itm) = $extnam()
+}(*where*)//end-of-[impltmp(mydict_make_nil)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 <key:type>
 mydict_search$opt
+{itm:tbox}(map, key) =
+XATSOPT_mydict_search$opt(map, key)
+where{
+#extern
+fun
+XATSOPT_mydict_search$opt
+{key:type}
 {itm:tbox}
 ( map
-: mydict(key, itm), key: key): optn_vt(itm)
+: mydict(key, itm), key: key): optn_vt(itm) = $extnam()
+}(*where*)//end-of-[impltmp(mydict_search$opt(map,key))]
 //
 (* ****** ****** *)
 //
-fun
+#impltmp
 <key:type>
 mydict_insert$any
+{itm:tbox}(map, key, itm) =
+XATSOPT_mydict_insert$any(may, key, itm)
+where{
+#extern
+fun
+XATSOPT_mydict_insert$any
+{key:type}
 {itm:tbox}
 ( map
 : mydict(key, itm), key: key, itm: itm): void
+}(*where*)//end-of-[impltmp(mydict_insert$any(map,key,itm))]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_SATS_xlibext.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_xlibext.dats] *)
 (***********************************************************************)
