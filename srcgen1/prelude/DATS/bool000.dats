@@ -34,6 +34,14 @@
 (* ****** ****** *)
 //
 #impltmp
+<(*tmp*)>
+bool_eq
+(b1, b2) =
+if b1 then b2 else not(b2)
+//
+(* ****** ****** *)
+//
+#impltmp
 bool_print<>(b0) =
 if
 (b0)

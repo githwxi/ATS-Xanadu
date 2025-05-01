@@ -83,7 +83,7 @@ mymap_tbox = mydict(key, itm)
 //
 val
 _MYMAP_: mymap =
-mydict_make_nil<key>{itm}((*0*))
+mydict_make_nil<key><itm>((*0*))
 //
 in(*local*)
 //
@@ -98,13 +98,13 @@ optn_vt_nil() => T_EOF
 optn_vt_cons(tnd) => (tnd)) where
 {
 val opt =
-mydict_search$opt<key>{itm}(_MYMAP_, k0)
+mydict_search$opt<key><itm>(_MYMAP_, k0)
 }
 //
 #implfun
 lexing_tnode_insert
   ( k0, x0 ) =
-mydict_insert$any<key>{itm}(_MYMAP_, k0, x0)
+mydict_insert$any<key><itm>(_MYMAP_, k0, x0)
 //
 end(*loc*)//end-of-[local(lexing_tnode(search/insert))]
 //

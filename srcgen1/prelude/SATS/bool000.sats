@@ -54,15 +54,23 @@ bool_neg
 (* ****** ****** *)
 //
 fun<>
+bool_eq
+{b1,b2:bool}
+(x1: bool(b1)
+,x2: bool(b2)): bool(b1=b2)
+//
+(* ****** ****** *)
+//
+fun<>
 bool_add
 {b1,b2:bool}
 (x1: bool(b1)
-,y2: bool(b2)): bool(b1+b2)
+,x2: bool(b2)): bool(b1+b2)
 fun<>
 bool_mul
 {b1,b2:bool}
 (x1: bool(b1)
-,y2: bool(b2)): bool(b1*b2)
+,x2: bool(b2)): bool(b1*b2)
 //
 (* ****** ****** *)
 fun<>
@@ -106,29 +114,33 @@ bool_ifval
 (* ****** ****** *)
 //
 #symload
-~ with bool_neg of 1000
+~ with bool_neg of 1001
 #symload
-neg with bool_neg of 1000
+neg with bool_neg of 1001
 #symload
-not with bool_neg of 1000
+not with bool_neg of 1001
 //
 (* ****** ****** *)
 //
-#symload + with bool_add of 1000
-#symload * with bool_mul of 1000
+#symload = with bool_eq of 1001
+//
+(* ****** ****** *)
+//
+#symload + with bool_add of 1002
+#symload * with bool_mul of 1002
 //
 (* ****** ****** *)
 
-#symload sint with bool2sint of 1000
+#symload sint with bool2sint of 1001
 
 (* ****** ****** *)
 //
 (*
-#symload print with bool_print of 1000
+#symload print with bool_print of 1001
 *)
 //
 (* ****** ****** *)
-#symload ifval with bool_ifval of 1000
+#symload ifval with bool_ifval of 1001
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_prelude_SATS_bool000.sats] *)
