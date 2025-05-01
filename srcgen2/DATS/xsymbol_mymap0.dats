@@ -46,11 +46,16 @@ ATS_PACKNAME
 #staload "./../SATS/xlibext.sats"
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+#staload
+_(*tmp*) =
+"srcgen1\
+/prelude/DATS/CATS/JS/basics3.dats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
-#abstbox
-mymap_tbox // ptr
-#typedef
-mymap = mymap_tbox
+#abstbox mymap_tbox // ptr
+#typedef mymap = mymap_tbox
 //
 (* ****** ****** *)
 //

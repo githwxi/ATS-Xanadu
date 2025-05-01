@@ -46,10 +46,6 @@ ATS_PACKNAME
 //
 #include
 "./../HATS/xatsopt_sats.hats"
-(*
-#include
-"./../HATS/xatsopt_dats.hats"
-*)
 #include
 "./../HATS/xatsopt_dpre.hats"
 //
@@ -61,6 +57,12 @@ ATS_PACKNAME
 #staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
+_(*tmp*) =
+"srcgen1\
+/prelude/DATS/CATS/JS/basics3.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 

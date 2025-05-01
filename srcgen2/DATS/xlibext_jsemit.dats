@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2022 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -31,101 +31,71 @@
 (*
 Author: Hongwei Xi
 (*
-Wed 04 Jan 2023 12:36:34 AM EST
+Wed Apr 30 10:05:18 PM EDT 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dpre.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
 #staload "./../SATS/xlibext.sats"
-#staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #staload
-_(*tmp*) =
 "srcgen1\
 /prelude/DATS/CATS/JS/basics3.dats"
-(* ****** ****** *)
-(* ****** ****** *)
-
-local
 //
 (* ****** ****** *)
-#typedef key = sint
 (* ****** ****** *)
 //
 #absimpl
-tmpmap_tbox
-(itm:type) = mydict(key, itm)
+mya1sz_tbox(x0:t0) = jsa1sz(x0)
+#absimpl
+mydict_tbox(k0:t0, x0:t0) = jshmap(k0, x0)
 //
 (* ****** ****** *)
-in//local
-(* ****** ****** *)
-
-#implfun
-tmpmap_make_nil
-  ( (*nil*) ) =
-mydict_make_nil<key>((*void*))
-
 (* ****** ****** *)
 //
-#implfun
-tmpmap_strmize
-  {itm:tbox}(map) =
-(
-gmap_strmize
-<gmap><key><itm>(map)) where
-{
-#typedef gmap = mydict(key, itm) }
+#impltmp
+< x0:t0 >
+mya1sz_strmize =
+XATS2JS_jsa1sz_strmize<x0>(*argless*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< k0:t0 >
+< x0:t0 >
+mydict_make_nil =
+XATS2JS_jshmap_make_nil<k0>{x0}(*argless*)
 //
 (* ****** ****** *)
 //
-#implfun
-tmpmap_search$opt
-  {itm:tbox}(map,key) =
-let
-//
-val key = g0u2s(uint(key))
-//
-in//let
-//
-mydict_search$opt<key><itm>(map, key)
-//
-end(*let*)//end-of-[tmpmap_search$opt(...)]
+#impltmp
+< k0:t0 >
+< x0:t0 >
+mydict_get_keys =
+XATS2JS_jshmap_get_keys<k0>{x0}(*argless*)
 //
 (* ****** ****** *)
 //
-#implfun
-tmpmap_insert$any
-{itm:tbox}(map,key,itm) =
-let
+#impltmp
+< k0:t0 >
+< x0:t0 >
+mydict_search$opt =
+XATS2JS_jshmap_search$opt<k0>{x0}(*argless*)
 //
-val key = g0u2s(uint(key))
-//
-in//let
-//
-mydict_insert$any<key><itm>(map,key,itm)
-//
-end(*let*)//end-of-[tmpmap_insert$any(...)]
+#impltmp
+< k0:t0 >
+< x0:t0 >
+mydict_insert$any =
+XATS2JS_jshmap_insert$any<k0>{x0}(*argless*)
 //
 (* ****** ****** *)
-
-endloc (*local*) // end of [  local(topmap)  ]
-
 (* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_srcgen2_DATS_xstamp0_tmpmap.dats] *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_xlibext_jsemit.dats] *)
+(***********************************************************************)

@@ -52,32 +52,34 @@ ATS_PACKNAME
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-
-local
-
+#staload
+_(*tmp*) =
+"srcgen1\
+/prelude/DATS/CATS/JS/basics3.dats"
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+local
+//
+(* ****** ****** *)
 datatype
 symbl =
 SYMBL of (strn, stamp)
 #absimpl symbl_tbox = symbl
-
 (* ****** ****** *)
-
 val mytmper = stamper_new()
-
 (* ****** ****** *)
-
+//
 in//local
-
+//
 (* ****** ****** *)
-
+//
 #implval
 the_symbl_nil =
 SYMBL("", the_stamp_nil)
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 symbl_get_name
   (  sym  ) =
@@ -91,9 +93,9 @@ let
 val+
 SYMBL(nam, tmp) = sym in tmp
 end(*let*)//end-of(symbl_get_stmp)
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 symbl_make_name
   (  nam  ) =
@@ -127,11 +129,11 @@ end(*let*)//end-of(optn_vt_nil)
 optn_vt_cons(sym) => sym//found!
 //
 end(*let*)//end-of(symbl_make_name)
-
+//
 (* ****** ****** *)
-
-end (*local*) // end of [local]
-
+//
+end(*loc*)//end-of-[local(symbl...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -180,7 +182,7 @@ if
 loop(cs, r0+1) else (g_free(cs); -1)
 )
 //
-} (*where*) // end of [symbl_wcard_kind(sym)]
+}(*where*)//end-of-[symbl_wcard_kind(sym)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -219,7 +221,7 @@ XATSOPT_strn_append_uint
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 local
 //
 (* ****** ****** *)
@@ -245,7 +247,7 @@ let
 val map = the_xsymbls
 in//let
 mydict_search$opt<key><itm>(map, key)
-end (*let*) // end of [the_xsymbls_search(key)]
+end(*let*)//end-of-[the_xsymbls_search(key)]
 //
 (* ****** ****** *)
 //
@@ -265,13 +267,15 @@ val map = the_xsymbls
 //
 in//let
 mydict_insert$any<key><itm>(map, k0, x0)
-end (*let*)//end of [the_xsymbls_insert(sym)]
+end(*let*)//end-of-[the_xsymbls_insert(sym)]
 //
 (* ****** ****** *)
 //
-end (*local*) // end of [local(the_xsymbls_...)]
-
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+end (*loc*) // end of [local(the_xsymbls_...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xsymbol.dats] *)
+(***********************************************************************)

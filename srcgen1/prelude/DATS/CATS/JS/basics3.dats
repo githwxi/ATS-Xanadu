@@ -193,7 +193,7 @@ XATS2JS_jsa1sz_strmize
     end // let // end of [else]
   ) (* $llazy *) // end of [auxmain(...)]
 //
-} (* end of [XATS2JS_jsa1sz_strmize<x0>] *)
+} (* end of [XATS2JS_jsa1sz_strmize<x0>(xs)] *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -209,47 +209,44 @@ XATS2JS_jsa1sz_strmize
 #extern
 fun
 <k0:t0>
-XATS2JS_jshmap_keys
+XATS2JS_jshmap_get_keys
 {x0:vt}
 ( map
-: jshmap
-  (k0, x0)): jsa1sz(k0)
+: jshmap(k0, x0)): jsa1sz(k0)
 //
 (* ****** ****** *)
 //
 #impltmp
-XATS2JS_jshmap_keys
+XATS2JS_jshmap_get_keys
 <int0>(map) =
-XATS2JS_jshmap_keys(map)
+XATS2JS_jshmap_get_keys(map)
 where{
 //
 #typedef k0 = int0
 //
 #extern
 fun
-XATS2JS_jshmap_keys
+XATS2JS_jshmap_get_keys
 {x0:vt}
 ( map
-: jshmap
-  (k0, x0)): jsa1sz(k0) = $extnam()
-}(*where*)//end(XATS2JS_jshmap_keys<int0>]
+: jshmap(k0, x0)): jsa1sz(k0) = $extnam()
+}(*where*)//end(XATS2JS_jshmap_get_keys<int0>(map)]
 //
 #impltmp
-XATS2JS_jshmap_keys
+XATS2JS_jshmap_get_keys
 <strn>(map) =
-XATS2JS_jshmap_keys(map)
+XATS2JS_jshmap_get_keys(map)
 where{
 //
 #typedef k0 = strn
 //
 #extern
 fun
-XATS2JS_jshmap_keys
+XATS2JS_jshmap_get_keys
 {x0:vt}
 ( map
-: jshmap
-  (k0, x0)): jsa1sz(k0) = $extnam()
-}(*where*)//end(XATS2JS_jshmap_keys<strn>]
+: jshmap(k0, x0)): jsa1sz(k0) = $extnam()
+}(*where*)//end(XATS2JS_jshmap_get_keys<strn>(map)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -280,7 +277,7 @@ XATS2JS_jshmap_keyq
 ( map
 : jshmap
   (k0, x0), key: k0): bool = $extnam()
-}(*where*)//end-of(XATS2JS_jshmap_keyq<int0>]
+}(*where*)//end-of(XATS2JS_jshmap_keyq<int0>(...)]
 //
 #impltmp
 XATS2JS_jshmap_keyq
@@ -297,7 +294,7 @@ XATS2JS_jshmap_keyq
 ( map
 : jshmap
   (k0, x0), key: k0): bool = $extnam()
-}(*where*)//end-of(XATS2JS_jshmap_keyq<strn>]
+}(*where*)//end-of(XATS2JS_jshmap_keyq<strn>(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -323,9 +320,8 @@ where
 #extern
 fun
 XATS2JS_jshmap_make_nil
-{x0:t0}((*0*)): jshmap(k0, x0)
-= $extnam() // end-of-[fun]
-}
+{x0:t0}((*nil*)): jshmap(k0, x0) = $extnam()
+}(*where*)//end(XATS2JS_jshmap_make_nil<int0>)
 //
 #impltmp
 XATS2JS_jshmap_make_nil
@@ -338,10 +334,9 @@ where{
 #extern
 fun
 XATS2JS_jshmap_make_nil
-{x0:t0}
-((*0*)): jshmap(k0, x0)= $extnam()
+{x0:t0}((*nil*)): jshmap(k0, x0) = $extnam()
 //
-}(*where*)//[XATS2JS_jshmap_make_nil]
+}(*where*)//end(XATS2JS_jshmap_make_nil<strn>)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -351,8 +346,7 @@ fun
 <k0:t0>
 XATS2JS_jshmap_search$opt
 {x0:t0}
-( map
-: jshmap(k0, x0), key: k0): optn_vt(x0)
+(map: jshmap(k0, x0), key: k0): optn_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -371,7 +365,7 @@ XATS2JS_jshmap_search$opt
 ( map
 : jshmap
   (k0, x0), key: k0): optn_vt(x0) = $extnam()
-}(*where*)//end-[XATS2JS_jshmap_search$opt<int0>]
+}(*where*)//end(XATS2JS_jshmap_search$opt<int0>)
 //
 #impltmp
 XATS2JS_jshmap_search$opt
@@ -388,7 +382,7 @@ XATS2JS_jshmap_search$opt
 ( map
 : jshmap
   (k0, x0), key: k0): optn_vt(x0) = $extnam()
-}(*where*)//end-[XATS2JS_jshmap_search$opt<strn>]
+}(*where*)//end(XATS2JS_jshmap_search$opt<strn>)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -531,10 +525,8 @@ where {
 fun
 XATS2JS_jshmap_insert$any
 {x0:t0}
-( map
-: jshmap
-  (k0, x0), key: k0, itm: x0): void = $extnam()
-}(*where*)//end-of-[XATS2JS_jshmap_insert$any<int0>]
+(map:jshmap(k0, x0), key:k0, itm:x0): void = $extnam()
+}(*where*)//end-of-[XATS2JS_jshmap_insert$any<int0>(...)]
 //
 #impltmp
 XATS2JS_jshmap_insert$any
@@ -548,10 +540,8 @@ where {
 fun
 XATS2JS_jshmap_insert$any
 {x0:t0}
-( map
-: jshmap
-  (k0, x0), key: k0, itm: x0): void = $extnam()
-}(*where*)//end-of-[XATS2JS_jshmap_insert$any<strn>]
+(map:jshmap(k0, x0), key:k0, itm:x0): void = $extnam()
+}(*where*)//end-of-[XATS2JS_jshmap_insert$any<strn>(...)]
 //
 (* ****** ****** *)
 //
@@ -568,9 +558,7 @@ where
 fun
 XATS2JS_jshmap_insert$opt
 {x0:t0}
-( map
-: jshmap
-  (k0, x0), key: k0, itm: x0): optn_vt(x0) = $extnam()
+(map:jshmap(k0, x0), key:k0, itm:x0): optn_vt(x0) = $extnam()
 }
 //
 #impltmp
@@ -586,9 +574,7 @@ where
 fun
 XATS2JS_jshmap_insert$opt
 {x0:t0}
-( map
-: jshmap
-  (k0, x0), key: k0, itm: x0): optn_vt(x0) = $extnam()
+(map:jshmap(k0, x0), key:k0, itm:x0): optn_vt(x0) = $extnam()
 }
 //
 (* ****** ****** *)
@@ -615,14 +601,14 @@ gmap_strmize_key
 <jshmap(k0,x0)><k0><x0>(kxs)
 ) where
 {
-#impltmp map$fopr0<k0><(k0,x0)>(k0) =
+#impltmp
+map$fopr0<k0><(k0,x0)>(k0) =
 let
 val-
 ~optn_vt_cons(x0) =
 XATS2JS_jshmap_search$opt(kxs, k0) in (k0, x0)
 end//let
-} (*where*)
-// end(gmap_strmize<jshmap(k0,x0)><k0><x0>(kxs))
+}(*end(gmap_strmize<jshmap(k0,x0)><k0><x0>(kxs))*)
 //
 #impltmp
 {k0:t0}
@@ -630,13 +616,12 @@ end//let
 gmap_strmize_key
 <jshmap(k0,x0)><k0><x0>(kxs) =
 (
-XATS2JS_jsa1sz_strmize(XATS2JS_jshmap_keys(kxs)))
+XATS2JS_jsa1sz_strmize(XATS2JS_jshmap_get_keys(kxs)))
 //end-of(gmap_strmize_key<jshmap(k0,x0)><k0><x0>(kxs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics3.dats] *)
+(***********************************************************************)
