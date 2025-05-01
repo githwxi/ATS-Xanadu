@@ -3,7 +3,9 @@
       "papaparse": "^5.4.1"
     }
     ,
-    "githwxi-comment1": "This is needed for test06-mycsv00"
+    "URL": "$(XATSHOME)/xatslib/githwxi/TEST/CATS/JS"
+    ,
+    "githwxi-comment1": "This is needed for test06_mycsv00"
     ,
     "githwxi-comment2": "This is needed for test08_volctrl"
 }
