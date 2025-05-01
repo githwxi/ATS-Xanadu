@@ -165,6 +165,18 @@ For compiling to Python3
 defq(_XATS2PY_)
 #then
 //
+(*
+#include
+"srcgen1/prelude/DATS/CATS/PY/basics0.dats"
+*)
+//
+#include
+"srcgen1/prelude/DATS/CATS/PY/basics1.dats"
+#include
+"srcgen1/prelude/DATS/CATS/PY/basics2.dats"
+#include
+"srcgen1/prelude/DATS/CATS/PY/basics3.dats"
+//
 #staload
 _(*local*) = "./../DATS/xlibext_pyemit.dats"
 //

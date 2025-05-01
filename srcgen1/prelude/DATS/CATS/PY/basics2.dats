@@ -1,6 +1,6 @@
 (* ****** ****** *)
 (*
-Basics2 for XATS2JS
+Basics2 for XATS2PY
 *)
 (* ****** ****** *)
 #staload
@@ -48,11 +48,11 @@ a0ptr_free<a>(A0) = ()
 #impltmp
 { a:t0 }
 a0ref_get<a> =
-XATS2JS_a0ref_get where
+XATS2PY_a0ref_get where
 {
 #extern
 fun
-XATS2JS_a0ref_get
+XATS2PY_a0ref_get
 {a:t0}
 ( A0
 : a0ref(a)): ( a ) = $extnam()
@@ -63,11 +63,11 @@ XATS2JS_a0ref_get
 #impltmp
 { a:t0 }
 a0ref_set<a> =
-XATS2JS_a0ref_set where
+XATS2PY_a0ref_set where
 {
 #extern
 fun
-XATS2JS_a0ref_set
+XATS2PY_a0ref_set
 {a:t0}
 ( A0
 : a0ref(a)
@@ -79,11 +79,11 @@ XATS2JS_a0ref_set
 #impltmp
 { a:vt }
 a0ref_dtget<a> =
-XATS2JS_a0ref_dtget where
+XATS2PY_a0ref_dtget where
 {
 #extern
 fun
-XATS2JS_a0ref_dtget
+XATS2PY_a0ref_dtget
 {a:vt}
 ( A0
 : a0ref(a)): (?!a) = $extnam()
@@ -92,11 +92,11 @@ XATS2JS_a0ref_dtget
 #impltmp
 { a:vt }
 a0ref_dtset<a> =
-XATS2JS_a0ref_dtset where
+XATS2PY_a0ref_dtset where
 {
 #extern
 fun
-XATS2JS_a0ref_dtset
+XATS2PY_a0ref_dtset
 {a:vt}
 ( A0
 : a0ref(a), x0: ?!a): void = $extnam()
@@ -106,27 +106,27 @@ XATS2JS_a0ref_dtset
 //
 #extern
 fun
-XATS2JS_a0ptr_alloc
+XATS2PY_a0ptr_alloc
 {a:vt}
 (
 // argless
 ) : a0ptr(?a) = $extnam()
 #impltmp
 {a:vt}
-a0ptr_alloc<a> = XATS2JS_a0ptr_alloc
+a0ptr_alloc<a> = XATS2PY_a0ptr_alloc
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_a0ptr_make0_1val
+XATS2PY_a0ptr_make0_1val
 {a:vt}
 (
 x0: a
 ) : a0ptr(a) = $extnam()
 #impltmp
 { a:vt }
-a0ptr_make0_1val<a> = XATS2JS_a0ptr_make0_1val
+a0ptr_make0_1val<a> = XATS2PY_a0ptr_make0_1val
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -149,7 +149,7 @@ a1ptr_clear1<a>(A0, n0) = () // GC
 (* ****** ****** *)
 #extern
 fun
-XATS2JS_a1ptr_alloc
+XATS2PY_a1ptr_alloc
 {a:vt}
 {n:nat}
 ( asz
@@ -157,12 +157,12 @@ XATS2JS_a1ptr_alloc
 : a1ptr(?a, n) = $extnam((*self*))
 #impltmp
 { a:vt }
-a1ptr_alloc<a> = XATS2JS_a1ptr_alloc
+a1ptr_alloc<a> = XATS2PY_a1ptr_alloc
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_a1ref_get$at
+XATS2PY_a1ref_get$at
 {a:t0}
 {n:i0}
 ( A0:
@@ -170,11 +170,11 @@ XATS2JS_a1ref_get$at
 , i0: nintlt(n)): a = $extnam()
 #impltmp
 { a:t0 }
-a1ref_get$at<a> = XATS2JS_a1ref_get$at
+a1ref_get$at<a> = XATS2PY_a1ref_get$at
 //
 #extern
 fun
-XATS2JS_a1ptr_get$at1
+XATS2PY_a1ptr_get$at1
 {a:t0}
 {n:i0}
 ( A0:
@@ -182,13 +182,13 @@ XATS2JS_a1ptr_get$at1
 , i0: nintlt(n)): a = $extnam()
 #impltmp
 { a:t0 }
-a1ptr_get$at1<a> = XATS2JS_a1ptr_get$at1
+a1ptr_get$at1<a> = XATS2PY_a1ptr_get$at1
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_a1ref_set$at
+XATS2PY_a1ref_set$at
 {a:t0}
 {n:i0}
 ( A0:
@@ -197,11 +197,11 @@ XATS2JS_a1ref_set$at
 , x0: a(*new*)): void = $extnam()
 #impltmp
 { a:t0 }
-a1ref_set$at<a> = XATS2JS_a1ref_set$at
+a1ref_set$at<a> = XATS2PY_a1ref_set$at
 //
 #extern
 fun
-XATS2JS_a1ptr_set$at1
+XATS2PY_a1ptr_set$at1
 {a:t0}
 {n:i0}
 ( A0:
@@ -210,14 +210,14 @@ XATS2JS_a1ptr_set$at1
 , x0: a(*new*)): void = $extnam()
 #impltmp
 { a:t0 }
-a1ptr_set$at1<a> = XATS2JS_a1ptr_set$at1
+a1ptr_set$at1<a> = XATS2PY_a1ptr_set$at1
 //
 (* ****** ****** *)
 //
 (*
 #extern
 fun
-XATS2JS_a1ptr_set$at$raw
+XATS2PY_a1ptr_set$at$raw
 {a:vt}
 {n:i0}
 ( A0:
@@ -226,7 +226,7 @@ XATS2JS_a1ptr_set$at$raw
 , x0: a(*ini*)): void = $extnam()
 #impltmp
 { a:vt }
-a1ptr_set$at$raw<a> = XATS2JS_a1ptr_set$at$raw
+a1ptr_set$at$raw<a> = XATS2PY_a1ptr_set$at$raw
 *)
 //
 (* ****** ****** *)
@@ -234,11 +234,11 @@ a1ptr_set$at$raw<a> = XATS2JS_a1ptr_set$at$raw
 #impltmp
 { a:vt }
 a1ref_dtget$at<a> =
-XATS2JS_a1ref_dtget$at where
+XATS2PY_a1ref_dtget$at where
 {
 #extern
 fun
-XATS2JS_a1ref_dtget$at
+XATS2PY_a1ref_dtget$at
 {a:vt}
 {n:i0}
 (A0: a1ref(a, n), i0: nintlt(n)): ~a = $extnam()
@@ -247,11 +247,11 @@ XATS2JS_a1ref_dtget$at
 #impltmp
 { a:vt }
 a1ptr_dtget$at1<a> =
-XATS2JS_a1ptr_dtget$at1 where
+XATS2PY_a1ptr_dtget$at1 where
 {
 #extern
 fun
-XATS2JS_a1ptr_dtget$at1
+XATS2PY_a1ptr_dtget$at1
 {a:vt}
 {n:i0}
 (A0: a1ptr(a, n), i0: nintlt(n)): ~a = $extnam()
@@ -261,5 +261,5 @@ XATS2JS_a1ptr_dtget$at1
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics2.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_PY_basics2.dats] *)
 (***********************************************************************)

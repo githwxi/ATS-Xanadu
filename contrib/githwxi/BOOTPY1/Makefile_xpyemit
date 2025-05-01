@@ -257,6 +257,7 @@ $(NODE) --stack-size=8192 $(XATS2PY_PYEMIT00) $< > $@
 ########################################################################
 XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_dats.js
 XATS2PY_PYEMIT00=$(XATS2PY)/srcgen1/UTIL/xats2py_pyemit00_dats.js
+XATS2PY_PYEMIT00=$(XATS2PY)/srcgen1/UTIL/xats2py_pyemit00_dats_out.js
 ########################################################################
 ########################################################################
 N001="X"

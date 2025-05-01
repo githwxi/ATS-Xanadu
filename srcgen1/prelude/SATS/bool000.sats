@@ -56,11 +56,21 @@ bool_neg
 fun<>
 bool_eq
 {b1,b2:bool}
-(x1: bool(b1)
-,x2: bool(b2)): bool(b1=b2)
+(x1:bool(b1)
+,x2:bool(b2)): bool(b1=b2)
+//
+fun<>
+bool_neq
+{b1,b2:bool}
+(x1:bool(b1)
+,x2:bool(b2)): bool(b1!=b2)
 //
 (* ****** ****** *)
 //
+(*
+HX-2025-05-01:
+no short-cut for these two
+*)
 fun<>
 bool_add
 {b1,b2:bool}
@@ -75,15 +85,15 @@ bool_mul
 (* ****** ****** *)
 fun<>
 bool2sint
-{b:bool}
-(x0: bool(b)): sint(b2i(b))
+{b0:bool}
+(x0: bool(b0)): sint(b2i(b0))
 (* ****** ****** *)
 //
 fun<>
-bool_print(btf: bool): void
+bool_print(btf: bool): (void)
 //
 fun<>
-bool_parse(rep: strn): bool
+bool_parse(rep: strn): (bool)
 //
 (* ****** ****** *)
 //
@@ -130,9 +140,13 @@ not with bool_neg of 1001
 #symload * with bool_mul of 1002
 //
 (* ****** ****** *)
-
+//
+#symload != with bool_neq of 1001
+//
+(* ****** ****** *)
+//
 #symload sint with bool2sint of 1001
-
+//
 (* ****** ****** *)
 //
 (*
