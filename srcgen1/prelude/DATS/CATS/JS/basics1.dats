@@ -1,6 +1,6 @@
 (* ****** ****** *)
 (*
-Basics1 for Xats2js
+Basics1 for XATS2JS
 // char, bool,
 // ints, floats, string
 *)
@@ -949,7 +949,8 @@ where
 fun
 XATS2JS_strn_get$at
 ( cs
-: strn,i0: sint): char = $extnam()
+: strn
+, i0: sint): char = $extnam()
 }
 //
 (* ****** ****** *)

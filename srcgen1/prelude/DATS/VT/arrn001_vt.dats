@@ -36,7 +36,7 @@ in(*local*)
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
+< a: vt >
 a1psz_make0_ptrsize
   (A0, n0) =
 (
@@ -45,7 +45,7 @@ $UN.castlin01(A1PSZ(A0, n0)))
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
+< a: vt >
 a1psz_length1(AZ) =
 let
 val AZ =

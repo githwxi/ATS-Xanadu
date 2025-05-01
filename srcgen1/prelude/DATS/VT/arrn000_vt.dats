@@ -23,7 +23,7 @@ HX: for pure C-arrays
 //
 (* ****** ****** *)
 #impltmp
-<a:vt>
+< a: vt >
 a0ptr_frset1(A0, x0) =
 g_free<a>
 (a0ptr_exch1<a>(A0, x0))
@@ -38,7 +38,7 @@ that does not work in general
 *)
 //
 #impltmp
-<a:vt>
+< a: vt >
 a0ptr_make_1val(x0) =
 let
 val A0 =
@@ -66,7 +66,7 @@ end(*let*)//end-of(a0ptr_make)
 *)
 (* ****** ****** *)
 #impltmp
-<a:t0>
+< a: t0 >
 a1ptr_get$at1(A0, i0) =
 a1ptr_dtget$at1<a>(A0, i0)
 (* ****** ****** *)
@@ -117,7 +117,7 @@ $UN.castlin10{a1ptr(a,n)}(A0))
 (* ****** ****** *)
 //
 #impltmp
-<a:t0>
+< a: t0 >
 a1ptr_make_list
   {n}(xs) =
 let
@@ -126,7 +126,7 @@ length(xs) in
 a1ptr_make_listn(xs, n0) end
 //
 #impltmp
-<a:t0>
+< a: t0 >
 a1ptr_make0_llist
   {n}(xs) =
 let
@@ -137,7 +137,7 @@ a1ptr_make0_llistn(xs, n0) end
 (* ****** ****** *)
 //
 #impltmp
-<a:t0>
+< a: t0 >
 a1ptr_make_listn
   {n}(xs, n0) =
 let
@@ -166,7 +166,7 @@ end // end of [a1ptr_make_listn]
 (* ****** ****** *)
 //
 #impltmp
-<a:vt>
+< a: vt >
 a1ptr_make0_llistn
   {n}(xs, n0) =
 let
@@ -203,8 +203,8 @@ For implementing g-ops
 //
 (*
 #impltmp
-{a:vt}
-{n:i0}
+{ a: vt }
+{ n: i0 }
 g_free
 <a1ptr(a,n)>(A0) =
 (

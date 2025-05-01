@@ -45,6 +45,23 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #extern
 fun
+XATS000_g_stdout
+  ((*void*)): FILR = $extnam()
+#extern
+fun
+XATS000_g_stderr
+  ((*void*)): FILR = $extnam()
+//
+#impltmp
+g_stdout< > = XATS000_g_stdout
+#impltmp
+g_stderr< > = XATS000_g_stderr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
 XATS000_bool_fprint:
 (bool, FILR) -> void = $extnam()
 #impltmp
