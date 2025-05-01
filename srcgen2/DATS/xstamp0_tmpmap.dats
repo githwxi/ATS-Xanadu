@@ -97,7 +97,7 @@ val key = g0u2s(uint(key))
 //
 in//let
 //
-mydict_search$opt<key>{itm}(map, key)
+mydict_search$opt<key><itm>(map, key)
 //
 end(*let*)//end-of-[tmpmap_search$opt(...)]
 //
@@ -112,7 +112,7 @@ val key = g0u2s(uint(key))
 //
 in//let
 //
-mydict_insert$any<key>{itm}(map,key,itm)
+mydict_insert$any<key><itm>(map,key,itm)
 //
 end(*let*)//end-of-[tmpmap_insert$any(...)]
 //
