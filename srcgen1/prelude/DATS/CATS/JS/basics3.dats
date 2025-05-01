@@ -7,6 +7,11 @@ are in [./basics1.dats]
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+#staload
+"./../../..\
+/SATS/gint000.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #abstbox
 jsobj_tbox(*void*)
