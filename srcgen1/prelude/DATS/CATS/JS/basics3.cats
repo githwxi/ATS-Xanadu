@@ -62,20 +62,20 @@ XATS2JS_jsa1sz_set$at
 //////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_jshmap_keys
-   (map)
-{
-  return Object.keys(map);
-} // [XATS2JS_jshmap_keys(map)]
-//
-/* ****** ****** */
-//
-function
 XATS2JS_jshmap_keyq
    (map, key)
 {
   return map.hasOwnProperty(key);
 } // [XATS2JS_jshmap_keyq(map,key)]
+//
+/* ****** ****** */
+//
+function
+XATS2JS_jshmap_get_keys
+   (map)
+{
+  return Object.keys(map);
+} // [XATS2JS_jshmap_get_keys(map)]
 //
 /* ****** ****** */
 //
