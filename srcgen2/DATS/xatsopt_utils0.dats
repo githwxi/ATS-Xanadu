@@ -45,10 +45,6 @@ ATS_PACKNAME
 //
 #include
 "./../HATS/xatsopt_sats.hats"
-(*
-#include
-"./../HATS/xatsopt_dats.hats"
-*)
 #include
 "./../HATS/xatsopt_dpre.hats"
 //
@@ -118,7 +114,7 @@ else
 if
 (
 (arg0[0]!='-')
-* // HX: conj
+\bool_mul
 (arg0[1]!='-'))
 then
 optn_vt_nil((*0*))

@@ -37,7 +37,31 @@
 <(*tmp*)>
 bool_eq
 (b1, b2) =
-if b1 then b2 else not(b2)
+(
+if b1 then b2 else ~b2)
+//
+#impltmp
+<(*tmp*)>
+bool_neq
+(b1, b2) =
+(
+if b1 then ~b2 else b2)
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_add
+(b1, b2) =
+(
+if b1 then true else b2)
+//
+#impltmp
+<(*tmp*)>
+bool_mul
+(b1, b2) =
+(
+if b1 then b2 else false)
 //
 (* ****** ****** *)
 //
