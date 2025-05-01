@@ -243,7 +243,7 @@ XATSOPT_mydict_search$opt
 {k0:t0}{x0:t0}
 (map: map, key: k0): optn_vt(x0) = $extnam()
 //
-}(*where*)//end-of-[impltmp(mydict_search$opt(map,key))]
+}(*where*)//end-of-[impltmp(mydict_search$opt(...))]
 //
 (* ****** ****** *)
 //
@@ -264,7 +264,7 @@ XATSOPT_mydict_insert$any
 {k0:t0}{x0:t0}
 (map: map, key: k0, itm: x0): void = $extnam()
 //
-}(*where*)//end-of-[impltmp(mydict_insert$any(map,key,itm))]
+}(*where*)//end-of-[impltmp(mydict_insert$any(...))]
 //
 (* ****** ****** *)
 (* ****** ****** *)
