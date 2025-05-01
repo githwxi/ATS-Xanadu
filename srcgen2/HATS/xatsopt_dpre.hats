@@ -271,7 +271,11 @@ For compiling to Python3
 #if
 defq(_XATS2PY_)
 #then
-#endif // #ifdef(_XATS2PY_)
+//
+#staload
+_(*local*) = "./../DATS/xlibext_pyemit.dats"
+//
+#endif // end-of-[------ifdef(_XATS2PY_)------]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -307,6 +311,9 @@ defq(_XATS2JS_)
 #include
 "srcgen1/prelude/DATS/CATS/JS/unsafex.dats"
 *)
+//
+#staload
+_(*local*) = "./../DATS/xlibext_jsemit.dats"
 //
 #endif // end-of-[------ifdef(_XATS2JS_)------]
 //

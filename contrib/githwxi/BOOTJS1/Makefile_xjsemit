@@ -75,6 +75,7 @@ SRCDATS := \
 xbasics.dats \
 xbasics_print0.dats \
 xlibext.dats \
+xlibext_jsemit.dats \
 xsynoug.dats \
 xerrory.dats \
 xstamp0.dats \
