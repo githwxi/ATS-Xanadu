@@ -243,6 +243,16 @@ all_dats:: \
 xlibext_dats
 xlibext_dats: ; $(XATSOPT) --dynamic DATS/xlibext.dats
 ######
+all_dats:: \
+xlibext_tmplib_dats
+xlibext_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xlibext_tmplib.dats
+all_dats:: \
+xlibext_jsemit_dats
+xlibext_jsemit_dats: ; $(XATSOPT) --dynamic DATS/xlibext_jsemit.dats
+all_dats:: \
+xlibext_pyemit_dats
+xlibext_pyemit_dats: ; $(XATSOPT) --dynamic DATS/xlibext_pyemit.dats
+######
 
 ######
 all_dats:: \

@@ -50,13 +50,6 @@ XATS2JS_a0ref_get
 {
     return A0[0]; }
 //
-/* ****** ****** */
-//
-function
-XATSOPT_a0ref_set
-  (A0, x0)
-{
-    return (A0[0] = x0); }
 function
 XATS2JS_a0ref_set
   (A0, x0)
