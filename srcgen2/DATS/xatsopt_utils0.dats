@@ -48,6 +48,8 @@ ATS_PACKNAME
 #include
 "./../HATS/xatsopt_dpre.hats"
 //
+#symload * with bool_mul of 1002
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -114,7 +116,7 @@ else
 if
 (
 (arg0[0]!='-')
-\bool_mul
+* // \bool_mul
 (arg0[1]!='-'))
 then
 optn_vt_nil((*0*))

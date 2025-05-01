@@ -207,8 +207,12 @@ implement
 fprint_d2cst
   (out, x0) =
 (
+(*
 fprint!
 (out, sym, "(", stamp, ")")
+*)
+fprint!
+(out, sym, "(", x0.loc(), ")")
 (*
 fprint!
 (out, sym, "(", x0.loc(), ")");
