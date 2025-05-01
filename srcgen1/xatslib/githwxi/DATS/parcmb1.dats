@@ -565,5 +565,8 @@ parcmb1_thunk(FP) = parser
 (lam(inp) => parser_apply(FP(), inp))
 //
 (* ****** ****** *)
-
-(* end of [ATS3/XANADU_xatslib_githwxi_parcmb1.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_xatslib_githwxi_DATS_parcmb1.dats] *)
+(***********************************************************************)

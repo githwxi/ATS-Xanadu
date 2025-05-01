@@ -48,10 +48,10 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 <>(*tmp*)
 fpath_strmize_cgtz
-  (path) =
+  (fpx) =
 let
 val cs = 
-fpath_strmize_char<>(path)
+fpath_strmize_char<>(fpx)
 in
   fmain(cs) where
 {
@@ -75,17 +75,17 @@ then !(fmain(cs))
 else strmcon_vt_cons(c1, fmain(cs))
 )
 }
-endlet//end-of-(fpath_strmize_cgtz)
+end(*let*)//end-of-(fpath_strmize_cgtz(fpx))
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <>(*tmp*)
 fpath_strmize_line
-  (path) =
+  (fpx) =
 strm_vt_map0
 (
-fpath_strmize_line_vt<>(path)
+fpath_strmize_line_vt<>(fpx)
 ) where
 {
 //
@@ -94,18 +94,18 @@ fpath_strmize_line_vt<>(path)
 //
 #impltmp
 map$fopr0<x0><y0>(x0) = strn_vt2t(x0)
-} (*where*) // [fpath_strmize_line]
-
+}(*where*)//end-of-[fpath_strmize_line(fpx)]
+//
 (* ****** ****** *)
-
+//
 #impltmp
 <>(*tmp*)
 fpath_strmize_line_vt
-  (path) =
+  (fpx) =
 (
 auxmain0
 (
-fpath_strmize_cgtz<>(path)
+fpath_strmize_cgtz<>(fpx)
 )
 ) where
 {
@@ -178,16 +178,19 @@ list_vt_reverse0(rs)
 val l1 =
 strn_vt_make0_llist(rs)
 in
-  strmcon_vt_cons(l1, auxmain0(cs))
+(
+strmcon_vt_cons(l1, auxmain0(cs)))
 end
 else 
 (
-  auxmain1(cs, list_vt_cons(c0, rs))
-)
-) (* end of [auxmain1] *)
+auxmain1(cs, list_vt_cons(c0, rs)))
+)(*case+*)//end-of-[auxmain1(cs, rs)]
 //
-} (*where*) // [fpath_strmize_line]
-
+}(*where*)//end-of-[fpath_strmize_line(fpx)]
+//
 (* ****** ****** *)
-
-(* end of [ATS3/XANADU_xatslib_githwxi_f00path.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_xatslib_githwxi_DATS_f00path.dats] *)
+(***********************************************************************)

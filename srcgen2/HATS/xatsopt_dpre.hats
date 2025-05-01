@@ -139,8 +139,7 @@ print with g_print of 0101
 #impltmp
 < a:t0 >
 a0ref_get(A0) =
-(
-a0ref_dtget<a>(A0))
+a0ref_dtget<a>(A0)
 //
 #impltmp
 < a:vt >
@@ -341,8 +340,13 @@ _XATS2JS_NODE_=1
 defq
 (_XATS2JS_NODE_)
 #then
+//
+#include
+"srcgen1/xatslib/libcats/DATS/CATS/JS/NODE/libcats.dats"
+//
 #include
 "srcgen1/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
+//
 #endif//end-of-[---------#ifdef(_XATS2JS_NODE_)---------]
 //
 (* ****** ****** *)

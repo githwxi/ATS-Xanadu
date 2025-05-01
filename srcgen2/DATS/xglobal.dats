@@ -116,14 +116,14 @@ where
 #impltmp
 <(*tmp*)>
 the_XATSHOME_get() =
-XATSOPT_xatshome$get((*nil*))
+XATSOPT_XATSHOME_get((*nil*))
 where
 {
 #extern
 fun
-XATSOPT_xatshome$get
+XATSOPT_XATSHOME_get
   ((*void*)): strn = $extnam()
-}(*endof[XATSOPT_xatshome$get]*)
+}(*endof[XATSOPT_XATSHOME_get]*)
 }(*endof[implfun(the_XATSHOME)]*)
 //
 endloc//endof[local(the_XATSHOME)]
