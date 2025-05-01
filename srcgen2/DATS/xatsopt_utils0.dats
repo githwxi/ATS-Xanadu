@@ -48,6 +48,13 @@ ATS_PACKNAME
 #include
 "./../HATS/xatsopt_dpre.hats"
 //
+(*
+HX-2025-05-01:
+SRCGEN1_XATSOPT:
+This is needed due to a bug in
+handling typing and overloading!
+SRCGEN2_XATSOPT: It's not needed
+*)
 #symload * with bool_mul of 1002
 //
 (* ****** ****** *)
