@@ -26,6 +26,7 @@ cleanall:: ; rm -f BUILD/*_dats_out?.js
 
 SRCSATS := \
 xbasics.sats \
+xlibext.sats \
 xsynoug.sats \
 xerrory.sats \
 xstamp0.sats \
@@ -73,6 +74,7 @@ xatsopt.sats \
 SRCDATS := \
 xbasics.dats \
 xbasics_print0.dats \
+xlibext.dats \
 xsynoug.dats \
 xerrory.dats \
 xstamp0.dats \
