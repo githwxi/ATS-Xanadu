@@ -1,5 +1,9 @@
 {
-  "dependencies": {
-    "papaparse": "^5.4.1"
-  }
+    "dependencies": {
+      "papaparse": "^5.4.1"
+    }
+    ,
+    "githwxi-comment1": "This is needed for test06-mycsv00"
+    ,
+    "githwxi-comment2": "This is needed for test08_volctrl"
 }

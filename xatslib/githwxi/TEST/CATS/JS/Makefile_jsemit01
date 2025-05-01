@@ -6,6 +6,7 @@
 CAT=cat
 ECHO=echo
 NODE=node
+PRINTF=printf
 ########################################################################
 ########################################################################
 all:: test00
@@ -47,7 +48,7 @@ $(SRCGEN2_SRCGENX)/UTIL/xats2js_jsemit01_dats_out.js
 ########################################################################
 ########################################################################
 test00:: ; \
-echo "//" `date` > OUTS/$@_out.js
+printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test00:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
@@ -69,7 +70,7 @@ npx google-closure-compiler -W QUIET \
 ########################################################################
 ########################################################################
 test01:: ; \
-echo "//" `date` > OUTS/$@_out.js
+printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test01:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
@@ -88,7 +89,7 @@ npx google-closure-compiler -W QUIET \
 ########################################################################
 ########################################################################
 test02:: ; \
-echo "//" `date` > OUTS/$@_out.js
+printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test02:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
@@ -107,7 +108,7 @@ npx google-closure-compiler -W QUIET \
 ########################################################################
 ########################################################################
 test03:: ; \
-echo "//" `date` > OUTS/$@_out.js
+printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test03:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
@@ -126,7 +127,7 @@ npx google-closure-compiler -W QUIET \
 ########################################################################
 ########################################################################
 test04:: ; \
-echo "//" `date` > OUTS/$@_out.js
+printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test04:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
@@ -145,7 +146,7 @@ npx google-closure-compiler -W QUIET \
 ########################################################################
 ########################################################################
 test05:: ; \
-echo "//" `date` > OUTS/$@_out.js
+printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test05:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
@@ -169,7 +170,7 @@ npx google-closure-compiler -W QUIET \
 ########################################################################
 ########################################################################
 test06:: ; \
-echo "//" `date` > OUTS/$@_out.js
+printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test06:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
@@ -195,7 +196,7 @@ npx google-closure-compiler -W QUIET \
 ########################################################################
 ########################################################################
 test07:: ; \
-echo "//" `date` > OUTS/$@_out.js
+printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test07:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
@@ -218,7 +219,7 @@ npx google-closure-compiler -W QUIET \
 ########################################################################
 ########################################################################
 test08:: ; \
-echo "//" `date` > OUTS/$@_out.js
+printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test08:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
@@ -246,7 +247,7 @@ $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 ########################################################################
 test99:: ; \
-echo "//" `date` > OUTS/$@_out.js
+printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test99:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
