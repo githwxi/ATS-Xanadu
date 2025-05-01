@@ -90,8 +90,12 @@ print with g_print of 0101
 "srcgen1/prelude/DATS/CATS/bool000.dats"
 #include
 "srcgen1/prelude/DATS/CATS/char000.dats"
+//
 #include
 "srcgen1/prelude/DATS/CATS/gint000.dats"
+#include
+"srcgen1/prelude/DATS/CATS/gflt000.dats"
+//
 #include
 "srcgen1/prelude/DATS/CATS/strn000.dats"
 //
@@ -242,8 +246,6 @@ strtmp_vt_set$at<>(p0, i0, c0)
 #include
 "srcgen1/xatslib/libcats/DATS/synoug0.dats"
 //
-(* ****** ****** *)
-//
 #include
 "srcgen1/xatslib/githwxi/DATS/genv000.dats"
 #include
@@ -251,7 +253,6 @@ strtmp_vt_set$at<>(p0, i0, c0)
 #include
 "srcgen1/xatslib/githwxi/DATS/g00iout.dats"
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload

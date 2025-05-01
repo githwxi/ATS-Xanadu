@@ -40,25 +40,65 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #abstbox
-mydict_type
-(key:type,itm:type)
-#sexpdef mydict = mydict_type
+fpath_tbox(*void*)
+#typedef fpath = fpath_tbox
+//
+(* ****** ****** *)
+//
+fcast
+fpath_encode
+(fpx: strn): fpath
+#symload
+fpath with fpath_encode
+//
+fun<>
+fpath_char$strmize
+(fpx: fpath): strm_vt(char)
+//
+(* ****** ****** *)
+//
+#abstbox
+mya1sz_tbox(itm: type)
+#abstbox
+mydict_tbox
+(key: type, itm: type)
+//
+#sexpdef mya1sz = mya1sz_tbox
+#sexpdef mydict = mydict_tbox
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<itm:type>
+mya1sz_strmize
+(asz: mya1sz(itm)): strm_vt(itm)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <key:type>
+<itm:type>
 mydict_make_nil
-{itm:type}((*void*)): mydict(key, itm)
+((*void*)): mydict(key, itm)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <key:type>
+<itm:type>
+mydict_get_keys
+(map: mydict(key, itm)): mya1sz(key)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<key:type>
+<itm:type>
 mydict_search$opt
-{itm:tbox}
 ( map
 : mydict(key, itm), key: key): optn_vt(itm)
 //
@@ -66,8 +106,8 @@ mydict_search$opt
 //
 fun
 <key:type>
+<itm:type>
 mydict_insert$any
-{itm:tbox}
 ( map
 : mydict(key, itm), key: key, itm: itm): void
 //

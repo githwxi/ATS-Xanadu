@@ -54,11 +54,10 @@ ATS_PACKNAME
 "./../HATS/xatsopt_dpre.hats"
 //
 (* ****** ****** *)
+#staload "./../SATS/xlibext.sats"
 (* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
-(* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
-(* ****** ****** *)
 #staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
@@ -68,13 +67,6 @@ ATS_PACKNAME
 local
 //
 (* ****** ****** *)
-(*
-#staload
-"srcgen1\
-/prelude\
-/DATS/CATS/JS/basics3.dats"
-*)
-(* ****** ****** *)
 //
 #typedef key = sint
 //
@@ -83,17 +75,21 @@ local
 #absimpl
 topmap_tbox
 (itm:type) =
-jsobjmap(key, list(itm))
+mydict(key, list(itm))
 //
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
-
+//
 #implfun
 topmap_make_nil
-  ( (*nil*) ) =
-XATS2JS_jsobjmap_make_nil<key>()
-
+{itm:tbox}((*nil*)) =
+let
+#typedef itms = list(itm)
+in//let
+mydict_make_nil<key><itms>((*0*))
+end//let//end-of-[topmap_make_nil()]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -103,8 +99,9 @@ topmap_strmize
 gmap_strmize<gmap><key><itms>(map)
 ) where
 {
-#typedef itms = list(itm)
-#typedef gmap = jsobjmap(key, itms)}
+  #typedef itms = list(itm)
+  #typedef gmap = mydict(key, itms)
+}(*where*)//end-of-[topmap_strmize(...)]
 //
 (* ****** ****** *)
 
@@ -121,7 +118,7 @@ val
 key = g0u2s(uint(key.stmp()))
 val
 opt = 
-XATS2JS_jsobjmap_search$opt<key>{itms}(map,key)
+mydict_search$opt<key><itms>(map,key)
 //
 in//let
 //
@@ -153,7 +150,7 @@ key =
 g0u2s(uint(key.stmp()))
 val
 opt = 
-XATS2JS_jsobjmap_search$opt<key>{itms}(map,key)
+mydict_search$opt<key><itms>(map, key)
 //
 in//let
 //
@@ -163,15 +160,15 @@ optn_vt_nil() =>
 let
 val itms = list_sing(itm)
 in//let
-XATS2JS_jsobjmap_insert$any<key>{itms}(map,key,itms)
+mydict_insert$any<key><itms>(map, key, itms)
 end (*let*) // end of [optn_vt_nil()]
 | ~
 optn_vt_cons(itms) =>
 let
 val itms = list_cons(itm, itms)
 in
-XATS2JS_jsobjmap_insert$any<key>{itms}(map,key,itms)
-end (*let*) // end of [optn_vt_cons(...)]
+mydict_insert$any<key><itms>(map, key, itms)
+end (*let*) // end of [optn_vt_cons(itms)]
 //
 end (*let*) // end of [topmap_insert$any(...)]
 (* ****** ****** *)

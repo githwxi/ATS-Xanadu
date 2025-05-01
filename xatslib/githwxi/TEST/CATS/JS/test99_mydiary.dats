@@ -106,8 +106,8 @@ val ( ) = print1s("rxs = ", rxs, "\n")
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () = prints
-("sort(", xs, ") = ", list_quicksort(xs), "\n")
+val () = printsln
+("sort(", xs, ") = ", list_quicksort(xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)

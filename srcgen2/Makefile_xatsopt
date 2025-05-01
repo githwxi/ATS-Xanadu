@@ -240,6 +240,12 @@ xbasics_print0_dats: ; $(XATSOPT) --dynamic DATS/xbasics_print0.dats
 
 ######
 all_dats:: \
+xlibext_dats
+xlibext_dats: ; $(XATSOPT) --dynamic DATS/xlibext.dats
+######
+
+######
+all_dats:: \
 xsynoug_dats
 xsynoug_dats: ; $(XATSOPT) --dynamic DATS/xsynoug.dats
 ######

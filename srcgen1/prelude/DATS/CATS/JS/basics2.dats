@@ -241,15 +241,25 @@ fun
 XATS2JS_a1ref_dtget$at
 {a:vt}
 {n:i0}
-( A0:
-  a1ref(a, n)
-, i0: nintlt(n)): ~a = $extnam()
+(A0: a1ref(a, n), i0: nintlt(n)): ~a = $extnam()
+}
+//
+#impltmp
+{ a:vt }
+a1ptr_dtget$at1<a> =
+XATS2JS_a1ptr_dtget$at1 where
+{
+#extern
+fun
+XATS2JS_a1ptr_dtget$at1
+{a:vt}
+{n:i0}
+(A0: a1ptr(a, n), i0: nintlt(n)): ~a = $extnam()
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics2.dats] *)
+(***********************************************************************)

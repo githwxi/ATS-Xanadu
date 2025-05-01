@@ -43,53 +43,156 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-<key:type>
+<(*tmp*)>
+fpath_char$strmize
+  (  fpx  ) =
+XATSOPT_fpath_char$strmize(fpx)
+where{
+#extern
+fun
+XATSOPT_fpath_char$strmize
+( fpx
+: fpath): strm_vt(char) = $extnam()
+}(*where*)//end-of-[fpath_char$strmize(fpx)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+mya1sz_strmize
+  (  asz  ) =
+XATSOPT_mya1sz_strmize(asz)
+where{
+#extern
+fun
+XATSOPT_mya1sz_strmize
+{ x0:t0 }
+( asz
+: mya1sz(x0)): strm_vt(x0) = $extnam()
+}(*where*)//end-of-[impltmp(mya1sz_strmize)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< k0:t0 >
+< x0:t0 >
 mydict_make_nil
-{itm:tbox}((*void*)) =
+  ((*void*)) =
 XATSOPT_mydict_make_nil((*void*))
 where{
 #extern
 fun
 XATSOPT_mydict_make_nil
-{key:type}
-{itm:tbox}
-((*void*)): mydict(key, itm) = $extnam()
-}(*where*)//end-of-[impltmp(mydict_make_nil)]
+{ k0:t0 }
+{ x0:t0 }
+((*void*)): mydict(k0, x0) = $extnam()
+}(*where*)//end-of-[impltmp(mydict_make_nil())]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-<key:type>
-mydict_search$opt
-{itm:tbox}(map, key) =
-XATSOPT_mydict_search$opt(map, key)
+< k0:t0 >
+< x0:t0 >
+mydict_get_keys
+  (  map  ) =
+XATSOPT_mydict_get_keys(map)
 where{
 #extern
 fun
-XATSOPT_mydict_search$opt
-{key:type}
-{itm:tbox}
+XATSOPT_mydict_get_keys
+{ k0:t0 }
+{ x0:t0 }
 ( map
-: mydict(key, itm), key: key): optn_vt(itm) = $extnam()
+: mydict(k0, x0)): mya1sz(k0) = $extnam()
+}(*where*)//end-of-[impltmp(mydict_get_keys(map))]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< k0:t0 >
+< x0:t0 >
+mydict_search$opt
+  (map, key) =
+XATSOPT_mydict_search$opt(map, key)
+where{
+//
+#typedef
+map = mydict(k0, x0)
+//
+#extern
+fun
+XATSOPT_mydict_search$opt
+{k0:t0}{x0:t0}
+(map: map, key: k0): optn_vt(x0) = $extnam()
+//
 }(*where*)//end-of-[impltmp(mydict_search$opt(map,key))]
 //
 (* ****** ****** *)
 //
 #impltmp
-<key:type>
+< k0:t0 >
+< x0:t0 >
 mydict_insert$any
-{itm:tbox}(map, key, itm) =
-XATSOPT_mydict_insert$any(may, key, itm)
+ (map, key, itm) =
+XATSOPT_mydict_insert$any(map, key, itm)
 where{
+//
+#typedef
+map = mydict(k0, x0)
+//
 #extern
 fun
 XATSOPT_mydict_insert$any
-{key:type}
-{itm:tbox}
-( map
-: mydict(key, itm), key: key, itm: itm): void
+{k0:t0}{x0:t0}
+(map: map, key: k0, itm: x0): void = $extnam()
+//
 }(*where*)//end-of-[impltmp(mydict_insert$any(map,key,itm))]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ k0:t0 }
+{ x0:t0 }
+gmap_strmize
+<mydict(k0,x0)><k0><x0>(kxs) =
+strm_vt_map0
+(
+(*
+HX:
+It should be
+given the name:
+[gmap_key$strmize]
+*)
+gmap_strmize_key
+<mydict(k0,x0)><k0><x0>(kxs)
+) where
+{
+#impltmp
+map$fopr0<k0><(k0,x0)>(k0) =
+let
+val-
+~optn_vt_cons(x0) =
+mydict_search$opt<k0><x0>(kxs, k0) in (k0, x0)
+end//let
+}(*where*)
+//end(impltmp(gmap_strmize<mydict(k0,x0)><k0><x0>(kxs)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ k0:t0 }
+{ x0:t0 }
+gmap_strmize_key
+<mydict(k0,x0)><k0><x0>(kxs) =
+(
+  mya1sz_strmize<k0>(mydict_get_keys<k0><x0>(kxs)))
+//end-of(impltmp(gmap_strmize_key<mydict(k0,x0)><k0><x0>(kxs)))
 //
 (* ****** ****** *)
 (* ****** ****** *)

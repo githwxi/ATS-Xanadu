@@ -42,15 +42,11 @@ ATS_PACKNAME
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-(*
-#include
-"./../HATS/xatsopt_dats.hats"
-*)
 #include
 "./../HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+#staload "./../SATS/xlibext.sats"
 #staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
@@ -234,18 +230,9 @@ local
 stmp with symbl_get_stmp
 (* ****** ****** *)
 //
-(*
-#staload
-"srcgen1\
-/prelude\
-/DATS/CATS/JS/basics3.dats"
-*)
-//
-(* ****** ****** *)
-//
 val
 the_xsymbls =
-XATS2JS_jsobjmap_make_nil<key>{itm}()
+mydict_make_nil<key><itm>()
 //
 in//local
 //
@@ -257,7 +244,7 @@ the_xsymbls_search
 let
 val map = the_xsymbls
 in//let
-XATS2JS_jsobjmap_search$opt<key>(map,key)
+mydict_search$opt<key><itm>(map, key)
 end (*let*) // end of [the_xsymbls_search(key)]
 //
 (* ****** ****** *)
@@ -277,7 +264,7 @@ val x0 = sym
 val map = the_xsymbls
 //
 in//let
-XATS2JS_jsobjmap_insert$any<key>(map,k0,x0)
+mydict_insert$any<key><itm>(map, k0, x0)
 end (*let*)//end of [the_xsymbls_insert(sym)]
 //
 (* ****** ****** *)

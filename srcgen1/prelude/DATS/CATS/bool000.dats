@@ -36,7 +36,48 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+#impltmp
+<(*tmp*)>
+bool_neg = XATS000_bool_neg
+where{
+#extern
+fun
+XATS000_bool_neg
+{b0:bool}
+(b0: bool(b0)) : bool(~b0) = $extnam()
+}(*where*) // end-of-[impltmp(bool_neg]
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_add = XATS000_bool_add
+where
+{
+#extern
+fun
+XATS000_bool_add
+{b1,b2:bool}
+( b1: bool(b1)
+, b2: bool(b2)): bool(b1+b2) = $extnam()
+}(*where*) // end-of-[ impltmp(bool_add) ]
+//
+#impltmp
+<(*tmp*)>
+bool_mul = XATS000_bool_mul
+where{
+#extern
+fun
+XATS000_bool_mul
+{b1,b2:bool}
+( b1: bool(b1)
+, b2: bool(b2)): bool(b1*b2) = $extnam()
+}(*where*) // end-of-[ impltmp(bool_mul) ]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_bool000.dats] *)
 (***********************************************************************)

@@ -40,13 +40,10 @@ ATS_PACKNAME
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
-(*
-#include
-"./../HATS/xatsopt_dats.hats"
-*)
 #include
 "./../HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
+#staload "./../SATS/xlibext.sats"
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 //
@@ -63,19 +60,13 @@ local
 #typedef key = strn
 #typedef itm = symbl
 (* ****** ****** *)
-#staload
-"\
-srcgen1\
-/prelude\
-/DATS/CATS/JS/basics3.dats"
-(* ****** ****** *)
 #absimpl
-mymap_tbox = jsobjmap(key, itm)
+mymap_tbox = mydict(key, itm)
 (* ****** ****** *)
 //
 val
-the_mymap: mymap =
-XATS2JS_jsobjmap_make_nil<key>{itm}()
+_MYMAP_: mymap =
+mydict_make_nil<key><itm>((*nil*))
 //
 (* ****** ****** *)
 in//local
@@ -84,19 +75,21 @@ in//local
 #implfun
 symbl_search$opt(key) =
 let
-val map = the_mymap
+val map = _MYMAP_
 in//let
-XATS2JS_jsobjmap_search$opt<key>{itm}(map, key)
-end (*let*) // end of [ symbl_search$opt(key) ]
+(
+mydict_search$opt<key><itm>(map, key))
+end (*let*) // end of [symbl_search$opt(key)]
 //
 #implfun
 symbl_insert$any(sym) =
 let
-val map = the_mymap
+val map = _MYMAP_
 val key = sym.name()
 in//let
-XATS2JS_jsobjmap_insert$any<key>{itm}(map, key, sym)
-end (*let*) // end of [ symbl_insert$any(sym) ]
+(
+mydict_insert$any<key><itm>(map, key, sym))
+end (*let*) // end-of-[symbl_insert$any(sym)]
 //
 (* ****** ****** *)
 //

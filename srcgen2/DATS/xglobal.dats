@@ -110,9 +110,23 @@ in//local
 //
 #implfun
 the_XATSHOME() =
-the_XATSHOME_get<>((*void*))
+the_XATSHOME_get<>((*nil*))
+where
+{
+#impltmp
+<(*tmp*)>
+the_XATSHOME_get() =
+XATSOPT_xatshome$get((*nil*))
+where
+{
+#extern
+fun
+XATSOPT_xatshome$get
+  ((*void*)): strn = $extnam()
+}(*endof[XATSOPT_xatshome$get]*)
+}(*endof[implfun(the_XATSHOME)]*)
 //
-end(*local*)//end-of-[local(XATSHOME)]
+endloc//endof[local(the_XATSHOME)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -129,7 +143,7 @@ in//local
 the_xatsopt_include
   ( (*void*) ) = list_nil( (*void*) )
 //
-endloc//end-[local(the_xatsopt_include)]
+endloc//endof[local(the_xatsopt_include)]
 
 (* ****** ****** *)
 (* ****** ****** *)

@@ -131,7 +131,7 @@ a0ptr_vtset1
 fun
 <a:vt>
 a0ptr_dtget1
-(A0: !a0ptr(a)): ?!a(*HX: data only*)
+(A0: !a0ptr(a)): (?!a)(*data*)
 fun
 <a:vt>
 a0ptr_dtset1

@@ -33,6 +33,17 @@
 //
 (* ****** ****** *)
 //
+#impltmp<>
+char_eqz(c0) =
+(
+ char_eq(c0, '\0'))
+#impltmp<>
+char_neqz(c0) =
+(
+ char_neq(c0, '\0'))
+//
+(* ****** ****** *)
+//
 #impltmp
 <>(*tmp*)
 char_noteq

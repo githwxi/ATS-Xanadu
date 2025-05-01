@@ -1,160 +1,166 @@
-////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////.
+//////////////////////////////////////////////////////////////////.
 /*
-Basics3 for Xats2js
+Basics3 for XATS2JS
 */
-////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////.
+//////////////////////////////////////////////////////////////////.
 //
 function
 XATS2JS_jsobj_get$at
   (obj, key)
 {
-  return obj[ key ];
-}
+  return obj[key];
+} // [XATS2JS_jsobj_get$at]
+//
 function
 XATS2JS_jsobj_set$at
   (obj, key, itm)
 {
   return (obj[key] = itm);
-}
-/* ****** ****** */
+} // [XATS2JS_jsobj_set$at]
+//
+//////////////////////////////////////////////////////////////////.
+//
 // HX-2020-11-09:
-// Native arrays for Xats2js
-/* ****** ****** */
-
+// Native arrays for XATS2JS
+//////////////////////////////////////////////////////////////////.
+//
 function
-XATS2JS_jsarray_size
+XATS2JS_jsa1sz_size
   ( xs )
 {
   return ( xs.length );
-}
+} // [XATS2JS_jsa1sz_size]
 function
-XATS2JS_jsarray_length
+XATS2JS_jsa1sz_length
   ( xs )
 {
   return ( xs.length );
-}
-
+} // [XATS2JS_jsa1sz_length]
+//
 /* ****** ****** */
-
+//
 function
-XATS2JS_jsarray_get$at
+XATS2JS_jsa1sz_get$at
   (xs, i0)
 {
   return xs[i0];
-}
+} // [XATS2JS_jsa1sz_get$at]
 function
-XATS2JS_jsarray_set$at
+XATS2JS_jsa1sz_set$at
   (xs, i0, x0)
 {
   return ( xs[i0] = x0 );
-}
-
-/* ****** ****** */
+} // [XATS2JS_jsa1sz_set$at]
+//
+//////////////////////////////////////////////////////////////////.
 //
 // HX-2020-11-28:
-// Native objmaps for Xats2js
+// Native hashmap for XATS2JS
+//
+//////////////////////////////////////////////////////////////////.
+//
+function
+XATS2JS_jshmap_keys
+   (map)
+{
+  return Object.keys(map);
+} // [XATS2JS_jshmap_keys(map)]
 //
 /* ****** ****** */
-
+//
 function
-XATS2JS_jsobjmap_keys
-   (obj)
+XATS2JS_jshmap_keyq
+   (map, key)
 {
-return Object.keys(obj);
-} // XATS2JS_jsobjmap_keys
-
+  return map.hasOwnProperty(key);
+} // [XATS2JS_jshmap_keyq(map,key)]
+//
 /* ****** ****** */
-
+//
 function
-XATS2JS_jsobjmap_keyq
-   (obj, key)
-{
-return obj.hasOwnProperty(key);
-} // XATS2JS_jsobjmap_keyq
-
-/* ****** ****** */
-
-function
-XATS2JS_jsobjmap_make_nil
+XATS2JS_jshmap_make_nil
   ()
 {
   return {} ;
-} // XATS2JS_jsobjmap_make_nil
-
+} // [XATS2JS_jshmap_make_nil()]
+//
 /* ****** ****** */
-
+//
 function
-XATS2JS_jsobjmap_search$opt
-   (obj, key)
+XATS2JS_jshmap_search$opt
+   (map, key)
 {
 //
-var itm0 = obj[key];
+  var itm0 = map[key];
 //
-if(itm0===undefined)
-{
-  return XATS2JS_optn_vt_nil();
-} else {
-  return XATS2JS_optn_vt_cons(itm0);
-} // end of [if]
+  if(itm0===undefined)
+  {
+    return XATS2JS_optn_vt_nil();
+  } else {
+    return XATS2JS_optn_vt_cons(itm0);
+  } // else // end of [if]
 //
-} // [ XATS2JS_jsobjmap_search$opt ]
-
+} // [XATS2JS_jshmap_search$opt(map,key)]
+//
 /* ****** ****** */
-
+//
 function
-XATS2JS_jsobjmap_insert$any
-   (obj, key, itm1)
+XATS2JS_jshmap_remove$any
+   (map, key)
 {
-  obj[key] = itm1; return;
-} // [XATS2JS_jsobjmap_insert$any]
-
+  delete map[key]; return ;
+} // [XATS2JS_jshmap_remove$any(map,key)]
+//
 function
-XATS2JS_jsobjmap_remove$any
-   (obj, key)
+XATS2JS_jshmap_insert$any
+   (map, key, itm1)
 {
-  delete object[key]; return ;
-} // [XATS2JS_jsobjmap_remove$any]
-
-/* ****** ****** */
-
+  map[key] = itm1; return;
+} // [XATS2JS_jshmap_insert$any(map,key,itm1)]
+//
+/* ****** ****** *//* ****** ****** *//* ****** ****** */
+//
 function
-XATS2JS_jsobjmap_insert$opt
-   (obj, key, itm1)
+XATS2JS_jshmap_remove$opt
+   (map, key)
 {
 //
-var itm0 = obj[key];
+  var itm0 = map[key];
 //
-if(itm0===undefined)
-{
-  obj[key] = itm1;
-  return XATS2JS_optn_vt_nil();
-} else {
-  obj[key] = itm1;
-  return XATS2JS_optn_vt_cons(itm0);
-} // end of [if]
+  if(itm0===undefined)
+  {
+    return XATS2JS_optn_vt_nil();
+  } else {
+    delete map[key];
+    return XATS2JS_optn_vt_cons(itm0);
+  } // else // end of [if]
 //
-} // [ XATS2JS_jsobjmap_insert$opt ]
-
+} // [ XATS2JS_jshmap_remove$opt(map,key)]
+//
+/* ****** ****** *//* ****** ****** *//* ****** ****** */
+//
 function
-XATS2JS_jsobjmap_remove$opt
-   (obj, key)
+XATS2JS_jshmap_insert$opt
+   (map, key, itm1)
 {
 //
-var itm0 = obj[key];
+  var itm0 = map[key];
 //
-if(itm0===undefined)
-{
-  return XATS2JS_optn_vt_nil();
-} else {
-  delete object[key];
-  return XATS2JS_optn_vt_cons(itm0);
-} // end of [if]
+  if(itm0===undefined)
+  {
+    map[key] = itm1;
+    return XATS2JS_optn_vt_nil();
+  } else {
+    map[key] = itm1;
+    return XATS2JS_optn_vt_cons(itm0);
+  } // end of [if]
 //
-} // [ XATS2JS_jsobjmap_remove$opt ]
-
-////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-
-/* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics3.cats] */
+} // [XATS2JS_jshmap_insert$opt(map,key,itm1)]
+//
+/* ****** ****** *//* ****** ****** *//* ****** ****** */
+//
+//////////////////////////////////////////////////////////////////.
+// end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics3.cats]
+//////////////////////////////////////////////////////////////////.

@@ -373,6 +373,71 @@ XATS000_gint_add$sint$sint
 <(*tmp*)>
 gint_add$sint$sint = XATS000_gint_add$sint$sint
 //
+#extern
+fun
+XATS000_gint_sub$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): sint( i-j ) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_sub$sint$sint = XATS000_gint_sub$sint$sint
+//
+#extern
+fun
+XATS000_gint_mul$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): sint( i*j ) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_mul$sint$sint = XATS000_gint_mul$sint$sint
+#extern
+fun
+XATS000_gint_div$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): sint( i/j ) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_div$sint$sint = XATS000_gint_div$sint$sint
+#extern
+fun
+XATS000_gint_mod$sint$sint
+{i,j:int}
+( x
+: sint(i)
+, y
+: sint(j)): sint(mod(i,j)) = $extnam()
+#impltmp
+<(*tmp*)>
+gint_mod$sint$sint = XATS000_gint_mod$sint$sint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+XATS000_gint_parse_sint
+  ( x0: strn ): sint = $extnam()
+#extern
+fun
+XATS000_gint_parse_uint
+  ( x0: strn ): uint = $extnam()
+//
+#impltmp
+<(*tmp*)>
+gint_parse_sint = XATS000_gint_parse_sint
+#impltmp
+<(*tmp*)>
+gint_parse_uint = XATS000_gint_parse_uint
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -22,49 +22,16 @@ srcgen1/xatslib/JS/NODE/.
 <(*tmp*)>
 the_XATSHOME_get() =
 (
-XATS2JS_NODE_the_XATSHOME_get
+XATS2JS_NODE_xatshome$get
   ( (*void*) )) where
 {
 #extern
 fun
-XATS2JS_NODE_the_XATSHOME_get
+XATS2JS_NODE_xatshome$get
   ((*void*)): strn = $extnam()
 }
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-//
-(*
-HX-2025-04-28:
-For async programming!
-*)
-//
-#extern
-fun
-XATS2JS_NODE_g_stdin
-  ((*void*)): FILR = $extnam()
-//
-#impltmp
-g_stdin< > = XATS2JS_NODE_g_stdin
-//
-*)
-//
-#extern
-fun
-XATS2JS_NODE_g_stdout
-  ((*void*)): FILR = $extnam()
-#extern
-fun
-XATS2JS_NODE_g_stderr
-  ((*void*)): FILR = $extnam()
-//
-#impltmp
-g_stdout< > = XATS2JS_NODE_g_stdout
-#impltmp
-g_stderr< > = XATS2JS_NODE_g_stderr
-//
 (* ****** ****** *)
 //
 #impltmp

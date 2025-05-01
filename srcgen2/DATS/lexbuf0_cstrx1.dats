@@ -43,20 +43,18 @@ ATS_PACKNAME
 //
 #include
 "./../HATS/xatsopt_sats.hats"
-(*
-#include
-"./../HATS/xatsopt_dats.hats"
-*)
 #include
 "./../HATS/xatsopt_dpre.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload "./../SATS/xlibext.sats"
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexbuf0.sats"
 (* ****** ****** *)
 #symload char with char_make_sint
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
@@ -197,15 +195,19 @@ case+
 buf.2 of
 | ~
 list_vt_nil
-((*void*)) => (-1) // HX: exception
+((*void*)) => (-1) // HX: exn!
 | ~
 list_vt_cons
 (cc1, ccs) =>
 (
-buf.2 := ccs;
-buf.1 :=
-cons_vt(cc1, buf.1); char_code(cc1)
-) (* end of [list_vt_cons] *)
+  char_code(cc1)
+) where
+{
+val () = (buf.2 := ccs)
+val () =
+(
+  buf.1 := cons_vt(cc1, buf.1))
+} (* end-of-[list_vt_cons(...)] *)
 //
 end (* let *) // end-of(lxbf1_unget)
 
@@ -223,11 +225,13 @@ val clst =
 list_vt_reverse0(buf.2)
 //
 in//let
+//
 buf.2 :=
-(nil_vt():list_vt(char))
-;
-(   $fold(buf); clst   )
-end // end of [lxbf1_take_clst]
+(nil_vt():list_vt(char));
+let
+val () = $fold(buf) in clst end
+//
+end // end of [lxbf1_take_clst(buf)]
 
 (* ****** ****** *)
 //
@@ -238,8 +242,8 @@ lxbf1_make0_cstrx
   LXBF1(cs0, cs1, cs2)
 ) where
 {
-  val cs1 = list_vt_nil(*void*)
-  val cs2 = list_vt_nil(*void*)
+  val cs1 = list_vt_nil((*0*))
+  val cs2 = list_vt_nil((*0*))
 } (*where*)//end of(lxbf1_make0_cstrx)
 //
 (* ****** ****** *)
@@ -253,15 +257,17 @@ lxbf1_make_strn
 (   src   ) =
 lxbf1_make0_cstrx
 (
-strx_vt_map0(strn_strxize(src))
-) where
+strx_vt_map0
+(strn_strxize(src))) where
 {
 #impltmp
 map$fopr0
 <char><sint>(cc) =
 let
-val ci =
-char_code(cc) in if ci > 0 then ci else (-1)
+val ci = char_code(cc)
+in
+(
+  if ci > 0 then ci else (-1) )
 endlet // end of [map$fopr0]
 } (*where*) // end-of-[lxbf1_make_strn(src)]
 
@@ -272,7 +278,8 @@ lxbf1_make_fpath
 (   fpx   ) =
 lxbf1_make0_cstrm(cs0) where
 {
-  val cs0 = fpath_strmize_char<>(fpx)
+  val cs0 =
+  fpath_char$strmize<>(fpath(fpx))
 } (*where*) // end-of(lxbf1_make_fpath(fpx))
 //
 (* ****** ****** *)
