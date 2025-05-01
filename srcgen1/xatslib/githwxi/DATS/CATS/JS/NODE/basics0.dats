@@ -37,28 +37,28 @@ XATS2JS_NODE_xatshome$get
 #impltmp
 <>(*tmp*)
 fpath_rexists
-  (path) =
+  (fpx) =
 (
-XATS2JS_NODE_fs_rexists(path)
+XATS2JS_NODE_fs_rexists(fpx)
 ) where
 {
 #extern
 fun
 XATS2JS_NODE_fs_rexists
-  (path: strn): bool = $extnam()
-}
+  (fpx: strn): bool = $extnam()
+}(*where*)//end-of-[fpath_rexists(fpx)]
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <>(*tmp*)
 fpath_strmize_char
-  (path) =
+  (fpx) =
 let
 val
 opt =
 XATS2JS_NODE_fs_readFileSync
-  (path)
+  (fpx)
 in//let
 if
 stropt_nilq(opt)
@@ -71,9 +71,9 @@ end where
 #extern
 fun
 XATS2JS_NODE_fs_readFileSync
-  (path: strn): stropt = $extnam()
-} (* end of [fpath_strmize_char] *)
-
+  (fpx: strn): stropt = $extnam()
+}(*where*)//end-of-[fpath_strmize_char(fpx)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

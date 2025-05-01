@@ -49,6 +49,61 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
+fun
+XATSOPT_a0ref_set
+{a:t0}
+( A0
+: a0ref(a)
+, x0 : (a)) : void = $extnam()
+//
+#implfun
+XATSOPT_a0ref_set
+{ a: t0 }(A0, x0) =
+let
+#extern
+fun
+XATS2JS_a0ref_set
+{a:t0}
+( A0
+: a0ref(a)
+, x0 : (a)) : void = $extnam()
+in//let
+  XATS2JS_a0ref_set{a}(A0, x0)
+end//let//end-of-(XATSOPT_a0ref_set)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+fpath_char$strmize
+  ( fpx0 ) =
+let
+val
+sopt =
+XATS2JS_NODE_fs_readFileSync
+  ( fpx0 )
+in//let
+if
+stropt_nilq(sopt)
+then
+strm_vt_nil((*void*))
+else
+strn_strmize(stropt_unsome(sopt))
+end where
+{
+//
+#extern
+fun
+XATS2JS_NODE_fs_readFileSync
+  (fpx0: fpath): stropt = $extnam()
+//
+}(*where*)//end-of-[fpath_char$strmize]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #absimpl
 mya1sz_tbox(x0:t0) = jsa1sz(x0)
 #absimpl

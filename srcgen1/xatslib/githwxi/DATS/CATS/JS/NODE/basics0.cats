@@ -27,20 +27,6 @@ XATS2JS_NODE_g_stderr()
 /* ****** ****** */
 //
 function
-XATS2JS_NODE_the_XATSHOME_get
-  (/*0*/)
-{
-  let xhm =
-  process.env['XATSHOME']
-  return (
-    (xhm===undefined) ? "" : xhm
-  ) // return: the_XATSHOME_get()
-}
-//
-/* ****** ****** */
-/* ****** ****** */
-//
-function
 XATS2JS_NODE_g_fprint
   (obj, out)
 {

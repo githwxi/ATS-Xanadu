@@ -7,9 +7,10 @@
 ########################################################################
 CAT=cat
 CPF=cp -f
-ECHO=printf
+ECHO=echo
+PRINTF=printf
 ########################################################################
-MYROOT0=./../../../../.
+SRCGEN1=./../../../../.
 XATS2JS="./../../bin/xats2js"
 ########################################################################
 ########################################################################
@@ -26,94 +27,88 @@ echo "Please do 'make xats2js_xatslib_node'!"
 ########################################################################
 #
 xats2js_js1emit:: ; \
-$(ECHO) \
-"/* ****** ****** */\n" > xats2js_js1emit.js \
+$(PRINTF) \
+"/* ****** ****** */\n" > $@.js \
 && \
-$(ECHO) \
-"// XATS2JS_JS1EMIT\n" >> xats2js_js1emit.js \
+$(PRINTF) \
+"// XATS2JS_JS1EMIT\n" >> $@.js \
 && \
-$(ECHO) \
-"/* ****** ****** */\n" >> xats2js_js1emit.js \
+$(PRINTF) \
+"/* ****** ****** */\n" >> $@.js \
 && \
-$(ECHO) "'use strict';\n" >> xats2js_js1emit.js
+$(PRINTF) "'use strict';\n" >> $@.js
 #
 xats2js_js1emit:: ; \
-$(CAT) \
-$(MYROOT0)/prelude/DATS/CATS/JS/runtime.cats >> xats2js_js1emit.js
+$(CAT) $(SRCGEN1)/prelude/DATS/CATS/JS/runtime.cats >> $@.js
 #
 ########################################################################
 ########################################################################
 #
 xats2js_prelude:: ; \
-$(ECHO) \
-"/* ****** ****** */\n" > xats2js_prelude.js \
+$(PRINTF) \
+"/* ****** ****** */\n" > $@.js \
 && \
-$(ECHO) \
-"// XATS2JS_PRELUDE\n" >> xats2js_prelude.js \
+$(PRINTF) \
+"// XATS2JS_PRELUDE\n" >> $@.js \
 && \
-$(ECHO) \
-"/* ****** ****** */\n" >> xats2js_prelude.js \
+$(PRINTF) \
+"/* ****** ****** */\n" >> $@.js \
 && \
-$(ECHO) "'use strict';\n" >> xats2js_prelude.js
+$(PRINTF) "'use strict';\n" >> $@.js
 #
 xats2js_prelude:: ; \
-$(CAT) \
-$(MYROOT0)/prelude/DATS/CATS/JS/basics0.cats >> xats2js_prelude.js
+$(CAT) $(SRCGEN1)/prelude/DATS/CATS/JS/basics0.cats >> $@.js
 xats2js_prelude:: ; \
-$(CAT) \
-$(MYROOT0)/prelude/DATS/CATS/JS/basics1.cats >> xats2js_prelude.js
+$(CAT) $(SRCGEN1)/prelude/DATS/CATS/JS/basics1.cats >> $@.js
 xats2js_prelude:: ; \
-$(CAT) \
-$(MYROOT0)/prelude/DATS/CATS/JS/basics2.cats >> xats2js_prelude.js
+$(CAT) $(SRCGEN1)/prelude/DATS/CATS/JS/basics2.cats >> $@.js
 xats2js_prelude:: ; \
-$(CAT) \
-$(MYROOT0)/prelude/DATS/CATS/JS/basics3.cats >> xats2js_prelude.js
+$(CAT) $(SRCGEN1)/prelude/DATS/CATS/JS/basics3.cats >> $@.js
 #
 xats2js_prelude:: ; \
-$(CAT) \
-$(MYROOT0)/prelude/DATS/CATS/JS/g_eqref.cats >> xats2js_prelude.js
+$(CAT) $(SRCGEN1)/prelude/DATS/CATS/JS/g_eqref.cats >> $@.js
 #
 xats2js_prelude:: ; \
-$(CAT) \
-$(MYROOT0)/prelude/DATS/CATS/JS/g_print.cats >> xats2js_prelude.js
+$(CAT) $(SRCGEN1)/prelude/DATS/CATS/JS/g_print.cats >> $@.js
 #
 xats2js_prelude:: ; \
-$(CAT) \
-$(MYROOT0)/prelude/DATS/CATS/JS/xatsopt.cats >> xats2js_prelude.js
+$(CAT) $(SRCGEN1)/prelude/DATS/CATS/JS/xatsopt.cats >> $@.js
 #
 ########################################################################
 ########################################################################
-xats2js_prelude_node:: ; \
-$(ECHO) \
-"/* ****** ****** */\n" > xats2js_prelude_node.js \
-&& \
-$(ECHO) \
-"// XATS2JS_PRELUDE_NODE\n" >> xats2js_prelude_node.js \
-&& \
-$(ECHO) "/* ****** ****** */\n" >> xats2js_prelude_node.js
 #
 xats2js_prelude_node:: ; \
-$(CAT) \
-$(MYROOT0)/prelude/DATS/CATS/JS/NODE/g_print.cats >> xats2js_prelude_node.js
+$(PRINTF) \
+"/* ****** ****** */\n" > $@.js \
+&& \
+$(PRINTF) \
+"// XATS2JS_PRELUDE_NODE\n" >> $@.js \
+&& \
+$(PRINTF) "/* ****** ****** */\n" >> $@.js
 #
 xats2js_prelude_node:: ; \
-$(CAT) \
-$(MYROOT0)/prelude/DATS/CATS/JS/NODE/process.cats >> xats2js_prelude_node.js
+$(CAT) $(SRCGEN1)/prelude/DATS/CATS/JS/NODE/g_print.cats >> $@.js
+#
+xats2js_prelude_node:: ; \
+$(CAT) $(SRCGEN1)/prelude/DATS/CATS/JS/NODE/process.cats >> $@.js
+#
+xats2js_prelude_node:: ; \
+$(CAT) $(SRCGEN1)/prelude/DATS/CATS/JS/NODE/xatsopt.cats >> $@.js
 #
 ########################################################################
 ########################################################################
-xats2js_xatslib_node:: ; \
-$(ECHO) \
-"/* ****** ****** */\n" > xats2js_xatslib_node.js \
-&& \
-$(ECHO) \
-"// XATS2JS_XATSLIB_NODE\n" >> xats2js_xatslib_node.js \
-&& \
-$(ECHO) "/* ****** ****** */\n" >> xats2js_xatslib_node.js
 #
 xats2js_xatslib_node:: ; \
-$(CAT) \
-$(MYROOT0)/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.cats >> xats2js_xatslib_node.js
+$(PRINTF) \
+"/* ****** ****** */\n" > $@.js \
+&& \
+$(PRINTF) \
+"// XATS2JS_XATSLIB_NODE\n" >> $@.js \
+&& \
+$(PRINTF) "/* ****** ****** */\n" >> $@.js
+#
+xats2js_xatslib_node:: ; \
+$(CAT) $(SRCGEN1)/xatslib/githwxi/DATS/CATS/JS/NODE/basics0.cats >> $@.js
 #
 ########################################################################
 clean:: ; rm -f *~
