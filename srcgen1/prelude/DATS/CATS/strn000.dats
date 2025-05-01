@@ -122,6 +122,30 @@ XATS000_strn_tail$raw
 (* ****** ****** *)
 //
 #impltmp
+stropt_nilq<> =
+XATS000_stropt_nilq
+where
+{
+#extern
+fun
+XATS000_stropt_nilq
+(opt: stropt): bool = $extnam()
+}
+#impltmp
+stropt_consq<> =
+XATS000_stropt_consq
+where
+{
+#extern
+fun
+XATS000_stropt_consq
+(opt: stropt): bool = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 <(*tmp*)>
 strn_vt_get$at =
 XATS000_strn_vt_get$at

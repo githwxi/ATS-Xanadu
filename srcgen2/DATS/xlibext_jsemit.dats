@@ -38,6 +38,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/xlibext.sats"
 (* ****** ****** *)
 (* ****** ****** *)
