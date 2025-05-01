@@ -41,6 +41,76 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX: for [gs_forall]
+HX: for [gs_exists]
+HX: for [gs_iforall]
+HX: for [gs_iexists]
+*)
+fun
+<xs:t0>
+g_forall(xs: xs): bool
+fun
+<xs:t0>
+g_exists(xs: xs): bool
+fun
+<xs:t0>
+g_rforall(xs: xs): bool
+fun
+<xs:t0>
+g_rexists(xs: xs): bool
+fun
+<xs:t0>
+g_iforall(xs: xs): bool
+fun
+<xs:t0>
+g_iexists(xs: xs): bool
+//
+(* ****** ****** *)
+//
+#typedef
+g_forall(xs:t0) = (xs) -> bool
+#typedef
+g_exists(xs:t0) = (xs) -> bool
+//
+#typedef
+g_rforall(xs:t0) = (xs) -> bool
+#typedef
+g_rexists(xs:t0) = (xs) -> bool
+//
+#typedef
+g_iforall(xs:t0) = (xs) -> bool
+#typedef
+g_iexists(xs:t0) = (xs) -> bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX: for [gs_foritm]
+*)
+fun
+<xs:t0>
+g_foritm(xs: xs): void
+fun
+<xs:t0>
+g_rforitm(xs: xs): void
+fun
+<xs:t0>
+g_iforitm(xs: xs): void
+//
+(* ****** ****** *)
+//
+#typedef
+g_foritm(xs:t0) = (xs) -> void
+#typedef
+g_rforitm(xs:t0) = (xs) -> void
+#typedef
+g_iforitm(xs:t0) = (xs) -> void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -57,6 +127,19 @@ fun
 gseq_strqize
   (xs: xs): strq_vt(x0)
 //
+(* ****** ****** *)
+//
+#typedef
+gseq_listize
+(xs:t0, x0:t0) = (xs) -> list_vt(x0)
+#typedef
+gseq_strmize
+(xs:t0, x0:t0) = (xs) -> strm_vt(x0)
+#typedef
+gseq_strqize
+(xs:t0, x0:t0) = (xs) -> strq_vt(x0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -77,6 +160,19 @@ gseq_rstrqize
 //
 (* ****** ****** *)
 //
+#typedef
+gseq_rlistize
+(xs:t0, x0:t0) = (xs) -> list_vt(x0)
+#typedef
+gseq_rstrmize
+(xs:t0, x0:t0) = (xs) -> strm_vt(x0)
+#typedef
+gseq_rstrqize
+(xs:t0, x0:t0) = (xs) -> strq_vt(x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -94,27 +190,18 @@ gseq_istrqize
   (xs: xs): istrq_vt(x0)
 //
 (* ****** ****** *)
+//
+#typedef
+gseq_ilistize
+(xs:t0, x0:t0) = (xs) -> list_vt(x0)
+#typedef
+gseq_istrmize
+(xs:t0, x0:t0) = (xs) -> strm_vt(x0)
+#typedef
+gseq_istrqize
+(xs:t0, x0:t0) = (xs) -> strq_vt(x0)
+//
 (* ****** ****** *)
-//
-(*
-HX: for [gs_forall]
-HX: for [gs_exists]
-HX: for [gs_iforall]
-HX: for [gs_iexists]
-*)
-fun
-<xs:t0>
-g_forall(xs: xs): bool
-fun
-<xs:t0>
-g_exists(xs: xs): bool
-fun
-<xs:t0>
-g_iforall(xs: xs): bool
-fun
-<xs:t0>
-g_iexists(xs: xs): bool
-//
 (* ****** ****** *)
 //
 fun
@@ -150,6 +237,37 @@ fun
 <x0:t0>
 gseq_irexists(xs: xs): bool
 //
+(* ****** ****** *)
+//
+#typedef
+gseq_forall
+(xs:t0, x0:t0) = (xs) -> bool
+#typedef
+gseq_exists
+(xs:t0, x0:t0) = (xs) -> bool
+//
+#typedef
+gseq_rforall
+(xs:t0, x0:t0) = (xs) -> bool
+#typedef
+gseq_rexists
+(xs:t0, x0:t0) = (xs) -> bool
+//
+#typedef
+gseq_iforall
+(xs:t0, x0:t0) = (xs) -> bool
+#typedef
+gseq_iexists
+(xs:t0, x0:t0) = (xs) -> bool
+//
+#typedef
+gseq_irforall
+(xs:t0, x0:t0) = (xs) -> bool
+#typedef
+gseq_irexists
+(xs:t0, x0:t0) = (xs) -> bool
+//
+(* ****** ****** *)
 (*
 #symload forall with gseq_forall of 0100
 #symload exists with gseq_exists of 0100
@@ -161,6 +279,7 @@ gseq_irexists(xs: xs): bool
 #symload irexists with gseq_irexists of 0100
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -250,18 +369,6 @@ gseq_irexists$f2un
 #symload irexists$fun with gseq_irexists$f2un of 0100
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX: for [gs_foritm]
-*)
-fun
-<xs:t0>
-g_foritm(xs: xs): void
-fun
-<xs:t0>
-g_iforitm(xs: xs): void
-//
 (* ****** ****** *)
 //
 fun
