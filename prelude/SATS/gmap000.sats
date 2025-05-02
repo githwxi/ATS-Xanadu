@@ -138,6 +138,11 @@ gmap_setf$at$opt
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-02:
+The semantics is involved
+for a mutable map (hashmap)!
+*)
 fun
 <map:t0>
 <key:t0>
