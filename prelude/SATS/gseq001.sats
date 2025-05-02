@@ -604,6 +604,16 @@ gseq_map_self(xs: xs): (xs)
 #symload map with gseq_map_self of 0110
 *)
 //
+#typedef
+gseq_map_ares
+(xs:t0, x0:t0
+,ys:vt, y0:vt) = (xs) -> (ys)
+#typedef
+gseq_map_self
+(xs:t0, x0:t0) = (xs) -> (xs)
+//
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -651,6 +661,8 @@ gseq_map_lstrq(xs: xs): strq_vt(y0)
 #symload map_lstrm with gseq_map_lstrm of 0100
 #symload map_lstrq with gseq_map_lstrq of 0100
 *)
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -721,13 +733,23 @@ gseq_map$f1un_rllist
 fun
 <xs:t0>
 <x0:t0>
-<ys:vt>
-<y0:vt>
-gseq_rmap_ares(xs: xs): (ys)
+gseq_rmap_self(xs: xs): (xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_rmap_self(xs: xs): (xs)
+<ys:vt>
+<y0:vt>
+gseq_rmap_ares(xs: xs): (ys)
+//
+(* ****** ****** *)
+//
+#typedef
+gseq_rmap_self
+(xs:t0, x0:t0) = (xs) -> (xs)
+#typedef
+gseq_rmap_ares
+(xs:t0, x0:t0
+,ys:vt, y0:vt) = (xs) -> (ys)
 //
 (* ****** ****** *)
 //
@@ -752,6 +774,8 @@ fun
 <x0:t0>
 <y0:vt>
 gseq_rmap_lstrq(xs: xs): strq_vt(y0)
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -822,6 +846,16 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_imap_self(xs: xs): (xs)
+//
+(* ****** ****** *)
+//
+#typedef
+gseq_imap_ares
+(xs:t0, x0:t0
+,ys:vt, y0:vt) = (xs) -> (ys)
+#typedef
+gseq_imap_self
+(xs:t0, x0:t0) = (xs) -> (xs)
 //
 (* ****** ****** *)
 //
@@ -921,6 +955,16 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_irmap_self(xs: xs): (xs)
+//
+(* ****** ****** *)
+//
+#typedef
+gseq_irmap_ares
+(xs:t0, x0:t0
+,ys:vt, y0:vt) = (xs) -> (ys)
+#typedef
+gseq_irmap_self
+(xs:t0, x0:t0) = (xs) -> (xs)
 //
 (* ****** ****** *)
 //
@@ -1197,7 +1241,7 @@ gseq_uncons$strqize(xs: xs): strq_vt(x0)//uncons
 fun
 <xs:t0>
 <x0:t0>
-gseq_fmake_fwork(fwork: ((x0)->void)->void): xs
+gseq_fmake_fwork(fwork: ((x0)->void)->void): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -5,21 +5,111 @@
 ########################################################################
 NODE=node
 ########################################################################
-########################################################################
-all:: prelude_dats
-all:: prelude_JS_dats
-all:: prelude_PY_dats
+all::
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-prelude_dats: ; $(NODE) \
+
+PRESATS=\
+axrf000.sats \
+axrf001.sats \
+axsz000.sats \
+axsz001.sats \
+bool000.sats \
+char000.sats \
+gasz000.sats \
+gasz001.sats \
+gasz002.sats \
+gbas000.sats \
+gbas001.sats \
+gbas002.sats \
+gcls000.sats \
+gdbg000.sats \
+gflt000.sats \
+gfun000.sats \
+gint000.sats \
+gint001.sats \
+gmap000.sats \
+gmap001.sats \
+gnum000.sats \
+gord000.sats \
+gseq000.sats \
+gseq001.sats \
+gseq002.sats \
+gsyn000.sats \
+gsyn001.sats \
+list000.sats \
+list001.sats \
+list002.sats \
+optn000.sats \
+optn001.sats \
+strm000.sats \
+strn000.sats \
+strn001.sats \
+tupl000.sats \
+unsfx00.sats \
+uopt000.sats \
+
+PRESATS_vt=\
+axrf000_vt.sats \
+axsz000_vt.sats \
+gasz000_vt.sats \
+gasz001_vt.sats \
+gbas000_vt.sats \
+gbas001_vt.sats \
+gbas002_vt.sats \
+gcls000_vt.sats \
+gfun000_vt.sats \
+gnum000_vt.sats \
+gord000_vt.sats \
+gseq000_vt.sats \
+gseq001_vt.sats \
+gseq002_vt.sats \
+gsyn000_vt.sats \
+list000_vt.sats \
+list001_vt.sats \
+optn000_vt.sats \
+optn001_vt.sats \
+strm000_vt.sats \
+strm001_vt.sats \
+strm002_vt.sats \
+strn000_vt.sats \
+tupl000_vt.sats \
+unsfx00_vt.sats \
+
+########################################################################
+OUTSATS := \
+$(patsubst %.sats, \
+  OUTS/%_sats_out.00, $(PRESATS))
+OUTDATS := \
+$(patsubst %.dats, \
+  OUTS/%_dats_out.00, $(PREDATS))
+OUTSATS_vt := \
+$(patsubst %.sats, \
+  OUTS/%_sats_out.00, $(PRESATS_vt))
+########################################################################
+presats: \
+$(OUTSATS)
+OUTS/%_sats_out.00: \
+../SATS/%.sats; $(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+########################################################################
+presats_vt: \
+$(OUTSATS_vt)
+OUTS/%_sats_out.00: \
+../SATS/VT/%.sats; $(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+########################################################################
+all:: prelude_dats_hats
+all:: prelude_JS_dats_hats
+all:: prelude_PY_dats_hats
+########################################################################
+prelude_dats_hats: ; $(NODE) \
 --stack-size=4096 $(SRCGEN2_XATSOPT) ./../HATS/prelude_dats.hats
 ########################################################################
-prelude_JS_dats: ; $(NODE) \
+prelude_JS_dats_hats: ; $(NODE) \
 --stack-size=4096 $(SRCGEN2_XATSOPT) ./../HATS/prelude_JS_dats.hats
 ########################################################################
-prelude_PY_dats: ; $(NODE) \
+prelude_PY_dats_hats: ; $(NODE) \
 --stack-size=4096 $(SRCGEN2_XATSOPT) ./../HATS/prelude_PY_dats.hats
 ########################################################################
 prelude_NODE_dats: ; $(NODE) \

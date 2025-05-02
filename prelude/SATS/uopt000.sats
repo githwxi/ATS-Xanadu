@@ -30,7 +30,7 @@
 //
 #abstype
 uopt_t0_i0_t0
-( a:t0,b:b0 ) <= @(sint, a)
+( a:t0,b:b0 ) <= @(a, sint)
 #sexpdef uopt = uopt_t0_i0_t0
 //
 #typedef
