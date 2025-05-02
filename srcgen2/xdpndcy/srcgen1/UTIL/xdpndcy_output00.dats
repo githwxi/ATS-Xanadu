@@ -56,7 +56,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #typedef
-argv = jsarray(strn)
+argv = jsa1sz(strn)
 #extern
 fun
 XATS2JS_NODE_argv$get

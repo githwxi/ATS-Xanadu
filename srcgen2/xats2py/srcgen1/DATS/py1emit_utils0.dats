@@ -226,18 +226,102 @@ end(*let*)//end-of-[d2varpy1(env0,dvar)]
 (* ****** ****** *)
 //
 #implfun
-i1tnmpy1
-( filr,itnm ) =
+i0i00py1
+(filr, i00) =
 (
 prints
-("pyx", "tnm", stmp)) where
+("XATSINT0(", i00, ")")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i0i00py1(...)]
+//
+#implfun
+i0b00py1
+(filr, b00) =
+(
+prints
+("XATSBTF0(", b00, ")")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i0b00py1(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0c00py1
+(filr, c00) =
+(
+print(
+"XATSCHR0(\"");
+f0_char( c00 );print("\")")
+) where
+{
+#impltmp g_print$out<>() = filr
+} where
+{
+fun
+f0_char
+(ch: char): void =
+(
+case+ ch of
+//
+| '\n' => strn_fprint("\\n", filr)
+| '\t' => strn_fprint("\\t", filr)
+| '\r' => strn_fprint("\\r", filr)
+//
+(*
+| '\a' => strn_fprint("\\a", filr)
+| '\g' => strn_fprint("\\g", filr)
+*)
+//
+| '\b' => strn_fprint("\\b", filr)
+| '\f' => strn_fprint("\\f", filr)
+| '\v' => strn_fprint("\\v", filr)
+//
+| '\0' => strn_fprint("\\x00", filr)
+//
+| _(*else*) => char_fprint(ch, filr)
+)
+}(*where*)//end-of-[i0c00py1(filr,c00)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0f00py1
+(filr, f00) =
+(
+prints
+("XATSFLT0(", f00, ")")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i0f00py1(filr,f00)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0s00py1
+(filr, s00) =
+(
+print(
+"XATSSTR0(\"");
+f0_strn( s00 ); print("\")")
+) where
 {
 //
-#impltmp g_print$out<>() = filr
+fun
+f0_strn
+(cs: strn): void =
+let
+val () =
+  strn_fprint(cs, filr) end//let
 //
-val stmp = i1tnm_get_stmp(itnm)
+#impltmp
+g_print$out<(*nil*)>((*void*)) = filr
 //
-}(*where*)//end-of-[i1tnmpy1(filr,itnm)]
+}(*where*)//end-of-[i0s00py1(filr,s00)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -401,6 +485,23 @@ strn_fprint("\\\"", filr)
 }
 //
 }(*where*)//end-of-[i0strpy1(filr,tstr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1tnmpy1
+( filr,itnm ) =
+(
+prints
+("pyx", "tnm", stmp)) where
+{
+//
+#impltmp g_print$out<>() = filr
+//
+val stmp = i1tnm_get_stmp(itnm)
+//
+}(*where*)//end-of-[i1tnmpy1(filr,itnm)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

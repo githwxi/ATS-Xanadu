@@ -181,7 +181,7 @@ prints
 var A = [1,2,3]
 "(*end-of-[extcode]*)
 val A =
-$synext("A"):jsarray(sint,3)
+$synext("A"):jsa1sz(sint,3)
 //
 *)
 //
@@ -189,7 +189,7 @@ $synext("A"):jsarray(sint,3)
 (* ****** ****** *)
 //
 val A =
-jsarray_3val(1, 3, 2)
+jsa1sz_3val(1, 3, 2)
 val () =
 (
   prints("A = ", A, "\n"))
@@ -213,7 +213,7 @@ gseq_ifolditm
 {
 #typedef r0 = sint
 #typedef x0 = sint
-#typedef xs = jsarray(sint)
+#typedef xs = jsa1sz(sint)
 #impltmp
 ifolditm$fopr
 < r0 > < x0 >
@@ -228,7 +228,7 @@ val () =
 (* ****** ****** *)
 //
 val B =
-jsarray
+jsa1sz
 (
 map_lstrm(10,lam(i:nint)=>i+1))
 val () = prints("B = ", B, "\n")

@@ -53,6 +53,10 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#if
+defq(_XATS2PY_)
+#then
+//
 #extern
 fun
 XATSOPT_a0ref_set
@@ -60,7 +64,6 @@ XATSOPT_a0ref_set
 ( A0
 : a0ref(a)
 , x0 : (a)) : void = $extnam()
-//
 #implfun
 XATSOPT_a0ref_set
 { a: t0 }(A0, x0) =
@@ -74,7 +77,9 @@ XATS2PY_a0ref_set
 , x0 : (a)) : void = $extnam()
 in//let
   XATS2PY_a0ref_set{a}(A0, x0)
-end//let//end-of-(XATSOPT_a0ref_set)
+end//let
+//
+#endif//endof(#ifdefq(_XATSJPY_))
 //
 (* ****** ****** *)
 (* ****** ****** *)

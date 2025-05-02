@@ -19,7 +19,7 @@ all:: lib2xatsopt
 clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f BUILD/*_sats_out.py
+cleanall:: ; rm -f BUILD/*_sats_out0.py
 cleanall:: ; rm -f BUILD/*_dats_out?.py
 ########################################################################
 ########################################################################
@@ -228,7 +228,7 @@ xatsopt_utils0.dats \
 ########################################################################
 ########################################################################
 OUTSATS := \
-$(patsubst %.sats, BUILD/%_sats_out.py, $(SRCSATS))
+$(patsubst %.sats, BUILD/%_sats_out0.py, $(SRCSATS))
 OUT0DATS := \
 $(patsubst %.dats, BUILD/%_dats_out0.py, $(SRCDATS))
 OUT1DATS := \
@@ -255,9 +255,9 @@ $(NODE) --stack-size=8192 $(XATS2PY_PYEMIT00) $< > $@
 #
 ########################################################################
 ########################################################################
-XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_dats.js
-XATS2PY_PYEMIT00=$(XATS2PY)/srcgen1/UTIL/xats2py_pyemit00_dats.js
-XATS2PY_PYEMIT00=$(XATS2PY)/srcgen1/UTIL/xats2py_pyemit00_dats_out.js
+XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js
+XATS2PY_PYEMIT00=$(XATS2PY)/srcgen1/UTIL/xats2py_pyemit00_ats2.js
+XATS2PY_PYEMIT00=$(XATS2PY)/srcgen1/UTIL/xats2py_pyemit00_ats3.js
 ########################################################################
 ########################################################################
 N001="X"
