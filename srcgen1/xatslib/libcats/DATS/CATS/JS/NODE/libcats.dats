@@ -56,7 +56,7 @@ XATS2JS_NODE_g_stdin
   ((*void*)): FILR = $extnam()
 //
 #impltmp
-g_stdin< > = XATS2JS_NODE_g_stdin
+g_stdin<> = XATS2JS_NODE_g_stdin
 //
 *)
 //
@@ -70,9 +70,9 @@ XATS2JS_NODE_g_stderr
   ((*void*)): FILR = $extnam()
 //
 #impltmp
-g_stdout< > = XATS2JS_NODE_g_stdout
+g_stdout<> = XATS2JS_NODE_g_stdout
 #impltmp
-g_stderr< > = XATS2JS_NODE_g_stderr
+g_stderr<> = XATS2JS_NODE_g_stderr
 //
 (* ****** ****** *)
 (* ****** ****** *)
