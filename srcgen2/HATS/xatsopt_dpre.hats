@@ -241,16 +241,17 @@ defq
 (* ****** ****** *)
 //
 #staload _(*local*) = "./../DATS/xlibext_tmplib.dats"
-//
-#if
-defq(_XATSJS_)
-#staload _(*local*) = "./../DATS/xlibext_jsemit.dats"
-#endif//#ifdef
-//
-#if
-defq(_XATSPY_)
 #staload _(*local*) = "./../DATS/xlibext_pyemit.dats"
-#endif//#ifdef
+//
+#if
+defq(_XATS2JS_)
+#staload _(*local*) = "./../DATS/xlibext_jsemit.dats"
+#endif//#if(defq(_XATS2JS_))
+//
+#if
+defq(_XATS2PY_)
+#staload _(*local*) = "./../DATS/xlibext_pyemit.dats"
+#endif//#if(defq(_XATS2PY_))
 //
 (* ****** ****** *)
 (* ****** ****** *)

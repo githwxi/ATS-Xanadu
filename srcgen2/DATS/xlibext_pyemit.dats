@@ -53,7 +53,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #extern
 fun
 XATSOPT_a0ref_set
@@ -76,6 +75,53 @@ XATS2PY_a0ref_set
 in//let
   XATS2PY_a0ref_set{a}(A0, x0)
 end//let//end-of-(XATSOPT_a0ref_set)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#absimpl
+mya1sz_tbox(x0:t0) = pya1sz(x0)
+#absimpl
+mydict_tbox(k0:t0, x0:t0) = pyhmap(k0, x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+mya1sz_strmize =
+XATS2PY_pya1sz_strmize<x0>(*argless*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< k0:t0 >
+< x0:t0 >
+mydict_make_nil =
+XATS2PY_pyhmap_make_nil<k0>{x0}(*argless*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< k0:t0 >
+< x0:t0 >
+mydict_get_keys =
+XATS2PY_pyhmap_get_keys<k0>{x0}(*argless*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< k0:t0 >
+< x0:t0 >
+mydict_search$opt =
+XATS2PY_pyhmap_search$opt<k0>{x0}(*argless*)
+//
+#impltmp
+< k0:t0 >
+< x0:t0 >
+mydict_insert$any =
+XATS2PY_pyhmap_insert$any<k0>{x0}(*argless*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
