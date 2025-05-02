@@ -15,31 +15,30 @@ XATS2PY=./../../../../srcgen2/xats2py
 S2XSHRD=\
 $(SRCGEN2)/xats2py/srcgenx/xshared/runtime
 ########################################################################
-all:: \
-xatsopt_tcheck00_dats
+all:: xatsopt_tcheck00
 ########################################################################
 ########################################################################
 #
-xatsopt_tcheck00_dats: ; \
+xatsopt_tcheck00: ; \
 $(CAT) \
-$(S2XSHRD)/xats2py_py1emit.py > $@_out.py && \
+$(S2XSHRD)/xats2py_py1emit.py > $@_ats3.py && \
 $(CAT) \
-$(S2XSHRD)/xats2py_prelude.py >> $@_out.py && \
+$(S2XSHRD)/xats2py_prelude.py >> $@_ats3.py && \
 $(CAT) \
-$(S2XSHRD)/xats2py_xatslib.py >> $@_out.py && \
-$(CAT) $(BOOTPY1)/lib/lib2xatsopt.py >> $@_out.py && \
+$(S2XSHRD)/xats2py_xatslib.py >> $@_ats3.py && \
+$(CAT) $(BOOTPY1)/lib/lib2xatsopt.py >> $@_ats3.py && \
 $(NODE) --stack-size=4096 \
-$(XATS2PY_PYEMIT00) $(SRCGEN2)/UTIL/xatsopt_tcheck00.dats >> $@_out.py
+$(XATS2PY_PYEMIT00) $(SRCGEN2)/UTIL/xatsopt_tcheck00.dats >> $@_ats3.py
 #
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; rm -f xatsopt_tcheck00_dats_out.py
+cleanall:: ; rm -f xatsopt_tcheck00_ats3.py
 ########################################################################
 ########################################################################
-XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_dats.js
-XATS2PY_PYEMIT00=$(XATS2PY)/srcgen1/UTIL/xats2py_pyemit00_dats.js
+XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js
+XATS2PY_PYEMIT00=$(XATS2PY)/srcgen1/UTIL/xats2py_pyemit00_ats2.js
 ########################################################################
 ########################################################################

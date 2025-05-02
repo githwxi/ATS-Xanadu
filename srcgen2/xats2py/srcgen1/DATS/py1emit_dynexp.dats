@@ -892,6 +892,21 @@ ival.node() of
 |I1Vstr
 ( tstr ) => i0strpy1(filr,tstr)
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vi00
+( int0 ) => i0i00py1(filr,int0)
+|I1Vb00
+( btf0 ) => i0b00py1(filr,btf0)
+|I1Vc00
+( chr0 ) => i0c00py1(filr,chr0)
+|I1Vf00
+( flt0 ) => i0f00py1(filr,flt0)
+|I1Vs00
+( str0 ) => i0s00py1(filr,str0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |I1Vtop
 ( sym0 ) => print( "XATSTOP0" )

@@ -68,10 +68,21 @@ d2varpy1
 (* ****** ****** *)
 //
 fun
-i1tnmpy1
-(filr:FILR,itnm:i1tnm): void
+i0i00py1
+(filr:FILR,int0:sint): void
+fun
+i0b00py1
+(filr:FILR,btf0:bool): void
+fun
+i0c00py1
+(filr:FILR,chr0:char): void
+fun
+i0f00py1
+(filr:FILR,flt0:dflt): void
+fun
+i0s00py1
+(filr:FILR,str0:strn): void
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -90,6 +101,14 @@ fun
 i0strpy1
 (filr:FILR,tstr:token): void
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1tnmpy1
+(filr:FILR,itnm:i1tnm): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

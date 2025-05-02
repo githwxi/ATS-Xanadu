@@ -41,16 +41,16 @@ xats2js_jsemit00
 xats2js_jsemit00:: \
 xats2js_jsemit00.dats ; \
 $(CAT) \
-$(XATS2JS_JS1EMIT) > $@_dats.js && \
+$(XATS2JS_JS1EMIT) > $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_PRELUDE) >> $@_dats.js && \
+$(XATS2JS_PRELUDE) >> $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(XATS2JS_PRELUDE_NODE) >> $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
-$(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
-$(CAT) $(LIBXATS2JS_JS) >> $@_dats.js && \
-$(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
+$(XATS2JS_XATSLIB_NODE) >> $@_ats2.js && \
+$(CAT) $(LIBXATSOPT_JS) >> $@_ats2.js && \
+$(CAT) $(LIBXATS2JS_JS) >> $@_ats2.js && \
+$(XATS2JS) --output-a $@_ats2.js --dynamic $@.dats
 #
 ########################################################################
 #
@@ -59,16 +59,21 @@ xats2js_jsemit01
 xats2js_jsemit01:: \
 xats2js_jsemit01.dats ; \
 $(CAT) \
-$(XATS2JS_JS1EMIT) > $@_dats.js && \
+$(XATS2JS_JS1EMIT) > $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_PRELUDE) >> $@_dats.js && \
+$(XATS2JS_PRELUDE) >> $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(XATS2JS_PRELUDE_NODE) >> $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
-$(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
-$(CAT) $(LIBXATS2JS_JS) >> $@_dats.js && \
-$(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
+$(XATS2JS_XATSLIB_NODE) >> $@_ats2.js && \
+$(CAT) $(LIBXATSOPT_JS) >> $@_ats2.js && \
+$(CAT) $(LIBXATS2JS_JS) >> $@_ats2.js && \
+$(XATS2JS) --output-a $@_ats2.js --dynamic $@.dats
+#
+xats2js_jsemit01_opt1: ; \
+npx google-closure-compiler \
+  -W QUIET --compilation_level SIMPLE \
+  --js=xats2js_jsemit01_ats2.js --js_output_file=xats2js_jsemit01_ats2_opt1.js
 #
 ########################################################################
 #
@@ -77,7 +82,8 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 clean:: ; rm -f *~
 #
 cleanall:: clean
-cleanall:: ; rm -f ./xats2js_jsemit??_dats.js
+cleanall:: ; rm -f ./xats2js_jsemit??_ats2.js
 #
+########################################################################
 ########################################################################
 ###################### end of [Makefile_xats2js] #######################
