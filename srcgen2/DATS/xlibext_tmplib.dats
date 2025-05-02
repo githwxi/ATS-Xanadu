@@ -282,7 +282,7 @@ It should be
 given the name:
 [gmap_key$strmize]
 *)
-gmap_strmize_key
+gmap_key$strmize
 <mydict(k0,x0)><k0><x0>(kxs)
 ) where
 {
@@ -302,11 +302,11 @@ end//let
 #impltmp
 { k0:t0 }
 { x0:t0 }
-gmap_strmize_key
+gmap_key$strmize
 <mydict(k0,x0)><k0><x0>(kxs) =
 (
   mya1sz_strmize<k0>(mydict_get_keys<k0><x0>(kxs)))
-//end-of(impltmp(gmap_strmize_key<mydict(k0,x0)><k0><x0>(kxs)))
+//end-of(impltmp(gmap_key$strmize<mydict(k0,x0)><k0><x0>(kxs)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
