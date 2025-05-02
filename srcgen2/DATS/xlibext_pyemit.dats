@@ -38,7 +38,45 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/xlibext.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"srcgen1\
+/prelude/DATS/CATS/PY/basics3.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+#extern
+fun
+XATSOPT_a0ref_set
+{a:t0}
+( A0
+: a0ref(a)
+, x0 : (a)) : void = $extnam()
+//
+#implfun
+XATSOPT_a0ref_set
+{ a: t0 }(A0, x0) =
+let
+#extern
+fun
+XATS2PY_a0ref_set
+{a:t0}
+( A0
+: a0ref(a)
+, x0 : (a)) : void = $extnam()
+in//let
+  XATS2PY_a0ref_set{a}(A0, x0)
+end//let//end-of-(XATSOPT_a0ref_set)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -38,6 +38,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-02:
+The semantics is involved
+for a mutable map (hashmap)!
+It really depends on the actual
+implementation of these functions.
+*)
+//
 fun
 <map:t0>
 <key:vt>

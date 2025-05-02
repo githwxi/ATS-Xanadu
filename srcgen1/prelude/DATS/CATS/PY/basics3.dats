@@ -211,6 +211,10 @@ XATS2PY_pya1sz_strmize
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-02:
+This is NOT viewing!
+*)
 #extern
 fun
 <k0:t0>
