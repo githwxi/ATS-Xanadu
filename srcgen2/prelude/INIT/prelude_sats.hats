@@ -145,6 +145,8 @@ For further program verification
 //
 #include
 "srcgen1/prelude/SATS/gmap000.sats"
+#include
+"srcgen1/prelude/SATS/gmap001.sats"
 //
 (* ****** ****** *)
 //
