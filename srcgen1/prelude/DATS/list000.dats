@@ -1461,7 +1461,7 @@ list_strmize<(k0, x0)>(*0*)
 #impltmp
 {k0:t0}
 {x0:t0}
-gmap_strmize_key
+gmap_key$strmize
 <list@(k0,x0)><k0><x0>(kxs) =
 (
 gseq_map_lstrm<kxs><k0>(kxs)
@@ -1473,7 +1473,7 @@ gseq_map_lstrm<kxs><k0>(kxs)
 #impltmp
 {k0:t0}
 {x0:t0}
-gmap_strmize_itm
+gmap_val$strmize
 <list@(k0,x0)><k0><x0>(kxs) =
 (
 gseq_map_lstrm<kxs><x0>(kxs)

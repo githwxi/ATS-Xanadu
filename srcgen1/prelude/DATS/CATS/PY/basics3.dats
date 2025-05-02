@@ -606,7 +606,7 @@ gmap_strmize
 <pyhmap(k0,x0)><k0><x0>(kxs) =
 strm_vt_map0
 (
-gmap_strmize_key
+gmap_key$strmize
 <pyhmap(k0,x0)><k0><x0>(kxs)
 ) where
 {
@@ -622,11 +622,11 @@ end//let
 #impltmp
 {k0:t0}
 {x0:t0}
-gmap_strmize_key
+gmap_key$strmize
 <pyhmap(k0,x0)><k0><x0>(kxs) =
 (
 XATS2PY_pya1sz_strmize(XATS2PY_pyhmap_get_keys(kxs)))
-//end-of(gmap_strmize_key<pyhmap(k0,x0)><k0><x0>(kxs))
+//end-of(gmap_key$strmize<pyhmap(k0,x0)><k0><x0>(kxs))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -67,7 +67,7 @@ g_vwtp
 {vt:vt}(x0: !vt): type(vt)
 fun<>
 g_prop
-{pf:pf}(x0: pf|): type(pf)
+{pf:pp}(x0: pf|): type(pf)
 fun<>
 g_view
 {vw:vw}(x0: !vw|): type(vw)

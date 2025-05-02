@@ -150,16 +150,22 @@ gmap_strmize
 (kxs: map): strm_vt(@(key, itm))
 (* ****** ****** *)
 //
+(*
+(*
+HX-2025-05-02:
+These two are in [gmap001.sats]!
+*)
 fun
 <map:t0>
 <key:t0>
 <itm:vt>
-gmap_strmize_key(map): strm_vt(key)
+gmap_key$strmize(map): strm_vt(key)
 fun
 <map:t0>
 <key:t0>
 <itm:vt>
-gmap_strmize_itm(map): strm_vt(itm)
+gmap_val$strmize(map): strm_vt(itm)
+*)
 //
 (* ****** ****** *)
 (*

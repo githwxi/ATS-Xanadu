@@ -602,7 +602,7 @@ gmap_strmize
 <jshmap(k0,x0)><k0><x0>(kxs) =
 strm_vt_map0
 (
-gmap_strmize_key
+gmap_key$strmize
 <jshmap(k0,x0)><k0><x0>(kxs)
 ) where
 {
@@ -618,11 +618,11 @@ end//let
 #impltmp
 {k0:t0}
 {x0:t0}
-gmap_strmize_key
+gmap_key$strmize
 <jshmap(k0,x0)><k0><x0>(kxs) =
 (
 XATS2JS_jsa1sz_strmize(XATS2JS_jshmap_get_keys(kxs)))
-//end-of(gmap_strmize_key<jshmap(k0,x0)><k0><x0>(kxs))
+//end-of(gmap_key$strmize<jshmap(k0,x0)><k0><x0>(kxs))
 //
 (* ****** ****** *)
 (* ****** ****** *)

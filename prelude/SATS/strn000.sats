@@ -299,11 +299,16 @@ strn with strn_make0_llist of 1000
 //
 fun<>
 strn_make0_lstrm
+(cs: ~strm_vt(cgtz)): strn(*sz*)
+fun<>
+strn_make0_lstrq
 {n0:i0}
-(cs: ~strm_vt(cgtz,n0)): strn(n0)
+(cs: ~strq_vt(cgtz,n0)): strn(n0)
 //
 #symload
 strn with strn_make0_lstrm of 1000
+#symload
+strn with strn_make0_lstrq of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

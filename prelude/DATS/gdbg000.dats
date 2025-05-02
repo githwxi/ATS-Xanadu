@@ -86,7 +86,7 @@ g_ptype() =
 (
  strn_print("$typ(vw)"))
 #impltmp
-< pf:pf >
+< pf:pp >
 g_ptype() =
 (
  strn_print("$typ(pf)"))
