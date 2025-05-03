@@ -6,7 +6,7 @@
 #staload _ =
 "srcgen1\
 /prelude\
-/DATS/CATS/JS/Node/g_print.dats"
+/DATS/CATS/JS/NODE/g_print.dats"
 (* ****** ****** *)
 
 val a = 'a'
@@ -93,16 +93,19 @@ and c = abc[2]
 //
 (* ****** ****** *)
 //
+val xyz = "xyz"
+(*
 val xyz =
 let
 val x = code('x')
 in
-strn_tabulate_cfr
+strn_tabulate$f1un
 (3, lam(i) => char(x+i))
 end // end of [val]
 val () =
 ( g_print("xyz = ")
 ; g_print( xyz ); g_print('\n'))
+*)
 //
 (* ****** ****** *)
 //
@@ -132,13 +135,17 @@ val ans =
 (
 gseq_prefixq("abc", "abcde")
 )
-val ( ) = println("ans(tt) = ", ans)
+val ( ) =
+(
+g_print("ans(tt) = "); g_print(ans); g_print("\n"))
 //
 val ans =
 (
 gseq_suffixq("abde", "abcde")
 )
-val ( ) = println("ans(ff) = ", ans)
+val ( ) =
+(
+g_print("ans(ff) = "); g_print(ans); g_print("\n"))
 //
 (* ****** ****** *)
 //
@@ -161,15 +168,16 @@ end // local
 //
 val (  ) =
 (
-print("wrds = ");
+g_print("wrds = ");
 let
-//
 fn0
-g_print_strn(cs) = g_print<strn>(cs)
+cstrn(cs) = g_print<char>(cs)
+fn0
+pstrn(cs) = g_print<strn>(cs)
 #impltmp
 g_print<strn>(cs) =
-(print('"'); g_print_strn(cs); print('"')) in print0(wrds) end ; println((*void*)) )
+(cstrn('"');pstrn(cs);cstrn('"')) in print0(wrds) end; g_print("\n"))
 //
 (* ****** ****** *)
 
-(* end of [ATS3-Xanadu/srcgen1/xats2js/srcgen1/TEST/prelude_char.dats] *)
+(* end of [ATS3-Xanadu/srcgen1/xats2js/srcgen1/TEST/prelude/chars.dats] *)

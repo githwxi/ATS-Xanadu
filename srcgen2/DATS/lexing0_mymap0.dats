@@ -54,10 +54,22 @@ ATS_PACKNAME
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#if
+defq(_XATS2JS_)
 #staload
 _(*tmp*) =
 "srcgen1\
 /prelude/DATS/CATS/JS/basics3.dats"
+#endif//end-of-(#ifdefq(_XATS2JS_))
+#if
+defq(_XATS2PY_)
+#staload
+_(*tmp*) =
+"srcgen1\
+/prelude/DATS/CATS/PY/basics3.dats"
+#endif//end-of-(#ifdefq(_XATS2PY_))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

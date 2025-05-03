@@ -4,6 +4,8 @@
 ###############################################################
 ###############################################################
 CAT=cat
+ECHO=echo
+PRINTF=printf
 ###############################################################
 PRELUDED=$(XATSHOME)/prelude
 XATSLIBD=$(XATSHOME)/xatslib
@@ -17,7 +19,7 @@ all:: prelude
 all:: xatslib
 ###############################################################
 prelude:: ; \
-echo "##" `date` > $(PRELUDE_PY)
+printf "## %s\n" "`date`" > $(PRELUDE_PY)
 prelude:: ; \
 $(CAT) xats2py_prelude_hd >> $(PRELUDE_PY)
 ###############################################################
@@ -72,19 +74,19 @@ $(CAT) $(PRELUDED)/DATS/CATS/PY/axsz000.cats >> $(PRELUDE_PY)
 ###############################################################
 ###############################################################
 xatslib:: ; \
-echo "##" `date` > $(XATSLIB_PY)
+printf "## %s\n" "`date`" > $(XATSLIB_PY)
 xatslib:: ; \
 $(CAT) xats2py_xatslib_hd >> $(XATSLIB_PY)
 ###############################################################
 xatslib:: \
-Array00
-Array00: ; $(CAT) \
-$(XATSLIBD)/xbasics/DATS/CATS/PY/Array00.cats >> $(XATSLIB_PY)
+dynarr0
+dynarr0: ; $(CAT) \
+$(XATSLIBD)/xbasics/DATS/CATS/PY/dynarr0.cats >> $(XATSLIB_PY)
 ###############################################################
 xatslib:: \
-Hsmap00
-Hsmap00: ; $(CAT) \
-$(XATSLIBD)/xbasics/DATS/CATS/PY/Hsmap00.cats >> $(XATSLIB_PY)
+hashmp0
+hashmp0: ; $(CAT) \
+$(XATSLIBD)/xbasics/DATS/CATS/PY/hashmp0.cats >> $(XATSLIB_PY)
 ###############################################################
 ###############################################################
 # end of [Makefile]

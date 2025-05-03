@@ -11,18 +11,18 @@
 #staload
 "srcgen1\
 /prelude\
-/DATS/CATS/JS/Node/g_print.dats"
+/DATS/CATS/JS/NODE/g_print.dats"
 (* ****** ****** *)
 
 val () =
-println("0===0: ", 0===0)
+printsln("0===0: ", 0===0)
 val () =
-println("'0'==='0': ", '0' === '0')
+printsln("'0'==='0': ", '0' === '0')
 val () =
-println("\"0\"===\"0\": ", "0" === "0")
+printsln("\"0\"===\"0\": ", "0" === "0")
 val () =
-println("true!==true: ", true !== true)
+printsln("true!==true: ", true !== true)
 
 (* ****** ****** *)
 
-(* end of [ATS3-Xanadu/srcgen1/xats2js/srcgen1/TEST/prelude_eqref.dats] *)
+(* end of [ATS3-Xanadu/srcgen1/xats2js/srcgen1/TEST/prelude/eqref.dats] *)

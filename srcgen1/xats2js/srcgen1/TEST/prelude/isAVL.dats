@@ -7,7 +7,7 @@
 #staload _ =
 "srcgen1\
 /prelude\
-/DATS/CATS/JS/Node/g_print.dats"
+/DATS/CATS/JS/NODE/g_print.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -103,4 +103,4 @@ val (  ) =
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3-Xanadu/srcgen1/xats2js/srcgen1/TEST/prelude_isAVL.dats] *)
+(* end of [ATS3-Xanadu/srcgen1/xats2js/srcgen1/TEST/prelude/isAVL.dats] *)

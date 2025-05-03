@@ -7,7 +7,7 @@
 #staload _ =
 "srcgen1\
 /prelude\
-/DATS/CATS/JS/Node/g_print.dats"
+/DATS/CATS/JS/NODE/g_print.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 

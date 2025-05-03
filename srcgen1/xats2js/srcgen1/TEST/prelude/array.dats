@@ -6,42 +6,39 @@
 #staload
 "srcgen1\
 /prelude\
-/DATS/CATS/JS/Node/g_print.dats"
+/DATS/CATS/JS/NODE/g_print.dats"
 (* ****** ****** *)
 //
 val A0 = a0ref(0)
 //
-val x0 =
-a0ref_get<int>(A0)
-val () = println(A0)
-val () =
-a0ref_set<int>(A0, 1)
-val x1 =
-a0ref_get<int>(A0)
-val () = println(A0)
-//
+val x0 = a0ref_get<int>(A0)
+val () = prints("A0[0] = ", x0, "\n")
+val () = a0ref_set<int>(A0, 1)
+val x1 = a0ref_get<int>(A0)
+val () = prints("A0[0] = ", x1, "\n")
+////
 (* ****** ****** *)
 //
 val B1 =
 a1ref_make_nval<int>
   (10, 0)
 //
-val y0 = get_at(B1, 0   )
-val () = set_at(B1, 1, 1)
-val y1 = get_at(B1, 1   )
-val () = set_at(B1, 2, 2)
-val y2 = get_at(B1, 2   )
+val y0 = get$at(B1, 0   )
+val () = set$at(B1, 1, 1)
+val y1 = get$at(B1, 1   )
+val () = set$at(B1, 2, 2)
+val y2 = get$at(B1, 2   )
 //
 (* ****** ****** *)
 
 val () =
-gseq_rforeach
+gseq_rforitm
 (gseq_length(B1)) where
 {
 #impltmp
 a1ref_length<int>(_) = 10
 #impltmp
-rforeach$work<int>(i0) = set_at(B1, i0, i0+1)
+rforitm$work<int>(i0) = set$at(B1, i0, i0+1)
 }
 
 (* ****** ****** *)
@@ -110,7 +107,7 @@ gseq_permutize_lstrm(B3)
 }
 //
 val len = length0(xss)
-val ( ) = println("|xss| = ", len)
+val ( ) = printsln("|xss| = ", len)
 //
 (* ****** ****** *)
 
