@@ -21,7 +21,7 @@ XATS2JS=${XATSJSD}/bin/xats2js
 XATSJSD=\
 ./../../../../../srcgen1/xats2js/srcgenx
 ######
-LIBXATSOPT_JS="./../../../../lib/libxatsopt.js"
+LIBXATSOPT_JS="./../../../../lib/lib1xatsopt.js"
 ######
 XATS2JS_PRELUDE="$(XSHARED)/runtime/xats2js_prelude.js"
 XATS2JS_PRELUDE_NODE="$(XSHARED)/runtime/xats2js_prelude_node.js"
