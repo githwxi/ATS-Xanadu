@@ -75,8 +75,8 @@ $(XATS2JS) --output-a $@_ats2.js --dynamic $@.dats
 clean:: ; rm -f *~
 #
 cleanall:: clean
-cleanall:: ; rm -f ./xatsopt_tcheck00.js
-cleanall:: ; rm -f ./xatsopt_tcheck01.js
+cleanall:: ; rm -f ./xatsopt_tcheck00_ats2.js
+cleanall:: ; rm -f ./xatsopt_tcheck01_ats2.js
 #
 ########################################################################
 ###################### end of [Makefile_xats2js] #######################
