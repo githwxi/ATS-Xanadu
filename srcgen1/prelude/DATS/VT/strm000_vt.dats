@@ -330,8 +330,14 @@ let
 val () =
 (r0 := list_vt_cons(x0, _))
 in//let
-(
-  loop(xs, r0.1); $fold(r0)) end
+  loop(xs, r0.1)
+(*
+HX-2025-05-02:
+This is correct but
+there is no TCO support
+for it in srcgen1-xats2js!
+  loop(xs, r0.1); $fold(r0) *)
+end//let
 ) (*case+*) // end of [loop(xs,r0)]
 //
 in
