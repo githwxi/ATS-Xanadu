@@ -41,8 +41,8 @@ $(XATSHOME)/srcgen2/xats2js/srcgenx
 SRCGEN2_XSHARED=\
 $(XATSHOME)/srcgen2/xats2js/srcgenx/xshared/runtime
 ########################################################################
-XATS2JS_JSEMIT00=./../UTIL/xats2js_jsemit00_dats.js
-XATS2JS_JSEMIT00=./../UTIL/xats2js_jsemit00_dats_out.js
+XATS2JS_JSEMIT00=./../UTIL/xats2js_jsemit00_ats2.js
+XATS2JS_JSEMIT00=./../UTIL/xats2js_jsemit00_ats3.js
 ########################################################################
 ########################################################################
 test00:: ; $(PRINTF) "// %s\n" "`date`" > $@_out.js
