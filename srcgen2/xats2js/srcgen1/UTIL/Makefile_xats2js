@@ -77,6 +77,24 @@ npx google-closure-compiler \
 #
 ########################################################################
 #
+lib1xatsopt2js: ; \
+$(CAT) \
+$(XATS2JS_JS1EMIT) > $@_ats2.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE) >> $@_ats2.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE_NODE) >> $@_ats2.js && \
+$(CAT) \
+$(XATS2JS_XATSLIB_NODE) >> $@_ats2.js && \
+$(CAT) $(LIBXATSOPT_JS) $(LIBXATS2JS_JS) >> $@_ats2.js
+#
+lib1xatsopt2js_opt1: ; \
+npx google-closure-compiler \
+  -W QUIET --compilation_level SIMPLE \
+  --js=lib1xatsopt2js_ats2.js --js_output_file=lib1xatsopt2js_ats2_opt1.js
+#
+########################################################################
+#
 # HX: for cleaning up
 #
 clean:: ; rm -f *~
