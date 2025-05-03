@@ -27,7 +27,7 @@ $(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
 $(CAT) \
 $(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
 $(CAT) $(BOOTPY1)/lib/lib2xatsopt.py >> $@_ats3.py && \
-$(NODE) --stack-size=4096 \
+$(NODE) --stack-size=8192 \
 $(XATS2PY_PYEMIT00) $(SRCGEN2)/UTIL/xatsopt_tcheck00.dats >> $@_ats3.py
 #
 ########################################################################
@@ -40,5 +40,6 @@ cleanall:: ; rm -f xatsopt_tcheck00_ats3.py
 ########################################################################
 XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js
 XATS2PY_PYEMIT00=$(XATS2PY)/srcgen1/UTIL/xats2py_pyemit00_ats2.js
+# XATS2PY_PYEMIT00=$(XATS2PY)/srcgen1/UTIL/xats2py_pyemit00_ats3.js
 ########################################################################
 ########################################################################
