@@ -27,7 +27,7 @@ For testing xatslib/JS!
 (* ****** ****** *)
 //
 val map1 =
-jshsmap
+jshmap
 (list_2val
 (@("a", 0),@("b", 1)))
 val (  ) = prints
@@ -50,7 +50,7 @@ val (  ) = print0s
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val arr1 = jsarray
+val arr1 = jsdasz
 (lam(work) => GSEQ(map1).foritm(work))
 val (  ) = prints
 ("arr1(", type(arr1), ") = ", arr1, "\n")
@@ -76,4 +76,4 @@ val (  ) = prints
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_DATS_CATS_JS_TEST_test01_jshsmap.dats] *)
+(* end of [ATS3/XANADU_xatslib_xbasics_TEST_CATS_JS_test02_jshmap0.dats] *)

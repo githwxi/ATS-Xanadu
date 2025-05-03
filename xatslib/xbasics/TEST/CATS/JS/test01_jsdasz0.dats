@@ -27,11 +27,11 @@ For testing xatslib/JS!
 (* ****** ****** *)
 //
 val A1 =
-jsarray_1val(1)
+jsdasz_1val(1)
 val A2 =
-jsarray_2val("1", "2")
+jsdasz_2val("1", "2")
 val A3 =
-jsarray_3val("1", "2", "3")
+jsdasz_3val("1", "2", "3")
 //
 val () =
 prints("A1(", type(A1), ") = ", A1, "\n")
@@ -49,7 +49,7 @@ prints("A4(", type(A4), ") = ", A4, "\n")
 (* ****** ****** *)
 //
 val An =
-jsarray_make_ncpy
+jsdasz_make_ncpy
 ( 10, -1(*init*) )
 //
 val () =
@@ -94,7 +94,7 @@ gseq_imap_list
 {
 #typedef x0 = nint
 #typedef y0 = nint
-#typedef xs = jsa0(nint)
+#typedef xs = jsa1(nint)
 #impltmp
 imap$fopr
 <x0><y0>(i0, x0) = i0*x0*x0 + 1}//where
@@ -109,7 +109,7 @@ gseq_irmap_list
 {
 #typedef x0 = nint
 #typedef z0 = nint
-#typedef xs = jsa0(nint)
+#typedef xs = jsa1(nint)
 #impltmp
 irmap$fopr
 <x0><z0>(i0, x0) = i0*x0*x0 + 1}//where
@@ -175,20 +175,20 @@ val ( ) = (prints("rb1 = ", rb1, "\n"))
 (* ****** ****** *)
 //
 val An2 =
-jsarray_fmake_fwork{sint}
+jsdasz_fmake_fwork{sint}
 (
 lam(work)=>
 (foritm(An, work);rforitm(An, work)))
 val ( ) =
-prints("jsarray_fmake_fwork(...) = ", An2, "\n")
+prints("jsdasz_fmake_fwork(...) = ", An2, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 val iter =
-jsarray_iter_make(An)
+jsdasz_iter_make(An)
 val-true =
-jsarray_iter_next$work
+jsdasz_iter_next$work
 (iter
 ,lam(i, x) => print1s("(i,x) = (", i, ",", x, ")\n"))
 //
@@ -198,4 +198,4 @@ jsarray_iter_next$work
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_TEST_CATS_JS_test01_jsarray.dats] *)
+(* end of [ATS3/XANADU_xatslib_xbasics_TEST_CATS_JS_test01_jsdasz0.dats] *)
