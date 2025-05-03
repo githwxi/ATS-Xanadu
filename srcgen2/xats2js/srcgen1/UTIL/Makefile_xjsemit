@@ -37,11 +37,11 @@ xats2js_jsemit00: ; \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude.js >> $@_ats3.js && \
+$(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude_node.js >> $@_ats3.js && \
+$(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_xatslib_node.js >> $@_ats3.js && \
+$(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
 $(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
@@ -55,11 +55,11 @@ xats2js_jsemit01: ; \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude.js >> $@_ats3.js && \
+$(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude_node.js >> $@_ats3.js && \
+$(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_xatslib_node.js >> $@_ats3.js && \
+$(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
 $(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \

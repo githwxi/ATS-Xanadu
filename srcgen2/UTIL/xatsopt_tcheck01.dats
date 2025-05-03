@@ -111,8 +111,17 @@ end//let//end-of-[fpath_datsq(fp)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#if
+defq(_XATS2JS_)
 #typedef
 argv = jsa1sz(strn)
+#endif//#if(defq(_XATS2JS_))
+#if
+defq(_XATS2PY_)
+#typedef
+argv = pya1sz(strn)
+#endif//#if(defq(_XATS2PY_))
+//
 #extern
 fun
 XATS2JS_NODE_argv$get

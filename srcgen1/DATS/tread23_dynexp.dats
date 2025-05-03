@@ -478,14 +478,20 @@ D3Cd2ecl(d2c) => ()
 |
 D3Cstatic(tok, d3c1) =>
 {
-  val () = tread23_d3ecl(d3c1)
-}
+  val () =
+  tread23_d3ecl(d3c1) }
 |
 D3Cextern(tok, d3c1) =>
 {
-  val () = tread23_d3ecl(d3c1)
-}
+  val () =
+  tread23_d3ecl(d3c1) }
 //
+|
+D3Cdclst(dcls) =>
+{
+  val () =
+  tread23_d3eclist(dcls)
+}
 |
 D3Clocal(head, body) =>
 {
@@ -494,6 +500,13 @@ D3Clocal(head, body) =>
   tread23_d3eclist(head)
   val () =
   tread23_d3eclist(body)
+*)
+(*
+HX-202?:
+For testing an idea.
+Please find more inside:
+#include
+"./CONTRIB/tread23_dynexp.dats"
 *)
   val () =
   tread23_d3ecl_D3Clocal(d3cl)

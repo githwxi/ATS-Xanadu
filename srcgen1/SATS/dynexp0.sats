@@ -1190,17 +1190,13 @@ d0ecl_node =
 (*
 indicating error
 *)
-| D0Cnone of token
+| D0Cnone0 of token
 //
 (*
 HX-2019:
 for skipping synerr:
 *)
-| D0Ctokerr of (token)
-//
-(*
-| D0Cthen of (token) // opt
-*)
+| D0Ctokerr of token
 //
 // HX: delete fixity
 //
@@ -1315,7 +1311,10 @@ for skipping synerr:
   , dq0eid, ti0arglst, f0arglst
   , effs0expopt, token(*EQ*), d0exp(*body*))
 //
-| D0Celse1 of (token) // optional
+(*
+| D0Cthen0 of (token) // optional
+*)
+| D0Celse1 of (token) // required
 | D0Cendif of (token) // required
 | D0Cifdec of (token, g0exp, tokenopt) // #if(gexp) ...
 | D0Celsif of (token, g0exp, tokenopt) // #elsif(gexp) ...
