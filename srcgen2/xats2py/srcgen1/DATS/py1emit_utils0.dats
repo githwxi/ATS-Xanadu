@@ -346,7 +346,7 @@ tint.node() of
 ) where
 {
 #impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i0intpy1(...)]
+}(*where*)//end-of-[i0intpy1(filr,tint)]
 //
 (* ****** ****** *)
 //
@@ -361,7 +361,7 @@ else print("XATSBOOL(False)")
 ) where
 {
 #impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i0btfpy1(...)]
+}(*where*)//end-of-[i0btfpy1(filr,btf0)]
 //
 (* ****** ****** *)
 //
@@ -369,81 +369,8 @@ else print("XATSBOOL(False)")
 i0chrpy1
 (filr, tchr) =
 (
-//
-case-
-tchr.node() of
-|T_CHAR1_nil0 _ =>
-prints("XATSCNUL(", ")")
-|T_CHAR2_char(rep) =>
-prints("XATSCHR2(", rep, ")")
-|T_CHAR3_blsh(rep) =>
-let
- val()=f1_char3_blsh_rep(rep)
-end
-//
-) where
-{
-//
-fun
-f1_char3_blsh_rep
-  (rep: strn): void =
-let
-(*
-val c0 = rep[0]
-and c1 = rep[1]
-*)
-val c2 = rep[2]
-val n0 =
-(
-  strn_length(rep))
-//
-in//let
-//
-case+ c2 of
-//
-| 'n' =>
-print("XATSCHR2('\\n')")
-| 't' =>
-print("XATSCHR2('\\t')")
-| 'r' =>
-print("XATSCHR2('\\r')")
-//
-| 'b' =>
-print("XATSCHR2('\\b')")
-| 'f' =>
-print("XATSCHR2('\\f')")
-| 'v' =>
-print("XATSCHR2('\\v')")
-//
-| '\'' =>
-print("XATSCHR2('\\\'')")
-| '\\' =>
-print("XATSCHR2('\\\\')")
-//
-| _(*otherwise*) =>
-(
-print("XATSCHR3('\\\\");
-f2_rep(2(*i0*)); print("')")
-) where
-{
-fun
-f2_rep
-(i0: sint): void =
-if
-(i0 < n0) then
-let
-val c0 = rep[i0]
-in//let
-(
-if c0 != '\'' then print(c0))
-end//let
-}
-//
-end//end
-//
-#impltmp g_print$out<>() = filr
-//
-}(*where*)//end-of-[i0chrpy1(...)]
+  i0chrfpr(filr, tchr))
+//HX:sharing(i0chrfpr=i1chrjs1=i1chrpy1)
 //
 (* ****** ****** *)
 //
@@ -468,7 +395,7 @@ tflt.node() of
 ) where
 {
 #impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i0fltpy1(...)]
+}(*where*)//end-of-[i0fltpy1(filr,tflt)]
 //
 (* ****** ****** *)
 //
@@ -566,7 +493,7 @@ val stmp = i1tnm_get_stmp(itnm)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_DATS_py1emit_utils0.dats] *)
 (***********************************************************************)
