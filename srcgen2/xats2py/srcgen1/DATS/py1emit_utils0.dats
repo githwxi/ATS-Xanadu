@@ -375,9 +375,9 @@ tchr.node() of
 |T_CHAR1_nil0 _ =>
 prints("XATSCNUL(", ")")
 |T_CHAR2_char(rep) =>
-prints("XATSCHAR(", rep, ")")
+prints("XATSCHR2(", rep, ")")
 |T_CHAR3_blsh(rep) =>
-prints("XATSCHAR(", rep, ")")
+prints("XATSCHR3(", rep, ")")
 //
 ) where
 {

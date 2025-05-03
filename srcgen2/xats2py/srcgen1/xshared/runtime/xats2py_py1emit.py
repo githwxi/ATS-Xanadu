@@ -19,8 +19,29 @@ def XATSSTRN(cs): return cs
 # def XATSSFLT(sf): return sf
 # def XATSDFLT(df): return df
 ##
-def XATSCNUL(  ): return (0)
-def XATSCHAR(ch): return ord(ch[0])
+def XATSCNUL(  ): return 0
+def XATSCHR1(  ): return 0
+##
+def XATSCHR2(ch):
+  return ord(ch[0]) ## acsii
+##
+def XATSCHR3(ch):
+  c1 = ord(ch[1])
+  ## ord('0') = 48
+  ## ord('7') = 55
+  if (c1 < 48 or c1 > 55):
+    ## for example: '\(', '\)'
+    return ord(ch[1]) ## acsii
+  else:
+    i1 = 2
+    d1 = c1 - 48
+    while (i1 < len(ch)):
+      c1 = ch[i1]
+      if (c1 == "'"):
+        return d1
+      else:
+        d1 = 8*d1 + ord(c1)-48
+    return d1 ## ascii code of [ch]
 ##
 ########################################################################.
 
