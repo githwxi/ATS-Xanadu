@@ -75,6 +75,7 @@ trxi0i1_dynexp.dats \
 trxi0i1_decl00.dats \
 xats2js.dats \
 xats2js_myenv0.dats \
+xats2js_utils0.dats \
 xats2js_dynexp.dats \
 xats2js_decl00.dats \
 xats2js_tmplib.dats \
