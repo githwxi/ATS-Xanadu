@@ -88,7 +88,7 @@ $(CAT) \
 $(SRCGEN1_XATSLIB_NODE) >> $@_ats2.js && \
 $(CAT) $(LIBXATSOPT_JS) $(LIBXATS2JS_JS) >> $@_ats2.js
 #
-lib1xatsopt2js_opt1: ; \
+lib1xatsopt2js_opt1: lib1xatsopt2js; \
 npx google-closure-compiler \
   -W QUIET --compilation_level SIMPLE \
   --js=lib1xatsopt2js_ats2.js --js_output_file=lib1xatsopt2js_ats2_opt1.js

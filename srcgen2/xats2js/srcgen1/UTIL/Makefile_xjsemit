@@ -17,6 +17,16 @@ $(SRCGEN1)/xats2js/srcgenx/xshared/runtime
 S2XSHRD=\
 $(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+########################################################################
+cleanall:: ; rm -f xats2js_jsemit00_ats3.js
+cleanall:: ; rm -f xats2js_jsemit01_ats3.js
+########################################################################
+########################################################################
+XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js
+XATS2JS_JSEMIT00=$(XATSJSD)/srcgen1/UTIL/xats2js_jsemit00_ats2.js
+########################################################################
 ########################################################################
 #
 # HX-2025-03-29:
@@ -73,16 +83,26 @@ npx google-closure-compiler \
   --js=xats2js_jsemit01_ats3.js --js_output_file=xats2js_jsemit01_ats3_opt1.js
 #
 ########################################################################
-########################################################################
-clean:: ; rm -f *~
-cleanall:: ; rm -f *~
-########################################################################
-cleanall:: ; rm -f xats2js_jsemit00_ats3.js
-cleanall:: ; rm -f xats2js_jsemit01_ats3.js
-########################################################################
-########################################################################
-XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js
-XATS2JS_JSEMIT00=$(XATSJSD)/srcgen1/UTIL/xats2js_jsemit00_ats2.js
+#
+lib1xatsopt2js: ; \
+$(CAT) \
+$(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
+$(CAT) \
+$(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
+$(CAT) \
+$(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
+$(CAT) \
+$(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
+$(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
+$(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
+$(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
+$(XATSJSD)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_ats3.js
+#
+lib1xatsopt2js_opt1: lib1xatsopt2js; \
+npx google-closure-compiler \
+  -W QUIET --compilation_level SIMPLE \
+  --js=lib1xatsopt2js_ats3.js --js_output_file=lib1xatsopt2js_ats3_opt1.js
+#
 ########################################################################
 ########################################################################
 ###################### end of [Makefile_xjsemit] #######################
