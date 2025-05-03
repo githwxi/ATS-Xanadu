@@ -8,6 +8,12 @@
 ##################################################################.
 ##################################################################.
 ##
+def XATSOPT_XATSHOME_get():
+  xhm = os.environ['XATSHOME']
+  return ("" if xhm is None else xhm)
+##
+##################################################################.
+##
 def XATSOPT_strn_append_uint(name, stmp):
   return name + str(stmp) ## endof(strn_append_uint)
 ##

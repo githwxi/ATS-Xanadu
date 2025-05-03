@@ -36,11 +36,17 @@ def XATS2PY_pya1sz_set_at(xs, i0, x0):
 ##################################################################.
 ##
 ## HX: listizing a view
-def XATS2PY_pyhmap_keys(dct):
-  return list(dct.keys()) ## endof(pyhmap_keys)
-def XATS2PY_pyobjmap_keyq(dct, key):
-  return (  key in dict  ) ## endof(pyhmap_keyq)
+def XATS2PY_pyhmap_keyq(dct, key):
+  return (  key in dct  ) ## endof(pyhmap_keyq)
+def XATS2PY_pyhmap_get_keys( dct ):
+  return list(dct.keys()) ## endof(pyhmap_get_keys)
 ##
+##################################################################.
+def XATS2PY_pyhmap_make_nil(): return {}
+##################################################################.
+
+
+
 ##################################################################.
 ##################################################################.
 ## end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_PY_basics3.cats]
