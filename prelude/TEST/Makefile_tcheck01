@@ -116,7 +116,7 @@ prelude_NODE_dats: ; $(NODE) \
 --stack-size=4096 $(SRCGEN2_XATSOPT) ./../HATS/prelude_NODE_dats.hats
 ########################################################################
 ########################################################################
-SRCGEN2_XATSOPT=$(XATSHOME)/srcgen2/UTIL/xatsopt_tcheck01_dats.js
+SRCGEN2_XATSOPT=$(XATSHOME)/srcgen2/UTIL/xatsopt_tcheck01_ats2.js
 ########################################################################
 ########################################################################
 ###################### end of [Makefile_tcheck01] ######################

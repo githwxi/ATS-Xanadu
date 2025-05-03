@@ -167,7 +167,7 @@ XATS2JS_jsdasz_mapref$f1un
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsdasz_sortref_f2un
+XATS2JS_jsdasz_sortref$f2un
   (A, cmpr)
 {
   A.sort(cmpr); return // HX: [A] is mutated!
@@ -176,7 +176,7 @@ XATS2JS_jsdasz_sortref_f2un
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsdasz_iforall_f2un
+XATS2JS_jsdasz_iforall$f2un
   (A, test)
 {
   let i0
@@ -191,7 +191,7 @@ XATS2JS_jsdasz_iforall_f2un
 // HX-2024-08-09:
 // This is likely to be less efficient!
 function
-XATS2JS_jsdasz_iforall_f2un
+XATS2JS_jsdasz_iforall$f2un
   (A, test)
 {
   for (const ix of A.entries()) {

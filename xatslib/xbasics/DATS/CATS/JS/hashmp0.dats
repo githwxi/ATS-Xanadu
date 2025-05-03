@@ -227,12 +227,12 @@ in a hashmap.
 *)
 #extern
 fun<>
-jshmap_forall_f2un
+jshmap_forall$f2un
  {k:t0}{x:vt}
 ( map: jsm1(k,x)
 , test: (k, !x) -> bool): bool
 //
-#symload forall with jshmap_forall_f2un of 1000
+#symload forall with jshmap_forall$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -506,7 +506,7 @@ jshmap_set$at
 gseq_forall
 <jsm1(k,x)><(k,x)>
   ( kxs ) =
-jshmap_forall_f2un<>
+jshmap_forall$f2un<>
 (kxs
 ,lam(k, x) => forall$test@(k, x))
 //
@@ -516,21 +516,21 @@ jshmap_forall_f2un<>
 gseq_forall1
 <jsm1(k,x)><(k,x)>
   ( kxs ) =
-jshmap_forall_f2un<>
+jshmap_forall$f2un<>
 (kxs
 ,lam(k, x) => forall$test1@(k, x))
 //
 #impltmp
 <(*tmp*)>
-jshmap_forall_f2un
+jshmap_forall$f2un
   (map, test) =
 (
-XATS2JS_jshmap_forall_f2un
+XATS2JS_jshmap_forall$f2un
   (map, test)) where
 {
 #extern
 fun
-XATS2JS_jshmap_forall_f2un
+XATS2JS_jshmap_forall$f2un
  {k:t0}{x:vt}
 ( map: jsm1(k,x)
 , test
