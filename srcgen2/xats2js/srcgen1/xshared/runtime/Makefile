@@ -9,10 +9,10 @@ PRINTF=printf
 PRELUDED=$(XATSHOME)/prelude
 XATSLIBD=$(XATSHOME)/xatslib
 ########################################################################
-PRELUDE_JS=xats2js_prelude.js
-XATSLIB_JS=xats2js_xatslib.js
-PRELUDE_NODE_JS=xats2js_prelude_node.js
-XATSLIB_NODE_JS=xats2js_xatslib_node.js
+PRELUDE_JS=srcgen1_prelude.js
+XATSLIB_JS=srcgen1_xatslib.js
+PRELUDE_NODE_JS=srcgen1_prelude_node.js
+XATSLIB_NODE_JS=srcgen1_xatslib_node.js
 ########################################################################
 all::
 ########################################################################
@@ -24,7 +24,7 @@ prelude:: ; \
 $(PRINTF) "%s%s\n" \
 "// " "`date`" > $(PRELUDE_JS)
 prelude:: ; \
-$(CAT) xats2js_prelude_hd >> $(PRELUDE_JS)
+$(CAT) srcgen1_prelude_hd >> $(PRELUDE_JS)
 ########################################################################
 prelude:: \
 xtop000
@@ -80,7 +80,7 @@ xatslib:: ; \
 $(PRINTF) "%s%s\n" \
 "// " "`date`" > $(XATSLIB_JS)
 xatslib:: ; \
-$(CAT) xats2js_xatslib_hd >> $(XATSLIB_JS)
+$(CAT) srcgen1_xatslib_hd >> $(XATSLIB_JS)
 ########################################################################
 xatslib:: \
 dynarr0
@@ -97,7 +97,7 @@ prelude_node:: ; \
 $(PRINTF) "%s%s\n" \
 "// " "`date`" > $(PRELUDE_NODE_JS)
 prelude_node:: ; \
-$(CAT) xats2js_prelude_node_hd >> $(PRELUDE_NODE_JS)
+$(CAT) srcgen1_prelude_node_hd >> $(PRELUDE_NODE_JS)
 prelude_node:: ; $(CAT) \
 $(PRELUDED)/DATS/CATS/JS/NODE/node000.cats >> $(PRELUDE_NODE_JS)
 ########################################################################
@@ -106,12 +106,12 @@ clean:: ; rm -f *~
 ########################################################################
 cleanall:: clean
 # cleanall:: ; rm -f xats2js_js1emit.js
-# cleanall:: ; rm -f xats2js_prelude_hd
-# cleanall:: ; rm -f xats2js_prelude.js
-# cleanall:: ; rm -f xats2js_prelude_node_hd
-# cleanall:: ; rm -f xats2js_prelude_node.js
-# cleanall:: ; rm -f xats2js_xatslib_node_hd
-# cleanall:: ; rm -f xats2js_xatslib_node.js
+# cleanall:: ; rm -f srcgen1_prelude_hd
+# cleanall:: ; rm -f srcgen1_prelude.js
+# cleanall:: ; rm -f srcgen1_prelude_node_hd
+# cleanall:: ; rm -f srcgen1_prelude_node.js
+# cleanall:: ; rm -f srcgen1_xatslib_node_hd
+# cleanall:: ; rm -f srcgen1_xatslib_node.js
 ########################################################################
 ########################################################################
 # end-of-[ATS-Xanadu/srcgen2/xats2js/srcgen1/xshared/runtime/Makefile]

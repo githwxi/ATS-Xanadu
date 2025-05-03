@@ -1,5 +1,5 @@
 /* ****** ****** */
-// XATS2JS_PRELUDE_NODE
+// SRCGEN1_PRELUDE_NODE
 /* ****** ****** */
 /* ****** ****** */
 /*
@@ -43,33 +43,33 @@ return; // XATS2JS_NODE_char_print
 }
 /* ****** ****** */
 function
-XATS2JS_NODE_gint_print_sint
+XATS2JS_NODE_gint_print$sint
   (x0)
 {
   XATS2JS_NODE_g_print(x0);
-  return; // gint_print_sint<>
+  return; // gint_print$sint<>
 }
 function
-XATS2JS_NODE_gint_print_uint
+XATS2JS_NODE_gint_print$uint
   (x0)
 {
   XATS2JS_NODE_g_print(x0);
-  return; // gint_print_uint<>
+  return; // gint_print$uint<>
 }
 /* ****** ****** */
 function
-XATS2JS_NODE_gflt_print_sflt
+XATS2JS_NODE_gflt_print$sflt
   (x0)
 {
   XATS2JS_NODE_g_print(x0);
-  return; // gflt_print_sflt<>
+  return; // gflt_print$sflt<>
 }
 function
-XATS2JS_NODE_gflt_print_dflt
+XATS2JS_NODE_gflt_print$dflt
   (x0)
 {
   XATS2JS_NODE_g_print(x0);
-  return; // gflt_print_dflt<>
+  return; // gflt_print$dflt<>
 }
 /* ****** ****** */
 function

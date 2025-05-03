@@ -1068,8 +1068,8 @@ fprint_d0ecl
 (
 case+ x0.node() of
 //
-| D0Cnone(tok) =>
-  fprint!(out, "D0Cnone(", tok, ")")
+| D0Cnone0(tok) =>
+  fprint!(out, "D0Cnone0(", tok, ")")
 //
 | D0Ctokerr(tok) =>
   fprint!(out, "D0Ctokerr(", tok, ")")

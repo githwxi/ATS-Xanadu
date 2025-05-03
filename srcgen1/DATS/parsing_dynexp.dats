@@ -4646,7 +4646,7 @@ end // end of [#SYMLOAD(...)]
 _ (* errorcase *) =>
 let
   val () =
-  (err := e0 + 1) in d0ecl_make_node(loc, D0Cnone(tok))
+  (err := e0 + 1) in d0ecl_make_node(loc, D0Cnone0(tok))
 end // end of [let]
 //
 end // end of [fp_d0ecl]
@@ -4720,7 +4720,7 @@ let
 in
   case+
   d0c.node() of
-  | D0Cnone(tok) =>
+  | D0Cnone0(tok) =>
     (
       case+
       tok.node() of

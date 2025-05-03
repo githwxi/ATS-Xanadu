@@ -1322,14 +1322,25 @@ D0Cdynconst
   // end of [val]
 }
 //
+|D0Celse1(tok0) => ()
+|D0Cendif(tok0) => ()
+|D0Cifdec(tok0, gexp, topt) =>
+{
+  val () = synread_g0exp(gexp)
+}
+|D0Celsif(tok0, gexp, topt) =>
+{
+  val () = synread_g0exp(gexp)
+}
+//
 |
-D0Cnone(tok0) =>
+D0Cnone0(tok0) =>
 let
   val () =
   synerr_add(SYNERRd0ecl(d0cl))
 in
   prerrln!(loc0, ": SYNERR(d0ecl): ", d0cl);
-end // end of [D0Cnone]
+end // end of [D0Cnone0]
 //
 |
 D0Ctokerr(tok0) =>
@@ -1338,13 +1349,15 @@ let
   synerr_add(SYNERRd0ecl(d0cl))
 in
   prerrln!(loc0, ": SYNERR(d0ecl): ", d0cl);
-end // end of [D0Cnone]
+end // end of [D0Ctokerr]
 //
+(*
 |
 _(* rest-of-d0ecl *) =>
 (
   prerrln!(loc0, ": synread_d0ecl: d0cl = ", d0cl)
 )
+*)
 //
 end // end of [synread_d0ecl]
 

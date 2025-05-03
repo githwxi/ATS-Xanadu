@@ -28,9 +28,9 @@ LIBXATS2JS_JS=\
 "./../../../xats2js/srcgenx/lib/lib1xats2js.js"
 ########################################################################
 XATS2JS_JS1EMIT="$(XSHARED)/runtime/xats2js_js1emit.js"
-XATS2JS_PRELUDE="$(XSHARED)/runtime/xats2js_prelude.js"
-XATS2JS_PRELUDE_NODE="$(XSHARED)/runtime/xats2js_prelude_node.js"
-XATS2JS_XATSLIB_NODE="$(XSHARED)/runtime/xats2js_xatslib_node.js"
+SRCGEN1_PRELUDE="$(XSHARED)/runtime/srcgen1_prelude.js"
+SRCGEN1_PRELUDE_NODE="$(XSHARED)/runtime/srcgen1_prelude_node.js"
+SRCGEN1_XATSLIB_NODE="$(XSHARED)/runtime/srcgen1_xatslib_node.js"
 ########################################################################
 #
 all:: \
@@ -40,11 +40,11 @@ xats2py_pyemit00.dats ; \
 $(CAT) \
 $(XATS2JS_JS1EMIT) > $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_PRELUDE) >> $@_ats2.js && \
+$(SRCGEN1_PRELUDE) >> $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_PRELUDE_NODE) >> $@_ats2.js && \
+$(SRCGEN1_PRELUDE_NODE) >> $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_XATSLIB_NODE) >> $@_ats2.js && \
+$(SRCGEN1_XATSLIB_NODE) >> $@_ats2.js && \
 $(CAT) $(LIBXATSOPT_JS) >> $@_ats2.js && \
 $(CAT) $(LIBXATS2JS_JS) >> $@_ats2.js && \
 $(CAT) $(LIBXATS2PY_JS) >> $@_ats2.js && \
@@ -57,11 +57,11 @@ xats2py_pyemit01.dats ; \
 $(CAT) \
 $(XATS2JS_JS1EMIT) > $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_PRELUDE) >> $@_ats2.js && \
+$(SRCGEN1_PRELUDE) >> $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_PRELUDE_NODE) >> $@_ats2.js && \
+$(SRCGEN1_PRELUDE_NODE) >> $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_XATSLIB_NODE) >> $@_ats2.js && \
+$(SRCGEN1_XATSLIB_NODE) >> $@_ats2.js && \
 $(CAT) $(LIBXATSOPT_JS) >> $@_ats2.js && \
 $(CAT) $(LIBXATS2JS_JS) >> $@_ats2.js && \
 $(CAT) $(LIBXATS2PY_JS) >> $@_ats2.js && \
@@ -73,11 +73,11 @@ lib1xatsopt2js2py: ; \
 $(CAT) \
 $(XATS2JS_JS1EMIT) > $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_PRELUDE) >> $@_ats2.js && \
+$(SRCGEN1_PRELUDE) >> $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_PRELUDE_NODE) >> $@_ats2.js && \
+$(SRCGEN1_PRELUDE_NODE) >> $@_ats2.js && \
 $(CAT) \
-$(XATS2JS_XATSLIB_NODE) >> $@_ats2.js && \
+$(SRCGEN1_XATSLIB_NODE) >> $@_ats2.js && \
 $(CAT) $(LIBXATSOPT_JS) >> $@_ats2.js && \
 $(CAT) $(LIBXATS2JS_JS) >> $@_ats2.js && \
 $(CAT) $(LIBXATS2PY_JS) >> $@_ats2.js && \
