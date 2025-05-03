@@ -47,17 +47,17 @@ XATS2JS_NODE_strn_print
 local
 #extern
 fun
-XATS2JS_NODE_gint_print_sint
+XATS2JS_NODE_gint_print$sint
 (x0: sint): void = $extnam()
 #extern
 fun
-XATS2JS_NODE_gint_print_uint
+XATS2JS_NODE_gint_print$uint
 (x0: uint): void = $extnam()
 in
 #impltmp
-gint_print_sint<> = XATS2JS_NODE_gint_print_sint
+gint_print$sint<> = XATS2JS_NODE_gint_print$sint
 #impltmp
-gint_print_uint<> = XATS2JS_NODE_gint_print_uint
+gint_print$uint<> = XATS2JS_NODE_gint_print$uint
 end // end of [local]
 //
 (* ****** ****** *)
@@ -65,17 +65,17 @@ end // end of [local]
 local
 #extern
 fun
-XATS2JS_NODE_gflt_print_sflt
+XATS2JS_NODE_gflt_print$sflt
 (x0: sflt): void = $extnam()
 #extern
 fun
-XATS2JS_NODE_gflt_print_dflt
+XATS2JS_NODE_gflt_print$dflt
 (x0: dflt): void = $extnam()
 in
 #impltmp
-gflt_print_sflt<> = XATS2JS_NODE_gflt_print_sflt
+gflt_print$sflt<> = XATS2JS_NODE_gflt_print$sflt
 #impltmp
-gflt_print_dflt<> = XATS2JS_NODE_gflt_print_dflt
+gflt_print$dflt<> = XATS2JS_NODE_gflt_print$dflt
 end // end of [local]
 //
 (* ****** ****** *)

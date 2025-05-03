@@ -9,13 +9,13 @@ NODE=node
 ########################################################################
 BOOTPY1=./..
 ########################################################################
+all:: xatsopt_tcheck00
+########################################################################
 SRCGEN2=./../../../../srcgen2
 XATS2PY=./../../../../srcgen2/xats2py
 ########################################################################
 S2XSHRD=\
 $(SRCGEN2)/xats2py/srcgenx/xshared/runtime
-########################################################################
-all:: xatsopt_tcheck00
 ########################################################################
 ########################################################################
 #
@@ -23,9 +23,9 @@ xatsopt_tcheck00: ; \
 $(CAT) \
 $(S2XSHRD)/xats2py_py1emit.py > $@_ats3.py && \
 $(CAT) \
-$(S2XSHRD)/xats2py_prelude.py >> $@_ats3.py && \
+$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
 $(CAT) \
-$(S2XSHRD)/xats2py_xatslib.py >> $@_ats3.py && \
+$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
 $(CAT) $(BOOTPY1)/lib/lib2xatsopt.py >> $@_ats3.py && \
 $(NODE) --stack-size=4096 \
 $(XATS2PY_PYEMIT00) $(SRCGEN2)/UTIL/xatsopt_tcheck00.dats >> $@_ats3.py

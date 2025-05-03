@@ -241,7 +241,6 @@ defq
 (* ****** ****** *)
 //
 #staload _(*local*) = "./../DATS/xlibext_tmplib.dats"
-#staload _(*local*) = "./../DATS/xlibext_pyemit.dats"
 //
 #if
 defq(_XATS2JS_)

@@ -35,6 +35,15 @@
 //
 #impltmp
 <(*tmp*)>
+bool_neg(b0) =
+(
+if b0
+then false else true)
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 bool_eq
 (b1, b2) =
 (
