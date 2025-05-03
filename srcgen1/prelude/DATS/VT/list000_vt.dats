@@ -386,7 +386,7 @@ let
 in
   $fold(xs0); loop(xs1, xs0)
 end // end of [list_vt_cons]
-) (* end of [loop] *)
+) (* end of [loop(xs0, ys0)] *)
 //
 } (* end of [list_vt_rappend00] *)
 
@@ -417,9 +417,10 @@ list_vt_cons(x0, xs1) =>
 let
 val x0 = g_copy<a>(x0)
 in
-loop(xs1, list_vt_cons(x0, ys0))
+loop
+(xs1, list_vt_cons(x0, ys0))
 end // end of [list_vt_cons]
-) (* end of [loop] *)
+) (* end of [loop(xs0, ys0)] *)
 //
 } (* end of [list_vt_rappend10] *)
 
@@ -451,9 +452,10 @@ list_vt_cons(x0, xs1) =>
 let
 val x0 = g_copy<a>(x0)
 in
-loop(xs1, list_vt_cons(x0, ys0))
+loop
+(xs1, list_vt_cons(x0, ys0))
 end // end of [list_vt_cons]
-) (* end of [loop] *)
+) (* end of [loop(xs0, ys0)] *)
 //
 } (* end of [list_vt_rappend11] *)
 

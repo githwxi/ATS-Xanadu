@@ -330,7 +330,8 @@ let
 val () =
 (r0 := list_vt_cons(x0, _))
 in//let
-  loop(xs, r0.1); $fold( r0 ) end
+(
+  loop(xs, r0.1); $fold(r0)) end
 ) (*case+*) // end of [loop(xs,r0)]
 //
 in
