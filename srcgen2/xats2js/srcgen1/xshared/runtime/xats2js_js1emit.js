@@ -28,7 +28,33 @@ let XATSDFLT = (df) => df
 let XATSSTRN = (cs) => cs
 //
 let XATSCNUL = (  ) => (0)
-let XATSCHAR = (ch) => ch.charCodeAt(0)
+let XATSCHR1 = (  ) => (0)
+let XATSCHAR =
+    (ch) => ch.charCodeAt(0)
+let XATSCHR2 =
+    (ch) => ch.charCodeAt(0)
+//
+let XATSCHR3 = (ch) => {
+    var c1 // current one
+    c1 = ch.charCodeAt(1)
+    if (c1 < 48||c1 > 55)
+    {
+      return c1 ; // ascii
+    } else {
+	var i1 = 2;
+	var d1 = (c1 - 48);
+	while (i1 < ch.length) {
+	    c1 = ch.charCodeAt(i1);
+	    if (c1===39) // SQUOTE=39
+	    {
+		return d1; // ascii
+	    } else {
+		d1 = 8*d1 + (c1 - 48)
+	    }
+	}
+	return d1 ; // ascii code of [ch]
+    }
+}
 //
 ////////////////////////////////////////////////////////////////////////.
 /*

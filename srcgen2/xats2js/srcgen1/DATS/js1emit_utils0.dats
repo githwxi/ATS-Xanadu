@@ -374,6 +374,7 @@ else print("XATSBOOL(false)")
 //
 (* ****** ****** *)
 //
+//
 #implfun
 i0chrjs1
 (filr, tchr) =
@@ -384,15 +385,77 @@ tchr.node() of
 |T_CHAR1_nil0 _ =>
 prints("XATSCNUL(", ")")
 |T_CHAR2_char(rep) =>
-prints("XATSCHAR(", rep, ")")
+prints("XATSCHR2(", rep, ")")
 |T_CHAR3_blsh(rep) =>
-prints("XATSCHAR(", rep, ")")
+let
+ val()=f1_char3_blsh_rep(rep)
+end
 //
 ) where
 {
-#impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i0chrjs1(filr,tchr)]
 //
+fun
+f1_char3_blsh_rep
+  (rep: strn): void =
+let
+(*
+val c0 = rep[0]
+and c1 = rep[1]
+*)
+val c2 = rep[2]
+val n0 =
+(
+  strn_length(rep))
+//
+in//let
+//
+case+ c2 of
+//
+| 'n' =>
+print("XATSCHR2('\\n')")
+| 't' =>
+print("XATSCHR2('\\t')")
+| 'r' =>
+print("XATSCHR2('\\r')")
+//
+| 'b' =>
+print("XATSCHR2('\\b')")
+| 'f' =>
+print("XATSCHR2('\\f')")
+| 'v' =>
+print("XATSCHR2('\\v')")
+//
+| '\'' =>
+print("XATSCHR2('\\\'')")
+| '\\' =>
+print("XATSCHR2('\\\\')")
+//
+| _(*otherwise*) =>
+(
+print("XATSCHR3('\\\\");
+f2_rep(2(*i0*)); print("')")
+) where
+{
+fun
+f2_rep
+(i0: sint): void =
+if
+(i0 < n0) then
+let
+val c0 = rep[i0]
+in//let
+(
+if c0 != '\'' then print(c0))
+end//let
+}
+//
+end//end
+//
+#impltmp g_print$out<>() = filr
+//
+}(*where*)//end-of-[i0chrjs1(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
