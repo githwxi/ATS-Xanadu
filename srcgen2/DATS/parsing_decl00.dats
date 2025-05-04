@@ -1244,11 +1244,11 @@ let
 val
 dcl = fp_d0ecl(f00, buf, err)
 //
-// (*
+(*
 val () =
 prerrsln("\
 fp_d0eclseq: loop: dcl = ", dcl)
-// *)
+*)
 //
 in//let
 if
@@ -1305,12 +1305,12 @@ dcl =
 fp_d0ecl
 (f00, buf, err)
 //
-// (*
+(*
 val () =
 prerrsln("\
 fp_d0eclsq1: \
 loop: dcl = ", dcl)
-// *)
+*)
 //
 val
 res =
