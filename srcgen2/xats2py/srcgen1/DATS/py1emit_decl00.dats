@@ -561,6 +561,17 @@ I1Dimplmnt0
 , stmp, dimp
 , fjas, icmp) = dcl0.node()
 //
+fun
+implfunq
+( tknd: token): bool =
+(
+case+ iknd of
+|
+IMPLfun() => true | _ => false
+) where
+{ val-
+  T_IMPLMNT(iknd) = tknd.node() }
+//
 in//let
 //
 let
@@ -591,25 +602,47 @@ lctnfpr(filr,loc0);strnfpr(filr,")\n");
 //
 if
 dimpl_tempq(dimp)
-then
+then // if1-then
 (
 nindstrnfpr
 (filr,nind,"## I1Dimplmnt0(");
 dimplfpr(filr,dimp);strnfpr(filr,"):timp\n"))
-else
+else // if1-else
 (
 //
 (
 nindfpr(filr, nind);strnfpr(filr, "def ");
+//
 dicstpy1(filr, dimp);
+(
+if
+implfunq(tknd)
+then ((*nothing*)) else strnfpr(filr, "_"));
+//
 fjas1py1(filr, fjas);strnfpr(filr, ": ## impl\n"));
 (
+//
 (envx2js_incnind(env0,2(*++*))
 ;py1emit_fjarglst(env0, fjas);f1_i1cmpret(env0, icmp));
-(envx2js_decnind(env0,2(*--*))
-;nindstrnfpr(filr, nind, "## endfun(impl)");fprintln(filr)))
 //
-)//endif
+if
+implfunq(tknd)
+then // if2-then
+(envx2js_decnind(env0,2(*--*))
+;nindstrnfpr(filr, nind, "## endfun(impl)");fprintln(filr))
+else // if2-else
+(
+//
+(envx2js_decnind(env0,2(*--*))
+;nindfpr(filr, nind);strnfpr(filr, "## endgen(impl)");fprintln(filr)
+;nindfpr(filr, nind)
+;dicstpy1(filr, dimp);strnfpr(filr, " = ");dicstpy1(filr, dimp);strnfpr(filr, "_()");fprintln(filr))
+//
+)// HX: end-of-(else)-for-(if2)
+//
+)
+//
+)// HX: end-of-(else)-for-(if1)
 //
 end(*let*)
 //

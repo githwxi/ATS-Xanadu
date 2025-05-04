@@ -645,10 +645,8 @@ then // then
 (envx2js_decnind(env0,2(*--*))
 ;nindstrnfpr(filr, nind, "} // endfun(impl)");fprintln(filr))
 else // else
-(
-envx2js_decnind(env0,2(*--*));
-nindstrnfpr(filr, nind, "} () // endgen(impl)");fprintln(filr)
-)
+(envx2js_decnind(env0,2(*--*))
+;nindstrnfpr(filr, nind, "} () // endgen(impl)");fprintln(filr))
 //
 )
 //

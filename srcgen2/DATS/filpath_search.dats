@@ -43,16 +43,8 @@ ATS_PACKNAME
 //
 #include
 "./../HATS/xatsopt_sats.hats"
-(*
-#include
-"./../HATS/xatsopt_dats.hats"
-*)
 #include
 "./../HATS/xatsopt_dpre.hats"
-//
-#include
-"srcgen1/xatslib/githwxi\
-/DATS/CATS/JS/NODE/basics0.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -341,19 +333,30 @@ isexi =
 (*
 HX-2023-05-29:
 [fpath_rexists]
-is implemented in
-xatslib/githwxi/f00path.dats
+for JS is implemented in
+"srcgen1\
+/xatslib/githwxi\
+/DATS/CATS/JS/NODE/basics0.dats"
 *)
 fun
 fname_rexists
-(name: strn) =
-fpath_rexists(name) where
+(name: strn): bool =
+(
+XATSOPT_fpath_rexists(name)
+) where
 {
+//
+#extern
+fun
+XATSOPT_fpath_rexists
+(name: strn): bool = $extnam()
+//
 (*
 val () =
 prerrsln
 ("fname_rexists: name = ", name)
 *)
+//
 } (*where*)//end-[fname_rexists]
 //
 } (*where*)//end-[ val( isexi ) ]

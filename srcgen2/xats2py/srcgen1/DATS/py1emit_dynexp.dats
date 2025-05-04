@@ -336,6 +336,20 @@ ipat.node() of
 //
 (* ****** ****** *)
 //
+|I0Ptup0 _ =>
+(
+  f0_tup0(b0, ival, ipat))
+|I0Ptup1 _ =>
+(
+  f0_tup1(b0, ival, ipat))
+(*
+|I0Prcd2 _ =>
+(
+  f0_rcd2(b0, ival, ipat))
+*)
+//
+(* ****** ****** *)
+//
 |I0Pbang _ =>
 (
   f0_bang(b0, ival, ipat))
@@ -527,6 +541,43 @@ prints(ival,", ",i0f0, ")");
 f0_ipatlst(b0+1,0,ival,ipat,i0ps))
 end(*let*)//end-of-[f0_dapp(...)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and
+f0_tup0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Ptup0 i0ps = ipat.node()
+//
+in//let
+(
+f0_ipatlst(b0+0,0,ival,ipat,i0ps))
+end(*let*)//end-of-[f0_tup0(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_tup1
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Ptup1
+(tknd, i0ps) = ipat.node()
+//
+in//let
+(
+f0_ipatlst(b0+0,0,ival,ipat,i0ps))
+end(*let*)//end-of-[f0_tup1(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 and
