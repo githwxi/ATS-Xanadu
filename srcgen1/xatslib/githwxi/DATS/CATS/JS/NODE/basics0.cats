@@ -98,26 +98,32 @@ XATS2JS_NODE_gflt_fprint$dflt
 /* ****** ****** */
 //
 function
+XATSOPT_fpath_rexists
+  (fpx)
+{
+  return XATS2JS_NODE_fs_rexists(fpx);
+}
+function
 XATS2JS_NODE_fs_rexists
-  (fpath)
+  (fpx)
 {
   let // local var
   R_OK = XATS2JS_NODE_fs.constants.R_OK;
   try {
-    XATS2JS_NODE_fs.accessSync(fpath, R_OK)
-    return 1; // HX: [fpath] is R-available
+    XATS2JS_NODE_fs.accessSync(fpx, R_OK)
+    return 1; // HX: [fpx] is R-available
   } catch(err) {
-    return 0; // HX: [fpath] is R-unavailable
+    return 0; // HX: [fpx] is R-unavailable
   }
-} // end-of-[XATS2JS_NODE_fs_rexists(fpath)]
+} // end-of-[XATS2JS_NODE_fs_rexists(fpx)]
 //
 /* ****** ****** */
 //
 function
 XATS2JS_NODE_fs_readFileSync
-  (fpath)
+  (fpx)
 {
-  return String(XATS2JS_NODE_fs.readFileSync(fpath));
+  return String(XATS2JS_NODE_fs.readFileSync(fpx));
 }
 //
 /* ****** ****** */

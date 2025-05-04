@@ -55,10 +55,17 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #symload &  with land of 0
+//
 #symload << with lsln of 0
 #symload >> with asrn of 0
-#symload >> with lsrn of 0
+(*
+HX-2025-05-04:
+Adopting the name from JS
+*)
+#symload >>> with lsrn of 0
+//
 (* ****** ****** *)
 //
 #define KINFIX0 0 // n-assoc

@@ -117,9 +117,12 @@ $(SRCGEN1_PRELUDED)/DATS/CATS/PY/basics3.cats >> $(SRCGEN1_PRELUDE_PY)
 #
 srcgen1_xatslib:: ; \
 $(PRINTF) "## %s\n" "`date`" > $(SRCGEN1_XATSLIB_PY)
+srcgen1_xatslib:: ; $(CAT) \
+$(SRCGEN1_XATSLIBD)/libcats/DATS/CATS/PY/libcats.cats >> $(SRCGEN1_XATSLIB_PY)
 #
 ##################################################################
 ##################################################################
-# end[ATS3-XANADU/srcgen2/xats2py/srcgen1/xshared/runtime/Makefile]
+# end-of
+# [ATS3-XANADU/srcgen2/xats2py/srcgen1/xshared/runtime/Makefile]
 ##################################################################
 ##################################################################
