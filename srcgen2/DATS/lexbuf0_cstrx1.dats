@@ -145,8 +145,13 @@ case+
 strxcon_vt_cons
 ( ci1, cis ) =>
 (
-buf.0 := cis
-;
+buf.0 := cis;
+(*
+prerrsln("\
+lxbf1_getc1: \
+list_nil: ci1 = ", ci1);
+*)
+//
 if
 (ci1 >= 0)
 then
@@ -166,6 +171,13 @@ end else ci1 // end-of(if)
 list_vt_cons
 ( cc1, ccs ) =>
 (
+//
+(*
+prerrsln("\
+lxbf1_getc1: \
+list_cons: cc1 = ", cc1);
+*)
+//
 let
 val ci1 = char_code(cc1)
 in//let

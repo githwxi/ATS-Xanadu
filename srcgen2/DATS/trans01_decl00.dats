@@ -494,13 +494,13 @@ val () =
 trans01_d0ecl
 ( tenv,d0cl ) = let
 //
-(*
+// (*
 val
 loc0 = d0cl.lctn()
 val () =
 prerrsln
 ("trans01_d0ecl: d0cl = ", d0cl)
-*)
+// *)
 //
 in//let
 //

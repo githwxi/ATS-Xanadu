@@ -97,7 +97,7 @@ let
 val
 sopt =
 XATS2JS_NODE_fs_readFileSync
-  ( fpx0 )
+  ( fpx0 ) // HX: fpx0: fpath
 in//let
 if
 stropt_nilq(sopt)

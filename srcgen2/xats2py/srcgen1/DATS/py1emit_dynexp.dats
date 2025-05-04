@@ -1718,9 +1718,12 @@ val () =
   envx2js_decnind(env0,2(*--*)))
 //
 val () =
+nindstrnfpr(filr, nind+4, "break\n")
+//
+val () =
 (
 nindfpr(filr, nind+2);
-strnfpr(filr,"## } while True // end-of(do)\n"))
+strnfpr(filr,"## } while True // end-of(do-gua)\n"))
 //
 val () =
 (
@@ -2036,7 +2039,7 @@ val () =
 val () =
 (
 nindfpr(filr, nind);
-strnfpr(filr,"## } while True // end-of(do)\n"))
+strnfpr(filr,"## } while True // end-of(do-cls)\n"))
 //
 end//let//end-of-[I1INScas0(...)]
 //
@@ -2143,7 +2146,7 @@ val () =
 val () =
 (
 nindfpr(filr, nind+2);
-strnfpr(filr,"## } while True // end-of(do)\n"))
+strnfpr(filr,"## } while True // end-of(do-try)\n"))
 //
 val () =
 (

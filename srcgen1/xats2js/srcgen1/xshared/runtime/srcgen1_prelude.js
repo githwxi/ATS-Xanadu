@@ -1345,7 +1345,7 @@ XATS2JS_jshmap_insert$opt
   } else {
     map[key] = itm1;
     return XATS2JS_optn_vt_cons(itm0);
-  } // end of [if]
+  } // else // end of [if]
 //
 } // [XATS2JS_jshmap_insert$opt(map,key,itm1)]
 //

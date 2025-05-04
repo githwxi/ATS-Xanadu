@@ -1,4 +1,4 @@
-## Sat May  3 12:36:02 PM EDT 2025
+## Sun May  4 02:21:51 AM EDT 2025
 ################################################################
 ################################################################
 ##
@@ -317,14 +317,14 @@ def XATS2PY_gflt_div_dflt_dflt(x1, x2):
 ##
 ##################################################################.
 ##
-def XATS2PY_strn_vt2t(cs):
-  cs.pop() ## pop the last null
-  return "".join(map(lambda c0: chr(c0), cs))
-##
 def XATS2PY_strn_nilq(cs):
   return len(cs) == 0 ## len is O(1)
 def XATS2PY_strn_consq(cs):
   return (len(cs) > 0) ## len is O(1)
+##
+def XATS2PY_strn_vt2t(cs):
+  cs.pop() ## pop the last null
+  return "".join([chr(c0) for c0 in cs])
 ##
 def XATS2PY_stropt_nilq(opt):
   return (opt is None) ## stropt_none
@@ -389,14 +389,10 @@ def XATS2PY_strn_vt_set_at(cs, i0, c0):
 ##################################################################.
 ##
 def XATS2PY_strtmp_vt_alloc(bsz):
-  i0 = 0
-  cs = []
-  while (i0 <= bsz):
-     cs.append(0) # 0 for '\0'
-  return cs ## len(cs) = bsz+1 for trailing null
+  return [0]*(bsz+1) # HX: trailing null
 ##
 def XATS2PY_strtmp_vt_set_at(cs, i0, c0):
-  cs[i0] = c0; return ## HX: c0 is ascii
+  cs[i0] = c0; return ## HX: c0 is ascii code
 ##
 ##################################################################.
 ##
@@ -602,11 +598,22 @@ def XATS2PY_pya1sz_set_at(xs, i0, x0):
 ##################################################################.
 ##
 ## HX: listizing a view
-def XATS2PY_pyhmap_keys(dct):
-  return list(dct.keys()) ## endof(pyhmap_keys)
-def XATS2PY_pyobjmap_keyq(dct, key):
-  return (  key in dict  ) ## endof(pyhmap_keyq)
+def XATS2PY_pyhmap_keyq(dct, key):
+  return (  key in dct  ) ## endof(pyhmap_keyq)
+def XATS2PY_pyhmap_get_keys( dct ):
+  return list(dct.keys()) ## endof(pyhmap_get_keys)
 ##
+##################################################################.
+def XATS2PY_pyhmap_make_nil(): return {}
+##################################################################.
+def XATS2PY_pyhmap_search_opt(dct, key):
+  if (key in dct):
+    return XATS2PY_optn_vt_cons(dct[key])
+  else:
+    return XATS2PY_optn_vt_nil() ## not found
+##################################################################.
+def XATS2PY_pyhmap_insert_any(dct, key, itm):
+  dct[key] = itm ## end of [pyhmap_insert_any(...)]
 ##################################################################.
 ##################################################################.
 ## end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_PY_basics3.cats]

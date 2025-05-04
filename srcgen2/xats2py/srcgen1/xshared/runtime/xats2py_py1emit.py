@@ -11,16 +11,15 @@ XATSTOP0 = None
 ##
 ########################################################################.
 ##
+def XATSINT0(i0): return i0
+##
 def XATSINT1(i0): return i0
 def XATSBOOL(b0): return b0
 def XATSFLT1(f0): return i0
 def XATSSTRN(cs): return cs
 ##
-# def XATSSFLT(sf): return sf
-# def XATSDFLT(df): return df
-##
-def XATSCNUL(  ): return 0
-def XATSCHR1(  ): return 0
+def XATSCNUL(  ): return (0)
+def XATSCHR1(  ): return (0)
 ##
 def XATSCHR2(ch):
   return ord(ch[0]) ## acsii
@@ -42,6 +41,9 @@ def XATSCHR3(ch):
       else:
         d1 = 8*d1 + ord(c1)-48
     return d1 ## ascii code of [ch]
+##
+def XATSSFLT(sf): return float(sf)
+def XATSDFLT(df): return float(df)
 ##
 ########################################################################.
 
@@ -91,6 +93,28 @@ def XATS000_chreq(x, y): return (x == y)
 def XATS000_streq(x, y): return (x == y)
 ##
 def XATS000_ctgeq(v, t): return (v[0] == t)
+##
+########################################################################.
+##
+def XATS2PY_optn_nil():
+  return XATSCAPP("optn_nil", [0])
+def XATS2PY_optn_cons(x0):
+  return XATSCAPP("optn_cons", [1, x0])
+##
+def XATS2PY_list_nil():
+  return XATSCAPP("list_nil", [0])
+def XATS2PY_list_cons(x0, xs):
+  return XATSCAPP("list_cons", [1, x0, xs])
+##
+def XATS2PY_optn_vt_nil():
+  return XATSCAPP("optn_vt_nil", [0])
+def XATS2PY_optn_vt_cons(x0):
+  return XATSCAPP("optn_vt_cons", [1, x0])
+##
+def XATS2PY_list_vt_nil():
+  return XATSCAPP("list_vt_nil", [0])
+def XATS2PY_list_vt_cons(x0, xs):
+  return XATSCAPP("list_vt_cons", [1, x0, xs])
 ##
 ########################################################################.
 ##

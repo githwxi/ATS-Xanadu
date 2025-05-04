@@ -308,14 +308,14 @@ def XATS2PY_gflt_div_dflt_dflt(x1, x2):
 ##
 ##################################################################.
 ##
-def XATS2PY_strn_vt2t(cs):
-  cs.pop() ## pop the last null
-  return "".join(map(lambda c0: chr(c0), cs))
-##
 def XATS2PY_strn_nilq(cs):
   return len(cs) == 0 ## len is O(1)
 def XATS2PY_strn_consq(cs):
   return (len(cs) > 0) ## len is O(1)
+##
+def XATS2PY_strn_vt2t(cs):
+  cs.pop() ## pop the last null
+  return "".join([chr(c0) for c0 in cs])
 ##
 def XATS2PY_stropt_nilq(opt):
   return (opt is None) ## stropt_none
@@ -380,14 +380,10 @@ def XATS2PY_strn_vt_set_at(cs, i0, c0):
 ##################################################################.
 ##
 def XATS2PY_strtmp_vt_alloc(bsz):
-  i0 = 0
-  cs = []
-  while (i0 <= bsz):
-     cs.append(0) # 0 for '\0'
-  return cs ## len(cs) = bsz+1 for trailing null
+  return [0]*(bsz+1) # HX: trailing null
 ##
 def XATS2PY_strtmp_vt_set_at(cs, i0, c0):
-  cs[i0] = c0; return ## HX: c0 is ascii
+  cs[i0] = c0; return ## HX: c0 is ascii code
 ##
 ##################################################################.
 ##

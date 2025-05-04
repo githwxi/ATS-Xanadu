@@ -56,12 +56,20 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#typedef
-argv = jsa1sz(strn)
+#if
+defq(_XATS2JS_)
+#typedef argv=jsa1sz(strn)
+#endif//#if(defq(_XATS2JS_))
+//
+#if
+defq(_XATS2PY_)
+#typedef argv=pya1sz(strn)
+#endif//#if(defq(_XATS2PY_))
+//
 #extern
 fun
-XATS2JS_NODE_argv$get
-  ((*void*)): argv = $extnam()
+XATSOPT_argv$get
+  ((*0*)): argv = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -215,9 +223,7 @@ val (  ) =
 prerrsln("\
 // XATSHOME = ", the_XATSHOME())
 //
-val argv =
-(
-  XATS2JS_NODE_argv$get((*void*)))
+val argv = XATSOPT_argv$get((*0*))
 (*
 val (  ) = prerrsln("\
 // xats2py_pyemit01: argv = ", argv)
