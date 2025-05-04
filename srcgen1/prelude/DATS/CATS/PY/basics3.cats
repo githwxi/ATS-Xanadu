@@ -44,9 +44,14 @@ def XATS2PY_pyhmap_get_keys( dct ):
 ##################################################################.
 def XATS2PY_pyhmap_make_nil(): return {}
 ##################################################################.
-
-
-
+def XATS2PY_pyhmap_search_opt(dct, key):
+  if (key in dct):
+    return XATS2PY_optn_vt_cons(dct[key])
+  else:
+    return XATS2PY_optn_vt_nil() ## not found
+##################################################################.
+def XATS2PY_pyhmap_insert_any(dct, key, itm):
+  dct[key] = itm ## end of [pyhmap_insert_any(...)]
 ##################################################################.
 ##################################################################.
 ## end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_PY_basics3.cats]

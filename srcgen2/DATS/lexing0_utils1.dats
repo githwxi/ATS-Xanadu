@@ -1085,22 +1085,53 @@ end (*let*) // end of [ loop1(buf,lvl) ]
 #impltmp
 <obj>
 lexing_CMNT4_mlbl
-  (buf, c0, c1) =
+  (buf, ci0, ci1) =
 (
 loop0(buf, 1(*lvl*))) where
 {
+//
+(*
+val () =
+prerrsln("\
+lexing_CMNT4_mlbl: ci0 = ", ci0)
+val () =
+prerrsln("\
+lexing_CMNT4_mlbl: ci1 = ", ci1)
+*)
 //
 fnx
 loop0
 ( buf: !obj
 , lvl: sint): tnode =
 if
-(lvl > 0)
+(lvl<=0)
 then let
+//
+(*
+val () =
+prerrsln("\
+lexing_CMNT4_mlbl: loop0: lvl = ", lvl)
+*)
+//
+in//let
+//
+T_CMNT4_mlbl(lvl, gobj_lexing$fcseg(buf))
+//
+end//let//then
+else let
 //
 val ci0 =
 gobj_lexing$getc1<obj>(buf)
 val cc0 = char_make_code(ci0)
+//
+(*
+val () =
+prerrsln("\
+lexing_CMNT4_mlbl: loop0: lvl = ", lvl)
+val () =
+prerrsln("\
+lexing_CMNT4_mlbl: loop0: cc0 = ", cc0)
+*)
 //
 in//let
 //
@@ -1119,51 +1150,67 @@ else
 T_CMNT4_mlbl(lvl, gobj_lexing$fcseg(buf))
 )
 //
-end // end of [then]
-else
-T_CMNT4_mlbl(lvl, gobj_lexing$fcseg(buf))
+end//let//else//end(loop0(buf, lvl))
 //
 and
 loop1
 ( buf: !obj
-, lvl: sint): tnode = let
+, lvl: sint): tnode =
+let
 //
 val ci1 =
 gobj_lexing$getc1<obj>(buf)
 val cc1 = char_make_code(ci1)
 //
-in
+(*
+val (  ) =
+prerrsln("\
+lexing_CMNT4_mlbl: loop1: cc1 = ", cc1)
+*)
+//
+in//let
 //
 case+ 0 of
 | _
-when STRSKq(cc1) => loop1(buf, lvl-0)
+when
+STRSKq(cc1) => loop1(buf, lvl-0)
 | _
-when RPARENq(cc1) => loop0(buf, lvl-1)
+when
+RPARENq(cc1) => loop0(buf, lvl-1)
 | _
-(*non-ASTRSK-LPAREN*) => loop0(buf, lvl)
+(*non-ASTRSK-RPAREN*) => loop0(buf, lvl)
 //
-end // end of [loop1]
+end // let // end-of-[loop1(buf, lvl)]
 //
 and
 loop2
 ( buf: !obj
-, lvl: sint): tnode = let
+, lvl: sint): tnode =
+let
 //
 val ci1 =
 gobj_lexing$getc1<obj>(buf)
 val cc1 = char_make_code(ci1)
 //
-in
+(*
+val (  ) =
+prerrsln("\
+lexing_CMNT4_mlbl: loop2: cc1 = ", cc1)
+*)
+//
+in//let
 //
 case+ 0 of
 | _
-when STRSKq(cc1) => loop0(buf, lvl+1)
+when
+STRSKq(cc1) => loop0(buf, lvl+1)
 | _
-when LPARENq(cc1) => loop2(buf, lvl+0)
+when
+LPARENq(cc1) => loop2(buf, lvl+0)
 | _
 (*non-ASTRSK-LPAREN*) => loop0(buf, lvl)
 //
-end // end of [loop2]
+end // let // end-of-[loop2(buf, lvl)]
 //
 } (*where*) // end of [lexing_CMNT4_mlbl]
 

@@ -84,6 +84,36 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#impltmp
+<>(*tmp*)
+fpath_char$strmize
+  ( fpx0 ) =
+let
+val
+sopt =
+XATS2PY_fpath_readfile_all
+  ( fpx0 ) // HX: fpx0: fpath
+in//let
+if
+stropt_nilq(sopt)
+then
+strm_vt_nil((*void*))
+else
+strn_strmize(stropt_unsome(sopt))
+end where
+{
+//
+#extern
+fun
+XATS2PY_fpath_readfile_all
+  (fpx0: fpath): stropt = $extnam()
+//
+}(*where*)//end-of-[fpath_char$strmize]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #absimpl
 mya1sz_tbox(x0:t0) = pya1sz(x0)
 #absimpl

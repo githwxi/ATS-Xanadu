@@ -113,19 +113,18 @@ end//let//end-of-[fpath_datsq(fp)]
 //
 #if
 defq(_XATS2JS_)
-#typedef
-argv = jsa1sz(strn)
+#typedef argv=jsa1sz(strn)
 #endif//#if(defq(_XATS2JS_))
+//
 #if
 defq(_XATS2PY_)
-#typedef
-argv = pya1sz(strn)
+#typedef argv=pya1sz(strn)
 #endif//#if(defq(_XATS2PY_))
 //
 #extern
 fun
-XATS2JS_NODE_argv$get
-  ((*void*)): argv = $extnam()
+XATSOPT_argv$get
+  ((*0*)): argv = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -266,12 +265,10 @@ val (  ) =
 prerrsln("\
 // XATSHOME = ", the_XATSHOME())
 //
-val argv =
-(
-  XATS2JS_NODE_argv$get((*void*)))
+val argv = XATSOPT_argv$get((*0*))
 (*
 val (  ) = prerrsln("\
-// xats2js_jsemit00: argv = ", argv)
+// xatsopt_tcheck01: argv = ", argv)
 *)
 //
 }(*where*)//end-of-[mymain_main(...)]
@@ -282,7 +279,6 @@ val ((*entry*)) = mymain_main((*void*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_UTIL_xatstop_tcheck01.dats] *)
+(***********************************************************************)

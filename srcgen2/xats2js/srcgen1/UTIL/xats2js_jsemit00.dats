@@ -63,12 +63,20 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#typedef
-argv = jsa1sz(strn)
+#if
+defq(_XATS2JS_)
+#typedef argv=jsa1sz(strn)
+#endif//#if(defq(_XATS2JS_))
+//
+#if
+defq(_XATS2PY_)
+#typedef argv=pya1sz(strn)
+#endif//#if(defq(_XATS2PY_))
+//
 #extern
 fun
-XATS2JS_NODE_argv$get
-  ((*void*)): argv = $extnam()
+XATSOPT_argv$get
+  ((*0*)): argv = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -222,9 +230,7 @@ val (  ) =
 prerrsln("\
 // XATSHOME = ", the_XATSHOME())
 //
-val argv =
-(
-  XATS2JS_NODE_argv$get((*void*)))
+val argv = XATSOPT_argv$get((*0*))
 (*
 val (  ) = prerrsln("\
 // xats2js_jsemit00: argv = ", argv)
@@ -238,7 +244,6 @@ val ((*entry*)) = mymain_main((*void*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_UTIL_xats2js_jsemit00.dats] *)
+(***********************************************************************)
