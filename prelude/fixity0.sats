@@ -125,7 +125,8 @@ proofs from programs!
 #infixl lsln lsrn of 41
 *)
 #infixl << of 41 // lsln
-#infixl >> of 41 // asrn/lsrn
+#infixl >> of 41 // asrn
+#infixl >>> of 41 // lsrn
 //
 (* ****** ****** *)
 //
