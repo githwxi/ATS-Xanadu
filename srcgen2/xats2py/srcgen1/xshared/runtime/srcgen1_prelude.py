@@ -1,4 +1,4 @@
-## Sun May  4 09:54:28 PM EDT 2025
+## Sun May  4 11:40:58 PM EDT 2025
 ################################################################
 ################################################################
 ##
@@ -245,10 +245,7 @@ def XATS2PY_gint_uint2sint(x0): return x0
 ## HX-2022-06-16:
 ##
 def XATS2PY_gint_parse_sint(rep):
-  exn = 0
-  bas = 10
-  res = int(rep, bas)
-  return (exn if isnan(res) else res)
+  bas = 10; return int(rep, bas)
 def XATS2PY_gint_parse_uint(rep):
   exn = 0
   res = XATS2PY_gint_parse_sint(rep)
@@ -599,21 +596,29 @@ def XATS2PY_pya1sz_set_at(xs, i0, x0):
 ##
 ## HX: listizing a view
 def XATS2PY_pyhmap_keyq(dct, key):
-  return (  key in dct  ) ## endof(pyhmap_keyq)
+  if (dct == 0):
+    return False ## for null map
+  else:
+    return (  key in dct  ) ## endof(pyhmap_keyq)
 def XATS2PY_pyhmap_get_keys( dct ):
-  return list(dct.keys()) ## endof(pyhmap_get_keys)
+  if (dct == 0):
+    return list()
+  else:
+    return list(dct.keys()) ## endof(pyhmap_get_keys)
 ##
 ##################################################################.
 def XATS2PY_pyhmap_make_nil(): return {}
 ##################################################################.
 def XATS2PY_pyhmap_search_opt(dct, key):
+  if (dct == 0):
+    return XATS2PY_optn_vt_nil() ## null map
   if (key in dct):
     return XATS2PY_optn_vt_cons(dct[key])
   else:
     return XATS2PY_optn_vt_nil() ## not found
 ##################################################################.
 def XATS2PY_pyhmap_insert_any(dct, key, itm):
-  dct[key] = itm ## end of [pyhmap_insert_any(...)]
+  dct[key] = itm ## end of [pyhmap_insert_any(dct,...)]
 ##################################################################.
 ##################################################################.
 ## end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_PY_basics3.cats]
@@ -639,9 +644,21 @@ def XATSOPT_XATSHOME_get():
   return ("" if xhm is None else xhm)
 ##
 ##################################################################.
+def XATSOPT_fpath_rexists(fpx):
+  return os.path.isfile(fpx) ## end(fpath_rexists)
+##################################################################.
+def XATSOPT_fpath_full_read(fpx):
+  try:
+    filr = open(fpx, "r")
+    text = filr.read() ## read all
+    filr.close() ## leak if not done
+    return text ## for a "small" file
+  except Exception as e:
+    return None ## nothing in case of errors
+##################################################################.
 ##
 def XATSOPT_strn_append_uint(name, stmp):
-  return name + str(stmp) ## endof(strn_append_uint)
+  return (name + str(stmp)) ## endof(strn_append_uint)
 ##
 ##################################################################.
 ##################################################################.

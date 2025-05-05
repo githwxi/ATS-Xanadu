@@ -37,21 +37,29 @@ def XATS2PY_pya1sz_set_at(xs, i0, x0):
 ##
 ## HX: listizing a view
 def XATS2PY_pyhmap_keyq(dct, key):
-  return (  key in dct  ) ## endof(pyhmap_keyq)
+  if (dct == 0):
+    return False ## for null map
+  else:
+    return (  key in dct  ) ## endof(pyhmap_keyq)
 def XATS2PY_pyhmap_get_keys( dct ):
-  return list(dct.keys()) ## endof(pyhmap_get_keys)
+  if (dct == 0):
+    return list()
+  else:
+    return list(dct.keys()) ## endof(pyhmap_get_keys)
 ##
 ##################################################################.
 def XATS2PY_pyhmap_make_nil(): return {}
 ##################################################################.
 def XATS2PY_pyhmap_search_opt(dct, key):
+  if (dct == 0):
+    return XATS2PY_optn_vt_nil() ## null map
   if (key in dct):
     return XATS2PY_optn_vt_cons(dct[key])
   else:
     return XATS2PY_optn_vt_nil() ## not found
 ##################################################################.
 def XATS2PY_pyhmap_insert_any(dct, key, itm):
-  dct[key] = itm ## end of [pyhmap_insert_any(...)]
+  dct[key] = itm ## end of [pyhmap_insert_any(dct,...)]
 ##################################################################.
 ##################################################################.
 ## end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_PY_basics3.cats]

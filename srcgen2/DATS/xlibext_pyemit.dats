@@ -84,7 +84,6 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #impltmp
 <>(*tmp*)
 fpath_char$strmize
@@ -92,7 +91,7 @@ fpath_char$strmize
 let
 val
 sopt =
-XATS2PY_fpath_readfile_all
+XATSOPT_fpath_full$read
   ( fpx0 ) // HX: fpx0: fpath
 in//let
 if
@@ -106,7 +105,7 @@ end where
 //
 #extern
 fun
-XATS2PY_fpath_readfile_all
+XATSOPT_fpath_full$read
   (fpx0: fpath): stropt = $extnam()
 //
 }(*where*)//end-of-[fpath_char$strmize]

@@ -18,9 +18,21 @@ def XATSOPT_XATSHOME_get():
   return ("" if xhm is None else xhm)
 ##
 ##################################################################.
+def XATSOPT_fpath_rexists(fpx):
+  return os.path.isfile(fpx) ## end(fpath_rexists)
+##################################################################.
+def XATSOPT_fpath_full_read(fpx):
+  try:
+    filr = open(fpx, "r")
+    text = filr.read() ## read all
+    filr.close() ## leak if not done
+    return text ## for a "small" file
+  except Exception as e:
+    return None ## nothing in case of errors
+##################################################################.
 ##
 def XATSOPT_strn_append_uint(name, stmp):
-  return name + str(stmp) ## endof(strn_append_uint)
+  return (name + str(stmp)) ## endof(strn_append_uint)
 ##
 ##################################################################.
 ##################################################################.
