@@ -63,17 +63,18 @@ POLNEG
 
 #implfun
 sortbox(knd) =
-g0u2s(g0s2u(knd) & g0s2u(1))
+g0u2s
+(g0s2u(knd) & g0s2u(1))
 
 #implfun
 sortlin(knd) =
 g0u2s
-((g0s2u(knd)>>1) & g0s2u(1))
+(g0s2u(knd>>1) & g0s2u(1))
 
 #implfun
 sortprf(knd) =
 g0u2s
-((g0s2u(knd)>>2) & g0s2u(1))
+(g0s2u(knd>>2) & g0s2u(1))
 
 #implfun
 sortpol(knd) =
@@ -81,10 +82,10 @@ let
 val knd = (knd >> 3)
 in//let
 //
-( if
-  knd <= 1 then knd else -1)
+(
+if knd<=1 then knd else -1)
 //
-end // end of [sortpol]
+end // end of [sortpol(knd)]
 
 (* ****** ****** *)
 //
