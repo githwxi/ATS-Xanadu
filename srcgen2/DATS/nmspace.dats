@@ -38,6 +38,15 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2025-05-05:
+It is copied from [srcgen1],
+but it is not used in [srcgen2]!
+It is kept as a historic note.
+Mon May  5 01:07:45 AM EDT 2025
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 #staload UN =
 "srcgen1\
 /prelude/SATS/unsafex.sats"
@@ -354,5 +363,8 @@ end(*let*)//end-of-[the_nmspace_find$f1un]
 end(*local*)//end-of-[local(the_nmitmlst,...)]
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_nmspace.dats] *)
+(***********************************************************************)
