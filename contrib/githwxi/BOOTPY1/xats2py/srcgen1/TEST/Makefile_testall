@@ -5,9 +5,72 @@ CAT=cat
 NODE=node
 ########################################################################
 #
+SRCSATS := \
+xbasics.sats \
+xlibext.sats \
+xsynoug.sats \
+xerrory.sats \
+xstamp0.sats \
+xsymbol.sats \
+xlabel0.sats \
+filpath.sats \
+locinfo.sats \
+lexbuf0.sats \
+lexing0.sats \
+staexp0.sats \
+dynexp0.sats \
+parsing.sats \
+preadx0.sats \
+staexp1.sats \
+dynexp1.sats \
+gmacro1.sats \
+xsymmap.sats \
+xsymenv.sats \
+xfixity.sats \
+trans01.sats \
+tread01.sats \
+staexp2.sats \
+statyp2.sats \
+dynexp2.sats \
+nmspace.sats \
+trans12.sats \
+tread12.sats \
+trans2a.sats \
+trsym2b.sats \
+tread20.sats \
+fperr20.sats \
+dynexp3.sats \
+trans23.sats \
+tread23.sats \
+trans3a.sats \
+trtmp3b.sats \
+trtmp3c.sats \
+tread30.sats \
+fperr30.sats \
+xglobal.sats \
+xatsopt.sats \
+
+SRCSATS += \
+intrep0.sats \
+intrep1.sats \
+trxd3i0.sats \
+trxi0i1.sats \
+xats2js.sats \
+js1emit.sats \
+
+SRCSATS := \
+xats2py.sats \
+py1emit.sats \
+
+########################################################################
+
 SRCDATS := \
 xbasics.dats \
 xbasics_print0.dats \
+xlibext.dats \
+xlibext_tmplib.dats \
+xlibext_jsemit.dats \
+xlibext_pyemit.dats \
 xsynoug.dats \
 xerrory.dats \
 xstamp0.dats \
@@ -94,6 +157,7 @@ trans11_myenv0.dats \
 trans12_myenv0.dats \
 trans11_gmacro.dats \
 trans12_gmacro.dats \
+trans12_utils0.dats \
 trans12_staexp.dats \
 trans12_dynexp.dats \
 trans12_decl00.dats \
@@ -171,6 +235,7 @@ trxi0i1_myenv0.dats \
 trxi0i1_dynexp.dats \
 trxi0i1_decl00.dats \
 xats2js.dats \
+xats2js_utils0.dats \
 xats2js_myenv0.dats \
 xats2js_dynexp.dats \
 xats2js_decl00.dats \
@@ -179,6 +244,15 @@ js1emit.dats \
 js1emit_utils0.dats \
 js1emit_dynexp.dats \
 js1emit_decl00.dats \
+#
+SRCDATS += \
+xats2py.dats \
+xats2py_dynexp.dats \
+xats2py_decl00.dats \
+py1emit.dats \
+py1emit_utils0.dats \
+py1emit_dynexp.dats \
+py1emit_decl00.dats \
 #
 ########################################################################
 SRCGEN1=./../../../../../../srcgen1

@@ -2,7 +2,7 @@
 ########################################################################
 CAT=cat
 ########################################################################
-NODE=node
+PYTHON=python3
 ########################################################################
 #
 SRCDATS := \
@@ -188,12 +188,13 @@ py1emit_decl00.dats \
 SRCGEN1=./../../../../../../srcgen1
 SRCGEN2=./../../../../../../srcgen2
 ########################################################################
-OBJDATS := \
-$(patsubst %.dats, OUTS/%_dats_out0.py, $(SRCDATS))
+OUT0DATS := \
+$(patsubst %.dats, \
+  OUTS/%_dats_out0.py, $(SRCDATS))
 ########################################################################
 ########################################################################
 all:: all_dats
-all_dats:: $(OBJDATS)
+all_dats:: $(OUT0DATS)
 ########################################################################
 clean:: ; rm -f *~
 ########################################################################
@@ -204,15 +205,15 @@ cleanall:: ; rm -f OUTS/*_dats_out0.py
 #
 OUTS/%_dats_out0.py: \
 $(SRCGEN2)/DATS/%.dats; \
-$(NODE) --stack-size=8192 $(XATS2PY_PYEMIT00) $< > $@
+$(PYTHON) $(XATS2PY_PYEMIT00) __void__ $< > $@
 #
 OUTS/%_dats_out0.py: \
 $(SRCGEN2)/xats2js/srcgen1/DATS/%.dats; \
-$(NODE) --stack-size=8192 $(XATS2PY_PYEMIT00) $< > $@
+$(PYTHON) $(XATS2PY_PYEMIT00) __void__ $< > $@
 #
 OUTS/%_dats_out0.py: \
 $(SRCGEN2)/xats2py/srcgen1/DATS/%.dats; \
-$(NODE) --stack-size=8192 $(XATS2PY_PYEMIT00) $< > $@
+$(PYTHON) $(XATS2PY_PYEMIT00) __void__ $< > $@
 #
 ########################################################################
 ########################################################################
@@ -234,16 +235,17 @@ $(S2XSHRD)/xats2py_py1emit.py > $@_ats3.py && \
 $(CAT) \
 $(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
 $(CAT) \
-$(S2XSHRD)/srcgen1_xatslib_node.py >> $@_ats3.py && \
-$(CAT) OUTS/lib2xatsopt_lib2xats2js_lib2xats2py.py >> $@_ats3.py && \
+$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
+$(CAT) \
+lib/lib2xatsopt2js2py.py >> $@_ats3.py && \
 $(PYTHON) \
 $(XATS2PY_PYEMIT00) __void__ \
-$(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit00.dats >> $@_out.py
+$(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit00.dats >> $@_ats3.py
 #
 ########################################################################
 ########################################################################
-libxatsopt_libxats2js: \
-$(OBJDATS); $(MAKE) -C OUTS \
--f ./../Makefile_xrename && $(CAT) $(OBJDATS) > OUTS/libxatsopt_libxats2js.js
+libxatsopt2js2py: \
+$(OUT0DATS); $(MAKE) -C OUTS \
+-f ./../Makefile_xrename && $(CAT) $(OUT0DATS) > lib/libxatsopt2js2py.js
 ########################################################################
 ########################################################################
