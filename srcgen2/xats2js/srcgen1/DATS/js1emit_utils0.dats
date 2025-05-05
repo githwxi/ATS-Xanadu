@@ -376,6 +376,14 @@ i0chrjs1
   i0chrfpr(filr, tchr))
 //HX:sharing(i0chrfpr=i1chrjs1=i1chrpy1)
 //
+#implfun
+i0strjs1
+(filr, tstr) =
+(
+  i0strfpr(filr, tstr))
+//HX:sharing(i0strfpr=i1strjs1=i1strpy1)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -400,88 +408,6 @@ tflt.node() of
 {
 #impltmp g_print$out<>() = filr
 }(*where*)//end-of-[i0fltjs1(filr,tflt)]
-//
-(* ****** ****** *)
-//
-#implfun
-i0strjs1
-( filr, tstr) =
-let
-//
-fun
-f0_strn
-( rep1: strn
-, len2: sint): void =
-let
-//
-val n0 =
-strn_length(rep1)
-//
-fnx
-loop1
-(i0: nint): void =
-if
-(i0 >= n0)
-then ((*0*)) else
-let
-//
-  val c0 = rep1[i0]
-//
-in//let
-//
-if
-(c0 = '\\')
-then loop2(i0+1) else
-(
-char_fprint
-( c0 , filr); loop1(i0+1))
-end//let//end-of-[loop1(i0)]
-//
-and
-loop2
-(i1: nint): void =
-if
-(i1 >= n0)
-then
-(
-char_fprint
-('\\', filr)) else
-let
-  val c1 = rep1[i1]
-in (*let*)
-if
-(c1 = '\n')
-then loop1(i1+1) else
-(
-char_fprint
-('\\', filr);
-char_fprint
-( c1 , filr); loop1(i1+1))
-end//let//end-of-[loop1(i1)]
-//
-in
-let val i0 = 0 in loop1(i0) end
-end(*let*)//end-of-(f0_strn(rep))
-//
-#impltmp
-g_print$out<(*nil*)>((*void*)) = filr
-//
-in//let
-//
-case-
-tstr.node() of
-//
-|T_STRN1_clsd
-( rep1,len2 ) =>
-( print("XATSSTRN(");
-  f0_strn(rep1, len2); print(")"))
-//
-|T_STRN2_ncls
-( rep1,len2 ) =>
-( print("XATSSTRN(");
-  f0_strn(rep1, len2); print("\")"))
-//
-end(*let*)//end-of-[i0strjs1(filr,tstr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
