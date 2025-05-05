@@ -1,0 +1,67 @@
+########################################################################
+########################################################################
+# Makefile for bootstrapping
+########################################################################
+########################################################################
+CAT=cat
+SED=sed
+ECHO=echo
+NODE=node
+########################################################################
+BOOTPY1=./../../..
+########################################################################
+SRCGEN1=./../../../../../../srcgen1
+SRCGEN2=./../../../../../../srcgen2
+XATS2PY=./../../../../../../srcgen2/xats2py
+########################################################################
+S2XSHRD=\
+$(SRCGEN2)/xats2py/srcgenx/xshared/runtime
+########################################################################
+all:: \
+xats2py_pyemit00
+########################################################################
+########################################################################
+#
+xats2py_pyemit00: ; \
+$(CAT) \
+$(S2XSHRD)/xats2py_py1emit.py > $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
+$(SED) -E 's/pyx(...)tnm/py1\1tnm/g' \
+$(BOOTPY1)/lib/lib2xatsopt.py | $(CAT) - >> $@_ats3.py && \
+$(SED) -E 's/pyx(...)tnm/py2\1tnm/g' \
+$(BOOTPY1)/xats2py/srcgen1/lib/lib2xats2py.py | $(CAT) - >> $@_ats3.py && \
+$(NODE) --stack-size=4096 \
+$(XATS2PY_PYEMIT00) $(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit00.dats >> $@_ats3.py
+#
+xats2py_pyemit01: ; \
+$(CAT) \
+$(S2XSHRD)/xats2py_py1emit.py > $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
+$(SED) -E 's/pyx(...)tnm/py1\1tnm/g' \
+$(BOOTPY1)/lib/lib2xatsopt.py | $(CAT) - >> $@_ats3.py && \
+$(SED) -E 's/pyx(...)tnm/py2\1tnm/g' \
+$(BOOTPY1)/xats2js/srcgen1/lib/lib2xats2js.py | $(CAT) - >> $@_ats3.py && \
+$(SED) -E 's/pyx(...)tnm/py3\1tnm/g' \
+$(BOOTPY1)/xats2py/srcgen1/lib/lib2xats2py.py | $(CAT) - >> $@_ats3.py && \
+$(NODE) --stack-size=4096 \
+$(XATS2PY_PYEMIT00) $(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit01.dats >> $@_ats3.py
+#
+########################################################################
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+########################################################################
+cleanall:: ; rm -f xats2py_pyemit00_ats3.py
+cleanall:: ; rm -f xats2py_pyemit01_ats3.py
+########################################################################
+########################################################################
+XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats3.py
+XATS2PY_PYEMIT00=$(XATS2PY)/srcgen1/UTIL/xats2py_pyemit00_ats3.py
+########################################################################
+########################################################################

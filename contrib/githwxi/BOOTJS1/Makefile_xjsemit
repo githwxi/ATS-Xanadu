@@ -227,7 +227,7 @@ xatsopt_utils0.dats \
 
 ########################################################################
 ########################################################################
-OUTSATS := \
+OUT0SATS := \
 $(patsubst %.sats, BUILD/%_sats_out0.js, $(SRCSATS))
 OUT0DATS := \
 $(patsubst %.dats, BUILD/%_dats_out0.js, $(SRCDATS))
@@ -237,7 +237,7 @@ $(patsubst %.dats, BUILD/%_dats_out1.js, $(SRCDATS))
 ########################################################################
 boot:: \
 boot_sats
-boot_sats:: $(OUTSATS)
+boot_sats:: $(OUT0SATS)
 ########################################################################
 boot:: \
 boot_dats

@@ -5,6 +5,7 @@ NODE=node
 
 SRCSATS := \
 xbasics.sats \
+xlibext.sats \
 xsynoug.sats \
 xerrory.sats \
 xstamp0.sats \
@@ -52,6 +53,9 @@ xatsopt.sats \
 SRCDATS := \
 xbasics.dats \
 xbasics_print0.dats \
+xlibext.dats \
+xlibext_jsemit.dats \
+xlibext_pyemit.dats \
 xsynoug.dats \
 xerrory.dats \
 xstamp0.dats \
@@ -138,6 +142,7 @@ trans11_myenv0.dats \
 trans12_myenv0.dats \
 trans11_gmacro.dats \
 trans12_gmacro.dats \
+trans12_utils0.dats \
 trans12_staexp.dats \
 trans12_dynexp.dats \
 trans12_decl00.dats \
@@ -202,35 +207,37 @@ xatsopt_utils0.dats \
 ########################################################################
 SRCGEN2=./../../../../srcgen2
 ########################################################################
-OBJSATS := \
-$(patsubst %.sats, OUTS/%_sats_out.00, $(SRCSATS))
-OBJDATS := \
-$(patsubst %.dats, OUTS/%_dats_out.00, $(SRCDATS))
+OUT0SATS := \
+$(patsubst %.sats, \
+  OUTS/%_sats_out0.00, $(SRCSATS))
+OUT0DATS := \
+$(patsubst %.dats, \
+  OUTS/%_dats_out0.00, $(SRCDATS))
 ########################################################################
 ########################################################################
 all:: all_sats
 all:: all_dats
-all_sats:: $(OBJSATS)
-all_dats:: $(OBJDATS)
+all_sats:: $(OUT0SATS)
+all_dats:: $(OUT0DATS)
 ########################################################################
 clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f OUTS/*_sats_out.00
-cleanall:: ; rm -f OUTS/*_dats_out.00
+cleanall:: ; rm -f OUTS/*_sats_out0.00
+cleanall:: ; rm -f OUTS/*_dats_out0.00
+########################################################################
+########################################################################
+XATSOPT_TCHECK00=./../UTIL/xatsopt_tcheck00_ats3.js
 ########################################################################
 ########################################################################
 #
-OUTS/%_sats_out.00: \
+OUTS/%_sats_out0.00: \
 $(SRCGEN2)/SATS/%.sats; \
 $(NODE) --stack-size=8192 $(XATSOPT_TCHECK00) $< > $@
 #
-OUTS/%_dats_out.00: \
+OUTS/%_dats_out0.00: \
 $(SRCGEN2)/DATS/%.dats; \
 $(NODE) --stack-size=8192 $(XATSOPT_TCHECK00) $< > $@
 #
-########################################################################
-########################################################################
-XATSOPT_TCHECK00=./../UTIL/xatsopt_tcheck00_dats_out.js
 ########################################################################
 ########################################################################
