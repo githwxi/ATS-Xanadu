@@ -236,10 +236,7 @@ def XATS2PY_gint_uint2sint(x0): return x0
 ## HX-2022-06-16:
 ##
 def XATS2PY_gint_parse_sint(rep):
-  exn = 0
-  bas = 10
-  res = int(rep, bas)
-  return (exn if isnan(res) else res)
+  bas = 10; return int(rep, bas)
 def XATS2PY_gint_parse_uint(rep):
   exn = 0
   res = XATS2PY_gint_parse_sint(rep)

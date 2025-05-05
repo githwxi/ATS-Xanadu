@@ -2,7 +2,11 @@
 (* ****** ****** *)
 (*
 Basics for
-srcgen1/xatslib/JS/NODE/.
+XATS2JS/NODE:
+"srcgen1\
+/xatslib\
+/githwxi\
+/DATS/CATS/JS/NODE/.
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -15,22 +19,6 @@ srcgen1/xatslib/JS/NODE/.
 "srcgen1\
 /xatslib\
 /githwxi/SATS/githwxi.sats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-the_XATSHOME_get() =
-(
-XATS2JS_NODE_xatshome$get
-  ( (*void*) )) where
-{
-#extern
-fun
-XATS2JS_NODE_xatshome$get
-  ((*void*)): strn = $extnam()
-}
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -77,7 +65,6 @@ XATS2JS_NODE_fs_readFileSync
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_xatslib_githwxi_DATS_CATS_JS_NODE_basics0.dats] *)
+(***********************************************************************)
