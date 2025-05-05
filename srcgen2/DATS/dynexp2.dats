@@ -163,7 +163,7 @@ dpat.lctn(),D2Pnone2(dpat))
 //
 #implfun
 d2pat_any
-(  loc0  ) =
+(loc0, sym1) =
 (
 d2pat(loc0, D2Pany((*0*))))
 //
