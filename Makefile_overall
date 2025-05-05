@@ -134,6 +134,21 @@ srcgen2_xjsemit_xats2py_pyemit01: ; \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xjsemit xats2py_pyemit01
 #
 ############################################################
+#
+# Step~6: for bootstrapping from BOOTJS1
+# Step~6: for bootstrapping from BOOTPY1
+#
+contrib_githwxi_BOOTJS1_lib2xatsopt: ; \
+  time make -C contrib/githwxi/BOOTJS1 -f Makefile_xjsemit lib2xatsopt
+contrib_githwxi_BOOTJS1_UTIL_tcheck00: ; \
+  time make -C contrib/githwxi/BOOTJS1/UTIL -f Makefile_xjsemit xatsopt_tcheck00
+#
+contrib_githwxi_BOOTPY1_lib2xatsopt: ; \
+  time make -C contrib/githwxi/BOOTPY1 -f Makefile_xpyemit lib2xatsopt
+contrib_githwxi_BOOTPY1_UTIL_tcheck00: ; \
+  time make -C contrib/githwxi/BOOTPY1/UTIL -f Makefile_xpyemit xats2py_tcheck00
+#
+############################################################
 ############################################################
 #
 prelude_TEST_CATS_JS: ; make -C prelude/TEST/CATS/JS -f Makefile_jsemit01 testall
