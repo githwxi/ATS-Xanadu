@@ -19,8 +19,8 @@ $(SRCGEN1)/xats2js/srcgenx/xshared/runtime
 S2XSHRD=\
 $(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
-all:: \
-xats2js_jsemit00_dats
+all:: xats2js_jsemit00
+all:: xats2js_jsemit01
 ########################################################################
 ########################################################################
 #
@@ -34,47 +34,48 @@ xats2js_jsemit00_dats
 # The [S1XSHRD] is used here as
 # the code in [srcgen1/prelude] requires it.
 #
-xats2js_jsemit00_dats: ; \
+xats2js_jsemit00: ; \
 $(CAT) \
-$(S2XSHRD)/xats2js_js1emit.js > $@_out.js && \
+$(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude.js >> $@_out.js && \
+$(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude_node.js >> $@_out.js && \
+$(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_xatslib_node.js >> $@_out.js && \
+$(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
-$(BOOTJS1)/lib/lib2xatsopt.js | $(CAT) - >> $@_out.js && \
+$(BOOTJS1)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
-$(BOOTJS1)/xats2js/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_out.js && \
-$(NODE) --stack-size=4096 \
-$(XATS2JS_JSEMIT00) $(SRCGEN2)/xats2js/srcgen1/UTIL/xats2js_jsemit00.dats >> $@_out.js
+$(BOOTJS1)/xats2js/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_ats3.js && \
+$(NODE) --stack-size=8800 \
+$(XATS2JS_JSEMIT00) $(SRCGEN2)/xats2js/srcgen1/UTIL/xats2js_jsemit00.dats >> $@_ats3.js
 #
-xats2js_jsemit01_dats: ; \
+xats2js_jsemit01: ; \
 $(CAT) \
-$(S2XSHRD)/xats2js_js1emit.js > $@_out.js && \
+$(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude.js >> $@_out.js && \
+$(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_prelude_node.js >> $@_out.js && \
+$(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/xats2js_xatslib_node.js >> $@_out.js && \
+$(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
-$(BOOTJS1)/lib/lib2xatsopt.js | $(CAT) - >> $@_out.js && \
+$(BOOTJS1)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
-$(BOOTJS1)/xats2js/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_out.js && \
-$(NODE) --stack-size=4096 \
-$(XATS2JS_JSEMIT00) $(SRCGEN2)/xats2js/srcgen1/UTIL/xats2js_jsemit01.dats >> $@_out.js
+$(BOOTJS1)/xats2js/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_ats3.js && \
+$(NODE) --stack-size=8800 \
+$(XATS2JS_JSEMIT00) $(SRCGEN2)/xats2js/srcgen1/UTIL/xats2js_jsemit01.dats >> $@_ats3.js
 #
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; rm -f xats2js_jsemit00_dats_out.js
+cleanall:: ; rm -f xats2js_jsemit00_ats3.js
+cleanall:: ; rm -f xats2js_jsemit01_ats3.js
 ########################################################################
 ########################################################################
-XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_dats.js
-XATS2JS_JSEMIT00=$(XATS2JS)/srcgen1/UTIL/xats2js_jsemit00_dats.js
+XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats3.js
+XATS2JS_JSEMIT00=$(XATS2JS)/srcgen1/UTIL/xats2js_jsemit00_ats3.js
 ########################################################################
 ########################################################################

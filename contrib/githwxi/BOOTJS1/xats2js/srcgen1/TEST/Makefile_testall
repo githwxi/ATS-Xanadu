@@ -5,9 +5,68 @@ CAT=cat
 NODE=node
 ########################################################################
 #
+SRCSATS := \
+xbasics.sats \
+xlibext.sats \
+xsynoug.sats \
+xerrory.sats \
+xstamp0.sats \
+xsymbol.sats \
+xlabel0.sats \
+filpath.sats \
+locinfo.sats \
+lexbuf0.sats \
+lexing0.sats \
+staexp0.sats \
+dynexp0.sats \
+parsing.sats \
+preadx0.sats \
+staexp1.sats \
+dynexp1.sats \
+gmacro1.sats \
+xsymmap.sats \
+xsymenv.sats \
+xfixity.sats \
+trans01.sats \
+tread01.sats \
+staexp2.sats \
+statyp2.sats \
+dynexp2.sats \
+nmspace.sats \
+trans12.sats \
+tread12.sats \
+trans2a.sats \
+trsym2b.sats \
+tread20.sats \
+fperr20.sats \
+dynexp3.sats \
+trans23.sats \
+tread23.sats \
+trans3a.sats \
+trtmp3b.sats \
+trtmp3c.sats \
+tread30.sats \
+fperr30.sats \
+xglobal.sats \
+xatsopt.sats \
+
+SRCSATS += \
+intrep0.sats \
+intrep1.sats \
+trxd3i0.sats \
+trxi0i1.sats \
+xats2js.sats \
+js1emit.sats \
+
+########################################################################
+
 SRCDATS := \
 xbasics.dats \
 xbasics_print0.dats \
+xlibext.dats \
+xlibext_tmplib.dats \
+xlibext_jsemit.dats \
+xlibext_pyemit.dats \
 xsynoug.dats \
 xerrory.dats \
 xstamp0.dats \
@@ -94,6 +153,7 @@ trans11_myenv0.dats \
 trans12_myenv0.dats \
 trans11_gmacro.dats \
 trans12_gmacro.dats \
+trans12_utils0.dats \
 trans12_staexp.dats \
 trans12_dynexp.dats \
 trans12_decl00.dats \
@@ -154,7 +214,7 @@ fperr30_decl00.dats \
 xatsopt.dats \
 xatsopt_tmplib.dats \
 xatsopt_utils0.dats \
-#
+
 SRCDATS += \
 intrep0.dats \
 intrep0_print0.dats \
@@ -171,6 +231,7 @@ trxi0i1_myenv0.dats \
 trxi0i1_dynexp.dats \
 trxi0i1_decl00.dats \
 xats2js.dats \
+xats2js_utils0.dats \
 xats2js_myenv0.dats \
 xats2js_dynexp.dats \
 xats2js_decl00.dats \
@@ -185,7 +246,8 @@ SRCGEN1=./../../../../../../srcgen1
 SRCGEN2=./../../../../../../srcgen2
 ########################################################################
 OBJDATS := \
-$(patsubst %.dats, OUTS/%_dats_out.js, $(SRCDATS))
+$(patsubst %.dats, \
+  OUTS/%_dats_out0.js, $(SRCDATS))
 ########################################################################
 ########################################################################
 all:: all_dats
@@ -194,27 +256,20 @@ all_dats:: $(OBJDATS)
 clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f OUTS/*_dats_out.js
-########################################################################
-########################################################################
-#
-OUTS/%_dats_out.js: \
-$(SRCGEN2)/DATS/%.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) $< > $@
-#
-OUTS/%_dats_out.js: \
-$(SRCGEN2)/xats2js/srcgen1/DATS/%.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) $< > $@
-#
+cleanall:: ; rm -f OUTS/*_dats_out0.js
 ########################################################################
 ########################################################################
 # HX-2025-04-04:
 # bootstrapped verison
-XATS2JS_JSEMIT00=./xats2js_jsemit00_dats_out.js
+XATS2JS_JSEMIT00=./../UTIL/xats2js_jsemit00_ats3.js
 ########################################################################
 ########################################################################
-libxatsopt_libxats2js: \
-$(OBJDATS); $(MAKE) -C OUTS \
--f ./../Makefile_xrename && $(CAT) $(OBJDATS) > OUTS/libxatsopt_libxats2js.js
+#
+OUTS/%_dats_out0.js: \
+$(SRCGEN2)/DATS/%.dats; $(NODE) --stack-size=8800 $(XATS2JS_JSEMIT00) $< > $@
+#
+OUTS/%_dats_out0.js: \
+$(SRCGEN2)/xats2js/srcgen1/DATS/%.dats; $(NODE) --stack-size=8800 $(XATS2JS_JSEMIT00) $< > $@
+#
 ########################################################################
 ########################################################################

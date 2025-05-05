@@ -30,6 +30,9 @@ all:: srcgen2_xjsemit_xats2js_jsemit01
 all:: srcgen2_xjsemit_xats2py_pyemit00
 all:: srcgen2_xjsemit_xats2py_pyemit01
 #
+all:: contrib_githwxi_BOOTJS1_lib2xatsopt
+all:: contrib_githwxi_BOOTPY1_lib2xatsopt
+#
 ############################################################
 #
 testall:: prelude_TEST_CATS_JS
