@@ -112,6 +112,8 @@ srcgen1_prelude:: ; $(CAT) \
 $(SRCGEN1_PRELUDED)/DATS/CATS/PY/basics2.cats >> $(SRCGEN1_PRELUDE_PY)
 srcgen1_prelude:: ; $(CAT) \
 $(SRCGEN1_PRELUDED)/DATS/CATS/PY/basics3.cats >> $(SRCGEN1_PRELUDE_PY)
+srcgen1_prelude:: ; $(CAT) \
+$(SRCGEN1_PRELUDED)/DATS/CATS/PY/xatsopt.cats >> $(SRCGEN1_PRELUDE_PY)
 #
 ##################################################################
 #
