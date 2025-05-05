@@ -39,6 +39,17 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-05:
+It is copied from [srcgen1],
+but it is not used in [srcgen2]!
+It is kept as a historic note.
+Mon May  5 01:07:38 AM EDT 2025
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #abstbox nmitm_tbox // ptr
 #typedef nmitm = nmitm_tbox
 //
@@ -64,13 +75,12 @@ the_nmspace_filrest((*void*)): void
 fun
 the_nmspace_find$f1un
 {a:tbox}
-(fopr: nmitm -> optn_vt(a)): optn_vt(a)
-// end of [the_nmspace_find_f1un]
+(fopr: nmitm->optn_vt(a)): optn_vt(a)
+// end-of-[the_nmspace_find$f1un(fopr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****************************************** *)
-(* ****************************************** *)
-
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_SATS_nmspace.sats] *)
+(***********************************************************************)
