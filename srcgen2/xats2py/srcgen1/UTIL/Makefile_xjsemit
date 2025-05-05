@@ -34,8 +34,9 @@ $(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 all:: \
 xats2py_pyemit00
 xats2py_pyemit00: ; \
+printf "// %s\n" "`date`" > $@_ats3.js && \
 $(CAT) \
-$(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
+$(S2XSHRD)/xats2js_js1emit.js >> $@_ats3.js && \
 $(CAT) \
 $(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
 $(CAT) \
@@ -54,8 +55,9 @@ $(NODE) \
 all:: \
 xats2py_pyemit01
 xats2py_pyemit01: ; \
+printf "// %s\n" "`date`" > $@_ats3.js && \
 $(CAT) \
-$(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
+$(S2XSHRD)/xats2js_js1emit.js >> $@_ats3.js && \
 $(CAT) \
 $(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
 $(CAT) \

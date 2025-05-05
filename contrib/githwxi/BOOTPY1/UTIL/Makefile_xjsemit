@@ -20,8 +20,9 @@ $(SRCGEN2)/xats2py/srcgenx/xshared/runtime
 ########################################################################
 #
 xatsopt_tcheck00: ; \
+printf "## %s\n" "`date`" > $@_ats3.py && \
 $(CAT) \
-$(S2XSHRD)/xats2py_py1emit.py > $@_ats3.py && \
+$(S2XSHRD)/xats2py_py1emit.py >> $@_ats3.py && \
 $(CAT) \
 $(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
 $(CAT) \

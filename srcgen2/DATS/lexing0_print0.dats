@@ -152,22 +152,22 @@ prints("T_CHAR3_blsh(", rep, ")")
 //
 |
 T_STRN1_clsd(rep, len) =>
-(
+let
+#impltmp
+g_print<strn> = my_strn_print
+in//let
 prints
 ("T_STRN1_clsd(", rep, ";", len, ")")
-) where
-{
-#impltmp g_print<strn> = my_strn_print
-}
+end//let//endof[T_STRN1_clsd(rep,len)]
 |
 T_STRN2_ncls(rep, len) =>
-(
+let
+#impltmp
+g_print<strn> = my_strn_print
+in//let
 prints
 ("T_STRN2_ncls(", rep, ";", len, ")")
-) where
-{
-#impltmp g_print<strn> = my_strn_print
-}
+end//let//endof[T_STRN2_clsd(rep,len)]
 //
 |
 T_CMNT1_line(ag1, ag2) =>

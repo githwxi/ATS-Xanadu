@@ -372,6 +372,13 @@ i0chrpy1
   i0chrfpr(filr, tchr))
 //HX:sharing(i0chrfpr=i1chrjs1=i1chrpy1)
 //
+#implfun
+i0strpy1
+(filr, tstr) =
+(
+  i0strfpr(filr, tstr))
+//HX:sharing(i0strfpr=i1strjs1=i1strpy1)
+//
 (* ****** ****** *)
 //
 #implfun
@@ -396,83 +403,6 @@ tflt.node() of
 {
 #impltmp g_print$out<>() = filr
 }(*where*)//end-of-[i0fltpy1(filr,tflt)]
-//
-(* ****** ****** *)
-//
-#implfun
-i0strpy1
-( filr, tstr) =
-let
-//
-#impltmp
-g_print$out<>() = filr
-//
-in//let
-//
-case-
-tstr.node() of
-|T_STRN1_clsd
-( rep1,len2 ) =>
-(
-print
-("XATSSTRN(");
-f0_strn(rep1, len2); print(")"))
-|T_STRN2_ncls
-( rep1,len2 ) =>
-(
-print
-("XATSSTRN(\"");
-f0_strn(rep1, len2); print("\")"))
-//
-end where // end-of-[let]
-{
-//
-fun
-f0_strn
-(rep1: strn
-,len2: sint): void =
-(
-strn_iforitm(rep1)) where
-{
-#impltmp
-iforitm$work
-<cgtz>(i0, ch) =
-(
-case+ ch of
-| '"' =>
-strn_fprint("\"", filr)
-(*
-if
-(0 = i0)
-then
-strn_fprint("\"", filr)
-else
-if
-(i0+1 = len2)
-then
-strn_fprint("\"", filr)
-else
-strn_fprint("\\\"", filr)
-*)
-//
-| '\n' => strn_fprint("\\n", filr)
-| '\t' => strn_fprint("\\t", filr)
-| '\r' => strn_fprint("\\r", filr)
-//
-(*
-| '\a' => strn_fprint("\\a", filr)
-| '\g' => strn_fprint("\\g", filr)
-*)
-//
-| '\b' => strn_fprint("\\b", filr)
-| '\f' => strn_fprint("\\f", filr)
-| '\v' => strn_fprint("\\v", filr)
-//
-| _(*else*) => char_fprint(ch, filr)
-)
-}
-//
-}(*where*)//end-of-[i0strpy1(filr,tstr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
