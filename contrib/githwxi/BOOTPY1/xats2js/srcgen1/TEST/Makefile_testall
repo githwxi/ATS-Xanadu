@@ -2,9 +2,64 @@
 ########################################################################
 CAT=cat
 ########################################################################
-PYTHON=python3
+NODE=node
 ########################################################################
 #
+SRCSATS := \
+xbasics.sats \
+xlibext.sats \
+xsynoug.sats \
+xerrory.sats \
+xstamp0.sats \
+xsymbol.sats \
+xlabel0.sats \
+filpath.sats \
+locinfo.sats \
+lexbuf0.sats \
+lexing0.sats \
+staexp0.sats \
+dynexp0.sats \
+parsing.sats \
+preadx0.sats \
+staexp1.sats \
+dynexp1.sats \
+gmacro1.sats \
+xsymmap.sats \
+xsymenv.sats \
+xfixity.sats \
+trans01.sats \
+tread01.sats \
+staexp2.sats \
+statyp2.sats \
+dynexp2.sats \
+nmspace.sats \
+trans12.sats \
+tread12.sats \
+trans2a.sats \
+trsym2b.sats \
+tread20.sats \
+fperr20.sats \
+dynexp3.sats \
+trans23.sats \
+tread23.sats \
+trans3a.sats \
+trtmp3b.sats \
+trtmp3c.sats \
+tread30.sats \
+fperr30.sats \
+xglobal.sats \
+xatsopt.sats \
+
+SRCSATS += \
+intrep0.sats \
+intrep1.sats \
+trxd3i0.sats \
+trxi0i1.sats \
+xats2js.sats \
+js1emit.sats \
+
+########################################################################
+
 SRCDATS := \
 xbasics.dats \
 xbasics_print0.dats \
@@ -159,7 +214,7 @@ fperr30_decl00.dats \
 xatsopt.dats \
 xatsopt_tmplib.dats \
 xatsopt_utils0.dats \
-#
+
 SRCDATS += \
 intrep0.dats \
 intrep0_print0.dats \
@@ -186,22 +241,13 @@ js1emit_utils0.dats \
 js1emit_dynexp.dats \
 js1emit_decl00.dats \
 #
-SRCDATS += \
-xats2py.dats \
-xats2py_dynexp.dats \
-xats2py_decl00.dats \
-py1emit.dats \
-py1emit_utils0.dats \
-py1emit_dynexp.dats \
-py1emit_decl00.dats \
-#
 ########################################################################
 SRCGEN1=./../../../../../../srcgen1
 SRCGEN2=./../../../../../../srcgen2
 ########################################################################
 OUT0DATS := \
 $(patsubst %.dats, \
-  OUTS/%_dats_out0.py, $(SRCDATS))
+  OUTS/%_dats_out0.js, $(SRCDATS))
 ########################################################################
 ########################################################################
 all:: all_dats
@@ -210,48 +256,22 @@ all_dats:: $(OUT0DATS)
 clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f OUTS/*_dats_out0.py
+cleanall:: ; rm -f OUTS/*_dats_out0.js
 ########################################################################
 ########################################################################
 #
-OUTS/%_dats_out0.py: \
-$(SRCGEN2)/DATS/%.dats; \
-$(PYTHON) $(XATS2PY_PYEMIT00) __void__ $< > $@
+# HX-2025-04-04:
+# *freshly* bootstrapped verison
 #
-OUTS/%_dats_out0.py: \
-$(SRCGEN2)/xats2js/srcgen1/DATS/%.dats; \
-$(PYTHON) $(XATS2PY_PYEMIT00) __void__ $< > $@
-#
-OUTS/%_dats_out0.py: \
-$(SRCGEN2)/xats2py/srcgen1/DATS/%.dats; \
-$(PYTHON) $(XATS2PY_PYEMIT00) __void__ $< > $@
-#
-########################################################################
-########################################################################
-S2XSHRD=\
-$(SRCGEN2)/xats2py/srcgenx/xshared/runtime
-########################################################################
-########################################################################
-XATS2PY_PYEMIT00=./../UTIL/xats2py_pyemit00_ats3.py
+XATS2JS_JSEMIT00=./../TEST/xats2js_jsemit00_ats3.js
 ########################################################################
 ########################################################################
 #
-# HX-2025-04-05:
-# The [S1XSHRD] is used here as
-# the code in [srcgen1/prelude] requires it.
+OUTS/%_dats_out0.js: \
+$(SRCGEN2)/DATS/%.dats; $(NODE) --stack-size=8800 $(XATS2JS_JSEMIT00) $< > $@
 #
-xats2js_jsemit00: ; \
-$(CAT) \
-$(S2XSHRD)/xats2py_py1emit.py > $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
-$(CAT) \
-lib/lib2xatsopt2js2py.py >> $@_ats3.py && \
-$(PYTHON) \
-$(XATS2PY_PYEMIT00) __void__ \
-$(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit00.dats >> $@_ats3.py
+OUTS/%_dats_out0.js: \
+$(SRCGEN2)/xats2js/srcgen1/DATS/%.dats; $(NODE) --stack-size=8800 $(XATS2JS_JSEMIT00) $< > $@
 #
 ########################################################################
 ########################################################################
@@ -267,12 +287,15 @@ N256=$(N128) $(N128)
 N512=$(N256) $(N256)
 NFILE=$(N064) $(N032) $(N004) # 100=064+032+004
 ########################################################################
+#
 OUTS/%_dats_out1.js: \
 OUTS/%_dats_out0.js; \
 $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' $< > $@
-########################################################################
-lib/lib2xatsopt2js2py.py: \
-$(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt2js2py.py
+#
+# HX-2025-05-05:
+# This one should be identical to lib/lib2xatsopt2js.js
+OUTS/lib2xatsopt2js.js: $(OUT1DATS); $(CAT) $(OUT1DATS) > $@
+#
 ########################################################################
 ########################################################################
