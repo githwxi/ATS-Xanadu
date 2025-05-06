@@ -265,7 +265,7 @@ prerrsln("\
 val argv = XATSOPT_argv$get((*0*))
 (*
 val (  ) = prerrsln("\
-// xatstop_tcheck00: argv = ", argv)
+// xatsopt_tcheck00: argv = ", argv)
 *)
 //
 }(*where*)//end-of-[mymain_main(...)]
