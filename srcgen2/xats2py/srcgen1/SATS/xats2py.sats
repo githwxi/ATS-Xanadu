@@ -115,6 +115,9 @@ xats2py_i1fundclist
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#define envx2py_poplam0 = envx2js_poplam0
+#define envx2py_pshlam0 = envx2js_pshlam0
+//
 #define envx2py_get_filr = envx2js_get_filr
 #define envx2py_get_nind = envx2js_get_nind
 //

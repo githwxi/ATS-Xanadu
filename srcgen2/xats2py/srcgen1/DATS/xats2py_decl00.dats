@@ -154,6 +154,93 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#implfun
+xats2py_i1fundcl
+  (env0, ifun) = let
+//
+(* ****** ****** *)
+//
+val dvar =
+i1fundcl_get_dpid(ifun)
+val fjas =
+i1fundcl_get_farg(ifun)
+val tdxp =
+i1fundcl_get_tdxp(ifun)
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr =
+envx2py_get_filr(env0)
+val nind =
+envx2py_get_nind(env0)
+in//let
+nindfpr(filr,nind);
+strnfpr(filr,"## ");
+d2varfpr(filr,dvar);fprintln(filr)
+end//let
+//
+(* ****** ****** *)
+//
+(*
+val (  ) = prerrsln
+("xats2py_i1fundcl: dvar = ", dvar)
+val (  ) = prerrsln
+("xats2py_i1fundcl: fjas = ", fjas)
+val (  ) = prerrsln
+("xats2py_i1fundcl: tdxp = ", tdxp)
+*)
+//
+(* ****** ****** *)
+//
+val (  ) = // enter
+(
+  envx2py_pshlam0(env0) )
+//
+val (  ) =
+(
+xats2py_fjarglst(env0,fjas)
+)
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+val (  ) =
+(
+  xats2py_i1cmp(env0, icmp) )
+end // end-of-[let]
+) (*case+*) // end-of-( teqi1exp )
+//
+val (  ) = envx2py_poplam0(env0)//leave
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+envx2py_get_filr(env0)
+val nind =
+envx2py_get_nind(env0)
+in//let
+(
+nindstrnfpr(filr, nind, "## I1FUNDCL\n"))
+end//let
+//
+}(*where*)//end-of-[xats2py_i1fundcl(env0,ifun)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 xats2py_i1dclist
   (env0, dcls) =
