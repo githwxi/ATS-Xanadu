@@ -64,6 +64,32 @@ _(*DATS*)="./../DATS/xats2py.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+fprintln
+(out0: FILR): void =
+(
+ strn_fprint("\n",out0))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2py_i1dcl
+  (env0, idcl) =
+let
+//
+val
+filr = envx2py_get_filr(env0)
+in//let
+//
+strnfpr(filr, "## ");
+i1dcl_fprint(idcl,filr);fprintln(filr)
+//
+end(*let*)//end-of-[xats2py_i1dcl(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 xats2py_i1valdcl
   (env0, ival) = let
@@ -123,7 +149,7 @@ in//let
 nindstrnfpr(filr, nind, "## I1VALDCL\n"))
 end//let
 //
-}(*where*)//end-of-[xats2py_i1valdcl(env0,ival)]
+}(*where*)//end[xats2py_i1valdcl(env0,ival)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

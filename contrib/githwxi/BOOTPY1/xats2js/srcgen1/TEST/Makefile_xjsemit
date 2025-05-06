@@ -1,7 +1,9 @@
 ########################################################################
 ########################################################################
 CAT=cat
+SED=sed
 ########################################################################
+NODE=node
 PYTHON=python3
 ########################################################################
 #
@@ -186,22 +188,16 @@ js1emit_utils0.dats \
 js1emit_dynexp.dats \
 js1emit_decl00.dats \
 #
-SRCDATS += \
-xats2py.dats \
-xats2py_dynexp.dats \
-xats2py_decl00.dats \
-py1emit.dats \
-py1emit_utils0.dats \
-py1emit_dynexp.dats \
-py1emit_decl00.dats \
-#
 ########################################################################
 SRCGEN1=./../../../../../../srcgen1
 SRCGEN2=./../../../../../../srcgen2
 ########################################################################
 OUT0DATS := \
 $(patsubst %.dats, \
-  OUTS/%_dats_out0.py, $(SRCDATS))
+  OUTS/%_dats_out0.js, $(SRCDATS))
+OUT1DATS := \
+$(patsubst %.dats, \
+  OUTS/%_dats_out1.js, $(SRCDATS))
 ########################################################################
 ########################################################################
 all:: all_dats
@@ -210,29 +206,27 @@ all_dats:: $(OUT0DATS)
 clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f OUTS/*_dats_out0.py
+cleanall:: ; rm -f OUTS/*_dats_out0.js
 ########################################################################
 ########################################################################
 #
-OUTS/%_dats_out0.py: \
+OUTS/%_dats_out0.js: \
 $(SRCGEN2)/DATS/%.dats; \
-$(PYTHON) $(XATS2PY_PYEMIT00) __void__ $< > $@
+$(PYTHON) $(XATS2JS_JSEMIT00) __void__ $< > $@
 #
-OUTS/%_dats_out0.py: \
+OUTS/%_dats_out0.js: \
 $(SRCGEN2)/xats2js/srcgen1/DATS/%.dats; \
-$(PYTHON) $(XATS2PY_PYEMIT00) __void__ $< > $@
-#
-OUTS/%_dats_out0.py: \
-$(SRCGEN2)/xats2py/srcgen1/DATS/%.dats; \
-$(PYTHON) $(XATS2PY_PYEMIT00) __void__ $< > $@
+$(PYTHON) $(XATS2JS_JSEMIT00) __void__ $< > $@
 #
 ########################################################################
 ########################################################################
-S2XSHRD=\
-$(SRCGEN2)/xats2py/srcgenx/xshared/runtime
+S1XSHRD=$(SRCGEN1)/xats2js/srcgenx/xshared/runtime
+S2XSHRD=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
 ########################################################################
-XATS2PY_PYEMIT00=./../UTIL/xats2py_pyemit00_ats3.py
+# HX-2025-03-29:
+# bootstrapped verison
+XATS2JS_JSEMIT00=./../UTIL/xats2js_jsemit00_ats3.py
 ########################################################################
 ########################################################################
 #
@@ -240,18 +234,20 @@ XATS2PY_PYEMIT00=./../UTIL/xats2py_pyemit00_ats3.py
 # The [S1XSHRD] is used here as
 # the code in [srcgen1/prelude] requires it.
 #
-xats2js_jsemit00: ; \
+xats2js_jsemit00: \
+lib/lib2xatsopt2js.js; \
 $(CAT) \
-$(S2XSHRD)/xats2py_py1emit.py > $@_ats3.py && \
+$(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
 $(CAT) \
-$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
+$(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
 $(CAT) \
-$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
+$(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
 $(CAT) \
-lib/lib2xatsopt2js2py.py >> $@_ats3.py && \
-$(PYTHON) \
-$(XATS2PY_PYEMIT00) __void__ \
-$(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit00.dats >> $@_ats3.py
+$(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
+$(CAT) \
+lib/lib2xatsopt2js.js >> $@_ats3.js && \
+$(PYTHON) $(XATS2JS_JSEMIT00) __void__ \
+$(SRCGEN2)/xats2js/srcgen1/UTIL/xats2js_jsemit00.dats >> $@_ats3.js
 #
 ########################################################################
 ########################################################################
@@ -272,7 +268,7 @@ OUTS/%_dats_out0.js; \
 $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
-lib/lib2xatsopt2js2py.py: \
-$(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt2js2py.py
+lib/lib2xatsopt2js.js: \
+$(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt2js.js
 ########################################################################
 ########################################################################
