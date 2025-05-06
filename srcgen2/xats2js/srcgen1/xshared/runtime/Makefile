@@ -19,6 +19,7 @@ all::
 all:: prelude
 all:: xatslib
 all:: prelude_node
+all:: xatslib_node
 ########################################################################
 prelude:: ; \
 $(PRINTF) "%s%s\n" \
@@ -108,7 +109,7 @@ $(PRINTF) "%s%s\n" \
 xatslib_node:: ; \
 $(CAT) srcgen2_xatslib_node_hd >> $(XATSLIB_NODE_JS)
 xatslib_node:: ; $(CAT) \
-$(XATSLIBD)/DATS/CATS/JS/NODE/node000.cats >> $(XATSLIB_NODE_JS)
+$(XATSLIBD)/libcats/DATS/CATS/JS/NODE/gbas000.cats >> $(XATSLIB_NODE_JS)
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
