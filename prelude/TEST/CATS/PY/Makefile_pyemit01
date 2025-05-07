@@ -45,9 +45,9 @@ $(XATSHOME)/srcgen2/xats2py/srcgenx
 SRCGEN2_XSHARED=\
 $(XATSHOME)/srcgen2/xats2py/srcgenx/xshared/runtime
 SRCGEN2_XATS2PY=\
-$(XATSHOME)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_dats.js
+$(XATSHOME)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_ats2.js
 SRCGEN2_XATS2PY=\
-$(XATSHOME)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_dats_out.js
+$(XATSHOME)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_ats3.js
 ########################################################################
 ########################################################################
 test00:: ; \
@@ -56,7 +56,7 @@ printf "## %s\n" "`date`" > OUTS/$@_out.py
 test00:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test00:: \
 test00_prelude.dats; \
@@ -68,7 +68,7 @@ printf "## %s\n" "`date`" > OUTS/$@_out.py
 test01:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test01:: \
 test01_a0rf000.dats; \
@@ -80,7 +80,7 @@ printf "## %s\n" "`date`" > OUTS/$@_out.py
 test02:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test02:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test02:: \
 test02_a1rf000.dats; \
@@ -93,7 +93,7 @@ printf "## %s\n" "`date`" > OUTS/$@_out.py
 test03:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test03:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test03:: \
 test03_a1sz000.dats; \
@@ -105,7 +105,7 @@ printf "## %s\n" "`date`" > OUTS/$@_out.py
 test04:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test04:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test04:: \
 test04_strn000.dats; \
@@ -117,7 +117,7 @@ printf "## %s\n" "`date`" > OUTS/$@_out.py
 test05:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test05:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test05:: \
 test05_gdbg000.dats; \
@@ -129,7 +129,7 @@ printf "## %s\n" "`date`" > OUTS/$@_out.py
 test06:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test06:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test06:: \
 test06_list000.dats; \
@@ -141,7 +141,7 @@ printf "## %s\n" "`date`" > OUTS/$@_out.py
 test07:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test07:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test07:: \
 test07_gseq000.dats; \
@@ -153,7 +153,7 @@ printf "## %s\n" "`date`" > OUTS/$@_out.py
 test08:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test08:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test08:: \
 test08_optn000.dats; \
@@ -165,7 +165,7 @@ printf "## %s\n" "`date`" > OUTS/$@_out.py
 test09:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test09:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test09:: \
 test09_llist00.dats; \
@@ -177,7 +177,7 @@ printf "## %s\n" "`date`" > OUTS/$@_out.py
 test10:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test10:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test10:: \
 test10_xcptn00.dats; \
@@ -189,7 +189,7 @@ printf "## %s\n" "`date`" > OUTS/$@_out.py
 test99:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test99:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> OUTS/$@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test99:: \
 test99_mydiary.dats; \

@@ -66,6 +66,18 @@ make -C srcgen2/xats2py/srcgen1 -f Makefile_xats2js cleanall
 cleanall:: ; \
 make -C srcgen2/xats2py/srcgen1 -f Makefile_xjsemit cleanall
 #
+cleanall:: ; \
+make -C contrib/githwxi/BOOTJS1 -f Makefile_xjsemit cleanall
+cleanall:: ; \
+make -C contrib/githwxi/BOOTJS1/xats2js/srcgen1 -f Makefile_xjsemit cleanall
+#
+cleanall:: ; \
+make -C contrib/githwxi/BOOTPY1 -f Makefile_xpyemit cleanall
+cleanall:: ; \
+make -C contrib/githwxi/BOOTPY1/xats2js/srcgen1 -f Makefile_xpyemit cleanall
+cleanall:: ; \
+make -C contrib/githwxi/BOOTPY1/xats2py/srcgen1 -f Makefile_xpyemit cleanall
+#
 ############################################################
 ############################################################
 #
@@ -145,11 +157,17 @@ contrib_githwxi_BOOTJS1_lib2xatsopt: ; \
   time make -C contrib/githwxi/BOOTJS1 -f Makefile_xjsemit lib2xatsopt
 contrib_githwxi_BOOTJS1_UTIL_tcheck00: ; \
   time make -C contrib/githwxi/BOOTJS1/UTIL -f Makefile_xjsemit xatsopt_tcheck00
+contrib_githwxi_BOOTJS1_lib2xats2js: ; \
+  time make -C contrib/githwxi/BOOTJS1/xats2js/srcgen1 -f Makefile_xjsemit lib2xats2js
 #
 contrib_githwxi_BOOTPY1_lib2xatsopt: ; \
   time make -C contrib/githwxi/BOOTPY1 -f Makefile_xpyemit lib2xatsopt
 contrib_githwxi_BOOTPY1_UTIL_tcheck00: ; \
   time make -C contrib/githwxi/BOOTPY1/UTIL -f Makefile_xpyemit xats2py_tcheck00
+contrib_githwxi_BOOTPY1_lib2xats2js: ; \
+  time make -C contrib/githwxi/BOOTPY1/xats2js/srcgen1 -f Makefile_xpyemit lib2xats2js
+contrib_githwxi_BOOTPY1_lib2xats2py: ; \
+  time make -C contrib/githwxi/BOOTPY1/xats2py/srcgen1 -f Makefile_xpyemit lib2xats2py
 #
 ############################################################
 ############################################################
