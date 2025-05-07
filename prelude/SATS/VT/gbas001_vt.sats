@@ -327,10 +327,10 @@ fun
 rfilter$test1(x0: !x0): bool
 fun
 <x0:vt>
-ifilter$test1(x0: !x0): bool
+ifilter$test1(ni, !x0): bool
 fun
 <x0:vt>
-irfilter$test1(x0: !x0): bool
+irfilter$test1(ni, !x0): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)

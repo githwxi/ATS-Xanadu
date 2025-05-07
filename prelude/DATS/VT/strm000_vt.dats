@@ -126,113 +126,6 @@ g_make0_lstrq
 (* ****** ****** *)
 //
 (*
-(*
-HX-2024-07-10:
-Making use of the most general one
-(unless you are sure of a specific one)
-*)
-#impltmp
-< x0:vt >
-< y0:vt >
-strm_vt_map0 =
-gseq_map0_ares<strm_vt(x0)><x0><strm_vt(y0)>
-*)
-//
-#impltmp
-< x0:vt >
-< y0:vt >
-strm_vt_map0
-  ( xs ) =
-(
-  auxmain(xs)) where
-{
-fun
-auxmain
-( xs
-: strm_vt(x0)
-) : strm_vt(y0) = $llazy
-(
-case+ !xs of
-| ~
-strmcon_vt_nil() =>
-strmcon_vt_nil(*void*)
-| ~
-strmcon_vt_cons(x1, xs) =>
-strmcon_vt_cons(map$fopr0<x0><y0>(x1), auxmain(xs))
-)
-}(*where*)//end-of-[strm_vt_map0(xs)]
-//
-(*
-HX-2024-07-10:
-Implementing the most specific one.
-HX-2024-07-13:
-This one is already added as the default!
-It is not harm to keep it here as a reference.
-*)
-#impltmp
-{ x0:vt }
-{ y0:vt }
-gseq_map0_lstrm
-<strm_vt(x0)><x0><y0> = strm_vt_map0<x0><y0>(*void*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:vt >
-strm_vt_filter0
-  ( xs ) =
-$llazy
-(auxloop(!xs)) where
-{
-(*
-HX-2024-07-13:
-[auxloop] nees to
-be tail-recursive!
-*)
-fnx
-auxloop
-( cs
-: strmcon_vt(x0)
-) : strmcon_vt(x0) =
-(
-case+ cs of
-| ~
-strmcon_vt_nil() =>
-strmcon_vt_nil(*void*)
-| ~
-strmcon_vt_cons(x1, xs) =>
-let
-val
-test =
-filter$test1<x0>(x1)
-in//let
-if
-test
-then
-strmcon_vt_cons
-(x1, $llazy(auxloop(!xs)))
-else
-(g_free<x0>(x1); auxloop(!xs)) end
-)
-}(*where*)//end-of-[strm_vt_filter0(xs)]
-//
-(*
-HX-2024-07-10:
-Implementing the most specific one.
-HX-2024-07-13:
-This one is already added as the default!
-It is not harm to keep it here as a reference.
-*)
-#impltmp
-{ x0:vt }
-gseq_filter0_lstrm
-<strm_vt(x0)><x0> = strm_vt_filter0<x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
 HX-2024-09-05:
 Thu 05 Sep 2024 07:59:10 PM EDT
 *)
@@ -301,7 +194,8 @@ Fri 13 Sep 2024 02:56:33 PM EDT
 strm_vt_head0
   ( xs ) =
 ( case- !xs of
-| ~strmcon_vt_cons(x1, xs) =>
+| ~
+strmcon_vt_cons(x1, xs) =>
 let val () = $free(xs) in x1 end)
 //
 #impltmp
@@ -309,7 +203,8 @@ let val () = $free(xs) in x1 end)
 strm_vt_tail0
   ( xs ) =
 ( case- !xs of
-| ~strmcon_vt_cons(x1, xs) =>
+| ~
+strmcon_vt_cons(x1, xs) =>
 let val () = g_free<x0>(x1) in xs end)
 //
 (* ****** ****** *)
