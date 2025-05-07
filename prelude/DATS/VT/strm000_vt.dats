@@ -300,7 +300,7 @@ Fri 13 Sep 2024 02:56:33 PM EDT
 < x0:vt >
 strm_vt_head0
   ( xs ) =
-( case+ !xs of
+( case- !xs of
 | ~strmcon_vt_cons(x1, xs) =>
 let val () = $free(xs) in x1 end)
 //
@@ -308,7 +308,7 @@ let val () = $free(xs) in x1 end)
 < x0:vt >
 strm_vt_tail0
   ( xs ) =
-( case+ !xs of
+( case- !xs of
 | ~strmcon_vt_cons(x1, xs) =>
 let val () = g_free<x0>(x1) in xs end)
 //
@@ -321,7 +321,7 @@ strm_vt_head$opt0
 (
 case+ !xs of
 | ~
-strmcon_vt_nil() => optn_vt_nil(*void*)
+strmcon_vt_nil() => optn_vt_nil(*0*)
 | ~
 strmcon_vt_cons(x1, xs) => let
 val () = $free(xs) in optn_vt_cons(x1) end
@@ -334,7 +334,7 @@ strm_vt_tail$opt0
 (
 case+ !xs of
 | ~
-strmcon_vt_nil() => optn_vt_nil(*void*)
+strmcon_vt_nil() => optn_vt_nil(*0*)
 | ~
 strmcon_vt_cons(x1, xs) => let
 val () = g_free<x0>(x1) in optn_vt_cons(xs) end
@@ -343,7 +343,6 @@ val () = g_free<x0>(x1) in optn_vt_cons(xs) end
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_strm000_vt.dats] *)
+(***********************************************************************)
