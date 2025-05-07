@@ -38,10 +38,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
-strx_vt_nil
-{a:vt}(): strx_vt(a)
-//
 fun
 <a:vt>
 strx_vt_cons
