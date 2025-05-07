@@ -97,6 +97,7 @@
 #include "prelude/SATS/optn001.sats"
 //
 #include "prelude/SATS/strm000.sats"
+#include "prelude/SATS/strx000.sats"
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
@@ -143,6 +144,9 @@ HX: for viewtypes (that is, linear types)
 #include "prelude/SATS/VT/strm000_vt.sats"
 #include "prelude/SATS/VT/strm001_vt.sats"
 #include "prelude/SATS/VT/strm002_vt.sats"
+//
+#include "prelude/SATS/VT/strx000_vt.sats"
+#include "prelude/SATS/VT/strx001_vt.sats"
 //
 #include "prelude/SATS/VT/tupl000_vt.sats"
 //

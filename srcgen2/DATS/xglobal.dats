@@ -176,15 +176,18 @@ in//local
 the_fxtyenv_pvsload
   ((*void*)) =
 let
+//
 val n0 =
 the_ntime[]
 val () =
 (the_ntime[] := n0+1)
+//
 in//let
+//
 if
 (n0 > 0)
 then (0) else f0_pvsload()
-end where
+end where // let
 {
 //
 fun
@@ -211,9 +214,10 @@ prerrsln
 *)
 //
 in//let
+(
 case+ tenv of
 | D1TOPENV(topmap) =>
-  (the_fxtyenv[] := topmap; (1))
+  (the_fxtyenv[] := topmap; (1)) )
 end (*let*) // end of [ f0_pvsload ]
 //
 } (*where*) // [the_fxtyenv_pvsload()]

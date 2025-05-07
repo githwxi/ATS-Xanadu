@@ -241,21 +241,23 @@ defq
 (* ****** ****** *)
 //
 #staload _(*local*) = "./../DATS/xlibext_tmplib.dats"
+#staload _(*local*) = "./../DATS/xatsopt_tmplib.dats"
+//
+(* ****** ****** *)
 //
 #if
 defq(_XATS2JS_)
+// HX-2025-05:
+// for function templates
 #staload _(*local*) = "./../DATS/xlibext_jsemit.dats"
-#endif//#if(defq(_XATS2JS_))
+#endif//#ifdefq(_XATS2JS_)(staload(xlibext_jsemit.dats))
 //
 #if
 defq(_XATS2PY_)
+// HX-2025-05:
+// for function templates
 #staload _(*local*) = "./../DATS/xlibext_pyemit.dats"
-#endif//#if(defq(_XATS2PY_))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload _(*local*) = "./../DATS/xatsopt_tmplib.dats"
+#endif//#ifdefq(_XATS2JS_)(staload(xlibext_pyemit.dats))
 //
 (* ****** ****** *)
 (* ****** ****** *)

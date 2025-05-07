@@ -26,11 +26,12 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Sat 07 Sep 2024 07:22:52 AM EDT
+Mon 02 Sep 2024 02:32:03 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -38,6 +39,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"./../../../prelude/SATS/strm000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_strm000.dats] *)
+(* end of [ATS3/XANADU_srcgen2_prelude_SATS_strm000.sats] *)
 (***********************************************************************)

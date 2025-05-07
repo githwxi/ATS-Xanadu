@@ -49,8 +49,17 @@ fun
 gseq_listize1
 (xs: !xs): list_vt(x0)//fun
 //
+#typedef
+gseq_listize0
+(xs:vt, x0:vt) = (~xs) -> list_vt(x0)
+#typedef
+gseq_listize1
+(xs:vt, x0:vt) = (!xs) -> list_vt(x0)
+//
+(*
 #symload listize0 with gseq_listize0 of 0100
 #symload listize1 with gseq_listize1 of 0100
+*)
 //
 (* ****** ****** *)
 //
@@ -75,11 +84,25 @@ fun
 gseq_strqize1
 (xs: !xs): strq_vt(x0)//fun
 //
+#typedef
+gseq_strmize0
+(xs:vt, x0:vt) = (~xs) -> strm_vt(x0)
+#typedef
+gseq_strmize1
+(xs:vt, x0:vt) = (!xs) -> strm_vt(x0)
+#typedef
+gseq_strqize0
+(xs:vt, x0:vt) = (~xs) -> strq_vt(x0)
+#typedef
+gseq_strqize1
+(xs:vt, x0:vt) = (!xs) -> strq_vt(x0)
+//
+(*
 #symload strmize0 with gseq_strmize0 of 0100
 #symload strmize1 with gseq_strmize1 of 0100
-//
 #symload strqize0 with gseq_strqize0 of 0100
 #symload strqize1 with gseq_strqize1 of 0100
+*)
 //
 (* ****** ****** *)
 //
@@ -94,8 +117,17 @@ fun
 gseq_rlistize1
 (xs: !xs): list_vt(x0)//fun
 //
+#typedef
+gseq_rlistize0
+(xs:vt, x0:vt) = (~xs) -> list_vt(x0)
+#typedef
+gseq_rlistize1
+(xs:vt, x0:vt) = (!xs) -> list_vt(x0)
+//
+(*
 #symload rlistize0 with gseq_rlistize0 of 0100
 #symload rlistize1 with gseq_rlistize1 of 0100
+*)
 //
 (* ****** ****** *)
 //
@@ -120,11 +152,25 @@ fun
 gseq_rstrqize1
 (xs: !xs): strq_vt(x0)//fun
 //
+#typedef
+gseq_rstrmize0
+(xs:vt, x0:vt) = (~xs) -> strm_vt(x0)
+#typedef
+gseq_rstrmize1
+(xs:vt, x0:vt) = (!xs) -> strm_vt(x0)
+#typedef
+gseq_rstrqize0
+(xs:vt, x0:vt) = (~xs) -> strq_vt(x0)
+#typedef
+gseq_rstrqize1
+(xs:vt, x0:vt) = (!xs) -> strq_vt(x0)
+//
+(*
 #symload rstrmize0 with gseq_rstrmize0 of 0100
 #symload rstrmize1 with gseq_rstrmize1 of 0100
-//
 #symload rstrqize0 with gseq_rstrqize0 of 0100
 #symload rstrqize1 with gseq_rstrqize1 of 0100
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

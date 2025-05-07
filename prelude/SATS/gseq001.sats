@@ -268,6 +268,7 @@ gseq_irexists
 (xs:t0, x0:t0) = (xs) -> bool
 //
 (* ****** ****** *)
+//
 (*
 #symload forall with gseq_forall of 0100
 #symload exists with gseq_exists of 0100

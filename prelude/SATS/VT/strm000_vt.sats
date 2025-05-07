@@ -53,12 +53,6 @@ x0: (a),
 xs: strm_vt(a)): strm_vt(a)
 fun
 <a:vt>
-strx_vt_cons
-(
-x0: (a),
-xs: strx_vt(a)): strx_vt(a)
-fun
-<a:vt>
 strq_vt_cons
 {n:i0}
 (
@@ -171,7 +165,7 @@ fun
 strq_vt_prepend00
 {n1,n2:i0}
 ( xs: strq_vt(x0,n1)
-, ys: strq_vt(x0,n2)): strq_vt(x0,n1+n2)
+, ys: strq_vt(x0,n2)): strq_vt(x0,n2+n1)
 //
 #symload prepend00 with strm_vt_prepend00
 #symload prepend00 with strq_vt_prepend00
@@ -196,7 +190,7 @@ fun
 strq_vt_prepend0__llist0
 {n1,n2:i0}
 ( xs: strq_vt(x0,n1)
-, ys: list_vt(x0,n2)): strq_vt(x0,n1+n2)
+, ys: list_vt(x0,n2)): strq_vt(x0,n2+n1)
 //
 (* ****** ****** *)
 //
@@ -239,7 +233,6 @@ list_make0_lstrq
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_strn000_vt.sats] *)
+(***********************************************************************)
