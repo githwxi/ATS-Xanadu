@@ -292,6 +292,12 @@ HX: homogeneous tuples
 //
 #include
 "srcgen1/prelude/SATS/strm000.sats"
+(*
+#include
+"srcgen2/prelude/SATS/strm000.sats"
+#include
+"srcgen2/prelude/SATS/strx000.sats"
+*)
 //
 (* ****** ****** *)
 //
@@ -419,6 +425,8 @@ For viewtypes (that is, linear types)
 *)
 #include
 "srcgen2/prelude/SATS/VT/strm000_vt.sats"
+#include
+"srcgen2/prelude/SATS/VT/strx000_vt.sats"
 //
 (* ****** ****** *)
 //
@@ -463,7 +471,6 @@ UNSF(*unsafe*) = "srcgen1/prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_prelude_INIT_prelude_sats.hats] *)
+(***********************************************************************)
