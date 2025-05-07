@@ -30,108 +30,160 @@
 (*
 Author: Hongwei Xi
 (*
-Wed May  7 08:40:39 AM EDT 2025
+Wed May  7 09:33:41 AM EDT 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
-#typedef si = sint
+//
+#impltmp
+<(*tmp*)>
+strx_vt_nil() =
+$llazy
+(strxcon_vt_nil(*void*))
+//
+#impltmp
+< a: vt >
+strx_vt_cons(x0, xs) =
+$llazy
+(strxcon_vt_cons(x0, xs))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:vt>
-strx_vt_strmize0
-(xs: strx_vt(x0)): strm_vt(x0)
-//
-#symload
-strmize0 with strx_vt_strmize0 of 1000
+#impltmp
+{ x0:vt }
+g_free//~xs
+<strx_vt(x0)>(xs) = $free(xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:vt>
-<y0:vt>
+(*
+HX-2024-07-17:
+Wed 17 Jul 2024 10:27:26 PM EDT
+*)
+//
+#impltmp
+{ x0:vt }
+gseq_sep
+<strx_vt(x0)><x0>() = ","
+#impltmp
+{ x0:vt }
+gseq_end
+<strx_vt(x0)><x0>() = ")"
+#impltmp
+{ x0:vt }
+gseq_beg
+<strx_vt(x0)><x0>() = "strx_vt("
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+g_print0
+<strx_vt(x0)>(xs) =
+(
+gseq_print0<strx_vt(x0)><x0>(xs)
+)(*let*)//end-[g_print0<strx_vt>]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strx_vt_free(xs) = $free(xs)
+#impltmp
+< x0:vt >
+strx_vt_eval(xs) = $eval(xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+< y0:vt >
 strx_vt_map0
-(xs: strx_vt(x0)): strx_vt(y0)
-//
+  ( xs ) =
+(
+  auxmain(xs)) where
+{
 fun
-<x0:vt>
-<y0:vt>
-strx_vt_imap0
-(xs: strx_vt(x0)): strx_vt(y0)
-//
-#symload map0 with strx_vt_map0 of 1000
-#symload imap0 with strx_vt_imap0 of 1000
+auxmain
+( xs
+: strx_vt(x0)
+) : strx_vt(y0) = $llazy
+(
+case+ !xs of
+| ~
+strxcon_vt_cons(x1, xs) =>
+strxcon_vt_cons(map$fopr0<x0><y0>(x1), auxmain(xs))
+)
+}(*where*)//end-of-[strx_vt_map0(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:vt>
+#impltmp
+< x0:vt >
 strx_vt_filter0
-(xs: strx_vt(x0)): strx_vt(x0)
-fun
-<x0:vt>
-strx_vt_ifilter0
-(xs: strx_vt(x0)): strx_vt(x0)
-//
-#symload filter0 with strx_vt_filter0 of 1000
-#symload ifilter0 with strx_vt_ifilter0 of 1000
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-strx_vt_filter0$f1un
-( xs: strx_vt(x0)
-, test: (!x0) -> bool): strx_vt(x0)
-#symload filter0 with strx_vt_filter0$f1un of 1000
-#symload filter0$fun with strx_vt_filter0$f1un of 1000
-//
-fun
-<x0:vt>
-strx_vt_ifilter0$f2un
-( xs: strx_vt(x0)
-, test: (ni,!x0) -> bool): strx_vt(x0)
-#symload ifilter0 with strx_vt_ifilter0$f2un of 1000
-#symload ifilter0$fun with strx_vt_ifilter0$f2un of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-<y0:vt>
-strx_vt_mapoptn0
-(xs: ~strx_vt(x0)): strx_vt(y0)
-fun
-<x0:vt>
-<y0:vt>
-strx_vt_maplist0
-(xs: ~strx_vt(x0)): strx_vt(y0)
-//
-#symload mapoptn0 with strx_vt_mapoptn0 of 1000
-#symload maplist0 with strx_vt_maplist0 of 1000
+  ( xs ) =
+$llazy
+(auxloop(!xs)) where
+{
+(*
+HX-2024-07-13:
+[auxloop] nees to
+be tail-recursive!
+*)
+fnx
+auxloop
+( cs
+: strxcon_vt(x0)
+) : strxcon_vt(x0) =
+(
+case+ cs of
+| ~
+strxcon_vt_cons(x1, xs) =>
+let
+val
+test =
+filter$test1<x0>(x1)
+in//let
+if
+test
+then
+strxcon_vt_cons
+(x1, $llazy(auxloop(!xs)))
+else
+(g_free<x0>(x1); auxloop(!xs)) end
+)
+}(*where*)//end-of-[strx_vt_filter0(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:vt>
-<r0:vt>
-strx_vt_scanitm0
-(xs: ~strx_vt(x0), r0: r0): strx_vt(r0)
+#impltmp
+< x0:vt >
+strx_vt_head0
+  ( xs ) =
+( case+ !xs of
+| ~strxcon_vt_cons(x1, xs) =>
+let val () = $free(xs) in x1 end)
 //
-#symload scanitm0 with strx_vt_scanitm0 of 1000
+#impltmp
+< x0:vt >
+strx_vt_tail0
+  ( xs ) =
+( case+ !xs of
+| ~strxcon_vt_cons(x1, xs) =>
+let val () = g_free<x0>(x1) in xs end)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_VT_strx001_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_VT_strx000_vt.dats] *)
 (***********************************************************************)
