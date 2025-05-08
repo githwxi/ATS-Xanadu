@@ -96,10 +96,38 @@ g_psort((*void*)): ( void )
 fun
 <vw:vw>
 g_ptype((*void*)): ( void )
+(*
+HX-2025-05-08:
+For printing out
+only the type constructor.
+[g_ptcon<list(...)>()]
+prints out 'list' only
+while skipping the argument
+type, that is, the type for
+list elements.
+*)
+fun
+<vw:vw>
+g_ptcon((*void*)): ( void )
 //
 (* ****** ****** *)
 //
+fun
+<vw:vw>
+g_sort$strn((*void*)): ( strn )
+fun
+<vw:vw>
+g_type$strn((*void*)): ( strn )
+fun
+<vw:vw>
+g_tcon$strn((*void*)): ( strn )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 #symload debug with g_debug of 0100
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -122,7 +150,6 @@ assert with bool_assert$errmsg of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_gdbg000.sats] *)
+(***********************************************************************)

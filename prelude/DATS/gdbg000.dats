@@ -158,6 +158,13 @@ g_ptype
 //
 #impltmp
 { t0:t0 }
+g_ptcon
+<list(t0)>
+( (*void*) ) =
+(
+pstrn("list"))
+#impltmp
+{ t0:t0 }
 g_ptype
 <list(t0)>
 ( (*void*) ) =
@@ -167,6 +174,13 @@ g_ptype<t0>((*0*)); pstrn(")"))
 //
 #impltmp
 { t0:t0 }
+g_ptcon
+<optn(t0)>
+( (*void*) ) =
+(
+pstrn("optn"))
+#impltmp
+{ t0:t0 }
 g_ptype
 <optn(t0)>
 ( (*void*) ) =
@@ -174,6 +188,13 @@ g_ptype
 pstrn("optn(");
 g_ptype<t0>((*0*)); pstrn(")"))
 //
+#impltmp
+{ t0:t0 }
+g_ptcon
+<strm(t0)>
+( (*void*) ) =
+(
+pstrn("strm"))
 #impltmp
 { t0:t0 }
 g_ptype
@@ -187,6 +208,13 @@ g_ptype<t0>((*0*)); pstrn(")"))
 //
 #impltmp
 { vt:vt }
+g_ptcon
+<list_vt(vt)>
+( (*void*) ) =
+(
+pstrn("list_vt("))
+#impltmp
+{ vt:vt }
 g_ptype
 <list_vt(vt)>
 ( (*void*) ) =
@@ -196,6 +224,13 @@ g_ptype<vt>((*0*)); pstrn(")"))
 //
 #impltmp
 { vt:vt }
+g_ptcon
+<optn_vt(vt)>
+( (*void*) ) =
+(
+pstrn("optn_vt("))
+#impltmp
+{ vt:vt }
 g_ptype
 <optn_vt(vt)>
 ( (*void*) ) =
@@ -203,6 +238,13 @@ g_ptype
 pstrn("optn_vt(");
 g_ptype<vt>((*0*)); pstrn(")"))
 //
+#impltmp
+{ vt:vt }
+g_ptcon
+<strm_vt(vt)>
+( (*void*) ) =
+(
+pstrn("strm_vt("))
 #impltmp
 { vt:vt }
 g_ptype
@@ -257,7 +299,6 @@ end(*let*)//end-of-[bool_assert(cond)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_gdbg000.dats] *)
+(***********************************************************************)

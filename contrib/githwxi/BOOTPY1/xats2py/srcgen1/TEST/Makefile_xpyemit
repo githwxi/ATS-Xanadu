@@ -310,7 +310,7 @@ OUTS/%_dats_out0.py; \
 $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/pyxtnm/pyx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
-# lib/lib2xatsopt2js2py.py: \
-# $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt2js2py.py
+lib/lib2xatsopt2js2py.py: \
+$(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt2js2py.py
 ########################################################################
 ########################################################################
