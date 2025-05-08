@@ -58,11 +58,13 @@ val () = printsln("ABBA = ", ABBA)
 (* ****** ****** *)
 //
 val
-rABAB = strn$rconcat(@(AB, AB))
+rABAB =
+gseq_strn$rconcat(@(AB, AB))
 val () = printsln("rABAB = ", rABAB)
 //
 val
-ABABAB = strn$concat(@(AB, AB, AB))
+ABABAB =
+gseq_strn$concat(@(AB, AB, AB))
 val () = printsln("ABABAB = ", ABABAB)
 //
 (* ****** ****** *)
@@ -117,19 +119,18 @@ strn_make_nfun
 (26, lam(i) => 'a'+i)
 //
 val ab1 = listize(ab0)
-val ab1 = strn_make0_llist(ab1)
-val ( ) = printsln("ab1 = ", ab1)
+val ( ) = printsln("ab1 = ", strn(ab1))
 //
 val ab2 = strmize(ab0)
-val ab2 = strn_make0_lstrm(ab2)
-val ( ) = printsln("ab2 = ", ab2)
+val ( ) = printsln("ab2 = ", strn(ab2))
 //
-val ( ) =
-printsln("ab1 = ", strn(listize(ab0)))
-val ( ) =
-printsln("ab2 = ", strn(strmize(ab0)))
+val ab3 =
+strmize(
+list_make_nfun(26,
+lam(i) =>
+strn_make_nfun(1, lam(_) => 'z'+(-i))))
+val ( ) = printsln("ab3 = ", strn(ab3))
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 val () =

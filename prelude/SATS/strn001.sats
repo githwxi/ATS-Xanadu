@@ -206,17 +206,31 @@ Sat 17 Aug 2024 12:27:46 PM EDT
 fun
 <xs:t0>
 gseq_strn$concat(xs: xs(*strnseq*)): strn
-#symload strn$concat with gseq_strn$concat of 1000
-//
 fun
 <xs:t0>
 gseq_strn$rconcat(xs: xs(*strnseq*)): strn
-#symload strn$rconcat with gseq_strn$rconcat of 1000
+//
+(*
+#symload strn$concat with gseq_strn$concat of 0100
+#symload strn$rconcat with gseq_strn$rconcat of 0100
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(*
+HX-2025-05-08:
+Thu May  8 02:16:02 PM EDT 2025
+*)
+//
+fun<>
+strm_vt_strn$concat0(xs: strm_vt(strn)): strn
+#symload strn with strm_vt_strn$concat0 of 1000
+#symload strn$concat0 with strm_vt_strn$concat0 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_strn001.sats] *)
+(***********************************************************************)
