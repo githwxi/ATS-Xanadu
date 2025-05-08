@@ -38,6 +38,31 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX:
+This one is also
+implemented in [gdbg000.dats]:
+*)
+#impltmp
+{ vt:vt }
+g_ptcon
+<strx_vt(vt)>
+( (*void*) ) =
+(
+pstrn("strx_vt"))
+//
+#impltmp
+{ vt:vt }
+g_ptype
+<strx_vt(vt)>
+( (*void*) ) =
+(
+pstrn("strx_vt(");
+g_ptype<vt>((*0*)); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < a: vt >
 strx_vt_cons(x0, xs) =
