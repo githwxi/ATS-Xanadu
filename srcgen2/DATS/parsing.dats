@@ -64,7 +64,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
-trans00_from_fpath
+trans00_from_atext
   (stadyn, source) =
 let
 //
