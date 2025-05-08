@@ -204,6 +204,22 @@ g_ptype
 pstrn("strm(");
 g_ptype<t0>((*0*)); pstrn(")"))
 //
+#impltmp
+{ t0:t0 }
+g_ptcon
+<strx(t0)>
+( (*void*) ) =
+(
+pstrn("strx"))
+#impltmp
+{ t0:t0 }
+g_ptype
+<strx(t0)>
+( (*void*) ) =
+(
+pstrn("strx(");
+g_ptype<t0>((*0*)); pstrn(")"))
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -252,6 +268,22 @@ g_ptype
 ( (*void*) ) =
 (
 pstrn("strm_vt(");
+g_ptype<vt>((*0*)); pstrn(")"))
+//
+#impltmp
+{ vt:vt }
+g_ptcon
+<strx_vt(vt)>
+( (*void*) ) =
+(
+pstrn("strx_vt("))
+#impltmp
+{ vt:vt }
+g_ptype
+<strx_vt(vt)>
+( (*void*) ) =
+(
+pstrn("strx_vt(");
 g_ptype<vt>((*0*)); pstrn(")"))
 //
 (* ****** ****** *)
