@@ -130,6 +130,62 @@ forall$test1<x0>(x0) = false
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_tostr0(xs) =
+let
+//
+val xbeg =
+gseq_beg<xs><x0>((*0*))
+val xsep =
+gseq_sep<xs><x0>((*0*))
+val xend =
+gseq_end<xs><x0>((*0*))
+//
+in//let
+//
+strn_fmake0_env$fwork<xs>
+(
+xs,
+lam(xs, work) =>
+let
+val () =
+strn_foritm$f1un
+(  xbeg, work  )
+//
+val () =
+gseq_iforitm0$f2un
+<   xs  ><  x0   >
+(
+xs,
+lam(i0, x0) =>
+(
+if (i0 >= 1) then
+strn_foritm$f1un(xsep, work)
+;
+let
+  val
+  xrep = g_tostr0<x0>(x0)
+in//let
+(
+strn_foritm$f1un(xrep, work))
+end//let
+)
+)
+//
+val () =
+(
+  strn_foritm$f1un(xend, work))
+//
+end//let//end-of-[lam(xs, work)]
+)
+//
+end(*let*)//end-of-[gseq_tostr0<xs><x0>]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 Wed 17 Jul 2024 09:55:22 PM EDT
 *)

@@ -218,6 +218,24 @@ gseq_uncons0(xs: ~xs): (x0, xs)
 fun
 <xs:vt>
 <x0:vt>
+gseq_torep0(xs: ~xs): strn
+fun
+<xs:vt>
+<x0:vt>
+gseq_torep1(xs: !xs): strn
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_tostr0(xs: ~xs): strn
+fun
+<xs:vt>
+<x0:vt>
+gseq_tostr1(xs: !xs): strn
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_print0(xs: ~xs): void
 fun
 <xs:vt>
