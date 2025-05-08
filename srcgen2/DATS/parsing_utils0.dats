@@ -60,18 +60,18 @@ ATS_PACKNAME
 (*
 fun
 <r0:t0>
-p1_fun_test_strn
+p1_fun_test_atext
 ( inp: strn
 , pfn: p1_fun(r0)): optn(r0)
 *)
 #impltmp
 <r0>(*tmp*)
-p1_fun_test_strn
+p1_fun_test_atext
 (   inp, pfn   ) =
 let
 //
 val tks =
-strn_tokenize(inp)
+atext_tokenize(inp)
 val buf =
 tokbuf_make0_llist(tks)
 //
@@ -81,32 +81,32 @@ val ( ) = tokbuf_free(buf)
 in//let
 if
 (err=0) then some(res) else none()
-end (*let*) // end of [p1_fun_test_strn]
+end (*let*) // end of [p1_fun_test_atext]
 
 (* ****** ****** *)
 
 (*
 fun
 <r0:t0>
-pq_fun_test_strn
+pq_fun_test_atext
 ( inp: strn
 , pfn: pq_fun(r0)): optn(r0)
 *)
 #impltmp
 <r0>(*tmp*)
-pq_fun_test_strn
+pq_fun_test_atext
 (   inp, pfn   ) =
 let
 //
 val tks =
-strn_tokenize(inp)
+atext_tokenize(inp)
 val buf =
 tokbuf_make0_llist(tks)
 //
 var err = 0(*init*)
 val res = pfn(buf, err)
 val ( ) = tokbuf_free(buf) in res
-end (*let*) // end of [pq_fun_test_strn]
+end (*let*) // end of [pq_fun_test_atext]
 
 (* ****** ****** *)
 

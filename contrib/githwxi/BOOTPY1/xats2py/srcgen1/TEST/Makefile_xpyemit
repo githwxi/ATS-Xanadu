@@ -215,6 +215,7 @@ clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f OUTS/*_dats_out0.py
+cleanall:: ; rm -f OUTS/*_dats_out1.py
 cleanall:: ; rm -f xats2py_pyemit00_ats3.py
 cleanall:: ; rm -f xats2py_pyemit01_ats3.py
 ########################################################################
@@ -248,8 +249,7 @@ XATS2PY_PYEMIT00=./../UTIL/xats2py_pyemit00_ats3.py
 #
 all:: \
 xats2py_pyemit00
-xats2py_pyemit00: \
-lib/lib2xatsopt2js2py.py; \
+xats2py_pyemit00: ; \
 printf "\
 ## %s\n%s\n%s\n%s\n%s\n" \
 "`date`" \
@@ -271,8 +271,7 @@ $(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit00.dats >> $@_ats3.py
 #
 all:: \
 xats2py_pyemit01
-xats2py_pyemit01: \
-lib/lib2xatsopt2js2py.py; \
+xats2py_pyemit01: ; \
 printf "\
 ## %s\n%s\n%s\n%s\n%s\n" \
 "`date`" \
@@ -311,7 +310,7 @@ OUTS/%_dats_out0.py; \
 $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/pyxtnm/pyx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
-lib/lib2xatsopt2js2py.py: \
-$(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt2js2py.py
+# lib/lib2xatsopt2js2py.py: \
+# $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt2js2py.py
 ########################################################################
 ########################################################################

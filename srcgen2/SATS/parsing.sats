@@ -627,11 +627,11 @@ ps_sep_p1fun{a:tx}
 //
 fun
 <r0:t0>
-p1_fun_test_strn
+p1_fun_test_atext
 (inp: strn, pfn: p1_fun(r0)): optn(r0)
 fun
 <r0:t0>
-pq_fun_test_strn
+pq_fun_test_atext
 (inp: strn, pfn: pq_fun(r0)): optn(r0)
 //
 (* ****** ****** *)
@@ -645,7 +645,26 @@ pq_fun_test_fpath
 (fpx: strn, pfn: pq_fun(r0)): optn(r0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+(*
 #staload FP0 = "./filpath.sats"
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-05-07:
+These two functions are the same!
+*)
+//
+fun
+trans00_from_atext
+(stadyn: sint, source: strn(*atext*)): d0parsed
+fun
+d0parsed_from_atext
+(stadyn: sint, source: strn(*atext*)): d0parsed
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

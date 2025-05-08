@@ -73,6 +73,27 @@ strx_vt_imap0
 //
 fun
 <x0:vt>
+<y0:vt>
+strx_vt_map0$f1un
+( xs: strx_vt(x0)
+, fopr: (~x0) -> y0): strx_vt(y0)
+#symload map0 with strx_vt_map0$f1un of 1000
+#symload map0$fun with strx_vt_map0$f1un of 1000
+//
+fun
+<x0:vt>
+<y0:vt>
+strx_vt_imap0$f1un
+( xs: strx_vt(x0)
+, fopr: (ni,~x0) -> y0): strx_vt(y0)
+#symload map0 with strx_vt_imap0$f1un of 1000
+#symload map0$fun with strx_vt_imap0$f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 strx_vt_filter0
 (xs: strx_vt(x0)): strx_vt(x0)
 fun

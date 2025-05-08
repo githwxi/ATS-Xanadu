@@ -117,7 +117,7 @@ end
 (* ****** ****** *)
 
 #implfun
-strn_tokenize(src) =
+atext_tokenize(src) =
 let
 val
 buf =
@@ -130,7 +130,7 @@ in
   lexing_lctnize_all
   (lcs, lxbf1_lexing_tnodelst(buf))
 )
-endlet // end of [strn_tokenize(strn)]
+endlet // end of [atext_tokenize(strn)]
 
 (* ****** ****** *)
 

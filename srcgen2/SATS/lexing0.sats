@@ -458,7 +458,7 @@ lexing_preping_all // token list
 (* ****** ****** *)
 //
 fun
-strn_tokenize(src:strn): list_vt(token)
+atext_tokenize(src:strn): list_vt(token)
 //
 (* ****** ****** *)
 //
