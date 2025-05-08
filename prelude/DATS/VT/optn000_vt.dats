@@ -46,6 +46,14 @@ implemented in [gdbg000.dats]:
 *)
 #impltmp
 { vt:vt }
+g_ptcon
+<optn_vt(vt)>
+( (*void*) ) =
+(
+pstrn("optn_vt("))
+//
+#impltmp
+{ vt:vt }
 g_ptype
 <optn_vt(vt)>
 ( (*void*) ) =

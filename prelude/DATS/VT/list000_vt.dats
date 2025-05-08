@@ -46,6 +46,14 @@ implemented in [gdbg000.dats]:
 *)
 #impltmp
 { vt:vt }
+g_ptcon
+<list_vt(vt)>
+( (*void*) ) =
+(
+pstrn("list_vt"))
+//
+#impltmp
+{ vt:vt }
 g_ptype
 <list_vt(vt)>
 ( (*void*) ) =

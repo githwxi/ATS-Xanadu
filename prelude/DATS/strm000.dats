@@ -38,6 +38,30 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX:
+This one is also
+implemented in [gdbg000.dats]:
+*)
+#impltmp
+{ t0:t0 }
+g_ptcon
+<strm(t0)>
+( (*void*) ) =
+(
+pstrn("strm"))
+#impltmp
+{ t0:t0 }
+g_ptype
+<strm(t0)>
+( (*void*) ) =
+(
+pstrn("strm(");
+g_ptype<t0>((*0*)); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_strm000.dats] *)
 (***********************************************************************)

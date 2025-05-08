@@ -239,6 +239,26 @@ $(SRCGEN2)/xats2py/srcgenx/xshared/runtime
 ########################################################################
 XATS2PY_PYEMIT00=./xats2py_pyemit00_ats3.py
 ########################################################################
+xats2py_pyemit00: ; \
+printf "\
+## %s\n%s\n%s\n%s\n%s\n" \
+"`date`" \
+"import os" \
+"import sys" \
+"import math" \
+"sys.setrecursionlimit(66000)" \
+> $@_test.py && \
+$(CAT) \
+$(S2XSHRD)/xats2py_py1emit.py >> $@_test.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_prelude.py >> $@_test.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_xatslib.py >> $@_test.py && \
+$(CAT) lib/lib2xatsopt2js2py.py >> $@_test.py && \
+$(PYTHON) \
+$(XATS2PY_PYEMIT00) __void__ \
+$(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit00.dats >> $@_test.py
+########################################################################
 ########################################################################
 N001="X"
 N002=$(N001) $(N001)
