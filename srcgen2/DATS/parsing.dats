@@ -69,6 +69,34 @@ trans00_from_fpath
 let
 //
 val knd = stadyn
+val txt = source
+//
+val tks =
+atext_tokenize(txt)
+val buf =
+tokbuf_make0_llist(tks)
+//
+var err: sint = 0(*init*)
+//
+val res =
+optn_cons
+(fp_d0eclsq1(knd,buf,err))
+//
+val ( ) = tokbuf_free(buf)
+//
+in//let
+//HX: nerror=-1: unknown of errors
+d0parsed(knd,(-1),LCSRCnone0((*0*)),res)
+end(*let*)//end-of(trans00_from_atext(...))
+//
+(* ****** ****** *)
+//
+#implfun
+trans00_from_fpath
+  (stadyn, source) =
+let
+//
+val knd = stadyn
 val fpx = source
 //
 val tks =
@@ -86,8 +114,25 @@ val ( ) = tokbuf_free(buf)
 //
 in//let
 //HX: nerror=-1: unknown of errors
-d0parsed(knd,(-1),LCSRCsome1(fpx),res)
+d0parsed(knd,(-1),LCSRCsome1( fpx ),res)
 end(*let*)//end-of(trans00_from_fpath(...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d0parsed_from_atext
+(stadyn, source) =
+(
+  trans00_from_atext( stadyn, source )
+) where
+{
+(*
+val () =
+prerrsln
+("d0parsed_from_atext: source = ", source)
+*)
+}(*where*)//end-of-[d0parsed_from_atext(...)]
 //
 (* ****** ****** *)
 //

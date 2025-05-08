@@ -40,6 +40,29 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 < x0:vt >
+strx_vt_strmize0
+  ( xs ) =
+(
+  auxmain(xs)) where
+{
+fun
+auxmain
+( xs
+: strx_vt(x0)
+) : strm_vt(x0) = $llazy
+(
+case+ !xs of
+| ~
+strxcon_vt_cons(x0, xs) =>
+strmcon_vt_cons(x0, auxmain(xs))
+)
+}(*where*)//end-of-[strx_vt_strmize0]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
 < y0:vt >
 strx_vt_map0
   ( xs ) =
@@ -59,6 +82,19 @@ strxcon_vt_cons(map$fopr0<x0><y0>(x1), auxmain(xs))
 )
 }(*where*)//end-of-[strx_vt_map0(xs)]
 //
+#impltmp
+< x0:vt >
+< y0:vt >
+strx_vt_map0$f1un
+  (xs, fopr) =
+(
+strx_vt_map0<x0><y0>(xs))
+where
+{
+#impltmp map$fopr0<x0><y0>(x0) = fopr(x0)
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -87,6 +123,19 @@ strxcon_vt_cons(y1,auxmain(i0+1,xs))
 end//let
 )
 }(*where*)//end-of-[strx_vt_imap0(xs)]
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+strx_vt_imap0$f1un
+  (xs, fopr) =
+(
+strx_vt_imap0<x0><y0>(xs))
+where
+{
+#impltmp
+imap$fopr0<x0><y0>(ni, x0) = fopr(ni, x0)
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -135,8 +184,8 @@ strx_vt_filter0$f1un
 strx_vt_filter0<x0>(xs))
 where
 {
-#impltmp filter$test1<x0>(x0) = test(x0)
-}
+#impltmp
+filter$test1<x0>(x0) = test(x0)}//where
 //
 (* ****** ****** *)
 (* ****** ****** *)
