@@ -356,6 +356,33 @@ end(*let*)//end-of-[gseq_strn$rconcat( xs )]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-08:
+Thu May  8 02:19:19 PM EDT 2025
+*)
+#impltmp
+<(*tmp*)>
+strm_vt_strn$concat0
+  ( xs ) =
+let
+//
+#vwtpdef
+xs = strm_vt(strn)
+//
+in//let
+//
+strn_fmake0_env$fwork<xs>
+(
+xs,
+lam(xs, work) =>
+strm_vt_foritm0$f1un<strn>(xs,
+lam(cs) => strn_foritm$f1un(cs, work)))
+//
+end(*let*)//end-of-[strm_vt_strn$concat0(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_strn001.dats] *)
 (***********************************************************************)
