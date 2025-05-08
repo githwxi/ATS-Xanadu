@@ -145,6 +145,15 @@ gseq_prod = gseq_prod0<xs><x0>
 #impltmp
 < xs:t0 >
 < x0:t0 >
+gseq_torep = gseq_torep0<xs><x0>
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_tostr = gseq_tostr0<xs><x0>
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
 gseq_print = gseq_print0<xs><x0>
 //
 (* ****** ****** *)

@@ -113,13 +113,16 @@ gseq_prod(xs: xs): (x0)
 //
 (*
 HX-2024-07-17:
+For print0/1 as well
+HX-2025-05-08:
+For torep0/1 as well
+For tostr0/1 as well
+*)
+(*
+HX-2024-07-17:
 Wed 17 Jul 2024 09:37:48 PM EDT
 *)
 //
-(*
-HX-2024-07-17:
-For print0/1 as well
-*)
 fun
 <xs:vt>
 <x0:vt>
@@ -142,6 +145,18 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_prlen((*0*)): sint
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_torep(xs: xs): strn
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_tostr(xs: xs): strn
 //
 fun
 <xs:t0>
