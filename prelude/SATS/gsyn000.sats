@@ -585,6 +585,146 @@ gs_work_a12(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-08:
+Thu May  8 09:29:23 PM EDT 2025
+*)
+//
+fun<>
+gs_tostr_a0(): strn
+fun
+<x0:t0>
+gs_tostr_a1(x0): strn
+fun
+<x0:t0>
+<x1:t0>
+gs_tostr_a2(x0, x1): strn
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+gs_tostr_a3(x0, x1, x2): strn
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+gs_tostr_a4(x0, x1, x2, x3): strn
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+gs_tostr_a5(x0, x1, x2, x3, x4): strn
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+gs_tostr_a6(x0, x1, x2, x3, x4, x5): strn
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+gs_tostr_a7(x0, x1, x2, x3, x4, x5, x6): strn
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+gs_tostr_a8(x0, x1, x2, x3, x4, x5, x6, x7): strn
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+gs_tostr_a9(x0, x1, x2, x3, x4, x5, x6, x7, x8): strn
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+<x9:t0>
+gs_tostr_a10(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9): strn
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+<x9:t0>
+<x10:t0>
+gs_tostr_a11(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10): strn
+//
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+<x9:t0>
+<x10:t0>
+<x11:t0>
+gs_tostr_a12(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11): strn
+//
+(* ****** ****** *)
+//
+#symload tostr with gs_tostr_a1
+//
+#symload tostrs with gs_tostr_a0
+#symload tostrs with gs_tostr_a1
+#symload tostrs with gs_tostr_a2
+#symload tostrs with gs_tostr_a3
+#symload tostrs with gs_tostr_a4
+#symload tostrs with gs_tostr_a5
+#symload tostrs with gs_tostr_a6
+#symload tostrs with gs_tostr_a7
+#symload tostrs with gs_tostr_a8
+#symload tostrs with gs_tostr_a9
+#symload tostrs with gs_tostr_a10
+#symload tostrs with gs_tostr_a11
+#symload tostrs with gs_tostr_a12
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <(*tmp*)>
 gs_print$beg(): void

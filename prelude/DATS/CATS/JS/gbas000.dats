@@ -37,6 +37,22 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{ x0:t0 }
+g_tostr<x0>(x0) =
+(
+XATS2JS_g_tostr(x0)
+) where
+{
+#extern
+fun
+XATS2JS_g_tostr
+{x0:t0}(x0: x0): strn = $extnam()
+}(*where*)//end-of-[g_tostr<x0>(x0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #extern
 fun<>
 strn_sint$parse$fwork
