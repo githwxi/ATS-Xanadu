@@ -141,11 +141,11 @@ gseq_torep0(xs) =
 let
 //
 val xbeg =
-gseq_beg<xs><x0>((*0*))
+gseq_beg<xs><x0>()
 val xsep =
-gseq_sep<xs><x0>((*0*))
+gseq_sep<xs><x0>()
 val xend =
-gseq_end<xs><x0>((*0*))
+gseq_end<xs><x0>()
 //
 in//let
 //
@@ -156,7 +156,7 @@ lam(xs, work) =>
 let
 val () =
 strn_foritm$f1un
-(  xbeg, work  )
+(  xbeg , work  )
 //
 val () =
 gseq_iforitm0$f2un

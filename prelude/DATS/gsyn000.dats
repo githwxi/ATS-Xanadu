@@ -1086,6 +1086,187 @@ end//let//end-of-[gs_work_a12(...)]
 //
 #impltmp
 <(*tmp*)>
+gs_tostr_a0
+ ((*00*)) = ""
+#impltmp
+< x0:t0 >
+gs_tostr_a1
+ (  x0  ) = tostr<x0>(x0)
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+gs_tostr_a2
+ (x0, x1) =
+strn_fmake_fwork<>
+(
+lam(work) =>
+(
+strn_foritm(tostr<x0>(x0));
+strn_foritm(tostr<x1>(x1)))
+where
+{
+#typedef c1 = cgtz
+#impltmp foritm$work<c1> = work}
+)
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+gs_tostr_a3
+( x0
+, x1, x2) =
+strn_fmake_fwork<>
+(
+lam(work) =>
+(
+strn_foritm(tostr<x0>(x0));
+strn_foritm(tostr<x1>(x1));
+strn_foritm(tostr<x2>(x2)))
+where
+{
+#typedef c1 = cgtz
+#impltmp foritm$work<c1> = work}
+)
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+gs_tostr_a4
+( x0, x1
+, x2, x3) =
+strn_fmake_fwork<>
+(
+lam(work) =>
+(
+strn_foritm(tostr<x0>(x0));
+strn_foritm(tostr<x1>(x1));
+strn_foritm(tostr<x2>(x2));
+strn_foritm(tostr<x3>(x3)))
+where
+{
+#typedef c1 = cgtz
+#impltmp foritm$work<c1> = work}
+)
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+gs_tostr_a5
+( x0, x1
+, x2, x3, x4) =
+strn_fmake_fwork<>
+(
+lam(work) =>
+(
+strn_foritm(tostr<x0>(x0));
+strn_foritm(tostr<x1>(x1));
+strn_foritm(tostr<x2>(x2));
+strn_foritm(tostr<x3>(x3));
+strn_foritm(tostr<x4>(x4)))
+where
+{
+#typedef c1 = cgtz
+#impltmp foritm$work<c1> = work}
+)
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+gs_tostr_a6
+( x0, x1, x2
+, x3, x4, x5) =
+strn_fmake_fwork<>
+(
+lam(work) =>
+(
+strn_foritm(tostr<x0>(x0));
+strn_foritm(tostr<x1>(x1));
+strn_foritm(tostr<x2>(x2));
+strn_foritm(tostr<x3>(x3));
+strn_foritm(tostr<x4>(x4));
+strn_foritm(tostr<x5>(x5)))
+where
+{
+#typedef c1 = cgtz
+#impltmp foritm$work<c1> = work}
+)
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+gs_tostr_a7
+( x0
+, x1, x2, x3
+, x4, x5, x6) =
+strn_fmake_fwork<>
+(
+lam(work) =>
+(
+strn_foritm(tostr<x0>(x0));
+strn_foritm(tostr<x1>(x1));
+strn_foritm(tostr<x2>(x2));
+strn_foritm(tostr<x3>(x3));
+strn_foritm(tostr<x4>(x4));
+strn_foritm(tostr<x5>(x5));
+strn_foritm(tostr<x6>(x6)))
+where
+{
+#typedef c1 = cgtz
+#impltmp foritm$work<c1> = work}
+)
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+gs_tostr_a8
+( x0, x1
+, x2, x3, x4
+, x5, x6, x7) =
+strn_fmake_fwork<>
+(
+lam(work) =>
+(
+strn_foritm(tostr<x0>(x0));
+strn_foritm(tostr<x1>(x1));
+strn_foritm(tostr<x2>(x2));
+strn_foritm(tostr<x3>(x3));
+strn_foritm(tostr<x4>(x4));
+strn_foritm(tostr<x5>(x5));
+strn_foritm(tostr<x6>(x6));
+strn_foritm(tostr<x6>(x7)))
+where
+{
+#typedef c1 = cgtz
+#impltmp foritm$work<c1> = work}
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 gs_print$beg() = ()
 #impltmp
 <(*tmp*)>
@@ -1104,7 +1285,7 @@ g_print$end() = strn_print("\n")
 #impltmp
 <(*tmp*)>
 gs_print_a0
- ((*0*) ) =
+ ((*00*)) =
 (
 gs_print$beg(); gs_print$end())
 //
