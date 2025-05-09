@@ -274,9 +274,19 @@ Mon 15 Jul 2024 04:09:48 PM EDT
 fun
 <xs:vt>
 <x0:vt>
+gseq_get$at0
+(xs: ~xs, i0: ni): (x0)
+fun
+<xs:vt>
+<x0:vt>
 gseq_get$at1
 (xs: !xs, i0: ni): (x0)
 //
+fun
+<xs:vt>
+<x0:vt>
+gseq_get$at$opt0
+(xs: ~xs, i0: ni): optn_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
