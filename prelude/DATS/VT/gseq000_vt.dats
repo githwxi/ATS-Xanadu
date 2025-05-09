@@ -189,62 +189,16 @@ end(*let*)//end-of-[gseq_torep0<xs><x0>]
 //
 (* ****** ****** *)
 //
-(*
-HX-2025-05-08:
-Thu May  8 04:13:33 PM EDT 2025
-*)
 #impltmp
 < xs:vt >
 < x0:vt >
 gseq_tostr0(xs) =
-let
-//
-val xbeg =
-gseq_beg<xs><x0>((*0*))
-val xsep =
-gseq_sep<xs><x0>((*0*))
-val xend =
-gseq_end<xs><x0>((*0*))
-//
-in//let
-//
-strn_fmake0_env$fwork<xs>
 (
-xs,
-lam(xs, work) =>
-let
-val () =
-strn_foritm$f1un
-(  xbeg, work  )
-//
-val () =
-gseq_iforitm0$f2un
-<   xs  ><  x0   >
-(
-xs,
-lam(i0, x0) =>
-(
-if (i0 >= 1) then
-strn_foritm$f1un(xsep, work)
-;
-let
-  val
-  xrep = g_tostr0<x0>(x0)
-in//let
-(
-strn_foritm$f1un(xrep, work))
-end//let
-)
-)
-//
-val () =
-(
-  strn_foritm$f1un(xend, work))
-//
-end//let//end-of-[lam(xs, work)]
-)
-//
-end(*let*)//end-of-[gseq_tostr0<xs><x0>]
+gseq_torep0<xs><x0>(xs)
+) where
+{
+#impltmp g_torep0<x0> = g_tostr0<x0>
+}(*where*)//end-of-[gseq_tostr0<xs><x0>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -861,7 +815,6 @@ val xs = gseq_rstrmize1<xs><x0>(xs)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_gseq000_vt.dats] *)
+(***********************************************************************)
