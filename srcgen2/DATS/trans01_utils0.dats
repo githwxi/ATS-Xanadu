@@ -46,10 +46,6 @@ ATS_PACKNAME
 //
 #include
 "./../HATS/xatsopt_sats.hats"
-(*
-#include
-"./../HATS/xatsopt_dats.hats"
-*)
 #include
 "./../HATS/xatsopt_dpre.hats"
 //
@@ -59,6 +55,8 @@ ATS_PACKNAME
 SYM = "./../SATS/xsymbol.sats"
 #staload
 LAM = "./../SATS/xlabel0.sats"
+(* ****** ****** *)
+#staload "./../SATS/xlibext.sats"
 (* ****** ****** *)
 #staload "./../SATS/filpath.sats"
 (* ****** ****** *)
@@ -137,7 +135,7 @@ case-
 tok.node() of
 |
 T_INT01
-( rep ) => fint(rep, 10)
+( rep ) => fint(rep,10)
 |
 T_INT02
 (bas,rep) => fint(rep,bas)
@@ -161,7 +159,7 @@ case-
 tok.node() of
 |
 T_INT01
-( rep ) => fint(rep, 10)
+( rep ) => fint(rep,10)
 |
 T_INT02
 (bas,rep) => fint(rep,bas)
@@ -247,6 +245,33 @@ token2dchr(tok) = ( token2schr(tok) )
 //
 endloc // end of [local(token2schr/dchr)]
 
+(* ****** ****** *)
+//
+local
+//
+#implfun
+token2sflt(tok) =
+(
+case-
+tok.node() of
+|
+T_FLT01(rep) =>
+strn_dflt$parse$exn(rep)
+(*
+|
+T_FLT02(bas, rep)
+|
+T_FLT03(bas, rep, sfx)
+*)
+)(*case-*)//end-of-[token2sflt(tok)]
+//
+in//local
+//
+#implfun
+token2dflt(tok) = ( token2sflt(tok) )
+//
+endloc // end of [local(token2sflt/dflt)]
+//
 (* ****** ****** *)
 
 local

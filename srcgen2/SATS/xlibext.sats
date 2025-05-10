@@ -118,6 +118,23 @@ mydict_insert$any
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-10:
+Sat May 10 10:19:04 AM EDT 2025
+*)
+fun<> // 0 if error 
+strn_sint$parse(rep: strn): sint
+fun<>
+strn_sint$parse$exn(rep: strn): sint
+//
+fun<> // 0.0 if error
+strn_dflt$parse(rep: strn): dflt
+fun<> // HX: for token2sflt/dflt
+strn_dflt$parse$exn(rep: strn): dflt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_SATS_xlibext.sats] *)
 (***********************************************************************)

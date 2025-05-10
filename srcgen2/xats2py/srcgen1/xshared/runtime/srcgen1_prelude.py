@@ -1,4 +1,4 @@
-## Sun May  4 11:40:58 PM EDT 2025
+## Sat May 10 11:42:40 AM EDT 2025
 ################################################################
 ################################################################
 ##
@@ -657,10 +657,19 @@ def XATSOPT_fpath_full_read(fpx):
     return None ## nothing in case of errors
 ##################################################################.
 ##
-def XATSOPT_strn_append_uint(name, stmp):
-  return (name + str(stmp)) ## endof(strn_append_uint)
+def \
+XATSOPT_strn_append_uint(name, stmp):
+  return (name+str(stmp)) ## end(strn_append_uint)
 ##
 ##################################################################.
+def \
+XATSOPT_strn_dflt_parse(rep):
+  try:
+    return float(rep)
+  except ValueError as e:
+    return 0.0 ## default in case of errors
+def \
+XATSOPT_strn_dflt_parse_exn(rep): return float(rep)
 ##################################################################.
 ## end-of-[ATS3/XANADU_srcgen1_prelude_DATS_CATS_PY_xatsopt.cats]
 ##################################################################.
