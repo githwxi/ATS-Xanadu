@@ -17,6 +17,7 @@ let XATSTOP0 = undefined
 ////////////////////////////////////////////////////////////////////////.
 //
 let XATSINT0 = (i0) => i0
+let XATSFLT0 = (f0) => f0
 //
 let XATSINT1 = (i0) => i0
 let XATSBOOL = (b0) => b0

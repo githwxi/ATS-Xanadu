@@ -699,7 +699,8 @@ d2pat_node =
 |D2Pi00 of (sint) // sint
 |D2Pb00 of (bool) // bool
 |D2Pc00 of (char) // char
-|D2Ps00 of (strn) // string
+|D2Pf00 of (dflt) // dflt
+|D2Ps00 of (strn) // strn
 //
 |D2Pcon of (d2con)
 //
@@ -883,8 +884,8 @@ d2exp_node =
 |D2Ei00 of (sint) // sint
 |D2Eb00 of (bool) // bool
 |D2Ec00 of (char) // char
-|D2Ef00 of (dflt) // float
-|D2Es00 of (strn) // string
+|D2Ef00 of (dflt) // dflt
+|D2Es00 of (strn) // strn
 //
 (* ****** ****** *)
 //
