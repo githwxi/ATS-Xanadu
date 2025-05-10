@@ -551,6 +551,31 @@ endlet//end-of-[D3Etry0(...)]
 //
 (* ****** ****** *)
 //
+|D3Edp2tr
+(   d3e1   ) =>
+let
+val () =
+(
+  fperr30_d3exp(out, d3e1))
+endlet//end-of-[D3Edp2tr(...)]
+//
+|D3Edl0az
+(   d3e1   ) =>
+let
+val () =
+(
+  fperr30_d3exp(out, d3e1))
+endlet//end-of-[D3Edl0az(...)]
+|D3Edl1az
+(   d3e1   ) =>
+let
+val () =
+(
+  fperr30_d3exp(out, d3e1))
+endlet//end-of-[D3Edl1az(...)]
+//
+(* ****** ****** *)
+//
 |D3Ewhere
 (d3e1, dcls) =>
 (
@@ -558,7 +583,7 @@ endlet//end-of-[D3Etry0(...)]
 where
 {val () =
  fperr30_d3eclist(out, dcls)}
-//(*where*)//end-of-[D3Ewhere]
+//(*where*)//endof[D3Ewhere(...)]
 //
 (* ****** ****** *)
 //
@@ -571,7 +596,47 @@ val () =
 val () =
 (
   fperr30_d3exp(out, d3er) )
-end(*let*)//end-of-[D3Eassgn]
+end(*let*)//end-of-[D3Eassgn(...)]
+//
+(* ****** ****** *)
+//
+|D3Eraise
+(tknd, d3e1) =>
+let
+val () =
+(
+  fperr30_d3exp(out, d3e1) )
+end(*let*)//end-of-[D3Eraise(...)]
+//
+(* ****** ****** *)
+//
+|D3El0azy
+(dknd, d3e1) =>
+let
+val () =
+(
+  fperr30_d3exp(out, d3e1) )
+end(*let*)//end-of-[D3El0azy(...)]
+|D3El1azy
+(dknd
+,d3e1, d3es) =>
+let
+val () =
+  fperr30_d3exp(out, d3e1)
+val () =
+  fperr30_d3explst(out, d3es)
+end(*let*)//end-of-[D3El1azy(...)]
+//
+(* ****** ****** *)
+//
+|D3Eannot
+(d3e1
+,s1e1, s2e2) =>
+let
+val () =
+(
+  fperr30_d3exp(out, d3e1) )
+end(*let*)//end-of-[D3Eannot(...)]
 //
 (* ****** ****** *)
 //
@@ -586,7 +651,7 @@ val () =
 (
   fperr30_label(out, lab2) )
 *)
-end(*let*)//end-of-[D3Elabck]
+end(*let*)//end-of-[D3Elabck(...)]
 //
 |D3Et2pck
 (d3e1, t2p2) =>
@@ -599,7 +664,7 @@ val () =
 (
   fperr30_s2typ(out, t2p2) )
 *)
-end(*let*)//end-of-[D3Et2pck]
+end(*let*)//end-of-[D3Et2pck(...)]
 //
 (* ****** ****** *)
 //
