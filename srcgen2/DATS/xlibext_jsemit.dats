@@ -58,9 +58,11 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #if
 defq(_XATS2JS_)
 #then
+*)
 //
 #extern
 fun
@@ -84,7 +86,9 @@ in//let
   XATS2JS_a0ref_set{a}(A0, x0)
 end//let
 //
+(*
 #endif//endof(#ifdefq(_XATSJS_))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -129,7 +133,7 @@ mydict_tbox(k0:t0, x0:t0) = jshmap(k0, x0)
 #impltmp
 < x0:t0 >
 mya1sz_strmize =
-XATS2JS_jsa1sz_strmize<x0>(*argless*)
+XATS2JS_jsa1sz_strmize<x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -138,7 +142,7 @@ XATS2JS_jsa1sz_strmize<x0>(*argless*)
 < k0:t0 >
 < x0:t0 >
 mydict_make_nil =
-XATS2JS_jshmap_make_nil<k0>{x0}(*argless*)
+XATS2JS_jshmap_make_nil<k0>{x0}(*void*)
 //
 (* ****** ****** *)
 //
@@ -146,7 +150,7 @@ XATS2JS_jshmap_make_nil<k0>{x0}(*argless*)
 < k0:t0 >
 < x0:t0 >
 mydict_get_keys =
-XATS2JS_jshmap_get_keys<k0>{x0}(*argless*)
+XATS2JS_jshmap_get_keys<k0>{x0}(*void*)
 //
 (* ****** ****** *)
 //
@@ -154,13 +158,13 @@ XATS2JS_jshmap_get_keys<k0>{x0}(*argless*)
 < k0:t0 >
 < x0:t0 >
 mydict_search$opt =
-XATS2JS_jshmap_search$opt<k0>{x0}(*argless*)
+XATS2JS_jshmap_search$opt<k0>{x0}(*void*)
 //
 #impltmp
 < k0:t0 >
 < x0:t0 >
 mydict_insert$any =
-XATS2JS_jshmap_insert$any<k0>{x0}(*argless*)
+XATS2JS_jshmap_insert$any<k0>{x0}(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

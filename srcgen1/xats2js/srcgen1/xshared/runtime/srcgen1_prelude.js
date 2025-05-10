@@ -1504,6 +1504,29 @@ XATSOPT_strn_append_uint
 }
 //
 ////////////////////////////////////////////////////////////////
+//
+function
+XATSOPT_strn_dflt$parse
+  ( rep )
+{
+  var flt = parseFloat(rep)
+  return (isNaN(flt) ? 0.0 : flt);
+}
+//
+function
+XATSOPT_strn_dflt$parse$exn
+  ( rep )
+{
+  var flt = parseFloat(rep)
+  if
+  (!isNaN(flt))
+  {
+    return flt;
+  } else {
+    throw new Error("XATSOPT_strn_dflt$parse$exn: rep = " + rep);    
+  } // end-of-(if(!isNaN(res)))
+}
+////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 //end-of-[ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_xatsopt.cats]
 ////////////////////////////////////////////////////////////////

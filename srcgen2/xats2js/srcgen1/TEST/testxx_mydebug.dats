@@ -25,17 +25,7 @@ For testing xats2js!
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#define
-_MYDEBUG_ = 1
-//
-#if
-!defq(_MYDEBUG_)
-#then
-#else
-val x = 0
-#endif//end-of-(#if(_MYDEBUG))
-//
-val y = x + 1
+#define EPSILON 1E-6
 //
 (* ****** ****** *)
 (* ****** ****** *)

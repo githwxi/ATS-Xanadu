@@ -306,7 +306,20 @@ gmap_key$strmize
 <mydict(k0,x0)><k0><x0>(kxs) =
 (
   mya1sz_strmize<k0>(mydict_get_keys<k0><x0>(kxs)))
-//end-of(impltmp(gmap_key$strmize<mydict(k0,x0)><k0><x0>(kxs)))
+//end(impltmp(gmap_key$strmize<mydict(k0,x0)><k0><x0>(kxs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_dflt$parse$exn =
+XATSOPT_strn_dflt$parse$exn(*void*)
+where{
+#extern
+fun
+XATSOPT_strn_dflt$parse$exn(rep: strn): dflt = $extnam()
+}(*where*)//end-of-[impltmp(strn_dflt$parse$exn<>(*argless*)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
