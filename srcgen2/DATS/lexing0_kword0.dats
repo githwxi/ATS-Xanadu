@@ -70,20 +70,24 @@ val T0FN1 = T_FUN(FNKfn1)
 val T0FNX = T_FUN(FNKfnx)
 val T0FUN = T_FUN(FNKfn1)
 //
-val T0PRFN0 = T_FUN(FNKprfn0)
-val T0PRFN1 = T_FUN(FNKprfn1)
-val T0PRFUN = T_FUN(FNKprfn1)
-val T0PRAXI = T_FUN(FNKpraxi)
-val T0FCAST = T_FUN(FNKfcast)
-//
-(* ****** ****** *)
-//
 val T0VAL = T_VAL(VLKval)
 val T0VLP = T_VAL(VLKvlp)
 val T0VLN = T_VAL(VLKvln)
 val T0VLR = T_VAL(VLKvlr)
 //
 val T0VAR = T_VAR(VRKvar)
+//
+(* ****** ****** *)
+//
+(*
+HX: For proof declarations
+*)
+//
+val T0PRFN0 = T_FUN(FNKprfn0)
+val T0PRFN1 = T_FUN(FNKprfn1)
+val T0PRFUN = T_FUN(FNKprfn1)
+val T0PRAXI = T_FUN(FNKpraxi)
+val T0FCAST = T_FUN(FNKfcast)
 //
 val T0PRVAL = T_VAL(VLKprval)
 (*
@@ -267,13 +271,22 @@ val () = kwdins("val", T0VAL)
 val () = kwdins("vlr", T0VLR)
 val () = kwdins("var", T0VAR)
 //
+// fn0: non-rec
+// fn1: recursive
 val () = kwdins("fn0", T0FN0)
 val () = kwdins("fn1", T0FN1)
+// fnx: tail-rec
 val () = kwdins("fnx", T0FNX)
+// fun: recursive
 val () = kwdins("fun", T0FUN)
 //
+(*
 val () = kwdins("prv", T0PRVAL)
 val () = kwdins("prf", T0PRFUN)
+*)
+val () = kwdins("pax", T0PRAXI)
+val () = kwdins("pfx", T0PRFUN)
+val () = kwdins("pvx", T0PRVAL)
 //
 val () = kwdins("prfn0", T0PRFN0)
 val () = kwdins("prfn1", T0PRFN1)

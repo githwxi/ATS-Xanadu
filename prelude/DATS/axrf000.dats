@@ -132,17 +132,18 @@ gasz_length
 a0rf_get(A) =
 let
 val
-(pf|x0) =
+(
+px|x0) =
 a0rf_lget<x0>(A)
-prval () =
-owed_t0_elim0(pf) in x0 end
+pvx () =
+owed_t0_elim0(px) in x0 end
 #impltmp
 < x0:t0 >
 a0rf_set(A, x) =
 let
-prval pf =
+pvx px =
 owed_t0_make((*0*)) in//let
-a0rf_lset<x0>(pf | A, x) end
+a0rf_lset<x0>(px | A, x) end//let
 //
 (* ****** ****** *)
 //
@@ -153,7 +154,7 @@ let
 //
 val x1 = g_copy<x0>(x0)
 //
-prval() =
+pvx () =
 (
 owed_vt_return0(pf,x1)) in x0 end
 where
@@ -225,7 +226,6 @@ $UN.gasz_lset$at$raw
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_axrf000.dats] *)
+(***********************************************************************)

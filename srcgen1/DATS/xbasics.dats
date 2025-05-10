@@ -214,7 +214,7 @@ case+ vlk of
 | VLKvalp() => fprint(out, "VLKvalp")
 | VLKvaln() => fprint(out, "VLKvaln")
 (*
-| VLKmcval() => fprint(out, "VLKprval")
+| VLKmcval() => fprint(out, "VLKmcval")
 *)
 | VLKprval() => fprint(out, "VLKprval")
 //

@@ -159,8 +159,8 @@ $UN.gasz_get$at$raw
 $UN.gasz_lget$at$raw
 < nint >< unit >(ni, i0) =
 let
-prval pf =
-  owed_t0_make{unit}() in (pf|unit) end
+pvx pf =
+owed_t0_make{unit}() in (pf|unit) end
 //let//end($UN.gasz_get$at$raw<strn><cgtz>)
 //
 (* ****** ****** *)
@@ -172,14 +172,13 @@ $UN.gasz_get$at$raw
 $UN.gasz_lget$at$raw
 < nint >< nint >(ni, i0) =
 let
-prval pf =
-  owed_t0_make{nint}() in (pf|(i0)) end
+pvx pf =
+owed_t0_make{nint}() in (pf|(i0)) end
 //let//end($UN.gasz_get$at$raw<strn><cgtz>)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_gint000.dats] *)
+(***********************************************************************)

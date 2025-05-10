@@ -93,9 +93,9 @@ nint_forall<>
 #impltmp
 forall$test<nint>(i0) =
 let
-prval () =
+pvx () =
   owed_vt_return0(fx, x0)
-prval () =
+pvx () =
   owed_vt_return0(fy, y0) in btf
 end where
 {
@@ -134,9 +134,9 @@ nint_rforall<>
 #impltmp
 rforall$test<nint>(i0) =
 let
-prval () =
+pvx () =
   owed_vt_return0(fx, x0)
-prval () =
+pvx () =
   owed_vt_return0(fy, y0) in btf
 end where
 {
@@ -157,7 +157,6 @@ end(*let*)//end-of-[gasz_rz2forall(xs, ys)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_gasz002.dats] *)
+(***********************************************************************)

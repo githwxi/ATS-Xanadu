@@ -120,14 +120,18 @@ nint_repeat$f0un
 fun
 <x0:vt>
 f0un_enum$make0_strx_vt
-  (xs: strx_vt( x0 )): f0un( x0 )
+  (xs: strx_vt(x0)): f0un( x0 )
+fun
+<x0:vt>
+f0un_enum$make0_strm_vt
+  (xs: strm_vt(x0)): f0un(optn_vt(x0))
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-f1un_srch$make_gseq(xs): f1un(x0,bool)
+f1un_srch$make_gseq(xs): f1un(x0, bool)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -234,7 +238,6 @@ f_trace$f6un
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_gfun000.sats] *)
+(***********************************************************************)

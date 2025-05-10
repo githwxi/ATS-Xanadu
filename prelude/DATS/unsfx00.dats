@@ -98,12 +98,12 @@ $UN.gseq_uncons$raw
 $UN.gasz_get$at$raw
   (xs, i0) =
 let
-prval() =
+pvx ((*0*)) =
 (
   owed_t0_elim0(pf)) in x0 end
 where
 {
-val (pf | x0) =
+val (pf|x0) =
 $UN.gasz_lget$at$raw<xs><x0>(xs, i0)
 }(*where*)//end-of-[$UN.gasz_get$at$raw(...)]
 //
@@ -126,7 +126,7 @@ $UN.gasz_lget$at$raw
 $UN.gasz_set$at$raw
   (xs, i0, x0) =
 let
-prval pf = owed_t0_make()
+pvx pf = owed_t0_make()
 in//let
 $UN.gasz_lset$at$raw<xs><x0>(pf|xs,i0,x0)
 end(*let*)//end-of-[$UN.gasz_set$at$raw(...)]
@@ -137,7 +137,7 @@ end(*let*)//end-of-[$UN.gasz_set$at$raw(...)]
 $UN.gasz_lset$at$raw
   (pf | xs, i0, x0) =
 let
-prval () = owed_t0_elim0(pf)
+pvx () = owed_t0_elim0(pf)
 in//let
 (
   $UN.gasz_set$at$raw<xs><x0>(xs, i0, x0))
@@ -154,7 +154,7 @@ let
 //
 val x1 = g_copy<x0>(x0)
 //
-prval() =
+pvx () =
 (
 owed_vt_return0(pf, x1)) in x0 end
 where

@@ -61,12 +61,14 @@ then
 get$at$exn<xs><x0>(xs, i0)
 else
 let
-val (pf | x0) =
+val
+(
+pf|x0) =
 $UN.gasz_lget$at$raw
 <   xs   ><   x0   >(xs, i0)
 in//let
 let
-prval () = owed_t0_elim0(pf) in x0
+pvx () = owed_t0_elim0(pf) in x0
 end//let
 end//let
 end//let//end-of-[gasz_get$at(xs,i0)]
@@ -88,7 +90,7 @@ then
 set$at$exn<xs><x0>(xs,i0,x0)
 else
 let
-prval pf = owed_t0_make{x0}()
+pvx pf = owed_t0_make{x0}()
 in//let
 $UN.gasz_lset$at$raw
 <   xs   ><   x0   >(pf | xs,i0,x0)
@@ -113,7 +115,8 @@ $UN.gasz_cget$at$raw
 let
 //
 val
-(pf | x0) =
+(
+pf|x0) =
 $UN.gasz_lget$at$raw
 <  xs  ><  x0  >( xs, i0 )
 //
@@ -121,7 +124,7 @@ in//let
 //
 let
 val x1 = g_copy<x0>(x0)
-prval () =
+pvx () =
   owed_vt_return0(pf, x0) in x1 end
 //
 end//let//end-of-[$UN.gasz_cget$at$raw]
@@ -160,7 +163,6 @@ end//let//end-of-[$UN.gasz_setf$at$raw]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_gasz000.dats] *)
+(***********************************************************************)
