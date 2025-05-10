@@ -3845,6 +3845,15 @@ G1Mchr(chr) = g1m0 in
 d2pat(loc0, D2Pc00(chr)) end
 //
 fun
+f0_flt
+( loc0: loc_t
+, g1m0: g1mac): d2pat =
+let
+val-
+G1Mflt(flt) = g1m0 in
+d2pat(loc0, D2Pf00(flt)) end
+//
+fun
 f0_str
 ( loc0: loc_t
 , g1m0: g1mac): d2pat =
@@ -3903,6 +3912,8 @@ G1Mint _ => f0_int(loc0, g1m0)
 G1Mbtf _ => f0_btf(loc0, g1m0)
 |
 G1Mchr _ => f0_chr(loc0, g1m0)
+|
+G1Mflt _ => f0_flt(loc0, g1m0)
 |
 G1Mstr _ => f0_str(loc0, g1m0)
 //
@@ -3968,6 +3979,15 @@ G1Mchr(chr) = g1m0 in
 d2exp(loc0, D2Ec00(chr)) end
 //
 fun
+f0_flt
+( loc0: loc_t
+, g1m0: g1mac): d2exp =
+let
+val-
+G1Mflt(flt) = g1m0 in
+d2exp(loc0, D2Ef00(flt)) end
+//
+fun
 f0_str
 ( loc0: loc_t
 , g1m0: g1mac): d2exp =
@@ -4026,6 +4046,8 @@ G1Mint _ => f0_int(loc0, g1m0)
 G1Mbtf _ => f0_btf(loc0, g1m0)
 |
 G1Mchr _ => f0_chr(loc0, g1m0)
+|
+G1Mflt _ => f0_flt(loc0, g1m0)
 |
 G1Mstr _ => f0_str(loc0, g1m0)
 //

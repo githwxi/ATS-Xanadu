@@ -209,6 +209,8 @@ D2Pvar(d2v) =>
 (
   f0_var(env0, d2p0))
 //
+(* ****** ****** *)
+//
 |
 D2Pint(tok) =>
 (
@@ -234,6 +236,8 @@ D2Pstr(tok) =>
 (
 d3pat_make_tpnd
 (loc0, t2p0, D3Pstr(tok)))
+//
+(* ****** ****** *)
 //
 |D2Pcon _ => f0_con(env0, d2p0)
 //

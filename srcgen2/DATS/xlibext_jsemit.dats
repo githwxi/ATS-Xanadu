@@ -58,11 +58,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 #if
 defq(_XATS2JS_)
 #then
-*)
 //
 #extern
 fun
@@ -86,9 +84,7 @@ in//let
   XATS2JS_a0ref_set{a}(A0, x0)
 end//let
 //
-(*
 #endif//endof(#ifdefq(_XATSJS_))
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

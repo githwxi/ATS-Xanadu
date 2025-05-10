@@ -213,6 +213,8 @@ prints("D2Pint(",tok,")")
 prints("D2Pbtf(",sym,")")
 |D2Pchr(tok) =>
 prints("D2Pchr(",tok,")")
+|D2Pflt(tok) =>
+prints("D2Pflt(",tok,")")
 |D2Pstr(tok) =>
 prints("D2Pstr(",tok,")")
 //
@@ -222,6 +224,8 @@ prints("D2Pi00(",int,")")
 prints("D2Pb00(",btf,")")
 |D2Pc00(chr) =>
 prints("D2Pc00(",chr,")")
+|D2Pf00(flt) =>
+prints("D2Pf00(",flt,")")
 |D2Ps00(str) =>
 prints("D2Ps00(",str,")")
 //
@@ -362,7 +366,6 @@ prints("D2Eint(",tok,")")
 prints("D2Ebtf(",sym,")")
 |D2Echr(tok) =>
 prints("D2Echr(",tok,")")
-//
 |D2Eflt(tok) =>
 prints("D2Eflt(",tok,")")
 |D2Estr(tok) =>
@@ -374,7 +377,6 @@ prints("D2Ei00(",int,")")
 prints("D2Eb00(",btf,")")
 |D2Ec00(chr) =>
 prints("D2Ec00(",chr,")")
-//
 |D2Ef00(flt) =>
 prints("D2Ef00(",flt,")")
 |D2Es00(str) =>
