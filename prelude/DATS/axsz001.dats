@@ -191,7 +191,7 @@ lam(i0):y0 =>
 let
 val y0 =
 map$fopr1<x0><y0>(x0)
-prval () =
+pvx () =
 owed_vt_return0{x0}(pf, x0) in y0
 end//endof(let)
 where {

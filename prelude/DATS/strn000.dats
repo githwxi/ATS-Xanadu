@@ -191,7 +191,7 @@ $UN.gasz_lget$at$raw
 let
 val c0 =
 $UN.strn_get$at$raw<>(cs, i0)
-prval pf = owed_t0_make{cgtz}() in (pf|c0)
+pvx pf = owed_t0_make{cgtz}() in (pf|c0)
 end//let//end($UN.gasz_lget$at$raw<strn><cgtz>)
 //
 (* ****** ****** *)

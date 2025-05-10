@@ -249,6 +249,11 @@ g1e0.node() of
 { val
   chr = token2schr(tok)}
 //
+|G1Eflt(tok) =>
+(G1Mflt(flt)) where
+{ val
+  flt = token2sflt(tok)}
+//
 |G1Estr(tok) =>
 (G1Mstr(str)) where
 { val

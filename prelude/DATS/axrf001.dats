@@ -91,11 +91,12 @@ gasz_forall
  (   arf   ) =
 let
 val
-(pf|x0) = 
+(
+pf|x0) = 
 a0rf_lget<x0>(arf)
 val btf =
 forall$test1<x0>(x0)
-prval () =
+pvx () =
 owed_vt_return0(pf, x0) in btf end
 //
 #impltmp
@@ -105,11 +106,12 @@ gasz_rforall
  (   arf   ) =
 let
 val
-(pf|x0) = 
+(
+pf|x0) = 
 a0rf_lget<x0>(arf)
 val btf =
 rforall$test1<x0>(x0)
-prval () =
+pvx () =
 owed_vt_return0(pf, x0) in btf end
 //
 (* ****** ****** *)
@@ -203,7 +205,6 @@ where
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_axrf001.dats] *)
+(***********************************************************************)
