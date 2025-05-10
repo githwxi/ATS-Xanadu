@@ -67,6 +67,11 @@ $(CAT) $(LIBXATS2JS_JS) >> $@_ats2.js && \
 $(CAT) $(LIBXATS2PY_JS) >> $@_ats2.js && \
 $(XATS2JS) --output-a $@_ats2.js --dynamic $@.dats
 #
+xats2py_pyemit01_opt1: ; \
+npx google-closure-compiler \
+  -W QUIET --compilation_level SIMPLE \
+  --js=xats2py_pyemit01_ats2.js --js_output_file=xats2py_pyemit01_ats2_opt1.js
+#
 ########################################################################
 #
 lib1xatsopt2js2py: ; \

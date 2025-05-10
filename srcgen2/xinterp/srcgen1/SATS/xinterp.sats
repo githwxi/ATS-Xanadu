@@ -155,10 +155,8 @@ irval =
 //
 (*
 HX-2023-12-23:
-I could have used
-irvalist here. But
-Using [irvalarr] for
-testing is exciting!
+I could have used irvalist here.
+But using [irvaltup] for testing is exciting!
 *)
 |
 IRVcapp of
