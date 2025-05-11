@@ -131,7 +131,7 @@ prerrsln("\
 // The fixity-defs loaded!")
 //
 val ret2 =
-the_tr12env_pvsload((*0*))
+the_tr12env_pvsl00d((*0*))
 val (  ) =
 if
 (ret2 > 0)
