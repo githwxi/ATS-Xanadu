@@ -19,7 +19,12 @@ S2XSHRD=\
 $(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
 all:: \
-xdpndcy_output00_dats
+xdpndcy_output00
+########################################################################
+clean:: ; rm -f *~
+########################################################################
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f xdpndcy_output00_ats3.js
 ########################################################################
 ########################################################################
 #
@@ -33,27 +38,21 @@ xdpndcy_output00_dats
 # The [S1XSHRD] is used here as
 # the code in [srcgen1/prelude] requires it.
 #
-xdpndcy_output00_dats: ; \
+xdpndcy_output00: ; \
 $(CAT) \
-$(S2XSHRD)/xats2js_js1emit.js > $@_out.js && \
+$(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/srcgen1_prelude.js >> $@_out.js && \
+$(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/srcgen1_prelude_node.js >> $@_out.js && \
+$(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/srcgen1_xatslib_node.js >> $@_out.js && \
+$(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
-$(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_out.js && \
+$(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
-$(XDPNDCY)/srcgen1/lib/lib2xdpndcy.js | $(CAT) - >> $@_out.js && \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xdpndcy_output00.dats >> $@_out.js
+$(XDPNDCY)/srcgen1/lib/lib2xdpndcy.js | $(CAT) - >> $@_ats3.js && \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xdpndcy_output00.dats >> $@_ats3.js
 #
-########################################################################
-########################################################################
-clean:: ; rm -f *~
-cleanall:: ; rm -f *~
-########################################################################
-cleanall:: ; rm -f xdpndcy_output00_dats_out.js
 ########################################################################
 ########################################################################
 XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js

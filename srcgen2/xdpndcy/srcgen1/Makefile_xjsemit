@@ -18,7 +18,7 @@ all::
 clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f BUILD/JS/*_sats_out.js
+cleanall:: ; rm -f BUILD/JS/*_sats_out0.js
 cleanall:: ; rm -f BUILD/JS/*_dats_out?.js
 ########################################################################
 ########################################################################
@@ -38,7 +38,7 @@ xdpndcy_decl00.dats \
 ########################################################################
 ########################################################################
 OUTSATS := \
-$(patsubst %.sats, BUILD/JS/%_sats_out.js, $(SRCSATS))
+$(patsubst %.sats, BUILD/JS/%_sats_out0.js, $(SRCSATS))
 OUT0DATS := \
 $(patsubst %.dats, BUILD/JS/%_dats_out0.js, $(SRCDATS))
 OUT1DATS := \
@@ -54,7 +54,7 @@ all_dats:: $(OUT0DATS)
 -include .depend_xjsemit
 ########################################################################
 #
-BUILD/JS/%_sats_out.js: \
+BUILD/JS/%_sats_out0.js: \
 ./SATS/%.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $< > $@
 #
