@@ -168,6 +168,26 @@ strn_append
 //
 in//local
 //
+(* ****** ****** *)
+//
+#implfun
+the_fxtyenv_pvsl00d
+  ((*void*)) =
+(
+the_fxtyenv_pvsload((*0*)))
+#implfun
+the_fxtyenv_pvsl01d
+  ((*void*)) =
+(
+the_fxtyenv_pvsload((*0*)))
+//
+(* ****** ****** *)
+//
+(*
+HX-2025-05-11:
+Return: 0: cached
+Return: 1: loaded
+*)
 #implfun
 the_fxtyenv_pvsload
   ((*void*)) =
@@ -232,6 +252,8 @@ let
 in//let
   topmap_search$opt(topmap, key)
 end (*let*) // [the_fxtyenv_pvsfind]
+//
+(* ****** ****** *)
 //
 endloc//end-of-[the_fxtyenv_pvs(load|find)]
 //
