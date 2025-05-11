@@ -377,6 +377,10 @@ ipat.node() of
 (
   f0_bang(b0, ival, ipat))
 //
+|I0Pflat _ =>
+(
+  f0_flat(b0, ival, ipat))
+//
 |I0Pfree _ =>
 (
   f0_free(b0, ival, ipat))
@@ -620,6 +624,18 @@ f0_ipat(b0, ival, i0p1)
 {
 val-I0Pbang(i0p1) = ipat.node()
 }(*where*)//end-of-[f0_bang(...)]
+//
+and
+f0_flat
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+(
+f0_ipat(b0, ival, i0p1)
+) where
+{
+val-I0Pflat(i0p1) = ipat.node()
+}(*where*)//end-of-[f0_flat(...)]
 //
 and
 f0_free
