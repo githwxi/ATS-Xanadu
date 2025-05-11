@@ -83,10 +83,8 @@ npx google-closure-compiler \
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; rm -f xats2py_pyemit00_ats3.js
-cleanall:: ; rm -f xats2py_pyemit01_ats3.js
-cleanall:: ; rm -f xats2py_pyemit00_ats3_opt1.js
-cleanall:: ; rm -f xats2py_pyemit01_ats3_opt1.js
+cleanall:: ; rm -f xats2py_pyemit0?_ats3.js
+cleanall:: ; rm -f xats2py_pyemit0?_ats3_opt1.js
 ########################################################################
 ########################################################################
 ifndef XATS2JS_TCHECK00
