@@ -139,6 +139,13 @@ fun
 the_fxtyenv_pvsload
   ( (*void*) ): sint(*0/1*)
 fun
+the_fxtyenv_pvsl00d
+  ( (*void*) ): sint(*0/1*)
+fun
+the_fxtyenv_pvsl01d
+  ( (*void*) ): sint(*0/1*)
+//
+fun
 the_fxtyenv_pvsfind
   (key: sym_t): fixtyopt_vt
 //
