@@ -250,29 +250,28 @@ val (  ) =
 (
 prerrsln
 ("ERROR: no source is given: ", argv))
-endlet // let // if(length(argv) <= 2)
+end(*let*)//if(length(argv) <= 2)//val()
 //
 endlet where
 {
 //
 val (  ) =
-prerrsln("\
-// Welcome from ATS3/Xanadu!")
+prerrsln("// Welcome from ATS3/Xanadu!")
 val (  ) =
-prerrsln("\
-// XATSHOME = ", the_XATSHOME())
+prerrsln("// XATSHOME = ", the_XATSHOME())
 //
-val argv = XATSOPT_argv$get((*0*))
+val argv =
+  XATSOPT_argv$get((*0*)) // val(argv)
 (*
-val (  ) = prerrsln("\
-// xatsopt_tcheck00: argv = ", argv)
+val (  ) =
+prerrsln("xatsopt_tcheck00: argv = ", argv)
 *)
 //
-}(*where*)//end-of-[mymain_main(...)]
+}(*where*)//end-of-[mymain_main( (*void*) )]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-val ((*entry*)) = mymain_main((*void*))
+val ((*the_entry_point*)) = mymain_main((*void*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
