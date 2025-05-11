@@ -114,8 +114,15 @@ D0Pstr(str) =>
 prints("D0Pstr(",str,")")
 //
 |
+D0Paspt
+(tknd, d0p1) =>
+prints
+("D0Paspt(",tknd,";",d0p1,")")
+//
+|
 D0Papps(d0ps) =>
-prints("D0Papps(", d0ps, ")")
+(
+  prints("D0Papps(", d0ps, ")"))
 //
 |
 D0Psarg

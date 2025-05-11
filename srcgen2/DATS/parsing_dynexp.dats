@@ -193,7 +193,7 @@ p1_napp
 , err: &sint >> _): d0pat
 //
 (* ****** ****** *)
-
+//
 #implfun
 p1_napp
 ( buf, err ) =
@@ -206,6 +206,24 @@ val tnd = tok.tnode()
 in//let
 //
 case+ tnd of
+//
+|
+T_AS0() =>
+let
+//
+val tknd = tok
+val (  ) = buf.skip1()
+//
+val
+d0p1 = p1_d0pat(buf, err)
+val
+lres = tknd.lctn()+d0p1.lctn()
+//
+in//let
+err := e00;
+d0pat(lres, D0Paspt(tknd, d0p1))
+end (*let*) // end of [ T_AS0(...) ]
+//
 |
 _ (* error *) =>
 ( err := e00 + 1;
@@ -213,7 +231,7 @@ _ (* error *) =>
 ) (* end-of-error *)
 //
 end (*let*) // end of [p1_napp(buf,err)]
-
+//
 (* ****** ****** *)
 in(* in-of-local *)
 (* ****** ****** *)
@@ -2389,7 +2407,7 @@ val lres = (d0e1.lctn()+d0p2.lctn())
 in//let
   d0gua_make_node
   (lres, D0GUAmat(d0e1, tok1, d0p2))
-end (*let*) // end of [ T_AS0() ]
+end (*let*) // end of [ T_AS0((*0*)) ]
 |
 _(* non-T_AS *) =>
 (
