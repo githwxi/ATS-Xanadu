@@ -240,10 +240,10 @@ val (  ) = prerrsln("\
 //
 (* ****** ****** *)
 (* ****** ****** *)
-val ((*entry*)) = mymain_main((*void*))
+val ((*the_entry_point*)) = mymain_main((*void*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_UTIL_xats2js_jsemit00.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_UTIL_xats2js_jsemit01.dats] *)
 (***********************************************************************)
