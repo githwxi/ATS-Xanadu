@@ -10,7 +10,7 @@ NODE=node
 ########################################################################
 SRCGEN1=./../../srcgen1
 SRCGEN2=./../../srcgen2
-XATS2JS=./../../srcgen2/xats2js
+XATSJSD=./../../srcgen2/xats2js
 ########################################################################
 S1XSHRD=\
 $(SRCGEN1)/xats2js/srcgenx/xshared/runtime

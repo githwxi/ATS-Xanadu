@@ -282,7 +282,15 @@ d0pat_node =
 | D0Pflt of t0flt
 | D0Pstr of t0str
 //
-| D0Papps of d0patlst
+(*
+HX-2025-05-11:
+For instance,
+xs as list_cons(_, _)
+*)
+| D0Paspt of
+  (token(*AS*), d0pat)
+//
+| D0Papps of (d0patlst)
 //
 | D0Psarg of
   (token(*LB*), s0arglst, token)
@@ -317,36 +325,22 @@ D0Perrck of (int(*lvl*), d0pat)//HX:pread-error
 //
 and
 d0pat_RPAREN =
-|
-d0pat_RPAREN_cons0 of
-(        token        )
-|
-d0pat_RPAREN_cons1 of
-(token, d0patlst, token)
+|d0pat_RPAREN_cons0 of (token)
+|d0pat_RPAREN_cons1 of (token, d0patlst, token)
 //
 and
 l0d0p_RBRACE =
-|
-l0d0p_RBRACE_cons0 of
-(        token        )
-|
-l0d0p_RBRACE_cons1 of
-(token, l0d0plst, token)
+|l0d0p_RBRACE_cons0 of (token)
+|l0d0p_RBRACE_cons1 of (token, l0d0plst, token)
 //
 (* ****** ****** *)
 //
 datatype
 f0arg_node =
-|
-F0ARGnone of (token)
-|
-F0ARGdapp of (d0pat)
-|
-F0ARGsapp of
-(token, s0qualst,token)
-|
-F0ARGmets of
-(token, s0explst, token)
+|F0ARGnone of (token)
+|F0ARGdapp of (d0pat)
+|F0ARGsapp of (token, s0qualst,token)
+|F0ARGmets of (token, s0explst, token)
 //
 (* ****** ****** *)
 fun
@@ -1456,7 +1450,6 @@ d0parsed_make_args
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****************************************** *)
-(* ****************************************** *)
-
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_SATS_dynexp0.sats] *)
+(***********************************************************************)
