@@ -3,12 +3,14 @@ XASSETS=xassets
 ##################################################################
 #
 all:: srcgen2_lib2xatsopt
-all:: srcgen2_lib2xats2js
-all:: srcgen2_lib2xats2py
 all:: srcgen2_xjsemit_xatsopt_tcheck00
 all:: srcgen2_xjsemit_xatsopt_tcheck01
+#
+all:: srcgen2_lib2xats2js
 all:: srcgen2_xjsemit_xats2js_jsemit00
 all:: srcgen2_xjsemit_xats2js_jsemit01
+#
+all:: srcgen2_lib2xats2py
 all:: srcgen2_xjsemit_xats2py_pyemit00
 all:: srcgen2_xjsemit_xats2py_pyemit01
 #
@@ -16,43 +18,59 @@ all:: srcgen2_xjsemit_xats2py_pyemit01
 #
 cleanall:: ; \
 make -C srcgen2 -f Makefile_xjsemit cleanall
+cleanall:: ; \
+make -C srcgen2/xats2js/srcgen1 -f Makefile_xjsemit cleanall
+cleanall:: ; \
+make -C srcgen2/xats2py/srcgen1 -f Makefile_xjsemit cleanall
 #
 ##################################################################
 ##################################################################
 #
 # STEP~1 for boostrapping xatsopt_tcheck00
 # STEP~1 for boostrapping xatsopt_tcheck01
-# STEP~1 for boostrapping xats2js_jsemit00
-# STEP~1 for boostrapping xats2js_jsemit01
-# STEP~1 for boostrapping xats2js_pyemit00
-# STEP~1 for boostrapping xats2js_pyemit01
 #
 srcgen2_lib2xatsopt: ; \
 XATS2JS_JSEMIT00=./../$(XATS2JS_JSEMIT00) \
 time make -C srcgen2 -f Makefile_xjsemit lib2xatsopt
+#
 srcgen2_xjsemit_xatsopt_tcheck00: ; \
 XATS2JS_JSEMIT00=./../../$(XATS2JS_JSEMIT00) \
 time make -C srcgen2/UTIL -f Makefile_xjsemit xatsopt_tcheck00
+#
 srcgen2_xjsemit_xatsopt_tcheck01: ; \
 XATS2JS_JSEMIT00=./../../$(XATS2JS_JSEMIT00) \
 time make -C srcgen2/UTIL -f Makefile_xjsemit xatsopt_tcheck01
 #
+##################################################################
+#
+# STEP~1 for boostrapping xats2js_jsemit00
+# STEP~1 for boostrapping xats2js_jsemit01
+#
 srcgen2_lib2xats2js: ; \
 XATS2JS_JSEMIT00=./../../../$(XATS2JS_JSEMIT00) \
 time make -C srcgen2/xats2js/srcgen1 -f Makefile_xjsemit lib2xats2js
+#
 srcgen2_xjsemit_xats2js_jsemit00: ; \
 XATS2JS_JSEMIT00=./../../../../$(XATS2JS_JSEMIT00) \
 time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit00
+#
 srcgen2_xjsemit_xats2js_jsemit01: ; \
 XATS2JS_JSEMIT00=./../../../../$(XATS2JS_JSEMIT00) \
 time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit01
 #
+##################################################################
+#
+# STEP~1 for boostrapping xats2js_pyemit00
+# STEP~1 for boostrapping xats2js_pyemit01
+#
 srcgen2_lib2xats2py: ; \
 XATS2JS_JSEMIT00=./../../../$(XATS2JS_JSEMIT00) \
 time make -C srcgen2/xats2py/srcgen1 -f Makefile_xjsemit lib2xats2py
+#
 srcgen2_xjsemit_xats2py_pyemit00: ; \
 XATS2JS_JSEMIT00=./../../../../$(XATS2JS_JSEMIT00) \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xjsemit xats2py_pyemit00
+#
 srcgen2_xjsemit_xats2py_pyemit01: ; \
 XATS2JS_JSEMIT00=./../../../../$(XATS2JS_JSEMIT00) \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xjsemit xats2py_pyemit01
