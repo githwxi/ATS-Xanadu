@@ -103,6 +103,7 @@ cleanall:: clean
 cleanall:: ; rm -f ./lib1xatsopt2js_ats2.js
 cleanall:: ; rm -f ./xats2js_jsemit??_ats2.js
 cleanall:: ; rm -f ./lib1xatsopt2js_ats2_opt1.js
+cleanall:: ; rm -f ./xats2js_jsemit??_ats2_opt1.js
 #
 ########################################################################
 ########################################################################

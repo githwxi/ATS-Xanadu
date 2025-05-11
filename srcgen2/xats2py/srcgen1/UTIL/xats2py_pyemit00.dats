@@ -217,27 +217,25 @@ endlet where
 {
 //
 val (  ) =
-prerrsln("\
-// Welcome from ATS3/Xanadu!")
+prerrsln("// Welcome from ATS3/Xanadu!")
 val (  ) =
-prerrsln("\
-// XATSHOME = ", the_XATSHOME())
+prerrsln("// XATSHOME = ", the_XATSHOME())
 //
-val argv = XATSOPT_argv$get((*0*))
+val argv =
+  XATSOPT_argv$get((*0*))//end(val(argv))
 (*
-val (  ) = prerrsln("\
-// xats2py_pyemit00: argv = ", argv)
+val (  ) =
+prerrsln("xats2py_pyemit00: argv = ", argv)
 *)
 //
-}(*where*)//end-of-[mymain_main(...)]
+}(*where*)//end-of-[mymain_main( (*void*) )]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-val ((*entry*)) = mymain_main((*void*))
+val ((*the_entry_point*)) = mymain_main((*void*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_UTIL_xats2py_pyemit00.dats] *)
+(***********************************************************************)
