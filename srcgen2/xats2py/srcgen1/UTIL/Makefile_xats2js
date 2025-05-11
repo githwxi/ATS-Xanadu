@@ -100,8 +100,7 @@ npx google-closure-compiler \
 clean:: ; rm -f *~
 #
 cleanall:: clean
-cleanall:: ; rm -f ./xats2py_pyemit00_ats2.js
-cleanall:: ; rm -f ./xats2py_pyemit01_ats2.js
+cleanall:: ; rm -f ./xats2py_pyemit0?_ats2.js
 cleanall:: ; rm -f ./lib1xatsopt2js2py_ats2.js
 cleanall:: ; rm -f ./lib1xatsopt2js2py_ats2_opt1.js
 #
