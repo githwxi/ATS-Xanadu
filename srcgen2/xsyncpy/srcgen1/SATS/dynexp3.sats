@@ -45,6 +45,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef d3exp1 = d3exp1_tbox
 (* ****** ****** *)
 #typedef d3pat1lst = list(d3pat1)
+#typedef d3exp1lst = list(d3exp1)
 (* ****** ****** *)
 //
 datatype
@@ -65,5 +66,5 @@ token(*knd*), sint(*npf*), d3pat1lst)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_SATS_dynexp3.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_dynexp3.sats] *)
 (***********************************************************************)

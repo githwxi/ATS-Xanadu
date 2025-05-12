@@ -46,10 +46,6 @@ ATS_PACKNAME
 //
 #include
 "./../HATS/xatsopt_sats.hats"
-(*
-#include
-"./../HATS/xatsopt_dats.hats"
-*)
 #include
 "./../HATS/xatsopt_dpre.hats"
 //
@@ -369,17 +365,22 @@ D0Pflt _ => f0_flt(tenv, d0p0)
 D0Pstr _ => f0_str(tenv, d0p0)
 //
 |
+D0Paspt _ => f0_aspt(tenv, d0p0)
+//
+|
 D0Papps(d0ps) =>
 FXITMatm(d1p0) where
 {
 //
-val loc0 = d0p0.lctn()
+val
+loc0 = d0p0.lctn((*void*))
 //
-val d1ps =
-f0_d0ps(tenv, d0ps)
-val d1p0 =
-fxis_resolve(loc0, d1ps)
-}
+val
+d1ps = f0_d0ps(tenv, d0ps)
+val
+d1p0 = fxis_resolve(loc0, d1ps)
+//
+}(*where*)//endof(D0Papps(d0ps))
 //
 |
 D0Psarg _ => f0_sarg(tenv, d0p0)
@@ -493,7 +494,7 @@ FIXTYnon() => FXITMatm(d1p0)
 |
 _(*otherwise*) => FXITMopr(d1p0, fxty)
 ) (* end of [optn_vt_cons(fxty)] *)
-end (*let*) // end of [f0_id0_1(_,_,_)]
+end(*let*)//end-of-[f0_id0_1(_,_,_)]
 //
 and
 f0_id0_2
@@ -507,7 +508,7 @@ FXITMopr
 val loc0 = tok0.lctn()
 val d1p0 =
 d1pat_make_node(loc0, D1Pb0sh())
-} (*where*) // end of [ f0_id0_2(_,_) ]
+}(*where*)//end(f0_id0_2(tenv,tok0))
 //
 (* ****** ****** *)
 //
@@ -526,8 +527,9 @@ FXITMatm
 (
 d1pat
 ( loc0
-, D1Pint(trans01_t0int(tenv, int))))
-end // end of [let] // end of [f0_int]
+, D1Pint
+  (trans01_t0int(tenv, int))))
+end//(*let*)//end-of-[f0_int(...)]
 //
 (* ****** ****** *)
 //
@@ -546,8 +548,9 @@ FXITMatm
 (
 d1pat
 ( loc0
-, D1Pchr(trans01_t0chr(tenv, chr))))
-end // end of [let] // end of [f0_chr]
+, D1Pchr
+  (trans01_t0chr(tenv, chr))))
+end//(*let*)//end-of-[f0_chr(...)]
 //
 (* ****** ****** *)
 //
@@ -566,8 +569,9 @@ FXITMatm
 (
 d1pat
 ( loc0
-, D1Pflt(trans01_t0flt(tenv, flt))))
-end // end of [let] // end of [f0_flt]
+, D1Pflt
+  (trans01_t0flt(tenv, flt))))
+end//(*let*)//end-of-[f0_flt(...)]
 //
 (* ****** ****** *)
 //
@@ -586,11 +590,38 @@ FXITMatm
 (
 d1pat
 ( loc0
-, D1Pstr(trans01_t0str(tenv, str))))
-end // end of [let] // end of [f0_str]
+, D1Pstr
+  (trans01_t0str(tenv, str))))
+end//(*let*)//end-of-[f0_str(...)]
 //
 (* ****** ****** *)
-
+//
+and
+f0_aspt
+( tenv:
+! tr01env
+, d0p0: d0pat): d1pfx =
+let
+val
+loc0 = d0p0.lctn()
+val-
+D0Paspt
+(tknd,d0p1) = d0p0.node()
+in//let
+FXITMatm
+(
+d1pat
+( loc0
+, D1Paspt(tknd, d1p1))
+) where
+{ val
+  d1p1 =
+  trans01_d0pat(tenv, d0p0)
+}(*where*)//end-of-[FXITMatm...]
+endlet//end-of-[D0Paspt(tknd,d0p1)]
+//
+(* ****** ****** *)
+//
 and
 f0_sarg
 ( tenv:
@@ -615,9 +646,9 @@ val s1as =
 trans01_s0arglst(tenv, s0as)
 }
 endlet // end of [ D0Psarg(_,_,_) ]
-
+//
 (* ****** ****** *)
-
+//
 and
 f0_lpar
 ( tenv:
@@ -662,9 +693,9 @@ val dps2 =
 }
 //
 endlet // end of [ D0Plpar(_,_,_) ]
-
+//
 (* ****** ****** *)
-
+//
 and
 f0_tup1
 ( tenv:
@@ -714,7 +745,7 @@ val dps2 =
 endlet // end of [D0Ptup1(_,_,_,_)]
 //
 (* ****** ****** *)
-
+//
 and
 f0_rcd2
 ( tenv:
@@ -763,7 +794,7 @@ val lss2 =
 }
 //
 endlet // end of [D0Prcd2(_,_,_,_)]
-
+//
 (* ****** ****** *)
 //
 and

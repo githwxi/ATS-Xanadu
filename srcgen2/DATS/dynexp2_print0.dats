@@ -263,19 +263,26 @@ prints
 //
 |
 D2Pdap0(d1p1) =>
-(
-prints("D2Pdap0(", d1p1, ")") )
+(prints("D2Pdap0(", d1p1, ")"))
 |
 D2Pdap1(d1p1) =>
+(prints("D2Pdap1(", d1p1, ")"))
+//
+|
+D2Prfpt
+( d2p1
+, tknd, d2p2) =>
 (
-prints("D2Pdap1(", d1p1, ")") )
+print("D2Prfpt(");
+prints(d2p1,";",tknd,";",d2p2,")"))
+//
 |
 D2Pdapp
 ( d2f0
 , npf1, d2ps) =>
 (
 print("D2Pdapp(");
-prints(d2f0,";",npf1,";",d2ps,")") )
+prints(d2f0,";",npf1,";",d2ps,")"))
 //
 |
 D2Ptup0
@@ -286,20 +293,20 @@ D2Ptup1
 ( tknd
 , npf1, d2ps) =>
 ( print("D2Ptup1(")
-; prints(tknd,";",npf1,";",d2ps,")") )
+; prints(tknd,";",npf1,";",d2ps,")"))
 |
 D2Prcd2
 ( tknd
 , npf1, ldps) =>
 ( print("D2Prcd2(")
-; prints(tknd,";",npf1,";",ldps,")") )
+; prints(tknd,";",npf1,";",ldps,")"))
 //
 |
 D2Pannot
 ( d2p1
 , s1e2, s2e2) =>
 ( print("D2Pannot(")
-; prints( d2p1,";",s1e2,";",s2e2,")" ))
+; prints( d2p1,";",s1e2,";",s2e2,")"))
 //
 |D2Pg1mac
  (   g1m1   ) =>
@@ -312,7 +319,7 @@ let
 val
 t2p1 = d2p1.styp() in
 ( print("D2Pt2pck(")
-; prints( d2p1,";",t2p1,";",t2p2,")") )
+; prints( d2p1,";",t2p1,";",t2p2,")"))
 endlet // end of [ D2Pt2pck(d2p1, t2p2) ]
 //
 |D2Pt2pkc
@@ -321,7 +328,7 @@ let
 val
 t2p1 = d2p1.styp() in
 ( print("D2Pt2pkc(")
-; prints( d2p1,";",t2p1,";",t2p2,")") )
+; prints( d2p1,";",t2p1,";",t2p2,")"))
 endlet // end of [ D2Pt2pkc(d2p1, t2p2) ]
 //
 |D2Pnone0() => prints( "D2Pnone0(",")" )

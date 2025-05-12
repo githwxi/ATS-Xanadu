@@ -282,7 +282,10 @@ d1pat_node =
 | D1Pb0sh of () // bslash
 | D1Pb1sh of d1pat // bslash
 //
-| D1Pa0pp of ((*nil*))
+| D1Paspt of
+  (token(*AS*), d1pat)
+//
+| D1Pa0pp of ((*void*))
 //
 | D1Pa1pp of
   (d1pat(*fun*), d1pat)
