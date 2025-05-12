@@ -715,13 +715,18 @@ d2pat_node =
 *)
 //
 |D2Pcons of
- (d2rpt, d2conlst(*~(1)*))
+ (d2rpt, d2conlst(*~1*))
 //
 |D2Psapp of
  (d2pat, s2varlst(*sarg*))
 //
 |D2Pdap0 of (d2pat) // nullary
 |D2Pdap1 of (d2pat) // argless
+//
+|
+D2Prfpt of
+( d2pat(*id*)
+, token(*AS*), d2pat(*ref*))
 //
 |
 D2Pdapp of
