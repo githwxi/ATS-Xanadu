@@ -390,6 +390,8 @@ d2p0.node() of
 |D2Pdap1 _ => f0_dap1(env0, d2p0)
 |D2Pdapp _ => f0_dapp(env0, d2p0)
 //
+|D2Prfpt _ => f0_rfpt(env0, d2p0)
+//
 |D2Ptup0 _ => f0_tup0(env0, d2p0)
 |D2Ptup1 _ => f0_tup1(env0, d2p0)
 |D2Prcd2 _ => f0_rcd2(env0, d2p0)
@@ -853,6 +855,32 @@ d2pat_make_tpnd
 (loc0, tres, D2Pdapp(d2f0,npf1,d2ps))
 //
 end (*let*) // end-of-[f0_dapp(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rfpt
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+let
+//
+val loc0 = d2p0.lctn()
+//
+val-
+D2Prfpt
+(d2p1
+,tkas,d2p2) = d2p0.node()
+//
+val d2p2 =
+trans2a_d2pat(env0, d2p2)
+val d2p1 =
+trans2a_d2pat_tpck(env0,d2p1,t2p2)
+//
+in//let
+d2pat_make_tpnd
+(loc0, t2p2, D2Prfpt(d2p1,tkas,d2p2))
+end (*let*) // end-of-[f0_rfpt(env0,d2p0)]
 //
 (* ****** ****** *)
 //
@@ -3807,7 +3835,6 @@ trans2a_d2explstopt
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_trans2a_dynexp.dats] *)
+(***********************************************************************)

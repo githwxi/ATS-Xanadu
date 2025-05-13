@@ -336,36 +336,38 @@ d2p0.node() of
 D2Pbang(d2p1) =>
 let
 val () =
-trsym2b_d2pat(env0, d2p1) endlet
+trsym2b_d2pat(env0, d2p1) end
 |
 D2Pflat(d2p1) =>
 let
 val () =
-trsym2b_d2pat(env0, d2p1) endlet
+trsym2b_d2pat(env0, d2p1) end
 |
 D2Pfree(d2p1) =>
 let
 val () =
-trsym2b_d2pat(env0, d2p1) endlet
+trsym2b_d2pat(env0, d2p1) end
+//
+(* ****** ****** *)
 //
 (*
 |D2Psym0 _ => f0_sym0(env0, d2p0)
 *)
+(* ****** ****** *)
 //
 |D2Pcons _ => f0_cons(env0, d2p0)
 //
 |D2Pdap1 _ => f0_dap1(env0, d2p0)
 //
-|
-D2Pdapp
-(d2f0,npf1,d2ps) =>
-let
-val () =
-  trsym2b_d2pat(env0, d2f0)
-val () =
-  trsym2b_d2patlst(env0, d2ps) end
+|D2Pdapp _ => f0_dapp(env0, d2p0)
+//
+|D2Prfpt _ => f0_rfpt(env0, d2p0)
+//
+(* ****** ****** *)
 //
 |D2Pt2pck _ => f0_t2pck(env0, d2p0)
+//
+(* ****** ****** *)
 //
 | _(* otherwise *) => (   (*skipped*)   )
 //
@@ -393,14 +395,14 @@ val dpat = drpt.dpat((*void*))
 //
 (*
 val () =
-prerrsln
-("trsym2b_d2pat: f0_sym0: loc0 = ", loc0)
+prerrsln("\
+trsym2b_d2pat: f0_sym0: loc0 = ", loc0)
 val () =
-prerrsln
-("trsym2b_d2pat: f0_sym0: d2p0 = ", d2p0)
+prerrsln("\
+trsym2b_d2pat: f0_sym0: d2p0 = ", d2p0)
 val () =
-prerrsln
-("trsym2b_d2pat: f0_sym0: styp = ", t2p1)
+prerrsln("\
+trsym2b_d2pat: f0_sym0: styp = ", t2p1)
 *)
 //
 in//let
@@ -626,6 +628,52 @@ end (*let*) // end-of-[ D2Pnone0(...) ]
 end (*let*) // end of [  D2Pcons(...)  ]
 |_(*non-D2Pcons*) => (    (*nothing*)    )
 end (*let*) // end of [f0_dap1(env0, d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( env0:
+! tr2aenv
+, d2p0: d2pat): void =
+let
+//
+val-
+D2Pdapp
+(d2f0
+,npf1,d2ps) = d2p0.node()
+//
+val () =
+(
+  trsym2b_d2pat(env0, d2f0))
+//
+in//let
+(
+  trsym2b_d2patlst(env0, d2ps))
+end(*let*)//end-of-[f0_dapp(env0, d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rfpt
+( env0:
+! tr2aenv
+, d2p0: d2pat): void =
+let
+//
+val-
+D2Prfpt
+(d2p1
+,tkas,d2p2) = d2p0.node()
+//
+val () =
+(
+  trsym2b_d2pat(env0, d2p1))//val()
+val () =
+(
+  trsym2b_d2pat(env0, d2p2))//val()
+//
+end(*let*)//end-of-[f0_rfpt(env0, d2p0)]
 //
 (* ****** ****** *)
 //

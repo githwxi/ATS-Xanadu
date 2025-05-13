@@ -146,7 +146,8 @@ prints
 |
 D3Ptapq
 (d3p1, tjas) =>
-prints("D3Ptapq(",d3p1,";",tjas,")")
+prints
+("D3Ptapq(",d3p1,";",tjas,")")
 //
 |
 D3Pdap1(d3f0) =>
@@ -158,7 +159,14 @@ D3Pdapp
 (d3f0, npf1, d3ps) =>
 (
 print("D3Pdapp(");
-prints(d3f0,";",npf1,";",d3ps,")") )
+prints(d3f0,";",npf1,";",d3ps,")"))
+//
+|
+D3Prfpt
+(d3p1, tkas, d3p2) =>
+(
+print("D3Prfpt(");
+prints(d3p1,";",tkas,";",d3p2,")"))
 //
 |
 D3Ptup0(npf1, d3ps) =>
@@ -167,12 +175,12 @@ prints("D3Ptup0(",npf1,";",d3ps,")")
 D3Ptup1
 ( tknd, npf1, d3ps ) =>
 ( print("D3Ptup1(")
-; prints(tknd,";",npf1,";",d3ps,")") )
+; prints(tknd,";",npf1,";",d3ps,")"))
 |
 D3Prcd2
 ( tknd, npf1, ldps ) =>
 ( print("D3Prcd2(")
-; prints(tknd,";",npf1,";",ldps,")") )
+; prints(tknd,";",npf1,";",ldps,")"))
 //
 (* ****** ****** *)
 //

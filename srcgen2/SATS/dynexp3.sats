@@ -316,6 +316,9 @@ d3pat_node =
 ,sint(*npf*), d3patlst(*darg*)
 ) (* D3Pdapp *)
 //
+|D3Prfpt of
+(d3pat,token(*AS*),d3pat(*aspt*))
+//
 |D3Ptup0 of (sint(*npf*), d3patlst)
 //
 |D3Ptup1 of
