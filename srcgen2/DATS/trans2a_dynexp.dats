@@ -874,6 +874,7 @@ D2Prfpt
 //
 val d2p2 =
 trans2a_d2pat(env0, d2p2)
+val t2p2 = d2p2.styp((*0*))
 val d2p1 =
 trans2a_d2pat_tpck(env0,d2p1,t2p2)
 //
