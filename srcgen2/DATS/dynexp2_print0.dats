@@ -269,20 +269,20 @@ D2Pdap1(d1p1) =>
 (prints("D2Pdap1(", d1p1, ")"))
 //
 |
-D2Prfpt
-( d2p1
-, tknd, d2p2) =>
-(
-print("D2Prfpt(");
-prints(d2p1,";",tknd,";",d2p2,")"))
-//
-|
 D2Pdapp
 ( d2f0
 , npf1, d2ps) =>
 (
 print("D2Pdapp(");
 prints(d2f0,";",npf1,";",d2ps,")"))
+//
+|
+D2Prfpt
+( d2p1
+, tknd, d2p2) =>
+(
+print("D2Prfpt(");
+prints(d2p1,";",tknd,";",d2p2,")"))
 //
 |
 D2Ptup0
@@ -1384,5 +1384,7 @@ end (*let*) // end-of-[d2parsed_fprint(dpar,out0)]
 
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_dynexp2_print0.dats] *)
+(***********************************************************************)

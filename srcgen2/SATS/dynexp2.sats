@@ -724,15 +724,15 @@ d2pat_node =
 |D2Pdap1 of (d2pat) // argless
 //
 |
-D2Prfpt of
-( d2pat(*id*)
-, token(*AS*), d2pat(*ref*))
-//
-|
 D2Pdapp of
 ( d2pat
 , sint(*npf*), d2patlst(*darg*)
 ) (* D2Pdapp *)
+//
+|
+D2Prfpt of
+(
+d2pat, token(*AS*), d2pat(*aspt*))
 //
 |
 D2Ptup0 of (sint(*npf*), d2patlst)
