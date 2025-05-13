@@ -60,7 +60,6 @@ datatype assoc =
 |ASSOCnon|ASSOClft|ASSOCrgt
 //
 (* ****** ****** *)
-val a0s_assoc: assoc
 val app_assoc: assoc
 val imp_assoc: assoc
 (* ****** ****** *)

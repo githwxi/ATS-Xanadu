@@ -58,8 +58,6 @@ ERR = "./../SATS/xerrory.sats"
 (* ****** ****** *)
 //
 #implval
-a0s_assoc = ASSOClft()
-#implval
 app_assoc = ASSOClft()
 #implval
 imp_assoc = ASSOCrgt()
@@ -189,7 +187,7 @@ print(cdv.decd())) where
 (* ****** ****** *)
 #implval
 a0s_fixty =
-FIXTYpst(a0s_prcdv, a0s_assoc)
+FIXTYpst(a0s_prcdv)
 #implval
 app_fixty =
 FIXTYinf(app_prcdv, app_assoc)
