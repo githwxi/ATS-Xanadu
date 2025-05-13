@@ -189,7 +189,7 @@ print(cdv.decd())) where
 (* ****** ****** *)
 #implval
 a0s_fixty =
-FIXTYinf(a0s_prcdv, a0s_assoc)
+FIXTYpst(a0s_prcdv, a0s_assoc)
 #implval
 app_fixty =
 FIXTYinf(app_prcdv, app_assoc)
@@ -198,9 +198,9 @@ imp_fixty =
 FIXTYinf(imp_prcdv, imp_assoc)
 (* ****** ****** *)
 #implval
-brckt_fixty = FIXTYpos(brckt_prcdv)
+brckt_fixty = FIXTYpst(brckt_prcdv)
 #implval
-dtsel_fixty = FIXTYpos(dtsel_prcdv)
+dtsel_fixty = FIXTYpst(dtsel_prcdv)
 (* ****** ****** *)
 #implval
 forall_fixty = FIXTYpre(forall_prcdv)
@@ -209,9 +209,9 @@ exists_fixty = FIXTYpre(exists_prcdv)
 (* ****** ****** *)
 //
 #implval
-postplus_fixty = FIXTYpos(prcdv(0))
+postplus_fixty = FIXTYpst(prcdv(0))
 #implval
-postmnus_fixty = FIXTYpos(prcdv(0))
+postmnus_fixty = FIXTYpst(prcdv(0))
 //
 (* ****** ****** *)
 //
@@ -229,7 +229,7 @@ fixty_prcdv
 case- fxt of
 //
 | FIXTYpre(p1) => p1
-| FIXTYpos(p1) => p1
+| FIXTYpst(p1) => p1
 | FIXTYinf(p1, a2) => p1
 | FIXTYpreinf(p0,p1,a2) => p1
 //
@@ -251,7 +251,7 @@ case- fxt of
 //
 | FIXTYpre
   (  p1  ) => ASSOCnon()
-| FIXTYpos
+| FIXTYpst
   (  p1  ) => ASSOCnon()
 //
 | FIXTYinf(p1, a2) => a2
@@ -328,9 +328,9 @@ FIXTYpre(p1) =>
 (
   prints("FIXTYpre(", p1, ")"))
 |
-FIXTYpos(p1) =>
+FIXTYpst(p1) =>
 (
-  prints("FIXTYpos(", p1, ")"))
+  prints("FIXTYpst(", p1, ")"))
 |
 FIXTYinf(p1, a2) =>
 (
@@ -400,7 +400,7 @@ case+ y0 of
 FXITMopr(f0, fx) =>
 ( case+ fx of
   |
-  FIXTYpos _ =>
+  FIXTYpst _ =>
   (
   case+ ys1 of
   | FXITMatm(t1) :: ys2 =>
@@ -424,16 +424,16 @@ FXITMopr(f0, fx) =>
   | _(*error*) =>
     fxitmlst_resolve$rederr<a>(loc0, ys0)
 *)
-  ) (*FIXTYpos*)
+  ) (*FIXTYpst*)
   |
-  _ (*non-FIXTYpos*) =>
+  _ (*non-FIXTYpst*) =>
   let
     val l0 =
     fxopr_get_lctn<a>(f0)
     val t1 = fxatm_none<a>(l0)
   in
     yreduce(xs0, cons(FXITMatm(t1), ys0))
-  endlet // end of [non-FIXTYpos]
+  endlet // end of [non-FIXTYpst]
 ) (*case+*) // end of [FXITMopr(f0,fx)]
 |
 FXITMatm(t0) =>
@@ -591,7 +591,7 @@ FIXTYpre _ =>
 )
 //
 |
-FIXTYpos _ =>
+FIXTYpst _ =>
 (
 case+ ys0 of
 | _ :: list_nil() =>
@@ -616,7 +616,7 @@ case+ ys0 of
     else yreduce(y0 :: xs0, ys0))
   end
 | _ (* error *) => yreduce(y0 :: xs0, ys0)
-) (* FIXTYpos *)
+) (* FIXTYpst *)
 //
 |
 FIXTYinf _ =>
