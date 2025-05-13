@@ -60,6 +60,7 @@ datatype assoc =
 |ASSOCnon|ASSOClft|ASSOCrgt
 //
 (* ****** ****** *)
+val a0s_assoc: assoc
 val app_assoc: assoc
 val imp_assoc: assoc
 (* ****** ****** *)
@@ -74,6 +75,7 @@ prcdv = prcdv_tflt(*prcd-val*)
 //
 (* ****** ****** *)
 //
+val a0s_prcdv: prcdv
 val app_prcdv: prcdv
 val imp_prcdv: prcdv
 //
@@ -137,6 +139,7 @@ fixty =
 //
 (* ****** ****** *)
 //
+val a0s_fixty: fixty
 val app_fixty: fixty
 //
 val imp_fixty: fixty

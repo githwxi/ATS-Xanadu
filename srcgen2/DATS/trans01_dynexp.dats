@@ -608,16 +608,24 @@ val-
 D0Paspt
 (tknd,d0p1) = d0p0.node()
 in//let
-FXITMatm
+//
+let//1
+val
+d1p1 =
+trans01_d0pat(tenv, d0p0)
+in//let1
+//
 (
+  FXITMopr
+  (d1p0, a0s_fixty)) where
+{
+val
+d1p0 =
 d1pat
-( loc0
-, D1Paspt(tknd, d1p1))
-) where
-{ val
-  d1p1 =
-  trans01_d0pat(tenv, d0p0)
-}(*where*)//end-of-[FXITMatm...]
+(loc0, D1Paspt(tknd, d1p1)) }
+//
+end//let1
+//
 endlet//end-of-[D0Paspt(tknd,d0p1)]
 //
 (* ****** ****** *)
