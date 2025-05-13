@@ -58,6 +58,8 @@ ERR = "./../SATS/xerrory.sats"
 (* ****** ****** *)
 //
 #implval
+a0s_assoc = ASSOClft()
+#implval
 app_assoc = ASSOClft()
 #implval
 imp_assoc = ASSOCrgt()
@@ -98,13 +100,16 @@ in (* in-of-local *)
 
 (* ****** ****** *)
 #implval
+a0s_prcdv = 69
+#implval
 app_prcdv = 70
 #implval
 imp_prcdv = 10
 (* ****** ****** *)
 //
 #implfun
-prcdv_decode(cdv) = cdv
+prcdv_decode
+(    cdv    ) = cdv
 //
 #implfun
 prcdv_encode(cdv) =
@@ -182,6 +187,9 @@ print(cdv.decd())) where
 } (*where*)//end-of-(prcdv_fprint(cdv,out))
 //
 (* ****** ****** *)
+#implval
+a0s_fixty =
+FIXTYinf(a0s_prcdv, a0s_assoc)
 #implval
 app_fixty =
 FIXTYinf(app_prcdv, app_assoc)

@@ -615,6 +615,18 @@ then true else false
 _(* non-D1Pid0 *) => false
 ) (*case+*) // end of [isFREE]
 //
+fun
+isASPT
+(d1p: d1pat): bool =
+(
+case+
+d1p.node() of
+|
+D1Paspt _ => ( true )
+|
+_(* non-D1Pid0 *) => false
+) (*case+*) // end of [isASPT]
+//
 (* ****** ****** *)
 //
 fun
