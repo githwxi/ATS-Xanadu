@@ -22,9 +22,9 @@ $(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; rm -f lib1xatsopt2js_ats3.js
+cleanall:: ; rm -f lib2xatsopt2js_ats3.js
 cleanall:: ; rm -f xats2js_jsemit0?_ats3.js
-cleanall:: ; rm -f lib1xatsopt2js_ats3_opt1.js
+cleanall:: ; rm -f lib2xatsopt2js_ats3_opt1.js
 cleanall:: ; rm -f xats2js_jsemit0?_ats3_opt1.js
 ########################################################################
 ########################################################################
@@ -93,7 +93,7 @@ npx google-closure-compiler \
 #
 ########################################################################
 #
-lib1xatsopt2js: ; \
+lib2xatsopt2js: ; \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
 $(CAT) \
@@ -107,10 +107,10 @@ $(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
 $(XATSJSD)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_ats3.js
 #
-lib1xatsopt2js_opt1: lib1xatsopt2js; \
+lib2xatsopt2js_opt1: lib2xatsopt2js; \
 npx google-closure-compiler \
   -W QUIET --compilation_level SIMPLE \
-  --js=lib1xatsopt2js_ats3.js --js_output_file=lib1xatsopt2js_ats3_opt1.js
+  --js=lib2xatsopt2js_ats3.js --js_output_file=lib2xatsopt2js_ats3_opt1.js
 #
 ########################################################################
 ########################################################################

@@ -612,7 +612,7 @@ in//let
 let//1
 val
 d1p1 =
-trans01_d0pat(tenv, d0p0)
+trans01_d0pat(tenv, d0p1)
 in//let1
 //
 (

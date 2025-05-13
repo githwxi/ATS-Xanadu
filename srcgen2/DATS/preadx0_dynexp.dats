@@ -235,6 +235,22 @@ l0d0p_RBRACE_cons1
 (* ****** ****** *)
 //
 fun
+d0pat_aspt_errck
+(
+loc:loc_t,
+tknd:token,
+d0p1:d0pat): d0pat =
+let
+val lvl = d0pat_errvl(d0p1)
+in//let
+d0pat_errck
+( lvl+1
+, d0pat(loc,D0Paspt(tknd, d0p1)))
+end (*let*) // end of [d0pat_aspt_errck]
+//
+(* ****** ****** *)
+//
+fun
 d0pat_apps_errck
 ( loc
 : loc_t
@@ -1172,6 +1188,9 @@ d0p.node() of
 | D0Pstr _ => d0p
 //
 |
+D0Paspt _ => f0_aspt(d0p, err)
+//
+|
 D0Papps _ => f0_apps(d0p, err)
 //
 |
@@ -1201,6 +1220,35 @@ _(*otherwise*) =>
 (* ****** ****** *)
 //
 fun
+f0_aspt
+( d0p
+: d0pat
+, err
+: &sint >> _): d0pat =
+let
+val e00 = err
+//
+val-
+D0Paspt
+( tas, dp1 ) = d0p.node()
+//
+val dp1 =
+(
+  preadx0_d0pat(dp1, err))
+//
+in//let
+if
+(err=e00)
+then (d0p) else
+let
+val loc = d0p.lctn()
+in//let
+d0pat_aspt_errck(loc, tas, dp1) end
+end (*let*) // end of [f0_aspt]
+//
+(* ****** ****** *)
+//
+fun
 f0_apps
 ( d0p
 : d0pat
@@ -1210,7 +1258,9 @@ let
 val e00 = err
 val-
 D0Papps(dps) = d0p.node()
-val dps = preadx0_d0patlst(dps, err)
+val dps =
+(
+  preadx0_d0patlst(dps, err))
 in//let
 if
 (err=e00)
