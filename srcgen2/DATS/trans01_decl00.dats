@@ -709,7 +709,7 @@ then FIXTYpre(pval) else
 if
 (knd0=KPSTFIX)
 then
-FIXTYpos(pval) else FIXTYnon())))
+FIXTYpst(pval) else FIXTYnon())))
 )
 //
 ) : fixty // end of [ val(fxty) ]

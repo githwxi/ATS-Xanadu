@@ -127,12 +127,12 @@ and
 fixty =
 | FIXTYnon
 | FIXTYpre of prcdv
-| FIXTYpos of prcdv
+| FIXTYpst of prcdv
 | FIXTYinf of (prcdv, assoc)
 //
 | FIXTYpreinf of (prcdv, prcdv, assoc)
 (*
-| FIXTYposinf of (prcdv, prcdv, assoc)
+| FIXTYpstinf of (prcdv, prcdv, assoc)
 *)
 //
 // end of [fixty]
