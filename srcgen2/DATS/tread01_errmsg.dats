@@ -552,18 +552,30 @@ case
 d1p.node() of
 //
 |D1Pid0 _ => ()
+//
 |D1Pint _ => ()
+|D1Pchr _ => ()
+|D1Pflt _ => ()
+|D1Pstr _ => ()
 //
 |
 D1Pb0sh _ => ()
 |
-D1Pb1sh(d1p1) =>
+D1Pb1sh
+(  d1p1  ) =>
 d1pat_fpemsg(out, d1p1)
 //
 |
-D1Pa0pp() => ()
+D1Paspt
+(tknd, d1p1) =>
+(
+d1pat_fpemsg(out, d1p1))
+//
 |
-D1Pa1pp(d1f0,d1p1) =>
+D1Pa0pp() => ((*void*))
+|
+D1Pa1pp
+(d1f0, d1p1) =>
 (
 d1pat_fpemsg(out, d1f0);
 d1pat_fpemsg(out, d1p1))

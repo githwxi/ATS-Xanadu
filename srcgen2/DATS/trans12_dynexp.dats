@@ -947,7 +947,7 @@ d2p1 =
 trans12_d1pat(env0, d1p1)
 in
 d2pat(loc0, D2Pbang(d2p1))
-end // then
+end//then//if(isBANG(d1f0))
 else
 (
 if
@@ -959,7 +959,7 @@ d2p1 =
 trans12_d1pat(env0, d1p1)
 in
 d2pat(loc0, D2Pflat(d2p1))
-end // then
+end//then//if(isFLAT(d1f0))
 else
 (
 if
@@ -971,7 +971,30 @@ d2p1 =
 trans12_d1pat(env0, d1p1)
 in
 d2pat(loc0, D2Pfree(d2p1))
-end // then
+end//then//if(isFREE(d1f0))
+else
+(
+if
+isASPT(d1f0)
+then
+let
+//
+val-
+D1Paspt
+( tknd
+, d1p2 ) = d1f0.node()
+//
+val
+d2p1 =
+trans12_d1pat(env0, d1p1)
+val
+d2p2 =
+trans12_d1pat(env0, d1p2)
+//
+in//let
+d2pat(loc0,
+D2Prfpt(d2p1, tknd, d2p2))
+end//then//if(isASPT(d1f0))
 else
 (
 case+
@@ -1003,6 +1026,7 @@ end (*let*) // end of [D1Psarg(s1as)]
 |
 _(*d1pat-rest*) => f0_a1pp_else(env0,d1p0)
 )
+) (* end-of-[else] *) // end-of-(if)
 ) (* end-of-[else] *) // end-of-(if)
 ) (* end-of-[else] *) // end-of-(if)
 end (*let*) // end of [f0_a1pp(env0,d1p0)]

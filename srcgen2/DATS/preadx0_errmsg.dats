@@ -934,6 +934,12 @@ D0Pstr(str) =>
 t0str_fpemsg(out, str)
 //
 |
+D0Paspt
+( tas, dp1 ) =>
+(
+ d0pat_fpemsg(out, dp1))
+//
+|
 D0Papps(dps) =>
 d0patlst_fpemsg(out, dps)
 //

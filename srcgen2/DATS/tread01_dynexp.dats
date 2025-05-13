@@ -209,6 +209,19 @@ d1pat_errck
 (1, d1pat(loc, D1Pb1sh(d1p)))
 (* ****** ****** *)
 fun
+d1pat_aspt_errck
+(loc: loc_t
+,tok: token
+,dp1: d1pat): d1pat =
+let
+val
+lvl = errvl(dp1) in//let
+d1pat_errck
+( lvl+1
+, d1pat(loc, D1Paspt(tok, dp1)))
+endlet//end-of-[d1pat_aspt_errck]
+(* ****** ****** *)
+fun
 d1pat_a0pp_errck
 (loc: loc_t): d1pat =
 d1pat_errck(1,d1pat(loc,D1Pa0pp()))
@@ -372,11 +385,28 @@ d1p0.node() of
 | D1Pflt _ => d1p0
 | D1Pstr _ => d1p0
 //
+| D1Paspt
+( tknd, d1p1) =>
+let
+//
+val e00 = err
+//
+val
+d1p1 = tread01_d1pat(d1p1, err)
+//
+in//let
+if // if
+(err=e00)
+then (d1p0) else
+d1pat_aspt_errck(loc0, tknd, d1p1)
+endlet // end of [D1Paspt(tknd,d1p1)]
+//
 | D1Pa0pp() =>
 (
 d1pat_a0pp_errck(loc0)
 ) where
-{ val () = ( err := err + 1 ) }
+{
+val () = ( err := err + 1 ) }
 |
 D1Pa1pp
 ( d1p1, d1p2) =>

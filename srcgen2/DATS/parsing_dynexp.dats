@@ -223,13 +223,15 @@ lres = tknd.lctn()+d0p1.lctn()
 in//let
 err := e00;
 d0pat(lres, D0Paspt(tknd, d0p1))
-end (*let*) // end of [ T_AS0(...) ]
+end (*let*) // end of [T_AS0(...)]
 //
 *)
+//
 |
 _ (* error *) =>
 ( err := e00 + 1;
-  d0pat(tok.lctn(), D0Ptkerr(tok))
+  d0pat(tok.lctn(), D0Ptkerr(tok) )
+//
 ) (* end-of-error *)
 //
 end (*let*) // end of [p1_napp(buf,err)]
@@ -446,7 +448,7 @@ T_AS0((*0*)) =>
 let
   val ta0s = tok
   val (  ) = buf.skip1()
-  val d0p1 = p1_napp(buf, err)
+  val d0p1 = p1_d0pat(buf, err)
   val lres = ta0s.lctn() + d0p1.lctn()
 in//let
 err := e00; d0pat(lres,D0Paspt(ta0s,d0p1))
