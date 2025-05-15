@@ -65,7 +65,7 @@ gseq_sing(x0:x0): (xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_nilq((*0*)): bool
+gseq_nilq(xs:xs): bool
 fun
 <xs:t0>
 <x0:t0>
