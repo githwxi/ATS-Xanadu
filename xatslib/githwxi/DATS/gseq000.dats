@@ -36,18 +36,21 @@ gseq_nilq
 then
 strmcon_vt_nil((*0*))
 else
-let
+let//0
+//
 val hd =
 gseq_head<xs><x0>(xs)
 val tl =
 gseq_tail<xs><x0>(xs)
+//
 val ys =
 gseq_map_lstrm<xs><x0>(tl)
 where {
 #typedef y0 = (x0, x0)
 #impltmp
 map$fopr<x0><y0>(x1) = (hd, x1) }
-in//let
+//
+in//let0
 //
 !strm_vt_append00(ys, auxmain(tl))
 //
@@ -57,5 +60,5 @@ end(*let*)//end-of-[  auxmain(xs)  ]
 }(*where*)//end-of-[gseq_2choose$strmize(xs)]
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_githwxi_DATS_gtree00.dats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_DATS_gseq000.dats] *)
 (***********************************************************************)
