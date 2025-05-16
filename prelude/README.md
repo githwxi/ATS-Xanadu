@@ -4,7 +4,10 @@
 
 ### fixity0.sats
 
-The file `fixity0.sats` contains various default fixity declarations.
+ATS3 supports prefix, infix and postfix operators.
+The file `fixity0.sats` contains fixity declarations for
+various commonly used symbols.
+
 For instance, the following lines declare the 5 common arithmetic
 operators as being left-associative; addition (+) and substraction (-)
 are given the precedence value 50 while the other three are given the
@@ -17,6 +20,10 @@ precedence value 60.
 #infixl / of 60 (*div*)
 #infixl % of 60 (*mod*)
 ```
+
+Note that `infixl` and `infixr` are for left-associativity and
+right-associativity respectively. And `infix0` (which can also
+be written as `infix`) is for non-associative infix operators.
 
 In a case like `1+2-3`, the expression is parsed as `(1+2)-3` instead
 of `1+(2-3)` due to the fact that addition and subtraction are given
