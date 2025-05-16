@@ -11,7 +11,9 @@ various commonly used symbols.
 For instance, the following lines declare the 5 common arithmetic
 operators as being left-associative; addition (+) and substraction (-)
 are given the precedence value 50 while the other three are given the
-precedence value 60.
+precedence value 60. In general, these precedence values should not be
+altered for otherwise a great deal of confusion is likely to be
+introduced.
 
 ```
 #infixl + of 50 (*add*)
@@ -27,11 +29,23 @@ be written as `infix`) is for non-associative infix operators.
 
 In a case like `1+2-3`, the expression is parsed as `(1+2)-3` instead
 of `1+(2-3)` due to the fact that addition and subtraction are given
-the same precedence value (while they are left-associative).
+the same precedence value while they are left-associative.
 
 In a case like `1+2*3`, the expression is parsed as `1+(2*3)` instead
 of `(1+2)*3` due to multiplication being given a higher precedence
 value than addition.
+
+In ATS3, a symbol can be given an infix status as well as a prefix
+status. For instance, we have the following declarations:
+
+```
+#prefix + of +(+1) (*uplus*)
+#prefix - of -(+1) (*uminus*)
+```
+
+As a prefix operator, the precedence value of `+` (`-`) is 1 higher
+than the precedence value of `+` (`-`) as an infix operator.
+
 
 ### basics0.sats
 

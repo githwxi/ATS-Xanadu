@@ -96,6 +96,10 @@ for exponentiation
 //
 (* ****** ****** *)
 //
+(*
+HX: +1*2 = +(1*2)
+HX: -1*2 = -(1*2)
+*)
 #prefix + of +(+1) (*uplus*)
 #prefix - of -(+1) (*uminus*)
 //
