@@ -43,9 +43,8 @@ status. For instance, we have the following declarations:
 #prefix - of -(+1) (*uminus*)
 ```
 
-As a prefix operator, the precedence value of `+` (`-`) is 1 higher
-than the precedence value of `+` (`-`) as an infix operator.
-
+As a prefix operator, the precedence value of `+` (resp. `-`) is 1 higher
+than the precedence value of `+` (resp. `-`) as an infix operator.
 
 ### basics0.sats
 
@@ -78,3 +77,46 @@ in ATS3:
 ```
 
 ## Handling of Partial Functions
+
+Handling of partial functions is a crucially important issue in
+programming. The convention followed in the prelude library for
+handling partial functions can be illustrated with a simple example.
+For instance, `gseq_head` is given the following interface:
+
+```
+fun
+<xs:t0>
+<x0:t0>
+gseq_head(xs: xs): x0
+```
+
+Clearly, `gseq_head` is a partial function is the head of an empty
+sequence is undefined. When applied to an empty sequence, the behavior
+of `gseq_head` is unspecified; it may return some value or it may raise
+an exception.
+
+The following declared function `gseq_head$exn` is a variant of
+`gseq_head`:
+
+```
+fun
+<xs:t0>
+<x0:t0>
+gseq_head$exn(xs: xs): x0
+```
+
+which, when applied to an empty sequence, should raise an exception to
+indicate that the head of an empty sequence is undefined.
+
+The following declared function `gseq_head$opt` is another variant of
+`gseq_head`:
+
+```
+fun
+<xs:t0>
+<x0:t0>
+gseq_head$opt(xs: xs): optn_vt(x0)
+```
+
+which returns a (linear) option value to indicate whether the head of
+a given sequence is well-defined.
