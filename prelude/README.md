@@ -133,8 +133,10 @@ gseq_head$raw(xs): x0
 ```
 
 Like `gseq_head`, the behavior of `gseq_head$raw` on an empty sequence
-is unspecified. However, unlike `gseq_head`, `gseq_head$raw` may even
-behave unsafely when applied to an empty sequence. For instance,
-`gseq_head$raw` may do something like out-of-bounds array access,
-which can be taken advantage of by a malicious program.
-
+is unspecified. However, unlike the function `gseq_head`,
+`gseq_head$raw` may even behave unsafely when applied to an empty
+sequence. For instance, `gseq_head$raw` may do something like
+out-of-bounds array access, which can be taken advantage of by a
+malicious program. Therefore, when applying `gseq_head$raw` to a
+sequence, one must possess a proof of some kind that attests to the
+non-emptiness of the sequence.
