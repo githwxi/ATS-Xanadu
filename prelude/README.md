@@ -78,10 +78,12 @@ in ATS3:
 
 ## Handling of Partial Functions
 
-Handling of partial functions is a crucially important issue in
+Handling of partial functions is an issue of crucial importance in
 programming. The convention followed in the prelude library for
-handling partial functions can be illustrated with a simple example.
-For instance, `gseq_head` is given the following interface:
+handling partial functions can be illustrated through a simple
+example.  For instance, `gseq_head`, which returns the head (that is,
+the first elememnt) of a given sequence is given the following
+interface:
 
 ```
 fun
@@ -90,7 +92,7 @@ fun
 gseq_head(xs: xs): x0
 ```
 
-Clearly, `gseq_head` is a partial function is the head of an empty
+Clearly, `gseq_head` is a partial function as the head of an empty
 sequence is undefined. When applied to an empty sequence, the behavior
 of `gseq_head` is unspecified; it may return some value or it may raise
 an exception.
@@ -120,3 +122,19 @@ gseq_head$opt(xs: xs): optn_vt(x0)
 
 which returns a (linear) option value to indicate whether the head of
 a given sequence is well-defined.
+
+There is yet another variant of `gseq_head`, which is declared as follows:
+
+```
+fun
+<xs:t0>
+<x0:t0>
+gseq_head$raw(xs): x0
+```
+
+Like `gseq_head`, the behavior of `gseq_head$raw` on an empty sequence
+is unspecified. However, unlike `gseq_head`, `gseq_head$raw` may even
+behave unsafely when applied to an empty sequence. For instance,
+`gseq_head$raw` may do something like out-of-bounds array access,
+which can be taken advantage of by a malicious program.
+
