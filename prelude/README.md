@@ -56,10 +56,10 @@ the 4 basic predicative sorts `int0`, `bool`, `addr`, and `char`
 in ATS3:
 
 ```
-#sortdef i0 = int0 // integers
-#sortdef b0 = bool // booleans
-#sortdef a0 = addr // addresses
-#sortdef c0 = char // characters
+#sortdef i0 = int0 // integers // (-inf, +inf)
+#sortdef a0 = addr // addresses // 0 <= a < +inf
+#sortdef b0 = bool // booleans  // true | false
+#sortdef c0 = char // characters // 0 <= c < 256
 ```
 
 And the following lines introduce some aliases for the 6 basic
@@ -67,14 +67,30 @@ impredicative sorts `prop`, `view`, `type`, `tbox`, `vwtp`, and `vtbx`
 in ATS3:
 
 ```
-#sortdef p0 = prop
-#sortdef v0 = view
-#sortdef vw = view
-#sortdef t0 = type
-#sortdef tx = tbox
-#sortdef vt = vwtp
-#sortdef vx = vtbx
+#sortdef p0 = prop // proof
+#sortdef t0 = type // dynexp
+#sortdef tx = tbox // boxed dynexp
+#sortdef v0 = view // linear proof
+#sortdef vw = view // linear proof
+#sortdef vt = vwtp // linear dynexp
+#sortdef vx = vtbx // linear boxed dynexp
 ```
+
+There are also some subset sorts:
+
+```
+#sortdef nat = {n: i0 | n >= 0}
+#sortdef pos = {n: i0 | n >= 1}
+#sortdef neg = {n: i0 | n <= -1}
+```
+
+### xparam0.hats
+
+This file is largely empty as of now.  It is supposed to contain
+various system-related constants.  For instance, the the forward slash
+symbol is used in UNIX-like systems for separating components in a
+file path.  In Windows, the backward slash symbol is used for this
+purpose.
 
 ## Handling of Partial Functions
 
@@ -138,5 +154,5 @@ is unspecified. However, unlike the function `gseq_head`,
 sequence. For instance, `gseq_head$raw` may do something like
 out-of-bounds array access, which can be taken advantage of by a
 malicious program. Therefore, when applying `gseq_head$raw` to a
-sequence, one must possess a proof of some kind that attests to the
-non-emptiness of the sequence.
+sequence, one must possess, formally or informally, a proof of some
+kind that attests to the non-emptiness of the sequence.
