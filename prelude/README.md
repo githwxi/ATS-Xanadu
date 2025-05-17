@@ -126,8 +126,8 @@ declarations for `+`, `*`, `||`, and `&&` are given in `fixity0.sats`.
 This file is largely empty as of now.  It is supposed to contain
 various system-related constants.  For instance, the the forward slash
 symbol is used in UNIX-like systems for separating components in a
-file path.  In Windows, the backward slash symbol is used for this
-purpose.
+file path; and the backward slash symbol is used for this purpose in
+Windows.
 
 ## Handling of Partial Functions
 

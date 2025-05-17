@@ -130,6 +130,8 @@ d3p0.node() of
 |D3Pdap1 _ => f0_dap1(env0, d3p0)
 |D3Pdapp _ => f0_dapp(env0, d3p0)
 //
+|D3Prfpt _ => f0_rfpt(env0, d3p0)
+//
 |D3Ptup0 _ => f0_tup0(env0, d3p0)
 |D3Ptup1 _ => f0_tup1(env0, d3p0)
 |D3Prcd2 _ => f0_rcd2(env0, d3p0)
@@ -430,6 +432,39 @@ end(*let*)//end-of-[f0_dapp(env0,d3p0)]
 (* ****** ****** *)
 //
 fun
+f0_rfpt
+( env0:
+! tr3aenv
+, d3p0: d3pat): d3pat =
+let
+//
+val loc0 = d3p0.lctn()
+//
+val-
+D3Prfpt
+( d3p1
+, tkas, d3p2) = d3p0.node()
+//
+val
+t2p0 = d3p0.styp((*0*))
+val
+t2p0 = s2typ_hnfiz0(t2p0)
+val
+t2p0 = trans3a_s2typ(env0, t2p0)
+//
+val
+d3p1 = trans3a_d3pat(env0, d3p1)
+val
+d3p2 = trans3a_d3pat(env0, d3p2)
+//
+in//let
+d3pat_make_tpnd
+(loc0, t2p0, D3Prfpt(d3p1,tkas,d3p2))
+end(*let*)//end-of-[f0_rfpt(env0,d3p0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_tup0
 ( env0:
 ! tr3aenv
@@ -449,11 +484,12 @@ val t2p0 =
   trans3a_s2typ(env0, t2p0)
 //
 val d3ps =
-trans3a_d3patlst(env0, d3ps)
+(
+  trans3a_d3patlst(env0, d3ps))
 //
 in//let
-d3pat(loc0, t2p0, D3Ptup0(npf1, d3ps))
-end (*let*)//end-of-[ f0_tup0(env0,d3p0) ]
+d3pat(loc0, t2p0, D3Ptup0(npf1,d3ps))
+end(*let*)//end-of-[f0_tup0(env0,d3p0)]
 //
 (* ****** ****** *)
 //
@@ -478,12 +514,13 @@ val t2p0 =
   trans3a_s2typ(env0, t2p0)
 //
 val d3ps =
-trans3a_d3patlst(env0, d3ps)
+(
+  trans3a_d3patlst(env0, d3ps))
 //
 in//let
 d3pat_make_tpnd
-(loc0, t2p0, D3Ptup1(knd0, npf1, d3ps))
-end (*let*)//end-of-[ f0_tup1(env0,d3p0) ]
+(loc0, t2p0, D3Ptup1(knd0,npf1,d3ps))
+end(*let*)//end-of-[f0_tup1(env0,d3p0)]
 //
 (* ****** ****** *)
 //
@@ -508,12 +545,13 @@ val t2p0 =
   trans3a_s2typ(env0, t2p0)
 //
 val ldps =
-trans3a_l3d3plst(env0, ldps)
+(
+  trans3a_l3d3plst(env0, ldps))
 //
 in//let
 d3pat_make_tpnd
-(loc0, t2p0, D3Prcd2(knd0, npf1, ldps))
-end (*let*)//end-of-[ f0_rcd2(env0,d3p0) ]
+(loc0, t2p0, D3Prcd2(knd0,npf1,ldps))
+end (*let*)//end-of-[f0_rcd2(env0,d3p0)]
 //
 (* ****** ****** *)
 //
@@ -544,7 +582,7 @@ d3p1 = trans3a_d3pat(env0, d3p1)
 in//let
 d3pat_make_tpnd
 (loc0, t2p0, D3Pannot(d3p1,s1e2,s2e2))
-end(*let*)//end of [f0_annot(env0,d3p0)]
+end(*let*)//end-of-[f0_annot(env0,d3p0)]
 //
 (* ****** ****** *)
 //

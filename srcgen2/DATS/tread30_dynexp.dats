@@ -324,6 +324,26 @@ endlet // end of [d3pat_dapp_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3pat_rfpt_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3p1: d3pat
+,tkas: token
+,d3p2:
+ d3pat(*rfdpt*)): d3pat =
+let
+val lvl0 = maxs
+(errvl(d3p1), errvl(d3p2)) in//let
+d3pat_errck
+(
+lvl0+1,
+d3pat_make_tpnd
+(loc0, t2p0, D3Prfpt(d3p1,tkas,d3p2)))
+endlet // end of [d3pat_rfpt_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3pat_tup0_errck
 (loc0: loc_t
 ,t2p0: s2typ
@@ -1256,6 +1276,8 @@ f0_any(d3p0, err)
 |D3Pdap1 _ => f0_dap1(d3p0, err)
 |D3Pdapp _ => f0_dapp(d3p0, err)
 //
+|D3Prfpt _ => f0_rfpt(d3p0, err)
+//
 |D3Ptup0 _ => f0_tup0(d3p0, err)
 |D3Ptup1 _ => f0_tup1(d3p0, err)
 |D3Prcd2 _ => f0_rcd2(d3p0, err)
@@ -1537,7 +1559,40 @@ if
 then (d3p) else
 ( d3pat_dapp_errck
   (d3p.lctn(), t2p, d3f0,npf1,d3ps) )
-end (*let*) // end of [f0_dap1(d3p,err)]
+end (*let*) // end of [f0_dapp(d3p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rfpt
+(d3p: d3pat
+,err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val t2p = d3p.styp()
+val t2p =
+tread30_s2typ(t2p, err)
+val ( ) = d3p.styp(t2p)
+//
+val-
+D3Prfpt
+( d3p1
+, tkas, d3p2) = d3p.node()
+//
+val
+d3p1 = tread30_d3pat(d3p1, err)
+val
+d3p2 = tread30_d3pat(d3p2, err)
+//
+in//let
+if
+(err=e00)
+then (d3p) else
+( d3pat_rfpt_errck
+  (d3p.lctn(), t2p, d3p1,tkas,d3p2) )
+end (*let*) // end of [f0_rfpt(d3p,err)]
 //
 (* ****** ****** *)
 //
@@ -1566,7 +1621,8 @@ if
 then (d3p) else
 let
 val loc = d3p.lctn() in
-d3pat_tup0_errck(loc, t2p, npf1,d3ps)
+(
+d3pat_tup0_errck(loc,t2p,npf1,d3ps) )
 end (*let*)
 end (*let*) // end of [f0_tup0(d3p,err)]
 //

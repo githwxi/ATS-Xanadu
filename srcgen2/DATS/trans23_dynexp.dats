@@ -260,6 +260,8 @@ been eliminated at this point!
 |D2Pdap1 _ => f0_dap1(env0, d2p0)
 |D2Pdapp _ => f0_dapp(env0, d2p0)
 //
+|D2Prfpt _ => f0_rfpt(env0, d2p0)
+//
 |D2Ptup0 _ => f0_tup0(env0, d2p0)
 |D2Ptup1 _ => f0_tup1(env0, d2p0)
 //
@@ -617,6 +619,39 @@ in
   (loc0, tres, D3Pdapp(d3f0,npf1,d3ps))
 end (*let*)
 end (*let*) // end of [f0_dapp(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rfpt
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+(
+d3pat_make_tpnd
+( loc0
+, t2p2//HX:t2p0=t2p2
+, D3Prfpt
+  (d3p1, tkas, d3p2))) where
+{
+//
+val loc0 = d2p0.lctn()
+//
+val-
+D2Prfpt
+(d2p1
+,tkas, d2p2) = d2p0.node()
+//
+val
+d3p2 =
+trans23_d2pat(env0, d2p2)
+val
+t2p2 = d3p2.styp((*void*))
+val // HX: [d2p1] is
+d3p1 = // supposed to be a d2var
+trans23_d2pat_tpck(env0, d2p1, t2p2)
+//
+} (*where*) // end-of-[f0_rfpt(env0,d2p0)]
 //
 (* ****** ****** *)
 //
