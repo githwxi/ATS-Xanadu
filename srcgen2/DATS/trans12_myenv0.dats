@@ -2034,14 +2034,27 @@ tr12env_add0_d2pat(env0, d2p1)
 //
 |
 D2Pdapp
-(d2f0, npf1, d2ps) =>
+(d2f0,npf1,d2ps) =>
 (
 tr12env_add0_d2pat(env0, d2f0);
 tr12env_add0_d2patlst(env0, d2ps)
 )
 //
 |
-D2Ptup0(npf1,d2ps) =>
+D2Prfpt
+(d2p1,tkas,d2p2) =>
+let
+val () =
+(
+ tr12env_add0_d2pat(env0, d2p2))
+val () =
+(
+ tr12env_add0_d2pat(env0, d2p1))
+end(*let*)//end-of-[D2Prfpt(...)]
+//
+|
+D2Ptup0
+( npf1, d2ps ) =>
 tr12env_add0_d2patlst(env0, d2ps)
 |
 D2Ptup1
