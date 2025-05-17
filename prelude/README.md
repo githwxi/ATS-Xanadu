@@ -1,5 +1,12 @@
 # The ATS3-prelude library
 
+[comment]: # HX-2025-05-15: Let's start documenting!
+
+What is presented here should be seen as a set of comments aiming at
+helping someone understand the design and implementation of the
+prelude library for ATS3. These comments are made selectively and are
+not meant to be thorough.
+
 ## Special Files
 
 ### fixity0.sats
