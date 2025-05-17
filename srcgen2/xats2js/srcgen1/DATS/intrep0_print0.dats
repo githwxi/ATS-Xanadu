@@ -159,13 +159,21 @@ prints("I0Pflat(",i0p1,")")
 prints("I0Pfree(",i0p1,")")
 //
 (* ****** ****** *)
-|I0Pdap1 i0f0 =>
+|
+I0Pdap1
+( i0f0 ) =>
 prints("I0Pdap1(",i0f0,")")
 (* ****** ****** *)
 //
 |I0Pdapp
-( i0f0,i0ps ) =>
+( i0f0, i0ps ) =>
 prints("I0Pdapp(",i0f0,";",i0ps,")")
+//
+(* ****** ****** *)
+//
+|I0Prfpt
+( i0p1, i0p2 ) =>
+prints("I0Prfpt(",i0p1,";",i0p2,")")
 //
 (* ****** ****** *)
 //
