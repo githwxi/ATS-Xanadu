@@ -259,6 +259,8 @@ d2pat_errck
 (lvl0+1, d2pat(loc0, D2Pdap1(d2f0)))
 endlet // end of [d2pat_dap1_errck(...)]
 //
+(* ****** ****** *)
+//
 fun
 d2pat_dapp_errck
 ( loc0: loc_t
@@ -273,6 +275,24 @@ d2pat_errck
 (lvl0+1
 ,d2pat(loc0, D2Pdapp(d2f0,npf1,d2ps)))
 endlet // end of [d2pat_dapp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2pat_rfpt_errck
+( loc0: loc_t
+, d2p1: d2pat
+, tkas: token
+, d2p2:
+  d2pat(*rfdpt*)): d2pat =
+let
+val
+lvl0 = maxs
+(errvl(d2p1), errvl(d2p2)) in//let
+d2pat_errck
+(lvl0+1
+,d2pat(loc0, D2Prfpt(d2p1,tkas,d2p2)))
+endlet // end of [d2pat_rfpt_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -988,6 +1008,8 @@ d2p0.node() of
 |D2Pdap1 _ => f0_dap1(d2p0, err)
 |D2Pdapp _ => f0_dapp(d2p0, err)
 //
+|D2Prfpt _ => f0_rfpt(d2p0, err)
+//
 |D2Ptup0 _ => f0_tup0(d2p0, err)
 |D2Ptup1 _ => f0_tup1(d2p0, err)
 |D2Prcd2 _ => f0_rcd2(d2p0, err)
@@ -1147,9 +1169,13 @@ D2Pdapp
 (d2f0
 ,npf1, d2ps) = d2p.node()
 val
-d2f0 = tread20_d2pat(d2f0, err)
+d2f0 =
+(
+  tread20_d2pat(d2f0, err))
 val
-d2ps = tread20_d2patlst(d2ps, err)
+d2ps =
+(
+  tread20_d2patlst(d2ps, err))
 in//let
 if
 (err=e00)
@@ -1159,6 +1185,34 @@ val loc = d2p.lctn() in
 d2pat_dapp_errck(loc,d2f0,npf1,d2ps)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_dapp(d2p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rfpt
+(d2p: d2pat
+,err: &sint >> _): d2pat =
+let
+//
+val e00 = err
+//
+val-
+D2Prfpt
+(d2p1
+,tkas, d2p2) = d2p.node()
+val
+d2p1 = tread20_d2pat(d2p1, err)
+val
+d2p2 = tread20_d2pat(d2p2, err)
+in//let
+if
+(err=e00)
+then (d2p) else
+let
+val loc = d2p.lctn() in
+d2pat_rfpt_errck(loc,d2p1,tkas,d2p2)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_rfpt(d2p,err)]
 //
 (* ****** ****** *)
 //
@@ -1176,7 +1230,8 @@ D2Ptup0
 //
 val
 d2ps =
-tread20_d2patlst(d2ps, err)
+(
+  tread20_d2patlst(d2ps, err))
 //
 in//let
 if

@@ -120,6 +120,18 @@ val () =
 fperr20_d2patlst(out, d2ps) end
 //
 |
+D2Prfpt
+( d2p1
+, tkas, d2p2) =>
+let
+val () =
+(
+  fperr20_d2pat(out, d2p1))
+val () =
+(
+  fperr20_d2pat(out, d2p2)) end
+//
+|
 D2Ptup0
 ( npf1, d2ps) =>
 let

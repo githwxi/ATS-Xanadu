@@ -451,6 +451,23 @@ endlet // end of [d3pat_dapp_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3pat_rfpt_errck
+(loc0: loc_t
+,d3p1: d3pat
+,tkas: token
+,d3p2:
+ d3pat(*rfdpt*)): d3pat =
+let
+val lvl0 = maxs
+(errvl(d3p1), errvl(d3p2)) in//let
+d3pat_errck
+(lvl0+1
+,d3pat(loc0, D3Prfpt(d3p1,tkas,d3p2)))
+endlet // end of [d3pat_rfpt_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3pat_tup0_errck
 ( loc0: loc_t
 , npf1: (sint)
@@ -1060,6 +1077,8 @@ d3p0.node() of
 |D3Pdap1 _ => f0_dap1(d3p0, err)
 |D3Pdapp _ => f0_dapp(d3p0, err)
 //
+|D3Prfpt _ => f0_rfpt(d3p0, err)
+//
 |D3Ptup0 _ => f0_tup0(d3p0, err)
 |D3Ptup1 _ => f0_tup1(d3p0, err)
 |D3Prcd2 _ => f0_rcd2(d3p0, err)
@@ -1229,9 +1248,13 @@ D3Pdapp
 (d3f0
 ,npf1, d3ps) = d3p.node()
 val
-d3f0 = tread23_d3pat(d3f0, err)
+d3f0 =
+(
+  tread23_d3pat(d3f0, err))
 val
-d3ps = tread23_d3patlst(d3ps, err)
+d3ps =
+(
+  tread23_d3patlst(d3ps, err))
 in//let
 if
 (err=e00)
@@ -1241,6 +1264,34 @@ val loc = d3p.lctn() in
 d3pat_dapp_errck(loc,d3f0,npf1,d3ps)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_dapp(d3p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rfpt
+(d3p: d3pat
+,err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val-
+D3Prfpt
+(d3p1
+,tkas, d3p2) = d3p.node()
+val
+d3p1 = tread23_d3pat(d3p1, err)
+val
+d3p2 = tread23_d3pat(d3p2, err)
+in//let
+if
+(err=e00)
+then (d3p) else
+let
+val loc = d3p.lctn() in
+d3pat_rfpt_errck(loc,d3p1,tkas,d3p2)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_rfpt(d3p,err)]
 //
 (* ****** ****** *)
 //
@@ -1256,9 +1307,9 @@ val-
 D3Ptup0
 (npf1, d3ps) = d3p.node()
 //
-val
-d3ps =
-tread23_d3patlst(d3ps, err)
+val d3ps =
+(
+  tread23_d3patlst(d3ps, err))
 //
 in//let
 if
@@ -1285,9 +1336,9 @@ D3Ptup1
 ( tknd
 , npf1, d3ps) = d3p.node()
 //
-val
-d3ps =
-tread23_d3patlst(d3ps, err)
+val d3ps =
+(
+  tread23_d3patlst(d3ps, err))
 //
 in//let
 if
@@ -1314,9 +1365,9 @@ D3Prcd2
 ( tknd
 , npf1, ldps) = d3p.node()
 //
-val
-ldps =
-tread23_l3d3plst(ldps, err)
+val ldps =
+(
+  tread23_l3d3plst(ldps, err))
 //
 in//let
 if
