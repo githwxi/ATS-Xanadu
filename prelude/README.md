@@ -84,6 +84,36 @@ There are also some subset sorts:
 #sortdef neg = {n: i0 | n <= -1}
 ```
 
+After sort definitions, there are various declared static constants in
+`basics0.sats`.  For instance, the following lines introduce
+some static constants for the two boolean values `true` and `false` and also
+the disjunction (`add_b0_b0`) and the conjunction (`mul_b0_b0`):
+
+```
+#stacst0 tt_b0 : b0 // true
+#stacst0 ff_b0 : b0 // false
+#stacst0 add_b0_b0: (b0, b0)->b0
+#stacst0 mul_b0_b0: (b0, b0)->b0
+
+```
+
+Furthermore, some aliases are introduced as follows:
+
+```
+#sexpdef tt = tt_b0 // overloading
+#sexpdef ff = ff_b0 // overloading
+#sexpdef + = add_b0_b0 // overloading
+#sexpdef * = mul_b0_b0 // overloading
+#sexpdef || = add_b0_b0 // overloading
+#sexpdef && = mul_b0_b0 // overloading
+```
+
+For instance, we can write `true+false` or `true||false` for
+`add_b0_b0(true, false)`, `true*false` or `true&&false` for
+`mul_b0_b0(true, false)`, etc. Please note that the fixity
+declarations for `+`, `*`, `||`, and `&&` are given in `fixity0.sats`.
+
+
 ### xparam0.hats
 
 This file is largely empty as of now.  It is supposed to contain
