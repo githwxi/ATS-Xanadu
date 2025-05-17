@@ -98,6 +98,8 @@ in//let
 case+
 d3p.node() of
 //
+(* ****** ****** *)
+//
 |
 D3Pdap1(d3f0) =>
 let
@@ -113,10 +115,26 @@ fperr30_d3pat(out, d3f0)
 val () =
 fperr30_d3patlst(out, d3ps) end
 //
+(* ****** ****** *)
+//
+|
+D3Prfpt
+( d3p1
+, tkas, d3p2) =>
+let
+val () =
+(
+  fperr30_d3pat(out, d3p1))
+val () =
+(
+  fperr30_d3pat(out, d3p2)) end
+//
+(* ****** ****** *)
+//
 |D3Pnone0 _ => (  (*void*)  )
 |D3Pnone1 _ => () | D3Pnone2 _ => ()
-|
-D3Perrck(_,_) => fperr30_d3pat(out, d3p)
+//
+|D3Perrck _ => fperr30_d3pat(out, d3p)
 //
 |
 _(*otherwise*) =>
