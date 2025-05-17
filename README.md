@@ -17,6 +17,8 @@ overcome it to reach the point where they could truly start enjoying
 the tremendous power of (advanced) type-checking and (embeddable)
 templates.
 
+[comment]: # HX: I probably wrote this in 2018 to motivate ATS3!
+
 When DML (the predecessor of ATS) was designed nearly 20 years ago, a
 two-layered approach to type-checking was taken: ML-like type-checking
 first and dependent type-checking second. This approach was later
@@ -41,6 +43,8 @@ uses algebraic types (while ATS2 uses dependent types).
 
 ## Installing ATS3
 
+[Comment]: # HX: ATS3 was first successfully bootstrapped on 03/29/2025!
+
 ATS3 is available for testing.
 Here are some [details](https://groups.google.com/g/ats-lang-users/c/C3-PWokjYTA)
 on the release of ATS3-alpha.0.1. Please see [XATSHOME](https://github.com/githwxi/XATSHOME)
@@ -52,6 +56,12 @@ for instructions.
 ## Developing ATS3
 
 ## Documenting ATS3
+
+This has been ongoing with no ending in site. Please see the READMEs
+spreaded in various directories. These READMEs can be seen as the first
+attempt to document ATS3. Hopefully, there will be more and more attempts
+in the future when ATS3, its design and implementation, is understood and
+appreciated by more and more people.
 
 ## Licenses for ATS/Xanadu
 
