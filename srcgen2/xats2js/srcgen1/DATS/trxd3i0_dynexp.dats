@@ -304,6 +304,9 @@ i0pat
 |D3Pdapp _ => f0_dapp(env0, d3p0)
 //
 (* ****** ****** *)
+//
+|D3Prfpt _ => f0_rfpt(env0, d3p0)
+//
 (* ****** ****** *)
 //
 |D3Ptup0 _ => f0_tup0(env0, d3p0)
@@ -389,9 +392,43 @@ val i0ps =
 trxd3i0_d3patlst(env0, d3ps)
 //
 in//let
-  i0pat
+//
+i0pat_make_node
   (loc0, I0Pdapp(i0f0, i0ps))
+//
 end(*let*)//end-of-[f0_dapp(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_rfpt
+( env0:
+! envd3i0
+, d3p0: d3pat): i0pat =
+let
+//
+val loc0 = d3p0.lctn()
+//
+val-
+D3Prfpt
+(d3p1
+,tkas, d3p2) = d3p0.node()
+//
+val i0p1 =
+(
+  trxd3i0_d3pat(env0, d3p1))
+//
+val i0p2 =
+(
+  trxd3i0_d3pat(env0, d3p2))
+//
+in//let
+//
+i0pat_make_node
+  (loc0, I0Prfpt(i0p1, i0p2))
+//
+end(*let*)//end-of-[f0_rfpt(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

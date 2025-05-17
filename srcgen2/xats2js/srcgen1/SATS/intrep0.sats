@@ -356,6 +356,11 @@ i0pat_node =
 , i0patlst(*arglst*))
 (* ****** ****** *)
 //
+|I0Prfpt of
+( i0pat, i0pat(*rfdpt*))
+//
+(* ****** ****** *)
+//
 |I0Ptup0 of (i0patlst)
 |I0Ptup1 of (token, i0patlst)
 |I0Prcd2 of (token, l0i0plst)

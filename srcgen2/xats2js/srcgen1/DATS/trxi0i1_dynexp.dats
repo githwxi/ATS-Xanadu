@@ -998,6 +998,12 @@ I0Pdapp _ =>
   f0_dapp(env0, ipat, ival))
 //
 (* ****** ****** *)
+|
+I0Prfpt _ =>
+(
+  f0_rfpt(env0, ipat, ival))
+//
+(* ****** ****** *)
 //
 |
 I0Ptup0 _ =>
@@ -1221,6 +1227,34 @@ in//let
 (
   f1_i0ps(env0, 0(*ipcn*), i0ps) )
 end(*let*)//end-of-[f0_dapp(env0, ...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_rfpt
+( env0:
+! envi0i1
+, ipat: i0pat
+, ival: i1val): d2sublst =
+let
+//
+val-
+I0Prfpt
+(i0p1, i0p2) = ipat.node()
+//
+in//let
+//
+(
+  list_append(sub1, sub2))
+where
+{
+val sub1 =
+trxi0i1_i0bnd(env0,i0p1,ival)
+val sub2 =
+trxi0i1_i0bnd(env0,i0p2,ival) }
+//
+end(*let*)//end-of-[f0_rfpt(env0, ...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
