@@ -13,7 +13,12 @@ For testing xats2js!
 (* ****** ****** *)
 //
 val-
-xs as list_cons(x1, _) = list_sing(1)
+xs as
+list_cons(x1, _) = list_sing(1)
+//
+val x2 = x1 + 1 // x1=1 and x2=2
+val-
+list_cons(x1, _) = xs // xs=sing(1)
 //
 (* ****** ****** *)
 (* ****** ****** *)

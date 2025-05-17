@@ -1506,30 +1506,31 @@ trans12_d1pat
 val
 loc0 = d1p0.lctn()
 val () =
-prerrsln
-("trans12_d1pat: loc0 = ", loc0)
+prerrsln("\
+trans12_d1pat: loc0 = ", loc0)
 val () =
-prerrsln
-("trans12_d1pat: d1p0 = ", d1p0)
+prerrsln("\
+trans12_d1pat: d1p0 = ", d1p0)
 *)
 //
 in//let
 //
-f1_d2pat(env0, d2p0) where
+(
+f1_d2pat(env0, d2p0)
+) where
 {
 //
-val
-d2p0 = f0_main(env0, d1p0)
+val d2p0 = f0_main(env0, d1p0)
 //
 (*
-val () =
-prerrsln
-("trans12_d1pat: d2p0 = ", d2p0)
+val (  ) =
+prerrsln("\
+trans12_d1pat: d2p0 = ", d2p0)
 *)
 //
 }
 //
-end where // end-of-( let )
+end where//end-of(trans12_d1pat)
 {
 //
 fun
@@ -1537,7 +1538,8 @@ f1_d2pat
 ( env0:
 ! tr12env, d2p0: d2pat): d2pat =
 (
-case+ d2p0.node() of
+case+
+d2p0.node() of
 //
 (*
 |
@@ -1551,7 +1553,7 @@ f0_id0_d1sym(env0, d1p0, sym1)
 end//let
 *)
 //
-| _(* non-D2Psym0 *) => ( d2p0 )
+| _(* non-D2Psym0 *) => (  d2p0  )
 ) (*case+*)//end-of-[f1_d2pat(env0,d2p0)]
 //
 } (*where*)//end of [trans12_d1pat(env0,d1p0)
