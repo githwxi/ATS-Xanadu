@@ -25,11 +25,14 @@ cleanall:: ; rm -f BUILD/JS/*_dats_out?.js
 ########################################################################
 
 SRCSATS := \
+lexing0.sats \
 dynexp3.sats \
 
 ########################################################################
 
 SRCDATS := \
+lexing0.dats \
+lexing0_print0.dats \
 dynexp3.dats \
 dynexp3_print0.dats \
 

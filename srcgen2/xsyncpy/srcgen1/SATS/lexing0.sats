@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2022 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,93 +30,52 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: June 07th, 2022
+(*
+Sun May 18 09:53:17 AM EDT 2025
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
-(* ****** ****** *)
-(* ****** ****** *)
 //
 #include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dpre.hats"
+"xatslib\
+/libcats\
+/HATS/libcats_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/lexing0.sats"
+//
+#staload
+LEX = "./\
+../../../SATS/lexing0.sats"
+//
 (* ****** ****** *)
+#typedef token = $LEX.token
+#typedef tnode = $LEX.tnode
 (* ****** ****** *)
-
-local
-//
-datatype
-token =
-TOKEN of (loc_t, tnode)
-#absimpl token_tbox = token
-//
-in//in-of-local
-//
-#implfun
-//{}//tmp
-token_make_node
-(loc, tnd) = TOKEN(loc, tnd)
-//
-#implfun
-//{}//tmp
-token_get_lctn(tok) =
-let
-val+
-TOKEN(loc,tnd) = tok in loc end
-#implfun
-//{}//tmp
-token_get_node(tok) =
-let
-val+
-TOKEN(loc,tnd) = tok in tnd end
-//
-end (*local*) // end-of( local )
-
+#symload
+lctn with $LEX.token_get_lctn
+#symload
+node with $LEX.token_get_node
 (* ****** ****** *)
 //
-#implfun
-tnode_blankq
-  (tnd) =
-(
-case+ tnd of
-| T_EOL _ => true
-| T_BLANK _ => true
-| _ (* else *) => false
-)
-#implfun
-tnode_iscmnt
-  (tnd) =
-(
-case+ tnd of
-| T_CMNT1_line _ => true
-| T_CMNT2_rest _ => true
-| T_CMNT3_ccbl _ => true
-| T_CMNT4_mlbl _ => true
-| _ (* non-T_CMNT?_... *) => false
-)
+fun
+tnode_fprint
+(tknd: tnode, out0: FILR): void
+fun
+token_fprint
+(tokn: token, out0: FILR): void
 //
-#implfun
-tnode_isskip
-  (tnd) =
-(
-if
-blankq(tnd)
-then true else iscmnt(tnd)
-) (* end of [tnode_isskip] *)
+#symload
+fprint with tnode_fprint of 1000
+#symload
+fprint with token_fprint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_lexing0_token0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_lexing0.sats] *)
 (***********************************************************************)

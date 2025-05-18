@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2022 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,93 +30,54 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: June 07th, 2022
+(*
+Sun May 18 10:12:03 AM EDT 2025
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
+//
+#include
+"xatslib\
+/libcats\
+/HATS/libcats_dats.hats"
+//
+(* ****** ****** *)
+//
+#staload
+"./../SATS/lexing0.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dpre.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-#staload "./../SATS/lexing0.sats"
-(* ****** ****** *)
-(* ****** ****** *)
-
 local
 //
-datatype
-token =
-TOKEN of (loc_t, tnode)
-#absimpl token_tbox = token
+#staload
+"./../DATS/lexing0_print0.dats"
 //
-in//in-of-local
+in//local
 //
 #implfun
-//{}//tmp
-token_make_node
-(loc, tnd) = TOKEN(loc, tnd)
-//
+tnode_fprint = g_fprint<tnode>
 #implfun
-//{}//tmp
-token_get_lctn(tok) =
-let
-val+
-TOKEN(loc,tnd) = tok in loc end
-#implfun
-//{}//tmp
-token_get_node(tok) =
-let
-val+
-TOKEN(loc,tnd) = tok in tnd end
+token_fprint = g_fprint<token>
 //
-end (*local*) // end-of( local )
-
+end//local
+//
 (* ****** ****** *)
 //
-#implfun
-tnode_blankq
-  (tnd) =
-(
-case+ tnd of
-| T_EOL _ => true
-| T_BLANK _ => true
-| _ (* else *) => false
-)
-#implfun
-tnode_iscmnt
-  (tnd) =
-(
-case+ tnd of
-| T_CMNT1_line _ => true
-| T_CMNT2_rest _ => true
-| T_CMNT3_ccbl _ => true
-| T_CMNT4_mlbl _ => true
-| _ (* non-T_CMNT?_... *) => false
-)
-//
-#implfun
-tnode_isskip
-  (tnd) =
-(
-if
-blankq(tnd)
-then true else iscmnt(tnd)
-) (* end of [tnode_isskip] *)
+#impltmp
+g_print<token>(tokn) =
+token_fprint(tokn, g_print$out<>())
+#impltmp
+g_print<tnode>(tknd) =
+tnode_fprint(tknd, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_lexing0_token0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_dynexp3.dats] *)
 (***********************************************************************)
