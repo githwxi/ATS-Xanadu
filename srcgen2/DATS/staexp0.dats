@@ -582,7 +582,8 @@ end
 endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 local
 //
 datatype
@@ -611,7 +612,39 @@ let
 end
 //
 endloc (*local*) // end of [ local ]
-
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+s0uni_ =
+S0UNI of
+(
+loctn, s0uni_node)
+#absimpl
+s0uni_tbox = s0uni_
+//
+in (* in-of-local *)
+//
+#implfun
+s0uni_make_node
+(   loc,nod   ) = S0UNI(loc,nod)
+//
+#implfun
+s0uni_get_lctn(s0e) =
+let
+  val+S0UNI(loc,nod) = s0e in loc
+end
+#implfun
+s0uni_get_node(s0e) =
+let
+  val+S0UNI(loc,nod) = s0e in nod
+end
+//
+endloc (*local*) // end of [ local ]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
@@ -747,37 +780,6 @@ l0s0e_get_lctn
 l0s0e_get_node
 (   lx   ) = s0exp_get_node(lx.itm())
 //
-(* ****** ****** *)
-
-local
-//
-datatype
-s0uni_ =
-S0UNI of
-(
-loctn, s0uni_node)
-#absimpl
-s0uni_tbox = s0uni_
-//
-in (* in-of-local *)
-//
-#implfun
-s0uni_make_node
-(   loc,nod   ) = S0UNI(loc,nod)
-//
-#implfun
-s0uni_get_lctn(s0e) =
-let
-  val+S0UNI(loc,nod) = s0e in loc
-end
-#implfun
-s0uni_get_node(s0e) =
-let
-  val+S0UNI(loc,nod) = s0e in nod
-end
-//
-endloc (*local*) // end of [ local ]
-
 (* ****** ****** *)
 
 local

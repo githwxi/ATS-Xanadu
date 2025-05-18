@@ -103,9 +103,9 @@ ATS_PACKNAME
 #symload lctn with t0mag_get_lctn
 #symload node with t0mag_get_node
 //
+(* ****** ****** *)
 #symload lctn with s0qua_get_lctn
 #symload node with s0qua_get_node
-//
 (* ****** ****** *)
 #symload lctn with s0uni_get_lctn
 #symload node with s0uni_get_node

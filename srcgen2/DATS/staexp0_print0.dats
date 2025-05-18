@@ -572,6 +572,29 @@ prints("S0QUAvars(", ids, ";", tres, ")")
 end (*let*)//end of [s0qua_fprint(s0q,out)]
 
 (* ****** ****** *)
+//
+#implfun
+s0uni_fprint
+( s0u, out ) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+//
+case+
+s0u.node() of
+|S0UNInone(tok) =>
+(
+ prints("S0UNInone(",tok,")"))
+|S0UNIsome(tbeg, s0qs, tend) =>
+(
+ prints("S0UNIsome(",tbeg,";",s0qs,";",tend,")"))
+//
+end (*let*) // end of [s0uni_fprint(s0u,out)]
+//
+(* ****** ****** *)
 
 #implfun
 s0exp_fprint
@@ -775,29 +798,6 @@ case+ lsrb of
 (
  prints("l0s0e_RBRACE_cons1(",tok1,";",lses,";",tok2,")"))
 end (*let*) // end of [l0s0e_RBRACE_fprint(lsrb,out)]
-
-(* ****** ****** *)
-
-#implfun
-s0uni_fprint
-( s0u, out ) =
-let
-//
-#impltmp
-g_print$out<>() = out
-//
-in//let
-//
-case+
-s0u.node() of
-|S0UNInone(tok) =>
-(
- prints("S0UNInone(",tok,")"))
-|S0UNIsome(tbeg, s0qs, tend) =>
-(
- prints("S0UNIsome(",tbeg,";",s0qs,";",tend,")"))
-//
-end (*let*) // end of [s0uni_fprint(s0u,out)]
 
 (* ****** ****** *)
 
