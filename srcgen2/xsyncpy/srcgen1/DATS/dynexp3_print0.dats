@@ -55,10 +55,53 @@ case+
 d3p0.node() of
 //
 |D3P1any() =>
-(prints("D3P1any(", ")"))
+(
+prints("D3P1any(", ")"))
 //
 |D3P1var(d2v1) =>
-(prints("D3P1var(", d2v1, ")"))
+(
+prints("D3P1var(", d2v1, ")"))
+//
+|D3P1dapp
+(d3f0
+,npf1, d3ps) =>
+(
+prints
+("D3P1dapp("
+, d3f0, ";", npf1, ";", d3ps, ")"))
+//
+|D3P1rfpt
+(d3p1
+,tkas, d3p2) =>
+(
+prints
+("D3P1dapp("
+, d3p1, ";", tkas, ";", d3p2, ")"))
+//
+|D3P1tup0
+(npf1, d3ps) =>
+(
+prints(
+"D3P1tup0(", npf1, ";", d3ps, ")"))
+|D3P1tup1
+(tknd
+,npf1, d3ps) =>
+(
+prints
+("D3P1tup1("
+, tknd, ";", npf1, ";", d3ps, ")"))
+//
+|D3P1d3pat
+(   dpat   ) =>
+(
+  prints( "D3P1d3pat(", dpat, ")" ))
+//
+|D3P1errck
+(lvl0, d3p1) =>
+(
+prints("D3P1errck(", lvl0, ";", d3p1, ")"))
+//
+) (* D3P1dapp *)
 //
 ) where
 {
