@@ -31,89 +31,14 @@
 (*
 Author: Hongwei Xi
 (*
-Sun May 11 09:05:29 AM EDT 2025
+Sat May 17 10:53:55 PM EDT 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#abstbox d3pat1_tbox // p0tr
-#typedef d3pat1 = d3pat_tbox
-(* ****** ****** *)
-#abstbox d3exp1_tbox // p0tr
-#typedef d3exp1 = d3exp1_tbox
-(* ****** ****** *)
-#typedef d3pat1lst = list(d3pat1)
-#typedef d3exp1lst = list(d3exp1)
-(* ****** ****** *)
-//
-datatype
-d3pat1_node =
-//
-|D3P1any of ()
-|D3P1var of d2var
-//
-|D3P1dapp of
-(d3pat
-,sint(*npf*), d3pat1lst(*darg*)
-) (* D3P1dapp *)
-//
-|D3P1rfpt of
-(d3pat1,token(*AS*),d3pat1(*aspt*))
-//
-|D3P1tup0 of (sint(*npf*), d3pat1lst)
-//
-|D3P1tup1 of
-(
-token(*knd*), sint(*npf*), d3pat1lst)
-//
-|D3P1d3pat of (d3pat)//yet-to-be-copied
-//
-|D3P1errck of (sint(*lvl*), d3pat1(*err*))
-//
-(* ****** ****** *)
-//
-fun
-d3pat1_lctn$get
-(d3p0: d3pat1): loctn
-#symload lctn with d3pat1_lctn$get
-fun
-d3pat1_node$get
-(d3p0: d3pat1): d3pat1_node
-#symload node with d3pat1_node$get
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-datatype
-d3exp1_node =
-//
-(* ****** ****** *)
-//
-|D3E1int of token
-|D3E1btf of sym_t
-|D3E1chr of token
-|D3E1flt of token
-|D3E1str of token
-//
-|D3E1d3exp of (d3exp)//yet-to-be-copied
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-d3exp1_lctn$get
-(d3e0: d3exp1): loctn
-#symload lctn with d3exp1_lctn$get
-fun
-d3exp1_node$get
-(d3e0: d3exp1): d3exp1_node
-#symload node with d3exp1_node$get
-//
-(* ****** ****** *)
-(* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_dynexp3.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_dynexp3.dats] *)
 (***********************************************************************)
