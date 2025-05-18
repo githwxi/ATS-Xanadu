@@ -46,6 +46,15 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload
+D3E = "./\
+../../../SATS/dynexp3.sats"
+(* ****** ****** *)
+#typedef d3pat = $D3E.d3pat
+#typedef d3exp = $D3E.d3exp
+#typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
+(* ****** ****** *)
 #abstbox d3pat1_tbox // p0tr
 #typedef d3pat1 = d3pat_tbox
 (* ****** ****** *)
@@ -109,6 +118,8 @@ d3exp1_node =
 |D3E1chr of token
 |D3E1flt of token
 |D3E1str of token
+//
+(* ****** ****** *)
 //
 |D3E1d3exp of (d3exp)//yet-to-be-copied
 //
