@@ -39,6 +39,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 g_print
 <d3pat1>(d3p0) =
@@ -101,8 +107,6 @@ prints
 (
 prints("D3P1errck(", lvl0, ";", d3p1, ")"))
 //
-) (* D3P1dapp *)
-//
 ) where
 {
   #impltmp
@@ -123,16 +127,17 @@ d3exp1_print(d3e0)
 {
 //
 fun
-d3pat1_print
-(d3p0: d3pat1): void =
+d3exp1_print
+(d3e0: d3exp1): void =
 (
 case+
-d3p0.node() of
+d3e0.node() of
 //
 |D3E1errck
 (lvl0, d3e1) =>
 (
 prints("D3E1errck(", lvl0, ";", d3e1, ")"))
+//
 ) where
 {
   #impltmp

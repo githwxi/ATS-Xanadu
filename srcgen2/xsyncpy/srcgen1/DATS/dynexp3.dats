@@ -39,10 +39,23 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"xatslib\
+/libcats\
+/HATS/libcats_dats.hats"
+//
+(* ****** ****** *)
+//
+#staload
+"./../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 local
 //
 #staload
-"./dynexp3_print0.dats"
+"./../DATS/dynexp3_print0.dats"
 //
 in//local
 //
@@ -57,10 +70,10 @@ end//local
 //
 #impltmp
 g_print<d3pat1>(d3e0) =
-d3pat1_print(d3e0, g_print$out<>())
+d3pat1_fprint(d3e0, g_print$out<>())
 #impltmp
 g_print<d3exp1>(d3e0) =
-d3exp1_print(d3e0, g_print$out<>())
+d3exp1_fprint(d3e0, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
