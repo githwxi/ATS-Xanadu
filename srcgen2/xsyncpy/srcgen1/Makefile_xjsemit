@@ -37,6 +37,8 @@ dynexp3.sats \
 SRCDATS := \
 lexing0.dats \
 lexing0_print0.dats \
+dynexp2.dats \
+dynexp2_print0.dats \
 dynexp3.dats \
 dynexp3_print0.dats \
 
