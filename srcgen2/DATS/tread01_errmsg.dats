@@ -1227,6 +1227,8 @@ if (shrd > 0) then
 endlet
 endlet // end-of-( D1Cstaload(...) )
 //
+(* ****** ****** *)
+//
 |
 D1Cdyninit
 (tknd, g1e1) =>
@@ -1239,6 +1241,8 @@ D1Cdatasort
 (tknd, d1ts) => let
 val () = d1tstlst_fpemsg(out, d1ts)
 endlet // end-of-( D1Cdatasort(...) )
+//
+(* ****** ****** *)
 //
 |
 D1Cvaldclst
@@ -1263,6 +1267,8 @@ val () =
   d1fundclist_fpemsg(out, d1cs)
 endlet // end-of-(D1Cfundclst(_,_,_))
 //
+(* ****** ****** *)
+//
 |
 D1Cimplmnt0
 ( tknd
@@ -1281,6 +1287,18 @@ val () =
 val () = s1res_fpemsg(out, sres)
 val () = d1exp_fpemsg(out, d1e1)
 endlet // end of [ D1Cimplmnt0(...) ]
+//
+(* ****** ****** *)
+//
+|
+D1Cdatatype
+( tknd
+, d1ts, wdcs) => let
+val () =
+  d1typlst_fpemsg(out, d1ts)
+val () =
+  wd1eclseq_fpemsg( out, wdcs )
+endlet // end-of-(D1Cdatatype(_,_,_))
 //
 |
 D1Cdynconst
@@ -1504,9 +1522,11 @@ case+ atdf of
 ) (*case+*)//end-of-[a1tdf_fpemsg(out,atdf)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2022-12-12: for various list/optn-derivatives
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -1644,6 +1664,29 @@ list_foritm<d1tst>(d1ts) where
 foritm$work<d1tst>(d1t1) = d1tst_fpemsg(out,d1t1)
 }
 //
+(* ****** ****** *)
+//
+#implfun
+d1tcnlst_fpemsg
+(out, tcns) =
+list_foritm<d1tcn>(tcns) where
+{
+#impltmp
+foritm$work<d1tcn>(tcn1) = d1tcn_fpemsg(out,tcn1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d1typlst_fpemsg
+(out, d1ts) =
+list_foritm<d1typ>(d1ts) where
+{
+#impltmp
+foritm$work<d1typ>(d1t1) = d1typ_fpemsg(out,d1t1)
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

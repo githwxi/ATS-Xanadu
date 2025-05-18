@@ -1141,9 +1141,13 @@ D0Elet0
 (tknd,dcls
 ,topt,d0es,tend) =>
 let
-val () = d0eclist_fpemsg(out, dcls)
-val () = d0explst_fpemsg(out, d0es)
-val () = token_ENDLET_fpemsg(out, tend)
+val () =
+d0eclist_fpemsg(out, dcls)
+val () =
+d0explst_fpemsg(out, d0es)
+val () =
+(
+  token_ENDLET_fpemsg(out, tend))
 endlet // end of [D0Elet0(_,_,_,_,_)]
 //
 |
@@ -1157,11 +1161,15 @@ d0eclseq_WHERE
 (tbeg,topt,d0cs,tend) =>
 let
 //
-val () = d0exp_fpemsg(out, d0e1)
-val () = d0eclist_fpemsg(out, d0cs)
 val () =
 (
-  tkend_WHERE_fpemsg(out,topt,tend))
+  d0exp_fpemsg(out, d0e1))
+val () =
+(
+  d0eclist_fpemsg(out, d0cs))
+val () =
+(
+tkend_WHERE_fpemsg(out,topt,tend))
 //
 endlet//end-of-(d0eclseq_WHERE(...))
 )
@@ -1171,34 +1179,44 @@ endlet // end-of-[  D0Ewhere(_, _)  ]
 D0Ebrckt
 (tbeg,d0es,tend) =>
 let
-val () = d0explst_fpemsg(out, d0es)
-val () = token_RBRCKT_fpemsg(out, tend)
+val () =
+(
+  d0explst_fpemsg(out, d0es))
+val () =
+(
+  token_RBRCKT_fpemsg(out, tend))
 endlet // end of [  D0Ebrckt(_,_,_)  ]
 //
 |
 D0Edtsel
 (tdot,lab1,opt2) =>
 (
-  fpemsg(out, lab1); fpemsg(out, opt2))
+fpemsg(out, lab1); fpemsg(out, opt2))
 //
 |
 D0Etry0
 (tknd,d0es,twth
 ,tbar,dcls,tend) =>
 let
+//
 val () =
 d0explst_fpemsg(out, d0es)
 val () =
 token_WITH_fpemsg(out, twth)
-val () = d0clslst_fpemsg(out, dcls)
+//
+val () =
+(
+  d0clslst_fpemsg(out, dcls))
 (*
 (*
 HX-2024-07-16:
 [tend] changes to be optional!
 *)
-val () = token_ENDTRY_fpemsg(out, tend)
+val () =
+(
+  token_ENDTRY_fpemsg(out, tend))
 *)
-endlet // end of [D0Etry0(_,_,_,_,_,_)]
+endlet//end-of-[D0Etry0(_,_,_,_,_,_)]
 //
 |
 D0Elam0
@@ -1210,9 +1228,10 @@ HX-2024-07-16: [tend] is optional
 *)
 val () = f0arglst_fpemsg(out, fags)
 in//let
-( fpemsg(out, sres);
-  fpemsg(out, arrw); fpemsg(out, body))
-endlet // end of [D0Elam0(_,_,_,_,_,_)]
+(
+fpemsg(out, sres);
+fpemsg(out, arrw); fpemsg(out, body))
+endlet//end-of-[D0Elam0(_,_,_,_,_,_)]
 //
 |
 D0Efix0
@@ -1220,25 +1239,36 @@ D0Efix0
 ,dpid,fags,arrw
 ,sres,body,tend) =>
 let
-val () = i0dnt_fpemsg(out, dpid)
+//
+val () =
+(
+  i0dnt_fpemsg(out, dpid))
+//
 (*
 HX-2024-07-16: [tend] is optional
 *)
-val () = f0arglst_fpemsg(out, fags)
+val () =
+(
+  f0arglst_fpemsg(out, fags))
+//
 in//let
-( fpemsg(out, sres);
-  fpemsg(out, arrw); fpemsg(out, body))
+(
+fpemsg(out, sres);
+fpemsg(out, arrw); fpemsg(out, body))
 endlet // end of [D0Efix0(_,_,_,_,_,_,_)]
 //
 |
 D0Eraise
-(tknd, d0e1) => fpemsg(out, d0e1)
+(tknd, d0e1) =>
+(
+  fpemsg(out, d0e1)) // D0Eraise
 //
 |
 D0Eannot
 (d0e1, s0e2) =>
 (
-  fpemsg(out, d0e1); fpemsg(out, s0e2))
+  fpemsg(out, d0e1)
+; fpemsg(out, s0e2)) // D0Eannot
 //
 |
 D0Equal0
@@ -1246,7 +1276,7 @@ D0Equal0
 //
 |
 D0Eextnam
-(tok1, gnm2) => () // fpemsg(out, gnm2)
+(tok1, gnm2) => ()//fpemsg(out, gnm2)
 //
 |
 D0Eexists
@@ -1566,32 +1596,51 @@ fun
 wd0eclseq_fpemsg:(FILR,wd0eclseq)->void
 //
 (* ****** ****** *)
+//
 #extern
 fun
 q0arg_fpemsg:(FILR,q0arg)->void
 #extern
 fun
+s0qag_fpemsg:(FILR,s0qag)->void
+#extern
+fun
 t0qag_fpemsg:(FILR,t0qag)->void
+#extern
+fun
+t0iag_fpemsg:(FILR,t0iag)->void
+//
 #extern
 fun
 q0arglst_fpemsg:(FILR,q0arglst)->void
 #extern
 fun
+s0qaglst_fpemsg:(FILR,s0qaglst)->void
+#extern
+fun
 t0qaglst_fpemsg:(FILR,t0qaglst)->void
+#extern
+fun
+t0iaglst_fpemsg:(FILR,t0iaglst)->void
+//
 (* ****** ****** *)
+//
 #extern
 fun
 a0typ_fpemsg:(FILR,a0typ)->void
 #extern
 fun
 d0arg_fpemsg:(FILR,d0arg)->void
+//
 #extern
 fun
 a0typlst_fpemsg:(FILR,a0typlst)->void
 #extern
 fun
 d0arglst_fpemsg:(FILR,d0arglst)->void
+//
 (* ****** ****** *)
+//
 #extern
 fun
 d0valdcl_fpemsg:(FILR,d0valdcl)->void
@@ -1604,13 +1653,16 @@ d0fundcl_fpemsg:(FILR,d0fundcl)->void
 #extern
 fun
 d0cstdcl_fpemsg:(FILR,d0cstdcl)->void
+//
 (* ****** ****** *)
+//
 #extern
 fun
 teqd0exp_fpemsg:(FILR,teqd0exp)->void
 #extern
 fun
 wths0exp_fpemsg:(FILR,wths0exp)->void
+//
 (* ****** ****** *)
 #extern
 fun
@@ -1749,6 +1801,8 @@ D0Cdatasort
   d0tstlst_fpemsg(out, d0ts)
 endlet // end-of-(D0Cdatasort(_,_))
 //
+(* ****** ****** *)
+//
 |
 D0Cvaldclst
 (tknd, d0cs) => let
@@ -1772,6 +1826,37 @@ val () =
   d0fundclist_fpemsg(out, d0cs)
 endlet // end-of-(D0Cfundclst(_,_,_))
 //
+(* ****** ****** *)
+//
+|
+D0Cimplmnt0
+( tknd
+, sqas, tqas
+, dqid
+, tias, f0as
+, sres
+, tkeq, body) =>
+(
+  d0exp_fpemsg(out, body)
+) where
+{
+val () =
+  s0qaglst_fpemsg(out, sqas)
+val () =
+  t0qaglst_fpemsg(out, tqas)
+val () =
+  t0iaglst_fpemsg(out, tias)
+//
+val () =
+(
+  s0res_fpemsg(out, sres))//val()
+val () =
+(
+  f0arglst_fpemsg(out, f0as))//val()
+}(*where*)//end-of-[D0Cimplmnt0( ... )]
+//
+(* ****** ****** *)
+//
 |
 D0Cdatatype
 ( tknd
@@ -1792,10 +1877,11 @@ val () =
   d0cstdclist_fpemsg(out, d0cs)
 endlet // end-of-(D0Cdynconst(_,_,_))
 //
-|
-D0Ctkerr _  => ( (*void*) )
-|
-D0Cerrck _  => d0ecl_fpemsg(out, dcl)
+(* ****** ****** *)
+//
+| D0Ctkerr _  => ( (*void*) )
+| D0Cerrck
+( lvl1, dcl1)  => d0ecl_fpemsg(out, dcl)
 //
 | _(* otherwise *) => ((*void*))
 end (*let*) // end of [auxmain(out, dcl)]
