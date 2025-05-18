@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun May 18 10:12:03 AM EDT 2025
+Sun May 18 01:19:46 PM EDT 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -47,7 +47,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
-"./../SATS/lexing0.sats"
+"./../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -55,29 +55,24 @@ Authoremail: gmhwxiATgmailDOTcom
 local
 //
 #staload "\
-./../DATS/lexing0_print0.dats"
+./../DATS/dynexp2_print0.dats"
 //
 in//local
 //
 #implfun
-tnode_fprint = g_fprint<tnode>
-#implfun
-token_fprint = g_fprint<token>
+d2exp_fprint = g_fprint<d2exp>
 //
 end//local
 //
 (* ****** ****** *)
 //
 #impltmp
-g_print<token>(tokn) =
-token_fprint(tokn, g_print$out<>())
-#impltmp
-g_print<tnode>(tknd) =
-tnode_fprint(tknd, g_print$out<>())
+g_print<d2exp>(tokn) =
+d2exp_fprint(tokn, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_lexing0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_dynexp2.dats] *)
 (***********************************************************************)

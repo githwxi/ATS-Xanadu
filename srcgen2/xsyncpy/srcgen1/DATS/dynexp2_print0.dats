@@ -30,54 +30,40 @@
 //
 (*
 Author: Hongwei Xi
-(*
-Sun May 18 10:12:03 AM EDT 2025
-*)
+Sun May 18 10:02:26 AM EDT 2025
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
-//
-(* ****** ****** *)
-//
 #staload
-"./../SATS/lexing0.sats"
+"./../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 local
 //
-#staload "\
-./../DATS/lexing0_print0.dats"
+#staload
+"./../../../SATS/dynexp2.sats"
 //
 in//local
 //
-#implfun
-tnode_fprint = g_fprint<tnode>
-#implfun
-token_fprint = g_fprint<token>
-//
-end//local
-//
-(* ****** ****** *)
-//
 #impltmp
-g_print<token>(tokn) =
-token_fprint(tokn, g_print$out<>())
-#impltmp
-g_print<tnode>(tknd) =
-tnode_fprint(tknd, g_print$out<>())
+g_print<d2exp>(d2e0) =
+(
+//
+case+
+d2e0.node() of
+//
+)(*case+*)//end-of-[g_print<d2exp>(d2e0)]
+//
+end//local//end-of-[staload("./../../../SATS/dynexp2.sats")]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_lexing0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_dynexp2_print0.dats] *)
 (***********************************************************************)
