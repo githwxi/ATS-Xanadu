@@ -436,8 +436,8 @@ l1s1e_fpemsg
 (out, lse0) =
 (
 case+ lse0 of
-|
-S1LAB(lab,s1e1) => s1exp_fpemsg(out,s1e1)
+|S1LAB
+(lab,s1e1) => s1exp_fpemsg(out,s1e1)
 ) (*case+*)//end-of-(l1s1e_fpemsg(out,lse0))
 //
 (* ****** ****** *)
@@ -446,15 +446,18 @@ S1LAB(lab,s1e1) => s1exp_fpemsg(out,s1e1)
 s1arg_fpemsg
 (out, s1a0) =
 let
+(*
 #impltmp
 g_print$out<>() = out
+*)
 in//let
+(
 case+
 s1a0.node() of
 |
 S1ARGsome(sid0,topt) =>
 (
-  sort1opt_fpemsg(out, topt))
+  sort1opt_fpemsg(out, topt)))//case+
 end(*let*)//end-of-[s1arg_fpemsg(out,s1a0)]
 //
 (* ****** ****** *)
@@ -463,8 +466,10 @@ end(*let*)//end-of-[s1arg_fpemsg(out,s1a0)]
 s1mag_fpemsg
 (out, s1ma) =
 let
+(*
 #impltmp
 g_print$out<>() = out
+*)
 in//let
 case+
 s1ma.node() of
@@ -486,10 +491,12 @@ let
 #impltmp
 g_print$out<>() = out
 in//let
+(
 case+
 t1a0.node() of
 |
-T1ARGsome(s1t1,topt) => fpemsg(out, s1t1)
+T1ARGsome
+(s1t1,topt) => fpemsg(out, s1t1))//case+
 end(*let*)//end-of-[t1arg_fpemsg(out,t1a0)]
 //
 (* ****** ****** *)
@@ -498,8 +505,10 @@ end(*let*)//end-of-[t1arg_fpemsg(out,t1a0)]
 t1mag_fpemsg
 (out, t1ma) =
 let
+(*
 #impltmp
 g_print$out<>() = out
+*)
 in//let
 case+
 t1ma.node() of
@@ -515,11 +524,62 @@ end(*let*)//end-of-[t1mag_fpemsg(out,t1ma)]
 (* ****** ****** *)
 //
 #implfun
+s1qua_fpemsg
+(out, s1q0) =
+let
+(*
+#impltmp
+g_print$out<>() = out
+*)
+in//let
+//
+case+
+s1q0.node() of
+|
+S1QUAprop(s1e1) =>
+s1exp_fpemsg(out, s1e1)
+|
+S1QUAvars(sids, tres) =>
+let
+val () =
+(
+  sort1opt_fpemsg(out, tres))//val()
+end(*let*)//end-of-[S1QUAvars(sids,tres)]
+//
+end(*let*)//end-of-[s1qua_fpemsg(out,s1q0)]
+//
+(* ****** ****** *)
+//
+#implfun
+s1uni_fpemsg
+(out, s1u0) =
+let
+(*
+#impltmp
+g_print$out<>() = out
+*)
+in//let
+case+
+s1u0.node() of
+|
+S1UNIsome(s1qs) =>
+let
+val () =
+(
+  s1qualst_fpemsg(out,s1qs))//val()
+end (*let*)//end-of-[S1UNIsome(  s1qs  )]
+end (*let*)//end-of-[s1uni_fpemsg(out,s1u0)]
+//
+(* ****** ****** *)
+//
+#implfun
 s1tdf_fpemsg
 (out, tdf0) =
 let
+(*
 #impltmp
 g_print$out<>() = out
+*)
 in//let
 case+
 tdf0.node() of
@@ -530,12 +590,75 @@ sort1_fpemsg(out, s1t1)
 S1TDFtsub(s1a1,s1es) =>
 let
 val () =
-  s1arg_fpemsg(out, s1a1)
+(
+  s1arg_fpemsg(out, s1a1))//val()
 val () =
-  s1explst_fpemsg(out, s1es)
-end(*let*)//end of [S1TDFtsub(out,tdf)]
-end(*let*)//end-of-[s1tdf_fpemsg(out,tdf)]
+(
+  s1explst_fpemsg(out, s1es))//val()
+end(*let*)//end of [S1TDFtsub(s1a1,s1es)]
+end(*let*)//end-of-[s1tdf_fpemsg(out,tdf0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s1tcn_fpemsg
+(out, tcn0) =
+(
+case+
+tcn0.node() of
+|
+S1TCNnode(seid,tres) =>
+let
+val () =
+(
+  sort1opt_fpemsg(out, tres))//val()
+end(*let*)//end-of-[S1TCNnode(seid,tcn0)]
+)(*case+*)//end-of-[s1tcn_fpemsg(out,tcn0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d1tst_fpemsg
+(out, d1t0) =
+(
+case+
+d1t0.node() of
+|
+D1TSTnode(tknd, tcns) =
+let
+val () =
+(
+  s1tcnlst_fpemsg(out, tcns))//val()
+end(*let*)//end-of-[D1TSTnode(tknd,tcns)]
+)(*case+*)//end-of-[d1tst_fpemsg(out,d1t0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d1tcn_fpemsg
+(out, tcn0) =
+(
+case+
+tcn0.node() of
+|D1TCNnode
+(s1us, deid
+,s1es, sopt) =>
+let
+val () =
+(
+  s1unilst_fpemsg(out, s1us))
+val () =
+(
+  s1explst_fpemsg(out, s1es))
+//
+val () =
+(
+  s1expopt_fpemsg(out, sopt))//val()
+end(*let*)//end-of-[D1TCNnode(seid,tcn0)]
+)(*case+*)//end-of-[d1tcn_fpemsg(out,tcn0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
@@ -1640,6 +1763,26 @@ list_foritm<t1mag>(tmas) where
 {
 #impltmp
 foritm$work<t1mag>(tma1) = t1mag_fpemsg(out,tma1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+s1qualst_fpemsg
+(out, s1qs) =
+list_foritm<s1qua>(s1qs) where
+{
+#impltmp
+foritm$work<s1qua>(s1q1) = s1qua_fpemsg(out,s1q1)
+}
+//
+#implfun
+s1unilst_fpemsg
+(out, s1us) =
+list_foritm<s1uni>(s1us) where
+{
+#impltmp
+foritm$work<s1uni>(s1u1) = s1uni_fpemsg(out,s1u1)
 }
 //
 (* ****** ****** *)

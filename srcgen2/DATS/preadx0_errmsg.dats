@@ -652,8 +652,12 @@ T0MAGlist
 (tbeg,t0as,tend) =>
 let
 //
-val () = t0arglst_fpemsg(out, t0as)
-val () = token_RPAREN_fpemsg(out, tend)
+val () =
+(
+  t0arglst_fpemsg(out, t0as))
+val () =
+(
+  token_RPAREN_fpemsg(out, tend))
 //
 end(*let*)//end-of-[T0MAGlist(_,_,_)]
 end(*let*)//end-of-[t0mag_fpemsg(out,tma)]
@@ -664,8 +668,10 @@ end(*let*)//end-of-[t0mag_fpemsg(out,tma)]
 s0qua_fpemsg
 (out, s0q) =
 let
+(*
 #impltmp
 g_print$out<>() = out
+*)
 in//let
 case+
 s0q.node() of
@@ -676,11 +682,43 @@ s0exp_fpemsg(out, s0e)
 S0QUAvars(sids, tres) =>
 let
 //
-val () = i0dntlst_fpemsg(out, sids)
-val () = sort0opt_fpemsg(out, tres)
+val () =
+(
+  i0dntlst_fpemsg(out, sids))
+val () =
+(
+  sort0opt_fpemsg(out, tres))//val
 //
 end(*let*)//end-of-[S0QUAvars(_,_)]
-end(*let*)//end-of-[s0qua_fpemsg(out,lse)]
+end(*let*)//end-of-[s0qua_fpemsg(out,s0q)]
+//
+(* ****** ****** *)
+//
+#implfun
+s0uni_fpemsg
+(out, s0u) =
+let
+(*
+#impltmp
+g_print$out<>() = out
+*)
+in//let
+case+
+s0u.node() of
+|
+S0UNInone(tok) => ()
+|
+S0UNIsome
+(tbeg,s0qs,tend) =>
+let
+val () =
+(
+  s0qualst_fpemsg(out,s0qs))
+val () =
+(
+  token_RBRACE_fpemsg(out, tend))//val
+end (*let*)//end-of-[S0UNIsome( _,_,_ )]
+end (*let*)//end-of-[s0uni_fpemsg(out,s0u)]
 //
 (* ****** ****** *)
 //
@@ -688,8 +726,10 @@ end(*let*)//end-of-[s0qua_fpemsg(out,lse)]
 s0tdf_fpemsg
 (out, tdf) =
 let
+(*
 #impltmp
 g_print$out<>() = out
+*)
 in//let
 case+
 tdf.node() of
@@ -698,14 +738,21 @@ S0TDFsort(s0t) =>
 sort0_fpemsg(out, s0t)
 |
 S0TDFtsub
-(tbeg,s0a1,tbar,s0es,tend) =>
+(tbeg,s0a1
+,tbar,s0es,tend) =>
 let
 val () =
-  s0arg_fpemsg(out, s0a1)
+s0arg_fpemsg(out, s0a1)
 val () =
-  token_BAR_fpemsg(out, tbar)
-val () = s0explst_fpemsg(out, s0es)
-val () = token_RBRACE_fpemsg(out, tend)
+token_BAR_fpemsg(out, tbar)
+//
+val () =
+(
+  s0explst_fpemsg(out, s0es))
+val () =
+(
+  token_RBRACE_fpemsg(out, tend))//val
+//
 end(*let*)//end of [S0TDFtsub(out,tdf)]
 end(*let*)//end-of-[s0tdf_fpemsg(out,tdf)]
 //
@@ -829,8 +876,19 @@ s0qualst_fpemsg
 list_foritm<s0qua>(sqs) where
 {
 #impltmp
-foritm$work<s0qua>(sq1) = s0qua_fpemsg(out,sq1)
+foritm$work<s0qua>(s0q) = s0qua_fpemsg(out,s0q)
 }
+(* ****** ****** *)
+//
+#implfun
+s0unilst_fpemsg
+(out, sus) =
+list_foritm<s0uni>(sus) where
+{
+#impltmp
+foritm$work<s0uni>(s0u) = s0uni_fpemsg(out,s0u)
+}
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1575,16 +1633,10 @@ d0tstlst_fpemsg:(FILR,d0tstlst)->void
 //
 #extern
 fun
-s0uni_fpemsg:(FILR,s0uni)->void
-#extern
-fun
 d0tcn_fpemsg:(FILR,d0tcn)->void
 #extern
 fun
 d0typ_fpemsg:(FILR,d0typ)->void
-#extern
-fun
-s0unilst_fpemsg:(FILR,s0unilst)->void
 #extern
 fun
 d0tcnlst_fpemsg:(FILR,d0tcnlst)->void
@@ -2162,6 +2214,7 @@ printsln
 //
 end (*let*) // end of [t0ken_WHEN_fpemsg]
 //
+(* ****** ****** *)
 //
 #implfun
 token_WITH_fpemsg
@@ -2329,8 +2382,8 @@ T_END() => ((*void*))
 T_ENDTRY() => ((*void*))
 |
 _(*non-T_END/ENDTRY*) =>
-printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+printsln("\
+PREADX0-ERROR:",tok0.lctn(),":",tok0)
 end (*let*) // end of [token_ENDTRY_fpemsg]
 //
 (* ****** ****** *)
@@ -2395,28 +2448,6 @@ foritm$work<d0tst>(d0t1) = d0tst_fpemsg(out,d0t1)
 (* ****** ****** *)
 //
 #implfun
-s0uni_fpemsg
-(out, s0u0) =
-let
-#impltmp
-g_print$out<>() = out
-in
-case+
-s0u0.node() of
-|
-S0UNInone(tok) => ()
-|
-S0UNIsome
-(tbeg,s0qs,tend) =>
-let
-val () = s0qualst_fpemsg(out,s0qs)
-val () = token_RBRACE_fpemsg(out,tend)
-end (*let*)//end-of-[S0UNIsome(_,_,_)]
-end (*let*)//end-of-[s0uni_fpemsg(out,s0u0)]
-
-(* ****** ****** *)
-//
-#implfun
 d0tcn_fpemsg
 (out, tcn0) =
 (
@@ -2462,17 +2493,6 @@ token_EQ0_fpemsg(out, teq1)
 val () = d0tcnlst_fpemsg(out, tcns)
 endlet // end of [D0TYPnode(_,_,_,_,_)]
 ) (*case+*)//end-of-[d0typ_fpemsg(out,d0t0)]
-//
-(* ****** ****** *)
-//
-#implfun
-s0unilst_fpemsg
-(out, s0us) =
-list_foritm<s0uni>(s0us) where
-{
-#impltmp
-foritm$work<s0uni>(s0u1) = s0uni_fpemsg(out,s0u1)
-}
 //
 (* ****** ****** *)
 //
