@@ -425,26 +425,9 @@ fun d1tst_fpemsg(FILR, d1tst): void
 (* ****** ****** *)
 fun s1tdf_fpemsg(FILR, s1tdf): void
 (* ****** ****** *)
-fun g1explst_fpemsg(FILR, g1explst): void
-fun g1expopt_fpemsg(FILR, g1expopt): void
+fun d1tcn_fpemsg(FILR, d1tcn): void
+fun d1typ_fpemsg(FILR, d1typ): void
 (* ****** ****** *)
-fun sort1lst_fpemsg(FILR, sort1lst): void
-fun sort1opt_fpemsg(FILR, sort1opt): void
-(* ****** ****** *)
-fun s1explst_fpemsg(FILR, s1explst): void
-fun s1expopt_fpemsg(FILR, s1expopt): void
-(* ****** ****** *)
-fun l1s1elst_fpemsg(FILR, l1s1elst): void
-(* ****** ****** *)
-fun s1arglst_fpemsg(FILR, s1arglst): void
-fun s1maglst_fpemsg(FILR, s1maglst): void
-fun t1arglst_fpemsg(FILR, t1arglst): void
-fun t1maglst_fpemsg(FILR, t1maglst): void
-(* ****** ****** *)
-fun s1qualst_fpemsg(FILR, s1qualst): void
-(* ****** ****** *)
-fun s1tcnlst_fpemsg(FILR, s1tcnlst): void
-fun d1tstlst_fpemsg(FILR, d1tstlst): void
 (* ****** ****** *)
 fun d1pat_fpemsg(FILR, d1pat): void
 fun d1exp_fpemsg(FILR, d1exp): void
@@ -470,6 +453,31 @@ fun t1qag_fpemsg:(FILR,t1qag)->void
 fun t1iag_fpemsg:(FILR,t1iag)->void
 (* ****** ****** *)
 fun a1tdf_fpemsg:(FILR,a1tdf)->void
+(* ****** ****** *)
+(* ****** ****** *)
+fun g1explst_fpemsg(FILR, g1explst): void
+fun g1expopt_fpemsg(FILR, g1expopt): void
+(* ****** ****** *)
+fun sort1lst_fpemsg(FILR, sort1lst): void
+fun sort1opt_fpemsg(FILR, sort1opt): void
+(* ****** ****** *)
+fun s1explst_fpemsg(FILR, s1explst): void
+fun s1expopt_fpemsg(FILR, s1expopt): void
+(* ****** ****** *)
+fun l1s1elst_fpemsg(FILR, l1s1elst): void
+(* ****** ****** *)
+fun s1arglst_fpemsg(FILR, s1arglst): void
+fun s1maglst_fpemsg(FILR, s1maglst): void
+fun t1arglst_fpemsg(FILR, t1arglst): void
+fun t1maglst_fpemsg(FILR, t1maglst): void
+(* ****** ****** *)
+fun s1qualst_fpemsg(FILR, s1qualst): void
+(* ****** ****** *)
+fun s1tcnlst_fpemsg(FILR, s1tcnlst): void
+fun d1tstlst_fpemsg(FILR, d1tstlst): void
+(* ****** ****** *)
+fun d1tcnlst_fpemsg(FILR, d1tcnlst): void
+fun d1typlst_fpemsg(FILR, d1typlst): void
 (* ****** ****** *)
 fun d1patlst_fpemsg(FILR, d1patlst): void
 (* ****** ****** *)
@@ -502,17 +510,20 @@ fun d1vardcl_fpemsg(FILR, d1vardcl): void
 fun d1fundcl_fpemsg(FILR, d1fundcl): void
 fun d1cstdcl_fpemsg(FILR, d1cstdcl): void
 (* ****** ****** *)
+(* ****** ****** *)
+fun
+wd1eclseq_fpemsg:(FILR, wd1eclseq) -> void
+(* ****** ****** *)
 fun
 d1valdclist_fpemsg(FILR, d1valdclist): void
-(* ****** ****** *)
 fun
 d1vardclist_fpemsg(FILR, d1vardclist): void
-(* ****** ****** *)
 fun
 d1fundclist_fpemsg(FILR, d1fundclist): void
 (* ****** ****** *)
 fun
 d1cstdclist_fpemsg(FILR, d1cstdclist): void
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -525,7 +536,6 @@ d1eclistopt_fpemsg(FILR, d1eclistopt): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****************************************** *)
-(* ****************************************** *)
-
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_SATS_tread01.sats] *)
+(***********************************************************************)

@@ -138,7 +138,7 @@ d3e0.node() of
 (
 prints("D3E1errck(", lvl0, ";", d3e1, ")"))
 //
-) where
+} where
 {
   #impltmp
   g_print<d3exp1> = d3exp1_print
