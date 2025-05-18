@@ -39,6 +39,32 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+local
+//
+#staload
+"./dynexp3_print0.dats"
+//
+in//local
+//
+#implfun
+d3pat1_fprint = g_fprint<d3pat1>
+#implfun
+d3exp1_fprint = g_fprint<d3exp1>
+//
+end//local
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d3pat1>(d3e0) =
+d3pat1_print(d3e0, g_print$out<>())
+#impltmp
+g_print<d3exp1>(d3e0) =
+d3exp1_print(d3e0, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_dynexp3.dats] *)
 (***********************************************************************)
