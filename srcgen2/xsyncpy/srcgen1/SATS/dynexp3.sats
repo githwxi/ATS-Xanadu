@@ -76,12 +76,17 @@ token(*knd*), sint(*npf*), d3pat1lst)
 //
 fun
 d3pat1_lctn$get
-(d3p0: d3pat1): loctn
+(dpat: d3pat1): loctn
 #symload lctn with d3pat1_lctn$get
 fun
 d3pat1_node$get
-(d3p0: d3pat1): d3pat1_node
+(dpat: d3pat1): d3pat1_node
 #symload node with d3pat1_node$get
+//
+fun
+d3pat1_fprint
+(dpat: d3pat1, out0: FILR): void
+#symload fprint with d3pat1_fprint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -104,12 +109,17 @@ d3exp1_node =
 //
 fun
 d3exp1_lctn$get
-(d3e0: d3exp1): loctn
+(dexp: d3exp1): loctn
 #symload lctn with d3exp1_lctn$get
 fun
 d3exp1_node$get
-(d3e0: d3exp1): d3exp1_node
+(dexp: d3exp1): d3exp1_node
 #symload node with d3exp1_node$get
+//
+fun
+d3exp1_fprint
+(dexp: d3exp1, out0: FILR): void
+#symload fprint with d3exp1_fprint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

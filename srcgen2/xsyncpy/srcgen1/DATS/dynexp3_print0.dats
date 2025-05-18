@@ -114,6 +114,36 @@ prints("D3P1errck(", lvl0, ";", d3p1, ")"))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+g_print
+<d3exp1>(d3e0) =
+(
+d3exp1_print(d3e0)
+) where
+{
+//
+fun
+d3pat1_print
+(d3p0: d3pat1): void =
+(
+case+
+d3p0.node() of
+//
+|D3E1errck
+(lvl0, d3e1) =>
+(
+prints("D3E1errck(", lvl0, ";", d3e1, ")"))
+) where
+{
+  #impltmp
+  g_print<d3exp1> = d3exp1_print
+}(*where*)//end-of-[d3exp1_print(d3e0)]
+//
+}(*where*)//end-of-[g_print<d3exp1>(d3e0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_dynexp3_print0.dats] *)
 (***********************************************************************)

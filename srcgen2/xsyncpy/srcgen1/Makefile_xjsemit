@@ -51,11 +51,11 @@ $(patsubst %.dats, \
 ########################################################################
 #
 BUILD/JS/%_sats_out0.js: \
-$(SRCGEN2)/SATS/%.sats; \
+./SATS/%.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $< > $@
 #
 BUILD/JS/%_dats_out0.js: \
-$(SRCGEN2)/DATS/%.dats; \
+./DATS/%.dats; \
 $(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > $@
 #
 ########################################################################
