@@ -273,13 +273,14 @@ proj
 case-
 ipat.node() of
 //
-|I0Ptup0 _ =>
-i1val
-(loc0,I1Vp0rj(ival, i0))
-//
 |I0Pdapp(i0f0, _) =>
 i1val(loc0,
   I1Vp1cn(i0f0, ival, i0))
+//
+|I0Ptup0 _ =>
+(
+i1val
+(loc0, I1Vp0rj(ival, i0)))
 //
 |I0Ptup1(tknd, _) =>
 i1val(loc0,
@@ -333,6 +334,12 @@ ipat.node() of
 |I0Pdapp _ =>
 (
   f0_dapp(b0, ival, ipat))
+//
+(* ****** ****** *)
+//
+|I0Prfpt _ =>
+(
+  f0_rfpt(b0, ival, ipat))
 //
 (* ****** ****** *)
 //
@@ -544,6 +551,25 @@ print("XATS000_ctgeq(");
 prints(ival,", ",i0f0, ")");
 f0_ipatlst(b0+1,0,ival,ipat,i0ps))
 end(*let*)//end-of-[f0_dapp(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and
+f0_rfpt
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Prfpt
+(i0p1, i0p2) = ipat.node()
+//
+val () = f0_ipat(b0,ival,i0p1)
+val () = f0_ipat(b0,ival,i0p2)
+//
+end(*let*)//end-of-[f0_rfpt(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

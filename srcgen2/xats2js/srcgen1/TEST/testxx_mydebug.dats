@@ -25,9 +25,19 @@ For testing xats2js!
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val tm = 1 + 2 * 3
-////
-val xs as list_cons(x1, _) = list_sing(1)
+val xs as
+list_cons
+( x1, _ ) = list_sing(1)
+//
+val-list_cons(x2, _) = xs
+//
+val (   ) = printsln("x1 = ", x1)
+val (   ) = printsln("x2 = ", x2)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () = the_print_store_log( (*void*) )
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
