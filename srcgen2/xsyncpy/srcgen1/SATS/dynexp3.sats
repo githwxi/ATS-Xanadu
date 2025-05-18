@@ -38,6 +38,14 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#include
+"xatslib\
+/libcats\
+/HATS/libcats_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #abstbox d3pat1_tbox // p0tr
 #typedef d3pat1 = d3pat_tbox
 (* ****** ****** *)
@@ -103,6 +111,8 @@ d3exp1_node =
 |D3E1str of token
 //
 |D3E1d3exp of (d3exp)//yet-to-be-copied
+//
+|D3E1errck of (sint(*lvl*), d3exp1(*err*))
 //
 (* ****** ****** *)
 (* ****** ****** *)
