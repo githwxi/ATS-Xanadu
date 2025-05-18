@@ -400,6 +400,10 @@ t0mag_fprint(tmg, g_print$out<>())
 g_print<s0qua>(s0q) =
 s0qua_fprint(s0q, g_print$out<>())
 (* ****** ****** *)
+#impltmp
+g_print<s0uni>(s0u) =
+s0uni_fprint(s0u, g_print$out<>())
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -412,10 +416,6 @@ s0exp_RPAREN_fprint(srp0, g_print$out<>())
 g_print<l0s0e_RBRACE>(lsrb) =
 l0s0e_RBRACE_fprint(lsrb, g_print$out<>())
 //
-(* ****** ****** *)
-#impltmp
-g_print<s0uni>(s0u) =
-s0uni_fprint(s0u, g_print$out<>())
 (* ****** ****** *)
 #impltmp
 g_print<d0tcn>(dtc) =

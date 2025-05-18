@@ -79,7 +79,9 @@ ATS_PACKNAME // namespace
 #typedef s0mag = $S0E.s0mag
 #typedef t0arg = $S0E.t0arg
 #typedef t0mag = $S0E.t0mag
+(* ****** ****** *)
 #typedef s0qua = $S0E.s0qua
+#typedef s0uni = $S0E.s0uni
 (* ****** ****** *)
 #typedef s0tdf = $S0E.s0tdf
 (* ****** ****** *)
@@ -128,18 +130,21 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 #typedef s0maglst = $S0E.s0maglst
 #typedef t0arglst = $S0E.t0arglst
 #typedef t0maglst = $S0E.t0maglst
-#typedef s0qualst = $S0E.s0qualst
 (* ****** ****** *)
-#typedef
-d0pat_RPAREN = $D0E.d0pat_RPAREN
-#typedef
-l0d0p_RBRACE = $D0E.l0d0p_RBRACE
+#typedef s0qualst = $S0E.s0qualst
+#typedef s0unilst = $S0E.s0unilst
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef
 d0exp_THEN = $D0E.d0exp_THEN
 #typedef
 d0exp_ELSE = $D0E.d0exp_ELSE
+//
+#typedef
+d0pat_RPAREN = $D0E.d0pat_RPAREN
+#typedef
+l0d0p_RBRACE = $D0E.l0d0p_RBRACE
 //
 #typedef
 d0exp_RPAREN = $D0E.d0exp_RPAREN
@@ -149,6 +154,7 @@ l0d0e_RBRACE = $D0E.l0d0e_RBRACE
 #typedef
 d0eclseq_WHERE = $D0E.d0eclseq_WHERE
 //
+(* ****** ****** *)
 (* ****** ****** *)
 #typedef f0unarrw = $D0E.f0unarrw
 (* ****** ****** *)

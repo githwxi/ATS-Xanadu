@@ -109,11 +109,13 @@ ATS_PACKNAME
 #abstbox t0arg_tbox // ptr
 #abstbox t0mag_tbox // ptr
 //
+(* ****** ****** *)
+//
 #abstbox s0qua_tbox // ptr
+#abstbox s0uni_tbox // ptr
 //
 (* ****** ****** *)
 //
-#abstbox s0uni_tbox // ptr
 #abstbox d0tcn_tbox // ptr
 #abstbox d0typ_tbox // ptr
 //
@@ -781,9 +783,25 @@ S0QUAprop of (s0exp)
 S0QUAvars of (i0dntlst, sort0opt)
 //
 (* ****** ****** *)
+//
+datatype
+s0uni_node =
+|
+S0UNInone of
+(token(*error*))
+|
+S0UNIsome of
+(token(*LB*),s0qualst,token(*RB*))
+//
+(* ****** ****** *)
+//
 fun
 s0qua_fprint
 (s0q:s0qua, out:FILR): void
+fun
+s0uni_fprint
+(s0e:s0uni, out:FILR): void
+//
 (* ****** ****** *)
 //
 fun
@@ -794,11 +812,29 @@ s0qua_get_node(s0qua): s0qua_node
 #symload lctn with s0qua_get_lctn
 #symload node with s0qua_get_node
 //
+(* ****** ****** *)
+//
+fun
+s0uni_get_lctn(s0uni): loc_t
+fun
+s0uni_get_node(s0uni): s0uni_node
+//
+#symload lctn with s0uni_get_lctn
+#symload node with s0uni_get_node
+//
+(* ****** ****** *)
+//
 fun
 s0qua_make_node
 (loc:loc_t, nod:s0qua_node): s0qua
 #symload s0qua with s0qua_make_node
 //
+fun
+s0uni_make_node
+(loc:loc_t, nod:s0uni_node): s0uni
+#symload s0uni with s0uni_make_node
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -931,15 +967,6 @@ fun s0exp_make_node
 (* ****** ****** *)
 //
 datatype
-s0uni_node =
-|
-S0UNInone of
-(token(*error*))
-|
-S0UNIsome of
-(token(*LB*),s0qualst,token(*RB*))
-//
-datatype
 d0tcn_node =
 |
 D0TCNnode of
@@ -957,30 +984,16 @@ D0TYPnode of
 // end- of-[D0TYPnode]
 //
 (* ****** ****** *)
-fun
-s0uni_fprint
-(s0e:s0uni, out:FILR): void
+//
 fun
 d0tcn_fprint
 (tcn:d0tcn, out:FILR): void
 fun
 d0typ_fprint
 (d0t:d0typ, out:FILR): void
-(* ****** ****** *)
-fun
-s0uni_get_lctn(s0uni): loc_t
-fun
-s0uni_get_node(s0uni): s0uni_node
-//
-#symload lctn with s0uni_get_lctn
-#symload node with s0uni_get_node
-//
-fun
-s0uni_make_node
-(loc:loc_t, nod:s0uni_node): s0uni
-#symload s0uni with s0uni_make_node
 //
 (* ****** ****** *)
+//
 fun
 d0tcn_get_lctn(d0tcn): loc_t
 fun
