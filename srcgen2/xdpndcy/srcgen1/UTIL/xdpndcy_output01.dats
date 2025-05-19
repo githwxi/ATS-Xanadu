@@ -122,7 +122,7 @@ where
 {
 //
 val ret1 =
-the_fxtyenv_pvsl00d((*0*))
+the_fxtyenv_pvsl01d((*0*))
 val (  ) =
 if
 (ret1 > 0)
@@ -131,7 +131,7 @@ prerrsln("\
 // The fixity-defs loaded!")
 //
 val ret2 =
-the_tr12env_pvsl00d((*0*))
+the_tr12env_pvsl01d((*0*))
 val (  ) =
 if
 (ret2 > 0)
