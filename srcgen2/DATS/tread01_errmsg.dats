@@ -625,7 +625,7 @@ d1tst_fpemsg
 case+
 d1t0.node() of
 |
-D1TSTnode(tknd, tcns) =
+D1TSTnode(tknd,tcns) =>
 let
 val () =
 (
