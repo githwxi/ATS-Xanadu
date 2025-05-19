@@ -247,15 +247,17 @@ t0str_get_lctn(t0str): loc_t
 #typedef t0arglst = list(t0arg)
 #typedef t0maglst = list(t0mag)
 //
+(* ****** ****** *)
+//
 #typedef s0qua = s0qua_tbox
+#typedef s0uni = s0uni_tbox
+//
 #typedef s0qualst = list(s0qua)
+#typedef s0unilst = list(s0uni)
 //
 (* ****** ****** *)
 #typedef tokenopt = optn(token)
 (* ****** ****** *)
-//
-#typedef s0uni = s0uni_tbox
-#typedef s0unilst = list(s0uni)
 //
 #typedef d0tcn = d0tcn_tbox
 #typedef d0typ = d0typ_tbox

@@ -587,15 +587,17 @@ case+
 s0u.node() of
 |S0UNInone(tok) =>
 (
- prints("S0UNInone(",tok,")"))
+prints
+("S0UNInone(", tok, ")"))
 |S0UNIsome(tbeg, s0qs, tend) =>
 (
- prints("S0UNIsome(",tbeg,";",s0qs,";",tend,")"))
+prints
+("S0UNIsome(",tbeg,";",s0qs,";",tend,")"))
 //
 end (*let*) // end of [s0uni_fprint(s0u,out)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 s0exp_fprint
 ( s0e, out ) =
@@ -707,9 +709,9 @@ S0Eerrck
   prints("S0Eerrck(", lvl, ";", se1,")"))
 //
 end (*let*) // end-of-[ s0exp_fprint(s0e,out) ]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 s0tdf_fprint
 ( stdf, out ) =
@@ -724,18 +726,20 @@ stdf.node() of
 S0TDFsort(s0t1) =>
 (
 prints
-("S0TDFsort(",s0t1,")"))
+("S0TDFsort(", s0t1, ")"))
 |
 S0TDFtsub
-(tbeg,s0a1,tbar,s0es,tend) =>
+(tbeg,s0a1
+,tbar,s0es,tend) =>
 (
 print("S0TDFtsub(");
-prints(tbeg,";",s0a1,";"); prints(tbar,";",s0es,";",tend,")"))
+prints(tbeg, ";", s0a1, ";");
+prints(tbar, ";", s0es, ";", tend, ")") )
 //
 end (*let*) // end of [s0tdf_fprint(stdf,out)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 g0exp_THEN_fprint
   ( gthn, out ) =
@@ -760,9 +764,9 @@ prints("g0exp_ELSE(", tok, ";", g0e, ")")
 {
   #impltmp g_print$out<>() = out
 } (*where*) // end of [g0exp_ELSE_fprint(gels,out)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 s0exp_RPAREN_fprint
   ( srp, out ) =
@@ -778,9 +782,9 @@ case+ srp of
 (
  prints("s0exp_RPAREN_cons1(",tok1,";",s0es,";",tok2,")"))
 end (*let*) // end of [s0exp_RPAREN_fprint(srp,out)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 l0s0e_RBRACE_fprint
   ( lsrb, out ) =
@@ -798,9 +802,9 @@ case+ lsrb of
 (
  prints("l0s0e_RBRACE_cons1(",tok1,";",lses,";",tok2,")"))
 end (*let*) // end of [l0s0e_RBRACE_fprint(lsrb,out)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 d0tcn_fprint
 ( dtcn, out ) =
@@ -817,9 +821,9 @@ dtcn.node() of
 print("D0TCNnode(");
 prints(s0us,";",deid,";",s0is,";",tres,")"))
 end (*let*) // end of [d0tcn_fprint(dtcn,out)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 d0typ_fprint
 ( dtyp, out ) =
@@ -836,11 +840,10 @@ dtyp.node() of
 prints("D0TYPnode(",deid,";");
 prints(tmas,";",tres,";",teq1,";",dtcs,")"))
 end (*let*) // end of [d0typ_fprint(dtyp,out)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_staexp0_print0.dats] *)
+(***********************************************************************)
