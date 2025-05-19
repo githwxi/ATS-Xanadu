@@ -2545,6 +2545,7 @@ endlet // end of [WD0CSsome(_,_,_,_)]
 ) (*case+*) // end-of-[wd0eclseq_fpemsg(out,wdcs)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 q0arg_fpemsg
@@ -2561,8 +2562,41 @@ Q0ARGsome(sid0, tres) =>
 let
 val () = i0dnt_fpemsg(out, sid0)
 val () = sort0opt_fpemsg(out, tres)
-endlet // end of [ Q0ARGsome(_,_) ]
+endlet // end of [Q0ARGsome(sid0,tres)]
 end (*let*)//end-of-[q0arg_fpemsg(out,q0a)]
+//
+(* ****** ****** *)
+//
+#implfun
+s0qag_fpemsg
+  (out, sqa) = let
+//
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+sqa.node() of
+|
+S0QAGnone(tok) =>
+let
+val loc = sqa.lctn()
+in//let
+printsln
+("PREADX0-ERROR:", loc, ":", sqa)
+end//let//end-of-[S0QAGnone(tok)]
+|
+S0QAGsome
+(tbeg,q0as,tend) =>
+let
+val () =
+(
+  q0arglst_fpemsg(out, q0as))
+val () =
+(
+  token_RPAREN_fpemsg(out, tend) )
+endlet // end of [ S0QAGsome(_,_,_) ]
+end (*let*)//end-of-[s0qag_fpemsg(out,sqa)]
 //
 (* ****** ****** *)
 //
@@ -2583,7 +2617,7 @@ val loc = tqa.lctn()
 in//let
 printsln
 ("PREADX0-ERROR:", loc, ":", tqa)
-end//let
+end//let//end-of-[T0QAGnone(tok)]
 |
 T0QAGsome
 (tbeg,q0as,tend) =>
@@ -2591,8 +2625,38 @@ let
 val () = q0arglst_fpemsg(out, q0as)
 val () = token_GT0_fpemsg(out, tend)
 endlet // end of [ T0QAGsome(_,_,_) ]
-end (*let*)//end-of-[q0arg_fpemsg(out,q0a)]
+end (*let*)//end-of-[t0qag_fpemsg(out,tqa)]
 //
+(* ****** ****** *)
+//
+#implfun
+t0iag_fpemsg
+  (out, tia) = let
+//
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+tia.node() of
+|
+T0IAGnone(tok) =>
+let
+val loc = tia.lctn()
+in//let
+printsln
+("PREADX0-ERROR:", loc, ":", tia)
+end//let//end-of-[T0IAGnone(tok)]
+|
+T0IAGsome
+(tbeg,s0es,tend) =>
+let
+val () = s0explst_fpemsg(out, s0es)
+val () = token_GT0_fpemsg(out, tend)
+endlet // end of [ T0IAGsome(_,_,_) ]
+end (*let*)//end-of-[t0iag_fpemsg(out,tia)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -2652,6 +2716,7 @@ endlet // end of [ D0ARGdyn2(_,_,_,_) ]
 ) (*case+*)//end-of-[d0arg_fpemsg(out,d0a)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 q0arglst_fpemsg
@@ -2665,6 +2730,17 @@ foritm$work<q0arg>(q0a1) = q0arg_fpemsg(out,q0a1)
 (* ****** ****** *)
 //
 #implfun
+s0qaglst_fpemsg
+(out, sqas) =
+list_foritm<s0qag>(sqas) where
+{
+#impltmp
+foritm$work<s0qag>(sqa1) = s0qag_fpemsg(out,sqa1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
 t0qaglst_fpemsg
 (out, tqas) =
 list_foritm<t0qag>(tqas) where
@@ -2673,6 +2749,18 @@ list_foritm<t0qag>(tqas) where
 foritm$work<t0qag>(tqa1) = t0qag_fpemsg(out,tqa1)
 }
 //
+(* ****** ****** *)
+//
+#implfun
+t0iaglst_fpemsg
+(out, tias) =
+list_foritm<t0iag>(tias) where
+{
+#impltmp
+foritm$work<t0iag>(tia1) = t0iag_fpemsg(out,tia1)
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
