@@ -1,0 +1,56 @@
+########################################################################
+########################################################################
+# Makefile for XSYNCPY
+########################################################################
+########################################################################
+CAT=cat
+SED=sed
+ECHO=echo
+NODE=node
+########################################################################
+all::
+########################################################################
+SRCGEN1=./../../../../srcgen1
+SRCGEN2=./../../../../srcgen2
+XATSJSD=./../../../../srcgen2/xats2js
+########################################################################
+S1XSHRD=\
+$(SRCGEN1)/xats2js/srcgenx/xshared/runtime
+S2XSHRD=\
+$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f xsyncpy_output0?_ats3.js
+########################################################################
+ifndef XATS2JS_TCHECK00
+XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js
+endif ## (ifeq($(XATS2JS_TCHECK00),""))
+########################################################################
+ifndef XATS2JS_JSEMIT00
+XATS2JS_JSEMIT00=$(XATSJSD)/srcgen1/UTIL/xats2js_jsemit00_ats2.js
+endif ## (ifeq($(XATS2JS_JSEMIT00),""))
+########################################################################
+########################################################################
+#
+all:: \
+xsyncpy_output01
+xsyncpy_output01: ; \
+$(CAT) \
+$(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
+$(CAT) \
+$(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
+$(CAT) \
+$(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
+$(CAT) \
+$(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
+$(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
+$(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
+$(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
+$(XATSJSD)/srcgen1/lib/lib2xsyncpy.js | $(CAT) - >> $@_ats3.js && \
+$(NODE) \
+  --stack-size=8192 $(XATS2JS_JSEMIT00) xsyncpy_output01.dats >> $@_ats3.js
+#
+########################################################################
+########################################################################
+###################### end of [Makefile_xjsemit] #######################
