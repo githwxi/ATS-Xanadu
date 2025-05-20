@@ -68,5 +68,5 @@ Sat Apr 05 02:57:21 PM 2025
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xdepend_srcgen1_HATS_libxatsopt.hats] *)
+(* end of [ATS3/XANADU_srcgen2_xdpndcy_srcgen1_HATS_libxatsopt.hats] *)
 (***********************************************************************)
