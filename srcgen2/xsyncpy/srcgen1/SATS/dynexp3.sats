@@ -56,13 +56,21 @@ D3E = "./\
 (* ****** ****** *)
 (* ****** ****** *)
 #abstbox d3pat1_tbox // p0tr
-#typedef d3pat1 = d3pat_tbox
+#typedef d3pat1 = d3pat1_tbox
 (* ****** ****** *)
 #abstbox d3exp1_tbox // p0tr
 #typedef d3exp1 = d3exp1_tbox
 (* ****** ****** *)
+#abstbox d3ecl1_tbox // p0tr
+#typedef d3ecl1 = d3ecl1_tbox
+(* ****** ****** *)
 #typedef d3pat1lst = list(d3pat1)
 #typedef d3exp1lst = list(d3exp1)
+#typedef d3ecl1lst = list(d3ecl1)
+(* ****** ****** *)
+#typedef d3pat1opt = optn(d3pat1)
+#typedef d3exp1opt = optn(d3exp1)
+#typedef d3ecl1opt = optn(d3ecl1)
 (* ****** ****** *)
 //
 datatype
@@ -141,6 +149,23 @@ fun
 d3exp1_fprint
 (dexp: d3exp1, out0: FILR): void
 #symload fprint with d3exp1_fprint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3ecl1_lctn$get
+(decl: d3ecl1): loctn
+#symload lctn with d3ecl1_lctn$get
+fun
+d3ecl1_node$get
+(decl: d3ecl1): d3ecl1_node
+#symload node with d3ecl1_node$get
+//
+fun
+d3ecl1_fprint
+(decl: d3ecl1, out0: FILR): void
+#symload fprint with d3ecl1_fprint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
