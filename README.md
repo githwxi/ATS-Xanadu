@@ -1,4 +1,4 @@
-# [ATS3](http://www.ats-lang.org/) - ATS/Xanadu
+# [ATS3-Xanadu](http://www.ats-lang.org/)
 
 A Programming Language System to Unleash the Potentials of Types
 and Templates
