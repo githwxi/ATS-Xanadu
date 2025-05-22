@@ -13,6 +13,7 @@ all::
 SRCGEN1=./../../../../srcgen1
 SRCGEN2=./../../../../srcgen2
 XATSJSD=./../../../../srcgen2/xats2js
+XSYNCPY=./../../../../srcgen2/xsyncpy
 ########################################################################
 S1XSHRD=\
 $(SRCGEN1)/xats2js/srcgenx/xshared/runtime
@@ -47,7 +48,7 @@ $(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
 $(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
-$(XATSJSD)/srcgen1/lib/lib2xsyncpy.js | $(CAT) - >> $@_ats3.js && \
+$(XSYNCPY)/srcgen1/lib/lib2xsyncpy.js | $(CAT) - >> $@_ats3.js && \
 $(NODE) \
   --stack-size=8192 $(XATS2JS_JSEMIT00) xsyncpy_output01.dats >> $@_ats3.js
 #

@@ -88,7 +88,7 @@ $(SED) -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
 lib2xsyncpy: \
 $(OUT1DATS); \
-$(CAT) $(OUT1DATS) > lib/lib2xatsopt.js
+$(CAT) $(OUT1DATS) > lib/lib2xsyncpy.js
 ########################################################################
 ifndef XATS2JS_TCHECK00
 XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js
