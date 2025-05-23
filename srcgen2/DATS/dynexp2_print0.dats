@@ -1208,10 +1208,12 @@ in//let
 //
 case+
 dimp.node() of
-|DIMPLnon1(dqid) =>
+|DIMPLnon1
+(  dqid  ) =>
 (
   prints("DIMPLnon1(",dqid,")"))
-|DIMPLone1(d2c1) =>
+|DIMPLone1
+(  d2c1  ) =>
 (
   prints("DIMPLone1(",d2c1,")"))
 |
@@ -1240,7 +1242,8 @@ D2ARGdyn1
 (   dpid   ) =>
 prints("D2ARGdyn1(",dpid,")")
 |
-D2ARGdyn2(npf1, s2es) =>
+D2ARGdyn2
+(npf1, s2es) =>
 prints("D2ARGdyn2(",npf1,";",s2es,")")
 //
 |

@@ -45,6 +45,9 @@ XATSOPT "./../../.."
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 #staload
 "./../../../SATS/dynexp2.sats"
