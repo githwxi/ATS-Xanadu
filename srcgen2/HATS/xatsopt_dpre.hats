@@ -87,6 +87,22 @@ print with g_print of 0101
 "srcgen1/prelude/DATS/unsafex.dats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#include
+"srcgen1/prelude/DATS/CATS/bool000.dats"
+#include
+"srcgen1/prelude/DATS/CATS/char000.dats"
+#include
+"srcgen1/prelude/DATS/CATS/gint000.dats"
+#include
+"srcgen1/prelude/DATS/CATS/gflt000.dats"
+#include
+"srcgen1/prelude/DATS/CATS/strn000.dats"
+#include
+"srcgen1/prelude/DATS/CATS/arrn000.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "srcgen1/prelude/DATS/VT/gseq000_vt.dats"
 (* ****** ****** *)
@@ -115,37 +131,6 @@ print with g_print of 0101
 //
 #include
 "srcgen1/prelude/DATS/VT/synoug0_vt.dats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#include
-"srcgen1/xatslib/libcats/DATS/synoug0.dats"
-//
-#include
-"srcgen1/xatslib/githwxi/DATS/genv000.dats"
-#include
-"srcgen1/xatslib/githwxi/DATS/f00path.dats"
-#include
-"srcgen1/xatslib/githwxi/DATS/g00iout.dats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#include
-"srcgen1/prelude/DATS/CATS/bool000.dats"
-#include
-"srcgen1/prelude/DATS/CATS/char000.dats"
-#include
-"srcgen1/prelude/DATS/CATS/gint000.dats"
-#include
-"srcgen1/prelude/DATS/CATS/gflt000.dats"
-#include
-"srcgen1/prelude/DATS/CATS/strn000.dats"
-#include
-"srcgen1/prelude/DATS/CATS/arrn000.dats"
-#include
-"srcgen1/xatslib/libcats/DATS/CATS/libcats.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -210,6 +195,22 @@ defq(_XATS2PY_)
 /xatslib/libcats/DATS/CATS/PY/libcats.dats"
 //
 #endif // end-of-[------ifdef(_XATS2PY_)------]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"srcgen1/xatslib/libcats/DATS/synoug0.dats"
+//
+#include
+"srcgen1/xatslib/githwxi/DATS/genv000.dats"
+#include
+"srcgen1/xatslib/githwxi/DATS/f00path.dats"
+#include
+"srcgen1/xatslib/githwxi/DATS/g00iout.dats"
+//
+#include
+"srcgen1/xatslib/libcats/DATS/CATS/libcats.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
