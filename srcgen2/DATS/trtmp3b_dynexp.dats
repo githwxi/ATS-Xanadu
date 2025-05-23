@@ -115,7 +115,7 @@ d3e0.node() of
 //
 |D3Etop _ => d3e0
 //
-|D3Etimp _ => d3e0
+|D3Etimp _ => f0_timp(env0, d3e0)
 //
 |D3Esapp _ => f0_sapp(env0, d3e0)
 |D3Esapq _ => f0_sapq(env0, d3e0)
@@ -186,17 +186,39 @@ D3Eextnam _ => f0_extnam(env0, d3e0)
 D3Esynext _ => f0_synext(env0, d3e0)
 //
 (* ****** ****** *)
-|D3Enone0() => d3e0 |D3Enone1(d2e1) => d3e0
+|D3Enone0() => d3e0|D3Enone1(_) => d3e0
 (* ****** ****** *)
 //
 |
 _(*otherwise*) =>
-let val dres = d3exp_none2(d3e0) in dres end
+let
+val dres = d3exp_none2(d3e0) in dres end
 //
 (* ****** ****** *)
 //
 end where // end-of-[trtmp3b_d3exp(...)]
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_timp
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+(
+  d3e0 ) where
+{
+(*
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+*)
+(*
+HX-2025-05-22:
+[trtmp3b] is non-recursive!!!
+*)
+}(*where*)//end-of-[ f0_timp(env0,d3e0) ]
 //
 (* ****** ****** *)
 (* ****** ****** *)
