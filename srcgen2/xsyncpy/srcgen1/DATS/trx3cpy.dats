@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat May 17 10:53:55 PM EDT 2025
+Thu May 22 05:53:42 PM EDT 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -45,82 +45,8 @@ Authoremail: gmhwxiATgmailDOTcom
 /HATS/libcats_dats.hats"
 //
 (* ****** ****** *)
-//
-#staload
-"./../SATS/dynexp3.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-local
-//
-#staload "\
-./../DATS/dynexp3_print0.dats"
-//
-in//local
-//
-#implfun
-d3pat1_fprint = g_fprint<d3pat1>
-#implfun
-d3exp1_fprint = g_fprint<d3exp1>
-//
-end//local
-//
-(* ****** ****** *)
-//
-#impltmp
-g_print<d3pat1>(d3e0) =
-d3pat1_fprint(d3e0, g_print$out<>())
-#impltmp
-g_print<d3exp1>(d3e0) =
-d3exp1_fprint(d3e0, g_print$out<>())
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-local
-//
-datatype
-d3parsed1 =
-D3PARSED1 of
-(
-sint  // stadyn
-,
-sint  // nerror
-,
-lcsrc // source
-,
-d3ecl1lstopt)//program
-//
-#absimpl
-d3parsed1_tbox = d3parsed1
-//
-in//local
-//
-//
-#implfun
-d3parsed1_make_args
-( stadyn
-, nerror, source, parsed) =
-(
-D3PARSED1
-( stadyn
-, nerror, source, parsed)) where
-{
-//
-(*
-val () =
-prerrsln
-("d3parsed1_make_args:nerror=",nerror)
-*)
-//
-} (*where*) // end-of-[d3parsed1_make_args]
-//
-endloc (*local*) // end of [ local(d3parsed1) ]
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_dynexp3.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trx3cpy.dats] *)
 (***********************************************************************)

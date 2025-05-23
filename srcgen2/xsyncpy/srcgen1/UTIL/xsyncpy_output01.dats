@@ -79,12 +79,10 @@ val dpar =
 d3parsed_of_tread30(dpar)
 *)
 //
-(*
 val (  ) =
 (
 prerrsln
 ("d3parsed(30) = ", dpar))
-*)
 //
 val (  ) =
 let
