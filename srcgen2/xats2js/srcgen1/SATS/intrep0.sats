@@ -670,9 +670,9 @@ i0cls_make_node
 datatype
 t0imp_node =
 |T0IMPall1 of
-(d2cst, t2jaglist, i0dclist)
+(d2cst, t2jaglst, i0dclist)
 |T0IMPallx of
-(d2cst, t2jaglist, i0dclist)
+(d2cst, t2jaglst, i0dclist)
 //
 (* ****** ****** *)
 //
