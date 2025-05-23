@@ -88,20 +88,24 @@ case+
 timp.node() of
 //
 |TIMPLall1
-(d2c1, dcls) =>
+(d2c1
+,t2js, dcls) =>
 (
 t0imp_make_node
-(stmp,T0IMPall1(d2c1,dcls))
+( stmp
+, T0IMPall1(d2c1,t2js,dcls))
 ) where
 {
 val dcls =
 trxd3i0_d3eclist(env0, dcls)}
 //
 |TIMPLallx
-(d2c1, dcls) =>
+(d2c1
+,t2js, dcls) =>
 (
 t0imp_make_node
-(stmp,T0IMPallx(d2c1,dcls))
+( stmp
+, T0IMPallx(d2c1,t2js,dcls))
 ) where
 {
 val dcls =

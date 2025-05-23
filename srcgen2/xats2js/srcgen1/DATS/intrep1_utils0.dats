@@ -130,9 +130,11 @@ t1imp_i1cmpq
 case+
 timp.node() of
 |T1IMPall1
-(dcst, dopt) => f0_dopt(dopt)
+(dcst
+,t2js, dopt) => f0_dopt(dopt)
 |T1IMPallx
-(dcst, dopt) => f0_dopt(dopt)
+(dcst
+,t2js, dopt) => f0_dopt(dopt)
 ) where
 {
 //
@@ -188,9 +190,11 @@ t1imp_i1dclq
 case+
 timp.node() of
 |T1IMPall1
-(dcst, dopt) => f0_dopt(dopt)
+(dcst
+,t2js, dopt) => f0_dopt(dopt)
 |T1IMPallx
-(dcst, dopt) => f0_dopt(dopt)
+(dcst
+,t2js, dopt) => f0_dopt(dopt)
 ) where
 {
 //
