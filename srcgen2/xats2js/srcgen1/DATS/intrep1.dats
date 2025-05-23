@@ -270,7 +270,7 @@ let
   val+I1CLS(loc,nod) = cls in nod
 end
 //
-endloc (*local*) // end of [local(i1cls)]
+endloc(*local*)//end-of-[local(i1cls)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -280,11 +280,13 @@ t1imp_get_dcst
   (timp) =
 (
 case+ node of
-|T1IMPall1(dcst, _) => dcst
-|T1IMPallx(dcst, _) => dcst)
+|T1IMPall1
+(dcst, t2js, dcls) => dcst
+|T1IMPallx
+(dcst, t2js, dcls) => dcst)
 where{
  val node = t1imp_get_node(timp)
-}(*where*) // end(t1imp_get_dcst)
+}(*where*)//endof(t1imp_get_dcst(timp))
 //
 (* ****** ****** *)
 
@@ -325,7 +327,7 @@ end
 //
 (* ****** ****** *)
 //
-end (*local*) // end of [local(t1imp)]
+endloc(*local*)//end-of-[local(t1imp)]
 
 (* ****** ****** *)
 (* ****** ****** *)

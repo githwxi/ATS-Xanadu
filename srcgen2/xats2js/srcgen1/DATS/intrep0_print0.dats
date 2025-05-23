@@ -578,12 +578,16 @@ prints("T0IMPone1(", dcl1 ,")")
 *)
 //
 |T0IMPall1
-(d2c1, i0ds) =>
-prints("T0IMPall1(",d2c1,";",i0ds,")")
+(d2c1
+,t2js, i0ds) =>
+prints
+("T0IMPall1(",d2c1,";",t2js,";",i0ds,")")
 //
 |T0IMPallx
-(d2c1, i0ds) =>
-prints("T0IMPallx(",d2c1,";",i0ds,")")
+(d2c1
+,t2js, i0ds) =>
+prints
+("T0IMPallx(",d2c1,";",t2js,";",i0ds,")")
 //
 end(*let*)//end-of-[t0imp_fprint(timp,out0)]
 //

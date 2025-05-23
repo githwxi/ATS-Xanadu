@@ -778,14 +778,14 @@ HX:
 single layer(trtmp3b)
 *)
 |TIMPLall1 of
-(d2cst(*implment*), d3eclist)
+(d2cst, t2jaglst, d3eclist)
 //
 (*
 HX:
 recursive version(trtmp3c)
 *)
 |TIMPLallx of
-(d2cst(*implment*), d3eclist)
+(d2cst, t2jaglst, d3eclist)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -937,12 +937,12 @@ D3Cimplmnt1 of
 //
 |
 D3Ctmplocal of
-( d3ecl(*impltmp*)
-, d3eclist(*local*))//end(D3Ctmplocal)
+(d3ecl(*impltmp*)
+,d3eclist(*local*))//end(D3Ctmplocal)
 //
 |
 D3Cimpltmpr of
-( stamp(*unicity*), d3ecl(*impltmpr*))
+( stamp(*unicity*), d3ecl(*impltmpr*) )
 //
 |
 D3Cnone0 of ((*nil*))
@@ -979,7 +979,7 @@ d3ecl_none1(d2cl:d2ecl):(d3ecl)
 HX-2023-11-22:
 re-stamping needed for
 inserting embedded impltmp!
-re-stamping uneeded for
+re-stamping unneeded for
 inserting a template instance!
 *)
 //

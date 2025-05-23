@@ -786,34 +786,42 @@ case+
 timp.node() of
 //
 |T1IMPall1
-(dcst, dopt) =>
+(dcst
+,t2js, dopt) =>
 (
 case+ dopt of
 |
 optn_nil() =>
-prints("T1IMPall1(", dcst, ")")
+let
+val (  ) =
+prints("T1IMPall1(",dcst,")")
+end//let
 |
 optn_cons(idcl) =>
 let
 val loc0 = idcl.lctn((*0*))
-val (  ) = prints("\
-T1IMPall1(", dcst, ", ", loc0, ")")
+val (  ) =
+prints("T1IMPall1(",dcst,";",loc0,")")
 end//let
 )
 //
 |T1IMPallx
-(dcst, dopt) =>
+(dcst
+,t2js, dopt) =>
 (
 case+ dopt of
 |
 optn_nil() =>
-prints("T1IMPallx(", dcst, ")")
+let
+val (  ) =
+prints("T1IMPallx(",dcst,")")
+end//let
 |
 optn_cons(idcl) =>
 let
 val loc0 = idcl.lctn((*0*))
-val (  ) = prints("\
-T1IMPallx(", dcst, ", ", loc0, ")")
+val (  ) =
+prints("T1IMPallx(",dcst,";",loc0,")")
 end//let
 )
 //
@@ -836,32 +844,40 @@ case+
 timp.node() of
 //
 |T1IMPall1
-(dcst, dopt) =>
+(dcst
+,t2js, dopt) =>
 (
 case+ dopt of
 |
 optn_nil() =>
-prints("T1IMPall1(", dcst, ")")
+let
+val (  ) = prints
+("T1IMPall1(",dcst,"<",t2js,">",")")
+end//let
 |
 optn_cons(idcl) =>
 let
-val (  ) = prints("\
-T1IMPall1(", dcst, ", ", idcl, ")")
+val (  ) = prints
+("T1IMPall1(",dcst,"<",t2js,">",";",idcl,")")
 end//let
 )
 //
 |T1IMPallx
-(dcst, dopt) =>
+(dcst
+,t2js, dopt) =>
 (
 case+ dopt of
 |
 optn_nil() =>
-prints("T1IMPallx(", dcst, ")")
+let
+val (  ) = prints
+("T1IMPallx(",dcst,"<",t2js,">",")")
+end//let
 |
 optn_cons(idcl) =>
 let
-val (  ) = prints("\
-T1IMPallx(", dcst, ", ", idcl, ")")
+val (  ) = prints
+("T1IMPallx(",dcst,"<",t2js,">",";",idcl,")")
 end//let
 )
 //

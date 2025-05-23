@@ -114,11 +114,12 @@ tr3benv_search_dcst(env0, d2c0)
 //
 in//let
 //
-let
+let//1
 val dcls = filter(dcls)
-in//let
+in//let1
 timpl_make_node
-(stmp, TIMPLall1(d2c0, dcls)) end//let
+(stmp, TIMPLall1(d2c0,t2js,dcls))
+end//let1
 //
 end where
 {
@@ -131,7 +132,8 @@ filter
 //
 case+ dcls of
 | ~
-list_vt_nil() => list_nil()
+list_vt_nil
+( (*void*) ) => list_nil()
 | ~
 list_vt_cons
 (dcl1, dcls) =>
@@ -157,13 +159,12 @@ then filter( dcls ) else
 let
 //
 val
-dcl1 = d3ecl_tmpsub(tsub,dcl1)
+dcl1 = d3ecl_tmpsub(tsub, dcl1)
 //
 (*
 val (  ) =
-prerr("tr3benv_tapq_resolve:")
-val (  ) =
-prerrsln("filter: dcl1 = ", dcl1)
+prerrsln("\
+tr3benv_tapq_resolve: filter: dcl1 = ", dcl1)
 *)
 //
 in//let

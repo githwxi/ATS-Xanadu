@@ -3231,23 +3231,25 @@ val node =
 (
 case+ node of
 |T0IMPall1
-(dcst, dcls) =>
+(dcst
+,t2js, dcls) =>
 (
 case+ dcls of
 |list_nil() =>
-T1IMPall1(dcst, optn_nil())
+T1IMPall1(dcst, t2js, optn_nil())
 |list_cons(dcl1, _) =>
-T1IMPall1(dcst,
+T1IMPall1(dcst, t2js,
 optn_cons(trxi0i1_i0dcl(env0, dcl1))))
 //
 |T0IMPallx
-(dcst, dcls) =>
+(dcst
+,t2js, dcls) =>
 (
 case+ dcls of
 |list_nil() =>
-T1IMPallx(dcst, optn_nil())
+T1IMPallx(dcst, t2js, optn_nil())
 |list_cons(dcl1, _) =>
-T1IMPallx(dcst,
+T1IMPallx(dcst, t2js,
 optn_cons(trxi0i1_i0dcl(env0, dcl1))))
 ) : t1imp_node // end of [ val(node) ]
 }

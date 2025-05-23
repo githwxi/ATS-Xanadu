@@ -659,19 +659,17 @@ i1cls_make_node
 datatype
 t1imp_node =
 |T1IMPall1 of
-(d2cst(*implment*), i1dclopt)
+(d2cst, t2jaglst, i1dclopt)
 |T1IMPallx of
-(d2cst(*implment*), i1dclopt)
+(d2cst, t2jaglst, i1dclopt)
 //
 (* ****** ****** *)
 //
 fun
-t1imp_i1cmpq
-(timp: t1imp): i1cmpopt
+t1imp_i1cmpq(t1imp): i1cmpopt
 //
 fun
-t1imp_i1dclq
-(timp: t1imp): i1dclopt
+t1imp_i1dclq(t1imp): i1dclopt
 //
 (* ****** ****** *)
 //

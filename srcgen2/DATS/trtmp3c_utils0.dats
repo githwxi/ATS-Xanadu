@@ -117,7 +117,8 @@ stmp = timp.stmp((*0*))
 //
 val-
 TIMPLall1
-(d2c0, dcls) = timp.node()
+(d2c0
+,t2js, dcls) = timp.node()
 //
 in//in
 case+ dcls of
@@ -158,7 +159,9 @@ val dcl1 =
 d3ecl_tmpsub(svts, dcl2)
 val dcls = list_cons(dcl1, dcls)
 in//let
-timpl(stmp, TIMPLallx(d2c0, dcls))
+(
+timpl
+(stmp, TIMPLallx(d2c0,t2js,dcls)))
 end//let
 end//let//end-of-[list_cons( ... )]
 end//let//end-of-[f0_all1(env0,timp)]
@@ -266,7 +269,9 @@ val node =
 (
 case+ dcls of
 |list_nil
-((*nil*)) => TIMPLall1(d2c0, dcls)
+((*nil*)) =>
+(
+  TIMPLall1(d2c0, t2js, dcls))
 |
 list_cons
 (dcl1, _) =>
@@ -274,9 +279,13 @@ list_cons
 case+
 dcl1.node() of
 |
-D3Cimpltmpr _ => TIMPLallx(d2c0, dcls)
+D3Cimpltmpr _ =>
+(
+  TIMPLallx(d2c0, t2js, dcls))
 |
-_(*non-tmpr*) => TIMPLall1(d2c0, dcls))
+_(*non-tmpr*) =>
+(
+  TIMPLall1(d2c0, t2js, dcls)))
 )
 //
 (*
