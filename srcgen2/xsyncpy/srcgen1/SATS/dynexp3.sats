@@ -47,8 +47,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
+LOC = "./\
+../../../SATS/locinfo.sats"
+#staload
 D3E = "./\
 ../../../SATS/dynexp3.sats"
+(* ****** ****** *)
+#typedef lcsrc = $LOC.lcsrc
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -64,6 +69,16 @@ D3E = "./\
 #abstbox d3ecl1_tbox // p0tr
 #typedef d3ecl1 = d3ecl1_tbox
 (* ****** ****** *)
+//
+#abstbox d3valdcl1_tbox//p0tr
+#abstbox d3vardcl1_tbox//p0tr
+#abstbox d3fundcl1_tbox//p0tr
+//
+(* ****** ****** *)
+//
+#abstbox d3parsed1_tbox//p0tr
+//
+(* ****** ****** *)
 #typedef d3pat1lst = list(d3pat1)
 #typedef d3exp1lst = list(d3exp1)
 #typedef d3ecl1lst = list(d3ecl1)
@@ -71,6 +86,19 @@ D3E = "./\
 #typedef d3pat1opt = optn(d3pat1)
 #typedef d3exp1opt = optn(d3exp1)
 #typedef d3ecl1opt = optn(d3ecl1)
+(* ****** ****** *)
+#typedef d3valdcl1 = d3valdcl1_tbox
+#typedef d3vardcl1 = d3vardcl1_tbox
+#typedef d3fundcl1 = d3fundcl1_tbox
+(* ****** ****** *)
+#typedef d3parsed1 = d3parsed1_tbox
+(* ****** ****** *)
+#typedef d3valdcl1lst = list(d3valdcl1)
+#typedef d3vardcl1lst = list(d3vardcl1)
+#typedef d3fundcl1lst = list(d3fundcl1)
+(* ****** ****** *)
+#typedef d3ecl1lstopt = optn(d3ecl1lst)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
@@ -166,6 +194,18 @@ fun
 d3ecl1_fprint
 (decl: d3ecl1, out0: FILR): void
 #symload fprint with d3ecl1_fprint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3parsed1_make_args
+(stadyn: sint
+,nerror: sint
+,source: lcsrc
+,parsed: d3ecl1lstopt): d3parsed1//end-fun
+//
+#symload d3parsed1 with d3parsed1_make_args
 //
 (* ****** ****** *)
 (* ****** ****** *)

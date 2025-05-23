@@ -48,6 +48,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+trx3cpy_d3parsed
+( dpar : d3parsed ): (d3parsed1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 trx3cpy_d3pat
 (env0: !env3cpy, d3p0: d3pat): d3pat1
 fun
