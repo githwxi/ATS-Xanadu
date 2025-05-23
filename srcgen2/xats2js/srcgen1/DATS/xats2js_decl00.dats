@@ -92,6 +92,21 @@ fprintln
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+tjagsfpr
+( out0: FILR
+, t2js: t2jaglst): void =
+let
+#impltmp
+g_print$out
+< (*tmp*) >
+( (*nil*) ) = out0 in
+  g_print<t2jaglst>(t2js) end
+//let//endof(tjagsfpr(out0,t2js))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 xats2js_i1dcl
 ( env0,dcl0 ) =
@@ -99,8 +114,8 @@ let
 (*
 //
 val () =
-prerrsln
-("xats2js_i1dcl: dcl0 = ", dcl0))
+prerrsln("\
+xats2js_i1dcl: dcl0 = ", dcl0))
 //
 *)
 in//let
@@ -707,35 +722,39 @@ case+
 timp.node() of
 //
 |T1IMPall1
-(dcst, dopt) =>
+(dcst
+,t2js, dopt) =>
 (
 //
 nindfpr(filr, nind);
-strnfpr
-(filr,"// T1IMPall1(");
-d2cstfpr( filr, dcst );
-strnfpr(filr, ")\n"(*end*));
+strnfpr(filr,"// T1IMPall1(");
+d2cstfpr(filr, dcst);strnfpr(filr, "<");
+tjagsfpr(filr, t2js);strnfpr(filr, ">");strnfpr(filr, ")\n"(*end*));
 //
 case+ dopt of
-|optn_nil() => ( (*void*) )
-|optn_cons(idcl) =>
+|
+optn_nil() => (  (*void*)  )
+|
+optn_cons(idcl) =>
 xats2js_i1dcl(env0,idcl(*tmp*))
 //
 )//end-of-[T1IMPall1(dcst,dopt)]
 //
 |T1IMPallx
-(dcst, dopt) =>
+(dcst
+,t2js, dopt) =>
 (
 //
 nindfpr(filr, nind);
-strnfpr
-(filr,"// T1IMPallx(");
-d2cstfpr( filr, dcst );
-strnfpr(filr, ")\n"(*end*));
+strnfpr(filr,"// T1IMPallx(");
+d2cstfpr(filr, dcst);strnfpr(filr, "<");
+tjagsfpr(filr, t2js);strnfpr(filr, ">");strnfpr(filr, ")\n"(*end*));
 //
 case+ dopt of
-|optn_nil() => ( (*void*) )
-|optn_cons(idcl) =>
+|
+optn_nil() => (  (*void*)  )
+|
+optn_cons(idcl) =>
 xats2js_i1dcl(env0,idcl(*tmp*))
 //
 )//end-of-[T1IMPall1(dcst,dopt)]
