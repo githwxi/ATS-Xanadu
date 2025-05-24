@@ -74,7 +74,17 @@ it more efficient.
 
 - SATS/fperr20.sats: For reporting errors in the AST after tread20 is done.
 
-- SATS/trans23.sats
+- SATS/trans23.sats:
+  For a form of type-checking referred to as simple type-checking.  It
+  is very close to the kind of type-checking in ML minus so-called
+  let-generalization (of inferred types). In short, polymorphic types
+  are never synthesized in simple type-checking; they must be
+  explicitly given via some forms of annotation in the source.
+  My own opinion is that let-generalization performed in the
+  type inference invented by Robin Milner is largely a hindrance in
+  programming language design; it is in direct conflict with symbol
+  overloading and often leads to poor quality of type-error messages.
+  
 - SATS/tread23.sats
 
 ### Template Resolution
