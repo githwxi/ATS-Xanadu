@@ -36,45 +36,47 @@ nearly every lexer I need.  It is entirely possible that the code for
 lexing (in ATS3-Xanadu) will be rewritten in the future so as to make
 it more efficient.
 
-- SATS/lexbuf0.sats: For creating buffers of characters from text sources
-- SATS/lexing0.sats: For tokenization, handling key words, error-reporting, etc.
+- `SATS/lexbuf0.sats`:
+  For creating buffers of characters from text sources
+- `SATS/lexing0.sats`:
+  For tokenization, handling key words, error-reporting, etc.
 
 ### Parsing
 
-- SATS/pread00.sats:
+- `SATS/pread00.sats`:
   For detecting errors in the level-0 AST.
 
 ### Fixity Resolution
 
-- SATS/trans01.sats:
+- `SATS/trans01.sats`:
   For translating the level-0 AST into the level-1 AST.
-- SATS/tread01.sats:
+- `SATS/tread01.sats`:
   For detecting errors in the level-1 AST and reporting them.
 
 ### Binding Resolution
 
-- SATS/trans12.sats:
+- `SATS/trans12.sats`:
   For translating the level-1 AST into the level-2 AST.
-- SATS/tread12.sats:
+- `SATS/tread12.sats`:
   For detecting errors in the level-2 AST and reporting them.
 
 ### Simple Type-Checking
 
-- SATS/trans2a.sats:
+- `SATS/trans2a.sats`:
   For a form of type-checking referred to as pre-type-checking,
   which is done to synthesize type information needed for resolving
   overloaded symbols.
 
-- SATS/trsym2b.sats:
+- `SATS/trsym2b.sats`:
   For resolving overloaded symbols with the help of the type information
   synthesized during pre-type-checking (trans2a).
 
-- SATS/tread20.sats: For detecting errors in the level-2 AST. This is
+- `SATS/tread20.sats`: For detecting errors in the level-2 AST. This is
   performed after trans2a and trsym2b.
 
-- SATS/fperr20.sats: For reporting errors in the AST after tread20 is done.
+- `SATS/fperr20.sats`: For reporting errors in the AST after tread20 is done.
 
-- SATS/trans23.sats:
+- `SATS/trans23.sats`:
   For a form of type-checking referred to as simple type-checking.  It
   is very close to the kind of type-checking in ML minus so-called
   let-generalization (of inferred types). In short, polymorphic types
@@ -85,15 +87,15 @@ it more efficient.
   programming language design; it is in direct conflict with symbol
   overloading and often leads to poor quality of type-error messages.
   
-- SATS/tread23.sats
+- `SATS/tread23.sats`
 
 ### Template Resolution
 
-- SATS/trans3a.sats
-- SATS/tread3a.sats
-- SATS/trtmp3b.sats
-- SATS/trtmp3c.sats
+- `SATS/trans3a.sats`
+- `SATS/tread3a.sats`
+- `SATS/trtmp3b.sats`
+- `SATS/trtmp3c.sats`
 
 <!--
-##################################################################
+########################################################################
 -->
