@@ -21,6 +21,18 @@ succeeded in bootstrapping ATS1 (ATS-Anairiats) in May of 2008, almost
 
 ## The structure of ATS3-Xanadu/srcgen2
 
+The (current) concrete syntax of ATS3 (for writing source code) is
+quite complex. This complexity is largely due to the need for
+supporting numerous forms of type annotations, which are essential for
+practical programming with advanced types. After lexing and parsing,
+the compiler obtains an abstract syntax tree (AST), which is referred
+to as level-0 AST. There are many a translation function in the
+compiler that translates one form of AST into another form. And each
+translation function is often paired with a so-call proofread
+function, which traverses an AST to look for errors; the errors found
+are stored in the AST returned by the proofread function, which can be
+reported later during another ASt traveral.
+
 ### Lexing
 
 The code for lexing (that is, lexical analysis) is manually written.
@@ -77,24 +89,26 @@ it more efficient.
 - `SATS/fperr20.sats`: For reporting errors in the AST after tread20 is done.
 
 - `SATS/trans23.sats`:
-  For a form of type-checking referred to as simple type-checking.  It
-  is very close to the kind of type-checking in ML minus so-called
+  For a form of type-checking referred to as simple type-checking.
+  It is very close to the kind of type-checking in ML minus so-called
   let-generalization (of inferred types). In short, polymorphic types
   are never synthesized in simple type-checking; they must be
-  explicitly given via some forms of annotation in the source.
-  My own opinion is that let-generalization performed in the
-  type inference invented by Robin Milner is largely a hindrance in
-  programming language design; it is in direct conflict with symbol
-  overloading and often leads to poor quality of type-error messages.
+  explicitly given via some forms of annotation in the source.  My own
+  opinion is that let-generalization performed in the type inference
+  invented by Robin Milner is largely a hindrance in programming
+  language design; it is in direct conflict with symbol overloading
+  and often leads to poor quality of type-error messages.
   
-- `SATS/tread23.sats`
+- `SATS/tread23.sats`:
+  For reporting errors in level-3 AST after trans23 is done.
 
 ### Template Resolution
 
 - `SATS/trans3a.sats`:
-  For preparing template arguments for template resolution.
+  For normalizing template arguments as well as tabling
+  top-level template implementations.
 - `SATS/tread3a.sats`:
-  For detecting errors in the level-3 AST after trans23 is done.
+  For detecting errors in the level-3 AST after trans3a is done.
 
 - `SATS/trtmp3b.sats`:
   For performing the first phase of template resolution, which is non-recursive
