@@ -1292,7 +1292,7 @@ fpemsg(out, arrw); fpemsg(out, body))
 endlet//end-of-[D0Elam0(_,_,_,_,_,_)]
 //
 |
-D0Efi00
+D0Efix0
 (tknd
 ,dpid,fags,arrw
 ,sres,body,tend) =>
@@ -1313,7 +1313,7 @@ in//let
 (
 fpemsg(out, sres);
 fpemsg(out, arrw); fpemsg(out, body))
-endlet // end of [D0Efi00(_,_,_,_,_,_,_)]
+endlet // end of [D0Efix0(_,_,_,_,_,_,_)]
 //
 |
 D0Eraise
