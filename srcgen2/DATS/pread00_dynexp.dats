@@ -60,7 +60,7 @@ ATS_PACKNAME
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
-#staload "./../SATS/preadx0.sats"
+#staload "./../SATS/pread00.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -1157,24 +1157,24 @@ end (*let*) // end of [d0exp_synext_errck]
 (* ****** ****** *)
 (*
 HX-2022-07:
-implement [preadx0_d0pat]
-implement [preadx0_d0exp]
+implement [pread00_d0pat]
+implement [pread00_d0exp]
 *)
 (* ****** ****** *)
 (* ****** ****** *)
 #extern
 fun
-preadx0_t0qua: fpreadx0(t0qua)
+pread00_t0qua: fpread00(t0qua)
 #extern
 fun
-preadx0_t0qualst: fpreadx0(t0qualst)
+pread00_t0qualst: fpread00(t0qualst)
 #extern
 fun
-preadx0_f0unarrw: fpreadx0(f0unarrw)
+pread00_f0unarrw: fpread00(f0unarrw)
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0pat
+pread00_d0pat
   (d0p, err) =
 (
 case+
@@ -1234,7 +1234,7 @@ D0Paspt
 //
 val dp1 =
 (
-  preadx0_d0pat(dp1, err))
+  pread00_d0pat(dp1, err))
 //
 in//let
 if
@@ -1260,7 +1260,7 @@ val-
 D0Papps(dps) = d0p.node()
 val dps =
 (
-  preadx0_d0patlst(dps, err))
+  pread00_d0patlst(dps, err))
 in//let
 if
 (err=e00)
@@ -1285,7 +1285,7 @@ D0Psarg
 , sas, tke) = d0p.node()
 //
 val sas =
-preadx0_s0arglst(sas, err)
+pread00_s0arglst(sas, err)
 //
 val ( ) =
 (
@@ -1320,9 +1320,9 @@ D0Plpar
 (tkb,dps,drp) = d0p.node()
 //
 val dps =
-preadx0_d0patlst(dps, err)
+pread00_d0patlst(dps, err)
 val drp =
-preadx0_d0pat_RPAREN(drp, err)
+pread00_d0pat_RPAREN(drp, err)
 in//let
 if
 (err=e00)
@@ -1346,9 +1346,9 @@ D0Ptup1
 , d0ps, tend) = d0p.node()
 //
 val d0p2 =
-preadx0_d0patlst(d0ps, err)
+pread00_d0patlst(d0ps, err)
 val tend =
-preadx0_d0pat_RPAREN(tend, err)
+pread00_d0pat_RPAREN(tend, err)
 //
 in//let
 if
@@ -1374,9 +1374,9 @@ D0Prcd2
 , ldps, tend) = d0p.node()
 //
 val ldps =
-preadx0_l0d0plst(ldps, err)
+pread00_l0d0plst(ldps, err)
 val tend =
-preadx0_l0d0p_RBRACE(tend, err)
+pread00_l0d0p_RBRACE(tend, err)
 //
 in//let
 if
@@ -1400,8 +1400,8 @@ val-
 D0Pannot
 (d0p1, s0e2) = d0p.node()
 //
-val d0p1 = preadx0_d0pat(d0p1, err)
-val s0e2 = preadx0_s0exp(s0e2, err)
+val d0p1 = pread00_d0pat(d0p1, err)
+val s0e2 = pread00_s0exp(s0e2, err)
 //
 in//let
 if
@@ -1412,12 +1412,12 @@ end (*let*) // end of [f0_annot(d0p,err)]
 //
 (* ****** ****** *)
 
-} (*where*) // end-of-[preadx0_d0pat(d0p,err)]
+} (*where*) // end-of-[pread00_d0pat(d0p,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_l0d0p
+pread00_l0d0p
   (ldp, err) =
 let
 //
@@ -1444,16 +1444,16 @@ T_EQ0() => () // HX: lab = d0p
 |
 _(*non-EQ0*) => (err := err + 1)
 )
-val d0p = preadx0_d0pat(d0p, err)
+val d0p = pread00_d0pat(d0p, err)
 in//let
 if
 (err = e00) then ldp else D0LAB(lab,teq,d0p)
-end (*let*) // end of [preadx0_l0d0p(ldp,err)]
+end (*let*) // end of [pread00_l0d0p(ldp,err)]
 //
 (* ****** ****** *)
 
 #implfun
-preadx0_d0exp
+pread00_d0exp
   (d0e, err) =
 (
 case+
@@ -1556,7 +1556,7 @@ let
 val e00 = err
 val-
 D0Eopid(id0) = d0e.node()
-val id0 = preadx0_i0dnt(id0, err)
+val id0 = pread00_i0dnt(id0, err)
 in//let
 if
 (err=e00)
@@ -1576,7 +1576,7 @@ let
 val e00 = err
 val-
 D0Eapps(des) = d0e.node()
-val des = preadx0_d0explst(des, err)
+val des = pread00_d0explst(des, err)
 in//let
 if
 (err=e00)
@@ -1601,7 +1601,7 @@ D0Esarg
 , ses, tke) = d0e.node()
 //
 val ses =
-preadx0_s0explst(ses, err)
+pread00_s0explst(ses, err)
 //
 val ( ) =
 (
@@ -1636,7 +1636,7 @@ D0Etarg
 , ses, tke) = d0e.node()
 //
 val ses =
-preadx0_s0explst(ses, err)
+pread00_s0explst(ses, err)
 val ( ) =
 (
 case+
@@ -1668,9 +1668,9 @@ D0Elpar
 (tkb,des,drp) = d0e.node()
 //
 val des =
-preadx0_d0explst(des, err)
+pread00_d0explst(des, err)
 val drp =
-preadx0_d0exp_RPAREN(drp, err)
+pread00_d0exp_RPAREN(drp, err)
 in//let
 if
 (err=e00)
@@ -1699,11 +1699,11 @@ D0Eift0
 , dthn, dels) = d0e.node()
 //
 val
-d0e1 = preadx0_d0exp(d0e1, err)
+d0e1 = pread00_d0exp(d0e1, err)
 val
-dthn = preadx0_d0exp_THEN(dthn, err)
+dthn = pread00_d0exp_THEN(dthn, err)
 val
-dels = preadx0_d0exp_ELSE(dels, err)
+dels = pread00_d0exp_ELSE(dels, err)
 //
 in
 if
@@ -1732,14 +1732,14 @@ D0Eift1
 , dels, tinv) = d0e.node()
 //
 val d0e1 =
-  preadx0_d0exp(d0e1, err)
+  pread00_d0exp(d0e1, err)
 //
 val dthn =
-  preadx0_d0exp_THEN(dthn, err)
+  pread00_d0exp_THEN(dthn, err)
 val dels =
-  preadx0_d0exp_ELSE(dels, err)
+  pread00_d0exp_ELSE(dels, err)
 //
-val tinv = preadx0_t0inv(tinv, err)
+val tinv = pread00_t0inv(tinv, err)
 //
 in
 if
@@ -1768,7 +1768,7 @@ D0Ecas0
 , tbar, dcls) = d0e.node()
 //
 val d0e1 =
-  preadx0_d0exp(d0e1, err)
+  pread00_d0exp(d0e1, err)
 //
 val (  ) =
 (
@@ -1779,7 +1779,7 @@ tkof.node() of
 )
 //
 val
-dcls = preadx0_d0clslst(dcls, err)
+dcls = pread00_d0clslst(dcls, err)
 //
 in
 if
@@ -1811,7 +1811,7 @@ D0Ecas1
 , dcls, tinv) = d0e.node()
 //
 val d0e1 =
-  preadx0_d0exp(d0e1, err)
+  pread00_d0exp(d0e1, err)
 //
 val (  ) =
 (
@@ -1822,8 +1822,8 @@ tkof.node() of
 )
 //
 val dcls =
-  preadx0_d0clslst(dcls, err)
-val tinv = preadx0_t0inv(tinv, err)
+  pread00_d0clslst(dcls, err)
+val tinv = pread00_t0inv(tinv, err)
 //
 in
 if
@@ -1851,9 +1851,9 @@ D0Etup1
 , d0es, tend) = d0e.node()
 //
 val d0es =
-preadx0_d0explst(d0es, err)
+pread00_d0explst(d0es, err)
 val tend =
-preadx0_d0exp_RPAREN(tend, err)
+pread00_d0exp_RPAREN(tend, err)
 //
 in//let
 if
@@ -1879,9 +1879,9 @@ D0Ercd2
 , ldes, tend) = d0e.node()
 //
 val ldes =
-preadx0_l0d0elst(ldes, err)
+pread00_l0d0elst(ldes, err)
 val tend =
-preadx0_l0d0e_RBRACE(tend, err)
+pread00_l0d0e_RBRACE(tend, err)
 //
 in//let
 if
@@ -1908,9 +1908,9 @@ D0Elet0
 , d0es, tend) = d0e.node()
 //
 val dcls =
-preadx0_d0eclist(dcls, err)
+pread00_d0eclist(dcls, err)
 val d0es =
-preadx0_d0expseq(d0es, err)
+pread00_d0expseq(d0es, err)
 //
 val (  ) =
 (
@@ -1945,9 +1945,9 @@ D0Ewhere
 ( d0e1, dcls) = d0e.node()
 //
 val d0e1 =
-preadx0_d0exp(d0e1, err)
+pread00_d0exp(d0e1, err)
 val dcls =
-preadx0_d0eclseq_WHERE(dcls, err)
+pread00_d0eclseq_WHERE(dcls, err)
 //
 in//let
 if
@@ -1974,7 +1974,7 @@ D0Ebrckt
 ,d0es,tend) = d0e.node()
 //
 val d0es =
-preadx0_d0explst(d0es, err)
+pread00_d0explst(d0es, err)
 val (  ) =
 (
 case+
@@ -2007,9 +2007,9 @@ D0Edtsel
 ,l0ab,dopt) = d0e.node()
 //
 val
-l0ab = preadx0_l0abl(l0ab, err)
+l0ab = pread00_l0abl(l0ab, err)
 val
-dopt = preadx0_d0expopt(dopt, err)
+dopt = pread00_d0expopt(dopt, err)
 //
 in//let
 if
@@ -2039,7 +2039,7 @@ D0Etry0
 //
 val
 d0es =
-preadx0_d0expseq(d0es, err)
+pread00_d0expseq(d0es, err)
 //
 val (  ) =
 (
@@ -2051,7 +2051,7 @@ _(*non-T_WITH*) => (err := err+1)
 )
 //
 val
-dcls = preadx0_d0clslst(dcls, err)
+dcls = pread00_d0clslst(dcls, err)
 //
 (*
 HX-2024-07-16:
@@ -2093,14 +2093,14 @@ D0Elam0
 , body, tend) = d0e.node()
 //
 val fags =
-  preadx0_f0arglst(fags, err)
+  pread00_f0arglst(fags, err)
 //
-val sres = preadx0_s0res(sres, err)
+val sres = pread00_s0res(sres, err)
 //
 val arrw =
-  preadx0_f0unarrw(arrw, err)
+  pread00_f0unarrw(arrw, err)
 //
-val body = preadx0_d0exp(body, err)
+val body = pread00_d0exp(body, err)
 //
 in//let
 if
@@ -2130,17 +2130,17 @@ D0Efix0
 , body, tend) = d0e.node()
 //
 val dpid =
-  preadx0_i0dnt(dpid, err)
+  pread00_i0dnt(dpid, err)
 //
 val fags =
-  preadx0_f0arglst(fags, err)
+  pread00_f0arglst(fags, err)
 //
-val sres = preadx0_s0res(sres, err)
+val sres = pread00_s0res(sres, err)
 //
 val arrw =
-  preadx0_f0unarrw(arrw, err)
+  pread00_f0unarrw(arrw, err)
 //
-val body = preadx0_d0exp(body, err)
+val body = pread00_d0exp(body, err)
 //
 in//let
 if
@@ -2164,7 +2164,7 @@ val-
 D0Eraise
 ( tknd, d0e1) = d0e.node()
 //
-val d0e1 = preadx0_d0exp(d0e1, err)
+val d0e1 = pread00_d0exp(d0e1, err)
 //
 in//let
 if
@@ -2187,8 +2187,8 @@ val-
 D0Eannot
 ( d0e1, s0e2) = d0e.node()
 //
-val d0e1 = preadx0_d0exp(d0e1, err)
-val s0e2 = preadx0_s0exp(s0e2, err)
+val d0e1 = pread00_d0exp(d0e1, err)
+val s0e2 = pread00_s0exp(s0e2, err)
 //
 in//let
 if
@@ -2211,7 +2211,7 @@ val-
 D0Equal0
 ( tok1, d0e2) = d0e.node()
 //
-val d0e2 = preadx0_d0exp(d0e2, err)
+val d0e2 = pread00_d0exp(d0e2, err)
 //
 in//let
 if
@@ -2235,7 +2235,7 @@ D0Eextnam
 ( tknd, gnam) = d0e.node()
 //
 (*
-val gnam = preadx0_g0nam(gnam, err)
+val gnam = pread00_g0nam(gnam, err)
 *)
 //
 in//let
@@ -2295,7 +2295,7 @@ D0Esynext
 ( tknd, gexp) = d0e.node()
 //
 (*
-val gexp = preadx0_g0exp(g0exp, err)
+val gexp = pread00_g0exp(g0exp, err)
 *)
 //
 in//let
@@ -2308,12 +2308,12 @@ end (*let*) // end-of-[f0_synext(d0e,err)]
 (* ****** ****** *)
 (* ****** ****** *)
 
-} (*where*) // end-of-[preadx0_d0exp(d0e,err)]
+} (*where*) // end-of-[pread00_d0exp(d0e,err)]
 
 (* ****** ****** *)
 //
 #implfun
-preadx0_l0d0e
+pread00_l0d0e
   (lde, err) =
 let
 //
@@ -2340,16 +2340,16 @@ T_EQ0() => () // HX: lab = d0e
 |
 _(*non-EQ0*) => (err := err + 1)
 )
-val d0e = preadx0_d0exp(d0e, err)
+val d0e = pread00_d0exp(d0e, err)
 in//let
 if
 (err = e00) then lde else D0LAB(lab,teq,d0e)
-end (*let*) // end of [preadx0_l0d0e(lde,err)]
+end (*let*) // end of [pread00_l0d0e(lde,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0gua
+pread00_d0gua
   (dgua, err) =
 (
 case+
@@ -2361,7 +2361,7 @@ D0GUAexp
 val e00 = err
 //
 val
-d0e1 = preadx0_d0exp(d0e1, err)
+d0e1 = pread00_d0exp(d0e1, err)
 //
 in//let
 if
@@ -2377,7 +2377,7 @@ let
 val e00 = err
 //
 val
-d0e1 = preadx0_d0exp(d0e1, err)
+d0e1 = pread00_d0exp(d0e1, err)
 //
 val (  ) =
 (
@@ -2389,7 +2389,7 @@ T_AS0() => ((*void*))
 _(*non-T_AS0*) => (err := err + 1)
 )
 //
-val d0p2 = preadx0_d0pat(d0p2, err)
+val d0p2 = pread00_d0pat(d0p2, err)
 //
 in//let
 if
@@ -2397,12 +2397,12 @@ if
 then (dgua) else
 d0gua(dgua.lctn(), D0GUAmat(d0e1,tkas,d0p2))
 endlet // end of [ D0GPTgua(_,_,_) ]
-) (*case+*)//end-of-[preadx0_d0gua(dgua,err)]
+) (*case+*)//end-of-[pread00_d0gua(dgua,err)]
 //
 (* ****** ****** *)
 
 #implfun
-preadx0_d0gpt
+pread00_d0gpt
   (dgpt, err) =
 (
 case+
@@ -2414,7 +2414,7 @@ D0GPTpat
 val e00 = err
 //
 val
-d0p1 = preadx0_d0pat(d0p1, err)
+d0p1 = pread00_d0pat(d0p1, err)
 //
 in//let
 if
@@ -2429,7 +2429,7 @@ let
 //
 val e00 = err
 //
-val d0p1 = preadx0_d0pat(d0p1, err)
+val d0p1 = pread00_d0pat(d0p1, err)
 val (  ) =
 (
 case+
@@ -2438,7 +2438,7 @@ twhn.node() of
 | _(*non-T_WHEN*) => (err := err + 1)
 )
 //
-val d0gs = preadx0_d0gualst(d0gs, err)
+val d0gs = pread00_d0gualst(d0gs, err)
 //
 in//let
 if
@@ -2446,12 +2446,12 @@ if
 then (dgpt) else
 d0gpt(dgpt.lctn(), D0GPTgua(d0p1,twhn,d0gs))
 endlet // end of [ D0GPTgua(_,_,_) ]
-) (*case+*)//end-of-[preadx0_d0gpt(dgpt,err)]
+) (*case+*)//end-of-[pread00_d0gpt(dgpt,err)]
 
 (* ****** ****** *)
 
 #implfun
-preadx0_d0cls
+pread00_d0cls
   (dcls, err) =
 (
 case+
@@ -2463,7 +2463,7 @@ D0CLSgpt
 val e00 = err
 //
 val dgpt =
-preadx0_d0gpt(dgpt, err)
+pread00_d0gpt(dgpt, err)
 in//let
 if
 (err=e00)
@@ -2478,7 +2478,7 @@ let
 //
 val e00 = err
 //
-val dgpt = preadx0_d0gpt(dgpt, err)
+val dgpt = pread00_d0gpt(dgpt, err)
 val (  ) =
 (
 case+
@@ -2486,7 +2486,7 @@ tkeg.node() of
 | T_EQGT() => ((*void*))
 | _(*non-T_EQGT*) => (err := err+1)
 )
-val d0e1 = preadx0_d0exp(d0e1, err)
+val d0e1 = pread00_d0exp(d0e1, err)
 //
 in//let
 if
@@ -2495,12 +2495,12 @@ then (dcls)
 else
 d0cls(dcls.lctn(), D0CLScls(dgpt,tkeg,d0e1))
 endlet // end-of-[ D0CLScls(_,_,_) ]
-) (*case+*)//end-of-[preadx0_d0cls(dcls,err)]
+) (*case+*)//end-of-[pread00_d0cls(dcls,err)]
 
 (* ****** ****** *)
 //
 #implfun
-preadx0_f0arg
+pread00_f0arg
   (f0a, err) =
 (
 case+
@@ -2514,7 +2514,7 @@ F0ARGdapp(dpat) =>
 let
 val e00 = err
 val dpat =
-preadx0_d0pat(dpat, err)
+pread00_d0pat(dpat, err)
 in//let
 if
 (err=e00)
@@ -2530,7 +2530,7 @@ let
 val e00 = err
 //
 val s0qs =
-preadx0_s0qualst(s0qs, err)
+pread00_s0qualst(s0qs, err)
 //
 val (  ) =
 (
@@ -2557,7 +2557,7 @@ let
 val e00 = err
 //
 val s0es =
-preadx0_s0explst(s0es, err)
+pread00_s0explst(s0es, err)
 val (  ) =
 (
 case+
@@ -2575,12 +2575,12 @@ then (f0a) else f0arg
 (f0a.lctn(),F0ARGmets(tbeg,s0es,tend))
 end (*let*)//end-of-[F0ARGmets(_,_,_)]
 //
-) (*case+*)//end-of-[preadx0_f0arg(dcl,err)]
+) (*case+*)//end-of-[pread00_f0arg(dcl,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_s0res
+pread00_s0res
   (sres, err) =
 (
 case+ sres of
@@ -2594,21 +2594,21 @@ val e00 = err
 //
 (*
 val seff =
-preadx0_s0eff(seff, err)
+pread00_s0eff(seff, err)
 *)
 val s0e1 =
-preadx0_s0exp(s0e1, err)
+pread00_s0exp(s0e1, err)
 in
 if
 (err=e00)
 then (sres) else S0RESsome(seff, s0e1)
 endlet // end of [S0RESsome(seff,s0e1)]
-) (*case+*)//end-of[preadx0_s0res(sres,err)]
+) (*case+*)//end-of[pread00_s0res(sres,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0res
+pread00_d0res
   (dres, err) =
 (
 case+ dres of
@@ -2627,18 +2627,18 @@ teq1.node() of
 | T_EQ0() => ()
 | _(*non-T_EQ0*) => (err := err+1)
 )
-val d0e2 = preadx0_d0exp(d0e2, err)
+val d0e2 = pread00_d0exp(d0e2, err)
 in//let
 if
 (err=e00)
 then (dres) else D0RESsome(teq1, d0e2)
 endlet // end of [D0RESsome(teq1,d0e2)]
-) (*case+*)//end-of[preadx0_d0res(dres,err)]
+) (*case+*)//end-of[pread00_d0res(dres,err)]
 //
 (* ****** ****** *)
 
 #implfun
-preadx0_t0qua
+pread00_t0qua
   (t0q0, err) =
 (
 case+ t0q0 of
@@ -2653,7 +2653,7 @@ let
 val e00 = err
 //
 val s0qs =
-preadx0_s0qualst(s0qs, err)
+pread00_s0qualst(s0qs, err)
 val (  ) =
 (
 case+
@@ -2669,12 +2669,12 @@ if
 then (t0q0)
 else T0QUAsome(tbeg, s0qs, tend)
 endlet // end of [T0QUAsome(_,_,_)]
-) (*case+*)//end-of[preadx0_t0qua(dres,err)]
+) (*case+*)//end-of[pread00_t0qua(dres,err)]
 
 (* ****** ****** *)
 
 #implfun
-preadx0_t0inv
+pread00_t0inv
   (tinv, err) =
 (
 case+ tinv of
@@ -2686,7 +2686,7 @@ let
 val e00 = err
 //
 val t0qs =
-preadx0_t0qualst(t0qs, err)
+pread00_t0qualst(t0qs, err)
 in//let
 if
 (err=e00)
@@ -2700,9 +2700,9 @@ let
 val e00 = err
 //
 val t0qs =
-preadx0_t0qualst(t0qs, err)
+pread00_t0qualst(t0qs, err)
 val d0ps =
-preadx0_d0patlst(d0ps, err)
+pread00_d0patlst(d0ps, err)
 val (  ) =
 (
 case+
@@ -2718,40 +2718,40 @@ if
 then tinv
 else T0INVsome(t0qs,tbeg,d0ps,tend)
 endlet // end of [T0INVsome(_,_,_,_)]
-) (*case+*)//end-of[preadx0_t0inv(tinv,err)]
+) (*case+*)//end-of[pread00_t0inv(tinv,err)]
 
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0patopt
+pread00_d0patopt
 (   opt, err   ) =
 (
-  optn_preadx0_fnp(opt, err, preadx0_d0pat))
+  optn_pread00_fnp(opt, err, pread00_d0pat))
 //
 #implfun
-preadx0_d0patlst
+pread00_d0patlst
 (   lst, err   ) =
 (
-  list_preadx0_fnp(lst, err, preadx0_d0pat))
+  list_pread00_fnp(lst, err, pread00_d0pat))
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0expopt
+pread00_d0expopt
 (   opt, err   ) =
 (
-  optn_preadx0_fnp(opt, err, preadx0_d0exp))
+  optn_pread00_fnp(opt, err, pread00_d0exp))
 //
 #implfun
-preadx0_d0explst
+pread00_d0explst
 (   lst, err   ) =
 (
-  list_preadx0_fnp(lst, err, preadx0_d0exp))
+  list_pread00_fnp(lst, err, pread00_d0exp))
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0expseq
+pread00_d0expseq
 (   lst, err   ) =
 (
 auxlst(lst, err)) where
@@ -2787,11 +2787,11 @@ D0Etkerr _ => (de1)
 |
 _(*non-D0Etkerr*) =>
 (
-  preadx0_d0exp(de1, err)))
+  pread00_d0exp(de1, err)))
 |
 list_cons _ =>
 (
-  preadx0_d0exp(de1, err)))
+  pread00_d0exp(de1, err)))
 //
 val ds2 = auxlst( ds2, err )
 //
@@ -2801,57 +2801,57 @@ if // if
 then (ds1) else list_cons(de1, ds2) end
 )(*case+*)
 //
-}(*where*)//end-[preadx0_d0expseq(lst,err)]
+}(*where*)//end-[pread00_d0expseq(lst,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_l0d0plst
+pread00_l0d0plst
 (   lst, err   ) =
 (
-  list_preadx0_fnp(lst, err, preadx0_l0d0p))
+  list_pread00_fnp(lst, err, pread00_l0d0p))
 #implfun
-preadx0_l0d0elst
+pread00_l0d0elst
 (   lst, err   ) =
 (
-  list_preadx0_fnp(lst, err, preadx0_l0d0e))
+  list_pread00_fnp(lst, err, pread00_l0d0e))
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_f0arglst
+pread00_f0arglst
 (   lst, err   ) =
 (
-  list_preadx0_fnp(lst, err, preadx0_f0arg))
+  list_pread00_fnp(lst, err, pread00_f0arg))
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0gualst
+pread00_d0gualst
 (   lst, err   ) =
 (
-  list_preadx0_fnp(lst, err, preadx0_d0gua))
+  list_pread00_fnp(lst, err, pread00_d0gua))
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0clslst
+pread00_d0clslst
 (   lst, err   ) =
 (
-  list_preadx0_fnp(lst, err, preadx0_d0cls))
+  list_pread00_fnp(lst, err, pread00_d0cls))
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_t0qualst
+pread00_t0qualst
 (   lst, err   ) =
 (
-  list_preadx0_fnp(lst, err, preadx0_t0qua))
+  list_pread00_fnp(lst, err, pread00_t0qua))
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0pat_RPAREN
+pread00_d0pat_RPAREN
   (drp0, err) =
 (
 case+ drp0 of
@@ -2875,7 +2875,7 @@ let
 val e00 = err
 //
 val d0ps =
-preadx0_d0patlst(d0ps, err)
+pread00_d0patlst(d0ps, err)
 in//let
 //
 case+
@@ -2894,12 +2894,12 @@ _(*non-T_RPAREN*) =>
 ; d0pat_RPAREN_cons1(tbar, d0ps, tend))
 //
 endlet // end of [d0pat_RPAREN_cons1]
-) (*case*) // end of [preadx0_d0pat_RPAREN]
+) (*case*) // end of [pread00_d0pat_RPAREN]
 //
 (* ****** ****** *)
 
 #implfun
-preadx0_l0d0p_RBRACE
+pread00_l0d0p_RBRACE
   (ldrb, err) =
 (
 case+ ldrb of
@@ -2923,7 +2923,7 @@ let
 val e00 = err
 //
 val ldps =
-preadx0_l0d0plst(ldps, err)
+pread00_l0d0plst(ldps, err)
 in//let
 //
 case+
@@ -2943,12 +2943,12 @@ _(*non-T_RBRACE*) =>
 ; l0d0p_RBRACE_cons1(tbar,ldps,tend))
 //
 endlet // end of [l0d0p_RBRACE_cons1]
-) (*case*)//end-of-[preadx0_l0d0p_RBRACE(ldrb,err)]
+) (*case*)//end-of-[pread00_l0d0p_RBRACE(ldrb,err)]
 
 (* ****** ****** *)
 //
 #implfun
-preadx0_f0unarrw
+pread00_f0unarrw
   (arrw, err) =
 (
 case+ arrw of
@@ -2967,7 +2967,7 @@ let
 val e00 = err
 //
 val s0es =
-preadx0_s0explst(s0es, err)
+pread00_s0explst(s0es, err)
 //
 val (  ) =
 (
@@ -2985,12 +2985,12 @@ if
 then (arrw)
 else F0UNARRWlist(tbeg,s0es,tend)
 endlet // end of [F0UNARRWlist(_,_,_)]
-) (*case+*)//end-of-[preadx0_f0unarrw(arrw,err)]
+) (*case+*)//end-of-[pread00_f0unarrw(arrw,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0exp_THEN
+pread00_d0exp_THEN
   (dthn, err) =
 (
 case+ dthn of
@@ -3005,7 +3005,7 @@ let
 val e00 = err
 //
 val d0e2 =
-preadx0_d0exp(d0e2, err)
+pread00_d0exp(d0e2, err)
 in//let
 if
 (err=e00)
@@ -3017,7 +3017,7 @@ endlet // end of [d0exp_THEN_some(tok1,d0e2)]
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0exp_ELSE
+pread00_d0exp_ELSE
   (dels, err) =
 (
 case+ dels of
@@ -3032,7 +3032,7 @@ let
 val e00 = err
 //
 val d0e2 =
-preadx0_d0exp(d0e2, err)
+pread00_d0exp(d0e2, err)
 in//let
 if
 (err=e00)
@@ -3044,7 +3044,7 @@ endlet // end of [d0exp_ELSE_some(tok1,d0e2)]
 (* ****** ****** *)
 
 #implfun
-preadx0_d0exp_RPAREN
+pread00_d0exp_RPAREN
   (drp0, err) =
 (
 //
@@ -3068,7 +3068,7 @@ let
 val e00 = err
 //
 val d0es =
-preadx0_d0explst(d0es, err)
+pread00_d0explst(d0es, err)
 in//let
 //
 case+
@@ -3138,14 +3138,14 @@ _(*non-D0Etkerr*) =>
 ) where
 {
 val
-d0e1 = preadx0_d0exp(x1, err) }
+d0e1 = pread00_d0exp(x1, err) }
 )
 |
 list_cons(x2, xs) =>
 let
 //
 val
-d0e1 = preadx0_d0exp(x1, err)
+d0e1 = pread00_d0exp(x1, err)
 //
 in//let
 //
@@ -3175,12 +3175,12 @@ d0exp_RPAREN_cons2(tsep, d0es, tend)
 //
 endlet // end of [d0exp_RPAREN_cons2]
 //
-) (*case*)//end-of-[preadx0_d0exp_RPAREN(drp0,err)]
+) (*case*)//end-of-[pread00_d0exp_RPAREN(drp0,err)]
 
 (* ****** ****** *)
 
 #implfun
-preadx0_l0d0e_RBRACE
+pread00_l0d0e_RBRACE
   (ldrb, err) =
 (
 case+ ldrb of
@@ -3203,7 +3203,7 @@ let
 val e00 = err
 //
 val ldes =
-preadx0_l0d0elst(ldes, err)
+pread00_l0d0elst(ldes, err)
 in//let
 //
 case+
@@ -3223,12 +3223,12 @@ _(*non-T_RBRACE*) =>
 ; l0d0e_RBRACE_cons1(tbar,ldes,tend))
 //
 endlet // end of [l0d0e_RBRACE_cons1]
-) (*case*)//end-of-[preadx0_l0d0e_RBRACE(ldrb,err)]
+) (*case*)//end-of-[pread00_l0d0e_RBRACE(ldrb,err)]
 
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0eclseq_WHERE
+pread00_d0eclseq_WHERE
   (dcls, err) =
 (
 case- dcls of
@@ -3240,7 +3240,7 @@ let
 val e00 = err
 //
 val d0cs =
-preadx0_d0eclist(d0cs, err)
+pread00_d0eclist(d0cs, err)
 //
 val (  ) =
 (
@@ -3273,7 +3273,7 @@ _(*otherwise*) => ( err := err+1 )
 //
 val loc1 = tok1.lctn()
 val (  ) = prerrsln("\
-preadx0_d0eclseq_WHERE: loc1 = ", loc1)
+pread00_d0eclseq_WHERE: loc1 = ", loc1)
 //
 *)
 }
@@ -3282,7 +3282,7 @@ preadx0_d0eclseq_WHERE: loc1 = ", loc1)
 //
 (*
 val (  ) = prerrsln("\
-preadx0_d0eclseq_WHERE: tend = ", tend)
+pread00_d0eclseq_WHERE: tend = ", tend)
 *)
 //
 }(*where*)//(*case+*)//end-of-[ val(  ) ]
@@ -3295,11 +3295,11 @@ else
 (
   d0eclseq_WHERE(tbeg, topt, d0cs, tend))
 endlet // end of [d0eclseq_WHERE(_,_,_,_)]
-) (*case+*)//end(preadx0_d0eclseq_WHERE(dcls,err))
+) (*case+*)//end(pread00_d0eclseq_WHERE(dcls,err))
 //  
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_preadx0_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_pread00_dynexp.dats] *)
 (***********************************************************************)

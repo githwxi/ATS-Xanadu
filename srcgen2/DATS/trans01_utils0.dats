@@ -69,7 +69,7 @@ LAM = "./../SATS/xlabel0.sats"
 (* ****** ****** *)
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
-#staload "./../SATS/preadx0.sats"
+#staload "./../SATS/pread00.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"

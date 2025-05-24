@@ -72,7 +72,7 @@ LAM = "./../SATS/xlabel0.sats"
 (* ****** ****** *)
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
-#staload "./../SATS/preadx0.sats"
+#staload "./../SATS/pread00.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
@@ -199,7 +199,7 @@ d1parsed_of_trans01(dpar)) where
 val dpar =
 d0parsed_from_fpath(stadyn, source)
 //
-val dpar = d0parsed_of_preadx0(dpar)
+val dpar = d0parsed_of_pread00(dpar)
 }(*where*)//end-of-[d1parsed_from_fpath(...)]
 //
 (* ****** ****** *)
