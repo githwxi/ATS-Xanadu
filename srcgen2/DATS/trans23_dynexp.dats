@@ -119,6 +119,7 @@ _(*TRANS23*) = "./trans23.dats"
 #symload d3exp with d3exp_make_tpnd
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fn0
 s2typ_new0_x2tp
 ( loc0: loc_t ): s2typ =
