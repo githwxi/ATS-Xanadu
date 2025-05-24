@@ -61,7 +61,10 @@ it more efficient.
 The (current) concrete syntax of ATS3 (for writing source code) is
 quite complex. This complexity is largely due to the need for
 supporting numerous forms of type annotations, which are essential for
-practical programming with advanced types.
+practical programming with advanced types. Without proper annotations,
+it often becomes very difficult or even impractical to understand the
+cause of a type-error, which is most likely required before any fixes
+can be attempted.
 
 - `SATS/pread00.sats`:
   For detecting errors in the level-0 AST.
