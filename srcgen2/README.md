@@ -23,12 +23,24 @@ succeeded in bootstrapping ATS1 (ATS-Anairiats) in May of 2008, almost
 
 ### Lexing
 
+The code for lexing (that is, lexical analysis) is manually written.
+Maybe it is okay for a small project to use a tool to generate code
+that does lexing. In this case, I wanted to write more code in ATS3 so as
+to better test its design.
+
+When I started implementing my first "real" compiler for Dependent ML
+(DML) in 1997, I immediately assumed that I should use a tool to
+generate lexing code. I soon realized that implementing a lexer is
+actually very little work, and I have since manually implemented every
+lexer I need.  It is entirely possible that the code for lexing will
+be rewritten in the future so as to make it more efficient.
+
 ### Parsing
 
 ### Fixity Resolution
 
 ### Binding Resolution
 
-### ML-like Type-Checking
+### Simple Type-Checking
 
 ### Template Resolution
