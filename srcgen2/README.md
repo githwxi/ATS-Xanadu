@@ -36,6 +36,9 @@ nearly every lexer I need.  It is entirely possible that the code for
 lexing (in ATS3-Xanadu) will be rewritten in the future so as to make
 it more efficient.
 
+- SATS/lexbuf0.sats: For creating buffers of characters from text sources
+- SATS/lexing0.sats: For tokenization, handling key words, error-reporting, etc.
+
 ### Parsing
 
 ### Fixity Resolution
