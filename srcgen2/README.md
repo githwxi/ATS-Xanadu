@@ -41,10 +41,49 @@ it more efficient.
 
 ### Parsing
 
+- SATS/pread00.sats:
+  For detecting errors in the level-0 AST.
+
 ### Fixity Resolution
+
+- SATS/trans01.sats:
+  For translating the level-0 AST into the level-1 AST.
+- SATS/tread01.sats:
+  For detecting errors in the level-1 AST and reporting them.
 
 ### Binding Resolution
 
+- SATS/trans12.sats:
+  For translating the level-1 AST into the level-2 AST.
+- SATS/tread12.sats:
+  For detecting errors in the level-2 AST and reporting them.
+
 ### Simple Type-Checking
 
+- SATS/trans2a.sats:
+  For a form of type-checking referred to as pre-type-checking,
+  which is done to synthesize type information needed for resolving
+  overloaded symbols.
+
+- SATS/trsym2b.sats:
+  For resolving overloaded symbols with the help of the type information
+  synthesized during pre-type-checking (trans2a).
+
+- SATS/tread20.sats: For detecting errors in the level-2 AST. This is
+  performed after trans2a and trsym2b.
+
+- SATS/fperr20.sats: For reporting errors in the AST after tread20 is done.
+
+- SATS/trans23.sats
+- SATS/tread23.sats
+
 ### Template Resolution
+
+- SATS/trans3a.sats
+- SATS/tread3a.sats
+- SATS/trtmp3b.sats
+- SATS/trtmp3c.sats
+
+<!--
+##################################################################
+-->

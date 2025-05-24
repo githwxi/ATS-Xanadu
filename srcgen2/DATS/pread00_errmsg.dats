@@ -61,7 +61,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
-#staload "./../SATS/preadx0.sats"
+#staload "./../SATS/pread00.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -279,7 +279,7 @@ I0DNTnone(tok) =>
 let
 val loc = tok.lctn() in
 printsln("\
-PREADX0-ERROR:", loc, ":", id0) end
+PREAD00-ERROR:", loc, ":", id0) end
 end (*let*)//end-of-[i0dnt_fpemsg(out,id0)]
 //
 (* ****** ****** *)
@@ -300,7 +300,7 @@ L0ABLnone(tok) =>
 let
 val loc = tok.lctn() in
 printsln("\
-PREADX0-ERROR:", loc, ":", lab) end
+PREAD00-ERROR:", loc, ":", lab) end
 end (*let*)//end-of-[l0abl_fpemsg(out,lab)]
 //
 (* ****** ****** *)
@@ -320,7 +320,7 @@ T0INTnone(tok) =>
 let
 val loc = tok.lctn() in
 printsln("\
-PREADX0-ERROR:", loc, ":", int) end
+PREAD00-ERROR:", loc, ":", int) end
 end (*let*)//end-of-[t0int_fpemsg(out,int)]
 //
 #implfun
@@ -336,7 +336,7 @@ T0CHRsome _ => ()
 |
 T0CHRnone(tok) =>
 printsln
-("PREADX0-ERROR:",tok.lctn(),":",chr)
+("PREAD00-ERROR:",tok.lctn(),":",chr)
 end (*let*)//end-of-[t0chr_fpemsg(out,chr)]
 //
 #implfun
@@ -352,7 +352,7 @@ T0FLTsome _ => ()
 |
 T0FLTnone(tok) =>
 printsln
-("PREADX0-ERROR:",tok.lctn(),":",flt)
+("PREAD00-ERROR:",tok.lctn(),":",flt)
 end (*let*)//end-of-[t0chr_fpemsg(out,flt)]
 //
 #implfun
@@ -368,7 +368,7 @@ T0STRsome _ => ()
 |
 T0STRnone(tok) =>
 printsln
-("PREADX0-ERROR:",tok.lctn(),":",str)
+("PREAD00-ERROR:",tok.lctn(),":",str)
 end (*let*)//end-of-[t0chr_fpemsg(out,str)]
 //
 (* ****** ****** *)
@@ -389,7 +389,7 @@ let
 in//let
 (*
 printsln
-("PREADX0-ERROR:",loc,":",g0e)
+("PREAD00-ERROR:",loc,":",g0e)
 *)
 endlet // end of [G0Eerrck(lvl,ge1)]
 //
@@ -451,7 +451,7 @@ if
 (lvl
 >FPEMSG_ERRVL) then () else
 printsln
-("PREADX0-ERROR:",s0t.lctn(),":",s0t)
+("PREAD00-ERROR:",s0t.lctn(),":",s0t)
 )
 | _(* otherwise *) => ( (*void*) )
 //
@@ -534,7 +534,7 @@ if
 (lvl
 >FPEMSG_ERRVL) then () else
 printsln
-("PREADX0-ERROR:",s0e.lctn(),":",s0e)
+("PREAD00-ERROR:",s0e.lctn(),":",s0e)
 )
 | _(* otherwise *) => ( (*void*) )
 end(*let*)//end-of(s0exp_fpemsg(out,s0e))
@@ -567,7 +567,7 @@ s0a.node() of
 |
 S0ARGnone(tok) =>
 printsln
-("PREADX0-ERROR:",tok.lctn(),":",s0a)
+("PREAD00-ERROR:",tok.lctn(),":",s0a)
 |
 S0ARGsome(sid0,topt) =>
 (
@@ -591,7 +591,7 @@ S0MAGnone(tok) =>
 let
 val loc = sma.lctn() in
 printsln
-("PREADX0-ERROR:",loc,":",sma)
+("PREAD00-ERROR:",loc,":",sma)
 end // end of [ S0MAGnone(tok) ]
 |
 S0MAGsing(sid0) =>
@@ -623,7 +623,7 @@ T0ARGnone(tok) =>
 let
 val loc = t0a.lctn() in
 printsln
-("PREADX0-ERROR:",loc,":",t0a)
+("PREAD00-ERROR:",loc,":",t0a)
 end // end of [ T0ARGnone(tok) ]
 |
 T0ARGsome(s0t1,topt) => fpemsg(out,s0t1)
@@ -645,7 +645,7 @@ T0MAGnone(tok) =>
 let
 val loc = tok.lctn() in
 printsln
-("PREADX0-ERROR:",loc,":",tma)
+("PREAD00-ERROR:",loc,":",tma)
 end // end of [ T0MAGnone(tok) ]
 |
 T0MAGlist
@@ -1067,7 +1067,7 @@ if
 (lvl
 >FPEMSG_ERRVL) then () else
 printsln
-("PREADX0-ERROR:",d0p.lctn(),":",d0p)
+("PREAD00-ERROR:",d0p.lctn(),":",d0p)
 )
 //
 | _(* otherwise *) => ((*void*))
@@ -1292,7 +1292,7 @@ fpemsg(out, arrw); fpemsg(out, body))
 endlet//end-of-[D0Elam0(_,_,_,_,_,_)]
 //
 |
-D0Efix0
+D0Efi00
 (tknd
 ,dpid,fags,arrw
 ,sres,body,tend) =>
@@ -1313,7 +1313,7 @@ in//let
 (
 fpemsg(out, sres);
 fpemsg(out, arrw); fpemsg(out, body))
-endlet // end of [D0Efix0(_,_,_,_,_,_,_)]
+endlet // end of [D0Efi00(_,_,_,_,_,_,_)]
 //
 |
 D0Eraise
@@ -1379,7 +1379,7 @@ if
 (lvl
 >FPEMSG_ERRVL) then () else
 printsln
-("PREADX0-ERROR:",d0e.lctn(),":",d0e)
+("PREAD00-ERROR:",d0e.lctn(),":",d0e)
 )
 //
 | _(* otherwise *) => ((*void*))
@@ -1956,7 +1956,7 @@ auxmain( out, d1c );
 (
 printsln();
 printsln("\
-PREADX0-ERROR:",dcl.lctn(),":",dcl)))
+PREAD00-ERROR:",dcl.lctn(),":",dcl)))
 //
 | _(* otherwise *) => ((*void*))
 end (*let*)//end-of(d0ecl_fpemsg(out,dcl))
@@ -2098,7 +2098,7 @@ T_AS0() => ((*void*))
 |
 _(*non-T_AS0*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [t0ken_AS0_fpemsg]
 //
@@ -2117,7 +2117,7 @@ T_BAR() => ((*void*))
 |
 _(*non-T_BAR*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [t0ken_BAR_fpemsg]
 //
@@ -2135,7 +2135,7 @@ T_EQ0() => ((*void*))
 |
 _(*non-T_EQ0*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [t0ken_EQ0_fpemsg]
 //
@@ -2153,7 +2153,7 @@ T_GT0() => ((*void*))
 |
 _(*non-T_GT0*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [t0ken_GT0_fpemsg]
 //
@@ -2172,7 +2172,7 @@ T_OF0() => ((*void*))
 |
 _(*non-T_OF0*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [t0ken_OF0_fpemsg]
 //
@@ -2190,7 +2190,7 @@ T_EQGT() => ((*void*))
 |
 _(*non-T_EQGT*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [t0ken_EQGT_fpemsg]
 //
@@ -2210,7 +2210,7 @@ T_WHEN() => ((*void*))
 |
 _(*non-T_WHEN*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [t0ken_WHEN_fpemsg]
 //
@@ -2230,7 +2230,7 @@ T_WITH() => ((*void*))
 |
 _(*non-T_WITH*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [t0ken_WITH_fpemsg]
 //
@@ -2250,7 +2250,7 @@ T_GTDOT() => ((*void*))
 |
 _(*non-T_GTDOT*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [t0ken_GTDOT_fpemsg]
 //
@@ -2269,7 +2269,7 @@ T_RPAREN() => ((*void*))
 |
 _(*non-T_RPAREN*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 end (*let*) // end of [token_RPAREN_fpemsg]
 //
 #implfun
@@ -2285,7 +2285,7 @@ T_RBRACE() => ((*void*))
 |
 _(*non-T_RBRACE*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 end (*let*) // end of [token_RBRACE_fpemsg]
 //
 #implfun
@@ -2301,7 +2301,7 @@ T_RBRCKT() => ((*void*))
 |
 _(*non-T_RBRCKT*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 end (*let*) // end of [token_RBRCKT_fpemsg]
 //
 (* ****** ****** *)
@@ -2319,7 +2319,7 @@ T_ENDWHR() => ((*void*))
 |
 _(*non-T_ENDWHR*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 end (*let*) // end of [token_ENDWHR_fpemsg]
 //
 (* ****** ****** *)
@@ -2339,7 +2339,7 @@ T_ENDLET() => ((*void*))
 |
 _(*non-T_END/ENDLET*) =>
 printsln
-("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+("PREAD00-ERROR:",tok0.lctn(),":",tok0)
 end (*let*) // end of [token_ENDLET_fpemsg]
 //
 (* ****** ****** *)
@@ -2383,7 +2383,7 @@ T_ENDTRY() => ((*void*))
 |
 _(*non-T_END/ENDTRY*) =>
 printsln("\
-PREADX0-ERROR:",tok0.lctn(),":",tok0)
+PREAD00-ERROR:",tok0.lctn(),":",tok0)
 end (*let*) // end of [token_ENDTRY_fpemsg]
 //
 (* ****** ****** *)
@@ -2583,7 +2583,7 @@ let
 val loc = sqa.lctn()
 in//let
 printsln
-("PREADX0-ERROR:", loc, ":", sqa)
+("PREAD00-ERROR:", loc, ":", sqa)
 end//let//end-of-[S0QAGnone(tok)]
 |
 S0QAGsome
@@ -2616,7 +2616,7 @@ let
 val loc = tqa.lctn()
 in//let
 printsln
-("PREADX0-ERROR:", loc, ":", tqa)
+("PREAD00-ERROR:", loc, ":", tqa)
 end//let//end-of-[T0QAGnone(tok)]
 |
 T0QAGsome
@@ -2645,7 +2645,7 @@ let
 val loc = tia.lctn()
 in//let
 printsln
-("PREADX0-ERROR:", loc, ":", tia)
+("PREAD00-ERROR:", loc, ":", tia)
 end//let//end-of-[T0IAGnone(tok)]
 |
 T0IAGsome
@@ -3087,5 +3087,5 @@ foritm$work<d0cstdcl>(d0c1) = d0cstdcl_fpemsg(out,d0c1)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_preadx0_errmsg.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_pread00_errmsg.dats] *)
 (***********************************************************************)

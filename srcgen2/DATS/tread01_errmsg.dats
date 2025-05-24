@@ -63,7 +63,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
-#staload "./../SATS/preadx0.sats"
+#staload "./../SATS/pread00.sats"
 #staload "./../SATS/tread01.sats"
 (* ****** ****** *)
 #define FPEMSG_ERRVL 2

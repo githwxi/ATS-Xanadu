@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2022 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2023 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,7 +30,9 @@
 //
 (*
 Author: Hongwei Xi
-Start Time: June 17th, 2022
+(*
+Wed 26 Jul 2023 01:13:09 PM EDT
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -53,36 +55,28 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/staexp0.sats"
-#staload "./../SATS/dynexp0.sats"
+#staload
+_(*?*) = "./xsymmap_topmap.dats"
 (* ****** ****** *)
-#staload "./../SATS/preadx0.sats"
+#staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
-//
-#implfun
-optn_preadx0_fnp
-{  syn:tx  }
-(  opt , err , fpr  ) =
-(
-case+ opt of
-|
-optn_nil() => opt
-|
-optn_cons(tm1) =>
-let
-val e00 = err
-val tm1 = fpr(tm1, err)
-in // let
-if
-(err=e00)
-then opt else optn_cons(tm1)
-endlet // end of [optn_cons(tm1)]
-)(*case+*)//end(optn_preadx0_fnp(opt,err,fpr)
-//
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/dynexp3.sats"
+(* ****** ****** *)
+#staload "./../SATS/tread3a.sats"
+(* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
 (* ****** ****** *)
 //
 #implfun
-list_preadx0_fnp
+list_tread3a_fnp
 {  syn:tx  }
 (  lst , err , fpr  ) =
 (
@@ -102,86 +96,96 @@ list_cons(tm1, tms) =>
 let
 val e00 = err
 val tm1 = fpr(tm1, err)
-val tm2 = auxlst(tms, err)
+val tms = auxlst(tms, err)
 in//let
 if
 (err = e00)
-then lst else list_cons(tm1,tm2)
+then lst else list_cons(tm1, tms)
 endlet // end of [auxlst(lst,err)]
 //
-}(*where*)//end(list_preadx0_fnp(lst,err,fpr))
+}(*where*)//end(list_tread3a_fnp(lst,err,fpr))
 //
 (* ****** ****** *)
 //
 #implfun
-d0parsed_of_preadx0
-  (dpar) =
+optn_tread3a_fnp
+{  syn:tx  }
+(  opt , err , fpr  ) =
+(
+case+ opt of
+|
+optn_nil() => opt
+|
+optn_cons(syn) =>
 let
+val e00 = err
+val syn = fpr(syn, err)
+in // let
+if
+(err=e00)
+then opt else optn_cons(syn)
+endlet // end of [optn_cons(syn)]
+)(*case+*)//end(optn_tread3a_fnp(opt,err,fpr)
+//
+(* ****** ****** *)
+//
+#implfun
+d3parsed_of_tread3a
+  (dpar) = let
 //
 var nerror: sint = 0
 //
 val stadyn =
-d0parsed_get_stadyn(dpar)
+d3parsed_get_stadyn(dpar)
 val source =
-d0parsed_get_source(dpar)
-val parsed =
-d0parsed_get_parsed(dpar)
+d3parsed_get_source(dpar)
+//
+val t1penv =
+d3parsed_get_t1penv(dpar)
+val t2penv =
+d3parsed_get_t2penv(dpar)
+val t3penv =
+d3parsed_get_t3penv(dpar)
 //
 val parsed =
-preadx0_d0eclistopt(parsed, nerror)
+d3parsed_get_parsed(dpar)
 //
-in//let
-d0parsed(stadyn,nerror,source,parsed)
-end(*let*)//end-of(d0parsed_of_preadx0(dpar))
-//
-(* ****** ****** *)
-#implfun
-preadx0_d0eclistopt
-  (opt0, err) =
-optn_preadx0_fnp(opt0, err, preadx0_d0eclist)
-(* ****** ****** *)
-//
-#implfun
-d0parsed_fpemsg
-  (out, dpar) = let
-//
-val
-nerror =
-d0parsed_get_nerror(dpar)
+val parsed =
+tread3a_d3eclistopt(parsed, nerror)
 //
 (*
-val () =
-let
-val
-source =
-d0parsed_get_source(dpar)
-in//let
-prerrsln
-("d0parsed_fpemsg: source = ", source)
-end//let//end-of-[val()]
+val (    ) = prerrsln
+("d3parsed_of_tread3a: t3penv = ", t3penv)
 *)
 //
-in(*let*)
-if
-(nerror > 0) then
-let
-val parsed =
-d0parsed_get_parsed(dpar)
-in
-d0eclistopt_fpemsg(out, parsed) end else ()
-end (*let*)//end-of-[d0parsed_fpemsg(out,dpar)]
+in//let
+//
+if // if
+(nerror=0)
+then (dpar) else
+d3parsed
+(stadyn,
+ nerror,source,t1penv,t2penv,t3penv,parsed)
+//
+end(*let*)//end-of(d3parsed_of_tread3a(dpar))
 //
 (* ****** ****** *)
 //
 #implfun
-d0eclistopt_fpemsg
-  (out, dopt) =
-(
-case+ dopt of
-| optn_nil() => ((*void*))
-| optn_cons(d0cs) => d0eclist_fpemsg(out, d0cs)
-)
+tread3a_d3explstopt
+  (  dopt, err0  ) =
+optn_tread3a_fnp(dopt, err0, tread3a_d3explst)
 //
 (* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_srcgen2_DATS_preadx0.dats] *)
+//
+#implfun
+tread3a_d3eclistopt
+  (  dopt, err0  ) =
+optn_tread3a_fnp(dopt, err0, tread3a_d3eclist)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread3a.dats] *)
+(***********************************************************************)

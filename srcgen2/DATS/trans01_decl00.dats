@@ -75,7 +75,7 @@ _(*TRANS01*) = "./trans01.dats"
 (* ****** ****** *)
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
-#staload "./../SATS/preadx0.sats"
+#staload "./../SATS/pread00.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
@@ -467,7 +467,7 @@ d0parsed_from_fpath(knd1, fnm1)
 //
 // HX-2023-06-10: for 
 val // basic error checking
-dpar = d0parsed_of_preadx0(dpar)
+dpar = d0parsed_of_pread00(dpar)
 //
 in(*let*)
 (0, dpar) where

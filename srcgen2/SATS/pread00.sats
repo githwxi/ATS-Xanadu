@@ -181,13 +181,13 @@ d0eclseq_WHERE = $D0E.d0eclseq_WHERE
 (* ****** ****** *)
 //
 fun
-d0parsed_of_preadx0
+d0parsed_of_pread00
 (prgm: d0parsed): d0parsed
 //
 (* ****** ****** *)
 //
 #typedef
-fpreadx0
+fpread00
 (syn: tx) =
 (syn , &sint >> _) -> (syn)
 //
@@ -196,208 +196,208 @@ fpreadx0
 //HX: for checking statics
 *)
 (* ****** ****** *)
-fun preadx0_i0dnt: fpreadx0(i0dnt)
+fun pread00_i0dnt: fpread00(i0dnt)
 (* ****** ****** *)
-fun preadx0_l0abl: fpreadx0(l0abl)
-fun preadx0_s0ymb: fpreadx0(s0ymb)
+fun pread00_l0abl: fpread00(l0abl)
+fun pread00_s0ymb: fpread00(s0ymb)
 (* ****** ****** *)
-fun preadx0_s0qid: fpreadx0(s0qid)
-fun preadx0_d0qid: fpreadx0(d0qid)
+fun pread00_s0qid: fpread00(s0qid)
+fun pread00_d0qid: fpread00(d0qid)
 (* ****** ****** *)
-fun preadx0_g0exp: fpreadx0(g0exp)
-fun preadx0_g0mag: fpreadx0(g0mag)
+fun pread00_g0exp: fpread00(g0exp)
+fun pread00_g0mag: fpread00(g0mag)
 (* ****** ****** *)
-fun preadx0_sort0: fpreadx0(sort0)
-fun preadx0_s0exp: fpreadx0(s0exp)
-fun preadx0_l0s0e: fpreadx0(l0s0e)
+fun pread00_sort0: fpread00(sort0)
+fun pread00_s0exp: fpread00(s0exp)
+fun pread00_l0s0e: fpread00(l0s0e)
 (* ****** ****** *)
-fun preadx0_s0arg: fpreadx0(s0arg)
-fun preadx0_s0mag: fpreadx0(s0mag)
-fun preadx0_t0arg: fpreadx0(t0arg)
-fun preadx0_t0mag: fpreadx0(t0mag)
-fun preadx0_s0qua: fpreadx0(s0qua)
+fun pread00_s0arg: fpread00(s0arg)
+fun pread00_s0mag: fpread00(s0mag)
+fun pread00_t0arg: fpread00(t0arg)
+fun pread00_t0mag: fpread00(t0mag)
+fun pread00_s0qua: fpread00(s0qua)
 (* ****** ****** *)
-fun preadx0_s0tdf: fpreadx0(s0tdf)
+fun pread00_s0tdf: fpread00(s0tdf)
 (* ****** ****** *)
-#symload preadx0 with preadx0_i0dnt
-#symload preadx0 with preadx0_s0qid
-#symload preadx0 with preadx0_d0qid
+#symload pread00 with pread00_i0dnt
+#symload pread00 with pread00_s0qid
+#symload pread00 with pread00_d0qid
 (* ****** ****** *)
-#symload preadx0 with preadx0_g0exp
-#symload preadx0 with preadx0_g0mag
+#symload pread00 with pread00_g0exp
+#symload pread00 with pread00_g0mag
 (* ****** ****** *)
-#symload preadx0 with preadx0_sort0
-#symload preadx0 with preadx0_s0exp
-#symload preadx0 with preadx0_l0s0e
+#symload pread00 with pread00_sort0
+#symload pread00 with pread00_s0exp
+#symload pread00 with pread00_l0s0e
 (* ****** ****** *)
-#symload preadx0 with preadx0_s0arg
-#symload preadx0 with preadx0_s0mag
-#symload preadx0 with preadx0_t0arg
-#symload preadx0 with preadx0_t0mag
-#symload preadx0 with preadx0_s0qua
+#symload pread00 with pread00_s0arg
+#symload pread00 with pread00_s0mag
+#symload pread00 with pread00_t0arg
+#symload pread00 with pread00_t0mag
+#symload pread00 with pread00_s0qua
 (* ****** ****** *)
 //
 fun
-list_preadx0_fnp
+list_pread00_fnp
 {syn:tx}
 ( lst: list(syn)
 , err: &sint >> _
-, fpr: fpreadx0(syn)): list(syn)
+, fpr: fpread00(syn)): list(syn)
 //
 fun
-optn_preadx0_fnp
+optn_pread00_fnp
 {syn:tx}
 ( opt: optn(syn)
 , err: &sint >> _
-, fpr: fpreadx0(syn)): optn(syn)
+, fpr: fpread00(syn)): optn(syn)
 //
 (* ****** ****** *)
 fun
-preadx0_i0dntopt: fpreadx0(i0dntopt)
+pread00_i0dntopt: fpread00(i0dntopt)
 fun
-preadx0_i0dntlst: fpreadx0(i0dntlst)
+pread00_i0dntlst: fpread00(i0dntlst)
 (* ****** ****** *)
 fun
-preadx0_g0explst: fpreadx0(g0explst)
+pread00_g0explst: fpread00(g0explst)
 fun
-preadx0_g0expopt: fpreadx0(g0expopt)
+pread00_g0expopt: fpread00(g0expopt)
 (* ****** ****** *)
 fun
-preadx0_g0maglst: fpreadx0(g0maglst)
+pread00_g0maglst: fpread00(g0maglst)
 (* ****** ****** *)
 fun
-preadx0_sort0lst: fpreadx0(sort0lst)
+pread00_sort0lst: fpread00(sort0lst)
 fun
-preadx0_sort0opt: fpreadx0(sort0opt)
+pread00_sort0opt: fpread00(sort0opt)
 (* ****** ****** *)
 fun
-preadx0_s0explst: fpreadx0(s0explst)
+pread00_s0explst: fpread00(s0explst)
 fun
-preadx0_s0expopt: fpreadx0(s0expopt)
+pread00_s0expopt: fpread00(s0expopt)
 (* ****** ****** *)
 fun
-preadx0_l0s0elst: fpreadx0(l0s0elst)
+pread00_l0s0elst: fpread00(l0s0elst)
 (* ****** ****** *)
 fun
-preadx0_s0arglst: fpreadx0(s0arglst)
+pread00_s0arglst: fpread00(s0arglst)
 fun
-preadx0_s0maglst: fpreadx0(s0maglst)
+pread00_s0maglst: fpread00(s0maglst)
 fun
-preadx0_t0arglst: fpreadx0(t0arglst)
+pread00_t0arglst: fpread00(t0arglst)
 fun
-preadx0_t0maglst: fpreadx0(t0maglst)
+pread00_t0maglst: fpread00(t0maglst)
 fun
-preadx0_s0qualst: fpreadx0(s0qualst)
+pread00_s0qualst: fpread00(s0qualst)
 (* ****** ****** *)
-#symload preadx0 with preadx0_sort0opt
-#symload preadx0 with preadx0_s0expopt
-#symload preadx0 with preadx0_sort0lst
-#symload preadx0 with preadx0_s0explst
-#symload preadx0 with preadx0_l0s0elst
+#symload pread00 with pread00_sort0opt
+#symload pread00 with pread00_s0expopt
+#symload pread00 with pread00_sort0lst
+#symload pread00 with pread00_s0explst
+#symload pread00 with pread00_l0s0elst
 (* ****** ****** *)
-#symload preadx0 with preadx0_s0arglst
-#symload preadx0 with preadx0_s0maglst
-#symload preadx0 with preadx0_t0maglst
-#symload preadx0 with preadx0_s0qualst
+#symload pread00 with pread00_s0arglst
+#symload pread00 with pread00_s0maglst
+#symload pread00 with pread00_t0maglst
+#symload pread00 with pread00_s0qualst
 (* ****** ****** *)
 fun
-preadx0_s0exp_RPAREN: fpreadx0(s0exp_RPAREN)
+pread00_s0exp_RPAREN: fpread00(s0exp_RPAREN)
 fun
-preadx0_l0s0e_RBRACE: fpreadx0(l0s0e_RBRACE)
+pread00_l0s0e_RBRACE: fpread00(l0s0e_RBRACE)
 (* ****** ****** *)
 (*
 //HX: for checking dynamics
 *)
 (* ****** ****** *)
-fun preadx0_d0pat: fpreadx0(d0pat)
-fun preadx0_l0d0p: fpreadx0(l0d0p)
-fun preadx0_d0exp: fpreadx0(d0exp)
-fun preadx0_l0d0e: fpreadx0(l0d0e)
+fun pread00_d0pat: fpread00(d0pat)
+fun pread00_l0d0p: fpread00(l0d0p)
+fun pread00_d0exp: fpread00(d0exp)
+fun pread00_l0d0e: fpread00(l0d0e)
 (* ****** ****** *)
-fun preadx0_f0arg: fpreadx0(f0arg)
+fun pread00_f0arg: fpread00(f0arg)
 (* ****** ****** *)
-fun preadx0_s0res: fpreadx0(s0res)
-fun preadx0_d0res: fpreadx0(d0res)
+fun pread00_s0res: fpread00(s0res)
+fun pread00_d0res: fpread00(d0res)
 (* ****** ****** *)
-fun preadx0_t0inv: fpreadx0(t0inv)
+fun pread00_t0inv: fpread00(t0inv)
 (* ****** ****** *)
-fun preadx0_d0cls: fpreadx0(d0cls)
-fun preadx0_d0gua: fpreadx0(d0gua)
-fun preadx0_d0gpt: fpreadx0(d0gpt)
+fun pread00_d0cls: fpread00(d0cls)
+fun pread00_d0gua: fpread00(d0gua)
+fun pread00_d0gpt: fpread00(d0gpt)
 (* ****** ****** *)
-fun preadx0_d0ecl: fpreadx0(d0ecl)
+fun pread00_d0ecl: fpread00(d0ecl)
 (* ****** ****** *)
-fun preadx0_a0tdf: fpreadx0(a0tdf)
-(* ****** ****** *)
-fun
-preadx0_d0patopt: fpreadx0(d0patopt)
-fun
-preadx0_d0expopt: fpreadx0(d0expopt)
-(* ****** ****** *)
-//
-fun
-preadx0_d0patlst: fpreadx0(d0patlst)
-fun
-preadx0_d0explst: fpreadx0(d0explst)
-//
-fun
-preadx0_d0expseq: fpreadx0(d0explst)
-//
-fun
-preadx0_l0d0plst: fpreadx0(l0d0plst)
-fun
-preadx0_l0d0elst: fpreadx0(l0d0elst)
-//
+fun pread00_a0tdf: fpread00(a0tdf)
 (* ****** ****** *)
 fun
-preadx0_f0arglst: fpreadx0(f0arglst)
-(* ****** ****** *)
+pread00_d0patopt: fpread00(d0patopt)
 fun
-preadx0_d0clslst: fpreadx0(d0clslst)
-fun
-preadx0_d0gualst: fpreadx0(d0gualst)
-(* ****** ****** *)
-fun
-preadx0_d0eclist: fpreadx0(d0eclist)
-(* ****** ****** *)
-fun
-preadx0_d0eclistopt: fpreadx0(d0eclistopt)
-(* ****** ****** *)
-//
-#symload preadx0 with preadx0_d0pat
-#symload preadx0 with preadx0_d0exp
-#symload preadx0 with preadx0_d0ecl
-//
-#symload preadx0 with preadx0_d0patlst
-#symload preadx0 with preadx0_d0explst
-#symload preadx0 with preadx0_d0eclist
-//
-#symload preadx0 with preadx0_d0eclistopt
-//
+pread00_d0expopt: fpread00(d0expopt)
 (* ****** ****** *)
 //
 fun
-preadx0_d0pat_RPAREN: fpreadx0(d0pat_RPAREN)
+pread00_d0patlst: fpread00(d0patlst)
 fun
-preadx0_l0d0p_RBRACE: fpreadx0(l0d0p_RBRACE)
+pread00_d0explst: fpread00(d0explst)
+//
+fun
+pread00_d0expseq: fpread00(d0explst)
+//
+fun
+pread00_l0d0plst: fpread00(l0d0plst)
+fun
+pread00_l0d0elst: fpread00(l0d0elst)
+//
+(* ****** ****** *)
+fun
+pread00_f0arglst: fpread00(f0arglst)
+(* ****** ****** *)
+fun
+pread00_d0clslst: fpread00(d0clslst)
+fun
+pread00_d0gualst: fpread00(d0gualst)
+(* ****** ****** *)
+fun
+pread00_d0eclist: fpread00(d0eclist)
+(* ****** ****** *)
+fun
+pread00_d0eclistopt: fpread00(d0eclistopt)
+(* ****** ****** *)
+//
+#symload pread00 with pread00_d0pat
+#symload pread00 with pread00_d0exp
+#symload pread00 with pread00_d0ecl
+//
+#symload pread00 with pread00_d0patlst
+#symload pread00 with pread00_d0explst
+#symload pread00 with pread00_d0eclist
+//
+#symload pread00 with pread00_d0eclistopt
 //
 (* ****** ****** *)
 //
 fun
-preadx0_d0exp_THEN: fpreadx0(d0exp_THEN)
+pread00_d0pat_RPAREN: fpread00(d0pat_RPAREN)
 fun
-preadx0_d0exp_ELSE: fpreadx0(d0exp_ELSE)
+pread00_l0d0p_RBRACE: fpread00(l0d0p_RBRACE)
 //
 (* ****** ****** *)
 //
 fun
-preadx0_d0exp_RPAREN: fpreadx0(d0exp_RPAREN)
+pread00_d0exp_THEN: fpread00(d0exp_THEN)
 fun
-preadx0_l0d0e_RBRACE: fpreadx0(l0d0e_RBRACE)
+pread00_d0exp_ELSE: fpread00(d0exp_ELSE)
+//
+(* ****** ****** *)
+//
+fun
+pread00_d0exp_RPAREN: fpread00(d0exp_RPAREN)
+fun
+pread00_l0d0e_RBRACE: fpread00(l0d0e_RBRACE)
 //
 (* ****** ****** *)
 fun
-preadx0_d0eclseq_WHERE: fpreadx0(d0eclseq_WHERE)
+pread00_d0eclseq_WHERE: fpread00(d0eclseq_WHERE)
 (* ****** ****** *)
 //
 //HX-2022-06-18: printing errmsgs
@@ -549,5 +549,5 @@ l0d0e_RBRACE_fpemsg
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_SATS_preadx0.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_pread00.sats] *)
 (***********************************************************************)

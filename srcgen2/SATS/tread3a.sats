@@ -116,87 +116,86 @@ D3E = "./dynexp3.sats"
 (* ****** ****** *)
 //
 fun
-d3parsed_of_tread30
+d3parsed_of_tread3a
 (dpar: d3parsed): (d3parsed)
 //
 (* ****** ****** *)
 //
 #typedef
-ftread30
+ftread3a
 (syn: tx) =
 (syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)
 //
 fun
-list_tread30_fnp
+list_tread3a_fnp
 {syn:tx}
 ( lst: list(syn)
 , err: &sint >> _
-, fpr: ftread30(syn)): list(syn)
+, fpr: ftread3a(syn)): list(syn)
 //
 fun
-optn_tread30_fnp
+optn_tread3a_fnp
 {syn:tx}
 ( opt: optn(syn)
 , err: &sint >> _
-, fpr: ftread30(syn)): optn(syn)
+, fpr: ftread3a(syn)): optn(syn)
 //
 (* ****** ****** *)
-fun tread30_s2typ: ftread30(s2typ)
-fun tread30_l2t2p: ftread30(l2t2p)
+fun tread3a_s2typ: ftread3a(s2typ)
+fun tread3a_l2t2p: ftread3a(l2t2p)
 (* ****** ****** *)
-fun tread30_t2jag: ftread30(t2jag)
+fun tread3a_t2jag: ftread3a(t2jag)
 (* ****** ****** *)
-fun tread30_d3pat: ftread30(d3pat)
-fun tread30_d3exp: ftread30(d3exp)
+fun tread3a_d3pat: ftread3a(d3pat)
+fun tread3a_d3exp: ftread3a(d3exp)
 (* ****** ****** *)
-fun tread30_l3d3p: ftread30(l3d3p)
-fun tread30_l3d3e: ftread30(l3d3e)
+fun tread3a_l3d3p: ftread3a(l3d3p)
+fun tread3a_l3d3e: ftread3a(l3d3e)
 (* ****** ****** *)
-fun tread30_f3arg: ftread30(f3arg)
+fun tread3a_f3arg: ftread3a(f3arg)
 (* ****** ****** *)
-fun tread30_d3gua: ftread30(d3gua)
-fun tread30_d3gpt: ftread30(d3gpt)
-fun tread30_d3cls: ftread30(d3cls)
+fun tread3a_d3gua: ftread3a(d3gua)
+fun tread3a_d3gpt: ftread3a(d3gpt)
+fun tread3a_d3cls: ftread3a(d3cls)
 (* ****** ****** *)
-fun tread30_d3ecl: ftread30(d3ecl)
+fun tread3a_d3ecl: ftread3a(d3ecl)
 (* ****** ****** *)
-fun tread30_s2typlst: ftread30(s2typlst)
-fun tread30_l2t2plst: ftread30(l2t2plst)
+fun tread3a_s2typlst: ftread3a(s2typlst)
+fun tread3a_l2t2plst: ftread3a(l2t2plst)
 (* ****** ****** *)
-fun tread30_t2jaglst: ftread30(t2jaglst)
+fun tread3a_t2jaglst: ftread3a(t2jaglst)
 (* ****** ****** *)
-fun tread30_d3patlst: ftread30(d3patlst)
-fun tread30_d3explst: ftread30(d3explst)
-fun tread30_d3expopt: ftread30(d3expopt)
+fun tread3a_d3patlst: ftread3a(d3patlst)
+fun tread3a_d3explst: ftread3a(d3explst)
+fun tread3a_d3expopt: ftread3a(d3expopt)
 (* ****** ****** *)
-fun tread30_l3d3plst: ftread30(l3d3plst)
-fun tread30_l3d3elst: ftread30(l3d3elst)
+fun tread3a_l3d3plst: ftread3a(l3d3plst)
+fun tread3a_l3d3elst: ftread3a(l3d3elst)
 (* ****** ****** *)
-fun tread30_f3arglst: ftread30(f3arglst)
+fun tread3a_f3arglst: ftread3a(f3arglst)
 (* ****** ****** *)
-fun tread30_d3gualst: ftread30(d3gualst)
-fun tread30_d3clslst: ftread30(d3clslst)
+fun tread3a_d3gualst: ftread3a(d3gualst)
+fun tread3a_d3clslst: ftread3a(d3clslst)
 (* ****** ****** *)
-fun tread30_d3eclist: ftread30(d3eclist)
+fun tread3a_d3eclist: ftread3a(d3eclist)
 (* ****** ****** *)
-fun tread30_teqd3exp: ftread30(teqd3exp)
+fun tread3a_teqd3exp: ftread3a(teqd3exp)
 (* ****** ****** *)
-fun tread30_d3valdcl: ftread30(d3valdcl)
-fun tread30_d3vardcl: ftread30(d3vardcl)
-fun tread30_d3fundcl: ftread30(d3fundcl)
+fun tread3a_d3valdcl: ftread3a(d3valdcl)
+fun tread3a_d3vardcl: ftread3a(d3vardcl)
+fun tread3a_d3fundcl: ftread3a(d3fundcl)
 (* ****** ****** *)
-fun tread30_d3valdclist: ftread30(d3valdclist)
-fun tread30_d3vardclist: ftread30(d3vardclist)
-fun tread30_d3fundclist: ftread30(d3fundclist)
+fun tread3a_d3valdclist: ftread3a(d3valdclist)
+fun tread3a_d3vardclist: ftread3a(d3vardclist)
+fun tread3a_d3fundclist: ftread3a(d3fundclist)
 (* ****** ****** *)
-fun tread30_d3explstopt: ftread30(d3explstopt)
-fun tread30_d3eclistopt: ftread30(d3eclistopt)
+fun tread3a_d3explstopt: ftread3a(d3explstopt)
+fun tread3a_d3eclistopt: ftread3a(d3eclistopt)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****************************************** *)
-(* ****************************************** *)
-
-(* end of [ATS3/XATSOPT_srcgen2_SATS_tread30.sats] *)
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_tread3a.sats] *)
+(***********************************************************************)

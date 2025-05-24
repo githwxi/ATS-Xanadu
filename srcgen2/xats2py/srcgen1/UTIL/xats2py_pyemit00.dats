@@ -80,17 +80,18 @@ mymain_work
 let
 //
 val dpar =
+d3parsed_of_tread3a(dpar)
+//
+val dpar =
 d3parsed_of_trtmp3b(dpar)
 val dpar =
 d3parsed_of_trtmp3c(dpar)
-val dpar =
-d3parsed_of_tread30(dpar)
 //
 (*
 val (  ) =
 (
 prerrsln
-("d3parsed(30) = ", dpar))
+("d3parsed(3a) = ", dpar))
 *)
 //
 val (  ) =

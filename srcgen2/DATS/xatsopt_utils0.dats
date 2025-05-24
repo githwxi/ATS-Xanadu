@@ -80,7 +80,7 @@ SRCGEN2_XATSOPT: It's not needed
 (* ****** ****** *)
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
-#staload "./../SATS/preadx0.sats"
+#staload "./../SATS/pread00.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 #staload "./../SATS/tread01.sats"
@@ -98,7 +98,7 @@ SRCGEN2_XATSOPT: It's not needed
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread30.sats"
+#staload "./../SATS/tread3a.sats"
 (* ****** ****** *)
 #staload "./../SATS/xatsopt.sats"
 (* ****** ****** *)
@@ -246,12 +246,19 @@ end(*let*)//end-of-[xatsopt_flag$addenv]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-24:
+Note that
+[d2parsed_of_fil?ats]
+does not check the output!
+*)
+//
 #implfun
 d2parsed_of_filsats
   ( fpth ) =
 d2parsed_of_trans02
 (
-d0parsed_of_preadx0(dpar)) where
+d0parsed_of_pread00(dpar)) where
 {
 val dpar =
 d0parsed_from_fpath(0(*sta*), fpth)
@@ -262,7 +269,7 @@ d2parsed_of_fildats
   ( fpth ) =
 d2parsed_of_trans02
 (
-d0parsed_of_preadx0(dpar)) where
+d0parsed_of_pread00(dpar)) where
 {
 val dpar =
 d0parsed_from_fpath(1(*dyn*), fpth)
@@ -270,12 +277,19 @@ d0parsed_from_fpath(1(*dyn*), fpth)
 //
 (* ****** ****** *)
 //
+(*
+HX-2025-05-24:
+Note that
+[d3parsed_of_fil?...]
+does not check the output!
+*)
+//
 #implfun
 d3parsed_of_filsats
   ( fpth ) =
 d3parsed_of_trans03
 (
-d0parsed_of_preadx0(dpar)) where
+d0parsed_of_pread00(dpar)) where
 {
 val dpar =
 d0parsed_from_fpath(0(*sta*), fpth)
@@ -286,7 +300,7 @@ d3parsed_of_fildats
   ( fpth ) =
 d3parsed_of_trans03
 (
-d0parsed_of_preadx0(dpar)) where
+d0parsed_of_pread00(dpar)) where
 {
 val dpar =
 d0parsed_from_fpath(1(*dyn*), fpth)
@@ -294,6 +308,14 @@ d0parsed_from_fpath(1(*dyn*), fpth)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2025-05-24:
+Note that
+[d2parsed_of_trans02]
+does call tread20 to check
+before it returns the output!
+*)
 //
 #implfun
 d2parsed_of_trans02(dpar) =
@@ -313,6 +335,13 @@ end (*let*) // end of [d2parsed_of_trans02(dpar)]
 //
 (* ****** ****** *)
 //
+(*
+Note that
+[d3parsed_of_trans03]
+does call tread3a to check
+before it returns the output!
+*)
+//
 #implfun
 d3parsed_of_trans03(dpar) =
 let
@@ -323,7 +352,7 @@ val dpar = d3parsed_of_trans23(dpar)
 val dpar = d3parsed_of_tread23(dpar)
 //
 val dpar = d3parsed_of_trans3a(dpar)
-val dpar = d3parsed_of_tread30(dpar) in dpar
+val dpar = d3parsed_of_tread3a(dpar) in dpar
 //
 end (*let*) // end of [d3parsed_of_trans03(dpar)]
 //

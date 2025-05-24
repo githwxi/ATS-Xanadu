@@ -60,7 +60,7 @@ ATS_PACKNAME
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
-#staload "./../SATS/preadx0.sats"
+#staload "./../SATS/pread00.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -681,20 +681,20 @@ end (*let*) // end of [d0ecl_dynconst_errck]
 (* ****** ****** *)
 #extern
 fun
-preadx0_s0tcn: fpreadx0(s0tcn)
+pread00_s0tcn: fpread00(s0tcn)
 #extern
 fun
-preadx0_d0tst: fpreadx0(d0tst)
+pread00_d0tst: fpread00(d0tst)
 #extern
 fun
-preadx0_s0tcnlst: fpreadx0(s0tcnlst)
+pread00_s0tcnlst: fpread00(s0tcnlst)
 #extern
 fun
-preadx0_d0tstlst: fpreadx0(d0tstlst)
+pread00_d0tstlst: fpread00(d0tstlst)
 (* ****** ****** *)
 
 #implfun
-preadx0_s0tcn
+pread00_s0tcn
 (syn, err) =
 (
 case+
@@ -713,16 +713,16 @@ s0tcn
 //
 val e00 = err
 //
-val sid0 = preadx0_i0dnt(sid0, err)
-val topt = preadx0_sort0opt(topt, err)
+val sid0 = pread00_i0dnt(sid0, err)
+val topt = pread00_sort0opt(topt, err)
 //
 }(*where*)//end-of(if(err=e00))
-)(*case+*)//end-of(preadx0_s0tcn(syn,err))
+)(*case+*)//end-of(pread00_s0tcn(syn,err))
 
 (* ****** ****** *)
 
 #implfun
-preadx0_d0tst
+pread00_d0tst
 (syn, err) =
 (
 case+
@@ -745,7 +745,7 @@ d0tst
 val e00 = err
 //
 val tid0 =
-preadx0_i0dnt(tid0, err)
+pread00_i0dnt(tid0, err)
 //
 val (  ) =
 (
@@ -757,48 +757,48 @@ teq1.node() of
 //
 // HX: tbar: tokenopt
 //
-val tcns = preadx0_s0tcnlst(tcns, err)
+val tcns = pread00_s0tcnlst(tcns, err)
 //
 }(*where*)//end-of(if(err=e00))
-)(*case+*)//end-of(preadx0_d0tst(syn,err))
+)(*case+*)//end-of(pread00_d0tst(syn,err))
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_s0tcnlst
+pread00_s0tcnlst
 (   lst, err   ) =
-list_preadx0_fnp(lst,err,preadx0_s0tcn)
+list_pread00_fnp(lst,err,pread00_s0tcn)
 #implfun
-preadx0_d0tstlst
+pread00_d0tstlst
 (   lst, err   ) =
-list_preadx0_fnp(lst,err,preadx0_d0tst)
+list_pread00_fnp(lst,err,pread00_d0tst)
 //
 (* ****** ****** *)
 #extern
 fun
-preadx0_s0uni: fpreadx0(s0uni)
+pread00_s0uni: fpread00(s0uni)
 #extern
 fun
-preadx0_d0tcn: fpreadx0(d0tcn)
+pread00_d0tcn: fpread00(d0tcn)
 #extern
 fun
-preadx0_d0typ: fpreadx0(d0typ)
+pread00_d0typ: fpread00(d0typ)
 #extern
 fun
-preadx0_s0unilst: fpreadx0(s0unilst)
+pread00_s0unilst: fpread00(s0unilst)
 #extern
 fun
-preadx0_d0tcnlst: fpreadx0(d0tcnlst)
+pread00_d0tcnlst: fpread00(d0tcnlst)
 #extern
 fun
-preadx0_d0typlst: fpreadx0(d0typlst)
+pread00_d0typlst: fpread00(d0typlst)
 #extern
 fun
-preadx0_wd0eclseq: fpreadx0(wd0eclseq)
+pread00_wd0eclseq: fpread00(wd0eclseq)
 (* ****** ****** *)
 //
 #implfun
-preadx0_s0uni
+pread00_s0uni
   (s0u, err) = let
 //
 val e00 = err
@@ -816,7 +816,7 @@ S0UNIsome
 (tbeg, s0qs, tend) =>
 let
 val s0qs =
-preadx0_s0qualst(s0qs, err)
+pread00_s0qualst(s0qs, err)
 val (  ) =
 (
 case+
@@ -831,12 +831,12 @@ then (s0u) else s0uni
 (s0u.lctn(), S0UNIsome(tbeg,s0qs,tend))
 end(*let*)//end-of-[ S0UNIsome(_,_,_) ]
 //
-end(*let*)//end-of-[preadx0_s0uni(s0u,err)]
+end(*let*)//end-of-[pread00_s0uni(s0u,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0tcn
+pread00_d0tcn
   (tcn, err) = let
 //
 val e00 = err
@@ -849,13 +849,13 @@ D0TCNnode
 , s0es, sres) = tcn.node()
 //
 val deid =
-preadx0_i0dnt(deid, err)
+pread00_i0dnt(deid, err)
 val s0us =
-preadx0_s0unilst(s0us, err)
+pread00_s0unilst(s0us, err)
 val s0es =
-preadx0_s0explst(s0es, err)
+pread00_s0explst(s0es, err)
 val sres =
-preadx0_s0expopt(sres, err)
+pread00_s0expopt(sres, err)
 //
 in//let
 if
@@ -863,12 +863,12 @@ if
 then (tcn) else
 d0tcn_make_node
 (loc, D0TCNnode(s0us, deid, s0es, sres))
-end(*let*)//end-of-[preadx0_d0tcn(tcn,err)]
+end(*let*)//end-of-[pread00_d0tcn(tcn,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0typ
+pread00_d0typ
   (d0t, err) = let
 //
 val e00 = err
@@ -882,11 +882,11 @@ D0TYPnode
 , teq1, tcns) = d0t.node()
 //
 val deid =
-preadx0_i0dnt(deid, err)
+pread00_i0dnt(deid, err)
 val tmas =
-preadx0_t0maglst(tmas, err)
+pread00_t0maglst(tmas, err)
 val tres =
-preadx0_sort0opt(tres, err)
+pread00_sort0opt(tres, err)
 //
 val (  ) =
 (
@@ -896,7 +896,7 @@ teq1.node() of
 | _(*non-T_EQ0*) => ( err := err+1 )
 )
 //
-val tcns = preadx0_d0tcnlst(tcns, err)
+val tcns = pread00_d0tcnlst(tcns, err)
 //
 in//let
 if
@@ -904,33 +904,33 @@ if
 then (d0t) else
 d0typ_make_node
 (loc, D0TYPnode(deid,tmas,tres,teq1,tcns))
-end(*let*)//end-of-[preadx0_d0typ(d0t,err)]
+end(*let*)//end-of-[pread00_d0typ(d0t,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_s0unilst
+pread00_s0unilst
 (   lst, err   ) =
-list_preadx0_fnp(lst,err,preadx0_s0uni)
+list_pread00_fnp(lst,err,pread00_s0uni)
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0tcnlst
+pread00_d0tcnlst
 (   lst, err   ) =
-list_preadx0_fnp(lst,err,preadx0_d0tcn)
+list_pread00_fnp(lst,err,pread00_d0tcn)
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0typlst
+pread00_d0typlst
 (   lst, err   ) =
-list_preadx0_fnp(lst,err,preadx0_d0typ)
+list_pread00_fnp(lst,err,pread00_d0typ)
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_wd0eclseq
+pread00_wd0eclseq
  (wdcs, err) =
 (
 case+ wdcs of
@@ -946,7 +946,7 @@ let
 val e00 = err
 //
 val d0cs =
-preadx0_d0eclist(d0cs, err)
+pread00_d0eclist(d0cs, err)
 val (  ) =
 (
 case+ topt of
@@ -976,85 +976,85 @@ if(err=e00)
   else WD0CSsome(tbeg,topt,d0cs,tend)
 // end of [if]
 endlet // end of [WD0CSsome(_,_,_,_)]
-) (*case+*)//end-of(preadx0_wd0eclseq)
+) (*case+*)//end-of(pread00_wd0eclseq)
 //
 (* ****** ****** *)
 #extern
 fun
-preadx0_q0arg: fpreadx0(q0arg)
+pread00_q0arg: fpread00(q0arg)
 #extern
 fun
-preadx0_s0qag: fpreadx0(s0qag)
+pread00_s0qag: fpread00(s0qag)
 #extern
 fun
-preadx0_t0qag: fpreadx0(t0qag)
+pread00_t0qag: fpread00(t0qag)
 #extern
 fun
-preadx0_t0iag: fpreadx0(t0iag)
+pread00_t0iag: fpread00(t0iag)
 (* ****** ****** *)
 #extern
 fun
-preadx0_a0typ: fpreadx0(a0typ)
+pread00_a0typ: fpread00(a0typ)
 #extern
 fun
-preadx0_d0arg: fpreadx0(d0arg)
+pread00_d0arg: fpread00(d0arg)
 (* ****** ****** *)
 #extern
 fun
-preadx0_q0arglst: fpreadx0(q0arglst)
+pread00_q0arglst: fpread00(q0arglst)
 #extern
 fun
-preadx0_s0qaglst: fpreadx0(s0qaglst)
+pread00_s0qaglst: fpread00(s0qaglst)
 #extern
 fun
-preadx0_t0qaglst: fpreadx0(t0qaglst)
+pread00_t0qaglst: fpread00(t0qaglst)
 #extern
 fun
-preadx0_t0iaglst: fpreadx0(t0iaglst)
+pread00_t0iaglst: fpread00(t0iaglst)
 (* ****** ****** *)
 #extern
 fun
-preadx0_a0typlst: fpreadx0(a0typlst)
+pread00_a0typlst: fpread00(a0typlst)
 #extern
 fun
-preadx0_d0arglst: fpreadx0(d0arglst)
+pread00_d0arglst: fpread00(d0arglst)
 (* ****** ****** *)
 #extern
 fun
-preadx0_d0valdcl: fpreadx0(d0valdcl)
+pread00_d0valdcl: fpread00(d0valdcl)
 #extern
 fun
-preadx0_d0vardcl: fpreadx0(d0vardcl)
+pread00_d0vardcl: fpread00(d0vardcl)
 #extern
 fun
-preadx0_d0fundcl: fpreadx0(d0fundcl)
+pread00_d0fundcl: fpread00(d0fundcl)
 #extern
 fun
-preadx0_d0cstdcl: fpreadx0(d0cstdcl)
+pread00_d0cstdcl: fpread00(d0cstdcl)
 (* ****** ****** *)
 #extern
 fun
-preadx0_teqd0exp: fpreadx0(teqd0exp)
+pread00_teqd0exp: fpread00(teqd0exp)
 #extern
 fun
-preadx0_wths0exp: fpreadx0(wths0exp)
+pread00_wths0exp: fpread00(wths0exp)
 (* ****** ****** *)
 #extern
 fun
-preadx0_d0valdclist: fpreadx0(d0valdclist)
+pread00_d0valdclist: fpread00(d0valdclist)
 #extern
 fun
-preadx0_d0vardclist: fpreadx0(d0vardclist)
+pread00_d0vardclist: fpread00(d0vardclist)
 #extern
 fun
-preadx0_d0fundclist: fpreadx0(d0fundclist)
+pread00_d0fundclist: fpread00(d0fundclist)
 #extern
 fun
-preadx0_d0cstdclist: fpreadx0(d0cstdclist)
+pread00_d0cstdclist: fpread00(d0cstdclist)
 (* ****** ****** *)
 //
 #implfun
-preadx0_q0arg
+pread00_q0arg
   (q0a, err) =
 (
 case+
@@ -1066,9 +1066,9 @@ let
 val e00 = err
 //
 val sid0 =
-preadx0_i0dnt(sid0, err)
+pread00_i0dnt(sid0, err)
 val topt =
-preadx0_sort0opt(topt, err)
+pread00_sort0opt(topt, err)
 //
 in//let
 if
@@ -1076,11 +1076,11 @@ if
 then (q0a) else q0arg
 (q0a.lctn(), Q0ARGsome(sid0, topt))
 endlet // end of [Q0ARGsome(sid0,topt)]
-) (*case+*)//end-of-[preadx0_q0arg(q0a,err)]
+) (*case+*)//end-of-[pread00_q0arg(q0a,err)]
 (* ****** ****** *)
 //
 #implfun
-preadx0_s0qag
+pread00_s0qag
   (s0q, err) =
 (
 case+
@@ -1096,7 +1096,7 @@ let
 val e00 = err
 //
 val q0as =
-preadx0_q0arglst(q0as, err)
+pread00_q0arglst(q0as, err)
 val (  ) =
 (
 case+
@@ -1109,12 +1109,12 @@ if
 then (s0q) else s0qag
 (s0q.lctn(), S0QAGsome(tbeg,q0as,tend))
 endlet // end of [ S0QAGsome(_, _, _) ]
-) (*case+*)//end-of-[preadx0_s0qag(s0q,err)]
+) (*case+*)//end-of-[pread00_s0qag(s0q,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_t0qag
+pread00_t0qag
   (t0q, err) =
 (
 case+
@@ -1130,7 +1130,7 @@ let
 val e00 = err
 //
 val q0as =
-preadx0_q0arglst(q0as, err)
+pread00_q0arglst(q0as, err)
 val (  ) =
 (
 case+
@@ -1144,12 +1144,12 @@ if
 then (t0q) else t0qag
 (t0q.lctn(), T0QAGsome(tbeg,q0as,tend))
 endlet // end of [ T0QAGsome(_, _, _) ]
-) (*case+*)//end-of-[preadx0_t0qag(t0q,err)]
+) (*case+*)//end-of-[pread00_t0qag(t0q,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_t0iag
+pread00_t0iag
   (t0i, err) =
 (
 case+
@@ -1165,7 +1165,7 @@ let
 val e00 = err
 //
 val s0es =
-preadx0_s0explst(s0es, err)
+pread00_s0explst(s0es, err)
 val (  ) =
 (
 case+
@@ -1179,12 +1179,12 @@ if
 then (t0i) else t0iag
 (t0i.lctn(), T0IAGsome(tbeg,s0es,tend))
 endlet // end of [ T0IAGsome(_, _, _) ]
-) (*case+*)//end-of-[preadx0_t0iag(t0i,err)]
+) (*case+*)//end-of-[pread00_t0iag(t0i,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_a0typ
+pread00_a0typ
   (atp, err) =
 (
 case+
@@ -1195,18 +1195,18 @@ A0TYPsome
 let
 val e00 = err
 val loc = atp.lctn()
-val s0e1 = preadx0_s0exp(s0e1, err)
+val s0e1 = pread00_s0exp(s0e1, err)
 in//let
 if
 (err=e00)
 then (atp)
 else a0typ(loc,A0TYPsome(s0e1,topt))
 endlet // end of [ A0TYPsome(_, _) ]
-) (*case+*)//end-of-[preadx0_a0typ(t0i,err)]
+) (*case+*)//end-of-[pread00_a0typ(t0i,err)]
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0arg
+pread00_d0arg
   (dag, err) =
 (
 case+
@@ -1222,7 +1222,7 @@ let
 val e00 = err
 //
 val s0qs =
-preadx0_s0qualst(s0qs, err)
+pread00_s0qualst(s0qs, err)
 val (  ) =
 (
 case+
@@ -1247,7 +1247,7 @@ val e00 = err
 val loc = dag.lctn()
 //
 val dpid =
-preadx0_i0dnt(dpid, err)
+pread00_i0dnt(dpid, err)
 in//let
 if
 (err=e00)
@@ -1265,7 +1265,7 @@ val e00 = err
 val loc = dag.lctn()
 //
 val atps =
-preadx0_a0typlst(atps, err)
+pread00_a0typlst(atps, err)
 val opt2 =
 (
 case+ opt2 of
@@ -1276,7 +1276,7 @@ optn_cons(atps) =>
 let
 val e00 = err
 val atps =
-preadx0_a0typlst(atps, err)
+pread00_a0typlst(atps, err)
 in
 if
 (err=e00)
@@ -1291,12 +1291,12 @@ then (dag) else
 d0arg_make_node
 (loc,D0ARGdyn2(tbeg, atps, opt2, tend))
 endlet // end of [ D0ARGdyn2(_,_,_,_) ]
-) (*case+*)//end-of-[preadx0_d0arg(t0i,err)]
+) (*case+*)//end-of-[pread00_d0arg(t0i,err)]
 //
 (* ****** ****** *)
 
 #implfun
-preadx0_d0ecl
+pread00_d0ecl
   (dcl, err) =
 (
 case+
@@ -1405,7 +1405,7 @@ let
 //
 val lvl = 0
 val e00 = err
-val g0e = preadx0_g0exp(g0e, err)
+val g0e = pread00_g0exp(g0e, err)
 //
 in//let
 if
@@ -1422,7 +1422,7 @@ let
 //
 val lvl = 0
 val e00 = err
-val g0e = preadx0_g0exp(g0e, err)
+val g0e = pread00_g0exp(g0e, err)
 //
 in//let
 if
@@ -1462,7 +1462,7 @@ D0Cnonfix
 (tknd, oprs) = dcl.node()
 //
 val oprs =
-preadx0_i0dntlst(oprs, err)
+pread00_i0dntlst(oprs, err)
 //
 in
 if
@@ -1487,7 +1487,7 @@ D0Cfixity
 , oprs, prec) = dcl.node()
 //
 val oprs =
-preadx0_i0dntlst(oprs, err)
+pread00_i0dntlst(oprs, err)
 //
 val
 prec = f1_precopt(prec, err)
@@ -1547,7 +1547,7 @@ f1_tokint(tint, err) in prec end
 PRECopr2(opr1, pmod) =>
 let
 val opr1 =
-  preadx0(opr1, err)
+  pread00(opr1, err)
 val pmod =
   f1_precmod(pmod, err) in prec end
 ) (*case+*)//end-of-[f1_precopt(prec,err)]
@@ -1613,7 +1613,7 @@ val-
 D0Cstatic
 ( tknd, dcl1) = dcl.node()
 //
-val dcl1 = preadx0_d0ecl(dcl1, err)
+val dcl1 = pread00_d0ecl(dcl1, err)
 //
 in
 if
@@ -1634,7 +1634,7 @@ val-
 D0Cextern
 ( tknd, dcl1) = dcl.node()
 //
-val dcl1 = preadx0_d0ecl(dcl1, err)
+val dcl1 = pread00_d0ecl(dcl1, err)
 //
 in
 if
@@ -1660,9 +1660,9 @@ D0Cdefine
 , gmas, gedf) = dcl.node()
 //
 val geid =
-preadx0_i0dnt( geid, err )
+pread00_i0dnt( geid, err )
 val gmas =
-preadx0_g0maglst(gmas, err)
+pread00_g0maglst(gmas, err)
 //
 val gedf =
 (
@@ -1675,7 +1675,7 @@ let
 val e00 = err
 val
 g0e1 =
-preadx0_g0exp( g0e1, err )
+pread00_g0exp( g0e1, err )
 in//let
 if
 (err=e00)
@@ -1707,9 +1707,9 @@ D0Cmacdef
 , gmas, dedf) = dcl.node()
 //
 val geid =
-preadx0_i0dnt( geid, err )
+pread00_i0dnt( geid, err )
 val gmas =
-preadx0_g0maglst(gmas, err)
+pread00_g0maglst(gmas, err)
 //
 val dedf =
 (
@@ -1722,7 +1722,7 @@ let
 val e00 = err
 val
 d0e1 =
-preadx0_d0exp( d0e1, err )
+pread00_d0exp( d0e1, err )
 in//let
 if
 (err=e00)
@@ -1755,9 +1755,9 @@ D0Clocal0
 , dcs2, tend) = dcl.node()
 //
 val dcs1 =
-preadx0_d0eclist(dcs1, err)
+pread00_d0eclist(dcs1, err)
 val dcs2 =
-preadx0_d0eclist(dcs2, err)
+pread00_d0eclist(dcs2, err)
 val (  ) =
 (
 case+ tend.node() of
@@ -1787,7 +1787,7 @@ D0Cabssort
 (tknd, tid0) = dcl.node()
 //
 val tid0 =
-preadx0_i0dnt( tid0, err )
+pread00_i0dnt( tid0, err )
 //
 in//let
 if
@@ -1814,9 +1814,9 @@ D0Cstacst0
 , tcln, s0t1) = dcl.node()
 //
 val sid0 =
-preadx0_i0dnt(sid0, err)
+pread00_i0dnt(sid0, err)
 val tmas =
-preadx0_t0maglst(tmas, err)
+pread00_t0maglst(tmas, err)
 val (  ) =
 (
 case+
@@ -1824,7 +1824,7 @@ tcln.node() of
 | T_CLN() => ((*void*))
 | _(*non-T_CLN*) => (err := err+1)
 )
-val s0t1 = preadx0_sort0(s0t1, err)
+val s0t1 = pread00_sort0(s0t1, err)
 //
 in//let
 if
@@ -1851,7 +1851,7 @@ D0Csortdef
 , teq1, def2) = dcl.node()
 //
 val tid0 =
-preadx0_i0dnt(tid0, err)
+pread00_i0dnt(tid0, err)
 val (  ) =
 (
 case+
@@ -1859,7 +1859,7 @@ teq1.node() of
 | T_EQ0() => ((*void*))
 | _(*non-T_EQ0*) => (err := err+1)
 )
-val def2 = preadx0_s0tdf(def2, err)
+val def2 = pread00_s0tdf(def2, err)
 //
 in//let
 if
@@ -1890,11 +1890,11 @@ D0Csexpdef
 , teq1, def2) = dcl.node()
 //
 val seid =
-preadx0_i0dnt(seid, err)
+pread00_i0dnt(seid, err)
 val smas =
-preadx0_s0maglst(smas, err)
+pread00_s0maglst(smas, err)
 val tres =
-preadx0_sort0opt(tres, err)
+pread00_sort0opt(tres, err)
 val (  ) =
 (
 case+
@@ -1902,7 +1902,7 @@ teq1.node() of
 | T_EQ0() => ((*void*))
 | _(*non-T_EQ0*) => (err := err+1)
 )
-val def2 = preadx0_s0exp(def2, err)
+val def2 = pread00_s0exp(def2, err)
 //
 in//let
 if
@@ -1930,13 +1930,13 @@ D0Cabstype
 , tres, tdef) = dcl.node()
 //
 val seid =
-preadx0_i0dnt(seid, err)
+pread00_i0dnt(seid, err)
 val tmas =
-preadx0_t0maglst(tmas, err)
+pread00_t0maglst(tmas, err)
 val tres =
-preadx0_sort0opt(tres, err)
+pread00_sort0opt(tres, err)
 //
-val tdef = preadx0_a0tdf(tdef, err)
+val tdef = pread00_a0tdf(tdef, err)
 //
 in//let
 if
@@ -1960,7 +1960,7 @@ val-
 D0Cabsopen
 (tknd, sqid) = dcl.node((*void*))
 //
-val sqid = preadx0_s0qid(sqid, err)
+val sqid = pread00_s0qid(sqid, err)
 //
 in
 if
@@ -1988,11 +1988,11 @@ D0Cabsimpl
 , teq1, s0e2) = dcl.node()
 //
 val sqid =
-preadx0_s0qid(sqid, err)
+pread00_s0qid(sqid, err)
 val smas =
-preadx0_s0maglst(smas, err)
+pread00_s0maglst(smas, err)
 val tres =
-preadx0_sort0opt(tres, err)
+pread00_sort0opt(tres, err)
 //
 val (  ) =
 (
@@ -2001,7 +2001,7 @@ teq1.node() of
 | T_EQ0() => ()
 | _(*else*)=> (err := err + 1))
 //
-val s0e2 = preadx0_s0exp(s0e2, err)
+val s0e2 = pread00_s0exp(s0e2, err)
 //
 in//let
 if
@@ -2027,9 +2027,9 @@ D0Csymload
 , symb, twth
 , dqid, gopt) = dcl.node()
 //
-val symb = preadx0_s0ymb(symb, err)
-val dqid = preadx0_d0qid(dqid, err)
-val gopt = preadx0_g0expopt(gopt, err)
+val symb = pread00_s0ymb(symb, err)
+val dqid = pread00_d0qid(dqid, err)
+val gopt = pread00_g0expopt(gopt, err)
 //
 if
 (err=e00)
@@ -2055,7 +2055,7 @@ D0Cinclude
 ( knd0
 , tknd, g0e1) = dcl.node()
 //
-val g0e1 = preadx0_g0exp(g0e1, err)
+val g0e1 = pread00_g0exp(g0e1, err)
 //
 if
 (err=e00)
@@ -2080,7 +2080,7 @@ D0Cstaload
 ( knd0
 , tknd, g0e1) = dcl.node()
 //
-val g0e1 = preadx0_g0exp(g0e1, err)
+val g0e1 = pread00_g0exp(g0e1, err)
 //
 if
 (err=e00)
@@ -2102,7 +2102,7 @@ val-
 D0Cdyninit
 (tknd, g0e1) = dcl.node()
 //
-val g0e1 = preadx0_g0exp(g0e1, err)
+val g0e1 = pread00_g0exp(g0e1, err)
 //
 if
 (err=e00)
@@ -2130,7 +2130,7 @@ val-
 D0Cextcode
 (tknd, g0e1) = dcl.node()
 //
-val g0e1 = preadx0_g0exp(g0e1, err)
+val g0e1 = pread00_g0exp(g0e1, err)
 //
 if
 (err=e00)
@@ -2153,7 +2153,7 @@ val-
 D0Cdatasort
 (tknd, d0ts) = dcl.node()
 //
-val d0ts = preadx0_d0tstlst(d0ts, err)
+val d0ts = pread00_d0tstlst(d0ts, err)
 //
 if
 (err=e00)
@@ -2176,7 +2176,7 @@ D0Cvaldclst
 ( tknd, d0cs) = dcl.node()
 //
 val d0cs =
-preadx0_d0valdclist(d0cs, err)
+pread00_d0valdclist(d0cs, err)
 //
 in//let
 if
@@ -2200,7 +2200,7 @@ D0Cvardclst
 ( tknd, d0cs) = dcl.node()
 //
 val d0cs =
-preadx0_d0vardclist(d0cs, err)
+pread00_d0vardclist(d0cs, err)
 //
 in//let
 if
@@ -2227,9 +2227,9 @@ D0Cfundclst
 , tqas, d0cs) = dcl.node()
 //
 val tqas =
-preadx0_t0qaglst(tqas, err)
+pread00_t0qaglst(tqas, err)
 val d0cs =
-preadx0_d0fundclist(d0cs, err)
+pread00_d0fundclist(d0cs, err)
 //
 in//let
 if
@@ -2257,18 +2257,18 @@ D0Cimplmnt0
 , teq1, body) = dcl.node()
 //
 val sqas =
-  preadx0_s0qaglst(sqas, err)
+  pread00_s0qaglst(sqas, err)
 val tqas =
-  preadx0_t0qaglst(tqas, err)
+  pread00_t0qaglst(tqas, err)
 //
 val dqid =
-  preadx0_d0qid(dqid, err)
+  pread00_d0qid(dqid, err)
 val tias =
-  preadx0_t0iaglst(tias, err)
+  pread00_t0iaglst(tias, err)
 val fags =
-  preadx0_f0arglst(fags, err)
+  pread00_f0arglst(fags, err)
 //
-val sres = preadx0_s0res(sres, err)
+val sres = pread00_s0res(sres, err)
 //
 val (  ) =
 (
@@ -2279,7 +2279,7 @@ T_EQ0() => ((*void*))
 | _(*non-T_EQ0*) => (err := err+1)
 )
 //
-val body = preadx0_d0exp(body, err)
+val body = pread00_d0exp(body, err)
 //
 in//let
 if
@@ -2307,7 +2307,7 @@ D0Cexcptcon
 ( tknd
 , tbar, d0ts) = dcl.node()
 //
-val d0ts = preadx0_d0tcnlst(d0ts, err)
+val d0ts = pread00_d0tcnlst(d0ts, err)
 //
 if
 (err=e00)
@@ -2332,8 +2332,8 @@ D0Cdatatype
 ( tknd
 , d0ts, wdcs) = dcl.node()
 //
-val d0ts = preadx0_d0typlst(d0ts, err)
-val wdcs = preadx0_wd0eclseq(wdcs, err)
+val d0ts = pread00_d0typlst(d0ts, err)
+val wdcs = pread00_wd0eclseq(wdcs, err)
 //
 if
 (err=e00)
@@ -2359,9 +2359,9 @@ D0Cdynconst
 , tqas, d0cs) = dcl.node()
 //
 val tqas =
-preadx0_t0qaglst(tqas, err)
+pread00_t0qaglst(tqas, err)
 val d0cs =
-preadx0_d0cstdclist(d0cs, err)
+pread00_d0cstdclist(d0cs, err)
 //
 in
 if
@@ -2374,16 +2374,16 @@ end (*let*) // end of [f0_dynconst(dcl, err)]
 (*
 val (  ) = // HX: for debugging
 (
-  prerrsln( "preadx0_d0ecl: dcl = ", dcl ) )
+  prerrsln( "pread00_d0ecl: dcl = ", dcl ) )
 *)
 (* ****** ****** *)
 //
-} (*where*) // end of [preadx0_d0ecl(dcl,err)]
+} (*where*) // end of [pread00_d0ecl(dcl,err)]
 
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0eclist
+pread00_d0eclist
   (dcls, err) =
 (
 case+ dcls of
@@ -2397,21 +2397,21 @@ list_cons
 val e00 = err
 //
 val
-dcl1 = preadx0_d0ecl(dcl1, err)
+dcl1 = pread00_d0ecl(dcl1, err)
 val
-dcs1 = preadx0_d0eclist(dcs1, err)
+dcs1 = pread00_d0eclist(dcs1, err)
 //
 in//let
 if
 (err=e00)
 then dcls else list_cons(dcl1, dcs1)
 endlet // end of [list_cons(dcl1,dcls)]
-) (*case*)//end-of-[preadx0_d0eclist(dcls,err)]
+) (*case*)//end-of-[pread00_d0eclist(dcls,err)]
 //
 (* ****** ****** *)
 
 #implfun
-preadx0_a0tdf
+pread00_a0tdf
   (tdf0, err) =
 let
 val e00 = err
@@ -2424,7 +2424,7 @@ A0TDFsome() => tdf0
 A0TDFlteq(tok1, s0e2) =>
 let
 val s0e2 =
-preadx0_s0exp(s0e2, err)
+pread00_s0exp(s0e2, err)
 in
 if
 (err=e00)
@@ -2434,19 +2434,19 @@ end (*let*)//end of [A0TDFlteq(_,_)]
 A0TDFeqeq(tok1, s0e2) =>
 let
 val s0e2 =
-preadx0_s0exp(s0e2, err)
+pread00_s0exp(s0e2, err)
 in
 if
 (err=e00)
 then tdf0 else A0TDFeqeq(tok1, s0e2)
 end (*let*)//end of [A0TDFeqeq(_,_)]
 //
-end (*let*)//end-of-[preadx0_a0tdf(tdf0,err)]
+end (*let*)//end-of-[pread00_a0tdf(tdf0,err)]
 
 (* ****** ****** *)
 //
 #implfun
-preadx0_teqd0exp
+pread00_teqd0exp
   (tdxp, err) =
 (
 case+ tdxp of
@@ -2456,16 +2456,16 @@ TEQD0EXPnone() => tdxp
 TEQD0EXPsome(teq1, d0e2) =>
 let
 val e00 = err
-val d0e2 = preadx0_d0exp(d0e2, err)
+val d0e2 = pread00_d0exp(d0e2, err)
 in//letp
 if
 (err=e00)
 then tdxp else TEQD0EXPsome(teq1, d0e2)
 endlet // end of [TEQD0EXPsome(_,_)]
-) (*case+*)//end-(preadx0_teqd0exp(tdxp,err))
+) (*case+*)//end-(pread00_teqd0exp(tdxp,err))
 //
 #implfun
-preadx0_wths0exp
+pread00_wths0exp
   (wsxp, err) =
 (
 case+ wsxp of
@@ -2475,18 +2475,18 @@ WTHS0EXPnone() => wsxp
 WTHS0EXPsome(twth, s0e1) =>
 let
 val e00 = err
-val d0e2 = preadx0_s0exp(s0e1, err)
+val d0e2 = pread00_s0exp(s0e1, err)
 in//letp
 if
 (err=e00)
 then wsxp else WTHS0EXPsome(twth, s0e1)
 endlet // end of [WTHS0EXPsome(_,_)]
-) (*case+*)//end-(preadx0_wths0exp(wsxp,err))
+) (*case+*)//end-(pread00_wths0exp(wsxp,err))
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0valdcl
+pread00_d0valdcl
   (dval, err) =
 let
 //
@@ -2495,11 +2495,11 @@ val e00 = err
 val loc = dval.lctn()
 //
 val
-dpat = preadx0_d0pat(dpat,err)
+dpat = pread00_d0pat(dpat,err)
 val
-tdxp = preadx0_teqd0exp(tdxp,err)
+tdxp = pread00_teqd0exp(tdxp,err)
 val
-wsxp = preadx0_wths0exp(wsxp,err)
+wsxp = pread00_wths0exp(wsxp,err)
 //
 in//let
 if
@@ -2511,12 +2511,12 @@ end where
   val dpat = d0valdcl_get_dpat(dval)
   val tdxp = d0valdcl_get_tdxp(dval)
   val wsxp = d0valdcl_get_wsxp(dval)
-} (*where*)//end-of-[preadx0_d0valdcl(out,dval)]
+} (*where*)//end-of-[pread00_d0valdcl(out,dval)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0vardcl
+pread00_d0vardcl
   (dvar, err) =
 let
 //
@@ -2525,13 +2525,13 @@ val e00 = err
 val loc = dvar.lctn()
 //
 val
-dpid = preadx0_i0dnt(dpid,err)
+dpid = pread00_i0dnt(dpid,err)
 val
-vpid = preadx0_i0dntopt(vpid,err)
+vpid = pread00_i0dntopt(vpid,err)
 val
-sres = preadx0_s0expopt(sres,err)
+sres = pread00_s0expopt(sres,err)
 val
-dini = preadx0_teqd0exp(dini,err)
+dini = pread00_teqd0exp(dini,err)
 //
 in//let
 if
@@ -2544,12 +2544,12 @@ end where
   val vpid = d0vardcl_get_vpid(dvar)
   val sres = d0vardcl_get_sres(dvar)
   val dini = d0vardcl_get_dini(dvar)
-} (*where*)//end-of-[preadx0_d0vardcl(out,dvar)]
+} (*where*)//end-of-[pread00_d0vardcl(out,dvar)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0fundcl
+pread00_d0fundcl
   (dfun, err) =
 let
 //
@@ -2558,12 +2558,12 @@ val e00 = err
 val loc = dfun.lctn()
 //
 val dpid =
-  preadx0_i0dnt(dpid, err)
+  pread00_i0dnt(dpid, err)
 val fags =
-  preadx0_f0arglst(fags, err)
-val sres = preadx0_s0res(sres, err)
-val tdxp = preadx0_teqd0exp(tdxp, err)
-val wsxp = preadx0_wths0exp(wsxp, err)
+  pread00_f0arglst(fags, err)
+val sres = pread00_s0res(sres, err)
+val tdxp = pread00_teqd0exp(tdxp, err)
+val wsxp = pread00_wths0exp(wsxp, err)
 //
 in//let
 if
@@ -2578,12 +2578,12 @@ end where
   val sres = d0fundcl_get_sres(dfun)
   val tdxp = d0fundcl_get_tdxp(dfun)
   val wsxp = d0fundcl_get_wsxp(dfun)
-} (*where*)//end-of-[preadx0_d0fundcl(out,dfun)]
+} (*where*)//end-of-[pread00_d0fundcl(out,dfun)]
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_d0cstdcl
+pread00_d0cstdcl
   (dcst, err) =
 let
 //
@@ -2592,11 +2592,11 @@ val e00 = err
 val loc = dcst.lctn()
 //
 val dpid =
-  preadx0_i0dnt(dpid, err)
+  pread00_i0dnt(dpid, err)
 val dags =
-  preadx0_d0arglst(dags, err)
-val sres = preadx0_s0res(sres, err)
-val dres = preadx0_d0res(dres, err)
+  pread00_d0arglst(dags, err)
+val sres = pread00_s0res(sres, err)
+val dres = pread00_d0res(dres, err)
 //
 in//let
 if
@@ -2609,57 +2609,60 @@ end where
   val dags = d0cstdcl_get_darg(dcst)
   val sres = d0cstdcl_get_sres(dcst)
   val dres = d0cstdcl_get_dres(dcst)
-} (*where*)//end-of-[preadx0_d0cstdcl(out,dcst)]
+} (*where*)//end-of-[pread00_d0cstdcl(out,dcst)]
 //
 (* ****** ****** *)
 #implfun
-preadx0_q0arglst
+pread00_q0arglst
   (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_q0arg)
+list_pread00_fnp(lst, err, pread00_q0arg)
 (* ****** ****** *)
 #implfun
-preadx0_s0qaglst
+pread00_s0qaglst
   (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_s0qag)
+list_pread00_fnp(lst, err, pread00_s0qag)
 (* ****** ****** *)
 #implfun
-preadx0_t0qaglst
+pread00_t0qaglst
   (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_t0qag)
+list_pread00_fnp(lst, err, pread00_t0qag)
 (* ****** ****** *)
 #implfun
-preadx0_t0iaglst
+pread00_t0iaglst
   (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_t0iag)
+list_pread00_fnp(lst, err, pread00_t0iag)
 (* ****** ****** *)
 #implfun
-preadx0_a0typlst
+pread00_a0typlst
   (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_a0typ)
+list_pread00_fnp(lst, err, pread00_a0typ)
 #implfun
-preadx0_d0arglst
+pread00_d0arglst
   (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_d0arg)
+list_pread00_fnp(lst, err, pread00_d0arg)
 (* ****** ****** *)
 #implfun
-preadx0_d0valdclist
+pread00_d0valdclist
   (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_d0valdcl)
+list_pread00_fnp(lst, err, pread00_d0valdcl)
 (* ****** ****** *)
 #implfun
-preadx0_d0vardclist
+pread00_d0vardclist
   (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_d0vardcl)
+list_pread00_fnp(lst, err, pread00_d0vardcl)
 (* ****** ****** *)
 #implfun
-preadx0_d0fundclist
+pread00_d0fundclist
   (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_d0fundcl)
+list_pread00_fnp(lst, err, pread00_d0fundcl)
 (* ****** ****** *)
 #implfun
-preadx0_d0cstdclist
+pread00_d0cstdclist
   (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_d0cstdcl)
+list_pread00_fnp(lst, err, pread00_d0cstdcl)
 (* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_srcgen2_DATS_preadx0_decl00.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_pread00_decl00.dats] *)
+(***********************************************************************)

@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2023 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2022 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,9 +30,7 @@
 //
 (*
 Author: Hongwei Xi
-(*
-Wed 26 Jul 2023 01:13:09 PM EDT
-*)
+Start Time: June 17th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -55,28 +53,36 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-_(*?*) = "./xsymmap_topmap.dats"
+#staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
-#staload "./../SATS/locinfo.sats"
-(* ****** ****** *)
-#staload "./../SATS/lexing0.sats"
-(* ****** ****** *)
-#staload "./../SATS/staexp1.sats"
-#staload "./../SATS/dynexp1.sats"
-(* ****** ****** *)
-#staload "./../SATS/staexp2.sats"
-#staload "./../SATS/dynexp2.sats"
-#staload "./../SATS/dynexp3.sats"
-(* ****** ****** *)
-#staload "./../SATS/tread30.sats"
-(* ****** ****** *)
-#symload lctn with token_get_lctn
-#symload node with token_get_node
+#staload "./../SATS/pread00.sats"
 (* ****** ****** *)
 //
 #implfun
-list_tread30_fnp
+optn_pread00_fnp
+{  syn:tx  }
+(  opt , err , fpr  ) =
+(
+case+ opt of
+|
+optn_nil() => opt
+|
+optn_cons(tm1) =>
+let
+val e00 = err
+val tm1 = fpr(tm1, err)
+in // let
+if
+(err=e00)
+then opt else optn_cons(tm1)
+endlet // end of [optn_cons(tm1)]
+)(*case+*)//end(optn_pread00_fnp(opt,err,fpr)
+//
+(* ****** ****** *)
+//
+#implfun
+list_pread00_fnp
 {  syn:tx  }
 (  lst , err , fpr  ) =
 (
@@ -96,96 +102,89 @@ list_cons(tm1, tms) =>
 let
 val e00 = err
 val tm1 = fpr(tm1, err)
-val tms = auxlst(tms, err)
+val tm2 = auxlst(tms, err)
 in//let
 if
 (err = e00)
-then lst else list_cons(tm1, tms)
+then lst else list_cons(tm1,tm2)
 endlet // end of [auxlst(lst,err)]
 //
-}(*where*)//end(list_tread30_fnp(lst,err,fpr))
+}(*where*)//end(list_pread00_fnp(lst,err,fpr))
 //
 (* ****** ****** *)
 //
 #implfun
-optn_tread30_fnp
-{  syn:tx  }
-(  opt , err , fpr  ) =
-(
-case+ opt of
-|
-optn_nil() => opt
-|
-optn_cons(syn) =>
+d0parsed_of_pread00
+  (dpar) =
 let
-val e00 = err
-val syn = fpr(syn, err)
-in // let
-if
-(err=e00)
-then opt else optn_cons(syn)
-endlet // end of [optn_cons(syn)]
-)(*case+*)//end(optn_tread30_fnp(opt,err,fpr)
-//
-(* ****** ****** *)
-//
-#implfun
-d3parsed_of_tread30
-  (dpar) = let
 //
 var nerror: sint = 0
 //
 val stadyn =
-d3parsed_get_stadyn(dpar)
+d0parsed_get_stadyn(dpar)
 val source =
-d3parsed_get_source(dpar)
-//
-val t1penv =
-d3parsed_get_t1penv(dpar)
-val t2penv =
-d3parsed_get_t2penv(dpar)
-val t3penv =
-d3parsed_get_t3penv(dpar)
+d0parsed_get_source(dpar)
+val parsed =
+d0parsed_get_parsed(dpar)
 //
 val parsed =
-d3parsed_get_parsed(dpar)
-//
-val parsed =
-tread30_d3eclistopt(parsed, nerror)
-//
-(*
-val (    ) = prerrsln
-("d3parsed_of_tread30: t3penv = ", t3penv)
-*)
+pread00_d0eclistopt(parsed, nerror)
 //
 in//let
+d0parsed(stadyn,nerror,source,parsed)
+end(*let*)//end-of(d0parsed_of_pread00(dpar))
 //
-if // if
-(nerror=0)
-then (dpar) else
-d3parsed
-(stadyn,
- nerror,source,t1penv,t2penv,t3penv,parsed)
+(* ****** ****** *)
+#implfun
+pread00_d0eclistopt
+  (opt0, err) =
+optn_pread00_fnp(opt0, err, pread00_d0eclist)
+(* ****** ****** *)
 //
-end(*let*)//end-of(d3parsed_of_tread30(dpar))
+#implfun
+d0parsed_fpemsg
+  (out, dpar) = let
+//
+val
+nerror =
+d0parsed_get_nerror(dpar)
+//
+(*
+val () =
+let
+val
+source =
+d0parsed_get_source(dpar)
+in//let
+prerrsln
+("d0parsed_fpemsg: source = ", source)
+end//let//end-of-[val()]
+*)
+//
+in(*let*)
+if
+(nerror > 0) then
+let
+val parsed =
+d0parsed_get_parsed(dpar)
+in
+d0eclistopt_fpemsg(out, parsed) end else ()
+end (*let*)//end-of-[d0parsed_fpemsg(out,dpar)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread30_d3explstopt
-  (  dopt, err0  ) =
-optn_tread30_fnp(dopt, err0, tread30_d3explst)
-//
-(* ****** ****** *)
-//
-#implfun
-tread30_d3eclistopt
-  (  dopt, err0  ) =
-optn_tread30_fnp(dopt, err0, tread30_d3eclist)
+d0eclistopt_fpemsg
+  (out, dopt) =
+(
+case+ dopt of
+| optn_nil() => ((*void*))
+| optn_cons(d0cs) => d0eclist_fpemsg(out, d0cs)
+)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_tread30.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_pread00.dats] *)
 (***********************************************************************)
