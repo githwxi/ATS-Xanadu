@@ -38,16 +38,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (*
 HX-2023-09-24:
-Trans3a cleans up types
-Trans3a tables top-level templates
+What does [trans3a] do?
+1. It cleans up types
+2. It tables top-level templates
 *)
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-#define
-ATS_PACKNAME // namespace
-"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #absvtbx
 tr3aenv_vtbx
@@ -61,15 +58,8 @@ BAS = "./xbasics.sats"
 f2clknd = $BAS.f2clknd
 //
 (* ****** ****** *)
-//
 #staload
 SYM = "./xsymbol.sats"
-//
-(*
-#staload
-MAP = "./xsymmap.sats"
-*)
-//
 (* ****** ****** *)
 #staload
 S2E = "./staexp2.sats"
@@ -79,17 +69,16 @@ D2E = "./dynexp2.sats"
 #staload
 D3E = "./dynexp3.sats"
 (* ****** ****** *)
-#typedef sym_t = $SYM.sym_t
 (* ****** ****** *)
 //
+#typedef sym_t = $SYM.sym_t
+//
+(* ****** ****** *)
 #typedef s2cst = $S2E.s2cst
 #typedef s2var = $S2E.s2var
-//
 (* ****** ****** *)
-//
 #typedef s2typ = $S2E.s2typ
 #typedef l2t2p = $S2E.l2t2p
-//
 (* ****** ****** *)
 #typedef s2qag = $D2E.s2qag
 #typedef t2qag = $D2E.t2qag
@@ -114,136 +103,111 @@ D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
-#typedef
- s2varlst  =  $S2E.s2varlst
 (* ****** ****** *)
-#typedef
- s2typlst  =  $S2E.s2typlst
-#typedef
- l2t2plst  =  $S2E.l2t2plst
+#typedef s2varlst = $S2E.s2varlst
 (* ****** ****** *)
-#typedef
- s2qaglst  =  $D2E.s2qaglst
-#typedef
- t2qaglst  =  $D2E.t2qaglst
+#typedef s2typlst = $S2E.s2typlst
+#typedef l2t2plst = $S2E.l2t2plst
 (* ****** ****** *)
-#typedef
- t2jaglst  =  $D2E.t2jaglst
+#typedef s2qaglst = $D2E.s2qaglst
+#typedef t2qaglst = $D2E.t2qaglst
 (* ****** ****** *)
-#typedef
- teqd3exp  =  $D3E.teqd3exp
+#typedef t2jaglst = $D2E.t2jaglst
 (* ****** ****** *)
-#typedef
- d3patlst  =  $D3E.d3patlst
-#typedef
- d3explst  =  $D3E.d3explst
-#typedef
- d3expopt  =  $D3E.d3expopt
+#typedef teqd3exp = $D3E.teqd3exp
 (* ****** ****** *)
-#typedef
- l3d3plst  =  $D3E.l3d3plst
-#typedef
- l3d3elst  =  $D3E.l3d3elst
+#typedef d3patlst = $D3E.d3patlst
+#typedef d3explst = $D3E.d3explst
+#typedef d3expopt = $D3E.d3expopt
 (* ****** ****** *)
-#typedef
- f3arglst  =  $D3E.f3arglst
+#typedef l3d3plst = $D3E.l3d3plst
+#typedef l3d3elst = $D3E.l3d3elst
 (* ****** ****** *)
-#typedef
- d3gualst  =  $D3E.d3gualst
-#typedef
- d3clslst  =  $D3E.d3clslst
+#typedef f3arglst = $D3E.f3arglst
 (* ****** ****** *)
-#typedef
- d3eclist  =  $D3E.d3eclist
+#typedef d3gualst = $D3E.d3gualst
+#typedef d3clslst = $D3E.d3clslst
 (* ****** ****** *)
-#typedef
- d3valdcl  =  $D3E.d3valdcl
-#typedef
- d3vardcl  =  $D3E.d3vardcl
-#typedef
- d3fundcl  =  $D3E.d3fundcl
+#typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
-#typedef
- d3parsed  =  $D3E.d3parsed
-#typedef
- d3topenv  =  $D3E.d3topenv
+#typedef d3valdcl = $D3E.d3valdcl
+#typedef d3vardcl = $D3E.d3vardcl
+#typedef d3fundcl = $D3E.d3fundcl
 (* ****** ****** *)
-#typedef
-d3valdclist = $D3E.d3valdclist
-#typedef
-d3vardclist = $D3E.d3vardclist
-#typedef
-d3fundclist = $D3E.d3fundclist
+#typedef d3parsed = $D3E.d3parsed
+#typedef d3topenv = $D3E.d3topenv
 (* ****** ****** *)
-#typedef
-d3explstopt = $D3E.d3explstopt
-#typedef
-d3eclistopt = $D3E.d3eclistopt
+//
+#typedef d3valdclist = $D3E.d3valdclist
+#typedef d3vardclist = $D3E.d3vardclist
+#typedef d3fundclist = $D3E.d3fundclist
+//
+(* ****** ****** *)
+//
+#typedef d3explstopt = $D3E.d3explstopt
+#typedef d3eclistopt = $D3E.d3eclistopt
+//
 (* ****** ****** *)
 //
 fun
 d3parsed_of_trans3a
-( dpar : d3parsed ): (d3parsed)
+( dpar : d3parsed ): d3parsed
 //
 (* ****** ****** *)
 //
 fun
-tr3aenv_make_nil
-( (*void*) ): tr3aenv
+tr3aenv_make_nil((*0*)): tr3aenv
 //
 fun
-tr3aenv_free_top
-( env0 : tr3aenv ) : (d3topenv)
+tr3aenv_free_top(tr3aenv): d3topenv
 //
 (* ****** ****** *)
 //
 (*
 fun
 tr3aenv_pshlam0
-(env0: !tr3aenv): void//end-fun
+(env0: !tr3aenv): void//endfun
 fun
 tr3aenv_poplam0
-(env0: !tr3aenv): void//end-fun
+(env0: !tr3aenv): void//endfun
 *)
 //
 (* ****** ****** *)
 //
 fun
 tr3aenv_pshlet0
-(env0: !tr3aenv): void//end-fun
+  (env0: !tr3aenv): void//endfun
 fun
 tr3aenv_poplet0
-(env0: !tr3aenv): void//end-fun
+  (env0: !tr3aenv): void//endfun
 //
 fun
 tr3aenv_pshloc1
-(env0: !tr3aenv): void//end-fun
+  (env0: !tr3aenv): void//endfun
 fun
 tr3aenv_pshloc2
-(env0: !tr3aenv): void//end-fun
+  (env0: !tr3aenv): void//endfun
 fun
 tr3aenv_locjoin
-(env0: !tr3aenv): void//end-fun
+  (env0: !tr3aenv): void//endfun
 //
 (* ****** ****** *)
 //
 fun
 tr3aenv_d2crch$opt
 ( env0:
-! tr3aenv
-, d2c0 : d2cst) : d3eclist
+! tr3aenv, d2c0: d2cst): d3eclist
 fun
 tr3aenv_d2cins$any
 ( env0:
 ! tr3aenv
-, d2c0:d2cst,d3cl:d3ecl): void
+, d2c0: d2cst, d3cl: d3ecl): void
 //
 (* ****** ****** *)
 //
 fun
 tr3aenv_insert_d3ecl
-( env0:
-! tr3aenv, d3cl : d3ecl): void
+(env0: !tr3aenv, d3cl: d3ecl): void
 //
 (* ****** ****** *)
 //
@@ -253,8 +217,7 @@ fun
 list_trans3a_fnp
 ( e1:
 ! tr3aenv
-, xs
-: list(x0)
+, xs: list(x0)
 , fopr:
   (!tr3aenv, x0)->y0): list(y0)
 fun
@@ -273,24 +236,24 @@ optn_trans3a_fnp
 fun
 trans3a_s2exp
 ( env0:
-! tr3aenv,s2e0:s2exp):s2exp//fun
+! tr3aenv, s2e0: s2exp): s2exp
 *)
 fun
 trans3a_s2typ
 ( env0:
-! tr3aenv,t2p0:s2typ):s2typ//fun
+! tr3aenv,t2p0:s2typ):s2typ//endfun
 //
 fun
 trans3a_l2t2p
 ( env0:
-! tr3aenv,lt2p:l2t2p):l2t2p//fun
+! tr3aenv,lt2p:l2t2p):l2t2p//endfun
 //
 (* ****** ****** *)
 //
 fun
 trans3a_t2jag
 ( env0:
-! tr3aenv,tjag:t2jag):t2jag//fun
+! tr3aenv,tjag:t2jag):t2jag//endfun
 //
 (* ****** ****** *)
 //
@@ -298,7 +261,7 @@ trans3a_t2jag
 fun
 trans3a_d2var
 ( env0:
-! tr3aenv,dvar:d2var):d2var//fun
+! tr3aenv,dvar:d2var):d2var//endfun
 *)
 //
 (* ****** ****** *)
@@ -306,48 +269,48 @@ trans3a_d2var
 fun
 trans3a_d3pat
 ( env0:
-! tr3aenv,d3p0:d3pat):d3pat//fun
+! tr3aenv,d3p0:d3pat):d3pat//endfun
 //
 fun
 trans3a_d3exp
 ( env0:
-! tr3aenv,d3e0:d3exp):d3exp//fun
+! tr3aenv,d3e0:d3exp):d3exp//endfun
 //
 (* ****** ****** *)
 //
 fun
 trans3a_l3d3p
 ( env0:
-! tr3aenv,ld3p:l3d3p):l3d3p//fun
+! tr3aenv,ld3p:l3d3p):l3d3p//endfun
 //
 fun
 trans3a_l3d3e
 ( env0:
-! tr3aenv,ld3e:l3d3e):l3d3e//fun
+! tr3aenv,ld3e:l3d3e):l3d3e//endfun
 //
 (* ****** ****** *)
 //
 fun
 trans3a_f3arg
 ( env0:
-! tr3aenv,f3a0:f3arg):f3arg//fun
+! tr3aenv,f3a0:f3arg):f3arg//endfun
 //
 (* ****** ****** *)
 //
 fun
 trans3a_d3gua
 ( env0:
-! tr3aenv,dgua:d3gua):d3gua//fun
+! tr3aenv,dgua:d3gua):d3gua//endfun
 //
 fun
 trans3a_d3gpt
 ( env0:
-! tr3aenv,dgpt:d3gpt):d3gpt//fun
+! tr3aenv,dgpt:d3gpt):d3gpt//endfun
 //
 fun
 trans3a_d3cls
 ( env0:
-! tr3aenv,dcls:d3cls):d3cls//fun
+! tr3aenv,dcls:d3cls):d3cls//endfun
 //
 (* ****** ****** *)
 //
@@ -423,7 +386,7 @@ trans3a_d3clslst
 fun
 trans3a_d3ecl
 ( env0:
-! tr3aenv,d3cl:d3ecl):d3ecl//fun
+! tr3aenv,d3cl:d3ecl):d3ecl//endfun
 //
 (* ****** ****** *)
 //
@@ -432,7 +395,7 @@ trans3a_tmplocal
 ( env0:
 ! tr3aenv,
   head: d3eclist
-, body: d3eclist): d3eclist//fun
+, body: d3eclist): d3eclist//endfun
 //
 (* ****** ****** *)
 //
@@ -494,7 +457,11 @@ trans3a_d3eclistopt
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****************************************** *)
-(* ****************************************** *)
-
+#define ATS_PACKNAME "ATS3.XANADU.xatsopt-20220500"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_SATS_trans3a.sats] *)
+(***********************************************************************)
