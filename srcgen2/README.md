@@ -21,18 +21,21 @@ succeeded in bootstrapping ATS1 (ATS-Anairiats) in May of 2008, almost
 
 ## The structure of ATS3-Xanadu/srcgen2
 
-The (current) concrete syntax of ATS3 (for writing source code) is
-quite complex. This complexity is largely due to the need for
-supporting numerous forms of type annotations, which are essential for
-practical programming with advanced types. After lexing and parsing,
-the compiler obtains an abstract syntax tree (AST), which is referred
-to as level-0 AST. There are many a translation function in the
-compiler that translates one form of AST into another form. And each
-translation function is often paired with a so-call proofread
-function, which traverses an AST to look for errors; the errors found
-are stored in the AST returned by the proofread function, which can be
-reported later during another ASt traveral.
+After lexing and parsing, the compiler obtains an abstract syntax tree
+(AST), which is referred to as level-0 AST. There are many a
+translation function in the compiler that translates one form of AST
+into another form. And each translation function is often paired with
+a so-call proofread function, which traverses an AST to look for
+errors; the errors found are stored in the AST returned by the
+proofread function, which can be reported later during another AST
+traveral.
 
+In earlier (experimental) implementations of ATS (ATS0, ATS1, and
+ATS2), type-errors are reported immediately after they are found. This
+style yields very poor quality of type-error messages, resulting in so
+steep a learning curve for ATS that most programmers find learning ATS
+daunting or even a _mission impossible_ :)
+  
 ### Lexing
 
 The code for lexing (that is, lexical analysis) is manually written.
@@ -54,6 +57,11 @@ it more efficient.
   For tokenization, handling key words, error-reporting, etc.
 
 ### Parsing
+
+The (current) concrete syntax of ATS3 (for writing source code) is
+quite complex. This complexity is largely due to the need for
+supporting numerous forms of type annotations, which are essential for
+practical programming with advanced types.
 
 - `SATS/pread00.sats`:
   For detecting errors in the level-0 AST.
