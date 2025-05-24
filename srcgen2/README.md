@@ -91,10 +91,21 @@ it more efficient.
 
 ### Template Resolution
 
-- `SATS/trans3a.sats`
-- `SATS/tread3a.sats`
-- `SATS/trtmp3b.sats`
+- `SATS/trans3a.sats`:
+  For preparing template arguments for template resolution.
+- `SATS/tread3a.sats`:
+  For detecting errors in the level-3 AST after trans23 is done.
+
+- `SATS/trtmp3b.sats`:
+  For performing the first phase of template resolution, which is non-recursive
+  in the sense that the templates in the body of a template instance is not resolved.
+
 - `SATS/trtmp3c.sats`
+  For performing the second phase of template resolution, which is a recursive procedure
+  as the templates in the body of a template instance are handled by the same algorithm
+  for resolving the original template.
+
+- `SATS/fperr30.sats`: For reporting errors in the AST after trtmp3b and trtmp3c are done.
 
 <!--
 ########################################################################
