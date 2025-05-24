@@ -190,10 +190,6 @@ defq(_XATS2PY_)
 #include
 "srcgen1/prelude/DATS/CATS/PY/basics3.dats"
 //
-#include
-"srcgen1\
-/xatslib/libcats/DATS/CATS/PY/libcats.dats"
-//
 #endif // end-of-[------ifdef(_XATS2PY_)------]
 //
 (* ****** ****** *)
@@ -209,6 +205,8 @@ defq(_XATS2PY_)
 #include
 "srcgen1/xatslib/githwxi/DATS/g00iout.dats"
 //
+(* ****** ****** *)
+//
 #include
 "srcgen1/xatslib/libcats/DATS/CATS/libcats.dats"
 //
@@ -216,27 +214,31 @@ defq(_XATS2PY_)
 (* ****** ****** *)
 //
 (*
-HX-2025-04-12: For compiling to JS with Node
+HX-2025-04-12:
+For compiling to JS with Node
 *)
 //
 #if
 defq(_XATS2JS_)
-#define
-_XATS2JS_NODE_=1 #endif // #ifdef(_XATS2JS_)
-//
-#if
-defq
-(_XATS2JS_NODE_)
 #then
-//
 #include
 "srcgen1\
 /xatslib/libcats/DATS/CATS/JS/NODE/libcats.dats"
 #include
 "srcgen1\
 /xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
+#endif//end-of-[--------#ifdef(_XATS2JS_)--------]
 //
-#endif//end-of-[------#ifdef(_XATS2JS_NODE_)------]
+(*
+HX-2025-05-22: For compiling to Python3
+*)
+#if
+defq
+(_XATS2PY_)
+#then
+#include
+"srcgen1/xatslib/libcats/DATS/CATS/PY/libcats.dats"
+#endif//end-of-[---------#ifdef(_XATS2PY_)---------]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -244,6 +246,7 @@ defq
 #staload _(*local*) = "./../DATS/xlibext_tmplib.dats"
 #staload _(*local*) = "./../DATS/xatsopt_tmplib.dats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #if
