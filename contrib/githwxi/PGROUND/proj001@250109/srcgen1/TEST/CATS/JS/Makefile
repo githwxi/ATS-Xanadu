@@ -27,11 +27,11 @@ printf "// %s\n" "`date`" > $@_out.js
 test00:: ; $(CAT) \
 $(S2XSHRD)/runtime/xats2js_js1emit.js >> $@_out.js
 test00:: ; $(CAT) \
-$(S2XSHRD)/runtime/xats2js_prelude.js >> $@_out.js
+$(S2XSHRD)/runtime/srcgen2_prelude.js >> $@_out.js
 test00:: ; $(CAT) \
-$(S2XSHRD)/runtime/xats2js_xatslib.js >> $@_out.js
+$(S2XSHRD)/runtime/srcgen2_xatslib.js >> $@_out.js
 test00:: ; $(CAT) \
-$(S2XSHRD)/runtime/xats2js_prelude_node.js >> $@_out.js
+$(S2XSHRD)/runtime/srcgen2_prelude_node.js >> $@_out.js
 ############
 test00:: test00.dats; \
 $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> $@_out.js
@@ -43,11 +43,11 @@ printf "// %s\n" "`date`" > $@_out.js
 test01:: ; $(CAT) \
 $(S2XSHRD)/runtime/xats2js_js1emit.js >> $@_out.js
 test01:: ; $(CAT) \
-$(S2XSHRD)/runtime/xats2js_prelude.js >> $@_out.js
+$(S2XSHRD)/runtime/srcgen2_prelude.js >> $@_out.js
 test01:: ; $(CAT) \
-$(S2XSHRD)/runtime/xats2js_xatslib.js >> $@_out.js
+$(S2XSHRD)/runtime/srcgen2_xatslib.js >> $@_out.js
 test01:: ; $(CAT) \
-$(S2XSHRD)/runtime/xats2js_prelude_node.js >> $@_out.js
+$(S2XSHRD)/runtime/srcgen2_prelude_node.js >> $@_out.js
 ############
 test01:: \
 test01_misc001.dats; \
@@ -58,7 +58,7 @@ SRCGEN2=./../../../../../../../../srcgen2
 BOOTJS1=./../../../../../../../githwxi/BOOTJS1
 ########################################################################
 S2XSHRD=$(SRCGEN2)/xats2js/srcgenx/xshared
-XATS2JS_JSEMIT01=$(BOOTJS1)/xats2js/srcgen1/UTIL/xats2js_jsemit01_dats_out.js
+XATS2JS_JSEMIT01=$(BOOTJS1)/xats2js/srcgen1/UTIL/xats2js_jsemit01_ats3.js
 ########################################################################
 ########################################################################
 ###################### end of [Makefile_jsemit01] ######################
