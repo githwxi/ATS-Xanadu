@@ -97,6 +97,14 @@ $(NODE) \
 ########################################################################
 #
 lib2xatsopt2js: ; \
+printf "\
+## %s\n%s\n%s\n%s\n%s\n" \
+"`date`" \
+"import os" \
+"import sys" \
+"import math" \
+"sys.setrecursionlimit(66000)" \
+> $@_ats3.py && \
 $(CAT) \
 $(S2XSHRD)/xats2py_py1emit.py >> $@_ats3.py && \
 $(CAT) \
