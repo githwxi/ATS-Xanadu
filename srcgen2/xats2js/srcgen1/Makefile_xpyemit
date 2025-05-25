@@ -17,13 +17,13 @@ clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
 cleanall:: ; \
-rm -f BUILD/JS/*_sats_out0.js
+rm -f BUILD/PY/*_sats_out0.py
 cleanall:: ; \
-rm -f BUILD/JS/*_dats_out?.js
+rm -f BUILD/PY/*_dats_out?.py
 ########################################################################
 ########################################################################
 SRCGEN2=./../../../srcgen2
-XATSJSD=./../../../srcgen2/xats2js
+XATSPYD=./../../../srcgen2/xats2py
 ########################################################################
 #
 SRCSATS := \
@@ -65,33 +65,33 @@ js1emit_decl00.dats \
 ########################################################################
 ########################################################################
 OUT0SATS := \
-$(patsubst %.sats, BUILD/JS/%_sats_out0.js, $(SRCSATS))
+$(patsubst %.sats, BUILD/PY/%_sats_out0.py, $(SRCSATS))
 OUT0DATS := \
-$(patsubst %.dats, BUILD/JS/%_dats_out0.js, $(SRCDATS))
+$(patsubst %.dats, BUILD/PY/%_dats_out0.py, $(SRCDATS))
 OUT1DATS := \
-$(patsubst %.dats, BUILD/JS/%_dats_out1.js, $(SRCDATS))
+$(patsubst %.dats, BUILD/PY/%_dats_out1.py, $(SRCDATS))
 ########################################################################
 ########################################################################
--include .depend_xjsemit
+-include .depend_xpyemit
 ########################################################################
 ########################################################################
-BUILD/JS/%_sats_out0.js: SATS/%.sats; \
+BUILD/PY/%_sats_out0.py: SATS/%.sats; \
 $(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $< > $@
-BUILD/JS/%_dats_out0.js: DATS/%.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > $@
+BUILD/PY/%_dats_out0.py: DATS/%.dats; \
+$(NODE) --stack-size=4096 $(XATS2PY_PYEMIT00) $< > $@
 ########################################################################
 ########################################################################
 ifndef XATSOPT_TCHECK00
 XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js
 endif ## (ifeq($(XATSOPT_TCHECK00),""))
 ########################################################################
-ifndef XATS2JS_JSEMIT00
-XATS2JS_JSEMIT00=$(XATSJSD)/srcgen1/UTIL/xats2js_jsemit00_ats2.js
-endif ## (ifeq($(XATS2JS_JSEMIT00),""))
+ifndef XATS2PY_PYEMIT00
+XATS2PY_PYEMIT00=$(XATSPYD)/srcgen1/UTIL/xats2py_pyemit00_ats2.js
+endif ## (ifeq($(XATS2PY_PYEMIT00),""))
 ########################################################################
 ########################################################################
 #
-# HX-2025-04-10:
+# HX-2025-05-24:
 # Doing arithmetic in Makefile
 #
 N001="X"
@@ -106,12 +106,12 @@ N256=$(N128) $(N128)
 N512=$(N256) $(N256)
 NFILE=$(N064) $(N032) $(N004) # 100=064+032+004
 ##################################################################
-BUILD/JS/%_dats_out1.js: \
-BUILD/JS/%_dats_out0.js; \
+BUILD/PY/%_dats_out1.py: \
+BUILD/PY/%_dats_out0.py; \
 $(eval NFILE=$(NFILE) X) \
-$(SED) -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' $< > $@
+$(SED) -e 's/pyxtnm/pyx$(words $(NFILE))tnm/g' $< > $@
 ##################################################################
-lib2xats2js: $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xats2js.js
+lib2xats2js: $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xats2js.py
 ########################################################################
 ########################################################################
-#######################(end-of-[Makefile_xjsemit])######################
+#######################(end-of-[Makefile_xpyemit])######################
