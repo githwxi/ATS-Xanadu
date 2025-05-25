@@ -43,8 +43,8 @@ time make -C srcgen2/UTIL -f Makefile_xjsemit xatsopt_tcheck01
 #
 ##################################################################
 #
-# STEP~1 for boostrapping xats2js_jsemit00
-# STEP~1 for boostrapping xats2js_jsemit01
+# STEP~2 for boostrapping xats2js_jsemit00
+# STEP~2 for boostrapping xats2js_jsemit01
 #
 srcgen2_lib2xats2js: ; \
 XATS2JS_JSEMIT00=./../../../$(XATS2JS_JSEMIT00) \
@@ -60,8 +60,8 @@ time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit01
 #
 ##################################################################
 #
-# STEP~1 for boostrapping xats2js_pyemit00
-# STEP~1 for boostrapping xats2js_pyemit01
+# STEP~3 for boostrapping xats2py_pyemit00
+# STEP~3 for boostrapping xats2py_pyemit01
 #
 srcgen2_lib2xats2py: ; \
 XATS2JS_JSEMIT00=./../../../$(XATS2JS_JSEMIT00) \
