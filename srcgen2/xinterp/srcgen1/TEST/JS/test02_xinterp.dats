@@ -82,6 +82,9 @@ irparsed_of_trxd3ir(dpar)
 val
 dpar =
 d3parsed_of_trans3a(dpar)
+val
+dpar =
+d3parsed_of_tread3a(dpar)
 //
 val
 dpar =
@@ -89,9 +92,6 @@ d3parsed_of_trtmp3b(dpar)
 val
 dpar =
 d3parsed_of_trtmp3c(dpar)
-val
-dpar =
-d3parsed_of_tread30(dpar)
 //
 val ( ) =
 prerrsln

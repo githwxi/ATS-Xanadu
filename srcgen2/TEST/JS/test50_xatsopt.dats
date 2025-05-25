@@ -63,14 +63,14 @@
 (* ****** ****** *)
 #staload
 "./../../SATS/trans3a.sats"
+#staload
+"./../../SATS/tread3a.sats"
 (* ****** ****** *)
 #staload
 "./../../SATS/trtmp3b.sats"
 #staload
 "./../../SATS/trtmp3c.sats"
 (* ****** ****** *)
-#staload
-"./../../SATS/tread30.sats"
 #staload
 "./../../SATS/fperr30.sats"
 (* ****** ****** *)
@@ -374,13 +374,13 @@
 "./../../DATS/trtmp3c_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/tread30.dats"
+"./../../DATS/tread3a.dats"
 #include
-"./../../DATS/tread30_staexp.dats"
+"./../../DATS/tread3a_staexp.dats"
 #include
-"./../../DATS/tread30_dynexp.dats"
+"./../../DATS/tread3a_dynexp.dats"
 #include
-"./../../DATS/tread30_decl00.dats"
+"./../../DATS/tread3a_decl00.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/fperr30.dats"
@@ -414,19 +414,17 @@ mytest
 let
 //
 val dpar =
-  d3parsed_of_trtmp3b(dpar)
+  d3parsed_of_tread3a(dpar)
 //
+val dpar =
+  d3parsed_of_trtmp3b(dpar)
 val dpar =
   d3parsed_of_trtmp3c(dpar)
 //
-// (*
-val dpar =
-  d3parsed_of_tread30(dpar)
-// *)
-//
 in//let
 fperr30_d3parsed
-(g_stderr((*tmp*)), dpar) end where
+  (g_stderr((*tmp*)), dpar) end
+where
 {
 val dpar = d3parsed_of_fildats(fpath)
 }

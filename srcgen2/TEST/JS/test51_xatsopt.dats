@@ -40,11 +40,11 @@ let
 //
 (*
 val dpar =
+  d3parsed_of_tread3a(dpar)
+val dpar =
   d3parsed_of_trtmp3b(dpar)
 val dpar =
   d3parsed_of_trtmp3c(dpar)
-val dpar =
-  d3parsed_of_tread30(dpar)
 *)
 //
 val dpar =

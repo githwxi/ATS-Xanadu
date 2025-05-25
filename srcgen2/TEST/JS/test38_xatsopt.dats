@@ -63,9 +63,9 @@
 (* ****** ****** *)
 #staload
 "./../../SATS/trans3a.sats"
-(* ****** ****** *)
 #staload
-"./../../SATS/tread30.sats"
+"./../../SATS/tread3a.sats"
+(* ****** ****** *)
 #staload
 "./../../SATS/fperr30.sats"
 (* ****** ****** *)
@@ -347,13 +347,13 @@
 "./../../DATS/trans3a_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/tread30.dats"
+"./../../DATS/tread3a.dats"
 #include
-"./../../DATS/tread30_staexp.dats"
+"./../../DATS/tread3a_staexp.dats"
 #include
-"./../../DATS/tread30_dynexp.dats"
+"./../../DATS/tread3a_dynexp.dats"
 #include
-"./../../DATS/tread30_decl00.dats"
+"./../../DATS/tread3a_decl00.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/fperr30.dats"
