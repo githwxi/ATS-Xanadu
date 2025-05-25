@@ -70,6 +70,14 @@ $(CAT) $(LIBXATSOPT_JS) >> $@_ats2.js && \
 $(CAT) $(LIBXATS2JS_JS) >> $@_ats2.js && \
 $(XATS2JS) --output-a $@_ats2.js --dynamic $@.dats
 #
+########################################################################
+#
+# HX-2025-05-25:
+# These are fallback versions:
+# npx google-closure-compiler@20230502
+# npx google-closure-compiler@20230802
+# npx google-closure-compiler@20240317
+#
 xats2js_jsemit01_opt1: ; \
 npx google-closure-compiler \
   -W QUIET --compilation_level SIMPLE \
@@ -87,6 +95,14 @@ $(SRCGEN1_PRELUDE_NODE) >> $@_ats2.js && \
 $(CAT) \
 $(SRCGEN1_XATSLIB_NODE) >> $@_ats2.js && \
 $(CAT) $(LIBXATSOPT_JS) $(LIBXATS2JS_JS) >> $@_ats2.js
+#
+########################################################################
+#
+# HX-2025-05-25:
+# These are fallback versions:
+# npx google-closure-compiler@20230502
+# npx google-closure-compiler@20230802
+# npx google-closure-compiler@20240317
 #
 lib1xatsopt2js_opt1: lib1xatsopt2js; \
 npx google-closure-compiler \
