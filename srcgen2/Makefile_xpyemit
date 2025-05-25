@@ -1,0 +1,286 @@
+########################################################################
+########################################################################
+# Makefile for bootstrapping
+########################################################################
+########################################################################
+CAT=cat
+SED=sed
+ECHO=echo
+MAKE=make
+NODE=node
+########################################################################
+SRCGEN2=./../srcgen2
+XATSPYD=./../srcgen2/xats2py
+########################################################################
+########################################################################
+all:: lib2xatsopt
+########################################################################
+########################################################################
+clean:: ; rm -f *~
+########################################################################
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f BUILD/PY/*_sats_out0.py
+cleanall:: ; rm -f BUILD/PY/*_dats_out?.py
+########################################################################
+########################################################################
+
+SRCSATS := \
+xbasics.sats \
+xlibext.sats \
+xsynoug.sats \
+xerrory.sats \
+xstamp0.sats \
+xsymbol.sats \
+xlabel0.sats \
+filpath.sats \
+locinfo.sats \
+lexbuf0.sats \
+lexing0.sats \
+staexp0.sats \
+dynexp0.sats \
+parsing.sats \
+pread00.sats \
+staexp1.sats \
+dynexp1.sats \
+gmacro1.sats \
+xsymmap.sats \
+xsymenv.sats \
+xfixity.sats \
+trans01.sats \
+tread01.sats \
+staexp2.sats \
+statyp2.sats \
+dynexp2.sats \
+nmspace.sats \
+trans12.sats \
+tread12.sats \
+trans2a.sats \
+trsym2b.sats \
+tread20.sats \
+fperr20.sats \
+dynexp3.sats \
+trans23.sats \
+tread23.sats \
+trans3a.sats \
+tread3a.sats \
+trtmp3b.sats \
+trtmp3c.sats \
+fperr30.sats \
+xglobal.sats \
+xatsopt.sats \
+
+########################################################################
+
+SRCDATS := \
+xbasics.dats \
+xbasics_print0.dats \
+xlibext.dats \
+xlibext_tmplib.dats \
+xlibext_jsemit.dats \
+xlibext_pyemit.dats \
+xsynoug.dats \
+xerrory.dats \
+xstamp0.dats \
+xstamp0_print0.dats \
+xstamp0_tmpmap.dats \
+xsymbol.dats \
+xsymbol_print0.dats \
+xsymbol_mymap0.dats \
+xsymbol_inits0.dats \
+xlabel0.dats \
+xlabel0_print0.dats \
+xsymmap.dats \
+xsymmap_topmap.dats \
+xsymmap_stkmap.dats \
+xglobal.dats \
+filpath.dats \
+filpath_print0.dats \
+filpath_drpth0.dats \
+filpath_fpath0.dats \
+filpath_search.dats \
+locinfo.dats \
+locinfo_print0.dats \
+lexbuf0.dats \
+lexbuf0_cstrx1.dats \
+lexbuf0_cstrx2.dats \
+lexing0.dats \
+lexing0_print0.dats \
+lexing0_mymap0.dats \
+lexing0_kword0.dats \
+lexing0_token0.dats \
+lexing0_utils1.dats \
+lexing0_utils2.dats \
+staexp0.dats \
+staexp0_print0.dats \
+dynexp0.dats \
+dynexp0_print0.dats \
+parsing.dats \
+parsing_basics.dats \
+parsing_tokbuf.dats \
+parsing_utils0.dats \
+parsing_staexp.dats \
+parsing_dynexp.dats \
+parsing_decl00.dats \
+pread00.dats \
+pread00_staexp.dats \
+pread00_dynexp.dats \
+pread00_decl00.dats \
+pread00_errmsg.dats \
+xfixity.dats \
+staexp1.dats \
+staexp1_print0.dats \
+dynexp1.dats \
+dynexp1_print0.dats \
+gmacro1.dats \
+gmacro1_print0.dats \
+trans01.dats \
+trans01_myenv0.dats \
+trans01_utils0.dats \
+trans01_staexp.dats \
+trans01_dynexp.dats \
+trans01_decl00.dats \
+tread01.dats \
+tread01_staexp.dats \
+tread01_dynexp.dats \
+tread01_decl00.dats \
+tread01_errmsg.dats \
+staexp2.dats \
+statyp2.dats \
+staexp2_print0.dats \
+statyp2_print0.dats \
+staexp2_inits0.dats \
+statyp2_inits0.dats \
+staexp2_utils1.dats \
+staexp2_utils2.dats \
+statyp2_utils1.dats \
+statyp2_utils2.dats \
+statyp2_tmplib.dats \
+dynexp2.dats \
+dynexp2_print0.dats \
+dynexp2_utils0.dats \
+nmspace.dats \
+trans12.dats \
+trans11_myenv0.dats \
+trans12_myenv0.dats \
+trans11_gmacro.dats \
+trans12_gmacro.dats \
+trans12_utils0.dats \
+trans12_staexp.dats \
+trans12_dynexp.dats \
+trans12_decl00.dats \
+tread12.dats \
+tread12_staexp.dats \
+tread12_dynexp.dats \
+tread12_decl00.dats \
+tread12_errmsg.dats \
+trans2a.dats \
+trans2a_myenv0.dats \
+trans2a_utils0.dats \
+trans2a_dynexp.dats \
+trans2a_decl00.dats \
+trsym2b.dats \
+trsym2b_utils0.dats \
+trsym2b_dynexp.dats \
+trsym2b_decl00.dats \
+tread20.dats \
+tread20_dynexp.dats \
+tread20_decl00.dats \
+fperr20.dats \
+fperr20_dynexp.dats \
+fperr20_decl00.dats \
+dynexp3.dats \
+dynexp3_print0.dats \
+dynexp3_utils0.dats \
+trans23.dats \
+trans23_myenv0.dats \
+trans23_utils0.dats \
+trans23_dynexp.dats \
+trans23_decl00.dats \
+tread23.dats \
+tread23_dynexp.dats \
+tread23_decl00.dats \
+tread23_errmsg.dats \
+trans3a.dats \
+trans3a_myenv0.dats \
+trans3a_staexp.dats \
+trans3a_dynexp.dats \
+trans3a_decl00.dats \
+tread3a.dats \
+tread3a_staexp.dats \
+tread3a_dynexp.dats \
+tread3a_decl00.dats \
+trtmp3b.dats \
+trtmp3b_myenv0.dats \
+trtmp3b_utils0.dats \
+trtmp3b_dynexp.dats \
+trtmp3b_decl00.dats \
+trtmp3c.dats \
+trtmp3c_myenv0.dats \
+trtmp3c_utils0.dats \
+trtmp3c_dynexp.dats \
+trtmp3c_decl00.dats \
+fperr30.dats \
+fperr30_dynexp.dats \
+fperr30_decl00.dats \
+xatsopt.dats \
+xatsopt_tmplib.dats \
+xatsopt_utils0.dats \
+
+########################################################################
+########################################################################
+-include .depend_xpyemit
+########################################################################
+########################################################################
+OUT0SATS := \
+$(patsubst %.sats, \
+  BUILD/PY/%_sats_out0.py, $(SRCSATS))
+OUT0DATS := \
+$(patsubst %.dats, \
+  BUILD/PY/%_dats_out0.py, $(SRCDATS))
+OUT1DATS := \
+$(patsubst %.dats, \
+  BUILD/PY/%_dats_out1.py, $(SRCDATS))
+########################################################################
+########################################################################
+#
+BUILD/PY/%_sats_out0.py: \
+$(SRCGEN2)/SATS/%.sats; \
+$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $< > $@
+#
+BUILD/PY/%_dats_out0.py: \
+$(SRCGEN2)/DATS/%.dats; \
+$(NODE) --stack-size=4096 $(XATS2PY_PYEMIT00) $< > $@
+#
+########################################################################
+########################################################################
+N001="X"
+N002=$(N001) $(N001)
+N004=$(N002) $(N002)
+N008=$(N004) $(N004)
+N016=$(N008) $(N008)
+N032=$(N016) $(N016)
+N064=$(N032) $(N032)
+N128=$(N064) $(N064)
+N256=$(N128) $(N128)
+N512=$(N256) $(N256)
+NFILE=$(N064) $(N032) $(N004) # 100=064+032+004
+########################################################################
+BUILD/PY/%_dats_out1.py: \
+BUILD/PY/%_dats_out0.py; \
+$(eval NFILE=$(NFILE) X) \
+$(SED) -e 's/pyxtnm/pyx$(words $(NFILE))tnm/g' $< > $@
+########################################################################
+lib2xatsopt: \
+$(OUT1DATS); \
+$(CAT) $(OUT1DATS) > lib/lib2xatsopt.py
+########################################################################
+ifndef XATS2PY_TCHECK00
+XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.py
+endif ## (ifeq($(XATS2PY_TCHECK00),""))
+########################################################################
+ifndef XATS2PY_PYEMIT00
+XATS2PY_PYEMIT00=$(XATSPYD)/srcgen1/UTIL/xats2py_pyemit00_ats2.js
+endif ## (ifeq($(XATS2PY_PYEMIT00),""))
+########################################################################
+########################################################################
+#######################(end-of-[Makefile_xpyemit])######################

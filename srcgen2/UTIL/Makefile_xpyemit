@@ -1,0 +1,75 @@
+########################################################################
+########################################################################
+# Makefile for bootstrapping
+########################################################################
+########################################################################
+CAT=cat
+SED=sed
+ECHO=echo
+NODE=node
+########################################################################
+SRCGEN2=./../../srcgen2
+XATSPYD=./../../srcgen2/xats2py
+########################################################################
+S2XSHRD=\
+$(SRCGEN2)/xats2py/srcgenx/xshared/runtime
+########################################################################
+########################################################################
+#
+all:: \
+xatsopt_tcheck00
+xatsopt_tcheck00: ; \
+printf "\
+## %s\n%s\n%s\n%s\n%s\n" \
+"`date`" \
+"import os" \
+"import sys" \
+"import math" \
+"sys.setrecursionlimit(66000)" \
+> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/xats2py_py1emit.py >> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
+$(SED) -E 's/pyx(...)tnm/py1\1tnm/g' \
+$(SRCGEN2)/lib/lib2xatsopt.py | $(CAT) - >> $@_ats3.py && \
+$(NODE) --stack-size=8192 $(XATS2PY_PYEMIT00) xatsopt_tcheck00.dats >> $@_ats3.py
+#
+all:: \
+xatsopt_tcheck01
+xatsopt_tcheck01: ; \
+printf "\
+## %s\n%s\n%s\n%s\n%s\n" \
+"`date`" \
+"import os" \
+"import sys" \
+"import math" \
+"sys.setrecursionlimit(66000)" \
+> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/xats2py_py1emit.py >> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
+$(SED) -E 's/pyx(...)tnm/py1\1tnm/g' \
+$(SRCGEN2)/lib/lib2xatsopt.py | $(CAT) - >> $@_ats3.py && \
+$(NODE) --stack-size=8192 $(XATS2PY_PYEMIT00) xatsopt_tcheck01.dats >> $@_ats3.py
+#
+########################################################################
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+########################################################################
+cleanall:: ; rm -f xatsopt_tcheck00_ats3.py
+cleanall:: ; rm -f xatsopt_tcheck01_ats3.py
+########################################################################
+########################################################################
+ifndef XATS2PY_PYEMIT00
+XATS2PY_PYEMIT00=$(XATSPYD)/srcgen1/UTIL/xats2py_pyemit00_ats2.js
+endif ## (ifeq($(XATS2PY_PYEMIT00),""))
+########################################################################
+########################################################################
+#######################(end-of-[Makefile_xpyemit])######################
