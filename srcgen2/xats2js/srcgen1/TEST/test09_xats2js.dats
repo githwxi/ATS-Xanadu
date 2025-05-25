@@ -6,14 +6,11 @@
 (* ****** ****** *)
 //
 #include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
+"prelude/HATS/prelude_dats.hats"
 #include
-"srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
+"prelude/HATS/prelude_JS_dats.hats"
 #include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
+"prelude/HATS/prelude_NODE_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -21,6 +18,14 @@
 #abstbox board_tbox
 #typedef board = board_tbox
 
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+raiseErrorExn
+  ( (*0*) ): a = $raise ErrorExn()
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -43,5 +48,5 @@ board_forall
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xats2js_srcgen1_TEST_test09_xats2js.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test09_xats2js.dats] *)
 (***********************************************************************)

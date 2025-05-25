@@ -2,15 +2,12 @@
 (* ****** ****** *)
 //
 #include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
+"prelude/HATS/prelude_dats.hats"
 //
 #include
-"srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
+"prelude/HATS/prelude_JS_dats.hats"
 #include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
+"prelude/HATS/prelude_NODE_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -119,5 +116,5 @@ prints("fibo4(10) = ", fibo4(10), "\n")
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xats2js_srcgen1_TEST_test05_xats2js.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test05_xats2js.dats] *)
 (***********************************************************************)

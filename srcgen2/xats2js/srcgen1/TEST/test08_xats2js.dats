@@ -6,17 +6,14 @@
 (* ****** ****** *)
 //
 #include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
+"prelude/HATS/prelude_dats.hats"
 #include
-"srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
+"prelude/HATS/prelude_JS_dats.hats"
 #include
-"srcgen2\
-/xatslib/HATS/xatslib_JS_dats.hats"
+"xatslib\
+/xbasics/HATS/xbasics_JS_dats.hats"
 #include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
+"prelude/HATS/prelude_NODE_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -181,7 +178,7 @@ prints
 var A = [1,2,3]
 "(*end-of-[extcode]*)
 val A =
-$synext("A"):jsa1sz(sint,3)
+$synext("A"):jsdasz(sint,3)
 //
 *)
 //
@@ -189,7 +186,7 @@ $synext("A"):jsa1sz(sint,3)
 (* ****** ****** *)
 //
 val A =
-jsa1sz_3val(1, 3, 2)
+jsdasz_3val(1, 3, 2)
 val () =
 (
   prints("A = ", A, "\n"))
@@ -213,7 +210,7 @@ gseq_ifolditm
 {
 #typedef r0 = sint
 #typedef x0 = sint
-#typedef xs = jsa1sz(sint)
+#typedef xs = jsdasz(sint)
 #impltmp
 ifolditm$fopr
 < r0 > < x0 >
@@ -228,7 +225,7 @@ val () =
 (* ****** ****** *)
 //
 val B =
-jsa1sz
+jsdasz
 (
 map_lstrm(10,lam(i:nint)=>i+1))
 val () = prints("B = ", B, "\n")
@@ -237,5 +234,5 @@ val () = prints("B = ", B, "\n")
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xats2js_srcgen1_TEST_test08_xats2js.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test08_xats2js.dats] *)
 (***********************************************************************)

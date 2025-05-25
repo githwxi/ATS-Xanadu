@@ -6,12 +6,10 @@
 (* ****** ****** *)
 //
 #include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
+"prelude/HATS/prelude_dats.hats"
 //
 #include
-"srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
+"prelude/HATS/prelude_JS_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -56,5 +54,5 @@ val list_btw_vt_sint = list_btw_vt<sint>(*void*)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xats2js_srcgen1_TEST_test04_xats2js.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test04_xats2js.dats] *)
 (***********************************************************************)
