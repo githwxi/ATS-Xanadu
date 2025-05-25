@@ -84,10 +84,11 @@ dpar =
 d3parsed_of_trans3a(dpar)
 val
 dpar =
-d3parsed_of_trtmp3b(dpar)
+d3parsed_of_tread3a(dpar)
+//
 val
 dpar =
-d3parsed_of_tread30(dpar)
+d3parsed_of_trtmp3b(dpar)
 //
 val ( ) =
 printsln("dpar = ", dpar)

@@ -37,11 +37,10 @@ Tue Jan 23 00:01:55 EST 2024
 #staload "./../SATS/tread23.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
+#staload "./../SATS/tread3a.sats"
 (* ****** ****** *)
 #staload "./../SATS/trtmp3b.sats"
 #staload "./../SATS/trtmp3c.sats"
-(* ****** ****** *)
-#staload "./../SATS/tread30.sats"
 (* ****** ****** *)
 #staload "./../SATS/fperr30.sats"
 (* ****** ****** *)

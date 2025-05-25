@@ -49,14 +49,14 @@ Tue Nov 28 08:48:38 EST 2023
 (* ****** ****** *)
 #staload
 "./../../../SATS/trans3a.sats"
+#staload
+"./../../../SATS/tread3a.sats"
 (* ****** ****** *)
 #staload
 "./../../../SATS/trtmp3b.sats"
 #staload
 "./../../../SATS/trtmp3c.sats"
 (* ****** ****** *)
-#staload
-"./../../../SATS/tread30.sats"
 #staload
 "./../../../SATS/fperr30.sats"
 (* ****** ****** *)

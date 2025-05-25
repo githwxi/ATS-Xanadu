@@ -63,9 +63,9 @@
 (* ****** ****** *)
 #staload
 "./../../SATS/trans3a.sats"
-(* ****** ****** *)
 #staload
-"./../../SATS/tread30.sats"
+"./../../SATS/tread3a.sats"
+(* ****** ****** *)
 #staload
 "./../../SATS/fperr30.sats"
 (* ****** ****** *)
@@ -358,13 +358,13 @@
 "./../../DATS/trtmp3b_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/tread30.dats"
+"./../../DATS/tread3a.dats"
 #include
-"./../../DATS/tread30_staexp.dats"
+"./../../DATS/tread3a_staexp.dats"
 #include
-"./../../DATS/tread30_dynexp.dats"
+"./../../DATS/tread3a_dynexp.dats"
 #include
-"./../../DATS/tread30_decl00.dats"
+"./../../DATS/tread3a_decl00.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/fperr30.dats"
@@ -393,13 +393,12 @@ prerrsln("the_tr12env_pvsload() = ", ret)
 (* ****** ****** *)
 val (  ) =
 let
+//
+val dpar =
+  d3parsed_of_tread3a(dpar)
+//
 val dpar =
   d3parsed_of_trtmp3b(dpar)
-//
-// (*
-val dpar =
-  d3parsed_of_tread30(dpar)
-// *)
 //
 in//let
   fperr30_d3parsed
