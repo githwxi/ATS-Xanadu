@@ -7,8 +7,7 @@ CAT=cat
 SED=sed
 ECHO=echo
 NODE=node
-########################################################################
-all::
+PRINTF=printf
 ########################################################################
 SRCGEN2=./../../../../srcgen2
 XATSJSD=./../../../../srcgen2/xats2js
@@ -17,13 +16,69 @@ XATSPYD=./../../../../srcgen2/xats2py
 S2XSHRD=\
 $(SRCGEN2)/xats2py/srcgenx/xshared/runtime
 ########################################################################
+########################################################################
+#
+all:: \
+xats2py_pyemit00
+xats2py_pyemit00: ; \
+printf "\
+## %s\n%s\n%s\n%s\n%s\n" \
+"`date`" \
+"import os" \
+"import sys" \
+"import math" \
+"sys.setrecursionlimit(66000)" \
+> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/xats2py_py1emit.py >> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
+$(SED) -E 's/pyx(...)tnm/py1\1tnm/g' \
+$(SRCGEN2)/lib/lib2xatsopt.py | $(CAT) - >> $@_ats3.py && \
+$(SED) -E 's/pyx(...)tnm/py2\1tnm/g' \
+$(XATSJSD)/srcgen1/lib/lib2xats2js.py | $(CAT) - >> $@_ats3.py && \
+$(SED) -E 's/pyx(...)tnm/py3\1tnm/g' \
+$(XATSPYD)/srcgen1/lib/lib2xats2py.py | $(CAT) - >> $@_ats3.py && \
+$(NODE) \
+  --stack-size=8192 $(XATS2PY_PYEMIT00) xats2py_pyemit00.dats >> $@_ats3.py
+#
+all:: \
+xats2py_pyemit01
+xats2py_pyemit01: ; \
+printf "\
+## %s\n%s\n%s\n%s\n%s\n" \
+"`date`" \
+"import os" \
+"import sys" \
+"import math" \
+"sys.setrecursionlimit(66000)" \
+> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/xats2py_py1emit.py >> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
+$(SED) -E 's/pyx(...)tnm/py1\1tnm/g' \
+$(SRCGEN2)/lib/lib2xatsopt.py | $(CAT) - >> $@_ats3.py && \
+$(SED) -E 's/pyx(...)tnm/py2\1tnm/g' \
+$(XATSJSD)/srcgen1/lib/lib2xats2js.py | $(CAT) - >> $@_ats3.py && \
+$(SED) -E 's/pyx(...)tnm/py3\1tnm/g' \
+$(XATSPYD)/srcgen1/lib/lib2xats2py.py | $(CAT) - >> $@_ats3.py && \
+$(NODE) \
+  --stack-size=8192 $(XATS2PY_PYEMIT00) xats2py_pyemit01.dats >> $@_ats3.py
+#
+########################################################################
+########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
 cleanall:: ; \
-rm -f lib2xatsopt2js_ats3.py
+rm -f xats2py_pyemit00_ats3.py
 cleanall:: ; \
-rm -f xats2js_jsemit0?_ats3.py
+rm -f xats2py_pyemit01_ats3.py
 ########################################################################
 ########################################################################
 ifndef XATSOPT_TCHECK00
@@ -35,76 +90,3 @@ XATS2PY_PYEMIT00=$(XATSPYD)/srcgen1/UTIL/xats2py_pyemit00_ats2.js
 endif ## (ifeq($(XATS2PY_PYEMIT00),""))
 ########################################################################
 ########################################################################
-all:: \
-xats2js_jsemit00
-xats2js_jsemit00: ; \
-printf "\
-## %s\n%s\n%s\n%s\n%s\n" \
-"`date`" \
-"import os" \
-"import sys" \
-"import math" \
-"sys.setrecursionlimit(66000)" \
-> $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/xats2py_py1emit.py >> $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
-$(SED) -E 's/pyx(...)tnm/py1\1tnm/g' \
-$(SRCGEN2)/lib/lib2xatsopt.py | $(CAT) - >> $@_ats3.py && \
-$(SED) -E 's/pyx(...)tnm/py2\1tnm/g' \
-$(XATSJSD)/srcgen1/lib/lib2xats2js.py | $(CAT) - >> $@_ats3.py && \
-$(NODE) \
-  --stack-size=8192 $(XATS2PY_PYEMIT00) xats2js_jsemit00.dats >> $@_ats3.py
-#
-all:: \
-xats2js_jsemit01
-xats2js_jsemit01: ; \
-printf "\
-## %s\n%s\n%s\n%s\n%s\n" \
-"`date`" \
-"import os" \
-"import sys" \
-"import math" \
-"sys.setrecursionlimit(66000)" \
-> $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/xats2py_py1emit.py >> $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
-$(SED) -E 's/pyx(...)tnm/py1\1tnm/g' \
-$(SRCGEN2)/lib/lib2xatsopt.py | $(CAT) - >> $@_ats3.py && \
-$(SED) -E 's/pyx(...)tnm/py2\1tnm/g' \
-$(XATSJSD)/srcgen1/lib/lib2xats2js.py | $(CAT) - >> $@_ats3.py && \
-$(NODE) \
-  --stack-size=8192 $(XATS2PY_PYEMIT00) xats2js_jsemit01.dats >> $@_ats3.py
-#
-########################################################################
-#
-lib2xatsopt2js: ; \
-printf "\
-## %s\n%s\n%s\n%s\n%s\n" \
-"`date`" \
-"import os" \
-"import sys" \
-"import math" \
-"sys.setrecursionlimit(66000)" \
-> $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/xats2py_py1emit.py >> $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
-$(SED) -E 's/pyx(...)tnm/py1\1tnm/g' \
-$(SRCGEN2)/lib/lib2xatsopt.py | $(CAT) - >> $@_ats3.py && \
-$(SED) -E 's/pyx(...)tnm/py2\1tnm/g' \
-$(XATSJSD)/srcgen1/lib/lib2xats2js.py | $(CAT) - >> $@_ats3.py
-#
-########################################################################
-########################################################################
-######################(end-of-[Makefile_xpyemit])#######################

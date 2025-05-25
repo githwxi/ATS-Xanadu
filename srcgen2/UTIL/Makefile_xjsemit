@@ -64,8 +64,10 @@ $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xatsopt_tcheck01.dats >> $@_ats3.j
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; rm -f xatsopt_tcheck00_ats3.js
-cleanall:: ; rm -f xatsopt_tcheck01_ats3.js
+cleanall:: ; \
+rm -f xatsopt_tcheck00_ats3.js
+cleanall:: ; \
+rm -f xatsopt_tcheck01_ats3.js
 ########################################################################
 ########################################################################
 ifndef XATS2JS_JSEMIT00

@@ -14,18 +14,32 @@ PYTHON=python3
 ########################################################################
 all:: test00
 all:: test01
+all:: test02
+all:: test03
+all:: test04
+all:: test05
+all:: test06
+all:: test07
+all:: test08
 ########################################################################
 ########################################################################
 testall:: test00; $(PYTHON) $<_out.py
 testall:: test01; $(PYTHON) $<_out.py
+testall:: test02; $(PYTHON) $<_out.py
+testall:: test03; $(PYTHON) $<_out.py
+testall:: test04; $(PYTHON) $<_out.py
+testall:: test05; $(PYTHON) $<_out.py
+testall:: test06; $(PYTHON) $<_out.py
+testall:: test07; $(PYTHON) $<_out.py
+testall:: test08; $(PYTHON) $<_out.py
 ########################################################################
 ########################################################################
 SRCGEN2_SRCGENX=\
 $(XATSHOME)/srcgen2/xats2py/srcgenx
 SRCGEN2_XSHARED=$(SRCGEN2_SRCGENX)/xshared/runtime
 ########################################################################
-SRCGEN2_XATS2PY="./../UTIL/xats2py_pyemit00_dats.js"
-SRCGEN2_XATS2PY="./../UTIL/xats2py_pyemit00_dats_out.js"
+SRCGEN2_XATS2PY="./../UTIL/xats2py_pyemit00_ats2.js"
+SRCGEN2_XATS2PY="./../UTIL/xats2py_pyemit00_ats3.js"
 ########################################################################
 ########################################################################
 test00:: ; $(PRINTF) "## %s\n" "`date`" > $@_out.py
@@ -33,7 +47,7 @@ test00:: ; $(PRINTF) "## %s\n" "`date`" > $@_out.py
 test00:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
 test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> $@_out.py
 ############
 # test00:: \
 # test00_xats2py.dats; \
@@ -48,7 +62,7 @@ test01:: ; $(PRINTF) "## %s\n" "`date`" > $@_out.py
 test01:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
 test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> $@_out.py
 ############
 # test01:: \
 # test01_xats2py.dats; \
@@ -63,7 +77,7 @@ test02:: ; $(PRINTF) "## %s\n" "`date`" > $@_out.py
 test02:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
 test02:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> $@_out.py
 ############
 test02:: \
 test02_xats2py.dats; \
@@ -75,7 +89,7 @@ test03:: ; $(PRINTF) "## %s\n" "`date`" > $@_out.py
 test03:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
 test03:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> $@_out.py
 ############
 test03:: \
 test03_xats2py.dats; \
@@ -87,7 +101,7 @@ test04:: ; $(PRINTF) "## %s\n" "`date`" > $@_out.py
 test04:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
 test04:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> $@_out.py
 ############
 test04:: \
 test04_xats2py.dats; \
@@ -98,7 +112,7 @@ test05:: ; $(PRINTF) "## %s\n" "`date`" > $@_out.py
 test05:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
 test05:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> $@_out.py
 ############
 test05:: \
 test05_xats2py.dats; \
@@ -110,7 +124,7 @@ test06:: ; $(PRINTF) "## %s\n" "`date`" > $@_out.py
 test06:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
 test06:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> $@_out.py
 ############
 test06:: \
 test06_xats2py.dats; \
@@ -121,7 +135,7 @@ test07:: ; $(PRINTF) "## %s\n" "`date`" > $@_out.py
 test07:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
 test07:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> $@_out.py
 ############
 test07:: \
 test07_xats2py.dats; \
@@ -132,7 +146,7 @@ test08:: ; $(PRINTF) "## %s\n" "`date`" > $@_out.py
 test08:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> $@_out.py
 test08:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_prelude.py >> $@_out.py
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> $@_out.py
 ############
 test08:: \
 test08_xats2py.dats; \

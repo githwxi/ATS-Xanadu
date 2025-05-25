@@ -63,8 +63,10 @@ $(NODE) --stack-size=8192 $(XATS2PY_PYEMIT00) xatsopt_tcheck01.dats >> $@_ats3.p
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; rm -f xatsopt_tcheck00_ats3.py
-cleanall:: ; rm -f xatsopt_tcheck01_ats3.py
+cleanall:: ; \
+rm -f xatsopt_tcheck00_ats3.py
+cleanall:: ; \
+rm -f xatsopt_tcheck01_ats3.py
 ########################################################################
 ########################################################################
 ifndef XATS2PY_PYEMIT00

@@ -22,10 +22,14 @@ $(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; rm -f lib2xatsopt2js_ats3.js
-cleanall:: ; rm -f xats2js_jsemit0?_ats3.js
-cleanall:: ; rm -f lib2xatsopt2js_ats3_opt1.js
-cleanall:: ; rm -f xats2js_jsemit0?_ats3_opt1.js
+cleanall:: ; \
+rm -f lib2xatsopt2js_ats3.js
+cleanall:: ; \
+rm -f xats2js_jsemit0?_ats3.js
+cleanall:: ; \
+rm -f lib2xatsopt2js_ats3_opt1.js
+cleanall:: ; \
+rm -f xats2js_jsemit0?_ats3_opt1.js
 ########################################################################
 ########################################################################
 ifndef XATSOPT_TCHECK00
