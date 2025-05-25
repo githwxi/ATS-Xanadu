@@ -51,7 +51,11 @@ in//let
 end//let
 //
 (* ****** ****** *)
+(* ****** ****** *)
 val list_btw_vt_sint = list_btw_vt<sint>(*void*)
 (* ****** ****** *)
-
-(* end of [ATS3/XANADU_xats2py_srcgen1_TEST_test04_xats2py.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_TEST_test04_xats2py.dats] *)
+(***********************************************************************)
