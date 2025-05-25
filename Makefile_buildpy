@@ -67,11 +67,11 @@ srcgen2_lib2xats2py: ; \
 XATS2PY_PYEMIT00=./../../../$(XATS2PY_PYEMIT00) \
 time make -C srcgen2/xats2py/srcgen1 -f Makefile_xpyemit lib2xats2py
 #
-srcgen2_xjsemit_xats2py_pyemit00: ; \
+srcgen2_xpyemit_xats2py_pyemit00: ; \
 XATS2PY_PYEMIT00=./../../../../$(XATS2PY_PYEMIT00) \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xpyemit xats2py_pyemit00
 #
-srcgen2_xjsemit_xats2py_pyemit01: ; \
+srcgen2_xpyemit_xats2py_pyemit01: ; \
 XATS2PY_PYEMIT00=./../../../../$(XATS2PY_PYEMIT00) \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xpyemit xats2py_pyemit01
 #
