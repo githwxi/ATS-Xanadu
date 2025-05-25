@@ -113,5 +113,7 @@ val ( ) = (xyz.2).1 := 30 endlet // end-of-[fun foo2]
 
 (* ****** ****** *)
 (* ****** ****** *)
-
-(* end of [ATS3/XANADU_xats2py_srcgen1_TEST_test06_xats2py.dats] *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_TEST_test06_xats2py.dats] *)
+(***********************************************************************)
