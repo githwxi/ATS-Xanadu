@@ -28,9 +28,9 @@ cleanall:: ; rm -f lib2xatsopt2js_ats3_opt1.js
 cleanall:: ; rm -f xats2js_jsemit0?_ats3_opt1.js
 ########################################################################
 ########################################################################
-ifndef XATS2JS_TCHECK00
+ifndef XATSOPT_TCHECK00
 XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js
-endif ## (ifeq($(XATS2JS_TCHECK00),""))
+endif ## (ifeq($(XATSOPT_TCHECK00),""))
 ########################################################################
 ifndef XATS2JS_JSEMIT00
 XATS2JS_JSEMIT00=$(XATSJSD)/srcgen1/UTIL/xats2js_jsemit00_ats2.js
