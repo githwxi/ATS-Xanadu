@@ -1,10 +1,10 @@
-######
+##################################################################
 #
 # HX: For
 # building xatsopt via patsopt
 #
-######
-
+##################################################################
+#
 AR=ar
 CP=cp
 MV=mv
@@ -14,15 +14,16 @@ CPF=cp -f
 MVF=mv -f
 RMF=rm -f
 WCL=wc -l
-
-######
+MAKE=make
+#
+##################################################################
 #
 PATSCC=$(PATSHOME)/bin/patscc
 PATSOPT=$(PATSHOME)/bin/patsopt
 #
 # PATSOPT=$(PATSHOME)/bin/patsopt --gline
 #
-######
+##################################################################
 #
 CFLAGS=
 #
@@ -37,7 +38,7 @@ GCFLAG=-DATS_MEMALLOC_GCBDW
 LIBGC=
 LIBGC=-lgc
 #
-######
+##################################################################
 
 SRCSATS := \
 xbasics.sats \
@@ -174,7 +175,7 @@ trcmp30_statyp.dats \
 trcmp30_dynexp.dats \
 xatsopt_utils0.dats xatsopt_mymain.dats \
 
-######
+##################################################################
 BUILD=BUILD/CC
 ######
 INCLUDE=-I"."
@@ -183,30 +184,38 @@ OBJSATS = \
 $(patsubst %.sats, $(BUILD)/%_sats.o, $(SRCSATS))
 OBJDATS = \
 $(patsubst %.dats, $(BUILD)/%_dats.o, $(SRCDATS))
-######
+##################################################################
 
 ######
+#
 all:: xatsopt
-######
-#all:: ; echo "make xatsopt"
-#all:: ; echo "make srclines"
-#all:: ; echo "make libxatsopt"
-######
+#
+# all:: ; echo "make xatsopt"
+# all:: ; echo "make srclines"
+# all:: ; echo "make libxatsopt"
+#
+##################################################################
+#
+# HX-2025-05-26:
+# This part is in UTIL/Makefile_patsopt
 #
 xatsopt: \
-BUILD/CC/xatsopt; $(MVF) $< ./bin/.
-BUILD/CC/xatsopt: \
-DATS/xatsopt.dats $(OBJSATS) $(OBJDATS); \
-$(PATSCC) -cleanaft -o $@ \
-$(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC)
+libxatsopt ; \
+$(MAKE) -C UTIL -f Makefile_patsopt xatsopt
+# xatsopt: \
+# BUILD/CC/xatsopt; $(MVF) $< ./bin/xatsopt
 #
-######
+# BUILD/CC/xatsopt: \
+# DATS/xatsopt.dats $(OBJSATS) $(OBJDATS); \
+# $(PATSCC) -cleanaft -o $@ $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC)
+#
+##################################################################
 
 srclines:: ; $(WCL) ./?ATS/*.?ats
 srclines:: ; $(WCL) ./UTIL/?ATS/*.?ats
 srclines:: ; $(WCL) ./UTIL/?ATS/Posix/*.?ats
 
-######
+##################################################################
 
 libxatsopt: \
 $(OBJSATS) $(OBJDATS) \
@@ -215,19 +224,19 @@ BUILD/CC/libxatsopt_dats.o; \
 BUILD/CC/libxatsopt_dats.o: DATS/xatsopt.dats; \
 $(PATSCC) $(INCLUDE) -DATS __LIBXATSOPT__ -o $@ -c $<
 
-######
-
-BUILD/CC/%_sats.c: ./SATS/%.sats ; $(PATSOPT) -o $@ --static $<
-BUILD/CC/%_dats.c: ./DATS/%.dats ; $(PATSOPT) -o $@ --dynamic $<
-
-######
-
+##################################################################
+#
+BUILD/CC/%_sats.c: \
+./SATS/%.sats ; $(PATSOPT) -o $@ --static $<
+BUILD/CC/%_dats.c: \
+./DATS/%.dats ; $(PATSOPT) -o $@ --dynamic $<
+#
 BUILD/CC/%_sats.o: \
 BUILD/CC/%_sats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
 BUILD/CC/%_dats.o: \
 BUILD/CC/%_dats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) $(GCFLAG) -o $@ -c $<
-
-######
+#
+##################################################################
 #
 # HX-2018-10-07:
 # '--output-a .depend' means
@@ -252,21 +261,23 @@ $(SED) -i -e 's/^SATS/BUILD\/CC/' -e 's/^DATS/BUILD\/CC/' .depend
 #
 -include .depend
 #
-######
+##################################################################
 #
 # For cleaning
 #
-######
+##################################################################
+#
 clean:: ; $(RMF) xatsopt_dats.o
 clean:: ; $(RMF) xatsopt_dats.c
 clean:: ; $(RMF) $(BUILD)/*_?ats.c
 clean:: ; $(RMF) $(BUILD)/*_?ats.o
-######
+#
 cleanall:: clean
 cleanall:: ; $(RMF) ./.depend
 cleanall:: ; $(RMF) ./bin/xatsopt
 cleanall:: ; $(RMF) ./bin/xatsopt.sh
 cleanall:: ; $(RMF) ./lib/libxatsopt.a
-######
-
-################## end of [Makefile_patsopt] ##################
+#
+##################################################################
+###################(end-of-[Makefile_patsopt])####################
+##################################################################
