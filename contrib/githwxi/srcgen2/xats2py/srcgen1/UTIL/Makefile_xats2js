@@ -18,44 +18,8 @@ NODE=node \
 --stack-size=4096 \
 --max-old-space-size=4096
 ########################################################################
-XSHARED=${XATSJSD}/xshared
-XATS2JS=${XATSJSD}/bin/xats2js
 ########################################################################
-SRCGEN1=\
-./../../../../../../srcgen1
-SRCGEN2=\
-./../../../../../../srcgen2
-########################################################################
-XATSJSD=$(SRCGEN1)/xats2js/srcgenx
-########################################################################
-LIBXATS2PY_JS="./../lib/libxats2py.js"
-LIBXATSOPT_JS="./../../../lib/libxatsopt.js"
-########################################################################
-XATS2JS_PRELUDE=\
-"$(XSHARED)/runtime/xats2js_prelude.js"
-XATS2JS_PRELUDE_NODE=\
-"$(XSHARED)/runtime/xats2js_prelude_node.js"
-XATS2JS_XATSLIB_NODE=\
-"$(XSHARED)/runtime/xats2js_xatslib_node.js"
-########################################################################
-XATS2PY_PYEMIT00_DATS=\
-$(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit00.dats
-########################################################################
-#
-all:: \
-xats2py_pyemit00
-xats2py_pyemit00:: \
-$(XATS2PY_PYEMIT00_DATS) ; \
-$(CAT) \
-$(XATS2JS_PRELUDE) > $@_dats.js && \
-$(CAT) \
-$(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
-$(CAT) \
-$(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
-$(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
-$(CAT) $(LIBXATS2PY_JS) >> $@_dats.js && \
-$(XATS2JS) --output-a $@_dats.js --dynamic $(XATS2PY_PYEMIT00_DATS)
-#
+all::
 ########################################################################
 #
 # HX: for cleaning up
@@ -63,7 +27,66 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $(XATS2PY_PYEMIT00_DATS)
 clean:: ; rm -f *~
 #
 cleanall:: clean
-cleanall:: ; rm -f ./xats2py_pyemit??_dats.js
+cleanall:: ; \
+rm -f ./xats2py_pyemit00_ats2.js
+cleanall:: ; \
+rm -f ./xats2py_pyemit01_ats2.js
 #
 ########################################################################
-###################### end of [Makefile_xats2js] #######################
+########################################################################
+XSHARED=${XATSJSD}/xshared
+XATSJSD=$(SRCGEN1)/xats2js/srcgenx
+########################################################################
+SRCGEN1=./../../../../../../srcgen1
+SRCGEN2=./../../../../../../srcgen2
+########################################################################
+XATS2JS=./../../../../srcgen1/xats2js/srcgen1/bin/xats2js
+########################################################################
+LIBXATSOPT_JS="./../../../lib/libxatsopt.js"
+LIBXATS2JS_JS="./../../../xats2js/srcgen1/lib/libxats2js.js"
+LIBXATS2PY_JS="./../../../xats2py/srcgen1/lib/libxats2py.js"
+########################################################################
+XATS2JS_JS1EMIT="$(XSHARED)/runtime/xats2js_js1emit.js"
+SRCGEN1_PRELUDE="$(XSHARED)/runtime/srcgen1_prelude.js"
+SRCGEN1_PRELUDE_NODE="$(XSHARED)/runtime/srcgen1_prelude_node.js"
+SRCGEN1_XATSLIB_NODE="$(XSHARED)/runtime/srcgen1_xatslib_node.js"
+########################################################################
+XATS2PY_PYEMIT00_DATS=$(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit00.dats
+XATS2PY_PYEMIT01_DATS=$(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit01.dats
+########################################################################
+#
+all:: \
+xats2py_pyemit00
+xats2py_pyemit00:: \
+$(XATS2PY_PYEMIT00_DATS) ; \
+$(CAT) \
+$(XATS2JS_JS1EMIT) > $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_PRELUDE) >> $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_PRELUDE_NODE) >> $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_XATSLIB_NODE) >> $@_ats2.js && \
+$(CAT) $(LIBXATSOPT_JS) >> $@_ats2.js && \
+$(CAT) $(LIBXATS2JS_JS) >> $@_ats2.js && \
+$(CAT) $(LIBXATS2PY_JS) >> $@_ats2.js && $(XATS2JS) --output-a $@_ats2.js --dynamic $<
+#
+all:: \
+xats2py_pyemit01
+xats2py_pyemit01:: \
+$(XATS2PY_PYEMIT01_DATS) ; \
+$(CAT) \
+$(XATS2JS_JS1EMIT) > $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_PRELUDE) >> $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_PRELUDE_NODE) >> $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_XATSLIB_NODE) >> $@_ats2.js && \
+$(CAT) $(LIBXATSOPT_JS) >> $@_ats2.js && \
+$(CAT) $(LIBXATS2JS_JS) >> $@_ats2.js && \
+$(CAT) $(LIBXATS2PY_JS) >> $@_ats2.js && $(XATS2JS) --output-a $@_ats2.js --dynamic $<
+#
+########################################################################
+########################################################################
+######################(end-of-[Makefile_xats2js])#######################

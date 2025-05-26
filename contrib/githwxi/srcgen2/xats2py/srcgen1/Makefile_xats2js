@@ -4,6 +4,7 @@
 # For compiling with xats2js
 # Sat Nov 30 03:23:22 PM EST 2024
 # Mon Jan 13 11:25:29 PM EST 2025
+# Sun May 25 09:09:02 PM EDT 2025
 #
 ########################################################################
 ########################################################################
@@ -49,11 +50,15 @@ XATS2JS=./../../../srcgen1/xats2js/bin/xats2js
 ########################################################################
 
 SRCSATS := \
+xats2py.sats \
 py1emit.sats \
 
 ######
 
 SRCDATS := \
+xats2py.dats \
+xats2py_dynexp.dats \
+xats2py_decl00.dats \
 py1emit.dats \
 py1emit_utils0.dats \
 py1emit_dynexp.dats \

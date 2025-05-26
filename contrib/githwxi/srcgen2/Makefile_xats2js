@@ -45,6 +45,7 @@ XATS2JS=./../srcgen1/xats2js/bin/xats2js
 
 SRCSATS := \
 xbasics.sats \
+xlibext.sats \
 xsynoug.sats \
 xerrory.sats \
 xstamp0.sats \
@@ -57,7 +58,7 @@ lexing0.sats \
 staexp0.sats \
 dynexp0.sats \
 parsing.sats \
-preadx0.sats \
+pread00.sats \
 staexp1.sats \
 dynexp1.sats \
 gmacro1.sats \
@@ -80,26 +81,24 @@ dynexp3.sats \
 trans23.sats \
 tread23.sats \
 trans3a.sats \
+tread3a.sats \
 trtmp3b.sats \
 trtmp3c.sats \
-tread30.sats \
 fperr30.sats \
-dynexp4.sats \
-trans34.sats \
-tread34.sats \
-fperr40.sats \
 xglobal.sats \
 xatsopt.sats \
 
-########################################################################
 ########################################################################
 
 SRCDATS := \
 xbasics.dats \
 xbasics_print0.dats \
+xlibext.dats \
+xlibext_tmplib.dats \
+xlibext_jsemit.dats \
+xlibext_pyemit.dats \
 xsynoug.dats \
 xerrory.dats \
-xglobal.dats \
 xstamp0.dats \
 xstamp0_print0.dats \
 xstamp0_tmpmap.dats \
@@ -109,6 +108,10 @@ xsymbol_mymap0.dats \
 xsymbol_inits0.dats \
 xlabel0.dats \
 xlabel0_print0.dats \
+xsymmap.dats \
+xsymmap_topmap.dats \
+xsymmap_stkmap.dats \
+xglobal.dats \
 filpath.dats \
 filpath_print0.dats \
 filpath_drpth0.dats \
@@ -116,9 +119,6 @@ filpath_fpath0.dats \
 filpath_search.dats \
 locinfo.dats \
 locinfo_print0.dats \
-xsymmap.dats \
-xsymmap_topmap.dats \
-xsymmap_stkmap.dats \
 lexbuf0.dats \
 lexbuf0_cstrx1.dats \
 lexbuf0_cstrx2.dats \
@@ -140,11 +140,11 @@ parsing_utils0.dats \
 parsing_staexp.dats \
 parsing_dynexp.dats \
 parsing_decl00.dats \
-preadx0.dats \
-preadx0_staexp.dats \
-preadx0_dynexp.dats \
-preadx0_decl00.dats \
-preadx0_errmsg.dats \
+pread00.dats \
+pread00_staexp.dats \
+pread00_dynexp.dats \
+pread00_decl00.dats \
+pread00_errmsg.dats \
 xfixity.dats \
 staexp1.dats \
 staexp1_print0.dats \
@@ -183,14 +183,15 @@ trans11_myenv0.dats \
 trans12_myenv0.dats \
 trans11_gmacro.dats \
 trans12_gmacro.dats \
+trans12_utils0.dats \
 trans12_staexp.dats \
 trans12_dynexp.dats \
 trans12_decl00.dats \
-tread12_errmsg.dats \
 tread12.dats \
 tread12_staexp.dats \
 tread12_dynexp.dats \
 tread12_decl00.dats \
+tread12_errmsg.dats \
 trans2a.dats \
 trans2a_myenv0.dats \
 trans2a_utils0.dats \
@@ -223,6 +224,10 @@ trans3a_myenv0.dats \
 trans3a_staexp.dats \
 trans3a_dynexp.dats \
 trans3a_decl00.dats \
+tread3a.dats \
+tread3a_staexp.dats \
+tread3a_dynexp.dats \
+tread3a_decl00.dats \
 trtmp3b.dats \
 trtmp3b_myenv0.dats \
 trtmp3b_utils0.dats \
@@ -233,31 +238,9 @@ trtmp3c_myenv0.dats \
 trtmp3c_utils0.dats \
 trtmp3c_dynexp.dats \
 trtmp3c_decl00.dats \
-tread30.dats \
-tread30_staexp.dats \
-tread30_dynexp.dats \
-tread30_decl00.dats \
 fperr30.dats \
 fperr30_dynexp.dats \
 fperr30_decl00.dats \
-dynexp4.dats \
-dynexp4_print0.dats \
-dynexp4_utils0.dats \
-trans34.dats \
-trans34_print0.dats \
-trans34_myenv0.dats \
-trans34_utils0.dats \
-trans34_dynexp.dats \
-trans34_decl00.dats \
-fperr40.dats \
-fperr40_dynexp.dats \
-fperr40_decl00.dats \
-xdepend.dats \
-xdepend_myenv0.dats \
-xdepend_dynexp.dats \
-xdepend_decl00.dats \
-xatsmtp.dats \
-xatsmtp_dcon00.dats \
 xatsopt.dats \
 xatsopt_tmplib.dats \
 xatsopt_utils0.dats \

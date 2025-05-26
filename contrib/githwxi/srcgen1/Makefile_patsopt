@@ -93,8 +93,8 @@ xsymbol.dats \
 xsymmap.dats \
 xsymenv.dats \
 xlabel0.dats \
-xfixity.dats \
 xglobal.dats \
+xfixity.dats \
 xerrory.dats \
 filpath.dats \
 filsrch.dats \
@@ -122,6 +122,7 @@ trans01_basics.dats \
 trans01_envmap.dats \
 trans01_staexp.dats \
 trans01_dynexp.dats \
+trans01_dynutl.dats \
 tread01_staexp.dats \
 tread01_dynexp.dats \
 effect0.dats \
@@ -148,6 +149,7 @@ trans12_basics.dats \
 trans12_envmap.dats \
 trans12_staexp.dats \
 trans12_dynexp.dats \
+trans12_dynutl.dats \
 tread12_staexp.dats \
 tread12_dynexp.dats \
 dynexp3.dats \
@@ -178,14 +180,14 @@ trcmp30_dynexp.dats \
 xatsopt_utils0.dats xatsopt_mymain.dats \
 
 ######
-BUILDCC=BUILD/CC
+BUILD=BUILD/CC
 ######
 INCLUDE=-I"$(SRCGEN1)"
 ######
 OBJSATS = \
-$(patsubst %.sats, BUILD/CC/%_sats.o, $(SRCSATS))
+$(patsubst %.sats, $(BUILD)/%_sats.o, $(SRCSATS))
 OBJDATS = \
-$(patsubst %.dats, BUILD/CC/%_dats.o, $(SRCDATS))
+$(patsubst %.dats, $(BUILD)/%_dats.o, $(SRCDATS))
 ######
 
 ######
@@ -215,7 +217,8 @@ $(OBJSATS) $(OBJDATS) \
 BUILD/CC/libxatsopt_dats.o; \
 ($(AR) -r $@.a $^ && $(MVF) $@.a ./lib/.)
 BUILD/CC/libxatsopt_dats.o: \
-$(SRCGEN1)/DATS/xatsopt.dats; $(PATSCC) $(INCLUDE) -DATS __LIBXATSOPT__ -o $@ -c $<
+$(SRCGEN1)/DATS/xatsopt.dats; \
+$(PATSCC) $(INCLUDE) -DATS __LIBXATSOPT__ -o $@ -c $<
 
 ######
 
@@ -261,9 +264,10 @@ $(SED) -i -e 's/^SATS/BUILD\/CC/' -e 's/^DATS/BUILD\/CC/' .depend
 # For cleaning
 #
 ######
+clean:: ; $(RMF) xatsopt_dats.o
 clean:: ; $(RMF) xatsopt_dats.c
-clean:: ; $(RMF) BUILD/CC/*_?ats.c
-clean:: ; $(RMF) BUILD/CC/*_?ats.o
+clean:: ; $(RMF) $(BUILD)/*_?ats.c
+clean:: ; $(RMF) $(BUILD)/*_?ats.o
 ######
 cleanall:: clean
 cleanall:: ; $(RMF) ./.depend
