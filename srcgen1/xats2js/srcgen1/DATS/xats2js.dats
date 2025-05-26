@@ -69,6 +69,20 @@ UN =
 //
 (* ****** ****** *)
 //
+// HX-2019-11-14:
+//
+#ifdef
+__LIBXATS2JS__
+#then
+(* ****** ****** *)
+#define
+ATS_MAINATSFLAG 1
+#define
+ATS_DYNLOADNAME "libxatsopt_dynloadall"
+(* ****** ****** *)
+#else
+(* ****** ****** *)
+//
 implement
 main0(argc, argv) =
 (
@@ -102,5 +116,10 @@ $XATSOPT.echo_argc_argv(out, argc, argv)
 } (*where*) // end of [main0]
 //
 (* ****** ****** *)
-
+#endif // #ifdef(__LIBXATS2JS__)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_xats2js.dats] *)
+(***********************************************************************)

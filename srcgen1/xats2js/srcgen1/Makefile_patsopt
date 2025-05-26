@@ -1,20 +1,22 @@
-######
+##################################################################
 #
 # For building xats2js
 #
-######
-
+##################################################################
+#
+AR=ar
+CP=cp
+MV=mv
 CC=gcc
 SED=sed
+CPF=cp -f
+MVF=mv -f
 RMF=rm -f
-
-######
-
 MAKE=make
-
-######
+#
+##################################################################
 XATSOPT="./../.."
-######
+##################################################################
 #
 PATSCC=$(PATSHOME)/bin/patscc
 PATSOPT=$(PATSHOME)/bin/patsopt
@@ -75,25 +77,42 @@ OBJSATS = \
 $(patsubst %.sats, $(BUILD)/%_sats.o, $(SRCSATS))
 OBJDATS = \
 $(patsubst %.dats, $(BUILD)/%_dats.o, $(SRCDATS))
-######
+##################################################################
+#
+all:: xats2js
+#
+# all:: ; echo "make xatsopt"
+#
+##################################################################
+#
+xats2js: \
+libxatsopt libxats2js ; \
+$(MAKE) -C UTIL -f Makefile_patsopt xats2js
+#
+# xats2js:: \
+# libxatsopt
+# xats2js:: \
+# DATS/xats2js.dats \
+# $(OBJSATS) $(OBJDATS) ; \
+# $(PATSCC) -cleanaft -o ./bin/xats2js \
+# $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
+#
+##################################################################
 #
 all:: \
-xats2js
-xats2js:: \
 libxatsopt
-xats2js:: \
-DATS/xats2js.dats \
-$(OBJSATS) $(OBJDATS) ; \
-$(PATSCC) -cleanaft -o ./bin/xats2js \
-$(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
+libxatsopt: ; $(MAKE) -C $(XATSOPT) libxatsopt
 #
-######
-#
-all:: \
-libxatsopt
-libxatsopt: ; (cd $(XATSOPT) && $(MAKE) libxatsopt)
-#
-######
+##################################################################
+
+libxats2js: \
+$(OBJSATS) $(OBJDATS) \
+BUILD/CC/libxats2js_dats.o; \
+($(AR) -r $@.a $^ && $(MVF) $@.a ./lib/.)
+BUILD/CC/libxats2js_dats.o: DATS/xats2js.dats; \
+$(PATSCC) $(INCLUDE) -DATS __LIBXATS2JS__ -o $@ -c $<
+
+##################################################################
 BUILD/CC/%_sats.c: ./SATS/%.sats ; $(PATSOPT) -o $@ --static $<
 BUILD/CC/%_dats.c: ./DATS/%.dats ; $(PATSOPT) -o $@ --dynamic $<
 ######
@@ -142,6 +161,6 @@ cleanall:: ; $(RMF) ./bin/xats2js
 cleanall:: ; $(RMF) $(XATSOPT)/lib/libxatsopt.a
 cleanall:: ; $(MAKE) -C $(XATSOPT) cleanall
 
-######
-
-#################### end of [Makefile] ####################
+##################################################################
+###################(end-of-[Makefile_patsopt])####################
+##################################################################
