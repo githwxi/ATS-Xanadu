@@ -37,6 +37,7 @@ SRCGEN1_PRELUDE_NODE="$(XSHARED)/runtime/srcgen1_prelude_node.js"
 SRCGEN1_XATSLIB_NODE="$(XSHARED)/runtime/srcgen1_xatslib_node.js"
 ########################################################################
 XATSOPT_TCHECK00_DATS=$(SRCGEN2)/UTIL/xatsopt_tcheck00.dats
+XATSOPT_TCHECK01_DATS=$(SRCGEN2)/UTIL/xatsopt_tcheck01.dats
 ########################################################################
 #
 all:: \
@@ -53,6 +54,21 @@ $(CAT) \
 $(SRCGEN1_XATSLIB_NODE) >> $@_ats2.js && \
 $(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
 $(XATS2JS) --output-a $@_dats.js --dynamic $(XATSOPT_TCHECK00_DATS)
+#
+all:: \
+xatsopt_tcheck01
+xatsopt_tcheck01:: \
+$(XATSOPT_TCHECK01_DATS) ; \
+$(CAT) \
+$(XATS2JS_JS1EMIT) > $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_PRELUDE) >> $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_PRELUDE_NODE) >> $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_XATSLIB_NODE) >> $@_ats2.js && \
+$(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js --dynamic $(XATSOPT_TCHECK01_DATS)
 #
 ########################################################################
 #
