@@ -409,6 +409,7 @@ val () = kwdins("#then0" , T_SRP_THEN0 )
 val () = kwdins("#else"  , T_SRP_ELSE1 )
 val () = kwdins("#else1" , T_SRP_ELSE1 )
 //
+val () = kwdins("#elif"  , T_SRP_ELSIF )
 val () = kwdins("#elsif" , T_SRP_ELSIF )
 //
 val () = kwdins("#endif" , T_SRP_ENDIF )
