@@ -30,9 +30,9 @@ clean:: ; rm -f *~
 #
 cleanall:: clean
 cleanall:: ; \
-rm -f ./xats2js_jsemit00_dats.js
+rm -f ./xats2js_jsemit00_ats2.js
 cleanall:: ; \
-rm -f ./xats2js_jsemit01_dats.js
+rm -f ./xats2js_jsemit01_ats2.js
 #
 ########################################################################
 XSHARED=${XATSJSD}/xshared

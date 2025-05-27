@@ -52,8 +52,8 @@ $(CAT) \
 $(SRCGEN1_PRELUDE_NODE) >> $@_ats2.js && \
 $(CAT) \
 $(SRCGEN1_XATSLIB_NODE) >> $@_ats2.js && \
-$(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
-$(XATS2JS) --output-a $@_dats.js --dynamic $(XATSOPT_TCHECK00_DATS)
+$(CAT) $(LIBXATSOPT_JS) >> $@_ats2.js && \
+$(XATS2JS) --output-a $@_ats2.js --dynamic $(XATSOPT_TCHECK00_DATS)
 #
 all:: \
 xatsopt_tcheck01
@@ -67,8 +67,8 @@ $(CAT) \
 $(SRCGEN1_PRELUDE_NODE) >> $@_ats2.js && \
 $(CAT) \
 $(SRCGEN1_XATSLIB_NODE) >> $@_ats2.js && \
-$(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
-$(XATS2JS) --output-a $@_dats.js --dynamic $(XATSOPT_TCHECK01_DATS)
+$(CAT) $(LIBXATSOPT_JS) >> $@_ats2.js && \
+$(XATS2JS) --output-a $@_ats2.js --dynamic $(XATSOPT_TCHECK01_DATS)
 #
 ########################################################################
 #
@@ -77,7 +77,8 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $(XATSOPT_TCHECK01_DATS)
 clean:: ; rm -f *~
 #
 cleanall:: clean
-cleanall:: ; rm -f ./xatsopt_tcheck??_dats.js
+cleanall:: ; rm -f ./xatsopt_tcheck00_ats2.js
+cleanall:: ; rm -f ./xatsopt_tcheck01_ats2.js
 #
 ########################################################################
 ########################################################################
