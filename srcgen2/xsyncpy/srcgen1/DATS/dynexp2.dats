@@ -67,8 +67,8 @@ end//local
 (* ****** ****** *)
 //
 #impltmp
-g_print<d2exp>(tokn) =
-d2exp_fprint(tokn, g_print$out<>())
+g_print<d2exp>(dexp) =
+d2exp_fprint(dexp, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)

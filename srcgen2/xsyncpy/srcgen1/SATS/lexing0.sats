@@ -52,13 +52,17 @@ LEX = "./\
 ../../../SATS/lexing0.sats"
 //
 (* ****** ****** *)
+//
 #typedef token = $LEX.token
 #typedef tnode = $LEX.tnode
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #symload
 lctn with $LEX.token_get_lctn
 #symload
 node with $LEX.token_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
