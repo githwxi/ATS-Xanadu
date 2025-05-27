@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun May 18 10:48:25 AM EDT 2025
+Tue May 27 02:22:54 AM EDT 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -45,49 +45,34 @@ Authoremail: gmhwxiATgmailDOTcom
 /HATS/libcats_dats.hats"
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #staload
-D0E = "./\
-../../../SATS/dynexp0.sats"
-//
-(* ****** ****** *)
-//
-#typedef d0pat = $D0E.d2pat
-#typedef d0exp = $D0E.d2exp
-#typedef d0ecl = $D0E.d2ecl
+"./../SATS/statyp2.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#symload
-lctn with $D0E.d0pat_get_lctn
-#symload
-node with $D0E.d0pat_get_node
+local
 //
-#symload
-lctn with $D0E.d0exp_get_lctn
-#symload
-node with $D0E.d0exp_get_node
+#staload "\
+./../DATS/statyp2_print0.dats"
 //
-#symload
-lctn with $D0E.d0ecl_get_lctn
-#symload
-node with $D0E.d0ecl_get_node
+in//local
+//
+#implfun
+s2typ_fprint = g_fprint<s2typ>
+//
+end//local
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
-fun
-d0exp_fprint
-(dexp: d0exp, out0: FILR): void
-//
-#symload
-fprint with d0exp_fprint of 1000
+#impltmp
+g_print<s2typ>(styp) =
+s2typ_fprint(styp, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_dynexp0.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_statyp2.dats] *)
 (***********************************************************************)

@@ -52,9 +52,12 @@ D2E = "./\
 ../../../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
+//
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
 #typedef d2ecl = $D2E.d2ecl
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #symload
