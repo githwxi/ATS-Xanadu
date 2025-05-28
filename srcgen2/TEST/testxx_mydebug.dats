@@ -11,6 +11,30 @@ For testing xats2js!
 /prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+
+val xs =
+list@(1, 2, 3)
+
+(* ****** ****** *)
+
+val
+sint_id0 =
+lam(x: sint): sint => x
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+#impltmp
+< x0:t0 >
+< y0:t0 >
+list_map =
+gseq_map_list<list(x0)><x0><y0>(*void*)
+
+val ys = list_map<sint><sint>(xs)
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
 //
 val-
 xs as
