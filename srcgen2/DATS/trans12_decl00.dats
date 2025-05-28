@@ -2820,21 +2820,24 @@ map$fopr
 <x0><y0>
 ( dvar )=
 (
- d2cst_make_dvar(tknd, dvar, tqas))
+d2cst_make_dvar(tknd, dvar, tqas))
 }
 //
 val () =
 (
- if//HX: [d2cs] only for templates!
- list_consq(tqas)
- then tr12env_add1_d2cs(env0, d2cs))
+if//HX: [d2cs] only for templates!
+list_consq(tqas)
+then tr12env_add1_d2cs(env0, d2cs))
 //
 (*
 val () =
-prerrsln("f0_fundclst: d2cs = ", d2cs)
+prerrsln
+("f0_fundclst: d2cs = ", d2cs)
 *)
 //
-val () = f1_d2cs_d2fs_xnm(d2cs, d2fs)
+val () =
+(
+  f1_d2cs_d2fs_xnam(d2cs, d2fs))
 //
 in//let
 d2ecl_make_node
@@ -2843,7 +2846,7 @@ d2ecl_make_node
 end (*let*) // end of [f0_fundclst(env0,d1cl)]
 //
 and
-f1_d2cs_d2fs_xnm
+f1_d2cs_d2fs_xnam
 ( d2cs: d2cstlst
 , d2fs: d2fundclist): void =
 (
@@ -2859,7 +2862,7 @@ list_nil() => ()
 |
 list_cons(d2f1, d2fs) =>
 (
-f1_d2cs_d2fs_xnm(d2cs, d2fs)
+f1_d2cs_d2fs_xnam(d2cs, d2fs)
 ) where
 {
 //
@@ -2887,7 +2890,7 @@ val (  ) =
   the_d2cstmap_xnmadd0(stmp, xnam))
 }
 )(*end-of-[ list-cons(d2c1,d2cs) ]*)
-)(*case+*)//endof[f1_d2cs_d2fs_xnm(d2cs,d2fs)]
+)(*case+*)//endof[f1_d2cs_d2fs_xnam(d2cs,d2fs)]
 //
 (* ****** ****** *)
 //
@@ -3036,9 +3039,11 @@ case+ dqid of
 |
 D1QIDnone(tok1) =>
 let
-  val sym1 = dexpid_sym(tok1)
-  val opt1 =
-  tr12env_find_d2itm(env0, sym1)
+//
+val sym1 = dexpid_sym(tok1)
+val opt1 =
+tr12env_find_d2itm(env0, sym1)
+//
 in//let
 //
 case+ opt1 of
@@ -3058,11 +3063,13 @@ end (*let*) // end of [D1QIDnone(tok1)]
 |
 D1QIDsome(tqua, tok1) =>
 let
+//
 val
 sym1 = dexpid_sym(tok1)
 val
 opt1 =
 tr12env_qfind_d2itm(env0, tqua, sym1)
+//
 in//let
 //
 case+ opt1 of

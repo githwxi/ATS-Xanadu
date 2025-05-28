@@ -724,7 +724,6 @@ D2Cimplmnt0
 , tias, f2as
 , sres, dexp) = d2cl.node()
 //
-//
 in//let
 //
 case+
@@ -823,7 +822,7 @@ in//let
 end (*let*) // end of [S2RESsome(...)]
 )
 //
-in
+in//let
 //
 d2ecl
 (
