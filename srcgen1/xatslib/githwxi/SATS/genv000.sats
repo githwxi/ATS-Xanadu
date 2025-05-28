@@ -40,14 +40,14 @@ fun
 <x0:t0>
 <r0:vt>
 <e1:vt>
-foldl$fopr_e1nv
+foldl$fopr$e1nv
 ( r0:r0
 , x0:x0, e1: !e1): r0
 fun
 <x0:t0>
 <r0:vt>
 <e1:vt>
-foldr$fopr_e1nv
+foldr$fopr$e1nv
 ( x0:x0
 , r0:r0, e1: !e1): r0
 *)
@@ -58,7 +58,7 @@ foldr$fopr_e1nv
 fun
 <x0:t0>
 <e1:vt>
-forall$test_e1nv
+forall$test$e1nv
 (x0: x0, e1: !e1): bool
 *)
 //
@@ -68,7 +68,7 @@ forall$test_e1nv
 fun
 <x0:t0>
 <e1:vt>
-foritm$work_e1nv
+foritm$work$e1nv
 (x0: x0, e1: !e1): void
 *)
 //
@@ -79,7 +79,7 @@ fun
 <x0:t0>
 <y0:vt>
 <e1:vt>
-map$fopr_e1nv
+map$fopr$e1nv
 (x0: x0, e1: !e1): (y0)
 //
 fun
@@ -87,7 +87,7 @@ fun
 <y0:vt>
 <e1:vt>
 <e2:vt>
-map$fopr_e2nv
+map$fopr$e2nv
 (x0: x0, e1: !e1, e2: !e2): y0
 *)
 //
@@ -99,14 +99,14 @@ fun
 <x0:t0>
 <r0:vt>
 <e1:vt>
-gseq_foldl_e1nv
+gseq_foldl$e1nv
 (xs: xs, r0: r0, e1: !e1): r0
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
 <e1:vt>
-gseq_foldr_e1nv
+gseq_foldr$e1nv
 (xs: xs, r0: r0, e1: !e1): r0
 *)
 //
@@ -117,13 +117,13 @@ fun
 <xs:t0>
 <x0:t0>
 <e1:vt>
-gseq_forall_e1nv(xs, !e1): bool
+gseq_forall$e1nv(xs, !e1): bool
 //
 fun
 <xs:t0>
 <x0:t0>
 <e1:vt>
-gseq_foritm_e1nv(xs, !e1): void
+gseq_foritm$e1nv(xs, !e1): void
 *)
 //
 (* ****** ****** *)
@@ -134,7 +134,7 @@ fun
 <x0:t0>
 <y0:vt>
 <e1:vt>
-gseq_map_e1nv_list
+gseq_map$e1nv_list
 (xs: xs, e1: !e1): list_vt(y0)
 *)
 //
@@ -143,14 +143,14 @@ fun
 <x0:t0>
 <y0:t0>
 <e1:vt>
-list_map_e1nv
+list_map$e1nv
 {n:int}
 (list(x0, n), e1: !e1): list(y0, n)
 fun
 <x0:t0>
 <y0:t0>
 <e1:vt>
-list_map_e1nv_vt
+list_map$e1nv_vt
 {n:int}
 (list(x0, n), e1: !e1): list_vt(y0, n)
 *)
@@ -164,7 +164,7 @@ fun
 <y0:vt>
 <e1:vt>
 <e2:vt>
-gseq_map_e2nv_list
+gseq_map$e2nv_list
 (xs: xs, e1: !e1, e2: !e2): list_vt(y0)
 *)
 //
@@ -174,7 +174,7 @@ fun
 <y0:t0>
 <e1:vt>
 <e2:vt>
-list_map_e2nv
+list_map$e2nv
 {n:int}
 (list(x0, n), e1: !e1, e2: !e2): list(y0, n)
 fun
@@ -182,7 +182,7 @@ fun
 <y0:t0>
 <e1:vt>
 <e2:vt>
-list_map_e2nv_vt
+list_map$e2nv_vt
 {n:int}
 (list(x0, n), e1: !e1, e2: !e2): list_vt(y0, n)
 *)

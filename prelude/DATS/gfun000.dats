@@ -107,8 +107,8 @@ Sat 24 Aug 2024 06:29:59 PM EDT
 //
 #impltmp
 < r0:vt >
-f_trace$f0un
- (msg, f00) =
+f0un_trace
+ (f00, msg) =
 lam((*0*)) => let
 //
 val () =
@@ -124,8 +124,8 @@ val () = print1s
 #impltmp
 < a1:t0 >
 < r0:vt >
-f_trace$f1un
- (msg, f00) =
+f1un_trace
+ (f00, msg) =
 lam(x1:a1) => let
 //
 val () = prints
@@ -142,8 +142,8 @@ val () = print1s
 < a1:t0 >
 < a2:t0 >
 < r0:vt >
-f_trace$f2un
- (msg, f00) =
+f2un_trace
+ (f00, msg) =
 lam
 (x1:a1,x2:a2) => let
 //
@@ -164,8 +164,8 @@ val () = print1s
 < a2:t0 >
 < a3:t0 >
 < r0:vt >
-f_trace$f3un
- (msg, f00) =
+f3un_trace
+ (f00, msg) =
 lam
 (x1:a1
 ,x2:a2,x3:a3) => let
@@ -196,8 +196,8 @@ Sat 31 Aug 2024 10:36:59 AM EDT
 < a3:t0 >
 < a4:t0 >
 < r0:vt >
-f_trace$f4un
- (msg, f00) =
+f4un_trace
+ (f00, msg) =
 lam
 (x1:a1,x2:a2
 ,x3:a3,x4:a4) => let
@@ -225,8 +225,8 @@ val () = print1s
 < a4:t0 >
 < a5:t0 >
 < r0:vt >
-f_trace$f5un
- (msg, f00) =
+f5un_trace
+ (f00, msg) =
 lam
 (x1:a1
 ,x2:a2,x3:a3
@@ -260,8 +260,8 @@ print1s(msg, ": res0 = ", r0, "\n") in r0 end
 < a5:t0 >
 < a6:t0 >
 < r0:vt >
-f_trace$f6un
- (msg, f00) =
+f6un_trace
+ (f00, msg) =
 lam
 (x1:a1,x2:a2
 ,x3:a3,x4:a4
