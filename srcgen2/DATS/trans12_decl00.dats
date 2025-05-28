@@ -1958,7 +1958,7 @@ D2ITMsym(_, d2ps) => d2ps
 |
 _(*non-D2ITMsym*) =>
 (
-  list_sing(D2PTMsome(0, d2i1))))
+list_sing(D2PTMsome(0, d2i1))))
 //
 end : d2ptmlst // end of [val(d2ps)]
 //
@@ -3048,18 +3048,13 @@ in//let
 //
 case+ opt1 of
 | ~
-optn_vt_nil() =>
-list_nil((*void*))
+optn_vt_nil
+( (*nil*) ) => list_nil((*void*))
 | ~
-optn_vt_cons(d2i1) =>
-(
-case+ d2i1 of
-|
-D2ITMcst
-( d2cs ) => d2cs | _ => list_nil()
-) (*case+*) // end of [optn_vt_cons]
+optn_vt_cons
+(   d2i1   ) => f1_ditm(sym1, d2i1)
 //
-end (*let*) // end of [D1QIDnone(tok1)]
+end(*let*)//end-of-[D1QIDnone(tok1)]
 |
 D1QIDsome(tqua, tok1) =>
 let
@@ -3074,19 +3069,84 @@ in//let
 //
 case+ opt1 of
 | ~
-optn_vt_nil
-((*0*)) => list_nil((*void*))
+optn_vt_nil() => list_nil((*void*))
 | ~
-optn_vt_cons(d2i1) =>
+optn_vt_cons(d2i1) => f1_ditm(sym1, d2i1)
+//
+end(*let*)//end-of-[D1QIDsome( ... )]
+//
+) : d2cstlst //end-of-(val(   d2cs    ))
+//
+} (* where *)//end-of-[f1_dqid(env0,dqid)]
+//
+and
+f1_ditm
+( sym0: symbl
+, d2i0: d2itm): d2cstlst =
+(
+case+ d2i0 of
+|D2ITMvar
+(  d2v1  ) => list_nil()
+|D2ITMcon
+(  d2cs  ) => list_nil()
+|D2ITMcst
+(  d2cs  ) => (  d2cs  )
+|D2ITMsym
+(sym1, d2ps) => f1_d2ps(sym0, d2ps))
+//
+and
+f1_d2i1
+( sym0: symbl
+, d2i1: d2itm): d2cstlst =
 (
 case+ d2i1 of
-|
-D2ITMcst(d2cs)=>d2cs | _ => list_nil())
+|D2ITMvar
+(  d2v1  ) => list_nil()
+|D2ITMcon
+(  d2cs  ) => list_nil()
 //
-end (*let*) // end of [ D1QIDsome(...) ]
-) : d2cstlst // end-of-val-(    d2cs    )
+|D2ITMcst
+(  d2cs  ) =>
+(
+list_filter(d2cs)) where
+{
+#impltmp
+filter$test
+<d2cst>(dcst) =
+(
+$SYM.symbl_cmp
+(sym0, dcst.name()) = 0) }
 //
-} (* where *) // end of [f1_dqid(env0,dqid)]
+|D2ITMsym
+(sym1, d2ps) => f1_d2ps(sym0, d2ps))
+//
+and
+f1_d2p1
+( sym0: symbl
+, d2p0: d2ptm): d2cstlst =
+(
+case+ d2p0 of
+|D2PTMnone
+(  dqid  ) => list_nil()
+|D2PTMsome
+(pval, d2i1) => f1_d2i1(sym0, d2i1))
+//
+and
+f1_d2ps
+( sym0: symbl
+, d2ps: d2ptmlst): d2cstlst =
+(
+case+ d2ps of
+|list_nil
+( (*0*) ) => list_nil((*0*))
+|list_cons
+(d2p1, d2ps) =>
+let
+val d2cs = f1_d2p1(sym0, d2p1)
+in//let
+list_append(d2cs, f1_d2ps(sym0, d2ps))
+end//let
+)
 //
 in//local
 //

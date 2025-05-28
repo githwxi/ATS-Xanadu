@@ -120,20 +120,20 @@ gfun_rand_equal_f1un
 //
 fun
 <r0:vt>
-f_trace$f0un
+f0un_trace
 (msg: strn
 ,f00: f0un(r0)): f0un(r0)
 fun
 <a1:t0>
 <r0:vt>
-f_trace$f1un
+f1un_trace
 (msg: strn
 ,f00: f1un(a1,r0)): f1un(a1,r0)
 fun
 <a1:t0>
 <a2:t0>
 <r0:vt>
-f_trace$f2un
+f2un_trace
 (msg: strn
 ,f00: f2un(a1,a2,r0)): f2un(a1,a2,r0)
 fun
@@ -141,7 +141,7 @@ fun
 <a2:t0>
 <a3:t0>
 <r0:vt>
-f_trace$f3un
+f3un_trace
 (msg: strn
 ,f00: f3un(a1,a2,a3,r0)): f3un(a1,a2,a3,r0)
 //
@@ -153,7 +153,7 @@ fun
 <a3:t0>
 <a4:t0>
 <r0:vt>
-f_trace$f4un
+f4un_trace
 (msg: strn
 ,f00: f4un(a1,a2,a3,a4,r0)): f4un(a1,a2,a3,a4,r0)
 //
@@ -166,7 +166,7 @@ fun
 <a4:t0>
 <a5:t0>
 <r0:vt>
-f_trace$f5un
+f5un_trace
 (msg: strn
 ,f00: f5un(a1,a2,a3,a4,a5,r0)): f5un(a1,a2,a3,a4,a5,r0)
 //
@@ -180,19 +180,19 @@ fun
 <a5:t0>
 <a6:t0>
 <r0:vt>
-f_trace$f6un
+f6un_trace
 (msg: strn
 ,f00: f6un(a1,a2,a3,a4,a5,a6,r0)): f6un(a1,a2,a3,a4,a5,a6,r0)
 //
 (* ****** ****** *)
 //
-#symload trace with f_trace$f0un of 1000
-#symload trace with f_trace$f1un of 1000
-#symload trace with f_trace$f2un of 1000
-#symload trace with f_trace$f3un of 1000
-#symload trace with f_trace$f4un of 1000
-#symload trace with f_trace$f5un of 1000
-#symload trace with f_trace$f6un of 1000
+#symload trace with f0un_trace of 1000
+#symload trace with f1un_trace of 1000
+#symload trace with f2un_trace of 1000
+#symload trace with f3un_trace of 1000
+#symload trace with f4un_trace of 1000
+#symload trace with f5un_trace of 1000
+#symload trace with f6un_trace of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

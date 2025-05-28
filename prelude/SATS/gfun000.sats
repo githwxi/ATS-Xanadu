@@ -161,30 +161,34 @@ f1un_rand$equal
 //
 fun
 <r0:vt>
-f_trace$f0un
-(msg: strn
-,f00: f0un(r0)): f0un(r0)
+f0un_trace
+(
+f00:
+f0un(r0), msg: strn): f0un(r0)
 fun
 <a1:t0>
 <r0:vt>
-f_trace$f1un
-(msg: strn
-,f00: f1un(a1,r0)): f1un(a1,r0)
+f1un_trace
+(
+f00:
+f1un(a1,r0), msg: strn): f1un(a1,r0)
 fun
 <a1:t0>
 <a2:t0>
 <r0:vt>
-f_trace$f2un
-(msg: strn
-,f00: f2un(a1,a2,r0)): f2un(a1,a2,r0)
+f2un_trace
+(
+f00:
+f2un(a1,a2,r0), msg: strn): f2un(a1,a2,r0)
 fun
 <a1:t0>
 <a2:t0>
 <a3:t0>
 <r0:vt>
-f_trace$f3un
-(msg: strn
-,f00: f3un(a1,a2,a3,r0)): f3un(a1,a2,a3,r0)
+f3un_trace
+(
+f00:
+f3un(a1,a2,a3,r0), msg: strn): f3un(a1,a2,a3,r0)
 //
 (* ****** ****** *)
 //
@@ -194,9 +198,10 @@ fun
 <a3:t0>
 <a4:t0>
 <r0:vt>
-f_trace$f4un
-(msg: strn
-,f00: f4un(a1,a2,a3,a4,r0)): f4un(a1,a2,a3,a4,r0)
+f4un_trace
+(
+f00:
+f4un(a1,a2,a3,a4,r0), msg: strn): f4un(a1,a2,a3,a4,r0)
 //
 (* ****** ****** *)
 //
@@ -207,9 +212,10 @@ fun
 <a4:t0>
 <a5:t0>
 <r0:vt>
-f_trace$f5un
-(msg: strn
-,f00: f5un(a1,a2,a3,a4,a5,r0)): f5un(a1,a2,a3,a4,a5,r0)
+f5un_trace
+(
+f00:
+f5un(a1,a2,a3,a4,a5,r0), msg: strn): f5un(a1,a2,a3,a4,a5,r0)
 //
 (* ****** ****** *)
 //
@@ -221,19 +227,39 @@ fun
 <a5:t0>
 <a6:t0>
 <r0:vt>
-f_trace$f6un
-(msg: strn
-,f00: f6un(a1,a2,a3,a4,a5,a6,r0)): f6un(a1,a2,a3,a4,a5,a6,r0)
+f6un_trace
+(
+f00:
+f6un(a1,a2,a3,a4,a5,a6,r0), msg: strn): f6un(a1,a2,a3,a4,a5,a6,r0)
 //
 (* ****** ****** *)
 //
-#symload trace with f_trace$f0un of 1000
-#symload trace with f_trace$f1un of 1000
-#symload trace with f_trace$f2un of 1000
-#symload trace with f_trace$f3un of 1000
-#symload trace with f_trace$f4un of 1000
-#symload trace with f_trace$f5un of 1000
-#symload trace with f_trace$f6un of 1000
+#symload trace with f0un_trace of 1000
+#symload trace with f1un_trace of 1000
+#symload trace with f2un_trace of 1000
+#symload trace with f3un_trace of 1000
+#symload trace with f4un_trace of 1000
+#symload trace with f5un_trace of 1000
+#symload trace with f6un_trace of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+f1un_list$map
+(f00: x0 -> y0): list(x0) -> list(y0)
+fun
+<x0:vt>
+<y0:vt>
+f1un_llist0$map
+(f00: x0 -> y0): list_vt(x0) -> list_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+f1un_llist1$map
+(f00: x0 -> y0): (!list_vt(x0)) -> list_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
