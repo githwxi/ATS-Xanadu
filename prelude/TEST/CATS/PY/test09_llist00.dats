@@ -56,5 +56,5 @@ val () = print0s("ns = ", ns, "\n")
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_TEST_CATS_PY_test09_llist000.dats] *)
+(* end of [ATS3/XANADU_prelude_TEST_CATS_PY_test09_llist00.dats] *)
 (***********************************************************************)

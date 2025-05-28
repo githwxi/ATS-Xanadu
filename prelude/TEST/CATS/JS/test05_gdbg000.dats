@@ -30,7 +30,7 @@ then n * fact(n-1) else 1
 (* ****** ****** *)
 //
 val
-fact = trace("fact", fact)
+fact = trace(fact, "fact")
 //
 val (  ) =
 (20).foritm
@@ -41,14 +41,13 @@ val (  ) =
 //
 val
 strn_append =
-trace("strn_append", strn_append<>)
+trace(strn_append<>, "strn_append")
 val strn_abc = strn_append("a", "bc")
 val strn_xyz = strn_append("x", "yz")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_TEST_CATS_JS_test05_gdbg000.dats] *)
+(***********************************************************************)
