@@ -220,13 +220,13 @@ fun
 <x0:t0>
 <y0:t0>
 list_map
-{ln:nat}
+{ln:n0}
 (xs: list(x0, ln)): list(y0, ln)
 fun
 <x0:t0>
 <y0:t0>
 list_map$f1un
-{ln:nat}
+{ln:n0}
 (xs: list(x0, ln), (x0)->y0): list(y0, ln)
 //
 #symload map with list_map of 1000
@@ -240,13 +240,13 @@ fun
 <x0:t0>
 <y0:vt>
 list_map_vt
-{ln:nat}
+{ln:n0}
 (xs: list(x0, ln)): list_vt(y0, ln)
 fun
 <x0:t0>
 <y0:vt>
 list_map$f1un_vt
-{ln:nat}
+{ln:n0}
 (xs: list(x0, ln), (x0)->y0): list_vt(y0, ln)
 //
 #symload map_vt with list_map_vt of 1000
@@ -261,13 +261,13 @@ fun
 <x0:t0>
 <y0:t0>
 list_maprev
-{ln:nat}
+{ln:n0}
 (xs: list(x0, ln)): list(y0, ln)
 fun
 <x0:t0>
 <y0:t0>
 list_maprev$f1un
-{ln:nat}
+{ln:n0}
 (xs: list(x0, ln), (x0)->y0): list(y0, ln)
 //
 #symload maprev with list_maprev of 1000
@@ -281,13 +281,13 @@ fun
 <x0:t0>
 <y0:vt>
 list_maprev_vt
-{ln:nat}
+{ln:n0}
 (xs: list(x0, ln)): list_vt(y0, ln)
 fun
 <x0:t0>
 <y0:vt>
 list_maprev$f1un_vt
-{ln:nat}
+{ln:n0}
 (xs: list(x0, ln), (x0)->y0): list_vt(y0, ln)
 //
 #symload maprev_vt with list_maprev_vt of 1000
@@ -298,7 +298,6 @@ list_maprev$f1un_vt
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_list001.sats] *)
+(***********************************************************************)

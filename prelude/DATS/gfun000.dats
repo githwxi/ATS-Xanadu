@@ -290,6 +290,60 @@ print1s(msg, ": res0 = ", r0, "\n") in r0 end
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0:t0 >
+< y0:t0 >
+f1un_map$list
+  ( fopr ) =
+lam(xs) =>
+list_map$f1un<x0><y0>(xs, fopr)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+f1un_map0$llist
+  ( fopr ) =
+lam(xs) =>
+list_vt_map0$f1un<x0><y0>(xs, fopr)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+f1un_map1$llist
+  ( fopr ) =
+lam(xs) =>
+list_vt_map1$f1un<x0><y0>(xs, fopr)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+f1un_map$optn
+  ( fopr ) =
+lam(xs) =>
+optn_map$f1un<x0><y0>(xs, fopr)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+f1un_map0$loptn
+  ( fopr ) =
+lam(xs) =>
+optn_vt_map0$f1un<x0><y0>(xs, fopr)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+f1un_map1$loptn
+  ( fopr ) =
+lam(xs) =>
+optn_vt_map1$f1un<x0><y0>(xs, fopr)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_gfun000.dats] *)
 (***********************************************************************)

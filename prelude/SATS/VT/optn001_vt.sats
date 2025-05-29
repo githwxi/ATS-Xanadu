@@ -61,7 +61,51 @@ optn_vt_irforall0
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+//
+(*
+HX-2024-09-14:
+Sat 14 Sep 2024 03:34:58 PM EDT
+*)
+//
+fun
+<x0:vt>
+<y0:vt>
+optn_vt_map0
+{ln:b0}
+(xs: ~optn_vt(x0, ln)): optn_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+optn_vt_map1
+{ln:b0}
+(xs: !optn_vt(x0, ln)): optn_vt(y0, ln)
+//
+#symload map0 with optn_vt_map0 of 1000
+#symload map1 with optn_vt_map1 of 1000
+//
+fun
+<x0:vt>
+<y0:vt>
+optn_vt_map0$f1un
+{ln:b0}
+(xs:
+~optn_vt(x0, ln)
+,fopr: (  ~x0  ) -> y0): optn_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+optn_vt_map1$f1un
+{ln:b0}
+(xs:
+!optn_vt(x0, ln)
+,fopr: (  !x0  ) -> y0): optn_vt(y0, ln)
+//
+#symload map0$fun with optn_vt_map0$f1un of 1000
+#symload map1$fun with optn_vt_map1$f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_optn001_vt.sats] *)
+(***********************************************************************)

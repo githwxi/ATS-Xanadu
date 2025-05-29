@@ -54,7 +54,7 @@ optn_vt_cons(x0) => forall$test0<x0>(x0)
 #impltmp
 { x0:vt }
 gseq_forall0
-<optn_vt(x0)><x0> = optn_vt_forall0<x0>(*void*)
+<optn_vt(x0)><x0> = optn_vt_forall0<x0>(*0*)
 //
 (* ****** ****** *)
 //
@@ -73,7 +73,7 @@ optn_vt_cons(x0) => rforall$test0<x0>(x0)
 #impltmp
 { x0:vt }
 gseq_rforall0
-<optn_vt(x0)><x0> = optn_vt_rforall0<x0>(*void*)
+<optn_vt(x0)><x0> = optn_vt_rforall0<x0>(*0*)
 //
 (* ****** ****** *)
 //
@@ -92,7 +92,7 @@ optn_vt_cons(x0) => iforall$test0<x0>(0, x0)
 #impltmp
 { x0:vt }
 gseq_iforall0
-<optn_vt(x0)><x0> = optn_vt_iforall0<x0>(*void*)
+<optn_vt(x0)><x0> = optn_vt_iforall0<x0>(*0*)
 //
 (* ****** ****** *)
 //
@@ -111,12 +111,71 @@ optn_vt_cons(x0) => irforall$test0<x0>(0, x0)
 #impltmp
 { x0:vt }
 gseq_irforall0
-<optn_vt(x0)><x0> = optn_vt_irforall0<x0>(*void*)
+<optn_vt(x0)><x0> = optn_vt_irforall0<x0>(*0*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(*
+HX-2025-05-29:
+Thu May 29 08:54:25 AM EDT 2025
+*)
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+optn_vt_map0
+(  xs  ) =
+(
+case+ xs of
+| ~
+optn_vt_nil() => optn_vt_nil()
+| ~
+optn_vt_cons(x0) =>
+optn_vt_cons(map$fopr0<x0><y0>(x0)))
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+optn_vt_map1
+(  xs  ) =
+(
+case+ xs of
+| // !
+optn_vt_nil() => optn_vt_nil()
+| // !
+optn_vt_cons(x0) =>
+optn_vt_cons(map$fopr1<x0><y0>(x0)))
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+optn_vt_map0$f1un
+( xs, fopr ) =
+(
+case+ xs of
+| ~
+optn_vt_nil() => optn_vt_nil()
+| ~
+optn_vt_cons(x0) => optn_vt_cons(fopr(x0)))
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+optn_vt_map1$f1un
+( xs, fopr ) =
+(
+case+ xs of
+| // !
+optn_vt_nil() => optn_vt_nil()
+| // !
+optn_vt_cons(x0) => optn_vt_cons(fopr(x0)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_optn001_vt.dats] *)
+(***********************************************************************)
