@@ -80,7 +80,53 @@ optn_irforitm(xs: optn(x0)): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+//
+(*
+HX-2025-05-29:
+Thu May 29 08:44:08 AM EDT 2025
+*)
+//
+fun
+<x0:t0>
+<y0:t0>
+optn_map
+{ln:b0}
+(xs: optn(x0, ln)): optn(y0, ln)
+fun
+<x0:t0>
+<y0:t0>
+optn_map$f1un
+{ln:b0}
+(xs: optn(x0, ln), (x0)->y0): optn(y0, ln)
+//
+#symload map with optn_map of 1000
+#symload map with optn_map$f1un of 1000
+#symload map$fun with optn_map$f1un of 1000
+#symload optn_map with optn_map$f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:vt>
+optn_map_vt
+{ln:b0}
+(xs: optn(x0, ln)): optn_vt(y0, ln)
+fun
+<x0:t0>
+<y0:vt>
+optn_map$f1un_vt
+{ln:b0}
+(xs: optn(x0, ln), (x0)->y0): optn_vt(y0, ln)
+//
+#symload map_vt with optn_map_vt of 1000
+#symload map_vt with optn_map$f1un_vt of 1000
+#symload map$fun_vt with optn_map$f1un_vt of 1000
+#symload optn_map_vt with optn_map$f1un_vt of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_optn001.sats] *)
+(***********************************************************************)

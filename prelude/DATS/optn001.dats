@@ -115,6 +115,35 @@ gseq_irforall
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-29:
+Thu May 29 08:48:06 AM EDT 2025
+*)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+optn_map
+(  xs  ) =
+(
+case+ xs of
+| optn_nil() => optn_nil()
+| optn_cons(x0) =>
+  optn_cons(map$fopr<x0><y0>(x0)))
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+optn_map$f1un
+( xs, fopr ) =
+(
+case+ xs of
+| optn_nil() => optn_nil()
+| optn_cons(x0) => optn_cons(fopr(x0)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_optn001.dats] *)
 (***********************************************************************)

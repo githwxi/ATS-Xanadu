@@ -220,10 +220,10 @@ list_vt_c3hoose0_lstrm
 fun
 <x0:vt>
 list_vt_nchoose0_lstrm$llist
-{n0:nat}
+{ln:n0}
 ( xs:
 ~ list_vt(x0)
-, n0: nint(n0)): strm_vt(list_vt(x0, n0))
+, n0: nint(n0)): strm_vt(list_vt(x0, ln))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -237,13 +237,13 @@ fun
 <x0:vt>
 <y0:vt>
 list_vt_map0
-{ln:nat}
+{ln:n0}
 (xs: ~list_vt(x0, ln)): list_vt(y0, ln)
 fun
 <x0:vt>
 <y0:vt>
 list_vt_map1
-{ln:nat}
+{ln:n0}
 (xs: !list_vt(x0, ln)): list_vt(y0, ln)
 //
 #symload map0 with list_vt_map0 of 1000
@@ -253,7 +253,7 @@ fun
 <x0:vt>
 <y0:vt>
 list_vt_map0$f1un
-{ln:nat}
+{ln:n0}
 (xs:
 ~list_vt(x0, ln)
 ,fopr: (  ~x0  ) -> y0): list_vt(y0, ln)
@@ -261,7 +261,7 @@ fun
 <x0:vt>
 <y0:vt>
 list_vt_map1$f1un
-{ln:nat}
+{ln:n0}
 (xs:
 !list_vt(x0, ln)
 ,fopr: (  !x0  ) -> y0): list_vt(y0, ln)
@@ -281,13 +281,13 @@ fun
 <x0:vt>
 <y0:vt>
 list_vt_maprev0
-{ln:nat}
+{ln:n0}
 (xs: ~list_vt(x0, ln)): list_vt(y0, ln)
 fun
 <x0:vt>
 <y0:vt>
 list_vt_maprev1
-{ln:nat}
+{ln:n0}
 (xs: !list_vt(x0, ln)): list_vt(y0, ln)
 //
 #symload maprev0 with list_vt_maprev0 of 1000
@@ -297,7 +297,7 @@ fun
 <x0:vt>
 <y0:vt>
 list_vt_maprev0$f1un
-{ln:nat}
+{ln:n0}
 (xs:
 ~list_vt(x0, ln)
 ,fopr: (  ~x0  ) -> y0): list_vt(y0, ln)
@@ -305,7 +305,7 @@ fun
 <x0:vt>
 <y0:vt>
 list_vt_maprev1$f1un
-{ln:nat}
+{ln:n0}
 (xs:
 !list_vt(x0, ln)
 ,fopr: (  !x0  ) -> y0): list_vt(y0, ln)

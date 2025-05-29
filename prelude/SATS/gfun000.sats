@@ -242,24 +242,72 @@ f6un(a1,a2,a3,a4,a5,a6,r0), msg: strn): f6un(a1,a2,a3,a4,a5,a6,r0)
 #symload trace with f5un_trace of 1000
 #symload trace with f6un_trace of 1000
 //
+#symload f_trace with f0un_trace of 1000
+#symload f_trace with f1un_trace of 1000
+#symload f_trace with f2un_trace of 1000
+#symload f_trace with f3un_trace of 1000
+#symload f_trace with f4un_trace of 1000
+#symload f_trace with f5un_trace of 1000
+#symload f_trace with f6un_trace of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <y0:t0>
-f1un_list$map
-(f00: x0 -> y0): list(x0) -> list(y0)
+f1un_map$list
+(f00: (x0) -> y0): list(x0) -> list(y0)
 fun
 <x0:vt>
 <y0:vt>
-f1un_llist0$map
-(f00: x0 -> y0): list_vt(x0) -> list_vt(y0)
+f1un_map0$llist
+(f00: (~x0) -> y0): list_vt(x0) -> list_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-f1un_llist1$map
-(f00: x0 -> y0): (!list_vt(x0)) -> list_vt(y0)
+f1un_map1$llist
+(f00: (!x0) -> y0): (!list_vt(x0)) -> list_vt(y0)
+//
+(* ****** ****** *)
+//
+#symload map$list with f1un_map$list of 1000
+#symload map0$llist with f1un_map0$llist of 1000
+#symload map1$llist with f1un_map1$llist of 1000
+//
+#symload f_map$list with f1un_map$list of 1000
+#symload f_map0$llist with f1un_map0$llist of 1000
+#symload f_map1$llist with f1un_map1$llist of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+fun
+<x0:t0>
+<y0:t0>
+f1un_map$optn
+(f00: (x0) -> y0): optn(x0) -> optn(y0)
+fun
+<x0:vt>
+<y0:vt>
+f1un_map0$loptn
+(f00: (~x0) -> y0): optn_vt(x0) -> optn_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+f1un_map1$loptn
+(f00: (!x0) -> y0): (!optn_vt(x0)) -> optn_vt(y0)
+//
+(* ****** ****** *)
+//
+#symload map$optn with f1un_map$optn of 1000
+#symload map0$loptn with f1un_map0$loptn of 1000
+#symload map1$loptn with f1un_map1$loptn of 1000
+//
+#symload f_map$optn with f1un_map$optn of 1000
+#symload f_map0$loptn with f1un_map0$loptn of 1000
+#symload f_map1$loptn with f1un_map1$loptn of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
