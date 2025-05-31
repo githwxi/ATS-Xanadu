@@ -878,12 +878,18 @@ d3exp_make_tpnd
 //
 |D2Esym0 _ => f0_sym0(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Esapp _ => f0_sapp(env0, d2e0)
 //
 |D2Etapp _ => f0_tapp(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Edap0 _ => f0_dap0(env0, d2e0)
 |D2Edapp _ => f0_dapp(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |D2Eproj _ => f0_proj(env0, d2e0)
 //
@@ -1133,10 +1139,11 @@ list_ziprev(s2vs, t2ps)
 val t2p1 =
 s2typ_subst0(t2p1, svts)
 in//let
+(
 d3exp_make_tpnd
 (loc0
-,t2p1, D3Esapq(d3f0,t2ps))
-endlet//end-of-[T2Pfun(...)]
+,t2p1, D3Esapq(d3f0, t2ps)))
+endlet//end-of-[T2Puni0(...)]
 |
 _(*non-T2Puni0*) =>
 let
@@ -1158,7 +1165,7 @@ list_nil( (*void*) )
 list_cons(s2v1, s2vs) =>
 (
 f1_t2ps_cons(s2v1, s2vs, s2es)))
-//(*case+*)//end of [f1_sapq(...)]
+//(*case+*)//end of [f1_t2ps(...)]
 //
 and
 f1_t2ps_cons

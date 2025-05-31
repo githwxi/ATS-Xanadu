@@ -86,10 +86,10 @@ g_ptype() =
 (
  strn_print("$typ(vw)"))
 #impltmp
-< pf:pp >
+< pp:pp >
 g_ptype() =
 (
- strn_print("$typ(pf)"))
+ strn_print("$typ(pp)"))
 //
 #impltmp
 < vt:vt >
@@ -97,10 +97,21 @@ g_ptype() =
 (
  strn_print("$typ(vt)"))
 #impltmp
+< vx:vx >
+g_ptype() =
+(
+ strn_print("$typ(vx)"))
+//
+#impltmp
 < t0:t0 >
 g_ptype() =
 (
  strn_print("$typ(t0)"))
+#impltmp
+< tx:tx >
+g_ptype() =
+(
+ strn_print("$typ(tx)"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -111,6 +122,8 @@ g_print(x0) =
 ( pstrn"$val("
 ; g_ptype<t0>(); pstrn":"
 ; g_psort<t0>(); pstrn")")
+//
+(* ****** ****** *)
 //
 #impltmp
 < vt:vt >
