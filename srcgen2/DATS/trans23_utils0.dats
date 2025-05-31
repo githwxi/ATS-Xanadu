@@ -459,16 +459,24 @@ val
 svts = list_nil((*void*))
 val
 t2p0 = d2cst_get_styp(dcst)
+//
+(*
+val () =
+prerrsln("\
+d2cst23_tapqize: svts: ", svts)
+val () =
+prerrsln("\
+d2cst23_tapqize: t2p0: ", t2p0)
+*)
+//
 val
 svts =
-f0_make_svts(t2qs, t2js, svts)
+(
+f0_make_svts(t2qs, t2js, svts))
 val
 t2p0 = s2typ_subst0(t2p0, svts)
 //
 (*
-val () =
-prerrsln
-("d2cst23_tapqize: svts: ", svts)
 val () =
 prerrsln
 ("d2cst23_tapqize: t2p0: ", t2p0)
@@ -498,12 +506,6 @@ end (*let*) // end of [d2cst23_tapqize(...)]
 //
 endloc // end of [local(d2con23/d2cst23_tapqize)]
 
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-d3pat_sapqize(d3p0) = d3p0
-//
 (* ****** ****** *)
 (* ****** ****** *)
 
@@ -554,7 +556,14 @@ svts = list_cons(@(s2v1, t2p1), svts) }
 ) (*case+*) // end of [f0_s2vs_t2ps(...)]
 //
 in//local
-
+//
+(* ****** ****** *)
+//
+#implfun
+d3pat_sapqize(d3p0) = d3p0
+//
+(* ****** ****** *)
+//
 #implfun
 d3exp_sapqize
 (    d3e0    ) =
@@ -562,12 +571,20 @@ let
 //
 val
 loc0 = d3e0.lctn()
+//
 val
 t2p0 = d3e0.styp()
+val
+t2p0 = s2typ_hnfiz0(t2p0)
 //
-val t2p0 =
-(
-  s2typ_hnfiz0(t2p0))
+(*
+val () =
+prerrsln
+("d3exp_sapqize: d3e0 = ", d3e0)
+val () =
+prerrsln
+("d3exp_sapqize: t2p0 = ", t2p0)
+*)
 //
 in//let
 //
@@ -595,7 +612,9 @@ end (*let*) // end of [ T2Puni0(s2vs,t2p1) ]
   let val () = d3e0.styp(t2p0) in d3e0 end)
 //
 end (*let*) // end of [ d3exp_sapqize(d3e0) ]
-
+//
+(* ****** ****** *)
+//
 end (*local*) // end of [d3pat/d3exp_sapqize]
 
 (* ****** ****** *)
