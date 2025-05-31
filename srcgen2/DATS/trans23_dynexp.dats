@@ -1552,6 +1552,9 @@ tfun.node() of
 (*
 val () =
 prerrsln
+("trans23_d2exp:f0_dapp:d3f0 = ",d3f0)
+val () =
+prerrsln
 ("trans23_d2exp:f0_dapp:tfun = ",tfun)
 val () =
 prerrsln

@@ -58,7 +58,7 @@ local
 //
 #extern
 fcast
-castxy{ax:t0}{ay:t0}(ax):(ay)
+castxy{ax:t0}{ay:t0}(ax:ax):(ay)
 //
 in//local
 //
