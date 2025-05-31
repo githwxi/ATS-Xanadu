@@ -30,130 +30,109 @@
 //
 (*
 Author: Hongwei Xi
-(*
-Sat May 17 10:54:57 PM EDT 2025
-*)
+Sat May 31 11:40:09 AM EDT 2025
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"xatslib\
+/libcats\
+/HATS/libcats_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload
-"./../SATS/dynexp3.sats"
+"./../../../SATS/lexing0.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/staexp0.sats"
+#staload
+"./../../../SATS/dynexp0.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/staexp1.sats"
+#staload
+"./../../../SATS/dynexp1.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/staexp2.sats"
+#staload
+"./../../../SATS/statyp2.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fcast
+castxy{ax:t0}{ay:t0}(ax:ax):(ay)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-g_print
-<d3pat1>(d3p0) =
-(
-d3pat1_print(d3p0)
-) where
-{
+g_print<token>(tok0) =
+token_fprint(tok0, castxy(g_print$out<>()))
 //
-fun
-d3pat1_print
-(d3p0: d3pat1): void =
-(
-case+
-d3p0.node() of
-//
-|D3P1any() =>
-(
-prints("D3P1any(", ")"))
-//
-|D3P1var(d2v1) =>
-(
-prints("D3P1var(", d2v1, ")"))
-//
-|D3P1dapp
-(d3f0
-,npf1, d3ps) =>
-(
-prints
-("D3P1dapp("
-, d3f0, ";", npf1, ";", d3ps, ")"))
-//
-|D3P1rfpt
-(d3p1
-,tkas, d3p2) =>
-(
-prints
-("D3P1dapp("
-, d3p1, ";", tkas, ";", d3p2, ")"))
-//
-|D3P1tup0
-(npf1, d3ps) =>
-(
-prints(
-"D3P1tup0(", npf1, ";", d3ps, ")"))
-|D3P1tup1
-(tknd
-,npf1, d3ps) =>
-(
-prints
-("D3P1tup1("
-, tknd, ";", npf1, ";", d3ps, ")"))
-//
-|D3P1d3pat
-(   dpat   ) =>
-(
-  prints( "D3P1d3pat(", dpat, ")" ))
-//
-|D3P1errck
-(lvl0, d3p1) =>
-(
-prints("D3P1errck(", lvl0, ";", d3p1, ")"))
-//
-) where
-{
-  #impltmp
-  g_print<d3pat1> = d3pat1_print
-}(*where*)//end-of-[d3pat1_print(d3p0)]
-//
-}(*where*)//end-of-[g_print<d3pat1>(d3p0)]
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-g_print
-<d3exp1>(d3e0) =
-(
-d3exp1_print(d3e0)
-) where
-{
+g_print<d0pat>(d0p0) =
+d0pat_fprint(d0p0, castxy(g_print$out<>()))
 //
-fun
-d3exp1_print
-(d3e0: d3exp1): void =
-(
-case+
-d3e0.node() of
+#impltmp
+g_print<d0exp>(d0e0) =
+d0exp_fprint(d0e0, castxy(g_print$out<>()))
 //
-|D3E1int
-(   tint   ) =>
-(
-prints("D3E1int(", tint, ")"))
+(* ****** ****** *)
 //
-|D3E1errck
-(lvl0, d3e1) =>
-(
-prints("D3E1errck(", lvl0, ";", d3e1, ")"))
+#impltmp
+g_print<d1pat>(d1p0) =
+d1pat_fprint(d1p0, castxy(g_print$out<>()))
 //
-) where
-{
-  #impltmp
-  g_print<d3exp1> = d3exp1_print
-}(*where*)//end-of-[d3exp1_print(d3e0)]
+#impltmp
+g_print<d1exp>(d1e0) =
+d1exp_fprint(d1e0, castxy(g_print$out<>()))
 //
-}(*where*)//end-of-[g_print<d3exp1>(d3e0)]
+(* ****** ****** *)
+//
+#impltmp
+g_print<d2pat>(d2p0) =
+d2pat_fprint(d2p0, castxy(g_print$out<>()))
+//
+#impltmp
+g_print<d2exp>(d2e0) =
+d2exp_fprint(d2e0, castxy(g_print$out<>()))
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d3pat>(d3p0) =
+d3pat_fprint(d3p0, castxy(g_print$out<>()))
+//
+#impltmp
+g_print<d3exp>(d3e0) =
+d3exp_fprint(d3e0, castxy(g_print$out<>()))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_dynexp3_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_xsyncpy_tmplib.dats] *)
 (***********************************************************************)

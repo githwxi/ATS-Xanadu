@@ -52,27 +52,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-local
-//
-#staload "\
-./../DATS/dynexp2_print0.dats"
-//
-in//local
-//
-#implfun
-d2exp_fprint = g_fprint<d2exp>
-//
-end//local
-//
-(* ****** ****** *)
-//
-#impltmp
-g_print<d2exp>(dexp) =
-d2exp_fprint(dexp, g_print$out<>())
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_dynexp2.dats] *)
 (***********************************************************************)
