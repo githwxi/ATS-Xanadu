@@ -318,6 +318,35 @@ c3hoose$forall$test(x0, x0, x0): bool
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-31:
+Sat May 31 07:04:48 PM EDT 2025
+*)
+//
+fun
+<x0:t0>
+<y0:vt>
+<e1:vt>
+map$e1nv$fopr(itm: x0, env: !e1): (y0)
+fun
+<x0:t0>
+<y0:vt>
+<e1:vt>
+rmap$e1nv$fopr(itm: x0, env: !e1): (y0)
+fun
+<x0:t0>
+<y0:vt>
+<e1:vt>
+imap$e1nv$fopr(pos: ni, itm: x0, env: !e1): (y0)
+fun
+<x0:t0>
+<y0:vt>
+<e1:vt>
+irmap$e1nv$fopr(pos: ni, itm: x0, env: !e1): (y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_gbas001.sats] *)
 (***********************************************************************)

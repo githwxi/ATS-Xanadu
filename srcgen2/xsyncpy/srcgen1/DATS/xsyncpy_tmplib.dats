@@ -117,6 +117,10 @@ d0pat_fprint(d0p0, castxy(g_print$out<>()))
 g_print<d0exp>(d0e0) =
 d0exp_fprint(d0e0, castxy(g_print$out<>()))
 //
+#impltmp
+g_print<d3exp>(d3e0) =
+d3exp_fprint(d3e0, castxy(g_print$out<>()))
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -126,6 +130,10 @@ d1pat_fprint(d1p0, castxy(g_print$out<>()))
 #impltmp
 g_print<d1exp>(d1e0) =
 d1exp_fprint(d1e0, castxy(g_print$out<>()))
+//
+#impltmp
+g_print<d1ecl>(d1cl) =
+d1ecl_fprint(d1cl, castxy(g_print$out<>()))
 //
 (* ****** ****** *)
 //
@@ -137,6 +145,10 @@ d2pat_fprint(d2p0, castxy(g_print$out<>()))
 g_print<d2exp>(d2e0) =
 d2exp_fprint(d2e0, castxy(g_print$out<>()))
 //
+#impltmp
+g_print<d2ecl>(d2cl) =
+d2ecl_fprint(d2cl, castxy(g_print$out<>()))
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -146,6 +158,10 @@ d3pat_fprint(d3p0, castxy(g_print$out<>()))
 #impltmp
 g_print<d3exp>(d3e0) =
 d3exp_fprint(d3e0, castxy(g_print$out<>()))
+//
+#impltmp
+g_print<d3ecl>(d3cl) =
+d3ecl_fprint(d3cl, castxy(g_print$out<>()))
 //
 (* ****** ****** *)
 (* ****** ****** *)

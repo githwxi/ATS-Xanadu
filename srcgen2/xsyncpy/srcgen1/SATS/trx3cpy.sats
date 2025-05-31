@@ -48,25 +48,42 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-trx3cpy_d3parsed
+d3parsed_trx3cpy
 ( dpar : d3parsed ): (d3parsed1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-trx3cpy_d3pat
-(env0: !env3cpy, d3p0: d3pat): d3pat1
+d3pat_trx3cpy
+(d3p0: d3pat, env0: !env3cpy): d3pat1
 fun
-trx3cpy_d3exp
-(env0: !env3cpy, d3e0: d3exp): d3exp1
+d3exp_trx3cpy
+(d3e0: d3exp, env0: !env3cpy): d3exp1
+//
+fun
+d3ecl_trx3cpy
+(d3cl: d3ecl, env0: !env3cpy): d3ecl1
+//
+(* ****** ****** *)
+//
+fun
+d3patlst_trx3cpy
+(d3ps: d3patlst, env0: !env3cpy): d3pat1lst
+fun
+d3explst_trx3cpy
+(d3es: d3explst, env0: !env3cpy): d3exp1lst
+//
+fun
+d3eclist_trx3cpy
+(dcls: d3eclist, env0: !env3cpy): d3ecl1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-trx3cpy_d3eclistopt
-(env0: !env3cpy, dcls: d3eclistopt): d3ecl1lstopt
+d3eclistopt_trx3cpy
+(dcls: d3eclistopt, env0: !env3cpy): d3ecl1lstopt
 //
 (* ****** ****** *)
 (* ****** ****** *)
