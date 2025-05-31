@@ -39,9 +39,17 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../SATS/dynexp3.sats"
+#staload "\
+./../SATS/dynexp3.sats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+//
+#staload _ = "\
+./../DATS/xsyncpy_tmplib.dats"
+//
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //

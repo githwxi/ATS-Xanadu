@@ -46,6 +46,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../../../SATS/xstamp0.sats"
+#staload
+"./../../../SATS/xsymbol.sats"
+//
+(* ****** ****** *)
+//
+#staload
 "./../../../SATS/lexing0.sats"
 //
 (* ****** ****** *)
@@ -84,6 +91,16 @@ fcast
 castxy{ax:t0}{ay:t0}(ax:ax):(ay)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print<stamp>(stmp) =
+stamp_fprint(stmp, castxy(g_print$out<>()))
+//
+#impltmp
+g_print<symbl>(sym0) =
+symbl_fprint(sym0, castxy(g_print$out<>()))
+//
 (* ****** ****** *)
 //
 #impltmp
