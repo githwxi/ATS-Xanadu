@@ -37,6 +37,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"xatslib\
+/libcats\
+/HATS/libcats_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload
 "./../SATS/dynexp2.sats"
 //
@@ -48,6 +56,10 @@ local
 #staload
 "./../../../SATS/dynexp2.sats"
 //
+#extern
+fcast
+castxy{ax:t0}{ay:t0}(ax):(ay)
+//
 in//local
 //
 #impltmp
@@ -56,6 +68,12 @@ g_print<d2exp>(d2e0) =
 //
 case+
 d2e0.node() of
+//
+| _(*otherwise*) =>
+let
+val out0 =
+g_print$out<>() in d2exp_fprint(d2e0, castxy(out0))
+end//let
 //
 )(*case+*)//end-of-[g_print<d2exp>(d2e0)]
 //
