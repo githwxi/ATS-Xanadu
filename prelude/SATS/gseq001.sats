@@ -549,7 +549,7 @@ fun
 <r0:vt>
 gseq_irfolditm$f3un
 ( xs: xs
-, r0: r0, fopr: (r0,ni,x0)->(r0)): (r0)
+, r0: r0, fopr: (ni,x0,r0)->(r0)): (r0)
 //
 (*
 #symload irfolditm with gseq_irfolditm$f3un of 0100
@@ -610,7 +610,7 @@ fun
 gseq_rfoldall$f2un
 ( xs: xs
 , r0: r0
-, fopr: (r0, x0)->(bool, r0)): ( r0 )
+, fopr: (x0, r0)->(bool, r0)): ( r0 )
 //
 (*
 #symload rfoldall with gseq_rfoldall$f2un of 0100
@@ -624,7 +624,8 @@ fun
 <r0:vt>
 gseq_ifoldall$f3un
 ( xs: xs
-, r0: r0, fopr: (r0,ni,x0)->(r0)): (r0)
+, r0: r0
+, fopr: (r0, ni, x0)->(bool, r0)): ( r0 )
 //
 (*
 #symload ifoldall with gseq_ifoldall$f3un of 0100
@@ -638,7 +639,8 @@ fun
 <r0:vt>
 gseq_irfoldall$f3un
 ( xs: xs
-, r0: r0, fopr: (r0,ni,x0)->(r0)): (r0)
+, r0: r0
+, fopr: (ni, x0, r0)->(bool, r0)): ( r0 )
 //
 (*
 #symload irfoldall with gseq_irfoldall$f3un of 0100
@@ -1156,7 +1158,7 @@ fun
 <x0:t0>
 <y0:vt>
 gseq_irmap$f2un_lstrq
-(xs: xs, fopr: (ni, x0)->(y0)): strm_vt(y0)
+(xs: xs, fopr: (ni, x0)->(y0)): strq_vt(y0)
 //
 (*
 #symload
@@ -1248,13 +1250,24 @@ fun
 <x0:t0>
 gseq_filter$f1un_list
 (xs: xs, fopr: (x0)->bool): list(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter$f1un_llist
+(xs: xs, fopr: (x0)->bool): list_vt(x0)
 //
 (*
 #symload
 filter_list with gseq_filter$f1un_list of 0100
+#symload
+filter_llist with gseq_filter$f1un_llist of 0100
 *)
 #symload
 gseq_filter_list with gseq_filter$f1un_list of 0100
+#symload
+gseq_filter_llist with gseq_filter$f1un_llist of 0100
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -1470,6 +1483,21 @@ fun
 <y0:vt>
 <e1:vt>
 gseq_map$e1nv_lstrq(xs: xs, e1: !e1): strq_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<e1:vt>
+gseq_map$e1nv_rlist(xs: xs, e1: !e1): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+gseq_map$e1nv_rllist(xs: xs, e1: !e1): list_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
