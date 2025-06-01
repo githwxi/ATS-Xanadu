@@ -1441,6 +1441,39 @@ gseq_fmake_fwork(fwork: ((x0)->void)->void): (xs)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-31:
+Sat May 31 07:52:59 PM EDT 2025
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<e1:vt>
+gseq_map$e1nv_list(xs: xs, e1: !e1): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+gseq_map$e1nv_llist(xs: xs, e1: !e1): list_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+gseq_map$e1nv_lstrm(xs: xs, e1: !e1): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+gseq_map$e1nv_lstrq(xs: xs, e1: !e1): strq_vt(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_gseq001.sats] *)
 (***********************************************************************)
