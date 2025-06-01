@@ -66,6 +66,8 @@ strm_vt_forall0$f1un
 forall0 with strm_vt_forall0$f1un of 1000
 #symload
 forall0$fun with strm_vt_forall0$f1un of 1000
+#symload
+strm_vt_forall0 with strm_vt_forall0$f1un of 1000
 //
 fun
 <x0:vt>
@@ -77,6 +79,8 @@ strm_vt_iforall0$f2un
 iforall0 with strm_vt_iforall0$f2un of 1000
 #symload
 iforall0$fun with strm_vt_iforall0$f2un of 1000
+#symload
+strm_vt_iforall0 with strm_vt_iforall0$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -105,6 +109,8 @@ strm_vt_foritm0$f1un
 foritm0 with strm_vt_foritm0$f1un of 1000
 #symload
 foritm0$fun with strm_vt_foritm0$f1un of 1000
+#symload
+strm_vt_foritm0 with strm_vt_foritm0$f1un of 1000
 //
 fun
 <x0:vt>
@@ -116,6 +122,8 @@ strm_vt_iforitm0$f2un
 iforitm0 with strm_vt_iforitm0$f2un of 1000
 #symload
 iforitm0$fun with strm_vt_iforitm0$f2un of 1000
+#symload
+strm_vt_iforitm0 with strm_vt_iforitm0$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -148,6 +156,8 @@ strm_vt_folditm0$f2un
 folditm0 with strm_vt_folditm0$f2un of 1000
 #symload
 folditm0$fun with strm_vt_folditm0$f2un of 1000
+#symload
+strm_vt_folditm0 with strm_vt_folditm0$f2un of 1000
 //
 fun
 <x0:vt>
@@ -161,6 +171,8 @@ strm_vt_ifolditm0$f3un
 ifolditm0 with strm_vt_ifolditm0$f3un of 1000
 #symload
 ifolditm0$fun with strm_vt_ifolditm0$f3un of 1000
+#symload
+strm_vt_ifolditm0 with strm_vt_ifolditm0$f3un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -188,6 +200,8 @@ strm_vt_foldall0$f2un
 foldall0 with strm_vt_foldall0$f2un of 1000
 #symload
 foldall0$fun with strm_vt_foldall0$f2un of 1000
+#symload
+strm_vt_foldall0 with strm_vt_foldall0$f2un of 1000
 //
 fun
 <x0:vt>
@@ -201,6 +215,8 @@ strm_vt_ifoldall0$f3un
 ifoldall0 with strm_vt_ifoldall0$f3un of 1000
 #symload
 ifoldall0$fun with strm_vt_ifoldall0$f3un of 1000
+#symload
+strm_vt_ifoldall0 with strm_vt_ifoldall0$f3un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -273,6 +289,7 @@ strm_vt_filter0$f1un
 , test: (!x0) -> bool): strm_vt(x0)
 #symload filter0 with strm_vt_filter0$f1un of 1000
 #symload filter0$fun with strm_vt_filter0$f1un of 1000
+#symload strm_vt_filter0 with strm_vt_filter0$f1un of 1000
 //
 fun
 <x0:vt>
@@ -281,6 +298,7 @@ strm_vt_ifilter0$f2un
 , test: (ni,!x0) -> bool): strm_vt(x0)
 #symload ifilter0 with strm_vt_ifilter0$f2un of 1000
 #symload ifilter0$fun with strm_vt_ifilter0$f2un of 1000
+#symload strm_vt_ifilter0 with strm_vt_ifilter0$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -411,6 +429,27 @@ strq_vt_a1szize0
 //
 #symload a1szize0 with strm_vt_a1szize0 of 1000
 #symload a1szize0 with strq_vt_a1szize0 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-05-31:
+Sat May 31 08:56:05 PM EDT 2025
+*)
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+strm_vt_map$e1nv0
+(xs: strm_vt(x0), e1: !e1): strm_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+strq_vt_map$e1nv0
+(xs: strq_vt(x0), e1: !e1): strq_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

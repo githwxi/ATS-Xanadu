@@ -227,7 +227,8 @@ fun
 <y0:t0>
 list_map$f1un
 {ln:n0}
-(xs: list(x0, ln), (x0)->y0): list(y0, ln)
+( xs
+: list(x0, ln), fopr: (x0)->y0): list(y0, ln)
 //
 #symload map with list_map of 1000
 #symload map with list_map$f1un of 1000
@@ -247,7 +248,8 @@ fun
 <y0:vt>
 list_map$f1un_vt
 {ln:n0}
-(xs: list(x0, ln), (x0)->y0): list_vt(y0, ln)
+( xs
+: list(x0, ln), fopr: (x0)->y0): list_vt(y0, ln)
 //
 #symload map_vt with list_map_vt of 1000
 #symload map_vt with list_map$f1un_vt of 1000
@@ -268,7 +270,8 @@ fun
 <y0:t0>
 list_maprev$f1un
 {ln:n0}
-(xs: list(x0, ln), (x0)->y0): list(y0, ln)
+( xs
+: list(x0, ln), fopr: (x0)->y0): list(y0, ln)
 //
 #symload maprev with list_maprev of 1000
 #symload maprev with list_maprev$f1un of 1000
@@ -288,12 +291,42 @@ fun
 <y0:vt>
 list_maprev$f1un_vt
 {ln:n0}
-(xs: list(x0, ln), (x0)->y0): list_vt(y0, ln)
+( xs
+: list(x0, ln), fopr: (x0)->y0): list_vt(y0, ln)
 //
 #symload maprev_vt with list_maprev_vt of 1000
 #symload maprev_vt with list_maprev$f1un_vt of 1000
 #symload maprev$fun_vt with list_maprev$f1un_vt of 1000
 #symload list_maprev_vt with list_maprev$f1un_vt of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-05-31:
+Sat May 31 07:59:21 PM EDT 2025
+*)
+//
+fun
+<x0:t0>
+<y0:t0>
+<e1:vt>
+list_map$e1nv
+{ln:n0}
+(xs: list(x0, ln), e1: !e1): list(y0, ln)
+fun
+<x0:t0>
+<y0:t0>
+list_map$e1nv$f2un
+{ln:n0}
+( xs
+: list(x0, ln), e1: !e1, fopr: (x0, !e1)->y0): list(y0, ln)
+//
+#symload map with list_map$e1nv of 1000
+#symload map with list_map$e1nv$f1un of 1000
+#symload list_map with list_map$e1nv of 1000
+#symload list_map with list_map$e1nv$f1un of 1000
+#symload list_map$e1nv with list_map$e1nv$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

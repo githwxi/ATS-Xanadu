@@ -388,6 +388,58 @@ c3hoose$forall$test0(~x0, ~x0, ~x0): bool
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-31:
+Sat May 31 08:14:34 PM EDT 2025
+*)
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+map$e1nv$fopr0(x0: ~x0, e1: !e1): ( y0 )
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+map$e1nv$fopr1(x0: !x0, e1: !e1): ( y0 )
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+rmap$e1nv$fopr0(x0: ~x0, e1: !e1): ( y0 )
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+rmap$e1nv$fopr1(x0: !x0, e1: !e1): ( y0 )
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+imap$e1nv$fopr0(ni, ~x0, e1: !e1): ( y0 )
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+imap$e1nv$fopr1(ni, !x0, e1: !e1): ( y0 )
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+irmap$e1nv$fopr0(ni, ~x0, e1: !e1): ( y0 )
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+irmap$e1nv$fopr1(ni, !x0, e1: !e1): ( y0 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
