@@ -127,6 +127,36 @@ optn_map$f1un_vt
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-06-01:
+Sun Jun  1 06:32:15 PM EDT 2025
+*)
+//
+fun
+<x0:t0>
+<y0:t0>
+<e1:vt>
+optn_map$e1nv
+{ln:b0}
+(xs: optn(x0, ln), e1: !e1): optn(y0, ln)
+fun
+<x0:t0>
+<y0:t0>
+<e1:vt>
+optn_map$e1nv$f2un
+{ln:b0}
+( xs
+: optn(x0, ln), e1: !e1, fopr: (x0, !e1)->y0): optn(y0, ln)
+//
+#symload map with optn_map$e1nv of 1000
+#symload map with optn_map$e1nv$f1un of 1000
+#symload optn_map with optn_map$e1nv of 1000
+#symload optn_map with optn_map$e1nv$f2un of 1000
+#symload optn_map$e1nv with optn_map$e1nv$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_optn001.sats] *)
 (***********************************************************************)

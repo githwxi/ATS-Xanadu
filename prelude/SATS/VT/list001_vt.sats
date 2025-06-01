@@ -316,6 +316,63 @@ list_vt_maprev1$f1un
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-06-01
+Sun Jun  1 05:40:20 PM EDT 2025
+*)
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+list_vt_map$e1nv0
+{ln:n0}
+( xs:
+~ list_vt(x0, ln), e1: !e1): list_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+list_vt_map$e1nv1
+{ln:n0}
+( xs:
+! list_vt(x0, ln), e1: !e1): list_vt(y0, ln)
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+list_vt_map$e1nv0$f2un
+{ln:n0}
+( xs:
+~ list_vt(x0, ln)
+, e1: !e1, fopr: (~x0, !e1)->y0): list_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+list_vt_map$e1nv1$f2un
+{ln:n0}
+( xs:
+! list_vt(x0, ln)
+, e1: !e1, fopr: (!x0, !e1)->y0): list_vt(y0, ln)
+//
+(* ****** ****** *)
+//
+#symload map0 with list_vt_map$e1nv0 of 1000
+#symload map1 with list_vt_map$e1nv1 of 1000
+#symload map0 with list_vt_map$e1nv0$f2un of 1000
+#symload map1 with list_vt_map$e1nv1$f2un of 1000
+#symload list_vt_map0 with list_vt_map$e1nv0 of 1000
+#symload list_vt_map1 with list_vt_map$e1nv1 of 1000
+#symload list_vt_map0 with list_vt_map$e1nv0$f2un of 1000
+#symload list_vt_map1 with list_vt_map$e1nv1$f2un of 1000
+#symload list_vt_map$e1nv0 with list_vt_map$e1nv0$f2un of 1000
+#symload list_vt_map$e1nv1 with list_vt_map$e1nv1$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_list001_vt.sats] *)
 (***********************************************************************)
