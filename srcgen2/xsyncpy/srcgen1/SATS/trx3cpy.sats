@@ -46,10 +46,31 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#absvtbx
+env3cpy_vtbx
+#vwtpdef
+env3cpy = env3cpy_vtbx
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
+"./../SATS/dynexp3.sats"
+(* ****** ****** *)
+#staload
+"./../../../SATS/dynexp3.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3parsed_trx3cpy
 ( dpar : d3parsed ): (d3parsed1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+env3cpy_make$nil((*0*)): env3cpy
+fun
+env3cpy_free$top(env3cpy): (void)
 //
 (* ****** ****** *)
 (* ****** ****** *)

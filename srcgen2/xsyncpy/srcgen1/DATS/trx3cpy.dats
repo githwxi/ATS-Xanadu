@@ -47,6 +47,19 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../SATS/dynexp3.sats"
+#staload
+"./../SATS/trx3cpy.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 trx3cpy_d3parsed
   (dpar) = let
@@ -69,7 +82,7 @@ d3parsed_get_t3penv(dpar)
 val parsed =
 d3parsed_get_parsed(dpar)
 //
-val env0 = env3cpy_make_nil()
+val env0 = env3cpy_make$nil()
 //
 val parsed =
 d3eclistopt_trx3cpy(parsed, env0)
@@ -95,9 +108,9 @@ list_map$e1nv(d3ps, env0) where
 {
 #typedef x0 = d3pat
 #typedef y0 = d3pat1
-#typedef e1 = env3cpy
+#vwtpdef e1 = env3cpy
 #impltmp
-map$fopr$e1nv<x0><y0><e1> = d3pat_trx3cpy
+map$e1nv$fopr<x0><y0><e1> = d3pat_trx3cpy
 }(*where*)//end-of-[d3patlst_trx3cpy(d3ps,env0)]
 //
 (* ****** ****** *)
@@ -109,9 +122,9 @@ list_map$e1nv(d3es, env0) where
 {
 #typedef x0 = d3exp
 #typedef y0 = d3exp1
-#typedef e1 = env3cpy
+#vwtpdef e1 = env3cpy
 #impltmp
-map$fopr$e1nv<x0><y0><e1> = d3exp_trx3cpy
+map$e1nv$fopr<x0><y0><e1> = d3exp_trx3cpy
 }(*where*)//end-of-[d3explst_trx3cpy(d3es,env0)]
 //
 (* ****** ****** *)
