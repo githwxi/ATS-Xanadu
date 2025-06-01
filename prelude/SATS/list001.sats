@@ -70,6 +70,21 @@ list_strqize
 #symload strqize with list_strqize of 1000
 //
 (* ****** ****** *)
+//
+fun
+<a:t0>
+list_rstrmize
+(xs: list(a)): strm_vt(a)
+fun
+<a:t0>
+list_rstrqize
+{n:i0}
+(xs: list(a, n)): strq_vt(a, n)
+//
+#symload rstrmize with list_rstrmize of 1000
+#symload rstrqize with list_rstrqize of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
