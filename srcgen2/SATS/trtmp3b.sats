@@ -218,8 +218,9 @@ fun
 tr3benv_make_nil
   ( (*nil*) ): tr3benv
 //
+fun
 tr3benv_free_nil
-  (env0: tr3benv) : ( void )
+  ( env0: tr3benv ): ( void )
 //
 (* ****** ****** *)
 //
