@@ -40,15 +40,19 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #vwtpdef
-atup2(x0:vt) = t0up2_vt(x0,x0)
+atup2(x0:vt) = @(x0,x0)
 #vwtpdef
-atup3(x0:vt) = t0up3_vt(x0,x0,x0)
+atup3(x0:vt) = @(x0,x0,x0)
 #vwtpdef
-atup4(x0:vt) = t0up4_vt(x0,x0,x0,x0)
+atup4(x0:vt) = @(x0,x0,x0,x0)
 #vwtpdef
-atup5(x0:vt) = t0up5_vt(x0,x0,x0,x0,x0)
+atup5(x0:vt) = @(x0,x0,x0,x0,x0)
 #vwtpdef
-atup6(x0:vt) = t0up6_vt(x0,x0,x0,x0,x0,x0)
+atup6(x0:vt) = @(x0,x0,x0,x0,x0,x0)
+#vwtpdef
+atup7(x0:vt) = @(x0,x0,x0,x0,x0,x0,x0)
+#vwtpdef
+atup8(x0:vt) = @(x0,x0,x0,x0,x0,x0,x0,x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -146,6 +150,58 @@ then false else
 if ~(forall$test0<x0>(tup.4))
 then false else forall$test0<x0>(tup.5)
 end//let//end-of-[gseq_forall0<atup6(x0)><x0>(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+gseq_forall0
+<atup7(x0)><x0>
+  ( tup ) =
+let
+val b0 =
+forall$test0<x0>(tup.0)
+in//let
+if ~b0
+then false else
+if ~(forall$test0<x0>(tup.1))
+then false else
+if ~(forall$test0<x0>(tup.2))
+then false else
+if ~(forall$test0<x0>(tup.3))
+then false else
+if ~(forall$test0<x0>(tup.4))
+then false else
+if ~(forall$test0<x0>(tup.5))
+then false else forall$test0<x0>(tup.6)
+end//let//end-of-[gseq_forall0<atup7(x0)><x0>(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+gseq_forall0
+<atup8(x0)><x0>
+  ( tup ) =
+let
+val b0 =
+forall$test0<x0>(tup.0)
+in//let
+if ~b0
+then false else
+if ~(forall$test0<x0>(tup.1))
+then false else
+if ~(forall$test0<x0>(tup.2))
+then false else
+if ~(forall$test0<x0>(tup.3))
+then false else
+if ~(forall$test0<x0>(tup.4))
+then false else
+if ~(forall$test0<x0>(tup.5))
+then false else
+if ~(forall$test0<x0>(tup.6))
+then false else forall$test0<x0>(tup.7)
+end//let//end-of-[gseq_forall0<atup8(x0)><x0>(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
