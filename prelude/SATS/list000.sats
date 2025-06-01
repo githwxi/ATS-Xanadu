@@ -164,6 +164,19 @@ length with list_length of 1000
 (* ****** ****** *)
 //
 (*
+HX-2025-06-01:
+This is just [list_listize]!
+*)
+fun
+<a:t0>
+list_copy_vt
+{n:i0}
+(xs: list(a, n)): list_vt(a, n))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-07-17:
 Wed 17 Jul 2024 05:27:03 PM EDT
 *)

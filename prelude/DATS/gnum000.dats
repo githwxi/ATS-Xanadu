@@ -69,8 +69,13 @@ g_mul<x0>(g_sqr<x0>(x0), x0)
 g_pow(x0, n0) =
 (
 auxloop
-(x0, n0, g_1<x0>())) where
+(x0, n0, g_1<x0>())
+) where
 {
+//
+#symload
+* with g_mul of 1000
+//
 fun
 auxloop
 ( x0: x0
@@ -78,12 +83,16 @@ auxloop
 if
 (n0 <= 0)
 then rs else
-auxloop(x0*x0, n1, rs) where
+(
+auxloop
+(x0*x0, n1, rs)
+) where
 {
 val n1 = n0 / 2
 val rs =
 if n0 % 2 = 0 then rs else x0*rs
-}
+}(*where*)//end-of-[auxloop(...)]
+//
 }(*where*)//end-of-[g_pow(x0, n0)]
 //
 (* ****** ****** *)

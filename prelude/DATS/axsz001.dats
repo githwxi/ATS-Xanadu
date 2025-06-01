@@ -214,8 +214,8 @@ end(*let*)//end-of-[gasz_map_a1sz(xs)]
 gasz_map$f1un_a1sz
   (xs, fopr) =
 (
-  gasz_map_a1sz(xs))
-where
+  gasz_map_a1sz<xs><x0><y0>(xs)
+) where
 {
 #impltmp
 map$fopr1<x0><y0>(x0) = fopr(  x0  ) }
