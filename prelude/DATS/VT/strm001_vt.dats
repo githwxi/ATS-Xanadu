@@ -465,7 +465,47 @@ gseq_ifolditm0$f3un<strm_vt(x0)><x0><r0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(*
+HX-2025-05-31:
+Sat May 31 09:00:51 PM EDT 2025
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+< e1:vt >
+strm_vt_map$e1nv0
+  ( xs, e1 ) =
+(
+strm_vt_map0<x0><y0>(xs)) where
+{
+#impltmp
+map$fopr0<x0><y0>(x0) =
+(
+  map$e1nv$fopr0<x0><y0><e1>(x0, e1))
+}(*where*)//end-of-[strm_vt_map$e1nv0(xs,e1)]
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+< e1:vt >
+strq_vt_map$e1nv0
+  ( xs, e1 ) =
+(
+strq_vt_map0<x0><y0>(xs)) where
+{
+#impltmp
+map$fopr0<x0><y0>(x0) =
+(
+  map$e1nv$fopr0<x0><y0><e1>(x0, e1))
+}(*where*)//end-of-[strq_vt_map$e1nv0(xs,e1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_strm001_vt.dats] *)
+(***********************************************************************)
