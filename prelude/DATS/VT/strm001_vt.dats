@@ -282,13 +282,15 @@ gseq_imap0_lstrm
 < x0:vt >
 strm_vt_filter0
   ( xs ) =
-$llazy
-(auxloop(!xs)) where
+$llazy(
+auxloop
+(
+strm_vt_eval(xs)))
+where
 {
 (*
 HX-2024-07-13:
-[auxloop] needs to
-be tail-recursive!
+[auxloop] needs to be tail-recursive!
 *)
 fnx
 auxloop
@@ -347,13 +349,14 @@ gseq_filter0_lstrm
 < x0:vt >
 strm_vt_ifilter0
   ( xs ) =
-$llazy
-(auxloop(0, !xs)) where
+$llazy(
+auxloop
+(0, strm_vt_eval(xs))
+) where
 {
 (*
 HX-2024-07-13:
-[auxloop] nees to
-be tail-recursive!
+[auxloop] nees to be tail-recursive!
 *)
 fnx
 auxloop

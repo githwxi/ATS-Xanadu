@@ -80,24 +80,24 @@ fun
 <xs:vt>
 <x0:vt>
 set$at$exn0
-(xs: ~xs, x0, ni): void
+(xs: ~xs, ni, x0): void
 *)
 fun
 <xs:vt>
 <x0:vt>
 set$at$exn1
-(xs: !xs, x0, ni): void
+(xs: !xs, ni, x0): void
 //
 fun
 <xs:vt>
 <x0:vt>
 fset$at$exn0
-(xs: ~xs, x0, ni): (xs)
+(xs: ~xs, ni, x0): (xs)
 fun
 <xs:vt>
 <x0:vt>
 fset$at$exn1
-(xs: !xs, x0, ni): (xs)
+(xs: !xs, ni, x0): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
