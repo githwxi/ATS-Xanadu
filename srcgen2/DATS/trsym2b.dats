@@ -79,16 +79,17 @@ val
 parsed =
 d2parsed_get_parsed(dpar)
 //
-val
-env0 = tr2aenv_make_nil()
+val env0 = tr2aenv_make_nil()
 //
-val () =
+val (  ) =
 trsym2b_d2eclistopt(env0, parsed)
 //
 in//let
+//
 let
-val d2cenv = tr2aenv_free_top(env0)
+val ((*0*)) = tr2aenv_free_nil(env0)
 end
+//
 end (*let*)//end-of-[d2parsed_by_trsym2b(dpar)]
 //
 (* ****** ****** *)

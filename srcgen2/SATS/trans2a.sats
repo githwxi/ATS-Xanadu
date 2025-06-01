@@ -278,7 +278,7 @@ fun
 tr2aenv_make_nil((*0*)):tr2aenv
 //
 fun
-tr2aenv_free_top(tr2aenv):(void)
+tr2aenv_free_nil(tr2aenv):(void)
 (*
 fun
 tr2aenv_free_top(tr2aenv):md2ct2p

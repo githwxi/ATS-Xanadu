@@ -92,7 +92,7 @@ TR11ENV(topmap, stkmap) where
 (* ****** ****** *)
 
 #implfun
-tr11env_free_top
+tr11env_free_nil
   (  tr11  ) = topmap where
 {
   val () =
@@ -100,7 +100,7 @@ tr11env_free_top
 {
   val+
   ~TR11ENV(topmap, stkmap) = tr11
-} (*where*)//end-of(tr11env_free_top(tr11))
+} (*where*)//end-of(tr11env_free_nil(tr11))
 
 (* ****** ****** *)
 //

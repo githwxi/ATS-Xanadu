@@ -876,7 +876,7 @@ tr3cenv_make_nil
 (* ****** ****** *)
 //
 #implfun
-tr3cenv_free_top
+tr3cenv_free_nil
   (  env0  ) =
 (
 case+ env0 of
@@ -892,7 +892,7 @@ val nerr = tmqstk_poptop0(tmqstk)
 //
 val (  ) = tmqstk_free_nil(tmqstk) endlet
 //
-)(*case+*)//end-of-(tr3cenv_free_top(env0))
+)(*case+*)//end-of-(tr3cenv_free_nil(env0))
 //
 (* ****** ****** *)
 //

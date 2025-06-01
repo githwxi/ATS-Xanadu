@@ -124,7 +124,7 @@ trans23_d2eclistopt(env0, parsed)
 //
 in//let
 let
-val ((*0*)) = tr23env_free_top(env0)
+val ((*0*)) = tr23env_free_nil(env0)
 in//let
 d3parsed
 (stadyn

@@ -97,7 +97,7 @@ trans2a_d2eclistopt(env0, parsed)
 //
 in//let
 let
-val ((*0*)) = tr2aenv_free_top(env0)
+val ((*0*)) = tr2aenv_free_nil(env0)
 in//let
 d2parsed
 (stadyn,nerror,source,t1penv,t2penv,parsed)
