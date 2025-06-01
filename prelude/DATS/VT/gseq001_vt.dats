@@ -1774,6 +1774,48 @@ irforall$test1<x0>(i0, x0) =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-31:
+Sat May 31 09:12:18 PM EDT 2025
+*)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+< e1:vt >
+gseq_map$e1nv0_lstrm
+  ( xs, e1 ) =
+(
+gseq_map0_lstrm<xs><x0><y0>(xs)
+) where
+{
+#impltmp
+map$fopr0<x0><y0>(x0) =
+(
+  map$e1nv$fopr0<x0><y0><e1>(x0, e1))
+}(*where*)//end-of-[gseq_map$e1nv0_lstrm(xs,e1)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+< e1:vt >
+gseq_map$e1nv0_lstrq
+  ( xs, e1 ) =
+(
+gseq_map0_lstrq<xs><x0><y0>(xs)
+) where
+{
+#impltmp
+map$fopr0<x0><y0>(x0) =
+(
+  map$e1nv$fopr0<x0><y0><e1>(x0, e1))
+}(*where*)//end-of-[gseq_map$e1nv0_lstrq(xs,e1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_gseq001_vt.dats] *)
 (***********************************************************************)
