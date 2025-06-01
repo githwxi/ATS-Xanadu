@@ -31,6 +31,7 @@ dynexp1.sats \
 statyp2.sats \
 dynexp2.sats \
 dynexp3.sats \
+trx3cpy.sats \
 
 ########################################################################
 
@@ -41,6 +42,7 @@ dynexp2.dats \
 dynexp2_print0.dats \
 dynexp3.dats \
 dynexp3_print0.dats \
+trx3cpy.dats \
 xsyncpy_tmplib.dats \
 
 ########################################################################
