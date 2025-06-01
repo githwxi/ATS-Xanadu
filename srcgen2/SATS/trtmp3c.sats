@@ -260,6 +260,7 @@ tmqstk_search_dcst
   (!tmqstk,d2cst): d3eclist_vt
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3parsed_of_trtmp3c
@@ -270,11 +271,11 @@ d3parsed_of_trtmp3c
 //
 fun
 tr3cenv_make_nil
-( (* void *) ): tr3cenv
+  ( (*nil*) ): tr3cenv
 //
 fun
-tr3cenv_free_top
-( env0 : tr3cenv ) : (  void  )
+tr3cenv_free_nil
+  (env0: tr3cenv) : ( void )
 //
 (* ****** ****** *)
 //

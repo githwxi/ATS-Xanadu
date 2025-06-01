@@ -156,10 +156,10 @@ d3parsed_of_trans3a
 (* ****** ****** *)
 //
 fun
-tr3aenv_make_nil((*0*)): tr3aenv
+tr3aenv_make_nil((*0*)):tr3aenv
 //
 fun
-tr3aenv_free_top(tr3aenv): d3topenv
+tr3aenv_free_top(tr3aenv):d3topenv
 //
 (* ****** ****** *)
 //

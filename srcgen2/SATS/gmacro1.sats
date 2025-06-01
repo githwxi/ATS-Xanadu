@@ -191,9 +191,9 @@ gmacmap = $MAP.topmap(g1mac)
 (* ****** ****** *)
 //
 fun
-tr11env_make_nil(): tr11env
+tr11env_make_nil((*0*)):tr11env
 fun
-tr11env_free_top(tr11env): gmacmap
+tr11env_free_top(tr11env):gmacmap
 //
 (* ****** ****** *)
 //

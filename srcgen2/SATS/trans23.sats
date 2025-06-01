@@ -260,7 +260,7 @@ d3parsed_of_trans23
 fun
 tr23env_make_nil((*nil*)):tr23env
 fun
-tr23env_free_top(tr23env): (void)
+tr23env_free_nil(tr23env):( void )
 //
 (* ****** ****** *)
 //

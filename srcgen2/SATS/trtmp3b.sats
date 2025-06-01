@@ -216,11 +216,10 @@ d3parsed_of_trtmp3b
 //
 fun
 tr3benv_make_nil
-( (* void *) ): tr3benv
+  ( (*nil*) ): tr3benv
 //
-fun
-tr3benv_free_top
-( env0 : tr3benv ) : (  void  )
+tr3benv_free_nil
+  (env0: tr3benv) : ( void )
 //
 (* ****** ****** *)
 //

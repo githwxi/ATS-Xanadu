@@ -91,7 +91,7 @@ trtmp3c_d3eclistopt(env0, parsed)
 //
 in//let
 let
-val (    ) = tr3cenv_free_top(env0)
+val ((*0*)) = tr3cenv_free_nil(env0)
 in//let
 d3parsed
 (stadyn

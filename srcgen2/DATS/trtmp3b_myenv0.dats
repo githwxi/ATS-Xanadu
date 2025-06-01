@@ -579,7 +579,7 @@ tr3benv_make_nil
 (* ****** ****** *)
 //
 #implfun
-tr3benv_free_top
+tr3benv_free_nil
   (  env0  ) =
 (
 case+ env0 of
@@ -595,7 +595,7 @@ val nerr = tmpstk_poptop0(tmpstk)
 //
 val (  ) = tmpstk_free_nil(tmpstk) endlet
 //
-)(*case+*)//end-of-(tr3benv_free_top(env0))
+)(*case+*)//end-of-(tr3benv_free_nil(env0))
 //
 (* ****** ****** *)
 //
