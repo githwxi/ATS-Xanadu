@@ -1864,6 +1864,7 @@ end//let//else//end-of-[if]
 HX-2024-08-21:
 Wed 21 Aug 2024 08:16:22 AM EDT
 *)
+//
 #impltmp
 gseq_fmake_fwork
 <strn><cgtz>(f0) = strn_fmake_fwork<>(f0)
@@ -1877,6 +1878,74 @@ gseq_fmake_fwork
 { x0:t0 }
 gseq_fmake_fwork
 <list(x0)><x0>(f0) = list_fmake_fwork<x0>(f0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-06-01:
+Sun Jun  1 11:10:21 AM EDT 2025
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<e1:vt>
+gseq_map$e1nv_list(xs, e1) =
+(
+gseq_map_list<xs><x0><y0>(xs)
+) where
+{
+#impltmp
+map$fopr<x0><y0>(x0) =
+map$e1nv$fopr<x0><y0><e1>(x0, e1)
+}(*where*)//end-of-[gseq_map$e1nv_list(xs,e1)]
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<e1:vt>
+gseq_map$e1nv_llist(xs, e1) =
+(
+gseq_map_llist<xs><x0><y0>(xs)
+) where
+{
+#impltmp
+map$fopr<x0><y0>(x0) =
+map$e1nv$fopr<x0><y0><e1>(x0, e1)
+}(*where*)//end-of-[gseq_map$e1nv_llist(xs,e1)]
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<e1:vt>
+gseq_map$e1nv_lstrm(xs, e1) =
+(
+gseq_map_lstrm<xs><x0><y0>(xs)
+) where
+{
+#impltmp
+map$fopr<x0><y0>(x0) =
+map$e1nv$fopr<x0><y0><e1>(x0, e1)
+}(*where*)//end-of-[gseq_map$e1nv_lstrm(xs,e1)]
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<e1:vt>
+gseq_map$e1nv_lstrq(xs, e1) =
+(
+gseq_map_lstrq<xs><x0><y0>(xs)
+) where
+{
+#impltmp
+map$fopr<x0><y0>(x0) =
+map$e1nv$fopr<x0><y0><e1>(x0, e1)
+}(*where*)//end-of-[gseq_map$e1nv_lstrq(xs,e1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

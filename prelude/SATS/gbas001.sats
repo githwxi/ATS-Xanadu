@@ -347,6 +347,50 @@ irmap$e1nv$fopr(pos: ni, itm: x0, env: !e1): (y0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-06-01:
+Sun Jun  1 11:04:55 AM EDT 2025
+*)
+//
+fun
+<x0:t0>
+<e1:vt>
+forall$e1nv$test(x0: x0, e1: !e1): bool
+fun
+<x0:t0>
+<e1:vt>
+rforall$e1nv$test(x0: x0, e1: !e1): bool
+fun
+<x0:t0>
+<e1:vt>
+iforall$e1nv$test(ni, x0, e1: !e1): bool
+fun
+<x0:t0>
+<e1:vt>
+irforall$e1nv$test(ni, x0, e1: !e1): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<e1:vt>
+foritm$e1nv$test(x0: x0, e1: !e1): void
+fun
+<x0:t0>
+<e1:vt>
+rforitm$e1nv$test(x0: x0, e1: !e1): void
+fun
+<x0:t0>
+<e1:vt>
+iforitm$e1nv$test(ni, x0, e1: !e1): void
+fun
+<x0:t0>
+<e1:vt>
+irforitm$e1nv$test(ni, x0, e1: !e1): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_gbas001.sats] *)
 (***********************************************************************)
