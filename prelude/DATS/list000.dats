@@ -496,10 +496,11 @@ gseq_listize<xs><x0>(xs))
 #impltmp
 < xs:t0 >
 < x0:t0 >
+< y0:t0 >
 list_map$make_gseq
   ( xs ) =
 (
-gseq_map_list<xs><x0>(xs))
+gseq_map_list<xs><x0><y0>(xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)

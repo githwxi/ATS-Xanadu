@@ -1255,7 +1255,7 @@ strn_foritm(tostr<x3>(x3));
 strn_foritm(tostr<x4>(x4));
 strn_foritm(tostr<x5>(x5));
 strn_foritm(tostr<x6>(x6));
-strn_foritm(tostr<x6>(x7)))
+strn_foritm(tostr<x7>(x7)))
 where
 {
 #typedef c1 = cgtz
