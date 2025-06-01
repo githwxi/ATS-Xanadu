@@ -107,7 +107,7 @@ end(*let*) // end of [tr2aenv_make_nil()]
 (* ****** ****** *)
 //
 #implfun
-tr2aenv_free_top
+tr2aenv_free_nil
   (  env0  ) =
 (
 case+ env0 of
@@ -123,7 +123,7 @@ stkmap_poptop0(stkmap)
 //
 val (  ) =
 stkmap_free_nil(stkmap) in () end//let
-)(*case+*)//end-of-(tr2aenv_free_top(env0))
+)(*case+*)//end-of-(tr2aenv_free_nil(env0))
 //
 (* ****** ****** *)
 //
