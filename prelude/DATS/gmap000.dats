@@ -62,8 +62,10 @@ gmap_beg((*void*)) = "gmap{"
 < m0:t0 >
 < k0:t0 >
 < x0:vt >
-gmap_keyq(map, k0) =
+gmap_keyq
+(map, k0) =
 gseq_exists0
+<strm_vt(k0)><x0>
 (
 gmap_key$strmize
 <m0><k0><x0>(map)) where
@@ -82,8 +84,10 @@ exists$test0<k0>(k1) = g_equal<k0>(k0, k1)
 gmap_search$tst
  (map, k0) =
 let
-#typedef kx = @(k0, x0) in
-gseq_consq0(
+#typedef kx = @(k0, x0)
+in//let
+gseq_consq0
+<strm_vt(kx)><kx>(
 strm_vt_filter0$f1un(
 gseq_strmize<m0><(k0,x0)>(map),
 lam(kx:kx) => g_equal<k0>(k0, kx.0))) end
