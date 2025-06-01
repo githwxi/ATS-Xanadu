@@ -93,7 +93,8 @@ $UN.castxy//GSEQ_make
 gseq_forall
 <
 gz2seq
-(xs,x0,ys,y0)><(x0,y0)>
+(xs,x0
+,ys,y0)><(x0,y0)>
   (xsys) =
 (
 gseq_z2forall
@@ -103,8 +104,10 @@ where
 val
 @(xs, ys) =
 z2tup_unmk(xsys)
-val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys)
+val xs =
+GSEQ_unmk<xs><x0>(xs)
+and ys =
+GSEQ_unmk<ys><y0>(ys)
 #impltmp
 z2forall$test<x0><y0>(x0, y0) = forall$test@(x0, y0)
 }
@@ -127,8 +130,10 @@ where
 val
 @(xs, ys) =
 z2tup_unmk(xsys)
-val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys)
+val xs =
+GSEQ_unmk<xs><x0>(xs)
+and ys =
+GSEQ_unmk<ys><y0>(ys)
 #impltmp
 rz2forall$test<x0><y0>(x0, y0) = rforall$test@(x0, y0)
 }
@@ -170,18 +175,23 @@ $UN.castxy//GSEQ_make
 gseq_forall
 <
 gx2seq
-(xs,x0,ys,y0)><(x0,y0)>
+(xs,x0
+,ys,y0)><(x0,y0)>
   (xsys) =
 (
 gseq_x2forall
 <xs><x0><ys><y0>(xs, ys))
 where
 {
+//
 val
 @(xs, ys) =
 x2tup_unmk(xsys)
-val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys)
+val xs =
+GSEQ_unmk<xs><x0>(xs)
+and ys =
+GSEQ_unmk<ys><y0>(ys)
+//
 #impltmp
 x2forall$test<x0><y0>(x0, y0) = forall$test@(x0, y0)
 }
@@ -196,18 +206,23 @@ x2forall$test<x0><y0>(x0, y0) = forall$test@(x0, y0)
 gseq_rforall
 <
 gx2seq
-(xs,x0,ys,y0)><(x0,y0)>
+(xs,x0
+,ys,y0)><(x0,y0)>
   (xsys) =
 (
 gseq_x2rforall
 <xs><x0><ys><y0>(xs, ys))
 where
 {
+//
 val
 @(xs, ys) =
 x2tup_unmk(xsys)
-val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys)
+val xs =
+GSEQ_unmk<xs><x0>(xs)
+and ys =
+GSEQ_unmk<ys><y0>(ys)
+//
 #impltmp
 x2rforall$test<x0><y0>(x0, y0) = rforall$test@(x0, y0)
 }
@@ -237,8 +252,10 @@ xy = @(x0, y0)
 val
 @(xs, ys) =
 x2tup_unmk(xsys)
-val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys)
+val xs =
+GSEQ_unmk<xs><x0>(xs)
+and ys =
+GSEQ_unmk<ys><y0>(ys)
 //
 in//let
 strm_vt_concat0<xy>
@@ -250,7 +267,7 @@ xs,
 lam(x0) =>
 gseq_map$f1un_lstrm<ys><y0><xy>(ys,lam(y0)=>(x0,y0)))
 )
-end//let//end-of-[gseq_strmize<gx2seq(...)><...>]
+end//let//end-of-[gseq_strmize<gx2seq(...)><...>(xsys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
