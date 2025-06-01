@@ -332,6 +332,7 @@ list_map$e1nv
 fun
 <x0:t0>
 <y0:t0>
+<e1:vt>
 list_map$e1nv$f2un
 {ln:n0}
 ( xs
@@ -340,7 +341,7 @@ list_map$e1nv$f2un
 #symload map with list_map$e1nv of 1000
 #symload map with list_map$e1nv$f1un of 1000
 #symload list_map with list_map$e1nv of 1000
-#symload list_map with list_map$e1nv$f1un of 1000
+#symload list_map with list_map$e1nv$f2un of 1000
 #symload list_map$e1nv with list_map$e1nv$f2un of 1000
 //
 (* ****** ****** *)

@@ -290,6 +290,11 @@ print1s(msg, ": res0 = ", r0, "\n") in r0 end
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-29:
+Thu May 29 05:22:09 PM EDT 2025
+*)
+//
 #impltmp
 < x0:t0 >
 < y0:t0 >
@@ -340,6 +345,69 @@ f1un_map1$loptn
   ( fopr ) =
 lam(xs) =>
 optn_vt_map1$f1un<x0><y0>(xs, fopr)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-06-01:
+Sun Jun  1 05:34:50 PM EDT 2025
+*)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+< e1:vt >
+f1un_map$e1nv$list
+  ( fopr ) =
+lam(xs, e1) =>
+list_map$e1nv$f2un<x0><y0><e1>(xs, e1, fopr)
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+< e1:vt >
+f1un_map$e1nv0$llist
+  ( fopr ) =
+lam(xs, e1) =>
+list_vt_map$e1nv0$f2un<x0><y0><e1>(xs, e1, fopr)
+#impltmp
+< x0:vt >
+< y0:vt >
+< e1:vt >
+f1un_map$e1nv1$llist
+  ( fopr ) =
+lam(xs, e1) =>
+list_vt_map$e1nv1$f2un<x0><y0><e1>(xs, e1, fopr)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+< e1:vt >
+f1un_map$e1nv$optn
+  ( fopr ) =
+lam(xs, e1) =>
+optn_map$e1nv$f2un<x0><y0><e1>(xs, e1, fopr)
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+< e1:vt >
+f1un_map$e1nv0$loptn
+  ( fopr ) =
+lam(xs, e1) =>
+optn_vt_map$e1nv0$f2un<x0><y0><e1>(xs, e1, fopr)
+#impltmp
+< x0:vt >
+< y0:vt >
+< e1:vt >
+f1un_map$e1nv1$loptn
+  ( fopr ) =
+lam(xs, e1) =>
+optn_vt_map$e1nv1$f2un<x0><y0><e1>(xs, e1, fopr)
 //
 (* ****** ****** *)
 (* ****** ****** *)

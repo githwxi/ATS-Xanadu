@@ -253,6 +253,11 @@ f6un(a1,a2,a3,a4,a5,a6,r0), msg: strn): f6un(a1,a2,a3,a4,a5,a6,r0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-05-29:
+Thu May 29 05:22:09 PM EDT 2025
+*)
+//
 fun
 <x0:t0>
 <y0:t0>
@@ -271,10 +276,6 @@ f1un_map1$llist
 //
 (* ****** ****** *)
 //
-#symload map$list with f1un_map$list of 1000
-#symload map0$llist with f1un_map0$llist of 1000
-#symload map1$llist with f1un_map1$llist of 1000
-//
 #symload f_map$list with f1un_map$list of 1000
 #symload f_map0$llist with f1un_map0$llist of 1000
 #symload f_map1$llist with f1un_map1$llist of 1000
@@ -282,32 +283,97 @@ f1un_map1$llist
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 fun
 <x0:t0>
 <y0:t0>
 f1un_map$optn
-(f00: (x0) -> y0): optn(x0) -> optn(y0)
+( f00
+: (x0) -> y0): optn(x0) -> optn(y0)
 fun
 <x0:vt>
 <y0:vt>
 f1un_map0$loptn
-(f00: (~x0) -> y0): optn_vt(x0) -> optn_vt(y0)
+( f00
+: (~x0) -> y0): optn_vt(x0) -> optn_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
 f1un_map1$loptn
-(f00: (!x0) -> y0): (!optn_vt(x0)) -> optn_vt(y0)
+( f00
+: (!x0) -> y0): (!optn_vt(x0)) -> optn_vt(y0)
 //
 (* ****** ****** *)
-//
-#symload map$optn with f1un_map$optn of 1000
-#symload map0$loptn with f1un_map0$loptn of 1000
-#symload map1$loptn with f1un_map1$loptn of 1000
 //
 #symload f_map$optn with f1un_map$optn of 1000
 #symload f_map0$loptn with f1un_map0$loptn of 1000
 #symload f_map1$loptn with f1un_map1$loptn of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-06-01:
+Sun Jun  1 05:25:29 PM EDT 2025
+*)
+//
+fun
+<x0:t0>
+<y0:t0>
+<e1:vt>
+f1un_map$e1nv$list
+(f00
+:(x0, !e1)->(y0)): (list(x0), !e1)->list(y0)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+f1un_map$e1nv0$llist
+(f00
+:(~x0, !e1)->(y0)): (~list_vt(x0), !e1)->list_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+f1un_map$e1nv1$llist
+(f00
+:(!x0, !e1)->(y0)): (!list_vt(x0), !e1)->list_vt(y0)
+//
+(* ****** ****** *)
+//
+#symload f_map$list with f1un_map$e1nv$list of 1000
+#symload f_map0$llist with f1un_map$e1nv0$llist of 1000
+#symload f_map1$llist with f1un_map$e1nv1$llist of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+<e1:vt>
+f1un_map$e1nv$optn
+(f00
+:(x0, !e1)->(y0)): (optn(x0), !e1)->optn(y0)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+f1un_map$e1nv0$loptn
+(f00
+:(~x0, !e1)->(y0)): (~optn_vt(x0), !e1)->optn_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+f1un_map$e1nv1$loptn
+(f00
+:(!x0, !e1)->(y0)): (!optn_vt(x0), !e1)->optn_vt(y0)
+//
+(* ****** ****** *)
+//
+#symload f_map$optn with f1un_map$e1nv$optn of 1000
+#symload f_map0$loptn with f1un_map$e1nv0$loptn of 1000
+#symload f_map1$loptn with f1un_map$e1nv1$loptn of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

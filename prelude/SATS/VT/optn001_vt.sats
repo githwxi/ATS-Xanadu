@@ -106,6 +106,63 @@ optn_vt_map1$f1un
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-06-01
+Sun Jun  1 06:34:00 PM EDT 2025
+*)
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+optn_vt_map$e1nv0
+{ln:b0}
+( xs:
+~ optn_vt(x0, ln), e1: !e1): optn_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+optn_vt_map$e1nv1
+{ln:b0}
+( xs:
+! optn_vt(x0, ln), e1: !e1): optn_vt(y0, ln)
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+optn_vt_map$e1nv0$f2un
+{ln:b0}
+( xs:
+~ optn_vt(x0, ln)
+, e1: !e1, fopr: (~x0, !e1)->y0): optn_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+optn_vt_map$e1nv1$f2un
+{ln:b0}
+( xs:
+! optn_vt(x0, ln)
+, e1: !e1, fopr: (!x0, !e1)->y0): optn_vt(y0, ln)
+//
+(* ****** ****** *)
+//
+#symload map0 with optn_vt_map$e1nv0 of 1000
+#symload map1 with optn_vt_map$e1nv1 of 1000
+#symload map0 with optn_vt_map$e1nv0$f2un of 1000
+#symload map1 with optn_vt_map$e1nv1$f2un of 1000
+#symload optn_vt_map0 with optn_vt_map$e1nv0 of 1000
+#symload optn_vt_map1 with optn_vt_map$e1nv1 of 1000
+#symload optn_vt_map0 with optn_vt_map$e1nv0$f2un of 1000
+#symload optn_vt_map1 with optn_vt_map$e1nv1$f2un of 1000
+#symload optn_vt_map$e1nv0 with optn_vt_map$e1nv0$f2un of 1000
+#symload optn_vt_map$e1nv1 with optn_vt_map$e1nv1$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_optn001_vt.sats] *)
 (***********************************************************************)
