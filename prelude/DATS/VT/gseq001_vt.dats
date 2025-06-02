@@ -1775,9 +1775,71 @@ irforall$test1<x0>(i0, x0) =
 (* ****** ****** *)
 //
 (*
-HX-2025-05-31:
-Sat May 31 09:12:18 PM EDT 2025
+HX-2025-06-01:
+Sun Jun  1 08:07:55 PM EDT 2025
 *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+< e1:vt >
+gseq_map$e1nv0_llist
+  ( xs, e1 ) =
+(
+gseq_map0_llist<xs><x0><y0>(xs)
+) where
+{
+#impltmp
+map$fopr0<x0><y0>(x0) =
+(
+  map$e1nv$fopr0<x0><y0><e1>(x0, e1))
+}(*where*)//end-of-[gseq_map$e1nv0_llist(xs,e1)]
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+< e1:vt >
+gseq_map$e1nv1_llist
+  ( xs, e1 ) =
+(
+gseq_map1_llist<xs><x0><y0>(xs)
+) where
+{
+#impltmp
+map$fopr1<x0><y0>(x0) =
+(
+  map$e1nv$fopr1<x0><y0><e1>(x0, e1))
+}(*where*)//end-of-[gseq_map$e1nv1_llist(xs,e1)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+< e1:vt >
+gseq_map$e1nv0$f2un_llist
+  ( xs, e1, fopr ) =
+(
+gseq_map$e1nv0_llist
+<xs><x0><y0><e1>(xs, e1)) where
+{
+#impltmp map$e1nv$fopr0<x0><y0><e1> = fopr
+}
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+< e1:vt >
+gseq_map$e1nv1$f2un_llist
+  ( xs, e1, fopr ) =
+(
+gseq_map$e1nv1_llist
+<xs><x0><y0><e1>(xs, e1)) where
+{
+#impltmp map$e1nv$fopr1<x0><y0><e1> = fopr
+}
+//
+(* ****** ****** *)
 //
 #impltmp
 < xs:vt >
@@ -1795,7 +1857,6 @@ map$fopr0<x0><y0>(x0) =
 (
   map$e1nv$fopr0<x0><y0><e1>(x0, e1))
 }(*where*)//end-of-[gseq_map$e1nv0_lstrm(xs,e1)]
-//
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -1812,6 +1873,33 @@ map$fopr0<x0><y0>(x0) =
 (
   map$e1nv$fopr0<x0><y0><e1>(x0, e1))
 }(*where*)//end-of-[gseq_map$e1nv0_lstrq(xs,e1)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+< e1:vt >
+gseq_map$e1nv0$f2un_lstrm
+  ( xs, e1, fopr ) =
+(
+gseq_map$e1nv0_lstrm
+<xs><x0><y0><e1>(xs, e1)) where
+{
+#impltmp map$e1nv$fopr0<x0><y0><e1> = fopr
+}
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+< e1:vt >
+gseq_map$e1nv0$f2un_lstrq
+  ( xs, e1, fopr ) =
+(
+gseq_map$e1nv0_lstrq
+<xs><x0><y0><e1>(xs, e1)) where
+{
+#impltmp map$e1nv$fopr0<x0><y0><e1> = fopr
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -412,6 +412,28 @@ gseq_irfolditm0<list_vt(x0)><x0><r0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+(*
+HX-2025-06-01:
+Sun Jun  1 06:49:16 PM EDT 2025
+*)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+< e1:vt >
+list_vt_map$e1nv0 =
+gseq_map$e1nv0_llist<list_vt(x0)><x0><y0><e1>(*void*)
+#impltmp
+< x0:t0 >
+< y0:t0 >
+< e1:vt >
+list_vt_map$e1nv1 =
+gseq_map$e1nv1_llist<list_vt(x0)><x0><y0><e1>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_list001_vt.dats] *)
 (***********************************************************************)
