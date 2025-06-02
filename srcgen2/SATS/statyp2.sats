@@ -110,6 +110,10 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #typedef
+s2cstlst = list(s2cst)
+#typedef
+s2varlst = list(s2var)
+#typedef
 s2explst = list(s2exp)
 #typedef
 l2s2elst = list(l2s2e)
@@ -118,6 +122,9 @@ l2s2elst = list(l2s2e)
 s2typlst = list(s2typ)
 #typedef
 l2t2plst = list(l2t2p)
+//
+#vwtpdef
+s2typopt_vt = optn_vt(s2typ)
 //
 (* ****** ****** *)
 //
