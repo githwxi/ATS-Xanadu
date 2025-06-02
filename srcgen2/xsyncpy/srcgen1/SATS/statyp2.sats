@@ -69,6 +69,9 @@ fprint with s2typ_fprint of 1000
 (* ****** ****** *)
 //
 fun
+s2typ1_none0((*0*)): s2typ1
+//
+fun
 s2typ1_fprint
 (styp: s2typ1, out0: FILR): void
 #symload

@@ -60,6 +60,18 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+d3exp_trx3cpy
+(d3e0, env0) =
+(
+case+ d3e0 of
+| _(*otherwise*) => d3exp1_mknode(loc0, D3E1d3exp(d3e0))
+
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trx3cpy_dynexp.dats] *)
 (***********************************************************************)

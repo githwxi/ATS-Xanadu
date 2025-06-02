@@ -47,7 +47,47 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../SATS/statyp2.sats"
+#staload
 "./../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+#staload
+"./../../../SATS/locinfo.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+d3exp1 =
+D3EXP1 of
+( loctn
+, s2typ1, d3exp1_node)
+datavwtp
+d3exp1_vt =
+D3EXP1_vt of
+( loctn
+, s2typ1, d3exp1_node)
+//
+#absimpl d3exp1_tbox = d3exp1
+//
+(* ****** ****** *)
+in (* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+d3exp1_make_node
+( loc0, node ) =
+let
+val
+t2p0 = s2typ1_none0()
+in//let
+  D3EXP1(loc0, t2p0, node) end
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [local(d3exp1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

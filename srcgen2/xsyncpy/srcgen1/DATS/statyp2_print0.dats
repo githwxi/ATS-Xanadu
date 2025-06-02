@@ -30,7 +30,7 @@
 //
 (*
 Author: Hongwei Xi
-Sun May 18 10:02:26 AM EDT 2025
+Sun Jun  1 10:10:09 PM EDT 2025
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -46,7 +46,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
-"./../SATS/dynexp2.sats"
+"./../SATS/statyp2.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -54,7 +54,7 @@ Authoremail: gmhwxiATgmailDOTcom
 local
 //
 #staload
-"./../../../SATS/dynexp2.sats"
+"./../../../SATS/statyp2.sats"
 //
 #extern
 fcast
@@ -64,25 +64,25 @@ in//local
 //
 #impltmp
 g_print
-<d2exp>(d2e0) =
+<s2typ>(t2p0) =
 (
 //
 case+
-d2e0.node() of
+t2p0.node() of
 //
 | _(*otherwise*) =>
 let
 val out0 =
-g_print$out<>() in d2exp_fprint(d2e0, castxy(out0))
+g_print$out<>() in s2typ_fprint(t2p0, castxy(out0))
 end//let
 //
-)(*case+*)//end-of-[g_print<d2exp>(d2e0)]
+)(*case+*)//end-of-[g_print<s2typ>(t2p0)]
 //
-end//local//end-of-[staload("./../../../SATS/dynexp2.sats")]
+end//local//end-of-[staload("./../../../SATS/statyp2.sats")]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_dynexp2_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_statyp2_print0.dats] *)
 (***********************************************************************)
