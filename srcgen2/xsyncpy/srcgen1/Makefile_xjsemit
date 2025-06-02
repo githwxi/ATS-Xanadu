@@ -38,6 +38,8 @@ trx3cpy.sats \
 SRCDATS := \
 lexing0.dats \
 lexing0_print0.dats \
+statyp2.dats \
+statyp2_print0.dats \
 dynexp2.dats \
 dynexp2_print0.dats \
 dynexp3.dats \

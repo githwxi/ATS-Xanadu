@@ -178,6 +178,11 @@ d3exp1_fprint
 (dexp: d3exp1, out0: FILR): void
 #symload fprint with d3exp1_fprint of 1000
 //
+d3exp1_make_lctn$node
+(loc0: loctn, node: d3exp1_node): d3exp1
+#symload d3exp1 with d3exp1_make_lctn$node
+#symload d3exp1_make with d3exp1_make_lctn$node
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

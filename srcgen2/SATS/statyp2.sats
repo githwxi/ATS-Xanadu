@@ -61,11 +61,11 @@ LOC = "./locinfo.sats"
 LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
+#staload
+S2E = "./staexp2.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 #staload "./xbasics.sats"
-(* ****** ****** *)
-#staload "./xstamp0.sats"
-(* ****** ****** *)
-#staload "./staexp2.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #include
@@ -92,8 +92,32 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef sort2 = $S2E.sort2
+#typedef s2cst = $S2E.s2cst
+#typedef s2var = $S2E.s2var
+#typedef s2exp = $S2E.s2exp
+#typedef l2s2e = $S2E.l2s2e
+#typedef s2typ = $S2E.s2typ
+#typedef l2t2p = $S2E.l2t2p
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #abstbox x2t2p_tbox
 #typedef x2t2p = x2t2p_tbox
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef
+s2explst = list(s2exp)
+#typedef
+l2s2elst = list(l2s2e)
+//
+#typedef
+s2typlst = list(s2typ)
+#typedef
+l2t2plst = list(l2t2p)
 //
 (* ****** ****** *)
 //

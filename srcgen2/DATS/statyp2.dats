@@ -90,11 +90,11 @@ ATS_PACKNAME
 #implfun
 s2typ_var(s2v) =
 s2typ_make_node
-(s2v.sort(), T2Pvar(s2v))
+(s2v.sort(), T2Pvar(s2v))//implfun
 #implfun
 s2typ_cst(s2c) =
 s2typ_make_node
-(s2c.sort(), T2Pcst(s2c))
+(s2c.sort(), T2Pcst(s2c))//implfun
 (* ****** ****** *)
 //
 #implfun

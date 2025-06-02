@@ -308,9 +308,12 @@ endloc (*local*) // end of [local(d3exp)]
 d3exp_make_tpnd
 ( loc0, t2p0, node ) =
 let
-  val
-  d3e0 = d3exp(loc0, node)
-in
+//
+val
+d3e0 =
+d3exp_make_node(loc0, node)
+//
+in//let
   (d3exp_set_styp(d3e0, t2p0); d3e0)
 end(*let*)//end-of-[d3exp_make_tpnd(...)]
 //
