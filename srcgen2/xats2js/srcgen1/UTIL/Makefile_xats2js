@@ -78,6 +78,11 @@ $(XATS2JS) --output-a $@_ats2.js --dynamic $@.dats
 # npx google-closure-compiler@20230802
 # npx google-closure-compiler@20240317
 #
+xats2js_jsemit00_opt1: ; \
+npx google-closure-compiler \
+  -W QUIET --compilation_level SIMPLE \
+  --js=xats2js_jsemit00_ats2.js --js_output_file=xats2js_jsemit00_ats2_opt1.js
+#
 xats2js_jsemit01_opt1: ; \
 npx google-closure-compiler \
   -W QUIET --compilation_level SIMPLE \

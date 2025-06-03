@@ -84,6 +84,9 @@ ATS_PACKNAME
 #symload sort with s2var_get_sort
 #symload sort with s2cst_get_sort
 (* ****** ****** *)
+#symload node with s2exp_get_node
+#symload sort with s2exp_get_sort
+(* ****** ****** *)
 #symload node with s2typ_get_node
 #symload sort with s2typ_get_sort
 (* ****** ****** *)

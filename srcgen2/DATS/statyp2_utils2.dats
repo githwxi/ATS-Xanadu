@@ -65,6 +65,15 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload _ = "./statyp2_tmplib.dats"
 (* ****** ****** *)
+(* ****** ****** *)
+#symload name with s2cst_get_name
+#symload sort with s2cst_get_sort
+#symload styp with s2cst_get_styp
+(* ****** ****** *)
+#symload name with s2var_get_name
+#symload sort with s2var_get_sort
+(* ****** ****** *)
+(* ****** ****** *)
 
 #implfun
 s2typ_hnfiz0

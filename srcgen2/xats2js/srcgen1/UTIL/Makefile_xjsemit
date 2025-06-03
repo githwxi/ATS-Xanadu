@@ -90,6 +90,11 @@ $(XATSJSD)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_ats3.js && \
 $(NODE) \
   --stack-size=8192 $(XATS2JS_JSEMIT00) xats2js_jsemit01.dats >> $@_ats3.js
 #
+xats2js_jsemit00_opt1: ; \
+npx google-closure-compiler \
+  -W QUIET --compilation_level SIMPLE \
+  --js=xats2js_jsemit00_ats3.js --js_output_file=xats2js_jsemit00_ats3_opt1.js
+#
 xats2js_jsemit01_opt1: ; \
 npx google-closure-compiler \
   -W QUIET --compilation_level SIMPLE \

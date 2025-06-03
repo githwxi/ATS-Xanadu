@@ -76,6 +76,9 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload sort with s2cst_get_sort
+#symload sort with s2var_get_sort
+(* ****** ****** *)
 #symload sort with s2typ_get_sort
 #symload node with s2typ_get_node
 (* ****** ****** *)

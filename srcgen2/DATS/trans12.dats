@@ -77,6 +77,9 @@ ATS_PACKNAME
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
 (* ****** ****** *)
+#symload sort with s2cst_get_sort
+#symload sort with s2exp_get_sort
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

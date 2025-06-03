@@ -65,9 +65,19 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload _ = "./statyp2_tmplib.dats"
 (* ****** ****** *)
-#symload name with s2cst_get_name
 (* ****** ****** *)
+#symload name with s2cst_get_name
+#symload sort with s2cst_get_sort
+(* ****** ****** *)
+#symload name with s2var_get_name
+#symload sort with s2var_get_sort
+(* ****** ****** *)
+#symload sort with s2exp_get_sort
+#symload node with s2exp_get_node
+(* ****** ****** *)
+#symload sort with s2typ_get_sort
 #symload node with s2typ_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -465,7 +475,8 @@ list_filter<x0>(s2vs)) where
 #impltmp
 filter$test<x0>(s2v) =
 let
-val s2t = s2v.sort() in sort2_imprq(s2t)
+val
+s2t = s2v.sort() in sort2_imprq(s2t)
 end//let
 }(*where*)//end-of-[s2varlst_imprq(...)]
 //
