@@ -45,6 +45,8 @@ Authoremail: gmhwxiATgmailDOTcom
 /HATS/libcats_dats.hats"
 //
 (* ****** ****** *)
+#staload
+"./../SATS/statyp2.sats"
 (* ****** ****** *)
 #staload
 LOC = "./\
@@ -54,6 +56,7 @@ D3E = "./\
 ../../../SATS/dynexp3.sats"
 (* ****** ****** *)
 #typedef lcsrc = $LOC.lcsrc
+#typedef loctn = $LOC.loctn
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -169,19 +172,32 @@ d3exp1_lctn$get
 (dexp: d3exp1): loctn
 #symload lctn with d3exp1_lctn$get
 fun
+d3exp1_styp$get
+(dexp: d3exp1): s2typ1
+#symload styp with d3exp1_styp$get
+fun
 d3exp1_node$get
 (dexp: d3exp1): d3exp1_node
 #symload node with d3exp1_node$get
+//
+(* ****** ****** *)
 //
 fun
 d3exp1_fprint
 (dexp: d3exp1, out0: FILR): void
 #symload fprint with d3exp1_fprint of 1000
 //
+(* ****** ****** *)
+//
+fun
 d3exp1_make_lctn$node
 (loc0: loctn, node: d3exp1_node): d3exp1
+fun
+d3exp1_make_lctn$styp$node
+(loc0: loctn
+,t2p0: s2typ1, node: d3exp1_node): d3exp1
 #symload d3exp1 with d3exp1_make_lctn$node
-#symload d3exp1_make with d3exp1_make_lctn$node
+#symload d3exp1 with d3exp1_make_lctn$styp$node
 //
 (* ****** ****** *)
 (* ****** ****** *)

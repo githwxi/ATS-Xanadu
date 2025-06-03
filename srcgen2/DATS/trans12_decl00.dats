@@ -150,9 +150,15 @@ _(* TRANS12 *) = "./trans12.dats"
 #symload node with d1ecl_get_node
 (* ****** ****** *)
 #symload lctn with s2cst_get_lctn
+#symload name with s2cst_get_name
 #symload sort with s2cst_get_sort
 (* ****** ****** *)
 #symload name with s2var_get_name
+#symload sort with s2var_get_sort
+#symload sort with s2var_set_sort
+(* ****** ****** *)
+#symload sort with s2exp_get_sort
+#symload node with s2exp_get_node
 (* ****** ****** *)
 #symload stmp with d2cst_get_stmp
 #symload tqas with d2cst_get_tqas
@@ -1812,8 +1818,8 @@ let
 val
 s2c1 = s2cs.head((*void*))
 in//let
-(
-f2_svss(svss, s2c1.sort()))
+f2_svss
+(svss, s2cst_get_sort(s2c1))
 end // then // end-of-[ if ]
 end (*let*) // end of [val()]
 //

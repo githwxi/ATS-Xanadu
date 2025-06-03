@@ -77,12 +77,54 @@ in (* in-of-local *)
 (* ****** ****** *)
 //
 #implfun
-d3exp1_make_node
+d3exp1_lctn$get
+  ( dexp ) =
+let
+val+
+D3EXP1
+( loc0
+, t2p0
+, node) = dexp in loc0
+end//end-of-[d3exp1_lctn$get]
+//
+#implfun
+d3exp1_styp$get
+  ( dexp ) =
+let
+val+
+D3EXP1
+( loc0
+, t2p0
+, node) = dexp in t2p0
+end//end-of-[d3exp1_styp$get]
+//
+#implfun
+d3exp1_node$get
+  ( dexp ) =
+let
+val+
+D3EXP1
+( loc0
+, t2p0
+, node) = dexp in node
+end//end-of-[d3exp1_node$get]
+//
+(* ****** ****** *)
+//
+#implfun
+d3exp1_make_lctn$node
 ( loc0, node ) =
 let
 val
-t2p0 = s2typ1_none0()
+t2p0 =
+s2typ1_none0((*0*))
 in//let
+  D3EXP1(loc0, t2p0, node) end
+//
+#implfun
+d3exp1_make_lctn$styp$node
+( loc0, t2p0, node ) =
+let
   D3EXP1(loc0, t2p0, node) end
 //
 (* ****** ****** *)

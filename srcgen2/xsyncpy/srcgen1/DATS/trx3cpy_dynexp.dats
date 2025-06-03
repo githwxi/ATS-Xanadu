@@ -57,6 +57,8 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 "./../../../SATS/dynexp3.sats"
 //
+#symload lctn with d3exp_get_lctn
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -65,9 +67,23 @@ d3exp_trx3cpy
 (d3e0, env0) =
 (
 case+ d3e0 of
-| _(*otherwise*) => d3exp1_mknode(loc0, D3E1d3exp(d3e0))
-
-)
+|
+_(*otherwise*) =>
+(
+  d3exp1(loc0, D3E1d3exp(d3e0)))
+) where
+{
+//
+val loc0 = d3e0.lctn()
+//
+(*
+val (  ) =
+printsln("d3exp_trx3cpy: loc0 = ", loc0)
+val (  ) =
+printsln("d3exp_trx3cpy: d3e0 = ", d3e0)
+*)
+//
+}(*where*)//end-of-[d3exp_trx3cpy(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

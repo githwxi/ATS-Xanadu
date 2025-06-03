@@ -72,6 +72,7 @@ ATS_PACKNAME
 
 #symload name with s2cst_get_name
 #symload sort with s2cst_get_sort
+#symload stmp with s2cst_get_stmp
 
 (* ****** ****** *)
 
