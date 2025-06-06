@@ -45,6 +45,7 @@ dynexp2_print0.dats \
 dynexp3.dats \
 dynexp3_print0.dats \
 trx3cpy.dats \
+trx3cpy_myenv0.dats \
 trx3cpy_dynexp.dats \
 trx3cpy_decl00.dats \
 xsyncpy_tmplib.dats \
