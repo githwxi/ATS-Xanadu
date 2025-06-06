@@ -202,6 +202,17 @@ d3exp1_make_lctn$styp$node
 (* ****** ****** *)
 (* ****** ****** *)
 //
+datatype
+d3ecl1_node =
+//
+(* ****** ****** *)
+//
+|D3C1d3ecl of (d3ecl)//yet-to-be-copied
+//
+|D3C1errck of (sint(*lvl*), d3ecl1(*err*))
+//
+(* ****** ****** *)
+//
 fun
 d3ecl1_lctn$get
 (decl: d3ecl1): loctn
@@ -215,6 +226,13 @@ fun
 d3ecl1_fprint
 (decl: d3ecl1, out0: FILR): void
 #symload fprint with d3ecl1_fprint of 1000
+//
+(* ****** ****** *)
+//
+fun
+d3ecl1_make_lctn$node
+(loc0: loctn, node: d3ecl1_node): d3ecl1
+#symload d3ecl1 with d3ecl1_make_lctn$node
 //
 (* ****** ****** *)
 (* ****** ****** *)

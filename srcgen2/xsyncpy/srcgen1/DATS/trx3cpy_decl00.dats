@@ -60,6 +60,33 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+d3ecl_trx3cpy
+(d3cl, env0) =
+(
+case+
+d3cl.node() of
+|
+_(*otherwise*) =>
+(
+  d3ecl1(loc0, D3C1d3ecl(d3cl)))
+) where
+{
+//
+val loc0 = d3cl.lctn()
+//
+(*
+val (  ) =
+printsln("d3exp_trx3cpy: loc0 = ", loc0)
+val (  ) =
+printsln("d3exp_trx3cpy: d3cl = ", d3cl)
+*)
+//
+}(*where*)//end-of-[d3ecl_trx3cpy(d3cl,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trx3cpy_decl00.dats] *)
 (***********************************************************************)
