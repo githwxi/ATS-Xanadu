@@ -63,6 +63,33 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+d3pat_trx3cpy
+(d3p0, env0) =
+(
+case+
+d3p0.node() of
+|
+_(*otherwise*) =>
+(
+  d3pat1(loc0, D3P1d3pat(d3p0)))
+) where
+{
+//
+val loc0 = d3p0.lctn()
+//
+(*
+val (  ) =
+printsln("d3pat_trx3cpy: loc0 = ", loc0)
+val (  ) =
+printsln("d3pat_trx3cpy: d3p0 = ", d3p0)
+*)
+//
+}(*where*)//end-of-[d3pat_trx3cpy(d3p0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 d3exp_trx3cpy
 (d3e0, env0) =
 (

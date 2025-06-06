@@ -60,15 +60,92 @@ Authoremail: gmhwxiATgmailDOTcom
 local
 //
 datatype
+d3pat1 =
+D3PAT1 of
+(loctn
+,s2typ1, d3pat1_node)
+datavwtp
+d3pat1_vt =
+D3PAT1_vt of
+(loctn
+,s2typ1, d3pat1_node)
+//
+#absimpl d3pat1_tbox = d3pat1
+//
+(* ****** ****** *)
+in (* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+d3pat1_lctn$get
+  ( dpat ) =
+let
+val+
+D3PAT1
+( loc0
+, t2p0
+, node) = dpat in loc0
+end//end-of-[d3pat1_lctn$get]
+//
+#implfun
+d3pat1_styp$get
+  ( dpat ) =
+let
+val+
+D3PAT1
+( loc0
+, t2p0
+, node) = dpat in t2p0
+end//end-of-[d3pat1_styp$get]
+//
+#implfun
+d3pat1_node$get
+  ( dpat ) =
+let
+val+
+D3PAT1
+( loc0
+, t2p0
+, node) = dpat in node
+end//end-of-[d3pat1_node$get]
+//
+(* ****** ****** *)
+//
+#implfun
+d3pat1_make_lctn$node
+( loc0, node ) =
+let
+val
+t2p0 =
+s2typ1_none0((*0*))
+in//let
+  D3PAT1(loc0, t2p0, node) end
+//
+#implfun
+d3pat1_make_lctn$styp$node
+( loc0, t2p0, node ) =
+let
+  D3PAT1(loc0, t2p0, node) end
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [local(d3pat1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
 d3exp1 =
 D3EXP1 of
-( loctn
-, s2typ1, d3exp1_node)
+(loctn
+,s2typ1, d3exp1_node)
 datavwtp
 d3exp1_vt =
 D3EXP1_vt of
-( loctn
-, s2typ1, d3exp1_node)
+(loctn
+,s2typ1, d3exp1_node)
 //
 #absimpl d3exp1_tbox = d3exp1
 //
@@ -130,6 +207,58 @@ let
 (* ****** ****** *)
 //
 endloc (*local*) // end of [local(d3exp1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+d3ecl1 =
+D3ECL1 of
+( loctn, d3ecl1_node)
+datavwtp
+d3ecl1_vt =
+D3ECL1_vt of
+( loctn, d3ecl1_node)
+//
+#absimpl d3ecl1_tbox = d3ecl1
+//
+(* ****** ****** *)
+in (* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+d3ecl1_lctn$get
+  ( d3cl ) =
+let
+val+
+D3ECL1
+( loc0
+, node) = d3cl in loc0
+end//end-of-[d3ecl1_lctn$get]
+//
+#implfun
+d3ecl1_node$get
+  ( d3cl ) =
+let
+val+
+D3ECL1
+( loc0
+, node) = d3cl in node
+end//end-of-[d3ecl1_node$get]
+//
+(* ****** ****** *)
+//
+#implfun
+d3ecl1_make_lctn$node
+( loc0, node ) =
+(
+  D3ECL1(loc0, node))//implfun
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [local(d3ecl1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
