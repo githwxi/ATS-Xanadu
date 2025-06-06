@@ -135,6 +135,10 @@ d3pat1_lctn$get
 (dpat: d3pat1): loctn
 #symload lctn with d3pat1_lctn$get
 fun
+d3pat1_styp$get
+(dpat: d3pat1): s2typ1
+#symload styp with d3exp1_styp$get
+fun
 d3pat1_node$get
 (dpat: d3pat1): d3pat1_node
 #symload node with d3pat1_node$get
@@ -143,6 +147,18 @@ fun
 d3pat1_fprint
 (dpat: d3pat1, out0: FILR): void
 #symload fprint with d3pat1_fprint of 1000
+//
+(* ****** ****** *)
+//
+fun
+d3pat1_make_lctn$node
+(loc0: loctn, node: d3pat1_node): d3pat1
+fun
+d3pat1_make_lctn$styp$node
+(loc0: loctn
+,t2p0: s2typ1, node: d3pat1_node): d3pat1
+#symload d3pat1 with d3pat1_make_lctn$node
+#symload d3pat1 with d3pat1_make_lctn$styp$node
 //
 (* ****** ****** *)
 (* ****** ****** *)
