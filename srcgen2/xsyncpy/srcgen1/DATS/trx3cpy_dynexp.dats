@@ -66,7 +66,8 @@ Authoremail: gmhwxiATgmailDOTcom
 d3exp_trx3cpy
 (d3e0, env0) =
 (
-case+ d3e0 of
+case+
+d3e0.node() of
 |
 _(*otherwise*) =>
 (
