@@ -68,9 +68,9 @@ d3parsed_trx3cpy
 (* ****** ****** *)
 //
 fun
-env3cpy_make$nil((*0*)): env3cpy
+env3cpy_make_nil((*0*)): env3cpy
 fun
-env3cpy_free$top(env3cpy): (void)
+env3cpy_free_nil(env3cpy): (void)
 //
 (* ****** ****** *)
 (* ****** ****** *)
