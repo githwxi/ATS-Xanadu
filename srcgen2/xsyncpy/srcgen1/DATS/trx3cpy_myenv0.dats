@@ -67,12 +67,52 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+local
+//
 datavwtp
 env3cpy =
 ENV3CPY of
 (stkmap(s2varlst))
 //
 #absimpl env3cpy_vtbx = env3cpy
+//
+in//local
+//
+(* ****** ****** *)
+//
+#implfun
+env3cpy_make_nil
+  ( (*void*) ) = let
+//
+val
+stkmap =
+stkmap_make_nil() in ENV3CPY(stkmap)
+//
+end(*let*)//end-of-[env3cpy_make_nil()]
+//
+(* ****** ****** *)
+//
+#implfun
+env3cpy_free_nil
+  (  env0  ) =
+(
+case+ env0 of
+~ENV3CPY(stkmap) =>
+let
+//
+var
+stkmap = stkmap
+//
+val nerr =
+stkmap_poptop0(stkmap)
+//
+val (  ) =
+stkmap_free_nil(stkmap) in () end//let
+)(*case+*)//end-of-(env3cpy_free_nil(env0))
+//
+(* ****** ****** *)
+//
+end(*local*)//end-of-[absimpl(env3cpy_vtbx)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

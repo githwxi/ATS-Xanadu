@@ -61,7 +61,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #implfun
-trx3cpy_d3parsed
+d3parsed_trx3cpy
   (dpar) = let
 //
 val stadyn =
