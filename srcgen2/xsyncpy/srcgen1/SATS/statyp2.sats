@@ -52,6 +52,9 @@ T2P = "./\
 ../../../SATS/statyp2.sats"
 //
 (* ****** ****** *)
+#typedef s2var = $T2P.s2var
+#typedef s2cst = $T2P.s2cst
+(* ****** ****** *)
 #typedef s2typ = $T2P.s2typ
 (* ****** ****** *)
 #abstbox s2typ1_tbox == p0tr
