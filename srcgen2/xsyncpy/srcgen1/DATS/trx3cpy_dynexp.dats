@@ -40,8 +40,10 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #include
-"xatslib\
-/libcats\
+"prelude\
+/HATS/prelude_dats.hats"
+#include
+"xatslib/libcats\
 /HATS/libcats_dats.hats"
 //
 (* ****** ****** *)
@@ -57,12 +59,14 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 "./../../../SATS/dynexp3.sats"
 //
+#symload lctn with d3pat_get_lctn
 #symload lctn with d3exp_get_lctn
+#symload lctn with d3ecl_get_lctn
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 d3pat_trx3cpy
 (d3p0, env0) =
 (
@@ -89,7 +93,7 @@ printsln("d3pat_trx3cpy: d3p0 = ", d3p0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 d3exp_trx3cpy
 (d3e0, env0) =
 (

@@ -60,7 +60,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 d3ecl_trx3cpy
 (d3cl, env0) =
 (

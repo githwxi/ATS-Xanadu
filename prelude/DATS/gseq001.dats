@@ -1887,11 +1887,11 @@ HX-2025-06-01:
 Sun Jun  1 11:10:21 AM EDT 2025
 *)
 //
-fun
-<xs:t0>
-<x0:t0>
-<y0:t0>
-<e1:vt>
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:t0 >
+< e1:vt >
 gseq_map$e1nv_list
   ( xs, e1 ) =
 (
@@ -1904,11 +1904,11 @@ map$fopr<x0><y0>(x0) =
   map$e1nv$fopr<x0><y0><e1>(x0, e1))
 }(*where*)//end-of-[gseq_map$e1nv_list(xs,e1)]
 //
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-<e1:vt>
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+< e1:vt >
 gseq_map$e1nv_llist
   ( xs, e1 ) =
 (
@@ -1921,11 +1921,11 @@ map$fopr<x0><y0>(x0) =
   map$e1nv$fopr<x0><y0><e1>(x0, e1))
 }(*where*)//end-of-[gseq_map$e1nv_llist(xs,e1)]
 //
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-<e1:vt>
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+< e1:vt >
 gseq_map$e1nv_lstrm
   ( xs, e1 ) =
 (
@@ -1938,11 +1938,11 @@ map$fopr<x0><y0>(x0) =
   map$e1nv$fopr<x0><y0><e1>(x0, e1))
 }(*where*)//end-of-[gseq_map$e1nv_lstrm(xs,e1)]
 //
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-<e1:vt>
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+< e1:vt >
 gseq_map$e1nv_lstrq
   ( xs, e1 ) =
 (
@@ -1957,12 +1957,11 @@ map$fopr<x0><y0>(x0) =
 //
 (* ****** ****** *)
 //
-//
-fun
-<xs:t0>
-<x0:t0>
-<y0:t0>
-<e1:vt>
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:t0 >
+< e1:vt >
 gseq_map$e1nv_rlist
   ( xs, e1 ) =
 (
@@ -1975,11 +1974,11 @@ map$fopr<x0><y0>(x0) =
   map$e1nv$fopr<x0><y0><e1>(x0, e1))
 }(*where*)//end-of-[gseq_map$e1nv_rlist(xs,e1)]
 //
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-<e1:vt>
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+< e1:vt >
 gseq_map$e1nv_rllist
   ( xs, e1 ) =
 (
