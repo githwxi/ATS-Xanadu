@@ -48,14 +48,31 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../SATS/statyp2.sats"
+#staload
 "./../SATS/dynexp3.sats"
 #staload
 "./../SATS/trx3cpy.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #staload
-"./../../../SATS/dynexp3.sats"
+"./../../../SATS/xsymmap.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef s2varlst = list(s2var)
+#typedef s2cstlst = list(s2cst)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datavwtp
+env3cpy =
+ENV3CPY of
+(stkmap(s2varlst))
+//
+#absimpl env3cpy_vtbx = env3cpy
 //
 (* ****** ****** *)
 (* ****** ****** *)
