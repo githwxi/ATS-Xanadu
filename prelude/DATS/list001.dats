@@ -290,9 +290,14 @@ Sun 28 Jul 2024 02:37:26 PM EDT
 <x0>(*tmp*)
 list_strmize
   ( xs ) =
-let
+(
+  auxmain(xs)
+) where
+{
+//
 fun
-auxmain(xs) =
+auxmain
+(xs: list(x0)) =
 $llazy
 (
 case+ xs of
@@ -303,9 +308,8 @@ strmcon_vt_nil()
 list_cons(x0, xs) =>
 strmcon_vt_cons(x0, auxmain(xs))
 )
-in
-  auxmain(xs)
-end(*let*)//end-of-[list_strmize(xs)]
+//
+}(*where*)//end-of-[list_strmize(xs)]
 //
 #impltmp
 { x0:t0 }

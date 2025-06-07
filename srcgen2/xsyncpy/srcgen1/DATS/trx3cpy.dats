@@ -40,6 +40,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #include
+"prelude\
+/HATS/prelude_dats.hats"
+#include
 "xatslib\
 /libcats\
 /HATS/libcats_dats.hats"
@@ -82,7 +85,7 @@ d3parsed_get_t3penv(dpar)
 val parsed =
 d3parsed_get_parsed(dpar)
 //
-val env0 = env3cpy_make$nil()
+val env0 = env3cpy_make_nil()
 //
 val parsed =
 d3eclistopt_trx3cpy(parsed, env0)
@@ -90,7 +93,7 @@ d3eclistopt_trx3cpy(parsed, env0)
 in//let
 //
 let
-val ((*0*)) = env3cpy_free$top(env0)
+val ((*0*)) = env3cpy_free_nil(env0)
 in//let
 (
 d3parsed1(stadyn, nerror, source, parsed))
@@ -101,7 +104,7 @@ end(*let*)//end-of-[d3parsed_trx3cpy(dpar)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 d3patlst_trx3cpy
 (d3ps, env0) =
 list_map$e1nv(d3ps, env0) where
@@ -115,7 +118,7 @@ map$e1nv$fopr<x0><y0><e1> = d3pat_trx3cpy
 //
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 d3explst_trx3cpy
 (d3es, env0) =
 list_map$e1nv(d3es, env0) where
@@ -126,6 +129,21 @@ list_map$e1nv(d3es, env0) where
 #impltmp
 map$e1nv$fopr<x0><y0><e1> = d3exp_trx3cpy
 }(*where*)//end-of-[d3explst_trx3cpy(d3es,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3eclist_trx3cpy
+(dcls, env0) =
+list_map$e1nv(dcls, env0) where
+{
+#typedef x0 = d3ecl
+#typedef y0 = d3ecl1
+#vwtpdef e1 = env3cpy
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = d3ecl_trx3cpy
+}(*where*)//end-of-[d3eclist_trx3cpy(d3es,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
