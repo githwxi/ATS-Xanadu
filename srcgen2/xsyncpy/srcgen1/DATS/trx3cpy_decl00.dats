@@ -57,6 +57,8 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 "./../../../SATS/dynexp3.sats"
 //
+#symload node with d3ecl_get_node
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -66,20 +68,123 @@ d3ecl_trx3cpy
 (
 case+
 d3cl.node() of
+//
+|
+D3Cstatic _ =>
+f0_static(d3cl, env0)
+|
+D3Cextern _ =>
+f0_extern(d3cl, env0)
+//
+|
+D3Cdclst0 _ =>
+f0_dclst0(d3cl, env0)
+|
+D3Clocal0 _ =>
+f0_local0(d3cl, env0)
+//
+|D3Cerrck
+(lvl0, dcl1) =>
+let
+//
+val dcl1 =
+(
+  d3ecl_trx3cpy(dcl1, env0))
+in//
+//
+d3ecl1
+(loc0, D3C1errck(lvl0, dcl1))
+//
+end//let//end-of-[D3Cerrck(...)]
+//
 |
 _(*otherwise*) =>
 (
-  d3ecl1(loc0, D3C1d3ecl(d3cl)))
-) where
+  d3ecl1(loc0, D3C1d3ecl(d3cl))))
+where
 {
 //
 val loc0 = d3cl.lctn()
 //
+fun
+f0_static
+(d3cl: d3ecl
+,env0: !env3cpy): d3ecl1 =
+let
+//
+val-
+D3Cstatic
+(tknd, dcl1) = d3cl.node()
+val dcl1 =
+(
+  d3ecl_trx3cpy(dcl1, env0))
+in//let
+  d3ecl1
+  (loc0, D3C1static(tknd, dcl1))
+end//let
+//
+fun
+f0_extern
+(d3cl: d3ecl
+,env0: !env3cpy): d3ecl1 =
+let
+//
+val-
+D3Cextern
+(tknd, dcl1) = d3cl.node()
+val dcl1 =
+(
+  d3ecl_trx3cpy(dcl1, env0))
+in//let
+  d3ecl1
+  (loc0, D3C1extern(tknd, dcl1))
+end//let
+//
+fun
+f0_dclst0
+(d3cl: d3ecl
+,env0: !env3cpy): d3ecl1 =
+let
+//
+val-
+D3Cdclst0
+(   dcls   ) = d3cl.node()
+in//let
+(
+d3ecl1(loc0, D3C1dclst0(dcls))
+) where
+{
+val dcls =
+(
+  d3eclist_trx3cpy(dcls, env0)) }
+end//let
+//
+fun
+f0_local0
+(d3cl: d3ecl
+,env0: !env3cpy): d3ecl1 =
+let
+//
+val-
+D3Clocal0
+(head, body) = d3cl.node()
+//
+val head =
+(
+d3eclist_trx3cpy(head, env0))
+val body =
+(
+d3eclist_trx3cpy(body, env0))
+//
+in//let
+d3ecl1(loc0, D3C1local0(head, body))
+end//let
+//
 (*
 val (  ) =
-printsln("d3exp_trx3cpy: loc0 = ", loc0)
+printsln("d3ecl_trx3cpy: loc0 = ", loc0)
 val (  ) =
-printsln("d3exp_trx3cpy: d3cl = ", d3cl)
+printsln("d3ecl_trx3cpy: d3cl = ", d3cl)
 *)
 //
 }(*where*)//end-of-[d3ecl_trx3cpy(d3cl,env0)]
