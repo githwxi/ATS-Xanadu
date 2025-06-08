@@ -78,12 +78,24 @@ node with $D2E.d2ecl_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+fun
+d2pat_fprint
+(dpat: d2pat, out0: FILR): void
 fun
 d2exp_fprint
 (dexp: d2exp, out0: FILR): void
+fun
+d2ecl_fprint
+(d3cl: d2ecl, out0: FILR): void
 //
 #symload
+fprint with d2pat_fprint of 1000
+#symload
 fprint with d2exp_fprint of 1000
+#symload
+fprint with d2ecl_fprint of 1000
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

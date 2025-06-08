@@ -43,8 +43,19 @@ Authoremail: gmhwxiATgmailDOTcom
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#staload
+"./../SATS/dynexp3.sats"
+#staload
+"./../SATS/trx3cpy.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/libxatsopt.hats"
+(* ****** ****** *)
+#staload
+"./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -88,17 +99,36 @@ prerrsln
 ("d3parsed(30) = ", dpar))
 //
 val (  ) =
-let
+let//1
 val
 out0 = g_stderr((*0*))
-in//let
+in//let1
 prerrsln
 ("FPERR30_D3PARSED:");
 fperr30_d3parsed(out0, dpar)
-end//let
+end//let1
+//
+val dpar1 =
+(
+  d3parsed_trx3cpy(dpar))
 //
 in//let
 //
+let
+//
+#extern
+fcast
+castxy
+{ax:t0}
+{ay:t0}(ax:ax):(ay)
+//
+val
+filr = castxy(g_stdout<>())
+//
+in//let
+(
+  d3parsed1_fprint(dpar1, filr))
+end//let
 //
 end where
 {

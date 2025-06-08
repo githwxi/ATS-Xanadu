@@ -39,17 +39,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include
-"prelude\
-/HATS/prelude_dats.hats"
-#include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #staload
 "./../SATS/dynexp3.sats"
 #staload
@@ -59,6 +48,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload
 "./../../../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include "./../HATS/mytmplib00.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -144,6 +138,23 @@ list_map$e1nv(dcls, env0) where
 #impltmp
 map$e1nv$fopr<x0><y0><e1> = d3ecl_trx3cpy
 }(*where*)//end-of-[d3eclist_trx3cpy(d3es,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3eclistopt_trx3cpy
+(dopt, env0) =
+(
+case+ dopt of
+|
+optn_nil
+( (*0*) ) => optn_nil((*void*))
+|
+optn_cons
+(  dcls  ) =>
+(
+  optn_cons(d3eclist_trx3cpy(dcls, env0)))
+)(*case+*)//end-of-[d3eclistopt_trx3cpy(dopt,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
