@@ -193,7 +193,35 @@ d3cl.node() of
 |D3C1d3ecl
 (   dcl1   ) =>
 (
-  prints( "D3C1d3ecl(", dcl1, ")" ))
+prints( "D3C1d3ecl(", dcl1, ")" ))
+//
+(* ****** ****** *)
+//
+|D3C1static
+(tknd, dcl1) =>
+(
+prints
+("D3C1static(", tknd, ";", dcl1, ")"))
+|D3C1extern
+(tknd, dcl1) =>
+(
+prints
+("D3C1extern(", tknd, ";", dcl1, ")"))
+//
+(* ****** ****** *)
+//
+|D3C1dclst0
+(   dcls   ) =>
+(
+  prints("D3C1dclst0(", dcls, ")"))
+//
+|D3C1local0
+(head, body) =>
+(
+prints
+("D3C1local0(", head, ";", body, ")"))
+//
+(* ****** ****** *)
 //
 |D3C1errck
 (lvl0, dcl1) =>
@@ -203,10 +231,10 @@ prints("D3C1errck(", lvl0, ";", dcl1, ")"))
 ) where
 {
   #impltmp
-  g_print<d3ecl1> = d3ecl1_print
-}(*where*)//end-of-[d3ecl1_print(d3e0)]
+  g_print<d3ecl1> = d3ecl1_print(*0*)
+}(*where*)//end-of-[d3ecl1_print(d3cl)]
 //
-}(*where*)//end-of-[g_print<d3ecl1>(d3e0)]
+}(*where*)//end-of-[g_print<d3ecl1>(d3cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

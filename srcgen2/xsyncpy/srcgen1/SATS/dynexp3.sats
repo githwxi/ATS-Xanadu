@@ -52,11 +52,16 @@ Authoremail: gmhwxiATgmailDOTcom
 LOC = "./\
 ../../../SATS/locinfo.sats"
 #staload
+LEX = "./\
+../../../SATS/lexing0.sats"
+#staload
 D3E = "./\
 ../../../SATS/dynexp3.sats"
 (* ****** ****** *)
 #typedef lcsrc = $LOC.lcsrc
 #typedef loctn = $LOC.loctn
+(* ****** ****** *)
+#typedef token = $LEX.token
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -243,7 +248,24 @@ d3ecl1_node =
 //
 (* ****** ****** *)
 //
-|D3C1d3ecl of (d3ecl)//yet-to-be-copied
+//yet-to-be-copied
+|D3C1d3ecl of (d3ecl)
+(* ****** ****** *)
+//
+|D3C1static of
+(token(*STATIC*), d3ecl1)
+|D3C1extern of
+(token(*EXTERN*), d3ecl1)
+//
+(* ****** ****** *)
+//
+|D3C1dclst0 of (d3ecl1lst)
+//
+|D3C1local0 of
+( d3ecl1lst(*local-head*)
+, d3ecl1lst(*local-body*))
+//
+(* ****** ****** *)
 //
 |D3C1errck of (sint(*lvl*), d3ecl1(*err*))
 //
