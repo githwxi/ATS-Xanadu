@@ -36,52 +36,21 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #include
 "xatslib\
 /libcats\
 /HATS/libcats_dats.hats"
-//
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
+"./../SATS/dynexp2.sats"
+#staload
+"./../SATS/dynexp3.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../../../SATS/xstamp0.sats"
-#staload
-"./../../../SATS/xsymbol.sats"
-//
-(* ****** ****** *)
-//
-#staload
-"./../../../SATS/lexing0.sats"
-//
-(* ****** ****** *)
-//
-#staload
-"./../../../SATS/staexp0.sats"
-#staload
-"./../../../SATS/dynexp0.sats"
-//
-(* ****** ****** *)
-//
-#staload
-"./../../../SATS/staexp1.sats"
-#staload
-"./../../../SATS/dynexp1.sats"
-//
-(* ****** ****** *)
-//
-#staload
-"./../../../SATS/staexp2.sats"
-#staload
-"./../../../SATS/statyp2.sats"
-#staload
-"./../../../SATS/dynexp2.sats"
-//
-(* ****** ****** *)
-//
-#staload
-"./../../../SATS/dynexp3.sats"
+#include
+"./../HATS/libxatsopt.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -162,6 +131,24 @@ d3exp_fprint(d3e0, castxy(g_print$out<>()))
 #impltmp
 g_print<d3ecl>(d3cl) =
 d3ecl_fprint(d3cl, castxy(g_print$out<>()))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print<d3pat1>(dpat) =
+(
+  d3pat1_fprint(dpat, g_print$out<>((*0*))))
+//
+#impltmp
+g_print<d3exp1>(dexp) =
+(
+  d3exp1_fprint(dexp, g_print$out<>((*0*))))
+//
+#impltmp
+g_print<d3ecl1>(d3cl) =
+(
+  d3ecl1_fprint(d3cl, g_print$out<>((*0*))))
 //
 (* ****** ****** *)
 (* ****** ****** *)

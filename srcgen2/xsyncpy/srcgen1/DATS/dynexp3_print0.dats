@@ -39,6 +39,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"xatslib\
+/libcats\
+/HATS/libcats_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload "\
 ./../SATS/dynexp3.sats"
 //
@@ -146,6 +154,11 @@ d3e0.node() of
 (
 prints("D3E1int(", tint, ")"))
 //
+|D3E1d3exp
+(   dexp   ) =>
+(
+  prints( "D3E1d3exp(", dexp, ")" ))
+//
 |D3E1errck
 (lvl0, d3e1) =>
 (
@@ -158,6 +171,42 @@ prints("D3E1errck(", lvl0, ";", d3e1, ")"))
 }(*where*)//end-of-[d3exp1_print(d3e0)]
 //
 }(*where*)//end-of-[g_print<d3exp1>(d3e0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<d3ecl1>(d3cl) =
+(
+d3ecl1_print(d3cl)
+) where
+{
+//
+fun
+d3ecl1_print
+(d3cl: d3ecl1): void =
+(
+case+
+d3cl.node() of
+//
+|D3C1d3ecl
+(   dcl1   ) =>
+(
+  prints( "D3C1d3ecl(", dcl1, ")" ))
+//
+|D3C1errck
+(lvl0, dcl1) =>
+(
+prints("D3C1errck(", lvl0, ";", dcl1, ")"))
+//
+) where
+{
+  #impltmp
+  g_print<d3ecl1> = d3ecl1_print
+}(*where*)//end-of-[d3ecl1_print(d3e0)]
+//
+}(*where*)//end-of-[g_print<d3ecl1>(d3e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

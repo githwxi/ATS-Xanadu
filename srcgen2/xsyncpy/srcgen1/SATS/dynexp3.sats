@@ -104,6 +104,26 @@ D3E = "./\
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+d3pat_fprint
+(dpat: d3pat, out0: FILR): void
+fun
+d3exp_fprint
+(dexp: d3exp, out0: FILR): void
+fun
+d3ecl_fprint
+(d3cl: d3ecl, out0: FILR): void
+//
+#symload
+fprint with d3pat_fprint of 1000
+#symload
+fprint with d3exp_fprint of 1000
+#symload
+fprint with d3ecl_fprint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 datatype
 d3pat1_node =
 //
@@ -251,6 +271,25 @@ d3ecl1_make_lctn$node
 #symload d3ecl1 with d3ecl1_make_lctn$node
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3parsed1_fprint
+(dpar: d3parsed1, out0: FILR): void
+//
+(* ****** ****** *)
+//
+fun
+d3parsed1_get_stadyn:(d3parsed1)->sint
+fun
+d3parsed1_get_nerror:(d3parsed1)->sint
+//
+fun
+d3parsed1_get_source:(d3parsed1)->lcsrc
+//
+fun
+d3parsed1_get_parsed:(d3parsed1)->d3ecl1lstopt
+//
 (* ****** ****** *)
 //
 fun

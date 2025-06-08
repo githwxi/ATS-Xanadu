@@ -39,13 +39,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
-//
-(* ****** ****** *)
-//
 #staload
 "./../SATS/statyp2.sats"
 #staload
@@ -54,6 +47,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #staload
 "./../../../SATS/locinfo.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/mytmplib00.hats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -265,32 +264,6 @@ endloc (*local*) // end of [local(d3ecl1)]
 //
 local
 //
-#staload "\
-./../DATS/dynexp3_print0.dats"
-//
-in//local
-//
-#implfun
-d3pat1_fprint = g_fprint<d3pat1>
-#implfun
-d3exp1_fprint = g_fprint<d3exp1>
-//
-end//local
-//
-(* ****** ****** *)
-//
-#impltmp
-g_print<d3pat1>(d3e0) =
-d3pat1_fprint(d3e0, g_print$out<>())
-#impltmp
-g_print<d3exp1>(d3e0) =
-d3exp1_fprint(d3e0, g_print$out<>())
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-local
-//
 datatype
 d3parsed1 =
 D3PARSED1 of
@@ -308,6 +281,58 @@ d3parsed1_tbox = d3parsed1
 //
 in//local
 //
+(* ****** ****** *)
+//
+#implfun
+d3parsed1_get_stadyn
+  (dpar) =
+(
+  stadyn ) where
+{
+val+
+D3PARSED1
+( stadyn
+, nerror, source, parsed) = dpar
+} (*where*)//end-of-[d3parsed1_get_stadyn]
+//
+//
+#implfun
+d3parsed1_get_nerror
+  (dpar) =
+(
+  nerror ) where
+{
+val+
+D3PARSED1
+( stadyn
+, nerror, source, parsed) = dpar
+} (*where*)//end-of-[d3parsed1_get_nerror]
+//
+#implfun
+d3parsed1_get_source
+  (dpar) =
+(
+  source ) where
+{
+val+
+D3PARSED1
+( stadyn
+, nerror, source, parsed) = dpar
+} (*where*)//end-of-[d3parsed1_get_source]
+//
+#implfun
+d3parsed1_get_parsed
+  (dpar) =
+(
+  parsed ) where
+{
+val+
+D3PARSED1
+( stadyn
+, nerror, source, parsed) = dpar
+} (*where*)//end-of-[d3parsed1_get_parsed]
+//
+(* ****** ****** *)
 //
 #implfun
 d3parsed1_make_args
@@ -327,7 +352,71 @@ prerrsln
 //
 } (*where*) // end-of-[d3parsed1_make_args]
 //
-endloc (*local*) // end of [ local(d3parsed1) ]
+(* ****** ****** *)
+//
+endloc (*local*) // end-of-[local(d3parsed1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+#staload
+"./../DATS/dynexp3_print0.dats"
+//
+in//local
+//
+#implfun
+d3pat1_fprint
+(dpat, out0) =
+(
+g_print<d3pat1>(dpat)
+) where
+{
+#impltmp g_print$out<>() = out0
+}(*where*)//end-of-[d3pat1_fprint(dpat,out0)]
+//
+#implfun
+d3exp1_fprint
+(dexp, out0) =
+(
+g_print<d3exp1>(dexp)
+) where
+{
+#impltmp g_print$out<>() = out0
+}(*where*)//end-of-[d3exp1_fprint(dexp,out0)]
+//
+#implfun
+d3ecl1_fprint
+(d3cl, out0) =
+(
+g_print<d3ecl1>(d3cl)
+) where
+{
+#impltmp g_print$out<>() = out0
+}(*where*)//end-of-[d3ecl1_fprint(d3cl,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3parsed1_fprint
+  (dpar, out0) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+in//let
+g_print<d3ecl1lstopt>(dopt)
+//
+end//let
+where
+{
+val dopt = d3parsed1_get_parsed(dpar)
+}(*where*)//end-of-[d3parsed1_fprint(dpar,out0)]
+//
+(* ****** ****** *)
+//
+end//local[staload("./../DATS/dynexp3_print0.dats")]
 //
 (* ****** ****** *)
 (* ****** ****** *)
