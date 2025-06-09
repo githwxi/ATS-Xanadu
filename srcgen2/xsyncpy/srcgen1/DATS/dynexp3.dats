@@ -398,6 +398,12 @@ g_print<d3ecl1>(d3cl)
 //
 (* ****** ****** *)
 //
+end//local[staload("./../DATS/dynexp3_print0.dats")]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
 #implfun
 d3parsed1_fprint
   (dpar, out0) =
@@ -407,16 +413,11 @@ let
 g_print$out<>() = out0
 in//let
 g_print<d3ecl1lstopt>(dopt)
-//
 end//let
 where
 {
 val dopt = d3parsed1_get_parsed(dpar)
 }(*where*)//end-of-[d3parsed1_fprint(dpar,out0)]
-//
-(* ****** ****** *)
-//
-end//local[staload("./../DATS/dynexp3_print0.dats")]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -126,8 +126,9 @@ val
 filr = castxy(g_stdout<>())
 //
 in//let
-(
-  d3parsed1_fprint(dpar1, filr))
+prints("d3parsed1(30) = ");
+d3parsed1_fprint(dpar1, filr);
+printsln((*endof(d3parsed1)*))
 end//let
 //
 end where

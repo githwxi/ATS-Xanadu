@@ -267,6 +267,17 @@ d3ecl1_node =
 //
 (* ****** ****** *)
 //
+|D3C1valdclst of
+(token(*VAL(vlk)*), d3valdcl1lst)
+|D3C1vardclst of
+(token(*VAR(vrk)*), d3vardcl1lst)
+//
+|D3C1fundclst of
+( token(*FUN(fnk)*)
+, t2qaglst, d2cstlst, d3fundcl1lst)
+//
+(* ****** ****** *)
+//
 |D3C1errck of (sint(*lvl*), d3ecl1(*err*))
 //
 (* ****** ****** *)
