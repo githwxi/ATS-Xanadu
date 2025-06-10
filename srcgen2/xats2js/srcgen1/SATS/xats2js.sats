@@ -293,42 +293,48 @@ xats2js_i1dclist
 (* ****** ****** *)
 //
 fun
+xats2js_i1prvdcl
+(env0: !envx2js, ifun: i1valdcl): void
+fun
 xats2js_i1valdcl
 (env0: !envx2js, ival: i1valdcl): void
+//
 fun
 xats2js_i1vardcl
 (env0: !envx2js, ivar: i1vardcl): void
 //
 fun
-xats2js_i1fundcl
-(env0: !envx2js, ifun: i1fundcl): void
-//
-fun
-xats2js_i1prvdcl
-(env0: !envx2js, ifun: i1valdcl): void
-fun
 xats2js_i1prfdcl
 (env0: !envx2js, ifun: i1fundcl): void
+fun
+xats2js_i1fundcl
+(env0: !envx2js, ifun: i1fundcl): void
+fun
+xats2js_i1tfndcl
+(env0: !envx2js, ifun: i1fundcl): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-fun
-xats2js_i1valdclist
-(env0: !envx2js, i1vs: i1valdclist): void
-fun
-xats2js_i1vardclist
-(env0: !envx2js, i1vs: i1vardclist): void
-//
-fun
-xats2js_i1fundclist
-(env0: !envx2js, i1fs: i1fundclist): void
 //
 fun
 xats2js_i1prvdclist
 (env0: !envx2js, i1vs: i1valdclist): void
 fun
+xats2js_i1valdclist
+(env0: !envx2js, i1vs: i1valdclist): void
+//
+fun
+xats2js_i1vardclist
+(env0: !envx2js, i1vs: i1vardclist): void
+//
+fun
 xats2js_i1prfdclist
+(env0: !envx2js, i1fs: i1fundclist): void
+fun
+xats2js_i1fundclist
+(env0: !envx2js, i1fs: i1fundclist): void
+fun
+xats2js_i1tfndclist
 (env0: !envx2js, i1fs: i1fundclist): void
 //
 (* ****** ****** *)

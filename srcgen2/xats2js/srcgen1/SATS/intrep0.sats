@@ -123,10 +123,10 @@ XATSOPT "./../../.."
 //
 (*
 #typedef s2qag = $D2E.s2qag
-#typedef t2qag = $D2E.t2qag
-#typedef t2iag = $D2E.t2iag
 *)
 //
+#typedef t2qag = $D2E.t2qag
+#typedef t2iag = $D2E.t2iag
 #typedef t2jag = $D2E.t2jag
 //
 (* ****** ****** *)
@@ -164,10 +164,9 @@ XATSOPT "./../../.."
 //
 (*
 #typedef s2qaglst = $D2E.s2qaglst
+*)
 #typedef t2qaglst = $D2E.t2qaglst
 #typedef t2iaglst = $D2E.t2iaglst
-*)
-//
 #typedef t2jaglst = $D2E.t2jaglst
 //
 (* ****** ****** *)
@@ -769,7 +768,8 @@ I0Dvardclst of
 //
 |
 I0Dfundclst of
-(token(*knd*), d2cstlst, i0fundclist)
+( token(*FUN(fnk)*)
+, t2qaglst, d2cstlst, i0fundclist)
 //
 (* ****** ****** *)
 //

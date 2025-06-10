@@ -469,7 +469,8 @@ i0vs =
 trxd3i0_d3valdclist(env0, d3vs)
 //
 in//let
-  i0dcl(loc0, I0Dvaldclst(tknd, i0vs))
+(
+i0dcl(loc0, I0Dvaldclst(tknd, i0vs)))
 end where
 {
 //
@@ -500,7 +501,8 @@ i0vs =
 trxd3i0_d3vardclist(env0, d3vs)
 //
 in//let
-  i0dcl(loc0, I0Dvardclst(tknd, i0vs))
+(
+i0dcl(loc0, I0Dvardclst(tknd, i0vs)))
 end where
 {
 //
@@ -534,8 +536,9 @@ trxd3i0_d3fundclist(env0, d3fs)
 //
 in//let
 (
-  i0dcl_make_node
-  (loc0, I0Dfundclst(tknd, d2cs, i0fs)))
+i0dcl_make_node
+( loc0
+, I0Dfundclst(tknd, tqas, d2cs, i0fs)))
 //
 end where
 {

@@ -412,7 +412,7 @@ loc0 = dcl0.lctn((*void*))
 //
 val-
 I0Dfundclst
-( tknd
+( tknd, tqas
 , d2cs, i0fs) = dcl0.node()
 //
 val recq =
@@ -439,7 +439,9 @@ if // if
 in//let
 //
 i1dcl_make_node
-(loc0, I1Dfundclst(tknd, d2cs, i1fs))
+(
+loc0,
+I1Dfundclst(tknd, tqas, d2cs, i1fs))
 //
 end where
 {
