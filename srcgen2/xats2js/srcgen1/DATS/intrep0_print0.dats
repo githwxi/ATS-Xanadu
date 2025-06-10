@@ -681,10 +681,11 @@ prints("I0Dvardclst(",tknd,";",i0vs,")"))
 (* ****** ****** *)
 //
 |I0Dfundclst
-( tknd
+( tknd, tqas
 , d2cs, i0fs) =>
-( print("I0Dfundclst(")
-; prints(tknd, ";", d2cs, ";", i0fs, ")"))
+( prints
+  ("I0Dfundclst(", tknd, ";")
+; prints(tqas, ";", d2cs, ";", i0fs, ")"))
 //
 (* ****** ****** *)
 //
@@ -693,14 +694,13 @@ prints("I0Dvardclst(",tknd,";",i0vs,")"))
 , stmp, dimp
 , farg, body) =>
 ( print("I0Dimplmnt0(")
-; prints(tknd,";",stmp,";")
+; prints(tknd, ";", stmp, ";")
 ; prints(dimp, ";", farg, ";", body, ")"))
 //
 (* ****** ****** *)
 //
 |I0Dnone0() =>
-(
-  prints( "I0Dnone0(",")" ))
+prints("I0Dnone0(", ")")
 //
 |I0Dnone1(d3cl) =>
 let

@@ -763,7 +763,8 @@ I1Dvardclst of
 //
 |
 I1Dfundclst of
-( token(*knd*), d2cstlst, i1fundclist)
+( token(*FUN(fnk)*)
+, t2qaglst, d2cstlst, i1fundclist)
 //
 (* ****** ****** *)
 //

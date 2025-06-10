@@ -516,7 +516,7 @@ val loc0 =
 //
 val-
 I1Dfundclst
-(tknd
+(tknd, tqas
 ,d2cs, i1fs) = dcl0.node()
 //
 val prfq =
@@ -536,22 +536,40 @@ in//let
 //
 if
 prfq
-then prints
+then
+prints
 ("// I1Dprfdclist(",loc0,")\n")
-else prints
+else
+(
+case+ tqas of
+|
+list_nil() =>
+prints
 ("// I1Dfundclist(",loc0,")\n")
+|
+list_cons _ =>
+prints
+("// I1Dtfndclist(",loc0,")\n"))
 //
 end//let
 //
 val (  ) =
 if
 prfq
-then
+then // HX: proofs
 (
  xats2js_i1fundclist(env0, i1fs))
 else
 (
+case+ tqas of
+|
+list_nil() => // HX: functions
+(
  js1emit_i1fundclist(env0, i1fs))
+|
+list_cons _ => // HX: templates
+(
+ xats2js_i1tfndclist(env0, i1fs)))
 //
 end(*let*)//end-of-[f0_fundclst(env0,dcl0)]
 //
@@ -617,12 +635,12 @@ lctnfpr(filr,loc0);strnfpr(filr,")\n");
 //
 if
 dimpl_tempq(dimp)
-then
+then // template
 (
 nindstrnfpr
 (filr,nind,"// I1Dimplmnt0(");
 dimplfpr(filr,dimp);strnfpr(filr,"):timp\n"))
-else
+else // non-template
 (
 //
 (

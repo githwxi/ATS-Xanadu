@@ -788,10 +788,11 @@ prints
 //
 |
 I1Dfundclst
-( tknd
+( tknd, tqas
 , d2cs, i1fs) =>
-( print("I1Dfundclst(")
-; prints(tknd, ";", d2cs, ";", i1fs,")"))
+( prints
+  ("I1Dfundclst(", tknd, ";")
+; prints(tqas, ";", d2cs, ";", i1fs,")"))
 //
 (* ****** ****** *)
 //

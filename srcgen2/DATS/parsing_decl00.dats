@@ -2246,9 +2246,9 @@ end : loc_t // end of [val(loc0)]
 in//let
 err := e00;
 d0valdcl_make_args(loc0, dpat, tdxp, wsxp)
-end (*let*) // end of [optn_cons(teq1)]
+end(*let*) // end-of-[optn_cons(teq1)]
 //
-end (*let*) // end of [p1_d0valdcl(buf,err)]
+end(*let*) // end-of-[ p1_d0valdcl(buf,err) ]
 //
 (* ****** ****** *)
 
@@ -2333,7 +2333,7 @@ end (*let*) // end of [val(loc0)]
 in
 err := e00;
 d0vardcl_make_args(loc0,dpid,vpid,sres,dini)
-end (*let*) // end of [ p1_d0vardcl(buf,err) ]
+end (*let*) // end-of-[ p1_d0vardcl(buf,err) ]
 //
 (* ****** ****** *)
 
@@ -2416,9 +2416,9 @@ in
 err := e00;
 d0fundcl_make_args
 (loc0, dpid, farg, sres, tdxp, wsxp)
-end (*let*) // end of [optn_cons(teq1)]
+end(*let*) // end-of-[optn_cons(teq1)]
 //
-endlet (*let*) // end-of-[p1_d0fundcl(buf, err)]
+end(*let*) // end-of-[ p1_d0fundcl(buf, err) ]
 
 (* ****** ****** *)
 //
@@ -2427,24 +2427,27 @@ p1_d0valdclseq_AND
   (buf, err) =
 (
 list_vt2t
-(ps_AND_p1fun{d0valdcl}(buf,err,p1_d0valdcl))
-) (* end-of-[p1_d0valdclseq_AND(buf, err) ] *)
+(
+ps_AND_p1fun{d0valdcl}(buf,err,p1_d0valdcl))
+) (* end-of-[ p1_d0valdclseq_AND(buf, err) ] *)
 //
 #implfun
 p1_d0vardclseq_AND
   (buf, err) =
 (
 list_vt2t
-(ps_AND_p1fun{d0vardcl}(buf,err,p1_d0vardcl))
-) (* end-of-[p1_d0vardclseq_AND(buf, err) ] *)
+(
+ps_AND_p1fun{d0vardcl}(buf,err,p1_d0vardcl))
+) (* end-of-[ p1_d0vardclseq_AND(buf, err) ] *)
 //
 #implfun
 p1_d0fundclseq_AND
   (buf, err) =
 (
 list_vt2t
-(ps_AND_p1fun{d0fundcl}(buf,err,p1_d0fundcl))
-) (* end-of-[p1_d0fundclseq_AND(buf, err) ] *)
+(
+ps_AND_p1fun{d0fundcl}(buf,err,p1_d0fundcl))
+) (* end-of-[ p1_d0fundclseq_AND(buf, err) ] *)
 //
 (* ****** ****** *)
 
@@ -2576,10 +2579,12 @@ let
 val
 f0as = p1_f0argseq(buf, err)
 in//let
-if t0_f0as(f0as) then f0_f0as(f0as) else f0as
-end (*let*) // end of [p_f0argsq1]
+(
+if
+t0_f0as(f0as) then f0_f0as(f0as) else f0as)
+end (*let*) // end of [ p_f0argsq1(buf,err) ]
 //
-endloc (*local*) // end of [local(p1_f0argsq1)]
+end (*local*) // end of [ local(p1_f0argsq1) ]
 
 (* ****** ****** *)
 (* ****** ****** *)

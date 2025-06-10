@@ -28,7 +28,8 @@ lam(x: sint): sint => x
 < x0:t0 >
 < y0:t0 >
 list_map =
-gseq_map_list<list(x0)><x0><y0>(*void*)
+gseq_map_list
+<list(x0)><x0><y0>(*void*)
 
 val ys = list_map<sint><sint>(xs)
 
