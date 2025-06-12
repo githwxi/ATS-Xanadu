@@ -1155,6 +1155,119 @@ else f3_s2extq(s2v0, s2qs, t2qs))
 (* ****** ****** *)
 //
 fun
+f0_tqagmat
+(tqas: t2qaglst
+,t2js: t2jaglst): optn(s2vts) =
+let
+val
+tsub = list_vt_nil(*0*)
+val
+opt0 =
+f1_tqas_t2js(tqas, t2js, tsub)
+in//let
+case+ opt0 of
+| ~
+optn_vt_nil() => optn_nil(*0*)
+| ~
+optn_vt_cons(tsub) =>
+optn_cons(list_vt2t(reverse0(tsub)))
+end where // end-of-[f0_tqagmat(...)]
+{
+//
+fun
+f1_tqas_t2js
+( tqas
+: t2qaglst
+, t2js
+: t2jaglst
+, tsub
+: s2vts_vt): optn_vt(s2vts_vt) =
+(
+case+ tqas of
+|list_nil() =>
+(
+  optn_vt_cons(tsub) )
+|list_cons(tqa1, tqas) =>
+let
+val s2vs = tqa1.s2vs()
+in//let
+(
+case+ s2vs of
+|list_nil() =>
+(
+  f1_tqas_t2js
+  (tqas, t2js, tsub) )
+|list_cons _ =>
+(
+  f1_s2vs_tqas_t2js
+  (s2vs, tqas, t2js, tsub)))
+end//let
+)(*case+*)//end(f1_tqas_t2js(...))
+//
+and
+f1_s2vs_tqas_t2js
+( s2vs
+: s2varlst
+, tqas
+: t2qaglst
+, t2js
+: t2jaglst
+, tsub
+: s2vts_vt): optn_vt(s2vts_vt) =
+(
+//
+case+ t2js of
+|list_nil() =>
+(
+  optn_vt_cons(tsub) )
+|list_cons(t2j1, t2js) =>
+let
+val tjps = t2j1.t2ps()
+in//let
+f1_s2vs_tqas_tjps_t2js
+(s2vs, tqas, tjps, t2js, tsub)
+end//let
+(*let*) // end-of-[list_cons(...)]
+//
+)(*case+*)//end(f1_s2vs_tqas_t2js(...))
+//
+and
+f1_s2vs_tqas_tjps_t2js
+( s2vs
+: s2varlst
+, tqas
+: t2qaglst
+, tjps
+: s2typlst
+, t2js
+: t2jaglst
+, tsub
+: s2vts_vt): optn_vt(s2vts_vt) =
+(
+//
+case+ tjps of
+|list_nil() =>
+(
+  f1_s2vs_tqas_t2js
+  (s2vs, tqas, t2js, tsub))
+|list_cons(tjp1, tjps) =>
+(
+f1_s2vs_tqas_tjps_t2js
+(s2vs, tqas, tjps, t2js, tsub)
+) where
+{
+val-
+list_cons(s2v1, s2vs) = s2vs
+val tsub =
+list_vt_cons((s2v1, tjp1), tsub) }
+//
+)(*case+*)//end(f1_s2vs_tqas_tjps_t2js)
+//
+}(*where*)//end-of-[f0_tqagmat(svts,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_targmat
 (svts: s2vts
 ,t2js: t2jaglst
@@ -1182,7 +1295,6 @@ s2vt1 =
 #vwtpdef
 s2vts_vt =
 list_vt@(s2var, s2typ)
-//
 //
 fun
 f2_svt1_tjp1
@@ -1232,9 +1344,10 @@ res0 =
 f2_tip1_tjp1(tip1, tjp1, tsub)
 //
 in//let
-  if res0
-  then optn_vt_cons(tsub)
-  else (free(tsub); optn_vt_nil())
+(
+if res0
+then optn_vt_cons(tsub)
+else (free(tsub); optn_vt_nil()))
 end//let
 end//let
 //end-of-[f2_svt1_tjp1(svt1,tjp1,tsub)]
@@ -1762,16 +1875,16 @@ endlet//end-of-[list_cons(t2j1,t2js)]
 (*
 val () =
 (
-  prerrsln("f0_targmat: svts = ", svts) )
+prerrsln("f0_targmat: svts = ", svts))
 val () =
 (
-  prerrsln("f0_targmat: t2js = ", t2js) )
+prerrsln("f0_targmat: t2js = ", t2js))
 val () =
 (
-  prerrsln("f0_targmat: s2qs = ", s2qs) )
+prerrsln("f0_targmat: s2qs = ", s2qs))
 val () =
 (
-  prerrsln("f0_targmat: t2qs = ", t2qs) )
+prerrsln("f0_targmat: t2qs = ", t2qs))
 *)
 //
 }(*where*)//end-of-[f0_targmat(svts,...)]
@@ -1800,6 +1913,13 @@ case+
 d3cl.node() of
 //
 |
+D3Cfundclst
+( tknd, tqas
+, d2cs, d3fs) =>
+(
+  f0_tqagmat(tqas, t2js))
+//
+|
 D3Cimplmnt0
 ( tok0
 , stmp
@@ -1815,7 +1935,7 @@ DIMPLone2
 (_(*dcst*), svts) =>
 (
   f0_targmat
-  (svts, t2js, sqas, tqas) )
+  (svts, t2js, sqas, tqas))
 //
 |
 _(*otherwise*) => optn_nil((*void*))
