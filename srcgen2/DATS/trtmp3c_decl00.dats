@@ -391,12 +391,20 @@ D3Cfundclst
 //
 (*
 val () =
-prerrsln
-("f0_fundclst(3c): loc0 = ", loc0)
+prerrsln("\
+f0_fundclst(3c): loc0 = ", loc0)
 val () =
-prerrsln
-("f0_fundclst(3c): d3cl = ", d3cl)
+prerrsln("\
+f0_fundclst(3c): d3cl = ", d3cl)
 *)
+//
+val (  ) =
+(
+case+ tqas of
+|list_nil() => ( (*void*) )
+|list_cons _ =>
+(
+tr3cenv_insert_decl(env0, d3cl)))
 //
 val
 d3fs =
@@ -478,12 +486,14 @@ end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
 (* ****** ****** *)
 //
 #implfun
-trtmp3c_impltmpx
+trtmp3c_tmpd3ecl
   (env0, d3cl) =
 (
 case+
 d3cl.node() of
 //
+|
+D3Cfundclst _ => f0_fundclst(env0, d3cl)
 |
 D3Cimplmnt0 _ => f0_implmnt0(env0, d3cl)
 //
@@ -499,6 +509,47 @@ end (*let*) // end of [_(*otherwise*)] // temp
 (* ****** ****** *)
 //
 fun
+f0_fundclst
+( env0:
+! tr3cenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cfundclst
+( tknd
+, tqas
+, d3cs, d3fs) = d3cl.node()
+//
+(*
+val () =
+prerrsln("\
+trtmp3c_tmpd3ecl: \
+f0_fundclst: loc0 = ", loc0)
+val () =
+prerrsln("\
+trtmp3c_tmpd3ecl: \
+f0_fundclst: d3cl = ", d3cl)
+*)
+//
+val
+d3fs =
+(
+  trtmp3c_d3fundclist(env0, d3fs))
+//
+in//let
+//
+d3ecl_make_node
+( loc0
+, D3Cfundclst(tknd, tqas, d3cs, d3fs) )
+//
+end(*let*)//end-of-[f0_fundclst(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
 f0_implmnt0
 ( env0:
 ! tr3cenv
@@ -507,6 +558,18 @@ let
 //
 val
 loc0 = d3cl.lctn()
+//
+(*
+val () =
+prerrsln("\
+trtmp3c_tmpd3ecl: \
+f0_implmnt0: loc0 = ", loc0)
+val () =
+prerrsln("\
+trtmp3c_tmpd3ecl: \
+f0_implmnt0: d3cl = ", d3cl)
+*)
+//
 val-
 D3Cimplmnt0
 ( tknd
@@ -537,12 +600,12 @@ end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
 (*
 val () =
 (
-  prerrsln("trtmp3c_impltmpx: d3cl = ", d3cl))
+  prerrsln("trtmp3c_tmpd3ecl: d3cl = ", d3cl))
 *)
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[trtmp3c_impltmpx(env0,d3cl)]
+}(*where*)//end-of-[trtmp3c_tmpd3ecl(env0,d3cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

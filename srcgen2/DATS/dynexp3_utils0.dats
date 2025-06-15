@@ -1257,6 +1257,7 @@ f1_s2vs_tqas_tjps_t2js
 ) where
 {
 val-
+// HX: consq(s2vs)!
 list_cons(s2v1, s2vs) = s2vs
 val tsub =
 list_vt_cons((s2v1, tjp1), tsub) }

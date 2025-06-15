@@ -148,7 +148,7 @@ val () =
 tr3cenv_insert_timp
 (env0 , stmp , dcl3)//val()
 in//let
-trtmp3c_impltmpx(env0, dcl2)
+trtmp3c_tmpd3ecl(env0, dcl2)
 end//let//end-of-[val(dcl2)]
 //
 val () = tr3cenv_popsvts(env0)
