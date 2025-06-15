@@ -2140,17 +2140,23 @@ val
 tfun = s2typ_hnfiz0(tfun)
 //
 (*
-val (  ) = prerrsln("\
-trans2a_d2exp:f0_dapp_elses: loc0 = ", loc0)
-val (  ) = prerrsln("\
-trans2a_d2exp:f0_dapp_elses: d2f0 = ", d2f0)
+val (  ) =
+prerrsln("\
+trans2a_d2exp:\
+f0_dapp_elses: loc0 = ", loc0)
+val (  ) =
+prerrsln("\
+trans2a_d2exp:\
+f0_dapp_elses: d2f0 = ", d2f0)
 *)
 val tfun =
 (
   deuni2a_s2typ(env0, tfun))
 (*
-val (  ) = prerrsln("\
-trans2a_d2exp:f0_dapp_elses: tfun = ", tfun)
+val (  ) =
+prerrsln("\
+trans2a_d2exp:\
+f0_dapp_elses: tfun = ", tfun)
 *)
 //
 in(*let1*)
@@ -2175,7 +2181,8 @@ trans2a_d2explst_tpcks
 ( env0 , d2es , t2ps )
 in(*let2*)
 d2exp_make_tpnd
-(loc0, tres, D2Edapp(d2f0, npf1, d2es))
+( loc0, tres
+, D2Edapp(d2f0, npf1, d2es))
 end(*let2*)
 // *) //
 //

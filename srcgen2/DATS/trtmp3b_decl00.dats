@@ -417,21 +417,26 @@ D3Cfundclst
 //
 (*
 val () =
-prerrsln
-("f0_fundclst(3b): loc0 = ", loc0)
+prerrsln("\
+f0_fundclst(3b): loc0 = ", loc0)
 val () =
-prerrsln
-("f0_fundclst(3b): d3cl = ", d3cl)
+prerrsln("\
+f0_fundclst(3b): d3cl = ", d3cl)
 *)
 //
-val
-d3fs =
+val (  ) =
 (
 case+ tqas of
-|
-list_cons _ => d3fs
-|
-list_nil((*fun*)) => 
+|list_nil() => ( (*void*) )
+|list_cons _ =>
+(
+tr3benv_insert_decl(env0, d3cl)))
+//
+val d3fs =
+(
+case+ tqas of
+|list_cons _ => d3fs
+|list_nil((*fun*)) => 
 (
   trtmp3b_d3fundclist(env0, d3fs)))
 //

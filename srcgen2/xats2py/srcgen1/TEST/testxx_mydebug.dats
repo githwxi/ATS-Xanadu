@@ -1,27 +1,18 @@
 (* ****** ****** *)
-(*
-HX-2024-11-30:
-For testing xats2js!
-*)
+(* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-#staload _ =
-"prelude/DATS/gdbg000.dats"
-(* ****** ****** *)
-(* ****** ****** *)
+//
 #include
 "srcgen2\
 /prelude/HATS/prelude_dats.hats"
-(* ****** ****** *)
+//
 #include
 "srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
-(* ****** ****** *)
-(*
-#include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
-*)
+/prelude/HATS/prelude_PY_dats.hats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -49,8 +40,6 @@ val () = printsln("x0 = ", x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-val () = the_print_store_log( (*void*) )
 //
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_testxx_mydebug.dats] *)

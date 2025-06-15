@@ -375,7 +375,7 @@ handling a template instance
 *)
 //
 fun
-trtmp3c_impltmpx
+trtmp3c_tmpd3ecl
 ( env0:
 ! tr3cenv,d3cl:d3ecl):d3ecl//fun
 //

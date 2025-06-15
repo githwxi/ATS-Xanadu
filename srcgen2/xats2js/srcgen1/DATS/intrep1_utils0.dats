@@ -150,14 +150,21 @@ f1_idcl
 (
 case+
 idcl.node() of
+//
 |
 I1Dtmpsub
 (svts, dcl1) => f1_idcl(dcl1)
+//
+|
+I1Dfundclst
+(tknd, tqas
+,d2cs, i1fs) => optn_nil((*0*))
+//
 |
 I1Dimplmnt0
-( tknd
-, stmp, dimp
-, fjas, icmp) =>
+(tknd
+,stmp, dimp
+,fjas, icmp) =>
 (
 case+ fjas of
 |list_nil() => optn_cons(icmp)
@@ -213,6 +220,9 @@ idcl.node() of
 //
 |I1Dtmpsub
 (svts,dcl1) => f1_idcl(dcl1)
+//
+|I1Dfundclst
+(_, _, _, _) => optn_cons(idcl)
 //
 |I1Dimplmnt0
 ( _,_,_,_,_ ) => optn_cons(idcl)

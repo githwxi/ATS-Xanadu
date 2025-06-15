@@ -197,8 +197,8 @@ f1_substr
 // (*
 val () =
 (
-prerrsln
-("xatsopt_flag$split: arg0 = ", arg0))
+ prerrsln
+ ("xatsopt_flag$split: arg0 = ", arg0))
 // *)
 //
 }(*where*)//end-of-[xatsopt_flag$split]

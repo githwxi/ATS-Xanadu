@@ -876,6 +876,14 @@ prints(svts, ";");
 praux(idcl); print(")"))//tmpsub
 //
 |
+I1Dfundclst
+(tknd, tqas
+,d2cs, i1fs) =>
+(
+prints(
+"I1Dfundclst(", d2cs, ")"))//funs
+//
+|
 I1Dimplmnt0
 (tknd, stmp
 ,dimp, fjas,icmp) =>
@@ -1453,7 +1461,98 @@ strnfpr(filr, ": ## timp: ")
 (
 case+
 idcl.node() of
-I1Dimplmnt0
+//
+|I1Dfundclst
+( tknd, tqas
+, d2cs, i1fs) =>
+let
+//
+fun
+dcst2varfpr
+(filr: FILR
+,dcst: d2cst
+,d2cs: d2cstlst
+,i1fs: i1fundclist): void =
+(
+case+ d2cs of
+|
+list_nil() => ((*0*))
+|
+list_cons(d2c1, d2cs) =>
+let
+//
+val-
+list_cons(i1f1, i1fs) = i1fs 
+//
+in//let
+//
+if
+(dcst = d2c1)
+then
+d2varpy1(filr, d2v1) where
+{
+val
+d2v1 = i1fundcl_get_dpid(i1f1) }
+else
+dcst2varfpr(filr, dcst, d2cs, i1fs)
+//
+end//let
+)(*case+*)//end-of-[dcst2varfpr(...)]
+//
+fun
+dcst2argfpr
+(filr: FILR
+,dcst: d2cst
+,d2cs: d2cstlst
+,i1fs: i1fundclist): void =
+(
+case+ d2cs of
+|
+list_nil() => ((*0*))
+|
+list_cons(d2c1, d2cs) =>
+let
+//
+val-
+list_cons(i1f1, i1fs) = i1fs 
+//
+in//let
+//
+if
+(dcst = d2c1)
+then
+fjas1py1(filr, fjas) where
+{
+val
+fjas = i1fundcl_get_farg(i1f1) }
+else
+dcst2argfpr(filr, dcst, d2cs, i1fs)
+//
+end//let
+)(*case+*)//end-of-[dcst2argfpr(...)]
+//
+in//let
+//
+dcst2argfpr
+(filr, dcst, d2cs, i1fs);
+strnfpr(filr, ": ## timp: ");
+d2cst_fprint(dcst, filr);fprintln(filr);
+//
+envx2js_incnind(env0,2(*++*));
+py1emit_i1fundclist(env0, i1fs);
+envx2js_decnind(env0,2(*--*));
+//
+nindstrnfpr
+(filr, nind+2, "return ");
+dcst2varfpr(filr, dcst, d2cs, i1fs);
+dcst2argfpr(filr, dcst, d2cs, i1fs);fprintln(filr);
+//
+nindstrnfpr
+(filr, nind+0, "## endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")")
+//
+end//let
+//
+|I1Dimplmnt0
 ( tknd
 , stmp, dimp
 , fjas, icmp) =>
@@ -1461,13 +1560,14 @@ I1Dimplmnt0
 fjas1py1(filr, fjas);
 strnfpr(filr, ": ## timp: ");
 d2cst_fprint(dcst, filr);fprintln(filr);
-(
+//
 envx2js_incnind(env0,2(*++*));
-py1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
-(
+py1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp);
 envx2js_decnind(env0,2(*--*));
-nindstrnfpr(filr, nind, "## endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")")))
-)
+//
+nindstrnfpr(filr, nind, "## endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")"))
+//
+)//end-of-[optn_cons(idcl)]
 //
 end//let//end-of-[f0_t1imp(...)]
 //

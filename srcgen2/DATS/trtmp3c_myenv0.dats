@@ -1189,7 +1189,8 @@ tmqstk_impltmprecq(stk1,d3cl,t2js))
 val () =
 prerr("tmqstk_impltmprecq:")
 val () =
-prerrsln("tmqstk_timp: dcl1 = ", dcl1)
+prerrsln
+("tmqstk_timp: dcl1 = ", dcl1)
 *)
 //
 }(*where*)//end-of-[tmqstk_timp(...)]

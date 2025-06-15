@@ -501,7 +501,7 @@ val loc0 =
 //
 val-
 I1Dfundclst
-(tknd
+(tknd, tqas
 ,d2cs, i1fs) = dcl0.node()
 //
 val prfq =
