@@ -4,14 +4,18 @@
 /* ****** ****** */
 /* ****** ****** */
 /*
-Basics for Xats2js/Node
+Basics for XATS2JS/NODE
 */
 /* ****** ****** */
 /* ****** ****** */
 //
 const
 XATS2JS_NODE_fs =
-require( 'fs' ) ;
+require(  'fs'  );
+/*
+HX: Please do not:
+require('node:fs');
+*/
 //
 /* ****** ****** */
 /* ****** ****** */
@@ -66,6 +70,21 @@ XATS2JS_NODE_strn_fprint
 /* ****** ****** */
 //
 function
+XATS2JS_NODE_sint_fprint
+  (obj, out)
+{
+  XATS2JS_NODE_g_fprint(obj, out);
+  return ; // XATS2JS_NODE_sint_fprint
+}
+function
+XATS2JS_NODE_uint_fprint
+  (obj, out)
+{
+  XATS2JS_NODE_g_fprint(obj, out);
+  return ; // XATS2JS_NODE_uint_fprint
+}
+//
+function
 XATS2JS_NODE_gint_fprint$sint
   (obj, out)
 {
@@ -101,12 +120,6 @@ XATS2JS_NODE_gflt_fprint$dflt
 /* ****** ****** */
 //
 function
-XATSOPT_fpath_rexists
-  (fpx)
-{
-  return XATS2JS_NODE_fs_rexists(fpx);
-}
-function
 XATS2JS_NODE_fs_rexists
   (fpx)
 {
@@ -132,7 +145,7 @@ XATS2JS_NODE_fs_readFileSync
 /* ****** ****** */
 /* ****** ****** */
 //
-/* ****** ****** *//* ****** ****** *//* ****** ****** */
-/* ****** ****** *//* ****** ****** *//* ****** ****** */
-
-/* end of [ATS3/XANADU_srcgen1_xatslib_githwxi_DATS_CATS_JS_NODE_basics0.cats] */
+/***********************************************************************/
+// end of
+// [ATS3/XANADU_srcgen1_xatslib_githwxi_DATS_CATS_JS_NODE_basics0.cats]
+/***********************************************************************/

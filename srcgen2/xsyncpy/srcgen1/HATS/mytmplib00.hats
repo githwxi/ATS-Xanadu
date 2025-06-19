@@ -13,6 +13,13 @@
 "prelude/HATS/prelude_JS_dats.hats"
 #include
 "prelude/HATS/prelude_NODE_dats.hats"
+//
+(* ****** ****** *)
+//
+#include
+"xatslib\
+/libcats/DATS/CATS/JS/NODE/gbas000.dats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #staload _ = "./../DATS/xsyncpy_tmplib.dats"

@@ -67,6 +67,21 @@ XATS2JS_NODE_strn_fprint
 /* ****** ****** */
 //
 function
+XATS2JS_NODE_sint_fprint
+  (obj, out)
+{
+  XATS2JS_NODE_g_fprint(obj, out);
+  return ; // XATS2JS_NODE_sint_fprint
+}
+function
+XATS2JS_NODE_uint_fprint
+  (obj, out)
+{
+  XATS2JS_NODE_g_fprint(obj, out);
+  return ; // XATS2JS_NODE_uint_fprint
+}
+//
+function
 XATS2JS_NODE_gint_fprint$sint
   (obj, out)
 {

@@ -86,9 +86,15 @@ d0pat_fprint(d0p0, castxy(g_print$out<>()))
 g_print<d0exp>(d0e0) =
 d0exp_fprint(d0e0, castxy(g_print$out<>()))
 //
+(* ****** ****** *)
+//
 #impltmp
-g_print<d3exp>(d3e0) =
-d3exp_fprint(d3e0, castxy(g_print$out<>()))
+g_print<g1exp>(gexp) =
+g1exp_fprint(gexp, castxy(g_print$out<>()))
+//
+#impltmp
+g_print<s1exp>(sexp) =
+s1exp_fprint(sexp, castxy(g_print$out<>()))
 //
 (* ****** ****** *)
 //
