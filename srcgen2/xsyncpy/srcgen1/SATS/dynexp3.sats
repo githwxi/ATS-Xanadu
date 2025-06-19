@@ -46,6 +46,9 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 #staload
+"./../SATS/dynexp1.sats"
+(* ****** ****** *)
+#staload
 "./../SATS/statyp2.sats"
 (* ****** ****** *)
 #staload
@@ -276,6 +279,15 @@ d3ecl1_node =
 |D3C1local0 of
 ( d3ecl1lst(*local-head*)
 , d3ecl1lst(*local-body*))
+//
+(* ****** ****** *)
+//
+|D3C1include of
+( sint(*s/d*)
+, token
+, g1exp // src
+, fpathopt
+, d3ecl1lstopt) // inclusion
 //
 (* ****** ****** *)
 //
