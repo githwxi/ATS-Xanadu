@@ -53,6 +53,7 @@ D2E = "./\
 //
 (* ****** ****** *)
 //
+#typedef d2var = $D2E.d2var
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
 #typedef d2ecl = $D2E.d2ecl
@@ -80,6 +81,19 @@ node with $D2E.d2ecl_get_node
 //
 (*
 fun
+d2var_fprint
+(dvar: d2var, out0: FILR): void
+//
+#symload
+fprint with d2var_fprint of 1000
+//
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
 d2pat_fprint
 (dpat: d2pat, out0: FILR): void
 fun
@@ -95,6 +109,7 @@ fprint with d2pat_fprint of 1000
 fprint with d2exp_fprint of 1000
 #symload
 fprint with d2ecl_fprint of 1000
+//
 *)
 //
 (* ****** ****** *)
