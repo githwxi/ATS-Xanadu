@@ -45,15 +45,24 @@ Authoremail: gmhwxiATgmailDOTcom
 /HATS/libcats_dats.hats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#staload
+"./../SATS/staexp1.sats"
 #staload
 "./../SATS/dynexp1.sats"
 (* ****** ****** *)
 #staload
 "./../SATS/statyp2.sats"
+#staload
+"./../SATS/dynexp2.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload
 SYM = "./\
 ../../../SATS/xsymbol.sats"
+#staload
+FIL = "./\
+../../../SATS/filpath.sats"
 #staload
 LOC = "./\
 ../../../SATS/locinfo.sats"
@@ -64,8 +73,11 @@ LEX = "./\
 D3E = "./\
 ../../../SATS/dynexp3.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #typedef sym_t = $SYM.sym_t
 #typedef symbl = $SYM.symbl
+(* ****** ****** *)
+#typedef fpath = $FIL.fpath
 (* ****** ****** *)
 #typedef lcsrc = $LOC.lcsrc
 #typedef loctn = $LOC.loctn
@@ -95,6 +107,12 @@ D3E = "./\
 //
 #abstbox d3parsed1_tbox//p0tr
 //
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef fpathopt = optn(fpath)
+#typedef d3patlst = list(d3pat)
+#typedef d3explst = list(d3exp)
+#typedef d3eclist = list(d3ecl)
 (* ****** ****** *)
 #typedef d3pat1lst = list(d3pat1)
 #typedef d3exp1lst = list(d3exp1)
