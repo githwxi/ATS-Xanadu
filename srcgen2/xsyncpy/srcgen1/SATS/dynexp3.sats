@@ -49,6 +49,9 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/statyp2.sats"
 (* ****** ****** *)
 #staload
+SYM = "./\
+../../../SATS/xsymbol.sats"
+#staload
 LOC = "./\
 ../../../SATS/locinfo.sats"
 #staload
@@ -57,6 +60,9 @@ LEX = "./\
 #staload
 D3E = "./\
 ../../../SATS/dynexp3.sats"
+(* ****** ****** *)
+#typedef sym_t = $SYM.sym_t
+#typedef symbl = $SYM.symbl
 (* ****** ****** *)
 #typedef lcsrc = $LOC.lcsrc
 #typedef loctn = $LOC.loctn
@@ -134,6 +140,12 @@ d3pat1_node =
 //
 |D3P1any of ()
 |D3P1var of d2var
+//
+|D3P1int of token
+|D3P1btf of sym_t
+|D3P1chr of token
+|D3P1flt of token
+|D3P1str of token
 //
 |D3P1dapp of
 (d3pat

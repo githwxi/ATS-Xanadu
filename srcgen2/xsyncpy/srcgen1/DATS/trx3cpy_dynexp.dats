@@ -72,6 +72,18 @@ d3pat_trx3cpy
 (
 case+
 d3p0.node() of
+//
+|D3Pint(tint) =>
+d3pat1(loc0, D3P1int(tint))
+|D3Pbtf(sbtf) =>
+d3pat1(loc0, D3P1btf(sbtf))
+|D3Pchr(tchr) =>
+d3pat1(loc0, D3P1chr(tchr))
+|D3Pflt(tflt) =>
+d3pat1(loc0, D3P1flt(tflt))
+|D3Pstr(tstr) =>
+d3pat1(loc0, D3P1str(tstr))
+//
 |
 _(*otherwise*) =>
 (
@@ -99,6 +111,18 @@ d3exp_trx3cpy
 (
 case+
 d3e0.node() of
+//
+|D3Eint(tint) =>
+d3exp1(loc0, D3E1int(tint))
+|D3Ebtf(sbtf) =>
+d3exp1(loc0, D3E1btf(sbtf))
+|D3Echr(tchr) =>
+d3exp1(loc0, D3E1chr(tchr))
+|D3Eflt(tflt) =>
+d3exp1(loc0, D3E1flt(tflt))
+|D3Estr(tstr) =>
+d3exp1(loc0, D3E1str(tstr))
+//
 |
 _(*otherwise*) =>
 (

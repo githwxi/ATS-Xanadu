@@ -80,9 +80,31 @@ d3p0.node() of
 (
 prints("D3P1any(", ")"))
 //
-|D3P1var(d2v1) =>
+|D3P1var
+(   d2v1   ) =>
 (
 prints("D3P1var(", d2v1, ")"))
+//
+|D3P1int
+(   tint   ) =>
+(
+prints("D3P1int(", tint, ")"))
+|D3P1btf
+(   sbtf   ) =>
+(
+prints("D3P1btf(", sbtf, ")"))
+|D3P1chr
+(   tchr   ) =>
+(
+prints("D3P1chr(", tchr, ")"))
+|D3P1flt
+(   tflt   ) =>
+(
+prints("D3P1flt(", tflt, ")"))
+|D3P1str
+(   tstr   ) =>
+(
+prints("D3P1str(", tstr, ")"))
 //
 |D3P1dapp
 (d3f0
@@ -153,6 +175,22 @@ d3e0.node() of
 (   tint   ) =>
 (
 prints("D3E1int(", tint, ")"))
+|D3E1btf
+(   sbtf   ) =>
+(
+prints("D3E1btf(", sbtf, ")"))
+|D3E1chr
+(   tchr   ) =>
+(
+prints("D3E1chr(", tchr, ")"))
+|D3E1flt
+(   tflt   ) =>
+(
+prints("D3E1flt(", tflt, ")"))
+|D3E1str
+(   tstr   ) =>
+(
+prints("D3E1str(", tstr, ")"))
 //
 |D3E1d3exp
 (   dexp   ) =>
