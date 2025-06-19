@@ -516,6 +516,7 @@ fun
 d2var_get_name:(d2var) -> sym_t
 fun
 d2var_get_stmp:(d2var) -> stamp
+//
 (* ****** ****** *)
 //
 (*

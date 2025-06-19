@@ -62,6 +62,16 @@ D2E = "./\
 (* ****** ****** *)
 //
 #symload
+lctn with $D2E.d2var_get_lctn
+#symload
+name with $D2E.d2var_get_name
+#symload
+stmp with $D2E.d2var_get_stmp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#symload
 lctn with $D2E.d2pat_get_lctn
 #symload
 node with $D2E.d2pat_get_node
