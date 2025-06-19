@@ -263,6 +263,18 @@ prints
 //
 (* ****** ****** *)
 //
+|D3C1include
+( sd01
+, tknd, gexp
+, fopt, dopt) =>
+(
+prints
+("D3C1include("
+, sd01, ";", tknd, ";"
+, gexp(*src*), ";", fopt, ";", dopt, ")"))
+//
+(* ****** ****** *)
+//
 |D3C1errck
 (lvl0, dcl1) =>
 (
