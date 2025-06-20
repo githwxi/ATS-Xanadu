@@ -95,9 +95,25 @@ fun
 d3explst_trx3cpy
 (d3es: d3explst, env0: !env3cpy): d3exp1lst
 //
+(* ****** ****** *)
+//
+fun
+f3arglst_trx3cpy
+(f3as: f3arglst, env0: !env3cpy): f3arg1lst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 d3eclist_trx3cpy
 (dcls: d3eclist, env0: !env3cpy): d3ecl1lst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+teqd3exp_trx3cpy
+(tdxp: teqd3exp, env0: !env3cpy): teqd3exp1
 //
 (* ****** ****** *)
 (* ****** ****** *)
