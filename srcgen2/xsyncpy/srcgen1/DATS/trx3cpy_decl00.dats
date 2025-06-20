@@ -88,6 +88,18 @@ f0_include(d3cl, env0)
 //
 (* ****** ****** *)
 //
+(*
+|D3Cvaldclst _ =>
+f0_valdclst(d3cl, env0)
+|D3Cvardclst _ =>
+f0_vardclst(d3cl, env0)
+*)
+//
+|D3Cfundclst _ =>
+f0_fundclst(d3cl, env0)
+//
+(* ****** ****** *)
+//
 |D3Cerrck
 (lvl0, dcl1) =>
 let
@@ -97,18 +109,19 @@ val dcl1 =
   d3ecl_trx3cpy(dcl1, env0))
 in//
 //
-d3ecl1
-(loc0, D3C1errck(lvl0, dcl1))
+d3ecl1(loc0, D3C1errck(lvl0, dcl1))
 //
-end//let//end-of-[D3Cerrck(...)]
+end//let//end-of-[D3Cerrck(lvl0,dcl1)]
 //
 (* ****** ****** *)
 //
 |
 _(*otherwise*) =>
-(
-  d3ecl1(loc0, D3C1d3ecl(d3cl)))
-) where // end-of-[d3ecl_trx3cpy]
+let
+  val node =
+  D3C1d3ecl(d3cl) in d3ecl1(loc0, node)
+end//let
+) where//end-of-[d3ecl_trx3cpy(d3cl,env0)]
 {
 //
 val loc0 = d3cl.lctn()
@@ -211,6 +224,29 @@ d3ecl1
   (sd01, tknd, gexp, fopt, dopt))
 //
 end//let
+//
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+(d3cl: d3ecl
+,env0: !env3cpy): d3ecl1 =
+let
+//
+val-
+D3Cfundclst
+( tknd, tqas
+, d2cs, d3fs) = d3cl.node()
+//
+val d3fs =
+d3fundclist_trx3cpy(d3fs, env0)
+//
+in//let
+d3ecl1(loc0,
+D3C1fundclst(tknd, tqas, d2cs, d3fs))
+end//let
+//
+(* ****** ****** *)
 //
 (*
 val (  ) =

@@ -103,6 +103,33 @@ d3eclist_trx3cpy
 (* ****** ****** *)
 //
 fun
+d3valdcl_trx3cpy
+(dval: d3valdcl, env0: !env3cpy): d3valdcl1
+fun
+d3vardcl_trx3cpy
+(dvar: d3vardcl, env0: !env3cpy): d3vardcl1
+//
+fun
+d3fundcl_trx3cpy
+(dfun: d3fundcl, env0: !env3cpy): d3fundcl1
+//
+(* ****** ****** *)
+//
+fun
+d3valdclist_trx3cpy
+(d3vs: d3valdclist, env0: !env3cpy): d3valdcl1lst
+fun
+d3vardclist_trx3cpy
+(d3vs: d3vardclist, env0: !env3cpy): d3vardcl1lst
+//
+fun
+d3fundclist_trx3cpy
+(d3fs: d3fundclist, env0: !env3cpy): d3fundcl1lst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3eclistopt_trx3cpy
 (dcls: d3eclistopt, env0: !env3cpy): d3ecl1lstopt
 //
