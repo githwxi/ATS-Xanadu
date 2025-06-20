@@ -260,6 +260,54 @@ printsln("d3ecl_trx3cpy: d3cl = ", d3cl)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#implfun
+d3fundcl_trx3cpy
+  (dfun, env0) = let
+//
+val loc0 =
+d3fundcl_get_lctn(dfun)
+//
+val dvar =
+d3fundcl_get_dpid(dfun)
+val f3as =
+d3fundcl_get_farg(dfun)
+val sres =
+d3fundcl_get_sres(dfun)
+val tdxp =
+d3fundcl_get_tdxp(dfun)
+val wsxp =
+d3fundcl_get_wsxp(dfun)
+//
+(*
+val (  ) = prerrsln
+("d3fundcl_trx3cpy: f2as = ", f2as)
+val (  ) = prerrsln
+("d3fundcl_trx3cpy: tdxp = ", tdxp)
+*)
+//
+val f3as =
+f3arglst_trx3cpy(f3as, env0)
+val tdxp =
+teqd3exp_trx3cpy(tdxp, env0)
+//
+(*
+val (  ) = prerrsln
+("d3fundcl_trx3cpy: f3as = ", f3as)
+val (  ) = prerrsln
+("d3fundcl_trx3cpy: tdxp = ", tdxp)
+*)
+//
+in//let
+(
+  d3fundcl1_make_args
+  (loc0, dvar, f3as, sres, tdxp, wsxp))
+end//let
+(*let*)//end-of-[d3fundcl_trx3cpy(dfun,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trx3cpy_decl00.dats] *)
 (***********************************************************************)

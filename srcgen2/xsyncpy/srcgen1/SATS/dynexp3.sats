@@ -84,9 +84,12 @@ D3E = "./\
 #typedef fpath = $FIL.fpath
 (* ****** ****** *)
 #typedef lcsrc = $LOC.lcsrc
+#typedef loc_t = $LOC.loc_t
 #typedef loctn = $LOC.loctn
 (* ****** ****** *)
 #typedef token = $LEX.token
+(* ****** ****** *)
+#typedef s2res = $D2E.s2res
 (* ****** ****** *)
 #typedef d2cst = $D2E.d2cst
 #typedef s2qag = $D2E.s2qag
@@ -129,6 +132,9 @@ D3E = "./\
 #typedef d3patlst = list(d3pat)
 #typedef d3explst = list(d3exp)
 #typedef d3eclist = list(d3ecl)
+(* ****** ****** *)
+#typedef wths2exp = $D2E.wths2exp
+(* ****** ****** *)
 (* ****** ****** *)
 #typedef d3pat1lst = list(d3pat1)
 #typedef d3exp1lst = list(d3exp1)
@@ -375,17 +381,29 @@ d3ecl1_make_lctn$node
 //
 (* ****** ****** *)
 (* ****** ****** *)
+fun
+d3valdcl_lctn$get:(d3valdcl1)->loc_t
+fun
+d3vardcl_lctn$get:(d3vardcl1)->loc_t
+fun
+d3fundcl_lctn$get:(d3fundcl1)->loc_t
+(* ****** ****** *)
+#symload lctn with d3valdcl1_lctn$get
+#symload lctn with d3vardcl1_lctn$get
+#symload lctn with d3fundcl1_lctn$get
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
-d3fundcl1_get_dpid:(d3fundcl1)->d2var
+d3fundcl1_dpid$get:(d3fundcl1)->d2var
 fun
-d3fundcl1_get_sres:(d3fundcl1)->s2res
+d3fundcl1_sres$get:(d3fundcl1)->s2res
 fun
-d3fundcl1_get_wsxp:(d3fundcl1)->wths2exp
+d3fundcl1_wsxp$get:(d3fundcl1)->wths2exp
 fun
-d3fundcl1_get_farg:(d3fundcl1)->f3arg1lst
+d3fundcl1_farg$get:(d3fundcl1)->f3arg1lst
 fun
-d3fundcl1_get_tdxp:(d3fundcl1)->teqd3exp1
+d3fundcl1_tdxp$get:(d3fundcl1)->teqd3exp1
 //
 #symload dpid with d3fundcl1_dpid$get
 #symload sres with d3fundcl1_sres$get(*opt*)
