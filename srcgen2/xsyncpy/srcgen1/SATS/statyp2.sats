@@ -57,9 +57,6 @@ T2P = "./\
 (* ****** ****** *)
 #typedef s2typ = $T2P.s2typ
 (* ****** ****** *)
-#abstbox s2typ1_tbox == p0tr
-#typedef s2typ1 = s2typ1_tbox
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -67,18 +64,6 @@ s2typ_fprint
 (styp: s2typ, out0: FILR): void
 #symload
 fprint with s2typ_fprint of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-s2typ1_none0((*0*)): s2typ1
-//
-fun
-s2typ1_fprint
-(styp: s2typ1, out0: FILR): void
-#symload
-fprint with s2typ1_fprint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

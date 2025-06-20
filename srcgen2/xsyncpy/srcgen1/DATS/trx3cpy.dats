@@ -45,14 +45,16 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/trx3cpy.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #staload
 "./../../../SATS/dynexp3.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#include "./../HATS/mytmplib00.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

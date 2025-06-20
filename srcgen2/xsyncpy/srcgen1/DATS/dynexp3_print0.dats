@@ -215,6 +215,20 @@ prints("D3E1errck(", lvl0, ";", d3e1, ")"))
 //
 #impltmp
 g_print
+<teqd3exp1>(tdxp) =
+(
+case+ tdxp of
+|TEQD3EXP1none() =>
+prints("TEQD3EXP1none(", ")")
+|TEQD3EXP1some(tok0, d3e1) =>
+prints("TEQD3EXP1some(",tok0,";",d3e1,")")
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <d3ecl1>(d3cl) =
 (
 d3ecl1_print(d3cl)

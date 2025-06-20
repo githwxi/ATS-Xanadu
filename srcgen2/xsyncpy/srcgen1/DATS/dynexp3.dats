@@ -45,14 +45,19 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/dynexp3.sats"
 //
 (* ****** ****** *)
-#staload
-"./../../../SATS/locinfo.sats"
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #include
 "./../HATS/mytmplib00.hats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
+"./../../../SATS/locinfo.sats"
+#staload
+"./../../../SATS/statyp2.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -62,12 +67,12 @@ datatype
 d3pat1 =
 D3PAT1 of
 (loctn
-,s2typ1, d3pat1_node)
+,s2typ, d3pat1_node)
 datavwtp
 d3pat1_vt =
 D3PAT1_vt of
 (loctn
-,s2typ1, d3pat1_node)
+,s2typ, d3pat1_node)
 //
 #absimpl d3pat1_tbox = d3pat1
 //
@@ -115,8 +120,7 @@ d3pat1_make_lctn$node
 ( loc0, node ) =
 let
 val
-t2p0 =
-s2typ1_none0((*0*))
+t2p0 = s2typ_none0((*0*))
 in//let
   D3PAT1(loc0, t2p0, node) end
 //
@@ -139,12 +143,12 @@ datatype
 d3exp1 =
 D3EXP1 of
 (loctn
-,s2typ1, d3exp1_node)
+,s2typ, d3exp1_node)
 datavwtp
 d3exp1_vt =
 D3EXP1_vt of
 (loctn
-,s2typ1, d3exp1_node)
+,s2typ, d3exp1_node)
 //
 #absimpl d3exp1_tbox = d3exp1
 //
@@ -192,8 +196,7 @@ d3exp1_make_lctn$node
 ( loc0, node ) =
 let
 val
-t2p0 =
-s2typ1_none0((*0*))
+t2p0 = s2typ_none0((*0*))
 in//let
   D3EXP1(loc0, t2p0, node) end
 //
@@ -265,6 +268,100 @@ endloc (*local*) // end of [local(d3ecl1)]
 local
 //
 datatype
+d3fundcl1 =
+D3FUNDCL1 of
+( loc_t
+, d2var
+, f3arg1lst, s2res
+, teqd3exp1, wths2exp)
+//
+#absimpl
+d3fundcl1_tbox = d3fundcl1
+//
+in//local
+
+#implfun
+d3fundcl1_lctn$get
+  (  dfun  ) = let
+val+
+D3FUNDCL1
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in lctn end
+
+#implfun
+d3fundcl1_dpid$get
+  (  dfun  ) = let
+val+
+D3FUNDCL1
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in dpid end
+
+#implfun
+d3fundcl1_farg$get
+  (  dfun  ) = let
+val+
+D3FUNDCL1
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in farg end
+
+#implfun
+d3fundcl1_sres$get
+  (  dfun  ) = let
+val+
+D3FUNDCL1
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in sres end
+
+(* ****** ****** *)
+
+#implfun
+d3fundcl1_tdxp$get
+  (  dfun  ) = let
+val+
+D3FUNDCL1
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in tdxp end
+
+#implfun
+d3fundcl1_wsxp$get
+  (  dfun  ) = let
+val+
+D3FUNDCL1
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in wsxp end
+//
+(* ****** ****** *)
+//
+#implfun
+d3fundcl1_make_args
+( lctn
+, dpid, farg, sres, tdxp, wsxp) =
+(
+D3FUNDCL1
+(lctn, dpid, farg, sres, tdxp, wsxp))
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end-of-[local(d3fundcl1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
 d3parsed1 =
 D3PARSED1 of
 (
@@ -284,7 +381,7 @@ in//local
 (* ****** ****** *)
 //
 #implfun
-d3parsed1_get_stadyn
+d3parsed1_stadyn$get
   (dpar) =
 (
   stadyn ) where
@@ -293,11 +390,11 @@ val+
 D3PARSED1
 ( stadyn
 , nerror, source, parsed) = dpar
-} (*where*)//end-of-[d3parsed1_get_stadyn]
+} (*where*)//end-of-[d3parsed1_stadyn$get]
 //
 //
 #implfun
-d3parsed1_get_nerror
+d3parsed1_nerror$get
   (dpar) =
 (
   nerror ) where
@@ -306,10 +403,10 @@ val+
 D3PARSED1
 ( stadyn
 , nerror, source, parsed) = dpar
-} (*where*)//end-of-[d3parsed1_get_nerror]
+} (*where*)//end-of-[d3parsed1_nerror$get]
 //
 #implfun
-d3parsed1_get_source
+d3parsed1_source$get
   (dpar) =
 (
   source ) where
@@ -318,10 +415,10 @@ val+
 D3PARSED1
 ( stadyn
 , nerror, source, parsed) = dpar
-} (*where*)//end-of-[d3parsed1_get_source]
+} (*where*)//end-of-[d3parsed1_source$get]
 //
 #implfun
-d3parsed1_get_parsed
+d3parsed1_parsed$get
   (dpar) =
 (
   parsed ) where
@@ -330,7 +427,7 @@ val+
 D3PARSED1
 ( stadyn
 , nerror, source, parsed) = dpar
-} (*where*)//end-of-[d3parsed1_get_parsed]
+} (*where*)//end-of-[d3parsed1_parsed$get]
 //
 (* ****** ****** *)
 //
@@ -416,7 +513,7 @@ g_print<d3ecl1lstopt>(dopt)
 end//let
 where
 {
-val dopt = d3parsed1_get_parsed(dpar)
+val dopt = d3parsed1_parsed$get(dpar)
 }(*where*)//end-of-[d3parsed1_fprint(dpar,out0)]
 //
 (* ****** ****** *)
