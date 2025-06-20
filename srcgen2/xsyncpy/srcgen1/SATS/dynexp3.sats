@@ -104,6 +104,9 @@ D3E = "./\
 #abstbox d3exp1_tbox // p0tr
 #typedef d3exp1 = d3exp1_tbox
 (* ****** ****** *)
+#abstbox f3arg1_tbox // p0tr
+#typedef f3arg1 = f3arg1_tbox
+(* ****** ****** *)
 #abstbox d3ecl1_tbox // p0tr
 #typedef d3ecl1 = d3ecl1_tbox
 (* ****** ****** *)
@@ -134,6 +137,8 @@ D3E = "./\
 #typedef d3pat1opt = optn(d3pat1)
 #typedef d3exp1opt = optn(d3exp1)
 #typedef d3ecl1opt = optn(d3ecl1)
+(* ****** ****** *)
+#typedef f3arg1lst = list(f3arg1)
 (* ****** ****** *)
 #typedef d3valdcl1 = d3valdcl1_tbox
 #typedef d3vardcl1 = d3vardcl1_tbox
@@ -207,7 +212,7 @@ d3pat1_lctn$get
 #symload lctn with d3pat1_lctn$get
 fun
 d3pat1_styp$get
-(dpat: d3pat1): s2typ1
+(dpat: d3pat1): s2typ
 #symload styp with d3exp1_styp$get
 fun
 d3pat1_node$get
@@ -227,7 +232,7 @@ d3pat1_make_lctn$node
 fun
 d3pat1_make_lctn$styp$node
 (loc0: loctn
-,t2p0: s2typ1, node: d3pat1_node): d3pat1
+,t2p0: s2typ, node: d3pat1_node): d3pat1
 #symload d3pat1 with d3pat1_make_lctn$node
 #symload d3pat1 with d3pat1_make_lctn$styp$node
 //
@@ -260,7 +265,7 @@ d3exp1_lctn$get
 #symload lctn with d3exp1_lctn$get
 fun
 d3exp1_styp$get
-(dexp: d3exp1): s2typ1
+(dexp: d3exp1): s2typ
 #symload styp with d3exp1_styp$get
 fun
 d3exp1_node$get
@@ -282,9 +287,19 @@ d3exp1_make_lctn$node
 fun
 d3exp1_make_lctn$styp$node
 (loc0: loctn
-,t2p0: s2typ1, node: d3exp1_node): d3exp1
+,t2p0: s2typ, node: d3exp1_node): d3exp1
 #symload d3exp1 with d3exp1_make_lctn$node
 #symload d3exp1 with d3exp1_make_lctn$styp$node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+teqd3exp1 =
+|
+TEQD3EXP1none of ((*void*))
+|
+TEQD3EXP1some of (token(*EQ0*), d3exp1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -362,21 +377,50 @@ d3ecl1_make_lctn$node
 (* ****** ****** *)
 //
 fun
+d3fundcl1_get_dpid:(d3fundcl1)->d2var
+fun
+d3fundcl1_get_sres:(d3fundcl1)->s2res
+fun
+d3fundcl1_get_wsxp:(d3fundcl1)->wths2exp
+fun
+d3fundcl1_get_farg:(d3fundcl1)->f3arg1lst
+fun
+d3fundcl1_get_tdxp:(d3fundcl1)->teqd3exp1
+//
+#symload dpid with d3fundcl1_dpid$get
+#symload sres with d3fundcl1_sres$get(*opt*)
+#symload wsxp with d3fundcl1_wsxp$get(*opt*)
+#symload farg with d3fundcl1_farg$get(*lst*)
+#symload tdxp with d3fundcl1_tdxp$get(*opt*)
+//
+(* ****** ****** *)
+//
+fun
+d3fundcl1_make_args
+( lctn:loc_t
+, dpid:d2var
+, farg:f3arg1lst, sres:s2res
+, tdxp:teqd3exp1, wsxp:wths2exp):d3fundcl1
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3parsed1_fprint
 (dpar: d3parsed1, out0: FILR): void
 //
 (* ****** ****** *)
 //
 fun
-d3parsed1_get_stadyn:(d3parsed1)->sint
+d3parsed1_stadyn$get:(d3parsed1)->sint
 fun
-d3parsed1_get_nerror:(d3parsed1)->sint
+d3parsed1_nerror$get:(d3parsed1)->sint
 //
 fun
-d3parsed1_get_source:(d3parsed1)->lcsrc
+d3parsed1_source$get:(d3parsed1)->lcsrc
 //
 fun
-d3parsed1_get_parsed:(d3parsed1)->d3ecl1lstopt
+d3parsed1_parsed$get:(d3parsed1)->d3ecl1lstopt
 //
 (* ****** ****** *)
 //

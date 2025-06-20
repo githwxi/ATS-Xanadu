@@ -1121,8 +1121,7 @@ fun
 d3fundcl_make_args
 ( lctn:loc_t
 , dpid:d2var
-, farg:f3arglst
-, sres:s2res
+, farg:f3arglst, sres:s2res
 , tdxp:teqd3exp, wsxp:wths2exp):d3fundcl
 //
 (* ****** ****** *)
