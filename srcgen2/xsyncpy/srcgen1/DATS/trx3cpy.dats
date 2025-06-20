@@ -140,6 +140,48 @@ map$e1nv$fopr<x0><y0><e1> = d3ecl_trx3cpy
 }(*where*)//end-of-[d3eclist_trx3cpy(d3es,env0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3valdclist_trx3cpy
+(d3vs, env0) =
+list_map$e1nv(d3vs, env0) where
+{
+#vwtpdef e1 = env3cpy
+#typedef x0 = d3valdcl
+#typedef y0 = d3valdcl1
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = d3valdcl_trx3cpy
+}(*where*)//end-of-[d3valdclist_trx3cpy(d3es,env0)]
+//
+#implfun
+d3vardclist_trx3cpy
+(d3vs, env0) =
+list_map$e1nv(d3vs, env0) where
+{
+#vwtpdef e1 = env3cpy
+#typedef x0 = d3vardcl
+#typedef y0 = d3vardcl1
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = d3vardcl_trx3cpy
+}(*where*)//end-of-[d3vardclist_trx3cpy(d3es,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3fundclist_trx3cpy
+(d3fs, env0) =
+list_map$e1nv(d3fs, env0) where
+{
+#vwtpdef e1 = env3cpy
+#typedef x0 = d3fundcl
+#typedef y0 = d3fundcl1
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = d3fundcl_trx3cpy
+}(*where*)//end-of-[d3fundclist_trx3cpy(d3es,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 d3eclistopt_trx3cpy

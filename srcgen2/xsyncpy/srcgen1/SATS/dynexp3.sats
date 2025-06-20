@@ -69,6 +69,10 @@ LOC = "./\
 #staload
 LEX = "./\
 ../../../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload
+D2E = "./\
+../../../SATS/dynexp2.sats"
 #staload
 D3E = "./\
 ../../../SATS/dynexp3.sats"
@@ -83,6 +87,11 @@ D3E = "./\
 #typedef loctn = $LOC.loctn
 (* ****** ****** *)
 #typedef token = $LEX.token
+(* ****** ****** *)
+#typedef d2cst = $D2E.d2cst
+#typedef s2qag = $D2E.s2qag
+#typedef t2qag = $D2E.t2qag
+#typedef t2iag = $D2E.t2iag
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -110,6 +119,10 @@ D3E = "./\
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef fpathopt = optn(fpath)
+#typedef d2cstlst = list(d2cst)
+#typedef s2qaglst = list(s2qag)
+#typedef t2qaglst = list(t2qag)
+#typedef t2iaglst = list(t2iag)
 #typedef d3patlst = list(d3pat)
 #typedef d3explst = list(d3exp)
 #typedef d3eclist = list(d3ecl)
