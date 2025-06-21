@@ -289,10 +289,19 @@ prints
 //
 (* ****** ****** *)
 //
+|D3C1fundclst
+(tknd
+,tqas,d2cs,d3fs) =>
+(
+print("D3C1fundclst(");
+prints(tknd,";",tqas,";",d2cs,";",d3fs,")"))
+//
+(* ****** ****** *)
+//
 |D3C1errck
 (lvl0, dcl1) =>
 (
-prints("D3C1errck(", lvl0, ";", dcl1, ")"))
+  prints("D3C1errck(", lvl0, ";", dcl1, ")"))
 //
 ) where
 {
@@ -300,7 +309,32 @@ prints("D3C1errck(", lvl0, ";", dcl1, ")"))
   g_print<d3ecl1> = d3ecl1_print(*0*)
 }(*where*)//end-of-[d3ecl1_print(d3cl)]
 //
-}(*where*)//end-of-[g_print<d3ecl1>(d3cl)]
+}(*where*)//end-of-[ g_print<d3ecl1>( d3cl ) ]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<d3fundcl1>(dfun) =
+let
+//
+val dpid =
+d3fundcl1_dpid$get(dfun)
+val farg =
+d3fundcl1_farg$get(dfun)
+val sres =
+d3fundcl1_sres$get(dfun)
+val tdxp =
+d3fundcl1_tdxp$get(dfun)
+val wsxp =
+d3fundcl1_wsxp$get(dfun)
+//
+in//let
+(
+prints("D3FUNDCL1(",dpid,";");
+prints(farg,";",sres,";",tdxp,";",wsxp,")"))
+end(*let*)//end-of-[d3fundcl1_fprint(dfun,out)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
