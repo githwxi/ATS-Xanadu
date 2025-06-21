@@ -127,6 +127,20 @@ map$e1nv$fopr<x0><y0><e1> = d3exp_trx3cpy
 }(*where*)//end-of-[d3explst_trx3cpy(d3es,env0)]
 //
 (* ****** ****** *)
+//
+#implfun
+f3arglst_trx3cpy
+(f3as, env0) =
+list_map$e1nv(f3as, env0) where
+{
+#typedef x0 = f3arg
+#typedef y0 = f3arg1
+#vwtpdef e1 = env3cpy
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = f3arg_trx3cpy
+}(*where*)//end-of-[f3arglst_trx3cpy(f3as,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

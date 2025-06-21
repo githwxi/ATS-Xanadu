@@ -83,6 +83,12 @@ d3exp_trx3cpy
 (d3e0: d3exp, env0: !env3cpy): d3exp1
 //
 fun
+f3arg_trx3cpy
+(f3a0: f3arg, env0: !env3cpy): f3arg1
+//
+(* ****** ****** *)
+//
+fun
 d3ecl_trx3cpy
 (d3cl: d3ecl, env0: !env3cpy): d3ecl1
 //
