@@ -216,6 +216,38 @@ endloc (*local*) // end of [local(d3exp1)]
 local
 //
 datatype
+f3arg1 =
+F3ARG1 of
+(
+loctn, f3arg1_node)
+#absimpl
+f3arg1_tbox = f3arg1
+//
+in (* in-of-local *)
+//
+#implfun
+f3arg1_make_lctn$node
+(   loc,nod   ) = F3ARG1(loc,nod)
+//
+#implfun
+f3arg1_lctn$get(f3a) =
+let
+  val+F3ARG1(loc,nod) = f3a in loc
+end
+#implfun
+f3arg1_node$get(f3a) =
+let
+  val+F3ARG1(loc,nod) = f3a in nod
+end
+//
+endloc (*local*) // end of [local(f3arg1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
 d3ecl1 =
 D3ECL1 of
 ( loctn, d3ecl1_node)

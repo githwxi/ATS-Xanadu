@@ -260,6 +260,23 @@ printsln("d3ecl_trx3cpy: d3cl = ", d3cl)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+teqd3exp_trx3cpy
+  (tdxp, env0) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone() =>
+TEQD3EXP1none((*void*))
+|
+TEQD3EXPsome(teq1, d3e2) =>
+TEQD3EXP1some(teq1, d3e2) where
+{ val
+  d3e2 = d3exp_trx3cpy(d3e2, env0) }
+)(*case+*)//endof(teqd3exp_trx3cpy(tdxp,env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 d3fundcl_trx3cpy
@@ -302,8 +319,7 @@ in//let
 (
   d3fundcl1_make_args
   (loc0, dvar, f3as, sres, tdxp, wsxp))
-end//let
-(*let*)//end-of-[d3fundcl_trx3cpy(dfun,env0)]
+end(*let*)//end-of-[d3fundcl_trx3cpy(dfun,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
