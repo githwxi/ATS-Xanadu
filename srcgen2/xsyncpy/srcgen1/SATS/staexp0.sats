@@ -39,6 +39,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX: for [FILR]
+*)
 #include
 "xatslib\
 /libcats\
@@ -62,12 +65,13 @@ node with $S0E.s0exp_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 s0exp_fprint
-(dexp: s0exp, out0: FILR): void
-//
+(sexp: s0exp, out0: FILR): void
 #symload
 fprint with s0exp_fprint of 1000
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

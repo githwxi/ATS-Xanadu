@@ -39,6 +39,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX: for [FILR]
+*)
 #include
 "xatslib\
 /libcats\
@@ -337,7 +340,8 @@ F3ARG1mets of (s2explst(*mets*))
 //
 fun
 f3arg1_fprint
-(f3a0: f3arg1, out0: FILR)->void
+(farg: f3arg1, out0: FILR): void
+#symload fprint with f3arg1_fprint of 1000
 //
 (* ****** ****** *)
 fun

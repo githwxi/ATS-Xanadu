@@ -39,6 +39,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX: for [FILR]
+*)
 #include
 "xatslib\
 /libcats\
@@ -54,6 +57,24 @@ S1E = "./\
 (* ****** ****** *)
 //
 #typedef g1exp = $S1E.g1exp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+g1exp_fprint
+(gexp: g1exp, out0: FILR): void
+#symload
+fprint with g1exp_fprint of 1000
+*)
+//
+fun
+s1exp_fprint
+(sexp: s1exp, out0: FILR): void
+#symload
+fprint with s1exp_fprint of 1000
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

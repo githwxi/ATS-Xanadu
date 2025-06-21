@@ -71,11 +71,13 @@ g_print<symbl>(sym0) =
 symbl_fprint(sym0, castxy(g_print$out<>()))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 g_print<token>(tok0) =
 token_fprint(tok0, castxy(g_print$out<>()))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -86,6 +88,7 @@ d0pat_fprint(d0p0, castxy(g_print$out<>()))
 g_print<d0exp>(d0e0) =
 d0exp_fprint(d0e0, castxy(g_print$out<>()))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -111,6 +114,42 @@ g_print<d1ecl>(d1cl) =
 d1ecl_fprint(d1cl, castxy(g_print$out<>()))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print<sort2>(s2t0) =
+sort2_fprint(s2t0, castxy(g_print$out<>()))
+//
+#impltmp
+g_print<s2var>(s2v0) =
+s2var_fprint(s2v0, castxy(g_print$out<>()))
+#impltmp
+g_print<s2cst>(s2c0) =
+s2cst_fprint(s2c0, castxy(g_print$out<>()))
+//
+#impltmp
+g_print<s2exp>(s2e0) =
+s2exp_fprint(s2e0, castxy(g_print$out<>()))
+//
+#impltmp
+g_print<s2res>(sres) =
+s2res_fprint(sres, castxy(g_print$out<>()))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print<d2con>(d2c0) =
+d2con_fprint(d2c0, castxy(g_print$out<>()))
+#impltmp
+g_print<d2cst>(d2c0) =
+d2cst_fprint(d2c0, castxy(g_print$out<>()))
+//
+#impltmp
+g_print<d2var>(d2v0) =
+d2var_fprint(d2v0, castxy(g_print$out<>()))
+//
+(* ****** ****** *)
 //
 #impltmp
 g_print<d2pat>(d2p0) =
@@ -125,6 +164,7 @@ g_print<d2ecl>(d2cl) =
 d2ecl_fprint(d2cl, castxy(g_print$out<>()))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 g_print<d3pat>(d3p0) =
@@ -133,6 +173,8 @@ d3pat_fprint(d3p0, castxy(g_print$out<>()))
 #impltmp
 g_print<d3exp>(d3e0) =
 d3exp_fprint(d3e0, castxy(g_print$out<>()))
+//
+(* ****** ****** *)
 //
 #impltmp
 g_print<d3ecl>(d3cl) =
@@ -150,6 +192,16 @@ g_print<d3pat1>(dpat) =
 g_print<d3exp1>(dexp) =
 (
   d3exp1_fprint(dexp, g_print$out<>((*0*))))
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<f3arg1>(farg) =
+(
+  f3arg1_fprint(farg, g_print$out<>((*0*))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 g_print<d3ecl1>(d3cl) =

@@ -55,6 +55,8 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 "./../../../SATS/locinfo.sats"
 #staload
+"./../../../SATS/staexp2.sats"
+#staload
 "./../../../SATS/statyp2.sats"
 #staload
 "./../../../SATS/dynexp2.sats"
@@ -490,8 +492,16 @@ endloc (*local*) // end-of-[local(d3parsed1)]
 //
 local
 //
+#include "\
+prelude/HATS/prelude_dats.hats"
+//
 #staload
 "./../DATS/dynexp3_print0.dats"
+//
+#include "\
+prelude/HATS/prelude_JS_dats.hats"
+#include "\
+prelude/HATS/prelude_NODE_dats.hats"
 //
 in//local
 //
@@ -515,6 +525,20 @@ g_print<d3exp1>(dexp)
 #impltmp g_print$out<>() = out0
 }(*where*)//end-of-[d3exp1_fprint(dexp,out0)]
 //
+(* ****** ****** *)
+//
+#implfun
+f3arg1_fprint
+(farg, out0) =
+(
+g_print<f3arg1>(farg)
+) where
+{
+#impltmp g_print$out<>() = out0
+}(*where*)//end-of-[f3arg1_fprint(farg,out0)]
+//
+(* ****** ****** *)
+//
 #implfun
 d3ecl1_fprint
 (d3cl, out0) =
@@ -531,7 +555,6 @@ end//local[staload("./../DATS/dynexp3_print0.dats")]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 #implfun
 d3parsed1_fprint

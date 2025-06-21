@@ -39,7 +39,13 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload
 "./../SATS/lexing0.sats"
+#staload
+"./../../../SATS/lexing0.sats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
+"prelude/SATS/gsyn000.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -49,13 +55,6 @@ g_print<tnode>(tokn.node())
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-local
-//
-#staload
-"./../../../SATS/lexing0.sats"
-//
-in//local
 //
 #impltmp
 g_print<tnode>(tknd) =
@@ -74,8 +73,6 @@ case+ tknd of
 |T_SPCHR(rep) => prints("T_SPCHR(", rep, ")")
 //
 )(*case+*)//end-of-[g_print<tnode>(tknd)]
-//
-end//local//end-of-[staload("./../../../SATS/lexing0.sats")]
 //
 (* ****** ****** *)
 (* ****** ****** *)

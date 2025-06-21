@@ -39,6 +39,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX: for [FILR]
+*)
 #include
 "xatslib\
 /libcats\
@@ -93,7 +96,6 @@ node with $D2E.d2ecl_get_node
 fun
 d2var_fprint
 (dvar: d2var, out0: FILR): void
-//
 #symload
 fprint with d2var_fprint of 1000
 //
@@ -111,7 +113,7 @@ d2exp_fprint
 (dexp: d2exp, out0: FILR): void
 fun
 d2ecl_fprint
-(d3cl: d2ecl, out0: FILR): void
+(d2cl: d2ecl, out0: FILR): void
 //
 #symload
 fprint with d2pat_fprint of 1000
