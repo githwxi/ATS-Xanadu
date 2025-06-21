@@ -70,12 +70,18 @@ LOC = "./\
 LEX = "./\
 ../../../SATS/lexing0.sats"
 (* ****** ****** *)
+//
+#staload
+S2E = "./\
+../../../SATS/staexp2.sats"
 #staload
 D2E = "./\
 ../../../SATS/dynexp2.sats"
+//
 #staload
 D3E = "./\
 ../../../SATS/dynexp3.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef sym_t = $SYM.sym_t
@@ -88,6 +94,9 @@ D3E = "./\
 #typedef loctn = $LOC.loctn
 (* ****** ****** *)
 #typedef token = $LEX.token
+(* ****** ****** *)
+#typedef s2var = $S2E.s2var
+#typedef s2exp = $S2E.s2exp
 (* ****** ****** *)
 #typedef s2res = $D2E.s2res
 (* ****** ****** *)
@@ -125,6 +134,8 @@ D3E = "./\
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef fpathopt = optn(fpath)
+#typedef s2varlst = list(s2var)
+#typedef s2explst = list(s2exp)
 #typedef d2cstlst = list(d2cst)
 #typedef s2qaglst = list(s2qag)
 #typedef t2qaglst = list(t2qag)
@@ -301,11 +312,53 @@ d3exp1_make_lctn$styp$node
 (* ****** ****** *)
 //
 datatype
+f3arg1_node =
+//
+(*
+| F3ARG1none of (token)
+*)
+//
+|
+F3ARG1dapp of
+(
+sint(*npf*), d3pat1lst(*args*))
+//
+|
+F3ARG1sapp of
+( s2varlst(*s2vs*)
+, s2explst(*s2ps*) ) // static
+//
+|
+F3ARG1mets of (s2explst(*mets*))
+//
+(* ****** ****** *)
+//
+fun
+f3arg1_fprint
+(f3a0: f3arg1, out0: FILR)->void
+//
+(* ****** ****** *)
+fun
+f3arg1_lctn$get(f3arg1): loc_t
+fun
+f3arg1_node$get(f3arg1): f3arg1_node
+(* ****** ****** *)
+#symload lctn with f3arg1_lctn$get
+#symload node with f3arg1_node$get
+(* ****** ****** *)
+//
+fun
+f3arg1_make_lctn$node
+(loc:loc_t, nod:f3arg1_node):f3arg1
+#symload f3arg1 with f3arg1_make_lctn$node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
 teqd3exp1 =
-|
-TEQD3EXP1none of ((*void*))
-|
-TEQD3EXP1some of (token(*EQ0*), d3exp1)
+|TEQD3EXP1none of ((*void*))
+|TEQD3EXP1some of (token(*EQ0*), d3exp1)
 //
 (* ****** ****** *)
 (* ****** ****** *)

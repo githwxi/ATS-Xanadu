@@ -144,6 +144,56 @@ printsln("d3exp_trx3cpy: d3e0 = ", d3e0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#implfun
+f3arg_trx3cpy
+(farg, env0) =
+let
+//
+val loc0 = farg.lctn()
+//
+(*
+val () =
+prerrsln
+("f3arg_trx3cpy: loc0 = ", loc0)
+val () =
+prerrsln
+("f3arg_trx3cpy: farg = ", farg)
+*)
+//
+in//let
+//
+case+
+farg.node() of
+//
+|
+F3ARGdapp
+(npf1, d3ps) =>
+let
+val loc0 = farg.lctn()
+val d3ps =
+(
+  d3patlst_trx3cpy(d3ps, env0))
+in//let
+f3arg1(loc0,F3ARG1dapp(npf1,d3ps))
+end(*let*)//end-of-[F3ARG1dapp(...)]
+//
+|
+F3ARGsapp
+(s2vs, s2ps) =>
+(
+f3arg1(loc0,F3ARG1sapp(s2vs,s2ps)))
+|
+F3ARGmets
+(   s2es   ) =>
+(
+f3arg1(loc0, F3ARG1mets(  s2es  )))
+//
+end(*let*)//end-of-[f3arg_trx3cpy(f3a0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trx3cpy_dynexp.dats] *)
 (***********************************************************************)
