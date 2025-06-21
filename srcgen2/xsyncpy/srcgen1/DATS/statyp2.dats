@@ -39,36 +39,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
-//
-(* ****** ****** *)
-//
 #staload
 "./../SATS/statyp2.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-local
-//
-#staload "\
-./../DATS/statyp2_print0.dats"
-//
-in//local
-//
-#implfun
-s2typ_fprint = g_fprint<s2typ>
-//
-end//local
-//
-(* ****** ****** *)
-//
-#impltmp
-g_print<s2typ>(styp) =
-s2typ_fprint(styp, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)

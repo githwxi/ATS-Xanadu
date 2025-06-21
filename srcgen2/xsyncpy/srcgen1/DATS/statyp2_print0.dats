@@ -53,32 +53,18 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 local
 //
-#staload
-"./../../../SATS/statyp2.sats"
-//
 #extern
 fcast
 castxy{ax:t0}{ay:t0}(ax:ax):(ay)
 //
 in//local
 //
-#impltmp
-g_print
-<s2typ>(t2p0) =
-(
+#implfun
+s2typ_fprint
+(styp, out0) =
+$T2P.s2typ_fprint(styp, castxy(out0))
 //
-case+
-t2p0.node() of
-//
-| _(*otherwise*) =>
-let
-val out0 =
-g_print$out<>() in s2typ_fprint(t2p0, castxy(out0))
-end//let
-//
-)(*case+*)//end-of-[g_print<s2typ>(t2p0)]
-//
-end//local//end-of-[staload("./../../../SATS/statyp2.sats")]
+end//local
 //
 (* ****** ****** *)
 (* ****** ****** *)

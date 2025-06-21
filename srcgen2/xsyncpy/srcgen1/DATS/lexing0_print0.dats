@@ -39,8 +39,6 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload
 "./../SATS/lexing0.sats"
-#staload
-"./../../../SATS/lexing0.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -49,30 +47,25 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-g_print<token>(tokn) =
-g_print<tnode>(tokn.node())
+local
 //
-(* ****** ****** *)
-(* ****** ****** *)
+#extern
+fcast
+castxy{ax:t0}{ay:t0}(ax:ax):(ay)
 //
-#impltmp
-g_print<tnode>(tknd) =
-(
+in//local
 //
-case+ tknd of
+#implfun
+tnode_fprint
+(tnod, out0) =
+$LEX.tnode_fprint(tnod, castxy(out0))
 //
-|T_EOF() => prints("T_EOF()")
-|T_ERR() => prints("T_ERR()")
-|T_EOL() => prints("T_EOL()")
+#implfun
+token_fprint
+(tokn, out0) =
+$LEX.token_fprint(tokn, castxy(out0))
 //
-|T_BLANK(rep) => prints("T_BLANK(", rep, ")")
-|T_CLNLT(rep) => prints("T_CLNLT(", rep, ")")
-|T_DOTLT(rep) => prints("T_DOTLT(", rep, ")")
-//
-|T_SPCHR(rep) => prints("T_SPCHR(", rep, ")")
-//
-)(*case+*)//end-of-[g_print<tnode>(tknd)]
+end//local
 //
 (* ****** ****** *)
 (* ****** ****** *)

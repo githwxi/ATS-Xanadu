@@ -92,19 +92,15 @@ node with $D2E.d2ecl_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 fun
 d2var_fprint
 (dvar: d2var, out0: FILR): void
 #symload
 fprint with d2var_fprint of 1000
 //
-*)
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 fun
 d2pat_fprint
 (dpat: d2pat, out0: FILR): void
@@ -121,8 +117,6 @@ fprint with d2pat_fprint of 1000
 fprint with d2exp_fprint of 1000
 #symload
 fprint with d2ecl_fprint of 1000
-//
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

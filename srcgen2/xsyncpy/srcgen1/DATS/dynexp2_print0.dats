@@ -53,32 +53,32 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 local
 //
-#staload
-"./../../../SATS/dynexp2.sats"
-//
 #extern
 fcast
 castxy{ax:t0}{ay:t0}(ax:ax):(ay)
 //
 in//local
 //
-#impltmp
-g_print
-<d2exp>(d2e0) =
-(
+#implfun
+d2var_fprint
+(dvar, out0) =
+$D2E.d2var_fprint(dvar, castxy(out0))
 //
-case+
-d2e0.node() of
+#implfun
+d2pat_fprint
+(dpat, out0) =
+$D2E.d2pat_fprint(dpat, castxy(out0))
+#implfun
+d2exp_fprint
+(dexp, out0) =
+$D2E.d2exp_fprint(dexp, castxy(out0))
 //
-| _(*otherwise*) =>
-let
-val out0 =
-g_print$out<>() in d2exp_fprint(d2e0, castxy(out0))
-end//let
+#implfun
+d2ecl_fprint
+(d2cl, out0) =
+$D2E.d2ecl_fprint(d2cl, castxy(out0))
 //
-)(*case+*)//end-of-[g_print<d2exp>(d2e0)]
-//
-end//local//end-of-[staload("./../../../SATS/dynexp2.sats")]
+end//local
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -440,17 +440,37 @@ d3ecl1_make_lctn$node
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+d3valdcl1_fprint
+(dval: d3valdcl1, out0: FILR): void
+fun
+d3vardcl1_fprint
+(dvar: d3vardcl1, out0: FILR): void
+fun
+d3fundcl1_fprint
+(dfun: d3fundcl1, out0: FILR): void
+//
+#symload
+fprint with d3valdcl1_fprint of 1000
+#symload
+fprint with d3vardcl1_fprint of 1000
+#symload
+fprint with d3fundcl1_fprint of 1000
+//
+(* ****** ****** *)
+//
 fun
 d3valdcl1_lctn$get:(d3valdcl1)->loc_t
 fun
 d3vardcl1_lctn$get:(d3vardcl1)->loc_t
 fun
 d3fundcl1_lctn$get:(d3fundcl1)->loc_t
-(* ****** ****** *)
+//
 #symload lctn with d3valdcl1_lctn$get
 #symload lctn with d3vardcl1_lctn$get
 #symload lctn with d3fundcl1_lctn$get
-(* ****** ****** *)
+//
 (* ****** ****** *)
 //
 fun
