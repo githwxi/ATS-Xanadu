@@ -39,12 +39,18 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX: for [FILR]
+*)
 #include
 "xatslib\
 /libcats\
 /HATS/libcats_dats.hats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#typedef s2var = $S2E.s2var
+#typedef s2cst = $S2E.s2cst
 (* ****** ****** *)
 //
 #staload
@@ -54,6 +60,17 @@ S2E = "./\
 (* ****** ****** *)
 //
 #typedef s2exp = $S2E.s2exp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+s2exp_fprint
+(sexp: s2exp, out0: FILR): void
+#symload
+fprint with s2exp_fprint of 1000
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

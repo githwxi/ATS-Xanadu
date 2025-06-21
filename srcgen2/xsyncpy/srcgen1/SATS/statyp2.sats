@@ -59,11 +59,13 @@ T2P = "./\
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 s2typ_fprint
 (styp: s2typ, out0: FILR): void
 #symload
 fprint with s2typ_fprint of 1000
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

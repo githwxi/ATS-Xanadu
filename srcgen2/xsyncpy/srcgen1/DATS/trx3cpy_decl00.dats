@@ -39,19 +39,18 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #staload
 "./../SATS/dynexp3.sats"
 #staload
 "./../SATS/trx3cpy.sats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload

@@ -101,6 +101,12 @@ XATS000_strn_fmake_fwork
 ////////////////////////////////////////////////////////////////////////.
 //
 function
+XATS000_strn_print
+  ( cs )
+{
+  return XATS2JS_strn_print(cs)
+}
+function
 XATS2JS_strn_print
   ( cs )
 {

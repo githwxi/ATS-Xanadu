@@ -39,30 +39,37 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
-//
-(* ****** ****** *)
-//
 #staload
 "./../SATS/lexing0.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 local
 //
-#staload "\
-./../DATS/lexing0_print0.dats"
+#include "\
+prelude/HATS/prelude_dats.hats"
+//
+#staload
+"./../DATS/lexing0_print0.dats"
+//
+#include "\
+prelude/HATS/prelude_JS_dats.hats"
+#include "\
+prelude/HATS/prelude_NODE_dats.hats"
 //
 in//local
 //
 #implfun
-tnode_fprint = g_fprint<tnode>
+tnode_fprint = g_fprint<tnode>(*0*)
 #implfun
-token_fprint = g_fprint<token>
+token_fprint = g_fprint<token>(*0*)
 //
 end//local
 //

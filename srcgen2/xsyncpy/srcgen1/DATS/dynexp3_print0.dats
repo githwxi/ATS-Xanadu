@@ -39,25 +39,15 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
+#staload
+"./../SATS/dynexp3.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#staload "\
-./../SATS/dynexp3.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-(*
-//
-#staload _ = "\
-./../DATS/xsyncpy_tmplib.dats"
-//
-*)
+#staload
+"prelude/SATS/gsyn000.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -119,7 +109,7 @@ prints
 ,tkas, d3p2) =>
 (
 prints
-("D3P1dapp("
+("D3P1rfpt("
 , d3p1, ";", tkas, ";", d3p2, ")"))
 //
 |D3P1tup0
@@ -209,6 +199,30 @@ prints("D3E1errck(", lvl0, ";", d3e1, ")"))
 }(*where*)//end-of-[d3exp1_print(d3e0)]
 //
 }(*where*)//end-of-[g_print<d3exp1>(d3e0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<f3arg1>(farg) =
+(
+case+
+farg.node() of
+|F3ARG1dapp
+(npf1, d3ps) =>
+prints
+("F3ARG1dapp(",npf1,";",d3ps,")")
+|F3ARG1sapp
+(s2vs, s2ps) =>
+prints
+("F3ARG1sapp(",s2vs,";",s2ps,")")
+|F3ARG1mets
+(   s2es   ) =>
+(
+  prints("F3ARG1mets(", s2es, ")"))
+//
+)(*case+*)//end-of-[g_print<f3arg1>( farg )]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -330,11 +344,22 @@ d3fundcl1_tdxp$get(dfun)
 val wsxp =
 d3fundcl1_wsxp$get(dfun)
 //
+#impltmp
+g_print
+<wths2exp>(wsxp) =
+(
+case+ wsxp of
+|WTHS2EXPnone() =>
+prints("WTHS2EXPnone(", ")")
+|WTHS2EXPsome(tok0, s2e1) =>
+prints
+("WTHS2EXPsome(", tok0, ";", s2e1, ")"))
+//
 in//let
 (
 prints("D3FUNDCL1(",dpid,";");
 prints(farg,";",sres,";",tdxp,";",wsxp,")"))
-end(*let*)//end-of-[d3fundcl1_fprint(dfun,out)]
+end(*let*)//end-of-[ g_print<d3fundcl1>( dfun ) ]
 //
 (* ****** ****** *)
 (* ****** ****** *)
