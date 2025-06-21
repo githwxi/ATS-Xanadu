@@ -38,31 +38,33 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #staload
 "./../SATS/dynexp3.sats"
+(* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
 #staload
 "./../../../SATS/dynexp2.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
-(* ****** ****** *)
-(* ****** ****** *)
 #staload
 "prelude/SATS/gsyn000.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+d3pat1_fprint
+( d3p0, out0 ) =
+let
 //
 #impltmp
-g_print
-<d3pat1>(d3p0) =
-(
-d3pat1_print(d3p0)
-) where
-{
+g_print$out<>() = out0
 //
-fun
-d3pat1_print
-(d3p0: d3pat1): void =
-(
+in//let
+//
 case+
 d3p0.node() of
 //
@@ -135,29 +137,21 @@ prints
 (
 prints("D3P1errck(", lvl0, ";", d3p1, ")"))
 //
-) where
-{
-  #impltmp
-  g_print<d3pat1> = d3pat1_print
-}(*where*)//end-of-[d3pat1_print(d3p0)]
-//
-}(*where*)//end-of-[g_print<d3pat1>(d3p0)]
+end(*let*)//end-of-[d3pat1_fprint(d3p0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+d3exp1_fprint
+( d3e0, out0 ) =
+let
 //
 #impltmp
-g_print
-<d3exp1>(d3e0) =
-(
-d3exp1_print(d3e0)
-) where
-{
+g_print$out<>() = out0
 //
-fun
-d3exp1_print
-(d3e0: d3exp1): void =
-(
+in//let
+//
 case+
 d3e0.node() of
 //
@@ -192,21 +186,21 @@ prints("D3E1str(", tstr, ")"))
 (
 prints("D3E1errck(", lvl0, ";", d3e1, ")"))
 //
-) where
-{
-  #impltmp
-  g_print<d3exp1> = d3exp1_print
-}(*where*)//end-of-[d3exp1_print(d3e0)]
-//
-}(*where*)//end-of-[g_print<d3exp1>(d3e0)]
+end(*let*)//end-of-[d3exp1_fprint(d3e0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+f3arg1_fprint
+( farg, out0 ) =
+let
 //
 #impltmp
-g_print
-<f3arg1>(farg) =
-(
+g_print$out<>() = out0
+//
+in//let
+//
 case+
 farg.node() of
 |F3ARG1dapp
@@ -222,37 +216,21 @@ prints
 (
   prints("F3ARG1mets(", s2es, ")"))
 //
-)(*case+*)//end-of-[g_print<f3arg1>( farg )]
+end(*let*)//end-of-[g_print<f3arg1>( farg )]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+d3ecl1_fprint
+( d3cl, out0 ) =
+let
 //
 #impltmp
-g_print
-<teqd3exp1>(tdxp) =
-(
-case+ tdxp of
-|TEQD3EXP1none() =>
-prints("TEQD3EXP1none(", ")")
-|TEQD3EXP1some(tok0, d3e1) =>
-prints("TEQD3EXP1some(",tok0,";",d3e1,")")
-)
+g_print$out<>() = out0
 //
-(* ****** ****** *)
-(* ****** ****** *)
+in//let
 //
-#impltmp
-g_print
-<d3ecl1>(d3cl) =
-(
-d3ecl1_print(d3cl)
-) where
-{
-//
-fun
-d3ecl1_print
-(d3cl: d3ecl1): void =
-(
 case+
 d3cl.node() of
 //
@@ -317,20 +295,16 @@ prints(tknd,";",tqas,";",d2cs,";",d3fs,")"))
 (
   prints("D3C1errck(", lvl0, ";", dcl1, ")"))
 //
-) where
-{
-  #impltmp
-  g_print<d3ecl1> = d3ecl1_print(*0*)
-}(*where*)//end-of-[d3ecl1_print(d3cl)]
+(* ****** ****** *)
 //
-}(*where*)//end-of-[ g_print<d3ecl1>( d3cl ) ]
+end(*let*)//end-of-[ g_print<d3ecl1>( d3cl ) ]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-g_print
-<d3fundcl1>(dfun) =
+#implfun
+d3fundcl1_fprint
+ ( dfun, out0 ) =
 let
 //
 val dpid =
@@ -343,17 +317,6 @@ val tdxp =
 d3fundcl1_tdxp$get(dfun)
 val wsxp =
 d3fundcl1_wsxp$get(dfun)
-//
-#impltmp
-g_print
-<wths2exp>(wsxp) =
-(
-case+ wsxp of
-|WTHS2EXPnone() =>
-prints("WTHS2EXPnone(", ")")
-|WTHS2EXPsome(tok0, s2e1) =>
-prints
-("WTHS2EXPsome(", tok0, ";", s2e1, ")"))
 //
 in//let
 (

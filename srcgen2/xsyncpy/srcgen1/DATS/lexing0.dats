@@ -45,46 +45,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include
-"./../HATS/mytmplib00.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-local
-//
-#include "\
-prelude/HATS/prelude_dats.hats"
-//
-#staload
-"./../DATS/lexing0_print0.dats"
-//
-#include "\
-prelude/HATS/prelude_JS_dats.hats"
-#include "\
-prelude/HATS/prelude_NODE_dats.hats"
-//
-in//local
-//
-#implfun
-tnode_fprint = g_fprint<tnode>(*0*)
-#implfun
-token_fprint = g_fprint<token>(*0*)
-//
-end//local
-//
-(* ****** ****** *)
-//
-#impltmp
-g_print<token>(tokn) =
-token_fprint(tokn, g_print$out<>())
-#impltmp
-g_print<tnode>(tknd) =
-tnode_fprint(tknd, g_print$out<>())
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_lexing0.dats] *)
 (***********************************************************************)
