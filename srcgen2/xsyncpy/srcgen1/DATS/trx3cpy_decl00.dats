@@ -281,7 +281,7 @@ d3fundcl_get_wsxp(dfun)
 //
 (*
 val (  ) = prerrsln
-("d3fundcl_trx3cpy: f2as = ", f2as)
+("d3fundcl_trx3cpy: f3as = ", f3as)
 val (  ) = prerrsln
 ("d3fundcl_trx3cpy: tdxp = ", tdxp)
 *)

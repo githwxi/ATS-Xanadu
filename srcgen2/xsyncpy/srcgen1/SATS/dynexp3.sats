@@ -382,11 +382,11 @@ d3ecl1_make_lctn$node
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-d3valdcl_lctn$get:(d3valdcl1)->loc_t
+d3valdcl1_lctn$get:(d3valdcl1)->loc_t
 fun
-d3vardcl_lctn$get:(d3vardcl1)->loc_t
+d3vardcl1_lctn$get:(d3vardcl1)->loc_t
 fun
-d3fundcl_lctn$get:(d3fundcl1)->loc_t
+d3fundcl1_lctn$get:(d3fundcl1)->loc_t
 (* ****** ****** *)
 #symload lctn with d3valdcl1_lctn$get
 #symload lctn with d3vardcl1_lctn$get
