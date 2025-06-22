@@ -216,7 +216,7 @@ prints
 (
   prints("F3ARG1mets(", s2es, ")"))
 //
-end(*let*)//end-of-[g_print<f3arg1>( farg )]
+end(*let*)//end-of-[f3arg1_fprint(farg,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -293,11 +293,11 @@ prints(tknd,";",tqas,";",d2cs,";",d3fs,")"))
 |D3C1errck
 (lvl0, dcl1) =>
 (
-  prints("D3C1errck(", lvl0, ";", dcl1, ")"))
+ prints("D3C1errck(", lvl0, ";", dcl1, ")"))
 //
 (* ****** ****** *)
 //
-end(*let*)//end-of-[ g_print<d3ecl1>( d3cl ) ]
+end(*let*)//end-of-[d3ecl1_fprint(d3cl,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -57,7 +57,6 @@ T2P = "./\
 (* ****** ****** *)
 #typedef s2typ = $T2P.s2typ
 (* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 s2typ_fprint
@@ -84,6 +83,13 @@ s2typ1_node =
 (s2varlst(*args*), s2typ1(*body*))
 //
 |T2P1s2typ of (s2typ)//yet-to-be-copied
+//
+(* ****** ****** *)
+//
+fun
+s2typ1_node$get
+(styp: s2typ1): s2typ1_node
+#symload node with s2typ1_node$get
 //
 (* ****** ****** *)
 //
