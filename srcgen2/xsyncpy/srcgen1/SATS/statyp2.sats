@@ -87,6 +87,11 @@ s2typ1_node =
 (* ****** ****** *)
 //
 fun
+s2typ1_sort$get
+(styp: s2typ1): sort2
+#symload sort with s2typ1_sort$get
+//
+fun
 s2typ1_node$get
 (styp: s2typ1): s2typ1_node
 #symload node with s2typ1_node$get
