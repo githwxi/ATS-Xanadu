@@ -67,6 +67,33 @@ fprint with s2typ_fprint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#abstbox s2typ1_tbox // p0tr
+#typedef s2typ1 = s2typ1_tbox
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+s2typ1_node =
+//
+|T2P1cst of s2cst // constant
+|T2P1var of s2var // variable
+//
+|T2P1apps of
+(s2typ1(*fun*), s2typ1lst(*args*))
+|T2P1lam1 of
+(s2varlst(*args*), s2typ1(*body*))
+//
+|T2P1s2typ of (s2typ)//yet-to-be-copied
+//
+(* ****** ****** *)
+//
+fun
+s2typ1_fprint
+(styp: s2typ1, out0: FILR): void
+#symload fprint with s2typ1_fprint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_statyp2.sats] *)
