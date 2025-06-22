@@ -176,6 +176,16 @@ prints("D3E1flt(", tflt, ")"))
 (
 prints("D3E1str(", tstr, ")"))
 //
+(* ****** ****** *)
+//
+|D3E1ift0
+(d3e1,dthn,dels) =>
+(
+print("D3E1ift0(");
+prints(d3e1,";",dthn,";",dels,")"))
+//
+(* ****** ****** *)
+//
 |D3E1d3exp
 (   dexp   ) =>
 (

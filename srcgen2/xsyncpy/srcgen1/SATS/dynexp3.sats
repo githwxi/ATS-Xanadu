@@ -271,6 +271,11 @@ d3exp1_node =
 |D3E1str of token
 //
 (* ****** ****** *)
+|D3E1ift0 of
+(
+d3exp1(*cond*),
+d3exp1opt(*thn*), d3exp1opt(*els*))
+(* ****** ****** *)
 //
 |D3E1d3exp of (d3exp)//yet-to-be-copied
 //
