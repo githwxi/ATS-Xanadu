@@ -49,6 +49,17 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/statyp2.sats"
 //
 (* ****** ****** *)
+//
+#staload "\
+./../../../SATS/statyp2.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
@@ -65,6 +76,34 @@ s2typ_fprint
 $T2P.s2typ_fprint(styp, castxy(out0))
 //
 end//local
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2typ1_fprint
+( t2p0, out0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+in//let
+//
+case+
+t2p0.node() of
+//
+|T2P1cst(s2c1) =>
+prints("T2P1cst(", s2c1, ")")
+|T2P1var(s2v1) =>
+prints("T2P1var(", s2v1, ")")
+//
+|T2P1s2typ
+(   styp   ) =>
+(
+  prints( "T2P1s2typ(", styp, ")" ))
+//
+end(*let*)//end-of-[s2typ1_fprint(t2p0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
