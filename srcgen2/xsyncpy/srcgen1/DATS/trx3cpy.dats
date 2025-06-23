@@ -129,6 +129,24 @@ map$e1nv$fopr<x0><y0><e1> = d3exp_trx3cpy
 (* ****** ****** *)
 //
 #implfun
+d3expopt_trx3cpy
+(dopt, env0) =
+(
+case+ dopt of
+|
+optn_nil
+( (*0*) ) => optn_nil((*void*))
+|
+optn_cons
+(  dexp  ) =>
+(
+  optn_cons(d3exp_trx3cpy(dexp, env0)))
+)(*case+*)//end-of-[d3expopt_trx3cpy(dopt,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 f3arglst_trx3cpy
 (f3as, env0) =
 list_map$e1nv(f3as, env0) where

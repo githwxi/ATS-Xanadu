@@ -120,18 +120,51 @@ d3exp1(loc0, D3E1flt(tflt))
 |D3Estr(tstr) =>
 d3exp1(loc0, D3E1str(tstr))
 //
+|D3Eift0 _ => f0_ift0(d3e0, env0)
+//
 |
 _(*otherwise*) =>
 (
-  d3exp1(loc0, D3E1d3exp(d3e0)))
+d3exp1(loc0, t2p0, D3E1d3exp(d3e0)))
 ) where
 {
 //
 val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+fun
+f0_ift0
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+val-
+D3Eift0
+(d3e1
+,dthn, dels) = d3e0.node()
+//
+val d3e1 =
+(
+  d3exp_trx3cpy(d3e1, env0))
+//
+val dthn =
+(
+  d3expopt_trx3cpy(dthn, env0))
+val dels =
+(
+  d3expopt_trx3cpy(dels, env0))
+//
+in//let
+//
+d3exp1
+(loc0, t2p0, D3E1ift0(d3e1,dthn,dels))
+//
+end//let
 //
 (*
 val (  ) =
 printsln("d3exp_trx3cpy: loc0 = ", loc0)
+val (  ) =
+printsln("d3exp_trx3cpy: t2p0 = ", t2p0)
 val (  ) =
 printsln("d3exp_trx3cpy: d3e0 = ", d3e0)
 *)
