@@ -103,10 +103,14 @@ D3E = "./\
 (* ****** ****** *)
 #typedef s2res = $D2E.s2res
 (* ****** ****** *)
+#typedef d2var = $D2E.d2var
+#typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
+(* ****** ****** *)
 #typedef s2qag = $D2E.s2qag
 #typedef t2qag = $D2E.t2qag
 #typedef t2iag = $D2E.t2iag
+#typedef t2jag = $D2E.t2jag
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -137,12 +141,16 @@ D3E = "./\
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef fpathopt = optn(fpath)
+(* ****** ****** *)
 #typedef s2varlst = list(s2var)
 #typedef s2explst = list(s2exp)
 #typedef d2cstlst = list(d2cst)
+(* ****** ****** *)
 #typedef s2qaglst = list(s2qag)
 #typedef t2qaglst = list(t2qag)
 #typedef t2iaglst = list(t2iag)
+#typedef t2jaglst = list(t2jag)
+(* ****** ****** *)
 #typedef d3patlst = list(d3pat)
 #typedef d3explst = list(d3exp)
 #typedef d3eclist = list(d3ecl)
@@ -206,10 +214,14 @@ d3pat1_node =
 |D3P1flt of token
 |D3P1str of token
 //
+(* ****** ****** *)
+//
 |D3P1dapp of
 (d3pat
 ,sint(*npf*), d3pat1lst(*darg*)
 ) (* D3P1dapp *)
+//
+(* ****** ****** *)
 //
 |D3P1rfpt of
 (d3pat1,token(*AS*),d3pat1(*aspt*))
@@ -269,6 +281,34 @@ d3exp1_node =
 |D3E1chr of token
 |D3E1flt of token
 |D3E1str of token
+//
+(* ****** ****** *)
+//
+|D3E1var of (d2var)
+//
+|D3E1con of (d2con)
+|D3E1cst of (d2cst)
+//
+(* ****** ****** *)
+//
+|D3E1sapp of
+(d3exp1(*fun*), s2explst)
+|D3E1sapq of
+(d3exp1(*fun*), s2typlst)
+//
+(* ****** ****** *)
+//
+|D3E1tapp of
+(d3exp1(*cst*), s2explst)
+|D3E1tapq of
+(d3exp1(*cst*), t2jaglst)
+//
+(* ****** ****** *)
+//
+|D3E1dap0 of
+(d3exp1(*fun*))//HX:nullary?
+|D3E1dapp of
+(d3exp1, sint(*npf*), d3exp1lst)
 //
 (* ****** ****** *)
 |D3E1ift0 of
