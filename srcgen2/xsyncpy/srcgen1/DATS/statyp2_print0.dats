@@ -49,11 +49,6 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/statyp2.sats"
 //
 (* ****** ****** *)
-//
-#staload "\
-./../../../SATS/statyp2.sats"
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload

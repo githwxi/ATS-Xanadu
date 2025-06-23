@@ -44,9 +44,6 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../HATS/mytmplib00.hats"
 (* ****** ****** *)
-#staload
-"./../../../SATS/dynexp2.sats"
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload

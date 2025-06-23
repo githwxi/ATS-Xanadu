@@ -97,6 +97,10 @@ d3ecl_trx3cpy
 fun
 d3patlst_trx3cpy
 (d3ps: d3patlst, env0: !env3cpy): d3pat1lst
+//
+fun
+d3expopt_trx3cpy
+(dopt: d3expopt, env0: !env3cpy): d3exp1opt
 fun
 d3explst_trx3cpy
 (d3es: d3explst, env0: !env3cpy): d3exp1lst
