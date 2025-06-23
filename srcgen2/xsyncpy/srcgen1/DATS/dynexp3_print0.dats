@@ -175,6 +175,56 @@ prints("D3E1str(", tstr, ")"))
 //
 (* ****** ****** *)
 //
+|D3E1var
+(   d2v1   ) =>
+(
+prints("D3E1var(", d2v1, ")"))
+//
+|D3E1con
+(   d2c1   ) =>
+(
+prints("D3E1con(", d2c1, ")"))
+|D3E1cst
+(   d2c1   ) =>
+(
+prints("D3E1cst(", d2c1, ")"))
+//
+(* ****** ****** *)
+//
+|D3E1sapp
+(d3e1, s2es) =>
+prints
+("D3E1sapp(",d3e1,";",s2es,")")
+|D3E1sapq
+(d3e1, t2ps) =>
+prints
+("D3E1sapq(",d3e1,";",t2ps,")")
+//
+(* ****** ****** *)
+//
+|D3E1tapp
+(d3e1, s2es) =>
+prints
+("D3E1tapp(",d3e1,";",s2es,")")
+|D3E1tapq
+(d3e1, tjas) =>
+prints
+("D3E1tapq(",d3e1,";",tjas,")")
+//
+(* ****** ****** *)
+//
+|D3E1dap0
+(   d3f0   ) =>
+(
+ prints("D3E1dap0(", d3f0, ")"))
+|D3E1dapp
+(d3f0,npf1,d3es) =>
+(
+print("D3E1dapp(");
+prints(d3f0,";",npf1,";",d3es,")"))
+//
+(* ****** ****** *)
+//
 |D3E1ift0
 (d3e1,dthn,dels) =>
 (
