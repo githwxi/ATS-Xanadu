@@ -100,17 +100,18 @@ D3E = "./\
 (* ****** ****** *)
 #typedef s2var = $S2E.s2var
 #typedef s2exp = $S2E.s2exp
+#typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
 #typedef s2res = $D2E.s2res
-(* ****** ****** *)
-#typedef d2var = $D2E.d2var
-#typedef d2con = $D2E.d2con
-#typedef d2cst = $D2E.d2cst
 (* ****** ****** *)
 #typedef s2qag = $D2E.s2qag
 #typedef t2qag = $D2E.t2qag
 #typedef t2iag = $D2E.t2iag
 #typedef t2jag = $D2E.t2jag
+(* ****** ****** *)
+#typedef d2var = $D2E.d2var
+#typedef d2con = $D2E.d2con
+#typedef d2cst = $D2E.d2cst
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -125,6 +126,13 @@ D3E = "./\
 (* ****** ****** *)
 #abstbox f3arg1_tbox // p0tr
 #typedef f3arg1 = f3arg1_tbox
+(* ****** ****** *)
+#abstbox d3gua1_tbox // p0tr
+#abstbox d3gpt1_tbox // p0tr
+#abstbox d3cls1_tbox // p0tr
+#typedef d3gua1 = d3gua_tbox
+#typedef d3gpt1 = d3gpt_tbox
+#typedef d3cls1 = d3cls_tbox
 (* ****** ****** *)
 #abstbox d3ecl1_tbox // p0tr
 #typedef d3ecl1 = d3ecl1_tbox
@@ -144,12 +152,16 @@ D3E = "./\
 (* ****** ****** *)
 #typedef s2varlst = list(s2var)
 #typedef s2explst = list(s2exp)
-#typedef d2cstlst = list(d2cst)
+#typedef s2typlst = list(s2typ)
 (* ****** ****** *)
 #typedef s2qaglst = list(s2qag)
 #typedef t2qaglst = list(t2qag)
 #typedef t2iaglst = list(t2iag)
 #typedef t2jaglst = list(t2jag)
+(* ****** ****** *)
+#typedef d2varlst = list(d2var)
+#typedef d2conlst = list(d2con)
+#typedef d2cstlst = list(d2cst)
 (* ****** ****** *)
 #typedef d3patlst = list(d3pat)
 #typedef d3explst = list(d3exp)
@@ -164,9 +176,13 @@ D3E = "./\
 (* ****** ****** *)
 #typedef d3pat1opt = optn(d3pat1)
 #typedef d3exp1opt = optn(d3exp1)
-#typedef d3ecl1opt = optn(d3ecl1)
 (* ****** ****** *)
 #typedef f3arg1lst = list(f3arg1)
+(* ****** ****** *)
+#typedef d3gua1lst = list(d3gua1)
+#typedef d3cls1lst = list(d3cls1)
+(* ****** ****** *)
+#typedef d3ecl1opt = optn(d3ecl1)
 (* ****** ****** *)
 #typedef d3valdcl1 = d3valdcl1_tbox
 #typedef d3vardcl1 = d3vardcl1_tbox
@@ -311,10 +327,14 @@ d3exp1_node =
 (d3exp1, sint(*npf*), d3exp1lst)
 //
 (* ****** ****** *)
+//
 |D3E1ift0 of
 (
 d3exp1(*cond*),
 d3exp1opt(*thn*), d3exp1opt(*els*))
+|D3Ecas0 of
+( token(*+/0/-*), d3exp1, d3cls1lst)
+//
 (* ****** ****** *)
 //
 |D3E1d3exp of (d3exp)//yet-to-be-copied

@@ -82,9 +82,23 @@ fun
 d3exp_trx3cpy
 (d3e0: d3exp, env0: !env3cpy): d3exp1
 //
+(* ****** ****** *)
+//
 fun
 f3arg_trx3cpy
 (f3a0: f3arg, env0: !env3cpy): f3arg1
+//
+(* ****** ****** *)
+//
+fun
+d3gua_trx3cpy
+(dgua: d3gua, env0: !env3cpy): d3gua1
+fun
+d3gpt_trx3cpy
+(dgpt: d3gpt, env0: !env3cpy): d3gpt1
+fun
+d3cls_trx3cpy
+(dcls: d3cls, env0: !env3cpy): d3cls1
 //
 (* ****** ****** *)
 //
@@ -110,6 +124,15 @@ d3explst_trx3cpy
 fun
 f3arglst_trx3cpy
 (f3as: f3arglst, env0: !env3cpy): f3arg1lst
+//
+(* ****** ****** *)
+//
+fun
+d3gualst_trx3cpy
+(d3gs: d3gualst, env0: !env3cpy): d3gua1lst
+fun
+d3clslst_trx3cpy
+(d3cs: d3clslst, env0: !env3cpy): d3cls1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)

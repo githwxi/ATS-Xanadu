@@ -159,6 +159,32 @@ map$e1nv$fopr<x0><y0><e1> = f3arg_trx3cpy
 }(*where*)//end-of-[f3arglst_trx3cpy(f3as,env0)]
 //
 (* ****** ****** *)
+//
+#implfun
+d3gualst_trx3cpy
+(d3gs, env0) =
+list_map$e1nv(d3gs, env0) where
+{
+#typedef x0 = d3gua
+#typedef y0 = d3gua1
+#vwtpdef e1 = env3cpy
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = d3gua_trx3cpy
+}(*where*)//end-of-[d3gualst_trx3cpy(d3gs,env0)]
+//
+#implfun
+d3clslst_trx3cpy
+(d3cs, env0) =
+list_map$e1nv(d3cs, env0) where
+{
+#typedef x0 = d3cls
+#typedef y0 = d3cls1
+#vwtpdef e1 = env3cpy
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = d3cls_trx3cpy
+}(*where*)//end-of-[d3clslst_trx3cpy(d3cs,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
