@@ -87,12 +87,10 @@ f0_include(d3cl, env0)
 //
 (* ****** ****** *)
 //
-(*
 |D3Cvaldclst _ =>
 f0_valdclst(d3cl, env0)
 |D3Cvardclst _ =>
 f0_vardclst(d3cl, env0)
-*)
 //
 |D3Cfundclst _ =>
 f0_fundclst(d3cl, env0)
@@ -227,6 +225,44 @@ end//let
 (* ****** ****** *)
 //
 fun
+f0_valdclst
+(d3cl: d3ecl
+,env0: !env3cpy): d3ecl1 =
+let
+//
+val-
+D3Cvaldclst
+( tknd, d3vs) = d3cl.node()
+//
+val d3vs =
+d3valdclist_trx3cpy(d3vs, env0)
+//
+in//let
+(
+d3ecl1(loc0,D3C1valdclst(tknd,d3vs)))
+end//let
+//
+fun
+f0_vardclst
+(d3cl: d3ecl
+,env0: !env3cpy): d3ecl1 =
+let
+//
+val-
+D3Cvardclst
+( tknd, d3vs) = d3cl.node()
+//
+val d3vs =
+d3vardclist_trx3cpy(d3vs, env0)
+//
+in//let
+(
+d3ecl1(loc0,D3C1vardclst(tknd,d3vs)))
+end//let
+//
+(* ****** ****** *)
+//
+fun
 f0_fundclst
 (d3cl: d3ecl
 ,env0: !env3cpy): d3ecl1 =
@@ -275,6 +311,34 @@ TEQD3EXP1some(teq1, d3e2) where
 )(*case+*)//endof(teqd3exp_trx3cpy(tdxp,env0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3valdcl_trx3cpy
+  (dval, env0) = let
+//
+val loc0 =
+d3valdcl1_lctn$get(dval)
+val dpat =
+d3valdcl1_dpat$get(dval)
+val tdxp =
+d3valdcl1_tdxp$get(dval)
+val wsxp =
+d3valdcl1_wsxp$get(dval)
+//
+val dpat =
+(
+  d3pat_trx3cpy(dpat, env0))
+//
+val tdxp =
+(
+  teqd3exp_trx3cpy(tdxp, env0))
+//
+in//let
+d3valdcl1_make_args(loc0,dpat,tdxp,wsxp)
+end//let
+(*let*)//end-of-[d3valdcl_trx3cpy(dval,env0)]
+//
 (* ****** ****** *)
 //
 #implfun
