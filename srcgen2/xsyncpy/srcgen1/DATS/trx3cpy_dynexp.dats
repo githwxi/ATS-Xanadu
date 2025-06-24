@@ -127,6 +127,9 @@ d3exp1(loc0, D3E1con(d2c1))
 |D3Ecst(d2c1) =>
 d3exp1(loc0, D3E1cst(d2c1))
 //
+|D3Esapp _ => f0_sapp(d3e0, env0)
+|D3Esapq _ => f0_sapq(d3e0, env0)
+//
 |D3Etapp _ => f0_tapp(d3e0, env0)
 |D3Etapq _ => f0_tapq(d3e0, env0)
 //
@@ -144,6 +147,52 @@ d3exp1(loc0, t2p0, D3E1d3exp(d3e0)))
 //
 val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
+//
+(* ****** ****** *)
+//
+fun
+f0_sapp
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Esapp
+(d3f0, s2es) = d3e0.node()
+//
+val d3f0 =
+(
+  d3exp_trx3cpy(d3f0, env0))
+//
+in//let
+d3exp1
+(loc0, t2p0, D3E1sapp(d3f0, s2es))
+end//let
+//
+(* ****** ****** *)
+//
+fun
+f0_sapq
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Esapq
+(d3f0, t2ps) = d3e0.node()
+//
+val d3f0 =
+(
+  d3exp_trx3cpy(d3f0, env0))
+//
+in//let
+d3exp1
+(loc0, t2p0, D3E1sapq(d3f0, t2ps))
+end//let
 //
 (* ****** ****** *)
 //
