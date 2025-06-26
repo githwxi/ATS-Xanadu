@@ -154,6 +154,8 @@ D3E = "./\
 #typedef s2explst = list(s2exp)
 #typedef s2typlst = list(s2typ)
 (* ****** ****** *)
+#typedef s2expopt = optn(s2exp)
+(* ****** ****** *)
 #typedef s2qaglst = list(s2qag)
 #typedef t2qaglst = list(t2qag)
 #typedef t2iaglst = list(t2iag)
@@ -162,6 +164,8 @@ D3E = "./\
 #typedef d2varlst = list(d2var)
 #typedef d2conlst = list(d2con)
 #typedef d2cstlst = list(d2cst)
+(* ****** ****** *)
+#typedef d2varopt = optn(d2var)
 (* ****** ****** *)
 #typedef d3patlst = list(d3pat)
 #typedef d3explst = list(d3exp)
@@ -539,24 +543,24 @@ d3fundcl1_lctn$get:(d3fundcl1)->loc_t
 //
 (* ****** ****** *)
 fun
-d3valdcl1_get_dpat:(d3valdcl)->d3pat1
+d3valdcl1_dpat$get:(d3valdcl1)->d3pat1
 fun
-d3valdcl1_get_wsxp:(d3valdcl)->wths2exp
+d3valdcl1_wsxp$get:(d3valdcl1)->wths2exp
 fun
-d3valdcl1_get_tdxp:(d3valdcl)->teqd3exp1
+d3valdcl1_tdxp$get:(d3valdcl1)->teqd3exp1
 (* ****** ****** *)
 #symload dpat with d3valdcl1_get_dpat
 #symload wsxp with d3valdcl1_get_wsxp(*opt*)
 #symload tdxp with d3valdcl1_get_tdxp(*opt*)
 (* ****** ****** *)
 fun
-d3vardcl1_get_dpid:(d3vardcl1)->d2var
+d3vardcl1_dpid$get:(d3vardcl1)->d2var
 fun
-d3vardcl1_get_vpid:(d3vardcl1)->d2varopt
+d3vardcl1_vpid$get:(d3vardcl1)->d2varopt
 fun
-d3vardcl1_get_sres:(d3vardcl1)->s2expopt
+d3vardcl1_sres$get:(d3vardcl1)->s2expopt
 fun
-d3vardcl1_get_dini:(d3vardcl1)->teqd3exp1
+d3vardcl1_dini$get:(d3vardcl1)->teqd3exp1
 (* ****** ****** *)
 #symload dpid with d3vardcl1_get_dpid
 #symload vpid with d3vardcl1_get_vpid(*opt*)
@@ -588,14 +592,17 @@ fun
 d3valdcl1_make_args
 ( lctn:loc_t
 , dpat:d3pat1
-, tdxp:teqd3exp1, wsxp:wths2exp):d3valdcl
+, tdxp:teqd3exp1, wsxp:wths2exp):d3valdcl1
 //
 fun
-d3vardcl_make_args
+d3vardcl1_make_args
 ( lctn:loc_t
 , dpid:d2var
 , vpid:d2varopt
-, sres:s2expopt, dini:teqd3exp1):d3vardcl
+, sres:s2expopt, dini:teqd3exp1):d3vardcl1
+//
+#symload d3valdcl1 with d3valdcl1_make_args
+#symload d3vardcl1 with d3vardcl1_make_args
 //
 (* ****** ****** *)
 //
@@ -605,6 +612,7 @@ d3fundcl1_make_args
 , dpid:d2var
 , farg:f3arg1lst, sres:s2res
 , tdxp:teqd3exp1, wsxp:wths2exp):d3fundcl1
+#symload d3fundcl1 with d3fundcl1_make_args
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -338,6 +338,15 @@ prints
 //
 (* ****** ****** *)
 //
+|D3C1valdclst
+(  tknd, d3vs  ) =>
+(
+prints("D3C1valdclst(",tknd,";",d3vs,")"))
+|D3C1vardclst
+(  tknd, d3vs  ) =>
+(
+prints("D3C1vardclst(",tknd,";",d3vs,")"))
+//
 |D3C1fundclst
 (tknd
 ,tqas,d2cs,d3fs) =>
@@ -355,6 +364,51 @@ prints(tknd,";",tqas,";",d2cs,";",d3fs,")"))
 (* ****** ****** *)
 //
 end(*let*)//end-of-[d3ecl1_fprint(d3cl,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3valdcl1_fprint
+ ( dval, out0 ) = let
+//
+val dpat =
+d3valdcl1_dpat$get(dval)
+val tdxp =
+d3valdcl1_tdxp$get(dval)
+val wsxp =
+d3valdcl1_wsxp$get(dval)
+//
+#impltmp g_print$out<>() = out0
+//
+in//let
+(
+prints
+("D3VALDCL1(",dpat,";",tdxp,";",wsxp,")"))
+end(*let*)//end-of-[d3valdcl1_fprint(dval,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3vardcl1_fprint
+ ( dvar, out0 ) = let
+//
+val dpid =
+d3vardcl1_dpid$get(dvar)
+val vpid =
+d3vardcl1_vpid$get(dvar)
+val sres =
+d3vardcl1_sres$get(dvar)
+val dini =
+d3vardcl1_dini$get(dvar)
+//
+#impltmp g_print$out<>() = out0
+//
+in//let
+(
+print("D3VARDCL1(");
+prints(dpid,";",vpid,";",sres,";",dini,")"))
+end(*let*)//end-of-[d3vardcl1_fprint(dvar,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -379,7 +433,7 @@ in//let
 (
 prints("D3FUNDCL1(",dpid,";");
 prints(farg,";",sres,";",tdxp,";",wsxp,")"))
-end(*let*)//end-of-[ g_print<d3fundcl1>( dfun ) ]
+end(*let*)//end-of-[d3fundcl1_fprint(dfun,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

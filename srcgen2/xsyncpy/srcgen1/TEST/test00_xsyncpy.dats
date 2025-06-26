@@ -13,6 +13,9 @@ For testing xsyncpy!
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val N = 10
+var N = 10
+//
 fun
 fact(n: sint): sint =
 if n <= 0 then 1 else n * fact(n-1)

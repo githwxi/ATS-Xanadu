@@ -318,13 +318,13 @@ d3valdcl_trx3cpy
   (dval, env0) = let
 //
 val loc0 =
-d3valdcl1_lctn$get(dval)
+d3valdcl_get_lctn(dval)
 val dpat =
-d3valdcl1_dpat$get(dval)
+d3valdcl_get_dpat(dval)
 val tdxp =
-d3valdcl1_tdxp$get(dval)
+d3valdcl_get_tdxp(dval)
 val wsxp =
-d3valdcl1_wsxp$get(dval)
+d3valdcl_get_wsxp(dval)
 //
 val dpat =
 (
@@ -338,6 +338,32 @@ in//let
 d3valdcl1_make_args(loc0,dpat,tdxp,wsxp)
 end//let
 (*let*)//end-of-[d3valdcl_trx3cpy(dval,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3vardcl_trx3cpy
+  (dvar, env0) = let
+//
+val loc0 =
+d3vardcl_get_lctn(dvar)
+val dpid =
+d3vardcl_get_dpid(dvar)
+val vpid =
+d3vardcl_get_vpid(dvar)
+val sres =
+d3vardcl_get_sres(dvar)
+val dini =
+d3vardcl_get_dini(dvar)
+//
+val dini =
+teqd3exp_trx3cpy(dini, env0)
+//
+in//let
+(
+d3vardcl1(loc0, dpid, vpid, sres, dini))
+end//let
+(*let*)//end-of-[d3vardcl_trx3cpy(dvar,env0)]
 //
 (* ****** ****** *)
 //
@@ -381,7 +407,7 @@ val (  ) = prerrsln
 in//let
 (
   d3fundcl1_make_args
-  (loc0, dvar, f3as, sres, tdxp, wsxp))
+  (loc0, dvar, f3as, sres, tdxp, wsxp) )
 end(*let*)//end-of-[d3fundcl_trx3cpy(dfun,env0)]
 //
 (* ****** ****** *)
