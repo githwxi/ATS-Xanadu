@@ -16,6 +16,8 @@ For testing xsyncpy!
 val N = 10
 var N = 10
 //
+(* ****** ****** *)
+//
 fun
 fact(n: sint): sint =
 if n <= 0 then 1 else n * fact(n-1)
@@ -24,5 +26,5 @@ if n <= 0 then 1 else n * fact(n-1)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test00_xsyncpy.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test01_xsyncpy.dats] *)
 (***********************************************************************)
