@@ -219,7 +219,7 @@ loctn, f3arg1_node)
 #absimpl
 f3arg1_tbox = f3arg1
 //
-in (* in-of-local *)
+in//local
 //
 #implfun
 f3arg1_make_lctn$node
@@ -239,6 +239,37 @@ end
 endloc (*local*) // end of [local(f3arg1)]
 //
 (* ****** ****** *)
+//
+local
+//
+datatype
+d3gua1 =
+D3GUA1 of
+(
+loctn, d3gua1_node)
+#absimpl
+d3gua1_tbox = d3gua1
+//
+in//local
+//
+#implfun
+d3gua1_make_node
+(   loc,nod   ) = D3GUA1(loc,nod)
+//
+#implfun
+d3gua1_lctn$get(d3g) =
+let
+  val+D3GUA1(loc,nod) = d3g in loc
+end
+#implfun
+d3gua1_node$get(d3g) =
+let
+  val+D3GUA1(loc,nod) = d3g in nod
+end
+//
+endloc (*local*) // end-of-[local(d3gua1)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
@@ -255,7 +286,7 @@ D3ECL1_vt of
 #absimpl d3ecl1_tbox = d3ecl1
 //
 (* ****** ****** *)
-in (* in-of-local *)
+in//local
 (* ****** ****** *)
 //
 #implfun
