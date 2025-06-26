@@ -296,6 +296,146 @@ endloc (*local*) // end of [local(d3ecl1)]
 local
 //
 datatype
+d3valdcl1 =
+D3VALDCL1 of
+( loc_t
+, d3pat1
+, teqd3exp1, wths2exp)
+//
+#absimpl
+d3valdcl1_tbox = d3valdcl1
+//
+in//local
+//
+#implfun
+d3valdcl1_lctn$get
+  (  dval  ) = let
+val+
+D3VALDCL1
+( lctn
+, dpat
+, tdxp, wsxp) = dval in lctn end
+//
+#implfun
+d3valdcl1_dpat$get
+  (  dval  ) = let
+val+
+D3VALDCL1
+( lctn
+, dpat
+, tdxp, wsxp) = dval in dpat end
+//
+#implfun
+d3valdcl1_tdxp$get
+  (  dval  ) = let
+val+
+D3VALDCL1
+( lctn
+, dpat
+, tdxp, wsxp) = dval in tdxp end
+//
+#implfun
+d3valdcl1_wsxp$get
+  (  dval  ) = let
+val+
+D3VALDCL1
+( lctn
+, dpat
+, tdxp, wsxp) = dval in wsxp end
+//
+(* ****** ****** *)
+//
+#implfun
+d3valdcl1_make_args
+(lctn, dpat, tdxp, wsxp) =
+(
+  D3VALDCL1(lctn, dpat, tdxp, wsxp))
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end-of-[local(d3valdcl1)]
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+d3vardcl1 =
+D3VARDCL1 of
+( loc_t
+, d2var
+, d2varopt
+, s2expopt, teqd3exp1)
+//
+#absimpl
+d3vardcl1_tbox = d3vardcl1
+//
+in//local
+//
+#implfun
+d3vardcl1_lctn$get
+  (  dvar  ) = let
+val+
+D3VARDCL1
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in lctn end
+//
+#implfun
+d3vardcl1_dpid$get
+  (  dvar  ) = let
+val+
+D3VARDCL1
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in dpid end
+//
+#implfun
+d3vardcl1_vpid$get
+  (  dvar  ) = let
+val+
+D3VARDCL1
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in vpid end
+//
+#implfun
+d3vardcl1_sres$get
+  (  dvar  ) = let
+val+
+D3VARDCL1
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in sres end
+//
+#implfun
+d3vardcl1_dini$get
+  (  dvar  ) = let
+val+
+D3VARDCL1
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in dini end
+//
+(* ****** ****** *)
+//
+#implfun
+d3vardcl1_make_args
+( lctn
+, dpid, vpid, sres, dini) =
+(
+D3VARDCL1(lctn, dpid, vpid, sres, dini))
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end-of-[local(d3vardcl1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
 d3fundcl1 =
 D3FUNDCL1 of
 ( loc_t

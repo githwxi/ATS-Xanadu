@@ -824,7 +824,7 @@ end (*let*) // end of [ d3ecl_fprint( dcl0, out ) ]
 
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 d3valdcl_fprint
  ( dval, out ) = let
@@ -843,7 +843,7 @@ in//let
 prints
 ("D3VALDCL(",dpat,";",tdxp,";",wsxp,")"))
 end(*let*)//end-of-[d3valdcl_fprint(dval,out)]
-
+//
 (* ****** ****** *)
 //
 #implfun

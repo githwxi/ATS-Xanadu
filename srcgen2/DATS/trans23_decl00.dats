@@ -823,7 +823,7 @@ end (*let*) // end of [f0_dynconst(env0,d2cl)]
 
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 trans23_teqd2exp
   (env0, tdxp) =
@@ -838,9 +838,10 @@ TEQD3EXPsome(teq1, d3e2) where
 { val
   d3e2 = trans23_d2exp(env0, d2e2) }
 ) (*case+*)//end-of(trans23_teqd2exp(...))
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 trans23_d2valdcl
   (env0, dval) = let
@@ -876,9 +877,9 @@ in//let
 d3valdcl_make_args(loc0,dpat,tdxp,wsxp)
 end//let
 (*let*)//end-of-[trans23_d2valdcl(env0,dval)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 trans23_d2vardcl
   (env0, dvar) = let
@@ -901,7 +902,7 @@ in//let
 d3vardcl_make_args(loc0,dpid,vpid,sres,dini)
 end//let
 (*let*)//end-of-[trans23_d2vardcl(env0,dvar)]
-
+//
 (* ****** ****** *)
 //
 #implfun
