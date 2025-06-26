@@ -58,7 +58,10 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #symload lctn with d3pat_get_lctn
 #symload lctn with d3exp_get_lctn
-#symload lctn with d3ecl_get_lctn
+//
+#symload node with d3pat_get_node
+#symload node with d3exp_get_node
+#symload node with d3gua_get_node
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -341,11 +344,11 @@ val loc0 = farg.lctn()
 //
 (*
 val () =
-prerrsln
-("f3arg_trx3cpy: loc0 = ", loc0)
+prerrsln("\
+f3arg_trx3cpy: loc0 = ", loc0)
 val () =
-prerrsln
-("f3arg_trx3cpy: farg = ", farg)
+prerrsln("\
+f3arg_trx3cpy: farg = ", farg)
 *)
 //
 in//let
@@ -377,6 +380,51 @@ F3ARGmets
 f3arg1(loc0, F3ARG1mets(  s2es  )))
 //
 end(*let*)//end-of-[f3arg_trx3cpy(f3a0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3gua_trx3cpy
+(dgua, env0) =
+let
+//
+val loc0 = dgua.lctn()
+//
+(*
+val () =
+prerrsln("\
+d3gua_trx3cpy: loc0 = ", loc0)
+val () =
+prerrsln("\
+d3gua_trx3cpy: dgua = ", dgua)
+*)
+//
+in//let
+//
+case+
+dgua.node() of
+//
+|D3GUAexp(d3e1) =>
+(
+d3gua1
+(loc0, D3GUA1exp(d3e1)))
+where{
+val d3e1 =
+d3exp_trx3cpy(d3e1, env0)}
+//
+|D3GUAmat(d3e1, d3p2) =>
+(
+d3gua1
+(loc0, D3GUA1mat(d3e1, d3p2)))
+where
+{
+val
+d3e1 = d3exp_trx3cpy(d3e1, env0)
+val
+d3p2 = d3pat_trx3cpy(d3p2, env0)}
+//
+end(*let*)//end-of-[d3gua_trx3cpy(d3gua,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
