@@ -130,9 +130,9 @@ D3E = "./\
 #abstbox d3gua1_tbox // p0tr
 #abstbox d3gpt1_tbox // p0tr
 #abstbox d3cls1_tbox // p0tr
-#typedef d3gua1 = d3gua_tbox
-#typedef d3gpt1 = d3gpt_tbox
-#typedef d3cls1 = d3cls_tbox
+#typedef d3gua1 = d3gua1_tbox
+#typedef d3gpt1 = d3gpt1_tbox
+#typedef d3cls1 = d3cls1_tbox
 (* ****** ****** *)
 #abstbox d3ecl1_tbox // p0tr
 #typedef d3ecl1 = d3ecl1_tbox
@@ -427,6 +427,80 @@ fun
 f3arg1_make_lctn$node
 (loc:loc_t, nod:f3arg1_node):f3arg1
 #symload f3arg1 with f3arg1_make_lctn$node
+//
+(* ****** ****** *)
+//
+//
+datatype
+d3gua1_node =
+| D3GUA1exp of (d3exp1)
+| D3GUA1mat of (d3exp1, d3pat1)
+//
+(* ****** ****** *)
+//
+datatype
+d3cls1_node =
+| D3CLS1gpt of (d3gpt1)
+| D3CLS1cls of (d3gpt1, d3exp1)
+and
+d3gpt1_node =
+| D3GPT1pat of (d3pat1)
+| D3GPT1gua of (d3pat1, d3gua1lst)
+//
+(* ****** ****** *)
+//
+fun
+d3gua1_fprint
+(dgua: d3gua1, out0: FILR): void
+fun
+d3gpt1_fprint
+(dgpt: d3gpt1, out0: FILR): void
+fun
+d3cls1_fprint
+(dcls: d3cls1, out0: FILR): void
+//
+(* ****** ****** *)
+//
+fun
+d3gua1_lctn$get: d3gua1 -> loc_t
+fun
+d3gpt1_lctn$get: d3gpt1 -> loc_t
+fun
+d3cls1_lctn$get: d3cls1 -> loc_t
+//
+#symload lctn with d3gua1_lctn$get
+#symload lctn with d3gpt1_lctn$get
+#symload lctn with d3cls1_lctn$get
+//
+fun
+d3gua1_node$get
+  ( dgua : d3gua1 ) : d3gua1_node
+fun
+d3gpt1_node$get
+  ( dgpt : d3gpt1 ) : d3gpt1_node
+fun
+d3cls1_node$get
+  ( dcls : d3cls1 ) : d3cls1_node
+//
+#symload node with d3gua1_node$get
+#symload node with d3gpt1_node$get
+#symload node with d3cls1_node$get
+//
+(* ****** ****** *)
+//
+fun
+d3gua1_make_node
+(loc0:loc_t,node:d3gua1_node):d3gua1
+fun
+d3gpt1_make_node
+(loc0:loc_t,node:d3gpt1_node):d3gpt1
+fun
+d3cls1_make_node
+(loc0:loc_t,node:d3cls1_node):d3cls1
+//
+#symload d3gua1 with d3gua1_make_node
+#symload d3gpt1 with d3gpt1_make_node
+#symload d3cls1 with d3cls1_make_node
 //
 (* ****** ****** *)
 (* ****** ****** *)
