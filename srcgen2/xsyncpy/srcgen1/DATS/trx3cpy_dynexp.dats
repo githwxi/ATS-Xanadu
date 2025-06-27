@@ -87,14 +87,48 @@ d3pat1(loc0, D3P1flt(tflt))
 |D3Pstr(tstr) =>
 d3pat1(loc0, D3P1str(tstr))
 //
+|D3Pdapp _ => f0_dapp(d3p0, env0)
+//
 |
 _(*otherwise*) =>
 (
-  d3pat1(loc0, D3P1d3pat(d3p0)))
+  d3pat1(loc0, t2p0, D3P1d3pat(d3p0)))
 ) where
 {
 //
+(* ****** ****** *)
+//
 val loc0 = d3p0.lctn()
+val t2p0 = d3p0.styp()
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+(d3p0: d3pat
+,env0: !env3cpy): d3pat1 =
+let
+val-
+D3Pdapp
+(d3f0
+,npf1, d3ps) = d3p0.node()
+//
+val d3f0 =
+(
+  d3pat_trx3cpy(d3f0, env0))
+//
+val d3ps =
+(
+  d3patlst_trx3cpy(d3ps, env0))
+//
+in//let
+//
+d3pat1
+(loc0, t2p0, D3P1dapp(d3f0,npf1,d3ps))
+//
+end//let
+//
+(* ****** ****** *)
 //
 (*
 val (  ) =
@@ -151,6 +185,8 @@ _(*otherwise*) =>
 d3exp1(loc0, t2p0, D3E1d3exp(d3e0)))
 ) where
 {
+//
+(* ****** ****** *)
 //
 val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
@@ -295,6 +331,8 @@ d3exp1
 (loc0, t2p0, D3E1dapp(d3f0,npf1,d3es))
 //
 end//let
+//
+(* ****** ****** *)
 //
 fun
 f0_ift0

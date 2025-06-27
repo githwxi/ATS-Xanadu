@@ -273,6 +273,26 @@ g_print
   f3arg1_fprint(farg, g_print$out<>((*0*))))
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print
+<d3gua1>(dgua) =
+(
+  d3gua1_fprint(dgua, g_print$out<>((*0*))))
+//
+#impltmp
+g_print
+<d3gpt1>(dgpt) =
+(
+  d3gpt1_fprint(dgpt, g_print$out<>((*0*))))
+//
+#impltmp
+g_print
+<d3cls1>(dcls) =
+(
+  d3cls1_fprint(dcls, g_print$out<>((*0*))))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
