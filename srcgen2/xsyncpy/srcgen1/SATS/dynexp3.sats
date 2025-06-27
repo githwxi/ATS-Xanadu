@@ -75,6 +75,14 @@ LEX = "./\
 (* ****** ****** *)
 //
 #staload
+S1E = "./\
+../../../SATS/staexp1.sats"
+#staload
+D1E = "./\
+../../../SATS/dynexp1.sats"
+//
+(* ****** ****** *)
+#staload
 S2E = "./\
 ../../../SATS/staexp2.sats"
 #staload
@@ -97,6 +105,8 @@ D3E = "./\
 #typedef loctn = $LOC.loctn
 (* ****** ****** *)
 #typedef token = $LEX.token
+(* ****** ****** *)
+#typedef s1exp = $S1E.s1exp
 (* ****** ****** *)
 #typedef s2var = $S2E.s2var
 #typedef s2exp = $S2E.s2exp
@@ -171,12 +181,7 @@ D3E = "./\
 #typedef d3explst = list(d3exp)
 #typedef d3eclist = list(d3ecl)
 (* ****** ****** *)
-(*
-HX-2025-06-26:
-[f1unarrw] is actually
-first defined in [dynexp1.sats]!
-*)
-#typedef f1unarrw = $D2E.f1unarrw
+#typedef f1unarrw = $D1E.f1unarrw
 #typedef wths2exp = $D2E.wths2exp
 (* ****** ****** *)
 (* ****** ****** *)
@@ -381,6 +386,11 @@ d3exp1opt(*thn*), d3exp1opt(*els*))
 |D3E1try0 of
 (token(*$TRY*)
 ,d3exp1(*norm*),d3cls1lst(*handles*))
+//
+(* ****** ****** *)
+//
+|D3E1annot of
+(d3exp1,s1exp(*given*),s2exp(*trans*))
 //
 (* ****** ****** *)
 //

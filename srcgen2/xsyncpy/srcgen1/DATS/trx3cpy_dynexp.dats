@@ -188,6 +188,9 @@ d3exp1(loc0, D3E1cst(d2c1))
 |D3Efix0 _ => f0_fix0(d3e0, env0)
 //
 |
+D3Eannot _ => f0_annot(d3e0, env0)
+//
+|
 _(*otherwise*) =>
 (
 d3exp1(loc0, t2p0, D3E1d3exp(d3e0)))
@@ -555,7 +558,7 @@ D3Etry0
 //
 val d3e1 =
 (
-  d3exp_trx3cpy(d3e1, env0))
+d3exp_trx3cpy(d3e1, env0))
 val dcls =
 d3clslst_trx3cpy(dcls, env0)
 //
@@ -563,10 +566,34 @@ in//let
 //
 d3exp1
 ( loc0
-, t2p0, D3E1try0(tknd, d3e1, dcls))
+, t2p0, D3E1try0(tknd,d3e1,dcls))
 //
 end(*let*)//end-of-[f0_try0(d3e0,env0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_annot
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Eannot
+(d3e1
+,s1e2, s2e2) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+d3exp1
+( loc0
+, t2p0, D3E1annot(d3e1,s1e2,s2e2))
+end(*let*)//end-of-[f0_annot(d3e0,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
