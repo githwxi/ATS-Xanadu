@@ -58,10 +58,13 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #symload lctn with d3pat_get_lctn
 #symload lctn with d3exp_get_lctn
+#symload lctn with d3gua_get_lctn
+#symload lctn with d3gpt_get_lctn
 //
 #symload node with d3pat_get_node
 #symload node with d3exp_get_node
 #symload node with d3gua_get_node
+#symload node with d3gpt_get_node
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -424,7 +427,86 @@ d3e1 = d3exp_trx3cpy(d3e1, env0)
 val
 d3p2 = d3pat_trx3cpy(d3p2, env0)}
 //
-end(*let*)//end-of-[d3gua_trx3cpy(d3gua,env0)]
+end(*let*)//end-of-[d3gua_trx3cpy(dgua,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3gpt_trx3cpy
+(dgpt, env0) =
+let
+//
+val loc0 = dgpt.lctn()
+//
+in//let
+//
+case+
+dgpt.node() of
+//
+|D3GPTpat
+(  d3p1  ) =>
+let
+val
+d3p1 =
+d3pat_trx3cpy(d3p1, env0)
+in//let
+d3gpt1(loc0, D3GPT1pat(d3p1))
+end//let
+//
+|D3GPTgua
+(d3p1, d3gs) =>
+let
+val
+d3p1 =
+d3pat_trx3cpy(d3p1, env0)
+val
+d3gs =
+d3gualst_trx3cpy(d3gs, env0)
+in//let
+(
+d3gpt1(loc0, D3GPT1gua(d3p1, d3gs)))
+end//let
+//
+end(*let*)//end-of-[d3gpt_trx3cpy(dgpt,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3cls_trx3cpy
+(dcls, env0) =
+let
+//
+val loc0 = dcls.lctn()
+//
+in//let
+//
+case+
+dcls.node() of
+//
+|D3CLSgpt
+(   dgpt   ) =>
+let
+val
+dgpt =
+d3gpt_trx3cpy(dgpt, env0)
+in//let
+d3cls1(loc0, D3CLS1gpt(dgpt))
+end//let
+//
+|D3CLScls
+(dgpt, d3e1) =>
+let
+//
+val dgpt =
+d3gpt_trx3cpy(dgpt, env0)
+val d3e1 =
+d3exp_trx3cpy(d3e1, env0)
+in//let
+(
+d3cls1(loc0, D3CLS1cls(dgpt, d3e1)))
+end//let
+//
+end(*let*)//end-of-[d3cls_trx3cpy(dcls,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
