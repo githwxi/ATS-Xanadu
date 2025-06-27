@@ -179,6 +179,11 @@ d3exp1(loc0, D3E1cst(d2c1))
 |D3Eift0 _ => f0_ift0(d3e0, env0)
 |D3Ecas0 _ => f0_cas0(d3e0, env0)
 //
+|D3Eseqn _ => f0_seqn(d3e0, env0)
+//
+|D3Etup0 _ => f0_tup0(d3e0, env0)
+|D3Etup1 _ => f0_tup1(d3e0, env0)
+//
 |
 _(*otherwise*) =>
 (
@@ -328,7 +333,8 @@ val d3es =
 in//let
 //
 d3exp1
-(loc0, t2p0, D3E1dapp(d3f0,npf1,d3es))
+( loc0
+, t2p0, D3E1dapp(d3f0,npf1,d3es))
 //
 end//let
 //
@@ -358,7 +364,8 @@ val dels =
 in//let
 //
 d3exp1
-(loc0, t2p0, D3E1ift0(d3e1,dthn,dels))
+( loc0
+, t2p0, D3E1ift0(d3e1,dthn,dels))
 //
 end//let
 //
@@ -386,7 +393,80 @@ val d3cs =
 in//let
 //
 d3exp1
-(loc0, t2p0, D3E1cas0(tknd,d3e1,d3cs))
+( loc0
+, t2p0, D3E1cas0(tknd,d3e1,d3cs))
+//
+end//let
+//
+(* ****** ****** *)
+//
+fun
+f0_seqn
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Eseqn
+(d3es, d3e1) = d3e0.node()
+//
+val d3es =
+d3explst_trx3cpy(d3es, env0)
+//
+in//let
+//
+let
+val d3e1 =
+(
+  d3exp_trx3cpy(d3e1, env0))
+in//let
+d3exp1
+(loc0, t2p0, D3E1seqn(d3es,d3e1))
+end//let
+//
+end//let
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Etup0
+(npf1, d3es) = d3e0.node()
+//
+val d3es =
+d3explst_trx3cpy(d3es, env0)
+//
+in//let
+//
+d3exp1
+(loc0, t2p0, D3E1tup0(npf1,d3es))
+//
+end//let
+//
+fun
+f0_tup1
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Etup1
+(tknd
+,npf1, d3es) = d3e0.node()
+//
+val d3es =
+d3explst_trx3cpy(d3es, env0)
+//
+in//let
+//
+d3exp1
+( loc0
+, t2p0, D3E1tup1(tknd,npf1,d3es))
 //
 end//let
 //

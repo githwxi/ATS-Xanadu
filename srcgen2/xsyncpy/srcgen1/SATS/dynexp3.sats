@@ -337,7 +337,19 @@ d3exp1_node =
 d3exp1(*cond*),
 d3exp1opt(*thn*), d3exp1opt(*els*))
 |D3E1cas0 of
-( token(*+/0/-*), d3exp1, d3cls1lst)
+(token(*+/0/-*), d3exp1, d3cls1lst)
+//
+(* ****** ****** *)
+//
+|D3E1seqn of
+(d3exp1lst(*init*), d3exp1(*last*))
+//
+(* ****** ****** *)
+//
+|D3E1tup0 of
+(sint(*npf*), d3exp1lst)
+|D3E1tup1 of
+(token(*knd*),sint(*npf*),d3exp1lst)
 //
 (* ****** ****** *)
 //
