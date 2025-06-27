@@ -185,6 +185,7 @@ d3exp1(loc0, D3E1cst(d2c1))
 |D3Etup1 _ => f0_tup1(d3e0, env0)
 //
 |D3Elam0 _ => f0_lam0(d3e0, env0)
+|D3Efix0 _ => f0_fix0(d3e0, env0)
 //
 |
 _(*otherwise*) =>

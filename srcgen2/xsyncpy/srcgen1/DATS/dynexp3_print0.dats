@@ -260,6 +260,27 @@ prints
 ;prints(tknd,";",npf1,";",d3es,")"))
 //
 (* ****** ****** *)
+|D3E1lam0
+(tknd
+,f3as, sres
+,arrw, body) =>
+(
+prints
+("D3E1lam0(",tknd,";");
+prints
+(f3as,";",sres,";",arrw,";",body,")"))
+//
+|D3E1fix0
+(tknd, fid0
+,f3as, sres
+,arrw, body) =>
+(
+prints
+("D3E1fix0(",tknd,";",fid0,";");
+prints
+(f3as,";",sres,";",arrw,";",body,")"))
+//
+(* ****** ****** *)
 //
 |D3E1d3exp
 (   dexp   ) =>
