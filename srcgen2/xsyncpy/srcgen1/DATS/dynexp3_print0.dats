@@ -233,6 +233,14 @@ prints(d3e1,";",dthn,";",dels,")"))
 //
 (* ****** ****** *)
 //
+|D3E1cas0
+(tknd,d3e1,d3cs) =>
+(
+print("D3E1cas0(");
+prints(tknd,";",d3e1,";",d3cs,")"))
+//
+(* ****** ****** *)
+//
 |D3E1d3exp
 (   dexp   ) =>
 (
@@ -274,6 +282,65 @@ prints
   prints("F3ARG1mets(", s2es, ")"))
 //
 end(*let*)//end-of-[f3arg1_fprint(farg,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3gua1_fprint
+(dgua, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+dgua.node() of
+|
+D3GUA1exp(d3e1) =>
+(
+prints("D3GUA1exp(",d3e1,")"))
+|
+D3GUA1mat(d3e1,d3p2) =>
+(
+prints("D3GUA1mat(",d3e1,";",d3p2,")"))
+//
+end(*let*)//end-of-[d3gua1_fprint(dgua,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3gpt1_fprint
+(dgpt, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+case+
+dgpt.node() of
+|D3GPT1pat(d3p1) =>
+(
+prints("D3GPT1pat(",d3p1,")"))
+|D3GPT1gua(d3p1,d3gs) =>
+(
+prints("D3GPT1gua(",d3p1,";",d3gs,")"))
+end(*let*)//end-of-[d3gpt1_fprint(dgpt,out0)]
+//
+#implfun
+d3cls1_fprint
+(dcls, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+case+
+dcls.node() of
+|D3CLS1gpt(dgpt) =>
+(
+prints("D3CLS1gpt(",dgpt,")"))
+|D3CLS1cls(d3g1,d3e2) =>
+(
+prints("D3CLS1cls(",d3g1,";",d3e2,")"))
+end(*let*)//end of [d3cls1_fprint(dcls,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
