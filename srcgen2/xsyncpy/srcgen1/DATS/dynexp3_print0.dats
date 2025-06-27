@@ -267,8 +267,9 @@ prints
 (
 prints
 ("D3E1lam0(",tknd,";");
-prints
-(f3as,";",sres,";",arrw,";",body,")"))
+prints(
+f3as,";",sres,";",arrw,";",body,")")
+)
 //
 |D3E1fix0
 (tknd, fid0
@@ -277,8 +278,17 @@ prints
 (
 prints
 ("D3E1fix0(",tknd,";",fid0,";");
-prints
-(f3as,";",sres,";",arrw,";",body,")"))
+prints(
+f3as,";",sres,";",arrw,";",body,")")
+)
+//
+(* ****** ****** *)
+//
+|D3E1try0
+( tknd
+, d3e1, dcls) =>
+(print("D3E1try0(")
+;prints(tknd,";",d3e1,";",dcls,")"))
 //
 (* ****** ****** *)
 //
