@@ -226,7 +226,8 @@ prints(d3f0,";",npf1,";",d3es,")"))
 (* ****** ****** *)
 //
 |D3E1ift0
-(d3e1,dthn,dels) =>
+(d3e1
+,dthn, dels) =>
 (
 print("D3E1ift0(");
 prints(d3e1,";",dthn,";",dels,")"))
@@ -234,10 +235,29 @@ prints(d3e1,";",dthn,";",dels,")"))
 (* ****** ****** *)
 //
 |D3E1cas0
-(tknd,d3e1,d3cs) =>
+(tknd
+,d3e1, d3cs) =>
 (
 print("D3E1cas0(");
 prints(tknd,";",d3e1,";",d3cs,")"))
+//
+(* ****** ****** *)
+//
+|D3E1seqn
+(d3es, d3e1) =>
+prints
+("D3E1seqn(", d3es, ";", d3e1, ")")
+//
+(* ****** ****** *)
+//
+|D3E1tup0
+(npf1, d3es) =>
+prints
+("D3E1tup0(", npf1, ";", d3es, ")")
+|D3E1tup1
+(tknd,npf1,d3es) =>
+(print("D3E1tup1(")
+;prints(tknd,";",npf1,";",d3es,")"))
 //
 (* ****** ****** *)
 //
