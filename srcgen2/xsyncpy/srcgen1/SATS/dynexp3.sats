@@ -171,6 +171,12 @@ D3E = "./\
 #typedef d3explst = list(d3exp)
 #typedef d3eclist = list(d3ecl)
 (* ****** ****** *)
+(*
+HX-2025-06-26:
+[f1unarrw] is actually
+first defined in [dynexp1.sats]!
+*)
+#typedef f1unarrw = $D2E.f1unarrw
 #typedef wths2exp = $D2E.wths2exp
 (* ****** ****** *)
 (* ****** ****** *)
@@ -219,6 +225,13 @@ fprint with d3exp_fprint of 1000
 #symload
 fprint with d3ecl_fprint of 1000
 //
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef l3d3p1 = d3lab(d3pat1)
+#typedef l3d3e1 = d3lab(d3exp1)
+(* ****** ****** *)
+#typedef l3d3p1lst = list(l3d3p1)
+#typedef l3d3e1lst = list(l3d3e1)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -350,6 +363,18 @@ d3exp1opt(*thn*), d3exp1opt(*els*))
 (sint(*npf*), d3exp1lst)
 |D3E1tup1 of
 (token(*knd*),sint(*npf*),d3exp1lst)
+|D3E1rcd2 of
+(token(*knd*),sint(*npf*),l3d3e1lst)
+//
+(* ****** ****** *)
+//
+|D3E1lam0 of
+(token(*knd*)
+,f3arg1lst, s2res, f1unarrw, d3exp1)
+|D3E1fix0 of
+(token(*knd*)
+,d2var(*fid*)
+,f3arg1lst, s2res, f1unarrw, d3exp1)
 //
 (* ****** ****** *)
 //
