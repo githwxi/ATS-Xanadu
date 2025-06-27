@@ -128,6 +128,18 @@ d1ecl_fprint(d1cl, castxy(g_print$out<>()))
 //
 #impltmp
 g_print
+<f1unarrw>(arrw) =
+let
+val
+out0 = g_print$out<>()
+in//let
+  f1unarrw_fprint(arrw, castxy(out0)) end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <sort2>(s2t0) =
 sort2_fprint(s2t0, castxy(g_print$out<>()))
 //
