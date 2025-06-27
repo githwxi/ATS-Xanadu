@@ -143,6 +143,7 @@ d3exp1(loc0, D3E1cst(d2c1))
 |D3Edapp _ => f0_dapp(d3e0, env0)
 //
 |D3Eift0 _ => f0_ift0(d3e0, env0)
+|D3Ecas0 _ => f0_cas0(d3e0, env0)
 //
 |
 _(*otherwise*) =>
@@ -323,6 +324,36 @@ d3exp1
 //
 end//let
 //
+(* ****** ****** *)
+//
+fun
+f0_cas0
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Ecas0
+(tknd
+,d3e1, d3cs) = d3e0.node()
+//
+val d3e1 =
+(
+  d3exp_trx3cpy(d3e1, env0))
+//
+val d3cs =
+(
+  d3clslst_trx3cpy(d3cs, env0))
+//
+in//let
+//
+d3exp1
+(loc0, t2p0, D3E1cas0(tknd,d3e1,d3cs))
+//
+end//let
+//
+(* ****** ****** *)
+//
 (*
 val (  ) =
 printsln("d3exp_trx3cpy: loc0 = ", loc0)
@@ -331,6 +362,8 @@ printsln("d3exp_trx3cpy: t2p0 = ", t2p0)
 val (  ) =
 printsln("d3exp_trx3cpy: d3e0 = ", d3e0)
 *)
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[d3exp_trx3cpy(d3e0,env0)]
 //

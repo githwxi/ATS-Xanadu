@@ -336,7 +336,7 @@ d3exp1_node =
 (
 d3exp1(*cond*),
 d3exp1opt(*thn*), d3exp1opt(*els*))
-|D3Ecas0 of
+|D3E1cas0 of
 ( token(*+/0/-*), d3exp1, d3cls1lst)
 //
 (* ****** ****** *)
