@@ -222,19 +222,19 @@ f3arg1_tbox = f3arg1
 in//local
 //
 #implfun
-f3arg1_make_lctn$node
-(   loc,nod   ) = F3ARG1(loc,nod)
-//
-#implfun
 f3arg1_lctn$get(f3a) =
 let
-  val+F3ARG1(loc,nod) = f3a in loc
+val+F3ARG1(loc,nod) = f3a in loc
 end
 #implfun
 f3arg1_node$get(f3a) =
 let
-  val+F3ARG1(loc,nod) = f3a in nod
+val+F3ARG1(loc,nod) = f3a in nod
 end
+//
+#implfun
+f3arg1_make_lctn$node
+(  loc0, node  ) = F3ARG1(loc0,node)
 //
 endloc (*local*) // end of [local(f3arg1)]
 //
@@ -253,21 +253,83 @@ d3gua1_tbox = d3gua1
 in//local
 //
 #implfun
-d3gua1_make_node
-(   loc,nod   ) = D3GUA1(loc,nod)
-//
-#implfun
 d3gua1_lctn$get(d3g) =
 let
-  val+D3GUA1(loc,nod) = d3g in loc
+val+D3GUA1(loc,nod) = d3g in loc
 end
 #implfun
 d3gua1_node$get(d3g) =
 let
-  val+D3GUA1(loc,nod) = d3g in nod
+val+D3GUA1(loc,nod) = d3g in nod
 end
 //
+#implfun
+d3gua1_make_lctn$node
+(  loc0, node  ) = D3GUA1(loc0,node)
+//
 endloc (*local*) // end-of-[local(d3gua1)]
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+d3gpt1 =
+D3GPT1 of
+(
+loctn, d3gpt1_node)
+#absimpl
+d3gpt1_tbox = d3gpt1
+//
+in//local
+//
+#implfun
+d3gpt1_lctn$get(gpt) =
+let
+val+D3GPT1(loc,nod) = gpt in loc
+end
+#implfun
+d3gpt1_node$get(gpt) =
+let
+val+D3GPT1(loc,nod) = gpt in nod
+end
+//
+#implfun
+d3gpt1_make_lctn$node
+(  loc0, node  ) = D3GPT1(loc0,node)
+//
+endloc (*local*) // end of [local(d3gpt1)]
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+d3cls1 =
+D3CLS1 of
+(
+loctn, d3cls1_node)
+#absimpl
+d3cls1_tbox = d3cls1
+//
+in//local
+//
+#implfun
+d3cls1_lctn$get(cls) =
+let
+  val+D3CLS1(loc,nod) = cls in loc
+end
+#implfun
+d3cls1_node$get(cls) =
+let
+  val+D3CLS1(loc,nod) = cls in nod
+end
+//
+#implfun
+d3cls1_make_lctn$node
+(  loc0, node  ) = D3CLS1(loc0,node)
+//
+endloc (*local*) // end of [local(d3cls1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

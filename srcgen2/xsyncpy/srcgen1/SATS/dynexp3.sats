@@ -237,7 +237,7 @@ d3pat1_node =
 (* ****** ****** *)
 //
 |D3P1dapp of
-(d3pat
+(d3pat1
 ,sint(*npf*), d3pat1lst(*darg*)
 ) (* D3P1dapp *)
 //
@@ -489,18 +489,18 @@ d3cls1_node$get
 (* ****** ****** *)
 //
 fun
-d3gua1_make_node
+d3gua1_make_lctn$node
 (loc0:loc_t,node:d3gua1_node):d3gua1
 fun
-d3gpt1_make_node
+d3gpt1_make_lctn$node
 (loc0:loc_t,node:d3gpt1_node):d3gpt1
 fun
-d3cls1_make_node
+d3cls1_make_lctn$node
 (loc0:loc_t,node:d3cls1_node):d3cls1
 //
-#symload d3gua1 with d3gua1_make_node
-#symload d3gpt1 with d3gpt1_make_node
-#symload d3cls1 with d3cls1_make_node
+#symload d3gua1 with d3gua1_make_lctn$node
+#symload d3gpt1 with d3gpt1_make_lctn$node
+#symload d3cls1 with d3cls1_make_lctn$node
 //
 (* ****** ****** *)
 (* ****** ****** *)
