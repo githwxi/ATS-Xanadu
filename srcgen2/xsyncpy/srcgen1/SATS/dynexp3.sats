@@ -378,6 +378,12 @@ d3exp1opt(*thn*), d3exp1opt(*els*))
 //
 (* ****** ****** *)
 //
+|D3E1try0 of
+(token(*$TRY*)
+,d3exp1(*norm*),d3cls1lst(*handles*))
+//
+(* ****** ****** *)
+//
 |D3E1d3exp of (d3exp)//yet-to-be-copied
 //
 (* ****** ****** *)
