@@ -581,6 +581,126 @@ end(*let*)//end-of-[f0_try0(d3e0,env0)]
 (* ****** ****** *)
 //
 fun
+f0_addr
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Eaddr
+(   d3e1   ) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+(
+d3exp1(loc0,t2p0,D3E1addr(d3e1)))
+end(*let*)//end-of-[f0_addr(d3e0,env0)]
+//
+fun
+f0_view
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Eview
+(   d3e1   ) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+(
+d3exp1(loc0,t2p0,D3E1view(d3e1)))
+end(*let*)//end-of-[f0_view(d3e0,env0)]
+//
+fun
+f0_flat
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Eflat
+(   d3e1   ) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+(
+d3exp1(loc0,t2p0,D3E1flat(d3e1)))
+end(*let*)//end-of-[f0_flat(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dp2tr
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Edp2tr
+(   d3e1   ) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+(
+d3exp1(loc0,t2p0,D3E1dp2tr(d3e1)))
+end(*let*)//end-of-[f0_dp2tr(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dl0az
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Edl0az
+(   d3e1   ) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+(
+d3exp1(loc0,t2p0,D3E1dl0az(d3e1)))
+end(*let*)//end-of-[f0_dl0az(d3e0,env0)]
+//
+fun
+f0_dl1az
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Edl1az
+(   d3e1   ) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+(
+d3exp1(loc0,t2p0,D3E1dl1az(d3e1)))
+end(*let*)//end-of-[f0_dl1az(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_where
 (d3e0: d3exp
 ,env0: !env3cpy): d3exp1 =
