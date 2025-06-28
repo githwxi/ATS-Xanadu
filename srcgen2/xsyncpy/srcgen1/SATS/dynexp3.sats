@@ -391,7 +391,13 @@ d3exp1opt(*thn*), d3exp1opt(*els*))
 //
 |D3E1addr of (d3exp1)//lval-addr
 |D3E1view of (d3exp1)//lval-view
-|D3E1flat of (d3exp1)//lval-content
+|D3E1flat of (d3exp1)//lval-deref
+//
+(* ****** ****** *)
+//
+|D3E1eval of (d3exp1)//evaling...
+|D3E1fold of (d3exp1)//folding...
+|D3E1free of (d3exp1)//freeing...
 //
 (* ****** ****** *)
 //

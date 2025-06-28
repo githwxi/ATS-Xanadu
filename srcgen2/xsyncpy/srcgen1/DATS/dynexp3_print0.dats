@@ -314,6 +314,21 @@ prints
 //
 (* ****** ****** *)
 //
+|D3E1eval
+(   d3e1   ) =>
+(
+  prints("D3E1eval(", d3e1, ")") )
+|D3E1fold
+(   d3e1   ) =>
+(
+  prints("D3E1fold(", d3e1, ")") )
+|D3E1free
+(   d3e1   ) =>
+(
+  prints("D3E1free(", d3e1, ")") )
+//
+(* ****** ****** *)
+//
 |D3E1dp2tr
 (   d3e1   ) =>
 (
