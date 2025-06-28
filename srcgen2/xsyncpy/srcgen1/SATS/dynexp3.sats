@@ -64,6 +64,9 @@ HX: for [FILR]
 SYM = "./\
 ../../../SATS/xsymbol.sats"
 #staload
+LAB = "./\
+../../../SATS/xlabel0.sats"
+#staload
 FIL = "./\
 ../../../SATS/filpath.sats"
 #staload
@@ -98,6 +101,8 @@ D3E = "./\
 #typedef sym_t = $SYM.sym_t
 #typedef symbl = $SYM.symbl
 (* ****** ****** *)
+#typedef label = $LAB.label
+(* ****** ****** *)
 #typedef fpath = $FIL.fpath
 (* ****** ****** *)
 #typedef lcsrc = $LOC.lcsrc
@@ -107,7 +112,9 @@ D3E = "./\
 #typedef token = $LEX.token
 (* ****** ****** *)
 #typedef s1exp = $S1E.s1exp
+#typedef d1exp = $D1E.d1exp
 (* ****** ****** *)
+#typedef sort2 = $S2E.sort2
 #typedef s2var = $S2E.s2var
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
@@ -122,6 +129,7 @@ D3E = "./\
 #typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
+#typedef d2exp = $D2E.d2exp
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -264,13 +272,24 @@ d3pat1_node =
 |D3P1rfpt of
 (d3pat1,token(*AS*),d3pat1(*aspt*))
 //
-|D3P1tup0 of (sint(*npf*), d3pat1lst)
+(* ****** ****** *)
 //
+|D3P1tup0 of (sint(*npf*),d3pat1lst)
 |D3P1tup1 of
-(
-token(*knd*), sint(*npf*), d3pat1lst)
+(token(*knd*),sint(*npf*),d3pat1lst)
+|D3P1rcd2 of
+(token(*knd*),sint(*npf*),l3d3p1lst)
+//
+(* ****** ****** *)
+|
+D3P1annot of
+(d3pat1,s1exp(*given*),s2exp(*trans*))
+//
+(* ****** ****** *)
 //
 |D3P1d3pat of (d3pat)//yet-to-be-copied
+//
+(* ****** ****** *)
 //
 |D3P1errck of (sint(*lvl*), d3pat1(*err*))
 //
@@ -296,9 +315,11 @@ d3pat1_fprint
 //
 (* ****** ****** *)
 //
+(*
 fun
 d3pat1_make_lctn$node
 (loc0: loctn, node: d3pat1_node): d3pat1
+*)
 fun
 d3pat1_make_lctn$styp$node
 (loc0: loctn
@@ -433,6 +454,12 @@ d3exp1(*lin-thunk*),d3exp1lst(*frees*))
 //
 (* ****** ****** *)
 //
+|D3E1labck of (d3exp1, label)//lb-cast
+//
+|D3E1t2pck of (d3exp1, s2typ)//tp-cast
+//
+(* ****** ****** *)
+//
 |D3E1annot of
 (
   d3exp1,s1exp(*given*),s2exp(*trans*))
@@ -470,9 +497,11 @@ d3exp1_fprint
 //
 (* ****** ****** *)
 //
+(*
 fun
 d3exp1_make_lctn$node
 (loc0: loctn, node: d3exp1_node): d3exp1
+*)
 fun
 d3exp1_make_lctn$styp$node
 (loc0: loctn
