@@ -191,6 +191,11 @@ d3exp1(loc0, D3E1cst(d2c1))
 D3Ewhere _ => f0_where(d3e0, env0)
 //
 |
+D3Eassgn _ => f0_assgn(d3e0, env0)
+|
+D3Eraise _ => f0_raise(d3e0, env0)
+//
+|
 D3Eannot _ => f0_annot(d3e0, env0)
 //
 |
@@ -595,6 +600,51 @@ in//let
 d3exp1
 (loc0, t2p0, D3E1where(d3e1,d3cs))
 end(*let*)//end-of-[f0_where(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_assgn
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Eassgn
+(d3el, d3er) = d3e0.node()
+//
+val d3el =
+(
+d3exp_trx3cpy(d3el, env0))
+val d3er =
+(
+d3exp_trx3cpy(d3er, env0))
+//
+in//let
+d3exp1
+(loc0, t2p0, D3E1assgn(d3el,d3er))
+end(*let*)//end-of-[f0_assgn(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_raise
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Eraise
+(tknd, d3e1) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+d3exp1
+(loc0, t2p0, D3E1raise(tknd,d3e1))
+end(*let*)//end-of-[f0_raise(d3e0,env0)]
 //
 (* ****** ****** *)
 //
