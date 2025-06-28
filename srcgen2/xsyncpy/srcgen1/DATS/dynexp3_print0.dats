@@ -299,6 +299,36 @@ prints
 //
 (* ****** ****** *)
 //
+|D3E1addr
+(   d3e1   ) =>
+(
+  prints("D3E1addr(", d3e1, ")") )
+|D3E1view
+(   d3e1   ) =>
+(
+  prints("D3E1view(", d3e1, ")") )
+|D3E1flat
+(   d3e1   ) =>
+(
+  prints("D3E1flat(", d3e1, ")") )
+//
+(* ****** ****** *)
+//
+|D3E1dp2tr
+(   d3e1   ) =>
+(
+  prints("D3E1dp2tr(", d3e1, ")") )
+|D3E1dl0az
+(   d3e1   ) =>
+(
+  prints("D3E1dl0az(", d3e1, ")") )
+|D3E1dl1az
+(   d3e1   ) =>
+(
+  prints("D3E1dl1az(", d3e1, ")") )
+//
+(* ****** ****** *)
+//
 |D3E1assgn
 (d3el, d3er) =>
 prints
