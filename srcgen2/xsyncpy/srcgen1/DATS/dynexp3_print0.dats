@@ -292,6 +292,13 @@ f3as,";",sres,";",arrw,";",body,")")
 //
 (* ****** ****** *)
 //
+|D3E1where
+(d3e1, dcls) =>
+prints
+("D3E1where(", d3e1, ";", dcls, ")")
+//
+(* ****** ****** *)
+//
 |D3E1assgn
 (d3el, d3er) =>
 prints

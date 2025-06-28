@@ -389,6 +389,25 @@ d3exp1opt(*thn*), d3exp1opt(*els*))
 //
 (* ****** ****** *)
 //
+|D3E1addr of (d3exp1)//lval-addr
+|D3E1view of (d3exp1)//lval-view
+|D3E1flat of (d3exp1)//lval-content
+//
+(* ****** ****** *)
+//
+|D3E1dp2tr of (d3exp1)//p2tr-deref
+//
+|D3E1dl0az of (d3exp1)//l0azy-eval
+|D3E1dl1az of (d3exp1)//l1azy-eval
+//
+(* ****** ****** *)
+//
+|D3E1where of
+(
+d3exp1(*scope*),d3ecl1lst(*decls*))
+//
+(* ****** ****** *)
+//
 |D3E1assgn of
 (
 d3exp1(*l-val*), d3exp1(*r-val*))
