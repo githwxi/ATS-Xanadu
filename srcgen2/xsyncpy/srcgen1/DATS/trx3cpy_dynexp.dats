@@ -640,6 +640,65 @@ end(*let*)//end-of-[f0_flat(d3e0,env0)]
 (* ****** ****** *)
 //
 fun
+f0_eval
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Eeval
+(   d3e1   ) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+(
+d3exp1(loc0,t2p0,D3E1eval(d3e1)))
+end(*let*)//end-of-[f0_eval(d3e0,env0)]
+//
+fun
+f0_fold
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Efold
+(   d3e1   ) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+(
+d3exp1(loc0,t2p0,D3E1fold(d3e1)))
+end(*let*)//end-of-[f0_fold(d3e0,env0)]
+//
+fun
+f0_free
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Efree
+(   d3e1   ) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+(
+d3exp1(loc0,t2p0,D3E1free(d3e1)))
+end(*let*)//end-of-[f0_free(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_dp2tr
 (d3e0: d3exp
 ,env0: !env3cpy): d3exp1 =
