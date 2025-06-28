@@ -389,8 +389,19 @@ d3exp1opt(*thn*), d3exp1opt(*els*))
 //
 (* ****** ****** *)
 //
+|D3E1l0azy of // nonlin-lazy-eval
+(
+d1exp(*$L0AZY*), d3exp1(*non-thunk*))
+|D3E1l1azy of // linear-lazy-eval
+(
+d1exp(*$LLAZY*),
+d3exp1(*lin-thunk*),d3exp1lst(*frees*))
+//
+(* ****** ****** *)
+//
 |D3E1annot of
-(d3exp1,s1exp(*given*),s2exp(*trans*))
+(
+  d3exp1,s1exp(*given*),s2exp(*trans*))
 //
 (* ****** ****** *)
 //

@@ -292,6 +292,20 @@ f3as,";",sres,";",arrw,";",body,")")
 //
 (* ****** ****** *)
 //
+|D3E1l0azy
+( dsym, d3e1 ) =>
+(
+prints
+("D3E1l0azy(", dsym, ";", d3e1, ")"))
+|D3E1l1azy
+( dsym
+, d3e1 , d3es ) =>
+( print("D3E1l1azy(")
+; prints(dsym,";",d3e1, ";",d3es,")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |D3E1annot
 ( d3e1
 , s1e2 , s2e2 ) =>
