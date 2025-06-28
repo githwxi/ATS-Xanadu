@@ -389,6 +389,15 @@ d3exp1opt(*thn*), d3exp1opt(*els*))
 //
 (* ****** ****** *)
 //
+|D3E1assgn of
+(
+d3exp1(*l-val*), d3exp1(*r-val*))
+//
+|D3E1raise of
+(token(*$RAISE*), d3exp1(*excptn*))
+//
+(* ****** ****** *)
+//
 |D3E1l0azy of // nonlin-lazy-eval
 (
 d1exp(*$L0AZY*), d3exp1(*non-thunk*))

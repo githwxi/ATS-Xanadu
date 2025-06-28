@@ -534,7 +534,9 @@ it may be of other uses in the future
 |D3Eassgn of
 ( d3exp(*l-val*), d3exp(*r-val*) )
 //
-|D3Eraise of (token, d3exp(*lin-exn*) )
+|D3Eraise of (token, d3exp(*lin-exn*))
+//
+(* ****** ****** *)
 //
 |D3El0azy of // nonlin-lazy-eval
 ( d1exp(*$L0AZY*), d3exp(*non-thunk*) )
