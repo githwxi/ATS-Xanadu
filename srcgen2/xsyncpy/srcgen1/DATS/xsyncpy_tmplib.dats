@@ -159,6 +159,11 @@ s2exp_fprint(s2e0, castxy(g_print$out<>()))
 //
 #impltmp
 g_print
+<s2typ>(t2p0) =
+s2typ_fprint(t2p0, castxy(g_print$out<>()))
+//
+#impltmp
+g_print
 <s2res>(sres) =
 s2res_fprint(sres, castxy(g_print$out<>()))
 //

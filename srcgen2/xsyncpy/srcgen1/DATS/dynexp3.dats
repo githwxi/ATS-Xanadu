@@ -111,6 +111,7 @@ end//end-of-[d3pat1_node$get]
 //
 (* ****** ****** *)
 //
+(*
 #implfun
 d3pat1_make_lctn$node
 ( loc0, node ) =
@@ -119,6 +120,7 @@ val
 t2p0 = s2typ_none0((*0*))
 in//let
   D3PAT1(loc0, t2p0, node) end
+*)
 //
 #implfun
 d3pat1_make_lctn$styp$node
@@ -187,6 +189,7 @@ end//end-of-[d3exp1_node$get]
 //
 (* ****** ****** *)
 //
+(*
 #implfun
 d3exp1_make_lctn$node
 ( loc0, node ) =
@@ -195,6 +198,7 @@ val
 t2p0 = s2typ_none0((*0*))
 in//let
   D3EXP1(loc0, t2p0, node) end
+*)
 //
 #implfun
 d3exp1_make_lctn$styp$node

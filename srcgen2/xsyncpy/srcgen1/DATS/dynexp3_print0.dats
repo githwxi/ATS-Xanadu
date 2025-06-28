@@ -65,6 +65,8 @@ in//let
 case+
 d3p0.node() of
 //
+(* ****** ****** *)
+//
 |D3P1any() =>
 (
 prints("D3P1any(", ")"))
@@ -73,6 +75,8 @@ prints("D3P1any(", ")"))
 (   d2v1   ) =>
 (
 prints("D3P1var(", d2v1, ")"))
+//
+(* ****** ****** *)
 //
 |D3P1int
 (   tint   ) =>
@@ -95,6 +99,8 @@ prints("D3P1flt(", tflt, ")"))
 (
 prints("D3P1str(", tstr, ")"))
 //
+(* ****** ****** *)
+//
 |D3P1dapp
 (d3f0
 ,npf1, d3ps) =>
@@ -103,6 +109,8 @@ prints
 ("D3P1dapp("
 , d3f0, ";", npf1, ";", d3ps, ")"))
 //
+(* ****** ****** *)
+//
 |D3P1rfpt
 (d3p1
 ,tkas, d3p2) =>
@@ -110,6 +118,8 @@ prints
 prints
 ("D3P1rfpt("
 , d3p1, ";", tkas, ";", d3p2, ")"))
+//
+(* ****** ****** *)
 //
 |D3P1tup0
 (npf1, d3ps) =>
@@ -123,16 +133,32 @@ prints(
 prints
 ("D3P1tup1("
 , tknd, ";", npf1, ";", d3ps, ")"))
+|D3P1rcd2
+(tknd
+,npf1, ldps) =>
+(
+print("D3P1rcd2(");
+prints(tknd,";",npf1,";",ldps,")"))
+//
+|D3P1annot
+(d3p1
+,s1e2, s2e2) =>
+(print("D3P1annot(")
+;prints(d3p1,";",s1e2,";",s2e2,")"))
+//
+(* ****** ****** *)
 //
 |D3P1d3pat
 (   dpat   ) =>
 (
-  prints( "D3P1d3pat(", dpat, ")" ))
+  prints( "D3P1d3pat(", dpat, ")" ) )
 //
 |D3P1errck
 (lvl0, d3p1) =>
 (
 prints("D3P1errck(", lvl0, ";", d3p1, ")"))
+//
+(* ****** ****** *)
 //
 end(*let*)//end-of-[d3pat1_fprint(d3p0,out0)]
 //
@@ -151,6 +177,8 @@ in//let
 //
 case+
 d3e0.node() of
+//
+(* ****** ****** *)
 //
 |D3E1int
 (   tint   ) =>
@@ -179,6 +207,8 @@ prints("D3E1str(", tstr, ")"))
 (   d2v1   ) =>
 (
 prints("D3E1var(", d2v1, ")"))
+//
+(* ****** ****** *)
 //
 |D3E1con
 (   d2c1   ) =>
@@ -258,6 +288,11 @@ prints
 (tknd,npf1,d3es) =>
 (print("D3E1tup1(")
 ;prints(tknd,";",npf1,";",d3es,")"))
+|D3E1rcd2
+(tknd
+,npf1, ldes) =>
+(print("D3E1rcd2(")
+;prints(tknd,";",npf1,";",ldes,")"))
 //
 (* ****** ****** *)
 |D3E1lam0
@@ -366,17 +401,38 @@ prints
 |D3E1l1azy
 (dsym
 ,d3e1 , d3es) =>
-( print("D3E1l1azy(")
-; prints(dsym,";",d3e1, ";",d3es,")"))
+(print("D3E1l1azy(")
+;prints(dsym,";",d3e1, ";",d3es,")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3E1labck
+(d3e1, lab2) =>
+let
+val
+t2p1 = d3e1.styp() in
+(print("D3E1labck(")
+;prints(d3e1,"(",t2p1,");",lab2,")"))
+endlet//end-of-[D3E1labck(d3e1, lab2)]
+//
+|D3E1t2pck
+(d3e1, t2p2) =>
+let
+val
+t2p1 = d3e1.styp() in
+(print("D3E1t2pck(")
+;prints(d3e1,"(",t2p1,");",t2p2,")"))
+endlet//end-of-[D3E1t2pck(d3e1, t2p2)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 |D3E1annot
-( d3e1
-, s1e2 , s2e2 ) =>
-(print("D3E1annot(")
-;prints(d3e1,";",s1e2,";",s2e2,")"))
+(d3e1
+,s1e2, s2e2) =>
+( print("D3E1annot(");
+  prints(d3e1,";",s1e2,";",s2e2,")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -384,7 +440,7 @@ prints
 |D3E1d3exp
 (   dexp   ) =>
 (
-  prints( "D3E1d3exp(", dexp, ")" ))
+  prints( "D3E1d3exp(", dexp, ")" ) )
 //
 |D3E1errck
 (lvl0, d3e1) =>

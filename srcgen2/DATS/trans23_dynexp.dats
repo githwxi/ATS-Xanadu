@@ -2410,40 +2410,6 @@ end (*let*) // end of [f0_l0azy(env0,d2e0)]
 (* ****** ****** *)
 //
 fun
-f0_annot
-( env0:
-! tr23env
-, d2e0: d2exp): d3exp =
-let
-//
-val loc0 = d2e0.lctn()
-//
-val-
-D2Eannot
-(d2e1
-,s1e2, s2e2) = d2e0.node()
-//
-val t2p2 = s2exp_stpize(s2e2)
-val t2p2 = s2typ_hnfiz0(t2p2)
-//
-(*
-val () =
-prerrsln("f0_annot(23): t2p2 = ", t2p2)
-*)
-//
-val d3e1 =
-trans23_d2exp_tpck(env0,d2e1,t2p2)
-//
-in//let
-(
-  d3exp_make_tpnd
-  ( loc0
-  , t2p2, D3Eannot(d3e1,s1e2,s2e2)) )
-end (*let*) // end of [f0_annot(env0,d2e0)]
-//
-(* ****** ****** *)
-//
-fun
 f0_l1azy
 ( env0:
 ! tr23env
@@ -2539,6 +2505,42 @@ trans23_d2exp_tpck(env0, d2e1, t2p2)
 end (*let*) // end of [f0_t2pck(env0,d2e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_annot
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Eannot
+(d2e1
+,s1e2, s2e2) = d2e0.node()
+//
+val t2p2 = s2exp_stpize(s2e2)
+val t2p2 = s2typ_hnfiz0(t2p2)
+//
+(*
+val () =
+prerrsln("f0_annot(23): t2p2 = ", t2p2)
+*)
+//
+val d3e1 =
+trans23_d2exp_tpck(env0,d2e1,t2p2)
+//
+in//let
+(
+  d3exp_make_tpnd
+  ( loc0
+  , t2p2, D3Eannot(d3e1,s1e2,s2e2)) )
+end (*let*) // end of [f0_annot(env0,d2e0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_none0
@@ -2548,7 +2550,7 @@ let
 val t2p0 = the_s2typ_void((*0*))
 in//let
 d3exp(d2e0.lctn(), t2p0, D3Enone0(*0*))
-end (*let*) // end of [f0_none0(env0,...)]
+end (*let*) // end of [f0_none0(env0,d2e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2577,6 +2579,7 @@ where
 //
 end (*let*) // end of [f0_extnam(env0,...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -2682,21 +2685,26 @@ trans23_d2gua
 case+
 dgua.node() of
 //
-|D2GUAexp(d2e1) =>
+|D2GUAexp
+(  d2e1  ) =>
 d3gua
-(loc0, D3GUAexp(d3e1)) where
+(loc0, D3GUAexp(d3e1))
+where
 {
 val loc0 = dgua.lctn()
 val
 t2p1 = the_s2typ_bool()
 val
 d3e1 =
-trans23_d2exp_tpck(env0, d2e1, t2p1) }
+trans23_d2exp_tpck(env0,d2e1,t2p1)
+}(*where*)//end-of-[D2GUAexp(d2e1)]
 //
-|D2GUAmat(d2e1, d2p2) =>
+|D2GUAmat
+(d2e1, d2p2) =>
 d3gua
 (loc0
-,D3GUAmat(d3e1, d3p2)) where
+,D3GUAmat(d3e1, d3p2))
+where
 {
 val loc0 = dgua.lctn()
 val
@@ -2706,7 +2714,8 @@ val
 t2p1 = d3e1.styp((*void*))
 val
 d3p2 =
-trans23_d2pat_tpck(env0, d2p2, t2p1) }
+trans23_d2pat_tpck(env0, d2p2, t2p1)
+}(*where*)//end-of-[D2GUAmat(d2e1,d2p2)]
 //
 )(*case+*)//end-of-[trans23_d2gua(env0,...)]
 //
@@ -2903,8 +2912,18 @@ trans23_d3exp_tpck
 let
 //
 val t2p1 = d3e0.styp()
+//
 val ubtf =
 unify23_s2typ(env0, t2p1, t2p0)
+//
+(*
+val (  ) =
+prerrsln("\
+trans23_d3exp_tpck: t2p1 = ", t2p1)
+val (  ) =
+prerrsln("\
+trans23_d3exp_tpck: ubtf = ", ubtf)
+*)
 //
 in//let
 //
@@ -2915,8 +2934,9 @@ let
 val
 loc0 = d3e0.lctn()
 in//let
+(
 d3exp
-(loc0, t2p0, D3Et2pck(d3e0, t2p0))
+(loc0, t2p0, D3Et2pck(d3e0, t2p0)))
 end//let
 //
 end where
