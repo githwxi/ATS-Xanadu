@@ -285,21 +285,35 @@ f3as,";",sres,";",arrw,";",body,")")
 (* ****** ****** *)
 //
 |D3E1try0
-( tknd
-, d3e1, dcls) =>
+(tknd
+,d3e1, dcls) =>
 (print("D3E1try0(")
 ;prints(tknd,";",d3e1,";",dcls,")"))
 //
 (* ****** ****** *)
 //
+|D3E1assgn
+(d3el, d3er) =>
+prints
+("D3E1assgn(", d3el, ";", d3er, ")")
+//
+(* ****** ****** *)
+//
+|D3E1raise
+(tknd, d3e1) =>
+prints
+("D3E1raise(", tknd, ";", d3e1, ")")
+//
+(* ****** ****** *)
+//
 |D3E1l0azy
-( dsym, d3e1 ) =>
+(dsym, d3e1) =>
 (
 prints
 ("D3E1l0azy(", dsym, ";", d3e1, ")"))
 |D3E1l1azy
-( dsym
-, d3e1 , d3es ) =>
+(dsym
+,d3e1 , d3es) =>
 ( print("D3E1l1azy(")
 ; prints(dsym,";",d3e1, ";",d3es,")"))
 //
