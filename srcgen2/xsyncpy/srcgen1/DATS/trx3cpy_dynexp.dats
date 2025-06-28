@@ -188,6 +188,9 @@ d3exp1(loc0, D3E1cst(d2c1))
 |D3Efix0 _ => f0_fix0(d3e0, env0)
 //
 |
+D3Ewhere _ => f0_where(d3e0, env0)
+//
+|
 D3Eannot _ => f0_annot(d3e0, env0)
 //
 |
@@ -569,6 +572,29 @@ d3exp1
 , t2p0, D3E1try0(tknd,d3e1,dcls))
 //
 end(*let*)//end-of-[f0_try0(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_where
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Ewhere
+(d3e1, d3cs) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp_trx3cpy(d3e1, env0))
+val d3cs =
+d3eclist_trx3cpy(d3cs, env0)
+//
+in//let
+d3exp1
+(loc0, t2p0, D3E1where(d3e1,d3cs))
+end(*let*)//end-of-[f0_where(d3e0,env0)]
 //
 (* ****** ****** *)
 //
