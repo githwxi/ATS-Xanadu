@@ -848,8 +848,9 @@ val t2p1 =
 s2typ_substx
 (e1nv, t2p1, svts, flag)
 in//let
+(
 if
-flag <= fval then t2p0 else t2p1 end
+flag <= fval then t2p0 else t2p1 end)
 //
 end (*let*) // end of [f0_cst(e1nv,...)]
 //
@@ -876,8 +877,9 @@ case+ opt1 of
 optn_vt_nil() => t2p0
 | ~
 optn_vt_cons(t2p1) =>
+(
 let
-val () = flag := flag+1 in t2p1 endlet
+val () = flag := flag+1 in t2p1 end)
 end (*let*) // end of [f0_var(e1nv,...)]
 //
 (* ****** ****** *)
