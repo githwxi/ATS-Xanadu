@@ -12,7 +12,7 @@ the prospect of ATS3 going forward.
 
 Around May of 2022, I decided to go forward with a modified plan of
 bootstrapping ATS3: I should instead use the compiler from ATS3 to JS
-to do it. While this compiler compiles quite slowly, I felt that it
+to do it. While this compiler compiles quite slowly, I _felt_ that it
 should be adequate for the task of bootstrapping ATS3. Yes, it was
 barely adequate. After a long struggle of nearly three years in
 length, I finally succeeded in bootstrapping ATS3 on the 29th of March
@@ -29,11 +29,11 @@ think, sometimes, in depth about the structure of ATS3-Xanadu/srcgen2.
 After lexing and parsing, the compiler obtains an abstract syntax tree
 (AST), which is referred to as level-0 AST. There are many a
 translation function in the compiler that translates one form of AST
-into another form. And each translation function is often paired with
+into another form. And one translation function is often paired with
 a so-call proofread function, which traverses an AST to look for
 errors; the errors found are stored in the AST returned by the
 proofread function, which can be reported later during another AST
-traveral.
+traversal.
 
 In earlier (experimental) implementations of ATS (ATS0, ATS1, and
 ATS2), type-errors are reported immediately after they are found. This
@@ -51,10 +51,10 @@ to better test its design.
 When I started implementing my first "real" compiler for Dependent ML
 (DML) in 1997, I immediately _assumed_ that I should use a tool to
 generate lexing code. I soon realized that implementing a lexer is
-actually very little work, and I have since manually implemented
-nearly every lexer I need.  It is entirely possible that the code for
-lexing (in ATS3-Xanadu) will be rewritten in the future so as to make
-it more efficient.
+actually a very little piece of work, and I have since manually
+implemented nearly every lexer I needed.  It is entirely possible that
+the code for lexing (in ATS3-Xanadu) will be rewritten in the future
+so as to make it more efficient.
 
 - `SATS/lexbuf0.sats`:
   For creating buffers of characters from text sources
@@ -68,8 +68,8 @@ quite complex. This complexity is largely due to the need for
 supporting numerous forms of type annotations, which are essential for
 practical programming with advanced types. Without proper annotations,
 it often becomes very difficult or even impractical to understand the
-cause of a type-error, which is most likely required before any fixes
-can be attempted.
+cause of a type-error, but such an understanding is most likely
+required before any fixes can be attempted.
 
 - `SATS/pread00.sats`:
   For detecting errors in the level-0 AST.
@@ -126,6 +126,8 @@ can be attempted.
 - `SATS/tread3a.sats`:
   For detecting errors in the level-3 AST after trans3a is done.
 
+- `SATS/fperr30.sats`: For reporting errors in the AST after trans3a is done.
+
 - `SATS/trtmp3b.sats`:
   For performing the first phase of template resolution, which is non-recursive
   in the sense that the templates in the body of a template instance is not resolved.
@@ -134,8 +136,6 @@ can be attempted.
   For performing the second phase of template resolution, which is a recursive procedure
   as the templates in the body of a template instance are handled by the same algorithm
   for resolving the original template.
-
-- `SATS/fperr30.sats`: For reporting errors in the AST after trtmp3b and trtmp3c are done.
 
 <!--
 ########################################################################
