@@ -850,7 +850,7 @@ s2typ_substx
 in//let
 (
 if
-flag <= fval then t2p0 else t2p1 end)
+flag <= fval then t2p0 else t2p1) end
 //
 end (*let*) // end of [f0_cst(e1nv,...)]
 //
