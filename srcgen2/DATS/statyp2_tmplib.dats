@@ -434,8 +434,8 @@ in//let
 //
 case+
 t2f0.node() of
-|
-T2Plam1
+//
+|T2Plam1
 (s2vs, t2p1) =>
 let
 val
@@ -448,6 +448,7 @@ s2typ_substx
 in//let
 s2typ_hnfizx(e1nv, tres, flag)
 end (*let*) // end of [T2Plam1]
+//
 |_(*non-T2Plam1*) =>
 if
 (flag <= fval)
@@ -799,6 +800,9 @@ T2Ptext _ =>
 f0_text(e1nv, t2p0, svts, flag)
 //
 |
+T2Pexi0 _ =>
+f0_exi0(e1nv, t2p0, svts, flag)
+|
 T2Puni0 _ =>
 f0_uni0(e1nv, t2p0, svts, flag)
 //
@@ -1051,12 +1055,14 @@ let
 val fval = flag
 //
 val-
-T2Plam1(s2vs, t2p1) = t2p0.node()
+T2Plam1
+(s2vs, t2p1) = t2p0.node()
 //
-val t2p1 = // HX: capturing?!!!
+// HX: FIXME: 
+val t2p1 = // capturing?!!!
 s2typ_substx(e1nv, t2p1, svts, flag)
 //
-if
+if // if
 flag <= fval
 then t2p0 else
 s2typ(t2p0.sort(), T2Plam1(s2vs, t2p1))
@@ -1122,6 +1128,32 @@ end (*let*) // end of [f0_text(e1nv,...)]
 (* ****** ****** *)
 //
 fun
+f0_exi0
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val-
+T2Pexi0
+(s2vs, t2p1) = t2p0.node()
+//
+// HX: FIXME: 
+val t2p1 = // capturing?!!!
+s2typ_substx(e1nv, t2p1, svts, flag)
+//
+if
+flag <= fval
+then t2p0 else
+s2typ(t2p0.sort(), T2Pexi0(s2vs, t2p1))
+end (*let*) // end of [f0_exi0(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_uni0
 ( e1nv: !e1nv
 , t2p0: s2typ
@@ -1132,9 +1164,11 @@ let
 val fval = flag
 //
 val-
-T2Puni0(s2vs, t2p1) = t2p0.node()
+T2Puni0
+(s2vs, t2p1) = t2p0.node()
 //
-val t2p1 = // HX: capturing?!!!
+// HX: FIXME: 
+val t2p1 = // capturing?!!!
 s2typ_substx(e1nv, t2p1, svts, flag)
 //
 if
@@ -1168,7 +1202,7 @@ flag <= fval
 then t2p0 else
 s2typ_make_node
 (t2p0.sort(),T2Ptrcd(knd0, npf1, ltps))
-end (*let*) // end of [f0_uni0(e1nv,...)]
+end (*let*) // end of [f0_trcd(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1377,8 +1411,8 @@ s2typ_exi0_inst
 (
 case+
 t2p0.node() of
-|
-T2Pexi0
+//
+|T2Pexi0
 (s2vs, t2p1) =>
 let
 val svts =
@@ -1388,7 +1422,9 @@ s2typ_exi0_inst//recursive
 e1nv,
 s2typ_subst0(e1nv,t2p1,svts) )
 endlet // end of [T2Pexi0(...)]
+//
 | _(* non-T2Pexi0 *) => (  t2p0  )
+//
 )(*case+*)//end-of-[s2typ_exi0_inst(...)]
 //
 (* ****** ****** *)
@@ -2029,5 +2065,8 @@ xtp1.styp(t2p0); auxfree(xtps) end) }
 end (*local*) // end of [match00_s2typ_e1nv]
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_statyp2_tmplib.dats] *)
+(***********************************************************************)

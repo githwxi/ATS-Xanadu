@@ -142,8 +142,9 @@ s2e0.node() of
 //
 |S2Evar(svar) =>
 (
-if ~
-(svar=s2v0)
+if
+not(
+svar=s2v0)
 then s2e0 else
 (
 flag := flag+1;
@@ -287,7 +288,7 @@ s2explst_revarx
 (s2ps, s2v0, s2v1, flag)
 //
 in//let
-if
+if // if
 flag <= fval
 then s2e0 else
 s2exp_make_node
@@ -320,7 +321,7 @@ s2explst_revarx
 (s2ps, s2v0, s2v1, flag)
 //
 in//let
-if
+if // if
 flag <= fval
 then s2e0 else
 s2exp_make_node
@@ -523,5 +524,8 @@ end (*let*) // end of [list_cons(...)]
 ) (*case+*) // end of [l2s2elst_revarx(...)]
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_staexp2_utils2.dats] *)
+(***********************************************************************)
