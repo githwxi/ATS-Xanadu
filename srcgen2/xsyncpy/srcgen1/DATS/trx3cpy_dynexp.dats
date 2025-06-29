@@ -1181,8 +1181,7 @@ in//let
 case+
 farg.node() of
 //
-|
-F3ARGdapp
+|F3ARGdapp
 (npf1, d3ps) =>
 let
 val loc0 = farg.lctn()
@@ -1193,13 +1192,11 @@ in//let
 f3arg1(loc0,F3ARG1dapp(npf1,d3ps))
 end(*let*)//end-of-[F3ARG1dapp(...)]
 //
-|
-F3ARGsapp
+|F3ARGsapp
 (s2vs, s2ps) =>
 (
 f3arg1(loc0,F3ARG1sapp(s2vs,s2ps)))
-|
-F3ARGmets
+|F3ARGmets
 (   s2es   ) =>
 (
 f3arg1(loc0, F3ARG1mets(  s2es  )))

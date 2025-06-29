@@ -19,31 +19,57 @@ var N = 10
 (* ****** ****** *)
 //
 fun
-fact(n: sint): sint =
-if n <= 0 then 1 else n * fact(n-1)
+fact
+(n: sint): sint =
+(
+if n <= 0
+then 1 else n * fact(n-1))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+fibo =
+fix f(x:sint): sint =>
+(
+if x >= 2
+then f(x-1)+f(x-2) else x)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#symload nil with list_nil
+#symload cons with list_cons
 //
 fun
 <x0:t0>
 length(xs: list(x0)): sint =
 (
 case+ xs of
-| list_nil() => 0
-| list_cons(_, xs) => 1 + length(xs)
+| nil() => 0
+| cons(_, xs) => 1 + length(xs)
 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val square = lam(x:sint) => x + x
+val
+square = lam(x:sint) => x + x
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun assign
+fun
+assign
 (x: &bool, y: bool): void = (x := y)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef T = $tup(sint, sint)
+//
+fun
+fdebug(x0: T): list(T) = list@(x0, x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
