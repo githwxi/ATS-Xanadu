@@ -30,99 +30,38 @@
 //
 (*
 Author: Hongwei Xi
-Sun Jun  1 10:10:09 PM EDT 2025
+(*
+Mon Jun 30 02:37:02 AM EDT 2025
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #staload
 "./../SATS/statyp2.sats"
+#staload
+"./../SATS/trx3cpy.sats"
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #include
 "./../HATS/mytmplib00.hats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
-"prelude/SATS/gsyn000.sats"
+"./../../../SATS/statyp2.sats"
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
-local
-//
-#extern
-fcast
-castxy{ax:t0}{ay:t0}(ax:ax):(ay)
-//
-in//local
-//
-#implfun
-s2typ_fprint
-(styp, out0) =
-$T2P.s2typ_fprint(styp, castxy(out0))
-//
-end//local
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-s2typ1_fprint
-( t2p0, out0 ) =
-let
-//
-#impltmp
-g_print$out<>() = out0
-//
-in//let
-//
-case+
-t2p0.node() of
-//
-|T2P1cst
-(   s2c1   ) =>
-prints("T2P1cst(", s2c1, ")")
-|T2P1var
-(   s2v1   ) =>
-prints("T2P1var(", s2v1, ")")
-//
-|T2P1apps
-(t2f0, t2ps) =>
-prints
-("T2P1apps(",t2f0,";",t2ps,")")
-|T2P1lam1
-(s2vs, t2p1) =>
-prints
-("T2P1lam1(",s2vs,";",t2p1,")")
-//
-|T2P1exi0
-(s2vs, t2p1) =>
-prints
-("T2P1exi0(",s2vs,";",t2p1,")")
-|T2P1uni0
-(s2vs, t2p1) =>
-prints
-("T2P1uni0(",s2vs,";",t2p1,")")
-//
-|T2Ptrcd
-(trcd
-,npf1, ltps) =>
-(
-print("T2Ptrcd(");
-prints(trcd,";",npf1,";",ltps,")"))
-//
-|T2P1s2typ
-(   styp   ) =>
-(
-  prints( "T2P1s2typ(", styp, ")" ))
-//
-end(*let*)//end-of-[s2typ1_fprint(t2p0,out0)]
+#symload sort with s2typ_get_sort
+#symload node with s2typ_get_node
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_statyp2_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trx3cpy_staexp.dats] *)
 (***********************************************************************)

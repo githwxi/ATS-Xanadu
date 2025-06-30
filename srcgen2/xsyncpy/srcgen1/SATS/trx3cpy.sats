@@ -76,6 +76,13 @@ env3cpy_free_nil(env3cpy): (void)
 (* ****** ****** *)
 //
 fun
+s2typ_trx3cpy
+(t2p0: s2typ, env0: !env3cpy): s2typ1
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3pat_trx3cpy
 (d3p0: d3pat, env0: !env3cpy): d3pat1
 fun
