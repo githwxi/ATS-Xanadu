@@ -54,6 +54,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
 "./../../../SATS/dynexp3.sats"
 //
 #symload lctn with d3pat_get_lctn
@@ -387,6 +393,9 @@ d3exp1(loc0, t2p0, D3E1d3exp(d3e0)))
 val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
 //
+(* ****** ****** *)
+val t2q0 =
+s2typ_trx3cpy(t2p0, env0)
 (* ****** ****** *)
 //
 fun
@@ -1142,14 +1151,18 @@ end(*let*)//end-of-[f0_errck(d3e0,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 val (  ) =
 printsln("d3exp_trx3cpy: loc0 = ", loc0)
+//
+(*
 val (  ) =
 printsln("d3exp_trx3cpy: t2p0 = ", t2p0)
 val (  ) =
 printsln("d3exp_trx3cpy: d3e0 = ", d3e0)
 *)
+//
+val (  ) =
+printsln("d3exp_trx3cpy: t2q0 = ", t2q0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

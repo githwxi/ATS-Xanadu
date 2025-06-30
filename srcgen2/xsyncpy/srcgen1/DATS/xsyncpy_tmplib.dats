@@ -43,6 +43,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
+"./../SATS/statyp2.sats"
+#staload
 "./../SATS/dynexp2.sats"
 #staload
 "./../SATS/dynexp3.sats"
@@ -73,6 +75,13 @@ g_print
 symbl_fprint(sym0, castxy(g_print$out<>()))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<loctn>(loc0) =
+loctn_fprint(loc0, castxy(g_print$out<>()))
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -265,6 +274,15 @@ prints("TEQD3EXP1none(", ")")
 |TEQD3EXP1some(tok0, d3e1) =>
 prints("TEQD3EXP1some(",tok0,";",d3e1,")")
 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<s2typ1>(styp) =
+(
+  s2typ1_fprint(styp, g_print$out<>((*0*))))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -74,12 +74,24 @@ in//let
 case+
 t2p0.node() of
 //
+|T2Ptrcd
+(trcd
+,npf1, ltps) =>
+let
+val ltqs =
+l2t2plst_trx3cpy(ltps, env0)
+in//let
+s2typ1
+(s2t0,T2P1trcd(trcd,npf1,ltqs))
+end//let
+//
 |
 _(*otherwise*) =>
 (
-  s2typ1(s2t0, T2P1s2typ(t2p0)))
+  s2typ1(s2t0, T2P1s2typ(t2p0)) )
 //
 end(*let*)//end-of-[s2typ_trx3cpy(t2p0,env0)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

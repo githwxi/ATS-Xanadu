@@ -60,6 +60,7 @@ T2P = "./\
 #typedef s2cst = $T2P.s2cst
 (* ****** ****** *)
 #typedef s2typ = $T2P.s2typ
+#typedef l2t2p = $T2P.l2t2p
 (* ****** ****** *)
 //
 fun
@@ -94,7 +95,7 @@ s2typ1_node =
 |T2P1uni0 of // forall quantifier
 (s2varlst(*vars*), s2typ1(*body*))
 //
-|T2Ptrcd of
+|T2P1trcd of
 (trcdknd(*knd*),sint(*npf*),l2t2p1lst)
 //
 |T2P1s2typ of (s2typ)//yet-to-be-copied

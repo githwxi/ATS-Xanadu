@@ -106,11 +106,11 @@ prints
 prints
 ("T2P1uni0(",s2vs,";",t2p1,")")
 //
-|T2Ptrcd
+|T2P1trcd
 (trcd
 ,npf1, ltps) =>
 (
-print("T2Ptrcd(");
+print("T2P1trcd(");
 prints(trcd,";",npf1,";",ltps,")"))
 //
 |T2P1s2typ

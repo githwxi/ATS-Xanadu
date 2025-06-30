@@ -17,6 +17,9 @@ Mon May 19 06:07:14 PM EDT 2025
 "./../../../SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload
+"./../../../SATS/locinfo.sats"
+(* ****** ****** *)
+#staload
 "./../../../SATS/lexing0.sats"
 (* ****** ****** *)
 //

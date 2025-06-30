@@ -82,6 +82,9 @@ env3cpy_free_nil(env3cpy): (void)
 fun
 s2typ_trx3cpy
 (t2p0: s2typ, env0: !env3cpy): s2typ1
+fun
+l2t2p_trx3cpy
+(ltp0: l2t2p, env0: !env3cpy): l2t2p1
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -116,6 +119,16 @@ d3cls_trx3cpy
 fun
 d3ecl_trx3cpy
 (d3cl: d3ecl, env0: !env3cpy): d3ecl1
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+s2typlst_trx3cpy
+(t2ps: s2typlst, env0: !env3cpy): s2typ1lst
+fun
+l2t2plst_trx3cpy
+(ltps: l2t2plst, env0: !env3cpy): l2t2p1lst
 //
 (* ****** ****** *)
 //
