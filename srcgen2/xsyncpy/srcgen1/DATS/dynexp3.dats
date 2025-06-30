@@ -243,6 +243,7 @@ f3arg1_make_lctn$node
 endloc (*local*) // end of [local(f3arg1)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 local
 //

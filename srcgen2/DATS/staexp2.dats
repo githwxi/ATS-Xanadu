@@ -805,21 +805,40 @@ s2f0.node() of
 |
 S2Ecst(s2c1) =>
 let
+//
 val
 opt1 = s2c1.sexp()
+//
+(*
+val () =
+prerr1sln("\
+f1_test:S2Ecst: opt1 = ", opt1
+)(*prerr1sln*)
+*)
+//
 in//let
+//
 case+ opt1 of
-| ~optn_vt_nil() =>
+| ~
+optn_vt_nil() =>
 (
- name =
- s2cst_get_name(s2c1)
-)
-| ~optn_vt_cons(s2f0) =>
+name =
+s2cst_get_name(s2c1))
+| ~
+optn_vt_cons(s2f1) =>
 (
-  f1_test(s2f0, name)) end
-//let//end-of-[S2Ecst(...)]
-|_(* non-S2Ecst *) => (false)
-)(*case+*)//end-of-[f1_test(...)]
+  f1_test(s2f1, name) )
+end//let//end-of-[S2Ecst(...)]
+//
+|_(* non-S2Ecst *) => (  false  )
+//
+) where
+{
+(*
+val () =
+prerrsln("f1_test: s2f0 = ", s2f0)
+*)
+}(*where*) // end-of-[f1_test(...)]
 //
 fun
 isTOP0

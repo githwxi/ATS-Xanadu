@@ -52,6 +52,8 @@ T2P = "./\
 ../../../SATS/statyp2.sats"
 //
 (* ****** ****** *)
+#sexpdef s2lab = $T2P.s2lab
+(* ****** ****** *)
 #typedef s2var = $T2P.s2var
 #typedef s2cst = $T2P.s2cst
 (* ****** ****** *)
@@ -68,7 +70,10 @@ fprint with s2typ_fprint of 1000
 (* ****** ****** *)
 #abstbox s2typ1_tbox // p0tr
 #typedef s2typ1 = s2typ1_tbox
+#typedef l2t2p1 = s2lab(s2typ1)
 (* ****** ****** *)
+#typedef s2typ1lst = list(s2typ1)
+#typedef l2t2p1lst = list(l2t2p1)
 (* ****** ****** *)
 //
 datatype
@@ -81,6 +86,14 @@ s2typ1_node =
 (s2typ1(*fun*), s2typ1lst(*args*))
 |T2P1lam1 of
 (s2varlst(*args*), s2typ1(*body*))
+//
+|T2P1exi0 of // exists quantifier
+(s2varlst(*vars*), s2typ1(*body*))
+|T2P1uni0 of // forall quantifier
+(s2varlst(*vars*), s2typ1(*body*))
+//
+|T2Ptrcd of
+(trcdknd(*knd*),sint(*npf*),l2t2p1lst)
 //
 |T2P1s2typ of (s2typ)//yet-to-be-copied
 //

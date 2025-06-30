@@ -53,8 +53,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
-#staload "./../SATS/xsymbol.sats"
+#staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
 #staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
@@ -494,21 +495,21 @@ local
 //
 (* ****** ****** *)
 #symload
-name with s2cst_get_name
+stmp with s2cst_get_stmp
 (* ****** ****** *)
 //
 val
 mymap =
-topmap_make_nil{s2exp}()
+tmpmap_make_nil{s2exp}()
 //
 in//local
 //
 #implfun
 s2cst_get_sexp(s2c0) =
-topmap_search$opt(mymap, s2c0.name())
+tmpmap_search$opt(mymap, s2c0.stmp())
 #implfun
 s2cst_set_sexp(s2c0, sexp) =
-topmap_insert$any(mymap, s2c0.name(), sexp)
+tmpmap_insert$any(mymap, s2c0.stmp(), sexp)
 //
 end (*local*) // end of [local(the_s2cst_s2exp)]
 
@@ -521,12 +522,12 @@ local
 "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #symload
-name with s2cst_get_name
+stmp with s2cst_get_stmp
 (* ****** ****** *)
 //
 val
 mymap =
-topmap_make_nil{a2tdf}()
+tmpmap_make_nil{a2tdf}()
 //
 in//local
 //
@@ -540,10 +541,10 @@ s2c0.atdf() of
 //
 #implfun
 s2cst_get_atdf(s2c0) =
-topmap_search$opt(mymap, s2c0.name())
+tmpmap_search$opt(mymap, s2c0.stmp())
 #implfun
 s2cst_set_atdf(s2c0, atdf) =
-topmap_insert$any(mymap, s2c0.name(), atdf)
+tmpmap_insert$any(mymap, s2c0.stmp(), atdf)
 //
 end (*local*) // end of [local(the_s2cst_a2tdf)]
 
@@ -556,12 +557,12 @@ local
 "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #symload
-name with s2cst_get_name
+stmp with s2cst_get_stmp
 (* ****** ****** *)
 //
 val
 mymap =
-topmap_make_nil{d2conlst}()
+tmpmap_make_nil{d2conlst}()
 //
 in//local
 //
@@ -575,10 +576,10 @@ s2c0.d2cs() of
 //
 #implfun
 s2cst_get_d2cs(s2c0) =
-topmap_search$opt(mymap, s2c0.name())
+tmpmap_search$opt(mymap, s2c0.stmp())
 #implfun
 s2cst_set_d2cs(s2c0, d2cs) =
-topmap_insert$any(mymap, s2c0.name(), d2cs)
+tmpmap_insert$any(mymap, s2c0.stmp(), d2cs)
 //
 end (*local*) // end of [local(the_s2cst_d2conlst)]
 
