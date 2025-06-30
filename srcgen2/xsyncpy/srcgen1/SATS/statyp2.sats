@@ -54,6 +54,8 @@ T2P = "./\
 (* ****** ****** *)
 #sexpdef s2lab = $T2P.s2lab
 (* ****** ****** *)
+#sexpdef sort2 = $T2P.sort2
+(* ****** ****** *)
 #typedef s2var = $T2P.s2var
 #typedef s2cst = $T2P.s2cst
 (* ****** ****** *)
@@ -109,6 +111,14 @@ s2typ1_node$get
 (styp: s2typ1): s2typ1_node
 #symload node with s2typ1_node$get
 //
+(* ****** ****** *)
+//
+fun
+s2typ1_make_sort$node
+(s2t0:sort2,node:s2typ1_node): s2typ1
+#symload s2typ1 with s2typ1_make_sort$node
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

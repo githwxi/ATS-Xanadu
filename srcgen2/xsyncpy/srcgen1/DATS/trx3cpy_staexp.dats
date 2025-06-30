@@ -62,6 +62,27 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+s2typ_trx3cpy
+(t2p0, env0) =
+let
+//
+val s2t0 = t2p0.sort()
+//
+in//let
+//
+case+
+t2p0.node() of
+//
+|
+_(*otherwise*) =>
+(
+  s2typ1(s2t0, T2P1s2typ(t2p0)))
+//
+end(*let*)//end-of-[s2typ_trx3cpy(t2p0,env0)]
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trx3cpy_staexp.dats] *)
 (***********************************************************************)
