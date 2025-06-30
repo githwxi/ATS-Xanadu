@@ -85,6 +85,7 @@ D1E = "./\
 ../../../SATS/dynexp1.sats"
 //
 (* ****** ****** *)
+//
 #staload
 S2E = "./\
 ../../../SATS/staexp2.sats"
@@ -131,6 +132,8 @@ D3E = "./\
 #typedef d2cst = $D2E.d2cst
 #typedef d2exp = $D2E.d2exp
 (* ****** ****** *)
+#sexpdef d3lab = $D3E.d3lab
+(* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
 #typedef d3ecl = $D3E.d3ecl
@@ -141,6 +144,9 @@ D3E = "./\
 (* ****** ****** *)
 #abstbox d3exp1_tbox // p0tr
 #typedef d3exp1 = d3exp1_tbox
+(* ****** ****** *)
+#typedef l3d3p1 = d3lab(d3pat1)
+#typedef l3d3e1 = d3lab(d3exp1)
 (* ****** ****** *)
 #abstbox f3arg1_tbox // p0tr
 #typedef f3arg1 = f3arg1_tbox
@@ -195,10 +201,14 @@ D3E = "./\
 (* ****** ****** *)
 #typedef d3pat1lst = list(d3pat1)
 #typedef d3exp1lst = list(d3exp1)
-#typedef d3ecl1lst = list(d3ecl1)
 (* ****** ****** *)
 #typedef d3pat1opt = optn(d3pat1)
 #typedef d3exp1opt = optn(d3exp1)
+(* ****** ****** *)
+#typedef l3d3p1lst = list(l3d3p1)
+#typedef l3d3e1lst = list(l3d3e1)
+(* ****** ****** *)
+#typedef d3ecl1lst = list(d3ecl1)
 (* ****** ****** *)
 #typedef f3arg1lst = list(f3arg1)
 (* ****** ****** *)
@@ -238,13 +248,6 @@ fprint with d3exp_fprint of 1000
 #symload
 fprint with d3ecl_fprint of 1000
 //
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef l3d3p1 = d3lab(d3pat1)
-#typedef l3d3e1 = d3lab(d3exp1)
-(* ****** ****** *)
-#typedef l3d3p1lst = list(l3d3p1)
-#typedef l3d3e1lst = list(l3d3e1)
 (* ****** ****** *)
 (* ****** ****** *)
 //

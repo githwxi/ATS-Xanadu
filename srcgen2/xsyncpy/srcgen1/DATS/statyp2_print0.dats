@@ -104,6 +104,15 @@ prints
 prints
 ("T2P1lam1(",s2vs,";",t2p1,")")
 //
+|T2P1exi0
+(s2vs, t2p1) =>
+prints
+("T2P1exi0(",s2vs,";",t2p1,")")
+|T2P1uni0
+(s2vs, t2p1) =>
+prints
+("T2P1uni0(",s2vs,";",t2p1,")")
+//
 |T2P1s2typ
 (   styp   ) =>
 (
