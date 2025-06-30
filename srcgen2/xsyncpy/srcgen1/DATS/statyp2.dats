@@ -45,6 +45,59 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+local
+//
+datatype
+s2typ1 =
+S2TYP1 of
+(sort2, s2typ1_node)
+datavwtp
+s2typ1_vt =
+S2TYP1_vt of
+(sort2, s2typ1_node)
+//
+#absimpl s2typ1_tbox = s2typ1
+//
+(* ****** ****** *)
+in (* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+s2typ1_sort$get
+  ( styp ) =
+let
+val+
+S2TYP1
+( s2t0
+, node) = styp in s2t0
+end//end-of-[s2typ1_sort$get]
+//
+#implfun
+s2typ1_node$get
+  ( styp ) =
+let
+val+
+S2TYP1
+( s2t0
+, node) = styp in node
+end//end-of-[s2typ1_node$get]
+//
+(* ****** ****** *)
+//
+#implfun
+s2typ1_make_sort$node
+  ( s2t0, node ) =
+(
+  S2TYP1(s2t0, node) )//implfun
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [local(s2typ1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_statyp2.dats] *)
 (***********************************************************************)

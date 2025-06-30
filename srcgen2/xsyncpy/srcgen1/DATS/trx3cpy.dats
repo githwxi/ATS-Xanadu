@@ -40,7 +40,10 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../SATS/statyp2.sats"
+#staload
 "./../SATS/dynexp3.sats"
+//
 #staload
 "./../SATS/trx3cpy.sats"
 //
@@ -96,6 +99,35 @@ d3parsed1(stadyn, nerror, source, parsed))
 end//let
 //
 end(*let*)//end-of-[d3parsed_trx3cpy(dpar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2typlst_trx3cpy
+(t2ps, env0) =
+list_map$e1nv(t2ps, env0) where
+{
+#typedef x0 = s2typ
+#typedef y0 = s2typ1
+#vwtpdef e1 = env3cpy
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = s2typ_trx3cpy
+}(*where*)//end-of-[s2typlst_trx3cpy(t2ps,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+l2t2plst_trx3cpy
+(ltps, env0) =
+list_map$e1nv(ltps, env0) where
+{
+#typedef x0 = l2t2p
+#typedef y0 = l2t2p1
+#vwtpdef e1 = env3cpy
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = l2t2p_trx3cpy
+}(*where*)//end-of-[l2t2plst_trx3cpy(ltps,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
