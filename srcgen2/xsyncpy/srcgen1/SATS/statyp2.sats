@@ -71,6 +71,9 @@ T2P = "./\
 #typedef s2typ = $T2P.s2typ
 #typedef l2t2p = $T2P.l2t2p
 (* ****** ****** *)
+#typedef s2cstlst = list(s2cst)
+#typedef s2varlst = list(s2var)
+#typedef s2typlst = list(s2typ)
 (* ****** ****** *)
 //
 fun

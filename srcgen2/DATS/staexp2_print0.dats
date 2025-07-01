@@ -242,11 +242,11 @@ let
 g_print$out<>() = out
 in//let
   print(s2cst_get_name(s2c0))
-// (*
+(*
 ; prints
   ("(", s2cst_get_stmp(s2c0), ")")
 ; prints(":", s2cst_get_sort(s2c0))
-// *)
+*)
 end (*let*)//end of [s2cst_fprint(s2c0,out)]
 
 (* ****** ****** *)
