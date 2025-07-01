@@ -71,8 +71,8 @@ T2P = "./\
 #typedef s2typ = $T2P.s2typ
 #typedef l2t2p = $T2P.l2t2p
 (* ****** ****** *)
-#typedef s2cstlst = list(s2cst)
 #typedef s2varlst = list(s2var)
+#typedef s2cstlst = list(s2cst)
 #typedef s2typlst = list(s2typ)
 (* ****** ****** *)
 //
@@ -109,6 +109,11 @@ s2typ1_node =
 |T2P1lam1 of
 (s2varlst(*args*), s2typ1(*body*))
 //
+|T2P1f2cl of $BAS.f2clknd
+|T2P1fun1 of
+(s2typ1(*f2cl*), sint(*npf*)
+,s2typ1lst(*args*), s2typ1(*res*))
+//
 |T2P1exi0 of // exists quantifier
 (s2varlst(*vars*), s2typ1(*body*))
 |T2P1uni0 of // forall quantifier
@@ -117,6 +122,11 @@ s2typ1_node =
 |T2P1trcd of
 (
 $BAS.trcdknd,sint(*npf*),l2t2p1lst)
+//
+|T2P1text of
+(string(*name*), s2typ1lst(*args*))
+//
+|T2P1none0 of ((*0*)) // HX: optional
 //
 |T2P1s2typ of (s2typ)//yet-to-be-copied
 //

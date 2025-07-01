@@ -108,6 +108,29 @@ s2typ1
 (s2t0, T2P1lam1(s2vs, t2q1)))
 end//let
 //
+|T2Pf2cl
+(   f2cl   ) =>
+(
+s2typ1(s2t0, T2P1f2cl(f2cl)))
+|T2Pfun1
+(f2cl, npf1
+,t2ps, tres) =>
+let
+//
+val f2cl =
+s2typ_trx3cpy(f2cl, env0)
+val t2qs =
+s2typlst_trx3cpy(t2ps, env0)
+val tres =
+(
+  s2typ_trx3cpy(tres, env0))
+//
+in//let
+s2typ1
+(s2t0
+,T2P1fun1(f2cl,npf1,t2qs,tres))
+end//let
+//
 |T2Ptrcd
 (trcd
 ,npf1, ltps) =>
@@ -119,10 +142,23 @@ s2typ1
 (s2t0,T2P1trcd(trcd,npf1,ltqs))
 end//let
 //
+|T2Ptext
+(name, t2ps) =>
+let
+val t2qs =
+s2typlst_trx3cpy(t2ps, env0)
+in//let
+s2typ1(s2t0,T2P1text(name,t2qs))
+end//let
+//
+|T2Pnone0() =>
+(
+  s2typ1(s2t0, T2P1none0((*0*))))
+//
 |
 _(*otherwise*) =>
 (
-  s2typ1(s2t0, T2P1s2typ(t2p0)) )
+  s2typ1(s2t0, T2P1s2typ( t2p0 )))
 //
 end(*let*)//end-of-[s2typ_trx3cpy(t2p0,env0)]
 //

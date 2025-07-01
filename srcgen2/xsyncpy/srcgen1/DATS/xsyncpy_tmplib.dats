@@ -73,6 +73,14 @@ castxy{ax:t0}{ay:t0}(ax:ax):(ay)
 #impltmp
 g_print
 <
+f2clknd
+>(f2cl) =
+f2clknd_fprint
+(f2cl, castxy(g_print$out<>((*void*))))
+//
+#impltmp
+g_print
+<
 trcdknd
 >(trcd) =
 trcdknd_fprint
