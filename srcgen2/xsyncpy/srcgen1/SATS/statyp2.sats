@@ -130,6 +130,8 @@ $BAS.trcdknd,sint(*npf*),l2t2p1lst)
 //
 |T2P1s2typ of (s2typ)//yet-to-be-copied
 //
+|T2P1errck of (sint(*lvl*), s2typ1(*err*))
+//
 (* ****** ****** *)
 //
 fun
