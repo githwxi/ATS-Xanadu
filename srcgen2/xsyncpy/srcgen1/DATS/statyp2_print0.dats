@@ -141,6 +141,10 @@ prints
 (
   prints( "T2P1s2typ(", styp, ")" ))
 //
+|T2P1errck
+(lvl0, t2p1) =>
+prints("T2P1errck(", lvl0, ";", t2p1, ")")
+//
 end(*let*)//end-of-[s2typ1_fprint(t2p0,out0)]
 //
 (* ****** ****** *)
