@@ -84,7 +84,7 @@ s2typ_trx3cpy
 (t2p0: s2typ, env0: !env3cpy): s2typ1
 fun
 l2t2p_trx3cpy
-(ltp0: l2t2p, env0: !env3cpy): l2t2p1
+(lt2p: l2t2p, env0: !env3cpy): l2t2p1
 //
 (* ****** ****** *)
 (* ****** ****** *)
