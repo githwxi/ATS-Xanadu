@@ -76,6 +76,38 @@ in//let
 case+
 t2p0.node() of
 //
+|T2Pcst
+(   s2c1   ) =>
+s2typ1(s2t0, T2P1cst(s2c1))
+|T2Pvar
+(   s2v1   ) =>
+s2typ1(s2t0, T2P1var(s2v1))
+//
+|T2Papps
+(t2f0, t2ps) =>
+let
+val t2f0 =
+s2typ_trx3cpy(t2f0, env0)
+val t2qs =
+s2typlst_trx3cpy(t2ps, env0)
+in//let
+(
+s2typ1
+(s2t0, T2P1apps(t2f0, t2qs)))
+end//let
+//
+|T2Plam1
+(s2vs, t2p1) =>
+let
+val t2q1 =
+(
+  s2typ_trx3cpy(t2p1, env0))
+in//let
+(
+s2typ1
+(s2t0, T2P1lam1(s2vs, t2q1)))
+end//let
+//
 |T2Ptrcd
 (trcd
 ,npf1, ltps) =>
