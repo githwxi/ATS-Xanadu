@@ -38,6 +38,20 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#include
+"xatslib\
+/libcats\
+/HATS/libcats_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#absvtbx
+envltck_vtbx
+#vwtpdef
+envltck = envltck_vtbx
+(* ****** ****** *)
+(* ****** ****** *)
 #staload
 "./../SATS/statyp2.sats"
 #staload
@@ -48,6 +62,21 @@ Authoremail: gmhwxiATgmailDOTcom
 fun
 d3parsed1_trxltck
 ( dpar : d3parsed1 ): (d3parsed1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+envltck_make_nil((*0*)): envltck
+fun
+envltck_free_nil(envltck): (void)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3exp1_trxltck
+(d3e0: d3exp1, env0: !envltck): d3exp1
 //
 (* ****** ****** *)
 (* ****** ****** *)
