@@ -81,6 +81,11 @@ in//let
 case+
 t2p0.node() of
 //
+|T2P1none0
+( (*void*) ) =>
+(
+  prints("T2P1none0(", ")"))
+//
 |T2P1cst
 (   s2c1   ) =>
 prints("T2P1cst(", s2c1, ")")
@@ -97,6 +102,19 @@ prints
 prints
 ("T2P1lam1(",s2vs,";",t2p1,")")
 //
+|T2P1f2cl
+(   f2cl   ) =>
+(
+prints("T2P1f2cl(", f2cl, ")"))
+|T2P1fun1
+(f2cl, npf1
+,t2ps, tres) =>
+(
+print("T2P1fun1(");
+prints
+(f2cl,";"
+,npf1,";", t2ps,";", tres,")"))
+//
 |T2P1exi0
 (s2vs, t2p1) =>
 prints
@@ -112,6 +130,11 @@ prints
 (
 print("T2P1trcd(");
 prints(trcd,";",npf1,";",ltps,")"))
+//
+|T2P1text
+(name, t2ps) =>
+prints
+("T2P1text(", name, ";", t2ps, ")")
 //
 |T2P1s2typ
 (   styp   ) =>
