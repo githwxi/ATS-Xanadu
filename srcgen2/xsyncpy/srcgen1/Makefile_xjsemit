@@ -32,6 +32,7 @@ statyp2.sats \
 dynexp2.sats \
 dynexp3.sats \
 trx3cpy.sats \
+trxltck.sats \
 
 ########################################################################
 
@@ -50,6 +51,8 @@ trx3cpy_staexp.dats \
 trx3cpy_dynexp.dats \
 trx3cpy_decl00.dats \
 xsyncpy_tmplib.dats \
+trxltck.dats \
+trxltck_myenv0.dats \
 
 ########################################################################
 ########################################################################

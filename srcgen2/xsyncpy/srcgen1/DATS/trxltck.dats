@@ -31,27 +31,14 @@
 (*
 Author: Hongwei Xi
 (*
-Tue Jul  1 04:19:29 PM EDT 2025
+Tue Jul  1 05:33:10 PM EDT 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-"./../SATS/statyp2.sats"
-#staload
-"./../SATS/dynexp3.sats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-d3parsed1_trxltck
-( dpar : d3parsed1 ): (d3parsed1)
-//
-(* ****** ****** *)
-(* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_trxltck.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trxltck.dats] *)
 (***********************************************************************)
