@@ -57,6 +57,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #extern
 fcast
 castxy{ax:t0}{ay:t0}(ax:ax):(ay)
@@ -84,6 +90,11 @@ stamp_fprint(stmp, castxy(g_print$out<>()))
 g_print
 <symbl>(sym0) =
 symbl_fprint(sym0, castxy(g_print$out<>()))
+//
+#impltmp
+g_print
+<label>(lab0) =
+label_fprint(lab0, castxy(g_print$out<>()))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -159,6 +170,22 @@ in//let
 (* ****** ****** *)
 //
 #impltmp
+{x0:t0}
+g_print
+<
+s2lab(x0)
+>
+(   slab   ) =
+(
+case+ slab of
+|
+S2LAB(l00, x01) =>
+(
+  prints("S2LAB(", l00, ";", x01, ")")) )
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print
 <sort2>(s2t0) =
 sort2_fprint(s2t0, castxy(g_print$out<>()))
@@ -184,7 +211,7 @@ s2typ_fprint(t2p0, castxy(g_print$out<>()))
 #impltmp
 g_print
 <l2t2p>(lt2p) =
-s2typ_fprint(lt2p, castxy(g_print$out<>()))
+l2t2p_fprint(lt2p, castxy(g_print$out<>()))
 //
 #impltmp
 g_print
@@ -298,12 +325,6 @@ g_print
 <s2typ1>(t2p0) =
 (
   s2typ1_fprint(t2p0, g_print$out<>((*0*))))
-//
-#impltmp
-g_print
-<l2t2p1>(lt2p) =
-(
-  l2t2p1_fprint(lt2p, g_print$out<>((*0*))))
 //
 (* ****** ****** *)
 (* ****** ****** *)
