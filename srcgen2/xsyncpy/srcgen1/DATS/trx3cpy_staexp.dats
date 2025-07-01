@@ -54,6 +54,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../../../SATS/staexp2.sats"
+#staload
 "./../../../SATS/statyp2.sats"
 //
 #symload sort with s2typ_get_sort
@@ -91,6 +93,18 @@ _(*otherwise*) =>
   s2typ1(s2t0, T2P1s2typ(t2p0)) )
 //
 end(*let*)//end-of-[s2typ_trx3cpy(t2p0,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+l2t2p_trx3cpy
+(lt2p, env0) =
+(
+S2LAB(l0, t2q0)) where
+{
+val+S2LAB(l0, t2p0) = lt2p
+val t2q0 = s2typ_trx3cpy(t2p0, env0)
+}(*where*)//end-of[l2t2p_trx3cpy(lt2p,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

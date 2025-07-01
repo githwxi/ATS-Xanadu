@@ -66,6 +66,17 @@ castxy{ax:t0}{ay:t0}(ax:ax):(ay)
 //
 #impltmp
 g_print
+<
+trcdknd
+>(trcd) =
+trcdknd_fprint
+(trcd, castxy(g_print$out<>((*void*))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <stamp>(stmp) =
 stamp_fprint(stmp, castxy(g_print$out<>()))
 //
@@ -170,6 +181,10 @@ s2exp_fprint(s2e0, castxy(g_print$out<>()))
 g_print
 <s2typ>(t2p0) =
 s2typ_fprint(t2p0, castxy(g_print$out<>()))
+#impltmp
+g_print
+<l2t2p>(lt2p) =
+s2typ_fprint(lt2p, castxy(g_print$out<>()))
 //
 #impltmp
 g_print
@@ -280,9 +295,15 @@ prints("TEQD3EXP1some(",tok0,";",d3e1,")")
 //
 #impltmp
 g_print
-<s2typ1>(styp) =
+<s2typ1>(t2p0) =
 (
-  s2typ1_fprint(styp, g_print$out<>((*0*))))
+  s2typ1_fprint(t2p0, g_print$out<>((*0*))))
+//
+#impltmp
+g_print
+<l2t2p1>(lt2p) =
+(
+  l2t2p1_fprint(lt2p, g_print$out<>((*0*))))
 //
 (* ****** ****** *)
 (* ****** ****** *)

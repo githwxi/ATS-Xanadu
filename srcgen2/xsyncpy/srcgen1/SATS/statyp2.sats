@@ -48,11 +48,20 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+BAS = "./\
+../../../SATS/xbasics.sats"
+//
+(* ****** ****** *)
+//
+#staload
+S2E = "./\
+../../../SATS/staexp2.sats"
+#staload
 T2P = "./\
 ../../../SATS/statyp2.sats"
 //
 (* ****** ****** *)
-#sexpdef s2lab = $T2P.s2lab
+#sexpdef s2lab = $S2E.s2lab
 (* ****** ****** *)
 #sexpdef sort2 = $T2P.sort2
 (* ****** ****** *)
@@ -66,8 +75,14 @@ T2P = "./\
 fun
 s2typ_fprint
 (styp: s2typ, out0: FILR): void
+fun
+l2t2p_fprint
+(lt2p: l2t2p, out0: FILR): void
+//
 #symload
 fprint with s2typ_fprint of 1000
+#symload
+fprint with l2t2p_fprint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -96,7 +111,8 @@ s2typ1_node =
 (s2varlst(*vars*), s2typ1(*body*))
 //
 |T2P1trcd of
-(trcdknd(*knd*),sint(*npf*),l2t2p1lst)
+(
+$BAS.trcdknd,sint(*npf*),l2t2p1lst)
 //
 |T2P1s2typ of (s2typ)//yet-to-be-copied
 //
@@ -125,7 +141,12 @@ s2typ1_make_sort$node
 fun
 s2typ1_fprint
 (styp: s2typ1, out0: FILR): void
+fun
+l2t2p1_fprint
+(lt2p: l2t2p1, out0: FILR): void
+//
 #symload fprint with s2typ1_fprint of 1000
+#symload fprint with l2t2p1_fprint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
