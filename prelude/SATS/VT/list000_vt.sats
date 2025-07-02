@@ -167,6 +167,17 @@ list_vt_make0 with list_vt_make0_lstrq
 //
 fun
 <x0:vt>
+list_vt_free
+ {n0:i0}
+(xs: ~list_vt(x0,n0)): void
+//
+#symload free with list_vt_free of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 list_vt_copy
  {n0:i0}
 ( xs

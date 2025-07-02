@@ -221,6 +221,38 @@ gseq_length1
 (* ****** ****** *)
 //
 (*
+HX-2025-07-02:
+Wed Jul  2 07:23:22 PM EDT 2025
+*)
+//
+#impltmp
+<a>(*tmp*)
+list_vt_free
+  ( xs ) =
+(
+  loop(xs) ) where
+{
+//
+fnx
+loop
+( xs:
+~ list_vt(a,n)): void =
+(
+case+ xs of
+| ~
+list_vt_nil() => ()
+| ~
+list_vt_cons(x1, xs) =>
+let
+val () =
+g_free<a>(x1) in loop(xs) end)
+//
+}(*where*)//end-of-[list_vt_free(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-07-27:
 Sat 27 Jul 2024 05:56:34 PM EDT
 *)
