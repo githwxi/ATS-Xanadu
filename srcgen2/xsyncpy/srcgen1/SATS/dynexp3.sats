@@ -374,6 +374,10 @@ d3exp1_node =
 //
 (* ****** ****** *)
 //
+|D3E1let0 of (d3ecl1lst, d3exp1)
+//
+(* ****** ****** *)
+//
 |D3E1ift0 of
 (
 d3exp1(*cond*),

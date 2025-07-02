@@ -83,6 +83,15 @@ s2typ1(s2t0, T2P1cst(s2c1))
 (   s2v1   ) =>
 s2typ1(s2t0, T2P1var(s2v1))
 //
+|T2Plft
+(   t2p1   ) =>
+let
+val t2q1 =
+s2typ_trx3cpy(t2p1, env0)
+in//let
+s2typ1(s2t0, T2P1lft(t2q1))
+end//let
+//
 |T2Papps
 (t2f0, t2ps) =>
 let
