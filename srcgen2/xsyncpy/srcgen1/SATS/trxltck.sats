@@ -38,6 +38,18 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2025-07-02:
+This part is for linear type-checking.
+While the name "linear type" may have been
+stuck forever, what it should be really called,
+as far as the actual implementation is concerned,
+is "reference-counted type"! The so-called linear
+type-checking is essentially just a form of static
+reference-counting.
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #include
 "xatslib\
@@ -77,6 +89,13 @@ envltck_free_nil(envltck): (void)
 fun
 d3exp1_trxltck
 (d3e0: d3exp1, env0: !envltck): d3exp1
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3ecl1_trx3cpy
+(d3cl: d3ecl1, env0: !envltck): d3ecl1
 //
 (* ****** ****** *)
 (* ****** ****** *)
