@@ -130,6 +130,9 @@ val loc0 = d3p0.lctn()
 val t2p0 = d3p0.styp()
 //
 (* ****** ****** *)
+val t2q0 =
+s2typ_trx3cpy(t2p0, env0)
+(* ****** ****** *)
 //
 fun
 f0_dapp
@@ -280,14 +283,17 @@ end(*let*)//end-of-[f0_errck(d3p0,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 val (  ) =
 printsln("d3pat_trx3cpy: loc0 = ", loc0)
+(*
 val (  ) =
 printsln("d3pat_trx3cpy: t2p0 = ", t2p0)
 val (  ) =
 printsln("d3pat_trx3cpy: d3p0 = ", d3p0)
 *)
+//
+val (  ) =
+printsln("d3pat_trx3cpy: t2q0 = ", t2q0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1198,7 +1204,6 @@ printsln("d3exp_trx3cpy: t2q0 = ", t2q0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 #implfun
 f3arg_trx3cpy

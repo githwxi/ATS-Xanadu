@@ -106,6 +106,18 @@ s2typ1_node =
 //
 |T2P1lft of s2typ1 // l-value
 //
+(* ****** ****** *)
+//
+// HX: ~/!/& = 0/1/-1
+// knd: 0/1/-1//cbv0/v1/rf
+|T2P1arg1 of
+(sint(*knd*), s2typ1)
+|T2P1atx2 of // HX: bef=arg1
+(//sint(*knd*)//knd = 1 / -1
+ s2typ1(*bef*), s2typ1(*aft*))
+//
+(* ****** ****** *)
+//
 |T2P1apps of
 (
 s2typ1(*fun*), s2typ1lst(*args*))

@@ -92,6 +92,27 @@ in//let
 s2typ1(s2t0, T2P1lft(t2q1))
 end//let
 //
+|T2Parg1
+(knd0, t2p1) =>
+let
+val t2q1 =
+s2typ_trx3cpy(t2p1, env0)
+in//let
+s2typ1
+(s2t0, T2P1arg1(knd0, t2q1))
+end//let
+|T2Patx2
+(t2p1, t2p2) =>
+let
+val t2q1 =
+s2typ_trx3cpy(t2p1, env0)
+val t2q2 =
+s2typ_trx3cpy(t2p2, env0)
+in//let
+s2typ1
+(s2t0, T2P1atx2(t2q1, t2q2))
+end//let
+//
 |T2Papps
 (t2f0, t2ps) =>
 let

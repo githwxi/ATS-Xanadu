@@ -97,6 +97,15 @@ prints("T2P1var(", s2v1, ")")
 (   t2p1   ) =>
 prints("T2P1lft(", t2p1, ")")
 //
+|T2P1arg1
+(knd0, t2p1) =>
+( print("T2P1arg1(")
+; prints(knd0, ";", t2p1, ")"))
+|T2P1atx2
+(t2p1, t2p2) =>
+( print("T2P1atx2(")
+; prints(t2p1, ";", t2p2, ")"))
+//
 |T2P1apps
 (t2f0, t2ps) =>
 prints
