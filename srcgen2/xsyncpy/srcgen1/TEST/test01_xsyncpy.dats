@@ -66,7 +66,7 @@ assign
 fun
 exchng
 ( x: &sint
-, y: &sint): void =
+, y: &sint >> _): void =
 let val t = x in x := y; y := t end
 //
 (* ****** ****** *)
