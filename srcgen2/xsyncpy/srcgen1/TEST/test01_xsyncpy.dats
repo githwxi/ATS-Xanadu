@@ -61,7 +61,13 @@ square = lam(x:sint) => x + x
 //
 fun
 assign
-(x: &bool, y: bool): void = (x := y)
+( x: &bool
+, y: !bool): void = (x := y)
+fun
+exchng
+( x: &sint
+, y: &sint): void =
+let val t = x in x := y; y := t end
 //
 (* ****** ****** *)
 (* ****** ****** *)

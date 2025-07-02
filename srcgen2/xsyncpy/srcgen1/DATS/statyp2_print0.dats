@@ -93,6 +93,10 @@ prints("T2P1cst(", s2c1, ")")
 (   s2v1   ) =>
 prints("T2P1var(", s2v1, ")")
 //
+|T2P1lft
+(   t2p1   ) =>
+prints("T2P1lft(", t2p1, ")")
+//
 |T2P1apps
 (t2f0, t2ps) =>
 prints

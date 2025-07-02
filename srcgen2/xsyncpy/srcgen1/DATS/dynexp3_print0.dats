@@ -248,10 +248,18 @@ prints
 (
  prints("D3E1dap0(", d3f0, ")"))
 |D3E1dapp
-(d3f0,npf1,d3es) =>
+(d3f0
+,npf1, d3es) =>
 (
 print("D3E1dapp(");
 prints(d3f0,";",npf1,";",d3es,")"))
+//
+(* ****** ****** *)
+//
+|D3E1let0
+(dcls, d3e1) =>
+prints
+("D3E1let0(", dcls, ";", d3e1, ")")
 //
 (* ****** ****** *)
 //

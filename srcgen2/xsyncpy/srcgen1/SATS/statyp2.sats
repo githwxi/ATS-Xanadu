@@ -104,10 +104,14 @@ s2typ1_node =
 |T2P1cst of s2cst // constant
 |T2P1var of s2var // variable
 //
+|T2P1lft of s2typ1 // l-value
+//
 |T2P1apps of
-(s2typ1(*fun*), s2typ1lst(*args*))
+(
+s2typ1(*fun*), s2typ1lst(*args*))
 |T2P1lam1 of
-(s2varlst(*args*), s2typ1(*body*))
+(
+s2varlst(*args*), s2typ1(*body*))
 //
 |T2P1f2cl of $BAS.f2clknd
 |T2P1fun1 of
