@@ -334,6 +334,25 @@ d3pat1_make_lctn$styp$node
 (* ****** ****** *)
 //
 datatype
+d3typ1_node =
+//
+|T3Ps2typ of s2typ1
+|T3Pd3pat of d3pat1
+//
+#typedef d3typ1lst = list(d3typ1)
+#typedef d3typ1opt = optn(d3typ1)
+//
+(* ****** ****** *)
+//
+fun
+d3typ1_fprint
+(dtyp: d3typ1, out0: FILR): void
+#symload fprint with d3typ1_fprint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
 d3exp1_node =
 //
 (* ****** ****** *)
