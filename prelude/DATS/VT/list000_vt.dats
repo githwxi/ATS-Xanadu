@@ -244,8 +244,8 @@ list_vt_nil() => ()
 | ~
 list_vt_cons(x1, xs) =>
 let
-val () =
-g_free<a>(x1) in loop(xs) end)
+  val () =
+  g_free<a>(x1) in loop(xs) end)
 //
 }(*where*)//end-of-[list_vt_free(xs)]
 //
