@@ -1056,6 +1056,7 @@ val
 s2e1 = tread12_s2exp(s2e1, err)
 //
 in//let
+//
 if
 (e00 = err)
 then (s2e) else
@@ -1063,6 +1064,7 @@ let
 val s2t = s2e.sort() in
 s2exp_impr_errck(s2t, loc1, s2e1)
 end (*let*) // else // end-of-(if)
+//
 end (*let*) // end of [ f0_impr(s2e,err) ]
 //
 (* ****** ****** *)
@@ -1083,6 +1085,7 @@ val
 s2e1 = tread12_s2exp(s2e1, err)
 //
 in//let
+//
 if
 (e00 = err)
 then (s2e) else
@@ -1090,6 +1093,7 @@ let
 val s2t = s2e.sort() in
 s2exp_prgm_errck(s2t, loc1, s2e1)
 end (*let*) // else // end-of-(if)
+//
 end (*let*) // end of [ f0_prgm(s2e,err) ]
 //
 (* ****** ****** *)
