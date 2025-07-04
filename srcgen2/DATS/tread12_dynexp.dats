@@ -65,6 +65,7 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/tread12.sats"
@@ -995,21 +996,35 @@ tread12_d2con
 if
 (e00 = err)
 then d2c0 else
-(d2con_set_sexp(d2c0, s2e0); d2c0)
-) where
+let
+val
+t2p0 = s2exp_stpize(s2e0)
+in//let
+d2con_set_sexp(d2c0, s2e0);
+d2con_set_styp(d2c0, t2p0); d2c0
+end//let
+) where//end-of-[tread12_d2con(...)]
 {
 //
 val e00 = err
 //
-val s2e0 = d2c0.sexp()
+(*
+val (  ) =
+(
+prerrsln("\
+tread12_d2con: d2c0 = ", d2c0);
+prerrsln("\
+tread12_d2con: s2e0 = ", d2c0.sexp()))
+*)
+//
+val s2e0 = tread12_s2exp(d2c0.sexp(), err)
 //
 (*
 val (  ) =
 (
-prerrsln("tread12_d2con: s2e0 = ", s2e0))
+  prerrsln("tread12_d2con: s2e0 = ", s2e0))
 *)
 //
-val s2e0 = tread12_s2exp(d2c0.sexp(), err)
 } (*where*) // end of [tread12_d2con(d2c0,err)]
 //
 (* ****** ****** *)

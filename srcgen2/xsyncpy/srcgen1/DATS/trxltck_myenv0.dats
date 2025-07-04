@@ -39,6 +39,47 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../SATS/statyp2.sats"
+#staload
+"./../SATS/dynexp3.sats"
+#staload
+"./../SATS/trxltck.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datavwtp
+dtpstk =
+//
+|dtpstk_nil of ()
+//
+|dtpstk_lam0 of (dtpstk)
+|dtpstk_let0 of (dtpstk)
+//
+|dtpstk_ift0 of (dtpstk)
+|dtpstk_cas0 of (dtpstk)
+//
+|dtpstk_cons of
+(d2var(*lin*), d3typ, dtpstk)
+//
+datavwtp
+envltck =
+ENVLTCK of ()
+// (dtpstk, stkmap(s2cstlst))
+//
+(* ****** ****** *)
+#absimpl envltck_vtbx = envltck
+(* ****** ****** *)
+//
+in//local
+end//local
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trxltck_myenv0.dats] *)
 (***********************************************************************)

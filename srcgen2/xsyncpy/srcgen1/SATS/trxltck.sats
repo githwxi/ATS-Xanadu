@@ -58,6 +58,15 @@ reference-counting.
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#absvtbx
+dtpstk_vtbx // ptr
+#vwtpdef
+dtpstk = dtpstk_vtbx
+//
+(* ****** ****** *)
+(* ****** ****** *)
+(* ****** ****** *)
 #absvtbx
 envltck_vtbx
 #vwtpdef
