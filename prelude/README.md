@@ -193,3 +193,34 @@ out-of-bounds array access, which can be taken advantage of by a
 malicious program. Therefore, when applying `gseq_head$raw` to a
 sequence, one must possess, formally or informally, a proof of some
 kind that attests to the non-emptiness of the sequence.
+
+## Naming Convention for Combinators
+
+Let us take `map` as an example to illustrate some conventional rules
+employed for naming various combinators in the prelude library of
+ATS3.  In general, `map` means to apply some function `fopr` to each
+value in a collection to form another collection of values. For
+instance, a sequence of values of type `X` can be "mapped" to another
+sequence of values of type `Y`, where each value type `X` is mapped to
+a value of type `Y`. However, the output sequence may be represented
+differently from the input sequence. For instance, the input sequence
+can be an array-based string (representing a sequence of characters)
+while the output sequence can be a linked list of some kind. The most
+generic sequence-based `map` is declared as follows:
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_map_ares(xs: xs): (ys)
+```
+
+where the word `ares` indicates that the return value `gseq_map_ares`
+is the most generic (that is, threre is practically no information
+revealed on the representation of the return value).
+
+<!--
+##############################(README.md)##############################
+-->
