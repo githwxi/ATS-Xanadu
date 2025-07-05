@@ -204,7 +204,7 @@ d3fundclist_trx3cpy
 //
 fun
 d3eclistopt_trx3cpy
-(dcls: d3eclistopt, env0: !env3cpy): d3ecl1lstopt
+(dopt: d3eclistopt, env0: !env3cpy): d3ecl1lstopt
 //
 (* ****** ****** *)
 (* ****** ****** *)

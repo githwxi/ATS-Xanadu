@@ -39,6 +39,56 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../SATS/statyp2.sats"
+#staload
+"./../SATS/dynexp3.sats"
+//
+#staload
+"./../SATS/trxltck.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3exp1lst_trxltck
+(d3es, env0) =
+list_map$e1nv(d3es, env0) where
+{
+#typedef x0 = d3exp1
+#typedef y0 = d3exp1
+#vwtpdef e1 = envltck
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = d3exp1_trxltck
+}(*where*)//end-of-[d3exp1lst_trxltck(d3es,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3ecl1lstopt_trxltck
+(dopt, env0) =
+(
+case+ dopt of
+|
+optn_nil
+( (*0*) ) => optn_nil((*void*))
+|
+optn_cons
+(  dcls  ) =>
+(
+  optn_cons(d3ecl1lst_trxltck(dcls, env0)))
+)(*case+*)//end-of-[d3ecl1lstopt_trxltck(dopt,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trxltck.dats] *)
 (***********************************************************************)

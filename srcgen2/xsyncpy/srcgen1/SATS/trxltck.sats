@@ -103,8 +103,36 @@ d3exp1_trxltck
 (* ****** ****** *)
 //
 fun
-d3ecl1_trx3cpy
+d3ecl1_trxltck
 (d3cl: d3ecl1, env0: !envltck): d3ecl1
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3exp1lst_trxltck
+(d3es: d3exp1lst, env0: !envltck): d3exp1lst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3ecl1lst_trxltck
+(dcls: d3ecl1lst, env0: !envltck): d3ecl1lst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3ecl1lst_trxltck
+(dcls: d3ecl1lst, env0: !envltck): d3ecl1lst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3eclistopt_trxltck
+(dopt: d3ecl1lstopt, env0: !envltck): d3ecl1lstopt
 //
 (* ****** ****** *)
 (* ****** ****** *)
