@@ -56,6 +56,7 @@ ATS_PACKNAME
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/tread01.sats"
@@ -73,6 +74,12 @@ ATS_PACKNAME
 #symload sort with s2cst_get_sort
 #symload d2cs with s2cst_get_d2cs
 (* ****** ****** *)
+#symload sort with s2exp_get_sort
+#symload node with s2exp_get_node
+(* ****** ****** *)
+#symload sort with s2typ_get_sort
+#symload node with s2typ_get_node
+(* ****** ****** *)
 #symload lctn with d2con_get_lctn
 #symload styp with d2con_get_styp
 (* ****** ****** *)
@@ -87,6 +94,48 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 fun
+fperr20_d2con
+( out: FILR
+, d2c0: d2con): void =
+(
+if
+f0_errq(d2c0) then
+let
+//
+val loc0 = d2c0.lctn()
+val t2p0 = d2c0.styp()
+//
+in//let
+//
+printsln("\
+FPERR20-ERROR:",
+loc0, ":", d2c0, "(", t2p0, ")")
+//
+end(*let*)//end-of-(if(f0_errq))
+) where
+{
+//
+fun
+f0_errq
+(d2c0: d2con): bool =
+let
+//
+val t2p0 = d2c0.styp()
+//
+in//let
+(
+case+
+t2p0.node() of
+| // HX: [T2Pfun1] is expected!
+T2Ps2exp _ => true | _ => false)
+end//let
+//
+} where
+{
+  #impltmp g_print$out<>() = out
+}(*where*)//end-of-[fperr20_d2con]
+//
+fun
 fperr20_d2conlst
 ( out: FILR
 , d2cs: d2conlst): void =
@@ -97,13 +146,8 @@ list_nil() => ()
 |
 list_cons(d2c1, d2cs) =>
 let
-val loc1 = d2c1.lctn()
-val t2p1 = d2c1.styp()
-val (  ) =
-(
-printsln("\
-FPERR20-ERROR:",
-loc1,":",d2c1,"(",t2p1,")"))
+val () =
+fperr20_d2con(out, d2c1)
 in//let
 (
   fperr20_d2conlst(out, d2cs))
