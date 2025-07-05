@@ -202,11 +202,21 @@ ATS3.  In general, `map` means to apply some function `fopr` to each
 value in a collection to form another collection of values. For
 instance, a sequence of values of type `X` can be "mapped" to another
 sequence of values of type `Y`, where each value type `X` is mapped to
-a value of type `Y`. However, the output sequence may be represented
-differently from the input sequence. For instance, the input sequence
-can be an array-based string (representing a sequence of characters)
-while the output sequence can be a linked list of some kind. The most
-generic sequence-based `map` is declared as follows:
+a value of type `Y`. The `fopr` function for `map` is declared as
+follows in `prelude/SATS/gbas001.sats`:
+
+```
+fun
+<x0:t0>
+<y0:vt>
+map$fopr(itm: x0): (y0)
+```
+
+The output sequence of performing `map` on an input sequence may be
+represented differently from the input sequence. For instance, the
+input sequence can be an array-based string (representing a sequence
+of characters) while the output sequence can be a linked list of some
+kind. The most generic sequence-based `map` is declared as follows:
 
 ```
 fun
@@ -217,9 +227,29 @@ fun
 gseq_map_ares(xs: xs): (ys)
 ```
 
-where the word `ares` indicates that the return value `gseq_map_ares`
-is the most generic (that is, threre is practically no information
-revealed on the representation of the return value).
+where the (suffix) word `ares` indicates that the return value
+`gseq_map_ares` is the most generic (that is, threre is practically no
+information revealed on the representation of the return value).
+
+There are many variants of `gseq_map_ares`. For instance, the
+following variant indicates that the returned value is represented as
+a linear list:
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_llist(xs: xs): list_vt(y0)
+```
+
+### Indexed Traversal
+
+### Reversed Traversal
+
+### Z-Combined Traversal
+
+### X-Combined Traversal
 
 <!--
 ##############################(README.md)##############################
