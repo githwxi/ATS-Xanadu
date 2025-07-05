@@ -751,10 +751,30 @@ val+
  sym0,
 !ctag,
  tqas,
- sexp,
+ s2e0,
  stmp,
  t2p0,xt2p) = d2c0 in (ctag := tag0)
 end (*let*) // end of [d2con_set_ctag]
+//
+(* ****** ****** *)
+//
+#implfun
+d2con_set_styp
+( d2c0, t2p0 ) =
+let
+val
+d2c0 =
+$UN.castlin10{d2con_vt}(d2c0)
+val+
+@D2CON_vt
+(loc0,
+ sym0,
+ ctag,
+ tqas,
+ s2e0,
+ stmp,
+!styp,xt2p) = d2c0 in (styp := t2p0)
+end (*let*) // end of [d2con_set_styp]
 //
 (* ****** ****** *)
 //
