@@ -72,6 +72,21 @@ map$e1nv$fopr<x0><y0><e1> = d3exp1_trxltck
 (* ****** ****** *)
 //
 #implfun
+d3ecl1lst_trxltck
+(dcls, env0) =
+list_map$e1nv(dcls, env0) where
+{
+#typedef x0 = d3ecl1
+#typedef y0 = d3ecl1
+#vwtpdef e1 = envltck
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = d3ecl1_trxltck
+}(*where*)//end-of-[d3ecl1lst_trxltck(dcls,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d3ecl1lstopt_trxltck
 (dopt, env0) =
 (

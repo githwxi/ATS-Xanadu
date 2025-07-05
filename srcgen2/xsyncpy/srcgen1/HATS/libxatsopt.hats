@@ -13,10 +13,14 @@ Mon May 19 06:07:14 PM EDT 2025
 (* ****** ****** *)
 #staload
 "./../../../SATS/xstamp0.sats"
+(* ****** ****** *)
 #staload
 "./../../../SATS/xsymbol.sats"
 #staload
 "./../../../SATS/xlabel0.sats"
+(* ****** ****** *)
+#staload
+"./../../../SATS/xsymmap.sats"
 (* ****** ****** *)
 #staload
 "./../../../SATS/locinfo.sats"

@@ -49,10 +49,23 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"./../HATS/libxatsopt.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 local
 //
+#typedef
+s2cs = s2cstlst
+//
 datavwtp
-dtpstk =
+envltck =
+ENVLTCK of
+(dtpstk, stkmap(s2cs))
+//
+and dtpstk =
 //
 |dtpstk_nil of ()
 //
@@ -63,18 +76,17 @@ dtpstk =
 |dtpstk_cas0 of (dtpstk)
 //
 |dtpstk_cons of
-(d2var(*lin*), d3typ, dtpstk)
-//
-datavwtp
-envltck =
-ENVLTCK of ()
-// (dtpstk, stkmap(s2cstlst))
+(d2var, d3typ1(*lin*), dtpstk)
 //
 (* ****** ****** *)
 #absimpl envltck_vtbx = envltck
 (* ****** ****** *)
 //
 in//local
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 end//local
 //
 (* ****** ****** *)
