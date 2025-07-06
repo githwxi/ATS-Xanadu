@@ -361,6 +361,7 @@ is the following sequence of pairs:
 [(1, "a"), (1, "b"), (2, "a"), (2, "b"), (3, "a"), (3, "b")]
 ```
 
+It is straightforward to defined the cross product of two sequences.
 What `gseq_x2map` does is essentially to perform `gseq_map` on the
 sequence obtained from the cross product of two given sequences. It
 should be easy to extrapolate what `gseq_x3map` does and beyond. The
@@ -397,15 +398,23 @@ beyond) extrapolates naturally.
 
 There are unlimited number of ways to combine traversals.
 
-For instance, we can combine indexed traversal with reversed traversal
-to form index-reversed traversal.  What `gseq_irmap` does is
-essentially to perform `gseq_imap` on the sequence obtained from
-reversing a given sequence.
+We can combine indexed traversal with reversed traversal to form
+index-reversed traversal.  What `gseq_irmap` does is essentially to
+perform `gseq_imap` on the sequence obtained from reversing a given
+sequence.
 
-For instance, we can also combine reversed traversal with indexed
-traversal to form reverse-indexed traversal.  What `gseq_rimap` does
-is essentially to perform `gseq_rmap` on the sequence obtained from
-indexing a given sequence.
+Given a sequence '["a", "b", "c"]', its indexed version is
+the following pair of sequence:
+
+```
+[(0, "a"), (1, "b"), (2, "c")]
+```
+
+It is straightforward to defined the indexed version of a sequence.
+We can also combine reversed traversal with indexed traversal to form
+reverse-indexed traversal.  What `gseq_rimap` does is essentially to
+perform `gseq_rmap` on the sequence obtained from indexing a given
+sequence.
 
 
 <!--
