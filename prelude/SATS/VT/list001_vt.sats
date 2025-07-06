@@ -175,8 +175,8 @@ list_vt_strmize0
 fun
 <x0:vt>
 list_vt_strqize0
-{n:int}
-(xs: ~list_vt(x0, n)): strq_vt(x0, n)
+{ln:i0}
+(xs: ~list_vt(x0, ln)): strq_vt(x0, ln)
 //
 fun
 <x0:vt>
@@ -185,21 +185,21 @@ list_vt_rstrmize0
 fun
 <x0:vt>
 list_vt_rstrqize0
-{n:int}
-(xs: ~list_vt(x0, n)): strq_vt(x0, n)
+{ln:i0}
+(xs: ~list_vt(x0, ln)): strq_vt(x0, ln)
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
 list_vt_listize0
-{n:int}
-(xs: ~list_vt(x0, n)): list_vt(x0, n)
+{ln:i0}
+(xs: ~list_vt(x0, ln)): list_vt(x0, ln)
 fun
 <x0:vt>
 list_vt_rlistize0
-{n:int}
-(xs: ~list_vt(x0, n)): list_vt(x0, n)
+{ln:i0}
+(xs: ~list_vt(x0, ln)): list_vt(x0, ln)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -220,10 +220,10 @@ list_vt_c3hoose0_lstrm
 fun
 <x0:vt>
 list_vt_nchoose0_lstrm$llist
-{ln:n0}
+{ln:i0}
 ( xs:
 ~ list_vt(x0)
-, n0: nint(n0)): strm_vt(list_vt(x0, ln))
+, n0: sint(ln)): strm_vt(list_vt(x0, ln))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -237,13 +237,13 @@ fun
 <x0:vt>
 <y0:vt>
 list_vt_map0
-{ln:n0}
+{ln:i0}
 (xs: ~list_vt(x0, ln)): list_vt(y0, ln)
 fun
 <x0:vt>
 <y0:vt>
 list_vt_map1
-{ln:n0}
+{ln:i0}
 (xs: !list_vt(x0, ln)): list_vt(y0, ln)
 //
 #symload map0 with list_vt_map0 of 1000
@@ -253,7 +253,7 @@ fun
 <x0:vt>
 <y0:vt>
 list_vt_map0$f1un
-{ln:n0}
+{ln:i0}
 (xs:
 ~list_vt(x0, ln)
 ,fopr: (  ~x0  ) -> y0): list_vt(y0, ln)
@@ -261,7 +261,7 @@ fun
 <x0:vt>
 <y0:vt>
 list_vt_map1$f1un
-{ln:n0}
+{ln:i0}
 (xs:
 !list_vt(x0, ln)
 ,fopr: (  !x0  ) -> y0): list_vt(y0, ln)
@@ -281,13 +281,13 @@ fun
 <x0:vt>
 <y0:vt>
 list_vt_maprev0
-{ln:n0}
+{ln:i0}
 (xs: ~list_vt(x0, ln)): list_vt(y0, ln)
 fun
 <x0:vt>
 <y0:vt>
 list_vt_maprev1
-{ln:n0}
+{ln:i0}
 (xs: !list_vt(x0, ln)): list_vt(y0, ln)
 //
 #symload maprev0 with list_vt_maprev0 of 1000
@@ -297,7 +297,7 @@ fun
 <x0:vt>
 <y0:vt>
 list_vt_maprev0$f1un
-{ln:n0}
+{ln:i0}
 (xs:
 ~list_vt(x0, ln)
 ,fopr: (  ~x0  ) -> y0): list_vt(y0, ln)
@@ -305,7 +305,7 @@ fun
 <x0:vt>
 <y0:vt>
 list_vt_maprev1$f1un
-{ln:n0}
+{ln:i0}
 (xs:
 !list_vt(x0, ln)
 ,fopr: (  !x0  ) -> y0): list_vt(y0, ln)
@@ -326,7 +326,7 @@ fun
 <y0:vt>
 <e1:vt>
 list_vt_map$e1nv0
-{ln:n0}
+{ln:i0}
 ( xs:
 ~ list_vt(x0, ln), e1: !e1): list_vt(y0, ln)
 fun
@@ -334,7 +334,7 @@ fun
 <y0:vt>
 <e1:vt>
 list_vt_map$e1nv1
-{ln:n0}
+{ln:i0}
 ( xs:
 ! list_vt(x0, ln), e1: !e1): list_vt(y0, ln)
 //
@@ -343,7 +343,7 @@ fun
 <y0:vt>
 <e1:vt>
 list_vt_map$e1nv0$f2un
-{ln:n0}
+{ln:i0}
 ( xs:
 ~ list_vt(x0, ln)
 , e1: !e1, fopr: (~x0, !e1)->y0): list_vt(y0, ln)
@@ -352,7 +352,7 @@ fun
 <y0:vt>
 <e1:vt>
 list_vt_map$e1nv1$f2un
-{ln:n0}
+{ln:i0}
 ( xs:
 ! list_vt(x0, ln)
 , e1: !e1, fopr: (!x0, !e1)->y0): list_vt(y0, ln)

@@ -171,7 +171,7 @@ fun
 <a:t0>
 list_copy_vt
 {n:i0}
-(xs: list(a, n)): list_vt(a, n))
+(xs: list(a, n)): list_vt(a, n)
 //
 (* ****** ****** *)
 (* ****** ****** *)

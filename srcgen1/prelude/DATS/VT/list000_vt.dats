@@ -56,7 +56,8 @@ list_vt_free
 fnx
 loop
 {n:nat}.<n>.
-(xs: list_vt(a, n)): void =
+( xs:
+~ list_vt(a, n)): void =
 (
 case+ xs of
 | ~
