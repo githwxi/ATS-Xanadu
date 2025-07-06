@@ -251,8 +251,8 @@ gseq_map_llist(xs: xs): list_vt(y0)
 
 ### Indexed Traversal
 
-When traversing a sequence of items, `gseq_imap` applies the
-following `fopr` function to each encountered item:
+When traversing a sequence of items, `gseq_imap` employs the following
+function to process each encountered item:
 
 ```
 fun
@@ -285,9 +285,31 @@ of each encountered item.
 
 There is a default or standard traversal associated with a given
 sequence, and we refer to this traversal as the left-to-right
-traversal of sequence. Then there also the right-to-left traversal
-that is completely opposite to the left-to-right traversal, which we
-refer to as the reversed traversal.
+traversal of sequence. Then there is also the right-to-left traversal
+(completely opposite to the left-to-right traversal), which we refer
+to as the reversed traversal. We use the verb `r-traverse` to mean
+perform a reversed traversal.
+
+When r-traversing a sequence of items, `gseq_rmap` employs the
+following function to process each encountered item:
+
+```
+fun
+<x0:t0>
+<y0:vt>
+rmap$fopr(itm: x0): (y0)
+```
+
+The most generic sequence-based `rmap` is declared as follows:
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_rmap_ares(xs: xs): (ys)
+```
 
 The naming convention we follow changes `map` into `rmap` to indicate
 that the (standard) sequence traversal (for `map`) is replaced with
