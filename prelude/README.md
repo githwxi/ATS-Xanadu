@@ -199,11 +199,12 @@ kind that attests to the non-emptiness of the sequence.
 Let us take `map` as an example to illustrate some conventional rules
 employed for naming various combinators in the prelude library of
 ATS3.  In general, `map` means to apply some function `fopr` to each
-value in a collection to form another collection of values. For
-instance, a sequence of values of type `X` can be "mapped" to another
-sequence of values of type `Y`, where each value of type `X` is mapped to
-a value of type `Y`. The `fopr` function for `map` is declared as
-follows in `prelude/SATS/gbas001.sats`:
+value in a collection to form another collection of values (where each
+value is a result of `fopr`). For instance, a sequence of values of
+type `X` can be "mapped" to another sequence of values of type `Y`,
+where each value of type `X` is mapped to a value of type `Y`. The
+`fopr` function for `map` is declared as follows in
+`prelude/SATS/gbas001.sats`:
 
 ```
 fun
@@ -212,8 +213,12 @@ fun
 map$fopr(itm: x0): (y0)
 ```
 
-We use `gseq_map` for applying `map` to a sequence of values.  The
-output sequence of performing `gseq_map` on an input sequence may be
+We use `gseq_map` for an operation that traverses a given sequence and
+applies `map$fopr` to the value of each encountered item; the sequence
+traversal performed by `gseq_map` is referred to as the default or
+standard traversal of the sequence.
+
+The output sequence of performing `gseq_map` on an input sequence may be
 represented differently from the input sequence. For instance, the
 input sequence can be an array-based string (representing a sequence
 of characters) while the output sequence can be a linked list of some
@@ -246,7 +251,7 @@ gseq_map_llist(xs: xs): list_vt(y0)
 
 ### Indexed Traversal
 
-When traversing a sequence of values, `gseq_imap` applies the
+When traversing a sequence of items, `gseq_imap` applies the
 following `fopr` function to each encountered item:
 
 ```
@@ -273,10 +278,20 @@ gseq_imap_ares(xs: xs): (ys)
 
 The naming convention we follow changes `map` into `imap` to indicate
 that the (standard) sequence traversal (for `map`) is replaced with
-the indexed sequence traversal (for `imap`).
-  
+the indexed sequence traversal (for `imap`) that records the position
+of each encountered item.
 
 ### Reversed Traversal
+
+There is a default or standard traversal associated with a given
+sequence, and we refer to this traversal as the left-to-right
+traversal of sequence. Then there also the right-to-left traversal
+that is completely opposite to the left-to-right traversal, which we
+refer to as the reversed traversal.
+
+The naming convention we follow changes `map` into `rmap` to indicate
+that the (standard) sequence traversal (for `map`) is replaced with
+the reversed sequence traversal (for `rmap`).
 
 ### Z-Combined Traversal
 
