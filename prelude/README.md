@@ -317,7 +317,11 @@ the reversed sequence traversal (for `rmap`).
 
 ### Z-Combined Traversal
 
+The letter `z` in `z-combined` stands for `zip`.
+
 ### X-Combined Traversal
+
+The letter `x` in `x-combined` stands for `cross`.
 
 <!--
 ##############################(README.md)##############################
