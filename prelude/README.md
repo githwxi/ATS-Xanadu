@@ -403,21 +403,21 @@ index-reversed traversal.  What `gseq_irmap` does is essentially to
 perform `gseq_imap` on the sequence obtained from reversing a given
 sequence.
 
-Given a sequence '["a", "b", "c"]', its indexed version is
-the following pair of sequence:
+Given a sequence `["a", "b", "c"]`, its indexed version is
+the following sequence of pairs:
 
 ```
 [(0, "a"), (1, "b"), (2, "c")]
 ```
 
-It is straightforward to defined the indexed version of a sequence.
-We can also combine reversed traversal with indexed traversal to form
-reverse-indexed traversal.  What `gseq_rimap` does is essentially to
-perform `gseq_rmap` on the sequence obtained from indexing a given
-sequence.
+It is straightforward to define the indexed version of a given
+sequence.  We can also combine reversed traversal with indexed
+traversal to form reverse-indexed traversal.  What `gseq_rimap` does
+is essentially to perform `gseq_rmap` on the sequence obtained from
+indexing a given sequence.
 
-From this point on, one should be clear about the meaning of
-`gseq_iz2map`, `gseq_irx2map`, etc.
+From this point on, one should be clear about the meaning of combinators
+like `gseq_iz2map`, `gseq_rix2map`, etc.
 
 
 <!--
