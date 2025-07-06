@@ -354,6 +354,45 @@ And the interpretation for `z3map` (and beyond) extrapolates naturally.
 
 The letter `x` in `x-combined` stands for `cross`.
 
+Given two sequences `[1, 2, 3]` and `["a", "b"]`, their cross product
+is the following sequence of pairs:
+
+```
+[(1, "a"), (1, "b"), (2, "a"), (2, "b"), (3, "a"), (3, "b")]
+```
+
+What `gseq_x2map` does is essentially to perform `gseq_map` on the
+sequence obtained from the cross product of two given sequences. It
+should be easy to extrapolate what `gseq_x3map` does and beyond. The
+fopr-function employed by `gseq_x2map` is given as follows:
+
+```
+fun
+<x1:t0>
+<x2:t0>
+<y0:vt>
+x2map$fopr(x1: x1, x2: x2): (y0)
+```
+
+The most generic sequence-based `x2map` is declared as follows:
+
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+<zs:vt>
+<z0:vt>
+gseq_x2map_ares(xs: xs, ys: ys): (zs)
+```
+
+The naming convention we follow changes `map` into `x2map` to
+indicate the traversal of a seqeunce obtained from the cross product
+of two given sequences.  And the interpretation for `x3map` (and
+beyond) extrapolates naturally.
+
 <!--
 ##############################(README.md)##############################
 -->
