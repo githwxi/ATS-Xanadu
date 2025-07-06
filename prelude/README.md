@@ -416,6 +416,9 @@ reverse-indexed traversal.  What `gseq_rimap` does is essentially to
 perform `gseq_rmap` on the sequence obtained from indexing a given
 sequence.
 
+From this point on, one should be clear about the meaning of
+`gseq_iz2map`, `gseq_irx2map`, etc.
+
 
 <!--
 ##############################(README.md)##############################
