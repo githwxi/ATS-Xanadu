@@ -1396,7 +1396,7 @@ gseq_imap$iforall$f2un // [imap] with
 (xs: xs, fopr: (ni,x0)->y0): bool // [iforall]
 //
 #symload
-gseq_imap$forall with gseq_imap$forall$f2un of 0100
+gseq_imap$iforall with gseq_imap$iforall$f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

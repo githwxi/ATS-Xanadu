@@ -1684,7 +1684,7 @@ fun
 <x0:vt>
 <y0:vt>
 <e1:vt>
-gseq_map1$f1un_llist
+gseq_map$e1nv1$f1un_llist
 ( xs: !xs
 , e1: !e1, fopr: (!x0, !e1)->(y0)): list_vt(y0)
 #symload

@@ -235,13 +235,13 @@ fun
 <x0:t0>
 <y0:t0>
 list_map
-{ln:n0}
+{ln:i0}
 (xs: list(x0, ln)): list(y0, ln)
 fun
 <x0:t0>
 <y0:t0>
 list_map$f1un
-{ln:n0}
+{ln:i0}
 ( xs
 : list(x0, ln), fopr: (x0)->y0): list(y0, ln)
 //
@@ -256,13 +256,13 @@ fun
 <x0:t0>
 <y0:vt>
 list_map_vt
-{ln:n0}
+{ln:i0}
 (xs: list(x0, ln)): list_vt(y0, ln)
 fun
 <x0:t0>
 <y0:vt>
 list_map$f1un_vt
-{ln:n0}
+{ln:i0}
 ( xs
 : list(x0, ln), fopr: (x0)->y0): list_vt(y0, ln)
 //
@@ -278,13 +278,13 @@ fun
 <x0:t0>
 <y0:t0>
 list_maprev
-{ln:n0}
+{ln:i0}
 (xs: list(x0, ln)): list(y0, ln)
 fun
 <x0:t0>
 <y0:t0>
 list_maprev$f1un
-{ln:n0}
+{ln:i0}
 ( xs
 : list(x0, ln), fopr: (x0)->y0): list(y0, ln)
 //
@@ -299,13 +299,13 @@ fun
 <x0:t0>
 <y0:vt>
 list_maprev_vt
-{ln:n0}
+{ln:i0}
 (xs: list(x0, ln)): list_vt(y0, ln)
 fun
 <x0:t0>
 <y0:vt>
 list_maprev$f1un_vt
-{ln:n0}
+{ln:i0}
 ( xs
 : list(x0, ln), fopr: (x0)->y0): list_vt(y0, ln)
 //
@@ -327,19 +327,19 @@ fun
 <y0:t0>
 <e1:vt>
 list_map$e1nv
-{ln:n0}
+{ln:i0}
 (xs: list(x0, ln), e1: !e1): list(y0, ln)
 fun
 <x0:t0>
 <y0:t0>
 <e1:vt>
 list_map$e1nv$f2un
-{ln:n0}
+{ln:i0}
 ( xs
 : list(x0, ln), e1: !e1, fopr: (x0, !e1)->y0): list(y0, ln)
 //
 #symload map with list_map$e1nv of 1000
-#symload map with list_map$e1nv$f1un of 1000
+#symload map with list_map$e1nv$f2un of 1000
 #symload list_map with list_map$e1nv of 1000
 #symload list_map with list_map$e1nv$f2un of 1000
 #symload list_map$e1nv with list_map$e1nv$f2un of 1000

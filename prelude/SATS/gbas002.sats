@@ -432,7 +432,7 @@ fun
 <r0:vt>
 x2irfoldall$fopr
 (i1: ni, x1: x1
-,i2, ni, x2: x2, r0: r0): (bool, r0)
+,i2: ni, x2: x2, r0: r0): (bool, r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
