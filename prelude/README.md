@@ -319,6 +319,37 @@ the reversed sequence traversal (for `rmap`).
 
 The letter `z` in `z-combined` stands for `zip`.
 
+What `gseq_z2map` does is essentially to perform `gseq_map` on the
+sequence obtained from zipping two given sequences. It should be easy
+to extrapolate what `gseq_z3map` does and beyond. The fopr-function employed
+by `gseq_z2map` is given as follows:
+
+```
+fun
+<x1:t0>
+<x2:t0>
+<y0:vt>
+z2map$fopr(x1: x1, x2: x2): (y0)
+```
+
+The most generic sequence-based `z2map` is declared as follows:
+
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+<zs:vt>
+<z0:vt>
+gseq_z2map_ares(xs: xs, ys: ys): (zs)
+```
+
+The naming convention we follow changes `map` into `z2map` to indicate
+the traversal of a seqeunce obtained from zipping two given sequences.
+And the interpretation for `z3map` (and beyond) extrapolates naturally.
+
 ### X-Combined Traversal
 
 The letter `x` in `x-combined` stands for `cross`.
