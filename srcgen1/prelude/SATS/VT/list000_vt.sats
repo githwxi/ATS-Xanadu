@@ -482,6 +482,13 @@ nil_vt with list_vt_nil
 cons_vt with list_vt_cons
 //
 (* ****** ****** *)
+//
+#symload
+free with list_vt_free of 1000
+#symload
+copy with list_vt_copy of 1000
+//
+(* ****** ****** *)
 #symload
 tail0 with list_vt_tail0 of 1000
 (* ****** ****** *)
