@@ -395,11 +395,18 @@ beyond) extrapolates naturally.
 
 ### Many Styles of Traversal Combination
 
-For instance, we can combine indexed traversal with reversed traversal
-to form index-reversed traversal.
+There are unlimited number of ways to combine traversals.
 
-For instance, we can also combine reversed traversal with indexed traversal
-to form reverse-indexed traversal.
+For instance, we can combine indexed traversal with reversed traversal
+to form index-reversed traversal.  What `gseq_irmap` does is
+essentially to perform `gseq_imap` on the sequence obtained from
+reversing a given sequence.
+
+For instance, we can also combine reversed traversal with indexed
+traversal to form reverse-indexed traversal.  What `gseq_rimap` does
+is essentially to perform `gseq_rmap` on the sequence obtained from
+indexing a given sequence.
+
 
 <!--
 ##############################(README.md)##############################
