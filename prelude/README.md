@@ -201,7 +201,7 @@ employed for naming various combinators in the prelude library of
 ATS3.  In general, `map` means to apply some function `fopr` to each
 value in a collection to form another collection of values. For
 instance, a sequence of values of type `X` can be "mapped" to another
-sequence of values of type `Y`, where each value type `X` is mapped to
+sequence of values of type `Y`, where each value of type `X` is mapped to
 a value of type `Y`. The `fopr` function for `map` is declared as
 follows in `prelude/SATS/gbas001.sats`:
 
@@ -212,7 +212,8 @@ fun
 map$fopr(itm: x0): (y0)
 ```
 
-The output sequence of performing `map` on an input sequence may be
+We use `gseq_map` for applying `map` to a sequence of values.  The
+output sequence of performing `gseq_map` on an input sequence may be
 represented differently from the input sequence. For instance, the
 input sequence can be an array-based string (representing a sequence
 of characters) while the output sequence can be a linked list of some
@@ -227,13 +228,13 @@ fun
 gseq_map_ares(xs: xs): (ys)
 ```
 
-where the (suffix) word `ares` indicates that the return value
+where the (suffix) word `ares` indicates that the return value of
 `gseq_map_ares` is the most generic (that is, threre is practically no
 information revealed on the representation of the return value).
 
 There are many variants of `gseq_map_ares`. For instance, the
-following variant indicates that the returned value is represented as
-a linear list:
+following variant indicates that the return value is represented as
+a linear list (given the type `list_vt`):
 
 ```
 fun
@@ -244,6 +245,36 @@ gseq_map_llist(xs: xs): list_vt(y0)
 ```
 
 ### Indexed Traversal
+
+When traversing a sequence of values, `gseq_imap` applies the
+following `fopr` function to each encountered item:
+
+```
+fun
+<x0:t0>
+<y0:vt>
+imap$fopr(pos: ni, itm: x0): (y0)
+```
+
+Note that the first argument of `imap$fopr` is a natural number of
+the type `ni` (a shorthand for `nint`) that indicates the position
+of the encountered item in the given sequence while the second
+argument is the value of the item.  The most generic sequence-based
+`imap` is declared as follows:
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_imap_ares(xs: xs): (ys)
+```
+
+The naming convention we follow changes `map` into `imap` to indicate
+that the (standard) sequence traversal (for `map`) is replaced with
+the indexed sequence traversal (for `imap`).
+  
 
 ### Reversed Traversal
 
