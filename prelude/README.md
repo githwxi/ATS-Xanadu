@@ -393,6 +393,14 @@ indicate the traversal of a seqeunce obtained from the cross product
 of two given sequences.  And the interpretation for `x3map` (and
 beyond) extrapolates naturally.
 
+### Many Styles of Traversal Combination
+
+For instance, we can combine indexed traversal with reversed traversal
+to form index-reversed traversal.
+
+For instance, we can also combine reversed traversal with indexed traversal
+to form reverse-indexed traversal.
+
 <!--
 ##############################(README.md)##############################
 -->
