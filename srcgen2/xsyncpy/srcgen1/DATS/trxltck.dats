@@ -57,6 +57,47 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #implfun
+d3parsed1_trxltck
+  (dpar) = let
+//
+val stadyn =
+d3parsed1_stadyn$get(dpar)
+val nerror =
+d3parsed1_nerror$get(dpar)
+val source =
+d3parsed1_source$get(dpar)
+//
+(*
+val t1penv =
+d3parsed1_t1penv$get(dpar)
+val t2penv =
+d3parsed1_t2penv$get(dpar)
+val t3penv =
+d3parsed1_t3penv$get(dpar)
+*)
+val parsed =
+d3parsed1_parsed$get(dpar)
+//
+val env0 = envltck_make_nil()
+//
+val parsed =
+d3ecl1lstopt_trxltck(parsed, env0)
+//
+in//let
+//
+let
+val ((*0*)) = envltck_free_nil(env0)
+in//let
+(
+d3parsed1(stadyn, nerror, source, parsed))
+end//let
+//
+end(*let*)//end-of-[d3parsed1_trxltck(dpar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d3exp1lst_trxltck
 (d3es, env0) =
 list_map$e1nv(d3es, env0) where

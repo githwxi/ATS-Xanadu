@@ -131,7 +131,7 @@ d3ecl1lst_trxltck
 (* ****** ****** *)
 //
 fun
-d3eclistopt_trxltck
+d3ecl1lstopt_trxltck
 (dopt: d3ecl1lstopt, env0: !envltck): d3ecl1lstopt
 //
 (* ****** ****** *)
