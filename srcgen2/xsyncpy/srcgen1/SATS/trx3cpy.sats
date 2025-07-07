@@ -203,6 +203,13 @@ d3fundclist_trx3cpy
 (* ****** ****** *)
 //
 fun
+s3taloadopt_trx3cpy
+(dopt: s3taloadopt, env0: !env3cpy): s3taload1opt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3eclistopt_trx3cpy
 (dopt: d3eclistopt, env0: !env3cpy): d3ecl1lstopt
 //

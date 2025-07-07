@@ -69,31 +69,42 @@ case+
 d3cl.node() of
 //
 |D3Cstatic _ =>
-f0_static(d3cl, env0)
+(
+ f0_static(d3cl, env0))
 |D3Cextern _ =>
-f0_extern(d3cl, env0)
+(
+ f0_extern(d3cl, env0))
 //
 (* ****** ****** *)
 //
 |D3Cdclst0 _ =>
-f0_dclst0(d3cl, env0)
+(
+ f0_dclst0(d3cl, env0))
 |D3Clocal0 _ =>
-f0_local0(d3cl, env0)
+(
+ f0_local0(d3cl, env0))
 //
 (* ****** ****** *)
 //
 |D3Cinclude _ =>
-f0_include(d3cl, env0)
+(
+ f0_include(d3cl, env0))
+//
+|D3Cstaload _ =>
+(
+ f0_staload(d3cl, env0))
 //
 (* ****** ****** *)
 //
 |D3Cvaldclst _ =>
 f0_valdclst(d3cl, env0)
 |D3Cvardclst _ =>
-f0_vardclst(d3cl, env0)
+(
+ f0_vardclst(d3cl, env0))
 //
 |D3Cfundclst _ =>
-f0_fundclst(d3cl, env0)
+(
+ f0_fundclst(d3cl, env0))
 //
 (* ****** ****** *)
 //
@@ -104,6 +115,7 @@ let
 val dcl1 =
 (
   d3ecl_trx3cpy(dcl1, env0))
+//
 in//
 //
 d3ecl1(loc0, D3C1errck(lvl0, dcl1))
@@ -118,6 +130,9 @@ let
   val node =
   D3C1d3ecl(d3cl) in d3ecl1(loc0, node)
 end//let
+//
+(* ****** ****** *)
+//
 ) where//end-of-[d3ecl_trx3cpy(d3cl,env0)]
 {
 //
@@ -197,6 +212,8 @@ in//let
 d3ecl1(loc0, D3C1local0(head, body))
 end//let
 //
+(* ****** ****** *)
+//
 fun
 f0_include
 (d3cl: d3ecl
@@ -218,6 +235,33 @@ in//let
 d3ecl1
 ( loc0
 , D3C1include
+  (sd01, tknd, gexp, fopt, dopt))
+//
+end//let
+//
+(* ****** ****** *)
+//
+fun
+f0_staload
+(d3cl: d3ecl
+,env0: !env3cpy): d3ecl1 =
+let
+//
+val-
+D3Cstaload
+(sd01
+,tknd, gexp
+,fopt, dopt) = d3cl.node()
+//
+val
+dopt =
+s3taloadopt_trx3cpy(dopt, env0)
+//
+in//let
+//
+d3ecl1
+( loc0
+, D3C1staload
   (sd01, tknd, gexp, fopt, dopt))
 //
 end//let

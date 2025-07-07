@@ -97,6 +97,7 @@ _(*TRANS23*) = "./trans23.dats"
 #symload lctn with d2ecl_get_lctn
 #symload node with d2ecl_get_node
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 s3taload_from_fpath
@@ -245,10 +246,14 @@ D2Csymload _ =>
 d3ecl_make_node
 (d2cl.lctn(), D3Cd2ecl(d2cl))
 //
+(* ****** ****** *)
+//
 |
 D2Cabsopen _ => f0_absopen(env0, d2cl)
 |
 D2Cabsimpl _ => f0_absimpl(env0, d2cl)
+//
+(* ****** ****** *)
 //
 |
 D2Cinclude _ => f0_include(env0, d2cl)
@@ -290,6 +295,12 @@ in//let
 end (*let*) // end of [_(*otherwise*)] // temp
 //
 end where {
+//
+(* ****** ****** *)
+//
+#symload
+stadyn with
+d2parsed_get_stadyn
 //
 (* ****** ****** *)
 //
@@ -529,10 +540,13 @@ S3TALOADnone(dopt)
 S2TALOADdpar
 (shrd, dpar) =>
 let
+//
 val
 stadyn =
-d2parsed_get_stadyn(dpar)
+dpar.stadyn((*void*))
+//
 in//let
+//
 if
 stadyn <= 0
 then // static
