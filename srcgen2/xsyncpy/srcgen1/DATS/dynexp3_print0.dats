@@ -602,10 +602,22 @@ prints
 , tknd, gexp
 , fopt, dopt) =>
 (
-prints
-("D3C1include("
-, sd01, ";", tknd, ";"
-, gexp(*src*), ";", fopt, ";", dopt, ")"))
+prints(
+"D3C1include(",
+sd01, ";", tknd, ";",
+gexp(*src*), ";", fopt, ";", dopt, ")"))
+//
+(* ****** ****** *)
+//
+|D3C1staload
+( sd01
+, tknd, gexp
+, fopt, dopt) =>
+(
+prints(
+"D3C1staload(",
+sd01, ";", tknd, ";",
+gexp(*src*), ";", fopt, ";", "...", ")"))
 //
 (* ****** ****** *)
 //

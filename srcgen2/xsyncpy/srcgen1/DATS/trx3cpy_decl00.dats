@@ -457,6 +457,30 @@ end(*let*)//end-of-[d3fundcl_trx3cpy(dfun,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+s3taloadopt_trx3cpy
+(dopt, env0) =
+(
+//
+case dopt of
+|
+S3TALOADnone
+(   dopt   ) => S3TALOAD1none(dopt)
+|
+S3TALOADdpar
+(shrd, dpar) => S3TALOAD1dpar(shrd, dpar)
+//
+) where
+{
+//
+val (  ) =
+prerrsln("s3taloadopt_trx3cpy: dopt = ", dopt)
+//
+}(*where*)//end-of-[s3taloadopt_trx3cpy(d3cl,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trx3cpy_decl00.dats] *)
 (***********************************************************************)

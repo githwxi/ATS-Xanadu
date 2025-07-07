@@ -202,6 +202,8 @@ D3E = "./\
 #typedef f1unarrw = $D1E.f1unarrw
 #typedef wths2exp = $D2E.wths2exp
 (* ****** ****** *)
+#typedef d3parsed = $D3E.d3parsed
+(* ****** ****** *)
 (* ****** ****** *)
 #typedef d3pat1lst = list(d3pat1)
 #typedef d3exp1lst = list(d3exp1)
@@ -745,9 +747,11 @@ d3ecl1_node =
 and
 s3taload1opt =
 |
-S3TALOAD1none of (s2taloadopt)
+S3TALOAD1none of ($D2E.s2taloadopt)
 |
-S3TALOAD1dpar of (sint(*0/1*),d3parsed1(*shared*))
+S3TALOAD1dpar of (sint(*0/1*),d3parsed(*shared*))
+|
+S3TALOAD1dpar1 of (sint(*0/1*),d3parsed1(*shared*))
 //
 (* ****** ****** *)
 (* ****** ****** *)
