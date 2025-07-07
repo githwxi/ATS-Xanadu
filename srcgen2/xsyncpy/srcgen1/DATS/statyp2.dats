@@ -43,8 +43,26 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/statyp2.sats"
 //
 (* ****** ****** *)
+//
+#staload
+"./../../../SATS/statyp2.sats"
+//
+#symload sort with s2typ_get_sort
+(* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+s2typ1_s2typ(t2p0) = 
+(
+s2typ1_make_sort$node
+(s2t0, T2P1s2typ(t2p0)))
+where
+{
+  val s2t0 = t2p0.sort((*0*))
+}(*where*)//end-of-[s2typ1_s2typ(t2p0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 local
 //
@@ -93,7 +111,7 @@ s2typ1_make_sort$node
 //
 (* ****** ****** *)
 //
-endloc (*local*) // end of [local(s2typ1)]
+endloc(*local*)//end-of-[local(s2typ1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

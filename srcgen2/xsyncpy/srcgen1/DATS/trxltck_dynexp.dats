@@ -49,6 +49,42 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+d3exp1_trxltck
+(d3e0, env0) =
+let
+//
+val loc0 = d3e0.lctn()
+val t2q0 = d3e0.styp()
+//
+val () =
+prerrsln("\
+d3exp_trxltck: loc0 = ", loc0)
+val () =
+prerrsln("\
+d3exp_trxltck: d3e0 = ", d3e0)
+//
+in//let
+//
+case+
+d3e0.node() of
+//
+|D3E1int(tint) =>
+d3exp1(loc0, t2q0, D3E1int(tint))
+|D3E1btf(sbtf) =>
+d3exp1(loc0, t2q0, D3E1btf(sbtf))
+|D3E1chr(tchr) =>
+d3exp1(loc0, t2q0, D3E1chr(tchr))
+|D3E1flt(tflt) =>
+d3exp1(loc0, t2q0, D3E1flt(tflt))
+|D3E1str(tstr) =>
+d3exp1(loc0, t2q0, D3E1str(tstr))
+//
+end(*let*)//end-of-[d3exp1_trxltck(d3e0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trxltck_dynexp.dats] *)
 (***********************************************************************)

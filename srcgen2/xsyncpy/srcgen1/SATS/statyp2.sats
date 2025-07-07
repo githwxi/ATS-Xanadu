@@ -163,6 +163,11 @@ s2typ1_node$get
 (* ****** ****** *)
 //
 fun
+s2typ1_s2typ(styp: s2typ): s2typ1
+//
+(* ****** ****** *)
+//
+fun
 s2typ1_make_sort$node
 (s2t0:sort2,node:s2typ1_node): s2typ1
 #symload s2typ1 with s2typ1_make_sort$node

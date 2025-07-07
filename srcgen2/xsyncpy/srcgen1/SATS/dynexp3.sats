@@ -308,7 +308,7 @@ d3pat1_lctn$get
 #symload lctn with d3pat1_lctn$get
 fun
 d3pat1_styp$get
-(dpat: d3pat1): s2typ
+(dpat: d3pat1): s2typ1
 #symload styp with d3pat1_styp$get
 fun
 d3pat1_node$get
@@ -331,7 +331,7 @@ d3pat1_make_lctn$node
 fun
 d3pat1_make_lctn$styp$node
 (loc0: loctn
-,t2p0: s2typ, node: d3pat1_node): d3pat1
+,t2p0: s2typ1, node: d3pat1_node): d3pat1
 #symload d3pat1 with d3pat1_make_lctn$styp$node
 //
 (* ****** ****** *)
@@ -350,7 +350,7 @@ d3typ1_node =
 //
 d3typ1_sort$get
 (dtyp: d3typ1): sort2
-#symload styp with d3exp1_sort$get
+#symload sort with d3typ1_sort$get
 fun
 d3typ1_node$get
 (dtyp: d3typ1): d3typ1_node
@@ -528,7 +528,7 @@ d3exp1_lctn$get
 #symload lctn with d3exp1_lctn$get
 fun
 d3exp1_styp$get
-(dexp: d3exp1): s2typ
+(dexp: d3exp1): s2typ1
 #symload styp with d3exp1_styp$get
 fun
 d3exp1_node$get
@@ -552,7 +552,7 @@ d3exp1_make_lctn$node
 fun
 d3exp1_make_lctn$styp$node
 (loc0: loctn
-,t2p0: s2typ, node: d3exp1_node): d3exp1
+,t2p0: s2typ1, node: d3exp1_node): d3exp1
 //
 #symload d3exp1 with d3exp1_make_lctn$node
 #symload d3exp1 with d3exp1_make_lctn$styp$node
