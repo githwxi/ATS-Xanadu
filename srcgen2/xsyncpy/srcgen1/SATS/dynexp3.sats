@@ -718,6 +718,13 @@ d3ecl1_node =
 , fpathopt
 , d3ecl1lstopt) // inclusion
 //
+|D3C1staload of
+( sint(*s/d*)
+, token
+, g1exp // src
+, fpathopt
+, s3taload1opt) // staloading
+//
 (* ****** ****** *)
 //
 |D3C1valdclst of
@@ -733,6 +740,16 @@ d3ecl1_node =
 //
 |D3C1errck of (sint(*lvl*), d3ecl1(*err*))
 //
+(* ****** ****** *)
+//
+and
+s3taload1opt =
+|
+S3TALOAD1none of (s2taloadopt)
+|
+S3TALOAD1dpar of (sint(*0/1*),d3parsed1(*shared*))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

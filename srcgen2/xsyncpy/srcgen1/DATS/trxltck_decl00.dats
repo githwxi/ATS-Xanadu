@@ -80,10 +80,97 @@ in//let
 case+
 d3cl.node() of
 //
+|D3C1static _ =>
+(
+  f0_static(d3cl, env0))
+|D3C1extern _ =>
+(
+  f0_extern(d3cl, env0))
+//
+|D3C1include _ =>
+(
+  f0_include(d3cl, env0))
+//
 |_(*otherwise*) =>
 d3ecl1(loc0, D3C1errck(0(*lvl*), d3cl))
 //
-end(*let*)//end-of-[d3ecl1_trxltck(d3cl,env0)]
+end where
+{
+//
+(* ****** ****** *)
+//
+val loc0 = d3cl.lctn()
+//
+(* ****** ****** *)
+//
+fun
+f0_static
+(d3c0: d3ecl1
+,env0: !envltck): d3ecl1 =
+let
+val-
+D3C1static
+(tknd, d3c1) = d3c0.node()
+in//let
+//
+(
+d3ecl1
+(loc0, D3C1static(tknd, d3c1)))
+where{
+val d3c1 = d3ecl1_trxltck(d3c1, env0)
+}(*where*)
+//
+end//let//end-of-[f0_static(d3c0,env0)]
+//
+fun
+f0_extern
+(d3c0: d3ecl1
+,env0: !envltck): d3ecl1 =
+let
+val-
+D3C1extern
+(tknd, d3c1) = d3c0.node()
+in//let
+//
+(
+d3ecl1
+(loc0, D3C1extern(tknd, d3c1)))
+where{
+val d3c1 = d3ecl1_trxltck(d3c1, env0)
+}(*where*)
+//
+end//let//end-of-[f0_extern(d3c0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_include
+(d3c0: d3ecl1
+,env0: !envltck): d3ecl1 =
+let
+//
+val-
+D3C1include
+(sd01
+,tknd, gexp
+,fopt, dopt) = d3c0.node()
+//
+val
+dopt =
+d3ecl1lstopt_trxltck(dopt, env0)
+//
+in//let
+//
+d3ecl1
+( loc0
+, D3C1include
+  (sd01, tknd, gexp, fopt, dopt))
+//
+end//let
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[d3ecl1_trxltck(d3cl,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
