@@ -123,7 +123,6 @@ let
 //
 var
 stkmap = stkmap
-//
 val nerr =
 stkmap_poptop0(stkmap)
 //

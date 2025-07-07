@@ -49,6 +49,45 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3ecl1_trxltck
+(d3cl, env0) =
+let
+//
+val loc0 = d3cl.lctn()
+//
+val () =
+prerrsln("\
+d3ecl_trxltck: loc0 = ", loc0)
+val () =
+prerrsln("\
+d3ecl_trxltck: d3cl = ", d3cl)
+//
+in//let
+//
+case+
+d3cl.node() of
+//
+|_(*otherwise*) =>
+d3ecl1(loc0, D3C1errck(0(*lvl*), d3cl))
+//
+end(*let*)//end-of-[d3ecl1_trxltck(d3cl,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trxltck_decl00.dats] *)
 (***********************************************************************)

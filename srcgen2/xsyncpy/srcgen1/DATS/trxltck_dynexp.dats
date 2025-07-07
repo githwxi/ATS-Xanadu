@@ -49,6 +49,18 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 d3exp1_trxltck
 (d3e0, env0) =
@@ -79,6 +91,10 @@ d3exp1(loc0, t2q0, D3E1chr(tchr))
 d3exp1(loc0, t2q0, D3E1flt(tflt))
 |D3E1str(tstr) =>
 d3exp1(loc0, t2q0, D3E1str(tstr))
+//
+|_(*otherwise*) =>
+d3exp1
+(loc0, t2q0, D3E1errck(0(*lvl*), d3e0))
 //
 end(*let*)//end-of-[d3exp1_trxltck(d3e0,env0)]
 //
