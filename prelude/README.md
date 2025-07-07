@@ -410,6 +410,9 @@ the following sequence of pairs:
 [(0, "a"), (1, "b"), (2, "c")]
 ```
 
+where each pair consists of an integer and a value such that the
+integer refers to the position of the value in the original sequence.
+
 It is straightforward to define the indexed version of a given
 sequence.  We can also combine reversed traversal with indexed
 traversal to form reverse-indexed traversal.  What `gseq_rimap` does

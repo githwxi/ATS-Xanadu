@@ -63,12 +63,12 @@ datatype
 d3pat1 =
 D3PAT1 of
 (loctn
-,s2typ, d3pat1_node)
+,s2typ1, d3pat1_node)
 datavwtp
 d3pat1_vt =
 D3PAT1_vt of
 (loctn
-,s2typ, d3pat1_node)
+,s2typ1, d3pat1_node)
 //
 #absimpl d3pat1_tbox = d3pat1
 //
@@ -141,12 +141,12 @@ datatype
 d3exp1 =
 D3EXP1 of
 (loctn
-,s2typ, d3exp1_node)
+,s2typ1, d3exp1_node)
 datavwtp
 d3exp1_vt =
 D3EXP1_vt of
 (loctn
-,s2typ, d3exp1_node)
+,s2typ1, d3exp1_node)
 //
 #absimpl d3exp1_tbox = d3exp1
 //
