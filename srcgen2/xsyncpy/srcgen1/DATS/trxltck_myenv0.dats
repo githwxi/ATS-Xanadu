@@ -85,6 +85,50 @@ and dtpstk =
 in//local
 //
 (* ****** ****** *)
+//
+fun
+dtpstk_free_nil
+(stk0: ~dtpstk): void =
+(
+case-
+stk0 of ~dtpstk_nil() => ())
+//
+(* ****** ****** *)
+//
+#implfun
+envltck_make_nil
+  ( (*void*) ) =
+(
+ENVLTCK(dtpstk, stkmap))
+where{
+//
+val dtpstk = dtpstk_nil()
+val stkmap = stkmap_make_nil()
+}(*where*)//end-of-[envltck_make_nil()]
+//
+(* ****** ****** *)
+//
+#implfun
+envltck_free_nil
+  (  env0  ) =
+(
+case+ env0 of
+| ~
+ENVLTCK
+(dtpstk, stkmap) =>
+let
+//
+var
+stkmap = stkmap
+val nerr =
+stkmap_poptop0(stkmap)
+//
+val (  ) =
+dtpstk_free_nil(dtpstk)
+val (  ) =
+stkmap_free_nil(stkmap) in () end//let
+)(*case+*)//end-of-(envltck_free_nil(env0))
+//
 (* ****** ****** *)
 //
 end//local

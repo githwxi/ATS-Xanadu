@@ -45,9 +45,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../SATS/statyp2.sats"
+#staload
 "./../SATS/dynexp3.sats"
+//
 #staload
 "./../SATS/trx3cpy.sats"
+#staload
+"./../SATS/trxltck.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -111,6 +116,10 @@ end//let1
 val dpar1 =
 (
   d3parsed_trx3cpy(dpar))
+//
+val dpar1 =
+(
+  d3parsed1_trxltck(dpar1))
 //
 in//let
 //
