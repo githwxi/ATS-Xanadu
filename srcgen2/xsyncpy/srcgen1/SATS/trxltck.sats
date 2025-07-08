@@ -137,6 +137,13 @@ d3ecl1lst_trxltck
 (* ****** ****** *)
 //
 fun
+teqd3exp1_trxltck
+(tdxp: teqd3exp1, env0: !envltck): teqd3exp1
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3valdcl1_trxltck
 (dval: d3valdcl1, env0: !envltck): d3valdcl1
 fun
