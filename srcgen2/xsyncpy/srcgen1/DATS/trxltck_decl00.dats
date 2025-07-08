@@ -87,6 +87,13 @@ d3cl.node() of
 (
   f0_extern(d3cl, env0))
 //
+|D3C1dclst0 _ =>
+(
+  f0_dclst0(d3cl, env0))
+|D3C1local0 _ =>
+(
+  f0_local0(d3cl, env0))
+//
 |D3C1include _ =>
 (
   f0_include(d3cl, env0))
@@ -143,6 +150,51 @@ val d3c1 = d3ecl1_trxltck(d3c1, env0)
 }(*where*)
 //
 end//let//end-of-[f0_extern(d3c0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dclst0
+(d3c0: d3ecl1
+,env0: !envltck): d3ecl1 =
+let
+//
+val-
+D3C1dclst0
+(   d3cs   ) = d3c0.node()
+val d3cs =
+d3ecl1lst_trxltck(d3cs, env0)
+//
+in//let
+//
+(
+d3ecl1(loc0, D3C1dclst0(d3cs)))
+//
+end//let//end-of-[f0_dclst0(d3c0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_local0
+(d3c0: d3ecl1
+,env0: !envltck): d3ecl1 =
+let
+//
+val-
+D3C1local0
+(head, body) = d3c0.node()
+val head =
+d3ecl1lst_trxltck(head, env0)
+val body =
+d3ecl1lst_trxltck(body, env0)
+//
+in//let
+//
+(
+d3ecl1
+(loc0, D3C1local0(head, body)))
+//
+end//let//end-of-[f0_local0(d3c0,env0)]
 //
 (* ****** ****** *)
 //
@@ -204,7 +256,6 @@ end//let//end-of-[f0_staload(d3c0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 #implfun
 s3taload1opt_trxltck
