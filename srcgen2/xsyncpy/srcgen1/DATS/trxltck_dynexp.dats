@@ -62,6 +62,39 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #implfun
+d3pat1_trxltck
+(d3p0, env0) =
+let
+//
+val loc0 = d3p0.lctn()
+val t2q0 = d3p0.styp()
+//
+val () =
+prerrsln("\
+d3pat1_trxltck: loc0 = ", loc0)
+val () =
+prerrsln("\
+d3pat1_trxltck: d3p0 = ", d3p0)
+//
+in//let
+//
+case+
+d3p0.node() of
+//
+|D3P1int(tint) => ( (*void*) )
+|D3P1btf(sbtf) => ( (*void*) )
+|D3P1chr(tchr) => ( (*void*) )
+|D3P1flt(tflt) => ( (*void*) )
+|D3P1str(tstr) => ( (*void*) )
+//
+|_(*otherwise*) => (   (*skipped*)    )
+//
+end(*let*)//end-of-[d3pat1_trxltck(d3e0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d3exp1_trxltck
 (d3e0, env0) =
 let
@@ -71,10 +104,10 @@ val t2q0 = d3e0.styp()
 //
 val () =
 prerrsln("\
-d3exp_trxltck: loc0 = ", loc0)
+d3exp1_trxltck: loc0 = ", loc0)
 val () =
 prerrsln("\
-d3exp_trxltck: d3e0 = ", d3e0)
+d3exp1_trxltck: d3e0 = ", d3e0)
 //
 in//let
 //
