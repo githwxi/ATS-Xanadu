@@ -130,6 +130,13 @@ d3ecl1lst_trxltck
 (* ****** ****** *)
 //
 fun
+s3taload1opt_trxltck
+(dopt: s3taload1opt, env0: !envltck): s3taload1opt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3ecl1lstopt_trxltck
 (dopt: d3ecl1lstopt, env0: !envltck): d3ecl1lstopt
 //

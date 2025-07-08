@@ -116,6 +116,13 @@ loctn_fprint(loc0, castxy(g_print$out<>()))
 //
 #impltmp
 g_print
+<fpath>(fpth) =
+fpath_fprint(fpth, castxy(g_print$out<>()))
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <token>(tok0) =
 token_fprint(tok0, castxy(g_print$out<>()))
 //
