@@ -347,6 +347,32 @@ end//let
 (*let*)//end-of-[d3valdcl1_trxltck(dval,env0)]
 //
 (* ****** ****** *)
+//
+#implfun
+d3vardcl1_trxltck
+  (dvar, env0) = let
+//
+val loc0 =
+d3vardcl1_lctn$get(dvar)
+val dpid =
+d3vardcl1_dpid$get(dvar)
+val vpid =
+d3vardcl1_vpid$get(dvar)
+val sres =
+d3vardcl1_sres$get(dvar)
+val dini =
+d3vardcl1_dini$get(dvar)
+//
+val dini =
+teqd3exp1_trxltck(dini, env0)
+//
+in//let
+(
+d3vardcl1(loc0, dpid, vpid, sres, dini))
+end//let
+(*let*)//end-of-[d3vardcl1_trxltck(dvar,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
