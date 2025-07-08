@@ -90,6 +90,9 @@ d3cl.node() of
 |D3C1include _ =>
 (
   f0_include(d3cl, env0))
+|D3C1staload _ =>
+(
+  f0_staload(d3cl, env0))
 //
 |_(*otherwise*) =>
 d3ecl1(loc0, D3C1errck(0(*lvl*), d3cl))
@@ -166,11 +169,63 @@ d3ecl1
 , D3C1include
   (sd01, tknd, gexp, fopt, dopt))
 //
-end//let
+end//let//end-of-[f0_include(d3c0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_staload
+(d3c0: d3ecl1
+,env0: !envltck): d3ecl1 =
+let
+//
+val-
+D3C1staload
+(sd01
+,tknd, gexp
+,fopt, dopt) = d3c0.node()
+//
+val
+dopt =
+s3taload1opt_trxltck(dopt, env0)
+//
+in//let
+//
+d3ecl1
+( loc0
+, D3C1staload
+  (sd01, tknd, gexp, fopt, dopt))
+//
+end//let//end-of-[f0_staload(d3c0,env0)]
 //
 (* ****** ****** *)
 //
 }(*where*)//end-of-[d3ecl1_trxltck(d3cl,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+#implfun
+s3taload1opt_trxltck
+(dopt, env0) =
+(
+//
+case dopt of
+|
+S3TALOAD1none
+(   dopt   ) => S3TALOAD1none(dopt)
+|
+S3TALOAD1dpar
+(shrd, dpar) => S3TALOAD1dpar(shrd, dpar)
+//
+) where
+{
+//
+val (  ) =
+prerrsln("s3taload1opt_trxltck: dopt = ", dopt)
+//
+}(*where*)//end-of-[s3taload1opt_trxltck(d3cl,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
