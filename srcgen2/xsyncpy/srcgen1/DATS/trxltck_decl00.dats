@@ -303,6 +303,53 @@ end//let
 (* ****** ****** *)
 //
 #implfun
+teqd3exp1_trxltck
+  (tdxp, env0) =
+(
+case+ tdxp of
+|
+TEQD3EXP1none() =>
+TEQD3EXP1none((*void*))
+|
+TEQD3EXP1some(teq1, d3e2) =>
+TEQD3EXP1some(teq1, d3e2) where
+{ val
+  d3e2 = d3exp1_trxltck(d3e2, env0) }
+)(*case+*)//endof(teqd3exp_trxltck(tdxp,env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3valdcl1_trxltck
+  (dval, env0) = let
+//
+val loc0 =
+d3valdcl1_lctn$get(dval)
+val dpat =
+d3valdcl1_dpat$get(dval)
+val tdxp =
+d3valdcl1_tdxp$get(dval)
+val wsxp =
+d3valdcl1_wsxp$get(dval)
+//
+val (  ) =
+(
+  d3pat1_trxltck(dpat, env0))
+//
+val tdxp =
+(
+  teqd3exp1_trxltck(tdxp, env0))
+//
+in//let
+d3valdcl1_make_args(loc0,dpat,tdxp,wsxp)
+end//let
+(*let*)//end-of-[d3valdcl1_trxltck(dval,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 s3taload1opt_trxltck
 (dopt, env0) =
 (
