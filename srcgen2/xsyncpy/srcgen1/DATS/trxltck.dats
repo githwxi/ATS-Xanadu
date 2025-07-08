@@ -128,6 +128,33 @@ map$e1nv$fopr<x0><y0><e1> = d3ecl1_trxltck
 (* ****** ****** *)
 //
 #implfun
+d3valdcl1lst_trxltck
+(d3vs, env0) =
+list_map$e1nv(d3vs, env0) where
+{
+#vwtpdef e1 = envltck
+#typedef x0 = d3valdcl1
+#typedef y0 = d3valdcl1
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = d3valdcl1_trxltck
+}(*where*)//end-of-[d3valdcl1lst_trxltck(d3es,env0)]
+//
+#implfun
+d3vardcl1lst_trxltck
+(d3vs, env0) =
+list_map$e1nv(d3vs, env0) where
+{
+#vwtpdef e1 = envltck
+#typedef x0 = d3vardcl1
+#typedef y0 = d3vardcl1
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = d3vardcl1_trxltck
+}(*where*)//end-of-[d3vardcl1lst_trxltck(d3es,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d3ecl1lstopt_trxltck
 (dopt, env0) =
 (
