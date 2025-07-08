@@ -609,19 +609,19 @@ f3arg1_make_lctn$node
 //
 datatype
 d3gua1_node =
-| D3GUA1exp of (d3exp1)
-| D3GUA1mat of (d3exp1, d3pat1)
+|D3GUA1exp of (d3exp1)
+|D3GUA1mat of (d3exp1, d3pat1)
 //
 (* ****** ****** *)
 //
 datatype
 d3cls1_node =
-| D3CLS1gpt of (d3gpt1)
-| D3CLS1cls of (d3gpt1, d3exp1)
+|D3CLS1gpt of (d3gpt1)
+|D3CLS1cls of (d3gpt1, d3exp1)
 and
 d3gpt1_node =
-| D3GPT1pat of (d3pat1)
-| D3GPT1gua of (d3pat1, d3gua1lst)
+|D3GPT1pat of (d3pat1)
+|D3GPT1gua of (d3pat1, d3gua1lst)
 //
 (* ****** ****** *)
 //

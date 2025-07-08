@@ -123,8 +123,11 @@ d3ecl1lst_trxltck
 (* ****** ****** *)
 //
 fun
-d3ecl1lst_trxltck
-(dcls: d3ecl1lst, env0: !envltck): d3ecl1lst
+d3valdcl1_trxltck
+(dval: d3valdcl1, env0: !envltck): d3valdcl1
+fun
+d3vardcl1_trxltck
+(dvar: d3vardcl1, env0: !envltck): d3vardcl1
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -132,6 +135,16 @@ d3ecl1lst_trxltck
 fun
 s3taload1opt_trxltck
 (dopt: s3taload1opt, env0: !envltck): s3taload1opt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3valdcl1lst_trxltck
+(d3vs: d3valdcl1lst, env0: !envltck): d3valdcl1lst
+fun
+d3vardcl1lst_trxltck
+(d3vs: d3vardcl1lst, env0: !envltck): d3vardcl1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)
