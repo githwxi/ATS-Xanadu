@@ -97,7 +97,8 @@ d3cl.node() of
 (* ****** ****** *)
 //
 |D3Cvaldclst _ =>
-f0_valdclst(d3cl, env0)
+(
+ f0_valdclst(d3cl, env0))
 |D3Cvardclst _ =>
 (
  f0_vardclst(d3cl, env0))
