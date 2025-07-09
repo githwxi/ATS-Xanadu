@@ -53,6 +53,7 @@ trx3cpy_dynexp.dats \
 trx3cpy_decl00.dats \
 trxltck.dats \
 trxltck_myenv0.dats \
+trxltck_utils0.dats \
 trxltck_dynexp.dats \
 trxltck_decl00.dats \
 xsyncpy_tmplib.dats \
