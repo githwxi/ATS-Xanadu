@@ -99,9 +99,6 @@ d3exp1_trxltck
 (d3e0, env0) =
 let
 //
-val loc0 = d3e0.lctn()
-val t2q0 = d3e0.styp()
-//
 val () =
 prerrsln("\
 d3exp1_trxltck: loc0 = ", loc0)
@@ -115,21 +112,44 @@ case+
 d3e0.node() of
 //
 |D3E1int(tint) =>
-d3exp1(loc0, t2q0, D3E1int(tint))
+d3exp1
+(loc0, t2q0, D3E1int(tint))
 |D3E1btf(sbtf) =>
-d3exp1(loc0, t2q0, D3E1btf(sbtf))
+d3exp1
+(loc0, t2q0, D3E1btf(sbtf))
 |D3E1chr(tchr) =>
-d3exp1(loc0, t2q0, D3E1chr(tchr))
+d3exp1
+(loc0, t2q0, D3E1chr(tchr))
 |D3E1flt(tflt) =>
-d3exp1(loc0, t2q0, D3E1flt(tflt))
+d3exp1
+(loc0, t2q0, D3E1flt(tflt))
 |D3E1str(tstr) =>
-d3exp1(loc0, t2q0, D3E1str(tstr))
+d3exp1
+(loc0, t2q0, D3E1str(tstr))
+//
+|D3E1var _ => f0_var(d3e0, env0)
 //
 |_(*otherwise*) =>
 d3exp1
 (loc0, t2q0, D3E1errck(0(*lvl*), d3e0))
 //
-end(*let*)//end-of-[d3exp1_trxltck(d3e0,env0)]
+end where
+{
+//
+(* ****** ****** *)
+//
+val loc0 = d3e0.lctn()
+val t2q0 = d3e0.styp()
+//
+(* ****** ****** *)
+//
+fun f0_var
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 = d3e0
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[d3exp1_trxltck(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
