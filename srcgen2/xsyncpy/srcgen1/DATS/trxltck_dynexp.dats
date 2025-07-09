@@ -61,6 +61,25 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../../../SATS/statyp2.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2var_linq
+(d2v0: d2var): bool =
+(
+  s2typ_linq(d2v0.styp()))
+//
+#symload linq with d2var_linq
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 d3pat1_trxltck
 (d3p0, env0) =

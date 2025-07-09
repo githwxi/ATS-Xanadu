@@ -80,6 +80,12 @@ envltck = envltck_vtbx
 (* ****** ****** *)
 //
 fun
+d2var_linq(dvar: d2var): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3parsed1_trxltck
 ( dpar : d3parsed1 ): (d3parsed1)
 //
