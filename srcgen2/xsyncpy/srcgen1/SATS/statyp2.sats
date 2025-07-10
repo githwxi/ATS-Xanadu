@@ -142,7 +142,7 @@ $BAS.trcdknd,sint(*npf*),l2t2p1lst)
 |T2P1text of
 (string(*name*), s2typ1lst(*args*))
 //
-|T2P1none0 of ((*0*)) // HX: optional
+|T2P1none0 of ((*0*))//HX: optional
 //
 |T2P1s2typ of (s2typ)//yet-to-be-copied
 //

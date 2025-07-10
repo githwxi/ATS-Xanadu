@@ -62,6 +62,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../../../SATS/staexp2.sats"
+#staload
 "./../../../SATS/statyp2.sats"
 #staload
 "./../../../SATS/dynexp2.sats"
@@ -70,12 +72,25 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+s2typ_linq
+(t2p0: s2typ): bool =
+(
+  sort2_linq(t2p0.sort()))
+fun
 d2var_linq
 (d2v0: d2var): bool =
 (
   s2typ_linq(d2v0.styp()))
 //
+fun
+s2typ1_linq
+(t2q0: s2typ1): bool =
+(
+  sort2_linq(t2q0.sort()))
+//
+#symload linq with s2typ_linq
 #symload linq with d2var_linq
+#symload linq with s2typ1_linq
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -164,7 +179,26 @@ val t2q0 = d3e0.styp()
 //
 fun f0_var
 ( d3e0: d3exp1
-, env0: !envltck): d3exp1 = d3e0
+, env0: !envltck): d3exp1 =
+let
+val-
+D3E1var(d2v1) = d3e0.node()
+in//let
+if
+not(
+linq(d2v1))
+then
+(
+d3exp1
+(loc0, t2q0, D3E1var(d2v1)))
+else
+let
+val t2q1 =
+envltck_dvar$take(env0, d2v1)
+in//let
+d3exp1(loc0, t2q1, D3E1var(d2v1))
+end//let
+end//let
 //
 (* ****** ****** *)
 //
