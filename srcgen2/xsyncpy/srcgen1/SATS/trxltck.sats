@@ -80,14 +80,25 @@ envltck = envltck_vtbx
 (* ****** ****** *)
 //
 fun
-d2var_linq(dvar: d2var): bool
+d3parsed1_trxltck
+( dpar : d3parsed1 ): (d3parsed1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-d3parsed1_trxltck
-( dpar : d3parsed1 ): (d3parsed1)
+envltck_dvar$find
+( env0:
+! envltck, dvar: d2var): s2typ1
+fun
+envltck_dvar$take
+( env0:
+! envltck, dvar: d2var): s2typ1
+fun
+envltck_dvar$updt
+( env0:
+! envltck
+, dvar: d2var, styp: s2typ1): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
