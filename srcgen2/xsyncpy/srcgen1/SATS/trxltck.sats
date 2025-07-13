@@ -94,6 +94,7 @@ fun
 envltck_dvar$take
 ( env0:
 ! envltck, dvar: d2var): s2typ1
+//
 fun
 envltck_dvar$updt
 ( env0:

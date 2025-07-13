@@ -100,11 +100,21 @@ fprint with l2t2p_fprint of 1000
 //
 datatype
 s2typ1_node =
+(* ****** ****** *)
 //
-|T2P1cst of s2cst // constant
-|T2P1var of s2var // variable
+|T2P1cst of s2cst//constant
+|T2P1var of s2var//variable
 //
-|T2P1lft of s2typ1 // l-value
+(* ****** ****** *)
+//
+|T2P1lft of s2typ1//lft-value
+//
+(* ****** ****** *)
+//
+|
+T2P1top0 of s2typ1//uninitized
+|
+T2P1top1 of s2typ1//delineared
 //
 (* ****** ****** *)
 //
