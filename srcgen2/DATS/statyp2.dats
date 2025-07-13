@@ -110,12 +110,17 @@ s2t0 = sort2_none0((*nil*)) }
 //
 (* ****** ****** *)
 //
+(*
+HX-2025-07-13:
+[T2Plft(T)]
+is treated as [(T@l|ptr(l))]
+*)
 #implfun
 s2typ_lft(t2p) =
 s2typ
 (s2t0, T2Plft(t2p)) where
 {
-val s2t0 = t2p.sort((*nil*)) }
+  val s2t0 = the_sort2_vtbx }
 //
 (* ****** ****** *)
 //

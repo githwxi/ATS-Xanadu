@@ -214,9 +214,21 @@ d3exp1
 //
 |D3E1var _ => f0_var(d3e0, env0)
 //
+(* ****** ****** *)
+//
+|D3E1flat _ => f0_flat(d3e0, env0)
+//
+(* ****** ****** *)
+//
+|D3E1assgn _ => f0_assgn(d3e0, env0)
+//
+(* ****** ****** *)
+//
 |_(*otherwise*) =>
 d3exp1
 (loc0, t2q0, D3E1errck(0(*lvl*), d3e0))
+//
+(* ****** ****** *)
 //
 end where
 {
@@ -228,13 +240,15 @@ val t2q0 = d3e0.styp()
 //
 (* ****** ****** *)
 //
-fun f0_var
+fun
+f0_var
 ( d3e0: d3exp1
 , env0: !envltck): d3exp1 =
 let
 //
 val-
-D3E1var(d2v1) = d3e0.node()
+D3E1var
+(   d2v1   ) = d3e0.node()
 //
 in//let
 //
@@ -254,6 +268,56 @@ d3exp1(loc0, t2q1, D3E1var(d2v1))
 end//let
 //
 end//let//end-of-[f0_var(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_flat
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1flat
+(   d3e1   ) = d3e0.node()
+//
+val d3e1 =
+(
+  d3exp1_trxltck(d3e1, env0))
+//
+in//let
+d3exp1(loc0, t2q0, D3E1flat(d3e1))
+end//let//end-of-[f0_flat(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_assgn
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1assgn
+(d3el, d3er) = d3e0.node()
+//
+(*
+HX-2025-07-13:
+[d3er] must be
+handled ahead of [d3el]!
+*)
+val d3er =
+(
+  d3exp1_trxltck(d3er, env0))
+//
+val d3el =
+(
+  d3exp1_trxltck(d3el, env0))
+//
+in//let
+d3exp1
+(loc0, t2q0, D3E1assgn(d3el, d3er))
+end//let//end-of-[f0_assgn(d3e0,env0)]
 //
 (* ****** ****** *)
 //
