@@ -80,7 +80,6 @@ fun<>
 range_ibtw(lb:si, ub:si): range_ibtw
 #extern
 fun<>
-<xs:t0>
 range_ibtwe(lb:si, ub:si): range_ibtw
 //
 (* ****** ****** *)

@@ -97,6 +97,13 @@ prints("T2P1var(", s2v1, ")")
 (   t2p1   ) =>
 prints("T2P1lft(", t2p1, ")")
 //
+|T2P1top0
+(   t2p1   ) =>
+prints("T2P1top0(", t2p1, ")")
+|T2P1top1
+(   t2p1   ) =>
+prints("T2P1top1(", t2p1, ")")
+//
 |T2P1arg1
 (knd0, t2p1) =>
 ( print("T2P1arg1(")
