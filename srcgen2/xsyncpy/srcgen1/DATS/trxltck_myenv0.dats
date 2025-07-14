@@ -55,6 +55,16 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+s2typ1_linq
+(t2q0: s2typ1): bool =
+(
+  sort2_linq(t2q0.sort()))
+#symload linq with s2typ1_linq
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 local
 //
 #typedef
@@ -76,7 +86,7 @@ and dtpstk =
 |dtpstk_cas0 of (dtpstk)
 //
 |dtpstk_cons of
-(d2var, d3typ1(*lin*), dtpstk)
+(d2var, d3typ1lst, dtpstk)
 //
 (* ****** ****** *)
 #absimpl envltck_vtbx = envltck
@@ -128,6 +138,37 @@ dtpstk_free_nil(dtpstk)
 val (  ) =
 stkmap_free_nil(stkmap) in () end//let
 )(*case+*)//end-of-(envltck_free_nil(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+envltck_dvar$take
+  (env0, dvar) =
+let
+//
+val t2q0 =
+envltck_dvar$find(env0, dvar)
+//
+in//let
+//
+if
+not(
+linq(t2q0))
+then t2q0 else
+let
+//
+val t2q1 = s2typ1_delin(t2q0)
+//
+in//let
+//
+t2q0 where
+{
+val () =
+envltck_dvar$updt(env0, dvar, t2q1)
+}
+end//let
+//
+end//let//end-of-(envltck_dvar$take(env0,...))
 //
 (* ****** ****** *)
 //

@@ -96,56 +96,6 @@ s2typ1_linq
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-sort2_delin
-(s2t0: sort2): sort2 =
-(
-case+ s2t0 of
-|
-S2Tbas(s2tb) =>
-(
-case+ s2tb of
-|T2Bimpr
-(knd, sym) =>
-let
-  val msk =
-    lnot(g0s2u(2))
-  val knd = g0s2u(knd)
-  val knd =
-    g0u2s(knd\land(msk))
-in
-  S2Tbas(T2Bimpr(knd, sym))
-end
-|_(*non-T2Bimpr*) => (s2t0)
-)
-|_(* non-S2Tbas *) => (s2t0)
-)(*case+*)//end-of-[sort2_delin(...)]
-//
-(* ****** ****** *)
-//
-fun
-s2typ1_delin
-(t2q0: s2typ1): s2typ1 =
-let
-val s2t0 = t2q0.sort()
-in//let
-//
-if
-not(
-linq(s2t0))
-then t2q0 else
-let
-val s2t0 =
-(
-sort2_delin(s2t0))
-in//let
-s2typ1(s2t0, T2P1top1(t2q0))
-end//else//end-of-[if]
-end//end-of-[s2typ1_delin(...)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #implfun
 d3pat1_trxltck
 (d3p0, env0) =
