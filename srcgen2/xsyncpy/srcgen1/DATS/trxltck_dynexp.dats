@@ -166,6 +166,14 @@ d3exp1
 //
 (* ****** ****** *)
 //
+|D3E1dapp _ => f0_dapp(d3e0, env0)
+//
+(* ****** ****** *)
+//
+|D3E1let0 _ => f0_let0(d3e0, env0)
+//
+(* ****** ****** *)
+//
 |D3E1flat _ => f0_flat(d3e0, env0)
 //
 (* ****** ****** *)
@@ -218,6 +226,73 @@ d3exp1(loc0, t2q1, D3E1var(d2v1))
 end//let
 //
 end//let//end-of-[f0_var(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1dapp
+(d3f0
+,npf1, d3es) = d3e0.node()
+//
+val d3f0 =
+(
+  d3exp1_trxltck(d3f0, env0))
+val d3es =
+(
+  d3exp1lst_trxltck(d3es, env0))
+//
+val t2f0 = d3f0.styp((*void*))
+//
+// (*
+val (  ) =
+prerrsln
+("f0_dapp(ltck): t2f0 = ", t2f0)
+// *)
+//
+in//let
+//
+d3exp1
+(loc0
+,t2q0, D3E1dapp(d3f0, npf1, d3es))
+//
+end//let//end-of-[f0_dapp(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_let0
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1let0
+(dcls, d3e1) = d3e0.node()
+//
+val (  ) =
+envltck_pshlet0(env0)//enter
+//
+val dcls =
+d3ecl1lst_trxltck(dcls, env0)
+//
+val d3e1 =
+(
+  d3exp1_trxltck(d3e1, env0))
+//
+val (  ) = envltck_poplet0(env0)
+//
+in//
+//
+d3exp1
+(loc0, t2q0, D3E1let0(dcls, d3e1))
+//
+end//let//end-of-[f0_let0(d3e0, env0)]
 //
 (* ****** ****** *)
 //

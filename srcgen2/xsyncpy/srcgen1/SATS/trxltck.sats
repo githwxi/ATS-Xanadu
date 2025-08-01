@@ -122,6 +122,14 @@ envltck_free_nil(envltck): (void)
 (* ****** ****** *)
 //
 fun
+envltck_pshlet0(!envltck): (void)
+fun
+envltck_poplet0(!envltck): (void)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3pat1_trxltck
 (d3p0: d3pat1, env0: !envltck): void
 //
