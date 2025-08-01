@@ -13,7 +13,7 @@ the prospect of ATS3 going forward.
 Around May of 2022, I decided to go forward with a modified plan of
 bootstrapping ATS3: I should instead use the compiler from ATS3 to JS
 to do it. While this compiler compiles quite slowly, I _felt_ that it
-should be adequate for the task of bootstrapping ATS3. Yes, it was
+should be adequate for the task of bootstrapping ATS3. Luckily, it was
 barely adequate. After a long struggle of nearly three years in
 length, I finally succeeded in bootstrapping ATS3 on the 29th of March
 of 2025. This was a big exciting moment for me, which is comparable to
