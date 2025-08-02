@@ -142,6 +142,23 @@ stkmap_free_nil(stkmap) in () end//let
 (* ****** ****** *)
 //
 #implfun
+envltck_pshlet0
+  (  env0  ) =
+(
+case+ env0 of
+| ENVLTCK
+(
+!dtpstk, stkmap) =>
+let
+//
+val (  ) =
+( dtpstk :=
+  dtpstk_let0(dtpstk)) in () end//let
+)(*case+*)//end-of-(envltck_pshlet0( env0 ))  
+//
+(* ****** ****** *)
+//
+#implfun
 envltck_dvar$take
   (env0, dvar) =
 let
