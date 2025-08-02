@@ -243,9 +243,6 @@ D3E1dapp
 val d3f0 =
 (
   d3exp1_trxltck(d3f0, env0))
-val d3es =
-(
-  d3exp1lst_trxltck(d3es, env0))
 //
 val t2f0 = d3f0.styp((*void*))
 //
@@ -257,9 +254,29 @@ prerrsln
 //
 in//let
 //
+case+
+t2f0.node() of
+|T2P1fun1
+(f2cl
+,npf1
+,t2ps, t2p1) =>
+let
+//
+val d3es =
+d3exp1lst_tpcks$trxltck
+(d3es(*args*), t2ps, env0)
+//
+in//let
+//
 d3exp1
 (loc0
-,t2q0, D3E1dapp(d3f0, npf1, d3es))
+,t2p1, D3E1dapp(d3f0, npf1, d3es))
+//
+end//let
+|_(*non-T2P1fun*) =>
+(
+d3exp1(
+loc0,t2q0,D3E1errck(0(*lvl*),d3e0)))
 //
 end//let//end-of-[f0_dapp(d3e0,env0)]
 //
@@ -285,12 +302,14 @@ val d3e1 =
 (
   d3exp1_trxltck(d3e1, env0))
 //
+val t2q1 = d3e1.styp((*void*))
+//
 val (  ) = envltck_poplet0(env0)
 //
 in//
 //
 d3exp1
-(loc0, t2q0, D3E1let0(dcls, d3e1))
+(loc0, t2q1, D3E1let0(dcls, d3e1))
 //
 end//let//end-of-[f0_let0(d3e0, env0)]
 //
