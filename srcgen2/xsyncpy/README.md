@@ -2,7 +2,7 @@
 
 [comment]: # HX-2025-05-18: Let's start syntax-copying!
 
-XSYNCPY makes a copy of many kinds of abstract syntax trees used
+XSYNCPY makes copies of many kinds of abstract syntax trees used
 in XATSOPT. In this way, various features of ATS3 that were not
 present for the development of XATSOPT in the first few years can
 be readily employed for its future development.  If we had to
