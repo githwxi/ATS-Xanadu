@@ -189,7 +189,15 @@ d3exp1
 d3exp1
 (loc0, t2q0, D3E1str(tstr))
 //
+(* ****** ****** *)
+//
+|D3E1cst _ => f0_cst(d3e0, env0)
 |D3E1var _ => f0_var(d3e0, env0)
+//
+(* ****** ****** *)
+//
+|D3E1tapp _ => f0_tapp(d3e0, env0)
+|D3E1tapq _ => f0_tapq(d3e0, env0)
 //
 (* ****** ****** *)
 //
@@ -220,9 +228,27 @@ end where
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 val loc0 = d3e0.lctn()
 val t2q0 = d3e0.styp()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_cst
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1cst
+(   d2c1   ) = d3e0.node()
+//
+in//let
+d3exp1(loc0, t2q0, D3E1cst(d2c1))
+end//let//end-of-[f0_cst(d3e0,env0)]
 //
 (* ****** ****** *)
 //
@@ -254,6 +280,46 @@ d3exp1(loc0, t2q1, D3E1var(d2v1))
 end//let
 //
 end//let//end-of-[f0_var(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tapp
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1tapp
+(d3f0, s2es) = d3e0.node()
+val d3f0 =
+(
+  d3exp1_trxltck(d3f0, env0))
+//
+in//let
+(
+d3exp1
+(loc0, t2q0, D3E1tapp(d3f0, s2es)))
+end//let//end-of-[f0_tapp(d3e0,env0)]
+//
+fun
+f0_tapq
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1tapq
+(d3f0, t2js) = d3e0.node()
+val d3f0 =
+(
+  d3exp1_trxltck(d3f0, env0))
+//
+in//let
+(
+d3exp1
+(loc0, t2q0, D3E1tapq(d3f0, t2js)))
+end//let//end-of-[f0_tapq(d3e0,env0)]
 //
 (* ****** ****** *)
 //
@@ -316,11 +382,11 @@ val d3f0 =
 //
 val t2f0 = d3f0.styp((*void*))
 //
-(*
+// (*
 val (  ) =
 prerrsln
 ("f0_dapp(ltck): t2f0 = ", t2f0)
-*)
+// *)
 //
 in//let
 //
