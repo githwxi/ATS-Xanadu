@@ -191,6 +191,10 @@ fun
 d3vardcl1_trxltck
 (dvar: d3vardcl1, env0: !envltck): d3vardcl1
 //
+fun
+d3fundcl1_trxltck
+(dvar: d3fundcl1, env0: !envltck): d3fundcl1
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -207,6 +211,10 @@ d3valdcl1lst_trxltck
 fun
 d3vardcl1lst_trxltck
 (d3vs: d3vardcl1lst, env0: !envltck): d3vardcl1lst
+//
+fun
+d3fundcl1lst_trxltck
+(d3fs: d3fundcl1lst, env0: !envltck): d3fundcl1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)
