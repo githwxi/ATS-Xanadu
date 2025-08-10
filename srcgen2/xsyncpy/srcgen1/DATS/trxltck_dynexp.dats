@@ -193,6 +193,7 @@ d3exp1
 //
 (* ****** ****** *)
 //
+|D3E1dap0 _ => f0_dap0(d3e0, env0)
 |D3E1dapp _ => f0_dapp(d3e0, env0)
 //
 (* ****** ****** *)
@@ -257,6 +258,48 @@ end//let//end-of-[f0_var(d3e0,env0)]
 (* ****** ****** *)
 //
 fun
+f0_dap0
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1dap0
+(   d3f0   ) = d3e0.node()
+//
+val d3f0 =
+(
+  d3exp1_trxltck(d3f0, env0))
+//
+val t2f0 = d3f0.styp((*void*))
+//
+// (*
+val (  ) =
+prerrsln
+("f0_dap0(ltck): t2f0 = ", t2f0)
+// *)
+//
+in//let
+//
+case+
+t2f0.node() of
+|T2P1fun1
+(f2cl
+,npf1
+,t2ps, t2p1) =>
+let
+d3exp1(loc0, t2p1, D3E1dap0(d3f0))
+end//let
+|_(*non-T2P1fun*) =>
+(
+d3exp1(
+loc0,t2q0,D3E1errck(0(*lvl*),d3e0)))
+//
+end//let//end-of-[f0_dap0(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_dapp
 ( d3e0: d3exp1
 , env0: !envltck): d3exp1 =
@@ -273,11 +316,11 @@ val d3f0 =
 //
 val t2f0 = d3f0.styp((*void*))
 //
-// (*
+(*
 val (  ) =
 prerrsln
 ("f0_dapp(ltck): t2f0 = ", t2f0)
-// *)
+*)
 //
 in//let
 //
