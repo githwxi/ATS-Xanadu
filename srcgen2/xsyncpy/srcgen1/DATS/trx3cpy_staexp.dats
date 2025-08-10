@@ -54,6 +54,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
 "./../../../SATS/staexp2.sats"
 #staload
 "./../../../SATS/statyp2.sats"
@@ -200,7 +206,15 @@ _(*otherwise*) =>
 (
   s2typ1(s2t0, T2P1s2typ( t2p0 )))
 //
-end(*let*)//end-of-[s2typ_trx3cpy(t2p0,env0)]
+end where
+{
+//
+  val t2p0 = s2typ_hnfiz0( t2p0 )
+//
+  val (  ) =
+  prerrsln("s2typ_trx3cpy: t2p0 = ", t2p0)
+//
+}(*where*)//end-of-[s2typ_trx3cpy(t2p0,env0)]
 //
 (* ****** ****** *)
 //
