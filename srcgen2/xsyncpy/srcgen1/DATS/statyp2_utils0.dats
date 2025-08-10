@@ -30,93 +30,133 @@
 //
 (*
 Author: Hongwei Xi
-(*
-Tue May 27 02:22:54 AM EDT 2025
-*)
+Sat Aug  9 04:53:06 PM EDT 2025
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #staload
 "./../SATS/statyp2.sats"
-//
+(* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/staexp2.sats"
 #staload
 "./../../../SATS/statyp2.sats"
 //
-#symload sort with s2typ_get_sort
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"./../../../DATS/xatsopt_tmplib.dats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-s2typ1_make_s2typ
-  (  t2p0  ) = 
+s2typ1_lteq
+(t2q1, t2q2) =
 (
-s2typ1_make_sort$node
-(s2t0, T2P1s2typ(t2p0)))
-where
-{
-  val s2t0 = t2p0.sort((*0*))
-}(*where*)//end-of-[s2typ1_make_s2typ]
+case+
+t2q1.node() of
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
-local
-//
-datatype
-s2typ1 =
-S2TYP1 of
-(sort2, s2typ1_node)
-datavwtp
-s2typ1_vt =
-S2TYP1_vt of
-(sort2, s2typ1_node)
-//
-#absimpl s2typ1_tbox = s2typ1
-//
-(* ****** ****** *)
-in (* in-of-local *)
-(* ****** ****** *)
-//
-#implfun
-s2typ1_sort$get
-  ( styp ) =
-let
-val+
-S2TYP1
-( s2t0
-, node) = styp in s2t0
-end//end-of-[s2typ1_sort$get]
-//
-#implfun
-s2typ1_node$get
-  ( styp ) =
-let
-val+
-S2TYP1
-( s2t0
-, node) = styp in node
-end//end-of-[s2typ1_node$get]
-//
-(* ****** ****** *)
-//
-#implfun
-s2typ1_make_sort$node
-  ( s2t0, node ) =
+|T2P1cst
+(  s2c1  ) =>
 (
-  S2TYP1(s2t0, node) )//implfun
+case+
+t2q2.node() of
+|T2P1cst(s2c2) => (s2c1 = s2c2)
+|_(*non-T2P1cst*) => (  false  )
+)
+//
+|T2P1var
+(  s2v1  ) =>
+(
+case+
+t2q2.node() of
+|T2P1var(s2v2) => (s2v1 = s2v2)
+|_(*non-T2P1var*) => (  false  )
+)
+//
+|T2P1apps
+(t2f1, tqs1) =>
+(
+case+
+t2q2.node() of
+|T2P1apps(t2f2, tqs2) =>
+(
+if
+s2typ1_lteq
+(t2f1, t2f2)
+then
+s2typ1lst_lteq
+( tqs1, tqs2 ) else false)
+|_(*non-T2P1apps*) => (  false  )
+)
+//
+|T2P1text
+(tnm1, tqs1) =>
+(
+case+
+t2q2.node() of
+|T2P1text(tnm2, tqs2) =>
+(
+if
+(tnm1 = tnm2)
+then
+s2typ1lst_lteq
+( tqs1, tqs2 ) else false)
+|_(*non-T2P1text*) => (  false  )
+)
+//
+|T2P1none0() =>
+(
+case+
+t2q2.node() of
+|T2P1none0() => true | _ => false)
+//
+|_(* otherwise *) => (     false     )
+)(*case+*)//end-of-[s2typ1_lteq(t2q1,t2q2)]
 //
 (* ****** ****** *)
 //
-endloc(*local*)//end-of-[local(s2typ1)]
+#implfun
+s2typ1lst_lteq
+(tqs1, tqs2) =
+(
+case+ tqs1 of
+|list_nil() =>
+(
+case+ tqs2 of
+|list_nil() => true
+|list_cons _ => false)
+|list_cons
+(t2q1, tqs1) =>
+(
+case+ tqs2 of
+|list_nil() => false
+|list_cons(t2q2, tqs2) =>
+(
+if
+s2typ1_lteq(t2q1, t2q2)
+then
+s2typ1lst_lteq(tqs1, tqs2) else false))
+)(*case+*)//end-of-[s2typ1lst_lteq(tqs1,tqs2)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_statyp2.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_statyp2_utils0.dats] *)
 (***********************************************************************)

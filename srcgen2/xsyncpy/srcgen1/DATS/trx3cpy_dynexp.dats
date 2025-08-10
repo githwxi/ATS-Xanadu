@@ -1131,9 +1131,13 @@ val d3e1 =
 (
 d3exp_trx3cpy(d3e1, env0))
 //
+val t2q2 =
+(
+s2typ_trx3cpy(t2p2, env0))
+//
 in//let
 d3exp1
-(loc0, t2q0, D3E1t2pck(d3e1,t2p2))
+(loc0, t2q0, D3E1t2pck(d3e1,t2q2))
 end(*let*)//end-of-[f0_t2pck(d3e0,env0)]
 //
 (* ****** ****** *)

@@ -505,7 +505,7 @@ d3exp1(*lin-thunk*),d3exp1lst(*frees*))
 //
 |D3E1labck of (d3exp1, label)//lb-cast
 //
-|D3E1t2pck of (d3exp1, s2typ)//tp-cast
+|D3E1t2pck of (d3exp1, s2typ1)//tp-cast
 //
 (* ****** ****** *)
 //

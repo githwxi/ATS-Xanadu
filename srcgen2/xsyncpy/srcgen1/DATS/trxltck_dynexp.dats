@@ -96,6 +96,33 @@ s2typ1_linq
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+d3exp1_t2pck
+( d3e0: d3exp1
+, t2q0: s2typ1): d3exp1 =
+let
+//
+val t2q1 = d3e0.styp()
+val ubtf =
+s2typ1_lteq(t2q1, t2q0)
+//
+in//let
+//
+if ubtf
+then d3e0 else
+let
+val loc0 = d3e0.lctn()
+in//let
+d3exp1
+(loc0, t2q0, D3E1t2pck(d3e0, t2q0))
+end//let
+//
+end//let//end-of-[d3exp1_t2pck(d3e0,t2p0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
 #implfun
 d3pat1_trxltck
 (d3p0, env0) =
@@ -263,8 +290,8 @@ t2f0.node() of
 let
 //
 val d3es =
-d3exp1lst_tpcks$trxltck
-(d3es(*args*), t2ps, env0)
+loctn$d3exp1lst_tpcks$trxltck
+(loc0, d3es(*args*), t2ps, env0)
 //
 in//let
 //
@@ -366,6 +393,57 @@ end//let//end-of-[f0_assgn(d3e0,env0)]
 (* ****** ****** *)
 //
 }(*where*)//end-of-[d3exp1_trxltck(d3e0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+loctn$d3exp1lst_tpcks$trxltck
+  (loc0, d3es, t2ps, env0) =
+(
+f0_d3es$t2ps(d3es, t2ps, env0)
+) where
+{
+//
+fun
+f0_dexp$styp
+(d3e0: d3exp1
+,t2q0: s2typ1
+,env0: !envltck): d3exp1 =
+(
+d3exp1_t2pck(d3e0, t2q0)) where
+{
+//
+val
+d3e0 = d3exp1_trxltck(d3e0, env0) }
+//
+fun
+f0_d3es$t2ps
+(d3es: d3exp1lst
+,t2ps: s2typ1lst
+,env0: !envltck): d3exp1lst =
+(
+case+ d3es of
+|list_nil() =>
+(
+case- t2ps of
+|list_nil() => list_nil()
+)
+|list_cons
+(d3e1, d3es) =>
+(
+case- t2ps of
+|list_cons(t2p1, t2ps) =>
+(list_cons(d3e1, d3es)) where
+{
+val d3e1 =
+  f0_dexp$styp(d3e1, t2p1, env0)
+val d3es =
+  f0_d3es$t2ps(d3es, t2ps, env0) }
+)
+)(*case+*)//end-of-[f0_d3es$t2ps(d3es,t2ps,env0)]
+//
+}(*where*)//end-of-[loctn$d3exp1lst_tpcks$trxltck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
