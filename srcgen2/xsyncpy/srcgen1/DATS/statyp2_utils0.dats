@@ -127,7 +127,17 @@ t2q2.node() of
 |T2P1none0() => true | _ => false)
 //
 |_(* otherwise *) => (     false     )
-)(*case+*)//end-of-[s2typ1_lteq(t2q1,t2q2)]
+) where
+{
+//
+val () =
+(
+  prerrsln("s2typ1_lteq: t2q1 = ", t2q1))
+val () =
+(
+  prerrsln("s2typ1_lteq: t2q2 = ", t2q2))
+//
+}(*where*)//end-of-[s2typ1_lteq(t2q1,t2q2)]
 //
 (* ****** ****** *)
 //
