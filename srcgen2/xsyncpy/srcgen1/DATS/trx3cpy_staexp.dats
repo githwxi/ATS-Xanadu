@@ -209,10 +209,14 @@ _(*otherwise*) =>
 end where
 {
 //
+// HX-2025-08-10:
+// For expanding definitions!
   val t2p0 = s2typ_hnfiz0( t2p0 )
 //
+(*
   val (  ) =
   prerrsln("s2typ_trx3cpy: t2p0 = ", t2p0)
+*)
 //
 }(*where*)//end-of-[s2typ_trx3cpy(t2p0,env0)]
 //
