@@ -135,22 +135,32 @@ s2typ1(*fun*), s2typ1lst(*args*))
 (
 s2varlst(*args*), s2typ1(*body*))
 //
+(* ****** ****** *)
+//
 |T2P1f2cl of $BAS.f2clknd
 |T2P1fun1 of
 (s2typ1(*f2cl*), sint(*npf*)
 ,s2typ1lst(*args*), s2typ1(*res*))
+//
+(* ****** ****** *)
 //
 |T2P1exi0 of // exists quantifier
 (s2varlst(*vars*), s2typ1(*body*))
 |T2P1uni0 of // forall quantifier
 (s2varlst(*vars*), s2typ1(*body*))
 //
+(* ****** ****** *)
+//
 |T2P1trcd of
 (
 $BAS.trcdknd,sint(*npf*),l2t2p1lst)
 //
+(* ****** ****** *)
+//
 |T2P1text of
 (string(*name*), s2typ1lst(*args*))
+//
+(* ****** ****** *)
 //
 |T2P1none0 of ((*0*))//HX: optional
 //
@@ -173,7 +183,19 @@ s2typ1_node$get
 (* ****** ****** *)
 //
 fun
-s2typ1_s2typ(styp: s2typ): s2typ1
+s2typ1_lteq
+(t2q1: s2typ1, t2q2: s2typ1): bool
+//
+fun
+s2typ1lst_lteq
+(tqs1: s2typ1lst, tqs2: s2typ1lst): bool
+//
+#symload <= with s2typ1_lteq of 1000
+//
+(* ****** ****** *)
+//
+fun
+s2typ1_make_s2typ(styp: s2typ): s2typ1
 //
 (* ****** ****** *)
 //
