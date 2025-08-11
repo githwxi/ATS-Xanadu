@@ -98,6 +98,39 @@ end(*let*)//end-of-[d3parsed1_trxltck(dpar)]
 (* ****** ****** *)
 //
 #implfun
+d3pat1lst_trxltck
+(d3ps, env0) =
+(
+case+ d3ps of
+|list_nil() => ()
+|list_cons(d3p1, d3ps) =>
+(
+d3pat1lst_trxltck(d3ps, env0)
+) where
+{
+  val () = d3pat1_trxltck(d3p1, env0) }
+)
+//
+(* ****** ****** *)
+//
+#implfun
+f3arg1lst_trxltck
+(f3as, env0) =
+(
+case+ f3as of
+|list_nil() => ()
+|list_cons(f3a1, f3as) =>
+(
+f3arg1lst_trxltck(f3as, env0)
+) where
+{
+  val () = f3arg1_trxltck(f3a1, env0) }
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d3exp1lst_trxltck
 (d3es, env0) =
 list_map$e1nv(d3es, env0) where
@@ -150,6 +183,20 @@ list_map$e1nv(d3vs, env0) where
 #impltmp
 map$e1nv$fopr<x0><y0><e1> = d3vardcl1_trxltck
 }(*where*)//end-of-[d3vardcl1lst_trxltck(d3es,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3fundcl1lst_trxltck
+(d3fs, env0) =
+list_map$e1nv(d3fs, env0) where
+{
+#vwtpdef e1 = envltck
+#typedef x0 = d3fundcl1
+#typedef y0 = d3fundcl1
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = d3fundcl1_trxltck
+}(*where*)//end-of-[d3fundcl1lst_trxltck(d3es,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

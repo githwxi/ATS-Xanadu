@@ -557,6 +557,23 @@ val d3es =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+f3arg1_trxltck
+(f3a0, env0) =
+(
+case+
+f3a0.node() of
+//
+|F3ARG1dapp
+(npf1, d3ps) =>
+d3pat1lst_trxltck(d3ps, env0)
+|F3ARG1sapp _ => () |F3ARG1mets _ => ()
+//
+)(*case+*)//end-of-[f3arg1_trxltck(f3a0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trxltck_dynexp.dats] *)
 (***********************************************************************)
