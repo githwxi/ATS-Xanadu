@@ -122,6 +122,21 @@ envltck_free_nil(envltck): (void)
 (* ****** ****** *)
 //
 fun
+envltck_pshfun0(!envltck): (void)
+fun
+envltck_popfun0(!envltck): (void)
+//
+(* ****** ****** *)
+//
+//
+fun
+envltck_pshlam0(!envltck): (void)
+fun
+envltck_poplam0(!envltck): (void)
+//
+(* ****** ****** *)
+//
+fun
 envltck_pshlet0(!envltck): (void)
 fun
 envltck_poplet0(!envltck): (void)

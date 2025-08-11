@@ -79,6 +79,8 @@ and dtpstk =
 //
 |dtpstk_nil of ()
 //
+|dtpstk_fun0 of (dtpstk)
+//
 |dtpstk_lam0 of (dtpstk)
 |dtpstk_let0 of (dtpstk)
 //
@@ -138,6 +140,40 @@ dtpstk_free_nil(dtpstk)
 val (  ) =
 stkmap_free_nil(stkmap) in () end//let
 )(*case+*)//end-of-(envltck_free_nil(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+envltck_pshfun0
+  (  env0  ) =
+(
+case+ env0 of
+| ENVLTCK
+(
+!dtpstk, stkmap) =>
+let
+//
+val (  ) =
+( dtpstk :=
+  dtpstk_fun0(dtpstk)) in () end//let
+)(*case+*)//end-of-(envltck_pshfun0( env0 ))  
+//
+(* ****** ****** *)
+//
+#implfun
+envltck_pshlam0
+  (  env0  ) =
+(
+case+ env0 of
+| ENVLTCK
+(
+!dtpstk, stkmap) =>
+let
+//
+val (  ) =
+( dtpstk :=
+  dtpstk_lam0(dtpstk)) in () end//let
+)(*case+*)//end-of-(envltck_pshlam0( env0 ))  
 //
 (* ****** ****** *)
 //
