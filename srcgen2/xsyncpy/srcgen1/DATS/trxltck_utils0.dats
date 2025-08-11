@@ -55,6 +55,11 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload linq with sort2_linq
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 sort2_delin
 (   s2t0   ) =
