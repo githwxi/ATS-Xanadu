@@ -134,6 +134,12 @@ d3pat1_trxltck
 (d3p0: d3pat1, env0: !envltck): void
 //
 (* ****** ****** *)
+//
+fun
+f3arg1_trxltck
+(f3a0: f3arg1, env0: !envltck): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -166,6 +172,13 @@ loctn$d3exp1lst_tpcks$trxltck
 (loc0: loctn
 ,d3es: d3exp1lst
 ,t2ps: s2typ1lst, env0: !envltck): d3exp1lst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f3arg1lst_trxltck
+(f3as: f3arg1lst, env0: !envltck): ( void )
 //
 (* ****** ****** *)
 (* ****** ****** *)
