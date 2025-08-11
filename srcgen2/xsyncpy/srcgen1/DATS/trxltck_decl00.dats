@@ -413,6 +413,39 @@ end//let
 (* ****** ****** *)
 //
 #implfun
+d3fundcl1_trxltck
+  (dfun, env0) = let
+//
+val loc0 =
+d3fundcl1_lctn$get(dfun)
+val dpid =
+d3fundcl1_dpid$get(dfun)
+val f3as =
+d3fundcl1_farg$get(dfun)
+val sres =
+d3fundcl1_sres$get(dfun)
+val tdxp =
+d3fundcl1_tdxp$get(dfun)
+val wsxp =
+d3fundcl1_wsxp$get(dfun)
+//
+val (  ) =
+(
+  f3arg1lst_trxltck(f3as, env0))
+//
+val tdxp =
+(
+  teqd3exp1_trxltck(tdxp, env0))
+//
+in//let
+d3fundcl1(loc0,dpid,f3as,sres,tdxp,wsxp)
+end//let
+(*let*)//end-of-[d3fundcl1_trxltck(dfun,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 s3taload1opt_trxltck
 (dopt, env0) =
 (
