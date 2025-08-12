@@ -149,9 +149,27 @@ d3p0.node() of
 |D3P1flt(tflt) => ( (*void*) )
 |D3P1str(tstr) => ( (*void*) )
 //
+|D3P1annot _ => f0_annot(d3p0, env0)
+//
 |_(*otherwise*) => (   (*skipped*)    )
 //
-end(*let*)//end-of-[d3pat1_trxltck(d3e0,env0)]
+end where
+{
+//
+fun
+f0_annot
+( d3p0: d3pat1
+, env0: !envltck) =
+(
+d3pat1_trxltck(d3p1, env0)
+) where
+{
+  val-
+  D3P1annot
+  (d3p1, s1e1, s2e1) = d3p0.node((*0*))
+}(*where*)//end-of-[f0_annot(d3p0,env0)]
+//
+}(*where*)//end-of-[d3pat1_trxltck(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
