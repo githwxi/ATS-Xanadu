@@ -430,12 +430,17 @@ val wsxp =
 d3fundcl1_wsxp$get(dfun)
 //
 val (  ) =
+envltck_pshfun0(env0)//enter
+//
+val (  ) =
 (
   f3arg1lst_trxltck(f3as, env0))
 //
 val tdxp =
 (
   teqd3exp1_trxltck(tdxp, env0))
+//
+val (  ) = envltck_popfun0(env0)
 //
 in//let
 d3fundcl1(loc0,dpid,f3as,sres,tdxp,wsxp)
