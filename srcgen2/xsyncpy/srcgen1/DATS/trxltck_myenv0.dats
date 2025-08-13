@@ -65,21 +65,9 @@ s2typ1_linq
 (* ****** ****** *)
 (* ****** ****** *)
 //
-local
-//
-#typedef
-s2cs = s2cstlst
-//
-datavwtp
-envltck =
-ENVLTCK of
-(dtpstk, stkmap(s2cs))
-//
-and dtpstk =
+datavwtp dtpstk =
 //
 |dtpstk_nil of ()
-//
-|dtpstk_fun0 of (dtpstk)
 //
 |dtpstk_lam0 of (dtpstk)
 |dtpstk_let0 of (dtpstk)
@@ -91,20 +79,32 @@ and dtpstk =
 (d2var, d3typ1lst, dtpstk)
 //
 (* ****** ****** *)
+//
+#typedef s2cs = s2cstlst
+//
+datavwtp
+envltck =
+ENVLTCK of(dtpstk, stkmap(s2cs))
+//
 #absimpl envltck_vtbx = envltck
-(* ****** ****** *)
-//
-in//local
 //
 (* ****** ****** *)
+//
+fun
+dtpstk_make_nil
+(
+(* nil *)
+): dtpstk = dtpstk_nil(*void*)
 //
 fun
 dtpstk_free_nil
 (stk0: ~dtpstk): void =
 (
 case-
-stk0 of ~dtpstk_nil() => ())
+stk0 of ~dtpstk_nil() => ((*0*))
+)(*case+*)//end-of-[dtpstk_free_nil]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -114,7 +114,7 @@ envltck_make_nil
 ENVLTCK(dtpstk, stkmap))
 where{
 //
-val dtpstk = dtpstk_nil()
+val dtpstk = dtpstk_make_nil()
 val stkmap = stkmap_make_nil()
 }(*where*)//end-of-[envltck_make_nil()]
 //
@@ -142,22 +142,6 @@ stkmap_free_nil(stkmap) in () end//let
 )(*case+*)//end-of-(envltck_free_nil(env0))
 //
 (* ****** ****** *)
-//
-#implfun
-envltck_pshfun0
-  (  env0  ) =
-(
-case+ env0 of
-| ENVLTCK
-(
-!dtpstk, stkmap) =>
-let
-//
-val (  ) =
-( dtpstk :=
-  dtpstk_fun0(dtpstk)) in () end//let
-)(*case+*)//end-of-(envltck_pshfun0( env0 ))  
-//
 (* ****** ****** *)
 //
 #implfun
@@ -193,6 +177,31 @@ val (  ) =
 )(*case+*)//end-of-(envltck_pshlet0( env0 ))  
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envltck_poplam0
+(     env0     ) = let
+//
+val+
+ENVLTCK(
+!dtpstk, !stkmap) = env0
+//
+in//let
+//
+let
+(*
+val nerr =
+dtpstk_poplam0(dtpstk)
+*)
+val nerr =
+stkmap_poplam0(stkmap) in $fold(env0)
+end(*let*)
+//
+end(*let*)//end-of-(envltck_poplam0(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 envltck_dvar$take
@@ -222,10 +231,6 @@ envltck_dvar$updt(env0, dvar, t2q1)
 end//let
 //
 end//let//end-of-(envltck_dvar$take(env0,...))
-//
-(* ****** ****** *)
-//
-end//local
 //
 (* ****** ****** *)
 (* ****** ****** *)
