@@ -115,8 +115,9 @@ envltck_dvar$updt
 //
 fun
 envltck_make_nil((*0*)): envltck
+//
 fun
-envltck_free_nil(envltck): (void)
+envltck_free_top(envltck): (void)
 //
 (* ****** ****** *)
 (* ****** ****** *)

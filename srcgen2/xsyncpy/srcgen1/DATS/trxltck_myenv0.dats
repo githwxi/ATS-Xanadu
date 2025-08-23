@@ -97,12 +97,19 @@ dtpstk_make_nil
 ): dtpstk = dtpstk_nil(*void*)
 //
 fun
-dtpstk_free_nil
+dtpstk_free_top
 (stk0: ~dtpstk): void =
 (
 case-
-stk0 of ~dtpstk_nil() => ((*0*))
-)(*case+*)//end-of-[dtpstk_free_nil]
+stk0 of
+| ~
+dtpstk_nil() => ((*0*))
+| ~
+dtpstk_cons
+(d2v1
+,d3ts,stk1) => dtpstk_free_top(stk1)
+//
+)(*case+*)//end-of-[dtpstk_free_top]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -121,7 +128,7 @@ val stkmap = stkmap_make_nil()
 (* ****** ****** *)
 //
 #implfun
-envltck_free_nil
+envltck_free_top
   (   env0   ) =
 (
 case+ env0 of
@@ -136,10 +143,10 @@ val nerr =
 stkmap_poptop0(stkmap)
 //
 val (  ) =
-dtpstk_free_nil(dtpstk)
+dtpstk_free_top(dtpstk)
 val (  ) =
 stkmap_free_nil(stkmap) in () end//let
-)(*case+*)//end-of-(envltck_free_nil(env0))
+)(*case+*)//end-of-(envltck_free_top(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -213,7 +220,7 @@ dtpstk_cons
 //
 )
 //
-}(*where*)//end-of-[dtpstk_poplet0(kxs)]
+}(*where*)//end-of-[dtpstk_poplam0(kxs)]
 //
 #implfun
 envltck_poplam0
@@ -226,10 +233,8 @@ ENVLTCK(
 in//let
 //
 let
-(*
 val nerr =
 dtpstk_poplam0(dtpstk)
-*)
 val nerr =
 stkmap_poplam0(stkmap) in $fold(env0)
 end(*let*)
@@ -285,10 +290,8 @@ ENVLTCK(
 in//let
 //
 let
-(*
 val nerr =
 dtpstk_poplet0(dtpstk)
-*)
 val nerr =
 stkmap_poplet0(stkmap) in $fold(env0)
 end(*let*)
