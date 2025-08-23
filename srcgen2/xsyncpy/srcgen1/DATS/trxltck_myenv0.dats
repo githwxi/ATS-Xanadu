@@ -122,7 +122,7 @@ val stkmap = stkmap_make_nil()
 //
 #implfun
 envltck_free_nil
-  (  env0  ) =
+  (   env0   ) =
 (
 case+ env0 of
 | ~
@@ -179,6 +179,42 @@ val (  ) =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+dtpstk_poplam0
+( kxs:
+& dtpstk >> _): sint =
+let
+var
+err: sint = 0
+val
+( ) =
+(kxs := loop(kxs, err)) in err end
+where{
+//
+fnx
+loop
+( kxs: dtpstk
+, err: &sint >> _): dtpstk =
+(
+case+ kxs of
+|
+~ // free
+dtpstk_lam0
+(   kxs   ) => kxs
+|
+~ // free
+dtpstk_cons
+(k1, xs, kxs) => loop(kxs, err)
+//
+|dtpstk_nil( ) => (err := 1; kxs)
+|dtpstk_let0 _ => (err := 1; kxs)
+|dtpstk_ift0 _ => (err := 1; kxs)
+|dtpstk_cas0 _ => (err := 1; kxs)
+//
+)
+//
+}(*where*)//end-of-[dtpstk_poplet0(kxs)]
+//
 #implfun
 envltck_poplam0
 (     env0     ) = let
@@ -199,6 +235,65 @@ stkmap_poplam0(stkmap) in $fold(env0)
 end(*let*)
 //
 end(*let*)//end-of-(envltck_poplam0(env0))
+//
+(* ****** ****** *)
+//
+fun
+dtpstk_poplet0
+( kxs:
+& dtpstk >> _): sint =
+let
+var
+err: sint = 0
+val
+( ) =
+(kxs := loop(kxs, err)) in err end
+where{
+//
+fnx
+loop
+( kxs: dtpstk
+, err: &sint >> _): dtpstk =
+(
+case+ kxs of
+|
+~ // free
+dtpstk_let0
+(   kxs   ) => kxs
+|
+~ // free
+dtpstk_cons
+(k1, xs, kxs) => loop(kxs, err)
+//
+|dtpstk_nil( ) => (err := 1; kxs)
+|dtpstk_lam0 _ => (err := 1; kxs)
+|dtpstk_ift0 _ => (err := 1; kxs)
+|dtpstk_cas0 _ => (err := 1; kxs)
+//
+)
+//
+}(*where*)//end-of-[dtpstk_poplet0(kxs)]
+//
+#implfun
+envltck_poplet0
+(     env0     ) = let
+//
+val+
+ENVLTCK(
+!dtpstk, !stkmap) = env0
+//
+in//let
+//
+let
+(*
+val nerr =
+dtpstk_poplet0(dtpstk)
+*)
+val nerr =
+stkmap_poplet0(stkmap) in $fold(env0)
+end(*let*)
+//
+end(*let*)//end-of-(envltck_poplet0(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
