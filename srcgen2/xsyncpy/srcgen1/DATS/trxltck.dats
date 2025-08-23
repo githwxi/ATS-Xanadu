@@ -86,7 +86,7 @@ d3ecl1lstopt_trxltck(parsed, env0)
 in//let
 //
 let
-val ((*0*)) = envltck_free_nil(env0)
+val ((*0*)) = envltck_free_top(env0)
 in//let
 (
 d3parsed1(stadyn, nerror, source, parsed))
