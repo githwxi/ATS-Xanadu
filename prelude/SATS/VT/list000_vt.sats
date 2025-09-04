@@ -288,6 +288,10 @@ GLSEQ_make0_list_vt
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-09-04:
+Thu Sep  4 12:15:50 AM EDT 2025
+*)
 fun
 <a:vt>
 list_vt_mergesort0

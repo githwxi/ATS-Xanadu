@@ -71,6 +71,36 @@ castxy{ax:t0}{ay:t0}(ax:ax):(ay)
 (* ****** ****** *)
 //
 #impltmp
+g_0<stamp>
+((*void*)) =
+the_stamp_nil
+#impltmp
+g_cmp<stamp> = stamp_cmp
+//
+(* ****** ****** *)
+//
+#impltmp
+g_cmp<d2con>
+(d2c1, d2c2) =
+(
+d2c1.stmp() \cmp d2c2.stmp())
+//
+#impltmp
+g_cmp<d2cst>
+(d2c1, d2c2) =
+(
+d2c1.stmp() \cmp d2c2.stmp())
+//
+#impltmp
+g_cmp<d2var>
+(d2v1, d2v2) =
+(
+d2v1.stmp() \cmp d2v2.stmp())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 g_print
 <
 f2clknd
