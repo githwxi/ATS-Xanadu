@@ -184,6 +184,23 @@ val (  ) =
 )(*case+*)//end-of-(envltck_pshlet0( env0 ))  
 //
 (* ****** ****** *)
+//
+#implfun
+envltck_pshift0
+  (  env0  ) =
+(
+case+ env0 of
+| ENVLTCK
+(
+!dtpstk, stkmap) =>
+let
+//
+val (  ) =
+( dtpstk :=
+  dtpstk_ift0(dtpstk)) in () end//let
+)(*case+*)//end-of-(envltck_pshift0( env0 ))  
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -200,8 +217,8 @@ where{
 //
 fnx
 loop
-( kxs: dtpstk
-, err: &sint >> _): dtpstk =
+(kxs: dtpstk
+,err: &sint >> _): dtpstk =
 (
 case+ kxs of
 |
@@ -211,7 +228,7 @@ dtpstk_lam0
 |
 ~ // free
 dtpstk_cons
-(k1, xs, kxs) => loop(kxs, err)
+(k1, ts, kxs) => loop(kxs, err)
 //
 |dtpstk_nil( ) => (err := 1; kxs)
 |dtpstk_let0 _ => (err := 1; kxs)
@@ -257,8 +274,8 @@ where{
 //
 fnx
 loop
-( kxs: dtpstk
-, err: &sint >> _): dtpstk =
+(kxs: dtpstk
+,err: &sint >> _): dtpstk =
 (
 case+ kxs of
 |
@@ -268,7 +285,7 @@ dtpstk_let0
 |
 ~ // free
 dtpstk_cons
-(k1, xs, kxs) => loop(kxs, err)
+(k1, ts, kxs) => loop(kxs, err)
 //
 |dtpstk_nil( ) => (err := 1; kxs)
 |dtpstk_lam0 _ => (err := 1; kxs)
@@ -297,6 +314,95 @@ stkmap_poplet0(stkmap) in $fold(env0)
 end(*let*)
 //
 end(*let*)//end-of-(envltck_poplet0(env0))
+//
+(* ****** ****** *)
+//
+fun
+dtpstk_popift0
+( kxs:
+& dtpstk >> _): sint =
+let
+var
+err: sint = 0
+val
+( ) =
+(kxs := loop(kxs, err)) in err end
+where{
+//
+fnx
+loop
+(kxs: dtpstk
+,err: &sint >> _): dtpstk =
+(
+case+ kxs of
+|
+~ // free
+dtpstk_ift0
+(   kxs   ) => kxs
+|
+~ // free
+dtpstk_cons
+(k1, ts, kxs) => loop(kxs, err)
+//
+|dtpstk_nil( ) => (err := 1; kxs)
+|dtpstk_lam0 _ => (err := 1; kxs)
+|dtpstk_let0 _ => (err := 1; kxs)
+|dtpstk_cas0 _ => (err := 1; kxs)
+//
+)
+//
+}(*where*)//end-of-[dtpstk_popift0(kxs)]
+//
+#implfun
+envltck_popift0
+(     env0     ) = let
+//
+val+
+ENVLTCK(
+!dtpstk, !stkmap) = env0
+//
+in//let
+//
+let
+val nerr =
+dtpstk_popift0(dtpstk) in $fold(env0)
+end(*let*)
+//
+end(*let*)//end-of-(envltck_popift0(env0))
+//
+(* ****** ****** *)
+//
+fun
+dtpstk_d2vift0
+( kxs:
+& dtpstk >> _)
+: list_vt(d2var) =
+let
+//
+#vwtpdef
+d2varlst = list_vt(d2var)
+//
+fnx
+loop
+( kxs:
+! dtpstk
+, res
+: d2varlst): d2varlst =
+(
+case- kxs of
+|dtpstk_nil
+(  (*nil*)  ) => res
+|dtpstk_ift0
+(    kxs    ) => res
+|dtpstk_cons
+(k1, ts, kxs) =>
+loop(kxs, list_vt_cons(k1, res))
+)
+//
+in
+list_vt_mergesort0(
+  loop(kxs, list_vt_nil(*void*)))
+end(*let*)//end-of-[dtpstk_d2vift0(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

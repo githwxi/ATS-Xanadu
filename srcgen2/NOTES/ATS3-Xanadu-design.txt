@@ -49,11 +49,15 @@ the meaning of some pattern modifiers.
 (
 HX-2024-05-26:
 Without modification:
-C(x1, x2) folds automatically at the end)
+C(x1, x2) folds automatically at the end
+This is implied by the requirement that x1 and x2
+have the same type as the originally assigned ones
+)
 
 ~: for freeing:
-~x:
-what matches x is freed
+HX-2025-09-03:
+~x: what matches x is freed // not needed!
+How about just using _ for freeing linear values
 ~C(x1, x2):
 the constructor is freed but x1 and x2 are not.
 Note that both x1 and x2 are names (not variables)

@@ -135,6 +135,16 @@ fun
 envltck_poplet0(!envltck): (void)
 //
 (* ****** ****** *)
+//
+fun
+envltck_pshift0(!envltck): (void)
+fun
+envltck_popift0(!envltck): (void)
+//
+fun
+envltck_d2vift0(!envltck): d2varlst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -153,6 +163,17 @@ f3arg1_trxltck
 fun
 d3exp1_trxltck
 (d3e0: d3exp1, env0: !envltck): d3exp1
+//
+(* ****** ****** *)
+//
+fun
+d31cas_trxltck
+(dcls: d3cls1, env0: !envltck): d3cls1
+//
+fun
+d31ift_trxltck
+( dopt
+: d3exp1opt, env0: !envltck): d3exp1opt
 //
 (* ****** ****** *)
 (* ****** ****** *)
