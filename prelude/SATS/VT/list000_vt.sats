@@ -288,6 +288,17 @@ GLSEQ_make0_list_vt
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<a:vt>
+list_vt_mergesort0
+{n:i0}(xs: ~list_vt(a, n)): list_vt(a, n)
+//
+#symload
+mergesort0 with list_vt_mergesort0 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_list000_vt.sats] *)
 (***********************************************************************)

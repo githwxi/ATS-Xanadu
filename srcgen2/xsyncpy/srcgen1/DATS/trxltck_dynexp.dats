@@ -228,6 +228,10 @@ d3exp1
 //
 (* ****** ****** *)
 //
+|D3E1ift0 _ => f0_ift0(d3e0, env0)
+//
+(* ****** ****** *)
+//
 |D3E1flat _ => f0_flat(d3e0, env0)
 //
 (* ****** ****** *)
@@ -470,6 +474,38 @@ end//let//end-of-[f0_let0(d3e0, env0)]
 (* ****** ****** *)
 //
 fun
+f0_ift0
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1ift0
+(d3e1
+,dthn, dels) = d3e0.node()
+//
+val d3e1 =
+(
+  d3exp1_trxltck(d3e1, env0))
+//
+val dthn =
+(
+  d31ift_trxltck(dthn, env0))
+val dels =
+(
+  d31ift_trxltck(dels, env0))
+//
+in//let
+//
+d3exp1
+(loc0
+,t2q0, D3E1ift0(d3e1, dthn, dels))
+//
+end//let//end-of-[f0_ift0(d3e0, env0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_flat
 ( d3e0: d3exp1
 , env0: !envltck): d3exp1 =
@@ -520,6 +556,33 @@ end//let//end-of-[f0_assgn(d3e0,env0)]
 (* ****** ****** *)
 //
 }(*where*)//end-of-[d3exp1_trxltck(d3e0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d31ift_trxltck
+  (dopt, env0) =
+(
+case+ dopt of
+|
+optn_nil() => optn_nil()
+|
+optn_cons(dexp) =>
+optn_cons(dexp) where
+{
+val (  ) =
+envltck_pshift0(env0)//enter
+val dexp =
+(
+  d3exp1_trxltck(dexp, env0))
+val (  ) = envltck_popift0(env0)
+}
+) where
+{
+val () =
+prerrsln("d31ift_trxltck: dopt = ", dopt)
+}(*where*)//end-of-[d31ift_trxltck(dopt,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

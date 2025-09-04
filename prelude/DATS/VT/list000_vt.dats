@@ -415,7 +415,7 @@ list_vt_cons(_, _) =>
 let
   val xs1 = xs0.1
   val ( ) = xs0.1 := ys0
-in
+in//let
 (
   $fold(xs0); loop(xs1, xs0) )
 end // end of [list_vt_cons(...)]
