@@ -50,6 +50,18 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
 "./../HATS/libxatsopt.hats"
 //
 (* ****** ****** *)
