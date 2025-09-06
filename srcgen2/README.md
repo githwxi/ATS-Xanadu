@@ -140,13 +140,13 @@ required before any fixes can be attempted.
 ### Pattern Matching
 
 Pattern matching in ATS3 orginates from ML but goes far beyond.
-Various rather delicate issues involving left-values in pattern matching
-that surfaced in the implementation of ATS2 are now given more systematic
-treatment in ATS3.
+Various rather delicate issues involving linearity and left-values in
+pattern matching that surfaced in the implementation of ATS2 are now
+given more systematic treatment in ATS3.
 
-There following pattern modifiers are supported in ATS3: `!`, `~` and `@`.
-Also, a pattern variable can be modified with `!` to indicate the variable
-being a left-value, that is, it is addressable.
+There following pattern modifiers are supported in ATS3: `!`, `~`, and
+`@`.  Also, a pattern variable can be modified with `!` to indicate
+that the variable is a left-value, that is, it is addressable.
 
 - The modifier `!` in front of a pattern indicates that the value
   matching the pattern is supposed to retain its linear portion (which is
