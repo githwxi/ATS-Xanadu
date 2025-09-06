@@ -149,13 +149,13 @@ There following pattern modifiers are supported in ATS3: `!`, `~`, and
 that the variable is a left-value, that is, it is addressable.
 
 - The modifier `!` in front of a pattern indicates that the value
-  matching the pattern is supposed to retain its linear portion (which is
+  matching the pattern *implicitly* retains its linear portion (which is
   a proof of some view).
 - The modifier `~` in front of a pattern indicates that the value
   matching the pattern is *implicitly* freed.
 - The modifier `@` in front of a pattern indicates that the value
   matching the pattern needs to *explicitly* process its linear portion
-  (e.g., retaining it, passing, or freeing it).
+  (e.g., retaining it, assigning it, or freeing it).
 
 <!--
 ########################################################################
