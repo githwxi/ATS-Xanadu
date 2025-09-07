@@ -212,6 +212,7 @@ fperr20_decl00.dats \
 dynexp3.dats \
 dynexp3_print0.dats \
 dynexp3_utils0.dats \
+dynexp3_tmplib.dats \
 trans23.dats \
 trans23_myenv0.dats \
 trans23_utils0.dats \
