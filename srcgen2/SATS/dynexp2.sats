@@ -1934,6 +1934,32 @@ d2eclist_fproc_e1nv(xs: d2eclist, e1: !e1): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+(*
+HX-2025-09-07:
+Sun Sep  7 12:50:47 AM EDT 2025
+*)
+//
+#vwtpdef
+d2varlst_vt = list_vt(d2var)
+//
+fun
+d2pat_get_d2vs
+( dpat: d2pat ): d2varlst_vt
+#symload d2vs with d2pat_get_d2vs
+//
+(* ****** ****** *)
+//
+fun<>
+d2pat_d2v$foritm(dpat: d2pat): void
+//
+fun
+<r0:vt>
+d2pat_d2v$foldl(dpat: d2pat, r0: r0): r0
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_SATS_dynexp2.sats] *)
 (***********************************************************************)
