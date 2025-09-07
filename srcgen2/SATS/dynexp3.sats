@@ -1222,6 +1222,25 @@ tmpmatch_d3cl_t2js
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-09-06:
+Sat Sep  6 09:19:29 PM EDT 2025
+*)
+//
+#vwtpdef
+d2varlst_vt = list_vt(d2var)
+//
+fun<>
+d3pat_d2v$foritm(dpat: d3pat): void
+fun
+d3pat_get_d2vs(dpat: d3pat): d2varlst_vt
+fun
+<r0:vt>
+d3pat_d2v$folditm(dpat: d3pat, r0: r0): r0
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_SATS_dynexp3.sats] *)
 (***********************************************************************)
