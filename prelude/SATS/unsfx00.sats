@@ -45,48 +45,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fcast
-detop0{a0:t0}(x0: ?a0): (a0)
+detop0{a:t0}(dt: (?a)): (a)
 fcast
-detop1{a0:vt}(x0: ?a0): (a0)
-//
-(* ****** ****** *)
-//
-fcast
-castxy{ax:t0}{ay:t0}(ax):(ay)
-fcast
-castyx{ay:t0}{ax:t0}(ax):(ay)
-//
-(* ****** ****** *)
-//
-fcast
-delinear{a0:vt}( a0 ): ( ?!a0 )
-fcast
-enlinear{a0:vt}(?!a0): (  a0  )
-//
-(* ****** ****** *)
-//
-fcast
-castxy0
-{ax:vt}{ay:vt}(ax):(ay)
-fcast
-castyx0
-{ay:vt}{ax:vt}(ax):(ay)
-//
-fcast
-castxy1
-{ax:vt}
-{ay:vt}(!ax):(owed(ay) | ay)
-fcast
-castyx1
-{ay:vt}
-{ax:vt}(!ax):(owed(ay) | ay)
-//
-(*
-fcast
-castlinxy{ax:vt}{ay:vt}(ax):(ay)
-fcast
-castlinyx{ay:vt}{ax:vt}(ax):(ay)
-*)
+detop1{a:vt}(dt: (?a)): (a)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -94,8 +55,50 @@ castlinyx{ay:vt}{ax:vt}(ax):(ay)
 (*
 Mon Jul  4 17:58:26 EDT 2022
 *)
+//
+fcast
+delinear{a:vt}(dt: ( a)): ?!a
 fcast//HX: it is safe!
-datacopy{a0:vt}(x0: !a0): (?!a0)
+datacopy{a:vt}(dt: (!a)): ?!a
+fcast
+enlinear{a:vt}(dt: (?!a)): (a)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fcast
+castxy
+{ax:t0}{ay:t0}(x0: ax): (ay)
+fcast
+castyx
+{ay:t0}{ax:t0}(x0: ax): (ay)
+//
+(* ****** ****** *)
+//
+fcast
+castxy0
+{ax:vt}{ay:vt}(x0: ax): (ay)
+fcast
+castyx0
+{ay:vt}{ax:vt}(x0: ax): (ay)
+//
+fcast
+castxy1
+{ax:vt}
+{ay:vt}(x0: !ax):(owed(ay)|ay)
+fcast
+castyx1
+{ay:vt}
+{ax:vt}(x0: !ax):(owed(ay)|ay)
+//
+(* ****** ****** *)
+//
+(*
+fcast
+castlinxy{ax:vt}{ay:vt}(ax):(ay)
+fcast
+castlinyx{ay:vt}{ax:vt}(ax):(ay)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
