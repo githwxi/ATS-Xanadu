@@ -145,8 +145,7 @@ pattern matching that surfaced in the implementation of ATS2 are now
 given more systematic treatment in ATS3.
 
 There following pattern modifiers are supported in ATS3: `!`, `~`, and
-`@`.  Also, a pattern variable can be modified with `!` to indicate
-that the variable is a left-value, that is, it is addressable.
+`@`.
 
 - The modifier `!` in front of a pattern indicates that the value
   matching the pattern *implicitly* retains its linear portion (which is
@@ -156,6 +155,42 @@ that the variable is a left-value, that is, it is addressable.
 - The modifier `@` in front of a pattern indicates that the value
   matching the pattern needs to *explicitly* process its linear portion
   (e.g., retaining it, assigning it, or freeing it).
+
+A pattern variable can be modified with `!` to indicate that the
+variable is a left-value, that is, it is addressable. Also, it can be
+modified with `~` to indicate that the value matching it is
+*implicitly* freed.
+
+<!--
+
+fun
+<a:vt>
+list_vt_free
+(xs: ~list_vt(a)): void =
+case+ xs of
+| ~list_nil() => ()
+| ~list_vt_cons(~x1, xs) => list_vt_free(xs)
+
+fun
+<a:vt>
+list_vt_clear
+(xs: !list_vt(a) >> list_vt(?a)): void =
+case+ xs of
+| !
+list_nil() => ()
+| !
+list_vt_cons(~x1, xs) => list_vt_clear(xs)
+
+fun
+<a:vt>
+list_vt_foritm2
+(xs: !list_vt(a) >> list_vt(a)): void =
+case+ xs of
+| !list_nil() => ()
+| !list_vt_cons(!x1, xs) =>
+  (foritm$work2<a>(x1); list_vt_foritm2(xs))
+
+-->
 
 <!--
 ########################################################################
