@@ -1991,6 +1991,65 @@ end(*local*)//end-of-[local(tmpmatch_d3cl_t2js...)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-09-06:
+Sat Sep  6 09:34:04 PM EDT 2025
+*)
+//
+#implfun
+{ r0:vt }
+d3pat_d2v$folditm<r0> =
+(
+gseq_foldl<xs><x0><r0>(*void*))
+where
+{
+#typedef x0 = d2var
+#typedef xs = d3pat
+#impltmp
+gseq_foritm<xs><x0> = d3pat_d2v$foritm<>
+}
+//
+#implfun
+<(*tmp*)>
+d3pat_d2v$foritm
+  (  d3p0  ) =
+(
+  f0_main(d3p0)) where
+{
+fun
+f0_main
+(d3p0: d3pat): void =
+(
+case+
+d3p0.node() of
+| _(*otherwise*) => ( (*void*) )
+)
+}(*where*)//end-of-[d3pat_d2v$foritm(d3p0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3pat_get_d2vs
+  (  d3p0  ) =
+(
+d3pat_d2v$folditm<r0>(xs, r0))
+where
+{
+//
+#typedef x0 = d2var
+#typedef xs = d3pat
+#vwtpdef r0 = list_vt(x0)
+//
+val xs = d3p0 and r0 = list_vt_nil()
+//
+#impltmp
+folditm$fopr<x0><r0>(r0, x0) = list_vt_cons(x0, r0)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_dynexp3_utils0.dats] *)
 (***********************************************************************)
