@@ -80,6 +80,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 #staload _ = "./xsymmap_topmap.dats"
+(* ****** ****** *)
 #staload _ = "./dynexp3_tmplib.dats"
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2001,7 +2002,7 @@ Sat Sep  6 09:34:04 PM EDT 2025
 d3pat_get_d2vs
   (  d3p0  ) =
 (
-d3pat_d2v$folditm<r0>(xs, r0))
+d3pat_d2v$foldl<r0>(xs, r0))
 where
 {
 //
@@ -2012,7 +2013,7 @@ where
 val xs = d3p0 and r0 = list_vt_nil()
 //
 #impltmp
-folditm$fopr<x0><r0>(r0, x0) = list_vt_cons(x0, r0)
+foldl$fopr<x0><r0>(r0, x0) = list_vt_cons(x0, r0)
 }
 //
 (* ****** ****** *)
