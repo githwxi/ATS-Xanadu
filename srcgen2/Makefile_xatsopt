@@ -188,6 +188,7 @@ statyp2_tmplib.dats \
 dynexp2.dats \
 dynexp2_print0.dats \
 dynexp2_utils0.dats \
+dynexp2_tmplib.dats \
 nmspace.dats \
 trans12.dats \
 trans11_myenv0.dats \
