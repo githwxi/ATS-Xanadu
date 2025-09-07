@@ -768,6 +768,95 @@ gseq_foritm<xs><x0> = d3pat1_d2v$foritm<>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+d3pat1_d2v$foritm
+  (  d3p0  ) =
+(
+  f0_main(d3p0)) where
+{
+//
+fun
+f0_main
+(d3p0: d3pat1): void =
+(
+case+
+d3p0.node() of
+//
+|D3P1var
+(d2v1) => foritm$work(d2v1)
+//
+|D3P1bang(d3p1) => f0_main(d3p1)
+|D3P1flat(d3p1) => f0_main(d3p1)
+|D3P1free(d3p1) => f0_main(d3p1)
+//
+|D3P1sapp
+( d3p1, s2vs ) => f0_main(d3p1)
+|D3P1sapq
+( d3p1, s2as ) => f0_main(d3p1)
+//
+|D3P1tapq
+( d3p1, tjas ) => f0_main(d3p1)
+//
+(*
+|D3P1dap1
+(    d3p1    ) => f0_main(d3p1)
+*)
+|D3P1dapp
+(d3f1,npf1,d3ps) => f0_d3ps(d3ps)
+//
+|D3P1rfpt
+(d3p1,tkas,d3p2) =>
+(
+  f0_main(d3p1); f0_main(d3p2)  )
+//
+|D3P1tup0
+(  npf1, d3ps  ) => f0_d3ps(d3ps)
+|D3P1tup1
+(tknd,npf1,d3ps) => f0_d3ps(d3ps)
+|D3P1rcd2
+(tknd,npf1,ldps) => f0_ldps(ldps)
+//
+|D3P1annot
+(d3p1,s1e1,s2e1) => f0_main(d3p1)
+//
+| _(*otherwise*) => (  (*void*)  )
+//
+)(*case+*)//end-of-[ f0_main(d3p0) ]
+//
+and
+f0_d3ps
+(d3ps: d3pat1lst): void =
+(
+//
+case+ d3ps of
+|list_nil() => ()
+|list_cons(d3p1, d3ps) =>
+let
+  val () =
+  f0_main(d3p1) in f0_d3ps(d3ps)
+end
+)(*case+*)//end-of-[ f0_d3ps(d3p0) ]
+//
+and
+f0_ldps
+(ldps: l3d3p1lst): void =
+(
+//
+case+ ldps of
+|list_nil() => ()
+|list_cons(ldp1, ldps) =>
+(
+  f0_ldps(ldps)) where
+{
+  val () = f0_main(ldp1.itm()) }
+)(*case+*)//end-of-[ f0_ldps(ldps) ]
+//
+}(*where*)//end-of-[d3pat1_d2v$foritm(d3p0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_dynexp3_tmplib.dats] *)
 (***********************************************************************)

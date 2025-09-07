@@ -101,6 +101,21 @@ prints("D3P1str(", tstr, ")"))
 //
 (* ****** ****** *)
 //
+|D3P1bang
+(   d3p1   ) =>
+(
+prints("D3P1bang(", d3p1, ")"))
+|D3P1flat
+(   d3p1   ) =>
+(
+prints("D3P1flat(", d3p1, ")"))
+|D3P1free
+(   d3p1   ) =>
+(
+prints("D3P1free(", d3p1, ")"))
+//
+(* ****** ****** *)
+//
 |D3P1dapp
 (d3f0
 ,npf1, d3ps) =>
