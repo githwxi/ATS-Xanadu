@@ -80,6 +80,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 #staload _ = "./xsymmap_topmap.dats"
+#staload _ = "./dynexp3_tmplib.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -1995,39 +1996,6 @@ end(*local*)//end-of-[local(tmpmatch_d3cl_t2js...)]
 HX-2025-09-06:
 Sat Sep  6 09:34:04 PM EDT 2025
 *)
-//
-#implfun
-{ r0:vt }
-d3pat_d2v$folditm<r0> =
-(
-gseq_foldl<xs><x0><r0>(*void*))
-where
-{
-#typedef x0 = d2var
-#typedef xs = d3pat
-#impltmp
-gseq_foritm<xs><x0> = d3pat_d2v$foritm<>
-}
-//
-#implfun
-<(*tmp*)>
-d3pat_d2v$foritm
-  (  d3p0  ) =
-(
-  f0_main(d3p0)) where
-{
-fun
-f0_main
-(d3p0: d3pat): void =
-(
-case+
-d3p0.node() of
-| _(*otherwise*) => ( (*void*) )
-)
-}(*where*)//end-of-[d3pat_d2v$foritm(d3p0)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
 //
 #implfun
 d3pat_get_d2vs
