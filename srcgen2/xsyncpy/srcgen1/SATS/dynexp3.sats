@@ -271,6 +271,12 @@ d3pat1_node =
 //
 (* ****** ****** *)
 //
+|D3P1bang of (d3pat1)
+|D3P1flat of (d3pat1)
+|D3P1free of (d3pat1)
+//
+(* ****** ****** *)
+//
 |D3P1dapp of
 (d3pat1
 ,sint(*npf*), d3pat1lst(*darg*)

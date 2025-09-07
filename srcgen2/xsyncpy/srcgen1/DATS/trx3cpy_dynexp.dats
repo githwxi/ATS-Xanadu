@@ -107,6 +107,10 @@ d3pat1
 d3pat1
 (loc0, t2q0, D3P1str(tstr))
 //
+|D3Pbang _ => f0_bang(d3p0, env0)
+|D3Pflat _ => f0_flat(d3p0, env0)
+|D3Pfree _ => f0_free(d3p0, env0)
+//
 |D3Pdapp _ => f0_dapp(d3p0, env0)
 //
 |D3Prfpt _ => f0_rfpt(d3p0, env0)
@@ -134,6 +138,65 @@ val t2p0 = d3p0.styp()
 (* ****** ****** *)
 val t2q0 =
 s2typ_trx3cpy(t2p0, env0)
+(* ****** ****** *)
+//
+fun
+f0_bang
+(d3p0: d3pat
+,env0: !env3cpy): d3pat1 =
+let
+val-
+D3Pbang
+(   d3p1   ) = d3p0.node()
+//
+val d3p1 =
+(
+  d3pat_trx3cpy(d3p1, env0))
+//
+in//let
+(
+ d3pat1
+ (loc0, t2q0, D3P1bang(d3p1)))
+end//let
+//
+fun
+f0_flat
+(d3p0: d3pat
+,env0: !env3cpy): d3pat1 =
+let
+val-
+D3Pflat
+(   d3p1   ) = d3p0.node()
+//
+val d3p1 =
+(
+  d3pat_trx3cpy(d3p1, env0))
+//
+in//let
+(
+ d3pat1
+ (loc0, t2q0, D3P1flat(d3p1)))
+end//let
+//
+fun
+f0_free
+(d3p0: d3pat
+,env0: !env3cpy): d3pat1 =
+let
+val-
+D3Pfree
+(   d3p1   ) = d3p0.node()
+//
+val d3p1 =
+(
+  d3pat_trx3cpy(d3p1, env0))
+//
+in//let
+(
+ d3pat1
+ (loc0, t2q0, D3P1free(d3p1)))
+end//let
+//
 (* ****** ****** *)
 //
 fun
