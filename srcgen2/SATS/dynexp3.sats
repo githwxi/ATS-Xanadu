@@ -1230,13 +1230,19 @@ Sat Sep  6 09:19:29 PM EDT 2025
 #vwtpdef
 d2varlst_vt = list_vt(d2var)
 //
+fun
+d3pat_get_d2vs
+( dpat: d3pat ): d2varlst_vt
+#symload d2vs with d3pat_get_d2vs
+//
+(* ****** ****** *)
+//
 fun<>
 d3pat_d2v$foritm(dpat: d3pat): void
-fun
-d3pat_get_d2vs(dpat: d3pat): d2varlst_vt
+//
 fun
 <r0:vt>
-d3pat_d2v$folditm(dpat: d3pat, r0: r0): r0
+d3pat_d2v$foldl(dpat: d3pat, r0: r0): r0
 //
 (* ****** ****** *)
 (* ****** ****** *)

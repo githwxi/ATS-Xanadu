@@ -85,9 +85,9 @@ HX-2025-09-06:
 Sat Sep  6 09:34:04 PM EDT 2025
 *)
 //
-#implfun
-{ r0:vt }
-d3pat_d2v$folditm<r0> =
+#impltmp
+< r0:vt >
+d3pat_d2v$foldl =
 (
 gseq_foldl<xs><x0><r0>(*void*))
 where
@@ -98,21 +98,63 @@ where
 gseq_foritm<xs><x0> = d3pat_d2v$foritm<>
 }
 //
-#implfun
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 <(*tmp*)>
 d3pat_d2v$foritm
   (  d3p0  ) =
 (
   f0_main(d3p0)) where
 {
+//
 fun
 f0_main
 (d3p0: d3pat): void =
 (
 case+
 d3p0.node() of
-| _(*otherwise*) => ( (*void*) )
-)
+//
+|D3Pvar
+(d2v1) => foritm$work(d2v1)
+//
+|D3Pbang(d3p1) => f0_main(d3p1)
+|D3Pflat(d3p1) => f0_main(d3p1)
+|D3Pfree(d3p1) => f0_main(d3p1)
+//
+|D3Psapp
+( d3p1, s2vs ) => f0_main(d3p1)
+|D3Psapq
+( d3p1, s2as ) => f0_main(d3p1)
+//
+|D3Ptapq
+( d3p1, tjas ) => f0_main(d3p1)
+//
+|D3Pdap1
+(    d3p1    ) => f0_main(d3p1)
+//
+|D3Pdapp
+(d3f1,npf1,d3ps) => f0_d3ps(d3ps)
+//
+| _(*otherwise*) => (  (*void*)  )
+//
+)(*case+*)//end-of-[ f0_main(d3p0) ]
+//
+and
+f0_d3ps
+(d3ps: d3patlst): void =
+(
+//
+case+ d3ps of
+|list_nil() => ()
+|list_cons(d3p1, d3ps) =>
+let
+val () =
+f0_main(d3p1) in f0_d3ps(d3ps) end
+//
+)(*case+*)//end-of-[ f0_d3ps(d3p0) ]
+//
 }(*where*)//end-of-[d3pat_d2v$foritm(d3p0)]
 //
 (* ****** ****** *)
