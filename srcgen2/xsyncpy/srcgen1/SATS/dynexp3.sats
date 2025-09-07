@@ -917,6 +917,31 @@ d3parsed1_make_args
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-09-07:
+Sun Sep  7 02:40:58 AM EDT 2025
+*)
+//
+#vwtpdef
+d2varlst_vt = list_vt(d2var)
+//
+fun
+d3pat1_get_d2vs
+( dpat: d3pat1 ): d2varlst_vt
+#symload d2vs with d3pat1_get_d2vs
+//
+(* ****** ****** *)
+//
+fun<>
+d3pat1_d2v$foritm(xs: d3pat1): void
+//
+fun
+<r0:vt>
+d3pat1_d2v$folditm(xs: d3pat1, r0: r0): r0
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_dynexp3.sats] *)
 (***********************************************************************)
