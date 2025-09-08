@@ -437,11 +437,11 @@ given sequence.
 We can also combine reversed traversal with indexed traversal to form
 reverse-indexed traversal.  What `gseq_rimap` does is essentially to
 perform `gseq_rmap` on the sequence obtained from indexing a given
-sequence.
+sequence. However, `gseq_rimap` is of little practical need as it can
+be readily replaced with `gseq_irmap`.
 
 From this point on, one should be clear about the meaning of
 combinators like `gseq_z2imap`, `gseq_x2rimap`, etc.
-
 
 <!--
 ##############################(README.md)##############################
