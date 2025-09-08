@@ -148,10 +148,15 @@ optn_map$e1nv$f2un
 ( xs
 : optn(x0, ln), e1: !e1, fopr: (x0, !e1)->y0): optn(y0, ln)
 //
-#symload map with optn_map$e1nv of 1000
-#symload map with optn_map$e1nv$f2un of 1000
+#symload map$e1nv with optn_map$e1nv of 1000
+#symload map$e1nv with optn_map$e1nv$f2un of 1000
+(*
+HX-2025-09-08:
+Mon Sep  8 02:35:01 AM EDT 2025
+This conflicts with optn_map$f2un:
 #symload optn_map with optn_map$e1nv of 1000
 #symload optn_map with optn_map$e1nv$f2un of 1000
+*)
 #symload optn_map$e1nv with optn_map$e1nv$f2un of 1000
 //
 (* ****** ****** *)
