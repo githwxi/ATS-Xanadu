@@ -396,6 +396,19 @@ beyond) extrapolates naturally.
 
 ### IX-Combined Traversal
 
+Given a sequence `["a", "b", "c"]`, its indexed version is
+the following sequence of pairs:
+
+```
+[(0, "a"), (1, "b"), (2, "c")]
+```
+
+where each pair consists of an integer and a value such that the
+integer refers to the position of the value in the original sequence.
+
+It is straightforward to define the indexed version of a given
+sequence.
+
 The indexed cross (i-cross) product of two given sequences consists of
 quadruples of the form `(i, x, j, y)`, where `i` and `j` refers,
 respectively, to the positions of `x` and `y` in the first and second
@@ -420,21 +433,10 @@ perform mapping via an indexed-traversal over the reverse of a given
 sequence. In other words, it does `gseq_imap` on the reverse of a
 given sequence.
 
-Given a sequence `["a", "b", "c"]`, its indexed version is
-the following sequence of pairs:
-
-```
-[(0, "a"), (1, "b"), (2, "c")]
-```
-
-where each pair consists of an integer and a value such that the
-integer refers to the position of the value in the original sequence.
-
-It is straightforward to define the indexed version of a given
-sequence.  We can also combine reversed traversal with indexed
-traversal to form reverse-indexed traversal.  What `gseq_rimap` does
-is essentially to perform `gseq_rmap` on the sequence obtained from
-indexing a given sequence.
+We can also combine reversed traversal with indexed traversal to form
+reverse-indexed traversal.  What `gseq_rimap` does is essentially to
+perform `gseq_rmap` on the sequence obtained from indexing a given
+sequence.
 
 From this point on, one should be clear about the meaning of
 combinators like `gseq_z2imap`, `gseq_x2rimap`, etc.
