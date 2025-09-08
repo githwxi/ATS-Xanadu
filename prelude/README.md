@@ -256,7 +256,7 @@ sequence, and we refer to this traversal as the left-to-right
 traversal of sequence. Then there is also the right-to-left traversal
 (completely opposite to the left-to-right traversal), which we refer
 to as the reversed traversal. We use the verb `r-traverse` to mean
-perform a reversed traversal.
+performing a reversed traversal.
 
 When r-traversing a sequence of items, `gseq_rmap` employs the
 following function to process each encountered item:
@@ -395,6 +395,8 @@ of two given sequences.  And the interpretation for `x3map` (and
 beyond) extrapolates naturally.
 
 ### IX-Combined Traversal
+
+The prefix `ix` in `ix-combined` stands for `i-cross`.
 
 Given a sequence `["a", "b", "c"]`, its indexed version is
 the following sequence of pairs:
