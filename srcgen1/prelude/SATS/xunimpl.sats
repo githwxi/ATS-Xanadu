@@ -1254,16 +1254,8 @@ x2forall$test(x0, y0): bool
 fun
 <x0:t0>
 <y0:t0>
-x2rforall$test(x0, y0): bool
-fun
-<x0:t0>
-<y0:t0>
-x2iforall$test(ni, x0, ni, y0): bool
+ix2forall$test(ni, x0, ni, y0): bool
 *)
-fun
-<x0:t0>
-<y0:t0>
-x2irforall$test(ni, x0, ni, y0): bool
 //
 (* ****** ****** *)
 //
@@ -1275,16 +1267,8 @@ x2foritm$work(x0, y0): void
 fun
 <x0:t0>
 <y0:t0>
-x2rforitm$work(x0, y0): void
-fun
-<x0:t0>
-<y0:t0>
-x2iforitm$work(ni, x0, y0): void
+ix2foritm$work(ni, x0, y0): void
 *)
-fun
-<x0:t0>
-<y0:t0>
-x2irforitm$work(ni, x0, y0): void
 //
 (* ****** ****** *)
 //
@@ -1300,20 +1284,8 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2rforall(xs: xs, ys: ys): bool
-fun
-<xs:t0>
-<x0:t0>
-<ys:t0>
-<y0:t0>
-gseq_x2iforall(xs: xs, ys: ys): bool
+gseq_ix2forall(xs: xs, ys: ys): bool
 *)
-fun
-<xs:t0>
-<x0:t0>
-<ys:t0>
-<y0:t0>
-gseq_x2irforall(xs: xs, ys: ys): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)

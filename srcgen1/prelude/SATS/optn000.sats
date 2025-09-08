@@ -203,6 +203,26 @@ optn_copy_vt
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+fun
+<x0:t0>
+<y0:t0>
+optn_map$f1un
+{n:bool}
+(xs:optn(x0,n), f0:(x0)->(y0)): optn(y0,n)
+fun
+<x0:t0>
+<y0:vt>
+optn_map$f1un_vt
+{n:bool}
+(xs:optn(x0,n), f0:(x0)->(y0)): optn_vt(y0,n)
+//
+#symload map$fun with optn_map$f1un of 1000
+#symload map$fun_vt with optn_map$f1un_vt of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_prelude_SATS_optn000.sats] *)
 (***********************************************************************)

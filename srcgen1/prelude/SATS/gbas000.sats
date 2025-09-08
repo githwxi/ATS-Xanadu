@@ -892,19 +892,11 @@ fun
 <x0:t0>
 <y0:t0>
 x2forall$test(x0, y0): bool
-fun
-<x0:t0>
-<y0:t0>
-x2rforall$test(x0, y0): bool
 (* ****** ****** *)
 fun
 <x0:t0>
 <y0:t0>
 x2foritm$work(x0, y0): void
-fun
-<x0:t0>
-<y0:t0>
-x2rforitm$work(x0, y0): void
 (* ****** ****** *)
 //
 fun<>
@@ -933,12 +925,12 @@ fun
 <x0:t0>
 <y0:t0>
 <z0:vt>
-x2imap$fopr
+ix2map$fopr
   (nint, x0, nint, y0): z0
 fun
 <x0:t0>
 <y0:t0>
-x2ifilter$test
+ix2filter$test
   (nint, x0, nint, y0): bool
 //
 (* ****** ****** *)
@@ -946,33 +938,33 @@ x2ifilter$test
 fun
 <x0:t0>
 <y0:t0>
-x2iforall$test(nint, x0, nint, y0): bool
+ix2forall$test(nint, x0, nint, y0): bool
 fun
 <x0:t0>
 <y0:t0>
-x2iforitm$work(nint, x0, nint, y0): void
+ix2foritm$work(nint, x0, nint, y0): void
 //
 (* ****** ****** *)
 //
 fun<>
-x2iforitm_row$beg(nint): void
+ix2foritm_row$beg(nint): void
 fun<>
-x2iforitm_row$end(nint): void
+ix2foritm_row$end(nint): void
 fun
 <x0:t0>
 <y0:t0>
-x2iforitm_row$work(nint, x0, nint, y0): void
+ix2foritm_row$work(nint, x0, nint, y0): void
 //
 (* ****** ****** *)
 //
 fun<>
-x2iforitm_col$beg(nint): void
+ix2foritm_col$beg(nint): void
 fun<>
-x2iforitm_col$end(nint): void
+ix2foritm_col$end(nint): void
 fun
 <x0:t0>
 <y0:t0>
-x2iforitm_col$work(nint, x0, nint, y0): void
+ix2foritm_col$work(nint, x0, nint, y0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
