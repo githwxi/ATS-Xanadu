@@ -204,6 +204,43 @@ optn_vt_maprev1
 {n:b0}(xs: !optn_vt(x0,n)): optn_vt(y0,n)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+optn_vt_map0$f1un
+{ln:bool}
+(xs:
+~optn_vt(x0, ln), (~x0)->y0): optn_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+optn_vt_maprev0$f1un
+{ln:bool}
+(xs:
+~optn_vt(x0, ln), (~x0)->y0): optn_vt(y0, ln)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+optn_vt_map1$f1un
+{ln:bool}
+(xs:
+!optn_vt(x0, ln), (!x0)->y0): optn_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+optn_vt_maprev1$f1un
+{ln:bool}
+(xs:
+!optn_vt(x0, ln), (!x0)->y0): optn_vt(y0, ln)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 //
 // HX-2020-05-30:
 // symbol overloading for optn_vt
@@ -286,5 +323,8 @@ rlistize0 with optn_vt_rlistize0 of 1000
 #symload foritm1 with optn_vt_foritm1 of 1000
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_optn000_vt.sats] *)
+(***********************************************************************)

@@ -177,17 +177,17 @@ x2foritm_col$end() = ((*void*))
 (* ****** ****** *)
 #impltmp
 <x0><y0>(*tmp*)
-x2iforitm_row$work = x2iforitm$work<x0><y0>
+ix2foritm_row$work = ix2foritm$work<x0><y0>
 #impltmp
 <x0><y0>(*tmp*)
-x2iforitm_col$work = x2iforitm$work<x0><y0>
+ix2foritm_col$work = ix2foritm$work<x0><y0>
 (* ****** ****** *)
 #impltmp
 <x0><y0>(*tmp*)
-x2iforitm_row$work = x2iforitm$work<x0><y0>
+ix2foritm_row$work = ix2foritm$work<x0><y0>
 #impltmp
 <x0><y0>(*tmp*)
-x2iforitm_col$work = x2iforitm$work<x0><y0>
+ix2foritm_col$work = ix2foritm$work<x0><y0>
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_prelude_DATS_gbas000.dats] *)

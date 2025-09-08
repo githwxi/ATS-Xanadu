@@ -1504,12 +1504,6 @@ fun
 <ys:t0>
 <y0:t0>
 gseq_x2forall(xs, ys): bool
-fun
-<xs:t0>
-<x0:t0>
-<ys:t0>
-<y0:t0>
-gseq_x2rforall(xs, ys): bool
 //
 (* ****** ****** *)
 //
@@ -1542,7 +1536,7 @@ fun
 <y0:t0>
 <zs:vt>
 <z0:vt>
-gseq_x2imap(xs:xs, ys:ys): ( zs )
+gseq_ix2map(xs:xs, ys:ys): ( zs )
 //
 (* ****** ****** *)
 //
@@ -1552,7 +1546,7 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:t0>
-gseq_x2imap_list(xs, ys): list(z0)
+gseq_ix2map_list(xs, ys): list(z0)
 //
 fun
 <xs:t0>
@@ -1560,14 +1554,14 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_x2imap_llist(xs, ys): list_vt(z0)
+gseq_ix2map_llist(xs, ys): list_vt(z0)
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_x2imap_lstrm(xs, ys): strm_vt(z0)
+gseq_ix2map_lstrm(xs, ys): strm_vt(z0)
 //
 (* ****** ****** *)
 //
@@ -1577,7 +1571,7 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_x2imapopt_lstrm(xs, ys): strm_vt(z0)
+gseq_ix2mapopt_lstrm(xs, ys): strm_vt(z0)
 //
 (* ****** ****** *)
 //
@@ -1586,7 +1580,7 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2iforall(xs, ys): bool
+gseq_ix2forall(xs, ys): bool
 //
 (* ****** ****** *)
 //
@@ -1595,20 +1589,20 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2iforitm(xs, ys): void
+gseq_ix2foritm(xs, ys): void
 //
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2iforitm_row(xs, ys): void
+gseq_ix2foritm_row(xs, ys): void
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2iforitm_col(xs, ys): void
+gseq_ix2foritm_col(xs, ys): void
 //
 (* ****** ****** *)
 //
@@ -2183,7 +2177,7 @@ gseq_x2map$f2un_lstrm
 //
 (* ****** ****** *)
 //
-// HX: gseq_x2iforitm
+// HX: gseq_ix2foritm
 //
 (* ****** ****** *)
 //
@@ -2192,7 +2186,7 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2iforitm_c4fr
+gseq_ix2foritm_c4fr
 ( xs:xs
 , ys:ys
 , work:
@@ -2200,7 +2194,7 @@ gseq_x2iforitm_c4fr
 //
 (* ****** ****** *)
 //
-// HX: gseq_x2imap(seq)
+// HX: gseq_ix2map(seq)
 //
 (* ****** ****** *)
 //
@@ -2211,14 +2205,14 @@ fun
 <y0:t0>
 <zs:vt>
 <z0:vt>
-gseq_x2imap_c4fr
+gseq_ix2map_c4fr
 ( xs:xs
 , ys:ys
 , fopr:(nint, x0, nint, y0) -> z0): (zs)
 //
 (* ****** ****** *)
 //
-// HX: gseq_x2imap_llist
+// HX: gseq_ix2map_llist
 //
 (* ****** ****** *)
 //
@@ -2228,7 +2222,7 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_x2imap_c4fr_llist
+gseq_ix2map_c4fr_llist
 ( xs:xs
 , ys:ys
 , fopr:
@@ -2236,7 +2230,7 @@ gseq_x2imap_c4fr_llist
 //
 (* ****** ****** *)
 //
-// HX: gseq_x2imap_strm
+// HX: gseq_ix2map_strm
 //
 (* ****** ****** *)
 //
@@ -2246,7 +2240,7 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_x2imap_c4fr_lstrm
+gseq_ix2map_c4fr_lstrm
 ( xs:xs
 , ys:ys
 , fopr:
