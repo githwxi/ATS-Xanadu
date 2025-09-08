@@ -349,6 +349,9 @@ list_map$e1nv$f2un
 #symload map$e1nv with list_map$e1nv of 1000
 #symload map$e1nv with list_map$e1nv$f2un of 1000
 (*
+HX-2025-09-08:
+Mon Sep  8 02:35:01 AM EDT 2025
+This conflicts with list_map$f2un:
 #symload list_map with list_map$e1nv of 1000
 #symload list_map with list_map$e1nv$f2un of 1000
 *)

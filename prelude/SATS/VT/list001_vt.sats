@@ -359,14 +359,20 @@ list_vt_map$e1nv1$f2un
 //
 (* ****** ****** *)
 //
-#symload map0 with list_vt_map$e1nv0 of 1000
-#symload map1 with list_vt_map$e1nv1 of 1000
-#symload map0 with list_vt_map$e1nv0$f2un of 1000
-#symload map1 with list_vt_map$e1nv1$f2un of 1000
+#symload map$e1nv0 with list_vt_map$e1nv0 of 1000
+#symload map$e1nv1 with list_vt_map$e1nv1 of 1000
+#symload map$e1nv0 with list_vt_map$e1nv0$f2un of 1000
+#symload map$e1nv1 with list_vt_map$e1nv1$f2un of 1000
+(*
+HX-2025-09-08:
+Mon Sep  8 02:35:01 AM EDT 2025
+This conflicts with
+list_vt_map0$f2un and list_vt_map1$f2un:
 #symload list_vt_map0 with list_vt_map$e1nv0 of 1000
 #symload list_vt_map1 with list_vt_map$e1nv1 of 1000
 #symload list_vt_map0 with list_vt_map$e1nv0$f2un of 1000
 #symload list_vt_map1 with list_vt_map$e1nv1$f2un of 1000
+*)
 #symload list_vt_map$e1nv0 with list_vt_map$e1nv0$f2un of 1000
 #symload list_vt_map$e1nv1 with list_vt_map$e1nv1$f2un of 1000
 //
