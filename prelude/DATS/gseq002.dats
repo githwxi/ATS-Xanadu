@@ -197,37 +197,6 @@ x2forall$test<x0><y0>(x0, y0) = forall$test@(x0, y0)
 }
 //
 (* ****** ****** *)
-//
-#impltmp
-{ xs:t0
-, x0:t0
-, ys:t0
-, y0:t0 }
-gseq_rforall
-<
-gx2seq
-(xs,x0
-,ys,y0)><(x0,y0)>
-  (xsys) =
-(
-gseq_x2rforall
-<xs><x0><ys><y0>(xs, ys))
-where
-{
-//
-val
-@(xs, ys) =
-x2tup_unmk(xsys)
-val xs =
-GSEQ_unmk<xs><x0>(xs)
-and ys =
-GSEQ_unmk<ys><y0>(ys)
-//
-#impltmp
-x2rforall$test<x0><y0>(x0, y0) = rforall$test@(x0, y0)
-}
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -665,35 +634,6 @@ forall$test<x0>(x0) = forall$test_x0(x0)
 end//(*let*)//end-of-[gseq_x2forall(xs, ys)]
 //
 (* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< ys:t0 >
-< y0:t0 >
-gseq_x2rforall
-  (xs, ys) =
-let
-//
-fun
-rforall$test_x0(x0) =
-(
-  gseq_rforall<ys><y0>(ys)
-) where
-{
-#impltmp
-rforall$test<y0>(y0) =
-x2rforall$test<x0><y0>(x0, y0) }
-//
-in//let
-(
-  gseq_rforall<xs><x0>(xs)) where
-{
-#impltmp
-rforall$test<x0>(x0) = rforall$test_x0(x0)
-}
-end//(*let*)//end-of-[gseq_x2rforall(xs, ys)]
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -701,7 +641,7 @@ end//(*let*)//end-of-[gseq_x2rforall(xs, ys)]
 < x0:t0 >
 < ys:t0 >
 < y0:t0 >
-gseq_x2iforall
+gseq_ix2forall
   (xs, ys) =
 let
 //
@@ -713,7 +653,7 @@ iforall$test_x0(i0, x0) =
 {
 #impltmp
 iforall$test<y0>(j0, y0) =
-x2iforall$test<x0><y0>(i0, x0, j0, y0)
+ix2forall$test<x0><y0>(i0, x0, j0, y0)
 }
 //
 in//let
@@ -723,38 +663,7 @@ in//let
 #impltmp
 iforall$test<x0>(i0, x0) = iforall$test_x0(i0, x0)
 }
-end//(*let*)//end-of-[gseq_x2iforall(xs, ys)]
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< ys:t0 >
-< y0:t0 >
-gseq_x2irforall
-  (xs, ys) =
-let
-//
-fun
-irforall$test_x0(i0, x0) =
-(
-  gseq_irforall<ys><y0>(ys)
-) where
-{
-#impltmp
-irforall$test<y0>(j0, y0) =
-x2irforall$test<x0><y0>(i0, x0, j0, y0)
-}
-//
-in//let
-(
-  gseq_irforall<xs><x0>(xs)) where
-{
-#impltmp
-irforall$test<x0>(i0, x0) = irforall$test_x0(i0, x0)
-}
-end//(*let*)//end-of-[gseq_x2irforall(xs, ys)]
+end//(*let*)//end-of-[gseq_ix2forall(xs, ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
