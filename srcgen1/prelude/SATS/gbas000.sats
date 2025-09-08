@@ -790,62 +790,62 @@ fun
 <x0:t0>
 <y0:t0>
 <z0:vt>
-iz2map$fopr(nint,x0,y0): (z0)
+z2imap$fopr(nint,x0,y0): (z0)
 fun
 <x0:vt>
 <y0:vt>
 <z0:vt>
-iz2map$fopr0(nint,~x0,~y0): (z0)
+z2imap$fopr0(nint,~x0,~y0): (z0)
 fun
 <x0:vt>
 <y0:vt>
 <z0:vt>
-iz2map$fopr1(nint,!x0,!y0): (z0)
+z2imap$fopr1(nint,!x0,!y0): (z0)
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <y0:t0>
-iz2forall$test(nint,x0,y0): bool
+z2iforall$test(nint,x0,y0): bool
 fun
 <x0:vt>
 <y0:vt>
-iz2forall$test0(nint,~x0,~y0): bool
+z2iforall$test0(nint,~x0,~y0): bool
 fun
 <x0:vt>
 <y0:vt>
-iz2forall$test1(nint,!x0,!y0): bool
+z2iforall$test1(nint,!x0,!y0): bool
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <y0:t0>
-iz2forcmp$test(nint,x0,y0): sint
+z2iforcmp$test(nint,x0,y0): sint
 fun
 <x0:vt>
 <y0:vt>
-iz2forcmp$test0(nint,~x0,~y0): sint
+z2iforcmp$test0(nint,~x0,~y0): sint
 fun
 <x0:vt>
 <y0:vt>
-iz2forcmp$test1(nint,!x0,!y0): sint
+z2iforcmp$test1(nint,!x0,!y0): sint
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <y0:t0>
-iz2foritm$work(nint,x0,y0): void
+z2iforitm$work(nint,x0,y0): void
 fun
 <x0:vt>
 <y0:vt>
-iz2foritm$work0(nint,~x0,~y0): void
+z2iforitm$work0(nint,~x0,~y0): void
 fun
 <x0:vt>
 <y0:vt>
-iz2foritm$work1(nint,!x0,!y0): void
+z2iforitm$work1(nint,!x0,!y0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

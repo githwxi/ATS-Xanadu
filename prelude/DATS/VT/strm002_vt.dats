@@ -107,7 +107,7 @@ gseq_z2forall0
 #impltmp
 < x0:vt >
 < y0:vt >
-strm_vt_iz2forall0
+strm_vt_z2iforall0
   ( xs, ys ) =
 (
 auxmain(0, xs, ys)) where
@@ -135,18 +135,18 @@ strmcon_vt_nil() =>
 strmcon_vt_cons(y1, ys) =>
 (
 if
-iz2forall$test0
+z2iforall$test0
 <x0><y0>(i0, x1, y1)
 then auxmain(i0+1, xs, ys)
 else (free(xs);free(ys);false))))
-}(*where*)//end-of-[strm_vt_iz2forall0(xs,ys)]
+}(*where*)//end-of-[strm_vt_z2iforall0(xs,ys)]
 //
 #impltmp
 { x0:vt
 , y0:vt }
-gseq_iz2forall0
+gseq_z2iforall0
 <strm_vt(x0)><x0>
-<strm_vt(y0)><y0> = strm_vt_iz2forall0<x0><y0>
+<strm_vt(y0)><y0> = strm_vt_z2iforall0<x0><y0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -216,8 +216,8 @@ gseq_z2foritm0<strm_vt(x0)><x0><strm_vt(y0)><y0>
 #impltmp
 < x0:vt >
 < y0:vt >
-strm_vt_iz2foritm0 =
-gseq_iz2foritm0<strm_vt(x0)><x0><strm_vt(y0)><y0>
+strm_vt_z2iforitm0 =
+gseq_z2iforitm0<strm_vt(x0)><x0><strm_vt(y0)><y0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -290,8 +290,8 @@ gseq_z2map0_lstrm
 < x0:vt >
 < y0:vt >
 < z0:vt >
-strm_vt_iz2map0 =
-gseq_iz2map0_lstrm
+strm_vt_z2imap0 =
+gseq_z2imap0_lstrm
 <strm_vt(x0),strm_vt(y0)><x0><y0><z0>(*void*)
 *)
 //
@@ -301,7 +301,7 @@ gseq_iz2map0_lstrm
 < x0:vt >
 < y0:vt >
 < z0:vt >
-strm_vt_iz2map0
+strm_vt_z2imap0
   (xs, ys) =
 (
 auxmain(0, xs, ys)) where
@@ -333,21 +333,21 @@ strmcon_vt_nil())
 strmcon_vt_cons(y1, ys) =>
 let
 val z0 =
-iz2map$fopr0
+z2imap$fopr0
 <x0><y0><z0>(i0, x1, y1) in//let
 strmcon_vt_cons(z0, auxmain(i0+1,xs,ys))
 end//let//end-of-[strmcon_vt_cons( ... )]
 )
 )(*llazy*)
-}(*where*)//end-of-[strm_vt_iz2map0(xs,ys)]
+}(*where*)//end-of-[strm_vt_z2imap0(xs,ys)]
 //
 #impltmp
 { x0:vt
 , y0:vt
 , z0:vt }
-gseq_iz2map0_lstrm
+gseq_z2imap0_lstrm
 <strm_vt(x0)><x0>
-<strm_vt(y0)><y0><z0> = strm_vt_iz2map0<x0><y0><z0>
+<strm_vt(y0)><y0><z0> = strm_vt_z2imap0<x0><y0><z0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

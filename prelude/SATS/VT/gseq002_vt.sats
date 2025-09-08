@@ -60,50 +60,50 @@ fun
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_rz2forall0(xs: ~xs, ys: ~ys): bool
+gseq_z2rforall0(xs: ~xs, ys: ~ys): bool
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_rz2forall1(xs: !xs, ys: !ys): bool
+gseq_z2rforall1(xs: !xs, ys: !ys): bool
 //
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_iz2forall0(xs: ~xs, ys: ~ys): bool
+gseq_z2iforall0(xs: ~xs, ys: ~ys): bool
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_iz2forall1(xs: !xs, ys: !ys): bool
+gseq_z2iforall1(xs: !xs, ys: !ys): bool
 //
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_irz2forall0(xs: ~xs, ys: ~ys): bool
+gseq_z2irforall0(xs: ~xs, ys: ~ys): bool
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_irz2forall1(xs: !xs, ys: !ys): bool
+gseq_z2irforall1(xs: !xs, ys: !ys): bool
 //
 (* ****** ****** *)
 //
 #symload z2forall0 with gseq_z2forall0 of 0100
 #symload z2forall1 with gseq_z2forall1 of 0100
-#symload rz2forall0 with gseq_rz2forall0 of 0100
-#symload rz2forall1 with gseq_rz2forall1 of 0100
-#symload iz2forall0 with gseq_iz2forall0 of 0100
-#symload iz2forall1 with gseq_iz2forall1 of 0100
-#symload irz2forall0 with gseq_irz2forall0 of 0100
-#symload irz2forall1 with gseq_irz2forall1 of 0100
+#symload z2rforall0 with gseq_z2rforall0 of 0100
+#symload z2rforall1 with gseq_z2rforall1 of 0100
+#symload z2iforall0 with gseq_z2iforall0 of 0100
+#symload z2iforall1 with gseq_z2iforall1 of 0100
+#symload z2irforall0 with gseq_z2irforall0 of 0100
+#symload z2irforall1 with gseq_z2irforall1 of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -126,50 +126,50 @@ fun
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_rz2foritm0(xs: ~xs, ys: ~ys): void
+gseq_z2rforitm0(xs: ~xs, ys: ~ys): void
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_rz2foritm1(xs: !xs, ys: !ys): void
+gseq_z2rforitm1(xs: !xs, ys: !ys): void
 //
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_iz2foritm0(xs: ~xs, ys: ~ys): void
+gseq_z2iforitm0(xs: ~xs, ys: ~ys): void
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_iz2foritm1(xs: !xs, ys: !ys): void
+gseq_z2iforitm1(xs: !xs, ys: !ys): void
 //
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_irz2foritm0(xs: ~xs, ys: ~ys): void
+gseq_z2irforitm0(xs: ~xs, ys: ~ys): void
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_irz2foritm1(xs: !xs, ys: !ys): void
+gseq_z2irforitm1(xs: !xs, ys: !ys): void
 //
 (* ****** ****** *)
 //
 #symload z2foritm0 with gseq_z2foritm0 of 0100
 #symload z2foritm1 with gseq_z2foritm1 of 0100
-#symload rz2foritm0 with gseq_rz2foritm0 of 0100
-#symload rz2foritm1 with gseq_rz2foritm1 of 0100
-#symload iz2foritm0 with gseq_iz2foritm0 of 0100
-#symload iz2foritm1 with gseq_iz2foritm1 of 0100
-#symload irz2foritm0 with gseq_irz2foritm0 of 0100
-#symload irz2foritm1 with gseq_irz2foritm1 of 0100
+#symload z2rforitm0 with gseq_z2rforitm0 of 0100
+#symload z2rforitm1 with gseq_z2rforitm1 of 0100
+#symload z2iforitm0 with gseq_z2iforitm0 of 0100
+#symload z2iforitm1 with gseq_z2iforitm1 of 0100
+#symload z2irforitm0 with gseq_z2irforitm0 of 0100
+#symload z2irforitm1 with gseq_z2irforitm1 of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -254,14 +254,14 @@ fun
 <ys:vt>
 <y0:vt>
 <z0:vt>
-gseq_rz2map0_llist(xs: ~xs, ys: ~ys): list_vt(z0)
+gseq_z2rmap0_llist(xs: ~xs, ys: ~ys): list_vt(z0)
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
 <z0:vt>
-gseq_rz2map1_llist(xs: !xs, ys: !ys): list_vt(z0)
+gseq_z2rmap1_llist(xs: !xs, ys: !ys): list_vt(z0)
 //
 fun
 <xs:vt>
@@ -269,14 +269,14 @@ fun
 <ys:vt>
 <y0:vt>
 <z0:vt>
-gseq_rz2map0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
+gseq_z2rmap0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
 <z0:vt>
-gseq_rz2map1_lstrm(xs: !xs, ys: !ys): strm_vt(z0)
+gseq_z2rmap1_lstrm(xs: !xs, ys: !ys): strm_vt(z0)
 //
 fun
 <xs:vt>
@@ -284,75 +284,21 @@ fun
 <ys:vt>
 <y0:vt>
 <z0:vt>
-gseq_rz2map0_lstrq(xs: ~xs, ys: ~ys): strq_vt(z0)
+gseq_z2rmap0_lstrq(xs: ~xs, ys: ~ys): strq_vt(z0)
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
 <z0:vt>
-gseq_rz2map1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
+gseq_z2rmap1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
 //
-#symload rz2map0_llist with gseq_rz2map0_llist of 0100
-#symload rz2map1_llist with gseq_rz2map1_llist of 0100
-#symload rz2map0_lstrm with gseq_rz2map0_lstrm of 0100
-#symload rz2map1_lstrm with gseq_rz2map1_lstrm of 0100
-#symload rz2map0_lstrq with gseq_rz2map0_lstrq of 0100
-#symload rz2map1_lstrq with gseq_rz2map1_lstrq of 0100
-//
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-<y0:vt>
-<z0:vt>
-gseq_iz2map0_llist(xs: ~xs, ys: ~ys): list_vt(z0)
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-<y0:vt>
-<z0:vt>
-gseq_iz2map1_llist(xs: !xs, ys: !ys): list_vt(z0)
-//
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-<y0:vt>
-<z0:vt>
-gseq_iz2map0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-<y0:vt>
-<z0:vt>
-gseq_iz2map1_lstrm(xs: !xs, ys: !ys): strm_vt(z0)
-//
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-<y0:vt>
-<z0:vt>
-gseq_iz2map0_lstrq(xs: ~xs, ys: ~ys): strq_vt(z0)
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-<y0:vt>
-<z0:vt>
-gseq_iz2map1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
-//
-#symload iz2map0_llist with gseq_iz2map0_llist of 0100
-#symload iz2map1_llist with gseq_iz2map1_llist of 0100
-#symload iz2map0_lstrm with gseq_iz2map0_lstrm of 0100
-#symload iz2map1_lstrm with gseq_iz2map1_lstrm of 0100
-#symload iz2map0_lstrq with gseq_iz2map0_lstrq of 0100
-#symload iz2map1_lstrq with gseq_iz2map1_lstrq of 0100
+#symload z2rmap0_llist with gseq_z2rmap0_llist of 0100
+#symload z2rmap1_llist with gseq_z2rmap1_llist of 0100
+#symload z2rmap0_lstrm with gseq_z2rmap0_lstrm of 0100
+#symload z2rmap1_lstrm with gseq_z2rmap1_lstrm of 0100
+#symload z2rmap0_lstrq with gseq_z2rmap0_lstrq of 0100
+#symload z2rmap1_lstrq with gseq_z2rmap1_lstrq of 0100
 //
 (* ****** ****** *)
 //
@@ -362,14 +308,14 @@ fun
 <ys:vt>
 <y0:vt>
 <z0:vt>
-gseq_irz2map0_llist(xs: ~xs, ys: ~ys): list_vt(z0)
+gseq_z2imap0_llist(xs: ~xs, ys: ~ys): list_vt(z0)
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
 <z0:vt>
-gseq_irz2map1_llist(xs: !xs, ys: !ys): list_vt(z0)
+gseq_z2imap1_llist(xs: !xs, ys: !ys): list_vt(z0)
 //
 fun
 <xs:vt>
@@ -377,14 +323,14 @@ fun
 <ys:vt>
 <y0:vt>
 <z0:vt>
-gseq_irz2map0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
+gseq_z2imap0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
 <z0:vt>
-gseq_irz2map1_lstrm(xs: !xs, ys: !ys): strm_vt(z0)
+gseq_z2imap1_lstrm(xs: !xs, ys: !ys): strm_vt(z0)
 //
 fun
 <xs:vt>
@@ -392,21 +338,75 @@ fun
 <ys:vt>
 <y0:vt>
 <z0:vt>
-gseq_irz2map0_lstrq(xs: ~xs, ys: ~ys): strq_vt(z0)
+gseq_z2imap0_lstrq(xs: ~xs, ys: ~ys): strq_vt(z0)
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
 <z0:vt>
-gseq_irz2map1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
+gseq_z2imap1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
 //
-#symload irz2map0_llist with gseq_irz2map0_llist of 0100
-#symload irz2map1_llist with gseq_irz2map1_llist of 0100
-#symload irz2map0_lstrm with gseq_irz2map0_lstrm of 0100
-#symload irz2map1_lstrm with gseq_irz2map1_lstrm of 0100
-#symload irz2map0_lstrq with gseq_irz2map0_lstrq of 0100
-#symload irz2map1_lstrq with gseq_irz2map1_lstrq of 0100
+#symload z2imap0_llist with gseq_z2imap0_llist of 0100
+#symload z2imap1_llist with gseq_z2imap1_llist of 0100
+#symload z2imap0_lstrm with gseq_z2imap0_lstrm of 0100
+#symload z2imap1_lstrm with gseq_z2imap1_lstrm of 0100
+#symload z2imap0_lstrq with gseq_z2imap0_lstrq of 0100
+#symload z2imap1_lstrq with gseq_z2imap1_lstrq of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
+<z0:vt>
+gseq_z2irmap0_llist(xs: ~xs, ys: ~ys): list_vt(z0)
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
+<z0:vt>
+gseq_z2irmap1_llist(xs: !xs, ys: !ys): list_vt(z0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
+<z0:vt>
+gseq_z2irmap0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
+<z0:vt>
+gseq_z2irmap1_lstrm(xs: !xs, ys: !ys): strm_vt(z0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
+<z0:vt>
+gseq_z2irmap0_lstrq(xs: ~xs, ys: ~ys): strq_vt(z0)
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
+<z0:vt>
+gseq_z2irmap1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
+//
+#symload z2irmap0_llist with gseq_z2irmap0_llist of 0100
+#symload z2irmap1_llist with gseq_z2irmap1_llist of 0100
+#symload z2irmap0_lstrm with gseq_z2irmap0_lstrm of 0100
+#symload z2irmap1_lstrm with gseq_z2irmap1_lstrm of 0100
+#symload z2irmap0_lstrq with gseq_z2irmap0_lstrq of 0100
+#symload z2irmap1_lstrq with gseq_z2irmap1_lstrq of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

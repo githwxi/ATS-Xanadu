@@ -100,7 +100,7 @@ gseq_z2forall
 #impltmp
 < x0:t0 >
 < y0:t0 >
-list_iz2forall
+list_z2iforall
   ( xs, ys ) =
 (
 auxloop
@@ -125,17 +125,17 @@ case+ ys of
 |list_cons(y1, ys) =>
 (
 if
-iz2forall$test
+z2iforall$test
 <x0><y0>(i0, x1, y1)
 then auxloop(i0+1,xs,ys) else false)))
-}(*where*)//end-of-[list_iz2forall(xs,ys)]
+}(*where*)//end-of-[list_z2iforall(xs,ys)]
 //
 #impltmp
 { x0:t0
 , y0:t0 }
-gseq_iz2forall
+gseq_z2iforall
 <list(x0)><x0>
-<list(y0)><y0> = list_iz2forall<x0><y0>
+<list(y0)><y0> = list_z2iforall<x0><y0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

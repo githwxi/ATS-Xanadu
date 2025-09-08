@@ -100,11 +100,11 @@ g_ptype
 < x0:t0
 , y0:t0 >
 z2forall$test =
-rz2forall$test<x0,y0>
+z2rforall$test<x0,y0>
 #impltmp
 < x0:t0
 , y0:t0 >
-rz2forall$test = z2forall$test<x0,y0>
+z2rforall$test = z2forall$test<x0,y0>
 *)
 //
 (*
@@ -112,11 +112,11 @@ rz2forall$test = z2forall$test<x0,y0>
 < x0:t0
 , y0:t0 >
 z2foritm$work =
-rz2foritm$work<x0,y0>
+z2rforitm$work<x0,y0>
 #impltmp
 < x0:t0
 , y0:t0 >
-rz2foritm$work = z2foritm$work<x0,y0>
+z2rforitm$work = z2foritm$work<x0,y0>
 *)
 //
 (* ****** ****** *)
