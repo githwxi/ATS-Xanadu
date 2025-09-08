@@ -104,6 +104,19 @@ fun
 <x0:t0>
 irforall$test(ni, x0): bool
 //
+(*
+HX-2025-09-07:
+[ri] traverses
+(x0, x1, x2) as:
+(2, x2), (1, x1), (0, x0)
+[ir] readily replaces [ri]!
+//
+fun
+<x0:t0>
+riforall$test(ni, x0): bool
+//
+*)
+//
 (* ****** ****** *)
 //
 fun
