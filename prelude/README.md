@@ -410,10 +410,11 @@ It is straightforward to define the indexed version of a given
 sequence.
 
 The indexed cross (i-cross) product of two given sequences consists of
-quadruples of the form `(i, x, j, y)`, where `i` and `j` refers,
-respectively, to the positions of `x` and `y` in the first and second
-of the given sequences. For instance, the corresponding `fopr` for the
-`ix2map` is given as follows:
+quadruples of the form `(i, x, j, y)`, where `i` and `j` are integers
+referring, respectively, to the positions of `x` and `y` in the first
+and second of the given sequences. For instance, the corresponding
+`fopr` for `ix2map` (which does mapping via i-crossing) is given as
+follows:
 
 ```
 fun
