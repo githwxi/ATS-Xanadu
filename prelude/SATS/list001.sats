@@ -156,6 +156,14 @@ list_foritm$f1un
 //
 fun
 <x0:t0>
+list_rforitm$f1un
+( xs
+: list(x0), work: (x0) -> void): void
+#symload rforitm with list_rforitm$f1un of 1000
+#symload rforitm$fun with list_rforitm$f1un of 1000
+//
+fun
+<x0:t0>
 list_iforitm$f2un
 ( xs
 : list(x0), work: (ni,x0) -> void): void
@@ -338,10 +346,12 @@ list_map$e1nv$f2un
 ( xs
 : list(x0, ln), e1: !e1, fopr: (x0, !e1)->y0): list(y0, ln)
 //
-#symload map with list_map$e1nv of 1000
-#symload map with list_map$e1nv$f2un of 1000
+#symload map$e1nv with list_map$e1nv of 1000
+#symload map$e1nv with list_map$e1nv$f2un of 1000
+(*
 #symload list_map with list_map$e1nv of 1000
 #symload list_map with list_map$e1nv$f2un of 1000
+*)
 #symload list_map$e1nv with list_map$e1nv$f2un of 1000
 //
 (* ****** ****** *)
