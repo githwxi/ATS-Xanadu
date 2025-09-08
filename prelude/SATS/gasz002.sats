@@ -192,11 +192,11 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_x2iforall(xs: xs, ys: ys): bool
+gasz_ix2forall(xs: xs, ys: ys): bool
 //
 (*
 #symload x2forall with gasz_x2forall of 0100
-#symload x2iforall with gasz_x2iforall of 0100
+#symload ix2forall with gasz_ix2forall of 0100
 *)
 //
 fun
