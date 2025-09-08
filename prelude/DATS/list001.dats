@@ -275,6 +275,11 @@ list_foritm$f1un =
 gseq_foritm$f1un<list(x0)><x0>(* void *)
 #impltmp
 < x0:t0 >
+list_rforitm$f1un =
+gseq_rforitm$f1un<list(x0)><x0>(* void *)
+//
+#impltmp
+< x0:t0 >
 list_iforitm$f2un =
 gseq_iforitm$f2un<list(x0)><x0>(* void *)
 //
