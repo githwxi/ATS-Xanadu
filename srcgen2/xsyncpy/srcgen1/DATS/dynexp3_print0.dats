@@ -116,6 +116,22 @@ prints("D3P1free(", d3p1, ")"))
 //
 (* ****** ****** *)
 //
+|D3P1sapp
+(d3f0, s2vs) =>
+prints
+("D3P1sapp(",d3f0,";",s2vs,")")
+|D3P1sapq
+(d3f0, s2as) =>
+prints
+("D3P1sapq(",d3f0,";",s2as,")")
+//
+|D3P1tapq
+(d3f0, tjas) =>
+prints
+("D3P1tapq(",d3f0,";",tjas,")")
+//
+(* ****** ****** *)
+//
 |D3P1dapp
 (d3f0
 ,npf1, d3ps) =>

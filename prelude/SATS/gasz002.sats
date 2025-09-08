@@ -54,7 +54,7 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_rz2listize
+gasz_z2rlistize
 (xs: xs, ys: ys): list_vt@(x0, y0)
 //
 (* ****** ****** *)
@@ -71,7 +71,7 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_rz2strmize
+gasz_z2rstrmize
 (xs: xs, ys: ys): strm_vt@(x0, y0)
 //
 fun
@@ -86,7 +86,7 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_rz2strqize
+gasz_z2rstrqize
 (xs: xs, ys: ys): strq_vt@(x0, y0)
 //
 (* ****** ****** *)
@@ -102,25 +102,25 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_rz2forall(xs: xs, ys: ys): bool
+gasz_z2rforall(xs: xs, ys: ys): bool
 fun
 <xs:t0>
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_iz2forall(xs: xs, ys: ys): bool
+gasz_z2iforall(xs: xs, ys: ys): bool
 fun
 <xs:t0>
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_irz2forall(xs: xs, ys: ys): bool
+gasz_z2irforall(xs: xs, ys: ys): bool
 //
 (*
 #symload z2forall with gasz_z2forall of 0100
-#symload rz2forall with gasz_rz2forall of 0100
-#symload iz2forall with gasz_iz2forall of 0100
-#symload irz2forall with gasz_irz2forall of 0100
+#symload z2rforall with gasz_z2rforall of 0100
+#symload z2iforall with gasz_z2iforall of 0100
+#symload z2irforall with gasz_z2irforall of 0100
 *)
 //
 fun

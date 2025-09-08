@@ -111,6 +111,9 @@ d3pat1
 |D3Pflat _ => f0_flat(d3p0, env0)
 |D3Pfree _ => f0_free(d3p0, env0)
 //
+|D3Psapp _ => f0_sapp(d3p0, env0)
+|D3Psapq _ => f0_sapq(d3p0, env0)
+//
 |D3Pdapp _ => f0_dapp(d3p0, env0)
 //
 |D3Prfpt _ => f0_rfpt(d3p0, env0)
@@ -195,6 +198,71 @@ in//let
 (
  d3pat1
  (loc0, t2q0, D3P1free(d3p1)))
+end//let
+//
+(* ****** ****** *)
+//
+fun
+f0_sapp
+(d3p0: d3pat
+,env0: !env3cpy): d3pat1 =
+let
+val-
+D3Psapp
+(d3f0, s2vs) = d3p0.node()
+//
+val d3f0 =
+(
+  d3pat_trx3cpy(d3f0, env0))
+//
+in//let
+//
+(
+d3pat1
+(loc0,t2q0,D3P1sapp(d3f0,s2vs)))
+//
+end//let
+//
+fun
+f0_sapq
+(d3p0: d3pat
+,env0: !env3cpy): d3pat1 =
+let
+val-
+D3Psapq
+(d3f0, s2as) = d3p0.node()
+//
+val d3f0 =
+(
+  d3pat_trx3cpy(d3f0, env0))
+//
+in//let
+//
+(
+d3pat1
+(loc0,t2q0,D3P1sapq(d3f0,s2as)))
+//
+end//let
+//
+fun
+f0_tapq
+(d3p0: d3pat
+,env0: !env3cpy): d3pat1 =
+let
+val-
+D3Ptapq
+(d3f0, tjas) = d3p0.node()
+//
+val d3f0 =
+(
+  d3pat_trx3cpy(d3f0, env0))
+//
+in//let
+//
+(
+d3pat1
+(loc0,t2q0,D3P1tapq(d3f0,tjas)))
+//
 end//let
 //
 (* ****** ****** *)

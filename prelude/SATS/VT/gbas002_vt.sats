@@ -55,34 +55,34 @@ z2forall$test1
 fun
 <x0:vt>
 <y0:vt>
-rz2forall$test0
+z2rforall$test0
 (x0: ~x0, y0: ~y0): bool
 fun
 <x0:vt>
 <y0:vt>
-rz2forall$test1
+z2rforall$test1
 (x0: !x0, y0: !y0): bool
 //
 fun
 <x0:vt>
 <y0:vt>
-iz2forall$test0
+z2iforall$test0
 (i0: ni, x0: ~x0, y0: ~y0): bool
 fun
 <x0:vt>
 <y0:vt>
-iz2forall$test1
+z2iforall$test1
 (i0: ni, x0: !x0, y0: !y0): bool
 //
 fun
 <x0:vt>
 <y0:vt>
-irz2forall$test0
+z2irforall$test0
 (i0: ni, x0: ~x0, y0: ~y0): bool
 fun
 <x0:vt>
 <y0:vt>
-irz2forall$test1
+z2irforall$test1
 (i0: ni, x0: !x0, y0: !y0): bool
 //
 (* ****** ****** *)
@@ -102,12 +102,12 @@ z2forcmp$test1
 fun
 <x0:vt>
 <y0:vt>
-iz2forcmp$test0
+z2iforcmp$test0
 (i0: ni, x0: ~x0, y0: ~y0): sint
 fun
 <x0:vt>
 <y0:vt>
-iz2forcmp$test1
+z2iforcmp$test1
 (i0: ni, x0: !x0, y0: !y0): sint
 //
 (* ****** ****** *)
@@ -127,34 +127,34 @@ z2foritm$work1
 fun
 <x0:vt>
 <y0:vt>
-rz2foritm$work0
+z2rforitm$work0
 (x0: ~x0, y0: ~y0): void
 fun
 <x0:vt>
 <y0:vt>
-rz2foritm$work1
+z2rforitm$work1
 (x0: !x0, y0: !y0): void
 //
 fun
 <x0:vt>
 <y0:vt>
-iz2foritm$work0
+z2iforitm$work0
 (i0: ni, x0: ~x0, y0: ~y0): void
 fun
 <x0:vt>
 <y0:vt>
-iz2foritm$work1
+z2iforitm$work1
 (i0: ni, x0: !x0, y0: !y0): void
 //
 fun
 <x0:vt>
 <y0:vt>
-irz2foritm$work0
+z2irforitm$work0
 (i0: ni, x0: ~x0, y0: ~y0): void
 fun
 <x0:vt>
 <y0:vt>
-irz2foritm$work1
+z2irforitm$work1
 (i0: ni, x0: !x0, y0: !y0): void
 //
 (* ****** ****** *)
@@ -175,34 +175,34 @@ fun
 <x0:vt>
 <y0:vt>
 <z0:vt>
-rz2map$fopr0(x0: ~x0, y0: ~y0): ( z0 )
+z2rmap$fopr0(x0: ~x0, y0: ~y0): ( z0 )
 fun
 <x0:vt>
 <y0:vt>
 <z0:vt>
-rz2map$fopr1(x0: !x0, y0: !y0): ( z0 )
+z2rmap$fopr1(x0: !x0, y0: !y0): ( z0 )
 //
 fun
 <x0:vt>
 <y0:vt>
 <z0:vt>
-iz2map$fopr0(i0: ni, x0: ~x0, y0: ~y0): ( z0 )
+z2imap$fopr0(i0: ni, x0: ~x0, y0: ~y0): ( z0 )
 fun
 <x0:vt>
 <y0:vt>
 <z0:vt>
-iz2map$fopr1(i0: ni, x0: !x0, y0: !y0): ( z0 )
+z2imap$fopr1(i0: ni, x0: !x0, y0: !y0): ( z0 )
 //
 fun
 <x0:vt>
 <y0:vt>
 <z0:vt>
-irz2map$fopr0(i0: ni, x0: ~x0, y0: ~y0): ( z0 )
+z2irmap$fopr0(i0: ni, x0: ~x0, y0: ~y0): ( z0 )
 fun
 <x0:vt>
 <y0:vt>
 <z0:vt>
-irz2map$fopr1(i0: ni, x0: !x0, y0: !y0): ( z0 )
+z2irmap$fopr1(i0: ni, x0: !x0, y0: !y0): ( z0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)

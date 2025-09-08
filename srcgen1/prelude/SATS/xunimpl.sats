@@ -1108,14 +1108,14 @@ g_prepend(y1: xs, y2: xs): (xs) // for [prepends]
 fun
 <x0:t0>
 <y0:t0>
-rz2forall$test(x0, y0): bool
+z2rforall$test(x0, y0): bool
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <y0:t0>
-irz2forall$test(ni, x0, y0): bool
+z2irforall$test(ni, x0, y0): bool
 //
 (* ****** ****** *)
 //
@@ -1128,17 +1128,17 @@ z2foritm$work(x0, y0): void
 fun
 <x0:t0>
 <y0:t0>
-rz2foritm$work(x0, y0): void
+z2rforitm$work(x0, y0): void
 (*
 fun
 <x0:t0>
 <y0:t0>
-iz2foritm$work(ni, x0, y0): void
+z2iforitm$work(ni, x0, y0): void
 *)
 fun
 <x0:t0>
 <y0:t0>
-irz2foritm$work(ni, x0, y0): void
+z2irforitm$work(ni, x0, y0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1156,21 +1156,21 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_rz2forall(xs: xs, ys: ys): bool
+gseq_z2rforall(xs: xs, ys: ys): bool
 (*
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_iz2forall(xs: xs, ys: ys): bool
+gseq_z2iforall(xs: xs, ys: ys): bool
 *)
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_irz2forall(xs: xs, ys: ys): bool
+gseq_z2irforall(xs: xs, ys: ys): bool
 //
 (* ****** ****** *)
 //
@@ -1187,21 +1187,21 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_rz2foritm(xs: xs, ys: ys): void
+gseq_z2rforitm(xs: xs, ys: ys): void
 (*
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_iz2foritm(xs: xs, ys: ys): void
+gseq_z2iforitm(xs: xs, ys: ys): void
 *)
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_irz2foritm(xs: xs, ys: ys): void
+gseq_z2irforitm(xs: xs, ys: ys): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1234,14 +1234,14 @@ list_z2forall
 fun
 <x0:t0>
 <y0:t0>
-list_iz2forall
+list_z2iforall
 ( xs: list(x0)
 , ys: list(y0)): bool//end-of-[fun]
 //
 #symload
 z2forall with list_z2forall of 1000
 #symload
-iz2forall with list_iz2forall of 1000
+z2iforall with list_z2iforall of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

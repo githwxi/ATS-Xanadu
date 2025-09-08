@@ -73,7 +73,7 @@ gseq_strmize1<ys><y0>(ys))//end-impltmp
 < x0:vt >
 < ys:vt >
 < y0:vt >
-gseq_rz2forall0
+gseq_z2rforall0
   (xs, ys) =
 strm_vt_z2forall0<x0><y0>
 (
@@ -85,7 +85,7 @@ gseq_rstrmize0<ys><y0>(ys))//end-impltmp
 < x0:vt >
 < ys:vt >
 < y0:vt >
-gseq_rz2forall1
+gseq_z2rforall1
   (xs, ys) =
 strm_vt_z2forall0<x0><y0>
 (
@@ -99,7 +99,7 @@ gseq_rstrmize1<ys><y0>(ys))//end-impltmp
 < x0:vt >
 < ys:vt >
 < y0:vt >
-gseq_iz2forall0
+gseq_z2iforall0
   (xs, ys) = b0
 where {
 //
@@ -121,16 +121,16 @@ where
 {
 val i0 = $UN.p2tr_get<ni>(p0)
 val b0 =
-  iz2forall$test0<x0><y0>(i0, x0, y0) } }
+  z2iforall$test0<x0><y0>(i0, x0, y0) } }
 //
-}(*where*)//end-of-[gseq_iz2forall0(xs,ys)]
+}(*where*)//end-of-[gseq_z2iforall0(xs,ys)]
 //
 #impltmp
 < xs:vt >
 < x0:vt >
 < ys:vt >
 < y0:vt >
-gseq_iz2forall1
+gseq_z2iforall1
   (xs, ys) = b0
 where {
 //
@@ -152,9 +152,9 @@ where
 {
 val i0 = $UN.p2tr_get<ni>(p0)
 val b0 =
-  iz2forall$test1<x0><y0>(i0, x0, y0) } }
+  z2iforall$test1<x0><y0>(i0, x0, y0) } }
 //
-}(*where*)//end-of-[gseq_iz2forall1(xs,ys)]
+}(*where*)//end-of-[gseq_z2iforall1(xs,ys)]
 //
 (* ****** ****** *)
 //
@@ -163,7 +163,7 @@ val b0 =
 < x0:vt >
 < ys:vt >
 < y0:vt >
-gseq_irz2forall0
+gseq_z2irforall0
   (xs, ys) = b0
 where {
 //
@@ -173,11 +173,11 @@ val p0 = $addr(i0)
 //
 val b0 =
 (
-gseq_rz2forall0
+gseq_z2rforall0
 <xs><x0><ys><y0>(xs, ys)) where
 {
 #impltmp
-rz2forall$test0
+z2rforall$test0
 <x0><y0>(x0, y0) =
 (
 $UN.p2tr_set<ni>(p0, i0+1); b0)
@@ -185,16 +185,16 @@ where
 {
 val i0 = $UN.p2tr_get<ni>(p0)
 val b0 =
-  irz2forall$test0<x0><y0>(i0, x0, y0) } }
+  z2irforall$test0<x0><y0>(i0, x0, y0) } }
 //
-}(*where*)//end-of-[gseq_irz2forall0(xs,ys)]
+}(*where*)//end-of-[gseq_z2irforall0(xs,ys)]
 //
 #impltmp
 < xs:vt >
 < x0:vt >
 < ys:vt >
 < y0:vt >
-gseq_irz2forall1
+gseq_z2irforall1
   (xs, ys) = b0
 where {
 //
@@ -204,11 +204,11 @@ val p0 = $addr(i0)
 //
 val b0 =
 (
-gseq_rz2forall1
+gseq_z2rforall1
 <xs><x0><ys><y0>(xs, ys)) where
 {
 #impltmp
-rz2forall$test1
+z2rforall$test1
 <x0><y0>(x0, y0) =
 (
 $UN.p2tr_set<ni>(p0, i0+1); b0)
@@ -216,9 +216,9 @@ where
 {
 val i0 = $UN.p2tr_get<ni>(p0)
 val b0 =
-  irz2forall$test1<x0><y0>(i0, x0, y0) } }
+  z2irforall$test1<x0><y0>(i0, x0, y0) } }
 //
-}(*where*)//end-of-[gseq_irz2forall1(xs,ys)]
+}(*where*)//end-of-[gseq_z2irforall1(xs,ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -272,42 +272,42 @@ z2foritm$work1<x0><y0>(x0, y0) in true end
 < x0:vt >
 < ys:vt >
 < y0:vt >
-gseq_rz2foritm0
+gseq_z2rforitm0
   (xs, ys) =
 (
 let
 val _ =
-gseq_rz2forall0
+gseq_z2rforall0
 <xs><x0><ys><y0>(xs, ys) in () end
 ) where
 {
 #impltmp
-rz2forall$test0<x0><y0>(x0, y0) =
+z2rforall$test0<x0><y0>(x0, y0) =
 let
 val () =
-rz2foritm$work0<x0><y0>(x0, y0) in true end
-}(*where*)//end-of-[gseq_rz2foritm0(xs,ys)]
+z2rforitm$work0<x0><y0>(x0, y0) in true end
+}(*where*)//end-of-[gseq_z2rforitm0(xs,ys)]
 //
 #impltmp
 < xs:vt >
 < x0:vt >
 < ys:vt >
 < y0:vt >
-gseq_rz2foritm1
+gseq_z2rforitm1
   (xs, ys) =
 (
 let
 val _ =
-gseq_rz2forall1
+gseq_z2rforall1
 <xs><x0><ys><y0>(xs, ys) in () end
 ) where
 {
 #impltmp
-rz2forall$test1<x0><y0>(x0, y0) =
+z2rforall$test1<x0><y0>(x0, y0) =
 let
 val () =
-rz2foritm$work1<x0><y0>(x0, y0) in true end
-}(*where*)//end-of-[gseq_rz2foritm1(xs,ys)]
+z2rforitm$work1<x0><y0>(x0, y0) in true end
+}(*where*)//end-of-[gseq_z2rforitm1(xs,ys)]
 //
 (* ****** ****** *)
 //
@@ -316,42 +316,42 @@ rz2foritm$work1<x0><y0>(x0, y0) in true end
 < x0:vt >
 < ys:vt >
 < y0:vt >
-gseq_iz2foritm0
+gseq_z2iforitm0
   (xs, ys) =
 (
 let
 val _ =
-gseq_iz2forall0
+gseq_z2iforall0
 <xs><x0><ys><y0>(xs, ys) in () end
 ) where
 {
 #impltmp
-iz2forall$test0<x0><y0>(i0, x0, y0) =
+z2iforall$test0<x0><y0>(i0, x0, y0) =
 let
 val () =
-iz2foritm$work0<x0><y0>(i0, x0, y0) in true end
-}(*where*)//end-of-[gseq_iz2foritm0(xs,ys)]
+z2iforitm$work0<x0><y0>(i0, x0, y0) in true end
+}(*where*)//end-of-[gseq_z2iforitm0(xs,ys)]
 //
 #impltmp
 < xs:vt >
 < x0:vt >
 < ys:vt >
 < y0:vt >
-gseq_iz2foritm1
+gseq_z2iforitm1
   (xs, ys) =
 (
 let
 val _ =
-gseq_iz2forall1
+gseq_z2iforall1
 <xs><x0><ys><y0>(xs, ys) in () end
 ) where
 {
 #impltmp
-iz2forall$test1<x0><y0>(i0, x0, y0) =
+z2iforall$test1<x0><y0>(i0, x0, y0) =
 let
 val () =
-iz2foritm$work1<x0><y0>(i0, x0, y0) in true end
-}(*where*)//end-of-[gseq_iz2foritm1(xs,ys)]
+z2iforitm$work1<x0><y0>(i0, x0, y0) in true end
+}(*where*)//end-of-[gseq_z2iforitm1(xs,ys)]
 //
 (* ****** ****** *)
 //
@@ -360,42 +360,42 @@ iz2foritm$work1<x0><y0>(i0, x0, y0) in true end
 < x0:vt >
 < ys:vt >
 < y0:vt >
-gseq_irz2foritm0
+gseq_z2irforitm0
   (xs, ys) =
 (
 let
 val _ =
-gseq_irz2forall0
+gseq_z2irforall0
 <xs><x0><ys><y0>(xs, ys) in () end
 ) where
 {
 #impltmp
-irz2forall$test0<x0><y0>(i0, x0, y0) =
+z2irforall$test0<x0><y0>(i0, x0, y0) =
 let
 val () =
-irz2foritm$work0<x0><y0>(i0, x0, y0) in true end
-}(*where*)//end-of-[gseq_irz2foritm0(xs,ys)]
+z2irforitm$work0<x0><y0>(i0, x0, y0) in true end
+}(*where*)//end-of-[gseq_z2irforitm0(xs,ys)]
 //
 #impltmp
 < xs:vt >
 < x0:vt >
 < ys:vt >
 < y0:vt >
-gseq_irz2foritm1
+gseq_z2irforitm1
   (xs, ys) =
 (
 let
 val _ =
-gseq_irz2forall1
+gseq_z2irforall1
 <xs><x0><ys><y0>(xs, ys) in () end
 ) where
 {
 #impltmp
-irz2forall$test1<x0><y0>(i0, x0, y0) =
+z2irforall$test1<x0><y0>(i0, x0, y0) =
 let
 val () =
-irz2foritm$work1<x0><y0>(i0, x0, y0) in true end
-}(*where*)//end-of-[gseq_irz2foritm1(xs,ys)]
+z2irforitm$work1<x0><y0>(i0, x0, y0) in true end
+}(*where*)//end-of-[gseq_z2irforitm1(xs,ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

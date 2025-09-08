@@ -894,13 +894,13 @@ fun
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_iz2forall0(xs: ~xs, ys: ~ys): bool
+gseq_z2iforall0(xs: ~xs, ys: ~ys): bool
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_iz2forall1(xs: !xs, ys: !ys): bool
+gseq_z2iforall1(xs: !xs, ys: !ys): bool
 //
 (* ****** ****** *)
 //
@@ -909,13 +909,13 @@ fun
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_iz2forcmp0(xs: ~xs, ys: ~ys): sint
+gseq_z2iforcmp0(xs: ~xs, ys: ~ys): sint
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_iz2forcmp1(xs: !xs, ys: !ys): sint
+gseq_z2iforcmp1(xs: !xs, ys: !ys): sint
 //
 (* ****** ****** *)
 //
@@ -924,13 +924,13 @@ fun
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_iz2foritm0(xs: ~xs, ys: ~ys): void
+gseq_z2iforitm0(xs: ~xs, ys: ~ys): void
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_iz2foritm1(xs: !xs, ys: !ys): void
+gseq_z2iforitm1(xs: !xs, ys: !ys): void
 //
 (* ****** ****** *)
 //
@@ -940,7 +940,7 @@ fun
 <ys:vt>
 <y0:vt>
 <z0:vt>
-gseq_iz2map0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
+gseq_z2imap0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

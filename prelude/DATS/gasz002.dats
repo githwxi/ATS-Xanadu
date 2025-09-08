@@ -119,7 +119,7 @@ end(*let*)//end-of-[gasz_z2forall(xs, ys)]
 < x0:vt >
 < ys:t0 >
 < y0:vt >
-gasz_rz2forall
+gasz_z2rforall
   (xs, ys) =
 let
 val nx =
@@ -148,11 +148,11 @@ val
 (fy|y0) =
 $UN.gasz_lget$at$raw<ys><y0>(ys, i0)
 //
-val btf = rz2forall$test1<x0><y0>(x0, y0)
+val btf = z2rforall$test1<x0><y0>(x0, y0)
 //
 }(*where*)
 }(*where*)
-end(*let*)//end-of-[gasz_rz2forall(xs, ys)]
+end(*let*)//end-of-[gasz_z2rforall(xs, ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

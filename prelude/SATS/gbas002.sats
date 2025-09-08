@@ -73,17 +73,17 @@ z2forall$test
 fun
 <x1:t0>
 <x2:t0>
-rz2forall$test
+z2rforall$test
 (x1: x1, x2: x2): bool
 fun
 <x1:t0>
 <x2:t0>
-iz2forall$test
+z2iforall$test
 (i0: ni, x1: x1, x2: x2): bool
 fun
 <x1:t0>
 <x2:t0>
-irz2forall$test
+z2irforall$test
 (i0: ni, x1: x1, x2: x2): bool
 //
 (* ****** ****** *)
@@ -96,7 +96,7 @@ z2forcmp$test
 fun
 <x1:t0>
 <x2:t0>
-iz2forcmp$test
+z2iforcmp$test
 (i0: ni, x1: x1, x2: x2): sint
 //
 (* ****** ****** *)
@@ -109,17 +109,17 @@ z2foritm$work
 fun
 <x1:t0>
 <x2:t0>
-rz2foritm$work
+z2rforitm$work
 (x1: x1, x2: x2): void
 fun
 <x1:t0>
 <x2:t0>
-iz2foritm$work
+z2iforitm$work
 (i0: ni, x1: x1, x2: x2): void
 fun
 <x1:t0>
 <x2:t0>
-irz2foritm$work
+z2irforitm$work
 (i0: ni, x1: x1, x2: x2): void
 //
 (* ****** ****** *)
@@ -135,20 +135,20 @@ fun
 <x1:t0>
 <x2:t0>
 <r0:vt>
-rz2folditm$fopr
+z2rfolditm$fopr
 (x1: x1, x2: x2, r0: r0): (r0)
 fun
 <x1:t0>
 <x2:t0>
 <r0:vt>
-iz2folditm$fopr
+z2ifolditm$fopr
 (i0: ni
 ,x1: x1, x2: x2, r0: r0): (r0)
 fun
 <x1:t0>
 <x2:t0>
 <r0:vt>
-irz2folditm$fopr
+z2irfolditm$fopr
 (i0: ni
 ,x1: x1, x2: x2, r0: r0): (r0)
 //
@@ -162,20 +162,20 @@ fun
 <x1:t0>
 <x2:t0>
 <r0:vt>
-rz2foldall$fopr
+z2rfoldall$fopr
 (x1: x1, x2: x2, r0: r0): (bool, r0)
 fun
 <x1:t0>
 <x2:t0>
 <r0:vt>
-iz2foldall$fopr
+z2ifoldall$fopr
 (i0: ni
 ,x1: x1, x2: x2, r0: r0): (bool, r0)
 fun
 <x1:t0>
 <x2:t0>
 <r0:vt>
-irz2foldall$fopr
+z2irfoldall$fopr
 (i0: ni
 ,x1: x1, x2: x2, r0: r0): (bool, r0)
 //
@@ -191,18 +191,18 @@ fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-rz2map$fopr(x1: x1, x2: x2): (y0)
+z2rmap$fopr(x1: x1, x2: x2): (y0)
 fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-iz2map$fopr
+z2imap$fopr
   (i0: ni, x1: x1, x2: x2): (y0)
 fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-irz2map$fopr
+z2irmap$fopr
   (i0: ni, x1: x1, x2: x2): (y0)
 //
 (* ****** ****** *)
@@ -235,22 +235,22 @@ fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-rz2mapoptn$fopr(x1, x2): optn_vt(y0)
+z2rmapoptn$fopr(x1, x2): optn_vt(y0)
 fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-rz2maplist$fopr(x1, x2): list_vt(y0)
+z2rmaplist$fopr(x1, x2): list_vt(y0)
 fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-rz2mapstrm$fopr(x1, x2): strm_vt(y0)
+z2rmapstrm$fopr(x1, x2): strm_vt(y0)
 fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-rz2mapstrq$fopr(x1, x2): strq_vt(y0)
+z2rmapstrq$fopr(x1, x2): strq_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -258,25 +258,25 @@ fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-iz2mapoptn$fopr
+z2imapoptn$fopr
 (i0: ni, x1: x1, x2: x2): optn_vt(y0)
 fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-iz2maplist$fopr
+z2imaplist$fopr
 (i0: ni, x1: x1, x2: x2): list_vt(y0)
 fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-iz2mapstrm$fopr
+z2imapstrm$fopr
 (i0: ni, x1: x1, x2: x2): strm_vt(y0)
 fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-iz2mapstrq$fopr
+z2imapstrq$fopr
 (i0: ni, x1: x1, x2: x2): strq_vt(y0)
 //
 (* ****** ****** *)
@@ -285,25 +285,25 @@ fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-irz2mapoptn$fopr
+z2irmapoptn$fopr
 (i0: ni, x1: x1, x2: x2): optn_vt(y0)
 fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-irz2maplist$fopr
+z2irmaplist$fopr
 (i0: ni, x1: x1, x2: x2): list_vt(y0)
 fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-irz2mapstrm$fopr
+z2irmapstrm$fopr
 (i0: ni, x1: x1, x2: x2): strm_vt(y0)
 fun
 <x1:t0>
 <x2:t0>
 <y0:vt>
-irz2mapstrq$fopr
+z2irmapstrq$fopr
 (i0: ni, x1: x1, x2: x2): strq_vt(y0)
 //
 (* ****** ****** *)

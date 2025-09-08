@@ -48,14 +48,14 @@ strm_vt_z2forall0
 fun
 <x0:vt>
 <y0:vt>
-strm_vt_iz2forall0
+strm_vt_z2iforall0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): bool//end-of-[fun]
 //
 #symload
 z2forall0 with strm_vt_z2forall0 of 1000
 #symload
-iz2forall0 with strm_vt_iz2forall0 of 1000
+z2iforall0 with strm_vt_z2iforall0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -70,14 +70,14 @@ strm_vt_z2forcmp0
 fun
 <x0:vt>
 <y0:vt>
-strm_vt_iz2forcmp0
+strm_vt_z2iforcmp0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): sint//end-of-[fun]
 //
 #symload
 z2forcmp0 with strm_vt_z2forcmp0 of 1000
 #symload
-iz2forcmp0 with strm_vt_iz2forcmp0 of 1000
+z2iforcmp0 with strm_vt_z2iforcmp0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -92,14 +92,14 @@ strm_vt_z2foritm0
 fun
 <x0:vt>
 <y0:vt>
-strm_vt_iz2foritm0
+strm_vt_z2iforitm0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): void//end-of-[fun]
 //
 #symload
 z2foritm0 with strm_vt_z2foritm0 of 1000
 #symload
-iz2foritm0 with strm_vt_iz2foritm0 of 1000
+z2iforitm0 with strm_vt_z2iforitm0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -114,13 +114,13 @@ fun
 <x0:vt>
 <y0:vt>
 <r0:vt>
-strm_vt_iz2folditm0
+strm_vt_z2ifolditm0
 (~strm_vt(x0), ~strm_vt(y0), r0): (r0)
 //
 #symload
 z2folditm0 with strm_vt_z2folditm0 of 1000
 #symload
-iz2folditm0 with strm_vt_iz2folditm0 of 1000
+z2ifolditm0 with strm_vt_z2ifolditm0 of 1000
 //
 (* ****** ****** *)
 //
@@ -134,13 +134,13 @@ fun
 <x0:vt>
 <y0:vt>
 <r0:vt>
-strm_vt_iz2foldall0
+strm_vt_z2ifoldall0
 (~strm_vt(x0), ~strm_vt(y0), r0): (r0)
 //
 #symload
 z2foldall0 with strm_vt_z2foldall0 of 1000
 #symload
-iz2foldall0 with strm_vt_iz2foldall0 of 1000
+z2ifoldall0 with strm_vt_z2ifoldall0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -156,12 +156,12 @@ fun
 <x0:vt>
 <y0:vt>
 <z0:vt>
-strm_vt_iz2map0
+strm_vt_z2imap0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): strm_vt(z0)//endfun
 //
 #symload z2map0 with strm_vt_z2map0 of 1000
-#symload iz2map0 with strm_vt_iz2map0 of 1000
+#symload z2imap0 with strm_vt_z2imap0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -182,14 +182,14 @@ fun
 <x0:vt>
 <y0:vt>
 <r0:vt>
-strm_vt_iz2scanitm0
+strm_vt_z2iscanitm0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0), r0: r0): strm_vt(r0)
 //
 #symload
 z2scanitm0 with strm_vt_z2scanitm0 of 1000
 #symload
-iz2scanitm0 with strm_vt_iz2scanitm0 of 1000
+z2iscanitm0 with strm_vt_z2iscanitm0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

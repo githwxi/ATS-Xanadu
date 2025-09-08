@@ -1767,7 +1767,7 @@ z2map$fopr0<x0><y0><z0>(x0, y0) = (x0, y0)
 
 #impltmp
 <x0><y0><z0>
-strm_vt_iz2map0
+strm_vt_z2imap0
   ( xs, ys ) =
 auxmain(0, xs, ys) where
 {
@@ -1804,20 +1804,20 @@ strmcon_vt_cons
 ( y0, ys ) =>
 let
 val z0 =
-iz2map$fopr0<x0><y0><z0>(i0,x0,y0)
+z2imap$fopr0<x0><y0><z0>(i0,x0,y0)
 in//let
 strmcon_vt_cons(z0,auxmain(i0+1,xs,ys))
 endlet // strmcon_vt_cons(y0,ys)
 )(*case+*)//strmcon_vt_cons(x0,xs)
 //
 )(*llazy*)//end-of-[auxmain(i0,xs,ys)]
-}(*where*)//end-of-[strm_vt_iz2map0(xs,ys)]
+}(*where*)//end-of-[strm_vt_z2imap0(xs,ys)]
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-strm_vt_iz2forall0
+strm_vt_z2iforall0
   ( xs, ys ) =
 (
 auxloop(0, xs, ys)) where
@@ -1852,20 +1852,20 @@ strmcon_vt_cons
 ( y0, ys ) =>
 let
 val test =
-iz2forall$test0<x0><y0>(i0,x0,y0)
+z2iforall$test0<x0><y0>(i0,x0,y0)
 in//let
 if test then auxloop(i0+1,xs,ys) else false
 endlet // strmcon_vt_cons(y0,ys)
 )(*case+*)//strmcon_vt_cons(x0,xs)
 //
 )(*where*)//end-of-[auxloop(i0,xs,ys)]
-}(*where*)//end-of-[strm_vt_iz2forall0(xs,ys)]
+}(*where*)//end-of-[strm_vt_z2iforall0(xs,ys)]
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-strm_vt_iz2forcmp0
+strm_vt_z2iforcmp0
   (xs, ys) =
 (
 auxloop(0, xs, ys)) where
@@ -1905,7 +1905,7 @@ strmcon_vt_cons(y0, ys) =>
 let
 val
 sgn =
-iz2forcmp$test0<x0><y0>(i0, x0, y0)
+z2iforcmp$test0<x0><y0>(i0, x0, y0)
 in
   if
   (sgn = 0)
@@ -1914,13 +1914,13 @@ in
 end // end of [strmcon_vt_cons]
 )
 )(*case+*)//end-of-[auxloop(i0,xs,ys)]
-}(*where*)//end-of[strm_vt_iz2forcmp0(...)]
+}(*where*)//end-of[strm_vt_z2iforcmp0(...)]
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-strm_vt_iz2foritm0
+strm_vt_z2iforitm0
   ( xs, ys ) =
 (
 auxloop(0, xs, ys)) where
@@ -1954,12 +1954,12 @@ strmcon_vt_cons
 auxloop(i0+1,xs,ys) where
 {
 val () =
-iz2foritm$work0<x0><y0>(i0,x0,y0)
+z2iforitm$work0<x0><y0>(i0,x0,y0)
 } // strmcon_vt_cons(y0,ys)
 )(*case+*)// strmcon_vt_cons(x0,xs)
 //
 )(*where*)//end-of-[auxloop(i0,xs,ys)]
-}(*where*)//end-of-[strm_vt_iz2foritm0(...)]
+}(*where*)//end-of-[strm_vt_z2iforitm0(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)

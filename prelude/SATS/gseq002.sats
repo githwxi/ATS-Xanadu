@@ -51,6 +51,25 @@ given lists: z is short for zip
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2025-09-07:
+Sun Sep  7 08:06:58 PM EDT 2025
+Here is the meaning of various prefixes:
+//
+rzip2(xs, ys) =
+(zip2(rev(xs), rev(ys)))
+//
+z2map(xs, ys) = map(zip(xs, ys))
+z2rmap(xs, ys) = rmap(zip(xs, ys))
+//
+z2imap(xs, ys) = imap(zip(xs, ys))
+z2irmap(xs, ys) = irmap(zip(xs, ys))
+//
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
@@ -71,7 +90,7 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_rz2listize
+gseq_z2rlistize
 (xs: xs, ys: ys): list_vt@(x0, y0)
 //
 fun
@@ -79,7 +98,7 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_iz2listize
+gseq_z2ilistize
 (xs: xs, ys: ys): list_vt@(ni, x0, y0)
 //
 (* ****** ****** *)
@@ -96,7 +115,7 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_iz2strmize
+gseq_z2istrmize
 (xs: xs, ys: ys): strm_vt@(ni, x0, y0)
 //
 fun
@@ -111,7 +130,7 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_iz2strqize
+gseq_z2istrqize
 (xs: xs, ys: ys): strq_vt@(ni, x0, y0)
 //
 (* ****** ****** *)
@@ -134,25 +153,25 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_rz2forall(xs: xs, ys: ys): bool
+gseq_z2rforall(xs: xs, ys: ys): bool
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_iz2forall(xs: xs, ys: ys): bool
+gseq_z2iforall(xs: xs, ys: ys): bool
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_irz2forall(xs: xs, ys: ys): bool
+gseq_z2irforall(xs: xs, ys: ys): bool
 //
 (*
 #symload z2forall with gseq_z2forall of 0100
-#symload rz2forall with gseq_rz2forall of 0100
-#symload iz2forall with gseq_iz2forall of 0100
-#symload irz2forall with gseq_irz2forall of 0100
+#symload z2rforall with gseq_z2rforall of 0100
+#symload z2iforall with gseq_z2iforall of 0100
+#symload z2irforall with gseq_z2irforall of 0100
 *)
 //
 fun
@@ -179,25 +198,25 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_rz2foritm(xs: xs, ys: ys): void
+gseq_z2rforitm(xs: xs, ys: ys): void
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_iz2foritm(xs: xs, ys: ys): void
+gseq_z2iforitm(xs: xs, ys: ys): void
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_irz2foritm(xs: xs, ys: ys): void
+gseq_z2irforitm(xs: xs, ys: ys): void
 //
 (*
 #symload z2foritm with gseq_z2foritm of 0100
-#symload rz2foritm with gseq_rz2foritm of 0100
-#symload iz2foritm with gseq_iz2foritm of 0100
-#symload irz2foritm with gseq_irz2foritm of 0100
+#symload z2rforitm with gseq_z2rforitm of 0100
+#symload z2iforitm with gseq_z2iforitm of 0100
+#symload z2irforitm with gseq_z2irforitm of 0100
 *)
 //
 fun
@@ -263,7 +282,7 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_rz2map_llist(xs: xs, ys: ys): list_vt(z0)
+gseq_z2rmap_llist(xs: xs, ys: ys): list_vt(z0)
 //
 fun
 <xs:t0>
@@ -271,14 +290,14 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_rz2map_lstrm(xs: xs, ys: ys): strm_vt(z0)
+gseq_z2rmap_lstrm(xs: xs, ys: ys): strm_vt(z0)
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_rz2map_lstrq(xs: xs, ys: ys): strq_vt(z0)
+gseq_z2rmap_lstrq(xs: xs, ys: ys): strq_vt(z0)
 //
 (* ****** ****** *)
 //
@@ -288,7 +307,7 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_iz2map_llist(xs: xs, ys: ys): list_vt(z0)
+gseq_z2imap_llist(xs: xs, ys: ys): list_vt(z0)
 //
 fun
 <xs:t0>
@@ -296,14 +315,14 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_iz2map_lstrm(xs: xs, ys: ys): strm_vt(z0)
+gseq_z2imap_lstrm(xs: xs, ys: ys): strm_vt(z0)
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_iz2map_lstrq(xs: xs, ys: ys): strq_vt(z0)
+gseq_z2imap_lstrq(xs: xs, ys: ys): strq_vt(z0)
 //
 //
 fun
@@ -312,7 +331,7 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_irz2map_llist(xs: xs, ys: ys): list_vt(z0)
+gseq_z2irmap_llist(xs: xs, ys: ys): list_vt(z0)
 //
 fun
 <xs:t0>
@@ -320,14 +339,14 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_irz2map_lstrm(xs: xs, ys: ys): strm_vt(z0)
+gseq_z2irmap_lstrm(xs: xs, ys: ys): strm_vt(z0)
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_irz2map_lstrq(xs: xs, ys: ys): strq_vt(z0)
+gseq_z2irmap_lstrq(xs: xs, ys: ys): strq_vt(z0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

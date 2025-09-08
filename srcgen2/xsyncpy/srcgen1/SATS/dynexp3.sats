@@ -117,6 +117,7 @@ D3E = "./\
 (* ****** ****** *)
 #typedef sort2 = $S2E.sort2
 #typedef s2var = $S2E.s2var
+#typedef s2arg = $S2E.s2arg
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
@@ -179,6 +180,7 @@ D3E = "./\
 #typedef fpathopt = optn(fpath)
 (* ****** ****** *)
 #typedef s2varlst = list(s2var)
+#typedef s2arglst = list(s2arg)
 #typedef s2explst = list(s2exp)
 #typedef s2typlst = list(s2typ)
 (* ****** ****** *)
@@ -274,6 +276,16 @@ d3pat1_node =
 |D3P1bang of (d3pat1)
 |D3P1flat of (d3pat1)
 |D3P1free of (d3pat1)
+//
+(* ****** ****** *)
+//
+|D3P1sapp of
+ (d3pat1, s2varlst(*sarg*))
+|D3P1sapq of
+ (d3pat1, s2arglst(*sarg*))
+//
+|D3P1tapq of
+ (d3pat1, t2jaglst(*sarg*))
 //
 (* ****** ****** *)
 //
