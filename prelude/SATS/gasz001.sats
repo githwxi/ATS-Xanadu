@@ -174,6 +174,7 @@ fun
 <x0:vt>
 mapref$fopr1r
 ( ref: &x0 >> x0 ): void
+//
 (*
 fun
 <x0:vt>

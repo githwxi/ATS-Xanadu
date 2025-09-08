@@ -172,7 +172,7 @@ fun
 foritm$work1(x0: !x0): void
 fun
 <x0:vt>
-foritm$work2(x0: &x0): void
+foritm$work1r(x0: &x0): void
 //
 fun
 <x0:vt>
@@ -182,7 +182,7 @@ fun
 rforitm$work1(x0: !x0): void
 fun
 <x0:vt>
-rforitm$work2(x0: &x0): void
+rforitm$work1r(x0: &x0): void
 //
 fun
 <x0:vt>
@@ -192,7 +192,7 @@ fun
 iforitm$work1(ni, !x0): void
 fun
 <x0:vt>
-iforitm$work2(x0: &x0): void
+iforitm$work1r(x0: &x0): void
 //
 fun
 <x0:vt>
@@ -202,7 +202,7 @@ fun
 irforitm$work1(ni, !x0): void
 fun
 <x0:vt>
-irforitm$work2(x0: &x0): void
+irforitm$work1r(x0: &x0): void
 //
 (* ****** ****** *)
 //
@@ -217,7 +217,7 @@ folditm$fopr1(r0, !x0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-folditm$fopr2(r0, &x0): (r0)
+folditm$fopr1r(r0, &x0): (r0)
 //
 fun
 <x0:vt>
@@ -230,7 +230,7 @@ rfolditm$fopr1(!x0, r0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-rfolditm$fopr2(&x0, r0): (r0)
+rfolditm$fopr1r(&x0, r0): (r0)
 //
 fun
 <x0:vt>
@@ -243,7 +243,7 @@ ifolditm$fopr1(r0, ni, !x0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-ifolditm$fopr2(r0, ni, &x0): (r0)
+ifolditm$fopr1r(r0, ni, &x0): (r0)
 //
 fun
 <x0:vt>
@@ -256,7 +256,7 @@ irfolditm$fopr1(ni, !x0, r0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-irfolditm$fopr2(ni, &x0, r0): (r0)
+irfolditm$fopr1r(ni, &x0, r0): (r0)
 //
 (* ****** ****** *)
 //
@@ -271,7 +271,7 @@ foldall$fopr1(r0, !x0): (bool, r0)
 fun
 <x0:vt>
 <r0:vt>
-foldall$fopr2(r0, &x0): (bool, r0)
+foldall$fopr1r(r0, &x0): (bool, r0)
 //
 fun
 <x0:vt>
@@ -284,7 +284,7 @@ rfoldall$fopr1(!x0, r0): (bool, r0)
 fun
 <x0:vt>
 <r0:vt>
-rfoldall$fopr2(r0, &x0): (bool, r0)
+rfoldall$fopr1r(r0, &x0): (bool, r0)
 //
 fun
 <x0:vt>
@@ -297,7 +297,7 @@ ifoldall$fopr1(r0, ni, !x0): (bool, r0)
 fun
 <x0:vt>
 <r0:vt>
-ifoldall$fopr2(r0, ni, &x0): (bool, r0)
+ifoldall$fopr1r(r0, ni, &x0): (bool, r0)
 //
 fun
 <x0:vt>
@@ -310,7 +310,7 @@ irfoldall$fopr1(ni, !x0, r0): (bool, r0)
 fun
 <x0:vt>
 <r0:vt>
-irfoldall$fopr2(ni, &x0, r0): (bool, r0)
+irfoldall$fopr1r(ni, &x0, r0): (bool, r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -326,7 +326,7 @@ map$fopr1(x0: !x0): ( y0 )
 fun
 <x0:vt>
 <y0:vt>
-map$fopr2(x0: &x0): ( y0 )
+map$fopr1r(x0: &x0): ( y0 )
 //
 fun
 <x0:vt>
@@ -339,7 +339,7 @@ rmap$fopr1(x0: !x0): ( y0 )
 fun
 <x0:vt>
 <y0:vt>
-rmap$fopr2(x0: &x0): ( y0 )
+rmap$fopr1r(x0: &x0): ( y0 )
 //
 fun
 <x0:vt>
@@ -352,7 +352,7 @@ imap$fopr1(ni, !x0): ( y0 )
 fun
 <x0:vt>
 <y0:vt>
-imap$fopr2(ni, &x0): ( y0 )
+imap$fopr1r(ni, &x0): ( y0 )
 //
 fun
 <x0:vt>
@@ -365,7 +365,7 @@ irmap$fopr1(ni, !x0): ( y0 )
 fun
 <x0:vt>
 <y0:vt>
-irmap$fopr2(ni, &x0): ( y0 )
+irmap$fopr1r(ni, &x0): ( y0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -384,28 +384,28 @@ fun
 filter$test1(x0: !x0): bool
 fun
 <x0:vt>
-filter$test2(x0: &x0): bool
+filter$test1r(x0: &x0): bool
 //
 fun
 <x0:vt>
 rfilter$test1(x0: !x0): bool
 fun
 <x0:vt>
-rfilter$test2(x0: &x0): bool
+rfilter$test1r(x0: &x0): bool
 //
 fun
 <x0:vt>
 ifilter$test1(ni, !x0): bool
 fun
 <x0:vt>
-ifilter$test2(ni, &x0): bool
+ifilter$test1r(ni, &x0): bool
 //
 fun
 <x0:vt>
 irfilter$test1(ni, !x0): bool
 fun
 <x0:vt>
-irfilter$test2(ni, &x0): bool
+irfilter$test1r(ni, &x0): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -482,7 +482,7 @@ fun
 <x0:vt>
 <y0:vt>
 <e1:vt>
-map$e1nv$fopr2(x0: &x0, e1: !e1): ( y0 )
+map$e1nv$fopr1r(x0: &x0, e1: !e1): ( y0 )
 //
 fun
 <x0:vt>
@@ -498,7 +498,7 @@ fun
 <x0:vt>
 <y0:vt>
 <e1:vt>
-rmap$e1nv$fopr2(x0: &x0, e1: !e1): ( y0 )
+rmap$e1nv$fopr1r(x0: &x0, e1: !e1): ( y0 )
 //
 fun
 <x0:vt>
@@ -514,7 +514,7 @@ fun
 <x0:vt>
 <y0:vt>
 <e1:vt>
-imap$e1nv$fopr2(ni, &x0, e1: !e1): ( y0 )
+imap$e1nv$fopr1r(ni, &x0, e1: !e1): ( y0 )
 //
 fun
 <x0:vt>
@@ -530,7 +530,7 @@ fun
 <x0:vt>
 <y0:vt>
 <e1:vt>
-irmap$e1nv$fopr2(ni, &x0, e1: !e1): ( y0 )
+irmap$e1nv$fopr1r(ni, &x0, e1: !e1): ( y0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
