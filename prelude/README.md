@@ -326,10 +326,10 @@ by `gseq_z2map` is given as follows:
 
 ```
 fun
-<x1:t0>
-<x2:t0>
-<y0:vt>
-z2map$fopr(x1: x1, x2: x2): (y0)
+<x0:t0>
+<y0:t0>
+<z0:vt>
+z2map$fopr(x0: x0, y0: y0): (z0)
 ```
 
 The most generic sequence-based `z2map` is declared as follows:
@@ -369,10 +369,10 @@ fopr-function employed by `gseq_x2map` is given as follows:
 
 ```
 fun
-<x1:t0>
-<x2:t0>
-<y0:vt>
-x2map$fopr(x1: x1, x2: x2): (y0)
+<x0:t0>
+<y0:t0>
+<z0:vt>
+x2map$fopr(x0: x0, y0: y0): (x0)
 ```
 
 The most generic sequence-based `x2map` is declared as follows:
@@ -394,14 +394,31 @@ indicate the traversal of a seqeunce obtained from the cross product
 of two given sequences.  And the interpretation for `x3map` (and
 beyond) extrapolates naturally.
 
+### IX-Combined Traversal
+
+The indexed cross (i-cross) product of two given sequences consists of
+quadruples of the form `(i, x, j, y)`, where `i` and `j` refers,
+respectively, to the positions of `x` and `y` in the first and second
+of the given sequences. For instance, the corresponding `fopr` for the
+`ix2map` is given as follows:
+
+```
+fun
+<x0:t0>
+<y0:t0>
+<z0:vt>
+ix2map$fopr(px: ni, x0: x0, py: ni, y0: y0): (z0)
+```
+
 ### Many Styles of Traversal Combination
 
 There are unlimited number of ways to combine traversals.
 
 We can combine indexed traversal with reversed traversal to form
 index-reversed traversal.  What `gseq_irmap` does is essentially to
-perform `gseq_imap` on the sequence obtained from reversing a given
-sequence.
+perform mapping via an indexed-traversal over the reverse of a given
+sequence. In other words, it does `gseq_imap` on the reverse of a
+given sequence.
 
 Given a sequence `["a", "b", "c"]`, its indexed version is
 the following sequence of pairs:
@@ -419,8 +436,8 @@ traversal to form reverse-indexed traversal.  What `gseq_rimap` does
 is essentially to perform `gseq_rmap` on the sequence obtained from
 indexing a given sequence.
 
-From this point on, one should be clear about the meaning of combinators
-like `gseq_iz2map`, `gseq_rix2map`, etc.
+From this point on, one should be clear about the meaning of
+combinators like `gseq_z2imap`, `gseq_x2rimap`, etc.
 
 
 <!--
