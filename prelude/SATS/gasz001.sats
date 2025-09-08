@@ -169,9 +169,6 @@ fun
 mapref$fopr0(~x0): x0
 fun
 <x0:vt>
-mapref$fopr1(!x0): x0
-fun
-<x0:vt>
 mapref$fopr1r
 ( ref: &x0 >> x0 ): void
 //
@@ -207,9 +204,6 @@ gasz_mapref_c1bv
 fun
 <x0:vt>
 imapref$fopr0(ni, ~x0): x0
-fun
-<x0:vt>
-imapref$fopr1(ni, !x0): x0
 fun
 <x0:vt>
 imapref$fopr1r
