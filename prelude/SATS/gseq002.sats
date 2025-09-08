@@ -396,7 +396,7 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2istrmize
+gseq_ix2strmize
 ( xs: xs
 , ys: ys): strm_vt@(ni, x0, ni, y0)
 fun
@@ -404,7 +404,7 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2istrqize
+gseq_ix2strqize
 ( xs: xs
 , ys: ys): strq_vt@(ni, x0, ni, y0)
 //
@@ -422,11 +422,11 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2iforall(xs: xs, ys: ys): bool
+gseq_ix2forall(xs: xs, ys: ys): bool
 //
 (*
 #symload x2forall with gseq_x2forall of 0100
-#symload x2iforall with gseq_x2iforall of 0100
+#symload ix2forall with gseq_ix2forall of 0100
 *)
 //
 fun
@@ -454,11 +454,11 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2iforitm(xs: xs, ys: ys): void
+gseq_ix2foritm(xs: xs, ys: ys): void
 //
 (*
 #symload x2foritm with gseq_x2foritm of 0100
-#symload x2iforitm with gseq_x2iforitm of 0100
+#symload ix2foritm with gseq_ix2foritm of 0100
 *)
 //
 fun
@@ -525,7 +525,7 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_x2imap_llist(xs: xs, ys: ys): list_vt(z0)
+gseq_ix2map_llist(xs: xs, ys: ys): list_vt(z0)
 //
 fun
 <xs:t0>
@@ -533,14 +533,14 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_x2imap_lstrm(xs: xs, ys: ys): strm_vt(z0)
+gseq_ix2map_lstrm(xs: xs, ys: ys): strm_vt(z0)
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_x2imap_lstrq(xs: xs, ys: ys): strq_vt(z0)
+gseq_ix2map_lstrq(xs: xs, ys: ys): strq_vt(z0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
