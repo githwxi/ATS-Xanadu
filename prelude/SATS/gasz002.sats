@@ -186,12 +186,6 @@ fun
 <ys:t0>
 <y0:vt>
 gasz_x2forall(xs: xs, ys: ys): bool
-fun
-<xs:t0>
-<x0:vt>
-<ys:t0>
-<y0:vt>
-gasz_x2rforall(xs: xs, ys: ys): bool
 //
 fun
 <xs:t0>
@@ -200,18 +194,9 @@ fun
 <y0:vt>
 gasz_x2iforall(xs: xs, ys: ys): bool
 //
-fun
-<xs:t0>
-<x0:vt>
-<ys:t0>
-<y0:vt>
-gasz_x2irforall(xs: xs, ys: ys): bool
-//
 (*
 #symload x2forall with gasz_x2forall of 0100
-#symload x2rforall with gasz_x2rforall of 0100
 #symload x2iforall with gasz_x2iforall of 0100
-#symload x2irforall with gasz_x2irforall of 0100
 *)
 //
 fun
