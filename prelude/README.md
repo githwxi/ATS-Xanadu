@@ -249,38 +249,6 @@ fun
 gseq_map_llist(xs: xs): list_vt(y0)
 ```
 
-### Indexed Traversal
-
-When traversing a sequence of items, `gseq_imap` employs the following
-function to process each encountered item:
-
-```
-fun
-<x0:t0>
-<y0:vt>
-imap$fopr(pos: ni, itm: x0): (y0)
-```
-
-Note that the first argument of `imap$fopr` is a natural number of
-the type `ni` (a shorthand for `nint`) that indicates the position
-of the encountered item in the given sequence while the second
-argument is the value of the item.  The most generic sequence-based
-`imap` is declared as follows:
-
-```
-fun
-<xs:t0>
-<x0:t0>
-<ys:vt>
-<y0:vt>
-gseq_imap_ares(xs: xs): (ys)
-```
-
-The naming convention we follow changes `map` into `imap` to indicate
-that the (standard) sequence traversal (for `map`) is replaced with
-the indexed sequence traversal (for `imap`) that records the position
-of each encountered item.
-
 ### Reversed Traversal
 
 There is a default or standard traversal associated with a given
@@ -314,6 +282,38 @@ gseq_rmap_ares(xs: xs): (ys)
 The naming convention we follow changes `map` into `rmap` to indicate
 that the (standard) sequence traversal (for `map`) is replaced with
 the reversed sequence traversal (for `rmap`).
+
+### Indexed Traversal
+
+When traversing a sequence of items, `gseq_imap` employs the following
+function to process each encountered item:
+
+```
+fun
+<x0:t0>
+<y0:vt>
+imap$fopr(pos: ni, itm: x0): (y0)
+```
+
+Note that the first argument of `imap$fopr` is a natural number of
+the type `ni` (a shorthand for `nint`) that indicates the position
+of the encountered item in the given sequence while the second
+argument is the value of the item.  The most generic sequence-based
+`imap` is declared as follows:
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_imap_ares(xs: xs): (ys)
+```
+
+The naming convention we follow changes `map` into `imap` to indicate
+that the (standard) sequence traversal (for `map`) is replaced with
+the indexed sequence traversal (for `imap`) that records the position
+of each encountered item.
 
 ### Z-Combined Traversal
 
