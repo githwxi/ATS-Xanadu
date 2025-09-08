@@ -73,13 +73,16 @@ val wrds =
 list_fmake_fwork<strn>
 (
 lam(work) =>
-GASZ(wrd0).iforitm(
-lam(i, ci) => GASZ(26).foritm
+gseq_iforitm
+(
+GASZ(wrd0),
+lam(i, ci) =>
+gseq_foritm(GASZ(26),
 (
 lam(j) =>
 let
   val cj = 'a'+j
-in
+in//let
 if ci = cj
 then () else work
 ($UN.strn_fset$at$raw(wrd0, i, cj))
@@ -96,12 +99,13 @@ list_fmake_fwork<strn>
 lam(work) =>
 GSEQ(wrd0).iforitm
 (
-lam(i, ci) => GASZ(26).foritm
+lam(i, ci) =>
+gseq_foritm(GASZ(26),
 (
 lam(j) =>
 let
   val cj = 'a'+j
-in
+in//let
 if ci = cj
 then () else work
 ($UN.strn_fset$at$raw(wrd0, i, cj))
