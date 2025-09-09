@@ -409,7 +409,7 @@ case- kxs of
 |dtpstk_ift0
 (    kxs    ) => res
 |dtpstk_cons
-(k1, ts, kxs) =>
+(k1, x1, kxs) =>
 loop(kxs, list_vt_cons(k1, res))
 )
 //

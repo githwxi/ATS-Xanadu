@@ -79,16 +79,6 @@ envltck = envltck_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#typedef
-dvdtp = (d2var, d3typ1)
-#typedef
-dvdtplst = list( dvdtp )
-#vwtpdef
-dvdtplst_vt = list_vt(dvdtp)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 fun
 sort2_delin(sort2): sort2
 //

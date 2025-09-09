@@ -89,7 +89,8 @@ case+ dvs of
 | ~
 list_vt_nil() =>
 list_vt_reverse0
-(list_vt_cons(dv0, res))
+(
+list_vt_cons(dv0, res))
 | ~
 list_vt_cons(dv1, dvs) =>
 (
@@ -101,6 +102,51 @@ auxmain
 )(*case+*)//end-of-[auxmain(dv0,dvs)]
 //
 }(*where*)//end-of-[d2varlst_duprmv0(dvs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+#implfun
+dvdtplst_duprmv
+  (vts) =
+(
+case+ vts of
+| ~
+list_vt_nil() => list_vt_nil()
+| ~
+list_vt_cons(vt1, vts) =>
+auxmain(vt1, vts, list_vt_nil()))
+where
+{
+//
+#vwtpdef
+dvdtplst = list_vt(dvdtp)
+//
+fun
+auxmain
+( vt0: dvdtp
+, vts: dvdtplst
+, res: dvdtplst): dvdtplst =
+(
+case+ vts of
+| ~
+list_vt_nil() =>
+list_vt_reverse0
+(
+list_vt_cons(vt0, res))
+| ~
+list_vt_cons(vt1, vts) =>
+(
+if
+g_cmp(vt0.0, vt1.0) = 0
+then auxmain(vt0, vts, res)
+else
+auxmain
+(vt1, vts, list_vt_cons(vt0, res)))
+)(*case+*)//end-of-[auxmain(vt0,vts)]
+//
+}(*where*)//end-of-[dvdtplst_duprmv0(vts)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
