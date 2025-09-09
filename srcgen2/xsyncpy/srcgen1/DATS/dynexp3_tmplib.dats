@@ -46,6 +46,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #staload "\
 ./../../../SATS/locinfo.sats"
 #staload "\
@@ -54,6 +55,9 @@ Authoremail: gmhwxiATgmailDOTcom
 ./../../../SATS/statyp2.sats"
 #staload "\
 ./../../../SATS/dynexp2.sats"
+#staload "\
+./../../../SATS/dynexp3.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -160,7 +164,8 @@ case+ ldps of
 (
   f0_ldps(ldps)) where
 {
-  val () = f0_main(ldp1.itm()) }
+  val () =
+  f0_main(d3lab_get_itm(ldp1)) }
 )(*case+*)//end-of-[ f0_ldps(ldps) ]
 //
 }(*where*)//end-of-[d3pat1_d2v$foritm(d3p0)]
