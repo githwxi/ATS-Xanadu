@@ -79,6 +79,16 @@ envltck = envltck_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef
+dvdtp = (d2var, d3typ1)
+#typedef
+dvdtplst = list( dvdtp )
+#vwtpdef
+dvdtplst_vt = list_vt(dvdtp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 sort2_delin(sort2): sort2
 //
@@ -142,7 +152,9 @@ fun
 envltck_popift0(!envltck): (void)
 //
 fun
-envltck_d2vift0(!envltck): d2varlst
+envltck_dvsift0(!envltck): d2varlst
+fun
+envltck_vtsift0(!envltck): dvdtplst
 //
 (* ****** ****** *)
 (* ****** ****** *)
