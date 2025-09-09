@@ -363,9 +363,23 @@ d3typ1_node =
 |T3Ps2typ of s2typ1
 |T3Pd3pat of d3pat1
 //
-#typedef d3typ1lst = list(d3typ1)
-#typedef d3typ1opt = optn(d3typ1)
+(* ****** ****** *)
 //
+#typedef
+d3typ1lst = list(d3typ1)
+#typedef
+d3typ1opt = optn(d3typ1)
+//
+(* ****** ****** *)
+//
+#typedef
+dvdtp = (d2var, d3typ1)
+#typedef
+dvdtplst = list( dvdtp )
+#vwtpdef
+dvdtplst_vt = list_vt(dvdtp)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 d3typ1_sort$get
