@@ -88,7 +88,7 @@ datavwtp dtpstk =
 |dtpstk_cas0 of (dtpstk)
 //
 |dtpstk_cons of
-(d2var, d3typ1lst, dtpstk)
+( d2var, d3typ1, dtpstk )
 //
 (* ****** ****** *)
 //
@@ -385,7 +385,7 @@ end(*let*)//end-of-(envltck_popift0(env0))
 (* ****** ****** *)
 //
 fun
-dtpstk_d2vift0
+dtpstk_dvsift0
 ( kxs:
 & dtpstk >> _)
 : list_vt(d2var) =
@@ -414,7 +414,7 @@ loop(kxs, list_vt_cons(k1, res))
 in
 list_vt_mergesort0(
   loop(kxs, list_vt_nil(*void*)))
-end(*let*)//end-of-[dtpstk_d2vift0(...)]
+end(*let*)//end-of-[dtpstk_dvsift0(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
