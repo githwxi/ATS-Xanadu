@@ -54,6 +54,23 @@ XATS2JS_strn_length
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+strn_get$at
+  (cs, i0) =
+(
+XATS2JS_strn_get$at$raw
+  (cs, i0)) where
+{
+#extern
+fun
+XATS2JS_strn_get$at$raw
+(cs: strn, i0: nint): char = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-09-04:
 Wed 04 Sep 2024 04:52:34 AM EDT
