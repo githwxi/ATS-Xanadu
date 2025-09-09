@@ -44,6 +44,8 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 "./../SATS/dynexp3.sats"
 #staload
+"./../SATS/xsyncpy.sats"
+#staload
 "./../SATS/trxltck.sats"
 //
 (* ****** ****** *)
@@ -411,9 +413,13 @@ case- kxs of
 loop(kxs, list_vt_cons(k1, res))
 )
 //
-in
+in//let
+//
+d2varlst_duprmv0
+(
 list_vt_mergesort0(
-  loop(kxs, list_vt_nil(*void*)))
+  loop(kxs, list_vt_nil(*void*))))
+//
 end(*let*)//end-of-[dtpstk_dvsift0(...)]
 //
 (* ****** ****** *)

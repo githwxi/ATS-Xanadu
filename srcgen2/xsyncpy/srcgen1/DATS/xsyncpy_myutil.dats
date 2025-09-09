@@ -30,40 +30,81 @@
 //
 (*
 Author: Hongwei Xi
-(*
-Sun May 18 01:40:34 PM EDT 2025
-*)
+Mon Sep  8 11:10:02 PM EDT 2025
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #include
 "xatslib\
 /libcats\
 /HATS/libcats_dats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
+"./../SATS/statyp2.sats"
+#staload
+"./../SATS/dynexp2.sats"
+#staload
+"./../SATS/dynexp3.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/libxatsopt.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
-"./../SATS/dynexp3.sats"
+"prelude/SATS/gsyn000.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-d2varlst_duprmv0
-(dvs: list_vt(d2var)): list_vt(d2var)
+#implfun
+d2varlst_duprmv
+  (dvs) =
+(
+case+ dvs of
+| ~
+list_vt_nil() => list_vt_nil()
+| ~
+list_vt_cons(dv1, dvs) =>
+auxmain(dv1, dvs, list_vt_nil()))
+where
+{
+//
+#vwtpdef
+d2varlst = list_vt(d2var)
 //
 fun
-dvdtplst_duprmv0
-(vts: list_vt(dvdtp)): list_vt(dvdtp)
+auxmain
+( dv0: d2var
+, dvs: d2varlst
+, res: d2varlst): d2varlst =
+(
+case+ dvs of
+| ~
+list_vt_nil() =>
+list_vt_reverse0
+(list_vt_cons(dv0, res))
+| ~
+list_vt_cons(dv1, dvs) =>
+(
+if g_cmp(dv0, dv1) = 0
+then auxmain(dv0, dvs, res)
+else
+auxmain
+(dv1, dvs, list_vt_cons(dv0, res)))
+)(*case+*)//end-of-[auxmain(dv0,dvs)]
+//
+}(*where*)//end-of-[d2varlst_duprmv0(dvs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_xsyncpy.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_xsyncpy_myutil.dats] *)
 (***********************************************************************)
