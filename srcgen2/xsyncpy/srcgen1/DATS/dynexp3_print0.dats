@@ -53,6 +53,50 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #implfun
+d3typ1_fprint
+( t3p0, out0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+in//let
+//
+case+ t3p0 of
+|T3Pstyp(t2p1) =>
+(
+prints("T3Pstyp(", t2p1, ")"))
+//
+|T3Pdvar(dvar) =>
+(
+prints("T3Pdvar(", dvar, ")"))
+//
+|T3Pdcon(dcon, d2vs) =>
+(
+prints
+("T3Pdcon(", dcon, ";", d2vs, ")"))
+//
+|T3Ptup0(npf1, d2vs) =>
+(
+prints
+("T3Ptup0(", npf1, ";", d2vs, ")"))
+|T3Ptup1(tknd, npf1, d2vs) =>
+(
+prints
+("T3Ptup1(", tknd,";",npf1,";",d2vs,")"))
+//
+(*
+|T3Prcd2(tknd, npf1, ldvs) =>
+prints
+("T3Prcd2(", tknd, ";", npf1, ";", ldvs, ")")
+*)
+//
+end(*let*)//end-of-[d3typ1_fprint(t3p0,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d3pat1_fprint
 ( d3p0, out0 ) =
 let

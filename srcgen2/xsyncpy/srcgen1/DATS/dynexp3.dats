@@ -60,6 +60,55 @@ Authoremail: gmhwxiATgmailDOTcom
 local
 //
 datatype
+d3typ1 =
+D3TYP1 of
+(loctn
+,s2typ1, d3typ1_node)
+datavwtp
+d3pat1_vt =
+D3TYP1_vt of
+(loctn
+,s2typ1, d3typ1_node)
+//
+#absimpl d3typ1_tbox = d3typ1
+//
+(* ****** ****** *)
+in (* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+d3typ1_styp$get
+  ( dtyp ) =
+let
+val+
+D3TYP1
+( loc0
+, t2p0
+, node) = dtyp in t2p0
+end//end-of-[d3typ1_styp$get]
+//
+//
+#implfun
+d3typ1_node$get
+  ( dtyp ) =
+let
+val+
+D3TYP1
+( loc0
+, t2p0
+, node) = dtyp in node
+end//end-of-[d3typ1_node$get]
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [local(d3typ1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
 d3pat1 =
 D3PAT1 of
 (loctn
