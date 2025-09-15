@@ -53,10 +53,22 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-09-09:
+[dvs] is sorted
+the leftmost version is kept
+Tue Sep  9 02:06:02 AM EDT 2025
+*)
 fun
 d2varlst_duprmv0
 (dvs: list_vt(d2var)): list_vt(d2var)
 //
+(*
+HX-2025-09-09:
+[vts] is sorted
+the leftmost version is kept
+Tue Sep  9 02:06:02 AM EDT 2025
+*)
 fun
 dvdtplst_duprmv0
 (vts: list_vt(dvdtp)): list_vt(dvdtp)

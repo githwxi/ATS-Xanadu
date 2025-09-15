@@ -64,7 +64,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #implfun
-d2varlst_duprmv
+d2varlst_duprmv0
   (dvs) =
 (
 case+ dvs of
@@ -106,9 +106,8 @@ auxmain
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #implfun
-dvdtplst_duprmv
+dvdtplst_duprmv0
   (vts) =
 (
 case+ vts of

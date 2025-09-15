@@ -181,6 +181,7 @@ val (  ) =
 )(*case+*)//end-of-(envltck_pshlam0( env0 ))  
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 envltck_pshlet0
@@ -197,6 +198,7 @@ val (  ) =
   dtpstk_let0(dtpstk)) in () end//let
 )(*case+*)//end-of-(envltck_pshlet0( env0 ))  
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -273,6 +275,7 @@ end(*let*)
 end(*let*)//end-of-(envltck_poplam0(env0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 dtpstk_poplet0
@@ -330,6 +333,7 @@ end(*let*)
 end(*let*)//end-of-(envltck_poplet0(env0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 dtpstk_popift0
@@ -385,6 +389,7 @@ end(*let*)
 end(*let*)//end-of-(envltck_popift0(env0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 dtpstk_dvsift0
@@ -430,29 +435,44 @@ envltck_dvar$take
   (env0, dvar) =
 let
 //
-val t2q0 =
+val t3q0 =
 envltck_dvar$find(env0, dvar)
 //
 in//let
 //
 if
 not(
-linq(t2q0))
-then t2q0 else
+linq(t3q0))
+then t3q0 else
 let
 //
-val t2q1 = s2typ1_delin(t2q0)
+val t3q1 = d3typ1_delin(t3q0)
 //
 in//let
 //
-t2q0 where
+t3q0 where
 {
 val () =
-envltck_dvar$updt(env0, dvar, t2q1)
+envltck_dvar$updt(env0, dvar, t3q1)
 }
 end//let
 //
 end//let//end-of-(envltck_dvar$take(env0,...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envltck_dvar$updt
+(env0, d2v0, t3q1) =
+(
+case+ env0 of
+| ENVLTCK
+(
+!dtpstk, stkmap) =>
+(
+dtpstk := dtpstk_cons(d2v0, t3q1, dtpstk))
+)(*case+*)//end-of-(envltck_dvar$updt(env0,...))
 //
 (* ****** ****** *)
 (* ****** ****** *)

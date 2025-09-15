@@ -140,11 +140,13 @@ D3E = "./\
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 (* ****** ****** *)
-#abstbox d3pat1_tbox // p0tr
-#typedef d3pat1 = d3pat1_tbox
-(* ****** ****** *)
+//
 #abstbox d3typ1_tbox // p0tr
 #typedef d3typ1 = d3typ1_tbox
+//
+(* ****** ****** *)
+#abstbox d3pat1_tbox // p0tr
+#typedef d3pat1 = d3pat1_tbox
 (* ****** ****** *)
 #abstbox d3exp1_tbox // p0tr
 #typedef d3exp1 = d3exp1_tbox
@@ -259,6 +261,67 @@ fprint with d3ecl_fprint of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-09-10:
+This one is NOT recursive!
+*)
+datatype
+d3typ1_node =
+//
+|T3Pstyp of s2typ1
+//
+|T3Pdvar of (d2var)
+|T3Pdcon of (d2con, d2varlst)
+//
+|T3Ptup0 of
+(sint(*npf*), d2varlst)
+|T3Ptup1 of
+(token, sint(*npf*), d2varlst)
+(*
+|T3Prcd2 of
+(token, sint(*npf*), l3d2vlst)
+*)
+//
+(* ****** ****** *)
+//
+#typedef
+d3typ1lst = list(d3typ1)
+#typedef
+d3typ1opt = optn(d3typ1)
+//
+(* ****** ****** *)
+//
+#typedef
+dvdtp = (d2var, d3typ1)
+#typedef
+dvdtplst = list( dvdtp )
+#vwtpdef
+dvdtplst_vt = list_vt(dvdtp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3typ1_styp$get
+( dtyp: d3typ1 ): s2typ1
+fun
+d3typ1_node$get
+( dtyp: d3typ1 ): d3typ1_node
+//
+#symload styp with d3typ1_styp$get
+#symload node with d3typ1_node$get
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3typ1_fprint
+(dtyp: d3typ1, out0: FILR): void
+#symload fprint with d3typ1_fprint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 datatype
 d3pat1_node =
 //
@@ -353,56 +416,6 @@ d3pat1_make_lctn$styp$node
 (loc0: loctn
 ,t2p0: s2typ1, node: d3pat1_node): d3pat1
 #symload d3pat1 with d3pat1_make_lctn$styp$node
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-datatype
-d3typ1_node =
-//
-|T3Ps2typ of s2typ1
-|T3Pd3pat of d3pat1
-//
-(* ****** ****** *)
-//
-#typedef
-d3typ1lst = list(d3typ1)
-#typedef
-d3typ1opt = optn(d3typ1)
-//
-(* ****** ****** *)
-//
-#typedef
-dvdtp = (d2var, d3typ1)
-#typedef
-dvdtplst = list( dvdtp )
-#vwtpdef
-dvdtplst_vt = list_vt(dvdtp)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-d3typ1_sort$get
-(dtyp: d3typ1): sort2
-#symload sort with d3typ1_sort$get
-fun
-d3typ1_node$get
-(dtyp: d3typ1): d3typ1_node
-#symload node with d3typ1_node$get
-//
-(* ****** ****** *)
-//
-fun
-d3typ1_fprint
-(dtyp: d3typ1, out0: FILR): void
-#symload fprint with d3typ1_fprint of 1000
-//
-(* ****** ****** *)
-//
-fun
-d3typ1_make_sort$node
-(sort: sort2, node: d3typ1_node): d3typ1
-#symload d3typ1 with d3typ1_make_sort$node
 //
 (* ****** ****** *)
 (* ****** ****** *)
