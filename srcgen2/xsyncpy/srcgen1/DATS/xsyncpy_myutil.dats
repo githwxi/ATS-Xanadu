@@ -48,6 +48,8 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/dynexp2.sats"
 #staload
 "./../SATS/dynexp3.sats"
+#staload
+"./../SATS/xsyncpy.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
