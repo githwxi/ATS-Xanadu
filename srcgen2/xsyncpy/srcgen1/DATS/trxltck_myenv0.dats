@@ -76,6 +76,21 @@ s2typ1_linq
   sort2_linq(t2q0.sort()))
 #symload linq with s2typ1_linq
 //
+fun
+d3typ1_linq
+(t3q0: d3typ1): bool =
+(
+  s2typ1_linq(t3q0.styp()))
+#symload linq with d3typ1_linq
+//
+(* ****** ****** *)
+//
+(*
+fun
+d3typ1_delin
+(t3q0: d3typ1): d3typ1 = ...
+*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -446,7 +461,10 @@ linq(t3q0))
 then t3q0 else
 let
 //
+val t3q1 = t3q0
+(*
 val t3q1 = d3typ1_delin(t3q0)
+*)
 //
 in//let
 //

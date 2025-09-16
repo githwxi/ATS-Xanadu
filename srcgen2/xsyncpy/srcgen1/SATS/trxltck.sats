@@ -104,6 +104,15 @@ envltck_dvar$take
 ( env0:
 ! envltck, dvar: d2var): d3typ1
 //
+(* ****** ****** *)
+//
+fun
+envltck_dtyp$eval
+( env0:
+! envltck, t3q0: d3typ1): s2typ1
+//
+(* ****** ****** *)
+//
 fun
 envltck_dvar$updt
 ( env0:

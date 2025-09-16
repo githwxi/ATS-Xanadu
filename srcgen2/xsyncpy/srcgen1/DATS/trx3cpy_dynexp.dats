@@ -445,22 +445,30 @@ case+
 d3e0.node() of
 //
 |D3Eint(tint) =>
-d3exp1(loc0, t2q0, D3E1int(tint))
+d3exp1
+(loc0, t3q0, D3E1int(tint))
 |D3Ebtf(sbtf) =>
-d3exp1(loc0, t2q0, D3E1btf(sbtf))
+d3exp1
+(loc0, t3q0, D3E1btf(sbtf))
 |D3Echr(tchr) =>
-d3exp1(loc0, t2q0, D3E1chr(tchr))
+d3exp1
+(loc0, t3q0, D3E1chr(tchr))
 |D3Eflt(tflt) =>
-d3exp1(loc0, t2q0, D3E1flt(tflt))
+d3exp1
+(loc0, t3q0, D3E1flt(tflt))
 |D3Estr(tstr) =>
-d3exp1(loc0, t2q0, D3E1str(tstr))
+d3exp1
+(loc0, t3q0, D3E1str(tstr))
 //
 |D3Evar(d2v1) =>
-d3exp1(loc0, t2q0, D3E1var(d2v1))
+d3exp1
+(loc0, t3q0, D3E1var(d2v1))
 |D3Econ(d2c1) =>
-d3exp1(loc0, t2q0, D3E1con(d2c1))
+d3exp1
+(loc0, t3q0, D3E1con(d2c1))
 |D3Ecst(d2c1) =>
-d3exp1(loc0, t2q0, D3E1cst(d2c1))
+d3exp1
+(loc0, t3q0, D3E1cst(d2c1))
 //
 |D3Esapp _ => f0_sapp(d3e0, env0)
 |D3Esapq _ => f0_sapq(d3e0, env0)
@@ -526,7 +534,7 @@ D3Eerrck _ => f0_errck(d3e0, env0)
 |
 _(*otherwise*) =>
 (
-d3exp1(loc0, t2q0, D3E1d3exp(d3e0)))
+d3exp1(loc0, t3q0, D3E1d3exp(d3e0)))
 ) where
 {
 //
@@ -536,8 +544,16 @@ val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
 //
 (* ****** ****** *)
+//
+val t3q0 =
+(
+d3typ1_none$make(t2q0)
+) where
+{
 val t2q0 =
-s2typ_trx3cpy(t2p0, env0)
+s2typ_trx3cpy(t2p0,env0)
+}
+//
 (* ****** ****** *)
 //
 fun
@@ -558,7 +574,7 @@ val d3f0 =
 //
 in//let
 d3exp1
-(loc0, t2q0, D3E1sapp(d3f0, s2es))
+(loc0, t3q0, D3E1sapp(d3f0, s2es))
 end//let
 //
 (* ****** ****** *)
@@ -581,7 +597,7 @@ val d3f0 =
 //
 in//let
 d3exp1
-(loc0, t2q0, D3E1sapq(d3f0, t2ps))
+(loc0, t3q0, D3E1sapq(d3f0, t2ps))
 end//let
 //
 (* ****** ****** *)
@@ -604,7 +620,7 @@ val d3f0 =
 //
 in//let
 d3exp1
-(loc0, t2q0, D3E1tapp(d3f0, s2es))
+(loc0, t3q0, D3E1tapp(d3f0, s2es))
 end//let
 //
 (* ****** ****** *)
@@ -627,7 +643,7 @@ val d3f0 =
 //
 in//let
 d3exp1
-(loc0, t2q0, D3E1tapq(d3f0, tjas))
+(loc0, t3q0, D3E1tapq(d3f0, tjas))
 end//let
 //
 (* ****** ****** *)
@@ -649,7 +665,7 @@ val d3f0 =
   d3exp_trx3cpy(d3f0, env0))
 //
 in//let
-d3exp1(loc0, t2q0, D3E1dap0(d3f0))
+d3exp1(loc0, t3q0, D3E1dap0(d3f0))
 end//let
 //
 (* ****** ****** *)
@@ -676,7 +692,7 @@ in//let
 //
 d3exp1
 ( loc0
-, t2q0, D3E1dapp(d3f0,npf1,d3es))
+, t3q0, D3E1dapp(d3f0,npf1,d3es))
 //
 end//let
 //
@@ -701,7 +717,7 @@ val d3e1 =
 d3exp_trx3cpy(d3e1, env0)
 in//let
 d3exp1
-(loc0, t2q0, D3E1let0(d3cs,d3e1))
+(loc0, t3q0, D3E1let0(d3cs,d3e1))
 end//let
 end(*let*)//end-of-[f0_let0(d3e0,env0)]
 //
@@ -732,7 +748,7 @@ in//let
 //
 d3exp1
 ( loc0
-, t2q0, D3E1ift0(d3e1,dthn,dels))
+, t3q0, D3E1ift0(d3e1,dthn,dels))
 //
 end//let
 //
@@ -761,7 +777,7 @@ in//let
 //
 d3exp1
 ( loc0
-, t2q0, D3E1cas0(tknd,d3e1,d3cs))
+, t3q0, D3E1cas0(tknd,d3e1,d3cs))
 //
 end//let
 //
@@ -788,7 +804,7 @@ val d3e1 =
   d3exp_trx3cpy(d3e1, env0))
 in//let
 d3exp1
-(loc0, t2q0, D3E1seqn(d3es,d3e1))
+(loc0, t3q0, D3E1seqn(d3es,d3e1))
 end//let
 //
 end//let
@@ -811,7 +827,7 @@ d3explst_trx3cpy(d3es, env0)
 in//let
 //
 d3exp1
-(loc0, t2q0, D3E1tup0(npf1,d3es))
+(loc0, t3q0, D3E1tup0(npf1,d3es))
 //
 end//let
 //
@@ -833,7 +849,7 @@ in//let
 //
 d3exp1
 ( loc0
-, t2q0, D3E1tup1(tknd,npf1,d3es))
+, t3q0, D3E1tup1(tknd,npf1,d3es))
 //
 end//let
 //
@@ -863,7 +879,7 @@ val dexp =
 in//let
 d3exp1
 ( loc0
-, t2q0
+, t3q0
 , D3E1lam0
   (tknd, f3as, sres, arrw, dexp))
 end//let
@@ -897,7 +913,7 @@ val dexp =
 in//let
 d3exp1
 ( loc0
-, t2q0
+, t3q0
 , D3E1fix0
   (tknd,dpid,f3as,sres,arrw,dexp))
 end//let
@@ -927,7 +943,7 @@ in//let
 //
 d3exp1
 ( loc0
-, t2q0, D3E1try0(tknd,d3e1,dcls))
+, t3q0, D3E1try0(tknd,d3e1,dcls))
 //
 end(*let*)//end-of-[f0_try0(d3e0,env0)]
 //
@@ -949,7 +965,7 @@ d3exp_trx3cpy(d3e1, env0))
 //
 in//let
 (
-d3exp1(loc0,t2q0,D3E1addr(d3e1)))
+d3exp1(loc0,t3q0,D3E1addr(d3e1)))
 end(*let*)//end-of-[f0_addr(d3e0,env0)]
 //
 fun
@@ -968,7 +984,7 @@ d3exp_trx3cpy(d3e1, env0))
 //
 in//let
 (
-d3exp1(loc0,t2q0,D3E1view(d3e1)))
+d3exp1(loc0,t3q0,D3E1view(d3e1)))
 end(*let*)//end-of-[f0_view(d3e0,env0)]
 //
 fun
@@ -987,7 +1003,7 @@ d3exp_trx3cpy(d3e1, env0))
 //
 in//let
 (
-d3exp1(loc0,t2q0,D3E1flat(d3e1)))
+d3exp1(loc0,t3q0,D3E1flat(d3e1)))
 end(*let*)//end-of-[f0_flat(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -1008,7 +1024,7 @@ d3exp_trx3cpy(d3e1, env0))
 //
 in//let
 (
-d3exp1(loc0,t2q0,D3E1eval(d3e1)))
+d3exp1(loc0,t3q0,D3E1eval(d3e1)))
 end(*let*)//end-of-[f0_eval(d3e0,env0)]
 //
 fun
@@ -1027,7 +1043,7 @@ d3exp_trx3cpy(d3e1, env0))
 //
 in//let
 (
-d3exp1(loc0,t2q0,D3E1fold(d3e1)))
+d3exp1(loc0,t3q0,D3E1fold(d3e1)))
 end(*let*)//end-of-[f0_fold(d3e0,env0)]
 //
 fun
@@ -1046,7 +1062,7 @@ d3exp_trx3cpy(d3e1, env0))
 //
 in//let
 (
-d3exp1(loc0,t2q0,D3E1free(d3e1)))
+d3exp1(loc0,t3q0,D3E1free(d3e1)))
 end(*let*)//end-of-[f0_free(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -1067,7 +1083,7 @@ d3exp_trx3cpy(d3e1, env0))
 //
 in//let
 (
-d3exp1(loc0,t2q0,D3E1dp2tr(d3e1)))
+d3exp1(loc0,t3q0,D3E1dp2tr(d3e1)))
 end(*let*)//end-of-[f0_dp2tr(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -1088,7 +1104,7 @@ d3exp_trx3cpy(d3e1, env0))
 //
 in//let
 (
-d3exp1(loc0,t2q0,D3E1dl0az(d3e1)))
+d3exp1(loc0,t3q0,D3E1dl0az(d3e1)))
 end(*let*)//end-of-[f0_dl0az(d3e0,env0)]
 //
 fun
@@ -1107,7 +1123,7 @@ d3exp_trx3cpy(d3e1, env0))
 //
 in//let
 (
-d3exp1(loc0,t2q0,D3E1dl1az(d3e1)))
+d3exp1(loc0,t3q0,D3E1dl1az(d3e1)))
 end(*let*)//end-of-[f0_dl1az(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -1130,7 +1146,7 @@ d3eclist_trx3cpy(d3cs, env0)
 //
 in//let
 d3exp1
-(loc0, t2q0, D3E1where(d3e1,d3cs))
+(loc0, t3q0, D3E1where(d3e1,d3cs))
 end(*let*)//end-of-[f0_where(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -1154,7 +1170,7 @@ d3exp_trx3cpy(d3er, env0))
 //
 in//let
 d3exp1
-(loc0, t2q0, D3E1assgn(d3el,d3er))
+(loc0, t3q0, D3E1assgn(d3el,d3er))
 end(*let*)//end-of-[f0_assgn(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -1175,7 +1191,7 @@ d3exp_trx3cpy(d3e1, env0))
 //
 in//let
 d3exp1
-(loc0, t2q0, D3E1raise(tknd,d3e1))
+(loc0, t3q0, D3E1raise(tknd,d3e1))
 end(*let*)//end-of-[f0_raise(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -1197,7 +1213,7 @@ d3exp_trx3cpy(d3e1, env0))
 in//let
 (
 d3exp1
-(loc0, t2q0, D3E1l0azy(dsym,d3e1)))
+(loc0, t3q0, D3E1l0azy(dsym,d3e1)))
 end(*let*)//end-of-[f0_l0azy(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -1223,7 +1239,7 @@ in//let
 (
 d3exp1
 (loc0
-,t2q0, D3E1l1azy(dsym, d3e1, d3es)))
+,t3q0, D3E1l1azy(dsym, d3e1, d3es)))
 end(*let*)//end-of-[f0_l1azy(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -1245,7 +1261,7 @@ d3exp_trx3cpy(d3e1, env0))
 //
 in//let
 d3exp1
-(loc0, t2q0, D3E1labck(d3e1,lab2))
+(loc0, t3q0, D3E1labck(d3e1,lab2))
 end(*let*)//end-of-[f0_labck(d3e0,env0)]
 //
 fun
@@ -1262,13 +1278,18 @@ val d3e1 =
 (
 d3exp_trx3cpy(d3e1, env0))
 //
+val t3q1 = d3e1.dtyp()
+val t2q1 = t3q1.styp()
+//
 val t2q2 =
 (
 s2typ_trx3cpy(t2p2, env0))
 //
 in//let
 d3exp1
-(loc0, t2q0, D3E1t2pck(d3e1,t2q2))
+(
+loc0,
+t3q0, D3E1t2pck(d3e1, t2q1, t2q2))
 end(*let*)//end-of-[f0_t2pck(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -1293,7 +1314,7 @@ in//let
 (
 d3exp1
 (loc0
-,t2q0, D3E1annot(d3e1, s1e2, s2e2)))
+,t3q0, D3E1annot(d3e1, s1e2, s2e2)))
 end(*let*)//end-of-[f0_annot(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -1316,7 +1337,7 @@ d3exp_trx3cpy(d3e1, env0))
 in//let
 (
 d3exp1
-(loc0, t2q0, D3E1errck(lvl0,d3e1)))
+(loc0, t3q0, D3E1errck(lvl0,d3e1)))
 end(*let*)//end-of-[f0_errck(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -1333,7 +1354,7 @@ printsln("d3exp_trx3cpy: d3e0 = ", d3e0)
 *)
 //
 val (  ) =
-printsln("d3exp_trx3cpy: t2q0 = ", t2q0)
+printsln("d3exp_trx3cpy: t3q0 = ", t3q0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
