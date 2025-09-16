@@ -268,6 +268,8 @@ This one is NOT recursive!
 datatype
 d3typ1_node =
 //
+|T3Pnone of ()
+//
 |T3Pstyp of s2typ1
 //
 |T3Pdvar of (d2var)
@@ -312,6 +314,12 @@ d3typ1_node$get
 #symload node with d3typ1_node$get
 //
 (* ****** ****** *)
+//
+fun
+d3typ1_none$make(s2typ1): d3typ1
+fun
+d3typ1_styp$make(s2typ1): d3typ1
+//
 (* ****** ****** *)
 //
 fun
@@ -414,7 +422,7 @@ d3pat1_make_lctn$node
 fun
 d3pat1_make_lctn$styp$node
 (loc0: loctn
-,t2p0: s2typ1, node: d3pat1_node): d3pat1
+,t2q0: s2typ1, node: d3pat1_node): d3pat1
 #symload d3pat1 with d3pat1_make_lctn$styp$node
 //
 (* ****** ****** *)
@@ -548,9 +556,13 @@ d3exp1(*lin-thunk*),d3exp1lst(*frees*))
 //
 (* ****** ****** *)
 //
-|D3E1labck of (d3exp1, label)//lb-cast
+// label-cast
+|D3E1labck of (d3exp1, label)
 //
-|D3E1t2pck of (d3exp1, s2typ1)//tp-cast
+// stype-cast
+|D3E1t2pck of
+(
+d3exp1, s2typ1(*t2q1*), s2typ1(*t2q0*))
 //
 (* ****** ****** *)
 //
@@ -574,9 +586,9 @@ d3exp1_lctn$get
 (dexp: d3exp1): loctn
 #symload lctn with d3exp1_lctn$get
 fun
-d3exp1_styp$get
-(dexp: d3exp1): s2typ1
-#symload styp with d3exp1_styp$get
+d3exp1_dtyp$get
+(dexp: d3exp1): d3typ1
+#symload dtyp with d3exp1_dtyp$get
 fun
 d3exp1_node$get
 (dexp: d3exp1): d3exp1_node
@@ -599,7 +611,7 @@ d3exp1_make_lctn$node
 fun
 d3exp1_make_lctn$styp$node
 (loc0: loctn
-,t2p0: s2typ1, node: d3exp1_node): d3exp1
+,t3q0: d3typ1, node: d3exp1_node): d3exp1
 //
 #symload d3exp1 with d3exp1_make_lctn$node
 #symload d3exp1 with d3exp1_make_lctn$styp$node

@@ -98,11 +98,16 @@ s2typ1_linq
 //
 fun
 d3exp1_t2pck
-( d3e0: d3exp1
-, t2q0: s2typ1): d3exp1 =
+(d3e0: d3exp1
+,t2q0: s2typ1
+,env0: !envltck): d3exp1 =
 let
 //
-val t2q1 = d3e0.styp()
+val t3q1 =
+d3e0.dtyp()
+val t2q1 =
+envltck_dtyp$eval
+(  env0 , t3q1  )
 val ubtf =
 s2typ1_lteq(t2q1, t2q0)
 //
@@ -111,17 +116,23 @@ in//let
 if ubtf
 then d3e0 else
 let
-val loc0 = d3e0.lctn()
+//
+val
+loc0 = d3e0.lctn()
+val
+t3q0 =
+d3typ1_styp$make(t2q0)
+//
 in//let
 d3exp1
-(loc0, t2q0, D3E1t2pck(d3e0, t2q0))
+( loc0
+, t3q0, D3E1t2pck(d3e0, t2q1, t2q0))
 end//let
 //
-end//let//end-of-[d3exp1_t2pck(d3e0,t2p0)]
+end//let//end-of-[d3exp1_t2pck(d3e0,t2q0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 #implfun
 d3pat1_trxltck
@@ -193,19 +204,19 @@ d3e0.node() of
 //
 |D3E1int(tint) =>
 d3exp1
-(loc0, t2q0, D3E1int(tint))
+(loc0, t3q0, D3E1int(tint))
 |D3E1btf(sbtf) =>
 d3exp1
-(loc0, t2q0, D3E1btf(sbtf))
+(loc0, t3q0, D3E1btf(sbtf))
 |D3E1chr(tchr) =>
 d3exp1
-(loc0, t2q0, D3E1chr(tchr))
+(loc0, t3q0, D3E1chr(tchr))
 |D3E1flt(tflt) =>
 d3exp1
-(loc0, t2q0, D3E1flt(tflt))
+(loc0, t3q0, D3E1flt(tflt))
 |D3E1str(tstr) =>
 d3exp1
-(loc0, t2q0, D3E1str(tstr))
+(loc0, t3q0, D3E1str(tstr))
 //
 (* ****** ****** *)
 //
@@ -242,7 +253,7 @@ d3exp1
 //
 |_(*otherwise*) =>
 d3exp1
-(loc0, t2q0, D3E1errck(0(*lvl*), d3e0))
+(loc0, t3q0, D3E1errck(0(*lvl*), d3e0))
 //
 (* ****** ****** *)
 //
@@ -253,7 +264,7 @@ end where
 (* ****** ****** *)
 //
 val loc0 = d3e0.lctn()
-val t2q0 = d3e0.styp()
+val t3q0 = d3e0.dtyp()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -269,7 +280,7 @@ D3E1cst
 (   d2c1   ) = d3e0.node()
 //
 in//let
-d3exp1(loc0, t2q0, D3E1cst(d2c1))
+d3exp1(loc0, t3q0, D3E1cst(d2c1))
 end//let//end-of-[f0_cst(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -292,13 +303,13 @@ linq(d2v1))
 then
 (
 d3exp1
-(loc0, t2q0, D3E1var(d2v1)))
+(loc0, t3q0, D3E1var(d2v1)))
 else
 let
-val t2q1 =
+val t3q1 =
 envltck_dvar$take(env0, d2v1)
 in//let
-d3exp1(loc0, t2q1, D3E1var(d2v1))
+d3exp1(loc0, t3q1, D3E1var(d2v1))
 end//let
 //
 end//let//end-of-[f0_var(d3e0,env0)]
@@ -321,7 +332,7 @@ val d3f0 =
 in//let
 (
 d3exp1
-(loc0, t2q0, D3E1tapp(d3f0, s2es)))
+(loc0, t3q0, D3E1tapp(d3f0, s2es)))
 end//let//end-of-[f0_tapp(d3e0,env0)]
 //
 fun
@@ -340,7 +351,7 @@ val d3f0 =
 in//let
 (
 d3exp1
-(loc0, t2q0, D3E1tapq(d3f0, t2js)))
+(loc0, t3q0, D3E1tapq(d3f0, t2js)))
 end//let//end-of-[f0_tapq(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -357,9 +368,12 @@ D3E1dap0
 //
 val d3f0 =
 (
-  d3exp1_trxltck(d3f0, env0))
+d3exp1_trxltck(d3f0, env0))
 //
-val t2f0 = d3f0.styp((*void*))
+val t3f0 = d3f0.dtyp((*0*))
+val t2f0 =
+(
+envltck_dtyp$eval(env0, t3f0))
 //
 // (*
 val (  ) =
@@ -374,14 +388,20 @@ t2f0.node() of
 |T2P1fun1
 (f2cl
 ,npf1
-,t2ps, t2p1) =>
+,t2qs, t2q1) =>
 let
-d3exp1(loc0, t2p1, D3E1dap0(d3f0))
+//
+val
+t3q1 =
+d3typ1_styp$make(t2q1)
+//
+in//let
+d3exp1(loc0, t3q1, D3E1dap0(d3f0))
 end//let
 |_(*non-T2P1fun*) =>
 (
 d3exp1(
-loc0,t2q0,D3E1errck(0(*lvl*),d3e0)))
+loc0,t3q0,D3E1errck(0(*lvl*),d3e0)))
 //
 end//let//end-of-[f0_dap0(d3e0,env0)]
 //
@@ -402,7 +422,11 @@ val d3f0 =
 (
   d3exp1_trxltck(d3f0, env0))
 //
-val t2f0 = d3f0.styp((*void*))
+val
+t3f0 = d3f0.dtyp((*void*))
+val
+t2f0 =
+envltck_dtyp$eval(env0, t3f0)
 //
 // (*
 val (  ) =
@@ -417,24 +441,29 @@ t2f0.node() of
 |T2P1fun1
 (f2cl
 ,npf1
-,t2ps, t2p1) =>
+,t2qs, t2q1) =>
 let
 //
 val d3es =
 loctn$d3exp1lst_tpcks$trxltck
-(loc0, d3es(*args*), t2ps, env0)
+(loc0, d3es(*args*), t2qs, env0)
 //
 in//let
 //
+let
+val
+t3q1 = d3typ1_styp$make(t2q1)
+in//let
 d3exp1
 (loc0
-,t2p1, D3E1dapp(d3f0, npf1, d3es))
+,t3q1, D3E1dapp(d3f0, npf1, d3es))
+end//let
 //
 end//let
 |_(*non-T2P1fun*) =>
 (
 d3exp1(
-loc0,t2q0,D3E1errck(0(*lvl*),d3e0)))
+loc0,t3q0,D3E1errck(0(*lvl*),d3e0)))
 //
 end//let//end-of-[f0_dapp(d3e0,env0)]
 //
@@ -460,14 +489,14 @@ val d3e1 =
 (
   d3exp1_trxltck(d3e1, env0))
 //
-val t2q1 = d3e1.styp((*void*))
+val t3q1 = d3e1.dtyp((*void*))
 //
 val (  ) = envltck_poplet0(env0)
 //
 in//
 //
 d3exp1
-(loc0, t2q1, D3E1let0(dcls, d3e1))
+(loc0, t3q1, D3E1let0(dcls, d3e1))
 //
 end//let//end-of-[f0_let0(d3e0, env0)]
 //
@@ -499,7 +528,7 @@ in//let
 //
 d3exp1
 (loc0
-,t2q0, D3E1ift0(d3e1, dthn, dels))
+,t3q0, D3E1ift0(d3e1, dthn, dels))
 //
 end//let//end-of-[f0_ift0(d3e0, env0)]
 //
@@ -520,7 +549,7 @@ val d3e1 =
   d3exp1_trxltck(d3e1, env0))
 //
 in//let
-d3exp1(loc0, t2q0, D3E1flat(d3e1))
+d3exp1(loc0, t3q0, D3E1flat(d3e1))
 end//let//end-of-[f0_flat(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -550,7 +579,7 @@ val d3el =
 //
 in//let
 d3exp1
-(loc0, t2q0, D3E1assgn(d3el, d3er))
+(loc0, t3q0, D3E1assgn(d3el, d3er))
 end//let//end-of-[f0_assgn(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -589,49 +618,50 @@ prerrsln("d31ift_trxltck: dopt = ", dopt)
 //
 #implfun
 loctn$d3exp1lst_tpcks$trxltck
-  (loc0, d3es, t2ps, env0) =
+  (loc0, d3es, t2qs, env0) =
 (
-f0_d3es$t2ps(d3es, t2ps, env0)
+f0_d3es$t2qs(d3es, t2qs, env0)
 ) where
 {
 //
 fun
-f0_dexp$styp
+f0_dexp$t2q0
 (d3e0: d3exp1
 ,t2q0: s2typ1
 ,env0: !envltck): d3exp1 =
 (
-d3exp1_t2pck(d3e0, t2q0)) where
+d3exp1_t2pck
+(d3e0, t2q0, env0)) where
 {
 //
 val
 d3e0 = d3exp1_trxltck(d3e0, env0) }
 //
 fun
-f0_d3es$t2ps
+f0_d3es$t2qs
 (d3es: d3exp1lst
-,t2ps: s2typ1lst
+,t2qs: s2typ1lst
 ,env0: !envltck): d3exp1lst =
 (
 case+ d3es of
 |list_nil() =>
 (
-case- t2ps of
+case- t2qs of
 |list_nil() => list_nil()
 )
 |list_cons
 (d3e1, d3es) =>
 (
-case- t2ps of
-|list_cons(t2p1, t2ps) =>
+case- t2qs of
+|list_cons(t2q1, t2qs) =>
 (list_cons(d3e1, d3es)) where
 {
 val d3e1 =
-  f0_dexp$styp(d3e1, t2p1, env0)
+  f0_dexp$t2q0(d3e1, t2q1, env0)
 val d3es =
-  f0_d3es$t2ps(d3es, t2ps, env0) }
+  f0_d3es$t2qs(d3es, t2qs, env0) }
 )
-)(*case+*)//end-of-[f0_d3es$t2ps(d3es,t2ps,env0)]
+)(*case+*)//end-of-[f0_d3es$t2qs(d3es,t2qs,env0)]
 //
 }(*where*)//end-of-[loctn$d3exp1lst_tpcks$trxltck(...)]
 //

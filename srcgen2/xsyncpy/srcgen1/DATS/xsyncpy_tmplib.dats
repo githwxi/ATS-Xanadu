@@ -367,9 +367,9 @@ prints("TEQD3EXP1some(",tok0,";",d3e1,")")
 //
 #impltmp
 g_print
-<s2typ1>(t2p0) =
+<s2typ1>(t2q0) =
 (
-  s2typ1_fprint(t2p0, g_print$out<>((*0*))))
+  s2typ1_fprint(t2q0, g_print$out<>((*0*))))
 //
 (* ****** ****** *)
 (* ****** ****** *)

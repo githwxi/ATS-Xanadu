@@ -209,10 +209,10 @@ s2typ1_make_sort$node
 //
 fun
 s2typ1_fprint
-(styp: s2typ1, out0: FILR): void
+(t2q0: s2typ1, out0: FILR): void
 fun
 l2t2p1_fprint
-(lt2p: l2t2p1, out0: FILR): void
+(lt2q: l2t2p1, out0: FILR): void
 //
 #symload fprint with s2typ1_fprint of 1000
 #symload fprint with l2t2p1_fprint of 1000

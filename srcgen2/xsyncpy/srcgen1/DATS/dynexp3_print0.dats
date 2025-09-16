@@ -62,7 +62,13 @@ g_print$out<>() = out0
 //
 in//let
 //
-case+ t3p0 of
+case+
+t3p0.node() of
+//
+|T3Pnone() =>
+(
+prints("T3Pnone(", ")"))
+//
 |T3Pstyp(t2p1) =>
 (
 prints("T3Pstyp(", t2p1, ")"))
@@ -494,19 +500,22 @@ prints
 (d3e1, lab2) =>
 let
 val
-t2p1 = d3e1.styp() in
+t3q1 = d3e1.dtyp() in
 (print("D3E1labck(")
-;prints(d3e1,"(",t2p1,");",lab2,")"))
+;prints(d3e1,"(",t3q1,");",lab2,")"))
 endlet//end-of-[D3E1labck(d3e1, lab2)]
 //
 |D3E1t2pck
-(d3e1, t2p2) =>
+(d3e1
+,t2q1, t2q2) =>
 let
 val
-t2p1 = d3e1.styp() in
-(print("D3E1t2pck(")
-;prints(d3e1,"(",t2p1,");",t2p2,")"))
-endlet//end-of-[D3E1t2pck(d3e1, t2p2)]
+t3q1 = d3e1.dtyp() in
+(
+print("D3E1t2pck(");
+prints
+(d3e1,"(",t3q1,");",t2q1,";",t2q2,")"))
+endlet//end-of-[D3E1t2pck(d3e1,t2q1,t2q2)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

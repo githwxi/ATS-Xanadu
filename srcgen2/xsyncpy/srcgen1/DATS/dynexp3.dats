@@ -83,8 +83,8 @@ let
 val+
 D3TYP1
 ( loc0
-, t2p0
-, node) = dtyp in t2p0
+, t2q0
+, node) = dtyp in t2q0
 end//end-of-[d3typ1_styp$get]
 //
 //
@@ -95,7 +95,7 @@ let
 val+
 D3TYP1
 ( loc0
-, t2p0
+, t2q0
 , node) = dtyp in node
 end//end-of-[d3typ1_node$get]
 //
@@ -132,7 +132,7 @@ let
 val+
 D3PAT1
 ( loc0
-, t2p0
+, t2q0
 , node) = dpat in loc0
 end//end-of-[d3pat1_lctn$get]
 //
@@ -143,8 +143,8 @@ let
 val+
 D3PAT1
 ( loc0
-, t2p0
-, node) = dpat in t2p0
+, t2q0
+, node) = dpat in t2q0
 end//end-of-[d3pat1_styp$get]
 //
 #implfun
@@ -154,7 +154,7 @@ let
 val+
 D3PAT1
 ( loc0
-, t2p0
+, t2q0
 , node) = dpat in node
 end//end-of-[d3pat1_node$get]
 //
@@ -166,16 +166,16 @@ d3pat1_make_lctn$node
 ( loc0, node ) =
 let
 val
-t2p0 = s2typ_none0((*0*))
+t2q0 = s2typ_none0((*0*))
 in//let
-  D3PAT1(loc0, t2p0, node) end
+  D3PAT1(loc0, t2q0, node) end
 *)
 //
 #implfun
 d3pat1_make_lctn$styp$node
-( loc0, t2p0, node ) =
+( loc0, t2q0, node ) =
 let
-  D3PAT1(loc0, t2p0, node) end
+  D3PAT1(loc0, t2q0, node) end
 //
 (* ****** ****** *)
 //
@@ -190,12 +190,12 @@ datatype
 d3exp1 =
 D3EXP1 of
 (loctn
-,s2typ1, d3exp1_node)
+,d3typ1, d3exp1_node)
 datavwtp
 d3exp1_vt =
 D3EXP1_vt of
 (loctn
-,s2typ1, d3exp1_node)
+,d3typ1, d3exp1_node)
 //
 #absimpl d3exp1_tbox = d3exp1
 //
@@ -210,19 +210,19 @@ let
 val+
 D3EXP1
 ( loc0
-, t2p0
+, t3q0
 , node) = dexp in loc0
 end//end-of-[d3exp1_lctn$get]
 //
 #implfun
-d3exp1_styp$get
+d3exp1_dtyp$get
   ( dexp ) =
 let
 val+
 D3EXP1
 ( loc0
-, t2p0
-, node) = dexp in t2p0
+, t3q0
+, node) = dexp in t3q0
 end//end-of-[d3exp1_styp$get]
 //
 #implfun
@@ -232,7 +232,7 @@ let
 val+
 D3EXP1
 ( loc0
-, t2p0
+, t3q0
 , node) = dexp in node
 end//end-of-[d3exp1_node$get]
 //
@@ -244,16 +244,16 @@ d3exp1_make_lctn$node
 ( loc0, node ) =
 let
 val
-t2p0 = s2typ_none0((*0*))
+t3q0 = d3typ1_none0((*0*))
 in//let
-  D3EXP1(loc0, t2p0, node) end
+  D3EXP1(loc0, t3q0, node) end
 *)
 //
 #implfun
 d3exp1_make_lctn$styp$node
-( loc0, t2p0, node ) =
+( loc0, t3q0, node ) =
 let
-  D3EXP1(loc0, t2p0, node) end
+  D3EXP1(loc0, t3q0, node) end
 //
 (* ****** ****** *)
 //
