@@ -65,36 +65,37 @@ in//let
 case+
 t3p0.node() of
 //
-|T3Pnone() =>
+|T3P1none() =>
 (
-prints("T3Pnone(", ")"))
+prints("T3P1none(", ")"))
 //
-|T3Pstyp(t2p1) =>
+|T3P1styp(t2p1) =>
 (
-prints("T3Pstyp(", t2p1, ")"))
+prints("T3P1styp(", t2p1, ")"))
 //
-|T3Pdvar(dvar) =>
+|T3P1dvar(dvar) =>
 (
-prints("T3Pdvar(", dvar, ")"))
+prints("T3P1dvar(", dvar, ")"))
 //
-|T3Pdcon(dcon, d2vs) =>
+|T3P1dcon(dcon, d2vs) =>
 (
 prints
-("T3Pdcon(", dcon, ";", d2vs, ")"))
+("T3P1dcon(", dcon, ";", d2vs, ")"))
 //
-|T3Ptup0(npf1, d2vs) =>
+|T3P1tup0(npf1, d2vs) =>
 (
 prints
-("T3Ptup0(", npf1, ";", d2vs, ")"))
-|T3Ptup1(tknd, npf1, d2vs) =>
+("T3P1tup0(", npf1, ";", d2vs, ")"))
+|T3P1tup1(tknd, npf1, d2vs) =>
 (
 prints
-("T3Ptup1(", tknd,";",npf1,";",d2vs,")"))
+("T3P1tup1(", tknd,";",npf1,";",d2vs,")"))
 //
 (*
-|T3Prcd2(tknd, npf1, ldvs) =>
+|T3P1rcd2(tknd, npf1, ldvs) =>
+(
 prints
-("T3Prcd2(", tknd, ";", npf1, ";", ldvs, ")")
+("T3P1rcd2(", tknd, ";",npf1,";",ldvs,")"))
 *)
 //
 end(*let*)//end-of-[d3typ1_fprint(t3p0,out0)]

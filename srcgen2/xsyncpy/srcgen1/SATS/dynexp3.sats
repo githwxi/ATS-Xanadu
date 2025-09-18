@@ -268,19 +268,19 @@ This one is NOT recursive!
 datatype
 d3typ1_node =
 //
-|T3Pnone of ()
+|T3P1none of ()
 //
-|T3Pstyp of s2typ1
+|T3P1styp of s2typ1
 //
-|T3Pdvar of (d2var)
-|T3Pdcon of (d2con, d2varlst)
+|T3P1dvar of (d2var)
+|T3P1dcon of (d2con, d2varlst)
 //
-|T3Ptup0 of
+|T3P1tup0 of
 (sint(*npf*), d2varlst)
-|T3Ptup1 of
+|T3P1tup1 of
 (token, sint(*npf*), d2varlst)
 (*
-|T3Prcd2 of
+|T3P1rcd2 of
 (token, sint(*npf*), l3d2vlst)
 *)
 //
@@ -314,6 +314,10 @@ d3typ1_node$get
 #symload node with d3typ1_node$get
 //
 (* ****** ****** *)
+//
+fun
+d3typ1_make_styp$node
+(s2typ1, d3typ1_node): d3typ1
 //
 fun
 d3typ1_none$make(s2typ1): d3typ1
@@ -593,6 +597,11 @@ fun
 d3exp1_node$get
 (dexp: d3exp1): d3exp1_node
 #symload node with d3exp1_node$get
+//
+fun
+d3exp1_styp$get
+(dexp: d3exp1): s2typ1
+#symload styp with d3exp1_styp$get
 //
 (* ****** ****** *)
 //

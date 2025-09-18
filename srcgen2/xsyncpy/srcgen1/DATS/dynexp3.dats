@@ -57,18 +57,31 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-09-17:
+A convenience function
+*)
+#implfun
+d3exp1_styp$get
+  ( dexp ) =
+let
+val t3q0 =
+dexp.dtyp() in t3q0.styp()
+end//end-of-[d3exp1_dtyp$get]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 local
 //
 datatype
 d3typ1 =
 D3TYP1 of
-(loctn
-,s2typ1, d3typ1_node)
+(s2typ1, d3typ1_node)
 datavwtp
 d3pat1_vt =
 D3TYP1_vt of
-(loctn
-,s2typ1, d3typ1_node)
+(s2typ1, d3typ1_node)
 //
 #absimpl d3typ1_tbox = d3typ1
 //
@@ -82,8 +95,7 @@ d3typ1_styp$get
 let
 val+
 D3TYP1
-( loc0
-, t2q0
+( t2q0
 , node) = dtyp in t2q0
 end//end-of-[d3typ1_styp$get]
 //
@@ -94,14 +106,35 @@ d3typ1_node$get
 let
 val+
 D3TYP1
-( loc0
-, t2q0
+( t2q0
 , node) = dtyp in node
 end//end-of-[d3typ1_node$get]
 //
 (* ****** ****** *)
 //
+#implfun
+d3typ1_make_styp$node
+  (t2q0, node) = D3TYP1(t2q0, node)
+//
+(* ****** ****** *)
+//
 endloc (*local*) // end of [local(d3typ1)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3typ1_none$make
+  (  t2q0  ) =
+let
+val node = T3P1none() in
+  d3typ1_make_styp$node(t2q0, node) end
+//
+#implfun
+d3typ1_styp$make
+  (  t2q0  ) =
+let
+val node = T3P1styp(t2q0) in
+  d3typ1_make_styp$node(t2q0, node) end
 //
 (* ****** ****** *)
 (* ****** ****** *)

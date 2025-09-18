@@ -264,7 +264,13 @@ end where
 (* ****** ****** *)
 //
 val loc0 = d3e0.lctn()
-val t3q0 = d3e0.dtyp()
+//
+val t3q0 =
+(
+d3typ1_styp$make(t2q0)
+) where
+{
+val t2q0 = d3e0.styp() }
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -481,6 +481,26 @@ end//let//end-of-(envltck_dvar$take(env0,...))
 (* ****** ****** *)
 //
 #implfun
+envltck_dtyp$eval
+  (env0, t3q0) =
+(
+case+
+t3q0.node() of
+//
+|T3P1styp(t2q0) => t2q0
+//
+) where
+{
+//
+val () =
+prerrsln("envltck_dtyp$eval: t3q0 = ", t3q0)
+//
+}(*where*)//end-of-[envltck_dtyp$eval(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 envltck_dvar$updt
 (env0, d2v0, t3q1) =
 (

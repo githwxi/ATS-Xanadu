@@ -33,7 +33,7 @@ dynexp2.sats \
 dynexp3.sats \
 trx3cpy.sats \
 trxltck.sats \
-prdltck.sats \
+tryltck.sats \
 
 ########################################################################
 
@@ -61,6 +61,9 @@ trxltck_myenv0.dats \
 trxltck_utils0.dats \
 trxltck_dynexp.dats \
 trxltck_decl00.dats \
+tryltck.dats \
+tryltck_dynexp.dats \
+tryltck_decl00.dats \
 
 ########################################################################
 ########################################################################
