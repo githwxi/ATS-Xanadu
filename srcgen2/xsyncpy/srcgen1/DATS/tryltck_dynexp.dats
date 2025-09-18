@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Wed Jul  9 02:28:26 PM EDT 2025
+Thu Sep 18 02:05:37 AM EDT 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,35 +39,38 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
 #staload
 "./../SATS/statyp2.sats"
 #staload
 "./../SATS/dynexp3.sats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-d3pat1_prdltck(d3e0: d3pat1): d3pat1
-//
-fun
-d3exp1_prdltck(d3e0: d3exp1): d3exp1
+#staload
+"./../SATS/tryltck.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-d3ecl1_prdltck(d3cl: d3ecl1): d3ecl1
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/staexp2.sats"
+#staload
+"./../../../SATS/statyp2.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_prdltck.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_tryltck_dynexp.dats] *)
 (***********************************************************************)

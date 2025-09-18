@@ -376,6 +376,15 @@ g_print
 //
 #impltmp
 g_print
+<d3typ1>(dtyp) =
+(
+  d3typ1_fprint(dtyp, g_print$out<>((*0*))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <d3pat1>(dpat) =
 (
   d3pat1_fprint(dpat, g_print$out<>((*0*))))
