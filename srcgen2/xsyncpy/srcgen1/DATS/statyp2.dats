@@ -45,10 +45,26 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../../../SATS/staexp2.sats"
+#staload
 "./../../../SATS/statyp2.sats"
 //
 #symload sort with s2typ_get_sort
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2typ1_none0
+  ((*void*)) =
+(
+s2typ1_make_sort$node
+(s2t0, T2P1none0(*0*)))
+where
+{
+  val s2t0 = sort2_none0()
+}(*where*)//end-of-[s2typ1_none0]
+//
 (* ****** ****** *)
 //
 #implfun
