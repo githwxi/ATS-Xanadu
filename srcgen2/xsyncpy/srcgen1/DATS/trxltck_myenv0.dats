@@ -408,8 +408,7 @@ end(*let*)//end-of-(envltck_popift0(env0))
 //
 fun
 dtpstk_dvsift0
-( kxs:
-& dtpstk >> _)
+( kxs: !dtpstk )
 : list_vt(d2var) =
 let
 //
@@ -441,6 +440,67 @@ list_vt_mergesort0(
   loop(kxs, list_vt_nil(*void*))))
 //
 end(*let*)//end-of-[dtpstk_dvsift0(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3typ1_none0
+( (*void*) ) =
+d3typ1_none$make
+(s2typ1_none0((*0*)))
+//
+fun
+dtpstk_dvar$find
+( stk0:
+! dtpstk
+, d2v0: d2var): d3typ1 =
+(
+case+ stk0 of
+|
+dtpstk_nil
+((*void*)) =>
+d3typ1_none0((*0*))
+|
+dtpstk_lam0
+(  stk1  ) =>
+dtpstk_dvar$find(stk1, d2v0)
+|dtpstk_let0
+(  stk1  ) =>
+dtpstk_dvar$find(stk1, d2v0)
+|
+dtpstk_ift0
+(  stk1  ) =>
+dtpstk_dvar$find(stk1, d2v0)
+|
+dtpstk_cas0
+(  stk1  ) =>
+dtpstk_dvar$find(stk1, d2v0)
+//
+|
+dtpstk_cons
+(d2v1, t3q1, stk1) =>
+(
+if
+(d2v0 = d2v1)
+then ( t3q1 )
+else dtpstk_dvar$find(stk1, d2v0))
+//
+)(*case+*)//end-of-(dtpstk_dvar$find(...))
+//
+(* ****** ****** *)
+//
+#implfun
+envltck_dvar$find
+  (env0, dvar) =
+let
+val+
+ENVLTCK
+(dtpstk, stkmap) = env0
+in//let
+(
+  dtpstk_dvar$find(dtpstk, dvar))
+end//let//end-of-[envltck_dvar$find(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -487,7 +547,10 @@ envltck_dtyp$eval
 case+
 t3q0.node() of
 //
-|T3P1styp(t2q0) => t2q0
+|T3P1none() =>
+(
+s2typ1_none0((*void*)))
+|T3P1styp(t2q0) => (t2q0)
 //
 ) where
 {

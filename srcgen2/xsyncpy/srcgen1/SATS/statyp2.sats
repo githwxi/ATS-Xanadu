@@ -195,6 +195,9 @@ s2typ1lst_lteq
 (* ****** ****** *)
 //
 fun
+s2typ1_none0(): s2typ1
+//
+fun
 s2typ1_make_s2typ(styp: s2typ): s2typ1
 //
 (* ****** ****** *)

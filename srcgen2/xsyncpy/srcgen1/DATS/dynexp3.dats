@@ -57,6 +57,15 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+d3typ1_none0() =
+(
+d3typ1_none$make
+(s2typ1_none0((*void*))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2025-09-17:
 A convenience function

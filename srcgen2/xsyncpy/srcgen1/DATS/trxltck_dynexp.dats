@@ -303,6 +303,7 @@ D3E1var
 //
 in//let
 //
+(*
 if
 not(
 linq(d2v1))
@@ -311,6 +312,7 @@ then
 d3exp1
 (loc0, t3q0, D3E1var(d2v1)))
 else
+*)
 let
 val t3q1 =
 envltck_dvar$take(env0, d2v1)
