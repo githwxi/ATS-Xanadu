@@ -87,6 +87,28 @@ folditm$fopr<x0><r0>(r0, x0) = list_vt_cons(x0, r0)
 }
 //
 (* ****** ****** *)
+//
+#implfun
+d3gpt1_get_d2vs
+  (  dgpt  ) =
+(
+case+
+dgpt.node() of
+|D3GPT1pat(d3p0) => d3p0.d2vs()
+|D3GPT1gua(d3p0, _) => d3p0.d2vs()
+)(*case+*)//end-of-[d3gpt1_get_d2vs(dcls)]
+//
+#implfun
+d3cls1_get_d2vs
+  (  dcls  ) =
+(
+case+
+dcls.node() of
+|D3CLS1gpt(dgpt) => dgpt.d2vs()
+|D3CLS1cls(dgpt, _) => dgpt.d2vs()
+)(*case+*)//end-of-[d3cls1_get_d2vs(dcls)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
