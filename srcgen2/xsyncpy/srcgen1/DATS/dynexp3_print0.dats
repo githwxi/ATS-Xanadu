@@ -287,8 +287,20 @@ prints("D3E1str(", tstr, ")"))
 //
 |D3E1var
 (   d2v1   ) =>
-(
-prints("D3E1var(", d2v1, ")"))
+let
+//
+val t3q0 = d3e0.dtyp()
+//
+(*
+val () =
+prints("D3E1var(", d2v1 ,")")
+*)
+//
+val () =
+prints
+("D3E1var(",d2v1,":",t3q0,")")
+//
+end//let//end-of-[D3E1var(d2v1)]
 //
 (* ****** ****** *)
 //
