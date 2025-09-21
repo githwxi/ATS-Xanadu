@@ -161,6 +161,16 @@ envltck_vtsift0(!envltck): dvdtplst
 (* ****** ****** *)
 //
 fun
+envltck_dvar$push
+(env0: !envltck, dvar: d2var): void
+fun
+envltck_dpat$push
+(env0: !envltck, d3p0: d3pat1): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3pat1_trxltck
 (d3p0: d3pat1, env0: !envltck): void
 //

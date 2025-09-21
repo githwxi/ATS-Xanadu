@@ -578,6 +578,74 @@ dtpstk := dtpstk_cons(d2v0, t3q1, dtpstk))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+envltck_dvar$push
+  (env0, dvar) =
+let
+//
+  val t2p1 =
+  d2var_get_styp(dvar)
+  val t2q1 =
+  s2typ1_make_s2typ(t2p1)
+  val t3q1 = d3typ1_styp$make(t2q1)
+//
+in//let
+//
+case+ env0 of
+| ENVLTCK
+(
+!dtpstk, stkmap) =>
+(
+dtpstk := dtpstk_cons(dvar, t3q1, dtpstk))
+//
+end(*let*)//end-of-(envltck_dvar$updt(env0,...))
+//
+(* ****** ****** *)
+//
+#implfun
+envltck_dpat$push
+  (env0, dpat) =
+(
+case+
+dpat.node() of
+//
+|D3P1var
+(   d2v1   ) =>
+envltck_dvar$push(env0, d2v1)
+//
+|D3P1dapp
+(d3f0
+,npf1, d3ps) => f0_d3ps(env0, d3ps)
+//
+|_(* otherwise *) => (  (*void*)  )
+//
+) where
+{
+//
+fun
+f0_d3p0
+( env0:
+! envltck
+, d3p0: d3pat1): void =
+(
+envltck_dpat$push(env0, d3p0))
+//
+fun
+f0_d3ps
+( env0:
+! envltck
+, d3ps: d3pat1lst): void =
+(
+case+ d3ps of
+|list_nil() => ()
+|list_cons(d3p1, d3ps) =>
+(f0_d3p0(env0, d3p1); f0_d3ps(env0, d3ps)))
+//
+}(*where*)//end-of-(envltck_dvar$updt(env0,...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trxltck_myenv0.dats] *)
 (***********************************************************************)
