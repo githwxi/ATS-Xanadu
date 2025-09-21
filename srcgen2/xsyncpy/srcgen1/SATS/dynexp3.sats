@@ -994,7 +994,16 @@ d2varlst_vt = list_vt(d2var)
 fun
 d3pat1_get_d2vs
 ( dpat: d3pat1 ): d2varlst_vt
+fun
+d3gpt1_get_d2vs
+( dgpt: d3gpt1 ): d2varlst_vt
+fun
+d3cls1_get_d2vs
+( dcls: d3cls1 ): d2varlst_vt
+//
 #symload d2vs with d3pat1_get_d2vs
+#symload d2vs with d3gpt1_get_d2vs
+#symload d2vs with d3cls1_get_d2vs
 //
 (* ****** ****** *)
 //
