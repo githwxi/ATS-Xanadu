@@ -67,9 +67,14 @@ XATSOPT "./../../.."
 #staload "./../SATS/intrep0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#symload lctn with d2con_get_lctn
+#symload lctn with d2cst_get_lctn
+//
 #symload lctn with d3pat_get_lctn
 #symload lctn with d3exp_get_lctn
 #symload lctn with d3ecl_get_lctn
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with i0pat_get_lctn
@@ -249,11 +254,20 @@ i0e0.node() of
 (* ****** ****** *)
 //
 |I0Econ(d2c) =>
-(
- prints("I0Econ(", d2c, ")"))
+let
+val loc = d2c.lctn()
+in//let
+prints
+("I0Econ(",d2c,"(",loc,")",")")
+end(*let*)//end-of-[I0Econ(d2c)]
+//
 |I0Ecst(d2c) =>
-(
- prints("I0Ecst(", d2c, ")"))
+let
+val loc = d2c.lctn()
+in//let
+prints
+("I0Ecst(",d2c,"(",loc,")",")")
+end(*let*)//end-of-[I0Ecst(d2c)]
 //
 (* ****** ****** *)
 //

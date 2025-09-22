@@ -54,8 +54,11 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../../../SATS/dynexp2.sats"
+#staload
 "./../../../SATS/dynexp3.sats"
 //
+#symload styp with d2var_get_styp
 #symload node with d3ecl_get_node
 //
 (* ****** ****** *)
@@ -392,8 +395,14 @@ d3vardcl_trx3cpy
 //
 val loc0 =
 d3vardcl_get_lctn(dvar)
+//
 val dpid =
 d3vardcl_get_dpid(dvar)
+val t2q1 =
+s2typ_trx3cpy
+(
+dpid.styp((*0*)), env0)
+//
 val vpid =
 d3vardcl_get_vpid(dvar)
 val sres =
@@ -406,7 +415,8 @@ teqd3exp_trx3cpy(dini, env0)
 //
 in//let
 (
-d3vardcl1(loc0, dpid, vpid, sres, dini))
+d3vardcl1
+(loc0, dpid, t2q1, vpid, sres, dini))
 end//let
 (*let*)//end-of-[d3vardcl_trx3cpy(dvar,env0)]
 //

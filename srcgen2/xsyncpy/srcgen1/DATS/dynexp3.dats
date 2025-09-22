@@ -553,6 +553,7 @@ d3vardcl1 =
 D3VARDCL1 of
 ( loc_t
 , d2var
+, s2typ1
 , d2varopt
 , s2expopt, teqd3exp1)
 //
@@ -567,7 +568,9 @@ d3vardcl1_lctn$get
 val+
 D3VARDCL1
 ( lctn
-, dpid, vpid
+, dpid
+, t2q1
+, vpid
 , sres, dini) = dvar in lctn end
 //
 #implfun
@@ -576,8 +579,21 @@ d3vardcl1_dpid$get
 val+
 D3VARDCL1
 ( lctn
-, dpid, vpid
+, dpid
+, t2q1
+, vpid
 , sres, dini) = dvar in dpid end
+//
+#implfun
+d3vardcl1_styp$get
+  (  dvar  ) = let
+val+
+D3VARDCL1
+( lctn
+, dpid
+, t2q1
+, vpid
+, sres, dini) = dvar in t2q1 end
 //
 #implfun
 d3vardcl1_vpid$get
@@ -585,7 +601,9 @@ d3vardcl1_vpid$get
 val+
 D3VARDCL1
 ( lctn
-, dpid, vpid
+, dpid
+, t2q1
+, vpid
 , sres, dini) = dvar in vpid end
 //
 #implfun
@@ -594,7 +612,8 @@ d3vardcl1_sres$get
 val+
 D3VARDCL1
 ( lctn
-, dpid, vpid
+, dpid
+, t2q1, vpid
 , sres, dini) = dvar in sres end
 //
 #implfun
@@ -603,7 +622,9 @@ d3vardcl1_dini$get
 val+
 D3VARDCL1
 ( lctn
-, dpid, vpid
+, dpid
+, t2q1
+, vpid
 , sres, dini) = dvar in dini end
 //
 (* ****** ****** *)
@@ -611,9 +632,10 @@ D3VARDCL1
 #implfun
 d3vardcl1_make_args
 ( lctn
-, dpid, vpid, sres, dini) =
+, dpid, t2q1, vpid, sres, dini) =
 (
-D3VARDCL1(lctn, dpid, vpid, sres, dini))
+D3VARDCL1
+(lctn, dpid, t2q1, vpid, sres, dini))
 //
 (* ****** ****** *)
 //

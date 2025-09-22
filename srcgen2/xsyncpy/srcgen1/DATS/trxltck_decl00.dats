@@ -370,13 +370,21 @@ d3valdcl1_tdxp$get(dval)
 val wsxp =
 d3valdcl1_wsxp$get(dval)
 //
-val (  ) =
+(*
+val (  ) = 
 (
   d3pat1_trxltck(dpat, env0))
+*)
 //
 val tdxp =
 (
   teqd3exp1_trxltck(tdxp, env0))
+//
+// HX-2025-09-21: non-recursive!
+//
+val (  ) =
+(
+  envltck_dpat$push(env0, dpat))
 //
 in//let
 d3valdcl1_make_args(loc0,dpat,tdxp,wsxp)
@@ -391,8 +399,12 @@ d3vardcl1_trxltck
 //
 val loc0 =
 d3vardcl1_lctn$get(dvar)
+//
 val dpid =
 d3vardcl1_dpid$get(dvar)
+val t2q1 =
+d3vardcl1_styp$get(dvar)
+//
 val vpid =
 d3vardcl1_vpid$get(dvar)
 val sres =
@@ -403,9 +415,22 @@ d3vardcl1_dini$get(dvar)
 val dini =
 teqd3exp1_trxltck(dini, env0)
 //
-in//let
+val (  ) =
 (
-d3vardcl1(loc0, dpid, vpid, sres, dini))
+case+ dini of
+|
+TEQD3EXP1none() =>
+let
+val t2q1 = s2typ1_t0pize(t2q1)
+in//let
+envltck_dvar$push(env0, dpid, t2q1)
+end//let
+|
+TEQD3EXP1some _ =>
+envltck_dvar$push(env0, dpid, t2q1))
+//
+in//let
+d3vardcl1(loc0,dpid,t2q1,vpid,sres,dini)
 end//let
 (*let*)//end-of-[d3vardcl1_trxltck(dvar,env0)]
 //
