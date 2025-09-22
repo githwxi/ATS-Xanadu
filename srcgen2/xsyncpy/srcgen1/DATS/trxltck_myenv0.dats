@@ -580,14 +580,10 @@ dtpstk := dtpstk_cons(d2v0, t3q1, dtpstk))
 //
 #implfun
 envltck_dvar$push
-  (env0, dvar) =
+  (env0, dvar, t2q1) =
 let
 //
-  val t2p1 =
-  d2var_get_styp(dvar)
-  val t2q1 =
-  s2typ1_make_s2typ(t2p1)
-  val t3q1 = d3typ1_styp$make(t2q1)
+val t3q1 = d3typ1_styp$make(t2q1)
 //
 in//let
 //
@@ -598,7 +594,7 @@ case+ env0 of
 (
 dtpstk := dtpstk_cons(dvar, t3q1, dtpstk))
 //
-end(*let*)//end-of-(envltck_dvar$updt(env0,...))
+end(*let*)//end-of-(envltck_dvar$push(env0,...))
 //
 (* ****** ****** *)
 //
@@ -606,20 +602,8 @@ end(*let*)//end-of-(envltck_dvar$updt(env0,...))
 envltck_dpat$push
   (env0, dpat) =
 (
-case+
-dpat.node() of
-//
-|D3P1var
-(   d2v1   ) =>
-envltck_dvar$push(env0, d2v1)
-//
-|D3P1dapp
-(d3f0
-,npf1, d3ps) => f0_d3ps(env0, d3ps)
-//
-|_(* otherwise *) => (  (*void*)  )
-//
-) where
+  f0_d3p0(env0, dpat))
+where
 {
 //
 fun
@@ -628,9 +612,24 @@ f0_d3p0
 ! envltck
 , d3p0: d3pat1): void =
 (
-envltck_dpat$push(env0, d3p0))
+case+
+dpat.node() of
 //
-fun
+|D3P1var
+(   d2v1   ) =>
+let
+val t2q0 = d3p0.styp()
+in//let
+envltck_dvar$push(env0,d2v1,t2q0)
+end//let//end-of-[ D3P1var(d2v1) ]
+//
+|D3P1dapp
+(d3f0
+,npf1, d3ps) => f0_d3ps(env0, d3ps)
+//
+|_(* otherwise *) => (  (*void*)  ))
+//
+and
 f0_d3ps
 ( env0:
 ! envltck
@@ -641,7 +640,14 @@ case+ d3ps of
 |list_cons(d3p1, d3ps) =>
 (f0_d3p0(env0, d3p1); f0_d3ps(env0, d3ps)))
 //
-}(*where*)//end-of-(envltck_dvar$updt(env0,...))
+(* ****** ****** *)
+//
+val ((*void*)) =
+prerrsln("envltck_dpat$push: dpat = ", dpat)
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-(envltck_dpat$push(env0,...))
 //
 (* ****** ****** *)
 (* ****** ****** *)

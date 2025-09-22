@@ -129,6 +129,23 @@ end//end-of-[s2typ1_delin(...)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+s2typ1_t0pize(t2q0) =
+s2typ1(s2t0, T2P1top0(t2q0))
+where{
+val
+s2t0 = sort2_delin(t2q0.sort()) }
+//
+#implfun
+s2typ1_t1pize(t2q0) =
+s2typ1(s2t0, T2P1top1(t2q0))
+where{
+val
+s2t0 = sort2_delin(t2q0.sort()) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trxltck_utils0.dats] *)
 (***********************************************************************)

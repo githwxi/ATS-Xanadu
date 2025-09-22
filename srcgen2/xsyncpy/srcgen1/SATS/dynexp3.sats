@@ -880,30 +880,36 @@ d3fundcl1_lctn$get:(d3fundcl1)->loc_t
 #symload lctn with d3fundcl1_lctn$get
 //
 (* ****** ****** *)
+//
 fun
 d3valdcl1_dpat$get:(d3valdcl1)->d3pat1
 fun
 d3valdcl1_wsxp$get:(d3valdcl1)->wths2exp
 fun
 d3valdcl1_tdxp$get:(d3valdcl1)->teqd3exp1
-(* ****** ****** *)
+//
 #symload dpat with d3valdcl1_get_dpat
 #symload wsxp with d3valdcl1_get_wsxp(*opt*)
 #symload tdxp with d3valdcl1_get_tdxp(*opt*)
+//
 (* ****** ****** *)
+//
 fun
 d3vardcl1_dpid$get:(d3vardcl1)->d2var
+fun
+d3vardcl1_styp$get:(d3vardcl1)->s2typ1
 fun
 d3vardcl1_vpid$get:(d3vardcl1)->d2varopt
 fun
 d3vardcl1_sres$get:(d3vardcl1)->s2expopt
 fun
 d3vardcl1_dini$get:(d3vardcl1)->teqd3exp1
-(* ****** ****** *)
+//
 #symload dpid with d3vardcl1_get_dpid
 #symload vpid with d3vardcl1_get_vpid(*opt*)
 #symload sres with d3vardcl1_get_sres(*opt*)
 #symload dini with d3vardcl1_get_dini(*opt*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -936,6 +942,7 @@ fun
 d3vardcl1_make_args
 ( lctn:loc_t
 , dpid:d2var
+, t2q1:s2typ1
 , vpid:d2varopt
 , sres:s2expopt, dini:teqd3exp1):d3vardcl1
 //

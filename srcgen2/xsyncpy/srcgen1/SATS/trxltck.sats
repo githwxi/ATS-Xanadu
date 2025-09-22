@@ -85,6 +85,11 @@ sort2_delin(sort2): sort2
 fun
 s2typ1_delin(s2typ1): s2typ1
 //
+fun
+s2typ1_t0pize(s2typ1): s2typ1
+fun
+s2typ1_t1pize(s2typ1): s2typ1
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -162,7 +167,8 @@ envltck_vtsift0(!envltck): dvdtplst
 //
 fun
 envltck_dvar$push
-(env0: !envltck, dvar: d2var): void
+(env0: !envltck
+,dvar: d2var, t2q1: s2typ1): void
 fun
 envltck_dpat$push
 (env0: !envltck, d3p0: d3pat1): void
