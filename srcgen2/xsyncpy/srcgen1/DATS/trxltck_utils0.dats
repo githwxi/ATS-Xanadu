@@ -50,6 +50,28 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-09-25:
+This is needed for
+prelude over srcgen1/prelude
+*)
+#symload not
+with bool_neg of 1099
+//
+(* ****** ****** *)
+//
+#include
 "./../HATS/libxatsopt.hats"
 //
 (* ****** ****** *)
