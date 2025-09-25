@@ -54,7 +54,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #include
-"./../HATS/libxatsopt.hats"
+"./../HATS/mytmplib00.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -64,6 +64,28 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+//
+HX-2025-09-25:
+prelude:
+#symload =
+with sint_eq$sint of 1000
+srcgen1/prelude:
+#symload = with
+gint_eq$sint$sint of 1002
+//
+*)
+#symload =
+with sint_eq$sint of 1099
+//
+(* ****** ****** *)
+//
+#include
+"./../HATS/libxatsopt.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 //
 #implfun
 d2varlst_duprmv0

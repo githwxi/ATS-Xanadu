@@ -57,8 +57,17 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"./../HATS/mytmplib00.hats"
+//
 #staload
 "./../DATS/dynexp3_tmplib.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"./../../../DATS/xatsopt_tmplib.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
