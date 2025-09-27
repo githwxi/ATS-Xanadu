@@ -236,6 +236,127 @@ XATS2JS_sint_print(i0: sint): void = $extnam()
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-09-27:
+For unsigned ints
+Sat Sep 27 12:16:41 PM EDT 2025
+*)
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+sint_to$uint
+  ( i0 ) =
+(
+XATS2JS_sint_to$uint
+  ( i0 )) where
+{
+#extern
+fun
+XATS2JS_sint_to$uint
+  (i0: sint): uint = $extnam() }
+//
+#impltmp
+<(*tmp*)>
+uint_to$sint
+  ( u0 ) =
+(
+XATS2JS_uint_to$sint
+  ( u0 )) where
+{
+#extern
+fun
+XATS2JS_uint_to$sint
+  (u0: uint): uint = $extnam() }
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+uint_print
+  ( u0 ) =
+(
+XATS2JS_uint_print
+  ( u0 )) where
+{
+#extern
+fun
+XATS2JS_uint_print(u0: uint): void = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+uint_pre(u0) =
+XATS2JS_uint_pre(u0) where
+{ #extern
+  fun
+  XATS2JS_uint_pre(u0: uint): uint = $extnam() }
+//
+#impltmp
+<(*tmp*)>
+uint_suc(u0) =
+XATS2JS_uint_suc(u0) where
+{ #extern
+  fun
+  XATS2JS_uint_suc(u0: uint): uint = $extnam() }
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+uint_lnot(u0) =
+XATS2JS_uint_lnot(u0) where
+{ #extern
+  fun
+  XATS2JS_uint_lnot(u0: uint): uint = $extnam() }
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+uint_ladd
+  (u1, u2) =
+(
+XATS2JS_uint_ladd
+  (u1, u2)) where
+{
+#extern
+fun
+XATS2JS_uint_ladd(u1: uint, u2: uint): uint = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+uint_lmul
+  (u1, u2) =
+(
+XATS2JS_uint_lmul
+  (u1, u2)) where
+{
+#extern
+fun
+XATS2JS_uint_lmul(u1: uint, u2: uint): uint = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+uint_lneq
+  (u1, u2) =
+(
+XATS2JS_uint_lneq
+  (u1, u2)) where
+{
+#extern
+fun
+XATS2JS_uint_lneq(u1: uint, u2: uint): uint = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_CATS_JS_gint000.dats] *)
 (***********************************************************************)
