@@ -172,10 +172,13 @@ envltck_dvar$push
 fun
 envltck_dpat$push
 (env0: !envltck, d3p0: d3pat1): void
-//
 fun
 envltck_farg$push
 (env0: !envltck, f3a0: f3arg1): void
+//
+fun
+envltck_d3ps$push
+(env0: !envltck, d3ps: d3pat1lst): void
 fun
 envltck_f3as$push
 (env0: !envltck, f3as: f3arg1lst): void
