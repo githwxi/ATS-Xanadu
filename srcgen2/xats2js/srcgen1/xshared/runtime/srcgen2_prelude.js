@@ -1,4 +1,4 @@
-// Sat Jun 21 04:32:54 AM EDT 2025
+// Sat Sep 27 01:45:08 PM EDT 2025
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 /*
@@ -346,6 +346,48 @@ XATS2JS_sint_print
 {
   let cs = i0.toString()
   XATS2JS_the_print_store.push(cs); return
+}
+//
+////////////////////////////////////////////////////////////////////////.
+////////////////////////////////////////////////////////////////////////.
+//
+// HX-2025-09-27:
+// for unsigned ints
+// Sat Sep 27 12:38:38 PM EDT 2025
+//
+////////////////////////////////////////////////////////////////////////.
+//
+function
+XATS2JS_uint_print
+  ( u0 )
+{
+  let cs = u0.toString()
+  XATS2JS_the_print_store.push(cs); return
+}
+//
+////////////////////////////////////////////////////////////////////////.
+//
+function
+XATS2JS_sint_to$uint
+  ( i0 )
+{
+  if (i0>=0)
+  {
+    return i0 // i0>=0
+  } else {
+    throw new Error("XATS2JS_sint_to$uint: i0 = " + i0.toString())
+  } // end of [if(i0>=0)]
+}
+function
+XATS2JS_uint_to$sint
+  ( u0 )
+{
+  if (u0>=0)
+  {
+    return u0 // always?
+  } else {
+    throw new Error("XATS2JS_uint_to$sint: u0 = " + u0.toString())
+  } // end of [if(u0>=0)]
 }
 //
 ////////////////////////////////////////////////////////////////////////.

@@ -77,6 +77,7 @@ XATS2JS_gflt_print$dflt
 }
 //
 (* ****** ****** *)
+//
 #impltmp
 strn_print<> =
 XATS2JS_strn_print
@@ -87,6 +88,7 @@ fun
 XATS2JS_strn_print
 ( cs: strn ): void = $extnam()
 }
+//
 (* ****** ****** *)
 //
 #extern

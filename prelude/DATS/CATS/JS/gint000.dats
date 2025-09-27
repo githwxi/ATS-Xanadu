@@ -268,7 +268,7 @@ XATS2JS_uint_to$sint
 #extern
 fun
 XATS2JS_uint_to$sint
-  (u0: uint): uint = $extnam() }
+  (u0: uint): sint = $extnam() }
 //
 (* ****** ****** *)
 //
