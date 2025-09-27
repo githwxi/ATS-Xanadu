@@ -500,7 +500,13 @@ ENVLTCK
 in//let
 (
   dtpstk_dvar$find(dtpstk, dvar))
-end//let//end-of-[envltck_dvar$find(env0,...)]
+end where
+{
+//
+val () =
+prerrsln("envltck_dvar$find: dvar = ", dvar)
+//
+}(*where*)//end-of-[envltck_dvar$find(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -535,7 +541,13 @@ envltck_dvar$updt(env0, dvar, t3q1)
 }
 end//let
 //
-end//let//end-of-(envltck_dvar$take(env0,...))
+end where
+{
+//
+val () =
+prerrsln("envltck_dvar$take: dvar = ", dvar)
+//
+}(*where*)//end-of-(envltck_dvar$take(env0,...))
 //
 (* ****** ****** *)
 (* ****** ****** *)

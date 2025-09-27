@@ -290,6 +290,8 @@ in//let
 d3ecl1(loc0,D3C1valdclst(tknd,d3vs)))
 end//let
 //
+(* ****** ****** *)
+//
 fun
 f0_vardclst
 (d3cl: d3ecl1
@@ -458,8 +460,7 @@ val (  ) =
 envltck_pshlam0(env0)//enter
 //
 val (  ) =
-(
-  f3arg1lst_trxltck(f3as, env0))
+envltck_f3as$push(env0, f3as)
 //
 val tdxp =
 (

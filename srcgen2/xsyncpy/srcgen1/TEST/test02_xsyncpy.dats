@@ -13,7 +13,7 @@ For testing xsyncpy!
 (* ****** ****** *)
 (* ****** ****** *)
 //
-var N: sint // = 10
+var N: sint = 10
 val () = N := N + 1
 //
 (* ****** ****** *)
