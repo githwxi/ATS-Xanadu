@@ -664,6 +664,62 @@ prerrsln("envltck_dpat$push: dpat = ", dpat)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+envltck_farg$push
+  (env0, f3a0) =
+(
+case+
+f3a0.node() of
+//
+|F3ARG1dapp
+(npf1, d3ps) =>
+(
+  envltck_d3ps$push(env0, d3ps))
+//
+|F3ARG1sapp _ => () |F3ARG1mets _ => ()
+//
+)(*case+*)//end-of-[envltck_f3arg1(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+envltck_d3ps$push
+  (env0, d3ps) =
+(
+case+ d3ps of
+|
+list_nil() => ()
+|
+list_cons(d3p1, d3ps) =>
+let
+val () = envltck_dpat$push(env0, d3p1)
+val () = envltck_d3ps$push(env0, d3ps)
+end//let//end-of-[list_cons(d3p1,d3ps)]
+//
+)(*case+*)//end-of-[envltck_d3ps$push(env0,...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+envltck_f3as$push
+  (env0, f3as) =
+(
+case+ f3as of
+|
+list_nil() => ()
+|
+list_cons(f3a1, f3as) =>
+let
+val () = envltck_farg$push(env0, f3a1)
+val () = envltck_f3as$push(env0, f3as)
+end//let//end-of-[list_cons(f3a1,f3as)]
+//
+)(*case+*)//end-of-[envltck_f3as$push(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trxltck_myenv0.dats] *)
 (***********************************************************************)
