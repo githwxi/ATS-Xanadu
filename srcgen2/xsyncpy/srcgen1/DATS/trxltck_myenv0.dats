@@ -614,18 +614,18 @@ end(*let*)//end-of-(envltck_dvar$push(env0,...))
 envltck_dpat$push
   (env0, dpat) =
 (
-  f0_d3p0(env0, dpat))
+  f0_dpat(env0, dpat))
 where
 {
 //
 fun
-f0_d3p0
+f0_dpat
 ( env0:
 ! envltck
 , d3p0: d3pat1): void =
 (
 case+
-dpat.node() of
+d3p0.node() of
 //
 |D3P1var
 (   d2v1   ) =>
@@ -639,7 +639,11 @@ end//let//end-of-[ D3P1var(d2v1) ]
 (d3f0
 ,npf1, d3ps) => f0_d3ps(env0, d3ps)
 //
-|_(* otherwise *) => (  (*void*)  ))
+|D3P1annot
+(d3p1, _, _) => f0_dpat(env0, d3p1)
+//
+|_(* otherwise *) => (   (*void*)   )
+)(*case+*)//end-of-[f0_dpat(env0,dpat)]
 //
 and
 f0_d3ps
@@ -650,7 +654,7 @@ f0_d3ps
 case+ d3ps of
 |list_nil() => ()
 |list_cons(d3p1, d3ps) =>
-(f0_d3p0(env0, d3p1); f0_d3ps(env0, d3ps)))
+(f0_dpat(env0, d3p1); f0_d3ps(env0, d3ps)))
 //
 (* ****** ****** *)
 //
@@ -664,7 +668,7 @@ prerrsln("envltck_dpat$push: dpat = ", dpat)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 envltck_farg$push
   (env0, f3a0) =
 (
@@ -678,12 +682,12 @@ f3a0.node() of
 //
 |F3ARG1sapp _ => () |F3ARG1mets _ => ()
 //
-)(*case+*)//end-of-[envltck_f3arg1(env0,...)]
+)(*case+*)//end-of-[envltck_farg$push(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 envltck_d3ps$push
   (env0, d3ps) =
 (
@@ -701,7 +705,7 @@ end//let//end-of-[list_cons(d3p1,d3ps)]
 //
 (* ****** ****** *)
 //
-#impltmp
+#implfun
 envltck_f3as$push
   (env0, f3as) =
 (
