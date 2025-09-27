@@ -37,23 +37,32 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+//
 fun<>
-char_code
+char_to$code
  (chr:char): sint
-(* ****** ****** *)
 //
 (*
 HX:
-[char_code]=
+[char_to$code]=
 [sint_make_char]=
 [char2uint2sint]!!!
 *)
 fun<>
+char_to$sint
+ (chr:char):sint//fun<>
+fun<>
 sint_make_char
  (chr:char):sint//fun<>
 //
+#symload
+ord with char_to$code of 1000
+//
 (*
 HX-2022-06-12: deprecated
+//
+#symload
+sint with char_to$sint of 1000
 #symload
 sint with sint_make_char of 1000
 *)
@@ -62,18 +71,34 @@ sint with sint_make_char of 1000
 (* ****** ****** *)
 //
 fun<>
+code_to$char
+ (code:sint):char//fun<>
+fun<>
 char_make_code
  (code:sint):char//fun<>
+#symload
+chr with code_to$char of 1000
 //
+(* ****** ****** *)
+//
+fun<>
+sint_to$char
+ (code:sint):char//fun<>
 fun<>
 char_make_sint
  (code:sint):char//fun<>
+//
+fun<>
+uint_to$char
+ (code:uint):char//fun<>
 fun<>
 char_make_uint
  (code:uint):char//fun<>
 //
 #symload
-code with char_code of 1000
+char with sint_to$char of 1000
+#symload
+char with uint_to$char of 1000
 //
 #symload
 char with char_make_sint of 1000

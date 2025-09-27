@@ -192,14 +192,14 @@ Fri Sep 26 01:26:32 AM EDT 2025
 (* ****** ****** *)
 //
 fun<>
-uint_make_sint(sint): uint
+sint_to$uint(sint): uint
 fun<>
-sint_make_uint(uint): sint
+uint_to$sint(uint): sint
 //
-#symload is2u
-with uint_make_sint of 1000
 #symload iu2s
-with sint_make_uint of 1000
+with uint_to$sint of 1000
+#symload is2u
+with sint_to$uint of 1000
 //
 (* ****** ****** *)
 //

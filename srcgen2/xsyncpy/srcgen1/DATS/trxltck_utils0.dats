@@ -74,10 +74,10 @@ with uint_lnot of 1099
 #symload land
 with uint_lmul of 1099
 //
-#symload iu2s
-with sint_make_uint of 1099
 #symload is2u
-with uint_make_sint of 1099
+with sint_to$uint of 1099
+#symload iu2s
+with uint_to$sint of 1099
 //
 (* ****** ****** *)
 //
