@@ -403,11 +403,11 @@ pread00_d0eclseq_WHERE: fpread00(d0eclseq_WHERE)
 //HX-2022-06-18: printing errmsgs
 //
 (* ****** ****** *)
+fun s0ymb_fpemsg(FILR, s0ymb): void
+(* ****** ****** *)
 fun i0dnt_fpemsg(FILR, i0dnt): void
 (* ****** ****** *)
 fun l0abl_fpemsg(FILR, l0abl): void
-(* ****** ****** *)
-fun s0ymb_fpemsg(FILR, s0ymb): void
 (* ****** ****** *)
 fun t0int_fpemsg(FILR, t0int): void
 fun t0chr_fpemsg(FILR, t0chr): void
