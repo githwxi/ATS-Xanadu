@@ -182,6 +182,71 @@ GASZ_make_nint1
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-09-26:
+For unsigned integers
+Fri Sep 26 01:26:32 AM EDT 2025
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+uint_make_sint(sint): uint
+fun<>
+sint_make_uint(uint): sint
+//
+#symload is2u
+with uint_make_sint of 1000
+#symload iu2s
+with sint_make_uint of 1000
+//
+(* ****** ****** *)
+//
+(*
+HX-2025-09-26:
+Note that
+[uint_print] may not be
+the same as g_print<uint>
+*)
+//
+fun<>
+uint_print(i0: uint): void
+//
+(* ****** ****** *)
+//
+fun<>
+uint_suc
+{i:i0}(x: uint(i)): uint(i+1)
+fun<>
+uint_pre
+{i:i0|i>0}(x: uint(i)): uint(i-1)
+//
+(* ****** ****** *)
+//
+fun<>
+uint_lnot(x: uint): uint
+//
+fun<>
+uint_ladd(x: uint, y: uint): uint
+fun<>
+uint_lmul(x: uint, y: uint): uint
+fun<>
+uint_lneq(x: uint, y: uint): uint
+//
+#symload lor with uint_ladd of 1000
+#symload land with uint_lmul of 1000
+#symload lxor with uint_lneq of 1000
+//
+#symload lnot with uint_lnot of 1000
+//
+#symload ladd with uint_ladd of 1000
+#symload lmul with uint_lmul of 1000
+#symload lneq with uint_lneq of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_gint000.sats] *)
 (***********************************************************************)

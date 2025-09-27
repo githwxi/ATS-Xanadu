@@ -72,6 +72,9 @@ ATS_PACKNAME
 #symload lctn with l0abl_get_lctn
 #symload node with l0abl_get_node
 (* ****** ****** *)
+#symload lctn with s0qid_get_lctn
+#symload lctn with d0qid_get_lctn
+(* ****** ****** *)
 #symload lctn with g0exp_get_lctn
 #symload node with g0exp_get_node
 (* ****** ****** *)
@@ -262,6 +265,19 @@ tkend_WHERE_fpemsg
 (out:FILR,topt:tokenopt,tend:tkend_WHERE):void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s0ymb_fpemsg
+(out, sym) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+printsln("PREAD00-ERROR:", sym)
+end(*let*)//end-of-[s0ymb_fpemsg(out,sym)]
+//
+(* ****** ****** *)
 //
 #implfun
 i0dnt_fpemsg
@@ -280,7 +296,7 @@ let
 val loc = tok.lctn() in
 printsln("\
 PREAD00-ERROR:", loc, ":", id0) end
-end (*let*)//end-of-[i0dnt_fpemsg(out,id0)]
+end(*let*)//end-of-[i0dnt_fpemsg(out,id0)]
 //
 (* ****** ****** *)
 //
@@ -301,8 +317,9 @@ let
 val loc = tok.lctn() in
 printsln("\
 PREAD00-ERROR:", loc, ":", lab) end
-end (*let*)//end-of-[l0abl_fpemsg(out,lab)]
+end(*let*)//end-of-[l0abl_fpemsg(out,lab)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -321,7 +338,7 @@ let
 val loc = tok.lctn() in
 printsln("\
 PREAD00-ERROR:", loc, ":", int) end
-end (*let*)//end-of-[t0int_fpemsg(out,int)]
+end(*let*)//end-of-[t0int_fpemsg(out,int)]
 //
 #implfun
 t0chr_fpemsg
@@ -335,9 +352,9 @@ case+ chr of
 T0CHRsome _ => ()
 |
 T0CHRnone(tok) =>
-printsln
-("PREAD00-ERROR:",tok.lctn(),":",chr)
-end (*let*)//end-of-[t0chr_fpemsg(out,chr)]
+printsln("\
+PREAD00-ERROR:",tok.lctn(),":",chr)
+end(*let*)//end-of-[t0chr_fpemsg(out,chr)]
 //
 #implfun
 t0flt_fpemsg
@@ -351,9 +368,9 @@ case+ flt of
 T0FLTsome _ => ()
 |
 T0FLTnone(tok) =>
-printsln
-("PREAD00-ERROR:",tok.lctn(),":",flt)
-end (*let*)//end-of-[t0chr_fpemsg(out,flt)]
+printsln("\
+PREAD00-ERROR:",tok.lctn(),":",flt)
+end(*let*)//end-of-[t0chr_fpemsg(out,flt)]
 //
 #implfun
 t0str_fpemsg
@@ -367,9 +384,45 @@ case+ str of
 T0STRsome _ => ()
 |
 T0STRnone(tok) =>
+printsln("\
+PREAD00-ERROR:",tok.lctn(),":",str)
+end(*let*)//end-of-[t0chr_fpemsg(out,str)]
+//
+(* ****** ****** *)
+//
+#implfun
+s0qid_fpemsg
+(out, qid) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+let
+val loc = qid.lctn()
+in//let
+(
 printsln
-("PREAD00-ERROR:",tok.lctn(),":",str)
-end (*let*)//end-of-[t0chr_fpemsg(out,str)]
+("PREAD00-ERROR:", loc, ":", qid))
+end//let
+end(*let*)//end-of(s0qid_fpemsg(out,qid))
+//
+(* ****** ****** *)
+//
+#implfun
+d0qid_fpemsg
+(out, qid) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+let
+val loc = qid.lctn()
+in//let
+(
+printsln
+("PREAD00-ERROR:", loc, ":", qid))
+end//let
+end(*let*)//end-of(d0qid_fpemsg(out,qid))
 //
 (* ****** ****** *)
 //
@@ -388,8 +441,9 @@ let
   val loc = g0e.lctn()
 in//let
 (*
+(
 printsln
-("PREAD00-ERROR:",loc,":",g0e)
+("PREAD00-ERROR:", loc, ":", g0e))
 *)
 endlet // end of [G0Eerrck(lvl,ge1)]
 //
@@ -717,8 +771,8 @@ val () =
 val () =
 (
   token_RBRACE_fpemsg(out, tend))//val
-end (*let*)//end-of-[S0UNIsome( _,_,_ )]
-end (*let*)//end-of-[s0uni_fpemsg(out,s0u)]
+end(*let*)//end-of-[S0UNIsome( _,_,_ )]
+end(*let*)//end-of-[s0uni_fpemsg(out,s0u)]
 //
 (* ****** ****** *)
 //
@@ -1358,7 +1412,7 @@ D0Etkerr(tok1) => () // fpemsg(out,tok1)
 | // [d0exp_fpemsg] should be called here:
 D0Eerrck(lvl0,d0e1) => d0exp_fpemsg(out, d0e)
 //
-end (*let*) // end-of-[ auxmain(out,d0e) ]
+end(*let*) // end-of-[ auxmain(out, d0e) ]
 //
 in//local
 //
@@ -1541,7 +1595,7 @@ S0RESsome(seff, s0e1) =>
 let
 val () = s0eff_fpemsg(out, seff)
 val () = s0exp_fpemsg(out, s0e1)
-end (*let*) // end of [S0RESsome(seff,s0e1)]
+end(*let*) // end of [S0RESsome(seff,s0e1)]
 )
 //
 (* ****** ****** *)
@@ -1562,7 +1616,7 @@ token_EQ0_fpemsg(out, teq1)
 //
 val () = d0exp_fpemsg(out, d0e2)
 //
-end (*let*) // end of [D0RESsome(teq1,d0e2)]
+end(*let*) // end of [D0RESsome(teq1,d0e2)]
 )
 //
 (* ****** ****** *)
@@ -1744,30 +1798,25 @@ in//let
 case+
 dcl.node() of
 //
-|
-D0Cnonfix
+|D0Cnonfix
 (knd, ids) =>
 i0dntlst_fpemsg(out, ids)
-|
-D0Cfixity
+|D0Cfixity
 (knd, ids, opt) =>
 i0dntlst_fpemsg(out, ids)
 //
-|
-D0Cstatic
+|D0Cstatic
 (knd, dc1) =>
 let
 val () = fpemsg(out, dc1)
 endlet //end-of(D0Cstatic(_,_))
-|
-D0Cextern
+|D0Cextern
 (knd, dc1) =>
 let
 val () = fpemsg(out, dc1)
 endlet //end-of(D0Cextern(_,_))
 //
-|
-D0Clocal0
+|D0Clocal0
 ( tkb, ds1
 , tin, ds2, tke) =>
 let
@@ -1777,14 +1826,12 @@ val () =
 d0eclist_fpemsg(out, ds2)
 endlet // end of [D0Clocal0(...)]
 //
-|
-D0Cabssort
+|D0Cabssort
 (tknd, tid0) => let
   val () = fpemsg(out, tid0)
 endlet // end-of(D0Cabssort(...))
 //
-|
-D0Cstacst0
+|D0Cstacst0
 ( tknd, sid0
 , tmas, tcln, s0t1) =>
 let
@@ -1794,8 +1841,7 @@ let
   val () = fpemsg(out, s0t1)
 endlet // end-of-(D0Cstacst0(...))
 //
-|
-D0Csortdef
+|D0Csortdef
 ( tknd
 , tid0, teq1, tdf2) =>
 let
@@ -1805,29 +1851,33 @@ token_EQ0_fpemsg(out, teq1)
 val () = s0tdf_fpemsg(out, tdf2)
 endlet // end-of-(D0Csortdef(...))
 //
-|
-D0Csymload
+(* ****** ****** *)
+//
+|D0Csymload
 ( tknd, symb
 , twth, dqid, gopt) =>
 let
-val () = fpemsg(out, symb)
-val () = fpemsg(out, dqid)
+val () =
+(
+  s0ymb_fpemsg(out, symb))
+val () =
+(
+  d0qid_fpemsg(out, dqid))
 val () = g0expopt_fpemsg(out, gopt)
 endlet // end-of-(D0Csymload(...))
 //
-|
-D0Cinclude
+(* ****** ****** *)
+//
+|D0Cinclude
 (knd0,tknd,g0e1) =>
 (
   g0exp_fpemsg(out, g0e1))
-|
-D0Cstaload
+|D0Cstaload
 (knd0,tknd,g0e1) =>
 (
   g0exp_fpemsg(out, g0e1))
 //
-|
-D0Cdyninit
+|D0Cdyninit
 (tknd, g0e1) =>
 (
   g0exp_fpemsg(out, g0e1))
@@ -1838,16 +1888,14 @@ D0Cdyninit
 HX-2024-07-20:
 Sat 20 Jul 2024 01:48:34 PM EDT
 *)
-|
-D0Cextcode
+|D0Cextcode
 (tknd, g0e1) =>
 (
   g0exp_fpemsg(out, g0e1))
 //
 (* ****** ****** *)
 //
-|
-D0Cdatasort
+|D0Cdatasort
 (tknd, d0ts) => let
   val () =
   d0tstlst_fpemsg(out, d0ts)
@@ -1855,21 +1903,18 @@ endlet // end-of-(D0Cdatasort(_,_))
 //
 (* ****** ****** *)
 //
-|
-D0Cvaldclst
+|D0Cvaldclst
 (tknd, d0cs) => let
 val () =
   d0valdclist_fpemsg(out, d0cs)
 endlet // end-of-(D0Cvaldclst(_,_,_))
-|
-D0Cvardclst
+|D0Cvardclst
 (tknd, d0cs) => let
 val () =
   d0vardclist_fpemsg(out, d0cs)
 endlet // end-of-(D0Cvardclst(_,_,_))
 //
-|
-D0Cfundclst
+|D0Cfundclst
 ( tknd
 , tqas, d0cs) => let
 val () =
@@ -1880,8 +1925,7 @@ endlet // end-of-(D0Cfundclst(_,_,_))
 //
 (* ****** ****** *)
 //
-|
-D0Cimplmnt0
+|D0Cimplmnt0
 ( tknd
 , sqas, tqas
 , dqid
@@ -1909,8 +1953,7 @@ val () =
 //
 (* ****** ****** *)
 //
-|
-D0Cdatatype
+|D0Cdatatype
 ( tknd
 , d0ts, wdcs) => let
 val () =
@@ -1919,8 +1962,7 @@ val () =
   wd0eclseq_fpemsg( out, wdcs )
 endlet // end-of-(D0Cdatatype(_,_,_))
 //
-|
-D0Cdynconst
+|D0Cdynconst
 ( tknd
 , tqas, d0cs) => let
 val () =
@@ -1936,7 +1978,7 @@ endlet // end-of-(D0Cdynconst(_,_,_))
 ( lvl1, dcl1)  => d0ecl_fpemsg(out, dcl)
 //
 | _(* otherwise *) => ((*void*))
-end (*let*) // end of [auxmain(out, dcl)]
+end(*let*) // end of [auxmain(out, dcl)]
 //
 in//local
 //
@@ -1959,7 +2001,7 @@ printsln("\
 PREAD00-ERROR:",dcl.lctn(),":",dcl)))
 //
 | _(* otherwise *) => ((*void*))
-end (*let*)//end-of(d0ecl_fpemsg(out,dcl))
+end(*let*)//end-of(d0ecl_fpemsg(out,dcl))
 //
 endloc(*local*)//end-of(local(d0ecl_fpemsg))
 //
@@ -2097,10 +2139,10 @@ tok0.node() of
 T_AS0() => ((*void*))
 |
 _(*non-T_AS0*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
+printsln(
+"PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
-end (*let*) // end of [t0ken_AS0_fpemsg]
+end(*let*) // end of [t0ken_AS0_fpemsg]
 //
 #implfun
 token_BAR_fpemsg
@@ -2116,10 +2158,10 @@ tok0.node() of
 T_BAR() => ((*void*))
 |
 _(*non-T_BAR*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
+printsln(
+"PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
-end (*let*) // end of [t0ken_BAR_fpemsg]
+end(*let*) // end of [t0ken_BAR_fpemsg]
 //
 #implfun
 token_EQ0_fpemsg
@@ -2134,10 +2176,10 @@ case+ tok0.node() of
 T_EQ0() => ((*void*))
 |
 _(*non-T_EQ0*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
+printsln(
+"PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
-end (*let*) // end of [t0ken_EQ0_fpemsg]
+end(*let*) // end of [t0ken_EQ0_fpemsg]
 //
 #implfun
 token_GT0_fpemsg
@@ -2152,10 +2194,10 @@ case+ tok0.node() of
 T_GT0() => ((*void*))
 |
 _(*non-T_GT0*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
+printsln(
+"PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
-end (*let*) // end of [t0ken_GT0_fpemsg]
+end(*let*) // end of [t0ken_GT0_fpemsg]
 //
 #implfun
 token_OF0_fpemsg
@@ -2171,10 +2213,10 @@ tok0.node() of
 T_OF0() => ((*void*))
 |
 _(*non-T_OF0*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
+printsln("\
+PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
-end (*let*) // end of [t0ken_OF0_fpemsg]
+end(*let*) // end of [t0ken_OF0_fpemsg]
 //
 #implfun
 token_EQGT_fpemsg
@@ -2189,10 +2231,10 @@ case+ tok0.node() of
 T_EQGT() => ((*void*))
 |
 _(*non-T_EQGT*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
+printsln("\
+PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
-end (*let*) // end of [t0ken_EQGT_fpemsg]
+end(*let*) // end of [t0ken_EQGT_fpemsg]
 //
 (* ****** ****** *)
 //
@@ -2209,10 +2251,10 @@ case+ tok0.node() of
 T_WHEN() => ((*void*))
 |
 _(*non-T_WHEN*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
+printsln("\
+PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
-end (*let*) // end of [t0ken_WHEN_fpemsg]
+end(*let*) // end of [t0ken_WHEN_fpemsg]
 //
 (* ****** ****** *)
 //
@@ -2229,10 +2271,10 @@ case+ tok0.node() of
 T_WITH() => ((*void*))
 |
 _(*non-T_WITH*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
+printsln("\
+PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
-end (*let*) // end of [t0ken_WITH_fpemsg]
+end(*let*) // end of [t0ken_WITH_fpemsg]
 //
 (* ****** ****** *)
 //
@@ -2249,10 +2291,10 @@ case+ tok0.node() of
 T_GTDOT() => ((*void*))
 |
 _(*non-T_GTDOT*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
+printsln("\
+PREAD00-ERROR:",tok0.lctn(),":",tok0)
 //
-end (*let*) // end of [t0ken_GTDOT_fpemsg]
+end(*let*) // end of [t0ken_GTDOT_fpemsg]
 //
 (* ****** ****** *)
 //
@@ -2268,9 +2310,9 @@ case+ tok0.node() of
 T_RPAREN() => ((*void*))
 |
 _(*non-T_RPAREN*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
-end (*let*) // end of [token_RPAREN_fpemsg]
+printsln("\
+PREAD00-ERROR:",tok0.lctn(),":",tok0)
+end(*let*) // end of [token_RPAREN_fpemsg]
 //
 #implfun
 token_RBRACE_fpemsg
@@ -2284,9 +2326,9 @@ case+ tok0.node() of
 T_RBRACE() => ((*void*))
 |
 _(*non-T_RBRACE*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
-end (*let*) // end of [token_RBRACE_fpemsg]
+printsln("\
+PREAD00-ERROR:",tok0.lctn(),":",tok0)
+end(*let*) // end of [token_RBRACE_fpemsg]
 //
 #implfun
 token_RBRCKT_fpemsg
@@ -2300,9 +2342,9 @@ case+ tok0.node() of
 T_RBRCKT() => ((*void*))
 |
 _(*non-T_RBRCKT*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
-end (*let*) // end of [token_RBRCKT_fpemsg]
+printsln("\
+PREAD00-ERROR:",tok0.lctn(),":",tok0)
+end(*let*) // end of [token_RBRCKT_fpemsg]
 //
 (* ****** ****** *)
 //
@@ -2318,9 +2360,9 @@ case+ tok0.node() of
 T_ENDWHR() => ((*void*))
 |
 _(*non-T_ENDWHR*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
-end (*let*) // end of [token_ENDWHR_fpemsg]
+printsln("\
+PREAD00-ERROR:",tok0.lctn(),":",tok0)
+end(*let*) // end of [token_ENDWHR_fpemsg]
 //
 (* ****** ****** *)
 //
@@ -2338,9 +2380,9 @@ T_END() => ((*void*))
 T_ENDLET() => ((*void*))
 |
 _(*non-T_END/ENDLET*) =>
-printsln
-("PREAD00-ERROR:",tok0.lctn(),":",tok0)
-end (*let*) // end of [token_ENDLET_fpemsg]
+printsln("\
+PREAD00-ERROR:",tok0.lctn(),":",tok0)
+end(*let*) // end of [token_ENDLET_fpemsg]
 //
 (* ****** ****** *)
 //
@@ -2384,7 +2426,7 @@ T_ENDTRY() => ((*void*))
 _(*non-T_END/ENDTRY*) =>
 printsln("\
 PREAD00-ERROR:",tok0.lctn(),":",tok0)
-end (*let*) // end of [token_ENDTRY_fpemsg]
+end(*let*) // end of [token_ENDTRY_fpemsg]
 //
 (* ****** ****** *)
 //
@@ -2563,7 +2605,7 @@ let
 val () = i0dnt_fpemsg(out, sid0)
 val () = sort0opt_fpemsg(out, tres)
 endlet // end of [Q0ARGsome(sid0,tres)]
-end (*let*)//end-of-[q0arg_fpemsg(out,q0a)]
+end(*let*)//end-of-[q0arg_fpemsg(out,q0a)]
 //
 (* ****** ****** *)
 //
@@ -2596,7 +2638,7 @@ val () =
 (
   token_RPAREN_fpemsg(out, tend) )
 endlet // end of [ S0QAGsome(_,_,_) ]
-end (*let*)//end-of-[s0qag_fpemsg(out,sqa)]
+end(*let*)//end-of-[s0qag_fpemsg(out,sqa)]
 //
 (* ****** ****** *)
 //
@@ -2625,7 +2667,7 @@ let
 val () = q0arglst_fpemsg(out, q0as)
 val () = token_GT0_fpemsg(out, tend)
 endlet // end of [ T0QAGsome(_,_,_) ]
-end (*let*)//end-of-[t0qag_fpemsg(out,tqa)]
+end(*let*)//end-of-[t0qag_fpemsg(out,tqa)]
 //
 (* ****** ****** *)
 //
@@ -2654,7 +2696,7 @@ let
 val () = s0explst_fpemsg(out, s0es)
 val () = token_GT0_fpemsg(out, tend)
 endlet // end of [ T0IAGsome(_,_,_) ]
-end (*let*)//end-of-[t0iag_fpemsg(out,tia)]
+end(*let*)//end-of-[t0iag_fpemsg(out,tia)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

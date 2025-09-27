@@ -69,6 +69,16 @@ prelude over srcgen1/prelude
 #symload not
 with bool_neg of 1099
 //
+#symload lnot
+with uint_lnot of 1099
+#symload land
+with uint_lmul of 1099
+//
+#symload iu2s
+with sint_make_uint of 1099
+#symload is2u
+with uint_make_sint of 1099
+//
 (* ****** ****** *)
 //
 #include
@@ -95,10 +105,10 @@ case+ s2tb of
 (knd, sym) =>
 let
   val msk =
-    lnot(g0s2u(2))
-  val knd = g0s2u(knd)
+    lnot(is2u(2))
+  val knd = is2u(knd)
   val knd =
-    g0u2s(knd\land(msk))
+    iu2s(knd\land(msk))
 in
   S2Tbas(T2Bimpr(knd, sym))
 end
