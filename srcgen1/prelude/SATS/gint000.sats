@@ -60,6 +60,8 @@ fun<>
 gint_print$sint(sint): void
 //
 fun<>
+uint_print(uint): void
+fun<>
 gint_print$uint(uint): void
 //
 (* ****** ****** *)

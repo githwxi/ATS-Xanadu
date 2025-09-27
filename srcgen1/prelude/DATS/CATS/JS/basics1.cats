@@ -245,6 +245,27 @@ XATS2JS_gint_abs$sint
 //
 ////////////////////////////////////////////////////////////////
 //
+/*
+HX-2025-09-27:
+For ATS3/prelude
+Sat Sep 27 01:56:11
+*/
+//
+function
+XATS2JS_sint_suc
+  (  i0  )
+{
+    return (i0 + 1); // +1
+}
+function
+XATS2JS_uint_suc
+  (  u0  )
+{
+    return (u0 + 1); // +1
+}
+//
+////////////////////////////////////////////////////////////////
+//
 function
 XATS2JS_gint_suc$sint
   (  x0  )
@@ -273,6 +294,41 @@ XATS2JS_gint_pre$uint
 //
 ////////////////////////////////////////////////////////////////
 //
+/*
+HX-2025-09-27:
+For ATS3/prelude
+Sat Sep 27 01:56:11
+*/
+function
+XATS2JS_uint_lnot
+  (  x0  )
+{
+  return (~x0); // lnot
+}
+//
+function
+XATS2JS_uint_ladd
+  (x0, y0)
+{
+  return (x0|y0); // ladd
+}
+//
+function
+XATS2JS_uint_lmul
+  (x0, y0)
+{
+  return (x0&y0); // lmul
+}
+//
+function
+XATS2JS_uint_lneq
+  (x0, y0)
+{
+  return (x0^y0); // lneq
+}
+//
+////////////////////////////////////////////////////////////////
+//
 function
 XATS2JS_gint_lnot$uint
   (  x0  )
@@ -284,6 +340,12 @@ XATS2JS_gint_lor2$uint
   (x0, y0)
 {
   return (x0|y0); // lor2
+}
+function
+XATS2JS_gint_l2or$uint
+  (x0, y0)
+{
+  return (x0|y0); // l2or
 }
 function
 XATS2JS_gint_land$uint
@@ -496,6 +558,17 @@ XATS2JS_gint_sub$uint$uint
 ////////////////////////////////////////////////////////////////
 //
 /* ****** ****** */
+//
+/*
+HX-2025-09-27:
+For ATS3/prelude!
+Sat Sep 27 02:03:53
+*/
+//
+function
+XATS2JS_sint_to$uint(x0){return x0;}
+function
+XATS2JS_uint_to$sint(x0){return x0;}
 //
 // HX-2022-06-06:
 //
@@ -1009,5 +1082,6 @@ XATS2JS_sint_div$sint
 //
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
-
 /* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics1.cats] */
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////

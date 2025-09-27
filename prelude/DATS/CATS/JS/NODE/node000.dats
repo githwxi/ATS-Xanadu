@@ -44,7 +44,17 @@ where
 {
 #extern
 fun
-XATS2JS_NODE_sint_print(b0: sint): void = $extnam()
+XATS2JS_NODE_sint_print(i0: sint): void = $extnam()
+}
+//
+#impltmp
+uint_print<> =
+XATS2JS_NODE_uint_print
+where
+{
+#extern
+fun
+XATS2JS_NODE_uint_print(u0: uint): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -68,7 +78,7 @@ where
 {
 #extern
 fun
-XATS2JS_NODE_char_print(b0: char): void = $extnam()
+XATS2JS_NODE_char_print(c0: char): void = $extnam()
 }
 //
 (* ****** ****** *)

@@ -58,6 +58,14 @@ XATS2JS_NODE_sint_print
   XATS2JS_NODE_g_print(i0);
   return; // XATS2JS_NODE_sint_print
 }
+//
+function
+XATS2JS_NODE_uint_print
+  (u0)
+{
+  XATS2JS_NODE_g_print(u0);
+  return; // XATS2JS_NODE_uint_print
+}
 ////////////////////////////////////////////////////////////////////////.
 //
 function
