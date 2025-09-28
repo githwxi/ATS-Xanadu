@@ -389,7 +389,8 @@ val (  ) =
   envltck_dpat$push(env0, dpat))
 //
 in//let
-d3valdcl1_make_args(loc0,dpat,tdxp,wsxp)
+(
+  d3valdcl1_make_args(loc0,dpat,tdxp,wsxp))
 end//let
 (*let*)//end-of-[d3valdcl1_trxltck(dval,env0)]
 //
@@ -432,7 +433,8 @@ TEQD3EXP1some _ =>
 envltck_dvar$push(env0, dpid, t2q1))
 //
 in//let
-d3vardcl1(loc0,dpid,t2q1,vpid,sres,dini)
+(
+d3vardcl1(loc0,dpid,t2q1,vpid,sres,dini))
 end//let
 (*let*)//end-of-[d3vardcl1_trxltck(dvar,env0)]
 //
@@ -474,7 +476,10 @@ val tdxp =
 val (  ) = envltck_poplam0(env0)
 //
 in//let
-d3fundcl1(loc0,dpid,f3as,sres,tdxp,wsxp)
+(
+d3fundcl1
+( loc0
+, dpid, t2q1, f3as, sres, tdxp, wsxp))
 end//let
 (*let*)//end-of-[d3fundcl1_trxltck(dfun,env0)]
 //
