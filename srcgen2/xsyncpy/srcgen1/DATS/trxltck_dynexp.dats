@@ -265,6 +265,10 @@ d3exp1
 //
 (* ****** ****** *)
 //
+|D3E1tup0 _ => f0_tup0(d3e0, env0)
+//
+(* ****** ****** *)
+//
 |D3E1flat _ => f0_flat(d3e0, env0)
 //
 (* ****** ****** *)
@@ -561,6 +565,29 @@ d3exp1
 ,t3q0, D3E1ift0(d3e1, dthn, dels))
 //
 end//let//end-of-[f0_ift0(d3e0, env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1tup0
+(npf1, d3es) = d3e0.node()
+//
+val d3es =
+d3exp1lst_trxltck(d3es, env0)
+//
+in//let
+//
+(
+d3exp1
+(loc0,t3q0, D3E1tup0(npf1, d3es)))
+//
+end//let//end-of-[f0_tup0(d3e0,env0)]
 //
 (* ****** ****** *)
 //
