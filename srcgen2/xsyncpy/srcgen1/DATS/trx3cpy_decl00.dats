@@ -429,8 +429,13 @@ d3fundcl_trx3cpy
 val loc0 =
 d3fundcl_get_lctn(dfun)
 //
-val dvar =
+val dpid =
 d3fundcl_get_dpid(dfun)
+val t2q1 =
+s2typ_trx3cpy
+(
+dpid.styp((*0*)), env0)
+//
 val f3as =
 d3fundcl_get_farg(dfun)
 val sres =
@@ -460,9 +465,8 @@ val (  ) = prerrsln
 *)
 //
 in//let
-(
-  d3fundcl1_make_args
-  (loc0, dvar, f3as, sres, tdxp, wsxp) )
+d3fundcl1_make_args
+(loc0, dpid, t2q1, f3as, sres, tdxp, wsxp)
 end(*let*)//end-of-[d3fundcl_trx3cpy(dfun,env0)]
 //
 (* ****** ****** *)

@@ -447,6 +447,8 @@ val loc0 =
 d3fundcl1_lctn$get(dfun)
 val dpid =
 d3fundcl1_dpid$get(dfun)
+val t2q1 =
+d3fundcl1_styp$get(dfun)
 val f3as =
 d3fundcl1_farg$get(dfun)
 val sres =
@@ -459,6 +461,9 @@ d3fundcl1_wsxp$get(dfun)
 val (  ) =
 envltck_pshlam0(env0)//enter
 //
+val (  ) =
+envltck_dvar$push
+( env0 , dpid , t2q1 )//recur
 val (  ) =
 envltck_f3as$push(env0, f3as)
 //
