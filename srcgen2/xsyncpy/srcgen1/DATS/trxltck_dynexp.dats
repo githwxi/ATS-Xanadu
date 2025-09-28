@@ -632,9 +632,13 @@ optn_cons(dexp) where
 {
 val (  ) =
 envltck_pshift0(env0)//enter
+//
 val dexp =
 (
   d3exp1_trxltck(dexp, env0))
+//
+val vtps = envltck_vtsift0(env0)
+//
 val (  ) = envltck_popift0(env0)
 }
 ) where
