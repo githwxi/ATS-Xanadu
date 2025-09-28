@@ -53,6 +53,16 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+d2varlst_vt_sort0
+(dvs: d2varlst_vt): d2varlst_vt
+fun
+dvdtplst_vt_sort0
+(vtps: dvdtplst_vt): dvdtplst_vt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2025-09-09:
 [dvs] is sorted
@@ -60,7 +70,7 @@ the rightmost version is kept
 Tue Sep  9 02:06:02 AM EDT 2025
 *)
 fun
-d2varlst_duprmv0
+d2varlst_vt_duprmv0
 (dvs: list_vt(d2var)): list_vt(d2var)
 //
 (*
@@ -70,7 +80,7 @@ the rightmost version is kept
 Tue Sep  9 02:06:02 AM EDT 2025
 *)
 fun
-dvdtplst_duprmv0
+dvdtplst_vt_duprmv0
 (vts: list_vt(dvdtp)): list_vt(dvdtp)
 //
 (* ****** ****** *)

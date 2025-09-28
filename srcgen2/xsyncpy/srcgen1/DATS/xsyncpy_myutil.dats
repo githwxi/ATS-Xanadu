@@ -86,9 +86,48 @@ with sint_eq$sint of 1099
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+d2varlst_vt_sort0 =
+list_vt_mergesort0<d2var>
+//
+(* ****** ****** *)
 //
 #implfun
-d2varlst_duprmv0
+dvdtplst_vt_sort0 =
+(
+list_vt_mergesort0<dvdtp>
+) where
+{
+#impltmp
+g_cmp<dvdtp>
+( vt1, vt2 ) =
+g_cmp<d2var>(vt1.0, vt2.0) }
+//
+(*
+#implfun
+dvdtplst_vt_sort0
+  ( vts ) =
+(
+list_vt_mergesort0(vts))
+where
+{
+//
+#impltmp
+g_cmp<dvdtp>
+( vt1, vt2 ) =
+g_cmp<d2var>(vt1.0, vt2.0)
+//
+val () = prerrsln("\
+dvdtplst_vt_sort0: vts = ", list_vt2t vts)
+//
+}(*where*)//end-of-[dvdtplst_vt_sort0(vts)]
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d2varlst_vt_duprmv0
   (dvs) =
 (
 case+ dvs of
@@ -125,13 +164,13 @@ auxmain
 (dv1, dvs, list_vt_cons(dv0, res)))
 )(*case+*)//end-of-[auxmain(dv0,dvs)]
 //
-}(*where*)//end-of-[d2varlst_duprmv0(dvs)]
+}(*where*)//end-of-[d2varlst_vt_duprmv0(dvs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-dvdtplst_duprmv0
+dvdtplst_vt_duprmv0
   (vts) =
 (
 case+ vts of
@@ -139,8 +178,8 @@ case+ vts of
 list_vt_nil() => list_vt_nil()
 | ~
 list_vt_cons(vt1, vts) =>
-auxmain(vt1, vts, list_vt_nil()))
-where
+auxmain(vt1, vts, list_vt_nil())
+) where
 {
 //
 #vwtpdef
@@ -153,11 +192,13 @@ auxmain
 , res: dvdtplst): dvdtplst =
 (
 case+ vts of
+//
 | ~
 list_vt_nil() =>
 list_vt_reverse0
 (
 list_vt_cons(vt0, res))
+//
 | ~
 list_vt_cons(vt1, vts) =>
 (
@@ -167,9 +208,14 @@ then auxmain(vt1, vts, res)
 else
 auxmain
 (vt1, vts, list_vt_cons(vt0, res)))
+//
 )(*case+*)//end-of-[auxmain(vt0,vts)]
 //
-}(*where*)//end-of-[dvdtplst_duprmv0(vts)]
+val () =
+prerrsln("\
+dvdtplst_vt_duprmv0: vts = ", list_vt2t vts)
+//
+}(*where*)//end-of-[dvdtplst_vt_duprmv0(vts)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

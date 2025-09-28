@@ -408,8 +408,8 @@ end(*let*)//end-of-(envltck_popift0(env0))
 //
 fun
 dtpstk_dvsift0
-( kxs: !dtpstk )
-: list_vt(d2var) =
+( kxs:
+! dtpstk): d2varlst =
 let
 //
 #vwtpdef
@@ -434,10 +434,14 @@ loop(kxs, list_vt_cons(k1, res))
 //
 in//let
 //
-d2varlst_duprmv0
+list_vt2t
 (
-list_vt_mergesort0(
-  loop(kxs, list_vt_nil(*void*))))
+d2varlst_vt_duprmv0(res)
+) where
+{
+val res =
+loop(kxs, list_vt_nil((*0*)))
+val res = d2varlst_vt_sort0(res) }
 //
 end(*let*)//end-of-[dtpstk_dvsift0(...)]
 //
@@ -732,12 +736,16 @@ dtpstk_vtsift0
 list_vt2t{dvdtp}(vtps)
 ) where
 {
-val
-vtps = list_vt_nil()
-val
-vtps = loop(stk0, vtps)
-val
-vtps = dvdtplst_duprmv0(vtps)
+//
+val vtps =
+list_vt_nil()
+val vtps =
+loop(stk0, vtps)
+val vtps =
+dvdtplst_vt_sort0(vtps)
+val vtps =
+dvdtplst_vt_duprmv0(vtps)
+//
 } where // where
 {
 #vwtpdef

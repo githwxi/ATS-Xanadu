@@ -55,6 +55,13 @@ fun<>
 list_nilq
 {a:t0}{n:i0}
 (xs: list(a,n)): bool(n=0)
+fun<>
+list_consq
+{a:t0}{n:i0}
+(xs: list(a,n)): bool(n>0)
+//
+#symload
+nilq with list_nilq of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
