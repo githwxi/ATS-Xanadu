@@ -104,6 +104,46 @@ end(*let*)//end-of-[d3typ1_fprint(t3p0,out0)]
 (* ****** ****** *)
 //
 #implfun
+dvdtplst_fprint
+( vtps, out0 ) =
+(
+prints
+("DVDTPLST(");
+auxlst(vtps, 0); prints(")")
+) where
+{
+//
+#impltmp
+g_print$out<>() = out0
+//
+fun
+auxlst
+( vtps
+: dvdtplst, i0: sint): void =
+(
+case+ vtps of
+|
+list_nil
+((*void*)) => ((*void*))
+|
+list_cons
+(vtp1, vtps) =>
+(
+auxlst(vtps, i0+1)) where
+{
+val () =
+if (i0 > 0) then prints(",")
+val () =
+prints
+("(", vtp1.0, ":", vtp1.1, ")") }
+)(*case+*)//end-of-[auxlst(vtps,i0)]
+//
+}(*where*)//end-of-[dvdtplst_fprint(vtps,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d3pat1_fprint
 ( d3p0, out0 ) =
 let

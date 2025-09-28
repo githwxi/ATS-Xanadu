@@ -56,7 +56,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (*
 HX-2025-09-09:
 [dvs] is sorted
-the leftmost version is kept
+the rightmost version is kept
 Tue Sep  9 02:06:02 AM EDT 2025
 *)
 fun
@@ -66,7 +66,7 @@ d2varlst_duprmv0
 (*
 HX-2025-09-09:
 [vts] is sorted
-the leftmost version is kept
+the rightmost version is kept
 Tue Sep  9 02:06:02 AM EDT 2025
 *)
 fun

@@ -136,7 +136,7 @@ dtpstk_nil() => ((*0*))
 | ~
 dtpstk_cons
 (d2v1
-,d3ts,stk1) => dtpstk_free_top(stk1)
+,t3q1,stk1) => dtpstk_free_top(stk1)
 //
 )(*case+*)//end-of-[dtpstk_free_top]
 //
@@ -720,6 +720,75 @@ val () = envltck_f3as$push(env0, f3as)
 end//let//end-of-[list_cons(f3a1,f3as)]
 //
 )(*case+*)//end-of-[envltck_f3as$push(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+dtpstk_vtsift0
+( stk0: 
+! dtpstk): dvdtplst =
+(
+list_vt2t{dvdtp}(vtps)
+) where
+{
+val
+vtps = list_vt_nil()
+val
+vtps = loop(stk0, vtps)
+val
+vtps = dvdtplst_duprmv0(vtps)
+} where // where
+{
+#vwtpdef
+dvdtplst = dvdtplst_vt
+//
+fun
+loop
+( stk0:
+! dtpstk
+, vtps
+: dvdtplst): dvdtplst =
+(
+case+ stk0 of
+|
+dtpstk_nil
+((*void*)) => vtps
+|
+dtpstk_cons
+(d2v1
+,t3q1,stk1) =>
+(
+loop(stk1, vtps)) where
+{
+val vtps =
+list_vt_cons((d2v1, t3q1), vtps)}
+//
+|
+dtpstk_ift0(stk1) => (   vtps   )
+//
+|_(* otherwise *) => (    vtps   )
+)
+//
+}(*where*)//end-of-[dtpstk_vtsift0(env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+envltck_vtsift0
+  (  env0  ) =
+(
+//
+case+ env0 of
+|ENVLTCK
+(dtpstk, stkmap) =>
+(
+  vtps ) where
+{
+val vtps = dtpstk_vtsift0(dtpstk)
+}
+//
+)(*case+*)//end-of-[envltck_vtsift0(env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

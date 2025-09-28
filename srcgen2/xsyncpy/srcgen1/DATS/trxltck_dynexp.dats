@@ -640,6 +640,11 @@ val dexp =
 val vtps = envltck_vtsift0(env0)
 //
 val (  ) = envltck_popift0(env0)
+//
+val (  ) =
+prerrsln
+("d31ift_trxltck: vtps = ", vtps)
+//
 }
 ) where
 {

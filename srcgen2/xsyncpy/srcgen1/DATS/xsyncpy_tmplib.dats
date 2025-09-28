@@ -455,6 +455,21 @@ g_print
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-09-28:
+Sun Sep 28 12:30:12 AM EDT 2025
+This one handles 'list' specially!
+*)
+//
+#impltmp
+g_print
+<dvdtplst>(vtps) =
+(
+  dvdtplst_fprint(vtps, g_print$out<>((*void*))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_xsyncpy_tmplib.dats] *)
 (***********************************************************************)
