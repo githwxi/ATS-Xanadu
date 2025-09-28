@@ -100,32 +100,28 @@ end(*let*)//end-of-[d3parsed1_trxltck(dpar)]
 #implfun
 d3pat1lst_trxltck
 (d3ps, env0) =
-(
-case+ d3ps of
-|list_nil() => ()
-|list_cons(d3p1, d3ps) =>
-(
-d3pat1lst_trxltck(d3ps, env0)
-) where
+list_map$e1nv(d3ps, env0) where
 {
-  val () = d3pat1_trxltck(d3p1, env0) }
-)
+#typedef x0 = d3pat1
+#typedef y0 = d3pat1
+#vwtpdef e1 = envltck
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = d3pat1_trxltck
+}(*where*)//end-of-[d3pat1lst_trxltck(d3ps,env0)]
 //
 (* ****** ****** *)
 //
 #implfun
 f3arg1lst_trxltck
 (f3as, env0) =
-(
-case+ f3as of
-|list_nil() => ()
-|list_cons(f3a1, f3as) =>
-(
-f3arg1lst_trxltck(f3as, env0)
-) where
+list_map$e1nv(f3as, env0) where
 {
-  val () = f3arg1_trxltck(f3a1, env0) }
-)
+#typedef x0 = f3arg1
+#typedef y0 = f3arg1
+#vwtpdef e1 = envltck
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = f3arg1_trxltck
+}(*where*)//end-of-[f3arg1lst_trxltck(f3as,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
