@@ -615,9 +615,19 @@ nindfpr(filr, nind);strnfpr(filr, "def ");
 //
 dicstpy1(filr, dimp);
 (
+//
+(*
 if
 implfunq(tknd)
 then ((*nothing*)) else strnfpr(filr, "_"));
+*)
+if
+implfunq(tknd)
+then
+if
+list_consq(fjas)
+then ((*nothing*))
+else ((*nothing*)) else strnfpr(filr, "_"));
 //
 fjas1py1(filr, fjas);strnfpr(filr, ": ## impl\n"));
 (
@@ -628,13 +638,23 @@ fjas1py1(filr, fjas);strnfpr(filr, ": ## impl\n"));
 if
 implfunq(tknd)
 then // if2-then
+(
+if
+list_consq(fjas)
+then // if3-then
 (envx2js_decnind(env0,2(*--*))
 ;nindstrnfpr(filr, nind, "## endfun(impl)");fprintln(filr))
+else // if3-else
+(envx2js_decnind(env0,2(*--*))
+;nindfpr(filr, nind);strnfpr(filr, "## endfun(impl)");fprintln(filr)
+;nindfpr(filr, nind)
+;dicstpy1(filr, dimp);strnfpr(filr, " = ");dicstpy1(filr, dimp);strnfpr(filr, "_()");fprintln(filr))
+)
 else // if2-else
 (
 //
 (envx2js_decnind(env0,2(*--*))
-;nindfpr(filr, nind);strnfpr(filr, "## endgen(impl)");fprintln(filr)
+;nindfpr(filr, nind);strnfpr(filr, "## endnfn(impl)");fprintln(filr)
 ;nindfpr(filr, nind)
 ;dicstpy1(filr, dimp);strnfpr(filr, " = ");dicstpy1(filr, dimp);strnfpr(filr, "_()");fprintln(filr))
 //

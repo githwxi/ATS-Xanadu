@@ -649,17 +649,29 @@ nindstrnfpr
 strnfpr(filr," = function ");fjas1js1(filr, fjas));
 (
 strnfpr(filr," { // impl\n");
-(envx2js_incnind(env0,2(*++*))
-;js1emit_fjarglst(env0, fjas);f1_i1cmpret(env0, icmp));
+(
+envx2js_incnind(env0,2(*++*));
+js1emit_fjarglst(env0, fjas);f1_i1cmpret(env0, icmp));
 //
 if
 implfunq(tknd)
 then // then
-(envx2js_decnind(env0,2(*--*))
-;nindstrnfpr(filr, nind, "} // endfun(impl)");fprintln(filr))
+(
+envx2js_decnind(env0,2(*--*));
+//
+if
+list_consq(fjas)
+then
+(
+nindstrnfpr(filr, nind, "} // endfun(impl)");fprintln(filr))
+else
+(
+nindstrnfpr(filr, nind, "} () // endfun(impl)");fprintln(filr))
+)
 else // else
-(envx2js_decnind(env0,2(*--*))
-;nindstrnfpr(filr, nind, "} () // endgen(impl)");fprintln(filr))
+(
+envx2js_decnind(env0,2(*--*));
+nindstrnfpr(filr, nind, "} () // endnfn(impl)");fprintln(filr))
 //
 )
 //

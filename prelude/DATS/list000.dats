@@ -86,6 +86,15 @@ case+ xs of
 | list_nil() => true
 | list_cons(_, _) => false)
 //
+#impltmp
+< (*0*) >
+list_consq
+{a:t0}(xs) =
+(
+case+ xs of
+| list_nil() => false
+| list_cons(_, _) => (true))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
