@@ -168,6 +168,8 @@ where{
 val
 s2t0 = sort2_delin(t2q0.sort()) }
 //
+(* ****** ****** *)
+//
 #implfun
 s2typ1_t1pize(t2q0) =
 s2typ1(s2t0, T2P1top1(t2q0))

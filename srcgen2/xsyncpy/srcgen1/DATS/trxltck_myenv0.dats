@@ -80,16 +80,49 @@ fun
 d3typ1_linq
 (t3q0: d3typ1): bool =
 (
-  s2typ1_linq(t3q0.styp()))
+case+
+t3q0.node() of
+|T3P1none() => false
+|T3P1styp(t2q1) => linq(t2q1)
+|_(*otherwise*) => (  false  )
+)(*case+*)//endof(d3typ1_linq)
 #symload linq with d3typ1_linq
 //
 (* ****** ****** *)
 //
-(*
 fun
 d3typ1_delin
-(t3q0: d3typ1): d3typ1 = ...
-*)
+(t3q0: d3typ1): d3typ1 =
+(
+case+
+t3q0.node() of
+//
+|
+T3P1none() => (t3q0)
+//
+|
+T3P1styp(t2q1) =>
+let
+val
+t2q0 = t3q0.styp()
+val
+t2q2 =
+s2typ1_t1pize(t2q1)
+in//let
+//
+d3typ1(t2q0, T3P1styp(t2q2))
+//
+end//let//end-of-(T3P1styp())
+//
+|_(*otherwise*) => (   t3q0   )
+//
+) where
+{
+//
+#symload
+d3typ1 with d3typ1_make_styp$node
+//
+}(*where+*)//end-of-[d3typ1_delin]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -531,10 +564,10 @@ linq(t3q0))
 then t3q0 else
 let
 //
-val t3q1 = t3q0
 (*
-val t3q1 = d3typ1_delin(t3q0)
+val t3q1 = t3q0
 *)
+val t3q1 = d3typ1_delin(t3q0)
 //
 in//let
 //
@@ -589,7 +622,15 @@ case+ env0 of
 !dtpstk, stkmap) =>
 (
 dtpstk := dtpstk_cons(d2v0, t3q1, dtpstk))
-)(*case+*)//end-of-(envltck_dvar$updt(env0,...))
+) where
+{
+//
+val () =
+prerrsln("envltck_dvar$updt: d2v0 = ", d2v0)
+val () =
+prerrsln("envltck_dvar$updt: t3q1 = ", t3q1)
+//
+}(*where*)//end-of-(envltck_dvar$updt(env0,...))
 //
 (* ****** ****** *)
 (* ****** ****** *)

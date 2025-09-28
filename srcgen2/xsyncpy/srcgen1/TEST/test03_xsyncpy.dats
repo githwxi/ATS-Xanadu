@@ -1,7 +1,8 @@
 (* ****** ****** *)
 (*
-HX-2025-06-19:
+HX-2025-09-28:
 For testing xsyncpy!
+Sun Sep 28 03:27:13 PM EDT 2025
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -13,20 +14,17 @@ For testing xsyncpy!
 (* ****** ****** *)
 (* ****** ****** *)
 //
-var N: sint = 10
-val () = N := N + 1
-//
-(* ****** ****** *)
-(* ****** ****** *)
+fun
+<x0:vt>
+identity(x0: x0): x0 = x0
 //
 fun
-fact(xs: sint): sint =
-(
-if xs >= 1 then xs * fact(xs-1) else 1)
+<x0:vt>
+duplicity(x0: x0): (x0, x0) = (x0, x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test02_xsyncpy.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test03_xsyncpy.dats] *)
 (***********************************************************************)
