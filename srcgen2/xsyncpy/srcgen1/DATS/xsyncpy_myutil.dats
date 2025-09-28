@@ -119,7 +119,7 @@ list_vt_cons(dv0, res))
 list_vt_cons(dv1, dvs) =>
 (
 if g_cmp(dv0, dv1) = 0
-then auxmain(dv0, dvs, res)
+then auxmain(dv1, dvs, res)
 else
 auxmain
 (dv1, dvs, list_vt_cons(dv0, res)))
@@ -163,7 +163,7 @@ list_vt_cons(vt1, vts) =>
 (
 if
 g_cmp(vt0.0, vt1.0) = 0
-then auxmain(vt0, vts, res)
+then auxmain(vt1, vts, res)
 else
 auxmain
 (vt1, vts, list_vt_cons(vt0, res)))

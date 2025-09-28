@@ -335,6 +335,14 @@ d3typ1_fprint
 #symload fprint with d3typ1_fprint of 1000
 //
 (* ****** ****** *)
+//
+fun
+dvdtplst_fprint
+( vtps
+: dvdtplst, out0: FILR): void
+#symload fprint with dvdtplst_fprint of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
