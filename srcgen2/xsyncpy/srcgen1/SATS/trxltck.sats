@@ -115,6 +115,10 @@ fun
 envltck_dtyp$eval
 ( env0:
 ! envltck, t3q0: d3typ1): s2typ1
+fun
+envltck_dtyplst$eval
+( env0:
+! envltck, t3qs: d3typ1lst): s2typ1lst
 //
 (* ****** ****** *)
 //

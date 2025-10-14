@@ -97,19 +97,39 @@ s2typ1_linq
 (* ****** ****** *)
 //
 fun
+d3es_t3qs$get
+(d3es
+:d3exp1lst): d3typ1lst =
+(
+list_map<x0><y0>(d3es)
+) where
+{
+//
+#typedef x0 = (d3exp1)
+#typedef y0 = (d3typ1)
+//
+#impltmp
+map$fopr
+<x0><y0>(x0) = d3exp1_dtyp$get(x0)
+}(*where*)//end-of-[d3es_t3qs$get(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3exp1_t2pck
 (d3e0: d3exp1
-,t2q0: s2typ1
+,styp: s2typ1
 ,env0: !envltck): d3exp1 =
 let
 //
-val t3q1 =
+val t3q0 =
 d3e0.dtyp()
-val t2q1 =
+val t2q0 =
 envltck_dtyp$eval
-(  env0 , t3q1  )
+(  env0 , t3q0  )
 val ubtf =
-s2typ1_lteq(t2q1, t2q0)
+s2typ1_lteq(t2q0, styp)
 //
 in//let
 //
@@ -121,15 +141,15 @@ val
 loc0 = d3e0.lctn()
 val
 t3q0 =
-d3typ1_styp$make(t2q0)
+d3typ1_styp$make(styp)
 //
 in//let
 d3exp1
 ( loc0
-, t3q0, D3E1t2pck(d3e0, t2q1, t2q0))
+, t3q0, D3E1t2pck(d3e0, t2q0, styp))
 end//let
 //
-end//let//end-of-[d3exp1_t2pck(d3e0,t2q0)]
+end//let//end-of-[d3exp1_t2pck(d3e0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -580,6 +600,15 @@ D3E1tup0
 //
 val d3es =
 d3exp1lst_trxltck(d3es, env0)
+//
+val t3qs =
+d3es_t3qs$get(d3es)
+val t2qs =
+envltck_dtyplst$eval(env0, t3qs)
+//
+val t2q0 = t3q0.styp()
+val t3q0 =
+d3typ1_make_styp$node(t2q0, T2P1tup0(npf1, t2qs))
 //
 in//let
 //

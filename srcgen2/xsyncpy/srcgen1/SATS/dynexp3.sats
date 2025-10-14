@@ -209,6 +209,9 @@ D3E = "./\
 #typedef d3parsed = $D3E.d3parsed
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef d3typ1lst = list(d3typ1)
+#typedef d3typ1opt = optn(d3typ1)
+(* ****** ****** *)
 #typedef d3pat1lst = list(d3pat1)
 #typedef d3exp1lst = list(d3exp1)
 (* ****** ****** *)
@@ -265,6 +268,7 @@ fprint with d3ecl_fprint of 1000
 HX-2025-09-10:
 This one is NOT recursive!
 *)
+//
 datatype
 d3typ1_node =
 //
@@ -272,7 +276,8 @@ d3typ1_node =
 //
 |T3P1styp of s2typ1
 //
-|T3P1dvar of (d2var)
+|T3P1dvar of (d2var, d3typ1)
+//
 |T3P1dcon of (d2con, d2varlst)
 //
 |T3P1tup0 of
@@ -283,13 +288,6 @@ d3typ1_node =
 |T3P1rcd2 of
 (token, sint(*npf*), l3d2vlst)
 *)
-//
-(* ****** ****** *)
-//
-#typedef
-d3typ1lst = list(d3typ1)
-#typedef
-d3typ1opt = optn(d3typ1)
 //
 (* ****** ****** *)
 //
