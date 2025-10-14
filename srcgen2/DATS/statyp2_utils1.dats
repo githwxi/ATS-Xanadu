@@ -121,6 +121,26 @@ s2typ_dataq(tfun) | _ => (false)
 (* ****** ****** *)
 //
 #implfun
+s2typlst_linq(t2ps) =
+(
+  list_exists(t2ps)) where
+{
+#impltmp
+exists$test<s2typ> = s2typ_linq
+}
+#implfun
+s2typlst_prfq(t2ps) =
+(
+  list_forall(t2ps)) where
+{
+#impltmp
+forall$test<s2typ> = s2typ_prfq
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 s2vts_stleq
   ( svts ) =
 (

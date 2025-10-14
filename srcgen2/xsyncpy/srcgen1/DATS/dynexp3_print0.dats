@@ -54,7 +54,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #implfun
 d3typ1_fprint
-( t3p0, out0 ) =
+( t3q0, out0 ) =
 let
 //
 #impltmp
@@ -63,19 +63,20 @@ g_print$out<>() = out0
 in//let
 //
 case+
-t3p0.node() of
+t3q0.node() of
 //
 |T3P1none() =>
 (
 prints("T3P1none(", ")"))
 //
-|T3P1styp(t2p1) =>
+|T3P1styp(t2q1) =>
 (
-prints("T3P1styp(", t2p1, ")"))
+prints("T3P1styp(", t2q1, ")"))
 //
-|T3P1dvar(dvar) =>
+|T3P1dvar(dvar, t3q1) =>
 (
-prints("T3P1dvar(", dvar, ")"))
+prints
+("T3P1dvar(", dvar, ";", t3q1, ")"))
 //
 |T3P1dcon(dcon, d2vs) =>
 (
@@ -86,6 +87,7 @@ prints
 (
 prints
 ("T3P1tup0(", npf1, ";", d2vs, ")"))
+//
 |T3P1tup1(tknd, npf1, d2vs) =>
 (
 prints
@@ -98,7 +100,7 @@ prints
 ("T3P1rcd2(", tknd, ";",npf1,";",ldvs,")"))
 *)
 //
-end(*let*)//end-of-[d3typ1_fprint(t3p0,out0)]
+end(*let*)//end-of-[d3typ1_fprint(t3q0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

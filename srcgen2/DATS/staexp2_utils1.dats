@@ -527,6 +527,8 @@ case+ xs2 of
 ) (*case+*) // end of [lte_sort2lst_sort2lst(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 s2cst_linq(s2c0) =
 sort2_linq(s2c0.sort())
@@ -539,6 +541,8 @@ sort2_imprq(s2c0.sort())
 #implfun
 s2cst_prgmq(s2c0) =
 sort2_prgmq(s2c0.sort())
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -579,14 +583,16 @@ s2explst_linq(s2es) =
   list_exists(s2es)) where
 {
 #impltmp
-exists$test<s2exp> = s2exp_linq }
+exists$test<s2exp> = s2exp_linq
+}
 #implfun
 s2explst_prfq(s2es) =
 (
   list_forall(s2es)) where
 {
 #impltmp
-forall$test<s2exp> = s2exp_prfq }
+forall$test<s2exp> = s2exp_prfq
+}
 //
 #implfun
 s2explst_imprq(s2es) =
@@ -594,14 +600,16 @@ s2explst_imprq(s2es) =
   list_exists(s2es)) where
 {
 #impltmp
-exists$test<s2exp> = s2exp_imprq }
+exists$test<s2exp> = s2exp_imprq
+}
 #implfun
 s2explst_prgmq(s2es) =
 (
   list_exists(s2es)) where
 {
 #impltmp
-exists$test<s2exp> = s2exp_prgmq }
+exists$test<s2exp> = s2exp_prgmq
+}
 //
 (* ****** ****** *)
 //
@@ -645,6 +653,7 @@ exists$test
 <l2s2e>(ls2e) = s2exp_prgmq(ls2e.itm())
 }
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

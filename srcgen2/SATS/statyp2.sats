@@ -324,6 +324,13 @@ s2typ_dataq(s2typ): bool
 (* ****** ****** *)
 //
 fun
+s2typlst_linq(s2typlst): bool
+fun
+s2typlst_prfq(s2typlst): bool
+//
+(* ****** ****** *)
+//
+fun
 s2typ_fprint:(s2typ, FILR)->void
 //
 (* ****** ****** *)
