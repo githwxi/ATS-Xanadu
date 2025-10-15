@@ -47,11 +47,6 @@ Authoremail: gmhwxiATgmailDOTcom
 g_forall
 <list(x0)> =
 gseq_forall<list(x0)><x0>
-#impltmp
-{ x0:t0 }
-g_exists
-<list(x0)> =
-gseq_exists<list(x0)><x0>
 //
 (* ****** ****** *)
 //
@@ -145,23 +140,148 @@ rforall$test<x0> = rforall$test1<x0>
 #impltmp
 < x0:t0 >
 list_iforall =
-gseq_iforall<list(x0)><x0>(* void *)
+gseq_iforall<list(x0)><x0>(*void*)
 //
 #impltmp
 < x0:t0 >
 list_irforall =
-gseq_irforall<list(x0)><x0>(* void *)
+gseq_irforall<list(x0)><x0>(*void*)
 //
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
 list_forall$f1un =
-gseq_forall$f1un<list(x0)><x0>(* void *)
+gseq_forall$f1un<list(x0)><x0>(*void*)
 #impltmp
 < x0:t0 >
 list_iforall$f2un =
-gseq_iforall$f2un<list(x0)><x0>(* void *)
+gseq_iforall$f2un<list(x0)><x0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-10-15:
+Wed Oct 15 02:26:54 AM EDT 2025
+*)
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+g_exists
+<list(x0)> =
+gseq_exists<list(x0)><x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_exists
+  ( xs ) = 
+(
+  loop(xs) ) where
+{
+fun
+loop
+(xs: list(x0)): bool =
+(
+case+ xs of
+| ~
+list_nil() =>
+  (false)
+| ~
+list_cons(x1, xs) =>
+let
+val test =
+exists$test<x0>(x1) in//let
+(if test
+ then true else loop(xs)) end)
+}
+//
+#impltmp
+{ x0:t0 }
+gseq_exists
+<list(x0)><x0> = list_exists<x0>
+#impltmp
+{ x0:t0 }
+gseq_exists0
+<list(x0)><x0>(xs) =
+list_exists<x0>(xs) where
+{
+#impltmp
+exists$test<x0> = exists$test0<x0>
+}
+#impltmp
+{ x0:t0 }
+gseq_exists1
+<list(x0)><x0>(xs) =
+list_exists<x0>(xs) where
+{
+#impltmp
+exists$test<x0> = exists$test1<x0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_rexists
+  ( xs ) =
+(
+list_vt_exists0<x0>
+(list_reverse_vt<x0>(xs))) where
+{
+#impltmp
+exists$test0<x0> = rexists$test<x0>
+}
+//
+#impltmp
+{ x0:t0 }
+gseq_rexists
+<list(x0)><x0> = list_rexists<x0>
+#impltmp
+{ x0:t0 }
+gseq_rexists0
+<list(x0)><x0>(xs) =
+list_rexists<x0>(xs) where
+{
+#impltmp
+rexists$test<x0> = rexists$test0<x0>
+}
+#impltmp
+{ x0:t0 }
+gseq_rexists1
+<list(x0)><x0>(xs) =
+list_rexists<x0>(xs) where
+{
+#impltmp
+rexists$test<x0> = rexists$test1<x0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_iexists =
+gseq_iexists<list(x0)><x0>(*void*)
+//
+#impltmp
+< x0:t0 >
+list_irexists =
+gseq_irexists<list(x0)><x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_exists$f1un =
+gseq_exists$f1un<list(x0)><x0>(*void*)
+#impltmp
+< x0:t0 >
+list_iexists$f2un =
+gseq_iexists$f2un<list(x0)><x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

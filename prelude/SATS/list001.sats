@@ -128,6 +128,45 @@ list_iforall$f2un
 //
 fun
 <x0:t0>
+list_exists(xs: list(x0)): bool
+fun
+<x0:t0>
+list_rexists(xs: list(x0)): bool
+fun
+<x0:t0>
+list_iexists(xs: list(x0)): bool
+fun
+<x0:t0>
+list_irexists(xs: list(x0)): bool
+//
+#symload exists with list_exists of 1000
+#symload rexists with list_rexists of 1000
+#symload iexists with list_iexists of 1000
+#symload irexists with list_irexists of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_exists$f1un
+( xs
+: list(x0), test: (x0) -> bool): bool
+#symload exists with list_exists$f1un of 1000
+#symload exists$fun with list_exists$f1un of 1000
+//
+fun
+<x0:t0>
+list_iexists$f2un
+( xs
+: list(x0), test: (ni,x0) -> bool): bool
+#symload iexists with list_iexists$f2un of 1000
+#symload iexists$fun with list_iexists$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
 list_foritm(xs: list(x0)): void
 fun
 <x0:t0>
