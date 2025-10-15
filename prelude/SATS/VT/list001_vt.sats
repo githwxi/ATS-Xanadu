@@ -79,6 +79,45 @@ list_vt_irforall1
 //
 fun
 <x0:vt>
+list_vt_exists0
+(xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_exists1
+(xs: !list_vt(x0)): bool
+//
+fun
+<x0:vt>
+list_vt_rexists0
+(xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_rexists1
+(xs: !list_vt(x0)): bool
+//
+fun
+<x0:vt>
+list_vt_iexists0
+(xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_iexists1
+(xs: !list_vt(x0)): bool
+//
+fun
+<x0:vt>
+list_vt_irexists0
+(xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_irexists1
+(xs: !list_vt(x0)): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 list_vt_foritm0
 (xs: ~list_vt(x0)): void
 fun

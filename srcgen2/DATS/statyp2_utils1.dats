@@ -86,7 +86,8 @@ s2typ_linq(t2p0) =
   sort2_linq(t2p0.sort()))
 #implfun
 s2typ_prfq(t2p0) =
-(  sort2_prfq(t2p0.sort()))
+(
+  sort2_prfq(t2p0.sort()))
 //
 (* ****** ****** *)
 //

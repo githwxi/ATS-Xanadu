@@ -65,6 +65,37 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #implfun
+s2typ1_linq(t2q0) =
+(
+  sort2_linq(t2q0.sort()))
+#implfun
+s2typ1_prfq(t2q0) =
+(
+  sort2_prfq(t2q0.sort()))
+//
+(* ****** ****** *)
+//
+#implfun
+s2typ1lst_linq(t2qs) =
+(
+  list_exists(t2qs)) where
+{
+#impltmp
+exists$test<s2typ1> = s2typ1_linq
+}
+#implfun
+s2typ1lst_prfq(t2qs) =
+(
+  list_forall(t2qs)) where
+{
+#impltmp
+forall$test<s2typ1> = s2typ1_prfq
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 s2typ1_lteq
 (t2q1, t2q2) =
 (

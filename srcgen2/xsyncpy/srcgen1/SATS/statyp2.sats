@@ -171,6 +171,18 @@ $BAS.trcdknd,sint(*npf*),l2t2p1lst)
 (* ****** ****** *)
 //
 fun
+s2typ1_linq(s2typ1): bool
+fun
+s2typ1_prfq(s2typ1): bool
+//
+fun
+s2typ1lst_linq(s2typ1lst): bool
+fun
+s2typ1lst_prfq(s2typ1lst): bool
+//
+(* ****** ****** *)
+//
+fun
 s2typ1_sort$get
 (styp: s2typ1): sort2
 #symload sort with s2typ1_sort$get
