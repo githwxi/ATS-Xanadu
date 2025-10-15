@@ -77,6 +77,10 @@ list_vt_irforall1
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-10-15:
+Wed Oct 15 03:05:07 AM EDT 2025
+*)
 fun
 <x0:vt>
 list_vt_exists0

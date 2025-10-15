@@ -139,6 +139,49 @@ forall$test<s2typ> = s2typ_prfq
 }
 //
 (* ****** ****** *)
+//
+#implfun
+l2t2plst_linq
+(   ltps   ) =
+(
+case+ ltps of
+|list_nil
+((*void*)) => false
+|list_cons
+(ltp1, ltps) =>
+let
+val
+S2LAB(lab0,t2p1) = ltp1
+in//let
+if
+s2typ_linq(t2p1)
+then true // linear
+else l2t2plst_linq(ltps) end
+)(*end-of-[l2t2plst_linq(ltps)]*)
+//
+(* ****** ****** *)
+//
+#implfun
+l2t2plst_prfq
+(   ltps   ) =
+(
+case+ ltps of
+|list_nil
+((*void*)) => true
+|list_cons
+(ltp1, ltps) =>
+let
+val
+S2LAB(lab0,t2p1) = ltp1
+in//let
+if
+s2typ_prfq(t2p1)
+then
+l2t2plst_prfq(ltps) else false
+end//let
+)(*end-of-[l2t2plst_prfq(ltps)]*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
