@@ -140,7 +140,18 @@ local
 fun
 f0_trcdknd
 (linq: bool
+,prfq: bool
 ,tknd: trcdknd): sort2 =
+(
+if
+prfq
+then
+(
+if
+linq
+then the_sort2_view
+else the_sort2_prop)//then
+else
 (
 if
 linq
@@ -154,8 +165,10 @@ else
 (
 case+ tknd of
 |TRCDbox0() => the_sort2_tbox
-|TRCDbox1() => the_sort2_tbox
+|TRCDbox1() => the_sort2_vtbx
 |_(*nonbox*) => the_sort2_type))
+//
+)//end(if)//end-of-[f0_trcdknd...]
 //
 (* ****** ****** *)
 //
@@ -219,13 +232,24 @@ the_sort2_type(*0*)
 *)
 val linq =
 s2typlst_linq(t2ps)
+val prfq =
+s2typlst_prfq(t2ps)
+//
 val s2t0 =
+(
+if prfq
+then
+(
+if linq
+then the_sort2_view
+else the_sort2_prop)
+else
 (
 if linq
 then the_sort2_vwtp
-else the_sort2_type)
+else the_sort2_type))
 //
-val trcd = TRCDflt0
+val trcd = TRCDflt0(*0*)
 val ltps =
 f0_labelize(t2ps, 0(*i0*))
 in//let
@@ -241,12 +265,17 @@ let
 //
 val linq =
 s2typlst_linq(t2ps)
+val prfq =
+s2typlst_prfq(t2ps)
 val s2t0 =
-f0_trcdknd(linq, tknd)
+f0_trcdknd(linq, prfq, tknd)
 //
 val ltps =
-f0_labelize(t2ps, 0(*i0*))
+(
+  f0_labelize(t2ps, 0(*i0*)))
+//
 in//let
+//
 s2typ_make_node
 (s2t0,T2Ptrcd(tknd,npf1,ltps))
 end // end of [s2typ_tup1(...)]
@@ -259,15 +288,21 @@ let
 //
 val linq =
 l2t2plst_linq(ltps)
+val prfq =
+l2t2plst_prfq(ltps)
 val s2t0 =
-f0_trcdknd(linq, tknd)
+f0_trcdknd(linq, prfq, tknd)
 //
+in//let
+//
+let
 val
 ltps = f0_orderize(ltps)
-//
 in//let
 s2typ_make_node
 (s2t0,T2Ptrcd(tknd,npf1,ltps))
+end//let
+//
 end // end of [s2typ_tup1(...)]
 //
 endloc//end of [local(s2typ_tup0/tup1)]
