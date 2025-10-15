@@ -590,6 +590,29 @@ prerrsln("envltck_dvar$take: dvar = ", dvar)
 (* ****** ****** *)
 //
 #implfun
+envltck_dvar$updt
+(env0, d2v0, t3q1) =
+(
+case+ env0 of
+| ENVLTCK
+(
+!dtpstk, stkmap) =>
+(
+dtpstk := dtpstk_cons(d2v0, t3q1, dtpstk))
+) where
+{
+//
+val () =
+prerrsln("envltck_dvar$updt: d2v0 = ", d2v0)
+val () =
+prerrsln("envltck_dvar$updt: t3q1 = ", t3q1)
+//
+}(*where*)//end-of-(envltck_dvar$updt(env0,...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 envltck_dtyp$eval
   (env0, t3q0) =
 (
@@ -610,27 +633,23 @@ prerrsln("envltck_dtyp$eval: t3q0 = ", t3q0)
 }(*where*)//end-of-[envltck_dtyp$eval(env0,...)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #implfun
-envltck_dvar$updt
-(env0, d2v0, t3q1) =
+envltck_dtyplst$eval
+  (env0, t3qs) =
 (
-case+ env0 of
-| ENVLTCK
+case+ t3qs of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(t3q1, t3qs) =>
 (
-!dtpstk, stkmap) =>
-(
-dtpstk := dtpstk_cons(d2v0, t3q1, dtpstk))
-) where
-{
-//
-val () =
-prerrsln("envltck_dvar$updt: d2v0 = ", d2v0)
-val () =
-prerrsln("envltck_dvar$updt: t3q1 = ", t3q1)
-//
-}(*where*)//end-of-(envltck_dvar$updt(env0,...))
+list_cons(t2q1, t2qs))
+where{
+val t2q1 = envltck_dtyp$eval(env0, t3q1)
+val t2qs = envltck_dtyplst$eval(env0, t3qs)}
+)(*case+*)//end-of-[envltck_dtyplst$eval(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -43,7 +43,32 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/statyp2.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#symload +
+with sint_add$sint of 1099
+#symload -
+with sint_sub$sint of 1099
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/xbasics.sats"
+#staload
+"./../../../SATS/xlabel0.sats"
 #staload
 "./../../../SATS/staexp2.sats"
 #staload
@@ -129,6 +154,81 @@ s2typ1_make_sort$node
 (* ****** ****** *)
 //
 endloc(*local*)//end-of-[local(s2typ1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-10-15:
+Wed Oct 15 05:24:57 PM EDT 2025
+*)
+//
+//
+fun
+f0_labelize
+( t2qs
+: s2typ1lst
+, i0: sint): l2t2p1lst =
+(
+case+ t2qs of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(t2q1, t2qs) =>
+let
+val ltp1 = S2LAB(LABint(i0),t2q1)
+in//let
+list_cons(ltp1,f0_labelize(t2qs,i0+1))
+end (*let*)
+) (*case+*) // end-[f0_labelize(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2typ1_tup0
+(npf1, t2qs) =
+let
+//
+(*
+val s2t0 =
+the_sort2_type(*0*)
+*)
+val linq =
+s2typ1lst_linq(t2qs)
+val prfq =
+s2typ1lst_prfq(t2qs)
+//
+val s2t0 =
+(
+if prfq
+then
+(
+if linq
+then the_sort2_view
+else the_sort2_prop)
+else
+(
+if linq
+then the_sort2_vwtp
+else the_sort2_type))
+//
+val trcd = TRCDflt0(*0*)
+val ltqs =
+f0_labelize(t2qs, 0(*i0*))
+//
+in//let
+s2typ1_make_sort$node
+(s2t0,T2P1trcd(trcd,npf1,ltqs))
+end where
+{
+//
+val () =
+prerrsln("s2typ1_tup0: npf1 = ", npf1)
+val () =
+prerrsln("s2typ1_tup0: t2qs = ", t2qs)
+//
+}(*where*)//end-of-[s2typ1_tup0(npf1,t2qs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
