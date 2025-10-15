@@ -176,9 +176,19 @@ fun
 s2typ1_prfq(s2typ1): bool
 //
 fun
+l2t2p1_linq(l2t2p1): bool
+fun
+l2t2p1_prfq(l2t2p1): bool
+//
+fun
 s2typ1lst_linq(s2typ1lst): bool
 fun
 s2typ1lst_prfq(s2typ1lst): bool
+//
+fun
+l2t2p1lst_linq(l2t2p1lst): bool
+fun
+l2t2p1lst_prfq(l2t2p1lst): bool
 //
 (* ****** ****** *)
 //
@@ -208,6 +218,22 @@ s2typ1lst_lteq
 //
 fun
 s2typ1_none0(): s2typ1
+//
+(* ****** ****** *)
+//
+fun
+s2typ1_tup0
+(npf1:sint,t2qs:s2typ1lst): s2typ1
+fun
+s2typ1_tup1
+(trcdknd(*tknd*)
+,npf1:sint,t2qs:s2typ1lst): s2typ1
+fun
+s2typ1_rcd2
+(trcdknd(*tknd*)
+,npf1:sint,ltqs:l2t2p1lst): s2typ1
+//
+(* ****** ****** *)
 //
 fun
 s2typ1_make_s2typ(styp: s2typ): s2typ1

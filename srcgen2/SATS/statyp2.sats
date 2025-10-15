@@ -331,6 +331,13 @@ s2typlst_prfq(s2typlst): bool
 (* ****** ****** *)
 //
 fun
+l2t2plst_linq(l2t2plst): bool
+fun
+l2t2plst_prfq(l2t2plst): bool
+//
+(* ****** ****** *)
+//
+fun
 s2typ_fprint:(s2typ, FILR)->void
 //
 (* ****** ****** *)

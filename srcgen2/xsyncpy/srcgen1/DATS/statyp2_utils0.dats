@@ -76,6 +76,22 @@ s2typ1_prfq(t2q0) =
 (* ****** ****** *)
 //
 #implfun
+l2t2p1_linq(ltq0) =
+(
+s2typ1_linq(t2q1)) where
+{
+val+S2LAB(lab0, t2q1) = ltq0}
+//
+#implfun
+l2t2p1_prfq(ltq0) =
+(
+s2typ1_prfq(t2q1)) where
+{
+val+S2LAB(lab0, t2q1) = ltq0}
+//
+(* ****** ****** *)
+//
+#implfun
 s2typ1lst_linq(t2qs) =
 (
   list_exists(t2qs)) where
@@ -90,6 +106,25 @@ s2typ1lst_prfq(t2qs) =
 {
 #impltmp
 forall$test<s2typ1> = s2typ1_prfq
+}
+//
+(* ****** ****** *)
+//
+#implfun
+l2t2p1lst_linq(ltqs) =
+(
+  list_exists(ltqs)) where
+{
+#impltmp
+exists$test<l2t2p1> = l2t2p1_linq
+}
+#implfun
+l2t2p1lst_prfq(ltqs) =
+(
+  list_forall(ltqs)) where
+{
+#impltmp
+forall$test<l2t2p1> = l2t2p1_prfq
 }
 //
 (* ****** ****** *)

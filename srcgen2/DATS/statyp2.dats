@@ -139,13 +139,23 @@ local
 //
 fun
 f0_trcdknd
-(tknd: trcdknd): sort2 =
+(linq: bool
+,tknd: trcdknd): sort2 =
+(
+if
+linq
+then
+(
+case+ tknd of
+|TRCDbox0() => the_sort2_vtbx
+|TRCDbox1() => the_sort2_vtbx
+|_(*nonbox*) => the_sort2_vwtp)
+else
 (
 case+ tknd of
 |TRCDbox0() => the_sort2_tbox
 |TRCDbox1() => the_sort2_tbox
-|
-_(*otherwise*) => the_sort2_type)
+|_(*nonbox*) => the_sort2_type))
 //
 (* ****** ****** *)
 //
@@ -202,8 +212,19 @@ in//local
 s2typ_tup0
 (npf1, t2ps) =
 let
+//
+(*
 val s2t0 =
 the_sort2_type(*0*)
+*)
+val linq =
+s2typlst_linq(t2ps)
+val s2t0 =
+(
+if linq
+then the_sort2_vwtp
+else the_sort2_type)
+//
 val trcd = TRCDflt0
 val ltps =
 f0_labelize(t2ps, 0(*i0*))
@@ -217,8 +238,12 @@ s2typ_tup1
 ( tknd
 , npf1, t2ps) =
 let
+//
+val linq =
+s2typlst_linq(t2ps)
 val s2t0 =
-f0_trcdknd(tknd)
+f0_trcdknd(linq, tknd)
+//
 val ltps =
 f0_labelize(t2ps, 0(*i0*))
 in//let
@@ -231,10 +256,15 @@ s2typ_rcd2
 ( tknd
 , npf1, ltps) =
 let
+//
+val linq =
+l2t2plst_linq(ltps)
 val s2t0 =
-f0_trcdknd(tknd)
-val ltps =
-f0_orderize(ltps)
+f0_trcdknd(linq, tknd)
+//
+val
+ltps = f0_orderize(ltps)
+//
 in//let
 s2typ_make_node
 (s2t0,T2Ptrcd(tknd,npf1,ltps))

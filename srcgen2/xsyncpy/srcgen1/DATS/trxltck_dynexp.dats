@@ -607,14 +607,16 @@ val t2qs =
 envltck_dtyplst$eval(env0, t3qs)
 //
 val t2q0 = t3q0.styp()
+val t2q1 = s2typ1_tup0(npf1, t2qs)
+//
 val t3q0 =
-d3typ1_make_styp$node(t2q0, T2P1tup0(npf1, t2qs))
+d3typ1_make_styp$node(t2q0, T3P1styp(t2q1))
 //
 in//let
 //
 (
 d3exp1
-(loc0,t3q0, D3E1tup0(npf1, d3es)))
+(loc0, t3q0, D3E1tup0(npf1, d3es)))
 //
 end//let//end-of-[f0_tup0(d3e0,env0)]
 //
