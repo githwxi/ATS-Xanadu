@@ -2929,15 +2929,24 @@ in//let
 //
 if
 ubtf
-then d3e0 else
-let
+then let
 val
 loc0 = d3e0.lctn()
 in//let
 (
-d3exp
+// HX-2025-10-16:
+d3exp // D3Et2ped: checked
+(loc0, t2p0, D3Et2ped(d3e0, t2p0)))
+end//let//then
+else let
+val
+loc0 = d3e0.lctn()
+in//let
+(
+// HX-2025-10-16:
+d3exp // D3Et2pck: casting
 (loc0, t2p0, D3Et2pck(d3e0, t2p0)))
-end//let
+end//let//else
 //
 end where
 {

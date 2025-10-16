@@ -467,18 +467,22 @@ let
 val () = d3exp_fpemsg(out , d3e1)
 endlet // end of [ D3Eannot(_, _) ]
 //
-|
-D3Elabck
+|D3Elabck
 (d3e1, lab2) =>
 let
 val () = d3exp_fpemsg(out , d3e1)
 endlet // end of [ D3Elabck(_, _) ]
-|
-D3Et2pck
+//
+|D3Et2pck
 (d3e1, t2p2) =>
 let
 val () = d3exp_fpemsg(out , d3e1)
 endlet // end of [ D3Et2pck(_, _) ]
+|D3Et2ped
+(d3e1, t2p2) =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3Et2ped(_, _) ]
 //
 |D3Enone0(    ) => (   (*void*)   )
 |D3Enone1(d2e1) => (   (*void*)   )
