@@ -56,6 +56,14 @@ D2E = "./\
 //
 (* ****** ****** *)
 //
+#typedef s2qag = $D2E.s2qag
+#typedef t2qag = $D2E.t2qag
+#typedef t2iag = $D2E.t2iag
+#typedef t2jag = $D2E.t2jag
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #typedef d2var = $D2E.d2var
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
@@ -88,6 +96,31 @@ node with $D2E.d2exp_get_node
 lctn with $D2E.d2ecl_get_lctn
 #symload
 node with $D2E.d2ecl_get_node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+s2qag_fprint
+(sqag: s2qag, out0: FILR): void
+fun
+t2qag_fprint
+(tqag: t2qag, out0: FILR): void
+fun
+t2iag_fprint
+(tiag: t2iag, out0: FILR): void
+fun
+t2jag_fprint
+(tjag: t2jag, out0: FILR): void
+//
+#symload
+fprint with s2qag_fprint of 1000
+#symload
+fprint with t2qag_fprint of 1000
+#symload
+fprint with t2iag_fprint of 1000
+#symload
+fprint with t2jag_fprint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

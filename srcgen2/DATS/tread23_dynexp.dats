@@ -1000,6 +1000,22 @@ endlet // end of [d3exp_l1azy_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_annot_errck
+( loc0: loc_t
+, d3e1: d3exp
+, s1e2: s1exp
+, s2e2
+: s2exp(*annot*)): d3exp =
+let
+val lvl0 = errvl(d3e1) in//let
+d3exp_errck
+( lvl0+1
+, d3exp(loc0,D3Eannot(d3e1,s1e2,s2e2)))
+endlet // end of [d3exp_annot_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_labck_errck
 ( loc0: loc_t
 , d3e1: d3exp
@@ -1025,21 +1041,17 @@ d3exp_errck
 , d3exp( loc0, D3Et2pck( d3e1, t2p2 ) ))
 endlet // end of [d3exp_t2pck_errck(...)]
 //
-(* ****** ****** *)
-//
 fun
-d3exp_annot_errck
+d3exp_t2ped_errck
 ( loc0: loc_t
 , d3e1: d3exp
-, s1e2: s1exp
-, s2e2
-: s2exp(*annot*)): d3exp =
+, t2p2: s2typ): d3exp =
 let
 val lvl0 = errvl(d3e1) in//let
 d3exp_errck
 ( lvl0+1
-, d3exp(loc0,D3Eannot(d3e1,s1e2,s2e2)))
-endlet // end of [d3exp_annot_errck(...)]
+, d3exp( loc0, D3Et2ped( d3e1, t2p2 ) ))
+endlet // end of [d3exp_t2ped_errck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1524,15 +1536,22 @@ d3e0.node() of
 |D3El0azy _ => f0_l0azy(d3e0, err)
 |D3El1azy _ => f0_l1azy(d3e0, err)
 //
-|D3Elabck _ => f0_labck(d3e0, err)
-|D3Et2pck _ => f0_t2pck(d3e0, err)
+(* ****** ****** *)
 //
 |D3Eannot _ => f0_annot(d3e0, err)
 //
 (* ****** ****** *)
+//
+|D3Elabck _ => f0_labck(d3e0, err)
+|D3Et2pck _ => f0_t2pck(d3e0, err)
+|D3Et2ped _ => f0_t2ped(d3e0, err)
+//
+(* ****** ****** *)
+//
 |D3Enone0 _ => f0_none0(d3e0, err)
 |D3Enone1 _ => f0_none1(d3e0, err)
 |D3Enone2 _ => f0_none2(d3e0, err)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -2411,6 +2430,39 @@ end (*let*) // end of [f0_l1azy(d3e,err)]
 (* ****** ****** *)
 //
 fun
+f0_annot
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Eannot
+(d3e1
+,s1e2, s2e2) = d3e.node()
+//
+val
+d3e1 = tread23_d3exp(d3e1, err)
+(*
+val
+s2e2 = tread23_s2exp(s2e2, err)
+*)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_annot_errck(loc,d3e1,s1e2,s2e2)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_annot(d3e,err)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_labck
 (d3e: d3exp
 ,err: &sint >> _): d3exp =
@@ -2477,7 +2529,7 @@ end (*let*) // end of [f0_t2pck(d3e,err)]
 (* ****** ****** *)
 //
 fun
-f0_annot
+f0_t2ped
 (d3e: d3exp
 ,err: &sint >> _): d3exp =
 let
@@ -2485,16 +2537,11 @@ let
 val e00 = err
 //
 val-
-D3Eannot
-(d3e1
-,s1e2, s2e2) = d3e.node()
+D3Et2ped
+(d3e1, t2p2) = d3e.node()
 //
 val
 d3e1 = tread23_d3exp(d3e1, err)
-(*
-val
-s2e2 = tread23_s2exp(s2e2, err)
-*)
 //
 in//let
 if
@@ -2502,10 +2549,11 @@ if
 then (d3e) else
 let
 val loc = d3e.lctn() in
-d3exp_annot_errck(loc,d3e1,s1e2,s2e2)
+d3exp_t2ped_errck( loc, d3e1, t2p2 )
 end (*let*) // end-of-[else]
-end (*let*) // end of [f0_annot(d3e,err)]
+end (*let*) // end of [f0_t2ped(d3e,err)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

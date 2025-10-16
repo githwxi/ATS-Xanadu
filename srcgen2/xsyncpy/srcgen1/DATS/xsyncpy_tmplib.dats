@@ -268,6 +268,14 @@ s2res_fprint(sres, castxy(g_print$out<>()))
 //
 #impltmp
 g_print
+<s2qag>(sqag) =
+s2qag_fprint(sqag, castxy(g_print$out<>()))
+#impltmp
+g_print
+<t2qag>(tqag) =
+t2qag_fprint(tqag, castxy(g_print$out<>()))
+#impltmp
+g_print
 <t2iag>(tiag) =
 t2iag_fprint(tiag, castxy(g_print$out<>()))
 //

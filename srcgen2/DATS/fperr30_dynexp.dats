@@ -408,6 +408,9 @@ in//let
 ; print(";"); print(t2p1)
 ; print(";"); prints(t2p2, ")"))
 end//let//end-of-[D3Et2pck(...)]
+|D3Et2ped _ =>
+(
+prints("D3Et2ped(", "...", ")"))
 //
 (* ****** ****** *)
 //
