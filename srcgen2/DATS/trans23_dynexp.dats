@@ -2929,6 +2929,14 @@ in//let
 //
 if
 ubtf
+then d3e0
+(*
+//
+(*
+HX-2026-10-16:
+Hold on!
+This seems too much!
+*)
 then let
 val
 loc0 = d3e0.lctn()
@@ -2938,6 +2946,7 @@ in//let
 d3exp // D3Et2ped: checked
 (loc0, t2p0, D3Et2ped(d3e0, t2p0)))
 end//let//then
+*)
 else let
 val
 loc0 = d3e0.lctn()

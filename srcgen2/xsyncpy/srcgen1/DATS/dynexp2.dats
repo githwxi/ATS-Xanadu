@@ -40,7 +40,62 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../SATS/staexp2.sats"
+#staload
+"./../SATS/statyp2.sats"
+#staload
 "./../SATS/dynexp2.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#staload "\
+./../../../SATS/locinfo.sats"
+#staload "\
+./../../../SATS/staexp2.sats"
+#staload "\
+./../../../SATS/statyp2.sats"
+#staload "\
+./../../../SATS/dynexp2.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+t2jag1 =
+T2JAG1 of (loc_t, s2typ1lst)
+//
+#absimpl t2jag1_tbox = t2jag1
+//
+datatype
+t2jag1_vt =
+T2JAG1_vt of (loc_t, s2typ1lst)
+//
+in (* in-of-local *)
+//
+#implfun
+t2jag1_get_lctn
+  (  t2ja  ) =
+let
+val+
+T2JAG1
+(loc0, t2qs) = t2ja in loc0 end
+//
+#implfun
+t2jag1_get_t2qs
+  (  t2ja  ) =
+let
+val+
+T2JAG1
+(loc0, t2qs) = t2ja in t2qs end
+//
+#implfun
+t2jag1_make_t2qs
+(  loc0, t2qs  ) = T2JAG1(loc0, t2qs)
+//
+(* ****** ****** *)
+//
+end (*local*) // end of [local(t2jag1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

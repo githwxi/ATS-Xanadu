@@ -51,9 +51,27 @@ HX: for [FILR]
 (* ****** ****** *)
 //
 #staload
+"./../SATS/statyp2.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+LOC = "./\
+../../../SATS/locinfo.sats"
+//
+(* ****** ****** *)
+//
+#staload
 D2E = "./\
 ../../../SATS/dynexp2.sats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef lcsrc = $LOC.lcsrc
+#typedef loc_t = $LOC.loc_t
+#typedef loctn = $LOC.loctn
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef s2qag = $D2E.s2qag
@@ -150,6 +168,34 @@ fprint with d2pat_fprint of 1000
 fprint with d2exp_fprint of 1000
 #symload
 fprint with d2ecl_fprint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#abstbox t2jag1_tbox // ptr
+#typedef t2jag1 = t2jag1_tbox
+//
+#typedef t2jag1lst = list(t2jag1)
+//
+(* ****** ****** *)
+//
+fun
+t2jag1_fprint
+(tjag: t2jag1, out0: FILR): void
+//
+(* ****** ****** *)
+//
+fun
+t2jag1_get_lctn:(t2jag1)->loc_t
+fun
+t2jag1_get_t2qs:(t2jag1)->s2typ1lst
+//
+(* ****** ****** *)
+//
+fun
+t2jag1_make_t2qs
+(loc0:loc_t,t2qs:s2typ1lst):t2jag1
+#symload t2jag1 with t2jag1_make_t2qs
 //
 (* ****** ****** *)
 (* ****** ****** *)

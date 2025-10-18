@@ -464,14 +464,14 @@ d3exp1_node =
 |D3E1sapp of
 (d3exp1(*fun*), s2explst)
 |D3E1sapq of
-(d3exp1(*fun*), s2typlst)
+(d3exp1(*fun*), s2typ1lst)
 //
 (* ****** ****** *)
 //
 |D3E1tapp of
 (d3exp1(*cst*), s2explst)
 |D3E1tapq of
-(d3exp1(*cst*), t2jaglst)
+(d3exp1(*cst*), t2jag1lst)
 //
 (* ****** ****** *)
 //
