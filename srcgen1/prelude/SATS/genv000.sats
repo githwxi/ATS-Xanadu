@@ -22,14 +22,14 @@ fun
 <x0:t0>
 <r0:vt>
 <e1:vt>
-foldl$fopr_e1nv
+foldl$e1nv$fopr
 ( r0: r0
 , x0: x0, e1: !e1): r0
 fun
 <x0:t0>
 <r0:vt>
 <e1:vt>
-foldr$fopr_e1nv
+foldr$e1nv$fopr
 ( x0: x0
 , r0: r0, e1: !e1): r0
 //
@@ -38,7 +38,7 @@ fun
 <r0:vt>
 <e1:vt>
 <e2:vt>
-foldl$fopr_e2nv
+foldl$e2nv$fopr
 ( r0: r0
 , x0: x0, e1: !e1, e2: !e2): r0
 fun
@@ -46,7 +46,7 @@ fun
 <r0:vt>
 <e1:vt>
 <e2:vt>
-foldr$fopr_e2nv
+foldr$e2nv$fopr
 ( x0: x0
 , r0: r0, e1: !e1, e2: !e2): r0
 //
@@ -56,7 +56,7 @@ fun
 <x0:t0>
 <r0:vt>
 <e1:vt>
-ifoldl$fopr_e1nv
+ifoldl$e1nv$fopr
 ( r0: r0
 , i0: n0
 , x0: x0, e1: !e1): r0
@@ -64,7 +64,7 @@ fun
 <x0:t0>
 <r0:vt>
 <e1:vt>
-ifoldr$fopr_e1nv
+ifoldr$e1nv$fopr
 ( i0: n0
 , x0: x0
 , r0: r0, e1: !e1): r0
@@ -74,7 +74,7 @@ fun
 <r0:vt>
 <e1:vt>
 <e2:vt>
-ifoldl$fopr_e2nv
+ifoldl$e2nv$fopr
 ( r0: r0
 , i0: n0
 , x0: x0, e1: !e1, e2: !e2): r0
@@ -83,7 +83,7 @@ fun
 <r0:vt>
 <e1:vt>
 <e2:vt>
-ifoldr$fopr_e2nv
+ifoldr$e2nv$fopr
 ( i0: n0
 , x0: x0
 , r0: r0, e1: !e1, e2: !e2): r0
@@ -93,25 +93,25 @@ ifoldr$fopr_e2nv
 fun
 <x0:t0>
 <e1:vt>
-forall$test_e1nv
+forall$e1nv$test
 (x0: x0, e1: !e1): bool
 fun
 <x0:t0>
 <e1:vt>
-iforall$test_e1nv
+iforall$e1nv$test
 ( i0: n0, x0: x0, e1: !e1): bool
 //
 fun
 <x0:t0>
 <e1:vt>
 <e2:vt>
-forall$test_e2nv
+forall$e2nv$test
 (x0: x0, e1: !e1, e2: !e2): bool
 fun
 <x0:t0>
 <e1:vt>
 <e2:vt>
-iforall$test_e2nv
+iforall$e2nv$test
 ( i0: n0
 , x0: x0, e1: !e1, e2: !e2): bool
 //
@@ -120,25 +120,25 @@ iforall$test_e2nv
 fun
 <x0:t0>
 <e1:vt>
-foritm$work_e1nv
+foritm$e1nv$work
 (x0: x0, e1: !e1): void
 fun
 <x0:t0>
 <e1:vt>
-iforitm$work_e1nv
+iforitm$e1nv$work
 (i0: n0, x0: x0, e1: !e1): void
 //
 fun
 <x0:t0>
 <e1:vt>
 <e2:vt>
-foritm$work_e2nv
+foritm$e2nv$work
 (x0: x0, e1: !e1, e2: !e2): void
 fun
 <x0:t0>
 <e1:vt>
 <e2:vt>
-iforitm$work_e2nv
+iforitm$e2nv$work
 ( i0: n0
 , x0: x0, e1: !e1, e2: !e2): void
 //
@@ -148,13 +148,13 @@ fun
 <x0:t0>
 <y0:vt>
 <e1:vt>
-map$fopr_e1nv
+map$e1nv$fopr
 (x0: x0, e1: !e1): (y0)
 fun
 <x0:t0>
 <y0:vt>
 <e1:vt>
-imap$fopr_e1nv
+imap$e1nv$fopr
 (i0: n0, x0: x0, e1: !e1): (y0)
 //
 fun
@@ -162,14 +162,14 @@ fun
 <y0:vt>
 <e1:vt>
 <e2:vt>
-map$fopr_e2nv
+map$e2nv$fopr
 (x0: x0, e1: !e1, e2: !e2): (y0)
 fun
 <x0:t0>
 <y0:vt>
 <e1:vt>
 <e2:vt>
-imap$fopr_e2nv
+imap$e2nv$fopr
 ( i0: n0
 , x0: x0, e1: !e1, e2: !e2): (y0)
 //
@@ -184,14 +184,14 @@ fun
 <x0:t0>
 <r0:vt>
 <e1:vt>
-gseq_foldl_e1nv
+gseq_foldl$e1nv
 (xs: xs, r0: r0, e1: !e1): r0
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
 <e1:vt>
-gseq_foldr_e1nv
+gseq_foldr$e1nv
 (xs: xs, r0: r0, e1: !e1): r0
 //
 fun
@@ -199,14 +199,14 @@ fun
 <x0:t0>
 <r0:vt>
 <e1:vt>
-gseq_ifoldl_e1nv
+gseq_ifoldl$e1nv
 (xs: xs, r0: r0, e1: !e1): r0
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
 <e1:vt>
-gseq_ifoldr_e1nv
+gseq_ifoldr$e1nv
 (xs: xs, r0: r0, e1: !e1): r0
 //
 (* ****** ****** *)
@@ -215,33 +215,33 @@ fun
 <xs:t0>
 <x0:t0>
 <e1:vt>
-gseq_forall_e1nv(xs, !e1): bool
+gseq_forall$e1nv(xs, !e1): bool
 fun
 <xs:t0>
 <x0:t0>
 <e1:vt>
-gseq_iforall_e1nv(xs, !e1): bool
+gseq_iforall$e1nv(xs, !e1): bool
 //
 fun
 <x0:t0>
 <e1:vt>
-list_forall_e1nv
+list_forall$e1nv
 {n:i0}(list(x0, n), e1: !e1): bool
 fun
 <x0:t0>
 <e1:vt>
-list_iforall_e1nv
+list_iforall$e1nv
 {n:i0}(list(x0, n), e1: !e1): bool
 //
 fun
 <x0:t0>
 <e1:vt>
-optn_forall_e1nv
+optn_forall$e1nv
 {b:b0}(optn(x0, b), e1: !e1): bool
 fun
 <x0:t0>
 <e1:vt>
-optn_iforall_e1nv
+optn_iforall$e1nv
 {b:b0}(optn(x0, b), e1: !e1): bool
 //
 (* ****** ****** *)
@@ -251,14 +251,14 @@ fun
 <x0:t0>
 <e1:vt>
 <e2:vt>
-gseq_forall_e2nv(xs, !e1, !e2): bool
+gseq_forall$e2nv(xs, !e1, !e2): bool
 //
 fun
 <xs:t0>
 <x0:t0>
 <e1:vt>
 <e2:vt>
-gseq_iforall_e2nv(xs, !e1, !e2): bool
+gseq_iforall$e2nv(xs, !e1, !e2): bool
 //
 (* ****** ****** *)
 //
@@ -266,24 +266,24 @@ fun
 <xs:t0>
 <x0:t0>
 <e1:vt>
-gseq_foritm_e1nv(xs, !e1): void
+gseq_foritm$e1nv(xs, !e1): void
 fun
 <xs:t0>
 <x0:t0>
 <e1:vt>
-gseq_iforitm_e1nv(xs, !e1): void
+gseq_iforitm$e1nv(xs, !e1): void
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <e1:vt>
-list_foritm_e1nv
+list_foritm$e1nv
 {n:i0}(list(x0, n), e1: !e1): void
 fun
 <x0:t0>
 <e1:vt>
-optn_foritm_e1nv
+optn_foritm$e1nv
 {b:b0}(optn(x0, b), e1: !e1): void
 //
 (* ****** ****** *)
@@ -293,14 +293,14 @@ fun
 <x0:t0>
 <e1:vt>
 <e2:vt>
-gseq_foritm_e2nv(xs,!e1,!e2): void
+gseq_foritm$e2nv(xs,!e1,!e2): void
 //
 fun
 <xs:t0>
 <x0:t0>
 <e1:vt>
 <e2:vt>
-gseq_iforitm_e2nv(xs,!e1,!e2): void
+gseq_iforitm$e2nv(xs,!e1,!e2): void
 //
 (* ****** ****** *)
 //
@@ -309,7 +309,7 @@ fun
 <x0:t0>
 <y0:vt>
 <e1:vt>
-gseq_map_e1nv_llist
+gseq_map$e1nv_llist
   ( xs: xs, e1: !e1 ): list_vt(y0)
 //
 fun
@@ -317,7 +317,7 @@ fun
 <x0:t0>
 <y0:vt>
 <e1:vt>
-gseq_imap_e1nv_llist
+gseq_imap$e1nv_llist
   ( xs: xs, e1: !e1 ): list_vt(y0)
 //
 (* ****** ****** *)
@@ -326,14 +326,14 @@ fun
 <x0:t0>
 <y0:t0>
 <e1:vt>
-list_map_e1nv
+list_map$e1nv
 {n:i0}
 (list(x0, n), e1: !e1): list(y0, n)
 fun
 <x0:t0>
 <y0:t0>
 <e1:vt>
-list_map_e1nv_vt
+list_map$e1nv_vt
 {n:i0}
 (list(x0, n), e1: !e1): list_vt(y0, n)
 //
@@ -341,14 +341,14 @@ fun
 <x0:t0>
 <y0:t0>
 <e1:vt>
-optn_map_e1nv
+optn_map$e1nv
 {b:b0}
 (optn(x0, b), e1: !e1): optn(y0, b)
 fun
 <x0:t0>
 <y0:t0>
 <e1:vt>
-optn_map_e1nv_vt
+optn_map$e1nv_vt
 {b:b0}
 (optn(x0, b), e1: !e1): optn_vt(y0, b)
 //
@@ -360,7 +360,7 @@ fun
 <y0:vt>
 <e1:vt>
 <e2:vt>
-gseq_map_e2nv_llist
+gseq_map$e2nv_llist
 (xs: xs, e1: !e1, e2: !e2): list_vt(y0)
 //
 //
@@ -370,7 +370,7 @@ fun
 <y0:vt>
 <e1:vt>
 <e2:vt>
-gseq_imap_e2nv_llist
+gseq_imap$e2nv_llist
 (xs: xs, e1: !e1, e2: !e2): list_vt(y0)
 //
 (* ****** ****** *)
@@ -380,7 +380,7 @@ fun
 <y0:t0>
 <e1:vt>
 <e2:vt>
-list_map_e2nv
+list_map$e2nv
 {n:i0}
 (list(x0, n), e1: !e1, e2: !e2): list(y0, n)
 fun
@@ -388,7 +388,7 @@ fun
 <y0:t0>
 <e1:vt>
 <e2:vt>
-list_map_e2nv_vt
+list_map$e2nv_vt
 {n:i0}
 (list(x0, n), e1: !e1, e2: !e2): list_vt(y0, n)
 //
@@ -399,7 +399,7 @@ fun
 <y0:t0>
 <e1:vt>
 <e2:vt>
-optn_map_e2nv
+optn_map$e2nv
 {b:b0}
 (optn(x0, b), e1: !e1, e2: !e2): optn(y0, b)
 fun
@@ -407,7 +407,7 @@ fun
 <y0:t0>
 <e1:vt>
 <e2:vt>
-optn_map_e2nv_vt
+optn_map$e2nv_vt
 {b:b0}
 (optn(x0, b), e1: !e1, e2: !e2): optn_vt(y0, b)
 //

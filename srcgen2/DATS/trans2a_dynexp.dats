@@ -3646,14 +3646,14 @@ trans2a_d2explst_tpck1
 ( env0
 , d2es, t2p0 ) =
 (
-list_map_e1nv
+list_map$e1nv
 <x0><y0><e1>(d2es, env0)) where
 {
 #typedef x0 = d2exp
 #typedef y0 = d2exp
 #vwtpdef e1 = tr2aenv
 #impltmp
-map$fopr_e1nv<x0><y0><e1>
+map$e1nv$fopr<x0><y0><e1>
 (x0, e1) = trans2a_d2exp_tpck(e1, x0, t2p0)
 }(*where*)//end-of-[trans2a_d2explst_tpck1(...)]
 //
@@ -3820,14 +3820,14 @@ trans2a_d2clslst_tpck1
 ( env0, dcls
 , targ, tres ) =
 (
-list_map_e1nv
+list_map$e1nv
 <x0><y0><e1>(dcls, env0)) where
 {
 #typedef x0 = d2cls
 #typedef y0 = d2cls
 #vwtpdef e1 = tr2aenv
 #impltmp
-map$fopr_e1nv<x0><y0><e1>
+map$e1nv$fopr<x0><y0><e1>
 (x0, e1) = trans2a_d2cls_tpck(e1,x0,targ,tres)
 } (*where*)//end-of-[list_trans2a_fnp(e1,xs,fopr)]
 //

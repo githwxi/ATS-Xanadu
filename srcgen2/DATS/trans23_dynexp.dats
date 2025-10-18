@@ -3197,14 +3197,14 @@ trans23_d2clslst_tpck1
 ( env0
 , dcls , darg , tres ) =
 (
-list_map_e1nv
+list_map$e1nv
 <x0><y0><e1>(dcls, env0)) where
 {
 #typedef x0 = d2cls
 #typedef y0 = d3cls
 #vwtpdef e1 = tr23env
 #impltmp
-map$fopr_e1nv<x0><y0><e1>
+map$e1nv$fopr<x0><y0><e1>
 (x0, e1) = trans23_d2cls_tpck(e1,x0,darg,tres)
 } (*where*) // end of [list_trans23_fnp(e1,xs,fopr)]
 //

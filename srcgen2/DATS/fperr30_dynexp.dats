@@ -686,6 +686,18 @@ val () =
   fperr30_s2typ(out, t2p2) )
 *)
 end(*let*)//end-of-[D3Et2pck(...)]
+|D3Et2ped
+(d3e1, t2p2) =>
+let
+val () =
+(
+  fperr30_d3exp(out, d3e1) )
+(*
+val () =
+(
+  fperr30_s2typ(out, t2p2) )
+*)
+end(*let*)//end-of-[D3Et2ped(...)]
 //
 (* ****** ****** *)
 //

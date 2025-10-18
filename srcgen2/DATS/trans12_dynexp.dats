@@ -4112,7 +4112,7 @@ end (*local*) // end of [local(trd2exp_g1mac)]
 trd2pat_g1maclst
 ( env0, loc0, d1es ) =
 (
-list_map_e1nv
+list_map$e1nv
 <x0><y0>< e1 >
 (d1es , env0)) where
 {
@@ -4122,7 +4122,7 @@ list_map_e1nv
 #vwtpdef e1 = tr12env
 //
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 <x0><y0>< e1 >(x0, e1) = trd2pat_g1mac(e1,loc0,x0)
 } (*where*) // end of [ trd2pat_g1maclst(env0,...) ]
 //
@@ -4132,7 +4132,7 @@ map$fopr_e1nv
 trd2exp_g1maclst
 ( env0, loc0, d1es ) =
 (
-list_map_e1nv
+list_map$e1nv
 <x0><y0>< e1 >
 (d1es , env0)) where
 {
@@ -4142,7 +4142,7 @@ list_map_e1nv
 #vwtpdef e1 = tr12env
 //
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 <x0><y0>< e1 >(x0, e1) = trd2exp_g1mac(e1,loc0,x0)
 } (*where*) // end of [ trd2exp_g1maclst(env0,...) ]
 //

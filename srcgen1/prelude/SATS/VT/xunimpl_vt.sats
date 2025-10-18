@@ -1660,7 +1660,108 @@ strm_vt_iforitm0$f2un
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(*
+HX-2025-10-18:
+Sat Oct 18 05:12:30 PM EDT 2025
+*)
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+list_vt_map$e1nv0
+{ln:i0}
+( xs:
+~ list_vt(x0, ln), e1: !e1): list_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+list_vt_map$e1nv1
+{ln:i0}
+( xs:
+! list_vt(x0, ln), e1: !e1): list_vt(y0, ln)
+//
+fun
+<x0:t0>
+<y0:t0>
+<e1:vt>
+list_map$e1nv$f2un
+{ln:i0}
+( xs
+: list(x0, ln)
+, e1: !e1, fopr: (x0, !e1)->y0): list(y0, ln)
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+list_vt_map$e1nv0$f2un
+{ln:i0}
+( xs:
+~ list_vt(x0, ln)
+, e1: !e1, fopr: (~x0, !e1)->y0): list_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+list_vt_map$e1nv1$f2un
+{ln:i0}
+( xs:
+! list_vt(x0, ln)
+, e1: !e1, fopr: (!x0, !e1)->y0): list_vt(y0, ln)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+optn_vt_map$e1nv0
+{ln:b0}
+( xs:
+~ optn_vt(x0, ln), e1: !e1): optn_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+optn_vt_map$e1nv1
+{ln:b0}
+( xs:
+! optn_vt(x0, ln), e1: !e1): optn_vt(y0, ln)
+//
+fun
+<x0:t0>
+<y0:t0>
+<e1:vt>
+optn_map$e1nv$f2un
+{ln:b0}
+( xs
+: optn(x0, ln)
+, e1: !e1, fopr: (x0, !e1)->y0): optn(y0, ln)
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+optn_vt_map$e1nv0$f2un
+{ln:b0}
+( xs:
+~ optn_vt(x0, ln)
+, e1: !e1, fopr: (~x0, !e1)->y0): optn_vt(y0, ln)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+optn_vt_map$e1nv1$f2un
+{ln:b0}
+( xs:
+! optn_vt(x0, ln)
+, e1: !e1, fopr: (!x0, !e1)->y0): optn_vt(y0, ln)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_prelude_SATS_VT_xunimpl_vt.sats] *)
+(***********************************************************************)
