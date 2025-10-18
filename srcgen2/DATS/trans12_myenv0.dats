@@ -2112,13 +2112,13 @@ tr12env_add0_d2pat(env0, d2p1)
 tr12env_add1_d2conlst
   (env0, d2cs) =
 (
-list_foritm_e1nv
+list_foritm$e1nv
 <   x0  ><  e1   >(d2cs, env0)) where
 {
 #typedef x0 = d2con
 #vwtpdef e1 = tr12env
 #impltmp
-foritm$work_e1nv
+foritm$e1nv$work
 < x0 ><e1>(x0, e1) = tr12env_add1_d2con(e1, x0)
 } (*where*)//end(tr12env_add0_d2conlst(env0,...))
 //
@@ -2128,13 +2128,13 @@ foritm$work_e1nv
 tr12env_add1_d2cstlst
   (env0, d2cs) =
 (
-list_foritm_e1nv
+list_foritm$e1nv
 <   x0  ><  e1   >(d2cs, env0)) where
 {
 #typedef x0 = d2cst
 #vwtpdef e1 = tr12env
 #impltmp
-foritm$work_e1nv
+foritm$e1nv$work
 < x0 ><e1>(x0, e1) = tr12env_add1_d2cst(e1, x0)
 } (*where*)//end(tr12env_add0_d2cstlst(env0,...))
 //
@@ -2144,13 +2144,13 @@ foritm$work_e1nv
 tr12env_add0_d2varlst
   (env0, d2vs) =
 (
-list_foritm_e1nv
+list_foritm$e1nv
 <   x0  ><  e1   >(d2vs, env0)) where
 {
 #typedef x0 = d2var
 #vwtpdef e1 = tr12env
 #impltmp
-foritm$work_e1nv
+foritm$e1nv$work
 < x0 ><e1>(x0, e1) = tr12env_add0_d2var(e1, x0)
 } (*where*)//end(tr12env_add0_d2varlst(env0,...))
 //
@@ -2173,13 +2173,13 @@ case+ dopt of
 tr12env_add0_d2patlst
   (env0, d2ps) =
 (
-list_foritm_e1nv
+list_foritm$e1nv
 <   x0  ><  e1   >(d2ps, env0)) where
 {
 #typedef x0 = d2pat
 #vwtpdef e1 = tr12env
 #impltmp
-foritm$work_e1nv
+foritm$e1nv$work
 < x0 ><e1>(x0, e1) = tr12env_add0_d2pat(e1, x0)
 } (*where*)//end(tr12env_add0_d2patlst(env0,...))
 //
@@ -2189,13 +2189,13 @@ foritm$work_e1nv
 tr12env_add0_f2arglst
   (env0, f2as) =
 (
-list_foritm_e1nv
+list_foritm$e1nv
 <   x0  ><  e1   >(f2as, env0)) where
 {
 #typedef x0 = f2arg
 #vwtpdef e1 = tr12env
 #impltmp
-foritm$work_e1nv
+foritm$e1nv$work
 < x0 ><e1>(x0, e1) = tr12env_add0_f2arg(e1, x0)
 } (*where*)//end(tr12env_add0_f2arglst(env0,...))
 //
