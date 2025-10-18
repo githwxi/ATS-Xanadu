@@ -19,7 +19,7 @@ fun
 identity(x0: x0): x0 = x0
 //
 fun
-<x0:vt>
+<x0:t0>
 duplicity(x0: x0): (x0, x0) = (x0, x0)
 //
 (* ****** ****** *)

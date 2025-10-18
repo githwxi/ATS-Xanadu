@@ -569,6 +569,12 @@ d3exp1(*lin-thunk*),d3exp1lst(*frees*))
 //
 (* ****** ****** *)
 //
+|D3E1annot of
+(
+  d3exp1,s1exp(*given*),s2exp(*trans*))
+//
+(* ****** ****** *)
+//
 // label-cast
 |D3E1labck of (d3exp1, label)
 //
@@ -576,12 +582,10 @@ d3exp1(*lin-thunk*),d3exp1lst(*frees*))
 |D3E1t2pck of
 (
 d3exp1, s2typ1(*t2q1*), s2typ1(*t2q0*))
-//
-(* ****** ****** *)
-//
-|D3E1annot of
+// stype-checked
+|D3E1t2ped of
 (
-  d3exp1,s1exp(*given*),s2exp(*trans*))
+d3exp1, s2typ1(*t2q1*), s2typ1(*t2q0*))
 //
 (* ****** ****** *)
 //

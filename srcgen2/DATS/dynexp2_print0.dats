@@ -657,6 +657,7 @@ t2p1 = d2e1.styp() in
 ( print("D2Elabck(")
 ; prints( d2e1,";",t2p1,";",lab2,")") )
 endlet // end of [D2Elabck(d2e1, lab2)]
+//
 |D2Et2pck
 ( d2e1, t2p2 ) =>
 let
@@ -665,6 +666,14 @@ t2p1 = d2e1.styp() in
 ( print("D2Et2pck(")
 ; prints( d2e1,";",t2p1,";",t2p2,")") )
 endlet // end of [D2Et2pck(d2e1, t2p2)]
+|D2Et2ped
+( d2e1, t2p2 ) =>
+let
+val
+t2p1 = d2e1.styp() in
+( print("D2Et2ped(")
+; prints( d2e1,";",t2p1,";",t2p2,")") )
+endlet // end of [D2Et2ped(d2e1, t2p2)]
 //
 (* ****** ****** *)
 //

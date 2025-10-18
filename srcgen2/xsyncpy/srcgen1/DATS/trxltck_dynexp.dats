@@ -297,6 +297,10 @@ d3exp1
 //
 (* ****** ****** *)
 //
+|D3E1t2ped _ => f0_t2ped(d3e0, env0)
+//
+(* ****** ****** *)
+//
 |_(*otherwise*) =>
 d3exp1
 (loc0, t3q0, D3E1errck(0(*lvl*), d3e0))
@@ -669,6 +673,32 @@ in//let
 d3exp1
 (loc0, t3q0, D3E1assgn(d3el, d3er))
 end//let//end-of-[f0_assgn(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2ped
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1t2ped
+(d3e1
+,t2q1, t2q2) = d3e0.node()
+//
+val d3e1 =
+(
+  d3exp1_trxltck(d3e1, env0))
+//
+val d3e1 =
+d3exp1_t2pck(d3e1, t2q2, env0)
+//
+in//let
+d3exp1
+(loc0
+,t3q0, D3E1t2ped(d3e1, t2q1, t2q2))
+end//let//end-of-[f0_t2ped(d3e0,env0)]
 //
 (* ****** ****** *)
 //

@@ -551,6 +551,15 @@ prints
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|D3E1annot
+(d3e1
+,s1e2, s2e2) =>
+( print("D3E1annot(");
+  prints(d3e1,";",s1e2,";",s2e2,")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |D3E1labck
 (d3e1, lab2) =>
 let
@@ -571,15 +580,17 @@ print("D3E1t2pck(");
 prints
 (d3e1,"(",t3q1,");",t2q1,";",t2q2,")"))
 endlet//end-of-[D3E1t2pck(d3e1,t2q1,t2q2)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-|D3E1annot
+|D3E1t2ped
 (d3e1
-,s1e2, s2e2) =>
-( print("D3E1annot(");
-  prints(d3e1,";",s1e2,";",s2e2,")"))
+,t2q1, t2q2) =>
+let
+val
+t3q1 = d3e1.dtyp() in
+(
+print("D3E1t2ped(");
+prints
+(d3e1,"(",t3q1,");",t2q1,";",t2q2,")"))
+endlet//end-of-[D3E1t2ped(d3e1,t2q1,t2q2)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

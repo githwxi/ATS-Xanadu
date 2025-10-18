@@ -1014,6 +1014,8 @@ prerrsln
 D2Elabck(_, _) => f0_labck(env0, d2e0)
 |
 D2Et2pck(_, _) => f0_t2pck(env0, d2e0)
+|
+D2Et2ped(_, _) => f0_t2ped(env0, d2e0)
 //
 (* ****** ****** *)
 //
@@ -1362,6 +1364,17 @@ trsym2b_d2exp(env0, d2e1)) where
 {
   val-D2Et2pck(d2e1, t2p2) = d2e0.node()
 } (*where*) // end of [f0_t2pck(env0, d2e0)]
+//
+fun
+f0_t2ped
+( env0:
+! tr2aenv
+, d2e0: d2exp): void =
+(
+trsym2b_d2exp(env0, d2e1)) where
+{
+  val-D2Et2ped(d2e1, t2p2) = d2e0.node()
+} (*where*) // end of [f0_t2ped(env0, d2e0)]
 //
 (* ****** ****** *)
 //

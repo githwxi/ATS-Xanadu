@@ -1274,9 +1274,10 @@ trans2a_d2exp_tpck(env0,d2e2,tres)
 //
 (*
 HX-2023-08-05: for trans23
+HX-2025-10-18: for trans23
 *)
 val d2e2 =
-d2exp(loc0,tres,D2Et2pck(d2e2,tres))
+d2exp(loc0,tres,D2Et2ped(d2e2,tres))
 //
 } (*where*) // end-of-[TEQD2EXPsome]
 ) : teqd2exp // end-of-[ val( tdxp ) ]

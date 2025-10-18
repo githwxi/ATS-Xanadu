@@ -970,6 +970,19 @@ d2exp_errck
 , d2exp( loc0, D2Et2pck( d2e1, t2p2 ) ))
 endlet // end of [d2exp_t2pck_errck(...)]
 //
+fun
+d2exp_t2ped_errck
+( loc0: loc_t
+, d2e1: d2exp
+, t2p2: s2typ): d2exp =
+let
+val
+lvl0 = errvl(d2e1) in//let
+d2exp_errck
+( lvl0+1
+, d2exp( loc0, D2Et2ped( d2e1, t2p2 ) ))
+endlet // end of [d2exp_t2ped_errck(...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -1432,6 +1445,7 @@ d2e0.node() of
 //
 |D2Elabck _ => f0_labck(d2e0, err)
 |D2Et2pck _ => f0_t2pck(d2e0, err)
+|D2Et2ped _ => f0_t2ped(d2e0, err)
 //
 |D2Enone0 _ => f0_none0(d2e0, err)
 //
@@ -2282,6 +2296,31 @@ val loc = d2e.lctn() in
 d2exp_t2pck_errck(loc, d2e1, t2p2)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_t2pck(d2e,err)]
+//
+fun
+f0_t2ped
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Et2ped
+(d2e1, t2p2) = d2e.node()
+//
+val
+d2e1 = tread20_d2exp(d2e1, err)
+//
+in//let
+if
+(err=e00)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_t2ped_errck(loc, d2e1, t2p2)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_t2ped(d2e,err)]
 //
 (* ****** ****** *)
 //
