@@ -79,6 +79,9 @@ D2E = "./\
 #typedef t2iag = $D2E.t2iag
 #typedef t2jag = $D2E.t2jag
 //
+#typedef t2iaglst = list(t2iag)
+#typedef t2jaglst = list(t2jag)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -86,6 +89,13 @@ D2E = "./\
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
 #typedef d2ecl = $D2E.d2ecl
+//
+(* ****** ****** *)
+//
+#typedef d2varlst = list(d2var)
+#typedef d2patlst = list(d2pat)
+#typedef d2explst = list(d2exp)
+#typedef d2eclist = list(d2ecl)
 //
 (* ****** ****** *)
 (* ****** ****** *)
