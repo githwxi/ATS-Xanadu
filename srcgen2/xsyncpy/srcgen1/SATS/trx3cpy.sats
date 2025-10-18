@@ -55,6 +55,8 @@ env3cpy = env3cpy_vtbx
 #staload
 "./../SATS/statyp2.sats"
 #staload
+"./../SATS/dynexp2.sats"
+#staload
 "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload
@@ -85,6 +87,13 @@ s2typ_trx3cpy
 fun
 l2t2p_trx3cpy
 (lt2p: l2t2p, env0: !env3cpy): l2t2p1
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+t2jag_trx3cpy
+(tjag: t2jag, env0: !env3cpy): t2jag1
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -130,6 +139,14 @@ fun
 l2t2plst_trx3cpy
 (ltps: l2t2plst, env0: !env3cpy): l2t2p1lst
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+t2jaglst_trx3cpy
+(t2js: t2jaglst, env0: !env3cpy): t2jag1lst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
