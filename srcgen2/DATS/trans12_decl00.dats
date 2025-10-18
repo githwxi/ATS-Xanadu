@@ -554,7 +554,7 @@ f0_a1typlst
 , a1ts
 : a1typlst): s2explst =
 (
-list_map_e1nv
+list_map$e1nv
 ( a1ts, env0 )) where
 {
 //
@@ -563,7 +563,7 @@ list_map_e1nv
 #vwtpdef e1 = tr12env
 //
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 < x0><y0 ><e1>
 (  x0 , e1  ) = f0_a1typ(e1, x0)
 //
@@ -1680,7 +1680,7 @@ f1_smas
 , smas
 : s1maglst): s2vss =
 (
-list_map_e1nv
+list_map$e1nv
 < x0><y0 ><e1>
 ( smas, env0 )) where
 {
@@ -1688,7 +1688,7 @@ list_map_e1nv
 #vwtpdef e1 = tr12env
 #typedef y0 = s2varlst
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 < x0><y0 ><e1>
 (   x0, e1   ) = trans12_s1mag(e1, x0)
 } (* where *) // end of [f1_smas(env0,...)]
@@ -3376,7 +3376,7 @@ f0_t1as
 , t1as
 : t1arglst): sort2lst =
 (
-list_map_e1nv
+list_map$e1nv
 < x0><y0 ><e1>(t1as, env0)) where
 {
 //
@@ -3385,7 +3385,7 @@ list_map_e1nv
 #vwtpdef e1 = tr12env
 //
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 < x0><y0 ><e1>
 (   x0, e1   ) =
 (
@@ -4406,7 +4406,7 @@ list_trans12_fnp(env0, d1as, trans12_d1arg)
 trans12_d1typlst
 (env0, d1ts, s2t0) =
 (
-list_map_e1nv
+list_map$e1nv
 < x0><y0 ><e1>
 ( d1ts, env0 )) where
 {
@@ -4416,7 +4416,7 @@ list_map_e1nv
 #vwtpdef e1 = tr12env
 //
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 < x0><y0 ><e1>
 (   x0, e1   ) = trans12_d1typ(e1, x0, s2t0)
 //
@@ -4515,7 +4515,7 @@ trans12_d1tcnlst
 ( env0
 , tcns, s2c0, svss) =
 (
-list_map_e1nv
+list_map$e1nv
 < x0><y0 ><e1>
 ( tcns, env0 )) where
 {
@@ -4527,7 +4527,7 @@ val
 tqas = f1_tqas(s2c0, svss)
 //
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 < x0><y0 ><e1>(x0, e1) =
 trans12_d1tcn(e1, x0, s2c0, tqas, svss)
 //
@@ -4624,7 +4624,7 @@ trans12_d1cstdclist
   (env0, tknd
   ,d1cs, tqas) =
 (
-list_map_e1nv
+list_map$e1nv
 < x0>< y0><e1>(d1cs, env0)) where
 {
 //
@@ -4636,7 +4636,7 @@ x0 = d1cstdcl
 y0 = d2cstdcl
 //
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 <x0 >< y0><e1>
   ( x0, e1 ) =
 (

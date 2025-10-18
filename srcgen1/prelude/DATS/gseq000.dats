@@ -2850,7 +2850,7 @@ gseq_map_lstrm<ys><y0><z0>(ys) where
 fun
 map$fopr_y0__z0_
  ( y0 : y0 ) : z0 =
- (x2map$fopr<x0><y0>(x0, y0))
+ (x2map$fopr<x0><y0><z0>(x0, y0))
 //
 #impltmp
 map$fopr<y0><z0> = map$fopr_y0__z0_ }
@@ -2880,7 +2880,7 @@ gseq_mapopt_lstrm<ys><y0><z0>(ys)
 fun
 map$fopr_y0__z0_
  ( y0 : y0 ) : z0 =
- x2map$fopr<x0><y0>(x0, y0)
+ (x2map$fopr<x0><y0><z0>(x0, y0))
 //
 #impltmp
 map$fopr<y0><z0> = map$fopr_y0__z0_
@@ -2903,8 +2903,9 @@ endlet // end-of-[gseq_x2mapopt_lstrm(xs,ys)]
 gseq_x2strmize
   (xs, ys) =
 let
+#vwtpdef z0 = (x0, y0)
 #impltmp
-x2map$fopr<x0><y0>(x0, y0) = (x0, y0)
+x2map$fopr<x0><y0><z0>(x0, y0) = (x0, y0)
 in//let
 (
   gseq_x2map_lstrm<xs><x0><ys><y0>(xs, ys) )
@@ -3045,12 +3046,11 @@ let
 imap$fopr<x0><zs>(i, x0) =
 let
 #impltmp
-imap$fopr
-<y0><z0>(j, y0) =
-ix2map$fopr<x0><y0>(i,x0,j,y0)
+imap$fopr<y0><z0>(j, y0) =
+ix2map$fopr<x0><y0><z0>(i,x0,j,y0)
 in//let
-gseq_imap_lstrm<ys><y0><z0>(ys)
-endlet//end-of-[imap$fopr(j,y0)]
+  gseq_imap_lstrm<ys><y0><z0>( ys )
+end(*let*)//end-of-[imap$fopr(j,y0)]
 //
 in
   gseq_imap_lstrm<xs><x0><zs>( xs )
@@ -3080,15 +3080,14 @@ let
 imap$fopr<x0><zs>(ix, x0) =
 let
 #impltmp
-imap$fopr
-<y0><z0>(jy, y0) =
-ix2map$fopr<x0><y0>(ix,x0,jy,y0)
+imap$fopr<y0><z0>(jy, y0) =
+ix2map$fopr<x0><y0><z0>(ix,x0,jy,y0)
 #impltmp
 ifilter$test<y0>(jy, y0) =
 ix2filter$test<x0><y0>(ix,x0,jy,y0)
 in//let
- gseq_imapopt_lstrm<ys><y0><z0>(ys)
-endlet // end-of-[imap$fopr(ix,x0)]
+  gseq_imapopt_lstrm<ys><y0><z0>(ys)
+end(*let*)//end-of-[imap$fopr(ix,x0)]
 //
 in//let
 (

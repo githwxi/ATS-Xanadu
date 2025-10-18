@@ -133,10 +133,10 @@ pstn1_incs_if
 ( pos:
 ! pstn1
 , cs0: strn): void =
-gseq_foritm_e1nv<strn><char>(cs0, pos) where
+gseq_foritm$e1nv<strn><char>(cs0, pos) where
 {
 #impltmp
-foritm$work_e1nv<char><pstn1>(chr, pos) = pstn1_inc1_if(pos, chr)
+foritm$e1nv$work<char><pstn1>(chr, pos) = pstn1_inc1_if(pos, chr)
 } (*where*) // end of [pstn1_incs(pstn1, strn)]
 //
 (* ****** ****** *)

@@ -877,11 +877,11 @@ f0_g0es
 , g0es
 : g0explst): g1efxlst =
 (
-list_map_e1nv
+list_map$e1nv
 <g0exp><g1efx>(g0es, tenv)) where
 {
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 <g0exp><g1efx>
 ( g0e1, tenv ) = f0_main(tenv, g0e1)
 } (*where*)//end-of(f0_g0es(tenv,g0es))
@@ -1229,11 +1229,11 @@ f0_s0ts
 ( tenv:
 ! tr01env
 , s0ts: sort0lst): s1tfxlst =
-list_map_e1nv
+list_map$e1nv
 <sort0><s1tfx>(s0ts, tenv) where
 {
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 <sort0><s1tfx>(s1t1, tenv) = f0_sort(tenv, s1t1)
 } (* end of [f0_s0ts] *)
 //
@@ -2073,11 +2073,11 @@ end (*let*)//end-of-[trans01_d0typ(tenv,d0t0)]
 trans01_i0dntlst
 (  tenv, dnts  ) =
 (
-list_map_e1nv
+list_map$e1nv
 <i0dnt><i1dnt>(dnts, tenv)) where
 {
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 <i0dnt><i1dnt>
 ( dnt0, tenv ) = trans01_i0dnt(tenv,dnt0)
 } (*where*) // end of [trans01_i0dntlst(ids)]

@@ -1859,7 +1859,7 @@ optn_trans12_fnp(env0, sopt, trans12_s1exp)
 trans12_s1explst_stck1
   (env0, s1es, s2t2) =
 (
-list_map_e1nv
+list_map$e1nv
 <x0><y0><e1>(s1es, env0)) where
 {
 //
@@ -1868,7 +1868,7 @@ list_map_e1nv
 #vwtpdef e1 = tr12env
 //
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 <x0><y0><e1>(s1e1, env0) =
 trans12_s1exp_stck(env0, s1e1, s2t2)
 } (*where*)//end of [trans12_s1explst_stck1]

@@ -636,7 +636,7 @@ f0_g1ms
 : g1maclst
 , genv: g1env): g1maclst =
 (
-list_map_e1nv
+list_map$e1nv
 <x0 >< y0><e1>
 ( g1ms , env0 )) where
 {
@@ -646,7 +646,7 @@ list_map_e1nv
 #vwtpdef e1 = tr11env
 //
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 <x0><y0><e1>(x0, e1) = f0_g1m0(e1, x0, genv)
 } (*where*) // end of [f0_g1ms(...)]
 //

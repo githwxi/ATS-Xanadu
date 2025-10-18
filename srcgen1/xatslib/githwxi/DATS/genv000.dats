@@ -41,7 +41,7 @@
 <x0>
 <r0>
 <e1>
-gseq_foldl_e1nv
+gseq_foldl$e1nv
 ( xs, r0, e1 ) =
 (
 gseq_foldl
@@ -59,7 +59,7 @@ let
 val e1 =
 $UN.castlin10{e1}(e1)
 val res =
-foldl$fopr_e1nv
+foldl$e1nv$fopr
 < x0><r0 >< e1>(r0, x0, e1)
 //
 in//let
@@ -68,7 +68,7 @@ let
 val e1 = $UN.delinear(e1) in res end
 //
 endlet//end-of(foldl$fopr<x0><r0>(x0))
-} (*where*) // end-of-(gseq_foldl_e1nv)
+} (*where*) // end-of-(gseq_foldl$e1nv)
 
 (* ****** ****** *)
 
@@ -77,7 +77,7 @@ endlet//end-of(foldl$fopr<x0><r0>(x0))
 <x0>
 <r0>
 <e1>
-gseq_foldr_e1nv
+gseq_foldr$e1nv
 ( xs, r0, e1 ) =
 (
 gseq_foldr
@@ -95,7 +95,7 @@ let
 val e1 =
 $UN.castlin10{e1}(e1)
 val res =
-foldr$fopr_e1nv
+foldr$e1nv$fopr
 < x0><r0 >< e1>(x0, r0, e1)
 //
 in//let
@@ -104,7 +104,7 @@ let
 val e1 = $UN.delinear(e1) in res end
 //
 endlet//end-of(foldr$fopr<x0><r0>(x0))
-} (*where*) // end-of-(gseq_foldr_e1nv)
+} (*where*) // end-of-(gseq_foldr$e1nv)
 
 (* ****** ****** *)
 
@@ -112,7 +112,7 @@ endlet//end-of(foldr$fopr<x0><r0>(x0))
 <xs>
 <x0>
 <e1>
-gseq_forall_e1nv
+gseq_forall$e1nv
   (xs, e1) =
 (
 gseq_forall
@@ -128,7 +128,7 @@ let
 val e1 =
 $UN.castlin10{e1}(e1)
 val res =
-forall$test_e1nv<x0><e1>(x0, e1)
+forall$e1nv$test<x0><e1>(x0, e1)
 //
 in//let
 //
@@ -136,7 +136,7 @@ let
 val e1 = $UN.delinear(e1) in res end
 //
 endlet // end of [forall$test<x0>(x0)]
-} (*where*) // end-of(gseq_forall_e1nv)
+} (*where*) // end-of(gseq_forall$e1nv)
 
 (* ****** ****** *)
 
@@ -144,7 +144,7 @@ endlet // end of [forall$test<x0>(x0)]
 <xs>
 <x0>
 <e1>
-gseq_foritm_e1nv
+gseq_foritm$e1nv
   (xs, e1) =
 (
 gseq_foritm
@@ -160,7 +160,7 @@ let
 val e1 =
 $UN.castlin10{e1}(e1)
 val res =
-foritm$work_e1nv<x0>(x0, e1)
+foritm$e1nv$work<x0>(x0, e1)
 //
 in//let
 //
@@ -168,7 +168,7 @@ let
 val e1 = $UN.delinear(e1) in res end
 //
 endlet // end of [foritm$work<x0>(x0)]
-} (*where*) // end-of(gseq_foritm_e1nv)
+} (*where*) // end-of(gseq_foritm$e1nv)
 
 (* ****** ****** *)
 
@@ -177,7 +177,7 @@ endlet // end of [foritm$work<x0>(x0)]
 <x0>
 <y0>
 <e1>
-gseq_map_e1nv_llist
+gseq_map$e1nv_llist
   (xs, e1) =
 (
 gseq_map_llist
@@ -193,7 +193,7 @@ let
 val e1 =
 $UN.castlin10{e1}(e1)
 val res =
-map$fopr_e1nv<x0><y0>(x0, e1)
+map$e1nv$fopr<x0><y0>(x0, e1)
 //
 in//let
 //
@@ -201,7 +201,7 @@ let
 val e1 = $UN.delinear(e1) in res end
 //
 endlet // end of [map$fopr<x0><y0>(x0)]
-} (*where*) // end-of(gseq_map_e1nv_llist)
+} (*where*) // end-of(gseq_map$e1nv_llist)
 
 (* ****** ****** *)
 //
@@ -209,16 +209,16 @@ endlet // end of [map$fopr<x0><y0>(x0)]
 <x0>
 <y0>
 <e1>
-list_map_e1nv
+list_map$e1nv
   (xs, e1) =
 (
 list_vt2t
-(list_map_e1nv_vt<x0><y0><e1>(xs, e1))
+(list_map$e1nv_vt<x0><y0><e1>(xs, e1))
 )
 //
 #impltmp
 <x0><y0><e1>
-list_map_e1nv_vt
+list_map$e1nv_vt
   (xs, e1) = let
 //
 #vwtpdef
@@ -243,7 +243,7 @@ list_nil() =>
 list_cons(x0, xs) =>
 let
 val y0 =
-map$fopr_e1nv
+map$e1nv$fopr
 <x0><y0><e1>(x0, e1)
 val () =
 (r0 := list_vt_cons(y0, _))
@@ -256,7 +256,7 @@ in
 let
 var r0: list_vt(y0) in loop(e1, xs, r0); r0
 end
-end (*let*) // end of [list_map_e1nv_vt(xs,e1)]
+end (*let*) // end of [list_map$e1nv_vt(xs,e1)]
 //
 (* ****** ****** *)
 
@@ -265,7 +265,7 @@ end (*let*) // end of [list_map_e1nv_vt(xs,e1)]
 <x0>
 <y0>
 <e1><e2>
-gseq_map_e2nv_llist
+gseq_map$e2nv_llist
   (xs, e1, e2) =
 (
 gseq_map_llist
@@ -287,7 +287,7 @@ $UN.castlin10{e1}(e1)
 val e2 =
 $UN.castlin10{e2}(e1)
 val res =
-map$fopr_e2nv<x0><y0>(x0, e1, e2)
+map$e2nv$fopr<x0><y0>(x0, e1, e2)
 //
 in//let
 //
@@ -297,7 +297,7 @@ val e2 = $UN.delinear(e2) in res end
 //
 endlet // end of [map$fopr<x0><y0>(x0)]
 //
-} (*where*) // end-of(gseq_map_e2nv_llist)
+} (*where*) // end-of(gseq_map$e2nv_llist)
 
 (* ****** ****** *)
 

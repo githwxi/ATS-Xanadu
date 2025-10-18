@@ -210,11 +210,11 @@ val dpar = d0parsed_of_pread00(dpar)
 list_trans01_fnp
 ( e1, xs, fopr ) =
 (
-list_map_e1nv<x0><y0><e1>(xs, e1)) where
+list_map$e1nv<x0><y0><e1>(xs, e1)) where
 {
 #vwtpdef e1 = tr01env
 #impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+map$e1nv$fopr<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 }(*where*)//end-of-[list_trans01_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
@@ -224,11 +224,11 @@ map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 optn_trans01_fnp
 ( e1, xs, fopr ) =
 (
-optn_map_e1nv<x0><y0><e1>(xs, e1)) where
+optn_map$e1nv<x0><y0><e1>(xs, e1)) where
 {
 #vwtpdef e1 = tr01env
 #impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+map$e1nv$fopr<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 }(*where*)//end of [optn_trans01_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
