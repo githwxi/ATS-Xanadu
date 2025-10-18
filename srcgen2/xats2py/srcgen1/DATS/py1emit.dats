@@ -91,11 +91,11 @@ end(*let*)//end-of-[py1emit_i1parsed(filr,ipar)]
 list_py1emit_fnp
 ( e1, xs, fopr ) =
 (
-list_foritm_e1nv<x0><e1>(xs, e1)) where
+list_foritm$e1nv<x0><e1>(xs, e1)) where
 {
 #vwtpdef e1 = envx2js
 #impltmp
-foritm$work_e1nv<x0><e1>(x0, e1) = fopr(e1, x0)
+foritm$e1nv$work<x0><e1>(x0, e1) = fopr(e1, x0)
 } (*where*)//end of [list_py1emit_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
