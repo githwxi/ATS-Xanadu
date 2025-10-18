@@ -928,8 +928,13 @@ d3exp_make_tpnd
 //
 |D2Eannot _ => f0_annot(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Elabck _ => f0_labck(env0, d2e0)
 |D2Et2pck _ => f0_t2pck(env0, d2e0)
+|D2Et2ped _ => f0_t2ped(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |D2Enone0 _ => f0_none0(env0, d2e0)
 //
@@ -2501,8 +2506,31 @@ D2Et2pck
 (d2e1, t2p2) = d2e0.node()
 //
 in//let
-trans23_d2exp_tpck(env0, d2e1, t2p2)
+(
+trans23_d2exp_tpck(env0, d2e1, t2p2))
 end (*let*) // end of [f0_t2pck(env0,d2e0)]
+//
+fun
+f0_t2ped
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+val t2p0 = d2e0.styp()
+//
+val-
+D2Et2ped
+(d2e1, t2p2) = d2e0.node()
+//
+val
+d3e1 = trans23_d2exp(env0, d2e1)
+//
+in//let
+(
+d3exp(loc0,t2p0,D3Et2ped(d3e1,t2p2)))
+end (*let*) // end of [f0_t2ped(env0,d2e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

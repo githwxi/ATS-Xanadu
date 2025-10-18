@@ -1090,6 +1090,8 @@ D2Eannot of
 D2Elabck of (d2exp, label)//HX: casting
 |
 D2Et2pck of (d2exp, s2typ)//HX: casting
+|
+D2Et2ped of (d2exp, s2typ)//HX: checked
 //
 (* ****** ****** *)
 //

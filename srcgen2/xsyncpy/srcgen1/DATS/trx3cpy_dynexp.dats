@@ -521,15 +521,13 @@ D3El0azy _ => f0_l0azy(d3e0, env0)
 D3El1azy _ => f0_l1azy(d3e0, env0)
 //
 |
-D3Elabck _ => f0_labck(d3e0, env0)
-|
-D3Et2pck _ => f0_t2pck(d3e0, env0)
-//
-|
 D3Eannot _ => f0_annot(d3e0, env0)
 //
-|
-D3Eerrck _ => f0_errck(d3e0, env0)
+|D3Elabck _ => f0_labck(d3e0, env0)
+|D3Et2pck _ => f0_t2pck(d3e0, env0)
+|D3Et2ped _ => f0_t2ped(d3e0, env0)
+//
+|D3Eerrck _ => f0_errck(d3e0, env0)
 //
 |
 _(*otherwise*) =>
@@ -1254,6 +1252,31 @@ end(*let*)//end-of-[f0_l1azy(d3e0,env0)]
 (* ****** ****** *)
 //
 fun
+f0_annot
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Eannot
+(d3e1
+,s1e2, s2e2) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+(
+d3exp1
+(loc0
+,t3q0, D3E1annot(d3e1, s1e2, s2e2)))
+end(*let*)//end-of-[f0_annot(d3e0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_labck
 (d3e0: d3exp
 ,env0: !env3cpy): d3exp1 =
@@ -1271,6 +1294,8 @@ in//let
 d3exp1
 (loc0, t3q0, D3E1labck(d3e1,lab2))
 end(*let*)//end-of-[f0_labck(d3e0,env0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_t2pck
@@ -1300,30 +1325,33 @@ loc0,
 t3q0, D3E1t2pck(d3e1, t2q1, t2q2))
 end(*let*)//end-of-[f0_t2pck(d3e0,env0)]
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
 fun
-f0_annot
+f0_t2ped
 (d3e0: d3exp
 ,env0: !env3cpy): d3exp1 =
 let
 //
 val-
-D3Eannot
-(d3e1
-,s1e2, s2e2) = d3e0.node()
+D3Et2ped
+(d3e1, t2p2) = d3e0.node()
 //
 val d3e1 =
 (
 d3exp_trx3cpy(d3e1, env0))
 //
-in//let
+val t3q1 = d3e1.dtyp()
+val t2q1 = t3q1.styp()
+//
+val t2q2 =
 (
+s2typ_trx3cpy(t2p2, env0))
+//
+in//let
 d3exp1
-(loc0
-,t3q0, D3E1annot(d3e1, s1e2, s2e2)))
-end(*let*)//end-of-[f0_annot(d3e0,env0)]
+(
+loc0,
+t3q0, D3E1t2ped(d3e1, t2q1, t2q2))
+end(*let*)//end-of-[f0_t2ped(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
