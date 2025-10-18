@@ -349,7 +349,23 @@ let
 val dpar = d2parsed_of_trans02(dpar)
 //
 val dpar = d3parsed_of_trans23(dpar)
+//
+(*
+val (  ) =
+prerrsln
+("d3parsed_of_trans03: after(trans23)")
+val (  ) =
+prerrsln("d3parsed_of_trans03: dpar = ", dpar)
+*)
+//
 val dpar = d3parsed_of_tread23(dpar)
+(*
+val (  ) =
+prerrsln
+("d3parsed_of_trans03: after(tread23)")
+val (  ) =
+prerrsln("d3parsed_of_trans03: dpar = ", dpar)
+*)
 //
 val dpar = d3parsed_of_trans3a(dpar)
 val dpar = d3parsed_of_tread3a(dpar) in dpar

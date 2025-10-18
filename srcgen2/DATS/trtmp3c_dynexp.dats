@@ -202,6 +202,7 @@ d3e0.node() of
 (* ****** ****** *)
 //
 |D3Eannot _ => f0_annot(env0, d3e0)
+|D3Et2ped _ => f0_t2ped(env0, d3e0)
 //
 (* ****** ****** *)
 //
@@ -1175,6 +1176,32 @@ in//let
 d3exp_make_tpnd
 (loc0, t2p0, D3Eannot(d3e1,s1e2,s2e2)))
 end (*let*) // end of [f0_annot(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2ped
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Et2ped
+( d3e1
+, t2p2 ) = d3e0.node((*0*))
+//
+val
+d3e1 = trtmp3c_d3exp(env0, d3e1)
+//
+in//let
+(
+  d3exp_make_tpnd
+  (loc0, t2p0, D3Et2ped(d3e1, t2p2)) )
+end (*let*) // end of [f0_t2ped(env0,d3e0)]
 //
 (* ****** ****** *)
 //

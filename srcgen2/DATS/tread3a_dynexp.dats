@@ -1235,6 +1235,25 @@ d3exp_make_tpnd
 endlet // end of [d3exp_annot_errck(...)]
 //
 (* ****** ****** *)
+//
+fun
+d3exp_t2ped_errck
+( loc0: loc_t
+, t2p0: s2typ
+, d3e1: d3exp
+, t2p2
+: s2typ(*given*)): d3exp =
+let
+val
+lvl0 = d3exp_errvl(d3e1) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_tpnd
+(loc0, t2p0, D3Et2ped(d3e1, t2p2)) )
+endlet // end of [d3exp_t2ped_errck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 (*
 HX-2023-07-30:
@@ -1821,6 +1840,9 @@ f0_var(d3e0, err)
 (* ****** ****** *)
 //
 |D3Eannot _ => f0_annot(d3e0, err)
+|D3Et2ped _ => f0_t2ped(d3e0, err)
+//
+(* ****** ****** *)
 //
 |D3Enone0 _ => f0_none0(d3e0, err)
 //
@@ -3000,6 +3022,39 @@ then (d3e) else
   d3exp_annot_errck
   (d3e.lctn(), t2p, d3e1, s1e2, s2e2) )
 end (*let*) // end of [f0_annot(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2ped
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread3a_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Et2ped
+( d3e1, t2p2) = d3e.node()
+//
+val
+d3e1 = tread3a_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn()
+in//let
+d3exp_t2ped_errck(loc, t2p, d3e1, t2p2)
+end//let
+end (*let*) // end of [f0_t2ped(d3e,err)]
 //
 (* ****** ****** *)
 //

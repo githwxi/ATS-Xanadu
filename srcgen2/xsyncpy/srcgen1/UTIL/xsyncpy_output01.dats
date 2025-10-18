@@ -146,6 +146,10 @@ end where
 val
 dpar = d3parsed_of_fildats(fpth)
 //
+val (  ) =
+(
+prerrsln("d3parsed(23) = ", dpar))
+//
 (*
 val (  ) =
 prerrsln("mymain_work(allist):")
