@@ -207,12 +207,19 @@ s2typ1_node$get
 fun
 s2typ1_lteq
 (t2q1: s2typ1, t2q2: s2typ1): bool
+fun
+l2t2p1_lteq
+(ltq1: l2t2p1, ltq2: l2t2p1): bool
+//
+#symload <= with s2typ1_lteq of 1000
+#symload <= with l2t2p1_lteq of 1000
 //
 fun
 s2typ1lst_lteq
 (tqs1: s2typ1lst, tqs2: s2typ1lst): bool
-//
-#symload <= with s2typ1_lteq of 1000
+fun
+l2t2p1lst_lteq
+(lts1: l2t2p1lst, lts2: l2t2p1lst): bool
 //
 (* ****** ****** *)
 //

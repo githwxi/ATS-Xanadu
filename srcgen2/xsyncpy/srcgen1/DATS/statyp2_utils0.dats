@@ -50,6 +50,29 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload !=
+with sint_neq$sint of 1099
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/xbasics.sats"
+#staload
+"./../../../SATS/xlabel0.sats"
+//
 #staload
 "./../../../SATS/staexp2.sats"
 #staload
@@ -58,8 +81,23 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../../../DATS/xatsopt_tmplib.dats"
+fun
+label_neq
+(lab1: label
+,lab2: label): bool =
+(label_cmp(lab1, lab2) != 0)
+#symload != with label_neq
+//
+(* ****** ****** *)
+//
+fun
+trcdknd_noteq
+(knd1: trcdknd
+,knd2: trcdknd): bool =
+not(trcdknd_equal(knd1, knd2))
+//
+#symload = with trcdknd_equal
+#symload != with trcdknd_noteq
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -171,6 +209,24 @@ s2typ1lst_lteq
 |_(*non-T2P1apps*) => (  false  )
 )
 //
+|T2P1trcd
+(knd1, npfa, lts1) =>
+(
+case+
+t2q2.node() of
+|T2P1trcd
+(knd2, npfb, lts2) =>
+(
+if
+knd1 != knd2
+then false else
+if
+npfa != npfb
+then false else
+l2t2p1lst_lteq(lts1, lts2))
+|_(*non-T2P1apps*) => (  false  )
+)
+//
 |T2P1text
 (tnm1, tqs1) =>
 (
@@ -208,6 +264,25 @@ val () =
 (* ****** ****** *)
 //
 #implfun
+l2t2p1_lteq
+(ltq1, ltq2) =
+let
+//
+val+
+S2LAB(lab1, t2q1) = ltq1
+val+
+S2LAB(lab2, t2q2) = ltq2
+//
+in//let
+if // if
+lab1 != lab2
+then (false)
+else s2typ1_lteq(t2q1, t2q2)
+end(*let*)//end-of-[l2t2p1_lteq(ltq1,ltq2)]
+//
+(* ****** ****** *)
+//
+#implfun
 s2typ1lst_lteq
 (tqs1, tqs2) =
 (
@@ -229,6 +304,31 @@ s2typ1_lteq(t2q1, t2q2)
 then
 s2typ1lst_lteq(tqs1, tqs2) else false))
 )(*case+*)//end-of-[s2typ1lst_lteq(tqs1,tqs2)]
+//
+(* ****** ****** *)
+//
+#implfun
+l2t2p1lst_lteq
+(lts1, lts2) =
+(
+case+ lts1 of
+|list_nil() =>
+(
+case+ lts2 of
+|list_nil() => true
+|list_cons _ => false)
+|list_cons
+(ltq1, lts1) =>
+(
+case+ lts2 of
+|list_nil() => false
+|list_cons(ltq2, lts2) =>
+(
+if
+l2t2p1_lteq(ltq1, ltq2)
+then
+l2t2p1lst_lteq(lts1, lts2) else false))
+)(*case+*)//end-of-[l2t2p1lst_lteq(lts1,lts2)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

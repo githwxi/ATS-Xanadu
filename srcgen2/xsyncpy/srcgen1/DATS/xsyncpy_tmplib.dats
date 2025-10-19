@@ -80,6 +80,25 @@ g_cmp<stamp> = stamp_cmp
 (* ****** ****** *)
 //
 #impltmp
+g_cmp<label> = label_cmp
+//
+(* ****** ****** *)
+//
+#impltmp
+g_cmp<s2cst>
+(s2c1, s2c2) =
+(
+s2c1.stmp() \cmp s2c2.stmp())
+//
+#impltmp
+g_cmp<s2var>
+(s2v1, s2v2) =
+(
+s2v1.stmp() \cmp s2v2.stmp())
+//
+(* ****** ****** *)
+//
+#impltmp
 g_cmp<d2con>
 (d2c1, d2c2) =
 (
