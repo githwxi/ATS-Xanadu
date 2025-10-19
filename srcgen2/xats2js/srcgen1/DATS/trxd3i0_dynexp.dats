@@ -704,6 +704,8 @@ i0exp
 //
 |D3Eannot _ => f0_annot(env0, d3e0)
 //
+|D3Et2ped _ => f0_t2ped(env0, d3e0)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -1612,6 +1614,20 @@ trxd3i0_d3exp(env0, d3e1)
 val-
 D3Eannot(d3e1,s1e2,s2e2) = d3e0.node()
 } (*where*) // end of [f0_annot(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2ped
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+(
+trxd3i0_d3exp(env0, d3e1)
+) where
+{
+val-D3Et2ped(d3e1, t2p2) = d3e0.node()
+} (*where*) // end of [f0_t2ped(env0,d3e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
