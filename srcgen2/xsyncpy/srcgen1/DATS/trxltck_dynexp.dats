@@ -160,60 +160,12 @@ d3pat1_trxltck
 (
 case+
 d3p0.node() of
-//
-|
-D3P1int(tint) =>
-d3pat1
-(loc0, t2q0, D3P1int(tint))
-|
-D3P1btf(sbtf) =>
-d3pat1
-(loc0, t2q0, D3P1btf(sbtf))
-|
-D3P1chr(tchr) =>
-d3pat1
-(loc0, t2q0, D3P1chr(tchr))
-|
-D3P1flt(tflt) =>
-d3pat1
-(loc0, t2q0, D3P1flt(tflt))
-|
-D3P1str(tstr) =>
-d3pat1
-(loc0, t2q0, D3P1str(tstr))
-//
-|
-D3P1annot _ => f0_annot(d3p0, env0)
-//
-|_(*otherwise*) => (     d3p0      )
-//
 ) where//end-of(case)
 {
 //
-val loc0 = d3p0.lctn()
-val t2q0 = d3p0.styp()
-//
-fun
-f0_annot
-(d3p0: d3pat1
-,env0: !envltck): d3pat1 =
-let
-//
-val d3p1 =
-d3pat1_trxltck(d3p1, env0)
-//
-in//let
-d3pat1
-( loc0
-, t2q0, D3P1annot(d3p1, s1e1, s2e1))
-end where // end-of-let
-{
-  val-
-  D3P1annot
-  (d3p1, s1e1, s2e1) = d3p0.node((*0*))
-}(*where*)//end-of-[f0_annot(d3p0,env0)]
-//
 (* ****** ****** *)
+//
+val loc0 = d3p0.lctn()
 //
 val () =
 prerrsln("d3pat1_trxltck: loc0 = ", loc0)
@@ -802,21 +754,38 @@ f3arg1_trxltck
 case+
 f3a0.node() of
 //
+|F3ARG1sapp
+(s2vs, s2ps) =>
+f3axp1
+(loc0, F3AXP1sapp(s2vs, s2ps))
+|F3ARG1mets
+(   s2es   ) =>
+(
+ f3axp1(loc0, F3AXP1mets(s2es)))
+//
 |F3ARG1dapp
 (npf1, d3ps) =>
 let
 //
 val loc0 = f3a0.lctn()
-val d3ps =
+val d3as =
 d3pat1lst_trxltck(d3ps, env0)
 //
 in//let
-f3arg1(loc0, F3ARG1dapp(npf1, d3ps))
+f3axp1(loc0, F3AXP1dapp(npf1, d3as))
 end//let
 //
-|F3ARG1sapp _ => f3a0 |F3ARG1mets _ => f3a0
+) where
+{
 //
-)(*case+*)//end-of-[f3arg1_trxltck(f3a0,env0)]
+val loc0 = f3a0.lctn()
+//
+val (  ) =
+prerrsln("f3arg1_trxlctk: loc0 = ", loc0)
+val (  ) =
+prerrsln("f3arg1_trxlctk: f3a0 = ", f3a0)
+//
+}(*where*)//end-of-[f3arg1_trxltck(f3a0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

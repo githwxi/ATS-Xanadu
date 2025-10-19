@@ -148,14 +148,21 @@ D3E = "./\
 #abstbox d3pat1_tbox // p0tr
 #typedef d3pat1 = d3pat1_tbox
 (* ****** ****** *)
+#abstbox d3axp1_tbox // p0tr
+#typedef d3axp1 = d3axp1_tbox
+(* ****** ****** *)
 #abstbox d3exp1_tbox // p0tr
 #typedef d3exp1 = d3exp1_tbox
 (* ****** ****** *)
 #typedef l3d3p1 = d3lab(d3pat1)
+#typedef l3d3a1 = d3lab(d3axp1)
 #typedef l3d3e1 = d3lab(d3exp1)
 (* ****** ****** *)
 #abstbox f3arg1_tbox // p0tr
 #typedef f3arg1 = f3arg1_tbox
+(* ****** ****** *)
+#abstbox f3axp1_tbox // p0tr
+#typedef f3axp1 = f3axp1_tbox
 (* ****** ****** *)
 #abstbox d3gua1_tbox // p0tr
 #abstbox d3gpt1_tbox // p0tr
@@ -213,6 +220,7 @@ D3E = "./\
 #typedef d3typ1opt = optn(d3typ1)
 (* ****** ****** *)
 #typedef d3pat1lst = list(d3pat1)
+#typedef d3axp1lst = list(d3axp1)
 #typedef d3exp1lst = list(d3exp1)
 (* ****** ****** *)
 #typedef d3pat1opt = optn(d3pat1)
@@ -588,6 +596,8 @@ d3exp1, s2typ1(*t2q1*), s2typ1(*t2q0*))
 d3exp1, s2typ1(*t2q1*), s2typ1(*t2q0*))
 //
 (* ****** ****** *)
+|D3E1none0 of ((*0*))(*to-be-interped*)
+(* ****** ****** *)
 //
 |D3E1d3exp of (d3exp)//yet-to-be-copied
 //
@@ -643,45 +653,67 @@ d3exp1_make_lctn$styp$node
 //
 datatype
 f3arg1_node =
+|F3ARG1dapp of
+(sint(*npf*), d3pat1lst(*args*))
 //
-(*
-| F3ARG1none of (token)
-*)
-//
-|
-F3ARG1dapp of
-(
-sint(*npf*), d3pat1lst(*args*))
-//
-|
-F3ARG1sapp of
+|F3ARG1sapp of
 ( s2varlst(*s2vs*)
 , s2explst(*s2ps*) ) // static
+|F3ARG1mets of (s2explst(*mets*))
 //
-|
-F3ARG1mets of (s2explst(*mets*))
+(* ****** ****** *)
+//
+datatype
+f3axp1_node =
+|F3AXP1dapp of
+(sint(*npf*), d3axp1lst(*args*))
+//
+|F3AXP1sapp of
+( s2varlst(*s2vs*)
+, s2explst(*s2ps*) ) // static
+|F3AXP1mets of (s2explst(*mets*))
 //
 (* ****** ****** *)
 //
 fun
 f3arg1_fprint
 (farg: f3arg1, out0: FILR): void
-#symload fprint with f3arg1_fprint of 1000
+fun
+f3axp1_fprint
+(faxp: f3axp1, out0: FILR): void
+//
+#symload
+fprint with f3arg1_fprint of 1000
+#symload
+fprint with f3axp1_fprint of 1000
 //
 (* ****** ****** *)
+//
 fun
 f3arg1_lctn$get(f3arg1): loc_t
 fun
+f3axp1_lctn$get(f3axp1): loc_t
+fun
 f3arg1_node$get(f3arg1): f3arg1_node
-(* ****** ****** *)
+fun
+f3axp1_node$get(f3axp1): f3axp1_node
+//
 #symload lctn with f3arg1_lctn$get
+#symload lctn with f3axp1_lctn$get
 #symload node with f3arg1_node$get
+#symload node with f3axp1_node$get
+//
 (* ****** ****** *)
 //
 fun
 f3arg1_make_lctn$node
 (loc:loc_t, nod:f3arg1_node):f3arg1
+fun
+f3axp1_make_lctn$node
+(loc:loc_t, nod:f3axp1_node):f3axp1
+//
 #symload f3arg1 with f3arg1_make_lctn$node
+#symload f3axp1 with f3axp1_make_lctn$node
 //
 (* ****** ****** *)
 //

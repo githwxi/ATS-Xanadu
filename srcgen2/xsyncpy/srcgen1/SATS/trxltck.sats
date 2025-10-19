@@ -192,13 +192,11 @@ envltck_f3as$push
 //
 fun
 d3pat1_trxltck
-(d3p0: d3pat1, env0: !envltck): d3pat1
-//
-(* ****** ****** *)
+(d3p0: d3pat1, env0: !envltck): d3axp1
 //
 fun
 f3arg1_trxltck
-(f3a0: f3arg1, env0: !envltck): f3arg1
+(f3a0: f3arg1, env0: !envltck): f3axp1
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -230,13 +228,13 @@ d3ecl1_trxltck
 //
 fun
 d3pat1lst_trxltck
-(d3ps: d3pat1lst, env0: !envltck): d3pat1lst
+(d3ps: d3pat1lst, env0: !envltck): d3axp1lst
 //
 (* ****** ****** *)
 //
 fun
 f3arg1lst_trxltck
-(f3as: f3arg1lst, env0: !envltck): f3arg1lst
+(f3as: f3arg1lst, env0: !envltck): f3axp1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)
