@@ -926,6 +926,8 @@ d3exp_make_tpnd
 |D2El0azy _ => f0_l0azy(env0, d2e0)
 |D2El1azy _ => f0_l1azy(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Eannot _ => f0_annot(env0, d2e0)
 //
 (* ****** ****** *)
@@ -2447,6 +2449,42 @@ d3exp_make_tpnd
 end (*let*) // end of [f0_l1azy(env0,d2e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_annot
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Eannot
+(d2e1
+,s1e2, s2e2) = d2e0.node()
+//
+val t2p2 = s2exp_stpize(s2e2)
+val t2p2 = s2typ_hnfiz0(t2p2)
+//
+(*
+val () =
+prerrsln("f0_annot(23): t2p2 = ", t2p2)
+*)
+//
+val d3e1 =
+trans23_d2exp_tpck(env0,d2e1,t2p2)
+//
+in//let
+(
+  d3exp_make_tpnd
+  ( loc0
+  , t2p2, D3Eannot(d3e1,s1e2,s2e2)) )
+end (*let*) // end of [f0_annot(env0,d2e0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_labck
@@ -2524,48 +2562,21 @@ val-
 D2Et2ped
 (d2e1, t2p2) = d2e0.node()
 //
-val
-d3e1 = trans23_d2exp(env0, d2e1)
-//
-in//let
-(
-d3exp(loc0,t2p0,D3Et2ped(d3e1,t2p2)))
-end (*let*) // end of [f0_t2ped(env0,d2e0)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-f0_annot
-( env0:
-! tr23env
-, d2e0: d2exp): d3exp =
-let
-//
-val loc0 = d2e0.lctn()
-//
-val-
-D2Eannot
-(d2e1
-,s1e2, s2e2) = d2e0.node()
-//
-val t2p2 = s2exp_stpize(s2e2)
-val t2p2 = s2typ_hnfiz0(t2p2)
-//
 (*
-val () =
-prerrsln("f0_annot(23): t2p2 = ", t2p2)
+HX-2025-10-18:
+Sat Oct 18 11:56:40 PM EDT 2025
+[trans23_d2exp_tpck] is needed
+for solving possible existential
+type-variables in the synthesized
+type for [d3e1]!
 *)
-//
 val d3e1 =
 trans23_d2exp_tpck(env0,d2e1,t2p2)
 //
 in//let
 (
-  d3exp_make_tpnd
-  ( loc0
-  , t2p2, D3Eannot(d3e1,s1e2,s2e2)) )
-end (*let*) // end of [f0_annot(env0,d2e0)]
+d3exp(loc0,t2p0,D3Et2ped(d3e1,t2p2)))
+end (*let*) // end of [f0_t2ped(env0,d2e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
