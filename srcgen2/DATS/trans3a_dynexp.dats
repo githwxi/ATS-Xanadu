@@ -699,8 +699,12 @@ d3e0.node() of
 |D3El0azy _ => f0_l0azy(env0, d3e0)
 |D3El1azy _ => f0_l1azy(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |D3Eannot _ => f0_annot(env0, d3e0)
 |D3Et2ped _ => f0_t2ped(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |D3Enone0 _ => f0_none0(env0, d3e0)
 //
