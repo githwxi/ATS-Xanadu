@@ -593,12 +593,18 @@ prints
 endlet//end-of-[D3E1t2ped(d3e1,t2q1,t2q2)]
 //
 (* ****** ****** *)
+//
+|D3E1none0
+( (*void*) ) => prints("D3E1none()")
+//
 (* ****** ****** *)
 //
 |D3E1d3exp
 (   dexp   ) =>
 (
   prints( "D3E1d3exp(", dexp, ")" ) )
+//
+(* ****** ****** *)
 //
 |D3E1errck
 (lvl0, d3e1) =>

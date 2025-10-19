@@ -16,10 +16,17 @@ Sun Sep 28 03:27:13 PM EDT 2025
 //
 fun
 <x0:vt>
-identity(x0: x0): x0 = x0
+identity0(x0: x0): x0 = x0
+fun
+<x0:vt>
+identity1(x0: !x0): x0 = x0
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
 //
 fun
-<x0:t0>
+<x0:vt>
 duplicity(x0: x0): (x0, x0) = (x0, x0)
 //
 (* ****** ****** *)
