@@ -42,6 +42,8 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 "./../SATS/statyp2.sats"
 #staload
+"./../SATS/dynexp2.sats"
+#staload
 "./../SATS/dynexp3.sats"
 //
 #staload
@@ -128,6 +130,21 @@ list_map$e1nv(ltps, env0) where
 #impltmp
 map$e1nv$fopr<x0><y0><e1> = l2t2p_trx3cpy
 }(*where*)//end-of-[l2t2plst_trx3cpy(ltps,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+t2jaglst_trx3cpy
+(t2js, env0) =
+list_map$e1nv(t2js, env0) where
+{
+#typedef x0 = t2jag
+#typedef y0 = t2jag1
+#vwtpdef e1 = env3cpy
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = t2jag_trx3cpy
+}(*where*)//end-of-[t2jaglst_trx3cpy(t2js,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
