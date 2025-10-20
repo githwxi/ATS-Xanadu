@@ -160,15 +160,35 @@ d3pat1_trxltck
 (
 case+
 d3p0.node() of
+//
+|D3P1int(tint) =>
+d3axp1
+(loc0, t2q0, D3A1int(tint))
+|D3P1btf(sbtf) =>
+d3axp1
+(loc0, t2q0, D3A1btf(sbtf))
+|D3P1chr(tchr) =>
+d3axp1
+(loc0, t2q0, D3A1chr(tchr))
+|D3P1flt(tflt) =>
+d3axp1
+(loc0, t2q0, D3A1flt(tflt))
+|D3P1str(tstr) =>
+d3axp1
+(loc0, t2q0, D3A1str(tstr))
+//
 ) where//end-of(case)
 {
 //
 (* ****** ****** *)
 //
 val loc0 = d3p0.lctn()
+val t2q0 = d3p0.styp()
 //
 val () =
 prerrsln("d3pat1_trxltck: loc0 = ", loc0)
+val () =
+prerrsln("d3pat1_trxltck: t2q0 = ", t2q0)
 val () =
 prerrsln("d3pat1_trxltck: d3p0 = ", d3p0)
 //
