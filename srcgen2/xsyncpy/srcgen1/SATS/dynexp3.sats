@@ -1013,6 +1013,8 @@ d3fundcl1_wsxp$get:(d3fundcl1)->wths2exp
 fun
 d3fundcl1_farg$get:(d3fundcl1)->f3arg1lst
 fun
+d3fundcl1_faxp$get:(d3fundcl1)->f3axp1lst
+fun
 d3fundcl1_tdxp$get:(d3fundcl1)->teqd3exp1
 //
 #symload dpid with d3fundcl1_dpid$get
@@ -1048,7 +1050,8 @@ d3fundcl1_make_args
 ( lctn:loc_t
 , dpid:d2var
 , t2q1:s2typ1
-, farg:f3arg1lst, sres:s2res
+, farg:f3arg1lst
+, faxp:f3axp1lst, sres:s2res
 , tdxp:teqd3exp1, wsxp:wths2exp):d3fundcl1
 #symload d3fundcl1 with d3fundcl1_make_args
 //
