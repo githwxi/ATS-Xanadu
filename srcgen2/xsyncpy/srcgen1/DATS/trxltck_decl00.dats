@@ -473,7 +473,17 @@ val tdxp =
 (
   teqd3exp1_trxltck(tdxp, env0))
 //
+val f3bs =
+(
+  f3arg1lst_trxltck(f3as, env0))
+//
 val (  ) = envltck_poplam0(env0)
+//
+// (*
+val (  ) =
+prerrsln("\
+d3fundcl1_trxltck: f3bs = ", f3bs)
+// *)
 //
 in//let
 (

@@ -229,6 +229,84 @@ endloc (*local*) // end of [local(d3pat1)]
 local
 //
 datatype
+d3axp1 =
+D3AXP1 of
+(loctn
+,s2typ1, d3axp1_node)
+datavwtp
+d3axp1_vt =
+D3AXP1_vt of
+(loctn
+,s2typ1, d3axp1_node)
+//
+#absimpl d3axp1_tbox = d3axp1
+//
+(* ****** ****** *)
+in (* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+d3axp1_lctn$get
+  ( daxp ) =
+let
+val+
+D3AXP1
+( loc0
+, t2q0
+, node) = daxp in loc0
+end//end-of-[d3axp1_lctn$get]
+//
+#implfun
+d3axp1_styp$get
+  ( daxp ) =
+let
+val+
+D3AXP1
+( loc0
+, t2q0
+, node) = daxp in t2q0
+end//end-of-[d3axp1_styp$get]
+//
+#implfun
+d3axp1_node$get
+  ( daxp ) =
+let
+val+
+D3AXP1
+( loc0
+, t2q0
+, node) = daxp in node
+end//end-of-[d3axp1_node$get]
+//
+(* ****** ****** *)
+//
+(*
+#implfun
+d3axp1_make_lctn$node
+( loc0, node ) =
+let
+val
+t2q0 = s2typ_none0((*0*))
+in//let
+  D3AXP1(loc0, t2q0, node) end
+*)
+//
+#implfun
+d3axp1_make_lctn$styp$node
+( loc0, t2q0, node ) =
+let
+  D3AXP1(loc0, t2q0, node) end
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [local(d3axp1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
 d3exp1 =
 D3EXP1 of
 (loctn
@@ -332,6 +410,38 @@ f3arg1_make_lctn$node
 (  loc0, node  ) = F3ARG1(loc0,node)
 //
 endloc (*local*) // end of [local(f3arg1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+f3axp1 =
+F3AXP1 of
+(
+loctn, f3axp1_node)
+#absimpl
+f3axp1_tbox = f3axp1
+//
+in//local
+//
+#implfun
+f3axp1_lctn$get(f3a) =
+let
+val+F3AXP1(loc,nod) = f3a in loc
+end
+#implfun
+f3axp1_node$get(f3a) =
+let
+val+F3AXP1(loc,nod) = f3a in nod
+end
+//
+#implfun
+f3axp1_make_lctn$node
+(  loc0, node  ) = F3AXP1(loc0,node)
+//
+endloc (*local*) // end of [local(f3axp1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

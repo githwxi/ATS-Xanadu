@@ -418,6 +418,12 @@ g_print
 //
 #impltmp
 g_print
+<d3axp1>(daxp) =
+(
+  d3axp1_fprint(daxp, g_print$out<>((*0*))))
+//
+#impltmp
+g_print
 <d3exp1>(dexp) =
 (
   d3exp1_fprint(dexp, g_print$out<>((*0*))))
@@ -429,6 +435,12 @@ g_print
 <f3arg1>(farg) =
 (
   f3arg1_fprint(farg, g_print$out<>((*0*))))
+//
+#impltmp
+g_print
+<f3axp1>(faxp) =
+(
+  f3axp1_fprint(faxp, g_print$out<>((*0*))))
 //
 (* ****** ****** *)
 //
