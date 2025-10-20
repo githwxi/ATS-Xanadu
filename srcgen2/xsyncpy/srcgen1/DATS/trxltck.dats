@@ -103,7 +103,7 @@ d3pat1lst_trxltck
 list_map$e1nv(d3ps, env0) where
 {
 #typedef x0 = d3pat1
-#typedef y0 = d3pat1
+#typedef y0 = d3axp1
 #vwtpdef e1 = envltck
 #impltmp
 map$e1nv$fopr<x0><y0><e1> = d3pat1_trxltck
@@ -117,7 +117,7 @@ f3arg1lst_trxltck
 list_map$e1nv(f3as, env0) where
 {
 #typedef x0 = f3arg1
-#typedef y0 = f3arg1
+#typedef y0 = f3axp1
 #vwtpdef e1 = envltck
 #impltmp
 map$e1nv$fopr<x0><y0><e1> = f3arg1_trxltck

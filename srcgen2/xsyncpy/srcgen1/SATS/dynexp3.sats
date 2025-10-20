@@ -232,6 +232,7 @@ D3E = "./\
 #typedef d3ecl1lst = list(d3ecl1)
 (* ****** ****** *)
 #typedef f3arg1lst = list(f3arg1)
+#typedef f3axp1lst = list(f3axp1)
 (* ****** ****** *)
 #typedef d3gua1lst = list(d3gua1)
 #typedef d3cls1lst = list(d3cls1)
@@ -445,6 +446,25 @@ d3pat1_make_lctn$styp$node
 (loc0: loctn
 ,t2q0: s2typ1, node: d3pat1_node): d3pat1
 #symload d3pat1 with d3pat1_make_lctn$styp$node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+d3axp1_node =
+|D3A1int of token
+|D3A1btf of sym_t
+|D3A1chr of token
+|D3A1flt of token
+|D3A1str of token
+//
+(* ****** ****** *)
+//
+fun
+d3axp1_make_lctn$styp$node
+(loc0: loctn
+,t2q0: s2typ1, node: d3axp1_node): d3axp1
+#symload d3axp1 with d3axp1_make_lctn$styp$node
 //
 (* ****** ****** *)
 (* ****** ****** *)
