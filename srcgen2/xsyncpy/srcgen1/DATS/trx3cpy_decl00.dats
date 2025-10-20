@@ -453,9 +453,13 @@ val (  ) = prerrsln
 *)
 //
 val f3as =
-f3arglst_trx3cpy(f3as, env0)
+(
+f3arglst_trx3cpy(f3as, env0))
+val f3bs = list_nil((*void*))
+//
 val tdxp =
-teqd3exp_trx3cpy(tdxp, env0)
+(
+teqd3exp_trx3cpy(tdxp, env0))
 //
 (*
 val (  ) = prerrsln
@@ -465,8 +469,9 @@ val (  ) = prerrsln
 *)
 //
 in//let
-d3fundcl1_make_args
-(loc0, dpid, t2q1, f3as, sres, tdxp, wsxp)
+(
+  d3fundcl1_make_args
+  (loc0,dpid,t2q1,f3as,f3bs,sres,tdxp,wsxp))
 end(*let*)//end-of-[d3fundcl_trx3cpy(dfun,env0)]
 //
 (* ****** ****** *)
