@@ -329,8 +329,14 @@ prints("D3A1str(", tstr, ")"))
 //
 |D3A1var
 (   d2v1   ) =>
-(
-prints("D3A1var(", d2v1, ")"))
+let
+//
+val t2q0 = daxp.styp()
+val (  ) =
+prints
+("D3A1var(",d2v1,":",t2q0,")")
+//
+end//let//end-of-[D3A1var(d2v1)]
 //
 (* ****** ****** *)
 //
@@ -392,11 +398,11 @@ let
 val t3q0 = d3e0.dtyp()
 //
 (*
-val () =
+val (  ) =
 prints("D3E1var(", d2v1 ,")")
 *)
 //
-val () =
+val (  ) =
 prints
 ("D3E1var(",d2v1,":",t3q0,")")
 //
@@ -949,6 +955,8 @@ val dpid =
 d3fundcl1_dpid$get(dfun)
 val farg =
 d3fundcl1_farg$get(dfun)
+val faxp =
+d3fundcl1_faxp$get(dfun)
 val sres =
 d3fundcl1_sres$get(dfun)
 val tdxp =
@@ -958,8 +966,10 @@ d3fundcl1_wsxp$get(dfun)
 //
 in//let
 (
-prints("D3FUNDCL1(",dpid,";");
-prints(farg,";",sres,";",tdxp,";",wsxp,")"))
+prints
+("D3FUNDCL1(",dpid,";");
+prints
+(farg,";",faxp,";",sres,";",tdxp,";",wsxp,")"))
 end(*let*)//end-of-[d3fundcl1_fprint(dfun,out0)]
 //
 (* ****** ****** *)
