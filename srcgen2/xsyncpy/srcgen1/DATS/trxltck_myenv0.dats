@@ -292,7 +292,19 @@ dtpstk_lam0
 |
 ~ // free
 dtpstk_cons
-(k1, ts, kxs) => loop(kxs, err)
+(k1, x1, kxs) =>
+(
+  loop(kxs, err)) where
+{
+//
+val () =
+prerrsln("\
+dtpstk_poplam0: loop: k1 = ", k1)
+val () =
+prerrsln("\
+dtpstk_poplam0: loop: x1 = ", x1)
+//
+}(*where*)//end[dtpstk_cons(...)]
 //
 |dtpstk_nil( ) => (err := 1; kxs)
 |dtpstk_let0 _ => (err := 1; kxs)
@@ -350,7 +362,19 @@ dtpstk_let0
 |
 ~ // free
 dtpstk_cons
-(k1, ts, kxs) => loop(kxs, err)
+(k1, x1, kxs) =>
+(
+  loop(kxs, err)) where
+{
+//
+val () =
+prerrsln("\
+dtpstk_poplet0: loop: k1 = ", k1)
+val () =
+prerrsln("\
+dtpstk_poplet0: loop: x1 = ", x1)
+//
+}(*where*)//end[dtpstk_cons(...)]
 //
 |dtpstk_nil( ) => (err := 1; kxs)
 |dtpstk_lam0 _ => (err := 1; kxs)
@@ -408,7 +432,19 @@ dtpstk_ift0
 |
 ~ // free
 dtpstk_cons
-(k1, ts, kxs) => loop(kxs, err)
+(k1, x1, kxs) =>
+(
+  loop(kxs, err)) where
+{
+//
+val () =
+prerrsln("\
+dtpstk_popift0: loop: k1 = ", k1)
+val () =
+prerrsln("\
+dtpstk_popift0: loop: x1 = ", x1)
+//
+}(*where*)//end[dtpstk_cons(...)]
 //
 |dtpstk_nil( ) => (err := 1; kxs)
 |dtpstk_lam0 _ => (err := 1; kxs)

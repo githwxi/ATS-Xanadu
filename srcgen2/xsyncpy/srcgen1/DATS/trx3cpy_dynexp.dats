@@ -42,7 +42,10 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 "./../SATS/statyp2.sats"
 #staload
+"./../SATS/dynexp2.sats"
+#staload
 "./../SATS/dynexp3.sats"
+//
 #staload
 "./../SATS/trx3cpy.sats"
 //
@@ -62,6 +65,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../../../SATS/dynexp2.sats"
+#staload
 "./../../../SATS/dynexp3.sats"
 //
 #symload lctn with d3pat_get_lctn
@@ -73,6 +78,24 @@ Authoremail: gmhwxiATgmailDOTcom
 #symload node with d3exp_get_node
 #symload node with d3gua_get_node
 #symload node with d3gpt_get_node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+t2jag_trx3cpy
+(tjag, env0) =
+let
+//
+val
+t2ps = t2jag_get_t2ps(tjag)
+//
+in//let
+t2jag1_make_t2qs
+(
+tjag.lctn(),
+s2typlst_trx3cpy(t2ps, env0))
+end//let//end-of-[t2jag_trx3cpy]
 //
 (* ****** ****** *)
 (* ****** ****** *)
