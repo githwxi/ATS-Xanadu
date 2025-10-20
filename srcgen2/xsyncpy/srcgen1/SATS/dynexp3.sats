@@ -452,11 +452,34 @@ d3pat1_make_lctn$styp$node
 //
 datatype
 d3axp1_node =
+//
 |D3A1int of token
 |D3A1btf of sym_t
 |D3A1chr of token
 |D3A1flt of token
 |D3A1str of token
+//
+|D3A1var of (d2var)
+//
+(* ****** ****** *)
+//
+fun
+d3axp1_lctn$get
+(daxp: d3axp1): loctn
+#symload lctn with d3axp1_lctn$get
+fun
+d3axp1_styp$get
+(daxp: d3axp1): s2typ1
+#symload styp with d3axp1_styp$get
+fun
+d3axp1_node$get
+(daxp: d3axp1): d3axp1_node
+#symload node with d3axp1_node$get
+//
+fun
+d3axp1_fprint
+(daxp: d3axp1, out0: FILR): void
+#symload fprint with d3axp1_fprint of 1000
 //
 (* ****** ****** *)
 //

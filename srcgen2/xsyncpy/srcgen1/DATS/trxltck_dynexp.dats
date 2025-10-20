@@ -177,6 +177,8 @@ d3axp1
 d3axp1
 (loc0, t2q0, D3A1str(tstr))
 //
+|D3P1var _ => f0_var(d3p0, env0)
+//
 ) where//end-of(case)
 {
 //
@@ -184,6 +186,29 @@ d3axp1
 //
 val loc0 = d3p0.lctn()
 val t2q0 = d3p0.styp()
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+( d3p0: d3pat1
+, env0: !envltck): d3axp1 =
+let
+//
+val-
+D3P1var
+(   d2v1   ) = d3p0.node()
+//
+val t3q1 =
+envltck_dvar$take(env0, d2v1)
+val t2q1 =
+envltck_dtyp$eval(env0, t3q1)
+//
+in//let
+d3axp1(loc0, t2q1, D3A1var(d2v1))
+end//let//end-of-[f0_var(d3e0,env0)]
+//
+(* ****** ****** *)
 //
 val () =
 prerrsln("d3pat1_trxltck: loc0 = ", loc0)
