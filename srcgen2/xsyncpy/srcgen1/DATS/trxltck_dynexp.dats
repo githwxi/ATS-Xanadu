@@ -157,7 +157,20 @@ end//let//end-of-[d3exp1_t2pck(d3e0,...)]
 #implfun
 d3pat1_trxltck
 (d3p0, env0) =
-(
+let
+//
+val () =
+prerrsln("\
+d3pat1_trxltck: loc0 = ", loc0)
+val () =
+prerrsln("\
+d3pat1_trxltck: t2q0 = ", t2q0)
+val () =
+prerrsln("\
+d3pat1_trxltck: d3p0 = ", d3p0)
+//
+in//let
+//
 case+
 d3p0.node() of
 //
@@ -179,7 +192,9 @@ d3axp1
 //
 |D3P1var _ => f0_var(d3p0, env0)
 //
-) where//end-of(case)
+|D3P1annot _ => f0_annot(d3p0, env0)
+//
+end where//end-of(case-of(d3p0.node())
 {
 //
 (* ****** ****** *)
@@ -206,16 +221,30 @@ envltck_dtyp$eval(env0, t3q1)
 //
 in//let
 d3axp1(loc0, t2q1, D3A1var(d2v1))
-end//let//end-of-[f0_var(d3e0,env0)]
+end//let//end-of-[f0_var(d3p0,env0)]
 //
 (* ****** ****** *)
 //
-val () =
-prerrsln("d3pat1_trxltck: loc0 = ", loc0)
-val () =
-prerrsln("d3pat1_trxltck: t2q0 = ", t2q0)
-val () =
-prerrsln("d3pat1_trxltck: d3p0 = ", d3p0)
+fun
+f0_annot
+( d3p0: d3pat1
+, env0: !envltck): d3axp1 =
+let
+//
+val-
+D3P1annot
+(d3p1
+,s1e1, s2e1) = d3p0.node()
+//
+val d3a1 =
+d3pat1_trxltck(d3p1, env0)
+val t2q1 = d3a1.styp((*0*))
+//
+in//let
+d3axp1
+(loc0
+,t2q1, D3A1annot(d3a1,s1e1,s2e1))
+end//let//end-of-[f0_annot(d3p0,env0)]
 //
 (* ****** ****** *)
 //
@@ -300,11 +329,11 @@ d3exp1
 //
 |_(*otherwise*) =>
 d3exp1
-(loc0, t3q0, D3E1errck(0(*lvl*), d3e0))
+(loc0,t3q0,D3E1errck(0(*lvl*), d3e0))
 //
 (* ****** ****** *)
 //
-end where
+end where//end-of(case-of(d3e0.node())
 {
 //
 (* ****** ****** *)

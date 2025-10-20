@@ -461,6 +461,9 @@ d3axp1_node =
 //
 |D3A1var of (d2var)
 //
+|D3A1annot of
+(d3axp1,s1exp(*given*),s2exp(*trans*))
+//
 (* ****** ****** *)
 //
 fun

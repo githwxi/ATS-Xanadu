@@ -264,6 +264,8 @@ prints
 print("D3P1rcd2(");
 prints(tknd,";",npf1,";",ldps,")"))
 //
+(* ****** ****** *)
+//
 |D3P1annot
 (d3p1
 ,s1e2, s2e2) =>
@@ -285,6 +287,62 @@ prints("D3P1errck(", lvl0, ";", d3p1, ")"))
 (* ****** ****** *)
 //
 end(*let*)//end-of-[d3pat1_fprint(d3p0,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+#implfun
+d3axp1_fprint
+( daxp, out0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+in//let
+//
+case+
+daxp.node() of
+|D3A1int
+(   tint   ) =>
+(
+prints("D3A1int(", tint, ")"))
+|D3A1btf
+(   sbtf   ) =>
+(
+prints("D3A1btf(", sbtf, ")"))
+|D3A1chr
+(   tchr   ) =>
+(
+prints("D3A1chr(", tchr, ")"))
+|D3A1flt
+(   tflt   ) =>
+(
+prints("D3A1flt(", tflt, ")"))
+|D3A1str
+(   tstr   ) =>
+(
+prints("D3A1str(", tstr, ")"))
+//
+(* ****** ****** *)
+//
+|D3A1var
+(   d2v1   ) =>
+(
+prints("D3A1var(", d2v1, ")"))
+//
+(* ****** ****** *)
+//
+|D3A1annot
+(d3a1
+,s1e2, s2e2) =>
+(print("D3A1annot(")
+;prints(d3a1,";",s1e2,";",s2e2,")"))
+//
+(* ****** ****** *)
+//
+end(*let*)//end-of-[d3axp1_fprint(d3p0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -643,6 +701,36 @@ prints
 //
 end(*let*)//end-of-[f3arg1_fprint(farg,out0)]
 //
+(* ****** ****** *)
+//
+#implfun
+f3axp1_fprint
+( faxp, out0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+in//let
+//
+case+
+faxp.node() of
+|F3AXP1dapp
+(npf1, d3as) =>
+prints
+("F3AXP1dapp(",npf1,";",d3as,")")
+|F3AXP1sapp
+(s2vs, s2ps) =>
+prints
+("F3AXP1sapp(",s2vs,";",s2ps,")")
+|F3AXP1mets
+(   s2es   ) =>
+(
+  prints("F3AXP1mets(", s2es, ")"))
+//
+end(*let*)//end-of-[f3axp1_fprint(faxp,out0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
