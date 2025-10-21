@@ -890,6 +890,21 @@ prints(tknd,";",tqas,";",d2cs,";",d3fs,")"))
 //
 (* ****** ****** *)
 //
+|D3C1implmnt0
+(tknd
+,stmp
+,sqas,tqas
+,dqid,tias
+,farg,faxp,sres,body) =>
+(
+print("D3Cimplmnt0(");
+prints(tknd,";",stmp,";");
+prints(sqas,";",tqas,";");
+prints(dqid,";",tias,";");
+prints(farg,";",faxp,";",sres,";",body,")"))
+//
+(* ****** ****** *)
+//
 |D3C1errck
 (lvl0, dcl1) =>
 (
