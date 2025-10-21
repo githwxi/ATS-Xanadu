@@ -42,6 +42,8 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 "./../SATS/statyp2.sats"
 #staload
+"./../SATS/dynexp2.sats"
+#staload
 "./../SATS/dynexp3.sats"
 //
 (* ****** ****** *)
@@ -358,6 +360,25 @@ end//end-of-[d3exp1_node$get]
 //
 (* ****** ****** *)
 //
+#implfun
+d3exp1_dvdtp
+(dexp, vtps) =
+let
+//
+val loc0 =
+d3exp1_lctn$get(dexp)
+val t3q0 =
+d3exp1_dtyp$get(dexp)
+//
+in//let
+//
+d3exp1_make_lctn$styp$node
+(
+loc0,t3q0,D3E1dvdtp(dexp,vtps))
+//
+end//let//end-of-[d3exp1_dvdtp]
+//
+(* ****** ****** *)
 (*
 #implfun
 d3exp1_make_lctn$node

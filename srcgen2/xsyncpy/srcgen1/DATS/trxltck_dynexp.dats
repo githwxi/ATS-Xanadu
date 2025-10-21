@@ -742,7 +742,13 @@ case+ dopt of
 optn_nil() => optn_nil()
 |
 optn_cons(dexp) =>
-optn_cons(dexp) where
+(
+optn_cons(dexp)
+) where
+{
+val dexp =
+d3exp1_dvdtp(dexp, vtps)
+} where
 {
 val (  ) =
 envltck_pshift0(env0)//enter

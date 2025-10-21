@@ -409,8 +409,8 @@ d3pat1_node =
 (token(*knd*),sint(*npf*),l3d3p1lst)
 //
 (* ****** ****** *)
-|
-D3P1annot of
+//
+|D3P1annot of
 (d3pat1,s1exp(*given*),s2exp(*trans*))
 //
 (* ****** ****** *)
@@ -631,20 +631,28 @@ d3exp1(*lin-thunk*),d3exp1lst(*frees*))
 //
 (* ****** ****** *)
 //
+// HX-2025-10-21:
+// for lam, let, ift, and cas
+|D3E1dvdtp of
+(
+  d3exp1, dvdtplst(*d2var-sorted*))
+//
 |D3E1annot of
 (
-  d3exp1,s1exp(*given*),s2exp(*trans*))
+d3exp1, s1exp(*given*), s2exp(*trans*))
 //
 (* ****** ****** *)
 //
 // label-cast
-|D3E1labck of (d3exp1, label)
+|D3E1labck of
+(
+  d3exp1(*tuple*), label(*expected*))
 //
 // stype-cast
 |D3E1t2pck of
 (
 d3exp1, s2typ1(*t2q1*), s2typ1(*t2q0*))
-// stype-checked
+// stype-checked (function body)
 |D3E1t2ped of
 (
 d3exp1, s2typ1(*t2q1*), s2typ1(*t2q0*))
@@ -688,6 +696,13 @@ d3exp1_fprint
 #symload fprint with d3exp1_fprint of 1000
 //
 (* ****** ****** *)
+//
+fun
+d3exp1_none0
+(loc0: loctn): d3exp1
+fun
+d3exp1_dvdtp
+(dexp: d3exp1, vtps: dvdtplst): d3exp1
 //
 (*
 fun
