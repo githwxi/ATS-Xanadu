@@ -145,6 +145,12 @@ envltck_pshlam0(!envltck): (void)
 fun
 envltck_poplam0(!envltck): (void)
 //
+fun
+envltck_dvslam0(!envltck): d2varlst
+fun
+envltck_vtslam0(!envltck): dvdtplst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -152,14 +158,18 @@ envltck_pshlet0(!envltck): (void)
 fun
 envltck_poplet0(!envltck): (void)
 //
+fun
+envltck_dvslet0(!envltck): d2varlst
+fun
+envltck_vtslet0(!envltck): dvdtplst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 envltck_pshift0(!envltck): (void)
 fun
 envltck_popift0(!envltck): (void)
-//
-(* ****** ****** *)
 //
 fun
 envltck_dvsift0(!envltck): d2varlst
