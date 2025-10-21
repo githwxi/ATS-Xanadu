@@ -111,6 +111,10 @@ d3cl.node() of
  f0_fundclst(d3cl, env0))
 //
 (* ****** ****** *)
+|D3Cimplmnt0 _ =>
+(
+ f0_implmnt0(d3cl, env0))
+(* ****** ****** *)
 //
 |D3Cerrck
 (lvl0, dcl1) =>
@@ -327,6 +331,43 @@ d3fundclist_trx3cpy(d3fs, env0)
 in//let
 d3ecl1(loc0,
 D3C1fundclst(tknd, tqas, d2cs, d3fs))
+end//let
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+(d3cl: d3ecl
+,env0: !env3cpy): d3ecl1 =
+let
+//
+val loc0 = d3cl.lctn()
+//
+val-
+D3Cimplmnt0
+( tknd, stmp
+, sqas, tqas
+, dimp//dcst
+, tias, f3as
+, sres, dexp) = d3cl.node()
+//
+val f3as =
+(
+f3arglst_trx3cpy(f3as, env0))
+val f3bs = list_nil((*void*))
+//
+val
+dexp = d3exp_trx3cpy(dexp, env0)
+//
+in//let
+(
+d3ecl1
+(
+loc0,
+D3C1implmnt0
+( tknd, stmp
+, sqas, tqas
+, dimp, tias, f3as, f3bs, sres, dexp)))
 end//let
 //
 (* ****** ****** *)

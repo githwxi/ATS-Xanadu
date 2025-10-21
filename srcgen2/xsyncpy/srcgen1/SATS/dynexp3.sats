@@ -61,6 +61,9 @@ HX: for [FILR]
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
+TMP = "./\
+../../../SATS/xstamp0.sats"
+#staload
 SYM = "./\
 ../../../SATS/xsymbol.sats"
 #staload
@@ -99,6 +102,8 @@ D3E = "./\
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef stamp = $TMP.stamp
+(* ****** ****** *)
 #typedef sym_t = $SYM.sym_t
 #typedef symbl = $SYM.symbl
 (* ****** ****** *)
@@ -127,6 +132,9 @@ D3E = "./\
 #typedef t2qag = $D2E.t2qag
 #typedef t2iag = $D2E.t2iag
 #typedef t2jag = $D2E.t2jag
+(* ****** ****** *)
+#typedef simpl = $D2E.simpl
+#typedef dimpl = $D2E.dimpl
 (* ****** ****** *)
 #typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
@@ -894,6 +902,23 @@ d3ecl1_node =
 |D3C1fundclst of
 ( token(*FUN(fnk)*)
 , t2qaglst, d2cstlst, d3fundcl1lst)
+//
+(* ****** ****** *)
+//
+(*
+HX-2025-10-20:
+[f3axp1lst] is needed
+for handling bef/aft syntax!
+*)
+//
+|D3C1implmnt0 of
+( token(*impkind*)
+, stamp(*unicity*)
+, s2qaglst // s2vs
+, t2qaglst // s2vs+t2is
+, dimpl // HX: impl-d2cst
+, t2iaglst // HX: of s2explst
+, f3arg1lst, f3axp1lst, s2res, d3exp1)
 //
 (* ****** ****** *)
 //
