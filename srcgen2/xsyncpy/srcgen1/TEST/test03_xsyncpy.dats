@@ -16,10 +16,17 @@ Sun Sep 28 03:27:13 PM EDT 2025
 //
 fun
 <x0:vt>
-identity0(x0: x0): x0 = x0
+identity0
+(x0: x0): x0 = x0
 fun
 <x0:vt>
-identity1(x0: !x0): x0 = x0
+identity1
+(x0: !x0): x0 = x0
+fun
+<x0:vt>
+identity2
+(x0: !x0): x0 =
+if true then x0 else x0
 //
 (* ****** ****** *)
 ////

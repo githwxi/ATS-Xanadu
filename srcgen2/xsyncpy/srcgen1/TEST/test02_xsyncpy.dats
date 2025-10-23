@@ -20,9 +20,23 @@ val () = N := N + 1
 (* ****** ****** *)
 //
 fun
-fact(xs: sint): sint =
+fact0(xs: sint): sint =
 (
-if xs >= 1 then xs * fact(xs-1) else 1)
+if xs >= 1
+then xs * fact0(xs-1) else 1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fact1(xs0: sint): sint =
+let
+val xs1 = xs0 - 1
+in//let
+(
+if xs1 >= 0
+then xs0 * fact0(xs1) else 1)
+end//let//end-of-[fact1(xs0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

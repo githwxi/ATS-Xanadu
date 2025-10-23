@@ -575,12 +575,23 @@ val d3e1 =
 //
 val t3q1 = d3e1.dtyp((*void*))
 //
+val vtps = envltck_vtslet0(env0)
+//
 val (  ) = envltck_poplet0(env0)
 //
 in//
 //
+let
+//
+val (  ) =
+prerrsln("\
+d3exp1_trxltck: \
+f0_let0: vtps = ", vtps)
+//
+in//let
 d3exp1
 (loc0, t3q1, D3E1let0(dcls, d3e1))
+end//let
 //
 end//let//end-of-[f0_let0(d3e0, env0)]
 //

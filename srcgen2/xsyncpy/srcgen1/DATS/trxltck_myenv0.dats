@@ -139,6 +139,8 @@ datavwtp dtpstk =
 //
 |dtpstk_cons of
 ( d2var, d3typ1, dtpstk )
+|dtpstk_updt of
+( d2var, d3typ1, dtpstk )
 //
 (* ****** ****** *)
 //
@@ -164,10 +166,17 @@ dtpstk_free_top
 (
 case-
 stk0 of
+//
 | ~
-dtpstk_nil() => ((*0*))
+dtpstk_nil
+((*void*)) => ((*0*))
+//
 | ~
 dtpstk_cons
+(d2v1
+,t3q1,stk1) => dtpstk_free_top(stk1)
+| ~
+dtpstk_updt
 (d2v1
 ,t3q1,stk1) => dtpstk_free_top(stk1)
 //
@@ -306,12 +315,29 @@ dtpstk_poplam0: loop: x1 = ", x1)
 //
 }(*where*)//end[dtpstk_cons(...)]
 //
-|dtpstk_nil( ) => (err := 1; kxs)
-|dtpstk_let0 _ => (err := 1; kxs)
-|dtpstk_ift0 _ => (err := 1; kxs)
-|dtpstk_cas0 _ => (err := 1; kxs)
+|
+~ // free
+dtpstk_updt
+(k1, x1, kxs) =>
+(
+  loop(kxs, err)) where
+{
 //
-)
+val () =
+prerrsln("\
+dtpstk_poplam0: loop: k1 = ", k1)
+val () =
+prerrsln("\
+dtpstk_poplam0: loop: x1 = ", x1)
+//
+}(*where*)//end[dtpstk_updt(...)]
+//
+|dtpstk_nil( ) => ( err := 1; kxs )
+|dtpstk_let0 _ => ( err := 1; kxs )
+|dtpstk_ift0 _ => ( err := 1; kxs )
+|dtpstk_cas0 _ => ( err := 1; kxs )
+//
+)(*case+*)//end-of-[loop( kxs, err )]
 //
 }(*where*)//end-of-[dtpstk_poplam0(kxs)]
 //
@@ -376,12 +402,29 @@ dtpstk_poplet0: loop: x1 = ", x1)
 //
 }(*where*)//end[dtpstk_cons(...)]
 //
-|dtpstk_nil( ) => (err := 1; kxs)
-|dtpstk_lam0 _ => (err := 1; kxs)
-|dtpstk_ift0 _ => (err := 1; kxs)
-|dtpstk_cas0 _ => (err := 1; kxs)
+|
+~ // free
+dtpstk_updt
+(k1, x1, kxs) =>
+(
+  loop(kxs, err)) where
+{
 //
-)
+val () =
+prerrsln("\
+dtpstk_poplet0: loop: k1 = ", k1)
+val () =
+prerrsln("\
+dtpstk_poplet0: loop: x1 = ", x1)
+//
+}(*where*)//end[dtpstk_updt(...)]
+//
+|dtpstk_nil( ) => ( err := 1; kxs )
+|dtpstk_lam0 _ => ( err := 1; kxs )
+|dtpstk_ift0 _ => ( err := 1; kxs )
+|dtpstk_cas0 _ => ( err := 1; kxs )
+//
+)(*case+*)//end-of-[loop( kxs, err )]
 //
 }(*where*)//end-of-[dtpstk_poplet0(kxs)]
 //
@@ -446,12 +489,29 @@ dtpstk_popift0: loop: x1 = ", x1)
 //
 }(*where*)//end[dtpstk_cons(...)]
 //
-|dtpstk_nil( ) => (err := 1; kxs)
-|dtpstk_lam0 _ => (err := 1; kxs)
-|dtpstk_let0 _ => (err := 1; kxs)
-|dtpstk_cas0 _ => (err := 1; kxs)
+|
+~ // free
+dtpstk_updt
+(k1, x1, kxs) =>
+(
+  loop(kxs, err)) where
+{
 //
-)
+val () =
+prerrsln("\
+dtpstk_popift0: loop: k1 = ", k1)
+val () =
+prerrsln("\
+dtpstk_popift0: loop: x1 = ", x1)
+//
+}(*where*)//end[dtpstk_updt(...)]
+//
+|dtpstk_nil( ) => ( err := 1; kxs )
+|dtpstk_lam0 _ => ( err := 1; kxs )
+|dtpstk_let0 _ => ( err := 1; kxs )
+|dtpstk_cas0 _ => ( err := 1; kxs )
+//
+)(*case+*)//end-of-[loop( kxs, err )]
 //
 }(*where*)//end-of-[dtpstk_popift0(kxs)]
 //
@@ -492,14 +552,21 @@ loop
 : d2varlst): d2varlst =
 (
 case- kxs of
+//
 |dtpstk_nil
 (  (*nil*)  ) => res
+//
 |dtpstk_ift0
 (    kxs    ) => res
+//
 |dtpstk_cons
 (k1, x1, kxs) =>
 loop(kxs, list_vt_cons(k1, res))
-)
+//
+|dtpstk_updt
+(k1, x1, kxs) => (loop(kxs, res))
+//
+)(*case-*)//end-of-[loop(kxs,res)]
 //
 in//let
 //
@@ -530,28 +597,32 @@ dtpstk_dvar$find
 , d2v0: d2var): d3typ1 =
 (
 case+ stk0 of
-|
-dtpstk_nil
+|dtpstk_nil
 ((*void*)) =>
 d3typ1_none0((*0*))
-|
-dtpstk_lam0
+//
+|dtpstk_lam0
 (  stk1  ) =>
 dtpstk_dvar$find(stk1, d2v0)
 |dtpstk_let0
 (  stk1  ) =>
 dtpstk_dvar$find(stk1, d2v0)
-|
-dtpstk_ift0
+|dtpstk_ift0
 (  stk1  ) =>
 dtpstk_dvar$find(stk1, d2v0)
-|
-dtpstk_cas0
+|dtpstk_cas0
 (  stk1  ) =>
 dtpstk_dvar$find(stk1, d2v0)
 //
-|
-dtpstk_cons
+|dtpstk_cons
+(d2v1, t3q1, stk1) =>
+(
+if
+(d2v0 = d2v1)
+then ( t3q1 )
+else dtpstk_dvar$find(stk1, d2v0))
+//
+|dtpstk_updt
 (d2v1, t3q1, stk1) =>
 (
 if
@@ -634,7 +705,8 @@ case+ env0 of
 (
 !dtpstk, stkmap) =>
 (
-dtpstk := dtpstk_cons(d2v0, t3q1, dtpstk))
+dtpstk :=
+dtpstk_updt(d2v0, t3q1, dtpstk))
 ) where
 {
 //
@@ -695,7 +767,8 @@ envltck_dvar$push
   (env0, dvar, t2q1) =
 let
 //
-val t3q1 = d3typ1_styp$make(t2q1)
+val
+t3q1 = d3typ1_styp$make(t2q1)
 //
 in//let
 //
@@ -704,7 +777,8 @@ case+ env0 of
 (
 !dtpstk, stkmap) =>
 (
-dtpstk := dtpstk_cons(dvar, t3q1, dtpstk))
+dtpstk :=
+dtpstk_cons(dvar, t3q1, dtpstk))
 //
 end(*let*)//end-of-(envltck_dvar$push(env0,...))
 //
@@ -855,13 +929,19 @@ loop
 : dvdtplst): dvdtplst =
 (
 case+ stk0 of
-|
-dtpstk_nil
+|dtpstk_nil
 ((*void*)) => vtps
-|
-dtpstk_cons
-(d2v1
-,t3q1,stk1) =>
+//
+|dtpstk_cons
+(d2v1,t3q1,stk1) =>
+(
+loop(stk1, vtps)) where
+{
+val vtps =
+list_vt_cons((d2v1, t3q1), vtps)}
+//
+|dtpstk_updt
+(d2v1,t3q1,stk1) =>
 (
 loop(stk1, vtps)) where
 {
@@ -869,9 +949,10 @@ val vtps =
 list_vt_cons((d2v1, t3q1), vtps)}
 //
 |
-dtpstk_lam0(stk1) => (   vtps   )
+dtpstk_lam0(stk1) => (    vtps    )
 //
-|_(* otherwise *) => (    vtps   )
+|
+_(*rest-of-dtpstk*) => (    vtps    )
 )
 //
 }(*where*)//end-of-[dtpstk_vtslam0(env0)]
@@ -928,13 +1009,20 @@ loop
 : dvdtplst): dvdtplst =
 (
 case+ stk0 of
-|
-dtpstk_nil
+//
+|dtpstk_nil
 ((*void*)) => vtps
-|
-dtpstk_cons
-(d2v1
-,t3q1,stk1) =>
+//
+|dtpstk_cons
+(d2v1,t3q1,stk1) =>
+(
+loop(stk1, vtps)) where
+{
+val vtps =
+list_vt_cons((d2v1, t3q1), vtps)}
+//
+|dtpstk_updt
+(d2v1,t3q1,stk1) =>
 (
 loop(stk1, vtps)) where
 {
@@ -942,9 +1030,10 @@ val vtps =
 list_vt_cons((d2v1, t3q1), vtps)}
 //
 |
-dtpstk_lam0(stk1) => (   vtps   )
+dtpstk_lam0(stk1) => (    vtps    )
 //
-|_(* otherwise *) => (    vtps   )
+|
+_(*rest-of-dtpstk*) => (    vtps   )
 )
 //
 }(*where*)//end-of-[dtpstk_vtslet0(env0)]
@@ -1001,13 +1090,20 @@ loop
 : dvdtplst): dvdtplst =
 (
 case+ stk0 of
-|
-dtpstk_nil
+//
+|dtpstk_nil
 ((*void*)) => vtps
-|
-dtpstk_cons
-(d2v1
-,t3q1,stk1) =>
+//
+|dtpstk_cons
+(d2v1,t3q1,stk1) =>
+(
+loop(stk1, vtps)) where
+{
+val vtps =
+list_vt_cons((d2v1, t3q1), vtps)}
+//
+|dtpstk_updt
+(d2v1,t3q1,stk1) =>
 (
 loop(stk1, vtps)) where
 {
@@ -1015,9 +1111,10 @@ val vtps =
 list_vt_cons((d2v1, t3q1), vtps)}
 //
 |
-dtpstk_ift0(stk1) => (   vtps   )
+dtpstk_ift0(stk1) => (    vtps    )
 //
-|_(* otherwise *) => (    vtps   )
+|
+_(*rest-of-dtpstk*) => (    vtps   )
 )
 //
 }(*where*)//end-of-[dtpstk_vtsift0(env0)]
