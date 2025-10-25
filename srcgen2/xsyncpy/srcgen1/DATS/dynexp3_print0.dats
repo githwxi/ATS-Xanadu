@@ -461,6 +461,12 @@ prints(d3f0,";",npf1,";",d3es,")"))
 (dcls, d3e1) =>
 prints
 ("D3E1let0(", dcls, ";", d3e1, ")")
+|D3E1let1
+(dcls
+,d3e1, vts2) =>
+(
+prints("D3E1let1(");
+prints(dcls,";",d3e1,";",vts2,")"))
 //
 (* ****** ****** *)
 //

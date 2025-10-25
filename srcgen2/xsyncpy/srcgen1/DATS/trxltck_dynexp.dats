@@ -575,6 +575,7 @@ val d3e1 =
 //
 val t3q1 = d3e1.dtyp((*void*))
 //
+val d2vs = envltck_dvslet0(env0)
 val vtps = envltck_vtslet0(env0)
 //
 val (  ) = envltck_poplet0(env0)
@@ -583,6 +584,10 @@ in//
 //
 let
 //
+val (  ) =
+prerrsln("\
+d3exp1_trxltck: \
+f0_let0: d2vs = ", d2vs)
 val (  ) =
 prerrsln("\
 d3exp1_trxltck: \

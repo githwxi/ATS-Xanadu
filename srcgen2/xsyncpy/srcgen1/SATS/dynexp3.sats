@@ -544,7 +544,12 @@ d3exp1_node =
 //
 (* ****** ****** *)
 //
-|D3E1let0 of (d3ecl1lst, d3exp1)
+|D3E1let0 of
+(d3ecl1lst, d3exp1(*scope*))
+|D3E1let1 of
+(
+d3ecl1lst,
+d3exp1(*scope*), dvdtplst(*lefts*))
 //
 (* ****** ****** *)
 //
