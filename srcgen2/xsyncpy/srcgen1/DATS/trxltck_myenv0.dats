@@ -536,55 +536,6 @@ end(*let*)//end-of-(envltck_popift0(env0))
 (* ****** ****** *)
 //
 fun
-dtpstk_dvsift0
-( kxs:
-! dtpstk): d2varlst =
-let
-//
-#vwtpdef
-d2varlst = list_vt(d2var)
-//
-fnx
-loop
-( kxs:
-! dtpstk
-, res
-: d2varlst): d2varlst =
-(
-case- kxs of
-//
-|dtpstk_nil
-(  (*nil*)  ) => res
-//
-|dtpstk_ift0
-(    kxs    ) => res
-//
-|dtpstk_cons
-(k1, x1, kxs) =>
-loop(kxs, list_vt_cons(k1, res))
-//
-|dtpstk_updt
-(k1, x1, kxs) => (loop(kxs, res))
-//
-)(*case-*)//end-of-[loop(kxs,res)]
-//
-in//let
-//
-list_vt2t
-(
-d2varlst_vt_duprmv0(res)
-) where
-{
-val res =
-loop(kxs, list_vt_nil((*0*)))
-val res = d2varlst_vt_sort0(res) }
-//
-end(*let*)//end-of-[dtpstk_dvsift0(...)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
 d3typ1_none0
 ( (*void*) ) =
 d3typ1_none$make
@@ -894,6 +845,140 @@ val () = envltck_f3as$push(env0, f3as)
 end//let//end-of-[list_cons(f3a1,f3as)]
 //
 )(*case+*)//end-of-[envltck_f3as$push(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+dtpstk_dvslet0
+( kxs:
+! dtpstk): d2varlst =
+let
+//
+#vwtpdef
+d2varlst = list_vt(d2var)
+//
+fnx
+loop
+( kxs:
+! dtpstk
+, res
+: d2varlst): d2varlst =
+(
+case- kxs of
+//
+|dtpstk_nil
+(  (*nil*)  ) => res
+//
+|dtpstk_let0
+(    kxs    ) => res
+//
+|dtpstk_cons
+(k1, x1, kxs) =>
+loop(kxs, list_vt_cons(k1, res))
+//
+|dtpstk_updt // HX: skipped
+(k1, x1, kxs) => (loop(kxs, res))
+//
+)(*case-*)//end-of-[loop(kxs,res)]
+//
+in//let
+//
+list_vt2t
+(
+d2varlst_vt_duprmv0(res)
+) where
+{
+val res =
+loop(kxs, list_vt_nil((*0*)))
+val res = d2varlst_vt_sort0(res) }
+//
+end(*let*)//end-of-[dtpstk_dvslet0(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+envltck_dvslet0
+  (  env0  ) =
+(
+//
+case+ env0 of
+|ENVLTCK
+(dtpstk, stkmap) =>
+(
+  d2vs ) where
+{
+val d2vs = dtpstk_dvslet0(dtpstk)
+}
+//
+)(*case+*)//end-of-[envltck_dvslet0(env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+dtpstk_dvsift0
+( kxs:
+! dtpstk): d2varlst =
+let
+//
+#vwtpdef
+d2varlst = list_vt(d2var)
+//
+fnx
+loop
+( kxs:
+! dtpstk
+, res
+: d2varlst): d2varlst =
+(
+case- kxs of
+//
+|dtpstk_nil
+(  (*nil*)  ) => res
+//
+|dtpstk_ift0
+(    kxs    ) => res
+//
+|dtpstk_cons
+(k1, x1, kxs) =>
+loop(kxs, list_vt_cons(k1, res))
+//
+|dtpstk_updt // HX: skipped
+(k1, x1, kxs) => (loop(kxs, res))
+//
+)(*case-*)//end-of-[loop(kxs,res)]
+//
+in//let
+//
+list_vt2t
+(
+d2varlst_vt_duprmv0(res)
+) where
+{
+val res =
+loop(kxs, list_vt_nil((*0*)))
+val res = d2varlst_vt_sort0(res) }
+//
+end(*let*)//end-of-[dtpstk_dvsift0(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+envltck_dvsift0
+  (  env0  ) =
+(
+//
+case+ env0 of
+|ENVLTCK
+(dtpstk, stkmap) =>
+(
+  d2vs ) where
+{
+val d2vs = dtpstk_dvsift0(dtpstk)
+}
+//
+)(*case+*)//end-of-[envltck_dvsift0(env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
