@@ -645,26 +645,39 @@ val dels =
 (
   d31ift_trxltck(dels, env0))
 //
-val (  ) =
+in//let
+//
+let
+//
+val t3q0 =
 (
 case+ dthn of
-| optn_nil() => ()
-| optn_cons(dexp) =>
-(
-case-
-dexp.node() of
-| D3E1dvdtp(_, dvts) =>
-(
-  envltck_dvts$updt(env0, dvts))
-)
-)(*case+*)//end(envltck_dvts$updt)
+|optn_nil
+((*void*)) => t3q0
+|optn_cons
+(  dthn  ) => dthn.dtyp())
+val dexp =
+d3exp1(loc0,t3q0
+,D3E1ift0(d3e1, dthn, dels))
 //
 in//let
 //
+case+ dthn of
+| optn_nil
+( (*void*) ) => dexp
+| optn_cons(dthn) =>
 (
-d3exp1
-(loc0
-,t3q0, D3E1ift0(d3e1, dthn, dels)))
+case-
+dthn.node() of
+| D3E1dvdtp(_, dvts) =>
+(
+  d3exp1_dvdtp(dexp, dvts))
+where
+{ val () =
+  envltck_dvts$updt(env0, dvts) }
+)
+//
+end//let
 //
 end//let//end-of-[f0_ift0(d3e0, env0)]
 //
