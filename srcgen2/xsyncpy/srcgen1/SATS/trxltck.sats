@@ -273,7 +273,7 @@ d3exp1lst_trxltck
 (d3es: d3exp1lst, env0: !envltck): d3exp1lst
 //
 fun
-loctn$d3exp1lst_tpcks$trxltck
+loctn$d3arg1lst_tpcks$trxltck
 (loc0: loctn
 ,d3es: d3exp1lst
 ,t2ps: s2typ1lst, env0: !envltck): d3exp1lst

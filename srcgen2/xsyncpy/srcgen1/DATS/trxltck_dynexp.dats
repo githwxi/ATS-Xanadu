@@ -128,6 +128,7 @@ d3e0.dtyp()
 val t2q0 =
 envltck_dtyp$eval
 (  env0 , t3q0  )
+//
 val ubtf =
 s2typ1_lteq(t2q0, styp)
 //
@@ -140,16 +141,86 @@ let
 val
 loc0 = d3e0.lctn()
 val
-t3q0 =
-d3typ1_styp$make(styp)
+t3q0 = d3typ1_styp$make(styp)
 //
 in//let
+(
 d3exp1
 ( loc0
-, t3q0, D3E1t2pck(d3e0, t2q0, styp))
+, t3q0
+, D3E1t2pck(d3e0, t2q0, styp)))
 end//let
 //
-end//let//end-of-[d3exp1_t2pck(d3e0,...)]
+end where
+{
+//
+val () =
+prerrsln("d3exp1_t2pck: d3e0 = ", d3e0)
+val () =
+prerrsln("d3exp1_t2pck: styp = ", styp)
+//
+}(*where*)//end-of-[d3exp1_t2pck(d3e0,...)]
+//
+(* ****** ****** *)
+//
+fun
+d3arg1_aftck
+(d3e0: d3exp1
+,styp: s2typ1
+,env0: !envltck): d3exp1 =
+let
+//
+val loc0 = d3e0.lctn()
+val t3q0 = d3e0.dtyp()
+//
+in//let
+(
+d3exp1
+( loc0
+, t3q0, D3E1daft(d3e0, styp)))
+end where
+{
+//
+val () =
+prerrsln("d3arg1_aftck: d3e0 = ", d3e0)
+val () =
+prerrsln("d3arg1_aftck: styp = ", styp)
+//
+}(*where*)//end-of-[d3arg1_aftck(d3e0,...)]
+//
+(* ****** ****** *)
+//
+fun
+d3arg1_t2pck
+(d3e0: d3exp1
+,styp: s2typ1
+,env0: !envltck): d3exp1 =
+(
+case+
+styp.node() of
+//
+|T2P1arg1
+(knd0, styp) =>
+(
+d3arg1_aftck
+(d3e0, styp, env0)) where
+{
+val d3e0 =
+d3exp1_t2pck(d3e0, styp, env0)
+}
+//
+| _(*rest-of-s2typ1*) =>
+(
+  d3exp1_t2pck(d3e0, styp, env0))
+) where
+{
+//
+val () =
+prerrsln("d3arg1_t2pck: d3e0 = ", d3e0)
+val () =
+prerrsln("d3arg1_t2pck: styp = ", styp)
+//
+}(*where*)//end-of-[d3arg1_t2pck(d3e0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -529,7 +600,7 @@ t2f0.node() of
 let
 //
 val d3es =
-loctn$d3exp1lst_tpcks$trxltck
+loctn$d3arg1lst_tpcks$trxltck
 (loc0, d3es(*args*), t2qs, env0)
 //
 in//let
@@ -841,7 +912,7 @@ prerrsln("d31ift_trxltck: dopt = ", dopt)
 (* ****** ****** *)
 //
 #implfun
-loctn$d3exp1lst_tpcks$trxltck
+loctn$d3arg1lst_tpcks$trxltck
   (loc0, d3es, t2qs, env0) =
 (
 f0_d3es$t2qs(d3es, t2qs, env0)
@@ -854,9 +925,16 @@ f0_dexp$t2q0
 ,t2q0: s2typ1
 ,env0: !envltck): d3exp1 =
 (
-d3exp1_t2pck
+d3arg1_t2pck
 (d3e0, t2q0, env0)) where
 {
+//
+val () =
+prerrsln
+("f0_dexp$t2q0: d3e0 = ", d3e0)
+val () =
+prerrsln
+("f0_dexp$t2q0: t2q0 = ", t2q0)
 //
 val
 d3e0 = d3exp1_trxltck(d3e0, env0) }
@@ -887,7 +965,7 @@ val d3es =
 )
 )(*case+*)//end-of-[f0_d3es$t2qs(d3es,t2qs,env0)]
 //
-}(*where*)//end-of-[loctn$d3exp1lst_tpcks$trxltck(...)]
+}(*where*)//end-of-[loctn$d3arg1lst_tpcks$trxltck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

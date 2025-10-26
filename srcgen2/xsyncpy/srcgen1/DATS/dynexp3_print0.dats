@@ -455,6 +455,11 @@ prints
 print("D3E1dapp(");
 prints(d3f0,";",npf1,";",d3es,")"))
 //
+|D3E1daft
+(darg, taft) =>
+prints
+("D3E1daft(", darg, ";", taft, ")")
+//
 (* ****** ****** *)
 //
 |D3E1let0

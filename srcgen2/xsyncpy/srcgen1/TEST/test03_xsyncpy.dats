@@ -37,6 +37,11 @@ in//let
 if true then x1 else x1
 end//let//end-of-[identity3]
 //
+fun
+<x0:vt>
+identity4
+(x0: !x0): x0 = identity3(x0)
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)

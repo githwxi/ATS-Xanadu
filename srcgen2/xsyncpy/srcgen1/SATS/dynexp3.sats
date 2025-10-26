@@ -542,6 +542,9 @@ d3exp1_node =
 |D3E1dapp of
 (d3exp1, sint(*npf*), d3exp1lst)
 //
+|D3E1daft of
+(d3exp1(*darg*), s2typ1(*taft*))
+//
 (* ****** ****** *)
 //
 |D3E1let0 of
