@@ -603,7 +603,8 @@ f0_let0: vts1 = ", vts1)
 //
 in//let
 d3exp1
-(loc0, t3q1, D3E1let0(dcls, d3e1))
+(loc0
+,t3q1, D3E1let1(dcls, d3e1, vts1))
 end//let
 //
 end//let//end-of-[f0_let0(d3e0, env0)]
