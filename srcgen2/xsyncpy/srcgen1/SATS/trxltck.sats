@@ -140,8 +140,12 @@ envltck_free_top(envltck): (void)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-dvdtplst_d2vs$proj
+fun // local
+dvdtplst_d2vs$inner
+(dvts: dvdtplst
+,d2vs: d2varlst): dvdtplst
+fun // environ
+dvdtplst_d2vs$outer
 (dvts: dvdtplst
 ,d2vs: d2varlst): dvdtplst
 //
@@ -204,6 +208,13 @@ envltck_d3ps$push
 fun
 envltck_f3as$push
 (env0: !envltck, f3as: f3arg1lst): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+envltck_dvts$updt
+(env0: !envltck, dvts: dvdtplst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

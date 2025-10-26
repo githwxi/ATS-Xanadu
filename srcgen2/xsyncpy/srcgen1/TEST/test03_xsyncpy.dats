@@ -27,6 +27,15 @@ fun
 identity2
 (x0: !x0): x0 =
 if true then x0 else x0
+fun
+<x0:vt>
+identity3
+(x0: !x0): x0 =
+let
+val x1 = x0
+in//let
+if true then x1 else x1
+end//let//end-of-[identity3]
 //
 (* ****** ****** *)
 ////

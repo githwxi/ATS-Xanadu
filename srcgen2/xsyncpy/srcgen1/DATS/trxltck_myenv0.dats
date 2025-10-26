@@ -849,6 +849,30 @@ end//let//end-of-[list_cons(f3a1,f3as)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+envltck_dvts$updt
+  (env0, vts0) =
+(
+case+ vts0 of
+| list_nil() => ()
+| list_cons(dvtp, vts1) =>
+(
+  envltck_dvts$updt(env0, vts1))
+where
+{
+val () =
+case+ env0 of
+| ENVLTCK
+(
+!dtpstk, stkmap) =>
+(
+dtpstk :=
+dtpstk_cons(dvtp.0, dvtp.1, dtpstk)) }
+)(*case+*)//end-of-[envltck_dvts$updt(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 dtpstk_dvslet0
 ( kxs:

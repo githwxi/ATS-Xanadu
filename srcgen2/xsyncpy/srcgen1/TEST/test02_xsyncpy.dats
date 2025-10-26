@@ -35,7 +35,7 @@ val xs1 = xs0 - 1
 in//let
 (
 if xs1 >= 0
-then xs0 * fact0(xs1) else 1)
+then xs0 * fact1(xs1) else 1)
 end//let//end-of-[fact1(xs0:sint)]
 //
 (* ****** ****** *)
