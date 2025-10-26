@@ -594,17 +594,29 @@ d3exp1_trxltck: \
 f0_let0: vts0 = ", vts0)
 //
 val vts1 =
-dvdtplst_d2vs$proj(vts0, d2vs)
+dvdtplst_d2vs$inner(vts0, d2vs)
+val vts2 =
+dvdtplst_d2vs$outer(vts0, d2vs)
+//
+in//let
+(
+d3exp1_dvdtp(dexp, vts2)
+) where
+{
 //
 val (  ) =
 prerrsln("\
 d3exp1_trxltck: \
 f0_let0: vts1 = ", vts1)
+val (  ) =
+prerrsln("\
+d3exp1_trxltck: \
+f0_let0: vts2 = ", vts2)
 //
-in//let
-d3exp1
-(loc0
-,t3q1, D3E1let1(dcls, d3e1, vts1))
+val
+dexp =
+d3exp1(loc0,
+t3q1, D3E1let1(dcls, d3e1, vts1)) }
 end//let
 //
 end//let//end-of-[f0_let0(d3e0, env0)]
@@ -633,11 +645,26 @@ val dels =
 (
   d31ift_trxltck(dels, env0))
 //
+val (  ) =
+(
+case+ dthn of
+| optn_nil() => ()
+| optn_cons(dexp) =>
+(
+case-
+dexp.node() of
+| D3E1dvdtp(_, dvts) =>
+(
+  envltck_dvts$updt(env0, dvts))
+)
+)(*case+*)//end(envltck_dvts$updt)
+//
 in//let
 //
+(
 d3exp1
 (loc0
-,t3q0, D3E1ift0(d3e1, dthn, dels))
+,t3q0, D3E1ift0(d3e1, dthn, dels)))
 //
 end//let//end-of-[f0_ift0(d3e0, env0)]
 //

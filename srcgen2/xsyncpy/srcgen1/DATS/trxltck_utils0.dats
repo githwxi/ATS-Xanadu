@@ -181,7 +181,7 @@ s2t0 = sort2_delin(t2q0.sort()) }
 (* ****** ****** *)
 //
 #implfun
-dvdtplst_d2vs$proj
+dvdtplst_d2vs$inner
   (vts0, dvs0) =
 (
 list_vt2t(
@@ -222,10 +222,68 @@ then
 loop1(vts1, d2v0, dvs1, res0)
 else
 loop0
-(vts1, dvs1, list_vt_cons(dvtp, res0)))
+(vts1
+,dvs1, list_vt_cons(dvtp, res0)))
 )
 //
-}(*where*)//end-of-[dvdtplst_d2vs$proj(...)]
+}(*where*)//end-of-[dvdtplst_d2vs$inner(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+dvdtplst_d2vs$outer
+  (vts0, dvs0) =
+(
+list_vt2t(
+list_vt_reverse0(
+loop0(vts0, dvs0, res0)))
+) where
+{
+//
+val res0 = list_vt_nil()
+//
+fnx
+loop0
+(vts0: dvdtplst
+,dvs0: d2varlst
+,res0: dvdtplst_vt): dvdtplst_vt =
+(
+case+ dvs0 of
+|list_nil() =>
+(
+  list_rappendx0_vt(vts0, res0))
+|list_cons(d2v0, dvs1) =>
+(
+  loop1(vts0, d2v0, dvs1, res0))
+)(*case+*)//end-of-[loop0(vts0,...)]
+//
+and
+loop1
+(vts0: dvdtplst
+,d2v0: d2var
+,dvs1: d2varlst
+,res0: dvdtplst_vt): dvdtplst_vt =
+(
+case+ vts0 of
+|list_nil() => res0
+|list_cons(dvtp, vts1) =>
+(
+if
+(dvtp.0 >= d2v0)
+then
+loop0(vts1, dvs1, res0)
+else
+let
+val res0 =
+list_vt_cons(dvtp, res0)
+in//let
+(
+  loop1(vts1, d2v0, dvs1, res0))
+end//let
+)
+)(*case+*)//end-of-[loop1(vts0,...)]
+//
+}(*where*)//end-of-[dvdtplst_d2vs$outer(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
