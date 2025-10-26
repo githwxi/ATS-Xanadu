@@ -579,10 +579,20 @@ d3exp1opt(*thn*), d3exp1opt(*els*))
 |D3E1lam0 of
 (token(*knd*)
 ,f3arg1lst, s2res, f1unarrw, d3exp1)
+|D3E1lam1 of
+(token(*knd*)
+,f3arg1lst, f3axp1lst, s2res
+,f1unarrw, d3exp1, dvdtplst(*lefts*))
+//
 |D3E1fix0 of
 (token(*knd*)
 ,d2var(*fid*)
 ,f3arg1lst, s2res, f1unarrw, d3exp1)
+|D3E1fix1 of
+(token(*knd*)
+,d2var(*fid*)
+,f3arg1lst, f3axp1lst, s2res
+,f1unarrw, d3exp1, dvdtplst(*lefts*))
 //
 (* ****** ****** *)
 //

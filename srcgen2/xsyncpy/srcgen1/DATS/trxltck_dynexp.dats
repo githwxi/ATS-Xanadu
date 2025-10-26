@@ -576,7 +576,7 @@ val d3e1 =
 val t3q1 = d3e1.dtyp((*void*))
 //
 val d2vs = envltck_dvslet0(env0)
-val vtps = envltck_vtslet0(env0)
+val vts0 = envltck_vtslet0(env0)
 //
 val (  ) = envltck_poplet0(env0)
 //
@@ -591,7 +591,15 @@ f0_let0: d2vs = ", d2vs)
 val (  ) =
 prerrsln("\
 d3exp1_trxltck: \
-f0_let0: vtps = ", vtps)
+f0_let0: vts0 = ", vts0)
+//
+val vts1 =
+dvdtplst_d2vs$proj(vts0, d2vs)
+//
+val (  ) =
+prerrsln("\
+d3exp1_trxltck: \
+f0_let0: vts1 = ", vts1)
 //
 in//let
 d3exp1
@@ -763,7 +771,7 @@ optn_cons(dexp)
 ) where
 {
 val dexp =
-d3exp1_dvdtp(dexp, vtps)
+d3exp1_dvdtp(dexp, vts0)
 } where
 {
 val (  ) =
@@ -773,13 +781,13 @@ val dexp =
 (
   d3exp1_trxltck(dexp, env0))
 //
-val vtps = envltck_vtsift0(env0)
+val vts0 = envltck_vtsift0(env0)
 //
 val (  ) = envltck_popift0(env0)
 //
 val (  ) =
 prerrsln
-("d31ift_trxltck: vtps = ", vtps)
+("d31ift_trxltck: vts0 = ", vts0)
 //
 }
 ) where
@@ -845,10 +853,10 @@ val d3es =
 //
 #implfun
 f3arg1_trxltck
-(f3a0, env0) =
+(farg, env0) =
 (
 case+
-f3a0.node() of
+farg.node() of
 //
 |F3ARG1sapp
 (s2vs, s2ps) =>
@@ -863,7 +871,6 @@ f3axp1
 (npf1, d3ps) =>
 let
 //
-val loc0 = f3a0.lctn()
 val d3as =
 d3pat1lst_trxltck(d3ps, env0)
 //
@@ -874,14 +881,14 @@ end//let
 ) where
 {
 //
-val loc0 = f3a0.lctn()
+val loc0 = farg.lctn()
 //
 val (  ) =
 prerrsln("f3arg1_trxlctk: loc0 = ", loc0)
 val (  ) =
-prerrsln("f3arg1_trxlctk: f3a0 = ", f3a0)
+prerrsln("f3arg1_trxlctk: farg = ", farg)
 //
-}(*where*)//end-of-[f3arg1_trxltck(f3a0,env0)]
+}(*where*)//end-of-[f3arg1_trxltck(farg,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
