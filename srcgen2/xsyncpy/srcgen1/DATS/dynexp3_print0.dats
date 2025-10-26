@@ -510,6 +510,7 @@ prints
 ;prints(tknd,";",npf1,";",ldes,")"))
 //
 (* ****** ****** *)
+//
 |D3E1lam0
 (tknd
 ,f3as, sres
@@ -519,6 +520,19 @@ prints
 ("D3E1lam0(",tknd,";");
 prints(
 f3as,";",sres,";",arrw,";",body,")")
+)
+|D3E1lam1
+(tknd
+,farg
+,faxp, sres
+,arrw
+,body, dvts) =>
+(
+prints
+("D3E1lam1(",tknd,";");
+prints(
+farg,";",faxp,";",
+sres,";",arrw,";",body,";",dvts,")")
 )
 //
 |D3E1fix0
@@ -530,6 +544,19 @@ prints
 ("D3E1fix0(",tknd,";",fid0,";");
 prints(
 f3as,";",sres,";",arrw,";",body,")")
+)
+|D3E1fix1
+(tknd, fid0
+,farg
+,faxp, sres
+,arrw
+,body, dvts) =>
+(
+prints
+("D3E1fix1(",tknd,";",fid0,";");
+prints(
+farg,";",faxp,";",
+sres,";",arrw,";",body,";",dvts,")")
 )
 //
 (* ****** ****** *)

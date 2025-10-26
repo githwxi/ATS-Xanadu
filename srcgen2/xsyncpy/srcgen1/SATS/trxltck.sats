@@ -141,6 +141,14 @@ envltck_free_top(envltck): (void)
 (* ****** ****** *)
 //
 fun
+dvdtplst_d2vs$proj
+(dvts: dvdtplst
+,d2vs: d2varlst): dvdtplst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 envltck_pshlam0(!envltck): (void)
 fun
 envltck_poplam0(!envltck): (void)
