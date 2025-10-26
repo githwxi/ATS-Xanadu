@@ -200,7 +200,7 @@ loop0
 (
 case+ dvs0 of
 |list_nil() => res0
-|list_cons(d2v0, dvs1) =>
+|list_vt_cons(d2v0, dvs1) =>
 (
   loop1(vts0, d2v0, dvs1, res0))
 )
