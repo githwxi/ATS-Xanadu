@@ -477,18 +477,37 @@ val f3bs =
 (
   f3arg1lst_trxltck(f3as, env0))
 //
+val d2vs = envltck_dvslam0(env0)
+val vts0 = envltck_vtslam0(env0)
+//
 val (  ) = envltck_poplam0(env0)
+//
+val vts1 =
+(
+  dvdtplst_d2vs$inner(vts0, d2vs))
+val vts2 =
+(
+  dvdtplst_d2vs$outer(vts0, d2vs))
 //
 // (*
 val (  ) =
 prerrsln("\
 d3fundcl1_trxltck: f3bs = ", f3bs)
+val (  ) =
+prerrsln("\
+d3fundcl1_trxltck: vts1 = ", vts1)
+val (  ) =
+prerrsln("\
+d3fundcl1_trxltck: vts2 = ", vts2)
 // *)
 //
 in//let
-(
-  d3fundcl1
-  (loc0,dpid,t2q1,f3as,f3bs,sres,tdxp,wsxp))
+//
+d3fundcl1_make_args
+(loc0
+,dpid, t2q1
+,f3as, f3bs, sres, tdxp, wsxp, vts1, vts2)
+//
 end//let
 (*let*)//end-of-[d3fundcl1_trxltck(dfun,env0)]
 //

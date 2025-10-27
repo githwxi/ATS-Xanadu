@@ -1025,13 +1025,17 @@ val tdxp =
 d3fundcl1_tdxp$get(dfun)
 val wsxp =
 d3fundcl1_wsxp$get(dfun)
+val vts1 =
+d3fundcl1_vts1$get(dfun)
+val vts2 =
+d3fundcl1_vts2$get(dfun)
 //
 in//let
 (
 prints
 ("D3FUNDCL1(",dpid,";");
-prints
-(farg,";",faxp,";",sres,";",tdxp,";",wsxp,")"))
+prints(farg,";",faxp,";",sres,";");
+prints(tdxp,";",wsxp,";",vts1,";",vts2,")"))
 end(*let*)//end-of-[d3fundcl1_fprint(dfun,out0)]
 //
 (* ****** ****** *)

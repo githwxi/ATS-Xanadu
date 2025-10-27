@@ -584,18 +584,16 @@ d3exp1opt(*thn*), d3exp1opt(*els*))
 ,f3arg1lst, s2res, f1unarrw, d3exp1)
 |D3E1lam1 of
 (token(*knd*)
-,f3arg1lst, f3axp1lst, s2res
-,f1unarrw, d3exp1, dvdtplst(*lefts*))
+,f3arg1lst
+,f3axp1lst, s2res, f1unarrw, d3exp1, dvdtplst(*lefts*))
 //
 |D3E1fix0 of
-(token(*knd*)
-,d2var(*fid*)
+(token(*knd*), d2var(*fid*)
 ,f3arg1lst, s2res, f1unarrw, d3exp1)
 |D3E1fix1 of
-(token(*knd*)
-,d2var(*fid*)
-,f3arg1lst, f3axp1lst, s2res
-,f1unarrw, d3exp1, dvdtplst(*lefts*))
+(token(*knd*), d2var(*fid*)
+,f3arg1lst
+,f3axp1lst, s2res, f1unarrw, d3exp1, dvdtplst(*lefts*))
 //
 (* ****** ****** *)
 //
@@ -1035,8 +1033,8 @@ fun
 d3valdcl1_tdxp$get:(d3valdcl1)->teqd3exp1
 //
 #symload dpat with d3valdcl1_get_dpat
-#symload wsxp with d3valdcl1_get_wsxp(*opt*)
-#symload tdxp with d3valdcl1_get_tdxp(*opt*)
+#symload wsxp with d3valdcl1_wsxp$get(*opt*)
+#symload tdxp with d3valdcl1_tdxp$get(*opt*)
 //
 (* ****** ****** *)
 //
@@ -1051,11 +1049,11 @@ d3vardcl1_sres$get:(d3vardcl1)->s2expopt
 fun
 d3vardcl1_dini$get:(d3vardcl1)->teqd3exp1
 //
-#symload dpid with d3vardcl1_get_dpid
-#symload styp with d3vardcl1_get_styp
-#symload vpid with d3vardcl1_get_vpid(*opt*)
-#symload sres with d3vardcl1_get_sres(*opt*)
-#symload dini with d3vardcl1_get_dini(*opt*)
+#symload dpid with d3vardcl1_dpid$get
+#symload styp with d3vardcl1_styp$get
+#symload vpid with d3vardcl1_vpid$get(*opt*)
+#symload sres with d3vardcl1_sres$get(*opt*)
+#symload dini with d3vardcl1_dini$get(*opt*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1068,6 +1066,12 @@ fun
 d3fundcl1_sres$get:(d3fundcl1)->(s2res)
 fun
 d3fundcl1_wsxp$get:(d3fundcl1)->wths2exp
+//
+fun // d2vs$inner
+d3fundcl1_vts1$get:(d3fundcl1)->dvdtplst
+fun // d2vs$outer
+d3fundcl1_vts2$get:(d3fundcl1)->dvdtplst
+//
 fun
 d3fundcl1_farg$get:(d3fundcl1)->f3arg1lst
 fun
@@ -1076,27 +1080,34 @@ fun
 d3fundcl1_tdxp$get:(d3fundcl1)->teqd3exp1
 //
 #symload dpid with d3fundcl1_dpid$get
+//
 #symload styp with d3fundcl1_styp$get
 #symload sres with d3fundcl1_sres$get(*opt*)
 #symload wsxp with d3fundcl1_wsxp$get(*opt*)
+//
+#symload vts1 with d3fundcl1_vts1$get(*lst*)
+#symload vts2 with d3fundcl1_vts2$get(*lst*)
+//
 #symload farg with d3fundcl1_farg$get(*lst*)
+#symload faxp with d3fundcl1_faxp$get(*lst*)
+//
 #symload tdxp with d3fundcl1_tdxp$get(*opt*)
 //
 (* ****** ****** *)
 //
 fun
 d3valdcl1_make_args
-( lctn:loc_t
-, dpat:d3pat1
-, tdxp:teqd3exp1, wsxp:wths2exp):d3valdcl1
+(lctn:loc_t
+,dpat:d3pat1
+,tdxp:teqd3exp1,wsxp:wths2exp):d3valdcl1
 //
 fun
 d3vardcl1_make_args
-( lctn:loc_t
-, dpid:d2var
-, t2q1:s2typ1
-, vpid:d2varopt
-, sres:s2expopt, dini:teqd3exp1):d3vardcl1
+(lctn:loc_t
+,dpid:d2var
+,t2q1:s2typ1
+,vpid:d2varopt
+,sres:s2expopt,dini:teqd3exp1):d3vardcl1
 //
 #symload d3valdcl1 with d3valdcl1_make_args
 #symload d3vardcl1 with d3vardcl1_make_args
@@ -1105,12 +1116,14 @@ d3vardcl1_make_args
 //
 fun
 d3fundcl1_make_args
-( lctn:loc_t
-, dpid:d2var
-, t2q1:s2typ1
-, farg:f3arg1lst
-, faxp:f3axp1lst, sres:s2res
-, tdxp:teqd3exp1, wsxp:wths2exp):d3fundcl1
+(lctn:loc_t
+,dpid:d2var
+,t2q1:s2typ1
+,farg:f3arg1lst
+,faxp:f3axp1lst,sres:s2res
+,tdxp:teqd3exp1,wsxp:wths2exp,vts1:dvdtplst,vts2:dvdtplst
+) : d3fundcl1//end-of-[d3fundcl1_make_args]
+//
 #symload d3fundcl1 with d3fundcl1_make_args
 //
 (* ****** ****** *)
