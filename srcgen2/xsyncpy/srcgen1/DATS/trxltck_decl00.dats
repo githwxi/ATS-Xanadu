@@ -460,22 +460,28 @@ d3fundcl1_tdxp$get(dfun)
 val wsxp =
 d3fundcl1_wsxp$get(dfun)
 //
+(*
+HX-2025-10-27:
+Note that [dpid] is
+available subsequently!
+*)
+val (  ) =
+envltck_dvar$push
+(env0, dpid, t2q1)//recur
+//
 val (  ) =
 envltck_pshlam0(env0)//enter
 //
-val (  ) =
-envltck_dvar$push
-( env0 , dpid , t2q1 )//recur
 val (  ) =
 envltck_f3as$push(env0, f3as)
 //
 val tdxp =
 (
-  teqd3exp1_trxltck(tdxp, env0))
+teqd3exp1_trxltck(tdxp, env0))
 //
 val f3bs =
 (
-  f3arg1lst_trxltck(f3as, env0))
+f3arg1lst_trxltck(f3as, env0))
 //
 val d2vs = envltck_dvslam0(env0)
 val vts0 = envltck_vtslam0(env0)
