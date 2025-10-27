@@ -784,14 +784,15 @@ D3FUNDCL1 of
 , d2var
 , s2typ1
 , f3arg1lst
-, f3axp1lst, s2res
-, teqd3exp1, wths2exp)
+, f3axp1lst
+, s2res(*return*)
+, teqd3exp1, wths2exp, dvdtplst, dvdtplst)
 //
 #absimpl
 d3fundcl1_tbox = d3fundcl1
 //
 in//local
-
+//
 #implfun
 d3fundcl1_lctn$get
   (  dfun  ) = let
@@ -802,8 +803,10 @@ D3FUNDCL1
 , t2q1
 , farg
 , faxp, sres
-, tdxp, wsxp) = dfun in lctn end
-
+, tdxp
+, wsxp, vts1, vts2) = dfun in lctn
+end // end of [d3fundcl1_lctn$get(...)]
+//
 #implfun
 d3fundcl1_dpid$get
   (  dfun  ) = let
@@ -814,8 +817,10 @@ D3FUNDCL1
 , t2q1
 , farg
 , faxp, sres
-, tdxp, wsxp) = dfun in dpid end
-
+, tdxp
+, wsxp, vts1, vts2) = dfun in dpid
+end // end of [d3fundcl1_dpid$get(...)]
+//
 #implfun
 d3fundcl1_styp$get
   (  dfun  ) = let
@@ -826,8 +831,12 @@ D3FUNDCL1
 , t2q1
 , farg
 , faxp, sres
-, tdxp, wsxp) = dfun in t2q1 end
-
+, tdxp
+, wsxp, vts1, vts2) = dfun in t2q1
+end // end of [d3fundcl1_styp$get(...)]
+//
+(* ****** ****** *)
+//
 #implfun
 d3fundcl1_farg$get
   (  dfun  ) = let
@@ -838,7 +847,10 @@ D3FUNDCL1
 , t2q1
 , farg
 , faxp, sres
-, tdxp, wsxp) = dfun in farg end
+, tdxp
+, wsxp, vts1, vts2) = dfun in farg
+end // end of [d3fundcl1_farg$get(...)]
+//
 #implfun
 d3fundcl1_faxp$get
   (  dfun  ) = let
@@ -849,8 +861,12 @@ D3FUNDCL1
 , t2q1
 , farg
 , faxp, sres
-, tdxp, wsxp) = dfun in faxp end
-
+, tdxp
+, wsxp, vts1, vts2) = dfun in faxp
+end // end of [d3fundcl1_faxp$get(...)]
+//
+(* ****** ****** *)
+//
 #implfun
 d3fundcl1_sres$get
   (  dfun  ) = let
@@ -861,10 +877,12 @@ D3FUNDCL1
 , t2q1
 , farg
 , faxp, sres
-, tdxp, wsxp) = dfun in sres end
+, tdxp
+, wsxp, vts1, vts2) = dfun in sres
+end // end of [d3fundcl1_sres$get(...)]
 
 (* ****** ****** *)
-
+//
 #implfun
 d3fundcl1_tdxp$get
   (  dfun  ) = let
@@ -875,8 +893,10 @@ D3FUNDCL1
 , t2q1
 , farg
 , faxp, sres
-, tdxp, wsxp) = dfun in tdxp end
-
+, tdxp
+, wsxp, vts1, vts2) = dfun in tdxp
+end // end of [d3fundcl1_tdxp$get(...)]
+//
 #implfun
 d3fundcl1_wsxp$get
   (  dfun  ) = let
@@ -887,7 +907,36 @@ D3FUNDCL1
 , t2q1
 , farg
 , faxp, sres
-, tdxp, wsxp) = dfun in wsxp end
+, tdxp
+, wsxp, vts1, vts2) = dfun in wsxp
+end // end of [d3fundcl1_wsxp$get(...)]
+//
+#implfun
+d3fundcl1_vts1$get
+  (  dfun  ) = let
+val+
+D3FUNDCL1
+( lctn
+, dpid
+, t2q1
+, farg
+, faxp, sres
+, tdxp
+, wsxp, vts1, vts2) = dfun in vts1
+end // end of [d3fundcl1_vts1$get(...)]
+#implfun
+d3fundcl1_vts2$get
+  (  dfun  ) = let
+val+
+D3FUNDCL1
+( lctn
+, dpid
+, t2q1
+, farg
+, faxp, sres
+, tdxp
+, wsxp, vts1, vts2) = dfun in vts2
+end // end of [d3fundcl1_vts2$get(...)]
 //
 (* ****** ****** *)
 //
@@ -895,12 +944,15 @@ D3FUNDCL1
 d3fundcl1_make_args
 ( lctn
 , dpid, t2q1
-, farg, faxp, sres, tdxp, wsxp) =
+, farg, faxp, sres
+, tdxp, wsxp, vts1, vts2) =
 (
 D3FUNDCL1
 ( lctn
 , dpid, t2q1
-, farg, faxp, sres, tdxp, wsxp) )
+, farg, faxp
+, sres, tdxp, wsxp, vts1, vts2)
+) // end-of-[d3fundcl1_make_args(...)]
 //
 (* ****** ****** *)
 //
