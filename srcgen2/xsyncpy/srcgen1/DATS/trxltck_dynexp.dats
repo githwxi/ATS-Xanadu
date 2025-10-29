@@ -164,7 +164,7 @@ prerrsln("d3exp1_t2pck: styp = ", styp)
 (* ****** ****** *)
 //
 fun
-d3arg1_aftck
+d3fag1_aftck
 (d3e0: d3exp1
 ,styp: s2typ1
 ,env0: !envltck): d3exp1 =
@@ -182,16 +182,16 @@ end where
 {
 //
 val () =
-prerrsln("d3arg1_aftck: d3e0 = ", d3e0)
+prerrsln("d3fag1_aftck: d3e0 = ", d3e0)
 val () =
-prerrsln("d3arg1_aftck: styp = ", styp)
+prerrsln("d3fag1_aftck: styp = ", styp)
 //
-}(*where*)//end-of-[d3arg1_aftck(d3e0,...)]
+}(*where*)//end-of-[d3fag1_aftck(d3e0,...)]
 //
 (* ****** ****** *)
 //
 fun
-d3arg1_t2pck
+d3fag1_t2pck
 (d3e0: d3exp1
 ,styp: s2typ1
 ,env0: !envltck): d3exp1 =
@@ -202,7 +202,7 @@ styp.node() of
 |T2P1arg1
 (knd0, styp) =>
 (
-d3arg1_aftck
+d3fag1_aftck
 (d3e0, styp, env0)) where
 {
 val d3e0 =
@@ -216,11 +216,11 @@ d3exp1_t2pck(d3e0, styp, env0)
 {
 //
 val () =
-prerrsln("d3arg1_t2pck: d3e0 = ", d3e0)
+prerrsln("d3fag1_t2pck: d3e0 = ", d3e0)
 val () =
-prerrsln("d3arg1_t2pck: styp = ", styp)
+prerrsln("d3fag1_t2pck: styp = ", styp)
 //
-}(*where*)//end-of-[d3arg1_t2pck(d3e0,...)]
+}(*where*)//end-of-[d3fag1_t2pck(d3e0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -600,8 +600,8 @@ t2f0.node() of
 let
 //
 val d3es =
-loctn$d3arg1lst_tpcks$trxltck
-(loc0, d3es(*args*), t2qs, env0)
+loctn$d3fag1lst_tpcks$trxltck
+(loc0, d3es(*fags*), t2qs, env0)
 //
 in//let
 //
@@ -912,7 +912,7 @@ prerrsln("d31ift_trxltck: dopt = ", dopt)
 (* ****** ****** *)
 //
 #implfun
-loctn$d3arg1lst_tpcks$trxltck
+loctn$d3fag1lst_tpcks$trxltck
   (loc0, d3es, t2qs, env0) =
 (
 f0_d3es$t2qs(d3es, t2qs, env0)
@@ -925,7 +925,7 @@ f0_dexp$t2q0
 ,t2q0: s2typ1
 ,env0: !envltck): d3exp1 =
 (
-d3arg1_t2pck
+d3fag1_t2pck
 (d3e0, t2q0, env0)) where
 {
 //
@@ -965,7 +965,7 @@ val d3es =
 )
 )(*case+*)//end-of-[f0_d3es$t2qs(d3es,t2qs,env0)]
 //
-}(*where*)//end-of-[loctn$d3arg1lst_tpcks$trxltck(...)]
+}(*where*)//end-of-[loctn$d3fag1lst_tpcks$trxltck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -991,7 +991,7 @@ f3axp1
 let
 //
 val d3as =
-d3pat1lst_trxltck(d3ps, env0)
+d3apt1lst_trxltck(d3ps, env0)
 //
 in//let
 f3axp1(loc0, F3AXP1dapp(npf1, d3as))

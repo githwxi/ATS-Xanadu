@@ -222,6 +222,9 @@ envltck_dvts$updt
 fun
 d3pat1_trxltck
 (d3p0: d3pat1, env0: !envltck): d3axp1
+fun
+d3apt1_trxltck
+(d3p0: d3pat1, env0: !envltck): d3axp1
 //
 fun
 f3arg1_trxltck
@@ -258,6 +261,9 @@ d3ecl1_trxltck
 fun
 d3pat1lst_trxltck
 (d3ps: d3pat1lst, env0: !envltck): d3axp1lst
+fun
+d3apt1lst_trxltck
+(d3ps: d3pat1lst, env0: !envltck): d3axp1lst
 //
 (* ****** ****** *)
 //
@@ -273,7 +279,7 @@ d3exp1lst_trxltck
 (d3es: d3exp1lst, env0: !envltck): d3exp1lst
 //
 fun
-loctn$d3arg1lst_tpcks$trxltck
+loctn$d3fag1lst_tpcks$trxltck
 (loc0: loctn
 ,d3es: d3exp1lst
 ,t2ps: s2typ1lst, env0: !envltck): d3exp1lst
