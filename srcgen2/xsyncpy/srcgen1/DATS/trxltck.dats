@@ -109,6 +109,18 @@ list_map$e1nv(d3ps, env0) where
 map$e1nv$fopr<x0><y0><e1> = d3pat1_trxltck
 }(*where*)//end-of-[d3pat1lst_trxltck(d3ps,env0)]
 //
+#implfun
+d3apt1lst_trxltck
+(d3ps, env0) =
+list_map$e1nv(d3ps, env0) where
+{
+#typedef x0 = d3pat1
+#typedef y0 = d3axp1
+#vwtpdef e1 = envltck
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = d3apt1_trxltck
+}(*where*)//end-of-[d3apt1lst_trxltck(d3ps,env0)]
+//
 (* ****** ****** *)
 //
 #implfun

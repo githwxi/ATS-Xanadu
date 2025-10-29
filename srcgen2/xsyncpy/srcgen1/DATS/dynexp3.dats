@@ -949,9 +949,8 @@ d3fundcl1_make_args
 (
 D3FUNDCL1
 ( lctn
-, dpid, t2q1
-, farg, faxp
-, sres, tdxp, wsxp, vts1, vts2)
+, dpid,t2q1
+, farg,faxp,sres,tdxp,wsxp,vts1,vts2)
 ) // end-of-[d3fundcl1_make_args(...)]
 //
 (* ****** ****** *)
