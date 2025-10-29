@@ -133,7 +133,8 @@ d3p0.node() of
 (tknd,npf1,ldps) => f0_ldps(ldps)
 //
 |D3P1annot
-(d3p1,s1e1,s2e1) => f0_main(d3p1)
+(d3p1
+,s1e2,s2e2,t2q2) => f0_main(d3p1)
 //
 | _(*otherwise*) => (  (*void*)  )
 //

@@ -117,6 +117,51 @@ map$fopr
 (* ****** ****** *)
 //
 fun
+d3axp1_t2pck
+(d3a0: d3axp1
+,styp: s2typ1
+,env0: !envltck): d3axp1 =
+let
+val t2q0 =
+d3axp1_styp$get(d3a0)
+val ubtf =
+s2typ1_lteq(t2q0, styp)
+//
+in//let
+//
+if ubtf
+then d3a0 else
+let
+//
+val
+loc0 = d3a0.lctn()
+in//let
+//
+d3axp1
+( loc0
+, styp, D3A1t2pck(d3a0, styp))
+//
+end//let
+//
+end where
+{
+//
+(*
+val loc0 = d3a0.lctn()
+val (  ) =
+prerrsln("d3axp1_t2pck: loc0 = ", loc0)
+*)
+val (  ) =
+prerrsln("d3axp1_t2pck: d3a0 = ", d3a0)
+val (  ) =
+prerrsln("d3axp1_t2pck: styp = ", styp)
+//
+}(*where*)//end-of-[d3axp1_t2pck(d3a0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3exp1_t2pck
 (d3e0: d3exp1
 ,styp: s2typ1
@@ -305,7 +350,8 @@ let
 val-
 D3P1annot
 (d3p1
-,s1e1, s2e1) = d3p0.node()
+,s1e2
+,s2e2, t2q2) = d3p0.node()
 //
 val d3a1 =
 d3pat1_trxltck(d3p1, env0)
@@ -313,13 +359,70 @@ val t2q1 = d3a1.styp((*0*))
 //
 in//let
 d3axp1
-(loc0
-,t2q1, D3A1annot(d3a1,s1e1,s2e1))
+(loc0, t2q1
+,D3A1annot(d3a1, s1e2, s2e2, t2q2))
 end//let//end-of-[f0_annot(d3p0,env0)]
 //
 (* ****** ****** *)
 //
 }(*where*)//end-of-[d3pat1_trxltck(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3apt1_trxltck
+(d3p0, env0) =
+(
+case+
+d3p0.node() of
+|D3P1annot _ => f0_annot(d3p0, env0)
+|_(*D3P1...*) => d3pat1_trxltck(d3p0, env0)
+) where
+{
+//
+fun
+f0_annot
+( d3p0: d3pat1
+, env0: envltck): d3axp1 =
+let
+val-
+D3P1annot
+(d3p1
+,s1e2
+,s2e2, t2q2) = d3p0.node()
+//
+val (  ) =
+(
+prerrsln("\
+d3apt1_trxltck:\
+f0_annot: t2q2 = ", t2q2))
+//
+in//let
+case+
+t2q2.node() of
+//
+|T2P1arg1
+(knd0, taft) =>
+(
+d3axp1_t2pck(d3a1, taft, env0))
+where
+{
+val d3a1 = d3pat1_trxltck(d3p1, env0)}
+//
+|
+_(*rest*) => d3pat1_trxltck(d3p0, env0)
+//
+end(*let*)//end-of-[f0_annot(d3p0, env0)]
+//
+val loc0 = d3p0.lctn()
+val (  ) =
+(
+  prerrsln("d3apt1_trxltck: loc0 = ", loc0))
+val (  ) =
+(
+  prerrsln("d3apt1_trxltck: d3p0 = ", d3p0))
+//
+}(*where*)//end-of-[d3apt1_trxltck(d3p0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -657,11 +760,11 @@ let
 //
 val (  ) =
 prerrsln("\
-d3exp1_trxltck: \
+d3exp1_trxltck:\
 f0_let0: d2vs = ", d2vs)
 val (  ) =
 prerrsln("\
-d3exp1_trxltck: \
+d3exp1_trxltck:\
 f0_let0: vts0 = ", vts0)
 //
 val vts1 =
@@ -676,13 +779,15 @@ d3exp1_dvdtp(dexp, vts2)
 {
 //
 val (  ) =
+(
 prerrsln("\
-d3exp1_trxltck: \
-f0_let0: vts1 = ", vts1)
+d3exp1_trxltck:\
+f0_let0: vts1 = ", vts1))
 val (  ) =
+(
 prerrsln("\
-d3exp1_trxltck: \
-f0_let0: vts2 = ", vts2)
+d3exp1_trxltck:\
+f0_let0: vts2 = ", vts2))
 //
 val
 dexp =

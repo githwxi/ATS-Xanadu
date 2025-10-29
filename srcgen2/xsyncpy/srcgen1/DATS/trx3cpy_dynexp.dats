@@ -65,9 +65,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../../../SATS/statyp2.sats"
+#staload
 "./../../../SATS/dynexp2.sats"
 #staload
 "./../../../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #symload lctn with d3pat_get_lctn
 #symload lctn with d3exp_get_lctn
@@ -402,6 +407,12 @@ D3Pannot
 (d3p1
 ,s1e2, s2e2) = d3p0.node()
 //
+val t2p2 =
+s2exp_stpize(s2e2)
+val t2q2 =
+(
+s2typ_trx3cpy(t2p2, env0))
+//
 val d3p1 =
 (
 d3pat_trx3cpy(d3p1, env0))
@@ -410,7 +421,8 @@ in//let
 (
 d3pat1
 (loc0
-,t2q0, D3P1annot(d3p1, s1e2, s2e2)))
+,t2q0
+,D3P1annot(d3p1, s1e2, s2e2, t2q2)))
 end(*let*)//end-of-[f0_annot(d3p0,env0)]
 //
 (* ****** ****** *)
@@ -1285,6 +1297,12 @@ D3Eannot
 (d3e1
 ,s1e2, s2e2) = d3e0.node()
 //
+val t2p2 =
+s2exp_stpize(s2e2)
+val t2q2 =
+(
+s2typ_trx3cpy(t2p2, env0))
+//
 val d3e1 =
 (
 d3exp_trx3cpy(d3e1, env0))
@@ -1293,7 +1311,8 @@ in//let
 (
 d3exp1
 (loc0
-,t3q0, D3E1annot(d3e1, s1e2, s2e2)))
+,t3q0
+,D3E1annot(d3e1, s1e2, s2e2, t2q2)))
 end(*let*)//end-of-[f0_annot(d3e0,env0)]
 //
 (* ****** ****** *)

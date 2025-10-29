@@ -411,7 +411,8 @@ d3pat1_node =
 (* ****** ****** *)
 //
 |D3P1annot of
-(d3pat1,s1exp(*given*),s2exp(*trans*))
+(d3pat1
+,s1exp(*given*),s2exp(*trans*),s2typ1)
 //
 (* ****** ****** *)
 //
@@ -469,8 +470,12 @@ d3axp1_node =
 //
 |D3A1var of (d2var)
 //
+|D3A1t2pck of (d3axp1, s2typ1)
+//
 |D3A1annot of
-(d3axp1,s1exp(*given*),s2exp(*trans*))
+(d3axp1
+,s1exp(*given*)
+,s2exp(*trans*),s2typ1(*trans*))
 //
 (* ****** ****** *)
 //
@@ -639,11 +644,11 @@ d3exp1(*l-val*), d3exp1(*r-val*))
 //
 |D3E1l0azy of // nonlin-lazy-eval
 (
-d1exp(*$L0AZY*), d3exp1(*non-thunk*))
+d1exp(*$L0AZY*), d3exp1(*nlthunk*))
 |D3E1l1azy of // linear-lazy-eval
 (
 d1exp(*$LLAZY*),
-d3exp1(*lin-thunk*),d3exp1lst(*frees*))
+d3exp1(*lnthunk*),d3exp1lst(*frees*))
 //
 (* ****** ****** *)
 //
@@ -654,15 +659,15 @@ d3exp1(*lin-thunk*),d3exp1lst(*frees*))
   d3exp1, dvdtplst(*d2var-sorted*))
 //
 |D3E1annot of
-(
-d3exp1, s1exp(*given*), s2exp(*trans*))
+(d3exp1,
+ s1exp(*given*),s2exp(*trans*),s2typ1)
 //
 (* ****** ****** *)
 //
 // label-cast
 |D3E1labck of
 (
-  d3exp1(*tuple*), label(*expected*))
+ d3exp1(*tuplexp*), label(*expected*))
 //
 // stype-cast
 |D3E1t2pck of
