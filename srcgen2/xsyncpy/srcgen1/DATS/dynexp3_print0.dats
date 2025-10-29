@@ -268,9 +268,12 @@ prints(tknd,";",npf1,";",ldps,")"))
 //
 |D3P1annot
 (d3p1
-,s1e2, s2e2) =>
-(print("D3P1annot(")
-;prints(d3p1,";",s1e2,";",s2e2,")"))
+,s1e2
+,s2e2, t2q2) =>
+(
+print("D3P1annot(");
+prints(
+d3p1,";",s1e2,";",s2e2,";",t2q2,")"))
 //
 (* ****** ****** *)
 //
@@ -340,11 +343,22 @@ end//let//end-of-[D3A1var(d2v1)]
 //
 (* ****** ****** *)
 //
+|D3A1t2pck
+(d3a1, t2q0) =>
+(
+prints
+("D3A1t2pck(",d3a1,";",t2q0,")"))
+//
+(* ****** ****** *)
+//
 |D3A1annot
 (d3a1
-,s1e2, s2e2) =>
-(print("D3A1annot(")
-;prints(d3a1,";",s1e2,";",s2e2,")"))
+,s1e2
+,s2e2, t2q2) =>
+(
+print("D3A1annot(");
+prints(
+d3a1,";",s1e2,";",s2e2,";",t2q2,")"))
 //
 (* ****** ****** *)
 //
@@ -643,13 +657,14 @@ prints
 |D3E1l0azy
 (dsym, d3e1) =>
 (
-prints
-("D3E1l0azy(", dsym, ";", d3e1, ")"))
+prints(
+"D3E1l0azy(", dsym, ";", d3e1, ")"))
 |D3E1l1azy
 (dsym
 ,d3e1 , d3es) =>
-(print("D3E1l1azy(")
-;prints(dsym,";",d3e1, ";",d3es,")"))
+(
+print("D3E1l1azy(");
+prints(dsym,";",d3e1, ";",d3es,")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -657,16 +672,19 @@ prints
 |D3E1dvdtp
 (d3e1, vts2) =>
 (
-prints
-("D3E1dvdtp(", d3e1, ";", vts2, ")"))
+prints(
+"D3E1dvdtp(", d3e1, ";", vts2, ")"))
 //
 (* ****** ****** *)
 //
 |D3E1annot
 (d3e1
-,s1e2, s2e2) =>
-( print("D3E1annot(");
-  prints(d3e1,";",s1e2,";",s2e2,")"))
+,s1e2
+,s2e2, t2q2) =>
+(
+print("D3E1annot(");
+prints(
+d3e1,";",s1e2,";",s2e2,";",t2q2,")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)

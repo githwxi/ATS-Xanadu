@@ -765,7 +765,9 @@ end//let//end-of-[ D3P1var(d2v1) ]
 ,npf1, d3ps) => f0_d3ps(env0, d3ps)
 //
 |D3P1annot
-(d3p1, _, _) => f0_dpat(env0, d3p1)
+(d3p1
+,s1e2
+,s2e1, t2q2) => f0_dpat(env0, d3p1)
 //
 |_(* otherwise *) => (   (*void*)   )
 )(*case+*)//end-of-[f0_dpat(env0,dpat)]
