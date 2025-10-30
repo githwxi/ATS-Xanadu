@@ -470,6 +470,8 @@ d3axp1_node =
 //
 |D3A1var of (d2var)
 //
+|D3A1none of (d3pat1)
+//
 |D3A1t2pck of (d3axp1, s2typ1)
 //
 |D3A1annot of
