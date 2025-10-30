@@ -213,22 +213,55 @@ d3fag1_aftck
 (d3e0: d3exp1
 ,styp: s2typ1
 ,env0: !envltck): d3exp1 =
+(
+case+
+d3e0.node() of
+//
+|D3E1var _ =>
+(
+f0_var(d3e0, styp, env0))
+//
+|
+_(*rest-of-d3exp1*) =>
 let
 //
-val loc0 = d3e0.lctn()
-val t3q0 = d3e0.dtyp()
+val loc0 = d3e0.lctn((*0*))
+val t3q0 = d3e0.dtyp((*0*))
 //
 in//let
-(
 d3exp1
 ( loc0
-, t3q0, D3E1daft(d3e0, styp)))
-end where
+, t3q0, D3E1daft(d3e0, styp)) end
+//
+) where
 {
 //
-val () =
+fun
+f0_var
+(d3e0: d3exp1
+,styp: s2typ1
+,env0: !envltck): d3exp1 =
+let
+val-
+D3E1var(d2v1) = d3e0.node()
+in//let
+//
+let
+val taft =
+d3typ1_styp$make
+(     styp     )
+val (  ) =
+envltck_dvar$updt
+(env0, d2v1, taft) in d3e0 end
+//
+end//let//end-of-[f0_var(d3e0,...)]
+//
+val loc0 = d3e0.lctn()
+val (  ) =
+prerrsln("d3fag1_aftck: loc0 = ", loc0)
+val (  ) =
 prerrsln("d3fag1_aftck: d3e0 = ", d3e0)
-val () =
+val (  ) =
 prerrsln("d3fag1_aftck: styp = ", styp)
 //
 }(*where*)//end-of-[d3fag1_aftck(d3e0,...)]
@@ -375,10 +408,18 @@ d3apt1_trxltck
 (
 case+
 d3p0.node() of
-|D3P1annot _ => f0_annot(d3p0, env0)
-|_(*D3P1...*) => d3pat1_trxltck(d3p0, env0)
+//
+|D3P1annot _ =>
+(
+  f0_annot(d3p0, env0))
+|_(*non-annot*) =>
+(
+  f0_other(d3p0, env0))
+//
 ) where
 {
+//
+(* ****** ****** *)
 //
 fun
 f0_annot
@@ -410,9 +451,25 @@ where
 val d3a1 = d3pat1_trxltck(d3p1, env0)}
 //
 |
-_(*rest*) => d3pat1_trxltck(d3p0, env0)
+_(*otherwise*) => f0_other(d3p0, env0)
 //
 end(*let*)//end-of-[f0_annot(d3p0, env0)]
+//
+and
+f0_other
+( d3p0: d3pat1
+, env0: envltck): d3axp1 =
+let
+//
+  val loc0 = d3p0.lctn((*0*))
+  val t2q0 = d3p0.styp((*0*))
+//
+in//let
+(
+  d3axp1(loc0, t2q0, D3A1none(d3p0)))
+end(*let*)//end-of-[f0_other(d3p0, env0)]
+//
+(* ****** ****** *)
 //
 val loc0 = d3p0.lctn()
 val (  ) =
