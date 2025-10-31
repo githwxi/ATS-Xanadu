@@ -352,12 +352,16 @@ D3Cimplmnt0
 , sres, dexp) = d3cl.node()
 //
 val f3as =
-(
-f3arglst_trx3cpy(f3as, env0))
-val f3bs = list_nil((*void*))
+f3arglst_trx3cpy(f3as, env0)
 //
 val
-dexp = d3exp_trx3cpy(dexp, env0)
+dexp =
+(
+  d3exp_trx3cpy(dexp, env0))
+//
+val f3bs = list_nil((*void*))
+val vts1 = list_nil((*void*))
+val vts2 = list_nil((*void*))
 //
 in//let
 (
@@ -367,7 +371,8 @@ loc0,
 D3C1implmnt0
 ( tknd, stmp
 , sqas, tqas
-, dimp, tias, f3as, f3bs, sres, dexp)))
+, dimp, tias
+, f3as, f3bs, sres, dexp, vts1, vts2)))
 end//let
 //
 (* ****** ****** *)

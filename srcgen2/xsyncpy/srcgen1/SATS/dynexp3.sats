@@ -956,7 +956,9 @@ for handling bef/aft syntax!
 , t2qaglst // s2vs+t2is
 , dimpl // HX: impl-d2cst
 , t2iaglst // HX: of s2explst
-, f3arg1lst, f3axp1lst, s2res, d3exp1)
+, f3arg1lst
+, f3axp1lst
+, s2res, d3exp1, dvdtplst, dvdtplst)
 //
 (* ****** ****** *)
 //

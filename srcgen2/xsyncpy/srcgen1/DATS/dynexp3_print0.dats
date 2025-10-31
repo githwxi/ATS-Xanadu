@@ -965,14 +965,16 @@ prints(tknd,";",tqas,";",d2cs,";",d3fs,")"))
 (tknd
 ,stmp
 ,sqas,tqas
-,dqid,tias
-,farg,faxp,sres,body) =>
+,dimp,tias
+,farg,faxp
+,sres,body,vts1,vts2) =>
 (
 print("D3Cimplmnt0(");
 prints(tknd,";",stmp,";");
 prints(sqas,";",tqas,";");
-prints(dqid,";",tias,";");
-prints(farg,";",faxp,";",sres,";",body,")"))
+prints(dimp,";",tias,";");
+prints(farg,";",faxp,";");
+prints(sres,";",body,";",vts1,";",vts2,")"))
 //
 (* ****** ****** *)
 //
