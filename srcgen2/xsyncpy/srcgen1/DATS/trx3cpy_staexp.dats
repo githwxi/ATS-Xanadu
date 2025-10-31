@@ -70,6 +70,37 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+s2typ1_t0pize
+(s2t0: sort2
+,t2q0: s2typ1): s2typ1 =
+(
+case+
+t2q0.node() of
+|T2P1top0(t2q1) =>
+s2typ1(s2t0, T2P1top0(t2q1))
+|T2P1top1(t2q1) =>
+s2typ1(s2t0, T2P1top0(t2q1))
+|_(*otherwise*) =>
+s2typ1(s2t0, T2P1top0(t2q0)))
+//
+fun
+s2typ1_t1pize
+(s2t0: sort2
+,t2q0: s2typ1): s2typ1 =
+(
+case+
+t2q0.node() of
+|T2P1top0(t2q1) =>
+s2typ1(s2t0, T2P1top0(t2q1))
+|T2P1top1(t2q1) =>
+s2typ1(s2t0, T2P1top1(t2q1))
+|_(*otherwise*) =>
+s2typ1(s2t0, T2P1top1(t2q0)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 s2typ_trx3cpy
 (t2p0, env0) =
@@ -89,6 +120,8 @@ s2typ1(s2t0, T2P1cst(s2c1))
 (   s2v1   ) =>
 s2typ1(s2t0, T2P1var(s2v1))
 //
+(* ****** ****** *)
+//
 |T2Plft
 (   t2p1   ) =>
 let
@@ -97,6 +130,30 @@ s2typ_trx3cpy(t2p1, env0)
 in//let
 s2typ1(s2t0, T2P1lft(t2q1))
 end//let
+//
+(* ****** ****** *)
+//
+|T2Ptop0
+(   t2p1   ) =>
+let
+val t2q1 =
+s2typ_trx3cpy(t2p1, env0)
+in//let
+(
+s2typ1_t0pize(s2t0, t2q1))
+end//let
+//
+|T2Ptop1
+(   t2p1   ) =>
+let
+val t2q1 =
+s2typ_trx3cpy(t2p1, env0)
+in//let
+(
+s2typ1_t1pize(s2t0, t2q1))
+end//let
+//
+(* ****** ****** *)
 //
 |T2Parg1
 (knd0, t2p1) =>
@@ -118,6 +175,8 @@ in//let
 s2typ1
 (s2t0, T2P1atx2(t2q1, t2q2))
 end//let
+//
+(* ****** ****** *)
 //
 |T2Papps
 (t2f0, t2ps) =>
