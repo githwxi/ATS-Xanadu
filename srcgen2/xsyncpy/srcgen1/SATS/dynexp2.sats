@@ -85,6 +85,12 @@ D2E = "./\
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef simpl = $D2E.simpl
+#typedef dimpl = $D2E.dimpl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #typedef d2var = $D2E.d2var
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp

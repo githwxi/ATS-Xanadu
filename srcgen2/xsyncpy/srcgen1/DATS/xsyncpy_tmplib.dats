@@ -308,6 +308,19 @@ t2jag_fprint(tjag, castxy(g_print$out<>()))
 //
 #impltmp
 g_print
+<simpl>(simp) =
+simpl_fprint(simp, castxy(g_print$out<>()))
+//
+#impltmp
+g_print
+<dimpl>(dimp) =
+dimpl_fprint(dimp, castxy(g_print$out<>()))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <d2con>(d2c0) =
 d2con_fprint(d2c0, castxy(g_print$out<>()))
 #impltmp

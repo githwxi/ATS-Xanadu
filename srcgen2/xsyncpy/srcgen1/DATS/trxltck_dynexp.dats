@@ -422,6 +422,20 @@ d3p0.node() of
 (* ****** ****** *)
 //
 fun
+f0_other
+( d3p0: d3pat1
+, env0: envltck): d3axp1 =
+let
+//
+  val loc0 = d3p0.lctn((*0*))
+  val t2q0 = d3p0.styp((*0*))
+//
+in//let
+(
+  d3axp1(loc0, t2q0, D3A1none(d3p0)))
+end(*let*)//end-of-[f0_other(d3p0,env0)]
+//
+fun
 f0_annot
 ( d3p0: d3pat1
 , env0: envltck): d3axp1 =
@@ -448,26 +462,24 @@ t2q2.node() of
 d3axp1_t2pck(d3a1, taft, env0))
 where
 {
-val d3a1 = d3pat1_trxltck(d3p1, env0)}
+val
+d3a1 = d3pat1_trxltck(d3p1, env0)
+}(*where*)//end-of-[T2P1arg1(...)]
+//
+|T2P1atx2
+(tbef, taft) =>
+(
+d3axp1_t2pck(d3a1, taft, env0))
+where
+{
+val
+d3a1 = d3pat1_trxltck(d3p1, env0)
+}(*where*)//end-of-[T2P1atx2(...)]
 //
 |
 _(*otherwise*) => f0_other(d3p0, env0)
 //
-end(*let*)//end-of-[f0_annot(d3p0, env0)]
-//
-and
-f0_other
-( d3p0: d3pat1
-, env0: envltck): d3axp1 =
-let
-//
-  val loc0 = d3p0.lctn((*0*))
-  val t2q0 = d3p0.styp((*0*))
-//
-in//let
-(
-  d3axp1(loc0, t2q0, D3A1none(d3p0)))
-end(*let*)//end-of-[f0_other(d3p0, env0)]
+end(*let*)//end-of-[f0_annot(d3p0,env0)]
 //
 (* ****** ****** *)
 //

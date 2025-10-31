@@ -40,15 +40,17 @@ end//let//end-of-[identity3]
 fun
 <x0:vt>
 identity4
-(x0: !x0): x0 = identity3(x0)
+(x0: !x0 >> x0): x0 = identity3(x0)
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 fun
+<x0:t0>
+duplicity0(x0: x0): (x0, x0) = (x0, x0)
+fun
 <x0:vt>
-duplicity(x0: x0): (x0, x0) = (x0, x0)
+duplicity1(x0: x0): (x0, x0) = (x0, x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
