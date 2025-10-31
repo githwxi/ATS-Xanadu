@@ -416,6 +416,21 @@ g_print
 //
 #impltmp
 g_print
+<t2iag1>(tiag) =
+(
+  t2iag1_fprint(tiag, g_print$out<>((*0*))))
+//
+#impltmp
+g_print
+<t2jag1>(tjag) =
+(
+  t2jag1_fprint(tjag, g_print$out<>((*0*))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <d3typ1>(dtyp) =
 (
   d3typ1_fprint(dtyp, g_print$out<>((*0*))))

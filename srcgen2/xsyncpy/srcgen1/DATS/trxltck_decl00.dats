@@ -121,6 +121,12 @@ d3cl.node() of
 //
 (* ****** ****** *)
 //
+|D3C1implmnt0 _ =>
+(
+ f0_implmnt0(d3cl, env0))
+//
+(* ****** ****** *)
+//
 |_(*otherwise*) =>
 d3ecl1(loc0, D3C1errck(0(*lvl*), d3cl))
 //
@@ -333,6 +339,29 @@ d3ecl1
 D3C1fundclst(tknd, t2qs, d2cs, d3fs))
 //
 end//let
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+(d3cl: d3ecl1
+,env0: !envltck): d3ecl1 =
+let
+//
+val-
+D3C1implmnt0
+( knd0
+, stmp
+, sqas, tqas
+, dimp
+, tias, tibs
+, f3as, f3bs
+, sres, dexp
+, vts1, vts2) = d3cl.node()
+//
+in//let
+  d3cl
+end//let//end-of-[f0_implmnt0(d3cl,env0)]
 //
 (* ****** ****** *)
 //

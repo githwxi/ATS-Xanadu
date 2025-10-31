@@ -188,13 +188,19 @@ fprint with d2ecl_fprint of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#abstbox t2iag1_tbox // ptr
+#typedef t2iag1 = t2iag1_tbox
 #abstbox t2jag1_tbox // ptr
 #typedef t2jag1 = t2jag1_tbox
 //
+#typedef t2iag1lst = list(t2iag1)
 #typedef t2jag1lst = list(t2jag1)
 //
 (* ****** ****** *)
 //
+fun
+t2iag1_fprint
+(tiag: t2iag1, out0: FILR): void
 fun
 t2jag1_fprint
 (tjag: t2jag1, out0: FILR): void
@@ -202,15 +208,34 @@ t2jag1_fprint
 (* ****** ****** *)
 //
 fun
-t2jag1_get_lctn:(t2jag1)->loc_t
+t2iag1_lctn$get
+(   tiag: t2iag1   ): loc_t
 fun
-t2jag1_get_t2qs:(t2jag1)->s2typ1lst
+t2jag1_lctn$get
+(   tjag: t2jag1   ): loc_t
+//
+fun
+t2iag1_t2qs$get
+(   tiag: t2iag1   ): s2typ1lst
+fun
+t2jag1_t2qs$get
+(   tjag: t2jag1   ): s2typ1lst
+//
+#symload lctn with t2iag1_lctn$get
+#symload lctn with t2jag1_lctn$get
+#symload t2qs with t2iag1_t2qs$get
+#symload t2qs with t2jag1_t2qs$get
 //
 (* ****** ****** *)
 //
 fun
-t2jag1_make_t2qs
-(loc0:loc_t,t2qs:s2typ1lst):t2jag1
+t2iag1_make_t2qs(
+loc0: loc_t, t2qs: s2typ1lst):t2iag1
+#symload t2iag1 with t2iag1_make_t2qs
+//
+fun
+t2jag1_make_t2qs(
+loc0: loc_t, t2qs: s2typ1lst):t2jag1
 #symload t2jag1 with t2jag1_make_t2qs
 //
 (* ****** ****** *)

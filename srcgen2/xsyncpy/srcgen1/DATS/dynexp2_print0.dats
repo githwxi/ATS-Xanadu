@@ -37,16 +37,17 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../SATS/dynexp2.sats"
+(* ****** ****** *)
 #include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
+"./../HATS/mytmplib00.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
-"./../SATS/dynexp2.sats"
+"prelude/SATS/gsyn000.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -79,6 +80,33 @@ d2ecl_fprint
 $D2E.d2ecl_fprint(d2cl, castxy(out0))
 //
 end//local
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+t2iag1_fprint
+( tiag, out0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+in//let
+  prints("T2IAG1(", tiag.t2qs(), ")")
+end(*let*)//end-of-[t2iag1_fprint(tiag,out0)]
+//
+#implfun
+t2jag1_fprint
+( tjag, out0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+in//let
+  prints("T2JAG1(", tjag.t2qs(), ")")
+end(*let*)//end-of-[t2jag1_fprint(tjag,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

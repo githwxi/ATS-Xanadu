@@ -92,6 +92,9 @@ l2t2p_trx3cpy
 (* ****** ****** *)
 //
 fun
+t2iag_trx3cpy
+(tiag: t2iag, env0: !env3cpy): t2iag1
+fun
 t2jag_trx3cpy
 (tjag: t2jag, env0: !env3cpy): t2jag1
 //
@@ -142,6 +145,9 @@ l2t2plst_trx3cpy
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+t2iaglst_trx3cpy
+(t2is: t2iaglst, env0: !env3cpy): t2iag1lst
 fun
 t2jaglst_trx3cpy
 (t2js: t2jaglst, env0: !env3cpy): t2jag1lst

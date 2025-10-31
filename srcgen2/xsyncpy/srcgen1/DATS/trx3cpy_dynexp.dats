@@ -88,6 +88,25 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #implfun
+t2iag_trx3cpy
+(tiag, env0) =
+let
+//
+val
+s2es = t2iag_get_s2es(tiag)
+val
+t2ps = s2explst_stpize(s2es)
+//
+in//let
+t2iag1_make_t2qs
+(
+tiag.lctn(),
+s2typlst_trx3cpy(t2ps, env0))
+end//let//end-of-[t2iag_trx3cpy]
+//
+(* ****** ****** *)
+//
+#implfun
 t2jag_trx3cpy
 (tjag, env0) =
 let
