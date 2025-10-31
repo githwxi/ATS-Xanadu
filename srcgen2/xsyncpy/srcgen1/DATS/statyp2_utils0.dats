@@ -180,7 +180,8 @@ t2q1.node() of
 (
 case+
 t2q2.node() of
-|T2P1cst(s2c2) => (s2c1 = s2c2)
+|T2P1cst(s2c2) =>
+( s2c1 = s2c2 )
 |_(*non-T2P1cst*) => (  false  )
 )
 //
@@ -189,9 +190,39 @@ t2q2.node() of
 (
 case+
 t2q2.node() of
-|T2P1var(s2v2) => (s2v1 = s2v2)
+|T2P1var(s2v2) =>
+( s2v1 = s2v2 )
 |_(*non-T2P1var*) => (  false  )
 )
+//
+(* ****** ****** *)
+//
+|T2P1top0
+(  t2q1  ) =>
+(
+case+
+t2q2.node() of
+|T2P1top0(t2q2) =>
+(
+  s2typ1_lteq(t2q1, t2q2))
+|T2P1top1(t2q2) =>
+(
+  s2typ1_lteq(t2q1, t2q2))
+|_(*non-T2P1top?*) => (  false  )
+)
+//
+|T2P1top1
+(  t2q1  ) =>
+(
+case+
+t2q2.node() of
+|T2P1top1(t2q2) =>
+(
+  s2typ1_lteq(t2q1, t2q2))
+|_(*non-T2P1top1*) => (  false  )
+)
+//
+(* ****** ****** *)
 //
 |T2P1apps
 (t2f1, tqs1) =>

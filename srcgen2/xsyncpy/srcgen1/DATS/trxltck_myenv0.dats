@@ -767,9 +767,21 @@ end//let//end-of-[ D3P1var(d2v1) ]
 |D3P1annot
 (d3p1
 ,s1e2
-,s2e1, t2q2) => f0_dpat(env0, d3p1)
+,s2e1, t2q2) =>
+(
+case+
+d3p1.node() of
 //
-|_(* otherwise *) => (   (*void*)   )
+|D3P1var
+(   d2v1   ) =>
+(
+envltck_dvar$push(env0, d2v1, t2q2))
+//
+|_(*D3P1...*) => f0_dpat(env0, d3p1))
+(*end-of-[D3P1annot(d3p1,...,t2q0)]*)
+//
+|
+_(* otherwise *) => (    (*void*)    )
 )(*case+*)//end-of-[f0_dpat(env0,dpat)]
 //
 and
