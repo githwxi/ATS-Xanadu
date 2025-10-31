@@ -351,6 +351,9 @@ D3Cimplmnt0
 , tias, f3as
 , sres, dexp) = d3cl.node()
 //
+val tibs =
+t2iaglst_trx3cpy(tias, env0)
+//
 val f3as =
 f3arglst_trx3cpy(f3as, env0)
 //
@@ -371,7 +374,7 @@ loc0,
 D3C1implmnt0
 ( tknd, stmp
 , sqas, tqas
-, dimp, tias
+, dimp, tias, tibs
 , f3as, f3bs, sres, dexp, vts1, vts2)))
 end//let
 //

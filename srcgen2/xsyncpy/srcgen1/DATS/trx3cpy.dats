@@ -135,6 +135,20 @@ map$e1nv$fopr<x0><y0><e1> = l2t2p_trx3cpy
 (* ****** ****** *)
 //
 #implfun
+t2iaglst_trx3cpy
+(t2is, env0) =
+list_map$e1nv(t2is, env0) where
+{
+#typedef x0 = t2iag
+#typedef y0 = t2iag1
+#vwtpdef e1 = env3cpy
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = t2iag_trx3cpy
+}(*where*)//end-of-[t2iaglst_trx3cpy(t2is,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
 t2jaglst_trx3cpy
 (t2js, env0) =
 list_map$e1nv(t2js, env0) where

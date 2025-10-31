@@ -62,6 +62,47 @@ Authoremail: gmhwxiATgmailDOTcom
 local
 //
 datatype
+t2iag1 =
+T2IAG1 of (loc_t, s2typ1lst)
+//
+#absimpl t2iag1_tbox = t2iag1
+//
+datatype
+t2iag1_vt =
+T2IAG1_vt of (loc_t, s2typ1lst)
+//
+in (* in-of-local *)
+//
+#implfun
+t2iag1_lctn$get
+  (  t2ia  ) =
+let
+val+
+T2IAG1
+(loc0, t2qs) = t2ia in loc0 end
+//
+#implfun
+t2iag1_t2qs$get
+  (  t2ia  ) =
+let
+val+
+T2IAG1
+(loc0, t2qs) = t2ia in t2qs end
+//
+#implfun
+t2iag1_make_t2qs
+(  loc0, t2qs  ) = T2IAG1(loc0, t2qs)
+//
+(* ****** ****** *)
+//
+end (*local*) // end of [local(t2iag1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
 t2jag1 =
 T2JAG1 of (loc_t, s2typ1lst)
 //
@@ -74,7 +115,7 @@ T2JAG1_vt of (loc_t, s2typ1lst)
 in (* in-of-local *)
 //
 #implfun
-t2jag1_get_lctn
+t2jag1_lctn$get
   (  t2ja  ) =
 let
 val+
@@ -82,7 +123,7 @@ T2JAG1
 (loc0, t2qs) = t2ja in loc0 end
 //
 #implfun
-t2jag1_get_t2qs
+t2jag1_t2qs$get
   (  t2ja  ) =
 let
 val+
