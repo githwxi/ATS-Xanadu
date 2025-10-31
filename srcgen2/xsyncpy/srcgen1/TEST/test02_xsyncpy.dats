@@ -21,8 +21,11 @@ val () = N := N + 1
 //
 // HX-2025-10-31:
 fun//this one
-foo//should be caught!
+foo1//should be okay
 (i0: sint): ?sint = i0
+fun//this one
+foo2//should be caught
+(i0: ?sint): sint = i0
 ////
 (* ****** ****** *)
 (* ****** ****** *)
