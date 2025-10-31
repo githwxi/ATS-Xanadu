@@ -334,8 +334,7 @@ d3fundcl1lst_trxltck(d3fs, env0)
 //
 in//let
 //
-d3ecl1
-(loc0,
+d3ecl1(loc0,
 D3C1fundclst(tknd, t2qs, d2cs, d3fs))
 //
 end//let
@@ -359,8 +358,54 @@ D3C1implmnt0
 , sres, dexp
 , vts1, vts2) = d3cl.node()
 //
+val (  ) =
+envltck_pshlam0(env0)//enter
+//
+val (  ) =
+envltck_f3as$push(env0, f3as)
+//
+val dexp =
+(
+  d3exp1_trxltck(dexp, env0))
+//
+val f3bs =
+(
+f3arg1lst_trxltck(f3as, env0))
+//
+val d2vs = envltck_dvslam0(env0)
+val vts0 = envltck_vtslam0(env0)
+//
+val (  ) = envltck_poplam0(env0)
+//
+val vts1 =
+(
+  dvdtplst_d2vs$inner(vts0, d2vs))
+val vts2 =
+(
+  dvdtplst_d2vs$outer(vts0, d2vs))
+//
+// (*
+val (  ) =
+prerrsln("\
+f0_implmnt0(trxltck): f3bs = ", f3bs)
+val (  ) =
+prerrsln("\
+f0_implmnt0(trxltck): vts1 = ", vts1)
+val (  ) =
+prerrsln("\
+f0_implmnt0(trxltck): vts2 = ", vts2)
+// *)
+//
 in//let
-  d3cl
+(
+d3ecl1
+(
+loc0,
+D3C1implmnt0
+( knd0
+, stmp, sqas, tqas
+, dimp, tias, tibs
+, f3as, f3bs, sres, dexp, vts1, vts2)))
 end//let//end-of-[f0_implmnt0(d3cl,env0)]
 //
 (* ****** ****** *)
