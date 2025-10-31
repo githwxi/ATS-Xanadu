@@ -193,6 +193,15 @@ l2t2p1lst_prfq(l2t2p1lst): bool
 (* ****** ****** *)
 //
 fun
+s2typ1_t0pize
+(s2t0:sort2, t2q0:s2typ1): s2typ1
+fun
+s2typ1_t1pize
+(s2t0:sort2, t2q0:s2typ1): s2typ1
+//
+(* ****** ****** *)
+//
+fun
 s2typ1_sort$get
 (styp: s2typ1): sort2
 #symload sort with s2typ1_sort$get

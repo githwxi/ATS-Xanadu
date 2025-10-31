@@ -70,37 +70,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-s2typ1_t0pize
-(s2t0: sort2
-,t2q0: s2typ1): s2typ1 =
-(
-case+
-t2q0.node() of
-|T2P1top0(t2q1) =>
-s2typ1(s2t0, T2P1top0(t2q1))
-|T2P1top1(t2q1) =>
-s2typ1(s2t0, T2P1top0(t2q1))
-|_(*otherwise*) =>
-s2typ1(s2t0, T2P1top0(t2q0)))
-//
-fun
-s2typ1_t1pize
-(s2t0: sort2
-,t2q0: s2typ1): s2typ1 =
-(
-case+
-t2q0.node() of
-|T2P1top0(t2q1) =>
-s2typ1(s2t0, T2P1top0(t2q1))
-|T2P1top1(t2q1) =>
-s2typ1(s2t0, T2P1top1(t2q1))
-|_(*otherwise*) =>
-s2typ1(s2t0, T2P1top1(t2q0)))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #implfun
 s2typ_trx3cpy
 (t2p0, env0) =

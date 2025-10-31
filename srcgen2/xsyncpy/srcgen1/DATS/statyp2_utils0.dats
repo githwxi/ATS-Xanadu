@@ -169,11 +169,88 @@ forall$test<l2t2p1> = l2t2p1_prfq
 (* ****** ****** *)
 //
 #implfun
+s2typ1_t0pize
+(s2t0, t2q0) =
+(
+case+
+t2q0.node() of
+|T2P1top0(t2q1) =>
+s2typ1(s2t0, T2P1top0(t2q1))
+|T2P1top1(t2q1) =>
+s2typ1(s2t0, T2P1top0(t2q1))
+|_(*otherwise*) =>
+s2typ1(s2t0, T2P1top0(t2q0)))
+//
+#implfun
+s2typ1_t1pize
+(s2t0, t2q0) =
+(
+case+
+t2q0.node() of
+|T2P1top0(t2q1) =>
+s2typ1(s2t0, T2P1top0(t2q1))
+|T2P1top1(t2q1) =>
+s2typ1(s2t0, T2P1top1(t2q1))
+|_(*otherwise*) =>
+s2typ1(s2t0, T2P1top1(t2q0)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 s2typ1_lteq
 (t2q1, t2q2) =
 (
 case+
+t2q2.node() of
+//
+|T2P1top0 _ =>
+(
+if
+linq(t2q1)
+then false else
+let
+val s2t1 = t2q1.sort()
+val t2q1 =
+s2typ1_t0pize(s2t1, t2q1)
+in//let
+  f0_main(t2q1, t2q2) end//let
+)
+//
+|T2P1top1 _ =>
+(
+if
+linq(t2q1)
+then false else
+let
+val s2t1 = t2q1.sort()
+val t2q1 =
+s2typ1_t1pize(s2t1, t2q1)
+in//let
+  f0_main(t2q1, t2q2) end//let
+)
+//
+|_(*rest*) => f0_main(t2q1, t2q2)
+//
+) where
+{
+//
+(* ****** ****** *)
+//
+#symload
+linq with s2typ1_linq
+//
+(* ****** ****** *)
+//
+fun
+f0_main
+(t2q1: s2typ1
+,t2q2: s2typ1): bool =
+(
+case+
 t2q1.node() of
+//
+(* ****** ****** *)
 //
 |T2P1cst
 (  s2c1  ) =>
@@ -182,7 +259,7 @@ case+
 t2q2.node() of
 |T2P1cst(s2c2) =>
 ( s2c1 = s2c2 )
-|_(*non-T2P1cst*) => (  false  )
+|_(*non-T2P1cst*) => ( false )
 )
 //
 |T2P1var
@@ -192,7 +269,7 @@ case+
 t2q2.node() of
 |T2P1var(s2v2) =>
 ( s2v1 = s2v2 )
-|_(*non-T2P1var*) => (  false  )
+|_(*non-T2P1var*) => ( false )
 )
 //
 (* ****** ****** *)
@@ -208,7 +285,7 @@ t2q2.node() of
 |T2P1top1(t2q2) =>
 (
   s2typ1_lteq(t2q1, t2q2))
-|_(*non-T2P1top?*) => (  false  )
+|_(*non-T2P1top?*) => ( false )
 )
 //
 |T2P1top1
@@ -219,7 +296,7 @@ t2q2.node() of
 |T2P1top1(t2q2) =>
 (
   s2typ1_lteq(t2q1, t2q2))
-|_(*non-T2P1top1*) => (  false  )
+|_(*non-T2P1top1*) => ( false )
 )
 //
 (* ****** ****** *)
@@ -237,8 +314,10 @@ s2typ1_lteq
 then
 s2typ1lst_lteq
 ( tqs1, tqs2 ) else false)
-|_(*non-T2P1apps*) => (  false  )
+|_(*non-T2P1apps*) => ( false )
 )
+//
+(* ****** ****** *)
 //
 |T2P1trcd
 (knd1, npfa, lts1) =>
@@ -255,8 +334,10 @@ if
 npfa != npfb
 then false else
 l2t2p1lst_lteq(lts1, lts2))
-|_(*non-T2P1apps*) => (  false  )
+|_(*non-T2P1apps*) => ( false )
 )
+//
+(* ****** ****** *)
 //
 |T2P1text
 (tnm1, tqs1) =>
@@ -270,8 +351,10 @@ if
 then
 s2typ1lst_lteq
 ( tqs1, tqs2 ) else false)
-|_(*non-T2P1text*) => (  false  )
+|_(*non-T2P1text*) => ( false )
 )
+//
+(* ****** ****** *)
 //
 |T2P1none0() =>
 (
@@ -280,8 +363,20 @@ t2q2.node() of
 |T2P1none0() => true | _ => false)
 //
 |_(* otherwise *) => (     false     )
+//
+(* ****** ****** *)
+//
 ) where
 {
+//
+val () =
+(
+  prerrsln("f0_main: t2q1 = ", t2q1))
+val () =
+(
+  prerrsln("f0_main: t2q2 = ", t2q2))
+//
+}(*where*)//end-of-[f0_main(t2q1,t2q2)]
 //
 val () =
 (
