@@ -304,6 +304,10 @@ val d3f0 =
 (
   d3pat_trx3cpy(d3f0, env0))
 //
+val tjas =
+(
+  t2jaglst_trx3cpy(tjas, env0))
+//
 in//let
 //
 (
@@ -725,7 +729,8 @@ val d3f0 =
   d3exp_trx3cpy(d3f0, env0))
 //
 in//let
-d3exp1(loc0, t3q0, D3E1dap0(d3f0))
+(
+d3exp1(loc0,t3q0,D3E1dap0(d3f0)))
 end//let
 //
 (* ****** ****** *)

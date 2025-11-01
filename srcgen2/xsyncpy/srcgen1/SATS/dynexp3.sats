@@ -386,7 +386,7 @@ d3pat1_node =
  (d3pat1, s2arglst(*sarg*))
 //
 |D3P1tapq of
- (d3pat1, t2jaglst(*sarg*))
+ (d3pat1, t2jag1lst(*sarg*))
 //
 (* ****** ****** *)
 //
