@@ -43,8 +43,9 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/statyp2.sats"
 #staload
 "./../SATS/dynexp3.sats"
+//
 #staload
-"./../SATS/trxltck.sats"
+"./../SATS/tryltck.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -57,6 +58,55 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload
 "prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/statyp2.sats"
+#staload
+"./../../../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3ecl1_errck
+(lvl0: sint
+,d3cl: d3ecl1): d3ecl1 =
+(
+let
+val loc0 = d3cl.lctn()
+in//let
+(
+d3ecl1_make_lctn$node
+(loc0, D3C1errck(lvl0, d3cl)))
+end//let
+)(*case+*)//end(d3ecl1_errck(...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3ecl1_tryltck
+( d3cl, err0 ) =
+(
+case+
+d3cl.node() of
+//
+| _(*otherwise*) =>
+(
+  d3ecl1_errck(0(*lvl*), d3cl))
+//
+) where
+{
+val (  ) =
+(
+prerrsln("d3ecl1_tryltck: d3cl = ", d3cl))
+val (  ) =
+(
+prerrsln("d3ecl1_tryltck: d3cl = ", d3cl))
+}(*where*)//end-of-[d3ecl1_tryltck(d3cl,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
