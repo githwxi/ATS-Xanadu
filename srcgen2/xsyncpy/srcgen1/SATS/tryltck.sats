@@ -51,10 +51,12 @@ For performing trxltck-proofread
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #staload
 "./../SATS/statyp2.sats"
 #staload
 "./../SATS/dynexp3.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
