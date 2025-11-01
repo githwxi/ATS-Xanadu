@@ -47,10 +47,16 @@ identity4
 //
 fun
 <x0:t0>
-duplicity0(x0: x0): (x0, x0) = (x0, x0)
+duplicity0
+(x0: x0): (x0, x0) = (x0, x0)
 fun
 <x0:vt>
-duplicity1(x0: x0): (x0, x0) = (x0, x0)
+duplicity1
+(x0: x0): (x0, x0) = (x0, x0)
+fun
+<x0:vt>
+duplicity2
+(x0: !x0): (x0, x0) = (g_copy(x0), g_copy(x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

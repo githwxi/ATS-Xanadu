@@ -775,6 +775,15 @@ d3p1.node() of
 |D3P1var
 (   d2v1   ) =>
 (
+case+
+t2q2.node() of
+|T2P1arg1
+(knd0, targ) =>
+envltck_dvar$push(env0, d2v1, targ)
+|T2P1atx2
+(tbef, targ) =>
+envltck_dvar$push(env0, d2v1, tbef)
+|_(*non-T2P1arg*) =>
 envltck_dvar$push(env0, d2v1, t2q2))
 //
 |_(*D3P1...*) => f0_dpat(env0, d3p1))
