@@ -128,7 +128,9 @@ d3cl.node() of
 (* ****** ****** *)
 //
 |_(*otherwise*) =>
-d3ecl1(loc0, D3C1errck(0(*lvl*), d3cl))
+(
+d3ecl1
+(loc0, D3C1errck(0(*lvl*), d3cl)))
 //
 end where
 {

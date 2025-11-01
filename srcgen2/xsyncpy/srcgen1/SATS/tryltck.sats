@@ -36,6 +36,11 @@ Wed Jul  9 02:28:26 PM EDT 2025
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
+(*
+HX-2025-11-01:
+For performing trxltck-proofread
+*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -53,17 +58,50 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-d3pat1_tryltck(d3e0: d3pat1): d3pat1
-//
-fun
-d3exp1_tryltck(d3e0: d3exp1): d3exp1
+#typedef
+ftryltck
+(syn: tx) =
+(syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-d3ecl1_tryltck(d3cl: d3ecl1): d3ecl1
+list_tryltck_fnp
+{syn:tx}
+( lst: list(syn)
+, err: &sint >> _
+, fpr: ftryltck(syn)): list(syn)
+//
+fun
+optn_tryltck_fnp
+{syn:tx}
+( opt: optn(syn)
+, err: &sint >> _
+, fpr: ftryltck(syn)): optn(syn)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+fun d3pat1_tryltck: ftryltck(d3pat1)
+fun d3exp1_tryltck: ftryltck(d3exp1)
+(* ****** ****** *)
+fun d3ecl1_tryltck: ftryltck(d3ecl1)
+(* ****** ****** *)
+(* ****** ****** *)
+fun d3pat1lst_tryltck: ftryltck(d3pat1lst)
+fun d3pat1opt_tryltck: ftryltck(d3pat1opt)
+fun l3d3p1lst_tryltck: ftryltck(l3d3p1lst)
+(* ****** ****** *)
+fun d3exp1lst_tryltck: ftryltck(d3exp1lst)
+fun d3exp1opt_tryltck: ftryltck(d3exp1opt)
+fun l3d3e1lst_tryltck: ftryltck(l3d3e1lst)
+(* ****** ****** *)
+fun d3ecl1lst_tryltck: ftryltck(d3ecl1lst)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3ecl1lstopt_tryltck: ftryltck(d3ecl1lstopt)
 //
 (* ****** ****** *)
 (* ****** ****** *)

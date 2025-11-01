@@ -372,7 +372,7 @@ d3exp1_dtyp$get(dexp)
 //
 in//let
 //
-d3exp1_make_lctn$styp$node
+d3exp1_make_lctn$dtyp$node
 (
 loc0,t3q0,D3E1dvdtp(dexp,vtps))
 //
@@ -391,7 +391,7 @@ in//let
 *)
 //
 #implfun
-d3exp1_make_lctn$styp$node
+d3exp1_make_lctn$dtyp$node
 ( loc0, t3q0, node ) =
 let
   D3EXP1(loc0, t3q0, node) end

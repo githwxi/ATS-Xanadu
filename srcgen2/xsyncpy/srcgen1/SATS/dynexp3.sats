@@ -731,14 +731,13 @@ d3exp1_dvdtp
 fun
 d3exp1_make_lctn$node
 (loc0: loctn, node: d3exp1_node): d3exp1
+#symload d3exp1 with d3exp1_make_lctn$node
 *)
 fun
-d3exp1_make_lctn$styp$node
+d3exp1_make_lctn$dtyp$node
 (loc0: loctn
 ,t3q0: d3typ1, node: d3exp1_node): d3exp1
-//
-#symload d3exp1 with d3exp1_make_lctn$node
-#symload d3exp1 with d3exp1_make_lctn$styp$node
+#symload d3exp1 with d3exp1_make_lctn$dtyp$node
 //
 (* ****** ****** *)
 (* ****** ****** *)

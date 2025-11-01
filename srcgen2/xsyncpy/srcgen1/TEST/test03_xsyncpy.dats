@@ -51,11 +51,15 @@ duplicity0
 (x0: x0): (x0, x0) = (x0, x0)
 fun
 <x0:vt>
-duplicity1
-(x0: x0): (x0, x0) = (x0, x0)
+duplicity1 // HX: ill-typed!
+(x0: x0): (x0, x0) = (x0, g_copy(x0))
 fun
 <x0:vt>
-duplicity2
+duplicity2 // HX: well-typed!
+(x0: x0): (x0, x0) = (g_copy(x0), x0)
+fun
+<x0:vt>
+duplicity3
 (x0: !x0): (x0, x0) = (g_copy(x0), g_copy(x0))
 //
 (* ****** ****** *)

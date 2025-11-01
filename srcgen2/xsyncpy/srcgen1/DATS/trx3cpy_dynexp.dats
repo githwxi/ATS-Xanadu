@@ -168,10 +168,9 @@ d3pat1
 |D3Ptup0 _ => f0_tup0(d3p0, env0)
 |D3Ptup1 _ => f0_tup1(d3p0, env0)
 //
-|
-D3Pannot _ => f0_annot(d3p0, env0)
-|
-D3Perrck _ => f0_errck(d3p0, env0)
+(* ****** ****** *)
+|D3Pannot _ => f0_annot(d3p0, env0)
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
@@ -451,29 +450,6 @@ end(*let*)//end-of-[f0_annot(d3p0,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-f0_errck
-(d3p0: d3pat
-,env0: !env3cpy): d3pat1 =
-let
-//
-val-
-D3Perrck
-(lvl0, d3p1) = d3p0.node()
-//
-val d3p1 =
-(
-d3pat_trx3cpy(d3p1, env0))
-//
-in//let
-(
-d3pat1
-(loc0, t2q0, D3P1errck(lvl0,d3p1)))
-end(*let*)//end-of-[f0_errck(d3p0,env0)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 val (  ) =
 printsln("d3pat_trx3cpy: loc0 = ", loc0)
 //
@@ -581,11 +557,13 @@ D3El1azy _ => f0_l1azy(d3e0, env0)
 |
 D3Eannot _ => f0_annot(d3e0, env0)
 //
+(* ****** ****** *)
+//
 |D3Elabck _ => f0_labck(d3e0, env0)
 |D3Et2pck _ => f0_t2pck(d3e0, env0)
 |D3Et2ped _ => f0_t2ped(d3e0, env0)
 //
-|D3Eerrck _ => f0_errck(d3e0, env0)
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
@@ -1418,29 +1396,6 @@ d3exp1
 loc0,
 t3q0, D3E1t2ped(d3e1, t2q1, t2q2))
 end(*let*)//end-of-[f0_t2ped(d3e0,env0)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-f0_errck
-(d3e0: d3exp
-,env0: !env3cpy): d3exp1 =
-let
-//
-val-
-D3Eerrck
-(lvl0, d3e1) = d3e0.node()
-//
-val d3e1 =
-(
-d3exp_trx3cpy(d3e1, env0))
-//
-in//let
-(
-d3exp1
-(loc0, t3q0, D3E1errck(lvl0,d3e1)))
-end(*let*)//end-of-[f0_errck(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

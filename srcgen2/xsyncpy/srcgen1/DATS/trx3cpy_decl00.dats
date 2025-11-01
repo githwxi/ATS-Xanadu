@@ -111,24 +111,10 @@ d3cl.node() of
  f0_fundclst(d3cl, env0))
 //
 (* ****** ****** *)
+//
 |D3Cimplmnt0 _ =>
 (
  f0_implmnt0(d3cl, env0))
-(* ****** ****** *)
-//
-|D3Cerrck
-(lvl0, dcl1) =>
-let
-//
-val dcl1 =
-(
-  d3ecl_trx3cpy(dcl1, env0))
-//
-in//
-//
-d3ecl1(loc0, D3C1errck(lvl0, dcl1))
-//
-end//let//end-of-[D3Cerrck(lvl0,dcl1)]
 //
 (* ****** ****** *)
 //

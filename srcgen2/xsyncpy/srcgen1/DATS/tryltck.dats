@@ -56,6 +56,47 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+d3exp1lst_tryltck
+  (d3es, err0) =
+(
+list_tryltck_fnp(d3es, err0, d3exp1_tryltck))
+//
+#implfun
+d3exp1opt_tryltck
+  (dopt, err0) =
+(
+optn_tryltck_fnp(dopt, err0, d3exp1_tryltck))
+//
+(* ****** ****** *)
+//
+#implfun
+d3ecl1opt_tryltck
+  (dopt, err0) =
+(
+optn_tryltck_fnp(dopt, err0, d3ecl1_tryltck))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3ecl1lstopt_tryltck
+  (dopt, err0) =
+(
+case+ dopt of
+|
+optn_nil
+( (*0*) ) => optn_nil((*void*))
+|
+optn_cons
+(  dcls  ) =>
+(
+  optn_cons(d3ecl1lst_tryltck(dcls, err0)))
+)(*case+*)//end-of-[d3ecl1lstopt_tryltck(dopt,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_tryltck.dats] *)
 (***********************************************************************)

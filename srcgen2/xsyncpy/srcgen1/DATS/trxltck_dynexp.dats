@@ -571,8 +571,9 @@ d3exp1
 (* ****** ****** *)
 //
 |_(*otherwise*) =>
+(
 d3exp1
-(loc0,t3q0,D3E1errck(0(*lvl*), d3e0))
+(loc0,t3q0,D3E1errck(0(*lvl*),d3e0)))
 //
 (* ****** ****** *)
 //
@@ -725,6 +726,7 @@ d3typ1_styp$make(t2q1)
 in//let
 d3exp1(loc0, t3q1, D3E1dap0(d3f0))
 end//let
+//
 |_(*non-T2P1fun*) =>
 (
 d3exp1(
@@ -787,6 +789,7 @@ d3exp1
 end//let
 //
 end//let
+//
 |_(*non-T2P1fun*) =>
 (
 d3exp1(
