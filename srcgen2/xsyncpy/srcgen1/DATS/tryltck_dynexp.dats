@@ -62,11 +62,90 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
-"./../../../SATS/staexp2.sats"
-#staload
 "./../../../SATS/statyp2.sats"
 #staload
-"./../../../SATS/dynexp2.sats"
+"./../../../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3pat1_errck
+(lvl0: sint
+,d3p0: d3pat1): d3pat1 =
+(
+let
+val loc0 = d3p0.lctn()
+val styp = d3p0.styp()
+in//let
+d3pat1_make_lctn$styp$node
+(loc0,styp,D3P1errck(lvl0,d3p0))
+end//let
+)(*case+*)//end(d3pat1_errck(...))
+//
+(* ****** ****** *)
+//
+fun
+d3exp1_errck
+(lvl0: sint
+,d3e0: d3exp1): d3exp1 =
+(
+let
+val loc0 = d3e0.lctn()
+val dtyp = d3e0.dtyp()
+in//let
+d3exp1_make_lctn$dtyp$node
+(loc0,dtyp,D3E1errck(lvl0,d3e0))
+end//let
+)(*case+*)//end(d3exp1_errck(...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3pat1_tryltck
+( dpat, err0 ) =
+(
+case+
+dpat.node() of
+//
+| _(*otherwise*) =>
+(
+  d3pat1_errck(0(*lvl*), dpat))
+//
+) where
+{
+val (  ) =
+(
+prerrsln("d3pat1_tryltck: dpat = ", dpat))
+val (  ) =
+(
+prerrsln("d3pat1_tryltck: dpat = ", dpat))
+}(*where*)//end-of-[d3pat1_tryltck(dpat,err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3exp1_tryltck
+( dexp, err0 ) =
+(
+case+
+dexp.node() of
+//
+| _(*otherwise*) =>
+(
+  d3exp1_errck(0(*lvl*), dexp))
+//
+) where
+{
+val (  ) =
+(
+prerrsln("d3exp1_tryltck: dexp = ", dexp))
+val (  ) =
+(
+prerrsln("d3exp1_tryltck: dexp = ", dexp))
+}(*where*)//end-of-[d3exp1_tryltck(dexp,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

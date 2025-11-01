@@ -215,19 +215,11 @@ in//let
 s2typ1(s2t0,T2P1text(name,t2qs))
 end//let
 //
+(* ****** ****** *)
 |T2Pnone0() =>
 (
   s2typ1(s2t0, T2P1none0((*0*))))
-//
-|T2Perrck
-(lvl0, t2p1) =>
-let
-val t2q1 =
-(
-  s2typ_trx3cpy(t2p1, env0))
-in//let
-s2typ1(s2t0,T2P1errck(lvl0, t2q1))
-end//let
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
@@ -239,7 +231,7 @@ end where
 //
 // HX-2025-08-10:
 // For expanding definitions!
-  val t2p0 = s2typ_hnfiz0( t2p0 )
+  val t2p0 = s2typ_hnfiz0(  t2p0  )
 //
 (*
   val (  ) =
