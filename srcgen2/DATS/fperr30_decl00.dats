@@ -62,7 +62,9 @@ ATS_PACKNAME
 #staload "./../SATS/fperr20.sats"
 #staload "./../SATS/fperr30.sats"
 (* ****** ****** *)
-#define FPERR30_ERRVL 2
+(*
+#define FPERR30_ERRLVL 2
+*)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -77,7 +79,11 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 local
-
+//
+(* ****** ****** *)
+#define ERRLVL 3
+(* ****** ****** *)
+//
 fun
 auxmain
 ( out: FILR
@@ -235,7 +241,7 @@ endlet
 (* ****** ****** *)
 //
 end (*let*) // end-of-[ auxmain(out, dcl0) ]
-
+//
 (* ****** ****** *)
 in(* in-of-local *)
 (* ****** ****** *)
@@ -274,8 +280,7 @@ D3Cerrck(lvl, d3cl)  =>
 (
 auxmain(out, d3cl));
 if
-(lvl
->FPERR30_ERRVL)
+(lvl>=ERRLVL)
 then ((*void*)) else
 let
 val loc0 = dcl0.lctn() in

@@ -61,7 +61,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/fperr30.sats"
 (* ****** ****** *)
-#define FPERR30_ERRVL 2
+(*
+#define FPERR30_ERRLVL 2
+*)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -83,7 +85,13 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 local
-
+//
+(* ****** ****** *)
+//
+#define ERRLVL 2
+//
+(* ****** ****** *)
+//
 fun
 auxmain
 ( out: FILR
@@ -152,7 +160,7 @@ let
 endlet
 //
 end (*let*) // end-of-[ auxmain(out, d3p) ]
-
+//
 in//local
 //
 #implfun
@@ -187,8 +195,7 @@ D3Perrck(lvl, d3p1) =>
 (
 auxmain( out, d3p1 ); 
 if
-(lvl
->FPERR30_ERRVL)
+(lvl>=ERRLVL)
 then ((*void*)) else
 let
 val
@@ -222,6 +229,8 @@ D3LAB(lab,d3p1) => fperr30_d3pat(out,d3p1)
 
 local
 
+(* ****** ****** *)
+#define ERRLVL 3
 (* ****** ****** *)
 //
 fun
@@ -760,8 +769,7 @@ D3Eerrck(lvl, d3e1) =>
 (
 auxmain( out, d3e1 ); 
 if
-(lvl
->FPERR30_ERRVL)
+(lvl>=ERRLVL)
 then ((*void*)) else
 let
 //

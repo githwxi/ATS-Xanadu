@@ -66,7 +66,9 @@ ATS_PACKNAME
 #staload "./../SATS/pread00.sats"
 #staload "./../SATS/tread01.sats"
 (* ****** ****** *)
-#define FPEMSG_ERRVL 2
+(* ****** ****** *)
+#define FPEMSG_ERRLVL 3
+(* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -174,8 +176,8 @@ G1Eerrck(lvl,g1e1) =>
 (
 auxmain( out, g1e1 ); 
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 let
 val loc0 = g1e0.lctn() in
 printsln();
@@ -253,8 +255,8 @@ S1Terrck(lvl, s1t1) =>
 (
 auxmain( out, s1t1 ); 
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 let
 val loc0 = s1t0.lctn() in
 printsln
@@ -415,8 +417,8 @@ S1Eerrck(lvl, s1e1) =>
 (
 auxmain( out, s1e1 ); 
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 let
 val loc0 = s1e0.lctn() in
 printsln
@@ -777,8 +779,8 @@ D1Perrck(lvl, d1p1) =>
 (
 auxmain( out, d1p1 ); 
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 let
 val loc0 = d1p0.lctn() in
 printsln
@@ -1033,8 +1035,8 @@ D1Eerrck(lvl, d1e1) =>
 (
 auxmain( out, d1e1 ); 
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 let
 val loc0 = d1e0.lctn() in
 printsln
@@ -1557,8 +1559,8 @@ D1Cerrck(lvl, d1cl)  =>
 (
 auxmain( out, d1cl );
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 let
 val loc0 = dcl0.lctn() in//let
 printsln

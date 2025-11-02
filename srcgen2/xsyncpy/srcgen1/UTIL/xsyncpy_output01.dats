@@ -148,12 +148,15 @@ castxy
 val
 filr = castxy(g_stdout<>())
 in//let2
-prerrsln
-("FPELTCK_D3PARSED1:");
-fpeltck_d3parsed1(filr, dpar1)
+//
+prints("d3parsed1(ltck) = ");
+d3parsed1_fprint(dpar1, filr);
+printsln((*endof(d3parsed1)*))
+//
 end//let2
 //
-(*
+(* ****** ****** *)
+//
 val (  ) =
 let//3
 #extern
@@ -164,13 +167,12 @@ castxy
 val
 filr = castxy(g_stdout<>())
 in//let3
-//
-prints("d3parsed1(ltck) = ");
-d3parsed1_fprint(dpar1, filr);
-printsln((*endof(d3parsed1)*))
-//
+prerrsln
+("FPELTCK_D3PARSED1:");
+fpeltck_d3parsed1(filr, dpar1)
 end//let3
-*)
+//
+(* ****** ****** *)
 //
 end where // end-of(let)
 {

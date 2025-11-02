@@ -61,7 +61,9 @@ ATS_PACKNAME
 #staload "./../SATS/fperr20.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-#define FPERR20_ERRVL 2
+(*
+#define FPERR20_ERRLVL 2
+*)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -84,7 +86,11 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 local
-
+//
+(* ****** ****** *)
+#define ERRLVL 2
+(* ****** ****** *)
+//
 fun
 auxmain
 ( out: FILR
@@ -186,7 +192,7 @@ let
 endlet
 //
 end (*let*) // end-of-[ auxmain(out, d2p) ]
-
+//
 in//local
 //
 #implfun
@@ -221,8 +227,7 @@ D2Perrck(lvl, d2p1) =>
 (
 auxmain( out, d2p1 ); 
 if
-(lvl
->FPERR20_ERRVL)
+(lvl>=ERRLVL)
 then ((*void*)) else
 let
 val loc0 = d2p0.lctn()
@@ -253,6 +258,8 @@ D2LAB(lab,d2p1) => fperr20_d2pat(out,d2p1)
 
 local
 
+(* ****** ****** *)
+#define ERRLVL 3
 (* ****** ****** *)
 //
 fun
@@ -795,8 +802,7 @@ D2Eerrck(lvl, d2e1) =>
 auxmain( out, d2e1 ); 
 //
 if
-(lvl
->FPERR20_ERRVL)
+(lvl>=ERRLVL)
 then ((*void*)) else
 let
 //

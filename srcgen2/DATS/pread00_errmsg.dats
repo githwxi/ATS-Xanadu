@@ -152,9 +152,9 @@ ATS_PACKNAME
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
 (* ****** ****** *)
-
-#define FPEMSG_ERRVL 2
-
+(* ****** ****** *)
+#define FPEMSG_ERRLVL 3
+(* ****** ****** *)
 (* ****** ****** *)
 #symload fpemsg with i0dnt_fpemsg
 (* ****** ****** *)
@@ -502,8 +502,8 @@ S0Terrck(lvl, st1) =>
 (
 auxmain( out, st1 ); 
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 printsln
 ("PREAD00-ERROR:",s0t.lctn(),":",s0t)
 )
@@ -585,8 +585,8 @@ S0Eerrck(lvl, se1) =>
 (
 auxmain( out, se1 );
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 printsln
 ("PREAD00-ERROR:",s0e.lctn(),":",s0e)
 )
@@ -1118,8 +1118,8 @@ D0Perrck(lvl, dp1) =>
 (
 auxmain( out, dp1 );
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 printsln
 ("PREAD00-ERROR:",d0p.lctn(),":",d0p)
 )
@@ -1430,8 +1430,8 @@ D0Eerrck(lvl, de1) =>
 (
 auxmain( out, de1 );
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 printsln
 ("PREAD00-ERROR:",d0e.lctn(),":",d0e)
 )
