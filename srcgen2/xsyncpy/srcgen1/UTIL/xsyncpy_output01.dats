@@ -55,6 +55,8 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/trxltck.sats"
 #staload
 "./../SATS/tryltck.sats"
+#staload
+"./../SATS/fpeltck.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -94,9 +96,11 @@ d3parsed_of_tread3a(dpar)
 (*
 //
 val dpar =
-d3parsed_of_trtmp3b(dpar)
+(
+d3parsed_of_trtmp3b(dpar))
 val dpar =
-d3parsed_of_trtmp3c(dpar)
+(
+d3parsed_of_trtmp3c(dpar))
 //
 *)
 //
@@ -104,6 +108,8 @@ val (  ) =
 (
 prerrsln
 ("d3parsed(30) = ", dpar))
+//
+(* ****** ****** *)
 //
 val (  ) =
 let//1
@@ -115,9 +121,13 @@ prerrsln
 fperr30_d3parsed(out0, dpar)
 end//let1
 //
+(* ****** ****** *)
+//
 val dpar1 =
 (
 d3parsed_of_trx3cpy(dpar))
+//
+(* ****** ****** *)
 //
 val dpar1 =
 (
@@ -126,26 +136,41 @@ val dpar1 =
 (
 d3parsed1_of_tryltck(dpar1))
 //
-in//let
+(* ****** ****** *)
 //
-let
-//
+val (  ) =
+let//2
 #extern
 fcast
 castxy
 {ax:t0}
 {ay:t0}(ax:ax):(ay)
-//
 val
 filr = castxy(g_stdout<>())
+in//let2
+prerrsln
+("FPERR30_D3PARSED:");
+fpeltck_d3parsed1(filr, dpar1)
+end//let2
 //
-in//let
+(*
+val (  ) =
+let//3
+#extern
+fcast
+castxy
+{ax:t0}
+{ay:t0}(ax:ax):(ay)
+val
+filr = castxy(g_stdout<>())
+in//let3
 prints("d3parsed1(30) = ");
 d3parsed1_fprint(dpar1, filr);
 printsln((*endof(d3parsed1)*))
-end//let
+end//let3
+*)
 //
-end where
+end where // end-of(let)
 {
 //
 val
