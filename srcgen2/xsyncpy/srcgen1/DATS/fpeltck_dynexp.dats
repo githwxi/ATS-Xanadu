@@ -37,9 +37,6 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#define FPELTCK_ERRVL 2
-(* ****** ****** *)
-(* ****** ****** *)
 //
 #staload
 "./../SATS/statyp2.sats"
@@ -64,6 +61,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 local
+//
+#define ERRVL 2
 //
 fun
 auxmain
@@ -146,8 +145,7 @@ D3P1errck
 (
 auxmain(out0, d3p1); 
 if
-(lvl0
->FPELTCK_ERRVL)
+(lvl0>ERRVL)
 then ((*void*)) else
 let
 val loc0 = d3p0.lctn()
@@ -162,6 +160,126 @@ end//let
 end(*let*)//end-of(fpeltck_d3pat1(out,d3p0))
 //
 endloc(*local*)//end-of(local(fpeltck_d3pat1))
+//
+(* ****** ****** *)
+//
+#implfun
+fpeltck_d3pat1lst
+  (out0, d3ps) =
+(
+list_fpeltck_fnp(out0, d3ps, fpeltck_d3pat1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+#define ERRVL 2
+//
+fun
+auxmain
+(
+out0: FILR,
+d3e0: d3exp1): void =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+in//let
+//
+case+
+d3e0.node() of
+//
+|
+D3E1dapp
+( d3f0
+, npf1, d3es) =>
+let
+val () =
+fpeltck_d3exp1(out0, d3f0)
+val () =
+fpeltck_d3exp1lst(out0, d3es)
+end//let
+//
+|
+D3E1errck(_, _) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e0)) end
+//
+|
+_(*otherwise*) =>
+let
+val loc0 =
+d3e0.lctn((*0*))
+val (  ) = prerrsln("\
+fpeltck_d3exp1:auxmain: loc0 = ", loc0)
+val (  ) = prerrsln("\
+fpeltck_d3exp1:auxmain: d3e0 = ", d3e0)
+endlet
+//
+end(*let*)//end-of-[auxmain(out0, d3e0)]
+//
+in//local
+//
+#implfun
+fpeltck_d3exp1
+( out0, d3e0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+val () =
+let
+val loc0 = d3e0.lctn((*0*))
+in//let
+(*
+prerrsln
+("fpeltck_d3exp1: loc0 = ", loc0)
+*)
+end//let
+(*
+val () =
+prerrsln
+("fpeltck_d3exp1: d3e0 = ", d3e0)
+*)
+//
+in//let
+//
+case+
+d3e0.node() of
+|
+D3E1errck
+(lvl0, d3e1) =>
+(
+auxmain(out0, d3e1); 
+if
+(lvl0>ERRVL)
+then ((*void*)) else
+let
+val loc0 = d3e0.lctn()
+in//let
+printsln();
+printsln("\
+FPELTCK-ERROR:", loc0, ":", d3e0)
+end//let
+)
+| _(* otherwise *) => (  (* skipped *)  )
+//
+end(*let*)//end-of(fpeltck_d3exp1(out,d3e0))
+//
+endloc(*local*)//end-of(local(fpeltck_d3exp1))
+//
+(* ****** ****** *)
+//
+#implfun
+fpeltck_d3exp1lst
+  (out0, d3es) =
+(
+list_fpeltck_fnp(out0, d3es, fpeltck_d3exp1))
 //
 (* ****** ****** *)
 (* ****** ****** *)
