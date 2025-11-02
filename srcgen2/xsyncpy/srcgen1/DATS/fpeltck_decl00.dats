@@ -38,6 +38,28 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../SATS/statyp2.sats"
+#staload
+"./../SATS/dynexp3.sats"
+#staload
+"./../SATS/fpeltck.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_fpeltck_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_fpeltck_decl00.dats] *)
 (***********************************************************************)
