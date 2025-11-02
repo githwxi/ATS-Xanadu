@@ -62,6 +62,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload +
+with sint_add$sint of 1099
+#symload -
+with sint_sub$sint of 1099
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload
 "./../../../SATS/statyp2.sats"
 #staload
@@ -94,9 +102,14 @@ d3ecl1_tryltck
 case+
 d3cl.node() of
 //
-| _(*otherwise*) =>
+|
+_(*otherwise*) =>
+let
+val lvl0 = 1
+in//let
 (
-  d3ecl1_errck(0(*lvl*), d3cl))
+err0:=(err0+1); d3ecl1_errck(lvl0,d3cl))
+endlet//end of [_(______otherwise______)]
 //
 ) where
 {

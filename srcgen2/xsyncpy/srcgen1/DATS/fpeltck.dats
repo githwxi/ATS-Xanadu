@@ -60,22 +60,60 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#implfun
+list_fpeltck_fnp
+{  syn:tbox  }
+(  out, lst, fpr  ) =
+(
+list_foritm<syn>(lst)) where
+{
+//
+#impltmp
+foritm$work<syn>(syn) = fpr(out, syn)
+//
+}(*where*)//end(list_fpeltck_fnp(lst,err,fpr))
+//
+(* ****** ****** *)
+//
+#implfun
+optn_fpeltck_fnp
+{  syn:tbox  }
+(  out, opt, fpr  ) =
+(
+optn_foritm<syn>(opt)) where
+{
+//
+#impltmp
+foritm$work<syn>(syn) = fpr(out, syn)
+//
+}(*where*)//end(optn_fpeltck_fnp(opt,err,fpr))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 fpeltck_d3parsed1
-  (out0, dpar) = let
+  (out0, dpar) =
+let
 //
-val nerror =
-d3parsed1_nerror$get(dpar)
+val
+nerror =
+d3parsed1_nerror$get
+(       dpar       )
 //
 in//let
+//
 if
-(nerror > 0) then
+(nerror=0)
+then ((*void*)) else
 let
 val parsed =
 d3parsed1_parsed$get(dpar)
 in//let
-fpeltck_d3ecl1lstopt(out0, parsed) end else ()
-end (*let*)//end-of-[fpeltck_d3parsed1(out0,dpar)]
+fpeltck_d3ecl1lstopt(out0, parsed) end//let
+//
+end(*let*)//end-of-[fpeltck_d3parsed1(out0,dpar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -85,11 +123,8 @@ fpeltck_d3ecl1lstopt
   (out0, dopt) =
 (
 case+ dopt of
-|
-optn_nil() => ((*void*))
-|
-optn_cons(dcls) => fpeltck_d3ecl1lst(out0, dcls)
-)
+|optn_nil() => ((*void*))
+|optn_cons(dcls) => fpeltck_d3ecl1lst(out0, dcls))
 //
 (* ****** ****** *)
 (* ****** ****** *)
