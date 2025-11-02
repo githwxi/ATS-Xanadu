@@ -169,6 +169,12 @@ fpeltck_d3pat1lst
 (
 list_fpeltck_fnp(out0, d3ps, fpeltck_d3pat1))
 //
+#implfun
+fpeltck_d3pat1opt
+  (out0, dopt) =
+(
+optn_fpeltck_fnp(out0, dopt, fpeltck_d3pat1))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
