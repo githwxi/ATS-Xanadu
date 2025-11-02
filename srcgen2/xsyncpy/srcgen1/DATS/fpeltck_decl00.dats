@@ -61,7 +61,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 local
 //
-#define ERRVL 2
+#define ERRLVL 3
 //
 fun
 auxmain
@@ -116,16 +116,12 @@ val () =
 let
 val loc0 = dcl0.lctn()
 in//let
-(*
 prerrsln
 ("fpeltck_d3ecl1: loc0 = ", loc0)
-*)
 end//let
-(*
 val () =
 prerrsln
 ("fpeltck_d3ecl1: dcl0 = ", dcl0)
-*)
 //
 in//let
 //
@@ -139,17 +135,19 @@ D3C1errck
 (
 auxmain(out0, dcl1));
 if
-(lvl0>ERRVL)
+(lvl0>=ERRLVL)
 then ((*void*)) else
 let
-val loc0 = dcl0.lctn() in
+val loc0 = dcl0.lctn()
+in//let
 printsln();
 printsln("\
 FPELTCK-ERROR:", loc0, ":", dcl0)
-end
+end//let
 )
 //
-| _(* otherwise *) => (   (*skipped*)   )
+|
+_(* otherwise *) => (   (*skipped*)   )
 //
 end(*let*)//end-of(fpeltck_d3ecl1(out0,dcl0))
 //
