@@ -149,7 +149,7 @@ val
 filr = castxy(g_stdout<>())
 in//let2
 prerrsln
-("FPERR30_D3PARSED:");
+("FPELTCK_D3PARSED1:");
 fpeltck_d3parsed1(filr, dpar1)
 end//let2
 //
@@ -164,9 +164,11 @@ castxy
 val
 filr = castxy(g_stdout<>())
 in//let3
-prints("d3parsed1(30) = ");
+//
+prints("d3parsed1(ltck) = ");
 d3parsed1_fprint(dpar1, filr);
 printsln((*endof(d3parsed1)*))
+//
 end//let3
 *)
 //
