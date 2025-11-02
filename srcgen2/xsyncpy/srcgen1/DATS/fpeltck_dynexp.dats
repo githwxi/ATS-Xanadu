@@ -62,7 +62,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 local
 //
-#define ERRVL 2
+#define ERRLVL 2
 //
 fun
 auxmain
@@ -145,7 +145,7 @@ D3P1errck
 (
 auxmain(out0, d3p1); 
 if
-(lvl0>ERRVL)
+(lvl0>=ERRLVL)
 then ((*void*)) else
 let
 val loc0 = d3p0.lctn()
@@ -180,7 +180,7 @@ optn_fpeltck_fnp(out0, dopt, fpeltck_d3pat1))
 //
 local
 //
-#define ERRVL 2
+#define ERRLVL 3
 //
 fun
 auxmain
@@ -263,7 +263,7 @@ D3E1errck
 (
 auxmain(out0, d3e1); 
 if
-(lvl0>ERRVL)
+(lvl0>ERRLVL)
 then ((*void*)) else
 let
 val loc0 = d3e0.lctn()

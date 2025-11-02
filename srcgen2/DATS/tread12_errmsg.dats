@@ -64,7 +64,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/tread12.sats"
 (* ****** ****** *)
-#define FPEMSG_ERRVL 2
+(* ****** ****** *)
+#define FPEMSG_ERRLVL 3
+(* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -145,8 +147,8 @@ S2Terrck(lvl, s2t1) =>
 (
 auxmain( out, s2t1 ); 
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 printsln("TREAD12-ERROR:", s2t0))
 | _(* otherwise *) => (  (* skipped *)  )
 //
@@ -315,8 +317,8 @@ S2Eerrck(lvl, s2e1) =>
 (
 auxmain( out, s2e1 ); 
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 printsln("TREAD12-ERROR:", s2e0)
 )
 | _(* otherwise *) => (  (* skipped *)  )
@@ -492,8 +494,8 @@ D2Perrck(lvl, d2p1) =>
 (
 auxmain( out, d2p1 ); 
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 let
 val loc0 = d2p0.lctn() in
 printsln
@@ -799,8 +801,8 @@ D2Eerrck(lvl, d2e1) =>
 (
 auxmain( out, d2e1 ); 
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 let
 val loc0 = d2e0.lctn() in
 printsln
@@ -1147,8 +1149,8 @@ D2Cerrck(lvl, d2cl)  =>
 (
 auxmain( out, d2cl );
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 let
 val loc0 = dcl0.lctn() in
 printsln

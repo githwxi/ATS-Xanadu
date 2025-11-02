@@ -65,7 +65,9 @@ ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload "./../SATS/tread23.sats"
 (* ****** ****** *)
-#define FPEMSG_ERRVL 2
+(* ****** ****** *)
+#define FPEMSG_ERRLVL 3
+(* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -207,8 +209,8 @@ D3Perrck(lvl, d3p1) =>
 (
 auxmain( out, d3p1 ); 
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 let
 val
 loc0 = d3p0.lctn() in // let
@@ -570,8 +572,8 @@ D3Eerrck(lvl, d3e1) =>
 (
 auxmain( out, d3e1 ); 
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 let
 val
 loc0 = d3e0.lctn() in // let
@@ -844,8 +846,8 @@ D3Cerrck(lvl, d3cl)  =>
 (
 auxmain( out, d3cl );
 if
-(lvl
->FPEMSG_ERRVL) then () else
+(lvl>=
+ FPEMSG_ERRLVL) then () else
 let
 val
 loc0 = dcl0.lctn() in // let
