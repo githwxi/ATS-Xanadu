@@ -112,6 +112,11 @@ fun
 fpeltck_f3arg1lst(FILR, f3arg1lst): void
 (* ****** ****** *)
 fun
+fpeltck_d3ecl1lst(FILR, d3ecl1lst): void
+fun
+fpeltck_d3ecl1opt(FILR, d3ecl1opt): void
+(* ****** ****** *)
+fun
 fpeltck_d3valdcl1(FILR, d3valdcl1): void
 fun
 fpeltck_d3vardcl1(FILR, d3vardcl1): void

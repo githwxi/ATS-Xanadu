@@ -38,6 +38,62 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../SATS/statyp2.sats"
+#staload
+"./../SATS/dynexp3.sats"
+#staload
+"./../SATS/fpeltck.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fpeltck_d3parsed1
+  (out0, dpar) = let
+//
+val nerror =
+d3parsed1_nerror$get(dpar)
+//
+in//let
+if
+(nerror > 0) then
+let
+val parsed =
+d3parsed1_parsed$get(dpar)
+in//let
+fpeltck_d3ecl1lstopt(out0, parsed) end else ()
+end (*let*)//end-of-[fpeltck_d3parsed1(out0,dpar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fpeltck_d3ecl1lstopt
+  (out0, dopt) =
+(
+case+ dopt of
+|
+optn_nil() => ((*void*))
+|
+optn_cons(dcls) => fpeltck_d3ecl1lst(out0, dcls)
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_fpeltck.dats] *)
 (***********************************************************************)

@@ -59,6 +59,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/fperr20.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 list_fperr20_fnp
@@ -89,6 +90,7 @@ foritm$work<syn>(syn) = fpr(out, syn)
 }(*where*)//end(optn_fperr20_fnp(opt,err,fpr))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 fperr20_d2parsed
@@ -107,6 +109,7 @@ in//let
 fperr20_d2eclistopt(out, parsed) end else ()
 end (*let*)//end-of-[fperr20_d2parsed(out,dpar)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

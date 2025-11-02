@@ -61,6 +61,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/fperr30.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 list_fperr30_fnp
@@ -91,6 +92,7 @@ foritm$work<syn>(syn) = fpr(out, syn)
 }(*where*)//end(optn_fperr30_fnp(opt,err,fpr))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 fperr30_d3parsed
@@ -109,6 +111,7 @@ in//let
 fperr30_d3eclistopt(out, parsed) end else ()
 end (*let*)//end-of-[fperr30_d3parsed(out,dpar)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -136,5 +139,8 @@ optn_cons(d3cs) => fperr30_d3eclist(out, d3cs)
 )
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_fperr30.dats] *)
+(***********************************************************************)
