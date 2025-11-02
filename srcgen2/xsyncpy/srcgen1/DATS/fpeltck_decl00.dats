@@ -59,6 +59,112 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+local
+//
+#define ERRVL 2
+//
+fun
+auxmain
+( out0: FILR
+, dcl0: d3ecl1): void =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+in//let
+//
+case+
+dcl0.node() of
+//
+(* ****** ****** *)
+//
+|D3C1errck
+(lvl0,dcl1) => fpeltck_d3ecl1(out0, dcl0)
+//
+(* ****** ****** *)
+//
+|
+_(*otherwise*) =>
+let
+val
+loc0 = dcl0.lctn()
+//
+val () = prerrsln("\
+fpeltck_d3ecl1: auxmain: loc0 = ", loc0)
+val () = prerrsln("\
+fpeltck_d3ecl1: auxmain: dcl0 = ", dcl0)
+endlet
+//
+(* ****** ****** *)
+//
+end (*let*) // end-of-[ auxmain(out0,dcl0) ]
+
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
+
+#implfun
+fpeltck_d3ecl1
+( out0, dcl0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+val () =
+let
+val loc0 = dcl0.lctn()
+in//let
+(*
+prerrsln
+("fpeltck_d3ecl1: loc0 = ", loc0)
+*)
+end//let
+(*
+val () =
+prerrsln
+("fpeltck_d3ecl1: dcl0 = ", dcl0)
+*)
+//
+in//let
+//
+case+
+dcl0.node() of
+//
+|
+D3C1errck
+(lvl0, dcl1)  =>
+(
+(
+auxmain(out0, dcl1));
+if
+(lvl0>ERRVL)
+then ((*void*)) else
+let
+val loc0 = dcl0.lctn() in
+printsln();
+printsln("\
+FPELTCK-ERROR:", loc0, ":", dcl0)
+end
+)
+//
+| _(* otherwise *) => (   (*skipped*)   )
+//
+end(*let*)//end-of(fpeltck_d3ecl1(out0,dcl0))
+//
+endloc(*local*)//end-of(local(fpeltck_d3ecl1))
+//
+(* ****** ****** *)
+//
+#implfun
+fpeltck_d3ecl1lst
+  (out0, dcls) =
+(
+list_fpeltck_fnp(out0, dcls, fpeltck_d3ecl1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_fpeltck_decl00.dats] *)
