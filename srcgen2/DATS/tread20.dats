@@ -70,6 +70,7 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 list_tread20_fnp
@@ -123,6 +124,7 @@ then opt else optn_cons(syn)
 endlet // end of [optn_cons(syn)]
 )(*case+*)//end(optn_tread20_fnp(opt,err,fpr)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
