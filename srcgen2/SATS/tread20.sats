@@ -166,7 +166,7 @@ d2parsed_of_tread20
 //
 #typedef
 ftread20
-(syn: tx) =
+(syn : tbox) =
 (syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)

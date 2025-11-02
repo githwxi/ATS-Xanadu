@@ -162,7 +162,7 @@ d2parsed_of_tread12
 //
 #typedef
 ftread12
-(syn: tx) =
+(syn : tbox) =
 (syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)

@@ -94,8 +94,8 @@ s2typ1_t1pize(s2typ1): s2typ1
 (* ****** ****** *)
 //
 fun
-d3parsed1_trxltck
-( dpar : d3parsed1 ): (d3parsed1)
+d3parsed1_of_trxltck
+(dpar: d3parsed1): (d3parsed1)
 //
 (* ****** ****** *)
 (* ****** ****** *)

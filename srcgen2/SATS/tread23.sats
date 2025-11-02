@@ -114,7 +114,7 @@ d3parsed_of_tread23
 //
 #typedef
 ftread23
-(syn: tx) =
+(syn : tbox) =
 (syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)

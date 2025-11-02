@@ -201,7 +201,7 @@ d1parsed_of_tread01
 //
 #typedef
 ftread01
-(syn: tx) =
+(syn : tbox) =
 (syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)

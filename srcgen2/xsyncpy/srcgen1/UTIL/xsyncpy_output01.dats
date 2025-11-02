@@ -53,6 +53,8 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/trx3cpy.sats"
 #staload
 "./../SATS/trxltck.sats"
+#staload
+"./../SATS/tryltck.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -115,11 +117,14 @@ end//let1
 //
 val dpar1 =
 (
-  d3parsed_trx3cpy(dpar))
+d3parsed_of_trx3cpy(dpar))
 //
 val dpar1 =
 (
-  d3parsed1_trxltck(dpar1))
+d3parsed1_of_trxltck(dpar1))
+val dpar1 =
+(
+d3parsed1_of_tryltck(dpar1))
 //
 in//let
 //

@@ -56,6 +56,50 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#implfun
+d3parsed1_of_tryltck
+  ( dpar ) = let
+//
+val stadyn =
+d3parsed1_stadyn$get(dpar)
+val nerror =
+d3parsed1_nerror$get(dpar)
+val source =
+d3parsed1_source$get(dpar)
+//
+(*
+val t1penv =
+d3parsed1_t1penv$get(dpar)
+val t2penv =
+d3parsed1_t2penv$get(dpar)
+val t3penv =
+d3parsed1_t3penv$get(dpar)
+*)
+val parsed =
+d3parsed1_parsed$get(dpar)
+//
+var
+err0: sint = 0
+//
+val parsed =
+d3ecl1lstopt_tryltck(parsed, err0)
+//
+val nerror = err0
+//
+in//let
+//
+if
+(nerror=0)
+then (dpar) else
+(
+d3parsed1(stadyn, nerror, source, parsed))
+//
+end(*let*)//end-of-[d3parsed1_of_tryltck(dpar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 d3exp1lst_tryltck
   (d3es, err0) =
