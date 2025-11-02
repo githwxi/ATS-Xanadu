@@ -123,7 +123,7 @@ d3parsed_of_tread3a
 //
 #typedef
 ftread3a
-(syn: tx) =
+(syn : tbox) =
 (syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)

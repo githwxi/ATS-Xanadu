@@ -60,9 +60,16 @@ For performing trxltck-proofread
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+d3parsed1_of_tryltck
+ (dpar:d3parsed1):d3parsed1
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #typedef
 ftryltck
-(syn: tx) =
+(syn : tbox) =
 (syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)
@@ -99,6 +106,7 @@ fun d3exp1opt_tryltck: ftryltck(d3exp1opt)
 fun l3d3e1lst_tryltck: ftryltck(l3d3e1lst)
 (* ****** ****** *)
 fun d3ecl1lst_tryltck: ftryltck(d3ecl1lst)
+fun d3ecl1opt_tryltck: ftryltck(d3ecl1opt)
 (* ****** ****** *)
 (* ****** ****** *)
 //

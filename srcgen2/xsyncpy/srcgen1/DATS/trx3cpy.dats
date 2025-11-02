@@ -65,8 +65,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #implfun
-d3parsed_trx3cpy
-  (dpar) = let
+d3parsed_of_trx3cpy
+  ( dpar ) = let
 //
 val stadyn =
 d3parsed_get_stadyn(dpar)
@@ -100,7 +100,7 @@ in//let
 d3parsed1(stadyn, nerror, source, parsed))
 end//let
 //
-end(*let*)//end-of-[d3parsed_trx3cpy(dpar)]
+end(*let*)//end-of-[d3parsed_of_trx3cpy(dpar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -67,8 +67,8 @@ env3cpy = env3cpy_vtbx
 (* ****** ****** *)
 //
 fun
-d3parsed_trx3cpy
-( dpar : d3parsed ): (d3parsed1)
+d3parsed_of_trx3cpy
+(dpar: d3parsed): (d3parsed1)
 //
 (* ****** ****** *)
 (* ****** ****** *)

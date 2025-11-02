@@ -188,7 +188,7 @@ d0parsed_of_pread00
 //
 #typedef
 fpread00
-(syn: tx) =
+(syn : tbox) =
 (syn , &sint >> _) -> (syn)
 //
 (* ****** ****** *)
