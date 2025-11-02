@@ -56,6 +56,60 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+list_tryltck_fnp
+{  syn:tx  }
+(  lst , err , fpr  ) =
+(
+  auxlst(lst, err)) where
+{
+//
+fun
+auxlst
+( lst: list(syn)
+, err: &sint >> _): list(syn) =
+case+ lst of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(tm1, tms) =>
+let
+val e00 = err
+val tm1 = fpr(tm1, err)
+val tms = auxlst(tms, err)
+in//let
+if
+(err = e00)
+then lst else list_cons(tm1, tms)
+endlet // end of [auxlst(lst,err)]
+//
+}(*where*)//end(list_tryltck_fnp(lst,err,fpr))
+//
+(* ****** ****** *)
+//
+#implfun
+optn_tryltck_fnp
+{  syn:tx  }
+(  opt , err , fpr  ) =
+(
+case+ opt of
+|
+optn_nil() => opt
+|
+optn_cons(syn) =>
+let
+val e00 = err
+val syn = fpr(syn, err)
+in // let
+if
+(err=e00)
+then opt else optn_cons(syn)
+endlet // end of [optn_cons(syn)]
+)(*case+*)//end(optn_tryltck_fnp(opt,err,fpr)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 d3parsed1_of_tryltck
@@ -113,6 +167,12 @@ d3exp1opt_tryltck
 optn_tryltck_fnp(dopt, err0, d3exp1_tryltck))
 //
 (* ****** ****** *)
+//
+#implfun
+d3ecl1lst_tryltck
+  (dcls, err0) =
+(
+list_tryltck_fnp(dcls, err0, d3ecl1_tryltck))
 //
 #implfun
 d3ecl1opt_tryltck
