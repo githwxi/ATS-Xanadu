@@ -37,6 +37,134 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#define FPELTCK_ERRVL 2
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"./../SATS/statyp2.sats"
+#staload
+"./../SATS/dynexp3.sats"
+#staload
+"./../SATS/fpeltck.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+fun
+auxmain
+(
+out0: FILR,
+d3p0: d3pat1): void =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+in//let
+//
+case+
+d3p0.node() of
+//
+|
+D3P1dapp
+( d3f0
+, npf1, d3ps) =>
+let
+val () =
+fpeltck_d3pat1(out0, d3f0)
+val () =
+fpeltck_d3pat1lst(out0, d3ps)
+end//let
+//
+|
+D3P1errck(_, _) =>
+let
+val () =
+(
+  fpeltck_d3pat1(out0, d3p0)) end
+//
+|
+_(*otherwise*) =>
+let
+val loc0 =
+d3p0.lctn((*0*))
+val (  ) = prerrsln("\
+fpeltck_d3pat1:auxmain: loc0 = ", loc0)
+val (  ) = prerrsln("\
+fpeltck_d3pat1:auxmain: d3p0 = ", d3p0)
+endlet
+//
+end(*let*)//end-of-[auxmain(out0, d3p0)]
+//
+in//local
+//
+#implfun
+fpeltck_d3pat1
+( out0, d3p0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+val () =
+let
+val loc0 = d3p0.lctn((*0*))
+in//let
+(*
+prerrsln
+("fpeltck_d3pat1: loc0 = ", loc0)
+*)
+end//let
+(*
+val () =
+prerrsln
+("fpeltck_d3pat1: d3p0 = ", d3p0)
+*)
+//
+in//let
+//
+case+
+d3p0.node() of
+|
+D3P1errck
+(lvl0, d3p1) =>
+(
+auxmain(out0, d3p1); 
+if
+(lvl0
+>FPELTCK_ERRVL)
+then ((*void*)) else
+let
+val loc0 = d3p0.lctn()
+in//let
+printsln();
+printsln("\
+FPELTCK-ERROR:", loc0, ":", d3p0)
+end//let
+)
+| _(* otherwise *) => (  (* skipped *)  )
+//
+end(*let*)//end-of(fpeltck_d3pat1(out,d3p0))
+//
+endloc(*local*)//end-of(local(fpeltck_d3pat1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_fpeltck_dynexp.dats] *)

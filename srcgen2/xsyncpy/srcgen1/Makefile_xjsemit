@@ -34,6 +34,7 @@ dynexp3.sats \
 trx3cpy.sats \
 trxltck.sats \
 tryltck.sats \
+fpeltck.sats \
 
 ########################################################################
 
@@ -64,6 +65,10 @@ trxltck_decl00.dats \
 tryltck.dats \
 tryltck_dynexp.dats \
 tryltck_decl00.dats \
+fpeltck.dats \
+fpeltck_dynexp.dats \
+fpeltck_decl00.dats \
+
 
 ########################################################################
 ########################################################################
