@@ -287,6 +287,12 @@ fpeltck_d3exp1lst
 (
 list_fpeltck_fnp(out0, d3es, fpeltck_d3exp1))
 //
+#implfun
+fpeltck_d3exp1opt
+  (out0, dopt) =
+(
+optn_fpeltck_fnp(out0, dopt, fpeltck_d3exp1))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
