@@ -93,6 +93,71 @@ end//let
 )(*case+*)//end(d3ecl1_errck(...))
 //
 (* ****** ****** *)
+//
+fun
+d3ecl1_static_errck
+( loc0: loc_t
+, tknd: token
+, dcl1: d3ecl1): d3ecl1 =
+let
+val lvl = 0
+in//let
+d3ecl1_errck
+( lvl+1
+, d3ecl1(loc0, D3C1static(tknd, dcl1)))
+end(*let*)//end-of-[d3ecl1_static_errck]
+//
+fun
+d3ecl1_extern_errck
+( loc0: loc_t
+, tknd: token
+, dcl1: d3ecl1): d3ecl1 =
+let
+val lvl = 0
+in//let
+d3ecl1_errck
+( lvl+1
+, d3ecl1(loc0, D3C1extern(tknd, dcl1)))
+end(*let*)//end-of-[d3ecl1_extern_errck]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3ecl1_valdclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d3vs
+: d3valdcl1lst): d3ecl1 =
+let
+val lvl = 0
+in//let
+d3ecl1_errck
+( lvl+1
+, d3ecl1(loc0, D3C1valdclst(tknd, d3vs)))
+end(*let*)//end-of-[d3ecl1_valdclst_errck]
+//
+(* ****** ****** *)
+//
+fun
+d3ecl1_vardclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d3vs
+: d3vardcl1lst): d3ecl1 =
+let
+val lvl = 0
+in//let
+d3ecl1_errck
+( lvl+1
+, d3ecl1(loc0, D3C1vardclst(tknd, d3vs)))
+end(*let*)//end-of-[d3ecl1_vardclst_errck]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -102,13 +167,17 @@ d3ecl1_tryltck
 case+
 d3cl.node() of
 //
-|
-D3C1staload _ => (   d3cl   )
-|
-D3C1include _ => (   d3cl   )
+|D3C1static _ =>
+(
+  f0_static(d3cl, err0))
+|D3C1extern _ =>
+(
+  f0_extern(d3cl, err0))
 //
-|
-_(*otherwise*) =>
+|D3C1staload _ => (   d3cl   )
+|D3C1include _ => (   d3cl   )
+//
+|_(*otherwise*) =>
 let
 val lvl0 = 1
 in//let
@@ -118,12 +187,78 @@ endlet//end of [_(______otherwise______)]
 //
 ) where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_static
+(dcl0: d3ecl1
+,err0: &sint >> _): d3ecl1 =
+let
+//
+val nerr = err0
+//
+val-
+D3C1static
+( tknd, dcl1) = dcl0.node()
+//
+val dcl1 = d3ecl1_tryltck(dcl1, err0)
+//
+in
+if // if
+(err0=nerr)
+then dcl0 else
+let
+val
+loc0 = dcl0.lctn()
+in//let
+(
+  d3ecl1_static_errck(loc0, tknd, dcl1))
+end//let
+end(*let*)//end-of-[f0_static(dcl0, err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_extern
+(dcl0: d3ecl1
+,err0: &sint >> _): d3ecl1 =
+let
+//
+val nerr = err0
+//
+val-
+D3C1extern
+( tknd, dcl1) = dcl0.node()
+//
+val dcl1 = d3ecl1_tryltck(dcl1, err0)
+//
+in
+if // if
+(err0=nerr)
+then dcl0 else
+let
+val
+loc0 = dcl0.lctn()
+in//let
+(
+  d3ecl1_extern_errck(loc0, tknd, dcl1))
+end//let
+end(*let*)//end-of-[f0_extern(dcl0, err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val (  ) =
 (
-prerrsln("d3ecl1_tryltck: d3cl = ", d3cl))
+  prerrsln("d3ecl1_tryltck: d3cl = ", d3cl))
 val (  ) =
 (
-prerrsln("d3ecl1_tryltck: d3cl = ", d3cl))
+  prerrsln("d3ecl1_tryltck: d3cl = ", d3cl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 }(*where*)//end-of-[d3ecl1_tryltck(d3cl,err0)]
 //
 (* ****** ****** *)
