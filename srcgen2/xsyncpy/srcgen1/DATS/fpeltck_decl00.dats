@@ -79,6 +79,11 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
+|D3C1staload _ => (  (*void*)  )
+|D3C1include _ => (  (*void*)  )
+//
+(* ****** ****** *)
+//
 |D3C1errck
 (lvl0,dcl1) => fpeltck_d3ecl1(out0, dcl0)
 //

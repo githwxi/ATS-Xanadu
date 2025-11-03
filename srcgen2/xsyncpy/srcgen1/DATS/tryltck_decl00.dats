@@ -103,6 +103,11 @@ case+
 d3cl.node() of
 //
 |
+D3C1staload _ => (   d3cl   )
+|
+D3C1include _ => (   d3cl   )
+//
+|
 _(*otherwise*) =>
 let
 val lvl0 = 1
