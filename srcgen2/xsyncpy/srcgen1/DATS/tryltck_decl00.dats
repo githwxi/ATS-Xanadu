@@ -340,6 +340,40 @@ val (  ) =
 (* ****** ****** *)
 //
 #implfun
+d3valdcl1_tread3a
+  (dval, err0) =
+let
+//
+val nerr = err0
+//
+val
+dpat = d3valdcl1_dpat$get(dval)
+val
+tdxp = d3valdcl1_tdxp$get(dval)
+val
+wsxp = d3valdcl1_wsxp$get(dval)
+//
+val
+dpat = d3pat1_tryltck(dpat, err0)
+val
+tdxp = teqd3exp1_tryltck(tdxp, err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (dval) else
+let
+val loc0 = dval.lctn()
+in//let
+(
+  d3valdcl1( loc0, dpat, tdxp, wsxp ))
+end//let
+endlet//end-of-[d3valdcl1_tryltck(dval,err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d3ecl1lst_tryltck
   ( dcls, err0 ) =
 (

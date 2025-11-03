@@ -660,7 +660,7 @@ if
 (err=e00)
 then (dval)
 else d3valdcl( loc, dpat, tdxp, wsxp )
-endlet // end-of-[tread3a_d3valdcl(out,dval)]
+endlet // end-of-[tread3a_d3valdcl(dval,err)]
 //
 (* ****** ****** *)
 //
@@ -694,7 +694,7 @@ if
 (err=e00)
 then (dvar)
 else d3vardcl(loc,dpid,vpid,sres,dini)
-endlet // end-of-[tread3a_d3vardcl(out,dvar)]
+endlet // end-of-[tread3a_d3vardcl(dvar,err)]
 //
 (* ****** ****** *)
 //
@@ -737,7 +737,7 @@ if
 (err=e00)
 then (dfun)
 else d3fundcl(loc,dpid,farg,sres,tdxp,wsxp)
-endlet // end-of-[tread3a_d3fundcl(out,dfun)]
+endlet // end-of-[tread3a_d3fundcl(dfun,err)]
 //
 (* ****** ****** *)
 //
