@@ -339,6 +339,36 @@ val (  ) =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#implfun
+teqd3exp1_tryltck
+  (tdxp, err0) =
+(
+case+ tdxp of
+|TEQD3EXP1none
+(  (*void*)  ) => (tdxp)
+|TEQD3EXP1some
+( teq1, d3e2 ) =>
+let
+//
+val nerr = err0
+(*
+val ( ) =
+prerrsln("\
+teqd3exp1_tryltck: d3e2 = ", d3e2)
+*)
+val d3e2 = d3exp1_tryltck(d3e2, err0)
+in//letp
+(
+if // if
+(err0=nerr)
+then tdxp else TEQD3EXP1some(teq1, d3e2))
+end(*let*)//end-of-[TEQD3EXP1some(teq1,d3e2)]
+)(*case+*)//end-of-(teqd3exp1_tryltck(tdxp,err))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 d3valdcl1_tread3a
   (dval, err0) =
