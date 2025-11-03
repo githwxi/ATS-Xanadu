@@ -110,8 +110,18 @@ fun d3ecl1opt_tryltck: ftryltck(d3ecl1opt)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-d3ecl1lstopt_tryltck: ftryltck(d3ecl1lstopt)
+fun d3valdcl1_tryltck: ftryltck(d3valdcl1)
+fun d3vardcl1_tryltck: ftryltck(d3vardcl1)
+fun d3fundcl1_tryltck: ftryltck(d3fundcl1)
+//
+fun d3valdcl1lst_tryltck: ftryltck(d3valdcl1lst)
+fun d3vardcl1lst_tryltck: ftryltck(d3vardcl1lst)
+fun d3fundcl1lst_tryltck: ftryltck(d3fundcl1lst)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun d3ecl1lstopt_tryltck: ftryltck(d3ecl1lstopt)
 //
 (* ****** ****** *)
 (* ****** ****** *)
