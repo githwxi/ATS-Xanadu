@@ -167,6 +167,8 @@ d3ecl1_tryltck
 case+
 d3cl.node() of
 //
+(* ****** ****** *)
+//
 |D3C1static _ =>
 (
   f0_static(d3cl, err0))
@@ -174,8 +176,18 @@ d3cl.node() of
 (
   f0_extern(d3cl, err0))
 //
-|D3C1staload _ => (   d3cl   )
-|D3C1include _ => (   d3cl   )
+(* ****** ****** *)
+//
+|D3C1staload _ => (d3cl)
+|D3C1include _ => (d3cl)
+//
+(* ****** ****** *)
+//
+|D3C1valdclst _ =>
+(
+  f0_valdclst(d3cl, err0))
+//
+(* ****** ****** *)
 //
 |_(*otherwise*) =>
 let
@@ -249,6 +261,69 @@ end(*let*)//end-of-[f0_extern(dcl0, err0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+f0_valdclst
+(dcl0: d3ecl1
+,err0: &sint >> _): d3ecl1 =
+let
+//
+val nerr = err0
+//
+val-
+D3C1valdclst
+(tknd, d3vs) = dcl0.node()
+//
+val d3vs =
+d3valdcl1lst_tryltck(d3vs, err0)
+//
+in//let
+//
+if
+(err0=nerr)
+then (dcl0) else
+let
+  val loc0 = dcl0.lctn()
+in//let
+(
+  d3ecl1_valdclst_errck(loc0,tknd,d3vs))
+end//let
+//
+end(*let*)//end-of-[f0_valdclst(dcl0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+(dcl0: d3ecl1
+,err0: &sint >> _): d3ecl1 =
+let
+//
+val nerr = err0
+//
+val-
+D3C1vardclst
+(tknd, d3vs) = dcl0.node()
+//
+val d3vs =
+d3vardcl1lst_tryltck(d3vs, err0)
+//
+in//let
+//
+if
+(err0=nerr)
+then (dcl0) else
+let
+  val loc0 = dcl0.lctn()
+in//let
+(
+  d3ecl1_vardclst_errck(loc0,tknd,d3vs))
+end//let
+//
+end(*let*)//end-of-[f0_vardclst(dcl0,err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val (  ) =
 (
   prerrsln("d3ecl1_tryltck: d3cl = ", d3cl))
@@ -260,6 +335,39 @@ val (  ) =
 (* ****** ****** *)
 //
 }(*where*)//end-of-[d3ecl1_tryltck(d3cl,err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3ecl1lst_tryltck
+  ( dcls, err0 ) =
+(
+list_tryltck_fnp(dcls, err0, d3ecl1_tryltck))
+//
+(* ****** ****** *)
+//
+#implfun
+d3valdcl1lst_tryltck
+  ( d3vs, err0  ) =
+(
+list_tryltck_fnp(d3vs, err0, d3valdcl1_tryltck))
+//
+(* ****** ****** *)
+//
+#implfun
+d3vardcl1lst_tryltck
+  ( d3vs, err0 ) =
+(
+list_tryltck_fnp(d3vs, err0, d3vardcl1_tryltck))
+//
+(* ****** ****** *)
+//
+#implfun
+d3fundcl1lst_tryltck
+  (  d3fs, err0  ) =
+(
+list_tryltck_fnp(d3fs, err0, d3fundcl1_tryltck))
 //
 (* ****** ****** *)
 (* ****** ****** *)
