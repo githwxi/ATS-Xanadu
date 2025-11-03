@@ -99,6 +99,7 @@ val () = prerrsln("\
 fpeltck_d3ecl1: auxmain: loc0 = ", loc0)
 val () = prerrsln("\
 fpeltck_d3ecl1: auxmain: dcl0 = ", dcl0)
+//
 endlet
 //
 (* ****** ****** *)
@@ -117,6 +118,7 @@ let
 #impltmp
 g_print$out<>() = out0
 //
+(*
 val () =
 let
 val loc0 = dcl0.lctn()
@@ -127,6 +129,7 @@ end//let
 val () =
 prerrsln
 ("fpeltck_d3ecl1: dcl0 = ", dcl0)
+*)
 //
 in//let
 //
