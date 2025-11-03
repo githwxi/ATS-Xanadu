@@ -62,6 +62,19 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload <
+with sint_lt$sint of 1099
+#symload >
+with sint_gt$sint of 1099
+#symload =
+with sint_eq$sint of 1099
+#symload <=
+with sint_lte$sint of 1099
+#symload >=
+with sint_gte$sint of 1099
+#symload !=
+with sint_neq$sint of 1099
+//
 #symload +
 with sint_add$sint of 1099
 #symload -
@@ -186,6 +199,9 @@ d3cl.node() of
 |D3C1valdclst _ =>
 (
   f0_valdclst(d3cl, err0))
+|D3C1vardclst _ =>
+(
+  f0_vardclst(d3cl, err0))
 //
 (* ****** ****** *)
 //
@@ -370,7 +386,7 @@ end(*let*)//end-of-[TEQD3EXP1some(teq1,d3e2)]
 (* ****** ****** *)
 //
 #implfun
-d3valdcl1_tread3a
+d3valdcl1_tryltck
   (dval, err0) =
 let
 //
@@ -401,14 +417,42 @@ end//let
 endlet//end-of-[d3valdcl1_tryltck(dval,err0)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #implfun
-d3ecl1lst_tryltck
-  ( dcls, err0 ) =
-(
-list_tryltck_fnp(dcls, err0, d3ecl1_tryltck))
+d3vardcl1_tryltck
+  (dvar, err0) =
+let
 //
+val nerr = err0
+//
+val
+dpid = d3vardcl1_dpid$get(dvar)
+val
+styp = d3vardcl1_styp$get(dvar)
+val
+vpid = d3vardcl1_vpid$get(dvar)
+val
+sres = d3vardcl1_sres$get(dvar)
+val
+dini = d3vardcl1_dini$get(dvar)
+//
+val
+dini = teqd3exp1_tryltck(dini, err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (dvar) else
+let
+val loc0 = dvar.lctn()
+in//let
+(
+d3vardcl1
+(loc0, dpid, styp, vpid, sres, dini))
+end//let
+endlet//end-of-[d3vardcl1_tryltck(dvar,err0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
