@@ -61,6 +61,27 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload <
+with sint_lt$sint of 1099
+#symload >
+with sint_gt$sint of 1099
+#symload =
+with sint_eq$sint of 1099
+#symload <=
+with sint_lte$sint of 1099
+#symload >=
+with sint_gte$sint of 1099
+#symload !=
+with sint_neq$sint of 1099
+//
+#symload +
+with sint_add$sint of 1099
+#symload -
+with sint_sub$sint of 1099
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload
 "./../../../SATS/statyp2.sats"
 #staload
@@ -110,8 +131,10 @@ case+
 dpat.node() of
 //
 | _(*otherwise*) =>
+let
+val () = err0 := err0+1 in
 (
-  d3pat1_errck(0(*lvl*), dpat))
+  d3pat1_errck(1(*lvl*), dpat)) end
 //
 ) where
 {
@@ -133,9 +156,17 @@ d3exp1_tryltck
 case+
 dexp.node() of
 //
+|D3E1int _ => dexp
+|D3E1btf _ => dexp
+|D3E1chr _ => dexp
+|D3E1flt _ => dexp
+|D3E1str _ => dexp
+//
 | _(*otherwise*) =>
+let
+val () = err0 := err0+1 in
 (
-  d3exp1_errck(0(*lvl*), dexp))
+  d3exp1_errck(1(*lvl*), dexp)) end
 //
 ) where
 {
