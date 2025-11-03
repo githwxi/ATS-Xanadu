@@ -123,12 +123,75 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+d3pat1_errvl
+(d3p0: d3pat1): sint =
+(
+case+ d3p0.node() of
+|
+D3P1errck
+(lvl0, _) => lvl0 | _ => 0)
+#symload errvl with d3pat1_errvl
+//
+fun
+d3pat1lst_errvl
+(d3ps: d3pat1lst): sint =
+(
+gseq_folditm
+<xs><x0><r0>(d3ps, 0))
+where
+{
+//
+#typedef r0 = sint
+#typedef x0 = d3pat1
+#typedef xs = d3pat1lst
+//
+#impltmp
+folditm$fopr
+<x0><r0>(r0, x0) =
+let
+val x0 =
+d3pat1_errvl(x0) in//let
+(if r0 >= x0 then r0 else x0) end
+//
+}(*where*)//end-of(d3pat1lst_errvl)
+#symload errvl with d3pat1lst_errvl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3pat1_tup0_errck
+(loc0: loc_t
+,t2q0: s2typ1
+,npf1: (sint)
+,d3ps: d3pat1lst): d3pat1 =
+let
+//
+val
+lvl0 =
+errvl(d3ps) in//let
+//
+d3pat1_errck
+( lvl0+1
+, d3pat1
+  (loc0, t2q0, D3P1tup0(npf1, d3ps)) )
+//
+endlet//end-of-[d3pat1_tup0_errck(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 d3pat1_tryltck
 ( dpat, err0 ) =
 (
 case+
 dpat.node() of
+//
+|D3P1tup0 _ =>
+(
+  f0_tup0(dpat, err0))
 //
 | _(*otherwise*) =>
 let
@@ -138,12 +201,51 @@ val () = err0 := err0+1 in
 //
 ) where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+(d3p0: d3pat1
+,err0: &sint >> _): d3pat1 =
+let
+//
+val nerr = err0
+//
+val t2q0 = d3p0.styp()
+//
+val-
+D3P1tup0
+( npf1, d3ps) = d3p0.node()
+//
+val d3ps =
+(
+  d3pat1lst_tryltck(d3ps, err0))
+//
+in//let
+if // if
+(err0=nerr)
+then (d3p0) else
+let
+val loc0 = d3p0.lctn() in
+(
+d3pat1_tup0_errck(loc0,t2q0,npf1,d3ps))
+end//let
+end(*let*)//end-of-[f0_tup0(d3p0,err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val (  ) =
 (
 prerrsln("d3pat1_tryltck: dpat = ", dpat))
 val (  ) =
 (
 prerrsln("d3pat1_tryltck: dpat = ", dpat))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 }(*where*)//end-of-[d3pat1_tryltck(dpat,err0)]
 //
 (* ****** ****** *)

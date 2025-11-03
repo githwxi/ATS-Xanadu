@@ -155,6 +155,20 @@ end(*let*)//end-of-[d3parsed1_of_tryltck(dpar)]
 (* ****** ****** *)
 //
 #implfun
+d3pat1lst_tryltck
+  (d3ps, err0) =
+(
+list_tryltck_fnp(d3ps, err0, d3pat1_tryltck))
+//
+#implfun
+d3pat1opt_tryltck
+  (dopt, err0) =
+(
+optn_tryltck_fnp(dopt, err0, d3pat1_tryltck))
+//
+(* ****** ****** *)
+//
+#implfun
 d3exp1lst_tryltck
   (d3es, err0) =
 (
