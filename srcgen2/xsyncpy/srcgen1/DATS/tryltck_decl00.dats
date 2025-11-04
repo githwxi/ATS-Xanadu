@@ -171,6 +171,31 @@ d3ecl1_errck
 end(*let*)//end-of-[d3ecl1_vardclst_errck]
 //
 (* ****** ****** *)
+//
+fun
+d3ecl1_fundclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, tqas
+: t2qaglst
+, d2cs
+: d2cstlst
+, d3fs
+: d3fundcl1lst): d3ecl1 =
+let
+val lvl = 0
+in//let
+d3ecl1_errck
+(
+lvl+1,
+d3ecl1_make_lctn$node
+( loc0
+, D3C1fundclst(tknd, tqas, d2cs, d3fs)))
+end(*let*)//end-of-[d3ecl1_fundclst_errck]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -202,6 +227,12 @@ d3cl.node() of
 |D3C1vardclst _ =>
 (
   f0_vardclst(d3cl, err0))
+//
+(* ****** ****** *)
+//
+|D3C1fundclst _ =>
+(
+  f0_fundclst(d3cl, err0))
 //
 (* ****** ****** *)
 //
@@ -338,6 +369,37 @@ end//let
 end(*let*)//end-of-[f0_vardclst(dcl0,err0)]
 //
 (* ****** ****** *)
+//
+fun
+f0_fundclst
+( dcl0: d3ecl1
+, err0: &sint >> _): d3ecl1 =
+let
+//
+val nerr = err0
+//
+val-
+D3C1fundclst
+(tknd
+,tqas
+,d2cs, d3fs) = dcl0.node()
+//
+val d3fs =
+(
+d3fundcl1lst_tryltck(d3fs, err0))
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (dcl0) else
+(
+  d3ecl1_fundclst_errck
+  (dcl0.lctn(), tknd, tqas, d2cs, d3fs) )
+//
+end(*let*)//end-of-[f0_fundclst(dcl0,err0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val (  ) =
@@ -451,6 +513,57 @@ d3vardcl1
 (loc0, dpid, styp, vpid, sres, dini))
 end//let
 endlet//end-of-[d3vardcl1_tryltck(dvar,err0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3fundcl1_tryltck
+  (dfun, err0) =
+let
+//
+val nerr = err0
+//
+val
+dpid = d3fundcl1_dpid$get(dfun)
+//
+val
+farg = d3fundcl1_farg$get(dfun)
+val
+faxp = d3fundcl1_faxp$get(dfun)
+//
+val
+sres = d3fundcl1_sres$get(dfun)
+val
+tdxp = d3fundcl1_tdxp$get(dfun)
+val
+wsxp = d3fundcl1_wsxp$get(dfun)
+//
+val
+vts1 = d3fundcl1_vts1$get(dfun)
+val
+vts2 = d3fundcl1_vts2$get(dfun)
+//
+val
+farg =
+(
+  f3arg1lst_tryltck(farg, err0))
+val
+tdxp =
+(
+  teqd3exp1_tryltck(tdxp, err0))
+//
+in//let
+if // if
+(err=e00)
+then (dfun) else
+let
+val loc0 = dfun.lctn()
+in//let
+(
+d3fundcl1(loc0,
+  dpid,farg,faxp,sres,tdxp,wsxp,vts1,vts2))
+end//let
+endlet // end-of-[tread3a_d3fundcl(dfun,err)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -521,7 +521,6 @@ f0_fundclst
 let
 //
 val e00 = err
-val loc = dcl.lctn()
 //
 val-
 D3Cfundclst
@@ -540,8 +539,13 @@ in//let
 if
 (err=e00)
 then (dcl) else
-d3ecl_fundclst_errck
-( dcl.lctn() , tknd , tqas , d2cs , d3fs )
+let
+val loc0 = dcl.lctn()
+in//let
+( 
+  d3ecl_fundclst_errck
+  ( loc0 , tknd , tqas , d2cs , d3fs )  )
+end//let
 end (*let*) // end of [f0_fundclst(dcl,err)]
 //
 (* ****** ****** *)
