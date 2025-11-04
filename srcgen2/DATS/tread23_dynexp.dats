@@ -526,6 +526,20 @@ d3pat_errck
 endlet // end of [d3pat_annot_errck(...)]
 //
 (* ****** ****** *)
+//
+fun
+d3pat_t2pck_errck
+( loc0: loc_t
+, d3p1: d3pat
+, t2p2: s2typ): d3pat =
+let
+val lvl0 = errvl(d3p1) in//let
+d3pat_errck
+( lvl0+1
+, d3pat( loc0, D3Pt2pck( d3p1, t2p2 ) ))
+endlet // end of [d3pat_t2pck_errck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -1063,7 +1077,12 @@ tread23_d3pat
 case+
 d3p0.node() of
 //
+(* ****** ****** *)
+//
 |D3Pvar _ => d3p0
+|D3Pcon _ => d3p0
+//
+(* ****** ****** *)
 //
 |D3Pint _ => d3p0
 |D3Pbtf _ => d3p0
@@ -1071,31 +1090,48 @@ d3p0.node() of
 |D3Pflt _ => d3p0
 |D3Pstr _ => d3p0
 //
+(* ****** ****** *)
+//
 |D3Pany _ => d3p0
 //
-|D3Pcon _ => d3p0
+(* ****** ****** *)
 //
 |D3Pbang _ => f0_bang(d3p0, err)
 |D3Pflat _ => f0_flat(d3p0, err)
 |D3Pfree _ => f0_free(d3p0, err)
+//
+(* ****** ****** *)
 //
 |D3Psapp _ => f0_sapp(d3p0, err)
 (*
 |D3Psapq _ => f0_sapq(d3p0, err)
 *)
 //
+(*
+|D3Ptapp _ => f0_tapp(d3p0, err)
+*)
 |D3Ptapq _ => f0_tapq(d3p0, err)
 //
+(* ****** ****** *)
 |D3Pdap1 _ => f0_dap1(d3p0, err)
 |D3Pdapp _ => f0_dapp(d3p0, err)
+(* ****** ****** *)
 //
 |D3Prfpt _ => f0_rfpt(d3p0, err)
+//
+(* ****** ****** *)
 //
 |D3Ptup0 _ => f0_tup0(d3p0, err)
 |D3Ptup1 _ => f0_tup1(d3p0, err)
 |D3Prcd2 _ => f0_rcd2(d3p0, err)
 //
+(* ****** ****** *)
+//
 |D3Pannot _ => f0_annot(d3p0, err)
+//
+|D3Pt2pck _ => f0_t2pck(d3p0, err)
+//
+(* ****** ****** *)
 //
 | _(*otherwise*) =>
 let
@@ -1104,6 +1140,8 @@ in//let
 (
 err := err+1; d3pat_errck(lvl0,d3p0))
 endlet // end of [ _(* otherwise *) ]
+//
+(* ****** ****** *)
 //
 ) where // end-of-[(*case+(d3p0)-of*)]
 {
@@ -1424,10 +1462,46 @@ end (*let*) // end-of-[else]
 end (*let*) // end of [f0_annot(d3p,err)]
 //
 (* ****** ****** *)
+//
+fun
+f0_t2pck
+(d3p: d3pat
+,err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
 (*
-  val () =
-  prerrsln("tread23_d3pat: d3p0 = ", d3p0)
+HX-2025-11-04:
+[t2pck] treated as error
 *)
+val ( ) = err := e00 + 1
+//
+val-
+D3Pt2pck
+(d3p1, t2p2) = d3p.node()
+//
+val
+d3p1 = tread23_d3pat(d3p1, err)
+//
+in//let
+if // if
+(err=e00)
+then (d3p) else
+let
+val loc = d3p.lctn() in
+d3pat_t2pck_errck( loc, d3p1, t2p2 )
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_t2pck(d3e,err)]
+//
+(* ****** ****** *)
+//
+(*
+val () =
+(
+prerrsln("tread23_d3pat: d3p0 = ", d3p0))
+*)
+//
 (* ****** ****** *)
 //
 } (*where*)//end-[tread23_d3pat(d3p0,err)]
@@ -2517,7 +2591,7 @@ val
 d3e1 = tread23_d3exp(d3e1, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (d3e) else
 let
