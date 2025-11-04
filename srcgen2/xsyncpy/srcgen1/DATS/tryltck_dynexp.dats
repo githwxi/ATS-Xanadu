@@ -301,6 +301,31 @@ d3exp1_errck
 endlet//end-of-[d3exp1_assgn_errck(...)]
 //
 (* ****** ****** *)
+//
+fun
+d3exp1_t2ped_errck
+(loc0: loc_t
+,t3q0: d3typ1
+,d3e1: d3exp1
+,t2q1: s2typ1
+,t2q2: s2typ1   ): d3exp1 =
+let
+//
+val
+lvl0 =
+errvl(d3e1) in//let
+//
+(
+d3exp1_errck
+(
+lvl0+1,
+d3exp1_make_lctn$dtyp$node
+( loc0
+, t3q0, D3E1t2ped(d3e1, t2q1, t2q2))))
+//
+endlet//end-of-[d3exp1_t2ped_errck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -412,6 +437,10 @@ dexp.node() of
 (
   f0_assgn(dexp, err0))
 //
+(* ****** ****** *)
+|D3E1t2ped _ =>
+(
+  f0_t2ped(dexp, err0))
 (* ****** ****** *)
 //
 | _(*otherwise*) =>
@@ -534,12 +563,51 @@ end//let
 //
 end(*let*)//end-of-[f0_assgn(d3e0,err0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_t2ped
+( d3e0: d3exp1
+, err0
+: &sint >> sint): d3exp1 =
+let
+//
+val nerr = err0
+//
+val-
+D3E1t2ped
+(d3e1
+,t2q1, t2q2) = d3e0.node()
+//
+val t3q0 = d3e0.dtyp()
+//
+val d3e1 =
+(
+  d3exp1_tryltck(d3e1, err0))
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (d3e0) else
+(
+d3exp1_t2ped_errck
+(d3e0.lctn(), t3q0, d3e1, t2q1, t2q2))
+//
+end(*let*)//end-of-[f0_t2ped(d3e0,err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val (  ) =
 (
 prerrsln("d3exp1_tryltck: dexp = ", dexp))
 val (  ) =
 (
 prerrsln("d3exp1_tryltck: dexp = ", dexp))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 }(*where*)//end-of-[d3exp1_tryltck(dexp,err0)]
 //

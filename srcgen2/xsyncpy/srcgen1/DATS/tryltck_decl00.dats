@@ -525,6 +525,8 @@ val nerr = err0
 //
 val
 dpid = d3fundcl1_dpid$get(dfun)
+val
+styp = d3fundcl1_styp$get(dfun)
 //
 val
 farg = d3fundcl1_farg$get(dfun)
@@ -543,25 +545,28 @@ vts1 = d3fundcl1_vts1$get(dfun)
 val
 vts2 = d3fundcl1_vts2$get(dfun)
 //
-val
-farg =
+(*
+val farg =
 (
   f3arg1lst_tryltck(farg, err0))
-val
-tdxp =
+val faxp =
+(
+  f3axp1lst_tryltck(farg, err0))
+*)
+val tdxp =
 (
   teqd3exp1_tryltck(tdxp, err0))
 //
 in//let
 if // if
-(err=e00)
+(err0=nerr)
 then (dfun) else
 let
 val loc0 = dfun.lctn()
 in//let
 (
-d3fundcl1(loc0,
-  dpid,farg,faxp,sres,tdxp,wsxp,vts1,vts2))
+d3fundcl1(loc0,dpid,
+  styp,farg,faxp,sres,tdxp,wsxp,vts1,vts2))
 end//let
 endlet // end-of-[tread3a_d3fundcl(dfun,err)]
 //
