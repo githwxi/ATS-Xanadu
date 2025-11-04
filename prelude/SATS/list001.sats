@@ -213,6 +213,78 @@ list_iforitm$f2un
 (* ****** ****** *)
 //
 (*
+HX-2025-11-03:
+Mon Nov  3 03:57:40 PM EST 2025
+*)
+//
+fun
+<x0:t0>
+<r0:vt>
+list_folditm
+(xs: list(x0), r0: r0): ( r0 )
+fun
+<x0:t0>
+<r0:vt>
+list_rfolditm
+(xs: list(x0), r0: r0): ( r0 )
+fun
+<x0:t0>
+<r0:vt>
+list_ifolditm
+(xs: list(x0), r0: r0): ( r0 )
+fun
+<x0:t0>
+<r0:vt>
+list_rfolditm
+(xs: list(x0), r0: r0): ( r0 )
+//
+#symload folditm with list_folditm of 1000
+#symload rfolditm with list_rfolditm of 1000
+#symload ifolditm with list_ifolditm of 1000
+#symload irfolditm with list_irfolditm of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<r0:vt>
+list_folditm$f2un
+( xs
+: list(x0), fopr: (r0, x0) -> r0): (r0)
+#symload folditm with list_folditm$f2un of 1000
+#symload folditm$fun with list_folditm$f2un of 1000
+//
+fun
+<x0:t0>
+<r0:vt>
+list_rfolditm$f2un
+( xs
+: list(x0), fopr: (r0, x0) -> r0): (r0)
+#symload rfolditm with list_rfolditm$f2un of 1000
+#symload rfolditm$fun with list_rfolditm$f2un of 1000
+//
+fun
+<x0:t0>
+<r0:vt>
+list_ifolditm$f3un
+( xs
+: list(x0), fopr: (r0, ni, x0) -> r0): (r0)
+#symload ifolditm with list_ifolditm$f3un of 1000
+#symload ifolditm$fun with list_ifolditm$f3un of 1000
+//
+fun
+<x0:t0>
+<r0:vt>
+list_irfolditm$f3un
+( xs
+: list(x0), fopr: (r0, ni, x0) -> r0): (r0)
+#symload irfolditm with list_irfolditm$f3un of 1000
+#symload irfolditm$fun with list_irfolditm$f3un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-07-31:
 Wed 31 Jul 2024 03:16:49 AM EDT
 *)

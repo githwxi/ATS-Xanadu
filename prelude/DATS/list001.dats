@@ -402,6 +402,10 @@ gseq_rforitm$f1un<list(x0)><x0>(* void *)
 < x0:t0 >
 list_iforitm$f2un =
 gseq_iforitm$f2un<list(x0)><x0>(* void *)
+#impltmp
+< x0:t0 >
+list_irforitm$f2un =
+gseq_irforitm$f2un<list(x0)><x0>(* void *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -717,6 +721,92 @@ Sat May 31 09:19:05 PM EDT 2025
 < e1:vt >
 list_map$e1nv =
 gseq_map$e1nv_list<list(x0)><x0><y0><e1>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-11-03:
+Mon Nov  3 04:07:29 PM EST 2025
+*)
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
+list_folditm
+  (xs, r0) = 
+(
+  loop(xs, r0)) where
+{
+//
+fun
+loop
+( xs
+: list(x0), r0: r0): (r0) =
+(
+case+ xs of
+| ~
+list_nil() => ( r0 )
+| ~
+list_cons(x1, xs) =>
+let
+val r0 =
+folditm$fopr
+<x0><r0>(r0, x1) in loop(xs, r0) end)
+//
+}(*where*)//end-of-[list_folditm<x0><r0>(xs,r0)]
+//
+#impltmp
+{ x0:t0 }
+{ r0:vt }
+gseq_folditm
+<list(x0)><x0><r0> = list_folditm<x0><r0>
+#impltmp
+{ x0:t0 }
+{ r0:vt }
+gseq_folditm0
+<list(x0)><x0><r0>(xs, r0) =
+(
+list_folditm<x0><r0>(xs, r0)) where
+{
+#impltmp
+folditm$fopr<x0><r0> = folditm$fopr0<x0><r0>
+}(*where*)//end(gseq_folditm0<list(x0)><x0><r0>)
+#impltmp
+{ x0:t0 }
+{ r0:vt }
+gseq_folditm1
+<list(x0)><x0><r0>(xs, r0) =
+(
+list_folditm<x0><r0>(xs, r0)) where
+{
+#impltmp
+folditm$fopr<x0><r0> = folditm$fopr1<x0><r0>
+}(*where*)//end(gseq_folditm1<list(x0)><x0><r0>)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
+list_folditm$f2un =
+gseq_folditm$f2un<list(x0)><x0><r0>(*void*)
+#impltmp
+< x0:t0 >
+< r0:vt >
+list_ifolditm$f3un =
+gseq_ifolditm$f3un<list(x0)><x0><r0>(*void*)
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
+list_rfolditm$f2un =
+gseq_rfolditm$f2un<list(x0)><x0><r0>(*void*)
+#impltmp
+< x0:t0 >
+< r0:vt >
+list_irfolditm$f3un =
+gseq_irfolditm$f3un<list(x0)><x0><r0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
