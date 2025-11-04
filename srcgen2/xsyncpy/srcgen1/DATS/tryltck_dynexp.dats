@@ -137,9 +137,9 @@ fun
 d3pat1lst_errvl
 (d3ps: d3pat1lst): sint =
 (
-gseq_folditm
-<xs><x0><r0>(d3ps, 0))
-where
+list_folditm
+<x0><r0>(d3ps, 0(*lvl*))
+) where
 {
 //
 #typedef r0 = sint
@@ -161,6 +161,26 @@ d3pat1_errvl(x0) in//let
 (* ****** ****** *)
 //
 fun
+d3exp1_errvl
+(d3e0: d3exp1): sint =
+(
+case+ d3e0.node() of
+|
+D3E1errck
+(lvl0, _) => lvl0 | _ => 0)
+#symload errvl with d3exp1_errvl
+//
+fun
+d3exp1_errvl_a2
+(d3e1: d3exp1
+,d3e2: d3exp1): sint =
+maxs(errvl(d3e1), errvl(d3e2))
+#symload errvl with d3exp1_errvl_a2
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3pat1_tup0_errck
 (loc0: loc_t
 ,t2q0: s2typ1
@@ -174,10 +194,33 @@ errvl(d3ps) in//let
 //
 d3pat1_errck
 ( lvl0+1
-, d3pat1
-  (loc0, t2q0, D3P1tup0(npf1, d3ps)) )
+, d3pat1_make_lctn$styp$node
+  (loc0, t2q0, D3P1tup0(npf1, d3ps)))
 //
 endlet//end-of-[d3pat1_tup0_errck(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3exp1_assgn_errck
+(loc0: loc_t
+,t3q0: d3typ1
+,d3el: d3exp1
+,d3er: d3exp1   ): d3exp1 =
+let
+//
+val
+lvl0 =
+errvl
+(d3el, d3er) in//let
+//
+d3exp1_errck
+( lvl0+1
+, d3exp1_make_lctn$dtyp$node
+  (loc0, t3q0, D3E1assgn(d3el,d3er)))
+//
+endlet//end-of-[d3exp1_assgn_errck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -264,6 +307,10 @@ dexp.node() of
 |D3E1flt _ => dexp
 |D3E1str _ => dexp
 //
+|D3E1assgn _ =>
+(
+  f0_assgn(dexp, err0))
+//
 | _(*otherwise*) =>
 let
 val () = err0 := err0+1 in
@@ -272,12 +319,44 @@ val () = err0 := err0+1 in
 //
 ) where
 {
+//
+fun
+f0_assgn
+(d3e0: d3exp1
+,err0: &sint >> sint): d3exp1 =
+let
+//
+val-
+D3E1assgn
+(d3el, d3er) = d3e0.node()
+//
+val nerr = err0
+//
+val t3q0 = d3e0.dtyp()
+//
+val d3el =
+  d3exp1_tryltck(d3el, err0)
+val d3er =
+  d3exp1_tryltck(d3er, err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val loc0 = d3e0.lctn()
+in//let
+d3exp1_assgn_errck(loc0,t3q0,d3el,d3er)
+end//let
+end(*let*)//end-of-[f0_assgn(d3e0,err0)]
+//
 val (  ) =
 (
 prerrsln("d3exp1_tryltck: dexp = ", dexp))
 val (  ) =
 (
 prerrsln("d3exp1_tryltck: dexp = ", dexp))
+//
 }(*where*)//end-of-[d3exp1_tryltck(dexp,err0)]
 //
 (* ****** ****** *)
