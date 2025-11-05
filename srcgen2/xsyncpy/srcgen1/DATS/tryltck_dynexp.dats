@@ -213,6 +213,17 @@ d3exp1_errvl(x0) in//let
 #symload errvl with d3exp1lst_errvl
 //
 (* ****** ****** *)
+//
+fun
+d3exp1opt_errvl
+(dopt: d3exp1opt): sint =
+(
+case+ dopt of
+| optn_nil() => 0
+| optn_cons(dexp) => errvl(dexp) )
+#symload errvl with d3exp1opt_errvl
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -259,6 +270,32 @@ d3exp1(
   loc0,t3q0,D3E1dapp(d3f0,npf1,d3es)))
 //
 endlet//end-of-[d3exp1_dapp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp1_ift0_errck
+(loc0: loc_t
+,t3q0: d3typ1
+,d3e1: d3exp1
+,dthn: d3exp1opt
+,dels: d3exp1opt): d3exp1 =
+let
+//
+val
+lvl0 = maxs
+(errvl(d3e1)
+,errvl(dthn), errvl(dels))
+//
+in//let
+//
+d3exp1_errck
+(
+lvl0+1,
+d3exp1(
+  loc0,t3q0,D3E1ift0(d3e1,dthn,dels)))
+//
+endlet//end-of-[d3exp1_ift0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -473,6 +510,12 @@ dexp.node() of
 //
 (* ****** ****** *)
 //
+|D3E1ift0 _ =>
+(
+  f0_ift0(dexp, err0))
+//
+(* ****** ****** *)
+//
 |D3E1flat _ =>
 (
   f0_flat(dexp, err0))
@@ -548,6 +591,48 @@ d3exp1_dapp_errck
 end//let
 //
 end(*let*)//end-of-[f0_dapp(d3e0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_ift0
+( d3e0: d3exp1
+, err0
+: &sint >> sint): d3exp1 =
+let
+//
+val nerr = err0
+//
+val-
+D3E1ift0
+(d3e1
+,dthn, dels) = d3e0.node()
+//
+val t3q0 = d3e0.dtyp((*0*))
+//
+val d3e1 =
+(
+d3exp1_tryltck(d3e1, err0))
+val dthn =
+d3exp1opt_tryltck(dthn, err0)
+val dels =
+d3exp1opt_tryltck(dels, err0)
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val loc0 = d3e0.lctn()
+in//let
+//
+d3exp1_ift0_errck
+(loc0, t3q0, d3e1(*cond*), dthn, dels)
+//
+end//let
+//
+end(*let*)//end-of-[f0_ift0(d3e0,err0)]
 //
 (* ****** ****** *)
 //
