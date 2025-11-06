@@ -55,10 +55,10 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 d2varlst_vt_sort0
-(dvs: d2varlst_vt): d2varlst_vt
+(d2vs: d2varlst_vt): d2varlst_vt
 fun
-dvdtplst_vt_sort0
-(vtps: dvdtplst_vt): dvdtplst_vt
+dvdtp1lst_vt_sort0
+(vtps: dvdtp1lst_vt): dvdtp1lst_vt
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -80,8 +80,8 @@ the rightmost version is kept
 Tue Sep  9 02:06:02 AM EDT 2025
 *)
 fun
-dvdtplst_vt_duprmv0
-(vts: list_vt(dvdtp)): list_vt(dvdtp)
+dvdtp1lst_vt_duprmv0
+(vts: list_vt(dvdtp1)): list_vt(dvdtp1)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -530,9 +530,9 @@ This one handles 'list' specially!
 //
 #impltmp
 g_print
-<dvdtplst>(vtps) =
+<dvdtp1lst>(vtps) =
 (
-  dvdtplst_fprint(vtps, g_print$out<>((*void*))))
+  dvdtp1lst_fprint(vtps, g_print$out<>((*void*))))
 //
 (* ****** ****** *)
 (* ****** ****** *)

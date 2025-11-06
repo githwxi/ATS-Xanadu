@@ -26,7 +26,7 @@ foo1//should be okay
 fun//this one
 foo2//should be caught
 (i0: ?sint): sint = i0
-////
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

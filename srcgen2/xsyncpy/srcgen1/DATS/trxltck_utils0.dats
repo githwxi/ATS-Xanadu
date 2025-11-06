@@ -181,7 +181,7 @@ s2t0 = sort2_delin(t2q0.sort()) }
 (* ****** ****** *)
 //
 #implfun
-dvdtplst_d2vs$inner
+dvdtp1lst_d2vs$inner
   (vts0, dvs0) =
 (
 list_vt2t(
@@ -194,9 +194,10 @@ val res0 = list_vt_nil()
 //
 fnx
 loop0
-(vts0: dvdtplst
+(vts0
+:dvdtp1lst
 ,dvs0: d2varlst
-,res0: dvdtplst_vt): dvdtplst_vt =
+,res0: dvdtp1lst_vt): dvdtp1lst_vt =
 (
 case+ dvs0 of
 |list_nil() => res0
@@ -207,10 +208,11 @@ case+ dvs0 of
 //
 and
 loop1
-(vts0: dvdtplst
+(vts0
+:dvdtp1lst
 ,d2v0: d2var
 ,dvs1: d2varlst
-,res0: dvdtplst_vt): dvdtplst_vt =
+,res0: dvdtp1lst_vt): dvdtp1lst_vt =
 (
 case+ vts0 of
 |list_nil() => res0
@@ -226,12 +228,12 @@ loop0
 ,dvs1, list_vt_cons(dvtp, res0)))
 )
 //
-}(*where*)//end-of-[dvdtplst_d2vs$inner(...)]
+}(*where*)//end-of-[dvdtp1lst_d2vs$inner(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-dvdtplst_d2vs$outer
+dvdtp1lst_d2vs$outer
   (vts0, dvs0) =
 (
 list_vt2t(
@@ -240,33 +242,42 @@ loop0(vts0, dvs0, res0)))
 ) where
 {
 //
+#vwtpdef
+res_vt = dvdtp1lst_vt
+//
 val res0 = list_vt_nil()
 //
 fnx
 loop0
-(vts0: dvdtplst
+(vts0
+:dvdtp1lst
 ,dvs0: d2varlst
-,res0: dvdtplst_vt): dvdtplst_vt =
+,res0: dvdtp1lst_vt): res_vt =
 (
 case+ dvs0 of
-|list_nil() =>
+|list_nil
+( (*void*) ) =>
 (
   list_rappendx0_vt(vts0, res0))
-|list_cons(d2v0, dvs1) =>
+|list_cons
+(d2v0, dvs1) =>
 (
   loop1(vts0, d2v0, dvs1, res0))
 )(*case+*)//end-of-[loop0(vts0,...)]
 //
 and
 loop1
-(vts0: dvdtplst
+(vts0
+:dvdtp1lst
 ,d2v0: d2var
 ,dvs1: d2varlst
-,res0: dvdtplst_vt): dvdtplst_vt =
+,res0: dvdtp1lst_vt): res_vt =
 (
 case+ vts0 of
-|list_nil() => res0
-|list_cons(dvtp, vts1) =>
+|list_nil
+( (*void*) ) => (res0)
+|list_cons
+(dvtp, vts1) =>
 (
 if
 (dvtp.0 >= d2v0)
@@ -279,11 +290,11 @@ list_vt_cons(dvtp, res0)
 in//let
 (
   loop1(vts1, d2v0, dvs1, res0))
-end//let
+end//let//end-of-(else)
 )
 )(*case+*)//end-of-[loop1(vts0,...)]
 //
-}(*where*)//end-of-[dvdtplst_d2vs$outer(...)]
+}(*where*)//end-of-[dvdtp1lst_d2vs$outer(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
