@@ -309,11 +309,11 @@ d3typ1_node =
 (* ****** ****** *)
 //
 #typedef
-dvdtp = (d2var, d3typ1)
+dvdtp1 = (d2var, d3typ1)
 #typedef
-dvdtplst = list( dvdtp )
+dvdtp1lst = list( dvdtp1 )
 #vwtpdef
-dvdtplst_vt = list_vt(dvdtp)
+dvdtp1lst_vt = list_vt(dvdtp1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -352,10 +352,10 @@ d3typ1_fprint
 (* ****** ****** *)
 //
 fun
-dvdtplst_fprint
+dvdtp1lst_fprint
 ( vtps
-: dvdtplst, out0: FILR): void
-#symload fprint with dvdtplst_fprint of 1000
+: dvdtp1lst, out0: FILR): void
+#symload fprint with dvdtp1lst_fprint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -559,16 +559,17 @@ d3exp1_node =
 |D3E1let1 of
 (
 d3ecl1lst,
-d3exp1(*scope*), dvdtplst(*lefts*))
+d3exp1(*scope*),dvdtp1lst(*lefts*))
 //
 (* ****** ****** *)
 //
 |D3E1ift0 of
 (
-d3exp1(*cond*),
-d3exp1opt(*thn*), d3exp1opt(*els*))
+d3exp1, d3exp1opt, d3exp1opt)
+//
 |D3E1cas0 of
-(token(*+/0/-*), d3exp1, d3cls1lst)
+(
+token(*casknd*), d3exp1, d3cls1lst)
 //
 (* ****** ****** *)
 //
@@ -592,7 +593,7 @@ d3exp1opt(*thn*), d3exp1opt(*els*))
 |D3E1lam1 of
 (token(*knd*)
 ,f3arg1lst
-,f3axp1lst, s2res, f1unarrw, d3exp1, dvdtplst(*lefts*))
+,f3axp1lst, s2res, f1unarrw, d3exp1, dvdtp1lst(*lefts*))
 //
 |D3E1fix0 of
 (token(*knd*), d2var(*fid*)
@@ -600,7 +601,7 @@ d3exp1opt(*thn*), d3exp1opt(*els*))
 |D3E1fix1 of
 (token(*knd*), d2var(*fid*)
 ,f3arg1lst
-,f3axp1lst, s2res, f1unarrw, d3exp1, dvdtplst(*lefts*))
+,f3axp1lst, s2res, f1unarrw, d3exp1, dvdtp1lst(*lefts*))
 //
 (* ****** ****** *)
 //
@@ -658,7 +659,7 @@ d3exp1(*lnthunk*),d3exp1lst(*frees*))
 // for lam, let, ift, and cas
 |D3E1dvdtp of
 (
-  d3exp1, dvdtplst(*d2var-sorted*))
+  d3exp1, dvdtp1lst(*d2var-ordered*))
 //
 |D3E1annot of
 (d3exp1,
@@ -725,7 +726,7 @@ d3exp1_none0
 (loc0: loctn): d3exp1
 fun
 d3exp1_dvdtp
-(dexp: d3exp1, vtps: dvdtplst): d3exp1
+(dexp: d3exp1, vtps: dvdtp1lst): d3exp1
 //
 (*
 fun
@@ -958,7 +959,7 @@ for handling bef/aft syntax!
 , t2iag1lst // HX: of s2typ1lst
 , f3arg1lst
 , f3axp1lst
-, s2res, d3exp1, dvdtplst, dvdtplst)
+, s2res, d3exp1, dvdtp1lst, dvdtp1lst)
 //
 (* ****** ****** *)
 //
@@ -1076,10 +1077,12 @@ d3fundcl1_sres$get:(d3fundcl1)->(s2res)
 fun
 d3fundcl1_wsxp$get:(d3fundcl1)->wths2exp
 //
-fun // d2vs$inner
-d3fundcl1_vts1$get:(d3fundcl1)->dvdtplst
-fun // d2vs$outer
-d3fundcl1_vts2$get:(d3fundcl1)->dvdtplst
+#symload dpid with d3fundcl1_dpid$get
+#symload styp with d3fundcl1_styp$get
+#symload sres with d3fundcl1_sres$get(*opt*)
+#symload wsxp with d3fundcl1_wsxp$get(*opt*)
+//
+(* ****** ****** *)
 //
 fun
 d3fundcl1_farg$get:(d3fundcl1)->f3arg1lst
@@ -1088,19 +1091,16 @@ d3fundcl1_faxp$get:(d3fundcl1)->f3axp1lst
 fun
 d3fundcl1_tdxp$get:(d3fundcl1)->teqd3exp1
 //
-#symload dpid with d3fundcl1_dpid$get
-//
-#symload styp with d3fundcl1_styp$get
-#symload sres with d3fundcl1_sres$get(*opt*)
-#symload wsxp with d3fundcl1_wsxp$get(*opt*)
-//
-#symload vts1 with d3fundcl1_vts1$get(*lst*)
-#symload vts2 with d3fundcl1_vts2$get(*lst*)
+fun // d2vs$inner
+d3fundcl1_vts1$get:(d3fundcl1)->dvdtp1lst
+fun // d2vs$outer
+d3fundcl1_vts2$get:(d3fundcl1)->dvdtp1lst
 //
 #symload farg with d3fundcl1_farg$get(*lst*)
 #symload faxp with d3fundcl1_faxp$get(*lst*)
-//
 #symload tdxp with d3fundcl1_tdxp$get(*opt*)
+#symload vts1 with d3fundcl1_vts1$get(*lst*)
+#symload vts2 with d3fundcl1_vts2$get(*lst*)
 //
 (* ****** ****** *)
 //
@@ -1130,7 +1130,7 @@ d3fundcl1_make_args
 ,t2q1:s2typ1
 ,farg:f3arg1lst
 ,faxp:f3axp1lst,sres:s2res
-,tdxp:teqd3exp1,wsxp:wths2exp,vts1:dvdtplst,vts2:dvdtplst
+,tdxp:teqd3exp1,wsxp:wths2exp,vts1:dvdtp1lst,vts2:dvdtp1lst
 ) : d3fundcl1//end-of-[d3fundcl1_make_args]
 //
 #symload d3fundcl1 with d3fundcl1_make_args

@@ -106,11 +106,11 @@ end(*let*)//end-of-[d3typ1_fprint(t3q0,out0)]
 (* ****** ****** *)
 //
 #implfun
-dvdtplst_fprint
+dvdtp1lst_fprint
 ( vtps, out0 ) =
 (
 prints
-("DVDTPLST(");
+("DVDTP1LST(");
 auxlst(vtps, 0); prints(")")
 ) where
 {
@@ -121,7 +121,7 @@ g_print$out<>() = out0
 fun
 auxlst
 ( vtps
-: dvdtplst, i0: sint): void =
+: dvdtp1lst, i0: sint): void =
 (
 case+ vtps of
 |
@@ -140,7 +140,7 @@ prints
 ("(", vtp1.0, ":", vtp1.1, ")") }
 )(*case+*)//end-of-[auxlst(vtps,i0)]
 //
-}(*where*)//end-of-[dvdtplst_fprint(vtps,out0)]
+}(*where*)//end-of-[dvdtp1lst_fprint(vtps,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

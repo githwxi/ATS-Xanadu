@@ -381,10 +381,10 @@ val (  ) = envltck_poplam0(env0)
 //
 val vts1 =
 (
-  dvdtplst_d2vs$inner(vts0, d2vs))
+dvdtp1lst_d2vs$inner(vts0, d2vs))
 val vts2 =
 (
-  dvdtplst_d2vs$outer(vts0, d2vs))
+dvdtp1lst_d2vs$outer(vts0, d2vs))
 //
 // (*
 val (  ) =
@@ -566,10 +566,10 @@ val (  ) = envltck_poplam0(env0)
 //
 val vts1 =
 (
-  dvdtplst_d2vs$inner(vts0, d2vs))
+dvdtp1lst_d2vs$inner(vts0, d2vs))
 val vts2 =
 (
-  dvdtplst_d2vs$outer(vts0, d2vs))
+dvdtp1lst_d2vs$outer(vts0, d2vs))
 //
 // (*
 val (  ) =

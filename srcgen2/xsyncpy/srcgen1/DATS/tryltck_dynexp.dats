@@ -274,6 +274,31 @@ endlet//end-of-[d3exp1_dapp_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp1_let1_errck
+( loc0
+: loc_t
+, t3q0: d3typ1
+, dcls: d3ecl1lst
+, d3e1: d3exp1
+, dvts: dvdtp1lst): d3exp1 =
+let
+//
+val
+lvl0 = errvl(d3e1)
+//
+in//let
+//
+d3exp1_errck
+(
+lvl0+1,
+d3exp1(
+  loc0,t3q0,D3E1let1(dcls,d3e1,dvts)))
+//
+endlet//end-of-[d3exp1_let1_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp1_ift0_errck
 (loc0: loc_t
 ,t3q0: d3typ1
@@ -344,7 +369,7 @@ d3exp1_dvdtp_errck
 (loc0: loc_t
 ,t3q0: d3typ1
 ,d3e1: d3exp1
-,dvts: dvdtplst): d3exp1 =
+,dvts: dvdtp1lst): d3exp1 =
 let
 //
 val
@@ -417,6 +442,14 @@ d3pat1_tryltck
 (
 case+
 dpat.node() of
+//
+|D3P1var _ => dpat
+//
+|D3P1int _ => dpat
+|D3P1btf _ => dpat
+|D3P1chr _ => dpat
+|D3P1flt _ => dpat
+|D3P1str _ => dpat
 //
 |D3P1tup0 _ =>
 (
@@ -510,6 +543,13 @@ dexp.node() of
 //
 (* ****** ****** *)
 //
+|D3E1let0 _ => (dexp)
+|D3E1let1 _ =>
+(
+  f0_let1(dexp, err0))
+//
+(* ****** ****** *)
+//
 |D3E1ift0 _ =>
 (
   f0_ift0(dexp, err0))
@@ -591,6 +631,42 @@ d3exp1_dapp_errck
 end//let
 //
 end(*let*)//end-of-[f0_dapp(d3e0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_let1
+( d3e0: d3exp1
+, err0
+: &sint >> sint): d3exp1 =
+let
+//
+val nerr = err0
+//
+val-
+D3E1let1
+(dcls
+,d3e1, dvts) = d3e0.node()
+//
+val t3q0 = d3e0.dtyp((*0*))
+//
+val dcls =
+d3ecl1lst_tryltck(dcls, err0)
+//
+val d3e1 =
+(
+  d3exp1_tryltck(d3e1, err0))
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (d3e0) else
+(
+d3exp1_let1_errck
+(d3e0.lctn(), t3q0, dcls, d3e1, dvts))
+//
+end(*let*)//end-of-[f0_let1(d3e0,err0)]
 //
 (* ****** ****** *)
 //

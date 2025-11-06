@@ -141,13 +141,15 @@ envltck_free_top(envltck): (void)
 (* ****** ****** *)
 //
 fun // local
-dvdtplst_d2vs$inner
-(dvts: dvdtplst
-,d2vs: d2varlst): dvdtplst
+dvdtp1lst_d2vs$inner
+( dvts
+: dvdtp1lst
+, d2vs: d2varlst): dvdtp1lst
 fun // environ
-dvdtplst_d2vs$outer
-(dvts: dvdtplst
-,d2vs: d2varlst): dvdtplst
+dvdtp1lst_d2vs$outer
+( dvts
+: dvdtp1lst
+, d2vs: d2varlst): dvdtp1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -160,7 +162,7 @@ envltck_poplam0(!envltck): (void)
 fun
 envltck_dvslam0(!envltck): d2varlst
 fun
-envltck_vtslam0(!envltck): dvdtplst
+envltck_vtslam0(!envltck): dvdtp1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -173,7 +175,7 @@ envltck_poplet0(!envltck): (void)
 fun
 envltck_dvslet0(!envltck): d2varlst
 fun
-envltck_vtslet0(!envltck): dvdtplst
+envltck_vtslet0(!envltck): dvdtp1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -186,7 +188,7 @@ envltck_popift0(!envltck): (void)
 fun
 envltck_dvsift0(!envltck): d2varlst
 fun
-envltck_vtsift0(!envltck): dvdtplst
+envltck_vtsift0(!envltck): dvdtp1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -204,17 +206,20 @@ envltck_farg$push
 //
 fun
 envltck_d3ps$push
-(env0: !envltck, d3ps: d3pat1lst): void
+(
+env0: !envltck,d3ps:d3pat1lst): void
 fun
 envltck_f3as$push
-(env0: !envltck, f3as: f3arg1lst): void
+(
+env0: !envltck,f3as:f3arg1lst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 envltck_dvts$updt
-(env0: !envltck, dvts: dvdtplst): void
+(
+env0: !envltck,dvts:dvdtp1lst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

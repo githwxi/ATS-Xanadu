@@ -1100,9 +1100,9 @@ val d2vs = dtpstk_dvsift0(dtpstk)
 fun
 dtpstk_vtslam0
 ( stk0: 
-! dtpstk): dvdtplst =
+! dtpstk): dvdtp1lst =
 (
-list_vt2t{dvdtp}(vtps)
+list_vt2t{dvdtp1}(vtps)
 ) where
 {
 //
@@ -1111,30 +1111,30 @@ list_vt_nil()
 val vtps =
 loop(stk0, vtps)
 val vtps =
-dvdtplst_vt_sort0(vtps)
+dvdtp1lst_vt_sort0(vtps)
 val vtps =
-dvdtplst_vt_duprmv0(vtps)
+dvdtp1lst_vt_duprmv0(vtps)
 //
 } where // where
 {
 #vwtpdef
-dvdtplst = dvdtplst_vt
+res_vt = dvdtp1lst_vt
 //
 fun
 loop
 ( stk0:
 ! dtpstk
 , vtps
-: dvdtplst): dvdtplst =
+: dvdtp1lst_vt): res_vt =
 (
 case+ stk0 of
 |dtpstk_nil
-((*void*)) => vtps
+( (*void*) ) => ( vtps )
 //
 |dtpstk_cons
 (d2v1,t3q1,stk1) =>
 (
-loop(stk1, vtps)) where
+  loop(stk1, vtps)) where
 {
 val vtps =
 list_vt_cons((d2v1, t3q1), vtps)}
@@ -1180,9 +1180,9 @@ val vtps = dtpstk_vtslam0(dtpstk)
 fun
 dtpstk_vtslet0
 ( stk0: 
-! dtpstk): dvdtplst =
+! dtpstk): dvdtp1lst =
 (
-list_vt2t{dvdtp}(vtps)
+list_vt2t{dvdtp1}(vtps)
 ) where
 {
 //
@@ -1191,31 +1191,31 @@ list_vt_nil()
 val vtps =
 loop(stk0, vtps)
 val vtps =
-dvdtplst_vt_sort0(vtps)
+dvdtp1lst_vt_sort0(vtps)
 val vtps =
-dvdtplst_vt_duprmv0(vtps)
+dvdtp1lst_vt_duprmv0(vtps)
 //
 } where // where
 {
 #vwtpdef
-dvdtplst = dvdtplst_vt
+res_vt = dvdtp1lst_vt
 //
 fun
 loop
 ( stk0:
 ! dtpstk
 , vtps
-: dvdtplst): dvdtplst =
+: dvdtp1lst_vt): res_vt =
 (
 case+ stk0 of
 //
 |dtpstk_nil
-((*void*)) => vtps
+( (*void*) ) => ( vtps )
 //
 |dtpstk_cons
 (d2v1,t3q1,stk1) =>
 (
-loop(stk1, vtps)) where
+  loop(stk1, vtps)) where
 {
 val vtps =
 list_vt_cons((d2v1, t3q1), vtps)}
@@ -1261,9 +1261,9 @@ val vtps = dtpstk_vtslet0(dtpstk)
 fun
 dtpstk_vtsift0
 ( stk0: 
-! dtpstk): dvdtplst =
+! dtpstk): dvdtp1lst =
 (
-list_vt2t{dvdtp}(vtps)
+list_vt2t{dvdtp1}(vtps)
 ) where
 {
 //
@@ -1272,31 +1272,31 @@ list_vt_nil()
 val vtps =
 loop(stk0, vtps)
 val vtps =
-dvdtplst_vt_sort0(vtps)
+dvdtp1lst_vt_sort0(vtps)
 val vtps =
-dvdtplst_vt_duprmv0(vtps)
+dvdtp1lst_vt_duprmv0(vtps)
 //
 } where // where
 {
 #vwtpdef
-dvdtplst = dvdtplst_vt
+res_vt = dvdtp1lst_vt
 //
 fun
 loop
 ( stk0:
 ! dtpstk
 , vtps
-: dvdtplst): dvdtplst =
+: dvdtp1lst_vt): res_vt =
 (
 case+ stk0 of
 //
 |dtpstk_nil
-((*void*)) => vtps
+( (*void*) ) => ( vtps )
 //
 |dtpstk_cons
 (d2v1,t3q1,stk1) =>
 (
-loop(stk1, vtps)) where
+  loop(stk1, vtps)) where
 {
 val vtps =
 list_vt_cons((d2v1, t3q1), vtps)}

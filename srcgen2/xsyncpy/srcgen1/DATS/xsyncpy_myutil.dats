@@ -93,19 +93,20 @@ list_vt_mergesort0<d2var>
 (* ****** ****** *)
 //
 #implfun
-dvdtplst_vt_sort0 =
+dvdtp1lst_vt_sort0 =
 (
-list_vt_mergesort0<dvdtp>
+list_vt_mergesort0<dvdtp1>
 ) where
 {
 #impltmp
-g_cmp<dvdtp>
+g_cmp<dvdtp1>
 ( vt1, vt2 ) =
-g_cmp<d2var>(vt1.0, vt2.0) }
+(
+ g_cmp<d2var>(vt1.0, vt2.0)) }
 //
 (*
 #implfun
-dvdtplst_vt_sort0
+dvdtp1lst_vt_sort0
   ( vts ) =
 (
 list_vt_mergesort0(vts))
@@ -113,14 +114,15 @@ where
 {
 //
 #impltmp
-g_cmp<dvdtp>
+g_cmp<dvdtp1>
 ( vt1, vt2 ) =
-g_cmp<d2var>(vt1.0, vt2.0)
+(
+ g_cmp<d2var>(vt1.0, vt2.0))
 //
 val () = prerrsln("\
-dvdtplst_vt_sort0: vts = ", list_vt2t vts)
+dvdtp1lst_vt_sort0: vts = ", list_vt2t vts)
 //
-}(*where*)//end-of-[dvdtplst_vt_sort0(vts)]
+}(*where*)//end-of-[dvdtp1lst_vt_sort0(vts)]
 *)
 //
 (* ****** ****** *)
@@ -170,7 +172,7 @@ auxmain
 (* ****** ****** *)
 //
 #implfun
-dvdtplst_vt_duprmv0
+dvdtp1lst_vt_duprmv0
   (vts) =
 (
 case+ vts of
@@ -183,13 +185,13 @@ auxmain(vt1, vts, list_vt_nil())
 {
 //
 #vwtpdef
-dvdtplst = list_vt(dvdtp)
+dvdtp1lst = list_vt(dvdtp1)
 //
 fun
 auxmain
-( vt0: dvdtp
-, vts: dvdtplst
-, res: dvdtplst): dvdtplst =
+( vt0: dvdtp1
+, vts: dvdtp1lst
+, res: dvdtp1lst): dvdtp1lst =
 (
 case+ vts of
 //
@@ -213,9 +215,9 @@ auxmain
 //
 val () =
 prerrsln("\
-dvdtplst_vt_duprmv0: vts = ", list_vt2t vts)
+dvdtp1lst_vt_duprmv0: vts = ", list_vt2t vts)
 //
-}(*where*)//end-of-[dvdtplst_vt_duprmv0(vts)]
+}(*where*)//end-of-[dvdtp1lst_vt_duprmv0(vts)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

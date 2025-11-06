@@ -212,7 +212,7 @@ d3ecl1_implmnt0_errck
 , f3as: f3arg1lst
 , f3bs: f3axp1lst, sres: s2res
 , dexp: d3exp1(*body*)
-, vts1: dvdtplst, vts2: dvdtplst): d3ecl1=
+, vts1: dvdtp1lst, vts2: dvdtp1lst): d3ecl1 =
 let
 val lvl = 0
 in//let
