@@ -342,6 +342,9 @@ d3typ1_none$make(s2typ1): d3typ1
 fun
 d3typ1_styp$make(s2typ1): d3typ1
 //
+#symload
+d3typ1 with d3typ1_make_styp$node
+//
 (* ****** ****** *)
 //
 fun
