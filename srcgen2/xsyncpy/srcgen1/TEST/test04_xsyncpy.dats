@@ -13,17 +13,6 @@ Fri Oct 31 02:17:03 AM EDT 2025
 "prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-local
-in//local
-val xyz = 1
-val xyz = 2
-end // local
-
-val abc = xyz
-
-////
-(* ****** ****** *)
-(* ****** ****** *)
 //
 #impltmp
 { a:t0 }
