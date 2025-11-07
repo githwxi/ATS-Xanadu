@@ -73,7 +73,8 @@ ATS_PACKNAME
 //
 #implfun
 d2parsed_by_trsym2b
-  (dpar) = let
+  (   dpar   ) =
+let
 //
 val
 parsed =

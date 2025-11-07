@@ -339,7 +339,20 @@ val () = trsym2b_d2exp(env0, dexp)
 //
 in//let
   // nothing else for [f0_implmnt0]
-end//let//end-of-[f0_implmnt0(env0,...)]
+end where
+{
+//
+(*
+val loc0 = dcl0.lctn()
+val (  ) =
+prerrsln("f0_implmnt0(2b): loc0 = ", loc0)
+val (  ) =
+prerrsln("f0_implmnt0(2b): dcl0 = ", dcl0)
+*)
+//
+}(*where*)//end-of-[f0_implmnt0(env0,dcl0)]
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of(trsym2b_d2ecl(env0,dcl0))
 //
@@ -359,7 +372,7 @@ TEQD2EXPsome(teq1, d2e2) =>
 let
 val () = trsym2b_d2exp(env0, d2e2)
 end
-) (*case+*)//end-of(trsym2b_teqd0exp(...))
+)(*case+*)//end-of(trsym2b_teqd0exp(env0,tdxp))
 //
 (* ****** ****** *)
 //

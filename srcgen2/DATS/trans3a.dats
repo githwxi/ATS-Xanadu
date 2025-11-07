@@ -65,7 +65,7 @@ ATS_PACKNAME
 
 #implfun
 d3parsed_of_trans3a
-  (dpar) =
+  (   dpar   ) =
 let
 //
 val stadyn =

@@ -744,8 +744,7 @@ trans2a_f2arglst_elim
 //
 val
 dimp =
-if
-not
+if not // if
 (
 d2cst_tempq(d2c0)
 ) then (dimp) else
@@ -765,25 +764,35 @@ val dexp =
 trans2a_d2exp(env0, dexp)
 val ubtf =
 unify2a_s2typ
-(env0, dexp.styp(), tres) in//loc
+(env0, dexp.styp(), tres)
 //
-val dexp =
-d2exp(loc0,tres,D2Et2pck(dexp,tres))
+in(*local*)
+//
+val
+dexp = d2exp
+(loc0,tres,D2Et2pck(dexp,tres))
 //
 (*
 HX-2025-11-07: for trans23
 *)
-val dexp =
-d2exp(loc0,tres,D2Et2ped(dexp,tres))
-//
-end (*loc*) // end-of-local[val(dexp)]
-//
 val
-dexp =
+dexp = d2exp
+(loc0,tres,D2Et2ped(dexp,tres))
+(*
+val (  ) =
+prerrsln("\
+f0_implmnt0(2a): dexp = ", dexp)
+*)
+//
+end(*loc*)//end-of-local[val(dexp)]
+//
+val dexp =
 (
 case+ sres of
-|S2RESnone() => dexp
-|S2RESsome(seff, sexp) =>
+|
+S2RESnone() => dexp
+|
+S2RESsome(seff, sexp) =>
 let
 val
 tann = s2exp_stpize(sexp)
@@ -795,17 +804,21 @@ in//let
 if
 ubtf then dexp else
 *)
-d2exp(loc0,tann,D2Et2pck(dexp,tann))
-end (*let*) // end of [S2RESsome(...)]
-)
+d2exp
+(loc0,tann,D2Et2pck(dexp,tann))
+end//let//end-of-[S2RESsome(...)]
+)(*case+of(sres)*)//end(val(dexp))
+//
 in//let
+//
 d2ecl
 (
 loc0,
-D2Cimplmnt0
-( tknd
-, sqas,tqas,dimp,tias,f2as,sres,dexp))
-end//let//end-of-[DIMPLone1]
+D2Cimplmnt0(
+tknd,
+sqas,tqas,dimp,tias,f2as,sres,dexp))
+//
+end(*let*)//end-of-[DIMPLone1(d2c0)]
 |
 _ (*non-DIMPone1*) =>
 let
@@ -818,16 +831,17 @@ val
 dexp =
 (
 case+ sres of
-|S2RESnone() =>
+|
+S2RESnone() =>
 trans2a_d2exp(env0, dexp)
-|S2RESsome(seff, sexp) =>
+|
+S2RESsome(seff, sexp) =>
 let
 val
 tres = s2exp_stpize(sexp)
 in//let
-(
-  trans2a_d2exp_tpck(env0,dexp,tres))
-end (*let*) // end of [S2RESsome(...)]
+trans2a_d2exp_tpck(env0,dexp,tres)
+end(*let*)//end-of-[S2RESsome(...)]
 )
 //
 in//let
@@ -835,11 +849,11 @@ in//let
 d2ecl
 (
 loc0,
-D2Cimplmnt0
-( tknd
-, sqas,tqas,dimp,tias,f2as,sres,dexp) )
+D2Cimplmnt0(
+tknd,
+sqas,tqas,dimp,tias,f2as,sres,dexp))
 //
-end//let//end-of-[ non-DIMPone1( ... ) ]
+end//let//end-of-[non-DIMPone1( ... )]
 //
 end where
 {
@@ -853,7 +867,7 @@ val (  ) =
 prerrsln("f0_implmnt0(2a): d2cl = ", d2cl)
 *)
 //
-} (*where*) // end of [f0_implmnt0(env0,d2cl)]
+}(*where*)//end-of-[f0_implmnt0(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -871,11 +885,11 @@ loc0 = d2cl.lctn()
 //
 val-
 D2Cdynconst
-(tknd,tqas,d2cs) = d2cl.node() in d2cl endlet
+(tknd,tqas,d2cs) = d2cl.node() in d2cl end
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [trans2a_d2ecl(env0,d2cl)]
+}(*where*)//end-of-[trans2a_d2ecl(env0,d2cl)]
 //
 (* ****** ****** *)
 //

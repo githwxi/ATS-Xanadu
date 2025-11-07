@@ -319,8 +319,15 @@ loop0
 & sint >> _
 , res: res): (kxs, res) =
 (
-  kxs, list_vt_reverse0(res)
-)
+  kxs, res
+//
+(*
+HX-2025-11-07:
+[res] should not be
+[list_vt_reverse0(res)]!!!
+*)
+//
+)(*end-of-(loop(kxs,err,res))*)
 //
 fnx
 loop1
@@ -339,7 +346,7 @@ stkmap_loc1
 |
 ~ // free
 stkmap_cons
-(k1, x1, kxs) => loop1(kxs, err, res)
+(k1,x1,kxs) => loop1(kxs, err, res)
 //
 | // keep
 stkmap_nil() =>
@@ -354,7 +361,7 @@ stkmap_let0 _ =>
 stkmap_loc2 _ =>
 ( err := err+1; loop0(kxs, err, res) )
 //
-) (*case+*)//end-of-[loop1(kxs,err,res)]
+)(*case+*)//end-of-[loop1(kxs,err,res)]
 //
 fnx
 loop2
@@ -373,11 +380,11 @@ stkmap_loc2
 |
 ~ // free
 stkmap_cons
-(k1, x1, kxs) =>
+(k1,x1,kxs) =>
 loop2(kxs, err, res) where
 {
-  val
-  res = list_vt_cons(@(k1, x1), res) }
+val
+res = list_vt_cons(@(k1, x1), res) }
 //
 | // keep
 stkmap_nil() =>
@@ -392,7 +399,7 @@ stkmap_let0 _ =>
 stkmap_loc1 _ =>
 ( err := err+1; loop1(kxs, err, res) )
 //
-) (*case+*)//end-of-[loop2(kxs,err,res)]
+)(*case+*)//end-of-[loop2(kxs,err,res)]
 //
 in//let
 let
