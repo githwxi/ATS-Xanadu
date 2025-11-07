@@ -769,6 +769,13 @@ unify2a_s2typ
 //
 val dexp =
 d2exp(loc0,tres,D2Et2pck(dexp,tres))
+//
+(*
+HX-2025-11-07: for trans23
+*)
+val dexp =
+d2exp(loc0,tres,D2Et2ped(dexp,tres))
+//
 end (*loc*) // end-of-local[val(dexp)]
 //
 val
@@ -818,7 +825,8 @@ let
 val
 tres = s2exp_stpize(sexp)
 in//let
-  trans2a_d2exp_tpck(env0,dexp,tres)
+(
+  trans2a_d2exp_tpck(env0,dexp,tres))
 end (*let*) // end of [S2RESsome(...)]
 )
 //
@@ -961,8 +969,8 @@ TEQD2EXPnone((*void*))
 TEQD2EXPsome
 (teq1, d2e2) =>
 (
-TEQD2EXPsome
-(teq1, d2e2)) where
+TEQD2EXPsome(teq1, d2e2)
+) where
 {
 val d2e2 =
 trans2a_d2exp_tpck(env0,d2e2,tres)
