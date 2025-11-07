@@ -75,7 +75,8 @@ ATS3.XANADU.xatsopt-20220500"
 //
 #implfun
 d2parsed_of_trans2a
-  (dpar) = let
+  (   dpar   ) =
+let
 //
 val stadyn =
 d2parsed_get_stadyn(dpar)
