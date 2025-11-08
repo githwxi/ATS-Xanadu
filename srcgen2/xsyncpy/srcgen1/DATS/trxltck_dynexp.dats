@@ -61,6 +61,27 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload <
+with sint_lt$sint of 1099
+#symload >
+with sint_gt$sint of 1099
+#symload =
+with sint_eq$sint of 1099
+#symload <=
+with sint_lte$sint of 1099
+#symload >=
+with sint_gte$sint of 1099
+#symload !=
+with sint_neq$sint of 1099
+//
+#symload +
+with sint_add$sint of 1099
+#symload -
+with sint_sub$sint of 1099
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload
 "./../../../SATS/staexp2.sats"
 #staload
@@ -280,6 +301,9 @@ styp.node() of
 |T2P1arg1
 (knd0, styp) =>
 (
+if
+(0 = knd0)
+then d3e0 else
 d3fag1_aftck
 (d3e0, styp, env0)) where
 {
@@ -289,7 +313,7 @@ d3exp1_t2pck(d3e0, styp, env0)
 //
 | _(*rest-of-s2typ1*) =>
 (
-  d3exp1_t2pck(d3e0, styp, env0))
+d3exp1_t2pck(d3e0, styp, env0))
 ) where
 {
 //
