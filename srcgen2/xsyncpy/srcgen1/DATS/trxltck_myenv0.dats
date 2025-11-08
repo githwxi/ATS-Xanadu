@@ -719,7 +719,8 @@ envltck_dvar$push
 let
 //
 val
-t3q1 = d3typ1_styp$make(t2q1)
+t3q1 =
+d3typ1_styp$make(t2q1)
 //
 in//let
 //
@@ -731,7 +732,15 @@ case+ env0 of
 dtpstk :=
 dtpstk_cons(dvar, t3q1, dtpstk))
 //
-end(*let*)//end-of-(envltck_dvar$push(env0,...))
+end where
+{
+//
+val () =
+prerrsln("envltck_dvar$push: dvar = ", dvar)
+val () =
+prerrsln("envltck_dvar$push: t2q1 = ", t2q1)
+//
+}(*where*)//end-of-(envltck_dvar$push(env0,...))
 //
 (* ****** ****** *)
 //
