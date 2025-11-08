@@ -301,6 +301,11 @@ styp.node() of
 |T2P1arg1
 (knd0, styp) =>
 (
+(*
+HX-2025-11-07:
+(knd0 = 0) means '~';
+and no aftck is needed
+*)
 if
 (0 = knd0)
 then d3e0 else
@@ -449,15 +454,23 @@ fun
 f0_other
 ( d3p0: d3pat1
 , env0: envltck): d3axp1 =
-let
+(
+d3axp1
+(loc0, t2q0, D3A1none(d3p0))
+) where
+{
 //
   val loc0 = d3p0.lctn((*0*))
   val t2q0 = d3p0.styp((*0*))
 //
-in//let
-(
-  d3axp1(loc0, t2q0, D3A1none(d3p0)))
-end(*let*)//end-of-[f0_other(d3p0,env0)]
+  val (  ) =
+  prerrsln("f0_other: loc0 = ", loc0)
+  val (  ) =
+  prerrsln("f0_other: d3p0 = ", d3p0)
+  val (  ) =
+  prerrsln("f0_other: t2q0 = ", t2q0)
+//
+}(*where*)//end-of-[f0_other(d3p0,env0)]
 //
 fun
 f0_annot

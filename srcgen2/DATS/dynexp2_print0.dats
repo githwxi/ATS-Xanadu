@@ -302,6 +302,11 @@ D2Prcd2
 ; prints(tknd,";",npf1,";",ldps,")"))
 //
 |
+D2Pargtp
+( d2p1, t2p2) =>
+(
+prints("D2Pargtp(",d2p1,";",t2p2,")"))
+|
 D2Pannot
 ( d2p1
 , s1e2, s2e2) =>
