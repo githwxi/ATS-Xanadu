@@ -310,6 +310,7 @@ i0pat
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|D3Pargtp _ => f0_argtp(env0, d3p0)
 |D3Pannot _ => f0_annot(env0, d3p0)
 //
 (* ****** ****** *)
@@ -495,6 +496,24 @@ then list_head(i0ps) else*)
 end(*let*)//end-of-[f0_tup1(env0,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_argtp
+( env0:
+! envd3i0
+, d3p0: d3pat): i0pat =
+(
+trxd3i0_d3pat(env0, d3p1)
+) where
+{
+//
+val-
+D3Pargtp
+( d3p1, t2p2) = d3p0.node((*0*))
+//
+}(*where*)//end-of-[f0_argtp(env0,...)]
+//
 (* ****** ****** *)
 //
 fun

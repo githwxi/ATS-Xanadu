@@ -347,6 +347,24 @@ endlet // end of [d2pat_rcd2_errck(...)]
 (* ****** ****** *)
 //
 fun
+d2pat_argtp_errck
+( loc0: loc_t
+, d2p1: d2pat
+, t2p2
+: s2typ(*argtp*)): d2pat =
+let
+val
+lvl0 =
+d2pat_errvl(d2p1) in//let
+(
+d2pat_errck
+( lvl0+1
+, d2pat(loc0, D2Pargtp(d2p1, t2p2) ) ) )
+endlet // end of [d2pat_argtp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d2pat_annot_errck
 ( loc0: loc_t
 , d2p1: d2pat
@@ -359,7 +377,7 @@ lvl0 =
 d2pat_errvl(d2p1) in//let
 d2pat_errck
 ( lvl0+1
-, d2pat(loc0,D2Pannot(d2p1,s1e2,s2e2)))
+, d2pat(loc0,D2Pannot(d2p1,s1e2,s2e2)) )
 endlet // end of [d2pat_annot_errck(...)]
 //
 (* ****** ****** *)
@@ -1027,16 +1045,17 @@ d2p0.node() of
 |D2Ptup1 _ => f0_tup1(d2p0, err)
 |D2Prcd2 _ => f0_rcd2(d2p0, err)
 //
-|
-D2Pannot _ => f0_annot(d2p0, err)
+|D2Pargtp _ => f0_argtp(d2p0, err)
+|D2Pannot _ => f0_annot(d2p0, err)
 //
-| _(*otherwise*) =>
+|
+_(*otherwise*) =>
 let
 val lvl0 = 1
 in//let
 (
 err := err+1; d2pat_errck(lvl0,d2p0))
-endlet // end of [ _(* otherwise *) ]
+end//let//end-of-[_____otherwise_____]
 //
 ) where // end-of-[(*case+(d2p0)-of*)]
 {
@@ -1309,6 +1328,34 @@ then (d2p) else
 d2pat_rcd2_errck
 (d2p.lctn() , tknd , npf1 , ldps)
 end (*let*) // end of [f0_rcd2(d2p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_argtp
+(d2p: d2pat
+,err: &sint >> _): d2pat =
+let
+//
+val e00 = err
+//
+val-
+D2Pargtp
+(d2p1, t2p2) = d2p.node()
+//
+val
+d2p1 = tread20_d2pat(d2p1, err)
+//
+in//let
+if
+(err=e00)
+then (d2p) else
+let
+val loc = d2p.lctn() in
+(
+  d2pat_argtp_errck(loc, d2p1, t2p2))
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_argtp(d2p,err)]
 //
 (* ****** ****** *)
 //

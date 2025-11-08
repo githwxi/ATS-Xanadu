@@ -161,19 +161,11 @@ t2p1 = d2v1.styp((*0*))
 in//let
   d2v1.styp(s2typ_bang(t2p1))
 end//let
-(*
-|
-D2Paref(d2v1, d2p2) =>
-let
-val
-t2p1 = d2v1.styp((*0*))
-in//let
-  d2v1.styp(s2typ_bang(t2p1))
-end//let
-*)
+//
 |
 D2Pannot
 (d2p1, _, _) => d2pat_bang(d2p1)
+//
 |
 _(*non-D2Pvar*) => ( (*ignored*) )
 //
@@ -396,6 +388,11 @@ d2p0.node() of
 |D2Ptup1 _ => f0_tup1(env0, d2p0)
 |D2Prcd2 _ => f0_rcd2(env0, d2p0)
 //
+(*
+HX-2025-11-08:
+This one is not source-based:
+|D2Pargtp _ => f0_argtp(env0, d2p0)
+*)
 |D2Pannot _ => f0_annot(env0, d2p0)
 //
 |D2Perrck _ => f0_errck(env0, d2p0)
@@ -990,7 +987,7 @@ s2typ_rcd2(trcd, npf1, l2t2plst(ldps))
 } (*where*) // end-of-[f0_rcd2(env0,d2p0)]
 //
 (* ****** ****** *)
-
+//
 fun
 f0_annot
 ( env0:
@@ -1014,7 +1011,7 @@ in//let
 d2pat_make_tpnd
 (loc0, t2p2, D2Pannot(d2p1,s1e2,s2e2))
 end (*let*) // end-of-[f0_annot(env0,d2p0)]
-
+//
 (* ****** ****** *)
 //
 fun
