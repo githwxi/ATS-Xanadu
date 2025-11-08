@@ -748,6 +748,9 @@ D2Prcd2 of
 token(*knd*), sint(*npf*), l2d2plst)
 //
 |
+D2Pargtp of
+(d2pat,s2typ) // HX: d2cst(arg: t2p)
+|
 D2Pannot of
 (d2pat,s1exp(*given*),s2exp(*trans*))
 //

@@ -328,12 +328,12 @@ token(*knd*), sint(*npf*), d3patlst)
 (
 token(*knd*), sint(*npf*), l3d3plst)
 //
-|
-D3Pannot of
+|D3Pargtp of
+(d3pat,s2typ) // HX: d2cst(arg: t2p)
+|D3Pannot of
 (d3pat,s1exp(*given*),s2exp(*trans*))
 //
-|
-D3Pt2pck of (d3pat, s2typ)//HX: casting
+|D3Pt2pck of (d3pat, s2typ)//HX: casting
 //
 |D3Pnone0 of ((*0*))
 |D3Pnone1 of (d2pat) | D3Pnone2 of (d3pat)
