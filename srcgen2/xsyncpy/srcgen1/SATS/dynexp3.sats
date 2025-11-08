@@ -413,6 +413,8 @@ d3pat1_node =
 //
 (* ****** ****** *)
 //
+|D3P1argtp of
+(d3pat1,s2typ1)//HX: d2cst(arg : t2p)
 |D3P1annot of
 (d3pat1
 ,s1exp(*given*),s2exp(*trans*),s2typ1)
