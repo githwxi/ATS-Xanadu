@@ -747,9 +747,16 @@ D2Prcd2 of
 (
 token(*knd*), sint(*npf*), l2d2plst)
 //
+(*
+HX-2025-11-08:
+This one is not source-based;
+it is by [trans2a_f2arglst_elim];
+it is needed for linearity-checking.
+*)
 |
 D2Pargtp of
 (d2pat,s2typ) // HX: d2cst(arg: t2p)
+//
 |
 D2Pannot of
 (d2pat,s1exp(*given*),s2exp(*trans*))

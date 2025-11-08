@@ -136,6 +136,7 @@ d3p0.node() of
 |D3Ptup1 _ => f0_tup1(env0, d3p0)
 |D3Prcd2 _ => f0_rcd2(env0, d3p0)
 //
+|D3Pargtp _ => f0_argtp(env0, d3p0)
 |D3Pannot _ => f0_annot(env0, d3p0)
 //
 |
@@ -227,6 +228,7 @@ val t2p0 = trans3a_s2typ(env0, t2p0)
 }(*where*)//end-of-[f0_any(env0,d3p0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_bang
@@ -304,6 +306,7 @@ in//let
 end (*let*) // end of [f0_free(env0,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_sapq
@@ -368,6 +371,7 @@ in//let
 end(*let*)//end-of-[f0_tapq(env0,d3p0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_dap1
@@ -430,6 +434,7 @@ d3pat_make_tpnd
 end(*let*)//end-of-[f0_dapp(env0,d3p0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_rfpt
@@ -462,6 +467,7 @@ d3pat_make_tpnd
 (loc0, t2p0, D3Prfpt(d3p1,tkas,d3p2))
 end(*let*)//end-of-[f0_rfpt(env0,d3p0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -554,6 +560,34 @@ d3pat_make_tpnd
 end (*let*)//end-of-[f0_rcd2(env0,d3p0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_argtp
+( env0:
+! tr3aenv
+, d3p0: d3pat): d3pat =
+let
+//
+val loc0 = d3p0.lctn()
+//
+val-
+D3Pargtp
+( d3p1, t2p2) = d3p0.node()
+//
+val
+t2p2 = s2typ_hnfiz0(t2p2)
+val
+t2p2 = trans3a_s2typ(env0, t2p2)
+//
+val
+d3p1 = trans3a_d3pat(env0, d3p1)
+//
+in//let
+d3pat(loc0, t2p2, D3Pargtp(d3p1, t2p2))
+end(*let*)//end-of-[f0_argtp(env0,d3p0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_annot
@@ -580,10 +614,12 @@ val
 d3p1 = trans3a_d3pat(env0, d3p1)
 //
 in//let
+(
 d3pat_make_tpnd
-(loc0, t2p0, D3Pannot(d3p1,s1e2,s2e2))
+(loc0, t2p0, D3Pannot(d3p1,s1e2,s2e2)))
 end(*let*)//end-of-[f0_annot(env0,d3p0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 } (*where*)//end-of-[trans3a_d3pat(env0,d3p0)]

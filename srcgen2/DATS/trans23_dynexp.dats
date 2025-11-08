@@ -266,6 +266,7 @@ been eliminated at this point!
 |D2Ptup0 _ => f0_tup0(env0, d2p0)
 |D2Ptup1 _ => f0_tup1(env0, d2p0)
 //
+|D2Pargtp _ => f0_argtp(env0, d2p0)
 |D2Pannot _ => f0_annot(env0, d2p0)
 //
 | _(*otherwise*) => d3pat_none1(d2p0)
@@ -730,6 +731,36 @@ s2typ_tup1(trcd, npf1, s2typlst(d3ps))
 (* ****** ****** *)
 //
 fun
+f0_argtp
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+let
+//
+val loc0 = d2p0.lctn()
+val-
+D2Pargtp
+( d2p1, t2p2) = d2p0.node()
+//
+val d3p1 =
+(
+case+
+d2p1.node() of
+|
+D2Pvar _ => 
+trans23_d2pat(env0, d2p1)
+|
+_(*non-D2Pvar*) =>
+trans23_d2pat_tpck(env0, d2p1, t2p2)
+) : d3pat // end-of-[   val(d3p1)   ]
+//
+in//let
+d3pat(loc0, t2p2, D3Pargtp(d3p1, t2p2))
+end (*let*) // end of [f0_argtp(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_annot
 ( env0:
 ! tr23env
@@ -748,13 +779,12 @@ t2p2 = s2exp_stpize(s2e2)
 val
 t2p2 = s2typ_hnfiz0(t2p2)
 *)
-val
-t2p2 = d2p0.styp((*void*))
+val t2p0 = d2p0.styp((*void*))
 //
 (*
-val () =
+val (  ) =
 prerrsln
-("f0_annot(23): t2p2 = ", t2p2)
+("f0_annot(23): t2p0 = ", t2p0)
 *)
 //
 val d3p1 =
@@ -766,12 +796,13 @@ D2Pvar _ =>
 trans23_d2pat(env0, d2p1)
 |
 _(*non-D2Pvar*) =>
-trans23_d2pat_tpck(env0, d2p1, t2p2)
-) : d3pat // end of [val(d3p1)]
+trans23_d2pat_tpck(env0, d2p1, t2p0)
+) : d3pat // end-of-[   val(d3p1)   ]
 //
 in//let
+(
 d3pat_make_tpnd
-(loc0, t2p2, D3Pannot(d3p1,s1e2,s2e2))
+(loc0, t2p0, D3Pannot(d3p1,s1e2,s2e2)))
 end (*let*) // end of [f0_annot(env0,...)]
 //
 (* ****** ****** *)
