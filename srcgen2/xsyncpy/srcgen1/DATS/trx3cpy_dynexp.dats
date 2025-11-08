@@ -169,6 +169,7 @@ d3pat1
 |D3Ptup1 _ => f0_tup1(d3p0, env0)
 //
 (* ****** ****** *)
+|D3Pargtp _ => f0_argtp(d3p0, env0)
 |D3Pannot _ => f0_annot(d3p0, env0)
 (* ****** ****** *)
 //
@@ -416,6 +417,32 @@ d3pat1
 end//let
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_argtp
+(d3p0: d3pat
+,env0: !env3cpy): d3pat1 =
+let
+//
+val-
+D3Pargtp
+(d3p1, t2p2) = d3p0.node()
+//
+val t2q2 =
+(
+s2typ_trx3cpy(t2p2, env0))
+//
+val d3p1 =
+(
+d3pat_trx3cpy(d3p1, env0))
+//
+in//let
+(
+d3pat1
+(loc0, t2q0, D3P1argtp(d3p1, t2q2)))
+end(*let*)//end-of-[f0_argtp(d3p0,env0)]
+//
 (* ****** ****** *)
 //
 fun

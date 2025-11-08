@@ -266,6 +266,11 @@ prints(tknd,";",npf1,";",ldps,")"))
 //
 (* ****** ****** *)
 //
+|D3P1argtp
+(d3p1, t2q2) =>
+prints
+("D3P1argtp(", d3p1, ";", t2q2, ")")
+//
 |D3P1annot
 (d3p1
 ,s1e2
