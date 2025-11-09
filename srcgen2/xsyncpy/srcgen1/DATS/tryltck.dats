@@ -183,16 +183,24 @@ optn_tryltck_fnp(dopt, err0, d3exp1_tryltck))
 (* ****** ****** *)
 //
 #implfun
-f3arg1lst_tryltck
-  (d3es, err0) =
+d3axp1lst_tryltck
+  (d3as, err0) =
 (
-list_tryltck_fnp(d3es, err0, f3arg1_tryltck))
+list_tryltck_fnp(d3as, err0, d3axp1_tryltck))
+//
+(* ****** ****** *)
+//
+#implfun
+f3arg1lst_tryltck
+  (f3as, err0) =
+(
+list_tryltck_fnp(f3as, err0, f3arg1_tryltck))
 //
 #implfun
 f3axp1lst_tryltck
-  (d3es, err0) =
+  (f3as, err0) =
 (
-list_tryltck_fnp(d3es, err0, f3axp1_tryltck))
+list_tryltck_fnp(f3as, err0, f3axp1_tryltck))
 //
 (* ****** ****** *)
 //

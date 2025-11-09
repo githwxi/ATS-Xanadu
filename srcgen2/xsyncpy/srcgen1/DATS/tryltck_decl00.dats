@@ -461,13 +461,13 @@ D3C1implmnt0
   d3ecl1_node$get( dcl0 ))
 //
 (*
-val farg =
+val f3as =
 (
   f3arg1lst_tryltck(farg, err0))
-val faxp =
-(
-  f3axp1lst_tryltck(farg, err0))
 *)
+val f3bs =
+(
+  f3axp1lst_tryltck(f3bs, err0))
 //
 val
 dexp = d3exp1_tryltck(dexp, err0)

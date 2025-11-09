@@ -31,17 +31,14 @@ g_copy<a>(x0) = x0
 //
 #extern
 fun<a:vt>
-g1_free(x0: a): void
-#extern
-fun<a:vt>
-my_free(x0: !a): (?a)
+my_free(x0: a): (?a)
 //
 #impltmp
 <a : vt>
 my_free(x0) =
 let
 val
-( ) = g1_free(x0) in x0
+( ) = g_free(x0) in x0
 end//let//end-of(my_free)
 //
 (* ****** ****** *)
