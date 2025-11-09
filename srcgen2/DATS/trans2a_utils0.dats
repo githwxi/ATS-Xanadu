@@ -1003,6 +1003,8 @@ let
 //
 val (  ) =
 d2patlst_lftize(d2ps, t2ps)
+val d2ps =
+d2patlst_argtpz(d2ps, t2ps)
 //
 val f2a1 =
 f2arg_make_node
