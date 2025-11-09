@@ -143,6 +143,7 @@ d3axp1_t2pck
 ,styp: s2typ1
 ,env0: !envltck): d3axp1 =
 let
+//
 val t2q0 =
 d3axp1_styp$get(d3a0)
 val ubtf =
@@ -370,6 +371,7 @@ d3axp1
 //
 |D3P1var _ => f0_var(d3p0, env0)
 //
+|D3P1argtp _ => f0_argtp(d3p0, env0)
 |D3P1annot _ => f0_annot(d3p0, env0)
 //
 end where//end-of(case-of(d3p0.node())
@@ -400,6 +402,27 @@ envltck_dtyp$eval(env0, t3q1)
 in//let
 d3axp1(loc0, t2q1, D3A1var(d2v1))
 end//let//end-of-[f0_var(d3p0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_argtp
+( d3p0: d3pat1
+, env0: !envltck): d3axp1 =
+let
+//
+val-
+D3P1argtp
+(d3p1, t2q2) = d3p0.node()
+//
+val d3a1 =
+d3pat1_trxltck(d3p1, env0)
+val t2q1 = d3a1.styp((*0*))
+//
+in//let
+d3axp1
+(loc0, t2q1, D3A1argtp(d3a1, t2q2))
+end//let//end-of-[f0_argtp(d3p0,env0)]
 //
 (* ****** ****** *)
 //
@@ -438,9 +461,13 @@ d3apt1_trxltck
 case+
 d3p0.node() of
 //
+|D3P1argtp _ =>
+(
+  f0_argtp(d3p0, env0))
 |D3P1annot _ =>
 (
   f0_annot(d3p0, env0))
+//
 |_(*non-annot*) =>
 (
   f0_other(d3p0, env0))
@@ -460,23 +487,73 @@ d3axp1
 ) where
 {
 //
-  val loc0 = d3p0.lctn((*0*))
-  val t2q0 = d3p0.styp((*0*))
+val loc0 = d3p0.lctn((*void*))
+val t2q0 = d3p0.styp((*void*))
 //
-  val (  ) =
-  prerrsln("f0_other: loc0 = ", loc0)
-  val (  ) =
-  prerrsln("f0_other: d3p0 = ", d3p0)
-  val (  ) =
-  prerrsln("f0_other: t2q0 = ", t2q0)
+val (  ) =
+prerrsln("f0_other: loc0 = ", loc0)
+val (  ) =
+prerrsln("f0_other: d3p0 = ", d3p0)
+val (  ) =
+prerrsln("f0_other: t2q0 = ", t2q0)
 //
 }(*where*)//end-of-[f0_other(d3p0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_argtp
+( d3p0: d3pat1
+, env0: envltck): d3axp1 =
+let
+//
+val-
+D3P1argtp
+(d3p1, t2q2) = d3p0.node()
+//
+val (  ) =
+(
+prerrsln("\
+d3apt1_trxltck:\
+f0_argtp: t2q2 = ", t2q2))
+//
+in//let
+case+
+t2q2.node() of
+//
+|T2P1arg1
+(knd0, taft) =>
+(
+d3axp1_t2pck(d3a1, taft, env0))
+where
+{
+val
+d3a1 = d3pat1_trxltck(d3p1, env0)
+}(*where*)//end-of-[T2P1arg1(...)]
+//
+|T2P1atx2
+(tbef, taft) =>
+(
+d3axp1_t2pck(d3a1, taft, env0))
+where
+{
+val
+d3a1 = d3pat1_trxltck(d3p1, env0)
+}(*where*)//end-of-[T2P1atx2(...)]
+//
+|
+_(*otherwise*) => f0_other(d3p0, env0)
+//
+end(*let*)//end-of-[f0_argtp(d3p0,env0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_annot
 ( d3p0: d3pat1
 , env0: envltck): d3axp1 =
 let
+//
 val-
 D3P1annot
 (d3p1

@@ -479,6 +479,7 @@ d3axp1_node =
 //
 |D3A1t2pck of (d3axp1, s2typ1)
 //
+|D3A1argtp of (d3axp1, s2typ1)
 |D3A1annot of
 (d3axp1
 ,s1exp(*given*)
