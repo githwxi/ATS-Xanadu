@@ -790,13 +790,23 @@ d3p1.node() of
 (
 case+
 t2q2.node() of
+//
 |T2P1arg1
 (knd0, targ) =>
 envltck_dvar$push(env0, d2v1, targ)
+//
 |T2P1atx2
 (tbef, targ) =>
-envltck_dvar$push(env0, d2v1, tbef)
-|_(*non-T2P1arg*) =>
+(
+case+
+tbef.node() of
+|T2P1arg1
+(knd0, targ) =>
+envltck_dvar$push(env0, d2v1, targ)
+|_(*non-T2P1arg1*) =>
+envltck_dvar$push(env0, d2v1, tbef))
+//
+|_(*non-T2P1arg1/atx2*) =>
 envltck_dvar$push(env0, d2v1, t2q2))
 //
 |_(*D3P1...*) => f0_dpat(env0, d3p1))
@@ -815,13 +825,24 @@ d3p1.node() of
 (
 case+
 t2q2.node() of
+//
 |T2P1arg1
 (knd0, targ) =>
 envltck_dvar$push(env0, d2v1, targ)
+//
 |T2P1atx2
 (tbef, targ) =>
-envltck_dvar$push(env0, d2v1, tbef)
-|_(*non-T2P1arg*) =>
+(
+case+
+tbef.node() of
+|T2P1arg1
+(knd0, targ) =>
+envltck_dvar$push(env0, d2v1, targ)
+//
+|_(*non-T2P1arg1*) =>
+envltck_dvar$push(env0, d2v1, tbef))
+//
+|_(*non-T2P1arg1/atx2*) =>
 envltck_dvar$push(env0, d2v1, t2q2))
 //
 |_(*D3P1...*) => f0_dpat(env0, d3p1))
