@@ -268,8 +268,9 @@ prints(tknd,";",npf1,";",ldps,")"))
 //
 |D3P1argtp
 (d3p1, t2q2) =>
+(
 prints
-("D3P1argtp(", d3p1, ";", t2q2, ")")
+("D3P1argtp(", d3p1, ";", t2q2, ")"))
 //
 |D3P1annot
 (d3p1
@@ -298,7 +299,6 @@ end(*let*)//end-of-[d3pat1_fprint(d3p0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 #implfun
 d3axp1_fprint
@@ -362,6 +362,12 @@ prints
 ("D3A1t2pck(",d3a1,";",t2q0,")"))
 //
 (* ****** ****** *)
+//
+|D3A1argtp
+(d3a1, t2q2) =>
+(
+prints
+("D3A1argtp(",d3a1,";",t2q2,")"))
 //
 |D3A1annot
 (d3a1
