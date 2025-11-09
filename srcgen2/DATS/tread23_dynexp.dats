@@ -512,6 +512,21 @@ endlet // end of [d3pat_rcd2_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3pat_argtp_errck
+( loc0: loc_t
+, d3p1: d3pat
+, t2p2
+: s2typ(*argtp*)): d3pat =
+let
+val lvl0 = errvl(d3p1) in//let
+d3pat_errck
+( lvl0+1
+, d3pat(loc0, D3Pargtp( d3p1, t2p2 )) )
+endlet // end of [d3pat_argtp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3pat_annot_errck
 ( loc0: loc_t
 , d3p1: d3pat
@@ -536,7 +551,7 @@ let
 val lvl0 = errvl(d3p1) in//let
 d3pat_errck
 ( lvl0+1
-, d3pat( loc0, D3Pt2pck( d3p1, t2p2 ) ))
+, d3pat(loc0, D3Pt2pck( d3p1, t2p2 )) )
 endlet // end of [d3pat_t2pck_errck(...)]
 //
 (* ****** ****** *)
@@ -1127,6 +1142,7 @@ d3p0.node() of
 //
 (* ****** ****** *)
 //
+|D3Pargtp _ => f0_argtp(d3p0, err)
 |D3Pannot _ => f0_annot(d3p0, err)
 //
 |D3Pt2pck _ => f0_t2pck(d3p0, err)
@@ -1428,6 +1444,38 @@ val loc = d3p.lctn() in//let
 d3pat_rcd2_errck(loc,tknd,npf1,ldps)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_rcd2(d3p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_argtp
+(d3p: d3pat
+,err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val-
+D3Pargtp
+(d3p1, t2p2) = d3p.node()
+//
+val
+d3p1 = tread23_d3pat(d3p1, err)
+(*
+val
+t2p2 = tread23_s2typ(t2p2, err)
+*)
+//
+in//let
+if // if
+(err=e00)
+then (d3p) else
+let
+val loc = d3p.lctn() in
+(
+  d3pat_argtp_errck(loc, d3p1, t2p2))
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_argtp(d3p,err)]
 //
 (* ****** ****** *)
 //
