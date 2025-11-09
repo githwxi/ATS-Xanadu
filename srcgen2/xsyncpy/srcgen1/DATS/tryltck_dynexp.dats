@@ -966,6 +966,31 @@ prerrsln("d3exp1_tryltck: dexp = ", dexp))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+f3axp1_tryltck
+( faxp, err0 ) =
+(
+case+
+faxp.node() of
+|
+F3AXP1dapp
+(npf1, d3as) =>
+let
+val nerr = err0
+val d3as =
+d3axp1lst_tryltck(d3as, err0)
+in//let
+if
+(nerr = err0)
+then faxp else
+f3axp1_make_lctn$node
+(faxp.lctn(), F3AXP1dapp(npf1, d3as))
+end//let//end-of-[F3AXP1dapp(npf1,d3as)]
+)(*case+*)//end-of-[f3axp1_tryltck(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_tryltck_dynexp.dats] *)
 (***********************************************************************)
