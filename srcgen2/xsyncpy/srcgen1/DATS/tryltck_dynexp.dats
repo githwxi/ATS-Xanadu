@@ -967,6 +967,54 @@ prerrsln("d3exp1_tryltck: dexp = ", dexp))
 (* ****** ****** *)
 //
 #implfun
+d3axp1_tryltck
+( daxp, err0 ) =
+(
+case+
+daxp.node() of
+|D3A1int _ => daxp
+|D3A1btf _ => daxp
+|D3A1chr _ => daxp
+|D3A1flt _ => daxp
+|D3A1str _ => daxp
+//
+|D3A1var _ => daxp
+//
+|D3A1none _ => daxp
+//
+|D3A1t2pck _ =>
+let
+val () =
+err0 := err0 + 1 in daxp end
+//
+|D3A1argtp
+(d3a1, t2q2) =>
+let
+val d3a1 =
+d3axp1_tryltck(d3a1, err0) in daxp
+end//let//end-of-[D3A1argtp(d2a1,...)]
+//
+|D3A1annot
+(d3a1
+,s1e2
+,s2e2, t2q2) =>
+let
+val d3a1 =
+d3axp1_tryltck(d3a1, err0) in daxp
+end//let//end-of-[D3A1annot(d2a1,...)]
+//
+) where
+{
+//
+val () =
+prerrsln("d3axp1_tryltck: daxp = ", daxp)
+//
+}(*where*)//end-of-[d3axp1_tryltck(daxp,err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 f3axp1_tryltck
 ( faxp, err0 ) =
 (
@@ -986,7 +1034,13 @@ then faxp else
 f3axp1_make_lctn$node
 (faxp.lctn(), F3AXP1dapp(npf1, d3as))
 end//let//end-of-[F3AXP1dapp(npf1,d3as)]
-)(*case+*)//end-of-[f3axp1_tryltck(...)]
+) where
+{
+//
+val () =
+prerrsln("f3axp1_tryltck: faxp = ", faxp)
+//
+}(*where*)//end-of-[f3axp1_tryltck(faxp,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
