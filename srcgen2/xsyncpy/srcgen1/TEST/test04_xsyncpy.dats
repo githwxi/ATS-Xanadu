@@ -29,6 +29,25 @@ g_copy<a>(x0) = x0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+bool_neg<>(tf) =
+if tf
+then false else true
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+g_free<x0>(obj) = ( )
+#impltmp
+{ x0:t0 }
+g_copy<x0>(obj) = obj
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
 #extern
 fun<a:vt>
 my_free(x0: a): (?a)
@@ -40,14 +59,6 @@ let
 val
 ( ) = g_free(x0) in x0
 end//let//end-of(my_free)
-//
-(* ****** ****** *)
-////
-(* ****** ****** *)
-//
-#impltmp
-bool_neg<>(tf) =
-if tf then false else true
 //
 (* ****** ****** *)
 (* ****** ****** *)
