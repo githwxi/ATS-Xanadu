@@ -828,8 +828,7 @@ in//let
 case+
 t2f0.node() of
 |T2P1fun1
-(f2cl
-,npf1
+(f2cl, npf1
 ,t2qs, t2q1) =>
 let
 //
@@ -1012,16 +1011,21 @@ in//let
 //
 let
 //
-val t3q0 =
+val
+t3q0 =
 (
 case+ dthn of
 |optn_nil
 ((*void*)) => t3q0
 |optn_cons
 (  dthn  ) => dthn.dtyp())
-val dexp =
-d3exp1(loc0,t3q0
-,D3E1ift0(d3e1, dthn, dels))
+//
+val
+dexp =
+(
+d3exp1(
+loc0,t3q0,
+D3E1ift0(d3e1, dthn, dels)))
 //
 in//let
 //
@@ -1059,13 +1063,18 @@ D3E1tup0
 val d3es =
 d3exp1lst_trxltck(d3es, env0)
 //
-val t3qs =
-d3es_t3qs$get(d3es)
+val t3qs = d3es_t3qs$get(d3es)
 val t2qs =
 envltck_dtyplst$eval(env0, t3qs)
 //
 val t2q0 = t3q0.styp()
-val t2q1 = s2typ1_tup0(npf1, t2qs)
+val t2q1 =
+(
+if
+list_nilq
+(  d3es  )
+then (t2q0) // xats_void_t
+else s2typ1_tup0(npf1, t2qs))//val
 //
 in//let
 //
@@ -1077,7 +1086,7 @@ where
 val
 t3q0 = d3typ1(t2q0, T3P1styp(t2q1)) }
 //
-end//let//end-of-[f0_tup0(d3e0,env0)]
+end(*let*)//end-of-[f0_tup0(d3e0,env0)]
 //
 (* ****** ****** *)
 //

@@ -1848,20 +1848,24 @@ d3exp_make_tpnd
 ( loc0, t2p0
 , D3Etup0(npf1, d3es))) where
 {
+//
 val loc0 = d2e0.lctn()
+//
 val-
 D2Etup0
 (npf1, d2es) = d2e0.node()
-val
-d3es = trans23_d2explst(env0, d2es)
-val
-t2p0 =
+//
+val d3es =
+trans23_d2explst(env0, d2es)
+//
+val t2p0 =
 (
 case+ d3es of
 |list_nil() =>
 the_s2typ_void()
 |list_cons _ =>
 s2typ_tup0(npf1, s2typlst(d3es))): s2typ
+//
 } (*where*) // end of [f0_tup0(env0,d2e0)]
 //
 (* ****** ****** *)
