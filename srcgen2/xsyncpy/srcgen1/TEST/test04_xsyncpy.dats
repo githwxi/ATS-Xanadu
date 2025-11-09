@@ -31,7 +31,7 @@ g_copy<a>(x0) = x0
 //
 #extern
 fun<a:vt>
-my_free(x0: a): (?a)
+my_free(x0: !a): (?a)
 //
 #impltmp
 <a : vt>
