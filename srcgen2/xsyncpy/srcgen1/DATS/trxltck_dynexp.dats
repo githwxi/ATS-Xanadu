@@ -953,32 +953,33 @@ prerrsln("\
 d3exp1_trxltck:\
 f0_let0: vts0 = ", vts0)
 //
-val vts1 =
-dvdtp1lst_d2vs$inner(vts0, d2vs)
-val vts2 =
-dvdtp1lst_d2vs$outer(vts0, d2vs)
-//
 in//let
 (
 d3exp1_dvdtp(dexp, vts2)
 ) where
 {
 //
+val vts1 =
+dvdtp1lst_d2vs$inner(vts0, d2vs)
+val vts2 =
+dvdtp1lst_d2vs$outer(vts0, d2vs)
+//
+val (  ) =
+prerrsln
+("f0_let0(ltck): vts1 = ", vts1)
+val (  ) =
+prerrsln
+("f0_let0(ltck): vts2 = ", vts2)
+//
 val (  ) =
 (
-prerrsln("\
-d3exp1_trxltck:\
-f0_let0: vts1 = ", vts1))
-val (  ) =
-(
-prerrsln("\
-d3exp1_trxltck:\
-f0_let0: vts2 = ", vts2))
+  envltck_dvts$push(env0, vts2))
 //
 val
 dexp =
 d3exp1(loc0,
 t3q1, D3E1let1(dcls, d3e1, vts1)) }
+//
 end//let
 //
 end//let//end-of-[f0_let0(d3e0, env0)]
