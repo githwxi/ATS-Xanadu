@@ -973,7 +973,7 @@ prerrsln
 //
 val (  ) =
 (
-  envltck_dvts$push(env0, vts2))
+  envltck_dvts$updt( env0, vts2 ))
 //
 val
 dexp =

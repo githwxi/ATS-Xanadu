@@ -213,11 +213,6 @@ envltck_f3as$push
 (
 env0: !envltck,f3as:f3arg1lst): void
 //
-fun
-envltck_dvts$push
-(
-env0: !envltck,dvts:dvdtp1lst): void
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
