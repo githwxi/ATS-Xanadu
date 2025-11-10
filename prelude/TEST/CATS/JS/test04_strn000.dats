@@ -115,10 +115,7 @@ in
 if ci = cj
 then () else work
 ($UN.strn_fset$at$raw(wrd0, i, cj))
-end
-)
-)
-)
+end)))//end(list_fmake_fwork<strn>)
 //
 val (  ) = printsln("wrds = ", wrds)
 //

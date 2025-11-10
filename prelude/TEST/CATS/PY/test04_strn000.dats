@@ -58,11 +58,13 @@ val () = printsln("ABBA = ", ABBA)
 (* ****** ****** *)
 //
 val
-rABAB = strn$rconcat(@(AB, AB))
+rABAB =
+gseq_strn$rconcat(@(AB, AB))
 val () = printsln("rABAB = ", rABAB)
 //
 val
-ABABAB = strn$concat(@(AB, AB, AB))
+ABABAB =
+gseq_strn$concat(@(AB, AB, AB))
 val () = printsln("ABABAB = ", ABABAB)
 //
 (* ****** ****** *)
@@ -77,8 +79,8 @@ gseq_iforitm
 (
 GASZ(wrd0),
 lam(i, ci) =>
-gseq_foritm(GASZ(26),
-(
+gseq_foritm(
+GASZ(26),
 lam(j) =>
 let
   val cj = 'a'+j
@@ -102,7 +104,6 @@ GSEQ(wrd0).iforitm
 (
 lam(i, ci) =>
 gseq_foritm(GASZ(26),
-(
 lam(j) =>
 let
   val cj = 'a'+j
@@ -110,7 +111,7 @@ in//let
 if ci = cj
 then () else work
 ($UN.strn_fset$at$raw(wrd0, i, cj))
-end)))
+end)))//end(list_fmake_fwork<strn>)
 //
 val (  ) = printsln("wrds = ", wrds)
 //
