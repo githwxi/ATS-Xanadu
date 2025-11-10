@@ -77,9 +77,9 @@ g_print
 < x0:vt >
 g_parse(rep) =
 (
-case+ opt of
-| ~optn_vt_cons(x0) => x0
-) where
+case- opt of
+| ~
+optn_vt_cons(x0) => x0) where
 {
   val opt = g_parse$opt<x0>(rep)
 }(*where*)//end-of-[g_parse(rep)]
