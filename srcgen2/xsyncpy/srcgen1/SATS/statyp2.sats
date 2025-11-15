@@ -50,7 +50,11 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 BAS = "./\
 ../../../SATS/xbasics.sats"
+#staload
+LAB = "./\
+../../../SATS/xlabel0.sats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
@@ -273,6 +277,15 @@ l2t2p1_fprint
 //
 #symload fprint with s2typ1_fprint of 1000
 #symload fprint with l2t2p1_fprint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef label = $LAB.label
+//
+fun
+l2t2p1lst_lab$proj
+(ltqs: l2t2p1lst, lab0: label): s2typ1
 //
 (* ****** ****** *)
 (* ****** ****** *)

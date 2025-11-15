@@ -913,5 +913,5 @@ end//let//end-of-[jshmap_set$at$opt(A,k,x)]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_xbasics_DATS_CATS_JS_hashmap0.dats] *)
+(* end of [ATS3/XANADU_xatslib_xbasics_DATS_CATS_JS_hashmp0.dats] *)
 (***********************************************************************)

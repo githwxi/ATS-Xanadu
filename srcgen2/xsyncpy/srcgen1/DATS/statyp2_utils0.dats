@@ -459,6 +459,31 @@ l2t2p1lst_lteq(lts1, lts2) else false))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+l2t2p1lst_lab$proj
+  (ltqs, lab0) =
+(
+case+ ltqs of
+|
+list_nil
+( (*void*) ) =>
+s2typ1_none0((*void*))
+|
+list_cons
+(ltq1, ltqs) =>
+let
+val+
+S2LAB
+(lab1, t2q1) = ltq1
+in//let
+if // if
+(lab0 = lab1) then t2q1
+else l2t2p1lst_lab$proj(ltqs, lab0) end
+)(*case+*)//end-of-[l2t2p1lst_lab$proj(ltqs,lab0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_statyp2_utils0.dats] *)
 (***********************************************************************)

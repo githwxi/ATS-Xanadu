@@ -293,17 +293,17 @@ d3typ1_node =
 //
 |T3P1styp of s2typ1
 //
-|T3P1dvar of (d2var, d3typ1)
+|T3P1dvar of (d2var)
 //
-|T3P1dcon of (d2con, d2varlst)
+|T3P1dcon of (d2con, d3typ1lst)
 //
 |T3P1tup0 of
-(sint(*npf*), d2varlst)
+(sint(*npf*), d3typ1lst)
 |T3P1tup1 of
-(token, sint(*npf*), d2varlst)
+(token, sint(*npf*), d3typ1lst)
 (*
 |T3P1rcd2 of
-(token, sint(*npf*), l3d2vlst)
+(token, sint(*npf*), l3dtp1lst)
 *)
 //
 (* ****** ****** *)
@@ -536,6 +536,11 @@ d3exp1_node =
 //
 (* ****** ****** *)
 //
+|D3E1styp of
+(d3exp1(*src*), s2typ1)
+//
+(* ****** ****** *)
+//
 |D3E1sapp of
 (d3exp1(*fun*), s2explst)
 |D3E1sapq of
@@ -553,15 +558,24 @@ d3exp1_node =
 |D3E1dap0 of
 (d3exp1(*fun*))//HX:nullary?
 |D3E1dapp of
-(d3exp1, sint(*npf*), d3exp1lst)
+(d3exp1,sint(*npf*),d3exp1lst)
 //
 |D3E1daft of
-(d3exp1(*darg*), s2typ1(*taft*))
+(
+d3exp1(*darg*), s2typ1(*taft*))
+//
+(* ****** ****** *)
+//
+|D3E1pcon of
+(token, label, d3exp1(*conexp*))
+|D3E1proj of
+(token, label, d3exp1(*tupexp*))
 //
 (* ****** ****** *)
 //
 |D3E1let0 of
-(d3ecl1lst, d3exp1(*scope*))
+(
+d3ecl1lst, d3exp1(*scope*))//let0
 |D3E1let1 of
 (
 d3ecl1lst,
