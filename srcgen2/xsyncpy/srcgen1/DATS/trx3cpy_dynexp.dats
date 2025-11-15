@@ -540,6 +540,9 @@ d3exp1
 |D3Edap0 _ => f0_dap0(d3e0, env0)
 |D3Edapp _ => f0_dapp(d3e0, env0)
 //
+|D3Epcon _ => f0_pcon(d3e0, env0)
+|D3Eproj _ => f0_proj(d3e0, env0)
+//
 |D3Elet0 _ => f0_let0(d3e0, env0)
 //
 |D3Eift0 _ => f0_ift0(d3e0, env0)
@@ -763,6 +766,54 @@ in//let
 d3exp1
 ( loc0
 , t3q0, D3E1dapp(d3f0,npf1,d3es))
+//
+end//let
+//
+(* ****** ****** *)
+//
+fun
+f0_pcon
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+val-
+D3Epcon
+(tknd
+,lab1, d3e1) = d3e0.node()
+//
+val d3e1 =
+(
+  d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+//
+d3exp1
+( loc0
+, t3q0, D3E1pcon(tknd,lab1,d3e1))
+//
+end//let
+//
+(* ****** ****** *)
+//
+fun
+f0_proj
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+val-
+D3Eproj
+(tknd
+,lab1, d3e1) = d3e0.node()
+//
+val d3e1 =
+(
+  d3exp_trx3cpy(d3e1, env0))
+//
+in//let
+//
+d3exp1
+( loc0
+, t3q0, D3E1proj(tknd,lab1,d3e1))
 //
 end//let
 //

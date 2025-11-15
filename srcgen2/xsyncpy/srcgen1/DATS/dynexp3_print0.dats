@@ -73,31 +73,30 @@ prints("T3P1none(", ")"))
 (
 prints("T3P1styp(", t2q1, ")"))
 //
-|T3P1dvar(dvar, t3q1) =>
+|T3P1dvar(dvar) =>
 (
-prints
-("T3P1dvar(", dvar, ";", t3q1, ")"))
+prints("T3P1dvar(", dvar, ")"))
 //
-|T3P1dcon(dcon, d2vs) =>
+|T3P1dcon(dcon, t3qs) =>
 (
 prints
-("T3P1dcon(", dcon, ";", d2vs, ")"))
+("T3P1dcon(", dcon, ";", t3qs, ")"))
 //
-|T3P1tup0(npf1, d2vs) =>
+|T3P1tup0(npf1, t3qs) =>
 (
 prints
-("T3P1tup0(", npf1, ";", d2vs, ")"))
+("T3P1tup0(", npf1, ";", t3qs, ")"))
 //
-|T3P1tup1(tknd, npf1, d2vs) =>
+|T3P1tup1(tknd, npf1, t3qs) =>
 (
 prints
-("T3P1tup1(", tknd,";",npf1,";",d2vs,")"))
+("T3P1tup1(", tknd,";",npf1,";",t3qs,")"))
 //
 (*
-|T3P1rcd2(tknd, npf1, ldvs) =>
+|T3P1rcd2(tknd, npf1, ltqs) =>
 (
 prints
-("T3P1rcd2(", tknd, ";",npf1,";",ldvs,")"))
+("T3P1rcd2(", tknd, ";",npf1,";",ltqs,")"))
 *)
 //
 end(*let*)//end-of-[d3typ1_fprint(t3q0,out0)]
@@ -454,6 +453,13 @@ prints("D3E1cst(", d2c1, ")"))
 //
 (* ****** ****** *)
 //
+|D3E1styp
+(d3e1, t2q1) =>
+prints
+("D3E1styp(",d3e1,";",t2q1,")")
+//
+(* ****** ****** *)
+//
 |D3E1sapp
 (d3e1, s2es) =>
 prints
@@ -491,6 +497,20 @@ prints(d3f0,";",npf1,";",d3es,")"))
 (darg, taft) =>
 prints
 ("D3E1daft(", darg, ";", taft, ")")
+//
+(* ****** ****** *)
+//
+|D3E1pcon
+(tknd, lab1, d3e1) =>
+(
+print("D3E1pcon(");
+prints(tknd,";",lab1,";",d3e1,")"))
+//
+|D3E1proj
+(tknd, lab1, d3e1) =>
+(
+print("D3E1proj(");
+prints(tknd,";",lab1,";",d3e1,")"))
 //
 (* ****** ****** *)
 //

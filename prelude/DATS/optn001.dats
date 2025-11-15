@@ -115,6 +115,79 @@ gseq_irforall
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0:t0 >
+optn_foritm
+  ( xs ) = 
+(
+case+ xs of
+|optn_nil() => ((*void*))
+|optn_cons(x0) => foritm$work<x0>(x0)
+)
+//
+#impltmp
+{ x0:t0 }
+gseq_foritm
+<optn(x0)><x0> = optn_foritm<x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+optn_rforitm
+  ( xs ) = 
+(
+case+ xs of
+|optn_nil() => ((*void*))
+|optn_cons(x0) => rforitm$work<x0>(x0)
+)
+//
+#impltmp
+{ x0:t0 }
+gseq_rforitm
+<optn(x0)><x0> = optn_rforitm<x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+optn_iforitm
+  ( xs ) = 
+(
+case+ xs of
+|
+optn_nil() => ((*void*))
+|
+optn_cons(x0) => iforitm$work<x0>(0, x0)
+)
+//
+#impltmp
+{ x0:t0 }
+gseq_iforitm
+<optn(x0)><x0> = optn_iforitm<x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+optn_irforitm
+  ( xs ) = 
+(
+case+ xs of
+|
+optn_nil() => ((*void*))
+|
+optn_cons(x0) => irforitm$work<x0>(0, x0)
+)
+//
+#impltmp
+{ x0:t0 }
+gseq_irforitm
+<optn(x0)><x0> = optn_irforitm<x0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2025-05-29:
 Thu May 29 08:48:06 AM EDT 2025

@@ -681,7 +681,17 @@ t3q0.node() of
 |T3P1none() =>
 (
 s2typ1_none0((*void*)))
+//
 |T3P1styp(t2q0) => (t2q0)
+//
+|
+T3P1dvar(d2v0) =>
+(
+envltck_dtyp$eval
+(  env0 , t3q0  )) where
+{
+val t3q0 =
+envltck_dvar$take(env0, d2v0)}
 //
 ) where
 {

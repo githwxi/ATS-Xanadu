@@ -1023,5 +1023,5 @@ XATS2JS_jsdasz_iter_next$work
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_xbasics_DATS_CATS_JS_dynarr00.dats] *)
+(* end of [ATS3/XANADU_xatslib_xbasics_DATS_CATS_JS_dynarr0.dats] *)
 (***********************************************************************)
