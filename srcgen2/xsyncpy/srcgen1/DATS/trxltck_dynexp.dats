@@ -637,6 +637,19 @@ val (  ) =
 (* ****** ****** *)
 //
 #implfun
+d3exp1_stypize
+(d3e0, env0) =
+(
+d3exp1_styp(d3e0, t2q0)
+) where
+{
+val t3q0 = d3e0.dtyp((*void*))
+val t2q0 = envltck_dtyp$eval(env0, t3q0)
+}(*where*)//end-of-[d3exp1_stypize(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
 d3exp1_trxltck
 (d3e0, env0) =
 let
@@ -1018,6 +1031,9 @@ d3ecl1lst_trxltck(dcls, env0)
 val d3e1 =
 (
   d3exp1_trxltck(d3e1, env0))
+val d3e1 =
+(
+  d3exp1_stypize(d3e1, env0))
 //
 val t3q1 = d3e1.dtyp((*void*))
 //
