@@ -239,6 +239,10 @@ f3arg1_trxltck
 (* ****** ****** *)
 //
 fun
+d3exp1_stypize
+(d3e0: d3exp1, env0: !envltck): d3exp1
+//
+fun
 d3exp1_trxltck
 (d3e0: d3exp1, env0: !envltck): d3exp1
 //
