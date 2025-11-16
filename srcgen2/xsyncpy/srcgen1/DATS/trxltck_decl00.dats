@@ -501,12 +501,18 @@ case+ dini of
 TEQD3EXP1none() =>
 let
 val t2q1 = s2typ1_t0pize(t2q1)
+val t3q1 = d3typ1_styp$make(t2q1)
 in//let
-envltck_dvar$push(env0, dpid, t2q1)
+envltck_dvar$push(env0, dpid, t3q1)
 end//let
 |
 TEQD3EXP1some _ =>
-envltck_dvar$push(env0, dpid, t2q1))
+let
+val t3q1 = d3typ1_styp$make(t2q1)
+in//let
+envltck_dvar$push(env0, dpid, t3q1)
+end//let
+)(*case+*)//end(val()=case+(dini)-of())
 //
 in//let
 (
@@ -541,9 +547,13 @@ HX-2025-10-27:
 Note that [dpid] is
 available subsequently!
 *)
+//
+val t3q1 =
+d3typ1_styp$make
+(     t2q1     )
 val (  ) =
 envltck_dvar$push
-(env0, dpid, t2q1)//recur
+(env0, dpid, t3q1)//recur
 //
 val (  ) =
 envltck_pshlam0(env0)//enter
