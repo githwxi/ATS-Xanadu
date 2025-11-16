@@ -87,8 +87,17 @@ s2typ1_make_sort$node
 (s2t0, T2P1none0(*0*)))
 where
 {
-  val s2t0 = sort2_none0()
-}(*where*)//end-of-[s2typ1_none0]
+val s2t0 = sort2_none0()}
+//
+(* ****** ****** *)
+//
+#implfun
+s2typ1_lft
+
+  ( t2q0 ) =
+(
+s2typ1_make_sort$node
+(t2q0.sort(), T2P1lft(t2q0)))
 //
 (* ****** ****** *)
 //

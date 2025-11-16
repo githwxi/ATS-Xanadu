@@ -50,6 +50,26 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-09-25:
+This is needed for
+prelude over srcgen1/prelude
+*)
+#symload not
+with bool_neg of 1099
+//
+#symload lnot
+with uint_lnot of 1099
+#symload land
+with uint_lmul of 1099
+//
+#symload is2u
+with sint_to$uint of 1099
+#symload iu2s
+with uint_to$sint of 1099
+//
+(* ****** ****** *)
+//
 #symload !=
 with sint_neq$sint of 1099
 //
@@ -169,30 +189,126 @@ forall$test<l2t2p1> = l2t2p1_prfq
 (* ****** ****** *)
 //
 #implfun
+sort2_delin
+(   s2t0   ) =
+(
+case+ s2t0 of
+|
+S2Tbas(s2tb) =>
+(
+case+ s2tb of
+|T2Bimpr
+(knd, sym) =>
+let
+  val msk =
+    lnot(is2u(2))
+  val knd = is2u(knd)
+  val knd =
+    iu2s(knd\land(msk))
+in
+  S2Tbas(T2Bimpr(knd, sym))
+end
+|_(*non-T2Bimpr*) => (s2t0)
+)
+|_(* non-S2Tbas *) => (s2t0)
+)(*case+*)//end-of-[sort2_delin(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2typ1_delin
+(   t2q0   ) =
+let
+//
+val s2t0 = t2q0.sort()
+//
+in//let
+//
+if
+not(sort2_linq(s2t0))
+then (t2q0) else s2typ1_t1pize(t2q0)
+//
+end(*let*)//end-of-[s2typ1_delin(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 s2typ1_t0pize
-(s2t0, t2q0) =
+(   t2q0   ) =
+(
+f0_main(s2t0, t2q0))
+where
+{
+//
+fun
+f0_main
+(s2t0: sort2
+,t2q0: s2typ1): s2typ1 =
 (
 case+
 t2q0.node() of
-|T2P1top0(t2q1) =>
+|
+T2P1lft(t2q1) =>
+s2typ1_lft
+(f0_main(s2t0, t2q1))
+//
+|
+T2P1top0(t2q1) =>
 s2typ1(s2t0, T2P1top0(t2q1))
-|T2P1top1(t2q1) =>
+|
+T2P1top1(t2q1) =>
 s2typ1(s2t0, T2P1top0(t2q1))
+//
 |_(*otherwise*) =>
-s2typ1(s2t0, T2P1top0(t2q0)))
+(
+s2typ1(s2t0, T2P1top0(t2q0))))
+//
+val s2t0 =
+sort2_delin(s2typ1_sort$get(t2q0))
+//
+}(*where*)//end-of-[s2typ1_t0pize(t2q0)]
+//
+(* ****** ****** *)
 //
 #implfun
 s2typ1_t1pize
-(s2t0, t2q0) =
+(   t2q0   ) =
+(
+f0_main(s2t0, t2q0))
+where
+{
+//
+fun
+f0_main
+(s2t0: sort2
+,t2q0: s2typ1): s2typ1 =
 (
 case+
 t2q0.node() of
-|T2P1top0(t2q1) =>
+//
+|
+T2P1lft(t2q1) =>
+s2typ1_lft
+(f0_main(s2t0, t2q1))
+//
+|
+T2P1top0(t2q1) =>
 s2typ1(s2t0, T2P1top0(t2q1))
-|T2P1top1(t2q1) =>
+|
+T2P1top1(t2q1) =>
 s2typ1(s2t0, T2P1top1(t2q1))
-|_(*otherwise*) =>
-s2typ1(s2t0, T2P1top1(t2q0)))
+//
+|
+_(*otherwise*) =>
+(
+s2typ1(s2t0, T2P1top1(t2q0))))
+//
+val s2t0 =
+sort2_delin(s2typ1_sort$get(t2q0))
+//
+}(*where*)//end-of-[s2typ1_t1pize(t2q0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -210,9 +326,8 @@ if
 linq(t2q1)
 then false else
 let
-val s2t1 = t2q1.sort()
 val t2q1 =
-s2typ1_t0pize(s2t1, t2q1)
+s2typ1_t0pize(t2q1)
 in//let
   f0_main(t2q1, t2q2) end//let
 )
@@ -223,9 +338,8 @@ if
 linq(t2q1)
 then false else
 let
-val s2t1 = t2q1.sort()
 val t2q1 =
-s2typ1_t1pize(s2t1, t2q1)
+s2typ1_t1pize(t2q1)
 in//let
   f0_main(t2q1, t2q2) end//let
 )

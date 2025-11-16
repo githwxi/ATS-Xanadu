@@ -197,11 +197,15 @@ l2t2p1lst_prfq(l2t2p1lst): bool
 (* ****** ****** *)
 //
 fun
-s2typ1_t0pize
-(s2t0:sort2, t2q0:s2typ1): s2typ1
+sort2_delin(sort2): sort2
+//
 fun
-s2typ1_t1pize
-(s2t0:sort2, t2q0:s2typ1): s2typ1
+s2typ1_delin(s2typ1): s2typ1
+//
+fun
+s2typ1_t0pize(t2q0:s2typ1):s2typ1
+fun
+s2typ1_t1pize(t2q0:s2typ1):s2typ1
 //
 (* ****** ****** *)
 //
@@ -238,6 +242,11 @@ l2t2p1lst_lteq
 //
 fun
 s2typ1_none0(): s2typ1
+//
+(* ****** ****** *)
+//
+fun
+s2typ1_lft(t2q0: s2typ1): s2typ1
 //
 (* ****** ****** *)
 //

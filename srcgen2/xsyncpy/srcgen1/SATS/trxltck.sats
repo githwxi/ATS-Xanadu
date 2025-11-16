@@ -80,20 +80,6 @@ envltck = envltck_vtbx
 (* ****** ****** *)
 //
 fun
-sort2_delin(sort2): sort2
-//
-fun
-s2typ1_delin(s2typ1): s2typ1
-//
-fun
-s2typ1_t0pize(s2typ1): s2typ1
-fun
-s2typ1_t1pize(s2typ1): s2typ1
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
 d3parsed1_of_trxltck
 (dpar: d3parsed1): (d3parsed1)
 //

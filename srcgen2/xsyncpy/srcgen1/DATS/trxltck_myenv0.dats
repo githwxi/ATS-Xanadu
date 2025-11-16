@@ -63,8 +63,39 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload <
+with sint_lt$sint of 1099
+#symload >
+with sint_gt$sint of 1099
+#symload =
+with sint_eq$sint of 1099
+#symload <=
+with sint_lte$sint of 1099
+#symload >=
+with sint_gte$sint of 1099
+#symload !=
+with sint_neq$sint of 1099
+//
+#symload +
+with sint_add$sint of 1099
+#symload -
+with sint_sub$sint of 1099
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #include
 "./../HATS/libxatsopt.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2var_equal
+(x1: d2var
+,x2: d2var): bool =
+(g_cmp<d2var>(x1, x2) = 0)
+#symload = with d2var_equal
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -803,16 +834,30 @@ t2q2.node() of
 //
 |T2P1arg1
 (knd0, targ) =>
+let
+val targ =
+if // if
+(knd0 >= 0)
+then targ else s2typ1_lft(targ)
+in//let
 envltck_dvar$push(env0, d2v1, targ)
+end//let
 //
 |T2P1atx2
-(tbef, targ) =>
+(tbef, taft) =>
 (
 case+
 tbef.node() of
 |T2P1arg1
 (knd0, targ) =>
+let
+val targ =
+if // if
+(knd0 >= 0)
+then targ else s2typ1_lft(targ)
+in//let
 envltck_dvar$push(env0, d2v1, targ)
+end//let
 |_(*non-T2P1arg1*) =>
 envltck_dvar$push(env0, d2v1, tbef))
 //
@@ -838,16 +883,30 @@ t2q2.node() of
 //
 |T2P1arg1
 (knd0, targ) =>
+let
+val targ =
+if // if
+(knd0 >= 0)
+then targ else s2typ1_lft(targ)
+in//let
 envltck_dvar$push(env0, d2v1, targ)
+end//let
 //
 |T2P1atx2
-(tbef, targ) =>
+(tbef, taft) =>
 (
 case+
 tbef.node() of
 |T2P1arg1
 (knd0, targ) =>
+let
+val targ =
+if // if
+(knd0 >= 0)
+then targ else s2typ1_lft(targ)
+in//let
 envltck_dvar$push(env0, d2v1, targ)
+end//let
 //
 |_(*non-T2P1arg1*) =>
 envltck_dvar$push(env0, d2v1, tbef))
