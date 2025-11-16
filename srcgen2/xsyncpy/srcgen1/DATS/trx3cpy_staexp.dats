@@ -75,12 +75,15 @@ s2typ_trx3cpy
 (t2p0, env0) =
 let
 //
-val s2t0 = t2p0.sort()
+val s2t0 =
+s2typ_get_sort(t2p0)
 //
 in//let
 //
 case+
 t2p0.node() of
+//
+(* ****** ****** *)
 //
 |T2Pcst
 (   s2c1   ) =>
@@ -101,27 +104,27 @@ s2typ1(s2t0, T2P1lft(t2q1))
 end//let
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |T2Ptop0
 (   t2p1   ) =>
-let
-val t2q1 =
-s2typ_trx3cpy(t2p1, env0)
-in//let
 (
-s2typ1_t0pize(s2t0, t2q1))
-end//let
+s2typ1_t0pize(t2q1))
+where
+{
+val t2q1 =
+s2typ_trx3cpy(t2p1, env0)}
 //
 |T2Ptop1
 (   t2p1   ) =>
-let
-val t2q1 =
-s2typ_trx3cpy(t2p1, env0)
-in//let
 (
-s2typ1_t1pize(s2t0, t2q1))
-end//let
+s2typ1_t1pize(t2q1))
+where
+{
+val t2q1 =
+s2typ_trx3cpy(t2p1, env0)}
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |T2Parg1
@@ -133,6 +136,7 @@ in//let
 s2typ1
 (s2t0, T2P1arg1(knd0, t2q1))
 end//let
+//
 |T2Patx2
 (t2p1, t2p2) =>
 let
@@ -145,6 +149,7 @@ s2typ1
 (s2t0, T2P1atx2(t2q1, t2q2))
 end//let
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |T2Papps
