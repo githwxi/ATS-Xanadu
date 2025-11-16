@@ -13,18 +13,6 @@ Sun Sep 28 03:27:13 PM EDT 2025
 "prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-fun
-<x0:vt>
-identity3
-(x0: !x0): x0 =
-let
-val x1 = x0
-in//let
-if true then x1 else x1
-end//let//end-of-[identity3]
-(* ****** ****** *)
-////
-(* ****** ****** *)
 //
 fun
 <x0:vt>
@@ -64,12 +52,12 @@ duplicity0
 (x0: x0): (x0, x0) = (x0, x0)
 fun
 <x0:vt>
-duplicity1 // HX: ill-typed!
-(x0: x0): (x0, x0) = (x0, g_copy(x0))
+duplicity1 // HX: well-typed!
+(x0: x0): (x0, x0) = (g_copy(x0), x0)
 fun
 <x0:vt>
-duplicity2 // HX: well-typed!
-(x0: x0): (x0, x0) = (g_copy(x0), x0)
+duplicity2 // HX: well-typed, too!
+(x0: x0): (x0, x0) = (x0, g_copy(x0))
 fun
 <x0:vt>
 duplicity3

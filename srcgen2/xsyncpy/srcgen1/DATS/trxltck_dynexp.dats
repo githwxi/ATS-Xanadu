@@ -262,15 +262,13 @@ d3fag1_aftck
 ,styp: s2typ1
 ,env0: !envltck): d3exp1 =
 (
-case+
-d3e0.node() of
-//
-|D3E1var _ =>
+if
 (
-f0_var(d3e0, styp, env0))
-//
-|
-_(*rest-of-d3exp1*) =>
+faftck
+(d3e0
+,styp
+,env0) = 0)
+then d3e0 else
 let
 //
 val loc0 = d3e0.lctn((*0*))
@@ -285,10 +283,27 @@ d3exp1
 {
 //
 fun
+faftck
+(d3e0: d3exp1
+,styp: s2typ1
+,env0: !envltck): sint =
+(
+case+
+d3e0.node() of
+//
+|D3E1var _ =>
+f0_var(d3e0, styp, env0)
+|D3E1styp(d3e1, _) =>
+faftck(d3e1, styp, env0)
+//
+|_(* otherwise *) => ( 1 )
+)
+//
+and
 f0_var
 (d3e0: d3exp1
 ,styp: s2typ1
-,env0: !envltck): d3exp1 =
+,env0: !envltck): sint =
 let
 val-
 D3E1var(d2v1) = d3e0.node()
@@ -300,9 +315,11 @@ d3typ1_styp$make
 (     styp     )
 val (  ) =
 envltck_dvar$updt
-(env0, d2v1, taft) in d3e0 end
+(env0, d2v1, taft) in ( 0 ) end
 //
 end//let//end-of-[f0_var(d3e0,...)]
+//
+(* ****** ****** *)
 //
 val loc0 = d3e0.lctn()
 val (  ) =
@@ -311,6 +328,8 @@ val (  ) =
 prerrsln("d3fag1_aftck: d3e0 = ", d3e0)
 val (  ) =
 prerrsln("d3fag1_aftck: styp = ", styp)
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[d3fag1_aftck(d3e0,...)]
 //
@@ -708,6 +727,10 @@ d3exp1
 (* ****** ****** *)
 //
 |D3E1ift0 _ => f0_ift0(d3e0, env0)
+//
+(* ****** ****** *)
+//
+|D3E1seqn _ => f0_seqn(d3e0, env0)
 //
 (* ****** ****** *)
 //
@@ -1156,6 +1179,34 @@ where
 end//let
 //
 end//let//end-of-[f0_ift0(d3e0, env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_seqn
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1seqn
+(d3es, d3e1) = d3e0.node()
+//
+val d3es =
+d3exp1lst_trxltck(d3es, env0)
+val d3e1 =
+(
+  d3exp1_trxltck(d3e1, env0))
+//
+val t3q1 = d3e1.dtyp((*void*))
+//
+in//let
+//
+(
+d3exp1
+(loc0, t3q1, D3E1seqn(d3es, d3e1)))
+//
+end//let//end-of-[f0_seqn(d3e0, env0)]
 //
 (* ****** ****** *)
 //
