@@ -101,6 +101,21 @@ d2var_equal
 (* ****** ****** *)
 //
 fun
+d3typ1_dlft
+(t3q0: d3typ1): d3typ1 =
+let
+//
+val t2q0 =
+s2typ1_lft(t3q0.styp())
+//
+in//let
+d3typ1(t2q0, T3P1dlft(t3q0))
+end//let//end-of-[d3typ1_dlft]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 s2typ1_linq
 (t2q0: s2typ1): bool =
 (
@@ -119,6 +134,7 @@ t3q0.node() of
 )(*case+*)//endof(d3typ1_linq)
 #symload linq with d3typ1_linq
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -756,30 +772,22 @@ val t2qs = envltck_dtyplst$eval(env0, t3qs)}
 //
 #implfun
 envltck_dvar$push
-  (env0, dvar, t2q1) =
-let
-//
-val
-t3q1 =
-d3typ1_styp$make(t2q1)
-//
-in//let
-//
+(env0, dvar, t3q0) =
+(
 case+ env0 of
 | ENVLTCK
 (
 !dtpstk, stkmap) =>
 (
 dtpstk :=
-dtpstk_cons(dvar, t3q1, dtpstk))
-//
-end where
+dtpstk_cons(dvar, t3q0, dtpstk)))
+where
 {
 //
 val () =
 prerrsln("envltck_dvar$push: dvar = ", dvar)
 val () =
-prerrsln("envltck_dvar$push: t2q1 = ", t2q1)
+prerrsln("envltck_dvar$push: t3q1 = ", t3q0)
 //
 }(*where*)//end-of-(envltck_dvar$push(env0,...))
 //
@@ -807,10 +815,13 @@ d3p0.node() of
 |D3P1var
 (   d2v1   ) =>
 let
-val t2q0 = d3p0.styp()
+//
+val t3q0 =
+d3typ1_styp$make(d3p0.styp())
+//
 in//let
-envltck_dvar$push(env0,d2v1,t2q0)
-end//let//end-of-[ D3P1var(d2v1) ]
+envltck_dvar$push(env0,d2v1,t3q0)
+end//let//end-of-[D3P1var( d2v1 )]
 //
 (* ****** ****** *)
 //
@@ -834,38 +845,42 @@ t2q2.node() of
 //
 |T2P1arg1
 (knd0, targ) =>
-let
-val targ =
-if // if
-(knd0 >= 0)
-then targ else s2typ1_lft(targ)
-in//let
-envltck_dvar$push(env0, d2v1, targ)
-end//let
+f0_dvar$arg1(env0, d2v1, t2q2)
 //
 |T2P1atx2
 (tbef, taft) =>
 (
 case+
 tbef.node() of
+//
 |T2P1arg1
 (knd0, targ) =>
-let
-val targ =
-if // if
-(knd0 >= 0)
-then targ else s2typ1_lft(targ)
-in//let
-envltck_dvar$push(env0, d2v1, targ)
-end//let
+f0_dvar$arg1(env0, d2v1, tbef)
+//
 |_(*non-T2P1arg1*) =>
-envltck_dvar$push(env0, d2v1, tbef))
+let
+val t3q1 =
+d3typ1_styp$make(tbef)
+in//let
+(
+envltck_dvar$push(env0, d2v1, t3q1))
+end//let
+)(*case+*)//end(T2P1atx2(tbef,taft))
 //
 |_(*non-T2P1arg1/atx2*) =>
-envltck_dvar$push(env0, d2v1, t2q2))
+let
+val t3q2 =
+d3typ1_styp$make(t2q2)
+in//let
+(
+envltck_dvar$push(env0, d2v1, t3q2))
+end//let//end-of-(non-T2P1arg1/atx2)
+)(*case+*)//end-of-(D3P1var( d2v1 ))
 //
-|_(*D3P1...*) => f0_dpat(env0, d3p1))
-//(*end-of-( D3P1argtp(d3p1, t2q0) )*)
+|_(*D3P1...*) => f0_dpat( env0, d3p1 )
+)(*case+*)//endof(D3P1argtp(d3p1,t2q0))
+//
+(* ****** ****** *)
 //
 |D3P1annot
 (d3p1
@@ -883,14 +898,7 @@ t2q2.node() of
 //
 |T2P1arg1
 (knd0, targ) =>
-let
-val targ =
-if // if
-(knd0 >= 0)
-then targ else s2typ1_lft(targ)
-in//let
-envltck_dvar$push(env0, d2v1, targ)
-end//let
+f0_dvar$arg1(env0, d2v1, t2q2)
 //
 |T2P1atx2
 (tbef, taft) =>
@@ -899,20 +907,26 @@ case+
 tbef.node() of
 |T2P1arg1
 (knd0, targ) =>
-let
-val targ =
-if // if
-(knd0 >= 0)
-then targ else s2typ1_lft(targ)
-in//let
-envltck_dvar$push(env0, d2v1, targ)
-end//let
+f0_dvar$arg1(env0, d2v1, tbef)
 //
 |_(*non-T2P1arg1*) =>
-envltck_dvar$push(env0, d2v1, tbef))
+let
+val t3q1 =
+d3typ1_styp$make(tbef)
+in//let
+envltck_dvar$push(env0, d2v1, t3q1)
+end//let
+)(*case+*)//end(T2P1atx2(tbef,taft))
 //
 |_(*non-T2P1arg1/atx2*) =>
-envltck_dvar$push(env0, d2v1, t2q2))
+let
+val t3q2 =
+d3typ1_styp$make(t2q2)
+in//let
+(
+envltck_dvar$push(env0, d2v1, t3q2))
+end//let//end-of-(non-T2P1arg1/atx2)
+)(*case+*)//end-of-(D3P1var( d2v1 ))
 //
 |_(*D3P1...*) => f0_dpat(env0, d3p1))
 //(*end-of(D3P1annot(d3p1,...,t2q0))*)
@@ -931,6 +945,28 @@ case+ d3ps of
 |list_nil() => ()
 |list_cons(d3p1, d3ps) =>
 (f0_dpat(env0, d3p1); f0_d3ps(env0, d3ps)))
+//
+(* ****** ****** *)
+//
+and
+f0_dvar$arg1
+( env0:
+! envltck
+, d2v0
+: d2var, t2q0: s2typ1): void =
+let
+val t3q1 =
+d3typ1_styp$make(targ)
+val t3q1 =
+if // if
+(knd0 >= 0)
+then t3q1 else d3typ1_dlft(t3q1)
+in//let
+envltck_dvar$push(env0, d2v0, t3q1)
+end where
+{
+val-T2P1arg1(knd0, targ) = t2q0.node()
+}(*where*)//end-of-[f0_dvar$arg1(env0,...)]
 //
 (* ****** ****** *)
 //

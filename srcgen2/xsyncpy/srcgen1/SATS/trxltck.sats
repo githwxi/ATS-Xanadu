@@ -182,7 +182,7 @@ envltck_vtsift0(!envltck): dvdtp1lst
 fun
 envltck_dvar$push
 (env0: !envltck
-,dvar: d2var, t2q1: s2typ1): void
+,dvar: d2var, t3q0: d3typ1): void
 fun
 envltck_dpat$push
 (env0: !envltck, d3p0: d3pat1): void

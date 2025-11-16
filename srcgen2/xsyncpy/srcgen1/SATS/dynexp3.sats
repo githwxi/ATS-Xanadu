@@ -295,15 +295,17 @@ d3typ1_node =
 //
 |T3P1dvar of (d2var)
 //
-|T3P1dcon of (d2con, d3typ1lst)
+|T3P1dlft of (d3typ1)
+//
+|T3P1dcon of (d2con, d2varlst)
 //
 |T3P1tup0 of
-(sint(*npf*), d3typ1lst)
+(sint(*npf*), d2varlst)
 |T3P1tup1 of
-(token, sint(*npf*), d3typ1lst)
+(token, sint(*npf*), d2varlst)
 (*
 |T3P1rcd2 of
-(token, sint(*npf*), l3dtp1lst)
+(token, sint(*npf*), l2d2vlst)
 *)
 //
 (* ****** ****** *)
@@ -332,6 +334,8 @@ d3typ1_node$get
 //
 fun
 d3typ1_none0((*0*)): d3typ1
+//
+(* ****** ****** *)
 //
 fun
 d3typ1_make_styp$node

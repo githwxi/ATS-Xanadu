@@ -223,7 +223,8 @@ val d3e0 =
 d3exp1_styp(d3e0, t2q0)
 //
 val ubtf =
-s2typ1_lteq(t2q0, styp)
+(
+s2typ1_lteq(t2q0, styp))
 //
 in//let
 //
@@ -353,7 +354,7 @@ HX-2025-11-07:
 and no aftck is needed
 *)
 if
-(0 = knd0)
+(knd0 = 0)
 then d3e0 else
 d3fag1_aftck
 (d3e0, styp, env0)) where
@@ -1262,10 +1263,19 @@ D3E1flat
 //
 val d3e1 =
 (
-  d3exp1_trxltck(d3e1, env0))
+d3exp1_trxltck(d3e1, env0))
+//
+val t3q1 = d3e1.dtyp((*0*))
 //
 in//let
+//
+case+
+t3q1.node() of
+|T3P1dlft(t3q0) =>
 d3exp1(loc0, t3q0, D3E1flat(d3e1))
+|_(*otherwise*) =>
+d3exp1(loc0, t3q0, D3E1flat(d3e1))
+//
 end//let//end-of-[f0_flat(d3e0,env0)]
 //
 (* ****** ****** *)

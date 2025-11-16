@@ -77,26 +77,30 @@ prints("T3P1styp(", t2q1, ")"))
 (
 prints("T3P1dvar(", dvar, ")"))
 //
-|T3P1dcon(dcon, t3qs) =>
+|T3P1dlft(t3q1) =>
 (
-prints
-("T3P1dcon(", dcon, ";", t3qs, ")"))
+prints("T3P1dlft(", t3q1, ")"))
 //
-|T3P1tup0(npf1, t3qs) =>
+|T3P1dcon(dcon, d2vs) =>
 (
 prints
-("T3P1tup0(", npf1, ";", t3qs, ")"))
+("T3P1dcon(", dcon, ";", d2vs, ")"))
 //
-|T3P1tup1(tknd, npf1, t3qs) =>
+|T3P1tup0(npf1, d2vs) =>
 (
 prints
-("T3P1tup1(", tknd,";",npf1,";",t3qs,")"))
+("T3P1tup0(", npf1, ";", d2vs, ")"))
+//
+|T3P1tup1(tknd, npf1, d2vs) =>
+(
+prints
+("T3P1tup1(",tknd,";",npf1,";",d2vs,")"))
 //
 (*
-|T3P1rcd2(tknd, npf1, ltqs) =>
+|T3P1rcd2(tknd, npf1, ldvs) =>
 (
 prints
-("T3P1rcd2(", tknd, ";",npf1,";",ltqs,")"))
+("T3P1rcd2(",tknd,";",npf1,";",ldvs,")"))
 *)
 //
 end(*let*)//end-of-[d3typ1_fprint(t3q0,out0)]
