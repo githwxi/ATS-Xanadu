@@ -1031,6 +1031,12 @@ d3ecl1lst_trxltck(dcls, env0)
 val d3e1 =
 (
   d3exp1_trxltck(d3e1, env0))
+(*
+HX-2025-11-15:
+This is needed as the
+let-bound variables is to
+be removed from the dtpstk!
+*)
 val d3e1 =
 (
   d3exp1_stypize(d3e1, env0))
