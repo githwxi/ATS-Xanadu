@@ -137,7 +137,7 @@ map$fopr
 (* ****** ****** *)
 //
 fun
-d3exp1_delinz
+d3exp1_delinize
 (d3e0: d3exp1
 ,env0: !envltck): d3exp1 =
 let
@@ -170,7 +170,7 @@ d3exp1
 (loc0,t3q1,D3E1delin(d3e0, t2q0))
 end//let//end(else)//endof(if(...))
 //
-end//let//end-of-[d3exp1_delinz(d3e0,...)]
+end//let//end-of-[d3exp1_delinize(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1313,28 +1313,28 @@ handled ahead of [d3el]!
 *)
 val d3er =
 (
-  d3exp1_trxltck(d3er, env0))
+d3exp1_trxltck(d3er, env0))
 //
 val d3el =
 (
-  d3exp1_trxltck(d3el, env0))
+d3exp1_trxltck(d3el, env0))
 //
 val d3el =
 (
-f1_d3el$t2qr(d3el, t2qr, env0))
-where
+  f1_d3el$t2qr
+  (d3el, t2qr, env0)) where
 {
-val t3qr = d3er.dtyp((*0*))
+val t3qr = d3er.dtyp( (*0*) )
 val t2qr =
 (
-  envltck_dtyp$eval(env0, t3qr))}
+ envltck_dtyp$eval(env0, t3qr))}
 //
 in//let
 //
 let
 val d3el =
 (
-  d3exp1_delinz(d3el, env0))
+  d3exp1_delinize(d3el, env0))
 in(*let*)
 (
 d3exp1

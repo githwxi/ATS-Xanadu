@@ -74,7 +74,8 @@ fun
 swap_cbrf
 (x1: &x0, x2: &x0) =
 let
-val tt = x1 in x1 := x2; x2 := tt end
+val tt = x1 in x1 := x2; x2 := tt
+end//let//end-of-[swap_cbrf(x1,x2)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
