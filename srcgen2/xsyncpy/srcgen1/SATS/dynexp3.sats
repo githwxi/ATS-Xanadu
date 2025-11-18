@@ -702,10 +702,11 @@ d3exp1(*lnthunk*),d3exp1lst(*frees*))
 //
 (* ****** ****** *)
 //
+|D3E1delin of
+(d3exp1(*source*), s2typ1(*linear*))
 // label-cast
 |D3E1labck of
-(
- d3exp1(*tuplexp*), label(*expected*))
+(d3exp1(*tuplexp*), label(*expected*))
 //
 // stype-cast
 |D3E1t2pck of

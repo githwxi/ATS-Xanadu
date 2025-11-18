@@ -766,6 +766,15 @@ d3e1,";",s1e2,";",s2e2,";",t2q2,")"))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|D3E1delin
+(d3e1, tlin) =>
+let
+val
+t3q1 = d3e1.dtyp() in
+(print("D3E1delin(")
+;prints(d3e1,"(",t3q1,");",tlin,")"))
+endlet//end-of-[D3E1delin(d3e1, tlin)]
+//
 |D3E1labck
 (d3e1, lab2) =>
 let
