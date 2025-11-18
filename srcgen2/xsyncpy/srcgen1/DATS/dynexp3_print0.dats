@@ -708,8 +708,9 @@ prints
 |D3E1assgn
 (d3el, d3er) =>
 let
-val
-t3ql = d3el.dtyp()
+//
+val t3ql = d3el.dtyp((*0*))
+//
 in//let
 //
 print("D3E1assgn(");
