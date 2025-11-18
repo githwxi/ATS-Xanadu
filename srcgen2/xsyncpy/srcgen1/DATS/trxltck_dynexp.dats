@@ -1280,10 +1280,114 @@ val d3el =
 (
   d3exp1_trxltck(d3el, env0))
 //
+val d3el =
+(
+f1_d3el$t2qr(d3el, t2qr, env0))
+where
+{
+val t3qr =
+d3er.dtyp((*void*))
+val t2qr =
+(
+  envltck_dtyp$eval(env0, t3qr))}
+//
 in//let
+//
 d3exp1
 (loc0, t3q0, D3E1assgn(d3el, d3er))
-end//let//end-of-[f0_assgn(d3e0,env0)]
+//
+end where
+{
+//
+(* ****** ****** *)
+//
+fun
+f1_d3el$t2qr
+( d3el: d3exp1
+, t2qr: s2typ1
+, env0: !envltck): d3exp1 =
+(
+case+
+d3el.node() of
+//
+|D3E1flat
+(  dlft  ) =>
+let
+//
+val dlft =
+f1_dlft$t2qr
+(dlft, t2qr, env0)
+//
+in//let
+d3exp1
+(loc0, t3ql, D3E1flat(dlft))
+end//let
+//
+|_(*otherwise*) =>
+let
+//
+val () =
+(
+prerrs("f1_d3el$t2qr:");
+prerrsln
+("otherwise: d3el = ", d3el))
+//
+in//let
+d3exp1
+(locl, t3ql, D3E1errck(0, d3el))
+end//let//end-of-[ _(*otherwise*) ]
+//
+) where
+{
+//
+val locl = d3el.lctn( (*void*) )
+val t3ql = d3el.dtyp( (*void*) )
+//
+val (  ) =
+(
+prerrsln
+( "f1_d3el$t2qr: d3el = ", d3el ) )
+val (  ) =
+(
+prerrsln
+( "f1_d3el$t2qr: t2qr = ", t2qr ) )
+//
+}(*where*)//endof[f1_d3el$t2qr(dlft)]
+//
+and
+f1_dlft$t2qr
+( dlft: d3exp1
+, t2qr: s2typ1
+, env0: !envltck): d3exp1 =
+(
+case+
+dlft.node() of
+//
+|D3E1var(d2v1) =>
+let
+val tlft =
+s2typ1_lft(t2qr)
+val (  ) =
+envltck_dvar$spsh
+(env0, d2v1, tlft) in dlft end
+//
+) where
+{
+//
+val (  ) =
+(
+prerrsln
+( "f1_dlft$t2qr: dlft = ", dlft ) )
+val (  ) =
+(
+prerrsln
+( "f1_dlft$t2qr: t2qr = ", t2qr ) )
+//
+}(*where*)//endof[f1_dlft$t2qr(dlft)]
+//
+(* ****** ****** *)
+//
+}(*where*)//endof[f0_assgn(d3e0,env0)]
 //
 (* ****** ****** *)
 //

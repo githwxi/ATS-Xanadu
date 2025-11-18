@@ -29,17 +29,6 @@ g_copy<a>(x0) = x0
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:vt>
-swap_cbrf
-(x1: &x0, x2: &x0) =
-let
-val tt = x1 in x1 := x2; x2 := tt end
-//
-(* ****** ****** *)
-////
-(* ****** ****** *)
-//
 #impltmp
 bool_neg<>(tf) =
 if (tf)
