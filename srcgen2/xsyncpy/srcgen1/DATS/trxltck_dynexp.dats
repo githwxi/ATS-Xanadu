@@ -118,29 +118,6 @@ s2typ1_linq
 (* ****** ****** *)
 //
 fun
-d3exp1_styp
-( d3e0: d3exp1
-, styp: s2typ1): d3exp1 =
-let
-//
-val loc0 = d3e0.lctn()
-//
-val t3q0 =
-(
-  d3typ1_styp$make(styp))
-//
-in//let
-//
-(
-d3exp1
-(loc0,t3q0,D3E1styp(d3e0,styp)))
-//
-end//let//end-of-[d3exp1_styp(...)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
 d3es_t3qs$get
 ( d3es
 : d3exp1lst): d3typ1lst =
@@ -219,9 +196,6 @@ where//end(val(t2q0))
 {
 val t3q0 = d3e0.dtyp()}
 //
-val d3e0 =
-d3exp1_styp(d3e0, t2q0)
-//
 val ubtf =
 (
 s2typ1_lteq(t2q0, styp))
@@ -294,8 +268,6 @@ d3e0.node() of
 //
 |D3E1var _ =>
 f0_var(d3e0, styp, env0)
-|D3E1styp(d3e1, _) =>
-faftck(d3e1, styp, env0)
 //
 |_(* otherwise *) => ( 1 )
 )
@@ -446,7 +418,15 @@ val t2q1 =
 envltck_dtyp$eval(env0, t3q1)
 //
 in//let
-d3axp1(loc0, t2q1, D3A1var(d2v1))
+//
+(
+case+
+t2q1.node() of
+|T2P1lft(t2q1) =>
+d3axp1(loc0, t2q1, D3A1lft(d2v1))
+|_(*non-T2P1lft*) =>
+d3axp1(loc0, t2q1, D3A1var(d2v1)))
+//
 end//let//end-of-[f0_var(d3p0,env0)]
 //
 (* ****** ****** *)
@@ -500,6 +480,10 @@ end//let//end-of-[f0_annot(d3p0,env0)]
 //
 (* ****** ****** *)
 //
+(*
+HX-2025-11-17:
+d3apt1: d3pat1 as arg!
+*)
 #implfun
 d3apt1_trxltck
 (d3p0, env0) =
@@ -657,19 +641,6 @@ val (  ) =
 (* ****** ****** *)
 //
 #implfun
-d3exp1_stypize
-(d3e0, env0) =
-(
-d3exp1_styp(d3e0, t2q0)
-) where
-{
-val t3q0 = d3e0.dtyp((*void*))
-val t2q0 = envltck_dtyp$eval(env0, t3q0)
-}(*where*)//end-of-[d3exp1_stypize(d3e0,env0)]
-//
-(* ****** ****** *)
-//
-#implfun
 d3exp1_trxltck
 (d3e0, env0) =
 let
@@ -802,24 +773,12 @@ val-
 D3E1var
 (   d2v1   ) = d3e0.node()
 //
-in//let
-//
-if
-not(
-linq(d2v1))
-then
-(
-d3exp1
-(loc0, t3q0, D3E1var(d2v1))
-) else // end-of(then)
-let
-val t2q0 = t3q0.styp((*0*))
 val t3q1 =
-d3typ1(t2q0, T3P1dvar(d2v1))
-in//let
-d3exp1(loc0, t3q1, D3E1var(d2v1))
-end//let
+envltck_dvar$take(env0, d2v1)
 //
+in//let
+//
+d3exp1(loc0, t3q1, D3E1var(d2v1))
 end//let//end-of-[f0_var(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -928,13 +887,12 @@ D3E1dapp
 //
 val d3f0 =
 (
-  d3exp1_trxltck(d3f0, env0))
+d3exp1_trxltck(d3f0, env0))
 //
-val
-t3f0 = d3f0.dtyp((*void*))
-val
-t2f0 =
-envltck_dtyp$eval(env0, t3f0)
+val t3f0 = d3f0.dtyp((*0*))
+val t2f0 =
+(
+envltck_dtyp$eval(env0, t3f0))
 //
 (*
 val (  ) =
@@ -949,7 +907,8 @@ in//let
 //
 case+
 t2f0.node() of
-|T2P1fun1
+|
+T2P1fun1
 (f2cl
 ,npf1
 ,t2qs, t2q1) =>
@@ -972,7 +931,8 @@ end//let
 //
 end//let
 //
-|_(*non-T2P1fun*) =>
+|
+_(*non-T2P1fun*) =>
 (
 d3exp1(
 loc0,t3q0,D3E1errck(0(*lvl*),d3e0)))
@@ -1050,7 +1010,7 @@ val (  ) =
 envltck_pshlet0(env0)//enter
 //
 val dcls =
-d3ecl1lst_trxltck(dcls, env0)
+d3ecl1lst_trxltck(dcls,env0)
 //
 val d3e1 =
 (
@@ -1061,11 +1021,13 @@ This is needed as the
 let-bound variables is to
 be removed from the dtpstk!
 *)
-val d3e1 =
+val t3q1 =
 (
-  d3exp1_stypize(d3e1, env0))
-//
-val t3q1 = d3e1.dtyp((*void*))
+d3typ1_styp$make(t2q1))
+where{
+val t3q1 = d3e1.dtyp((*0*))
+val t2q1 =
+envltck_dtyp$eval(env0, t3q1)}
 //
 val d2vs = envltck_dvslet0(env0)
 val vts0 = envltck_vtslet0(env0)
@@ -1265,16 +1227,31 @@ val d3e1 =
 (
 d3exp1_trxltck(d3e1, env0))
 //
-val t3q1 = d3e1.dtyp((*0*))
+val t2q1 =
+envltck_dtyp$eval
+(  env0 , t3q1  ) where
+{
+val t3q1 = d3e1.dtyp((*0*))}
 //
 in//let
 //
 case+
-t3q1.node() of
-|T3P1dlft(t3q0) =>
-d3exp1(loc0, t3q0, D3E1flat(d3e1))
-|_(*otherwise*) =>
-d3exp1(loc0, t3q0, D3E1flat(d3e1))
+t2q1.node() of
+//
+|
+T2P1lft(t2q2) =>
+let
+val t3q2 =
+d3typ1_styp$make(t2q2)
+in//let
+d3exp1(loc0, t3q2, D3E1flat(d3e1))
+end//let
+//
+|
+_(*otherwise*) =>
+(
+d3exp1(
+loc0,t3q0,D3E1errck(0(*lvl*),d3e0)))
 //
 end//let//end-of-[f0_flat(d3e0,env0)]
 //

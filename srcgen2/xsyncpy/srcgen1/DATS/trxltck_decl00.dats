@@ -448,12 +448,6 @@ d3valdcl1_tdxp$get(dval)
 val wsxp =
 d3valdcl1_wsxp$get(dval)
 //
-(*
-val (  ) = 
-(
-  d3pat1_trxltck(dpat, env0))
-*)
-//
 val tdxp =
 (
   teqd3exp1_trxltck(tdxp, env0))
@@ -497,21 +491,15 @@ teqd3exp1_trxltck(dini, env0)
 val (  ) =
 (
 case+ dini of
-|
-TEQD3EXP1none() =>
-let
-val t2q1 = s2typ1_t0pize(t2q1)
-val t3q1 = d3typ1_styp$make(t2q1)
-in//let
-envltck_dvar$push(env0, dpid, t3q1)
-end//let
-|
-TEQD3EXP1some _ =>
-let
-val t3q1 = d3typ1_styp$make(t2q1)
-in//let
-envltck_dvar$push(env0, dpid, t3q1)
-end//let
+|TEQD3EXP1none() =>
+(
+envltck_dvar$spsh
+(env0, dpid, t2q1))
+where{
+val t2q1 = s2typ1_t0pize(t2q1) }
+|TEQD3EXP1some _ =>
+(
+envltck_dvar$spsh(env0, dpid, t2q1))
 )(*case+*)//end(val()=case+(dini)-of())
 //
 in//let
@@ -548,12 +536,9 @@ Note that [dpid] is
 available subsequently!
 *)
 //
-val t3q1 =
-d3typ1_styp$make
-(     t2q1     )
 val (  ) =
-envltck_dvar$push
-(env0, dpid, t3q1)//recur
+envltck_dvar$spsh
+(env0, dpid, t2q1)//recur
 //
 val (  ) =
 envltck_pshlam0(env0)//enter

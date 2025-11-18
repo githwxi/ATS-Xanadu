@@ -423,8 +423,11 @@ d2con_set_xtyp
 //
 fun
 d2con_get_narg(d2c0:d2con): sint
+fun
+d2con_get_nprg(d2c0:d2con): sint
 //
 #symload narg with d2con_get_narg
+#symload nprg with d2con_get_nprg
 //
 (* ****** ****** *)
 (* ****** ****** *)

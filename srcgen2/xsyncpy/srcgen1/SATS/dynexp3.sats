@@ -293,19 +293,27 @@ d3typ1_node =
 //
 |T3P1styp of s2typ1
 //
+(*
 |T3P1dvar of (d2var)
+*)
 //
+(*
 |T3P1dlft of (d3typ1)
+*)
 //
-|T3P1dcon of (d2con, d2varlst)
+(*
+|T3P1dcon of (d2con, d3typ1lst)
+*)
 //
+(*
 |T3P1tup0 of
-(sint(*npf*), d2varlst)
+(sint(*npf*), d3typ1lst)
 |T3P1tup1 of
-(token, sint(*npf*), d2varlst)
+(token, sint(*npf*), d2typ1lst)
+*)
 (*
 |T3P1rcd2 of
-(token, sint(*npf*), l2d2vlst)
+(token, sint(*npf*), l3dtp1lst)
 *)
 //
 (* ****** ****** *)
@@ -478,6 +486,7 @@ d3axp1_node =
 |D3A1str of token
 //
 |D3A1var of (d2var)
+|D3A1lft of (d2var)
 //
 |D3A1none of (d3pat1)
 //
@@ -540,8 +549,10 @@ d3exp1_node =
 //
 (* ****** ****** *)
 //
+(*
 |D3E1styp of
 (d3exp1(*src*), s2typ1)
+*)
 //
 (* ****** ****** *)
 //
