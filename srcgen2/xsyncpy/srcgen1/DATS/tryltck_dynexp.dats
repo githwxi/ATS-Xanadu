@@ -249,29 +249,6 @@ endlet//end-of-[d3pat1_tup0_errck(...)]
 (* ****** ****** *)
 //
 fun
-d3exp1_styp_errck
-(loc0: loc_t
-,t3q0: d3typ1
-,d3e1: d3exp1
-,styp: s2typ1   ): d3exp1 =
-let
-//
-val
-lvl0 = errvl(d3e1)
-//
-in//let
-//
-d3exp1_errck
-(
-lvl0+1,
-d3exp1
-  (loc0, t3q0, D3E1styp(d3e1, styp)))
-//
-endlet//end-of-[d3exp1_styp_errck(...)]
-//
-(* ****** ****** *)
-//
-fun
 d3exp1_dapp_errck
 (loc0: loc_t
 ,t3q0: d3typ1
@@ -597,13 +574,9 @@ dexp.node() of
 //
 (* ****** ****** *)
 //
-|D3E1styp _ =>
-(
-  f0_styp(dexp, err0))
-//
-(* ****** ****** *)
 |D3E1tapp _ => dexp
 |D3E1tapq _ => dexp
+//
 (* ****** ****** *)
 //
 |D3E1dapp _ =>
@@ -675,38 +648,6 @@ val () = err0 := err0+1 in
 {
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-f0_styp
-( d3e0: d3exp1
-, err0
-: &sint >> sint): d3exp1 =
-let
-//
-val nerr = err0
-//
-val-
-D3E1styp
-(d3e1, styp) = d3e0.node()
-//
-val t3q0 = d3e0.dtyp((*0*))
-//
-val d3e1 =
-(
-d3exp1_tryltck(d3e1, err0))
-//
-in//let
-//
-if // if
-(err0=nerr)
-then (d3e0) else
-(
-  d3exp1_styp_errck
-  ( d3e0.lctn(), t3q0, d3e1, styp ) )
-//
-end(*let*)//end-of-[f0_styp(d3e0,err0)]
-//
 (* ****** ****** *)
 //
 fun

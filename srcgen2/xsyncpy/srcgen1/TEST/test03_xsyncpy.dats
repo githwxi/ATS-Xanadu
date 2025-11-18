@@ -56,7 +56,7 @@ duplicity1 // HX: well-typed!
 (x0: x0): (x0, x0) = (g_copy(x0), x0)
 fun
 <x0:vt>
-duplicity2 // HX: well-typed, too!
+duplicity2 // HX: not well-typed!
 (x0: x0): (x0, x0) = (x0, g_copy(x0))
 fun
 <x0:vt>

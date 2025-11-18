@@ -73,28 +73,38 @@ prints("T3P1none(", ")"))
 (
 prints("T3P1styp(", t2q1, ")"))
 //
+(*
 |T3P1dvar(dvar) =>
 (
 prints("T3P1dvar(", dvar, ")"))
+*)
 //
+(*
 |T3P1dlft(t3q1) =>
 (
 prints("T3P1dlft(", t3q1, ")"))
+*)
 //
+(*
 |T3P1dcon(dcon, d2vs) =>
 (
 prints
 ("T3P1dcon(", dcon, ";", d2vs, ")"))
+*)
 //
+(*
 |T3P1tup0(npf1, d2vs) =>
 (
 prints
 ("T3P1tup0(", npf1, ";", d2vs, ")"))
+*)
 //
+(*
 |T3P1tup1(tknd, npf1, d2vs) =>
 (
 prints
 ("T3P1tup1(",tknd,";",npf1,";",d2vs,")"))
+*)
 //
 (*
 |T3P1rcd2(tknd, npf1, ldvs) =>
@@ -349,6 +359,17 @@ prints
 //
 end//let//end-of-[D3A1var(d2v1)]
 //
+|D3A1lft
+(   d2v1   ) =>
+let
+//
+val t2q0 = daxp.styp()
+val (  ) =
+prints
+("D3A1lft(",d2v1,":",t2q0,")")
+//
+end//let//end-of-[D3A1lft(d2v1)]
+//
 (* ****** ****** *)
 //
 |D3A1none
@@ -457,10 +478,12 @@ prints("D3E1cst(", d2c1, ")"))
 //
 (* ****** ****** *)
 //
+(*
 |D3E1styp
 (d3e1, t2q1) =>
 prints
 ("D3E1styp(",d3e1,";",t2q1,")")
+*)
 //
 (* ****** ****** *)
 //
@@ -684,8 +707,19 @@ prints
 //
 |D3E1assgn
 (d3el, d3er) =>
-prints
-("D3E1assgn(", d3el, ";", d3er, ")")
+let
+val
+t3ql = d3el.dtyp()
+in//let
+//
+print("D3E1assgn(");
+prints(d3el,":",t3ql,";",d3er,")")
+(*
+prints(
+"D3E1assgn(", d3el, ";", d3er, ")")
+*)
+//
+end//let//end-[D3E1assgn(d3el,d3er)]
 //
 (* ****** ****** *)
 //

@@ -249,22 +249,22 @@ d2pat_a2pp
 (loc0,d2f0,d2a1,d2a2) =
 (
 d2pat_dapp
-(loc0,d2f0,npf1,d2as)
+(loc0,d2f0,nprg,d2as)
 ) where
 {
 val
-npf1 = -1
+nprg = -1
 val
 d2as =
 list_pair( d2a1, d2a2 ) }
 //
 #implfun
 d2pat_dapp
-(loc0,d2f0,npf1,d2as) =
+(loc0,d2f0,nprg,d2as) =
 (
 d2pat_make_node
 (loc0
-,D2Pdapp(d2f0, npf1, d2as)))
+,D2Pdapp(d2f0, nprg, d2as)))
 //
 (* ****** ****** *)
 //
@@ -386,20 +386,20 @@ d2exp_make_node
 d2exp_a2pp
 (loc0,d2f0,d2a1,d2a2) =
 d2exp_dapp
-(loc0,d2f0,npf1,d2as) where
+(loc0,d2f0,nprg,d2as) where
 {
 val
-npf1 = -1
+nprg = -1
 val
 d2as = list_pair(d2a1,d2a2)}
 //
 #implfun
 d2exp_dapp
-(loc0,d2f0,npf1,d2as) =
+(loc0,d2f0,nprg,d2as) =
 (
 d2exp_make_node
 ( loc0
-, D2Edapp(d2f0, npf1, d2as)))
+, D2Edapp(d2f0, nprg, d2as)))
 //
 (* ****** ****** *)
 //
@@ -727,14 +727,54 @@ S2Euni0
 |
 S2Efun1
 (f2cl
-,npf1,s2es,s2e1) => list_length(s2es)
+,nprg,s2es,s2e1) => list_length(s2es)
 //
 (*
-| _(*otherwise*) => (-1) // HX: ERROR!
+|_(*otherwise*) => (-1) // HX: ERROR!
 *)
 //
 )
 } (*where*) // end of [d2con_get_narg]
+//
+(* ****** ****** *)
+//
+#implfun
+d2con_get_nprg
+  (  d2c0  ) =
+let
+val+
+D2CON
+(loc0
+,sym0
+,ctag
+,tqas
+,s2e0
+,stmp
+,t2p0
+,xt2p) = d2c0 in auxmain(s2e0)
+end where
+{
+fun
+auxmain
+(s2e0: s2exp): sint =
+(
+case-
+s2e0.node() of
+//
+|
+S2Euni0
+(s2vs,s2ps,s2e1) => auxmain(s2e1)
+//
+|
+S2Efun1
+(f2cl,nprg,s2es,s2e1) => (  nprg  )
+//
+(*
+|_(*otherwise*) => (-1) // HX: ERROR!
+*)
+//
+)
+} (*where*) // end of [d2con_get_nprg]
 //
 (* ****** ****** *)
 //
