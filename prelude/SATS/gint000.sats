@@ -234,7 +234,7 @@ uint_lmul(x: uint, y: uint): uint
 fun<>
 uint_lneq(x: uint, y: uint): uint
 //
-#symload lor with uint_ladd of 1000
+#symload lorr with uint_ladd of 1000
 #symload land with uint_lmul of 1000
 #symload lxor with uint_lneq of 1000
 //

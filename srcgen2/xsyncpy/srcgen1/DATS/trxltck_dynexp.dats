@@ -137,6 +137,21 @@ map$fopr
 (* ****** ****** *)
 //
 fun
+d3exp1_exlin
+(d3e0: d3exp1
+,trst: s2typ1): d3exp1 =
+let
+//
+val loc0 = d3e0.lctn((*0*))
+val t3q0 = d3e0.dtyp((*0*))
+in//let
+d3exp1(
+loc0, t3q0, D3E1exlin(d3e0, trst))
+end//let//end-of-[d3exp1_exlin(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp1_delinize
 (d3e0: d3exp1
 ,env0: !envltck): d3exp1 =
@@ -166,11 +181,47 @@ val t3q1 =
 d3typ1_styp$make(t2q1)
 //
 in//let
-d3exp1
-(loc0,t3q1,D3E1delin(d3e0, t2q0))
+d3exp1(
+loc0, t3q1, D3E1delin(d3e0, t2q0))
 end//let//end(else)//endof(if(...))
 //
 end//let//end-of-[d3exp1_delinize(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2typ1_lab$fset
+(styp, lab0, t2q0) =
+(
+case+
+styp.node() of
+|T2P1trcd
+(trcd
+,npf1, ltqs) =>
+let
+//
+val ltqs =
+l2t2p1lst_lab$fset
+(ltqs, lab0, t2q0)
+//
+val s2rt = styp.sort()
+val s2rt =
+(
+if // if
+s2typ1_linq(t2q0)
+then
+sort2_enlin(s2rt) else s2rt)
+//
+in//let
+//
+s2typ1_make_sort$node
+(s2rt, T2P1trcd(trcd, npf1, ltqs))
+//
+end(*let*)//end-of-[T2P1trcd(...)]
+//
+|_(*non-T2P1trcd*) => (    styp    )
+)(*case+*)//end-of-[s2typ1_lab$fset(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1015,14 +1066,39 @@ t2q1.node() of
 ,npf1, ltqs) =>
 let
 //
-val tprj =
-l2t2p1lst_lab$proj(ltqs, lab1)
-val tprj = d3typ1_styp$make(tprj)
+val t2q2 =
+l2t2p1lst_lab$proj
+(  ltqs  ,  lab1  )
+//
+val
+topt =
+(
+f1_proj$updt(
+ d3e1, trst, env0 ))
+where{
+val trst =
+s2typ1_lab$fset(t2q1,
+lab1, s2typ1_t1pize(t2q2))}
 //
 in//let
-d3exp1
-(loc0
-,tprj, D3E1proj(tknd, lab1, d3e1))
+//
+(
+case+ topt of
+| ~
+optn_vt_nil
+( (*void*) ) => dprj
+| ~
+optn_vt_cons
+(   trst   ) =>
+d3exp1_exlin(dprj, trst)) where
+{
+val t3q2 =
+d3typ1_styp$make(t2q2)
+val dprj =
+d3exp1(loc0
+,t3q2, D3E1proj(tknd, lab1, d3e1))
+}
+//
 end//let//endof(T2P1trcd(...,ltqs))
 )(*case-*)//end-of-[T3P1styp(t2q1)]
 //
@@ -1031,7 +1107,52 @@ end//let//endof(T2P1trcd(...,ltqs))
 d3exp1(
 loc0,t3q0,D3E1errck(0(*lvl*),d3e0)))
 //
-end//let//end-of-[f0_proj(d3e0,env0)]
+end where
+{
+//
+fun
+f1_proj$updt
+( d3e1: d3exp1
+, trst: s2typ1
+, env0: !envltck
+) : optn_vt(s2typ1) =
+(
+case+
+d3e1.node() of
+//
+|
+D3E1var(d2v1) =>
+let
+val trst =
+d3typ1_styp$make(trst)
+in//let
+//
+optn_vt_nil() where{
+val (  ) =
+envltck_dvar$updt(env0,d2v1,trst)}
+//
+end//let
+//
+|
+D3E1flat(dlft) =>
+let
+val trst = s2typ1_lft(trst)
+in//let
+f1_proj$updt(dlft, trst, env0) end
+//
+|
+_(*otherwise*) => optn_vt_cons(trst)
+) where
+{
+//
+val () = prerrsln
+("f1_proj$updt(ltck): d3e1 = ", d3e1)
+val () = prerrsln
+("f1_proj$updt(ltck): trst = ", trst)
+//
+}(*where*)//end-of-[f1_proj$updt(...)]
+//
+}(*where*)//end-of-[f0_proj(d3e0,env0)]
 //
 (* ****** ****** *)
 //
@@ -1164,9 +1285,10 @@ D3E1ift0(d3e1, dthn, dels)))
 in//let
 //
 case+ dthn of
-| optn_nil
-( (*void*) ) => dexp
-| optn_cons(dthn) =>
+|optn_nil
+((*void*)) => dexp
+|optn_cons
+(  dthn  ) =>
 (
 case-
 dthn.node() of
@@ -1341,9 +1463,13 @@ d3exp1
 (loc0,t3q0,D3E1assgn(d3el, d3er)))
 end//let//endof(d3exp1_delin(d3el))
 //
-end where
+end where // end-of-[f0_assgn(...)]
 {
 //
+(* ****** ****** *)
+(*
+val loc0 = d3e0.lctn()
+*)
 (* ****** ****** *)
 //
 fun
@@ -1355,18 +1481,11 @@ f1_d3el$t2qr
 case+
 d3el.node() of
 //
-|D3E1flat
-(  dlft  ) =>
-let
+|D3E1flat _ =>
+f1_flat$t2qr(d3el,t2qr,env0)
 //
-val dlft =
-f1_dlft$t2qr
-(dlft, t2qr, env0)
-//
-in//let
-d3exp1
-(loc0, t3ql, D3E1flat(dlft))
-end//let
+|D3E1proj _ =>
+f1_proj$t2qr(d3el,t2qr,env0)
 //
 |_(*otherwise*) =>
 let
@@ -1397,7 +1516,65 @@ val (  ) =
 prerrsln
 ( "f1_d3el$t2qr: t2qr = ", t2qr ) )
 //
-}(*where*)//endof[f1_d3el$t2qr(dlft)]
+}(*where*)//endof[f1_d3el$t2qr(d3el)]
+//
+(* ****** ****** *)
+//
+and
+f1_flat$t2qr
+( d3el: d3exp1
+, t2qr: s2typ1
+, env0: !envltck): d3exp1 =
+let
+//
+val
+D3E1flat
+( dlft ) = d3el.node()
+//
+val t3ql = d3el.dtyp((*0*))
+//
+val dlft =
+f1_dlft$t2qr(dlft,t2qr,env0)
+//
+in//let
+d3exp1(loc0, t3ql, D3E1flat(dlft))
+end//let//end-of-[f1_flat$t2qr(d3el)]
+//
+(* ****** ****** *)
+//
+and
+f1_proj$t2qr
+( d3el: d3exp1
+, t2qr: s2typ1
+, env0: !envltck): d3exp1 =
+let
+//
+val
+D3E1proj
+(tknd
+,lab1, dtup) = d3el.node()
+//
+val t3ql = d3el.dtyp((*0*))
+//
+val t2q2 =
+envltck_dtyp$eval
+(  env0 , t3q2  )
+where{
+val t3q2 = dtup.dtyp((*0*))}
+val t2q2 =
+s2typ1_lab$fset(t2q2,lab1,t2qr)
+//
+val dtup =
+(
+  f1_d3el$t2qr(dtup, t2q2, env0))
+//
+in//let
+(
+d3exp1(loc0,
+t3ql, D3E1proj(tknd, lab1, dtup)))
+end//let//end-of-[f1_proj$t2qr(d3el)]
+//
+(* ****** ****** *)
 //
 and
 f1_dlft$t2qr

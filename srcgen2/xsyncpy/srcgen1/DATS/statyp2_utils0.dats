@@ -60,7 +60,9 @@ with bool_neg of 1099
 //
 #symload lnot
 with uint_lnot of 1099
-#symload land
+#symload ladd
+with uint_ladd of 1099
+#symload lmul
 with uint_lmul of 1099
 //
 #symload is2u
@@ -189,6 +191,32 @@ forall$test<l2t2p1> = l2t2p1_prfq
 (* ****** ****** *)
 //
 #implfun
+sort2_enlin
+(   s2t0   ) =
+(
+case+ s2t0 of
+|
+S2Tbas(s2tb) =>
+(
+case+ s2tb of
+|
+T2Bimpr(knd, sym) =>
+let
+  val msk = is2u( 2 )
+  val knd = is2u(knd)
+  val knd =
+    iu2s(knd\ladd(msk))
+in
+  S2Tbas(T2Bimpr(knd, sym))
+end
+|_(*non-T2Bimpr*) => (s2t0)
+)
+|_(* non-S2Tbas *) => (s2t0)
+)(*case+*)//end-of-[sort2_enlin(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 sort2_delin
 (   s2t0   ) =
 (
@@ -197,14 +225,15 @@ case+ s2t0 of
 S2Tbas(s2tb) =>
 (
 case+ s2tb of
-|T2Bimpr
-(knd, sym) =>
+|
+T2Bimpr(knd, sym) =>
 let
   val msk =
-    lnot(is2u(2))
+  (
+     lnot(is2u(2))  )
   val knd = is2u(knd)
   val knd =
-    iu2s(knd\land(msk))
+    iu2s(knd\lmul(msk))
 in
   S2Tbas(T2Bimpr(knd, sym))
 end
@@ -593,7 +622,43 @@ in//let
 if // if
 (lab0 = lab1) then t2q1
 else l2t2p1lst_lab$proj(ltqs, lab0) end
-)(*case+*)//end-of-[l2t2p1lst_lab$proj(ltqs,lab0)]
+)(*case+*)//end-of-[l2t2p1lst_lab$proj(ltqs,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+l2t2p1lst_lab$fset
+(ltqs, lab0, t2q0) =
+(
+case+ ltqs of
+//
+|list_nil
+( (*void*) ) => 
+(
+  list_nil((*void*)))
+//
+|list_cons
+(ltq1, ltqs) =>
+let
+val+
+S2LAB(lab1, t2q1) = ltq1
+in//let
+//
+if // if
+(lab0=lab1)
+then
+let
+val ltq1 =
+S2LAB(lab0, t2q0)
+in//let
+list_cons(ltq1, ltqs) end
+else
+list_cons(ltq1,
+l2t2p1lst_lab$fset(ltqs, lab0, t2q0))
+end//let//end-of-[list_cons(ltq1,ltqs)]
+//
+)(*case+*)//end-of-[l2t2p1lst_lab$fset(ltqs,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

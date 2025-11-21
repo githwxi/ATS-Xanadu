@@ -1160,15 +1160,17 @@ s2exp_make_node
 ( s2t0
 , S2Etrcd(knd0, -1(*npf*), lses))
 end (*let*) // end-of-then
-else // tuples // not yet supported
+else // tuple // not yet supported
 let
 val s2ts =
-list_map<x0><y0>(s2es) where
-{
- #typedef x0 = s2exp
- #typedef y0 = sort2
- #impltmp
- map$fopr<x0><y0>(x0) = x0.sort() }
+(
+list_map<x0><y0>(s2es)
+) where{
+  #typedef x0 = s2exp
+  #typedef y0 = sort2
+  #impltmp
+  map$fopr<x0><y0>(x0) = x0.sort()
+} (*where*) // end-of-[val( s2ts )]
 in
   s2exp(S2Ttup(s2ts), S2Elist(s2es))
 end (*let*) // end-of-else // end-if

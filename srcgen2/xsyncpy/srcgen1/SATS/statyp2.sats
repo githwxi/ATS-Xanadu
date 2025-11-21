@@ -197,6 +197,8 @@ l2t2p1lst_prfq(l2t2p1lst): bool
 (* ****** ****** *)
 //
 fun
+sort2_enlin(sort2): sort2
+fun
 sort2_delin(sort2): sort2
 //
 fun
@@ -295,6 +297,15 @@ l2t2p1_fprint
 fun
 l2t2p1lst_lab$proj
 (ltqs: l2t2p1lst, lab0: label): s2typ1
+//
+fun
+s2typ1_lab$fset
+(styp
+:s2typ1,lab0:label,t2q0:s2typ1): s2typ1
+fun
+l2t2p1lst_lab$fset
+(ltqs
+:l2t2p1lst,lab0:label,t2q0:s2typ1): l2t2p1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)

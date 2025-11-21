@@ -14,6 +14,20 @@ Fri Oct 31 02:17:03 AM EDT 2025
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:vt>
+s1wap_cbrf
+(xx: &(x0,x0)): void =
+let
+val tt = xx.0 in
+(
+  xx.0 := xx.1; xx.1 := tt )
+end//let//end-of-[s1wap_cbrf(x1,x2)]
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
 (*
 #impltmp
 { a:t0 }
@@ -71,11 +85,23 @@ g_print
 //
 fun
 <x0:vt>
-swap_cbrf
-(x1: &x0, x2: &x0) =
+s1wap_cbrf
+(xx: &(x0, x0)): void =
+let
+val tt = xx.0 in
+(
+  xx.0 := xx.1; xx.1 := tt )
+end//let//end-of-[s1wap_cbrf(x1,x2)]
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+s2wap_cbrf
+(x1: &x0, x2: &x0): void =
 let
 val tt = x1 in x1 := x2; x2 := tt
-end//let//end-of-[swap_cbrf(x1,x2)]
+end//let//end-of-[s2wap_cbrf(x1,x2)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

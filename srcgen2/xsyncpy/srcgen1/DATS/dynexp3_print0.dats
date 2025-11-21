@@ -775,6 +775,17 @@ t3q1 = d3e1.dtyp() in
 ;prints(d3e1,"(",t3q1,");",tlin,")"))
 endlet//end-of-[D3E1delin(d3e1, tlin)]
 //
+|D3E1exlin
+(d3e1, tlin) =>
+let
+val
+t3q1 = d3e1.dtyp() in
+(print("D3E1exlin(")
+;prints(d3e1,"(",t3q1,");",tlin,")"))
+endlet//end-of-[D3E1exlin(d3e1, tlin)]
+//
+(* ****** ****** *)
+//
 |D3E1labck
 (d3e1, lab2) =>
 let
