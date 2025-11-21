@@ -709,17 +709,19 @@ let
 //
 val loc0 = s1e0.lctn()
 //
-val-
-S1El1st(s1es) = s1e0.node()
-//
 (*
 val () =
-prerrsln
-("trans12_s1exp: f0_l1st: loc0 = ", loc0)
+prerrsln("\
+trans12_s1exp:\
+f0_l1st: loc0 = ", loc0)
 val () =
-prerrsln
-("trans12_s1exp: f0_l1st: s1e0 = ", s1e0)
+prerrsln("\
+trans12_s1exp:\
+f0_l1st: s1e0 = ", s1e0)
 *)
+//
+val-
+S1El1st(s1es) = s1e0.node()
 //
 in
 if
@@ -1142,6 +1144,7 @@ _(*non-S2Tfun1*) => list_nil(*0*)
 ) : sort2lst // end of [val(s2ts)]
 //
 in//let
+//
 ( s2exp_apps_pq
   (loc0, s2f0, s2es) ) where
 {
@@ -1154,7 +1157,22 @@ val (  ) = prerrsln
 *)
 //
 val s2es =
-trans12_s1explst_stcks(env0,s1es,s2ts) }
+if
+list_singq(s2ts)
+then
+(
+list_sing(s2e1)) where
+{
+//
+val-
+list_cons(s2t1, _) = s2ts
+//
+val s2e1 =
+trans12_s1exp_stck(env0, s1e1, s2t1)
+//
+} else // end-of-where
+trans12_s1explst_stcks(env0,s1es,s2ts)
+}
 //
 end (*let*) // end of [f0_a1pp_els1(...)]
 

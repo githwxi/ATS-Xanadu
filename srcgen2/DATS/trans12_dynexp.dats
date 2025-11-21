@@ -571,7 +571,7 @@ then true else false
 (* ****** ****** *)
 //
 fun
-isBANG
+isBANG0
 (d1p: d1pat): bool =
 (
 case+
@@ -583,10 +583,10 @@ if
 then true else false
 |
 _(* non-D1Pid0 *) => false
-) (*case+*) // end of [isBANG]
+) (*case+*) // end of [isBANG0]
 //
 fun
-isFLAT
+isFLAT0
 (d1p: d1pat): bool =
 (
 case+
@@ -598,10 +598,10 @@ if
 then true else false
 |
 _(* non-D1Pid0 *) => false
-) (*case+*) // end of [isFLAT]
+) (*case+*) // end of [isFLAT0]
 //
 fun
-isFREE
+isFREE0
 (d1p: d1pat): bool =
 (
 case+
@@ -613,7 +613,7 @@ if
 then true else false
 |
 _(* non-D1Pid0 *) => false
-) (*case+*) // end of [isFREE]
+) (*case+*) // end of [isFREE0]
 //
 fun
 isASPT
@@ -939,7 +939,7 @@ D1Pa1pp
 //
 in//let
 if
-isBANG(d1f0)
+isBANG0(d1f0)
 then
 let
 val
@@ -947,11 +947,11 @@ d2p1 =
 trans12_d1pat(env0, d1p1)
 in
 d2pat(loc0, D2Pbang(d2p1))
-end//then//if(isBANG(d1f0))
+end//then//if(isBANG0(d1f0))
 else
 (
 if
-isFLAT(d1f0)
+isFLAT0(d1f0)
 then
 let
 val
@@ -959,11 +959,11 @@ d2p1 =
 trans12_d1pat(env0, d1p1)
 in
 d2pat(loc0, D2Pflat(d2p1))
-end//then//if(isFLAT(d1f0))
+end//then//if(isFLAT0(d1f0))
 else
 (
 if
-isFREE(d1f0)
+isFREE0(d1f0)
 then
 let
 val
@@ -971,7 +971,7 @@ d2p1 =
 trans12_d1pat(env0, d1p1)
 in
 d2pat(loc0, D2Pfree(d2p1))
-end//then//if(isFREE(d1f0))
+end//then//if(isFREE0(d1f0))
 else
 (
 if
@@ -1944,7 +1944,7 @@ trans12_d1exp(env0, d1e1)) where
 (* ****** ****** *)
 //
 fun
-isAMP0
+isAMP00
 (d1e: d1exp): bool =
 (
 case+
@@ -1956,9 +1956,9 @@ if
 then true else false
 |
 _(* non-D1Eid0 *) => false
-) (*case+*) // end of [isAMP0]
+) (*case+*) // end of [isAMP00]
 fun
-isBANG
+isBANG0
 (d1e: d1exp): bool =
 (
 case+
@@ -1970,9 +1970,9 @@ if
 then true else false
 |
 _(* non-D1Eid0 *) => false
-) (*case+*) // end of [isBANG]
+) (*case+*) // end of [isBANG0]
 fun
-isADDR
+isADDR0
 (d1e: d1exp): bool =
 (
 case+
@@ -1984,9 +1984,9 @@ if
 then true else false
 |
 _(* non-D1Eid0 *) => false
-) (*case+*) // end of [isADDR]
+) (*case+*) // end of [isADDR0]
 fun
-isVIEW
+isVIEW0
 (d1e: d1exp): bool =
 (
 case+
@@ -1998,9 +1998,9 @@ if
 then true else false
 |
 _(* non-D1Eid0 *) => false
-) (*case+*) // end of [isVIEW]
+) (*case+*) // end of [isVIEW0]
 fun
-isEVAL
+isEVAL0
 (d1e: d1exp): bool =
 (
 case+
@@ -2012,9 +2012,9 @@ if
 then true else false
 |
 _(* non-D1Eid0 *) => false
-) (*case+*) // end of [isEVAL]
+) (*case+*) // end of [isEVAL0]
 fun
-isFOLD
+isFOLD0
 (d1e: d1exp): bool =
 (
 case+
@@ -2026,9 +2026,9 @@ if
 then true else false
 |
 _(* non-D1Eid0 *) => false
-) (*case+*) // end of [isFOLD]
+) (*case+*) // end of [isFOLD0]
 fun
-isFREE
+isFREE0
 (d1e: d1exp): bool =
 (
 case+
@@ -2040,7 +2040,7 @@ if
 then true else false
 |
 _(* non-D1Eid0 *) => false
-) (*case+*) // end of [isFREE]
+) (*case+*) // end of [isFREE0]
 fun
 isL0AZY
 (d1e: d1exp): bool =
@@ -2116,7 +2116,7 @@ D1Ea1pp
 in//let
 //
 if
-isAMP0(d1f0)
+isAMP00(d1f0)
 then
 let
 val d2e1 =
@@ -2127,7 +2127,7 @@ end (*let*) // end-of-then
 else
 (
 if
-isBANG(d1f0)
+isBANG0(d1f0)
 then
 let
 val d2e1 =
@@ -2138,7 +2138,7 @@ end (*let*) // end-of-then
 else
 (
 if
-isADDR(d1f0)
+isADDR0(d1f0)
 then
 let
 val d2e1 =
@@ -2149,7 +2149,7 @@ end (*let*) // end-of-then
 else
 (
 if
-isVIEW(d1f0)
+isVIEW0(d1f0)
 then
 let
 val d2e1 =
@@ -2160,7 +2160,7 @@ end (*let*) // end-of-then
 else
 (
 if
-isFOLD(d1f0)
+isFOLD0(d1f0)
 then
 let
 val d2e1 =
@@ -2171,7 +2171,7 @@ end (*let*) // end-of-then
 else
 (
 if
-isEVAL(d1f0)
+isEVAL0(d1f0)
 then
 let
 val d2e1 =
@@ -2182,7 +2182,7 @@ end (*let*) // end-of-then
 else
 (
 if
-isFREE(d1f0)
+isFREE0(d1f0)
 then
 let
 val d2e1 =
