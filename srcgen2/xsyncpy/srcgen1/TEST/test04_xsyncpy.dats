@@ -85,7 +85,7 @@ fun
 <x0:vt>
 s11wap_cbrf
 ( x_xx
-: &(x0,(x0, x0))): void =
+: &(x0, (x0, x0))): void =
 let
 val tt = (x_xx.1).0 in
 (
@@ -103,6 +103,13 @@ s2wap_cbrf
 let
 val tt = x1 in x1 := x2; x2 := tt
 end//let//end-of-[s2wap_cbrf(x1,x2)]
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+s3wap_cbrf
+(xx: &(x0, x0)): void = s2wap_cbrf(xx.0, xx.1)
 //
 (* ****** ****** *)
 (* ****** ****** *)

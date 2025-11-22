@@ -190,7 +190,8 @@ D3Prcd2
 prints("D3Pargtp(",d3p1,";",t2p2,")"))
 |D3Pannot
 (d3p1, s1e2, s2e2) =>
-prints("D3Pannot(",d3p1,";",s1e2,";",s2e2,")")
+prints
+("D3Pannot(",d3p1,";",s1e2,";",s2e2,")")
 //
 (* ****** ****** *)
 //

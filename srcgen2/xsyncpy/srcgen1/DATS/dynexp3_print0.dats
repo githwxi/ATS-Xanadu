@@ -73,17 +73,9 @@ prints("T3P1none(", ")"))
 (
 prints("T3P1styp(", t2q1, ")"))
 //
-(*
-|T3P1dvar(dvar) =>
+|T3P1lvar(dvar) =>
 (
-prints("T3P1dvar(", dvar, ")"))
-*)
-//
-(*
-|T3P1dlft(t3q1) =>
-(
-prints("T3P1dlft(", t3q1, ")"))
-*)
+prints("T3P1lvar(", dvar, ")"))
 //
 (*
 |T3P1dcon(dcon, d2vs) =>

@@ -294,12 +294,10 @@ d3typ1_node =
 |T3P1styp of s2typ1
 //
 (*
-|T3P1dvar of (d2var)
+HX:
+for C(...,!x....)
 *)
-//
-(*
-|T3P1dlft of (d3typ1)
-*)
+|T3P1lvar of (d2var)
 //
 (*
 |T3P1dcon of (d2con, d3typ1lst)
@@ -310,8 +308,6 @@ d3typ1_node =
 (sint(*npf*), d3typ1lst)
 |T3P1tup1 of
 (token, sint(*npf*), d2typ1lst)
-*)
-(*
 |T3P1rcd2 of
 (token, sint(*npf*), l3dtp1lst)
 *)

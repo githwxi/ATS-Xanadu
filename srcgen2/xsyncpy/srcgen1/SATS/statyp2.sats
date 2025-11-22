@@ -111,6 +111,14 @@ s2typ1_node =
 //
 (* ****** ****** *)
 //
+(*
+HX-2025-11-22:
+A left-variable can be
+introduced as follows:
+(1) a var declaration
+(2) a banged var in a tuple
+(3) a banged var in a dtcon
+*)
 |T2P1lft of s2typ1//lft-value
 //
 (* ****** ****** *)
