@@ -14,20 +14,6 @@ Fri Oct 31 02:17:03 AM EDT 2025
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:vt>
-s1wap_cbrf
-(xx: &(x0,x0)): void =
-let
-val tt = xx.0 in
-(
-  xx.0 := xx.1; xx.1 := tt )
-end//let//end-of-[s1wap_cbrf(x1,x2)]
-//
-(* ****** ****** *)
-////
-(* ****** ****** *)
-//
 (*
 #impltmp
 { a:t0 }
@@ -91,7 +77,22 @@ let
 val tt = xx.0 in
 (
   xx.0 := xx.1; xx.1 := tt )
-end//let//end-of-[s1wap_cbrf(x1,x2)]
+end//let//end-of-[s1wap_cbrf(xx)]
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+s11wap_cbrf
+( x_xx
+: &(x0,(x0, x0))): void =
+let
+val tt = (x_xx.1).0 in
+(
+(x_xx.1).0
+:=
+(x_xx.1).1; (x_xx.1).1 := tt )
+end//let//end-of-[s11wap_cbrf(x_xx)]
 //
 (* ****** ****** *)
 //
