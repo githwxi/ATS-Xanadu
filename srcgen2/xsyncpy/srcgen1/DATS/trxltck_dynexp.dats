@@ -358,6 +358,10 @@ d3e0.node() of
 //
 |D3E1var _ =>
 f0_var(d3e0, styp, env0)
+|D3E1flat _ =>
+f0_flat(d3e0, styp, env0)
+|D3E1proj _ =>
+f0_proj(d3e0, styp, env0)
 //
 |_(* otherwise *) => ( 1 )
 )
@@ -369,7 +373,8 @@ f0_var
 ,env0: !envltck): sint =
 let
 val-
-D3E1var(d2v1) = d3e0.node()
+D3E1var
+(   d2v1   ) = d3e0.node()
 in//let
 //
 let
@@ -377,10 +382,70 @@ val taft =
 d3typ1_styp$make
 (     styp     )
 val (  ) =
+(
 envltck_dvar$updt
-(env0, d2v1, taft) in ( 0 ) end
+(env0, d2v1, taft)) in (0) end
 //
 end//let//end-of-[f0_var(d3e0,...)]
+//
+(* ****** ****** *)
+//
+and
+f0_flat
+(d3e0: d3exp1
+,styp: s2typ1
+,env0: !envltck): sint =
+let
+//
+val-
+D3E1flat
+(   dlft   ) = d3e0.node()
+//
+in//let
+//
+let
+val tlft =
+s2typ1_lft(styp) in//let
+(
+  faftck(dlft, tlft, env0)) end
+//
+end//let//end-of-[f0_flat(d3e0,...)]
+//
+(* ****** ****** *)
+//
+and
+f0_proj
+(d3e0: d3exp1
+,styp: s2typ1
+,env0: !envltck): sint =
+let
+//
+val-
+D3E1proj
+(tknd
+,lab1, d3e1) = d3e0.node()
+//
+in//let
+//
+let
+val t3q1 =
+d3e1.dtyp((*0*))
+val t2q1 =
+envltck_dtyp$eval
+(  env0 , t3q1  )
+val styp =
+s2typ1_lab$fset
+(t2q1, lab1, styp) in //let
+(
+  faftck(d3e1, styp, env0)) end
+//
+end where
+{
+//
+val () =
+prerrsln("f0_proj: d3e0 = ", d3e0)
+//
+}(*where*)//end-of-[f0_proj(d3e0,...)]
 //
 (* ****** ****** *)
 //
@@ -1073,27 +1138,22 @@ val t2q2 =
 l2t2p1lst_lab$proj
 (  ltqs  ,  lab1  )
 //
-val
-topt =
-(
-f1_proj$updt(
- d3e1, trst, env0 ))
-where{
 val trst =
 s2typ1_lab$fset(t2q1,
-lab1, s2typ1_t1pize(t2q2))}
+lab1, s2typ1_t1pize(t2q2))
 //
 in//let
 //
 (
-case+ topt of
-| ~
-optn_vt_nil
-( (*void*) ) => dprj
-| ~
-optn_vt_cons
-(   trst   ) =>
-d3exp1_exlin(dprj, trst)) where
+if (
+0 =
+f1_proj$updt
+( d3e1
+, trst, env0)
+) then (dprj) else
+(
+  d3exp1_exlin(dprj, trst))
+) where
 {
 val t3q2 =
 d3typ1_styp$make(t2q2)
@@ -1117,33 +1177,27 @@ fun
 f1_proj$updt
 ( d3e1: d3exp1
 , trst: s2typ1
-, env0: !envltck
-) : optn_vt(s2typ1) =
+, env0: !envltck): (sint) =
 (
 case+
 d3e1.node() of
 //
 |D3E1var
 (   d2v1   ) =>
-(
-optn_vt_nil())
-where
-{
+let
+val trst =
+d3typ1_styp$make
+(     trst     )
 val (  ) =
 envltck_dvar$updt
-(env0, d2v1, trst) where
-{
-val
-trst = d3typ1_styp$make(trst)}
-}
+(env0, d2v1, trst) in 0 end
 //
 |D3E1flat
 (   dlft   ) =>
 let
 val trst = s2typ1_lft(trst)
 in//let
-(
-f1_proj$updt(dlft, trst, env0))
+f1_proj$updt(dlft, trst, env0)
 end//let
 //
 |D3E1proj
@@ -1168,7 +1222,7 @@ end//let
 end(*let*)//end-of-[D3E1proj(...)]
 //
 |
-_(*otherwise*) => optn_vt_cons(trst)
+_(*otherwise*) => (       1       )
 ) where
 {
 //
