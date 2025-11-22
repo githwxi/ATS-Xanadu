@@ -1050,6 +1050,9 @@ val t3q1 = d3e1.dtyp((*void*))
 //
 val (  ) =
 prerrsln
+("f0_proj(ltck): d3e1 = ", d3e1)
+val (  ) =
+prerrsln
 ("f0_proj(ltck): t3q1 = ", t3q1)
 //
 in//let
@@ -1120,25 +1123,49 @@ f1_proj$updt
 case+
 d3e1.node() of
 //
-|
-D3E1var(d2v1) =>
-let
-val trst =
-d3typ1_styp$make(trst)
-in//let
-//
-optn_vt_nil() where{
+|D3E1var
+(   d2v1   ) =>
+(
+optn_vt_nil())
+where
+{
 val (  ) =
-envltck_dvar$updt(env0,d2v1,trst)}
+envltck_dvar$updt
+(env0, d2v1, trst) where
+{
+val
+trst = d3typ1_styp$make(trst)}
+}
 //
-end//let
-//
-|
-D3E1flat(dlft) =>
+|D3E1flat
+(   dlft   ) =>
 let
 val trst = s2typ1_lft(trst)
 in//let
-f1_proj$updt(dlft, trst, env0) end
+(
+f1_proj$updt(dlft, trst, env0))
+end//let
+//
+|D3E1proj
+(tknd
+,lab2, d3e2) =>
+let
+val t3q2 = d3e2.dtyp()
+val t2q2 =
+(
+envltck_dtyp$eval(env0, t3q2))
+in//let
+//
+let
+val trst =
+s2typ1_lab$fset
+(t2q2, lab2, trst)
+in//let
+(
+f1_proj$updt(d3e2, trst, env0))
+end//let
+//
+end(*let*)//end-of-[D3E1proj(...)]
 //
 |
 _(*otherwise*) => optn_vt_cons(trst)
