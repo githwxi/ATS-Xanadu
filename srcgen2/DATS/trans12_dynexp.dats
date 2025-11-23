@@ -355,6 +355,10 @@ d2p0.node() of
 (
 d2pat(loc0, D2Pbang(d2p0)))
 //
+// HX: !!dpid = dpid
+|D2Pbang
+(   d2p1   ) => (  d2p1   )
+//
 |D2Pdapp
 (d2f0
 ,npf1, d2ps) =>
