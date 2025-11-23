@@ -375,32 +375,32 @@ S2VAR_vt of
 #absimpl s2var_tbox = s2var
 //
 in//local
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 s2var_get_name(s2v) =
 let
 val
 S2VAR(sym, s2t, tmp) = s2v in sym
 end (*let*) // end of [s2var_get_name]
-
+//
 #implfun
 s2var_get_sort(s2v) =
 let
 val
 S2VAR(sym, s2t, tmp) = s2v in s2t
 end (*let*) // end of [s2var_get_sort]
-
+//
 #implfun
 s2var_get_stmp(s2v) =
 let
 val
 S2VAR(sym, s2t, tmp) = s2v in tmp
 end (*let*) // end of [s2var_get_stmp]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 s2var_set_sort
 ( s2v0, s2t1 ) =
@@ -413,7 +413,7 @@ val+
 (sym0,
 !s2t0,stmp) = s2v0 in (s2t0 := s2t1)
 end (*let*) // end of [s2var_set_sort]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -440,7 +440,7 @@ S2VAR(sid, s2t, tmp)) where
 } (*where*) // end of [s2var_make_idst]
 //
 (* ****** ****** *)
-
+//
 endloc (*local*) // end of [local(s2var)]
 
 (* ****** ****** *)
@@ -478,33 +478,43 @@ s2arg_make_node
 endloc (*local*) // end of [local(s2arg)]
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 s2exp_int(int) =
 let
 val s2t0 = the_sort2_int0 in
 s2exp_make_node(s2t0, S2Eint(int))
 end (*let*) // end of [s2exp_int(int)]
+//
 (* ****** ****** *)
+//
 #implfun
 s2exp_btf(btf) =
 let
 val s2t0 = the_sort2_bool in
 s2exp_make_node(s2t0, S2Ebtf(btf))
 end (*let*) // end of [s2exp_btf(btf)]
+//
 (* ****** ****** *)
+//
 #implfun
 s2exp_chr(chr) =
 let
 val s2t0 = the_sort2_char in
 s2exp_make_node(s2t0, S2Echr(chr))
 end (*let*) // end of [s2exp_chr(chr)]
+//
 (* ****** ****** *)
+//
 #implfun
 s2exp_str(str) =
 let
 val s2t0 = the_sort2_strn in
 s2exp_make_node(s2t0, S2Estr(str))
-end (*let*) // end of [s2exp_chr(chr)]
+end (*let*) // end of [s2exp_str(chr)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -545,6 +555,7 @@ s2exp(S2Tnone0(), S2Ecsts(s2cs)))
 ) (*case+*) // end of [s2exp_csts(s2cs)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 s2exp_impr
@@ -556,6 +567,8 @@ in
 s2exp
 (s2t0, S2Eimpr(loc0, s2e0))
 end (*let*)//end-of-[s2exp_impr]
+//
+(* ****** ****** *)
 //
 #implfun
 s2exp_prgm
@@ -569,6 +582,7 @@ s2exp
 end (*let*)//end-of-[s2exp_prgm]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 s2exp_cast
@@ -577,13 +591,15 @@ s2exp
 (s2t2, S2Ecast(loc0, s2e1, s2t2))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 local
 //
 (* ****** ****** *)
 (*
 HX-2022-11-29:
-This seemly a bit
+This is
+seemly a bit
 overly complicated!
 *)
 (* ****** ****** *)
@@ -965,7 +981,8 @@ prerrsln("s2exp_apps_pq: s2es = ", s2es)
 } (*where*) // end of [s2exp_apps_pq(...)]
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 s2exp_lam1
 (s2vs, body) = let
@@ -984,7 +1001,7 @@ val s2t0 =
 in
   s2exp(s2t0, S2Elam1(s2vs, body))
 end (*let*)//end-of-[s2exp_lam1(s2vs,body)]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1055,7 +1072,8 @@ else (the_sort2_tbox) ) : sort2
 } (*where*) // end of [s2exp_fun1_full(...)]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 s2exp_uni0
 (s2vs, s2ps, body) = let
@@ -1079,9 +1097,9 @@ in
 end (*let*) // end of [else]
 //
 end (*let*) // end of [s2exp_uni0(s2vs,s2ps,s2e0)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 s2exp_exi0
 (s2vs, s2ps, body) = let
@@ -1105,9 +1123,10 @@ in
 end (*let*) // end of [else]
 //
 end (*let*) // end of [s2exp_exi0(s2vs,s2ps,s2e0)]
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 s2exp_l1st
 (loc0, s2es) =
@@ -1176,9 +1195,9 @@ in
 end (*let*) // end-of-else // end-if
 //
 end (*let*) // end of [s2exp_l1st(s2es)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 s2exp_l2st
 (loc0, ses1, ses2) = let
@@ -1234,7 +1253,8 @@ l2s2elst_make_l2st( ses1, ses2 )
 in
 s2exp(s2t2, S2Etrcd(knd0, npf1, lses))
 end (*let*) // end of [s2exp_l2st(ses1,ses2)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -1698,7 +1718,8 @@ s2exp_make_node(s2t0, S2Enone1(s1e0))
 end (*let*) // end of [s2exp_none1(s1e0)]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 local
 //
 datatype s2exp =
@@ -1735,6 +1756,7 @@ s2exp_make_node
 //
 endloc (*local*) // end of [local(s2exp)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
