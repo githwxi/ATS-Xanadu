@@ -108,6 +108,16 @@ envltck_dtyplst$eval
 //
 (* ****** ****** *)
 //
+(*
+HX-2025-11-22:
+This is just [envltck_dvar$dpsh]!
+fun
+envltck_dvar$init
+( env0:
+! envltck
+, dvar: d2var, styp: d3typ1): void
+*)
+//
 fun
 envltck_dvar$updt
 ( env0:

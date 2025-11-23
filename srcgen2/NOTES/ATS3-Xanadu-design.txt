@@ -88,6 +88,30 @@ HX-2024-05-26: Please see [trans2a_dynexp.dats] for details!
 
 ########################################################################
 
+HX-2025-11-23:
+
+Let me specify
+the meaning of some pattern modifiers again:
+
+First, please ignore entirely what is said above.
+
+~: for freeing:
+For instance, ~C(x1, x2):
+the constructor C is freed but x1 and x2 are not.
+Note that x1 and x2 are names (i.e., functional variables).
+
+!: for aliasing:
+For instance, C(x1, !x2):
+We have that x1 is VAL and x2 is R-alias of C.2.
+@: for mutability:
+For instance, @C(x1, !x2):
+We have that x1 is VAL and x2 is W-alias of C.2
+
+We have that !C(x1, !x2) translates to C(!x1, x2).
+A possible use of !C is that @(!C(x1, x2)) = @C(!x1, !x2).
+
+########################################################################
+
 HX-2024-01-07:
 
 No inheritance for objtypes:

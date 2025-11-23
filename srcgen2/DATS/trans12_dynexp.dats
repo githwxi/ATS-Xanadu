@@ -331,6 +331,138 @@ d2pat_dapp(loc0, d2f0, npf1, d2as)
 end (*let*) // end-of-[my_d2pat_dapp]
 //
 (* ****** ****** *)
+//
+(*
+HX-2025-11-23:
+Translating
+!C(x, !y) to C(!x, y),
+which implies
+@(!C(x, !y)) to @C(!x, y).
+*)
+//
+fun
+d2pat_bangize
+(d2p0: d2pat): d2pat =
+let
+val
+loc0 = d2p0.lctn()
+in//let
+//
+case+
+d2p0.node() of
+//
+|D2Pvar _ =>
+(
+d2pat(loc0, D2Pbang(d2p0)))
+//
+|D2Pdapp
+(d2f0
+,npf1, d2ps) =>
+let
+//
+val d2ps =
+(
+  f0_d2ps( d2ps ))
+//
+in//let
+d2pat(loc0,
+D2Pdapp(d2f0, npf1, d2ps))
+end//let
+//
+|D2Prfpt
+(d2rf
+,tkas, d2p1) =>
+let
+val d2p1 =
+d2pat_bangize(d2p1)
+in//let
+d2pat(loc0,
+D2Prfpt(d2rf, tkas, d2p1))
+end//let
+//
+|D2Ptup0
+(npf1, d2ps) =>
+let
+val d2ps = f0_d2ps(d2ps)
+in//let
+d2pat
+(loc0, D2Ptup0(npf1, d2ps))
+end//let
+//
+|D2Ptup1
+(tknd
+,npf1, d2ps) =>
+let
+val d2ps = f0_d2ps(d2ps)
+in//let
+d2pat(loc0,
+  D2Ptup1(tknd, npf1, d2ps))
+end//let
+//
+|
+D2Prcd2
+(tknd
+,npf1, ldps) =>
+let
+val d2ps = f0_ldps(ldps)
+in//let
+d2pat(loc0,
+  D2Prcd2(tknd, npf1, ldps))
+end//let
+//
+// HX-2025-11-23:
+// ignore the bang modifier!
+|_(*otherwise*) => (   d2p0   )
+//
+end where
+{
+//
+fun
+f0_d2ps
+( d2ps
+: d2patlst): d2patlst =
+(
+list_map
+<x0><y0>(d2ps))
+where{
+#typedef x0 = d2pat
+#typedef y0 = d2pat
+#impltmp
+map$fopr
+<x0><y0> = d2pat_bangize(*void*)
+}(*where*)//end-of-[f0_d2ps(...)]
+//
+fun
+f0_ldps
+( ldps
+: l2d2plst): l2d2plst =
+(
+list_map
+<x0><y0>(ldps))
+where
+{
+//
+#typedef x0 = l2d2p
+#typedef y0 = l2d2p
+//
+#impltmp
+map$fopr
+<x0><y0>(ld2p) =
+let
+val+
+D2LAB
+(lab0, d2p1) = ld2p
+in//let
+D2LAB(lab0, d2pat_bangize(d2p1))
+end//let
+//
+}(*where*)//end-of-[f0_ldps(...)]
+//
+}(*where*)//end(d2pat_bangize(...))
+//
+(* ****** ****** *)
+//
+(* ****** ****** *)
 (*
 HX-2022-12-20: for constructing d2exp
 *)
@@ -946,7 +1078,11 @@ val
 d2p1 =
 trans12_d1pat(env0, d1p1)
 in
+(
+  d2pat_bangize( d2p1 ) )
+(*
 d2pat(loc0, D2Pbang(d2p1))
+*)
 end//then//if(isBANG0(d1f0))
 else
 (

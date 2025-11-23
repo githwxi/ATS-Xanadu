@@ -283,7 +283,11 @@ fprint with d3ecl_fprint of 1000
 //
 (*
 HX-2025-09-10:
-This one is NOT recursive!
+This one is functional.
+HX-2025-11-22:
+It seems quite natural to use a
+reference to track the change of
+a linear type assigned to a name!
 *)
 //
 datatype
@@ -298,6 +302,13 @@ HX:
 for C(...,!x....)
 *)
 |T3P1lvar of (d2var)
+//
+(*
+HX:
+this offers a
+different implementation
+|T3P1xref of (ref(d3typ1))
+*)
 //
 (*
 |T3P1dcon of (d2con, d3typ1lst)
