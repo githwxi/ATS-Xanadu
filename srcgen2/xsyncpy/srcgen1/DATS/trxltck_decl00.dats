@@ -386,6 +386,9 @@ val vts2 =
 (
 dvdtp1lst_d2vs$outer(vts0, d2vs))
 //
+val vts1 =
+envltck_dvdtp1lst$eval(env0, vts1)
+//
 // (*
 val (  ) =
 prerrsln("\
@@ -513,7 +516,29 @@ end//let
 //
 #implfun
 d3fundcl1_trxltck
-  (dfun, env0) = let
+  (dfun, env0) =
+let
+//
+val tdxp =
+d3fundcl1_tdxp$get(dfun)
+//
+in//let
+//
+case+ tdxp of
+|TEQD3EXP1none _ => dfun
+|TEQD3EXP1some _ =>
+(
+  f0_d3fundcl1(dfun, env0))
+//
+end where // end-of-[ let ]
+{
+//
+fun
+f0_d3fundcl1
+( dfun
+: d3fundcl1
+, env0: !envltck): d3fundcl1 =
+let
 //
 val loc0 =
 d3fundcl1_lctn$get(dfun)
@@ -566,6 +591,9 @@ val vts2 =
 (
 dvdtp1lst_d2vs$outer(vts0, d2vs))
 //
+val vts1 =
+envltck_dvdtp1lst$eval(env0, vts1)
+//
 // (*
 val (  ) =
 prerrsln("\
@@ -580,13 +608,15 @@ d3fundcl1_trxltck: vts2 = ", vts2)
 //
 in//let
 //
+(
 d3fundcl1_make_args
 (loc0
 ,dpid, t2q1
-,f3as, f3bs, sres, tdxp, wsxp, vts1, vts2)
+,f3as, f3bs, sres, tdxp,wsxp,vts1,vts2))
 //
-end//let
-(*let*)//end-of-[d3fundcl1_trxltck(dfun,env0)]
+end//let//end-of-[f0_d3fundcl1(dfun,env0)]
+//
+}(*where*)//endof[d3fundcl1_trxltck(dfun,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

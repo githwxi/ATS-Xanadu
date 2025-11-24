@@ -1306,14 +1306,17 @@ val (  ) =
 prerrsln
 ("f0_let0(ltck): vts2 = ", vts2)
 //
+val vts1 =
+envltck_dvdtp1lst$eval
+(     env0, vts1     )//val(vts1)
+//
 val (  ) =
 (
   envltck_dvts$updt( env0, vts2 ))
 //
-val
-dexp =
+val dexp =
 d3exp1(loc0,
-t3q1, D3E1let1(dcls, d3e1, vts1)) }
+  t3q1, D3E1let1(dcls, d3e1, vts1)) }
 //
 end//let
 //

@@ -304,7 +304,7 @@ d3exp1_let1_errck
 , t3q0: d3typ1
 , dcls: d3ecl1lst
 , d3e1: d3exp1
-, dvts: dvdtp1lst): d3exp1 =
+, dvts: dvstp1lst): d3exp1 =
 let
 //
 val

@@ -72,6 +72,23 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+dvstp1lst_linq
+  (dvts) =
+(
+case+ dvts of
+|list_nil
+( (*void*) ) => false
+|list_cons
+(vtp1, dvts) =>
+if // if
+s2typ1_linq(vtp1.1)
+then true else dvstp1lst_linq(dvts)  
+)(*case+*)//end-of-[dvstp1lst_linq(dvts)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2025-09-07:
 Sun Sep  7 03:04:00 AM EDT 2025

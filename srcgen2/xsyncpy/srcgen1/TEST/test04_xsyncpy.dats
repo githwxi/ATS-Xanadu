@@ -60,6 +60,7 @@ val
 end//let//end-of(my_free)
 //
 (* ****** ****** *)
+////
 (* ****** ****** *)
 //
 #impltmp
@@ -119,7 +120,7 @@ s3wap_cbrf
 fun
 <x0:vt>
 cond_test00
-(x0: !x0): x0 =
+(x0: x0): x0 =
 if true then x0 else x0
 //
 fun

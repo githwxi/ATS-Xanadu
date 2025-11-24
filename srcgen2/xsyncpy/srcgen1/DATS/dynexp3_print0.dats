@@ -111,6 +111,46 @@ end(*let*)//end-of-[d3typ1_fprint(t3q0,out0)]
 (* ****** ****** *)
 //
 #implfun
+dvstp1lst_fprint
+( vtps, out0 ) =
+(
+prints
+("DVSTP1LST(");
+auxlst(vtps, 0); prints(")")
+) where
+{
+//
+#impltmp
+g_print$out<>() = out0
+//
+fun
+auxlst
+( vtps
+: dvstp1lst, i0: sint): void =
+(
+case+ vtps of
+|
+list_nil
+((*void*)) => ((*void*))
+|
+list_cons
+(vtp1, vtps) =>
+(
+auxlst(vtps, i0+1)) where
+{
+val d2v1 = vtp1.0
+val t2q1 = vtp1.1
+val () =
+if (i0 > 0) then prints(",")
+val () =
+prints("(", d2v1, ":", t2q1, ")") }
+)(*case+*)//end-of-[auxlst(vtps,i0)]
+//
+}(*where*)//end-of-[dvstp1lst_fprint(vtps,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
 dvdtp1lst_fprint
 ( vtps, out0 ) =
 (
@@ -138,11 +178,12 @@ list_cons
 (
 auxlst(vtps, i0+1)) where
 {
+val d2v1 = vtp1.0
+val t3q1 = vtp1.1
 val () =
 if (i0 > 0) then prints(",")
 val () =
-prints
-("(", vtp1.0, ":", vtp1.1, ")") }
+prints("(", d2v1, ":", t3q1, ")") }
 )(*case+*)//end-of-[auxlst(vtps,i0)]
 //
 }(*where*)//end-of-[dvdtp1lst_fprint(vtps,out0)]

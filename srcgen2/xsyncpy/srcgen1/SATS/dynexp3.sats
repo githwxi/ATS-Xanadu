@@ -326,6 +326,13 @@ different implementation
 (* ****** ****** *)
 //
 #typedef
+dvstp1 = (d2var, s2typ1)
+#typedef
+dvstp1lst = list( dvstp1 )
+#vwtpdef
+dvstp1lst_vt = list_vt(dvstp1)
+//
+#typedef
 dvdtp1 = (d2var, d3typ1)
 #typedef
 dvdtp1lst = list( dvdtp1 )
@@ -372,6 +379,16 @@ d3typ1_fprint
 #symload fprint with d3typ1_fprint of 1000
 //
 (* ****** ****** *)
+//
+fun
+dvstp1lst_linq
+(vtps: dvstp1lst): bool
+//
+fun
+dvstp1lst_fprint
+( vtps
+: dvstp1lst, out0: FILR): void
+#symload fprint with dvstp1lst_fprint of 1000
 //
 fun
 dvdtp1lst_fprint
@@ -607,7 +624,7 @@ d3ecl1lst, d3exp1(*scope*))//let0
 |D3E1let1 of
 (
 d3ecl1lst,
-d3exp1(*scope*),dvdtp1lst(*lefts*))
+d3exp1(*scope*),dvstp1lst(*lefts*))
 //
 (* ****** ****** *)
 //
@@ -641,7 +658,7 @@ token(*casknd*), d3exp1, d3cls1lst)
 |D3E1lam1 of
 (token(*knd*)
 ,f3arg1lst
-,f3axp1lst, s2res, f1unarrw, d3exp1, dvdtp1lst(*lefts*))
+,f3axp1lst, s2res, f1unarrw, d3exp1, dvstp1lst(*lefts*))
 //
 |D3E1fix0 of
 (token(*knd*), d2var(*fid*)
@@ -649,7 +666,7 @@ token(*casknd*), d3exp1, d3cls1lst)
 |D3E1fix1 of
 (token(*knd*), d2var(*fid*)
 ,f3arg1lst
-,f3axp1lst, s2res, f1unarrw, d3exp1, dvdtp1lst(*lefts*))
+,f3axp1lst, s2res, f1unarrw, d3exp1, dvstp1lst(*lefts*))
 //
 (* ****** ****** *)
 //
@@ -1011,7 +1028,7 @@ for handling bef/aft syntax!
 , t2iag1lst // HX: of s2typ1lst
 , f3arg1lst
 , f3axp1lst
-, s2res, d3exp1, dvdtp1lst, dvdtp1lst)
+, s2res, d3exp1, dvstp1lst, dvdtp1lst)
 //
 (* ****** ****** *)
 //
@@ -1144,7 +1161,7 @@ fun
 d3fundcl1_tdxp$get:(d3fundcl1)->teqd3exp1
 //
 fun // d2vs$inner
-d3fundcl1_vts1$get:(d3fundcl1)->dvdtp1lst
+d3fundcl1_vts1$get:(d3fundcl1)->dvstp1lst
 fun // d2vs$outer
 d3fundcl1_vts2$get:(d3fundcl1)->dvdtp1lst
 //
@@ -1182,7 +1199,7 @@ d3fundcl1_make_args
 ,t2q1:s2typ1
 ,farg:f3arg1lst
 ,faxp:f3axp1lst,sres:s2res
-,tdxp:teqd3exp1,wsxp:wths2exp,vts1:dvdtp1lst,vts2:dvdtp1lst
+,tdxp:teqd3exp1,wsxp:wths2exp,vts1:dvstp1lst,vts2:dvdtp1lst
 ) : d3fundcl1//end-of-[d3fundcl1_make_args]
 //
 #symload d3fundcl1 with d3fundcl1_make_args

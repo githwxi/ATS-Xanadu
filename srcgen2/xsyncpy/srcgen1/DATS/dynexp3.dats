@@ -786,7 +786,7 @@ D3FUNDCL1 of
 , f3arg1lst
 , f3axp1lst
 , s2res(*return*)
-, teqd3exp1, wths2exp, dvdtp1lst, dvdtp1lst)
+, teqd3exp1, wths2exp, dvstp1lst, dvdtp1lst)
 //
 #absimpl
 d3fundcl1_tbox = d3fundcl1

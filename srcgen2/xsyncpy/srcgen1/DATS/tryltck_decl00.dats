@@ -212,7 +212,7 @@ d3ecl1_implmnt0_errck
 , f3as: f3arg1lst
 , f3bs: f3axp1lst, sres: s2res
 , dexp: d3exp1(*body*)
-, vts1: dvdtp1lst, vts2: dvdtp1lst): d3ecl1 =
+, vts1: dvstp1lst, vts2: dvdtp1lst): d3ecl1 =
 let
 val lvl = 0
 in//let
@@ -463,14 +463,21 @@ D3C1implmnt0
 (*
 val f3as =
 (
-  f3arg1lst_tryltck(farg, err0))
+f3arg1lst_tryltck(farg, err0))
 *)
 val f3bs =
 (
-  f3axp1lst_tryltck(f3bs, err0))
+f3axp1lst_tryltck(f3bs, err0))
 //
-val
-dexp = d3exp1_tryltck(dexp, err0)
+val dexp =
+(
+  d3exp1_tryltck( dexp, err0 ))
+//
+val (  ) =
+(
+if // if
+dvstp1lst_linq
+  ( vts1 ) then (err0:=(err0+1)))
 //
 in//let
 //
@@ -649,6 +656,12 @@ val faxp =
 val tdxp =
 (
   teqd3exp1_tryltck(tdxp, err0))
+//
+val (  ) =
+(
+if // if
+dvstp1lst_linq
+  ( vts1 ) then (err0:=(err0+1)))
 //
 in//let
 if // if

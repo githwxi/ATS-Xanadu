@@ -744,6 +744,50 @@ val t2qs = envltck_dtyplst$eval(env0, t3qs)}
 )(*case+*)//end-of-[envltck_dtyplst$eval(env0,...)]
 //
 (* ****** ****** *)
+//
+#implfun
+envltck_dvdtp1lst$eval
+  ( env0, dvts ) =
+(
+list_vt2t(
+loop(dvts, res0)))
+where
+{
+//
+val
+res0 = list_vt_nil()
+//
+fun
+loop
+( dvts
+: dvdtp1lst
+, res0
+: dvstp1lst_vt): dvstp1lst_vt =
+(
+case+ dvts of
+|list_nil
+( (*void*) ) =>
+list_vt_reverse0(res0)
+|list_cons
+(vtp1, dvts) =>
+let
+//
+val d2v1 = vtp1.0
+val t3q1 = vtp1.1
+val t2q1 =
+envltck_dtyp$eval(env0, t3q1)
+//
+in//let
+//
+loop(dvts,
+  list_vt_cons((d2v1, t2q1), res0))
+//
+end//let
+)(*case+*)//end-of-[loop(dvts,res0)]
+//
+}(*where*)//endof(envltck_dvdtp1lst$eval(env0,...))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
