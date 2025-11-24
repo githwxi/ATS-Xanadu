@@ -108,6 +108,13 @@ envltck_dtyplst$eval
 //
 (* ****** ****** *)
 //
+fun
+envltck_dvdtp1lst$eval
+( env0:
+! envltck, dvts: dvdtp1lst): dvstp1lst
+//
+(* ****** ****** *)
+//
 (*
 HX-2025-11-22:
 This is just [envltck_dvar$dpsh]!
@@ -322,7 +329,7 @@ d3vardcl1_trxltck
 //
 fun
 d3fundcl1_trxltck
-(dvar: d3fundcl1, env0: !envltck): d3fundcl1
+(dfun: d3fundcl1, env0: !envltck): d3fundcl1
 //
 (* ****** ****** *)
 (* ****** ****** *)

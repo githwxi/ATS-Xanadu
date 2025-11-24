@@ -525,8 +525,14 @@ g_print
 (*
 HX-2025-09-28:
 Sun Sep 28 12:30:12 AM EDT 2025
-This one handles 'list' specially!
+These ones handle 'list' specially!
 *)
+//
+#impltmp
+g_print
+<dvstp1lst>(vtps) =
+(
+  dvstp1lst_fprint(vtps, g_print$out<>((*void*))))
 //
 #impltmp
 g_print
