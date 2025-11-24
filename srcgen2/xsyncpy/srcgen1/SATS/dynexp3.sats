@@ -505,6 +505,12 @@ d3axp1_node =
 ,s1exp(*given*)
 ,s2exp(*trans*),s2typ1(*trans*))
 //
+|
+(*
+HX-2025-11-23: lvl=1 for now
+*)
+D3A1errck of (sint(*lvl*),d3axp1)
+//
 (* ****** ****** *)
 //
 fun

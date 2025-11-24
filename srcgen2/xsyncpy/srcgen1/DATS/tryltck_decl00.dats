@@ -640,10 +640,12 @@ vts2 = d3fundcl1_vts2$get(dfun)
 val farg =
 (
   f3arg1lst_tryltck(farg, err0))
+*)
+//
 val faxp =
 (
-  f3axp1lst_tryltck(farg, err0))
-*)
+  f3axp1lst_tryltck(faxp, err0))
+//
 val tdxp =
 (
   teqd3exp1_tryltck(tdxp, err0))

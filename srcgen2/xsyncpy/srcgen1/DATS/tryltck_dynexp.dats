@@ -1176,6 +1176,7 @@ d3axp1_tryltck
 (
 case+
 daxp.node() of
+//
 |D3A1int _ => daxp
 |D3A1btf _ => daxp
 |D3A1chr _ => daxp
@@ -1183,22 +1184,36 @@ daxp.node() of
 |D3A1str _ => daxp
 //
 |D3A1var _ => daxp
+|D3A1lft _ => daxp
 //
 |D3A1none _ => daxp
 //
-|D3A1t2pck _ =>
+|
+D3A1t2pck _ =>
 let
-val () =
-err0 := err0 + 1 in daxp end
 //
-|D3A1argtp
+val () =
+(err0 := err0 + 1)
+//
+val loc0 = daxp.lctn()
+val t2q0 = daxp.styp()
+//
+in//let
+(
+d3axp1(loc0, t2q0,
+  D3A1errck(1(*lvl*), daxp)))
+end//let//end-of-[D3A1t2pck(...)]
+//
+|
+D3A1argtp
 (d3a1, t2q2) =>
 let
 val d3a1 =
 d3axp1_tryltck(d3a1, err0) in daxp
 end//let//end-of-[D3A1argtp(d2a1,...)]
 //
-|D3A1annot
+|
+D3A1annot
 (d3a1
 ,s1e2
 ,s2e2, t2q2) =>
