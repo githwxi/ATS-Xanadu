@@ -109,7 +109,24 @@ end//let//end-of-[s2wap_cbrf(x1,x2)]
 fun
 <x0:vt>
 s3wap_cbrf
-(xx: &(x0, x0)): void = s2wap_cbrf(xx.0, xx.1)
+( xx
+: &(x0, x0))
+: void = s2wap_cbrf(xx.0, xx.1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+cond_test00
+(x0: !x0): x0 =
+if true then x0 else x0
+//
+fun
+<x0:vt>
+cond_test01
+(x1: x0, x2: x0): (x0, x0) =
+if true then (x1, x2) else (x2, x1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
