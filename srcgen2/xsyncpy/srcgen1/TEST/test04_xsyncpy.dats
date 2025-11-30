@@ -30,6 +30,14 @@ g_copy<a>(x0) = x0
 (* ****** ****** *)
 //
 #impltmp
+g_print
+<unit>(ut) =
+strn_print("unit")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 bool_neg<>(tf) =
 if (tf)
 then false else true
@@ -62,11 +70,23 @@ end//let//end-of(my_free)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-g_print
-<unit>(ut) = strn_print("unit")
+#extern
+fun
+<x0:vt>
+dup2(x0: x0): (x0, x0)
+(*
+fun
+<x0:t0>
+tup2_proj1
+(x0: x0): x0 = dup2(x0).0
+*)
+fun
+<x0:vt>
+tup2_proj1
+(x0: x0): x0 = dup2(x0).0
 //
 (* ****** ****** *)
+////
 (* ****** ****** *)
 //
 fun

@@ -476,6 +476,29 @@ endlet//end-of-[d3exp1_delin_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp1_exlin_errck
+(loc0: loc_t
+,t3q0: d3typ1
+,d3e1: d3exp1
+,t2q2: s2typ1   ): d3exp1 =
+let
+//
+val
+lvl0 =
+errvl(d3e1) in//let
+//
+(
+d3exp1_errck
+(
+lvl0+1,
+d3exp1_make_lctn$dtyp$node
+( loc0, t3q0, D3E1exlin(d3e1, t2q2))))
+//
+endlet//end-of-[d3exp1_exlin_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp1_t2pck_errck
 (loc0: loc_t
 ,t3q0: d3typ1
@@ -688,6 +711,11 @@ dexp.node() of
 |D3E1delin _ =>
 (
   f0_delin(dexp, err0))
+|D3E1exlin _ =>
+(
+  f0_exlin(dexp, err0))
+//
+(* ****** ****** *)
 //
 |D3E1t2pck _ =>
 (
@@ -1078,6 +1106,49 @@ d3e0.lctn() in//let
   (loc0, t3q0, d3e1, t2q2) ) end//let
 //
 end(*let*)//end-of-[f0_delin(d3e0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_exlin
+( d3e0: d3exp1
+, err0
+: &sint >> sint): d3exp1 =
+let
+//
+val nerr = err0
+//
+(*
+HX-2025-11-30:
+[t2pck] treated as error
+*)
+val (  ) =
+(
+  err0 := err0 + 1)
+//
+val-
+D3E1exlin
+(d3e1, t2q2) = d3e0.node()
+//
+val t3q0 = d3e0.dtyp((*0*))
+//
+val d3e1 =
+(
+  d3exp1_tryltck(d3e1, err0))
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val loc0 =
+d3e0.lctn() in//let
+(
+  d3exp1_exlin_errck
+  (loc0, t3q0, d3e1, t2q2) ) end//let
+//
+end(*let*)//end-of-[f0_exlin(d3e0,err0)]
 //
 (* ****** ****** *)
 //
