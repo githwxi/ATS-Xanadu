@@ -295,7 +295,7 @@ d3fag1_aftck
 (
 if
 (
-faftck
+saftck
 (d3e0
 ,styp
 ,env0) = 0)
@@ -314,7 +314,7 @@ d3exp1
 {
 //
 fun
-faftck
+saftck
 (d3e0: d3exp1
 ,styp: s2typ1
 ,env0: !envltck): sint =
@@ -323,17 +323,17 @@ case+
 d3e0.node() of
 //
 |D3E1var _ =>
-f0_var(d3e0, styp, env0)
+fs_var(d3e0, styp, env0)
 |D3E1flat _ =>
-f0_flat(d3e0, styp, env0)
+fs_flat(d3e0, styp, env0)
 |D3E1proj _ =>
-f0_proj(d3e0, styp, env0)
+fs_proj(d3e0, styp, env0)
 //
 |_(* otherwise *) => ( 1 )
 )
 //
 and
-f0_var
+fs_var
 (d3e0: d3exp1
 ,styp: s2typ1
 ,env0: !envltck): sint =
@@ -352,12 +352,12 @@ val (  ) =
 envltck_dvar$updt
 (env0, d2v1, taft)) in (0) end
 //
-end//let//end-of-[f0_var(d3e0,...)]
+end//let//end-of-[fs_var(d3e0,...)]
 //
 (* ****** ****** *)
 //
 and
-f0_flat
+fs_flat
 (d3e0: d3exp1
 ,styp: s2typ1
 ,env0: !envltck): sint =
@@ -373,14 +373,14 @@ let
 val tlft =
 s2typ1_lft(styp) in//let
 (
-  faftck(dlft, tlft, env0)) end
+  saftck(dlft, tlft, env0)) end
 //
-end//let//end-of-[f0_flat(d3e0,...)]
+end//let//end-of-[fs_flat(d3e0,...)]
 //
 (* ****** ****** *)
 //
 and
-f0_proj
+fs_proj
 (d3e0: d3exp1
 ,styp: s2typ1
 ,env0: !envltck): sint =
@@ -405,9 +405,14 @@ T3P1styp(t2q1) =>
 let
 val styp =
 s2typ1_lab$fset
-(t2q1, lab1, styp) in //let
+(t2q1, lab1, styp) in//let
 (
-  faftck(d3e1, styp, env0)) end
+  saftck(d3e1, styp, env0))
+end//let//end-of-(T3P1styp())
+|
+_(*otherwise*) =>
+(
+  daftck( d3e1 , t3q1 , env0 ))
 //
 end//let
 //
@@ -416,10 +421,33 @@ end where
 //
 (*
 val () =
-prerrsln("f0_proj: d3e0 = ", d3e0)
+prerrsln("fs_proj: d3e0 = ", d3e0)
 *)
 //
-}(*where*)//end-of-[f0_proj(d3e0,...)]
+}(*where*)//end-of-[fs_proj(d3e0,...)]
+//
+(* ****** ****** *)
+//
+and 
+daftck
+(d3e0: d3exp1
+,dtyp: d3typ1
+,env0: !envltck): sint =
+(
+case+
+d3e0.node() of
+//
+(*
+|D3E1var _ =>
+fd_var(d3e0, dtyp, env0)
+|D3E1flat _ =>
+fd_flat(d3e0, dtyp, env0)
+|D3E1proj _ =>
+fd_proj(d3e0, dtyp, env0)
+*)
+//
+|_(* otherwise *) => ( 1 )
+)
 //
 (* ****** ****** *)
 //
