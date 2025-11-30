@@ -945,7 +945,7 @@ d3cls1_node$get
 #symload node with d3cls1_node$get
 //
 fun // HX-2025-11-25: guard root
-d3cls1_dprt$get(d3cls1): d3typ1opt
+d3cls1_dgrt$get(d3cls1): d3typ1opt
 fun
 d3cls1_dvts$get(d3cls1): dvstp1lst
 //
@@ -965,7 +965,7 @@ d3cls1_make_lctn$node$rest
 (
 loc0:loc_t,
 node:d3cls1_node,
-dprt:d3typ1opt,dvts:dvstp1lst): d3cls1
+dgrt:d3typ1opt,dvts:dvstp1lst): d3cls1
 //
 #symload
 d3gua1 with d3gua1_make_lctn$node
@@ -1207,7 +1207,7 @@ d3valdcl1_make_arg4
 fun
 d3valdcl1_make_arg5
 (lctn:loc_t
-,dpat:d3pat1,dprt:d3typ1opt
+,dpat:d3pat1,dgrt:d3typ1opt
 ,tdxp:teqd3exp1,wsxp:wths2exp):d3valdcl1
 //
 fun
