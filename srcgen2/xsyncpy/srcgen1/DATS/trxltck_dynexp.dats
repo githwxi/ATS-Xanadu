@@ -137,21 +137,6 @@ map$fopr
 (* ****** ****** *)
 //
 fun
-d3exp1_exlin
-(d3e0: d3exp1
-,trst: s2typ1): d3exp1 =
-let
-//
-val loc0 = d3e0.lctn((*0*))
-val t3q0 = d3e0.dtyp((*0*))
-in//let
-d3exp1(
-loc0, t3q0, D3E1exlin(d3e0, trst))
-end//let//end-of-[d3exp1_exlin(...)]
-//
-(* ****** ****** *)
-//
-fun
 d3exp1_delinize
 (d3e0: d3exp1
 ,env0: !envltck): d3exp1 =
@@ -186,6 +171,45 @@ loc0, t3q1, D3E1delin(d3e0, t2q0))
 end//let//end(else)//endof(if(...))
 //
 end//let//end-of-[d3exp1_delinize(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp1_exlinize
+(d3e0: d3exp1
+,trst: s2typ1
+,env0: !envltck): d3exp1 =
+let
+//
+val t2q0 =
+envltck_dtyp$eval
+(  env0 , t3q0  )
+where{
+val
+t3q0 = d3e0.dtyp((*0*))}
+//
+val linq = s2typ1_linq(t2q0)
+//
+in//let
+//
+if // if
+not(linq)
+then d3e0 else
+let
+//
+val loc0 =
+d3e0.lctn((*0*))
+val t2q1 =
+s2typ1_t1pize(t2q0)
+val t3q1 =
+d3typ1_styp$make(t2q1)
+//
+in//let
+d3exp1(
+loc0, t3q1, D3E1exlin(d3e0, t2q0))
+end//let//end(else)//endof(if(...))
+//
+end//let//end-of-[d3exp1_exlinize(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1233,14 +1257,16 @@ if (
 f1_styp$updt
 ( d3e1
 , trst, env0)
-) then (dprj) else
+) then dprj else
 (
-  d3exp1_exlin(dprj, trst))
-) where
+d3exp1_exlinize
+(dprj, trst, env0))
+) where // end-of-(if)
 {
-val t3q2 =
-d3typ1_styp$make(t2q2)
-val dprj =
+val
+t3q2 = d3typ1_styp$make(t2q2)
+val
+dprj =
 d3exp1(loc0,
 t3q2, D3E1proj(tknd, lab1, d3e1))
 }
@@ -1650,7 +1676,7 @@ in(*let*)
 (
 d3exp1
 (loc0,t3q0,D3E1assgn(d3el, d3er)))
-end//let//endof(d3exp1_delin(d3el))
+end//let//endof(d3exp1_delinize())
 //
 end where // end-of-[f0_assgn(...)]
 {
