@@ -225,11 +225,11 @@ end where
 val loc0 = d3a0.lctn()
 val (  ) =
 prerrsln("d3axp1_t2pck: loc0 = ", loc0)
-*)
 val (  ) =
 prerrsln("d3axp1_t2pck: d3a0 = ", d3a0)
 val (  ) =
 prerrsln("d3axp1_t2pck: styp = ", styp)
+*)
 //
 }(*where*)//end-of-[d3axp1_t2pck(d3a0,...)]
 //
@@ -276,10 +276,12 @@ end//let
 end where
 {
 //
+(*
 val () =
 prerrsln("d3exp1_t2pck: d3e0 = ", d3e0)
 val () =
 prerrsln("d3exp1_t2pck: styp = ", styp)
+*)
 //
 }(*where*)//end-of-[d3exp1_t2pck(d3e0,...)]
 //
@@ -415,6 +417,7 @@ prerrsln("f0_proj: d3e0 = ", d3e0)
 //
 (* ****** ****** *)
 //
+(*
 val loc0 = d3e0.lctn()
 val (  ) =
 prerrsln("d3fag1_aftck: loc0 = ", loc0)
@@ -422,6 +425,7 @@ val (  ) =
 prerrsln("d3fag1_aftck: d3e0 = ", d3e0)
 val (  ) =
 prerrsln("d3fag1_aftck: styp = ", styp)
+*)
 //
 (* ****** ****** *)
 //
@@ -462,10 +466,12 @@ d3exp1_t2pck(d3e0, styp, env0))
 ) where
 {
 //
+(*
 val () =
 prerrsln("d3fag1_befck: d3e0 = ", d3e0)
 val () =
 prerrsln("d3fag1_befck: styp = ", styp)
+*)
 //
 }(*where*)//end-of-[d3fag1_befck(d3e0,...)]
 //
@@ -477,6 +483,7 @@ d3pat1_trxltck
 (d3p0, env0) =
 let
 //
+(*
 val () =
 prerrsln("\
 d3pat1_trxltck: loc0 = ", loc0)
@@ -486,6 +493,7 @@ d3pat1_trxltck: t2q0 = ", t2q0)
 val () =
 prerrsln("\
 d3pat1_trxltck: d3p0 = ", d3p0)
+*)
 //
 in//let
 //
@@ -543,8 +551,10 @@ in//let
 (
 case+
 t2q1.node() of
+//
 |T2P1lft(t2q1) =>
 d3axp1(loc0, t2q1, D3A1lft(d2v1))
+//
 |_(*non-T2P1lft*) =>
 d3axp1(loc0, t2q1, D3A1var(d2v1)))
 //
@@ -634,19 +644,22 @@ f0_other
 , env0: envltck): d3axp1 =
 (
 d3axp1
-(loc0, t2q0, D3A1none(d3p0))
-) where
+( loc0
+, t2q0, D3A1none(d3p0)))
+where
 {
 //
 val loc0 = d3p0.lctn((*void*))
 val t2q0 = d3p0.styp((*void*))
 //
+(*
 val (  ) =
 prerrsln("f0_other: loc0 = ", loc0)
 val (  ) =
 prerrsln("f0_other: d3p0 = ", d3p0)
 val (  ) =
 prerrsln("f0_other: t2q0 = ", t2q0)
+*)
 //
 }(*where*)//end-of-[f0_other(d3p0,env0)]
 //
@@ -662,11 +675,13 @@ val-
 D3P1argtp
 (d3p1, t2q2) = d3p0.node()
 //
+(*
 val (  ) =
 (
 prerrsln("\
 d3apt1_trxltck:\
 f0_argtp: t2q2 = ", t2q2))
+*)
 //
 in//let
 case+
@@ -711,13 +726,16 @@ D3P1annot
 ,s1e2
 ,s2e2, t2q2) = d3p0.node()
 //
+(*
 val (  ) =
 (
 prerrsln("\
 d3apt1_trxltck:\
 f0_annot: t2q2 = ", t2q2))
+*)
 //
 in//let
+//
 case+
 t2q2.node() of
 //
@@ -748,13 +766,15 @@ end(*let*)//end-of-[f0_annot(d3p0,env0)]
 //
 (* ****** ****** *)
 //
+(*
 val loc0 = d3p0.lctn()
 val (  ) =
 (
-  prerrsln("d3apt1_trxltck: loc0 = ", loc0))
+prerrsln("d3apt1_trxltck: loc0 = ", loc0))
 val (  ) =
 (
-  prerrsln("d3apt1_trxltck: d3p0 = ", d3p0))
+prerrsln("d3apt1_trxltck: d3p0 = ", d3p0))
+*)
 //
 }(*where*)//end-of-[d3apt1_trxltck(d3p0,env0)]
 //
@@ -766,12 +786,14 @@ d3exp1_trxltck
 (d3e0, env0) =
 let
 //
+(*
 val () =
 prerrsln("\
 d3exp1_trxltck: loc0 = ", loc0)
 val () =
 prerrsln("\
 d3exp1_trxltck: d3e0 = ", d3e0)
+*)
 //
 in//let
 //
@@ -963,11 +985,11 @@ val t2f0 =
 (
 envltck_dtyp$eval(env0, t3f0))
 //
-// (*
+(*
 val (  ) =
 prerrsln
 ("f0_dap0(ltck): t2f0 = ", t2f0)
-// *)
+*)
 //
 in//let
 //
@@ -1079,12 +1101,14 @@ val d3e1 =
 //
 val t3q1 = d3e1.dtyp((*void*))
 //
+(*
 val (  ) =
 prerrsln
 ("f0_proj(ltck): d3e1 = ", d3e1)
 val (  ) =
 prerrsln
 ("f0_proj(ltck): t3q1 = ", t3q1)
+*)
 //
 in//let
 //
@@ -1207,10 +1231,18 @@ _(*otherwise*) => (       1       )
 ) where
 {
 //
-val () = prerrsln
+(*
+//
+val loc1 = d3e1.lctn((*void*))
+//
+val (  ) = prerrsln
+("f1_dtyp$updt(ltck): loc1 = ", loc1)
+val (  ) = prerrsln
 ("f1_dtyp$updt(ltck): d3e1 = ", d3e1)
-val () = prerrsln
+val (  ) = prerrsln
 ("f1_dtyp$updt(ltck): trst = ", trst)
+//
+*)
 //
 }(*where*)//end-of-[f1_dtyp$updt(...)]
 //
@@ -1260,6 +1292,7 @@ in//
 //
 let
 //
+(*
 val (  ) =
 prerrsln("\
 d3exp1_trxltck:\
@@ -1268,6 +1301,7 @@ val (  ) =
 prerrsln("\
 d3exp1_trxltck:\
 f0_let0: vts0 = ", vts0)
+*)
 //
 in//let
 (
@@ -1280,12 +1314,14 @@ dvdtp1lst_d2vs$inner(vts0, d2vs)
 val vts2 =
 dvdtp1lst_d2vs$outer(vts0, d2vs)
 //
+(*
 val (  ) =
 prerrsln
 ("f0_let0(ltck): vts1 = ", vts1)
 val (  ) =
 prerrsln
 ("f0_let0(ltck): vts2 = ", vts2)
+*)
 //
 val vts1 =
 envltck_dvdtp1lst$eval
@@ -1555,11 +1591,13 @@ f1_proj$t2qr(d3el,t2qr,env0)
 |_(*otherwise*) =>
 let
 //
+(*
 val () =
 (
 prerrs("f1_d3el$t2qr:");
 prerrsln
 ("otherwise: d3el = ", d3el))
+*)
 //
 in//let
 d3exp1
@@ -1572,6 +1610,11 @@ end//let//end-of-[ _(*otherwise*) ]
 val locl = d3el.lctn( (*void*) )
 val t3ql = d3el.dtyp( (*void*) )
 //
+(*
+val (  ) =
+(
+prerrsln
+( "f1_d3el$t2qr: locl = ", locl ) )
 val (  ) =
 (
 prerrsln
@@ -1580,6 +1623,7 @@ val (  ) =
 (
 prerrsln
 ( "f1_d3el$t2qr: t2qr = ", t2qr ) )
+*)
 //
 }(*where*)//endof[f1_d3el$t2qr(d3el)]
 //
@@ -1661,6 +1705,14 @@ envltck_dvar$spsh
 ) where
 {
 //
+(*
+//
+val locl = dlft.lctn()
+//
+val (  ) =
+(
+prerrsln
+( "f1_dlft$t2qr: locl = ", locl ) )
 val (  ) =
 (
 prerrsln
@@ -1669,6 +1721,7 @@ val (  ) =
 (
 prerrsln
 ( "f1_dlft$t2qr: t2qr = ", t2qr ) )
+*)
 //
 }(*where*)//endof[f1_dlft$t2qr(dlft)]
 //
@@ -1737,15 +1790,19 @@ val vts0 = envltck_vtsift0(env0)
 //
 val (  ) = envltck_popift0(env0)
 //
+(*
 val (  ) =
 prerrsln
 ("d31ift_trxltck: vts0 = ", vts0)
+*)
 //
 }
 ) where
 {
-val () =
+(*
+val (  ) =
 prerrsln("d31ift_trxltck: dopt = ", dopt)
+*)
 }(*where*)//end-of-[d31ift_trxltck(dopt,env0)]
 //
 (* ****** ****** *)
@@ -1769,12 +1826,14 @@ d3fag1_befck
 (d3e0, t2q0, env0)) where
 {
 //
+(*
 val () =
 prerrsln
 ("f0_dexp$t2q0: d3e0 = ", d3e0)
 val () =
 prerrsln
 ("f0_dexp$t2q0: t2q0 = ", t2q0)
+*)
 //
 val
 d3e0 = d3exp1_trxltck(d3e0, env0) }
@@ -1831,7 +1890,8 @@ f3axp1
 let
 //
 val d3as =
-d3apt1lst_trxltck(d3ps, env0)
+(
+  d3apt1lst_trxltck(d3ps, env0))
 //
 in//let
 f3axp1(loc0, F3AXP1dapp(npf1, d3as))
@@ -1842,10 +1902,12 @@ end//let
 //
 val loc0 = farg.lctn()
 //
+(*
 val (  ) =
 prerrsln("f3arg1_trxlctk: loc0 = ", loc0)
 val (  ) =
 prerrsln("f3arg1_trxlctk: farg = ", farg)
+*)
 //
 }(*where*)//end-of-[f3arg1_trxltck(farg,env0)]
 //

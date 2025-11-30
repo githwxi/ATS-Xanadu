@@ -582,34 +582,34 @@ D3CLS1
 end//let//end-of-[d3cls1_node$get(...)]
 //
 #implfun
-d3cls1_dprt$get(cls) =
+d3cls1_dgrt$get(cls) =
 let
 val+
 D3CLS1
-(loc, nod, prt, vts) = cls in prt
-end//let//end-of-[d3cls1_dprt$get(...)]
+(loc, nod, grt, vts) = cls in grt
+end//let//end-of-[d3cls1_dgrt$get(...)]
 #implfun
 d3cls1_dvts$get(cls) =
 let
 val+
 D3CLS1
-(loc, nod, dprt, vts) = cls in vts
+(loc, nod, dgrt, vts) = cls in vts
 end//let//end-of-[d3cls1_dvts$get(...)]
 //
 #implfun
 d3cls1_make_lctn$node
   (  loc0, node  ) =
 let
-val dprt = optn_nil((*t3q0*))
+val dgrt = optn_nil((*t3q0*))
 val dvts = list_nil((*void*))
 in//let
-  D3CLS1(loc0, node, dprt, dvts) end
+  D3CLS1(loc0, node, dgrt, dvts) end
 //
 #implfun
 d3cls1_make_lctn$node$rest
-( loc0, node, dprt, dvts ) =
+( loc0, node, dgrt, dvts ) =
 (
-  D3CLS1( loc0 , node , dprt , dvts ) )
+  D3CLS1( loc0 , node , dgrt , dvts ) )
 //
 endloc (*local*) // end of [local(d3cls1)]
 //
@@ -689,7 +689,7 @@ d3valdcl1_lctn$get
 val+
 D3VALDCL1
 ( lctn
-, dpat, dprt
+, dpat, dgrt
 , tdxp, wsxp) = dval in lctn end
 //
 #implfun
@@ -698,7 +698,7 @@ d3valdcl1_dpat$get
 val+
 D3VALDCL1
 ( lctn
-, dpat, dprt
+, dpat, dgrt
 , tdxp, wsxp) = dval in dpat end
 //
 #implfun
@@ -707,7 +707,7 @@ d3valdcl1_tdxp$get
 val+
 D3VALDCL1
 ( lctn
-, dpat, dprt
+, dpat, dgrt
 , tdxp, wsxp) = dval in tdxp end
 //
 #implfun
@@ -716,7 +716,7 @@ d3valdcl1_wsxp$get
 val+
 D3VALDCL1
 ( lctn
-, dpat, dprt
+, dpat, dgrt
 , tdxp, wsxp) = dval in wsxp end
 //
 (* ****** ****** *)
@@ -726,15 +726,15 @@ d3valdcl1_make_arg4
 (lctn, dpat, tdxp, wsxp) =
 let
 val
-dprt = optn_nil(*t3q0*) in
-D3VALDCL1(lctn, dpat, dprt, tdxp, wsxp)
+dgrt = optn_nil(*t3q0*) in
+D3VALDCL1(lctn, dpat, dgrt, tdxp, wsxp)
 end//let//end-of-[d3valdcl1_make_arg4(...)]
 //
 #implfun
 d3valdcl1_make_arg5
-(lctn, dpat, dprt, tdxp, wsxp) =
+(lctn, dpat, dgrt, tdxp, wsxp) =
 (
-  D3VALDCL1(lctn, dpat, dprt, tdxp, wsxp))
+  D3VALDCL1(lctn, dpat, dgrt, tdxp, wsxp))
 //
 (* ****** ****** *)
 //
