@@ -60,7 +60,6 @@ val
 end//let//end-of(my_free)
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 #impltmp
@@ -80,6 +79,8 @@ val tt = xx.0 in
   xx.0 := xx.1; xx.1 := tt )
 end//let//end-of-[s1wap_cbrf(xx)]
 //
+(* ****** ****** *)
+////
 (* ****** ****** *)
 //
 fun

@@ -87,6 +87,13 @@ d3parsed1_of_trxltck
 (* ****** ****** *)
 //
 fun
+d3typ1_of$d3pat1
+  (dprt: d3pat1): (  d3typ1  )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 envltck_dvar$find
 ( env0:
 ! envltck, dvar: d2var): d3typ1

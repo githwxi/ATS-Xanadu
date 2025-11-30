@@ -463,7 +463,7 @@ val (  ) =
 //
 in//let
 (
-  d3valdcl1_make_args(loc0,dpat,tdxp,wsxp))
+  d3valdcl1_make_arg4(loc0,dpat,tdxp,wsxp))
 end//let
 (*let*)//end-of-[d3valdcl1_trxltck(dval,env0)]
 //

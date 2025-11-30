@@ -137,13 +137,22 @@ prints
 //
 |T2P1exi0
 (s2vs, t2p1) =>
+(
 prints
-("T2P1exi0(",s2vs,";",t2p1,")")
+("T2P1exi0(",s2vs,";",t2p1,")"))
 |T2P1uni0
 (s2vs, t2p1) =>
+(
 prints
-("T2P1uni0(",s2vs,";",t2p1,")")
+("T2P1uni0(",s2vs,";",t2p1,")"))
 //
+(*
+|T2P1tcon
+(dcon, t2ps) =>
+(
+prints
+("T2P1tcon(",dcon,";",t2ps,")"))
+*)
 |T2P1trcd
 (trcd
 ,npf1, ltps) =>

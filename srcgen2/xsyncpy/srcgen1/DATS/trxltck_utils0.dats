@@ -68,6 +68,72 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #implfun
+d3typ1_of$d3pat1
+  (  d3p0  ) =
+let
+//
+val
+t2q0 = d3p0.styp()
+//
+in//let
+//
+case+
+d3p0.node() of
+//
+|
+D3P1var
+(   d2v1   ) =>
+(
+d3typ1_make_styp$node
+(t2q0, T3P1dvar(d2v1)))
+//
+|
+D3P1dapp
+(d3f0
+,npf1, d3ps) =>
+let
+//
+val dcon =
+(
+case-
+d3f0.node() of
+|D3P1con(dcon) => dcon)
+//
+val t3qs = f0_d3ps(d3ps)
+//
+in//let
+(
+d3typ1_make_styp$node
+(t2q0, T3P1con1(dcon, t3qs)))
+end//let//end-of-[D3P1dapp(...)]
+|
+_(*otherwise*) => d3typ1_styp$make(t2q0)
+//
+end where
+{
+//
+fun f0_d3ps
+( d3ps
+: d3pat1lst): d3typ1lst =
+(
+list_map
+<x0><y0>(d3ps)
+) where
+{
+//
+#typedef x0 = d3pat1
+#typedef y0 = d3typ1
+//
+#impltmp
+map$fopr<x0><y0> = d3typ1_of$d3pat1(*nil*)
+}(*where*)//end-of-[f0_d3ps(d3ps)]
+//
+}(*where*)//end-of-[d3typ1_of$d3pat1(d3p0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 dvdtp1lst_d2vs$inner
   (vts0, dvs0) =
 (
