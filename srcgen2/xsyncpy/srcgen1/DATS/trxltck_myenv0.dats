@@ -338,12 +338,14 @@ dtpstk_cons
   loop(kxs, err)) where
 {
 //
+(*
 val () =
 prerrsln("\
 dtpstk_poplam0: loop: k1 = ", k1)
 val () =
 prerrsln("\
 dtpstk_poplam0: loop: x1 = ", x1)
+*)
 //
 }(*where*)//end[dtpstk_cons(...)]
 //
@@ -355,12 +357,14 @@ dtpstk_updt
   loop(kxs, err)) where
 {
 //
+(*
 val () =
 prerrsln("\
 dtpstk_poplam0: loop: k1 = ", k1)
 val () =
 prerrsln("\
 dtpstk_poplam0: loop: x1 = ", x1)
+*)
 //
 }(*where*)//end[dtpstk_updt(...)]
 //
@@ -425,12 +429,14 @@ dtpstk_cons
   loop(kxs, err)) where
 {
 //
+(*
 val () =
 prerrsln("\
 dtpstk_poplet0: loop: k1 = ", k1)
 val () =
 prerrsln("\
 dtpstk_poplet0: loop: x1 = ", x1)
+*)
 //
 }(*where*)//end[dtpstk_cons(...)]
 //
@@ -442,12 +448,14 @@ dtpstk_updt
   loop(kxs, err)) where
 {
 //
+(*
 val () =
 prerrsln("\
 dtpstk_poplet0: loop: k1 = ", k1)
 val () =
 prerrsln("\
 dtpstk_poplet0: loop: x1 = ", x1)
+*)
 //
 }(*where*)//end[dtpstk_updt(...)]
 //
@@ -512,12 +520,14 @@ dtpstk_cons
   loop(kxs, err)) where
 {
 //
+(*
 val () =
 prerrsln("\
 dtpstk_popift0: loop: k1 = ", k1)
 val () =
 prerrsln("\
 dtpstk_popift0: loop: x1 = ", x1)
+*)
 //
 }(*where*)//end[dtpstk_cons(...)]
 //
@@ -529,12 +539,14 @@ dtpstk_updt
   loop(kxs, err)) where
 {
 //
+(*
 val () =
 prerrsln("\
 dtpstk_popift0: loop: k1 = ", k1)
 val () =
 prerrsln("\
 dtpstk_popift0: loop: x1 = ", x1)
+*)
 //
 }(*where*)//end[dtpstk_updt(...)]
 //
@@ -630,8 +642,10 @@ in//let
 end where
 {
 //
+(*
 val () =
 prerrsln("envltck_dvar$find: dvar = ", dvar)
+*)
 //
 }(*where*)//end-of-[envltck_dvar$find(env0,...)]
 //
@@ -671,8 +685,10 @@ end//let
 end where
 {
 //
+(*
 val () =
 prerrsln("envltck_dvar$take: dvar = ", dvar)
+*)
 //
 }(*where*)//end-of-(envltck_dvar$take(env0,...))
 //
@@ -681,7 +697,7 @@ prerrsln("envltck_dvar$take: dvar = ", dvar)
 //
 #implfun
 envltck_dvar$updt
-(env0, d2v0, t3q1) =
+(env0, d2v0, t3q0) =
 (
 case+ env0 of
 | ENVLTCK
@@ -689,14 +705,16 @@ case+ env0 of
 !dtpstk, stkmap) =>
 (
 dtpstk :=
-dtpstk_updt(d2v0, t3q1, dtpstk))
+dtpstk_updt(d2v0, t3q0, dtpstk))
 ) where
 {
 //
+(*
 val () =
 prerrsln("envltck_dvar$updt: d2v0 = ", d2v0)
 val () =
-prerrsln("envltck_dvar$updt: t3q1 = ", t3q1)
+prerrsln("envltck_dvar$updt: t3q0 = ", t3q0)
+*)
 //
 }(*where*)//end-of-(envltck_dvar$updt(env0,...))
 //
@@ -719,8 +737,10 @@ s2typ1_none0((*void*)))
 ) where
 {
 //
+(*
 val () =
 prerrsln("envltck_dtyp$eval: t3q0 = ", t3q0)
+*)
 //
 }(*where*)//end-of-[envltck_dtyp$eval(env0,...)]
 //
@@ -816,10 +836,12 @@ dtpstk_cons(dvar, t3q0, dtpstk)))
 where
 {
 //
+(*
 val () =
 prerrsln("envltck_dvar$dpsh: dvar = ", dvar)
 val () =
 prerrsln("envltck_dvar$dpsh: t3q1 = ", t3q0)
+*)
 //
 }(*where*)//end-of-(envltck_dvar$dpsh(env0,...))
 //
@@ -979,8 +1001,10 @@ val-T2P1arg1(knd0, targ) = t2q0.node()
 //
 (* ****** ****** *)
 //
+(*
 val ((*void*)) =
 prerrsln("envltck_dpat$push: dpat = ", dpat)
+*)
 //
 (* ****** ****** *)
 //
