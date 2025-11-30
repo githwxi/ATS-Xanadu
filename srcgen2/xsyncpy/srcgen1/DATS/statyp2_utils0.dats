@@ -628,6 +628,41 @@ else l2t2p1lst_lab$proj(ltqs, lab0) end
 (* ****** ****** *)
 //
 #implfun
+s2typ1_lab$fset
+(styp, lab0, t2q0) =
+(
+case+
+styp.node() of
+|T2P1trcd
+(trcd
+,npf1, ltqs) =>
+let
+//
+val ltqs =
+l2t2p1lst_lab$fset
+(ltqs, lab0, t2q0)
+//
+val s2rt = styp.sort()
+val s2rt =
+(
+if // if
+s2typ1_linq(t2q0)
+then
+sort2_enlin(s2rt) else s2rt)
+//
+in//let
+//
+s2typ1_make_sort$node
+(s2rt, T2P1trcd(trcd, npf1, ltqs))
+//
+end(*let*)//end-of-[T2P1trcd(...)]
+//
+|_(*non-T2P1trcd*) => (    styp    )
+)(*case+*)//end-of-[s2typ1_lab$fset(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 l2t2p1lst_lab$fset
 (ltqs, lab0, t2q0) =
 (

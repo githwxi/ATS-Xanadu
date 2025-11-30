@@ -324,16 +324,10 @@ different implementation
 (*
 HX: for datatype unfolding
 *)
-T3P1con1 of (d2con, d3typ1lst)
-//
-(*
-|T3P1tup0 of
-(sint(*npf*), d3typ1lst)
-|T3P1tup1 of
-(token, sint(*npf*), d2typ1lst)
-|T3P1rcd2 of
-(token, sint(*npf*), l3dtp1lst)
-*)
+T3P1tcon of (d2con, d3typ1lst)
+|
+T3P1trcd of
+(token, sint(*npf*), l3t3p1lst)
 //
 (* ****** ****** *)
 //
@@ -1334,9 +1328,9 @@ d3typ1_lab$fset
 (styp
 :d3typ1,lab0:label,t2q0:d3typ1): d3typ1
 fun
-l3dtp1lst_lab$fset
+l3t3p1lst_lab$fset
 (ltqs
-:l3dtp1lst,lab0:label,t2q0:d3typ1): l3dtp1lst
+:l3t3p1lst,lab0:label,t2q0:d3typ1): l3t3p1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)
