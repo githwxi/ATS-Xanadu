@@ -396,14 +396,20 @@ in//let
 let
 val t3q1 =
 d3e1.dtyp((*0*))
-val t2q1 =
-envltck_dtyp$eval
-(  env0 , t3q1  )
+in//let
+//
+case+
+t3q1.node() of
+|
+T3P1styp(t2q1) =>
+let
 val styp =
 s2typ1_lab$fset
 (t2q1, lab1, styp) in //let
 (
   faftck(d3e1, styp, env0)) end
+//
+end//let
 //
 end where
 {

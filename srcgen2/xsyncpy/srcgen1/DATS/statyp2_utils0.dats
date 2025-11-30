@@ -512,21 +512,25 @@ t2q2.node() of
 ) where
 {
 //
-val () =
+(*
+val (  ) =
 (
   prerrsln("f0_main: t2q1 = ", t2q1))
-val () =
+val (  ) =
 (
   prerrsln("f0_main: t2q2 = ", t2q2))
+*)
 //
 }(*where*)//end-of-[f0_main(t2q1,t2q2)]
 //
-val () =
+(*
+val (  ) =
 (
   prerrsln("s2typ1_lteq: t2q1 = ", t2q1))
-val () =
+val (  ) =
 (
   prerrsln("s2typ1_lteq: t2q2 = ", t2q2))
+*)
 //
 }(*where*)//end-of-[s2typ1_lteq(t2q1,t2q2)]
 //

@@ -68,12 +68,14 @@ let
 //
 val loc0 = d3cl.lctn()
 //
+(*
 val () =
 prerrsln("\
 d3ecl_trxltck: loc0 = ", loc0)
 val () =
 prerrsln("\
 d3ecl_trxltck: d3cl = ", d3cl)
+*)
 //
 in//let
 //
@@ -389,7 +391,7 @@ dvdtp1lst_d2vs$outer(vts0, d2vs))
 val vts1 =
 envltck_dvdtp1lst$eval(env0, vts1)
 //
-// (*
+(*
 val (  ) =
 prerrsln("\
 f0_implmnt0(trxltck): f3bs = ", f3bs)
@@ -399,7 +401,7 @@ f0_implmnt0(trxltck): vts1 = ", vts1)
 val (  ) =
 prerrsln("\
 f0_implmnt0(trxltck): vts2 = ", vts2)
-// *)
+*)
 //
 in//let
 (
@@ -594,7 +596,7 @@ dvdtp1lst_d2vs$outer(vts0, d2vs))
 val vts1 =
 envltck_dvdtp1lst$eval(env0, vts1)
 //
-// (*
+(*
 val (  ) =
 prerrsln("\
 d3fundcl1_trxltck: f3bs = ", f3bs)
@@ -604,7 +606,7 @@ d3fundcl1_trxltck: vts1 = ", vts1)
 val (  ) =
 prerrsln("\
 d3fundcl1_trxltck: vts2 = ", vts2)
-// *)
+*)
 //
 in//let
 //
@@ -637,8 +639,10 @@ S3TALOAD1dpar
 ) where
 {
 //
+(*
 val (  ) =
 prerrsln("s3taload1opt_trxltck: dopt = ", dopt)
+*)
 //
 }(*where*)//end-of-[s3taload1opt_trxltck(d3cl,env0)]
 //
