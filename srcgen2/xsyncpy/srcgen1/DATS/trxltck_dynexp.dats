@@ -370,10 +370,10 @@ D3E1flat
 in//let
 //
 let
-val tlft =
+val styp =
 s2typ1_lft(styp) in//let
 (
-  saftck(dlft, tlft, env0)) end
+  saftck(dlft, styp, env0)) end
 //
 end//let//end-of-[fs_flat(d3e0,...)]
 //
@@ -400,6 +400,7 @@ in//let
 //
 case+
 t3q1.node() of
+//
 |
 T3P1styp(t2q1) =>
 let
@@ -408,11 +409,19 @@ s2typ1_lab$fset
 (t2q1, lab1, styp) in//let
 (
   saftck(d3e1, styp, env0))
-end//let//end-of-(T3P1styp())
+end//let//endof(T3P1styp(...))
+//
 |
 _(*otherwise*) =>
+let
+val dtyp =
+d3typ1_styp$make
+(     styp     )
+val dtyp =
+d3typ1_lab$fset
+(t3q1, lab1, dtyp) in//let
 (
-  daftck( d3e1 , t3q1 , env0 ))
+  daftck(d3e1, dtyp, env0)) end
 //
 end//let
 //
@@ -437,9 +446,9 @@ daftck
 case+
 d3e0.node() of
 //
-(*
 |D3E1var _ =>
 fd_var(d3e0, dtyp, env0)
+(*
 |D3E1flat _ =>
 fd_flat(d3e0, dtyp, env0)
 |D3E1proj _ =>
@@ -447,7 +456,47 @@ fd_proj(d3e0, dtyp, env0)
 *)
 //
 |_(* otherwise *) => ( 1 )
-)
+)(*case+*)//end-of-[daftck(d3e0,...)]
+//
+and
+fd_var
+(d3e0: d3exp1
+,dtyp: d3typ1
+,env0: !envltck): sint =
+let
+val-
+D3E1var
+(   d2v1   ) = d3e0.node()
+in//let
+//
+let
+val (  ) =
+(
+envltck_dvar$updt
+(env0, d2v1, dtyp)) in (0) end
+//
+end//let//end-of-[fd_var(d3e0,...)]
+//
+and
+fd_flat
+(d3e0: d3exp1
+,dtyp: d3typ1
+,env0: !envltck): sint =
+let
+//
+val-
+D3E1flat
+(   dlft   ) = d3e0.node()
+//
+in//let
+//
+let
+val dtyp =
+d3typ1_dlft$make(dtyp) in
+(
+  daftck(dlft, dtyp, env0)) end
+//
+end//let//end-of-[fd_flat(d3e0,...)]
 //
 (* ****** ****** *)
 //
