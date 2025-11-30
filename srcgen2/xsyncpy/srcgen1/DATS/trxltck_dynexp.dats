@@ -442,8 +442,10 @@ s2typ1_lab$fset
 end where
 {
 //
+(*
 val () =
 prerrsln("f0_proj: d3e0 = ", d3e0)
+*)
 //
 }(*where*)//end-of-[f0_proj(d3e0,...)]
 //
@@ -1139,15 +1141,25 @@ l2t2p1lst_lab$proj
 (  ltqs  ,  lab1  )
 //
 val trst =
-s2typ1_lab$fset(t2q1,
-lab1, s2typ1_t1pize(t2q2))
+(
+if
+not(
+linq(t2q2))
+then (t2q1) else
+let
+val t2q2 =
+s2typ1_t1pize
+(    t2q2    )//val
+in//let
+s2typ1_lab$fset
+(t2q1, lab1, t2q2) end)
 //
 in//let
 //
 (
 if (
 0 =
-f1_proj$updt
+f1_styp$updt
 ( d3e1
 , trst, env0)
 ) then (dprj) else
@@ -1158,8 +1170,8 @@ f1_proj$updt
 val t3q2 =
 d3typ1_styp$make(t2q2)
 val dprj =
-d3exp1(loc0
-,t3q2, D3E1proj(tknd, lab1, d3e1))
+d3exp1(loc0,
+t3q2, D3E1proj(tknd, lab1, d3e1))
 }
 //
 end//let//endof(T2P1trcd(...,ltqs))
@@ -1174,9 +1186,24 @@ end where
 {
 //
 fun
-f1_proj$updt
+f1_styp$updt
 ( d3e1: d3exp1
 , trst: s2typ1
+, env0: !envltck): (sint) =
+let
+val trst =
+d3typ1_styp$make
+(     trst     )
+in//let
+//
+f1_dtyp$updt(d3e1, trst, env0)
+//
+end//let//end-of-[f1_styp$updt(...)]
+
+and
+f1_dtyp$updt
+( d3e1: d3exp1
+, trst: d3typ1
 , env0: !envltck): (sint) =
 (
 case+
@@ -1185,9 +1212,6 @@ d3e1.node() of
 |D3E1var
 (   d2v1   ) =>
 let
-val trst =
-d3typ1_styp$make
-(     trst     )
 val (  ) =
 envltck_dvar$updt
 (env0, d2v1, trst) in 0 end
@@ -1195,9 +1219,10 @@ envltck_dvar$updt
 |D3E1flat
 (   dlft   ) =>
 let
-val trst = s2typ1_lft(trst)
+val trst =
+d3typ1_dlft$make(trst)
 in//let
-f1_proj$updt(dlft, trst, env0)
+f1_dtyp$updt(dlft, trst, env0)
 end//let
 //
 |D3E1proj
@@ -1205,20 +1230,12 @@ end//let
 ,lab2, d3e2) =>
 let
 val t3q2 = d3e2.dtyp()
-val t2q2 =
-(
-envltck_dtyp$eval(env0, t3q2))
-in//let
-//
-let
-val trst =
-s2typ1_lab$fset
-(t2q2, lab2, trst)
+val t3q2 =
+d3typ1_lab$fset
+(t3q2, lab2, trst)//val
 in//let
 (
-f1_proj$updt(d3e2, trst, env0))
-end//let
-//
+f1_dtyp$updt(d3e2, t3q2, env0))
 end(*let*)//end-of-[D3E1proj(...)]
 //
 |
@@ -1227,11 +1244,11 @@ _(*otherwise*) => (       1       )
 {
 //
 val () = prerrsln
-("f1_proj$updt(ltck): d3e1 = ", d3e1)
+("f1_dtyp$updt(ltck): d3e1 = ", d3e1)
 val () = prerrsln
-("f1_proj$updt(ltck): trst = ", trst)
+("f1_dtyp$updt(ltck): trst = ", trst)
 //
-}(*where*)//end-of-[f1_proj$updt(...)]
+}(*where*)//end-of-[f1_dtyp$updt(...)]
 //
 }(*where*)//end-of-[f0_proj(d3e0,env0)]
 //

@@ -63,6 +63,9 @@ S2E = "./\
 #staload
 T2P = "./\
 ../../../SATS/statyp2.sats"
+#staload
+D2E = "./\
+../../../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 #sexpdef s2lab = $S2E.s2lab
@@ -74,6 +77,8 @@ T2P = "./\
 (* ****** ****** *)
 #typedef s2typ = $T2P.s2typ
 #typedef l2t2p = $T2P.l2t2p
+(* ****** ****** *)
+#typedef d2con = $D2E.d2con
 (* ****** ****** *)
 #typedef s2varlst = list(s2var)
 #typedef s2cstlst = list(s2cst)
@@ -162,6 +167,10 @@ s2varlst(*args*), s2typ1(*body*))
 (s2varlst(*vars*), s2typ1(*body*))
 //
 (* ****** ****** *)
+//
+(*
+|T2P1tcon of (d2con, s2typlst)
+*)
 //
 |T2P1trcd of
 (

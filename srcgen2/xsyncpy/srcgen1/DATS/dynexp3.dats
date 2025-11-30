@@ -147,6 +147,23 @@ let
 val node = T3P1styp(t2q0) in
   d3typ1_make_styp$node(t2q0, node) end
 //
+#implfun
+d3typ1_dlft$make
+  (  t3q0  ) =
+(
+case+
+t3q0.node() of
+|
+T3P1styp(t2q0) =>
+d3typ1_styp$make(s2typ1_lft(t2q0))
+|
+_(*otherwise*) =>
+let
+val t2q0 = t3q0.styp()
+val node = T3P1dlft(t3q0) in
+  d3typ1_make_styp$node(t2q0, node) end
+)(*case+*)//end-of-[d3typ1_dlft$make(...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -410,8 +427,8 @@ f3arg1 =
 F3ARG1 of
 (
 loctn, f3arg1_node)
-#absimpl
-f3arg1_tbox = f3arg1
+//
+#absimpl f3arg1_tbox = f3arg1
 //
 in//local
 //
@@ -442,8 +459,8 @@ f3axp1 =
 F3AXP1 of
 (
 loctn, f3axp1_node)
-#absimpl
-f3axp1_tbox = f3axp1
+//
+#absimpl f3axp1_tbox = f3axp1
 //
 in//local
 //
@@ -474,8 +491,8 @@ d3gua1 =
 D3GUA1 of
 (
 loctn, d3gua1_node)
-#absimpl
-d3gua1_tbox = d3gua1
+//
+#absimpl d3gua1_tbox = d3gua1
 //
 in//local
 //
@@ -505,8 +522,8 @@ d3gpt1 =
 D3GPT1 of
 (
 loctn, d3gpt1_node)
-#absimpl
-d3gpt1_tbox = d3gpt1
+//
+#absimpl d3gpt1_tbox = d3gpt1
 //
 in//local
 //
@@ -531,30 +548,68 @@ endloc (*local*) // end of [local(d3gpt1)]
 //
 local
 //
+(*
+HX-2025-11-25:
+Note that [d3typ1]
+is for the pattern guard;
+it is T3Pnone if it is
+"absorbed" into some name!
+*)
 datatype
 d3cls1 =
 D3CLS1 of
-(
-loctn, d3cls1_node)
-#absimpl
-d3cls1_tbox = d3cls1
+(loctn
+,d3cls1_node
+,d3typ1opt, dvstp1lst)
+//
+#absimpl d3cls1_tbox = d3cls1
 //
 in//local
 //
 #implfun
 d3cls1_lctn$get(cls) =
 let
-  val+D3CLS1(loc,nod) = cls in loc
-end
+val+
+D3CLS1
+(loc, nod, t3q, vts) = cls in loc
+end//let//end-of-[d3cls1_lctn$get(...)]
 #implfun
 d3cls1_node$get(cls) =
 let
-  val+D3CLS1(loc,nod) = cls in nod
-end
+val+
+D3CLS1
+(loc, nod, t3q, vts) = cls in nod
+end//let//end-of-[d3cls1_node$get(...)]
+//
+#implfun
+d3cls1_dprt$get(cls) =
+let
+val+
+D3CLS1
+(loc, nod, prt, vts) = cls in prt
+end//let//end-of-[d3cls1_dprt$get(...)]
+#implfun
+d3cls1_dvts$get(cls) =
+let
+val+
+D3CLS1
+(loc, nod, dprt, vts) = cls in vts
+end//let//end-of-[d3cls1_dvts$get(...)]
 //
 #implfun
 d3cls1_make_lctn$node
-(  loc0, node  ) = D3CLS1(loc0,node)
+  (  loc0, node  ) =
+let
+val dprt = optn_nil((*t3q0*))
+val dvts = list_nil((*void*))
+in//let
+  D3CLS1(loc0, node, dprt, dvts) end
+//
+#implfun
+d3cls1_make_lctn$node$rest
+( loc0, node, dprt, dvts ) =
+(
+  D3CLS1( loc0 , node , dprt , dvts ) )
 //
 endloc (*local*) // end of [local(d3cls1)]
 //
@@ -566,11 +621,11 @@ local
 datatype
 d3ecl1 =
 D3ECL1 of
-( loctn, d3ecl1_node)
+(loctn, d3ecl1_node)
 datavwtp
 d3ecl1_vt =
 D3ECL1_vt of
-( loctn, d3ecl1_node)
+(loctn, d3ecl1_node)
 //
 #absimpl d3ecl1_tbox = d3ecl1
 //
@@ -620,6 +675,7 @@ d3valdcl1 =
 D3VALDCL1 of
 ( loc_t
 , d3pat1
+, d3typ1opt
 , teqd3exp1, wths2exp)
 //
 #absimpl
@@ -633,7 +689,7 @@ d3valdcl1_lctn$get
 val+
 D3VALDCL1
 ( lctn
-, dpat
+, dpat, dprt
 , tdxp, wsxp) = dval in lctn end
 //
 #implfun
@@ -642,7 +698,7 @@ d3valdcl1_dpat$get
 val+
 D3VALDCL1
 ( lctn
-, dpat
+, dpat, dprt
 , tdxp, wsxp) = dval in dpat end
 //
 #implfun
@@ -651,7 +707,7 @@ d3valdcl1_tdxp$get
 val+
 D3VALDCL1
 ( lctn
-, dpat
+, dpat, dprt
 , tdxp, wsxp) = dval in tdxp end
 //
 #implfun
@@ -660,16 +716,25 @@ d3valdcl1_wsxp$get
 val+
 D3VALDCL1
 ( lctn
-, dpat
+, dpat, dprt
 , tdxp, wsxp) = dval in wsxp end
 //
 (* ****** ****** *)
 //
 #implfun
-d3valdcl1_make_args
+d3valdcl1_make_arg4
 (lctn, dpat, tdxp, wsxp) =
+let
+val
+dprt = optn_nil(*t3q0*) in
+D3VALDCL1(lctn, dpat, dprt, tdxp, wsxp)
+end//let//end-of-[d3valdcl1_make_arg4(...)]
+//
+#implfun
+d3valdcl1_make_arg5
+(lctn, dpat, dprt, tdxp, wsxp) =
 (
-  D3VALDCL1(lctn, dpat, tdxp, wsxp))
+  D3VALDCL1(lctn, dpat, dprt, tdxp, wsxp))
 //
 (* ****** ****** *)
 //
@@ -786,7 +851,8 @@ D3FUNDCL1 of
 , f3arg1lst
 , f3axp1lst
 , s2res(*return*)
-, teqd3exp1, wths2exp, dvstp1lst, dvdtp1lst)
+, teqd3exp1, wths2exp
+, dvstp1lst, dvdtp1lst)
 //
 #absimpl
 d3fundcl1_tbox = d3fundcl1

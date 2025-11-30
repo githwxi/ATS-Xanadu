@@ -153,6 +153,7 @@ D3E = "./\
 #typedef d3typ1 = d3typ1_tbox
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #abstbox d3pat1_tbox // p0tr
 #typedef d3pat1 = d3pat1_tbox
 (* ****** ****** *)
@@ -281,6 +282,11 @@ fprint with d3ecl_fprint of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef
+l3t3p1 = d3lab(d3typ1)
+#typedef
+l3t3p1lst = list(l3t3p1)
+//
 (*
 HX-2025-09-10:
 This one is functional.
@@ -299,9 +305,13 @@ d3typ1_node =
 //
 (*
 HX:
-for C(...,!x....)
+dvar: C(...,x,...)
+lvar: C(...,!x,...)
 *)
+|T3P1dvar of (d2var)
 |T3P1lvar of (d2var)
+//
+|T3P1dlft of (d3typ1)
 //
 (*
 HX:
@@ -310,9 +320,11 @@ different implementation
 |T3P1xref of (ref(d3typ1))
 *)
 //
+|
 (*
-|T3P1dcon of (d2con, d3typ1lst)
+HX: for datatype unfolding
 *)
+T3P1con1 of (d2con, d3typ1lst)
 //
 (*
 |T3P1tup0 of
@@ -367,6 +379,8 @@ fun
 d3typ1_none$make(s2typ1): d3typ1
 fun
 d3typ1_styp$make(s2typ1): d3typ1
+fun
+d3typ1_dlft$make(d3typ1): d3typ1
 //
 #symload
 d3typ1 with d3typ1_make_styp$node
@@ -411,6 +425,8 @@ d3pat1_node =
 |D3P1flt of token
 |D3P1str of token
 //
+(* ****** ****** *)
+|D3P1con of (d2con)
 (* ****** ****** *)
 //
 |D3P1bang of (d3pat1)
@@ -934,6 +950,11 @@ d3cls1_node$get
 #symload node with d3gpt1_node$get
 #symload node with d3cls1_node$get
 //
+fun // HX-2025-11-25: guard root
+d3cls1_dprt$get(d3cls1): d3typ1opt
+fun
+d3cls1_dvts$get(d3cls1): dvstp1lst
+//
 (* ****** ****** *)
 //
 fun
@@ -945,10 +966,21 @@ d3gpt1_make_lctn$node
 fun
 d3cls1_make_lctn$node
 (loc0:loc_t,node:d3cls1_node):d3cls1
+fun
+d3cls1_make_lctn$node$rest
+(
+loc0:loc_t,
+node:d3cls1_node,
+dprt:d3typ1opt,dvts:dvstp1lst): d3cls1
 //
-#symload d3gua1 with d3gua1_make_lctn$node
-#symload d3gpt1 with d3gpt1_make_lctn$node
-#symload d3cls1 with d3cls1_make_lctn$node
+#symload
+d3gua1 with d3gua1_make_lctn$node
+#symload
+d3gpt1 with d3gpt1_make_lctn$node
+#symload
+d3cls1 with d3cls1_make_lctn$node
+#symload
+d3cls1 with d3cls1_make_lctn$node$rest
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1160,9 +1192,9 @@ d3fundcl1_faxp$get:(d3fundcl1)->f3axp1lst
 fun
 d3fundcl1_tdxp$get:(d3fundcl1)->teqd3exp1
 //
-fun // d2vs$inner
+fun // d2vs$inner // HX: static types
 d3fundcl1_vts1$get:(d3fundcl1)->dvstp1lst
-fun // d2vs$outer
+fun // d2vs$outer // HX: dynamic types
 d3fundcl1_vts2$get:(d3fundcl1)->dvdtp1lst
 //
 #symload farg with d3fundcl1_farg$get(*lst*)
@@ -1174,9 +1206,14 @@ d3fundcl1_vts2$get:(d3fundcl1)->dvdtp1lst
 (* ****** ****** *)
 //
 fun
-d3valdcl1_make_args
+d3valdcl1_make_arg4
 (lctn:loc_t
 ,dpat:d3pat1
+,tdxp:teqd3exp1,wsxp:wths2exp):d3valdcl1
+fun
+d3valdcl1_make_arg5
+(lctn:loc_t
+,dpat:d3pat1,dprt:d3typ1opt
 ,tdxp:teqd3exp1,wsxp:wths2exp):d3valdcl1
 //
 fun
@@ -1187,7 +1224,9 @@ d3vardcl1_make_args
 ,vpid:d2varopt
 ,sres:s2expopt,dini:teqd3exp1):d3vardcl1
 //
-#symload d3valdcl1 with d3valdcl1_make_args
+#symload d3valdcl1 with d3valdcl1_make_arg4
+#symload d3valdcl1 with d3valdcl1_make_arg5
+//
 #symload d3vardcl1 with d3vardcl1_make_args
 //
 (* ****** ****** *)
@@ -1268,6 +1307,36 @@ d3pat1_d2v$foritm(xs: d3pat1): void
 fun
 <r0:vt>
 d3pat1_d2v$folditm(xs: d3pat1, r0: r0): r0
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef label = $LAB.label
+//
+fun
+d3typ1lst_ind$proj
+(t3qs: l3t3p1lst, ind0: sint): d3typ1
+fun
+l3t3p1lst_lab$proj
+(ltqs: l3t3p1lst, lab0: label): d3typ1
+//
+fun
+d3typ1_ind$fset
+(styp
+:d3typ1,ind0:sint,t2q0:d3typ1): d3typ1
+fun
+d3typ1lst_ind$fset
+(ltqs
+:d3typ1lst,ind0:sint,t2q0:d3typ1): d2typ1lst
+//
+fun
+d3typ1_lab$fset
+(styp
+:d3typ1,lab0:label,t2q0:d3typ1): d3typ1
+fun
+l3dtp1lst_lab$fset
+(ltqs
+:l3dtp1lst,lab0:label,t2q0:d3typ1): l3dtp1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -418,7 +418,7 @@ val tdxp =
   teqd3exp_trx3cpy(tdxp, env0))
 //
 in//let
-d3valdcl1_make_args(loc0,dpat,tdxp,wsxp)
+d3valdcl1_make_arg4(loc0,dpat,tdxp,wsxp)
 end//let
 (*let*)//end-of-[d3valdcl_trx3cpy(dval,env0)]
 //
