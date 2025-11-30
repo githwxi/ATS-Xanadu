@@ -588,12 +588,13 @@ end(*let*)//end-of-[f0_tup0(d3p0,err0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+val loc0 = d3p0.lctn()
 val (  ) =
-(
-prerrsln("d3pat1_tryltck: dpat = ", dpat))
+prerrsln("d3pat1_tryltck: loc0 = ", loc0)
 val (  ) =
-(
-prerrsln("d3pat1_tryltck: dpat = ", dpat))
+prerrsln("d3pat1_tryltck: dpat = ", dpat)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1155,12 +1156,13 @@ end(*let*)//end-of-[f0_t2ped(d3e0,err0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+val loc0 = dexp.lctn()
 val (  ) =
-(
-prerrsln("d3exp1_tryltck: dexp = ", dexp))
+prerrsln("d3exp1_tryltck: loc0 = ", loc0)
 val (  ) =
-(
-prerrsln("d3exp1_tryltck: dexp = ", dexp))
+prerrsln("d3exp1_tryltck: dexp = ", dexp)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1225,8 +1227,13 @@ end//let//end-of-[D3A1annot(d2a1,...)]
 ) where
 {
 //
-val () =
+(*
+val loc0 = daxp.lctn()
+val (  ) =
+prerrsln("d3axp1_tryltck: loc0 = ", loc0)
+val (  ) =
 prerrsln("d3axp1_tryltck: daxp = ", daxp)
+*)
 //
 }(*where*)//end-of-[d3axp1_tryltck(daxp,err0)]
 //
@@ -1256,8 +1263,13 @@ end//let//end-of-[F3AXP1dapp(npf1,d3as)]
 ) where
 {
 //
+(*
+val loc0 = faxp.lctn()
+val (  ) =
+prerrsln("f3axp1_tryltck: loc0 = ", loc0)
 val () =
 prerrsln("f3axp1_tryltck: faxp = ", faxp)
+*)
 //
 }(*where*)//end-of-[f3axp1_tryltck(faxp,err0)]
 //
