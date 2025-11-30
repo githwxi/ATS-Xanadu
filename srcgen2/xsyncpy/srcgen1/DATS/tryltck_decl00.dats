@@ -500,12 +500,15 @@ end(*let*)//end-of-[f0_implmnt0(dcl0,err0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+val loc0 = d3cl.lctn()
+val (  ) =
+(
+  prerrsln("d3ecl1_tryltck: loc0 = ", loc0))
 val (  ) =
 (
   prerrsln("d3ecl1_tryltck: d3cl = ", d3cl))
-val (  ) =
-(
-  prerrsln("d3ecl1_tryltck: d3cl = ", d3cl))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
