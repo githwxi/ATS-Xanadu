@@ -448,9 +448,9 @@ d3e0.node() of
 //
 |D3E1var _ =>
 fd_var(d3e0, dtyp, env0)
-(*
 |D3E1flat _ =>
 fd_flat(d3e0, dtyp, env0)
+(*
 |D3E1proj _ =>
 fd_proj(d3e0, dtyp, env0)
 *)
@@ -1261,15 +1261,20 @@ f1_styp$updt
 ( d3e1: d3exp1
 , trst: s2typ1
 , env0: !envltck): (sint) =
+(
+case+
+d3e1.node() of
+|
+_(*otherwise*) =>
 let
 val trst =
 d3typ1_styp$make
-(     trst     )
-in//let
+(     trst     ) in//let
 //
 f1_dtyp$updt(d3e1, trst, env0)
 //
-end//let//end-of-[f1_styp$updt(...)]
+end//let//end-of-[_(*otherwise*)]
+)(*case+*)//end-of-[f1_styp$updt(...)]
 
 and
 f1_dtyp$updt
