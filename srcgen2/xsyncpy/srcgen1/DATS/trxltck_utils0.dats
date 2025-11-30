@@ -104,7 +104,7 @@ val t3qs = f0_d3ps(d3ps)
 in//let
 (
 d3typ1_make_styp$node
-(t2q0, T3P1con1(dcon, t3qs)))
+(t2q0, T3P1tcon(dcon, t3qs)))
 end//let//end-of-[D3P1dapp(...)]
 |
 _(*otherwise*) => d3typ1_styp$make(t2q0)

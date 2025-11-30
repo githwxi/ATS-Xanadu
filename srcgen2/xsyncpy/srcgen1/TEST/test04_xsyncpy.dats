@@ -80,22 +80,6 @@ val tt = xx.0 in
 end//let//end-of-[s1wap_cbrf(xx)]
 //
 (* ****** ****** *)
-////
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-s11wap_cbrf
-( x_xx
-: &(x0, (x0, x0))): void =
-let
-val tt = (x_xx.1).0 in
-(
-(x_xx.1).0
-:=
-(x_xx.1).1; (x_xx.1).1 := tt )
-end//let//end-of-[s11wap_cbrf(x_xx)]
-//
 (* ****** ****** *)
 //
 fun
@@ -129,6 +113,20 @@ fun
 cond_test01
 (x1: x0, x2: x0): (x0, x0) =
 if true then (x1, x2) else (x2, x1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+s11wap_cbrf
+( x_xx
+: &(x0, (x0, x0))): void =
+let
+val tmp = (x_xx.1).0 in
+(  (x_xx.1).0
+:= (x_xx.1).1; (x_xx.1).1 := tmp  )
+end//let//end-of-[s11wap_cbrf(x_xx)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

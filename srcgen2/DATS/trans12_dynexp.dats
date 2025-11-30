@@ -378,7 +378,8 @@ end//let
 ,tkas, d2p1) =>
 let
 val d2p1 =
-d2pat_bangize(d2p1)
+(
+  d2pat_bangize(d2p1))
 in//let
 d2pat(loc0,
 D2Prfpt(d2rf, tkas, d2p1))
@@ -412,6 +413,19 @@ val d2ps = f0_ldps(ldps)
 in//let
 d2pat(loc0,
   D2Prcd2(tknd, npf1, ldps))
+end//let
+//
+|
+D2Pannot
+(d2p1
+,s1e2, s2e2) =>
+let
+val d2p1 =
+(
+  d2pat_bangize( d2p1 ))
+in//let
+d2pat(loc0,
+  D2Pannot(d2p1, s1e2, s2e2))
 end//let
 //
 // HX-2025-11-23:

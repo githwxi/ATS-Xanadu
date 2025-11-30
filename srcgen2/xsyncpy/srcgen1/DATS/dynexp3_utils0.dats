@@ -46,6 +46,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #staload "\
 ./../../../SATS/locinfo.sats"
 #staload "\
@@ -54,6 +55,9 @@ Authoremail: gmhwxiATgmailDOTcom
 ./../../../SATS/statyp2.sats"
 #staload "\
 ./../../../SATS/dynexp2.sats"
+#staload "\
+./../../../SATS/dynexp3.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -133,6 +137,80 @@ dcls.node() of
 |D3CLS1gpt(dgpt) => dgpt.d2vs()
 |D3CLS1cls(dgpt, _) => dgpt.d2vs()
 )(*case+*)//end-of-[d3cls1_get_d2vs(dcls)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+l3t3p1lst_lab$proj
+  (ltqs, lab0) =
+(
+case+ ltqs of
+|
+list_nil
+( (*void*) ) =>
+d3typ1_none0((*void*))
+|
+list_cons
+(ltq1, ltqs) =>
+let
+val+
+D3LAB
+(lab1, t3q1) = ltq1
+in//let
+if // if
+(lab0 = lab1) then t3q1
+else l3t3p1lst_lab$proj(ltqs, lab0) end
+)(*case+*)//end-of-[l3t3p1lst_lab$proj(ltqs,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3typ1_lab$fset
+(dtyp, lab0, t3q0) =
+(
+case+
+dtyp.node() of
+//
+|
+T3P1styp(styp) =>
+(
+d3typ1(
+t2rt, T3P1styp(styp)))
+where
+{
+//
+val t2rt =
+(
+  d3typ1_styp$get(dtyp))
+//
+val t2q0 =
+(
+case-
+t3q0.node() of
+|T3P1styp(t2q0) => t2q0)
+//
+val styp =
+s2typ1_lab$fset(styp, lab0, t2q0)
+//
+}(*where*)//end-of-[T3P1styp(styp)]
+//
+|_(*non-T3P1tuple*) => (    dtyp    )
+//
+) where
+{
+//
+(*
+val () =
+prerrsln("d3typ1_lab$fset: dtyp = ", dtyp)
+val () =
+prerrsln("d3typ1_lab$fset: lab0 = ", lab0)
+val () =
+prerrsln("d3typ1_lab$fset: t3q0 = ", t3q0)
+*)
+//
+}(*where*)//end-of-[d3typ1_lab$fset(dtyp,lab0,t3q0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
