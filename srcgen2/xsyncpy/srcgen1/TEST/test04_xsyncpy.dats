@@ -90,7 +90,7 @@ tup2_proj1
 (x0: x0): x0 =
 let
 val
-(x0, _) = dup2(x0) in x0 end
+(x1, x2) = dup2(x0) in x1 end
 //
 (* ****** ****** *)
 ////

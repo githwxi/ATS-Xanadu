@@ -841,6 +841,12 @@ val d3e1 =
 (
   d3exp1_tryltck(d3e1, err0))
 //
+val (  ) =
+(
+if // if
+dvstp1lst_linq
+  ( dvts ) then (err0:=(err0+1)))
+//
 in//let
 //
 if // if
