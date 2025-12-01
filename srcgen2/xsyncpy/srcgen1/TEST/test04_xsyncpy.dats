@@ -74,16 +74,23 @@ end//let//end-of(my_free)
 fun
 <x0:vt>
 dup2(x0: x0): (x0, x0)
-(*
 fun
 <x0:t0>
 tup2_proj1
 (x0: x0): x0 = dup2(x0).0
-*)
+(*
 fun
 <x0:vt>
 tup2_proj1
 (x0: x0): x0 = dup2(x0).0
+*)
+fun
+<x0:t0>
+tup2_proj1
+(x0: x0): x0 =
+let
+val
+(x0, _) = dup2(x0) in x0 end
 //
 (* ****** ****** *)
 ////
