@@ -1143,7 +1143,7 @@ d3valdcl1_wsxp$get:(d3valdcl1)->wths2exp
 fun
 d3valdcl1_tdxp$get:(d3valdcl1)->teqd3exp1
 //
-#symload dpat with d3valdcl1_get_dpat
+#symload dpat with d3valdcl1_dpat$get
 #symload wsxp with d3valdcl1_wsxp$get(*opt*)
 #symload tdxp with d3valdcl1_tdxp$get(*opt*)
 //
@@ -1286,18 +1286,18 @@ Sun Sep  7 02:40:58 AM EDT 2025
 d2varlst_vt = list_vt(d2var)
 //
 fun
-d3pat1_get_d2vs
+d3pat1_d2vs$get
 ( dpat: d3pat1 ): d2varlst_vt
 fun
-d3gpt1_get_d2vs
+d3gpt1_d2vs$get
 ( dgpt: d3gpt1 ): d2varlst_vt
 fun
-d3cls1_get_d2vs
+d3cls1_d2vs$get
 ( dcls: d3cls1 ): d2varlst_vt
 //
-#symload d2vs with d3pat1_get_d2vs
-#symload d2vs with d3gpt1_get_d2vs
-#symload d2vs with d3cls1_get_d2vs
+#symload d2vs with d3pat1_d2vs$get
+#symload d2vs with d3gpt1_d2vs$get
+#symload d2vs with d3cls1_d2vs$get
 //
 (* ****** ****** *)
 //
@@ -1310,8 +1310,6 @@ d3pat1_d2v$folditm(xs: d3pat1, r0: r0): r0
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#typedef label = $LAB.label
 //
 fun
 d3typ1lst_ind$proj
