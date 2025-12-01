@@ -866,11 +866,13 @@ d3p0.node() of
 //
 (* ****** ****** *)
 //
+|D3P1any _ => ( (*void*) )
+//
 |D3P1var
 (   d2v1   ) =>
 let
 //
-val t2q0 = d3p0.styp()
+val t2q0 = d3p0.styp((*0*))
 //
 in//let
 envltck_dvar$spsh(env0,d2v1,t2q0)
@@ -881,6 +883,11 @@ end//let//end-of-[D3P1var( d2v1 )]
 |D3P1dapp
 (d3f0
 ,npf1, d3ps) => f0_d3ps(env0, d3ps)
+//
+(* ****** ****** *)
+//
+|D3P1tup0
+(npf1, d3ps) => f0_d3ps(env0, d3ps)
 //
 (* ****** ****** *)
 //
