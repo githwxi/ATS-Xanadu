@@ -85,12 +85,12 @@ tup2_proj1
 (x0: x0): x0 = dup2(x0).0
 *)
 fun
-<x0:t0>
+<x0:vt>
 tup2_proj1
 (x0: x0): x0 =
 let
 val
-(x1, x2) = dup2(x0) in x1 end
+(x1, _) = dup2(x0) in x1 end
 //
 (* ****** ****** *)
 ////

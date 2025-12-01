@@ -61,6 +61,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload +
+with sint_add$sint of 1099
+#symload -
+with sint_sub$sint of 1099
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 d3ecl1_trxltck
 (d3cl, env0) =
@@ -453,19 +461,37 @@ d3valdcl1_tdxp$get(dval)
 val wsxp =
 d3valdcl1_wsxp$get(dval)
 //
+// HX-2025-09-21: non-recursive!
+//
 val tdxp =
 (
   teqd3exp1_trxltck(tdxp, env0))
 //
-// HX-2025-09-21: non-recursive!
+in//let
+//
+let
+//
+val dtyp =
+(
+  d3typ1_of$d3pat1(dpat))
+//
+val dgrt = optn_cons(dtyp)
 //
 val (  ) =
 (
   envltck_dpat$push(env0, dpat))
 //
+val (  ) =
+prerrsln("\
+d3valdcl1_trxltck: dtyp = ", dtyp)
+val (  ) =
+prerrsln("\
+d3valdcl1_trxltck: dgrt = ", dgrt)
+//
 in//let
-(
-  d3valdcl1_make_arg4(loc0,dpat,tdxp,wsxp))
+  d3valdcl1_make_arg5
+  (loc0, dpat, dgrt, tdxp, wsxp) end//let
+//
 end//let
 (*let*)//end-of-[d3valdcl1_trxltck(dval,env0)]
 //

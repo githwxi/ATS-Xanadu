@@ -61,6 +61,9 @@ HX: for [FILR]
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
+BAS = "./\
+../../../SATS/xbasics.sats"
+#staload
 TMP = "./\
 ../../../SATS/xstamp0.sats"
 #staload
@@ -100,7 +103,6 @@ D2E = "./\
 D3E = "./\
 ../../../SATS/dynexp3.sats"
 //
-(* ****** ****** *)
 (* ****** ****** *)
 #typedef stamp = $TMP.stamp
 (* ****** ****** *)
@@ -326,8 +328,12 @@ HX: for datatype unfolding
 *)
 T3P1tcon of (d2con, d3typ1lst)
 |
-T3P1trcd of
-(token, sint(*npf*), l3t3p1lst)
+T3P1trcd of (
+trcdknd, sint(*npf*), l3t3p1lst)
+//
+where{
+#typedef trcdknd = $BAS.trcdknd
+}(*where*)//end(datatype(d3typ1))
 //
 (* ****** ****** *)
 //

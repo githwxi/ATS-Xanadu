@@ -61,6 +61,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload +
+with sint_add$sint of 1099
+#symload -
+with sint_sub$sint of 1099
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #include
 "./../HATS/libxatsopt.hats"
 //
@@ -106,13 +114,27 @@ in//let
 d3typ1_make_styp$node
 (t2q0, T3P1tcon(dcon, t3qs)))
 end//let//end-of-[D3P1dapp(...)]
+//
+|D3P1tup0
+(npf1, d3ps) =>
+let
+val trcd = TRCDflt0((*0*))
+val ltqs = f0_id3ps(0, d3ps)
+in//let
+(
+d3typ1_make_styp$node
+( t2q0
+, T3P1trcd(trcd, npf1, ltqs)))
+end//let//end-of-[D3P1tup0(...)]
+//
 |
 _(*otherwise*) => d3typ1_styp$make(t2q0)
 //
 end where
 {
 //
-fun f0_d3ps
+fun
+f0_d3ps
 ( d3ps
 : d3pat1lst): d3typ1lst =
 (
@@ -127,6 +149,35 @@ list_map
 #impltmp
 map$fopr<x0><y0> = d3typ1_of$d3pat1(*nil*)
 }(*where*)//end-of-[f0_d3ps(d3ps)]
+//
+fun
+f0_id3ps
+( i0
+: sint
+, d3ps
+: d3pat1lst): l3t3p1lst =
+(
+case+ d3ps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(d3p1, d3ps) =>
+let
+//
+val lab1 = LABint(i0)
+val t3q1 =
+(
+  d3typ1_of$d3pat1(d3p1))
+//
+val ltq1 = D3LAB(lab1, t3q1)
+//
+in
+(
+  list_cons
+  (ltq1, f0_id3ps(i0+1, d3ps)))
+end//let//end-of-[list_cons(d3p1,d3ps)]
+)(*case+*)//end-of-[f0_id3ps(i0, d3ps)]
 //
 }(*where*)//end-of-[d3typ1_of$d3pat1(d3p0)]
 //
