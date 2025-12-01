@@ -89,14 +89,17 @@ case+
 d3p0.node() of
 //
 |
-D3P1var
+D3P1any _ =>
+(
+d3typ1_styp$make(t2q0))
+//
+|D3P1var
 (   d2v1   ) =>
 (
 d3typ1_make_styp$node
 (t2q0, T3P1dvar(d2v1)))
 //
-|
-D3P1dapp
+|D3P1dapp
 (d3f0
 ,npf1, d3ps) =>
 let
