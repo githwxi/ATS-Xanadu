@@ -354,6 +354,22 @@ d2ecl_fprint(d2cl, castxy(g_print$out<>()))
 (* ****** ****** *)
 //
 #impltmp
+{x0:t0}
+g_print
+<
+d3lab(x0)
+>
+(   dlab   ) =
+(
+case+ dlab of
+|
+D3LAB(l00, x01) =>
+(
+  prints("D3LAB(", l00, ";", x01, ")")) )
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print
 <d3pat>(d3p0) =
 d3pat_fprint(d3p0, castxy(g_print$out<>()))

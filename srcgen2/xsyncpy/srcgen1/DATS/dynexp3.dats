@@ -675,7 +675,7 @@ d3valdcl1 =
 D3VALDCL1 of
 ( loc_t
 , d3pat1
-, d3typ1opt
+, d3typ1opt // dgrt
 , teqd3exp1, wths2exp)
 //
 #absimpl
