@@ -556,6 +556,7 @@ d3pat1_tryltck
 case+
 dpat.node() of
 //
+|D3P1any _ => dpat
 |D3P1var _ => dpat
 //
 |D3P1int _ => dpat
