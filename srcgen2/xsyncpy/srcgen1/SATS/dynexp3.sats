@@ -800,6 +800,12 @@ d3exp1_styp$get
 (* ****** ****** *)
 //
 fun
+d3exp1_lftq(d3exp1): bool
+#symload lftq with d3exp1_lftq
+//
+(* ****** ****** *)
+//
+fun
 d3exp1_fprint
 (dexp: d3exp1, out0: FILR): void
 #symload fprint with d3exp1_fprint of 1000
@@ -807,8 +813,8 @@ d3exp1_fprint
 (* ****** ****** *)
 //
 fun
-d3exp1_none0
-(loc0: loctn): d3exp1
+d3exp1_none0(loc0: loctn): d3exp1
+//
 fun
 d3exp1_dvdtp
 (dexp: d3exp1, vtps: dvdtp1lst): d3exp1
