@@ -489,7 +489,7 @@ case+ tdxp of
 (    dtyp    )
 |TEQD3EXP1some
 ( tkeq, dexp ) =>
-envltck_dmat$updt
+envltck_dmxq$updt
 (env0, dexp, dtyp)): d3typ1 }
 //
 val (  ) =

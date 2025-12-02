@@ -1147,6 +1147,8 @@ d3valdcl1_dpat$get:(d3valdcl1)->d3pat1
 fun
 d3valdcl1_wsxp$get:(d3valdcl1)->wths2exp
 fun
+d3valdcl1_dgrt$get:(d3valdcl1)->d3typ1opt
+fun
 d3valdcl1_tdxp$get:(d3valdcl1)->teqd3exp1
 //
 #symload dpat with d3valdcl1_dpat$get
