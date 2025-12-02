@@ -1543,6 +1543,32 @@ val vtps = dtpstk_vtsift0(dtpstk)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+envltck_dmat$updt
+(env0, dmat, dgrt) =
+let
+//
+val lftq =
+d3exp1_lftq(dmat)
+//
+in//let
+//
+if // if
+not(lftq)
+then (dgrt) else
+(
+d3typ1_none0((*0*))) where
+{
+val () =
+envltck_dlft$updt(env0, dmat, dgrt)
+}(*where*)//else//end-of-(if(not(lftq)))
+//
+end(*let*)//end-of-[envltck_dmat$updt(env0)]
+
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trxltck_myenv0.dats] *)
 (***********************************************************************)
