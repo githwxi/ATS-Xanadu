@@ -1123,6 +1123,8 @@ d3valdcl1_fprint
 //
 val dpat =
 d3valdcl1_dpat$get(dval)
+val dgrt =
+d3valdcl1_dgrt$get(dval)
 val tdxp =
 d3valdcl1_tdxp$get(dval)
 val wsxp =
@@ -1132,8 +1134,8 @@ d3valdcl1_wsxp$get(dval)
 //
 in//let
 (
-prints
-("D3VALDCL1(",dpat,";",tdxp,";",wsxp,")"))
+print("D3VALDCL1(");
+prints(dpat,";",dgrt,";",tdxp,";",wsxp,")"))
 end(*let*)//end-of-[d3valdcl1_fprint(dval,out0)]
 //
 (* ****** ****** *)

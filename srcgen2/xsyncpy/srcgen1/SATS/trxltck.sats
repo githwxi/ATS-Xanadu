@@ -242,17 +242,22 @@ envltck_dvts$updt
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-envltck_dlft$updt
+fun // HX-2025-12-01: [dlft]
+envltck_dlft$updt // is l-value!
 ( env0:
 ! envltck
 , dlft: d3exp1, t3q0: d3typ1): void
 //
-fun
-envltck_dmat$updt
+fun // HX-2025-12-01: no special
+envltck_dmxp$updt // tuple handling 
 ( env0:
 ! envltck
-, dmat: d3exp1, dgrt: d3typ1): d3typ1
+, dmxp: d3exp1, dgrt: d3typ1): d3typ1
+fun // HX-2025-12-01: for special
+envltck_dmxq$updt // tuple handling
+( env0:
+! envltck
+, dmxq: d3exp1, dgrt: d3typ1): d3typ1
 //
 (* ****** ****** *)
 (* ****** ****** *)

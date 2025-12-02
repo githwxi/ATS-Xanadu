@@ -702,6 +702,15 @@ D3VALDCL1
 , tdxp, wsxp) = dval in dpat end
 //
 #implfun
+d3valdcl1_dgrt$get
+  (  dval  ) = let
+val+
+D3VALDCL1
+( lctn
+, dpat, dgrt
+, tdxp, wsxp) = dval in dgrt end
+//
+#implfun
 d3valdcl1_tdxp$get
   (  dval  ) = let
 val+

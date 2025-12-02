@@ -1544,12 +1544,12 @@ val vtps = dtpstk_vtsift0(dtpstk)
 (* ****** ****** *)
 //
 #implfun
-envltck_dmat$updt
-(env0, dmat, dgrt) =
+envltck_dmxp$updt
+(env0, dmxp, dgrt) =
 let
 //
 val lftq =
-d3exp1_lftq(dmat)
+d3exp1_lftq(dmxp)
 //
 in//let
 //
@@ -1560,12 +1560,91 @@ then (dgrt) else
 d3typ1_none0((*0*))) where
 {
 val () =
-envltck_dlft$updt(env0, dmat, dgrt)
+envltck_dlft$updt(env0, dmxp, dgrt)
 }(*where*)//else//end-of-(if(not(lftq)))
 //
-end(*let*)//end-of-[envltck_dmat$updt(env0)]
-
+end(*let*)//end-of-[envltck_dmxp$updt(env0,...)]
 //
+(* ****** ****** *)
+//
+#implfun
+envltck_dmxq$updt
+(env0, dmxq, dgrt) =
+(
+case+
+dmxq.node() of
+//
+|
+D3E1tup0
+(npf1, d3es) =>
+(
+case+
+dgrt.node() of
+|T3P1trcd
+(trcd, npf1, ltqs) =>
+let
+//
+val sgrt = dgrt.styp()
+val ltqs =
+f0_list(env0, d3es, ltqs)
+//
+in//let
+//
+d3typ1(sgrt,
+  T3P1trcd(trcd, npf1, ltqs))
+//
+end//let//end-of-[T3P1trcd(...)]
+|
+_(*non-T3P1trcd*) =>
+envltck_dmxp$updt(env0,dmxq,dgrt)
+)(*case+*)//end-of-[D3E1tup0(...)]
+|
+_(*non-D3E1tup0*) =>
+(
+envltck_dmxp$updt(env0,dmxq,dgrt))
+//
+) where
+{
+//
+fun
+f0_list
+( env0:
+! envltck
+, d3es
+: d3exp1lst
+, ltqs
+: l3t3p1lst): l3t3p1lst =
+(
+case+ d3es of
+|list_nil
+( (*void*) ) => list_nil()
+|
+list_cons
+(d3e1, d3es) =>
+(
+case+ ltqs of
+|list_nil
+( (*void*) ) => list_nil()
+|list_cons
+(ltq1, ltqs) =>
+let
+val+
+D3LAB(
+lab1, t3q1) = ltq1
+val t3q1 =
+(
+envltck_dmxq$updt
+(env0, d3e1, t3q1))//t3q1
+val ltq1 = D3LAB(lab1, t3q1)
+in//let
+list_cons
+(ltq1, f0_list(env0, d3es, ltqs))
+end//let
+)(*case+*)//end-of-[list_cons(d3e1,d3es)]
+)(*case+*)//end-of-[f0_list(env0,d3es,ltqs)]
+//
+}(*where*)//end-of-[envltck_dmxq$updt(env0,...)]
+
 (* ****** ****** *)
 (* ****** ****** *)
 //
