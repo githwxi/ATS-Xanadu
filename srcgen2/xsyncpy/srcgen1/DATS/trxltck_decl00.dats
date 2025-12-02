@@ -473,20 +473,35 @@ let
 //
 val dtyp =
 (
-  d3typ1_of$d3pat1(dpat))
+d3typ1_of$d3pat1
+(     dpat     ))
 //
-val dgrt = optn_cons(dtyp)
+val dgrt =
+(
+  optn_cons(dtyp))
+where
+{
+val dtyp =
+(
+case+ tdxp of
+|TEQD3EXP1none
+(  (*void*)  ) =>
+(    dtyp    )
+|TEQD3EXP1some
+( tkeq, dexp ) =>
+envltck_dmat$updt
+(env0, dexp, dtyp)): d3typ1 }
 //
 val (  ) =
 (
   envltck_dpat$push(env0, dpat))
 //
 val (  ) =
-prerrsln("\
-d3valdcl1_trxltck: dtyp = ", dtyp)
+prerrsln
+("d3valdcl1_trxltck: dtyp = ", dtyp)
 val (  ) =
-prerrsln("\
-d3valdcl1_trxltck: dgrt = ", dgrt)
+prerrsln
+("d3valdcl1_trxltck: dgrt = ", dgrt)
 //
 in//let
   d3valdcl1_make_arg5

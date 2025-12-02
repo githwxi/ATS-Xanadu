@@ -246,13 +246,13 @@ fun
 envltck_dlft$updt
 ( env0:
 ! envltck
-, dlft: d3exp, t3q0: d3typ1): void
+, dlft: d3exp1, t3q0: d3typ1): void
 //
 fun
 envltck_dmat$updt
 ( env0:
 ! envltck
-, dmat: d3exp, dgrt: d3typ1): d3typ1
+, dmat: d3exp1, dgrt: d3typ1): d3typ1
 //
 (* ****** ****** *)
 (* ****** ****** *)
