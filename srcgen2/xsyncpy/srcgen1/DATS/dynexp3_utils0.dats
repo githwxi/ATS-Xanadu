@@ -77,6 +77,29 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #implfun
+d3exp1_lftq
+  (dexp) =
+(
+case+
+dexp.node() of
+//
+|D3E1var _ => (   true   )
+//
+|D3E1pcon
+(dcon
+,lab1, d3e1) => d3exp1_lftq(d3e1)
+|D3E1proj
+(tknd
+,lab1, d3e1) => d3exp1_lftq(d3e1)
+//
+|_(*otherwise*) => (     false     )
+//
+)(*case+*)//end-of-[d3exp1_lftq(dexp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 dvstp1lst_linq
   (dvts) =
 (

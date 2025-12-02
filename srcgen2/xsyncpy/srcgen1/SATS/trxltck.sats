@@ -129,14 +129,14 @@ fun
 envltck_dvar$init
 ( env0:
 ! envltck
-, dvar: d2var, styp: d3typ1): void
+, dvar: d2var, dtyp: d3typ1): void
 *)
 //
 fun
 envltck_dvar$updt
 ( env0:
 ! envltck
-, dvar: d2var, styp: d3typ1): void
+, dvar: d2var, dtyp: d3typ1): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -216,27 +216,43 @@ envltck_dvar$dpsh
 //
 fun
 envltck_dpat$push
-(env0: !envltck, d3p0: d3pat1): void
+(
+env0: !envltck, d3p0: d3pat1): void
 fun
 envltck_farg$push
-(env0: !envltck, f3a0: f3arg1): void
+(
+env0: !envltck, f3a0: f3arg1): void
 //
 fun
 envltck_d3ps$push
 (
-env0: !envltck,d3ps:d3pat1lst): void
+env0: !envltck, d3ps: d3pat1lst): void
 fun
 envltck_f3as$push
 (
-env0: !envltck,f3as:f3arg1lst): void
+env0: !envltck, f3as: f3arg1lst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 envltck_dvts$updt
-(
-env0: !envltck,dvts:dvdtp1lst): void
+(env0: !envltck, dvts: dvdtp1lst): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+envltck_dlft$updt
+( env0:
+! envltck
+, dlft: d3exp, t3q0: d3typ1): void
+//
+fun
+envltck_dmat$updt
+( env0:
+! envltck
+, dmat: d3exp, dgrt: d3typ1): d3typ1
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -271,8 +287,7 @@ d31cas_trxltck
 //
 fun
 d31ift_trxltck
-( dopt
-: d3exp1opt, env0: !envltck): d3exp1opt
+(dopt: d3exp1opt, env0: !envltck): d3exp1opt
 //
 (* ****** ****** *)
 (* ****** ****** *)
