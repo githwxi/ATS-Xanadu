@@ -48,6 +48,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload "\
+./../../../SATS/xbasics.sats"
+#staload "\
 ./../../../SATS/locinfo.sats"
 #staload "\
 ./../../../SATS/staexp2.sats"
@@ -72,6 +74,100 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload
 "./../../../DATS/xatsopt_tmplib.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3typ1_linq
+  (dtyp) =
+(
+case+ 
+dtyp.node() of
+//
+|T3P1none
+((*void*)) => false
+//
+|T3P1styp
+(  styp  ) =>
+(
+  s2typ1_linq(styp))
+//
+|T3P1dvar _ => false
+|T3P1lvar _ => false
+//
+|T3P1tcon _ => f0_tcon(dtyp)
+|T3P1trcd _ => f0_trcd(dtyp)
+//
+|_(*otherwise*) => (   false   )
+//
+) where
+{
+//
+fun
+f0_tcon
+(dtyp: d3typ1): bool =
+let
+val-
+T3P1tcon
+(dcon, t3qs) = dtyp.node()
+in//let
+if // if
+d2con_linq(dcon)
+then f0_t3qs(t3qs) else false
+end//let//end-of-[f0_tcon(dtyp)]
+//
+and
+f0_trcd
+(dtyp: d3typ1): bool =
+let
+val-
+T3P1trcd
+(trcd
+,npf1, ltqs) = dtyp.node()
+in//let
+case+ trcd of
+|TRCDbox0() => false
+|TRCDbox1() => (true)
+|TRCDflt0() => f0_ltqs(ltqs)
+end//let//end-of-[f0_trcd(dtyp)]
+//
+and
+f0_t3qs
+(t3qs: d3typ1lst): bool =
+(
+case+ t3qs of
+|
+list_nil() => false
+|
+list_cons(t3q1, t3qs) =>
+(
+if
+d3typ1_linq(t3q1)
+then true else f0_t3qs(t3qs))
+)(*case+*)//end-of-[f0_ltqs(ltqs)]
+//
+and
+f0_ltqs
+(ltqs: l3t3p1lst): bool =
+(
+case+ ltqs of
+|
+list_nil() => false
+|
+list_cons(ltq1, ltqs) =>
+let
+val+
+D3LAB(_, t3q1) = ltq1
+in//let
+(
+if // if
+d3typ1_linq(t3q1)
+then true else f0_ltqs(ltqs))
+end//let
+)(*case+*)//end-of-[f0_ltqs(ltqs)]
+//
+}(*where*)//end-of-[d3typ1_linq(dtyp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

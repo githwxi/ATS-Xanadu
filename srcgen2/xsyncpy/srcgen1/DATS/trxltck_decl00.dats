@@ -476,11 +476,6 @@ val dtyp =
 d3typ1_of$d3pat1
 (     dpat     ))
 //
-val dgrt =
-(
-  optn_cons(dtyp))
-where
-{
 val dtyp =
 (
 case+ tdxp of
@@ -490,7 +485,9 @@ case+ tdxp of
 |TEQD3EXP1some
 ( tkeq, dexp ) =>
 envltck_dmxq$updt
-(env0, dexp, dtyp)): d3typ1 }
+(env0, dexp, dtyp)): d3typ1
+//
+val dgrt = optn_cons( dtyp )
 //
 val (  ) =
 (
@@ -502,6 +499,14 @@ prerrsln
 val (  ) =
 prerrsln
 ("d3valdcl1_trxltck: dgrt = ", dgrt)
+//
+val (  ) =
+let
+val linq = d3typ1_linq(dtyp)
+in//let
+prerrsln
+("d3valdcl1_trxltck: linq = ", linq)
+end//let
 //
 in//let
   d3valdcl1_make_arg5

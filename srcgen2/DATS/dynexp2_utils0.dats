@@ -71,6 +71,59 @@ ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 //
 #implfun
+d2con_linq
+(  d2c0  ) =
+(
+f0_linq(d2c0.sexp())
+) where
+{
+//
+fun
+f0_linq
+( s2e0
+: s2exp): bool =
+(
+case+
+s2e0.node() of
+|S2Euni0
+(s2vs
+,s2ps,s2e1) => f0_linq(s2e1)
+|S2Efun1
+(f2cl,npf1
+,s2es,s2e1) => f0_linq(s2e1)
+|_(*S2E...*) => s2exp_linq(s2e0))
+//
+}(*where*)//end-of-[d2con_linq(d2c0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d2var_linq(d2v0) =
+(
+ s2typ_linq(d2v0.styp()))
+#implfun
+d2var_prfq(d2v0) =
+(
+ s2typ_prfq(d2v0.styp()))
+//
+#implfun
+d2var_mutq(d2v0) =
+let
+val t2p0 = d2v0.styp()
+in//let
+//
+case+
+t2p0.node() of
+|T2Plft(t2p1) => (  true  )
+|_(*non-T2Plft*) => ( false )
+//
+end(*let*)//end-of-[d2var_mutq(d2v0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d2cst_castq(d2c0) =
 (
 case+
@@ -95,7 +148,7 @@ prerrsln
 ("d2cst_castq: d2c0 = ", d2c0)
 *)
 //
-}(*where*)//end-of-[d2cst_castq]
+}(*where*)//end-of-[d2cst_castq(d2c0)]
 //
 (* ****** ****** *)
 //
@@ -109,7 +162,8 @@ list_exists(d2cs) where
 {
 #typedef x0 = d2cst
 #impltmp
-exists$test<x0> = d2cst_tempq }
+exists$test<x0> = d2cst_tempq(*0*)
+}(*where*)//end-of-[d2cst_tempq(d2c0)]
 //
 (* ****** ****** *)
 //
@@ -130,7 +184,7 @@ dimp.node() of
 (
 d2c1,svts) => d2cst_tempq(d2c1)
 //
-)(*case+*)//end-of-[dimpl_tempq]
+)(*case+*)//end-of-[dimpl_tempq(dimp)]
 //
 (* ****** ****** *)
 //

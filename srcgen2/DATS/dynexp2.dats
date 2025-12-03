@@ -108,34 +108,6 @@ s2typ_subst0(t2p0, svts))
 (* ****** ****** *)
 //
 #implfun
-d2var_linq(d2v0) =
-(
- s2typ_linq(d2v0.styp()))
-#implfun
-d2var_prfq(d2v0) =
-(
- s2typ_prfq(d2v0.styp()))
-//
-#implfun
-d2var_mutq(d2v0) =
-let
-val t2p0 = d2v0.styp()
-in//let
-//
-case+
-t2p0.node() of
-|
-T2Plft(t2p1) => (  true  )
-|
-_(*non-T2Plft*) => (false)
-//
-end//let
-//end-of-[d2var_mutq(d2v0)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
 d2pat_none0
 (  loc0  ) =
 d2pat_make_node

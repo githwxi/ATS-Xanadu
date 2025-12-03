@@ -89,8 +89,8 @@ fun
 tup2_proj1
 (x0: x0): x0 =
 let
-val
-(x1, _) = dup2(x0) in x1 end
+val xx = dup2(x0)
+val (x1, _) = xx in x1 end
 //
 (* ****** ****** *)
 ////
