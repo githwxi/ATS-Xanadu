@@ -355,20 +355,21 @@ s2vts with s2vts_make_lctn_tqas
 (*
 val the_d2con_nil: d2var//val
 val the_d2cst_nil: d2var//val
-*)
-//
-(*
 val the_d2var_nil: d2var//val
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
-d2con_fprint:(d2con, FILR)->void
+d2con_linq:(d2con) -> bool
+//
+(* ****** ****** *)
+//
 fun
-d2cst_fprint:(d2cst, FILR)->void
-fun
-d2var_fprint:(d2var, FILR)->void
+d2con_fprint
+(dcon:d2con, out0:FILR): void
+//
 (* ****** ****** *)
 //
 fun
@@ -420,6 +421,13 @@ d2con_set_xtyp
 #symload xtyp with d2con_set_xtyp
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2cst_fprint
+(dcst:d2cst, out0:FILR): void
+//
+(* ****** ****** *)
 //
 fun
 d2con_get_narg(d2c0:d2con): sint
@@ -430,14 +438,24 @@ d2con_get_nprg(d2c0:d2con): sint
 #symload nprg with d2con_get_nprg
 //
 (* ****** ****** *)
+//
+fun
+d2con_make_idtp
+(dpid: token
+,tqas: t2qas, sexp: s2exp): d2con
+#symload d2con with d2con_make_idtp
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 d2cst_castq:(d2cst) -> bool
-(* ****** ****** *)
+//
 fun
 d2cst_tempq:(d2cst) -> bool
 fun
 d2cstlst_tempq(d2cstlst): bool
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -485,11 +503,6 @@ d2cst_set_xtyp
 (* ****** ****** *)
 //
 fun
-d2con_make_idtp
-(dpid: token
-,tqas: t2qas, sexp: s2exp): d2con
-//
-fun
 d2cst_make_dvar
 (tok0: token
 ,dvar: d2var, tqas: t2qas): d2cst
@@ -499,18 +512,25 @@ d2cst_make_idtp
 ,dpid: token
 ,tqas: t2qas, sexp: s2exp): d2cst
 //
-#symload d2con with d2con_make_idtp
 #symload d2cst with d2cst_make_dvar
 #symload d2cst with d2cst_make_idtp
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun d2var_linq:(d2var) -> bool
-fun d2var_prfq:(d2var) -> bool
-fun d2var_mutq:(d2var) -> bool
+fun
+d2var_linq:(d2var) -> bool
+fun
+d2var_prfq:(d2var) -> bool
+fun
+d2var_mutq:(d2var) -> bool
 //
 (* ****** ****** *)
+//
+fun
+d2var_fprint
+(dvar:d2var, out0:FILR): void
+//
 (* ****** ****** *)
 //
 fun

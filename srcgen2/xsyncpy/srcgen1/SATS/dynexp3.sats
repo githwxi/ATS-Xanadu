@@ -372,6 +372,11 @@ d3typ1_none0((*0*)): d3typ1
 (* ****** ****** *)
 //
 fun
+d3typ1_linq(d3typ1): (bool)
+//
+(* ****** ****** *)
+//
+fun
 d3typ1_make_styp$node
 (s2typ1, d3typ1_node): d3typ1
 //

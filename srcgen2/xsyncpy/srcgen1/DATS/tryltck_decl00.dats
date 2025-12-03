@@ -558,12 +558,27 @@ val nerr = err0
 val
 dpat = d3valdcl1_dpat$get(dval)
 val
+dgrt = d3valdcl1_dgrt$get(dval)
+//
+val
 tdxp = d3valdcl1_tdxp$get(dval)
 val
 wsxp = d3valdcl1_wsxp$get(dval)
 //
 val
 dpat = d3pat1_tryltck(dpat, err0)
+//
+val (  ) =
+(
+case+ dgrt of
+|optn_nil
+( (*void*) ) => ( (*void*) )
+|optn_cons
+(   dtyp   ) => (
+if // if
+d3typ1_linq
+  ( dtyp ) then (err0:=(err0+1))))
+//
 val
 tdxp = teqd3exp1_tryltck(tdxp, err0)
 //
@@ -575,7 +590,7 @@ let
 val loc0 = dval.lctn()
 in//let
 (
-  d3valdcl1( loc0, dpat, tdxp, wsxp ))
+  d3valdcl1(loc0,dpat,dgrt,tdxp,wsxp))
 end//let
 endlet//end-of-[d3valdcl1_tryltck(dval,err0)]
 //
@@ -610,8 +625,9 @@ let
 val loc0 = dvar.lctn()
 in//let
 (
-d3vardcl1
-(loc0, dpid, styp, vpid, sres, dini))
+d3vardcl1(
+  loc0, dpid, styp, vpid, sres, dini))
+//
 end//let
 endlet//end-of-[d3vardcl1_tryltck(dvar,err0)]
 //
