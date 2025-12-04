@@ -90,7 +90,8 @@ tup2_proj1
 (x0: x0): x0 =
 let
 val xx = dup2(x0)
-val (x1, _) = xx in x1 end
+val () = g_free(xx.1)
+val (x1, x2) = xx in x1 end
 //
 (* ****** ****** *)
 ////

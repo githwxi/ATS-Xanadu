@@ -471,12 +471,26 @@ in//let
 //
 let
 //
-val dtyp =
+val dpat =
 (
-d3typ1_of$d3pat1
-(     dpat     ))
+case+ tdxp of
+|TEQD3EXP1none
+(  (*void*)  ) =>
+(    dpat    )
+|TEQD3EXP1some
+( tkeq, dexp ) =>
+d3pat1_mkof$d3pt2q
+(   dpat, t2q0   )
+where{
+val t3q0 =
+(
+  dexp.dtyp((*0*)))
+val t2q0 =
+envltck_dtyp$eval
+(   env0, t3q0   )}): d3pat1
 //
 val dtyp =
+(
 (
 case+ tdxp of
 |TEQD3EXP1none
@@ -485,14 +499,21 @@ case+ tdxp of
 |TEQD3EXP1some
 ( tkeq, dexp ) =>
 envltck_dmxq$updt
-(env0, dexp, dtyp)): d3typ1
+(env0, dexp, dtyp))
+where{
+val dtyp =
+d3typ1_mkof$d3pat1
+(      dpat      )}): d3typ1
 //
-val dgrt = optn_cons( dtyp )
+val dgrt = optn_cons(  dtyp  )
 //
 val (  ) =
 (
   envltck_dpat$push(env0, dpat))
 //
+val (  ) =
+prerrsln
+("d3valdcl1_trxltck: dpat = ", dpat)
 val (  ) =
 prerrsln
 ("d3valdcl1_trxltck: dtyp = ", dtyp)

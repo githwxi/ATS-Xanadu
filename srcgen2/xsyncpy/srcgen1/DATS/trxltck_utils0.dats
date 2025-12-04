@@ -75,8 +75,22 @@ with sint_sub$sint of 1099
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+d3pat1_argtp
+(d3p0: d3pat1
+,styp: s2typ1): d3pat1 =
+let
+val loc0 = d3p0.lctn()
+in//let
+d3pat1(loc0,
+styp, D3P1argtp(d3p0, styp))
+end//let//end-of-[d3pat1_argtp]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
-d3typ1_of$d3pat1
+d3typ1_mkof$d3pat1
   (  d3p0  ) =
 let
 //
@@ -88,8 +102,7 @@ in//let
 case+
 d3p0.node() of
 //
-|
-D3P1any _ =>
+|D3P1any _ =>
 (
 d3typ1_styp$make(t2q0))
 //
@@ -130,6 +143,20 @@ d3typ1_make_styp$node
 , T3P1trcd(trcd, npf1, ltqs)))
 end//let//end-of-[D3P1tup0(...)]
 //
+|D3P1argtp
+(d3p1, t2q2) =>
+let
+val dtyp =
+d3typ1_mkof$d3pat1(d3p1) in dtyp
+end//let//end-of-[D3P1argtp(...)]
+|D3P1annot
+(d3p1, s1e2
+,s2e2, t2q2) =>
+let
+val dtyp =
+d3typ1_mkof$d3pat1(d3p1) in dtyp
+end//let//end-of-[D3P1annot(...)]
+//
 |
 _(*otherwise*) => d3typ1_styp$make(t2q0)
 //
@@ -150,7 +177,10 @@ list_map
 #typedef y0 = d3typ1
 //
 #impltmp
-map$fopr<x0><y0> = d3typ1_of$d3pat1(*nil*)
+map$fopr
+<x0><y0>(dpat) =
+(
+  d3typ1_mkof$d3pat1(dpat))
 }(*where*)//end-of-[f0_d3ps(d3ps)]
 //
 fun
@@ -171,7 +201,7 @@ let
 val lab1 = LABint(i0)
 val t3q1 =
 (
-  d3typ1_of$d3pat1(d3p1))
+  d3typ1_mkof$d3pat1(d3p1))
 //
 val ltq1 = D3LAB(lab1, t3q1)
 //
@@ -182,8 +212,202 @@ in
 end//let//end-of-[list_cons(d3p1,d3ps)]
 )(*case+*)//end-of-[f0_id3ps(i0, d3ps)]
 //
-}(*where*)//end-of-[d3typ1_of$d3pat1(d3p0)]
+}(*where*)//end-of-[d3typ1_mkof$d3pat1(d3p0)]
 //
+(* ****** ****** *)
+//
+#implfun
+d3typ1_mkof$d3pt2q
+  (d3p0, styp) =
+(
+case+
+d3p0.node() of
+//
+|D3P1any _ =>
+(
+d3typ1_styp$make(styp))
+//
+|D3P1var
+(   d2v1   ) =>
+(
+d3typ1_make_styp$node
+(styp, T3P1dvar(d2v1)))
+//
+|D3P1tup0
+(npf1, d3ps) =>
+(
+case+
+styp.node() of
+|T2P1trcd
+(trcd, npf1, ltqs) =>
+let
+val ltqs =
+f0_d3ps$ltqs(d3ps, ltqs)
+in//let
+d3typ1(styp,
+T3P1trcd(trcd, npf1, ltqs))
+end//let
+|_(*otherwise*) =>
+(
+  d3typ1_mkof$d3pat1(d3p0)))
+//
+|D3P1tup1
+(trcd
+,npf1, d3ps) =>
+(
+case+
+styp.node() of
+|T2P1trcd
+(trcd, npf2, ltqs) =>
+let
+val ltqs =
+f0_d3ps$ltqs(d3ps, ltqs)
+in//let
+d3typ1(styp,
+T3P1trcd(trcd, npf1, ltqs))
+end//let
+//
+|_(*otherwise*) =>
+(
+  d3typ1_mkof$d3pat1(d3p0)))
+//
+|_(*otherwise*) =>
+(
+  d3typ1_mkof$d3pat1(d3p0)))
+where
+{
+//
+fun
+f0_d3ps$ltqs
+( d3ps
+: d3pat1lst
+, ltqs
+: l2t2p1lst): l3t3p1lst =
+(
+case+ d3ps of
+|list_nil() => list_nil()
+|list_cons
+(d3p1, d3ps) =>
+(
+case+ ltqs of
+|list_nil() => list_nil()
+|list_cons
+(ltq1, ltqs) =>
+let
+val+
+S2LAB(lab1, t2q1) = ltq1
+val t3q1 =
+(
+d3typ1_mkof$d3pt2q
+(      d3p1 , t2q1      ))
+val ltq1 = D3LAB(lab1, t3q1)
+in//let
+list_cons
+(ltq1, f0_d3ps$ltqs(d3ps, ltqs))
+end//let
+)(*case+*)//end-of-[list_cons(...)]
+)(*case+*)//end-of-[f0_d3ps$ltqs(...)]
+//
+val () =
+prerrsln("d3typ1_mkof$d3pt2q: d3p0 = ", d3p0)
+val () =
+prerrsln("d3typ1_mkof$d3pt2q: styp = ", styp)
+//
+}(*where*)//end-of-[d3typ1_mkof$d3pt2q(dpat,styp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3pat1_mkof$d3pt2q
+  (d3p0, styp) =
+(
+case+
+d3p0.node() of
+//
+|D3P1any _ =>
+d3pat1_argtp(d3p0, styp)
+//
+|D3P1var
+(   d2v1   ) =>
+d3pat1_argtp(d3p0, styp)
+//
+|D3P1tup0
+(npf1, d3ps) =>
+(
+case+
+styp.node() of
+|T2P1trcd
+(trcd, npf1, ltqs) =>
+let
+val loc0 = d3p0.lctn()
+val d3ps =
+f0_d3ps$ltqs(d3ps, ltqs)
+in//let
+d3pat1(loc0,
+  styp,D3P1tup0(npf1,d3ps))
+end//let
+|_(*otherwise*) =>
+(
+  d3pat1_argtp(d3p0, styp)))
+//
+|D3P1tup1
+(tknd
+,npf1, d3ps) =>
+(
+case+
+styp.node() of
+|T2P1trcd
+(trcd, npf1, ltqs) =>
+let
+val loc0 = d3p0.lctn()
+val d3ps =
+f0_d3ps$ltqs(d3ps, ltqs)
+in//let
+d3pat1(loc0,styp,
+  D3P1tup1(tknd,npf1,d3ps))
+end//let
+|_(*otherwise*) =>
+(
+  d3pat1_argtp(d3p0, styp)))
+//
+|_(*otherwise*) =>
+(
+  d3pat1_argtp(d3p0, styp)))
+where
+{
+//
+fun
+f0_d3ps$ltqs
+( d3ps
+: d3pat1lst
+, ltqs
+: l2t2p1lst): d3pat1lst =
+(
+case+ d3ps of
+|list_nil() => list_nil()
+|list_cons
+(d3p1, d3ps) =>
+(
+case+ ltqs of
+|list_nil() => list_nil()
+|list_cons
+(ltq1, ltqs) =>
+let
+val+
+S2LAB(lab1, t2q1) = ltq1
+val d3p1 =
+(
+d3pat1_mkof$d3pt2q
+(      d3p1 , t2q1      ))
+in//let
+list_cons
+(d3p1, f0_d3ps$ltqs(d3ps, ltqs))
+end//let
+)(*case+*)//end-of-[list_cons(...)]
+)(*case+*)//end-of-[f0_d3ps$ltqs(...)]
+//
+}(*where*)//end-of-[d3typ1_mkof$d3pt2q(dpat,styp)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -235,7 +459,7 @@ loop0
 ,dvs1, list_vt_cons(dvtp, res0)))
 )
 //
-}(*where*)//end-of-[dvdtp1lst_d2vs$inner(...)]
+}(*where*)//end-of-[dvdtp1lst_d2vs$inner(vts0,dvs0)]
 //
 (* ****** ****** *)
 //
@@ -301,7 +525,7 @@ end//let//end-of-(else)
 )
 )(*case+*)//end-of-[loop1(vts0,...)]
 //
-}(*where*)//end-of-[dvdtp1lst_d2vs$outer(...)]
+}(*where*)//end-of-[dvdtp1lst_d2vs$outer(vts0,dvs0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
