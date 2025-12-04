@@ -172,6 +172,7 @@ HX-2025-10-15:
 Wed Oct 15 05:24:57 PM EDT 2025
 *)
 //
+local
 //
 fun
 f0_labelize
@@ -192,6 +193,8 @@ list_cons(ltp1,f0_labelize(t2qs,i0+1))
 end (*let*)
 ) (*case+*) // end-[f0_labelize(...)]
 //
+(* ****** ****** *)
+in//local
 (* ****** ****** *)
 //
 #implfun
@@ -240,6 +243,65 @@ prerrsln("s2typ1_tup0: t2qs = ", t2qs)
 }(*where*)//end-of-[s2typ1_tup0(npf1,t2qs)]
 //
 (* ****** ****** *)
+//
+#implfun
+s2typ1_rcd2
+(trcd ,npf1, ltqs) =
+let
+//
+val s2t0 =
+(
+case+ trcd of
+|
+TRCDflt0() =>
+(
+let
+(*
+val s2t0 =
+the_sort2_type(*0*)
+*)
+val linq =
+l2t2p1lst_linq(ltqs)
+val prfq =
+l2t2p1lst_prfq(ltqs)
+//
+in//let
+if prfq
+then
+(
+if linq
+then the_sort2_view
+else the_sort2_prop)
+else
+(
+if linq
+then the_sort2_vwtp
+else the_sort2_type) end)
+//let//end-of-[TRCDflt0()]
+//
+|
+TRCDbox0 => the_sort2_tbox(*0*)
+|
+TRCDbox1 => the_sort2_vtbx(*0*)
+//
+)(*case+(trcd)-of*)//end(val(s2t0))
+//
+in//let
+(
+s2typ1_make_sort$node(
+  s2t0, T2P1trcd(trcd, npf1, ltqs)))
+end where
+{
+//
+val () =
+prerrsln("s2typ1_rcd2: npf1 = ", npf1)
+val () =
+prerrsln("s2typ1_rcd2: ltqs = ", ltqs)
+//
+}(*where*)//end-of-[s2typ1_rcd2(npf1,t2qs)]
+//
+(* ****** ****** *)
+endloc//end-of-(local(s2typ1_tup0/tup1/rcd2(...))]
 (* ****** ****** *)
 //
 (***********************************************************************)

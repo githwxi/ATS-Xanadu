@@ -732,15 +732,65 @@ t3q0.node() of
 (
 s2typ1_none0((*void*)))
 //
-|T3P1styp(t2q0) => (t2q0)
+|T3P1styp(t2q1) => (t2q1)
+//
+|
+T3P1dvar(d2v1) =>
+let
+val t3q1 =
+envltck_dvar$take(env0, d2v1)
+in//let
+envltck_dtyp$eval(env0, t3q1)
+end//let//end-of-[T3P1dvar(d2v1)]
+//
+|
+T3P1trcd
+(trcd, npf1, ltqs) =>
+let
+//
+val ltqs = f0_ltqs(env0, ltqs)
+//
+in//let
+(
+  s2typ1_rcd2(trcd, npf1, ltqs))
+end//let//end-of-[T3P1trcd(trcd,...)]
 //
 ) where
 {
 //
-(*
+fun
+f0_ltqs
+( env0:
+! envltck
+, ltqs
+: l3t3p1lst): l2t2p1lst =
+(
+case+ ltqs of
+|list_nil
+( (*void*) ) => list_nil()
+|list_cons
+(ltq1, ltqs) =>
+let
+val+
+D3LAB
+(lab1, t3q1) = ltq1
+val t2q1 =
+envltck_dtyp$eval(env0, t3q1)
+in//let
+//
+let
+val ltq1 =
+(
+  S2LAB(lab1, t2q1))
+in//let
+list_cons(ltq1, f0_ltqs(env0, ltqs))
+end//let
+//
+end//let
+)(*case+*)//end-of-[f0_ltqs(env0,ltqs)]
+//
 val () =
 prerrsln("envltck_dtyp$eval: t3q0 = ", t3q0)
-*)
 //
 }(*where*)//end-of-[envltck_dtyp$eval(env0,...)]
 //
@@ -1539,6 +1589,31 @@ val vtps = dtpstk_vtsift0(dtpstk)
 }
 //
 )(*case+*)//end-of-[envltck_vtsift0(env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envltck_dlft$updt
+(env0, dlft, dtyp) =
+(
+case+
+dlft.node() of
+//
+|D3E1var(dvar) =>
+(
+envltck_dvar$updt
+(env0, dvar, dtyp))
+//
+|
+_(*otherwise*) => (   (*deadcode*)   )
+) where
+{
+val (  ) =
+prerrsln("envltck_dlft$updt: dlft = ", dlft)
+val (  ) =
+prerrsln("envltck_dlft$updt: dtyp = ", dtyp)
+}(*where*)//end-of-[envltck_dlft$updt(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

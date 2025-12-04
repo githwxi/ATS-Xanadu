@@ -40,6 +40,10 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../SATS/staexp1.sats"
+#staload
+"./../SATS/staexp2.sats"
+#staload
 "./../SATS/statyp2.sats"
 #staload
 "./../SATS/dynexp3.sats"
@@ -239,11 +243,58 @@ lvl0 =
 errvl(d3ps) in//let
 //
 d3pat1_errck
-( lvl0+1
-, d3pat1_make_lctn$styp$node
+(
+lvl0+1,
+d3pat1_make_lctn$styp$node
   (loc0, t2q0, D3P1tup0(npf1, d3ps)))
 //
 endlet//end-of-[d3pat1_tup0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3pat1_argtp_errck
+(loc0: loc_t
+,t2q0: s2typ1
+,d3p1: d3pat1
+,t2q2: s2typ1   ): d3pat1 =
+let
+//
+val
+lvl0 =
+errvl(d3p1) in//let
+//
+d3pat1_errck
+(
+lvl0+1,
+d3pat1_make_lctn$styp$node
+  (loc0, t2q0, D3P1argtp(d3p1, t2q2)))
+//
+endlet//end-of-[d3pat1_argtp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3pat1_annot_errck
+(loc0: loc_t
+,t2q0: s2typ1
+,d3p1: d3pat1
+,s1e2: (s1exp)
+,s2e2: (s2exp)
+,t2q2: (s2typ1) ): d3pat1 =
+let
+//
+val
+lvl0 =
+errvl(d3p1) in//let
+//
+d3pat1_errck(
+lvl0+1,
+d3pat1_make_lctn$styp$node
+(loc0
+,t2q0,D3P1annot(d3p1,s1e2,s2e2,t2q2)))
+//
+endlet//end-of-[d3pat1_annot_errck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -569,6 +620,13 @@ dpat.node() of
 (
   f0_tup0(dpat, err0))
 //
+|D3P1argtp _ =>
+(
+  f0_argtp(dpat, err0))
+|D3P1annot _ =>
+(
+  f0_annot(dpat, err0))
+//
 | _(*otherwise*) =>
 let
 val () = err0 := err0+1 in
@@ -602,12 +660,72 @@ in//let
 if // if
 (err0=nerr)
 then (d3p0) else
-let
-val loc0 = d3p0.lctn() in
 (
-d3pat1_tup0_errck(loc0,t2q0,npf1,d3ps))
-end//let
+  d3pat1_tup0_errck
+  (d3p0.lctn(), t2q0, npf1, d3ps))
 end(*let*)//end-of-[f0_tup0(d3p0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_argtp
+(d3p0: d3pat1
+,err0: &sint >> _): d3pat1 =
+let
+//
+val nerr = err0
+//
+val t2q0 = d3p0.styp()
+//
+val-
+D3P1argtp
+(d3p1,t2q2) = d3p0.node()
+//
+val
+d3p1 = d3pat1_tryltck(d3p1, err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (d3p0) else
+(
+  d3pat1_argtp_errck
+  (d3p0.lctn(), t2q0, d3p1, t2q2))
+end(*let*)//end-of-[f0_argtp(d3p0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_annot
+(d3p0: d3pat1
+,err0: &sint >> _): d3pat1 =
+let
+//
+val nerr = err0
+//
+val t2q0 = d3p0.styp()
+//
+val-
+D3P1annot
+(d3p1
+,s1e2
+,s2e2,t2q2) = d3p0.node()
+//
+val
+d3p1 = d3pat1_tryltck(d3p1, err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (d3p0) else
+let
+val loc0 =
+d3p0.lctn() in//let
+(
+d3pat1_annot_errck(
+  loc0, t2q0, d3p1, s1e2, s2e2, t2q2))
+end//let
+end(*let*)//end-of-[f0_annot(d3p0,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

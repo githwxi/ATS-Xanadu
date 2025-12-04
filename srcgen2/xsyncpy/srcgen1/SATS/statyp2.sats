@@ -68,6 +68,9 @@ D2E = "./\
 ../../../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
+#typedef
+trcdknd = $BAS.trcdknd(*0*)
+(* ****** ****** *)
 #sexpdef s2lab = $S2E.s2lab
 (* ****** ****** *)
 #sexpdef sort2 = $T2P.sort2
@@ -173,8 +176,7 @@ s2varlst(*args*), s2typ1(*body*))
 *)
 //
 |T2P1trcd of
-(
-$BAS.trcdknd,sint(*npf*),l2t2p1lst)
+(trcdknd, sint(*npf*), l2t2p1lst)
 //
 (* ****** ****** *)
 //

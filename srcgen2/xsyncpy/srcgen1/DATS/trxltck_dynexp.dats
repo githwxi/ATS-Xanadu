@@ -524,7 +524,7 @@ end//let//end-of-[fd_flat(d3e0,...)]
 //
 (* ****** ****** *)
 //
-(*
+// (*
 val loc0 = d3e0.lctn()
 val (  ) =
 prerrsln("d3fag1_aftck: loc0 = ", loc0)
@@ -532,7 +532,7 @@ val (  ) =
 prerrsln("d3fag1_aftck: d3e0 = ", d3e0)
 val (  ) =
 prerrsln("d3fag1_aftck: styp = ", styp)
-*)
+// *)
 //
 (* ****** ****** *)
 //
@@ -1208,19 +1208,20 @@ val d3e1 =
 //
 val t3q1 = d3e1.dtyp((*void*))
 //
-(*
+// (*
 val (  ) =
 prerrsln
 ("f0_proj(ltck): d3e1 = ", d3e1)
 val (  ) =
 prerrsln
 ("f0_proj(ltck): t3q1 = ", t3q1)
-*)
+// *)
 //
 in//let
 //
 case+
 t3q1.node() of
+//
 |T3P1styp
 (  t2q1  ) =>
 (
