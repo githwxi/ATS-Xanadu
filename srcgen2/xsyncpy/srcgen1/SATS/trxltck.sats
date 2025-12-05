@@ -275,6 +275,9 @@ envltck_dmxq$updt // tuple handling
 //
 fun
 envltck_dlet$dtnm
+(env0: !envltck, dexp: d3exp1): (void)
+fun
+envltck_dval$dtnm
 (env0: !envltck, d3cl: d3ecl1): (void)
 //
 (* ****** ****** *)

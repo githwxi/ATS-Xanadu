@@ -1724,15 +1724,15 @@ end//let
 (* ****** ****** *)
 //
 #implfun
-envltck_dlet$dtnm
-( env0, d3cl ) =
+envltck_dval$dtnm
+( env0 , d3cl ) =
 (
 case+
 d3cl.node() of
-|
-D3C1valdclst
+|D3C1valdclst
 (tknd, d3vs) =>
-f0_d3vs(env0, d3vs)
+(
+f0_d3vs(env0, d3vs))
 |_(*otherwise*) => ( (*void*) )
 ) where
 {
