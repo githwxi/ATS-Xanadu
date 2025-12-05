@@ -1725,15 +1725,8 @@ end//let
 //
 #implfun
 envltck_dlet$dtnm
-( env0 , dexp ) =
+( env0 , dcls ) =
 let
-//
-val-
-D3E1let1
-(dcls
-,d3e1,dvts) =
-(
- dexp.node((*0*)))
 //
 val dcls =
 list_reverse_vt(dcls)
@@ -1763,7 +1756,13 @@ val () = envltck_dval$dtnm(env0, dcl1)
 )(*case+*)//end-of-[f0_list(env0, dcls)]
 //
 }(*where*)
-end(*let*)//end-of-[envltck_dlet$dtnm(env0,dexp)]
+end where
+{
+//
+val () =
+prerrsln("envltck_dlet$dtnm: dexp = ", dexp)
+//
+}(*where*)//end-of-[envltck_dlet$dtnm(env0,dexp)]
 //
 (* ****** ****** *)
 //
