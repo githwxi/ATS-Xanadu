@@ -125,13 +125,6 @@ envltck_dtyplst$eval
 //
 (* ****** ****** *)
 //
-fun
-envltck_dvdtp1lst$eval
-( env0:
-! envltck, dvts: dvdtp1lst): dvstp1lst
-//
-(* ****** ****** *)
-//
 (*
 HX-2025-11-22:
 This is just [envltck_dvar$dpsh]!
@@ -147,6 +140,14 @@ envltck_dvar$updt
 ( env0:
 ! envltck
 , dvar: d2var, dtyp: d3typ1): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+envltck_dvdtp1lst$eval
+( env0:
+! envltck, dvts: dvdtp1lst): dvstp1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -268,6 +269,13 @@ envltck_dmxq$updt // tuple handling
 ( env0:
 ! envltck
 , dmxq: d3exp1, dgrt: d3typ1): d3typ1
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+envltck_dlet$dtnm
+(env0: !envltck, d3cl: d3ecl1): (void)
 //
 (* ****** ****** *)
 (* ****** ****** *)

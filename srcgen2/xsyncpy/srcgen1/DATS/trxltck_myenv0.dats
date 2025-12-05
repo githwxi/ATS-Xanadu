@@ -1723,6 +1723,74 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+envltck_dlet$dtnm
+( env0, d3cl ) =
+(
+case+
+d3cl.node() of
+|
+D3C1valdclst
+(tknd, d3vs) =>
+f0_d3vs(env0, d3vs)
+|_(*otherwise*) => ( (*void*) )
+) where
+{
+//
+fun
+f0_dexp
+( env0:
+! envltck
+, dexp: d3exp1): void =
+if
+d3exp1_lftq(dexp)
+then
+(
+envltck_dlft$updt
+(env0, dexp, t3q1))
+where{
+//
+val t3q0 = dexp.dtyp()
+val t2q0 =
+(
+  envltck_dtyp$eval(env0, t3q0))
+val t3q1 = d3typ1_styp$make(t2q0)
+//
+}(*where*)//end-of-[f0_dexp(env0,dexp)]
+//
+fun
+f0_dval
+( env0: !envltck
+, dval: d3valdcl1): void =
+let
+//
+val
+tdxp =
+dval.tdxp() in//let
+(
+case+ tdxp of
+|TEQD3EXP1none
+(  (*void*)  ) => ((*void*))
+|TEQD3EXP1some
+( tkeq, dexp ) => f0_dexp(env0, dexp))
+end(*let*)//end-of-[f0_dval(env0,dval)]
+//
+fun
+f0_d3vs
+( env0: !envltck
+, d3vs: d3valdcl1lst): void =
+(
+case+ d3vs of
+|list_nil() => ()
+|list_cons(d3v1, d3vs) =>
+(
+f0_dval(env0, d3v1); f0_d3vs(env0, d3vs)))
+//
+}(*where*)//end-of-[envltck_dlet$dtnm(env0,d3cl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trxltck_myenv0.dats] *)
 (***********************************************************************)
