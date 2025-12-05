@@ -650,7 +650,6 @@ prerrsln("envltck_dvar$find: dvar = ", dvar)
 }(*where*)//end-of-[envltck_dvar$find(env0,...)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #implfun
 envltck_dvar$take
@@ -693,7 +692,6 @@ prerrsln("envltck_dvar$take: dvar = ", dvar)
 }(*where*)//end-of-(envltck_dvar$take(env0,...))
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #implfun
 envltck_dvar$updt
@@ -718,6 +716,27 @@ prerrsln("envltck_dvar$updt: t3q0 = ", t3q0)
 //
 }(*where*)//end-of-(envltck_dvar$updt(env0,...))
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envltck_dlft$find
+  (env0, dlft) =
+(
+case+
+dlft.node() of
+//
+|D3E1var(dvar) =>
+(
+ envltck_dvar$find(env0, dvar))
+|_(*otherwise*) => d3typ1_none0((*0*))
+) where
+{
+//
+val () =
+prerrsln("envltck_dlft$find: dlft = ", dlft)
+//
+}(*where*)//end-of-[envltck_dlft$find(env0,...)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -1759,8 +1778,10 @@ val () = envltck_dval$dtnm(env0, dcl1)
 end where
 {
 //
+(*
 val () =
-prerrsln("envltck_dlet$dtnm: dexp = ", dexp)
+prerrsln("envltck_dlet$dtnm: dcls = ", dcls)
+*)
 //
 }(*where*)//end-of-[envltck_dlet$dtnm(env0,dexp)]
 //
@@ -1793,7 +1814,9 @@ envltck_dlft$updt
 (env0, dexp, t3q1))
 where{
 //
-val t3q0 = dexp.dtyp()
+val t3q0 =
+(
+  envltck_dlft$find(env0, dexp))
 val t2q0 =
 (
   envltck_dtyp$eval(env0, t3q0))
@@ -1829,7 +1852,12 @@ case+ d3vs of
 (
 f0_dval(env0, d3v1); f0_d3vs(env0, d3vs)))
 //
-}(*where*)//end-of-[envltck_dlet$dtnm(env0,d3cl)]
+(* ****** ****** *)
+//
+val () =
+prerrsln("envltck_dval$dtnm: d3cl = ", d3cl)
+//
+}(*where*)//end-of-[envltck_dval$dtnm(env0,d3cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
