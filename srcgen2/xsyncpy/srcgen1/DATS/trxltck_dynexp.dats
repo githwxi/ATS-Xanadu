@@ -944,7 +944,16 @@ d3exp1
 //
 (* ****** ****** *)
 //
-|D3E1let0 _ => f0_let0(d3e0, env0)
+|D3E1let0 _ =>
+(
+let
+val
+d3e0 =
+f0_let0
+(d3e0, env0)
+val (  ) =
+envltck_dlet$dtnm
+(  env0 , d3e0  ) in d3e0 endlet )
 (*
 |D3E1let1 _ => f0_let1(d3e0, env0)
 *)
@@ -1451,7 +1460,7 @@ val (  ) =
 //
 val dexp =
 d3exp1(loc0,
-  t3q1, D3E1let1(dcls, d3e1, vts1)) }
+  t3q1, D3E1let1(dcls, d3e1, vts1))}
 //
 end//let
 //
