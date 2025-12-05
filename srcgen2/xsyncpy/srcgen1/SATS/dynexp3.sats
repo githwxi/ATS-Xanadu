@@ -745,11 +745,17 @@ d3exp1(*lnthunk*),d3exp1lst(*frees*))
 // for lam, let, ift, and cas
 |D3E1dvdtp of
 (
-  d3exp1, dvdtp1lst(*d2var-ordered*))
+d3exp1, dvdtp1lst(*d2var-ordered*))
 //
 |D3E1annot of
-(d3exp1,
- s1exp(*given*),s2exp(*trans*),s2typ1)
+(
+d3exp1,
+s1exp(*given*),s2exp(*trans*),s2typ1)
+//
+(* ****** ****** *)
+//
+|D3E1detnm of // de-dtp-var
+(d3exp1(*source*), d3typ1(*source*))
 //
 (* ****** ****** *)
 //
@@ -757,6 +763,8 @@ d3exp1(*lnthunk*),d3exp1lst(*frees*))
 (d3exp1(*source*), s2typ1(*linear*))
 |D3E1exlin of // extra-linear
 (d3exp1(*source*), s2typ1(*linear*))
+//
+(* ****** ****** *)
 //
 // label-cast
 |D3E1labck of
