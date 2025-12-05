@@ -1724,6 +1724,50 @@ end//let
 (* ****** ****** *)
 //
 #implfun
+envltck_dlet$dtnm
+( env0 , dexp ) =
+let
+//
+val-
+D3E1let1
+(dcls
+,d3e1,dvts) =
+(
+ dexp.node((*0*)))
+//
+val dcls =
+list_reverse_vt(dcls)
+//
+in//let
+(
+  f0_list(env0, dcls)) where
+{
+//
+fun
+f0_list
+( env0:
+! envltck
+, dcls: list_vt(d3ecl1)): void =
+(
+case+ dcls of
+| ~
+list_vt_nil() => ( (*void*) )
+| ~
+list_vt_cons
+(dcl1, dcls) =>
+(
+f0_list(env0, dcls)) where
+{
+val () = envltck_dval$dtnm(env0, dcl1)
+}
+)(*case+*)//end-of-[f0_list(env0, dcls)]
+//
+}(*where*)
+end(*let*)//end-of-[envltck_dlet$dtnm(env0,dexp)]
+//
+(* ****** ****** *)
+//
+#implfun
 envltck_dval$dtnm
 ( env0 , d3cl ) =
 (
