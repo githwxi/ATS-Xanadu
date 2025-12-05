@@ -114,6 +114,13 @@ envltck_dvar$take
 //
 (* ****** ****** *)
 //
+fun // HX-2025-12-01: [dlft]
+envltck_dlft$find // is l-value!
+( env0:
+! envltck, dlft: d3exp1): d3typ1
+//
+(* ****** ****** *)
+//
 fun
 envltck_dtyp$eval
 ( env0:
