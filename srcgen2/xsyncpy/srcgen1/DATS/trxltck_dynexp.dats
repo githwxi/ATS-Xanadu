@@ -944,16 +944,7 @@ d3exp1
 //
 (* ****** ****** *)
 //
-|D3E1let0 _ =>
-(
-let
-val
-d3e0 =
-f0_let0
-(d3e0, env0)
-val (  ) =
-envltck_dlet$dtnm
-(  env0 , d3e0  ) in d3e0 endlet )
+|D3E1let0 _ => f0_let0(d3e0, env0)
 (*
 |D3E1let1 _ => f0_let1(d3e0, env0)
 *)
@@ -1409,6 +1400,10 @@ where{
 val t3q1 = d3e1.dtyp((*0*))
 val t2q1 =
 envltck_dtyp$eval(env0, t3q1)}
+//
+val (  ) =
+(
+envltck_dlet$dtnm(env0, dcls))
 //
 val d2vs = envltck_dvslet0(env0)
 val vts0 = envltck_vtslet0(env0)
