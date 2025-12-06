@@ -96,6 +96,8 @@ dtyp.node() of
 |T3P1dvar _ => false
 |T3P1lvar _ => false
 //
+|T3P1dlft _ => f0_dlft(dtyp)
+//
 |T3P1tcon _ => f0_tcon(dtyp)
 |T3P1trcd _ => f0_trcd(dtyp)
 //
@@ -103,6 +105,16 @@ dtyp.node() of
 //
 ) where
 {
+//
+fun
+f0_dlft
+(dtyp: d3typ1): bool =
+(
+  d3typ1_linq(t3q1))
+where{
+val-
+T3P1dlft
+(   t3q1   ) = dtyp.node()}
 //
 fun
 f0_tcon
@@ -180,6 +192,9 @@ case+
 dexp.node() of
 //
 |D3E1var _ => (   true   )
+//
+|D3E1flat
+(  d3e1  ) => d3exp1_lftq(d3e1)
 //
 |D3E1pcon
 (dcon
@@ -261,16 +276,193 @@ dcls.node() of
 (* ****** ****** *)
 //
 #implfun
+d3typ1_t1pize
+  ( t3q0 ) =
+(
+case+
+t3q0.node() of
+//
+|
+T3P1none() => (t3q0)
+//
+|
+T3P1styp(t2q1) =>
+let
+val
+t2q0 = t3q0.styp()
+val
+t2q1 =
+s2typ1_t1pize(t2q1)
+in//let
+//
+d3typ1(t2q0, T3P1styp(t2q1))
+//
+end//let//end-of-(T3P1styp())
+//
+|_(*otherwise*) =>
+let
+val
+t2q0 = t3q0.styp()
+val
+t2q1 = s2typ1_t0pize(t2q0)
+in//let
+//
+d3typ1(t2q0, T3P1styp(t2q1))
+//
+end//let//end-of-(otherwise(...))
+//
+) where
+{
+//
+val () =
+prerrsln
+("d3typ1_t1pize: t3q0 = ", t3q0)
+//
+#symload
+d3typ1 with d3typ1_make_styp$node
+//
+}(*where*)//end-of-[d3typ1_t1pize(t3q0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3typ1_trcdize
+  (  dtyp  ) =
+(
+case+
+dtyp.node() of
+|T3P1styp(styp) =>
+(
+case+
+styp.node() of
+|T2P1trcd
+(trcd
+,npf1, ltqs) =>
+let
+val t2rt =
+d3typ1_styp$get(dtyp)
+val ltqs = f0_ltqs(ltqs)
+in//let
+d3typ1_make_styp$node
+(t2rt, T3P1trcd(trcd, npf1, ltqs))
+end//let
+|_(*otherwise*) => (     dtyp     )
+)
+|_(*otherwise*) => (     dtyp     )
+) where
+{
+//
+fun
+f0_ltqs
+( ltqs
+: l2t2p1lst): l3t3p1lst =
+(
+case+ ltqs of
+|list_nil
+( (*void*) ) => list_nil()
+|list_cons
+(ltq1, ltqs) =>
+let
+val+
+S2LAB
+(lab1, t2q1) = ltq1
+val t3q1 =
+d3typ1_styp$make(t2q1)
+val ltq1 = D3LAB(lab1, t3q1)
+in
+(
+  list_cons( ltq1, f0_ltqs(ltqs) ) )
+end//let//end-of-[list_cons(ltq1,ltqs)]
+)
+//
+val () =
+prerrsln("d3typ1_trcdize: dtyp = ", dtyp)
+//
+}(*where*)//end-of(d3typ1_trcdize( dtyp ))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3typ1_out$flat
+  (  dtyp  ) =
+(
+case+
+dtyp.node() of
+//
+|T3P1styp
+(   styp   ) =>
+(
+case+
+styp.node() of
+|T2P1lft(t2q1) =>
+(
+  d3typ1_styp$make(t2q1))
+|_(*otherwise*) => d3typ1_none0())
+//
+|T3P1dlft(t3q1) => (      t3q1      )
+//
+|_(*otherwise*) => d3typ1_none0((*0*))
+//
+)(*case+*)//end-of-[d3typ1_out$flat(dtyp)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3typ1_lab$proj
+  (dtyp, lab0) =
+(
+case+
+dtyp.node() of
+//
+|T3P1styp
+(   styp   ) =>
+(
+case+
+styp.node() of
+|T2P1trcd
+(trcd
+,npf1, ltqs) =>
+d3typ1_styp$make(
+  l2t2p1lst_lab$proj(ltqs, lab0))
+|_(*otherwise*) => d3typ1_none0((*0*))
+)
+//
+|T3P1trcd
+(trcd
+,npf1, ltqs) =>
+(
+  l3t3p1lst_lab$proj(ltqs, lab0))
+//
+|_(*otherwise*) => d3typ1_none0((*0*))
+//
+) where
+{
+//
+// (*
+val (  ) =
+prerrsln("d3typ1_lab$proj: dtyp = ", dtyp)
+val (  ) =
+prerrsln("d3typ1_lab$proj: lab0 = ", lab0)
+// *)
+//
+}(*where*)//end-of-[d3typ1_lab$proj(dtyp,...)]
+//
+(* ****** ****** *)
+//
+#implfun
 l3t3p1lst_lab$proj
   (ltqs, lab0) =
 (
 case+ ltqs of
-|
-list_nil
+//
+|list_nil
 ( (*void*) ) =>
-d3typ1_none0((*void*))
-|
-list_cons
+(
+d3typ1_none0((*void*)))
+//
+|list_cons
 (ltq1, ltqs) =>
 let
 val+
@@ -279,7 +471,9 @@ D3LAB
 in//let
 if // if
 (lab0 = lab1) then t3q1
-else l3t3p1lst_lab$proj(ltqs, lab0) end
+else l3t3p1lst_lab$proj(ltqs, lab0)
+end//let//end-of-[list_cons(ltq1,ltqs)]
+//
 )(*case+*)//end-of-[l3t3p1lst_lab$proj(ltqs,...)]
 //
 (* ****** ****** *)
@@ -292,44 +486,76 @@ d3typ1_lab$fset
 case+
 dtyp.node() of
 //
-|
-T3P1styp(styp) =>
+|T3P1trcd
+(trcd
+,npf1, ltqs) =>
+let
+val ltqs =
 (
-d3typ1(
-t2rt, T3P1styp(styp)))
-where
-{
-//
+l3t3p1lst_lab$fset
+(ltqs, lab0, t3q0))
 val t2rt =
 (
-  d3typ1_styp$get(dtyp))
-//
-val t2q0 =
+d3typ1_styp$get(dtyp))
+in//let
 (
-case-
-t3q0.node() of
-|T3P1styp(t2q0) => t2q0)
-//
-val styp =
-s2typ1_lab$fset(styp, lab0, t2q0)
-//
-}(*where*)//end-of-[T3P1styp(styp)]
+d3typ1(t2rt,
+  T3P1trcd(trcd, npf1, ltqs)))
+end//let//end-of-[T3P1trcd(...)]
 //
 |_(*non-T3P1tuple*) => (    dtyp    )
 //
 ) where
 {
 //
-(*
-val () =
+val dtyp = d3typ1_trcdize(dtyp)
+//
+// (*
+val (  ) =
 prerrsln("d3typ1_lab$fset: dtyp = ", dtyp)
-val () =
+val (  ) =
 prerrsln("d3typ1_lab$fset: lab0 = ", lab0)
-val () =
+val (  ) =
 prerrsln("d3typ1_lab$fset: t3q0 = ", t3q0)
-*)
+// *)
 //
 }(*where*)//end-of-[d3typ1_lab$fset(dtyp,lab0,t3q0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+l3t3p1lst_lab$fset
+(ltqs, lab0, t3q0) =
+(
+case+ ltqs of
+//
+|list_nil
+( (*void*) ) => 
+(
+  list_nil((*void*)))
+//
+|list_cons
+(ltq1, ltqs) =>
+let
+val+
+D3LAB(lab1, t3q1) = ltq1
+in//let
+//
+if // if
+(lab0=lab1)
+then
+let
+val ltq1 =
+D3LAB(lab0, t3q0)
+in//let
+list_cons(ltq1, ltqs) end
+else
+list_cons(ltq1,
+l3t3p1lst_lab$fset(ltqs, lab0, t3q0))
+end//let//end-of-[list_cons(ltq1,ltqs)]
+//
+)(*case+*)//end-of-[l3t3p1lst_lab$fset(ltqs,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

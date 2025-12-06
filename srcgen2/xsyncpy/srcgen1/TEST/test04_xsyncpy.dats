@@ -13,6 +13,18 @@ Fri Oct 31 02:17:03 AM EDT 2025
 "prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+fun
+<x0:vt>
+s1wap_cbrf
+(xx: &(x0, x0)): void =
+let
+val tt = xx.0 in
+(
+  xx.0 := xx.1; xx.1 := tt )
+end//let//end-of-[s1wap_cbrf(xx)]
+(* ****** ****** *)
+////
+(* ****** ****** *)
 //
 (*
 #impltmp
@@ -94,7 +106,6 @@ val () = g_free(xx.1)
 val (x1, x2) = xx in x1 end
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 fun
@@ -108,6 +119,7 @@ val tt = xx.0 in
 end//let//end-of-[s1wap_cbrf(xx)]
 //
 (* ****** ****** *)
+////
 (* ****** ****** *)
 //
 fun
