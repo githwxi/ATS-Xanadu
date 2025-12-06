@@ -393,6 +393,15 @@ d3typ1 with d3typ1_make_styp$node
 (* ****** ****** *)
 //
 fun
+d3typ1_t1pize(d3typ1): d3typ1
+//
+fun
+d3typ1_trcdize
+(t3q0: d3typ1(*record*)): d3typ1
+//
+(* ****** ****** *)
+//
+fun
 d3typ1_fprint
 (dtyp: d3typ1, out0: FILR): void
 #symload fprint with d3typ1_fprint of 1000
@@ -1333,11 +1342,22 @@ d3pat1_d2v$folditm(xs: d3pat1, r0: r0): r0
 (* ****** ****** *)
 //
 fun
+d3typ1_out$flat(d3typ1): d3typ1
+//
+(* ****** ****** *)
+//
+fun
+d3typ1_lab$proj
+(dtyp: d3typ1, lab0: label): d3typ1
+//
+fun
 d3typ1lst_ind$proj
 (t3qs: l3t3p1lst, ind0: sint): d3typ1
 fun
 l3t3p1lst_lab$proj
 (ltqs: l3t3p1lst, lab0: label): d3typ1
+//
+(* ****** ****** *)
 //
 fun
 d3typ1_ind$fset

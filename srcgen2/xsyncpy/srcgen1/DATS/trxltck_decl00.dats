@@ -74,16 +74,14 @@ d3ecl1_trxltck
 (d3cl, env0) =
 let
 //
-val loc0 = d3cl.lctn()
-//
-(*
+// (*
 val () =
 prerrsln("\
-d3ecl_trxltck: loc0 = ", loc0)
+d3ecl1_trxltck: loc0 = ", loc0)
 val () =
 prerrsln("\
-d3ecl_trxltck: d3cl = ", d3cl)
-*)
+d3ecl1_trxltck: d3cl = ", d3cl)
+// *)
 //
 in//let
 //

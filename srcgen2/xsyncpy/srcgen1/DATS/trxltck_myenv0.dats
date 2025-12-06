@@ -100,65 +100,6 @@ d2var_equal
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-s2typ1_linq
-(t2q0: s2typ1): bool =
-(
-  sort2_linq(t2q0.sort()))
-#symload linq with s2typ1_linq
-//
-fun
-d3typ1_linq
-(t3q0: d3typ1): bool =
-(
-case+
-t3q0.node() of
-|T3P1none() => false
-|T3P1styp(t2q1) => linq(t2q1)
-|_(*otherwise*) => (  false  )
-)(*case+*)//endof(d3typ1_linq)
-#symload linq with d3typ1_linq
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-d3typ1_delin
-(t3q0: d3typ1): d3typ1 =
-(
-case+
-t3q0.node() of
-//
-|
-T3P1none() => (t3q0)
-//
-|
-T3P1styp(t2q1) =>
-let
-val
-t2q0 = t3q0.styp()
-val
-t2q2 =
-s2typ1_t1pize(t2q1)
-in//let
-//
-d3typ1(t2q0, T3P1styp(t2q2))
-//
-end//let//end-of-(T3P1styp())
-//
-|_(*otherwise*) => (   t3q0   )
-//
-) where
-{
-//
-#symload
-d3typ1 with d3typ1_make_styp$node
-//
-}(*where+*)//end-of-[d3typ1_delin]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 datavwtp dtpstk =
 //
 |dtpstk_nil of ()
@@ -642,10 +583,10 @@ in//let
 end where
 {
 //
-(*
+// (*
 val () =
 prerrsln("envltck_dvar$find: dvar = ", dvar)
-*)
+// *)
 //
 }(*where*)//end-of-[envltck_dvar$find(env0,...)]
 //
@@ -656,39 +597,43 @@ envltck_dvar$take
   (env0, dvar) =
 let
 //
+#symload
+linq with d3typ1_linq
+//
 val t3q0 =
 envltck_dvar$find(env0, dvar)
 //
+val (  ) =
+prerrsln("\
+envltck_dvar$take: t3q0 = ", t3q0)
+//
 in//let
 //
-if
+if // if
 not(
-linq(t3q0))
-then t3q0 else
+linq(t3q0)) then t3q0 else
 let
 //
 (*
 val t3q1 = t3q0
 *)
-val t3q1 = d3typ1_delin(t3q0)
+val t3q1 = d3typ1_t1pize(t3q0)
 //
 in//let
 //
-t3q0 where
+(
+  t3q0 ) where
 {
 val () =
-envltck_dvar$updt(env0, dvar, t3q1)
-}
+envltck_dvar$updt(env0, dvar, t3q1) }
 end//let
 //
 end where
 {
-//
-(*
+// (*
 val () =
 prerrsln("envltck_dvar$take: dvar = ", dvar)
-*)
-//
+// *)
 }(*where*)//end-of-(envltck_dvar$take(env0,...))
 //
 (* ****** ****** *)
@@ -707,12 +652,12 @@ dtpstk_updt(d2v0, t3q0, dtpstk))
 ) where
 {
 //
-(*
+// (*
 val () =
 prerrsln("envltck_dvar$updt: d2v0 = ", d2v0)
 val () =
 prerrsln("envltck_dvar$updt: t3q0 = ", t3q0)
-*)
+// *)
 //
 }(*where*)//end-of-(envltck_dvar$updt(env0,...))
 //
@@ -726,9 +671,30 @@ envltck_dlft$find
 case+
 dlft.node() of
 //
-|D3E1var(dvar) =>
+|D3E1var
+(   dvar   ) =>
 (
- envltck_dvar$find(env0, dvar))
+envltck_dvar$find(env0, dvar))
+//
+|D3E1flat
+(   d3e1   ) =>
+(
+d3typ1_out$flat(t3q1))
+where{
+val t3q1 =
+(
+envltck_dlft$find(env0, d3e1))}
+//
+|D3E1proj
+(tknd
+,lab1, d3e1) =>
+(
+d3typ1_lab$proj(t3q1, lab1))
+where{
+val t3q1 =
+(
+envltck_dlft$find(env0, d3e1))}
+//
 |_(*otherwise*) => d3typ1_none0((*0*))
 ) where
 {
@@ -761,6 +727,14 @@ envltck_dvar$take(env0, d2v1)
 in//let
 envltck_dtyp$eval(env0, t3q1)
 end//let//end-of-[T3P1dvar(d2v1)]
+//
+|
+T3P1dlft(t3q1) =>
+(
+s2typ1_lft(t2q1)) where
+{
+val t2q1 =
+envltck_dtyp$eval(env0, t3q1)}
 //
 |
 T3P1trcd
@@ -905,12 +879,12 @@ dtpstk_cons(dvar, t3q0, dtpstk)))
 where
 {
 //
-(*
+// (*
 val () =
 prerrsln("envltck_dvar$dpsh: dvar = ", dvar)
 val () =
 prerrsln("envltck_dvar$dpsh: t3q1 = ", t3q0)
-*)
+// *)
 //
 }(*where*)//end-of-(envltck_dvar$dpsh(env0,...))
 //
@@ -1163,7 +1137,7 @@ case+ env0 of
 !dtpstk, stkmap) =>
 (
 dtpstk :=
-dtpstk_cons(dvtp.0, dvtp.1, dtpstk)) }
+dtpstk_updt(dvtp.0, dvtp.1, dtpstk)) }
 )(*case+*)//end-of-[envltck_dvts$updt(env0,...)]
 //
 (* ****** ****** *)
@@ -1295,8 +1269,7 @@ case+ env0 of
 (
   d2vs ) where
 {
-val d2vs = dtpstk_dvslet0(dtpstk)
-}
+val d2vs = dtpstk_dvslet0(dtpstk) }
 //
 )(*case+*)//end-of-[envltck_dvslet0(env0)]
 //
@@ -1614,24 +1587,47 @@ val vtps = dtpstk_vtsift0(dtpstk)
 //
 #implfun
 envltck_dlft$updt
-(env0, dlft, dtyp) =
+(env0, dlft, t3q0) =
 (
 case+
 dlft.node() of
 //
-|D3E1var(dvar) =>
+|D3E1var
+(  dvar  ) =>
 (
 envltck_dvar$updt
-(env0, dvar, dtyp))
+(env0, dvar, t3q0))
+//
+|D3E1flat
+(  d3e1  ) =>
+(
+envltck_dlft$updt
+(env0, d3e1, t3q0))
+where{
+val t3q0 =
+d3typ1_dlft$make(t3q0)}
+//
+|D3E1proj
+(tknd
+,lab1, d3e1) =>
+(
+envltck_dlft$updt
+(env0, d3e1, t3q1))
+where{
+val t3q1 = d3e1.dtyp((*0*))
+val t3q1 =
+d3typ1_lab$fset(t3q1, lab1, t3q0)}
 //
 |
 _(*otherwise*) => (   (*deadcode*)   )
 ) where
 {
+//
 val (  ) =
 prerrsln("envltck_dlft$updt: dlft = ", dlft)
 val (  ) =
-prerrsln("envltck_dlft$updt: dtyp = ", dtyp)
+prerrsln("envltck_dlft$updt: t3q0 = ", t3q0)
+//
 }(*where*)//end-of-[envltck_dlft$updt(env0,...)]
 //
 (* ****** ****** *)
