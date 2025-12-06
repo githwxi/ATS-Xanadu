@@ -13,18 +13,6 @@ Fri Oct 31 02:17:03 AM EDT 2025
 "prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-fun
-<x0:vt>
-s1wap_cbrf
-(xx: &(x0, x0)): void =
-let
-val tt = xx.0 in
-(
-  xx.0 := xx.1; xx.1 := tt )
-end//let//end-of-[s1wap_cbrf(xx)]
-(* ****** ****** *)
-////
-(* ****** ****** *)
 //
 (*
 #impltmp
@@ -90,6 +78,7 @@ fun
 <x0:t0>
 tup2_proj1
 (x0: x0): x0 = dup2(x0).0
+////
 (*
 fun
 <x0:vt>

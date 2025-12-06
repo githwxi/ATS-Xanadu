@@ -187,6 +187,16 @@ val linq =
 (
   d3typ1_linq(trst))
 //
+val (  ) =
+prerrsln("\
+d3exp1_exlinize: d3e0 = ", d3e0)
+val (  ) =
+prerrsln("\
+d3exp1_exlinize: trst = ", trst)
+val (  ) =
+prerrsln("\
+d3exp1_exlinize: linq = ", linq)
+//
 in//let
 //
 if // if
@@ -197,7 +207,8 @@ let
 val loc0 = d3e0.lctn((*0*))
 val t3q0 = d3e0.dtyp((*0*))
 val trst =
-envltck_dtyp$eval(env0 , trst)
+(
+  envltck_dtyp$eval(env0, trst))
 //
 in//let
 d3exp1(
