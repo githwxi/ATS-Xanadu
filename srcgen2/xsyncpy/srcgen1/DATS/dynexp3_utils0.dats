@@ -137,6 +137,11 @@ val-
 T3P1trcd
 (trcd
 ,npf1, ltqs) = dtyp.node()
+//
+val () =
+prerrsln
+("f0_trcd: trcd = ", trcd)
+//
 in//let
 case+ trcd of
 |TRCDbox0() => false
@@ -178,6 +183,11 @@ d3typ1_linq(t3q1)
 then true else f0_ltqs(ltqs))
 end//let
 )(*case+*)//end-of-[f0_ltqs(ltqs)]
+//
+val (  ) =
+(
+  prerrsln
+  ( "d3typ1_linq: dtyp = ", dtyp ))
 //
 }(*where*)//end-of-[d3typ1_linq(dtyp)]
 //

@@ -204,12 +204,24 @@ end//let
 (trcd
 ,npf1, ltps) =>
 let
-val ltqs =
-l2t2plst_trx3cpy(ltps, env0)
+//
+val linq =
+l2t2p1lst_linq(ltqs)
+//
+val s2t0 =
+(
+if linq
+then s2t0
+else sort2_delin(s2t0))
+//
 in//let
 s2typ1
 (s2t0,T2P1trcd(trcd,npf1,ltqs))
-end//let
+end where{
+val ltqs =
+(
+  l2t2plst_trx3cpy(ltps, env0))
+}(*where*)//end-of-[T2Ptrcd(...)]
 //
 |T2Ptext
 (name, t2ps) =>
@@ -217,8 +229,10 @@ let
 val t2qs =
 s2typlst_trx3cpy(t2ps, env0)
 in//let
-s2typ1(s2t0,T2P1text(name,t2qs))
-end//let
+(
+  s2typ1
+  (s2t0, T2P1text(name, t2qs)))
+end(*let*)//end-of-[T2Ptext(...)]
 //
 (* ****** ****** *)
 |T2Pnone0() =>
@@ -239,8 +253,10 @@ end where
   val t2p0 = s2typ_hnfiz0(  t2p0  )
 //
 (*
-  val (  ) =
-  prerrsln("s2typ_trx3cpy: t2p0 = ", t2p0)
+  val (  ) = prerrsln
+    ("s2typ_trx3cpy: t2p0 = ", t2p0)
+  val (  ) = prerrsln
+    ("s2typ_trx3cpy: s2t0 = ", t2p0.sort())
 *)
 //
 }(*where*)//end-of-[s2typ_trx3cpy(t2p0,env0)]

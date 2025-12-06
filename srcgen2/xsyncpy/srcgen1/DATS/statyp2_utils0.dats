@@ -127,11 +127,28 @@ not(trcdknd_equal(knd1, knd2))
 #implfun
 s2typ1_linq(t2q0) =
 (
-  sort2_linq(t2q0.sort()))
+sort2_linq(t2q0.sort()))
+where
+{
+(*
+val () =
+prerrsln("\
+s2typ1_linq: t2q0 = ", t2q0)
+*)
+}(*where*)//end(s2typ1_linq)
+//
 #implfun
 s2typ1_prfq(t2q0) =
 (
-  sort2_prfq(t2q0.sort()))
+sort2_prfq(t2q0.sort()))
+where
+{
+(*
+val () =
+prerrsln("\
+s2typ1_prfq: t2q0 = ", t2q0)
+*)
+}(*where*)//end(s2typ1_prfq)
 //
 (* ****** ****** *)
 //
