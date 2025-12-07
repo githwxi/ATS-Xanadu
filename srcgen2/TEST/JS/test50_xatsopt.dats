@@ -25,7 +25,7 @@
 #staload
 "./../../SATS/parsing.sats"
 #staload
-"./../../SATS/preadx0.sats"
+"./../../SATS/pread00.sats"
 (* ****** ****** *)
 #staload
 "./../../SATS/staexp1.sats"
@@ -172,15 +172,15 @@
 "./../../DATS/parsing_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/preadx0.dats"
+"./../../DATS/pread00.dats"
 #include
-"./../../DATS/preadx0_staexp.dats"
+"./../../DATS/pread00_staexp.dats"
 #include
-"./../../DATS/preadx0_dynexp.dats"
+"./../../DATS/pread00_dynexp.dats"
 #include
-"./../../DATS/preadx0_decl00.dats"
+"./../../DATS/pread00_decl00.dats"
 #include
-"./../../DATS/preadx0_errmsg.dats"
+"./../../DATS/pread00_errmsg.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/xfixity.dats"

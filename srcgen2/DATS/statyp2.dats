@@ -158,7 +158,7 @@ linq
 then
 (
 case+ tknd of
-|TRCDbox0() => the_sort2_vtbx
+|TRCDbox0() => the_sort2_tbox
 |TRCDbox1() => the_sort2_vtbx
 |_(*nonbox*) => the_sort2_vwtp)
 else
@@ -267,6 +267,7 @@ val linq =
 s2typlst_linq(t2ps)
 val prfq =
 s2typlst_prfq(t2ps)
+//
 val s2t0 =
 f0_trcdknd(linq, prfq, tknd)
 //
@@ -290,6 +291,7 @@ val linq =
 l2t2plst_linq(ltps)
 val prfq =
 l2t2plst_prfq(ltps)
+//
 val s2t0 =
 f0_trcdknd(linq, prfq, tknd)
 //
@@ -303,9 +305,9 @@ s2typ_make_node
 (s2t0,T2Ptrcd(tknd,npf1,ltps))
 end//let
 //
-end // end of [s2typ_tup1(...)]
+end // end of [s2typ_rcd2(...)]
 //
-endloc//end of [local(s2typ_tup0/tup1)]
+endloc//end(local(s2typ_tup0/tup1/rcd2))
 //
 (* ****** ****** *)
 //

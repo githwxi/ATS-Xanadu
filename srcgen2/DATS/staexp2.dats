@@ -1290,8 +1290,9 @@ T_TRCD10(1) => TRCDbox1
 | // $tup()
 T_TRCD10(2) =>
 (
-if linq then
-TRCDbox1 else TRCDbox0)
+if linq
+then TRCDbox1((*void*))
+else TRCDbox0((*void*)))
 | // $tuptx()
 T_TRCD10(3) => TRCDbox0
 | // $tupvx()
@@ -1777,7 +1778,7 @@ s2exp_make_node
 //
 (* ****** ****** *)
 //
-endloc (*local*) // end of [local(s2exp)]
+endloc (*local*) // end-of-[local(s2exp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

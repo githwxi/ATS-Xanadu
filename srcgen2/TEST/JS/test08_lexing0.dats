@@ -220,7 +220,7 @@ prerr1sln
 *)
 //
 val toks = 
-strn_tokenize
+atext_tokenize
 (
 "(0, 10, 012ULL, 0xFF, 123E+10, 3.14)"
 )
@@ -244,7 +244,7 @@ end//local
 (* ****** ****** *)
 //
 val toks =
-strn_tokenize("op+")
+atext_tokenize("op+")
 (*
 fpath_tokenize("./../../SATS/xbasics.sats")
 fpath_tokenize("./../../DATS/xbasics.dats")

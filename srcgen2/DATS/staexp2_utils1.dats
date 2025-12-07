@@ -62,6 +62,14 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+#symload name with t2abs_get_name
+#symload stmp with t2abs_get_stmp
+(* ****** ****** *)
+#symload name with t2dat_get_name
+#symload stmp with t2dat_get_stmp
+(* ****** ****** *)
+(* ****** ****** *)
 
 #implfun
 sort2_intq

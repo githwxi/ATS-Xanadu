@@ -64,7 +64,16 @@ ATS3.XANADU.xatsopt-20220500"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+#symload node with s2exp_get_node
+#symload node with s2typ_get_node
+(* ****** ****** *)
+#symload sexp with d2con_get_sexp
 #symload tknd with d2cst_get_tknd
+#symload styp with d2var_get_styp
+(* ****** ****** *)
+#symload node with dimpl_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 #staload _ = "./statyp2_tmplib.dats"
 (* ****** ****** *)
@@ -74,9 +83,9 @@ ATS3.XANADU.xatsopt-20220500"
 d2con_linq
 (  d2c0  ) =
 (
-f0_linq(d2c0.sexp())
-) where
-{
+f0_linq
+(d2c0.sexp()))
+where{
 //
 fun
 f0_linq
@@ -85,13 +94,15 @@ f0_linq
 (
 case+
 s2e0.node() of
+//
 |S2Euni0
 (s2vs
 ,s2ps,s2e1) => f0_linq(s2e1)
 |S2Efun1
 (f2cl,npf1
 ,s2es,s2e1) => f0_linq(s2e1)
-|_(*S2E...*) => s2exp_linq(s2e0))
+//
+|_(*otherwise*) => s2exp_linq(s2e0))
 //
 }(*where*)//end-of-[d2con_linq(d2c0)]
 //
@@ -99,24 +110,29 @@ s2e0.node() of
 (* ****** ****** *)
 //
 #implfun
-d2var_linq(d2v0) =
+d2var_linq
+(  d2v0  ) =
 (
- s2typ_linq(d2v0.styp()))
+s2typ_linq(d2v0.styp()))
 #implfun
-d2var_prfq(d2v0) =
+d2var_prfq
+(  d2v0  ) =
 (
- s2typ_prfq(d2v0.styp()))
+s2typ_prfq(d2v0.styp()))
 //
 #implfun
-d2var_mutq(d2v0) =
+d2var_mutq
+(  d2v0  ) =
 let
-val t2p0 = d2v0.styp()
+//
+val t2p0 = d2v0.styp((*0*))
+//
 in//let
 //
 case+
 t2p0.node() of
-|T2Plft(t2p1) => (  true  )
-|_(*non-T2Plft*) => ( false )
+|T2Plft(t2p1) => (   true   )
+|_(*non-T2Plft*) => (  false  )
 //
 end(*let*)//end-of-[d2var_mutq(d2v0)]
 //
@@ -124,28 +140,28 @@ end(*let*)//end-of-[d2var_mutq(d2v0)]
 (* ****** ****** *)
 //
 #implfun
-d2cst_castq(d2c0) =
+d2cst_castq
+(  d2c0  ) =
 (
 case+
 d2c0.tknd() of
-|
-T_FUN(fnk1) =>
+//
+|T_FUN(fnk1) =>
 (
 case+ fnk1 of
-|
-FNKfcast() => true
-|
-_(*otherwise*) => false)
-|
-_(*otherwise*) => ( false )
+|FNKfcast() => true
+|_(*otherwise*) => false)
+//
+|_(*otherwise*) => ( false )
 //
 ) where//end-of-(case+(tknd))
 {
 //
 (*
 val () =
-prerrsln
-("d2cst_castq: d2c0 = ", d2c0)
+(
+  prerrsln
+  ("d2cst_castq: d2c0 = ", d2c0))
 *)
 //
 }(*where*)//end-of-[d2cst_castq(d2c0)]
@@ -153,11 +169,14 @@ prerrsln
 (* ****** ****** *)
 //
 #implfun
-d2cst_tempq(d2c0) =
+d2cst_tempq
+(  d2c0  ) =
 list_consq
 (d2cst_get_tqas(d2c0))
+//
 #implfun
-d2cstlst_tempq(d2cs) =
+d2cstlst_tempq
+(   d2cs   ) =
 list_exists(d2cs) where
 {
 #typedef x0 = d2cst

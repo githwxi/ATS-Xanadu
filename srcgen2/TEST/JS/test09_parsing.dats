@@ -15,7 +15,7 @@
 #staload
 "./../../SATS/parsing.sats"
 #staload
-"./../../SATS/preadx0.sats"
+"./../../SATS/pread00.sats"
 (* ****** ****** *)
 //
 #include
@@ -90,18 +90,18 @@
 "./../../DATS/parsing_utils0.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/preadx0.dats"
+"./../../DATS/pread00.dats"
 #include
-"./../../DATS/preadx0_staexp.dats"
+"./../../DATS/pread00_staexp.dats"
 #include
-"./../../DATS/preadx0_errmsg.dats"
+"./../../DATS/pread00_errmsg.dats"
 (* ****** ****** *)
 var the_err = 0
 (* ****** ****** *)
 #define
-p1_fun_test p1_fun_test_strn
+p1_fun_test p1_fun_test_atext
 #define
-pq_fun_test pq_fun_test_strn
+pq_fun_test pq_fun_test_atext
 (* ****** ****** *)
 
 val opt =
@@ -191,7 +191,7 @@ prerrsln("p1_sort0(\"(int,chr.1)\") = ", opt)
 
 val opt =
 p1_fun_test<sort0>("(int,", p1_sort0)
-val opt = preadx0_sort0opt(opt, the_err)
+val opt = pread00_sort0opt(opt, the_err)
 val ( ) = sort0opt_fpemsg(g_stderr(), opt)
 
 (* ****** ****** *)
@@ -199,7 +199,7 @@ val ( ) = sort0opt_fpemsg(g_stderr(), opt)
 val opt =
 p1_fun_test<sort0>
 ("(,int,chr.1)", p1_sort0)
-val opt = preadx0_sort0opt(opt, the_err)
+val opt = pread00_sort0opt(opt, the_err)
 val ( ) = sort0opt_fpemsg(g_stderr(), opt)
 
 (* ****** ****** *)
@@ -207,7 +207,7 @@ val ( ) = sort0opt_fpemsg(g_stderr(), opt)
 val opt =
 p1_fun_test<sort0>
 ("int->(int,(int,))->type)", p1_sort0)
-val opt = preadx0_sort0opt(opt, the_err)
+val opt = pread00_sort0opt(opt, the_err)
 val ( ) = sort0opt_fpemsg(g_stderr(), opt)
 
 (* ****** ****** *)
@@ -248,7 +248,7 @@ val opt =
 p1_fun_test<s0exp>("op(1)", p1_s0exp)
 val ( ) =
 prerrsln("p1_s0exp(\"op(1)\") = ", opt)
-val opt = preadx0_s0expopt(opt, the_err)
+val opt = pread00_s0expopt(opt, the_err)
 val ( ) = s0expopt_fpemsg(g_stderr(), opt)
 
 (* ****** ****** *)
@@ -257,7 +257,7 @@ val opt =
 p1_fun_test<s0exp>("-<clo>", p1_s0exp)
 val ( ) =
 prerrsln("p1_s0exp(\"-<clo>\") = ", opt)
-val opt = preadx0_s0expopt(opt, the_err)
+val opt = pread00_s0expopt(opt, the_err)
 val ( ) = s0expopt_fpemsg(g_stderr(), opt)
 
 (* ****** ****** *)

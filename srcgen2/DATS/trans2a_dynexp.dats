@@ -2494,17 +2494,30 @@ D2Etup1
 val
 d2es =
 trans2a_d2explst(env0, d2es)
-val
-trcd =
+//
+val t2ps = s2typlst(d2es)
+val linq = s2typlst_linq(t2ps)
+//
+val trcd =
 (
-case-
+case+
 tknd.node() of
+//
 |T_TRCD10(0) => TRCDflt0(*void*)
-|T_TRCD10(_) => TRCDbox0(*void*)
-)
-val
-t2p0 =
-s2typ_tup1(trcd, npf1, s2typlst(d2es))
+//
+|T_TRCD10(1) => TRCDbox1(*void*)
+//
+|T_TRCD10(2) =>
+(if linq
+    then TRCDbox1 else TRCDbox0)
+//
+|T_TRCD10(3) => TRCDbox0(*void*)
+|T_TRCD10(4) => TRCDbox1(*void*)
+//
+|T_TRCD10(_) => TRCDbox0(*void*))
+//
+val t2p0 = s2typ_tup1(trcd, npf1, t2ps)
+//
 } (*where*) // end-of-[f0_tup1(env0,d2e0)]
 //
 (* ****** ****** *)

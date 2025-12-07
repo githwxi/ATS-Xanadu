@@ -15,7 +15,7 @@
 #staload
 "./../../SATS/parsing.sats"
 #staload
-"./../../SATS/preadx0.sats"
+"./../../SATS/pread00.sats"
 (* ****** ****** *)
 #include
 "./../../DATS/xbasics.dats"
@@ -104,15 +104,15 @@
 "./../../DATS/parsing_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/preadx0.dats"
+"./../../DATS/pread00.dats"
 #include
-"./../../DATS/preadx0_staexp.dats"
+"./../../DATS/pread00_staexp.dats"
 #include
-"./../../DATS/preadx0_dynexp.dats"
+"./../../DATS/pread00_dynexp.dats"
 #include
-"./../../DATS/preadx0_decl00.dats"
+"./../../DATS/pread00_decl00.dats"
 #include
-"./../../DATS/preadx0_errmsg.dats"
+"./../../DATS/pread00_errmsg.dats"
 (* ****** ****** *)
 var the_err = 0
 (* ****** ****** *)
@@ -173,7 +173,7 @@ optn_nil() => optn_nil()
 |
 optn_cons(dcls) =>
 optn_cons
-(preadx0_d0eclist(dcls, err))
+(pread00_d0eclist(dcls, err))
 )
 //
 val ( ) =
