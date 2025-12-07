@@ -19,7 +19,7 @@
 #staload
 "./../../SATS/parsing.sats"
 #staload
-"./../../SATS/preadx0.sats"
+"./../../SATS/pread00.sats"
 (* ****** ****** *)
 #include
 "./../../DATS/xbasics.dats"
@@ -108,15 +108,15 @@
 "./../../DATS/parsing_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/preadx0.dats"
+"./../../DATS/pread00.dats"
 #include
-"./../../DATS/preadx0_staexp.dats"
+"./../../DATS/pread00_staexp.dats"
 #include
-"./../../DATS/preadx0_dynexp.dats"
+"./../../DATS/pread00_dynexp.dats"
 #include
-"./../../DATS/preadx0_decl00.dats"
+"./../../DATS/pread00_decl00.dats"
 #include
-"./../../DATS/preadx0_errmsg.dats"
+"./../../DATS/pread00_errmsg.dats"
 (* ****** ****** *)
 #define
 p1_fun_test p1_fun_test_fpath
@@ -162,7 +162,7 @@ p1_fun_test<d0eclist>
 (
 "./../../..\
 /srcgen1/prelude/DATS/bool000.dats", p1_d0eclsq1_dyn)
-val opt1 = preadx0(opt1, err) where { var err: sint = 0 }
+val opt1 = pread00(opt1, err) where { var err: sint = 0 }
 //
 val
 (  ) =
@@ -174,7 +174,7 @@ p1_fun_test<d0eclist>
 (
 "./../../..\
 /srcgen1/prelude/DATS/char000.dats", p1_d0eclsq1_dyn)
-val opt2 = preadx0(opt2, err) where { var err: sint = 0 }
+val opt2 = pread00(opt2, err) where { var err: sint = 0 }
 //
 val
 (  ) =

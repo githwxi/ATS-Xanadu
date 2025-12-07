@@ -265,21 +265,25 @@ fun
 sort2_fprint:(sort2,FILR)->void
 //
 (* ****** ****** *)
+//
 fun
 t2abs_get_name(t2a:t2abs):sym_t
 fun
 t2abs_get_stmp(t2a:t2abs):stamp
-(* ****** ****** *)
+//
 #symload name with t2abs_get_name
 #symload stmp with t2abs_get_stmp
+//
 (* ****** ****** *)
+//
 fun
 t2dat_get_name(t2d:t2dat):sym_t
 fun
 t2dat_get_stmp(t2d:t2dat):stamp
-(* ****** ****** *)
+//
 #symload name with t2dat_get_name
 #symload stmp with t2dat_get_stmp
+//
 (* ****** ****** *)
 //
 fun
