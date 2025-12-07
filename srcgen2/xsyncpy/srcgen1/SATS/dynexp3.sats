@@ -769,9 +769,9 @@ s1exp(*given*),s2exp(*trans*),s2typ1)
 (* ****** ****** *)
 //
 |D3E1delin of // delinearize
-(d3exp1(*source*), s2typ1(*linear*))
+(d3exp1(*source*), d3typ1(*linear*))
 |D3E1exlin of // extra-linear
-(d3exp1(*source*), s2typ1(*linear*))
+(d3exp1(*source*), d3typ1(*linear*))
 //
 (* ****** ****** *)
 //

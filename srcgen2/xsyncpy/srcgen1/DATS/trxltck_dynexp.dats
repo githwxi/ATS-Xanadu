@@ -142,16 +142,12 @@ d3exp1_delinize
 ,env0: !envltck): d3exp1 =
 let
 //
-val t2q0 =
-envltck_dtyp$eval
-(  env0 , t3q0  )
-where{
-val
-t3q0 = d3e0.dtyp((*0*))}
-//
+val t3q0 =
+(
+d3e0.dtyp((*0*)))
 val linq =
 (
-  s2typ1_linq(t2q0))
+  d3typ1_linq(t3q0))
 //
 in//let
 //
@@ -161,15 +157,16 @@ then d3e0 else
 let
 //
 val loc0 =
-d3e0.lctn((*0*))
-val t2q1 =
-s2typ1_t1pize(t2q0)
+(
+d3e0.lctn((*0*)))
 val t3q1 =
-d3typ1_styp$make(t2q1)
+(
+  d3typ1_t1pize(t3q0))
 //
 in//let
-d3exp1(
-loc0, t3q1, D3E1delin(d3e0, t2q0))
+(
+d3exp1(loc0,
+  t3q1, D3E1delin(d3e0, t3q0)))
 end//let//end(else)//endof(if(...))
 //
 end//let//end-of-[d3exp1_delinize(...)]
@@ -208,9 +205,11 @@ let
 //
 val loc0 = d3e0.lctn((*0*))
 val t3q0 = d3e0.dtyp((*0*))
+(*
 val trst =
 (
   envltck_dtyp$eval(env0, trst))
+*)
 //
 in//let
 d3exp1(
@@ -1647,39 +1646,39 @@ val d3er =
 (
 d3exp1_trxltck(d3er, env0))
 //
+val t3qr =
+(
+envltck_dtyp$dtnm
+(  env0 , t3qr  ))
+where{
+val t3qr = d3er.dtyp((*0*))
+}(*where*)//end-(val(t3qr))
+//
 val d3el =
 (
 d3exp1_trxltck(d3el, env0))
 //
-val t3ql = d3el.dtyp((*0*))
-val t3qr = d3er.dtyp((*0*))
+val d3el =
+(
+d3exp1_delinize(d3el, env0))
 //
 val d3el =
 (
 if ( // if
 d3exp1_lftq(d3el))
-then
+then // then
 let
 val () =
 envltck_dlft$updt
-(env0, d3el, t3qr) in (d3el)
-end//let//end(then)
-else
-d3exp1
-( d3el.lctn(), t3qr
-, D3E1errck(0(*lvl*), d3el)))
+(env0, d3el, t3qr) in d3el end
+else // else
+d3exp1_exlinize(d3el, t3qr, env0))
 //
 in//let
 //
-let
-val d3el =
-(
-d3exp1_exlinize(d3el, t3ql, env0))
-in(*let*)
 (
 d3exp1
-(loc0, t3q0, D3E1assgn(d3el,d3er)))
-end//let//endof(d3exp1_delinize(...))
+(loc0, t3q0, D3E1assgn(d3el, d3er)))
 //
 end(*let*)//end-of-[f0_assgn(d3e0,env0)]
 //
