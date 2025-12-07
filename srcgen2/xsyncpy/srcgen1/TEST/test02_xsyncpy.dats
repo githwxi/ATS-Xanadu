@@ -23,9 +23,12 @@ val () = N := N + 1
 fun//this one
 foo1//should be okay
 (i0: sint): ?sint = i0
+//
+(*
 fun//this one
 foo2//should be caught
 (i0: ?sint): sint = i0
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -53,10 +56,27 @@ end//let//end-of-[fact1(xs0:sint)]
 (* ****** ****** *)
 //
 fun
-int2_swap
+int2_swap1
 ( xy
 : @(sint, sint)
-) : @(sint, sint) = (xy.1, xy.0)
+)
+: @(sint, sint) = (xy.1, xy.0)
+//
+fun
+int2_swap2
+( xy
+: @(sint, sint)
+)
+: @(sint, sint) =
+let val yx = xy in (yx.1, yx.0) end
+//
+fun
+int3_swap3
+( xy
+: @(sint, sint)
+)
+: @(sint, sint) =
+let val yx = xy in (xy.1, xy.0) end
 //
 (* ****** ****** *)
 (* ****** ****** *)

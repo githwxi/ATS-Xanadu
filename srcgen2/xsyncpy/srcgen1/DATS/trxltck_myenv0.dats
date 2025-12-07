@@ -703,7 +703,35 @@ val (  ) =
 prerrsln("envltck_dlft$find: dlft = ", dlft)
 //
 }(*where*)//end-of-[envltck_dlft$find(env0,...)]
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envltck_dtyp$hnfz
+  (env0, t3q0) =
+(
+case+
+t3q0.node() of
+//
+|
+T3P1dvar(d2v1) =>
+let
+val t3q1 =
+envltck_dvar$take(env0, d2v1)
+in//let
+envltck_dtyp$hnfz(env0, t3q1)
+end//let//end-of-[T3P1dvar(d2v1)]
+|
+_(*otherwise*) => (     t3q0     )
+) where
+{
+//
+val (  ) =
+prerrsln("envltck_dtyp$hnfz: t3q0 = ", t3q0)
+//
+}(*where*)//end-of-[envltck_dtyp$hnfz(env0,...)]
+//
 (* ****** ****** *)
 //
 #implfun
