@@ -1228,9 +1228,15 @@ D3E1proj
 //
 val d3e1 =
 (
-  d3exp1_trxltck(d3e1, env0))
+d3exp1_trxltck(d3e1, env0))
 //
-val t3q1 = d3e1.dtyp((*void*))
+val t3q1 =
+let
+val t3q1 =
+d3e1.dtyp((*void*))
+in//let
+envltck_dtyp$hnfz(env0, t3q1)
+end(*let*)//end-of-[val(t3q1)]
 //
 val t3q2 =
 (
