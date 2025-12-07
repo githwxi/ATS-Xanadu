@@ -78,7 +78,6 @@ fun
 <x0:t0>
 tup2_proj1
 (x0: x0): x0 = dup2(x0).0
-////
 (*
 fun
 <x0:vt>
@@ -108,7 +107,6 @@ val tt = xx.0 in
 end//let//end-of-[s1wap_cbrf(xx)]
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 fun
