@@ -187,6 +187,7 @@ val linq =
 (
   d3typ1_linq(trst))
 //
+(*
 val (  ) =
 prerrsln("\
 d3exp1_exlinize: d3e0 = ", d3e0)
@@ -196,6 +197,7 @@ d3exp1_exlinize: trst = ", trst)
 val (  ) =
 prerrsln("\
 d3exp1_exlinize: linq = ", linq)
+*)
 //
 in//let
 //
@@ -530,7 +532,7 @@ end//let//end-of-[fd_flat(d3e0,...)]
 //
 (* ****** ****** *)
 //
-// (*
+(*
 val loc0 = d3e0.lctn()
 val (  ) =
 prerrsln("d3fag1_aftck: loc0 = ", loc0)
@@ -538,7 +540,7 @@ val (  ) =
 prerrsln("d3fag1_aftck: d3e0 = ", d3e0)
 val (  ) =
 prerrsln("d3fag1_aftck: styp = ", styp)
-// *)
+*)
 //
 (* ****** ****** *)
 //
@@ -666,10 +668,12 @@ case+
 t2q1.node() of
 //
 |T2P1lft(t2q1) =>
-d3axp1(loc0, t2q1, D3A1lft(d2v1))
+(
+d3axp1(loc0,t2q1,D3A1lft(d2v1)))
 //
 |_(*non-T2P1lft*) =>
-d3axp1(loc0, t2q1, D3A1var(d2v1)))
+(
+d3axp1(loc0,t2q1,D3A1var(d2v1))))
 //
 end//let//end-of-[f0_var(d3p0,env0)]
 //
@@ -765,6 +769,8 @@ where
 val loc0 = d3p0.lctn((*void*))
 val t2q0 = d3p0.styp((*void*))
 //
+(* ****** ****** *)
+//
 (*
 val (  ) =
 prerrsln("f0_other: loc0 = ", loc0)
@@ -773,6 +779,8 @@ prerrsln("f0_other: d3p0 = ", d3p0)
 val (  ) =
 prerrsln("f0_other: t2q0 = ", t2q0)
 *)
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[f0_other(d3p0,env0)]
 //
@@ -802,23 +810,27 @@ t2q2.node() of
 //
 |T2P1arg1
 (knd0, taft) =>
+let
+val
+d3a1 =
+(
+d3pat1_trxltck(d3p1, env0))
+in//let
 (
 d3axp1_t2pck(d3a1, taft, env0))
-where
-{
-val
-d3a1 = d3pat1_trxltck(d3p1, env0)
-}(*where*)//end-of-[T2P1arg1(...)]
+end(*let*)//end-of-[T2P1arg1(...)]
 //
 |T2P1atx2
 (tbef, taft) =>
+let
+val
+d3a1 =
+(
+d3pat1_trxltck(d3p1, env0))
+in//let
 (
 d3axp1_t2pck(d3a1, taft, env0))
-where
-{
-val
-d3a1 = d3pat1_trxltck(d3p1, env0)
-}(*where*)//end-of-[T2P1atx2(...)]
+end(*let*)//end-of-[T2P1atx2(...)]
 //
 |
 _(*otherwise*) => f0_other(d3p0, env0)
@@ -854,23 +866,27 @@ t2q2.node() of
 //
 |T2P1arg1
 (knd0, taft) =>
+let
+val
+d3a1 =
+(
+d3pat1_trxltck(d3p1, env0))
+in//let
 (
 d3axp1_t2pck(d3a1, taft, env0))
-where
-{
-val
-d3a1 = d3pat1_trxltck(d3p1, env0)
-}(*where*)//end-of-[T2P1arg1(...)]
+end(*let*)//end-of-[T2P1arg1(...)]
 //
 |T2P1atx2
 (tbef, taft) =>
+let
+val
+d3a1 =
+(
+d3pat1_trxltck(d3p1, env0))
+in//let
 (
 d3axp1_t2pck(d3a1, taft, env0))
-where
-{
-val
-d3a1 = d3pat1_trxltck(d3p1, env0)
-}(*where*)//end-of-[T2P1atx2(...)]
+end(*let*)//end-of-[T2P1atx2(...)]
 //
 |
 _(*otherwise*) => f0_other(d3p0, env0)
@@ -899,14 +915,14 @@ d3exp1_trxltck
 (d3e0, env0) =
 let
 //
-// (*
+(*
 val () =
 prerrsln("\
 d3exp1_trxltck: loc0 = ", loc0)
 val () =
 prerrsln("\
 d3exp1_trxltck: d3e0 = ", d3e0)
-// *)
+*)
 //
 in//let
 //
@@ -1221,17 +1237,20 @@ val t3q2 =
 (
   d3typ1_lab$proj(t3q1, lab1))
 //
-// (*
+(*
 val (  ) =
+(
 prerrsln
-("f0_proj(ltck): d3e1 = ", d3e1)
+("f0_proj(ltck): d3e1 = ", d3e1))
 val (  ) =
+(
 prerrsln
-("f0_proj(ltck): t3q1 = ", t3q1)
+("f0_proj(ltck): t3q1 = ", t3q1))
 val (  ) =
+(
 prerrsln
-("f0_proj(ltck): t3q2 = ", t3q2)
-// *)
+("f0_proj(ltck): t3q2 = ", t3q2))
+*)
 //
 in//let
 //
@@ -1247,11 +1266,12 @@ if
 not(linq)
 then (t3q1) else
 let
-val t3q2 =
+val
+t3q2 =
 d3typ1_t1pize(t3q2)
 in//let
 d3typ1_lab$fset
-(t3q1, lab1, t3q2) end)
+  (t3q1, lab1, t3q2) end)
 //
 in//let2
 //
@@ -1270,7 +1290,7 @@ d3exp1_exlinize
 val
 dprj =
 d3exp1(loc0, t3q2,
-D3E1proj(tknd, lab1, d3e1))}
+  D3E1proj(tknd, lab1, d3e1))}
 //let2
 end//let//end-of-(T3P1trcd(...)
 //
@@ -1317,8 +1337,7 @@ in//let
 f1_dtyp$updt(d3e2, t3q2, env0))
 end(*let*)//end-of-[D3E1proj(...)]
 //
-|
-_(*otherwise*) => (       1       )
+|_(*otherwise*) => (      1      )
 ) where
 {
 //
@@ -1387,7 +1406,7 @@ in//
 //
 let
 //
-// (*
+(*
 val (  ) =
 prerrsln("\
 d3exp1_trxltck:\
@@ -1396,12 +1415,12 @@ val (  ) =
 prerrsln("\
 d3exp1_trxltck:\
 f0_let0: vts0 = ", vts0)
-// *)
+*)
 //
 in//let
 (
-d3exp1_dvdtp(dexp, vts2)
-) where
+d3exp1_dvdtp(dexp, vts2))
+where
 {
 //
 val vts1 =
@@ -1409,14 +1428,14 @@ dvdtp1lst_d2vs$inner(vts0, d2vs)
 val vts2 =
 dvdtp1lst_d2vs$outer(vts0, d2vs)
 //
-// (*
+(*
 val (  ) =
 prerrsln
 ("f0_let0(ltck): vts1 = ", vts1)
 val (  ) =
 prerrsln
 ("f0_let0(ltck): vts2 = ", vts2)
-// *)
+*)
 //
 val vts1 =
 envltck_dvdtp1lst$eval
@@ -1589,7 +1608,7 @@ val t3q1 = d3e1.dtyp((*0*))
 val
 t3q2 = d3typ1_out$flat(t3q1)
 //
-// (*
+(*
 val (  ) =
 prerrsln
 ("f0_flat(ltck): d3e1 = ", d3e1)
@@ -1599,7 +1618,7 @@ prerrsln
 val (  ) =
 prerrsln
 ("f0_flat(ltck): t3q2 = ", t3q2)
-// *)
+*)
 //
 in//let
 //
@@ -1836,14 +1855,14 @@ end//let
 ) where
 {
 //
-val loc0 = farg.lctn()
+val loc0 = farg.lctn((*void*))
 //
-// (*
+(*
 val (  ) =
 prerrsln("f3arg1_trxlctk: loc0 = ", loc0)
 val (  ) =
 prerrsln("f3arg1_trxlctk: farg = ", farg)
-// *)
+*)
 //
 }(*where*)//end-of-[f3arg1_trxltck(farg,env0)]
 //

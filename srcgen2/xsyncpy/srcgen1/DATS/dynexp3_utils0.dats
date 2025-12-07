@@ -114,7 +114,8 @@ f0_dlft
 where{
 val-
 T3P1dlft
-(   t3q1   ) = dtyp.node()}
+(   t3q1   ) = dtyp.node()
+}//where//end-of-[f0_dlft(dtyp)]
 //
 fun
 f0_tcon
@@ -138,15 +139,19 @@ T3P1trcd
 (trcd
 ,npf1, ltqs) = dtyp.node()
 //
+(*
 val () =
 prerrsln
 ("f0_trcd: trcd = ", trcd)
+*)
 //
 in//let
+//
 case+ trcd of
 |TRCDbox0() => false
 |TRCDbox1() => (true)
 |TRCDflt0() => f0_ltqs(ltqs)
+//
 end//let//end-of-[f0_trcd(dtyp)]
 //
 and
@@ -154,10 +159,8 @@ f0_t3qs
 (t3qs: d3typ1lst): bool =
 (
 case+ t3qs of
-|
-list_nil() => false
-|
-list_cons(t3q1, t3qs) =>
+|list_nil() => false
+|list_cons(t3q1, t3qs) =>
 (
 if
 d3typ1_linq(t3q1)
@@ -225,8 +228,7 @@ dvstp1lst_linq
   (dvts) =
 (
 case+ dvts of
-|list_nil
-( (*void*) ) => false
+|list_nil() => false
 |list_cons
 (vtp1, dvts) =>
 if // if
@@ -257,8 +259,9 @@ d3pat1_d2v$folditm<r0>(xs, r0)
 val xs = d3p0 and r0 = list_vt_nil()
 //
 #impltmp
-folditm$fopr<x0><r0>(r0, x0) = list_vt_cons(x0, r0)
-}
+folditm$fopr
+<x0><r0>(r0, x0) = list_vt_cons(x0, r0)
+}(*where*)//end-of-[d3pat1_d2vs$get(d3p0)]
 //
 (* ****** ****** *)
 //
@@ -298,11 +301,12 @@ T3P1none() => (t3q0)
 |
 T3P1styp(t2q1) =>
 let
+//
 val
 t2q0 = t3q0.styp()
 val
-t2q1 =
-s2typ1_t1pize(t2q1)
+t2q1 = s2typ1_t1pize(t2q1)
+//
 in//let
 //
 d3typ1(t2q0, T3P1styp(t2q1))
@@ -311,22 +315,25 @@ end//let//end-of-(T3P1styp())
 //
 |_(*otherwise*) =>
 let
+//
 val
 t2q0 = t3q0.styp()
 val
 t2q1 = s2typ1_t0pize(t2q0)
+//
 in//let
-//
-d3typ1(t2q0, T3P1styp(t2q1))
-//
+(
+  d3typ1(t2q0, T3P1styp(t2q1)))
 end//let//end-of-(otherwise(...))
 //
 ) where
 {
 //
+(*
 val () =
 prerrsln
 ("d3typ1_t1pize: t3q0 = ", t3q0)
+*)
 //
 #symload
 d3typ1 with d3typ1_make_styp$node
@@ -350,9 +357,11 @@ styp.node() of
 (trcd
 ,npf1, ltqs) =>
 let
+//
 val t2rt =
 d3typ1_styp$get(dtyp)
 val ltqs = f0_ltqs(ltqs)
+//
 in//let
 d3typ1_make_styp$node
 (t2rt, T3P1trcd(trcd, npf1, ltqs))
@@ -380,14 +389,16 @@ S2LAB
 val t3q1 =
 d3typ1_styp$make(t2q1)
 val ltq1 = D3LAB(lab1, t3q1)
-in
+in//let
 (
   list_cons( ltq1, f0_ltqs(ltqs) ) )
 end//let//end-of-[list_cons(ltq1,ltqs)]
 )
 //
+(*
 val () =
 prerrsln("d3typ1_trcdize: dtyp = ", dtyp)
+*)
 //
 }(*where*)//end-of(d3typ1_trcdize( dtyp ))
 //
