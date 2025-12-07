@@ -76,7 +76,7 @@ int3_swap3
 : @(sint, sint)
 )
 : @(sint, sint) =
-let val yx = xy in (xy.1, xy.0) end
+let val yx = xy in (yx.1, xy.0) end
 //
 (* ****** ****** *)
 (* ****** ****** *)

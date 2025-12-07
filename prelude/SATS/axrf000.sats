@@ -37,57 +37,64 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstbox
+(*
+HX: 0-dimensional
+*)
+//
+#abstbox // ref
 a0rf_vt_tx(a:vt)//0-dim
-#absvtbx
+#absvtbx // ref
 a0rf_vt_vx(a:vt)//0-dim
 //
 #typedef
-a0rf(a0:vt) = a0rf_vt_tx(a0)
+a0rf(x0:vt) = a0rf_vt_tx(x0)
 #vwtpdef
-a0rf_vt(a0:vt) = a0rf_vt_vx(a0)
+a0rf_vt(x0:vt) = a0rf_vt_vx(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstbox
+(*
+HX: 1-dimensional
+*)
+//
+#abstbox // array
 a1rf_vt_i0_tx(a:vt,n:i0)
-#absvtbx
+#absvtbx // array
 a1rf_vt_i0_vx(a:vt,n:i0)
 //
 #typedef
-a1rf
-(a:vt,n:i0) = a1rf_vt_i0_tx(a,n)
+a1rf(a:vt,n:i0) = a1rf_vt_i0_tx(a,n)
 #vwtpdef
-a1rf_vt
-(a:vt,n:i0) = a1rf_vt_i0_vx(a,n)
+a1rf_vt(a:vt,n:i0) = a1rf_vt_i0_vx(a,n)
 //
 #typedef
-a1rf(x0:vt) = [n:i0] a1rf(x0,n)
+a1rf(x0:vt) = [ln:i0] a1rf(x0,ln)
 #vwtpdef
-a1rf_vt(x0:vt) = [n:i0] a1rf_vt(x0,n)
+a1rf_vt(x0:vt) = [ln:i0] a1rf_vt(x0,ln)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstbox
+(*
+HX: 2-dimensional
+*)
+#abstbox // matrix
 a2rf_vt_i0_i0_tx(a:vt,m:i0,n:i0)
-#absvtbx
+#absvtbx // matrix
 a2rf_vt_i0_i0_vx(a:vt,m:i0,n:i0)
 //
 #typedef
-a2rf
-(a:vt
-,m:i0,n:i0) = a2rf_vt_i0_i0_tx(a,m,n)
+a2rf//matrix
+(a:vt,m:i0,n:i0) = a2rf_vt_i0_i0_tx(a,m,n)
 #vwtpdef
-a2rf_vt
-(a:vt
-,m:i0,n:i0) = a2rf_vt_i0_i0_vx(a,m,n)
+a2rf_vt//matrix
+(a:vt,m:i0,n:i0) = a2rf_vt_i0_i0_vx(a,m,n)
 //
 #typedef
-a2rf(x0:vt) = [m:i0;n:i0] a2rf(x0,m,n)
+a2rf(x0:vt) = [n1:i0;n2:i0] a2rf(x0,n1,n2)
 #vwtpdef
-a2rf_vt(x0:vt) = [m:i0;n:i0] a2rf_vt(x0,m,n)
+a2rf_vt(x0:vt) = [n1:i0;n2:i0] a2rf_vt(x0,n1,n2)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -97,9 +104,9 @@ fun
 a0rf_make_1val(x1: a): a0rf(a)
 //
 #symload
-a0rf with a0rf_make_1val// of 1000
+a0rf with a0rf_make_1val of 1000
 #symload
-a0rf_1val with a0rf_make_1val// of 1000
+a0rf_1val with a0rf_make_1val of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -151,8 +158,7 @@ a1rf_make_list
  {n:i0}
 (xs: list(a, n)): a1rf(a, n)
 //
-#symload
-a1rf with a1rf_make_list//of 1000
+#symload a1rf with a1rf_make_list of 1000
 //
 (* ****** ****** *)
 //
@@ -169,14 +175,8 @@ a1rf_make_nfun
 ( n0: sint(n)
 , f0: nint(n) -> a): a1rf(a, n)
 //
-#symload
-a1rf with a1rf_make_ncpy//of 1000
-#symload
-a1rf with a1rf_make_nfun//of 1000
-#symload
-array with a1rf_make_ncpy//of 1000
-#symload
-array with a1rf_make_nfun//of 1000
+#symload a1rf with a1rf_make_ncpy of 1000
+#symload a1rf with a1rf_make_nfun of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
