@@ -699,11 +699,31 @@ envltck_dlft$find(env0, d3e1))}
 ) where
 {
 //
-val () =
+val (  ) =
 prerrsln("envltck_dlft$find: dlft = ", dlft)
 //
 }(*where*)//end-of-[envltck_dlft$find(env0,...)]
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envltck_dtyp$dtnm
+  (env0, t3q0) =
+(
+  d3typ1_styp$make(t2q0))
+where
+{
+//
+val t2q0 =
+envltck_dtyp$eval(env0, t3q0)
+//
+val (  ) =
+prerrsln("envltck_dtyp$dtnm: t3q0 = ", t3q0)
+val (  ) =
+prerrsln("envltck_dtyp$dtnm: t2q0 = ", t2q0)
+//
+}(*where*)//end-of-[envltck_dtyp$dtnm(env0,...)]
+//
 (* ****** ****** *)
 //
 #implfun

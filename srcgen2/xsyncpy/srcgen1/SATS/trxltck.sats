@@ -122,6 +122,11 @@ envltck_dlft$find // is l-value!
 (* ****** ****** *)
 //
 fun
+envltck_dtyp$dtnm
+( env0:
+! envltck, t3q0: d3typ1): d3typ1
+//
+fun
 envltck_dtyp$eval
 ( env0:
 ! envltck, t3q0: d3typ1): s2typ1
