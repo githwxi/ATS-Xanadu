@@ -74,14 +74,14 @@ d3ecl1_trxltck
 (d3cl, env0) =
 let
 //
-// (*
+(*
 val () =
 prerrsln("\
 d3ecl1_trxltck: loc0 = ", loc0)
 val () =
 prerrsln("\
 d3ecl1_trxltck: d3cl = ", d3cl)
-// *)
+*)
 //
 in//let
 //
@@ -163,8 +163,8 @@ in//let
 d3ecl1
 (loc0, D3C1static(tknd, d3c1)))
 where{
-val d3c1 = d3ecl1_trxltck(d3c1, env0)
-}(*where*)
+val//val
+d3c1 = d3ecl1_trxltck(d3c1, env0)}
 //
 end//let//end-of-[f0_static(d3c0,env0)]
 //
@@ -182,8 +182,8 @@ in//let
 d3ecl1
 (loc0, D3C1extern(tknd, d3c1)))
 where{
-val d3c1 = d3ecl1_trxltck(d3c1, env0)
-}(*where*)
+val//val
+d3c1 = d3ecl1_trxltck(d3c1, env0)}
 //
 end//let//end-of-[f0_extern(d3c0,env0)]
 //
@@ -204,7 +204,7 @@ d3ecl1lst_trxltck(d3cs, env0)
 in//let
 //
 (
-d3ecl1(loc0, D3C1dclst0(d3cs)))
+  d3ecl1(loc0, D3C1dclst0(d3cs)))
 //
 end//let//end-of-[f0_dclst0(d3c0,env0)]
 //
@@ -219,6 +219,7 @@ let
 val-
 D3C1local0
 (head, body) = d3c0.node()
+//
 val head =
 d3ecl1lst_trxltck(head, env0)
 val body =
@@ -252,10 +253,11 @@ d3ecl1lstopt_trxltck(dopt, env0)
 //
 in//let
 //
+(
 d3ecl1
 ( loc0
 , D3C1include
-  (sd01, tknd, gexp, fopt, dopt))
+  (sd01, tknd, gexp, fopt, dopt)))
 //
 end//let//end-of-[f0_include(d3c0,env0)]
 //
@@ -279,10 +281,11 @@ s3taload1opt_trxltck(dopt, env0)
 //
 in//let
 //
+(
 d3ecl1
 ( loc0
 , D3C1staload
-  (sd01, tknd, gexp, fopt, dopt))
+  (sd01, tknd, gexp, fopt, dopt)))
 //
 end//let//end-of-[f0_staload(d3c0,env0)]
 //
@@ -302,9 +305,12 @@ val d3vs =
 d3valdcl1lst_trxltck(d3vs, env0)
 //
 in//let
+//
 (
-d3ecl1(loc0,D3C1valdclst(tknd,d3vs)))
-end//let
+ d3ecl1
+ (loc0, D3C1valdclst(tknd, d3vs)))
+//
+end//let//end-of-[f0_valdclst(d3cl)]
 //
 (* ****** ****** *)
 //
@@ -322,9 +328,12 @@ val d3vs =
 d3vardcl1lst_trxltck(d3vs, env0)
 //
 in//let
+//
 (
-d3ecl1(loc0,D3C1vardclst(tknd,d3vs)))
-end//let
+ d3ecl1
+ (loc0, D3C1vardclst(tknd, d3vs)))
+//
+end//let//end-of-[f0_vardclst(d3cl)]
 //
 (* ****** ****** *)
 //
@@ -345,9 +354,9 @@ d3fundcl1lst_trxltck(d3fs, env0)
 in//let
 //
 d3ecl1(loc0,
-D3C1fundclst(tknd, t2qs, d2cs, d3fs))
+D3C1fundclst(tknd,t2qs,d2cs,d3fs))
 //
-end//let
+end//let//end-of-[f0_fundclst(d3cl)]
 //
 (* ****** ****** *)
 //
@@ -433,12 +442,13 @@ teqd3exp1_trxltck
   (tdxp, env0) =
 (
 case+ tdxp of
-|
-TEQD3EXP1none() =>
-TEQD3EXP1none((*void*))
-|
-TEQD3EXP1some(teq1, d3e2) =>
-TEQD3EXP1some(teq1, d3e2) where
+|TEQD3EXP1none() =>
+(
+  TEQD3EXP1none((*void*)))
+|TEQD3EXP1some(teq1, d3e2) =>
+(
+  TEQD3EXP1some(teq1, d3e2))
+where
 { val
   d3e2 = d3exp1_trxltck(d3e2, env0) }
 )(*case+*)//endof(teqd3exp_trxltck(tdxp,env0))
@@ -463,7 +473,7 @@ d3valdcl1_wsxp$get(dval)
 //
 val tdxp =
 (
-  teqd3exp1_trxltck(tdxp, env0))
+teqd3exp1_trxltck(tdxp, env0))
 //
 in//let
 //
@@ -509,16 +519,19 @@ val (  ) =
 (
   envltck_dpat$push(env0, dpat))
 //
+(*
 val (  ) =
-prerrsln
-("d3valdcl1_trxltck: dpat = ", dpat)
+prerrsln("\
+d3valdcl1_trxltck: dpat = ", dpat)
 val (  ) =
-prerrsln
-("d3valdcl1_trxltck: dtyp = ", dtyp)
+prerrsln("\
+d3valdcl1_trxltck: dtyp = ", dtyp)
 val (  ) =
-prerrsln
-("d3valdcl1_trxltck: dgrt = ", dgrt)
+prerrsln("\
+d3valdcl1_trxltck: dgrt = ", dgrt)
+*)
 //
+(*
 val (  ) =
 let
 val linq = d3typ1_linq(dtyp)
@@ -526,6 +539,7 @@ in//let
 prerrsln
 ("d3valdcl1_trxltck: linq = ", linq)
 end//let
+*)
 //
 in//let
   d3valdcl1_make_arg5
@@ -574,7 +588,8 @@ envltck_dvar$spsh(env0, dpid, t2q1))
 //
 in//let
 (
-d3vardcl1(loc0,dpid,t2q1,vpid,sres,dini))
+  d3vardcl1
+  (loc0, dpid, t2q1, vpid, sres, dini))
 end//let
 (*let*)//end-of-[d3vardcl1_trxltck(dvar,env0)]
 //
