@@ -251,6 +251,7 @@ d3pat1_make_lctn$styp$node
 endlet//end-of-[d3pat1_tup0_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3pat1_argtp_errck
@@ -421,6 +422,7 @@ d3exp1_errck
 endlet//end-of-[d3exp1_seqn_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3exp1_tup0_errck
@@ -440,6 +442,30 @@ d3exp1_errck
 //
 endlet//end-of-[d3exp1_tup0_errck(...)]
 //
+(* ****** ****** *)
+//
+fun
+d3exp1_tup1_errck
+(loc0: loc_t
+,t3q0: d3typ1
+,tknd: token
+,npf1: (sint)
+,d3es: d3exp1lst): d3exp1 =
+let
+//
+val
+lvl0 =
+errvl(d3es) in//let
+d3exp1_errck
+(
+lvl0+1,
+d3exp1
+( loc0
+, t3q0, D3E1tup1(tknd, npf1, d3es)))
+//
+endlet//end-of-[d3exp1_tup1_errck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -807,6 +833,10 @@ dexp.node() of
 (
   f0_tup0(dexp, err0))
 //
+|D3E1tup1 _ =>
+(
+  f0_tup1(dexp, err0))
+//
 (* ****** ****** *)
 //
 |D3E1flat _ =>
@@ -888,9 +918,11 @@ then (d3e0) else
 let
 val loc0 = d3e0.lctn()
 in//let
+(
 d3exp1_dapp_errck
-(loc0
-,t3q0, d3f0(*fun*), npf1, d3es(*arg*))
+( loc0
+, t3q0
+, d3f0(*fun*), npf1, d3es(*arg*)))
 end//let
 //
 end(*let*)//end-of-[f0_dapp(d3e0,err0)]
@@ -927,8 +959,8 @@ let
 val loc0 = d3e0.lctn()
 in//let
 (
-d3exp1_proj_errck
-(loc0, t3q0, tknd, lab1, dtup(*tup*)))
+  d3exp1_proj_errck
+  (loc0, t3q0, tknd, lab1, dtup))
 end//let
 //
 end(*let*)//end-of-[f0_proj(d3e0,err0)]
@@ -970,9 +1002,13 @@ in//let
 if // if
 (err0=nerr)
 then (d3e0) else
+let
+val loc0 = d3e0.lctn()
+in//let
 (
-d3exp1_let1_errck
-(d3e0.lctn(), t3q0, dcls, d3e1, dvts))
+  d3exp1_let1_errck
+  (loc0, t3q0, dcls, d3e1, dvts))
+end//let
 //
 end(*let*)//end-of-[f0_let1(d3e0,err0)]
 //
@@ -1010,10 +1046,9 @@ then (d3e0) else
 let
 val loc0 = d3e0.lctn()
 in//let
-//
-d3exp1_ift0_errck
-(loc0, t3q0, d3e1(*cond*), dthn, dels)
-//
+(
+  d3exp1_ift0_errck
+  (loc0, t3q0, d3e1, dthn, dels))
 end//let
 //
 end(*let*)//end-of-[f0_ift0(d3e0,err0)]
@@ -1033,7 +1068,7 @@ val-
 D3E1seqn
 (d3es, d3e1) = d3e0.node()
 //
-val t3q0 = d3e0.dtyp()
+val t3q0 = d3e0.dtyp((*0*))
 val d3es =
 d3exp1lst_tryltck(d3es, err0)
 val d3e1 =
@@ -1047,10 +1082,11 @@ if // if
 then (d3e0) else
 (
   d3exp1_seqn_errck
-  ( d3e0.lctn(), t3q0, d3es, d3e1 ) )
+  (d3e0.lctn(), t3q0, d3es, d3e1))
 //
 end(*let*)//end-of-[f0_seqn(d3e0,err0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1066,7 +1102,7 @@ val-
 D3E1tup0
 (npf1, d3es) = d3e0.node()
 //
-val t3q0 = d3e0.dtyp()
+val t3q0 = d3e0.dtyp((*0*))
 val d3es =
 d3exp1lst_tryltck(d3es, err0)
 //
@@ -1077,10 +1113,46 @@ if // if
 then (d3e0) else
 (
   d3exp1_tup0_errck
-  ( d3e0.lctn(), t3q0, npf1, d3es ) )
+  (d3e0.lctn(), t3q0, npf1, d3es))
 //
 end(*let*)//end-of-[f0_tup0(d3e0,err0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( d3e0: d3exp1
+, err0
+: &sint >> sint): d3exp1 =
+let
+//
+val nerr = err0
+//
+val-
+D3E1tup1
+(tknd
+,npf1, d3es) = d3e0.node()
+//
+val t3q0 = d3e0.dtyp((*0*))
+val d3es =
+d3exp1lst_tryltck(d3es, err0)
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val loc0 = d3e0.lctn()
+in//let
+(
+  d3exp1_tup1_errck
+  (loc0, t3q0, tknd, npf1, d3es))
+end//let
+//
+end(*let*)//end-of-[f0_tup1(d3e0,err0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1096,7 +1168,7 @@ val-
 D3E1flat
 (   d3e1   ) = d3e0.node()
 //
-val t3q0 = d3e0.dtyp()
+val t3q0 = d3e0.dtyp((*0*))
 val d3e1 =
 (
   d3exp1_tryltck(d3e1, err0))
@@ -1110,7 +1182,7 @@ let
 val loc0 = d3e0.lctn()
 in//let
 (
-  d3exp1_flat_errck(loc0, t3q0, d3e1))
+d3exp1_flat_errck(loc0, t3q0, d3e1))
 end//let
 //
 end(*let*)//end-of-[f0_flat(d3e0,err0)]
@@ -1130,7 +1202,7 @@ val-
 D3E1assgn
 (d3el, d3er) = d3e0.node()
 //
-val t3q0 = d3e0.dtyp()
+val t3q0 = d3e0.dtyp((*0*))
 val d3el =
 (
   d3exp1_tryltck(d3el, err0))
@@ -1147,8 +1219,8 @@ let
 val loc0 = d3e0.lctn()
 in//let
 (
-d3exp1_assgn_errck
-(loc0, t3q0, d3el(*l-v*), d3er(*r-v*)))
+  d3exp1_assgn_errck
+  (loc0, t3q0, d3el(*l*), d3er(*r*)))
 end//let
 //
 end(*let*)//end-of-[f0_assgn(d3e0,err0)]
@@ -1185,7 +1257,7 @@ val loc0 =
 d3e0.lctn() in//let
 (
   d3exp1_dvdtp_errck
-  (loc0, t3q0, d3e1, dvts) ) end//let
+  (loc0, t3q0, d3e1, dvts)) end//let
 //
 end(*let*)//end-of-[f0_dvdtp(d3e0,err0)]
 //
@@ -1228,7 +1300,7 @@ val loc0 =
 d3e0.lctn() in//let
 (
   d3exp1_delin_errck
-  (loc0, t3q0, d3e1, tlin) ) end//let
+  (loc0, t3q0, d3e1, tlin)) end//let
 //
 end(*let*)//end-of-[f0_delin(d3e0,err0)]
 //
@@ -1271,7 +1343,7 @@ val loc0 =
 d3e0.lctn() in//let
 (
   d3exp1_exlin_errck
-  (loc0, t3q0, d3e1, tlin) ) end//let
+  (loc0, t3q0, d3e1, tlin)) end//let
 //
 end(*let*)//end-of-[f0_exlin(d3e0,err0)]
 //
@@ -1310,9 +1382,13 @@ in//let
 if // if
 (err0=nerr)
 then (d3e0) else
+let
+val loc0 = d3e0.lctn()
+in//let
 (
-d3exp1_t2pck_errck
-(d3e0.lctn(), t3q0, d3e1, t2q1, t2q2))
+  d3exp1_t2pck_errck
+  (loc0, t3q0, d3e1, t2q1, t2q2))
+end//let
 //
 end(*let*)//end-of-[f0_t2pck(d3e0,err0)]
 //
@@ -1343,9 +1419,13 @@ in//let
 if // if
 (err0=nerr)
 then (d3e0) else
+let
+val loc0 = d3e0.lctn()
+in//let
 (
-d3exp1_t2ped_errck
-(d3e0.lctn(), t3q0, d3e1, t2q1, t2q2))
+  d3exp1_t2ped_errck
+  (loc0, t3q0, d3e1, t2q1, t2q2))
+end//let
 //
 end(*let*)//end-of-[f0_t2ped(d3e0,err0)]
 //

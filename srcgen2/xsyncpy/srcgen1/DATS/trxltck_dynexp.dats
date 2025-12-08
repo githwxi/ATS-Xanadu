@@ -981,6 +981,7 @@ d3exp1
 (* ****** ****** *)
 //
 |D3E1tup0 _ => f0_tup0(d3e0, env0)
+|D3E1tup1 _ => f0_tup1(d3e0, env0)
 //
 (* ****** ****** *)
 //
@@ -1553,6 +1554,7 @@ d3exp1
 end//let//end-of-[f0_seqn(d3e0, env0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_tup0
@@ -1592,6 +1594,59 @@ t3q0 = d3typ1(t2q0, T3P1styp(t2q1)) }
 //
 end(*let*)//end-of-[f0_tup0(d3e0,env0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1tup1
+(tknd
+,npf1, d3es) = d3e0.node()
+//
+val d3es =
+d3exp1lst_trxltck(d3es, env0)
+//
+val t3qs = d3es_t3qs$get(d3es)
+val t2qs =
+envltck_dtyplst$eval(env0, t3qs)
+//
+val t2q0 = t3q0.styp()
+val t2q1 =
+(
+if
+list_nilq
+(  d3es  )
+then (t2q0) else
+let
+val trcd =
+(
+case-
+t2q0.node() of
+|T2P1trcd
+(trcd, npf1, t2qs) => trcd)
+in//let
+(
+s2typ1_tup1(trcd,npf1,t2qs))end)
+//
+in//let
+//
+(
+d3exp1
+(
+loc0,
+t3q0, D3E1tup1(tknd, npf1, d3es)))
+where
+{
+val
+t3q0 = d3typ1(t2q0, T3P1styp(t2q1)) }
+//
+end(*let*)//end-of-[f0_tup0(d3e0,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

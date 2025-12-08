@@ -245,15 +245,37 @@ prerrsln("s2typ1_tup0: t2qs = ", t2qs)
 (* ****** ****** *)
 //
 #implfun
+s2typ1_tup1
+(trcd, npf1, t2qs) =
+(
 s2typ1_rcd2
-(trcd ,npf1, ltqs) =
+(trcd, npf1, ltqs)) where
+{
+//
+val ltqs = f0_labelize(t2qs, 0(*i0*))
+//
+(*
+val () =
+prerrsln("s2typ1_tup1: trcd = ", trcd)
+val () =
+prerrsln("s2typ1_tup1: npf1 = ", npf1)
+val () =
+prerrsln("s2typ1_tup1: t2qs = ", t2qs)
+*)
+//
+}(*where*)//endof(s2typ1_tup1(trcd,npf1,ltqs))
+//
+(* ****** ****** *)
+//
+#implfun
+s2typ1_rcd2
+(trcd, npf1, ltqs) =
 let
 //
 val s2t0 =
 (
 case+ trcd of
-|
-TRCDflt0() =>
+|TRCDflt0() =>
 (
 let
 (*
@@ -279,10 +301,8 @@ then the_sort2_vwtp
 else the_sort2_type) end)
 //let//end-of-[TRCDflt0()]
 //
-|
-TRCDbox0 => the_sort2_tbox(*0*)
-|
-TRCDbox1 => the_sort2_vtbx(*0*)
+|TRCDbox0 => the_sort2_tbox(*0*)
+|TRCDbox1 => the_sort2_vtbx(*0*)
 //
 )(*case+(trcd)-of*)//end(val(s2t0))
 //
@@ -293,12 +313,16 @@ s2typ1_make_sort$node(
 end where
 {
 //
+(*
+val () =
+prerrsln("s2typ1_rcd2: trcd = ", trcd)
 val () =
 prerrsln("s2typ1_rcd2: npf1 = ", npf1)
 val () =
 prerrsln("s2typ1_rcd2: ltqs = ", ltqs)
+*)
 //
-}(*where*)//end-of-[s2typ1_rcd2(npf1,t2qs)]
+}(*where*)//endof(s2typ1_rcd2(trcd,npf1,ltqs))
 //
 (* ****** ****** *)
 endloc//end-of-(local(s2typ1_tup0/tup1/rcd2(...))]
