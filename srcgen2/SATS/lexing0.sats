@@ -167,11 +167,11 @@ datatype tnode =
 //
   | T_TRCD10 of (int) // @(/#(
                       // @tup/$tup
-                      // @tup_t/$tup_t
+                      // @tup_t0/$tup_t0
                       // @tup_vt/$tup_vt
   | T_TRCD20 of (int) // @{/#{
                       // @rec/$rec
-                      // @rec_t/$rec_t
+                      // @rec_t0/$rec_t0
                       // @rec_vt/$rec_vt
 //
   | T_AS0 of () // 'as'

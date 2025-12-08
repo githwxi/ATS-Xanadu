@@ -501,17 +501,23 @@ val () = myins("withvtype", T_WITHVTYPE_)
 val () = myins("$tup", T_TRCD12_)
 val () = myins("$rec", T_TRCD22_)
 //
+(*
+HX-2025-12-07:
+These are the newly chosen:
+*)
 val () = myins("$tuptx", T_TRCD13_)
 val () = myins("$tupvx", T_TRCD14_)
 val () = myins("$tuprf", T_TRCD15_)
-//
 val () = myins("$rectx", T_TRCD23_)
 val () = myins("$recvx", T_TRCD24_)
 val () = myins("$recrf", T_TRCD25_)
 //
+(*
+HX-2025-12-07:
+These are the original choices:
+*)
 val () = myins("$tup_t0", T_TRCD13_)
 val () = myins("$tup_vt", T_TRCD14_)
-//
 val () = myins("$rec_t0", T_TRCD23_)
 val () = myins("$rec_vt", T_TRCD24_)
 //
