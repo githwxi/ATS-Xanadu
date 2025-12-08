@@ -243,20 +243,15 @@ in//let
 //
 case+ tknd of
 //
-|
-TRCDbox0() => print( "TRCDbox0" )
-|
-TRCDbox1() => print( "TRCDbox1" )
-|
-TRCDflt0() => print( "TRCDflt0" )
+|TRCDflt0() => print( "TRCDflt0" )
+//
+|TRCDbox0() => print( "TRCDbox0" )
+|TRCDbox1() => print( "TRCDbox1" )
+|TRCDbox2() => print( "TRCDbox2" )
 //
 (*
-|
-TRCDflt1
-(  tmp1  ) => print("TRCDflt1(",tmp1,")")
-|
-TRCDflt2
-(  tnm1  ) => print("TRCDflt2(",tnm1,")")
+|TRCDflt1
+(  tnm1  ) => print("TRCDflt1(",tnm1,")")
 *)
 //
 end(*let*)//end-of(trcdknd_fprint(tknd,out))

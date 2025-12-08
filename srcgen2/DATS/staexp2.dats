@@ -1259,12 +1259,19 @@ end (*let*) // end of [s2exp_l2st(ses1,ses2)]
 //
 (*
 HX-2020-07:
-boxed tuples are linear
+boxed tuples are linear:
+//
 val T0TRCD11 = T_TRCD10(1) //HX: #()
 and T0TRCD12 = T_TRCD10(2) //HX: $tup
 and T0TRCD13 = T_TRCD10(3) //HX: $tuptx
 and T0TRCD14 = T_TRCD10(4) //HX: $tupvx
 and T0TRCD15 = T_TRCD10(5) //HX: $tuprf
+//
+val T0TRCD21 = T_TRCD20(1) //HX: #{}
+and T0TRCD22 = T_TRCD20(2) //HX: $rec
+and T0TRCD23 = T_TRCD20(3) //HX: $rectx
+and T0TRCD24 = T_TRCD20(4) //HX: $recvx
+and T0TRCD25 = T_TRCD20(5) //HX: $recrf
 *)
 //
 (* ****** ****** *)
@@ -1299,7 +1306,7 @@ T_TRCD10(3) => (TRCDbox0)
 | // $tupvx()
 T_TRCD10(4) => (TRCDbox1)
 | // $tuprf()
-T_TRCD10(5) => (TRCDbox0)
+T_TRCD10(5) => (TRCDbox2)
 ) : trcdknd//end(val(knd0))
 //
 val
@@ -1407,11 +1414,11 @@ T_TRCD10(2) =>
 if linq then
 TRCDbox1 else TRCDbox0)
 | // $tuptx()
-T_TRCD10(3) => TRCDbox0
+T_TRCD10(3) => (TRCDbox0)
 | // $tupvx()
-T_TRCD10(4) => TRCDbox1
+T_TRCD10(4) => (TRCDbox1)
 | // $tuprf()
-T_TRCD10(5) => TRCDbox0
+T_TRCD10(5) => (TRCDbox2)
 ) : trcdknd//end(val(knd0))
 //
 val
@@ -1523,11 +1530,11 @@ T_TRCD20(2) =>
 if linq then
 TRCDbox1 else TRCDbox0)
 | // $rcdtx{}
-T_TRCD20(3) => TRCDbox0
+T_TRCD20(3) => (TRCDbox0)
 | // $rcdvx{}
-T_TRCD20(4) => TRCDbox1
+T_TRCD20(4) => (TRCDbox1)
 | // $rcdrf{}
-T_TRCD20(5) => TRCDbox0
+T_TRCD20(5) => (TRCDbox2)
 ) : trcdknd//end(val(knd0))
 //
 val
@@ -1634,11 +1641,11 @@ T_TRCD20(2) =>
 if linq then
 TRCDbox1 else TRCDbox0)
 | // $rcdtx{}
-T_TRCD20(3) => TRCDbox0
+T_TRCD20(3) => (TRCDbox0)
 | // $rcdvx{}
-T_TRCD20(4) => TRCDbox1
+T_TRCD20(4) => (TRCDbox1)
 | // $rcdrf{}
-T_TRCD20(5) => TRCDbox0
+T_TRCD20(5) => (TRCDbox2)
 ) : trcdknd//end(val(knd0))
 //
 val

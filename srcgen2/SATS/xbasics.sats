@@ -298,18 +298,21 @@ f2clknd_equal
 fun
 f2clknd_fprint: (f2clknd, FILR)->void
 (* ****** ****** *)
+//
 datatype
 trcdknd =
 //
-| TRCDbox0 (*box*) // nonlin
-| TRCDbox1 (*box*) // linear
+| TRCDflt0 (*flat*)
 //
-| TRCDflt0 (* flat: non/lin *)
+| TRCDbox0 (*boxd*)//nonlin
+| TRCDbox1 (*boxd*)//linear
+| TRCDbox2 (*refd*)//nonlin
+//
 (*
-| TRCDflt1 of stamp (* flat *)
-| TRCDflt2 of string (* flat *)
+| TRCDflt1 of string (*flat*)
 *)
 // end of [ datatype(trcdknd) ]
+//
 (* ****** ****** *)
 fun
 trcdknd_fltq(knd0:trcdknd): bool
