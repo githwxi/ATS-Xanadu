@@ -77,6 +77,9 @@ ATS3.XANADU.xatsopt-20220500"
 #symload styp with d2cst_get_styp
 #symload tqas with d2cst_get_tqas
 (* ****** ****** *)
+#symload styp with d2exp_get_styp
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fn0
 s2typ_subst0
