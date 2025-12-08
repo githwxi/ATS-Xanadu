@@ -52,8 +52,8 @@ test09; $(NODE) OUTS/$<_out.js
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f test??_out.js
-cleanall:: ; rm -f test??_out?.js
+cleanall:: ; rm -f OUTS/test??_out.js
+cleanall:: ; rm -f OUTS/test??_out?.js
 ########################################################################
 ########################################################################
 SRCGEN2_SRCGENX=\
