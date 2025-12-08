@@ -384,6 +384,10 @@ val () = kwdins("$tpl", T0TRCD12)//tx/vx
 val () = kwdins("$rec", T0TRCD22)//tx/vx
 val () = kwdins("$rcd", T0TRCD22)//tx/vx
 //
+(*
+HX-2025-12-07:
+These onese are newly chosen:
+*)
 val () = kwdins("$tuptx", T0TRCD13)//tbox
 val () = kwdins("$tpltx", T0TRCD13)//tbox
 val () = kwdins("$rectx", T0TRCD23)//tbox
@@ -394,16 +398,17 @@ val () = kwdins("$tplvx", T0TRCD14)//vtbx
 val () = kwdins("$recvx", T0TRCD24)//vtbx
 val () = kwdins("$rcdvx", T0TRCD24)//vtbx
 //
-(*
 val () = kwdins("$tuprf", T0TRCD15)//tbox
 val () = kwdins("$tplrf", T0TRCD15)//tbox
 val () = kwdins("$recrf", T0TRCD25)//tbox
 val () = kwdins("$rcdrf", T0TRCD25)//tbox
-*)
 //
+(*
+HX-2025-12-07:
+These are the original choices:
+*)
 val () = kwdins("$tup_t0", T0TRCD13)//tbox
 val () = kwdins("$rec_t0", T0TRCD23)//tbox
-//
 val () = kwdins("$tup_vt", T0TRCD14)//vtbx
 val () = kwdins("$rec_vt", T0TRCD24)//vtbx
 //
