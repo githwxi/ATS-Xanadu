@@ -1131,8 +1131,12 @@ d2e0.node() of
 (* ****** ****** *)
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
+|D2Exazgn _ => f0_xazgn(env0, d2e0)
+|D2Exchng _ => f0_xchng(env0, d2e0)
+//
 |D2Ebrget _ => f0_brget(env0, d2e0)
 |D2Ebrset _ => f0_brset(env0, d2e0)
+//
 |D2Edtsel _ => f0_dtsel(env0, d2e0)
 //
 (* ****** ****** *)
@@ -2947,6 +2951,7 @@ d2exp_make_tpnd
 end (*let*) // end-of-[f0_where(env0,d2e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_assgn
@@ -2995,6 +3000,72 @@ d2exp_make_tpnd
 ( loc0, t2p0, D2Eassgn(d2el, d2er) )
 end (*let*) // end-of-[f0_assgn(env0,d2e0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_xazgn
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Exazgn
+(d2el, d2er) = d2e0.node()
+//
+val
+d2el =
+trans2a_d2exp(env0, d2el)
+val
+t2pl = d2el.styp((*void*))
+//
+val
+d2er =
+trans2a_d2exp_tpck(env0,d2er,t2pl)
+//
+in//let
+d2exp_make_tpnd
+( loc0, t2pl, D2Exazgn(d2el, d2er) )
+end (*let*) // end-of-[f0_xazgn(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_xchng
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Exchng
+(d2el, d2er) = d2e0.node()
+//
+val d2el =
+(
+  trans2a_d2exp(env0, d2el))
+val d2er =
+(
+  trans2a_d2exp(env0, d2er))
+//
+val t2pl = d2el.styp((*void*))
+val t2pr = d2er.styp((*void*))
+//
+val d2el =
+d2exp_t2pckify(env0, d2el, t2pr)
+val d2er =
+d2exp_t2pckify(env0, d2er, t2pl)
+//
+in//let
+//
+d2exp_make_tpnd
+( loc0, t2pl, D2Exchng(d2el, d2er) )
+//
+end (*let*) // end-of-[f0_xchng(env0,d2e0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -3084,6 +3155,7 @@ d2exp_make_tpnd
 end (*let*) // end-of-[f0_brset(env0,d2e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_dtsel
@@ -3112,6 +3184,7 @@ t2p0,
 D2Edtsel(tknd, lab1, dpis, npf1, darg))
 end (*let*) // end-of-[f0_dtsel(env0,d2e0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

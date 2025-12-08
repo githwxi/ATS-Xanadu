@@ -596,22 +596,41 @@ D2Efree(d2e1) =>
 |
 D2Ewhere
 ( d2e1, dcls) =>
-prints("D2Ewhere(",d2e1,";",dcls,")")
+(
+prints("D2Ewhere(",d2e1,";",dcls,")"))
 //
+(* ****** ****** *)
 |
 D2Eassgn
 ( d2el, d2er) =>
-prints("D2Eassgn(",d2el,";",d2er,")")
+(
+prints("D2Eassgn(",d2el,";",d2er,")"))
 //
+|
+D2Exazgn
+( d2el, d2er) =>
+(
+prints("D2Exazgn(",d2el,";",d2er,")"))
+//
+|
+D2Exchng
+( d2el, d2er) =>
+(
+prints("D2Exchng(",d2el,";",d2er,")"))
+//
+(* ****** ****** *)
 |
 D2Ebrget
 ( dpis, d2es) =>
-prints("D2Ebrget(",dpis,";",d2es,")")
+(
+prints("D2Ebrget(",dpis,";",d2es,")"))
 |
 D2Ebrset
 ( dpis, d2es) =>
-prints("D2Ebrset(",dpis,";",d2es,")")
+(
+prints("D2Ebrset(",dpis,";",d2es,")"))
 //
+(* ****** ****** *)
 |
 D2Edtsel
 ( tknd
@@ -620,47 +639,58 @@ D2Edtsel
 (
 print("D2Edtsel(");
 prints(tknd,";", lab1,";");
-prints(dpis,";", npf1,";", opt2,")"))
+prints(dpis, ";",npf1, ";",opt2, ")"))
+//
+(* ****** ****** *)
 //
 |
 D2Eraise
 ( tknd, d2e1) =>
 (
-prints
-("D2Eraise(", tknd, ";", d2e1, ")"))
+prints("D2Eraise(",tknd,";",d2e1,")"))
+//
+(* ****** ****** *)
 //
 |
 D2El0azy
 ( dsym, d2e1) =>
 (
-prints
-("D2El0azy(", dsym, ";", d2e1, ")"))
+prints("D2El0azy(",dsym,";",d2e1,")"))
 |
 D2El1azy
 ( dsym
 , d2e1, d2es) =>
-( print("D2El1azy(")
-; prints(dsym,";",d2e1,";",d2es,")") )
+(
+print("D2El1azy(");
+prints(dsym, ";",d2e1, ";",d2es, ")"))
+//
+(* ****** ****** *)
 //
 |
 D2Eannot
 ( d2e1
 , s1e2, s2e2) =>
-( print("D2Eannot(")
-; prints(d2e1,";",s1e2,";",s2e2,")") )
+(
+print("D2Eannot(");
+prints(d2e1, ";",s1e2, ";",s2e2, ")"))
+//
+(* ****** ****** *)
 //
 |D2Eg1mac
 (    g1m1    ) =>
 (
 prints("D2Eg1mac(",g1m1,")"))//D2Eg1mac
 //
+(* ****** ****** *)
+//
 |D2Elabck
 ( d2e1, lab2 ) =>
 let
 val
 t2p1 = d2e1.styp() in
-( print("D2Elabck(")
-; prints( d2e1,";",t2p1,";",lab2,")") )
+(
+print("D2Elabck(");
+prints(d2e1, ";",t2p1, ";",lab2, ")"))
 endlet // end of [D2Elabck(d2e1, lab2)]
 //
 |D2Et2pck
@@ -668,16 +698,18 @@ endlet // end of [D2Elabck(d2e1, lab2)]
 let
 val
 t2p1 = d2e1.styp() in
-( print("D2Et2pck(")
-; prints( d2e1,";",t2p1,";",t2p2,")") )
+(
+print("D2Et2pck(");
+prints(d2e1, ";",t2p1, ";",t2p2, ")"))
 endlet // end of [D2Et2pck(d2e1, t2p2)]
 |D2Et2ped
 ( d2e1, t2p2 ) =>
 let
 val
 t2p1 = d2e1.styp() in
-( print("D2Et2ped(")
-; prints( d2e1,";",t2p1,";",t2p2,")") )
+(
+print("D2Et2ped(");
+prints(d2e1, ";",t2p1, ";",t2p2, ")"))
 endlet // end of [D2Et2ped(d2e1, t2p2)]
 //
 (* ****** ****** *)
@@ -686,7 +718,7 @@ endlet // end of [D2Et2ped(d2e1, t2p2)]
 D2Eexists
 ( s2es, d2e1) =>
 (
-prints("D2Eexists(",s2es,";",d2e1,")") )
+prints("D2Eexists(",s2es,";",d2e1,")"))
 //
 (* ****** ****** *)
 //
@@ -694,13 +726,13 @@ prints("D2Eexists(",s2es,";",d2e1,")") )
 D2Eextnam
 ( tknd, gnam) =>
 (
-prints("D2Eextnam(",tknd,";",gnam,")") )
+prints("D2Eextnam(",tknd,";",gnam,")"))
 //
 |
 D2Esynext
 ( tknd, gexp) =>
 (
-prints("D2Esynext(",tknd,";",gexp,")") )
+prints("D2Esynext(",tknd,";",gexp,")"))
 //
 (* ****** ****** *)
 //
