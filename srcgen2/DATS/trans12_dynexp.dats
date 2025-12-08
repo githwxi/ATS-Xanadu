@@ -2549,86 +2549,148 @@ D1Ea2pp
 , d1e1, d1e2) = d1e0.node()
 //
 in
-//
-if
+(
+if // if
 ASSGNq(d1f0)
-then
+then // then
+// beg-of-then(ASSGN)
 let
 //
-val
-d2e1 = trans12_d1exp(env0, d1e1)
-val
-d2e2 = trans12_d1exp(env0, d1e2)
+val d2e1 =
+(
+trans12_d1exp(env0, d1e1))
+val d2e2 =
+(
+trans12_d1exp(env0, d1e2))
 //
-in//let
+in//let//then
 //
 case+
 d2e1.node() of
 |
 D2Ebrget
-( dpis, d2es) =>
+(dpis, d2es) =>
 let
-//
 (*
 HX: A[idx] := itm
 *)
-//
 val d2es =
 list_extend(d2es, d2e2)
 in//let
-d2exp_make_node
-(loc0, D2Ebrset(dpis, d2es))
-end // end of [D2Ebrget(...)]
+d2exp_make_node(
+loc0, D2Ebrset(dpis, d2es))
+end//let//end(D2Ebrget(...))
 |
-_(*non-D2Ebrget*) =>
+_(*non-brget*) =>
 (
-  d2exp_make_node
-  (loc0, D2Eassgn(d2e1, d2e2)) )
+d2exp_make_node(
+loc0, D2Eassgn(d2e1, d2e2)))
 //
-end (*let*) // end-of-then(ASSGN)
-//
-else 
+end (*let*)
+// end-of-then(ASSGN)
+else // else
+// beg-of-else(ASSGN)
+(
+if
+XAZGNq(d1f0)
+then // then
+// beg-of-then(XAZGN)
 let
 //
-val
-d2f0 = trans12_d1exp(env0, d1f0)
-val
-d2e1 = trans12_d1exp(env0, d1e1)
-val
-d2e2 = trans12_d1exp(env0, d1e2)
+val d2e1 =
+(
+trans12_d1exp(env0, d1e1))
+val d2e2 =
+(
+trans12_d1exp(env0, d1e2))
 //
-in//let
+in//let//then
+(
+d2exp_make_node(
+loc0, D2Exazgn(d2e1, d2e2)))
+end(*let*)//then
+// end-of-then(XAZGN)
+else
+// beg-of-else(XAZGN)
+(
+if
+XCHNGq(d1f0)
+then // then
+// beg-of-then(XCHNG)
+let
+//
+val d2e1 =
+(
+trans12_d1exp(env0, d1e1))
+val d2e2 =
+(
+trans12_d1exp(env0, d1e2))
+//
+in//let//then
+(
+d2exp_make_node(
+loc0, D2Exchng(d2e1, d2e2)))
+end(*let*)//then
+// end-of-then(XCHNG)
+else
+// beg-of-else(XCHNG)
+let
+//
+val d2f0 =
+(
+  trans12_d1exp(env0, d1f0))
+val d2e1 =
+(
+  trans12_d1exp(env0, d1e1))
+val d2e2 =
+(
+  trans12_d1exp(env0, d1e2))
+//
+in//let//else
 //
 (
-my_d2exp_dapp
-(loc0, d2f0, npf1, d2es) ) where
-{
+  my_d2exp_dapp
+  ( loc0, d2f0, npf1, d2es ))
+where {
 val npf1 = (-1)
 val d2es = list_pair(d2e1, d2e2) }
 //
-end (*let*) // end-of-else(~ASSGN)
+end(*let*)//else
+)//if(XCHNGq(d1f0))then(...)else(...)
+)//if(XAZGNq(d1f0))then(...)else(...)
+)//if(ASSGNq(d1f0))then(...)else(...)
 //
 end where
 {
 //
 fun
 ASSGNq
-(d1e: d1exp): bool =
+(d1f: d1exp): bool =
 (
 case+
-d1e.node() of
+d1f.node() of
 | D1Eid0(sym) =>
 ( sym = ASSGN_symbl )
 | _(*non-D1Eid0*) => false)//endof(fun)
 //
 fun
 XAZGNq
-(d1e: d1exp): bool =
+(d1f: d1exp): bool =
 (
 case+
-d1e.node() of
+d1f.node() of
 | D1Eid0(sym) =>
 ( sym = XAZGN_symbl )
+| _(*non-D1Eid0*) => false)//endof(fun)
+//
+fun
+XCHNGq
+(d1f: d1exp): bool =
+(
+case+
+d1f.node() of
+| D1Eid0(sym) =>
+( sym = XCHNG_symbl )
 | _(*non-D1Eid0*) => false)//endof(fun)
 //
 } (*where*) // end of [f0_a2pp(env0,d1e0)]

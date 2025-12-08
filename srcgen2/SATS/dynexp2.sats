@@ -1036,9 +1036,11 @@ HX-2024-10-05: there is only D3Eflat!
 //
 (* ****** ****** *)
 //
-|D2Eeval of (d2exp)//eval-builtin-fun
+|
+D2Eeval of (d2exp)//eval-builtin-fun
 //
-|D2Efold of (d2exp)//open-con-folding
+|
+D2Efold of (d2exp)//open-con-folding
 //
 (*
 HX-2024-01-01:
@@ -1058,26 +1060,31 @@ d2exp//let(binds)in(scope)end
 //
 (* ****** ****** *)
 //
-|
-D2Eassgn of // l-val := r-val
+|D2Eassgn of // l-val := r-val
 ( d2exp(*l-val*), d2exp(*r-val*))
 //
-(* ****** ****** *)
-//
-(*
-|D2Eaexch of // l-val :=> r-val
+|D2Exazgn of // l-val :=> r-val
 ( d2exp(*l-val*), d2exp(*r-val*))
-|D2Ebexch of // l-val :=: r-val
+|D2Exchng of // l-val :=: r-val
 ( d2exp(*l-val*), d2exp(*r-val*))
-*)
 //
 (* ****** ****** *)
 //
 |D2Ebrget of // HX: arr[idx]
-( d2ptmlst, d2explst(*arr+idx*))
+( d2ptmlst, d2explst(*arr+idx*) )
 |D2Ebrset of // HX: arr[idx] := val
 ( d2ptmlst, d2explst(*arr+idx+val*))
 //
+(*
+HX-2025-12-08:
+These will be added later :)
+|D2Ebrxzn of // HX: arr[idx] :=> val
+( d2ptmlst, d2explst(*arr+idx+val*))
+|D2Ebrxch of // HX: arr[idx] :=: val
+( d2ptmlst, d2explst(*arr+idx+val*))
+*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D2Edtsel of
@@ -1087,12 +1094,14 @@ D2Eassgn of // l-val := r-val
 , sint(*npf*), d2explstopt(*args*) )
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |
 D2Eraise of
 (
  token(*$RAISE*), d2exp(*lin-exn*) )
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |
@@ -1106,6 +1115,7 @@ d1exp(*$LLAZY*),
 d2exp(*lin-thunk*), d2explst(*frees*))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |
 D2Eannot of
@@ -1118,6 +1128,7 @@ D2Eannot of
 (g1mac(*unknown*))//temporary or error!
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |
 D2Elabck of (d2exp, label)//HX: casting
@@ -1126,6 +1137,7 @@ D2Et2pck of (d2exp, s2typ)//HX: casting
 |
 D2Et2ped of (d2exp, s2typ)//HX: checked
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |
