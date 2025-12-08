@@ -1264,6 +1264,7 @@ val T0TRCD11 = T_TRCD10(1) //HX: #()
 and T0TRCD12 = T_TRCD10(2) //HX: $tup
 and T0TRCD13 = T_TRCD10(3) //HX: $tuptx
 and T0TRCD14 = T_TRCD10(4) //HX: $tupvx
+and T0TRCD15 = T_TRCD10(5) //HX: $tuprf
 *)
 //
 (* ****** ****** *)
@@ -1294,10 +1295,12 @@ if linq
 then TRCDbox1((*void*))
 else TRCDbox0((*void*)))
 | // $tuptx()
-T_TRCD10(3) => TRCDbox0
+T_TRCD10(3) => (TRCDbox0)
 | // $tupvx()
-T_TRCD10(4) => TRCDbox1
-) : trcdknd // end-of-val
+T_TRCD10(4) => (TRCDbox1)
+| // $tuprf()
+T_TRCD10(5) => (TRCDbox0)
+) : trcdknd//end(val(knd0))
 //
 val
 s2t0 =
@@ -1315,24 +1318,27 @@ linq
 then
 (
 if prfq
-then the_sort2_view
-else the_sort2_vwtp)
+   then the_sort2_view
+   else the_sort2_vwtp)
 else
 (
 if prfq
-then the_sort2_prop
-else the_sort2_type)
+   then the_sort2_prop
+   else the_sort2_type)
 end (*let*) // T_TRCD10(0)
 | // #(...)
 T_TRCD10(1) => the_sort2_vtbx
 | // $tup(...)
 T_TRCD10(2) =>
-(if linq then (the_sort2_vtbx)
-         else (the_sort2_tbox))
+(
+if linq then (the_sort2_vtbx)
+        else (the_sort2_tbox))
 | // $tuptx(...)
 T_TRCD10(3) => (the_sort2_tbox)
 | // $tupvx(...)
 T_TRCD10(4) => (the_sort2_vtbx)
+| // $tuprf(...)
+T_TRCD10(5) => (the_sort2_tbox)
 ) : sort2 // end of [val(s2t0)]
 //
 (*
@@ -1404,7 +1410,9 @@ TRCDbox1 else TRCDbox0)
 T_TRCD10(3) => TRCDbox0
 | // $tupvx()
 T_TRCD10(4) => TRCDbox1
-) : trcdknd // end-of-val
+| // $tuprf()
+T_TRCD10(5) => TRCDbox0
+) : trcdknd//end(val(knd0))
 //
 val
 s2t1 =
@@ -1428,12 +1436,15 @@ if linq // flat
 T_TRCD10(1) => the_sort2_vtbx
 | // $tup(...)
 T_TRCD10(2) =>
-(if linq then (the_sort2_vtbx)
-         else (the_sort2_tbox))
+(
+if linq then (the_sort2_vtbx)
+        else (the_sort2_tbox))
 | // $tuptx(...)
 T_TRCD10(3) => (the_sort2_tbox)
 | // $tupvx(...)
 T_TRCD10(4) => (the_sort2_vtbx)
+| // $tuprf(...)
+T_TRCD10(5) => (the_sort2_tbox)
 ) : sort2 // end of [val(s2t2)]
 //
 (*
@@ -1515,7 +1526,9 @@ TRCDbox1 else TRCDbox0)
 T_TRCD20(3) => TRCDbox0
 | // $rcdvx{}
 T_TRCD20(4) => TRCDbox1
-) : trcdknd // end-of-val
+| // $rcdrf{}
+T_TRCD20(5) => TRCDbox0
+) : trcdknd//end(val(knd0))
 //
 val
 s2t0 =
@@ -1528,32 +1541,34 @@ val
 prfq =
 l2s2elst_prfq(lses)
 in//let
+//
 if
 linq
 then
 (
 if prfq
-then the_sort2_view
-else the_sort2_vwtp)
+   then the_sort2_view
+   else the_sort2_vwtp)
 else
 (
 if prfq
-then the_sort2_prop
-else the_sort2_type)
+   then the_sort2_prop
+   else the_sort2_type)
+//
 end (*let*) // T_TRCD20(0)
 | // #{...}
-T_TRCD20(1) => the_sort2_vwtp
+T_TRCD20(1) => the_sort2_vtbx
 | // $rcd{...}
 T_TRCD20(2) =>
 (
-if linq
-then (the_sort2_vwtp) // then
-else (the_sort2_type) // else
-)
+if linq then (the_sort2_vtbx)
+        else (the_sort2_tbox))
 | // $rcdtx{...}
-T_TRCD20(3) => the_sort2_type
+T_TRCD20(3) => (the_sort2_tbox)
 | // $rcdvx{...}
-T_TRCD20(4) => the_sort2_vwtp
+T_TRCD20(4) => (the_sort2_vtbx)
+| // $rcdrf{...}
+T_TRCD20(5) => (the_sort2_tbox)
 ) : sort2 // end of [val(s2t0)]
 //
 (*
@@ -1622,7 +1637,9 @@ TRCDbox1 else TRCDbox0)
 T_TRCD20(3) => TRCDbox0
 | // $rcdvx{}
 T_TRCD20(4) => TRCDbox1
-) : trcdknd // end-of-val
+| // $rcdrf{}
+T_TRCD20(5) => TRCDbox0
+) : trcdknd//end(val(knd0))
 //
 val
 s2t1 =
@@ -1643,17 +1660,19 @@ linq
 then (the_sort2_vwtp)
 else (the_sort2_type)
 | // #{...}
-T_TRCD20(1) => the_sort2_vwtp
+T_TRCD20(1) => the_sort2_vtbx
 | // $rcd{...}
 T_TRCD20(2) =>
 (
-if linq then (the_sort2_vwtp)
-        else (the_sort2_type))
+if linq then (the_sort2_vtbx)
+        else (the_sort2_tbox))
 | // $rcdtx{...}
-T_TRCD20(3) => the_sort2_type
+T_TRCD20(3) => (the_sort2_tbox)
 | // $rcdvx{...}
-T_TRCD20(4) => the_sort2_vwtp
-) : sort2 // end of [val(s2t2)]
+T_TRCD20(4) => (the_sort2_vtbx)
+| // $rcdrf{...}
+T_TRCD20(5) => (the_sort2_tbox)
+) : sort2 // end-of-[val(s2t2)]
 //
 (*
 HX-2022-10-28:

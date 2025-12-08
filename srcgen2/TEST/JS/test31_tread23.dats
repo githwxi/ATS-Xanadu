@@ -428,7 +428,7 @@ val
 dpar =
 let
 val () =
-d2parsed_at_trsym2b(dpar) in dpar
+d2parsed_by_trsym2b(dpar) in dpar
 end
 //
 (* ****** ****** *)
