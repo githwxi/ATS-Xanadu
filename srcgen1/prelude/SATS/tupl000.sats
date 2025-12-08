@@ -397,20 +397,65 @@ t1up9_vt
 #sexpdef t1up_vt = t1up9_vt//(a0,a1,a2,a3,a4,a5,a6,a7,a8)
 //
 (* ****** ****** *)
+//
+#typedef
+t0up10_t0
+(a0:t0,a1:t0
+,a2:t0,a3:t0
+,a4:t0,a5:t0
+,a6:t0,a7:t0
+,a8:t0,a9:t0) = @(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
+#vwtpdef
+t0up10_vt
+(a0:vt,a1:vt
+,a2:vt,a3:vt
+,a4:vt,a5:vt
+,a6:vt,a7:vt
+,a8:vt,a9:vt) = @(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
+//
+#typedef
+t1up10_t0
+(a0:t0,a1:t0
+,a2:t0,a3:t0
+,a4:t0,a5:t0
+,a6:t0,a7:t0
+,a8:t0,a9:t0) = $tuptx(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
+#vwtpdef
+t1up10_vt
+(a0:vt,a1:vt
+,a2:vt,a3:vt
+,a4:vt,a5:vt
+,a6:vt,a7:vt
+,a8:vt,a9:vt) = $tupvx(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
+//
+#sexpdef t0up = t0up10_t0//(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
+#sexpdef t1up = t1up10_t0//(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
+#sexpdef t0up_vt = t0up10_vt//(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
+#sexpdef t1up_vt = t1up10_vt//(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun<>
 t0up_print$beg(): void // print("@(") // flat-tuple
 fun<>
 t1up_print$beg(): void // print("#(") // boxd-tuple
+//
 (* ****** ****** *)
+//
 fun<>
 t0up_print$end(): void // print (")" ) // flat-tuple
 fun<>
 t1up_print$end(): void // print( ")" ) // boxd-tuple
+//
 (* ****** ****** *)
+//
 fun<>
 t0up_print$sep(): void // print( "," ) // flat-tuple
 fun<>
 t1up_print$sep(): void // print( "," ) // boxd-tuple
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

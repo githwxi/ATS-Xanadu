@@ -236,6 +236,12 @@
 "./../../DATS/trans12_decl00.dats"
 (* ****** ****** *)
 //
+(*
+HX-2025-12-07:
+//
+This portion is in
+"./../..xdpndcy/srcgen1/."
+//
 #include
 "./../../DATS/xdepend.dats"
 #include
@@ -246,6 +252,7 @@
 "./../../DATS/xdepend_dynexp.dats"
 #include
 "./../../DATS/xdepend_decl00.dats"
+*)
 //
 (* ****** ****** *)
 #include
@@ -343,15 +350,18 @@ d2parsed_of_trans12(dpar)
 //
 (* ****** ****** *)
 //
+(*
 val dcls =
 (
   xdepend_d2parsed(dpar))
+*)
 //
 (* ****** ****** *)
 //
 val
 dpar =
-d2parsed_of_tread12(dpar)
+(
+  d2parsed_of_tread12(dpar))
 //
 val (  ) =
 let
