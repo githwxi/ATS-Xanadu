@@ -1,0 +1,43 @@
+(* ****** ****** *)
+(*
+HX-2025-12-07:
+For testing xsyncpy!
+Sun Dec  7 04:40:40 AM EST 2025
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"prelude/HATS/prelude_dats.hats"
+(* ****** ****** *)
+#include
+"prelude/HATS/prelude_JS_dats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+T0TRCD10
+(x0: sint): @(sint, sint) = @(x0, x0)
+//
+fun
+T0TRCD11
+(x0: sint): #(sint, sint) = #(x0, x0)
+//
+fun
+T0TRCD12
+(x0: sint): $tup(sint, sint) = $tup(x0, x0)
+//
+(*
+fun
+T0TRCD13
+(x0: sint): $tuptx(sint, sint) = $tuptx(x0, x0)
+fun
+T0TRCD14
+(x0: sint): $tupvx(sint, sint) = $tupvx(x0, x0)
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test05_xsyncpy.dats] *)
+(***********************************************************************)
