@@ -37,8 +37,8 @@
 // HX-2023-08-06:
 // @(...): flat tuple
 // #(...): boxd tuple
-// $tuptx(...): boxd tuple
-// $tupvx(...): boxd tuple
+// $tup_t0(...): boxd tuple
+// $tup_vt(...): boxd tuple
 // (Change: $(...) -> #(...))
 // Sun Aug  6 19:45:40 EDT 2023
 *)
@@ -61,10 +61,10 @@ t0up1_vt
 //
 #typedef
 t1up1_t0
-(a0: t0) = $tuptx(a0)
+(a0: t0) = $tup_t0(a0)
 #vwtpdef
 t1up1_vt
-(a0: vt) = $tupvx(a0)
+(a0: vt) = $tup_vt(a0)
 //
 #sexpdef t0up = t0up1_t0//(a0)
 #sexpdef t1up = t1up1_t0//(a0)
@@ -85,11 +85,11 @@ t0up2_vt
 #typedef
 t1up2_t0
 (a0: t0
-,a1: t0) = $tuptx(a0,a1)
+,a1: t0) = $tup_t0(a0,a1)
 #vwtpdef
 t1up2_vt
 (a0: vt
-,a1: vt) = $tupvx(a0,a1)
+,a1: vt) = $tup_vt(a0,a1)
 //
 #sexpdef t0up = t0up2_t0//(a0,a1)
 #sexpdef t1up = t1up2_t0//(a0,a1)
@@ -126,12 +126,12 @@ t0up3_vt
 t1up3_t0
 (a0: t0
 ,a1: t0
-,a2: t0) = $tuptx(a0,a1,a2)
+,a2: t0) = $tup_t0(a0,a1,a2)
 #vwtpdef
 t1up3_vt
 (a0: vt
 ,a1: vt
-,a2: vt) = $tupvx(a0,a1,a2)
+,a2: vt) = $tup_vt(a0,a1,a2)
 //
 #sexpdef t0up = t0up3_t0//(a0,a1,a2)
 #sexpdef t1up = t1up3_t0//(a0,a1,a2)
@@ -158,13 +158,13 @@ t1up4_t0
 (a0: t0
 ,a1: t0
 ,a2: t0
-,a3: t0) = $tuptx(a0,a1,a2,a3)
+,a3: t0) = $tup_t0(a0,a1,a2,a3)
 #vwtpdef
 t1up4_vt
 (a0: vt
 ,a1: vt
 ,a2: vt
-,a3: vt) = $tupvx(a0,a1,a2,a3)
+,a3: vt) = $tup_vt(a0,a1,a2,a3)
 //
 #sexpdef t0up = t0up4_t0//(a0,a1,a2,a3)
 #sexpdef t1up = t1up4_t0//(a0,a1,a2,a3)
@@ -194,14 +194,14 @@ t1up5_t0
 ,a1: t0
 ,a2: t0
 ,a3: t0
-,a4: t0) = $tuptx(a0,a1,a2,a3,a4)
+,a4: t0) = $tup_t0(a0,a1,a2,a3,a4)
 #vwtpdef
 t1up5_vt
 (a0: vt
 ,a1: vt
 ,a2: vt
 ,a3: vt
-,a4: vt) = $tupvx(a0,a1,a2,a3,a4)
+,a4: vt) = $tup_vt(a0,a1,a2,a3,a4)
 //
 #sexpdef t0up = t0up5_t0//(a0,a1,a2,a3,a4)
 #sexpdef t1up = t1up5_t0//(a0,a1,a2,a3,a4)
@@ -234,7 +234,7 @@ t1up6_t0
 ,a2: t0
 ,a3: t0
 ,a4: t0
-,a5: t0) = $tuptx(a0,a1,a2,a3,a4,a5)
+,a5: t0) = $tup_t0(a0,a1,a2,a3,a4,a5)
 #vwtpdef
 t1up6_vt
 (a0: vt
@@ -242,7 +242,7 @@ t1up6_vt
 ,a2: vt
 ,a3: vt
 ,a4: vt
-,a5: vt) = $tupvx(a0,a1,a2,a3,a4,a5)
+,a5: vt) = $tup_vt(a0,a1,a2,a3,a4,a5)
 //
 #sexpdef t0up = t0up6_t0//(a0,a1,a2,a3,a4,a5)
 #sexpdef t1up = t1up6_t0//(a0,a1,a2,a3,a4,a5)
@@ -278,7 +278,7 @@ t1up7_t0
 ,a3: t0
 ,a4: t0
 ,a5: t0
-,a6: t0) = $tuptx(a0,a1,a2,a3,a4,a5,a6)
+,a6: t0) = $tup_t0(a0,a1,a2,a3,a4,a5,a6)
 #vwtpdef
 t1up7_vt
 (a0: vt
@@ -287,7 +287,7 @@ t1up7_vt
 ,a3: vt
 ,a4: vt
 ,a5: vt
-,a6: vt) = $tupvx(a0,a1,a2,a3,a4,a5,a6)
+,a6: vt) = $tup_vt(a0,a1,a2,a3,a4,a5,a6)
 //
 #sexpdef t0up = t0up7_t0//(a0,a1,a2,a3,a4,a5,a6)
 #sexpdef t1up = t1up7_t0//(a0,a1,a2,a3,a4,a5,a6)
@@ -326,7 +326,7 @@ t1up8_t0
 ,a4: t0
 ,a5: t0
 ,a6: t0
-,a7: t0) = $tuptx(a0,a1,a2,a3,a4,a5,a6,a7)
+,a7: t0) = $tup_t0(a0,a1,a2,a3,a4,a5,a6,a7)
 #vwtpdef
 t1up8_vt
 (a0: vt
@@ -336,7 +336,7 @@ t1up8_vt
 ,a4: vt
 ,a5: vt
 ,a6: vt
-,a7: vt) = $tupvx(a0,a1,a2,a3,a4,a5,a6,a7)
+,a7: vt) = $tup_vt(a0,a1,a2,a3,a4,a5,a6,a7)
 //
 #sexpdef t0up = t0up8_t0//(a0,a1,a2,a3,a4,a5,a6,a7)
 #sexpdef t1up = t1up8_t0//(a0,a1,a2,a3,a4,a5,a6,a7)
@@ -378,7 +378,7 @@ t1up9_t0
 ,a5: t0
 ,a6: t0
 ,a7: t0
-,a8: t0) = $tuptx(a0,a1,a2,a3,a4,a5,a6,a7,a8)
+,a8: t0) = $tup_t0(a0,a1,a2,a3,a4,a5,a6,a7,a8)
 #vwtpdef
 t1up9_vt
 (a0: vt
@@ -389,7 +389,7 @@ t1up9_vt
 ,a5: vt
 ,a6: vt
 ,a7: vt
-,a8: vt) = $tupvx(a0,a1,a2,a3,a4,a5,a6,a7,a8)
+,a8: vt) = $tup_vt(a0,a1,a2,a3,a4,a5,a6,a7,a8)
 //
 #sexpdef t0up = t0up9_t0//(a0,a1,a2,a3,a4,a5,a6,a7,a8)
 #sexpdef t1up = t1up9_t0//(a0,a1,a2,a3,a4,a5,a6,a7,a8)
@@ -419,14 +419,14 @@ t1up10_t0
 ,a2:t0,a3:t0
 ,a4:t0,a5:t0
 ,a6:t0,a7:t0
-,a8:t0,a9:t0) = $tuptx(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
+,a8:t0,a9:t0) = $tup_t0(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
 #vwtpdef
 t1up10_vt
 (a0:vt,a1:vt
 ,a2:vt,a3:vt
 ,a4:vt,a5:vt
 ,a6:vt,a7:vt
-,a8:vt,a9:vt) = $tupvx(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
+,a8:vt,a9:vt) = $tup_vt(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
 //
 #sexpdef t0up = t0up10_t0//(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
 #sexpdef t1up = t1up10_t0//(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
