@@ -1233,11 +1233,13 @@ end // end of [s2exp_list2]
 //
 (*
 HX-2020-07:
-boxed
-tuples are linear
 HX-2024-08-10:
-$tup_vt: linear
 $tup_t0: nonlin
+$tup_vt: linear
+boxed tuples are linear by default!
+$rec_t0: nonlin
+$rec_vt: linear
+boxed records are linear by default!
 *)
 //
 implement
@@ -1261,6 +1263,10 @@ then (the_sort2_vwtp)
 else (the_sort2_type)
 end
 )
+(*
+HX:
+else: linear by default
+*)
 else
 (
 if
@@ -1291,7 +1297,6 @@ s2exp_trcd12
 ( knd
 , s2es1, s2es2) = let
 //
-//
 val s2t0 =
 (
 if
@@ -1315,17 +1320,22 @@ islin
 then (the_sort2_vwtp)
 else (the_sort2_type)
 end
+(*
+HX:
+else: linear by default
+*)
 else
 (
 if
-knd = 3 // $rcd_t0
+knd = 3 // $tup_t0
 then (the_sort2_tbox)
 else (the_sort2_vtbx))
 ) : sort2 // end of [val]
 //
 val knd =
 (
-if knd = 0 then TYRECflt0 else TYRECbox1
+if knd = 0
+then TYRECflt0 else TYRECbox1
 ) : tyrec // end of [val]
 //
 val
@@ -1352,18 +1362,28 @@ let
 val
 islin =
 labs2explst_islin(ls2es)
-in
+in//let
 if
 islin
 then (  the_sort2_vwtp  )
 else (  the_sort2_type  )
-end
-else (  the_sort2_vtbx  ) // linear
+end//let
+(*
+HX:
+else: linear by default
+*)
+else
+(
+if
+knd = 3 // $rec_t0
+then (  the_sort2_tbox  )
+else (  the_sort2_vtbx  ))
 ) : sort2 // end of [val]
 //
 val knd =
 (
-if knd = 0 then TYRECflt0 else TYRECbox1
+if knd = 0
+then TYRECflt0 else TYRECbox1
 ) : tyrec // end of [val]
 //
 in
@@ -1395,23 +1415,33 @@ islin
 then islin else
 labs2explst_islin(ls2es2)
 ) : bool // end of [val]
-in
+in//let
 if
 islin
 then (  the_sort2_vwtp  )
 else (  the_sort2_type  )
-end
-else (  the_sort2_vtbx  ) // linear
+end//let
+(*
+HX:
+else: linear by default
+*)
+else
+(
+if
+knd = 3 // $rec_t0
+then (  the_sort2_tbox  )
+else (  the_sort2_vtbx  ))
 ) : sort2 // end of [val]
 //
 val knd =
 (
-if knd = 0 then TYRECflt0 else TYRECbox1
+if knd = 0
+then TYRECflt0 else TYRECbox1
 ) : tyrec // end of [val]
 //
 val npf = list_length(ls2es1)
 //
-in
+in//let
 s2exp_make_node
 (s2t0, S2Etyrec(knd, npf, ls2es1 + ls2es2))
 end // end of [s2exp_trcd22]
@@ -1450,7 +1480,8 @@ s2exp_make_node
 //
 implement
 the_s2exp_none0 =
-  s2exp_none0((*void*))
+(
+  s2exp_none0((*void*)))
 //
 implement
 s2exp_none0() =
