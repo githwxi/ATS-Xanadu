@@ -157,6 +157,9 @@ val DLRDT_symbl: symbl // symbl("$.")
 val ASSGN_symbl: symbl //=symbl(":=")
 val BRCKT_symbl: symbl //=symbl("[]")
 //
+val XAZGN_symbl: symbl //=symbl(":=>")
+val XCHNG_symbl: symbl //=symbl(":=:")
+//
 (* ****** ****** *)
 //
 val INT0_symbl: symbl //=symbl("int0")

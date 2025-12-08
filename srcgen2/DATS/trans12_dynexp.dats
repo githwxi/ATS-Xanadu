@@ -2621,6 +2621,16 @@ d1e.node() of
 ( sym = ASSGN_symbl )
 | _(*non-D1Eid0*) => false)//endof(fun)
 //
+fun
+XAZGNq
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+| D1Eid0(sym) =>
+( sym = XAZGN_symbl )
+| _(*non-D1Eid0*) => false)//endof(fun)
+//
 } (*where*) // end of [f0_a2pp(env0,d1e0)]
 
 (* ****** ****** *)

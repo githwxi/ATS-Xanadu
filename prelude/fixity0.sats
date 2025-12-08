@@ -166,6 +166,7 @@ proofs from programs!
 (* ****** ****** *)
 //
 #infix0 := of 0 // HX: assign
+#infix0 :=> of 0 // HX: exassign
 #infix0 :=: of 0 // HX: exchange
 //
 (*
