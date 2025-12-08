@@ -214,6 +214,8 @@ macdef
 T_TRCD13_ = T_TRCD1(3)
 macdef
 T_TRCD14_ = T_TRCD1(4)
+macdef
+T_TRCD15_ = T_TRCD1(5)
 
 macdef
 T_TRCD22_ = T_TRCD2(2)
@@ -221,6 +223,8 @@ macdef
 T_TRCD23_ = T_TRCD2(3)
 macdef
 T_TRCD24_ = T_TRCD2(4)
+macdef
+T_TRCD25_ = T_TRCD2(5)
 
 (* ****** ****** *)
 //
@@ -494,11 +498,20 @@ val () = myins("withvwtp", T_WITHVWTP_)
 val () = myins("withvtype", T_WITHVTYPE_)
 *)
 //
-val () = myins("$tup"   , T_TRCD12_)
+val () = myins("$tup", T_TRCD12_)
+val () = myins("$rec", T_TRCD22_)
+//
+val () = myins("$tuptx", T_TRCD13_)
+val () = myins("$tupvx", T_TRCD14_)
+val () = myins("$tuprf", T_TRCD15_)
+//
+val () = myins("$rectx", T_TRCD23_)
+val () = myins("$recvx", T_TRCD24_)
+val () = myins("$recrf", T_TRCD25_)
+//
 val () = myins("$tup_t0", T_TRCD13_)
 val () = myins("$tup_vt", T_TRCD14_)
 //
-val () = myins("$rec"   , T_TRCD22_)
 val () = myins("$rec_t0", T_TRCD23_)
 val () = myins("$rec_vt", T_TRCD24_)
 //

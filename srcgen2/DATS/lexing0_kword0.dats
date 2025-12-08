@@ -155,11 +155,13 @@ val T0TRCD11 = T_TRCD10(1) //HX: #()
 and T0TRCD12 = T_TRCD10(2) //HX: $tup
 and T0TRCD13 = T_TRCD10(3) //HX: $tuptx
 and T0TRCD14 = T_TRCD10(4) //HX: $tupvx
+and T0TRCD15 = T_TRCD10(5) //HX: $tuprf
 //
 (*
 and T0TRCD12 = T_TRCD10(2) //HX: $tpl
 and T0TRCD13 = T_TRCD10(3) //HX: $tpltx
 and T0TRCD14 = T_TRCD10(4) //HX: $tplvx
+and T0TRCD15 = T_TRCD10(5) //HX: $tplrf
 *)
 //
 (*
@@ -169,12 +171,14 @@ val T0TRCD21 = T_TRCD20(1) //HX: #{}
 //
 and T0TRCD22 = T_TRCD20(2) //HX: $rec
 and T0TRCD23 = T_TRCD20(3) //HX: $rectx
-and T0TRCD24 = T_TRCD20(4) //HX: $rcdvx
+and T0TRCD24 = T_TRCD20(4) //HX: $recvx
+and T0TRCD25 = T_TRCD20(5) //HX: $recrf
 //
 (*
 and T0TRCD22 = T_TRCD20(2) //HX: $rcd
 and T0TRCD23 = T_TRCD20(3) //HX: $rcdtx
 and T0TRCD24 = T_TRCD20(4) //HX: $rcdvx
+and T0TRCD24 = T_TRCD20(4) //HX: $rcdrf
 *)
 //
 (* ****** ****** *)
@@ -396,6 +400,12 @@ val () = kwdins("$tplrf", T0TRCD15)//tbox
 val () = kwdins("$recrf", T0TRCD25)//tbox
 val () = kwdins("$rcdrf", T0TRCD25)//tbox
 *)
+//
+val () = kwdins("$tup_t0", T0TRCD13)//tbox
+val () = kwdins("$rec_t0", T0TRCD23)//tbox
+//
+val () = kwdins("$tup_vt", T0TRCD14)//vtbx
+val () = kwdins("$rec_vt", T0TRCD24)//vtbx
 //
 (* ****** ****** *)
 //
