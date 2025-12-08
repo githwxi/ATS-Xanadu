@@ -1879,26 +1879,38 @@ f0_tup1
 d3exp_make_tpnd
 ( loc0, t2p0
 , D3Etup1
-  (tknd, npf1, d3es))) where
-{
+  (tknd, npf1, d3es)))
+where{
 val loc0 = d2e0.lctn()
 val-
 D2Etup1
 ( tknd
 , npf1, d2es) = d2e0.node()
-val
-d3es = trans23_d2explst(env0, d2es)
-val
-trcd =
+//
+val d3es =
+trans23_d2explst(env0, d2es)
+//
+val t2ps = s2typlst(d3es)
+val linq = s2typlst_linq(t2ps)
+//
+val trcd =
 (
-case-
+case+
 tknd.node() of
+//
 |T_TRCD10(0) => TRCDflt0(*void*)
-|T_TRCD10(_) => TRCDbox0(*void*)
-)
-val
-t2p0 =
-s2typ_tup1(trcd , npf1 , s2typlst(d3es))
+|T_TRCD10(1) => TRCDbox1(*void*)
+//
+|T_TRCD10(2) =>
+(if linq
+    then TRCDbox1 else TRCDbox0)
+//
+|T_TRCD10(3) => TRCDbox0(*void*)
+|T_TRCD10(4) => TRCDbox1(*void*)
+|T_TRCD10(5) => TRCDbox0(*void*))
+//
+val t2p0 = s2typ_tup1(trcd, npf1, t2ps)
+//
 } (*where*) // end of [f0_tup1(env0,d2e0)]
 //
 (* ****** ****** *)
@@ -1912,26 +1924,38 @@ f0_rcd2
 d3exp_make_tpnd
 ( loc0, t2p0
 , D3Ercd2
-  (tknd, npf1, ldes))) where
-{
+  (tknd, npf1, ldes)))
+where{
 val loc0 = d2e0.lctn()
 val-
 D2Ercd2
 ( tknd
 , npf1, ldes) = d2e0.node()
-val
-ldes = trans23_l2d2elst(env0, ldes)
-val
-trcd =
+//
+val ldes =
+trans23_l2d2elst(env0, ldes)
+//
+val ltps = l2t2plst(ldes)
+val linq = l2t2plst_linq(ltps)
+//
+val trcd =
 (
 case-
 tknd.node() of
+//
 |T_TRCD20(0) => TRCDflt0(*void*)
-|T_TRCD20(_) => TRCDbox0(*void*)
-)
-val
-t2p0 =
-s2typ_rcd2(trcd , npf1 , l2t2plst(ldes))
+|T_TRCD20(1) => TRCDbox1(*void*)
+//
+|T_TRCD20(2) =>
+(if linq
+    then TRCDbox1 else TRCDbox0)
+//
+|T_TRCD20(3) => TRCDbox0(*void*)
+|T_TRCD20(4) => TRCDbox1(*void*)
+|T_TRCD20(5) => TRCDbox0(*void*))
+//
+val t2p0 = s2typ_rcd2(trcd, npf1, ltps)
+//
 } (*where*) // end of [f0_rcd2(env0,d2e0)]
 //
 (* ****** ****** *)
