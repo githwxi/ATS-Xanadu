@@ -26,14 +26,15 @@ fun
 T0TRCD12
 (x0: sint): $tup(sint, sint) = $tup(x0, x0)
 //
-(*
 fun
 T0TRCD13
 (x0: sint): $tuptx(sint, sint) = $tuptx(x0, x0)
 fun
 T0TRCD14
 (x0: sint): $tupvx(sint, sint) = $tupvx(x0, x0)
-*)
+fun
+T0TRCD15
+(x0: sint): $tuprf(sint, sint) = $tuprf(x0, x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -178,7 +178,7 @@ and T0TRCD25 = T_TRCD20(5) //HX: $recrf
 and T0TRCD22 = T_TRCD20(2) //HX: $rcd
 and T0TRCD23 = T_TRCD20(3) //HX: $rcdtx
 and T0TRCD24 = T_TRCD20(4) //HX: $rcdvx
-and T0TRCD24 = T_TRCD20(4) //HX: $rcdrf
+and T0TRCD25 = T_TRCD20(5) //HX: $rcdrf
 *)
 //
 (* ****** ****** *)
@@ -408,9 +408,12 @@ HX-2025-12-07:
 These are the original choices:
 *)
 val () = kwdins("$tup_t0", T0TRCD13)//tbox
-val () = kwdins("$rec_t0", T0TRCD23)//tbox
 val () = kwdins("$tup_vt", T0TRCD14)//vtbx
+val () = kwdins("$tup_rf", T0TRCD15)//tbox
+//
+val () = kwdins("$rec_t0", T0TRCD23)//tbox
 val () = kwdins("$rec_vt", T0TRCD24)//vtbx
+val () = kwdins("$rec_rf", T0TRCD25)//tbox
 //
 (* ****** ****** *)
 //

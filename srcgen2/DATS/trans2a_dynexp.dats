@@ -2514,7 +2514,7 @@ tknd.node() of
 //
 |T_TRCD10(3) => TRCDbox0(*void*)
 |T_TRCD10(4) => TRCDbox1(*void*)
-|T_TRCD10(5) => TRCDbox0(*void*))
+|T_TRCD10(5) => TRCDbox2(*void*))
 //
 val t2p0 = s2typ_tup1(trcd, npf1, t2ps)
 //
@@ -2560,7 +2560,7 @@ tknd.node() of
 //
 |T_TRCD20(3) => TRCDbox0(*void*)
 |T_TRCD20(4) => TRCDbox1(*void*)
-|T_TRCD20(5) => TRCDbox0(*void*))
+|T_TRCD20(5) => TRCDbox2(*void*))
 //
 val t2p0 = s2typ_rcd2(trcd, npf1, ltps)
 } (*where*) // end-of-[f0_rcd2(env0,d2e0)]
