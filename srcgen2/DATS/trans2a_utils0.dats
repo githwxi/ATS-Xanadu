@@ -80,6 +80,7 @@ ATS3.XANADU.xatsopt-20220500"
 #symload tqas with d2cst_get_tqas
 (* ****** ****** *)
 #symload styp with d2var_get_styp
+#symload styp with d2var_set_styp
 (* ****** ****** *)
 #symload styp with d2pat_get_styp
 (* ****** ****** *)
@@ -1212,5 +1213,8 @@ list_cons
 }(*where*)//end-of-[trans2a_f2arglst_elim(env0,...)]
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_trans2a_utils0.dats] *)
+(***********************************************************************)

@@ -75,6 +75,7 @@ HX-2022-10-01: Various symbols
 #implval WCARD_symbl = symbl("_")
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implval ADD_symbl = symbl("+")
 #implval SUB_symbl = symbl("-")
@@ -82,6 +83,7 @@ HX-2022-10-01: Various symbols
 #implval DIV_symbl = symbl("/")
 #implval MOD_symbl = symbl("%")
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implval CBV0_symbl = symbl("~")
@@ -91,6 +93,7 @@ HX-2022-10-01: Various symbols
 #implval AXCG_symbl = symbl(">>")
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implval EQLT_symbl = symbl("=<")
 #implval EQGT_symbl = symbl("=>")
@@ -99,13 +102,23 @@ HX-2022-10-01: Various symbols
 #implval MSGT_symbl = symbl("->")
 //
 (* ****** ****** *)
-#implval DLRDT_symbl = symbl("$.")
-(* ****** ****** *)
-#implval ASSGN_symbl = symbl(":=")
-#implval BRCKT_symbl = symbl("[]")
-(* ****** ****** *)
+//
 #implval PFLAT_symbl = symbl("@")
 #implval PFREE_symbl = symbl("~")
+//
+(* ****** ****** *)
+//
+#implval DLRDT_symbl = symbl("$.")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implval ASSGN_symbl = symbl(":=")
+#implval BRCKT_symbl = symbl("[]")
+//
+#implval XAZGN_symbl = symbl(":=>")
+#implval XCHNG_symbl = symbl(":=:")
+//
 (* ****** ****** *)
 //
 #implval INT0_symbl = symbl("int0")
@@ -128,20 +141,32 @@ HX-2022-10-01: Various symbols
 #implval VTFT_symbl = symbl("vtft")
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #implval TRUE_symbl = symbl("true")
 #implval FALSE_symbl = symbl("false")
+//
 (* ****** ****** *)
+//
 #implval DADDR_symbl = symbl("$addr")
 #implval DVIEW_symbl = symbl("$view")
+//
 (* ****** ****** *)
+//
 #implval DEVAL_symbl = symbl("$eval")
 #implval DFOLD_symbl = symbl("$fold")
 #implval DFREE_symbl = symbl("$free")
+//
 (* ****** ****** *)
+//
 #implval DLAZY_symbl = symbl("$lazy")
 #implval DLLAZY_symbl = symbl("$llazy")
+//
 (* ****** ****** *)
+//
 #implval DRAISE_symbl = symbl("$raise")
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implval DLR_EXTNAM_symbl = symbl("$extnam")
@@ -157,6 +182,7 @@ HX-2022-10-01: Various symbols
 #implval DLR_SYNEXT_symbl = symbl("$synext")
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implval P1TR_TBOX_symbl = symbl("p1tr_tbox")
 #implval P2TR_TBOX_symbl = symbl("p2tr_tbox")
@@ -166,6 +192,7 @@ HX-2022-10-01: Various symbols
 #implval L0AZY_TBOX_symbl = symbl("lazy_t0_tx")
 #implval L1AZY_VTBX_symbl = symbl("lazy_vt_vx")
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implval CBV0_V0_VT_symbl = symbl("cbv0_v0_vt")
@@ -178,5 +205,7 @@ HX-2022-10-01: Various symbols
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+(***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xsymbol_inits0.dats] *)
+(***********************************************************************)
