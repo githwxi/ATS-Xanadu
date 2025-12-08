@@ -1240,6 +1240,11 @@ boxed tuples are linear by default!
 $rec_t0: nonlin
 $rec_vt: linear
 boxed records are linear by default!
+HX-2025-12-08:
+Please note that:
+There is no support for ref-version!
+$tup_rf: nonlin: supported in srcgen2
+$rec_rf: nonlin: supported in srcgen2
 *)
 //
 implement

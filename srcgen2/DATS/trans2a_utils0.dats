@@ -73,11 +73,18 @@ ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #symload node with s2typ_get_node
 (* ****** ****** *)
+#symload styp with d2con_get_styp
+(* ****** ****** *)
 #symload lctn with d2cst_get_lctn
 #symload styp with d2cst_get_styp
 #symload tqas with d2cst_get_tqas
 (* ****** ****** *)
+#symload styp with d2var_get_styp
+(* ****** ****** *)
+#symload styp with d2pat_get_styp
+(* ****** ****** *)
 #symload styp with d2exp_get_styp
+#symload styp with d2exp_set_styp
 (* ****** ****** *)
 (* ****** ****** *)
 //

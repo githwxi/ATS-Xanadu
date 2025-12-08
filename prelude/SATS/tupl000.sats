@@ -62,6 +62,20 @@ Sun 04 Aug 2024 05:41:59 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-08:
+$tuptx for $tup_t0//nonlin
+$tupvx for $tup_vt//linear
+$tuprf for $tup_rf//nonlin
+Mon Dec  8 12:37:01 PM EST 2025
+However, for back compatibility,
+please make no use of the newly
+introduced keywords in the prelude!
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #typedef
 t0up1_t0
 (a0: t0) = @(  a0  )
