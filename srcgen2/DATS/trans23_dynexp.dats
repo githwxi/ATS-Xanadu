@@ -2460,9 +2460,9 @@ val t2pl = d3el.styp((*void*))
 val t2pr = d3er.styp((*void*))
 //
 val d3el =
-trans23_d3pat_tpck(env0,d3el,t2pr)
+trans23_d3exp_tpck(env0,d3el,t2pr)
 val d3er =
-trans23_d3pat_tpck(env0,d3er,t2pl)
+trans23_d3exp_tpck(env0,d3er,t2pl)
 //
 in//let
 (
@@ -3104,7 +3104,7 @@ in//let
 //
 if
 ubtf
-then d3e0
+then (d3e0)
 (*
 //
 (*
@@ -3123,16 +3123,14 @@ d3exp // D3Et2ped: checked
 end//let//then
 *)
 else
-(
 let
-val
-loc0 = d3e0.lctn()
+val loc0 = d3e0.lctn()
 in//let
 (
 // HX-2025-10-16:
 d3exp // D3Et2pck: casting
-(loc0, t2p0, D3Et2pck(d3e0, t2p0))))
-end//let//else
+(loc0, t2p0, D3Et2pck(d3e0, t2p0)))
+end//let//end(else)//endof(if(ubtf))
 //
 end where
 {

@@ -98,6 +98,16 @@ val (x1, x2) = xx in x1 end
 //
 fun
 <x0:vt>
+s0wap_cbrf
+( x1: &x0
+, x2: &x0): void =
+( x2 := (x1 :=> x2) )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 s1wap_cbrf
 (xx: &(x0, x0)): void =
 let
