@@ -9,6 +9,12 @@ For testing prelude/PY!
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
 (* ****** ****** *)
+#symload
+array with a1rf_make_ncpy
+#symload
+array with a1rf_make_nfun
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
