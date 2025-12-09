@@ -968,6 +968,7 @@ d3exp_errck
 endlet // end of [d3exp_where_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3exp_assgn_errck
@@ -982,6 +983,33 @@ d3exp_errck
 , d3exp( loc0, D3Eassgn( d3el, d3er ) ))
 endlet // end of [d3exp_assgn_errck(...)]
 //
+fun
+d3exp_xazgn_errck
+( loc0: loc_t
+, d3el: d3exp
+, d3er: d3exp): d3exp =
+let
+val lvl0 = maxs
+(errvl(d3el), errvl(d3er)) in//let
+d3exp_errck
+( lvl0+1
+, d3exp( loc0, D3Exazgn( d3el, d3er ) ))
+endlet // end of [d3exp_xazgn_errck(...)]
+//
+fun
+d3exp_xchng_errck
+( loc0: loc_t
+, d3el: d3exp
+, d3er: d3exp): d3exp =
+let
+val lvl0 = maxs
+(errvl(d3el), errvl(d3er)) in//let
+d3exp_errck
+( lvl0+1
+, d3exp( loc0, D3Exchng( d3el, d3er ) ))
+endlet // end of [d3exp_xchng_errck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1652,6 +1680,8 @@ d3e0.node() of
 |D3Ewhere _ => f0_where(d3e0, err)
 //
 |D3Eassgn _ => f0_assgn(d3e0, err)
+|D3Exazgn _ => f0_xazgn(d3e0, err)
+|D3Exchng _ => f0_xchng(d3e0, err)
 //
 |D3Eraise _ => f0_raise(d3e0, err)
 //
@@ -2437,6 +2467,7 @@ end (*let*) // end-of-[else]
 end (*let*) // end of [f0_where(d3e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_assgn
@@ -2465,6 +2496,65 @@ d3exp_assgn_errck( loc, d3el, d3er )
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_assgn(d3e,err)]
 //
+(* ****** ****** *)
+//
+fun
+f0_xazgn
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Exazgn
+(d3el, d3er) = d3e.node()
+//
+val
+d3el = tread23_d3exp(d3el, err)
+val
+d3er = tread23_d3exp(d3er, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_xazgn_errck( loc, d3el, d3er )
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_xazgn(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_xchng
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Exchng
+(d3el, d3er) = d3e.node()
+//
+val
+d3el = tread23_d3exp(d3el, err)
+val
+d3er = tread23_d3exp(d3er, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_xchng_errck( loc, d3el, d3er )
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_xchng(d3e,err)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

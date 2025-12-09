@@ -532,9 +532,16 @@ it may be of other uses in the future
 (* ****** ****** *)
 //
 |D3Eassgn of
-( d3exp(*l-val*), d3exp(*r-val*) )
+( d3exp(*l-val*), d3exp(*r-val*) )//:=
+|D3Exazgn of
+( d3exp(*l-val*), d3exp(*r-val*) )//:=>
+|D3Exchng of
+( d3exp(*l-val*), d3exp(*r-val*) )//:=:
 //
-|D3Eraise of (token, d3exp(*lin-exn*))
+(* ****** ****** *)
+//
+|D3Eraise of
+( token(*$raise*), d3exp(*lin-xcptn*) )
 //
 (* ****** ****** *)
 //

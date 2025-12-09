@@ -951,6 +951,8 @@ d3exp_make_tpnd
 |D2Ewhere _ => f0_where(env0, d2e0)
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
+|D2Exazgn _ => f0_xazgn(env0, d2e0)
+|D2Exchng _ => f0_xchng(env0, d2e0)
 //
 |D2Eraise _ => f0_raise(env0, d2e0)
 //
@@ -2359,6 +2361,7 @@ d3exp_make_tpnd
 end (*let*) // end of [f0_where(env0,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_assgn
@@ -2372,34 +2375,30 @@ val-
 D2Eassgn
 (d2el, d2er) = d2e0.node()
 //
-val
-d3el =
-trans23_d2exp(env0, d2el)
-val
-t2pl = d3el.styp((*void*))
+val d3el =
+(
+  trans23_d2exp(env0, d2el))
+val t2pl = d3el.styp((*void*))
 //
 (*
 (*
 HX-2024-01-22:
 It is handled in [unify2a]
 *)
-val
-t2pl =
+val t2pl =
 s2typ_hnfiz0(t2pl)//val(t2pl)
-val
-t2pl =
-(
+val t2pl =
+((
 case+
 t2pl.node() of
 |T2Ptop0(t2pl) => t2pl
 |T2Ptop1(t2pl) => t2pl
-|_(*otherise*) => t2pl): s2typ
+|_(*otherise*) => t2pl): s2typ)
 *)
 //
 val t2p0 = the_s2typ_void((*0*))
 //
-val
-d3er =
+val d3er =
 trans23_d2exp_tpck(env0,d2er,t2pl)
 //
 in//let
@@ -2408,6 +2407,70 @@ in//let
   (loc0, t2p0, D3Eassgn(d3el, d3er)))
 end (*let*) // end of [f0_assgn(env0,d2e0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_xazgn
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Exazgn
+(d2el, d2er) = d2e0.node()
+//
+val d3el =
+(
+  trans23_d2exp(env0, d2el))
+val t2pl = d3el.styp((*void*))
+//
+val d3er =
+trans23_d2exp_tpck(env0,d2er,t2pl)
+//
+in//let
+(
+  d3exp_make_tpnd
+  (loc0, t2pl, D3Exazgn(d3el, d3er)))
+end (*let*) // end of [f0_xazgn(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_xchng
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Exchng
+(d2el, d2er) = d2e0.node()
+//
+val d3el =
+(
+  trans23_d2exp(env0, d2el))
+val d3er =
+(
+  trans23_d2exp(env0, d2er))
+//
+val t2pl = d3el.styp((*void*))
+val t2pr = d3er.styp((*void*))
+//
+val d3el =
+trans23_d3pat_tpck(env0,d3el,t2pr)
+val d3er =
+trans23_d3pat_tpck(env0,d3er,t2pl)
+//
+in//let
+(
+  d3exp_make_tpnd
+  (loc0, t2pl, D3Exchng(d3el, d3er)))
+end (*let*) // end of [f0_xchng(env0,d2e0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -2950,7 +3013,7 @@ list_trans23_fnp(env0, d2gs, trans23_d2gua))
 
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 trans23_d2pat_tpck
 (env0, d2p0, t2p0) =
@@ -2958,11 +3021,12 @@ let
 val
 d3p0 = trans23_d2pat(env0, d2p0)
 in
-trans23_d3pat_tpck(env0,d3p0,t2p0)
+(
+  trans23_d3pat_tpck(env0, d3p0, t2p0))
 end(*let*) // end of [trans23_d2pat_tpck(...)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 trans23_d2exp_tpck
 (env0, d2e0, t2p0) =
@@ -2970,9 +3034,10 @@ let
 val
 d3e0 = trans23_d2exp(env0, d2e0)
 in//let
-trans23_d3exp_tpck(env0,d3e0,t2p0)
+(
+  trans23_d3exp_tpck(env0, d3e0, t2p0))
 end(*let*) // end-of-[trans23_d2exp_tpck(...)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
@@ -2983,21 +3048,33 @@ let
 val ubtf =
 unify23_s2typ(env0,d3p0.styp(),t2p0)
 in//let
-if
+//
+if // if
 ubtf then d3p0 else
+(
 let
 val loc0 = d3p0.lctn() in
-d3pat(loc0, t2p0, D3Pt2pck(d3p0,t2p0)) end
+d3pat
+(loc0, t2p0, D3Pt2pck(d3p0,t2p0)) end)
+//
 end where
 {
 //
 (*
-val () =
+//
+val loc0 = d3p0.lctn((*void*))
+//
+val (  ) =
+prerrsln("trans23_d3pat_tpck: loc0 = ", loc0)
+val (  ) =
 prerrsln("trans23_d3pat_tpck: d3p0 = ", d3p0)
-val () =
+val (  ) =
 prerrsln("trans23_d3pat_tpck: t2p0 = ", t2p0)
-val () = prerrsln("\
-trans23_d3pat_tpck: d3p0.styp() = ", d3p0.styp())
+//
+val styp = d3p0.styp((*void*))
+val (  ) =
+prerrsln("trans23_d3pat_tpck: styp = ", styp)
+//
 *)
 //
 }(*where*) // end-of-[trans23_d3pat_tpck(...)]
@@ -3045,28 +3122,36 @@ d3exp // D3Et2ped: checked
 (loc0, t2p0, D3Et2ped(d3e0, t2p0)))
 end//let//then
 *)
-else let
+else
+(
+let
 val
 loc0 = d3e0.lctn()
 in//let
 (
 // HX-2025-10-16:
 d3exp // D3Et2pck: casting
-(loc0, t2p0, D3Et2pck(d3e0, t2p0)))
+(loc0, t2p0, D3Et2pck(d3e0, t2p0))))
 end//let//else
 //
 end where
 {
 //
 (*
-val
-loc0 = d3e0.lctn((*void*))
-val () = prerrsln
-  ("trans23_d3exp_tpck: loc0 = ", loc0)
-val () = prerrsln
-  ("trans23_d3exp_tpck: d3e0 = ", d3e0)
-val () = prerrsln
-  ("trans23_d3exp_tpck: t2p0 = ", t2p0)
+//
+val loc0 = d3e0.lctn((*void*))
+//
+val (  ) =
+prerrsln("trans23_d3exp_tpck: loc0 = ", loc0)
+val (  ) =
+prerrsln("trans23_d3exp_tpck: d3e0 = ", d3e0)
+val (  ) =
+prerrsln("trans23_d3exp_tpck: t2p0 = ", t2p0)
+//
+val styp = d3e0.styp((*void*))
+val (  ) =
+prerrsln("trans23_d3exp_tpck: styp = ", styp)
+//
 *)
 //
 }(*where*) // end-of-[trans23_d3exp_tpck(...)]

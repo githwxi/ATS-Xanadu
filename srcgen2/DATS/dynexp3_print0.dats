@@ -442,39 +442,42 @@ prints("D3Edl1az(",d3e1,")") // de-l1az
 //
 (* ****** ****** *)
 //
-|
-D3Ewhere
+|D3Ewhere
 (d3e1, dcls) =>
 (
  prints("D3Ewhere(",d3e1,";",dcls,")"))
 //
 (* ****** ****** *)
 //
-|
-D3Eassgn
+|D3Eassgn
 (d3el, d3er) =>
 (
  prints("D3Eassgn(",d3el,";",d3er,")"))
+|D3Exazgn
+(d3el, d3er) =>
+(
+ prints("D3Exazgn(",d3el,";",d3er,")"))
+|D3Exchng
+(d3el, d3er) =>
+(
+ prints("D3Exchng(",d3el,";",d3er,")"))
 //
 (* ****** ****** *)
 //
-|
-D3Eraise
+|D3Eraise
 (tknd, d3e1) =>
 (
  prints("D3Eraise(",tknd,";",d3e1,")"))
 //
 (* ****** ****** *)
 //
-|
-D3El0azy
-( dsym, d3e1 ) =>
+|D3El0azy
+(dsym, d3e1) =>
 (
  prints("D3El0azy(",dsym,";",d3e1,")"))
-|
-D3El1azy
-( dsym
-, d3e1 , d3es ) =>
+|D3El1azy
+(dsym
+,d3e1, d3es) =>
 (
   print("D3El1azy(")
 ; prints( dsym, ";",d3e1, ";",d3es,")"))
@@ -482,8 +485,8 @@ D3El1azy
 (* ****** ****** *)
 //
 |D3Eannot
-( d3e1
-, s1e2 , s2e2 ) =>
+(d3e1
+,s1e2, s2e2) =>
 (
   print("D3Eannot(")
 ; prints( d3e1, ";",s1e2, ";",s2e2,")"))
@@ -491,7 +494,7 @@ D3El1azy
 (* ****** ****** *)
 //
 |D3Elabck
-( d3e1 , lab2 ) =>
+(d3e1, lab2) =>
 let
 val
 t2p1 = d3e1.styp() in
@@ -501,7 +504,7 @@ prints(d3e1, "(", t2p1, ");", lab2,")"))
 endlet // end of [ D3Elabck(d3e1, lab2) ]
 //
 |D3Et2pck
-( d3e1 , t2p2 ) =>
+(d3e1, t2p2) =>
 let
 val
 t2p1 = d3e1.styp() in
@@ -510,7 +513,7 @@ print("D3Et2pck(");
 prints(d3e1, "(", t2p1, ");", t2p2,")"))
 endlet // end of [ D3Et2pck(d3e1, t2p2) ]
 |D3Et2ped
-( d3e1 , t2p2 ) =>
+(d3e1, t2p2) =>
 let
 val
 t2p1 = d3e1.styp() in
@@ -521,29 +524,26 @@ endlet // end of [ D3Et2ped(d3e1, t2p2) ]
 //
 (* ****** ****** *)
 //
-|
-D3Eexists
-( s2es, d3e1) =>
+|D3Eexists
+(s2es, d3e1) =>
 (
-prints("D3Eexists(",s2es,";",d3e1,")") )
+  prints("D3Eexists(",s2es,";",d3e1,")"))
 //
 (* ****** ****** *)
 //
-|
-D3Eextnam
-( tknd, gnam) =>
+|D3Eextnam
+(tknd, gnam) =>
 (
-prints("D3Eextnam(",tknd,";",gnam,")") )
+  prints("D3Eextnam(",tknd,";",gnam,")"))
 //
-|
-D3Esynext
-( tknd, gexp) =>
+|D3Esynext
+(tknd, gexp) =>
 (
-prints("D3Esynext(",tknd,";",gexp,")") )
+  prints("D3Esynext(",tknd,";",gexp,")"))
 //
 (* ****** ****** *)
 //
-|D3Enone0() => prints( "D3Enone0(", ")" )
+|D3Enone0() => prints(  "D3Enone0(", ")"  )
 |D3Enone1(d2e1) => prints("D3Enone1(", d2e1, ")")
 |D3Enone2(d3e1) => prints("D3Enone2(", d3e1, ")")
 //

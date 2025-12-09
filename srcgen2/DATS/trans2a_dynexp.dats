@@ -1134,8 +1134,12 @@ d2e0.node() of
 |D2Exazgn _ => f0_xazgn(env0, d2e0)
 |D2Exchng _ => f0_xchng(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Ebrget _ => f0_brget(env0, d2e0)
 |D2Ebrset _ => f0_brset(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |D2Edtsel _ => f0_dtsel(env0, d2e0)
 //
@@ -2967,9 +2971,9 @@ D2Eassgn
 //
 val
 d2el =
-trans2a_d2exp(env0, d2el)
-val
-t2pl = d2el.styp((*void*))
+(
+  trans2a_d2exp(env0, d2el))
+val t2pl = d2el.styp((*void*))
 //
 (*
 (*
@@ -2981,23 +2985,23 @@ t2pl =
 s2typ_hnfiz0(t2pl)//val(t2pl)
 val
 t2pl =
-(
+((
 case+
 t2pl.node() of
 |T2Ptop0(t2pl) => t2pl
 |T2Ptop1(t2pl) => t2pl
-|_(*otherise*) => t2pl): s2typ
+|_(*otherise*) => t2pl): s2typ)
 *)
 //
 val t2p0 = the_s2typ_void((*0*))
 //
-val
-d2er =
+val d2er =
 trans2a_d2exp_tpck(env0,d2er,t2pl)
 //
 in//let
-d2exp_make_tpnd
-( loc0, t2p0, D2Eassgn(d2el, d2er) )
+(
+  d2exp_make_tpnd
+  (loc0, t2p0, D2Eassgn(d2el, d2er)))
 end (*let*) // end-of-[f0_assgn(env0,d2e0)]
 //
 (* ****** ****** *)
@@ -3025,8 +3029,9 @@ d2er =
 trans2a_d2exp_tpck(env0,d2er,t2pl)
 //
 in//let
-d2exp_make_tpnd
-( loc0, t2pl, D2Exazgn(d2el, d2er) )
+(
+  d2exp_make_tpnd
+  (loc0, t2pl, D2Exazgn(d2el, d2er)))
 end (*let*) // end-of-[f0_xazgn(env0,d2e0)]
 //
 (* ****** ****** *)
@@ -3059,9 +3064,9 @@ val d2er =
 d2exp_t2pckify(env0, d2er, t2pl)
 //
 in//let
-//
-d2exp_make_tpnd
-( loc0, t2pl, D2Exchng(d2el, d2er) )
+(
+  d2exp_make_tpnd
+  (loc0, t2pl, D2Exchng(d2el, d2er)))
 //
 end (*let*) // end-of-[f0_xchng(env0,d2e0)]
 //

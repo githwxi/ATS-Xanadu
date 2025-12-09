@@ -879,6 +879,7 @@ d2exp_errck
 endlet // end of [d2exp_where_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2exp_assgn_errck
@@ -894,6 +895,35 @@ d2exp_errck
 ,d2exp( loc0, D2Eassgn( d2el, d2er ) ))
 endlet // end of [d2exp_assgn_errck(...)]
 //
+fun
+d2exp_xazgn_errck
+( loc0: loc_t
+, d2el: d2exp
+, d2er: d2exp): d2exp =
+let
+val
+lvl0 = maxs
+(errvl(d2el), errvl(d2er)) in//let
+d2exp_errck
+(lvl0+1
+,d2exp( loc0, D2Exazgn( d2el, d2er ) ))
+endlet // end of [d2exp_xazgn_errck(...)]
+//
+fun
+d2exp_xchng_errck
+( loc0: loc_t
+, d2el: d2exp
+, d2er: d2exp): d2exp =
+let
+val
+lvl0 = maxs
+(errvl(d2el), errvl(d2er)) in//let
+d2exp_errck
+(lvl0+1
+,d2exp( loc0, D2Exchng( d2el, d2er ) ))
+endlet // end of [d2exp_xchng_errck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1482,6 +1512,8 @@ d2e0.node() of
 |D2Ewhere _ => f0_where(d2e0, err)
 //
 |D2Eassgn _ => f0_assgn(d2e0, err)
+|D2Exazgn _ => f0_xazgn(d2e0, err)
+|D2Exchng _ => f0_xchng(d2e0, err)
 //
 |D2Eraise _ => f0_raise(d2e0, err)
 //
@@ -2152,6 +2184,7 @@ end (*let*) // end-of-[else]
 end (*let*) // end of [f0_where(d2e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_assgn
@@ -2180,6 +2213,65 @@ d2exp_assgn_errck(loc, d2el, d2er)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_assgn(d2e,err)]
 //
+(* ****** ****** *)
+//
+fun
+f0_xazgn
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Exazgn
+(d2el, d2er) = d2e.node()
+//
+val
+d2el = tread20_d2exp(d2el, err)
+val
+d2er = tread20_d2exp(d2er, err)
+//
+in//let
+if
+(err=e00)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_xazgn_errck(loc, d2el, d2er)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_xazgn(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_xchng
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Exchng
+(d2el, d2er) = d2e.node()
+//
+val
+d2el = tread20_d2exp(d2el, err)
+val
+d2er = tread20_d2exp(d2er, err)
+//
+in//let
+if
+(err=e00)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_xchng_errck(loc, d2el, d2er)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_xchng(d2e,err)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
