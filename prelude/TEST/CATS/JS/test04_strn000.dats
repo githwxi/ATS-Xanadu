@@ -73,25 +73,24 @@ val () = printsln("ABABAB = ", ABABAB)
 val wrd0 = "hello"
 val wrds =
 list_fmake_fwork<strn>
-(
+(//11111111111111111111111111111111
 lam(work) =>
 gseq_iforitm
-(
+(//22222222222222222222222222222222
 GASZ(wrd0),
-lam(i, ci) => gseq_foritm
-(
-GASZ(26),
-lam(j) =>
+lam(i, ci) =>
+gseq_foritm(//333333333333333333333
+GASZ(26), lam(j) =>
 let
-  val cj = 'a'+j
-in
+  val cj = ('a' + j)
+in//let
 if ci = cj
 then () else work
 ($UN.strn_fset$at$raw(wrd0, i, cj))
 end
-)
-)
-)
+)//33333333333333333333333333333333
+)//22222222222222222222222222222222
+)//11111111111111111111111111111111
 //
 val (  ) = printsln("wrds = ", wrds)
 //
@@ -105,16 +104,17 @@ lam(work) =>
 GSEQ(wrd0).iforitm
 (
 lam(i, ci) =>
-gseq_foritm
-(
-GASZ(26),
-lam(j) =>
+gseq_foritm(
+GASZ(26), lam(j) =>
 let
-  val cj = 'a'+j
+  val cj = ('a' + j)
 in
-if ci = cj
+//
+if
+(ci = cj)
 then () else work
-($UN.strn_fset$at$raw(wrd0, i, cj))
+($UN.strn_fset$at$raw(wrd0,i,cj))
+//
 end)))//end(list_fmake_fwork<strn>)
 //
 val (  ) = printsln("wrds = ", wrds)
