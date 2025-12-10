@@ -1679,11 +1679,17 @@ d3e0.node() of
 //
 |D3Ewhere _ => f0_where(d3e0, err)
 //
+(* ****** ****** *)
+//
 |D3Eassgn _ => f0_assgn(d3e0, err)
 |D3Exazgn _ => f0_xazgn(d3e0, err)
 |D3Exchng _ => f0_xchng(d3e0, err)
 //
+(* ****** ****** *)
+//
 |D3Eraise _ => f0_raise(d3e0, err)
+//
+(* ****** ****** *)
 //
 |D3El0azy _ => f0_l0azy(d3e0, err)
 |D3El1azy _ => f0_l1azy(d3e0, err)

@@ -728,7 +728,13 @@ d3e0.node() of
 //
 |D3Ewhere _ => f0_where(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |D3Eassgn _ => f0_assgn(env0, d3e0)
+|D3Exazgn _ => f0_xazgn(env0, d3e0)
+|D3Exchng _ => f0_xchng(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |D3Eraise _ => f0_raise(env0, d3e0)
 //
@@ -1885,6 +1891,74 @@ in//let
   d3exp_make_tpnd
   (loc0, t2p0, D3Eassgn(d3el, d3er)) )
 end (*let*) // end of [f0_assgn(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_xazgn
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Exazgn
+( d3el
+, d3er ) = d3e0.node((*0*))
+//
+val t2p0 =
+  d3e0.styp((*0*))
+val t2p0 =
+  s2typ_hnfiz0(t2p0)
+val t2p0 =
+  trans3a_s2typ(env0, t2p0)
+//
+val
+d3el = trans3a_d3exp(env0, d3el)
+val
+d3er = trans3a_d3exp(env0, d3er)
+//
+in//let
+(
+  d3exp_make_tpnd
+  (loc0, t2p0, D3Exazgn(d3el, d3er)) )
+end (*let*) // end of [f0_xazgn(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_xchng
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Exchng
+( d3el
+, d3er ) = d3e0.node((*0*))
+//
+val t2p0 =
+  d3e0.styp((*0*))
+val t2p0 =
+  s2typ_hnfiz0(t2p0)
+val t2p0 =
+  trans3a_s2typ(env0, t2p0)
+//
+val
+d3el = trans3a_d3exp(env0, d3el)
+val
+d3er = trans3a_d3exp(env0, d3er)
+//
+in//let
+(
+  d3exp_make_tpnd
+  (loc0, t2p0, D3Exchng(d3el, d3er)) )
+end (*let*) // end of [f0_xchng(env0,...)]
 //
 (* ****** ****** *)
 //

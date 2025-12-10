@@ -390,6 +390,10 @@ prints("D2Ewhere(", "...", ")")
 //
 |D2Eassgn _ =>
 prints("D2Eassgn(", "...", ")")
+|D2Exazgn _ =>
+prints("D2Exazgn(", "...", ")")
+|D2Exchng _ =>
+prints("D2Exchng(", "...", ")")
 //
 (* ****** ****** *)
 //
@@ -687,7 +691,21 @@ endlet
 let
 val () = fperr20_d2exp(out, d2el)
 val () = fperr20_d2exp(out, d2er)
-endlet
+endlet//endof(D2Eassgn(d2el,d2er))
+//
+|D2Exazgn
+(d2el, d2er) =>
+let
+val () = fperr20_d2exp(out, d2el)
+val () = fperr20_d2exp(out, d2er)
+endlet//endof(D2Exazgn(d2el,d2er))
+//
+|D2Exchng
+(d2el, d2er) =>
+let
+val () = fperr20_d2exp(out, d2el)
+val () = fperr20_d2exp(out, d2er)
+endlet//endof(D2Exchng(d2el,d2er))
 //
 (* ****** ****** *)
 //
@@ -697,14 +715,14 @@ endlet
 let
 val () =
 (
- fperr20_d2explst(out, d2es))end)
+fperr20_d2explst(out, d2es)) end)
 |D2Ebrset
 (dpis, d2es) =>
 (
 let
 val () =
 (
- fperr20_d2explst(out, d2es))end)
+fperr20_d2explst(out, d2es)) end)
 //
 (* ****** ****** *)
 //

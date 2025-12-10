@@ -1070,17 +1070,21 @@ d2exp//let(binds)in(scope)end
 //
 (* ****** ****** *)
 //
-|D2Ebrget of // HX: arr[idx]
+|D2Ebrget of// HX: arr[idx]
 ( d2ptmlst, d2explst(*arr+idx*) )
-|D2Ebrset of // HX: arr[idx] := val
+|D2Ebrset of// HX: arr[idx] := val
 ( d2ptmlst, d2explst(*arr+idx+val*))
 //
 (*
 HX-2025-12-08:
-These will be added later :)
-|D2Ebrxzn of // HX: arr[idx] :=> val
+This one may be added:
+|D2Ebrxzn of// HX: arr[idx] :=> val
 ( d2ptmlst, d2explst(*arr+idx+val*))
-|D2Ebrxch of // HX: arr[idx] :=: val
+*)
+(*
+HX-2025-12-08:
+This one may not be added:
+|D2Ebrxch of// HX: arr[idx] :=: val
 ( d2ptmlst, d2explst(*arr+idx+val*))
 *)
 //

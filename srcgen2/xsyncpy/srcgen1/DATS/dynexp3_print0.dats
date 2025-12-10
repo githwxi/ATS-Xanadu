@@ -760,6 +760,44 @@ end//let//end-[D3E1assgn(d3el,d3er)]
 //
 (* ****** ****** *)
 //
+|D3E1xazgn
+(d3el, d3er) =>
+let
+//
+val t3ql = d3el.dtyp((*0*))
+//
+in//let
+//
+print("D3E1xazgn(");
+prints(d3el,":",t3ql,";",d3er,")")
+(*
+prints(
+"D3E1xazgn(", d3el, ";", d3er, ")")
+*)
+//
+end//let//end-[D3E1xazgn(d3el,d3er)]
+//
+(* ****** ****** *)
+//
+|D3E1xchng
+(d3el, d3er) =>
+let
+//
+val t3ql = d3el.dtyp((*0*))
+//
+in//let
+//
+print("D3E1xchng(");
+prints(d3el,":",t3ql,";",d3er,")")
+(*
+prints(
+"D3E1xchng(", d3el, ";", d3er, ")")
+*)
+//
+end//let//end-[D3E1xchng(d3el,d3er)]
+//
+(* ****** ****** *)
+//
 |D3E1raise
 (tknd, d3e1) =>
 prints
