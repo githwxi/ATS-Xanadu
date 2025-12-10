@@ -307,6 +307,9 @@ trcdknd =
 | TRCDbox0 (*boxd*)//nonlin
 | TRCDbox1 (*boxd*)//linear
 | TRCDbox2 (*refd*)//nonlin
+(*
+| TRCDbox3 (*rfcd*)//linear
+*)
 //
 (*
 | TRCDflt1 of string (*flat*)
