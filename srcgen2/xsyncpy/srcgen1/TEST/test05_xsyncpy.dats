@@ -35,6 +35,11 @@ T0TRCD14
 fun
 T0TRCD15
 (x0: sint): $tuprf(sint, sint) = $tuprf(x0, x0)
+(*
+fun
+T0TRCD16
+(x0: sint): $tuprc(sint, sint) = $tuprc(x0, x0)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
