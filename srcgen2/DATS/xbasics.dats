@@ -288,32 +288,27 @@ trcdknd_equal
 (
 case+ knd1 of
 //
+|TRCDflt0() =>
+(case+ knd2 of
+|TRCDflt0() => true | _ => false)
+//
 |TRCDbox0() =>
-(
-case+ knd2 of
+(case+ knd2 of
 |TRCDbox0() => true | _ => false)
 //
 |TRCDbox1() =>
-(
-case+ knd2 of
+(case+ knd2 of
 |TRCDbox1() => true | _ => false)
 //
-|TRCDflt0() =>
-(
-case+ knd2 of
-|TRCDflt0() => true | _ => false)
+|TRCDbox2() =>
+(case+ knd2 of
+|TRCDbox2() => true | _ => false)
 //
 (*
 //
-|TRCDflt1(tmp1) =>
-(
-case+ knd2 of
-|TRCDflt1(tmp2) => (tmp1=tmp2) | _ => false)
-//
-|TRCDflt2(tnm1) =>
-(
-case+ knd2 of
-|TRCDflt2(tnm2) => (tnm1=tnm2) | _ => false)
+|TRCDflt1(tnm1) =>
+(case+ knd2 of
+|TRCDflt1(tnm2) => (tnm1=tnm2) | _ => false)
 //
 *)
 //

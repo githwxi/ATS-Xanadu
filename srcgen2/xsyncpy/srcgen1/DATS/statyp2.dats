@@ -301,8 +301,9 @@ then the_sort2_vwtp
 else the_sort2_type) end)
 //let//end-of-[TRCDflt0()]
 //
-|TRCDbox0 => the_sort2_tbox(*0*)
-|TRCDbox1 => the_sort2_vtbx(*0*)
+|TRCDbox0 => the_sort2_tbox(*non*)
+|TRCDbox1 => the_sort2_vtbx(*lin*)
+|TRCDbox2 => the_sort2_tbox(*ref*)
 //
 )(*case+(trcd)-of*)//end(val(s2t0))
 //
