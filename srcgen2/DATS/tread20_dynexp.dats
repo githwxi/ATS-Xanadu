@@ -1511,9 +1511,13 @@ d2e0.node() of
 //
 |D2Ewhere _ => f0_where(d2e0, err)
 //
+(* ****** ****** *)
+//
 |D2Eassgn _ => f0_assgn(d2e0, err)
 |D2Exazgn _ => f0_xazgn(d2e0, err)
 |D2Exchng _ => f0_xchng(d2e0, err)
+//
+(* ****** ****** *)
 //
 |D2Eraise _ => f0_raise(d2e0, err)
 //

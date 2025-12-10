@@ -380,6 +380,10 @@ prints("D3Edl1az(", "...", ")")
 //
 |D3Eassgn _ =>
 prints("D3Eassgn(", "...", ")")
+|D3Exazgn _ =>
+prints("D3Exazgn(", "...", ")")
+|D3Exchng _ =>
+prints("D3Exchng(", "...", ")")
 //
 (* ****** ****** *)
 //
@@ -627,6 +631,28 @@ val () =
 (
   fperr30_d3exp(out, d3er) )
 end(*let*)//end-of-[D3Eassgn(...)]
+//
+|D3Exazgn
+(d3el, d3er) =>
+let
+val () =
+(
+  fperr30_d3exp(out, d3el) )
+val () =
+(
+  fperr30_d3exp(out, d3er) )
+end(*let*)//end-of-[D3Exazgn(...)]
+//
+|D3Exchng
+(d3el, d3er) =>
+let
+val () =
+(
+  fperr30_d3exp(out, d3el) )
+val () =
+(
+  fperr30_d3exp(out, d3er) )
+end(*let*)//end-of-[D3Exchng(...)]
 //
 (* ****** ****** *)
 //

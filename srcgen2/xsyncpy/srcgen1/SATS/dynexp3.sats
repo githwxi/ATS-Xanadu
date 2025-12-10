@@ -732,8 +732,13 @@ d3exp1(*scope*),d3ecl1lst(*decls*))
 (* ****** ****** *)
 //
 |D3E1assgn of
-(
-d3exp1(*l-val*), d3exp1(*r-val*))
+(d3exp1(*l-val*), d3exp1(*r-val*))
+|D3E1xazgn of
+(d3exp1(*l-val*), d3exp1(*r-val*))
+|D3E1xchng of
+(d3exp1(*l-val*), d3exp1(*r-val*))
+//
+(* ****** ****** *)
 //
 |D3E1raise of
 (token(*$RAISE*), d3exp1(*excptn*))

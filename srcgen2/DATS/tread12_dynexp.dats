@@ -865,6 +865,36 @@ d2exp_errck
 , d2exp( loc0, D2Eassgn( d2el, d2er ) ))
 endlet // end of [d2exp_assgn_errck(...)]
 //
+fun
+d2exp_xazgn_errck
+( loc0: loc_t
+, d2el: d2exp
+, d2er: d2exp): d2exp =
+let
+val
+lvl0 =
+maxs(errvl(d2el), errvl(d2er))
+in//let
+d2exp_errck
+( lvl0+1
+, d2exp( loc0, D2Exazgn( d2el, d2er ) ))
+endlet // end of [d2exp_xazgn_errck(...)]
+//
+fun
+d2exp_xchng_errck
+( loc0: loc_t
+, d2el: d2exp
+, d2er: d2exp): d2exp =
+let
+val
+lvl0 =
+maxs(errvl(d2el), errvl(d2er))
+in//let
+d2exp_errck
+( lvl0+1
+, d2exp( loc0, D2Exchng( d2el, d2er ) ))
+endlet // end of [d2exp_xchng_errck(...)]
+//
 (* ****** ****** *)
 //
 fun
@@ -1535,17 +1565,16 @@ d2e0.node() of
 |D2Efold _ => f0_fold(d2e0, err)
 |D2Efree _ => f0_free(d2e0, err)
 //
-|
-D2Ewhere _ => f0_where(d2e0, err)
+|D2Ewhere _ => f0_where(d2e0, err)
 //
-|
-D2Eassgn _ => f0_assgn(d2e0, err)
-|
-D2Ebrget _ => f0_brget(d2e0, err)
-|
-D2Ebrset _ => f0_brset(d2e0, err)
-|
-D2Edtsel _ => f0_dtsel(d2e0, err)
+|D2Eassgn _ => f0_assgn(d2e0, err)
+|D2Exazgn _ => f0_xazgn(d2e0, err)
+|D2Exchng _ => f0_xchng(d2e0, err)
+//
+|D2Ebrget _ => f0_brget(d2e0, err)
+|D2Ebrset _ => f0_brset(d2e0, err)
+//
+|D2Edtsel _ => f0_dtsel(d2e0, err)
 //
 |D2Eraise _ => f0_raise(d2e0, err)
 //
@@ -1558,23 +1587,22 @@ D2Edtsel _ => f0_dtsel(d2e0, err)
 //
 (* ****** ****** *)
 //
-|
-D2Eextnam _ => f0_extnam(d2e0, err)
+|D2Eextnam _ => f0_extnam(d2e0, err)
 //
-|
-D2Esynext _ => f0_synext(d2e0, err)
+|D2Esynext _ => f0_synext(d2e0, err)
 //
 (* ****** ****** *)
 //
-| _(*otherwise*) =>
+|
+_(*otherwise*) =>
 let
-val lvl0 = 1
-in//let
+val
+lvl0 = 1 in//let
 (
 err := err+1; d2exp_errck(lvl0,d2e0))
-endlet // end of [ _(* otherwise *) ]
+endlet // end-of-[ _(***otherwise***) ]
 //
-) where // end-of-[(*case+(d2e0)-of*)]
+) where // end-of-[ (*case+(d2e0)of*) ]
 {
 //
 (* ****** ****** *)
@@ -2167,6 +2195,64 @@ val loc = d2e.lctn() in
 d2exp_assgn_errck(loc, d2el, d2er)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_assgn(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_xazgn
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Exazgn
+(d2el, d2er) = d2e.node()
+//
+val
+d2el = tread12_d2exp(d2el, err)
+val
+d2er = tread12_d2exp(d2er, err)
+//
+in//let
+if
+(err=e00)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_xazgn_errck(loc, d2el, d2er)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_xazgn(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_xchng
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Exchng
+(d2el, d2er) = d2e.node()
+//
+val
+d2el = tread12_d2exp(d2el, err)
+val
+d2er = tread12_d2exp(d2er, err)
+//
+in//let
+if
+(err=e00)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_xchng_errck(loc, d2el, d2er)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_xchng(d2e,err)]
 //
 (* ****** ****** *)
 //
