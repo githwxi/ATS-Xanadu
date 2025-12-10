@@ -3018,14 +3018,12 @@ val-
 D2Exazgn
 (d2el, d2er) = d2e0.node()
 //
-val
-d2el =
-trans2a_d2exp(env0, d2el)
-val
-t2pl = d2el.styp((*void*))
+val d2el =
+(
+  trans2a_d2exp(env0, d2el))
+val t2pl = d2el.styp((*void*))
 //
-val
-d2er =
+val d2er =
 trans2a_d2exp_tpck(env0,d2er,t2pl)
 //
 in//let

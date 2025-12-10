@@ -991,9 +991,7 @@ d3exp1
 //
 |D3E1assgn _ => f0_assgn(d3e0, env0)
 |D3E1xazgn _ => f0_xazgn(d3e0, env0)
-(*
 |D3E1xchng _ => f0_xchng(d3e0, env0)
-*)
 //
 (* ****** ****** *)
 //
@@ -1800,6 +1798,77 @@ d3exp1
 (loc0, t3ql, D3E1xazgn(d3el, d3er)))
 //
 end(*let*)//end-of-[f0_xazgn(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_xchng
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1xchng
+(d3el, d3er) = d3e0.node()
+//
+(*
+HX-2025-12-10:
+Note that [d3el] is
+handled ahead of [d3er]!
+*)
+val d3el =
+(
+d3exp1_trxltck(d3el, env0))
+val t3ql =
+(
+envltck_dtyp$dtnm
+(  env0 , t3ql  ))
+where{
+val t3ql = d3el.dtyp((*0*))
+}(*where*)//end-(val(t3ql))
+//
+val d3er =
+(
+d3exp1_trxltck(d3er, env0))
+val t3qr =
+(
+envltck_dtyp$dtnm
+(  env0 , t3qr  ))
+where{
+val t3qr = d3er.dtyp((*0*))
+}(*where*)//end-(val(t3qr))
+//
+val d3el =
+(
+if ( // if
+d3exp1_lftq(d3el))
+then // then
+let
+val () =
+envltck_dlft$updt
+(env0, d3el, t3qr) in d3el end
+else // else
+d3exp1_exlinize(d3el, t3qr, env0))
+//
+val d3er =
+(
+if ( // if
+d3exp1_lftq(d3er))
+then // then
+let
+val () =
+envltck_dlft$updt
+(env0, d3er, t3ql) in d3er end
+else // else
+d3exp1_exlinize(d3er, t3ql, env0))
+//
+in//let
+//
+(
+d3exp1
+(loc0, t3q0, D3E1xchng(d3el, d3er)))
+//
+end(*let*)//end-of-[f0_xchng(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

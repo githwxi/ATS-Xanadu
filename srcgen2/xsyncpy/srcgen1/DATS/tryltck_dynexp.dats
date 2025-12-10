@@ -531,6 +531,28 @@ endlet//end-of-[d3exp1_xazgn_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp1_xchng_errck
+(loc0: loc_t
+,t3q0: d3typ1
+,d3el: d3exp1
+,d3er: d3exp1   ): d3exp1 =
+let
+//
+val
+lvl0 =
+errvl
+(d3el, d3er) in//let
+//
+d3exp1_errck
+( lvl0+1
+, d3exp1_make_lctn$dtyp$node
+  (loc0, t3q0, D3E1xchng(d3el,d3er)))
+//
+endlet//end-of-[d3exp1_xchng_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp1_dvdtp_errck
 (loc0: loc_t
 ,t3q0: d3typ1
@@ -873,6 +895,9 @@ dexp.node() of
 |D3E1xazgn _ =>
 (
   f0_xazgn(dexp, err0))
+|D3E1xchng _ =>
+(
+  f0_xchng(dexp, err0))
 //
 (* ****** ****** *)
 //
@@ -1229,6 +1254,7 @@ D3E1assgn
 (d3el, d3er) = d3e0.node()
 //
 val t3q0 = d3e0.dtyp((*0*))
+//
 val d3el =
 (
   d3exp1_tryltck(d3el, err0))
@@ -1267,6 +1293,7 @@ D3E1xazgn
 (d3el, d3er) = d3e0.node()
 //
 val t3q0 = d3e0.dtyp((*0*))
+//
 val d3el =
 (
   d3exp1_tryltck(d3el, err0))
@@ -1288,6 +1315,45 @@ in//let
 end//let
 //
 end(*let*)//end-of-[f0_xazgn(d3e0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_xchng
+( d3e0: d3exp1
+, err0
+: &sint >> sint): d3exp1 =
+let
+//
+val nerr = err0
+//
+val-
+D3E1xchng
+(d3el, d3er) = d3e0.node()
+//
+val t3q0 = d3e0.dtyp((*0*))
+//
+val d3el =
+(
+  d3exp1_tryltck(d3el, err0))
+val d3er =
+(
+  d3exp1_tryltck(d3er, err0))
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val loc0 = d3e0.lctn()
+in//let
+(
+  d3exp1_xchng_errck
+  (loc0, t3q0, d3el(*l*), d3er(*r*)))
+end//let
+//
+end(*let*)//end-of-[f0_xchng(d3e0,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
