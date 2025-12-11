@@ -327,12 +327,20 @@ d3exp1_trxltck
 (* ****** ****** *)
 //
 fun
-d31cas_trxltck
-(dcls: d3cls1, env0: !envltck): d3cls1
+d31ift_trxltck
+( dopt
+: d3exp1opt, env0: !envltck): d3exp1opt
 //
 fun
-d31ift_trxltck
-(dopt: d3exp1opt, env0: !envltck): d3exp1opt
+d31cas_trxltck
+( dcls
+: d3cls1
+, env0: !envltck, dexp: d3exp1): d3cls1
+fun
+d31caslst_trxltck
+( dcls
+: d3cls1lst
+, env0: !envltck, dexp: d3exp1): d3cls1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -357,7 +365,6 @@ fun
 f3arg1lst_trxltck
 (f3as: f3arg1lst, env0: !envltck): f3axp1lst
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
