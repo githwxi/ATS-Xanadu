@@ -144,6 +144,8 @@ val () =
 //
 |D3Perrck _ => fperr30_d3pat(out, d3p)
 //
+(* ****** ****** *)
+//
 |
 _(*otherwise*) =>
 let
@@ -151,11 +153,11 @@ let
   val loc = d3p.lctn((*void*))
   val t2p = d3p.styp((*void*))
   val ( ) = prerrsln
-  ("fperr30_d3pat: auxmain: loc = ", loc)
+  ("fperr30_d3pat:auxmain: loc = ", loc)
   val ( ) = prerrsln
-  ("fperr30_d3pat: auxmain: t2p = ", t2p)
+  ("fperr30_d3pat:auxmain: t2p = ", t2p)
   val ( ) = prerrsln
-  ("fperr30_d3pat: auxmain: d3p = ", d3p)
+  ("fperr30_d3pat:auxmain: d3p = ", d3p)
 //
 endlet
 //
