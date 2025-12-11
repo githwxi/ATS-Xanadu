@@ -986,7 +986,7 @@ d3cls1_node$get
 fun // HX-2025-11-25: guard root
 d3cls1_dgrt$get(d3cls1): d3typ1opt
 fun
-d3cls1_dvts$get(d3cls1): dvstp1lst
+d3cls1_dvts$get(d3cls1): dvdtp1lst
 //
 (* ****** ****** *)
 //
