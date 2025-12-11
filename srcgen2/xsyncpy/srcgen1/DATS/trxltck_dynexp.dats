@@ -1576,7 +1576,7 @@ case+ dcls of
   d3exp1_dvdtp(dexp, dvts))
 where
 {
-val dvts = d3cls1_dvts$get(dcl1)
+val dvts = d3cls1_vts2$get(dcl1)
 val (  ) =
 (
   envltck_dvts$updt(env0, dvts)) }

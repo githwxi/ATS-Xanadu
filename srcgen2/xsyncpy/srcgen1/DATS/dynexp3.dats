@@ -560,7 +560,8 @@ d3cls1 =
 D3CLS1 of
 (loctn
 ,d3cls1_node
-,d3typ1opt, dvstp1lst)
+,d3typ1opt//dgrt
+,dvstp1lst, dvdtp1lst)
 //
 #absimpl d3cls1_tbox = d3cls1
 //
@@ -571,45 +572,60 @@ d3cls1_lctn$get(cls) =
 let
 val+
 D3CLS1
-(loc, nod, t3q, vts) = cls in loc
+(loc, nod
+,grt, vts1, vts2) = cls in loc
 end//let//end-of-[d3cls1_lctn$get(...)]
-#implfun
-d3cls1_node$get(cls) =
-let
-val+
-D3CLS1
-(loc, nod, t3q, vts) = cls in nod
-end//let//end-of-[d3cls1_node$get(...)]
-//
 #implfun
 d3cls1_dgrt$get(cls) =
 let
 val+
 D3CLS1
-(loc, nod, grt, vts) = cls in grt
+(loc, nod
+,grt, vts1, vts2) = cls in grt
 end//let//end-of-[d3cls1_dgrt$get(...)]
 #implfun
-d3cls1_dvts$get(cls) =
+d3cls1_node$get(cls) =
 let
 val+
 D3CLS1
-(loc, nod, dgrt, vts) = cls in vts
-end//let//end-of-[d3cls1_dvts$get(...)]
+(loc, nod
+,grt, vts1, vts2) = cls in nod
+end//let//end-of-[d3cls1_node$get(...)]
+//
+#implfun
+d3cls1_vts1$get(cls) =
+let
+val+
+D3CLS1
+(loc, nod
+,grt, vts1, vts2) = cls in vts1
+end//let//end-of-[d3cls1_vts1$get(...)]
+#implfun
+d3cls1_vts2$get(cls) =
+let
+val+
+D3CLS1
+(loc, nod
+,grt, vts1, vts2) = cls in vts2
+end//let//end-of-[d3cls1_vts2$get(...)]
 //
 #implfun
 d3cls1_make_lctn$node
   (  loc0, node  ) =
 let
 val dgrt = optn_nil((*t3q0*))
-val dvts = list_nil((*void*))
+val vts1 = list_nil((*void*))
+val vts2 = list_nil((*void*))
 in//let
-  D3CLS1(loc0, node, dgrt, dvts) end
+D3CLS1
+(loc0, node, dgrt, vts1, vts2) end
 //
 #implfun
 d3cls1_make_lctn$node$rest
-( loc0, node, dgrt, dvts ) =
+( loc0, node
+, dgrt, vts1, vts2 ) =
 (
-  D3CLS1( loc0 , node , dgrt , dvts ) )
+D3CLS1(loc0, node, dgrt, vts1, vts2))
 //
 endloc (*local*) // end of [local(d3cls1)]
 //
