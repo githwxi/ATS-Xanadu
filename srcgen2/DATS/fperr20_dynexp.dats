@@ -100,6 +100,13 @@ let
 #impltmp
 g_print$out<>() = out
 //
+val () =
+(
+prerrs
+("fperr20_d2pat:");
+prerrsln
+("auxmain: d2p = ", d2p))
+//
 in//let
 //
 case+
@@ -203,20 +210,18 @@ let
 #impltmp
 g_print$out<>() = out
 //
+// (*
 val () =
 let
 val loc0 = d2p0.lctn((*0*))
 in//let
-(*
 prerrsln
 ("fperr20_d2pat: loc0 = ", loc0)
-*)
 end//let
-(*
 val () =
 prerrsln
 ("fperr20_d2pat: d2p0 = ", d2p0)
-*)
+// *)
 //
 in//let
 //

@@ -388,20 +388,18 @@ let
 #impltmp
 g_print$out<>() = out
 //
+// (*
 val () =
 let
 val loc0 = dcl0.lctn()
 in//let
-(*
 prerrsln
 ("fperr20_d2ecl: loc0 = ", loc0)
-*)
 end//let
-(*
 val () =
 prerrsln
 ("fperr20_d2ecl: dcl0 = ", dcl0)
-*)
+// *)
 //
 in//let
 //

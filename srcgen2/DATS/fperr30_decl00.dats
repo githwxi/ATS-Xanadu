@@ -233,9 +233,9 @@ val
 loc0 = dcl0.lctn()
 //
 val () = prerrsln
-("fperr30_d3ecl: auxmain: loc0 = ", loc0)
+("fperr30_d3ecl:auxmain: loc0 = ", loc0)
 val () = prerrsln
-("fperr30_d3ecl: auxmain: dcl0 = ", dcl0)
+("fperr30_d3ecl:auxmain: dcl0 = ", dcl0)
 endlet
 //
 (* ****** ****** *)
@@ -254,20 +254,18 @@ let
 #impltmp
 g_print$out<>() = out
 //
+// (*
 val () =
 let
 val loc0 = dcl0.lctn()
 in//let
-(*
 prerrsln
 ("fperr30_d3ecl: loc0 = ", loc0)
-*)
 end//let
-(*
 val () =
 prerrsln
 ("fperr30_d3ecl: dcl0 = ", dcl0)
-*)
+// *)
 //
 in//let
 //
