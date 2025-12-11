@@ -11,17 +11,42 @@ For testing xats2js!
 /prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-
+fun
+<a:vt>
+length
+(xs: list(a)): nint =
+(
+case+ xs of
+|list_nil() => 0
+|list_cons(_, xs) => 1 + length(xs)
+)
+////
 fun
 foo
-(x: int): int = 0
+(x0: int): int = 0
+
+fun
+length
+(xs: list(sint)): sint =
+(
+case+ xs of
+//
+|list_cons
+( _ , xs )
+when
+xs as
+list_cons // no ys
+( _ , ys ) => 2+length(xs.1)
+//
+|list_nil _ => 0 |list_cons _ => 1
+)(*case+*)//end-of-[length(xs)]
 
 (* ****** ****** *)
 ////
 (* ****** ****** *)
 
-val xs =
-list@(1, 2, 3)
+val
+xs = list@(1, 2, 3)
 
 (* ****** ****** *)
 

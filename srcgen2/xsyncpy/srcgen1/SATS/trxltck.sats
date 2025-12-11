@@ -333,7 +333,7 @@ d31ift_trxltck
 //
 fun
 d31cas_trxltck
-( dcls
+( dcl0
 : d3cls1
 , env0: !envltck, dexp: d3exp1): d3cls1
 fun

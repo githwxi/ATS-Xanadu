@@ -2039,9 +2039,39 @@ prerrsln("d31ift_trxltck: dopt = ", dopt)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
+#implfun
+d31cas_trxltck
+(dcl0, env0, dcas) =
+let
+//
+val () =
+prerrsln("\
+d31cas_trxltck: dcl0 = ", dcl0)
+val () =
+prerrsln("\
+d31cas_trxltck: dcas = ", dcas)
+//
+in//let
+//
+case+
+dcl0.node() of
+|D3CLS1gpt
+(   dgpt   ) => (       dcl0       )
+|D3CLS1cls
+(dgpt, dexp) => (       dcl0       )
+(*
+let
+in//let
+end(*let*)//end-of-[D3CLS1cls(dgpt,dexp)]
+*)
+//
+end(*let*)//end(d31cas_trxltck(dcl0,env0,...))
+//
+(* ****** ****** *)
+//
+#implfun
 d31caslst_trxltck
-(dcls, env0, dexp) =
+(dcls, env0, dcas) =
 (
 //
 case+ dcls of
@@ -2051,10 +2081,10 @@ case+ dcls of
 (dcl1, dcls) =>
 let
 val dcl1 =
-d31cas_trxltck(dcl1, env0, dexp)
+d31cas_trxltck(dcl1, env0, dcas)
 in//let
 list_cons(dcl1,
-d31caslst_trxltck(dcls, env0, dexp))
+d31caslst_trxltck(dcls, env0, dcas))
 end//let
 //
 )(*case+*)//endof(d31caslst_trxltck(dcls,...))

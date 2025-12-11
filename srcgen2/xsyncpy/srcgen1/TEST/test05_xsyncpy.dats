@@ -14,32 +14,57 @@ Sun Dec  7 04:40:40 AM EST 2025
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+//
 fun
 T0TRCD10
-(x0: sint): @(sint, sint) = @(x0, x0)
+(x0: sint):
+@(sint, sint) = @(x0, x0)
 //
 fun
 T0TRCD11
-(x0: sint): #(sint, sint) = #(x0, x0)
+(x0: sint):
+#(sint, sint) = #(x0, x0)
 //
 fun
 T0TRCD12
-(x0: sint): $tup(sint, sint) = $tup(x0, x0)
+(x0: sint):
+$tup(sint, sint) = $tup(x0, x0)
 //
 fun
 T0TRCD13
-(x0: sint): $tuptx(sint, sint) = $tuptx(x0, x0)
+(x0: sint):
+$tuptx(sint, sint) = $tuptx(x0, x0)
 fun
 T0TRCD14
-(x0: sint): $tupvx(sint, sint) = $tupvx(x0, x0)
+(x0: sint):
+$tupvx(sint, sint) = $tupvx(x0, x0)
 fun
 T0TRCD15
-(x0: sint): $tuprf(sint, sint) = $tuprf(x0, x0)
+(x0: sint):
+$tuprf(sint, sint) = $tuprf(x0, x0)
+//
+*)
+//
 (*
 fun
 T0TRCD16
-(x0: sint): $tuprc(sint, sint) = $tuprc(x0, x0)
+(x0: sint):
+$tuprc(sint, sint) = $tuprc(x0, x0)
 *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+length
+(xs: list(a)): nint =
+(
+case+ xs of
+|list_nil() => 0
+|list_cons(_, xs) => 1 + length(xs)
+)
 //
 (* ****** ****** *)
 (* ****** ****** *)
