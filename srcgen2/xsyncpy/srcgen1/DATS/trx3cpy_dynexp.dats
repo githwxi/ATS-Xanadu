@@ -154,6 +154,10 @@ d3pat1
 d3pat1
 (loc0, t2q0, D3P1str(tstr))
 //
+|D3Pcon(dcon) =>
+d3pat1
+(loc0, t2q0, D3P1con(dcon))
+//
 |D3Pbang _ => f0_bang(d3p0, env0)
 |D3Pflat _ => f0_flat(d3p0, env0)
 |D3Pfree _ => f0_free(d3p0, env0)

@@ -781,6 +781,8 @@ dpat.node() of
 |D3P1str _ => dpat
 //
 (* ****** ****** *)
+|D3P1con _ => dpat
+(* ****** ****** *)
 //
 |D3P1tapq _ =>
 (
