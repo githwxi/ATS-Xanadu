@@ -254,7 +254,7 @@ let
 #impltmp
 g_print$out<>() = out
 //
-// (*
+(*
 val () =
 let
 val loc0 = dcl0.lctn()
@@ -265,7 +265,7 @@ end//let
 val () =
 prerrsln
 ("fperr30_d3ecl: dcl0 = ", dcl0)
-// *)
+*)
 //
 in//let
 //

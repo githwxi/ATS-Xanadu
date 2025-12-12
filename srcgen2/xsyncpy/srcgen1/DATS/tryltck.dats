@@ -183,6 +183,14 @@ optn_tryltck_fnp(dopt, err0, d3exp1_tryltck))
 (* ****** ****** *)
 //
 #implfun
+d3cls1lst_tryltck
+  (dclz, err0) =
+(
+list_tryltck_fnp(dclz, err0, d3cls1_tryltck))
+//
+(* ****** ****** *)
+//
+#implfun
 d3axp1lst_tryltck
   (d3as, err0) =
 (
