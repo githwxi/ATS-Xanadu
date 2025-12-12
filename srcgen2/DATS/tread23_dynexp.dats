@@ -2967,7 +2967,7 @@ if
 (err = e00)
 then (dgpt) else
 d3gpt(dgpt.lctn(), D3GPTgua(d3p1,d3gs))
-endlet // end of [ D3GPTgua(_,_,_) ]
+endlet // end of [ D3GPTgua(d3p1,d3gs) ]
 ) (*case+*)//end-of-[tread23_d3gpt(dgpt,err)]
 //
 (* ****** ****** *)
