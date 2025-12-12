@@ -231,6 +231,36 @@ case+ dopt of
 (* ****** ****** *)
 //
 fun
+d3cls1_errvl
+(dcls: d3cls1): sint =
+(
+case+
+dcls.node() of
+|D3CLS1gpt
+(  dgpt  ) => (   0   )
+|D3CLS1cls
+(dgpt, d3e1) => errvl(d3e1))
+#symload errvl with d3cls1_errvl
+//
+fun
+d3cls1lst_errvl
+(dcls: d3cls1lst): sint =
+(
+case+ dcls of
+|list_nil
+( (*void*) ) => (   0   )
+|list_cons
+(dcl1, dcls) =>
+maxs(
+errvl(dcl1), d3cls1lst_errvl(dcls))
+)(*case+*)//end-of-(d3cls1lst_errvl)
+//
+#symload errvl with d3cls1lst_errvl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3pat1_tup0_errck
 (loc0: loc_t
 ,t2q0: s2typ1
@@ -398,6 +428,27 @@ d3exp1(
 //
 endlet//end-of-[d3exp1_ift0_errck(...)]
 //
+(* ****** ****** *)
+//
+fun
+d3exp1_cas0_errck
+(loc0: loc_t
+,t3q0: d3typ1
+,tknd: token
+,d3e1: d3exp1
+,dcls: d3cls1lst): d3exp1 =
+let
+val lvl = maxs
+(errvl(d3e1), errvl(dcls))
+in//let
+d3exp1_errck
+(
+lvl+1,
+d3exp1(
+  loc0,t3q0,D3E1cas0(tknd,d3e1,dcls)))
+endlet // end of [d3exp1_cas0_errck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -865,6 +916,10 @@ dexp.node() of
 (
   f0_ift0(dexp, err0))
 //
+|D3E1cas0 _ =>
+(
+  f0_cas0(dexp, err0))
+//
 (* ****** ****** *)
 //
 |D3E1seqn _ =>
@@ -1063,6 +1118,7 @@ end//let
 end(*let*)//end-of-[f0_let1(d3e0,err0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_ift0
@@ -1103,6 +1159,47 @@ end//let
 //
 end(*let*)//end-of-[f0_ift0(d3e0,err0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_cas0
+( d3e0: d3exp1
+, err0
+: &sint >> sint): d3exp1 =
+let
+//
+val nerr = err0
+//
+val-
+D3E1cas0
+(tknd
+,d3e1, dcls) = d3e0.node()
+//
+val t3q0 = d3e0.dtyp((*0*))
+//
+val d3e1 =
+(
+d3exp1_tryltck(d3e1, err0))
+//
+val dcls =
+d3cls1lst_tryltck(dcls, err0)
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val loc0 = d3e0.lctn()
+in//let
+(
+  d3exp1_cas0_errck
+  (loc0, t3q0, tknd, d3e1, dcls))
+end//let
+//
+end(*let*)//end-of-[f0_cas0(d3e0,err0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1574,6 +1671,67 @@ prerrsln("d3exp1_tryltck: dexp = ", dexp)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[d3exp1_tryltck(dexp,err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3cls1_tryltck
+( dcls, err0 ) =
+(
+case+
+dcls.node() of
+|D3CLS1gpt
+(   dgpt   ) => let
+//
+val nerr = err0
+//
+val dgpt =
+(
+  d3gpt1_tryltck(dgpt, err0))
+//
+in//let
+if
+(err0=nerr)
+then (dcls)
+else
+let
+val loc0 = dcls.lctn()
+in//let
+(
+  d3cls1(loc0, D3CLS1gpt(dgpt)))
+end//let
+end(*let*)//end-of-[D3CLSgpt(dgpt)]
+//
+|D3CLS1cls
+(dgpt, d3e1) =>
+let
+//
+val nerr = err0
+//
+val dgpt =
+(
+  d3gpt1_tryltck(dgpt, err0))
+val d3e1 =
+(
+  d3exp1_tryltck(d3e1, err0))
+//
+in//let
+if // if
+(err0=nerr)
+then (dcls) else
+let
+val loc0 = dcls.lctn()
+val dgrt = dcls.dgrt()
+val vts1 = dcls.vts1()//inner:styp
+val vts2 = dcls.vts2()//outer:dtyp
+in//let
+(
+d3cls1(loc0,
+  D3CLS1cls(dgpt,d3e1),dgrt,vts1,vts2))
+end//let
+end(*let*)//end-of-[D3CLScls(dgpt,d3e1)]
+)(*case+*)//end-of-[d3cls1_tryltck(dcls,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

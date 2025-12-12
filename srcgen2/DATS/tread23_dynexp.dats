@@ -311,10 +311,10 @@ d3cls_errvl_a1
 (dcl: d3cls): sint =
 (
 case+ dcl.node() of
-|
-D3CLSgpt(dgpt) => 0
-|
-D3CLScls(dgpt,d3e1) => errvl(d3e1)
+|D3CLSgpt
+(  dgpt  ) => ( 0 )
+|D3CLScls
+(dgpt,d3e1) => errvl(d3e1)
 )
 #symload errvl with d3cls_errvl_a1
 //
@@ -330,10 +330,8 @@ d3cls_errvl_lst
 d3cls_errvl_lst(dcls) =
 (
 case+ dcls of
-|
-list_nil((*nil*)) => 0
-|
-list_cons(dcl1,dcls) => maxs
+|list_nil((*nil*)) => 0
+|list_cons(dcl1,dcls) => maxs
 (errvl(dcl1), d3cls_errvl_lst(dcls))
 ) (*case+*)//end-of-(d3cls_errvl_lst)
 //
@@ -713,14 +711,14 @@ d3exp_cas0_errck
 (loc0: loc_t
 ,tknd: token
 ,d3e1: d3exp
-,d3cs: d3clslst): d3exp =
+,dcls: d3clslst): d3exp =
 let
 val lvl = maxs
-(errvl(d3e1), errvl(d3cs))
+(errvl(d3e1), errvl(dcls))
 in//let
 d3exp_errck
 ( lvl+1
-, d3exp(loc0,D3Ecas0(tknd,d3e1,d3cs)))
+, d3exp(loc0,D3Ecas0(tknd,d3e1,dcls)))
 endlet // end of [d3exp_cas0_errck(...)]
 //
 (* ****** ****** *)
@@ -2859,6 +2857,7 @@ then (ld3e) else D3LAB(lab0, d3e1)
 end (*let*)//end-(tread23_l3d3e(ld3e,err))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 tread23_f3arg
@@ -2885,6 +2884,7 @@ endlet // end of [F3ARGdapp(npf1,d3ps)]
 |F3ARGsapp _ => farg|F3ARGmets _ => farg)
 //(*case+*)//end-[tread23_f3arg(farg,err)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -2978,42 +2978,50 @@ tread23_d3cls
 (
 case+
 dcls.node() of
-|
-D3CLSgpt
-( dgpt ) => let
+//
+|D3CLSgpt
+(  dgpt  ) =>
+let
 //
 val e00 = err
 //
 val dgpt =
-tread23_d3gpt(dgpt, err)
+(
+  tread23_d3gpt(dgpt, err))
+//
 in//let
 if
 (err=e00)
-then (dcls)
-else
-d3cls(dcls.lctn(), D3CLSgpt(dgpt))
-end (*let*)//end-of[D3CLSgpt(dgpt)]
-|
-D3CLScls
+then (dcls) else
+(
+d3cls
+(dcls.lctn(), D3CLSgpt(dgpt)))
+end(*let*)//end-of[D3CLSgpt(dgpt)]
+//
+|D3CLScls
 (dgpt,d3e1) =>
 let
 //
 val e00 = err
 //
-val dgpt = tread23_d3gpt(dgpt, err)
-val d3e1 = tread23_d3exp(d3e1, err)
+val dgpt =
+(
+  tread23_d3gpt(dgpt, err))
+val d3e1 =
+(
+  tread23_d3exp(d3e1, err))
 //
 in//let
 if
 (err=e00)
-then (dcls)
-else
-d3cls(dcls.lctn(), D3CLScls(dgpt,d3e1))
-endlet // end-of-[ D3CLScls(_,_,_) ]
+then (dcls) else
+(
+d3cls
+(dcls.lctn(), D3CLScls(dgpt,d3e1)))
+endlet // end-of-[ D3CLScls(dgpt,d3e1) ]
 ) (*case+*)//end-of-[tread23_d3cls(dcls,err)]
 //
 (* ****** ****** *)
-//
 (* ****** ****** *)
 //
 #implfun

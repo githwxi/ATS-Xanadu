@@ -57,7 +57,7 @@ $tuprc(sint, sint) = $tuprc(x0, x0)
 (* ****** ****** *)
 //
 fun
-<a:vt>
+<a:t0>
 length
 (xs: list(a)): nint =
 (

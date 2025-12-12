@@ -210,7 +210,7 @@ let
 #impltmp
 g_print$out<>() = out
 //
-// (*
+(*
 val () =
 let
 val loc0 = d2p0.lctn((*0*))
@@ -221,7 +221,7 @@ end//let
 val () =
 prerrsln
 ("fperr20_d2pat: d2p0 = ", d2p0)
-// *)
+*)
 //
 in//let
 //
