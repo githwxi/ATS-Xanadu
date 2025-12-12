@@ -971,6 +971,7 @@ d3exp1
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3E1ift0 _ => f0_ift0(d3e0, env0)
 //
@@ -978,6 +979,7 @@ d3exp1
 //
 |D3E1cas0 _ => f0_cas0(d3e0, env0)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3E1seqn _ => f0_seqn(d3e0, env0)
@@ -1543,35 +1545,35 @@ let
 val-
 D3E1cas0
 (tknd
-,d3e1, dcls) = d3e0.node()
+,d3e1, dclz) = d3e0.node()
 //
 val d3e1 =
 (
 d3exp1_trxltck(d3e1, env0))
 //
-val dcls =
+val dclz =
 (
 d31caslst_trxltck
-(dcls, env0, d3e1(*csrt*)))
+(dclz, env0, d3e1(*csrt*)))
 //
 val dexp = 
 let
 val t3q0 =
 (
-  f1_tqxp(tqxp, dcls))
+  f1_tqxp(tqxp, dclz))
 in//let
 (
 d3exp1(loc0, t3q0,
-  D3E1cas0(tknd, d3e1, dcls)))
+  D3E1cas0(tknd, d3e1, dclz)))
 end//let
 //
 in//let
 //
-case+ dcls of
+case+ dclz of
 |list_nil
 ( (*void*) ) => (dexp)
 |list_cons
-(dcl1, dcls) =>
+(dcl1, dclz) =>
 (
   d3exp1_dvdtp(dexp, dvts))
 where
@@ -1586,32 +1588,27 @@ end where
 //
 fun
 f1_tqxp
-( tqxp: d3typ1
-, dcls: d3cls1lst): d3typ1 = tqxp
-(*
-fun
-f1_tqxp
-( tqxp: d3typ1
-, dcls: d3ecl1lst): d3typ1 =
 (
-case+ dcls of
+tqxp: d3typ1,
+dclz: d3cls1lst): d3typ1 =
+(
+case+ dclz of
 |list_nil
 ( (*void*) ) =>
 (
     tqxp   )//HX: clauseless
 |list_cons
-(dcl1, dcls) =>
+(dcl1, dclz) =>
 (
 case+
 dcl1.node() of
 |D3CLS1gpt
-( (*void*) ) =>
+(   dgpt   ) =>
 (
-  f1_tqxp(tqxp, dcls))//bodyless
+  f1_tqxp(tqxp, dclz))//bodyless
 |D3CLS1cls
 (dgpt, d3e1) => d3e1.dtyp((*void*)))
-)
-*)
+)(*cas*)//end-of-[f1_tqxp(tqxp, dclz)]
 //
 }(*whr*)//end-of-[f0_cas0(d3e0, env0)]
 //
