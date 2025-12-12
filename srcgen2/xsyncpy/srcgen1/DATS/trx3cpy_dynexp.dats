@@ -161,6 +161,8 @@ d3pat1
 |D3Psapp _ => f0_sapp(d3p0, env0)
 |D3Psapq _ => f0_sapq(d3p0, env0)
 //
+|D3Ptapq _ => f0_tapq(d3p0, env0)
+//
 |D3Pdapp _ => f0_dapp(d3p0, env0)
 //
 |D3Prfpt _ => f0_rfpt(d3p0, env0)
@@ -290,6 +292,8 @@ d3pat1
 (loc0,t2q0,D3P1sapq(d3f0,s2as)))
 //
 end//let
+//
+(* ****** ****** *)
 //
 fun
 f0_tapq
