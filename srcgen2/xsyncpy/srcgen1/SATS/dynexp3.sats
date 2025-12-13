@@ -1005,11 +1005,10 @@ d3cls1_make_lctn$node
 (loc0:loc_t,node:d3cls1_node):d3cls1
 fun
 d3cls1_make_lctn$node$rest
-(
-loc0:loc_t,
-node:d3cls1_node,
-dgrt:d3typ1opt,
-vts1:dvstp1lst, vts2:dvdtp1lst): d3cls1
+(loc0:loc_t
+,node:d3cls1_node
+,dgrt:d3typ1opt
+,vts1:dvstp1lst, vts2:dvdtp1lst): d3cls1
 //
 #symload d3gua1 with d3gua1_make_lctn$node
 #symload d3gpt1 with d3gpt1_make_lctn$node

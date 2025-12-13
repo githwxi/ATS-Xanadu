@@ -2041,10 +2041,12 @@ d31cas_trxltck
 (dcl0, env0, dcas) =
 let
 //
-val () =
+val loc0 = dcl0.lctn()
+//
+val (  ) =
 prerrsln("\
 d31cas_trxltck: dcl0 = ", dcl0)
-val () =
+val (  ) =
 prerrsln("\
 d31cas_trxltck: dcas = ", dcas)
 //
@@ -2052,15 +2054,79 @@ in//let
 //
 case+
 dcl0.node() of
+//
 |D3CLS1gpt
-(   dgpt   ) => (       dcl0       )
+(   dgpt   ) =>
+(   dcl0   ) // bodyless
+//
 |D3CLS1cls
-(dgpt, dexp) => (       dcl0       )
-(*
+(dgpt, dexp) => // w/body
 let
+//
+val t3q0 = dcas.dtyp((*0*))
+val t2q0 =
+envltck_dtyp$eval(env0, t3q0)
+//
+val dpat =
+d3pat1_mkof$d3gt2q(dgpt, t2q0)
+//
+val dtyp =
+(
+envltck_dmxq$updt
+(env0, dcas, dtyp)) where
+{
+val dtyp =
+d3typ1_mkof$d3pat1(   dpat   )
+}(*where*)//end-of-[val(dtyp)]
+//
+val dgrt = optn_cons(  dtyp  )
+//
+val (  ) =
+(
+  envltck_pshcas0(env0))//enter
+//
+val (  ) =
+(
+  envltck_dpat$push(env0, dpat))
+//
+val dexp =
+(
+  d3exp1_trxltck(  dexp, env0  ))
+//
+val d2vs = envltck_dvscas0( env0 )
+val vts0 = envltck_vtscas0( env0 )
+//
+val (  ) = envltck_popcas0( env0 )
+//
 in//let
+//
+let
+//
+val vts1 =
+(
+  dvdtp1lst_d2vs$inner(vts0, d2vs))
+val vts2 =
+(
+  dvdtp1lst_d2vs$outer(vts0, d2vs))
+//
+val vts1 =
+(
+  envltck_dvdtp1lst$eval(env0, vts1))
+//
+val (  ) =
+prerrsln("\
+d31cas_trxltck:D3CLS1cls: vts1 = ", vts1)
+val (  ) =
+prerrsln("\
+d31cas_trxltck:D3CLS1cls: vts2 = ", vts2)
+//
+in//let
+(
+d3cls1(loc0,
+  D3CLS1cls(dgpt,dexp),dgrt,vts1,vts2))
+end//let
+//
 end(*let*)//end-of-[D3CLS1cls(dgpt,dexp)]
-*)
 //
 end(*let*)//end(d31cas_trxltck(dcl0,env0,...))
 //

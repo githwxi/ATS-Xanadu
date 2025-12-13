@@ -119,16 +119,31 @@ let
 //
 val dcon =
 (
+f1_d3f0(d3f0))
+where
+{
+fun
+f1_d3f0
+(d3f0: d3pat1): d2con =
+(
 case-
 d3f0.node() of
-|D3P1con(dcon) => dcon)
-//
-val t3qs = f0_d3ps(d3ps)
+|D3P1con
+(  dcon  ) => (dcon)
+|D3P1tapq
+(d3f0,tjas) => f1_d3f0(d3f0))
+}
 //
 in//let
+//
+let
+val t3qs = f0_d3ps(d3ps)
+in//let
 (
-d3typ1_make_styp$node
-(t2q0, T3P1tcon(dcon, t3qs)))
+  d3typ1_make_styp$node
+  (t2q0, T3P1tcon(dcon, t3qs)))
+end//let
+//
 end//let//end-of-[D3P1dapp(...)]
 //
 |D3P1tup0
@@ -157,8 +172,7 @@ val dtyp =
 d3typ1_mkof$d3pat1(d3p1) in dtyp
 end//let//end-of-[D3P1annot(...)]
 //
-|
-_(*otherwise*) => d3typ1_styp$make(t2q0)
+|_(*d3pat1*) => d3typ1_styp$make(t2q0)
 //
 end where
 {
@@ -211,6 +225,11 @@ in
   (ltq1, f0_id3ps(i0+1, d3ps)))
 end//let//end-of-[list_cons(d3p1,d3ps)]
 )(*case+*)//end-of-[f0_id3ps(i0, d3ps)]
+//
+val (  ) =
+(
+  prerrsln
+  ("d3typ1_mkof$d3pat1: d3p0 = ", d3p0))
 //
 }(*where*)//end-of-[d3typ1_mkof$d3pat1(d3p0)]
 //
@@ -407,7 +426,35 @@ end//let
 )(*case+*)//end-of-[list_cons(...)]
 )(*case+*)//end-of-[f0_d3ps$ltqs(...)]
 //
-}(*where*)//end-of-[d3typ1_mkof$d3pt2q(dpat,styp)]
+val (  ) =
+prerrsln("d3pat1_mkof$d3pt2q: d3p0 = ", d3p0)
+//
+}(*where*)//end-of-[d3typ1_mkof$d3pt2q(d3p0,styp)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3pat1_mkof$d3gt2q
+  (dgpt, styp) =
+(
+case+
+dgpt.node() of
+|D3GPT1pat
+(   dpat   ) =>
+(
+d3pat1_mkof$d3pt2q(dpat, styp))//D3GPT1pat
+|D3GPT1gua
+(dpat, d3gs) =>
+(
+d3pat1_mkof$d3pt2q(dpat, styp))//D3GPT1gua
+) where
+{
+//
+val (  ) =
+prerrsln("d3pat1_mkof$d3gt2q: dgpt = ", dgpt)
+//
+}(*where*)//end-of-[d3typ1_mkof$d3gt2q(dgpt,styp)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
