@@ -1035,6 +1035,13 @@ let
 #impltmp
 g_print$out<>() = out0
 in//let
+//
+let
+val dgrt = dcls.dgrt()
+val vts1 = dcls.vts1()
+val vts2 = dcls.vts2()
+in//let
+//
 case+
 dcls.node() of
 |D3CLS1gpt(dgpt) =>
@@ -1042,7 +1049,11 @@ dcls.node() of
 prints("D3CLS1gpt(",dgpt,")"))
 |D3CLS1cls(d3g1,d3e2) =>
 (
-prints("D3CLS1cls(",d3g1,";",d3e2,")"))
+print("D3CLS1cls");
+prints("(",d3g1,";",d3e2,")");
+prints("(",dgrt,";",vts1,";",vts2,")"))
+//
+end//let
 end(*let*)//end of [d3cls1_fprint(dcls,out0)]
 //
 (* ****** ****** *)

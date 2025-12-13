@@ -84,7 +84,7 @@ ATS_PACKNAME
 #symload node with d2cls_get_node
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 local
 //
 (* ****** ****** *)
@@ -247,7 +247,7 @@ end//let
 end(*let*)//end-of(fperr20_d2pat(out,d2p0))
 //
 endloc(*local*)//end-of(local(fperr20_d2pat))
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -260,9 +260,10 @@ D2LAB(lab,d2p1) => fperr20_d2pat(out,d2p1)
 ) (*case+*)//end-of-(fperr20_d2pat(out,ld2p))
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 local
-
+//
 (* ****** ****** *)
 #define ERRLVL 3
 (* ****** ****** *)
@@ -435,6 +436,12 @@ prints("D2Eannot(", "...", ")")
 |D2Et2pck
 (d2e1, t2p2) =>
 ( print("D2Et2pck(")
+; auxdexp(out, d2e1)
+; print(";"); prints(t2p2, ")"))
+//
+|D2Et2ped
+(d2e1, t2p2) =>
+( print("D2Et2ped(")
 ; auxdexp(out, d2e1)
 ; print(";"); prints(t2p2, ")"))
 //
@@ -757,18 +764,27 @@ D2El1azy
 val () = fperr20_d2exp(out, d2e1)
 }
 //
-|
-D2Elabck
+(* ****** ****** *)
+//
+|D2Elabck
 (d2e1, lab2) =>
 let
 val () = fperr20_d2exp(out, d2e1)
 endlet
-|
-D2Et2pck
+//
+|D2Et2pck
 (d2e1, t2p2) =>
 let
 val () = fperr20_d2exp(out, d2e1)
 endlet
+//
+|D2Et2ped
+(d2e1, t2p2) =>
+let
+val () = fperr20_d2exp(out, d2e1)
+endlet
+//
+(* ****** ****** *)
 //
 |D2Enone0 _ => (   (*void*)   )
 |D2Enone1 _ => () | D2Enone2 _ => ()
@@ -788,7 +804,7 @@ let
 endlet
 //
 end (*let*) // end-of-[ auxmain(out, d2e) ]
-
+//
 in//local
 //
 #implfun
@@ -849,7 +865,7 @@ _ (* otherwise *) => (  (* skipped *)  )
 end(*let*)//end-of(fperr20_d2exp(out,d2e0))
 //
 endloc(*local*)//end-of(local(fperr20_d2exp))
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -861,6 +877,7 @@ case+ ld2e of
 D2LAB(lab,d2e1) => fperr20_d2exp(out,d2e1)
 ) (*case+*)//end-of-(fperr20_d2exp(out,ld2e))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -937,6 +954,7 @@ val () = fperr20_d2exp(out, d2e2)
 endlet // end of [ D2CLScls(_,_,_) ]
 ) (*case*) // end-of(fperr20_d2cls(out,dcls))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
