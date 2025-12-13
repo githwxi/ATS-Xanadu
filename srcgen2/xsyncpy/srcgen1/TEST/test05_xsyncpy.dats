@@ -59,10 +59,10 @@ $tuprc(sint, sint) = $tuprc(x0, x0)
 fun
 <a:t0>
 length
-(xs: list(a)): nint =
+(xs: list(a)): sint =
 (
 case+ xs of
-|list_nil() => true
+|list_nil() => ( 0 )
 |list_cons(_, xs) => 1 + length(xs)
 )
 //
