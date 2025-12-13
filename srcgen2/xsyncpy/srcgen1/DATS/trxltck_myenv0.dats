@@ -190,7 +190,7 @@ val (  ) =
 dtpstk_free_top(dtpstk)
 val (  ) =
 stkmap_free_nil(stkmap) in () end//let
-)(*case+*)//end-of-(envltck_free_top(env0))
+)(*case+*)//endof(envltck_free_top(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -208,7 +208,7 @@ let
 val (  ) =
 ( dtpstk :=
   dtpstk_lam0(dtpstk)) in () end//let
-)(*case+*)//end-of-(envltck_pshlam0( env0 ))  
+)(*case+*)//end-of-(envltck_pshlam0(env0))  
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -226,7 +226,7 @@ let
 val (  ) =
 ( dtpstk :=
   dtpstk_let0(dtpstk)) in () end//let
-)(*case+*)//end-of-(envltck_pshlet0( env0 ))  
+)(*case+*)//end-of-(envltck_pshlet0(env0))  
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -244,7 +244,25 @@ let
 val (  ) =
 ( dtpstk :=
   dtpstk_ift0(dtpstk)) in () end//let
-)(*case+*)//end-of-(envltck_pshift0( env0 ))  
+)(*case+*)//end-of-(envltck_pshift0(env0))  
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envltck_pshcas0
+  (  env0  ) =
+(
+case+ env0 of
+| ENVLTCK
+(
+!dtpstk, stkmap) =>
+let
+//
+val (  ) =
+( dtpstk :=
+  dtpstk_cas0(dtpstk)) in () end//let
+)(*case+*)//end-of-(envltck_pshcas0(env0))  
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -521,6 +539,95 @@ end(*let*)//end-of-(envltck_popift0(env0))
 (* ****** ****** *)
 //
 fun
+dtpstk_popcas0
+( kxs:
+& dtpstk >> _): sint =
+let
+var
+err: sint = 0
+val
+( ) =
+(kxs := loop(kxs, err)) in err end
+where{
+//
+fnx
+loop
+(kxs: dtpstk
+,err: &sint >> _): dtpstk =
+(
+case+ kxs of
+|
+~ // free
+dtpstk_cas0
+(   kxs   ) => kxs
+|
+~ // free
+dtpstk_cons
+(k1, x1, kxs) =>
+(
+  loop(kxs, err)) where
+{
+//
+(*
+val () =
+prerrsln("\
+dtpstk_popcas0: loop: k1 = ", k1)
+val () =
+prerrsln("\
+dtpstk_popcas0: loop: x1 = ", x1)
+*)
+//
+}(*where*)//end[dtpstk_cons(...)]
+//
+|
+~ // free
+dtpstk_updt
+(k1, x1, kxs) =>
+(
+  loop(kxs, err)) where
+{
+//
+(*
+val () =
+prerrsln("\
+dtpstk_popcas0: loop: k1 = ", k1)
+val () =
+prerrsln("\
+dtpstk_popcas0: loop: x1 = ", x1)
+*)
+//
+}(*where*)//end[dtpstk_updt(...)]
+//
+|dtpstk_nil( ) => ( err := 1; kxs )
+|dtpstk_lam0 _ => ( err := 1; kxs )
+|dtpstk_let0 _ => ( err := 1; kxs )
+|dtpstk_ift0 _ => ( err := 1; kxs )
+//
+)(*case+*)//end-of-[loop( kxs, err )]
+//
+}(*where*)//end-of-[dtpstk_popcas0(kxs)]
+//
+#implfun
+envltck_popcas0
+(     env0     ) = let
+//
+val+
+ENVLTCK(
+!dtpstk, !stkmap) = env0
+//
+in//let
+//
+let
+val nerr =
+dtpstk_popcas0(dtpstk) in $fold(env0)
+end(*let*)
+//
+end(*let*)//end-of-(envltck_popcas0(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3typ1_none0
 ( (*void*) ) =
 d3typ1_none$make
@@ -767,25 +874,32 @@ s2typ1_none0((*void*)))
 //
 |T3P1styp(t2q1) => (t2q1)
 //
-|
-T3P1dvar(d2v1) =>
+|T3P1dvar(d2v1) =>
+(
 let
 val t3q1 =
 envltck_dvar$take(env0, d2v1)
 in//let
 envltck_dtyp$eval(env0, t3q1)
 end//let//end-of-[T3P1dvar(d2v1)]
+)
 //
-|
-T3P1dlft(t3q1) =>
+|T3P1dlft(t3q1) =>
 (
 s2typ1_lft(t2q1)) where
 {
 val t2q1 =
 envltck_dtyp$eval(env0, t3q1)}
 //
-|
-T3P1trcd
+|T3P1tcon
+(dcon, t3qs) =>
+(
+t3q0.styp((*0*))) where
+{
+val t3qs = f0_t3qs(env0, t3qs)
+}(*where*)//end(T3P1tcon(dcon,...))
+//
+|T3P1trcd
 (trcd, npf1, ltqs) =>
 let
 //
@@ -798,6 +912,26 @@ end//let//end-of-[T3P1trcd(trcd,...)]
 //
 ) where
 {
+//
+fun
+f0_t3qs
+( env0:
+! envltck
+, t3qs
+: d3typ1lst): d3typ1lst =
+(
+case+ t3qs of
+|list_nil
+( (*void*) ) => list_nil()
+|list_cons
+(t3q1, t3qs) =>
+let
+val t2q1 =
+envltck_dtyp$eval(env0, t3q1)
+in//let
+list_cons(t3q1, f0_t3qs(env0, t3qs))
+end//let
+)(*case+*)//end-of-[f0_t3qs(env0,t3qs)]
 //
 fun
 f0_ltqs
@@ -850,8 +984,11 @@ list_cons(t3q1, t3qs) =>
 (
 list_cons(t2q1, t2qs))
 where{
+//
 val t2q1 = envltck_dtyp$eval(env0, t3q1)
-val t2qs = envltck_dtyplst$eval(env0, t3qs)}
+val t2qs = envltck_dtyplst$eval(env0, t3qs)
+//
+}(*where*)
 )(*case+*)//end-of-[envltck_dtyplst$eval(env0,...)]
 //
 (* ****** ****** *)
@@ -1392,6 +1529,73 @@ val d2vs = dtpstk_dvsift0(dtpstk)
 (* ****** ****** *)
 //
 fun
+dtpstk_dvscas0
+( kxs:
+! dtpstk): d2varlst =
+let
+//
+#vwtpdef
+d2varlst = list_vt(d2var)
+//
+fnx
+loop
+( kxs:
+! dtpstk
+, res
+: d2varlst): d2varlst =
+(
+case- kxs of
+//
+|dtpstk_nil
+(  (*nil*)  ) => res
+//
+|dtpstk_cas0
+(    kxs    ) => res
+//
+|dtpstk_cons
+(k1, x1, kxs) =>
+loop(kxs, list_vt_cons(k1, res))
+//
+|dtpstk_updt // HX: skipped
+(k1, x1, kxs) => (loop(kxs, res))
+//
+)(*case-*)//end-of-[loop(kxs,res)]
+//
+in//let
+//
+list_vt2t
+(
+d2varlst_vt_duprmv0(res)
+) where
+{
+val res =
+loop(kxs, list_vt_nil((*0*)))
+val res = d2varlst_vt_sort0(res) }
+//
+end(*let*)//end-of-[dtpstk_dvscas0(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+envltck_dvscas0
+  (  env0  ) =
+(
+//
+case+ env0 of
+|ENVLTCK
+(dtpstk, stkmap) =>
+(
+  d2vs ) where
+{
+val d2vs = dtpstk_dvscas0(dtpstk)
+}
+//
+)(*case+*)//end-of-[envltck_dvscas0(env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 dtpstk_vtslam0
 ( stk0: 
 ! dtpstk): dvdtp1lst =
@@ -1629,6 +1833,87 @@ val vtps = dtpstk_vtsift0(dtpstk)
 }
 //
 )(*case+*)//end-of-[envltck_vtsift0(env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+dtpstk_vtscas0
+( stk0: 
+! dtpstk): dvdtp1lst =
+(
+list_vt2t{dvdtp1}(vtps)
+) where
+{
+//
+val vtps =
+list_vt_nil()
+val vtps =
+loop(stk0, vtps)
+val vtps =
+dvdtp1lst_vt_sort0(vtps)
+val vtps =
+dvdtp1lst_vt_duprmv0(vtps)
+//
+} where // where
+{
+#vwtpdef
+res_vt = dvdtp1lst_vt
+//
+fun
+loop
+( stk0:
+! dtpstk
+, vtps
+: dvdtp1lst_vt): res_vt =
+(
+case+ stk0 of
+//
+|dtpstk_nil
+( (*void*) ) => ( vtps )
+//
+|dtpstk_cons
+(d2v1,t3q1,stk1) =>
+(
+  loop(stk1, vtps)) where
+{
+val vtps =
+list_vt_cons((d2v1, t3q1), vtps)}
+//
+|dtpstk_updt
+(d2v1,t3q1,stk1) =>
+(
+loop(stk1, vtps)) where
+{
+val vtps =
+list_vt_cons((d2v1, t3q1), vtps)}
+//
+|
+dtpstk_cas0(stk1) => (    vtps    )
+//
+|
+_(*rest-of-dtpstk*) => (    vtps   )
+)
+//
+}(*where*)//end-of-[dtpstk_vtscas0(env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+envltck_vtscas0
+  (  env0  ) =
+(
+//
+case+ env0 of
+|ENVLTCK
+(dtpstk, stkmap) =>
+(
+  vtps ) where
+{
+val vtps = dtpstk_vtscas0(dtpstk)
+}
+//
+)(*case+*)//end-of-[envltck_vtscas0(env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

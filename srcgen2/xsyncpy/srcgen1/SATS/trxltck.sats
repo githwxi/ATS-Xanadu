@@ -100,6 +100,11 @@ d3pat1_mkof$d3pt2q
 ( dpat
 : d3pat1, styp: s2typ1): d3pat1
 //
+fun
+d3pat1_mkof$d3gt2q
+( dgpt
+: d3gpt1, styp: s2typ1): d3pat1
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -227,6 +232,18 @@ fun
 envltck_dvsift0(!envltck): d2varlst
 fun
 envltck_vtsift0(!envltck): dvdtp1lst
+//
+(* ****** ****** *)
+//
+fun
+envltck_pshcas0(!envltck): (void)
+fun
+envltck_popcas0(!envltck): (void)
+//
+fun
+envltck_dvscas0(!envltck): d2varlst
+fun
+envltck_vtscas0(!envltck): dvdtp1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)
