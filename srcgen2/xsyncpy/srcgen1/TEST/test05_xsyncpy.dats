@@ -62,9 +62,24 @@ length
 (xs: list(a)): nint =
 (
 case+ xs of
-|list_nil() => 0
+|list_nil() => true
 |list_cons(_, xs) => 1 + length(xs)
 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+<a:vt>
+length_vt
+(xs: !list_vt(a)): nint =
+(
+case+ xs of
+|list_vt_nil() => 0
+|list_vt_cons(_, xs) => 1 + length_vt(xs)
+)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
