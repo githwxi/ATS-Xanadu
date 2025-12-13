@@ -1,4 +1,4 @@
-// Sat Sep 27 01:45:08 PM EDT 2025
+// Sat Dec 13 05:23:45 PM EST 2025
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 /*
@@ -697,13 +697,29 @@ function
 XATS2JS_dflt_eq$dflt
   (f1, f2)
 {
-  return (f1 === f2) // HX: equal
+  return (f1 === f2) // HX: eq
 }
 function
 XATS2JS_dflt_neq$dflt
   (f1, f2)
 {
-  return (f1 !== f2) // HX: noteq
+  return (f1 !== f2) // HX: neq
+}
+//
+/*
+HX-2025-12-13:
+Sat Dec 13 05:19:31 PM EST 2025
+*/
+//
+function
+XATS2JS_dflt_cmp$dflt
+  (f1, f2)
+{
+  if (f1 < f2)
+    return (-1) // lt
+  else // f1 >= f2
+    return (f1 > f2 ? 1 : 0)
+  // HX: end-of-if( f1 < f2 )
 }
 //
 ////////////////////////////////////////////////////////////////////////.
