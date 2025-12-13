@@ -61,10 +61,6 @@ ATS_PACKNAME
 #staload "./../SATS/fperr20.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-(*
-#define FPERR20_ERRLVL 2
-*)
-(* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
@@ -88,7 +84,7 @@ ATS_PACKNAME
 local
 //
 (* ****** ****** *)
-#define ERRLVL 2
+#define ERRLVL 3
 (* ****** ****** *)
 //
 fun
@@ -100,12 +96,14 @@ let
 #impltmp
 g_print$out<>() = out
 //
+(*
 val () =
 (
 prerrs
 ("fperr20_d2pat:");
 prerrsln
 ("auxmain: d2p = ", d2p))
+*)
 //
 in//let
 //
@@ -265,7 +263,7 @@ D2LAB(lab,d2p1) => fperr20_d2pat(out,d2p1)
 local
 //
 (* ****** ****** *)
-#define ERRLVL 3
+#define ERRLVL 4
 (* ****** ****** *)
 //
 fun

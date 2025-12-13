@@ -61,9 +61,6 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/fperr30.sats"
 (* ****** ****** *)
-(*
-#define FPERR30_ERRLVL 2
-*)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -89,7 +86,7 @@ local
 //
 (* ****** ****** *)
 //
-#define ERRLVL 2
+#define ERRLVL 3
 //
 (* ****** ****** *)
 //
@@ -233,7 +230,7 @@ D3LAB(lab,d3p1) => fperr30_d3pat(out,d3p1)
 local
 
 (* ****** ****** *)
-#define ERRLVL 3
+#define ERRLVL 4
 (* ****** ****** *)
 //
 fun
