@@ -606,6 +606,46 @@ end//let//end-of-[list_make_t0up6(xs)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-13:
+Sat Dec 13 10:31:30 PM EST 2025
+*)
+#impltmp
+< a:t0 >
+list_list$concat
+  (   xss   ) =
+list_vt2t(
+list_list$concat_vt<a>(xss))
+//
+#impltmp
+< a:t0 >
+list_list$concat_vt
+  (   xss   ) =
+(
+  loop(xss, res)) where
+{
+//
+val res = list_vt_nil(*0*)
+//
+fun
+loop
+( xss
+: list(list(a))
+, res: list_vt(a)): list_vt(a) =
+(
+case+ xss of
+|
+list_nil() =>
+list_vt_reverse0(res)
+|
+list_cons(xs1, xss) =>
+loop(xss, list_rappendx0_vt(xs1, res)))
+//
+}(*where*)//end-of-[list$list_concat_vt(xss)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_list000.dats] *)
 (***********************************************************************)
