@@ -227,15 +227,15 @@ and ys =
 GSEQ_unmk<ys><y0>(ys)
 //
 in//let
-strm_vt_concat0<xy>
+//
+strm_vt_lstrm$concat0<xy>
 (
-gseq_map$f1un_lstrm
-<xs><x0><strm_vt(xy)>
+gseq_map$f1un_lstrm<xs><x0><strm_vt(xy)>
 (
 xs,
 lam(x0) =>
-gseq_map$f1un_lstrm<ys><y0><xy>(ys,lam(y0)=>(x0,y0)))
-)
+gseq_map$f1un_lstrm<ys><y0><xy>(ys,lam(y0)=>(x0,y0))))
+//
 end//let//end-of-[gseq_strmize<gx2seq(...)><...>(xsys)]
 //
 (* ****** ****** *)

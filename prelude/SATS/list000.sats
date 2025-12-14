@@ -351,6 +351,24 @@ list_make_t0up6
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-13:
+Sat Dec 13 10:14:26 PM EST 2025
+*)
+//
+fun
+<a:t0>
+list_list$concat(list(list(a))): list(a)
+fun
+<a:t0>
+list_list$concat_vt(list(list(a))): list_vt(a)
+//
+#symload concat with list_list$concat of 1000
+#symload concat_vt with list_list$concat_vt of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_list000.sats] *)
 (***********************************************************************)

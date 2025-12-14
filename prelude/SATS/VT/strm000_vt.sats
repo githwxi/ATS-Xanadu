@@ -121,16 +121,6 @@ strq_vt_length0
 //
 fun
 <x0:vt>
-strm_vt_concat0
-( xss
-: ~strm_vt
- ( strm_vt(x0) )): strm_vt(x0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
 strm_vt_append0
 ( xs: strm_vt(x0)
 , ys: strm_vt(x0)): strm_vt(x0)
@@ -229,6 +219,21 @@ list_make0_lstrq
 //
 #symload list with list_make0_lstrm of 1000
 #symload list with list_make0_lstrq of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-13:
+concat0 -> lstrm$concat0
+Sat Dec 13 11:42:48 PM EST 2025
+*)
+//
+fun
+<x0:vt>
+strm_vt_lstrm$concat0
+( xss
+: ~strm_vt(strm_vt(x0))): strm_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

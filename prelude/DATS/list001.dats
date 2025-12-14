@@ -477,7 +477,7 @@ Wed 31 Jul 2024 10:34:56 AM EDT
 //
 #impltmp
 < x0:t0 >
-list_c2hoose_lstrm
+list_2choose_lstrm
   ( xs ) =
 (
   auxmain(xs)) where
@@ -508,40 +508,40 @@ gseq_map_lstrm<xs><x0><y0>(xs)
 #impltmp
 map$fopr<x0><y0>(x2) = @(x1, x2) } }//whr
 )(*case+*)
-}(*where*)//end-of-[list_c2hoose_lstrm(xs)]
+}(*where*)//end-of-[list_2choose_lstrm(xs)]
 //
 #impltmp
 < x0:t0 >
-list_c2hoose$forall
+list_2choose$forall
   ( xs ) =
 (
 strm_vt_forall0<x2>
-(list_c2hoose_lstrm<x0>(xs))
+(list_2choose_lstrm<x0>(xs))
 ) where
 {
 #typedef x2 = @(x0, x0)
 #impltmp
 forall$test0<x2>(x2) =
 c2hoose$forall$test<x0>(x2.0, x2.1)
-}(*where*)//end-of-[list_c2hoose$forall(xs)]
+}(*where*)//end-of-[list_2choose$forall(xs)]
 //
 #impltmp
 < x0:t0 >
-list_c2hoose$forall$f2un
+list_2choose$forall$f2un
   (xs, test) =
 (
-list_c2hoose$forall<x0>(xs)
+list_2choose$forall<x0>(xs)
 ) where
 {
 #impltmp
 c2hoose$forall$test<x0>(x1, x2) = test(x1, x2)
-}(*where*)//end-of-[list_c2hoose$forall$f2un(...)]
+}(*where*)//end-of-[list_2choose$forall$f2un(...)]
 //
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
-list_c3hoose_lstrm
+list_3choose_lstrm
   ( xs ) =
 (
   auxmain(xs)) where
@@ -568,7 +568,7 @@ strm_vt_append00
 val r1 =
 (
 strm_vt_map0<xx><y0>
-(list_c2hoose_lstrm<x0>(xs))
+(list_2choose_lstrm<x0>(xs))
 ) where
 {
 #impltmp
@@ -576,34 +576,34 @@ map$fopr
 <xx><y0>(xx) = @(x1, xx.0, xx.1) } }//whr
 //
 )(*case+*)
-}(*where*)//end-of-[list_c3hoose_lstrm(xs)]
+}(*where*)//end-of-[list_3choose_lstrm(xs)]
 //
 #impltmp
 < x0:t0 >
-list_c3hoose$forall
+list_3choose$forall
   ( xs ) =
 (
 strm_vt_forall0<x3>
-(list_c3hoose_lstrm<x0>(xs))
+(list_3choose_lstrm<x0>(xs))
 ) where
 {
 #typedef x3 = @(x0, x0, x0)
 #impltmp
 forall$test0<x3>(x3) =
 c3hoose$forall$test<x0>(x3.0, x3.1, x3.2)
-}(*where*)//end-of-[list_c3hoose$forall(xs)]
+}(*where*)//end-of-[list_3choose$forall(xs)]
 //
 #impltmp
 < x0:t0 >
-list_c3hoose$forall$f3un
+list_3choose$forall$f3un
   (xs, test) =
 (
-list_c3hoose$forall<x0>(xs)
+list_3choose$forall<x0>(xs)
 ) where
 {
 #impltmp
 c3hoose$forall$test<x0>(x1, x2, x3) = test(x1, x2, x3)
-}(*where*)//end-of-[list_c3hoose$forall$f3un(...)]
+}(*where*)//end-of-[list_3choose$forall$f3un(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -807,6 +807,23 @@ gseq_rfolditm$f2un<list(x0)><x0><r0>(*void*)
 < r0:vt >
 list_irfolditm$f3un =
 gseq_irfolditm$f3un<list(x0)><x0><r0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-14:
+Sun Dec 14 10:39:18 AM EST 2025
+*)
+//
+#impltmp
+< x0:t0 >
+list_filter(xs) =
+list_vt2t(list_filter_vt<x0>(xs))
+#impltmp
+< x0:t0 >
+list_filter$f1un(xs, test) =
+list_vt2t(list_filter$f1un_vt<x0>(xs, test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
