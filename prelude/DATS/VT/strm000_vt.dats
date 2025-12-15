@@ -71,9 +71,41 @@ $llazy
 //
 #impltmp
 < a: vt >
+strm_vt_sing(x0) =
+(
+strm_vt_cons(x0, xs))
+where
+{
+val xs = strm_vt_nil() }
+//
+#impltmp
+< a: vt >
 strm_vt_cons(x0, xs) =
 $llazy
 (strmcon_vt_cons(x0, xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strq_vt_nil() =
+$llazy
+(strqcon_vt_nil(*void*))
+//
+#impltmp
+< a: vt >
+strq_vt_sing(x0) =
+(
+strq_vt_cons(x0, xs))
+where
+{
+val xs = strq_vt_nil() }
+//
+#impltmp
+< a: vt >
+strq_vt_cons(x0, xs) =
+$llazy
+(strqcon_vt_cons(x0, xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -82,6 +114,10 @@ $llazy
 { x0:vt }
 g_free//~xs
 <strm_vt(x0)>(xs) = $free(xs)
+#impltmp
+{ x0:vt }
+g_free//~xs
+<strq_vt(x0)>(xs) = $free(xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
