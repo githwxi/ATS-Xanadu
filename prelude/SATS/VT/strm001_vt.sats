@@ -230,8 +230,8 @@ fun
 <x0:vt>
 <y0:vt>
 strq_vt_map0
-{n0:i0}
-(xs: strq_vt(x0,n0)): strq_vt(y0,n0)
+{ln:i0}
+(xs: strq_vt(x0,ln)): strq_vt(y0,ln)
 //
 (* ****** ****** *)
 //
@@ -244,13 +244,57 @@ fun
 <x0:vt>
 <y0:vt>
 strq_vt_imap0
-{n0:i0}
-(xs: strq_vt(x0,n0)): strq_vt(y0,n0)
+{ln:i0}
+(xs: strq_vt(x0,ln)): strq_vt(y0,ln)
 //
 #symload map0 with strm_vt_map0 of 1000
 #symload map0 with strq_vt_map0 of 1000
 #symload imap0 with strm_vt_imap0 of 1000
 #symload imap0 with strq_vt_imap0 of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+strm_vt_map0$f1un
+( xs: strm_vt(x0)
+, fopr: (x0) -> (y0)): strm_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+strq_vt_map0$f1un
+{ln:i0}
+( xs: strq_vt(x0,ln)
+, fopr: (x0) -> (y0)): strq_vt(y0,ln)
+//
+fun
+<x0:vt>
+<y0:vt>
+strm_vt_imap0$f1un
+( xs: strm_vt(x0)
+, fopr: (ni, x0) -> (y0)): strm_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+strq_vt_imap0$f1un
+{ln:i0}
+( xs: strq_vt(x0,ln)
+, fopr: (ni, x0) -> (y0)): strq_vt(y0,ln)
+//
+#symload map0 with strm_vt_map0$f1un of 1000
+#symload map0 with strq_vt_map0$f1un of 1000
+#symload map0$fun with strm_vt_map0$f1un of 1000
+#symload map0$fun with strq_vt_map0$f1un of 1000
+#symload strm_vt_map0 with strm_vt_map0$f1un of 1000
+#symload strm_vt_map0 with strq_vt_map0$f1un of 1000
+//
+#symload imap0 with strm_vt_imap0$f1un of 1000
+#symload imap0 with strq_vt_imap0$f1un of 1000
+#symload imap0$fun with strm_vt_imap0$f1un of 1000
+#symload imap0$fun with strq_vt_imap0$f1un of 1000
+#symload strm_vt_imap0 with strm_vt_imap0$f1un of 1000
+#symload strm_vt_imap0 with strq_vt_imap0$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -262,8 +306,8 @@ strm_vt_filter0
 fun
 <x0:vt>
 strq_vt_filter0
-{n0:i0}
-(xs: strq_vt(x0,n0)): strqlte_vt(x0,n0)
+{ln:i0}
+(xs: strq_vt(x0,ln)): strqlte_vt(x0,ln)
 //
 fun
 <x0:vt>
@@ -272,8 +316,8 @@ strm_vt_ifilter0
 fun
 <x0:vt>
 strq_vt_ifilter0
-{n0:i0}
-(xs: strq_vt(x0,n0)): strqlte_vt(x0,n0)
+{ln:i0}
+(xs: strq_vt(x0,ln)): strqlte_vt(x0,ln)
 //
 #symload filter0 with strm_vt_filter0 of 1000
 #symload filter0 with strq_vt_filter0 of 1000

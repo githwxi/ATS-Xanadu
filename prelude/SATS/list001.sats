@@ -513,6 +513,21 @@ list_filter$f1un_vt
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-14:
+Sun Dec 14 11:11:41 AM EST 2025
+*)
+//
+fun
+<x0:t0>
+list_1choose$split_lstrm
+{ln:i0}
+(xs: list(x0, n0)): strm_vt@(x0, list_vt(x0, ln-1))
+#symload c1hoose$split_lstrm with list_1choose$split_lstrm
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_list001.sats] *)
 (***********************************************************************)

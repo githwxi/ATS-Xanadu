@@ -299,8 +299,26 @@ fun
 <ys:vt>
 gseq_rappend(xs: xs, ys: ~ys): xs
 //
+(*
 #symload rappend with gseq_rappend of 0100
+*)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-14:
+Sun Dec 14 05:12:02 PM EST 2025
+*)
+fun
+<xz:t0>
+<xs:t0>
+<x0:t0>
+gseq_concat_lstrm(xz: xz): strm_vt(x0)
+//
+(*
+#symload concat with gseq_concat_lstrm of 0100
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //

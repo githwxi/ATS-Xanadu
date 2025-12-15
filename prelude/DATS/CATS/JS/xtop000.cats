@@ -56,6 +56,13 @@ XATS2JS_the_prerr_store = [] // HX: for reporting errors
 ////////////////////////////////////////////////////////////////////////.
 //
 function
+XATS2JS_the_print_store_clear
+  ( /*void*/ )
+{
+  XATS2JS_the_print_store.length = 0; return
+}
+//
+function
 XATS2JS_the_print_store_flush
   ( /*void*/ )
 {
