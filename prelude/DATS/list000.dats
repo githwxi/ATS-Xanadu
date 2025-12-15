@@ -646,6 +646,28 @@ loop(xss, list_rappendx0_vt(xs1, res)))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-15:
+Mon Dec 15 04:37:34 PM EST 2025
+*)
+//
+#impltmp
+< a:t0 >
+list_make0_lstrm(xs) =
+(
+list_vt2t(list_vt_make0_lstrm<a>(xs)))
+//end-of-[impltmp<a:t0>(list_make0_lstrm(xs))]
+//
+#impltmp
+< a:t0 >
+list_make0_lstrq(xs) =
+(
+list_vt2t(list_vt_make0_lstrq<a>(xs)))
+//end-of-[impltmp<a:t0>(list_make0_lstrq(xs))]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_list000.dats] *)
 (***********************************************************************)

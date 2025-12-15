@@ -279,8 +279,14 @@ Sun Dec 14 05:20:43 PM EST 2025
 < xz:t0 >
 < xs:t0 >
 < x0:t0 >
-gseq_concat_lstrm =
-gseq_concat_lstrm<xz><xs><x0>(*void*)
+gseq_concat_lstrm
+  (   xz   ) =
+let
+#vwtpdef ys = strm_vt(x0)
+in//let
+strm_vt_lstrm$concat0<x0>(
+gseq_map$f1un_lstrm<xz><xs><ys>(xz, gseq_strmize<xs><x0>))
+end(*let*)//end-of-[gseq_concat(xz)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -138,10 +138,10 @@ list_make_ncpy
 (n0: sint(n), x0: a): list(a, n)
 (*
 #symload
-list with list_make_ncpy of 1000
+list with list_make_ncpy//1000
 *)
 #symload
-list_ncpy with list_make_ncpy//of 1000
+list_ncpy with list_make_ncpy//1000
 //
 fun
 <a:t0>
@@ -151,9 +151,9 @@ list_make_nfun
 ,f0: nintlt(n)->(a)): list(a, n)
 //
 #symload
-list with list_make_nfun//of 1000
+list with list_make_nfun//1000
 #symload
-list_nfun with list_make_nfun//of 1000
+list_nfun with list_make_nfun//1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -365,6 +365,29 @@ list_list$concat_vt(list(list(a))): list_vt(a)
 //
 #symload concat with list_list$concat of 1000
 #symload concat_vt with list_list$concat_vt of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-15:
+Mon Dec 15 02:13:09 PM EST 2025
+*)
+//
+fun
+<a:t0>
+list_make0_lstrm
+(xs: strm_vt(a)): list(a)
+fun
+<a:t0>
+list_make0_lstrq
+{n:i0}
+(xs: strq_vt(a, n)): list(a, n)
+//
+#symload list with list_make0_lstrm of 1000
+#symload list with list_make0_lstrq of 1000
+#symload list_lstrm with list_make0_lstrm of 1000
+#symload list_lstrq with list_make0_lstrq of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

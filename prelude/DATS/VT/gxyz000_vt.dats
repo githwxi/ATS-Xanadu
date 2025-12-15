@@ -64,6 +64,46 @@ g_print1<x0> = g_print<x0>
 (* ****** ****** *)
 //
 (*
+HX-2024-08-05:
+Mon 05 Aug 2024 05:49:43 PM EDT
+*)
+//
+(*
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_strmize0(xs) =
+(
+  gseq_strmize<xs><x0>(xs))
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_strmize1(xs) =
+(
+  gseq_strmize<xs><x0>(xs))
+*)
+//
+(* ****** ****** *)
+//
+(*
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_rstrmize0(xs) =
+(
+  gseq_rstrmize<xs><x0>(xs))
+#impltmp
+< xs: t0 >
+< x0: t0 >
+gseq_rstrmize1(xs) =
+(
+  gseq_rstrmize<xs><x0>(xs))
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-07-29:
 Sat 03 Aug 2024 05:17:37 PM EDT
 *)
@@ -591,38 +631,6 @@ gseq_irfolditm1$f3un
   (xs, r0, fopr) =
 (
 gseq_irfolditm$f3un<xs><x0><r0>(xs, r0, fopr))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-08-05:
-Mon 05 Aug 2024 05:49:43 PM EDT
-*)
-//
-(*
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_strmize0 = gseq_strmize<xs><x0>
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_strmize1 = gseq_strmize<xs><x0>
-*)
-//
-(* ****** ****** *)
-//
-(*
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_rstrmize0 = gseq_rstrmize<xs><x0>
-#impltmp
-< xs: t0 >
-< x0: t0 >
-gseq_rstrmize1 = gseq_rstrmize<xs><x0>
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

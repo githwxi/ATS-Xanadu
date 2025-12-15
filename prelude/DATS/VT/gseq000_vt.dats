@@ -823,7 +823,8 @@ Sun Dec 14 05:20:43 PM EST 2025
 < xz:vt >
 < xs:vt >
 < x0:vt >
-gseq_concat0(xz) =
+gseq_concat0_lstrm
+  (   xz   ) =
 let
 #vwtpdef ys = strm_vt(x0)
 in//let
