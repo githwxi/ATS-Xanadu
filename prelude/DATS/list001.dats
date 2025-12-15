@@ -881,8 +881,8 @@ Sun Dec 14 05:49:39 PM EST 2025
 #impltmp
 < x0:t0 >
 list_1choose$split_lstrm
-  (  xs  ) = $llazy
-(
+  (  xs  ) =
+$llazy(
 //
 case+ xs of
 |
@@ -942,8 +942,9 @@ auxmain
 (x1: x0
 ,xs: list(x0)
 ,ys: list_vt(x0))
-: strm_vt@(x0, list_vt(x0)) = $llazy
-(
+: strm_vt@(x0, list_vt(x0)) =
+$llazy(
+//
 case+ xs of
 |
 list_nil() =>
@@ -959,6 +960,7 @@ where{
   val rs = 
   list_vt_rappend10(ys, list_reverse_vt(xs)) }
 )(*case+*)//end-of-[auxmain(x1, xs, ys)]
+//
 }(*where*)//end-of-[list_1choose$split_lstrm<x0>]
 //
 (* ****** ****** *)

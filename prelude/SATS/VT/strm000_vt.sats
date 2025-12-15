@@ -47,6 +47,15 @@ strq_vt_nil
 //
 fun
 <a:vt>
+strm_vt_sing
+( x0: (a) ): strm_vt(a)
+fun
+<a:vt>
+strq_vt_sing
+( x0: (a) ): strq_vt(a, 1)
+//
+fun
+<a:vt>
 strm_vt_cons
 (
 x0: (a),
