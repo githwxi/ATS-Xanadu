@@ -548,6 +548,23 @@ end(*let*)//end-of-[list_vt_mergesort0(xs)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-15:
+Mon Dec 15 04:37:34 PM EST 2025
+*)
+//
+#impltmp
+< a:vt >
+list_make0_lstrm = strm_vt_listize0<a>
+//end-of-[impltmp<a:t0>(list_vt_make0_lstrm(xs))]
+#impltmp
+< a:vt >
+list_make0_lstrq = strq_vt_listize0<a>
+//end-of-[impltmp<a:t0>(list_vt_make0_lstrq(xs))]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_list000_vt.dats] *)
 (***********************************************************************)

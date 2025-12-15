@@ -216,22 +216,6 @@ g_make0_lstrq(xs: strq_vt(x0)): (ys)
 //
 (* ****** ****** *)
 //
-fun
-<x0:t0>
-list_make0_lstrm
-(xs: strm_vt(x0)): list(x0)
-fun
-<x0:t0>
-list_make0_lstrq
-{n0:i0}
-(xs: strq_vt(x0, n0)): list(x0, n0)
-//
-#symload list with list_make0_lstrm of 1000
-#symload list with list_make0_lstrq of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (*
 HX-2025-12-13:
 concat0 -> lstrm$concat0
@@ -243,6 +227,47 @@ fun
 strm_vt_lstrm$concat0
 ( xss
 : ~strm_vt(strm_vt(x0))): strm_vt(x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-15:
+These one are in
+[prelude/list000.sats]!
+Mon Dec 15 04:42:34 PM EST 2025
+fun
+<x0:t0>
+list_make0_lstrm
+(xs: strm_vt(x0)): list(x0)
+fun
+<x0:t0>
+list_make0_lstrq
+{ln:i0}
+(xs: strq_vt(x0, ln)): list(x0, ln)
+//
+#symload list with list_make0_lstrm of 1000
+#symload list with list_make0_lstrq of 1000
+*)
+//
+(*
+HX-2025-12-15:
+These ones are in
+[prelude/list000_vt.sats]!
+Mon Dec 15 04:42:34 PM EST 2025
+fun
+<x0:vt>
+list_vt_make0_lstrm
+(xs: strm_vt(x0)): list_vt(x0)
+fun
+<x0:vt>
+list_vt_make0_lstrq
+{ln:i0}
+(xs: strq_vt(x0, ln)): list_vt(x0, ln)
+//
+#symload list_vt with list_vt_make0_lstrm of 1000
+#symload list_vt with list_vt_make0_lstrq of 1000
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
