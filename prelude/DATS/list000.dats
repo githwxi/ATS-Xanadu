@@ -641,7 +641,7 @@ list_vt_reverse0(res)
 list_cons(xs1, xss) =>
 loop(xss, list_rappendx0_vt(xs1, res)))
 //
-}(*where*)//end-of-[list$list_concat_vt(xss)]
+}(*where*)//end-of-[list_list$concat_vt(xss)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

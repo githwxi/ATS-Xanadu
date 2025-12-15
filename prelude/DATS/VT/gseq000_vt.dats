@@ -815,6 +815,25 @@ val xs = gseq_rstrmize1<xs><x0>(xs)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-14:
+Sun Dec 14 05:20:43 PM EST 2025
+*)
+#impltmp
+< xz:vt >
+< xs:vt >
+< x0:vt >
+gseq_concat0(xz) =
+let
+#vwtpdef ys = strm_vt(x0)
+in//let
+strm_vt_lstrm$concat0<x0>(
+gseq_map0$f1un_lstrm<xz><xs><ys>(xz, gseq_strmize0<xs><x0>))
+end(*let*)//end-of-[gseq_concat0(xz)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_gseq000_vt.dats] *)
 (***********************************************************************)

@@ -818,12 +818,148 @@ Sun Dec 14 10:39:18 AM EST 2025
 //
 #impltmp
 < x0:t0 >
-list_filter(xs) =
+list_filter
+  (  xs  ) =
 list_vt2t(list_filter_vt<x0>(xs))
 #impltmp
 < x0:t0 >
-list_filter$f1un(xs, test) =
+list_filter$f1un
+  (xs, test) =
 list_vt2t(list_filter$f1un_vt<x0>(xs, test))
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_filter_vt
+  (  xs  ) =
+(
+  loop(xs, rs)) where
+{
+//
+val rs = list_vt_nil(*0*)
+//
+fun
+loop
+( xs: list(x0)
+, rs: list_vt(x0)): list_vt(x0) =
+(
+case+ xs of
+//
+|list_nil
+( (*00*) ) =>
+list_vt_reverse0<x0>(rs)
+//
+|list_cons
+( x1, xs ) =>
+if
+filter$test<x0>(x1)
+then loop(xs, list_vt_cons(x1, rs))
+else loop(xs, rs))//end(else)//end(if)
+//
+}(*where*)//end-of-[list_filter_vt(xs)]
+//
+#impltmp
+< x0:t0 >
+list_filter$f1un_vt
+  (xs, test) =
+(
+  list_filter_vt<x0>(xs))
+where
+{
+#impltmp filter$test<x0> = test(*void*)
+}(*where*)//end-of-[list_filter$f1un_vt(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-14:
+This code is VERY inefficient!
+Sun Dec 14 05:49:39 PM EST 2025
+*)
+#impltmp
+< x0:t0 >
+list_1choose$split_lstrm
+  (  xs  ) = $llazy
+(
+//
+case+ xs of
+|
+list_nil
+((*void*)) =>
+(
+strmcon_vt_nil(*void*))
+|
+list_cons
+( x1, xs ) =>
+let
+//
+#vwtpdef
+xxs = (x0, list_vt(x0))
+//
+in//let
+//
+strmcon_vt_cons
+(
+(x1, list_copy_vt(xs)),
+strm_vt_map0$f1un<xxs><xxs>
+(
+list_1choose$split_lstrm(xs),
+lam(xxs) => (xxs.0, list_vt_cons(x1, xxs.1))))
+//
+end(*let*)//end-of-[list_cons(x1,xs)]
+//
+)(*case+*)//end-of-[list_1choose$split_lstrm<x0>]
+//
+(* ****** ****** *)
+//
+(*
+HX-2025-12-14:
+Compared to the above one,
+this one is more efficient!
+Sun Dec 14 08:17:41 PM EST 2025
+*)
+#impltmp
+< x0:t0 >
+list_1choose$split_lstrm
+  (  xs  ) =
+(
+case+ xs of
+|list_nil() =>
+(
+  strm_vt_nil())
+|list_cons(x1, xs) =>
+(
+  auxmain(x1, xs, ys))
+) where
+{
+//
+val ys = list_vt_nil(*void*)
+//
+fun
+auxmain
+(x1: x0
+,xs: list(x0)
+,ys: list_vt(x0))
+: strm_vt@(x0, list_vt(x0)) = $llazy
+(
+case+ xs of
+|
+list_nil() =>
+strmcon_vt_cons
+((x1, rs), strm_vt_nil())
+where{
+  val rs = list_vt_reverse0(ys) }
+|
+list_cons _ =>
+strmcon_vt_cons((x1, rs),
+  auxmain(xs.0, xs.1, list_vt_cons(x1, ys)))
+where{
+  val rs = 
+  list_vt_rappend10(ys, list_reverse_vt(xs)) }
+)(*case+*)//end-of-[auxmain(x1, xs, ys)]
+}(*where*)//end-of-[list_1choose$split_lstrm<x0>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
