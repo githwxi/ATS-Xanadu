@@ -68,7 +68,6 @@ HX-2024-08-05:
 Mon 05 Aug 2024 05:49:43 PM EDT
 *)
 //
-(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -81,11 +80,9 @@ gseq_strmize0(xs) =
 gseq_strmize1(xs) =
 (
   gseq_strmize<xs><x0>(xs))
-*)
 //
 (* ****** ****** *)
 //
-(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -93,12 +90,11 @@ gseq_rstrmize0(xs) =
 (
   gseq_rstrmize<xs><x0>(xs))
 #impltmp
-< xs: t0 >
-< x0: t0 >
+< xs:t0 >
+< x0:t0 >
 gseq_rstrmize1(xs) =
 (
   gseq_rstrmize<xs><x0>(xs))
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -671,6 +667,60 @@ gasz_iforall1 = gasz_iforall<xs><x0>
 < xs:t0 >
 < x0:vt >
 gasz_irforall1 = gasz_irforall<xs><x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-15:
+Mon Dec 15 05:52:57 PM EST 2025
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_map0_lstrm(xs) =
+(
+gseq_map_lstrm<xs><x0><y0>(xs))
+where
+{
+#impltmp
+map$fopr<x0><y0> = map$fopr1<x0><y0>
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_map1_lstrm(xs) =
+(
+gseq_map_lstrm<xs><x0><y0>(xs))
+where
+{
+#impltmp
+map$fopr<x0><y0> = map$fopr1<x0><y0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_map0$f1un_lstrm
+  (xs, fopr) =
+(
+ gseq_map$f1un_lstrm<xs><x0><y0>(xs, fopr))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_map1$f1un_lstrm
+  (xs, fopr) =
+(
+ gseq_map$f1un_lstrm<xs><x0><y0>(xs, fopr))
 //
 (* ****** ****** *)
 (* ****** ****** *)

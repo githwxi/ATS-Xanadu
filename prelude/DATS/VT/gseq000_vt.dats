@@ -830,7 +830,7 @@ let
 in//let
 strm_vt_lstrm$concat0<x0>(
 gseq_map0$f1un_lstrm<xz><xs><ys>(xz, gseq_strmize0<xs><x0>))
-end(*let*)//end-of-[gseq_concat0(xz)]
+end(*let*)//end-of-[gseq_concat0_lstrm(xz)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

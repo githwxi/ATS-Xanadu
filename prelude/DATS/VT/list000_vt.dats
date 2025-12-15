@@ -555,11 +555,11 @@ Mon Dec 15 04:37:34 PM EST 2025
 //
 #impltmp
 < a:vt >
-list_make0_lstrm = strm_vt_listize0<a>
+list_vt_make0_lstrm = strm_vt_listize0<a>
 //end-of-[impltmp<a:t0>(list_vt_make0_lstrm(xs))]
 #impltmp
 < a:vt >
-list_make0_lstrq = strq_vt_listize0<a>
+list_vt_make0_lstrq = strq_vt_listize0<a>
 //end-of-[impltmp<a:t0>(list_vt_make0_lstrq(xs))]
 //
 (* ****** ****** *)
