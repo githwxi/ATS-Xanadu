@@ -149,24 +149,6 @@ length1 with list_vt_length1 of 1000
 //
 fun
 <x0:vt>
-list_vt_make0_lstrm
-(xs: strm_vt(x0)): list_vt(x0)
-fun
-<x0:vt>
-list_vt_make0_lstrq
-{n0:i0}
-(xs: strq_vt(x0,n0)): list_vt(x0,n0)
-//
-#symload
-list_vt_make0 with list_vt_make0_lstrm
-#symload
-list_vt_make0 with list_vt_make0_lstrq
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
 list_vt_free
  {n0:i0}
 (xs: ~list_vt(x0,n0)): void
@@ -299,6 +281,44 @@ list_vt_mergesort0
 //
 #symload
 mergesort0 with list_vt_mergesort0 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-15:
+Mon Dec 15 09:27:02 PM EST 2025
+*)
+//
+fun
+<x0:vt>
+list_vt_make0_lstrm
+(xs: strm_vt(x0)): list_vt(x0)
+fun
+<x0:vt>
+list_vt_make0_lstrq
+{n0:i0}
+(xs: strq_vt(x0,n0)): list_vt(x0,n0)
+//
+#symload
+list_vt_make0 with list_vt_make0_lstrm
+#symload
+list_vt_make0 with list_vt_make0_lstrq
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-15:
+Mon Dec 15 09:30:34 PM EST 2025
+*)
+//
+fun
+<x0:vt>
+list_vt_llist$concat0
+(xz: list_vt(list_vt(x0))): list_vt(x0)
+//
+#symload concat0 with list_vt_llist$concat0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

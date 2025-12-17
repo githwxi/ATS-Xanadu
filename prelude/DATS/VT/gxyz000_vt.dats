@@ -324,6 +324,7 @@ gseq_foritm1$f1un
   gseq_foritm$f1un<xs><x0>(xs, work))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
@@ -349,6 +350,8 @@ where
 rforitm$work<x0> = rforitm$work1<x0>
 }
 //
+(* ****** ****** *)
+//
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -364,6 +367,7 @@ gseq_rforitm1$f1un
 (
   gseq_rforitm$f1un<xs><x0>(xs, work))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -389,6 +393,8 @@ where
 #impltmp
 iforitm$work<x0> = iforitm$work1<x0>
 }
+//
+(* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
@@ -431,6 +437,8 @@ where
 #impltmp
 irforitm$work<x0> = irforitm$work1<x0>
 }
+//
+(* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
@@ -682,11 +690,11 @@ Mon Dec 15 05:52:57 PM EST 2025
 < y0:vt >
 gseq_map0_lstrm(xs) =
 (
-gseq_map_lstrm<xs><x0><y0>(xs))
+ gseq_map_lstrm<xs><x0><y0>(xs))
 where
 {
 #impltmp
-map$fopr<x0><y0> = map$fopr1<x0><y0>
+map$fopr<x0><y0> = map$fopr0<x0><y0>
 }
 //
 #impltmp
@@ -695,7 +703,7 @@ map$fopr<x0><y0> = map$fopr1<x0><y0>
 < y0:vt >
 gseq_map1_lstrm(xs) =
 (
-gseq_map_lstrm<xs><x0><y0>(xs))
+ gseq_map_lstrm<xs><x0><y0>(xs))
 where
 {
 #impltmp
@@ -721,6 +729,60 @@ gseq_map1$f1un_lstrm
   (xs, fopr) =
 (
  gseq_map$f1un_lstrm<xs><x0><y0>(xs, fopr))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-15:
+Mon Dec 15 06:39:59 PM EST 2025
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_filter0_lstrm(xs) =
+(
+ gseq_filter_lstrm<xs><x0>(xs))
+where
+{
+(*
+HX-2025-12-16:
+[test1] should be used here!
+*)
+#impltmp
+filter$test<x0> = filter$test1<x0>
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_filter1_lstrm(xs) =
+(
+ gseq_filter_lstrm<xs><x0>(xs))
+where
+{
+#impltmp
+filter$test<x0> = filter$test1<x0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_filter0$f1un_lstrm
+  (xs, test) =
+(
+ gseq_filter$f1un_lstrm<xs><x0>(xs, test))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_filter1$f1un_lstrm
+  (xs, test) =
+(
+ gseq_filter$f1un_lstrm<xs><x0>(xs, test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
