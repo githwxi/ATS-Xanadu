@@ -438,7 +438,6 @@ HX-2025-09-04:
 Thu Sep  4 12:19:19 AM EDT 2025
 *)
 //
-//
 #impltmp
 < a: vt >
 list_vt_mergesort0
@@ -547,6 +546,39 @@ end(*let*)//end-of-[list_vt_mergesort0(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2025-12-15:
+Mon Dec 15 09:47:13 PM EST 2025
+*)
+//
+#impltmp
+< x0:vt >
+list_vt_llist$concat0
+  (   xz   ) =
+list_vt_reverse0
+<      x0      >
+(
+list_vt_folditm0
+<xs><r0>(xz, r0)) where
+{
+//
+#vwtpdef xs = list_vt(x0)
+#vwtpdef r0 = list_vt(x0)
+//
+val r0 = (list_vt_nil(): r0)
+//
+#impltmp
+folditm$fopr0
+<xs><r0>(r0, xs) =
+(
+  list_vt_rappend00<x0>(xs, r0))
+//
+}(*where*)//end-of-[list_vt_llist$concat0(xz)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 //
 (*
 HX-2025-12-15:
