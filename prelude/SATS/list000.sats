@@ -62,6 +62,7 @@ list_consq
 //
 #symload
 nilq with list_nilq of 1000
+consq with list_consq of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -177,6 +178,16 @@ This is just [list_listize]!
 fun
 <a:t0>
 list_copy_vt
+{n:i0}
+(xs: list(a, n)): list_vt(a, n)
+//
+(*
+HX-2025-12-17:
+This is just [list_rlistize]!
+*)
+fun
+<a:t0>
+list_rcopy_vt
 {n:i0}
 (xs: list(a, n)): list_vt(a, n)
 //

@@ -64,6 +64,27 @@ g_ptype<vt>((*0*)); pstrn(")"))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+list_vt_nilq1
+  ( xs ) =
+(
+case+ xs of
+|list_vt_nil() => true
+|list_vt_cons _ => false)
+//
+#impltmp
+<(*tmp*)>
+list_vt_consq1
+  ( xs ) =
+(
+case+ xs of
+|list_vt_nil() => false
+|list_vt_cons _ => (true))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-09-14:
 Sat 14 Sep 2024 11:40:03 AM EDT
@@ -71,18 +92,18 @@ Sat 14 Sep 2024 11:40:03 AM EDT
 //
 #impltmp
 < a: vt >
-list_vt_make_1val
+list_vt_make0_1val
   ( x1 ) =
 list_vt_cons(x1, list_vt_nil)
 #impltmp
 < a: vt >
-list_vt_make_2val
+list_vt_make0_2val
   (x1, x2) =
 list_vt_cons(x1,
 list_vt_cons(x2, list_vt_nil))
 #impltmp
 < a: vt >
-list_vt_make_3val
+list_vt_make0_3val
   (x1, x2, x3) =
 list_vt_cons(x1,
 list_vt_cons(x2,
