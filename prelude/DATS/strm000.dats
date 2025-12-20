@@ -43,6 +43,7 @@ HX:
 This one is also
 implemented in [gdbg000.dats]:
 *)
+//
 #impltmp
 { t0:t0 }
 g_ptcon
@@ -58,6 +59,58 @@ g_ptype
 (
 pstrn("strm(");
 g_ptype<t0>((*0*)); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-20:
+Sat Dec 20 11:36:58 AM EST 2025
+*)
+#impltmp
+<(*tmp*)>
+strm_nil((*0*)) =
+$lazy(strmcon_nil(*void*))
+//
+#impltmp
+< a: t0 >
+strm_sing(x0) =
+(
+strm_cons(x0, strm_nil()))
+//
+#impltmp
+< a: t0 >
+strm_cons(x0, xs) =
+$lazy(strmcon_cons(x0, xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-20:
+Sat Dec 20 11:43:16 AM EST 2025
+*)
+//
+#impltmp
+{ x0:t0 }
+gseq_sep<strm(x0)><x0>() = ","
+#impltmp
+{ x0:t0 }
+gseq_end<strm(x0)><x0>() = ")"
+#impltmp
+{ x0:t0 }
+gseq_beg<strm(x0)><x0>() = "strm("
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+g_print0
+<strm(x0)>(xs) =
+(
+gseq_print
+<strm(x0)><x0>(xs))
+//end-[g_print<strm>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
