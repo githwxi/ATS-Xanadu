@@ -79,6 +79,36 @@ xs: strq(a, n)): strq(a, n+1)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-20:
+Sat Dec 20 12:27:24 PM EST 2025
+*)
+fun
+<x0:t0>
+strm_head
+(xs: strm(x0)): (x0)
+fun
+<x0:t0>
+strm_tail
+(xs: strm(x0)): strm(x0)
+//
+#symload head with strm_head
+#symload tail with strm_tail
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+strm_head$opt
+(xs: strm(x0)): optn_vt(x0)
+fun
+<x0:t0>
+strm_tail$opt
+(xs: strm(x0)): optn_vt(strm(x0))
+//
+#symload head$opt with strm_head$opt
+#symload tail$opt with strm_tail$opt
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
