@@ -165,6 +165,35 @@ case+ !xs of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-20:
+Sat Dec 20 01:16:29 PM EST 2025
+*)
+//
+#impltmp
+< x0:t0 >
+strm_length
+  (  xs  ) =
+(
+  loop(xs, 0)) where
+{
+//
+fun
+loop
+( xs
+: strm(x0), ln: nint): nint =
+(
+case+ !xs of
+|strmcon_nil
+(  (*void*)  ) => ( ln )
+|strmcon_cons
+(   x1 , xs   ) => loop(xs, ln+1))
+//
+}(*where*)//end-of-[strm_length( xs )]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_strm000.dats] *)
 (***********************************************************************)
