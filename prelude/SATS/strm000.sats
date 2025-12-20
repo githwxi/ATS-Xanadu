@@ -92,8 +92,10 @@ fun
 strm_tail
 (xs: strm(x0)): strm(x0)
 //
-#symload head with strm_head
-#symload tail with strm_tail
+#symload
+head with strm_head of 1000
+#symload
+tail with strm_tail of 1000
 //
 (* ****** ****** *)
 //
@@ -106,8 +108,10 @@ fun
 strm_tail$opt
 (xs: strm(x0)): optn_vt(strm(x0))
 //
-#symload head$opt with strm_head$opt
-#symload tail$opt with strm_tail$opt
+#symload
+head$opt with strm_head$opt of 1000
+#symload
+tail$opt with strm_tail$opt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -74,14 +74,16 @@ xs: strq_vt(a,n)): strq_vt(a,n+1)
 fun
 <x0:vt>
 strm_vt_free
-(xs: strm_vt(x0)): ( void )
+(~strm_vt(x0)): ( void )
 fun
 <x0:vt>
 strm_vt_eval
-(xs: strm_vt(x0)): strmcon_vt(x0)
+(~strm_vt(x0)): strmcon_vt(x0)
 //
-#symload free with strm_vt_free of 1000
-#symload eval with strm_vt_eval of 1000
+#symload
+free with strm_vt_free of 1000
+#symload
+eval with strm_vt_eval of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -95,8 +97,10 @@ fun
 strm_vt_tail0
 (xs: strm_vt(x0)): strm_vt(x0)
 //
-#symload head0 with strm_vt_head0
-#symload tail0 with strm_vt_tail0
+#symload
+head0 with strm_vt_head0 of 1000
+#symload
+tail0 with strm_vt_tail0 of 1000
 //
 (* ****** ****** *)
 //
@@ -109,8 +113,10 @@ fun
 strm_vt_tail$opt0
 (xs: strm_vt(x0)): optn_vt(strm_vt(x0))
 //
-#symload head$opt0 with strm_vt_head$opt0
-#symload tail$opt0 with strm_vt_tail$opt0
+#symload
+head$opt0 with strm_vt_head$opt0 of 1000
+#symload
+tail$opt0 with strm_vt_tail$opt0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -124,6 +130,11 @@ fun
 strq_vt_length0
 {n0:i0}
 (xs: strq_vt(x0,n0)): sint(n0)
+//
+#symload
+length0 with strm_vt_length0 of 1000
+#symload
+length0 with strq_vt_length0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -148,8 +159,10 @@ strq_vt_append00
 //
 (* ****** ****** *)
 //
-#symload append00 with strm_vt_append00
-#symload append00 with strq_vt_append00
+#symload
+append00 with strm_vt_append00 of 1000
+#symload
+append00 with strq_vt_append00 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -166,8 +179,10 @@ strq_vt_prepend00
 ( xs: strq_vt(x0,n1)
 , ys: strq_vt(x0,n2)): strq_vt(x0,n2+n1)
 //
-#symload prepend00 with strm_vt_prepend00
-#symload prepend00 with strq_vt_prepend00
+#symload
+prepend00 with strm_vt_prepend00 of 1000
+#symload
+prepend00 with strq_vt_prepend00 of 1000
 //
 (* ****** ****** *)
 //
@@ -193,9 +208,12 @@ strq_vt_prepend0__llist0
 //
 (* ****** ****** *)
 //
-#symload prepend00 with strm_vt_prepend0__llist0
-#symload prepend00 with strm_vt_prepend0__lstrq0
-#symload prepend00 with strq_vt_prepend0__llist0
+#symload
+prepend00 with strm_vt_prepend0__llist0
+#symload
+prepend00 with strm_vt_prepend0__lstrq0
+#symload
+prepend00 with strq_vt_prepend0__llist0
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -227,6 +245,11 @@ fun
 strm_vt_lstrm$concat0
 ( xss
 : ~strm_vt(strm_vt(x0))): strm_vt(x0)
+//
+#symload
+concat0 with strm_vt_lstrm$concat0 of 1000
+#symload
+lstrm$concat0 with strm_vt_lstrm$concat0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -24,6 +24,7 @@ all:: test06
 all:: test07
 all:: test08
 all:: test09
+all:: test10
 ########################################################################
 ########################################################################
 testall::
@@ -48,6 +49,8 @@ testall:: \
 test08; $(NODE) OUTS/$<_out.js
 testall:: \
 test09; $(NODE) OUTS/$<_out.js
+testall:: \
+test10; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -227,6 +230,22 @@ $(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
 ############
 test09:: \
 test09_xats2js.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+test10:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test10:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test10:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+test10:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
+test10:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
+############
+test10:: \
+test10_xats2js.dats; \
 $(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 testxx:: ; \
