@@ -199,8 +199,11 @@ val () =
 (* ****** ****** *)
 //
 val () =
-A.foritm(
-lam(x:nint) => prints(x, "\n"))
+g_foritm(A) where
+{
+#impltmp
+foritm$work
+<sint>( x ) = prints(x, "\n")}
 //
 (* ****** ****** *)
 //
