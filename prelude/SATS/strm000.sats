@@ -112,6 +112,21 @@ strm_tail$opt
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:t0>
+strm_length
+(xs: strm(x0)): (nint)
+fun
+<x0:t0>
+strq_length
+{n0:i0}(xs: strq(x0,n0)): sint(n0)
+//
+#symload length with strm_length of 1000
+#symload length with strq_length of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_strm000.sats] *)
 (***********************************************************************)
