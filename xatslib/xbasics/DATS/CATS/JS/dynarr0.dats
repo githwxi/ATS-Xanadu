@@ -154,7 +154,8 @@ XATS2JS_jsdasz_length
 (A:jsa1(a)): nint = $extnam()
 }
 //
-#symload length with jsdasz_length of 1000
+#symload
+length with jsdasz_length of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -247,8 +248,10 @@ jsdasz_set$at
  {a:t0}//HX: t0(not vt)
 (A:jsa1(a), i:nint, x:a): void
 //
-#symload get$at with jsdasz_get$at of 1000
-#symload set$at with jsdasz_set$at of 1000
+#symload
+get$at with jsdasz_get$at of 1000
+#symload
+set$at with jsdasz_set$at of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -867,7 +870,8 @@ fun
 <a:vt>
 jarray_listize =
 gasz_listize<jsa1(a)><a>
-#symload listize with jarray_listize of 1000
+#symload
+listize with jarray_listize of 1000
 //
 *)
 //
@@ -882,7 +886,8 @@ jsdasz_listize
  ( xs ) =
 (
   gasz_listize<jsa1(a)><a>(xs))
-#symload listize with jsdasz_listize of 1000
+#symload
+listize with jsdasz_listize of 1000
 //
 (* ****** ****** *)
 //
@@ -897,7 +902,8 @@ jsdasz_strmize
  ( xs ) =
 (
   gasz_strmize<jsa1(a)><a>(xs))
-#symload strmize with jsdasz_strmize of 1000
+#symload
+strmize with jsdasz_strmize of 1000
 //
 #extern
 fun
@@ -910,7 +916,8 @@ jsdasz_strqize
  ( xs ) =
 (
   gasz_strqize<jsa1(a)><a>(xs))
-#symload strqize with jsdasz_strqize of 1000
+#symload
+strqize with jsdasz_strqize of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -925,14 +932,16 @@ fcast // fun
 GSEQ_make_jsdasz
 {a:t0}
 (A:jsa1(a)): GSEQ(jsa1(a), a)
-#symload GSEQ with GSEQ_make_jsdasz of 1000
+#symload
+GSEQ with GSEQ_make_jsdasz of 1000
 //
 #extern
 fcast // fun
 GASZ_make_jsdasz
 {a:vt}
 (A:jsa1(a)): GASZ(jsa1(a), a)
-#symload GASZ with GASZ_make_jsdasz of 1000
+#symload
+GASZ with GASZ_make_jsdasz of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1017,7 +1026,8 @@ XATS2JS_jsdasz_iter_next$work
 , work: (nint, !a) -> void): bool = $extnam()
 }
 //
-#symload next$work with jsdasz_iter_next$work of 1000
+#symload
+next$work with jsdasz_iter_next$work of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
