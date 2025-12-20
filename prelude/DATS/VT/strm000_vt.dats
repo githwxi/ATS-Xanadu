@@ -147,8 +147,9 @@ gseq_beg
 g_print0
 <strm_vt(x0)>(xs) =
 (
-gseq_print0<strm_vt(x0)><x0>(xs)
-)(*let*)//end-[g_print0<strm_vt>]
+gseq_print0
+<strm_vt(x0)><x0>(xs))
+//end-[g_print0<strm_vt>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -239,7 +240,8 @@ strm_vt_tail0
 ( case- !xs of
 | ~
 strmcon_vt_cons(x1, xs) =>
-let val () = g_free<x0>(x1) in xs end)
+let
+val () = g_free<x0>(x1) in xs end)
 //
 (* ****** ****** *)
 //
@@ -250,10 +252,14 @@ strm_vt_head$opt0
 (
 case+ !xs of
 | ~
-strmcon_vt_nil() => optn_vt_nil(*0*)
+strmcon_vt_nil() =>
+(
+  optn_vt_nil(*0*))
 | ~
-strmcon_vt_cons(x1, xs) => let
-val () = $free(xs) in optn_vt_cons(x1) end
+strmcon_vt_cons(x1, xs) =>
+let
+val () =
+$free(xs) in optn_vt_cons(x1) end
 )
 //
 #impltmp
@@ -263,10 +269,14 @@ strm_vt_tail$opt0
 (
 case+ !xs of
 | ~
-strmcon_vt_nil() => optn_vt_nil(*0*)
+strmcon_vt_nil() =>
+(
+  optn_vt_nil(*0*))
 | ~
-strmcon_vt_cons(x1, xs) => let
-val () = g_free<x0>(x1) in optn_vt_cons(xs) end
+strmcon_vt_cons(x1, xs) =>
+let
+val () =
+g_free<x0>(x1) in optn_vt_cons(xs) end
 )
 //
 (* ****** ****** *)
@@ -298,6 +308,40 @@ strmcon_vt_cons(xs1, xss) => !
  strm_vt_append00<a>(xs1, auxmain(xss)))
 )
 }(*where*)//end-of-[strm_vt_lstrm$concat0(xss)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-20:
+Sat Dec 20 11:57:32 AM EST 2025
+*)
+//
+#impltmp
+< a:vt >
+strm_vt_length0
+  (  xs  ) =
+(
+  loop(xs, 0)) where
+{
+fun
+loop
+( xs:
+~ strm_vt(a), ln: nint): nint =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+(  (*void*)  ) => ( ln )
+| ~
+strmcon_vt_cons
+(   x1 , xs   ) =>
+let
+val
+( ) = g_free<a>(x1) in loop(xs, ln+1)
+end//let//end-of-[strmcon_vt_cons(x1,xs)]
+)
+}(*where*)//end-of-[strm_vt_length0( xs )]
 //
 (* ****** ****** *)
 (* ****** ****** *)
