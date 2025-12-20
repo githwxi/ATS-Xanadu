@@ -115,6 +115,56 @@ gseq_print
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-20:
+Sat Dec 20 12:27:24 PM EST 2025
+*)
+//
+#impltmp
+< x0:t0 >
+strm_head
+  ( xs ) =
+( case- !xs of
+| strmcon_cons(x1, xs) => (x1))
+//
+#impltmp
+< x0:t0 >
+strm_tail
+  ( xs ) =
+( case- !xs of
+| strmcon_cons(x1, xs) => (xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+strm_head$opt
+  ( xs ) =
+(
+case+ !xs of
+|strmcon_nil
+( (*void*) ) =>
+(
+  optn_vt_nil(*0*))
+|strmcon_cons
+(  x1, xs  ) => optn_vt_cons(x1))
+//
+#impltmp
+< x0:t0 >
+strm_tail$opt
+  ( xs ) =
+(
+case+ !xs of
+|strmcon_nil
+( (*void*) ) =>
+(
+  optn_vt_nil(*0*))
+|strmcon_cons
+(  x1, xs  ) => optn_vt_cons(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_strm000.dats] *)
 (***********************************************************************)
