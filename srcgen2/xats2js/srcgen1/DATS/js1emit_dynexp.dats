@@ -2343,13 +2343,13 @@ nindstrnfpr
 (filr, nind, "let ");
 i1tnmjs1(filr, itnm);strnfpr
 (filr
-," = function () { // l0azy\n");
+," = XATS000_l0azy(function () { // l0azy\n");
 (
 envx2js_incnind
 ( env0,2(*++*) );f0_i1cmpret(env0, icmp);
 (
 envx2js_decnind
-( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(l0azy)\n")))
+( env0,2(*--*) );nindstrnfpr(filr, nind, "}) // endfun(l0azy)\n")))
 )
 //
 |I1INSl1azy
@@ -2360,13 +2360,13 @@ nindstrnfpr
 (filr, nind, "let ");
 i1tnmjs1(filr, itnm);strnfpr
 (filr
-," = function (tlaz) { // l1azy\n");
+," = XATS000_l1azy(function (tlaz) { // l1azy\n");
 (
 envx2js_incnind
 ( env0,2(*++*) );f0_i1cmpret(env0, icmp);
 (
 envx2js_decnind
-( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(l1azy)\n")))
+( env0,2(*--*) );nindstrnfpr(filr, nind, "}) // endfun(l1azy)\n")))
 )
 //
 (* ****** ****** *)

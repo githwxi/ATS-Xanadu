@@ -184,8 +184,22 @@ let XATS000_free = (pcon) => null
 let XATS000_dp2tr =
   (p2tr) => XATS000_lvget(p2tr)
 //
-let XATS000_dl0az = (dlaz) => dlaz()
-let XATS000_dl1az = (dlaz) => dlaz(1)
+let XATS000_l0azy = function(lfun)
+{
+  return [0, lfun]
+}
+let XATS000_dl0az = function(l0az)
+{
+  if (l0az[0] > 0) {
+    l0az[0] += 1; return l0az[1]
+  } else {
+    let res = l0az[1]()
+    l0az[0] = 0+1; l0az[1] = res; return res
+  }
+}
+//
+let XATS000_l1azy = (lfun) => lfun
+let XATS000_dl1az = (l1az) => l1az(1)
 //
 let XATS000_assgn =
   (lval, rval) => XATS000_lvset(lval, rval)
