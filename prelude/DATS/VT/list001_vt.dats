@@ -277,8 +277,8 @@ Sat 14 Sep 2024 03:04:03 PM EDT
 *)
 //
 #impltmp
-< x0:t0 >
-< y0:t0 >
+< x0:vt >
+< y0:vt >
 list_vt_map0
   ( xs ) = let
 //
@@ -419,14 +419,14 @@ Sun Jun  1 06:49:16 PM EDT 2025
 *)
 //
 #impltmp
-< x0:t0 >
-< y0:t0 >
+< x0:vt >
+< y0:vt >
 < e1:vt >
 list_vt_map$e1nv0 =
 gseq_map$e1nv0_llist<list_vt(x0)><x0><y0><e1>(*void*)
 #impltmp
-< x0:t0 >
-< y0:t0 >
+< x0:vt >
+< y0:vt >
 < e1:vt >
 list_vt_map$e1nv1 =
 gseq_map$e1nv1_llist<list_vt(x0)><x0><y0><e1>(*void*)

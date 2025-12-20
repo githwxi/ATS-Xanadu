@@ -52,16 +52,33 @@ xs: list_vt(a,n)): list_vt(a,n+1)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun<>
+list_vt_nilq1
+{a:t0}{n:i0}
+(xs: !list_vt(a,n)): bool(n=0)
+fun<>
+list_vt_consq1
+{a:t0}{n:i0}
+(xs: !list_vt(a,n)): bool(n>0)
+//
+#symload
+nilq1 with list_vt_nilq1 of 1000
+#symload
+consq1 with list_vt_consq1 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <a:vt>
 list_vt_head0
 {n:i0|n>0}
-(xs: ~list_vt(a,n)): (a)
+(xs: ~list_vt(a,n)): (  a  )
 fun
 <a:vt>
 list_vt_head1
 {n:i0|n>0}
-(xs: !list_vt(a,n)): (a)
+(xs: !list_vt(a,n)): (  a  )
 fun
 <a:vt>
 list_vt_tail0
@@ -83,31 +100,36 @@ list_vt_tail1
 //
 fun
 <a:vt>
-list_vt_make_1val
+list_vt_make0_1val
 (x1: a): list_vt(a,1)
 fun
 <a:vt>
-list_vt_make_2val
+list_vt_make0_2val
 (x1: a, x2: a): list_vt(a,2)
 fun
 <a:vt>
-list_vt_make_3val
+list_vt_make0_3val
 (x1: a
 ,x2: a, x3: a): list_vt(a,3)
 //
 (* ****** ****** *)
 //
 #symload
-list_vt_sing with list_vt_make_1val
+list_vt_sing
+with list_vt_make0_1val//of 1000
 #symload
-list_vt_pair with list_vt_make_2val
+list_vt_pair
+with list_vt_make0_2val//of 1000
 //
 #symload
-list_vt_1val with list_vt_make_1val
+list_vt_1val
+with list_vt_make0_1val//of 1000
 #symload
-list_vt_2val with list_vt_make_2val
+list_vt_2val
+with list_vt_make0_2val//of 1000
 #symload
-list_vt_3val with list_vt_make_3val
+list_vt_3val
+with list_vt_make0_3val//of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -117,7 +139,10 @@ fun
 list_vt_make_nfun
 {n:nat}
 (n0: sint(n)
-,f0: nintlt(n)->(a)): list_vt(a, n)
+,f0: nintlt(n)->(a)): list_vt(a,n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #symload
 list_vt with list_vt_make_nfun

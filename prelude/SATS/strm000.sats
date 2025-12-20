@@ -38,6 +38,47 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-20:
+Sat Dec 20 11:21:52 AM EST 2025
+*)
+//
+fun<>
+strm_nil
+{a:t0}((*0*)): strm(a)
+fun<>
+strq_nil
+{a:t0}((*0*)): strq(a, 0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:t0>
+strm_sing
+( x0: ( a ) ): strm(a)
+fun
+<a:t0>
+strq_sing
+( x0: ( a ) ): strq(a, 1)
+//
+fun
+<a:t0>
+strm_cons
+(
+x0: ( a ),
+xs: strm( a )): strm( a )
+fun
+<a:t0>
+strq_cons
+{n:i0}
+(
+x0: ( a ),
+xs: strq(a, n)): strq(a, n+1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_strm000.sats] *)
 (***********************************************************************)

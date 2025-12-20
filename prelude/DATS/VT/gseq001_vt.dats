@@ -1629,6 +1629,50 @@ gseq_ifilter0_lstrm<xs><x0>(xs))
 (* ****** ****** *)
 //
 (*
+HX-2025-12-17:
+Wed Dec 17 01:55:29 PM EST 2025
+*)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_filter0$f1un_lstrm
+  (xs, test) =
+(
+gseq_filter0_lstrm
+< xs >< x0 >( xs )) where
+{
+#impltmp
+filter$test1<x0> = test(*x0*) }
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_filter0$f1un_lstrq
+  (xs, test) =
+(
+gseq_filter0_lstrq
+< xs >< x0 >( xs )) where
+{
+#impltmp
+filter$test1<x0> = test(*x0*) }
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_filter0$f1un_llist
+  (xs, test) =
+(
+gseq_filter0_llist
+< xs >< x0 >( xs )) where
+{
+#impltmp
+filter$test1<x0> = test(*x0*) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-07-16:
 Tue 16 Jul 2024 11:19:32 AM EDT
 *)

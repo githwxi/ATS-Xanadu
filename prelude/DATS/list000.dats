@@ -275,6 +275,16 @@ gseq_length
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<a>(*tmp*)
+list_copy_vt = list_listize<a>
+#impltmp
+<a>(*tmp*)
+list_rcopy_vt = list_rlistize<a>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-07-24:
 there is a trec-implementation
