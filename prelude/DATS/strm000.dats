@@ -240,9 +240,9 @@ auxmain
 (
 case+ !xs of
 |
-strmcon_nil() => 
+strmcon_nil() =>
 (
-  strm_strmize(ys))
+! strm_strmize(ys))
 |
 strmcon_cons(x1, xs) =>
 (
