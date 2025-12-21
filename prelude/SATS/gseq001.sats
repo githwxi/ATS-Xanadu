@@ -878,6 +878,19 @@ gseq_rmap_lstrq(xs: xs): strq_vt(y0)
 fun
 <xs:t0>
 <x0:t0>
+<y0:t0>
+gseq_rmap$f1un_list
+(xs: xs, fopr: (x0)->(y0)): list(y0)
+(*
+#symload
+rmap_list with gseq_rmap$f1un_list of 0100
+*)
+#symload
+gseq_rmap_list with gseq_rmap$f1un_list of 0100
+//
+fun
+<xs:t0>
+<x0:t0>
 <y0:vt>
 gseq_rmap$f1un_llist
 (xs: xs, fopr: (x0)->(y0)): list_vt(y0)
@@ -1001,6 +1014,20 @@ fun
 <x0:t0>
 <y0:vt>
 gseq_imap_lstrq(xs: xs): strq_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_imap$f2un_list
+(xs: xs, fopr: (ni, x0)->(y0)): list(y0)
+//
+(*
+#symload
+imap_list with gseq_imap$f2un_list of 0100
+*)
+#symload
+gseq_imap_list with gseq_imap$f2un_list of 0100
 //
 fun
 <xs:t0>
