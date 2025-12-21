@@ -79,6 +79,13 @@ xs: strq(a, n)): strq(a, n+1)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<a:t0>
+strm_eval(strm(a)): strmcon(a)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2025-12-20:
 Sat Dec 20 12:27:24 PM EST 2025
@@ -127,6 +134,38 @@ strq_length
 //
 #symload length with strm_length of 1000
 #symload length with strq_length of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+strm_append
+( xs: strm(x0)
+, ys: strm(x0)): strm(x0)
+fun
+<x0:t0>
+strq_append
+{n1,n2:i0}
+( xs: strq(x0,n1)
+, ys: strq(x0,n2)): strq(x0,n1+n2)
+//
+fun
+<x0:t0>
+strm_append_vt
+( xs: strm(x0)
+, ys: strm(x0)): strm_vt(x0)
+fun
+<x0:t0>
+strq_append_vt
+{n1,n2:i0}
+( xs: strq(x0,n1)
+, ys: strq(x0,n2)): strq_vt(x0,n1+n2)
+//
+#symload append with strm_append of 1000
+#symload append with strq_append of 1000
+#symload append_vt with strm_append_vt of 1000
+#symload append_vt with strq_append_vt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
