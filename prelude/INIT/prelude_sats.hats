@@ -97,7 +97,9 @@
 #include "prelude/SATS/optn001.sats"
 //
 #include "prelude/SATS/strm000.sats"
+#include "prelude/SATS/strm001.sats"
 #include "prelude/SATS/strx000.sats"
+#include "prelude/SATS/strx001.sats"
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
