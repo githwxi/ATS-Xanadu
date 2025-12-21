@@ -136,8 +136,20 @@ def XATS000_free(pcon): return None
 def XATS000_dp2tr(p2tr):
   return XATS000_lvget(p2tr)
 ##
-def XATS000_dl0az(dlaz): return dlaz()
-def XATS000_dl1az(dlaz): return dlaz(1)
+def XATS000_l0azy(lfun):
+  return [0, lfun] # unevaled
+def XATS000_dl0az(l0az):
+  res = None
+  if (l0az[0] > 0):
+    l0az[0] += 1;
+    res = l0az[1]; return res
+  else:
+    l0az[0] = 0+1;
+    res = l0az[1]()
+    l0az[1] = res; return res
+##
+def XATS000_l1azy(lfun): return lfun
+def XATS000_dl1az(l1az): return l1az(1)
 ##
 def XATS000_assgn(lval, rval):
   return XATS000_lvset(lval, rval)
