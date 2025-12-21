@@ -349,7 +349,7 @@ strm_filter<x0>(xs))
 where
 {
 #impltmp
-filter$test<x0>(*x0*) = test(*x0*)
+filter$test<x0> = test(*x0*)
 }(*where*)//end-of-[strm_filter$f1un]
 //
 (* ****** ****** *)
@@ -450,6 +450,20 @@ else auxloop(i0+1, !xs) end//let
 //
 #impltmp
 < x0:t0 >
+strm_ifilter$f2un
+  (xs, test) =
+(
+strm_ifilter<x0>(xs))
+where
+{
+#impltmp
+ifilter$test<x0> = test(*ni,x0*)
+}(*where*)//end-of-[strm_ifilter$f2un]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
 strm_ifilter_vt
   (  xs  ) =
 $llazy(
@@ -493,6 +507,118 @@ else auxloop(i0+1, !xs) end//let
 { x0:t0 }
 gseq_ifilter_lstrm
 <strm(x0)><x0> = strm_ifilter_vt<x0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-21:
+Sun Dec 21 10:36:35 AM EST 2025
+*)
+//
+#impltmp
+< x0:t0 >
+strm_listize
+  (  xs  ) =
+let
+val xs =
+strm_rlistize<x0>(xs)
+in//let
+list_vt_reverse0<x0>(xs) end
+//
+#impltmp
+< x0:t0 >
+strm_rlistize
+  (  xs  ) =
+(
+  loop(xs, r0)) where
+{
+//
+val r0 = list_vt_nil()
+//
+fun loop
+( xs: strm(x0)
+, r0: list_vt(x0)): list_vt(x0) =
+(
+case+ !xs of
+|
+strmcon_nil
+(  (*0*)  ) => (r0)
+|
+strmcon_cons
+(  x1, xs  ) =>
+(
+  loop(xs,list_vt_cons(x1,r0))))
+}(*where*)//end-of-[strm_rlistize(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-21:
+Sun Dec 21 10:39:48 AM EST 2025
+*)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+< e1:vt >
+strm_map$e1nv
+  ( xs, e1 ) =
+(
+strm_map<x0><y0>(xs)) where
+{
+#impltmp
+map$fopr<x0><y0>(x0) =
+(
+  map$e1nv$fopr<x0><y0><e1>(x0, e1))
+}(*where*)//end-of-[strm_map$e1nv0(xs,e1)]
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+< e1:vt >
+strq_map$e1nv0
+  ( xs, e1 ) =
+(
+strq_map<x0><y0>(xs)) where
+{
+#impltmp
+map$fopr<x0><y0>(x0) =
+(
+  map$e1nv$fopr<x0><y0><e1>(x0, e1))
+}(*where*)//end-of-[strq_map$e1nv0(xs,e1)]
+//
+(* ****** ****** *)
+#impltmp
+< x0:t0 >
+< y0:vt >
+< e1:vt >
+strm_map$e1nv_vt
+  ( xs, e1 ) =
+(
+strm_map_vt<x0><y0>(xs)) where
+{
+#impltmp
+map$fopr<x0><y0>(x0) =
+(
+  map$e1nv$fopr<x0><y0><e1>(x0, e1))
+}(*where*)//end-of-[strm_map$e1nv0_vt(xs,e1)]
+//
+#impltmp
+< x0:t0 >
+< y0:vt >
+< e1:vt >
+strq_map$e1nv0_vt
+  ( xs, e1 ) =
+(
+strq_map_vt<x0><y0>(xs)) where
+{
+#impltmp
+map$fopr<x0><y0>(x0) =
+(
+  map$e1nv$fopr<x0><y0><e1>(x0, e1))
+}(*where*)//end-of-[strq_map$e1nv0_vt(xs,e1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
