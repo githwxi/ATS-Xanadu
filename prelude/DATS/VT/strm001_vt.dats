@@ -143,7 +143,8 @@ auxmain(0, xs)) where
 {
 fun
 auxmain
-( i0: nint
+( i0
+: nint
 , xs
 : strm_vt(x0)): bool =
 (
@@ -249,7 +250,8 @@ auxmain(0, xs)) where
 {
 fun
 auxmain
-( i0: nint
+( i0
+: nint
 , xs
 : strm_vt(x0)
 ) : strm_vt(y0) = $llazy
@@ -319,6 +321,8 @@ else
 )
 }(*where*)//end-of-[strm_vt_filter0(xs)]
 //
+(* ****** ****** *)
+//
 #impltmp
 < x0:vt >
 strm_vt_filter0$f1un
@@ -360,7 +364,8 @@ HX-2024-07-13:
 *)
 fnx
 auxloop
-( i0: nint
+( i0
+: nint
 , xs
 : strmcon_vt(x0)
 ) : strmcon_vt(x0) =
@@ -386,6 +391,8 @@ else
 g_free<x0>(x1); auxloop(i0+1, !xs)) end
 )
 }(*where*)//end-of-[strm_vt_ifilter0(xs)]
+//
+(* ****** ****** *)
 //
 #impltmp
 < x0:vt >
