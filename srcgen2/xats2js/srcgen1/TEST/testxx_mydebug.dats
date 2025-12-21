@@ -10,19 +10,29 @@ For testing xats2js!
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
+"prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_JS_dats.hats"
+"prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
 (*
 #include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
+"prelude/HATS/prelude_NODE_dats.hats"
 *)
 (* ****** ****** *)
+(* ****** ****** *)
+fun
+fact2
+(n: sint): sint =
+let
+#typedef x0 = sint
+#typedef r0 = sint
+in//let
+folditm
+(n, 1, lam(r: r0, i: x0) => r*(i+1))
+end//let//end-of-[fact2(n)]
+(* ****** ****** *)
+////
 (* ****** ****** *)
 //
 val xs as
