@@ -116,7 +116,7 @@ gseq_forall0
 (* ****** ****** *)
 //
 #impltmp
-< x0:t0 >
+< x0:vt >
 strm_vt_forall0$f1un
   (xs, test) =
 (
