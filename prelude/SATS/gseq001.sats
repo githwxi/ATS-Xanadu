@@ -726,6 +726,7 @@ gseq_map_lstrq(xs: xs): strq_vt(y0)
 //
 (*
 #symload map_list with gseq_map_list of 0100
+#symload map_strm with gseq_map_strm of 0100
 #symload map_llist with gseq_map_llist of 0100
 #symload map_lstrm with gseq_map_lstrm of 0100
 #symload map_lstrq with gseq_map_lstrq of 0100

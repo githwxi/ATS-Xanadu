@@ -40,6 +40,18 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 < x0:t0 >
+strm_foritm =
+gseq_foritm<strm(x0)><x0>
+#impltmp
+< x0:t0 >
+strm_foritm$f1un =
+gseq_foritm$f1un<strm(x0)><x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
 strm_forall
   ( xs ) =
 (
@@ -51,7 +63,7 @@ auxmain
 (
 case+ !xs of
 |strmcon_nil
-( (*void*) ) => true
+( (*void*) ) => (true)
 |strmcon_cons
 (  x1, xs  ) =>
 (
@@ -78,13 +90,200 @@ strm_forall
 <  x0  >(  xs  )) where
 {
 #impltmp
-forall$test<x0>(x0) = test(x0)
+forall$test<x0> = test(*x0*)
 }(*where*)//end-of-[strm_forall$f1un]
 //
 #impltmp
 { x0:t0 }
 gseq_forall$f1un
-<strm(x0)>< x0 > = strm_forall$f1un<x0>(*0*)
+<strm(x0)><x0> = strm_forall$f1un<x0>(*0*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+strm_iforall
+  ( xs ) =
+(
+auxmain(0, xs)) where
+{
+fun
+auxmain
+( i0: sint
+, xs: strm(x0)): bool =
+(
+case+ !xs of
+|strmcon_nil
+( (*void*) ) => (true)
+|strmcon_cons
+(  x1, xs  ) =>
+(
+if
+iforall$test
+< x0 >(i0, x1)
+then auxmain(i0+1, xs) else false)
+)(*case+*)//end-of-[auxmain(i0, xs)]
+}(*where*)//end-of-[strm_iforall(xs)]
+//
+#impltmp
+{ x0:t0 }
+gseq_iforall
+<strm(x0)><x0> = strm_iforall<x0>(*0*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+strm_iforall$f2un
+  (xs, test) =
+(
+strm_iforall
+<  x0  >(  xs  )) where
+{
+#impltmp
+iforall$test<x0> = test(*ni,x0*)
+}(*where*)//end-of-[strm_iforall$f2un]
+//
+#impltmp
+{ x0:t0 }
+gseq_iforall$f2un
+<strm(x0)><x0> = strm_iforall$f2un<x0>(*0*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-21:
+Sun Dec 21 09:32:13 AM EST 2025
+*)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+strm_map(xs) =
+(
+  auxmain(xs)) where
+{
+fun
+auxmain
+( xs
+: strm(x0)
+) : strm(y0) = $lazy
+(
+case+ !xs of
+| ~
+strmcon_nil() =>
+strmcon_nil(*void*)
+| ~
+strmcon_cons(x1, xs) =>
+strmcon_cons(
+map$fopr<x0><y0>(x1), auxmain(xs))
+)
+}(*where*)//end-of-[strm_map( xs )]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< y0:vt >
+strm_map_vt
+  (  xs  ) =
+(
+  auxmain(xs)) where
+{
+fun
+auxmain
+( xs
+: strm(x0)
+) : strm_vt(y0) = $llazy
+(
+case+ !xs of
+| ~
+strmcon_nil() =>
+strmcon_vt_nil(*void*)
+| ~
+strmcon_cons(x1, xs) =>
+strmcon_vt_cons(
+map$fopr<x0><y0>(x1), auxmain(xs))
+)
+}(*where*)//end-of-[strm_map_vt( xs )]
+//
+#impltmp
+{ x0:t0 }
+{ y0:vt }
+gseq_map_lstrm
+<strm(x0)><x0><y0> = strm_map_vt<x0><y0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+strm_imap(xs) =
+(
+auxmain(0, xs)) where
+{
+fun
+auxmain
+( i0
+: nint
+, xs
+: strm(x0)
+) : strm(y0) = $lazy
+(
+case+ !xs of
+| ~
+strmcon_nil() =>
+strmcon_nil(*void*)
+| ~
+strmcon_cons(x1, xs) =>
+let
+val y1 =
+imap$fopr<x0><y0>(i0, x1)
+in//let
+strmcon_cons(y1,auxmain(i0+1,xs))
+end//let//end-of-[strmcon_cons()]
+)
+}(*where*)//end-of-[strm_imap( xs )]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+strm_imap_vt
+  (  xs  ) =
+(
+auxmain(0, xs)) where
+{
+fun
+auxmain
+( i0
+: nint
+, xs
+: strm(x0)
+) : strm_vt(y0) = $llazy
+(
+case+ !xs of
+| ~
+strmcon_nil() =>
+strmcon_vt_nil(*void*)
+| ~
+strmcon_cons(x1, xs) =>
+let
+val y1 =
+imap$fopr<x0><y0>(i0, x1)
+in//let
+strmcon_vt_cons(y1,auxmain(i0+1,xs))
+end//let//end-of-[strmcon_cons(x1,xs)]
+)
+}(*where*)//end-of-[strm_imap_vt( xs )]
+//
+#impltmp
+{ x0:t0 }
+{ y0:vt }
+gseq_imap_lstrm
+<strm(x0)><x0><y0> = strm_imap_vt<x0><y0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

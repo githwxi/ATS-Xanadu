@@ -124,7 +124,7 @@ strm_vt_forall0
 <  x0  >(  xs  )) where
 {
 #impltmp
-forall$test0<x0>(x0) = test(x0)
+forall$test0<x0> = test(*x0*)
 }(*where*)//end-of-[strm_vt_forall0$f1un]
 //
 #impltmp
@@ -171,7 +171,7 @@ strm_vt_iforall0<x0>(xs))
 where
 {
 #impltmp
-iforall$test0<x0>(i0, x0) = test(i0, x0)
+iforall$test0<x0> = test(*ni,x0*)
 }
 //
 #impltmp
