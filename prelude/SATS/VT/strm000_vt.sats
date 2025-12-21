@@ -72,18 +72,31 @@ xs: strq_vt(a,n)): strq_vt(a,n+1)
 (* ****** ****** *)
 //
 fun
-<x0:vt>
+<a:vt>
 strm_vt_free
-(~strm_vt(x0)): ( void )
+(~strm_vt(a)): ( void )
 fun
-<x0:vt>
+<a:vt>
+strq_vt_free
+(~strq_vt(a)): ( void )
+//
+fun
+<a:vt>
 strm_vt_eval
-(~strm_vt(x0)): strmcon_vt(x0)
+(~strm_vt(a)): strmcon_vt(a)
+fun
+<a:vt>
+strq_vt_eval
+(~strm_vt(a)): strqcon_vt(a)
 //
 #symload
 free with strm_vt_free of 1000
 #symload
+free with strq_vt_free of 1000
+#symload
 eval with strm_vt_eval of 1000
+#symload
+eval with strq_vt_eval of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
