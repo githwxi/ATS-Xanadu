@@ -73,7 +73,7 @@ fun
 <x0:vt>
 strm_vt_iforall0$f2un
 ( xs: strm_vt(x0)
-, test: (ni,~x0)->bool): bool
+, test: (ni,~x0) -> bool): bool
 //
 #symload
 iforall0 with strm_vt_iforall0$f2un of 1000
@@ -493,7 +493,11 @@ fun
 <y0:vt>
 <e1:vt>
 strq_vt_map$e1nv0
-(xs: strq_vt(x0), e1: !e1): strq_vt(y0)
+{ln:i0}
+(xs: strq_vt(x0,ln), e1: !e1): strq_vt(y0,ln)
+//
+#symload map$env0 with strm_vt_map$e1nv0 of 1000
+#symload map$env0 with strq_vt_map$e1nv0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
