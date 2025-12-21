@@ -288,6 +288,215 @@ gseq_imap_lstrm
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-21:
+Sun Dec 21 10:16:58 AM EST 2025
+*)
+//
+#impltmp
+< x0:t0 >
+strm_filter
+  (  xs  ) =
+$lazy(
+auxloop
+(
+strm_eval<x0>(xs)))
+where
+{
+fnx
+auxloop
+( cs
+: strmcon(x0)
+) : strmcon(x0) =
+(
+case+ cs of
+|
+strmcon_nil
+( (*void*) ) =>
+(
+  strmcon_nil(*void*))
+|
+strmcon_cons
+(  x1, xs  ) =>
+let
+//
+val
+test =
+filter$test<x0>(x1)
+//
+in//let
+(
+if
+test
+then
+strmcon_cons
+(
+x1,
+$lazy
+(auxloop(!xs))) else auxloop(!xs))
+end//let//end-of(strmcon_cons(...))
+)(*case+*)//end-of-[auxloop(  cs  )]
+}(*where*)//end-of-[strm_filter(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+strm_filter$f1un
+  (xs, test) =
+(
+strm_filter<x0>(xs))
+where
+{
+#impltmp
+filter$test<x0>(*x0*) = test(*x0*)
+}(*where*)//end-of-[strm_filter$f1un]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+strm_filter_vt
+  (  xs  ) =
+$llazy(
+auxloop
+(
+strm_eval<x0>(xs)))
+where
+{
+fnx
+auxloop
+( cs
+: strmcon(x0)
+) : strmcon_vt(x0) =
+(
+case+ cs of
+|
+strmcon_nil
+( (*void*) ) =>
+(
+strmcon_vt_nil(*void*))
+|
+strmcon_cons
+(  x1, xs  ) =>
+let
+//
+val
+test =
+filter$test<x0>(x1)
+//
+in//let
+if
+test
+then
+strmcon_vt_cons
+(
+x1,
+$llazy
+(auxloop(!xs)))
+else auxloop(!xs) end//let
+)(*case+*)//end-of-[auxloop(cs)]
+}(*where*)//end-of-[strm_filter(xs)]
+//
+#impltmp
+{ x0:t0 }
+gseq_filter_lstrm
+<strm(x0)><x0> = strm_filter_vt<x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+strm_ifilter
+  (  xs  ) =
+$lazy(
+auxloop(0,
+strm_eval<x0>(xs)))
+where
+{
+fnx
+auxloop
+( i0
+: nint
+, xs
+: strmcon(x0)
+) : strmcon(x0) =
+(
+case+ xs of
+| ~
+strmcon_nil() =>
+(
+  strmcon_nil(*void*))
+| ~
+strmcon_cons(x1, xs) =>
+let
+val
+test =
+ifilter$test<x0>(i0, x1)
+in//let
+if
+test
+then
+strmcon_cons
+(
+x1,
+$lazy
+(auxloop(i0+1, !xs)))
+else auxloop(i0+1, !xs) end//let
+)(*case+*)//end-of-[auxloop(i0,cs)]
+}(*where*)//end-of-[strm_ifilter(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+strm_ifilter_vt
+  (  xs  ) =
+$llazy(
+auxloop(0,
+strm_eval<x0>(xs)))
+where
+{
+fnx
+auxloop
+( i0
+: nint
+, xs
+: strmcon(x0)
+) : strmcon_vt(x0) =
+(
+case+ xs of
+| ~
+strmcon_nil() =>
+(
+strmcon_vt_nil(*void*))
+| ~
+strmcon_cons(x1, xs) =>
+let
+val
+test =
+ifilter$test<x0>(i0, x1)
+in//let
+if
+test
+then
+strmcon_vt_cons
+(
+x1,
+$llazy
+(auxloop(i0+1, !xs)))
+else auxloop(i0+1, !xs) end//let
+)(*case+*)//end-of-[auxloop(i0,cs)]
+}(*where*)//end-of-[strm_ifilter_vt(xs)]
+//
+#impltmp
+{ x0:t0 }
+gseq_ifilter_lstrm
+<strm(x0)><x0> = strm_ifilter_vt<x0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_strm001.dats] *)
 (***********************************************************************)
