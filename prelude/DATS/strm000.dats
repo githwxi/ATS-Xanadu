@@ -84,6 +84,12 @@ strm_cons(x0, xs) =
 $lazy(strmcon_cons(x0, xs))
 //
 (* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+strm_eval(xs) = $eval( xs )
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -93,31 +99,23 @@ Sat Dec 20 11:43:16 AM EST 2025
 //
 #impltmp
 { x0:t0 }
-gseq_sep<strm(x0)><x0>() = ","
+gseq_sep
+<strm(x0)><x0>() = ","
 #impltmp
 { x0:t0 }
-gseq_end<strm(x0)><x0>() = ")"
+gseq_end
+<strm(x0)><x0>() = ")"
 #impltmp
 { x0:t0 }
-gseq_beg<strm(x0)><x0>() = "strm("
+gseq_beg
+<strm(x0)><x0>() = "strm("
 //
 (* ****** ****** *)
 //
 #impltmp
 { x0:t0 }
-g_print0
-<strm(x0)>(xs) =
-(
-gseq_print
-<strm(x0)><x0>(xs))
-//end-[g_print<strm>]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:vt >
-strm_eval(xs) = $eval(xs)
+g_print0<strm(x0)> =
+gseq_print<strm(x0)><x0>(*xs*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

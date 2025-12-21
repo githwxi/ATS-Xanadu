@@ -70,7 +70,7 @@ $llazy
 (strmcon_vt_nil(*void*))
 //
 #impltmp
-< x0:vt >
+< a: vt >
 strm_vt_sing(x0) =
 (
 strm_vt_cons(x0, xs))
@@ -79,7 +79,7 @@ where
 val xs = strm_vt_nil() }
 //
 #impltmp
-< x0:vt >
+< a: vt >
 strm_vt_cons(x0, xs) =
 $llazy
 (strmcon_vt_cons(x0, xs))
@@ -93,7 +93,7 @@ $llazy
 (strqcon_vt_nil(*void*))
 //
 #impltmp
-< x0:vt >
+< a: vt >
 strq_vt_sing(x0) =
 (
 strq_vt_cons(x0, xs))
@@ -102,7 +102,7 @@ where
 val xs = strq_vt_nil() }
 //
 #impltmp
-< x0:vt >
+< a: vt >
 strq_vt_cons(x0, xs) =
 $llazy
 (strqcon_vt_cons(x0, xs))
@@ -111,13 +111,23 @@ $llazy
 (* ****** ****** *)
 //
 #impltmp
-{ x0:vt }
-g_free//~xs
-<strm_vt(x0)>(xs) = $free(xs)
+< a: vt >
+strm_vt_free(xs) = $free(xs)
 #impltmp
-{ x0:vt }
+< a: vt >
+strm_vt_eval(xs) = $eval(xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ a: vt }
 g_free//~xs
-<strq_vt(x0)>(xs) = $free(xs)
+<strm_vt(a)> = strm_vt_free<a>
+#impltmp
+{ a: vt }
+g_free//~xs
+<strq_vt(a)> = strq_vt_free<a>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -130,36 +140,27 @@ Wed 17 Jul 2024 10:27:26 PM EDT
 #impltmp
 { x0:vt }
 gseq_sep
-<strm_vt(x0)><x0>() = ","
+<
+strm_vt(x0)><x0>() = ","
 #impltmp
 { x0:vt }
 gseq_end
-<strm_vt(x0)><x0>() = ")"
+<
+strm_vt(x0)><x0>() = ")"
 #impltmp
 { x0:vt }
 gseq_beg
-<strm_vt(x0)><x0>() = "strm_vt("
+<
+strm_vt(x0)><x0>() = "strm_vt("
 //
 (* ****** ****** *)
 //
 #impltmp
 { x0:vt }
 g_print0
-<strm_vt(x0)>(xs) =
-(
+<strm_vt(x0)> =
 gseq_print0
-<strm_vt(x0)><x0>(xs))
-//end-[g_print0<strm_vt>]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:vt >
-strm_vt_free(xs) = $free(xs)
-#impltmp
-< x0:vt >
-strm_vt_eval(xs) = $eval(xs)
+<strm_vt(x0)><x0>(*strm_vt(x0)*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
