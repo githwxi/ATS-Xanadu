@@ -503,10 +503,42 @@ else auxloop(i0+1, !xs) end//let
 )(*case+*)//end-of-[auxloop(i0,cs)]
 }(*where*)//end-of-[strm_ifilter_vt(xs)]
 //
+(*
+HX-2025-12-21:
+This one is not yet declared:
 #impltmp
 { x0:t0 }
 gseq_ifilter_lstrm
 <strm(x0)><x0> = strm_ifilter_vt<x0>(*void*)
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+strm_strmize
+  (  xs  ) =
+(
+  auxmain(xs)) where
+{
+fun
+auxmain
+(xs: strm(x0)): strm_vt(x0) =
+$llazy(
+//
+case+ !xs of
+|
+strmcon_nil
+(  (*0*)  ) =>
+(
+  strmcon_vt_nil(*void*))
+|
+strmcon_cons
+(  x1, xs  ) =>
+(
+  strmcon_vt_cons(x1, auxmain(xs))))
+}(*where*)//end-of-[strm_strmize(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -548,7 +580,7 @@ strmcon_nil
 strmcon_cons
 (  x1, xs  ) =>
 (
-  loop(xs,list_vt_cons(x1,r0))))
+  loop(xs, list_vt_cons(x1,r0))))
 }(*where*)//end-of-[strm_rlistize(xs)]
 //
 (* ****** ****** *)
@@ -572,13 +604,13 @@ strm_map<x0><y0>(xs)) where
 map$fopr<x0><y0>(x0) =
 (
   map$e1nv$fopr<x0><y0><e1>(x0, e1))
-}(*where*)//end-of-[strm_map$e1nv0(xs,e1)]
+}(*where*)//end-of-[strm_map$e1nv(xs,e1)]
 //
 #impltmp
 < x0:t0 >
 < y0:t0 >
 < e1:vt >
-strq_map$e1nv0
+strq_map$e1nv
   ( xs, e1 ) =
 (
 strq_map<x0><y0>(xs)) where
@@ -587,9 +619,10 @@ strq_map<x0><y0>(xs)) where
 map$fopr<x0><y0>(x0) =
 (
   map$e1nv$fopr<x0><y0><e1>(x0, e1))
-}(*where*)//end-of-[strq_map$e1nv0(xs,e1)]
+}(*where*)//end-of-[strq_map$e1nv(xs,e1)]
 //
 (* ****** ****** *)
+//
 #impltmp
 < x0:t0 >
 < y0:vt >
@@ -603,13 +636,13 @@ strm_map_vt<x0><y0>(xs)) where
 map$fopr<x0><y0>(x0) =
 (
   map$e1nv$fopr<x0><y0><e1>(x0, e1))
-}(*where*)//end-of-[strm_map$e1nv0_vt(xs,e1)]
+}(*where*)//end-of-[strm_map$e1nv_vt(xs,e1)]
 //
 #impltmp
 < x0:t0 >
 < y0:vt >
 < e1:vt >
-strq_map$e1nv0_vt
+strq_map$e1nv_vt
   ( xs, e1 ) =
 (
 strq_map_vt<x0><y0>(xs)) where
@@ -618,7 +651,7 @@ strq_map_vt<x0><y0>(xs)) where
 map$fopr<x0><y0>(x0) =
 (
   map$e1nv$fopr<x0><y0><e1>(x0, e1))
-}(*where*)//end-of-[strq_map$e1nv0_vt(xs,e1)]
+}(*where*)//end-of-[strq_map$e1nv_vt(xs,e1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
