@@ -14,44 +14,44 @@ all:: test01
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f test??_out.js
-cleanall:: ; rm -f test??_out?.js
+cleanall:: ; rm -f OUTS/test??_out.js
+cleanall:: ; rm -f OUTS/test??_out?.js
 ########################################################################
-testall:: test00; $(NODE) $<_out.js
-testall:: test01; $(NODE) $<_out.js
+testall:: test00; $(NODE) OUTS/$<_out.js
+testall:: test01; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 test00:: ; \
-printf "// %s\n" "`date`" > $@_out.js
+printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test00:: ; $(CAT) \
-$(S2XSHRD)/runtime/xats2js_js1emit.js >> $@_out.js
+$(S2XSHRD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
 test00:: ; $(CAT) \
-$(S2XSHRD)/runtime/srcgen2_prelude.js >> $@_out.js
+$(S2XSHRD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 test00:: ; $(CAT) \
-$(S2XSHRD)/runtime/srcgen2_xatslib.js >> $@_out.js
+$(S2XSHRD)/runtime/srcgen2_xatslib.js >> OUTS/$@_out.js
 test00:: ; $(CAT) \
-$(S2XSHRD)/runtime/srcgen2_prelude_node.js >> $@_out.js
+$(S2XSHRD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
 ############
 test00:: test00.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> $@_out.js
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 ########################################################################
 test01:: ; \
-printf "// %s\n" "`date`" > $@_out.js
+printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test01:: ; $(CAT) \
-$(S2XSHRD)/runtime/xats2js_js1emit.js >> $@_out.js
+$(S2XSHRD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
 test01:: ; $(CAT) \
-$(S2XSHRD)/runtime/srcgen2_prelude.js >> $@_out.js
+$(S2XSHRD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 test01:: ; $(CAT) \
-$(S2XSHRD)/runtime/srcgen2_xatslib.js >> $@_out.js
+$(S2XSHRD)/runtime/srcgen2_xatslib.js >> OUTS/$@_out.js
 test01:: ; $(CAT) \
-$(S2XSHRD)/runtime/srcgen2_prelude_node.js >> $@_out.js
+$(S2XSHRD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
 ############
 test01:: \
 test01_misc001.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> $@_out.js
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 ########################################################################
 SRCGEN2=./../../../../../../../../srcgen2
