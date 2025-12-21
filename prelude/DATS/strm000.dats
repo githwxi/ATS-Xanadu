@@ -115,6 +115,13 @@ gseq_print
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0:vt >
+strm_eval(xs) = $eval(xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2025-12-20:
 Sat Dec 20 12:27:24 PM EST 2025
@@ -190,6 +197,57 @@ case+ !xs of
 (   x1 , xs   ) => loop(xs, ln+1))
 //
 }(*where*)//end-of-[strm_length( xs )]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+strm_append
+  (xs, ys) =
+(
+  auxmain(xs, ys)) where
+{
+fun
+auxmain
+( xs: strm(x0)
+, ys: strm(x0)): strm(x0) = $lazy
+(
+case+ !xs of
+|
+strmcon_nil() => 
+(
+  strm_eval<x0>(xs))
+|
+strmcon_cons(x1, xs) =>
+(
+  strmcon_cons(x1, auxmain(xs, ys))))
+}(*where*)//end-of-[strm_append(xs,ys)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+strm_append_vt
+  (xs, ys) =
+(
+  auxmain(xs, ys)) where
+{
+fun
+auxmain
+( xs: strm(x0)
+, ys: strm(x0)): strm_vt(x0) = $llazy
+(
+case+ !xs of
+|
+strmcon_nil() => 
+(
+  strm_strmize(ys))
+|
+strmcon_cons(x1, xs) =>
+(
+  strmcon_vt_cons(x1, auxmain(xs, ys))))
+}(*where*)//end-of-[strm_append_vt(xs,ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -409,6 +409,19 @@ strm_ifilter$f2un
 //
 fun
 <x0:t0>
+strm_strmize
+(xs: strm(x0)): strm_vt(x0)
+fun
+<x0:t0>
+strq_strqize
+{n0:i0}
+(xs: strq(x0,n0)): strq_vt(x0,n0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
 strm_listize
 (xs: strm(x0)): list_vt(x0)
 fun
