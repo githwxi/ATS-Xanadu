@@ -38,6 +38,57 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0:t0 >
+strm_forall
+  ( xs ) =
+(
+  auxmain(xs)) where
+{
+fun
+auxmain
+(xs: strm(x0)): bool =
+(
+case+ !xs of
+|strmcon_nil
+( (*void*) ) => true
+|strmcon_cons
+(  x1, xs  ) =>
+(
+if
+forall$test
+< x0 >( x1 )
+then auxmain(xs) else false)
+)(*case+*)//end-of-[auxmain(xs)]
+}(*where*)//end-of-[strm_forall(xs)]
+//
+#impltmp
+{ x0:t0 }
+gseq_forall
+<strm(x0)><x0> = strm_forall<x0>(*0*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+strm_forall$f1un
+  (xs, test) =
+(
+strm_forall
+<  x0  >(  xs  )) where
+{
+#impltmp
+forall$test<x0>(x0) = test(x0)
+}(*where*)//end-of-[strm_forall$f1un]
+//
+#impltmp
+{ x0:t0 }
+gseq_forall$f1un
+<strm(x0)>< x0 > = strm_forall$f1un<x0>(*0*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_strm001.dats] *)
 (***********************************************************************)
