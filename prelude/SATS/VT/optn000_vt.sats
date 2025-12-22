@@ -109,6 +109,33 @@ optn_vt_length1
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-22:
+Mon Dec 22 12:13:25 PM EST 2025
+*)
+//
+fun
+<x0:vt>
+optn_vt_free
+ {b0:b0}
+(xs: ~optn_vt(x0,b0)): void
+//
+#symload free with optn_vt_free of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+optn_vt_copy
+ {b0:b0}
+( xs
+: !optn_vt(x0,b0)): optn_vt(x0,b0)
+//
+#symload copy with optn_vt_copy of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_optn000_vt.sats] *)
 (***********************************************************************)
