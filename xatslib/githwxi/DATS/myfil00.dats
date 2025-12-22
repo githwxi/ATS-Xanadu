@@ -49,8 +49,8 @@ myfil00$fpath_readall$fwork
 (
 fpath,
 lam(cs) =>
-$UN.p2tr_set<r0>(p0, optn_vt_cons(cs))); r0
-end//let
+$UN.p2tr_set
+<r0>(p0, optn_vt_cons(cs)));(r0)end
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -95,12 +95,15 @@ optn_vt_nil((*0*))
 val p0 = $addr(r0)
 //
 in//let
+(
+  r0 ) where
+{
+val () =
 myfil00$fpath_createWrite$fwork
 (
 fpath,
 lam(cs) =>
-$UN.p2tr_set<r0>(p0, optn_vt_cons(cs))); r0
-end//let
+$UN.p2tr_set<r0>(p0, optn_vt_cons(cs)))}end
 //
 (* ****** ****** *)
 //
@@ -142,7 +145,6 @@ where{
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_githwxi_DATS_myfil00.dats] *)
+(***********************************************************************)

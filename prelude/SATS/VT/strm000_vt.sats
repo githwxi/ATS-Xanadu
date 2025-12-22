@@ -308,6 +308,35 @@ list_vt_make0_lstrq
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+Sun Dec 21 07:15:47 PM EST 2025
+*)
+fun<>
+strm_vt_beg(): strn
+fun<>
+strm_vt_end(): strn
+fun<>
+strm_vt_sep(): strn
+fun<>
+strm_vt_rst(): strn
+//
+fun
+<x0:vt>
+strm_vt_print0(xs: strm_vt(x0)): void
+//
+fun
+<x0:vt>
+strm_vt_all$print0(xs: strm_vt(x0)): void
+//
+fun<>
+strm_vt_print$len(): sint
+fun
+<x0:vt>
+strm_vt_len$print0(xs: strm_vt(x0), ln: sint): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_strn000_vt.sats] *)
 (***********************************************************************)

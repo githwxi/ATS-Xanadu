@@ -170,6 +170,34 @@ strq_append_vt
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-21:
+Sun Dec 21 07:13:28 PM EST 2025
+*)
+//
+fun<>
+strm_beg(): strn
+fun<>
+strm_end(): strn
+fun<>
+strm_sep(): strn
+fun<>
+strm_rst(): strn
+//
+fun
+<x0:t0>
+strm_print(xs: strm(x0)): void
+//
+fun
+<x0:t0>
+strm_all$print(xs: strm(x0)): void
+//
+fun<>
+strm_print$len(): sint
+fun
+<x0:t0>
+strm_len$print(xs: strm(x0), ln: sint): void
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_strm000.sats] *)
 (***********************************************************************)

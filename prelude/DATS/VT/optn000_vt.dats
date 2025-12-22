@@ -65,6 +65,23 @@ g_ptype<vt>((*0*)); pstrn(")"))
 (* ****** ****** *)
 //
 #impltmp
+< x0:vt >
+g_free<
+optn_vt(vt)>
+(    xs    ) =
+(
+case+ xs of
+| ~
+optn_vt_nil
+( (*void*) ) => ()
+| ~
+optn_vt_cons
+(    x1    ) => g_free<x0>(x1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 <(*tmp*)>
 optn_vt_nil_
   ((*0*)) =
