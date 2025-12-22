@@ -221,6 +221,11 @@ list_vt_strqize0
 {ln:i0}
 (xs: ~list_vt(x0, ln)): strq_vt(x0, ln)
 //
+#symload
+strmize0 with list_vt_strmize0 of 1000
+#symload
+strqize0 with list_vt_strqize0 of 1000
+//
 fun
 <x0:vt>
 list_vt_rstrmize0
@@ -230,6 +235,11 @@ fun
 list_vt_rstrqize0
 {ln:i0}
 (xs: ~list_vt(x0, ln)): strq_vt(x0, ln)
+//
+#symload
+rstrmize0 with list_vt_rstrmize0 of 1000
+#symload
+rstrqize0 with list_vt_rstrqize0 of 1000
 //
 (* ****** ****** *)
 //
@@ -243,6 +253,11 @@ fun
 list_vt_rlistize0
 {ln:i0}
 (xs: ~list_vt(x0, ln)): list_vt(x0, ln)
+//
+#symload
+listize0 with list_vt_listize0 of 1000
+#symload
+rlistize0 with list_vt_rlistize0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
