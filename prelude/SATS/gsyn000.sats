@@ -972,6 +972,7 @@ gs_println_a10(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9): void
 //
 (* ****** ****** *)
 //
+#symload println with gs_println_a0
 #symload println with gs_println_a1
 //
 #symload printsln with gs_println_a0
