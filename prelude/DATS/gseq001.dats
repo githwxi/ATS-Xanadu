@@ -169,13 +169,6 @@ exists$test<x0>(x0) = test(x0)//impl
 //
 (* ****** ****** *)
 //
-(*
-(*
-HX-2025-12-22:
-[gseq_rforall] should be
-based on [gseq_rlistize]
-for uni-directional [gseq]!
-*)
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -189,8 +182,14 @@ where
 #impltmp
 forall$test0<x0> = rforall$test<x0>
 }
-*)
 //
+(*
+(*
+HX-2025-12-22:
+[gseq_rforall] should be
+based on [gseq_rlistize]
+for uni-directional [gseq]?
+*)
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -204,6 +203,7 @@ where
 #impltmp
 forall$test0<x0> = rforall$test<x0>
 }
+*)
 //
 #impltmp
 < xs:t0 >
@@ -1431,6 +1431,7 @@ imap$fopr<x0><y0>(i0, x0) = fopr(i0, x0)
 HX-2024-07-28:
 Sun 28 Jul 2024 05:43:53 PM EDT
 *)
+//
 #impltmp
 < xs:t0 >
 < x0:t0 >
