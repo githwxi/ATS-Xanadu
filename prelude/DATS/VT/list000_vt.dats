@@ -193,7 +193,7 @@ list_vt_nil() => j0
 | ~
 list_vt_cons(x1, xs) =>
 (
-  free(x1); loop(xs, j0+1)))
+  g_free<x0>(x1); loop(xs, j0+1)))
 }
 //
 #impltmp
@@ -613,20 +613,19 @@ folditm$fopr0
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 (*
 HX-2025-12-15:
 Mon Dec 15 04:37:34 PM EST 2025
 *)
 //
 #impltmp
-< a:vt >
-list_vt_make0_lstrm = strm_vt_listize0<a>
-//end-of-[impltmp<a:t0>(list_vt_make0_lstrm(xs))]
+< x0:vt >
+list_vt_make0_lstrm = strm_vt_listize0<x0>
+//endof[impltmp<x0:vt>(list_vt_make0_lstrm(xs))]
 #impltmp
-< a:vt >
-list_vt_make0_lstrq = strq_vt_listize0<a>
-//end-of-[impltmp<a:t0>(list_vt_make0_lstrq(xs))]
+< x0:vt >
+list_vt_make0_lstrq = strq_vt_listize0<x0>
+//endof[impltmp<x0:vt>(list_vt_make0_lstrq(xs))]
 //
 (* ****** ****** *)
 (* ****** ****** *)

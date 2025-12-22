@@ -1671,26 +1671,26 @@ fun
 <x0:vt>
 <y0:vt>
 <e1:vt>
-gseq_map$e1nv0$f1un_llist
+gseq_map$e1nv0$f2un_llist
 ( xs: ~xs
 , e1: !e1, fopr: (~x0, !e1)->(y0)): list_vt(y0)
 #symload
-gseq_map0_llist with gseq_map$e1nv0$f1un_llist of 0100
+gseq_map0_llist with gseq_map$e1nv0$f2un_llist of 0100
 #symload
-gseq_map$e1nv0_llist with gseq_map$e1nv0$f1un_llist of 0100
+gseq_map$e1nv0_llist with gseq_map$e1nv0$f2un_llist of 0100
 //
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 <e1:vt>
-gseq_map$e1nv1$f1un_llist
+gseq_map$e1nv1$f2un_llist
 ( xs: !xs
 , e1: !e1, fopr: (!x0, !e1)->(y0)): list_vt(y0)
 #symload
-gseq_map1_llist with gseq_map$e1nv1$f1un_llist of 0100
+gseq_map1_llist with gseq_map$e1nv1$f2un_llist of 0100
 #symload
-gseq_map$e1nv1_llist with gseq_map$e1nv1$f1un_llist of 0100
+gseq_map$e1nv1_llist with gseq_map$e1nv1$f2un_llist of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1730,25 +1730,25 @@ fun
 <x0:vt>
 <y0:vt>
 <e1:vt>
-gseq_map$e1nv0$f1un_lstrm
+gseq_map$e1nv0$f2un_lstrm
 ( xs: ~xs
 , e1: !e1, fopr: (~x0, !e1)->(y0)): strm_vt(y0)
 #symload
-gseq_map0_lstrm with gseq_map$e1nv0$f1un_lstrm of 0100
+gseq_map0_lstrm with gseq_map$e1nv0$f2un_lstrm of 0100
 #symload
-gseq_map$e1nv0_lstrm with gseq_map$e1nv0$f1un_lstrm of 0100
+gseq_map$e1nv0_lstrm with gseq_map$e1nv0$f2un_lstrm of 0100
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 <e1:vt>
-gseq_map$e1nv0$f1un_lstrq
+gseq_map$e1nv0$f2un_lstrq
 ( xs: ~xs
 , e1: !e1, fopr: (~x0, !e1)->(y0)): strq_vt(y0)
 #symload
-gseq_map0_lstrq with gseq_map$e1nv0$f1un_lstrq of 0100
+gseq_map0_lstrq with gseq_map$e1nv0$f2un_lstrq of 0100
 #symload
-gseq_map$e1nv0_lstrq with gseq_map$e1nv0$f1un_lstrq of 0100
+gseq_map$e1nv0_lstrq with gseq_map$e1nv0$f2un_lstrq of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
