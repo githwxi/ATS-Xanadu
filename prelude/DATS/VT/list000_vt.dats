@@ -247,17 +247,17 @@ Wed Jul  2 07:23:22 PM EDT 2025
 *)
 //
 #impltmp
-<a>(*tmp*)
+< x0:vt >
 list_vt_free
-  {n}(xs) =
+  {n0}(xs) =
 ( loop(xs) ) where
 {
 //
 fnx
 loop
-{n:nat}.<n>.
+{n0:n0}.<n0>.
 ( xs:
-~ list_vt(a, n)): void =
+~ list_vt(x0, n0)): void =
 (
 case+ xs of
 | ~
@@ -266,9 +266,18 @@ list_vt_nil() => ()
 list_vt_cons(x0, xs) =>
 let
   val () =
-  g_free<a>(x0) in loop(xs) end)
+  g_free<x0>(x0) in loop(xs) end)
 //
 }(*where*)//end-of-[list_vt_free(xs)]
+//
+#impltmp
+{ x0:vt }
+g_free<
+list_vt(x0)> = list_vt_free<x0>(*void*)
+#impltmp
+{ x0:vt }
+gseq_free<
+list_vt(x0)><x0> = list_vt_free<x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -279,18 +288,18 @@ Sat 27 Jul 2024 05:56:34 PM EDT
 *)
 //
 #impltmp
-<a>(*tmp*)
+< x0:vt >
 list_vt_copy
   ( xs ) =
 let
 //
 fnx
 loop
-{n:nat}.<n>.
+{n0:n0}.<n0>.
 ( xs:
-! list_vt(a,n)
+! list_vt(x0, n0)
 , r0:
-& (?list_vt(a)>>list_vt(a,n))
+& (?list_vt(x0))>>list_vt(x0, n0)
 ) : void =
 (
 //
@@ -301,7 +310,7 @@ list_vt_nil() =>
 | !
 list_vt_cons(x0, xs) =>
 let
-val x0 = g_copy<a>(x0)
+val x0 = g_copy<x0>(x0)
 val () =
 (r0 := list_vt_cons(x0, _))
 in//let
@@ -310,13 +319,17 @@ in//let
 in//let
 let
 var r0:
-list_vt(a) in loop(xs, r0); r0 end
+list_vt(x0) in loop(xs, r0); r0 end
 end (*let*) // end of [list_vt_copy]
 //
 #impltmp
 { x0:vt }
-gseq_copy
-<list_vt(x0)><x0> = list_vt_copy<x0>(*void*)
+g_copy<
+list_vt(x0)> = list_vt_copy<x0>(*void*)
+#impltmp
+{ x0:vt }
+gseq_copy<
+list_vt(x0)><x0> = list_vt_copy<x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
