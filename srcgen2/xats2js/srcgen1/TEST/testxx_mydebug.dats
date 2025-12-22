@@ -21,19 +21,6 @@ For testing xats2js!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-fun
-fact2
-(n: sint): sint =
-let
-#typedef x0 = sint
-#typedef r0 = sint
-in//let
-folditm
-(n, 1, lam(r: r0, i: x0) => r*(i+1))
-end//let//end-of-[fact2(n)]
-(* ****** ****** *)
-////
-(* ****** ****** *)
 //
 val xs as
 list_cons
