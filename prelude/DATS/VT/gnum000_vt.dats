@@ -86,45 +86,6 @@ g_mod00<x0> = g_mod<x0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_add0(xs) =
-let
-val r0 = g_0<x0>()
-in//let
-(
-gseq_folditm0<xs><x0>(xs, r0)
-) where
-{
-#impltmp
-folditm$fopr0
-<x0><x0>(r0, x0) = g_add00<x0>(r0, x0)
-}
-end//let//end-of-[gseq_add0(xs)]
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_mul0(xs) =
-let
-val r0 = g_1<x0>()
-in//let
-(
-gseq_folditm0<xs><x0>(xs, r0)
-) where
-{
-#impltmp
-folditm$fopr0
-<x0><x0>(r0, x0) = g_mul00<x0>(r0, x0)
-}
-end//let//end-of-[gseq_mul0(xs)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_gnum000_vt.dats] *)
 (***********************************************************************)

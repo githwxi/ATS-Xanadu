@@ -421,6 +421,10 @@ maplist$fopr0(x0: ~x0): list_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
+mapstrm$fopr0(x0: ~x0): strm_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
 mapstrq$fopr0(x0: ~x0): strq_vt(y0)
 //
 fun
@@ -431,6 +435,10 @@ fun
 <x0:vt>
 <y0:vt>
 maplist$fopr1(x0: !x0): list_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+mapstrm$fopr1(x0: !x0): strm_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
