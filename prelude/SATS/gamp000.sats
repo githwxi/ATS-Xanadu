@@ -46,17 +46,17 @@ For print0/1 as well
 *)
 fun
 <amp:vt>
-<key:t0>
+<key:vt>
 <itm:vt>
 gamp_beg((*void*)): strn
 fun
 <amp:vt>
-<key:t0>
+<key:vt>
 <itm:vt>
 gamp_end((*void*)): strn
 fun
 <amp:vt>
-<key:t0>
+<key:vt>
 <itm:vt>
 gamp_sep((*void*)): strn
 //

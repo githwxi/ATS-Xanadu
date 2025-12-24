@@ -85,16 +85,52 @@ optn_vt_nilq1
   (xs) =
 (
 case+ xs of
-| !
+| // !
 optn_vt_nil() => true
-| !
+| // !
 optn_vt_cons _ => false)
-//
 #impltmp
 { x0:vt }
 gseq_nilq1
 <optn_vt(x0)><x0> =
 optn_vt_nilq1<>{x0}(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+optn_vt_nilq0
+  (xs) =
+(
+case+ xs of
+| ~
+optn_vt_nil() => true
+| ~
+optn_vt_cons(x0) =>
+let
+val () =
+g_free<a>(x0) in false end
+)
+#impltmp
+{ x0:vt }
+gseq_nilq0
+<optn_vt(x0)><x0> =
+optn_vt_nilq0<x0>(* void *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+optn_vt_consq1
+  ( xs ) =
+(
+ not(optn_vt_nilq1<>(xs)))
+#impltmp
+< a: vt >
+optn_vt_consq0
+  ( xs ) =
+(
+ not(optn_vt_nilq0<a>(xs)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
