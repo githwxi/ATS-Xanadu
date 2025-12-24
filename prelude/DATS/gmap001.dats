@@ -41,8 +41,8 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 <map:t0>
-<key:vt>
-<itm:vt>
+<key:t0>
+<itm:t0>
 gmap_key$strmize
   ( map ) =
 let
@@ -64,8 +64,8 @@ end//let//end(gmap_key$strmize(map))
 //
 #impltmp
 <map:t0>
-<key:vt>
-<itm:vt>
+<key:t0>
+<itm:t0>
 gmap_val$strmize
   ( map ) =
 let
@@ -87,8 +87,8 @@ end//let//end(gmap_val$strmize(map))
 //
 #impltmp
 <map:t0>
-<key:vt>
-<itm:vt>
+<key:t0>
+<itm:t0>
 gmap_keyval$strmize =
 gseq_strmize1<map><(key,itm)>(*void*)
 //
