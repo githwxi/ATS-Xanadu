@@ -209,6 +209,14 @@ list_iforitm$f2un
 #symload iforitm with list_iforitm$f2un of 1000
 #symload iforitm$fun with list_iforitm$f2un of 1000
 //
+fun
+<x0:t0>
+list_irforitm$f2un
+( xs
+: list(x0), work: (ni,x0) -> void): void
+#symload irforitm with list_irforitm$f2un of 1000
+#symload irforitm$fun with list_irforitm$f2un of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
