@@ -153,12 +153,12 @@ fun
 <xs:t0>
 <x0:vt>
 <y0:vt>
-gasz_map_a1sz(xs: xs): a1sz(y0)
+gasq_map_a1sz(xs: xs): a1sz(y0)
 fun
 <xs:t0>
 <x0:vt>
 <y0:vt>
-gasz_map_la1sz(xs: xs): a1sz_vt(y0)
+gasq_map_la1sz(xs: xs): a1sz_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -166,13 +166,13 @@ fun
 <xs:t0>
 <x0:vt>
 <y0:vt>
-gasz_map$f1un_a1sz
+gasq_map$f1un_a1sz
 (xs: xs, fopr: (!x0)->(y0)): a1sz(y0)
-#symload map_a1sz with gasz_map$f1un_a1sz of 0100
+#symload map_a1sz with gasq_map$f1un_a1sz of 0100
 (*
 HX-2024-08-18:
 This is another way to name the function:
-#symload map_a1sz with gasz_map_a1sz_$f1un of 0100
+#symload map_a1sz with gasq_map_a1sz_$f1un of 0100
 *)
 //
 (* ****** ****** *)
@@ -181,9 +181,9 @@ fun
 <xs:t0>
 <x0:vt>
 <y0:vt>
-gasz_map$f1un_la1sz
+gasq_map$f1un_la1sz
 (xs: xs, fopr: (!x0)->(y0)): a1sz_vt(y0)
-#symload map_la1sz with gasz_map$f1un_la1sz of 0100
+#symload map_la1sz with gasq_map$f1un_la1sz of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

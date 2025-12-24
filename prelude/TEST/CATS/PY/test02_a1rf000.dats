@@ -31,7 +31,7 @@ where
 {
 #impltmp
 { x0:t0 }
-gasz_length
+gasq_length
 <a1rf(x0)><x0>(A) = ( 10 ) }
 //
 (* ****** ****** *)
@@ -48,7 +48,7 @@ where
 {
 #impltmp
 { x0:t0 }
-gasz_length<a1rf(x0)><x0>(A1) = (N)
+gasq_length<a1rf(x0)><x0>(A1) = (N)
 }
 //
 (* ****** ****** *)
@@ -63,7 +63,7 @@ where
 {
 #impltmp
 { x0:t0 }
-gasz_length<a1rf(x0)><x0>(A) = n }
+gasq_length<a1rf(x0)><x0>(A) = n }
 //
 val () =
 (

@@ -50,9 +50,9 @@
 #include "prelude/SATS/gseq001.sats"
 #include "prelude/SATS/gseq002.sats"
 //
-#include "prelude/SATS/gasz000.sats"
-#include "prelude/SATS/gasz001.sats"
-#include "prelude/SATS/gasz002.sats"
+#include "prelude/SATS/gasq000.sats"
+#include "prelude/SATS/gasq001.sats"
+#include "prelude/SATS/gasq002.sats"
 //
 #include "prelude/SATS/gmap000.sats"
 #include "prelude/SATS/gmap001.sats"
@@ -124,9 +124,9 @@ HX: for viewtypes (that is, linear types)
 #include "prelude/SATS/VT/gseq001_vt.sats"
 #include "prelude/SATS/VT/gseq002_vt.sats"
 //
-#include "prelude/SATS/VT/gasz000_vt.sats"
-#include "prelude/SATS/VT/gasz001_vt.sats"
-#include "prelude/SATS/VT/gasz002_vt.sats"
+#include "prelude/SATS/VT/gasq000_vt.sats"
+#include "prelude/SATS/VT/gasq001_vt.sats"
+#include "prelude/SATS/VT/gasq002_vt.sats"
 //
 #include "prelude/SATS/VT/gsyn000_vt.sats"
 #include "prelude/SATS/VT/gsyn001_vt.sats"

@@ -86,7 +86,7 @@ a0rf_get<x0>(arf) in
 //
 #impltmp
 { x0:vt }
-gasz_forall
+gasq_forall
 <a0rf(x0)><x0>
  (   arf   ) =
 let
@@ -101,7 +101,7 @@ owed_vt_return0(pf, x0) in btf end
 //
 #impltmp
 { x0:vt }
-gasz_rforall
+gasq_rforall
 <a0rf(x0)><x0>
  (   arf   ) =
 let
@@ -120,7 +120,7 @@ owed_vt_return0(pf, x0) in btf end
 #impltmp
 < x0:vt >
 a1rf_strmize =
-gasz_strmize<a1rf(x0)><x0>(*void*)
+gasq_strmize<a1rf(x0)><x0>(*void*)
 //
 (* ****** ****** *)
 //
@@ -128,12 +128,12 @@ gasz_strmize<a1rf(x0)><x0>(*void*)
 { x0:t0 }
 gseq_strmize
 <a1rf(x0)><x0> =
-gasz_strmize<a1rf(x0)><x0>(*void*)
+gasq_strmize<a1rf(x0)><x0>(*void*)
 #impltmp
 { x0:vt }
 gseq_strmize1
 <a1rf(x0)><x0> =
-gasz_strmize<a1rf(x0)><x0>(*void*)
+gasq_strmize<a1rf(x0)><x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -144,7 +144,7 @@ gseq_forall
 <a1rf(x0)><x0>
   ( A ) =
 (
-gasz_forall
+gasq_forall
 <a1rf(x0)><x0>(A)) where
 {
 #impltmp
@@ -154,7 +154,7 @@ forall$test1<x0> = forall$test<x0>
 { x0:vt }
 gseq_forall1
 <a1rf(x0)><x0> =
-gasz_forall<a1rf(x0)><x0>(* void *)
+gasq_forall<a1rf(x0)><x0>(* void *)
 //
 (* ****** ****** *)
 //
@@ -175,7 +175,7 @@ rforall$test1<x0> = rforall$test<x0>
 { x0:vt }
 gseq_rforall1
 <a1rf(x0)><x0> =
-gasz_rforall<a1rf(x0)><x0>(* void *)
+gasq_rforall<a1rf(x0)><x0>(* void *)
 //
 (* ****** ****** *)
 //
@@ -185,10 +185,10 @@ a1rf_forall$size
   (A, n) =
 let
 #impltmp
-gasz_length
+gasq_length
 <a1rf(x0)><x0>(A) = (n)
 in//let
-  gasz_forall<a1rf(x0)><x0>(A)
+  gasq_forall<a1rf(x0)><x0>(A)
 end//let//end-of-[a1rf_forall$size]
 //
 #impltmp

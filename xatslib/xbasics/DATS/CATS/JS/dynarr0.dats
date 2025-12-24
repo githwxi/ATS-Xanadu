@@ -112,7 +112,7 @@ end(*let*)//end(impltmp(g_print<jsa1(a)>))
 { a: vt }
 g_forall
 <jsa1(a)> =
-gasz_forall<jsa1(a)><a>
+gasq_forall<jsa1(a)><a>
 //
 #impltmp
 { a: vt }
@@ -135,7 +135,7 @@ gseq_length
 jsdasz_length<>{x0}(*void*)
 #impltmp
 { x0:vt }
-gasz_length
+gasq_length
 <jsa1(x0)><x0> =
 jsdasz_length<>{x0}(*void*)
 //
@@ -441,12 +441,12 @@ Wed 24 Jul 2024 09:09:12 PM EDT
 //
 #impltmp
 { x0:t0 }
-gasz_get$at
+gasq_get$at
 <jsa1(x0)><x0> =
 jsdasz_get$at<>{x0}(*void*)
 #impltmp
 { x0:t0 }
-gasz_set$at
+gasq_set$at
 <jsa1(x0)><x0> =
 jsdasz_set$at<>{x0}(*void*)
 //
@@ -484,17 +484,17 @@ XATS2JS_jsdasz_set$at
 //
 #impltmp
 { x0:t0 }
-$UN.gasz_get$at$raw
+$UN.gasq_get$at$raw
 <jsa1(x0)><x0>(A, i) =
 jsdasz_get$at<>{x0}(A, i)
-(*where*)//end-[gasz_get$at$raw(...)]
+(*where*)//end-[gasq_get$at$raw(...)]
 //
 #impltmp
 { x0:t0 }
-$UN.gasz_set$at$raw
+$UN.gasq_set$at$raw
 <jsa1(x0)><x0>(A, i, x) =
 jsdasz_set$at<>{x0}(A, i, x)
-(*where*)//end-of-[gasz_set$at$raw(...)]
+(*where*)//end-of-[gasq_set$at$raw(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -509,23 +509,23 @@ writing these boilerplates?
 { x0:t0 }
 gseq_strmize0
 <jsa1(x0)><x0> =
-gasz_strmize<jsa1(x0)><x0>(*0*)
+gasq_strmize<jsa1(x0)><x0>(*0*)
 #impltmp
 { x0:vt }
 gseq_strmize1
 <jsa1(x0)><x0> =
-gasz_strmize<jsa1(x0)><x0>(*0*)
+gasq_strmize<jsa1(x0)><x0>(*0*)
 //
 #impltmp
 { x0:t0 }
 gseq_rstrmize0
 <jsa1(x0)><x0> =
-gasz_rstrmize<jsa1(x0)><x0>(*0*)
+gasq_rstrmize<jsa1(x0)><x0>(*0*)
 #impltmp
 { x0:vt }
 gseq_rstrmize1
 <jsa1(x0)><x0> =
-gasz_rstrmize<jsa1(x0)><x0>(*0*)
+gasq_rstrmize<jsa1(x0)><x0>(*0*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -548,7 +548,7 @@ forall$test0<x0>
 //
 #impltmp
 { x0:t0 }
-gasz_forall
+gasq_forall
 <jsa1(x0)><x0>
   ( A ) =
 jsdasz_forall$f1un
@@ -563,7 +563,7 @@ gseq_forall
 <jsa1(x0)><x0>
   ( A ) =
 (
-gasz_forall<jsa1(x0)><x0>(A)
+gasq_forall<jsa1(x0)><x0>(A)
 ) where
 {
 #impltmp
@@ -574,7 +574,7 @@ forall$test1<x0> = forall$test<x0>
 { x0:vt }
 gseq_forall1
 <jsa1(x0)><x0> =
-gasz_forall<jsa1(x0)><x0>(*0*)
+gasq_forall<jsa1(x0)><x0>(*0*)
 //
 #impltmp
 <(*tmp*)>
@@ -609,7 +609,7 @@ jsdasz_rforall$f1un
 //
 #impltmp
 { x0:t0 }
-gasz_rforall
+gasq_rforall
 <jsdasz(x0)><x0>
   ( A ) =
 jsdasz_rforall$f1un
@@ -622,7 +622,7 @@ jsdasz_rforall$f1un
 { x0:vt }
 gseq_rforall1
 <jsa1(x0)><x0> =
-gasz_rforall<jsa1(x0)><x0>
+gasq_rforall<jsa1(x0)><x0>
 //
 #impltmp
 <(*tmp*)>
@@ -645,7 +645,7 @@ XATS2JS_jsdasz_rforall$f1un
 //
 #impltmp
 { x0:t0 }
-gasz_iforall
+gasq_iforall
 <jsa1(x0)><x0>
   ( A ) =
 jsdasz_iforall$f2un
@@ -660,7 +660,7 @@ gseq_iforall
 <jsa1(x0)><x0>
   ( A ) =
 (
-gasz_iforall<jsa1(x0)><x0>(A)
+gasq_iforall<jsa1(x0)><x0>(A)
 ) where
 {
 #impltmp
@@ -671,7 +671,7 @@ iforall$test1<x0> = iforall$test<x0>
 { x0:vt }
 gseq_iforall1
 <jsa1(x0)><x0> =
-gasz_iforall<jsa1(x0)><x0>
+gasq_iforall<jsa1(x0)><x0>
 //
 #impltmp
 <(*tmp*)>
@@ -736,17 +736,17 @@ XATS2JS_jsdasz_imapref$f1un
 (*
 #impltmp
 { x0:vt }
-gasz_sortref
+gasq_sortref
 <jsa1(x0)><x0> =
 jsdasz_sortref<x0>(*void*)
 #impltmp
 { x0:vt }
-gasz_sortref0
+gasq_sortref0
 <jsa1(x0)><x0> =
 jsdasz_sortref<x0>(*void*)
 #impltmp
 { x0:vt }
-gasz_sortref1
+gasq_sortref1
 <jsa1(x0)><x0> =
 jsdasz_sortref<x0>(*void*)
 *)
@@ -869,7 +869,7 @@ Fri 09 Aug 2024 11:57:45 AM EDT
 fun
 <a:vt>
 jarray_listize =
-gasz_listize<jsa1(a)><a>
+gasq_listize<jsa1(a)><a>
 #symload
 listize with jarray_listize of 1000
 //
@@ -885,7 +885,7 @@ jsdasz_listize
 jsdasz_listize
  ( xs ) =
 (
-  gasz_listize<jsa1(a)><a>(xs))
+  gasq_listize<jsa1(a)><a>(xs))
 #symload
 listize with jsdasz_listize of 1000
 //
@@ -901,7 +901,7 @@ jsdasz_strmize
 jsdasz_strmize
  ( xs ) =
 (
-  gasz_strmize<jsa1(a)><a>(xs))
+  gasq_strmize<jsa1(a)><a>(xs))
 #symload
 strmize with jsdasz_strmize of 1000
 //
@@ -915,7 +915,7 @@ jsdasz_strqize
 jsdasz_strqize
  ( xs ) =
 (
-  gasz_strqize<jsa1(a)><a>(xs))
+  gasq_strqize<jsa1(a)><a>(xs))
 #symload
 strqize with jsdasz_strqize of 1000
 //
@@ -937,11 +937,11 @@ GSEQ with GSEQ_make_jsdasz of 1000
 //
 #extern
 fcast // fun
-GASZ_make_jsdasz
+GASQ_make_jsdasz
 {a:vt}
-(A:jsa1(a)): GASZ(jsa1(a), a)
+(A:jsa1(a)): GASQ(jsa1(a), a)
 #symload
-GASZ with GASZ_make_jsdasz of 1000
+GASQ with GASQ_make_jsdasz of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

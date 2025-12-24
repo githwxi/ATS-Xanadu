@@ -632,7 +632,7 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "srcgen1/prelude/SATS/gasz000.sats")
+, "srcgen1/prelude/SATS/gasq000.sats")
 //
 val () =
 the_prelude_load
@@ -785,7 +785,7 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "srcgen1/prelude/SATS/VT/gasz000_vt.sats")
+, "srcgen1/prelude/SATS/VT/gasq000_vt.sats")
 //
 val () =
 the_prelude_load

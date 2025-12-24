@@ -65,18 +65,18 @@ g_ptype
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_unmk
-(  gasz  ) =
+GASQ_unmk
+(  gasq  ) =
 (
-  $UN.castxy(gasz))
+  $UN.castxy(gasq))
 //
 #impltmp
 { xs:t0 }
 { x0:t0 }
 g_ptype
-<GASZ(xs,x0)>
+<GASQ(xs,x0)>
 (  (*void*)  ) =
-( pstrn"GASZ("
+( pstrn"GASQ("
 ; g_ptype<xs>(); pstrn(",")
 ; g_ptype<x0>(); pstrn(")"))
 //
@@ -435,49 +435,49 @@ gseq_irfolditm$f3un
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_length
-  (gasz) =
+GASQ_length
+  (gasq) =
 (
-gasz_length
-<xs><x0>(GASZ_unmk<xs><x0>(gasz)))
+gasq_length
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_listize
-  (gasz) =
+GASQ_listize
+  (gasq) =
 (
-gasz_listize
-<xs><x0>(GASZ_unmk<xs><x0>(gasz)))
+gasq_listize
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_rlistize
-  (gasz) =
+GASQ_rlistize
+  (gasq) =
 (
-gasz_rlistize
-<xs><x0>(GASZ_unmk<xs><x0>(gasz)))
+gasq_rlistize
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-GASZ_strmize
-  (gasz) =
+GASQ_strmize
+  (gasq) =
 (
-gasz_strmize
-<xs><x0>(GASZ_unmk<xs><x0>(gasz)))
+gasq_strmize
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-GASZ_rstrmize
-  (gasz) =
+GASQ_rstrmize
+  (gasq) =
 (
-gasz_rstrmize
-<xs><x0>(GASZ_unmk<xs><x0>(gasz)))
+gasq_rstrmize
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -485,68 +485,68 @@ gasz_rstrmize
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_forall
-  (gasz) =
+GASQ_forall
+  (gasq) =
 (
-gasz_forall
-<xs><x0>(GASZ_unmk<xs><x0>(gasz)))
+gasq_forall
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_exists
-  (gasz) =
+GASQ_exists
+  (gasq) =
 (
-gasz_exists
-<xs><x0>(GASZ_unmk<xs><x0>(gasz)))
+gasq_exists
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_rforall
-  (gasz) =
+GASQ_rforall
+  (gasq) =
 (
-gasz_rforall
-<xs><x0>(GASZ_unmk<xs><x0>(gasz)))
+gasq_rforall
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_iforall
-  (gasz) =
+GASQ_iforall
+  (gasq) =
 (
-gasz_iforall
-<xs><x0>(GASZ_unmk<xs><x0>(gasz)))
+gasq_iforall
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_irforall
-  (gasz) =
+GASQ_irforall
+  (gasq) =
 (
-gasz_irforall
-<xs><x0>(GASZ_unmk<xs><x0>(gasz)))
+gasq_irforall
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_forall$f1un
-  (gasz, test) =
+GASQ_forall$f1un
+  (gasq, test) =
 (
-gasz_forall$f1un
-<xs><x0>(GASZ_unmk<xs><x0>(gasz), test))
+gasq_forall$f1un
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_rforall$f1un
-  (gasz, test) =
+GASQ_rforall$f1un
+  (gasq, test) =
 (
-gasz_rforall$f1un
-<xs><x0>(GASZ_unmk<xs><x0>(gasz), test))
+gasq_rforall$f1un
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -554,22 +554,22 @@ gasz_rforall$f1un
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_exists$f1un
-  (gasz, test) =
+GASQ_exists$f1un
+  (gasq, test) =
 (
-gasz_exists$f1un
-<xs><x0>(GASZ_unmk<xs><x0>(gasz), test))
+gasq_exists$f1un
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_rexists$f1un
-  (gasz, test) =
+GASQ_rexists$f1un
+  (gasq, test) =
 (
-gasz_rexists$f1un
-<xs><x0>(GASZ_unmk<xs><x0>(gasz), test))
+gasq_rexists$f1un
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -579,25 +579,25 @@ HX-2024-08-17:
 Sat 17 Aug 2024 07:34:48 AM EDT
 The following style seems to be a
 superior alternative to introducing
-templates like GASZ_foritm?
+templates like GASQ_foritm?
 *)
 //
 #impltmp
 { xs:t0
 , x0:t0 }
 gseq_foritm
-<GASZ(xs,x0)><x0>
- ( gasz ) =
+<GASQ(xs,x0)><x0>
+ ( gasq ) =
 gseq_foritm
-<xs><x0>(GASZ_unmk<xs><x0>(gasz))
+<xs><x0>(GASQ_unmk<xs><x0>(gasq))
 #impltmp
 { xs:t0
 , x0:t0 }
 gseq_foritm$f1un
-<GASZ(xs,x0)><x0>
- (gasz, test) =
+<GASQ(xs,x0)><x0>
+ (gasq, test) =
 gseq_foritm$f1un
-<xs><x0>(GASZ_unmk<xs><x0>(gasz), test)
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test)
 //
 (* ****** ****** *)
 //
@@ -605,19 +605,19 @@ gseq_foritm$f1un
 { xs:t0
 , x0:t0 }
 gseq_rforitm
-<GASZ(xs,x0)><x0>
- ( gasz ) =
+<GASQ(xs,x0)><x0>
+ ( gasq ) =
 gseq_rforitm
-<xs><x0>(GASZ_unmk<xs><x0>(gasz))
+<xs><x0>(GASQ_unmk<xs><x0>(gasq))
 //
 #impltmp
 { xs:t0
 , x0:t0 }
 gseq_rforitm$f1un
-<GASZ(xs,x0)><x0>
- (gasz, test) =
+<GASQ(xs,x0)><x0>
+ (gasq, test) =
 gseq_rforitm$f1un
-<xs><x0>(GASZ_unmk<xs><x0>(gasz), test)
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test)
 //
 (* ****** ****** *)
 //
@@ -625,19 +625,19 @@ gseq_rforitm$f1un
 { xs:t0
 , x0:t0 }
 gseq_iforitm
-<GASZ(xs,x0)><x0>
- ( gasz ) =
+<GASQ(xs,x0)><x0>
+ ( gasq ) =
 gseq_iforitm
-<xs><x0>(GASZ_unmk<xs><x0>(gasz))
+<xs><x0>(GASQ_unmk<xs><x0>(gasq))
 //
 #impltmp
 { xs:t0
 , x0:t0 }
 gseq_iforitm$f2un
-<GASZ(xs,x0)><x0>
- (gasz, test) =
+<GASQ(xs,x0)><x0>
+ (gasq, test) =
 gseq_iforitm$f2un
-<xs><x0>(GASZ_unmk<xs><x0>(gasz), test)
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test)
 //
 (* ****** ****** *)
 //
@@ -645,19 +645,19 @@ gseq_iforitm$f2un
 { xs:t0
 , x0:t0 }
 gseq_irforitm
-<GASZ(xs,x0)><x0>
- ( gasz ) =
+<GASQ(xs,x0)><x0>
+ ( gasq ) =
 gseq_irforitm
-<xs><x0>(GASZ_unmk<xs><x0>(gasz))
+<xs><x0>(GASQ_unmk<xs><x0>(gasq))
 //
 #impltmp
 { xs:t0
 , x0:t0 }
 gseq_irforitm$f2un
-<GASZ(xs,x0)><x0>
- (gasz, test) =
+<GASQ(xs,x0)><x0>
+ (gasq, test) =
 gseq_irforitm$f2un
-<xs><x0>(GASZ_unmk<xs><x0>(gasz), test)
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test)
 //
 (* ****** ****** *)
 (* ****** ****** *)

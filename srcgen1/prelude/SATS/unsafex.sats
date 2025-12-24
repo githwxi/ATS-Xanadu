@@ -249,35 +249,35 @@ used with caution!!!
 fun
 <xs:t0>
 <x0:t0>
-gasz_get$at$raw
+gasq_get$at$raw
 ( xs: xs, i0: ni): x0
 fun
 <xs:t0>
 <x0:t0>
-gasz_set$at$raw
+gasq_set$at$raw
 ( xs: xs, i0: ni, x0: x0): void
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_cget$at$raw
+gasq_cget$at$raw
 ( xs: xs, i0: ni): x0
 fun
 <xs:t0>
 <x0:vt>
-gasz_setf$at$raw
+gasq_setf$at$raw
 ( xs: xs, i0: ni, x0: x0): void
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_lget$at$raw
+gasq_lget$at$raw
 ( xs: xs
 , i0: ni): (owed(x0) | x0)
 fun
 <xs:t0>
 <x0:vt>
-gasz_lset$at$raw
+gasq_lset$at$raw
 ( pf: owed(x0)
 | xs: xs, i0: ni, x0: x0): void
 //
@@ -287,12 +287,12 @@ gasz_lset$at$raw
 fun
 <xs:vt>
 <x0:vt>
-gasz_get$at$raw1
+gasq_get$at$raw1
 (xs: !xs, i0: ni): (x0)
 fun
 <xs:vt>
 <x0:vt>
-gasz_set$at$raw1
+gasq_set$at$raw1
 (xs: !xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)

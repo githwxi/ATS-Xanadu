@@ -60,9 +60,9 @@ For persistent arrays
 *)
 //
 #abstype
-GASZ_type
+GASQ_type
 (xs: t0, x0: vt) <= xs
-#sexpdef GASZ = GASZ_type
+#sexpdef GASQ = GASQ_type
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -75,11 +75,11 @@ GSEQ_make
 fun
 <xs:t0>
 <x0:vt>
-GASZ_make
-(xs: xs): GASZ(xs, x0)
+GASQ_make
+(xs: xs): GASQ(xs, x0)
 //
 #symload GSEQ with GSEQ_make of 0100
-#symload GASZ with GASZ_make of 0100
+#symload GASQ with GASQ_make of 0100
 //
 (* ****** ****** *)
 //
@@ -91,11 +91,11 @@ GSEQ_unmk
 fun
 <xs:t0>
 <x0:vt>
-GASZ_unmk
-(gasz: GASZ(xs, x0)): (xs)
+GASQ_unmk
+(gasq: GASQ(xs, x0)): (xs)
 //
 #symload unmk with GSEQ_unmk of 0100
-#symload unmk with GASZ_unmk of 0100
+#symload unmk with GASQ_unmk of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -450,7 +450,7 @@ GSEQ_irfolditm$f3un
 //
 (*
 HX-2024-08-03:
-[GASZ] is for
+[GASQ] is for
 persistent arrays with size attched
 For instance, it should support ops
 like binary search.
@@ -462,27 +462,10 @@ like binary search.
 fun
 <xs:t0>
 <x0:vt>
-GASZ_length
-(gseq: GASZ(xs, x0)): nint
+GASQ_length
+(gseq: GASQ(xs, x0)): nint
 //
-#symload length with GASZ_length of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:vt>
-GASZ_listize
-(GASZ(xs,x0)): list_vt(x0)
-fun
-<xs:t0>
-<x0:vt>
-GASZ_rlistize
-(GASZ(xs,x0)): list_vt(x0)
-//
-#symload listize with GASZ_listize of 1000
-#symload rlistize with GASZ_rlistize of 1000
+#symload length with GASQ_length of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -490,16 +473,33 @@ GASZ_rlistize
 fun
 <xs:t0>
 <x0:vt>
-GASZ_strmize
-(GASZ(xs,x0)): strm_vt(x0)
+GASQ_listize
+(GASQ(xs,x0)): list_vt(x0)
 fun
 <xs:t0>
 <x0:vt>
-GASZ_rstrmize
-(GASZ(xs,x0)): strm_vt(x0)
+GASQ_rlistize
+(GASQ(xs,x0)): list_vt(x0)
 //
-#symload strmize with GASZ_strmize of 1000
-#symload rstrmize with GASZ_rstrmize of 1000
+#symload listize with GASQ_listize of 1000
+#symload rlistize with GASQ_rlistize of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+GASQ_strmize
+(GASQ(xs,x0)): strm_vt(x0)
+fun
+<xs:t0>
+<x0:vt>
+GASQ_rstrmize
+(GASQ(xs,x0)): strm_vt(x0)
+//
+#symload strmize with GASQ_strmize of 1000
+#symload rstrmize with GASQ_rstrmize of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -507,82 +507,82 @@ GASZ_rstrmize
 fun
 <xs:t0>
 <x0:vt>
-GASZ_forall
-(gasz: GASZ(xs, x0)): bool
+GASQ_forall
+(gasq: GASQ(xs, x0)): bool
 fun
 <xs:t0>
 <x0:vt>
-GASZ_exists
-(gasz: GASZ(xs, x0)): bool
+GASQ_exists
+(gasq: GASQ(xs, x0)): bool
 //
 fun
 <xs:t0>
 <x0:vt>
-GASZ_rforall
-(gasz: GASZ(xs, x0)): bool
+GASQ_rforall
+(gasq: GASQ(xs, x0)): bool
 fun
 <xs:t0>
 <x0:vt>
-GASZ_iforall
-(gasz: GASZ(xs, x0)): bool
+GASQ_iforall
+(gasq: GASQ(xs, x0)): bool
 fun
 <xs:t0>
 <x0:vt>
-GASZ_irforall
-(gasz: GASZ(xs, x0)): bool
+GASQ_irforall
+(gasq: GASQ(xs, x0)): bool
 //
-#symload forall with GASZ_forall of 1000
-#symload rforall with GASZ_rforall of 1000
-#symload iforall with GASZ_iforall of 1000
-#symload irforall with GASZ_irforall of 1000
+#symload forall with GASQ_forall of 1000
+#symload rforall with GASQ_rforall of 1000
+#symload iforall with GASQ_iforall of 1000
+#symload irforall with GASQ_irforall of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:vt>
-GASZ_forall$f1un
-( gasz: GASZ(xs, x0)
+GASQ_forall$f1un
+( gasq: GASQ(xs, x0)
 , test: ( !x0 )->bool): bool
 //
-#symload forall with GASZ_forall$f1un of 1000
-#symload forall$fun with GASZ_forall$f1un of 1000
+#symload forall with GASQ_forall$f1un of 1000
+#symload forall$fun with GASQ_forall$f1un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:vt>
-GASZ_exists$f1un
-( gasz: GASZ(xs, x0)
+GASQ_exists$f1un
+( gasq: GASQ(xs, x0)
 , test: ( !x0 )->bool): bool
 //
-#symload exists with GASZ_exists$f1un of 1000
-#symload exists$fun with GASZ_exists$f1un of 1000
+#symload exists with GASQ_exists$f1un of 1000
+#symload exists$fun with GASQ_exists$f1un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:vt>
-GASZ_rforall$f1un
-( gasz: GASZ(xs, x0)
+GASQ_rforall$f1un
+( gasq: GASQ(xs, x0)
 , test: ( !x0 )->bool): bool
 //
-#symload rforall with GASZ_rforall$f1un of 1000
-#symload rforall$fun with GASZ_rforall$f1un of 1000
+#symload rforall with GASQ_rforall$f1un of 1000
+#symload rforall$fun with GASQ_rforall$f1un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:vt>
-GASZ_rexists$f1un
-( gasz: GASZ(xs, x0)
+GASQ_rexists$f1un
+( gasq: GASQ(xs, x0)
 , test: ( !x0 ) -> bool): bool
 //
-#symload rexists with GASZ_rexists$f1un of 1000
-#symload rexists$fun with GASZ_rexists$f1un of 1000
+#symload rexists with GASQ_rexists$f1un of 1000
+#symload rexists$fun with GASQ_rexists$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

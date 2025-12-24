@@ -121,7 +121,7 @@ end//let//end(g_print<a1rf(a)>)
 //
 #impltmp
 { x0:t0 }
-gasz_length
+gasq_length
 <a0rf(x0)><x0>( A ) = 1 // singleton
 //
 (* ****** ****** *)
@@ -178,12 +178,12 @@ where
 //
 #impltmp
 { x0:vt }
-$UN.gasz_lget$at$raw
+$UN.gasq_lget$at$raw
 <  a0rf(x0)  >< x0 >
  ( A, i ) = a0rf_lget<x0>(A) // i=0
 #impltmp
 { x0:vt }
-$UN.gasz_lset$at$raw
+$UN.gasq_lset$at$raw
 <  a0rf(x0)  >< x0 >
 ( pf | A,i,x ) = a0rf_lset<x0>(pf | A,x)
 //
@@ -193,33 +193,33 @@ $UN.gasz_lset$at$raw
 #impltmp
 < x0:t0 >
 a1rf_get$at =
-$UN.gasz_get$at$raw<a1rf(x0)><x0>
+$UN.gasq_get$at$raw<a1rf(x0)><x0>
 #impltmp
 < x0:t0 >
 a1rf_set$at =
-$UN.gasz_set$at$raw<a1rf(x0)><x0>
+$UN.gasq_set$at$raw<a1rf(x0)><x0>
 //
 (* ****** ****** *)
 //
 #impltmp
 < x0:vt >
 a1rf_cget$at =
-$UN.gasz_cget$at$raw<a1rf(x0)><x0>
+$UN.gasq_cget$at$raw<a1rf(x0)><x0>
 #impltmp
 < x0:vt >
 a1rf_setf$at =
-$UN.gasz_setf$at$raw<a1rf(x0)><x0>
+$UN.gasq_setf$at$raw<a1rf(x0)><x0>
 //
 (* ****** ****** *)
 //
 #impltmp
 { x0:vt }
-$UN.gasz_lget$at$raw
+$UN.gasq_lget$at$raw
 <  a1rf(x0)  >< x0 >
  ( A, i ) = a1rf_lget$at<x0>(A, i)
 #impltmp
 { x0:vt }
-$UN.gasz_lset$at$raw
+$UN.gasq_lset$at$raw
 <  a1rf(x0)  >< x0 >
 ( pf | A,i,x ) = a1rf_lset$at<x0>(pf | A,i,x)
 //

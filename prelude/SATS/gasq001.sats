@@ -44,12 +44,12 @@ Authoremail: gmhwxiATgmailDOTcom
 fun
 <xs:t0>
 <x0:vt>
-gasz_listize
+gasq_listize
  ( xs: xs ): list_vt(x0)
 fun
 <xs:t0>
 <x0:vt>
-gasz_rlistize
+gasq_rlistize
  ( xs: xs ): list_vt(x0)
 //
 (* ****** ****** *)
@@ -57,23 +57,23 @@ gasz_rlistize
 fun
 <xs:t0>
 <x0:vt>
-gasz_strmize
+gasq_strmize
  ( xs: xs ): strm_vt(x0)
 fun
 <xs:t0>
 <x0:vt>
-gasz_rstrmize
+gasq_rstrmize
  ( xs: xs ): strm_vt(x0)
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_strqize
+gasq_strqize
  ( xs: xs ): strq_vt(x0)
 fun
 <xs:t0>
 <x0:vt>
-gasz_rstrqize
+gasq_rstrqize
  ( xs: xs ): strq_vt(x0)
 //
 (* ****** ****** *)
@@ -82,78 +82,78 @@ gasz_rstrqize
 fun
 <xs:t0>
 <x0:vt>
-gasz_forall(xs: xs): bool
+gasq_forall(xs: xs): bool
 fun
 <xs:t0>
 <x0:vt>
-gasz_exists(xs: xs): bool
+gasq_exists(xs: xs): bool
 fun
 <xs:t0>
 <x0:vt>
-gasz_rforall(xs: xs): bool
+gasq_rforall(xs: xs): bool
 fun
 <xs:t0>
 <x0:vt>
-gasz_rexists(xs: xs): bool
+gasq_rexists(xs: xs): bool
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_iforall(xs: xs): bool
+gasq_iforall(xs: xs): bool
 fun
 <xs:t0>
 <x0:vt>
-gasz_irforall(xs: xs): bool
+gasq_irforall(xs: xs): bool
 //
 (*
-#symload forall with gasz_forall of 0100
-#symload exists with gasz_exists of 0100
-#symload rforall with gasz_rforall of 0100
-#symload rexists with gasz_rexists of 0100
+#symload forall with gasq_forall of 0100
+#symload exists with gasq_exists of 0100
+#symload rforall with gasq_rforall of 0100
+#symload rexists with gasq_rexists of 0100
 *)
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_forall$f1un
+gasq_forall$f1un
 (xs: xs, test: (!x0)->bool): bool
 //
 (*
-#symload forall with gasz_forall$f1un of 0100
-#symload forall$fun with gasz_forall$f1un of 0100
+#symload forall with gasq_forall$f1un of 0100
+#symload forall$fun with gasq_forall$f1un of 0100
 *)
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_exists$f1un
+gasq_exists$f1un
 (xs: xs, test: (!x0)->bool): bool
 //
 (*
-#symload exists with gasz_exists$f1un of 0100
-#symload exists$fun with gasz_exists$f1un of 0100
+#symload exists with gasq_exists$f1un of 0100
+#symload exists$fun with gasq_exists$f1un of 0100
 *)
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_rforall$f1un
+gasq_rforall$f1un
 (xs: xs, test: (!x0)->bool): bool
 //
 (*
-#symload rforall with gasz_rforall$f1un of 0100
-#symload rforall$fun with gasz_rforall$f1un of 0100
+#symload rforall with gasq_rforall$f1un of 0100
+#symload rforall$fun with gasq_rforall$f1un of 0100
 *)
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_rexists$f1un
+gasq_rexists$f1un
 (xs: xs, test: (!x0)->bool): bool
 //
 (*
-#symload rexists with gasz_rexists$f1un of 0100
-#symload rexists$fun with gasz_rexists$f1un of 0100
+#symload rexists with gasq_rexists$f1un of 0100
+#symload rexists$fun with gasq_rexists$f1un of 0100
 *)
 //
 (* ****** ****** *)
@@ -191,16 +191,16 @@ mapref$fopr10r//clr
 fun
 <xs:t0>
 <x0:vt>
-gasz_mapref(xs: xs): void
+gasq_mapref(xs: xs): void
 fun
 <xs:t0>
 <x0:vt>
-gasz_mapref_c1bv
+gasq_mapref_c1bv
 (xs: xs, fopr: (~x0)->(x0)): void
 //
 (*
-#symload mapref with gasz_mapref_c1bv of 0100
-#symload mapref_cbv with gasz_mapref_c1bv of 0100
+#symload mapref with gasq_mapref_c1bv of 0100
+#symload mapref_cbv with gasq_mapref_c1bv of 0100
 *)
 //
 (* ****** ****** *)
@@ -217,16 +217,16 @@ rmapref$fopr1r
 fun
 <xs:t0>
 <x0:vt>
-gasz_rmapref(xs: xs): void
+gasq_rmapref(xs: xs): void
 fun
 <xs:t0>
 <x0:vt>
-gasz_rmapref_c1bv
+gasq_rmapref_c1bv
 (xs: xs, fopr: (~x0)->(x0)): void
 //
 (*
-#symload rmapref with gasz_rmapref_c1bv of 0100
-#symload rmapref_cbv with gasz_rmapref_c1bv of 0100
+#symload rmapref with gasq_rmapref_c1bv of 0100
+#symload rmapref_cbv with gasq_rmapref_c1bv of 0100
 *)
 //
 (* ****** ****** *)
@@ -244,16 +244,16 @@ imapref$fopr1r
 fun
 <xs:t0>
 <x0:vt>
-gasz_imapref(xs: xs): void
+gasq_imapref(xs: xs): void
 fun
 <xs:t0>
 <x0:vt>
-gasz_imapref_c2bv
+gasq_imapref_c2bv
 (xs: xs, fopr: (ni, ~x0)->(x0)): void
 //
 (*
-#symload imapref with gasz_imapref_c2bv of 0100
-#symload imapref_cbv with gasz_imapref_c2bv of 0100
+#symload imapref with gasq_imapref_c2bv of 0100
+#symload imapref_cbv with gasq_imapref_c2bv of 0100
 *)
 //
 (* ****** ****** *)
@@ -271,21 +271,21 @@ irmapref$fopr1r
 fun
 <xs:t0>
 <x0:vt>
-gasz_irmapref(xs: xs): void
+gasq_irmapref(xs: xs): void
 fun
 <xs:t0>
 <x0:vt>
-gasz_irmapref_c2bv
+gasq_irmapref_c2bv
 (xs: xs, fopr: (ni, ~x0)->(x0)): void
 //
 (*
-#symload irmapref with gasz_irmapref_c2bv of 0100
-#symload irmapref_cbv with gasz_irmapref_c2bv of 0100
+#symload irmapref with gasq_irmapref_c2bv of 0100
+#symload irmapref_cbv with gasq_irmapref_c2bv of 0100
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_gasz001.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gasq001.sats] *)
 (***********************************************************************)

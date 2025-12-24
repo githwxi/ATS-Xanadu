@@ -47,14 +47,14 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_z2listize
+gasq_z2listize
 (xs: xs, ys: ys): list_vt@(x0, y0)
 fun
 <xs:t0>
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_z2rlistize
+gasq_z2rlistize
 (xs: xs, ys: ys): list_vt@(x0, y0)
 //
 (* ****** ****** *)
@@ -64,14 +64,14 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_z2strmize
+gasq_z2strmize
 (xs: xs, ys: ys): strm_vt@(x0, y0)
 fun
 <xs:t0>
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_z2rstrmize
+gasq_z2rstrmize
 (xs: xs, ys: ys): strm_vt@(x0, y0)
 //
 fun
@@ -79,14 +79,14 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_z2strqize
+gasq_z2strqize
 (xs: xs, ys: ys): strq_vt@(x0, y0)
 fun
 <xs:t0>
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_z2rstrqize
+gasq_z2rstrqize
 (xs: xs, ys: ys): strq_vt@(x0, y0)
 //
 (* ****** ****** *)
@@ -96,31 +96,31 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_z2forall(xs: xs, ys: ys): bool
+gasq_z2forall(xs: xs, ys: ys): bool
 fun
 <xs:t0>
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_z2rforall(xs: xs, ys: ys): bool
+gasq_z2rforall(xs: xs, ys: ys): bool
 fun
 <xs:t0>
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_z2iforall(xs: xs, ys: ys): bool
+gasq_z2iforall(xs: xs, ys: ys): bool
 fun
 <xs:t0>
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_z2irforall(xs: xs, ys: ys): bool
+gasq_z2irforall(xs: xs, ys: ys): bool
 //
 (*
-#symload z2forall with gasz_z2forall of 0100
-#symload z2rforall with gasz_z2rforall of 0100
-#symload z2iforall with gasz_z2iforall of 0100
-#symload z2irforall with gasz_z2irforall of 0100
+#symload z2forall with gasq_z2forall of 0100
+#symload z2rforall with gasq_z2rforall of 0100
+#symload z2iforall with gasq_z2iforall of 0100
+#symload z2irforall with gasq_z2irforall of 0100
 *)
 //
 fun
@@ -128,11 +128,11 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_z2forall$f2un
+gasq_z2forall$f2un
 (xs: xs, ys: ys, test: (!x0, !y0)->bool): bool
 //
-#symload z2forall with gasz_z2forall$f2un of 0100
-#symload z2forall$fun with gasz_z2forall$f2un of 0100
+#symload z2forall with gasq_z2forall$f2un of 0100
+#symload z2forall$fun with gasq_z2forall$f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -150,14 +150,14 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_x2listize
+gasq_x2listize
 (xs: xs, ys: ys): list_vt@(x0, y0)
 fun
 <xs:t0>
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_x2rlistize
+gasq_x2rlistize
 (xs: xs, ys: ys): list_vt@(x0, y0)
 //
 (* ****** ****** *)
@@ -167,7 +167,7 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_x2strmize
+gasq_x2strmize
 (xs: xs, ys: ys): strm_vt@(x0, y0)
 //
 fun
@@ -175,7 +175,7 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_x2strqize
+gasq_x2strqize
 (xs: xs, ys: ys): strq_vt@(x0, y0)
 //
 (* ****** ****** *)
@@ -185,18 +185,18 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_x2forall(xs: xs, ys: ys): bool
+gasq_x2forall(xs: xs, ys: ys): bool
 //
 fun
 <xs:t0>
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_ix2forall(xs: xs, ys: ys): bool
+gasq_ix2forall(xs: xs, ys: ys): bool
 //
 (*
-#symload x2forall with gasz_x2forall of 0100
-#symload ix2forall with gasz_ix2forall of 0100
+#symload x2forall with gasq_x2forall of 0100
+#symload ix2forall with gasq_ix2forall of 0100
 *)
 //
 fun
@@ -204,11 +204,11 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-gasz_x2forall$f2un
+gasq_x2forall$f2un
 (xs: xs, ys: ys, test: (!x0, !y0)->bool): bool
 //
-#symload x2forall with gasz_x2forall$f2un of 0100
-#symload x2forall$fun with gasz_x2forall$f2un of 0100
+#symload x2forall with gasq_x2forall$f2un of 0100
+#symload x2forall$fun with gasq_x2forall$f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -218,14 +218,14 @@ gz2asz
 ( xs: t0, x0: vt
 , ys: t0, y0: vt) =
 (
-  z2tup(GASZ(xs, x0), GASZ(ys, y0)))
+  z2tup(GASQ(xs, x0), GASQ(ys, y0)))
 //
 #typedef
 gx2asz
 ( xs: t0, x0: vt
 , ys: t0, y0: vt) =
 (
-  x2tup(GASZ(xs, x0), GASZ(ys, y0)))
+  x2tup(GASQ(xs, x0), GASQ(ys, y0)))
 //
 (* ****** ****** *)
 //
@@ -234,22 +234,22 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
-GASZ_z2make
-( xs: GASZ(xs, x0)
-, ys: GASZ(ys, y0)): GASZ(gz2asz(xs,x0,ys,y0), (x0,y0))
+GASQ_z2make
+( xs: GASQ(xs, x0)
+, ys: GASQ(ys, y0)): GASQ(gz2asz(xs,x0,ys,y0), (x0,y0))
 //
 fun
 <xs:t0>
 <x0:vt>
 <ys:t0>
 <y0:vt>
-GASZ_x2make
-( xs: GASZ(xs, x0)
-, ys: GASZ(ys, y0)): GASZ(gx2asz(xs,x0,ys,y0), (x0,y0))
+GASQ_x2make
+( xs: GASQ(xs, x0)
+, ys: GASQ(ys, y0)): GASQ(gx2asz(xs,x0,ys,y0), (x0,y0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_gasz002.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gasq002.sats] *)
 (***********************************************************************)

@@ -39,16 +39,16 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"./../../../prelude/SATS/gasz000.sats"
+"./../../../prelude/SATS/gasq000.sats"
 (* ****** ****** *)
 #include
-"./../../../prelude/SATS/gasz001.sats"
+"./../../../prelude/SATS/gasq001.sats"
 (* ****** ****** *)
 #include
-"./../../../prelude/SATS/gasz002.sats"
+"./../../../prelude/SATS/gasq002.sats"
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gasz000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gasq000.sats] *)

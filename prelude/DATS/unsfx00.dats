@@ -95,7 +95,7 @@ $UN.gseq_uncons$raw
 #impltmp
 { xs:t0 }
 { x0:t0 }
-$UN.gasz_get$at$raw
+$UN.gasq_get$at$raw
   (xs, i0) =
 let
 pvx ((*0*)) =
@@ -104,51 +104,51 @@ pvx ((*0*)) =
 where
 {
 val (pf|x0) =
-$UN.gasz_lget$at$raw<xs><x0>(xs, i0)
-}(*where*)//end-of-[$UN.gasz_get$at$raw(...)]
+$UN.gasq_lget$at$raw<xs><x0>(xs, i0)
+}(*where*)//end-of-[$UN.gasq_get$at$raw(...)]
 //
 #impltmp
 {xs:t0}
 {x0:t0}
-$UN.gasz_lget$at$raw
+$UN.gasq_lget$at$raw
   (xs, i0) =
 (
   owed_t0_make() | x0) where
 { val x0 =
-  $UN.gasz_get$at$raw<xs><x0>(xs, i0)
-}(*where*)//end-of-[$UN.gasz_lget$at$raw(...)]
+  $UN.gasq_get$at$raw<xs><x0>(xs, i0)
+}(*where*)//end-of-[$UN.gasq_lget$at$raw(...)]
 //
 (* ****** ****** *)
 //
 #impltmp
 {xs:t0}
 {x0:t0}
-$UN.gasz_set$at$raw
+$UN.gasq_set$at$raw
   (xs, i0, x0) =
 let
 pvx pf = owed_t0_make()
 in//let
-$UN.gasz_lset$at$raw<xs><x0>(pf|xs,i0,x0)
-end(*let*)//end-of-[$UN.gasz_set$at$raw(...)]
+$UN.gasq_lset$at$raw<xs><x0>(pf|xs,i0,x0)
+end(*let*)//end-of-[$UN.gasq_set$at$raw(...)]
 //
 #impltmp
 {xs:t0}
 {x0:t0}
-$UN.gasz_lset$at$raw
+$UN.gasq_lset$at$raw
   (pf | xs, i0, x0) =
 let
 pvx () = owed_t0_elim0(pf)
 in//let
 (
-  $UN.gasz_set$at$raw<xs><x0>(xs, i0, x0))
-end(*let*)//end-of-$UN.gasz_lset$at$raw(...)]
+  $UN.gasq_set$at$raw<xs><x0>(xs, i0, x0))
+end(*let*)//end-of-$UN.gasq_lset$at$raw(...)]
 //
 (* ****** ****** *)
 //
 #impltmp
 {xs:t0}
 {x0:vt}
-$UN.gasz_cget$at$raw
+$UN.gasq_cget$at$raw
   (xs, i0) =
 let
 //
@@ -161,14 +161,14 @@ where
 {
 val (pf | x0) =
 (
-  $UN.gasz_lget$at$raw<xs><x0>(xs, i0))
-}(*where*)//end-of-[$UN.gasz_cget$at$raw(...)]
+  $UN.gasq_lget$at$raw<xs><x0>(xs, i0))
+}(*where*)//end-of-[$UN.gasq_cget$at$raw(...)]
 //
 (* ****** ****** *)
 //
 (*
 HX:
-[gasz_setf]
+[gasq_setf]
 is not efficient
 as it involves two "trips"!
 We can eliminate the inefficiency
@@ -177,23 +177,23 @@ by employing pointer arithmetic!!!
 #impltmp
 {xs:t0}
 {x0:vt}
-$UN.gasz_setf$at$raw
+$UN.gasq_setf$at$raw
   (xs, i0, x0) =
 let
 //
 val (pf | x1) =
 (
-  $UN.gasz_lget$at$raw<xs><x0>(xs, i0))
+  $UN.gasq_lget$at$raw<xs><x0>(xs, i0))
 //
 in//let
 //
 let
 val ((*void*)) = g_free<x0>(x1)
 in//let
-$UN.gasz_lset$at$raw<xs><x0>(pf|xs,i0,x0)
+$UN.gasq_lset$at$raw<xs><x0>(pf|xs,i0,x0)
 end//let
 //
-end(*let*)//end-of-[$UN.gasz_setf$at$raw(...)]
+end(*let*)//end-of-[$UN.gasq_setf$at$raw(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

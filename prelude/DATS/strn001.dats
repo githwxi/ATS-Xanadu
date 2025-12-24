@@ -45,7 +45,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (*
 #impltmp
 strn_forall<> =
-gasz_forall<strn><cgtz>
+gasq_forall<strn><cgtz>
 *)
 //
 #impltmp
@@ -87,7 +87,7 @@ gseq_forall
 <strn><cgtz> = strn_forall<>(*void*)
 //
 #impltmp
-gasz_forall
+gasq_forall
 <strn><cgtz>(cs) =
 (
 strn_forall<>(cs)) where
@@ -134,7 +134,7 @@ gseq_rforall
 <strn><cgtz> = strn_rforall<>(*void*)
 //
 #impltmp
-gasz_rforall
+gasq_rforall
 <strn><cgtz>(cs) =
 (
 strn_rforall<>(cs)) where
@@ -200,7 +200,7 @@ gseq_iforall
 <strn><cgtz> = strn_iforall<>(*void*)
 //
 #impltmp
-gasz_iforall
+gasq_iforall
 <strn><cgtz>(cs) =
 (
 strn_iforall<>(cs)) where
@@ -302,23 +302,23 @@ irforitm$work<cgtz>(i0,ch) = work(i0,ch)
 //
 #impltmp
 <>(*tmp*)
-strn_listize = gasz_listize<strn><cgtz>
+strn_listize = gasq_listize<strn><cgtz>
 #impltmp
 <>(*tmp*)
-strn_strmize = gasz_strmize<strn><cgtz>
+strn_strmize = gasq_strmize<strn><cgtz>
 #impltmp
 <>(*tmp*)
-strn_strqize = gasz_strqize<strn><cgtz>
+strn_strqize = gasq_strqize<strn><cgtz>
 //
 #impltmp
 <>(*tmp*)
-strn_rlistize = gasz_rlistize<strn><cgtz>
+strn_rlistize = gasq_rlistize<strn><cgtz>
 #impltmp
 <>(*tmp*)
-strn_rstrmize = gasz_rstrmize<strn><cgtz>
+strn_rstrmize = gasq_rstrmize<strn><cgtz>
 #impltmp
 <>(*tmp*)
-strn_rstrqize = gasz_rstrqize<strn><cgtz>
+strn_rstrqize = gasq_rstrqize<strn><cgtz>
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -58,7 +58,7 @@ forall$test<ni>(i0) =
 forall$test<ut>(unit()))}//where
 //
 #impltmp
-gasz_forall
+gasq_forall
 <nint><ut>(ni) =
 (
 nint_forall(ni)) where
@@ -82,7 +82,7 @@ rforall$test<ni>(i0) =
 rforall$test<ut>(unit()))}//where
 //
 #impltmp
-gasz_rforall
+gasq_rforall
 <nint><ut>(ni) =
 (
 nint_rforall(ni)) where
@@ -106,7 +106,7 @@ forall$test<ni>(i0) =
 iforall$test<ut>(i0,unit()))}//whr
 //
 #impltmp
-gasz_iforall
+gasq_iforall
 <nint><ut>(ni) =
 (
 nint_forall(ni)) where
@@ -130,7 +130,7 @@ rforall$test<ni>(i0) =
 irforall$test<ut>(i0,unit()))}//whr
 //
 #impltmp
-gasz_irforall
+gasq_irforall
 <nint><ut>(ni) =
 (
 nint_rforall(ni)) where
@@ -160,7 +160,7 @@ forall$test<ni>(i0)
 then loop(xs, i0+1) else false)}
 //
 #impltmp
-gasz_forall
+gasq_forall
 <nint><ni>(ni) =
 (
   nint_forall<>(ni)) where
@@ -205,7 +205,7 @@ rforall$test<ni>(xs-1-i0)
 then loop(xs, i0+1) else false)}
 //
 #impltmp
-gasz_rforall
+gasq_rforall
 <nint><ni>(ni) =
 (
   nint_rforall<>(ni)) where
@@ -521,26 +521,26 @@ rmap$fopr<ni><y0>( i0 ) = fopr( i0 )
 (* ****** ****** *)
 //
 #impltmp
-gasz_strmize<nint><ni> = nint_strmize<>
+gasq_strmize<nint><ni> = nint_strmize<>
 #impltmp
-gasz_strqize<nint><ni> = nint_strqize<>
+gasq_strqize<nint><ni> = nint_strqize<>
 //
 #impltmp
-gseq_strmize<nint><ni> = gasz_strmize<nint><ni>
+gseq_strmize<nint><ni> = gasq_strmize<nint><ni>
 #impltmp
-gseq_strqize<nint><ni> = gasz_strqize<nint><ni>
+gseq_strqize<nint><ni> = gasq_strqize<nint><ni>
 //
 (* ****** ****** *)
 //
 #impltmp
-gasz_rstrmize<nint><ni> = nint_rstrmize<>
+gasq_rstrmize<nint><ni> = nint_rstrmize<>
 #impltmp
-gasz_rstrqize<nint><ni> = nint_rstrqize<>
+gasq_rstrqize<nint><ni> = nint_rstrqize<>
 //
 #impltmp
-gseq_rstrmize<nint><ni> = gasz_rstrmize<nint><ni>
+gseq_rstrmize<nint><ni> = gasq_rstrmize<nint><ni>
 #impltmp
-gseq_rstrqize<nint><ni> = gasz_rstrqize<nint><ni>
+gseq_rstrqize<nint><ni> = gasq_rstrqize<nint><ni>
 //
 (* ****** ****** *)
 (* ****** ****** *)
