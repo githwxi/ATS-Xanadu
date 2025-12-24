@@ -26,12 +26,11 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Sun 08 Sep 2024 12:39:45 PM EDT
+Sun 08 Sep 2024 01:55:00 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,116 +38,33 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< m0:vt >
-< k0:vt >
-< x0:vt >
-gmap_sep((*void*)) = ","
-#impltmp
-< m0:vt >
-< k0:vt >
-< x0:vt >
-gmap_end((*void*)) = "}"
-#impltmp
-< m0:vt >
-< k0:vt >
-< x0:vt >
-gmap_beg((*void*)) = "gmap{"
+(*
+HX-2025-12-25:
+The semantics is involved
+for a mutable map (hashmap)!
+It really depends on the actual
+implementation of these functions.
+*)
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< m0:t0 >
-< k0:t0 >
-< x0:vt >
-gmap_keyq
-(map, k0) =
-gseq_exists0
-<strm_vt(k0)><x0>
-(
-gmap_key$strmize
-<m0><k0><x0>(map)) where
-{
-#impltmp
-exists$test0
-< k0 >( k1 ) = g_equal<k0>(k0, k1)
-}(*where*)//end-of-[gmap_keyq(map,k0)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< m0:t0 >
-< k0:t0 >
-< x0:t0 >
-gmap_search$tst
- (map, k0) =
-let
-//
-#typedef
-kx = @(k0, x0)
-//
-in//let
-//
-gseq_consq0
-<strm_vt(kx)><kx>
-(
-strm_vt_filter0<kx>
-(
-let
-#impltmp
-filter$test
-< kx >( kx ) =
-(
-  g_equal<k0>(k0, kx.0))
-in//let
-  gseq_strmize<m0><(k0,x0)>(map)end))
-//
-end//let//end-of-[gmap_search$tst(map,k0)]
-//
-(* ****** ****** *)
-//
-#impltmp
-< m0:t0 >
-< k0:t0 >
-< x0:t0 >
-gmap_search$cpy
- (map, k0) =
-(
-case+ opt0 of
-| ~
-optn_vt_nil
-( (*void*) ) => optn_vt_nil()
-| ~
-optn_vt_cons
-(    kx    ) => optn_vt_cons(kx.1)
-) where
-{
-//
-#typedef
-kx = (k0, x0)
-//
-val opt0 =
-gseq_head$opt0
-<strm_vt(kx)><kx>
-(
-strm_vt_filter0<kx>
-(
-let
-#impltmp
-filter$test
-< kx >( kx ) =
-(
-  g_equal<k0>(k0, kx.0))
-in//let
-  gseq_strmize<m0><(k0,x0)>(map)end))
-//
-}(*where*)//end-of-[gmap_search$cpy(map,k0)]
+fun
+<amp:t0>
+<key:t0>
+<itm:vt>
+gamp_key$strmize(amp): strm_vt(key)
+fun
+<amp:t0>
+<key:t0>
+<itm:vt>
+gamp_val$strmize(amp): strm_vt(itm)
+fun
+<amp:t0>
+<key:t0>
+<itm:vt>
+gamp_keyval$strmize(amp): strm_vt@(key, itm)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_gmap000.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gamp001.sats] *)
 (***********************************************************************)
