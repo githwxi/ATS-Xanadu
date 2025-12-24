@@ -41,7 +41,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <map:vt>
-<key:t0>
+<key:vt>
 <itm:vt>
 gmap_nil((*0*)): map
 //
@@ -64,17 +64,17 @@ For print0/1 as well
 *)
 fun
 <map:vt>
-<key:t0>
+<key:vt>
 <itm:vt>
 gmap_beg((*void*)): strn
 fun
 <map:vt>
-<key:t0>
+<key:vt>
 <itm:vt>
 gmap_end((*void*)): strn
 fun
 <map:vt>
-<key:t0>
+<key:vt>
 <itm:vt>
 gmap_sep((*void*)): strn
 //
@@ -121,29 +121,6 @@ gmap_get$at$opt
 (kxs: map, key: key): optn_vt(itm)
 //
 (* ****** ****** *)
-//
-(*
-HX-2024-09-20:
-These are for imperative maps!
-*)
-fun
-<amp:t0>
-<key:t0>
-<itm:vt>
-gamp_setf$at
-(kxs: amp
-,key: key, itm: itm): void
-fun
-<amp:t0>
-<key:t0>
-<itm:vt>
-gamp_setf$at$opt
-// HX: nil if !keyq(key)
-// HX: cons(old) if keyq(key)
-(kxs: amp
-,key: key, itm: itm): optn_vt(itm)
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -154,8 +131,8 @@ for a mutable map (hashmap)!
 fun
 <amp:t0>
 <key:t0>
-<itm:vt>
-gamp_strmize
+<itm:t0>
+gmap_strmize
 (kxs: amp): strm_vt@(key, itm)
 //
 (* ****** ****** *)
@@ -171,7 +148,7 @@ fun
 <map:t0>
 <key:t0>
 <itm:t0>
-gmap_search$cpy
+gmap_search$get
 (kxs: map, key: key): optn_vt(itm)
 //
 (* ****** ****** *)

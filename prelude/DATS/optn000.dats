@@ -95,14 +95,33 @@ optn_nilq
 {a:t0}(xs) =
 (
 case+ xs of
-| optn_nil() => true
-| optn_cons(_) => false)
-//
+|
+optn_nil() => true
+|
+optn_cons(_) => false)
 #impltmp
 { x0:t0 }
 gseq_nilq
 <optn(x0)><x0> =
 optn_nilq<>{x0}(* void *)
+//
+(* ****** ****** *)
+//
+#impltmp
+< (*0*) >
+optn_consq
+{a:t0}(xs) =
+(
+case+ xs of
+|
+optn_nil() => false
+|
+optn_cons(_) => (true))
+#impltmp
+{ x0:t0 }
+gseq_consq
+<optn(x0)><x0> =
+optn_consq<>{x0}(* void *)
 //
 (* ****** ****** *)
 (* ****** ****** *)

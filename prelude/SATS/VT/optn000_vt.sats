@@ -51,14 +51,39 @@ optn_vt_cons_
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:vt>
+optn_vt_nilq0
+{b0:b0}
+( xs :
+~ optn_vt(x0,b0)): bool(~b0)
 fun<>
 optn_vt_nilq1
 {x0:vt}
 {b0:b0}
-(xs:
-!optn_vt(x0,b0)): bool(~b0)
+( xs :
+! optn_vt(x0,b0)): bool(~b0)
 //
+#symload nilq0 with optn_vt_nilq0 of 1000
 #symload nilq1 with optn_vt_nilq1 of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+optn_vt_consq0
+{b0:b0}
+( xs:
+~ optn_vt(x0,b0)): bool( b0 )
+fun<>
+optn_vt_consq1
+{x0:vt}
+{b0:b0}
+( xs:
+! optn_vt(x0,b0)): bool( b0 )
+//
+#symload consq0 with optn_vt_consq0 of 1000
+#symload consq1 with optn_vt_consq1 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
