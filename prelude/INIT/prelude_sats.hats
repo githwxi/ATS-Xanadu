@@ -57,6 +57,9 @@
 #include "prelude/SATS/gmap000.sats"
 #include "prelude/SATS/gmap001.sats"
 //
+#include "prelude/SATS/gamp000.sats"
+#include "prelude/SATS/gamp001.sats"
+//
 (* ****** ****** *)
 //
 #include "prelude/SATS/gsyn000.sats"
