@@ -644,14 +644,14 @@ gseq_irfolditm$f3un<xs><x0><r0>(xs, r0, fopr))
 HX-2024-08-10:
 Sat 10 Aug 2024 06:58:19 AM EDT
 Is it really a good ieda to allow
-gasz<t0><vt>?
+gasq<t0><vt>?
 //
 HX-2024-08-10:
 Sat 10 Aug 2024 10:37:25 AM EDT
 We can certainly use instead:
-gasz_vt<t0><vt> for gasz<t0><vt>
+gasq_vt<t0><vt> for gasq<t0><vt>
 It does seem that this desgin of
-supporting gasz<t0><vt> makes some
+supporting gasq<t0><vt> makes some
 sense, though. So let us keep it!
 //
 *)
@@ -659,22 +659,22 @@ sense, though. So let us keep it!
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_forall1 = gasz_forall<xs><x0>
+gasq_forall1 = gasq_forall<xs><x0>
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_rforall1 = gasz_rforall<xs><x0>
+gasq_rforall1 = gasq_rforall<xs><x0>
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_iforall1 = gasz_iforall<xs><x0>
+gasq_iforall1 = gasq_iforall<xs><x0>
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_irforall1 = gasz_irforall<xs><x0>
+gasq_irforall1 = gasq_irforall<xs><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

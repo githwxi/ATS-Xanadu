@@ -138,10 +138,10 @@ For further program verification
 //
 (*
 #include
-"srcgen1/prelude/SATS/gasz000.sats"
+"srcgen1/prelude/SATS/gasq000.sats"
 *)
 #include
-"srcgen2/prelude/SATS/gasz000.sats"
+"srcgen2/prelude/SATS/gasq000.sats"
 //
 (* ****** ****** *)
 //
@@ -358,10 +358,10 @@ For viewtypes (that is, linear types)
 //
 (*
 #include
-"srcgen1/prelude/SATS/VT/gasz000_vt.sats"
+"srcgen1/prelude/SATS/VT/gasq000_vt.sats"
 *)
 #include
-"srcgen2/prelude/SATS/VT/gasz000_vt.sats"
+"srcgen2/prelude/SATS/VT/gasq000_vt.sats"
 //
 (* ****** ****** *)
 //

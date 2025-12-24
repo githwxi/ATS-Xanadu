@@ -30,42 +30,18 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 22 Jul 2024 12:14:37 PM EDT
+Sun 21 Jul 2024 11:39:54 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_length1(xs: !xs): nint
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:t0> // HX: t0(not(vt))
-gasz_get$at1
-(xs: !xs, i0: ni): (x0)
-fun
-<xs:vt>
-<x0:t0> // HX: t0(not(vt))
-gasz_set$at1
-(xs: !xs, i0: ni, x0: x0): void
-//
+#staload UN =
+"prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_VT_gasz000_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_VT_gasq001_vt.dats] *)
 (***********************************************************************)

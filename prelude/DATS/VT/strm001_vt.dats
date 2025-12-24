@@ -69,7 +69,6 @@ gseq_foritm0<strm_vt(x0)><x0>
 strm_vt_foritm0$f1un =
 gseq_foritm0$f1un<strm_vt(x0)><x0>
 //
-(*
 #impltmp
 < x0:vt >
 strm_vt_iforitm0 =
@@ -78,7 +77,6 @@ gseq_iforitm0<strm_vt(x0)><x0>
 < x0:vt >
 strm_vt_iforitm0$f2un =
 gseq_iforitm0$f2un<strm_vt(x0)><x0>
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

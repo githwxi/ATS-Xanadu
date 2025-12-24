@@ -38,17 +38,17 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"./../../../../prelude/SATS/VT/gasz000_vt.sats"
+"./../../../../prelude/SATS/VT/gasq000_vt.sats"
 (* ****** ****** *)
 #include
-"./../../../../prelude/SATS/VT/gasz001_vt.sats"
+"./../../../../prelude/SATS/VT/gasq001_vt.sats"
 (* ****** ****** *)
 #include
-"./../../../../prelude/SATS/VT/gasz002_vt.sats"
+"./../../../../prelude/SATS/VT/gasq002_vt.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_VT_gasz000_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_gasq000_vt.sats] *)

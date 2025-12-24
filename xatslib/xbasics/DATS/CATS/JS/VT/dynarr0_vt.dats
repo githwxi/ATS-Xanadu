@@ -341,23 +341,23 @@ jsdasz_length<>(UN_jsdasz_vt2t(A)))
 //
 #impltmp
 { x0:t0 }
-gasz_get$at1
+gasq_get$at1
 <jsla(x0)><x0> =
 jsdasz_vt_get$at1<>{x0}(*void*)
 #impltmp
 { x0:t0 }
-gasz_set$at1
+gasq_set$at1
 <jsla(x0)><x0> =
 jsdasz_vt_set$at1<>{x0}(*void*)
 //
 #impltmp
 { x0:t0 }
-$UN.gasz_get$at$raw1
+$UN.gasq_get$at$raw1
 <jsla(x0)><x0> =
 jsdasz_vt_get$at1<>{x0}(*void*)
 #impltmp
 { x0:t0 }
-$UN.gasz_set$at$raw1
+$UN.gasq_set$at$raw1
 <jsla(x0)><x0> =
 jsdasz_vt_set$at1<>{x0}(*void*)
 //
@@ -414,13 +414,13 @@ UN_jsdasz_t2vt(jsdasz_make0_3val<>(x1, x2, x3))
 { x0:vt }
 gseq_strmize0
 <jsla(x0)><x0> =
-gasz_strmize0<jsla(x0)><x0>(*void*)
+gasq_strmize0<jsla(x0)><x0>(*void*)
 //
 #impltmp
 { x0:vt }
 gseq_rstrmize0
 <jsla(x0)><x0> =
-gasz_rstrmize0<jsla(x0)><x0>(*void*)
+gasq_rstrmize0<jsla(x0)><x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

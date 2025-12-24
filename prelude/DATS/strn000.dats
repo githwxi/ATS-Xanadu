@@ -119,7 +119,7 @@ gseq_cmp<xs><x0>(xs, ys) end
 (* ****** ****** *)
 //
 #impltmp
-gasz_length
+gasq_length
 <strn><char> = strn_length<>(*0*)
 //
 (* ****** ****** *)
@@ -181,18 +181,18 @@ lam(work) =>
 (* ****** ****** *)
 //
 #impltmp
-$UN.gasz_get$at$raw
+$UN.gasq_get$at$raw
 < strn >< cgtz >(cs, i0) =
 $UN.strn_get$at$raw<>(cs, i0)
 //
 #impltmp
-$UN.gasz_lget$at$raw
+$UN.gasq_lget$at$raw
 < strn >< cgtz >(cs, i0) =
 let
 val c0 =
 $UN.strn_get$at$raw<>(cs, i0)
 pvx pf = owed_t0_make{cgtz}() in (pf|c0)
-end//let//end($UN.gasz_lget$at$raw<strn><cgtz>)
+end//let//end($UN.gasq_lget$at$raw<strn><cgtz>)
 //
 (* ****** ****** *)
 (* ****** ****** *)

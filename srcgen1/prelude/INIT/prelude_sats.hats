@@ -53,7 +53,7 @@ Fri Apr 18 11:04:46 AM EDT 2025
 (* ****** ****** *)
 //
 #include
-"srcgen1/prelude/SATS/gasz000.sats"
+"srcgen1/prelude/SATS/gasq000.sats"
 //
 (* ****** ****** *)
 //
@@ -139,7 +139,7 @@ Fri Apr 18 11:04:46 AM EDT 2025
 #include
 "srcgen1/prelude/SATS/VT/gseq000_vt.sats"
 #include
-"srcgen1/prelude/SATS/VT/gasz000_vt.sats"
+"srcgen1/prelude/SATS/VT/gasq000_vt.sats"
 //
 #include
 "srcgen1/prelude/SATS/VT/gsyn000_vt.sats"

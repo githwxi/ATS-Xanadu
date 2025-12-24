@@ -26,19 +26,15 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Sun 21 Jul 2024 02:34:24 PM EDT
+Thu 08 Aug 2024 04:47:26 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef ni = nint
 (* ****** ****** *)
 (* ****** ****** *)
 #staload UN =
@@ -46,123 +42,121 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gasz_get$at
- ( xs,i0 ) =
-let
-val n0 =
-gasz_length<xs><x0>(xs)
-in//let
-if
-(i0 >= n0)
-then
-get$at$exn<xs><x0>(xs, i0)
-else
-let
-val
+#define
+GZ2ASZ(xs, ys) =
+GASQ_z2make(GASQ(xs), GASQ(ys))
+//
+(*
+#typedef
+gz2asz
+( xs: t0, x0: t0
+, ys: t0, y0: t0) =
 (
-pf|x0) =
-$UN.gasz_lget$at$raw
-<   xs   ><   x0   >(xs, i0)
-in//let
-let
-pvx () = owed_t0_elim0(pf) in x0
-end//let
-end//let
-end//let//end-of-[gasz_get$at(xs,i0)]
-//
-(* ****** ****** *)
+z2tup(GASQ(xs, x0), GASQ(ys, y0)))
+*)
 //
 #impltmp
 < xs:t0 >
-< x0:t0 >
-gasz_set$at
-(xs, i0, x0) =
-let
-val n0 =
-gasz_length<xs><x0>(xs)
-in//let
-if
-(i0 >= n0)
-then
-set$at$exn<xs><x0>(xs,i0,x0)
-else
-let
-pvx pf = owed_t0_make{x0}()
-in//let
-$UN.gasz_lset$at$raw
-<   xs   ><   x0   >(pf | xs,i0,x0)
-end//let//else//end-of-[if]
-//
-end//let//end-of-[gasz_set$at(xs,i0,x0)]
+< x0:vt >
+< ys:t0 >
+< y0:vt >
+GASQ_z2make
+(xseq, yseq) =
+$UN.castxy//GASQ_make
+(z2tup_make(xseq, yseq))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
-//
-HX:
-This one is
-moved to [unsfx00.dats]
+HX-2024-08-05:
+Thu 08 Aug 2024 04:50:03 AM EDT
+*)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-$UN.gasz_cget$at$raw
-  (xs, i0) =
+< ys:t0 >
+< y0:vt >
+gasq_z2forall
+  (xs, ys) =
 let
-//
-val
-(
-pf|x0) =
-$UN.gasz_lget$at$raw
-<  xs  ><  x0  >( xs, i0 )
-//
+val nx =
+gasq_length<xs><x0>(xs)
+val ny =
+gasq_length<ys><y0>(ys)
 in//let
-//
+(
+nint_forall<>
+(g_min<nint>(nx, ny))) where
+{
+#impltmp
+forall$test<nint>(i0) =
 let
-val x1 = g_copy<x0>(x0)
 pvx () =
-  owed_vt_return0(pf, x0) in x1 end
+  owed_vt_return0(fx, x0)
+pvx () =
+  owed_vt_return0(fy, y0) in btf
+end where
+{
 //
-end//let//end-of-[$UN.gasz_cget$at$raw]
-*)
+val
+(fx|x0) =
+$UN.gasq_lget$at$raw<xs><x0>(xs, i0)
+val
+(fy|y0) =
+$UN.gasq_lget$at$raw<ys><y0>(ys, i0)
+//
+val btf = z2forall$test1<x0><y0>(x0, y0)
+//
+}(*where*)
+}(*where*)
+end(*let*)//end-of-[gasq_z2forall(xs, ys)]
 //
 (* ****** ****** *)
-//
-(*
-//
-HX:
-This one is
-moved to [unsfx00.dats]
-//
 #impltmp
 < xs:t0 >
 < x0:vt >
-$UN.gasz_setf$at$raw
-  (xs, i0, x0) =
+< ys:t0 >
+< y0:vt >
+gasq_z2rforall
+  (xs, ys) =
 let
-//
-val
-(pf | x1) =
-$UN.gasz_lget$at$raw
-<  xs  ><  x0  >( xs, i0 )
-//
-in//let
-let
-  val () = g_free< x0 >( x1 )
+val nx =
+gasq_length<xs><x0>(xs)
+val ny =
+gasq_length<ys><y0>(ys)
 in//let
 (
-$UN.gasz_set$at$raw(pf | xs, i0, x0))
-end//let
-end//let//end-of-[$UN.gasz_setf$at$raw]
-*)
+nint_rforall<>
+(g_min<nint>(nx, ny))) where
+{
+#impltmp
+rforall$test<nint>(i0) =
+let
+pvx () =
+  owed_vt_return0(fx, x0)
+pvx () =
+  owed_vt_return0(fy, y0) in btf
+end where
+{
+//
+val
+(fx|x0) =
+$UN.gasq_lget$at$raw<xs><x0>(xs, i0)
+val
+(fy|y0) =
+$UN.gasq_lget$at$raw<ys><y0>(ys, i0)
+//
+val btf = z2rforall$test1<x0><y0>(x0, y0)
+//
+}(*where*)
+}(*where*)
+end(*let*)//end-of-[gasq_z2rforall(xs, ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_gasz000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_gasq002.dats] *)
 (***********************************************************************)

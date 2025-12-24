@@ -58,6 +58,7 @@ gmap_size(kxs: map): nint
 //
 (*
 HX-2024-09-08:
+For gmap_print
 For print0/1 as well
 *)
 fun

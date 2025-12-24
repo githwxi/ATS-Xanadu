@@ -694,7 +694,7 @@ UN_jshmap_insert$raw<>(map, k, x) }
 //
 (*
 HX-2024-08-13:
-[jshmap] is not a gasz!
+[jshmap] is not a gasq!
 *)
 #extern
 fcast // fun

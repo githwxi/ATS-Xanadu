@@ -96,12 +96,12 @@ strm2q_vt
 fun
 <xs:vt>
 <x0:vt>
-gasz_get$at$raw1
+gasq_get$at$raw1
 (xs: !xs, i0: ni): (x0)
 fun
 <xs:vt>
 <x0:vt>
-gasz_set$at$raw1
+gasq_set$at$raw1
 (xs: !xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)

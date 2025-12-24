@@ -103,7 +103,7 @@ val ub = range_ibtw_ub<>(range)
 (* ****** ****** *)
 //
 #impltmp
-gasz_length
+gasq_length
 <range_ibtw><si>
 (    range    ) =
 (
@@ -114,7 +114,7 @@ where
 {
 val lb = range_ibtw_lb<>(range)
 val ub = range_ibtw_ub<>(range)
-}(*where*)//end(gasz_length<range_ibtw>)
+}(*where*)//end(gasq_length<range_ibtw>)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -190,12 +190,12 @@ auxloop
 (* ****** ****** *)
 //
 #impltmp
-$UN.gasz_get$at$raw
+$UN.gasq_get$at$raw
 < range_ibtw >< si >
 (   range, index   ) =
 (
 range_ibtw_lb(range)+index)
-(*where*)//end(gasz_get$at$raw<range_ibtw>)
+(*where*)//end(gasq_get$at$raw<range_ibtw>)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -278,9 +278,9 @@ GSEQ_make_range_ibtw
 //
 #extern
 fcast // fun
-GASZ_make_range_ibtw
-(xs: range_ibtw): GASZ(range_ibtw, sint)
-#symload GASZ with GASZ_make_range_ibtw of 1000
+GASQ_make_range_ibtw
+(xs: range_ibtw): GASQ(range_ibtw, sint)
+#symload GASQ with GASQ_make_range_ibtw of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

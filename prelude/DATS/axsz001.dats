@@ -44,7 +44,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 < x0:vt >
 a1sz_strmize =
-gasz_strmize<a1sz(x0)><x0>(*void*)
+gasq_strmize<a1sz(x0)><x0>(*void*)
 //
 (* ****** ****** *)
 //
@@ -52,12 +52,12 @@ gasz_strmize<a1sz(x0)><x0>(*void*)
 { x0:t0 }
 gseq_strmize
 <a1sz(x0)><x0> =
-gasz_strmize<a1sz(x0)><x0>(*void*)
+gasq_strmize<a1sz(x0)><x0>(*void*)
 #impltmp
 { x0:vt }
 gseq_strmize1
 <a1sz(x0)><x0> =
-gasz_strmize<a1sz(x0)><x0>(*void*)
+gasq_strmize<a1sz(x0)><x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -65,7 +65,7 @@ gasz_strmize<a1sz(x0)><x0>(*void*)
 #impltmp
 { a: vt }
 g_forall<a1sz(a)> =
-gasz_forall<a1sz(a)><a>
+gasq_forall<a1sz(a)><a>
 //
 #impltmp
 { a: vt }
@@ -78,7 +78,7 @@ gseq_foritm1<a1sz(a)><a>
 #impltmp
 < x0:vt >
 a1sz_forall =
-gasz_forall<a1sz(x0)><x0>
+gasq_forall<a1sz(x0)><x0>
 #impltmp
 < x0:vt >
 a1sz_forall$f1un
@@ -107,7 +107,7 @@ forall$test1<x0> = forall$test<x0>
 #impltmp
 < x0:vt >
 a1sz_rforall =
-gasz_rforall<a1sz(x0)><x0>
+gasq_rforall<a1sz(x0)><x0>
 #impltmp
 { x0:vt }
 a1sz_rforall$f1un
@@ -137,20 +137,20 @@ rforall$test1<x0> = rforall$test<x0>
 #impltmp
 < x0:vt >
 a1sz_mapref =
-gasz_mapref<a1sz(x0)><x0>(*void*)
+gasq_mapref<a1sz(x0)><x0>(*void*)
 #impltmp
 < x0:vt >
 a1sz_mapref_c1bv =
-gasz_mapref_c1bv<a1sz(x0)><x0>(*void*)
+gasq_mapref_c1bv<a1sz(x0)><x0>(*void*)
 //
 #impltmp
 < x0:vt >
 a1sz_imapref =
-gasz_imapref<a1sz(x0)><x0>(*void*)
+gasq_imapref<a1sz(x0)><x0>(*void*)
 #impltmp
 < x0:vt >
 a1sz_imapref_c2bv =
-gasz_imapref_c2bv<a1sz(x0)><x0>(*void*)
+gasq_imapref_c2bv<a1sz(x0)><x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -173,12 +173,12 @@ can be found in [DATS/CATS/JS/axsz000.dats]
 < xs:t0 >
 < x0:vt >
 < y0:vt >
-gasz_map_a1sz
+gasq_map_a1sz
   ( xs ) =
 let
 //
 val n0 =
-gasz_length
+gasq_length
 <xs><x0>(xs)
 //
 in//let
@@ -197,13 +197,13 @@ end//endof(let)
 where {
 val//val
 (pf|x0) =
-$UN.gasz_lget$at$raw<xs><x0>(xs,i0)
+$UN.gasq_lget$at$raw<xs><x0>(xs,i0)
 // end-of-[val(...)]
 }(*where*)//end-of-[lam]
 //
 )(*end-of-[a1sz_make_nfun(n0, ...)]*)
 //
-end(*let*)//end-of-[gasz_map_a1sz(xs)]
+end(*let*)//end-of-[gasq_map_a1sz(xs)]
 //
 (* ****** ****** *)
 //
@@ -211,10 +211,10 @@ end(*let*)//end-of-[gasz_map_a1sz(xs)]
 < xs:t0 >
 < x0:vt >
 < y0:vt >
-gasz_map$f1un_a1sz
+gasq_map$f1un_a1sz
   (xs, fopr) =
 (
-  gasz_map_a1sz<xs><x0><y0>(xs)
+  gasq_map_a1sz<xs><x0><y0>(xs)
 ) where
 {
 #impltmp

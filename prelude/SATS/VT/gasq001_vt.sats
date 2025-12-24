@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 21 Jul 2024 02:16:49 PM EDT
+Mon 22 Jul 2024 12:14:37 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -42,79 +42,89 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<xs:t0>
+<xs:vt>
 <x0:vt>
-gasz_length(xs: xs): nint
+gasq_listize0
+(xs: ~xs): list_vt(x0)//fun
+//
+fun
+<xs:vt>
+<x0:vt>
+gasq_strmize0
+(xs: ~xs): strm_vt(x0)//fun
+fun
+<xs:vt>
+<x0:vt>
+gasq_strqize0
+(xs: ~xs): strq_vt(x0)//fun
 //
 (* ****** ****** *)
 //
 fun
-<xs:t0>
-<x0:t0>
-gasz_get$at
-(xs: xs,i0: ni): (x0)
+<xs:vt>
+<x0:vt>
+gasq_rlistize0
+(xs: ~xs): list_vt(x0)//fun
+//
 fun
-<xs:t0>
-<x0:t0>
-gasz_set$at
-(xs: xs, i0: ni, x0: x0): void
+<xs:vt>
+<x0:vt>
+gasq_rstrmize0
+(xs: ~xs): strm_vt(x0)//fun
+fun
+<xs:vt>
+<x0:vt>
+gasq_rstrqize0
+(xs: ~xs): strq_vt(x0)//fun
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<xs:t0>
+<xs:vt>
 <x0:vt>
-gasz_lget$at
-(xs: xs
-,i0: ni): (owed(x0) | x0)
+gasq_forall0(xs: ~xs): bool
 fun
-<xs:t0>
+<xs:vt>
 <x0:vt>
-gasz_lset$at
-(pf: owed(x0)
-|xs: xs, i0: ni, x0: x0): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_cget$at
-(xs: xs, i0: ni): (x0)
-fun
-<xs:t0>
-<x0:vt>
-gasz_setf$at
-(xs: xs, i0: ni, x0: x0): void
+gasq_forall1(xs: !xs): bool
 //
 (* ****** ****** *)
 //
-(*
-HX-2024-09-20:
-nil() is returned
-if [i0] is out of bounds
-*)
 fun
-<xs:t0>
+<xs:vt>
 <x0:vt>
-gasz_cget$at$opt
-(xs: xs, i0: ni): optn_vt(x0)
-(*
-HX-2024-09-20:
-cons(x0) is returned
-if [i0] is out of bounds
-*)
+gasq_rforall0(xs: ~xs): bool
 fun
-<xs:t0>
+<xs:vt>
 <x0:vt>
-gasz_setf$at$opt
-(xs: xs, i0: ni, x0: x0): optn_vt(x0)
+gasq_rforall1(xs: !xs): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasq_iforall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gasq_iforall1(xs: !xs): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasq_irforall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gasq_irforall1(xs: !xs): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_gasz000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_gasq001_vt.sats] *)
 (***********************************************************************)

@@ -134,12 +134,12 @@ if
 (* ****** ****** *)
 //
 #impltmp
-gasz_length<ni><ut>(ni) = (ni)
+gasq_length<ni><ut>(ni) = (ni)
 #impltmp
 gseq_length<ni><ut>(ni) = (ni)
 //
 #impltmp
-gasz_length<ni><ni>(ni) = (ni)
+gasq_length<ni><ni>(ni) = (ni)
 #impltmp
 gseq_length<ni><ni>(ni) = (ni)
 //
@@ -153,28 +153,28 @@ Wed 07 Aug 2024 03:56:12 PM EDT
 *)
 //
 #impltmp
-$UN.gasz_get$at$raw
+$UN.gasq_get$at$raw
 < nint >< unit >(ni, i0) = unit
 #impltmp
-$UN.gasz_lget$at$raw
+$UN.gasq_lget$at$raw
 < nint >< unit >(ni, i0) =
 let
 pvx pf =
 owed_t0_make{unit}() in (pf|unit) end
-//let//end($UN.gasz_get$at$raw<strn><cgtz>)
+//let//end($UN.gasq_get$at$raw<strn><cgtz>)
 //
 (* ****** ****** *)
 //
 #impltmp
-$UN.gasz_get$at$raw
+$UN.gasq_get$at$raw
 < nint >< nint >(ni, i0) = (i0)
 #impltmp
-$UN.gasz_lget$at$raw
+$UN.gasq_lget$at$raw
 < nint >< nint >(ni, i0) =
 let
 pvx pf =
 owed_t0_make{nint}() in (pf|(i0)) end
-//let//end($UN.gasz_get$at$raw<strn><cgtz>)
+//let//end($UN.gasq_get$at$raw<strn><cgtz>)
 //
 (* ****** ****** *)
 (* ****** ****** *)

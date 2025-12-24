@@ -49,11 +49,11 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_listize
+gasq_listize
   ( xs ) =
 let
 val n0 =
-gasz_length
+gasq_length
 <xs><x0>(xs)
 in//let
 (
@@ -63,21 +63,21 @@ where
 #impltmp
 map$fopr<ni><x0>(i0) =
 (
-$UN.gasz_cget$at$raw
+$UN.gasq_cget$at$raw
 <   xs   ><   x0   >( xs, i0 ))
 }
-end//let//end-of-[gasz_listize(xs)]
+end//let//end-of-[gasq_listize(xs)]
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_rlistize
+gasq_rlistize
   ( xs ) =
 let
 val n0 =
-gasz_length
+gasq_length
 <xs><x0>(xs)
 in//let
 (
@@ -87,10 +87,10 @@ where
 #impltmp
 rmap$fopr<ni><x0>(i0) =
 (
-$UN.gasz_cget$at$raw
+$UN.gasq_cget$at$raw
 <   xs   ><   x0   >( xs, i0 ))
 }
-end//let//end-of-[gasz_rlistize(xs)]
+end//let//end-of-[gasq_rlistize(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -98,11 +98,11 @@ end//let//end-of-[gasz_rlistize(xs)]
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_strmize
+gasq_strmize
   ( xs ) =
 let
 val n0 =
-gasz_length
+gasq_length
 <xs><x0>(xs)
 in//let
 (
@@ -112,19 +112,19 @@ where
 #impltmp
 map$fopr<ni><x0>(i0) =
 (
-$UN.gasz_cget$at$raw
+$UN.gasq_cget$at$raw
 <   xs   ><   x0   >( xs, i0 ))
 }
-end//let//end-of-[gasz_strmize(xs)]
+end//let//end-of-[gasq_strmize(xs)]
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_rstrmize
+gasq_rstrmize
   ( xs ) =
 let
 val n0 =
-gasz_length
+gasq_length
 <xs><x0>(xs)
 in//let
 (
@@ -134,10 +134,10 @@ where
 #impltmp
 rmap$fopr<ni><x0>(i0) =
 (
-$UN.gasz_cget$at$raw
+$UN.gasq_cget$at$raw
 <   xs   ><   x0   >( xs, i0 ))
 }
-end//let//end-of-[gasz_rstrmize(xs)]
+end//let//end-of-[gasq_rstrmize(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -145,10 +145,10 @@ end//let//end-of-[gasz_rstrmize(xs)]
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_forall(xs) =
+gasq_forall(xs) =
 let
 val n0 =
-gasz_length
+gasq_length
 <xs><x0>(xs)
 in//let
 (*
@@ -170,7 +170,7 @@ where
 val
 (
 pf|x0) =
-$UN.gasz_lget$at$raw
+$UN.gasq_lget$at$raw
 < xs >< x0 >(xs, i0)
 //
 val r0 =
@@ -180,26 +180,26 @@ pvx () =
 (
   owed_vt_return0(pf, x0)) }
 }
-end//let//end-of-[gasz_forall(xs)]
+end//let//end-of-[gasq_forall(xs)]
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_forall$f1un
+gasq_forall$f1un
   (xs, test) =
 (
-gasz_forall
+gasq_forall
 <xs><x0>(xs)) where {
 #impltmp
 forall$test1<x0>(x0) = test(x0)//impl
-}(*where*)//end-of-[gasz_forall$f1un(xs)]
+}(*where*)//end-of-[gasq_forall$f1un(xs)]
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_exists(xs) =
+gasq_exists(xs) =
 let
 //
 #impltmp
@@ -208,30 +208,30 @@ forall$test1<x0>(x0) =
   not(exists$test1<x0>(x0)))
 //
 in//let
-  not(gasz_forall<xs><x0>(xs))
-end//let//end-of-[gasz_exists(xs)]
+  not(gasq_forall<xs><x0>(xs))
+end//let//end-of-[gasq_exists(xs)]
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_exists$f1un
+gasq_exists$f1un
   (xs, test) =
 (
-gasz_exists
+gasq_exists
 <xs><x0>(xs)) where {
 #impltmp
 exists$test1<x0>(x0) = test(x0)//impl
-}(*where*)//end-of-[gasz_exists$f1un(xs)]
+}(*where*)//end-of-[gasq_exists$f1un(xs)]
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_rforall(xs) =
+gasq_rforall(xs) =
 let
 val n0 =
-gasz_length
+gasq_length
 <xs><x0>(xs)
 in//let
 (*
@@ -251,37 +251,37 @@ where
 {
 val
 (pf | x0) =
-$UN.gasz_lget$at$raw
+$UN.gasq_lget$at$raw
 < xs >< x0 >(xs, i0)
 val r0 =
   rforall$test1<x0>(x0)
 val () =
-$UN.gasz_lset$at$raw
+$UN.gasq_lset$at$raw
 <xs><x0>(pf | xs, i0, x0) }
 }
-end//let//end-of-[gasz_rforall(xs)]
+end//let//end-of-[gasq_rforall(xs)]
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_rforall$f1un
+gasq_rforall$f1un
   (xs, test) =
 (
-gasz_rforall
+gasq_rforall
 <xs><x0>(xs)) where
 {
 #impltmp
 rforall$test1<x0>(x0) = test(x0)//impl
-}(*where*)//end-of-[gasz_rforall$f1un(xs)]
+}(*where*)//end-of-[gasq_rforall$f1un(xs)]
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_rexists(xs) =
+gasq_rexists(xs) =
 let
 //
 #impltmp
@@ -290,20 +290,20 @@ rforall$test1<x0>(x0) =
   not(rexists$test1<x0>(x0)))
 //
 in//let
-  not(gasz_rforall<xs><x0>(xs))
-end//let//end-of-[gasz_rexists(xs)]
+  not(gasq_rforall<xs><x0>(xs))
+end//let//end-of-[gasq_rexists(xs)]
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_rexists$f1un
+gasq_rexists$f1un
   (xs, test) =
 (
-gasz_rexists
+gasq_rexists
 <xs><x0>(xs)) where {
 #impltmp
 rexists$test1<x0>(x0) = test(x0)//impl
-}(*where*)//end-of-[gasz_rexists$f1un(xs)]
+}(*where*)//end-of-[gasq_rexists$f1un(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -327,19 +327,19 @@ mapref$fopr1r(x0) =
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_mapref_c1bv
+gasq_mapref_c1bv
   (xs, fopr) =
 (
-gasz_mapref
+gasq_mapref
 <xs><x0>(xs)) where
 {
 #impltmp
 mapref$fopr0<x0>(x0) = fopr(x0)
-}(*where*)//end-of-[gasz_mapref_c1bv]
+}(*where*)//end-of-[gasq_mapref_c1bv]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_gasz001.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_gasq001.dats] *)
 (***********************************************************************)

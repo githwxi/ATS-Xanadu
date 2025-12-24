@@ -26,15 +26,19 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Sun 21 Jul 2024 11:39:54 PM EDT
+Sun 21 Jul 2024 02:34:24 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef ni = nint
 (* ****** ****** *)
 (* ****** ****** *)
 #staload UN =
@@ -42,6 +46,123 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gasq_get$at
+ ( xs,i0 ) =
+let
+val n0 =
+gasq_length<xs><x0>(xs)
+in//let
+if
+(i0 >= n0)
+then
+get$at$exn<xs><x0>(xs, i0)
+else
+let
+val
+(
+pf|x0) =
+$UN.gasq_lget$at$raw
+<   xs   ><   x0   >(xs, i0)
+in//let
+let
+pvx () = owed_t0_elim0(pf) in x0
+end//let
+end//let
+end//let//end-of-[gasq_get$at(xs,i0)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gasq_set$at
+(xs, i0, x0) =
+let
+val n0 =
+gasq_length<xs><x0>(xs)
+in//let
+if
+(i0 >= n0)
+then
+set$at$exn<xs><x0>(xs,i0,x0)
+else
+let
+pvx pf = owed_t0_make{x0}()
+in//let
+$UN.gasq_lset$at$raw
+<   xs   ><   x0   >(pf | xs,i0,x0)
+end//let//else//end-of-[if]
+//
+end//let//end-of-[gasq_set$at(xs,i0,x0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+//
+HX:
+This one is
+moved to [unsfx00.dats]
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+$UN.gasq_cget$at$raw
+  (xs, i0) =
+let
+//
+val
+(
+pf|x0) =
+$UN.gasq_lget$at$raw
+<  xs  ><  x0  >( xs, i0 )
+//
+in//let
+//
+let
+val x1 = g_copy<x0>(x0)
+pvx () =
+  owed_vt_return0(pf, x0) in x1 end
+//
+end//let//end-of-[$UN.gasq_cget$at$raw]
+*)
+//
+(* ****** ****** *)
+//
+(*
+//
+HX:
+This one is
+moved to [unsfx00.dats]
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+$UN.gasq_setf$at$raw
+  (xs, i0, x0) =
+let
+//
+val
+(pf | x1) =
+$UN.gasq_lget$at$raw
+<  xs  ><  x0  >( xs, i0 )
+//
+in//let
+let
+  val () = g_free< x0 >( x1 )
+in//let
+(
+$UN.gasq_set$at$raw(pf | xs, i0, x0))
+end//let
+end//let//end-of-[$UN.gasq_setf$at$raw]
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_VT_gasz001_vt.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_gasq000.dats] *)
 (***********************************************************************)
