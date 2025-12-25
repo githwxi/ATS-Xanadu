@@ -169,6 +169,21 @@ length with lsrt_length of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-25:
+insertion happens
+at the first available position
+Thu Dec 25 12:35:50 PM EST 2025
+*)
+fun
+<x0:t0>
+lsrt_insert
+{ln:i0}
+(xs: lsrt(x0, ln), x0: x0): lsrt(x0, ln+1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_lsrt000.sats] *)
 (***********************************************************************)

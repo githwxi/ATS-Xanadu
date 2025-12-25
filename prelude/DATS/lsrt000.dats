@@ -42,6 +42,30 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX:
+This one is also
+implemented in [gdbg000.dats]:
+*)
+#impltmp
+{ t0:t0 }
+g_ptcon
+<lsrt(t0)>
+( (*void*) ) =
+(
+pstrn("lsrt"))
+#impltmp
+{ t0:t0 }
+g_ptype
+<lsrt(t0)>
+( (*void*) ) =
+(
+pstrn("lsrt(");
+g_ptype<t0>((*0*)); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <(*tmp*)>
 lsrt_nil
@@ -185,6 +209,107 @@ gseq_strmize
   (  xs  ) =
 (
   list_strmize<x0>(lsrt_decd(xs)))
+#impltmp
+{ x0:t0 }
+gseq_listize
+<lsrt(x0)><x0>
+  (  xs  ) =
+(
+  list_listize<x0>(lsrt_decd(xs)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+gseq_sep
+<lsrt(x0)><x0>() = ","
+#impltmp
+{ x0:t0 }
+gseq_end
+<lsrt(x0)><x0>() = ")"
+#impltmp
+{ x0:t0 }
+gseq_beg
+<lsrt(x0)><x0>() = "lsrt("
+//
+#impltmp
+{ x0:t0 }
+g_print
+<lsrt(x0)>(xs) =
+(
+gseq_print<lsrt(x0)><x0>(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-15:
+Thu Dec 25 01:32:21 PM EST 2025
+*)
+//
+#impltmp
+< x0:t0 >
+lsrt_insert
+( xs , x0 ) =
+let
+//
+val xs =
+(
+  lsrt_decd(xs))
+//
+in//let
+UN_lsrt_encd
+(
+loop
+(xs, list_vt_nil(*0*)))
+end where // end-of-(let)
+{
+//
+#typedef xs = list(x0)
+#vwtpdef rs = list_vt(x0)
+//
+fun
+rappend0x
+( rs: rs
+, xs: xs): list(x0) =
+(
+list_vt_folditm0
+<x0><xs>(rs, xs)) where
+{
+//
+#impltmp
+folditm$fopr0
+<x0><xs>(xs, x0) =
+(
+  list_cons<x0>(x0, xs)) }
+//
+fnx
+loop
+( xs: xs
+, rs: rs): list(x0) =
+(
+case+ xs of
+|
+list_nil
+( (*0*) ) =>
+(
+rappend0x(rs, list_sing(x0)))
+|
+list_cons
+( x1, ys ) =>
+if
+(
+g_lte<x0>(x0, x1))
+then
+(
+rappend0x
+(rs, list_cons(x0, xs)))
+else
+(
+loop(ys, list_vt_cons(x1, rs))))//if
+//
+}(*where*)//end-of-[lsrt_insert(xs, x0))]
 //
 (* ****** ****** *)
 (* ****** ****** *)
