@@ -182,6 +182,67 @@ irfoldall$fopr
 //
 fun
 <x0:t0>
+search$test(itm: x0): bool
+fun
+<x0:t0>
+search$tcmp(itm: x0): sint
+//
+fun
+<x0:t0>
+rsearch$test(itm: x0): bool
+fun
+<x0:t0>
+rsearch$tcmp(itm: x0): sint
+//
+fun
+<x0:t0>
+isearch$test(pos: ni, itm: x0): bool
+fun
+<x0:t0>
+isearch$tcmp(pos: ni, itm: x0): sint
+//
+fun
+<x0:t0>
+irsearch$test(pos: ni, itm: x0): bool
+fun
+<x0:t0>
+irsearch$tcmp(pos: ni, itm: x0): sint
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+filter$test(itm: x0): bool
+fun
+<x0:t0>
+filter$tcmp(itm: x0): sint
+//
+fun
+<x0:t0>
+rfilter$test(itm: x0): bool
+fun
+<x0:t0>
+rfilter$tcmp(itm: x0): sint
+//
+fun
+<x0:t0>
+ifilter$test(pos: ni, itm: x0): bool
+fun
+<x0:t0>
+ifilter$tcmp(pos: ni, itm: x0): sint
+//
+fun
+<x0:t0>
+irfilter$test(pos: ni, itm: x0): bool
+fun
+<x0:t0>
+irfilter$tcmp(pos: ni, itm: x0): sint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
 <y0:vt>
 map$fopr(itm: x0): (y0)
 fun
@@ -196,21 +257,6 @@ fun
 <x0:t0>
 <y0:vt>
 irmap$fopr(pos: ni, itm: x0): (y0)
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-filter$test(itm: x0): bool
-fun
-<x0:t0>
-rfilter$test(itm: x0): bool
-fun
-<x0:t0>
-ifilter$test(pos: ni, itm: x0): bool
-fun
-<x0:t0>
-irfilter$test(pos: ni, itm: x0): bool
 //
 (* ****** ****** *)
 //

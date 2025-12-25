@@ -171,6 +171,17 @@ length with lsrt_length of 1000
 //
 (*
 HX-2025-12-25:
+This one uses [search$tcmp]
+*)
+fun
+<x0:t0>
+lsrt_search
+(xs: lsrt(x0)): optn_vt(x0)
+//
+(* ****** ****** *)
+//
+(*
+HX-2025-12-25:
 insertion happens
 at the first available position
 Thu Dec 25 12:35:50 PM EST 2025
