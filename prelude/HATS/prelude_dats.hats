@@ -92,6 +92,7 @@ This one is included by [DATS/unsfx00.dats]
 #staload _ = "prelude/DATS/list000.dats"
 #staload _ = "prelude/DATS/list001.dats"
 #staload _ = "prelude/DATS/list002.dats"
+#staload _ = "prelude/DATS/lsrt000.dats"
 #staload _ = "prelude/DATS/optn000.dats"
 #staload _ = "prelude/DATS/optn001.dats"
 #staload _ = "prelude/DATS/strm000.dats"
@@ -136,6 +137,7 @@ This one is included by [DATS/unsfx00.dats]
 //
 #staload _ = "prelude/DATS/VT/list000_vt.dats"
 #staload _ = "prelude/DATS/VT/list001_vt.dats"
+#staload _ = "prelude/DATS/VT/lsrt000_vt.dats"
 #staload _ = "prelude/DATS/VT/optn000_vt.dats"
 #staload _ = "prelude/DATS/VT/optn001_vt.dats"
 //
