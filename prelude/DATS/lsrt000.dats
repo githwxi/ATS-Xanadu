@@ -54,6 +54,22 @@ UN_lsrt_encd
 (* ****** ****** *)
 //
 #impltmp
+<(*tmp*)>
+lsrt_nilq
+  (  xs  ) =
+(
+  list_nilq(lsrt_decd(xs)))
+#impltmp
+<(*tmp*)>
+lsrt_consq
+  (  xs  ) =
+(
+  list_consq(lsrt_decd(xs)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 < a: t0 >
 lsrt_make_1val
   (  x0  ) =
@@ -70,10 +86,105 @@ if
 g_lte<a>(x1, x2)
 then
 UN_lsrt_encd(
-(list_make_2val<a>(x1, x2)))
+list_make_2val<a>(x1, x2))
 else
 UN_lsrt_encd(
-(list_make_2val<a>(x2, x1))))
+list_make_2val<a>(x2, x1)))
+//
+#impltmp
+< a: t0 >
+lsrt_make_3val
+( x1, x2, x3 ) =
+(
+if // if1
+g_lte<a>(x1, x2)
+then // 1
+(
+if // if2
+g_lte<a>(x2, x3)
+then // 2
+UN_lsrt_encd(
+list_make_3val<a>(x1, x2, x3))
+else // 2
+(
+if // if3
+g_lte<a>(x1, x3)
+then // 3
+UN_lsrt_encd(
+list_make_3val<a>(x1, x3, x2))
+else // 3
+UN_lsrt_encd(
+list_make_3val<a>(x3, x1, x2))))
+else // 1
+(
+if // if2
+g_lte<a>(x1, x3)
+then // 2
+UN_lsrt_encd(
+list_make_3val<a>(x2, x1, x3))
+else // 2
+(
+if // if3
+g_lte<a>(x2, x3)
+then // 3
+UN_lsrt_encd(
+list_make_3val<a>(x2, x3, x1))
+else // 3
+UN_lsrt_encd(
+list_make_3val<a>(x3, x2, x1)))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+lsrt_head
+  (  xs  ) =
+(
+  list_head<a>(lsrt_decd(xs)))
+#impltmp
+< a: t0 >
+lsrt_tail
+  (  xs  ) =
+(
+UN_lsrt_encd(
+  list_tail<a>(lsrt_decd(xs))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+lsrt_length
+  (  xs  ) =
+(
+  list_length<a>(lsrt_decd(xs)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+gseq_forall
+<lsrt(x0)><x0>
+  (  xs  ) =
+(
+  list_forall<x0>(lsrt_decd(xs)))
+#impltmp
+{ x0:t0 }
+gseq_iforall
+<lsrt(x0)><x0>
+  (  xs  ) =
+(
+  list_iforall<x0>(lsrt_decd(xs)))
+//
+#impltmp
+{ x0:t0 }
+gseq_strmize
+<lsrt(x0)><x0>
+  (  xs  ) =
+(
+  list_strmize<x0>(lsrt_decd(xs)))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -41,6 +41,10 @@ Authoremail: gmhwxiATgmailDOTcom
 (*
 HX-2025-12-25:
 For sorted lists
+Originall, I named it 'lord'
+instead of 'lsrt'. And today
+is Christmas, 2025!
+Thu Dec 25 12:03:10 PM EST 2025
 *)
 //
 #abstbox
@@ -50,7 +54,7 @@ lsrt_t0_i0_tx
 #sexpdef
 lsrt = lsrt_t0_i0_tx
 #typedef
-lrst(a: t0) = [n:i0] lsrt(a, n)
+lsrt(a: t0) = [n:i0] lsrt(a, n)
 //
 (* ****** ****** *)
 //
