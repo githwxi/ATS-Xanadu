@@ -30,141 +30,54 @@
 (*
 Author: Hongwei Xi
 (*
-Thu Dec 25 10:09:49 AM EST 2025
+Thu Dec 25 10:43:54 AM EST 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-(*
-HX-2025-12-25:
-For sorted lists
-*)
-//
-#abstbox
-lsrt_t0_i0_tx
-( a:t0,n:i0 ) <= list(a)
-//
-#sexpdef
-lsrt = lsrt_t0_i0_tx
-#typedef
-lrst(a: t0) = [n:i0] lsrt(a, n)
-//
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
-fcast
-lsrt_decd
-{a:t0}
-(lsrt(a, n)): list(a, n)
-//
-fcast
-UN_lsrt_encd
-{a:t0}
-(list(a, n)): lsrt(a, n)
-//
-(* ****** ****** *)
-//
-fun<>
+#impltmp
+<(*tmp*)>
 lsrt_nil
-{a:t0}((*0*)): lsrt(a, 0)
-//
-(* ****** ****** *)
-//
-fun<>
-lsrt_nilq
-{a:t0}{n:i0}
-(xs: lsrt(a,n)): bool(n=0)
-fun<>
-lsrt_consq
-{a:t0}{n:i0}
-(xs: lsrt(a,n)): bool(n>0)
-//
-#symload
-nilq with lsrt_nilq of 1000
-consq with lsrt_consq of 1000
+{a:t0}((*0*)) =
+(
+UN_lsrt_encd
+(list_nil<a>(*0*)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<a:t0>
-lsrt_head
-{n:i0|n>0}
-(xs: lsrt(a,n)): ( a )
-fun
-<a:t0>
-lsrt_tail
-{n:i0|n>0}
-( xs
-: lsrt(a,n)): lsrt(a,n-1)
-//
-#symload
-head with lsrt_head of 1000
-#symload
-tail with lsrt_tail of 1000
-//
-(* ****** ****** *)
-//
-fun
-<a:t0>
-lsrt_head$opt
-(xs: lsrt(a)): optn_vt(a)
-fun
-<a:t0>
-lsrt_tail$opt
-(xs: lsrt(a)): optn_vt(lsrt(a))
-//
-#symload
-head$opt with lsrt_head$opt of 1000
-#symload
-tail$opt with lsrt_tail$opt of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
+#impltmp
+< a: t0 >
 lsrt_make_1val
-( x1: a): lsrt(a, 1)
-fun
-<a:t0>
+  (  x0  ) =
+(
+UN_lsrt_encd(
+list_make_1val<a>(x0)))
+//
+#impltmp
+< a: t0 >
 lsrt_make_2val
-(x1: a, x2: a): lsrt(a, 2)
-fun
-<a:t0>
-lsrt_make_3val
-(x1: a
-,x2: a, x3: a): lsrt(a, 3)
-//
-#symload
-lsrt_sing with lsrt_make_1val
-#symload
-lsrt_pair with lsrt_make_2val
-//
-#symload
-lsrt_1val with lsrt_make_1val
-#symload
-lsrt_2val with lsrt_make_2val
-#symload
-lsrt_3val with lsrt_make_3val
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-lsrt_length
-{n:i0}
-(xs: lsrt(a, n)): sint(n)
-//
-#symload
-length with lsrt_length of 1000
+  ( x1, x2 ) =
+(
+if
+g_lte<a>(x1, x2)
+then
+UN_lsrt_encd(
+(list_make_2val<a>(x1, x2)))
+else
+UN_lsrt_encd(
+(list_make_2val<a>(x2, x1))))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_lsrt000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_lsrt000.dats] *)
 (***********************************************************************)
