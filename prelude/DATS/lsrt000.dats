@@ -243,6 +243,47 @@ gseq_print<lsrt(x0)><x0>(xs))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0:t0 >
+lsrt_search
+  ( xs ) =
+(
+loop(lsrt_decd(xs))
+) where
+{
+//
+fun
+loop
+( xs
+: list(x0)
+) : optn_vt(x0) =
+(
+case+ xs of
+|
+list_nil() =>
+(
+  optn_vt_nil())
+|
+list_cons(x1, xs) =>
+let
+val sgn = search$tcmp<x0>(x1)
+in//let
+//
+if (sgn = 0)
+then
+optn_vt_cons(x1) else
+(
+if (sgn < 0)
+then loop(xs) else optn_vt_nil())
+//
+end//let//end-of-[list_cons(x1,xs)]
+)(*case+*)//end-of-[loop(xs:list(x0))]
+//
+}(*where*)//end-of-[lsrt_search<x0>(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2025-12-15:
 Thu Dec 25 01:32:21 PM EST 2025
@@ -259,10 +300,12 @@ val xs =
   lsrt_decd(xs))
 //
 in//let
+//
 UN_lsrt_encd
 (
 loop
 (xs, list_vt_nil(*0*)))
+//
 end where // end-of-(let)
 {
 //
@@ -310,6 +353,96 @@ else
 loop(ys, list_vt_cons(x1, rs))))//if
 //
 }(*where*)//end-of-[lsrt_insert(xs, x0))]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-25:
+Thu Dec 25 06:26:22 PM EST 2025
+*)
+(*
+#impltmp
+{ k0:t0
+, x0:t0 }
+gmap_search$get
+<lsrt@(k0,x0)>
+< k0  ><  x0 >
+(  kxs, key  ) =
+let
+//
+val kxs =
+(
+gseq_filter_lstrm
+< kxs >< kx0 >( kxs ))
+where{
+//
+#typedef kx0 = (k0, x0)
+#typedef kxs = lsrt(kx0)
+//
+#impltmp
+filter$test
+< kx0 >( kx0 ) =
+(
+  g_lte<k0>( key, kx0.0 )) }
+//
+in//let
+//
+case+ !kxs of
+| ~
+strmcon_vt_nil
+(  (*void*)  ) => optn_vt_nil(*0*)
+| ~
+strmcon_vt_cons
+(   kx1, kxs   ) =>
+let
+val () = g_free(kxs)
+in//let
+(
+if // if
+(
+g_eq<k0>
+(key, kx1.0))
+then
+optn_vt_cons(kx1.1) else optn_vt_nil(*0*))
+end//let//end-of-[strmcon_vt_cons(kx1,kxs)]
+//
+end(*let*)//end-of-[gmap_search<lsrt@(k0,x0)>]
+*)
+//
+(*
+HX-2025-12-25:
+Thu Dec 25 06:35:24 PM EST 2025
+*)
+#impltmp
+{ k0:t0
+, x0:t0 }
+gmap_search$get
+<lsrt@(k0,x0)>
+< k0  ><  x0 >
+(  kxs, key  ) =
+let
+//
+val opt = lsrt_search(kxs)
+//
+in//let
+//
+case+ opt of
+| ~
+optn_vt_nil
+(  (*0*)  ) => optn_vt_nil()
+| ~
+optn_vt_cons
+(   kx1   ) => optn_vt_cons(kx1.1)
+//
+end where
+{
+//
+#impltmp
+search$tcmp
+< (k0,x0) >(kx0) = g_cmp<k0>(key, kx0.0)
+//
+}(*where*)//end-of-[gmap_search<lsrt@(k0,x0)>]
 //
 (* ****** ****** *)
 (* ****** ****** *)

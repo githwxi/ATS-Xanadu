@@ -1596,10 +1596,10 @@ gseq_filter_llist<xs><x0>(xs))
 < xs:t0 >
 < x0:t0 >
 gseq_filter$f1un_list
-  (xs, fopr ) =
+  (xs, test) =
 list_vt2t{x0}
 (
-gseq_filter$f1un_llist<xs><x0>(xs, fopr))
+gseq_filter$f1un_llist<xs><x0>(xs, test))
 //
 (* ****** ****** *)
 //
@@ -1616,13 +1616,13 @@ gseq_filter_lstrm<xs><x0>(xs))
 < xs:t0 >
 < x0:t0 >
 gseq_filter$f1un_llist
-  (xs, fopr) =
+  (xs, test) =
 (
 gseq_filter_llist<xs><x0>(xs)
 ) where
 {
 #impltmp
-filter$test<x0>( x0 ) = fopr( x0 )
+filter$test<x0>( x0 ) = test( x0 )
 }(*where*)//end(gseq_filter$f1un_llist)
 //
 (* ****** ****** *)
@@ -1658,25 +1658,25 @@ filter$test1<x0> = filter$test<x0>
 < xs:t0 >
 < x0:t0 >
 gseq_filter$f1un_lstrm
-  (xs, fopr) =
+  (xs, test) =
 (
 gseq_filter_lstrm<xs><x0>(xs)
 ) where
 {
 #impltmp
-filter$test<x0>( x0 ) = fopr( x0 )
+filter$test<x0>( x0 ) = test( x0 )
 }(*where*)//end(gseq_filter$f1un_lstrm)
 #impltmp
 < xs:t0 >
 < x0:t0 >
 gseq_filter$f1un_lstrq
-  (xs, fopr) =
+  (xs, test) =
 (
 gseq_filter_lstrq<xs><x0>(xs)
 ) where
 {
 #impltmp
-filter$test<x0>( x0 ) = fopr( x0 )
+filter$test<x0>( x0 ) = test( x0 )
 }(*where*)//end(gseq_filter$f1un_lstrq)
 //
 (* ****** ****** *)
@@ -2013,6 +2013,53 @@ map$fopr<x0><y0>(x0) =
 (
   map$e1nv$fopr<x0><y0><e1>(x0, e1))
 }(*where*)//end-of-[gseq_map$e1nv_rllist(xs,e1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-25:
+Thu Dec 25 04:43:22 PM EST 2025
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_search
+  ( xs ) =
+let
+//
+val rs =
+(
+gseq_filter_lstrm<xs><x0>(xs))
+where
+{
+#impltmp
+filter$test<x0> = search$test<x0> }
+//
+in//let
+//
+case+ !rs of
+| ~
+strmcon_vt_nil() => optn_vt_nil(*0*)
+| ~
+strmcon_vt_cons
+(   x1 , xs   ) =>
+let
+val () = free(xs) in optn_vt_cons(x1) end//let
+//
+end(*let*)//end-of-[gseq_search<xs:t0><x0:t0>(xs)]
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_search$f1un
+  (xs, test) =
+(
+  gseq_search<xs><x0>(xs)) where
+{
+#impltmp search$test<x0>(x0) = test(x0)
+}(*where*)//endof[gseq_search$f1un<xs><x0>(xs,test)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

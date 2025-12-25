@@ -1277,12 +1277,12 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_filter$f1un_list
-(xs: xs, fopr: (x0)->bool): list(x0)
+(xs: xs, test: (x0)->bool): list(x0)
 fun
 <xs:t0>
 <x0:t0>
 gseq_filter$f1un_llist
-(xs: xs, fopr: (x0)->bool): list_vt(x0)
+(xs: xs, test: (x0)->bool): list_vt(x0)
 //
 (*
 #symload
@@ -1301,12 +1301,12 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_filter$f1un_lstrm
-(xs: xs, fopr: (x0)->bool): strm_vt(x0)
+(xs: xs, test: (x0)->bool): strm_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
 gseq_filter$f1un_lstrq
-(xs: xs, fopr: (x0)->bool): strq_vt(x0)
+(xs: xs, test: (x0)->bool): strq_vt(x0)
 //
 (*
 #symload
@@ -1334,7 +1334,7 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_filter$f1un_rlist
-(xs: xs, fopr: (x0)->bool): list(x0)
+(xs: xs, test: (x0)->bool): list(x0)
 (*
 #symload
 filter_rlist with gseq_filter$f1un_rlist of 0100
@@ -1346,7 +1346,7 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_filter$f1un_rllist
-(xs: xs, fopr: (x0)->bool): list_vt(x0)
+(xs: xs, test: (x0)->bool): list_vt(x0)
 (*
 #symload
 filter_rllist with gseq_filter$f1un_rllist of 0100
@@ -1526,6 +1526,26 @@ fun
 <y0:vt>
 <e1:vt>
 gseq_map$e1nv_rllist(xs: xs, e1: !e1): list_vt(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-25:
+Thu Dec 25 04:40:27 PM EST 2025
+*)
+fun
+<xs:t0>
+<x0:t0>
+gseq_search(xs: xs): optn_vt(x0)
+#symload search with gseq_search of 1000
+fun
+<xs:t0>
+<x0:t0>
+gseq_search$f1un
+(xs: xs, test: (x0)->bool): optn_vt(x0)
+//
+#symload gseq_search with gseq_search$f1un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
