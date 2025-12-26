@@ -502,6 +502,48 @@ strq_vt_map$e1nv0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-26:
+Fri Dec 26 12:28:51 PM EST 2025
+*)
+//
+fun
+<x0:vt>
+strm_vt_ord$exists0(xs: strm_vt(x0)): bool
+fun
+<x0:vt>
+strm_vt_ord$iexists0(xs: strm_vt(x0)): bool
+//
+#symload ord$exists0 with strm_vt_ord$exists0 of 1000
+#symload ord$iexists0 with strm_vt_ord$iexists0 of 1000
+//
+fun
+<x0:vt>
+strm_vt_ord$exists0$f1un
+(xs: strm_vt(x0), tcmp: (~x0) -> sint): bool
+//
+#symload
+ord$exists0 with strm_vt_ord$exists0$f1un of 1000
+#symload
+ord$exists0$fun with strm_vt_ord$exists0$f1un of 1000
+#symload
+strm_vt_ord$exists0 with strm_vt_ord$exists0$f1un of 1000
+//
+fun
+<x0:vt>
+strm_vt_ord$iexists0$f2un
+(xs: strm_vt(x0), tcmp: (ni, ~x0) -> sint): bool
+//
+#symload
+ord$iexists0 with strm_vt_ord$iexists0$f2un of 1000
+#symload
+ord$iexists0$fun with strm_vt_ord$iexists0$f2un of 1000
+#symload
+strm_vt_ord$iexists0 with strm_vt_ord$iexists0$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_strm001_vt.sats] *)
 (***********************************************************************)
