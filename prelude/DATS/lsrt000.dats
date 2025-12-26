@@ -359,7 +359,47 @@ loop(ys, list_vt_cons(x1, rs))))//if
 //
 (*
 HX-2025-12-25:
-Thu Dec 25 06:26:22 PM EST 2025
+The keys in a lsrt-map
+are assumed to be distinct!!!
+Thu Dec 25 06:35:24 PM EST 2025
+*)
+//
+#impltmp
+{ k0:t0
+, x0:t0 }
+gmap_search$get
+<lsrt@(k0,x0)>
+< k0  ><  x0 >
+(  kxs, key  ) =
+let
+//
+val opt = lsrt_search(kxs)
+//
+in//let
+//
+case+ opt of
+| ~
+optn_vt_nil
+(  (*0*)  ) => optn_vt_nil()
+| ~
+optn_vt_cons
+(   kx1   ) => optn_vt_cons(kx1.1)
+//
+end where
+{
+//
+#impltmp
+search$tcmp
+< (k0,x0) >(kx0) = g_cmp<k0>(key, kx0.0)
+//
+}(*where*)//end-of-[gmap_search<lsrt@(k0,x0)>]
+//
+(* ****** ****** *)
+//
+(*
+HX-2025-12-25:
+This gives another
+implementation via [gseq_filter_lstrm]
 *)
 (*
 #impltmp
@@ -410,39 +450,245 @@ end//let//end-of-[strmcon_vt_cons(kx1,kxs)]
 end(*let*)//end-of-[gmap_search<lsrt@(k0,x0)>]
 *)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
-HX-2025-12-25:
-Thu Dec 25 06:35:24 PM EST 2025
+HX-2025-12-26:
+Fri Dec 26 12:00:19 AM EST 2025
 *)
+//
 #impltmp
 { k0:t0
 , x0:t0 }
-gmap_search$get
+gmap_getout$opt
 <lsrt@(k0,x0)>
 < k0  ><  x0 >
 (  kxs, key  ) =
 let
+val
+(map, opt) =
+(
+loop(kxs, krs))
+in//let
+(
+  map, opt) where
+{
+val map =
+(
+  UN_lsrt_encd(map)) }
+end where//end-of(let)
+{
 //
-val opt = lsrt_search(kxs)
+#typedef kx0 = (k0, x0)
+#typedef kxs = list(kx0)
+#typedef map = list(kx0)
+#vwtpdef opt = optn_vt(x0)
+#vwtpdef krs = list_vt(kx0)
+//
+fun
+rappend0x
+( krs: krs
+, kxs: kxs): map =
+(
+list_vt_folditm0
+<kx0><map>(krs, kxs)
+) where{
+//
+#impltmp
+folditm$fopr0
+<kx0><map>(kxs, kx0) =
+(
+  list_cons<kx0>(kx0, kxs))}
+//
+val kxs: kxs = lsrt_decd(kxs)
+val krs: krs = list_vt_nil(*0*)
+//
+fun
+loop
+( kxs: kxs
+, krs: krs)
+: (map, opt) =
+(
+case+ kxs of
+//
+|list_nil
+( (*void*) ) =>
+//
+let
+val map =
+rappend0x(krs, kxs)
+in//let
+(map, optn_vt_nil())
+end//let
+//
+|list_cons
+( kx1, kys ) =>
+let
+//
+val sgn =
+g_cmp<k0>(key, kx1.0)
 //
 in//let
 //
-case+ opt of
-| ~
-optn_vt_nil
-(  (*0*)  ) => optn_vt_nil()
-| ~
-optn_vt_cons
-(   kx1   ) => optn_vt_cons(kx1.1)
+if // if
+(sgn < 0)
+then
+(
+let
+val map =
+rappend0x(krs, kxs)
+in//let
+  (map, optn_vt_nil()) end)
+else
+(
+if
+(sgn > 0)
+then
+loop
+(kys, list_vt_cons(kx1, krs))
+else
+(
+let
+val map =
+rappend0x(krs, kys)
+in//let
+(
+  map, optn_vt_cons(kx1.1)) end))
 //
-end where
-{
+end//let
+//
+)(*case+*)//end-of-[loop(kxs,krs)]
+//
+}(*where*)//end-of-[gmap_getout$opt<lsrt@(k0,x0)>]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-26:
+Fri Dec 26 12:00:19 AM EST 2025
+*)
 //
 #impltmp
-search$tcmp
-< (k0,x0) >(kx0) = g_cmp<k0>(key, kx0.0)
+{ k0:t0
+, x0:t0 }
+gmap_insert$opt
+<lsrt@(k0,x0)>
+< k0  ><  x0 >
+(kxs, key, itm) =
+let
+val
+(map, opt) =
+(
+loop(kxs, krs))
+in//let
+(
+  map, opt) where
+{
+val map =
+(
+  UN_lsrt_encd(map)) }
+end where//end-of(let)
+{
 //
-}(*where*)//end-of-[gmap_search<lsrt@(k0,x0)>]
+#typedef kx0 = (k0, x0)
+#typedef kxs = list(kx0)
+#typedef map = list(kx0)
+#vwtpdef opt = optn_vt(x0)
+#vwtpdef krs = list_vt(kx0)
+//
+fun
+rappend0x
+( krs: krs
+, kxs: kxs): map =
+(
+list_vt_folditm0
+<kx0><map>(krs, kxs)
+) where{
+//
+#impltmp
+folditm$fopr0
+<kx0><map>(kxs, kx0) =
+(
+  list_cons<kx0>(kx0, kxs))}
+//
+val kxs: kxs = lsrt_decd(kxs)
+val krs: krs = list_vt_nil(*0*)
+//
+fun
+loop
+( kxs: kxs
+, krs: krs)
+: (map, opt) =
+(
+case+ kxs of
+//
+|list_nil
+( (*void*) ) =>
+//
+let
+//
+val kx0 =
+(key, itm)
+val kxs =
+list_sing(kx0)
+val map =
+rappend0x(krs, kxs)
+//
+in//let
+(map, optn_vt_nil())
+end//let
+//
+|list_cons
+( kx1, kys ) =>
+let
+//
+val sgn =
+g_cmp<k0>(key, kx1.0)
+//
+in//let
+//
+if // if
+(sgn < 0)
+then
+(
+let
+val kx0 =
+(key, itm)
+val kxs =
+list_cons(kx0, kxs)
+val map =
+(
+  rappend0x(krs, kxs))
+in//let
+  (map, optn_vt_nil()) end)
+else
+(
+if
+(sgn > 0)
+then
+loop
+(kys, list_vt_cons(kx1, krs))
+else
+(
+let
+val kx0 =
+(key, itm)
+val kxs =
+list_cons(kx0, kys)
+val map =
+(
+  rappend0x(krs, kxs))
+in//let
+(
+  map, optn_vt_cons(kx1.1)) end))
+//
+end//let
+//
+)(*case+*)//end-of-[loop(kxs,krs)]
+//
+}(*where*)//end-of-[gmap_insert$opt<lsrt@(k0,x0)>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
