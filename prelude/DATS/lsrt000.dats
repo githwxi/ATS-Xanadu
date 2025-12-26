@@ -245,6 +245,46 @@ gseq_print<lsrt(x0)><x0>(xs))
 //
 #impltmp
 < x0:t0 >
+lsrt_exists
+  ( xs ) =
+(
+loop(lsrt_decd(xs))
+) where
+{
+//
+fun
+loop
+( xs
+: list(x0)): bool =
+(
+case+ xs of
+|
+list_nil
+( (*0*) ) => false
+|
+list_cons
+( x1, xs ) =>
+let
+val sgn =
+(
+  exists$tcmp<x0>(x1))
+in//let
+//
+if (sgn = 0)
+then true else
+(
+if (sgn < 0)
+  then loop(xs) else false)//if
+//
+end//let//end-of-[list_cons(x1,xs)]
+)(*case+*)//end-of-[loop(xs:list(x0))]
+//
+}(*where*)//end-of-[lsrt_exists<x0>(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
 lsrt_search
   ( xs ) =
 (
@@ -255,8 +295,7 @@ loop(lsrt_decd(xs))
 fun
 loop
 ( xs
-: list(x0)
-) : optn_vt(x0) =
+: list(x0)): optn_vt(x0) =
 (
 case+ xs of
 |
@@ -363,6 +402,23 @@ The keys in a lsrt-map
 are assumed to be distinct!!!
 Thu Dec 25 06:35:24 PM EST 2025
 *)
+//
+#impltmp
+< k0:t0 >
+< x0:t0 >
+lsrt$map_search$tst
+  (  kxs, key  ) =
+(
+lsrt_exists<kx0>(kxs))
+where
+{
+//
+#typedef kx0 = @(k0, x0)
+//
+#impltmp
+exists$tcmp<kx0>(kx0) = g_cmp<k0>(key, kx0.0)
+//
+}(*where*)//end-of-[lsrt$map_search$tst<k0><x0>()]
 //
 #impltmp
 < k0:t0 >

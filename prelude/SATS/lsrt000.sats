@@ -175,6 +175,10 @@ This one uses [search$tcmp]
 *)
 fun
 <x0:t0>
+lsrt_exists
+(xs: lsrt(x0)): ( bool )
+fun
+<x0:t0>
 lsrt_search
 (xs: lsrt(x0)): optn_vt(x0)
 //
@@ -195,6 +199,19 @@ lsrt_insert
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-26:
+The keys in a lsrt-map
+are assumed to be distinct!!!
+Fri Dec 26 10:27:50 AM EST 2025
+*)
+//
+fun
+<k0:t0>
+<x0:t0>
+lsrt$map_search$tst
+( map
+: lsrt@(k0,x0), key: k0): bool
 fun
 <k0:t0>
 <x0:t0>
