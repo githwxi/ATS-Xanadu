@@ -166,21 +166,20 @@ HX-2025-12-24:
 Using [getout$old] if [key]
 is known in the given map [map]
 *)
-#extern
+(*
 fun
 <amp:t0>
 <key:t0>
 <itm:vt>
 gamp_getout$any
 (kxs: amp, key: key): itm
-#extern
+*)
 fun
 <amp:t0>
 <key:t0>
 <itm:vt>
 gamp_getout$old
 (kxs: amp, key: key): itm
-#extern
 fun
 <amp:t0>
 <key:t0>
@@ -201,7 +200,7 @@ HX-2025-12-24:
 Using [insert$new] if [key] is
 known not in the given map [map]
 *)
-#extern
+(*
 fun
 <amp:t0>
 <key:t0>
@@ -209,7 +208,7 @@ fun
 gamp_insert$any
 (kxs: amp
 ,key: key, itm: itm): void
-#extern
+*)
 fun
 <amp:t0>
 <key:t0>
@@ -217,7 +216,6 @@ fun
 gamp_insert$new
 (kxs: amp
 ,key: key, itm: itm): void
-#extern
 fun
 <amp:t0>
 <key:t0>

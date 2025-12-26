@@ -164,7 +164,7 @@ HX-2025-12-24:
 Using [getout$old] if [key]
 is known in the given map [map]
 *)
-#extern
+(*
 fun
 <map:t0>
 <key:t0>
@@ -172,7 +172,7 @@ fun
 gmap_getout$any
 ( kxs
 : map, key: key): (map, itm)
-#extern
+*)
 fun
 <map:t0>
 <key:t0>
@@ -180,7 +180,6 @@ fun
 gmap_getout$old
 ( kxs
 : map, key: key): (map, itm)
-#extern
 fun
 <map:t0>
 <key:t0>
@@ -192,7 +191,7 @@ gmap_getout$opt
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#extern
+(*
 fun
 <map:t0>
 <key:t0>
@@ -200,7 +199,7 @@ fun
 gmap_insert$any
 (kxs: map
 ,key: key, itm: itm): map
-#extern
+*)
 fun
 <map:t0>
 <key:t0>
@@ -208,7 +207,6 @@ fun
 gmap_insert$new
 (kxs: map
 ,key: key, itm: itm): map
-#extern
 fun
 <map:t0>
 <key:t0>
