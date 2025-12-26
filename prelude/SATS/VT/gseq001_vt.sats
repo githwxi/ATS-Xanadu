@@ -1753,6 +1753,65 @@ gseq_map$e1nv0_lstrq with gseq_map$e1nv0$f2un_lstrq of 0100
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-16:
+Fri Dec 26 01:32:57 PM EST 2025
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_ord$exists0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_ord$exists1(xs: !xs): bool
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_ord$iexists0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_ord$iexists1(xs: !xs): bool
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_ord$exists0$f1un
+(xs: xs, tcmp: (~x0)->sint): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_ord$exists1$f1un
+(xs: xs, tcmp: (!x0)->sint): bool
+//
+#symload
+gseq_ord$exists0 with gseq_ord$exists0$f1un of 0100
+#symload
+gseq_ord$exists1 with gseq_ord$exists1$f1un of 0100
+//
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_ord$iexists0$f2un
+(xs: xs, tcmp: (ni, ~x0)->sint): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_ord$iexists1$f2un
+(xs: xs, tcmp: (ni, !x0)->sint): bool
+//
+#symload
+gseq_ord$iexists0 with gseq_ord$iexists0$f2un of 0100
+#symload
+gseq_ord$iexists1 with gseq_ord$iexists1$f2un of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_gseq001_vt.sats] *)
 (***********************************************************************)

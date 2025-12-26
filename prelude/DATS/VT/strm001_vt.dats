@@ -86,10 +86,10 @@ gseq_iforitm0$f2un<strm_vt(x0)><x0>
 strm_vt_forall0
   ( xs ) =
 (
-  auxmain(xs)) where
+  auxloop(xs)) where
 {
 fun
-auxmain
+auxloop
 ( xs
 : strm_vt(x0)): bool =
 (
@@ -102,7 +102,7 @@ strmcon_vt_cons(x1, xs) =>
 if
 forall$test0
 < x0 >( x1 )
-then auxmain(xs)
+then auxloop(xs)
 else (free(xs); false)))//end-of-[if]
 }(*where*)//end-of-[strm_vt_forall0(xs)]
 //
@@ -137,29 +137,30 @@ gseq_forall0$f1un
 strm_vt_iforall0
   ( xs ) =
 (
-auxmain(0, xs)) where
+auxloop(0, xs)) where
 {
 fun
-auxmain
-( i0
-: nint
-, xs
-: strm_vt(x0)): bool =
+auxloop
+( i0: nint
+, xs: strm_vt(x0)): bool =
 (
 case+ !xs of
 | ~
 strmcon_vt_nil
-  ((*void*)) => true
+  ( (*void*) ) => ( true )
 | ~
 strmcon_vt_cons
-  ( x1, xs ) =>
+  (  x1, xs  ) =>
 (
 if
 iforall$test0
 <x0>( i0, x1 )
-then auxmain(i0+1, xs)
-else (free(xs); false)))//end-of-[if]
+then auxloop(i0+1, xs)
+else ( free(xs); false ) )//end(if)
+)(*case+*)//end-of-[auxloop(i0, xs)]
 }(*where*)//end-of-[strm_vt_iforall0(xs)]
+//
+(* ****** ****** *)
 //
 #impltmp
 < x0:vt >
@@ -506,6 +507,93 @@ map$fopr0<x0><y0>(x0) =
 (
   map$e1nv$fopr0<x0><y0><e1>(x0, e1))
 }(*where*)//end-of-[strq_vt_map$e1nv0(xs,e1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-26:
+Fri Dec 26 01:13:30 PM EST 2025
+*)
+//
+#impltmp
+< x0:vt >
+strm_vt_ord$exists0
+  (    xs    ) =
+(
+  auxloop(xs)) where
+{
+//
+fnx
+auxloop
+(xs: strm_vt(x0)): bool =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+  ((*void*)) => false
+| ~
+strmcon_vt_cons
+  ( x1, xs ) =>
+let
+//
+val sgn =
+(
+exists$tcmp0<x0>(x1))
+//
+in//let
+//
+if (sgn = 0)
+then (free(xs); true) else
+(
+if (sgn < 1)
+then auxloop(xs) else (free(xs); false))
+//
+end//let
+//
+)(*case+*)//end-of-[auxloop(xs:strm_vt(x0))]
+}(*where*)//end-of-[strm_vt_ord$exists0<x0>(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strm_vt_ord$iexists0
+  (    xs    ) =
+(
+auxloop(0, xs)) where
+{
+//
+fnx
+auxloop
+(i0: nint
+,xs: strm_vt(x0)): bool =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+  ((*void*)) => false
+| ~
+strmcon_vt_cons
+  ( x1, xs ) =>
+let
+//
+val sgn =
+(
+exists$tcmp0<x0>(x1))
+//
+in//let
+//
+if (sgn = 0)
+then (free(xs); true) else
+(
+if (sgn < 1) then
+auxloop(i0+1, xs) else (free(xs); false))
+//
+end//let
+//
+)(*case+*)//end-of-[auxloop(i0,xs:strm_vt(x0))]
+}(*where*)//end-of-[strm_vt_ord$iexists0<x0>(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
