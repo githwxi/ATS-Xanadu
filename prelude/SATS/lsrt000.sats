@@ -195,6 +195,32 @@ lsrt_insert
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<k0:t0>
+<x0:t0>
+lsrt$map_search$get
+( map
+: lsrt@(k0,x0), key: k0): optn_vt(x0)
+//
+fun
+<k0:t0>
+<x0:t0>
+lsrt$map_getout$opt
+( map
+: lsrt@(k0, x0)
+, key   :   k0): (lsrt@(k0,x0), optn_vt(x0))
+//
+fun
+<k0:t0>
+<x0:t0>
+lsrt$map_insert$opt
+( map
+: lsrt@(k0,x0)
+, key: k0, itm: x0): (lsrt@(k0, x0), optn_vt(x0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_lsrt000.sats] *)
 (***********************************************************************)
