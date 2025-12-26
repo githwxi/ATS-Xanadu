@@ -150,6 +150,12 @@ fun
 <itm:t0>
 gmap_search$get
 (kxs: map, key: key): optn_vt(itm)
+(*
+HX-2025-12-25:
+gmap_search$opt
+is no longer in use:
+gmap_search$get = gmap_search$opt
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -191,6 +197,16 @@ gmap_getout$opt
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-24:
+These are for functional maps!
+Wed Dec 24 01:10:05 PM EST 2025
+*)
+(*
+HX-2025-12-24:
+Using [insert$new] if [key] is
+known not in the given map [map]
+*)
 (*
 fun
 <map:t0>

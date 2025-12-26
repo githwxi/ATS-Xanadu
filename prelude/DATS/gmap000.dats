@@ -123,7 +123,7 @@ end//let//end-of-[gmap_search$tst(map,k0)]
 < k0:t0 >
 < x0:t0 >
 gmap_search$tst
- (map, k0) =
+  (map, k0) =
 (
 case+ opt0 of
 | ~
@@ -143,7 +143,7 @@ gmap_search$get<m0><k0><x0>(map, k0)
 < k0:t0 >
 < x0:t0 >
 gmap_search$get
- (map, k0) =
+  (map, k0) =
 (
 case+ opt0 of
 | ~
@@ -174,6 +174,44 @@ in//let
   gseq_strmize<m0><(k0,x0)>(map)end))
 //
 }(*where*)//end-of-[gmap_search$get(map,k0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< m0:t0 >
+< k0:t0 >
+< x0:t0 >
+gmap_insert$new
+( map, k0, x0 ) =
+(
+case+ opt of
+| ~
+optn_vt_nil() => map
+) where{
+val (map, opt) =
+(
+gmap_insert$opt<m0><k0><x0>(map, k0, x0))
+}(*where*)//end-of-[gmap_insert$new(map,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< m0:t0 >
+< k0:t0 >
+< x0:t0 >
+gmap_getout$old
+  (map, k0) =
+(
+case+ opt of
+| ~
+optn_vt_cons(x0) => (map, x0))
+where{
+val (map, opt) =
+(
+  gmap_getout$opt<m0><k0><x0>( map, k0 ))
+}(*where*)//end-of-[gmap_getout$old(map,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
