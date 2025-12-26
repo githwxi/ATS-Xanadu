@@ -1948,6 +1948,62 @@ gseq_map$e1nv0_lstrq
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-16:
+Fri Dec 26 01:32:57 PM EST 2025
+*)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_ord$exists0
+  (   xs   ) =
+(
+  strm_vt_ord$exists0<x0>(xs))
+where
+{
+  val xs = gseq_strmize0<xs><x0>(xs)
+}(*where*)//end-of-[gseq_ord$exists0<xs><x0>(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_ord$iexists0
+  (   xs   ) =
+(
+  strm_vt_ord$iexists0<x0>(xs))
+where
+{
+  val xs = gseq_strmize0<xs><x0>(xs)
+}(*where*)//end-of-[gseq_ord$iexists0<xs><x0>(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_ord$exists0$f1un
+  ( xs, tcmp ) =
+(
+  gseq_ord$exists0<xs><x0>(xs))
+where
+{
+#impltmp exists$tcmp0<x0>(*x0*) = tcmp(*x0*)
+}(*where*)//end-of-[gseq_ord$exists0$f1un<xs><x0>(...)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_ord$iexists0$f2un
+  ( xs, tcmp ) =
+(
+  gseq_ord$iexists0<xs><x0>(xs))
+where
+{
+#impltmp iexists$tcmp0<x0>(*i0,x0*) = tcmp(*i0,x0*)
+}(*where*)//end-of-[gseq_ord$iexists0$f2un<xs><x0>(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_gseq001_vt.dats] *)
 (***********************************************************************)
