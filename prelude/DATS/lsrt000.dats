@@ -365,12 +365,10 @@ Thu Dec 25 06:35:24 PM EST 2025
 *)
 //
 #impltmp
-{ k0:t0
-, x0:t0 }
-gmap_search$get
-<lsrt@(k0,x0)>
-< k0  ><  x0 >
-(  kxs, key  ) =
+< k0:t0 >
+< x0:t0 >
+lsrt$map_search$get
+  (  kxs, key  ) =
 let
 //
 val opt = lsrt_search(kxs)
@@ -392,7 +390,13 @@ end where
 search$tcmp
 < (k0,x0) >(kx0) = g_cmp<k0>(key, kx0.0)
 //
-}(*where*)//end-of-[gmap_search<lsrt@(k0,x0)>]
+}(*where*)//end-of-[lsrt$map_search$get<k0><x0>()]
+//
+#impltmp
+{ k0:t0
+, x0:t0 }
+gmap_search$get
+< lsrt@(k0,x0) ><k0><x0> = lsrt$map_search$get<k0><x0>
 //
 (* ****** ****** *)
 //
@@ -403,12 +407,10 @@ implementation via [gseq_filter_lstrm]
 *)
 (*
 #impltmp
-{ k0:t0
-, x0:t0 }
-gmap_search$get
-<lsrt@(k0,x0)>
-< k0  ><  x0 >
-(  kxs, key  ) =
+< k0:t0 >
+< x0:t0 >
+lsrt$map_search$get
+  (  kxs, key  ) =
 let
 //
 val kxs =
@@ -447,7 +449,7 @@ then
 optn_vt_cons(kx1.1) else optn_vt_nil(*0*))
 end//let//end-of-[strmcon_vt_cons(kx1,kxs)]
 //
-end(*let*)//end-of-[gmap_search<lsrt@(k0,x0)>]
+end(*let*)//end-of-[lsrt$map_search$get<k0><x0>()]
 *)
 //
 (* ****** ****** *)
@@ -459,12 +461,10 @@ Fri Dec 26 12:00:19 AM EST 2025
 *)
 //
 #impltmp
-{ k0:t0
-, x0:t0 }
-gmap_getout$opt
-<lsrt@(k0,x0)>
-< k0  ><  x0 >
-(  kxs, key  ) =
+< k0:t0 >
+< x0:t0 >
+lsrt$map_getout$opt
+  (  kxs, key  ) =
 let
 val
 (map, opt) =
@@ -560,7 +560,13 @@ end//let
 //
 )(*case+*)//end-of-[loop(kxs,krs)]
 //
-}(*where*)//end-of-[gmap_getout$opt<lsrt@(k0,x0)>]
+}(*where*)//end-of-[lsrt$map_getout$opt<k0><x0>()]
+//
+#impltmp
+{ k0:t0
+, x0:t0 }
+gmap_getout$opt
+< lsrt@(k0,x0) ><k0><x0> = lsrt$map_getout$opt<k0><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -571,12 +577,10 @@ Fri Dec 26 12:00:19 AM EST 2025
 *)
 //
 #impltmp
-{ k0:t0
-, x0:t0 }
-gmap_insert$opt
-<lsrt@(k0,x0)>
-< k0  ><  x0 >
-(kxs, key, itm) =
+< k0:t0 >
+< x0:t0 >
+lsrt$map_insert$opt
+  (kxs, key, itm) =
 let
 val
 (map, opt) =
@@ -688,7 +692,13 @@ end//let
 //
 )(*case+*)//end-of-[loop(kxs,krs)]
 //
-}(*where*)//end-of-[gmap_insert$opt<lsrt@(k0,x0)>]
+}(*where*)//end-of-[lsrt$map_insert$opt<k0><x0>()]
+//
+#impltmp
+{ k0:t0
+, x0:t0 }
+gmap_insert$opt
+< lsrt@(k0,x0) ><k0><x0> = lsrt$map_insert$opt<k0><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
