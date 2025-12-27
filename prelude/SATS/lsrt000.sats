@@ -235,7 +235,7 @@ lsrt$map_search$tst
 fun
 <k0:t0>
 <x0:t0>
-lsrt$map_search$get
+lsrt$map_search$opt
 ( map
 : lsrt@(k0,x0), key: k0): optn_vt(x0)
 //

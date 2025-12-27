@@ -274,7 +274,7 @@ if (sgn = 0)
 then true else
 (
 if (sgn < 0)
-  then loop(xs) else false)//if
+  then false else loop(xs))//if
 //
 end//let//end-of-[list_cons(x1,xs)]
 )(*case+*)//end-of-[loop(xs:list(x0))]
@@ -305,7 +305,11 @@ list_nil() =>
 |
 list_cons(x1, xs) =>
 let
-val sgn = search$tcmp<x0>(x1)
+//
+val sgn =
+(
+  search$tcmp<x0>(x1))
+//
 in//let
 //
 if (sgn = 0)
@@ -313,7 +317,7 @@ then
 optn_vt_cons(x1) else
 (
 if (sgn < 0)
-then loop(xs) else optn_vt_nil())
+then optn_vt_nil() else loop(xs))
 //
 end//let//end-of-[list_cons(x1,xs)]
 )(*case+*)//end-of-[loop(xs:list(x0))]
@@ -506,7 +510,7 @@ exists$tcmp<kx0>(kx0) = g_cmp<k0>(key, kx0.0)
 #impltmp
 < k0:t0 >
 < x0:t0 >
-lsrt$map_search$get
+lsrt$map_search$opt
   (  kxs, key  ) =
 let
 //
@@ -529,13 +533,13 @@ end where
 search$tcmp
 < (k0,x0) >(kx0) = g_cmp<k0>(key, kx0.0)
 //
-}(*where*)//end-of-[lsrt$map_search$get<k0><x0>()]
+}(*where*)//end-of-[lsrt$map_search$opt<k0><x0>()]
 //
 #impltmp
 { k0:t0
 , x0:t0 }
-gmap_search$get
-< lsrt@(k0,x0) ><k0><x0> = lsrt$map_search$get<k0><x0>
+gmap_search$opt
+< lsrt@(k0,x0) ><k0><x0> = lsrt$map_search$opt<k0><x0>
 //
 (* ****** ****** *)
 //
@@ -548,7 +552,7 @@ implementation via [gseq_filter_lstrm]
 #impltmp
 < k0:t0 >
 < x0:t0 >
-lsrt$map_search$get
+lsrt$map_search$opt
   (  kxs, key  ) =
 let
 //
@@ -588,7 +592,7 @@ then
 optn_vt_cons(kx1.1) else optn_vt_nil(*0*))
 end//let//end-of-[strmcon_vt_cons(kx1,kxs)]
 //
-end(*let*)//end-of-[lsrt$map_search$get<k0><x0>()]
+end(*let*)//end-of-[lsrt$map_search$opt<k0><x0>()]
 *)
 //
 (* ****** ****** *)
@@ -675,8 +679,11 @@ if // if
 then
 (
 let
+//
 val map =
-rappend0x(krs, kxs)
+(
+  rappend0x(krs, kxs))
+//
 in//let
   (map, optn_vt_nil()) end)
 else
@@ -689,8 +696,11 @@ loop
 else
 (
 let
+//
 val map =
-rappend0x(krs, kys)
+(
+  rappend0x(krs, kys))
+//
 in//let
 (
   map, optn_vt_cons(kx1.1)) end))
@@ -797,10 +807,12 @@ if // if
 then
 (
 let
+//
 val kx0 =
 (key, itm)
 val kxs =
 list_cons(kx0, kxs)
+//
 val map =
 (
   rappend0x(krs, kxs))
@@ -816,13 +828,16 @@ loop
 else
 (
 let
+//
 val kx0 =
 (key, itm)
 val kxs =
 list_cons(kx0, kys)
+//
 val map =
 (
   rappend0x(krs, kxs))
+//
 in//let
 (
   map, optn_vt_cons(kx1.1)) end))
