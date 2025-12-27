@@ -397,6 +397,87 @@ loop(ys, list_vt_cons(x1, rs))))//if
 (* ****** ****** *)
 //
 (*
+HX-2025-12-26:
+Fri Dec 26 10:53:19 PM EST 2025
+*)
+//
+#impltmp
+< x0:t0 >
+lsrt_msetize
+  (  xs  ) =
+(
+list_vt2t(
+  lsrt_msetize_vt<x0>(xs)))
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+lsrt_msetize_vt
+  (   xs   ) =
+(
+case+ xs of
+|
+list_nil() =>
+(
+  list_vt_nil())
+|
+list_cons(x0, xs) =>
+let
+val n0 = 1
+val rs =
+list_vt_nil(*0*)
+in//let
+(
+list_vt_reverse0
+(
+  loop(xs, n0, x0, rs))) end
+) where
+{
+//
+val xs =
+lsrt_decd(xs)//val(xs)
+//
+fun
+loop
+( xs
+: list(x0)
+, n0, x0, rs)
+: list_vt@(igtz, x0) =
+(
+case+ xs of
+|
+list_nil() =>
+(
+list_vt_cons((n0, x0), rs))
+|
+list_cons(x1, xs) =>
+(
+if
+g_eq<x0>(x0, x1)
+then
+let
+val n0 = n0+1
+in
+  loop(xs, n0, x0, rs) end//then
+else
+let
+val n0 = 1
+val rs =
+list_vt_cons
+((n0, x0), rs)
+in
+  loop(xs, n0, x1, rs) end//else
+)
+//
+)(*case+*)//end-of-[loop(xs,n0,x0,rs)]
+//
+}(*where*)//end-of-[lsrt_msetize_vt<x0>(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2025-12-25:
 The keys in a lsrt-map
 are assumed to be distinct!!!

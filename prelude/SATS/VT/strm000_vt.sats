@@ -337,6 +337,28 @@ strm_vt_len$print0(xs: strm_vt(x0), ln: sint): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-26:
+Fri Dec 26 05:13:01 PM EST 2025
+*)
+//
+fun
+<x0:vt>
+strm_vt_ndrop
+( xs
+: strm_vt(x0), n0: nint): strm_vt(x0)
+fun
+<x0:vt>
+strm_vt_ntake
+( xs
+: strm_vt(x0), n0: nint): strm_vt(x0)
+//
+#symload ndrop with strm_vt_ndrop of 1000
+#symload ntake with strm_vt_ntake of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_strn000_vt.sats] *)
 (***********************************************************************)

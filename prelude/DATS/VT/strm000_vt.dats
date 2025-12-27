@@ -525,6 +525,82 @@ gseq_print0<strm_vt(x0)><x0> = strm_vt_print0<x0>(*xs*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-26:
+Fri Dec 26 05:13:01 PM EST 2025
+*)
+//
+#impltmp
+< x0:vt >
+strm_vt_ndrop
+  (xs, n0) =
+(
+auxloop(xs, n0)) where
+{
+//
+#vwtpdef xs = strm_vt(x0)
+//
+fun
+auxloop(xs: xs, n0: ni): xs =
+(
+if
+(n0 <= 0)
+then xs else
+(
+$llazy
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+(  (*void*)  ) =>
+(
+  strmcon_vt_nil())
+| ~
+strmcon_vt_cons
+(   x1 , xs   ) =>
+(
+  free(x1); !(auxloop(xs, n0-1)))))
+)(*endif*)//end-of-[auxloop(xs, n0)]
+//
+}(*where*)//end-of-[strm_vt_ndrop(xs,n0)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strm_vt_ntake
+  (xs, n0) =
+(
+  auxmain(xs, n0)) where
+{
+//
+#vwtpdef xs = strm_vt(x0)
+//
+fun
+auxmain
+(xs: xs, n0: ni): xs = $llazy
+(
+if
+(n0 <= 0)
+then
+(
+free(xs);
+strmcon_vt_nil()) else
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+(  (*void*)  ) => strmcon_vt_nil()
+| ~
+strmcon_vt_cons
+(   x1, xs   ) =>
+strmcon_vt_cons(x1, auxmain(xs, n0-1))))
+//
+}(*where*)//end-of-[strm_vt_ntake(xs, n0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_strm000_vt.dats] *)
 (***********************************************************************)
