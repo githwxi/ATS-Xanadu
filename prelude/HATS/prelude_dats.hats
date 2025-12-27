@@ -61,27 +61,41 @@ This one is included by [DATS/unsfx00.dats]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #staload _ = "prelude/DATS/gnum000.dats"
 #staload _ = "prelude/DATS/gord000.dats"
 #staload _ = "prelude/DATS/gfun000.dats"
+//
 #staload _ = "prelude/DATS/gseq000.dats"
 #staload _ = "prelude/DATS/gseq001.dats"
 #staload _ = "prelude/DATS/gseq002.dats"
+//
 #staload _ = "prelude/DATS/gasq000.dats"
 #staload _ = "prelude/DATS/gasq001.dats"
+#staload _ = "prelude/DATS/gasq002.dats"
+//
+#staload _ = "prelude/DATS/gmap000.dats"
+#staload _ = "prelude/DATS/gmap001.dats"
+//
 #staload _ = "prelude/DATS/gcls000.dats"
 #staload _ = "prelude/DATS/gsyn000.dats"
 #staload _ = "prelude/DATS/gsyn001.dats"
+//
 (* ****** ****** *)
+//
 #staload _ = "prelude/DATS/bool000.dats"
 #staload _ = "prelude/DATS/char000.dats"
 #staload _ = "prelude/DATS/gint000.dats"
 #staload _ = "prelude/DATS/gint001.dats"
 #staload _ = "prelude/DATS/gflt000.dats"
+//
 (* ****** ****** *)
+//
 #staload _ = "prelude/DATS/strn000.dats"
 #staload _ = "prelude/DATS/strn001.dats"
+//
 (* ****** ****** *)
+//
 #staload _ = "prelude/DATS/axrf000.dats"
 #staload _ = "prelude/DATS/axrf001.dats"
 #staload _ = "prelude/DATS/axsz000.dats"
@@ -99,6 +113,7 @@ This one is included by [DATS/unsfx00.dats]
 #staload _ = "prelude/DATS/strm001.dats"
 #staload _ = "prelude/DATS/strx000.dats"
 #staload _ = "prelude/DATS/strx001.dats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

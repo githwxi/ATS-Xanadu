@@ -148,14 +148,8 @@ fun
 <map:t0>
 <key:t0>
 <itm:t0>
-gmap_search$get
-(kxs: map, key: key): optn_vt(itm)
-(*
-HX-2025-12-25:
 gmap_search$opt
-is no longer in use:
-gmap_search$get = gmap_search$opt
-*)
+(kxs: map, key: key): optn_vt(itm)
 //
 (* ****** ****** *)
 (* ****** ****** *)

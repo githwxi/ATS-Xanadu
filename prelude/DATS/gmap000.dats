@@ -88,12 +88,45 @@ gmap_search$tst<m0><k0><x0>(map, k0)
 (* ****** ****** *)
 //
 (*
+HX-2025-12-27:
+Sat Dec 27 08:54:59 AM EST 2025
+*)
+//
+#impltmp
+< m0:t0 >
+< k0:t0 >
+< x0:t0 >
+gmap_get$at
+  (map, k0) =
+(
+case+ opt of
+| ~
+optn_vt_cons(itm) => itm)
+where
+{
+val opt =
+gmap_get$at$opt<m0><k0><x0>(map, k0)
+}(*where*)//end-of-[gmap_get$at(...)]
+//
+#impltmp
+< m0:t0 >
+< k0:t0 >
+< x0:t0 >
+gmap_get$at$opt
+  (map, k0) =
+(
+gmap_search$opt<m0><k0><x0>(map, k0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 #impltmp
 < m0:t0 >
 < k0:t0 >
 < x0:t0 >
 gmap_search$tst
- (map, k0) =
+  (map, k0) =
 let
 //
 #typedef
@@ -133,7 +166,7 @@ optn_vt_cons(x0) => true)
 where
 {
 val opt0 =
-gmap_search$get<m0><k0><x0>(map, k0)
+gmap_search$opt<m0><k0><x0>(map, k0)
 }(*where*)//end-of-[gmap_search$tst(map,k0)]
 //
 (* ****** ****** *)
@@ -142,7 +175,7 @@ gmap_search$get<m0><k0><x0>(map, k0)
 < m0:t0 >
 < k0:t0 >
 < x0:t0 >
-gmap_search$get
+gmap_search$opt
   (map, k0) =
 (
 case+ opt0 of
@@ -173,7 +206,7 @@ filter$test
 in//let
   gseq_strmize<m0><(k0,x0)>(map)end))
 //
-}(*where*)//end-of-[gmap_search$get(map,k0)]
+}(*where*)//end-of-[gmap_search$opt(map,k0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
