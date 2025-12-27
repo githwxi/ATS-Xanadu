@@ -447,11 +447,13 @@ loop
 (
 case+ xs of
 |
-list_nil() =>
+list_nil
+( (*0*) ) =>
 (
 list_vt_cons((n0, x0), rs))
 |
-list_cons(x1, xs) =>
+list_cons
+( x1, xs ) =>
 (
 if
 g_eq<x0>(x0, x1)
@@ -462,12 +464,12 @@ in
   loop(xs, n0, x0, rs) end//then
 else
 let
-val n0 = 1
+val n1 = 1
 val rs =
 list_vt_cons
 ((n0, x0), rs)
 in
-  loop(xs, n0, x1, rs) end//else
+  loop(xs, n1, x1, rs) end//else
 )
 //
 )(*case+*)//end-of-[loop(xs,n0,x0,rs)]
