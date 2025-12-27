@@ -49,24 +49,127 @@ lsrt_vt_i0_vx
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fcast
+lsrt_vt_decd
+{a:vt}
+(lsrt_vt(a,n)): list_vt(a,n)
+//
+fcast
+UN_lsrt_vt_encd
+{a:vt}
+(list_vt(a,n)): lsrt_vt(a,n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun<>
 lsrt_vt_nil
-{a:t0}((*0*)): lsrt_vt(a,0)
+{a:vt}((*nil*)): lsrt_vt(a,0)
 //
 (* ****** ****** *)
 //
 fun<>
 lsrt_vt_nilq1
-{a:t0}{n:i0}
+{a:vt}{n:i0}
 (xs: !lsrt_vt(a,n)): bool(n=0)
 fun<>
 lsrt_vt_consq1
-{a:t0}{n:i0}
+{a:vt}{n:i0}
 (xs: !lsrt_vt(a,n)): bool(n>0)
 //
 #symload
-nilq with lsrt_vt_nilq1 of 1000
-consq with lsrt_vt_consq1 of 1000
+nilq1 with lsrt_vt_nilq1 of 1000
+consq1 with lsrt_vt_consq1 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+lsrt_vt_head0
+{n:i0|n>0}
+(xs: ~lsrt_vt(a,n)): (  a  )
+fun
+<a:vt>
+lsrt_vt_head1
+{n:i0|n>0}
+(xs: !lsrt_vt(a,n)): (  a  )
+fun
+<a:vt>
+lsrt_vt_tail0
+{n:i0|n>0}
+(xs:
+~lsrt_vt(a,n)): lsrt_vt(a,n-1)
+fun
+<a:vt>
+lsrt_vt_tail1
+{n:i0|n>0}
+(xs:
+!lsrt_vt(a,n)): lsrt_vt(a,n-1)
+//
+#symload
+head0 with lsrt_vt_head0 of 1000
+#symload
+head1 with lsrt_vt_head1 of 1000
+#symload
+tail0 with lsrt_vt_tail0 of 1000
+#symload
+tail1 with lsrt_vt_tail1 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+lsrt_vt_make0_1val
+(x1: a): lsrt_vt(a,1)
+fun
+<a:vt>
+lsrt_vt_make0_2val
+(x1: a, x2: a): lsrt_vt(a,2)
+fun
+<a:vt>
+lsrt_vt_make0_3val
+(x1: a
+,x2: a, x3: a): lsrt_vt(a,3)
+//
+(* ****** ****** *)
+//
+#symload
+lsrt_vt_sing
+with lsrt_vt_make0_1val//of 1000
+#symload
+lsrt_vt_pair
+with lsrt_vt_make0_2val//of 1000
+//
+#symload
+lsrt_vt_1val
+with lsrt_vt_make0_1val//of 1000
+#symload
+lsrt_vt_2val
+with lsrt_vt_make0_2val//of 1000
+#symload
+lsrt_vt_3val
+with lsrt_vt_make0_3val//of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+lsrt_vt_length0
+{n:i0}
+(xs: ~lsrt_vt(a, n)): sint(n)
+fun
+<a:vt>
+lsrt_vt_length1
+{n:i0}
+(xs: !lsrt_vt(a, n)): sint(n)
+//
+#symload
+length0 with lsrt_vt_length0 of 1000
+#symload
+length1 with lsrt_vt_length1 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

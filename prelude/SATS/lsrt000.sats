@@ -210,11 +210,11 @@ Fri Dec 26 10:46:11 PM EST 2025
 fun
 <x0:t0>
 lsrt_msetize
-(xs: lsrt(x0)): list@(igtz, x0)
+(xs: lsrt(x0)): list@(x0, igtz)
 fun
 <x0:t0>
 lsrt_msetize_vt
-(xs: lsrt(x0)): list_vt@(igtz, x0)
+(xs: lsrt(x0)): list_vt@(x0, igtz)
 //
 (* ****** ****** *)
 (* ****** ****** *)
