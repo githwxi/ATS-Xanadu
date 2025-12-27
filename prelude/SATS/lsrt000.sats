@@ -37,6 +37,9 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef igtz = sintgt(0)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2025-12-25:
@@ -195,6 +198,23 @@ fun
 lsrt_insert
 {ln:i0}
 (xs: lsrt(x0, ln), x0: x0): lsrt(x0, ln+1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-26:
+Fri Dec 26 10:46:11 PM EST 2025
+*)
+//
+fun
+<x0:t0>
+lsrt_msetize
+(xs: lsrt(x0)): list@(igtz, x0)
+fun
+<x0:t0>
+lsrt_msetize_vt
+(xs: lsrt(x0)): list_vt@(igtz, x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

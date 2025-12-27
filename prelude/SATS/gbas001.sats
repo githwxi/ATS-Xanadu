@@ -215,28 +215,13 @@ fun
 filter$test(itm: x0): bool
 fun
 <x0:t0>
-filter$tcmp(itm: x0): sint
-//
-fun
-<x0:t0>
 rfilter$test(itm: x0): bool
-fun
-<x0:t0>
-rfilter$tcmp(itm: x0): sint
-//
 fun
 <x0:t0>
 ifilter$test(pos: ni, itm: x0): bool
 fun
 <x0:t0>
-ifilter$tcmp(pos: ni, itm: x0): sint
-//
-fun
-<x0:t0>
 irfilter$test(pos: ni, itm: x0): bool
-fun
-<x0:t0>
-irfilter$tcmp(pos: ni, itm: x0): sint
 //
 (* ****** ****** *)
 (* ****** ****** *)
