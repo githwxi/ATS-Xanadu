@@ -391,7 +391,7 @@ else
 (
 loop(ys, list_vt_cons(x1, rs))))//if
 //
-}(*where*)//end-of-[lsrt_insert(xs, x0))]
+}(*where*)//end-of-[lsrt_insert(xs,x0))]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -431,7 +431,7 @@ in//let
 (
 list_vt_reverse0
 (
-  loop(xs, n0, x0, rs))) end
+  loop(xs, x0, n0, rs))) end
 ) where
 {
 //
@@ -442,15 +442,15 @@ fun
 loop
 ( xs
 : list(x0)
-, n0, x0, rs)
-: list_vt@(igtz, x0) =
+, x0, n0, rs)
+: list_vt@(x0, igtz) =
 (
 case+ xs of
 |
 list_nil
 ( (*0*) ) =>
 (
-list_vt_cons((n0, x0), rs))
+list_vt_cons((x0, n0), rs))
 |
 list_cons
 ( x1, xs ) =>
@@ -461,18 +461,18 @@ then
 let
 val n0 = n0+1
 in
-  loop(xs, n0, x0, rs) end//then
+  loop(xs, x0, n0, rs) end//then
 else
 let
 val n1 = 1
 val rs =
 list_vt_cons
-((n0, x0), rs)
+((x0, n0), rs)
 in
-  loop(xs, n1, x1, rs) end//else
+  loop(xs, x1, n1, rs) end//else
 )
 //
-)(*case+*)//end-of-[loop(xs,n0,x0,rs)]
+)(*case+*)//end-of-[loop(xs,x0,n0,rs)]
 //
 }(*where*)//end-of-[lsrt_msetize_vt<x0>(xs)]
 //
