@@ -482,5 +482,8 @@ rstrmize0 with strn_vt_rstrmize0 of 1000
 #symload forall0 with strn_vt_forall0 of 1000
 
 (* ****** ****** *)
-
-(* end of [ATS3/XANADU_prelude_strn000_vt.sats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_VT_strn000_vt.sats] *)
+(***********************************************************************)

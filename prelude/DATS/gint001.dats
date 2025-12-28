@@ -573,6 +573,73 @@ gseq_rfolditm$f2un<nint><ni><r0>(*void*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-27:
+Sat Dec 27 12:37:56 PM EST 2025
+*)
+//
+#impltmp
+<(*tmp*)>
+nint_listize(ni) =
+(
+  auxloop(ni, rs)
+) where
+{
+//
+#vwtpdef
+rs = list_vt(nint)
+//
+val
+rs: rs = list_vt_nil()
+//
+fun
+auxloop
+(ni: ni, rs: rs): rs =
+(
+if
+(ni <= 0)
+then ( rs ) else
+(
+  auxloop(ni, rs)) where
+{
+val ni = ni-1
+val rs = list_vt_cons(ni, rs)}
+)
+}(*where*)//end-of-[nint_listize(ni)]
+//
+#impltmp
+<(*tmp*)>
+nint_rlistize(ni) =
+(
+  auxloop(i0, rs)
+) where
+{
+//
+#vwtpdef
+rs = list_vt(nint)
+//
+val
+i0: ni = (   0   )
+val
+rs: rs = list_vt_nil()
+//
+fun
+auxloop
+(i0: ni, rs: rs): rs =
+(
+if
+(i0 >= ni)
+then ( rs ) else
+(
+  auxloop(i0+1, rs)) where
+{
+val rs = list_vt_cons(i0, rs)}
+)
+}(*where*)//end-of-[nint_rlistize(ni)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_gint001.dats] *)
 (***********************************************************************)

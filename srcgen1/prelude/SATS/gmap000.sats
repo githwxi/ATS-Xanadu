@@ -56,7 +56,7 @@ gmap_print$keyval
 fun
 <map:t0>
 <key:t0>
-<itm:vt>
+<itm:t0>
 gmap_keyq
 (kxs: map, key: key): bool
 //
@@ -65,7 +65,7 @@ gmap_keyq
 fun
 <map:t0>
 <key:t0>
-<itm:vt>
+<itm:t0>
 gmap_make_nil((*0*)): (map)
 //
 (* ****** ****** *)
@@ -100,13 +100,13 @@ These are in [srcgen2]:
 fun
 <map:t0>
 <key:t0>
-<itm:vt>
+<itm:t0>
 gmap_search$tst
 (kxs: map, key: key): bool
 fun
 <map:t0>
 <key:t0>
-<itm:vt>
+<itm:t0>
 gmap_search$cpy
 (kxs: map, key: key): optn_vt(itm)
 //
@@ -116,13 +116,13 @@ gmap_search$cpy
 fun
 <map:t0>
 <key:t0>
-<itm:vt>
+<itm:t0>
 gmap_insert$opt
 (kxs: &map >> map, key, itm): optn_vt(itm)
 fun
 <map:t0>
 <key:t0>
-<itm:vt>
+<itm:t0>
 gmap_remove$opt
 (kxs: &map >> map, key: key): optn_vt(itm)
 //
@@ -145,7 +145,7 @@ gmap_foritm(kxs: map): void
 fun
 <map:t0>
 <key:t0>
-<itm:vt>
+<itm:t0>
 gmap_strmize
 (kxs: map): strm_vt(@(key, itm))
 (* ****** ****** *)
@@ -158,12 +158,12 @@ These two are in [gmap001.sats]!
 fun
 <map:t0>
 <key:t0>
-<itm:vt>
+<itm:t0>
 gmap_key$strmize(map): strm_vt(key)
 fun
 <map:t0>
 <key:t0>
-<itm:vt>
+<itm:t0>
 gmap_val$strmize(map): strm_vt(itm)
 *)
 //

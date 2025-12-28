@@ -1,10 +1,13 @@
 (* ****** ****** *)
 (* ****** ****** *)
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"srcgen1\
+/prelude/INIT/prelude_sats.hats"
 #include
 "srcgen1\
 /prelude/HATS/prelude_dats.hats"
@@ -237,7 +240,6 @@ val xsys_mul = gseq_mul<mylist2(sint)><sint>(xsys)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3-XANADU/srcgen2/xinterp/srcgen1/TEST/JS/DATA/mytest03.dats] *)
+(***********************************************************************)

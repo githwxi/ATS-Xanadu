@@ -264,6 +264,8 @@ XINTERP_gint_neg$sint
 : sint(i)): sint(-i)
 = $extnam( (*self*) )
 #impltmp
+sint_neg<> = XINTERP_gint_neg$sint
+#impltmp
 gint_neg$sint<> = XINTERP_gint_neg$sint
 //
 (* ****** ****** *)
@@ -275,6 +277,8 @@ XINTERP_gint_abs$sint
 ( x0
 : sint(i))
 : sint(abs(i)) = $extnam()
+#impltmp
+sint_abs<> = XINTERP_gint_abs$sint
 #impltmp
 gint_abs$sint<> = XINTERP_gint_abs$sint
 //
@@ -296,6 +300,11 @@ XINTERP_gint_pre$sint
 : sint(i-1) = $extnam((*0*))
 //
 #impltmp
+sint_suc<> = XINTERP_gint_suc$sint
+#impltmp
+sint_pre<> = XINTERP_gint_pre$sint
+//
+#impltmp
 gint_suc$sint<> = XINTERP_gint_suc$sint
 #impltmp
 gint_pre$sint<> = XINTERP_gint_pre$sint
@@ -312,6 +321,8 @@ XINTERP_gint_lt$sint$sint
 : sint(j))
 : bool(i<j) = $extnam((*0*))
 #impltmp
+sint_lt$sint<> = XINTERP_gint_lt$sint$sint
+#impltmp
 gint_lt$sint$sint<> = XINTERP_gint_lt$sint$sint
 //
 #extern
@@ -323,6 +334,8 @@ XINTERP_gint_gt$sint$sint
 , y
 : sint(j))
 : bool(i>j) = $extnam((*0*))
+#impltmp
+sint_gt$sint<> = XINTERP_gint_gt$sint$sint
 #impltmp
 gint_gt$sint$sint<> = XINTERP_gint_gt$sint$sint
 //
@@ -336,6 +349,8 @@ XINTERP_gint_eq$sint$sint
 : sint(j))
 : bool(i=j) = $extnam((*0*))
 #impltmp
+sint_eq$sint<> = XINTERP_gint_eq$sint$sint
+#impltmp
 gint_eq$sint$sint<> = XINTERP_gint_eq$sint$sint
 //
 #extern
@@ -347,6 +362,8 @@ XINTERP_gint_lte$sint$sint
 , y
 : sint(j))
 : bool(i<=j) = $extnam((*0*))
+#impltmp
+sint_lte$sint<> = XINTERP_gint_lte$sint$sint
 #impltmp
 gint_lte$sint$sint<> = XINTERP_gint_lte$sint$sint
 //
@@ -360,6 +377,8 @@ XINTERP_gint_gte$sint$sint
 : sint(j))
 : bool(i>=j) = $extnam((*0*))
 #impltmp
+sint_gte$sint<> = XINTERP_gint_gte$sint$sint
+#impltmp
 gint_gte$sint$sint<> = XINTERP_gint_gte$sint$sint
 //
 #extern
@@ -372,10 +391,12 @@ XINTERP_gint_neq$sint$sint
 : sint(j))
 : bool(i!=j) = $extnam((*0*))
 #impltmp
+sint_neq$sint<> = XINTERP_gint_neq$sint$sint
+#impltmp
 gint_neq$sint$sint<> = XINTERP_gint_neq$sint$sint
 //
 (* ****** ****** *)
-
+//
 #extern
 fun
 XINTERP_gint_cmp$sint$sint
@@ -386,8 +407,11 @@ XINTERP_gint_cmp$sint$sint
 : sint(j))
 : sint(sgn(i-j)) = $extnam()
 #impltmp
+sint_cmp$sint<> = XINTERP_gint_cmp$sint$sint
+#impltmp
 gint_cmp$sint$sint<> = XINTERP_gint_cmp$sint$sint
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
@@ -400,7 +424,10 @@ XINTERP_gint_add$sint$sint
 : sint(j))
 : sint(i+j) = $extnam((*0*))
 #impltmp
+sint_add$sint<> = XINTERP_gint_add$sint$sint
+#impltmp
 gint_add$sint$sint<> = XINTERP_gint_add$sint$sint
+//
 #extern
 fun
 XINTERP_gint_sub$sint$sint
@@ -410,6 +437,8 @@ XINTERP_gint_sub$sint$sint
 , y
 : sint(j))
 : sint(i-j) = $extnam((*0*))
+#impltmp
+sint_sub$sint<> = XINTERP_gint_sub$sint$sint
 #impltmp
 gint_sub$sint$sint<> = XINTERP_gint_sub$sint$sint
 //
@@ -423,7 +452,10 @@ XINTERP_gint_mul$sint$sint
 : sint(j))
 : sint(i*j) = $extnam((*0*))
 #impltmp
+sint_mul$sint<> = XINTERP_gint_mul$sint$sint
+#impltmp
 gint_mul$sint$sint<> = XINTERP_gint_mul$sint$sint
+//
 #extern
 fun
 XINTERP_gint_div$sint$sint
@@ -433,6 +465,8 @@ XINTERP_gint_div$sint$sint
 , y
 : sint(j))
 : sint(i/j) = $extnam((*0*))
+#impltmp
+sint_div$sint<> = XINTERP_gint_div$sint$sint
 #impltmp
 gint_div$sint$sint<> = XINTERP_gint_div$sint$sint
 //
@@ -445,6 +479,8 @@ XINTERP_gint_mod$sint$sint
 , y
 : sint(j))
 : sint(mod(i,j)) = $extnam()
+#impltmp
+sint_mod$sint<> = XINTERP_gint_mod$sint$sint
 #impltmp
 gint_mod$sint$sint<> = XINTERP_gint_mod$sint$sint
 //

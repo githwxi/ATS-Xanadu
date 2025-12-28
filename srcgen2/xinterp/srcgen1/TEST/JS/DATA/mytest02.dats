@@ -1,10 +1,13 @@
 (* ****** ****** *)
 (* ****** ****** *)
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"srcgen1\
+/prelude/INIT/prelude_sats.hats"
 #include
 "srcgen1\
 /prelude/HATS/prelude_dats.hats"
@@ -23,7 +26,9 @@ val () = (x:=x+1)
 (* ****** ****** *)
 val xx = ( x * x )
 (* ****** ****** *)
+(*
 prv pf = $view( x )
+*)
 (* ****** ****** *)
 val () = !p:=(!p)+1
 (* ****** ****** *)
@@ -211,7 +216,6 @@ end//let//end of [fibats]
 val fibats10 = fibats(10) // fibats10 = 55
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3-XANADU/srcgen2/xinterp/srcgen1/TEST/JS/DATA/mytest02.dats] *)
+(***********************************************************************)

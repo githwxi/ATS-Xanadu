@@ -1077,5 +1077,7 @@ filter0_fun_lstrq with gseq_filter0$f1un_lstrq of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
-(* end of [ATS/XANADU_prelude_gseq000_vt.sats] *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_VT_gseq000_vt.sats] *)
+(***********************************************************************)

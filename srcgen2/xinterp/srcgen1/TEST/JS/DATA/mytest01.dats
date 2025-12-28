@@ -1,10 +1,13 @@
 (* ****** ****** *)
 (* ****** ****** *)
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"srcgen1\
+/prelude/INIT/prelude_sats.hats"
 #include
 "srcgen1\
 /prelude/HATS/prelude_dats.hats"
@@ -147,12 +150,11 @@ foo
 //
 var myint: int
 //
-val ((*0*)) = foo(myint)
+val ((*0*)) = foo(myint)//HX: myint := 0
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3-XANADU/srcgen2/xinterp/srcgen1/TEST/JS/DATA/mytest01.dats] *)
+(***********************************************************************)
