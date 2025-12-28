@@ -1,6 +1,13 @@
 ############################################################
+#
 # HX-2025-12-27:
 # Sat Dec 27 07:39:02 PM EST 2025
+#
+############################################################
+TEST/JS/test01_xinterp.dats # HX-2025-12-27: it executes
+TEST/JS/test02_xinterp.dats # HX-2025-12-27: it executes
+TEST/JS/test03_xinterp.dats # HX-2025-12-27: it compiles
+TEST/JS/test04_xinterp.dats # HX-2025-12-27: it compiles
 ############################################################
 [ATS3-Xanadu/srcgen2/xinterp] is an interpreter for a subset of
 ATS3/Xanadu. It serves as a kind of reference implementation for
@@ -8,8 +15,14 @@ ATS3/Xanadu. I did it immediately after ATS3-Xanadu/srcgen1 became
 ready for testing (and before ATS3-Xanadu/srcgen2 was started).
 ############################################################
 Notice that the "ancient" srcgen1/prelude is used for code that
-is interpreted by srcgen2/xinterp. This "natural" choice was made
-long before bootstrapping for [ATS3-Xanadu/srcgen2] can be realized.
+is interpreted by srcgen2/xinterp. This choice seems "unnatural"
+as it was made long before bootstrapping for [ATS3-Xanadu/srcgen2]
+can be realized (and thus long before srcgen2/prelude) is available.
 If there is an attempt to implement another version of xinterp, then
 it is only natural to swtich to srcgen2/prelude from srcgen1/prelude.
+############################################################
+HX-2025-12-28:
+Sun Dec 28 12:21:12 PM EST 2025
+Probably no more effort should be spent on here except for some
+documentation plus historical notes.
 ############################################################
