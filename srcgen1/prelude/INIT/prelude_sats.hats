@@ -71,8 +71,6 @@ Fri Apr 18 11:04:46 AM EDT 2025
 //
 #include
 "srcgen1/prelude/SATS/gsyn000.sats"
-#include
-"srcgen1/prelude/SATS/gsyn001.sats"
 //
 (* ****** ****** *)
 //

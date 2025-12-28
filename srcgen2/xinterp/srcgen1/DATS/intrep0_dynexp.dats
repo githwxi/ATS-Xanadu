@@ -347,8 +347,8 @@ irpat(loc0, IRPstr(tok))
 |D3Ptup1 _ => f0_tup1(env0, d3p0)
 |D3Prcd2 _ => f0_rcd2(env0, d3p0)
 //
-|
-D3Pannot _ => f0_annot(env0, d3p0)
+|D3Pargtp _ => f0_argtp(env0, d3p0)
+|D3Pannot _ => f0_annot(env0, d3p0)
 //
 |_(*otherwise*) => irpat_none1(d3p0)
 //
@@ -453,6 +453,7 @@ trxd3ir_d3pat:f0_dapp: d3p0 = ", d3p0)
 }(*where*)//end-of-[f0_dapp(env0,d3p0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_tup0
@@ -537,6 +538,23 @@ in//let
 end(*let*)//end-of-[f0_rcd2(env0,d3p0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_argtp
+( env0:
+! trdienv
+, d3p0: d3pat): irpat =
+let
+val-
+D3Pargtp
+(d3p1, t2p2) = d3p0.node()
+in//let
+(
+  trxd3ir_d3pat( env0 , d3p1 ) )
+end(*let*)//end-of-[f0_argtp(env0,d3p0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_annot
@@ -544,13 +562,15 @@ f0_annot
 ! trdienv
 , d3p0: d3pat): irpat =
 (
-trxd3ir_d3pat(env0, d3p1)) where
+  trxd3ir_d3pat( env0 , d3p1 ) )
+where
 {
   val-
   D3Pannot
   (d3p1, s1e2, s2e2) = d3p0.node()
 }(*where*)//end-of-[f0_annot(env0,d3p0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val () =
