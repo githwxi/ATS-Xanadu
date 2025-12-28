@@ -33,13 +33,11 @@ strm_vt_cons(x0, strm_vt_nil())
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 val xs =
 mystrm_vt_sing(10)
 val-
 strmcon_vt_cons(x1, _) = !xs
 val () = printsln("x1 = ", x1)
-*)
 //
 val fs =
 mystrm_vt_sing
@@ -51,7 +49,7 @@ lam(x0: sint): sint => x0+1)
 val-
 strmcon_vt_cons(f1, _) = !fs
 val () = printsln("f1(10) = ", f1(10))
-////
+//
 val () = console_log(the_print_store_flush())
 //
 (* ****** ****** *)
