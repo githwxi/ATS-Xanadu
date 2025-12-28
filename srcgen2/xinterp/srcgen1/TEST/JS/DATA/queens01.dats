@@ -1,14 +1,17 @@
 (* ****** ****** *)
+(* ****** ****** *)
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #include
-"prelude/HATS/prelude_dats.hats"
+"srcgen1\
+/prelude/HATS/prelude_dats.hats"
 //
 #include
-"prelude\
-/HATS/CATS/Xint/prelude_dats.hats"
+"srcgen1\
+/prelude/HATS/CATS/Xint/prelude_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -36,5 +39,7 @@ board_forall
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
-(* end of [ATS3/XINTERP_TEST_JS_DATA_queens01.dats] *)
+//
+(***********************************************************************)
+(* end of [ATS3-XANADU/srcgen2/xinterp/srcgen1/TEST/JS/DATA/queens01.dats] *)
+(***********************************************************************)

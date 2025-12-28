@@ -49,9 +49,11 @@ For further program verification
 //
 (*
 #include
-"srcgen1/prelude/SATS/gbas000.sats"
+"srcgen1\
+/prelude/SATS/gbas000.sats"
 #include
-"srcgen1/prelude/SATS/gbas001.sats"
+"srcgen1\
+/prelude/SATS/gbas001.sats"
 *)
 #include
 "srcgen2\
