@@ -170,10 +170,18 @@ T2Pf2cl(f2cl) =>
 T2Pfun1
 ( f2cl
 , npf1, t2ps, tres) =>
-(
+let
+val
+s2t0 = t2p0.sort()
+in//let
+(*
 prints
 ("T2Pfun1(", f2cl, ";");
-prints(npf1, ";", t2ps, ";", tres, ")"))
+*)
+prints(
+"T2Pfun1(", s2t0, ";", f2cl, ";");
+prints(npf1, ";", t2ps, ";", tres, ")")
+end//let//endof[T1Pfun1(f2cl,npf1,...)]
 //
 |
 T2Ptext(name, t2ps) =>

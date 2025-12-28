@@ -124,6 +124,7 @@ s2typ_fun1
 , t2ps
 : s2typlst, tres: s2typ): s2typ =
 let
+//
 val s2t0 =
 (
 case f2cl of
@@ -137,10 +138,12 @@ case+ knd of
 | 0 => the_sort2_type
 | 1 => the_sort2_vtbx
 | _ => the_sort2_tbox))
+//
 val f2cl = s2typ_f2cl(f2cl)
+//
 in//let
-  s2typ_make_node
-  (s2t0, T2Pfun1(f2cl,npf1,t2ps,tres))
+s2typ_make_node
+(s2t0, T2Pfun1(f2cl,npf1,t2ps,tres))
 end (*let*) // end of [s2typ_fun1(...)]
 //
 (* ****** ****** *)
@@ -389,11 +392,15 @@ s2typ_fun1
 (f2cl,npf1,t2ps,tres)) where
 {
 val ndyn = ndyn - 1
-val tres = f0_f2as(f2as, ndyn, tres)
-val t2ps = s2typlst_of_d2patlst(d2ps)
+val tres =
+(
+  f0_f2as(f2as, ndyn, tres))
+val t2ps =
+(
+  s2typlst_of_d2patlst(d2ps))
 val f2cl =
 if
-(ndyn <= 0) then f2cl else F2CLclo(1)
+(ndyn<=0) then f2cl else F2CLclo(1)
 }
 )
 )(*case+*)//end-of-[f0_f2as(f2as,...)]

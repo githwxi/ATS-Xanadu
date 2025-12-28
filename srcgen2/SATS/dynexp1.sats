@@ -874,23 +874,22 @@ D1Csortdef of
 D1Csymload of
 ( token
 , sym_t
-, d1qid(*qual-id*), g1expopt )
+, d1qid(*qualified*), g1expopt)
 //
-// (*
 |
 D1Cinclude of
-( sint(*s/d*)
+( sint(*stadyn*)
 , token
-, g1exp(*src*)
-, fpathopt, d1eclistopt)//include
-// *)
+, g1exp(*source*)
+, fpathopt, d1eclistopt)//end()
 |
 D1Cstaload of
-( sint(*s/d*)
+( sint(*stadyn*)
 , token
-, g1exp(*src*)
-, fpathopt, optn
-  @(sint(*shared*), d1parsed))//staload
+, g1exp(*source*)
+, fpathopt
+, optn@(sint(*shrd*), d1parsed)
+) (*end-of-(D1Cstaload-of(...))*)
 //
 |
 D1Cdyninit of

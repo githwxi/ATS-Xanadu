@@ -656,10 +656,11 @@ S2Efun1
 ( f2cl, npf1
 , s2es, sres) =>
 s2typ_make_node
-(s2t0
-,T2Pfun1
- ( f2cl
- , npf1, t2ps, tres)) where
+(
+s2t0,
+T2Pfun1
+( f2cl
+, npf1, t2ps, tres)) where
 {
 //
   val

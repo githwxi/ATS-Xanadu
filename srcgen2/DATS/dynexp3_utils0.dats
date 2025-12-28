@@ -1186,10 +1186,13 @@ f1_tqas_t2js
 : s2vts_vt): optn_vt(s2vts_vt) =
 (
 case+ tqas of
-|list_nil() =>
+|
+list_nil() =>
 (
   optn_vt_cons(tsub) )
-|list_cons(tqa1, tqas) =>
+|
+list_cons
+(tqa1, tqas) =>
 let
 val s2vs = tqa1.s2vs()
 in//let
@@ -1219,10 +1222,13 @@ f1_s2vs_tqas_t2js
 (
 //
 case+ t2js of
-|list_nil() =>
+|
+list_nil() =>
 (
   optn_vt_cons(tsub) )
-|list_cons(t2j1, t2js) =>
+|
+list_cons
+(t2j1, t2js) =>
 let
 val tjps = t2j1.t2ps()
 in//let
@@ -1248,15 +1254,17 @@ f1_s2vs_tqas_tjps_t2js
 (
 //
 case+ tjps of
-|list_nil() =>
+|
+list_nil() =>
 (
-  f1_s2vs_tqas_t2js
-  (s2vs, tqas, t2js, tsub))
-|list_cons(tjp1, tjps) =>
+f1_s2vs_tqas_t2js
+(s2vs, tqas, t2js, tsub))
+|
+list_cons(tjp1, tjps) =>
 (
 f1_s2vs_tqas_tjps_t2js
-(s2vs, tqas, tjps, t2js, tsub)
-) where
+(s2vs, tqas, tjps, t2js, tsub))
+where
 {
 val-
 // HX: consq(s2vs)!

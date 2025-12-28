@@ -144,11 +144,13 @@ case+ f3as of
 case+
 f3a1.node() of
 //
-|F3ARGmets _ =>
+|
+F3ARGmets _ =>
 (
   auxmain(f3as, tfun))
 //
-|F3ARGsapp(s2vs, s2ps) =>
+|
+F3ARGsapp(s2vs, s2ps) =>
 (
 if
 not
@@ -175,14 +177,16 @@ endlet // end-of-[else]
 |
 F3ARGdapp(npf1, d3ps) =>
 let
+//
+val
+s2t0 = tfun.sort((*0*))
+//
 val-
 T2Pfun1
 (f2cl
 ,npf1
 ,targ, tfun) = tfun.node()
 //
-val
-s2t0 = tfun.sort()
 val
 tres = auxmain(f3as, tfun)
 //
