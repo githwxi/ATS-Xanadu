@@ -1097,7 +1097,7 @@ flag <= fval
 then t2p0 else
 let
 val s2t0 = t2p0.sort() in
-s2typ(s2t0, T2Pfun1(f2cl,npf1,t2ps,tres))
+s2typ(s2t0,T2Pfun1(f2cl,npf1,t2ps,tres))
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_fun1(e1nv,...)]
 //

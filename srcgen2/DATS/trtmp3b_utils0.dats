@@ -110,12 +110,20 @@ tr3benv_getstmp(env0)
 //
 val
 dcls =
-tr3benv_search_dcst(env0, d2c0)
+list_vt2t(
+tr3benv_search_dcst(env0, d2c0))
+//
+val () =
+prerrsln("\
+tr3benv_tapq_resolve: dcls(1) = ", dcls)
 //
 in//let
 //
 let//1
-val dcls = filter(dcls)
+val dcls = myfilter(dcls)
+val (  ) =
+prerrsln("\
+tr3benv_tapq_resolve: dcls(2) = ", dcls)
 in//let1
 timpl_make_node
 (stmp, TIMPLall1(d2c0,t2js,dcls))
@@ -125,55 +133,58 @@ end where
 {
 //
 fun
-filter
+myfilter
 ( dcls
-: d3eclist_vt): d3eclist =
+: d3eclist): d3eclist =
 (
 //
 case+ dcls of
-| ~
-list_vt_nil
+|list_nil
 ( (*void*) ) => list_nil()
-| ~
-list_vt_cons
+|list_cons
 (dcl1, dcls) =>
 let
 //
 val
 opt1 =
+(
 tmpmatch_d3cl_t2js
-(dcl1(*impl*),t2js(*targ*))
+(dcl1(*impl*),t2js(*targ*)))
 //
 in//let
+//
 case+ opt1 of
-|optn_nil
-((*void*)) =>
+|
+optn_nil((*0*)) =>
 (
-  filter(dcls) )
-|optn_cons
-(  tsub  ) =>
-if
+  myfilter(dcls) )
+|
+optn_cons(tsub) =>
+if // if
 not(
 s2vts_stleq(tsub))
-then filter( dcls ) else
+then myfilter(dcls) else
 let
 //
 val
 dcl1 = d3ecl_tmpsub(tsub, dcl1)
 //
+in//let
+(
+  list_cons(dcl1, myfilter(dcls)))
+where
+{
 (*
 val (  ) =
 prerrsln("\
-tr3benv_tapq_resolve: filter: dcl1 = ", dcl1)
+tr3benv_tapq_resolve:myfilter: dcl1 = ", dcl1)
 *)
+}(*where*)
+end(*let*)//end-of-[optn_cons(...)]
 //
-in//let
-(
-  list_cons(dcl1, filter(dcls)))
-end//let
-end//let//end-of-[list_cons(...)]
+end(*let*)//end-of-[list_cons(...)]
 //
-)(*case+*) // end of [ filter(dcls) ]
+)(*case+*)//end-of-[ myfilter( dcls ) ]
 //
 (*
 val () =

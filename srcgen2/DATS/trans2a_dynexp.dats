@@ -260,9 +260,17 @@ d2pat_t2pckify
 let
 //
 val t2p1 = d2p0.styp((*0*))
-//
 val ubtf =
-unify2a_s2typ(env0, t2p1, t2p0)
+unify2a_s2typ(env0,t2p1,t2p0)
+//
+(*
+val (  ) =
+prerrsln("\
+d2pat_t2pckify: t2p1 = ", t2p1)
+val (  ) =
+prerrsln("\
+d2pat_t2pckify: ubtf = ", ubtf)
+*)
 //
 in//let
 if
@@ -312,9 +320,17 @@ d2exp_t2pckify
 let
 //
 val t2p1 = d2e0.styp((*0*))
-//
 val ubtf =
-unify2a_s2typ(env0, t2p1, t2p0)
+unify2a_s2typ(env0,t2p1,t2p0)
+//
+(*
+val (  ) =
+prerrsln("\
+d2exp_t2pckify: t2p1 = ", t2p1)
+val (  ) =
+prerrsln("\
+d2exp_t2pckify: ubtf = ", ubtf)
+*)
 //
 in//let
 if
@@ -832,15 +848,19 @@ trans2a_d2patlst(env0, d2ps)
 //
 val tfun =
 let
+//
 val f2cl =
 s2typ_f2cl(F2CLfun())
+//
 val
 t2ps =
 s2typlst_of_d2patlst(d2ps)
+//
 in//let
 s2typ_make_node
-(sort2_none0()
-,T2Pfun1(f2cl,npf1,t2ps,tres))
+(
+sort2_none0(),
+T2Pfun1(f2cl, npf1, t2ps, tres))
 end (*let*) // end-of-[val(tfun)]
 //
 val d2f0 =
@@ -2003,21 +2023,27 @@ s2typ_new0_x2tp(loc0)
 //
 val tfun =
 let
+//
 val f2cl =
 s2typ_new0_x2tp(loc0)
-val
-t2ps = list_nil((*void*))
+//
+val t2ps =
+(
+  list_nil( (*void*) ))
+//
 in//let
 s2typ_make_node
-(sort2_none0()
-,T2Pfun1(f2cl,npf1,t2ps,tres))
+(
+sort2_none0((*void*)),
+T2Pfun1(f2cl, npf1, t2ps, tres))
 end (*let*) // end-of-[val(tfun)]
 //
 val d2f0 =
 trans2a_d2exp_tpck(env0,d2f0,tfun)
 //
 in//let
-  d2exp(loc0, tres, D2Edap0( d2f0 ))
+(
+  d2exp(loc0, tres, D2Edap0(d2f0)))
 end (*let*) // end-of-[f0_dap0(env0,d2e0)]
 //
 (* ****** ****** *)
@@ -2140,10 +2166,14 @@ in//let
 //
 let//let1
 //
-val
-tfun = d2f0.styp((*0*))
-val
-tfun = s2typ_hnfiz0(tfun)
+val tfun =
+d2f0.styp((*void*))
+val tfun =
+(
+  s2typ_hnfiz0(tfun))
+val tfun =
+(
+deuni2a_s2typ(env0, tfun))
 //
 (*
 val (  ) =
@@ -2154,11 +2184,6 @@ val (  ) =
 prerrsln("\
 trans2a_d2exp:\
 f0_dapp_elses: d2f0 = ", d2f0)
-*)
-val tfun =
-(
-  deuni2a_s2typ(env0, tfun))
-(*
 val (  ) =
 prerrsln("\
 trans2a_d2exp:\
@@ -2169,14 +2194,14 @@ in(*let1*)
 //
 (*
 HX-2024-10-05:
-We handle two scenarios:
-(1) [tfun] is T2Pfun1 or (2) not
+Handling two scenarios:
+(1) [tfun] == (T2Pfun1)
+(2) [tfun] != (T2Pfun1)
 *)
 //
 case+
 tfun.node() of
 //
-// (* //
 |
 T2Pfun1
 (_, _, t2ps, tres) =>
@@ -2189,8 +2214,7 @@ in(*let2*)
 d2exp_make_tpnd
 ( loc0, tres
 , D2Edapp(d2f0, npf1, d2es))
-end(*let2*)
-// *) //
+end(*let2*)//end-of-(T2Pfun1())
 //
 |
 _(*non-T2Pfun1*) =>
@@ -2206,14 +2230,23 @@ trans2a_d2explst(env0, d2es)
 val tfun =
 let//let3
 //
+val s2tf =
+(
+// HX: the default
+  the_sort2_tbox(*void*))
+//
 val t2ps =
-s2typlst_of_d2explst(d2es)
+(
+  s2typlst_of_d2explst(d2es))
 //
 in(*let3*)
+//
 s2typ_make_node
 (
-sort2_none0((*void*)),
+s2tf,
+// sort2_none0((*void*)),
 T2Pfun1(f2cl, npf1, t2ps, tres))
+//
 end(*let3*) // end-of-[val(tfun)]
 //
 val d2f0 =
@@ -2611,8 +2644,8 @@ trans2a_d2exp(env0, dexp)
 S2RESsome(seff, sexp) =>
 let
 val
-tres =
-s2exp_stpize(sexp) in
+tres = s2exp_stpize(sexp)
+in//let
 trans2a_d2exp_tpck(env0,dexp,tres)
 end (*let*) // end-of-[ S2RESsome ]
 ) : (d2exp) // end-of-[ val(dexp) ]
@@ -2623,8 +2656,11 @@ val tfun =
 s2typ_fun1_f2arglst(f2as, f2cl, tres)
 //
 (*
-val (  ) = prerrsln
-("trans2a_d2exp: f0_lam0: tfun = ", tfun)
+val s2t0 = tfun.sort()
+val (  ) = prerrsln("\
+trans2a_d2exp: f0_lam0: s2t0 = ", s2t0)
+val (  ) = prerrsln("\
+trans2a_d2exp: f0_lam0: tfun = ", tfun)
 *)
 //
 } (*where*) // end-of-[f0_lam0(env0,d2e0)]
@@ -2672,11 +2708,12 @@ s2typ_hnfiz0(s2exp_stpize(s2e1))
 //
 val f2cl = F2CLfun(*void*)
 val tfun =
-s2typ_fun1_f2arglst(f2as,f2cl,tres)
+s2typ_fun1_f2arglst(f2as, f2cl, tres)
 //
 val (  ) = dvar.styp(tfun)
 val dexp =
-trans2a_d2exp_tpck(env0, dexp, tres)
+(
+  trans2a_d2exp_tpck(env0, dexp, tres))
 //
 (*
 val (  ) = prerrsln
@@ -3096,8 +3133,9 @@ val t2ps =
 val
 tfun =
 s2typ_make_node
-(sort2_none0()
-,T2Pfun1(f2cl,npf1,t2ps,tres))
+(
+sort2_none0(),
+T2Pfun1(f2cl, npf1, t2ps, tres))
 //
 val name =
 BRCKT_symbl(*void*)//"A[i]"
@@ -3137,8 +3175,9 @@ val t2ps =
 val
 tfun =
 s2typ_make_node
-(sort2_none0()
-,T2Pfun1(f2cl,npf1,t2ps,tres))
+(
+sort2_none0(),
+T2Pfun1(f2cl, npf1, t2ps, tres))
 //
 (*
 val () =
@@ -3148,7 +3187,7 @@ prerrsln("f0_brset: tfun = ", tfun)
 *)
 //
 val name =
-BRCKT_symbl(*void*)//(A[i]:=x)
+BRCKT_symbl(*void*)//HX:(A[i] := x)
 val dsym =
 d2exp_sym0_styp(loc0,name,dpis,tfun)
 //
