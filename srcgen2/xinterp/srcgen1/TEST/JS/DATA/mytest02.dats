@@ -7,9 +7,6 @@
 //
 #include
 "srcgen1\
-/prelude/INIT/prelude_sats.hats"
-#include
-"srcgen1\
 /prelude/HATS/prelude_dats.hats"
 //
 #include
@@ -80,9 +77,16 @@ list_vt_nil((*nil*))) => (x1 := x1+x1)
 )
 //
 (* ****** ****** *)
-val xs = list_vt(1,2,3,4,5)
-val () = list_vt_incr( xs )
+//
+val xs =
+(
+  list_vt_3val(3, 4, 5))
+val xs = list_vt_cons(2, xs)
+val xs = list_vt_cons(1, xs)
+//
+val () = list_vt_incr(  xs  )
 val ys = xs // list_vt(2, 4, 6, 16, 10)
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)

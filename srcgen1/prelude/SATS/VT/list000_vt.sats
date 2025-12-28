@@ -82,11 +82,11 @@ list_vt_cons_
 //
 fun
 <a:vt>
-list_vt_sing
+list_vt_sing_
   (x0: a): list_vt(a, 1)
 fun
 <a:vt>
-list_vt_pair
+list_vt_pair_
   (x0: a, x1: a): list_vt(a,2)
 //
 (* ****** ****** *)
@@ -94,7 +94,7 @@ list_vt_pair
 fun
 <a:vt>
 list_vt_free
-  (xs: ~list_vt(a)): ( void )
+  (xs: ~list_vt(a)): (  void  )
 //
 (* ****** ****** *)
 //
@@ -140,21 +140,7 @@ list_vt_length1
 {n:int}( !list_vt(a, n)): sint(n)
 //
 (* ****** ****** *)
-//
-//
-fun
-<a:vt>
-list_vt_make_1val
-(x1: a): list_vt(a,1)
-fun
-<a:vt>
-list_vt_make_2val
-(x1: a, x2: a): list_vt(a,2)
-fun
-<a:vt>
-list_vt_make_3val
-(x1: a
-,x2: a, x3: a): list_vt(a,3)
+(* ****** ****** *)
 //
 fun
 <a:vt>
@@ -167,7 +153,41 @@ fun
 list_vt_make_nfun
 {n:nat}
 (n0: sint(n)
-,f0: nintlt(n)->(a)): list_vt(a, n)
+,f0: nintlt(n)->(a)): list_vt(a,n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+<a:vt>
+list_vt_make0_1val
+(x1: a): list_vt(a,1)
+fun
+<a:vt>
+list_vt_make0_2val
+(x1: a, x2: a): list_vt(a,2)
+fun
+<a:vt>
+list_vt_make0_3val
+(x1: a
+,x2: a, x3: a): list_vt(a,3)
+//
+(* ****** ****** *)
+//
+#symload
+list_vt_sing
+with list_vt_make0_1val//of 1000
+#symload
+list_vt_1val
+with list_vt_make0_1val//of 1000
+#symload
+list_vt_pair
+with list_vt_make0_2val//of 1000
+#symload
+list_vt_2val
+with list_vt_make0_2val//of 1000
+#symload
+list_vt_3val
+with list_vt_make0_3val//of 1000
 //
 (* ****** ****** *)
 //
@@ -175,11 +195,13 @@ fun
 <a:t0>
 list_vt_make_strm
 ( xs : strm(a) ): list_vt( a )
+//
 fun
 <a:vt>
 list_vt_make0_lstrm
 ( xs : strm_vt(a) ): list_vt( a )
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

@@ -27,21 +27,6 @@ list_vt_cons(x0, xs)
 //
 (* ****** ****** *)
 //
-#impltmp
-<a>(*tmp*)
-list_vt_sing(x0) =
-list_vt_cons(x0, list_vt_nil())
-//
-(* ****** ****** *)
-//
-#impltmp
-<a>(*tmp*)
-list_vt_pair(x0, x1) =
-list_vt_cons(x0,
-list_vt_cons(x1, list_vt_nil()))
-//
-(* ****** ****** *)
-//
 (*
 HX: lense:
 [free] is [free0]!
@@ -196,20 +181,48 @@ if
 then
 (r0 := list_vt_nil())
 else let
-  val x1 = g_copy<a>(x0)
   val () =
-  (r0 := list_vt_cons(x1, _))
+  (r0 := list_vt_cons(x0, _))
 in // let
 (
   loop(pre(i0), r0.1); $fold(r0) )
 end // end of [else]
 //
-in
+in//
+//
 let
-var r0: list_vt(a) in loop(n0, r0); r0
+var r0
+  : list_vt(a) in loop(n0, r0); r0
 end
+//
 end (* end of [list_vt_make_ncpy] *)
 
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+list_vt_make0_1val
+  (   x0   ) =
+(
+list_vt_cons(x0, list_vt_nil(*0*)))
+//
+#impltmp
+<a>(*tmp*)
+list_vt_make0_2val
+  (  x1, x2  ) =
+(
+list_vt_cons(x1,
+list_vt_cons(x2, list_vt_nil(*0*))))
+//
+#impltmp
+<a>(*tmp*)
+list_vt_make0_3val
+  (x1, x2, x3) =
+(
+list_vt_cons(x1,
+list_vt_cons(x2,
+list_vt_cons(x3, list_vt_nil(*void*)))))
+//
 (* ****** ****** *)
 
 #impltmp
@@ -227,7 +240,8 @@ list_vt_extend0
   (xs, x0) =
 let
 val ys =
-list_vt_sing<a>(x0)
+(
+  list_vt_sing(x0))
 in//let
 (
   list_vt_append0<a>(xs, ys) )

@@ -1,0 +1,15 @@
+############################################################
+# HX-2025-12-27:
+# Sat Dec 27 07:39:02 PM EST 2025
+############################################################
+[ATS3-Xanadu/srcgen2/xinterp] is an interpreter for a subset of
+ATS3/Xanadu. It serves as a kind of reference implementation for
+ATS3/Xanadu. I did it immediately after ATS3-Xanadu/srcgen1 became
+ready for testing (and before ATS3-Xanadu/srcgen2 was started).
+############################################################
+Notice that the "ancient" srcgen1/prelude is used for code that
+is interpreted by srcgen2/xinterp. This "natural" choice was made
+long before bootstrapping for [ATS3-Xanadu/srcgen2] can be realized.
+If there is an attempt to implement another version of xinterp, then
+it is only natural to swtich to srcgen2/prelude from srcgen1/prelude.
+############################################################

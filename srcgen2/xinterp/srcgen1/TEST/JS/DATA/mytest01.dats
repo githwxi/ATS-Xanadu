@@ -7,9 +7,6 @@
 //
 #include
 "srcgen1\
-/prelude/INIT/prelude_sats.hats"
-#include
-"srcgen1\
 /prelude/HATS/prelude_dats.hats"
 //
 #include
