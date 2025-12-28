@@ -1587,5 +1587,8 @@ list_vt_append1_n10
 #symload append1 with list_vt_append1_n10
 //
 (* ****** ****** *)
-
-(* end of [ATS3/XANADU_prelude_synoug0_vt.sats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_VT_synoug0_vt.sats] *)
+(***********************************************************************)

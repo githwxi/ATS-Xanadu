@@ -340,7 +340,7 @@ f1_irfundclist
 , irfs
 : irfundclist): irvalist =
 (
-list_map_e1nv
+list_map$e1nv
 < x0><y0 ><e1>
 (irfs, env0)) where
 {
@@ -350,7 +350,7 @@ list_map_e1nv
 #typedef x0 = irfundcl
 //
 #impltmp
-map$fopr_e1nv
+map$e1nv$fopr
 <x0><y0><e1>(x0, e1) = f1_irfundcl(e1, x0)
 }
 //

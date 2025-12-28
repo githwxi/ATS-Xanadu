@@ -549,7 +549,7 @@ trxd3ir_d3pat(env0, d3p1)) where
   val-
   D3Pannot
   (d3p1, s1e2, s2e2) = d3p0.node()
-}(*where*)//end of [f0_annot(env0,d3p0)]
+}(*where*)//end-of-[f0_annot(env0,d3p0)]
 //
 (* ****** ****** *)
 //
@@ -665,6 +665,9 @@ irexp(loc0, IREcst(d2c))
 |D3El0azy _ => f0_l0azy(env0, d3e0)
 |D3El1azy _ => f0_l1azy(env0, d3e0)
 //
+|D3Eannot _ => f0_annot(env0, d3e0)
+|D3Et2ped _ => f0_t2ped(env0, d3e0)
+//
 |D3Enone0 _ => f0_none0(env0, d3e0)
 //
 |_(* otherwise *) => irexp_none1(d3e0)
@@ -696,7 +699,8 @@ val dimp =
 case+
 timp.node() of
 |TIMPLall1
-(dcst, dcls) =>
+(dcst
+,t2js, dcls) =>
 (
 case+ dcls of
 |list_nil( ) =>
@@ -704,7 +708,8 @@ case+ dcls of
  d3ecl_none0(loc0))
 |list_cons(dcl1, _) => dcl1)
 |TIMPLallx
-(dcst, dcls) =>
+(dcst
+,t2js, dcls) =>
 (
 case+ dcls of
 |list_nil( ) =>
@@ -1505,6 +1510,39 @@ in//let
   irexp_make_node
   (loc0, IREl1azy( ire1,ires )) )
 end(*let*)//end-of-[f0_l1azy(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_annot
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+val-
+D3Eannot
+(d3e1
+,s1e2, s2e2) = d3e0.node()
+in//let
+(
+  trxd3ir_d3exp(env0, d3e1))
+end(*let*)//end-of-[f0_annot(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2ped
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+val-
+D3Et2ped
+(d3e1, t2p2) = d3e0.node()
+in//let
+(
+  trxd3ir_d3exp(env0, d3e1))
+end(*let*)//end-of-[f0_t2ped(env0,d3e0)]
 //
 (* ****** ****** *)
 //

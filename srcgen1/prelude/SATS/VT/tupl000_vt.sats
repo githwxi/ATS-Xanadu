@@ -72,5 +72,8 @@ x2tup_vt_decode
 #symload x2tup_vt with x2tup_vt_encode of 1000
 #symload put2x_vt with x2tup_vt_decode of 1000
 (* ****** ****** *)
-
-(* end of [ATS3/XANADU_prelude_tupl000_vt.sats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_vt_tupl000_vt.sats] *)
+(***********************************************************************)

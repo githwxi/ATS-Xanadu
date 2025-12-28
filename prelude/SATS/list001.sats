@@ -114,6 +114,7 @@ list_forall$f1un
 : list(x0), test: (x0) -> bool): bool
 #symload forall with list_forall$f1un of 1000
 #symload forall$fun with list_forall$f1un of 1000
+#symload list_forall with list_forall$f1un of 1000
 //
 fun
 <x0:t0>
@@ -122,6 +123,7 @@ list_iforall$f2un
 : list(x0), test: (ni,x0) -> bool): bool
 #symload iforall with list_iforall$f2un of 1000
 #symload iforall$fun with list_iforall$f2un of 1000
+#symload list_iforall with list_iforall$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -153,6 +155,7 @@ list_exists$f1un
 : list(x0), test: (x0) -> bool): bool
 #symload exists with list_exists$f1un of 1000
 #symload exists$fun with list_exists$f1un of 1000
+#symload list_exists with list_exists$f1un of 1000
 //
 fun
 <x0:t0>
@@ -161,6 +164,7 @@ list_iexists$f2un
 : list(x0), test: (ni,x0) -> bool): bool
 #symload iexists with list_iexists$f2un of 1000
 #symload iexists$fun with list_iexists$f2un of 1000
+#symload list_iexists with list_iexists$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -192,6 +196,7 @@ list_foritm$f1un
 : list(x0), work: (x0) -> void): void
 #symload foritm with list_foritm$f1un of 1000
 #symload foritm$fun with list_foritm$f1un of 1000
+#symload list_foritm with list_foritm$f1un of 1000
 //
 fun
 <x0:t0>
@@ -200,6 +205,7 @@ list_rforitm$f1un
 : list(x0), work: (x0) -> void): void
 #symload rforitm with list_rforitm$f1un of 1000
 #symload rforitm$fun with list_rforitm$f1un of 1000
+#symload list_rforitm with list_rforitm$f1un of 1000
 //
 fun
 <x0:t0>
@@ -208,6 +214,7 @@ list_iforitm$f2un
 : list(x0), work: (ni,x0) -> void): void
 #symload iforitm with list_iforitm$f2un of 1000
 #symload iforitm$fun with list_iforitm$f2un of 1000
+#symload list_iforitm with list_iforitm$f2un of 1000
 //
 fun
 <x0:t0>
@@ -216,6 +223,7 @@ list_irforitm$f2un
 : list(x0), work: (ni,x0) -> void): void
 #symload irforitm with list_irforitm$f2un of 1000
 #symload irforitm$fun with list_irforitm$f2un of 1000
+#symload list_irforitm with list_irforitm$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -261,6 +269,7 @@ list_folditm$f2un
 : list(x0), r0: r0, fopr: (r0, x0) -> r0): (r0)
 #symload folditm with list_folditm$f2un of 1000
 #symload folditm$fun with list_folditm$f2un of 1000
+#symload list_folditm with list_folditm$f2un of 1000
 //
 fun
 <x0:t0>
@@ -270,6 +279,7 @@ list_rfolditm$f2un
 : list(x0), r0: r0, fopr: (x0, r0) -> r0): (r0)
 #symload rfolditm with list_rfolditm$f2un of 1000
 #symload rfolditm$fun with list_rfolditm$f2un of 1000
+#symload list_rfolditm with list_rfolditm$f2un of 1000
 //
 fun
 <x0:t0>
@@ -279,6 +289,7 @@ list_ifolditm$f3un
 : list(x0), r0: r0, fopr: (r0,ni,x0) -> r0): (r0)
 #symload ifolditm with list_ifolditm$f3un of 1000
 #symload ifolditm$fun with list_ifolditm$f3un of 1000
+#symload list_ifolditm with list_ifolditm$f3un of 1000
 //
 fun
 <x0:t0>
@@ -288,6 +299,7 @@ list_irfolditm$f3un
 : list(x0), r0: r0, fopr: (ni,x0,r0) -> r0): (r0)
 #symload irfolditm with list_irfolditm$f3un of 1000
 #symload irfolditm$fun with list_irfolditm$f3un of 1000
+#symload list_irfolditm with list_irfolditm$f3un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

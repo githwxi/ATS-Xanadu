@@ -46,8 +46,8 @@ nint_strmize
 (xs: nint): strm_vt(ni)
 fun<>
 nint_strqize
-{n:i0}
-(xs: nint(n)): strq_vt(ni, n)
+{sz:i0}
+(xs: nint(sz)): strq_vt(ni,sz)
 //
 (* ****** ****** *)
 //
@@ -56,8 +56,8 @@ nint_rstrmize
 (xs: nint): strm_vt(ni)
 fun<>
 nint_rstrqize
-{n:i0}
-(xs: nint(n)): strq_vt(ni, n)
+{sz:i0}
+(xs: nint(sz)): strq_vt(ni,sz)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -289,6 +289,20 @@ nint_rfolditm$f2un
 folditm with nint_folditm$f2un of 1000
 #symload
 rfolditm with nint_rfolditm$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-27:
+Sat Dec 27 12:37:56 PM EST 2025
+*)
+fun<>
+nint_listize
+{sz:i0}(xs: nint(sz)): list_vt(ni,sz)
+fun<>
+nint_rlistize
+{sz:i0}(xs: nint(sz)): list_vt(ni,sz)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -326,5 +326,5 @@ rlistize0 with optn_vt_rlistize0 of 1000
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_optn000_vt.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_VT_optn000_vt.sats] *)
 (***********************************************************************)
