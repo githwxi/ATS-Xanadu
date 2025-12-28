@@ -113,21 +113,27 @@ dcls =
 list_vt2t(
 tr3benv_search_dcst(env0, d2c0))
 //
+(*
 val () =
 prerrsln("\
 tr3benv_tapq_resolve: dcls(1) = ", dcls)
+*)
 //
 in//let
 //
 let//1
+//
 val dcls = myfilter(dcls)
+//
+(*
 val (  ) =
 prerrsln("\
 tr3benv_tapq_resolve: dcls(2) = ", dcls)
+*)
+//
 in//let1
 timpl_make_node
-(stmp, TIMPLall1(d2c0,t2js,dcls))
-end//let1
+(stmp,TIMPLall1(d2c0,t2js,dcls))end//let1
 //
 end where
 {
