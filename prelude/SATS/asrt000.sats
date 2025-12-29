@@ -87,19 +87,29 @@ length with asrt_length of 1000
 HX-2025-12-29:
 Array-based binary search:
 asrt_exists:
-This one uses [exists$tcmp]
+This one uses [exists$tcmp1]
 asrt_search:
-This one uses [search$tcmp]
+This one uses [search$tcmp1]
 Mon Dec 29 12:30:42 PM EST 2025
 *)
 fun
 <x0:t0>
 asrt_exists
 (xs: asrt(x0)): ( bool )
+//
+(*
+HX-2025-12-29:
+[asrt_search$idx(xs)]
+returns the least [i0]
+satisfying (search(xs[i0])<0)
+Note that xs[ln] is infinity.
+Mon Dec 29 02:53:44 PM EST 2025
+*)
 fun
 <x0:t0>
-asrt_search
-(xs: asrt(x0)): optn_vt(x0)
+asrt_search$idx
+{ln:i0}
+(xs: asrt(x0, ln)): nintlte(ln)
 //
 (* ****** ****** *)
 (* ****** ****** *)
