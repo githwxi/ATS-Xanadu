@@ -88,6 +88,8 @@
 #include "prelude/SATS/axsz000.sats"
 #include "prelude/SATS/axsz001.sats"
 //
+#include "prelude/SATS/asrt000.sats"
+//
 (* ****** ****** *)
 //
 #include "prelude/SATS/tupl000.sats"

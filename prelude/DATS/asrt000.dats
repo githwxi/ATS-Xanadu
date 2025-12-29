@@ -42,6 +42,35 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{ vt:vt }
+g_ptcon
+<asrt(vt)>
+( (*void*) ) =
+(
+pstrn("asrt"))
+#impltmp
+{ vt:vt }
+g_ptype
+<asrt(vt)>
+( (*void*) ) =
+(
+pstrn("asrt(");
+g_ptype<vt>((*0*)); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+asrt_length
+  (  xs  ) =
+(
+  a1sz_length<a>(asrt_decd(xs)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_asrt000.dats] *)
 (***********************************************************************)
