@@ -71,6 +71,102 @@ asrt_length
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0: vt >
+asrt_exists
+  (  xs  ) =
+(
+  loop(0, ln)) where
+{
+//
+val xs =
+asrt_decd(xs)
+val ln =
+a1sz_length<x0>(xs)
+//
+fnx
+loop
+( li: nint
+, ui: nint): bool =
+if
+(li >= ui)
+then false else
+let
+val mi =
+(
+li+(ui-li) / 2)
+val (pf | mx) =
+a1sz_lget$at(xs, mi)
+//
+val
+sgn = exists$tcmp1(mx)
+pvx () =
+owed_vt_return0(pf, mx)
+//
+in//let
+//
+if // if
+(sgn = 0)
+then true else
+(
+if
+(sgn < 0) then
+loop(li,mi) else loop(mi+1,ui))
+//
+end(*let*)//end-of-[loop(li,ui)]
+//
+}(*where*)//end-of-[asrt_exists(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0: vt >
+asrt_search$idx
+  (  xs  ) =
+(
+  loop(0, ln)) where
+{
+//
+val xs =
+asrt_decd(xs)
+val ln =
+a1sz_length<x0>(xs)
+//
+fnx
+loop
+(li: nint
+,ui: nint): sint =
+if
+(li >= ui)
+then ( li ) else
+let
+val mi =
+(
+li + (ui-li) / 2)
+val (pf | mx) =
+a1sz_lget$at(xs, mi)
+//
+val
+sgn =
+search$tcmp1<x0>(mx)
+pvx () =
+owed_vt_return0(pf, mx)
+//
+in//let
+//
+(
+if
+(sgn <= 0) then
+loop(li,mi) else loop(mi+1,ui))
+//
+end(*let*)//end-of-[loop(li,ui)]
+//
+}(*where*)//end-of-[asrt_search$idx(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_asrt000.dats] *)
 (***********************************************************************)
