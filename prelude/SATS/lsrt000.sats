@@ -174,6 +174,9 @@ length with lsrt_length of 1000
 //
 (*
 HX-2025-12-25:
+lsrt_exists:
+This one uses [exists$tcmp]
+lsrt_search:
 This one uses [search$tcmp]
 *)
 fun

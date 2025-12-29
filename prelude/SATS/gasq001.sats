@@ -163,29 +163,33 @@ gasq_rexists$f1un
 HX-2024-07-25:
 Thu 25 Jul 2024 01:47:26 PM EDT
 HX-2025-09-08:
-There seems to be overlapping
-between [mapref] and [foritm1r]
-Let us keep [mapref] as a special
-combinator for now.
+There seems to be overlapping between
+[mapref] and [foritm1x]
+Let us keep [mapref] as a special combinator for now.
 *)
 //
 fun
 <x0:vt>
-mapref$fopr0(~x0): x0
+mapref$fopr0
+( itm: ~x0 ): ( x0 )
 fun
 <x0:vt>
-mapref$fopr1r
+mapref$fopr1x
 ( ref: &x0 >> x0 ): void
 //
 (*
 fun
 <x0:vt>
-mapref$fopr01r//ini
-( ref: &(?x0) >> x0 ): void
+mapref$fopr0x
+( ref: &x0 >> ?x0 ): void
 fun
 <x0:vt>
-mapref$fopr10r//clr
-( ref: &(?x0) << x0 ): void
+mapref$fopr01x
+( ref: &(?x0) >> (x0) ): void
+fun
+<x0:vt>
+mapref$fopr10x
+( ref: &(?x0) << (x0) ): void
 *)
 //
 fun
@@ -195,12 +199,12 @@ gasq_mapref(xs: xs): void
 fun
 <xs:t0>
 <x0:vt>
-gasq_mapref_c1bv
+gasq_mapref$c1bv
 (xs: xs, fopr: (~x0)->(x0)): void
 //
 (*
-#symload mapref with gasq_mapref_c1bv of 0100
-#symload mapref_cbv with gasq_mapref_c1bv of 0100
+#symload mapref with gasq_mapref$c1bv of 0100
+#symload mapref$cbv with gasq_mapref$c1bv of 0100
 *)
 //
 (* ****** ****** *)
@@ -211,7 +215,7 @@ fun
 rmapref$fopr0(~x0): x0
 fun
 <x0:vt>
-rmapref$fopr1r
+rmapref$fopr1x
 ( ref: &x0 >> x0 ): void
 //
 fun
@@ -221,12 +225,12 @@ gasq_rmapref(xs: xs): void
 fun
 <xs:t0>
 <x0:vt>
-gasq_rmapref_c1bv
+gasq_rmapref$c1bv
 (xs: xs, fopr: (~x0)->(x0)): void
 //
 (*
-#symload rmapref with gasq_rmapref_c1bv of 0100
-#symload rmapref_cbv with gasq_rmapref_c1bv of 0100
+#symload rmapref with gasq_rmapref$c1bv of 0100
+#symload rmapref$cbv with gasq_rmapref$c1bv of 0100
 *)
 //
 (* ****** ****** *)
@@ -237,7 +241,7 @@ fun
 imapref$fopr0(ni, ~x0): x0
 fun
 <x0:vt>
-imapref$fopr1r
+imapref$fopr1x
 (i0: ni, ref: &x0 >> x0): void
 //
 //
@@ -248,12 +252,12 @@ gasq_imapref(xs: xs): void
 fun
 <xs:t0>
 <x0:vt>
-gasq_imapref_c2bv
+gasq_imapref$c2bv
 (xs: xs, fopr: (ni, ~x0)->(x0)): void
 //
 (*
-#symload imapref with gasq_imapref_c2bv of 0100
-#symload imapref_cbv with gasq_imapref_c2bv of 0100
+#symload imapref with gasq_imapref$c2bv of 0100
+#symload imapref$cbv with gasq_imapref$c2bv of 0100
 *)
 //
 (* ****** ****** *)
@@ -264,7 +268,7 @@ fun
 irmapref$fopr0(ni, ~x0): x0
 fun
 <x0:vt>
-irmapref$fopr1r
+irmapref$fopr1x
 (i0: ni, ref: &x0 >> x0): void
 //
 //
@@ -275,12 +279,12 @@ gasq_irmapref(xs: xs): void
 fun
 <xs:t0>
 <x0:vt>
-gasq_irmapref_c2bv
+gasq_irmapref$c2bv
 (xs: xs, fopr: (ni, ~x0)->(x0)): void
 //
 (*
-#symload irmapref with gasq_irmapref_c2bv of 0100
-#symload irmapref_cbv with gasq_irmapref_c2bv of 0100
+#symload irmapref with gasq_irmapref$c2bv of 0100
+#symload irmapref$cbv with gasq_irmapref$c2bv of 0100
 *)
 //
 (* ****** ****** *)
