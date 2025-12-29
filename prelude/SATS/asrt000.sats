@@ -71,6 +71,18 @@ UN_asrt_encd
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<a:t0>
+asrt_length
+{n:i0}
+(xs: asrt(a, n)): sint(n)
+//
+#symload
+length with asrt_length of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2025-12-29:
 Array-based binary search:
