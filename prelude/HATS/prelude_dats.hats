@@ -100,6 +100,7 @@ This one is included by [DATS/unsfx00.dats]
 #staload _ = "prelude/DATS/axrf001.dats"
 #staload _ = "prelude/DATS/axsz000.dats"
 #staload _ = "prelude/DATS/axsz001.dats"
+#staload _ = "prelude/DATS/asrt000.dats"
 #staload _ = "prelude/DATS/tupl000.dats"
 #staload _ = "prelude/DATS/tupl001.dats"
 #staload _ = "prelude/DATS/tupl002.dats"

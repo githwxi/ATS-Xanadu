@@ -42,11 +42,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX:
-This one is also
-implemented in [gdbg000.dats]:
-*)
 #impltmp
 { t0:t0 }
 g_ptcon
