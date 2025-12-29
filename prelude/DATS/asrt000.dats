@@ -30,68 +30,18 @@
 (*
 Author: Hongwei Xi
 (*
-Mon Dec 29 09:01:30 AM EST 2025
+Mon Dec 29 12:36:34 PM EST 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef igtz = sintgt(0)
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2025-12-25:
-It is for sorted [a1sz]
-*)
-//
-#abstbox
-asrt_vt_i0_tx
-( a:vt,n:i0 ) <= a1sz(a)
-//
-#sexpdef
-asrt = asrt_vt_i0_tx
-#typedef
-asrt(a:vt) = [n:i0] asrt(a,n)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fcast
-asrt_decd
-{a:vt}
-(asrt(a, n)): a1sz(a, n)
-//
-fcast
-UN_asrt_encd
-{a:vt}
-(a1sz(a, n)): asrt(a, n)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2025-12-29:
-Array-based binary search:
-asrt_exists:
-This one uses [exists$tcmp]
-asrt_search:
-This one uses [search$tcmp]
-Mon Dec 29 12:30:42 PM EST 2025
-*)
-fun
-<x0:t0>
-asrt_exists
-(xs: asrt(x0)): ( bool )
-fun
-<x0:t0>
-asrt_search
-(xs: asrt(x0)): optn_vt(x0)
-//
+#staload UN =
+"prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_asrt000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_asrt000.dats] *)
 (***********************************************************************)
