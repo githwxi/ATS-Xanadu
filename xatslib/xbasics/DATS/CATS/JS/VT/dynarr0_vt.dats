@@ -127,23 +127,23 @@ with jsdasz_vt_make_jsdasz of 1000
 //
 #extern
 fun<>
-jsdasz_vt_make0_1val
+jsdasz_vt_make_1val
  {a:vt}( x1: (a) ): jsla(a)
 #extern
 fun<>
-jsdasz_vt_make0_2val
+jsdasz_vt_make_2val
  {a:vt}( x1:a, x2:a ): jsla(a)
 #extern
 fun<>
-jsdasz_vt_make0_3val
+jsdasz_vt_make_3val
  {a:vt}( x1:a, x2:a, x3:a ): jsla(a)
 //
 #symload
-jsdasz_vt with jsdasz_vt_make0_1val of 1000
+jsdasz_vt with jsdasz_vt_make_1val of 1000
 #symload
-jsdasz_vt with jsdasz_vt_make0_2val of 1000
+jsdasz_vt with jsdasz_vt_make_2val of 1000
 #symload
-jsdasz_vt with jsdasz_vt_make0_3val of 1000
+jsdasz_vt with jsdasz_vt_make_3val of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -170,17 +170,17 @@ jsdasz_vt with jsdasz_vt_make_fwork of 1000
 //
 #extern
 fun<>
-jsdasz_vt_make0_lstrm
+jsdasz_vt_make_lstrm
  {a:vt}(xs: ~strm_vt(a)): jsla(a)
 #extern
 fun<>
-jsdasz_vt_make0_lstrq
+jsdasz_vt_make_lstrq
  {a:vt}(xs: ~strq_vt(a)): jsla(a)
 //
 #symload
-jsdasz_vt with jsdasz_vt_make0_lstrm of 1000
+jsdasz_vt with jsdasz_vt_make_lstrm of 1000
 #symload
-jsdasz_vt with jsdasz_vt_make0_lstrq of 1000
+jsdasz_vt with jsdasz_vt_make_lstrq of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -390,22 +390,22 @@ UN_jsdasz_t2vt(jsdasz_make_ncpy<>(n, x)))
 //
 #impltmp
 <(*tmp*)>
-jsdasz_vt_make0_1val
+jsdasz_vt_make_1val
   ( x1 ) =
 (
-  UN_jsdasz_t2vt(jsdasz_make0_1val<>(x1)))
+  UN_jsdasz_t2vt(jsdasz_make_1val<>(x1)))
 //
 #impltmp
 <(*tmp*)>
-jsdasz_vt_make0_2val
+jsdasz_vt_make_2val
   (x1, x2) =
-UN_jsdasz_t2vt(jsdasz_make0_2val<>(x1, x2))
+UN_jsdasz_t2vt(jsdasz_make_2val<>(x1, x2))
 //
 #impltmp
 <(*tmp*)>
-jsdasz_vt_make0_3val
+jsdasz_vt_make_3val
   (x1, x2, x3) =
-UN_jsdasz_t2vt(jsdasz_make0_3val<>(x1, x2, x3))
+UN_jsdasz_t2vt(jsdasz_make_3val<>(x1, x2, x3))
 //
 (* ****** ****** *)
 (* ****** ****** *)

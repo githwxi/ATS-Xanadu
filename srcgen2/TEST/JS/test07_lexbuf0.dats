@@ -1,4 +1,5 @@
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../..\
 /HATS/xatsopt_sats.hats"
@@ -6,10 +7,12 @@
 "./../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 #staload
 "./../../SATS/locinfo.sats"
 #staload
 "./../../SATS/lexbuf0.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #include
 "./../../DATS/locinfo.dats"
@@ -21,6 +24,7 @@
 "./../../DATS/lexbuf0_cstrx1.dats"
 #include
 "./../../DATS/lexbuf0_cstrx2.dats"
+(* ****** ****** *)
 (* ****** ****** *)
 
 val
@@ -59,7 +63,7 @@ end
 
 (* ****** ****** *)
 
-val buf1 = lxbf1_make0_cstrx(csrc1)
+val buf1 = lxbf1_make_cstrx(csrc1)
 
 (* ****** ****** *)
 //
@@ -90,7 +94,7 @@ prerrsln("buf1.tclst() = ", strn(buf1.tclst()))
 //
 (* ****** ****** *)
 
-val buf2 = lxbf2_make0_cstrx(csrc2)
+val buf2 = lxbf2_make_cstrx(csrc2)
 
 (* ****** ****** *)
 //
