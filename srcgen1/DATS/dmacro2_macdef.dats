@@ -49,5 +49,8 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/staexp1.sats"
 //
 (* ****** ****** *)
-
-(* end of [xats_dmacro2_macdef.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_dmacro2_macdef.dats] *)
+(***********************************************************************)

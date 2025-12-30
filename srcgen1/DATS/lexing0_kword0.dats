@@ -618,5 +618,8 @@ implement T_IDENT_LTGT = T_IDENT_sym("<>")
 implement T_IDENT_MSGT = T_IDENT_sym("->")
 //
 (* ****** ****** *)
-
-(* end of [xats_lexing0_kword.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_lexing0_kword.dats] *)
+(***********************************************************************)

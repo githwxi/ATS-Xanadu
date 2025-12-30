@@ -49,5 +49,8 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/intrep0.sats"
 
 (* ****** ****** *)
-
-(* end of [xats_intrep0_jsoniz.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_intrep0_jsoniz.dats] *)
+(***********************************************************************)
