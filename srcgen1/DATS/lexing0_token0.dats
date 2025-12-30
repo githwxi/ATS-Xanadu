@@ -1417,5 +1417,8 @@ list_vt_reverse<token>(loop0(toks, list_vt_nil()))
 end // end of [lexing_preprocess_tokenlst]
 
 (* ****** ****** *)
-
-(* end of [xats_lexing0_token.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_lexing0_token.dats] *)
+(***********************************************************************)
