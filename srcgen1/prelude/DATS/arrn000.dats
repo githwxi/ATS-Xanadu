@@ -94,7 +94,7 @@ val () = a0ref_set<(?a)>(A1, x0)
 < a:vt >
 a0ref_make_1val(x0) =
 a0ptr2ref
-(a0ptr_make0_1val<a>(x0))
+(a0ptr_make_1val<a>(x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -137,10 +137,10 @@ a1ref_make_list
 //
 #impltmp
 <a:vt>
-a1ref_make0_llist
+a1ref_make_llist
 ( xs ) =
 ( a1ptr2ref
-  (a1ptr_make0_llist<a>(xs)) )
+  (a1ptr_make_llist<a>(xs)) )
 //
 (* ****** ****** *)
 //
@@ -524,8 +524,8 @@ gseq_make_list
 //
 #impltmp
 {a:t0}{n:i0}
-gseq_make0_llist
-<a1ref(a,n)><a> = a1ref_make0_llist<a>
+gseq_make_llist
+<a1ref(a,n)><a> = a1ref_make_llist<a>
 //
 (* ****** ****** *)
 //

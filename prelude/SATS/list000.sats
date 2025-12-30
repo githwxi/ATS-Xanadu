@@ -368,18 +368,18 @@ Mon Dec 15 02:13:09 PM EST 2025
 //
 fun
 <a:t0>
-list_make0_lstrm
+list_make_lstrm
 (xs: strm_vt(a)): list(a)
 fun
 <a:t0>
-list_make0_lstrq
+list_make_lstrq
 {n:i0}
 (xs: strq_vt(a, n)): list(a, n)
 //
-#symload list with list_make0_lstrm of 1000
-#symload list with list_make0_lstrq of 1000
-#symload list_lstrm with list_make0_lstrm of 1000
-#symload list_lstrq with list_make0_lstrq of 1000
+#symload list with list_make_lstrm of 1000
+#symload list with list_make_lstrq of 1000
+#symload list_lstrm with list_make_lstrm of 1000
+#symload list_lstrq with list_make_lstrq of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

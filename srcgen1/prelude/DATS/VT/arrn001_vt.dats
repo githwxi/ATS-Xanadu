@@ -37,7 +37,7 @@ in(*local*)
 //
 #impltmp
 < a: vt >
-a1psz_make0_ptrsize
+a1psz_make_ptrsize
   (A0, n0) =
 (
 $UN.castlin01(A1PSZ(A0, n0)))

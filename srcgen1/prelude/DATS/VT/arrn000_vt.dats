@@ -127,12 +127,12 @@ a1ptr_make_listn(xs, n0) end
 //
 #impltmp
 < a: t0 >
-a1ptr_make0_llist
+a1ptr_make_llist
   {n}(xs) =
 let
 val n0 =
 length1(xs) in
-a1ptr_make0_llistn(xs, n0) end
+a1ptr_make_llistn(xs, n0) end
 //
 (* ****** ****** *)
 //
@@ -167,7 +167,7 @@ end // end of [a1ptr_make_listn]
 //
 #impltmp
 < a: vt >
-a1ptr_make0_llistn
+a1ptr_make_llistn
   {n}(xs, n0) =
 let
 val A0 =
@@ -192,7 +192,7 @@ end//let
 }
 in
   $UN.castlin10{a1ptr(a,n)}(A0)
-end // end of [a1ptr_make0_llistn]
+end // end of [a1ptr_make_llistn]
 //
 (* ****** ****** *)
 (*

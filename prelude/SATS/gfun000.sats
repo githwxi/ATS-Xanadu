@@ -119,11 +119,11 @@ nint_repeat$f0un
 //
 fun
 <x0:vt>
-f0un_enum$make0_strx_vt
+f0un_enum$make_strx_vt
   (xs: strx_vt(x0)): f0un( x0 )
 fun
 <x0:vt>
-f0un_enum$make0_strm_vt
+f0un_enum$make_strm_vt
   (xs: strm_vt(x0)): f0un(optn_vt(x0))
 //
 (* ****** ****** *)

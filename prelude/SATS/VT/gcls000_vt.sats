@@ -48,7 +48,7 @@ GSEQ_vwtp
 fun
 <xs:vt>
 <x0:vt>
-GLSEQ_make0(xs): GLSEQ(xs, x0)
+GLSEQ_make(xs): GLSEQ(xs, x0)
 *)
 fun
 <xs:vt>
@@ -65,13 +65,13 @@ GLSEQ_unmk1
 (* ****** ****** *)
 //
 fcast // fun
-GLSEQ_make0_list_vt
+GLSEQ_make_list_vt
 {a:vt}
-(xs:list_vt(a)): GLSEQ(list_vt(a),a)
+(xs:list_vt(a)): GLSEQ(list_vt(a), a)
 #symload
-GLSEQ with GLSEQ_make0_list_vt of 1000
+GLSEQ with GLSEQ_make_list_vt of 1000
 #symload
-GLSEQ_list_vt with GLSEQ_make0_list_vt of 1000
+GLSEQ_list_vt with GLSEQ_make_list_vt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

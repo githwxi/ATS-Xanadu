@@ -188,13 +188,13 @@ list_make_strm_vt(xs) =
 //
 #impltmp
 <a>(*tmp*)
-list_make0_lstrm(xs) =
+list_make_lstrm(xs) =
 list_vt2t
-(list_make0_lstrm_vt<a>(xs))
+(list_make_lstrm_vt<a>(xs))
 #impltmp
 <a>(*tmp*)
-list_make0_lstrm_vt(xs) =
-(list_vt_make0_lstrm<a>(xs))
+list_make_lstrm_vt(xs) =
+(list_vt_make_lstrm<a>(xs))
 //
 (* ****** ****** *)
 //
@@ -1324,8 +1324,8 @@ gseq_make_strm
 //
 #impltmp
 {a:t0}
-gseq_make0_lstrm
-<list(a)><a>(*xs*) = list_make0_lstrm<a>(*xs*)
+gseq_make_lstrm
+<list(a)><a>(*xs*) = list_make_lstrm<a>(*xs*)
 //
 (* ****** ****** *)
 //
@@ -1344,8 +1344,8 @@ gseq_rmake_strm
 (*
 #impltmp
 {a:t0}
-gseq_rmake0_lstrm
-<list(a)><a>(*xs*) = list_rmake0_lstrm<a>(*xs*)
+gseq_rmake_lstrm
+<list(a)><a>(*xs*) = list_rmake_lstrm<a>(*xs*)
 *)
 //
 (* ****** ****** *)

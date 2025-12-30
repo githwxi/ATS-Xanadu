@@ -49,7 +49,7 @@ a1psz_length1
 //
 fun
 <a:vt>
-a1psz_make0_ptrsize
+a1psz_make_ptrsize
 {n:int}
 (a1ptr(a, n), sint(n)): a1psz(a, n)
 //

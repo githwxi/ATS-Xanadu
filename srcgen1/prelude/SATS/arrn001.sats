@@ -83,7 +83,7 @@ a1rsz_make_list
 //
 fun
 <a:vt>
-a1rsz_make0_llist
+a1rsz_make_llist
 {n:i0}
 (xs: list_vt(a, n)): a1rsz(a, n)
 //

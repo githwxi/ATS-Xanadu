@@ -292,16 +292,16 @@ gseq_unrlist_vt(list_vt(x0)): (xs)
 fun
 <xs:vt>
 <x0:vt>
-gseq_make0_llist(list_vt(x0)): (xs)
+gseq_make_llist(list_vt(x0)): (xs)
 fun
 <xs:vt>
 <x0:vt>
-gseq_make0_lstrm(strm_vt(x0)): (xs)
+gseq_make_lstrm(strm_vt(x0)): (xs)
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_rmake0_llist(list_vt(x0)): (xs)
+gseq_rmake_llist(list_vt(x0)): (xs)
 //
 (* ****** ****** *)
 //

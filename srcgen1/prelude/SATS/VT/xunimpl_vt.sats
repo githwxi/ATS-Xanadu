@@ -391,12 +391,12 @@ imapstrq$fopr1
 fun
 <x0:vt>
 <ys:vt>
-g_make0_lstrm
+g_make_lstrm
 (xs: strm_vt(x0)): (ys)
 fun
 <x0:vt>
 <ys:vt>
-g_make0_lstrq
+g_make_lstrq
 (xs: strq_vt(x0)): (ys)
 //
 (* ****** ****** *)
@@ -404,7 +404,7 @@ g_make0_lstrq
 //
 fun
 <a:vt>
-strn_gmake0( x: ~a ): strn
+strn_gmake( x: ~a ): strn
 fun
 <a:vt>
 strn_gmake1( x: !a ): strn
@@ -414,7 +414,7 @@ strn_gmake1( x: !a ): strn
 //
 fun
 <a:vt>
-strn_vt_gmake0(x : ~a): strn_vt
+strn_vt_gmake(x : ~a): strn_vt
 fun
 <a:vt>
 strn_vt_gmake1(x : !a): strn_vt

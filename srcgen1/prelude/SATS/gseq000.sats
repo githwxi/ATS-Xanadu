@@ -476,7 +476,7 @@ It is in [gseq000_vt.sats]
 fun
 <xs:t0>
 <x0:t0>
-gseq_make0_llist(list_vt(x0)): (xs)
+gseq_make_llist(list_vt(x0)): (xs)
 *)
 //
 fun
@@ -489,7 +489,7 @@ It is in [gseq000_vt.sats]
 fun
 <xs:t0>
 <x0:t0>
-gseq_rmake0_llist(list_vt(x0)): (xs)
+gseq_rmake_llist(list_vt(x0)): (xs)
 *)
 //
 (* ****** ****** *)
@@ -515,7 +515,7 @@ It is in [gseq000_vt.sats]
 fun
 <xs:t0>
 <x0:t0>
-gseq_make0_lstrm(strm_vt(x0)): (xs)
+gseq_make_lstrm(strm_vt(x0)): (xs)
 *)
 //
 (* ****** ****** *)

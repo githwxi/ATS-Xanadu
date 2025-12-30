@@ -101,7 +101,7 @@ a2rf_vt(x0:vt) = [n1:i0;n2:i0] a2rf_vt(x0,n1,n2)
 //
 fun
 <a:vt>
-a0rf_make_1val(x1: a): a0rf(a)
+a0rf_make_1val(x0: a): a0rf(a)
 //
 #symload
 a0rf with a0rf_make_1val of 1000

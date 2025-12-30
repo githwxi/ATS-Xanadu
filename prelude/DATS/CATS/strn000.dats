@@ -148,15 +148,15 @@ Sat Apr 26 08:48:02 PM EDT 2025
 //
 #impltmp
 <env:vt>
-strn_fmake0_env$fwork
+strn_fmake_env$fwork
   (env, fwork) =
 (
-XATS000_strn_fmake0_env$fwork
+XATS000_strn_fmake_env$fwork
   (env, fwork)) where
 {
 #extern
 fun
-XATS000_strn_fmake0_env$fwork
+XATS000_strn_fmake_env$fwork
 ( env: env
 , fwork: (env, cgtz->void)->void): strn = $extnam()
 }

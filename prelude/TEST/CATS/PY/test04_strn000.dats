@@ -123,11 +123,11 @@ strn_make_nfun
 (26, lam(i) => 'a'+i)
 //
 val ab1 = listize(ab0)
-val ab1 = strn_make0_llist(ab1)
+val ab1 = strn_make_llist(ab1)
 val ( ) = printsln("ab1 = ", ab1)
 //
 val ab2 = strmize(ab0)
-val ab2 = strn_make0_lstrm(ab2)
+val ab2 = strn_make_lstrm(ab2)
 val ( ) = printsln("ab2 = ", ab2)
 //
 val ( ) =

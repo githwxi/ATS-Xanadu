@@ -92,18 +92,18 @@ Sat 14 Sep 2024 11:40:03 AM EDT
 //
 #impltmp
 < a: vt >
-list_vt_make0_1val
+list_vt_make_1val
   ( x1 ) =
 list_vt_cons(x1, list_vt_nil)
 #impltmp
 < a: vt >
-list_vt_make0_2val
+list_vt_make_2val
   (x1, x2) =
 list_vt_cons(x1,
 list_vt_cons(x2, list_vt_nil))
 #impltmp
 < a: vt >
-list_vt_make0_3val
+list_vt_make_3val
   (x1, x2, x3) =
 list_vt_cons(x1,
 list_vt_cons(x2,
@@ -620,12 +620,12 @@ Mon Dec 15 04:37:34 PM EST 2025
 //
 #impltmp
 < x0:vt >
-list_vt_make0_lstrm = strm_vt_listize0<x0>
-//endof[impltmp<x0:vt>(list_vt_make0_lstrm(xs))]
+list_vt_make_lstrm = strm_vt_listize0<x0>
+//endof[impltmp<x0:vt>(list_vt_make_lstrm(xs))]
 #impltmp
 < x0:vt >
-list_vt_make0_lstrq = strq_vt_listize0<x0>
-//endof[impltmp<x0:vt>(list_vt_make0_lstrq(xs))]
+list_vt_make_lstrq = strq_vt_listize0<x0>
+//endof[impltmp<x0:vt>(list_vt_make_lstrq(xs))]
 //
 (* ****** ****** *)
 (* ****** ****** *)

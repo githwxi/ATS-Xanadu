@@ -107,7 +107,7 @@ t1rsz_make_list
 //
 fun
 <a:vt>
-t1rsz_make0_llist
+t1rsz_make_llist
 {n:i0}
 (xs: list_vt(a, n)): t1rsz(a, n)
 //

@@ -105,7 +105,7 @@ val A0 =
 //
 #impltmp
 <a>(*tmp*)
-a1rsz_make0_llist
+a1rsz_make_llist
   (    xs    ) =
 (
  a1rsz_make_refsize<a>(A0, n0)
@@ -115,8 +115,8 @@ val n0 = length1(xs)
 val A0 =
 (
  a1ptr2ref
- (a1ptr_make0_llistn<a>(xs, n0)))
-}(*where*)//end-[a1rsz_make0_llist]
+ (a1ptr_make_llistn<a>(xs, n0)))
+}(*where*)//end-[a1rsz_make_llist]
 //
 (* ****** ****** *)
 (* ****** ****** *)

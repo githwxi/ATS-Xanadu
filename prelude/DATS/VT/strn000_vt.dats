@@ -43,8 +43,8 @@ strn_vt_gmake
 <list(cgtz)> = strn_vt_make_list<>
 //
 #impltmp
-strn_vt_gmake0
-<list_vt(cgtz)> = strn_vt_make0_llist<>
+strn_vt_gmake
+<list_vt(cgtz)> = strn_vt_make_llist<>
 #impltmp
 strn_vt_gmake1
 <list_vt(cgtz)> = strn_vt_make1_llist<>

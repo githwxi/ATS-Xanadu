@@ -927,7 +927,7 @@ irfoldall$fopr
 < ys:vt >
 < y0:vt >
 gseq_map_ares(xs) =
-g_make0_lstrm<y0><ys>
+g_make_lstrm<y0><ys>
 (
 gseq_map_lstrm<xs><x0><y0>(xs))
 //
@@ -935,7 +935,7 @@ gseq_map_lstrm<xs><x0><y0>(xs))
 < xs:t0 >
 < x0:t0 >
 gseq_map_self(xs) =
-g_make0_lstrm<x0><xs>
+g_make_lstrm<x0><xs>
 (
 gseq_map_lstrm<xs><x0><x0>(xs))
 //
@@ -1568,7 +1568,7 @@ irmap$fopr<x0><y0>(i0, x0) = fopr(i0, x0)
 < ys:vt >
 gseq_filter_ares
   ( xs ) =
-g_make0_lstrm<x0><ys>
+g_make_lstrm<x0><ys>
 (
 gseq_filter_lstrm<xs><x0>(xs))
 //
@@ -1577,7 +1577,7 @@ gseq_filter_lstrm<xs><x0>(xs))
 < x0:t0 >
 gseq_filter_self
   ( xs ) =
-g_make0_lstrm<x0><xs>
+g_make_lstrm<x0><xs>
 (
 gseq_filter_lstrm<xs><x0>(xs))
 //

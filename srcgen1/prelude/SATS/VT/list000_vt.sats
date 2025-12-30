@@ -159,15 +159,15 @@ list_vt_make_nfun
 (* ****** ****** *)
 fun
 <a:vt>
-list_vt_make0_1val
+list_vt_make_1val
 (x1: a): list_vt(a,1)
 fun
 <a:vt>
-list_vt_make0_2val
+list_vt_make_2val
 (x1: a, x2: a): list_vt(a,2)
 fun
 <a:vt>
-list_vt_make0_3val
+list_vt_make_3val
 (x1: a
 ,x2: a, x3: a): list_vt(a,3)
 //
@@ -175,19 +175,19 @@ list_vt_make0_3val
 //
 #symload
 list_vt_sing
-with list_vt_make0_1val//of 1000
+with list_vt_make_1val//of 1000
 #symload
 list_vt_1val
-with list_vt_make0_1val//of 1000
+with list_vt_make_1val//of 1000
 #symload
 list_vt_pair
-with list_vt_make0_2val//of 1000
+with list_vt_make_2val//of 1000
 #symload
 list_vt_2val
-with list_vt_make0_2val//of 1000
+with list_vt_make_2val//of 1000
 #symload
 list_vt_3val
-with list_vt_make0_3val//of 1000
+with list_vt_make_3val//of 1000
 //
 (* ****** ****** *)
 //
@@ -198,7 +198,7 @@ list_vt_make_strm
 //
 fun
 <a:vt>
-list_vt_make0_lstrm
+list_vt_make_lstrm
 ( xs : strm_vt(a) ): list_vt( a )
 //
 (* ****** ****** *)

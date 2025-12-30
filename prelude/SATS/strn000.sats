@@ -175,11 +175,8 @@ that the argument, which is
 the subject here, is polymorphic.
 *)
 fun
-<a:t0>
-strn_gmake(x: a): (strn)
-fun
 <a:vt>
-strn_gmake0(x: (~a)): (strn)
+strn_gmake(x: (~a)): (strn)
 fun
 <a:vt>
 strn_gmake1(x: (!a)): (strn)
@@ -284,31 +281,41 @@ strn with strn_make_list of 1000
 (* ****** ****** *)
 //
 fun<>
-strn_make0_llist
+strn_make_llist
 {n0:i0}
 (cs: ~list_vt(cgtz,n0)): strn(n0)
-fun<>
-strn_make1_llist
-{n0:i0}
-(cs: !list_vt(cgtz,n0)): strn(n0)
-//
 #symload
-strn with strn_make0_llist of 1000
+strn with strn_make_llist of 1000
 //
 (* ****** ****** *)
 //
 fun<>
-strn_make0_lstrm
+strn_make_lstrm
 (cs: ~strm_vt(cgtz)): strn(*sz*)
 fun<>
-strn_make0_lstrq
+strn_make_lstrq
 {n0:i0}
 (cs: ~strq_vt(cgtz,n0)): strn(n0)
 //
 #symload
-strn with strn_make0_lstrm of 1000
+strn with strn_make_lstrm of 1000
 #symload
-strn with strn_make0_lstrq of 1000
+strn with strn_make_lstrq of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-30:
+[make] is [make0...0]
+[make1] is [make1...0]
+In general, [make0] is skipped.
+*)
+fun<>
+strn_make1_llist
+{ln:i0}
+(
+cs: !list_vt(cgtz, ln)): strn( ln )
 //
 (* ****** ****** *)
 (* ****** ****** *)
