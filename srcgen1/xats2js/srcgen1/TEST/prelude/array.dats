@@ -81,7 +81,7 @@ a1ref_make_list(xs) where
 (* ****** ****** *)
 
 val B3 =
-a1ref_make0_llist(xs) where
+a1ref_make_llist(xs) where
 {
   val xs =
   list_vt_cons(1,

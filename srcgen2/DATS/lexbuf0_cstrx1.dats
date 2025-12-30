@@ -248,7 +248,7 @@ end // end of [lxbf1_take_clst(buf)]
 (* ****** ****** *)
 //
 #implfun
-lxbf1_make0_cstrx
+lxbf1_make_cstrx
 (   cs0   ) =
 (
   LXBF1(cs0, cs1, cs2)
@@ -256,7 +256,7 @@ lxbf1_make0_cstrx
 {
   val cs1 = list_vt_nil((*0*))
   val cs2 = list_vt_nil((*0*))
-} (*where*)//end of(lxbf1_make0_cstrx)
+} (*where*)//end of(lxbf1_make_cstrx)
 //
 (* ****** ****** *)
 
@@ -267,7 +267,7 @@ end (*local*) // end of [local]
 #implfun
 lxbf1_make_strn
 (   src   ) =
-lxbf1_make0_cstrx
+lxbf1_make_cstrx
 (
 strx_vt_map0
 (strn_strxize(src))) where
@@ -288,7 +288,7 @@ endlet // end of [map$fopr0]
 #implfun
 lxbf1_make_fpath
 (   fpx   ) =
-lxbf1_make0_cstrm(cs0) where
+lxbf1_make_cstrm(cs0) where
 {
   val cs0 =
   fpath_char$strmize<>(fpath(fpx))
@@ -297,10 +297,10 @@ lxbf1_make0_cstrm(cs0) where
 (* ****** ****** *)
 
 #implfun
-lxbf1_make0_cstrm
+lxbf1_make_cstrm
 (   cs0   ) =
 (
-lxbf1_make0_cstrx(fmain(cs0))
+lxbf1_make_cstrx(fmain(cs0))
 ) where
 {
 fun
@@ -321,7 +321,7 @@ strmcon_vt_nil
 strmcon_vt_cons
 (ch1, cs1) => strxcon_vt_cons(char_code(ch1), fmain(cs1))
 )
-} (*where*) // end-of(lxbf1_make0_cstrm(cs0))
+} (*where*) // end-of(lxbf1_make_cstrm(cs0))
 
 (* ****** ****** *)
 (* ****** ****** *)

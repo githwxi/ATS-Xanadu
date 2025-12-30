@@ -93,7 +93,7 @@ XATSOPT_a0ref_set
 #impltmp
 < a:vt >
 a0ref_make_1val(x0) =
-a0ptr2ref(a0ptr_make0_1val<a>(x0))
+a0ptr2ref(a0ptr_make_1val<a>(x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

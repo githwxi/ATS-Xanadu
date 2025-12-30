@@ -74,7 +74,7 @@ val txt = source
 val tks =
 atext_tokenize(txt)
 val buf =
-tokbuf_make0_llist(tks)
+tokbuf_make_llist(tks)
 //
 var err: sint = 0(*init*)
 //
@@ -102,7 +102,7 @@ val fpx = source
 val tks =
 fpath_tokenize(fpx)
 val buf =
-tokbuf_make0_llist(tks)
+tokbuf_make_llist(tks)
 //
 var err: sint = 0(*init*)
 //
