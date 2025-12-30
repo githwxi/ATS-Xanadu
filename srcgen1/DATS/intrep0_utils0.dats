@@ -361,5 +361,8 @@ h0typ_subst_tvarlst(h0t, htvs, tsub)
 } (* end of [h0typlst_subst_svarlst] *)
 //
 (* ****** ****** *)
-
-(* end of [xats_intrep0_util0.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_intrep0_utils0.dats] *)
+(***********************************************************************)
