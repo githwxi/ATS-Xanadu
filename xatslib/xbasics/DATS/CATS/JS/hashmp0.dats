@@ -150,11 +150,11 @@ jshmap with jshmap_make_list of 1000
 //
 #extern
 fun<>
-jshmap_make0_llist
+jshmap_make_llist
  {k:t0}{x:vt}
 ( kxs:list_vt@(k,x) ): jsm1(k,x)
 #symload
-jshmap with jshmap_make0_llist of 1000
+jshmap with jshmap_make_llist of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -428,7 +428,7 @@ end//let//end-of-[jshmap_make_list]
 //
 #impltmp
 <(*tmp*)>
-jshmap_make0_llist
+jshmap_make_llist
  {k:t0}{x:vt}(kxs) =
 let
 //
@@ -450,7 +450,7 @@ val (k, x) = kx in
 UN_jshmap_insert$raw(map, k, x)
 end//let//endof[forithm$work0(...)]
 }
-end//let//end-of-[jshmap_make0_llist]
+end//let//end-of-[jshmap_make_llist]
 //
 (* ****** ****** *)
 (* ****** ****** *)

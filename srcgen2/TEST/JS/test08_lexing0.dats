@@ -1,10 +1,12 @@
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../..\
 /HATS/xatsopt_sats.hats"
 #include
 "./../..\
 /HATS/xatsopt_dats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload
 "./../../SATS/locinfo.sats"
@@ -13,10 +15,12 @@
 #staload
 "./../../SATS/lexing0.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 //HX-2022-06-14:
 //For compiling excptcons
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 #include
 "./../../DATS/xbasics.dats"
@@ -74,7 +78,7 @@ end
 //
 (* ****** ****** *)
 
-val buf1 = lxbf1_make0_cstrx(csrc1)
+val buf1 = lxbf1_make_cstrx(csrc1)
 
 (* ****** ****** *)
 

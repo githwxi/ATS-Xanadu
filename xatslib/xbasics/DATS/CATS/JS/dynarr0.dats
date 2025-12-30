@@ -177,23 +177,23 @@ jsdasz_make_nfun
 //
 #extern
 fun<>
-jsdasz_make0_1val
+jsdasz_make_1val
  {a:vt}( x1: (a) ): jsa1(a)
 #extern
 fun<>
-jsdasz_make0_2val
+jsdasz_make_2val
  {a:vt}( x1:a, x2:a ): jsa1(a)
 #extern
 fun<>
-jsdasz_make0_3val
+jsdasz_make_3val
  {a:vt}( x1:a, x2:a, x3:a ): jsa1(a)
 //
 #symload
-jsdasz_1val with jsdasz_make0_1val of 1000
+jsdasz_1val with jsdasz_make_1val of 1000
 #symload
-jsdasz_2val with jsdasz_make0_2val of 1000
+jsdasz_2val with jsdasz_make_2val of 1000
 #symload
-jsdasz_3val with jsdasz_make0_3val of 1000
+jsdasz_3val with jsdasz_make_3val of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -220,19 +220,19 @@ jsdasz with jsdasz_fmake_fwork of 1000
 //
 #extern
 fun<>
-jsdasz_make0_lstrm
+jsdasz_make_lstrm
  {a:vt}
 (xs: ~strm_vt(a)):jsa1(a)
 #extern
 fun<>
-jsdasz_make0_lstrq
+jsdasz_make_lstrq
  {a:vt}
 (xs: ~strq_vt(a)):jsa1(a)
 //
 #symload
-jsdasz with jsdasz_make0_lstrm of 1000
+jsdasz with jsdasz_make_lstrm of 1000
 #symload
-jsdasz with jsdasz_make0_lstrq of 1000
+jsdasz with jsdasz_make_lstrq of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -366,30 +366,30 @@ jsdasz
 //
 #impltmp
 <(*tmp*)>
-jsdasz_make0_1val
+jsdasz_make_1val
   ( x1 ) =
 (
-XATS2JS_jsdasz_make0_1val
+XATS2JS_jsdasz_make_1val
   ( x1 )) where
 {
 #extern
 fun
-XATS2JS_jsdasz_make0_1val
+XATS2JS_jsdasz_make_1val
 {a:vt}
 (x1: (a)): jsa1(a) = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-jsdasz_make0_2val
+jsdasz_make_2val
   (x1, x2) =
 (
-XATS2JS_jsdasz_make0_2val
+XATS2JS_jsdasz_make_2val
   (x1, x2)) where
 {
 #extern
 fun
-XATS2JS_jsdasz_make0_2val
+XATS2JS_jsdasz_make_2val
  {a:vt}
 (x1: (a)
 ,x2: (a)): jsa1(a) = $extnam()
@@ -397,15 +397,15 @@ XATS2JS_jsdasz_make0_2val
 //
 #impltmp
 <(*tmp*)>
-jsdasz_make0_3val
+jsdasz_make_3val
   (x1, x2, x3) =
 (
-XATS2JS_jsdasz_make0_3val
+XATS2JS_jsdasz_make_3val
   (x1, x2, x3)) where
 {
 #extern
 fun
-XATS2JS_jsdasz_make0_3val
+XATS2JS_jsdasz_make_3val
  {a:vt}
 (x1: (a)
 ,x2: (a)
@@ -787,18 +787,20 @@ Thu 25 Jul 2024 03:08:18 PM EDT
 //
 #impltmp
 <(*tmp*)>
-jsdasz_make0_lstrm
+jsdasz_make_lstrm
   {a:vt}( xs ) =
 (
 jsdasz_fmake_fwork<>
-(lam(work) => xs.foritm0(work)))
+(
+lam(work) => xs.foritm0(work))
+)
 //
 #impltmp
 { x0:vt }
-g_make0_lstrm
+g_make_lstrm
 <x0><jsa1(x0)>(xs) =
 (
-  jsdasz_make0_lstrm<>{x0}(xs))
+  jsdasz_make_lstrm<>{x0}(xs))
 //
 (* ****** ****** *)
 //

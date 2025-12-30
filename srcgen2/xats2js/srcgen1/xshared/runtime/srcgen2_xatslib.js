@@ -97,19 +97,19 @@ XATS2JS_jsdasz_make_nfun
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsdasz_make0_1val
+XATS2JS_jsdasz_make_1val
   ( x1 )
 {
   return [x1]; // len = 1
 }
 function
-XATS2JS_jsdasz_make0_2val
+XATS2JS_jsdasz_make_2val
   ( x1, x2 )
 {
   return [x1, x2]; // len = 2
 }
 function
-XATS2JS_jsdasz_make0_3val
+XATS2JS_jsdasz_make_3val
   ( x1, x2, x3 )
 {
   return [x1, x2, x3]; // len = 3
