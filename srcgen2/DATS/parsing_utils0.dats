@@ -73,7 +73,7 @@ let
 val tks =
 atext_tokenize(inp)
 val buf =
-tokbuf_make0_llist(tks)
+tokbuf_make_llist(tks)
 //
 var err = 0(*init*)
 val res = pfn(buf, err)
@@ -101,7 +101,7 @@ let
 val tks =
 atext_tokenize(inp)
 val buf =
-tokbuf_make0_llist(tks)
+tokbuf_make_llist(tks)
 //
 var err = 0(*init*)
 val res = pfn(buf, err)
@@ -119,7 +119,7 @@ let
 val tks =
 fpath_tokenize(fpx)
 val buf =
-tokbuf_make0_llist(tks)
+tokbuf_make_llist(tks)
 //
 var err = 0(*init*)
 val res = pfn(buf, err)
@@ -140,7 +140,7 @@ let
 val tks =
 fpath_tokenize(fpx)
 val buf =
-tokbuf_make0_llist(tks)
+tokbuf_make_llist(tks)
 //
 var err = 0(*init*)
 val res = pfn(buf, err)

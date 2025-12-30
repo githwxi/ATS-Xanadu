@@ -119,14 +119,14 @@ a0ptr_alloc<a> = XATS2JS_a0ptr_alloc
 //
 #extern
 fun
-XATS2JS_a0ptr_make0_1val
+XATS2JS_a0ptr_make_1val
 {a:vt}
 (
 x0: a
 ) : a0ptr(a) = $extnam()
 #impltmp
 { a:vt }
-a0ptr_make0_1val<a> = XATS2JS_a0ptr_make0_1val
+a0ptr_make_1val<a> = XATS2JS_a0ptr_make_1val
 //
 (* ****** ****** *)
 (* ****** ****** *)

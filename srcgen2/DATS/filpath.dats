@@ -301,7 +301,7 @@ gseq_group_lstrm_llist
 group$test<cgtz>(ch) = (ch != DS) }
 //
 in//let
-strn_make0_llist
+strn_make_llist
 (fcats(fmain(nms, 0, list_vt_nil((*0*)))))
 end (*let*) // end-of-[fpath_normize( fpx )]
 
