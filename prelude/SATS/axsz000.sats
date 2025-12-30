@@ -121,22 +121,33 @@ arrsz with a1sz_make_ncpy//of 1000
 arrsz with a1sz_make_nfun//of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <a:vt>
-a1sz_make_lstrm
+a1sz_make0_llist
+ {n:i0}
+(xs: list_vt(a, n)): a1sz(a, n)
+#symload
+a1sz with a1sz_make0_llist//of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1sz_make0_lstrm
  {n:i0}
 (xs: strm_vt(a)): a1sz(a)
 fun
 <a:vt>
-a1sz_make_lstrq
+a1sz_make0_lstrq
  {n:i0}
 (xs:strq_vt(a, n)): a1sz(a, n)
 //
 #symload
-a1sz with a1sz_make_lstrm//of 1000
+a1sz with a1sz_make0_lstrm//of 1000
 #symload
-a1sz with a1sz_make_lstrq//of 1000
+a1sz with a1sz_make0_lstrq//of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
