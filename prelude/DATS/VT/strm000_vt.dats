@@ -167,22 +167,22 @@ gseq_print0
 //
 #impltmp
 < x0:vt >
-g_make0_lstrm
+g_make_lstrm
 <strm_vt(x0)>(xs) = (xs)//identity
 #impltmp
 < x0:vt >
-g_make0_lstrq
+g_make_lstrq
 <strq_vt(x0)>(xs) = (xs)//identity
 //
 (* ****** ****** *)
 //
 #impltmp
 { x0:vt }
-g_make0_lstrm
+g_make_lstrm
 <x0><list_vt(x0)> = strm_vt_listize0<x0>
 #impltmp
 { x0:vt }
-g_make0_lstrq
+g_make_lstrq
 <x0><list_vt(x0)> = strq_vt_listize0<x0>
 //
 (* ****** ****** *)

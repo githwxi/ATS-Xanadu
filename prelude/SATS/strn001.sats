@@ -187,7 +187,7 @@ strn_fmake_fwork
 //
 fun
 <env:vt>
-strn_fmake0_env$fwork
+strn_fmake_env$fwork
 ( env: env
 , fwork: (env, cgtz->void)->void): strn//HX:3rd-order!
 fun

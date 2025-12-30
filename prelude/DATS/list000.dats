@@ -663,17 +663,17 @@ Mon Dec 15 04:37:34 PM EST 2025
 //
 #impltmp
 < a:t0 >
-list_make0_lstrm(xs) =
+list_make_lstrm(xs) =
 (
-list_vt2t(list_vt_make0_lstrm<a>(xs)))
-//end-of-[impltmp<a:t0>(list_make0_lstrm(xs))]
+list_vt2t(list_vt_make_lstrm<a>(xs)))
+//end-of-[impltmp<a:t0>(list_make_lstrm(xs))]
 //
 #impltmp
 < a:t0 >
-list_make0_lstrq(xs) =
+list_make_lstrq(xs) =
 (
-list_vt2t(list_vt_make0_lstrq<a>(xs)))
-//end-of-[impltmp<a:t0>(list_make0_lstrq(xs))]
+list_vt2t(list_vt_make_lstrq<a>(xs)))
+//end-of-[impltmp<a:t0>(list_make_lstrq(xs))]
 //
 (* ****** ****** *)
 (* ****** ****** *)

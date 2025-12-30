@@ -121,15 +121,15 @@ tail1 with lsrt_vt_tail1 of 1000
 //
 fun
 <a:vt>
-lsrt_vt_make0_1val
+lsrt_vt_make_1val
 (x1: a): lsrt_vt(a,1)
 fun
 <a:vt>
-lsrt_vt_make0_2val
+lsrt_vt_make_2val
 (x1: a, x2: a): lsrt_vt(a,2)
 fun
 <a:vt>
-lsrt_vt_make0_3val
+lsrt_vt_make_3val
 (x1: a
 ,x2: a, x3: a): lsrt_vt(a,3)
 //
@@ -137,20 +137,20 @@ lsrt_vt_make0_3val
 //
 #symload
 lsrt_vt_sing
-with lsrt_vt_make0_1val//of 1000
+with lsrt_vt_make_1val//of 1000
 #symload
 lsrt_vt_pair
-with lsrt_vt_make0_2val//of 1000
+with lsrt_vt_make_2val//of 1000
 //
 #symload
 lsrt_vt_1val
-with lsrt_vt_make0_1val//of 1000
+with lsrt_vt_make_1val//of 1000
 #symload
 lsrt_vt_2val
-with lsrt_vt_make0_2val//of 1000
+with lsrt_vt_make_2val//of 1000
 #symload
 lsrt_vt_3val
-with lsrt_vt_make0_3val//of 1000
+with lsrt_vt_make_3val//of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

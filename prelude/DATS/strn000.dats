@@ -130,15 +130,12 @@ strn_gmake
 <list(cgtz)> = strn_make_list<>
 //
 #impltmp
-strn_gmake0
-<list_vt(cgtz)> = strn_make0_llist<>
-#impltmp
-strn_gmake1
-<list_vt(cgtz)> = strn_make1_llist<>
+strn_gmake
+<list_vt(cgtz)> = strn_make_llist<>
 //
 #impltmp
-strn_gmake0
-<strm_vt(cgtz)> = strn_make0_lstrm<>
+strn_gmake
+<strm_vt(cgtz)> = strn_make_lstrm<>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -320,7 +317,7 @@ lam(i1,c1) =>
 //
 #impltmp
 <(*tmp*)>
-strn_make0_llist
+strn_make_llist
   ( cs ) =
 let
 //
@@ -341,15 +338,44 @@ list_vt_cons(c1, cs) =>
 in//let
 //
 (
-strn_fmake0_env$fwork<env>(cs, fwork))
-end(*let*)//end-of-[strn_make0_llist(cs)]
+strn_fmake_env$fwork<env>(cs, fwork))
+end(*let*)//end-of-[strn_make_llist(cs)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-strn_make1_llist
+strn_make_lstrm
   ( cs ) =
+let
+//
+#vwtpdef
+env = strm_vt(cgtz)
+//
+fun fwork
+( cs: env
+, work: cgtz->void) =
+(
+case+ !cs of
+| ~
+strmcon_vt_nil() => ()
+| ~
+strmcon_vt_cons(c1, cs) =>
+(work(c1); fwork(cs, work)))
+//
+in//let
+//
+(
+strn_fmake_env$fwork<env>(cs, fwork))
+end(*let*)//end-of-[strn_make_lstrm(cs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_make1_llist
+  (  cs  ) =
 let
 //
 #vwtpdef
@@ -371,34 +397,6 @@ in//let
 (
 strn_fmake1_env$fwork<env>(cs, fwork))
 end(*let*)//end-of-[strn_make1_llist(cs)]
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-strn_make0_lstrm
-  ( cs ) =
-let
-//
-#vwtpdef
-env = strm_vt(cgtz)
-//
-fun fwork
-( cs: env
-, work: cgtz->void) =
-(
-case+ !cs of
-| ~
-strmcon_vt_nil() => ()
-| ~
-strmcon_vt_cons(c1, cs) =>
-(work(c1); fwork(cs, work)))
-//
-in//let
-//
-(
-strn_fmake0_env$fwork<env>(cs, fwork))
-end(*let*)//end-of-[strn_make0_lstrm(cs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

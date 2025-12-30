@@ -201,14 +201,14 @@ end (* end of [list_vt_make_ncpy] *)
 //
 #impltmp
 <a>(*tmp*)
-list_vt_make0_1val
+list_vt_make_1val
   (   x0   ) =
 (
 list_vt_cons(x0, list_vt_nil(*0*)))
 //
 #impltmp
 <a>(*tmp*)
-list_vt_make0_2val
+list_vt_make_2val
   (  x1, x2  ) =
 (
 list_vt_cons(x1,
@@ -216,7 +216,7 @@ list_vt_cons(x2, list_vt_nil(*0*))))
 //
 #impltmp
 <a>(*tmp*)
-list_vt_make0_3val
+list_vt_make_3val
   (x1, x2, x3) =
 (
 list_vt_cons(x1,
@@ -230,7 +230,7 @@ list_vt_cons(x3, list_vt_nil(*void*)))))
 list_vt_make_strm = strm_listize<a>
 #impltmp
 <a>(*tmp*)
-list_vt_make0_lstrm = strm_vt_listize0<a>
+list_vt_make_lstrm = strm_vt_listize0<a>
 
 (* ****** ****** *)
 //
@@ -1156,13 +1156,13 @@ gseq_make_strm
 //
 #impltmp
 {a:vt}
-gseq_make0_llist
+gseq_make_llist
 <list_vt(a)><a>(xs) = xs // identity
 //
 #impltmp
 {a:vt}
-gseq_make0_lstrm
-<list_vt(a)><a> = list_vt_make0_lstrm<a>
+gseq_make_lstrm
+<list_vt(a)><a> = list_vt_make_lstrm<a>
 //
 (* ****** ****** *)
 //
@@ -1175,7 +1175,7 @@ gseq_rmake_list
 //
 #impltmp
 {a:vt}
-gseq_rmake0_llist
+gseq_rmake_llist
 <list_vt(a)><a> = list_vt_reverse0<a>
 //
 (* ****** ****** *)

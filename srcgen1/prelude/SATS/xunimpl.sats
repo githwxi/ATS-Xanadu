@@ -1457,7 +1457,7 @@ f0un_repeat$nint
 //
 fun
 <x0:vt>
-f0un_enum$make0_strx_vt
+f0un_enum$make_strx_vt
   (xs: strx_vt( x0 )): f0un( x0 )
 //
 fun
@@ -1671,7 +1671,7 @@ gseq_fmake_fwork(fwork: ((x0)->void)->void): xs
 //
 fun
 <env:vt>
-strn_fmake0_env$fwork
+strn_fmake_env$fwork
 ( env: env
 , fwork: (env, cgtz->void)->void): strn//HX:3rd-order!
 fun

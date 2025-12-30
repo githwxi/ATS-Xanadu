@@ -64,13 +64,10 @@ the subject, is polymorphic.
 *)
 fun
 <a:t0>
-strn_vt_gmake(x: a): strn_vt
+strn_vt_gmake(x: (~a)): strn_vt
 fun
 <a:vt>
-strn_vt_gmake0(x: ~a): strn_vt
-fun
-<a:vt>
-strn_vt_gmake1(x: !a): strn_vt
+strn_vt_gmake1(x: (!a)): strn_vt
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -78,15 +75,33 @@ strn_vt_gmake1(x: !a): strn_vt
 fun<>
 strn_vt_make_list
 {n0:i0}
-(cs: list(cgtz, n0)): strn_vt(n0)
+(cs: list(cgtz,n0)): strn_vt(n0)
+//
 fun<>
-strn_vt_make0_llist
+strn_vt_make_llist
 {n0:i0}
-(cs: ~list_vt(cgtz, n0)): strn_vt(n0)
+( cs
+: ~list_vt(cgtz,n0)): strn_vt(n0)
+//
+fun<>
+strn_vt_make_lstrm
+{n0:i0}
+(
+cs: ~strm_vt(cgtz)): strn_vt(*sz*)
+fun<>
+strn_vt_make_lstrq
+{n0:i0}
+(
+cs: ~strq_vt(cgtz,n0)): strn_vt(n0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun<>
 strn_vt_make1_llist
 {n0:i0}
-(cs: !list_vt(cgtz, n0)): strn_vt(n0)
+(
+cs: !list_vt(cgtz, n0)): strn_vt(n0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

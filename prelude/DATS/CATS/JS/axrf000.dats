@@ -95,15 +95,15 @@ XATS2JS_a0rf_lset
 #impltmp
 < a: vt >
 a0rf_make_1val
-  ( x1 ) =
+  ( x0 ) =
 (
 XATS2JS_a0rf_make_1val
-  ( x1 )) where
+  ( x0 )) where
 {
 #extern
 fun
 XATS2JS_a0rf_make_1val
-{a:vt}( x1: a ): a0rf(a) = $extnam()
+{a:vt}( x0: a ): a0rf(a) = $extnam()
 }
 //
 (* ****** ****** *)

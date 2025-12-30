@@ -2002,7 +2002,7 @@ gseq_strmize0
 //
 #impltmp
 {x0:vt}
-gseq_make0_lstrm
+gseq_make_lstrm
 <list_vt(x0)><x0> = strm_vt_listize0<x0>
 //
 (* ****** ****** *)

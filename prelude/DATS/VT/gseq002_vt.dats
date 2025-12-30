@@ -414,7 +414,7 @@ Wed 24 Jul 2024 07:03:35 PM EDT
 < z0:vt >
 gseq_z2map0_ares
   (xs, ys) =
-g_make0_lstrm<z0><zs>
+g_make_lstrm<z0><zs>
 (
 gseq_z2map0_lstrm<xs><x0><ys><y0><z0>(xs, ys))
 //
@@ -425,7 +425,7 @@ gseq_z2map0_lstrm<xs><x0><ys><y0><z0>(xs, ys))
 < y0:vt >
 gseq_z2map0_self
   (xs, ys) =
-g_make0_lstrm<x0><xs>
+g_make_lstrm<x0><xs>
 (
 gseq_z2map0_lstrm<xs><x0><ys><y0><x0>(xs, ys))
 //

@@ -92,10 +92,10 @@ a0ptr_clear1
 //
 fun
 <a:vt>
-a0ptr_make0_1val(a): a0ptr(a)
+a0ptr_make_1val(a): a0ptr(a)
 //
 #symload
-a0ptr with a0ptr_make0_1val of 1000
+a0ptr with a0ptr_make_1val of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -243,10 +243,10 @@ a1ptr_make_list
 //
 fun
 <a:vt>
-a1ptr_make0_llist
+a1ptr_make_llist
 {n:i0}(xs: list_vt(a,n)): a1ptr(a, n)
 //
-#symload a1ptr with a1ptr_make0_llist of 1000
+#symload a1ptr with a1ptr_make_llist of 1000
 //
 (* ****** ****** *)
 //
@@ -260,11 +260,11 @@ a1ptr_make_listn
 //
 fun
 <a:vt>
-a1ptr_make0_llistn
+a1ptr_make_llistn
 {n:i0}
 (xs: list_vt(a,n), sint(n)): a1ptr(a, n)
 //
-#symload a1ptr with a1ptr_make0_llistn of 1000
+#symload a1ptr with a1ptr_make_llistn of 1000
 //
 (* ****** ****** *)
 //

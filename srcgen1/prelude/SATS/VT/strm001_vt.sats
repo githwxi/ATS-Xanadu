@@ -119,7 +119,7 @@ strq_vt_make_list
 //
 fun
 <a:t0>
-strq_vt_make0_llist
+strq_vt_make_llist
 {n:int}
 (xs: list_vt(a,n)): strq(a,n)
 //

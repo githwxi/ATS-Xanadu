@@ -100,15 +100,15 @@ list_vt_tail1
 //
 fun
 <a:vt>
-list_vt_make0_1val
+list_vt_make_1val
 (x1: a): list_vt(a,1)
 fun
 <a:vt>
-list_vt_make0_2val
+list_vt_make_2val
 (x1: a, x2: a): list_vt(a,2)
 fun
 <a:vt>
-list_vt_make0_3val
+list_vt_make_3val
 (x1: a
 ,x2: a, x3: a): list_vt(a,3)
 //
@@ -116,20 +116,20 @@ list_vt_make0_3val
 //
 #symload
 list_vt_sing
-with list_vt_make0_1val//of 1000
+with list_vt_make_1val//of 1000
 #symload
 list_vt_pair
-with list_vt_make0_2val//of 1000
+with list_vt_make_2val//of 1000
 //
 #symload
 list_vt_1val
-with list_vt_make0_1val//of 1000
+with list_vt_make_1val//of 1000
 #symload
 list_vt_2val
-with list_vt_make0_2val//of 1000
+with list_vt_make_2val//of 1000
 #symload
 list_vt_3val
-with list_vt_make0_3val//of 1000
+with list_vt_make_3val//of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -287,10 +287,10 @@ rappend10 with list_vt_rappend10 of 1000
 (* ****** ****** *)
 //
 fcast // fun
-GLSEQ_make0_list_vt
+GLSEQ_make_list_vt
 {a:vt}
 (xs: list_vt(a)): GLSEQ(list_vt(a), a)
-#symload GLSEQ with GLSEQ_make0_list_vt of 1000
+#symload GLSEQ with GLSEQ_make_list_vt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -317,18 +317,18 @@ Mon Dec 15 09:27:02 PM EST 2025
 //
 fun
 <x0:vt>
-list_vt_make0_lstrm
+list_vt_make_lstrm
 (xs: strm_vt(x0)): list_vt(x0)
 fun
 <x0:vt>
-list_vt_make0_lstrq
+list_vt_make_lstrq
 {n0:i0}
 (xs: strq_vt(x0,n0)): list_vt(x0,n0)
 //
 #symload
-list_vt_make0 with list_vt_make0_lstrm
+list_vt_make with list_vt_make_lstrm
 #symload
-list_vt_make0 with list_vt_make0_lstrq
+list_vt_make with list_vt_make_lstrq
 //
 (* ****** ****** *)
 (* ****** ****** *)

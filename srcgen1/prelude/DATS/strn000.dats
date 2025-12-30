@@ -225,7 +225,7 @@ list_vt_append0<cgtz>
 , strn_listize<>(ys))
 //
 in//let
-  strn_vt_make0_llist<>(zs)
+  strn_vt_make_llist<>(zs)
 end // end of [strn_append_vt]
 //
 (* ****** ****** *)
@@ -575,11 +575,11 @@ strn_vt2t
 (strn_vt_make_list<>(cs)))
 //
 #impltmp<>
-strn_make0_llist
+strn_make_llist
   (cs) =
 (
 strn_vt2t
-(strn_vt_make0_llist<>(cs)))
+(strn_vt_make_llist<>(cs)))
 //
 (* ****** ****** *)
 //
@@ -591,11 +591,11 @@ strn_vt2t
 (strn_vt_make_strm<>(cs)))
 //
 #impltmp<>
-strn_make0_lstrm
+strn_make_lstrm
   (cs) =
 (
 strn_vt2t
-(strn_vt_make0_lstrm<>(cs)))
+(strn_vt_make_lstrm<>(cs)))
 //
 (* ****** ****** *)
 //
@@ -839,11 +839,11 @@ gseq_make_strm<xs><x0> = strn_make_strm<>
 (* ****** ****** *)
 //
 #impltmp
-gseq_make0_llist
-<xs><x0>(*cs*) = strn_make0_llist<>(*cs*)
+gseq_make_llist
+<xs><x0>(*cs*) = strn_make_llist<>(*cs*)
 #impltmp
-gseq_make0_lstrm
-<xs><x0>(*cs*) = strn_make0_lstrm<>(*cs*)
+gseq_make_lstrm
+<xs><x0>(*cs*) = strn_make_lstrm<>(*cs*)
 //
 (* ****** ****** *)
 //
