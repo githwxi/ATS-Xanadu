@@ -62,6 +62,7 @@ list_consq
 //
 #symload
 nilq with list_nilq of 1000
+#symload
 consq with list_consq of 1000
 //
 (* ****** ****** *)
