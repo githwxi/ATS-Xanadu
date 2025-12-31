@@ -2736,5 +2736,8 @@ list_map$fopr<d1atype><s2cst>(d1t) = trans12_datype(s2t, d1t)
 } (* trans12_datypelst *)
 
 (* ****** ****** *)
-
-(* end of [xats_trans12_staexp.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_trans12_staexp.dats] *)
+(***********************************************************************)

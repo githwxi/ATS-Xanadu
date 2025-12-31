@@ -694,9 +694,11 @@ end // end of [local]
 //
 (* ****** ****** *)
 
-#include
-"./CONTRIB/tread23_dynexp.dats"
+#include "./CONTRIB/tread23_dynexp.dats"
 
 (* ****** ****** *)
-
-(* end of [xats_tread23_dynexp.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_tread23_dynexp.dats] *)
+(***********************************************************************)

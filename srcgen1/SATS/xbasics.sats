@@ -329,5 +329,8 @@ xats_string_append
 overload + with xats_string_append of 100
 //
 (* ****** ****** *)
-
-(* end of [xats_xbasics.sats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_SATS_xbasics.sats] *)
+(***********************************************************************)

@@ -7759,5 +7759,8 @@ list_map$fopr<ti1arg><ti2arg>(tia) = trans12_tiarg(tia)
 } (* end of [trans12_tiarglst] *)
 //
 (* ****** ****** *)
-
-(* end of [xats_trans12_dynexp.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_trans12_dynexp.dats] *)
+(***********************************************************************)

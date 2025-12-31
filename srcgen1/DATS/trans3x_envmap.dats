@@ -575,5 +575,8 @@ end (* end of [tr3xenv_dvar_kind] *)
 end (*local*) // end of [local]
 
 (* ****** ****** *)
-
-(* end of [xats_trans3x_envmap.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_trans3x_envmap.dats] *)
+(***********************************************************************)

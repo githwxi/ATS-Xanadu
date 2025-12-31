@@ -1384,5 +1384,8 @@ list_foritm$work<d0atcon><env>(d0c, env) = synread_d0atcon(d0c)
 } (* end of [synread_d0atconlst] *)
 //
 (* ****** ****** *)
-
-(* end of [xats_synread_staexp.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_synread_staexp.dats] *)
+(***********************************************************************)

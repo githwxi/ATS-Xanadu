@@ -2659,5 +2659,8 @@ the_sortenv_padd($SYM.VTYPE_symbol, s2tx_vtflt)
 end // end of [local]
 
 (* ****** ****** *)
-
-(* end of [xats_trans12_envmap.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_trans12_envmap.dats] *)
+(***********************************************************************)
