@@ -608,6 +608,8 @@ s2e0.node() of
 |S2Etop0 _ => f0_top0(s2e0, err)
 |S2Etop1 _ => f0_top1(s2e0, err)
 //
+|S2Ecsts _ => f0_csts(s2e0, err)
+//
 |S2Earg1 _ => f0_arg1(s2e0, err)
 |S2Eatx2 _ => f0_atx2(s2e0, err)
 //
@@ -639,7 +641,6 @@ endlet // end of [ _(* otherwise *) ]
 {
 //
 (* ****** ****** *)
-//
 //
 fun
 f0_cst
@@ -742,6 +743,40 @@ let
 val s2t = s2e.sort() in
   s2exp_top1_errck(s2t, s2e1) end
 end (*let*) // end of [ f0_top1(s2e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_csts
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Ecsts(s2cs) = s2e.node()
+//
+val
+s2t =
+(
+case+ s2cs of
+|list_nil() => s2e.sort()
+|list_cons
+(s2c1, s2cs) => s2c1.sort())
+//
+val
+s2t = tread12_sort2(s2t, err)
+//
+in//let
+if // if
+(e00 = err)
+then (s2e) else
+let
+val lvl = errvl(s2t) in//let
+  s2exp(s2t, S2Eerrck(lvl, s2e))
+end // end-of-else // end-of-[if]
+end (*let*) // end of [ f0_csts(s2e,err) ]
 //
 (* ****** ****** *)
 //

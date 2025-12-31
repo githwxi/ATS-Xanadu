@@ -170,14 +170,14 @@ GSEQ_make_nint1
 #symload GSEQ_nint1 with GSEQ_make_nint1 of 1000
 //
 fcast // fun
-GASZ_make_nint0
-(xs: nint): GASZ(nint, unit)
+GASQ_make_nint0
+(xs: nint): GASQ(nint, unit)
 fcast // fun
-GASZ_make_nint1
-(xs: nint): GASZ(nint, nint)
-#symload GASZ with GASZ_make_nint1 of 1000
-#symload GASZ_nint0 with GASZ_make_nint0 of 1000
-#symload GASZ_nint1 with GASZ_make_nint1 of 1000
+GASQ_make_nint1
+(xs: nint): GASQ(nint, nint)
+#symload GASQ with GASQ_make_nint1 of 1000
+#symload GASQ_nint0 with GASQ_make_nint0 of 1000
+#symload GASQ_nint1 with GASQ_make_nint1 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
