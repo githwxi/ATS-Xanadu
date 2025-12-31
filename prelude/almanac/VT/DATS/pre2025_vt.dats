@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,106 +30,77 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 21 Jul 2024 02:16:49 PM EDT
+Wed Dec 31 12:25:51 PM EST 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
+//
+(*
+HX-2025-12-31:
+Wed Dec 31 11:38:57 AM EST 2025
+*)
 //
 fun
-<xs:t0>
 <x0:vt>
-gasq_length(xs: xs): nint
+segment$delim1(x0: !x0): bool
 //
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gasq_get$at
-(xs: xs,i0: ni): (x0)
-fun
-<xs:t0>
-<x0:t0>
-gasq_set$at
-(xs: xs, i0: ni, x0: x0): void
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
 HX-2025-12-31:
-The 'l' here means 'linear'
-Wed Dec 31 11:21:54 AM EST 2025
+Wed Dec 31 11:38:57 AM EST 2025
 *)
 //
-fun
-<xs:t0>
-<x0:vt>
-gasq_lget$at
-(xs: xs
-,i0: ni): (owed(x0) | x0)
-fun
-<xs:t0>
-<x0:vt>
-gasq_lset$at
-(pf: owed(x0)
-|xs: xs, i0: ni, x0: x0): void
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_segmentize0_lstrm$llist
+  (  xs  ) =
+let
 //
-(* ****** ****** *)
-(* ****** ****** *)
+#vwtpdef rs = list_vt(x0)
 //
-(*
-HX-2025-12-31:
-The 'c' in 'cget' means 'copy'
-The 'f' in 'setf' means 'free'
-For reference, the 'f' in 'fset'
-means 'functional'.
-Wed Dec 31 11:21:54 AM EST 2025
-*)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasq_cget$at
-(xs: xs, i0: ni): (x0)
-fun
-<xs:t0>
-<x0:vt>
-gasq_setf$at
-(xs: xs, i0: ni, x0: x0): void
+#impltmp
+map$fopr0<rs><rs> = list_vt_reverse0<x0>
+in//let
+strm_vt_map0<rs>(
+gseq_segmentize0_lstrm$rllist<xs><x0>(xs))
+end//let//end(gseq_segmentize0_lstrm$llist<xs><x0>)
 //
 (* ****** ****** *)
 //
-(*
-HX-2024-09-20:
-nil() is returned
-if [i0] is out of bounds
-*)
-fun
-<xs:t0>
+#impltmp
+<xs:vt>
 <x0:vt>
-gasq_cget$at$opt
-(xs: xs, i0: ni): optn_vt(x0)
-(*
-HX-2024-09-20:
-cons(x0) is returned
-if [i0] is out of bounds
-*)
-fun
-<xs:t0>
+gseq_segmentize0$f1un_lstrm$llist
+  (xs, test) =
+let
+#impltmp
+segmentize$test1<x0> = test(*x0*)
+in//let
+(
+  gseq_segmentize0_lstrm$llist<xs><x0>(xs))
+end//let//end(gseq_segmentize0$f1un_lstrm$llist<xs><x0>)
+//
+#impltmp
+<xs:vt>
 <x0:vt>
-gasq_setf$at$opt
-(xs: xs, i0: ni, x0: x0): optn_vt(x0)
+gseq_segmentize0$f1un_lstrm$rllist
+  (xs, test) =
+let
+#impltmp
+segmentize$test1<x0> = test(*x0*)
+in//let
+(
+  gseq_segmentize0_lstrm$rllist<xs><x0>(xs))
+end//let//end(gseq_segmentize0$f1un_lstrm$rllist<xs><x0>)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_gasq000.sats] *)
+(* end of [ATS3/XANADU_prelude_almanac_SATS_VT_pre2025.sats] *)
 (***********************************************************************)
