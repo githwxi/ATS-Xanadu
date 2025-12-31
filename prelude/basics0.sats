@@ -1364,7 +1364,7 @@ streaq_vt
 (* ****** ****** *)(* ****** ****** *)
 //
 #sexpdef
-strq(*a:vt,n:i0*) = streaq(*(a, n)*)
+strq(*a:t0,n:i0*) = streaq(*(a, n)*)
 //
 #sexpdef
 lstrq(*a:vt,n:i0*) = streaq_vt(*(a, n)*)
@@ -1372,10 +1372,17 @@ lstrq(*a:vt,n:i0*) = streaq_vt(*(a, n)*)
 strq_vt(*a:vt,n:i0*) = streaq_vt(*(a, n)*)
 //
 (* ****** ****** *)(* ****** ****** *)
+//
 #typedef
 strq(a:t0) = [n:i0] strq(a, n)
+#typedef
+strqcon(a:t0) = [n:i0] strqcon(a, n)
+//
 #vwtpdef
 strq_vt(a:vt) = [n:i0] strq_vt(a, n)
+#vwtpdef
+strqcon_vt(a:vt) = [n:i0] strqcon_vt(a, n)
+//
 (* ****** ****** *)(* ****** ****** *)
 //
 #vwtpdef
