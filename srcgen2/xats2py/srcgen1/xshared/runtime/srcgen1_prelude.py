@@ -1,4 +1,4 @@
-## Sat May 10 11:42:40 AM EDT 2025
+## Tue Dec 30 10:29:20 PM EST 2025
 ################################################################
 ################################################################
 ##
@@ -503,7 +503,7 @@ def XATS2PY_a0ref_set(A0, x0):
   A0[0] = x0; return ## endof(a0ref_set)
 ##
 def XATS2PY_a0ptr_alloc(): return [None]
-def XATS2PY_a0ptr_make0_1val(x0): return [x0]
+def XATS2PY_a0ptr_make_1val(x0): return [x0]
 ##
 ##################################################################.
 ##
