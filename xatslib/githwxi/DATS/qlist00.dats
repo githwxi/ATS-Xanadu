@@ -234,15 +234,13 @@ val+
 QLIST(f1, r2) = xs
 in//let
 case+ f1 of
-|
-list_nil() =>
+|list_nil() =>
 (
 @(r2.0, r2.1)) where
 {
   val r2 = list_reverse<a>(r2)
 }(*where*)//end-of-[list_nil()]
-|
-list_cons(x1, f1) => (x1, QLIST(f1, r2))
+|list_cons(x1, f1) => (x1, QLIST(f1, r2))
 end//let//end-of-[UN_qlist_uncons_raw(xs)]
 //
 (* ****** ****** *)

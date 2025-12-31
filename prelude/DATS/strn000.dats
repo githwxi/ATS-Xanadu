@@ -196,6 +196,41 @@ end//let//end($UN.gasq_lget$at$raw<strn><cgtz>)
 //
 #impltmp
 <(*tmp*)>
+strn_lower
+(   cs   ) =
+let
+val ln =
+strn_length<>(cs)
+in//let
+strn_make_nfun<>(
+ln,
+lam(i0) =>
+char_lower(
+$UN.strn_get$at$raw<>(cs,i0)))
+end//end-of-[strn_lower(cs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_upper
+(   cs   ) =
+let
+val ln =
+strn_length<>(cs)
+in//let
+strn_make_nfun<>(
+ln,
+lam(i0) =>
+char_upper(
+$UN.strn_get$at$raw<>(cs,i0)))
+end//end-of-[strn_upper(cs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 strn_slice
 (cs, i0, j0) =
 (

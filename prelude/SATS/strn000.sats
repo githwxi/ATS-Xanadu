@@ -176,10 +176,25 @@ the subject here, is polymorphic.
 *)
 fun
 <a:vt>
-strn_gmake(x: (~a)): (strn)
+strn_gmake(x: (~a)): strn
 fun
 <a:vt>
-strn_gmake1(x: (!a)): (strn)
+strn_gmake1(x: (!a)): strn
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_lower
+{ln:i0}(strn(ln)): strn(ln)
+fun<>
+strn_upper
+{ln:i0}(strn(ln)): strn(ln)
+//
+#symload
+lower with strn_lower of 1000
+#symload
+upper with strn_upper of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
