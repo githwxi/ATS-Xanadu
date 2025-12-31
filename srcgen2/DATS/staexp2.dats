@@ -541,18 +541,19 @@ s2exp_csts(s2cs) =
 case+ s2cs of
 |
 list_nil() =>
-s2exp
-(S2Tnone0(), S2Ecsts(s2cs))
+(
+s2exp(
+S2Tnone0(), S2Ecsts(s2cs)))
 |
-list_cons(s2c1, scs1) =>
+list_cons
+(s2c1, scs1) =>
 (
 case+ scs1 of
-|
-list_nil() => s2exp_cst(s2c1)
-|
-list_cons _ =>
-s2exp(S2Tnone0(), S2Ecsts(s2cs)))
-) (*case+*) // end of [s2exp_csts(s2cs)]
+|list_nil() => s2exp_cst(s2c1)
+|list_cons _ =>
+(
+s2exp(s2c1.sort(), S2Ecsts(s2cs))))
+)(*case+*)//end-of-[s2exp_csts(s2cs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -563,10 +564,10 @@ s2exp_impr
 let
 val
 s2t0 = the_sort2_type
-in
-s2exp
-(s2t0, S2Eimpr(loc0, s2e0))
-end (*let*)//end-of-[s2exp_impr]
+in//let
+(
+s2exp(s2t0, S2Eimpr(loc0, s2e0)))
+end(*let*)//end-of-[s2exp_impr(...)]
 //
 (* ****** ****** *)
 //
@@ -576,10 +577,10 @@ s2exp_prgm
 let
 val
 s2t0 = the_sort2_type
-in
-s2exp
-(s2t0, S2Eprgm(loc0, s2e0))
-end (*let*)//end-of-[s2exp_prgm]
+in//let
+(
+s2exp(s2t0, S2Eprgm(loc0, s2e0)))
+end(*let*)//end-of-[s2exp_prgm(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -758,7 +759,9 @@ s2exp_make_node
 //
 end (*let*) // end of [s2exp_apps(...)]
 //
-end (*loca*) // end of [local(s2exp_apps)]
+(* ****** ****** *)
+//
+end (*local*) // end of [local(s2exp_apps)]
 //
 (* ****** ****** *)
 //

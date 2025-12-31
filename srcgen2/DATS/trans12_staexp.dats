@@ -681,8 +681,10 @@ val
 opt0 = s2cst_select$any(s2cs)
 in//let
 case+ opt0 of
-| ~optn_vt_nil() => s2exp_none1(s1e0)
-| ~optn_vt_cons(s2c0) => s2exp_cst(s2c0)
+| ~
+optn_vt_nil() => s2exp_none1(s1e0)
+| ~
+optn_vt_cons(s2c0) => s2exp_cst(s2c0)
 end (*let*) // end of [f0_id0_cst(env0,...)]
 //
 (* ****** ****** *)
@@ -695,7 +697,7 @@ f0_b1sh
 (
 trans12_s1exp(env0, s1e1)) where
 {
-  val-S1Eb1sh(s1e1) = s1e0.node()
+  val-S1Eb1sh(s1e1) = s1e0.node((*0*))
 } (*where*) // end of [f0_b1sh(env0, s1e0)]
 //
 (* ****** ****** *)
@@ -724,7 +726,8 @@ val-
 S1El1st(s1es) = s1e0.node()
 //
 in
-if
+//
+if // if
 list_singq(s1es)
 then
 let
@@ -736,8 +739,8 @@ end (*let*) // end of [then]
 else
 (
 s2exp_l1st
-(loc0, trans12_s1explst(env0, s1es))
-)
+(loc0, trans12_s1explst(env0, s1es)))
+//
 end (*let*) // end of [f0_l1st(env0, s1e0)]
 //
 (* ****** ****** *)
