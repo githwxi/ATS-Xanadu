@@ -77,10 +77,10 @@ list_fmake_fwork<strn>
 lam(work) =>
 gseq_iforitm
 (
-GASZ(wrd0),
+GASQ(wrd0),
 lam(i, ci) =>
 gseq_foritm(
-GASZ(26),
+GASQ(26),
 lam(j) =>
 let
   val cj = 'a'+j
@@ -103,7 +103,7 @@ lam(work) =>
 GSEQ(wrd0).iforitm
 (
 lam(i, ci) =>
-gseq_foritm(GASZ(26),
+gseq_foritm(GASQ(26),
 lam(j) =>
 let
   val cj = 'a'+j

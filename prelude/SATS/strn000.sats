@@ -367,10 +367,10 @@ GSEQ_make_strn
 #symload GSEQ_strn with GSEQ_make_strn of 1000
 //
 fcast // fun
-GASZ_make_strn
-(xs: strn): GASZ(strn, cgtz)
-#symload GASZ with GASZ_make_strn of 1000
-#symload GASZ_strn with GASZ_make_strn of 1000
+GASQ_make_strn
+(xs: strn): GASQ(strn, cgtz)
+#symload GASQ with GASQ_make_strn of 1000
+#symload GASQ_strn with GASQ_make_strn of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

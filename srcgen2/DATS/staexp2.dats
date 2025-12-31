@@ -552,6 +552,13 @@ case+ scs1 of
 |list_nil() => s2exp_cst(s2c1)
 |list_cons _ =>
 (
+(*
+HX-2025-12-31:
+Let's continue with [s2c1]
+and decide later what to do
+with [S2Ecsts]!
+Wed Dec 31 02:55:35 PM EST 2025
+*)
 s2exp(s2c1.sort(), S2Ecsts(s2cs))))
 )(*case+*)//end-of-[s2exp_csts(s2cs)]
 //
