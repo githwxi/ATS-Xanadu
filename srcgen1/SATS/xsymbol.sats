@@ -284,5 +284,8 @@ overload isneqz with symbol_isnot_nil
 fun symbol_of_stamp(stamp: uint): symbolopt_vt
 //
 (* ****** ****** *)
-
-(* end of [xats_xsymbol.sats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_SATS_xsymbol.sats] *)
+(***********************************************************************)

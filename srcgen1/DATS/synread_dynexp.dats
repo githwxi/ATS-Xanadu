@@ -2384,5 +2384,8 @@ end // end of [synread_package]
 end // end of [local]
 
 (* ****** ****** *)
-
-(* end of [xats_synread_dynexp.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_synread_dynexp.dats] *)
+(***********************************************************************)

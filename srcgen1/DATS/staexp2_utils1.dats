@@ -742,5 +742,8 @@ list_map$fopr<s2exp><s2exp>(s2e0) = s2exp_revars(s2e0, svs1, svs2)
 } (* end of [s2explst_revars_vt] *)
 //
 (* ****** ****** *)
-
-(* end of [xats_staexp2_util1.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_staexp2_util1.dats] *)
+(***********************************************************************)

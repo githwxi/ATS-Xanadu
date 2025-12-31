@@ -715,5 +715,8 @@ parse_from_filpath_toplevel
   (stadyn: int, inp: filpath): d0parsed
 //
 (* ****** ****** *)
-
-(* end of [xats_parsing.sats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_SATS_parsing.sats] *)
+(***********************************************************************)

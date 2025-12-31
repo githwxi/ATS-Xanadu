@@ -53,5 +53,8 @@ typedef effectlst = List0(effect)
 // effect-tracking given its "obtrusiveness"!!!
 //
 (* ****** ****** *)
-
-(* end of [xats_effect0.sats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_SATS_effect0.sats] *)
+(***********************************************************************)

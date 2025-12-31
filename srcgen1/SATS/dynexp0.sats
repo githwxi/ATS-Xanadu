@@ -1462,5 +1462,8 @@ overload prerr with prerr_wd0eclseq
 overload fprint with fprint_wd0eclseq
 //
 (* ****** ****** *)
-
-(* end of [xats_dynexp0.sats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_SATS_dynexp0.sats] *)
+(***********************************************************************)

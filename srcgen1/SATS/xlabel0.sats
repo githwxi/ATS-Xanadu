@@ -110,5 +110,8 @@ overload .sym with label_get_sym
 fun label_dotize(l0: label): symbol
 
 (* ****** ****** *)
-
-(* end of [xats_xlabel0.sats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_SATS_xlabel0.sats] *)
+(***********************************************************************)

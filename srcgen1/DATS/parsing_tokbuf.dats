@@ -145,5 +145,8 @@ tokbuf_clear_mark(buf, mk0) = () // discard
 end // end of [local]
 
 (* ****** ****** *)
-
-(* end of [xats_parsing_tokbuf.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_DATS_parsing_tokbuf.dats] *)
+(***********************************************************************)

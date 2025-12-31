@@ -212,5 +212,8 @@ overload prerr with prerr_location
 overload fprint with fprint_location
 //
 (* ****** ****** *)
-
-(* end of [xats_locinfo.sats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XATSOPT_srcgen1_SATS_locinfo.sats] *)
+(***********************************************************************)
