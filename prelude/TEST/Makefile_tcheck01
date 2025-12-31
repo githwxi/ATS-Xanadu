@@ -18,9 +18,9 @@ axsz000.sats \
 axsz001.sats \
 bool000.sats \
 char000.sats \
-gasz000.sats \
-gasz001.sats \
-gasz002.sats \
+gasq000.sats \
+gasq001.sats \
+gasq002.sats \
 gbas000.sats \
 gbas001.sats \
 gbas002.sats \
@@ -30,13 +30,15 @@ gflt000.sats \
 gfun000.sats \
 gint000.sats \
 gint001.sats \
-gmap000.sats \
-gmap001.sats \
 gnum000.sats \
 gord000.sats \
 gseq000.sats \
 gseq001.sats \
 gseq002.sats \
+gmap000.sats \
+gmap001.sats \
+gamp000.sats \
+gamp001.sats \
 gsyn000.sats \
 gsyn001.sats \
 list000.sats \
@@ -54,8 +56,8 @@ uopt000.sats \
 PRESATS_vt=\
 axrf000_vt.sats \
 axsz000_vt.sats \
-gasz000_vt.sats \
-gasz001_vt.sats \
+gasq000_vt.sats \
+gasq001_vt.sats \
 gbas000_vt.sats \
 gbas001_vt.sats \
 gbas002_vt.sats \

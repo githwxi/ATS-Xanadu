@@ -542,7 +542,7 @@ fun
 <x0:t0>
 list_1choose$split_lstrm
 {ln:i0}
-(xs: list(x0, n0)): strm_vt@(x0, list_vt(x0, ln-1))
+(xs: list(x0, ln)): strm_vt@(x0, list_vt(x0, ln-1))
 #symload c1hoose$split_lstrm with list_1choose$split_lstrm
 //
 (* ****** ****** *)
