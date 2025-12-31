@@ -91,26 +91,32 @@ OUTSATS_vt := \
 $(patsubst %.sats, \
   OUTS/%_sats_out.00, $(PRESATS_vt))
 ########################################################################
+all:: \
+presats
 presats: \
 $(OUTSATS)
 OUTS/%_sats_out.00: \
 ../SATS/%.sats; $(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
 ########################################################################
+all:: \
+presats_vt
 presats_vt: \
 $(OUTSATS_vt)
 OUTS/%_sats_out.00: \
 ../SATS/VT/%.sats; $(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
 ########################################################################
-all:: prelude_dats_hats
-all:: prelude_JS_dats_hats
-all:: prelude_PY_dats_hats
-########################################################################
+all:: \
+prelude_dats_hats
 prelude_dats_hats: ; $(NODE) \
 --stack-size=4096 $(SRCGEN2_XATSOPT) ./../HATS/prelude_dats.hats
 ########################################################################
+all:: \
+prelude_JS_dats_hats
 prelude_JS_dats_hats: ; $(NODE) \
 --stack-size=4096 $(SRCGEN2_XATSOPT) ./../HATS/prelude_JS_dats.hats
 ########################################################################
+all:: \
+prelude_PY_dats_hats
 prelude_PY_dats_hats: ; $(NODE) \
 --stack-size=4096 $(SRCGEN2_XATSOPT) ./../HATS/prelude_PY_dats.hats
 ########################################################################
