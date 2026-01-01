@@ -1489,10 +1489,12 @@ val tres =
 case topt of
 |
 optn_nil() =>
-abstype_sort2(tknd)
+(
+  abstype_sort2(tknd))
 |
 optn_cons(s1t1) =>
-trans12_sort1(env0, s1t1)
+(
+  trans12_sort1(env0, s1t1))
 ) : sort2 // end-of-val(tres)
 //
 val tfun =
@@ -1523,22 +1525,162 @@ in//let
 //
 let
 //
-val s2c1 =
-s2cst_make_idst(loc0, sid1, tfun)
+(* ****** ****** *)
+//
+fun
+f1_add0_svss
+( env0:
+! tr12env
+, svss
+: s2varlstlst): void =
+(
+case+ svss of
+|list_nil
+( (*void*) ) => ((*void*))
+|list_cons
+(s2vs, svss) =>
+(
+  f1_add0_svss(env0, svss))
+where
+{
+val (  ) =
+tr12env_add0_s2varlst(env0,s2vs)}
+)
+//
+(* ****** ****** *)
+//
+fun
+f1_tma1_s2ts
+( tma1
+: t1mag
+, s2ts
+: sort2lst): s2varlst =
+(
+case+
+tma1.node() of
+|
+T1MAGlist(t1as) =>
+(
+  f1_t1as_s2ts(t1as, s2ts))
+)
+//
+and
+f1_t1as_s2ts
+( t1as
+: t1arglst
+, s2ts
+: sort2lst): s2varlst =
+(
+case+ t1as of
+//
+|list_nil
+( (*void*) ) =>
+(
+  list_nil((*void*)))
+//
+|list_cons
+(t1a1, t1as) =>
+let
+val-
+list_cons
+(s2t1, s2ts) = s2ts
+//
+val sym1 =
+(
+case+
+t1a1.node() of
+|T1ARGsome
+(s1t1, topt) =>
+(
+case+ topt of
+|optn_nil((*0*)) =>
+(
+the_symbl_nil)
+|optn_cons(tok1) =>
+(
+sexpid_sym(tok1))):sym_t
+)(*case+*)//end(val(sym1))
+//
+val s2v1 =
+s2var_make_idst(sym1, s2t1)
+in//let
+list_cons(s2v1,
+  f1_t1as_s2ts(t1as, s2ts)) end
+//
+)(*case+*)//end(f1_t1as_s2ts(...))
+//
+fun
+f1_tmas_stss
+( tmas
+: t1maglst
+, stss
+: sort2lstlst): s2varlstlst =
+(
+case+ tmas of
+//
+|list_nil
+( (*void*) ) =>
+(
+  list_nil((*void*)))
+//
+|list_cons
+(tma1, tmas) =>
+let
+val-
+list_cons
+(s2ts, stss) = stss
+val s2vs =
+f1_tma1_s2ts(tma1, s2ts)
+in//let
+list_cons(s2vs,
+  f1_tmas_stss(tmas, stss)) end
+//
+)(*case+*)//end(f1_tmas_stss(...))
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+// HX:enter
+  tr12env_pshlam0( env0 ))
+val svss =
+(
+  f1_tmas_stss(tmas, stss))
+val (  ) =
+(
+  f1_add0_svss(env0, svss))
+//
+(*
+val (  ) =
+prerrsln("\
+f0_abstype(12): svss = ", svss)
+*)
 //
 val atdf =
 trans12_a1tdf_stck(env0, atdf, tres)
 //
+val (  ) =
+(
+  tr12env_poplam0( env0 ))//HX:leave
+//
+(* ****** ****** *)
+//
 in//let
 //
 let
-  val () =
-  tr12env_add1_s2cst( env0, s2c1 )
-in//let
-  d2ecl(loc0, D2Cabstype(s2c1, atdf))
-end (*let*)
 //
-end (*let*)
+val s2c1 =
+(
+s2cst_make_idst(loc0,sid1,tfun))
+val (  ) =
+(
+  tr12env_add1_s2cst(env0, s2c1))
+in//let
+(
+  d2ecl(loc0, D2Cabstype(s2c1, atdf)))
+end//let
+//
+end//let
 //
 end (*let*) // end of [f0_abstype(env0,d1cl)]
 //
@@ -1989,8 +2131,8 @@ tr12env_add0_d2itm(env0, sym1, ditm)
 //
 in//let
 (
- d2ecl_make_node
- (loc0, D2Csymload(tknd, sym1, dptm)))
+d2ecl_make_node
+(loc0, D2Csymload(tknd, sym1, dptm)))
 end//let
 //
 end where
@@ -3386,13 +3528,11 @@ list_map$e1nv
 //
 #impltmp
 map$e1nv$fopr
-< x0><y0 ><e1>
-(   x0, e1   ) =
+<x0><y0><e1>(x0, e1) =
 (
 case+
 x0.node() of
-|
-T1ARGsome
+|T1ARGsome
 (s1t1, topt) => trans12_sort1(e1, s1t1))
 }
 //
@@ -3460,7 +3600,7 @@ case+ topt of
   the_symbl_nil(*void*))
 |optn_cons
 (  tok1  ) => sexpid_sym(tok1)
-) : sym_t // end of [val(sid1)]
+) : sym_t // end of [val(sym1)]
 }
 //
 val (  ) =
