@@ -68,13 +68,89 @@ end//let//end(gseq_segmentize0_lstrm$llist<xs><x0>)
 (* ****** ****** *)
 //
 #impltmp
+< xs:vt >
+< x0:vt >
+gseq_segmentize0_lstrm$rllist
+  (  xs  ) =
+let
+val xs =
+gseq_strmize0<xs><x0>(xs) in//let
+(
+  strm_vt_segmentize0_lstrm$rllist<x0>(xs))
+end//let//end(gseq_segmentize0_lstrm$rllist<xs><x0>)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strm_vt_segmentize0_lstrm$rllist
+  (  xs  ) =
+(
+auxmain(xs)) where
+{
+//
+#vwtpdef xs = strm_vt(x0)
+#vwtpdef rs = list_vt(x0)
+//
+fun
+auxmain
+( xs: xs): strm_vt(rs) =
+$llazy(
+auxloop(xs, list_vt_nil))
+//
+and
+auxloop
+( xs: xs
+, rs: rs): strmcon_vt(rs) =
+(
+case+ !xs of
+//
+| ~
+strmcon_vt_nil
+ ( (*void*) ) =>
+(
+case+ rs of
+| ~
+list_vt_nil() =>
+(
+  strmcon_vt_nil())
+| // !
+list_vt_cons _ =>
+(
+  strmcon_vt_sing(rs)))
+//
+| ~
+strmcon_vt_cons
+ (  x1, xs  ) =>
+(
+if // if
+segment$delim1<x0>(x1)
+then
+let
+val () =
+g_free<x0>(x1) in//let
+(
+  strmcon_vt_cons(rs, auxmain(xs)))
+end//let//end-of-(then)
+else
+(
+  auxloop(xs, list_vt_cons(x1, rs))))
+)(*case+*)//end-of-[ auxloop(xs, rs) ]
+//
+}(*where*)//end(strm_vt_segmentize0_lstrm$rllist<x0>)
+//
+(* ****** ****** *)
+//
+#impltmp
 <xs:vt>
 <x0:vt>
 gseq_segmentize0$f1un_lstrm$llist
   (xs, test) =
 let
+//
 #impltmp
-segmentize$test1<x0> = test(*x0*)
+segmentize$delim1<x0> = test(*x0*)
+//
 in//let
 (
   gseq_segmentize0_lstrm$llist<xs><x0>(xs))
@@ -86,8 +162,10 @@ end//let//end(gseq_segmentize0$f1un_lstrm$llist<xs><x0>)
 gseq_segmentize0$f1un_lstrm$rllist
   (xs, test) =
 let
+//
 #impltmp
-segmentize$test1<x0> = test(*x0*)
+segmentize$delim1<x0> = test(*x0*)
+//
 in//let
 (
   gseq_segmentize0_lstrm$rllist<xs><x0>(xs))
@@ -97,5 +175,5 @@ end//let//end(gseq_segmentize0$f1un_lstrm$rllist<xs><x0>)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_SATS_VT_pre2026.sats] *)
+(* end of [ATS3/XANADU_prelude_almanac_DATS_VT_pre2026_vt.dats] *)
 (***********************************************************************)
