@@ -44,7 +44,7 @@ Authoremail: gmhwxiATgmailDOTcom
 /almanac/SATS/pre2026.sats"
 #staload
 "prelude\
-/almanac/VT/SATS/pre2026_vt.sats"
+/almanac/SATS/VT/pre2026_vt.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

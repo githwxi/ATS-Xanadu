@@ -66,46 +66,55 @@ g_ptype<vt>((*0*)); pstrn(")"))
 #impltmp
 <(*tmp*)>
 strm_vt_nil() =
-$llazy
-(strmcon_vt_nil(*void*))
+(
+$llazy(
+strmcon_vt_nil(*0*)))
 //
 #impltmp
 < a: vt >
 strm_vt_sing(x0) =
 (
-strm_vt_cons(x0, xs))
-where
-{
-val xs = strm_vt_nil() }
+strm_vt_cons
+(x0, strm_vt_nil())))
+#impltmp
+< a: vt >
+strmcon_vt_sing(x0) =
+(
+strmcon_vt_cons
+(x0, strm_vt_nil())))
 //
 #impltmp
 < a: vt >
 strm_vt_cons(x0, xs) =
-$llazy
-(strmcon_vt_cons(x0, xs))
+$llazy(
+strmcon_vt_cons(x0, xs))
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
 strq_vt_nil() =
-$llazy
-(strqcon_vt_nil(*void*))
+$llazy(
+strqcon_vt_nil(*0*))
 //
 #impltmp
 < a: vt >
 strq_vt_sing(x0) =
 (
-strq_vt_cons(x0, xs))
-where
-{
-val xs = strq_vt_nil() }
+strq_vt_cons
+(x0, strq_vt_nil()))
+#impltmp
+< a: vt >
+strqcon_vt_sing(x0) =
+(
+strqcon_vt_cons
+(x0, strq_vt_nil()))
 //
 #impltmp
 < a: vt >
 strq_vt_cons(x0, xs) =
-$llazy
-(strqcon_vt_cons(x0, xs))
+$llazy(
+strqcon_vt_cons(x0, xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
