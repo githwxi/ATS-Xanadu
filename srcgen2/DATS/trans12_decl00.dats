@@ -1471,6 +1471,7 @@ let
 //
 val
 loc0 = d1cl.lctn()
+//
 val-
 D1Cabstype
 ( tknd // kind
@@ -1486,19 +1487,19 @@ trans12_t1maglst(env0, tmas)
 //
 val tres =
 (
-case topt of
-|
-optn_nil() =>
+case+ topt of
+|optn_nil() =>
 (
   abstype_sort2(tknd))
-|
-optn_cons(s1t1) =>
+|optn_cons(s1t1) =>
 (
   trans12_sort1(env0, s1t1))
 ) : sort2 // end-of-val(tres)
 //
 val tfun =
-f1_stss(stss, tres) where
+(
+  f1_stss(stss, tres))
+where
 {
 fun
 f1_stss
@@ -1513,12 +1514,15 @@ list_nil
 |
 list_cons
 (s2ts, stss) =>
-S2Tfun1(s2ts, f1_stss(stss, tres)))
-}
+(
+S2Tfun1
+(s2ts, f1_stss(stss, tres)))
+}(*where*)//end-of-[val(tfun)]
 //
 (*
 val () =
-prerrsln("f0_abstype: tfun = ", tfun)
+prerrsln("\
+f0_abstype(12): tfun = ", tfun)
 *)
 //
 in//let
@@ -1527,6 +1531,11 @@ let
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-01-01:
+For [trans12_a1tdf_stck]
+Thu Jan  1 12:22:11 PM EST 2026
+*)
 fun
 f1_add0_svss
 ( env0:
@@ -1549,6 +1558,11 @@ tr12env_add0_s2varlst(env0,s2vs)}
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-01-01:
+For [trans12_a1tdf_stck]
+Thu Jan  1 12:22:11 PM EST 2026
+*)
 fun
 f1_tma1_s2ts
 ( tma1
