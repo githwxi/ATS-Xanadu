@@ -39,47 +39,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2025-12-31:
-Wed Dec 31 11:38:57 AM EST 2025
-*)
-//
-fun
-<x0:vt>
-segment$delim1(x0: !x0): bool
-//
-(* ****** ****** *)
-//
-(*
-HX-2025-12-31:
-Wed Dec 31 11:38:57 AM EST 2025
-*)
-//
-fun
-<xs:vt>
-<x0:vt>
-gseq_segmentize0_lstrm$llist
-  (xs: xs): strm_vt(list_vt(x0))
-fun
-<xs:vt>
-<x0:vt>
-gseq_segmentize0_lstrm$rllist
-  (xs: xs): strm_vt(list_vt(x0))
-//
-fun
-<xs:vt>
-<x0:vt>
-gseq_segmentize0$f1un_lstrm$llist
-  (xs: xs, test: (!x0) -> bool): strm_vt(list_vt(x0))
-fun
-<xs:vt>
-<x0:vt>
-gseq_segmentize0$f1un_lstrm$rllist
-  (xs: xs, test: (!x0) -> bool): strm_vt(list_vt(x0))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_SATS_VT_pre2026_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_almanac_SATS_pre2026.sats] *)
 (***********************************************************************)
