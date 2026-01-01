@@ -2964,7 +2964,7 @@ case-
 tknd.node() of
 |
 T_DATATYPE(knd0) =>
-if
+if // if
 sortlin(knd0) = 0
 then the_sort2_tbox
 else the_sort2_vtbx):sort2 }
@@ -3430,12 +3430,17 @@ f1_s2vs
 (
 case+ t1as of
 |
-list_nil() => list_nil()
+list_nil
+( (*void*) ) => list_nil()
 |
-list_cons(t1a1, t1as) =>
+list_cons
+(t1a1, t1as) =>
 let
+//
 val-
-list_cons(s2t1, s2ts) = s2ts
+list_cons
+(s2t1, s2ts) = s2ts
+//
 in//let
 //
 case+
@@ -3450,18 +3455,22 @@ val sym1 =
 (
 case+ topt of
 |optn_nil
-((*void*)) => the_symbl_nil
+((*void*)) =>
+(
+  the_symbl_nil(*void*))
 |optn_cons
 (  tok1  ) => sexpid_sym(tok1)
 ) : sym_t // end of [val(sid1)]
 }
 //
 val (  ) =
-tr12env_add0_s2var(env0, s2v1)
+(
+tr12env_add0_s2var(env0, s2v1))
 //
 in//let
+(
 list_cons
-(s2v1, f1_s2vs(env0, t1as, s2ts))
+(s2v1, f1_s2vs(env0, t1as, s2ts)))
 end (*let*) // end of [T1ARGsome(...)]
 //
 end (*let*) // end of [list_cons(...)]
@@ -3483,10 +3492,10 @@ f1_svss
 , tres: sort2): s2varlstlst =
 (
 case+ tmas of
-|
-list_nil() => list_nil()
-|
-list_cons(t1ma, tmas) =>
+|list_nil
+( (*void*) ) => list_nil()
+|list_cons
+(t1ma, tmas) =>
 //
 let
 val-
@@ -3497,7 +3506,8 @@ t1ma.node() of
 T1MAGlist(t1as) =>
 let
 val s2vs =
-f1_s2vs(env0, t1as, s2ts)
+(
+  f1_s2vs(env0, t1as, s2ts))
 in//let
 list_cons
 (s2vs, f1_svss(env0, tmas, tres))
