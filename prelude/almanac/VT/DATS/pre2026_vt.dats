@@ -37,16 +37,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-(*
-HX-2025-12-31:
-Wed Dec 31 11:38:57 AM EST 2025
-*)
-//
-fun
-<x0:vt>
-segment$delim1(x0: !x0): bool
-//
+#include
+"\
+prelude/\
+almanac/HATS/pre2026_sats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
