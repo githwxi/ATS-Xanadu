@@ -35,17 +35,48 @@ Authoremail: gmhwxiATgmailDOTcom
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 //
+//
+function
+XATS2JS_strm_vt_forall0$f1un
+  (fxs, test)
+{
+  let nilq1 =
+    XATS2JS_strmcon_vt_nilq1
+  while (1) {
+    let cxs =
+      XATS2JS_lazy_vt_eval(fxs)
+    if (nilq1(cxs))
+    {
+      break;
+    } else {
+      let x01 =
+        XATS2JS_strmcon_vt_head$raw1(cxs)
+      if (test(x01))
+      {
+        fxs = XATS2JS_strmcon_vt_tail$raw0(cxs)
+      } else {
+        fxs = XATS2JS_strmcon_vt_tail$raw0(cxs)
+        XATS2JS_lazy_vt_free(fxs); return false
+      }
+    }
+  }
+  return true // XATS2JS_strm_vt_forall0$f1un(...)
+}
+//
+////////////////////////////////////////////////////////////////////////.
+//
 function
 XATS2JS_strm_vt_filter0$f1un
-  (fxs, test) {
+  (fxs, test, free)
+{
   return XATS2JS_lazy_vt_make_f0un(
-    () => XATS2JS_strmcon_vt_filter0$f1un(XATS2JS_lazy_vt_eval(fxs), test)
+    () => XATS2JS_strmcon_vt_filter0$f1un(XATS2JS_lazy_vt_eval(fxs), test, free)
   )
 }
 //
 function
 XATS2JS_strmcon_vt_filter0$f1un
-  (cxs, test)
+  (cxs, test, free)
 {
   let nilq1 =
     XATS2JS_strmcon_vt_nilq1
@@ -54,12 +85,13 @@ XATS2JS_strmcon_vt_filter0$f1un
     {
       return XATS2JS_strmcon_vt_nil()
     } else {
-      let x01 = XATS2JS_strmcon_vt_head1$raw(cxs)
-      let fxs = XATS2JS_strmcon_vt_tail0$raw(cxs)
+      let x01 = XATS2JS_strmcon_vt_head$raw1(cxs)
+      let fxs = XATS2JS_strmcon_vt_tail$raw0(cxs)
       if (test(x01)) {
-        return XATS2JS_strmcon_vt_cons(x01, XATS2JS_strm_vt_filter0$f1un(fxs, test))
+        return XATS2JS_strmcon_vt_cons(x01, XATS2JS_strm_vt_filter0$f1un(fxs, test, free))
       } else {
-        cxs = XATS2JS_lazy_vt_eval(fxs); continue
+        free(x01);
+        cxs = XATS2JS_lazy_vt_eval(fxs); continue;
       }
     }
   }

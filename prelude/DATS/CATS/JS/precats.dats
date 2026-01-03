@@ -50,6 +50,14 @@ in JS that can be called in ATS.
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+//
+(*
+HX-2026-01-02:
+Already inside
+[xats2js_js1emit.js]!
+*)
+//
 #extern
 fun
 XATS2JS_optn_nil
@@ -57,7 +65,6 @@ XATS2JS_optn_nil
 ((*0*)): optn(a) = $extnam()
 #implfun
 XATS2JS_optn_nil() = optn_nil()
-//
 #extern
 fun
 XATS2JS_optn_cons
@@ -65,6 +72,7 @@ XATS2JS_optn_cons
 (x0: a): optn(a) = $extnam()
 #implfun
 XATS2JS_optn_cons(x0) = optn_cons(x0)
+*)
 //
 (* ****** ****** *)
 //
@@ -93,7 +101,39 @@ case+ xs of
 |optn_nil() => false |optn_cons _ => (true))
 //
 (* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_optn_head$raw
+{a:t0}
+( xs
+: optn(a)): (a) = $extnam()
+#implfun
+XATS2JS_optn_head$raw(xs) =
+(
+case- xs of optn_cons(x0) => (x0))
+//
+#extern
+fun
+XATS2JS_optn_uncons$raw
+{a:t0}
+( xs
+: optn(a)): (a) = $extnam()
+#implfun
+XATS2JS_optn_uncons$raw(xs) =
+(
+case- xs of optn_cons(x0) => (x0))
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+//
+(*
+HX-2026-01-02:
+Already inside
+[xats2js_js1emit.js]!
+*)
 //
 #extern
 fun
@@ -102,7 +142,6 @@ XATS2JS_list_nil
 ((*0*)): list(a) = $extnam()
 #implfun
 XATS2JS_list_nil() = list_nil()
-//
 #extern
 fun
 XATS2JS_list_cons
@@ -111,6 +150,7 @@ XATS2JS_list_cons
 , xs: list(a)): list(a) = $extnam()
 #implfun
 XATS2JS_list_cons(x1,xs) = list_cons(x1,xs)
+*)
 //
 (* ****** ****** *)
 //
@@ -137,6 +177,19 @@ XATS2JS_list_consq(xs) =
 (
 case+ xs of
 |list_nil() => false |list_cons _ => (true))
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_list_head$raw
+{a:t0}
+( xs
+: list(a)): (a) = $extnam()
+#implfun
+XATS2JS_list_head$raw(xs) =
+(
+case- xs of list_cons(x1, xs) => (x1))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -197,12 +250,33 @@ case+ xs of
 |strmcon_nil() => false |strmcon_cons _ => (true))
 //
 (* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_strmcon_head$raw
+{a:t0}
+( xs
+: strmcon(a)): (a) = $extnam()
+#implfun
+XATS2JS_strmcon_head$raw(xs) =
+(
+case- xs of strmcon_cons(x1, xs) => (x1))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 (*
 HX-2026-01-02: For VT!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+//
+(*
+HX-2026-01-02:
+Already inside
+[xats2js_js1emit.js]!
+*)
 //
 #extern
 fun
@@ -211,7 +285,6 @@ XATS2JS_optn_vt_nil
 ((*0*)): optn_vt(a) = $extnam()
 #implfun
 XATS2JS_optn_vt_nil() = optn_vt_nil()
-//
 #extern
 fun
 XATS2JS_optn_vt_cons
@@ -219,6 +292,7 @@ XATS2JS_optn_vt_cons
 (x0: a): optn_vt(a) = $extnam()
 #implfun
 XATS2JS_optn_vt_cons(x0) = optn_vt_cons(x0)
+*)
 //
 (* ****** ****** *)
 //
@@ -247,7 +321,39 @@ case+ xs of
 |optn_vt_nil()=>false|optn_vt_cons(x0)=>(true))
 //
 (* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_optn_vt_head$raw0
+{a:vt}
+( xs
+: optn_vt(a)): (a) = $extnam()
+#implfun
+XATS2JS_optn_vt_head$raw0(xs) =
+(
+case- xs of ~optn_vt_cons(x0) => (x0))
+//
+#extern
+fun
+XATS2JS_optn_vt_uncons$raw0
+{a:vt}
+( xs
+: optn_vt(a)): (a) = $extnam()
+#implfun
+XATS2JS_optn_vt_uncons$raw0(xs) =
+(
+case- xs of ~optn_vt_cons(x0) => (x0))
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+//
+(*
+HX-2026-01-02:
+Already inside
+[xats2js_js1emit.js]!
+*)
 //
 #extern
 fun
@@ -256,7 +362,6 @@ XATS2JS_list_vt_nil
 ((*0*)): list_vt(a) = $extnam()
 #implfun
 XATS2JS_list_vt_nil() = list_vt_nil()
-//
 #extern
 fun
 XATS2JS_list_vt_cons
@@ -265,6 +370,7 @@ XATS2JS_list_vt_cons
 , xs: list_vt(a)): list_vt(a) = $extnam()
 #implfun
 XATS2JS_list_vt_cons(x1,xs) = list_vt_cons(x1,xs)
+*)
 //
 (* ****** ****** *)
 //
@@ -278,7 +384,7 @@ XATS2JS_list_vt_nilq1
 XATS2JS_list_vt_nilq1(xs) =
 (
 case+ xs of
-|list_vt_nil() => true |list_vt_cons _ => false)
+|list_vt_nil()=>true|list_vt_cons _ => false)
 //
 #extern
 fun
@@ -290,7 +396,41 @@ XATS2JS_list_vt_consq1
 XATS2JS_list_vt_consq1(xs) =
 (
 case+ xs of
-|list_vt_nil() => false |list_vt_cons _ => (true))
+|list_vt_nil()=>false|list_vt_cons _ => (true))
+//
+(* ****** ****** *)
+//
+#extern
+fun
+XATS2JS_list_vt_head$raw1
+{a:vt}
+( xs
+: list_vt(a)): (a) = $extnam()
+#implfun
+XATS2JS_list_vt_head$raw1(xs) =
+(
+case- xs of
+|
+list_vt_cons
+(  x1, xs  ) =>
+let
+val x1 =
+$UN.datacopy(x1) in $UN.enlinear(x1) end)
+//
+#extern
+fun
+XATS2JS_list_vt_tail$raw0
+{a:vt}
+( xs:
+~ list_vt(a)): list_vt(a) = $extnam()
+#implfun
+XATS2JS_list_vt_tail$raw0(xs) =
+case- xs of
+| ~
+list_vt_cons
+(  x1, xs  ) =>
+(
+  let val x1 = $UN.delinear(x1) in xs end)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -299,10 +439,19 @@ case+ xs of
 fun
 XATS2JS_lazy_vt_eval
 {a:vt}
-( lz
-: lazy_vt(a)): a = $extnam()
+( lz:
+~ lazy_vt(a)): (a) = $extnam()
 #implfun
 XATS2JS_lazy_vt_eval(lz) = $eval(lz)
+//
+#extern
+fun
+XATS2JS_lazy_vt_free
+{a:vt}
+( lz:
+~ lazy_vt(a)): void = $extnam()
+#implfun
+XATS2JS_lazy_vt_free(lz) = $free(lz)
 //
 (* ****** ****** *)
 //
@@ -347,7 +496,7 @@ XATS2JS_strmcon_vt_nilq1
 XATS2JS_strmcon_vt_nilq1(xs) =
 (
 case+ xs of
-|strmcon_vt_nil() => true |strmcon_vt_cons _ =>false)
+|strmcon_vt_nil()=>true|strmcon_vt_cons _ =>false)
 //
 #extern
 fun
@@ -359,34 +508,35 @@ XATS2JS_strmcon_vt_consq1
 XATS2JS_strmcon_vt_consq1(xs) =
 (
 case+ xs of
-|strmcon_vt_nil() => false |strmcon_vt_cons _ =>(true))
+|strmcon_vt_nil()=>false|strmcon_vt_cons _ =>(true))
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_strmcon_vt_head1$raw
+XATS2JS_strmcon_vt_head$raw1
 {a:vt}
 ( xs:
 ! strmcon_vt(a)): (a) = $extnam()
 #implfun
-XATS2JS_strmcon_vt_head1$raw(xs) =
+XATS2JS_strmcon_vt_head$raw1(xs) =
+(
 case- xs of
 |
 strmcon_vt_cons
 (   x1 , xs   ) =>
 let
 val x1 =
-$UN.datacopy(x1) in $UN.enlinear(x1) end
+$UN.datacopy(x1) in $UN.enlinear(x1) end)
 //
 #extern
 fun
-XATS2JS_strmcon_vt_tail0$raw
+XATS2JS_strmcon_vt_tail$raw0
 {a:vt}
 ( xs:
 ~ strmcon_vt(a)): strm_vt(a) = $extnam()
 #implfun
-XATS2JS_strmcon_vt_tail0$raw(xs) =
+XATS2JS_strmcon_vt_tail$raw0(xs) =
 case- xs of
 | ~
 strmcon_vt_cons
