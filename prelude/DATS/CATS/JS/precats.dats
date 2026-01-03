@@ -72,6 +72,7 @@ XATS2JS_optn_cons
 (x0: a): optn(a) = $extnam()
 #implfun
 XATS2JS_optn_cons(x0) = optn_cons(x0)
+//
 *)
 //
 (* ****** ****** *)
@@ -150,6 +151,7 @@ XATS2JS_list_cons
 , xs: list(a)): list(a) = $extnam()
 #implfun
 XATS2JS_list_cons(x1,xs) = list_cons(x1,xs)
+//
 *)
 //
 (* ****** ****** *)
@@ -292,6 +294,7 @@ XATS2JS_optn_vt_cons
 (x0: a): optn_vt(a) = $extnam()
 #implfun
 XATS2JS_optn_vt_cons(x0) = optn_vt_cons(x0)
+//
 *)
 //
 (* ****** ****** *)
@@ -370,6 +373,7 @@ XATS2JS_list_vt_cons
 , xs: list_vt(a)): list_vt(a) = $extnam()
 #implfun
 XATS2JS_list_vt_cons(x1,xs) = list_vt_cons(x1,xs)
+//
 *)
 //
 (* ****** ****** *)
