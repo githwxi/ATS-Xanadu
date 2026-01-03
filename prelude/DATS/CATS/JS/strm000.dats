@@ -39,12 +39,42 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #extern
 fun
+XATS2JS_strm_vt_forall0$f1un
+{x0:vt}
+( xs
+: strm_vt(x0)
+, test
+: (~x0) -> bool): bool
+= $extnam()//extern(./strm000.cats)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strm_vt_forall0
+  (  xs  ) =
+let
+fun
+test(x0: ~x0): bool =
+(
+  forall$test0<x0>(x0))
+in//let
+XATS2JS_strm_vt_forall0$f1un{x0}(xs, test)
+end(*let*)//end-of-[strm_vt_forall0<x0>(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
 XATS2JS_strm_vt_filter0$f1un
 {x0:vt}
 ( xs
 : strm_vt(x0)
 , test
-: (!x0) -> bool): strm_vt(x0)
+: (!x0) -> bool
+, free
+: (~x0) -> void): strm_vt(x0)
 = $extnam()//extern(./strm000.cats)
 //
 (* ****** ****** *)
@@ -58,17 +88,11 @@ fun
 test(x0: !x0): bool =
 (
   filter$test1<x0>(x0))
+fun
+free(x0: ~x0): void = g_free<x0>(x0)
 in//let
-XATS2JS_strm_vt_filter0$f1un{x0}(xs, test)
-end(*let*)//end-of-[ strm_vt_filter0<x0>(xs) ]
-//
-#impltmp
-< x0:vt >
-strm_vt_filter0$f1un
-  (  xs, test  ) =
-(
-XATS2JS_strm_vt_filter0$f1un{x0}(xs, test))
-//end-of-[ strm_vt_filter0$f1un<x0>(xs, test) ]
+XATS2JS_strm_vt_filter0$f1un{x0}(xs, test, free)
+end(*let*)//end-of-[strm_vt_filter0<x0>(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

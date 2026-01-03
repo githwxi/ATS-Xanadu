@@ -35,7 +35,49 @@ Authoremail: gmhwxiATgmailDOTcom
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 //
-// HX: It is yet to be populated!
+function
+XATS2JS_list_vt_foritm0$f1un
+  (xs, work)
+{
+  let nilq1 =
+    XATS2JS_list_vt_nilq1
+  while (1) {
+    if (nilq1(xs)) {
+      break;
+    } else {
+      let x1 =
+        XATS2JS_list_vt_head$raw1(xs)
+      work(x1)
+      xs = XATS2JS_list_vt_tail$raw0(xs)
+    }
+  }
+  return // XATS2JS_list_vt_foritm0$f1un
+}
+//
+////////////////////////////////////////////////////////////////////////.
+//
+function
+XATS2JS_list_vt_forall0$f1un
+  (xs, test, free)
+{
+  let nilq1 =
+    XATS2JS_list_vt_nilq1
+  while (1) {
+    if (nilq1(xs)) {
+      break;
+    } else {
+      let x1 =
+        XATS2JS_list_vt_head$raw1(xs)
+      if (test(x1)) {
+        xs = XATS2JS_list_vt_tail$raw0(xs)
+      } else {
+        xs = XATS2JS_list_vt_tail$raw0(xs)
+        XATS2JS_list_vt_foritm0$f1un(xs, free); return false
+      }
+    }
+  }
+  return true // XATS2JS_list_vt_forall0$f1un
+}
 //
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
