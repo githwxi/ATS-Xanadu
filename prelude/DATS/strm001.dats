@@ -563,24 +563,24 @@ list_vt_reverse0<x0>(xs) end
 strm_rlistize
   (  xs  ) =
 (
-  loop(xs, r0)) where
+  loop(xs, rs)) where
 {
 //
-val r0 = list_vt_nil()
+val rs = list_vt_nil()
 //
 fun loop
 ( xs: strm(x0)
-, r0: list_vt(x0)): list_vt(x0) =
+, rs: list_vt(x0)): list_vt(x0) =
 (
 case+ !xs of
 |
 strmcon_nil
-(  (*0*)  ) => (r0)
+(  (*0*)  ) => (rs)
 |
 strmcon_cons
 (  x1, xs  ) =>
 (
-  loop(xs, list_vt_cons(x1,r0))))
+  loop(xs, list_vt_cons(x1,rs))))
 }(*where*)//end-of-[strm_rlistize(xs)]
 //
 (* ****** ****** *)
@@ -598,7 +598,8 @@ Sun Dec 21 10:39:48 AM EST 2025
 strm_map$e1nv
   ( xs, e1 ) =
 (
-strm_map<x0><y0>(xs)) where
+strm_map
+<x0><y0>(xs)) where
 {
 #impltmp
 map$fopr<x0><y0>(x0) =
@@ -613,7 +614,8 @@ map$fopr<x0><y0>(x0) =
 strq_map$e1nv
   ( xs, e1 ) =
 (
-strq_map<x0><y0>(xs)) where
+strq_map
+<x0><y0>(xs)) where
 {
 #impltmp
 map$fopr<x0><y0>(x0) =
@@ -630,7 +632,8 @@ map$fopr<x0><y0>(x0) =
 strm_map$e1nv_vt
   ( xs, e1 ) =
 (
-strm_map_vt<x0><y0>(xs)) where
+strm_map_vt
+<x0><y0>(xs)) where
 {
 #impltmp
 map$fopr<x0><y0>(x0) =
@@ -645,7 +648,8 @@ map$fopr<x0><y0>(x0) =
 strq_map$e1nv_vt
   ( xs, e1 ) =
 (
-strq_map_vt<x0><y0>(xs)) where
+strq_map_vt
+<x0><y0>(xs)) where
 {
 #impltmp
 map$fopr<x0><y0>(x0) =

@@ -1,4 +1,4 @@
-// Sat Jan  3 02:24:33 AM EST 2026
+// Sat Jan  3 10:57:12 AM EST 2026
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 /*
@@ -1143,9 +1143,40 @@ Authoremail: gmhwxiATgmailDOTcom
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 //
+//
+function
+XATS2JS_strm_vt_forall0$f1un
+  (fxs, test)
+{
+  let nilq1 =
+    XATS2JS_strmcon_vt_nilq1
+  while (1) {
+    let cxs =
+      XATS2JS_lazy_vt_eval(fxs)
+    if (nilq1(cxs))
+    {
+      break;
+    } else {
+      let x01 =
+        XATS2JS_strmcon_vt_head$raw1(cxs)
+      if (test(x01))
+      {
+        fxs = XATS2JS_strmcon_vt_tail$raw0(cxs)
+      } else {
+        fxs = XATS2JS_strmcon_vt_tail$raw0(cxs)
+        XATS2JS_lazy_vt_free(fxs); return false
+      }
+    }
+  }
+  return true // XATS2JS_strm_vt_forall0$f1un(...)
+}
+//
+////////////////////////////////////////////////////////////////////////.
+//
 function
 XATS2JS_strm_vt_filter0$f1un
-  (fxs, test, free) {
+  (fxs, test, free)
+{
   return XATS2JS_lazy_vt_make_f0un(
     () => XATS2JS_strmcon_vt_filter0$f1un(XATS2JS_lazy_vt_eval(fxs), test, free)
   )
@@ -1398,7 +1429,7 @@ XATS2JS_a1sz_fmake_fwork
 // end of [ATS3/XANADU_prelude_DATS_CATS_JS_axsz000.cats]
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
-// Sat Jan  3 02:24:22 AM EST 2026
+// Sat Jan  3 10:56:25 AM EST 2026
 // LCSRCsome1(precats.dats)@(1291(line=30,offs=1)--1332(line=31,offs=28))
 // I1Di0dcl(I0Dd3ecl(D3Cstaload(0;T_SRP_STALOAD();G1Ea2pp(G1Eid0(=);G1Eid0(UN);G1Estr(T_STRN1_clsd("prelude/SATS/unsfx00.sats";27)));$optn(FPATH(/home/hwxi/Research/ATS-Xanadu/prelude/SATS/unsfx00.sats));...)))
 // I1Dextern(LCSRCsome1(precats.dats)@(1955(line=79,offs=1)--2025(line=84,offs=29)))
