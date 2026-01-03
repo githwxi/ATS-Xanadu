@@ -25,17 +25,24 @@ Sat Apr 19 11:36:36 AM EDT 2025
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#extcode file"prelude/DATS/CATS/JS/bool000.cats"
-#extcode file"prelude/DATS/CATS/JS/char000.cats"
-#extcode file"prelude/DATS/CATS/JS/gint000.cats"
-#extcode file"prelude/DATS/CATS/JS/gflt000.cats"
-#extcode file"prelude/DATS/CATS/JS/strn000.cats"
+#extcode
+file"prelude/DATS/CATS/JS/bool000.cats"
+#extcode
+file"prelude/DATS/CATS/JS/char000.cats"
+#extcode
+file"prelude/DATS/CATS/JS/gint000.cats"
+#extcode
+file"prelude/DATS/CATS/JS/gflt000.cats"
+#extcode
+file"prelude/DATS/CATS/JS/strn000.cats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#extcode file"prelude/DATS/CATS/JS/axrf000.cats"
-#extcode file"prelude/DATS/CATS/JS/axsz000.cats"
+#extcode
+file"prelude/DATS/CATS/JS/axrf000.cats"
+#extcode
+file"prelude/DATS/CATS/JS/axsz000.cats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

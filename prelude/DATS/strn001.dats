@@ -299,26 +299,43 @@ irforitm$work<cgtz>(i0,ch) = work(i0,ch)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #impltmp
 <>(*tmp*)
 strn_listize = gasq_listize<strn><cgtz>
 #impltmp
+gseq_listize<strn><cgtz> = strn_listize
+//
+#impltmp
 <>(*tmp*)
 strn_strmize = gasq_strmize<strn><cgtz>
 #impltmp
+gseq_strmize<strn><cgtz> = strn_strmize
+//
+#impltmp
 <>(*tmp*)
 strn_strqize = gasq_strqize<strn><cgtz>
+#impltmp
+gseq_strqize<strn><cgtz> = strn_strqize
+//
+(* ****** ****** *)
 //
 #impltmp
 <>(*tmp*)
 strn_rlistize = gasq_rlistize<strn><cgtz>
 #impltmp
+gseq_rlistize<strn><cgtz> = strn_rlistize
+//
+#impltmp
 <>(*tmp*)
 strn_rstrmize = gasq_rstrmize<strn><cgtz>
 #impltmp
+gseq_rstrmize<strn><cgtz> = strn_rstrmize
+//
+#impltmp
 <>(*tmp*)
 strn_rstrqize = gasq_rstrqize<strn><cgtz>
+#impltmp
+gseq_rstrqize<strn><cgtz> = strn_rstrqize
 //
 (* ****** ****** *)
 (* ****** ****** *)

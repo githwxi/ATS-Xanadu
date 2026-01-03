@@ -86,7 +86,7 @@ end//let//end(gseq_segmentize0_lstrm$rllist<xs><x0>)
 strm_vt_segmentize0_lstrm$rllist
   (  xs  ) =
 (
-auxmain(xs)) where
+  auxmain(xs)) where
 {
 //
 #vwtpdef xs = strm_vt(x0)
@@ -149,7 +149,7 @@ gseq_segmentize0$f1un_lstrm$llist
 let
 //
 #impltmp
-segmentize$delim1<x0> = test(*x0*)
+segment$delim1<x0> = test(*x0*)
 //
 in//let
 (
@@ -164,7 +164,7 @@ gseq_segmentize0$f1un_lstrm$rllist
 let
 //
 #impltmp
-segmentize$delim1<x0> = test(*x0*)
+segment$delim1<x0> = test(*x0*)
 //
 in//let
 (

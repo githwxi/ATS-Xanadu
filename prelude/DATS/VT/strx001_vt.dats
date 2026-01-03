@@ -78,7 +78,8 @@ auxmain
 case+ !xs of
 | ~
 strxcon_vt_cons(x1, xs) =>
-strxcon_vt_cons(map$fopr0<x0><y0>(x1), auxmain(xs))
+strxcon_vt_cons(
+map$fopr0<x0><y0>(x1), auxmain(xs))
 )
 }(*where*)//end-of-[strx_vt_map0(xs)]
 //
