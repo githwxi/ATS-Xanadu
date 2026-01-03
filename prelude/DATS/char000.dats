@@ -89,11 +89,39 @@ g_ptype
 //
 #impltmp
 <(*tmp*)>
-char_cmp(c1, c2) =
+char_cmp
+(c1, c2) =
 (
 if c1 > c2
 then 1 else
 if c1 < c2 then -1 else 0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_lower
+ ( c0 ) =
+(
+if
+(c0 < 'A')
+then c0 else
+if
+(c0 > 'Z')
+then c0 else ('a'+(c0-'A')))
+//
+#impltmp
+<(*tmp*)>
+char_upper
+ ( c0 ) =
+(
+if
+(c0 < 'a')
+then c0 else
+if
+(c0 > 'a')
+then c0 else ('A'+(c0-'a')))
 //
 (* ****** ****** *)
 (* ****** ****** *)

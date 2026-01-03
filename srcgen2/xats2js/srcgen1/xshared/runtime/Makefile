@@ -68,6 +68,21 @@ strn000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/strn000.cats >> $(PRELUDE_JS)
 ########################################################################
 prelude:: \
+list000
+list000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/JS/list000.cats >> $(PRELUDE_JS)
+########################################################################
+prelude:: \
+optn000
+optn000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/JS/optn000.cats >> $(PRELUDE_JS)
+########################################################################
+prelude:: \
+strm000
+strm000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/JS/strm000.cats >> $(PRELUDE_JS)
+########################################################################
+prelude:: \
 axrf000
 axrf000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/axrf000.cats >> $(PRELUDE_JS)
@@ -75,6 +90,11 @@ prelude:: \
 axsz000
 axsz000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/axsz000.cats >> $(PRELUDE_JS)
+########################################################################
+prelude:: \
+precats
+precats: ; $(CAT) \
+$(PRELUDED)/DATS/CATS/JS/OUTS/precats_dats.js >> $(PRELUDE_JS)
 ########################################################################
 ########################################################################
 xatslib:: ; \

@@ -224,6 +224,19 @@ strmcon_vt_cons
 )
 }(*where*)//end-of-[strm_vt_map0(xs)]
 //
+#impltmp
+{ x0:vt }
+{ y0:vt }
+strm_vt_map0$f1un
+  (xs, fopr) =
+(
+strm_vt_map0<x0><y0>(xs))
+where
+{
+#impltmp
+map$fopr0<x0><y0>(*x0*) = fopr(*x0*)
+}(*where*)//end-of-[strm_vt_map0$f1un(xs)]
+//
 (*
 HX-2024-07-10:
 Implementing the most specific one.
@@ -269,6 +282,19 @@ strmcon_vt_cons(y1,auxmain(i0+1,xs))
 end//let
 )
 }(*where*)//end-of-[strm_vt_imap0(xs)]
+//
+#impltmp
+{ x0:vt }
+{ y0:vt }
+strm_vt_imap0$f1un
+  (xs, fopr) =
+(
+strm_vt_imap0<x0><y0>(xs))
+where
+{
+#impltmp
+imap$fopr0<x0><y0>(*x0*) = fopr(*x0*)
+}(*where*)//end-of-[strm_vt_imap0$f1un(xs)]
 //
 #impltmp
 { x0:vt }
@@ -330,7 +356,8 @@ strm_vt_filter0$f1un
 strm_vt_filter0<x0>(xs))
 where
 {
-#impltmp filter$test1<x0>(x0) = test(x0)
+#impltmp
+filter$test1<x0>(*x0*) = test(*x0*)
 }
 //
 (*

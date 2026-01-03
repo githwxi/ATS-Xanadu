@@ -64,6 +64,12 @@ XATS2JS_strn_length
 {
   return cs.length // HX: field
 }
+function
+XATS000_strn_length
+  (cs)
+{
+  return cs.length // HX: field
+}
 //
 ////////////////////////////////////////////////////////////////////////.
 //
