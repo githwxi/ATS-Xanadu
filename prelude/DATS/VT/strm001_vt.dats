@@ -629,6 +629,48 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-03:
+Sat Jan  3 02:27:10 PM EST 2026
+*)
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+< e1:vt >
+strm_vt_map$e0nv0
+  ( xs, e1 ) =
+(
+auxmain(xs, e1)) where
+{
+fun
+auxmain
+( xs
+: strm_vt(x0)
+, e1: ( ~e1 )
+) : strm_vt(y0) = $llazy
+(
+//
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+(
+g_free<e1>(e1);
+strmcon_vt_nil(*void*))
+| ~
+strmcon_vt_cons(x1, xs) =>
+let
+val y1 =
+map$e1nv$fopr0<x0><y0>(x1, e1)
+in//let
+strmcon_vt_cons(y1, auxmain(xs, e1))
+end//let
+)
+}(*where*)//end-of-[strm_vt_map$e0nv0(xs,e1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_strm001_vt.dats] *)
 (***********************************************************************)

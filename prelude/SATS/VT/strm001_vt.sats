@@ -486,8 +486,22 @@ fun
 <x0:vt>
 <y0:vt>
 <e1:vt>
+strm_vt_map$e0nv0
+(xs: strm_vt(x0), e1: ~e1): strm_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
 strm_vt_map$e1nv0
 (xs: strm_vt(x0), e1: !e1): strm_vt(y0)
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+strq_vt_map$e0nv0
+{ln:i0}
+(xs: strq_vt(x0,ln), e1: ~e1): strq_vt(y0,ln)
 fun
 <x0:vt>
 <y0:vt>
@@ -496,8 +510,10 @@ strq_vt_map$e1nv0
 {ln:i0}
 (xs: strq_vt(x0,ln), e1: !e1): strq_vt(y0,ln)
 //
-#symload map$env0 with strm_vt_map$e1nv0 of 1000
-#symload map$env0 with strq_vt_map$e1nv0 of 1000
+#symload map$e0nv0 with strm_vt_map$e0nv0 of 1000
+#symload map$e1nv0 with strm_vt_map$e1nv0 of 1000
+#symload map$e0nv0 with strq_vt_map$e0nv0 of 1000
+#symload map$e1nv0 with strq_vt_map$e1nv0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
