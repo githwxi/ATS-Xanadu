@@ -1,7 +1,7 @@
 ########################################################################
 ########################################################################
 # Makefile for
-# ATS3-XANADU/prelude/DATS/CATS/JS/.
+# ATS3-XANADU/prelude/DATS/CATS/PY/.
 ########################################################################
 ########################################################################
 CAT=cat
@@ -16,25 +16,25 @@ all:: precats
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f OUTS/*_dats.js
+cleanall:: ; rm -f OUTS/*_dats.py
 ########################################################################
 ########################################################################
 XASSETS=./../../../../xassets
 # SRCGEN2=./../../../../srcgen2
-# XSHARED=$(SRCGEN2)/xats2js/srcgen1/xshared
+# XSHARED=$(SRCGEN2)/xats2py/srcgen1/xshared
 ########################################################################
 #
-XATS2JS_JSEMIT01=\
-$(XASSETS)/JS/xats2js/xats2js_jsemit01_ats2_opt1.js
-XATS2JS_JSEMIT01=\
-$(XASSETS)/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
+XATS2PY_PYEMIT01=\
+$(XASSETS)/JS/xats2py/xats2py_pyemit01_ats2_opt1.js
+XATS2PY_PYEMIT01=\
+$(XASSETS)/JS/xats2py/xats2py_pyemit01_ats3_opt1.js
 #
 ########################################################################
 ########################################################################
 precats:: ; \
-$(PRINTF) "// %s\n" "`date`" > OUTS/$@_dats.js
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_dats.py
 precats:: precats.dats; \
-$(NODEJS) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_dats.js
+$(NODEJS) --stack-size=8192 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_dats.py
 ########################################################################
 ########################################################################
-##################### end of [Makefile_jsemit01] #######################
+##################### end of [Makefile_pyemit01] #######################
