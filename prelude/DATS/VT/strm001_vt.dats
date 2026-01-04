@@ -505,6 +505,18 @@ gseq_ifolditm0$f3un<strm_vt(x0)><x0><r0>
 (*
 HX-2025-05-31:
 Sat May 31 09:00:51 PM EDT 2025
+HX-2026-01-03:
+This implementation is UNSAFE
+as [e1] appears in two places!
+Please use [strm_vt_map$e0nv0]
+if possible.
+Here we get to see the issue of
+resource tunneling:
+How can we make sure that linear
+values captured inside a closure
+can be released type-safely after
+the closure is consumed?
+Sat Jan  3 11:09:01 PM EST 2026
 *)
 //
 #impltmp

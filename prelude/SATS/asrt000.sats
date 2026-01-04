@@ -72,7 +72,7 @@ UN_asrt_encd
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<a:vt>
 asrt_length
 {n:i0}
 (xs: asrt(a, n)): sint(n)
@@ -93,7 +93,7 @@ This one uses [search$tcmp1]
 Mon Dec 29 12:30:42 PM EST 2025
 *)
 fun
-<x0:t0>
+<x0:vt>
 asrt_exists
 (xs: asrt(x0)): ( bool )
 //
@@ -106,7 +106,7 @@ Note that xs[ln] is infinity.
 Mon Dec 29 02:53:44 PM EST 2025
 *)
 fun
-<x0:t0>
+<x0:vt>
 asrt_search$idx
 {ln:i0}
 (xs: asrt(x0, ln)): nintlte(ln)
