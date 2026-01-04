@@ -45,6 +45,19 @@ Wed Jan  1 03:18:54 PM EST 2025
 (* ****** ****** *)
 //
 #staload _ =
+"prelude/DATS/CATS/PY/list000.dats"
+#staload _ =
+"prelude/DATS/CATS/PY/optn000.dats"
+//
+(* ****** ****** *)
+//
+#staload _ =
+"prelude/DATS/CATS/PY/strm000.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload _ =
 "prelude/DATS/CATS/PY/axrf000.dats"
 #staload _ =
 "prelude/DATS/CATS/PY/axsz000.dats"
@@ -52,7 +65,6 @@ Wed Jan  1 03:18:54 PM EST 2025
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-//
+(***********************************************************************)
 (* end of [ATS3_XANADU_prelude_HATS_prelude_PY_dats.hats] *)
+(***********************************************************************)

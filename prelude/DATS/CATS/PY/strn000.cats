@@ -53,6 +53,8 @@ def XATS2PY_strn_cmp(x1, x2):
 ##
 def XATS2PY_strn_length(cs):
   return len(cs) # PY special [len]
+def XATS000_strn_length(cs):
+  return len(cs) # PY special [len]
 ##
 ########################################################################.
 ##

@@ -75,6 +75,21 @@ strn000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/PY/strn000.cats >> $(PRELUDE_PY)
 ##################################################################
 prelude:: \
+list000
+list000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/PY/list000.cats >> $(PRELUDE_PY)
+##################################################################
+prelude:: \
+optn000
+optn000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/PY/optn000.cats >> $(PRELUDE_PY)
+##################################################################
+prelude:: \
+strm000
+strm000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/PY/strm000.cats >> $(PRELUDE_PY)
+##################################################################
+prelude:: \
 axrf000
 axrf000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/PY/axrf000.cats >> $(PRELUDE_PY)
@@ -83,6 +98,11 @@ axsz000
 axsz000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/PY/axsz000.cats >> $(PRELUDE_PY)
 ##################################################################
+prelude:: \
+precats
+precats: ; $(CAT) \
+$(PRELUDED)/DATS/CATS/PY/OUTS/precats_dats.py >> $(PRELUDE_PY)
+########################################################################
 ##################################################################
 xatslib:: ; \
 printf "## %s\n" "`date`" > $(XATSLIB_PY)
