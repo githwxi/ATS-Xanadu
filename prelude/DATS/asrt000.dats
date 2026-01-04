@@ -71,6 +71,32 @@ asrt_length
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+//
+(*
+HX-2026-01-04:
+This one also works!
+*)
+//
+#impltmp
+< x0: vt >
+asrt_exists
+  (  xs  ) =
+(
+asrt_length<x0>(xs) >
+asrt_search$idx<0>(xs))
+where
+{
+//
+#impltmp
+search$tcmp1
+< x0 >(*x0*) = exists$tcmp1<x0>
+//
+}(*where*)//end-of-[asrt_exists(xs)]
+*)
+//
+(* ****** ****** *)
+//
 #impltmp
 < x0: vt >
 asrt_exists
