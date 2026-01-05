@@ -70,6 +70,13 @@ strn_neq<> = g_neq<strn>
 g_cmp<strn> = strn_cmp<>
 //
 (* ****** ****** *)
+//
+#impltmp
+g_equal<strn> = strn_eq<>
+#impltmp
+g_noteq<strn> = strn_neq<>
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -125,6 +132,38 @@ gasq_length
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-04:
+This is a reference version
+Sun Jan  4 05:07:54 PM EST 2026
+*)
+//
+(*
+#impltmp
+<(*tmp*)>
+strn_fset$at
+(cs, i0, c0) =
+(
+$UN.strn_fset$at$raw(cs, i0, c0))
+*)
+//
+#impltmp
+<(*tmp*)>
+strn_fset$at
+(cs, i0, c0) =
+let
+val ln =
+strn_length<>(cs)
+in//let
+strn_make_nfun<>(
+ln,
+lam i1 =>
+(if (i0=i1) then c0 else cs[i1]))
+end//let//end-of-[strn_fset$at(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 strn_gmake
 <list(cgtz)> = strn_make_list<>
@@ -171,25 +210,8 @@ strn_rappend
   (xs, ys) =
 strn_fmake_fwork<>
 (
-lam(work) =>
-(rforitm(xs, work); foritm(ys, work)))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-$UN.gasq_get$at$raw
-< strn >< cgtz >(cs, i0) =
-$UN.strn_get$at$raw<>(cs, i0)
-//
-#impltmp
-$UN.gasq_lget$at$raw
-< strn >< cgtz >(cs, i0) =
-let
-val c0 =
-$UN.strn_get$at$raw<>(cs, i0)
-pvx pf = owed_t0_make{cgtz}() in (pf|c0)
-end//let//end($UN.gasq_lget$at$raw<strn><cgtz>)
+lam(work) => (
+rforitm(xs, work); foritm(ys, work)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -207,7 +229,7 @@ ln,
 lam(i0) =>
 char_lower(
 $UN.strn_get$at$raw<>(cs,i0)))
-end//end-of-[strn_lower(cs)]
+end(*let*)//end-of-[strn_lower(cs)]
 //
 (* ****** ****** *)
 //
@@ -224,7 +246,7 @@ ln,
 lam(i0) =>
 char_upper(
 $UN.strn_get$at$raw<>(cs,i0)))
-end//end-of-[strn_upper(cs)]
+end(*let*)//end-of-[strn_upper(cs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -240,7 +262,7 @@ j0-i0,
 lam(k0) =>
 $UN.strn_get$at$raw<>(cs,i0+k0)
 )
-)//end-of-[strn_slice(cs,i0,j0)]
+)(*end-of-[strn_slice(cs, i0, j0)]*)
 //
 (* ****** ****** *)
 //
@@ -260,7 +282,7 @@ val n0 =
 strn_length<>(cs) in//let
 (
   strn_slice<>(cs, i0, n0)) end
-//let//end-of-[strn_suffix(cs,i0)]
+(*let*)//end-of-[strn_suffix(cs,i0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -332,20 +354,6 @@ gseq_foritm$f1un<xs><x0>
 ( xs
 , lam(c0)=>work(map$fopr<x0><c0>(c0))))
 end//let//end-of-[strn_map$make_gseq(xs)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-$UN.strn_fset$at$raw
-  (cs, i0, c0) =
-strn_fmake_fwork<>
-(
-lam(work) =>
-strn_iforitm$f2un(cs,
-lam(i1,c1) =>
-(if (i0 = i1) then work(c0) else work(c1))))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -432,6 +440,37 @@ in//let
 (
 strn_fmake1_env$fwork<env>(cs, fwork))
 end(*let*)//end-of-[strn_make1_llist(cs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+$UN.gasq_get$at$raw
+< strn >< cgtz >(cs, i0) =
+$UN.strn_get$at$raw<>(cs, i0)
+//
+#impltmp
+$UN.gasq_lget$at$raw
+< strn >< cgtz >(cs, i0) =
+let
+val c0 =
+$UN.strn_get$at$raw<>(cs, i0)
+pvx pf = owed_t0_make{cgtz}() in (pf|c0)
+end//let//end($UN.gasq_lget$at$raw<strn><cgtz>)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+$UN.strn_fset$at$raw
+  (cs, i0, c0) =
+strn_fmake_fwork<>
+(
+lam(work) =>
+strn_iforitm$f2un(cs,
+lam(i1,c1) =>
+(if (i0 = i1) then work(c0) else work(c1))))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -73,6 +73,13 @@ char_neq<> = g_neq<char>
 g_cmp<char> = char_cmp<>
 //
 (* ****** ****** *)
+//
+#impltmp
+g_equal<char> = char_eq<>
+#impltmp
+g_noteq<char> = char_neq<>
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

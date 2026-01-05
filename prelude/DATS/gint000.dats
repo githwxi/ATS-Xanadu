@@ -73,6 +73,8 @@ g_gte<si> = sint_gte$sint<>
 #impltmp
 g_neq<si> = sint_neq$sint<>
 //
+(* ****** ****** *)
+//
 #impltmp
 g_cmp<si> = sint_cmp$sint<>
 //
@@ -175,6 +177,18 @@ let
 pvx pf =
 owed_t0_make{nint}() in (pf|(i0)) end
 //let//end($UN.gasq_get$at$raw<strn><cgtz>)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2016-01-05:
+Mon Jan  5 01:22:47 AM EST 2026
+*)
+#impltmp
+g_equal<si> = sint_eq$sint<(*0*)>(*i1,i2*)
+#impltmp
+g_noteq<si> = sint_neq$sint<(*0*)>(*i1,i2*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
