@@ -2065,6 +2065,77 @@ gseq_search$f1un
 (* ****** ****** *)
 //
 (*
+HX-2026-01-05:
+Mon Jan  5 12:17:18 PM EST 2026
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_sortedq
+  ( xs ) =
+let
+fun
+nilq
+(xs: xs): bool =
+gseq_nilq<xs><x0>(xs)
+in//let0
+if
+nilq(xs)
+then true else
+let
+val x0 =
+$UN.gseq_head$raw<xs><x0>(xs)
+val xs =
+$UN.gseq_tail$raw<xs><x0>(xs)
+in//let1
+(
+  auxloop(xs, x0))
+where
+{
+//
+fun
+auxloop
+(xs: xs, x0: x0): bool =
+(
+if
+nilq(xs)
+then true else
+let
+val x1 =
+$UN.gseq_head$raw<xs><x0>(xs)
+val xs =
+$UN.gseq_tail$raw<xs><x0>(xs)
+in//let
+if // if
+sortedq$lteq<x0>(x0, x1)
+then auxloop(xs, x1) else false end)
+//
+}(*where*)
+//
+end(*let1*)//end(else)//endof(if(nilq(xs)))
+//
+end(*let0*)//end-of-[gseq_sortedq<xs><x0>(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_sortedq$f2un
+  (xs, lteq) =
+(
+gseq_sortedq<xs><x0>(xs))
+where
+{
+#impltmp
+sortedq$lteq<x0>(*x1,x2*) = lteq
+}(*where*)//end-of-[gseq_sortedq$f2un(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2026-01-04:
 Sun Jan  4 11:11:49 PM EST 2026
 *)
