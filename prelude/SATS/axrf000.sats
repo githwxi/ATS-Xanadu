@@ -46,6 +46,14 @@ a0rf_vt_tx(a:vt)//0-dim
 #absvtbx // ref
 a0rf_vt_vx(a:vt)//0-dim
 //
+(*
+HX-2026-01-05:
+Traditionally, [ref]
+is the name for [a0rf]
+*)
+#typedef
+ref(x0:vt) = a0rf_vt_tx(x0)
+//
 #typedef
 a0rf(x0:vt) = a0rf_vt_tx(x0)
 #vwtpdef
@@ -102,6 +110,14 @@ a2rf_vt(x0:vt) = [n1:i0;n2:i0] a2rf_vt(x0,n1,n2)
 fun
 <a:vt>
 a0rf_make_1val(x0: a): a0rf(a)
+//
+(*
+HX-2026-01-05:
+Traditionally, [ref]
+is the name for [a0rf]
+*)
+#symload
+ref with a0rf_make_1val of 1000
 //
 #symload
 a0rf with a0rf_make_1val of 1000
