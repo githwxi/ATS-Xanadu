@@ -199,8 +199,12 @@ end(*let*)//end-of-[$UN.gasq_setf$at$raw(...)]
 (* ****** ****** *)
 //
 #impltmp
+$UN.gseq_head$raw
+<strn><cgtz>(*cs*) = $UN.strn_head$raw<>(*cs*)
+//
+#impltmp
 <(*tmp*)>
-$UN.strn_head$raw(cs) = $UN.strn_get$at$raw<>(cs, 0)
+$UN.strn_head$raw(cs) = $UN.strn_get$at$raw<>(cs,0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

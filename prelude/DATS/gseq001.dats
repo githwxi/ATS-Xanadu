@@ -2075,13 +2075,15 @@ Mon Jan  5 12:17:18 PM EST 2026
 gseq_sortedq
   ( xs ) =
 let
+//
 fun
 nilq
 (xs: xs): bool =
 gseq_nilq<xs><x0>(xs)
+//
 in//let0
-if
-nilq(xs)
+if // if
+(nilq(xs))
 then true else
 let
 val x0 =
@@ -2113,6 +2115,64 @@ then auxloop(xs, x1) else false end)
 //
 }(*where*)
 //
+end(*let1*)//end(else)//endof(if(nilq(xs)))
+//
+end(*let0*)//end-of-[gseq_sortedq<xs><x0>(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_sortedq
+  ( xs ) =
+let
+//
+fun
+nilq
+(xs: xs): bool =
+gseq_nilq<xs><x0>(xs)
+//
+in//let0
+//
+if // if
+(nilq(xs))
+then true else
+let
+//
+val xs =
+(
+gseq_strmize<xs><x0>(xs))
+val ~
+strmcon_vt_cons
+(   x0 , xs   ) = (  !xs  )
+//
+in//let1
+(
+  auxloop(xs, x0)
+) where
+{
+//
+#vwtpdef
+xs = strm_vt( x0 )
+//
+fun
+auxloop
+(xs: xs, x0: x0): bool =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+(  (*void*)  ) => true
+| ~
+strmcon_vt_cons
+(   x1, xs   ) =>
+(
+if // if
+sortedq$lteq<x0>(x0, x1)
+then auxloop(xs, x1) else false))
+//
+}
 end(*let1*)//end(else)//endof(if(nilq(xs)))
 //
 end(*let0*)//end-of-[gseq_sortedq<xs><x0>(xs)]
