@@ -2046,9 +2046,9 @@ strmcon_vt_nil() => optn_vt_nil(*0*)
 strmcon_vt_cons
 (   x1 , xs   ) =>
 let
-val () = free(xs) in optn_vt_cons(x1) end//let
+val () = free(xs) in optn_vt_cons(x1) end
 //
-end(*let*)//end-of-[gseq_search<xs:t0><x0:t0>(xs)]
+end(*let*)//end-of-[gseq_search<xs><x0>(xs)]
 //
 #impltmp
 < xs:t0 >
@@ -2059,7 +2059,25 @@ gseq_search$f1un
   gseq_search<xs><x0>(xs)) where
 {
 #impltmp search$test<x0>(x0) = test(x0)
-}(*where*)//endof[gseq_search$f1un<xs><x0>(xs,test)]
+}(*where*)//endof[gseq_search$f1un<xs><x0>(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-04:
+Sun Jan  4 11:11:49 PM EST 2026
+*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_memberq(xs, x0) =
+(
+gseq_exists<xs><x0>(xs)) where
+{
+#impltmp
+exists$test<x0>(x1) = g_equal<x0>(x0, x1)
+}(*where*)//end-of-[gseq_memberq<xs><x0>(xs,x0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
