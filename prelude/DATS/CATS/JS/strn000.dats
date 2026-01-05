@@ -39,6 +39,23 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 <(*tmp*)>
+strn_nilq
+  ( cs ) =
+(
+strn_length<>(cs) = 0)
+//
+#impltmp
+<(*tmp*)>
+strn_consq
+  ( cs ) =
+(
+strn_length<>(cs) > 0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 strn_length
   ( cs ) =
 (

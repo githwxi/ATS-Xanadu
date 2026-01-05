@@ -456,7 +456,8 @@ let
 val c0 =
 $UN.strn_get$at$raw<>(cs, i0)
 pvx pf = owed_t0_make{cgtz}() in (pf|c0)
-end//let//end($UN.gasq_lget$at$raw<strn><cgtz>)
+end//let
+(*end($UN.gasq_lget$at$raw<strn><cgtz>)*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -468,9 +469,24 @@ $UN.strn_fset$at$raw
 strn_fmake_fwork<>
 (
 lam(work) =>
-strn_iforitm$f2un(cs,
-lam(i1,c1) =>
-(if (i0 = i1) then work(c0) else work(c1))))
+strn_iforitm$f2un
+(
+cs,
+lam(i1,c1) => (
+if(i0=i1)then(work(c0))else(work(c1))))
+//end-of-($UN.strn_fset$at$raw(cs,i0,c0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-05:
+Mon Jan  5 01:37:02 PM EST 2026
+*)
+#impltmp
+gseq_nilq<strn><cgtz> = strn_nilq<>(*cs*)
+#impltmp
+gseq_consq<strn><cgtz> = strn_consq<>(*cs*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
