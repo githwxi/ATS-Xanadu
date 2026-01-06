@@ -2086,10 +2086,12 @@ if // if
 (nilq(xs))
 then true else
 let
+//
 val x0 =
 $UN.gseq_head$raw<xs><x0>(xs)
 val xs =
 $UN.gseq_tail$raw<xs><x0>(xs)
+//
 in//let1
 (
   auxloop(xs, x0))
@@ -2190,7 +2192,7 @@ where
 {
 #impltmp
 sortedq$lteq<x0>(*x1,x2*) = lteq
-}(*where*)//end-of-[gseq_sortedq$f2un(xs)]
+}(*where*)//end-of-[gseq_sortedq$f2un(xs,lteq)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

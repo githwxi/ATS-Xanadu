@@ -39,6 +39,36 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-05:
+Mon Jan  5 03:06:12 PM EST 2026
+*)
+//
+#typedef
+gasq$seg_def
+(  xs: t0  ) = (xs, nint, nint)
+#abstype
+gasq$seg_t0_t0
+(  xs: t0  ) <= gasq$seg_def(xs)
+//
+#typedef
+gasq$seg(xs: t0) = gasq$seg_t0_t0(xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+gasq$seg_decd
+(xsii: gasq$seg(xs)): @(xs, ni, ni)
+fun
+<xs:t0>
+gasq$seg_encd
+(xs: xs, lb: ni, ub: ni): gasq$seg(xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_almanac_SATS_pre2026.sats] *)
 (***********************************************************************)

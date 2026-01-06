@@ -315,11 +315,11 @@ let
 var x0 = x0
 in//let
 (
-mapref$fopr1r<x0>(x0);x0)
+mapref$fopr1x<x0>(x0);x0)
 end//let//(mapref$fopr0(x0))
 #impltmp
 < x0:vt >
-mapref$fopr1r(x0) =
+mapref$fopr1x(x0) =
 (x0 := mapref$fopr0<x0>(x0))
 //
 (* ****** ****** *)
@@ -327,7 +327,7 @@ mapref$fopr1r(x0) =
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasq_mapref_c1bv
+gasq_mapref$c1bv
   (xs, fopr) =
 (
 gasq_mapref
@@ -335,7 +335,69 @@ gasq_mapref
 {
 #impltmp
 mapref$fopr0<x0>(x0) = fopr(x0)
-}(*where*)//end-of-[gasq_mapref_c1bv]
+}(*where*)//end-of-[gasq_mapref$c1bv]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-05:
+Mon Jan  5 06:44:09 PM EST 2026
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gasq_sortedq
+  ( xs ) =
+let
+//
+val ln =
+gasq_length<xs><x0>(xs)
+//
+fun
+auxloop
+(i0: nint, x0: x0): bool =
+(
+if
+(i0 >= ln)
+then true else
+(
+if // if
+sortedq$lteq<x0>(x0, x1)
+then
+auxloop(i0+1, x1) else false)
+where
+{
+val x1 =
+$UN.gasq_get$at$raw<xs><x0>(xs, i0)}
+)
+//
+in//let
+//
+(
+if // if
+(ln <= 1)
+then true else
+auxloop(1, 
+  $UN.gasq_get$at$raw<xs><x0>(xs, 0)))
+//
+end(*let*)//end-of-[gasq_sortedq<xs><x0>(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gasq_sortedq$f2un
+  (xs, lteq) =
+(
+gasq_sortedq<xs><x0>(xs))
+where
+{
+#impltmp
+sortedq$lteq<x0>(*x1,x2*) = lteq
+}(*where*)//end-of-[gasq_sortedq$f2un(xs,lteq)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
