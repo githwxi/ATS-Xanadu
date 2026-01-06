@@ -290,6 +290,24 @@ gasq_irmapref$c2bv
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-05:
+Mon Jan  5 06:44:09 PM EST 2026
+*)
+fun
+<xs:t0>
+<x0:t0>
+gasq_sortedq(xs: xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gasq_sortedq$f2un
+(xs: xs, lteq: (x0, x0) -> bool): bool
+#symload gasq_sortedq with gasq_sortedq$f2un of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_gasq001.sats] *)
 (***********************************************************************)
