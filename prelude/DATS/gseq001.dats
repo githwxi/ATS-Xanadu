@@ -175,8 +175,8 @@ exists$test<x0>(x0) = test(x0)//impl
 gseq_rforall
   ( xs ) =
 (
-strm_vt_forall0<x0>
-(gseq_rstrmize<xs><x0>(xs)))
+list_vt_forall0<x0>
+(gseq_rlistize<xs><x0>(xs)))
 where
 {
 #impltmp
