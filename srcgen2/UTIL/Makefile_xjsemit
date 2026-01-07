@@ -61,6 +61,17 @@ $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xatsopt_tcheck01.dats >> $@_ats3.j
 #
 ########################################################################
 ########################################################################
+xatsopt_tcheck00_opt1: ; \
+npx google-closure-compiler \
+  -W QUIET --compilation_level SIMPLE \
+  --js=xatsopt_tcheck00_ats3.js --js_output_file=xatsopt_tcheck00_ats3_opt1.js
+#
+xatsopt_tcheck01_opt1: ; \
+npx google-closure-compiler \
+  -W QUIET --compilation_level SIMPLE \
+  --js=xatsopt_tcheck01_ats3.js --js_output_file=xatsopt_tcheck01_ats3_opt1.js
+########################################################################
+########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################

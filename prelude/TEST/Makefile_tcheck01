@@ -12,7 +12,8 @@ cleanall:: ; rm -f *~
 ########################################################################
 MYROOT="./../.."
 ########################################################################
-SRCGEN2_XATSOPT=$(MYROOT)/srcgen2/UTIL/xatsopt_tcheck01_ats2.js
+XATSOPT_TCHECK01=\
+$(MYROOT)/xassets/JS/xatsopt/xatsopt_tcheck01_ats3_opt1.js
 ########################################################################
 ########################################################################
 PRESATS=\
@@ -101,32 +102,32 @@ presats
 presats: \
 $(OUTSATS)
 OUTS/%_sats_out.00: \
-../SATS/%.sats; $(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+../SATS/%.sats; $(NODE) --stack-size=4096 $(XATSOPT_TCHECK01) $<
 ########################################################################
 all:: \
 presats_vt
 presats_vt: \
 $(OUTSATS_vt)
 OUTS/%_sats_out.00: \
-../SATS/VT/%.sats; $(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+../SATS/VT/%.sats; $(NODE) --stack-size=4096 $(XATSOPT_TCHECK01) $<
 ########################################################################
 all:: \
 prelude_dats_hats
 prelude_dats_hats: ; $(NODE) \
---stack-size=4096 $(SRCGEN2_XATSOPT) ./../HATS/prelude_dats.hats
+--stack-size=4096 $(XATSOPT_TCHECK01) ./../HATS/prelude_dats.hats
 ########################################################################
 all:: \
 prelude_JS_dats_hats
 prelude_JS_dats_hats: ; $(NODE) \
---stack-size=4096 $(SRCGEN2_XATSOPT) ./../HATS/prelude_JS_dats.hats
+--stack-size=4096 $(XATSOPT_TCHECK01) ./../HATS/prelude_JS_dats.hats
 ########################################################################
 all:: \
 prelude_PY_dats_hats
 prelude_PY_dats_hats: ; $(NODE) \
---stack-size=4096 $(SRCGEN2_XATSOPT) ./../HATS/prelude_PY_dats.hats
+--stack-size=4096 $(XATSOPT_TCHECK01) ./../HATS/prelude_PY_dats.hats
 ########################################################################
 prelude_NODE_dats: ; $(NODE) \
---stack-size=4096 $(SRCGEN2_XATSOPT) ./../HATS/prelude_NODE_dats.hats
+--stack-size=4096 $(XATSOPT_TCHECK01) ./../HATS/prelude_NODE_dats.hats
 ########################################################################
 ########################################################################
 ###################### end of [Makefile_tcheck01] ######################
