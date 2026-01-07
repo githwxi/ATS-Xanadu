@@ -36,36 +36,36 @@
 ########################################################################.
 ##
 def \
-XATS2JS_list_vt_foritm0_f1un \
+XATS2PY_list_vt_foritm0_f1un \
   (xs, work):
   while (True):
-    if XATS2JS_list_vt_nilq1(xs):
+    if XATS2PY_list_vt_nilq1(xs):
       break
     else:
-      x1 = XATS2JS_list_vt_head_raw1(xs)
+      x1 = XATS2PY_list_vt_head_raw1(xs)
       work(x1)
-      xs = XATS2JS_list_vt_tail_raw0(xs)
-    ## end-of-(if(XATS2JS_list_vt_nilq1(xs)))
-  return None ## XATS2JS_list_vt_foritm0_f1un(...)
+      xs = XATS2PY_list_vt_tail_raw0(xs)
+    ## end-of-(if(XATS2PY_list_vt_nilq1(xs)))
+  return None ## XATS2PY_list_vt_foritm0_f1un(...)
 ##
 ########################################################################.
 ##
 def \
-XATS2JS_list_vt_forall0_f1un \
+XATS2PY_list_vt_forall0_f1un \
   (xs, test, free):
   while (True):
-    if (XATS2JS_list_vt_nilq1(xs)):
+    if (XATS2PY_list_vt_nilq1(xs)):
       break
     else:
-      x1 = XATS2JS_list_vt_head_raw1(xs)
+      x1 = XATS2PY_list_vt_head_raw1(xs)
       if (test(x1)):
-        xs = XATS2JS_list_vt_tail_raw0(xs)
+        xs = XATS2PY_list_vt_tail_raw0(xs)
       else:
-        xs = XATS2JS_list_vt_tail_raw0(xs)
-        XATS2JS_list_vt_foritm0_f1un(xs, free)
+        xs = XATS2PY_list_vt_tail_raw0(xs)
+        XATS2PY_list_vt_foritm0_f1un(xs, free)
         return False
-    ## end-of-(if(XATS2JS_list_vt_nilq1(xs)))
-  return True ## XATS2JS_list_vt_forall0_f1un(...)
+    ## end-of-(if(XATS2PY_list_vt_nilq1(xs)))
+  return True ## XATS2PY_list_vt_forall0_f1un(...)
 ##
 ########################################################################.
 ########################################################################.
