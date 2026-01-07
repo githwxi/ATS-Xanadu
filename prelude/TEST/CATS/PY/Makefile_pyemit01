@@ -40,14 +40,16 @@ testall:: test09; $(PYTHON) OUTS/$<_out.py
 testall:: test10; $(PYTHON) OUTS/$<_out.py
 ########################################################################
 ########################################################################
+MYROOT=\
+"./../../../.."
 SRCGEN2_SRCGENX=\
-$(XATSHOME)/srcgen2/xats2py/srcgenx
+$(MYROOT)/srcgen2/xats2py/srcgenx
 SRCGEN2_XSHARED=\
-$(XATSHOME)/srcgen2/xats2py/srcgenx/xshared/runtime
+$(MYROOT)/srcgen2/xats2py/srcgenx/xshared/runtime
 SRCGEN2_XATS2PY=\
-$(XATSHOME)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_ats2.js
+$(MYROOT)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_ats2.js
 SRCGEN2_XATS2PY=\
-$(XATSHOME)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_ats3.js
+$(MYROOT)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_ats3.js
 ########################################################################
 ########################################################################
 test00:: ; \
