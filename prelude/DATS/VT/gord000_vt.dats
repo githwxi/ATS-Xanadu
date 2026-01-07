@@ -77,10 +77,16 @@ g_gte11<a> = g_gte<a>
 //
 #impltmp
 {a:t0}
-g_cmp00<a> = g_cmp<a>
+g_cmp00<a> = g_cmp<a>(*x1,x2*)
 #impltmp
 {a:t0}
-g_cmp11<a> = g_cmp<a>
+g_cmp01<a> = g_cmp<a>(*x1,x2*)
+#impltmp
+{a:t0}
+g_cmp10<a> = g_cmp<a>(*x1,x2*)
+#impltmp
+{a:t0}
+g_cmp11<a> = g_cmp<a>(*x1,x2*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

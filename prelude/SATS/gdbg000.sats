@@ -90,6 +90,8 @@ fun
 <vt:vt>
 g_debug( x0:vt ): ( vt )
 //
+(* ****** ****** *)
+//
 fun
 <vw:vw>
 g_psort((*void*)): ( void )
