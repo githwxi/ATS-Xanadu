@@ -66,22 +66,21 @@ g_ptype<vt>((*0*)); pstrn(")"))
 #impltmp
 <(*tmp*)>
 strm_vt_nil() =
-(
 $llazy(
-strmcon_vt_nil(*0*)))
+strmcon_vt_nil(*0*))
 //
 #impltmp
 < a: vt >
 strm_vt_sing(x0) =
 (
 strm_vt_cons
-(x0, strm_vt_nil())))
+(x0, strm_vt_nil()))
 #impltmp
 < a: vt >
 strmcon_vt_sing(x0) =
 (
 strmcon_vt_cons
-(x0, strm_vt_nil())))
+(x0, strm_vt_nil()))
 //
 #impltmp
 < a: vt >

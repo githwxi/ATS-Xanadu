@@ -38,7 +38,7 @@ val () = prints("xs = ", xs, "\n")
 val () = prints("ys = ", ys, "\n")
 //
 (* ****** ****** *)
-///
+//
 val ztup =
 GZ2SEQ(xs, ys)
 val (  ) =
@@ -46,7 +46,11 @@ prints("ztup = ", ztup, "\n")
 //
 val zxys = listize(ztup)
 val (  ) =
-print1s("listize(ztup) = ", zxys, "\n")
+print0s("listize(ztup) = ", zxys, "\n")
+//
+val zxys = strmize(ztup)
+val (  ) =
+print0s("strmize(ztup) = ", zxys, "\n")
 //
 (* ****** ****** *)
 //
@@ -59,6 +63,10 @@ prints("xztup = ", xztup, "\n")
 val xzxys = listize(xztup)
 val (   ) =
 print1s("listize(xztup) = ", xzxys, "\n")
+//
+val xzxys = strmize(xztup)
+val (   ) =
+print0s("strmize(xztup) = ", xzxys, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

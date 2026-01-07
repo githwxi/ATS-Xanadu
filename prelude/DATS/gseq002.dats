@@ -127,6 +127,7 @@ gseq_z2rforall
 <xs><x0><ys><y0>(xs, ys))
 where
 {
+//
 val
 @(xs, ys) =
 z2tup_unmk(xsys)
@@ -134,9 +135,50 @@ val xs =
 GSEQ_unmk<xs><x0>(xs)
 and ys =
 GSEQ_unmk<ys><y0>(ys)
+//
 #impltmp
 z2rforall$test<x0><y0>(x0, y0) = rforall$test@(x0, y0)
+//
 }
+//
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, x0:t0
+, ys:t0
+, y0:t0 }
+gseq_strmize
+<
+gz2seq
+(xs,x0
+,ys,y0)><(x0,y0)>
+  (xsys) =
+let
+//
+val
+@(xs, ys) =
+z2tup_unmk(xsys)
+val xs =
+GSEQ_unmk<xs><x0>(xs)
+and ys =
+GSEQ_unmk<ys><y0>(ys)
+//
+val xs = gseq_strmize<xs><x0>(xs)
+val ys = gseq_strmize<ys><y0>(ys)
+//
+in//let
+//
+(
+strm_vt_z2map0
+<x0><y0><(x0,y0)>(xs, ys))
+where
+{
+#impltmp
+z2map$fopr0<x0><y0><(x0,y0)>(x0, y0) = (x0, y0)
+}
+//
+end//let
 //
 (* ****** ****** *)
 (* ****** ****** *)
