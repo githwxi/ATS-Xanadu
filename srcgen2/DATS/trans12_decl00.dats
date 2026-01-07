@@ -1516,7 +1516,7 @@ list_cons
 (s2ts, stss) =>
 (
 S2Tfun1
-(s2ts, f1_stss(stss, tres)))
+(s2ts, f1_stss(stss, tres))))
 }(*where*)//end-of-[val(tfun)]
 //
 (*
