@@ -169,26 +169,35 @@ exists$test<x0>(x0) = test(x0)//impl
 //
 (* ****** ****** *)
 //
+(*
+(*
+HX-2026-01-07:
+This should be for
+a bi-directional gseq!
+Wed Jan  7 02:41:07 PM EST 2026
+*)
 #impltmp
 < xs:t0 >
 < x0:t0 >
 gseq_rforall
   ( xs ) =
 (
-list_vt_forall0<x0>
-(gseq_rlistize<xs><x0>(xs)))
+strm_vt_forall0<x0>
+(gseq_rstrmize<xs><x0>(xs)))
 where
 {
 #impltmp
 forall$test0<x0> = rforall$test<x0>
 }
+*)
 //
-(*
 (*
 HX-2025-12-22:
 [gseq_rforall] should be
 based on [gseq_rlistize]
 for uni-directional [gseq]?
+HX-2026-01-07: Yes!
+Wed Jan  7 02:41:07 PM EST 2026
 *)
 #impltmp
 < xs:t0 >
@@ -203,7 +212,6 @@ where
 #impltmp
 forall$test0<x0> = rforall$test<x0>
 }
-*)
 //
 #impltmp
 < xs:t0 >
