@@ -193,6 +193,20 @@ end(*let*)//end-of-[loop(li,ui)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0:vt >
+asrt_memberq
+  (xs, x0) =
+(
+asrt_exists<x0>(xs)) where
+{
+#impltmp
+exists$tcmp1<x0>(x1) = g_cmp11<x0>(x0, x1)
+}(*where*)//end-of-[asrt_memberq<x0>(xs,x0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_asrt000.dats] *)
 (***********************************************************************)

@@ -97,6 +97,9 @@ fun
 asrt_exists
 (xs: asrt(x0)): ( bool )
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2025-12-29:
 [asrt_search$idx(xs)]
@@ -113,6 +116,15 @@ asrt_search$idx
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2026-01-06:
+Tue Jan  6 01:11:19 AM EST 2026
+*)
+fun
+<x0:vt>
+asrt_memberq
+(xs: asrt(x0), x0: !x0): (bool)
 //
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_asrt000.sats] *)

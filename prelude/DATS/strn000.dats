@@ -473,7 +473,7 @@ strn_iforitm$f2un
 (
 cs,
 lam(i1,c1) => (
-if(i0=i1)then(work(c0))else(work(c1))))
+if(i0=i1)then(work(c0))else(work(c1)))))
 //end-of-($UN.strn_fset$at$raw(cs,i0,c0))
 //
 (* ****** ****** *)

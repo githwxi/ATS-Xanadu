@@ -55,7 +55,6 @@ gasq$seg_t0_t0
 gasq$seg(xs: t0) = gasq$seg_t0_t0(xs)
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -65,6 +64,23 @@ fun
 <xs:t0>
 gasq$seg_encd
 (xs: xs, lb: ni, ub: ni): gasq$seg(xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2027-01-07:
+Wed Jan  7 12:37:11 PM EST 2026
+*)
+//
+fun<>
+nint_digitize(nint): list_vt(nint)
+fun<>
+nint_rdigitize(nint): strm_vt(nint)
+//
+fun<>
+nint_base$rdigitize
+(n0: nint, b0: sintlte(2)): strm_vt(nint)
 //
 (* ****** ****** *)
 (* ****** ****** *)
