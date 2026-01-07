@@ -137,8 +137,9 @@ strm_vt(nint) = $llazy
 (
 if // if
 (n0 <= 0)
-then strmcon_vt_nil(*0*)
-else strmcon_vt_cons(n0%b0, auxmain(n0/b0)))
+then strmcon_vt_nil(*0*) else
+(
+  strmcon_vt_cons(n0%b0, auxmain(n0/b0))))
 //
 }(*where*)//end-of-[nint_base$rdigitize<>(n0,b0)]
 //
@@ -146,5 +147,5 @@ else strmcon_vt_cons(n0%b0, auxmain(n0/b0)))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_SATS_pre2026.sats] *)
+(* end of [ATS3/XANADU_prelude_almanac_DATS_pre2026.dats] *)
 (***********************************************************************)
