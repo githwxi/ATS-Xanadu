@@ -53,12 +53,14 @@ testall2:: test04; $(NODE) OUTS/$<_out2.js
 testall2:: test06; $(NODE) OUTS/$<_out2.js
 ########################################################################
 ########################################################################
+MYROOT=\
+"./../../../.."
 SRCGEN2_XSHARED=\
-$(XATSHOME)/srcgen2/xats2js/srcgenx/xshared/runtime
+$(MYROOT)/srcgen2/xats2js/srcgenx/xshared/runtime
 SRCGEN2_XATS2JS=\
-$(XATSHOME)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit01_ats2.js
+$(MYROOT)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit01_ats2.js
 SRCGEN2_XATS2JS=\
-$(XATSHOME)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit01_ats3.js
+$(MYROOT)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit01_ats3.js
 ########################################################################
 ########################################################################
 test00:: ; \
