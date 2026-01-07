@@ -107,18 +107,20 @@ Wed Jan  7 12:37:11 PM EST 2026
 <(*tmp*)>
 nint_digitize
   (  n0  ) =
-let
-val ds =
-nint_rdigitize<>(n0)
-in//let
-strm_vt_rlistize0<ni>(ds)
-end//let//end(nint_digitize)
-//
+nint_base$digitize<>(n0, 10)
 #impltmp
 <(*tmp*)>
 nint_rdigitize
   (  n0  ) =
 nint_base$rdigitize<>(n0, 10)
+//
+#impltmp
+<(*tmp*)>
+nint_base$digitize
+  (n0, b0) =
+strm_vt_rlistize0<ni>
+(
+nint_base$rdigitize<>(n0, b0))
 //
 #impltmp
 <(*tmp*)>

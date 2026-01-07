@@ -79,6 +79,9 @@ fun<>
 nint_rdigitize(nint): strm_vt(nint)
 //
 fun<>
+nint_base$digitize
+(n0: nint, b0: sintlte(2)): list_vt(nint)
+fun<>
 nint_base$rdigitize
 (n0: nint, b0: sintlte(2)): strm_vt(nint)
 //
