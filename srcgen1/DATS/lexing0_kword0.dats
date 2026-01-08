@@ -379,19 +379,24 @@ val () = myins("fn1", T_FN1_)
 val () = myins("fnx", T_FNX_)
 val () = myins("fun", T_FUN_)
 //
+val () = myins("pax", T_PRAXI_)
+val () = myins("pfx", T_PRFUN_)
+val () = myins("pvx", T_PRVAL_)
+//
 (*
 val () = myins("prfn", T_PRFN_)
 *)
+//
+val () = myins("praxi", T_PRAXI_)
+//
 val () = myins("prfn0", T_PRFN0_)
 val () = myins("prfn1", T_PRFN1_)
 val () = myins("prfun", T_PRFUN_)
-val () = myins("praxi", T_PRAXI_)
 //
 val () = myins("prval", T_PRVAL_)
 val () = myins("prvar", T_PRVAR_)
 //
 val () = myins("fcast", T_FCAST_)
-//
 //
 (*
 //

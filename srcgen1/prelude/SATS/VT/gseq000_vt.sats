@@ -139,49 +139,71 @@ gseq_cmp11(!xs, !xs): sint
 fun
 <xs:vt>
 <x0:vt>
-gseq_print0(xs: ~xs): void
+gseq_torep0(xs: ~xs): (strn)
 fun
 <xs:vt>
 <x0:vt>
-gseq_print1(xs: !xs): void
+gseq_torep1(xs: !xs): (strn)
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_print$beg0((*void*)): void
+gseq_tostr0(xs: ~xs): (strn)
 fun
 <xs:vt>
 <x0:vt>
-gseq_print$end0((*void*)): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_print$sep0((*void*)): void
-//
-fun
-<xs:vt>
-<x0:vt>
-gseq_print$beg1((*void*)): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_print$end1((*void*)): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_print$sep1((*void*)): void
+gseq_tostr1(xs: !xs): (strn)
 //
 (* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_length0(~xs): nint
+gseq_print0(xs: ~xs): (void)
 fun
 <xs:vt>
 <x0:vt>
-gseq_length1(!xs): nint
+gseq_print1(xs: !xs): (void)
 //
+fun
+<xs:vt>
+<x0:vt>
+gseq_print$beg0((*0*)): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_print$end0((*0*)): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_print$sep0((*0*)): void
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_print$beg1((*0*)): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_print$end1((*0*)): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_print$sep1((*0*)): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_length0(xs: ~xs): (nint)
+fun
+<xs:vt>
+<x0:vt>
+gseq_length1(xs: !xs): (nint)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 fun
