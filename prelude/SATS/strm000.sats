@@ -194,6 +194,8 @@ strm_all$print(xs: strm(x0)): void
 //
 fun<>
 strm_print$len(): sint
+fun<>
+strm_print'len(): sint
 fun
 <x0:t0>
 strm_len$print(xs: strm(x0), ln: sint): void

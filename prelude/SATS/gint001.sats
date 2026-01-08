@@ -154,6 +154,25 @@ rforitm with nint_rforitm$f1un of 1000
 (* ****** ****** *)
 //
 fun
+<y0:t0>
+nint_map_list
+ {n0:i0}
+(xs: nint(n0)): list(y0, n0)
+fun
+<y0:t0>
+nint_map$f1un_list
+ {n0:i0}
+(xs: nint(n0)
+,f0: nintlt(n0)->y0): list(y0, n0)
+//
+#symload
+map_list with nint_map_list of 1000
+#symload
+map_list with nint_map$f1un_list of 1000
+//
+(* ****** ****** *)
+//
+fun
 <y0:vt>
 nint_map_llist
  {n0:i0}

@@ -678,6 +678,35 @@ list_vt2t(list_vt_make_lstrq<a>(xs)))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-08:
+Thu Jan  8 10:54:42 AM EST 2026
+*)
+//
+#impltmp
+list_make'len<>() = 10
+//
+#impltmp
+< a:t0 >
+list_make() =
+(
+nint_map_list<a>(ln)
+) where
+{
+//
+val ln = list_make'len<>()
+//
+#impltmp map$fopr<a>(_) = g_make<a>()
+//
+}(*where*)//end-of-[g_make<list(a)>()]
+//
+#impltmp
+{ a:t0 }
+g_make<list(a)>(*0*) = list_make<a>(*0*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_list000.dats] *)
 (***********************************************************************)

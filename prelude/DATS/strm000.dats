@@ -276,6 +276,9 @@ strm_beg() = "$strm("
 #impltmp
 <>(*tmp*)
 strm_print$len() = (10)
+#impltmp
+<>(*tmp*)
+strm_print'len() = (10)
 //
 (* ****** ****** *)
 //
