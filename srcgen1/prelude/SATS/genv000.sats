@@ -303,6 +303,39 @@ fun
 gseq_iforitm$e2nv(xs,!e1,!e2): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<e1:vt>
+gseq_map$e1nv_list
+  ( xs: xs, e1: !e1 ): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<e1:vt>
+gseq_map$e1nv_rlist
+  ( xs: xs, e1: !e1 ): list(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<e1:vt>
+gseq_imap$e1nv_list
+  ( xs: xs, e1: !e1 ): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<e1:vt>
+gseq_imap$e1nv_rlist
+  ( xs: xs, e1: !e1 ): list(y0)
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -310,6 +343,13 @@ fun
 <y0:vt>
 <e1:vt>
 gseq_map$e1nv_llist
+  ( xs: xs, e1: !e1 ): list_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+gseq_map$e1nv_rllist
   ( xs: xs, e1: !e1 ): list_vt(y0)
 //
 fun
@@ -319,7 +359,49 @@ fun
 <e1:vt>
 gseq_imap$e1nv_llist
   ( xs: xs, e1: !e1 ): list_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+gseq_imap$e1nv_rllist
+  ( xs: xs, e1: !e1 ): list_vt(y0)
 //
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+gseq_map$e1nv_lstrm
+  ( xs: xs, e1: !e1 ): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+gseq_imap$e1nv_lstrm
+  ( xs: xs, e1: !e1 ): strm_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+gseq_map$e1nv_lstrq
+  ( xs: xs, e1: !e1 ): strq_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+gseq_imap$e1nv_lstrq
+  ( xs: xs, e1: !e1 ): strq_vt(y0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -353,6 +435,26 @@ optn_map$e1nv_vt
 (optn(x0, b), e1: !e1): optn_vt(y0, b)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<e1:vt>
+<e2:vt>
+gseq_map$e2nv_list
+(xs: xs, e1: !e1, e2: !e2): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+<e1:vt>
+<e2:vt>
+gseq_imap$e2nv_list
+(xs: xs, e1: !e1, e2: !e2): list(y0)
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -362,8 +464,6 @@ fun
 <e2:vt>
 gseq_map$e2nv_llist
 (xs: xs, e1: !e1, e2: !e2): list_vt(y0)
-//
-//
 fun
 <xs:t0>
 <x0:t0>
@@ -373,6 +473,45 @@ fun
 gseq_imap$e2nv_llist
 (xs: xs, e1: !e1, e2: !e2): list_vt(y0)
 //
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+<e2:vt>
+gseq_map$e2nv_lstrm
+(xs: xs, e1: !e1, e2: !e2): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+<e2:vt>
+gseq_imap$e2nv_lstrm
+(xs: xs, e1: !e1, e2: !e2): strm_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+<e2:vt>
+gseq_map$e2nv_lstrq
+(xs: xs, e1: !e1, e2: !e2): strq_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+<e1:vt>
+<e2:vt>
+gseq_imap$e2nv_lstrq
+(xs: xs, e1: !e1, e2: !e2): strq_vt(y0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

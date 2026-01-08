@@ -293,10 +293,7 @@ fun
 search$test(x0: x0): bool
 fun
 <x0:t0>
-search$test0(x0: !x0): bool
-fun
-<x0:t0>
-search$test1(x0: !x0): bool
+search$tcmp(x0: x0): sint
 //
 (* ****** ****** *)
 //
@@ -305,10 +302,19 @@ fun
 rsearch$test(x0: x0): bool
 fun
 <x0:t0>
-rsearch$test0(x0: !x0): bool
+rsearch$tcmp(x0: x0): sint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-05:
+Mon Jan  5 12:17:18 PM EST 2026
+*)
+//
 fun
 <x0:t0>
-rsearch$test1(x0: !x0): bool
+sortedq$lteq(x1: x0, x2: x0): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)

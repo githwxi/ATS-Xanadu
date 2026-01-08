@@ -197,6 +197,19 @@ fun
 gseq_sep((*0*)): strn
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_torep(xs: xs): strn
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_tostr(xs: xs): strn
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -217,12 +230,13 @@ fun
 gseq_print$sep((*0*)): void
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
 gseq_length(xs: xs): nint
-
+//
 (* ****** ****** *)
 //
 (*
@@ -273,39 +287,6 @@ fun
 <x0:t0>
 gseq_memberq
 (xs: xs, x0: x0): bool
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_search(xs): x0
-fun
-<xs:t0>
-<x0:t0>
-gseq_rsearch(xs): x0
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_search$exn(xs): x0
-fun
-<xs:t0>
-<x0:t0>
-gseq_rsearch$exn(xs): x0
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_search$opt
-  (xs: xs): optn_vt(x0)
-fun
-<xs:t0>
-<x0:t0>
-gseq_rsearch$opt
-  (xs: xs): optn_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -812,6 +793,7 @@ fun
 gseq_map_disj(xs): bool
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -865,28 +847,23 @@ gseq_min_ini
 ( xs: xs, x0: x0 ): (x0)
 //
 (* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_sortedq(xs): bool
-//
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
 gseq_rexists(xs): bool
-//
 fun
 <xs:t0>
 <x0:t0>
 gseq_rforall(xs): bool
+//
 fun
 <xs:t0>
 <x0:t0>
 gseq_rforitm(xs): void
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -2414,6 +2391,47 @@ ifilter$fun_llist with gseq_ifilter$f2un_llist of 0100
 #symload
 imapopt$fun_llist with gseq_imapopt$f2un_llist of 0100
 *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-25:
+Thu Dec 25 04:40:27 PM EST 2025
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_search(xs: xs): optn_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rsearch(xs: xs): optn_vt(x0)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_search$f1un
+(xs: xs, test: (x0)->bool): optn_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rsearch$f1un
+(xs: xs, test: (x0)->bool): optn_vt(x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_sortedq(xs: xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_sortedq$f2un
+(xs: xs, lteq: (x0, x0) -> bool): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -1539,12 +1539,12 @@ fun
 <x0:t0>
 gseq_search(xs: xs): optn_vt(x0)
 #symload search with gseq_search of 1000
+//
 fun
 <xs:t0>
 <x0:t0>
 gseq_search$f1un
 (xs: xs, test: (x0)->bool): optn_vt(x0)
-//
 #symload gseq_search with gseq_search$f1un of 0100
 //
 (* ****** ****** *)

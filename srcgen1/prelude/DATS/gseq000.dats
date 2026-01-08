@@ -403,57 +403,11 @@ exists$test<x0>(x1) = g_equal<x0>(x0, x1)
 }(*where*)//end-of-[gseq_memberq(xs,x0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 <xs><x0>
 gseq_search
-  (xs) =
-(
-case+ opt of
-| ~
-optn_vt_nil() =>
-gseq_search$exn
-<xs><x0>(  xs  )//cont
-| ~
-optn_vt_cons(x0) => x0) where
-{
-val
-opt = gseq_search$opt<xs><x0>(xs)
-}(*where*)//end-of-[ gseq_search(xs) ]
-//
-(* ****** ****** *)
-//
-#impltmp
-<xs><x0>
-gseq_rsearch
-  (xs) =
-(
-case+ opt of
-| ~
-optn_vt_nil() =>
-gseq_rsearch$exn
-<xs><x0>(  xs  )//cont
-| ~
-optn_vt_cons(x0) => x0) where
-{
-val
-opt = gseq_rsearch$opt<xs><x0>(xs)
-}(*where*)//end-of-[gseq_rsearch(xs) ]
-//
-#impltmp
-<xs><x0>
-gseq_search$exn
-  ( xs ) = $raise NotFoundExn((*0*))
-#impltmp
-<xs><x0>
-gseq_rsearch$exn
-  ( xs ) = $raise NotFoundExn((*0*))
-//
-(* ****** ****** *)
-//
-#impltmp
-<xs><x0>
-gseq_search$opt
   ( xs ) =
 let
 //
@@ -487,15 +441,15 @@ end where // end-of-[let]
 //
 #vwtpdef res = optn_vt(x0)
 //
- var r0: res = optn_vt_nil((*void*))
+var r0 : res = optn_vt_nil((*0*))
 //
-}(*where*)//end-of-[gseq_search$opt(xs)]
+}(*where*)//end-of-[gseq_search(xs)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-gseq_rsearch$opt
+gseq_rsearch
   ( xs ) =
 let
 //
@@ -529,9 +483,9 @@ end where // end-of-[let]
 //
 #vwtpdef res = optn_vt(x0)
 //
-var r0: res = optn_vt_nil((*void*))
+var r0 : res = optn_vt_nil((*0*))
 //
-}(*where*)//end-of-[gseq_rsearch$opt]
+}(*where*)//end-of-[gseq_rsearch(xs)]
 //
 (* ****** ****** *)
 //

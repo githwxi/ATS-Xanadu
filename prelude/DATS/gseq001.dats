@@ -2054,7 +2054,8 @@ strmcon_vt_nil() => optn_vt_nil(*0*)
 strmcon_vt_cons
 (   x1 , xs   ) =>
 let
-val () = free(xs) in optn_vt_cons(x1) end
+val () =
+strm_vt_free(xs) in optn_vt_cons(x1) end
 //
 end(*let*)//end-of-[gseq_search<xs><x0>(xs)]
 //

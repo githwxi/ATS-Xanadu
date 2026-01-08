@@ -630,6 +630,27 @@ rlistize0 with strm_vt_rlistize0 of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+(*
+HX-2025-12-13:
+concat0 -> lstrm$concat0
+Sat Dec 13 11:42:48 PM EST 2025
+*)
+//
+fun
+<x0:vt>
+strm_vt_lstrm$concat0
+( xss
+: ~strm_vt(strm_vt(x0))): strm_vt(x0)
+//
+#symload
+concat0 with strm_vt_lstrm$concat0 of 1000
+#symload
+lstrm$concat0 with strm_vt_lstrm$concat0 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_prelude_SATS_VT_strm000_vt.sats] *)
 (***********************************************************************)

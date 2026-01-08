@@ -210,7 +210,7 @@ gseq_tail$opt0
 fun
 <xs:vt>
 <x0:vt>
-gseq_uncons0(xs: ~xs): (x0, xs)
+gseq_uncons0(~xs): (x0, xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -218,29 +218,31 @@ gseq_uncons0(xs: ~xs): (x0, xs)
 fun
 <xs:vt>
 <x0:vt>
-gseq_torep0(xs: ~xs): strn
+gseq_torep0(xs: ~xs): (strn)
 fun
 <xs:vt>
 <x0:vt>
-gseq_torep1(xs: !xs): strn
+gseq_torep1(xs: !xs): (strn)
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_tostr0(xs: ~xs): strn
+gseq_tostr0(xs: ~xs): (strn)
 fun
 <xs:vt>
 <x0:vt>
-gseq_tostr1(xs: !xs): strn
+gseq_tostr1(xs: !xs): (strn)
+//
+(* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_print0(xs: ~xs): void
+gseq_print0(xs: ~xs): (void)
 fun
 <xs:vt>
 <x0:vt>
-gseq_print1(xs: !xs): void
+gseq_print1(xs: !xs): (void)
 //
 (*
 #symload print0 with gseq_print0 of 0100
