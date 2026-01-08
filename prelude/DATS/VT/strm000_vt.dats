@@ -384,6 +384,9 @@ strm_vt_beg() = "$strm_vt("
 #impltmp
 <>(*tmp*)
 strm_vt_print$len() = (10)
+#impltmp
+<>(*tmp*)
+strm_vt_print'len() = (10)
 //
 (* ****** ****** *)
 //

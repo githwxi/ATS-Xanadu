@@ -214,6 +214,24 @@ prepend00 with strq_vt_prepend00 of 1000
 //
 (* ****** ****** *)
 //
+(*
+(*
+HX-2026-01-08:
+This is the new naming style
+Thu Jan  8 09:48:03 AM EST 2026
+*)
+fun
+<x0:vt>
+strm_vt_llist0$prepend0
+( xs: strm_vt(x0)
+, ys: list_vt(x0)): strm_vt(x0)
+fun
+<x0:vt>
+strm_vt_lstrq0$prepend0
+( xs: strm_vt(x0)
+, ys: strq_vt(x0)): strm_vt(x0)
+*)
+//
 fun
 <x0:vt>
 strm_vt_prepend0__llist0
@@ -225,21 +243,43 @@ strm_vt_prepend0__lstrq0
 ( xs: strm_vt(x0)
 , ys: strq_vt(x0)): strm_vt(x0)
 //
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-strq_vt_prepend0__llist0
-{n1,n2:i0}
-( xs: strq_vt(x0,n1)
-, ys: list_vt(x0,n2)): strq_vt(x0,n2+n1)
-//
-(* ****** ****** *)
-//
+(*
+#symload
+prepend00 with strm_vt_llist0$prepend0
+#symload
+prepend00 with strm_vt_lstrq0$prepend0
+*)
 #symload
 prepend00 with strm_vt_prepend0__llist0
 #symload
 prepend00 with strm_vt_prepend0__lstrq0
+//
+(* ****** ****** *)
+//
+(*
+(*
+HX-2026-01-08:
+This is the new naming style
+Thu Jan  8 09:48:03 AM EST 2026
+*)
+fun
+<x0:vt>
+strq_vt_llist0$prepend0
+{n1,n2:i0}
+( xs
+: strq_vt(x0,n1)
+, ys
+: list_vt(x0,n2)): strq_vt(x0,n2+n1)
+#symload
+prepend00 with strq_vt_llist0$prepend0
+*)
+fun
+<x0:vt>
+strq_vt_prepend0__llist0
+{n1,n2:i0}
+(
+xs: strq_vt(x0,n1),
+ys: list_vt(x0,n2)): strq_vt(x0,n2+n1)
 #symload
 prepend00 with strq_vt_prepend0__llist0
 //
@@ -345,6 +385,8 @@ strm_vt_all$print0(xs: strm_vt(x0)): void
 //
 fun<>
 strm_vt_print$len(): sint
+fun<>
+strm_vt_print'len(): sint
 fun
 <x0:vt>
 strm_vt_len$print0(xs: strm_vt(x0), ln: sint): void

@@ -426,6 +426,26 @@ HX-2024-07-28:
 Sun 28 Jul 2024 02:03:24 PM EDT
 *)
 //
+(* ****** ****** *)
+//
+#impltmp
+< y0:t0 >
+nint_map_list
+  ( ni ) =
+(
+list_vt2t(
+nint_map_llist<y0>(ni)))
+//
+#impltmp
+< y0:t0 >
+nint_map$f1un_list
+  (ni, f0) =
+(
+list_vt2t(
+nint_map$f1un_llist<y0>(ni, f0)))
+//
+(* ****** ****** *)
+//
 #impltmp
 < y0:vt >
 nint_map_llist
@@ -452,7 +472,8 @@ then r0 else
 let
 val y0 = map$fopr<ni><y0>(i0)
 in//let
-  loop(i0+1, list_vt_cons(y0,r0))
+(
+loop(i0+1, list_vt_cons(y0, r0)))
 end(*let*)//else//end-of-[if(...)]
 )
 //

@@ -104,6 +104,23 @@ tail$opt with list_tail$opt of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-08:
+Thu Jan  8 10:54:42 AM EST 2026
+*)
+//
+fun
+<a:t0>
+list_make((*0*)): list(a)
+fun<>
+list_make'len((*0*)): nint
+(*
+list_make<a> = g_make<list(a)>
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <a:t0>
 list_make_1val
