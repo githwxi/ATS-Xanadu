@@ -61,6 +61,7 @@ fun
 gseq_sing(x0:x0): (xs)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -130,22 +131,58 @@ gseq_beg((*0*)): strn
 fun
 <xs:vt>
 <x0:vt>
+gseq'beg((*0*)): strn
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_end((*0*)): strn
 fun
 <xs:vt>
 <x0:vt>
+gseq'end((*0*)): strn
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_sep((*0*)): strn
+fun
+<xs:vt>
+<x0:vt>
+gseq'sep((*0*)): strn
 //
 fun
 <xs:vt>
 <x0:vt>
 gseq_omit((*0*)): strn
+fun
+<xs:vt>
+<x0:vt>
+gseq'omit((*0*)): strn
 //
 fun
 <xs:vt>
 <x0:vt>
 gseq_prlen((*0*)): sint
+fun
+<xs:vt>
+<x0:vt>
+gseq'prlen((*0*)): sint
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-08:
+Thu Jan  8 EST
+12:22:52 PM 2026
+fun
+<xs:vt>
+<x0:vt>
+gseq_make((*00*)): (xs)
+*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

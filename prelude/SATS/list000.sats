@@ -115,7 +115,7 @@ list_make((*0*)): list(a)
 fun<>
 list_make'len((*0*)): nint
 (*
-list_make<a> = g_make<list(a)>
+g_make<list(a)> = list_make<a>
 *)
 //
 (* ****** ****** *)

@@ -116,6 +116,23 @@ eval with strq_vt_eval of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-08:
+Thu Jan  8 12:13:02 PM EST 2026
+*)
+//
+fun
+<a:vt>
+strm_vt_make(): strm_vt(a)
+fun<>
+strm_vt_make'len((*0*)): nint
+(*
+g_make<strm_vt(a)>=strm_vt_make<a>
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 strm_vt_head0
@@ -294,12 +311,26 @@ Wed 24 Jul 2024 08:52:25 PM EDT
 fun
 <x0:vt>
 <ys:vt>
-g_make_lstrm(xs: strm_vt(x0)): (ys)
+g_make_lstrq(strq_vt(x0)): (ys)
 fun
 <x0:vt>
 <ys:vt>
-g_make_lstrq(xs: strq_vt(x0)): (ys)
+g_make_lstrm(strm_vt(x0)): (ys)
 //
+(*
+fun
+<x0:vt>
+<ys:vt>
+<y0:vt>
+gseq_make_lstrm(strm_vt(x0)): (ys)
+fun
+<x0:vt>
+<ys:vt>
+<y0:vt>
+gseq_make_lstrq(strq_vt(x0)): (ys)
+*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

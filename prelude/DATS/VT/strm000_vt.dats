@@ -612,6 +612,35 @@ strmcon_vt_cons(x1, auxmain(xs, n0-1))))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-08:
+Thu Jan  8 12:13:02 PM EST 2026
+*)
+//
+#impltmp
+strm_vt_make'len<>() = 10
+//
+#impltmp
+< a:vt >
+strm_vt_make() =
+(
+nint_map_lstrm<a>(ln)
+) where
+{
+//
+val ln = strm_vt_make'len<>()
+//
+#impltmp map$fopr<a>(_) = g_make<a>()
+//
+}(*where*)//end-of-[g_make<strm_vt(a)>()]
+//
+#impltmp
+{ a:t0 }
+g_make<strm_vt(a)>(*0*) = strm_vt_make<a>(*0*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_strm000_vt.dats] *)
 (***********************************************************************)

@@ -630,6 +630,35 @@ list_vt_make_lstrq = strq_vt_listize0<x0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-08:
+Thu Jan  8 11:32:41 AM EST 2026
+*)
+//
+#impltmp
+list_vt_make'len<>() = 10
+//
+#impltmp
+< a:vt >
+list_vt_make() =
+(
+nint_map_llist<a>(ln)
+) where
+{
+//
+val ln = list_vt_make'len<>()
+//
+#impltmp map$fopr<a>(_) = g_make<a>()
+//
+}(*where*)//end-of-[g_make<list_vt(a)>()]
+//
+#impltmp
+{ a:vt }
+g_make<list_vt(a)>(*0*) = list_vt_make<a>(*0*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_list000_vt.dats] *)
 (***********************************************************************)
