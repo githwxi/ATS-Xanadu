@@ -251,7 +251,7 @@ list_ifolditm
 fun
 <x0:t0>
 <r0:vt>
-list_rfolditm
+list_irfolditm
 (xs: list(x0), r0: r0): ( r0 )
 //
 #symload folditm with list_folditm of 1000
