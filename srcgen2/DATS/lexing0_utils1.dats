@@ -322,9 +322,10 @@ case+ 0 of
 //
 end where
 {
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 fun
 f0_EMP
 ( buf: !obj
@@ -335,8 +336,8 @@ f0_EMP
 //HX: [ci0]: dummy
 //
 fnx
-loop
-(buf: !obj): tnode =
+loop(
+  buf: !obj): tnode =
 let
 //
 val ci0 = 
@@ -358,9 +359,9 @@ end // end of [else]
 end // end of [loop(buf,ci0)]
 //
 } (*where*) // end of [f0_EMP]
-
+//
 (* ****** ****** *)
-
+//
 fun
 f0_EOL
 ( buf: !obj
@@ -369,9 +370,9 @@ let
 val () =
 gobj_lexing$fcnil(buf) in T_EOL()
 end (* let *)// end-of-[ f0_EOL ]
-
+//
 (* ****** ****** *)
-
+//
 fun
 f0_CLN
 ( buf: !obj
@@ -398,9 +399,9 @@ gobj_lexing$unget<obj>(buf, ci1)
 }
 //
 end (* let *)// end of [ f0_CLN ]
-
+//
 (* ****** ****** *)
-
+//
 and
 f0_DOT
 ( buf: !obj
@@ -427,9 +428,9 @@ gobj_lexing$unget<obj>(buf, ci1)
 } (*where*) // end of [other...]
 //
 end (* let *) // end of [f0_DOT]
-
+//
 (* ****** ****** *)
-
+//
 and
 f0_SLASH
 ( buf: !obj
@@ -469,19 +470,20 @@ end (*let*) // end-of-SLASH
   gobj_lexing$unget(buf, ci1) } )
 //
 end (* let *) // end of [f0_SLASHq]
-
+//
 (* ****** ****** *)
-
+//
 and
 f0_IDFST
 ( buf: !obj
 , ci0: sint): tnode =
-  loop( buf ) where
+(
+  loop(buf) ) where
 {
 //
 fnx
-loop
-(buf: !obj): tnode =
+loop(
+  buf: !obj): tnode =
 let
 //
 val ci0 =
@@ -497,19 +499,20 @@ in//let
 //
 if
 IDRSTq(cc0)
-then loop(buf) else let
-  val cix =
-  gobj_lexing$unget(buf, ci0)
-in
+then loop(buf) else
+let
+val cix =
+gobj_lexing$unget(buf, ci0)
+in//let
 T_IDALP(gobj_lexing$fcseg(buf))
 end (*else*) // end of [let]
 //
 end // end of [loop(buf:!obj)]
 //
 } (*where*) // end of [f0_IDFST]
-
+//
 (* ****** ****** *)
-
+//
 and
 f0_SYDLR
 ( buf: !obj
@@ -536,19 +539,19 @@ prerrsln
 //
 in//let
 //
-if
+if // if0
 IDRSTq(cc1)
-then
+then//if0
 loop(buf, kk0+1)
-else
+else//if0
 (
-if
+if // if1
 (kk0 > 0)
-then
+then//if1
 (
-if
+if // if2
 (cc1 = '.')
-then
+then//if2
 (
 (*
 HX-2023-06-08:
@@ -559,31 +562,31 @@ namespace selection!
 T_IDQUA
 (gobj_lexing$fcseg(buf))
 ) // end of [then]
-else
+else//if2
 let
-val
-cix =
-gobj_lexing$unget(buf, ci1)
-in
+val cix =
+(
+gobj_lexing$unget(buf, ci1))
+in//let
 T_IDDLR(gobj_lexing$fcseg(buf))
 end//end-of(else)//end-of(if)
-) (* then *)
-else
+) (* then1 *)
+else // if1
 (
   f0_IDSYM(buf, ci0) where
 {
-  val
-  cix =
-  gobj_lexing$unget(buf, ci1) }
-) (* else *)
-) (* else *) // end-of-( if )
+val cix =
+(
+gobj_lexing$unget(buf, ci1)) }
+) (* else1 *)
+) (* else0 *) // end-of-(if0)
 //
-end // end-of-[loop(buf, kk0)]
+end // end-of-[ loop(buf,kk0) ]
 //
 } (*where*) // end of [f0_SYDLR]
-
+//
 (* ****** ****** *)
-
+//
 and
 f0_SYSRP
 ( buf: !obj
@@ -609,11 +612,11 @@ prerrsln
 //
 in//let
 //
-if
+if // if0
 ALNUM_q(cc1)
-then
+then//if0
 loop(buf, kk0+1)
-else
+else//if1
 (
 let
 val cix =
@@ -629,9 +632,9 @@ end (*let*) // end of [else]
 end // end of [loop(buf, kk0)]
 //
 } (*where*) // end of [f0_SYSRP]
-
+//
 (* ****** ****** *)
-
+//
 and
 f0_IDSYM
 ( buf: !obj
@@ -640,8 +643,9 @@ f0_IDSYM
 {
 //
 fnx
-loop
-(buf: !obj): tnode = let
+loop(
+  buf: !obj): tnode =
+let
 //
 val ci0 =
 gobj_lexing$getc1<obj>(buf)
@@ -655,21 +659,22 @@ prerrsln
 //
 in//let
 //
-if
+if // if
 IDSYMq(cc0)
 then loop(buf) else let
-  val cix =
-  gobj_lexing$unget(buf, ci0)
-in
+val cix =
+(
+  gobj_lexing$unget(buf, ci0))
+in//let
 T_IDSYM(gobj_lexing$fcseg(buf))
-end // end of [else]
+end//end-of-(else)//end-of-(if)
 //
-end // end-of-[loop(buf:!obj)]
+end // end-of-[ loop(buf:!obj) ]
 //
 } (*where*) // end of [f0_IDSYM]
-
+//
 (* ****** ****** *)
-
+//
 fun
 f0_LPAREN
 ( buf: !obj
@@ -696,9 +701,9 @@ lexing_CMNT4_mlbl(buf, ci0, ci1)
   val () = gobj_lexing$fcnil(buf) }
 //
 end (*let*) // end of [ f0_LPAREN ]
-
+//
 (* ****** ****** *)
-
+//
 fun
 f0_SQUOTE
 ( buf: !obj
@@ -707,8 +712,8 @@ f0_SQUOTE
 {
 //
 fnx
-fmain
-(buf: !obj): tnode =
+fmain(
+  buf: !obj): tnode =
 let
 //
 val ci0 =
@@ -848,19 +853,20 @@ end // end-of-( otherwise )
 end // end of [loop12(buf:!obj)]
 //
 } (*where*) // end-of-[f0_SQUOTE]
-
+//
 (* ****** ****** *)
-
+//
 fun
 f0_DQUOTE
 ( buf: !obj
 , ci0: sint): tnode =
-  loop( buf ) where
+(
+  loop( buf )) where
 {
 //
 fnx
-loop
-( buf: !obj ): tnode =
+loop(
+  buf: !obj ): tnode =
 let
 //
 val ci0 =
@@ -907,7 +913,7 @@ _ when cc0 = '\\' =>
 // HX-2022-06-13:
 // The closing d-quote is missing
 *)
-  if
+  if // if
   (ci0 >= 0)
   then loop(buf)
   else
@@ -923,9 +929,9 @@ _ when cc0 = '\\' =>
 end // end-of-[loop(buf:!obj)]
 //
 } (*where*) // end-of-[f0_DQUOTE]
-
+//
 (* ****** ****** *)
-
+//
 fun
 f0_otherwise
 (buf: !obj, ci0: sint): tnode =
@@ -937,9 +943,10 @@ f0_otherwise
 {
   val () = gobj_lexing$fcnil(buf)
 } (*where*) // end of [f0_otherwise]
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 } (*where*) // end of [gobj_lexing_tnode]
 
 (* ****** ****** *)

@@ -69,17 +69,17 @@ gobj_lexing_tnode<obj>(buf)
 //
 #vwtpdef obj = lxbf1
 //
-#implfun
+#impltmp
 gobj_lexing$getc1<obj>(buf) = buf.getc1()
 //
-#implfun
+#impltmp
 gobj_lexing$fclst<obj>(buf) = buf.tclst()
-#implfun
+#impltmp
 gobj_lexing$fcnil<obj>(buf) = free(buf.tclst())
-#implfun
+#impltmp
 gobj_lexing$fcseg<obj>(buf) = strn(buf.tclst())
 //
-#implfun
+#impltmp
 gobj_lexing$unget<obj>(buf, ci0) = buf.unget(ci0)
 //
 } (*where*) // end of [lxbf1_lexing_token]
