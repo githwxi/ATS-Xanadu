@@ -1052,10 +1052,10 @@ GSEQ_make_strn
 #symload GSEQ with GSEQ_make_strn of 1000
 #symload GSEQ_strn with GSEQ_make_strn of 1000
 fcast // fun
-GASZ_make_strn
-(xs: strn): GASZ(strn, cgtz)
-#symload GASZ with GASZ_make_strn of 1000
-#symload GASZ_strn with GASZ_make_strn of 1000
+GASQ_make_strn
+(xs: strn): GASQ(strn, cgtz)
+#symload GASQ with GASQ_make_strn of 1000
+#symload GASQ_strn with GASQ_make_strn of 1000
 //
 fcast // fun
 GSEQ_make_nint0
@@ -1067,14 +1067,14 @@ GSEQ_make_nint1
 #symload GSEQ_nint0 with GSEQ_make_nint0 of 1000
 #symload GSEQ_nint1 with GSEQ_make_nint1 of 1000
 fcast // fun
-GASZ_make_nint0
-(xs: nint): GASZ(nint, unit)
+GASQ_make_nint0
+(xs: nint): GASQ(nint, unit)
 fcast // fun
-GASZ_make_nint1
-(xs: nint): GASZ(nint, nint)
-#symload GASZ with GASZ_make_nint1 of 1000
-#symload GASZ_nint0 with GASZ_make_nint0 of 1000
-#symload GASZ_nint1 with GASZ_make_nint1 of 1000
+GASQ_make_nint1
+(xs: nint): GASQ(nint, nint)
+#symload GASQ with GASQ_make_nint1 of 1000
+#symload GASQ_nint0 with GASQ_make_nint0 of 1000
+#symload GASQ_nint1 with GASQ_make_nint1 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
