@@ -17,7 +17,7 @@ For testing pre2026!
 /almanac/HATS/pre2026_dats.hats"
 (* ****** ****** *)
 #include
-"prelude/HATS/prelude_JS_dats.hats"
+"prelude/HATS/prelude_PY_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -27,11 +27,6 @@ printsln("Hello from [test00_pre2026]!")
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () = console_log(the_print_store_flush((*void*)))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac/TEST_CATS_JS_test00_pre2026.dats] *)
+(* end of [ATS3/XANADU_prelude_almanac/TEST_CATS_PY_test00_pre2026.dats] *)
 (***********************************************************************)
