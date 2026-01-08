@@ -1,6 +1,6 @@
 ########################################################################
 ########################################################################
-# Makefile for JS-emission
+# Makefile for PY-emission
 ########################################################################
 ########################################################################
 CAT=cat
@@ -13,49 +13,49 @@ PYTHON=python3
 ########################################################################
 MYROOT="./../../../../.."
 ########################################################################
-########################################################################
 all:: test00
 all:: test01
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f OUTS/test??_out.js
-cleanall:: ; rm -f OUTS/test??_out?.js
+cleanall:: ; rm -f OUTS/test??_out.py
+cleanall:: ; rm -f OUTS/test??_out?.py
 ########################################################################
-testall:: test00; $(NODE) OUTS/$<_out.js
-testall:: test01; $(NODE) OUTS/$<_out.js
+testall:: test00; $(PYTHON) OUTS/$<_out.py
+testall:: test01; $(PYTHON) OUTS/$<_out.py
 ########################################################################
 ########################################################################
 SRCGEN2_XSHARED=\
-$(MYROOT)/srcgen2/xats2js/srcgenx/xshared/runtime
-SRCGEN2_XATS2JS=\
-$(MYROOT)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit01_ats2.js
-SRCGEN2_XATS2JS=\
-$(MYROOT)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit01_ats3.js
+$(MYROOT)/srcgen2/xats2py/srcgenx/xshared/runtime
+SRCGEN2_XATS2PY=\
+$(MYROOT)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_ats2.js
+SRCGEN2_XATS2PY=\
+$(MYROOT)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_ats3.js
 ########################################################################
 ########################################################################
 test00:: ; \
-printf "// %s\n" "`date`" > OUTS/$@_out.js
+printf "## %s\n" "`date`" > OUTS/$@_out.py
 ############
 test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test00:: \
 test00_pre2026.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
 test01:: ; \
-printf "// %s\n" "`date`" > OUTS/$@_out.js
+printf "## %s\n" "`date`" > OUTS/$@_out.py
 ############
 test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test01:: \
 test01_pre2026.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
 ########################################################################
-##################### end of [Makefile_jsemit01] #######################
+########################################################################
+##################### end of [Makefile_pyemit01] #######################
