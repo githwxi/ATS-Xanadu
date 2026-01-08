@@ -98,6 +98,22 @@ list_vt_tail1
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-08:
+Thu Jan  8 11:32:41 AM EST 2026
+*)
+//
+fun
+<a:vt>
+list_vt_make(): list_vt(a)
+fun<>
+list_vt_make'len((*0*)): nint
+(*
+g_make<list_vt(a)>=list_vt_make<a>
+*)
+//
+(* ****** ****** *)
+//
 fun
 <a:vt>
 list_vt_make_1val
