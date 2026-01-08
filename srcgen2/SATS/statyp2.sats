@@ -261,33 +261,34 @@ s2typ_node =
 //
 (* ****** ****** *)
 //
-// HX: ~/!/& = 0/1/-1
-// knd: 0/1/-1//cbv0/v1/rf
-|
-T2Parg1 of
+(*
+HX: ~/!/& = 0/1/-1
+knd: 0/1/-1//cbv0/v1/rf
+*)
+|T2Parg1 of
 (sint(*knd*), s2typ)
-|
-T2Patx2 of // HX: bef=arg1
+|T2Patx2 of//HX: bef=arg1
 (//sint(*knd*)//knd = 1/-1
  s2typ(*bef*), s2typ(*aft*))
 //
 (* ****** ****** *)
 //
-|
-T2Papps of
-(s2typ(*fun*), s2typlst) // inst.
-|
-T2Plam1 of
-(s2varlst(*arg*), s2typ) // abst.
+|T2Papps of
+(s2typ(*fun*), s2typlst)//inst.
+|T2Plam1 of
+(s2varlst(*arg*), s2typ)//abst.
 //
-|
-T2Pf2cl of f2clknd
-|
-T2Pfun1 of
+(* ****** ****** *)
+//
+|T2Pf2cl of f2clknd
+//
+|T2Pfun1 of
 ( s2typ // f2clknd
 , sint(*npf*)
-, s2typlst(*arg*), s2typ(*res*) )
+, s2typlst(*arg*), s2typ(*res*))
 // (* end of T2Pfun1 *)
+//
+(* ****** ****** *)
 //
 | // external
 T2Ptext of
