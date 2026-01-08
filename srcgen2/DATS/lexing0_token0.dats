@@ -109,10 +109,8 @@ case+ tnd of
 tnode_isskip
   (tnd) =
 (
-if
-blankq(tnd)
-then true else iscmnt(tnd)
-) (* end of [tnode_isskip] *)
+if blankq(tnd) then true else iscmnt(tnd)
+)(*if(blankq)*)//end-of-[tnode_isskip(tnd)] *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
