@@ -42,7 +42,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 datavwtp
-a0rf_vt_dt
+a0rf_vt_dt // dt: vx
 (a:vwtp+) = a0rf_vt of (a)
 #absimpl
 a0rf_vt_vx(a:vt) = a0rf_vt_dt(a)
@@ -69,7 +69,15 @@ a0rf_vt_cget(A) =
 let
 val
 a0rf_vt(x) = A in g_copy<a>(x)
-end(*let*)//end-of-[a0rf_vt_free(A)]
+end(*let*)//end-of-[a0rf_vt_cget(A)]
+//
+#impltmp
+< a:vt >
+a0rf_vt_lget(A) =
+let
+val
+a0rf_vt(x) = A in ($fold(A); x)
+end(*let*)//end-of-[a0rf_vt_lget(A)]
 //
 (* ****** ****** *)
 //
@@ -81,10 +89,27 @@ a0rf_vt_set = a0rf_vt_setf<a>
 < a:vt >
 a0rf_vt_setf(A, y) =
 let
-val
+val @
 a0rf_vt(x) = A
 val () = (A.0 := y) in g_free<a>(x)
-end(*let*)//end-of-[a0rf_vt_free(A)]
+end(*let*)//end-of-[a0rf_vt_setf(A)]
+//
+#impltmp
+< a:vt >
+a0rf_vt_lset(A, y) =
+let
+val @
+a0rf_vt(x) = A // x: ?a
+val () = (A.0 := y) in (*  void  *)
+end(*let*)//end-of-[a0rf_vt_lset(A)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a:vt >
+a0rf_vt_make_1val
+  (   x   ) = $UN.castxy(a0rf_vt<a>(x))
 //
 (* ****** ****** *)
 (* ****** ****** *)
