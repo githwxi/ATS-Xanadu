@@ -102,7 +102,8 @@ gseq_end<xs><x0>() = ")"
 #impltmp
 gseq_beg<xs><x0>() = "jsdasz("
 in//let
-  gseq_print1<xs><x0>(xs)
+(
+  gseq_print1< xs >< x0 >( xs ) )
 end(*let*)//end(impltmp(g_print<jsa1(a)>))
 //
 (* ****** ****** *)
@@ -955,17 +956,17 @@ Fri 09 Aug 2024 08:24:11 AM EDT
 *)
 //
 #absvwtp
-jsdasz_iter(a:vt)
+jsdasz$iter(a:vt)
 //
 #impltmp
 { a: vt }
 g_ptype
 <
-jsdasz_iter(a)>
+jsdasz$iter(a)>
 (   (*void*)   ) =
 (
 pstrn
-"jsdasz_iter(";
+"jsdasz$iter(";
 g_ptype<a>();pstrn")")
 //
 (* ****** ****** *)
@@ -978,58 +979,58 @@ lazy [jsdasz_iforitm]
 //
 #extern
 fun<>
-jsdasz_iter_make
+jsdasz$iter_make
  {a:vt}
 ( A
-: jsdasz(a)): jsdasz_iter(a)
+: jsdasz(a)): jsdasz$iter(a)
 //
 #extern
 fun<>
-jsdasz_iter_next$work
+jsdasz$iter_next$work
  {a:vt}
 ( iter:
-! jsdasz_iter(a)
+! jsdasz$iter(a)
 , work: (nint, !a) -> void): bool
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jsdasz_iter_make
+jsdasz$iter_make
   ( A ) =
 (
-XATS2JS_jsdasz_iter_make
+XATS2JS_jsdasz$iter_make
   ( A )) where
 {
 #extern
 fun
-XATS2JS_jsdasz_iter_make
+XATS2JS_jsdasz$iter_make
  {a:vt}
 ( A
-: jsdasz(a)): jsdasz_iter(a) = $extnam()
+: jsdasz(a)): jsdasz$iter(a) = $extnam()
 }
 #symload
-jsdasz_iter with jsdasz_iter_make of 1000
+jsdasz$iter with jsdasz$iter_make of 1000
 //
 #impltmp
 <(*tmp*)>
-jsdasz_iter_next$work
+jsdasz$iter_next$work
   (iter, work) =
 (
-XATS2JS_jsdasz_iter_next$work
+XATS2JS_jsdasz$iter_next$work
   (iter, work)) where
 {
 #extern
 fun
-XATS2JS_jsdasz_iter_next$work
+XATS2JS_jsdasz$iter_next$work
  {a:vt}
 ( iter:
-! jsdasz_iter(a)
+! jsdasz$iter(a)
 , work: (nint, !a) -> void): bool = $extnam()
 }
 //
 #symload
-next$work with jsdasz_iter_next$work of 1000
+next$work with jsdasz$iter_next$work of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -16,9 +16,22 @@ all:: test02
 all:: test99
 ########################################################################
 ########################################################################
+testxx:: ; \
+echo "//" `date` > OUTS/$@_out.js
+############
+testxx:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+testxx:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+testxx:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
+############
+testxx:: ; $(CAT) \
+$(MYROOT)/prelude/DATS/CATS/JS/NODE/node000.cats >> OUTS/$@_out.js
+############
 testxx:: \
 testxx_mydebug.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2JS) $< > $@_out.js
+$(NODE)  --stack-size=8001  $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
 ########################################################################
 ########################################################################
 testall:: test00; $(NODE) $<_out.js
@@ -31,96 +44,100 @@ testall1:: test00; $(NODE) $<_out1.js
 testall2:: test00; $(NODE) $<_out2.js
 ########################################################################
 ########################################################################
+MYROOT=\
+"./../../../../.."
+########################################################################
 SRCGEN2_SRCGENX=\
-$(XATSHOME)/srcgen2/xats2js/srcgenx
+$(MYROOT)/srcgen2/xats2js/srcgenx
 SRCGEN2_XSHARED=\
-$(XATSHOME)/srcgen2/xats2js/srcgenx/xshared/runtime
+$(MYROOT)/srcgen2/xats2js/srcgenx/xshared/runtime
 SRCGEN2_XATS2JS=\
-$(XATSHOME)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit00_ats2.js
+$(MYROOT)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit01_ats2.js
 SRCGEN2_XATS2JS=\
-$(XATSHOME)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit00_ats3.js
+$(MYROOT)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit01_ats3.js
 ########################################################################
 ########################################################################
 test00:: ; \
-echo "//" `date` > $@_out.js
+echo "//" `date` > OUTS/$@_out.js
 ############
 test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
 test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
 ############
 test00:: \
 test00_xbasics.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+$(NODE) --stack-size=8001 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
 ############
 test00:: ; \
 npx google-closure-compiler -W QUIET \
-  --compilation_level SIMPLE --js=$@_out.js --js_output_file=$@_out1.js
+  --compilation_level SIMPLE --js=OUTS/$@_out.js --js_output_file=OUTS/$@_out1.js
 ############
 test00:: ; \
 npx google-closure-compiler -W QUIET \
-  --compilation_level ADVANCED --js=$@_out.js --js_output_file=$@_out2.js
+  --compilation_level ADVANCED --js=OUTS/$@_out.js --js_output_file=OUTS/$@_out2.js
 ########################################################################
 ########################################################################
 test01:: ; \
-echo "//" `date` > $@_out.js
+echo "//" `date` > OUTS/$@_out.js
 ############
 test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
 test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
 ############
-test01:: ; \
-$(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
+test01:: ; $(CAT) \
+$(MYROOT)/prelude/DATS/CATS/JS/NODE/node000.cats >> OUTS/$@_out.js
 ############
 test01:: \
 test01_jsdasz0.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+$(NODE)  --stack-size=8001  $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
 ########################################################################
 ########################################################################
 test02:: ; \
-echo "//" `date` > $@_out.js
+echo "//" `date` > OUTS/$@_out.js
 ############
 test02:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
 test02:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 test02:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
 ############
-test02:: ; \
-$(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
+test02:: ; $(CAT) \
+$(MYROOT)/prelude/DATS/CATS/JS/NODE/node000.cats >> OUTS/$@_out.js
 ############
 test02:: \
 test02_jshmap0.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+$(NODE)  --stack-size=8001  $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
 ########################################################################
 ########################################################################
 test99:: ; \
-echo "//" `date` > $@_out.js
+echo "//" `date` > OUTS/$@_out.js
 ############
 test99:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> $@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
 test99:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_prelude.js >> $@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 test99:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_xatslib.js >> $@_out.js
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
 ############
-test99:: ; \
-$(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> $@_out.js
+test99:: ; $(CAT) \
+$(MYROOT)/prelude/DATS/CATS/JS/NODE/node000.cats >> OUTS/$@_out.js
 ############
 test99:: \
 test99_mydiary.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2JS) $< >> $@_out.js
+$(NODE)  --stack-size=8001  $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f test??_out.js
-cleanall:: ; rm -f test??_out?.js
+cleanall:: ; rm -f OUTS/test??_out.js
+cleanall:: ; rm -f OUTS/test??_out?.js
+########################################################################
 ########################################################################
 ###################### end of [Makefile_xjsemit] #######################
