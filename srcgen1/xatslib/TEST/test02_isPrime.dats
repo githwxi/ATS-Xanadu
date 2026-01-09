@@ -136,5 +136,8 @@ val () =
 prerrln0("|thePrimes2| = ", length0(thePrimes2))
 //
 (* ****** ****** *)
-
-(* end of [ATS3/xatslib/TEST/test02_isPrime.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3-XANADU/srcgen1/xatslib/TEST/test02_isPrime.dats] *)
+(***********************************************************************)

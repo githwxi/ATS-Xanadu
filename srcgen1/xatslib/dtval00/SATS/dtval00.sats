@@ -39,5 +39,8 @@ typedef dtvalobj = hashtbl(strn,dtval)
 } (*where*) // end of [datatype(dtval)]
 //
 (* ****** ****** *)
-
-(* end of [xatslib_dtval00_dtval00.sats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_xatslib_dtval00_dtval00.sats] *)
+(***********************************************************************)

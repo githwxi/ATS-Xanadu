@@ -33,26 +33,26 @@ prerrln
 (* ****** ****** *)
 
 val () =
-prerrln0(strmize(10))
+prerr0ln(strmize(10))
 val () =
-prerrln0(listize(10))
+prerr0ln(listize(10))
 
 (* ****** ****** *)
 
 val () =
-prerrln0(strmize"abcde")
+prerr0ln(strmize"abcde")
 val () =
-prerrln0(listize"abcde")
+prerr0ln(listize"abcde")
 
 (* ****** ****** *)
 val () =
-prerrln0(list(list(list(1))))
+prerr0ln(list(list(list(1))))
 val () =
-prerrln0(list_vt(list_vt(list_vt(1))))
+prerr0ln(list_vt(list_vt(list_vt(1))))
 (* ****** ****** *)
 
 val () =
-prerrln0(
+prerr0ln(
 "concat(...) = ",
 gseq_concat_lstrn
 (list("Hello",",","world","!")))
@@ -122,7 +122,7 @@ prerrln
 "optn(0) = ", optn(0)
 )
 val () =
-prerrln0
+prerr0ln
 (
 "optn_vt(0) = ", optn_vt(0)
 )
@@ -138,7 +138,7 @@ prerrln
 (* ****** ****** *)
 
 val () =
-prerrln0
+prerr0ln
 (
 "list_vt(0,1,2,...) = ", f0(0)
 ) where
@@ -165,13 +165,13 @@ prerrln
 (* ****** ****** *)
 
 val () =
-prerrln0
+prerr0ln
 ("strm_vt(0,1,2,...) = ", strm_vt_from(0))
 
 (* ****** ****** *)
 
 val () =
-prerrln0
+prerr0ln
 ("strx_vt(0,1,2,...) = ", strx_vt_from(0))
 
 (* ****** ****** *)
@@ -187,7 +187,7 @@ where
 {
 #impltmp
 z2map$fopr<int,int><int>(x0, y0) = x0 + y0 }
-val ( ) = prerrln0("xs2 = ", xs2)
+val ( ) = prerr0ln("xs2 = ", xs2)
 
 (* ****** ****** *)
 (*
@@ -207,7 +207,7 @@ gseq_z2map_f2np
 // Fri Jul  1 21:41:55 EDT 2022
 *)
 val ( ) =
-prerrln0("xys = ", xys) where
+prerr0ln("xys = ", xys) where
 {
 val xys =
 gseq_x2map_c2fr_llist
@@ -244,7 +244,7 @@ gseq_x2iforitm_f4np
 *)
 //
 val ( ) =
-prerrln0
+prerr0ln
 (strm_vt_sieve0(f0(2))) where
 {
 //
@@ -375,7 +375,7 @@ print
 //
 in//local
 val () =
-prerrln0("the_ramanujans = ", the_ramanujans)
+prerr0ln("the_ramanujans = ", the_ramanujans)
 end//local
 //
 (* ****** ****** *)
@@ -519,20 +519,20 @@ prerrln
 (* ****** ****** *)
 //
 val () =
-prerrln0
+prerr0ln
 ("range1(0,10) = ", strmize(range1(0,10)))
 val () =
-prerrln0
+prerr0ln
 ("r(range1(0,10)) = ", rstrmize(range1(0,10)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 val () =
-prerrln0
+prerr0ln
 ("range1(10,0) = ", listize(range1(10,0)))
 val () =
-prerrln0
+prerr0ln
 ("r(range1(10,0)) = ", rlistize(range1(10,0)))
 //
 (* ****** ****** *)
@@ -543,7 +543,7 @@ let
 #impltmp
 foldl$fopr<sint><sint>(r0,x0) = r0*( x0+1 )
 in
-prerrln0
+prerr0ln
 ("product(range1(0,10)+1) = ", foldl(range1(0,10), 1))
 end(*let*)
 //
@@ -570,5 +570,8 @@ val () = prerrln("b0 = ", b0) where
 }
 
 (* ****** ****** *)
-
-(* end of [ATS3/xatslib/TEST/test01_miscell.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3-XANADU/srcgen1/xatslib/TEST/test01_miscell.dats] *)
+(***********************************************************************)
