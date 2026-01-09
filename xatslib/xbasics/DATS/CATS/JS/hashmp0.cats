@@ -123,14 +123,14 @@ HX-2024-08-14:
 Wed 14 Aug 2024 03:38:56 PM EDT
 */
 function
-XATS2JS_jshmap_iter_make
+XATS2JS_jshmap$iter_make
   ( A )
 {
   return A.entries() // HX: Hmap iterator
 }
 //
 function
-XATS2JS_jshmap_iter_next$work
+XATS2JS_jshmap$iter_next$work
   (iter, work)
 {
   var next = iter.next()

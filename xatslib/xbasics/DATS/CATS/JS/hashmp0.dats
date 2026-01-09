@@ -714,7 +714,7 @@ Fri 09 Aug 2024 08:24:11 AM EDT
 *)
 //
 #absvwtp
-jshmap_iter(k:t0,x:vt)
+jshmap$iter(k:t0,x:vt)
 //
 (* ****** ****** *)
 //
@@ -723,11 +723,11 @@ jshmap_iter(k:t0,x:vt)
 , x: vt }
 g_ptype
 <
-jshmap_iter(k,x)>
+jshmap$iter(k,x)>
 (    (*void*)    ) =
 (
 pstrn
-"jshmap_iter(";
+"jshmap$iter(";
 g_ptype<k>(); pstrn",";
 g_ptype<x>(); pstrn")")
 //
@@ -735,17 +735,17 @@ g_ptype<x>(); pstrn")")
 //
 #extern
 fun<>
-jshmap_iter_make
+jshmap$iter_make
 {k:t0}{x:vt}
 (map
-:jshmap(k,x)): jshmap_iter(k,x)
+:jshmap(k,x)): jshmap$iter(k,x)
 //
 #extern
 fun<>
-jshmap_iter_next$work
+jshmap$iter_next$work
 {k:t0}{x:vt}
 ( iter:
-! jshmap_iter(k,x)
+! jshmap$iter(k,x)
 , work
 : (k(*key*), !x(*itm*)) -> void): bool
 //
@@ -753,44 +753,44 @@ jshmap_iter_next$work
 //
 #impltmp
 <(*tmp*)>
-jshmap_iter_make
+jshmap$iter_make
   ( map ) =
 (
-XATS2JS_jshmap_iter_make
+XATS2JS_jshmap$iter_make
   ( map )) where
 {
 #extern
 fun
-XATS2JS_jshmap_iter_make
+XATS2JS_jshmap$iter_make
 {k:t0}{x:vt}
 ( map
 : jshmap(k,x))
-: jshmap_iter(k,x) = $extnam()
+: jshmap$iter(k,x) = $extnam()
 }
 #symload
-jshmap_iter with jshmap_iter_make of 1000
+jshmap$iter with jshmap$iter_make of 1000
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jshmap_iter_next$work
+jshmap$iter_next$work
   (iter, work) =
 (
-XATS2JS_jshmap_iter_next$work
+XATS2JS_jshmap$iter_next$work
   (iter, work)) where
 {
 #extern
 fun
-XATS2JS_jshmap_iter_next$work
+XATS2JS_jshmap$iter_next$work
 {k:t0}{x:vt}
 ( iter:
-! jshmap_iter(k, x)
+! jshmap$iter(k, x)
 , work
 : (k(*key*), !x(*itm*))->void): bool = $extnam()
 }
 //
-#symload next$work with jshmap_iter_next$work of 1000
+#symload next$work with jshmap$iter_next$work of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -802,12 +802,12 @@ jshmap_strmize
   ( map ) =
 (
 auxmain
-(jshmap_iter(map)))
+(jshmap$iter(map)))
 where
 {
 //
 #vwtpdef
-iter = jshmap_iter(k,x)
+iter = jshmap$iter(k,x)
 //
 var vk: k
 var vx: x
@@ -827,7 +827,7 @@ $UN.p2tr_set<k>(pk, k);
 $UN.p2tr_set<x>(px, g_copy<x>(x)))
 //
 val wrkd =
-jshmap_iter_next$work<>(iter, work)
+jshmap$iter_next$work<>(iter, work)
 //
 in//let
 //

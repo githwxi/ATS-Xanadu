@@ -70,10 +70,10 @@ val () =
 print1s("xs(", type(xs), ") = ", xs, "\n")
 //
 (* ****** ****** *)
-val () = print1s
-("rlistize(",An,") = ",rlistize(GSEQ(An)),"\n")
-val () = print1s
-("rlistize(",An,") = ",rlistize(GASZ(An)),"\n")
+val () = print1s("\
+rlistize(",An,") = ",rlistize(GSEQ(An)),"\n")
+val () = print1s("\
+rlistize(",An,") = ",rlistize(GASQ(An)),"\n")
 (* ****** ****** *)
 //
 val () =
@@ -81,9 +81,10 @@ prints("An = ", An, "\n") where
 {
   val () = mapref(An, lam(x:sint) => x+x)
 }
+//
 val () = prints
-("map_list(An) = "
-, map_list(An, lam(x:sint) => x*x), "\n")
+("gseq_map_list(An) = "
+, gseq_map_list(An, lam(x:sint) => x*x), "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -164,11 +165,11 @@ val ( ) = prints("rb0 = ", rb0, "\n")
 //
 val b1 =
 forall
-(GASZ(An), lam(x:sint) => x <= 0)
+(GASQ(An), lam(x:sint) => x <= 0)
 val ( ) = (prints("b1 = ", b1, "\n"))
 val rb1 =
 rforall
-(GASZ(An), lam(x:sint) => x <= 0)
+(GASQ(An), lam(x:sint) => x <= 0)
 val ( ) = (prints("rb1 = ", rb1, "\n"))
 //
 (* ****** ****** *)
@@ -177,8 +178,8 @@ val ( ) = (prints("rb1 = ", rb1, "\n"))
 val An2 =
 jsdasz_fmake_fwork{sint}
 (
-lam(work)=>
-(foritm(An, work);rforitm(An, work)))
+lam(work)=>(
+gseq_foritm(An, work);gseq_rforitm(An, work)))
 val ( ) =
 prints("jsdasz_fmake_fwork(...) = ", An2, "\n")
 //
@@ -186,16 +187,15 @@ prints("jsdasz_fmake_fwork(...) = ", An2, "\n")
 (* ****** ****** *)
 //
 val iter =
-jsdasz_iter_make(An)
+jsdasz$iter_make(An)
 val-true =
-jsdasz_iter_next$work
+jsdasz$iter_next$work
 (iter
 ,lam(i, x) => print1s("(i,x) = (", i, ",", x, ")\n"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_xbasics_TEST_CATS_JS_test01_jsdasz0.dats] *)
+(***********************************************************************)

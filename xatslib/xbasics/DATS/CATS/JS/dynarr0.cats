@@ -208,14 +208,14 @@ HX-2024-08-14:
 Wed 14 Aug 2024 03:37:41 PM EDT
 */
 function
-XATS2JS_jsdasz_iter_make
+XATS2JS_jsdasz$iter_make
   ( A )
 {
   return A.entries() // HX: Array iterator
 }
 //
 function
-XATS2JS_jsdasz_iter_next$work
+XATS2JS_jsdasz$iter_next$work
   (iter, work)
 {
   var next = iter.next()
