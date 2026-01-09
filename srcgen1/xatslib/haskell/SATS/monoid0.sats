@@ -18,5 +18,8 @@ fun<m:t0> mappend(m, m): m
 fun<m:t0> mconcat(list(m)): m
 
 (* ****** ****** *)
-
-(* end of [ATS3_xatslib_haskell_monoid0.sats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_xatslib_haskell_monoid0.sats] *)
+(***********************************************************************)

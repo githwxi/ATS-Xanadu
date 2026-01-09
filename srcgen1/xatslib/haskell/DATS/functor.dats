@@ -53,5 +53,8 @@ in//let
 gseq_map$f1un<xs><x0><ys><y0>(xs, fx)
 end(*let*)//end-of-[fmap<strm><x0><y0>(fx,xs)]
 (* ****** ****** *)
-
-(* end of [ATS3_xatslib_haskell_functor.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_xatslib_haskell_functor.dats] *)
+(***********************************************************************)

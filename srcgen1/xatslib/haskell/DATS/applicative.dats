@@ -17,5 +17,8 @@ pure   :: a -> f a
 "./../SATS/applicative.sats"
 //
 (* ****** ****** *)
-
-(* end of [ATS3_xatslib_haskell_applicative.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_xatslib_haskell_applicative.dats] *)
+(***********************************************************************)

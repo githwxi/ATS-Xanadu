@@ -24,5 +24,8 @@ fmap(f1un(x0, y0), f0(x0)): f0(y0)
 // #symload <$> with fmap // special in ATS
 //
 (* ****** ****** *)
-
-(* end of [ATS3_xatslib_haskell_functor.sats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_xatslib_haskell_functor.sats] *)
+(***********************************************************************)

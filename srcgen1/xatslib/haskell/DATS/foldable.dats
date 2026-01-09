@@ -57,5 +57,8 @@ foldr<list><x0><r0>(fx, r0, xs) =
 } (*where*) // end-of-[ foldr(fx, r0, xs) ]
 
 (* ****** ****** *)
-
-(* end of [ATS3_xatslib_haskell_foldable.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_xatslib_haskell_foldable.dats] *)
+(***********************************************************************)
