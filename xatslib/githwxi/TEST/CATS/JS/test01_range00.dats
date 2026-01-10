@@ -16,17 +16,18 @@ Thu 05 Sep 2024 05:36:54 PM EDT
 (* ****** ****** *)
 #include
 "prelude/HATS/prelude_dats.hats"
-(*
-#include
-"prelude/HATS/prelude_NODE_dats.hats"
-*)
 #include
 "xatslib/githwxi/HATS/githwxi_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #include
 "prelude/HATS/prelude_JS_dats.hats"
+(*
+#include
+"prelude/HATS/prelude_NODE_dats.hats"
+*)
 #include
 "xatslib/xbasics/HATS/xbasics_JS_dats.hats"
 //
@@ -35,7 +36,7 @@ Thu 05 Sep 2024 05:36:54 PM EDT
 //
 val xs = range_ibtw(1, 10)
 val () = prints("xs = ", xs, "\n")
-val xs = vt2t(GASQ(xs).listize())
+val xs = GASQ(xs).listize((*void*))
 val () = print1s("xs = ", xs, "\n")
 //
 (* ****** ****** *)
