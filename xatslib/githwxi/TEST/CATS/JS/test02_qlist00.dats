@@ -16,10 +16,6 @@ Thu 05 Sep 2024 05:36:54 PM EDT
 (* ****** ****** *)
 #include
 "prelude/HATS/prelude_dats.hats"
-(*
-#include
-"prelude/HATS/prelude_NODE_dats.hats"
-*)
 #include
 "xatslib/githwxi/HATS/githwxi_dats.hats"
 //
@@ -28,6 +24,10 @@ Thu 05 Sep 2024 05:36:54 PM EDT
 //
 #include
 "prelude/HATS/prelude_JS_dats.hats"
+(*
+#include
+"prelude/HATS/prelude_NODE_dats.hats"
+*)
 #include
 "xatslib/xbasics/HATS/xbasics_JS_dats.hats"
 //

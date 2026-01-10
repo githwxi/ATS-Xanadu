@@ -42,11 +42,11 @@ Mon 09 Sep 2024 11:18:07 AM EDT
 //
 val opt0 =
 mycsv00$fpath_csv$parse$opt_lstrm
-("./DATA/QQQ.csv")
+(       "./DATA/QQQ.csv"        )
 //
-val opts =
-opts where
-{val-optn_vt_cons(opts) = opt0}
+val opts = opts where
+{
+  val-optn_vt_cons(opts) = opt0 }
 //
 val (  ) =
 prints("\
@@ -115,7 +115,9 @@ case+ opt of
 | ~
 optn_vt_nil() => ()
 | ~
-optn_vt_cons(row) => work(myrow_make(row)))))
+optn_vt_cons
+(    row    ) => work(myrow_make(row)))))
+//a1sz_fmake_fwork//end(myrows_opts$make)
 //
 (* ****** ****** *)
 (* ****** ****** *)

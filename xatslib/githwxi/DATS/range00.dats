@@ -229,6 +229,10 @@ range_ibtwe
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX: For
+intersection!
+*)
 #extern
 fun<>
 range_ibtw_inter
@@ -265,7 +269,7 @@ val lb = min
 (r1.lb(),r2.lb())
 val ub = max
 (r1.ub(),r2.ub()) in range_ibtw(lb, rb)
-end(*let*)//end-of-[range_ibtw_inter(r1,r2)]
+end(*let*)//end-of-[range_ibtw_union(r1,r2)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
