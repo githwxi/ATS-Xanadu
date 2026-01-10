@@ -30,81 +30,25 @@
 (*
 Author: Hongwei Xi
 (*
-Fri Jan  9 08:22:13 PM EST 2026
+Sat Jan 10 04:52:53 PM EST 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-(*
-HX-2025-01-10:
-This implementation
-is just traditional
-functional programming.
-Please see glens00 for
-something more interesting!
-Sat Jan 10 04:30:25 PM EST 2026
-*)
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
 //
-#typedef
-flens$get
-( arg0: t0
-, arg1: t0) = (arg0) -> arg1
-//
-#typedef
-flens$fset
-( arg0: t0
-, arg1: t0) = (arg0, arg1) -> arg0
-//
-(* ****** ****** *)
-//
-datatype
-flens$get$fset
-( arg0: t0
-, arg1: t0) =
-flens$get$fset of (
-flens$get(arg0, arg1), flens$fset(arg0, arg1))
-//
-#typedef
-flens(arg0:t0,arg1:t0) = flens$get$fset(arg0, arg1)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<arg0:t0>
-<arg1:t0>
-flens_arg$get
-( lens
-: flens(arg0, arg1), arg0): arg1
-//
-fun
-<arg0:t0>
-<arg1:t0>
-flens_arg$fset
-( lens
-: flens(arg0, arg1), arg0, arg1): arg0
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<arg0:t0>
-<arg1:t0>
-<arg2:t0>
-flens_lens$comp
-( lens: flens(arg0, arg1)
-, lns2: flens(arg1, arg2)): flens(arg0, arg2)
+#staload "./../SATS/glens00.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_githwxi_SATS_flens00.sats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_DATS_glens00.dats] *)
 (***********************************************************************)
