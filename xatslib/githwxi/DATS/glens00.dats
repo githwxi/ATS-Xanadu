@@ -49,6 +49,101 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{tmp1:t0}
+{tmp2:t0}
+{arg0:vt}
+{arg1:vt}
+{arg2:vt}
+glens_lget
+<
+glens$2comp
+( tmp1
+, tmp2, arg1)><arg0><arg2>
+(
+    arg0    ) =
+let
+pvx () =
+owed_vt_return0
+( pf01 , arg1 ) in (pf12 | arg2) end
+where
+{
+val
+(pf01 | arg1) =
+(
+  glens_lget<tmp1><arg0><arg1>(arg0))
+val
+(pf12 | arg2) =
+(
+  glens_lget<tmp2><arg1><arg2>(arg1)) }
+//
+(* ****** ****** *)
+//
+#impltmp
+{tmp1:t0}
+{tmp2:t0}
+{arg0:vt}
+{arg1:vt}
+{arg2:vt}
+glens_lset
+<
+glens$2comp
+( tmp1
+, tmp2, arg1)><arg0><arg2>
+( pf12
+| arg0, arg2) =
+let
+pvx () =
+owed_vt_return0
+( pf01 , arg1 ) in ( (*void*) ) end
+where
+{
+val
+(pf01 | arg1) =
+(
+  glens_lget<tmp1><arg0><arg1>(arg0))
+val
+( (*void*) ) =
+(
+  glens_lset
+  <tmp2><arg1><arg2>(pf12 | arg1, arg2))
+}(*where*)//end-of-[glens_lset<glens$2comp>]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+glens$t2up$0 = glens$t2up$0
+datatype
+glens$t2up$1 = glens$t2up$1
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+{ x1:t0 }
+glens_get
+<glens$t2up$0><(x0, x1)><x0>(xs) = xs.0
+#impltmp
+{ x0:t0 }
+{ x1:t0 }
+glens_get
+<glens$t2up$1><(x0, x1)><x1>(xs) = xs.1
+//
+#impltmp
+{ x0:t0 }
+{ x1:t0 }
+glens_fset
+<glens$t2up$0><(x0, x1)><x0>(xs, x0) = (x0, xs.1)
+#impltmp
+{ x0:t0 }
+{ x1:t0 }
+glens_fset
+<glens$t2up$1><(x0, x1)><x1>(xs, x1) = (xs.0, x1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_githwxi_DATS_glens00.dats] *)
 (***********************************************************************)
