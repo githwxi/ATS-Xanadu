@@ -53,10 +53,10 @@ in support of type-based meta-programming.
 (* ****** ****** *)
 //
 datatype
-glens$stmp
+glens$2comp
 ( tmp1: t0
-, tmp2: t0) =
-glens$tag of (tmp1, tmp2)
+, tmp2: t0
+, arg1: vt) = glens$2comp of ()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -66,13 +66,13 @@ fun
 <arg0:vt>
 <arg1:t0>
 glens_get
-(stmp: stmp, arg0: !arg0): arg1
+(arg0: !arg0): arg1
 fun
 <stmp:t0>
 <arg0:vt>
 <arg1:t0>
 glens_fset
-(stmp: stmp, arg0: !arg0, arg1: arg1): arg0
+(arg0: !arg0, arg1: arg1): arg0
 //
 (* ****** ****** *)
 //
@@ -80,14 +80,13 @@ fun
 <stmp:t0>
 <arg0:vt>
 <arg1:vt>
-glens_cget
-(stmp: stmp, arg0: !arg0): arg1
+glens_cget(arg0: !arg0): arg1
 fun
 <stmp:t0>
 <arg0:vt>
 <arg1:vt>
 glens_setf
-(stmp: stmp, arg0: !arg0, arg1: arg1): void
+(arg0: !arg0, arg1: arg1): void
 //
 (* ****** ****** *)
 //
@@ -96,13 +95,13 @@ fun
 <arg0:vt>
 <arg1:t0>
 glens_lget
-(stmp: stmp, arg0: !arg0): (owed(arg1) | arg1)
+(arg0: !arg0): (owed(arg1) | arg1)
 fun
 <stmp:t0>
 <arg0:vt>
 <arg1:vt>
-glens_lset
-(pf: owed(arg1) | stmp: stmp, arg0: !arg0): void
+glens_lset(
+pf01: owed(arg1) | !arg0, arg1): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
