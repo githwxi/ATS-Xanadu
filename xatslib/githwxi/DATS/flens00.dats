@@ -50,96 +50,65 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-{arg0:t0}
-{arg1:t0}
-flens_get
-<
-flens$get$fset
-( arg0, arg1 )
->
-< arg0><arg1 >
-( lens, arg0 ) =
+<arg0:t0>
+<arg1:t0>
+flens_arg$get
+(lens, arg0) =
 let
 val+
 flens$get$fset
-( fget, fset ) = lens in fget(arg0)
-end//let//end-of-[flens_get<flens$get$fset(arg0,arg1)>]
+( get, fset ) = lens in get(arg0)
+end//let//end-of-[flens_arg$get(lens,arg0)]
 //
 #impltmp
-{arg0:t0}
-{arg1:t0}
-flens_fset
-<
-flens$get$fset
-( arg0, arg1 )
->
-< arg0><arg1 >
+<arg0:t0>
+<arg1:t0>
+flens_arg$fset
 (lens, arg0, arg1) =
 let
 val+
 flens$get$fset
-( fget, fset ) = lens in fset(arg0, arg1)
-end//let//end-of-[flens_fset<flens$get$fset(arg0,arg1)>]
+( get, fset ) = lens in fset(arg0, arg1)
+end//let//end-of-[flens_fset(lens,arg0,arg1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-{lns1:t0
-,lns2:t0
-,arg0:t0
-,arg1:t0
-,arg2:t0}
-flens_get
-<
-flens$2comp
-( lns1, lns2 )
->
-< arg0><arg2 >
-( lens, arg0) =
+<arg0:t0>
+<arg1:t0>
+<arg2:t0>
+flens_lens$comp
+( lns1, lns2 ) =
 let
 val+
-flens$2comp
-(lns1, lns2) = lens
-in//let
-(
-flens_get
-<lns2><arg1><arg2>(lns2,
-  flens_get<lns1><arg0><arg1>(lns1, arg0)))
-end(*let*)//end-of-[flens_get<flens$2comp(lns1,lns2)>]
-//
-(* ****** ****** *)
-//
-#impltmp
-{lns1:t0
-,lns2:t0
-,arg0:t0
-,arg1:t0
-,arg2:t0}
-flens_fset
-<
-flens$2comp
-( lns1, lns2 )
->
-< arg0><arg2 >
-( lens
-, arg0, arg2 ) =
-let
+flens$get$fset
+( get1, fset1 ) = lns1
 val+
-flens$2comp(lns1, lns2) = lens
+flens$get$fset
+( get2, fset2 ) = lns2
+//
 in//let
 //
-let
-val arg1 =
-flens_get<lns1><arg0><arg1>(lns1, arg0)
-val arg1 =
-flens_fset<lns2><arg1><arg2>(lns2, arg1, arg2)
-in//let
 (
-flens_fset<lns1><arg0><arg1>(lns1, arg0, arg1))
+  flens$get$fset(get12, fset12))
+where
+{
+fun
+get12
+( arg0: arg0): arg2 =
+let
+val arg1 = get1(arg0) in get2(arg1)
 end//let
+fun
+fset12
+( arg0: arg0
+, arg2: arg2): arg0 =
+(
+fset1(arg0, fset2(get1(arg0), arg2)))
+}(*where*)
 //
-end(*let*)//end-of-[flens_get<flens$2comp(lns1,lns2)>]
+end//let//end-of-[flens_lens$comp(lns1,lns2)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

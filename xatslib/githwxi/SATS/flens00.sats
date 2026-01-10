@@ -41,20 +41,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<lens:t0>
-<arg0:t0>
-<arg1:t0>
-flens_get(lens, arg0): arg1
-fun
-<lens:t0>
-<arg0:t0>
-<arg1:t0>
-flens_fset(lens, arg0, arg1): arg0
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #typedef
 flens$get
 ( arg0: t0
@@ -66,13 +52,6 @@ flens$fset
 , arg1: t0) = (arg0, arg1) -> arg0
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
-datatype
-flens$2comp
-( lns1: t0
-, lns2: t0) =
-flens$2comp of (lns1, lns2)
 //
 datatype
 flens$get$fset
@@ -80,6 +59,37 @@ flens$get$fset
 , arg1: t0) =
 flens$get$fset of (
 flens$get(arg0, arg1), flens$fset(arg0, arg1))
+//
+#typedef
+flens(arg0:t0,arg1:t0) = flens$get$fset(arg0, arg1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<arg0:t0>
+<arg1:t0>
+flens_arg$get
+( lens
+: flens(arg0, arg1), arg0): arg1
+//
+fun
+<arg0:t0>
+<arg1:t0>
+flens_arg$fset
+( lens
+: flens(arg0, arg1), arg0, arg1): arg0
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<arg0:t0>
+<arg1:t0>
+<arg2:t0>
+flens_lens$comp
+( lens: flens(arg0, arg1)
+, lns2: flens(arg1, arg2)): flens(arg0, arg2)
 //
 (* ****** ****** *)
 (* ****** ****** *)
