@@ -1357,6 +1357,34 @@ gseq_filter_rllist with gseq_filter$f1un_rllist of 0100
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<xs:t0>
+<x0:t0>
+gseq_rfilter_lstrm(xs: xs): strm_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rfilter_lstrq(xs: xs): strq_vt(x0)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_rfilter$f1un_lstrm
+(xs: xs, test: (x0)->bool): strm_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rfilter$f1un_lstrq
+(xs: xs, test: (x0)->bool): strq_vt(x0)
+//
+#symload
+gseq_rfilter_lstrm with gseq_rfilter$f1un_lstrm of 0100
+#symload
+gseq_rfilter_lstrq with gseq_rfilter$f1un_lstrq of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-08-17:
 Sat 17 Aug 2024 11:35:35 AM EDT
@@ -1538,14 +1566,44 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_search(xs: xs): optn_vt(x0)
-#symload search with gseq_search of 1000
+fun
+<xs:t0>
+<x0:t0>
+gseq_rsearch(xs: xs): optn_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_isearch(xs: xs): optn_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_irsearch(xs: xs): optn_vt(x0)
 //
 fun
 <xs:t0>
 <x0:t0>
 gseq_search$f1un
 (xs: xs, test: (x0)->bool): optn_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rsearch$f1un
+(xs: xs, test: (x0)->bool): optn_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_isearch$f2un
+(xs: xs, test: (ni, x0)->bool): optn_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_irsearch$f2un
+(xs: xs, test: (ni, x0)->bool): optn_vt(x0)
+//
 #symload gseq_search with gseq_search$f1un of 0100
+#symload gseq_rsearch with gseq_rsearch$f1un of 0100
+#symload gseq_isearch with gseq_isearch$f2un of 0100
+#symload gseq_irsearch with gseq_irsearch$f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
