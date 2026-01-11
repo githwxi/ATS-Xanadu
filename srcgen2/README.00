@@ -75,7 +75,7 @@ the library code generated is lib2xatopt
 (
 Makefile_xtcheck:
 This one is not present.
-If added, it does type-checking with srcge2-xtcheck.
+If added, it does type-checking with srcgen2-xtcheck.
 )
 //
 ############################################################
