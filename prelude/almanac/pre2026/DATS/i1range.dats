@@ -54,6 +54,16 @@ g_ptype
 //
 #impltmp
 <(*tmp*)>
+i1range_make_lbub
+  (lb, ub) =
+(
+  i1range_encd@(lb, ub))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 i1range_lb$get
   (range) =
 let
@@ -89,10 +99,10 @@ val
 //
 #impltmp
 gasq_length
-<i1range><si> = i1range_length
+<i1range><si> = i1range_length<>
 #impltmp
 gseq_length
-<i1range><si> = i1range_length
+<i1range><si> = i1range_length<>
 //
 #impltmp
 <(*tmp*)>
@@ -111,11 +121,11 @@ val (lb, ub) = i1range_decd(range)
 (* ****** ****** *)
 //
 #impltmp
-gasq_rforall
-<i1range><sint> = i1range_forall
+gasq_forall
+<i1range><sint> = i1range_forall<>
 #impltmp
 gseq_forall
-<i1range><sint> = i1range_forall
+<i1range><sint> = i1range_forall<>
 //
 #impltmp
 <(*tmp*)>
@@ -148,10 +158,10 @@ then
 //
 #impltmp
 gseq_rforall
-<i1range><sint> = i1range_rforall
+<i1range><sint> = i1range_rforall<>
 #impltmp
 gasq_rforall
-<i1range><sint> = i1range_rforall
+<i1range><sint> = i1range_rforall<>
 //
 #impltmp
 <(*tmp*)>
@@ -193,7 +203,7 @@ auxloop
 //
 #impltmp
 gseq_strmize
-<i1range><sint> = i1range_strmize
+<i1range><sint> = i1range_strmize<>
 //
 #impltmp
 <(*tmp*)>
@@ -223,7 +233,7 @@ strmcon_vt_cons(lb, auxmain(lb+1, ub)))
 //
 #impltmp
 gseq_rstrmize
-<i1range><sint> = i1range_rstrmize
+<i1range><sint> = i1range_rstrmize<>
 //
 #impltmp
 <(*tmp*)>
@@ -243,7 +253,7 @@ auxmain
 , ub: si)
 : strm_vt(si) = $llazy
 (
-if lb >= ub
+if ub <= lb
 then strmcon_vt_nil() else
 strmcon_vt_cons(ub-1, auxmain(lb, ub-1)))
 //

@@ -64,7 +64,8 @@ i1ranges_t0 == lsrt(i1range)
 (* ****** ****** *)
 //
 fcast
-i1range_encd(si, si): i1range
+i1range_encd
+(lbub: (sint, sint)): i1range
 fcast
 i1range_decd(i1range): (si, si)
 //
