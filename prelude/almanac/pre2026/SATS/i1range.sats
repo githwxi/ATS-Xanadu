@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -26,117 +26,66 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Sun 21 Jul 2024 02:16:49 PM EDT
+Sun Jan 11 10:36:44 AM EST 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasq_length(xs: xs): nint
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gasq_get$at
-(xs: xs, i0: ni): (x0)
-fun
-<xs:t0>
-<x0:t0>
-gasq_set$at
-(xs: xs, i0: ni, x0: x0): void
-//
-#typedef
-gasq_get$at
-(xs:t0, x0:t0) = (xs, ni) -> (x0)
-#typedef
-gasq_set$at
-(xs:t0, x0:t0) = (xs, ni, x0) -> void
-//
-(* ****** ****** *)
-(* ****** ****** *)
 //
 (*
-HX-2025-12-31:
-The 'l' here means 'linear'
-Wed Dec 31 11:21:54 AM EST 2025
+HX-2026-01-11:
+i1range:
+one-dimension int range
+i1range(lb, ub)
+stands for [lb, ub), that is,
+left-inclusive and right-inclusive
 *)
+#abstype
+i1range_t0 == (si, si)
+#typedef i1range = i1range_t0
 //
-fun
-<xs:t0>
-<x0:vt>
-gasq_lget$at
-(xs: xs
-,i0: ni): (owed(x0) | x0)
-fun
-<xs:t0>
-<x0:vt>
-gasq_lset$at
-(pf: owed(x0)
-|xs: xs, i0: ni, x0: x0): void
+(*
+HX-2026-01-11:
+[i1ranges] is for
+a list of *disjoint* intervals!
+*)
+#abstbox
+i1ranges_t0 == lsrt(i1range)
+#typedef i1ranges = i1ranges_t0
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2025-12-31:
-The 'c' in 'cget' means 'copy'
-The 'f' in 'setf' means 'free'
-For reference, the 'f' in 'fset'
-means 'functional'.
-Wed Dec 31 11:21:54 AM EST 2025
-*)
+fun<>
+i1range_lb$get(i1range): sint
+fun i1range_ub$get(i1range): sint
 //
-fun
-<xs:t0>
-<x0:vt>
-gasq_cget$at
-(xs: xs, i0: ni): (x0)
-fun
-<xs:t0>
-<x0:vt>
-gasq_setf$at
-(xs: xs, i0: ni, x0: x0): void
+#symload lb with i1range_lb$get
+#symload ub with i1range_ub$get
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+i1range_get$at: gasq_get$at(i1range, si)
 //
 (* ****** ****** *)
 //
-(*
-HX-2024-09-20:
-nil() is returned
-if [i0] is out of bounds
-*)
-fun
-<xs:t0>
-<x0:vt>
-gasq_cget$at$opt
-(xs: xs, i0: ni): optn_vt(x0)
-(*
-HX-2024-09-20:
-cons(x0) is returned
-if [i0] is out of bounds
-*)
-fun
-<xs:t0>
-<x0:vt>
-gasq_setf$at$opt
-(xs: xs, i0: ni, x0: x0): optn_vt(x0)
+fun<>
+i1range_forall: gseq_forall(i1range, si)
+fun<>
+i1range_strmize: gseq_strmize(i1range, si)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_gasq000.sats] *)
+(* end of [ATS3/XANADU_prelude_almanac_pre2026_SATS_i1range.sats] *)
 (***********************************************************************)
