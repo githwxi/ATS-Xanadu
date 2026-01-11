@@ -44,6 +44,27 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#impltmp
+g_ptype
+<i1range>() = pstrn"i1range"
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i1rang>
+(   range   ) =
+(
+pstrn"i1range(";
+g_print<sint>(lb);pstrn",";
+g_print<sint>(ub);pstrn")")
+where
+{
+val lb = i1rang_lb$get<>(range)
+val ub = i1rang_ub$get<>(range)
+}(*where*)//endof(g_print<i1rang>)
+//
+(* ****** ****** *)
 //
 #impltmp
 gseq_forall
@@ -51,6 +72,10 @@ gseq_forall
 #impltmp
 gseq_strmize
 <i1range><sint> = i1range_strmize
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 //
 (* ****** ****** *)
 (* ****** ****** *)
