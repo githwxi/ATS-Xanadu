@@ -637,6 +637,13 @@ gseq_forall<xs><x0>(xs)) where
 #impltmp
 forall$test<x0>(x0) =
 (
+//
+(*
+HX:
+this one is treated
+as a recursive call!!!
+*)
+//
 gseq_forall<ys><y0>(ys)) where
 {
 #impltmp
@@ -671,7 +678,7 @@ in//let
   gseq_forall<xs><x0>(xs)) where
 {
 #impltmp
-forall$test<x0>(x0) = forall$test_x0(x0)
+forall$test<x0> = forall$test_x0(*x0*)
 }
 end//(*let*)//end-of-[gseq_x2forall(xs, ys)]
 //
@@ -703,7 +710,7 @@ in//let
   gseq_iforall<xs><x0>(xs)) where
 {
 #impltmp
-iforall$test<x0>(i0, x0) = iforall$test_x0(i0, x0)
+iforall$test<x0> = iforall$test_x0(*i0,x0*)
 }
 end//(*let*)//end-of-[gseq_ix2forall(xs, ys)]
 //

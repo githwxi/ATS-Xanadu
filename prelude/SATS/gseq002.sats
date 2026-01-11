@@ -70,11 +70,13 @@ z2irmap(xs, ys) = irmap(zip(xs, ys))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
 gseq_cmp
 (xs: xs, ys: xs): sint(*sign*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -133,6 +135,7 @@ fun
 gseq_z2istrqize
 (xs: xs, ys: ys): strq_vt@(ni, x0, y0)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
