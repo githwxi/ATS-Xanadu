@@ -149,7 +149,6 @@ then
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #impltmp
 gseq_rforall
 <range_ibtw><si>

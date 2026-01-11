@@ -82,14 +82,50 @@ fun i1range_ub$get(i1range): sint
 (* ****** ****** *)
 //
 fun<>
+i1range_make_lbub
+(lb: sint, ub: sint): i1range
+//
+#symload
+range with i1range_make_lbub
+#symload
+i1range with i1range_make_lbub
+//
+(* ****** ****** *)
+(* ****** ****** *)
+fun<>
+i1range_length(i1range): (nint)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
 i1range_get$at: gasq_get$at(i1range, si)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
 i1range_forall: gseq_forall(i1range, si)
 fun<>
+i1range_rforall: gseq_rforall(i1range, si)
+//
+fun<>
 i1range_strmize: gseq_strmize(i1range, si)
+fun<>
+i1range_rstrmize: gseq_strmize(i1range, si)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+list_make_i1range(i1range): list(si)
+fun<>
+list_vt_make_i1range(i1range): list_vt(si)
+fun<>
+strm_vt_make_i1range(i1range): strm_vt(si)
+//
+#symload list with list_make_i1range
+#symload list_vt with list_vt_make_i1range
+#symload strm_vt with strm_vt_make_i1range
 //
 (* ****** ****** *)
 (* ****** ****** *)
