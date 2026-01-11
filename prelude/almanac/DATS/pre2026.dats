@@ -63,7 +63,8 @@ $UN.castxy(    xsii    )
 < xs:t0 >
 gasq$seg_encd
 (xs, lb, ub) =
-$UN.castxy(@(xs, lb, ub))
+(
+  $UN.castxy(@(xs, lb, ub)))
 //
 (* ****** ****** *)
 //
