@@ -39,12 +39,20 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-11: For FP
+HX-2026-01-11: For LFP
+*)
 #staload
-"prelude\
-/almanac/DATS/pre2026.dats"
+"./../DATS/pre2026.dats"
 #staload
-"prelude\
-/almanac/DATS/VT/pre2026_vt.dats"
+"./../DATS/VT/pre2026_vt.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"./../pre2026/DATS/i1range.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

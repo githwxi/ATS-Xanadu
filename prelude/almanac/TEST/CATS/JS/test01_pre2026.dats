@@ -55,6 +55,12 @@ nint_base$digitize(59049, 3) = ", ds, '\n') end
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val xs = list(range(0, 10))
+val () = printsln("list(range(0, 10)) = ", xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () = console_log(the_print_store_flush((*void*)))
 //
 (* ****** ****** *)
