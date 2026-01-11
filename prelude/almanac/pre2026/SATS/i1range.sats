@@ -63,6 +63,14 @@ i1ranges_t0 == lsrt(i1range)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fcast
+i1range_encd(si, si): i1range
+fcast
+i1range_decd(i1range): (si, si)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun<>
 i1range_lb$get(i1range): sint
 fun i1range_ub$get(i1range): sint
