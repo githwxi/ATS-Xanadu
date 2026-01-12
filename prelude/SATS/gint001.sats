@@ -91,12 +91,16 @@ nint_forall$f1un
 (ni: nint, test: (ni)->bool): bool
 #symload
 forall with nint_forall$f1un of 1000
+#symload
+nint_forall with nint_forall$f1un of 1000
 //
 fun<>
 nint_rforall$f1un
 (ni: nint, test: (ni)->bool): bool
 #symload
 rforall with nint_rforall$f1un of 1000
+#symload
+nint_rforall with nint_rforall$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -143,12 +147,16 @@ nint_foritm$f1un
 (ni: nint, work: (ni)->void): void
 #symload
 foritm with nint_foritm$f1un of 1000
+#symload
+nint_foritm with nint_foritm$f1un of 1000
 //
 fun<>
 nint_rforitm$f1un
 (ni: nint, work: (ni)->void): void
 #symload
 rforitm with nint_rforitm$f1un of 1000
+#symload
+nint_rforitm with nint_rforitm$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -169,6 +177,8 @@ nint_map$f1un_list
 map_list with nint_map_list of 1000
 #symload
 map_list with nint_map$f1un_list of 1000
+#symload
+nint_map_list with nint_map$f1un_list of 1000
 //
 (* ****** ****** *)
 //
@@ -188,6 +198,8 @@ nint_map$f1un_llist
 map_llist with nint_map_llist of 1000
 #symload
 map_llist with nint_map$f1un_llist of 1000
+#symload
+nint_map_llist with nint_map$f1un_llist of 1000
 //
 (* ****** ****** *)
 //
@@ -207,6 +219,8 @@ nint_rmap$f1un_llist
 rmap_llist with nint_rmap_llist of 1000
 #symload
 rmap_llist with nint_rmap$f1un_llist of 1000
+#symload
+nint_rmap_llist with nint_rmap$f1un_llist of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -231,6 +245,8 @@ nint_map$f1un_lstrm
 //
 #symload
 map_lstrm with nint_map$f1un_lstrm of 1000
+#symload
+nint_map_lstrm with nint_map$f1un_lstrm of 1000
 //
 (* ****** ****** *)
 //
@@ -249,6 +265,8 @@ nint_rmap$f1un_lstrm
 //
 #symload
 rmap_lstrm with nint_rmap$f1un_lstrm of 1000
+#symload
+nint_rmap_lstrm with nint_rmap$f1un_lstrm of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -256,18 +274,22 @@ rmap_lstrm with nint_rmap$f1un_lstrm of 1000
 (*
 HX-2024-07-31:
 Wed 31 Jul 2024 09:05:27 AM EDT
-*)
+HX-2026-01-11:
+This has been moved to pre2026!
+Sun Jan 11 10:38:10 PM EST 2026
 //
 fun<>
 nint_digitize
  (n0: nint): strm_vt(nintlt(10))
 fun<>
-nint_digitize$base
+nint_base$digitize
 {base:i0|base >= 2}
 (nint, sint(base)): strm_vt(nintlt(base))
 //
 #symload digitize with nint_digitize of 1000
-#symload digitize with nint_digitize$base of 1000
+#symload digitize with nint_base$digitize of 1000
+//
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

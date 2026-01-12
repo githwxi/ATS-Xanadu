@@ -76,7 +76,7 @@ val
 (pf|xs) = GLSEQ_unmk1(gseq)
 val btf = gseq_forall1<xs><x0>(xs)
 prval () = owed_vt_return0(pf, xs) in btf
-end//let//end-of-[GLSEQ_forall1(gseq)]
+end(*let*)//end-of-[GLSEQ_forall1<xs><x0>(gseq)]
 //
 (* ****** ****** *)
 //
@@ -86,10 +86,11 @@ end//let//end-of-[GLSEQ_forall1(gseq)]
 GLSEQ_forall0$f1un
   (gseq, test) =
 (
-GLSEQ_forall0<xs><x0>(gseq)) where
+GLSEQ_forall0<xs><x0>(gseq))
+where
 {
 #impltmp forall$test0<x0>(x0) = test(x0)
-}
+}(*where*)//end-of-[GLSEQ_forall0$f1un<xs><x0>(...)]
 //
 #impltmp
 < xs:vt >
@@ -97,10 +98,11 @@ GLSEQ_forall0<xs><x0>(gseq)) where
 GLSEQ_forall1$f1un
   (gseq, test) =
 (
-GLSEQ_forall1<xs><x0>(gseq)) where
+GLSEQ_forall1<xs><x0>(gseq))
+where
 {
 #impltmp forall$test1<x0>(x0) = test(x0)
-}
+}(*where*)//end-of-[GLSEQ_forall1$f1un<xs><x0>(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
