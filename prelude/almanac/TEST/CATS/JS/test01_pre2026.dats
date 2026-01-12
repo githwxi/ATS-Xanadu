@@ -55,8 +55,15 @@ nint_base$digitize(59049, 3) = ", ds, '\n') end
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-11:
+pre2026/SATS/i1range.sats
+pre2026/DATS/i1range.dats
+*)
 val xs = list(range(0, 10))
 val () = printsln("list(range(0, 10)) = ", xs)
+val xs = list_vt(range(0, 10))
+val () = print1s("list_vt(range(0, 10)) = ", xs, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -67,5 +74,5 @@ val () = console_log(the_print_store_flush((*void*)))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac/TEST_CATS_JS_test00_pre2026.dats] *)
+(* end of [ATS3/XANADU_prelude_almanac/TEST_CATS_JS_test01_pre2026.dats] *)
 (***********************************************************************)

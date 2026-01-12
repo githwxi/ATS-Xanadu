@@ -78,9 +78,10 @@ fun
 GASQ_make
 (xs: xs): GASQ(xs, x0)
 //
-#symload GSEQ with GSEQ_make of 0100
-#symload GASQ with GASQ_make of 0100
+#symload GSEQ with GSEQ_make of 0000
+#symload GASQ with GASQ_make of 0000
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -94,8 +95,22 @@ fun
 GASQ_unmk
 (gasq: GASQ(xs, x0)): (xs)
 //
-#symload unmk with GSEQ_unmk of 0100
-#symload unmk with GASQ_unmk of 0100
+#symload unmk with GSEQ_unmk of 1000
+#symload unmk with GASQ_unmk of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-11:
+GASQ is a subclass of GSEQ!
+Sun Jan 11 09:54:46 PM EST 2026
+*)
+fcast
+GASQ_GSEQ$cast
+{xs:t0}{x0:t0}
+(gasq: GASQ(xs, x0)): GSEQ(xs, x0)
+#symload GSEQ with GASQ_GSEQ$cast of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -463,7 +478,7 @@ fun
 <xs:t0>
 <x0:vt>
 GASQ_length
-(gseq: GASQ(xs, x0)): nint
+(gasq: GASQ(xs, x0)): nint
 //
 #symload length with GASQ_length of 1000
 //
@@ -474,12 +489,12 @@ fun
 <xs:t0>
 <x0:vt>
 GASQ_listize
-(GASQ(xs,x0)): list_vt(x0)
+(gasq: GASQ(xs,x0)): list_vt(x0)
 fun
 <xs:t0>
 <x0:vt>
 GASQ_rlistize
-(GASQ(xs,x0)): list_vt(x0)
+(gasq: GASQ(xs,x0)): list_vt(x0)
 //
 #symload listize with GASQ_listize of 1000
 #symload rlistize with GASQ_rlistize of 1000
@@ -491,12 +506,12 @@ fun
 <xs:t0>
 <x0:vt>
 GASQ_strmize
-(GASQ(xs,x0)): strm_vt(x0)
+(gasq: GASQ(xs,x0)): strm_vt(x0)
 fun
 <xs:t0>
 <x0:vt>
 GASQ_rstrmize
-(GASQ(xs,x0)): strm_vt(x0)
+(gasq: GASQ(xs,x0)): strm_vt(x0)
 //
 #symload strmize with GASQ_strmize of 1000
 #symload rstrmize with GASQ_rstrmize of 1000
