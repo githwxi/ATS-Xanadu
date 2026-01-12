@@ -40,42 +40,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
-HX-2026-01-12:
-Given a sint i0,
-sint_gte$strmize(i0)
-yields: (i0, i0+1, i0+2, ...)
-Mon Jan 12 01:30:34 AM EST 2026
-*)
-//
-fun<>
-sint_lte$strmize
- (start: sint): strm_vt(sint)
-fun<>
-sint_gte$strmize
- (start: sint): strm_vt(sint)
-//
-(*
-//
-#symload
-from$dn
-with sint_lte$strmize of 1000
-#symload
-sint_from$dn
-with sint_lte$strmize of 1000
-//
-#symload
-from$up
-with sint_gte$strmize of 1000
-#symload
-sint_from$up
-with sint_gte$strmize of 1000
-//
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
 HX-2026-01-05:
 Mon Jan  5 03:06:12 PM EST 2026
 *)
@@ -120,6 +84,59 @@ nint_base$digitize
 fun<>
 nint_base$rdigitize
 (n0: nint, b0: sintlte(2)): strm_vt(nint)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-12:
+For each given sint i0,
+lte$strmize(i0)
+yields: (i0, i0-1, i0-2, ...)
+gte$strmize(i0)
+yields: (i0, i0+1, i0+2, ...)
+Mon Jan 12 01:30:34 AM EST 2026
+*)
+//
+(*
+HX: [start] is included
+*)
+fun<>
+sint_lte$strmize
+ (start: sint): strm_vt(sint)
+fun<>
+sint_gte$strmize
+ (start: sint): strm_vt(sint)
+(*
+//
+#symload
+from$dn with sint_lte$strmize of 1000
+#symload
+sint_from$dn with sint_lte$strmize of 1000
+//
+#symload
+from$up with sint_gte$strmize of 1000
+#symload
+sint_from$up with sint_gte$strmize of 1000
+//
+*)
+//
+(*
+HX-2026-01-12:
+[start] is excluded
+[finish] is excluded
+btw$strmize(0, 10) = (0, 1, ..., 9)
+btw$strmize(10, 0) = (10, 9, ..., 1)
+*)
+fun<>
+sint_btw$strmize
+(start: sint, finish: sint): strm_vt(sint)
+(*
+#symload
+from$to with sint_gte$strmize of 1000
+#symload
+sint_from$to with sint_gte$strmize of 1000
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

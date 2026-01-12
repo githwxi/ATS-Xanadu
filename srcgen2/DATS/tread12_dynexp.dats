@@ -1299,6 +1299,8 @@ d2p.node() of
 |D2Pcon
 (  d2c1  ) => ((*void*))
 //
+|D2Pcons _ => ((*void*))
+//
 |D2Pbang
 (  d2p1  ) => f1_conq(d2p1, err)
 |D2Pflat
