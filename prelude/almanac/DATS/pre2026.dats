@@ -50,32 +50,6 @@ almanac/HATS/pre2026_sats.hats"
 (* ****** ****** *)
 //
 (*
-HX-2026-01-12:
-Given a sint i0,
-sint_gte$strmize(i0)
-yields: (i0, i0+1, i0+2, ...)
-Mon Jan 12 01:30:34 AM EST 2026
-*)
-//
-#impltmp
-<(*tmp*)>
-sint_lte$strmize =
-fix
-f0(i0) =>
-$llazy(
-strmcon_vt_cons(i0, f0(i0-1)))
-#impltmp
-<(*tmp*)>
-sint_gte$strmize =
-fix
-f0(i0) =>
-$llazy(
-strmcon_vt_cons(i0, f0(i0+1)))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
 HX-2026-01-05:
 Mon Jan  5 03:06:12 PM EST 2026
 *)
@@ -169,6 +143,62 @@ then strmcon_vt_nil(*0*) else
   strmcon_vt_cons(n0%b0, auxmain(n0/b0))))
 //
 }(*where*)//end-of-[nint_base$rdigitize<>(n0,b0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+(*
+HX-2026-01-12:
+Given a sint i0,
+sint_gte$strmize(i0)
+yields: (i0, i0+1, i0+2, ...)
+Mon Jan 12 01:30:34 AM EST 2026
+*)
+//
+#impltmp
+<(*tmp*)>
+sint_lte$strmize =
+fix
+f0(i0) =>
+$llazy(
+strmcon_vt_cons(i0, f0(i0-1)))
+//
+#impltmp
+<(*tmp*)>
+sint_gte$strmize =
+fix
+f0(i0) =>
+$llazy(
+strmcon_vt_cons(i0, f0(i0+1)))
+//
+#impltmp
+<(*tmp*)>
+sint_btw$strmize
+  ( sta, fin ) =
+(
+if (sta <= fin)
+then auxup(sta) else auxdn(sta))
+where
+{
+//
+fun
+auxup(i0) = $llazy
+(
+if i0 >= fin
+then
+strmcon_vt_nil() else
+strmcon_vt_cons(i0, auxup(i0+1)))
+//
+fun
+auxdn(i0) = $llazy
+(
+if i0 <= fin
+then
+strmcon_vt_nil() else
+strmcon_vt_cons(i0, auxdn(i0-1)))
+//
+}(*where*)//end-of-[sint_btw$strmize(sta,fin)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

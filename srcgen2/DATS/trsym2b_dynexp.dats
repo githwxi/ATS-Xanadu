@@ -357,6 +357,8 @@ trsym2b_d2pat(env0, d2p1) end
 //
 |D2Pcons _ => f0_cons(env0, d2p0)
 //
+(* ****** ****** *)
+//
 |D2Pdap1 _ => f0_dap1(env0, d2p0)
 //
 |D2Pdapp _ => f0_dapp(env0, d2p0)
