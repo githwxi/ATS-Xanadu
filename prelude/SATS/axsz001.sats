@@ -107,19 +107,19 @@ fun
 a1sz_mapref(A: a1sz(x0)): void
 fun
 <x0:vt>
-a1sz_mapref_c1bv
+a1sz_mapref$c1bv
 (A: a1sz(x0), fopr: (~x0)->(x0)): void
 (*
 fun
 <x0:vt>
-a1sz_mapref_c1br
+a1sz_mapref$c1br
 (A: a1sz(x0), fopr: (&x0)->void): void
 *)
 //
 #symload mapref with a1sz_mapref of 1000
-#symload mapref with a1sz_mapref_c1bv of 1000
+#symload mapref with a1sz_mapref$c1bv of 1000
 (*
-#symload mapref with a1sz_mapref_c1br of 1000
+#symload mapref with a1sz_mapref$c1br of 1000
 *)
 //
 fun
@@ -127,18 +127,18 @@ fun
 a1sz_imapref(A: a1sz(x0)): void
 fun
 <x0:vt>
-a1sz_imapref_c2bv
+a1sz_imapref$c2bv
 (A: a1sz(x0), fopr: (ni,~x0)->(x0)): void
 (*
 fun
 <x0:vt>
-a1sz_imapref_c2br
+a1sz_imapref$c2br
 (A: a1sz(x0), fopr: (ni,&x0)->void): void
 *)
 #symload imapref with a1sz_imapref of 1000
-#symload imapref with a1sz_imapref_c2bv of 1000
+#symload imapref with a1sz_imapref$c2bv of 1000
 (*
-#symload imapref with ia1sz_mapref_c2br of 1000
+#symload imapref with ia1sz_mapref$c2br of 1000
 *)
 //
 (* ****** ****** *)
@@ -172,7 +172,7 @@ gasq_map$f1un_a1sz
 (*
 HX-2024-08-18:
 This is another way to name the function:
-#symload map_a1sz with gasq_map_a1sz_$f1un of 0100
+#symload map_a1sz with gasq_f1un$map_a1sz of 0100
 *)
 //
 (* ****** ****** *)

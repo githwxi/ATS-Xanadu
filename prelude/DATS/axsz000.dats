@@ -141,7 +141,8 @@ a1sz_make_list
   ( xs ) =
 a1sz_fmake_fwork<a>
 (
-lam(work) => GSEQ(xs).foritm(work))
+lam(work) =>
+gseq_foritm<list(a)><a>(xs, work))
 //
 (* ****** ****** *)
 //
@@ -152,16 +153,16 @@ a1sz_make_ncpy
 a1sz_fmake_fwork<a>
 (
 lam(work) =>
-GSEQ(n).foritm(lam(i) => work( x )))
+nint_foritm<>(n, lam(i) => work(x)))
 //
 #impltmp
 < a: vt >
 a1sz_make_nfun
   (n, f) =
-a1sz_fmake_fwork<a>
-(
+a1sz_fmake_fwork<a>(
 lam(work) =>
-GSEQ(n).foritm(lam(i) => work(f(i))))
+nint_foritm<>(n, lam(i) => work(f(i)))
+)(*...*)//end-of-[a1sz_make_nfun(n,f)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -170,11 +171,11 @@ GSEQ(n).foritm(lam(i) => work(f(i))))
 < a: vt >
 a1sz_make_lstrm
   ( xs ) =
-a1sz_fmake_fwork<a>
 (
+a1sz_fmake_fwork<a>(
 lam(work) =>
 (
-  strm_vt_foritm0$f1un<a>(xs, work)))
+  strm_vt_foritm0$f1un<a>(xs, work))))
 //
 (* ****** ****** *)
 (* ****** ****** *)

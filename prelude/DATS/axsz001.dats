@@ -140,8 +140,8 @@ a1sz_mapref =
 gasq_mapref<a1sz(x0)><x0>(*void*)
 #impltmp
 < x0:vt >
-a1sz_mapref_c1bv =
-gasq_mapref_c1bv<a1sz(x0)><x0>(*void*)
+a1sz_mapref$c1bv =
+gasq_mapref$c1bv<a1sz(x0)><x0>(*void*)
 //
 #impltmp
 < x0:vt >
@@ -149,8 +149,8 @@ a1sz_imapref =
 gasq_imapref<a1sz(x0)><x0>(*void*)
 #impltmp
 < x0:vt >
-a1sz_imapref_c2bv =
-gasq_imapref_c2bv<a1sz(x0)><x0>(*void*)
+a1sz_imapref$c2bv =
+gasq_imapref$c2bv<a1sz(x0)><x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
