@@ -50,6 +50,32 @@ almanac/HATS/pre2026_sats.hats"
 (* ****** ****** *)
 //
 (*
+HX-2026-01-12:
+Given a sint i0,
+sint_gte$strmize(i0)
+yields: (i0, i0+1, i0+2, ...)
+Mon Jan 12 01:30:34 AM EST 2026
+*)
+//
+#impltmp
+<(*tmp*)>
+sint_lte$strmize =
+fix
+f0(i0) =>
+$llazy(
+strmcon_vt_cons(i0, f0(i0-1)))
+#impltmp
+<(*tmp*)>
+sint_gte$strmize =
+fix
+f0(i0) =>
+$llazy(
+strmcon_vt_cons(i0, f0(i0+1)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2026-01-05:
 Mon Jan  5 03:06:12 PM EST 2026
 *)

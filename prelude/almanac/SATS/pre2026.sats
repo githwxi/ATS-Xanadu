@@ -40,6 +40,42 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
+HX-2026-01-12:
+Given a sint i0,
+sint_gte$strmize(i0)
+yields: (i0, i0+1, i0+2, ...)
+Mon Jan 12 01:30:34 AM EST 2026
+*)
+//
+fun<>
+sint_lte$strmize
+ (start: sint): strm_vt(sint)
+fun<>
+sint_gte$strmize
+ (start: sint): strm_vt(sint)
+//
+(*
+//
+#symload
+from$dn
+with sint_lte$strmize of 1000
+#symload
+sint_from$dn
+with sint_lte$strmize of 1000
+//
+#symload
+from$up
+with sint_gte$strmize of 1000
+#symload
+sint_from$up
+with sint_gte$strmize of 1000
+//
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2026-01-05:
 Mon Jan  5 03:06:12 PM EST 2026
 *)
