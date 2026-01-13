@@ -219,12 +219,12 @@ strxcon_vt_cons
 let
 //
 val () =
-if
+if // if
 (i0 > 0)
-then
+then//then
 pstrn(strx_vt_sep<>())
 //
-in
+in//let
 (
   loop(xs, i0+1)) where
 {
@@ -289,9 +289,9 @@ else
 let
 //
 val () =
-if
+if // if
 (i0 > 0)
-then
+then//then
 pstrn(strx_vt_sep<>())
 //
 in//let//else
