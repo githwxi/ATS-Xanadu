@@ -65,6 +65,33 @@ Tue Jan 13 12:03:35 AM EST 2026
 #impltmp
 < xs:vt >
 < x0:vt >
+GLSEQ_length0
+  (gseq) =
+(
+gseq_length0<xs><x0>(GLSEQ_unmk0(gseq)))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+GLSEQ_length1
+  (gseq) =
+let
+val
+(pf|xs) = GLSEQ_unmk1(gseq)
+val res = gseq_length1<xs><x0>(xs)
+prval () = owed_vt_return0(pf, xs) in res
+end(*let*)//end-of-[GLSEQ_length1<xs><x0>(gseq)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-13:
+Tue Jan 13 12:03:35 AM EST 2026
+*)
+#impltmp
+< xs:vt >
+< x0:vt >
 GLSEQ_forall0
   (gseq) =
 (

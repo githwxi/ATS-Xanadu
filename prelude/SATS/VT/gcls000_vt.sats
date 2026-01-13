@@ -50,10 +50,18 @@ It should be automated eventually.
 GSEQ_vt(
 xs: vt, x0: vt) <= xs
 #sexpdef GLSEQ = GSEQ_vt
+//
+(* ****** ****** *)
+//
+(*
+HX-2026-01-13:
+[GSEQ_vt]
+can sub for [GASQ_vt]!
 #absvwtp
 GASQ_vt(
 xs: vt, x0: vt) <= xs
 #sexpdef GLASQ = GASQ_vt
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -90,6 +98,20 @@ GLSEQ_make_list_vt
 GLSEQ with GLSEQ_make_list_vt of 1000
 #symload
 GLSEQ_list_vt with GLSEQ_make_list_vt of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_length0
+(gseq: ~GLSEQ(xs, x0)): nint
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_length1
+(gseq: !GLSEQ(xs, x0)): nint
 //
 (* ****** ****** *)
 (* ****** ****** *)
