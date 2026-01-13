@@ -75,12 +75,10 @@ val wrds =
 list_fmake_fwork<strn>
 (//11111111111111111111111111111111
 lam(work) =>
-gseq_iforitm
-(//22222222222222222222222222222222
-GASQ(wrd0),
+GSEQ(wrd0).iforitm(//22222222222222
 lam(i, ci) =>
-gseq_foritm(//333333333333333333333
-GASQ(26), lam(j) =>
+GSEQ(26).foritm(//33333333333333333
+lam(j) =>
 let
   val cj = ('a' + j)
 in//let
@@ -99,13 +97,14 @@ val (  ) = printsln("wrds = ", wrds)
 //
 val wrds =
 list_fmake_fwork<strn>
-(
+(//1111111111111111111111111111111
 lam(work) =>
-GSEQ(wrd0).iforitm
-(
+GASQ(wrd0).iforitm
+(//2222222222222222222222222222222
 lam(i, ci) =>
-gseq_foritm(
-GASQ(26), lam(j) =>
+GASQ(26).foritm
+(//3333333333333333333333333333333
+lam(j) =>
 let
   val cj = ('a' + j)
 in
