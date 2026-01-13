@@ -82,6 +82,12 @@ g_ptype
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX: GSEQ:
+generic list-like sequences
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
@@ -429,6 +435,12 @@ GSEQ_irfolditm$f3un
 gseq_irfolditm$f3un
 <xs><x0><r0>(GSEQ_unmk<xs><x0>(gseq), r0, fopr))
 //
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+HX: GASQ:
+generic array-like sequences
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
