@@ -37,6 +37,75 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<a:t0>
+a1sz_vt_get$at
+{n:i0}
+(!a1sz_vt(a, n), nint(n)): ( a )
+fun
+<a:t0>
+a1sz_vt_set$at
+{n:i0}
+(!a1sz_vt(a, n), nint(n), a): void
+//
+#symload [] with a1sz_vt_get$at of 1000
+#symload [] with a1sz_vt_set$at of 1000
+#symload get$at with a1sz_vt_get$at of 1000
+#symload set$at with a1sz_vt_set$at of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1sz_vt_cget$at
+{n:nat}
+(!a1sz_vt(a,n), nintlt(n)): (a)
+fun
+<a:vt>
+a1sz_vt_setf$at
+{n:nat}
+(!a1sz_vt(a,n), nintlt(n), x:a): void
+//
+#symload cget$at with a1sz_vt_cget$at of 1000
+#symload setf$at with a1sz_vt_setf$at of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1sz_vt_lget$at
+{n:nat}
+( A:
+! a1sz_vt(a,n)
+, i: nintlt(n)): (owed(a) | a)
+fun
+<a:vt>
+a1sz_vt_lset$at
+{n:nat}
+( f: owed(a)
+| A:
+! a1sz_vt(a,n), i: nintlt(n), x: a): void
+//
+#symload lget$at with a1sz_vt_lget$at of 1000
+#symload lset$at with a1sz_vt_lset$at of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fcast // fun
+GLSEQ_make_a1sz_vt
+{a:vt}
+(A:a1sz_vt(a)): GLSEQ(a1sz_vt(a), a)
+#symload GLSEQ with GLSEQ_make_a1sz_vt of 1000
+fcast // fun
+GLASQ_make_a1sz_vt
+{a:vt}
+(A:a1sz_vt(a)): GLASQ(a1sz_vt(a), a)
+#symload GLASQ with GLASQ_make_a1sz_vt of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_axsz000_vt.sats] *)
 (***********************************************************************)

@@ -163,12 +163,12 @@ a1sz_length
 (* ****** ****** *)
 //
 fun
-<a:vt>
+<a:t0>
 a1sz_get$at
 {n:i0}
 (a1sz(a, n), nint(n)): ( a )
 fun
-<a:vt>
+<a:t0>
 a1sz_set$at
 {n:i0}
 (a1sz(a, n), nint(n), a): void
