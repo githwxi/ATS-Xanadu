@@ -117,44 +117,107 @@ fun
 <x0:vt>
 gasq_forall$f1un
 (xs: xs, test: (!x0)->bool): bool
-//
-(*
-#symload forall with gasq_forall$f1un of 0100
-#symload forall$fun with gasq_forall$f1un of 0100
-*)
-//
 fun
 <xs:t0>
 <x0:vt>
 gasq_exists$f1un
 (xs: xs, test: (!x0)->bool): bool
 //
-(*
-#symload exists with gasq_exists$f1un of 0100
-#symload exists$fun with gasq_exists$f1un of 0100
-*)
-//
 fun
 <xs:t0>
 <x0:vt>
 gasq_rforall$f1un
 (xs: xs, test: (!x0)->bool): bool
-//
-(*
-#symload rforall with gasq_rforall$f1un of 0100
-#symload rforall$fun with gasq_rforall$f1un of 0100
-*)
-//
 fun
 <xs:t0>
 <x0:vt>
 gasq_rexists$f1un
 (xs: xs, test: (!x0)->bool): bool
 //
+fun
+<xs:t0>
+<x0:vt>
+gasq_iforall$f2un
+(xs: xs, test: (ni, !x0)->bool): bool
+fun
+<xs:t0>
+<x0:vt>
+gasq_irforall$f2un
+(xs: xs, test: (ni, !x0)->bool): bool
+//
+(* ****** ****** *)
+//
+#symload
+gasq_forall with gasq_forall$f1un of 0100
+#symload
+gasq_exists with gasq_exists$f1un of 0100
+//
+#symload
+gasq_rforall with gasq_rforall$f1un of 0100
+#symload
+gasq_rexists with gasq_rexists$f1un of 0100
+//
+#symload
+gasq_iforall with gasq_iforall$f2un of 0100
+#symload
+gasq_irforall with gasq_irforall$f2un of 0100
+//
+(* ****** ****** *)
+//
 (*
-#symload rexists with gasq_rexists$f1un of 0100
-#symload rexists$fun with gasq_rexists$f1un of 0100
+HX-2026-01-12:
+Mon Jan 12 08:10:11 PM EST 2026
 *)
+fun
+<xs:t0>
+<x0:vt>
+gasq_foritm(xs: xs): void
+fun
+<xs:t0>
+<x0:vt>
+gasq_rforitm(xs: xs): void
+fun
+<xs:t0>
+<x0:vt>
+gasq_iforitm(xs: xs): void
+fun
+<xs:t0>
+<x0:vt>
+gasq_irforitm(xs: xs): void
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+gasq_foritm$f1un
+(xs: xs, test: (!x0)->void): void
+fun
+<xs:t0>
+<x0:vt>
+gasq_rforitm$f1un
+(xs: xs, test: (!x0)->void): void
+fun
+<xs:t0>
+<x0:vt>
+gasq_iforitm$f2un
+(xs: xs, test: (ni, !x0)->void): void
+fun
+<xs:t0>
+<x0:vt>
+gasq_irforitm$f2un
+(xs: xs, test: (ni, !x0)->void): void
+//
+(* ****** ****** *)
+//
+#symload
+gasq_foritm with gasq_foritm$f1un of 0100
+#symload
+gasq_rforitm with gasq_rforitm$f1un of 0100
+#symload
+gasq_iforitm with gasq_iforitm$f2un of 0100
+#symload
+gasq_irforitm with gasq_irforitm$f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -212,7 +275,8 @@ gasq_mapref$c1bv
 //
 fun
 <x0:vt>
-rmapref$fopr0(~x0): x0
+rmapref$fopr0
+( x0: ~x0 ): ( x0 )
 fun
 <x0:vt>
 rmapref$fopr1x
@@ -238,7 +302,8 @@ gasq_rmapref$c1bv
 //
 fun
 <x0:vt>
-imapref$fopr0(ni, ~x0): x0
+imapref$fopr0
+(i0: ni, x0: ~x0): (x0)
 fun
 <x0:vt>
 imapref$fopr1x
@@ -265,12 +330,14 @@ gasq_imapref$c2bv
 //
 fun
 <x0:vt>
-irmapref$fopr0(ni, ~x0): x0
+irmapref$fopr0
+(i0: ni, x0: ~x0): (x0)
 fun
 <x0:vt>
 irmapref$fopr1x
 (i0: ni, ref: &x0 >> x0): void
 //
+(* ****** ****** *)
 //
 fun
 <xs:t0>

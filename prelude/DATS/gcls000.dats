@@ -575,89 +575,182 @@ gasq_rexists$f1un
 (* ****** ****** *)
 //
 (*
+//
 HX-2024-08-17:
 Sat 17 Aug 2024 07:34:48 AM EDT
 The following style seems to be a
 superior alternative to introducing
 templates like GASQ_foritm?
+//
+HX-2026-01-12:
+Mon Jan 12 06:05:38 PM EST 2026
+We still need to overload forithm with
+gseq_foritm in order to use the following:
+GASQ(xs).foritm(work)
+I suggest for now we refrain from this
+kind of overloading. I find the following
+style is a bit verbose but informative:
+gasq_foritm<xs><x0>(xs, work)
+I have no big objection to this style at all.
+//
+*)
+(* ****** ****** *)
+(*
+#impltmp
+{ xs:t0
+, x0:vt }
+gasq_foritm
+<GASQ(xs,x0)><x0>
+ ( gasq ) =
+gasq_foritm
+<xs><x0>(GASQ_unmk<xs><x0>(gasq))
+#impltmp
+{ xs:t0
+, x0:vt }
+gasq_foritm$f1un
+<GASQ(xs,x0)><x0>
+ (gasq, test) =
+gasq_foritm$f1un
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test)
+*)
+(* ****** ****** *)
+(*
+#impltmp
+{ xs:t0
+, x0:vt }
+gasq_rforitm
+<GASQ(xs,x0)><x0>
+ ( gasq ) =
+gasq_rforitm
+<xs><x0>(GASQ_unmk<xs><x0>(gasq))
+#impltmp
+{ xs:t0
+, x0:vt }
+gasq_rforitm$f1un
+<GASQ(xs,x0)><x0>
+ (gasq, test) =
+gasq_rforitm$f1un
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test)
+*)
+(* ****** ****** *)
+(*
+#impltmp
+{ xs:t0
+, x0:vt }
+gasq_iforitm
+<GASQ(xs,x0)><x0>
+ ( gasq ) =
+gasq_iforitm
+<xs><x0>(GASQ_unmk<xs><x0>(gasq))
+#impltmp
+{ xs:t0
+, x0:vt }
+gasq_iforitm$f2un
+<GASQ(xs,x0)><x0>
+ (gasq, test) =
+gasq_iforitm$f2un
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test)
+*)
+(* ****** ****** *)
+(*
+#impltmp
+{ xs:t0
+, x0:vt }
+gasq_irforitm
+<GASQ(xs,x0)><x0>
+ ( gasq ) =
+gasq_irforitm
+<xs><x0>(GASQ_unmk<xs><x0>(gasq))
+#impltmp
+{ xs:t0
+, x0:vt }
+gasq_irforitm$f2un
+<GASQ(xs,x0)><x0>
+ (gasq, test) =
+gasq_irforitm$f2un
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test)
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-12:
+Mon Jan 12 08:10:11 PM EST 2026
 *)
 //
 #impltmp
-{ xs:t0
-, x0:t0 }
-gseq_foritm
-<GASQ(xs,x0)><x0>
- ( gasq ) =
-gseq_foritm
-<xs><x0>(GASQ_unmk<xs><x0>(gasq))
+< xs:t0 >
+< x0:vt >
+GASQ_foritm
+  (gasq) =
+(
+gasq_foritm
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
+//
 #impltmp
-{ xs:t0
-, x0:t0 }
-gseq_foritm$f1un
-<GASQ(xs,x0)><x0>
- (gasq, test) =
-gseq_foritm$f1un
-<xs><x0>(GASQ_unmk<xs><x0>(gasq), test)
+< xs:t0 >
+< x0:vt >
+GASQ_rforitm
+  (gasq) =
+(
+gasq_rforitm
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+GASQ_iforitm
+  (gasq) =
+(
+gasq_iforitm
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+GASQ_irforitm
+  (gasq) =
+(
+gasq_irforitm
+<xs><x0>(GASQ_unmk<xs><x0>(gasq)))
 //
 (* ****** ****** *)
 //
 #impltmp
-{ xs:t0
-, x0:t0 }
-gseq_rforitm
-<GASQ(xs,x0)><x0>
- ( gasq ) =
-gseq_rforitm
-<xs><x0>(GASQ_unmk<xs><x0>(gasq))
+< xs:t0 >
+< x0:vt >
+GASQ_foritm$f1un
+  (gasq, test) =
+(
+gasq_foritm$f1un
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test))
 //
 #impltmp
-{ xs:t0
-, x0:t0 }
-gseq_rforitm$f1un
-<GASQ(xs,x0)><x0>
- (gasq, test) =
-gseq_rforitm$f1un
-<xs><x0>(GASQ_unmk<xs><x0>(gasq), test)
-//
-(* ****** ****** *)
+< xs:t0 >
+< x0:vt >
+GASQ_rforitm$f1un
+  (gasq, test) =
+(
+gasq_rforitm$f1un
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test))
 //
 #impltmp
-{ xs:t0
-, x0:t0 }
-gseq_iforitm
-<GASQ(xs,x0)><x0>
- ( gasq ) =
-gseq_iforitm
-<xs><x0>(GASQ_unmk<xs><x0>(gasq))
+< xs:t0 >
+< x0:vt >
+GASQ_iforitm$f2un
+  (gasq, test) =
+(
+gasq_iforitm$f2un
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test))
 //
 #impltmp
-{ xs:t0
-, x0:t0 }
-gseq_iforitm$f2un
-<GASQ(xs,x0)><x0>
- (gasq, test) =
-gseq_iforitm$f2un
-<xs><x0>(GASQ_unmk<xs><x0>(gasq), test)
-//
-(* ****** ****** *)
-//
-#impltmp
-{ xs:t0
-, x0:t0 }
-gseq_irforitm
-<GASQ(xs,x0)><x0>
- ( gasq ) =
-gseq_irforitm
-<xs><x0>(GASQ_unmk<xs><x0>(gasq))
-//
-#impltmp
-{ xs:t0
-, x0:t0 }
-gseq_irforitm$f2un
-<GASQ(xs,x0)><x0>
- (gasq, test) =
-gseq_irforitm$f2un
-<xs><x0>(GASQ_unmk<xs><x0>(gasq), test)
+< xs:t0 >
+< x0:vt >
+GASQ_irforitm$f2un
+  (gasq, test) =
+(
+gasq_irforitm$f2un
+<xs><x0>(GASQ_unmk<xs><x0>(gasq), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
