@@ -115,8 +115,14 @@ GASQ_GSEQ$cast
 (* ****** ****** *)
 (* ****** ****** *)
 (*
+//
 HX-2024-08-03:
-[GSEQ] is like a functional list
+//
+[GSEQ] is
+like a functional list (list)
+[GASQ] is
+like a persistent array (a1sz)
+//
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -201,6 +207,11 @@ GSEQ_rforall
 fun
 <xs:t0>
 <x0:t0>
+GSEQ_rexists
+(gseq: GSEQ(xs, x0)): bool
+fun
+<xs:t0>
+<x0:t0>
 GSEQ_iforall
 (gseq: GSEQ(xs, x0)): bool
 fun
@@ -210,7 +221,9 @@ GSEQ_irforall
 (gseq: GSEQ(xs, x0)): bool
 //
 #symload forall with GSEQ_forall of 1000
+#symload exists with GSEQ_exists of 1000
 #symload rforall with GSEQ_rforall of 1000
+#symload rexists with GSEQ_rexists of 1000
 #symload iforall with GSEQ_iforall of 1000
 #symload irforall with GSEQ_irforall of 1000
 //
@@ -538,6 +551,12 @@ GASQ_rforall
 fun
 <xs:t0>
 <x0:vt>
+GASQ_rexists
+(gasq: GASQ(xs, x0)): bool
+//
+fun
+<xs:t0>
+<x0:vt>
 GASQ_iforall
 (gasq: GASQ(xs, x0)): bool
 fun
@@ -547,7 +566,9 @@ GASQ_irforall
 (gasq: GASQ(xs, x0)): bool
 //
 #symload forall with GASQ_forall of 1000
+#symload exists with GASQ_exists of 1000
 #symload rforall with GASQ_rforall of 1000
+#symload rexists with GASQ_rexists of 1000
 #symload iforall with GASQ_iforall of 1000
 #symload irforall with GASQ_irforall of 1000
 //
@@ -598,6 +619,83 @@ GASQ_rexists$f1un
 //
 #symload rexists with GASQ_rexists$f1un of 1000
 #symload rexists$fun with GASQ_rexists$f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+GASQ_foritm
+(gasq: GASQ(xs, x0)): void
+fun
+<xs:t0>
+<x0:vt>
+GASQ_rforitm
+(gasq: GASQ(xs, x0)): void
+fun
+<xs:t0>
+<x0:vt>
+GASQ_iforitm
+(gasq: GASQ(xs, x0)): void
+fun
+<xs:t0>
+<x0:vt>
+GASQ_irforitm
+(gasq: GASQ(xs, x0)): void
+//
+#symload foritm with GASQ_foritm of 1000
+#symload rforitm with GASQ_rforitm of 1000
+#symload iforitm with GASQ_iforitm of 1000
+#symload irforitm with GASQ_irforitm of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+GASQ_foritm$f1un
+( gasq: GASQ(xs, x0)
+, test: ( x0 )->void): void
+//
+#symload foritm with GASQ_foritm$f1un of 1000
+#symload foritm$fun with GASQ_foritm$f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+GASQ_rforitm$f1un
+( gasq: GASQ(xs, x0)
+, test: ( x0 )->void): void
+//
+#symload rforitm with GASQ_rforitm$f1un of 1000
+#symload rforitm$fun with GASQ_rforitm$f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+GASQ_iforitm$f2un
+( gasq: GASQ(xs, x0)
+, test: (ni, x0)->void): void
+//
+#symload iforitm with GASQ_iforitm$f2un of 1000
+#symload iforitm$fun with GASQ_iforitm$f2un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+GASQ_irforitm$f2un
+( gasq: GASQ(xs, x0)
+, test: (ni, x0)->void): void
+//
+#symload irforitm with GASQ_irforitm$f2un of 1000
+#symload irforitm$fun with GASQ_irforitm$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
