@@ -89,7 +89,7 @@ GLSEQ_forall0$f1un
 GLSEQ_forall0<xs><x0>(gseq))
 where
 {
-#impltmp forall$test0<x0>(x0) = test(x0)
+#impltmp forall$test0<x0>(*x0*) = test(*x0*)
 }(*where*)//end-of-[GLSEQ_forall0$f1un<xs><x0>(...)]
 //
 #impltmp
@@ -101,7 +101,7 @@ GLSEQ_forall1$f1un
 GLSEQ_forall1<xs><x0>(gseq))
 where
 {
-#impltmp forall$test1<x0>(x0) = test(x0)
+#impltmp forall$test1<x0>(*x0*) = test(*x0*)
 }(*where*)//end-of-[GLSEQ_forall1$f1un<xs><x0>(...)]
 //
 (* ****** ****** *)
