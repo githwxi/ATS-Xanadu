@@ -163,6 +163,13 @@ fix
 f0(i0) =>
 $llazy(
 strmcon_vt_cons(i0, f0(i0-1)))
+#impltmp
+<(*tmp*)>
+sint_lte$strxize =
+fix
+f0(i0) =>
+$llazy(
+strxcon_vt_cons(i0, f0(i0-1)))
 //
 #impltmp
 <(*tmp*)>
@@ -171,6 +178,13 @@ fix
 f0(i0) =>
 $llazy(
 strmcon_vt_cons(i0, f0(i0+1)))
+#impltmp
+<(*tmp*)>
+sint_gte$strxize =
+fix
+f0(i0) =>
+$llazy(
+strxcon_vt_cons(i0, f0(i0+1)))
 //
 #impltmp
 <(*tmp*)>

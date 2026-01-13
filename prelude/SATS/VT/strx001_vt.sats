@@ -45,10 +45,12 @@ Authoremail: gmhwxiATgmailDOTcom
 fun
 <x0:vt>
 strx_vt_strmize0
-(xs: strx_vt(x0)): strm_vt(x0)
+(
+xs: strx_vt(x0)): strm_vt(x0)
 //
 #symload
-strmize0 with strx_vt_strmize0 of 1000
+strmize0
+with strx_vt_strmize0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -65,8 +67,10 @@ fun
 strx_vt_imap0
 (xs: strx_vt(x0)): strx_vt(y0)
 //
-#symload map0 with strx_vt_map0 of 1000
-#symload imap0 with strx_vt_imap0 of 1000
+#symload
+map0 with strx_vt_map0 of 1000
+#symload
+imap0 with strx_vt_imap0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -77,8 +81,12 @@ fun
 strx_vt_map0$f1un
 ( xs: strx_vt(x0)
 , fopr: (~x0) -> y0): strx_vt(y0)
-#symload map0 with strx_vt_map0$f1un of 1000
-#symload map0$fun with strx_vt_map0$f1un of 1000
+#symload
+map0 with strx_vt_map0$f1un of 1000
+#symload
+map0$fun with strx_vt_map0$f1un of 1000
+#symload
+strx_vt_map0 with strx_vt_map0$f1un of 1000
 //
 fun
 <x0:vt>
@@ -86,8 +94,12 @@ fun
 strx_vt_imap0$f1un
 ( xs: strx_vt(x0)
 , fopr: (ni,~x0) -> y0): strx_vt(y0)
-#symload map0 with strx_vt_imap0$f1un of 1000
-#symload map0$fun with strx_vt_imap0$f1un of 1000
+#symload
+imap0 with strx_vt_imap0$f1un of 1000
+#symload
+imap0$fun with strx_vt_imap0$f1un of 1000
+#symload
+strx_vt_imap0 with strx_vt_imap0$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -101,8 +113,10 @@ fun
 strx_vt_ifilter0
 (xs: strx_vt(x0)): strx_vt(x0)
 //
-#symload filter0 with strx_vt_filter0 of 1000
-#symload ifilter0 with strx_vt_ifilter0 of 1000
+#symload
+filter0 with strx_vt_filter0 of 1000
+#symload
+ifilter0 with strx_vt_ifilter0 of 1000
 //
 (* ****** ****** *)
 //
@@ -111,16 +125,24 @@ fun
 strx_vt_filter0$f1un
 ( xs: strx_vt(x0)
 , test: (!x0) -> bool): strx_vt(x0)
-#symload filter0 with strx_vt_filter0$f1un of 1000
-#symload filter0$fun with strx_vt_filter0$f1un of 1000
+#symload
+filter0 with strx_vt_filter0$f1un of 1000
+#symload
+filter0$fun with strx_vt_filter0$f1un of 1000
+#symload
+strx_vt_filter0 with strx_vt_filter0$f1un of 1000
 //
 fun
 <x0:vt>
 strx_vt_ifilter0$f2un
 ( xs: strx_vt(x0)
 , test: (ni,!x0) -> bool): strx_vt(x0)
-#symload ifilter0 with strx_vt_ifilter0$f2un of 1000
-#symload ifilter0$fun with strx_vt_ifilter0$f2un of 1000
+#symload
+ifilter0 with strx_vt_ifilter0$f2un of 1000
+#symload
+ifilter0$fun with strx_vt_ifilter0$f2un of 1000
+#symload
+strx_vt_ifilter0 with strx_vt_ifilter0$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -136,8 +158,10 @@ fun
 strx_vt_maplist0
 (xs: ~strx_vt(x0)): strx_vt(y0)
 //
-#symload mapoptn0 with strx_vt_mapoptn0 of 1000
-#symload maplist0 with strx_vt_maplist0 of 1000
+#symload
+mapoptn0 with strx_vt_mapoptn0 of 1000
+#symload
+maplist0 with strx_vt_maplist0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -146,9 +170,11 @@ fun
 <x0:vt>
 <r0:vt>
 strx_vt_scanitm0
-(xs: ~strx_vt(x0), r0: r0): strx_vt(r0)
+( xs
+: ~strx_vt(x0), r0: r0): strx_vt(r0)
 //
-#symload scanitm0 with strx_vt_scanitm0 of 1000
+#symload
+scanitm0 with strx_vt_scanitm0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -58,6 +58,12 @@ strmcon_vt_cons(x0, auxmain(xs))
 )
 }(*where*)//end-of-[strx_vt_strmize0]
 //
+#impltmp
+{ x0:vt }
+gseq_strmize0
+<
+strx_vt(x0)><x0> = strx_vt_strmize0<x0>
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -92,8 +98,9 @@ strx_vt_map0$f1un
 strx_vt_map0<x0><y0>(xs))
 where
 {
-#impltmp map$fopr0<x0><y0>(x0) = fopr(x0)
-}
+#impltmp
+map$fopr0<x0><y0>(*x0*) = fopr(*x0*)
+}(*where*)//end-of-[strx_vt_map0$f1un]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -135,8 +142,8 @@ strx_vt_imap0<x0><y0>(xs))
 where
 {
 #impltmp
-imap$fopr0<x0><y0>(ni, x0) = fopr(ni, x0)
-}
+imap$fopr0<x0><y0> = fopr(* ni,x0 *)
+}(*where*)//end-of-[strx_vt_imap0$f2un]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -150,8 +157,8 @@ $llazy
 {
 (*
 HX-2024-07-13:
-[auxloop] nees to
-be tail-recursive!
+[auxloop] needs
+to be tail-recursive!
 *)
 fnx
 auxloop
@@ -161,7 +168,8 @@ auxloop
 (
 case+ cs of
 | ~
-strxcon_vt_cons(x1, xs) =>
+strxcon_vt_cons
+(   x1 , xs   ) =>
 let
 val
 test =
@@ -186,7 +194,14 @@ strx_vt_filter0<x0>(xs))
 where
 {
 #impltmp
-filter$test1<x0>(x0) = test(x0)}//where
+filter$test1<x0>(*x0*) = test(*x0*)
+}(*where*)//end-of-[strx_vt_filter0$f1un]
+//
+#impltmp
+{ x0:vt }
+gseq_filter0_self
+<
+strx_vt(x0)><x0> = strx_vt_filter0<x0>(*xs*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -238,8 +253,14 @@ strx_vt_ifilter0<x0>(xs))
 where
 {
 #impltmp
-ifilter$test1<x0>(i0, x0) = test(i0, x0)
-}
+ifilter$test1<x0>(*i0,x0*) = test(*i0,x0*)
+}(*where*)//end-of-[strx_vt_ifilter0$f2un()]
+//
+#impltmp
+{ x0:vt }
+gseq_ifilter0_self
+<
+strx_vt(x0)><x0> = strx_vt_ifilter0<x0>(*xs*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

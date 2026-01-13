@@ -72,15 +72,12 @@ val () = printsln("ABABAB = ", ABABAB)
 //
 val wrd0 = "hello"
 val wrds =
-list_fmake_fwork<strn>
-(
+list_fmake_fwork
+<     strn     >(
 lam(work) =>
-gseq_iforitm
+GASQ(wrd0).iforitm
 (
-GASQ(wrd0),
-lam(i, ci) =>
-gseq_foritm(
-GASQ(26),
+lam(i, ci) => GASQ(26).foritm(
 lam(j) =>
 let
   val cj = 'a'+j
@@ -102,8 +99,8 @@ list_fmake_fwork<strn>
 lam(work) =>
 GSEQ(wrd0).iforitm
 (
-lam(i, ci) =>
-gseq_foritm(GASQ(26),
+lam(i, ci) => GASQ(26).foritm
+(
 lam(j) =>
 let
   val cj = 'a'+j

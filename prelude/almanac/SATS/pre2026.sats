@@ -101,12 +101,21 @@ Mon Jan 12 01:30:34 AM EST 2026
 (*
 HX: [start] is included
 *)
+//
 fun<>
 sint_lte$strmize
  (start: sint): strm_vt(sint)
 fun<>
 sint_gte$strmize
  (start: sint): strm_vt(sint)
+//
+fun<>
+sint_lte$strxize
+ (start: sint): strx_vt(sint)
+fun<>
+sint_gte$strxize
+ (start: sint): strx_vt(sint)
+//
 (*
 //
 #symload
