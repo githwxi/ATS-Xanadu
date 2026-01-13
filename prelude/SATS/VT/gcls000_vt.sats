@@ -57,11 +57,11 @@ xs: vt, x0: vt) <= xs
 HX-2026-01-13:
 [GSEQ_vt]
 can sub for [GASQ_vt]!
+*)
 #absvwtp
 GASQ_vt(
 xs: vt, x0: vt) <= xs
 #sexpdef GLASQ = GASQ_vt
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -71,11 +71,24 @@ xs: vt, x0: vt) <= xs
 (* ****** ****** *)
 //
 (*
+HX-2026-01-13:
+These are not needed!
+Tue Jan 13 09:38:19 AM EST 2026
 fun
 <xs:vt>
 <x0:vt>
 GLSEQ_make(xs): GLSEQ(xs, x0)
+fun
+<xs:vt>
+<x0:vt>
+GLASQ_make(xs): GLASQ(xs, x0)
+#symload GLSEQ with GLSEQ_make of 0000
+#symload GLASQ with GLASQ_make of 0000
 *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <xs:vt>
 <x0:vt>
@@ -90,14 +103,16 @@ GLSEQ_unmk1
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fcast // fun
-GLSEQ_make_list_vt
-{a:vt}
-(xs:list_vt(a)): GLSEQ(list_vt(a), a)
-#symload
-GLSEQ with GLSEQ_make_list_vt of 1000
-#symload
-GLSEQ_list_vt with GLSEQ_make_list_vt of 1000
+(*
+HX-2026-01-13:
+GLASQ is a subclass of GLSEQ!
+Tue Jan 13 09:30:46 AM EST 2026
+*)
+fcast
+GLASQ_GLSEQ$cast
+{xs:vt}{x0:vt}
+(gasq: GLASQ(xs, x0)): GLSEQ(xs, x0)
+#symload GLSEQ with GLASQ_GLSEQ$cast of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

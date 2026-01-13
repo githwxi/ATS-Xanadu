@@ -75,6 +75,10 @@ GASQ_type
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-13:
+These are not needed!
+Tue Jan 13 09:38:19 AM EST 2026
 fun
 <xs:t0>
 <x0:t0>
@@ -85,9 +89,9 @@ fun
 <x0:vt>
 GASQ_make
 (xs: xs): GASQ(xs, x0)
-//
 #symload GSEQ with GSEQ_make of 0000
 #symload GASQ with GASQ_make of 0000
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
