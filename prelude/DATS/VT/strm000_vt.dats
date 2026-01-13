@@ -242,7 +242,8 @@ strm_vt_head0
   ( xs ) =
 ( case- !xs of
 | ~
-strmcon_vt_cons(x1, xs) =>
+strmcon_vt_cons
+(   x1, xs   ) =>
 let val () = $free(xs) in x1 end)
 //
 #impltmp
@@ -251,7 +252,8 @@ strm_vt_tail0
   ( xs ) =
 ( case- !xs of
 | ~
-strmcon_vt_cons(x1, xs) =>
+strmcon_vt_cons
+(   x1, xs   ) =>
 let
 val () = g_free<x0>(x1) in xs end)
 //
@@ -264,11 +266,13 @@ strm_vt_head$opt0
 (
 case+ !xs of
 | ~
-strmcon_vt_nil() =>
+strmcon_vt_nil
+(  (*void*)  ) =>
 (
   optn_vt_nil(*0*))
 | ~
-strmcon_vt_cons(x1, xs) =>
+strmcon_vt_cons
+(   x1, xs   ) =>
 let
 val () =
 $free(xs) in optn_vt_cons(x1) end
@@ -281,11 +285,13 @@ strm_vt_tail$opt0
 (
 case+ !xs of
 | ~
-strmcon_vt_nil() =>
+strmcon_vt_nil
+(  (*void*)  ) =>
 (
   optn_vt_nil(*0*))
 | ~
-strmcon_vt_cons(x1, xs) =>
+strmcon_vt_cons
+(   x1, xs   ) =>
 let
 val () =
 g_free<x0>(x1) in optn_vt_cons(xs) end
@@ -347,7 +353,7 @@ strmcon_vt_nil
 (  (*void*)  ) => ( ln )
 | ~
 strmcon_vt_cons
-(   x1 , xs   ) =>
+(   x1, xs   ) =>
 let
 val
 ( ) = g_free<x0>(x1) in loop(xs, ln+1)
@@ -428,12 +434,14 @@ loop
 (
 case+ !xs of
 | ~
-strmcon_vt_nil() =>
+strmcon_vt_nil
+(  (*void*)  ) =>
 (
 pstrn(strm_vt_end<>())
 )
 | ~
-strmcon_vt_cons(x0, xs) =>
+strmcon_vt_cons
+(   x0, xs   ) =>
 let
 //
 val () =
@@ -478,19 +486,23 @@ loop
 (
 case+ !xs of
 | ~
-strmcon_vt_nil() =>
+strmcon_vt_nil
+(  (*void*)  ) =>
 pstrn(strm_vt_end<>())
 | ~
-strmcon_vt_cons(x0, xs) =>
+strmcon_vt_cons
+(   x0, xs   ) =>
 if
 (i0 >= n0)
 then
 let
 //
 val () =
-g_free<x0>(x0)
+(
+g_free<x0>(x0))
 val () =
-strm_vt_free<x0>(xs)
+(
+strm_vt_free<x0>(xs))
 //
 val () =
 if

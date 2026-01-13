@@ -1569,6 +1569,15 @@ gseq_rfilter1_lstrq with gseq_rfilter1$f1un_lstrq of 0100
 fun
 <xs:vt>
 <x0:vt>
+gseq_ifilter0_self(xs: ~xs): (xs)
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter1_self(xs: !xs): (xs)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_ifilter0_llist(xs: ~xs): list_vt(x0)
 fun
 <xs:vt>

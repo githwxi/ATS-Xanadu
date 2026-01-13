@@ -104,6 +104,40 @@ strx_vt_prepend0__lstrq0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-13:
+Tue Jan 13 02:42:01 AM EST 2026
+*)
+fun<>
+strx_vt_beg(): strn
+fun<>
+strx_vt_end(): strn
+fun<>
+strx_vt_sep(): strn
+fun<>
+strx_vt_rst(): strn
+//
+fun
+<x0:vt>
+strx_vt_print0(xs: strx_vt(x0)): void
+//
+fun
+<x0:vt>
+strx_vt_all$print0(xs: strx_vt(x0)): void
+//
+(*
+fun<>
+strx_vt_print$len(): sint
+*)
+fun<>
+strx_vt_print'len(): sint
+fun
+<x0:vt>
+strx_vt_len$print0(xs: strx_vt(x0), ln: sint): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_strn000_vt.sats] *)
 (***********************************************************************)
