@@ -38,6 +38,14 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2026-01-12:
+Mon Jan 12 11:55:56 PM EST 2026
+This is 100% boilerplate stuff!
+It should be automated eventually.
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 #typedef ni = nint
 #typedef si = sint
 (* ****** ****** *)
