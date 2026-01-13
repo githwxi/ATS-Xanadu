@@ -37,6 +37,15 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2026-01-12:
+Mon Jan 12 11:55:56 PM EST 2026
+This is 100% boilerplate stuff!
+It should be automated eventually.
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #absvwtp
 GSEQ_vt(
 xs: vt, x0: vt) <= xs
@@ -45,6 +54,11 @@ xs: vt, x0: vt) <= xs
 GASQ_vt(
 xs: vt, x0: vt) <= xs
 #sexpdef GLASQ = GASQ_vt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef ni = nint
+#typedef si = sint
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -223,6 +237,157 @@ GLSEQ_irforall1$f2un
 //
 #symload irforall1 with GLSEQ_irforall1$f2un of 1000
 #symload irforall1$fun with GLSEQ_irforall1$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-13:
+Tue Jan 13 12:03:35 AM EST 2026
+*)
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_foritm0
+(gseq: ~GLSEQ(xs, x0)): void
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_foritm1
+(gseq: !GLSEQ(xs, x0)): void
+//
+#symload foritm0 with GLSEQ_foritm0 of 1000
+#symload foritm1 with GLSEQ_foritm1 of 1000
+//
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_foritm0$f1un
+( gseq: ~GLSEQ(xs, x0)
+, work: ( ~x0 ) -> void): void
+//
+#symload foritm0 with GLSEQ_foritm0$f1un of 1000
+#symload foritm0$fun with GLSEQ_foritm0$f1un of 1000
+//
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_foritm1$f1un
+( gseq: !GLSEQ(xs, x0)
+, work: ( !x0 ) -> void): void
+//
+#symload foritm1 with GLSEQ_foritm1$f1un of 1000
+#symload foritm1$fun with GLSEQ_foritm1$f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_rforitm0
+(gseq: ~GLSEQ(xs, x0)): void
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_rforitm1
+(gseq: !GLSEQ(xs, x0)): void
+//
+#symload rforitm0 with GLSEQ_rforitm0 of 1000
+#symload rforitm1 with GLSEQ_rforitm1 of 1000
+//
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_rforitm0$f1un
+( gseq: ~GLSEQ(xs, x0)
+, work: ( ~x0 ) -> void): void
+//
+#symload rforitm0 with GLSEQ_rforitm0$f1un of 1000
+#symload rforitm0$fun with GLSEQ_rforitm0$f1un of 1000
+//
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_rforitm1$f1un
+( gseq: !GLSEQ(xs, x0)
+, work: ( !x0 ) -> void): void
+//
+#symload rforitm1 with GLSEQ_rforitm1$f1un of 1000
+#symload rforitm1$fun with GLSEQ_rforitm1$f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_iforitm0
+(gseq: ~GLSEQ(xs, x0)): void
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_iforitm1
+(gseq: !GLSEQ(xs, x0)): void
+//
+#symload iforitm0 with GLSEQ_iforitm0 of 1000
+#symload iforitm1 with GLSEQ_iforitm1 of 1000
+//
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_iforitm0$f2un
+( gseq: ~GLSEQ(xs, x0)
+, work: (ni, ~x0) -> void): void
+//
+#symload iforitm0 with GLSEQ_iforitm0$f2un of 1000
+#symload iforitm0$fun with GLSEQ_iforitm0$f2un of 1000
+//
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_iforitm1$f2un
+( gseq: !GLSEQ(xs, x0)
+, work: (ni, !x0) -> void): void
+//
+#symload iforitm1 with GLSEQ_iforitm1$f2un of 1000
+#symload iforitm1$fun with GLSEQ_iforitm1$f2un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_irforitm0
+(gseq: ~GLSEQ(xs, x0)): void
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_irforitm1
+(gseq: !GLSEQ(xs, x0)): void
+//
+#symload irforitm0 with GLSEQ_irforitm0 of 1000
+#symload irforitm1 with GLSEQ_irforitm1 of 1000
+//
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_irforitm0$f2un
+( gseq: ~GLSEQ(xs, x0)
+, work: (ni, ~x0) -> void): void
+//
+#symload irforitm0 with GLSEQ_irforitm0$f2un of 1000
+#symload irforitm0$fun with GLSEQ_irforitm0$f2un of 1000
+//
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_irforitm1$f2un
+( gseq: !GLSEQ(xs, x0)
+, work: (ni, !x0) -> void): void
+//
+#symload irforitm1 with GLSEQ_irforitm1$f2un of 1000
+#symload irforitm1$fun with GLSEQ_irforitm1$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
