@@ -191,7 +191,7 @@ gasq_forall$f1un
 gasq_forall
 <xs><x0>(xs)) where {
 #impltmp
-forall$test1<x0>(x0) = test(x0)//impl
+forall$test1<x0>(*x0*) = test(*x0*)
 }(*where*)//end-of-[gasq_forall$f1un(xs)]
 //
 (* ****** ****** *)
@@ -220,7 +220,7 @@ gasq_exists$f1un
 gasq_exists
 <xs><x0>(xs)) where {
 #impltmp
-exists$test1<x0>(x0) = test(x0)//impl
+exists$test1<x0>(*x0*) = test(*x0*)
 }(*where*)//end-of-[gasq_exists$f1un(xs)]
 //
 (* ****** ****** *)
@@ -231,8 +231,10 @@ exists$test1<x0>(x0) = test(x0)//impl
 gasq_rforall(xs) =
 let
 val n0 =
+(
 gasq_length
-<xs><x0>(xs)
+<xs><x0>(xs))
+val n1 = (n0-1)
 in//let
 (*
 HX-2024-07-22:
@@ -240,11 +242,11 @@ This example shows
 the need for non-rec templates!
 *)
 (
-nint_rforall<>(n0))
+nint_forall<>(n0))
 where
 {
 #impltmp
-rforall$test<ni>(i0) =
+forall$test<ni>(i0) =
 (
   g_free<x0>(x0); r0)
 where
@@ -252,7 +254,7 @@ where
 val
 (pf | x0) =
 $UN.gasq_lget$at$raw
-< xs >< x0 >(xs, i0)
+< xs >< x0 >(xs, n1-i0)
 val r0 =
   rforall$test1<x0>(x0)
 val () =
@@ -273,7 +275,7 @@ gasq_rforall
 <xs><x0>(xs)) where
 {
 #impltmp
-rforall$test1<x0>(x0) = test(x0)//impl
+rforall$test1<x0>(*x0*) = test(*x0*)
 }(*where*)//end-of-[gasq_rforall$f1un(xs)]
 //
 (* ****** ****** *)
@@ -302,8 +304,320 @@ gasq_rexists$f1un
 gasq_rexists
 <xs><x0>(xs)) where {
 #impltmp
-rexists$test1<x0>(x0) = test(x0)//impl
+rexists$test1<x0>(*x0*) = test(*x0*)
 }(*where*)//end-of-[gasq_rexists$f1un(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasq_iforall(xs) =
+let
+val n0 =
+gasq_length
+<xs><x0>(xs)
+in//let
+(*
+HX-2024-07-22:
+This example shows
+the need for non-rec templates!
+*)
+(
+nint_forall<>(n0))
+where
+{
+#impltmp
+forall$test<ni>(i0) =
+let
+val () =
+g_free<x0>(x0) in r0
+end where//endof(let)
+{
+//
+val
+(
+pf|x0) =
+$UN.gasq_lget$at$raw
+< xs >< x0 >( xs, i0 )
+//
+val r0 =
+iforall$test1<x0>(i0, x0)
+//
+pvx () =
+(
+  owed_vt_return0(pf, x0)) }
+}
+end//let//end-of-[gasq_iforall(xs)]
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasq_iforall$f2un
+  (xs, test) =
+(
+gasq_iforall
+<xs><x0>(xs)) where {
+#impltmp
+iforall$test1<x0> = test(*i0,x0*)//impl
+}(*where*)//end-of-[gasq_iforall$f2un(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasq_irforall(xs) =
+let
+val n0 =
+(
+gasq_length
+<xs><x0>(xs))
+val n1 = (n0-1)
+in//let
+(
+nint_forall<>(n0))
+where
+{
+#impltmp
+forall$test<ni>(i0) =
+let
+val () =
+g_free<x0>(x0) in r0
+end where//endof(let)
+{
+//
+val
+(
+pf|x0) =
+$UN.gasq_lget$at$raw
+< xs >< x0 >(xs, n1-i0)
+//
+val r0 =
+irforall$test1<x0>(i0, x0)
+//
+pvx () =
+(
+  owed_vt_return0(pf, x0)) }
+}
+end//let//end-of-[gasq_irforall(xs)]
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasq_irforall$f2un
+  (xs, test) =
+(
+gasq_irforall
+<xs><x0>(xs)) where {
+#impltmp
+irforall$test1<x0> = test(*i0,x0*)//impl
+}(*where*)//end-of-[gasq_irforall$f2un(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasq_foritm(xs) =
+let
+val n0 =
+gasq_length
+<xs><x0>(xs)
+in//let
+(
+nint_foritm<>(n0))
+where
+{
+#impltmp
+foritm$work<ni>(i0) =
+(
+  g_free<x0>(x0); ())
+where
+{
+//
+val
+(
+pf|x0) =
+$UN.gasq_lget$at$raw
+< xs >< x0 >( xs, i0 )
+//
+val () =
+(
+  foritm$work1<x0>(x0))
+//
+pvx () =
+(
+  owed_vt_return0(pf, x0)) }
+}
+end//let//end-of-[gasq_foritm(xs)]
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasq_foritm$f1un
+  (xs, test) =
+(
+gasq_foritm
+<xs><x0>(xs)) where {
+#impltmp
+foritm$work1<x0>(*x0*) = test(*x0*)
+}(*where*)//end-of-[gasq_foritm$f1un(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasq_rforitm(xs) =
+let
+val n0 =
+(
+gasq_length
+<xs><x0>(xs))
+val n1 = (n0-1)
+in//let
+(
+nint_foritm<>(n0))
+where
+{
+#impltmp
+foritm$work<ni>(i0) =
+(
+  g_free<x0>(x0); ())
+where
+{
+//
+val
+(
+pf|x0) =
+$UN.gasq_lget$at$raw
+< xs >< x0 >(xs, n1-i0)
+//
+val () =
+(
+  rforitm$work1<x0>(x0))
+//
+pvx () =
+(
+  owed_vt_return0(pf, x0)) }
+}
+end//let//end-of-[gasq_rforitm(xs)]
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasq_rforitm$f1un
+  (xs, test) =
+(
+gasq_rforitm
+<xs><x0>(xs)) where {
+#impltmp
+rforitm$work1<x0>(*x0*) = test(*x0*)
+}(*where*)//end-of-[gasq_rforitm$f1un(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasq_iforitm(xs) =
+let
+val n0 =
+gasq_length
+<xs><x0>(xs)
+in//let
+(
+nint_foritm<>(n0))
+where
+{
+#impltmp
+foritm$work<ni>(i0) =
+(
+  g_free<x0>(x0); ())
+where
+{
+//
+val
+(
+pf|x0) =
+$UN.gasq_lget$at$raw
+< xs >< x0 >( xs, i0 )
+//
+val () =
+(
+iforitm$work1<x0>(i0, x0))
+//
+pvx () =
+(
+  owed_vt_return0(pf, x0)) }
+}
+end//let//end-of-[gasq_iforitm(xs)]
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasq_iforitm$f2un
+  (xs, test) =
+(
+gasq_iforitm
+<xs><x0>(xs)) where {
+#impltmp
+iforitm$work1<x0> = test(*i0,x0*)//impl
+}(*where*)//end-of-[gasq_iforitm$f2un(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasq_irforitm(xs) =
+let
+val n0 =
+(
+gasq_length
+<xs><x0>(xs))
+val n1 = (n0-1)
+in//let
+(
+nint_foritm<>(n0))
+where
+{
+#impltmp
+foritm$work<ni>(i0) =
+(
+  g_free<x0>(x0); ())
+where
+{
+//
+val
+(
+pf|x0) =
+$UN.gasq_lget$at$raw
+< xs >< x0 >(xs, n1-i0)
+//
+val () =
+(
+irforitm$work1<x0>(i0, x0))
+//
+pvx () =
+(
+  owed_vt_return0(pf, x0)) }
+}
+end//let//end-of-[gasq_irforitm(xs)]
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasq_irforitm$f2un
+  (xs, test) =
+(
+gasq_irforitm
+<xs><x0>(xs)) where {
+#impltmp
+irforitm$work1<x0> = test(*i0,x0*)//impl
+}(*where*)//end-of-[gasq_irforitm$f2un(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -334,7 +648,7 @@ gasq_mapref
 <xs><x0>(xs)) where
 {
 #impltmp
-mapref$fopr0<x0>(x0) = fopr(x0)
+mapref$fopr0<x0>(*x0*) = fopr(*x0*)
 }(*where*)//end-of-[gasq_mapref$c1bv]
 //
 (* ****** ****** *)
@@ -396,7 +710,7 @@ gasq_sortedq<xs><x0>(xs))
 where
 {
 #impltmp
-sortedq$lteq<x0>(*x1,x2*) = lteq
+sortedq$lteq<x0>(*x1,x2*) = lteq(*x1,x2*)
 }(*where*)//end-of-[gasq_sortedq$f2un(xs,lteq)]
 //
 (* ****** ****** *)
