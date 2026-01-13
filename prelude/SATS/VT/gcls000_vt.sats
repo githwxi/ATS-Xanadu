@@ -38,9 +38,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #absvwtp
-GSEQ_vwtp
-(xs: vt, x0: vt) <= xs
-#sexpdef GLSEQ = GSEQ_vwtp
+GSEQ_vt(
+xs: vt, x0: vt) <= xs
+#sexpdef GLSEQ = GSEQ_vt
+#absvwtp
+GASQ_vt(
+xs: vt, x0: vt) <= xs
+#sexpdef GLASQ = GASQ_vt
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -54,7 +58,7 @@ fun
 <xs:vt>
 <x0:vt>
 GLSEQ_unmk0
-(gseq: !GLSEQ(xs, x0)): (xs)
+(gseq: ~GLSEQ(xs, x0)): (xs)
 fun
 <xs:vt>
 <x0:vt>
