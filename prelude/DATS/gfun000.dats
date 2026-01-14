@@ -89,13 +89,13 @@ f1un_not
 //
 #impltmp
 <(*tmp*)>
-f0un_repeat$nint
+f0un_nint$repeat
 (f0, times) =
 nint_foritm(times) where
 {
 #impltmp
 foritm$work<ni>(_) = f0((*void*))
-}(*where*)//end(f0un_repeat$nint(f0))
+}(*where*)//end(f0un_nint$repeat(f0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -408,6 +408,33 @@ f1un_map$e1nv1$loptn
   ( fopr ) =
 lam(xs, e1) =>
 optn_vt_map$e1nv1$f2un<x0><y0><e1>(xs, e1, fopr)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-14:
+Wed Jan 14 12:44:51 PM EST 2026
+*)
+//
+#impltmp
+< r0:vt >
+strx_vt_iter$make
+  (fopr, r0) =
+(
+  auxloop(fopr, r0))
+where{
+//
+fun
+auxloop
+( fopr
+: (!r0)->r0, r0: r0) = $llazy
+(
+let
+val r1 = fopr(r0) in//let
+strxcon_vt_cons(r0, auxloop(fopr, r1))end)
+//
+}(*where*)//end-of-[strx_vt_iter$make(fopr,r0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -69,6 +69,108 @@ strx_vt(x0)><x0> = strx_vt_strmize0<x0>
 //
 #impltmp
 < x0:vt >
+strx_vt_forall0
+  ( xs ) =
+(
+  auxloop(xs)) where
+{
+fun
+auxloop
+( xs
+: strx_vt(x0)): bool =
+(
+case+ !xs of
+| ~
+strxcon_vt_cons(x1, xs) =>
+(
+if
+forall$test0
+< x0 >( x1 )
+then auxloop(xs)
+else (free(xs); false)))//end-of-[if]
+}(*where*)//end-of-[strx_vt_forall0(xs)]
+//
+#impltmp
+{ x0:vt }
+gseq_forall0
+<strx_vt(x0)><x0> = strx_vt_forall0<x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strx_vt_forall0$f1un
+  (xs, test) =
+(
+strx_vt_forall0
+<  x0  >(  xs  )) where
+{
+#impltmp
+forall$test0<x0> = test(*x0*)
+}(*where*)//end-of-[strx_vt_forall0$f1un]
+//
+#impltmp
+{ x0:vt }
+gseq_forall0$f1un
+<strx_vt(x0)><x0> = strx_vt_forall0$f1un<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strx_vt_iforall0
+  ( xs ) =
+(
+auxloop(0, xs)) where
+{
+fun
+auxloop
+( i0: nint
+, xs: strx_vt(x0)): bool =
+(
+case+ !xs of
+| ~
+strxcon_vt_cons
+  (  x1, xs  ) =>
+(
+if
+iforall$test0
+<x0>( i0, x1 )
+then auxloop(i0+1, xs)
+else ( free(xs); false ) )//end(if)
+)(*case+*)//end-of-[auxloop(i0, xs)]
+}(*where*)//end-of-[strx_vt_iforall0(xs)]
+//
+#impltmp
+{ x0:vt }
+gseq_iforall0
+<strx_vt(x0)><x0> = strx_vt_iforall0<x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strx_vt_iforall0$f2un
+  (xs, test) =
+(
+strx_vt_iforall0<x0>(xs))
+where
+{
+#impltmp
+iforall$test0<x0> = test(*ni,x0*)
+}
+//
+#impltmp
+{ x0:vt }
+gseq_iforall0$f2un
+<strx_vt(x0)><x0> = strx_vt_iforall0$f2un<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
 < y0:vt >
 strx_vt_map0
   ( xs ) =

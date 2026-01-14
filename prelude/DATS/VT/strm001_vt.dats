@@ -171,6 +171,11 @@ else ( free(xs); false ) )//end(if)
 )(*case+*)//end-of-[auxloop(i0, xs)]
 }(*where*)//end-of-[strm_vt_iforall0(xs)]
 //
+#impltmp
+{ x0:vt }
+gseq_iforall0
+<strm_vt(x0)><x0> = strm_vt_iforall0<x0>
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -185,10 +190,6 @@ where
 iforall$test0<x0> = test(*ni,x0*)
 }
 //
-#impltmp
-{ x0:vt }
-gseq_iforall0
-<strm_vt(x0)><x0> = strm_vt_iforall0<x0>
 #impltmp
 { x0:vt }
 gseq_iforall0$f2un
