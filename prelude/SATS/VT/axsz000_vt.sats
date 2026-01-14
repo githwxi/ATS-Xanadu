@@ -39,55 +39,63 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <a:t0>
-a1sz_vt_get$at
+a1sz_vt_get$at1
 {n:i0}
 (!a1sz_vt(a, n), nint(n)): ( a )
 fun
 <a:t0>
-a1sz_vt_set$at
+a1sz_vt_set$at1
 {n:i0}
 (!a1sz_vt(a, n), nint(n), a): void
 //
-#symload [] with a1sz_vt_get$at of 1000
-#symload [] with a1sz_vt_set$at of 1000
-#symload get$at with a1sz_vt_get$at of 1000
-#symload set$at with a1sz_vt_set$at of 1000
+#symload
+[] with a1sz_vt_get$at1 of 1000
+#symload
+[] with a1sz_vt_set$at1 of 1000
+#symload
+get$at1 with a1sz_vt_get$at1 of 1000
+#symload
+set$at1 with a1sz_vt_set$at1 of 1000
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-a1sz_vt_cget$at
-{n:nat}
+a1sz_vt_cget$at1
+{n:i0}
 (!a1sz_vt(a,n), nintlt(n)): (a)
 fun
 <a:vt>
-a1sz_vt_setf$at
-{n:nat}
-(!a1sz_vt(a,n), nintlt(n), x:a): void
+a1sz_vt_setf$at1
+{n:i0}
+(!a1sz_vt(a,n), nintlt(n), a): void
 //
-#symload cget$at with a1sz_vt_cget$at of 1000
-#symload setf$at with a1sz_vt_setf$at of 1000
+#symload
+cget$at1 with a1sz_vt_cget$at1 of 1000
+#symload
+setf$at1 with a1sz_vt_setf$at1 of 1000
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-a1sz_vt_lget$at
-{n:nat}
+a1sz_vt_lget$at1
+{n:i0}
 ( A:
 ! a1sz_vt(a,n)
 , i: nintlt(n)): (owed(a) | a)
 fun
 <a:vt>
-a1sz_vt_lset$at
-{n:nat}
+a1sz_vt_lset$at1
+{n:i0}
 ( f: owed(a)
 | A:
-! a1sz_vt(a,n), i: nintlt(n), x: a): void
+! a1sz_vt(a,n), nintlt(n), a): void
 //
-#symload lget$at with a1sz_vt_lget$at of 1000
-#symload lset$at with a1sz_vt_lset$at of 1000
+#symload
+lget$at1 with a1sz_vt_lget$at1 of 1000
+#symload
+lset$at1 with a1sz_vt_lset$at1 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
