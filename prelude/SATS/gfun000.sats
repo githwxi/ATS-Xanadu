@@ -104,15 +104,17 @@ f1un_not
 (* ****** ****** *)
 //
 fun<>
-f0un_repeat$nint
+f0un_nint$repeat
 ( f0
 : f0un(void), ni: nint): void
 fun<>
 nint_repeat$f0un
 (times: nint, f0: f0un(void)): void
 //
-#symload repeat with f0un_repeat$nint
-#symload repeat with nint_repeat$f0un
+#symload
+repeat with f0un_nint$repeat of 1000
+#symload
+repeat with nint_repeat$f0un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -129,9 +131,24 @@ f0un_enum$make_strm_vt
 (* ****** ****** *)
 //
 fun
+<r0:vt>
+strx_vt_iter$make
+(fopr: (!r0)->r0, r0: r0): strx_vt(r0)
+#symload
+f1un_iter with strx_vt_iter$make of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-14:
+Wed Jan 14 12:41:56 PM EST 2026
+Whether [x0] is a member of [xs]?
+*)
+fun
 <xs:t0>
 <x0:t0>
-f1un_srch$make_gseq(xs): f1un(x0, bool)
+f1un_gseq$srch$make(xs): f1un(x0, bool)
 //
 (* ****** ****** *)
 (* ****** ****** *)

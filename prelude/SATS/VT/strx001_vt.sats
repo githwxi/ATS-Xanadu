@@ -57,6 +57,49 @@ with strx_vt_strmize0 of 1000
 //
 fun
 <x0:vt>
+strx_vt_forall0
+(xs: strx_vt(x0)): bool
+fun
+<x0:vt>
+strx_vt_iforall0
+(xs: strx_vt(x0)): bool
+//
+#symload
+forall0 with strx_vt_forall0 of 1000
+#symload
+iforall0 with strx_vt_iforall0 of 1000
+//
+fun
+<x0:vt>
+strx_vt_forall0$f1un
+( xs: strx_vt(x0)
+, test: (~x0) -> bool): bool
+//
+#symload
+forall0 with strx_vt_forall0$f1un of 1000
+#symload
+forall0$fun with strx_vt_forall0$f1un of 1000
+#symload
+strx_vt_forall0 with strx_vt_forall0$f1un of 1000
+//
+fun
+<x0:vt>
+strx_vt_iforall0$f2un
+( xs: strx_vt(x0)
+, test: (ni,~x0) -> bool): bool
+//
+#symload
+iforall0 with strx_vt_iforall0$f2un of 1000
+#symload
+iforall0$fun with strx_vt_iforall0$f2un of 1000
+#symload
+strx_vt_iforall0 with strx_vt_iforall0$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 <y0:vt>
 strx_vt_map0
 (xs: strx_vt(x0)): strx_vt(y0)

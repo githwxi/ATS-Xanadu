@@ -225,6 +225,15 @@ XATS2JS_strmcon_cons
 #implfun
 XATS2JS_strmcon_cons(x1,xs) = strmcon_cons(x1,xs)
 //
+#extern
+fun
+XATS2JS_strxcon_cons
+{a:t0}
+(x1: a//head
+,xs: strx(a)): strxcon(a) = $extnam()
+#implfun
+XATS2JS_strxcon_cons(x1,xs) = strxcon_cons(x1,xs)
+//
 (* ****** ****** *)
 //
 #extern
@@ -263,6 +272,47 @@ XATS2JS_strmcon_head$raw
 XATS2JS_strmcon_head$raw(xs) =
 (
 case- xs of strmcon_cons(x1, xs) => (x1))
+//
+#extern
+fun
+XATS2JS_strmcon_tail$raw
+{a:t0}
+( xs
+: strmcon(a)): strm(a) = $extnam()
+#implfun
+XATS2JS_strmcon_tail$raw(xs) =
+(
+case- xs of strmcon_cons(x1, xs) => (xs))
+//
+(* ****** ****** *)
+//
+#extern
+fun
+(*
+HX: no failure!
+*)
+XATS2JS_strxcon_head$raw
+{a:t0}
+( xs
+: strxcon(a)): (a) = $extnam()
+#implfun
+XATS2JS_strxcon_head$raw(xs) =
+(
+case+ xs of strxcon_cons(x1, xs) => (x1))
+//
+#extern
+fun
+(*
+HX: no failure!
+*)
+XATS2JS_strxcon_tail$raw
+{a:t0}
+( xs
+: strxcon(a)): strx(a) = $extnam()
+#implfun
+XATS2JS_strxcon_tail$raw(xs) =
+(
+case+ xs of strxcon_cons(x1, xs) => (xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -488,6 +538,15 @@ XATS2JS_strmcon_vt_cons
 #implfun
 XATS2JS_strmcon_vt_cons(x1,xs) = strmcon_vt_cons(x1,xs)
 //
+#extern
+fun
+XATS2JS_strxcon_vt_cons
+{a:vt}
+(x1: a//head
+,xs: strx_vt(a)): strxcon_vt(a) = $extnam()
+#implfun
+XATS2JS_strxcon_vt_cons(x1,xs) = strxcon_vt_cons(x1,xs)
+//
 (* ****** ****** *)
 //
 #extern
@@ -544,6 +603,46 @@ XATS2JS_strmcon_vt_tail$raw0(xs) =
 case- xs of
 | ~
 strmcon_vt_cons
+(   x1 , xs   ) =>
+(
+  let val x1 = $UN.delinear(x1) in xs end)
+//
+(* ****** ****** *)
+//
+(*
+HX: no failure!
+*)
+#extern
+fun
+XATS2JS_strxcon_vt_head$raw1
+{a:vt}
+( xs:
+! strxcon_vt(a)): (a) = $extnam()
+#implfun
+XATS2JS_strxcon_vt_head$raw1(xs) =
+(
+case+ xs of
+|
+strxcon_vt_cons
+(   x1 , xs   ) =>
+let
+val x1 =
+$UN.datacopy(x1) in $UN.enlinear(x1) end)
+//
+(*
+HX: no failure!
+*)
+#extern
+fun
+XATS2JS_strxcon_vt_tail$raw0
+{a:vt}
+( xs:
+~ strxcon_vt(a)): strx_vt(a) = $extnam()
+#implfun
+XATS2JS_strxcon_vt_tail$raw0(xs) =
+case+ xs of
+| ~
+strxcon_vt_cons
 (   x1 , xs   ) =>
 (
   let val x1 = $UN.delinear(x1) in xs end)
