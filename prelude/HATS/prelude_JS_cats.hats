@@ -40,6 +40,18 @@ file"prelude/DATS/CATS/JS/strn000.cats"
 (* ****** ****** *)
 //
 #extcode
+file"prelude/DATS/CATS/JS/list000.cats"
+#extcode
+file"prelude/DATS/CATS/JS/optn000.cats"
+//
+#extcode
+file"prelude/DATS/CATS/JS/strm000.cats"
+#extcode
+file"prelude/DATS/CATS/JS/strx000.cats"
+//
+(* ****** ****** *)
+//
+#extcode
 file"prelude/DATS/CATS/JS/axrf000.cats"
 #extcode
 file"prelude/DATS/CATS/JS/axsz000.cats"

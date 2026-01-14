@@ -81,6 +81,10 @@ prelude:: \
 strm000
 strm000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/strm000.cats >> $(PRELUDE_JS)
+prelude:: \
+strx000
+strx000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/JS/strx000.cats >> $(PRELUDE_JS)
 ########################################################################
 prelude:: \
 axrf000
