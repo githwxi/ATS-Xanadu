@@ -265,6 +265,37 @@ strx_vt(x0)><x0> = strx_vt_ifilter0<x0>(*xs*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-14:
+Wed Jan 14 10:27:11 AM EST 2026
+*)
+//
+#impltmp
+< x0:vt >
+strx_vt_search0
+  ( xs ) =
+(
+strx_vt_head0<x0>(
+strx_vt_filter0<x0>(xs)))
+where
+{
+#impltmp
+filter$test1<x0> = search$test1<x0>(*x0*)
+}(*where*)//end-of-[strx_vt_search0<x0>(xs)]
+//
+#impltmp
+< x0:vt >
+strx_vt_search0$f1un
+  (xs, test) =
+(
+strx_vt_search0(xs)) where
+{
+#impltmp search$test1<x0>(*x0*) = test(*x0*)
+}(*where*)//end-of-[strx_vt_search0$f1un<x0>()]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_strx001_vt.dats] *)
 (***********************************************************************)

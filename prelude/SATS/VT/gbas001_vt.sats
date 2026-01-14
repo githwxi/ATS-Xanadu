@@ -277,6 +277,34 @@ irfolditm$fopr1x(ni, &x0, r0): (r0)
 fun
 <x0:vt>
 <r0:vt>
+scanitm$fopr0(!r0, ~x0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+scanitm$fopr1(!r0, !x0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+scanitm$fopr1x(!r0, &x0): (r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+iscanitm$fopr0(!r0, ni, ~x0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+iscanitm$fopr1(!r0, ni, !x0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+iscanitm$fopr1x(!r0, ni, &x0): (r0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
 foldall$fopr0(r0, ~x0): (bool, r0)
 fun
 <x0:vt>

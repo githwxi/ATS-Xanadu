@@ -157,11 +157,38 @@ fun
 <y0:vt>
 strx_vt_maplist0
 (xs: ~strx_vt(x0)): strx_vt(y0)
-//
 #symload
 mapoptn0 with strx_vt_mapoptn0 of 1000
 #symload
 maplist0 with strx_vt_maplist0 of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+strx_vt_mapoptn0$f1un
+( xs: ~strx_vt(x0)
+, fopr: (~x0) -> optn_vt(y0)): strx_vt(y0)
+#symload
+mapoptn0 with strx_vt_mapoptn0$f1un of 1000
+#symload
+mapoptn0$fun with strx_vt_mapoptn0$f1un of 1000
+#symload
+strx_vt_mapoptn0 with strx_vt_mapoptn0$f1un of 1000
+//
+fun
+<x0:vt>
+<y0:vt>
+strx_vt_maplist0$f1un
+( xs: ~strx_vt(x0)
+, fopr: (~x0) -> list_vt(y0)): strx_vt(y0)
+#symload
+maplist0 with strx_vt_maplist0$f1un of 1000
+#symload
+maplist0$fun with strx_vt_maplist0$f1un of 1000
+#symload
+strx_vt_maplist0 with strx_vt_maplist0$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -172,9 +199,43 @@ fun
 strx_vt_scanitm0
 ( xs
 : ~strx_vt(x0), r0: r0): strx_vt(r0)
-//
 #symload
 scanitm0 with strx_vt_scanitm0 of 1000
+//
+fun
+<x0:vt>
+<r0:vt>
+strx_vt_scanitm0$f2un
+( xs: ~strx_vt(x0)
+, r0: r0, scan: (!r0, x0) -> r0): strx_vt(r0)
+#symload
+scanitm0 with strx_vt_scanitm0$f2un of 1000
+#symload
+scanitm0$fun with strx_vt_scanitm0$f2un of 1000
+#symload
+strx_vt_scanitm0 with strx_vt_scanitm0$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-02-14:
+Either something is found or
+this one should loop forever!
+Wed Jan 14 09:22:25 AM EST 2026
+*)
+fun
+<x0:vt>
+strx_vt_search0(xs: ~strx_vt(x0)): (x0)
+#symload search0 with strx_vt_search0 of 1000
+//
+fun
+<x0:vt>
+strx_vt_search0$f1un
+(xs: ~strx_vt(x0), test: (!x0) -> bool): (x0)
+#symload search0 with strx_vt_search0$f1un of 1000
+#symload search0$fun with strx_vt_search0$f1un of 1000
+#symload strx_vt_search0 with strx_vt_search0$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

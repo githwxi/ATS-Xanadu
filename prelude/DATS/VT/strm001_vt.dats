@@ -81,6 +81,17 @@ gseq_iforitm0$f2un<strm_vt(x0)><x0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-14:
+Consuming a strm_vt should
+go through [strm_vt_forall0].
+If it is implemented as a loop,
+we can avoid stack overflow by
+turning tail-recursion into a lazy
+strm of states. This is referred to
+as manual tail-recursion optimization.
+Wed Jan 14 08:15:06 AM EST 2026
+*)
 #impltmp
 < x0:vt >
 strm_vt_forall0
@@ -242,7 +253,7 @@ HX-2024-07-10:
 Implementing the most specific one.
 HX-2024-07-13:
 This one is already added as the default!
-It is not harm to keep it here as a reference.
+There is not harm to keep it here as a reference.
 *)
 #impltmp
 { x0:vt }

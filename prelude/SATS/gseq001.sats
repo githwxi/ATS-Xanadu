@@ -1641,6 +1641,45 @@ gseq_sortedq$f2un
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-13:
+Tue Jan 13 03:00:54 PM EST 2026
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+<e1:vt>
+gseq_forall$e1nv(xs: xs, e1: !e1): bool
+fun
+<xs:t0>
+<x0:t0>
+<e1:vt>
+gseq_exists$e1nv(xs: xs, e1: !e1): bool
+fun
+<xs:t0>
+<x0:t0>
+<e1:vt>
+gseq_rforall$e1nv(xs: xs, e1: !e1): bool
+fun
+<xs:t0>
+<x0:t0>
+<e1:vt>
+gseq_rexists$e1nv(xs: xs, e1: !e1): bool
+fun
+<xs:t0>
+<x0:t0>
+<e1:vt>
+gseq_iforall$e1nv(xs: xs, e1: !e1): bool
+fun
+<xs:t0>
+<x0:t0>
+<e1:vt>
+gseq_irforall$e1nv(xs: xs, e1: !e1): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_gseq001.sats] *)
 (***********************************************************************)
