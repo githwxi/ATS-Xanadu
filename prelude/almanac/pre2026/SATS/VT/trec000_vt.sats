@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Thu Jan  1 09:56:13 PM EST 2026
+Thu Jan 15 10:12:12 AM EST 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,32 +39,32 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2026-01-11: For FP
-HX-2026-01-11: For LFP
-*)
-#staload
-"./../DATS/pre2026.dats"
-#staload
-"./../DATS/VT/pre2026_vt.dats"
+fun
+<state:vt>
+g_state$trans0(st0: state): state
+fun
+<state:vt>
+state$trans$test1(st1: !state): bool
+fun
+<state:vt>
+state$trans$fupdt1(st1: !state): state
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../pre2026/DATS/i1range.dats"
-#staload
-"./../pre2026/DATS/trec000.dats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload
-"./../pre2026/DATS/VT/trec000_vt.dats"
+fun
+<state:vt>
+g_state$trans1x(st0: &state): void
+fun
+<state:vt>
+state$trans$test1x(st1: &state): bool
+fun
+<state:vt>
+state$trans$updt1x(st1: &state): (void)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_HATS_pre2026_dats.hats] *)
+(* end of [ATS3/XANADU_prelude_almanac_pre2026_SATS_trec000.sats] *)
 (***********************************************************************)

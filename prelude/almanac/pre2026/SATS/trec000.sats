@@ -49,6 +49,18 @@ Wed Jan 14 06:44:37 PM EST 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-15:
+[g_state$trans] applies
+[state$trans$fupdt] to a given
+state ST0 repeatedly until a state
+ST1 statisfying [state$trans$test]
+is encountered; and it returns ST1.
+Please find some code in the following
+directory where [g_state$trans] is used to
+perform "manual tail-recursion optimization":
+XATSHOME/contrib/githwxi/pground/proj001@250424/misc011
+*)
 fun
 <state:t0>
 g_state$trans(st0: state): state

@@ -85,5 +85,5 @@ end//let//end-of-[auxloop(st0)]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_pre2026_SATS_trec000.sats] *)
+(* end of [ATS3/XANADU_prelude_almanac_pre2026_DATS_trec000.dats] *)
 (***********************************************************************)
