@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Thu Jan  1 09:56:13 PM EST 2026
+Thu Jan 15 10:31:07 AM EST 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,32 +39,51 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2026-01-11: For FP
-HX-2026-01-11: For LFP
-*)
 #staload
-"./../DATS/pre2026.dats"
-#staload
-"./../DATS/VT/pre2026_vt.dats"
+"./../../SATS/VT/trec000_vt.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../pre2026/DATS/i1range.dats"
-#staload
-"./../pre2026/DATS/trec000.dats"
+#impltmp
+<
+state:vt>
+g_state$trans0
+  ( st0 ) =
+let
 //
-(* ****** ****** *)
-(* ****** ****** *)
+val sts =
+(
+  auxloop(st0))
 //
-#staload
-"./../pre2026/DATS/VT/trec000_vt.dats"
+#impltmp
+search$test1<state> =
+state$trans$test1<state>
+//
+in//let
+strx_vt_search0<state>(sts)
+end where // end-of-(let...)
+{
+//
+fun
+auxloop
+( st0
+: state)
+: strx_vt(state) = $llazy
+let
+val st1 =
+(
+state$trans$fupdt1<state>(st0))
+in//let
+(
+  strxcon_vt_cons(st0, auxloop(st1)))
+end//let//end-of-[auxloop(st0)]
+//
+}(*where*)//end-of-[g_state$trans0<state>(st0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_HATS_pre2026_dats.hats] *)
+(* end of [ATS3/XANADU_prelude_almanac_pre2026_DATS_VT_trec000_vt.dats] *)
 (***********************************************************************)
