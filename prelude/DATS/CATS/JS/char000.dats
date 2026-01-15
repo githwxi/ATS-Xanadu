@@ -196,12 +196,12 @@ Sun Jan 19 01:11:19 AM EST 2025
 <(*tmp*)>
 char_make_sint(i0) =
 (
-XATS2JS_char_make_int(i0))
+XATS2JS_char_make_sint(i0))
 where
 {
 #extern
 fun
-XATS2JS_char_make_int(i0: sint): char = $extnam()
+XATS2JS_char_make_sint(i0: sint): char = $extnam()
 }
 //
 (* ****** ****** *)

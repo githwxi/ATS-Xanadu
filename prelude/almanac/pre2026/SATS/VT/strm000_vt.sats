@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Thu Jan  1 09:56:13 PM EST 2026
+Thu Jan 15 09:46:36 AM EST 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -40,26 +40,19 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
-HX-2026-01-11: For FP
-HX-2026-01-11: For LFP
+HX-2026-01-15: l/r = -1/1
+Thu Jan 15 09:51:09 AM EST 2026
 *)
-#staload
-"./../DATS/pre2026.dats"
-#staload
-"./../DATS/VT/pre2026_vt.dats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload
-"./../pre2026/DATS/i1range.dats"
-//
-#staload
-"./../pre2026/DATS/trec000.dats"
+fun<>
+bidir$moves$dirget((*0*)): sint
+fun
+<x0:vt>
+strm_vt_bidir$moves
+(xs: strm_vt(x0)): strx_vt(optn_vt(x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_HATS_pre2026_dats.hats] *)
+(* end of [ATS3/XANADU_prelude_almanac_pre2026_SATS_VT_strm000_vt.sats] *)
 (***********************************************************************)

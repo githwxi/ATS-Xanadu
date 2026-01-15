@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Thu Jan  1 09:56:13 PM EST 2026
+Wed Jan 14 04:14:03 PM EST 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -40,26 +40,29 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
-HX-2026-01-11: For FP
-HX-2026-01-11: For LFP
+HX-2026-01-14:
+Tail-recursion via
+functional state transition
+Wed Jan 14 06:44:37 PM EST 2026
 *)
-#staload
-"./../DATS/pre2026.dats"
-#staload
-"./../DATS/VT/pre2026_vt.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../pre2026/DATS/i1range.dats"
+fun
+<state:t0>
+g_state$trans(st0: state): state
 //
-#staload
-"./../pre2026/DATS/trec000.dats"
+fun
+<state:t0>
+state$trans$test(st1: state): bool
+fun
+<state:t0>
+state$trans$fupdt(st1: state): state
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_HATS_pre2026_dats.hats] *)
+(* end of [ATS3/XANADU_prelude_almanac_pre2026_SATS_trec000.sats] *)
 (***********************************************************************)

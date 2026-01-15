@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Thu Jan  1 09:56:13 PM EST 2026
+Wed Jan 14 04:31:21 PM EST 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,27 +39,51 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2026-01-11: For FP
-HX-2026-01-11: For LFP
-*)
 #staload
-"./../DATS/pre2026.dats"
-#staload
-"./../DATS/VT/pre2026_vt.dats"
+"./../SATS/trec000.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../pre2026/DATS/i1range.dats"
+#impltmp
+<
+state:t0>
+g_state$trans
+  ( st0 ) =
+let
 //
-#staload
-"./../pre2026/DATS/trec000.dats"
+val sts =
+(
+  auxloop(st0))
+//
+#impltmp
+search$test1<state> =
+state$trans$test<state>
+//
+in//let
+strx_vt_search0<state>(sts)
+end where // end-of-(let...)
+{
+//
+fun
+auxloop
+( st0
+: state)
+: strx_vt(state) = $llazy
+let
+val st1 =
+(
+state$trans$fupdt<state>(st0))
+in//let
+(
+  strxcon_vt_cons(st0, auxloop(st1)))
+end//let//end-of-[auxloop(st0)]
+//
+}(*where*)//end-of-[g_state$trans<state>(st0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_HATS_pre2026_dats.hats] *)
+(* end of [ATS3/XANADU_prelude_almanac_pre2026_SATS_trec000.sats] *)
 (***********************************************************************)
