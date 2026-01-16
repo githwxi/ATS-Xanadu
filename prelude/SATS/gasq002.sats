@@ -102,7 +102,21 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
+gasq_z2forcmp(xs: xs, ys: ys): sint
+//
+fun
+<xs:t0>
+<x0:vt>
+<ys:t0>
+<y0:vt>
 gasq_z2rforall(xs: xs, ys: ys): bool
+fun
+<xs:t0>
+<x0:vt>
+<ys:t0>
+<y0:vt>
+gasq_z2rforcmp(xs: xs, ys: ys): sint
+//
 fun
 <xs:t0>
 <x0:vt>
@@ -114,14 +128,33 @@ fun
 <x0:vt>
 <ys:t0>
 <y0:vt>
+gasq_z2iforcmp(xs: xs, ys: ys): sint
+//
+fun
+<xs:t0>
+<x0:vt>
+<ys:t0>
+<y0:vt>
 gasq_z2irforall(xs: xs, ys: ys): bool
+fun
+<xs:t0>
+<x0:vt>
+<ys:t0>
+<y0:vt>
+gasq_z2irforcmp(xs: xs, ys: ys): sint
 //
 (*
 #symload z2forall with gasq_z2forall of 0100
+#symload z2forcmp with gasq_z2forcmp of 0100
 #symload z2rforall with gasq_z2rforall of 0100
+#symload z2rforcmp with gasq_z2rforcmp of 0100
 #symload z2iforall with gasq_z2iforall of 0100
+#symload z2iforcmp with gasq_z2iforcmp of 0100
 #symload z2irforall with gasq_z2irforall of 0100
+#symload z2irforcmp with gasq_z2irforcmp of 0100
 *)
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -131,8 +164,11 @@ fun
 gasq_z2forall$f2un
 (xs: xs, ys: ys, test: (!x0, !y0)->bool): bool
 //
+(*
 #symload z2forall with gasq_z2forall$f2un of 0100
 #symload z2forall$fun with gasq_z2forall$f2un of 0100
+*)
+#symload gasq_z2forall with gasq_z2forall$f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -161,6 +197,7 @@ gasq_x2rlistize
 (xs: xs, ys: ys): list_vt@(x0, y0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -178,6 +215,7 @@ fun
 gasq_x2strqize
 (xs: xs, ys: ys): strq_vt@(x0, y0)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -199,6 +237,8 @@ gasq_ix2forall(xs: xs, ys: ys): bool
 #symload ix2forall with gasq_ix2forall of 0100
 *)
 //
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:vt>
@@ -207,21 +247,24 @@ fun
 gasq_x2forall$f2un
 (xs: xs, ys: ys, test: (!x0, !y0)->bool): bool
 //
+(*
 #symload x2forall with gasq_x2forall$f2un of 0100
 #symload x2forall$fun with gasq_x2forall$f2un of 0100
+*)
+#symload gasq_x2forall$fun with gasq_x2forall$f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef
-gz2asz
+gz2asq
 ( xs: t0, x0: vt
 , ys: t0, y0: vt) =
 (
   z2tup(GASQ(xs, x0), GASQ(ys, y0)))
 //
 #typedef
-gx2asz
+gx2asq
 ( xs: t0, x0: vt
 , ys: t0, y0: vt) =
 (
@@ -236,7 +279,7 @@ fun
 <y0:vt>
 GASQ_z2make
 ( xs: GASQ(xs, x0)
-, ys: GASQ(ys, y0)): GASQ(gz2asz(xs,x0,ys,y0), (x0,y0))
+, ys: GASQ(ys, y0)): GASQ(gz2asq(xs,x0,ys,y0), (x0,y0))
 //
 fun
 <xs:t0>
@@ -245,7 +288,7 @@ fun
 <y0:vt>
 GASQ_x2make
 ( xs: GASQ(xs, x0)
-, ys: GASQ(ys, y0)): GASQ(gx2asz(xs,x0,ys,y0), (x0,y0))
+, ys: GASQ(ys, y0)): GASQ(gx2asq(xs,x0,ys,y0), (x0,y0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

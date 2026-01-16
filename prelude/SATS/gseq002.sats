@@ -162,20 +162,46 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
+gseq_z2rforcmp(xs: xs, ys: ys): sint
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
 gseq_z2iforall(xs: xs, ys: ys): bool
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
+gseq_z2iforcmp(xs: xs, ys: ys): sint
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
 gseq_z2irforall(xs: xs, ys: ys): bool
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_z2irforcmp(xs: xs, ys: ys): sint
 //
 (*
 #symload z2forall with gseq_z2forall of 0100
+#symload z2forcmp with gseq_z2forcmp of 0100
 #symload z2rforall with gseq_z2rforall of 0100
+#symload z2rforcmp with gseq_z2rforcmp of 0100
 #symload z2iforall with gseq_z2iforall of 0100
+#symload z2iforcmp with gseq_z2iforcmp of 0100
 #symload z2irforall with gseq_z2irforall of 0100
+#symload z2irforcmp with gseq_z2irforcmp of 0100
 *)
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -185,9 +211,13 @@ fun
 gseq_z2forall$f2un
 (xs: xs, ys: ys, test: (x0, y0)->bool): bool
 //
+(*
 #symload z2forall with gseq_z2forall$f2un of 0100
 #symload z2forall$fun with gseq_z2forall$f2un of 0100
+*)
+#symload gseq_z2forall with gseq_z2forall$f2un of 0100
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -222,6 +252,8 @@ gseq_z2irforitm(xs: xs, ys: ys): void
 #symload z2irforitm with gseq_z2irforitm of 0100
 *)
 //
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -230,8 +262,11 @@ fun
 gseq_z2foritm$f2un
 (xs: xs, ys: ys, work: (x0, y0)->void): void
 //
+(*
 #symload z2foritm with gseq_z2foritm$f2un of 0100
 #symload z2foritm$fun with gseq_z2foritm$f2un of 0100
+*)
+#symload gseq_z2foritm with gseq_z2foritm$f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -378,6 +413,7 @@ gseq_x2rlistize
 (xs: xs, ys: ys): list_vt@(x0, y0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -412,6 +448,7 @@ gseq_ix2strqize
 , ys: ys): strq_vt@(ni, x0, ni, y0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -432,6 +469,8 @@ gseq_ix2forall(xs: xs, ys: ys): bool
 #symload ix2forall with gseq_ix2forall of 0100
 *)
 //
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -440,9 +479,13 @@ fun
 gseq_x2forall$f2un
 (xs: xs, ys: ys, test: (x0, y0)->bool): bool
 //
+(*
 #symload x2forall with gseq_x2forall$f2un of 0100
 #symload x2forall$fun with gseq_x2forall$f2un of 0100
+*)
+#symload gseq_x2forall with gseq_x2forall$f2un of 0100
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -464,6 +507,8 @@ gseq_ix2foritm(xs: xs, ys: ys): void
 #symload ix2foritm with gseq_ix2foritm of 0100
 *)
 //
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -472,8 +517,11 @@ fun
 gseq_x2foritm$f2un
 (xs: xs, ys: ys, work: (x0, y0)->void): void
 //
+(*
 #symload x2foritm with gseq_x2foritm$f2un of 0100
 #symload x2foritm$fun with gseq_x2foritm$f2un of 0100
+*)
+#symload gseq_x2foritm with gseq_x2foritm$f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
