@@ -1,11 +1,14 @@
 ########################################################################
-########################################################################
 #
 # For typecking with xatsopt
 #
 ########################################################################
+#
+# HX-2026-01-15:
+# Note that this is srcgen1/xatsopt!
+#
 ########################################################################
-
+#
 AR=ar
 CP=cp
 MV=mv
@@ -15,7 +18,7 @@ CPF=cp -f
 MVF=mv -f
 RMF=rm -f
 WCL=wc -l
-
+#
 ########################################################################
 all::
 all:: all_sats
@@ -123,6 +126,7 @@ xsymmap.dats \
 xsymmap_topmap.dats \
 xsymmap_stkmap.dats \
 xglobal.dats \
+xglobal_ext000.dats \
 filpath.dats \
 filpath_print0.dats \
 filpath_drpth0.dats \
