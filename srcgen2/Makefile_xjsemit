@@ -1,4 +1,8 @@
 ########################################################################
+#
+# For compiling
+# with srcgen2/xats2js
+#
 ########################################################################
 # Makefile for bootstrapping
 ########################################################################
@@ -93,6 +97,7 @@ xsymmap.dats \
 xsymmap_topmap.dats \
 xsymmap_stkmap.dats \
 xglobal.dats \
+xglobal_ext000.dats \
 filpath.dats \
 filpath_print0.dats \
 filpath_drpth0.dats \
@@ -247,11 +252,11 @@ $(patsubst %.dats, \
 #
 BUILD/JS/%_sats_out0.js: \
 $(SRCGEN2)/SATS/%.sats; \
-$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $< > $@
+$(NODE) --stack-size=8801 $(XATSOPT_TCHECK00) $< > $@
 #
 BUILD/JS/%_dats_out0.js: \
 $(SRCGEN2)/DATS/%.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > $@
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT00) $< > $@
 #
 ########################################################################
 ########################################################################

@@ -3,7 +3,12 @@
 # For compiling with xats2js
 #
 ########################################################################
-
+#
+# HX-2026-01-15:
+# Note that this is srcgen1/xats2js!
+#
+########################################################################
+#
 AR=ar
 CP=cp
 MV=mv
@@ -13,7 +18,7 @@ CPF=cp -f
 MVF=mv -f
 RMF=rm -f
 WCL=wc -l
-
+#
 ########################################################################
 XATSJSD=\
 ./../srcgen1/xats2js/srcgen1
@@ -114,6 +119,7 @@ xsymmap.dats \
 xsymmap_topmap.dats \
 xsymmap_stkmap.dats \
 xglobal.dats \
+xglobal_ext000.dats \
 filpath.dats \
 filpath_print0.dats \
 filpath_drpth0.dats \
