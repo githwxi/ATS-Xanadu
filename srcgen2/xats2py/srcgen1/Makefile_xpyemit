@@ -54,9 +54,9 @@ $(patsubst %.dats, BUILD/PY/%_dats_out1.py, $(SRCDATS))
 ########################################################################
 ########################################################################
 BUILD/PY/%_sats_out0.py: SATS/%.sats; \
-$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $< > $@
+$(NODE) --stack-size=8801 $(XATSOPT_TCHECK00) $< > $@
 BUILD/PY/%_dats_out0.py: DATS/%.dats; \
-$(NODE) --stack-size=4096 $(XATS2PY_PYEMIT00) $< > $@
+$(NODE) --stack-size=8801 $(XATS2PY_PYEMIT00) $< > $@
 ########################################################################
 ########################################################################
 ifndef XATSOPT_TCHECK00

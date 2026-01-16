@@ -78,5 +78,6 @@ time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xjsemit xats2py_pyemit01
 ##################################################################
 ##################################################################
 XATS2JS_JSEMIT00=$(XASSETS)/JS/xats2js/xats2js_jsemit00_ats2_opt1.js
+XATS2JS_JSEMIT00=$(XASSETS)/JS/xats2js/xats2js_jsemit00_ats3_opt1.js
 ##################################################################
 ##################################################################

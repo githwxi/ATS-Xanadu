@@ -21,7 +21,20 @@ For testing xats2js!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-//
+val strn1 = "\
+Hello,
+world!
+"
+val strn2 = "\
+Hello, \
+world!\
+"
+val () = printsln("strn1 = ", strn1)
+val () = printsln("strn2 = ", strn2)
+val () = console_log(the_print_store_flush())
+
+(* ****** ****** *)
+////
 fun
 <x0:vt>
 mystrm_vt_sing

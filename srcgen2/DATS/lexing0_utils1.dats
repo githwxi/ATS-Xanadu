@@ -758,7 +758,9 @@ end // end-of-[loop10(buf:!obj)]
 and
 loop20
 (buf: !obj): tnode =
-T_CHAR1_nil0(gobj_lexing$fcseg(buf))
+(
+T_CHAR1_nil0(
+  gobj_lexing$fcseg(buf)) )
 //
 and
 loop30
@@ -771,8 +773,8 @@ val cc0 = char_make_code(ci0)
 //
 (*
 val () =
-prerrsln
-("f0_SQUOTE: loop30: cc0 = ", cc0)
+prerrsln("\
+f0_SQUOTE: loop30: cc0 = ", cc0)
 *)
 //
 in//let
@@ -781,7 +783,9 @@ case+ 0 of
 //
 | _
 when SQUOTEq(cc0) =>
-T_CHAR2_char(gobj_lexing$fcseg(buf))
+(
+T_CHAR2_char(
+  gobj_lexing$fcseg(buf)))
 //
 | _
 (*  otherwise  *) =>
@@ -790,8 +794,10 @@ val
 cix =
 gobj_lexing$unget(buf, ci0)
 in// let // unclosed-squote
-T_CHAR2_char(gobj_lexing$fcseg(buf))
-end // end-of-( otherwise )
+(
+  T_CHAR2_char(
+    gobj_lexing$fcseg(buf)) )
+end// let // end-of-(otherwise)
 //
 end // end of [loop30(buf:!obj)]
 //
@@ -808,11 +814,16 @@ in//let
 case+ 0 of
 //
 | _
-when isdigit(cc0) => loop11(buf)
+when
+isdigit(cc0) =>
+(
+  loop11(buf) )
 //
 | _
 when SQUOTEq(cc0) =>
-T_CHAR3_blsh(gobj_lexing$fcseg(buf))
+(
+T_CHAR3_blsh(
+  gobj_lexing$fcseg(buf)) )
 //
 | _
 (*  otherwise  *) =>
@@ -839,16 +850,18 @@ in//let
 case+ 0 of
 | _
 when SQUOTEq(cc0) =>
-T_CHAR3_blsh(gobj_lexing$fcseg(buf))
+(
+T_CHAR3_blsh(
+  gobj_lexing$fcseg(buf)) )
 | _
-(*  othereise  *) =>
+(*__othereise__*) =>
 let
 val
 cix =
 gobj_lexing$unget(buf, ci0)
 in// let // unclosed-squote
 T_CHAR3_blsh(gobj_lexing$fcseg(buf))
-end // end-of-( otherwise )
+end// let // end-of-(otherwise)
 //
 end // end of [loop12(buf:!obj)]
 //
@@ -886,13 +899,14 @@ case+ 0 of
 |
 _ when cc0 = '\"' =>
 (
-  let
-    val ccs =
-    gobj_lexing$fclst(buf)
-    val len = length1(ccs)
-  in//let
-    T_STRN1_clsd(strn(ccs), len)
-  end
+let
+  val ccs =
+  gobj_lexing$fclst(buf)
+  val len = length1(ccs)
+in//let
+(
+  T_STRN1_clsd(strn(ccs), len))
+end
 )
 |
 _ when cc0 = '\\' =>
@@ -901,11 +915,12 @@ _ when cc0 = '\\' =>
 // HX-2022-06-13:
 // The following char is skipped
 *)
-  (
-    loop(buf) ) where {
-    val
-    ci0 = gobj_lexing$getc1(buf)
-  }
+(
+  loop(buf) ) where
+{
+  val
+  ci0 = gobj_lexing$getc1( buf )
+}
 )
 | _ (* otherwise *) =>
 (
@@ -913,17 +928,16 @@ _ when cc0 = '\\' =>
 // HX-2022-06-13:
 // The closing d-quote is missing
 *)
-  if // if
-  (ci0 >= 0)
-  then loop(buf)
-  else
-  let
-    val ccs =
-    gobj_lexing$fclst(buf)
-    val len = length1(ccs)
-  in// let // HX: unclosed!
-    T_STRN2_ncls(strn(ccs), len)
-  end // else // end-of-(if)
+if // if
+(ci0 >= 0)
+then loop(buf) else
+let
+  val ccs =
+  gobj_lexing$fclst(buf)
+  val len = length1(ccs)
+in//let//HX: unclosed!!!
+  T_STRN2_ncls(strn(ccs), len)
+end//let//else//end-of-(if)
 )
 //
 end // end-of-[loop(buf:!obj)]
@@ -936,9 +950,9 @@ fun
 f0_otherwise
 (buf: !obj, ci0: sint): tnode =
 (
-  if
-  (ci0 >= 0)
-  then T_SPCHR(ci0) else T_EOF()
+if
+(ci0 >= 0)
+then T_SPCHR(ci0) else T_EOF()
 ) where
 {
   val () = gobj_lexing$fcnil(buf)
