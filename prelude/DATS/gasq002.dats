@@ -114,7 +114,6 @@ val btf = z2forall$test1<x0><y0>(x0, y0)
 end(*let*)//end-of-[gasq_z2forall(xs, ys)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
@@ -155,6 +154,95 @@ val btf = z2rforall$test1<x0><y0>(x0, y0)
 }(*where*)
 }(*where*)
 end(*let*)//end-of-[gasq_z2rforall(xs, ys)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+< ys:t0 >
+< y0:vt >
+gasq_z2iforall
+  (xs, ys) =
+let
+val nx =
+gasq_length<xs><x0>(xs)
+val ny =
+gasq_length<ys><y0>(ys)
+in//let
+(
+nint_forall<>
+(g_min<nint>(nx, ny))) where
+{
+#impltmp
+forall$test<nint>(i0) =
+let
+pvx () =
+  owed_vt_return0(fx, x0)
+pvx () =
+  owed_vt_return0(fy, y0) in btf
+end where
+{
+//
+val
+(fx|x0) =
+$UN.gasq_lget$at$raw<xs><x0>(xs, i0)
+val
+(fy|y0) =
+$UN.gasq_lget$at$raw<ys><y0>(ys, i0)
+//
+val btf =
+(
+  z2iforall$test1<x0><y0>(i0, x0, y0) )
+//
+}(*where*)
+}(*where*)
+end(*let*)//end-of-[gasq_z2iforall(xs, ys)]
+//
+(* ****** ****** *)
+//
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+< ys:t0 >
+< y0:vt >
+gasq_z2irforall
+  (xs, ys) =
+let
+val nx =
+gasq_length<xs><x0>(xs)
+val ny =
+gasq_length<ys><y0>(ys)
+in//let
+(
+nint_rforall<>
+(g_min<nint>(nx, ny))) where
+{
+#impltmp
+rforall$test<nint>(i0) =
+let
+pvx () =
+  owed_vt_return0(fx, x0)
+pvx () =
+  owed_vt_return0(fy, y0) in btf
+end where
+{
+//
+val
+(fx|x0) =
+$UN.gasq_lget$at$raw<xs><x0>(xs, i0)
+val
+(fy|y0) =
+$UN.gasq_lget$at$raw<ys><y0>(ys, i0)
+//
+val btf =
+(
+  z2irforall$test1<x0><y0>(i0, x0, y0) )
+//
+}(*where*)
+}(*where*)
+end(*let*)//end-of-[gasq_z2irforall(xs, ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

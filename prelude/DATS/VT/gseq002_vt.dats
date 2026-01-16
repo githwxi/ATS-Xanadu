@@ -67,6 +67,7 @@ gseq_strmize1<xs><x0>(xs),
 gseq_strmize1<ys><y0>(ys))//end-impltmp
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 < xs:vt >
@@ -92,6 +93,7 @@ strm_vt_z2forall0<x0><y0>
 gseq_rstrmize1<xs><x0>(xs),
 gseq_rstrmize1<ys><y0>(ys))//end-impltmp
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -125,6 +127,8 @@ val b0 =
 //
 }(*where*)//end-of-[gseq_z2iforall0(xs,ys)]
 //
+(* ****** ****** *)
+//
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -157,6 +161,7 @@ val b0 =
 }(*where*)//end-of-[gseq_z2iforall1(xs,ys)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 < xs:vt >
@@ -188,6 +193,8 @@ val b0 =
   z2irforall$test0<x0><y0>(i0, x0, y0) } }
 //
 }(*where*)//end-of-[gseq_z2irforall0(xs,ys)]
+//
+(* ****** ****** *)
 //
 #impltmp
 < xs:vt >
@@ -244,6 +251,8 @@ val () =
 z2foritm$work0<x0><y0>(x0, y0) in true end
 }(*where*)//end-of-[gseq_z2foritm0(xs,ys)]
 //
+(* ****** ****** *)
+//
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -265,6 +274,7 @@ val () =
 z2foritm$work1<x0><y0>(x0, y0) in true end
 }(*where*)//end-of-[gseq_z2foritm1(xs,ys)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -288,6 +298,8 @@ val () =
 z2rforitm$work0<x0><y0>(x0, y0) in true end
 }(*where*)//end-of-[gseq_z2rforitm0(xs,ys)]
 //
+(* ****** ****** *)
+//
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -309,6 +321,7 @@ val () =
 z2rforitm$work1<x0><y0>(x0, y0) in true end
 }(*where*)//end-of-[gseq_z2rforitm1(xs,ys)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -332,6 +345,8 @@ val () =
 z2iforitm$work0<x0><y0>(i0, x0, y0) in true end
 }(*where*)//end-of-[gseq_z2iforitm0(xs,ys)]
 //
+(* ****** ****** *)
+//
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -354,6 +369,7 @@ z2iforitm$work1<x0><y0>(i0, x0, y0) in true end
 }(*where*)//end-of-[gseq_z2iforitm1(xs,ys)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 < xs:vt >
@@ -375,6 +391,8 @@ let
 val () =
 z2irforitm$work0<x0><y0>(i0, x0, y0) in true end
 }(*where*)//end-of-[gseq_z2irforitm0(xs,ys)]
+//
+(* ****** ****** *)
 //
 #impltmp
 < xs:vt >
