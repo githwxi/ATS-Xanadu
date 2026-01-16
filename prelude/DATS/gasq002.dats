@@ -247,6 +247,119 @@ end(*let*)//end-of-[gasq_z2irforall(xs, ys)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-16:
+Fri Jan 16 12:56:24 PM EST 2026
+*)
+#impltmp
+< xs:t0 >
+< x0:vt >
+< ys:t0 >
+< y0:vt >
+gasq_z2forcmp
+  (xs, ys) =
+(
+  loop( 0 ) ) where
+{
+//
+val nx =
+gasq_length<xs><x0>(xs)
+val ny =
+gasq_length<ys><y0>(ys)
+val ln = (g_min(nx, ny))
+//
+fun
+loop
+(i0: nint): sint =
+if // if
+(i0 >= ln)
+then(//then
+  g_cmp<sint>(nx, ny))
+else(//else
+//
+let//let
+val i1 = i0 + 1
+pvx () =
+(
+  owed_vt_return0(fx, x0))
+pvx () =
+(
+  owed_vt_return0(fy, y0))
+in // let
+(
+if(sgn!=0)then(sgn)else(loop(i1)))
+end where{
+//
+val
+(fx|x0) =
+$UN.gasq_lget$at$raw<xs><x0>(xs, i0)
+val
+(fy|y0) =
+$UN.gasq_lget$at$raw<ys><y0>(ys, i0)
+//
+val sgn = z2forcmp$tcmp1<x0><y0>(x0, y0)}
+//
+)(*endif*)//end-of-[loop(i0:nint):sint]
+//
+}(*where*)//end-of-[gasq_z2forcmp(xs, ys)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+< ys:t0 >
+< y0:vt >
+gasq_z2rforcmp
+  (xs, ys) =
+(
+  loop( 0 ) ) where
+{
+//
+val nx =
+gasq_length<xs><x0>(xs)
+val ny =
+gasq_length<ys><y0>(ys)
+val ln = (g_min(nx, ny))
+//
+fun
+loop
+(i0: nint): sint =
+if // if
+(i0 >= ln)
+then(//then
+  g_cmp<sint>(nx, ny))
+else(//else
+//
+let//let
+val i1 = i0 + 1
+pvx () =
+(
+  owed_vt_return0(fx, x0))
+pvx () =
+(
+  owed_vt_return0(fy, y0))
+in // let
+(
+if(sgn!=0)then(sgn)else(loop(i1)))
+end where{
+//
+val
+(fx|x0) =
+$UN.gasq_lget$at$raw<xs><x0>(xs, i0)
+val
+(fy|y0) =
+$UN.gasq_lget$at$raw<ys><y0>(ys, i0)
+//
+val sgn = z2rforcmp$tcmp1<x0><y0>(x0, y0)}
+//
+)(*endif*)//end-of-[loop(i0:nint):sint]
+//
+}(*where*)//end-of-[gasq_z2rforcmp(xs, ys)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_gasq002.dats] *)
 (***********************************************************************)

@@ -765,15 +765,15 @@ z2forall$test1(!x0, !y0): bool
 fun
 <x0:t0>
 <y0:t0>
-z2forcmp$test(x0, y0): sint
+z2forcmp$tcmp(x0, y0): sint
 fun
 <x0:vt>
 <y0:vt>
-z2forcmp$test0(~x0, ~y0): sint
+z2forcmp$tcmp0(~x0, ~y0): sint
 fun
 <x0:vt>
 <y0:vt>
-z2forcmp$test1(!x0, !y0): sint
+z2forcmp$tcmp1(!x0, !y0): sint
 //
 (* ****** ****** *)
 //
@@ -828,15 +828,15 @@ z2iforall$test1(nint,!x0,!y0): bool
 fun
 <x0:t0>
 <y0:t0>
-z2iforcmp$test(nint,x0,y0): sint
+z2iforcmp$tcmp(nint,x0,y0): sint
 fun
 <x0:vt>
 <y0:vt>
-z2iforcmp$test0(nint,~x0,~y0): sint
+z2iforcmp$tcmp0(nint,~x0,~y0): sint
 fun
 <x0:vt>
 <y0:vt>
-z2iforcmp$test1(nint,!x0,!y0): sint
+z2iforcmp$tcmp1(nint,!x0,!y0): sint
 //
 (* ****** ****** *)
 //
