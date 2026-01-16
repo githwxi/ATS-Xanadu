@@ -91,12 +91,22 @@ z2irforall$test
 fun
 <x1:t0>
 <x2:t0>
-z2forcmp$test
+z2forcmp$tcmp
 (x1: x1, x2: x2): sint
 fun
 <x1:t0>
 <x2:t0>
-z2iforcmp$test
+z2rforcmp$tcmp
+(x1: x1, x2: x2): sint
+fun
+<x1:t0>
+<x2:t0>
+z2iforcmp$tcmp
+(i0: ni, x1: x1, x2: x2): sint
+fun
+<x1:t0>
+<x2:t0>
+z2irforcmp$tcmp
 (i0: ni, x1: x1, x2: x2): sint
 //
 (* ****** ****** *)

@@ -85,7 +85,7 @@ gseq_z2forcmp0
 ) where
 {
 #impltmp
-z2forcmp$test0<x0><x0> = g_cmp00<x0>
+z2forcmp$tcmp0<x0><x0> = g_cmp00<x0>
 }(*where*) // [gseq_cmp00/z2forcmp0]
 
 (* ****** ****** *)
@@ -1012,7 +1012,7 @@ gseq_z2forcmp0
 ) where
 {
 #impltmp
-z2forcmp$test0<x0><x0> = g_cmp00<x0>
+z2forcmp$tcmp0<x0><x0> = g_cmp00<x0>
 } (* end of [gseq_z2cmp00/z2forcmp0] *)
 
 #impltmp
@@ -1026,7 +1026,7 @@ gseq_z2forcmp1
 ) where
 {
 #impltmp
-z2forcmp$test1<x0><x0> = g_cmp11<x0>
+z2forcmp$tcmp1<x0><x0> = g_cmp11<x0>
 } (* end of [gseq_z2cmp11/z2forcmp1] *)
 
 (* ****** ****** *)
@@ -1075,13 +1075,13 @@ strm_vt_z2forcmp0<x0><y0>
 ) where
 {
 #impltmp
-z2forcmp$test0<x0><y0>
+z2forcmp$tcmp0<x0><y0>
   (x0, y0) =
 (
 g_free(x0); g_free(y0); sgn) where
 {
 val
-sgn = z2forcmp$test1<x0><y0>(x0, y0)}
+sgn = z2forcmp$tcmp1<x0><y0>(x0, y0)}
 } (*where*)//end-of-[gseq_z2forcmp1]
 //
 (* ****** ****** *)

@@ -91,23 +91,47 @@ z2irforall$test1
 fun
 <x0:vt>
 <y0:vt>
-z2forcmp$test0
+z2forcmp$tcmp0
 (x0: ~x0, y0: ~y0): sint
 fun
 <x0:vt>
 <y0:vt>
-z2forcmp$test1
+z2forcmp$tcmp1
 (x0: !x0, y0: !y0): sint
 //
 fun
 <x0:vt>
 <y0:vt>
-z2iforcmp$test0
+z2rforcmp$tcmp0
+(x0: ~x0, y0: ~y0): sint
+fun
+<x0:vt>
+<y0:vt>
+z2rforcmp$tcmp1
+(x0: !x0, y0: !y0): sint
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+z2iforcmp$tcmp0
 (i0: ni, x0: ~x0, y0: ~y0): sint
 fun
 <x0:vt>
 <y0:vt>
-z2iforcmp$test1
+z2iforcmp$tcmp1
+(i0: ni, x0: !x0, y0: !y0): sint
+//
+fun
+<x0:vt>
+<y0:vt>
+z2irforcmp$tcmp0
+(i0: ni, x0: ~x0, y0: ~y0): sint
+fun
+<x0:vt>
+<y0:vt>
+z2irforcmp$tcmp1
 (i0: ni, x0: !x0, y0: !y0): sint
 //
 (* ****** ****** *)
