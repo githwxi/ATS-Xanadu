@@ -481,6 +481,8 @@ where
 z2forcmp$test<x0> = g_cmp<x0>
 }(*where*)//end-of-[gseq_cmp(xs,ys)]
 //
+(* ****** ****** *)
+//
 #impltmp
 < xs:t0 >
 < x0:t0 >

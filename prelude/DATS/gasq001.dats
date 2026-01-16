@@ -174,7 +174,8 @@ $UN.gasq_lget$at$raw
 < xs >< x0 >(xs, i0)
 //
 val r0 =
-  forall$test1<x0>(x0)
+(
+  forall$test1<x0>(x0))
 //
 pvx () =
 (

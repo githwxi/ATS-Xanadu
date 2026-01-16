@@ -96,6 +96,7 @@ gseq_z2irforall1(xs: !xs, ys: !ys): bool
 //
 (* ****** ****** *)
 //
+(*
 #symload z2forall0 with gseq_z2forall0 of 0100
 #symload z2forall1 with gseq_z2forall1 of 0100
 #symload z2rforall0 with gseq_z2rforall0 of 0100
@@ -104,6 +105,7 @@ gseq_z2irforall1(xs: !xs, ys: !ys): bool
 #symload z2iforall1 with gseq_z2iforall1 of 0100
 #symload z2irforall0 with gseq_z2irforall0 of 0100
 #symload z2irforall1 with gseq_z2irforall1 of 0100
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -162,6 +164,7 @@ gseq_z2irforitm1(xs: !xs, ys: !ys): void
 //
 (* ****** ****** *)
 //
+(*
 #symload z2foritm0 with gseq_z2foritm0 of 0100
 #symload z2foritm1 with gseq_z2foritm1 of 0100
 #symload z2rforitm0 with gseq_z2rforitm0 of 0100
@@ -170,6 +173,7 @@ gseq_z2irforitm1(xs: !xs, ys: !ys): void
 #symload z2iforitm1 with gseq_z2iforitm1 of 0100
 #symload z2irforitm0 with gseq_z2irforitm0 of 0100
 #symload z2irforitm1 with gseq_z2irforitm1 of 0100
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -239,12 +243,14 @@ fun
 <z0:vt>
 gseq_z2map1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
 //
+(*
 #symload z2map0_llist with gseq_z2map0_llist of 0100
 #symload z2map1_llist with gseq_z2map1_llist of 0100
 #symload z2map0_lstrm with gseq_z2map0_lstrm of 0100
 #symload z2map1_lstrm with gseq_z2map1_lstrm of 0100
 #symload z2map0_lstrq with gseq_z2map0_lstrq of 0100
 #symload z2map1_lstrq with gseq_z2map1_lstrq of 0100
+*)
 //
 (* ****** ****** *)
 //
@@ -293,12 +299,14 @@ fun
 <z0:vt>
 gseq_z2rmap1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
 //
+(*
 #symload z2rmap0_llist with gseq_z2rmap0_llist of 0100
 #symload z2rmap1_llist with gseq_z2rmap1_llist of 0100
 #symload z2rmap0_lstrm with gseq_z2rmap0_lstrm of 0100
 #symload z2rmap1_lstrm with gseq_z2rmap1_lstrm of 0100
 #symload z2rmap0_lstrq with gseq_z2rmap0_lstrq of 0100
 #symload z2rmap1_lstrq with gseq_z2rmap1_lstrq of 0100
+*)
 //
 (* ****** ****** *)
 //
@@ -347,12 +355,14 @@ fun
 <z0:vt>
 gseq_z2imap1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
 //
+(*
 #symload z2imap0_llist with gseq_z2imap0_llist of 0100
 #symload z2imap1_llist with gseq_z2imap1_llist of 0100
 #symload z2imap0_lstrm with gseq_z2imap0_lstrm of 0100
 #symload z2imap1_lstrm with gseq_z2imap1_lstrm of 0100
 #symload z2imap0_lstrq with gseq_z2imap0_lstrq of 0100
 #symload z2imap1_lstrq with gseq_z2imap1_lstrq of 0100
+*)
 //
 (* ****** ****** *)
 //
@@ -401,12 +411,14 @@ fun
 <z0:vt>
 gseq_z2irmap1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
 //
+(*
 #symload z2irmap0_llist with gseq_z2irmap0_llist of 0100
 #symload z2irmap1_llist with gseq_z2irmap1_llist of 0100
 #symload z2irmap0_lstrm with gseq_z2irmap0_lstrm of 0100
 #symload z2irmap1_lstrm with gseq_z2irmap1_lstrm of 0100
 #symload z2irmap0_lstrq with gseq_z2irmap0_lstrq of 0100
 #symload z2irmap1_lstrq with gseq_z2irmap1_lstrq of 0100
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
