@@ -31,42 +31,62 @@
 (*
 Author: Hongwei Xi
 (*
-Thu Jan  1 11:21:42 AM EST 2026
+Thu Jan 15 12:26:22 PM EST 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"srcgen1\
+/prelude/SATS/unsafex.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
+#include
+"./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dpre.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#staload "./../SATS/xstamp0.sats"
+#staload "./../SATS/xsymbol.sats"
+#staload "./../SATS/xsymmap.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
+#staload "./../SATS/parsing.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+#staload "./../SATS/trans01.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/trans12.sats"
+#staload "./../SATS/tread12.sats"
+(* ****** ****** *)
+#staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
 (*
-HX-2026-01-11: For FP
-HX-2026-01-11: For LFP
+HX-2026-01-15:
+Thu Jan 15 02:21:12 PM EST 2026
+This one is idempotent.
+If loading is done, 1 is returned
+If no loading is done, 0 is returned.
 *)
-#staload
-"./../SATS/pre2026.sats"
-#staload
-"./../SATS/VT/pre2026_vt.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload
-"./../pre2026/SATS/i1range.sats"
-#staload
-"./../pre2026/SATS/trec000.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload
-"./../pre2026/SATS/VT/strm000_vt.sats"
-#staload
-"./../pre2026/SATS/VT/trec000_vt.sats"
+fun
+the_fxtyenv_pvsl02d((*void*)): sint(*0/1*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_HATS_pre2026_sats.hats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xglobal_ext000.dats] *)
 (***********************************************************************)

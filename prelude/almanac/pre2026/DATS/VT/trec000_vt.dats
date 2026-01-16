@@ -84,6 +84,52 @@ end//let//end-of-[auxloop(st0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#impltmp
+<
+state:vt>
+g_state$trans1x
+  ( st0 ) =
+let
+//
+val sts =
+(
+  auxloop(st0))
+//
+#impltmp
+search$test1
+< bool >( btf ) = (btf)
+//
+in//let
+g_void(
+strx_vt_search0<bool>(sts))
+end where // end-of-(let...)
+{
+//
+fun
+auxloop
+( st0
+: &state)
+: strx_vt(bool) = $llazy
+let
+//
+val () =
+(
+state$trans$updt1x<state>(st0))
+val btf =
+(
+state$trans$test1x<state>(st0))
+//
+in//let
+(
+  strxcon_vt_cons(btf, auxloop(st0)))
+end//let//end-of-[auxloop(st0)]
+//
+}(*where*)//end-of-[g_state$trans1x<state>(st0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_almanac_pre2026_DATS_VT_trec000_vt.dats] *)
 (***********************************************************************)

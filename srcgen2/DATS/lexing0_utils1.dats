@@ -268,7 +268,7 @@ lexing_DIGIT
 (* ****** ****** *)
 
 #impltmp
-<obj>
+<obj:vt>
 gobj_lexing_tnode
 (   buf   ) = let
 //
@@ -952,7 +952,7 @@ f0_otherwise
 (* ****** ****** *)
 
 #impltmp
-<obj>
+<obj:vt>
 lexing_CMNT1_line
   (buf, sym) =
   loop0(buf) where
@@ -994,7 +994,7 @@ end // end of [loop0]
 (* ****** ****** *)
 
 #impltmp
-<obj>
+<obj:vt>
 lexing_CMNT2_rest
   (buf, sym) =
   loop0(buf) where
@@ -1023,7 +1023,7 @@ end (*let*) // end of [loop0]
 (* ****** ****** *)
 
 #impltmp
-<obj>(*tmp*)
+<obj:vt>
 lexing_CMNT3_ccbl
   (buf, ci0, ci1) =
 (
@@ -1086,7 +1086,7 @@ end (*let*) // end of [ loop1(buf,lvl) ]
 (* ****** ****** *)
 
 #impltmp
-<obj>
+<obj:vt>
 lexing_CMNT4_mlbl
   (buf, ci0, ci1) =
 (
@@ -1220,7 +1220,7 @@ end // let // end-of-[loop2(buf, lvl)]
 (* ****** ****** *)
 
 #impltmp
-<obj>(*tmp*)
+<obj:vt>
 lexing_DIGIT
 ( buf: !obj
 , ci0: sint): tnode =
