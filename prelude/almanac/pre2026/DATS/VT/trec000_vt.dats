@@ -48,7 +48,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 <
 state:vt>
-g_state$trans0
+g_state$updts1
   ( st0 ) =
 let
 //
@@ -57,29 +57,35 @@ val sts =
   auxloop(st0))
 //
 #impltmp
-search$test1<state> =
-state$trans$test1<state>
+search$test1
+< bool >( btf ) = (btf)
 //
 in//let
-strx_vt_search0<state>(sts)
+g_void(
+strx_vt_search0<bool>(sts))
 end where // end-of-(let...)
 {
 //
 fun
 auxloop
 ( st0
-: state)
-: strx_vt(state) = $llazy
+: !state)
+: strx_vt(bool) = $llazy
 let
-val st1 =
+//
+val () =
 (
-state$trans$fupdt1<state>(st0))
+  state$updts$updt1<state>(st0))
+val btf =
+(
+  state$updts$test1<state>(st0))
+//
 in//let
 (
-  strxcon_vt_cons(st0, auxloop(st1)))
-end//let//end-of-[auxloop(st0)]
+  strxcon_vt_cons(btf, auxloop(st0)))
+end//let//end-of-[auxloop(st0:!state)]
 //
-}(*where*)//end-of-[g_state$trans0<state>(st0)]
+}(*where*)//end-of-[g_state$updts1<state>(st0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -88,7 +94,7 @@ end//let//end-of-[auxloop(st0)]
 #impltmp
 <
 state:vt>
-g_state$trans1x
+g_state$updts1x
   ( st0 ) =
 let
 //
@@ -115,17 +121,17 @@ let
 //
 val () =
 (
-state$trans$updt1x<state>(st0))
+  state$updts$updt1x<state>(st0))
 val btf =
 (
-state$trans$test1x<state>(st0))
+  state$updts$test1x<state>(st0))
 //
 in//let
 (
   strxcon_vt_cons(btf, auxloop(st0)))
-end//let//end-of-[auxloop(st0)]
+end//let//end-of-[auxloop(st0:&state)]
 //
-}(*where*)//end-of-[g_state$trans1x<state>(st0)]
+}(*where*)//end-of-[g_state$updts1x<state>(st0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

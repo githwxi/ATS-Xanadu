@@ -371,13 +371,22 @@ tstr.node() of
 //
 |T_STRN1_clsd
 ( rep1,len2 ) =>
-( print("XATSSTRN(");
-  f0_strn(rep1, len2); print(")"))
-//
+( print("XATSSTRN(`");
+  f0_strn(rep1, len2-1); print("`)"))
 |T_STRN2_ncls
 ( rep1,len2 ) =>
-( print("XATSSTRN(");
-  f0_strn(rep1, len2); print("\")"))
+( print("XATSSTRN(`");
+  f0_strn(rep1, len2-0); print("`)"))
+(*
+|T_STRN1_clsd
+( rep1,len2 ) =>
+( print("XATSSTRN(\"");
+  f0_strn(rep1, len2-1); print("\")"))
+|T_STRN2_ncls
+( rep1,len2 ) =>
+( print("XATSSTRN(\"");
+  f0_strn(rep1, len2-0); print("\")"))
+*)
 //
 end where
 {
@@ -388,8 +397,11 @@ f0_strn
 , len2: sint): void =
 let
 //
+val n0 = len2
+(*
 val n0 =
 strn_length(rep1)
+*)
 //
 fnx
 loop1
@@ -403,34 +415,42 @@ let
 //
 in//let
 //
-if
+if // if
 (c0 = '\\')
-then loop2(i0+1) else
+then//then
 (
-char_fprint(c0 , filr); loop1(i0+1))
+  loop2(i0+1)) else
+(
+char_fprint(c0, filr); loop1(i0+1))
 end//let//end-of-[loop1(i0)]
 //
 and
 loop2
 (i1: nint): void =
-if
+if // if
 (i1 >= n0)
-then
+then//then
 (
 char_fprint
 ('\\', filr)) else
 let
   val c1 = rep1[i1]
 in (*let*)
-if
+if // if
 (c1 = '\n')
-then loop1(i1+1) else
+then//then
 (
-char_fprint('\\', filr); char_fprint(c1 , filr); loop1(i1+1))
+  loop1(i1+1)) else
+(
+char_fprint('\\', filr); char_fprint(c1, filr); loop1(i1+1))
 end//let//end-of-[loop1(i1)]
 //
-in
-let val i0 = 0 in loop1(i0) end
+in//let
+let
+(*
+HX: skip the first char
+*)
+val i0 = 1 in loop1(i0) end//let
 end(*let*)//end-of-(f0_strn(rep))
 //
 }(* where *)//end-of-[i0strfpr(filr,tstr)]
