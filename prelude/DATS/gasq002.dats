@@ -43,12 +43,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #define
-GZ2ASZ(xs, ys) =
+GZ2ASQ(xs, ys) =
 GASQ_z2make(GASQ(xs), GASQ(ys))
 //
 (*
 #typedef
-gz2asz
+gz2asq
 ( xs: t0, x0: t0
 , ys: t0, y0: t0) =
 (
@@ -114,6 +114,8 @@ val btf = z2forall$test1<x0><y0>(x0, y0)
 end(*let*)//end-of-[gasq_z2forall(xs, ys)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < xs:t0 >
 < x0:vt >
