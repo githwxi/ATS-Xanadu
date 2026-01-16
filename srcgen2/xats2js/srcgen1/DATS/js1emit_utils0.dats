@@ -353,6 +353,7 @@ tint.node() of
 }(*where*)//end-of-[i0intjs1(filr,tint)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 i0btfjs1
@@ -368,6 +369,7 @@ else print("XATSBOOL(false)")
 }(*where*)//end-of-[i0btfjs1(filr,btf0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 i0chrjs1
@@ -376,12 +378,22 @@ i0chrjs1
   i0chrfpr(filr, tchr))
 //HX:sharing(i0chrfpr=i1chrjs1=i1chrpy1)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+(*
+HX-2026-01-16:
+This is reimplemented below
+for handling multiline strings
+*)
 #implfun
 i0strjs1
 (filr, tstr) =
 (
   i0strfpr(filr, tstr))
 //HX:sharing(i0strfpr=i1strjs1=i1strpy1)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -425,6 +437,99 @@ prints
 val stmp = i1tnm_get_stmp(itnm)
 //
 }(*where*)//end-of-[i1tnmjs1(filr,itnm)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0strjs1
+( filr, tstr) =
+let
+//
+#impltmp
+g_print$out
+<(*nil*)>((*void*)) = filr
+//
+in//let
+//
+case-
+tstr.node() of
+//
+|T_STRN1_clsd
+( rep1,len2 ) =>
+( print("XATSSTRN(`");
+  f0_strn(rep1, len2-1); print("`)"))
+|T_STRN2_ncls
+( rep1,len2 ) =>
+( print("XATSSTRN(`");
+  f0_strn(rep1, len2-0); print("`)"))
+//
+end where
+{
+//
+fun
+f0_strn
+( rep1: strn
+, len2: sint): void =
+let
+//
+val n0 = len2
+(*
+val n0 =
+strn_length(rep1)
+*)
+//
+fnx
+loop1
+(i0: nint): void =
+if
+(i0 >= n0)
+then ((*0*)) else
+let
+//
+  val c0 = rep1[i0]
+//
+in//let
+//
+if // if
+(c0 = '\\')
+then//then
+(
+  loop2(i0+1)) else
+(
+char_fprint(c0, filr); loop1(i0+1))
+end//let//end-of-[loop1(i0)]
+//
+and
+loop2
+(i1: nint): void =
+if // if
+(i1 >= n0)
+then//then
+(
+char_fprint
+('\\', filr)) else
+let
+  val c1 = rep1[i1]
+in (*let*)
+if // if
+(c1 = '\n')
+then//then
+(
+  loop1(i1+1)) else
+(
+char_fprint('\\', filr); char_fprint(c1, filr); loop1(i1+1))
+end//let//end-of-[loop1(i1)]
+//
+in//let
+let
+(*
+HX: skip the first char
+*)
+val i0 = 1 in loop1(i0) end//let
+end(*let*)//end-of-(f0_strn(rep))
+//
+}(* where *)//end-of-[i0strjs1(filr,tstr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
