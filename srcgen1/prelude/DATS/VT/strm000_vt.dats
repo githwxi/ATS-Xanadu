@@ -1647,7 +1647,7 @@ strmcon_vt_cons(y0, ys) =>
 let
 val
 sgn =
-z2forcmp$test0<x0><y0>(x0, y0)
+z2forcmp$tcmp0<x0><y0>(x0, y0)
 in
 (
 if
@@ -1905,7 +1905,7 @@ strmcon_vt_cons(y0, ys) =>
 let
 val
 sgn =
-z2iforcmp$test0<x0><y0>(i0, x0, y0)
+z2iforcmp$tcmp0<x0><y0>(i0, x0, y0)
 in
   if
   (sgn = 0)
