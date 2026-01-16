@@ -371,22 +371,12 @@ tstr.node() of
 //
 |T_STRN1_clsd
 ( rep1,len2 ) =>
-( print("XATSSTRN(`");
-  f0_strn(rep1, len2-1); print("`)"))
-|T_STRN2_ncls
-( rep1,len2 ) =>
-( print("XATSSTRN(`");
-  f0_strn(rep1, len2-0); print("`)"))
-(*
-|T_STRN1_clsd
-( rep1,len2 ) =>
 ( print("XATSSTRN(\"");
   f0_strn(rep1, len2-1); print("\")"))
 |T_STRN2_ncls
 ( rep1,len2 ) =>
 ( print("XATSSTRN(\"");
   f0_strn(rep1, len2-0); print("\")"))
-*)
 //
 end where
 {

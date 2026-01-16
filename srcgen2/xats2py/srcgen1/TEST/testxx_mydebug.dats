@@ -16,6 +16,25 @@
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val multiline1 = "\
+Line 1 of a multiline,
+and line 2 of the multline,
+and line 3 of the multline!
+"
+val multiline2 = "\
+Line 1 of a multiline,\n\
+and line 2 of the multline,\n\
+and line 3 of the multline!\n\
+"
+//
+val () =
+printsln("multiline1 = ", multiline1)
+val () =
+printsln("multiline2 = ", multiline2)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val xs as
 list_cons
 ( x1, _ ) = list_sing(1)
