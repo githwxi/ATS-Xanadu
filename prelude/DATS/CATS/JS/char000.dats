@@ -187,6 +187,22 @@ XATS2JS_char_print(c0: char): void = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2026-01-15:
+Thu Jan 15 06:39:48 PM EST 2026
+*)
+#impltmp
+<(*tmp*)>
+sint_make_char(ch) =
+(
+XATS2JS_sint_make_char(ch))
+where
+{
+#extern
+fun
+XATS2JS_sint_make_char(ch: char): sint = $extnam()
+}
+(* ****** ****** *)
 //
 (*
 HX-2025-01-19: from gavinz
