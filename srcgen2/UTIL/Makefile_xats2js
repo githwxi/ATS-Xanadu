@@ -17,9 +17,9 @@ CPF=cp -f
 ECHO=echo
 NODE=node
 NODE=node \
---stack-size=4096
+--stack-size=6001
 NODE=node \
---stack-size=4096 \
+--stack-size=6001 \
 --max-old-space-size=4096
 ########################################################################
 XSHARED=${XATS2JSD}/xshared
@@ -31,6 +31,7 @@ $(XATSHOME)/srcgen1/xats2js/srcgenx
 LIBXATSOPT_JS="./../lib/lib1xatsopt.js"
 ########################################################################
 XATS2JS_JS1EMIT="$(XSHARED)/runtime/xats2js_js1emit.js"
+SRCGEN1_PRECATS="$(XSHARED)/runtime/srcgen1_precats.js"
 SRCGEN1_PRELUDE="$(XSHARED)/runtime/srcgen1_prelude.js"
 SRCGEN1_PRELUDE_NODE="$(XSHARED)/runtime/srcgen1_prelude_node.js"
 SRCGEN1_XATSLIB_NODE="$(XSHARED)/runtime/srcgen1_xatslib_node.js"
@@ -42,6 +43,8 @@ xatsopt_tcheck00:: \
 xatsopt_tcheck00.dats ; \
 $(CAT) \
 $(XATS2JS_JS1EMIT) > $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_PRECATS) >> $@_ats2.js && \
 $(CAT) \
 $(SRCGEN1_PRELUDE) >> $@_ats2.js && \
 $(CAT) \
@@ -59,6 +62,8 @@ xatsopt_tcheck01:: \
 xatsopt_tcheck01.dats ; \
 $(CAT) \
 $(XATS2JS_JS1EMIT) > $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_PRECATS) >> $@_ats2.js && \
 $(CAT) \
 $(SRCGEN1_PRELUDE) >> $@_ats2.js && \
 $(CAT) \

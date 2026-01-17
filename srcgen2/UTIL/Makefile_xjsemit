@@ -35,6 +35,8 @@ xatsopt_tcheck00: ; \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
 $(CAT) \
+$(S2XSHRD)/srcgen2_precats.js >> $@_ats3.js && \
+$(CAT) \
 $(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
 $(CAT) \
 $(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
@@ -42,7 +44,7 @@ $(CAT) \
 $(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
 $(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xatsopt_tcheck00.dats >> $@_ats3.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT00) xatsopt_tcheck00.dats >> $@_ats3.js
 #
 all:: \
 xatsopt_tcheck01
@@ -50,6 +52,8 @@ xatsopt_tcheck01: ; \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
 $(CAT) \
+$(S2XSHRD)/srcgen2_precats.js >> $@_ats3.js && \
+$(CAT) \
 $(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
 $(CAT) \
 $(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
@@ -57,10 +61,11 @@ $(CAT) \
 $(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
 $(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xatsopt_tcheck01.dats >> $@_ats3.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT00) xatsopt_tcheck01.dats >> $@_ats3.js
 #
 ########################################################################
 ########################################################################
+#
 xatsopt_tcheck00_opt1: ; \
 npx google-closure-compiler \
   -W QUIET --compilation_level SIMPLE \
@@ -70,6 +75,7 @@ xatsopt_tcheck01_opt1: ; \
 npx google-closure-compiler \
   -W QUIET --compilation_level SIMPLE \
   --js=xatsopt_tcheck01_ats3.js --js_output_file=xatsopt_tcheck01_ats3_opt1.js
+#
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~

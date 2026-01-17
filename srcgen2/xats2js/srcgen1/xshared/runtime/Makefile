@@ -9,6 +9,7 @@ PRINTF=printf
 PRELUDED=$(XATSHOME)/prelude
 XATSLIBD=$(XATSHOME)/xatslib
 ########################################################################
+PRECATS_JS=srcgen2_precats.js
 PRELUDE_JS=srcgen2_prelude.js
 XATSLIB_JS=srcgen2_xatslib.js
 PRELUDE_NODE_JS=srcgen2_prelude_node.js
@@ -16,10 +17,19 @@ XATSLIB_NODE_JS=srcgen2_xatslib_node.js
 ########################################################################
 all::
 ########################################################################
+all:: precats
 all:: prelude
 all:: xatslib
 all:: prelude_node
 all:: xatslib_node
+########################################################################
+precats:: ; \
+$(PRINTF) "%s%s\n" \
+"// " "`date`" > $(PRECATS_JS)
+precats:: ; \
+$(CAT) srcgen2_precats_hd >> $(PRECATS_JS)
+precats:: ; $(CAT) \
+$(PRELUDED)/DATS/CATS/JS/OUTS/precats_dats.js >> $(PRECATS_JS)
 ########################################################################
 prelude:: ; \
 $(PRINTF) "%s%s\n" \
@@ -95,11 +105,6 @@ axsz000
 axsz000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/JS/axsz000.cats >> $(PRELUDE_JS)
 ########################################################################
-prelude:: \
-precats
-precats: ; $(CAT) \
-$(PRELUDED)/DATS/CATS/JS/OUTS/precats_dats.js >> $(PRELUDE_JS)
-########################################################################
 ########################################################################
 xatslib:: ; \
 $(PRINTF) "%s%s\n" \
@@ -140,6 +145,8 @@ clean:: ; rm -f *~
 ########################################################################
 cleanall:: clean
 # cleanall:: ; rm -f xats2js_js1emit.js
+# cleanall:: ; rm -f srcgen2_precats_hd
+# cleanall:: ; rm -f srcgen2_precats.js
 # cleanall:: ; rm -f srcgen2_prelude_hd
 # cleanall:: ; rm -f srcgen2_prelude.js
 # cleanall:: ; rm -f srcgen2_prelude_node_hd

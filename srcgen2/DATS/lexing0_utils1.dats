@@ -874,7 +874,6 @@ end // end of [loop12(buf:!obj)]
 //
 (* ****** ****** *)
 //
-(*
 fun
 f0_DQUOTE
 ( buf: !obj
@@ -953,17 +952,21 @@ end//let//else//end-of-(if)
 //
 end // end-of-[loop(buf:!obj)]
 //
-} (*where*) // end-of-[f0_DQUOTE]
-*)
+}(*where*)//end-of-[f0_DQUOTE(...)]
 //
+(*
+(*
+HX-2026-01-16:
+This one performs manual
+tail-recursion optimization
+*)
 fun
 f0_DQUOTE
 ( buf: !obj
 , ci0: sint): tnode =
 (
-gobj_lexing_tnode'f0_DQUOTE
-<           obj           >
-(        buf , ci0        ))
+gobj_lexing_tnode'f0_DQUOTE<obj>(buf, ci0))
+*)
 //
 (* ****** ****** *)
 //

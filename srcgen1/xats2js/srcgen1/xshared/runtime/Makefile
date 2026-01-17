@@ -18,6 +18,8 @@ all::
 all:: ; \
 echo "Please do 'make xats2js_js1emit'!"
 all:: ; \
+echo "Please do 'make srcgen1_precats'!"
+all:: ; \
 echo "Please do 'make srcgen1_prelude'!"
 all:: ; \
 echo "Please do 'make srcgen1_prelude_node'!"
@@ -40,6 +42,24 @@ $(PRINTF) "'use strict';\n" >> $@.js
 #
 xats2js_js1emit:: ; \
 $(CAT) $(SRCGEN1)/prelude/DATS/CATS/JS/runtime.cats >> $@.js
+#
+########################################################################
+########################################################################
+#
+srcgen1_precats:: ; \
+$(PRINTF) \
+"/* ****** ****** */\n" > $@.js \
+&& \
+$(PRINTF) \
+"// SRCGEN1_PRECATS\n" >> $@.js \
+&& \
+$(PRINTF) \
+"/* ****** ****** */\n" >> $@.js \
+&& \
+$(PRINTF) "'use strict';\n" >> $@.js
+#
+srcgen1_precats:: ; $(CAT) \
+$(SRCGEN1)/prelude/DATS/CATS/JS/OUTS/precats_dats.js >> $@.js
 #
 ########################################################################
 ########################################################################
@@ -115,6 +135,7 @@ clean:: ; rm -f *~
 ########################################################################
 cleanall:: clean
 # cleanall:: ; rm -f xats2js_js1emit.js
+# cleanall:: ; rm -f srcgen1_precats.js
 # cleanall:: ; rm -f srcgen1_prelude.js
 # cleanall:: ; rm -f srcgen1_prelude_node.js
 # cleanall:: ; rm -f srcgen1_xatslib_node.js
