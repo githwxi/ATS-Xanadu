@@ -38,7 +38,7 @@ $(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
 $(CAT) \
 $(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
 $(CAT) $(BOOTJS1)/lib/lib2xatsopt.js >> $@_ats3.js && \
-$(NODE) --stack-size=4096 \
+$(NODE) --stack-size=8801 \
 $(XATS2JS_JSEMIT00) $(SRCGEN2)/UTIL/xatsopt_tcheck00.dats >> $@_ats3.js
 #
 ########################################################################

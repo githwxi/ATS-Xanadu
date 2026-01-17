@@ -14,12 +14,12 @@
 CAT=cat
 CPF=cp -f
 ECHO=echo
-NODE=node
-NODE=node \
---stack-size=4096
-NODE=node \
---stack-size=4096 \
---max-old-space-size=4096
+# NODE=node
+# NODE=node \
+# --stack-size=8801
+# NODE=node \
+# --stack-size=8801 \
+# --max-old-space-size=8801
 ########################################################################
 XSHARED=${XATS2JSD}/xshared
 XATS2JS=${XATS2JSD}/bin/xats2js

@@ -34,7 +34,8 @@ $(XASSETS)/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
 precats:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_dats.js
 precats:: precats.dats; \
-$(NODEJS) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_dats.js
+$(NODEJS) \
+--stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_dats.js
 precats:: ; \
 $(PRINTF) "////////////////////////////////////" >> OUTS/$@_dats.js
 precats:: ; \

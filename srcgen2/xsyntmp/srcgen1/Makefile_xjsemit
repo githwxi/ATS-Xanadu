@@ -21,19 +21,19 @@ all:: \
 xsyntmp_sats
 xsyntmp_sats:: \
 SATS/xsyntmp.sats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $< >> OUTS/$@_out.00
+$(NODE) --stack-size=8801 $(SRCGEN2_XATSOPT) $< >> OUTS/$@_out.00
 ############
 all:: \
 xsyntmp_d2exp_dats
 xsyntmp_d2exp_dats:: \
 DATS/xsyntmp_d2exp.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
 ########################################################################
 all:: \
 xsyntmp_d2ecl_dats
 xsyntmp_d2ecl_dats:: \
 DATS/xsyntmp_d2ecl.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~

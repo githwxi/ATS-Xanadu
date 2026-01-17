@@ -23,51 +23,51 @@ cleanall:: ; rm -f *~
 ########################################################################
 test00: \
 test00_prelude.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+$(NODE) --stack-size=8801 $(SRCGEN2_XATSOPT) $<
 ########################################################################
 test01: \
 test01_a0rf000.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+$(NODE) --stack-size=8801 $(SRCGEN2_XATSOPT) $<
 ########################################################################
 test02: \
 test02_a1rf000.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+$(NODE) --stack-size=8801 $(SRCGEN2_XATSOPT) $<
 ########################################################################
 test03: \
 test03_a1sz000.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+$(NODE) --stack-size=8801 $(SRCGEN2_XATSOPT) $<
 ########################################################################
 test04: \
 test04_strn000.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+$(NODE) --stack-size=8801 $(SRCGEN2_XATSOPT) $<
 ########################################################################
 test05: \
 test05_gdbg000.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+$(NODE) --stack-size=8801 $(SRCGEN2_XATSOPT) $<
 ########################################################################
 test06: \
 test06_list000.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+$(NODE) --stack-size=8801 $(SRCGEN2_XATSOPT) $<
 ########################################################################
 test07: \
 test07_gseq000.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+$(NODE) --stack-size=8801 $(SRCGEN2_XATSOPT) $<
 ########################################################################
 test08: \
 test08_optn000.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+$(NODE) --stack-size=8801 $(SRCGEN2_XATSOPT) $<
 ########################################################################
 test09: \
 test09_llist00.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+$(NODE) --stack-size=8801 $(SRCGEN2_XATSOPT) $<
 ########################################################################
 test10: \
 test10_xcptn00.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+$(NODE) --stack-size=8801 $(SRCGEN2_XATSOPT) $<
 ########################################################################
 test99: \
 test99_mydiary.dats; \
-$(NODE) --stack-size=4096 $(SRCGEN2_XATSOPT) $<
+$(NODE) --stack-size=8801 $(SRCGEN2_XATSOPT) $<
 ########################################################################
 ########################################################################
 SRCGEN2_XATSOPT=$(XATSHOME)/srcgen2/UTIL/xatsopt_tcheck01_dats.js

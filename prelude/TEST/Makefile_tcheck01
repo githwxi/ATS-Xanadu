@@ -13,6 +13,8 @@ cleanall:: ; rm -f *~
 MYROOT="./../.."
 ########################################################################
 XATSOPT_TCHECK01=\
+$(MYROOT)/xassets/JS/xatsopt/xatsopt_tcheck01_ats2_opt1.js
+XATSOPT_TCHECK01=\
 $(MYROOT)/xassets/JS/xatsopt/xatsopt_tcheck01_ats3_opt1.js
 ########################################################################
 ########################################################################
@@ -102,32 +104,32 @@ presats
 presats: \
 $(OUTSATS)
 OUTS/%_sats_out.00: \
-../SATS/%.sats; $(NODE) --stack-size=4096 $(XATSOPT_TCHECK01) $<
+../SATS/%.sats; $(NODE) --stack-size=8801 $(XATSOPT_TCHECK01) $<
 ########################################################################
 all:: \
 presats_vt
 presats_vt: \
 $(OUTSATS_vt)
 OUTS/%_sats_out.00: \
-../SATS/VT/%.sats; $(NODE) --stack-size=4096 $(XATSOPT_TCHECK01) $<
+../SATS/VT/%.sats; $(NODE) --stack-size=8801 $(XATSOPT_TCHECK01) $<
 ########################################################################
 all:: \
 prelude_dats_hats
 prelude_dats_hats: ; $(NODE) \
---stack-size=4096 $(XATSOPT_TCHECK01) ./../HATS/prelude_dats.hats
+--stack-size=8801 $(XATSOPT_TCHECK01) ./../HATS/prelude_dats.hats
 ########################################################################
 all:: \
 prelude_JS_dats_hats
 prelude_JS_dats_hats: ; $(NODE) \
---stack-size=4096 $(XATSOPT_TCHECK01) ./../HATS/prelude_JS_dats.hats
+--stack-size=8801 $(XATSOPT_TCHECK01) ./../HATS/prelude_JS_dats.hats
 ########################################################################
 all:: \
 prelude_PY_dats_hats
 prelude_PY_dats_hats: ; $(NODE) \
---stack-size=4096 $(XATSOPT_TCHECK01) ./../HATS/prelude_PY_dats.hats
+--stack-size=8801 $(XATSOPT_TCHECK01) ./../HATS/prelude_PY_dats.hats
 ########################################################################
-prelude_NODE_dats: ; $(NODE) \
---stack-size=4096 $(XATSOPT_TCHECK01) ./../HATS/prelude_NODE_dats.hats
+prelude_NODE_dats_hats: ; $(NODE) \
+--stack-size=8801 $(XATSOPT_TCHECK01) ./../HATS/prelude_NODE_dats.hats
 ########################################################################
 ########################################################################
 ###################### end of [Makefile_tcheck01] ######################
