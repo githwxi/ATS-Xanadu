@@ -49,8 +49,13 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #staload
 _(*?*) = "./lexing0_utils1.dats"
+#staload
+_(*?*) = "./lexing0_ext000.dats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
@@ -58,7 +63,8 @@ _(*?*) = "./lexing0_utils1.dats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 lxbf1_lexing_tnode
 (   buf   ) =
@@ -83,9 +89,10 @@ gobj_lexing$fcseg<obj>(buf) = strn(buf.tclst())
 gobj_lexing$unget<obj>(buf, ci0) = buf.unget(ci0)
 //
 } (*where*) // end of [lxbf1_lexing_token]
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 lxbf1_lexing_tnodelst
 (   buf   ) =
@@ -103,19 +110,23 @@ loop
 )
 : list_vt(tnode) =
 let
+//
 val tnd =
 lxbf1_lexing_tnode(buf)
 val res = cons_vt(tnd, res)
+//
 in//let
+//
 case+ tnd of
 | T_EOF() => res
 | _(*non-T_EOF*) => loop(buf, res)
-end
 //
-}(*whr*)//end-of(lxbf1_lexing_tnodelst)
-
+end//let//end-of-[loop(buf,res):tnodes]
+//
+}(*where*)//end-of(lxbf1_lexing_tnodelst)
+//
 (* ****** ****** *)
-
+//
 #implfun
 atext_tokenize(src) =
 let
@@ -124,32 +135,34 @@ buf =
 lxbf1_make_strn(src)
 val
 lcs = LCSRCnone0()
-in
-  lexing_preping_all
+in//let
+(
+lexing_preping_all
 (
   lexing_lctnize_all
-  (lcs, lxbf1_lexing_tnodelst(buf))
-)
-endlet // end of [atext_tokenize(strn)]
-
+  (lcs, lxbf1_lexing_tnodelst(buf))))
+end(*let*)//end-of-[atext_tokenize(strn)]
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 fpath_tokenize(fpx) =
 let
-val
-buf =
-lxbf1_make_fpath(fpx)
-val
-lcs = LCSRCsome1(fpx)
-in
-  lexing_preping_all
+//
+val buf =
+(
+  lxbf1_make_fpath(fpx))
+val lcs = (LCSRCsome1(fpx))
+//
+in//let
+(
+lexing_preping_all
 (
   lexing_lctnize_all
-  (lcs, lxbf1_lexing_tnodelst(buf))
-)
-endlet // end of [fpath_tokenize(fpath)]
-
+  (lcs, lxbf1_lexing_tnodelst(buf))))
+end(*let*)//end-of-[fpath_tokenize(fpath)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

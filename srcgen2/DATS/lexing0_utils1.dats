@@ -49,7 +49,12 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/lexing0.sats"
+//
+#staload
+"./../SATS/lexing0.sats"
+#staload
+"./../DATS/lexing0_ext000.dats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #extern
@@ -869,6 +874,7 @@ end // end of [loop12(buf:!obj)]
 //
 (* ****** ****** *)
 //
+(*
 fun
 f0_DQUOTE
 ( buf: !obj
@@ -888,9 +894,13 @@ val cc0 = char_make_code(ci0)
 //
 (*
 val () =
-prerrsln("f0_DQUOTE: ci0 = ", ci0)
+(
+prerrsln("\
+f0_DQUOTE:loop: ci0 = ", ci0))
 val () =
-prerrsln("f0_DQUOTE: cc0 = ", cc0)
+(
+prerrsln("\
+f0_DQUOTE:loop: cc0 = ", cc0))
 *)
 //
 in//let
@@ -905,7 +915,7 @@ let
   val len = length1(ccs)
 in//let
 (
-  T_STRN1_clsd(strn(ccs), len))
+T_STRN1_clsd(strn(ccs), len))
 end
 )
 |
@@ -918,9 +928,9 @@ _ when cc0 = '\\' =>
 (
   loop(buf) ) where
 {
-  val
-  ci0 = gobj_lexing$getc1( buf )
-}
+val ci1 =
+(
+  gobj_lexing$getc1(  buf  )) }
 )
 | _ (* otherwise *) =>
 (
@@ -936,13 +946,24 @@ let
   gobj_lexing$fclst(buf)
   val len = length1(ccs)
 in//let//HX: unclosed!!!
-  T_STRN2_ncls(strn(ccs), len)
+(
+  T_STRN2_ncls(strn(ccs), len))
 end//let//else//end-of-(if)
 )
 //
 end // end-of-[loop(buf:!obj)]
 //
 } (*where*) // end-of-[f0_DQUOTE]
+*)
+//
+fun
+f0_DQUOTE
+( buf: !obj
+, ci0: sint): tnode =
+(
+gobj_lexing_tnode'f0_DQUOTE
+<           obj           >
+(        buf , ci0        ))
 //
 (* ****** ****** *)
 //
@@ -952,16 +973,16 @@ f0_otherwise
 (
 if
 (ci0 >= 0)
-then T_SPCHR(ci0) else T_EOF()
-) where
+then T_SPCHR(ci0) else T_EOF())
+where
 {
   val () = gobj_lexing$fcnil(buf)
-} (*where*) // end of [f0_otherwise]
+}(*where*)//end-of-[f0_otherwise(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-} (*where*) // end of [gobj_lexing_tnode]
+}(*where*)//end-of-[gobj_lexing_tnode(...)]
 
 (* ****** ****** *)
 

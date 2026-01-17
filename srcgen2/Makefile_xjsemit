@@ -115,6 +115,7 @@ lexing0_kword0.dats \
 lexing0_token0.dats \
 lexing0_utils1.dats \
 lexing0_utils2.dats \
+lexing0_ext000.dats \
 staexp0.dats \
 staexp0_print0.dats \
 dynexp0.dats \
