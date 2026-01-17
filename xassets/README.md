@@ -28,17 +28,22 @@ This compiler is built as the result of a successful bootstrapping of
 ATS3. The word `ats3` in the name indicates that the compiler is built
 via the use of some ATS3 compiler written in ATS3 itself. For
 instance, this compiler can compile its own source code, that is,
-bootstrap itself. If we refer the previous compiler as ATS2-compiler
-and this one as ATS3-compiler. Then we have the following two
-bootstrapping steps:
+bootstrap itself. If we refer the previous compiler as
+ATS3-compiler_ats2 and this one as ATS3-compiler_ats3. Then we have
+the following informative equalities:
 
 ```
 (
 Assume ATS2-compiler is available
 )
-ATS3-compiler = ATS2-compiler.compile(ATS3-source)
-ATS3-compiler = ATS3-compiler.compile(ATS3-source)
+ATS3-compiler_ats2 = ATS2-compiler.compile(ATS3-source)
+ATS3-compiler_ats3 = ATS3-compiler_ats2.compile(ATS3-source)
+ATS3-compiler_ats3 = ATS3-compiler_ats3.compile(ATS3-source)
 ```
+
+It is due to the last equality that ATS3-compiler_ats3 is claimed to
+be able to boostrap itself. In this particular case, we say that ATS3
+can be boostrapped via JS since ATS3-compiler_ats3 is a program in JS.
 
 ### JS/xats2js/xats2js_jsemit01_ats3_opt1.js
 
@@ -50,6 +55,9 @@ general-purpose programming.
 ## XATS2PY
 
 For compiling ATS3 into Python3.
+
+ATS3 can be bootstrapped via PY as well, though bootstapping ATS3 via
+JS is much more efficient.
 
 ### JS/xats2py/xats2py_pyemit01_ats3_opt1.js
 
