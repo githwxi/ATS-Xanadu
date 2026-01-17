@@ -52,7 +52,7 @@ XATS2PY_strm_vt_forall0_f1un \
         return False
       ## end-of-(if(test(x01))
     ## end-of-(if(XATS2PY_strmcon_vt_nilq1(cxs)))
-  return true ## XATS2PY_strm_vt_forall0_f1un(...)
+  return True ## XATS2PY_strm_vt_forall0_f1un(...)
 ##
 ########################################################################.
 ##
