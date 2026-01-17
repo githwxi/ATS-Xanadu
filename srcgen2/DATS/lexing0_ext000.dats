@@ -46,14 +46,22 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #extern
 fun
 <obj:vt>
 gobj_lexing_tnode'f0_DQUOTE
-(  buf: !obj , ci0: sint  ): tnode
+(   buf  :  !obj
+,   ci0  :  sint   ): tnode
+*)
 //
 (* ****** ****** *)
-(* ****** ****** *)
+//
+(*
+//
+HX-2026-01-17:
+This one performs manual TRO!
+Sat Jan 17 12:22:57 AM EST 2026
 //
 #impltmp
 <obj:vt>
@@ -131,6 +139,7 @@ if (ci0 >= 0)
 end//let
 //
 end(*let*)//end-of-[gobj_lexing_tnode'f0_DQUOTE(buf,ci0)]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
