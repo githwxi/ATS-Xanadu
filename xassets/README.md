@@ -45,6 +45,10 @@ It is due to the last equality that ATS3-compiler_ats3 is claimed to
 be able to boostrap itself. In this particular case, we say that ATS3
 can be boostrapped via JS since ATS3-compiler_ats3 is a program in JS.
 
+(
+ATS3 can be bootstrapped via Python (PY) as well, though bootstapping
+ATS3 via JS is much more efficient.)
+
 ### JS/xats2js/xats2js_jsemit01_ats3_opt1.js
 
 The word `jsemit01` in the name of the compiler indicates that the
@@ -55,9 +59,6 @@ general-purpose programming.
 ## XATS2PY
 
 For compiling ATS3 into Python3.
-
-ATS3 can be bootstrapped via PY as well, though bootstapping ATS3 via
-JS is much more efficient.
 
 ### JS/xats2py/xats2py_pyemit01_ats3_opt1.js
 
