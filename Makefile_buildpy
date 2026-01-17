@@ -78,6 +78,5 @@ time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xpyemit xats2py_pyemit01
 ##################################################################
 ##################################################################
 XATS2PY_PYEMIT00=$(XASSETS)/JS/xats2py/xats2py_pyemit00_ats2_opt1.js
-XATS2PY_PYEMIT00=$(XASSETS)/JS/xats2py/xats2py_pyemit00_ats3_opt1.js
 ##################################################################
 ##################################################################
