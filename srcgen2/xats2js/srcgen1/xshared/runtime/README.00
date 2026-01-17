@@ -1,0 +1,30 @@
+############################################################
+############################################################
+HX-2026-01-17:
+Sat Jan 17 11:07:18 AM EST 2026
+Further development of the files here are expected.
+############################################################
+Makefile:
+For making the JS files here
+############################################################
+xats2js_js1emit.js:
+It contains some runtime needed for the JS code generated
+by [srcgen2/xats2js].
+This one is NOT for [srcgen1/xats2js]!
+(There is a version of this file for [srcgen1/xats2js])
+############################################################
+srcgen2_precats.js:
+It contains certain cons/uncons functions needed for some
+manually written JS functions in some srcgen2-JS-CATS files.
+This one is NOT for [srcgen1/xats2js]!
+(There is a version of this file for [srcgen1/xats2js])
+############################################################
+srcgen2_prelude.js:
+srcgen2_prelude_node.js
+srcgen2_xatslib.js
+srcgen2_xatslib_node.js
+These file are for srcgen2/prelude/DATS/CATS/JS/.
+Please use the srcgen1-version of these files for the code
+in srcgen1/prelude/DATS/CATS/JS (vs. prelude/DATS/CATS/JS).
+############################################################
+############################################################
