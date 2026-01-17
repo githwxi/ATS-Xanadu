@@ -55,9 +55,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
-(* ****** ****** *)
 #staload "./../SATS/xerrory.sats"
-(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"

@@ -469,6 +469,39 @@ fpath_tokenize(fpx:strn): list_vt(token)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+(*
+HX-2026-01-17:
+This one is in [lexing0_ext000.dats]
+For manual tail-recursion optimization (TRO)
+*)
+#extern
+fun
+<obj:vt>
+gobj_lexing_tnode'f0_DQUOTE(buf: !obj, ci0: sint): tnode
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+(*
+HX-2026-01-17: Support triple s-quotes?
+HX-2026-01-17: Support triple d-quotes?
+*)
+#extern
+fun
+<obj:vt>
+gobj_lexing_tnode'f0_SQU3TE(buf: !obj, ci0: sint): tnode
+#extern
+fun
+<obj:vt>
+gobj_lexing_tnode'f0_DQU3TE(buf: !obj, ci0: sint): tnode
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_SATS_lexing0.sats] *)
 (***********************************************************************)

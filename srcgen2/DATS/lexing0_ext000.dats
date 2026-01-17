@@ -47,17 +47,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
-#extern
-fun
-<obj:vt>
-gobj_lexing_tnode'f0_DQUOTE
-(   buf  :  !obj
-,   ci0  :  sint   ): tnode
-*)
-//
-(* ****** ****** *)
-//
-(*
 //
 HX-2026-01-17:
 This one performs manual TRO!
