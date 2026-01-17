@@ -49,12 +49,7 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#staload
-"./../SATS/lexing0.sats"
-#staload
-"./../DATS/lexing0_ext000.dats"
-//
+#staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #extern
