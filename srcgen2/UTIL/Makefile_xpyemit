@@ -35,7 +35,7 @@ $(CAT) \
 $(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
 $(SED) -E 's/pyx(...)tnm/py1\1tnm/g' \
 $(SRCGEN2)/lib/lib2xatsopt.py | $(CAT) - >> $@_ats3.py && \
-$(NODE) --stack-size=8192 $(XATS2PY_PYEMIT00) xatsopt_tcheck00.dats >> $@_ats3.py
+$(NODE) --stack-size=8801 $(XATS2PY_PYEMIT00) xatsopt_tcheck00.dats >> $@_ats3.py
 #
 all:: \
 xatsopt_tcheck01
@@ -56,7 +56,7 @@ $(CAT) \
 $(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
 $(SED) -E 's/pyx(...)tnm/py1\1tnm/g' \
 $(SRCGEN2)/lib/lib2xatsopt.py | $(CAT) - >> $@_ats3.py && \
-$(NODE) --stack-size=8192 $(XATS2PY_PYEMIT00) xatsopt_tcheck01.dats >> $@_ats3.py
+$(NODE) --stack-size=8801 $(XATS2PY_PYEMIT00) xatsopt_tcheck01.dats >> $@_ats3.py
 #
 ########################################################################
 ########################################################################

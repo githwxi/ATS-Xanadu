@@ -14,11 +14,11 @@ all:: test00
 ########################################################################
 test00:: \
 test00_xatsopt.dats; \
-$(NODE) --stack-size=8800 $(XATSOPT_TCHECK01) $<
+$(NODE) --stack-size=8801 $(XATSOPT_TCHECK01) $<
 ########################################################################
 testxx:: \
 testxx_mydebug.dats; \
-$(NODE) --stack-size=8800 $(XATSOPT_TCHECK01) $<
+$(NODE) --stack-size=8801 $(XATSOPT_TCHECK01) $<
 ########################################################################
 ########################################################################
 XATSOPT_TCHECK01=./../UTIL/xatsopt_tcheck01_ats2.js

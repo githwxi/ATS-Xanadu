@@ -56,11 +56,11 @@ all_dats:: $(OUT0DATS)
 #
 BUILD/JS/%_sats_out0.js: \
 ./SATS/%.sats; \
-$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $< > $@
+$(NODE) --stack-size=8801 $(XATSOPT_TCHECK00) $< > $@
 #
 BUILD/JS/%_dats_out0.js: \
 ./DATS/%.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > $@
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT00) $< > $@
 #
 ########################################################################
 ########################################################################

@@ -247,11 +247,11 @@ boot_dats:: $(OUT0DATS)
 #
 BUILD/%_sats_out0.js: \
 $(SRCGEN2)/SATS/%.sats; \
-$(NODE) --stack-size=4096 $(XATSOPT_TCHECK00) $< > $@
+$(NODE) --stack-size=8801 $(XATSOPT_TCHECK00) $< > $@
 #
 BUILD/%_dats_out0.js: \
 $(SRCGEN2)/DATS/%.dats; \
-$(NODE) --stack-size=4096 $(XATS2JS_JSEMIT00) $< > $@
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT00) $< > $@
 #
 ########################################################################
 ########################################################################

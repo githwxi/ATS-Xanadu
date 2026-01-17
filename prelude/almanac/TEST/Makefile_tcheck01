@@ -18,13 +18,13 @@ all:: \
 pre2026_sats
 pre2026_sats: \
 ./../SATS/pre2026.sats; \
-$(NODE) --stack-size=4096 $(XATSOPT_TCHECK01) $<
+$(NODE) --stack-size=8801 $(XATSOPT_TCHECK01) $<
 ########################################################################
 all:: \
 pre2026_dats
 pre2026_dats: \
 ./../DATS/pre2026.dats; \
-$(NODE) --stack-size=4096 $(XATSOPT_TCHECK01) $<
+$(NODE) --stack-size=8801 $(XATSOPT_TCHECK01) $<
 ########################################################################
 ########################################################################
 XATSOPT_TCHECK01=\

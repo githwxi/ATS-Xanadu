@@ -18,8 +18,6 @@ WCL=wc -l
 CAT=cat
 CPF=cp -f
 ECHO=echo
-NODE=node
-NODE=node --stack-size=4096
 ######
 SRCGEN1=./../../../srcgen1
 SRCGEN2=./../../../srcgen2

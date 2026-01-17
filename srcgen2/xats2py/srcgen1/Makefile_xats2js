@@ -24,7 +24,8 @@ CAT=cat
 CPF=cp -f
 ECHO=echo
 NODE=node
-NODE=node --stack-size=4096
+NODE=node \
+--stack-size=6601
 ######
 MYTEST="."
 ######
