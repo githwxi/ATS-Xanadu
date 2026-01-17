@@ -30,69 +30,111 @@
 //
 (*
 Author: Hongwei Xi
-Fri Jan  2 03:05:42 PM EST 2026
+(*
+Fri Jan 16 03:41:19 PM EST 2026
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#extern
-fun
-XATS2JS_strm_vt_forall0$f1un
-{x0:vt}
-( xs
-: strm_vt(x0)
-, test
-: (~x0) -> bool): bool
-= $extnam()//extern(./strm000.cats)
-//
-#impltmp
-< x0:vt >
-strm_vt_forall0
-  (  xs  ) =
-let
-fun
-test(x0: ~x0): bool =
-(
-  forall$test0<x0>(x0))
-in//let
-XATS2JS_strm_vt_forall0$f1un{x0}(xs, test)
-end(*let*)//end-of-[strm_vt_forall0<x0>(xs)]
-//
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_strm_vt_filter0$f1un
-{x0:vt}
-( xs
-: strm_vt(x0)
-, test
-: (!x0) -> bool
-, free
-: (~x0) -> void): strm_vt(x0)
-= $extnam()//extern(./strm000.cats)
+<obj:vt>
+gobj_lexing_tnode'f0_DQUOTE
+(  buf: !obj , ci0: sint  ): tnode
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
-< x0:vt >
-strm_vt_filter0
-  (  xs  ) =
+<obj:vt>
+gobj_lexing_tnode'f0_DQUOTE
+  (buf, ci0) =
 let
+//
 fun
-test(x0: !x0): bool =
-(
-  filter$test1<x0>(x0))
-fun
-free(x0: ~x0): void = g_free<x0>(x0)
+auxloop
+( buf: !obj)
+: strm_vt(sint) = $llazy
+let
+//
+val ci0 =
+gobj_lexing$getc1<obj>(buf)
+val cc0 = char_make_code(ci0)
+//
 in//let
-XATS2JS_strm_vt_filter0$f1un{x0}(xs, test, free)
-end(*let*)//end-of-[strm_vt_filter0<x0>(xs)]
+//
+case+ 0 of
+|
+_ when cc0 = '\"' =>
+(
+  strmcon_vt_sing(ci0))
+|
+_ when cc0 = '\\' =>
+(
+  strmcon_vt_cons
+  (ci0, auxloop(buf))) where
+{
+  val
+  ci1 = gobj_lexing$getc1(buf) }
+//
+| _ (* otherwise *) =>
+(
+if // if
+(ci0 < 0)
+then
+strmcon_vt_sing(ci0)
+else
+strmcon_vt_cons(ci0, auxloop(buf)))
+//
+end(*let*)//end-of-[auxloop(buf:!buf)]
+//
+in//let
+//
+let
+//
+val ci0 =
+(
+strm_vt_foldl0
+<  x0  ><  r0  >
+(auxloop(buf), 0)) where
+{
+#typedef x0 = sint
+#typedef r0 = sint
+#impltmp
+foldl$fopr0<x0><r0>(r0, x0) = ( x0 ) }
+//
+in//let
+//
+let
+//
+val ccs =
+gobj_lexing$fclst(buf)
+val len = length1(ccs)
+val str = strn_make_llist(ccs)
+//
+in//let
+(
+if (ci0 >= 0)
+  then T_STRN1_clsd(str, len)
+  else T_STRN2_ncls(str, len)) end//let
+//
+end//let
+//
+end(*let*)//end-of-[gobj_lexing_tnode'f0_DQUOTE(buf,ci0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_strm000.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_lexing0_ext000.dats] *)
 (***********************************************************************)
