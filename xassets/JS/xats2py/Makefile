@@ -7,9 +7,14 @@ CPF=cp -f
 SRCGEN2=./../../../srcgen2
 ############################################################
 all:: \
+xats2py_pyemit00_ats2_opt1
+xats2py_pyemit00_ats2_opt1: ; \
+$(CPF) $(SRCGEN2)/xats2py/srcgen1/UTIL/$@.js .
+all:: \
 xats2py_pyemit01_ats2_opt1
 xats2py_pyemit01_ats2_opt1: ; \
 $(CPF) $(SRCGEN2)/xats2py/srcgen1/UTIL/$@.js .
+############################################################
 all:: \
 xats2py_pyemit01_ats3_opt1
 xats2py_pyemit01_ats3_opt1: ; \
