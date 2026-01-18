@@ -50,6 +50,8 @@ cleanall:: ; \
 make -C srcgen2 -f Makefile_xats2js cleanall
 cleanall:: ; \
 make -C srcgen2 -f Makefile_xjsemit cleanall
+cleanall:: ; \
+make -C srcgen2 -f Makefile_xpyemit cleanall
 #
 cleanall:: ; \
 make -C prelude/TEST/CATS/JS -f Makefile_jsemit01 cleanall
