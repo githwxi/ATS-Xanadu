@@ -36,6 +36,21 @@ SRCGEN1_PRELUDE="$(XSHARED)/runtime/srcgen1_prelude.js"
 SRCGEN1_PRELUDE_NODE="$(XSHARED)/runtime/srcgen1_prelude_node.js"
 SRCGEN1_XATSLIB_NODE="$(XSHARED)/runtime/srcgen1_xatslib_node.js"
 ########################################################################
+########################################################################
+#
+all::
+#
+########################################################################
+#
+# HX: for cleaning up
+#
+clean:: ; rm -f *~
+#
+cleanall:: clean
+cleanall:: ; rm -f ./xatsopt_tcheck00_ats2.js
+cleanall:: ; rm -f ./xatsopt_tcheck01_ats2.js
+#
+########################################################################
 #
 all:: \
 xatsopt_tcheck00
@@ -74,14 +89,18 @@ $(CAT) $(LIBXATSOPT_JS) >> $@_ats2.js && \
 $(XATS2JS) --output-a $@_ats2.js --dynamic $@.dats
 #
 ########################################################################
+########################################################################
 #
-# HX: for cleaning up
+xatsopt_tcheck00_opt1: ; \
+npx google-closure-compiler \
+  -W QUIET --compilation_level SIMPLE \
+  --js=xatsopt_tcheck00_ats2.js --js_output_file=xatsopt_tcheck00_ats2_opt1.js
 #
-clean:: ; rm -f *~
+xatsopt_tcheck01_opt1: ; \
+npx google-closure-compiler \
+  -W QUIET --compilation_level SIMPLE \
+  --js=xatsopt_tcheck01_ats2.js --js_output_file=xatsopt_tcheck01_ats2_opt1.js
 #
-cleanall:: clean
-cleanall:: ; rm -f ./xatsopt_tcheck00_ats2.js
-cleanall:: ; rm -f ./xatsopt_tcheck01_ats2.js
-#
+#########################################################################
 ########################################################################
 ###################### end of [Makefile_xats2js] #######################
