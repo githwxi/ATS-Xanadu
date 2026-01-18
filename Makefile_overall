@@ -116,6 +116,8 @@ srcgen2_lib1xats2js: ; \
 time make -C srcgen2/xats2js/srcgen1 -f Makefile_xats2js lib1xats2js
 srcgen2_xats2js_xats2js_jsemit00: ; \
 time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xats2js xats2js_jsemit00
+srcgen2_xats2js_xats2js_jsemit01: ; \
+time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xats2js xats2js_jsemit01
 #
 ##################################################################
 #
