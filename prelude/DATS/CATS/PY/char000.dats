@@ -183,7 +183,45 @@ XATS2PY_char_print(c0: char): void = $extnam()
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(*
+HX-2026-01-17:
+Sat Jan 17 09:47:35 PM EST 2026
+*)
+#impltmp
+<(*tmp*)>
+sint_make_char(ch) =
+(
+XATS2PY_sint_make_char(ch))
+where
+{
+#extern
+fun
+XATS2PY_sint_make_char(ch: char): sint = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-17:
+Sat Jan 17 09:47:35 PM EST 2026
+*)
+#impltmp
+<(*tmp*)>
+char_make_sint(i0) =
+(
+XATS2PY_char_make_sint(i0))
+where
+{
+#extern
+fun
+XATS2PY_char_make_sint(i0: sint): char = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_CATS_PY_char000.dats] *)
+(***********************************************************************)
+

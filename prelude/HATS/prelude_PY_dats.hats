@@ -53,6 +53,8 @@ Wed Jan  1 03:18:54 PM EST 2025
 //
 #staload _ =
 "prelude/DATS/CATS/PY/strm000.dats"
+#staload _ =
+"prelude/DATS/CATS/PY/strx000.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

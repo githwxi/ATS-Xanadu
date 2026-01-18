@@ -100,6 +100,11 @@ strm000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/PY/strm000.cats >> $(PRELUDE_PY)
 ##################################################################
 prelude:: \
+strx000
+strx000: ; \
+$(CAT) $(PRELUDED)/DATS/CATS/PY/strx000.cats >> $(PRELUDE_PY)
+##################################################################
+prelude:: \
 axrf000
 axrf000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/PY/axrf000.cats >> $(PRELUDE_PY)

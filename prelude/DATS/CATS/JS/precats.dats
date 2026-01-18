@@ -533,8 +533,10 @@ XATS2JS_strmcon_vt_nil() = strmcon_vt_nil()
 fun
 XATS2JS_strmcon_vt_cons
 {a:vt}
-(x1: a//head
-,xs: strm_vt(a)): strmcon_vt(a) = $extnam()
+( x1
+: a//head
+, xs//tail
+: strm_vt(a)): strmcon_vt(a) = $extnam()
 #implfun
 XATS2JS_strmcon_vt_cons(x1,xs) = strmcon_vt_cons(x1,xs)
 //
@@ -542,8 +544,10 @@ XATS2JS_strmcon_vt_cons(x1,xs) = strmcon_vt_cons(x1,xs)
 fun
 XATS2JS_strxcon_vt_cons
 {a:vt}
-(x1: a//head
-,xs: strx_vt(a)): strxcon_vt(a) = $extnam()
+( x1
+: a//head
+, xs//tail
+: strx_vt(a)): strxcon_vt(a) = $extnam()
 #implfun
 XATS2JS_strxcon_vt_cons(x1,xs) = strxcon_vt_cons(x1,xs)
 //
@@ -607,6 +611,7 @@ strmcon_vt_cons
 (
   let val x1 = $UN.delinear(x1) in xs end)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

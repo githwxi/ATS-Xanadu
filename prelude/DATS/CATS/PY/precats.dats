@@ -487,10 +487,24 @@ XATS2PY_strmcon_vt_nil() = strmcon_vt_nil()
 fun
 XATS2PY_strmcon_vt_cons
 {a:vt}
-(x1: a//head
-,xs: strm_vt(a)): strmcon_vt(a) = $extnam()
+( x1
+: a//head
+, xs//tail
+: strm_vt(a)): strmcon_vt(a) = $extnam()
 #implfun
 XATS2PY_strmcon_vt_cons(x1,xs) = strmcon_vt_cons(x1,xs)
+//
+//
+#extern
+fun
+XATS2PY_strxcon_vt_cons
+{a:vt}
+( x1
+: a//head
+, xs//tail
+: strx_vt(a)): strxcon_vt(a) = $extnam()
+#implfun
+XATS2PY_strxcon_vt_cons(x1,xs) = strxcon_vt_cons(x1,xs)
 //
 (* ****** ****** *)
 //
@@ -548,6 +562,46 @@ XATS2PY_strmcon_vt_tail$raw0(xs) =
 case- xs of
 | ~
 strmcon_vt_cons
+(   x1 , xs   ) =>
+(
+  let val x1 = $UN.delinear(x1) in xs end)
+//
+(* ****** ****** *)
+//
+(*
+HX: no failure!
+*)
+#extern
+fun
+XATS2PY_strxcon_vt_head$raw1
+{a:vt}
+( xs:
+! strxcon_vt(a)): (a) = $extnam()
+#implfun
+XATS2PY_strxcon_vt_head$raw1(xs) =
+(
+case+ xs of
+|
+strxcon_vt_cons
+(   x1 , xs   ) =>
+let
+val x1 =
+$UN.datacopy(x1) in $UN.enlinear(x1) end)
+//
+(*
+HX: no failure!
+*)
+#extern
+fun
+XATS2PY_strxcon_vt_tail$raw0
+{a:vt}
+( xs:
+~ strxcon_vt(a)): strx_vt(a) = $extnam()
+#implfun
+XATS2PY_strxcon_vt_tail$raw0(xs) =
+case+ xs of
+| ~
+strxcon_vt_cons
 (   x1 , xs   ) =>
 (
   let val x1 = $UN.delinear(x1) in xs end)

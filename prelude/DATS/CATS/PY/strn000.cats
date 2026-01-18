@@ -60,6 +60,8 @@ def XATS000_strn_length(cs):
 ##
 def XATS2PY_strn_print(cs):
   sys.stdout.write(cs); return None
+def XATS000_strn_print(cs):
+  sys.stdout.write(cs); return None
 ##
 ########################################################################.
 ##
