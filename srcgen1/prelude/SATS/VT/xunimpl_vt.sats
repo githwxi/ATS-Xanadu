@@ -1211,6 +1211,41 @@ forall0 with strm_vt_forall0$f1un of 1000
 #symload
 forall0$fun with strm_vt_forall0$f1un of 1000
 //
+fun
+<x0:vt>
+strx_vt_forall0$f1un
+( xs: strx_vt(x0)
+, test: (~x0)->bool): bool
+//
+#symload
+forall0 with strx_vt_forall0$f1un of 1000
+#symload
+forall0$fun with strx_vt_forall0$f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_exists0$f1un
+( xs: strm_vt(x0)
+, test: (~x0)->bool): bool
+//
+#symload
+exists0 with strm_vt_exists0$f1un of 1000
+#symload
+exists0$fun with strm_vt_exists0$f1un of 1000
+//
+fun
+<x0:vt>
+strx_vt_exists0$f1un
+( xs: strx_vt(x0)
+, test: (~x0)->bool): bool
+//
+#symload
+exists0 with strx_vt_exists0$f1un of 1000
+#symload
+exists0$fun with strx_vt_exists0$f1un of 1000
+//
 (* ****** ****** *)
 //
 fun
@@ -1649,6 +1684,15 @@ strm_vt_iforall0$f2un
 (xs: strm_vt(x0), test: (ni,~x0)->bool): bool
 #symload iforall0 with strm_vt_iforall0$f2un of 1000
 #symload iforall0$fun with strm_vt_iforall0$f2un of 1000
+//
+fun
+<x0:vt>
+strx_vt_iforall0$f2un
+(xs: strx_vt(x0), test: (ni,~x0)->bool): bool
+#symload iforall0 with strx_vt_iforall0$f2un of 1000
+#symload iforall0$fun with strx_vt_iforall0$f2un of 1000
+//
+(* ****** ****** *)
 //
 fun
 <x0:vt>

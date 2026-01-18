@@ -61,13 +61,23 @@ strx_vt_forall0
 (xs: strx_vt(x0)): bool
 fun
 <x0:vt>
+strx_vt_exists0
+(xs: strx_vt(x0)): bool
+//
+fun
+<x0:vt>
 strx_vt_iforall0
 (xs: strx_vt(x0)): bool
 //
 #symload
 forall0 with strx_vt_forall0 of 1000
 #symload
+exists0 with strx_vt_exists0 of 1000
+//
+#symload
 iforall0 with strx_vt_iforall0 of 1000
+//
+(* ****** ****** *)
 //
 fun
 <x0:vt>
@@ -81,6 +91,23 @@ forall0 with strx_vt_forall0$f1un of 1000
 forall0$fun with strx_vt_forall0$f1un of 1000
 #symload
 strx_vt_forall0 with strx_vt_forall0$f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strx_vt_exists0$f1un
+( xs: strx_vt(x0)
+, test: (~x0) -> bool): bool
+//
+#symload
+exists0 with strx_vt_exists0$f1un of 1000
+#symload
+exists0$fun with strx_vt_exists0$f1un of 1000
+#symload
+strx_vt_exists0 with strx_vt_exists0$f1un of 1000
+//
+(* ****** ****** *)
 //
 fun
 <x0:vt>

@@ -154,6 +154,16 @@ strq_vt_rlistize0
 //
 fun
 <x0:vt>
+strx_vt_exists0(strx_vt(x0)): bool
+fun
+<x0:vt>
+strx_vt_forall0(strx_vt(x0)): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 <y0:vt>
 strx_vt_map0
   (xs: strx_vt(x0)): strx_vt(y0)
