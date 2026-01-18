@@ -105,6 +105,8 @@ srcgen2_lib1xatsopt: ; \
 time make -C srcgen2 -f Makefile_xats2js lib1xatsopt
 srcgen2_xats2js_xatsopt_tcheck00: ; \
 time make -C srcgen2/UTIL -f Makefile_xats2js xatsopt_tcheck00
+srcgen2_xats2js_xatsopt_tcheck01: ; \
+time make -C srcgen2/UTIL -f Makefile_xats2js xatsopt_tcheck01
 #
 ##################################################################
 #
