@@ -279,7 +279,9 @@ fun
 <x0:vt>
 <r0:vt>
 strm_vt_foldl0
-(xs: strm_vt(x0), r0: r0): r0
+(xs: strm_vt(x0), r0: r0): ( r0 )
+//
+(* ****** ****** *)
 //
 fun
 <x0:vt>
@@ -287,6 +289,9 @@ strm_vt_exists0(strm_vt(x0)): bool
 fun
 <x0:vt>
 strm_vt_forall0(strm_vt(x0)): bool
+//
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 strm_vt_foritm0(strm_vt(x0)): void
@@ -630,7 +635,6 @@ rlistize0 with strm_vt_rlistize0 of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 (*
 HX-2025-12-13:
 concat0 -> lstrm$concat0
@@ -647,6 +651,89 @@ strm_vt_lstrm$concat0
 concat0 with strm_vt_lstrm$concat0 of 1000
 #symload
 lstrm$concat0 with strm_vt_lstrm$concat0 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+(*
+HX-2024-07-25:
+Thu 25 Jul 2024 04:53:04 PM EDT
+*)
+//
+fun
+<x0:vt>
+strm_vt_forall0$f1un
+( xs: strm_vt(x0)
+, test: (~x0)->bool): bool
+//
+#symload
+forall0 with strm_vt_forall0$f1un of 1000
+#symload
+forall0$fun with strm_vt_forall0$f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_exists0$f1un
+( xs: strm_vt(x0)
+, test: (~x0)->bool): bool
+//
+#symload
+exists0 with strm_vt_exists0$f1un of 1000
+#symload
+exists0$fun with strm_vt_exists0$f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_foritm0$f1un
+(xs: strm_vt(x0), work: (~x0)->void): void
+//
+#symload
+foritm0 with strm_vt_foritm0$f1un of 1000
+#symload
+foritm0$fun with strm_vt_foritm0$f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_iforall0$f2un
+(xs: strm_vt(x0), test: (ni,~x0)->bool): bool
+#symload iforall0 with strm_vt_iforall0$f2un of 1000
+#symload iforall0$fun with strm_vt_iforall0$f2un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_iforitm0$f2un
+(xs: strm_vt(x0), test: (ni,~x0)->void): void
+#symload iforitm0 with strm_vt_iforitm0$f2un of 1000
+#symload iforitm0$fun with strm_vt_iforitm0$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_filter0$f1un
+( xs: strm_vt(x0)
+, test: (!x0) -> bool): strm_vt(x0)
+#symload filter0 with strm_vt_filter0$f1un of 1000
+#symload filter0$fun with strm_vt_filter0$f1un of 1000
+//
+fun
+<x0:vt>
+strm_vt_ifilter0$f2un
+( xs: strm_vt(x0)
+, test: (ni,!x0) -> bool): strm_vt(x0)
+#symload ifilter0 with strm_vt_ifilter0$f2un of 1000
+#symload ifilter0$fun with strm_vt_ifilter0$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

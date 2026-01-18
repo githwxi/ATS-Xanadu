@@ -1179,6 +1179,8 @@ fun
 <r0:vt>
 strm_vt_foldall0(xs: ~strm_vt(x0), r0: r0): (r0)
 //
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 <r0:vt>
@@ -1193,71 +1195,6 @@ fun
 strm_vt_irfoldall0(xs: ~strm_vt(x0), r0: r0): (r0)
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-07-25:
-Thu 25 Jul 2024 04:53:04 PM EDT
-*)
-//
-fun
-<x0:vt>
-strm_vt_forall0$f1un
-( xs: strm_vt(x0)
-, test: (~x0)->bool): bool
-//
-#symload
-forall0 with strm_vt_forall0$f1un of 1000
-#symload
-forall0$fun with strm_vt_forall0$f1un of 1000
-//
-fun
-<x0:vt>
-strx_vt_forall0$f1un
-( xs: strx_vt(x0)
-, test: (~x0)->bool): bool
-//
-#symload
-forall0 with strx_vt_forall0$f1un of 1000
-#symload
-forall0$fun with strx_vt_forall0$f1un of 1000
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-strm_vt_exists0$f1un
-( xs: strm_vt(x0)
-, test: (~x0)->bool): bool
-//
-#symload
-exists0 with strm_vt_exists0$f1un of 1000
-#symload
-exists0$fun with strm_vt_exists0$f1un of 1000
-//
-fun
-<x0:vt>
-strx_vt_exists0$f1un
-( xs: strx_vt(x0)
-, test: (~x0)->bool): bool
-//
-#symload
-exists0 with strx_vt_exists0$f1un of 1000
-#symload
-exists0$fun with strx_vt_exists0$f1un of 1000
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-strm_vt_foritm0$f1un
-(xs: strm_vt(x0), work: (~x0)->void): void
-//
-#symload
-foritm0 with strm_vt_foritm0$f1un of 1000
-#symload
-foritm0$fun with strm_vt_foritm0$f1un of 1000
-//
 (* ****** ****** *)
 //
 fun
@@ -1655,51 +1592,6 @@ optn_vt_irforitm0(xs: ~optn_vt(x0)): void
 fun
 <x0:vt>
 optn_vt_irforitm1(xs: !optn_vt(x0)): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-strm_vt_filter0$f1un
-( xs: strm_vt(x0)
-, test: (!x0) -> bool): strm_vt(x0)
-#symload filter0 with strm_vt_filter0$f1un of 1000
-#symload filter0$fun with strm_vt_filter0$f1un of 1000
-//
-fun
-<x0:vt>
-strm_vt_ifilter0$f2un
-( xs: strm_vt(x0)
-, test: (ni,!x0) -> bool): strm_vt(x0)
-#symload ifilter0 with strm_vt_ifilter0$f2un of 1000
-#symload ifilter0$fun with strm_vt_ifilter0$f2un of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-strm_vt_iforall0$f2un
-(xs: strm_vt(x0), test: (ni,~x0)->bool): bool
-#symload iforall0 with strm_vt_iforall0$f2un of 1000
-#symload iforall0$fun with strm_vt_iforall0$f2un of 1000
-//
-fun
-<x0:vt>
-strx_vt_iforall0$f2un
-(xs: strx_vt(x0), test: (ni,~x0)->bool): bool
-#symload iforall0 with strx_vt_iforall0$f2un of 1000
-#symload iforall0$fun with strx_vt_iforall0$f2un of 1000
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-strm_vt_iforitm0$f2un
-(xs: strm_vt(x0), test: (ni,~x0)->void): void
-#symload iforitm0 with strm_vt_iforitm0$f2un of 1000
-#symload iforitm0$fun with strm_vt_iforitm0$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

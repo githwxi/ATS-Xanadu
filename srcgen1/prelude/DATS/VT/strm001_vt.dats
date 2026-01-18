@@ -136,15 +136,11 @@ val xs = strq_vt_strmize0<a>(xs) }
 strx_vt_map0
   (xs) =
 (
-  auxmain(xs)
-) where
+  auxmain(xs)) where
 {
 fun
 auxmain
-( xs
-: strx_vt(x0)
-)
-: strx_vt(y0) =
+(xs: strx_vt(x0)): strx_vt(y0) =
 $llazy
 (
 //
@@ -152,16 +148,17 @@ g_free(xs);
 //
 case+ !xs of
 | ~
-strxcon_vt_cons(x0, xs) =>
+strxcon_vt_cons(x1, xs) =>
 let
-  val y0 =
-  map$fopr0<x0><y0>(x0)
-in
-  strxcon_vt_cons(y0, auxmain(xs))
-end//let//end-[strxcon_vt_cons]
+  val y1 = map$fopr0<x0><y0>(x1)
+in//let
+(
+  strxcon_vt_cons(y1, auxmain(xs)))
+end//let//end-[strxcon_vt_cons(x1,xs)]
 )
 } (*where*) // end of [ strx_vt_map0(xs) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -169,25 +166,22 @@ end//let//end-[strxcon_vt_cons]
 strx_vt_filter0
   (xs) =
 (
-  auxmain(xs)
-) where
+  auxmain(xs)) where
 {
+//
 fnx
 auxmain
 ( xs
-: strx_vt(x0)
-)
-: strx_vt(x0) =
+: strx_vt(x0)): strx_vt(x0) =
 $llazy
 (
-g_free(xs);
-auxloop($eval(xs)))
+g_free(xs); auxloop($eval(xs)))
+//
 and
 auxloop
-( xs
-: strxcon_vt(x0)
-)
-: strxcon_vt(x0) =
+(
+xs:
+strxcon_vt(x0)): strxcon_vt(x0) =
 (
 case+ xs of
 | ~
@@ -201,10 +195,24 @@ strxcon_vt_cons
   let
   val () = g_free(x0) in auxloop(!xs)
   end
-) (* end of [strxcom_vt_cons] *)
+) (* end of [strxcom_vt_cons(x1,xs)] *)
 )
 } (*where*) // end of [strx_vt_filter0(xs)]
 //
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strm_vt_filter0$f1un
+  (xs, test) =
+(
+strm_vt_filter0<x0>(xs))
+where
+{
+#impltmp filter$test1<x0>(x0) = test(x0)
+}(*where*)//endof[strm_vt_filter0$f1un(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -212,37 +220,33 @@ strxcon_vt_cons
 strx_vt_mapopt0
   (xs) =
 (
-  auxmain(xs)
-) where
+  auxmain(xs)) where
 {
+//
 fnx
 auxmain
 ( xs
-: strx_vt(x0)
-)
-: strx_vt(y0) =
+: strx_vt(x0)): strx_vt(y0) =
 $llazy
 (
-g_free(xs);
-auxloop($eval(xs)))
+g_free(xs); auxloop($eval(xs)))
+//
 and
 auxloop
-( xs
-: strxcon_vt(x0)
-)
-: strxcon_vt(y0) =
+(
+xs:
+strxcon_vt(x0)): strxcon_vt(y0) =
 (
 case+ xs of
 | ~
 strxcon_vt_cons(x0, xs) =>
 let
 (*
-  val
-  opt =
-  mapopt$fopr0<x0><y0>(x0)
+  val opt =
+  (
+    mapopt$fopr0<x0><y0>(x0))
 *)
-  val
-  opt = filter$test1<x0>(x0)
+  val opt = filter$test1<x0>(x0)
 in
 (*
   case+ opt of
@@ -251,22 +255,22 @@ in
   | optn_vt_cons(y0) =>
     strxcon_vt_cons(y0, auxmain(xs))
 *)
-  if
-  opt
-  then
+if
+(opt)
+then
   let
     val y0 =
     map$fopr0<x0><y0>(x0)
   in
     strxcon_vt_cons(y0, auxmain(xs))
   end
-  else
+else
   let
     val () =
     g_free(x0) in auxloop($eval(xs))
   end
 //
-end // end of [strxcon_vt_cons]
+end // end of [strxcon_vt_cons(x1,xs)]
 )
 } (*where*) // end of [strx_vt_mapopt0(xs)]
 //
@@ -277,21 +281,21 @@ end // end of [strxcon_vt_cons]
 strx_vt_sieve0
   (  xs  ) =
 (
-auxmain(xs) ) where
+  auxmain(xs) ) where
 {
 fun
 auxmain
 ( xs
-: strx_vt(x0)
-)
-: strx_vt(x0) = $llazy
+: strx_vt(x0)): strx_vt(x0) =
+$llazy
 (
 case+ !xs of
 | ~
 strxcon_vt_cons(x1, xs) =>
 let
   val xs = 
-  strx_vt_filter0<x0>(xs)
+  (
+    strx_vt_filter0<x0>(xs))
 in
   strxcon_vt_cons(x1, auxmain(xs))
 end where
@@ -310,16 +314,12 @@ filter$test1
 strx_vt_imap0
   (xs) =
 (
-auxmain(0(*i0*), xs)
-) where
+auxmain(0(*i0*), xs)) where
 {
 fun
 auxmain
 ( i0: nint
-, xs
-: strx_vt(x0)
-)
-: strx_vt(y0) =
+, xs: strx_vt(x0)): strx_vt(y0) =
 $llazy
 (
 //
@@ -329,12 +329,11 @@ case+ !xs of
 | ~
 strxcon_vt_cons(x0, xs) =>
 let
-val y0 =
-imap$fopr0<x0><y0>(i0, x0)
-in
+val y0 = imap$fopr0<x0><y0>(i0, x0)
+in//let
 strxcon_vt_cons(y0, auxmain(i0+1, xs))
 end // strxcon_vt_cons
-) (* end of [auxmain] *)
+) (* end of [auxmain(i0,xs)] *)
 } (*where*) // end-of-(strx_vt_imap0(xs))
 //
 (* ****** ****** *)
@@ -344,46 +343,43 @@ end // strxcon_vt_cons
 strx_vt_imapopt0
   (xs) =
 (
-auxmain(0(*i0*), xs)
-) where
+auxmain(0(*i0*), xs)) where
 {
 //
 fnx
 auxmain
 ( i0: nint
-, xs
-: strx_vt(x0)
-)
-: strx_vt(y0) =
+, xs: strx_vt(x0)): strx_vt(y0) =
 $llazy
 (
-g_free(xs);
-auxloop(i0, $eval(xs)))
+g_free(xs); auxloop(i0, $eval(xs)))
 //
 and
 auxloop
-( i0: nint
-, xs
-: strxcon_vt(x0)
-)
-: strxcon_vt(y0) =
 (
+i0: nint,
+xs: strxcon_vt(x0)): strxcon_vt(y0) =
+(
+//
 case+ xs of
 | ~
 strxcon_vt_cons(x0, xs) =>
 let
+//
   val i1 = suc(i0)
-  val
-  opt = ifilter$test1<x0>(i0, x0)
-in
+//
+  val opt =
+  (
+    ifilter$test1<x0>(i0, x0))
+//
+in//let
 //
 if
-opt
+(opt)
 then
 let
-val y0 =
-imap$fopr0<x0><y0>(i0, x0)
-in
+val y0 = imap$fopr0<x0><y0>(i0, x0)
+in//let
 strxcon_vt_cons(y0, auxmain(i1, xs))
 end // end of [then]
 else
@@ -392,10 +388,11 @@ val () =
 g_free(x0) in auxloop(i1, $eval(xs))
 end // end of [else]
 //
-end // end of [strxcon_vt_cons]
-) (* end of [auxloop] *)
+end // end-of-[strxcon_vt_cons(x1,xs)]
 //
-} (*where*)//end-of(strx_vt_imapopt0(xs))
+) (*case+*) // end-of-[auxloop(i0,xs)]
+//
+} (*where*) // end-of(strx_vt_imapopt0(xs))
 //
 (* ****** ****** *)
 //
@@ -404,15 +401,14 @@ end // end of [strxcon_vt_cons]
 strx_vt_istrmize0
   (xs) =
 (
-auxmain(0, xs)) where
+  auxmain(0, xs)) where
 {
 fun
 auxmain
 ( i0
 : nint
 , xs
-: strx_vt(a))
-: strm_vt(@(nint, a)) =
+: strx_vt(a)): strm_vt(@(nint, a)) =
 $llazy
 (
 g_free(xs);
@@ -422,8 +418,8 @@ strxcon_vt_cons
   ( x0, xs ) =>
 (
   strmcon_vt_cons
-  ( (i0, x0), auxmain(i0+1, xs) ) )
-) (* end of [auxmain] *)
+  ( @(i0, x0), auxmain(i0 + 1, xs) ) )
+) (* end of [auxmain(i0,xs)] *)
 } (*where*)//end-of(strx_vt_istrmize0(xs))
 //
 (* ****** ****** *)
@@ -439,13 +435,15 @@ HX-2024-01-02: for gseq-operations
 #impltmp
 {x0:vt}
 gseq_strmize0
-<strx_vt(x0)><x0> = strx_vt_strmize0<x0>
+<strx_vt(x0)><x0> = strx_vt_strmize0<x0>(*xs*)
 #impltmp
 {x0:vt}
 gseq_strmize0
-<strq_vt(x0)><x0> = strq_vt_strmize0<x0>
+<strq_vt(x0)><x0> = strq_vt_strmize0<x0>(*xs*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_strm001_vt.dats] *)
+(***********************************************************************)

@@ -248,6 +248,61 @@ rlistize0 with strq_vt_rlistize0 of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:vt>
+strx_vt_forall0$f1un
+( xs: strx_vt(x0)
+, test: (~x0)->bool): bool
+//
+#symload
+forall0 with strx_vt_forall0$f1un of 1000
+#symload
+forall0$fun with strx_vt_forall0$f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strx_vt_exists0$f1un
+( xs: strx_vt(x0)
+, test: (~x0)->bool): bool
+//
+#symload
+exists0 with strx_vt_exists0$f1un of 1000
+#symload
+exists0$fun with strx_vt_exists0$f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strx_vt_iforall0$f2un
+(xs: strx_vt(x0), test: (ni,~x0)->bool): bool
+#symload iforall0 with strx_vt_iforall0$f2un of 1000
+#symload iforall0$fun with strx_vt_iforall0$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strx_vt_filter0$f1un
+( xs: strx_vt(x0)
+, test: (!x0) -> bool): strx_vt(x0)
+#symload filter0 with strx_vt_filter0$f1un of 1000
+#symload filter0$fun with strx_vt_filter0$f1un of 1000
+//
+fun
+<x0:vt>
+strx_vt_ifilter0$f2un
+( xs: strx_vt(x0)
+, test: (ni,!x0) -> bool): strx_vt(x0)
+#symload ifilter0 with strx_vt_ifilter0$f2un of 1000
+#symload ifilter0$fun with strx_vt_ifilter0$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_prelude_SATS_VT_strm001_vt.sats] *)
 (***********************************************************************)
