@@ -125,7 +125,7 @@ strn_get$at
   (cs, i0) =
 (
 XATS2JS_strn_get$at$raw
-(    cs      , i0     ))
+(     cs   ,   i0     ))
 where
 {
 #extern
