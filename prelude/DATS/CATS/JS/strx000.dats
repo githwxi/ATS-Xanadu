@@ -91,8 +91,8 @@ test(x0: !x0): bool =
 fun
 free(x0: ~x0): void = g_free<x0>(x0)
 in//let
-XATS2JS_strx_vt_filter0$f1un{x0}(xs, test, free)
-end(*let*)//end-of-[strx_vt_filter0<x0>(xs)]
+XATS2JS_strx_vt_filter0$f1un{x0}(xs,test,free)
+end(*let*)//end-of-[strx_vt_filter0<x0>(xs:lsx)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

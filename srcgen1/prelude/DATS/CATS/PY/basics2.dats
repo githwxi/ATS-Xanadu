@@ -20,7 +20,7 @@ UN = // for casting
 (*
 #impltmp
 {a:vt} // HX: This is
-g_free<a>(x0) = () // for JS!!!
+g_free<a>(x0) = () // for PY!!!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -256,6 +256,136 @@ XATS2PY_a1ptr_dtget$at1
 {n:i0}
 (A0: a1ptr(a, n), i0: nintlt(n)): ~a = $extnam()
 }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-16:
+Fri Jan 16 06:38:38 PM EST 2026
+*)
+#extern
+fun
+XATS2PY_strm_vt_forall0$f1un
+{x0:vt}
+( xs
+: strm_vt(x0)
+, test
+: (~x0) -> bool): bool
+= $extnam()//extern(./strm000.cats)
+//
+#impltmp
+< x0:vt >
+strm_vt_forall0
+  (  xs  ) =
+let
+fun
+test(x0: ~x0): bool =
+(
+  forall$test0<x0>(x0))
+in//let
+XATS2PY_strm_vt_forall0$f1un{x0}(xs, test)
+end(*let*)//end-of-[strm_vt_forall0<x0>(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-16:
+Fri Jan 16 06:38:38 PM EST 2026
+*)
+#extern
+fun
+XATS2PY_strm_vt_filter0$f1un
+{x0:vt}
+( xs
+: strm_vt(x0)
+, test
+: (!x0) -> bool
+, free
+: (~x0) -> void): strm_vt(x0)
+= $extnam()//extern(./strm000.cats)
+//
+#impltmp
+< x0:vt >
+strm_vt_filter0
+  (  xs  ) =
+let
+fun
+test(x0: !x0): bool =
+(
+  filter$test1<x0>(x0))
+fun
+free(x0: ~x0): void = g_free<x0>(x0)
+in//let
+XATS2PY_strm_vt_filter0$f1un{x0}(xs,test,free)
+end(*let*)//end-of-[strm_vt_filter0<x0>(xs:lsm)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-17:
+Sat Jan 17 11:18:55 PM EST 2026
+*)
+//
+#extern
+fun
+XATS2PY_strx_vt_forall0$f1un
+{x0:vt}
+( xs
+: strx_vt(x0)
+, test
+: (~x0) -> bool): bool
+= $extnam()//extern(./strx000.cats)
+//
+#impltmp
+< x0:vt >
+strx_vt_forall0
+  (  xs  ) =
+let
+fun
+test(x0: ~x0): bool =
+(
+  forall$test0<x0>(x0))
+in//let
+XATS2PY_strx_vt_forall0$f1un{x0}(xs, test)
+end(*let*)//end-of-[strx_vt_forall0<x0>(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-17:
+Sat Jan 17 11:18:55 PM EST 2026
+*)
+//
+#extern
+fun
+XATS2PY_strx_vt_filter0$f1un
+{x0:vt}
+( xs
+: strx_vt(x0)
+, test
+: (!x0) -> bool
+, free
+: (~x0) -> void): strx_vt(x0)
+= $extnam()//extern(./strx000.cats)
+//
+#impltmp
+< x0:vt >
+strx_vt_filter0
+  (  xs  ) =
+let
+fun
+test(x0: !x0): bool =
+(
+  filter$test1<x0>(x0))
+fun
+free(x0: ~x0): void = g_free<x0>(x0)
+in//let
+XATS2PY_strx_vt_filter0$f1un{x0}(xs,test,free)
+end(*let*)//end-of-[strx_vt_filter0<x0>(xs:lsx)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

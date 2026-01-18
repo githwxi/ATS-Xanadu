@@ -318,8 +318,74 @@ test(x0: !x0): bool =
 fun
 free(x0: ~x0): void = g_free<x0>(x0)
 in//let
-XATS2JS_strm_vt_filter0$f1un{x0}(xs, test, free)
-end(*let*)//end-of-[strm_vt_filter0<x0>(xs)]
+XATS2JS_strm_vt_filter0$f1un{x0}(xs,test,free)
+end(*let*)//end-of-[strm_vt_filter0<x0>(xs:lsm)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-17:
+Sat Jan 17 11:18:55 PM EST 2026
+*)
+//
+#extern
+fun
+XATS2JS_strx_vt_forall0$f1un
+{x0:vt}
+( xs
+: strx_vt(x0)
+, test
+: (~x0) -> bool): bool
+= $extnam()//extern(./strx000.cats)
+//
+#impltmp
+< x0:vt >
+strx_vt_forall0
+  (  xs  ) =
+let
+fun
+test(x0: ~x0): bool =
+(
+  forall$test0<x0>(x0))
+in//let
+XATS2JS_strx_vt_forall0$f1un{x0}(xs, test)
+end(*let*)//end-of-[strx_vt_forall0<x0>(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-17:
+Sat Jan 17 11:18:55 PM EST 2026
+*)
+//
+#extern
+fun
+XATS2JS_strx_vt_filter0$f1un
+{x0:vt}
+( xs
+: strx_vt(x0)
+, test
+: (!x0) -> bool
+, free
+: (~x0) -> void): strx_vt(x0)
+= $extnam()//extern(./strx000.cats)
+//
+#impltmp
+< x0:vt >
+strx_vt_filter0
+  (  xs  ) =
+let
+fun
+test(x0: !x0): bool =
+(
+  filter$test1<x0>(x0))
+fun
+free(x0: ~x0): void = g_free<x0>(x0)
+in//let
+XATS2JS_strx_vt_filter0$f1un{x0}(xs,test,free)
+end(*let*)//end-of-[strx_vt_filter0<x0>(xs:lsx)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
