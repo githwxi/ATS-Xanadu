@@ -132,6 +132,45 @@ val xs = strq_vt_strmize0<a>(xs) }
 (* ****** ****** *)
 //
 #impltmp
+<x0>(*tmp*)
+strx_vt_forall0
+  (xs) =
+( loop(xs) ) where
+{
+fnx
+loop
+( xs
+: strx_vt(x0)): bool =
+(
+case+ !xs of
+| ~
+strxcon_vt_cons(x0, xs) =>
+let
+  val
+  test = forall$test0<x0>(x0)
+in//let
+if
+test
+then loop(xs) else (g_free(xs); false)
+end// let // end of [ loop(xs) ]
+) (* end of [loop] *)
+} (*where*) // end-of-[strx_vt_forall0(xs)]
+//
+#impltmp
+< x0:vt >
+strx_vt_forall0$f1un
+  (xs, test) =
+(
+strx_vt_forall0<x0>(xs))
+where
+{
+#impltmp forall$test0<x0>(x0) = test(x0)
+}(*where*)//endof[strx_vt_forall0$f1un(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 <x0><y0>
 strx_vt_map0
   (xs) =
@@ -203,14 +242,14 @@ strxcon_vt_cons
 //
 #impltmp
 < x0:vt >
-strm_vt_filter0$f1un
+strx_vt_filter0$f1un
   (xs, test) =
 (
-strm_vt_filter0<x0>(xs))
+strx_vt_filter0<x0>(xs))
 where
 {
 #impltmp filter$test1<x0>(x0) = test(x0)
-}(*where*)//endof[strm_vt_filter0$f1un(...)]
+}(*where*)//endof[strx_vt_filter0$f1un(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -670,7 +670,8 @@ strm_vt_tabulate<a><n>(n0)
 *)
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #impltmp
 <x0><r0>
 strm_vt_foldl0
@@ -699,9 +700,10 @@ end // end of [foritm$work0]
 }
 //
 }(*where*)//end-of(strm_foldl0/foritm0...)
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #impltmp
 <x0>(*tmp*)
 strm_vt_forall0
@@ -728,9 +730,9 @@ then loop(xs) else (g_free(xs); false)
 end// let // end of [ loop(xs) ]
 ) (* end of [loop] *)
 } (*where*) // end-of-[strm_vt_forall0(xs)]
-
+//
 (* ****** ****** *)
-
+//
 #impltmp
 <x0>(*tmp*)
 strm_vt_foritm0
@@ -750,23 +752,45 @@ end
 in
   // nothing
 end(*let*)//end(strm_vt_foritm0/forall0,...)
-
+//
 (* ****** ****** *)
-
+//
+#impltmp
+< x0:vt >
+strm_vt_forall0$f1un
+  (xs, test) =
+(
+strm_vt_forall0<x0>(xs))
+where
+{
+#impltmp forall$test0<x0>(x0) = test(x0)
+}(*where*)//endof[strm_vt_forall0$f1un(...)]
+//
+#impltmp
+< x0:vt >
+strm_vt_foritm0$f1un
+  (xs, work) =
+(
+strm_vt_foritm0<x0>(xs))
+where
+{
+#impltmp foritm$work0<x0>(x0) = work(x0)
+}(*where*)//endof[strm_vt_foritm0$f1un(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <x0><y0>
 strm_vt_map0
   (xs) =
 (
-  auxmain(xs)
-) where
+  auxmain(xs)) where
 {
 fun
 auxmain
 ( xs
-: strm_vt(x0)
-)
-: strm_vt(y0) =
+: strm_vt(x0)): strm_vt(y0) =
 $llazy
 (
 //
@@ -777,18 +801,19 @@ case+ !xs of
 strmcon_vt_nil() =>
 strmcon_vt_nil((*void*))
 | ~
-strmcon_vt_cons(x0, xs) =>
+strmcon_vt_cons(x1, xs) =>
 let
-  val y0 =
-  map$fopr0<x0><y0>(x0)
-in
-  strmcon_vt_cons(y0, auxmain(xs))
-end//let//end-[strmcon_vt_cons]
-) (*llazy*) // end of [auxmain(xs)]
+  val y1 = map$fopr0<x0><y0>(x1)
+in//let
+(
+  strmcon_vt_cons(y1, auxmain(xs)))
+end//let//end-[strmcon_vt_cons(x1,xs)]
+) (*llazy*) // end of [ auxmain( xs ) ]
 } (*where*) // end-of-( strm_vt_map0(xs) )
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #impltmp
 <x0>(*tmp*)
 strm_vt_filter0
@@ -800,40 +825,53 @@ auxmain(xs)) where
 fnx
 auxmain
 ( xs
-: strm_vt(x0)
-)
-: strm_vt(x0) =
+: strm_vt(x0)): strm_vt(x0) =
 $llazy
-(g_free(xs); auxloop(xs))
+(
+g_free(xs); auxloop($eval(xs)))
 //
 and
 auxloop
-( xs
-: strm_vt(x0)
-)
-: strmcon_vt(x0) =
 (
-case+ !xs of
+xs:
+strmcon_vt(x0)): strmcon_vt(x0) =
+(
+case+ xs of
 | ~
 strmcon_vt_nil
-  () =>
+  ((*void*)) =>
 strmcon_vt_nil()
 | ~
 strmcon_vt_cons
-  (x0, xs) =>
-( if
-  filter$test1<x0>(x0)
-  then
-  strmcon_vt_cons(x0, auxmain(xs))
-  else
-  let
-  val () = g_free(x0) in auxloop(xs)
-  end // end of [if]
-) (* end of [strmcom_vt_cons] *)
+  ( x1, xs ) =>
+(
+if
+filter$test1<x0>(x1)
+then
+strmcon_vt_cons(x1, auxmain(xs))
+else
+let
+val () = g_free(x1) in auxloop(!xs)
+end // end of [if]
+) (* end of [strmcom_vt_cons(x1,xs)] *)
 )
 //
 } (*where*) // end of [strm_vt_filter0(xs)]
-
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strm_vt_filter0$f1un
+  (xs, test) =
+(
+strm_vt_filter0<x0>(xs))
+where
+{
+#impltmp filter$test1<x0>(x0) = test(x0)
+}(*where*)//endof[strm_vt_filter0$f1un(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
