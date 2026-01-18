@@ -495,7 +495,15 @@ if // if
 (c0 = '\\')
 then//then
 (
-  loop2(i0+1)) else
+loop2(i0+1)
+) else
+if // if
+(c0 = '\n')
+then//then
+(
+strn_fprint
+("\\n\\\n", filr); loop1(i0+1)
+) else
 (
 char_fprint(c0, filr); loop1(i0+1))
 end//let//end-of-[loop1(i0)]
