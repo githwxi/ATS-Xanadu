@@ -68,6 +68,8 @@ cleanall:: ; \
 make -C srcgen2/xats2py/srcgen1 -f Makefile_xats2js cleanall
 cleanall:: ; \
 make -C srcgen2/xats2py/srcgen1 -f Makefile_xjsemit cleanall
+cleanall:: ; \
+make -C srcgen2/xats2py/srcgen1 -f Makefile_xpyemit cleanall
 #
 cleanall:: ; \
 make -C contrib/githwxi/BOOTJS1 -f Makefile_xjsemit cleanall

@@ -16,23 +16,33 @@ $(XATSHOME)/srcgen1/prelude
 SRCGEN1_XATSLIBD=\
 $(XATSHOME)/srcgen1/xatslib
 ##################################################################
+PRECATS_PY=srcgen2_precats.py
 PRELUDE_PY=srcgen2_prelude.py
 XATSLIB_PY=srcgen2_xatslib.py
 ##################################################################
 SRCGEN1_PRELUDE_PY=srcgen1_prelude.py
 SRCGEN1_XATSLIB_PY=srcgen1_xatslib.py
 ##################################################################
+##################################################################
 all::
 ##################################################################
+all:: precats
 all:: prelude
 all:: xatslib
 all:: srcgen1_prelude
 all:: srcgen1_xatslib
 ##################################################################
+##################################################################
+precats:: ; \
+$(PRINTF) "## %s\n" "`date`" > $(PRECATS_PY)
+precats:: ; $(CAT) srcgen2_precats_hd >> $(PRECATS_PY)
+precats:: ; $(CAT) \
+$(PRELUDED)/DATS/CATS/PY/OUTS/precats_dats.py >> $(PRECATS_PY)
+##################################################################
+##################################################################
 prelude:: ; \
-printf "## %s\n" "`date`" > $(PRELUDE_PY)
-prelude:: ; \
-$(CAT) srcgen2_prelude_hd >> $(PRELUDE_PY)
+$(PRINTF) "## %s\n" "`date`" > $(PRELUDE_PY)
+prelude:: ; $(CAT) srcgen2_prelude_hd >> $(PRELUDE_PY)
 ##################################################################
 prelude:: \
 xtop000
@@ -98,16 +108,10 @@ axsz000
 axsz000: ; \
 $(CAT) $(PRELUDED)/DATS/CATS/PY/axsz000.cats >> $(PRELUDE_PY)
 ##################################################################
-prelude:: \
-precats
-precats: ; $(CAT) \
-$(PRELUDED)/DATS/CATS/PY/OUTS/precats_dats.py >> $(PRELUDE_PY)
-########################################################################
 ##################################################################
 xatslib:: ; \
-printf "## %s\n" "`date`" > $(XATSLIB_PY)
-xatslib:: ; \
-$(CAT) srcgen2_xatslib_hd >> $(XATSLIB_PY)
+$(PRINTF) "## %s\n" "`date`" > $(XATSLIB_PY)
+xatslib:: ; $(CAT) srcgen2_xatslib_hd >> $(XATSLIB_PY)
 ##################################################################
 xatslib:: \
 dynarr0

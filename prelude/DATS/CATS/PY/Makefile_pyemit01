@@ -34,7 +34,16 @@ $(XASSETS)/JS/xats2py/xats2py_pyemit01_ats3_opt1.js
 precats:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_dats.py
 precats:: precats.dats; \
-$(NODEJS) --stack-size=8192 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_dats.py
+$(NODEJS) \
+--stack-size=8801 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_dats.py
+precats:: ; \
+$(PRINTF) "####################################" >> OUTS/$@_dats.py
+precats:: ; \
+$(PRINTF) "####################################\n" >> OUTS/$@_dats.py
+precats:: ; \
+$(PRINTF) "####################################" >> OUTS/$@_dats.py
+precats:: ; \
+$(PRINTF) "####################################\n" >> OUTS/$@_dats.py
 ########################################################################
 ########################################################################
 ##################### end of [Makefile_pyemit01] #######################
