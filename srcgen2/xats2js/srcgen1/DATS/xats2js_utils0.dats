@@ -159,8 +159,9 @@ val stmp = i1tnm_get_stmp(itnm)
 tokenfpr
 (filr, tok0) =
 let
+val () =
 (
-  token_fprint(tok0, filr))
+token_fprint(tok0, filr)) in ()
 end(*let*)//end-of-[tokenfpr(env0,tok0)]
 //
 (* ****** ****** *)
@@ -365,6 +366,26 @@ g_print$out
 <(*nil*)>((*void*)) = filr
 //
 in//let
+(
+// HX-2026-01-19:
+// For avoiding multilines
+  prints("XATSSTRN(", "...", ")"))
+end(*let*)//end-of-[i0strfpr(filr,tstr)]
+//
+(* ****** ****** *)
+//
+(*
+//
+#implfun
+i0strfpr
+( filr, tstr) =
+let
+//
+#impltmp
+g_print$out
+<(*nil*)>((*void*)) = filr
+//
+in//let
 //
 case-
 tstr.node() of
@@ -443,7 +464,9 @@ HX: skip the first char
 val i0 = 1 in loop1(i0) end//let
 end(*let*)//end-of-(f0_strn(rep))
 //
-}(* where *)//end-of-[i0strfpr(filr,tstr)]
+}(*where*)//end-of-[i0strfpr(filr,tstr)]
+//
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

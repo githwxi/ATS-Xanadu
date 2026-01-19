@@ -175,6 +175,12 @@ fun
 i1tnmfpr
 (filr: FILR, itnm: i1tnm): void
 //
+(*
+fun
+i1valfpr
+(filr: FILR, ival: i1val): void
+*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

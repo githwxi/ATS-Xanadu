@@ -545,7 +545,7 @@ if // if
 then//then
 (
 char_fprint
-('\\', filr)) else
+('\0', filr)) else
 let
   val c1 = rep1[i1]
 in (*let*)
