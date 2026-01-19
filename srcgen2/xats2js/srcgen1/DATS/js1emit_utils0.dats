@@ -519,21 +519,22 @@ let
 //
 in//let
 //
-if // if
+if // if1
 (c0 = '\\')
-then//then
+then//then1
 (
 loop2(i0+1)
-) else
-if // if
+) else//if1
+(
+if // if2
 (c0 = '\n')
-then//then
+then//then2
 (
 strn_fprint
 ("\\n\\\n", filr); loop1(i0+1)
-) else
+) else//if2
 (
-char_fprint(c0, filr); loop1(i0+1))
+char_fprint(c0, filr); loop1(i0+1)))
 end//let//end-of-[loop1(i0)]
 //
 and
@@ -555,7 +556,7 @@ then//then
   loop1(i1+1)) else
 (
 char_fprint('\\', filr); char_fprint(c1, filr); loop1(i1+1))
-end//let//end-of-[loop1(i1)]
+end//let//end-of-[loop2(i1)]
 //
 in//let
 //
