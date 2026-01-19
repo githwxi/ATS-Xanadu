@@ -274,11 +274,11 @@ where
 {
 //
 #impltmp
-$XT0.the_fxtyenv_pvsl02d'ntime<>() = the_ntime[]
+$XT0.the_fxtyenv_pvsl02d$ntime<>() = the_ntime[]
 #impltmp
-$XT0.the_fxtyenv_pvsl02d'ntime$set<>(n0) = (the_ntime[] := n0)
+$XT0.the_fxtyenv_pvsl02d$ntime$set<>(n0) = (the_ntime[] := n0)
 #impltmp
-$XT0.the_fxtyenv_pvsl02d'topmap$set<>(e0) = (the_fxtyenv[] := e0)
+$XT0.the_fxtyenv_pvsl02d$topmap$set<>(e0) = (the_fxtyenv[] := e0)
 //
 }(*where*)//end-of-[the_fxtyenv_pvsl02d()]
 //

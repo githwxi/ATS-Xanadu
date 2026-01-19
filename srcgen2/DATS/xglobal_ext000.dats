@@ -85,16 +85,16 @@ fun<(*tmp*)>
 the_fxtyenv_pvsl02d((*0*)): sint(*0/1*)
 #extern
 fun<(*tmp*)>
-the_fxtyenv_pvsl02d'atext((*0*)): (strn)
+the_fxtyenv_pvsl02d$atext((*0*)): (strn)
 #extern
 fun<(*tmp*)>
-the_fxtyenv_pvsl02d'ntime((*0*)): (sint)
+the_fxtyenv_pvsl02d$ntime((*0*)): (sint)
 #extern
 fun<(*tmp*)>
-the_fxtyenv_pvsl02d'ntime$set(n0:sint): void
+the_fxtyenv_pvsl02d$ntime$set(n0:sint): void
 #extern
 fun<(*tmp*)>
-the_fxtyenv_pvsl02d'topmap$set(e0:fxtyenv): void
+the_fxtyenv_pvsl02d$topmap$set(e0:fxtyenv): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -106,10 +106,10 @@ the_fxtyenv_pvsl02d
 let
 //
 val n0 =
-the_fxtyenv_pvsl02d'ntime
+the_fxtyenv_pvsl02d$ntime
 <  (*tmp*)  >( (*void*) )
 val () =
-the_fxtyenv_pvsl02d'ntime$set
+the_fxtyenv_pvsl02d$ntime$set
 <  (*tmp*)  >(     n0+1     )
 //
 in//let
@@ -134,7 +134,7 @@ d0parsed_from_atext
 where{
 val
 fixity0_sats =
-the_fxtyenv_pvsl02d'atext
+the_fxtyenv_pvsl02d$atext
 <  (*tmp*)  >(  (*void*)  ) }
 //
 val
@@ -156,7 +156,7 @@ D1TOPENV
 ( topenv ) => (  1  ) where
 {
 val ((*0*)) =
-the_fxtyenv_pvsl02d'topmap$set
+the_fxtyenv_pvsl02d$topmap$set
 <  (*tmp*)  >(     topenv     ) } )
 end(*let*)//end-of-[f0_pvsl02d((*0*))]
 //
@@ -174,7 +174,7 @@ This makes sense as few changes
 should be added to fixity0.sats!
 *)
 #impltmp
-the_fxtyenv_pvsl02d'atext<>() = "\
+the_fxtyenv_pvsl02d$atext<>() = "\
 (* ****** ****** *)
 (*
 The content of
@@ -332,7 +332,7 @@ proofs from programs!
 (* ****** ****** *)
 (* ****** ****** *)
 //
-"// end-of-[the_fxtyenv_pvsl02d'atext()=fixity0.sats]
+"// end-of-[the_fxtyenv_pvsl02d$atext()=fixity0.sats]
 //
 (* ****** ****** *)
 (* ****** ****** *)
