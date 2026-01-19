@@ -145,9 +145,6 @@ the_fxtyenv_pvsl00d
 fun
 the_fxtyenv_pvsl01d
   ( (*void*) ): sint(*0/1*)
-fun
-the_fxtyenv_pvsl02d
-  ( (*void*) ): sint(*0/1*)
 //
 fun
 the_fxtyenv_pvsfind

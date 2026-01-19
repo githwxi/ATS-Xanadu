@@ -176,11 +176,22 @@ in//local
 //
 (* ****** ****** *)
 //
+(*
+(*
+HX-2026-01-19:
+See below for an
+implement using a
+"FROZEN" version of
+prelude/fixity0.sats
+*)
 #implfun
 the_fxtyenv_pvsl00d
   ((*void*)) =
 (
 the_fxtyenv_pvsload((*0*)))
+*)
+//
+(* ****** ****** *)
 //
 #implfun
 the_fxtyenv_pvsl01d
@@ -266,21 +277,21 @@ end (*let*) // [the_fxtyenv_pvsfind]
 (* ****** ****** *)
 //
 #implfun
-the_fxtyenv_pvsl02d
+the_fxtyenv_pvsl00d
   ((*void*)) =
 (
-$XT0.the_fxtyenv_pvsl02d<>())
+$XT0.the_fxtyenv_pvsl00d<>())
 where
 {
 //
 #impltmp
-$XT0.the_fxtyenv_pvsl02d$ntime<>() = the_ntime[]
+$XT0.the_fxtyenv_pvsl00d$ntime<>() = the_ntime[]
 #impltmp
-$XT0.the_fxtyenv_pvsl02d$ntime$set<>(n0) = (the_ntime[] := n0)
+$XT0.the_fxtyenv_pvsl00d$ntime$set<>(n0) = (the_ntime[] := n0)
 #impltmp
-$XT0.the_fxtyenv_pvsl02d$topmap$set<>(e0) = (the_fxtyenv[] := e0)
+$XT0.the_fxtyenv_pvsl00d$topmap$set<>(e0) = (the_fxtyenv[] := e0)
 //
-}(*where*)//end-of-[the_fxtyenv_pvsl02d()]
+}(*where*)//end-of-[the_fxtyenv_pvsl00d()]
 //
 (* ****** ****** *)
 (* ****** ****** *)

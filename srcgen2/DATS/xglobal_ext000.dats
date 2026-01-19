@@ -82,34 +82,34 @@ importance in programming.
 *)
 #extern
 fun<(*tmp*)>
-the_fxtyenv_pvsl02d((*0*)): sint(*0/1*)
+the_fxtyenv_pvsl00d((*0*)): sint(*0/1*)
 #extern
 fun<(*tmp*)>
-the_fxtyenv_pvsl02d$atext((*0*)): (strn)
+the_fxtyenv_pvsl00d$atext((*0*)): (strn)
 #extern
 fun<(*tmp*)>
-the_fxtyenv_pvsl02d$ntime((*0*)): (sint)
+the_fxtyenv_pvsl00d$ntime((*0*)): (sint)
 #extern
 fun<(*tmp*)>
-the_fxtyenv_pvsl02d$ntime$set(n0:sint): void
+the_fxtyenv_pvsl00d$ntime$set(n0:sint): void
 #extern
 fun<(*tmp*)>
-the_fxtyenv_pvsl02d$topmap$set(e0:fxtyenv): void
+the_fxtyenv_pvsl00d$topmap$set(e0:fxtyenv): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-the_fxtyenv_pvsl02d
+the_fxtyenv_pvsl00d
   ((*void*)) =
 let
 //
 val n0 =
-the_fxtyenv_pvsl02d$ntime
+the_fxtyenv_pvsl00d$ntime
 <  (*tmp*)  >( (*void*) )
 val () =
-the_fxtyenv_pvsl02d$ntime$set
+the_fxtyenv_pvsl00d$ntime$set
 <  (*tmp*)  >(     n0+1     )
 //
 in//let
@@ -117,12 +117,12 @@ in//let
 if
 (n0 > 0)
 then ( 0 )
-else f0_pvsl02d() end//let
+else f0_pvsl00d() end//let
 where // end-of-let(val(test)
 {
 //
 fun
-f0_pvsl02d
+f0_pvsl00d
 ((*void*)): sint =
 let
 //
@@ -134,7 +134,7 @@ d0parsed_from_atext
 where{
 val
 fixity0_sats =
-the_fxtyenv_pvsl02d$atext
+the_fxtyenv_pvsl00d$atext
 <  (*tmp*)  >(  (*void*)  ) }
 //
 val
@@ -145,7 +145,7 @@ tenv = d1parsed_get_topenv(dpar)
 //
 (*
 val () =
-prerrsln("the_fxtyenv_pvsl02d:", tenv)
+prerrsln("the_fxtyenv_pvsl00d:", tenv)
 *)
 //
 in//let
@@ -156,11 +156,11 @@ D1TOPENV
 ( topenv ) => (  1  ) where
 {
 val ((*0*)) =
-the_fxtyenv_pvsl02d$topmap$set
+the_fxtyenv_pvsl00d$topmap$set
 <  (*tmp*)  >(     topenv     ) } )
-end(*let*)//end-of-[f0_pvsl02d((*0*))]
+end(*let*)//end-of-[f0_pvsl00d((*0*))]
 //
-}(*where*)//end-of-[the_fxtyenv_pvsl02d()]
+}(*where*)//end-of-[the_fxtyenv_pvsl00d()]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -174,7 +174,7 @@ This makes sense as few changes
 should be added to fixity0.sats!
 *)
 #impltmp
-the_fxtyenv_pvsl02d$atext<>() = "\
+the_fxtyenv_pvsl00d$atext<>() = "\
 (* ****** ****** *)
 (*
 The content of
@@ -332,7 +332,7 @@ proofs from programs!
 (* ****** ****** *)
 (* ****** ****** *)
 //
-"// end-of-[the_fxtyenv_pvsl02d$atext()=fixity0.sats]
+"// end-of-[the_fxtyenv_pvsl00d$atext()=fixity0.sats]
 //
 (* ****** ****** *)
 (* ****** ****** *)
