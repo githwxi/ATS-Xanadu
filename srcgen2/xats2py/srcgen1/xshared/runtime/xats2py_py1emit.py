@@ -12,15 +12,16 @@ XATSTOP0 = None
 ########################################################################.
 ##
 def XATSINT0(i0): return i0
-##
 def XATSINT1(i0): return i0
+##
+def XATSBTF0(b0): return b0
 def XATSBOOL(b0): return b0
-def XATSFLT1(f0): return i0
-def XATSSTRN(cs): return cs
 ##
 def XATSCNUL(  ): return (0)
 def XATSCHR1(  ): return (0)
 ##
+def XATSCHR0(ch):
+  return ord(ch[0]) ## acsii
 def XATSCHR2(ch):
   return ord(ch[0]) ## acsii
 ##
@@ -41,6 +42,12 @@ def XATSCHR3(ch):
       else:
         d1 = 8*d1 + ord(c1)-48
     return d1 ## ascii code of [ch]
+##
+def XATSFLT0(f0): return (f0)
+def XATSFLT1(f0): return (f0)
+##
+def XATSSTR0(cs): return (cs)
+def XATSSTRN(cs): return (cs)
 ##
 def XATSSFLT(sf): return float(sf)
 def XATSDFLT(df): return float(df)

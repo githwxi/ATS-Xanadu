@@ -17,19 +17,25 @@ let XATSTOP0 = undefined
 ////////////////////////////////////////////////////////////////////////.
 //
 let XATSINT0 = (i0) => i0
-let XATSFLT0 = (f0) => f0
-//
 let XATSINT1 = (i0) => i0
+//
+let XATSBTF0 = (b0) => b0
 let XATSBOOL = (b0) => b0
+//
+let XATSFLT0 = (f0) => f0
 let XATSFLT1 = (f0) => f0
 /*
 let XATSSFLT = (sf) => sf
 let XATSDFLT = (df) => df
 */
+let XATSSTR0 = (cs) => cs
 let XATSSTRN = (cs) => cs
 //
 let XATSCNUL = (  ) => (0)
 let XATSCHR1 = (  ) => (0)
+//
+let XATSCHR0 =
+    (ch) => ch.charCodeAt(0)
 let XATSCHAR =
     (ch) => ch.charCodeAt(0)
 let XATSCHR2 =
