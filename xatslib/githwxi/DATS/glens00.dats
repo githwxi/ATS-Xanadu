@@ -50,16 +50,16 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-{tmp1:t0}
-{tmp2:t0}
+{nam1:t0}
+{nam2:t0}
 {arg0:vt}
 {arg1:vt}
 {arg2:vt}
 glens_lget
 <
 glens$2comp
-( tmp1
-, tmp2, arg1)><arg0><arg2>
+( nam1
+, nam2, arg1)><arg0><arg2>
 (
     arg0    ) =
 let
@@ -71,25 +71,25 @@ where
 val
 (pf01 | arg1) =
 (
-  glens_lget<tmp1><arg0><arg1>(arg0))
+  glens_lget<nam1><arg0><arg1>(arg0))
 val
 (pf12 | arg2) =
 (
-  glens_lget<tmp2><arg1><arg2>(arg1)) }
+  glens_lget<nam2><arg1><arg2>(arg1)) }
 //
 (* ****** ****** *)
 //
 #impltmp
-{tmp1:t0}
-{tmp2:t0}
+{nam1:t0}
+{nam2:t0}
 {arg0:vt}
 {arg1:vt}
 {arg2:vt}
 glens_lset
 <
 glens$2comp
-( tmp1
-, tmp2, arg1)><arg0><arg2>
+( nam1
+, nam2, arg1)><arg0><arg2>
 ( pf12
 | arg0, arg2) =
 let
@@ -101,12 +101,12 @@ where
 val
 (pf01 | arg1) =
 (
-  glens_lget<tmp1><arg0><arg1>(arg0))
+  glens_lget<nam1><arg0><arg1>(arg0))
 val
 ( (*void*) ) =
 (
   glens_lset
-  <tmp2><arg1><arg2>(pf12 | arg1, arg2))
+  <nam2><arg1><arg2>(pf12 | arg1, arg2))
 }(*where*)//end-of-[glens_lset<glens$2comp>]
 //
 (* ****** ****** *)

@@ -89,7 +89,8 @@ let
 ) where
 {
 //
-val name =
+val
+name =
 symbl_get_name(xsym)
 //
 #impltmp
@@ -98,9 +99,13 @@ let
 val c0 =
 (
 case+ c0 of
-| '$' => '_' | _ => c0)
-in
-  char_fprint(c0, filr) end
+|
+'$' => '_'
+|
+'\'' => '_' | _ => c0)
+in//let
+(
+  char_fprint(c0, filr)) end
 }
 end // end of [xsympy1(filr,xsym)]
 //
@@ -147,17 +152,22 @@ case+
 xopt of
 | ~
 optn_vt_nil
- ( (*0*) ) => f0_none(dcst)
+ ( (*0*) ) =>
+(
+f0_none(dcst))
 | ~
 optn_vt_cons
  (  xnam  ) =>
 (
 case+ xnam of
 |X2NAMnone
- ( (*0*) ) => f0_none(dcst)
+(  (*0*)  ) =>
+(
+f0_none(dcst))
 |X2NAMsome
- (  dexp  ) => f0_some(dcst, dexp)
-)
+(   dexp   ) =>
+(
+f0_some(dcst, dexp)))
 ) where
 {
 //
@@ -173,7 +183,7 @@ xsympy1
 (filr, name);
 strnfpr(filr, "_");
 fprint_loctn_as_stamp(filr, lctn)
-end//let//end-of-[f0_none]
+end//let//end-of-[f0_none(dcst)]
 //
 fun
 f0_some

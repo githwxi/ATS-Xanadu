@@ -54,21 +54,21 @@ in support of type-based meta-programming.
 //
 datatype
 glens$2comp
-( tmp1: t0
-, tmp2: t0
+( nam1: t0
+, nam2: t0
 , arg1: vt) = glens$2comp of ()
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<stmp:t0>
+<name:t0>
 <arg0:vt>
 <arg1:t0>
 glens_get
 (arg0: !arg0): arg1
 fun
-<stmp:t0>
+<name:t0>
 <arg0:vt>
 <arg1:t0>
 glens_fset
@@ -77,12 +77,12 @@ glens_fset
 (* ****** ****** *)
 //
 fun
-<stmp:t0>
+<name:t0>
 <arg0:vt>
 <arg1:vt>
 glens_cget(arg0: !arg0): arg1
 fun
-<stmp:t0>
+<name:t0>
 <arg0:vt>
 <arg1:vt>
 glens_setf
@@ -91,13 +91,13 @@ glens_setf
 (* ****** ****** *)
 //
 fun
-<stmp:t0>
+<name:t0>
 <arg0:vt>
 <arg1:t0>
 glens_lget
 (arg0: !arg0): (owed(arg1) | arg1)
 fun
-<stmp:t0>
+<name:t0>
 <arg0:vt>
 <arg1:vt>
 glens_lset(
