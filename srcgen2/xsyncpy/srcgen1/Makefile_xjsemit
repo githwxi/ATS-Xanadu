@@ -9,8 +9,8 @@ ECHO=echo
 MAKE=make
 NODE=node
 ########################################################################
+XASSETS=./../../../xassets
 SRCGEN2=./../../../srcgen2
-XATSJSD=./../../../srcgen2/xats2js
 ########################################################################
 ########################################################################
 all:: lib2xsyncpy
@@ -69,7 +69,6 @@ fpeltck.dats \
 fpeltck_dynexp.dats \
 fpeltck_decl00.dats \
 
-
 ########################################################################
 ########################################################################
 OUTSATS := \
@@ -119,11 +118,11 @@ $(OUT1DATS); \
 $(CAT) $(OUT1DATS) > lib/lib2xsyncpy.js
 ########################################################################
 ifndef XATS2JS_TCHECK00
-XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js
+XATSOPT_TCHECK00=$(XASSETS)/JS/xatsopt/xatsopt_tcheck00_ats2_opt1.js
 endif ## (ifeq($(XATS2JS_TCHECK00),""))
 ########################################################################
 ifndef XATS2JS_JSEMIT00
-XATS2JS_JSEMIT00=$(XATSJSD)/srcgen1/UTIL/xats2js_jsemit00_ats2.js
+XATS2JS_JSEMIT00=$(XASSETS)/JS/xats2js/xats2js_jsemit00_ats2_opt1.js
 endif ## (ifeq($(XATS2JS_JSEMIT00),""))
 ########################################################################
 ########################################################################

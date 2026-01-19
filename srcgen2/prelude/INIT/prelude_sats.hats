@@ -280,6 +280,8 @@ HX: homogeneous tuples
 *)
 #include
 "srcgen2/prelude/SATS/list000.sats"
+#include
+"srcgen2/prelude/SATS/lsrt000.sats"
 //
 (* ****** ****** *)
 //
