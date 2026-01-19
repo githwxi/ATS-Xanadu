@@ -273,7 +273,7 @@ in//let
 fprint!(out, "_", ntot, "_")
 end // end of [let]
 //
-} (* end of [auxnone] *)
+} (* end of [auxnone(out,hdc)] *)
 
 (* ****** ****** *)
 
@@ -306,7 +306,7 @@ val
 sym = hdc.sym()
 in
   fprint!(out, sym)
-end // end of [auxsome_nil]
+end // end of [auxsome_nil(...)]
 
 and
 auxsome_id0
@@ -319,7 +319,7 @@ val-
 G1Nid0(sym) = gnm
 in
   fprint!(out, sym)
-end // end of [auxsome_nil]
+end // end of [auxsome_nil(...)]
 
 and
 auxsome_none
@@ -343,7 +343,7 @@ sym = hdc.sym()
 in
   fprint!
   (out, sym, "_**EXNAME**_")
-end // end of [auxsome_rest]
+end // end of [auxsome_rest(...)]
 
 (* ****** ****** *)
 
@@ -678,23 +678,112 @@ T_FLT1(rep) =>
 end // end of [js1emit_lvflt(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 implement
 js1emit_lvstr
-(out, tok) =
+( out, tok ) =
 let
+//
 val
-tnd = tok.node()
-in
+tnd =
+(
+tok.node((*0*)))
+//
+in//let
 //
 case- tnd of 
 |
 T_STRING_closed
-  (rep) =>
-  fprint(out, rep) // HX: FIXME!!!
+  (  rep  ) => 
+(
+prlvstr(out, g1ofg0(rep)))
+(*
+|
+T_STRING_closed
+  (  rep  ) =>
+  fprint(out, rep)//HX: FIXME!!!
+*)
 //
-end // end of [js1emit_lvstr(...)]
+end where
+{
 //
+fun
+prlvstr
+{n:nat}
+(
+out:
+FILEref,
+rep:
+string(n)): void =
+(
+  loop1(0(*i0*))
+) where
+{
+//
+val sz =
+(
+sz2i(strlen(rep)))
+//
+fnx
+loop1
+(i0: natLte(n)): void =
+if
+(i0 >= sz)
+then ((*0*)) else
+let
+  val c0 = rep[i0]
+in//let
+//
+if // if1
+(c0 = '\\')
+then//then1
+(
+loop2(i0+1)
+)
+else//else1
+(
+if // if2
+(c0 = '\n')
+then(*then2*)
+(
+fprint(
+out, "\\n\\\n"); loop1(i0+1)
+)
+else(*else2*)
+(
+fprint(out, c0); loop1(i0+1)))
+//
+end(*let*)//end-of-[loop1( i0 ) ]
+//
+and
+loop2
+(i1: natLte(n)): void =
+if // if1
+(i1 >= sz)
+then//then1
+(
+fprint(out, '\\'))
+else//else1
+let
+  val c1 = rep[i1]
+//
+in//let
+//
+if // if2
+(c1 = '\n')
+then(*then2*)
+(
+  loop1(i1+1)) else//else2
+(
+fprint(out, '\\'); fprint(out, c1); loop1(i1+1))
+end(*let*)//end-of-[loop2( i1 ) ]
+//
+}(*where*)//end-of-[prlvstr( ... )]
+//
+}(*where*)//end-of-(js1emit_lvstr())
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 implement
@@ -703,9 +792,10 @@ js1emit_l1exn
 let
 val
 stm = exn0.stamp()
-in
-  fprint!(out, "exn", stm)
-end // end of [js1emit_l1exn(...)]
+in//let
+(
+  fprint!(out, "exn", stm))
+end//let//end-of-[js1emit_l1exn(...)]
 //
 (* ****** ****** *)
 //
@@ -747,9 +837,9 @@ fprint
 fprint(out, stm);
 fprint(out, "_"); fprint_xstamp(out))
 //
-end // end of [else]
+end//end of [else]
 //
-end // end of [js1emit_l1tmp(...)]
+end//let//end-of-[js1emit_l1tmp(...)]
 //
 (* ****** ****** *)
 
@@ -4774,5 +4864,8 @@ end where
 end // end of [local]
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_js1emit_dynexp.dats] *)
+(***********************************************************************)
