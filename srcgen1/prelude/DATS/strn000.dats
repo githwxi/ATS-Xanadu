@@ -470,12 +470,15 @@ val n0 = length(cs)
 //
 fun
 auxtail
-((*void*)): strx_vt(char) =
+((*0*)): strx_vt(char) =
 $llazy
 (
 strxcon_vt_cons
-(CNUL, auxtail())) where
-{  #define CNUL '\000'  }
+(
+CNUL, auxtail((*0*))))
+where{
+  #define CNUL '\000'  }
+//
 and
 auxmain
 (i0: nint): strx_vt(char) =
@@ -483,14 +486,16 @@ $llazy
 (
 if
 (i0 >= n0)
-then (!auxtail())
+then
+(
+! auxtail((*0*)))
 else
 let
   val ci = cs[i0]
   val i0 = suc(i0)
-in
+in//let
   strxcon_vt_cons(ci, auxmain(i0))
-end // end of [else]
+end // let // end of [else]
 )
 } (*where*) // end of [strn_strxize]
 //
