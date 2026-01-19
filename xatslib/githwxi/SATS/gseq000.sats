@@ -46,6 +46,11 @@ fun
 <x0:t0>
 gseq_2choose$strmize
   ( xs : xs ): strm_vt(@(x0, x0))
+fun
+<xs:t0>
+<x0:t0>
+gseq_3choose$strmize
+  ( xs : xs ): strm_vt(@(x0, x0, x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
