@@ -99,7 +99,8 @@ the_fxtyenv_pvsl02d'topmap$set(e0:fxtyenv): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#implfun
+#impltmp
+<(*tmp*)>
 the_fxtyenv_pvsl02d
   ((*void*)) =
 let
