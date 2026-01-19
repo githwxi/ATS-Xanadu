@@ -763,7 +763,7 @@ if // if1
 (i1 >= sz)
 then//then1
 (
-fprint(out, '\\'))
+fprint(out, '\0'))
 else//else1
 let
   val c1 = rep[i1]

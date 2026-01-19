@@ -74,6 +74,8 @@ $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 test00:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
 test00:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
+test00:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 ############
 # HX: stack overflow
@@ -205,6 +207,8 @@ $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 test08:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
 test08:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
+test08:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 test08:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
@@ -253,6 +257,8 @@ $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 testxx:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+testxx:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
 testxx:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 testxx:: ; \

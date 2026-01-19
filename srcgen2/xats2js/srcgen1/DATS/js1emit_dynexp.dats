@@ -1418,14 +1418,35 @@ strnfpr
 nindfpr(filr, nind);
 strnfpr
 (filr,"// I1CMP:return:");
-i1valjs1
-(filr,ival);fprintln(filr)) where
+i1valfpr
+(filr,ival);fprintln(filr))
+where
 {
+//
+fun
+i1valfpr
+( filr: FILR
+, ival: i1val): void =
+(
+case+
+ival.node() of
+|
+I1Vs00 _ =>
+strnfpr(
+filr, "I1Vs00(...)")
+|
+I1Vstr _ =>
+strnfpr(
+filr, "I1Vstr(...)")
+|
+_(*else*) =>
+(
+i1val_fprint(ival, filr)))
+//
 val () =
 (
   js1emit_i1letlst(env0, ilts)) }
-//
-)(* end-of-[I1CMPcons(ilts,ival)] *)
+)(*where*)//end-of-([I1CMPcons(ilts,ival)])
 //
 end(*let*)//end-of-[js1emit_i1cmp(env0,icmp)]
 //
