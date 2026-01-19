@@ -63,26 +63,275 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload "./../SATS/dynexp1.sats"
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
-#staload "./../SATS/staexp2.sats"
-#staload "./../SATS/statyp2.sats"
-#staload "./../SATS/dynexp2.sats"
-#staload "./../SATS/trans12.sats"
-#staload "./../SATS/tread12.sats"
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
+#typedef fxtyenv = topmap( fixty )
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#extern
 (*
 HX-2026-01-15:
 Thu Jan 15 02:21:12 PM EST 2026
 This one is idempotent.
 If loading is done, 1 is returned
 If no loading is done, 0 is returned.
+This is a good example showing how one
+can use templates to achieve a form
+of "code mobility", which is of great
+importance in programming.
 *)
+#extern
+fun<(*tmp*)>
+the_fxtyenv_pvsl02d((*0*)): sint(*0/1*)
+#extern
+fun<(*tmp*)>
+the_fxtyenv_pvsl02d'atext((*0*)): (strn)
+#extern
+fun<(*tmp*)>
+the_fxtyenv_pvsl02d'ntime((*0*)): (sint)
+#extern
+fun<(*tmp*)>
+the_fxtyenv_pvsl02d'ntime$set(n0:sint): void
+#extern
+fun<(*tmp*)>
+the_fxtyenv_pvsl02d'topmap$set(e0:fxtyenv): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+the_fxtyenv_pvsl02d
+  ((*void*)) =
+let
+//
+val n0 =
+the_fxtyenv_pvsl02d'ntime
+<  (*tmp*)  >( (*void*) )
+val () =
+the_fxtyenv_pvsl02d'ntime$set
+<  (*tmp*)  >(     n0+1     )
+//
+in//let
+//
+if
+(n0 > 0)
+then ( 0 )
+else f0_pvsl02d() end//let
+where // end-of-let(val(test)
+{
+//
 fun
-the_fxtyenv_pvsl02d((*void*)): sint(*0/1*)
+f0_pvsl02d
+((*void*)): sint =
+let
+//
+val
+dpar =
+d0parsed_from_atext
+(
+0(*sta*), fixity0_sats)
+where{
+val
+fixity0_sats =
+the_fxtyenv_pvsl02d'atext
+<  (*tmp*)  >(  (*void*)  ) }
+//
+val
+dpar = d1parsed_of_trans01(dpar)
+//
+val
+tenv = d1parsed_get_topenv(dpar)
+//
+(*
+val () =
+prerrsln("the_fxtyenv_pvsl02d:", tenv)
+*)
+//
+in//let
+(
+case+ tenv of
+|
+D1TOPENV
+( topenv ) => (  1  ) where
+{
+val ((*0*)) =
+the_fxtyenv_pvsl02d'topmap$set
+<  (*tmp*)  >(     topenv     ) } )
+end(*let*)//end-of-[f0_pvsl02d((*0*))]
+//
+}(*where*)//end-of-[the_fxtyenv_pvsl02d()]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-18:
+Sun Jan 18 05:36:02 PM EST 2026
+This one just returns the
+content of prelude/fixity0.sats
+This makes sense as few changes
+should be added to fixity0.sats!
+*)
+#impltmp
+the_fxtyenv_pvsl02d'atext<>() = "\
+(* ****** ****** *)
+(*
+The content of
+prelude/fixity0.sats
+*)
+(* ****** ****** *)
+//
+(*
+#infixl app of 70
+*)
+//
+(* ****** ****** *)
+//
+(*
+HX: ATS-specialty:
+*)
+//
+#prefix
+!  of 69 (*stadyn*)
+(*
+#prefix
+~  of 69 (*static*)
+*)
+#prefix
+&  of 69 (*stadyn*)
+#prefix
+?  of 69 (*static*)
+#prefix
+?! of 69 (*static*)
+//
+(* ****** ****** *)
+//
+#infixl + of 50 (*add*)
+#infixl - of 50 (*sub*)
+//
+#infixl * of 60 (*mul*)
+#infixl / of 60 (*div*)
+#infixl % of 60 (*mod*)
+//
+(* ****** ****** *)
+//
+(*
+HX-2015-08-04:
+FORTRAN-notation
+for exponentiation
+*)
+//
+#infixr ** of 61 (* exp *)
+//
+(* ****** ****** *)
+//
+(*
+HX: +1*2 = +(1*2)
+HX: -1*2 = -(1*2)
+*)
+#prefix + of +(+1) (*uplus*)
+#prefix - of -(+1) (*uminus*)
+//
+(* ****** ****** *)
+(*
+#infixl nadd nsub of 50
+#infixl nmul ndiv nmod of 60
+*)
+(* ****** ****** *)
+//
+#prefix ~ of 51 // lnot(*neg*)
+//
+(* ****** ****** *)
+//
+#infixl & of 46 // land(*mul*)
+#infixl ^ of 45 // lxor(*add*)
+(*
+HX-2023-12-30:
+BAR(|) is special;
+it is for separating
+proofs from programs!
+#infixl \| of 45 // lor2(*add*)
+*)
+//
+(*
+#infixl asrn of 41
+#infixl lsln lsrn of 41
+*)
+#infixl << of 41 // lsln
+#infixl >> of 41 // asrn
+#infixl >>> of 41 // lsrn
+//
+(* ****** ****** *)
+//
+#infixr @ of 40 (*flat*)
+#prefix @ of 69 (*uflat*)
+//
+#infixr :: of 41 (* cons *)
+#infixr ++ of 40 (* join *)
+//
+(* ****** ****** *)
+//
+#infix0 < <= of 40 (*lt/eq*)
+#infix0 > >= of 40 (*gt/eq*)
+#infix0 = != of 30 (*equal*)
+//
+#infix0 == !== of 30 (*eqref*)
+//
+(* ****** ****** *)
+(*
+#infix0
+=== !=== of 30 // HX: for JS?
+*)
+(* ****** ****** *)
+//
+#infixl || of 20
+#infixl && of ||(+1)
+//
+(* ****** ****** *)
+
+#infixr -> of 10 (*funarrow*)
+
+(* ****** ****** *)
+//
+#infix0 := of 0 // HX: assign
+#infix0 :=> of 0 // HX: exassign
+#infix0 :=: of 0 // HX: exchange
+//
+(*
+#infix0 <-> of 0 // HX: exchange?
+*)
+//
+(* ****** ****** *)
+
+(*
+#prefix ++ -- // HX: inc/dec
+#prefix !++ --! // HX: getinc/decget
+#infixr =++ --= // HX: setinc/decset
+*)
+
+(* ****** ****** *)
+
+(*
+#infix0
+:+= :-= :*= :/= // x:=x+a, x:=x-a, ...
+#infix0
+:=+ :=- :=* :=/ // x:=a+x, x:=a-x, ...
+*)
+
+(* ****** ****** *)
+//
+#infixl orelse of || // HX: short-cutting
+#infixl andalso of && // HX: short-cutting
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#prefix $raise of 0 // raising an exception
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+"// end-of-[the_fxtyenv_pvsl02d'atext()=fixity0.sats]
 //
 (* ****** ****** *)
 (* ****** ****** *)

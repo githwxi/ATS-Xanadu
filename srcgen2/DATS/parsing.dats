@@ -63,13 +63,18 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-18:
+[source]
+is just a string!
+*)
 #implfun
 trans00_from_atext
   (stadyn, source) =
 let
 //
-val knd = stadyn
-val txt = source
+val knd = (stadyn)
+val txt = (source)
 //
 val tks =
 atext_tokenize(txt)
@@ -91,13 +96,19 @@ end(*let*)//end-of(trans00_from_atext(...))
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-01-18:
+[source]
+is a (file-path)!
+*)
+//
 #implfun
 trans00_from_fpath
   (stadyn, source) =
 let
 //
-val knd = stadyn
-val fpx = source
+val knd = (stadyn)
+val fpx = (source)
 //
 val tks =
 fpath_tokenize(fpx)
@@ -122,7 +133,7 @@ end(*let*)//end-of(trans00_from_fpath(...))
 //
 #implfun
 d0parsed_from_atext
-(stadyn, source) =
+  (stadyn, source) =
 (
   trans00_from_atext( stadyn, source )
 ) where
@@ -138,7 +149,7 @@ prerrsln
 //
 #implfun
 d0parsed_from_fpath
-(stadyn, source) =
+  (stadyn, source) =
 (
   trans00_from_fpath( stadyn, source )
 ) where
