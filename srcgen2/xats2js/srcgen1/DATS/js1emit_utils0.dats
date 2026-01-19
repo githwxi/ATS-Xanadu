@@ -108,11 +108,39 @@ _(*DATS*)="./../DATS/js1emit.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 xsymjs1
 ( filr: FILR
 , xsym: symbl): void =
 symbl_fprint(xsym, filr)
+*)
+fun
+xsymjs1
+( filr: FILR
+, xsym: symbl): void =
+let
+(
+  strn_foritm(name)
+) where
+{
+//
+val
+name =
+symbl_get_name(xsym)
+//
+#impltmp
+foritm$work<char>(c0) =
+let
+val c0 =
+(
+case+ c0 of
+|'\'' => '$'| _ => c0)
+in//let
+(
+  char_fprint(c0, filr)) end
+}
+end // end of [xsymjs1(filr,xsym)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
