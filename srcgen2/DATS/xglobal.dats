@@ -265,7 +265,6 @@ end (*let*) // [the_fxtyenv_pvsfind]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #implfun
 the_fxtyenv_pvsl02d
   ((*void*)) =
@@ -275,11 +274,11 @@ where
 {
 //
 #impltmp
-the_fxtyenv_pvsl02d'ntime<>() = the_ntime[]
+$XT0.the_fxtyenv_pvsl02d'ntime<>() = the_ntime[]
 #impltmp
-the_fxtyenv_pvsl02d'ntime$set<>(n0) = (the_ntime[] := n0)
+$XT0.the_fxtyenv_pvsl02d'ntime$set<>(n0) = (the_ntime[] := n0)
 #impltmp
-the_fxtyenv_pvsl02d'topmap$set<>(e0) = (the_fxtyenv[] := e0)
+$XT0.the_fxtyenv_pvsl02d'topmap$set<>(e0) = (the_fxtyenv[] := e0)
 //
 }(*where*)//end-of-[the_fxtyenv_pvsl02d()]
 //
