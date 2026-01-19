@@ -51,6 +51,12 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#staload
+XT0(*0*)="./xglobal_ext000.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
@@ -175,12 +181,14 @@ the_fxtyenv_pvsl00d
   ((*void*)) =
 (
 the_fxtyenv_pvsload((*0*)))
+//
 #implfun
 the_fxtyenv_pvsl01d
   ((*void*)) =
 (
 the_fxtyenv_pvsload((*0*)))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -239,6 +247,7 @@ end (*let*) // end of [ f0_pvsload ]
 } (*where*) // [the_fxtyenv_pvsload()]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 the_fxtyenv_pvsfind
@@ -253,6 +262,28 @@ in//let
   topmap_search$opt(topmap, key)
 end (*let*) // [the_fxtyenv_pvsfind]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+#implfun
+the_fxtyenv_pvsl02d
+  ((*void*)) =
+(
+$XT0.the_fxtyenv_pvsl02d<>())
+where
+{
+//
+#impltmp
+the_fxtyenv_pvsl02d'ntime<>() = the_ntime[]
+#impltmp
+the_fxtyenv_pvsl02d'ntime$set<>(n0) = (the_ntime[] := n0)
+#impltmp
+the_fxtyenv_pvsl02d'topmap$set<>(e0) = (the_fxtyenv[] := e0)
+//
+}(*where*)//end-of-[the_fxtyenv_pvsl02d()]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 endloc//end-of-[the_fxtyenv_pvs(load|find)]
