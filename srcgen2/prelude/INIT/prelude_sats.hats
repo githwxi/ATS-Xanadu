@@ -243,6 +243,8 @@ For further program verification
 "srcgen2/prelude/SATS/axrf000.sats"
 #include
 "srcgen2/prelude/SATS/axsz000.sats"
+#include
+"srcgen2/prelude/SATS/asrt000.sats"
 //
 (* ****** ****** *)
 //
