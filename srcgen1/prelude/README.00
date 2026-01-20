@@ -1,0 +1,8 @@
+############################################################
+HX-2026-01-19:
+Mon Jan 19 11:30:28 PM EST 2026
+The files in [srcgen1/prelude] are for ATS3-srcgen1, which
+is the first compiler of ATS3 written in ATS2; it compiles
+ATS3 to JS.
+############################################################
+
