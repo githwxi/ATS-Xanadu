@@ -633,6 +633,7 @@ val VWTP = VWTP_symbl
 (* ****** ****** *)
 //
 (* ****** ****** *)
+//
 local
 //
 val
@@ -687,6 +688,7 @@ topmap_insert$any
 ( env0
 , VTBX, S2TEXsrt(the_sort2_vtbx))
 end (*loc*) // end-of-[local(sortenv)]
+//
 (* ****** ****** *)
 //
 end (*let*) // end-of-[f0_pvsinit(...)]

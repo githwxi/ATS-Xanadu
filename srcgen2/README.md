@@ -5,10 +5,11 @@
 My original plan was first implementing in ATS2 a compiler from ATS3
 to C and then using this compiler to bootstrap ATS3. Starting
 somewhere in the summer of 2018, I was able to implement in ATS2 a
-running compiler from ATS3 to JS by the end of 2020. Unfortunately, I
-was still not able to obtain a running compiler from ATS3 to C after
-spending the following year (2021), and I became quite anxious about
-the prospect of ATS3 going forward.
+running compiler from ATS3 to JS by the end of 2020, which I refer to
+as ATS3-srcgen1. Unfortunately, I was still not able to obtain a
+running compiler from ATS3 to C after spending the following year
+(2021), and I became quite anxious about the prospect of ATS3 going
+forward.
 
 Around May of 2022, I decided to go forward with a modified plan of
 bootstrapping ATS3: I should instead use the compiler from ATS3 to JS
@@ -18,11 +19,30 @@ barely adequate. After a long struggle of nearly three years in
 length, I finally succeeded in bootstrapping ATS3 on the 29th of March
 of 2025. This was a big exciting moment for me, which is comparable to
 the moment when I succeeded in bootstrapping ATS1 (ATS-Anairiats) in
-May of 2008, almost 17 years ago.
+May of 2008, almost 17 years ago!
 
-Unlike previous implementations of ATS, which were all of extreme
+In summary, we have two compilers for ATS3: ATS3-srcgen1 (written in
+ATS2) and ATS3-srcgen2 (written in ATS3).  Let ATS2-compiler refer to
+some compiler for ATS2. The following three lines state that
+ATS2-compiler compiles the source of ATS3-srcgen1 into some executable
+(ATS3-srcgen1-exe), which can then compile the source of ATS3-srcgen2 into
+another executable (ATS3-srcgen2-exe), which can finally compile the source
+of itself into itself:
+
+```
+ATS3-srcgen1-exe = ATS2-compiler.compile(ATS3-srcgen1-src)
+ATS3-srcgen2-exe = ATS3-srcgen1-exe.compile(ATS3-srcgen2-src)
+ATS3-srcgen2-exe = ATS3-srcgen2-exe.compile(ATS3-srcgen2-src)
+```
+
+The last equation indicates that ATS3 can be successfully bootstrapped
+(via JS as ATS3-srcgen2-exe is in JS).
+  
+Unlike the previous implementations of ATS, which were all of extreme
 experimental nature, I could finally afford some luxury to actually
-think, sometimes, in depth about the structure of ATS3-Xanadu/srcgen2.
+spend considerably lengthy time thinking, sometimes, in depth about
+the structure of the ATS3-srcgen2 compiler (which resides inside the
+directory [ATS3-Xanadu/srcgen2](./.)).
 
 ## The structure of ATS3-Xanadu/srcgen2
 
