@@ -37,7 +37,7 @@ ATS3-srcgen2-exe = ATS3-srcgen2-exe.compile(ATS3-srcgen2-src)
 
 The last equation indicates that ATS3 can be successfully bootstrapped
 (via JS as ATS3-srcgen2-exe is in JS).
-  
+
 Unlike the previous implementations of ATS, which were all of extreme
 experimental nature, I could finally afford some luxury to actually
 spend considerably lengthy time thinking, sometimes, in depth about
@@ -65,8 +65,8 @@ daunting or even a _mission impossible_ :)
 
 The code for lexing (that is, lexical analysis) is manually written.
 Maybe it is okay for a small project to use a tool to generate code
-that does lexing. In this case, I wanted to write more code in ATS3 so as
-to better test its design.
+that does lexing. In this case, I also wanted to write more code in
+ATS3 so as to better test its design.
 
 When I started implementing my first "real" compiler for Dependent ML
 (DML) in 1997, I immediately _assumed_ that I should use a tool to
