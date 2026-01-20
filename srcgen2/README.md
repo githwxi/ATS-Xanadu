@@ -22,21 +22,26 @@ the moment when I succeeded in bootstrapping ATS1 (ATS-Anairiats) in
 May of 2008, almost 17 years ago!
 
 In summary, we have two compilers for ATS3: ATS3-srcgen1 (written in
-ATS2) and ATS3-srcgen2 (written in ATS3).  Let ATS2-compiler refer to
-some compiler for ATS2. The following three lines state that
-ATS2-compiler compiles the source of ATS3-srcgen1 into some executable
-(ATS3-srcgen1-exe), which can then compile the source of ATS3-srcgen2 into
-another executable (ATS3-srcgen2-exe), which can finally compile the source
-of itself into itself:
+ATS2) and ATS3-srcgen2 (written in ATS3). Let ATS2-compiler refer to
+some compiler for ATS2. The following four equations are very
+informative for understanding how bootstrapping ATS3 works:
 
 ```
-ATS3-srcgen1-exe = ATS2-compiler.compile(ATS3-srcgen1-src)
-ATS3-srcgen2-exe = ATS3-srcgen1-exe.compile(ATS3-srcgen2-src)
-ATS3-srcgen2-exe = ATS3-srcgen2-exe.compile(ATS3-srcgen2-src)
+ATS3-srcgen1-exe1 = ATS2-compiler.compile(ATS3-srcgen1-src)
+ATS3-srcgen2-exe2 = ATS3-srcgen1-exe1.compile(ATS3-srcgen2-src)
+ATS3-srcgen2-exe3 = ATS3-srcgen2-exe2.compile(ATS3-srcgen2-src)
+ATS3-srcgen2-exe3 = ATS3-srcgen2-exe3.compile(ATS3-srcgen2-src)
 ```
+
+ATS2-compiler compiles the source of ATS3-srcgen1 into some executable
+(ATS3-srcgen1-exe1), which can then compile the source of ATS3-srcgen2
+into another executable (ATS3-srcgen2-exe2), which can then compile
+the source of ATS3-srcgen2 into another executable
+(ATS3-srcgen2-exe3), which can finally compile the source of itself
+into itself:
 
 The last equation indicates that ATS3 can be successfully bootstrapped
-(via JS as ATS3-srcgen2-exe is in JS).
+(via JS as ATS3-srcgen2-exe3 is in JS).
 
 Unlike the previous implementations of ATS, which were all of extreme
 experimental nature, I could finally afford some luxury to actually
