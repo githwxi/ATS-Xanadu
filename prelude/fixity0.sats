@@ -27,29 +27,54 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
+(*
+Author: Hongwei Xi
+Authoremail: gmhwxiATgmailDOTcom
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Authoremail: gmhwxiATgmailDOTcom
-//
-// This one was
-// there at the very beginning of ATS
+(*
+(* ****** ****** *)
+HX: Some time in 2018
+This one was already part
+of ATS at the very beginning!
+(* ****** ****** *)
+The declarations here should
+not be modified unless there
+are HIGHLY COMPELLING reasons.
+(* ****** ****** *)
+HX-2026-01-19:
+Mon Jan 19 10:31:03 PM EST 2026
+There is a "FROZEN" version for
+bootstrapping ATS3. Plz see the
+following files for more details:
+[srcgen2/DATS/xglobal.dats]
+[srcgen2/DATSxglobal_ext000.dats]
+(* ****** ****** *)
+*)
 //
 (* ****** ****** *)
 //
 (*
 HX-2018-10:
-fixity declarations
+Some flags for debugging:
+#define VERBOSE_FIXITY0 0
+#define VERBOSE_PRELUDE 0
 #include "prelude/xparam.hats"
 *)
 //
 (* ****** ****** *)
 //
+(*
 #if
 VERBOSE_FIXITY0
 #then
 #print \
 "Loading [fixity.sats] starts!\n"
 #endif // end of [VERBOSE_FIXITY0]
+*)
 //
 (* ****** ****** *)
 //
@@ -209,15 +234,17 @@ ignoret of 0 // ignoring a funcall return
 *)
 (* ****** ****** *)
 //
+(*
 #if
 VERBOSE_FIXITY0
 #then
 #print \
 "Loading [fixity.sats] is done!\n"
 #endif // end of [VERBOSE_FIXITY0]
+*)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 //
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_fixity0.sats] *)
