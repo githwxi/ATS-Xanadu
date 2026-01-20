@@ -5,13 +5,16 @@ The files in [srcgen2/prelude] are for ATS3-srcgen2, which
 is the first compiler of ATS3 written in ATS3; it compiles
 ATS3 to JS.
 ############################################################
-The following equations show how ATS3 can be bootstrapped:
-ATS3-srcgen1-exe = ATS2-compiler.compile(ATS3-srcgen1-src)
-ATS3-srcgen2-exe = ATS3-srcgen1-exe.compile(ATS3-srcgen2-src)
-ATS3-srcgen2-exe = ATS3-srcgen2-exe.compile(ATS3-srcgen2-src)
+The following equations show how bootstrapping ATS3 works:
+ATS3-srcgen1-exe1 = ATS2-compiler.compile(ATS3-srcgen1-src)
+ATS3-srcgen2-exe2 = ATS3-srcgen1-exe1.compile(ATS3-srcgen2-src)
+ATS3-srcgen2-exe3 = ATS3-srcgen2-exe2.compile(ATS3-srcgen2-src)
+ATS3-srcgen2-exe3 = ATS3-srcgen2-exe3.compile(ATS3-srcgen2-src)
 ############################################################
 The files in [srcgen2/prelude] are either from [prelude] or
 [srcgen1/prelude]; the latter contains prelude-files for some
-legacy stuff.
+legacy stuff, which are often needed for working on ATS3 compiler
+stuff. For general-purpose programming, the prelude-files should
+only be loaded from [prelude].
 ############################################################
 
