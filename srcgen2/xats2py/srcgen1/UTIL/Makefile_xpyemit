@@ -70,6 +70,12 @@ $(XATSPYD)/srcgen1/lib/lib2xats2py.py | $(CAT) - >> $@_ats3.py && \
 $(NODE) \
   --stack-size=8192 $(XATS2PY_PYEMIT00) xats2py_pyemit01.dats >> $@_ats3.py
 #
+xats2py_pyemit00_opt0: ; \
+$(SED) '/^[ ]*##/d' xats2py_pyemit00_ats3.py > xats2py_pyemit00_ats3_opt0.py
+#
+xats2py_pyemit01_opt0: ; \
+$(SED) '/^[ ]*##/d' xats2py_pyemit01_ats3.py > xats2py_pyemit01_ats3_opt0.py
+#
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
