@@ -69,6 +69,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 test00:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
 test00:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
+test00:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 ############
 # HX-2025-02-16:
@@ -87,6 +89,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 test01:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
 test01:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
+test01:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 ############
 test01:: \
@@ -98,6 +102,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test02:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test02:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
 test02:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 ############
@@ -111,6 +117,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 test03:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
 test03:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
+test03:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 ############
 test03:: \
@@ -122,6 +130,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test04:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test04:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
 test04:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 ############
@@ -148,6 +158,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test06:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test06:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
 test06:: ; \
 $(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 ############
