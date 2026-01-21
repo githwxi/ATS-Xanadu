@@ -43,9 +43,9 @@ prints("yszs = ", appends(ys, zs), '\n')
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val x2s = list_c2hoose_lstrm(xs)
+val x2s = list_2choose_lstrm(xs)
 val ( ) = print1s("x2s = ", listize0(x2s), "\n")
-val x3s = list_c3hoose_lstrm(xs)
+val x3s = list_3choose_lstrm(xs)
 val ( ) = print1s("x3s = ", listize0(x3s), "\n")
 //
 (* ****** ****** *)
