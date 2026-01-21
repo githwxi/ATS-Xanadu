@@ -251,7 +251,7 @@ HX-2023-12-30:
 BAR(|) is special;
 it is for separating
 proofs from programs!
-#infixl \| of 45 // lor2(*add*)
+#infixl | of 45 // lor2(*add*)
 *)
 //
 (*

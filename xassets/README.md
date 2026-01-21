@@ -3,10 +3,10 @@
 This directory primarily contains some pre-built "assets" (e.g.,
 compilers with accompanying files). One can use such assets, for
 instance, to turn ATS3 source code into a form (such as JS code, PY
-code, etc.) that can be interpreted or executed. Mostly, the
-assets stored here are for the purpose of developing ATS3. For
-someone who is interested in using ATS3 as a programming language,
-please visit XATSHOME.
+code, etc.) that can be interpreted, compiled, or executed. Mostly,
+the assets stored here are intended for the purpose of further
+developing ATS3. For someone who is interested in using ATS3 as a
+programming language, please visit XATSHOME.
 
 ## XATS2JS
 
