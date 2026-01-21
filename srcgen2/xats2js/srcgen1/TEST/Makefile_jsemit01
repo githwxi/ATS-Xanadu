@@ -1,0 +1,275 @@
+########################################################################
+########################################################################
+# Makefile for JS-emission
+########################################################################
+########################################################################
+CAT=cat
+ECHO=echo
+PRINTF=printf
+########################################################################
+BUN=bun
+QJS=qjs
+NODE=node
+########################################################################
+########################################################################
+all::
+########################################################################
+all:: test00
+all:: test01
+all:: test02
+all:: test03
+all:: test04
+all:: test05
+all:: test06
+all:: test07
+all:: test08
+all:: test09
+all:: test10
+########################################################################
+########################################################################
+testall::
+########################################################################
+testall:: \
+test00; $(NODE) OUTS/$<_out.js
+testall:: \
+test01; $(NODE) OUTS/$<_out.js
+testall:: \
+test02; $(NODE) OUTS/$<_out.js
+testall:: \
+test03; $(NODE) OUTS/$<_out.js
+testall:: \
+test04; $(NODE) OUTS/$<_out.js
+testall:: \
+test05; $(NODE) OUTS/$<_out.js
+testall:: \
+test06; $(NODE) OUTS/$<_out.js
+testall:: \
+test07; $(NODE) OUTS/$<_out.js
+testall:: \
+test08; $(NODE) OUTS/$<_out.js
+testall:: \
+test09; $(NODE) OUTS/$<_out.js
+testall:: \
+test10; $(NODE) OUTS/$<_out.js
+########################################################################
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/test??_out.js
+cleanall:: ; rm -f OUTS/test??_out?.js
+########################################################################
+########################################################################
+XATS2JS_SRCGENX=\
+$(XATSHOME)/srcgen2/xats2js/srcgenx
+XATS2JS_XSHARED=\
+$(XATSHOME)/srcgen2/xats2js/srcgenx/xshared/runtime
+########################################################################
+XATS2JS_JSEMIT01=./../UTIL/xats2js_jsemit01_ats2.js
+XATS2JS_JSEMIT01=./../UTIL/xats2js_jsemit01_ats3.js
+########################################################################
+########################################################################
+test00:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test00:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test00:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
+test00:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+############
+# HX: stack overflow
+# test00:: \
+# test00_xats2js.dats; \
+# $(BUN) run $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+############
+test00:: \
+test00_xats2js.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+############
+test00:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level SIMPLE --js=OUTS/$@_out.js --js_output_file=OUTS/$@_out1.js
+############
+test00:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level ADVANCED --js=OUTS/$@_out.js --js_output_file=OUTS/$@_out2.js
+########################################################################
+########################################################################
+test01:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test01:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test01:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+############
+# HX-2025-04-11: The generated JS code can also be run with QJS!
+############
+test01:: \
+test01_xats2js.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+########################################################################
+test02:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test02:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test02:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+test02:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
+############
+test02:: \
+test02_xats2js.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+########################################################################
+test03:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test03:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test03:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+test03:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
+############
+test03:: \
+test03_xats2js.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+########################################################################
+test04:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test04:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test04:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+test04:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
+############
+test04:: \
+test04_xats2js.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+########################################################################
+test05:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test05:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test05:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+test05:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
+############
+test05:: \
+test05_xats2js.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+########################################################################
+test06:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test06:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test06:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+test06:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
+############
+test06:: \
+test06_xats2js.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+########################################################################
+test07:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test07:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test07:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+test07:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
+############
+test07:: \
+test07_xats2js.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+########################################################################
+test08:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test08:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test08:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
+test08:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+test08:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
+test08:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
+############
+test08:: \
+test08_xats2js.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+########################################################################
+test09:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test09:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test09:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+test09:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
+test09:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
+############
+test09:: \
+test09_xats2js.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+test10:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test10:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test10:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+test10:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
+test10:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
+############
+test10:: \
+test10_xats2js.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+testxx:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+testxx:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+testxx:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
+testxx:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+testxx:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
+testxx:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
+############
+testxx:: \
+testxx_mydebug.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+########################################################################
+###################### end of [Makefile_jsemit01] ######################
+########################################################################
