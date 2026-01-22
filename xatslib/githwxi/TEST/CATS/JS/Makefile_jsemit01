@@ -55,6 +55,8 @@ $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
 test00:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
 test00:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
+test00:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
 ############
 test00:: \
@@ -75,6 +77,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 test01:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
 test01:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
+test01:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
 test01:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
@@ -93,6 +97,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test02:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
+test02:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
 test02:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
 test02:: ; \
@@ -113,6 +119,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 test03:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
 test03:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
+test03:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
 test03:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
@@ -132,6 +140,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 test04:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
 test04:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
+test04:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
 test04:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
@@ -150,6 +160,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test05:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
+test05:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
 test05:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
 test05:: ; \
@@ -174,6 +186,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test06:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
+test06:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
 test06:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
 test06:: ; \
@@ -201,6 +215,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 test07:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
 test07:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
+test07:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
 test07:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
@@ -223,6 +239,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test08:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
+test08:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
 test08:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
 test08:: ; \
@@ -251,6 +269,8 @@ printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test99:: ; \
 $(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
+test99:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
 test99:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
 test99:: ; \
