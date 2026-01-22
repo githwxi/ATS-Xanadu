@@ -85,20 +85,23 @@ gseqn_cons
 (x0:x0, xs:xs(ln)): xs(ln+1)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:
 i0->t0>
 <x0:t0>
 <ln:i0>
-gseqn_nilq(xs(ln)): bool(ln=0)
+gseqn_nilq
+ (xs: xs(ln)): bool(ln=0)
 //
 fun
 <xs:
 i0->t0>
 <x0:t0>
 <ln:i0>
-gseqn_consq(xs(ln)): bool(ln>0)
+gseqn_consq
+  (xs: xs(ln)): bool(ln>0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -151,7 +154,8 @@ i0->t0>
 <y0:vt>
 <ln:i0>
 gseqn_map_llist
-  (xs:xs(ln)): llist_vt(y0,ln)
+  (xs:xs(ln)): list_vt(y0,ln)
+//
 fun
 <xs:
 i0->t0>
@@ -159,9 +163,8 @@ i0->t0>
 <y0:vt>
 <ln:i0>
 gseqn_map_rllist
-  (xs:xs(ln)): llist_vt(y0,ln)
+  (xs:xs(ln)): list_vt(y0,ln)
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -182,6 +185,28 @@ i0->t0>
 gseqn_map_rllist$f1un
 ( xs: xs(ln)
 , fopr: (nlt(ln), x0) -> y0): list_vt(y0,ln)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
+<y0:vt>
+<ln:i0>
+gseqn_map_lstrq
+  (xs:xs(ln)): strq_vt(y0,ln)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
+<y0:vt>
+<ln:i0>
+gseqn_map_lstrq$f1un
+( xs: xs(ln)
+, fopr: (nlt(ln), x0) -> y0): strq_vt(y0,ln)
 //
 (* ****** ****** *)
 (* ****** ****** *)
