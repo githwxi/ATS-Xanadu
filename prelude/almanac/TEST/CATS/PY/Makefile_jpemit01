@@ -25,11 +25,11 @@ testall:: test00; $(PYTHON) OUTS/$<_out.py
 testall:: test01; $(PYTHON) OUTS/$<_out.py
 ########################################################################
 ########################################################################
-SRCGEN2_XSHARED=\
+XATS2PY_RUNTIME=\
 $(MYROOT)/srcgen2/xats2py/srcgenx/xshared/runtime
-SRCGEN2_XATS2PY=\
+XATS2PY_PYEMIT01=\
 $(MYROOT)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_ats2.js
-SRCGEN2_XATS2PY=\
+XATS2PY_PYEMIT01=\
 $(MYROOT)/srcgen2/xats2py/srcgenx/UTIL/xats2py_pyemit01_ats3.js
 ########################################################################
 ########################################################################
@@ -37,25 +37,28 @@ test00:: ; \
 printf "## %s\n" "`date`" > OUTS/$@_out.py
 ############
 test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
+$(CAT) $(XATS2PY_RUNTIME)/xats2py_py1emit.py >> OUTS/$@_out.py
 test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
+$(CAT) $(XATS2PY_RUNTIME)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test00:: \
 test00_pre2026.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
+$(NODE) --stack-size=8192 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
 ########################################################################
 test01:: ; \
 printf "## %s\n" "`date`" > OUTS/$@_out.py
 ############
 test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
+$(CAT) $(XATS2PY_RUNTIME)/xats2py_py1emit.py >> OUTS/$@_out.py
 test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
+$(CAT) $(XATS2PY_RUNTIME)/srcgen2_precats.py >> OUTS/$@_out.py
+test01:: ; \
+$(CAT) $(XATS2PY_RUNTIME)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test01:: \
 test01_pre2026.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2PY) $< >> OUTS/$@_out.py
+$(NODE) --stack-size=8192 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
 ########################################################################
 ########################################################################
-##################### end of [Makefile_pyemit01] #######################
+##################### end of [Makefile_jpemit01] #######################
+########################################################################
