@@ -26,11 +26,11 @@ testall:: test00; $(NODE) OUTS/$<_out.js
 testall:: test01; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
-SRCGEN2_XSHARED=\
+XATS2JS_RUNTIME=\
 $(MYROOT)/srcgen2/xats2js/srcgenx/xshared/runtime
-SRCGEN2_XATS2JS=\
+XATS2JS_JSEMIT01=\
 $(MYROOT)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit01_ats2.js
-SRCGEN2_XATS2JS=\
+XATS2JS_JSEMIT01=\
 $(MYROOT)/srcgen2/xats2js/srcgenx/UTIL/xats2js_jsemit01_ats3.js
 ########################################################################
 ########################################################################
@@ -38,24 +38,27 @@ test00:: ; \
 printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+$(CAT) $(XATS2JS_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
 test00:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+$(CAT) $(XATS2JS_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
 ############
 test00:: \
 test00_pre2026.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 test01:: ; \
 printf "// %s\n" "`date`" > OUTS/$@_out.js
 ############
 test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+$(CAT) $(XATS2JS_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
 test01:: ; \
-$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+$(CAT) $(XATS2JS_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
+test01:: ; \
+$(CAT) $(XATS2JS_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
 ############
 test01:: \
 test01_pre2026.dats; \
-$(NODE) --stack-size=8192 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################
+########################################################################

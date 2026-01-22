@@ -64,6 +64,8 @@ val xs = list(range(0, 10))
 val () = printsln("list(range(0, 10)) = ", xs)
 val xs = list_vt(range(0, 10))
 val () = print1s("list_vt(range(0, 10)) = ", xs, "\n")
+val xs = strm_vt(range(0, 1000000))
+val () = print0s("strm_vt(range(0, 1000000)) = ", xs, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
