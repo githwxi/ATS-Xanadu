@@ -44,14 +44,19 @@ Authoremail: gmhwxiATgmailDOTcom
 (*
 HX-2024-08-10:
 This should probably be
-replace later with a more
+replaced later with a more
 efficient version
 Sat 10 Aug 2024 07:34:46 PM EDT
 *)
 #impltmp
 { x0:t0 }
-g_cmp<list(x0)> =
-gseq_cmp<list(x0)><x0>(*void*)
+g_cmp<list(x0)>(*xs,ys*) =
+gseq_cmp<list(x0)><x0>(*...*)
+//
+#impltmp
+{ x0:t0 }
+g_equal<list(x0)>(*xs,ys*) =
+gseq_equal<list(x0)><x0>(*...*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -92,9 +97,9 @@ then auxloop(xs, ys) else false)))
 , y0:t0 }
 gseq_z2forall
 <list(x0)><x0>
-<list(y0)><y0> = list_z2forall<x0><y0>
+<list(y0)><y0> =
+list_z2forall< x0 >< y0 >(*xs,ys*)
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -127,7 +132,8 @@ case+ ys of
 if
 z2iforall$test
 <x0><y0>(i0, x1, y1)
-then auxloop(i0+1,xs,ys) else false)))
+then
+auxloop(i0+1, xs, ys) else false)))
 }(*where*)//end-of-[list_z2iforall(xs,ys)]
 //
 #impltmp
@@ -135,7 +141,133 @@ then auxloop(i0+1,xs,ys) else false)))
 , y0:t0 }
 gseq_z2iforall
 <list(x0)><x0>
-<list(y0)><y0> = list_z2iforall<x0><y0>
+<list(y0)><y0> =
+list_z2iforall< x0 >< y0 >(*xs,ys*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-22:
+Thu Jan 22 08:13:48 AM EST 2026
+*)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+list_z2forcmp
+  ( xs, ys ) =
+(
+  auxloop(xs, ys)) where
+{
+fun
+auxloop
+( xs
+: list(x0)
+, ys
+: list(y0)): sint =
+(
+case+ xs of
+//
+|list_nil
+( (*0*) ) =>
+(
+case+ ys of
+|list_nil() => (0)
+|list_cons _ => (-1))
+//
+|list_cons
+( x1, xs ) =>
+(
+case+ ys of
+|
+list_nil() => (1)
+|
+list_cons(y1, ys) =>
+let
+//
+val sgn =
+z2forcmp$tcmp<x0><y0>(x1, y1)
+//
+in//let
+(
+if // if
+(sgn != 0)
+then sgn else auxloop(xs, ys)) end)
+//
+)(*case+*)//end-of-[auxloop(xs, ys)]
+//
+}(*where*)//end-of-[list_z2forcmp(xs,ys)]
+//
+#impltmp
+{ x0:t0
+, y0:t0 }
+gseq_z2forcmp
+<list(x0)><x0>
+<list(y0)><y0> =
+list_z2forcmp< x0 >< y0 >(*xs, ys*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+list_z2iforcmp
+  ( xs, ys ) =
+(
+auxloop
+(0(*i0*), xs, ys)) where
+{
+fun
+auxloop
+( i0: ni
+, xs
+: list(x0)
+, ys
+: list(y0)): sint =
+(
+case+ xs of
+//
+|list_nil
+( (*0*) ) =>
+(
+case+ ys of
+|list_nil() => (0)
+|list_cons _ => (-1))
+//
+|list_cons
+( x1, xs ) =>
+(
+case+ ys of
+|
+list_nil() => (1)
+|
+list_cons(y1, ys) =>
+let
+//
+val sgn =
+(
+z2iforcmp$tcmp
+<  x0  ><  y0  >(i0,x1,y1))
+//
+in//let
+(
+if // if
+(sgn != 0)
+then (sgn)
+else auxloop(i0+1, xs, ys)) end)
+//
+)(*case+*)//end-of-[auxloop(i0,xs,ys)]
+//
+}(*where*)//end-of-[list_z2iforcmp(xs,ys)]
+//
+#impltmp
+{ x0:t0
+, y0:t0 }
+gseq_z2iforcmp
+<list(x0)><x0>
+<list(y0)><y0> =
+list_z2iforcmp< x0 >< y0 >(*xs, ys*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
