@@ -173,7 +173,7 @@ i0->t0>
 <y0:t0>
 <ln:i0>
 gseqn_map_list
-  (xs:xs(ln)): list_vt(y0,ln)
+  (xs:xs(ln)): list(y0,ln)
 fun
 <xs:
 i0->t0>
@@ -181,7 +181,7 @@ i0->t0>
 <y0:t0>
 <ln:i0>
 gseqn_map_rlist
-  (xs:xs(ln)): list_vt(y0,ln)
+  (xs:xs(ln)): list(y0,ln)
 //
 (* ****** ****** *)
 //
