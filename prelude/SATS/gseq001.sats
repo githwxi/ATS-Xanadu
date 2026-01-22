@@ -420,6 +420,23 @@ gseq_irforitm(xs: xs): void
 #symload irforitm with gseq_irforitm of 0100
 *)
 //
+(* ****** ****** *)
+//
+#typedef
+gseq_foritm
+(xs:t0, x0:t0) = (xs) -> void
+#typedef
+gseq_rforitm
+(xs:t0, x0:t0) = (xs) -> void
+#typedef
+gseq_iforitm
+(xs:t0, x0:t0) = (xs) -> void
+#typedef
+gseq_irforitm
+(xs:t0, x0:t0) = (xs) -> void
+//
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>

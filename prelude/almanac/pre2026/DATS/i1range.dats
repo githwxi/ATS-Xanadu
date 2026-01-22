@@ -106,7 +106,7 @@ gseq_length
 //
 #impltmp
 <(*tmp*)>
-i1rangelength
+i1range_length
 (    range    ) =
 (
 if
@@ -197,6 +197,85 @@ auxloop
 (lb, ub-1) else true) else false)
 //
 }(*where*)//endof(i1range_rforall<>(...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+gasq_foritm
+<i1range><sint> = i1range_foritm<>
+#impltmp
+gseq_foritm
+<i1range><sint> = i1range_foritm<>
+//
+#impltmp
+<(*tmp*)>
+i1range_foritm
+(    range    ) =
+(
+  auxloop(lb, ub)) where
+{
+//
+val
+(lb, ub) = i1range_decd(range)
+//
+fun
+auxloop
+( lb: si
+, ub: si): void =
+if
+(lb >= ub)
+then ((*0*)) else
+(
+auxloop(lb+1, ub))
+where
+{
+  val () = foritm$work<si>(lb) }
+//
+}(*where*)//endof(i1range_foritm<>(...))
+//
+(* ****** ****** *)
+//
+#impltmp
+gseq_rforitm
+<i1range><sint> = i1range_rforitm<>
+#impltmp
+gasq_rforitm
+<i1range><sint> = i1range_rforitm<>
+//
+#impltmp
+<(*tmp*)>
+i1range_rforitm
+(    range    ) =
+(
+if
+(lb < ub)
+then
+auxloop
+(lb, ub-1)else((*0*)))
+where
+{
+//
+val
+(lb, ub) =
+(
+  i1range_decd(range))
+//
+fun
+auxloop
+( lb: si
+, ub: si): void = // lb <= ub
+let
+val () =
+rforitm$work<si>(ub)
+in//let
+(
+if // if
+(lb < ub) then
+(auxloop(lb, ub-1)) else ((*0*)))
+end(*let*)//end-of-[auxloop(lb, ub)]
+//
+}(*where*)//endof(i1range_rforitm<>(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)

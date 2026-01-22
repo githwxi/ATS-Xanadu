@@ -74,7 +74,8 @@ i1range_decd(i1range): (si, si)
 //
 fun<>
 i1range_lb$get(i1range): sint
-fun i1range_ub$get(i1range): sint
+fun<>
+i1range_ub$get(i1range): sint
 //
 #symload lb with i1range_lb$get
 #symload ub with i1range_ub$get
@@ -108,6 +109,11 @@ fun<>
 i1range_forall: gseq_forall(i1range, si)
 fun<>
 i1range_rforall: gseq_rforall(i1range, si)
+//
+fun<>
+i1range_foritm: gseq_foritm(i1range, si)
+fun<>
+i1range_rforitm: gseq_rforitm(i1range, si)
 //
 fun<>
 i1range_strmize: gseq_strmize(i1range, si)
