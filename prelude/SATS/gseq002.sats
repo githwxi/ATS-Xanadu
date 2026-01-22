@@ -77,6 +77,11 @@ fun
 gseq_cmp
 (xs: xs, ys: xs): sint(*sign*)
 //
+fun
+<xs:t0>
+<x0:t0>
+gseq_equal(xs: xs, ys: xs): bool
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -481,6 +481,23 @@ where
 z2forcmp$tcmp<x0> = g_cmp<x0>
 }(*where*)//end-of-[gseq_cmp(xs,ys)]
 //
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_equal
+  (xs, ys) =
+(
+0 =
+gseq_cmp<xs><x0>(xs, ys))
+where{
+#impltmp
+z2forcmp$tcmp<x0>(x1, y1) =
+(
+if // if
+g_equal<x0>(x1, y1) then 0 else 1)
+}(*where*)//end-of-[gseq_equal(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -530,12 +547,12 @@ let
 val _ =
 gseq_z2forall
 <xs><x0><ys><y0>(xs, ys)
-end
+end//let
 ) where
 {
 #impltmp
 z2forall$test
-<x0><y0>(x0, y0) = true
+<x0><y0>(x0, y0) = (true)
 where
 { val () =
   z2foritm$work<x0><y0>(x0, y0) }
@@ -553,12 +570,12 @@ let
 val _ =
 gseq_z2rforall
 <xs><x0><ys><y0>(xs, ys)
-end
+end//let
 ) where
 {
 #impltmp
 z2rforall$test
-<x0><y0>(x0, y0) = true
+<x0><y0>(x0, y0) = (true)
 where
 { val () =
   z2rforitm$work<x0><y0>(x0, y0) }
@@ -578,12 +595,12 @@ let
 val _ =
 gseq_z2iforall
 <xs><x0><ys><y0>(xs, ys)
-end
+end//let
 ) where
 {
 #impltmp
 z2iforall$test
-<x0><y0>(i0, x0, y0) = true
+<x0><y0>(i0, x0, y0) = (true)
 where
 {
 val () =
@@ -602,12 +619,12 @@ let
 val _ =
 gseq_z2irforall
 <xs><x0><ys><y0>(xs, ys)
-end
+end//let
 ) where
 {
 #impltmp
 z2irforall$test
-<x0><y0>(i0, x0, y0) = true
+<x0><y0>(i0, x0, y0) = (true)
 where
 {
 val () =

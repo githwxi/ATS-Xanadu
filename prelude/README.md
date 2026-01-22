@@ -249,6 +249,19 @@ fun
 gseq_map_llist(xs: xs): list_vt(y0)
 ```
 
+Moreover, the elements in the list returned by `gseq_map_llist` are
+accumulated in the same order as they are produced.  There is also a
+variant of the name `gseq_map_rllist` that returns a list of elements
+in the reversed order as they are produced.
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_rllist(xs: xs): list_vt(y0)
+```
+
 ### Reversed Traversal
 
 There is a default or standard traversal associated with a given
@@ -282,6 +295,23 @@ gseq_rmap_ares(xs: xs): (ys)
 The naming convention we follow changes `map` into `rmap` to indicate
 that the (standard) sequence traversal (for `map`) is replaced with
 the reversed sequence traversal (for `rmap`).
+
+Like the case of `map`, the following variant indicates that the
+return value is represented as a linear list (given the type `list_vt`):
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_rmap_llist(xs: xs): list_vt(y0)
+```
+
+A natural question is whether `gseq_map_rllist` and `gseq_rmap_llist`
+are equivalent. No, they are not as the former does the left-to-right
+traversal while the latter does the right-to-left traversal; one can
+be replaced with the other only if no effects are generated during the
+traversal.
 
 ### Indexed Traversal
 
