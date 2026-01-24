@@ -204,25 +204,26 @@ list_vt_nil
 ( (*void*) ) => list_vt_nil()
 | ~
 list_vt_cons
-( nm1, nms ) => fcats_2(nms, nm1)
+( nm1, nms ) => f2cats(nms, nm1)
 and
-fcats_2
+f2cats
 ( nms: slst
 , acc: clst): clst =
 (
 case+ nms of
 | ~
 list_vt_nil
-((*void*)) => acc
+ ((*void*)) => (acc)
 | ~
 list_vt_cons
-(nm1, nms) =>
-fcats_2(nms, acc) where
+ (nm1, nms) =>
+f2cats(nms, acc) where
 {
-val acc = list_vt_cons(DS, acc)
-val acc = list_vt_append0(nm1, acc)
-}
-) (* case *) // end-of-( fcats_2 )
+val
+acc = list_vt_cons(DS, acc)
+val
+acc = list_vt_append0(nm1, acc) }
+) (*case+*) // end-of-(f2cats(...))
 //
 fun
 fmain
@@ -232,26 +233,28 @@ fmain
 (
 case+ !nms of
 | ~
-strmcon_vt_nil() => acc
+strmcon_vt_nil
+ ( (*void*) ) => acc
 | ~
-strmcon_vt_cons(nm1, nms) =>
+strmcon_vt_cons
+ ( nm1, nms ) =>
 (
-if
+if // if
 z2eq(nm1,CD)
-then
+then//then
 (
 free(nm1);
 fmain(nms, npd, acc))
-else
+else//else
 (
-if
+if // if2
 z2eq(nm1,PD)
-then
+then//then2
 (
 //
-if
+if // if3
 (npd > 0)
-then
+then//then3
 (
 free(nm1);
 fmain(nms, npd, acc)) where
@@ -260,7 +263,7 @@ val npd = npd - 1
 val-
 ~list_vt_cons(ac1, acc) = acc
 }
-else
+else//else3
 (
 fmain(nms, npd, acc)) where
 {
@@ -268,20 +271,19 @@ fmain(nms, npd, acc)) where
 // HX-2023-11-02
 val npd = npd + 1//HX:error!!!
 *)
-val acc = list_vt_cons(nm1, acc)
-}
+val
+acc = list_vt_cons(nm1, acc) }
 )
-else
+else//else2
 (
-  fmain(nms, npd, acc)
-) where
+fmain(nms, npd, acc)) where
 {
-val npd = npd + 1
-val acc = list_vt_cons(nm1, acc)
-}
+val npd = (npd + 1)
+val
+acc = list_vt_cons(nm1, acc) }
 )
-) (* end-of-(strmcon_vt_cons) *)
-) where
+)(*if*)//end(strmcon_vt_cons())
+) where // end-of-[ fmain(...) ]
 {
 fun
 z2eq
@@ -289,20 +291,25 @@ z2eq
 , x2: strn): bool =
 (
 gseq_z2cmp11
-<clst><cgtz>
-<strn><cgtz>(x1, x2) = 0) }//whr
-// (*where*) // end of [fmain(...)]
+< clst >< cgtz >
+< strn >< cgtz >( x1, x2 ) = 0 )
+}(*where*) // end-of-[fmain(...)]
 //
 val nms =
+(
 gseq_group_lstrm_llist
-< strn >< cgtz >( fpx ) where
+< strn >< cgtz >(   fpx   ))
+where
 {
 #impltmp
 group$test<cgtz>(ch) = (ch != DS) }
 //
 in//let
+//
 strn_make_llist
-(fcats(fmain(nms, 0, list_vt_nil((*0*)))))
+(
+fcats(fmain(nms, 0, list_vt_nil((*0*)))))
+//
 end (*let*) // end-of-[fpath_normize( fpx )]
 
 (* ****** ****** *)
