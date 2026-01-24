@@ -462,6 +462,43 @@ sortedq$lteq(x1: x0, x2: x0): bool
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-23:
+Fri Jan 23 09:39:08 PM EST 2026
+*)
+//
+//
+fun
+<x0:t0>
+drop$till$test(itm: x0): bool
+fun
+<x0:t0>
+rdrop$till$test(itm: x0): bool
+fun
+<x0:t0>
+idrop$till$test(pos: ni, itm: x0): bool
+fun
+<x0:t0>
+irdrop$till$test(pos: ni, itm: x0): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+take$when$test(itm: x0): bool
+fun
+<x0:t0>
+rtake$when$test(itm: x0): bool
+fun
+<x0:t0>
+itake$when$test(pos: ni, itm: x0): bool
+fun
+<x0:t0>
+irtake$when$test(pos: ni, itm: x0): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_gbas001.sats] *)
 (***********************************************************************)
