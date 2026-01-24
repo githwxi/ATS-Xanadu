@@ -17,17 +17,17 @@ Sat Jan 24 02:12:16 AM EST 2026
 #impltmp
 < x0:t0 >
 < y0:t0 >
-fmap_list(fopr) = (lam(xs) => xs.map(fopr))
+fopr_map$list(fopr) = (lam(xs) => xs.map(fopr))
 //
 #impltmp
 < x0:t0 >
 < y0:t0 >
-fmap_optn(fopr) = (lam(xs) => xs.map(fopr))
+fopr_map$optn(fopr) = (lam(xs) => xs.map(fopr))
 //
 #impltmp
 < x0:t0 >
 < y0:t0 >
-fmap_strm(fopr) = (lam(xs) => xs.map(fopr))
+fopr_map$strm(fopr) = (lam(xs) => xs.map(fopr))
 //
 (* ****** ****** *)
 (* ****** ****** *)
