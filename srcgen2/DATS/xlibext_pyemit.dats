@@ -94,7 +94,7 @@ sopt =
 XATSOPT_fpath_full$read
   ( fpx0 ) // HX: fpx0: fpath
 in//let
-if
+if // if
 stropt_nilq(sopt)
 then
 strm_vt_nil((*void*))
@@ -103,6 +103,16 @@ strn_strmize(stropt_unsome(sopt))
 end where
 {
 //
+(*
+HX-2026-01-24:
+Sat Jan 24 05:53:18 PM EST 2026
+This one is implemented
+inside the following file:
+[
+srcgen2/xats2py/srcgen1/\
+xshared/runtime/srcgen1_prelude.py
+]
+*)
 #extern
 fun
 XATSOPT_fpath_full$read
