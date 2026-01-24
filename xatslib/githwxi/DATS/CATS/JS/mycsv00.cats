@@ -54,7 +54,7 @@ XATS2JS_NODE_Papa = require('papaparse')
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_mycsv00$line_csv$parse$fwork
+XATS2JS_NODE_Papa_mycsv00$line_csv$parse$fwork
   (line, work)
 {
   try {

@@ -150,6 +150,8 @@ proofs from programs!
 #infixl \| of 45 // lor2(*add*)
 *)
 //
+(* ****** ****** *)
+//
 (*
 #infixl asrn of 41
 #infixl lsln lsrn of 41

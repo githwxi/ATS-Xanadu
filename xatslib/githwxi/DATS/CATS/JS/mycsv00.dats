@@ -28,14 +28,13 @@ XATS2JS_NODE_mycsv00$line_csv$parse$fwork
 {
 #extern
 fun
-XATS2JS_NODE_mycsv00$line_csv$parse$fwork
+XATS2JS_NODE_Papa_mycsv00$line_csv$parse$fwork
   (line: strn, work: a1sz(strn)->void): void = $extnam()
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_githwxi_DATS_CATS_JS_NODE_mycsv00.dats] *)
+(***********************************************************************)
