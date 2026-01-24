@@ -10,28 +10,32 @@ Sat Jan 24 02:12:16 AM EST 2026
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/fmap000.sats"
+//
+fun
+<x0:t0>
+<y0:t0>
+fmap_list
+(fopr: x0 -> y0): list(x0) -> list(y0)
+//
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+fmap_optn
+(fopr: x0 -> y0): optn(x0) -> optn(y0)
+//
 (* ****** ****** *)
 //
-#impltmp
-< x0:t0 >
-< y0:t0 >
-fmap_list(fopr) = (lam(xs) => xs.map(fopr))
-//
-#impltmp
-< x0:t0 >
-< y0:t0 >
-fmap_optn(fopr) = (lam(xs) => xs.map(fopr))
-//
-#impltmp
-< x0:t0 >
-< y0:t0 >
-fmap_strm(fopr) = (lam(xs) => xs.map(fopr))
+fun
+<x0:t0>
+<y0:t0>
+fmap_strm
+(fopr: x0 -> y0): strm(x0) -> strm(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_githwxi_DATS_fmap000.dats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_SATS_fmap000.sats] *)
 (***********************************************************************)
