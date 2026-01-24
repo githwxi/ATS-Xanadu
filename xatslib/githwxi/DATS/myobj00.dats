@@ -8,13 +8,6 @@ Sat 07 Sep 2024 08:37:22 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"xatslib\
-/DATS/CATS/JS/Hsmap00.dats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #abstbox
 hmap_tbox(a:t0)
 #typedef
