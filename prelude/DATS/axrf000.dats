@@ -190,6 +190,20 @@ $UN.gasq_lset$at$raw
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-24:
+[a1rf_length] is expected
+to be externally implemented!
+Sat Jan 24 11:16:00 AM EST 2026
+*)
+#impltmp
+{ x0:vt }
+gasq_length
+<a1rf(x0)><x0> = a1rf_length<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < x0:t0 >
 a1rf_get$at =
