@@ -109,13 +109,14 @@ $UN.p2tr_set<r0>(p0, optn_vt_cons(cs)))}end
 //
 #extern
 fun<> // HX: succ/fail: true/false
-myfil00$myfil_make$opt_stdout(fpath: strn): bool
+myfil00$fpath_stdout$output$opt(fpath: strn): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-myfil00$myfil_make$opt_stdout
+<(*tmp*)>
+myfil00$fpath_stdout$output$opt
   (fpath) =
 (
 //
@@ -140,7 +141,7 @@ where{
 ) where
 {
   val opt = myfil00$fpath_createWrite$opt(fpath)
-}(*where*)//end-of-[myfil00$myfil_make$opt_stdout(...)]
+}(*where*)//end-of-[myfil00$fpath_stdout$output$opt(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
