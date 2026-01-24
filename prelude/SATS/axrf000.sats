@@ -197,15 +197,29 @@ a1rf_make_nfun
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-24:
+This one is expected
+to be externally implemented!
+Sat Jan 24 11:12:55 AM EST 2026
+*)
+fun
+<a:t0>
+a1rf_length
+{n:n0}(A:a1rf(a,n)): sint(n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <a:t0>
 a1rf_get$at
-{n:nat}
+{n:n0}
 (A:a1rf(a,n), i:nintlt(n)): a
 fun
 <a:t0>
 a1rf_set$at
-{n:nat}
+{n:n0}
 (A:a1rf(a,n), i:nintlt(n), x:a): void
 //
 #symload [] with a1rf_get$at of 1000
@@ -218,12 +232,12 @@ a1rf_set$at
 fun
 <a:vt>
 a1rf_cget$at
-{n:nat}
+{n:n0}
 (A:a1rf(a,n), i:nintlt(n)): a
 fun
 <a:vt>
 a1rf_setf$at
-{n:nat}
+{n:n0}
 (A:a1rf(a,n), i:nintlt(n), x:a): void
 //
 #symload cget$at with a1rf_cget$at of 1000
@@ -234,13 +248,13 @@ a1rf_setf$at
 fun
 <a:vt>
 a1rf_lget$at
-{n:nat}
+{n:n0}
 ( A: a1rf(a,n)
 , i: nintlt(n)): (owed(a) | a)
 fun
 <a:vt>
 a1rf_lset$at
-{n:nat}
+{n:n0}
 (f: owed(a)
 |A: a1rf(a,n), i:nintlt(n), x:a): void
 //
