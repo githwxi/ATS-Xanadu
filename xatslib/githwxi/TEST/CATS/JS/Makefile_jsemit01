@@ -61,7 +61,7 @@ $(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
 ############
 test00:: \
 test00_githwxi.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ############
 test00:: ; \
 npx google-closure-compiler -W QUIET \
@@ -85,7 +85,7 @@ $(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
 ############
 test01:: \
 test01_range00.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ############
 test01:: ; \
 npx google-closure-compiler -W QUIET \
@@ -106,7 +106,7 @@ $(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
 ############
 test02:: \
 test02_qlist00.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ############
 test02:: ; \
 npx google-closure-compiler -W QUIET \
@@ -127,7 +127,7 @@ $(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
 ############
 test03:: \
 test03_gint000.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ############
 test03:: ; \
 npx google-closure-compiler -W QUIET \
@@ -148,7 +148,7 @@ $(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
 ############
 test04:: \
 test04_strn000.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ############
 test04:: ; \
 npx google-closure-compiler -W QUIET \
@@ -174,7 +174,7 @@ $(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/myfil00.cats >> OUTS/$@_out.js
 ############
 test05:: \
 test05_myfil00.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ############
 test05:: ; \
 npx google-closure-compiler -W QUIET \
@@ -202,7 +202,7 @@ $(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/myfil00.cats >> OUTS/$@_out.js
 ############
 test06:: \
 test06_mycsv00.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ############
 test06:: ; \
 npx google-closure-compiler -W QUIET \
@@ -227,7 +227,7 @@ $(CAT) $(XATSHOME)/xatslib/libcats/DATS/CATS/JS/NODE/gbas000.cats >> OUTS/$@_out
 ############
 test07:: \
 test07_myobj00.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ############
 test07_out1:: ; \
 npx google-closure-compiler -W QUIET \
@@ -257,7 +257,7 @@ $(CAT) $(XATSHOME)/xatslib/githwxi/DATS/CATS/JS/NODE/myfil00.cats >> OUTS/$@_out
 ############
 test08:: \
 test08_volctrl.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ############
 # test08:: ; \
 # npx google-closure-compiler -W QUIET \
@@ -280,7 +280,8 @@ test99:: ; \
 $(CAT) $(XATSHOME)/prelude/DATS/CATS/JS/NODE/node000.cats >> OUTS/$@_out.js
 ############
 test99:: test99_mydiary.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 ########################################################################
-###################### end of [Makefile_jsemit] ########################
+##################### end of [Makefile_jsemit01] #######################
+########################################################################

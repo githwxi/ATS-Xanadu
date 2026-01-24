@@ -75,6 +75,90 @@ a1sz_rforall$f1un
 #symload rforall with a1sz_rforall$f1un of 1000
 //
 (* ****** ****** *)
+//
+fun
+<a:vt>
+a1sz_iforall(A: a1sz(a)): bool
+fun
+<a:vt>
+a1sz_iforall$f2un
+(A: a1sz(a), test: (ni, !a) -> bool): bool
+//
+#symload iforall with a1sz_iforall of 1000
+#symload iforall with a1sz_iforall$f2un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1sz_irforall(A: a1sz(a)): bool
+fun
+<a:vt>
+a1sz_irforall$f2un
+(A: a1sz(a), test: (ni, !a) -> bool): bool
+//
+#symload irforall with a1sz_irforall of 1000
+#symload irforall with a1sz_irforall$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-24:
+Sat Jan 24 10:45:07 AM EST 2026
+*)
+//
+fun
+<a:vt>
+a1sz_foritm(A: a1sz(a)): void
+fun
+<a:vt>
+a1sz_foritm$f1un
+(A: a1sz(a), test: (!a) -> void): void
+//
+#symload foritm with a1sz_foritm of 1000
+#symload foritm with a1sz_foritm$f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1sz_rforitm(A: a1sz(a)): void
+fun
+<a:vt>
+a1sz_rforitm$f1un
+(A: a1sz(a), test: (!a) -> void): void
+//
+#symload rforitm with a1sz_rforitm of 1000
+#symload rforitm with a1sz_rforitm$f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1sz_iforitm(A: a1sz(a)): void
+fun
+<a:vt>
+a1sz_iforitm$f2un
+(A: a1sz(a), test: (ni, !a) -> void): void
+//
+#symload iforitm with a1sz_iforitm of 1000
+#symload iforitm with a1sz_iforitm$f2un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1sz_irforitm(A: a1sz(a)): void
+fun
+<a:vt>
+a1sz_irforitm$f2un
+(A: a1sz(a), test: (ni, !a) -> void): void
+//
+#symload irforitm with a1sz_irforitm of 1000
+#symload irforitm with a1sz_irforitm$f1un of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

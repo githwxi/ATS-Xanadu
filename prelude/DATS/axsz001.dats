@@ -65,7 +65,7 @@ gasq_strmize<a1sz(x0)><x0>(*void*)
 #impltmp
 { a: vt }
 g_forall<a1sz(a)> =
-gasq_forall<a1sz(a)><a>
+gasq_forall1<a1sz(a)><a>
 //
 #impltmp
 { a: vt }
@@ -87,7 +87,7 @@ a1sz_forall$f1un
 a1sz_forall<x0>(A)) where
 {
 #impltmp
-forall$test1<x0>(x0) = test(x0)
+forall$test1<x0> = test(*x0*)
 }(*where*)//end(a1sz_forall$f1un)
 //
 #impltmp
@@ -116,7 +116,7 @@ a1sz_rforall$f1un
 a1sz_rforall<x0>(A)) where
 {
 #impltmp
-rforall$test1<x0>(x0) = test(x0)
+rforall$test1<x0> = test(*x0*)
 }(*where*)//end(a1sz_rforall$f1un)
 //
 #impltmp
@@ -129,6 +129,186 @@ a1sz_rforall<x0>(A)) where
 {
 #impltmp
 rforall$test1<x0> = rforall$test<x0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+a1sz_iforall =
+gasq_iforall<a1sz(x0)><x0>
+#impltmp
+{ x0:vt }
+a1sz_iforall$f2un
+  (A, test) =
+(
+a1sz_iforall<x0>(A)) where
+{
+#impltmp
+iforall$test1<x0> = test(*i0,x0*)
+}(*where*)//end(a1sz_iforall$f1un)
+//
+#impltmp
+{ x0:t0 }
+gseq_iforall
+<a1sz(x0)><x0>
+  ( A ) =
+(
+a1sz_iforall<x0>(A)) where
+{
+#impltmp
+iforall$test1<x0> = iforall$test<x0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+a1sz_irforall =
+gasq_irforall<a1sz(x0)><x0>
+#impltmp
+{ x0:vt }
+a1sz_irforall$f2un
+  (A, test) =
+(
+a1sz_irforall<x0>(A)) where
+{
+#impltmp
+irforall$test1<x0> = test(*i0,x0*)
+}(*where*)//end(a1sz_irforall$f1un)
+//
+#impltmp
+{ x0:t0 }
+gseq_irforall
+<a1sz(x0)><x0>
+  ( A ) =
+(
+a1sz_irforall<x0>(A)) where
+{
+#impltmp
+irforall$test1<x0> = irforall$test<x0>
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-24:
+Sat Jan 24 10:45:07 AM EST 2026
+*)
+//
+#impltmp
+< x0:vt >
+a1sz_foritm =
+gasq_foritm<a1sz(x0)><x0>
+#impltmp
+< x0:vt >
+a1sz_foritm$f1un
+  (A, work) =
+(
+a1sz_foritm<x0>(A)) where
+{
+#impltmp
+foritm$work1<x0> = work(*x0*)
+}(*where*)//end(a1sz_foritm$f1un)
+//
+#impltmp
+{ x0:t0 }
+gseq_foritm
+<a1sz(x0)><x0>
+  ( A ) =
+(
+a1sz_foritm<x0>(A)) where
+{
+#impltmp
+foritm$work1<x0> = foritm$work<x0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+a1sz_rforitm =
+gasq_rforitm<a1sz(x0)><x0>
+#impltmp
+{ x0:vt }
+a1sz_rforitm$f1un
+  (A, work) =
+(
+a1sz_rforitm<x0>(A)) where
+{
+#impltmp
+rforitm$work1<x0> = work(*x0*)
+}(*where*)//end(a1sz_rforitm$f1un)
+//
+#impltmp
+{ x0:t0 }
+gseq_rforitm
+<a1sz(x0)><x0>
+  ( A ) =
+(
+a1sz_rforitm<x0>(A)) where
+{
+#impltmp
+rforitm$work1<x0> = rforitm$work<x0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+a1sz_iforitm =
+gasq_iforitm<a1sz(x0)><x0>
+#impltmp
+{ x0:vt }
+a1sz_iforitm$f2un
+  (A, work) =
+(
+a1sz_iforitm<x0>(A)) where
+{
+#impltmp
+iforitm$work1<x0> = work(*i0,x0*)
+}(*where*)//end(a1sz_iforitm$f1un)
+//
+#impltmp
+{ x0:t0 }
+gseq_iforitm
+<a1sz(x0)><x0>
+  ( A ) =
+(
+a1sz_iforitm<x0>(A)) where
+{
+#impltmp
+iforitm$work1<x0> = iforitm$work<x0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+a1sz_irforitm =
+gasq_irforitm<a1sz(x0)><x0>
+#impltmp
+{ x0:vt }
+a1sz_irforitm$f2un
+  (A, work) =
+(
+a1sz_irforitm<x0>(A)) where
+{
+#impltmp
+irforitm$work1<x0> = work(*i0,x0*)
+}(*where*)//end(a1sz_irforitm$f1un)
+//
+#impltmp
+{ x0:t0 }
+gseq_irforitm
+<a1sz(x0)><x0>
+  ( A ) =
+(
+a1sz_irforitm<x0>(A)) where
+{
+#impltmp
+irforitm$work1<x0> = irforitm$work<x0>
 }
 //
 (* ****** ****** *)

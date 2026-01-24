@@ -106,12 +106,18 @@ lam(cs) =>
 $UN.p2tr_set<r0>(p0, optn_vt_cons(cs)))}end
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
+(*
+HX-2026-01-24:
+The following name was used:
+myfil00$myfil_make$opt_stdout
+Sat Jan 24 08:59:50 AM EST 2026
+*)
 #extern
 fun<> // HX: succ/fail: true/false
 myfil00$fpath_stdout$output$opt(fpath: strn): bool
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
