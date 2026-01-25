@@ -389,10 +389,7 @@ strm_vt_beg() = "$strm_vt("
 //
 #impltmp
 <>(*tmp*)
-strm_vt_print$len() = (10)
-#impltmp
-<>(*tmp*)
-strm_vt_print'len() = (10)
+strm_vt$print$len() = (10)
 //
 (* ****** ****** *)
 //
@@ -401,7 +398,7 @@ strm_vt_print'len() = (10)
 strm_vt_print0(xs) =
 let
 val len = 
-strm_vt_print$len<>()
+strm_vt$print$len<>((*void*))
 in//let
 if
 (len < 0)
@@ -630,7 +627,7 @@ Thu Jan  8 12:13:02 PM EST 2026
 *)
 //
 #impltmp
-strm_vt_make'len<>() = 10
+strm_vt$make$len<>() = (10)
 //
 #impltmp
 < a:vt >
@@ -640,7 +637,7 @@ nint_map_lstrm<a>(ln)
 ) where
 {
 //
-val ln = strm_vt_make'len<>()
+val ln = strm_vt$make$len<>((*0*))
 //
 #impltmp map$fopr<a>(_) = g_make<a>()
 //

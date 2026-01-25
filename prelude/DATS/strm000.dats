@@ -275,10 +275,7 @@ strm_beg() = "$strm("
 //
 #impltmp
 <>(*tmp*)
-strm_print$len() = (10)
-#impltmp
-<>(*tmp*)
-strm_print'len() = (10)
+strm$print$len() = (10)
 //
 (* ****** ****** *)
 //
@@ -287,7 +284,7 @@ strm_print'len() = (10)
 strm_print(xs) =
 let
 val len = 
-strm_print$len<>()
+strm$print$len<>()
 in//let
 if
 (len < 0)

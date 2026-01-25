@@ -636,7 +636,7 @@ Thu Jan  8 11:32:41 AM EST 2026
 *)
 //
 #impltmp
-list_vt_make'len<>() = 10
+list_vt$make$len<>() = 10
 //
 #impltmp
 < a:vt >
@@ -646,7 +646,7 @@ nint_map_llist<a>(ln)
 ) where
 {
 //
-val ln = list_vt_make'len<>()
+val ln = list_vt$make$len<>()
 //
 #impltmp map$fopr<a>(_) = g_make<a>()
 //

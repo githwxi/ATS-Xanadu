@@ -42,29 +42,29 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_sep((*void*)) = ","
+gseq$sep((*0*)) = ( "," )
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_end((*void*)) = ")"
+gseq$end((*0*)) = ( ")" )
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_beg((*void*)) = "gseq("
+gseq$beg((*0*)) = "gseq("
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_omit((*void*)) = "..."
+gseq$omit((*0*)) = ("...")
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_prlen((*void*)) = (-1)
+gseq$prlen((*0*)) = ( -1 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
