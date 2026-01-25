@@ -189,6 +189,7 @@ s2varlst(*args*), s2typ1(*body*))
 //
 |T2P1s2typ of (s2typ)//yet-to-be-copied
 //
+|T2P1elnty of (s2typ1)//HX: leaked(rsrc)
 |T2P1errck of (sint(*lvl*), s2typ1(*err*))
 //
 (* ****** ****** *)
