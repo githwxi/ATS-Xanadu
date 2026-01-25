@@ -156,7 +156,7 @@ a1sz_irforitm$f2un
 (A: a1sz(a), test: (ni, !a) -> void): void
 //
 #symload irforitm with a1sz_irforitm of 1000
-#symload irforitm with a1sz_irforitm$f1un of 1000
+#symload irforitm with a1sz_irforitm$f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
