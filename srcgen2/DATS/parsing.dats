@@ -52,6 +52,7 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload "./../SATS/filpath.sats"
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
@@ -155,9 +156,19 @@ d0parsed_from_fpath
 ) where
 {
 // (*
+//
 val () =
-prerrsln
-("d0parsed_from_fpath: source = ", source)
+let
+val
+drpth0 = the_drpth_get()
+in//let
+prerrsln("\
+d0parsed_from_fpath: MYDIR = ", drpth0)
+end//let
+val () =
+prerrsln("\
+d0parsed_from_fpath: source = ", source)
+//
 // *)
 }(*where*)//end-of-[d0parsed_from_fpath(...)]
 //
