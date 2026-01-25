@@ -127,47 +127,25 @@ Wed 17 Jul 2024 09:37:48 PM EDT
 fun
 <xs:vt>
 <x0:vt>
-gseq_beg((*0*)): strn
+gseq$beg((*0*)): strn
 fun
 <xs:vt>
 <x0:vt>
-gseq'beg((*0*)): strn
+gseq$end((*0*)): strn
+fun
+<xs:vt>
+<x0:vt>
+gseq$sep((*0*)): strn
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_end((*0*)): strn
-fun
-<xs:vt>
-<x0:vt>
-gseq'end((*0*)): strn
+gseq$omit((*0*)): strn
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_sep((*0*)): strn
-fun
-<xs:vt>
-<x0:vt>
-gseq'sep((*0*)): strn
-//
-fun
-<xs:vt>
-<x0:vt>
-gseq_omit((*0*)): strn
-fun
-<xs:vt>
-<x0:vt>
-gseq'omit((*0*)): strn
-//
-fun
-<xs:vt>
-<x0:vt>
-gseq_prlen((*0*)): sint
-fun
-<xs:vt>
-<x0:vt>
-gseq'prlen((*0*)): sint
+gseq$prlen((*0*)): sint
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -80,7 +80,7 @@ nint_rdigitize(nint): strm_vt(nint)
 //
 (*
 fun<>
-nint_digitize'base((*0*)): sintgte(2)
+nint$digitize$base((*0*)): sintgte(2)
 *)
 //
 fun<>

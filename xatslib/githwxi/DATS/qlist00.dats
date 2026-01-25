@@ -89,7 +89,7 @@ GSEQ_make_qlist
 #extern
 fun
 <a:t0>
-UN_qlist_uncons_raw(xs: qlist(a)): @(a, qlist(a))
+UN_qlist_uncons$raw(xs: qlist(a)): @(a, qlist(a))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -227,7 +227,7 @@ end//let//end-of-[qlist_rstrmize(xs)]
 //
 #impltmp
 < a: t0 >
-UN_qlist_uncons_raw
+UN_qlist_uncons$raw
  (  xs  ) =
 let
 val+
@@ -241,7 +241,7 @@ case+ f1 of
   val r2 = list_reverse<a>(r2)
 }(*where*)//end-of-[list_nil()]
 |list_cons(x1, f1) => (x1, QLIST(f1, r2))
-end//let//end-of-[UN_qlist_uncons_raw(xs)]
+end//let//end-of-[UN_qlist_uncons$raw(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -307,7 +307,7 @@ gseq_rstrmize<qlist(a)><a> = qlist_rstrmize<a>
 //
 #impltmp
 { a: t0 }
-$UN.gseq_uncons_raw<qlist(a)><a> = UN_qlist_uncons_raw<a>
+$UN.gseq_uncons$raw<qlist(a)><a> = UN_qlist_uncons$raw<a>
 //
 (* ****** ****** *)
 (* ****** ****** *)

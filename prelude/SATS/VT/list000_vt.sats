@@ -107,7 +107,7 @@ fun
 <a:vt>
 list_vt_make(): list_vt(a)
 fun<>
-list_vt_make'len((*0*)): nint
+list_vt$make$len((*0*)): nint
 (*
 g_make<list_vt(a)>=list_vt_make<a>
 *)

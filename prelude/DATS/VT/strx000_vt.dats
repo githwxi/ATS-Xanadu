@@ -165,14 +165,9 @@ strx_vt_beg() = "$strx_vt("
 //
 (* ****** ****** *)
 //
-(*
 #impltmp
 <>(*tmp*)
-strx_vt_print$len() = (10)
-*)
-#impltmp
-<>(*tmp*)
-strx_vt_print'len() = (10)
+strx_vt$print$len() = (10)
 //
 (* ****** ****** *)
 //
@@ -181,7 +176,7 @@ strx_vt_print'len() = (10)
 strx_vt_print0(xs) =
 let
 val len = 
-strx_vt_print'len<>()
+strx_vt$print$len<>((*void*))
 in//let
 if
 (len < 0)

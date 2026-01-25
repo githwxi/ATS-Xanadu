@@ -130,7 +130,7 @@ fun<>
 strx_vt_print$len(): sint
 *)
 fun<>
-strx_vt_print'len(): sint
+strx_vt$print$len(): sint
 fun
 <x0:vt>
 strx_vt_len$print0(xs: strx_vt(x0), ln: sint): void

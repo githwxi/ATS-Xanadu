@@ -125,7 +125,7 @@ fun
 <a:vt>
 strm_vt_make(): strm_vt(a)
 fun<>
-strm_vt_make'len((*0*)): nint
+strm_vt$make$len((*0*)): nint
 (*
 g_make<strm_vt(a)>=strm_vt_make<a>
 *)
@@ -416,9 +416,7 @@ fun
 strm_vt_all$print0(xs: strm_vt(x0)): void
 //
 fun<>
-strm_vt_print$len(): sint
-fun<>
-strm_vt_print'len(): sint
+strm_vt$print$len(): ( sint ) // HX: all: -1
 fun
 <x0:vt>
 strm_vt_len$print0(xs: strm_vt(x0), ln: sint): void

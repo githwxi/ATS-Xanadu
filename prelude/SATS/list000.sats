@@ -113,7 +113,7 @@ fun
 <a:t0>
 list_make((*0*)): list(a)
 fun<>
-list_make'len((*0*)): nint
+list$make$len((*0*)): (nint)
 (*
 g_make<list(a)> = list_make<a>
 *)
