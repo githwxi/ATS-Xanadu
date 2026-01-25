@@ -133,6 +133,10 @@ This one is included by [DATS/unsfx00.dats]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+// prelude/DATS/VT
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload _ = "prelude/DATS/VT/gnum000_vt.dats"
 #staload _ = "prelude/DATS/VT/gord000_vt.dats"
 #staload _ = "prelude/DATS/VT/gfun000_vt.dats"
@@ -143,8 +147,11 @@ This one is included by [DATS/unsfx00.dats]
 #staload _ = "prelude/DATS/VT/gasq000_vt.dats"
 #staload _ = "prelude/DATS/VT/gasq001_vt.dats"
 #staload _ = "prelude/DATS/VT/gsyn000_vt.dats"
+//
 (* ****** ****** *)
+//
 #staload _ = "prelude/DATS/VT/strn000_vt.dats"
+//
 (* ****** ****** *)
 //
 #staload _ = "prelude/DATS/VT/axrf000_vt.dats"
@@ -178,5 +185,5 @@ The code in this file serves as
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3_XANADU_prelude_prelude_dats.hats] *)
+(* end of [ATS3_XANADU_prelude_HATS_prelude_dats.hats] *)
 (***********************************************************************)

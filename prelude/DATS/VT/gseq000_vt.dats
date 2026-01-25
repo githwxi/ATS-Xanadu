@@ -141,11 +141,11 @@ gseq_torep0(xs) =
 let
 //
 val xbeg =
-gseq_beg<xs><x0>()
+gseq$beg<xs><x0>()
 val xsep =
-gseq_sep<xs><x0>()
+gseq$sep<xs><x0>()
 val xend =
-gseq_end<xs><x0>()
+gseq$end<xs><x0>()
 //
 in//let
 //
@@ -215,7 +215,7 @@ let
 //
 val () =
 strn_print<>
-(gseq_beg<xs><x0>())
+(gseq$beg<xs><x0>())
 //
 val () =
 (
@@ -233,7 +233,7 @@ gseq_iforitm0<xs><x0>(xs))
 //
 val n0 =
 (
- gseq_prlen<xs><x0>((*0*)))
+gseq$prlen<xs><x0>((*0*)))
 //
 #impltmp
 iforitm$work0<x0>
@@ -243,7 +243,7 @@ iforitm$work0<x0>
 {
 val () =
 if i0 > 0 then
-strn_print(gseq_sep<xs><x0>())}
+strn_print(gseq$sep<xs><x0>())}
 //
 #impltmp
 iforall$test0<x0>
@@ -258,7 +258,7 @@ then
 {
 val () =
 strn_print
-(gseq_omit<xs><x0>()) }
+(gseq$omit<xs><x0>()) }
 //
 else
 (
@@ -267,12 +267,12 @@ where
 {
 val () =
 if i0 > 0 then
-strn_print(gseq_sep<xs><x0>())}
+strn_print(gseq$sep<xs><x0>())}
 //
 }
 //
 val () =
-strn_print<>(gseq_end<xs><x0>())
+strn_print<>(gseq$end<xs><x0>())
 //
 endlet // end-of-[gseq_print0(xs)]
 //
@@ -285,7 +285,7 @@ gseq_print1(xs) =
 let
 val () =
 strn_print<>
-(gseq_beg<xs><x0>())
+(gseq$beg<xs><x0>())
 val () =
 (
 gseq_iforitm1<xs><x0>(xs)
@@ -298,11 +298,11 @@ iforitm$work1<x0>(ni, x0) =
 {
 val () =
 if ni > 0 then
-strn_print<>(gseq_sep<xs><x0>())
+strn_print<>(gseq$sep<xs><x0>())
 }
 }
 val () =
-strn_print<>(gseq_end<xs><x0>())
+strn_print<>(gseq$end<xs><x0>())
 endlet // end-of-[gseq_print1(xs)]
 //
 (* ****** ****** *)

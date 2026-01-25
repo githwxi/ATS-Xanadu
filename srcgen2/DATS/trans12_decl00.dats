@@ -2268,8 +2268,10 @@ optn_nil((*void*))
 |
 optn_cons(fpth) =>
 let
+//
   val-
   optn_cons@(shrd, dpar) = dopt
+//
 in//let
 //
  optn_cons
