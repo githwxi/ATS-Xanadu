@@ -2,8 +2,9 @@
 (* ****** ****** *)
 (*
 HX-2024-08-03:
+For implementing operations on
+generic graphs.
 Sat 03 Aug 2024 11:07:02 AM EDT
-For implementing operations on generic graphs
 *)
 (* ****** ****** *)
 (* ****** ****** *)

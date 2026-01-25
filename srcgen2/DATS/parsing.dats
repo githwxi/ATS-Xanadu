@@ -163,7 +163,7 @@ val
 drpth0 = the_drpth_get()
 in//let
 prerrsln("\
-d0parsed_from_fpath: MYDIR = ", drpth0)
+d0parsed_from_fpath: MYCDIR = ", drpth0)
 end//let
 val () =
 prerrsln("\
