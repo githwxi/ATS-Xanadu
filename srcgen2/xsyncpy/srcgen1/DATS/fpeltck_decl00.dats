@@ -79,6 +79,23 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
+|D3C1static
+(tknd, dcl1) =>
+let
+val () =
+(
+  fpeltck_d3ecl1(out0, dcl1))
+endlet//end-of(D3C1static(_,_))
+|D3C1extern
+(tknd, dcl1) =>
+let
+val () =
+(
+  fpeltck_d3ecl1(out0, dcl1))
+endlet//end-of(D3C1extern(_,_))
+//
+(* ****** ****** *)
+//
 |D3C1staload _ => (  (*void*)  )
 |D3C1include _ => (  (*void*)  )
 //
