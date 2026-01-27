@@ -231,16 +231,19 @@ let
 //
 val
 dpar =
+(
 d0parsed_from_fpath
-(0(*sta*), the_fixity0)
+(0(*static*), the_fixity0))
 //
 val
 dpar =
-d1parsed_of_trans01(dpar)
+(
+  d1parsed_of_trans01(dpar))
 //
 val
 tenv =
-d1parsed_get_topenv(dpar)
+(
+  d1parsed_get_topenv(dpar))
 //
 (*
 val () =
@@ -251,8 +254,9 @@ prerrsln
 in//let
 (
 case+ tenv of
-| D1TOPENV(topmap) =>
-  (the_fxtyenv[] := topmap; (1)) )
+|
+D1TOPENV(topmap) =>
+( the_fxtyenv[] := topmap; (1) ) )
 end (*let*) // end of [ f0_pvsload ]
 //
 } (*where*) // [the_fxtyenv_pvsload()]
@@ -270,7 +274,8 @@ optn_vt_nil(*void*) else
 let
   val topmap = the_fxtyenv[]
 in//let
-  topmap_search$opt(topmap, key)
+(
+  topmap_search$opt(topmap, key) )
 end (*let*) // [the_fxtyenv_pvsfind]
 //
 (* ****** ****** *)
