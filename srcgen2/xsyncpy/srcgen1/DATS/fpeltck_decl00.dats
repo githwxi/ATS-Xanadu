@@ -96,6 +96,19 @@ endlet//end-of(D3C1extern(_,_))
 //
 (* ****** ****** *)
 //
+|D3C1local0
+(dcs1, dcs2) =>
+let
+val () =
+(
+fpeltck_d3ecl1lst(out0, dcs1))
+val () =
+(
+fpeltck_d3ecl1lst(out0, dcs2))
+endlet // end of [D2Clocal0(...)]
+//
+(* ****** ****** *)
+//
 |D3C1staload _ => (  (*void*)  )
 |D3C1include _ => (  (*void*)  )
 //
