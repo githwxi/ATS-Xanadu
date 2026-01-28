@@ -10,7 +10,6 @@ Mon Jan 26 08:37:33 PM EST 2026
 #abstype
 fpath_t0 == strn
 #typedef fpath = fpath_t0
-//
 fcast
 fpath_encd(fpth: strn):fpath
 fcast
