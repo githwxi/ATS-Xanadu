@@ -72,16 +72,16 @@ let
 #typedef xs = a1sz(a)
 //
 #impltmp
-gseq_sep<xs><x0>() = ","
+gseq$sep<xs><x0>() = ","
 #impltmp
-gseq_end<xs><x0>() = ")"
+gseq$end<xs><x0>() = ")"
 #impltmp
-gseq_beg<xs><x0>() = "a1sz("
+gseq$beg<xs><x0>() = "a1sz("
 //
 in//let
 (
-  gseq_print1<xs><x0>(xs) )
-end//let//end(g_print<a1sz(a)>)
+  gseq_print1<xs><x0>( xs ) )
+end(*let*)//end(g_print<a1sz(a)>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
