@@ -132,15 +132,15 @@ Wed 17 Jul 2024 10:06:19 PM EDT
 //
 #impltmp
 { x0:vt }
-gseq_sep
+gseq$sep
 <list_vt(x0)><x0>() = ","
 #impltmp
 { x0:vt }
-gseq_end
+gseq$end
 <list_vt(x0)><x0>() = ")"
 #impltmp
 { x0:vt }
-gseq_beg
+gseq$beg
 <list_vt(x0)><x0>() = "list_vt("
 //
 (* ****** ****** *)

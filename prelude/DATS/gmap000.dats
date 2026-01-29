@@ -43,17 +43,17 @@ Authoremail: gmhwxiATgmailDOTcom
 < m0:vt >
 < k0:vt >
 < x0:vt >
-gmap_sep((*void*)) = ","
+gmap$sep((*void*)) = ","
 #impltmp
 < m0:vt >
 < k0:vt >
 < x0:vt >
-gmap_end((*void*)) = "}"
+gmap$end((*void*)) = "}"
 #impltmp
 < m0:vt >
 < k0:vt >
 < x0:vt >
-gmap_beg((*void*)) = "gmap{"
+gmap$beg((*void*)) = "gmap{"
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -346,7 +346,8 @@ val () =
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_prlen((*void*)) = 10(*default*)
+gseq$prlen
+((*void*)) = 10(*default*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

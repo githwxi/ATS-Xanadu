@@ -399,13 +399,13 @@ HX-2025-12-21:
 Sun Dec 21 07:15:47 PM EST 2025
 *)
 fun<>
-strm_vt_beg(): strn
+strm_vt$beg(): strn
 fun<>
-strm_vt_end(): strn
+strm_vt$end(): strn
 fun<>
-strm_vt_sep(): strn
+strm_vt$sep(): strn
 fun<>
-strm_vt_rst(): strn
+strm_vt$rst(): strn
 //
 fun
 <x0:vt>

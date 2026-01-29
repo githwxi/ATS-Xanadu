@@ -154,15 +154,15 @@ Fri 06 Sep 2024 11:49:42 PM EDT
 //
 #impltmp
 { x0:vt }
-gseq_sep
+gseq$sep
 <optn_vt(x0)><x0>() = ","
 #impltmp
 { x0:vt }
-gseq_end
+gseq$end
 <optn_vt(x0)><x0>() = ")"
 #impltmp
 { x0:vt }
-gseq_beg
+gseq$beg
 <optn_vt(x0)><x0>() = "optn_vt("
 //
 (* ****** ****** *)

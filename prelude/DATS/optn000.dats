@@ -164,15 +164,15 @@ optn_cons(x0) => optn_nil(*0*))
 //
 #impltmp
 { x0:t0 }
-gseq_sep
+gseq$sep
 <optn(x0)><x0>() = ","
 #impltmp
 { x0:t0 }
-gseq_end
+gseq$end
 <optn(x0)><x0>() = ")"
 #impltmp
 { x0:t0 }
-gseq_beg
+gseq$beg
 <optn(x0)><x0>() = "optn("
 //
 #impltmp

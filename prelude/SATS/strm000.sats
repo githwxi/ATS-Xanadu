@@ -176,13 +176,13 @@ Sun Dec 21 07:13:28 PM EST 2025
 *)
 //
 fun<>
-strm_beg(): strn
+strm$beg(): strn
 fun<>
-strm_end(): strn
+strm$end(): strn
 fun<>
-strm_sep(): strn
+strm$sep(): strn
 fun<>
-strm_rst(): strn
+strm$rst(): strn
 //
 fun
 <x0:t0>
