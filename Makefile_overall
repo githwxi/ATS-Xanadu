@@ -36,6 +36,13 @@ all:: srcgen2_xjsemit_xats2py_pyemit01
 all:: contrib_githwxi_BOOTJS1_lib2xatsopt
 all:: contrib_githwxi_BOOTPY1_lib2xatsopt
 #
+all:: srcgen2_xjsemit_xatsopt_tcheck00_opt1
+all:: srcgen2_xjsemit_xatsopt_tcheck01_opt1
+all:: srcgen2_xjsemit_xats2js_jsemit00_opt1
+all:: srcgen2_xjsemit_xats2js_jsemit01_opt1
+all:: srcgen2_xjsemit_xats2py_pyemit00_opt1
+all:: srcgen2_xjsemit_xats2py_pyemit01_opt1
+#
 ##################################################################
 #
 testall:: prelude_TEST_CATS_JS
@@ -150,16 +157,28 @@ srcgen2_xjsemit_xatsopt_tcheck00: ; \
 time make -C srcgen2/UTIL -f Makefile_xjsemit xatsopt_tcheck00
 srcgen2_xjsemit_xatsopt_tcheck01: ; \
 time make -C srcgen2/UTIL -f Makefile_xjsemit xatsopt_tcheck01
+srcgen2_xjsemit_xatsopt_tcheck00_opt1: ; \
+time make -C srcgen2/UTIL -f Makefile_xjsemit xatsopt_tcheck00_opt1
+srcgen2_xjsemit_xatsopt_tcheck01_opt1: ; \
+time make -C srcgen2/UTIL -f Makefile_xjsemit xatsopt_tcheck01_opt1
 #
 srcgen2_xjsemit_xats2js_jsemit00: ; \
 time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit00
 srcgen2_xjsemit_xats2js_jsemit01: ; \
 time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit01
+srcgen2_xjsemit_xats2js_jsemit00_opt1: ; \
+time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit00_opt1
+srcgen2_xjsemit_xats2js_jsemit01_opt1: ; \
+time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit01_opt1
 #
 srcgen2_xjsemit_xats2py_pyemit00: ; \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xjsemit xats2py_pyemit00
 srcgen2_xjsemit_xats2py_pyemit01: ; \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xjsemit xats2py_pyemit01
+srcgen2_xjsemit_xats2py_pyemit00_opt1: ; \
+time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xjsemit xats2py_pyemit00_opt1
+srcgen2_xjsemit_xats2py_pyemit01_opt1: ; \
+time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xjsemit xats2py_pyemit01_opt1
 #
 ##################################################################
 #
