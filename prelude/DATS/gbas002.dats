@@ -96,6 +96,10 @@ g_ptype
 (* ****** ****** *)
 //
 (*
+(*
+HX-2026-01-29:
+This complicates debugging
+*)
 #impltmp
 < x0:t0
 , y0:t0 >
@@ -108,6 +112,10 @@ z2rforall$test = z2forall$test<x0,y0>
 *)
 //
 (*
+(*
+HX-2026-01-29:
+This complicates debugging
+*)
 #impltmp
 < x0:t0
 , y0:t0 >
