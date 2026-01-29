@@ -87,15 +87,15 @@ Wed 17 Jul 2024 10:27:26 PM EDT
 //
 #impltmp
 { x0:vt }
-gseq_sep
+gseq$sep
 <strx_vt(x0)><x0>() = ","
 #impltmp
 { x0:vt }
-gseq_end
+gseq$end
 <strx_vt(x0)><x0>() = ")"
 #impltmp
 { x0:vt }
-gseq_beg
+gseq$beg
 <strx_vt(x0)><x0>() = "strx_vt("
 //
 (* ****** ****** *)
@@ -151,17 +151,17 @@ Tue Jan 13 02:45:54 AM EST 2026
 //
 #impltmp
 <>(*tmp*)
-strx_vt_end() = ")"
+strx_vt$end() = ")"
 #impltmp
 <>(*tmp*)
-strx_vt_sep() = ","
+strx_vt$sep() = ","
 #impltmp
 <>(*tmp*)
-strx_vt_rst() = "..."
+strx_vt$rst() = "..."
 //
 #impltmp
 <>(*tmp*)
-strx_vt_beg() = "$strx_vt("
+strx_vt$beg() = "$strx_vt("
 //
 (* ****** ****** *)
 //
@@ -196,7 +196,7 @@ loop
 (xs, 0(*i0*)) where
 {
 val () =
-pstrn(strx_vt_beg<>())
+pstrn(strx_vt$beg<>())
 }
 ) where
 {
@@ -217,7 +217,7 @@ val () =
 if // if
 (i0 > 0)
 then//then
-pstrn(strx_vt_sep<>())
+pstrn(strx_vt$sep<>())
 //
 in//let
 (
@@ -240,7 +240,7 @@ loop
 (xs, 0(*i0*)) where
 {
 val () =
-pstrn(strx_vt_beg<>())
+pstrn(strx_vt$beg<>())
 }
 ) where
 {
@@ -271,14 +271,14 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strx_vt_sep<>())
+pstrn(strx_vt$sep<>())
 //
 val () =
-pstrn(strx_vt_rst<>())
+pstrn(strx_vt$rst<>())
 //
 in//let//then
 (
-pstrn(strx_vt_end<>()))
+pstrn(strx_vt$end<>()))
 end // end of [if-then]
 else
 let
@@ -287,7 +287,7 @@ val () =
 if // if
 (i0 > 0)
 then//then
-pstrn(strx_vt_sep<>())
+pstrn(strx_vt$sep<>())
 //
 in//let//else
 (

@@ -109,13 +109,13 @@ HX-2026-01-13:
 Tue Jan 13 02:42:01 AM EST 2026
 *)
 fun<>
-strx_vt_beg(): strn
+strx_vt$beg(): strn
 fun<>
-strx_vt_end(): strn
+strx_vt$end(): strn
 fun<>
-strx_vt_sep(): strn
+strx_vt$sep(): strn
 fun<>
-strx_vt_rst(): strn
+strx_vt$rst(): strn
 //
 fun
 <x0:vt>

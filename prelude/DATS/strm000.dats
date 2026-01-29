@@ -99,15 +99,15 @@ Sat Dec 20 11:43:16 AM EST 2025
 //
 #impltmp
 { x0:t0 }
-gseq_sep
+gseq$sep
 <strm(x0)><x0>() = ","
 #impltmp
 { x0:t0 }
-gseq_end
+gseq$end
 <strm(x0)><x0>() = ")"
 #impltmp
 { x0:t0 }
-gseq_beg
+gseq$beg
 <strm(x0)><x0>() = "strm("
 //
 (* ****** ****** *)
@@ -259,17 +259,17 @@ Sun Dec 21 07:20:03 PM EST 2025
 //
 #impltmp
 <>(*tmp*)
-strm_end() = ")"
+strm$end() = ")"
 #impltmp
 <>(*tmp*)
-strm_sep() = ","
+strm$sep() = ","
 #impltmp
 <>(*tmp*)
-strm_rst() = "..."
+strm$rst() = "..."
 //
 #impltmp
 <>(*tmp*)
-strm_beg() = "$strm("
+strm$beg() = "$strm("
 //
 (* ****** ****** *)
 //
@@ -304,7 +304,7 @@ loop
 (xs, 0(*i0*)) where
 {
 val () =
-pstrn(strm_beg<>())
+pstrn(strm$beg<>())
 }
 ) where
 {
@@ -319,7 +319,7 @@ case+ !xs of
 |
 strmcon_nil() =>
 (
-pstrn(strm_end<>()))
+pstrn(strm$end<>()))
 |
 strmcon_cons(x0, xs) =>
 let
@@ -328,7 +328,7 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strm_sep<>())
+pstrn(strm$sep<>())
 //
 in
 (
@@ -351,7 +351,7 @@ loop
 (xs, 0(*i0*)) where
 {
 val () =
-pstrn(strm_beg<>())
+pstrn(strm$beg<>())
 }
 ) where
 {
@@ -368,7 +368,7 @@ case+ !xs of
 |
 strmcon_nil() =>
 (
-pstrn(strm_vt_end<>()))
+pstrn(strm$end<>()))
 |
 strmcon_cons(x0, xs) =>
 if
@@ -381,15 +381,15 @@ if
 (i0 > 0)
 then
 (
-  pstrn(strm_sep<>()))
+  pstrn(strm$sep<>()))
 //
 val () =
 (
-  pstrn(strm_rst<>()))
+  pstrn(strm$rst<>()))
 //
 in
 (
-  pstrn(strm_end<>()))
+  pstrn(strm$end<>()))
 end // end of [if-then]
 else
 let
@@ -399,7 +399,7 @@ if
 (i0 > 0)
 then
 (
-  pstrn(strm_sep<>()))
+  pstrn(strm$sep<>()))
 //
 in//let
 (

@@ -66,17 +66,17 @@ fun
 <map:vt>
 <key:vt>
 <itm:vt>
-gmap_beg((*void*)): strn
+gmap$beg((*void*)): strn
 fun
 <map:vt>
 <key:vt>
 <itm:vt>
-gmap_end((*void*)): strn
+gmap$end((*void*)): strn
 fun
 <map:vt>
 <key:vt>
 <itm:vt>
-gmap_sep((*void*)): strn
+gmap$sep((*void*)): strn
 //
 (* ****** ****** *)
 //

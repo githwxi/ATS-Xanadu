@@ -189,15 +189,15 @@ Wed 17 Jul 2024 09:49:09 PM EDT
 //
 #impltmp
 { x0:t0 }
-gseq_sep
+gseq$sep
 <list(x0)><x0>() = ","
 #impltmp
 { x0:t0 }
-gseq_end
+gseq$end
 <list(x0)><x0>() = ")"
 #impltmp
 { x0:t0 }
-gseq_beg
+gseq$beg
 <list(x0)><x0>() = "list("
 //
 #impltmp

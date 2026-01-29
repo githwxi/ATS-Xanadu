@@ -217,15 +217,15 @@ gseq_listize
 //
 #impltmp
 { x0:t0 }
-gseq_sep
+gseq$sep
 <lsrt(x0)><x0>() = ","
 #impltmp
 { x0:t0 }
-gseq_end
+gseq$end
 <lsrt(x0)><x0>() = ")"
 #impltmp
 { x0:t0 }
-gseq_beg
+gseq$beg
 <lsrt(x0)><x0>() = "lsrt("
 //
 #impltmp
