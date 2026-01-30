@@ -769,6 +769,14 @@ HX-2023-10-27:
 is planned for
 recursive impltmp!
 *)
+(*
+HX-2026-01-30:
+The following datatype is
+declared in [dynexp3.dats]!
+datatype timpl =
+TIMPL of (stamp,timpl_node)
+Fri Jan 30 10:33:20 AM EST 2026
+*)
 datatype
 timpl_node =
 //
@@ -784,14 +792,14 @@ list of D3Ctmpsub-decls
 *)
 //
 (*
-HX:
+HX-2024:
 single layer(trtmp3b)
 *)
 |TIMPLall1 of
 (d2cst, t2jaglst, d3eclist)
 //
 (*
-HX:
+HX-2024:
 recursive version(trtmp3c)
 *)
 |TIMPLallx of

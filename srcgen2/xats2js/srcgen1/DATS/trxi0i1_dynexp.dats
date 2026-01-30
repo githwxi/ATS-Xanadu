@@ -3220,8 +3220,12 @@ val node =
 t0imp_get_node(timp)
 //
 in//let
-t1imp_make_node(stmp, node) where
+//
+(
+t1imp_make_node(stmp, node)
+) where
 {
+//
 val node =
 (
 case+ node of
@@ -3241,13 +3245,27 @@ optn_cons(trxi0i1_i0dcl(env0, dcl1))))
 ,t2js, dcls) =>
 (
 case+ dcls of
-|list_nil() =>
-T1IMPallx(dcst, t2js, optn_nil())
-|list_cons(dcl1, _) =>
-T1IMPallx(dcst, t2js,
-optn_cons(trxi0i1_i0dcl(env0, dcl1))))
-) : t1imp_node // end of [ val(node) ]
-}
+//
+|
+list_nil() =>
+(
+T1IMPallx(dcst, t2js, optn_nil()))
+//
+(*
+HX-202-01-30:
+ONLY the first one is chosen!
+*)
+|
+list_cons(dcl1, _) =>
+(
+T1IMPallx
+(
+dcst, t2js,
+optn_cons(trxi0i1_i0dcl(env0, dcl1)))))
+) : t1imp_node // end-of-[  val(node)  ]
+//
+}(*where*)//end(t1imp_make_node(stmp,node))
+//
 end(*let*)//end-of-[trxi0i1_t0imp(env0,timp)]
 //
 (* ****** ****** *)
