@@ -75,6 +75,44 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
+optn_tread30_fnp
+{x0:tx}
+( e1
+, xs, nerr, fopr) =
+(
+auxopt(e1,xs,nerr))
+where
+{
+//
+fun
+auxopt
+( e1:
+! envrd30
+, xs: optn(x0)
+, nerr: &sint >> _): optn(x0) =
+(
+case+ xs of
+|
+optn_nil() =>
+optn_nil(*void*)
+|
+optn_cons(x1) =>
+let
+val n0 = nerr
+val x1 = fopr(e1, x1, nerr)
+in//let
+(
+if // if
+(n0 = nerr)
+then (xs) else optn_cons(x1))
+end(*end*)//end-of-[optn_cons(x1)]
+)(*case+*)//end-of-[auxopt(e1,xs,nerr)]
+//
+}(*where*)//end-of-[optn_tread30_fnp(e1,xs,...)]
+//
+(* ****** ****** *)
+//
+#implfun
 list_tread30_fnp
 {x0:tx}
 ( e1
@@ -109,7 +147,46 @@ then (xs) else list_cons(x1, rs))
 end(*end*)//end-of-[list_cons(x1,rs)]
 )(*case+*)//end-of-[auxlst(e1,xs,nerr)]
 //
-}(*where*)//end-of-[list_tread30_fnp(e1,xs,nerr,fopr)]
+}(*where*)//end-of-[list_tread30_fnp(e1,xs,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tread30_d3patlst
+( env0, d3ps, nerr ) =
+list_tread30_fnp(env0, d3ps, nerr, tread30_d3pat)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tread30_d3explst
+( env0, d3es, nerr ) =
+list_tread30_fnp(env0, d3es, nerr, tread30_d3exp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tread30_d3eclist
+( env0, d3cs, nerr ) =
+list_tread30_fnp(env0, d3cs, nerr, tread30_d3ecl)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tread30_d3explstopt
+( env0, dopt, nerr ) =
+optn_tread30_fnp(env0, dopt, nerr, tread30_d3explst)
+//
+(* ****** ****** *)
+//
+#implfun
+tread30_d3eclistopt
+( env0, dopt, nerr ) =
+optn_tread30_fnp(env0, dopt, nerr, tread30_d3eclist)
 //
 (* ****** ****** *)
 (* ****** ****** *)

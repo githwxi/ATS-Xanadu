@@ -63,6 +63,12 @@ envrd30 = envrd30_vtbx
 #typedef d3ecl = $D3E.d3ecl
 //
 (* ****** ****** *)
+//
+#typedef d3patlst = $D3E.d3patlst
+#typedef d3explst = $D3E.d3explst
+#typedef d3eclist = $D3E.d3eclist
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef d3parsed = $D3E.d3parsed
@@ -95,15 +101,6 @@ ftread30
 (* ****** ****** *)
 //
 fun
-list_tread30_fnp
-{x0:tx}
-( env:
-! envrd30
-, lst: list(x0)
-, err:
-& sint >> _, frd: ftread30(x0)): list(x0)
-//
-fun
 optn_tread30_fnp
 {x0:tx}
 ( env:
@@ -111,6 +108,15 @@ optn_tread30_fnp
 , opt: optn(x0)
 , err:
 & sint >> _, frd: ftread30(x0)): optn(x0)
+//
+fun
+list_tread30_fnp
+{x0:tx}
+( env:
+! envrd30
+, lst: list(x0)
+, err:
+& sint >> _, frd: ftread30(x0)): list(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -135,6 +141,19 @@ fun
 tread30_d3ecl
 ( env0: !envrd30
 , d3cl: d3ecl, nerr: &sint >> _): d3ecl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun tread30_d3patlst: ftread30(d3patlst)
+fun tread30_d3explst: ftread30(d3explst)
+fun tread30_d3eclist: ftread30(d3eclist)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun tread30_d3explstopt: ftread30(d3explstopt)
+fun tread30_d3eclistopt: ftread30(d3eclistopt)
 //
 (* ****** ****** *)
 (* ****** ****** *)
