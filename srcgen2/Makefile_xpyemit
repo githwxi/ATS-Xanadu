@@ -226,6 +226,7 @@ trtmp3c_dynexp.dats \
 trtmp3c_decl00.dats \
 tread30.dats \
 tread30_dynexp.dats \
+tread30_decl00.dats \
 fperr30.dats \
 fperr30_dynexp.dats \
 fperr30_decl00.dats \

@@ -26,73 +26,59 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Fri Jan 30 11:23:14 AM EST 2026
+Fri Jan 30 12:35:54 PM EST 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 #define
-ATS_PACKNAME // namespace
+ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload LEX = "./lexing0.sats"
-(* ****** ****** *)
-#staload S2E = "./staexp2.sats"
-#staload T2P = "./statyp2.sats"
-#staload D2E = "./dynexp2.sats"
-#staload D3E = "./dynexp3.sats"
-(* ****** ****** *)
 (* ****** ****** *)
 //
-#typedef d3parsed = $D3E.d3parsed
-//
-(* ****** ****** *)
-#typedef d3valdclist = $D3E.d3valdclist
-#typedef d3vardclist = $D3E.d3vardclist
-#typedef d3fundclist = $D3E.d3fundclist
-#typedef d3cstdclist = $D3E.d3cstdclist
-(* ****** ****** *)
-#typedef d3explstopt = $D3E.d3explstopt
-#typedef d3eclistopt = $D3E.d3eclistopt
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-d3parsed_of_tread30
-(dpar: d3parsed): (d3parsed)
+#include
+"./../HATS/xatsopt_sats.hats"
+(*
+#include
+"./../HATS/xatsopt_dats.hats"
+*)
+#include
+"./../HATS/xatsopt_dpre.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-fun
-tread30_d3pat
-(env0: !envrd30, d3p0: d3pat): d3pat
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp3.sats"
+(* ****** ****** *)
+#staload "./../SATS/tread30.sats"
+(* ****** ****** *)
 //
 (* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
 (* ****** ****** *)
-//
-fun
-tread30_d3exp
-(env0: !envrd30, d3e0: d3exp): d3exp
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-tread30_d3ecl
-(env0: !envrd30, d3cl: d3ecl): d3ecl
-//
+#symload sexp with d2con_get_sexp
+#symload sexp with d2cst_get_sexp
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_SATS_tread30.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread30_decl00.dats] *)
 (***********************************************************************)
