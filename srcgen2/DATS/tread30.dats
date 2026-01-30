@@ -74,6 +74,46 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+list_tread30_fnp
+{x0:tx}
+( e1
+, xs, nerr, fopr) =
+(
+auxlst(e1,xs,nerr))
+where
+{
+//
+fun
+auxlst
+( e1:
+! envrd30
+, xs: list(x0)
+, nerr: &sint >> _): list(x0) =
+(
+case+ xs of
+|
+list_nil() =>
+list_nil(*void*)
+|
+list_cons(x1, rs) =>
+let
+val n0 = nerr
+val x1 = fopr(e1, x1, nerr)
+val rs = auxlst(e1, rs, nerr)
+in//let
+(
+if // if
+(n0 = nerr)
+then (xs) else list_cons(x1, rs))
+end(*end*)//end-of-[list_cons(x1,rs)]
+)(*case+*)//end-of-[auxlst(e1,xs,nerr)]
+//
+}(*where*)//end-of-[list_tread30_fnp(e1,xs,nerr,fopr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_tread30.dats] *)
 (***********************************************************************)

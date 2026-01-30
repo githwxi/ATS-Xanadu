@@ -51,6 +51,19 @@ ATS_PACKNAME // namespace
 #staload D3E = "./dynexp3.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#absvtbx
+envrd30_vtbx
+#vwtpdef
+envrd30 = envrd30_vtbx
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef d3pat = $D3E.d3pat
+#typedef d3exp = $D3E.d3exp
+#typedef d3ecl = $D3E.d3ecl
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #typedef d3parsed = $D3E.d3parsed
 //
@@ -58,7 +71,6 @@ ATS_PACKNAME // namespace
 #typedef d3valdclist = $D3E.d3valdclist
 #typedef d3vardclist = $D3E.d3vardclist
 #typedef d3fundclist = $D3E.d3fundclist
-#typedef d3cstdclist = $D3E.d3cstdclist
 (* ****** ****** *)
 #typedef d3explstopt = $D3E.d3explstopt
 #typedef d3eclistopt = $D3E.d3eclistopt
@@ -72,23 +84,57 @@ d3parsed_of_tread30
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef
+ftread30
+(syn : tbox) =
+(
+! envrd30
+, syn , &sint >> _) -> ( syn )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+list_tread30_fnp
+{x0:tx}
+( env:
+! envrd30
+, lst: list(x0)
+, err:
+& sint >> _, frd: ftread30(x0)): list(x0)
+//
+fun
+optn_tread30_fnp
+{x0:tx}
+( env:
+! envrd30
+, opt: optn(x0)
+, err:
+& sint >> _, frd: ftread30(x0)): optn(x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 tread30_d3pat
-(env0: !envrd30, d3p0: d3pat): d3pat
+( env0: !envrd30
+, d3p0: d3pat, nerr: &sint >> _): d3pat
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 tread30_d3exp
-(env0: !envrd30, d3e0: d3exp): d3exp
+( env0: !envrd30
+, d3e0: d3exp, nerr: &sint >> _): d3exp
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 tread30_d3ecl
-(env0: !envrd30, d3cl: d3ecl): d3ecl
+( env0: !envrd30
+, d3cl: d3ecl, nerr: &sint >> _): d3ecl
 //
 (* ****** ****** *)
 (* ****** ****** *)

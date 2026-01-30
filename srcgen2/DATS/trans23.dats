@@ -70,6 +70,13 @@ ATS3.XANADU.xatsopt-20220500"
 #staload "./../SATS/trans23.sats"
 (* ****** ****** *)
 //
+(*
+HX-2026-01-30:
+Yes, checking is performed
+before [trans23] is called!
+val dpar = d2parsed_of_tread20(dpar)
+Fri Jan 30 01:03:25 PM EST 2026
+*)
 #implfun
 trans03_from_fpath
   (stadyn, source) =
@@ -96,7 +103,8 @@ prerrsln("trans03_from_fpath: dpar = ", dpar)
 } (*where*)//end-of-[trans03_from_fpath(...)]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 d3parsed_of_trans23
   (dpar) = let
@@ -131,7 +139,7 @@ d3parsed
 ,nerror,source,t1penv,t2penv,t3penv,parsed)
 end//let
 end (*let*) // end of [d3parsed_of_trans23(dpar)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
