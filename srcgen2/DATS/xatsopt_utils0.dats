@@ -352,8 +352,8 @@ val dpar = d3parsed_of_trans23(dpar)
 //
 (*
 val (  ) =
-prerrsln
-("d3parsed_of_trans03: after(trans23)")
+prerrsln("\
+d3parsed_of_trans03: after(trans23)")
 val (  ) =
 prerrsln("d3parsed_of_trans03: dpar = ", dpar)
 *)
@@ -361,8 +361,8 @@ prerrsln("d3parsed_of_trans03: dpar = ", dpar)
 val dpar = d3parsed_of_tread23(dpar)
 (*
 val (  ) =
-prerrsln
-("d3parsed_of_trans03: after(tread23)")
+prerrsln("\
+d3parsed_of_trans03: after(tread23)")
 val (  ) =
 prerrsln("d3parsed_of_trans03: dpar = ", dpar)
 *)
