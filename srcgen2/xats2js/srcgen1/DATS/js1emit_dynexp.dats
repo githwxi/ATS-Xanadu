@@ -883,11 +883,11 @@ end where
 g_print
 <i1dcl>(idcl) =
 (
-  praux(idcl)) where
+  auxpr(idcl)) where
 {
 //
 fun
-praux
+auxpr
 (idcl: i1dcl): void =
 (
 case+
@@ -900,7 +900,7 @@ I1Dtmpsub
 print(
 "I1Dtmpsub(");
 prints(svts, ";");
-praux(idcl); print(")"))//tmpsub
+auxpr(idcl); print(")"))//tmpsub
 //
 |
 I1Dfundclst

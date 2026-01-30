@@ -37,10 +37,17 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (*
+//
 HX-2023-09-24:
 What does [trans3a] do?
 1. It cleans up types
 2. It tables top-level templates
+//
+HX-2026-01-30:
+Fri Jan 30 11:07:46 AM EST 2026
+For normalizing template arguments
+For tabling top-level template impls.
+//
 *)
 (* ****** ****** *)
 #include

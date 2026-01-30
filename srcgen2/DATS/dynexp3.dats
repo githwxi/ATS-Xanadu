@@ -451,11 +451,13 @@ timpl =
 TIMPL of
 (
 stamp, timpl_node)
+(*
 datatype
 timpl_vt =
 TIMPL_vt of
 (
 stamp, timpl_node)
+*)
 //
 #absimpl
 timpl_tbox = timpl
