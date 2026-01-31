@@ -90,19 +90,19 @@ local
 datavwtp
 tmqstk =
 //
-| tmqstk_nil of ()
+|tmqstk_nil of ()
 //
-| tmqstk_svts of
-  (sint, s2vts, tmqstk)
+|tmqstk_svts of
+(sint, s2vts, tmqstk)
 //
-| tmqstk_timp of
-  (stamp, d3ecl, tmqstk)
-| tmqstk_decl of
-  (stamp, d3ecl, tmqstk)
+|tmqstk_timp of
+(stamp, d3ecl, tmqstk)
+|tmqstk_decl of
+(stamp, d3ecl, tmqstk)
 //
-| tmqstk_let0 of (tmqstk)
-| tmqstk_loc1 of (tmqstk)
-| tmqstk_loc2 of (tmqstk)
+|tmqstk_let0 of (tmqstk)
+|tmqstk_loc1 of (tmqstk)
+|tmqstk_loc2 of (tmqstk)
 //
 (* ****** ****** *)
 //

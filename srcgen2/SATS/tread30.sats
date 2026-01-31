@@ -52,9 +52,9 @@ ATS_PACKNAME // namespace
 (* ****** ****** *)
 (* ****** ****** *)
 #absvtbx
-envrx30_vtbx
+tr30evn_vtbx
 #vwtpdef
-envrx30 = envrx30_vtbx
+tr30evn = tr30evn_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -91,12 +91,12 @@ d3parsed_of_tread30
 (* ****** ****** *)
 //
 fun
-envrx30_make_nil
-  ((*void*)): envrx30
+tr30evn_make_nil
+  ((*void*)): tr30evn
 //
 fun
-envrx30_free_nil
-  ( env0: envrx30 ): ( void )
+tr30evn_free_nil
+  ( evn0: tr30evn ): ( void )
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -105,7 +105,7 @@ envrx30_free_nil
 ftread30
 (syn : tbox) =
 (
-! envrx30
+! tr30evn
 , syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)
@@ -114,8 +114,8 @@ ftread30
 fun
 optn_tread30_fnp
 {x0:tx}
-( env:
-! envrx30
+( evn:
+! tr30evn
 , opt: optn(x0)
 , err:
 & sint >> _, frd: ftread30(x0)): optn(x0)
@@ -123,8 +123,8 @@ optn_tread30_fnp
 fun
 list_tread30_fnp
 {x0:tx}
-( env:
-! envrx30
+( evn:
+! tr30evn
 , lst: list(x0)
 , err:
 & sint >> _, frd: ftread30(x0)): list(x0)
@@ -134,8 +134,8 @@ list_tread30_fnp
 //
 fun
 tread30_d3pat
-( env0:
-! envrx30
+( evn0:
+! tr30evn
 , d3p0: d3pat, nerr: &sint >> _): d3pat
 //
 (* ****** ****** *)
@@ -143,8 +143,8 @@ tread30_d3pat
 //
 fun
 tread30_d3exp
-( env0:
-! envrx30
+( evn0:
+! tr30evn
 , d3e0: d3exp, nerr: &sint >> _): d3exp
 //
 (* ****** ****** *)
@@ -152,8 +152,8 @@ tread30_d3exp
 //
 fun
 tread30_d3ecl
-( env0:
-! envrx30
+( evn0:
+! tr30evn
 , d3cl: d3ecl, nerr: &sint >> _): d3ecl
 //
 (* ****** ****** *)

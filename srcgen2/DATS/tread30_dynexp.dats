@@ -80,7 +80,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
-tread30_d3pat(env0, d3p0, err0) = d3p0
+tread30_d3pat(evn0, d3p0, err0) = d3p0
 //
 (* ****** ****** *)
 (* ****** ****** *)

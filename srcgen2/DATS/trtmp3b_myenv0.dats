@@ -73,11 +73,13 @@ val
 stamper =
 stamper_new((*0*))
 in//local
+//
 fun
 the_tmpstk_stamp_new
   ((*void*)): stamp =
   stamper.getinc((*void*))
-endloc // the_tmpstk_stamp_new
+//
+endloc//the_tmpstk_stamp_new
 //
 (* ****** ****** *)
 (*
@@ -88,14 +90,14 @@ local
 datavwtp
 tmpstk =
 //
-| tmpstk_nil of ()
+|tmpstk_nil of ()
 //
-| tmpstk_decl of
-  (stamp, d3ecl, tmpstk)
+|tmpstk_decl of
+(stamp, d3ecl, tmpstk)
 //
-| tmpstk_let0 of (tmpstk)
-| tmpstk_loc1 of (tmpstk)
-| tmpstk_loc2 of (tmpstk)
+|tmpstk_let0 of (tmpstk)
+|tmpstk_loc1 of (tmpstk)
+|tmpstk_loc2 of (tmpstk)
 //
 (* ****** ****** *)
 //
@@ -597,6 +599,7 @@ val (  ) = tmpstk_free_nil(tmpstk) endlet
 //
 )(*case+*)//end-of-(tr3benv_free_nil(env0))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
