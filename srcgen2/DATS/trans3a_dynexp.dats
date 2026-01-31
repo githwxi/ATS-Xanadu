@@ -57,6 +57,7 @@ ATS3.XANADU.xatsopt-20220500"
 #staload
 _(*TRANS3a*) = "./trans3a.dats"
 (* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
@@ -64,6 +65,7 @@ _(*TRANS3a*) = "./trans3a.dats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #symload styp with d2var_get_styp
 (* ****** ****** *)
