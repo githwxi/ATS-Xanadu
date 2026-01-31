@@ -219,6 +219,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #typedef d3eclist = list(d3ecl)
 (* ****** ****** *)
+#typedef timplist = list(timpl)
+(* ****** ****** *)
 #typedef f1unarrw = $D1E.f1unarrw
 (* ****** ****** *)
 #typedef wths2exp = $D2E.wths2exp
@@ -421,6 +423,9 @@ d3exp_node =
 //
 |D3Etimp of
 (d3exp(*cst*), timpl)
+|D3Etimq of
+(d3exp(*cst*)
+,timpl(*tmp*), timplist)
 //
 (* ****** ****** *)
 //

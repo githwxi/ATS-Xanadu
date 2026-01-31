@@ -312,10 +312,17 @@ prints("D3Ecst(", d2c, ")")
 //
 (* ****** ****** *)
 //
-|
-D3Etimp
+|D3Etimp
 (d2e1, timp) =>
-prints("D3Etimp(",d2e1,";",timp,")")
+(
+prints
+("D3Etimp(",d2e1,";",timp,")"))
+//
+|D3Etimq
+(d2e1
+,timp, tmps) =>
+(print("D3Etimq(")
+;prints(d2e1,";",timp,";",tmps,")"))
 //
 (* ****** ****** *)
 //
