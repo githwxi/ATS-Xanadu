@@ -563,7 +563,7 @@ D3Cimplmnt0
 (tknd
 ,stmp
 ,sqas,tqas
-,dqid
+,dimp
 ,tias,fags
 ,sres,dexp) = dcl.node()
 //
@@ -576,8 +576,24 @@ val tias =
   tread3a_t2iaglst(tias, err)
 *)
 //
+val (  ) =
+(
+case+
+dimp.node() of
+|
+DIMPLone1
+(  dcst  ) => ( (*void*) )
+|
+DIMPLone2
+(
+dcst,svts) => ( (*void*) )
+|
+DIMPLnon1
+(  dqid  ) => (err:=(err+1)))
+//
 val fags =
-  tread3a_f3arglst(fags, err)
+(
+  tread3a_f3arglst(fags, err))
 //
 (*
 val sres = tread3a_s2res(sres, err)
@@ -586,12 +602,14 @@ val sres = tread3a_s2res(sres, err)
 val dexp = tread3a_d3exp(dexp, err)
 //
 in//let
-if
+//
+if // if
 (err=e00)
 then (dcl) else
 d3ecl_implmnt0_errck
 (dcl.lctn(), tknd, stmp
-,sqas, tqas, dqid, tias, fags, sres, dexp)
+,sqas, tqas, dimp, tias, fags, sres, dexp)
+//
 end (*let*) // end-of-[f0_implmnt0(dcl,err)]
 //
 (* ****** ****** *)

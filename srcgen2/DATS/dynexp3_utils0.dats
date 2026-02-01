@@ -1075,15 +1075,14 @@ DIMPLone2
   f0_targequ(svts, t2js) )
 //
 |
-_(*otherwise*) => ( false )
+_(*otherwise*) => (  false  )
 //
-) (*case+*)//end-of-[D3Cimplmnt0(...)]
+)(*case+*)//end-of-[D3Cimplmnt0(...)]
 //
-|
-D3Ctmpsub
-(tsub, dcl1) => f0_main(dcl1, t2js)
+| D3Ctmpsub
+( tsub, dcl1 ) => f0_main( dcl1, t2js )
 //
-| _(* otherwise *) => (     false     )
+| _(* otherwise *) => (      false      )
 //
 ) (*case+*) // end-of-[f0_main(d3cl,t2js)]
 //

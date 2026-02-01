@@ -579,18 +579,18 @@ tmqstk_decl
 tmqstk_let0
 (   stk1   ) =>
 (
-  tmqstk_getstmp(stk1))
+  tmqstk_getstmp( stk1 ))
 //
 | // !
 tmqstk_loc1
 (   stk1   ) =>
 (
-  tmqstk_getstmp(stk1))
+  tmqstk_getstmp( stk1 ))
 | // !
 tmqstk_loc2
 (   stk1   ) =>
 (
-  tmqstk_getstmp(stk1))
+  tmqstk_getstmp( stk1 ))
 //
 ) (*case+*) // end of [tmqstk_getstmp(stk0)]
 //
@@ -611,36 +611,36 @@ tmqstk_nil
 | // !
 tmqstk_svts
 ( nimp
-, svts, stk1) => svts
+, svts, stk1) => (svts)
 //
 | // !
 tmqstk_timp
 (_, _, stk1) =>
 (
-  tmqstk_getsvts(stk1))
+  tmqstk_getsvts( stk1 ))
 //
 | // !
 tmqstk_decl
 (_, _, stk1) =>
 (
-  tmqstk_getsvts(stk1))
+  tmqstk_getsvts( stk1 ))
 //
 | // !
 tmqstk_let0
 (   stk1   ) =>
 (
-  tmqstk_getsvts(stk1))
+  tmqstk_getsvts( stk1 ))
 //
 | // !
 tmqstk_loc1
 (   stk1   ) =>
 (
-  tmqstk_getsvts(stk1))
+  tmqstk_getsvts( stk1 ))
 | // !
 tmqstk_loc2
 (   stk1   ) =>
 (
-  tmqstk_getsvts(stk1))
+  tmqstk_getsvts( stk1 ))
 //
 ) (*case+*) // end of [tmqstk_getsvts(stk0)]
 //

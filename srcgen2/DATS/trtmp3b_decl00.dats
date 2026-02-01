@@ -118,12 +118,18 @@ in//let
 case+
 d3cl.node() of
 //
+(* ****** ****** *)
+//
 |D3Cnone0 _ => d3cl
 |D3Cnone1 _ => d3cl
 |D3Cnone2 _ => d3cl
 //
+(* ****** ****** *)
+//
 |D3Cd2ecl _ => d3cl
 |D3Cerrck _ => d3cl
+//
+(* ****** ****** *)
 //
 |D3Cstatic _ => d3cl
 |D3Cextern _ => d3cl
@@ -157,26 +163,31 @@ Sat 20 Jul 2024 07:22:10 PM EDT
 |D3Cextcode _ => f0_extcode(env0, d3cl)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Cvaldclst _ => f0_valdclst(env0, d3cl)
+|D3Cvardclst _ => f0_vardclst(env0, d3cl)
+//
+|D3Cfundclst _ => f0_fundclst(env0, d3cl)
+//
+|D3Cimplmnt0 _ => f0_implmnt0(env0, d3cl)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |
-D3Cvaldclst _ => f0_valdclst(env0, d3cl)
-|
-D3Cvardclst _ => f0_vardclst(env0, d3cl)
-//
-|
-D3Cfundclst _ => f0_fundclst(env0, d3cl)
-//
-|
-D3Cimplmnt0 _ => f0_implmnt0(env0, d3cl)
-//
-| _(*otherwise*) =>
+_(*otherwise*) =>
 let
   val loc0 = d3cl.lctn()
 in//let
-  d3ecl_make_node(loc0, D3Cnone2( d3cl ))
-end (*let*) // end of [_(*otherwise*)] // temp
+(
+  d3ecl_make_node(loc0, D3Cnone2( d3cl )))
+end (*let*)//end-of-[_(*otherwise*)]//temp
 //
-endlet where
+(* ****** ****** *)
+(* ****** ****** *)
+//
+endlet where//end-of-[implfun(trtmp3b_d3ecl)]
 {
 //
 (* ****** ****** *)

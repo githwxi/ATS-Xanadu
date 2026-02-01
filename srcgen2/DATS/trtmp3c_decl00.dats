@@ -574,8 +574,7 @@ val-
 D3Cimplmnt0
 ( tknd
 , stmp
-, sqas
-, tqas
+, sqas, tqas
 , dimp
 , tias, f3as
 , sres, dexp) = d3cl.node()
@@ -584,14 +583,14 @@ in//let
 //
 let
 val
-dexp = trtmp3c_d3exp(env0, dexp) in
+dexp = trtmp3c_d3exp(env0, dexp)
+in//let
 d3ecl
 (
 loc0,
 D3Cimplmnt0
-( tknd,stmp
-, sqas,tqas,dimp,tias,f3as,sres,dexp) )
-end(*let*)//end-of-[if-then-else]
+(tknd,stmp
+,sqas,tqas,dimp,tias,f3as,sres,dexp))end
 //
 end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
 //

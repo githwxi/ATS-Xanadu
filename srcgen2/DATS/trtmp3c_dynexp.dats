@@ -371,9 +371,11 @@ tr3cenv_tapq_resolve
 ( env0, d2c0, t2js )//val(timp)
 //
 (*
-// HX:
-// It is merged into
-// [tr3cenv_tapq_resolve]
+(*
+HX:
+It is merged into
+[tr3cenv_tapq_resolve]
+*)
 val
 timp =
 tr3cenv_timp_resolve

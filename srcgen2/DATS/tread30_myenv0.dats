@@ -150,12 +150,13 @@ loop(stk1, list_vt_cons(tmp1, tmps)))
 tr30evn_make_nil
   ((*nil*)) =
 (
-  TR30EVN(trdstk_nil((*void*)))
-) where
+TR30EVN(trdstk_nil((*void*))))
+where
 {
 // (*
-  val () =
-  prerrsln("tr30evn_make_nil(", ")")
+val () =
+(
+  prerrsln("tr30evn_make_nil()"))
 // *)
 }(*where*)//end of [tr30evn_make_nil(...)]
 //
@@ -178,7 +179,14 @@ case- stk0 of
 | ~trdstk_cons(tmp1, stk1) => ...
 *)
 //
-end(*let*)//end-of-[tr30evn_free_nil(evn0)]
+end where
+{
+// (*
+val () =
+(
+  prerrsln("tr30evn_free_nil(...)"))
+// *)
+}(*where*)//end-of-[tr30evn_free_nil(evn0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
