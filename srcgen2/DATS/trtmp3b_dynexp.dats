@@ -96,6 +96,8 @@ in//let
 case+
 d3e0.node() of
 //
+(* ****** ****** *)
+//
 |D3Evar _ => d3e0
 //
 |D3Eint _ => d3e0
@@ -115,7 +117,9 @@ d3e0.node() of
 //
 |D3Etop _ => d3e0
 //
+(* ****** ****** *)
 |D3Etimp _ => f0_timp(env0, d3e0)
+(* ****** ****** *)
 //
 |D3Esapp _ => f0_sapp(env0, d3e0)
 |D3Esapq _ => f0_sapq(env0, d3e0)
@@ -129,30 +133,37 @@ d3e0.node() of
 |D3Epcon _ => f0_pcon(env0, d3e0)
 |D3Eproj _ => f0_proj(env0, d3e0)
 //
+(* ****** ****** *)
 |D3Elet0 _ => f0_let0(env0, d3e0)
+(* ****** ****** *)
 //
+(* ****** ****** *)
 |D3Eift0 _ => f0_ift0(env0, d3e0)
 |D3Ecas0 _ => f0_cas0(env0, d3e0)
+(* ****** ****** *)
 //
 |D3Eseqn _ => f0_seqn(env0, d3e0)
 //
+(* ****** ****** *)
 |D3Etup0 _ => f0_tup0(env0, d3e0)
 |D3Etup1 _ => f0_tup1(env0, d3e0)
 |D3Ercd2 _ => f0_rcd2(env0, d3e0)
+(* ****** ****** *)
 //
 |D3Elam0 _ => f0_lam0(env0, d3e0)
 |D3Efix0 _ => f0_fix0(env0, d3e0)
 //
+(* ****** ****** *)
 |D3Etry0 _ => f0_try0(env0, d3e0)
+(* ****** ****** *)
 //
 |D3Eaddr _ => f0_addr(env0, d3e0)
 |D3Eview _ => f0_view(env0, d3e0)
 |D3Eflat _ => f0_flat(env0, d3e0)
 //
+(* ****** ****** *)
 |D3Efold _ => f0_fold(env0, d3e0)
-//
 |D3Efree _ => f0_free(env0, d3e0)
-//
 (* ****** ****** *)
 //
 |D3Edp2tr _ => f0_dp2tr(env0, d3e0)
@@ -193,14 +204,19 @@ D3Eextnam _ => f0_extnam(env0, d3e0)
 D3Esynext _ => f0_synext(env0, d3e0)
 //
 (* ****** ****** *)
-|D3Enone0() => d3e0|D3Enone1(_) => d3e0
+|
+D3Enone0 _ => d3e0|D3Enone1 _ => d3e0
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |
 _(*otherwise*) =>
+(
 let
-val dres = d3exp_none2(d3e0) in dres end
+val
+dres = d3exp_none2(d3e0) in dres end)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end where // end-of-[trtmp3b_d3exp(...)]

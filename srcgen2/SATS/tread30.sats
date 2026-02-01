@@ -99,6 +99,20 @@ tr30evn_free_nil
   ( evn0: tr30evn ): ( void )
 //
 (* ****** ****** *)
+//
+fun
+tr30evn_tmps$get
+(evn0: !tr30evn): timplist
+//
+fun
+tr30evn_timp$pop
+(evn0: !tr30evn): ( void )
+fun
+tr30evn_timp$psh
+( evn0:
+! tr30evn, timp: timpl): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef
@@ -148,6 +162,14 @@ tread30_d3exp
 , d3e0: d3exp, nerr: &sint >> _): d3exp
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+tread30_timpl
+( evn0:
+! tr30evn
+, timp: timpl, nerr: &sint >> _): timpl
+//
 (* ****** ****** *)
 //
 fun
