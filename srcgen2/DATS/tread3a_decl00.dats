@@ -71,6 +71,9 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with dimpl_get_lctn
+#symload node with dimpl_get_node
+(* ****** ****** *)
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
 (* ****** ****** *)
