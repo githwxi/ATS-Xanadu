@@ -96,7 +96,6 @@ ATS_PACKNAME
 #symload lctn with d3cls_get_lctn
 #symload node with d3cls_get_node
 (* ****** ****** *)
-//
 (* ****** ****** *)
 //
 fun
@@ -123,6 +122,7 @@ d3exp_make_node
 (loc0, D3Eerrck(lvl0, d3e0))
 end (*let*)//end-of(d3exp_errck)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
