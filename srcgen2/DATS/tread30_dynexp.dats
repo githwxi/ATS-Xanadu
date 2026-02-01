@@ -85,8 +85,109 @@ tread30_d3pat(evn0, d3p0, err0) = d3p0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #implfun
 tread30_d3exp(evn0, d3e0, err0) = d3e0
+*)
+#implfun
+tread30_d3exp
+(evn0, d3e0, err0) =
+let
+//
+(*
+val
+loc0 = d3e0.lctn()
+val () =
+prerrsln
+("tread30_d3exp: loc0 = ", loc0)
+val () =
+prerrsln
+("tread30_d3exp: d3e0 = ", d3e0)
+*)
+//
+in//let
+//
+case+
+d3e0.node() of
+//
+(* ****** ****** *)
+//
+|D3Evar _ => d3e0
+//
+|D3Eint _ => d3e0
+|D3Ebtf _ => d3e0
+|D3Echr _ => d3e0
+|D3Eflt _ => d3e0
+|D3Estr _ => d3e0
+//
+|D3Ei00 _ => d3e0
+|D3Eb00 _ => d3e0
+|D3Ec00 _ => d3e0
+|D3Ef00 _ => d3e0
+|D3Es00 _ => d3e0
+//
+|D3Econ _ => d3e0
+|D3Ecst _ => d3e0
+//
+|D3Etop _ => d3e0
+//
+(* ****** ****** *)
+//
+|
+D3Etimp _ =>
+(
+f0_timp(evn0, d3e0, err0))
+//
+(* ****** ****** *)
+|
+_(*otherwise*) =>
+(
+let
+val
+dres = d3exp_none2(d3e0) in dres end)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+end where
+{
+//
+fun
+f0_timp
+( evn0:
+! tr30evn
+, d3e0: d3exp
+, nerr: &sint >> _): d3exp =
+let
+//
+val nerr = err0
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Etimp
+( d3f0
+, timp ) = d3e0.node()
+//
+val (  ) =
+tr30evn_timp$psh(evn0, timp)
+//
+val timp =
+tread30_timpl(evn0, timp, err0)
+//
+val (  ) = tr30evn_timp$pop(evn0)
+val tmps = tr30evn_tmps$get(evn0)
+//
+in//let
+if // if
+(nerr=err0)
+then (d3e0) else
+(
+d3exp_make_tpnd
+(loc0, t2p0, D3Etimq(d3f0,timp,tmps)))
+end(*let*)//end-of-[ f0_timp(env0,d3e0) ]
+//
+}(*where*)//end-of-[tread30_d3exp(evn0,d3e0,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

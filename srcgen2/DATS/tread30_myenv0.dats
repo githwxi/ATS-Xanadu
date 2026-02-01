@@ -93,7 +93,7 @@ trdstk =
 (* ****** ****** *)
 //
 fun
-trdstk_poptimp
+trdstk_timp$pop
 ( stk0:
 & trdstk): sint =
 (
@@ -104,21 +104,21 @@ trdstk_nil
 |
 trdstk_cons
 (timp, stk1) => (stk0 := stk1; 0)
-)(*case+*)//end-of-[trdstk_poptimp]
+)(*case+*)//end-of-[trdstk_timp$pop]
 //
 fun
-trdstk_pshtimp
+trdstk_timp$psh
 ( stk0:
 & trdstk
 , timp: timpl): void =
 (
   stk0 := trdstk_cons(timp, stk0))
-//end-of-[trdstk_pshtimp(stk0,timp)]
+//end-of-[trdstk_timp$psh(stk0,timp)]
 //
 (* ****** ****** *)
 //
 fun
-trdstk_gettmps
+trdstk_tmps$get
 ( stk0:
 ! trdstk): list(timpl) =
 (
@@ -141,7 +141,7 @@ case+ stk0 of
 (tmp1, stk1) =>
 loop(stk1, list_vt_cons(tmp1, tmps)))
 //
-}(*where*)//end-of-[trdstk_gettmps(stk0)]
+}(*where*)//end-of-[trdstk_tmps$get(stk0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -187,6 +187,44 @@ val () =
   prerrsln("tr30evn_free_nil(...)"))
 // *)
 }(*where*)//end-of-[tr30evn_free_nil(evn0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tr30evn_tmps$get
+  ( evn0 ) =
+let
+val+
+TR3CENV
+( stk0 ) = env0 in trdstk_tmps$get(stk0)
+end(*let*)//end-of-[ tr30evn_tmps$get(evn0) ]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tr30evn_timp$pop
+  ( evn0 ) =
+let
+val+
+@TR3CENV
+( !stk0 ) = env0
+val nerr =
+trdstk_timp$pop(stk0) in $fold(evn0) end
+//
+(* ****** ****** *)
+//
+#implfun
+tr30evn_timp$psh
+  (evn0, timp) =
+let
+val+
+@TR3CENV
+( !stk0 ) = env0
+val nerr =
+trdstk_timp$psh(stk0, timp) in $fold(evn0)
+end(*let*)//end-of-[tr30evn_timp$psh(evn0,timp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

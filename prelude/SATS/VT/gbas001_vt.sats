@@ -158,7 +158,13 @@ fun
 iexists$test0(ni, ~x0): bool
 fun
 <x0:vt>
+iexists$tcmp0(ni, ~x0): sint
+fun
+<x0:vt>
 iexists$test1(ni, !x0): bool
+fun
+<x0:vt>
+iexists$tcmp1(ni, !x0): sint
 //
 (* ****** ****** *)
 //
