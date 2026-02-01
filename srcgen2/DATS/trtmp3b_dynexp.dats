@@ -215,17 +215,20 @@ f0_timp
 ! tr3benv
 , d3e0: d3exp): d3exp =
 (
-  d3e0 ) where
+     d3e0     ) where
 {
+//
 (*
 val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
 *)
+//
 (*
 HX-2025-05-22:
 [trtmp3b] is non-recursive!!!
 *)
-}(*where*)//end-of-[ f0_timp(env0,d3e0) ]
+//
+}(*where*)//end-of-[f0_timp(env0,d3e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -251,8 +254,8 @@ d3f0 = trtmp3b_d3exp(env0, d3f0)
 in//let
 (
   d3exp_make_tpnd
-  (loc0, t2p0, D3Esapp(d3f0, s2es)) )
-end(*let*)//end-of-[ f0_sapp(env0,d3e0) ]
+  (loc0, t2p0, D3Esapp(d3f0, s2es)))
+end(*let*)//end-of-[f0_sapp(env0,d3e0)]
 //
 (* ****** ****** *)
 //
@@ -277,8 +280,8 @@ d3f0 = trtmp3b_d3exp(env0, d3f0)
 in//let
 (
   d3exp_make_tpnd
-  (loc0, t2p0, D3Esapq(d3f0, t2ps)) )
-end(*let*)//end-of-[ f0_sapq(env0,d3e0) ]
+  (loc0, t2p0, D3Esapq(d3f0, t2ps)))
+end(*let*)//end-of-[f0_sapq(env0,d3e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -345,7 +348,7 @@ tr3benv_tapq_resolve
 in//let
 (
 d3exp_make_tpnd
-(loc0, t2p0, D3Etimp(d3e0, timp)) )
+(loc0, t2p0, D3Etimp(d3e0, timp)))
 end//let
 | _(*non-D3Ecst*) => (    d3e0    )
 //

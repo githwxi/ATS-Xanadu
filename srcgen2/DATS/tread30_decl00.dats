@@ -80,7 +80,58 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
-tread30_d3ecl(evn0, d3cl, err0) = d3cl
+tread30_d3ecl
+(evn0, d3cl, err0) =
+let
+//
+(*
+val
+loc0 = d3cl.lctn()
+val () =
+prerrsln
+("tread30_d3ecl: loc0 = ", loc0)
+val () =
+prerrsln
+("tread30_d3ecl: d3cl = ", d3cl)
+*)
+//
+in//let
+//
+case+
+d3cl.node() of
+//
+(* ****** ****** *)
+//
+|D3Cnone0 _ => d3cl
+|D3Cnone1 _ => d3cl
+|D3Cnone2 _ => d3cl
+//
+(* ****** ****** *)
+//
+|D3Cd2ecl _ => d3cl
+|D3Cerrck _ => d3cl
+//
+(* ****** ****** *)
+//
+|D3Cstatic _ => d3cl
+|D3Cextern _ => d3cl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|
+_(*otherwise*) =>
+let
+  val loc0 = d3cl.lctn()
+in//let
+(
+  d3ecl_make_node(loc0, D3Cnone2( d3cl )))
+end (*let*)//end-of-[_(*otherwise*)]//temp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+end(*let*)//end-of-[tread30_d3ecl(evn0,d3cl,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
