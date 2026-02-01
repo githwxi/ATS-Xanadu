@@ -136,13 +136,7 @@ fun
 rexists$test0(x0: ~x0): bool
 fun
 <x0:vt>
-rexists$tcmp0(x0: ~x0): sint
-fun
-<x0:vt>
 rexists$test1(x0: !x0): bool
-fun
-<x0:vt>
-rexists$tcmp1(x0: !x0): sint
 //
 (* ****** ****** *)
 //

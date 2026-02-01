@@ -79,15 +79,67 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+d3exp_errck
+(lvl0: sint
+,d3e0: d3exp): d3exp =
+let
+val loc0 = d3e0.lctn()
+in//let
+d3exp_make_node
+(loc0, D3Eerrck(lvl0, d3e0))
+end (*let*)//end-of(d3exp_errck)
+//
+(* ****** ****** *)
+//
+fun
+d3exp_errvl_a1
+(d3e0: d3exp): sint =
+(
+case+ d3e0.node() of
+|
+D3Eerrck
+(lvl0, _) => lvl0 | _ => 0
+)
+#symload
+d3exp_errvl with d3exp_errvl_a1
+#symload errvl with d3exp_errvl_a1
+//
+(* ****** ****** *)
+//
+fun
+d3exp_errvl_a2
+(d3e1: d3exp
+,d3e2: d3exp): sint =
+maxs
+(errvl(d3e1),errvl(d3e2))
+#symload
+d3exp_errvl with d3exp_errvl_a2
+#symload errvl with d3exp_errvl_a2
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
-tread30_d3pat(evn0, d3p0, err0) = d3p0
+tread30_d3pat
+(evn0, d3p0, err0) =
+(
+       d3p0       )
+where
+{
+(*
+val () =
+prerrsln("tread30_d3pat: d3p0 = ", d3p0)
+*)
+}(*where*)//end-of-[tread30_d3pat(evn0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
 #implfun
-tread30_d3exp(evn0, d3e0, err0) = d3e0
+tread30_d3exp
+(evn0, d3e0, err0) = d3e0
 *)
 #implfun
 tread30_d3exp
@@ -187,7 +239,7 @@ d3exp_make_tpnd
 (loc0, t2p0, D3Etimq(d3f0,timp,tmps)))
 end(*let*)//end-of-[ f0_timp(env0,d3e0) ]
 //
-}(*where*)//end-of-[tread30_d3exp(evn0,d3e0,err0)]
+}(*where*)//end-of-[tread30_d3exp(evn0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

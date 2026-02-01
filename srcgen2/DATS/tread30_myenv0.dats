@@ -196,8 +196,8 @@ tr30evn_tmps$get
   ( evn0 ) =
 let
 val+
-TR3CENV
-( stk0 ) = env0 in trdstk_tmps$get(stk0)
+TR30EVN
+( stk0 ) = evn0 in trdstk_tmps$get(stk0)
 end(*let*)//end-of-[ tr30evn_tmps$get(evn0) ]
 //
 (* ****** ****** *)
@@ -208,8 +208,8 @@ tr30evn_timp$pop
   ( evn0 ) =
 let
 val+
-@TR3CENV
-( !stk0 ) = env0
+@TR30EVN
+( !stk0 ) = evn0
 val nerr =
 trdstk_timp$pop(stk0) in $fold(evn0) end
 //
@@ -220,8 +220,8 @@ tr30evn_timp$psh
   (evn0, timp) =
 let
 val+
-@TR3CENV
-( !stk0 ) = env0
+@TR30EVN
+( !stk0 ) = evn0
 val nerr =
 trdstk_timp$psh(stk0, timp) in $fold(evn0)
 end(*let*)//end-of-[tr30evn_timp$psh(evn0,timp)]

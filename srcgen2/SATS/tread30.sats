@@ -59,13 +59,20 @@ tr30evn = tr30evn_vtbx
 (* ****** ****** *)
 //
 #typedef d3pat = $D3E.d3pat
+//
 #typedef d3exp = $D3E.d3exp
+#typedef timpl = $D3E.timpl
+//
 #typedef d3ecl = $D3E.d3ecl
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #typedef d3patlst = $D3E.d3patlst
+//
 #typedef d3explst = $D3E.d3explst
+#typedef timplist = $D3E.timplist
+//
 #typedef d3eclist = $D3E.d3eclist
 //
 (* ****** ****** *)
