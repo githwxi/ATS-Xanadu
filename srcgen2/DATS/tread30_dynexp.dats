@@ -85,9 +85,11 @@ d3exp_errck
 ,d3e0: d3exp): d3exp =
 let
 val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
 in//let
-d3exp_make_node
-(loc0, D3Eerrck(lvl0, d3e0))
+d3exp_make_tpnd
+(loc0
+,t2p0, D3Eerrck(lvl0, d3e0))
 end (*let*)//end-of(d3exp_errck)
 //
 (* ****** ****** *)
@@ -228,15 +230,23 @@ val timp =
 tread30_timpl(evn0, timp, err0)
 //
 val (  ) = tr30evn_timp$pop(evn0)
-val tmps = tr30evn_tmps$get(evn0)
 //
 in//let
+//
 if // if
 (nerr=err0)
 then (d3e0) else
+let
+val lvl0 = (  0  )
+val tmps = tr30evn_tmps$get(evn0)
+in//let
+d3exp_errck
 (
+lvl0+1,
 d3exp_make_tpnd
 (loc0, t2p0, D3Etimq(d3f0,timp,tmps)))
+end//let
+//
 end(*let*)//end-of-[ f0_timp(env0,d3e0) ]
 //
 }(*where*)//end-of-[tread30_d3exp(evn0,...)]
