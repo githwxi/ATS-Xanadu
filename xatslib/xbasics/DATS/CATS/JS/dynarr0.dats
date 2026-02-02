@@ -96,11 +96,11 @@ let
 #typedef xs = jsa1(a)
 //
 #impltmp
-gseq_sep<xs><x0>() = ","
+gseq$sep<xs><x0>() = ","
 #impltmp
-gseq_end<xs><x0>() = ")"
+gseq$end<xs><x0>() = ")"
 #impltmp
-gseq_beg<xs><x0>() = "jsdasz("
+gseq$beg<xs><x0>() = "jsdasz("
 in//let
 (
   gseq_print1< xs >< x0 >( xs ) )
