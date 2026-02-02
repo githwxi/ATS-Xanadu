@@ -220,7 +220,30 @@ d3exp_errck
 (lvl0+1
 ,d3exp_make_tpnd
  (loc0, t2p0, D3Elet0(dcls, d3e1)))
-endlet//end of [d3exp_let0_errck(...)]
+endlet//end-of-[d3exp_let0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_ift0_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3e1: d3exp
+,dthn: d3expopt
+,dels: d3expopt): d3exp =
+let
+val
+lvl0 = maxs
+(
+errvl(d3e1),
+errvl(dthn), errvl(dels))
+in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_tpnd(
+loc0,t2p0,D3Eift0(d3e1,dthn,dels)))
+endlet//end-of-[d3exp_ift0_errck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -314,9 +337,11 @@ d3e0.node() of
 |D3Eift0 _ =>
 (
   f0_ift0(evn0, d3e0, err0))
+(*
 |D3Ecas0 _ =>
 (
   f0_cas0(evn0, d3e0, err0))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -495,6 +520,48 @@ in//let
 end//let
 //
 end(*let*)//end of [f0_let0(evn0,d3e0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_ift0
+( evn0:
+! tr30evn
+, d3e0: d3exp
+, err0: &sint >> _): d3exp =
+let
+//
+val nerr = err0
+//
+val-
+D3Eift0
+( d3e1
+, dthn, dels) = d3e0.node()
+//
+val
+d3e1 =
+tread30_d3exp(evn0, d3e1, err0)
+val
+dthn =
+tread30_d3expopt(evn0, dthn, err0)
+val
+dels =
+tread30_d3expopt(evn0, dels, err0)
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val t2p0 = d3e0.styp()
+in//let
+(
+  d3exp_ift0_errck
+  (d3e0.lctn(),t2p0,d3e1,dthn,dels) )
+end//let
+//
+end(*let*)//end-of-[f0_ift0(evn0,d3e0,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
