@@ -81,6 +81,7 @@ ATS_PACKNAME
 #symload lctn with d3vardcl_get_lctn
 #symload lctn with d3fundcl_get_lctn
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3ecl_errck
@@ -294,6 +295,7 @@ D3Cdyninit _ => f0_dyninit(d3cl, err)
 D3Cextcode _ => f0_extcode(d3cl, err)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |
 D3Cvaldclst _ => f0_valdclst(d3cl, err)
@@ -307,6 +309,7 @@ D3Cfundclst _ => f0_fundclst(d3cl, err)
 |
 D3Cimplmnt0 _ => f0_implmnt0(d3cl, err)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |

@@ -79,6 +79,80 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+d3ecl_errck
+(lvl0: sint
+,d3cl: d3ecl): d3ecl =
+let
+val loc0 = d3cl.lctn()
+in//let
+d3ecl_make_node
+(loc0, D3Cerrck(lvl0, d3cl))
+end (*let*) // end-of(d3ecl_errck)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3ecl_valdclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d3vs
+: d3valdclist): d3ecl =
+let
+val
+lvl0 = 0 in//let
+d3ecl_errck
+(lvl0+1, d3ecl(loc0,D3Cvaldclst(tknd,d3vs)))
+end(*let*)//end-of-[d3ecl_vardclst_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3ecl_vardclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d3vs
+: d3vardclist): d3ecl =
+let
+val
+lvl0 = 0 in//let
+d3ecl_errck
+(lvl0+1, d3ecl(loc0,D3Cvardclst(tknd,d3vs)))
+end(*let*)//end-of-[d3ecl_vardclst_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3ecl_fundclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, tqas
+: t2qaglst
+, d2cs
+: d2cstlst
+, d3fs
+: d3fundclist): d3ecl =
+let
+val
+lvl0 = 0 in//let
+d3ecl_errck
+(
+lvl0+1,
+d3ecl(
+  loc0, D3Cfundclst(tknd, tqas, d2cs, d3fs))
+)(*d3ecl_errck*)
+end(*let*)//end-of-[d3ecl_fundclst_errck(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 tread30_d3ecl
 (evn0, d3cl, err0) =
@@ -97,6 +171,7 @@ prerrsln
 //
 in//let
 //
+(
 case+
 d3cl.node() of
 //
@@ -119,6 +194,22 @@ d3cl.node() of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|D3Cvaldclst _ =>
+(
+  f0_valdclst(evn0, d3cl, err0))
+|D3Cvardclst _ =>
+(
+  f0_vardclst(evn0, d3cl, err0))
+//
+(* ****** ****** *)
+//
+|D3Cfundclst _ =>
+(
+  f0_fundclst(evn0, d3cl, err0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |
 _(*otherwise*) =>
 let
@@ -128,8 +219,98 @@ in//let
   d3ecl_make_node(loc0, D3Cnone2( d3cl )))
 end (*let*)//end-of-[_(*otherwise*)]//temp
 //
+) where
+{
+//
 (* ****** ****** *)
+//
+fun
+f0_valdclst
+( evn0:
+! tr30evn
+, dcl0: d3ecl
+, err0: &sint >> _): d3ecl =
+let
+//
+val nerr = err0
+val loc0 = dcl0.lctn()
+//
+val-
+D3Cvaldclst
+(tknd, d3vs) = dcl0.node()
+//
+val d3vs =
+tread30_d3valdclist(evn0, d3vs, err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (dcl0) else
+(
+  d3ecl_valdclst_errck(loc0, tknd, d3vs))
+end(*let*)//end-of-[f0_valdclst(evn0,dcl0,err0)]
+//
 (* ****** ****** *)
+//
+fun
+f0_vardclst
+( evn0:
+! tr30evn
+, dcl0: d3ecl
+, err0: &sint >> _): d3ecl =
+let
+//
+val nerr = err0
+val loc0 = dcl0.lctn()
+//
+val-
+D3Cvardclst
+(tknd, d3vs) = dcl0.node()
+//
+val d3vs =
+tread30_d3vardclist(evn0, d3vs, err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (dcl0) else
+(
+  d3ecl_vardclst_errck(loc0, tknd, d3vs))
+end(*let*)//end-of-[f0_vardclst(evn0,dcl0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+( evn0:
+! tr30evn
+, dcl0: d3ecl
+, err0: &sint >> _): d3ecl =
+let
+//
+val nerr = err0
+//
+val-
+D3Cfundclst
+(tknd
+,tqas
+,d2cs, d3fs) = dcl0.node()
+//
+val d3fs =
+tread30_d3fundclist(evn0, d3fs, err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (dcl0) else
+(
+d3ecl_fundclst_errck
+( dcl0.lctn(), tknd, tqas, d2cs, d3fs ) )
+end(*let*)//end-of-[f0_fundclst(evn0,dcl0,err0)]
+//
+(* ****** ****** *)
+//
+}(*where*)
 //
 end(*let*)//end-of-[tread30_d3ecl(evn0,d3cl,err0)]
 //
@@ -227,6 +408,40 @@ then (dvar) else
 (
   d3vardcl(loc0,dpid,vpid,sres,dini))
 end(*let*)//end(tread30_d3vardcl(evn0,dval,err0))
+//
+(* ****** ****** *)
+//
+#implfun
+tread30_d3fundcl
+(evn0, dfun, err0) =
+let
+//
+val nerr = err0
+//
+val loc0 = dfun.lctn()
+//
+val
+dpid = d3fundcl_get_dpid(dfun)
+val
+farg = d3fundcl_get_farg(dfun)
+val
+sres = d3fundcl_get_sres(dfun)
+val
+tdxp = d3fundcl_get_tdxp(dfun)
+val
+wsxp = d3fundcl_get_wsxp(dfun)
+//
+val
+tdxp =
+tread30_teqd3exp(evn0,tdxp,err0)
+//
+in//let
+if
+(err0=nerr)
+then (dfun) else
+(
+  d3fundcl(loc0,dpid,farg,sres,tdxp,wsxp))
+end(*let*)//end(tread30_d3fundcl(evn0,dfun,err0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
