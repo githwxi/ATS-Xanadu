@@ -223,6 +223,14 @@ tread30_d3expopt
 optn_tread30_fnp(evn0, dopt, err0, tread30_d3exp)
 //
 (* ****** ****** *)
+//
+#implfun
+tread30_d3clslst
+( evn0
+, dclz, err0 ) =
+list_tread30_fnp(evn0, dclz, err0, tread30_d3cls)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
