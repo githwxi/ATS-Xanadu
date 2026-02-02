@@ -290,28 +290,35 @@ d3e0.node() of
 //
 (* ****** ****** *)
 //
-|
-D3Etimp _ =>
+|D3Etimp _ =>
 (
   f0_timp(evn0, d3e0, err0))
 //
 (* ****** ****** *)
 //
-|
-D3Edap0 _ =>
+|D3Edap0 _ =>
 (
   f0_dap0(evn0, d3e0, err0))
-|
-D3Edapp _ =>
+|D3Edapp _ =>
 (
   f0_dapp(evn0, d3e0, err0))
 //
 (* ****** ****** *)
-|
-D3Elet0 _ =>
+//
+|D3Elet0 _ =>
 (
   f0_let0(evn0, d3e0, err0))
 //
+(* ****** ****** *)
+//
+|D3Eift0 _ =>
+(
+  f0_ift0(evn0, d3e0, err0))
+|D3Ecas0 _ =>
+(
+  f0_cas0(evn0, d3e0, err0))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 |
 _(*otherwise*) =>

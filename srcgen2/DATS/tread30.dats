@@ -216,6 +216,12 @@ tread30_d3explst
 , d3es, err0 ) =
 list_tread30_fnp(evn0, d3es, err0, tread30_d3exp)
 //
+#implfun
+tread30_d3expopt
+( evn0
+, dopt, err0 ) =
+optn_tread30_fnp(evn0, dopt, err0, tread30_d3exp)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
