@@ -117,17 +117,17 @@ val
 out0 = g_stderr((*0*))
 in//let1
 prerrsln
-("FPERR30_D3PARSED:");
-fperr30_d3parsed(out0, dpar)
-end//let1
+("F3PERR0_D3PARSED:");
+f3perr0_d3parsed(out0,dpar)
+end//let1//end-of-(val(...))
 //
 (* ****** ****** *)
 //
-val dpar1 =
-(
-d3parsed_of_trx3cpy(dpar))
-//
-(* ****** ****** *)
+local
+val
+dpar1 =
+d3parsed_of_trx3cpy(dpar)
+in//local
 //
 val dpar1 =
 (
@@ -135,6 +135,8 @@ d3parsed1_of_trxltck(dpar1))
 val dpar1 =
 (
 d3parsed1_of_tryltck(dpar1))
+//
+end//local
 //
 (* ****** ****** *)
 //

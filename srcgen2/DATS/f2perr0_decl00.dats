@@ -62,11 +62,11 @@ ATS_PACKNAME
 #staload "./../SATS/tread01.sats"
 #staload "./../SATS/tread12.sats"
 (* ****** ****** *)
-#staload "./../SATS/fperr20.sats"
+#staload "./../SATS/f2perr0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-#define FPERR20_ERRLVL 2
+#define F2PERR0_ERRLVL 2
 *)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
@@ -96,7 +96,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 fun
-fperr20_d2con
+f2perr0_d2con
 ( out: FILR
 , d2c0: d2con): void =
 (
@@ -110,7 +110,7 @@ val t2p0 = d2c0.styp()
 in//let
 //
 printsln("\
-FPERR20-ERROR:",
+F2PERR0-ERROR:",
 loc0, ":", d2c0, "(", t2p0, ")")
 //
 end(*let*)//end-of-(if(f0_errq))
@@ -135,10 +135,10 @@ end//let
 } where
 {
   #impltmp g_print$out<>() = out
-}(*where*)//end-of-[fperr20_d2con]
+}(*where*)//end-of-[f2perr0_d2con]
 //
 fun
-fperr20_d2conlst
+f2perr0_d2conlst
 ( out: FILR
 , d2cs: d2conlst): void =
 (
@@ -149,20 +149,20 @@ list_nil() => ()
 list_cons(d2c1, d2cs) =>
 let
 val () =
-fperr20_d2con(out, d2c1)
+f2perr0_d2con(out, d2c1)
 in//let
 (
-  fperr20_d2conlst(out, d2cs))
+  f2perr0_d2conlst(out, d2cs))
 end//let//end-of-[list_cons(...)]
 ) where
 {
   #impltmp g_print$out<>() = out
-}(*where*)//end-of-[fperr20_d2conlst]
+}(*where*)//end-of-[f2perr0_d2conlst]
 //
 (* ****** ****** *)
 //
 fun
-fperr20_s2cstlst
+f2perr0_s2cstlst
 ( out: FILR
 , s2cs: s2cstlst): void =
 (
@@ -180,7 +180,7 @@ val opt1 = s2c1.d2cs()
 val (  ) =
 (
 printsln("\
-FPERR20-ERROR:",
+F2PERR0-ERROR:",
 loc1,":",s2c1,"(",s2t1,")"))
 //
 val (  ) =
@@ -191,17 +191,17 @@ optn_vt_nil() => ()
 | ~
 optn_vt_cons(d2cs) =>
 (
-  fperr20_d2conlst(out, d2cs))
+  f2perr0_d2conlst(out, d2cs))
 )
 //
 in//let
 (
-  fperr20_s2cstlst(out, s2cs))
+  f2perr0_s2cstlst(out, s2cs))
 end//let//end-of-[list_cons(...)]
 ) where
 {
   #impltmp g_print$out<>() = out
-}(*where*)//end-of-[fperr20_s2cstlst]
+}(*where*)//end-of-[f2perr0_s2cstlst]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -227,13 +227,13 @@ dcl0.node() of
 (   dcls   ) =>
 let
 val () =
-fperr20_d2eclist(out, dcls)
+f2perr0_d2eclist(out, dcls)
 endlet//end-of(D2Cthen0(...))
 |D2Celse1
 (   dcls   ) =>
 let
 val () =
-fperr20_d2eclist(out, dcls)
+f2perr0_d2eclist(out, dcls)
 endlet//end-of(D2Celse1(...))
 //
 |D2Cstatic
@@ -241,23 +241,23 @@ endlet//end-of(D2Celse1(...))
 let
 val () =
 (
-  fperr20_d2ecl(out, dcl1))
+  f2perr0_d2ecl(out, dcl1))
 endlet//end-of(D2Cstatic(_,_))
 |D2Cextern
 (tknd, dcl1) =>
 let
 val () =
 (
-  fperr20_d2ecl(out, dcl1))
+  f2perr0_d2ecl(out, dcl1))
 endlet//end-of(D2Cextern(_,_))
 //
 |D2Clocal0
 (dcs1, dcs2) =>
 let
 val () =
-fperr20_d2eclist(out, dcs1)
+f2perr0_d2eclist(out, dcs1)
 val () =
-fperr20_d2eclist(out, dcs2)
+f2perr0_d2eclist(out, dcs2)
 endlet // end of [D2Clocal0(...)]
 //
 |
@@ -278,20 +278,20 @@ D2Cinclude
 , tknd, gsrc
 , fopt, dopt) => let
 val () =
-fperr20_d2eclistopt(out, dopt)
+f2perr0_d2eclistopt(out, dopt)
 endlet // end-of-(D2Cinclude(...))
 //
 |
 D2Cvaldclst
 (tknd, d2vs) => let
 val () =
-  fperr20_d2valdclist(out, d2vs)
+  f2perr0_d2valdclist(out, d2vs)
 endlet // end-of-(D2Cvaldclst(_,_,_))
 |
 D2Cvardclst
 (tknd, d2vs) => let
 val () =
-  fperr20_d2vardclist(out, d2vs)
+  f2perr0_d2vardclist(out, d2vs)
 endlet // end-of-(D2Cvardclst(_,_,_))
 //
 |
@@ -301,12 +301,12 @@ D2Cfundclst
 , d2cs, d2fs) => let
 (*
 val () =
-  fperr20_t2qaglst(out, tqas)
+  f2perr0_t2qaglst(out, tqas)
 val () =
-  fperr20_d2cstlst(out, d2cs)
+  f2perr0_d2cstlst(out, d2cs)
 *)
 val () =
-  fperr20_d2fundclist(out, d2fs)
+  f2perr0_d2fundclist(out, d2fs)
 endlet // end-of-(D2Cfundclst(_,_,_))
 //
 |
@@ -318,18 +318,18 @@ D2Cimplmnt0
 let
 (*
 val () =
-  fperr20_s2qaglst(out, sqas)
+  f2perr0_s2qaglst(out, sqas)
 val () =
-  fperr20_t2qaglst(out, tqas)
+  f2perr0_t2qaglst(out, tqas)
 val () =
-  fperr20_t2iaglst(out, tias)
+  f2perr0_t2iaglst(out, tias)
 *)
 val () =
-  fperr20_f2arglst(out, f2as)
+  f2perr0_f2arglst(out, f2as)
 (*
-val () = fperr20_s2res(out, sres)
+val () = f2perr0_s2res(out, sres)
 *)
-val () = fperr20_d2exp(out, dexp)
+val () = f2perr0_d2exp(out, dexp)
 endlet // end of [ D2Cimplmnt0(...) ]
 //
 (* ****** ****** *)
@@ -337,13 +337,13 @@ endlet // end of [ D2Cimplmnt0(...) ]
 |D2Cexcptcon
 (d1cl, d2cs) =>
 let
-val () = fperr20_d2conlst(out, d2cs)
+val () = f2perr0_d2conlst(out, d2cs)
 endlet // end of [ D2Cexcptcon(...) ]
 //
 |D2Cdatatype
 (d1cl, s2cs) =>
 let
-val () = fperr20_s2cstlst(out, s2cs)
+val () = f2perr0_s2cstlst(out, s2cs)
 endlet // end of [ D2Cdatatype(...) ]
 //
 (* ****** ****** *)
@@ -352,12 +352,12 @@ endlet // end of [ D2Cdatatype(...) ]
 |D2Cnone1
 (  d1cl  ) => d1ecl_fpemsg(out, d1cl)
 |D2Cnone2
-(  d2cl  ) => fperr20_d2ecl(out, d2cl)
+(  d2cl  ) => f2perr0_d2ecl(out, d2cl)
 //
 (* ****** ****** *)
 //
 |D2Cerrck
-(lvl1,dcl1) => fperr20_d2ecl(out, dcl0)
+(lvl1,dcl1) => f2perr0_d2ecl(out, dcl0)
 //
 (* ****** ****** *)
 //
@@ -367,9 +367,9 @@ let
 val
 loc0 = dcl0.lctn()
 val () = prerrsln
-("fperr20_d2ecl: auxmain: loc0 = ", loc0)
+("f2perr0_d2ecl: auxmain: loc0 = ", loc0)
 val () = prerrsln
-("fperr20_d2ecl: auxmain: dcl0 = ", dcl0)
+("f2perr0_d2ecl: auxmain: dcl0 = ", dcl0)
 endlet
 //
 (* ****** ****** *)
@@ -381,7 +381,7 @@ in(* in-of-local *)
 (* ****** ****** *)
 
 #implfun
-fperr20_d2ecl
+f2perr0_d2ecl
 (out, dcl0) =
 let
 //
@@ -394,11 +394,11 @@ let
 val loc0 = dcl0.lctn()
 in//let
 prerrsln
-("fperr20_d2ecl: loc0 = ", loc0)
+("f2perr0_d2ecl: loc0 = ", loc0)
 end//let
 val () =
 prerrsln
-("fperr20_d2ecl: dcl0 = ", dcl0)
+("f2perr0_d2ecl: dcl0 = ", dcl0)
 *)
 //
 in//let
@@ -416,28 +416,28 @@ let
 val loc0 = dcl0.lctn() in
 printsln();
 printsln("\
-FPERR20-ERROR:", loc0, ":", dcl0)
+F2PERR0-ERROR:", loc0, ":", dcl0)
 end
 )
 //
 | _(* otherwise *) => (   (*skipped*)   )
 //
-end (*let*)//end-of(fperr20_d2ecl(out,dcl0))
+end (*let*)//end-of(f2perr0_d2ecl(out,dcl0))
 //
-endloc(*local*)//end-of(local(fperr20_d2ecl))
+endloc(*local*)//end-of(local(f2perr0_d2ecl))
 
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2eclist
+f2perr0_d2eclist
   (out, dcls) =
 (
-  list_fperr20_fnp(out, dcls, fperr20_d2ecl))
+  list_f2perr0_fnp(out, dcls, f2perr0_d2ecl))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_teqd2exp
+f2perr0_teqd2exp
   (out, tdxp) =
 (
 case+ tdxp of
@@ -446,22 +446,22 @@ TEQD2EXPnone() => ()
 |
 TEQD2EXPsome(teq1, d2e2) =>
 let
-val (  ) = fperr20_d2exp(out, d2e2)
+val (  ) = f2perr0_d2exp(out, d2e2)
 endlet // end of [TEQD2EXPsome(_,_)]
-) (*case+*)//end-(fperr20_teqd2exp(out,tdxp))
+) (*case+*)//end-(f2perr0_teqd2exp(out,tdxp))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2valdcl
+f2perr0_d2valdcl
 (out, dval) =
 let
 //
 val (  ) =
-fperr20_d2pat(out, dpat)
+f2perr0_d2pat(out, dpat)
 //
 val (  ) =
-fperr20_teqd2exp(out, tdxp)
+f2perr0_teqd2exp(out, tdxp)
 //
 endlet where
 {
@@ -473,17 +473,17 @@ endlet where
   val wsxp = d2valdcl_get_wsxp(dval)
 *)
 //
-} (*where*)//end-of-[fperr20_d2valdcl(out,dval)]
+} (*where*)//end-of-[f2perr0_d2valdcl(out,dval)]
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2vardcl
+f2perr0_d2vardcl
 (out, dvar) =
 let
 //
 val (  ) =
-fperr20_teqd2exp(out, dini)
+f2perr0_teqd2exp(out, dini)
 //
 endlet where
 {
@@ -496,20 +496,20 @@ endlet where
 //
   val dini = d2vardcl_get_dini(dvar)
 //
-} (*where*)//end-of-[fperr20_d2vardcl(out,dval)]
+} (*where*)//end-of-[f2perr0_d2vardcl(out,dval)]
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2fundcl
+f2perr0_d2fundcl
 (out, dfun) =
 let
 //
 val (  ) =
-fperr20_f2arglst(out, fags)
+f2perr0_f2arglst(out, fags)
 //
 val (  ) =
-fperr20_teqd2exp(out, tdxp)
+f2perr0_teqd2exp(out, tdxp)
 //
 endlet where
 {
@@ -528,27 +528,27 @@ endlet where
   val wsxp = d2fundcl_get_wsxp(dfun)
 *)
 //
-} (*where*)//end-of-[fperr20_d2fundcl(out,dfun)]
+} (*where*)//end-of-[f2perr0_d2fundcl(out,dfun)]
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2valdclist
+f2perr0_d2valdclist
   (out, d2vs) =
-list_fperr20_fnp(out, d2vs, fperr20_d2valdcl)
+list_f2perr0_fnp(out, d2vs, f2perr0_d2valdcl)
 #implfun
-fperr20_d2vardclist
+f2perr0_d2vardclist
   (out, d2vs) =
-list_fperr20_fnp(out, d2vs, fperr20_d2vardcl)
+list_f2perr0_fnp(out, d2vs, f2perr0_d2vardcl)
 //
 #implfun
-fperr20_d2fundclist
+f2perr0_d2fundclist
   (out, d2fs) =
-list_fperr20_fnp(out, d2fs, fperr20_d2fundcl)
+list_f2perr0_fnp(out, d2fs, f2perr0_d2fundcl)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr20_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_f2perr0_decl00.dats] *)
 (***********************************************************************)

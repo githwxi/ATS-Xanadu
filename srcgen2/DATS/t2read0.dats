@@ -65,7 +65,7 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread20.sats"
+#staload "./../SATS/t2read0.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -73,7 +73,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
-list_tread20_fnp
+list_t2read0_fnp
 {  syn:tx  }
 (  lst , err , fpr  ) =
 (
@@ -100,12 +100,12 @@ if
 then lst else list_cons(tm1, tms)
 endlet // end of [auxlst(lst,err)]
 //
-}(*where*)//end(list_tread20_fnp(lst,err,fpr))
+}(*where*)//end(list_t2read0_fnp(lst,err,fpr))
 //
 (* ****** ****** *)
 //
 #implfun
-optn_tread20_fnp
+optn_t2read0_fnp
 {  syn:tx  }
 (  opt , err , fpr  ) =
 (
@@ -122,13 +122,13 @@ if
 (err=e00)
 then opt else optn_cons(syn)
 endlet // end of [optn_cons(syn)]
-)(*case+*)//end(optn_tread20_fnp(opt,err,fpr)
+)(*case+*)//end(optn_t2read0_fnp(opt,err,fpr)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-d2parsed_of_tread20
+d2parsed_of_t2read0
   (dpar) =
 let
 //
@@ -148,7 +148,7 @@ val parsed =
 d2parsed_get_parsed(dpar)
 //
 val parsed =
-tread20_d2eclistopt(parsed, nerror)
+t2read0_d2eclistopt(parsed, nerror)
 //
 in//let
 //
@@ -158,25 +158,25 @@ then (dpar) else
 d2parsed
 (stadyn,nerror,source,t1penv,t2penv,parsed)
 //
-end(*let*)//end-of(d2parsed_of_tread20(dpar))
+end(*let*)//end-of(d2parsed_of_t2read0(dpar))
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_d2explstopt
+t2read0_d2explstopt
   (  dopt, err0  ) =
-optn_tread20_fnp(dopt, err0, tread20_d2explst)
+optn_t2read0_fnp(dopt, err0, t2read0_d2explst)
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_d2eclistopt
+t2read0_d2eclistopt
   (  dopt, err0  ) =
-optn_tread20_fnp(dopt, err0, tread20_d2eclist)
+optn_t2read0_fnp(dopt, err0, t2read0_d2eclist)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_tread20.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_t2read0.dats] *)
 (***********************************************************************)

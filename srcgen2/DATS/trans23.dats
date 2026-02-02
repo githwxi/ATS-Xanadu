@@ -63,7 +63,7 @@ ATS3.XANADU.xatsopt-20220500"
 #staload "./../SATS/trans2a.sats"
 #staload "./../SATS/trsym2b.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread20.sats"
+#staload "./../SATS/t2read0.sats"
 (* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
@@ -74,7 +74,7 @@ ATS3.XANADU.xatsopt-20220500"
 HX-2026-01-30:
 Yes, checking is performed
 before [trans23] is called!
-val dpar = d2parsed_of_tread20(dpar)
+val dpar = d2parsed_of_t2read0(dpar)
 Fri Jan 30 01:03:25 PM EST 2026
 *)
 #implfun
@@ -93,7 +93,7 @@ val dpar = d2parsed_of_tread12(dpar)
 val dpar = d2parsed_of_trans2a(dpar)
 val (  ) = d2parsed_by_trsym2b(dpar)
 //
-val dpar = d2parsed_of_tread20(dpar)
+val dpar = d2parsed_of_t2read0(dpar)
 //
 (*
 val (  ) =

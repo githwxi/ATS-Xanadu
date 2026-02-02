@@ -67,7 +67,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread30.sats"
+#staload "./../SATS/t3read0.sats"
 (* ****** ****** *)
 //
 (* ****** ****** *)
@@ -249,7 +249,7 @@ endlet//end-of-[d3exp_ift0_errck(...)]
 (* ****** ****** *)
 //
 #implfun
-tread30_d3pat
+t3read0_d3pat
 (evn0, d3p0, err0) =
 (
        d3p0       )
@@ -257,20 +257,20 @@ where
 {
 (*
 val () =
-prerrsln("tread30_d3pat: d3p0 = ", d3p0)
+prerrsln("t3read0_d3pat: d3p0 = ", d3p0)
 *)
-}(*where*)//end-of-[tread30_d3pat(evn0,...)]
+}(*where*)//end-of-[t3read0_d3pat(evn0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
 #implfun
-tread30_d3exp
+t3read0_d3exp
 (evn0, d3e0, err0) = d3e0
 *)
 #implfun
-tread30_d3exp
+t3read0_d3exp
 (evn0, d3e0, err0) =
 let
 //
@@ -279,10 +279,10 @@ val
 loc0 = d3e0.lctn()
 val () =
 prerrsln
-("tread30_d3exp: loc0 = ", loc0)
+("t3read0_d3exp: loc0 = ", loc0)
 val () =
 prerrsln
-("tread30_d3exp: d3e0 = ", d3e0)
+("t3read0_d3exp: d3e0 = ", d3e0)
 *)
 //
 in//let
@@ -377,7 +377,7 @@ val (  ) =
 tr30evn_timp$psh(evn0, timp)
 //
 val timp =
-tread30_timpl(evn0, timp, err0)
+t3read0_timpl(evn0, timp, err0)
 //
 val (  ) = tr30evn_timp$pop(evn0)
 //
@@ -419,7 +419,7 @@ D3Edap0(d3f0) = d3e0.node()
 val
 d3f0 =
 (
-tread30_d3exp(evn0,d3f0,err0))
+t3read0_d3exp(evn0,d3f0,err0))
 //
 in//let
 //
@@ -458,10 +458,10 @@ D3Edapp
 val
 d3f0 =
 (
-tread30_d3exp(evn0,d3f0,err0))
+t3read0_d3exp(evn0,d3f0,err0))
 val
 d3es =
-tread30_d3explst(evn0,d3es,err0)
+t3read0_d3explst(evn0,d3es,err0)
 //
 in//let
 //
@@ -499,11 +499,11 @@ D3Elet0
 //
 val
 dcls =
-tread30_d3eclist(evn0,dcls,err0)
+t3read0_d3eclist(evn0,dcls,err0)
 val
 d3e1 =
 (
-  tread30_d3exp(evn0, d3e1, err0))
+  t3read0_d3exp(evn0, d3e1, err0))
 //
 in//let
 //
@@ -540,13 +540,13 @@ D3Eift0
 //
 val
 d3e1 =
-tread30_d3exp(evn0, d3e1, err0)
+t3read0_d3exp(evn0, d3e1, err0)
 val
 dthn =
-tread30_d3expopt(evn0, dthn, err0)
+t3read0_d3expopt(evn0, dthn, err0)
 val
 dels =
-tread30_d3expopt(evn0, dels, err0)
+t3read0_d3expopt(evn0, dels, err0)
 //
 in//let
 //
@@ -566,11 +566,11 @@ end(*let*)//end-of-[f0_ift0(evn0,d3e0,err0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-}(*where*)//end-of-[tread30_d3exp(evn0,d3e0,err0)]
+}(*where*)//end-of-[t3read0_d3exp(evn0,d3e0,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_tread30_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_t3read0_dynexp.dats] *)
 (***********************************************************************)

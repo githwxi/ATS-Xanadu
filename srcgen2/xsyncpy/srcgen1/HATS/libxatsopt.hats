@@ -61,7 +61,10 @@ Mon May 19 06:07:14 PM EDT 2025
 "./../../../SATS/tread3a.sats"
 (* ****** ****** *)
 #staload
-"./../../../SATS/fperr30.sats"
+"./../../../SATS/t3read0.sats"
+(* ****** ****** *)
+#staload
+"./../../../SATS/f3perr0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -505,7 +505,7 @@ val () =
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 static_search_dcst
   (d3cl, d2c0) =
@@ -567,8 +567,10 @@ topmap_search$opt
 (tmap, d2c0.name()) in//let
 //
 case+ opt0 of
-| ~optn_vt_nil() => list_nil()
-| ~optn_vt_cons(dcls) => ( dcls )
+| ~
+optn_vt_nil() => list_nil(*0*)
+| ~
+optn_vt_cons(dcls) => (   dcls   )
 end//let//end-of-[D3TOPENVsome(...)]
 //
 end(*end-of-[S3TALOADdpar(sknd,dpar)]*)
@@ -583,7 +585,7 @@ prerrsln("static_search_dcst: d2c0 = ", d2c0)
 *)
 //
 }(*where*) // end of [static_search_dcst(...)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

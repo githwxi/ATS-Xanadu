@@ -67,7 +67,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread30.sats"
+#staload "./../SATS/t3read0.sats"
 (* ****** ****** *)
 //
 (* ****** ****** *)
@@ -187,7 +187,7 @@ end(*let*)//end-of-[d3ecl_fundclst_errck(...)]
 (* ****** ****** *)
 //
 #implfun
-tread30_d3ecl
+t3read0_d3ecl
 (evn0, d3cl, err0) =
 let
 //
@@ -196,10 +196,10 @@ val
 loc0 = d3cl.lctn()
 val () =
 prerrsln
-("tread30_d3ecl: loc0 = ", loc0)
+("t3read0_d3ecl: loc0 = ", loc0)
 val () =
 prerrsln
-("tread30_d3ecl: d3cl = ", d3cl)
+("t3read0_d3ecl: d3cl = ", d3cl)
 *)
 //
 in//let
@@ -283,7 +283,7 @@ D3Cdclst0
 (  dcls  ) = dcl0.node()
 //
 val dcls =
-tread30_d3eclist(evn0, dcls, err0)
+t3read0_d3eclist(evn0, dcls, err0)
 //
 in//let
 if // if
@@ -311,9 +311,9 @@ D3Clocal0
 (dcs1, dcs2) = dcl0.node()
 //
 val dcs1 =
-tread30_d3eclist(evn0, dcs1, err0)
+t3read0_d3eclist(evn0, dcs1, err0)
 val dcs2 =
-tread30_d3eclist(evn0, dcs2, err0)
+t3read0_d3eclist(evn0, dcs2, err0)
 //
 in
 if // if
@@ -341,7 +341,7 @@ D3Cvaldclst
 (tknd, d3vs) = dcl0.node()
 //
 val d3vs =
-tread30_d3valdclist(evn0, d3vs, err0)
+t3read0_d3valdclist(evn0, d3vs, err0)
 //
 in//let
 if // if
@@ -369,7 +369,7 @@ D3Cvardclst
 (tknd, d3vs) = dcl0.node()
 //
 val d3vs =
-tread30_d3vardclist(evn0, d3vs, err0)
+t3read0_d3vardclist(evn0, d3vs, err0)
 //
 in//let
 if // if
@@ -398,7 +398,7 @@ D3Cfundclst
 ,d2cs, d3fs) = dcl0.node()
 //
 val d3fs =
-tread30_d3fundclist(evn0, d3fs, err0)
+t3read0_d3fundclist(evn0, d3fs, err0)
 //
 in//let
 if // if
@@ -413,13 +413,13 @@ end(*let*)//end-of-[f0_fundclst(evn0,dcl0,err0)]
 //
 }(*where*)
 //
-end(*let*)//end-of-[tread30_d3ecl(evn0,d3cl,err0)]
+end(*let*)//end-of-[t3read0_d3ecl(evn0,d3cl,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-tread30_teqd3exp
+t3read0_teqd3exp
 (evn0, tdxp, err0) =
 (
 case+ tdxp of
@@ -434,24 +434,24 @@ val nerr = err0
 (*
 val ( ) =
 prerrsln("\
-tread30_teqd3exp: d3e2 = ", d3e2)
+t3read0_teqd3exp: d3e2 = ", d3e2)
 *)
 val d3e2 =
 (
-  tread30_d3exp(evn0, d3e2, err0))
+  t3read0_d3exp(evn0, d3e2, err0))
 in//letp
 if // if
 (err0=nerr)
 then tdxp else TEQD3EXPsome(teq1, d3e2)
 end(*let*)//end-of-[ TEQD3EXPsome( _,_ ) ]
 //
-)(*case+*)//end(tread30_teqd3exp(evn0,tdxp,err0))
+)(*case+*)//end(t3read0_teqd3exp(evn0,tdxp,err0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-tread30_d3valdcl
+t3read0_d3valdcl
 (evn0, dval, err0) =
 let
 //
@@ -468,7 +468,7 @@ wsxp = d3valdcl_get_wsxp(dval)
 //
 val
 tdxp =
-tread30_teqd3exp(evn0,tdxp,err0)
+t3read0_teqd3exp(evn0,tdxp,err0)
 //
 in//let
 if // if
@@ -476,12 +476,12 @@ if // if
 then (dval) else
 (
   d3valdcl(loc0, dpat, tdxp, wsxp))
-end(*let*)//end(tread30_d3valdcl(evn0,dval,err0))
+end(*let*)//end(t3read0_d3valdcl(evn0,dval,err0))
 //
 (* ****** ****** *)
 //
 #implfun
-tread30_d3vardcl
+t3read0_d3vardcl
 (evn0, dvar, err0) =
 let
 //
@@ -500,7 +500,7 @@ dini = d3vardcl_get_dini(dvar)
 //
 val
 dini =
-tread30_teqd3exp(evn0,dini,err0)
+t3read0_teqd3exp(evn0,dini,err0)
 //
 in//let
 if // if
@@ -508,12 +508,12 @@ if // if
 then (dvar) else
 (
   d3vardcl(loc0,dpid,vpid,sres,dini))
-end(*let*)//end(tread30_d3vardcl(evn0,dval,err0))
+end(*let*)//end(t3read0_d3vardcl(evn0,dval,err0))
 //
 (* ****** ****** *)
 //
 #implfun
-tread30_d3fundcl
+t3read0_d3fundcl
 (evn0, dfun, err0) =
 let
 //
@@ -534,7 +534,7 @@ wsxp = d3fundcl_get_wsxp(dfun)
 //
 val
 tdxp =
-tread30_teqd3exp(evn0,tdxp,err0)
+t3read0_teqd3exp(evn0,tdxp,err0)
 //
 in//let
 if
@@ -542,34 +542,34 @@ if
 then (dfun) else
 (
   d3fundcl(loc0,dpid,farg,sres,tdxp,wsxp))
-end(*let*)//end(tread30_d3fundcl(evn0,dfun,err0))
+end(*let*)//end(t3read0_d3fundcl(evn0,dfun,err0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-tread30_d3valdclist
+t3read0_d3valdclist
 ( evn0, d3vs, err0 ) =
 (
-list_tread30_fnp(evn0, d3vs, err0, tread30_d3valdcl))
+list_t3read0_fnp(evn0, d3vs, err0, t3read0_d3valdcl))
 //
 #implfun
-tread30_d3vardclist
+t3read0_d3vardclist
 ( evn0, d3vs, err0 ) =
 (
-list_tread30_fnp(evn0, d3vs, err0, tread30_d3vardcl))
+list_t3read0_fnp(evn0, d3vs, err0, t3read0_d3vardcl))
 //
 (* ****** ****** *)
 //
 #implfun
-tread30_d3fundclist
+t3read0_d3fundclist
 ( evn0, d3fs, err0 ) =
 (
-list_tread30_fnp(evn0, d3fs, err0, tread30_d3fundcl))
+list_t3read0_fnp(evn0, d3fs, err0, t3read0_d3fundcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_tread30_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_t3read0_decl00.dats] *)
 (***********************************************************************)

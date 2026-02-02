@@ -57,12 +57,12 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
-#staload "./../SATS/fperr20.sats"
+#staload "./../SATS/f2perr0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-list_fperr20_fnp
+list_f2perr0_fnp
 {  syn:tx  }
 (  out, lst, fpr  ) =
 (
@@ -72,12 +72,12 @@ list_foritm<syn>(lst)) where
 #impltmp
 foritm$work<syn>(syn) = fpr(out, syn)
 //
-}(*where*)//end(list_fperr20_fnp(lst,err,fpr))
+}(*where*)//end(list_f2perr0_fnp(lst,err,fpr))
 //
 (* ****** ****** *)
 //
 #implfun
-optn_fperr20_fnp
+optn_f2perr0_fnp
 {  syn:tx  }
 (  out, opt, fpr  ) =
 (
@@ -87,13 +87,13 @@ optn_foritm<syn>(opt)) where
 #impltmp
 foritm$work<syn>(syn) = fpr(out, syn)
 //
-}(*where*)//end(optn_fperr20_fnp(opt,err,fpr))
+}(*where*)//end(optn_f2perr0_fnp(opt,err,fpr))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2parsed
+f2perr0_d2parsed
   (out, dpar) = let
 //
 val nerror =
@@ -106,39 +106,39 @@ let
 val parsed =
 d2parsed_get_parsed(dpar)
 in//let
-fperr20_d2eclistopt(out, parsed) end else ()
-end (*let*)//end-of-[fperr20_d2parsed(out,dpar)]
+f2perr0_d2eclistopt(out, parsed) end else ()
+end (*let*)//end-of-[f2perr0_d2parsed(out,dpar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2explstopt
+f2perr0_d2explstopt
   (out, dopt) =
 (
 case+ dopt of
 |
 optn_nil() => ((*void*))
 |
-optn_cons(d2es) => fperr20_d2explst(out, d2es)
+optn_cons(d2es) => f2perr0_d2explst(out, d2es)
 )
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2eclistopt
+f2perr0_d2eclistopt
   (out, dopt) =
 (
 case+ dopt of
 |
 optn_nil() => ((*void*))
 |
-optn_cons(d2cs) => fperr20_d2eclist(out, d2cs)
+optn_cons(d2cs) => f2perr0_d2eclist(out, d2cs)
 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr20.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_f2perr0.dats] *)
 (***********************************************************************)

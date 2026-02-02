@@ -67,7 +67,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread30.sats"
+#staload "./../SATS/t3read0.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -75,7 +75,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
-d3parsed_of_tread30
+d3parsed_of_t3read0
   (   dpar   ) =
 let
 //
@@ -99,7 +99,7 @@ var err0
 val evn0 = tr30evn_make_nil()
 //
 val parsed =
-tread30_d3eclistopt(evn0,parsed,err0)
+t3read0_d3eclistopt(evn0,parsed,err0)
 //
 in//let
 let
@@ -108,13 +108,13 @@ in//let
 d3parsed(stadyn
 ,nerror,source,t1penv,t2penv,t3penv,parsed)
 end//let
-end (*let*) // end of [d3parsed_tread30(dpar)]
+end (*let*) // end of [d3parsed_t3read0(dpar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-optn_tread30_fnp
+optn_t3read0_fnp
 {x0:tx}
 ( e1
 , xs, err0, fopr) =
@@ -149,12 +149,12 @@ then (xs) else optn_cons(x1))
 end(*end*)//end-of-[optn_cons(x1)]
 )(*case+*)//end-of-[auxopt(e1,xs,err0)]
 //
-}(*where*)//end-of-[optn_tread30_fnp(e1,xs,...)]
+}(*where*)//end-of-[optn_t3read0_fnp(e1,xs,...)]
 //
 (* ****** ****** *)
 //
 #implfun
-list_tread30_fnp
+list_t3read0_fnp
 {x0:tx}
 ( e1
 , xs, err0, fopr) =
@@ -190,72 +190,72 @@ then (xs) else list_cons(x1, rs))
 end(*end*)//end-of-[list_cons(x1,rs)]
 )(*case+*)//end-of-[auxlst(e1,xs,err0)]
 //
-}(*where*)//end-of-[list_tread30_fnp(e1,xs,...)]
+}(*where*)//end-of-[list_t3read0_fnp(e1,xs,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-tread30_d3patlst
+t3read0_d3patlst
 ( evn0
 , d3ps, err0 ) = d3ps
 (*
 #implfun
-tread30_d3patlst
+t3read0_d3patlst
 ( evn0
 , d3ps, err0 ) =
-list_tread30_fnp(evn0, d3ps, err0, tread30_d3pat)
+list_t3read0_fnp(evn0, d3ps, err0, t3read0_d3pat)
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-tread30_d3explst
+t3read0_d3explst
 ( evn0
 , d3es, err0 ) =
-list_tread30_fnp(evn0, d3es, err0, tread30_d3exp)
+list_t3read0_fnp(evn0, d3es, err0, t3read0_d3exp)
 //
 #implfun
-tread30_d3expopt
+t3read0_d3expopt
 ( evn0
 , dopt, err0 ) =
-optn_tread30_fnp(evn0, dopt, err0, tread30_d3exp)
+optn_t3read0_fnp(evn0, dopt, err0, t3read0_d3exp)
 //
 (* ****** ****** *)
 //
 #implfun
-tread30_d3clslst
+t3read0_d3clslst
 ( evn0
 , dclz, err0 ) =
-list_tread30_fnp(evn0, dclz, err0, tread30_d3cls)
+list_t3read0_fnp(evn0, dclz, err0, t3read0_d3cls)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-tread30_d3eclist
+t3read0_d3eclist
 ( evn0, d3cs, err0 ) =
-list_tread30_fnp(evn0, d3cs, err0, tread30_d3ecl)
+list_t3read0_fnp(evn0, d3cs, err0, t3read0_d3ecl)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-tread30_d3explstopt
+t3read0_d3explstopt
 ( evn0, dopt, err0 ) =
-optn_tread30_fnp(evn0, dopt, err0, tread30_d3explst)
+optn_t3read0_fnp(evn0, dopt, err0, t3read0_d3explst)
 //
 (* ****** ****** *)
 //
 #implfun
-tread30_d3eclistopt
+t3read0_d3eclistopt
 ( evn0, dopt, err0 ) =
-optn_tread30_fnp(evn0, dopt, err0, tread30_d3eclist)
+optn_t3read0_fnp(evn0, dopt, err0, t3read0_d3eclist)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_tread30.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_t3read0.dats] *)
 (***********************************************************************)

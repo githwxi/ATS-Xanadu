@@ -69,7 +69,7 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread30.sats"
+#staload "./../SATS/t3read0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -230,5 +230,5 @@ end(*let*)//end-of-[tr30evn_timp$psh(evn0,timp)]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_tread30_myenv0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_t3read0_myenv0.dats] *)
 (***********************************************************************)

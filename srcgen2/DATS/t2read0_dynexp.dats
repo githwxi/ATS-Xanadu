@@ -65,7 +65,7 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread20.sats"
+#staload "./../SATS/t2read0.sats"
 (* ****** ****** *)
 //
 (* ****** ****** *)
@@ -1035,7 +1035,7 @@ endlet // end of [d2exp_t2ped_errck(...)]
 (* ****** ****** *)
 //
 #implfun
-tread20_d2pat
+t2read0_d2pat
 ( d2p0, err ) =
 (
 case+
@@ -1103,7 +1103,7 @@ val e00 = err
 val-
 D2Pbang(d2p1) = d2p.node()
 val
-d2p1 = tread20_d2pat(d2p1, err)
+d2p1 = t2read0_d2pat(d2p1, err)
 in//let
 if
 (err=e00)
@@ -1122,7 +1122,7 @@ val e00 = err
 val-
 D2Pflat(d2p1) = d2p.node()
 val
-d2p1 = tread20_d2pat(d2p1, err)
+d2p1 = t2read0_d2pat(d2p1, err)
 in//let
 if
 (err=e00)
@@ -1141,7 +1141,7 @@ val e00 = err
 val-
 D2Pfree(d2p1) = d2p.node()
 val
-d2p1 = tread20_d2pat(d2p1, err)
+d2p1 = t2read0_d2pat(d2p1, err)
 in//let
 if
 (err=e00)
@@ -1180,7 +1180,7 @@ err := err+1;d2pat_errck(lvl0,d2p)
 end (*let*) // end of [ D2Pnone0 ]
 | _(*non-D2Pnone0*) =>
 let
-val d2p1 = tread20_d2pat(d2p1, err)
+val d2p1 = t2read0_d2pat(d2p1, err)
 in//let
 if
 (err=e00)
@@ -1207,7 +1207,7 @@ val e00 = err
 val-
 D2Pdap1(d2f0) = d2p.node()
 val
-d2f0 = tread20_d2pat(d2f0, err)
+d2f0 = t2read0_d2pat(d2f0, err)
 //
 in//let
 if
@@ -1233,11 +1233,11 @@ D2Pdapp
 val
 d2f0 =
 (
-  tread20_d2pat(d2f0, err))
+  t2read0_d2pat(d2f0, err))
 val
 d2ps =
 (
-  tread20_d2patlst(d2ps, err))
+  t2read0_d2patlst(d2ps, err))
 in//let
 if
 (err=e00)
@@ -1263,9 +1263,9 @@ D2Prfpt
 (d2p1
 ,tkas, d2p2) = d2p.node()
 val
-d2p1 = tread20_d2pat(d2p1, err)
+d2p1 = t2read0_d2pat(d2p1, err)
 val
-d2p2 = tread20_d2pat(d2p2, err)
+d2p2 = t2read0_d2pat(d2p2, err)
 in//let
 if
 (err=e00)
@@ -1293,7 +1293,7 @@ D2Ptup0
 val
 d2ps =
 (
-  tread20_d2patlst(d2ps, err))
+  t2read0_d2patlst(d2ps, err))
 //
 in//let
 if
@@ -1322,7 +1322,7 @@ D2Ptup1
 //
 val
 d2ps =
-tread20_d2patlst(d2ps, err)
+t2read0_d2patlst(d2ps, err)
 //
 in//let
 if
@@ -1349,7 +1349,7 @@ D2Prcd2
 //
 val
 ldps =
-tread20_l2d2plst(ldps, err)
+t2read0_l2d2plst(ldps, err)
 //
 in//let
 if
@@ -1374,7 +1374,7 @@ D2Pargtp
 (d2p1, t2p2) = d2p.node()
 //
 val
-d2p1 = tread20_d2pat(d2p1, err)
+d2p1 = t2read0_d2pat(d2p1, err)
 //
 in//let
 if
@@ -1403,10 +1403,10 @@ D2Pannot
 ,s1e2, s2e2) = d2p.node()
 //
 val
-d2p1 = tread20_d2pat(d2p1, err)
+d2p1 = t2read0_d2pat(d2p1, err)
 (*
 val
-s2e2 = tread20_s2exp(s2e2, err)
+s2e2 = t2read0_s2exp(s2e2, err)
 *)
 //
 in//let
@@ -1421,12 +1421,12 @@ end (*let*) // end of [f0_annot(d2p,err)]
 //
 (* ****** ****** *)
 //
-} (*where*)//end[tread20_d2pat(d2p0,err)]
+} (*where*)//end[t2read0_d2pat(d2p0,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_l2d2p
+t2read0_l2d2p
   (ld2p, err) =
 let
 //
@@ -1436,18 +1436,18 @@ val+
 D2LAB(lab0, d2p1) = ld2p
 //
 val
-d2p1 = tread20_d2pat(d2p1, err)
+d2p1 = t2read0_d2pat(d2p1, err)
 //
 in//let
 if // if
 (err=e00)
 then (ld2p) else D2LAB(lab0, d2p1)
-end (*let*)//end-(tread20_l2d2p(ld2p,err))
+end (*let*)//end-(t2read0_l2d2p(ld2p,err))
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_d2exp
+t2read0_d2exp
 ( d2e0, err ) =
 (
 case+
@@ -1585,7 +1585,7 @@ err := err+1;d2exp_errck(lvl0,d2e)
 end (*let*) // end of [D2Enone0()]
 | _(*non-D2Enone0*) =>
 let
-val d2e1 = tread20_d2exp(d2e1, err)
+val d2e1 = t2read0_d2exp(d2e1, err)
 in//let
 if
 (err=e00)
@@ -1612,10 +1612,10 @@ val-
 D2Esapp
 (d2f0, s2es) = d2e.node()
 val
-d2f0 = tread20_d2exp(d2f0, err)
+d2f0 = t2read0_d2exp(d2f0, err)
 (*
 val
-s2es = tread20_s2explst(d2es, err)
+s2es = t2read0_s2explst(d2es, err)
 *)
 in//let
 if
@@ -1641,10 +1641,10 @@ val-
 D2Etapp
 (d2f0, s2es) = d2e.node()
 val
-d2f0 = tread20_d2exp(d2f0, err)
+d2f0 = t2read0_d2exp(d2f0, err)
 (*
 val
-s2es = tread20_s2explst(d2es, err)
+s2es = t2read0_s2explst(d2es, err)
 *)
 in//let
 if
@@ -1669,7 +1669,7 @@ val e00 = err
 val-
 D2Edap0(d2e1) = d2e.node()
 val
-d2e1 = tread20_d2exp(d2e1, err)
+d2e1 = t2read0_d2exp(d2e1, err)
 in//let
 if
 (err=e00)
@@ -1692,9 +1692,9 @@ D2Edapp
 (d2f0
 ,npf1, d2es) = d2e.node()
 val
-d2f0 = tread20_d2exp(d2f0, err)
+d2f0 = t2read0_d2exp(d2f0, err)
 val
-d2es = tread20_d2explst(d2es, err)
+d2es = t2read0_d2explst(d2es, err)
 in//let
 if
 (err=e00)
@@ -1721,7 +1721,7 @@ D2Eproj
 ,drxp
 ,dlab, dtup) = d2e.node()
 val
-dtup = tread20_d2exp(dtup, err)
+dtup = t2read0_d2exp(dtup, err)
 in//let
 if
 (err=e00)
@@ -1746,9 +1746,9 @@ D2Elet0
 //
 val
 dcls =
-tread20_d2eclist(dcls, err)
+t2read0_d2eclist(dcls, err)
 val
-d2e1 = tread20_d2exp(d2e1, err)
+d2e1 = t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -1776,11 +1776,11 @@ D2Eift0
 , dthn, dels) = d2e.node()
 //
 val d2e1 =
-tread20_d2exp(d2e1, err)
+t2read0_d2exp(d2e1, err)
 val dthn =
-tread20_d2expopt(dthn, err)
+t2read0_d2expopt(dthn, err)
 val dels =
-tread20_d2expopt(dels, err)
+t2read0_d2expopt(dels, err)
 //
 in//let
 if
@@ -1807,10 +1807,10 @@ D2Ecas0
 //
 val
 d2e1 =
-tread20_d2exp(d2e1, err)
+t2read0_d2exp(d2e1, err)
 val
 d2cs =
-tread20_d2clslst(d2cs, err)
+t2read0_d2clslst(d2cs, err)
 //
 in//let
 if
@@ -1838,9 +1838,9 @@ D2Eseqn
 //
 val
 d2es =
-tread20_d2explst(d2es, err)
+t2read0_d2explst(d2es, err)
 val
-d2e1 = tread20_d2exp(d2e1, err)
+d2e1 = t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -1868,7 +1868,7 @@ D2Etup0
 //
 val
 d2es =
-tread20_d2explst(d2es, err)
+t2read0_d2explst(d2es, err)
 //
 in//let
 if
@@ -1897,7 +1897,7 @@ D2Etup1
 //
 val
 d2es =
-tread20_d2explst(d2es, err)
+t2read0_d2explst(d2es, err)
 //
 in//let
 if
@@ -1924,7 +1924,7 @@ D2Ercd2
 //
 val
 ldes =
-tread20_l2d2elst(ldes, err)
+t2read0_l2d2elst(ldes, err)
 //
 in//let
 if
@@ -1951,11 +1951,11 @@ D2Elam0
 , arrw, dexp) = d2e0.node()
 //
 val f2as =
-  tread20_f2arglst(f2as, err)
+  t2read0_f2arglst(f2as, err)
 (*
-val sres = tread20_s2res(sres, err)
+val sres = t2read0_s2res(sres, err)
 *)
-val dexp = tread20_d2exp(dexp, err)
+val dexp = t2read0_d2exp(dexp, err)
 //
 in//let
 if
@@ -1983,12 +1983,12 @@ D2Efix0
 , arrw, dexp) = d2e0.node()
 //
 val f2as =
-  tread20_f2arglst(f2as, err)
+  t2read0_f2arglst(f2as, err)
 (*
-val sres = tread20_s2res(sres, err)
+val sres = t2read0_s2res(sres, err)
 *)
 val
-dexp = tread20_d2exp(dexp, err)
+dexp = t2read0_d2exp(dexp, err)
 //
 in//let
 if
@@ -2017,9 +2017,9 @@ D2Etry0
 , d2e1, dcls) = d2e.node()
 //
 val d2e1 =
-  tread20_d2exp(d2e1, err)
+  t2read0_d2exp(d2e1, err)
 val dcls =
-  tread20_d2clslst(dcls, err)
+  t2read0_d2clslst(dcls, err)
 //
 in//let
 if
@@ -2047,7 +2047,7 @@ D2Eaddr
 //
 val
 d2e1 =
-tread20_d2exp(d2e1, err)
+t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -2072,7 +2072,7 @@ D2Eview
 //
 val
 d2e1 =
-tread20_d2exp(d2e1, err)
+t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -2097,7 +2097,7 @@ D2Eeval
 //
 val
 d2e1 =
-tread20_d2exp(d2e1, err)
+t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -2122,7 +2122,7 @@ D2Efold
 //
 val
 d2e1 =
-tread20_d2exp(d2e1, err)
+t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -2147,7 +2147,7 @@ D2Efree
 //
 val
 d2e1 =
-tread20_d2exp(d2e1, err)
+t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -2172,10 +2172,10 @@ D2Ewhere
 //
 val
 d2e1 =
-tread20_d2exp(d2e1, err)
+t2read0_d2exp(d2e1, err)
 val
 dcls =
-tread20_d2eclist(dcls, err)
+t2read0_d2eclist(dcls, err)
 //
 in//let
 if
@@ -2203,9 +2203,9 @@ D2Eassgn
 (d2el, d2er) = d2e.node()
 //
 val
-d2el = tread20_d2exp(d2el, err)
+d2el = t2read0_d2exp(d2el, err)
 val
-d2er = tread20_d2exp(d2er, err)
+d2er = t2read0_d2exp(d2er, err)
 //
 in//let
 if
@@ -2232,9 +2232,9 @@ D2Exazgn
 (d2el, d2er) = d2e.node()
 //
 val
-d2el = tread20_d2exp(d2el, err)
+d2el = t2read0_d2exp(d2el, err)
 val
-d2er = tread20_d2exp(d2er, err)
+d2er = t2read0_d2exp(d2er, err)
 //
 in//let
 if
@@ -2261,9 +2261,9 @@ D2Exchng
 (d2el, d2er) = d2e.node()
 //
 val
-d2el = tread20_d2exp(d2el, err)
+d2el = t2read0_d2exp(d2el, err)
 val
-d2er = tread20_d2exp(d2er, err)
+d2er = t2read0_d2exp(d2er, err)
 //
 in//let
 if
@@ -2291,7 +2291,7 @@ D2Eraise
 (tknd, d2e1) = d2e.node()
 //
 val
-d2e1 = tread20_d2exp(d2e1, err)
+d2e1 = t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -2315,7 +2315,7 @@ D2El0azy
 (dsym, d2e1) = d2e.node()
 //
 val
-d2e1 = tread20_d2exp(d2e1, err)
+d2e1 = t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -2340,9 +2340,9 @@ D2El1azy
 ,d2e1,d2es) = d2e.node()
 //
 val
-d2e1 = tread20_d2exp(d2e1, err)
+d2e1 = t2read0_d2exp(d2e1, err)
 val
-d2es = tread20_d2explst(d2es, err)
+d2es = t2read0_d2explst(d2es, err)
 //
 in//let
 if
@@ -2370,10 +2370,10 @@ D2Eannot
 ,s1e2, s2e2) = d2e.node()
 //
 val
-d2e1 = tread20_d2exp(d2e1, err)
+d2e1 = t2read0_d2exp(d2e1, err)
 (*
 val
-s2e2 = tread20_s2exp(s2e2, err)
+s2e2 = t2read0_s2exp(s2e2, err)
 *)
 //
 in//let
@@ -2401,7 +2401,7 @@ D2Elabck
 (d2e1, lab2) = d2e.node()
 //
 val
-d2e1 = tread20_d2exp(d2e1, err)
+d2e1 = t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -2428,7 +2428,7 @@ D2Et2pck
 (d2e1, t2p2) = d2e.node()
 //
 val
-d2e1 = tread20_d2exp(d2e1, err)
+d2e1 = t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -2453,7 +2453,7 @@ D2Et2ped
 (d2e1, t2p2) = d2e.node()
 //
 val
-d2e1 = tread20_d2exp(d2e1, err)
+d2e1 = t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -2500,18 +2500,18 @@ val-D2Esynext _ = d2e.node() in (d2e) end
 (*
 val (  ) =
 (
-prerrsln("tread20_d2exp: d2e0 = ", d2e0))
+prerrsln("t2read0_d2exp: d2e0 = ", d2e0))
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-} (*where*)//end-[tread20_d2exp(d2e0,err)]
+} (*where*)//end-[t2read0_d2exp(d2e0,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_l2d2e
+t2read0_l2d2e
   (ld2e, err) =
 let
 //
@@ -2521,20 +2521,20 @@ val+
 D2LAB(lab0, d2e1) = ld2e
 //
 val
-d2e1 = tread20_d2exp(d2e1, err)
+d2e1 = t2read0_d2exp(d2e1, err)
 //
 in//let
 if // if
 (err=e00)
 then (ld2e) else D2LAB(lab0, d2e1)
-end (*let*)//end-(tread20_l2d2e(ld2e,err))
+end (*let*)//end-(t2read0_l2d2e(ld2e,err))
 //
 (* ****** ****** *)
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_f2arg
+t2read0_f2arg
   (farg, err) =
 (
 case+
@@ -2550,7 +2550,7 @@ F2ARGdapp
 let
 val e00 = err
 val d2ps =
-tread20_d2patlst(d2ps, err)
+t2read0_d2patlst(d2ps, err)
 in//let
 if
 (err=e00)
@@ -2566,7 +2566,7 @@ let
 val e00 = err
 (*
 val s2es =
-tread20_s2explst(s2es, err)
+t2read0_s2explst(s2es, err)
 *)
 in//let
 if
@@ -2585,7 +2585,7 @@ val e00 = err
 //
 (*
 val s2es =
-tread20_s2explst(s2es, err)
+t2read0_s2explst(s2es, err)
 *)
 //
 in//let
@@ -2595,12 +2595,12 @@ then (farg) else
 f2arg(farg.lctn(), F2ARGmets( s2es ))
 endlet // end of [ F2ARGmets(  s2es  ) ]
 //
-) (*case+*)//end-[tread20_f2arg(farg,err)]
+) (*case+*)//end-[t2read0_f2arg(farg,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_d2gua
+t2read0_d2gua
   (dgua, err) =
 (
 case+
@@ -2612,7 +2612,7 @@ D2GUAexp
 val e00 = err
 //
 val
-d2e1 = tread20_d2exp(d2e1, err)
+d2e1 = t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -2627,8 +2627,8 @@ let
 //
 val e00 = err
 //
-val d2e1 = tread20_d2exp(d2e1, err)
-val d2p2 = tread20_d2pat(d2p2, err)
+val d2e1 = t2read0_d2exp(d2e1, err)
+val d2p2 = t2read0_d2pat(d2p2, err)
 //
 in//let
 if
@@ -2636,12 +2636,12 @@ if
 then (dgua) else
 d2gua(dgua.lctn(), D2GUAmat(d2e1,d2p2))
 endlet // end of [ D2GPTgua(_,_,_) ]
-) (*case+*)//end-of-[tread20_d2gua(dgua,err)]
+) (*case+*)//end-of-[t2read0_d2gua(dgua,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_d2gpt
+t2read0_d2gpt
   (dgpt, err) =
 (
 case+
@@ -2653,7 +2653,7 @@ D2GPTpat
 val e00 = err
 //
 val
-d2p1 = tread20_d2pat(d2p1, err)
+d2p1 = t2read0_d2pat(d2p1, err)
 //
 in//let
 if
@@ -2668,9 +2668,9 @@ let
 //
 val e00 = err
 //
-val d2p1 = tread20_d2pat(d2p1, err)
+val d2p1 = t2read0_d2pat(d2p1, err)
 //
-val d2gs = tread20_d2gualst(d2gs, err)
+val d2gs = t2read0_d2gualst(d2gs, err)
 //
 in//let
 if
@@ -2678,12 +2678,12 @@ if
 then (dgpt) else
 d2gpt(dgpt.lctn(), D2GPTgua(d2p1,d2gs))
 endlet // end of [ D2GPTgua(_,_,_) ]
-) (*case+*)//end-of-[tread20_d2gpt(dgpt,err)]
+) (*case+*)//end-of-[t2read0_d2gpt(dgpt,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_d2cls
+t2read0_d2cls
   (dcls, err) =
 (
 case+
@@ -2695,7 +2695,7 @@ D2CLSgpt
 val e00 = err
 //
 val dgpt =
-tread20_d2gpt(dgpt, err)
+t2read0_d2gpt(dgpt, err)
 in//let
 if
 (err=e00)
@@ -2710,8 +2710,8 @@ let
 //
 val e00 = err
 //
-val dgpt = tread20_d2gpt(dgpt, err)
-val d2e1 = tread20_d2exp(d2e1, err)
+val dgpt = t2read0_d2gpt(dgpt, err)
+val d2e1 = t2read0_d2exp(d2e1, err)
 //
 in//let
 if
@@ -2720,62 +2720,62 @@ then (dcls)
 else
 d2cls(dcls.lctn(), D2CLScls(dgpt,d2e1))
 endlet // end-of-[ D2CLScls(_,_,_) ]
-) (*case+*)//end-of-[tread20_d2cls(dcls,err)]
+) (*case+*)//end-of-[t2read0_d2cls(dcls,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_d2patlst
+t2read0_d2patlst
   (  d2ps, err  ) =
-list_tread20_fnp(d2ps, err, tread20_d2pat)
+list_t2read0_fnp(d2ps, err, t2read0_d2pat)
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_d2explst
+t2read0_d2explst
   (  d2es, err  ) =
-list_tread20_fnp(d2es, err, tread20_d2exp)
+list_t2read0_fnp(d2es, err, t2read0_d2exp)
 //
 #implfun
-tread20_d2expopt
+t2read0_d2expopt
   (  dopt, err  ) =
-optn_tread20_fnp(dopt, err, tread20_d2exp)
+optn_t2read0_fnp(dopt, err, t2read0_d2exp)
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_l2d2plst
+t2read0_l2d2plst
   (  ldps, err  ) =
-list_tread20_fnp(ldps, err, tread20_l2d2p)
+list_t2read0_fnp(ldps, err, t2read0_l2d2p)
 #implfun
-tread20_l2d2elst
+t2read0_l2d2elst
   (  ldes, err  ) =
-list_tread20_fnp(ldes, err, tread20_l2d2e)
+list_t2read0_fnp(ldes, err, t2read0_l2d2e)
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_f2arglst
+t2read0_f2arglst
   (  f2as, err  ) =
-list_tread20_fnp(f2as, err, tread20_f2arg)
+list_t2read0_fnp(f2as, err, t2read0_f2arg)
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_d2gualst
+t2read0_d2gualst
   (  d2gs, err  ) =
-list_tread20_fnp(d2gs, err, tread20_d2gua)
+list_t2read0_fnp(d2gs, err, t2read0_d2gua)
 //
 (* ****** ****** *)
 //
 #implfun
-tread20_d2clslst
+t2read0_d2clslst
   (  d2cs, err  ) =
-list_tread20_fnp(d2cs, err, tread20_d2cls)
+list_t2read0_fnp(d2cs, err, t2read0_d2cls)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_tread20_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_t2read0_dynexp.dats] *)
 (***********************************************************************)

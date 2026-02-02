@@ -113,82 +113,82 @@ ATS_PACKNAME // namespace
 *)
 (* ****** ****** *)
 #typedef
-fperr20_t
+f2perr0_t
 (syn:tbox) = (FILR, syn)->void
 (* ****** ****** *)
 //
 fun
-list_fperr20_fnp
+list_f2perr0_fnp
 { syn:tbox }
 ( out: FILR,
-  list(syn), fperr20_t(syn)): void
+  list(syn), f2perr0_t(syn)): void
 fun
-optn_fperr20_fnp
+optn_f2perr0_fnp
 { syn:tbox }
 ( out: FILR,
-  optn(syn), fperr20_t(syn)): void
+  optn(syn), f2perr0_t(syn)): void
 //
 (* ****** ****** *)
-fun fperr20_d2pat(FILR, d2pat): void
-fun fperr20_d2exp(FILR, d2exp): void
+fun f2perr0_d2pat(FILR, d2pat): void
+fun f2perr0_d2exp(FILR, d2exp): void
 (* ****** ****** *)
-fun fperr20_l2d2p(FILR, l2d2p): void
-fun fperr20_l2d2e(FILR, l2d2e): void
+fun f2perr0_l2d2p(FILR, l2d2p): void
+fun f2perr0_l2d2e(FILR, l2d2e): void
 (* ****** ****** *)
-fun fperr20_f2arg(FILR, f2arg): void
+fun f2perr0_f2arg(FILR, f2arg): void
 (* ****** ****** *)
-fun fperr20_d2gua(FILR, d2gua): void
-fun fperr20_d2gpt(FILR, d2gpt): void
-fun fperr20_d2cls(FILR, d2cls): void
+fun f2perr0_d2gua(FILR, d2gua): void
+fun f2perr0_d2gpt(FILR, d2gpt): void
+fun f2perr0_d2cls(FILR, d2cls): void
 (* ****** ****** *)
-fun fperr20_d2ecl(FILR, d2ecl): void
+fun f2perr0_d2ecl(FILR, d2ecl): void
 (* ****** ****** *)
-fun fperr20_d2patlst(FILR, d2patlst): void
-fun fperr20_d2patopt(FILR, d2patopt): void
+fun f2perr0_d2patlst(FILR, d2patlst): void
+fun f2perr0_d2patopt(FILR, d2patopt): void
 (* ****** ****** *)
-fun fperr20_d2explst(FILR, d2explst): void
-fun fperr20_d2expopt(FILR, d2expopt): void
+fun f2perr0_d2explst(FILR, d2explst): void
+fun f2perr0_d2expopt(FILR, d2expopt): void
 (* ****** ****** *)
-fun fperr20_l2d2plst(FILR, l2d2plst): void
-fun fperr20_l2d2elst(FILR, l2d2elst): void
+fun f2perr0_l2d2plst(FILR, l2d2plst): void
+fun f2perr0_l2d2elst(FILR, l2d2elst): void
 (* ****** ****** *)
-fun fperr20_f2arglst(FILR, f2arglst): void
+fun f2perr0_f2arglst(FILR, f2arglst): void
 (* ****** ****** *)
-fun fperr20_d2gualst(FILR, d2gualst): void
-fun fperr20_d2clslst(FILR, d2clslst): void
+fun f2perr0_d2gualst(FILR, d2gualst): void
+fun f2perr0_d2clslst(FILR, d2clslst): void
 (* ****** ****** *)
-fun fperr20_d2eclist(FILR, d2eclist): void
+fun f2perr0_d2eclist(FILR, d2eclist): void
 (* ****** ****** *)
-fun fperr20_teqd2exp(FILR, teqd2exp): void
+fun f2perr0_teqd2exp(FILR, teqd2exp): void
 (* ****** ****** *)
-fun fperr20_d2valdcl(FILR, d2valdcl): void
-fun fperr20_d2vardcl(FILR, d2vardcl): void
-fun fperr20_d2fundcl(FILR, d2fundcl): void
-(* ****** ****** *)
-fun
-fperr20_d2valdclist(FILR, d2valdclist): void
+fun f2perr0_d2valdcl(FILR, d2valdcl): void
+fun f2perr0_d2vardcl(FILR, d2vardcl): void
+fun f2perr0_d2fundcl(FILR, d2fundcl): void
 (* ****** ****** *)
 fun
-fperr20_d2vardclist(FILR, d2vardclist): void
+f2perr0_d2valdclist(FILR, d2valdclist): void
 (* ****** ****** *)
 fun
-fperr20_d2fundclist(FILR, d2fundclist): void
+f2perr0_d2vardclist(FILR, d2vardclist): void
+(* ****** ****** *)
+fun
+f2perr0_d2fundclist(FILR, d2fundclist): void
 (* ****** ****** *)
 //
 fun
-fperr20_d2parsed
+f2perr0_d2parsed
 ( out: FILR, dpar: d2parsed ): void//end-fun
 //
 (* ****** ****** *)
 //
 fun
-fperr20_d2explstopt(FILR, d2explstopt): void
+f2perr0_d2explstopt(FILR, d2explstopt): void
 fun
-fperr20_d2eclistopt(FILR, d2eclistopt): void
+f2perr0_d2eclistopt(FILR, d2eclistopt): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_SATS_fperr20.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_f2perr0.sats] *)
 (***********************************************************************)

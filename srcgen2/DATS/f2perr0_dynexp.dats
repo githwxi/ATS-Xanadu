@@ -58,7 +58,7 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
-#staload "./../SATS/fperr20.sats"
+#staload "./../SATS/f2perr0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
@@ -100,7 +100,7 @@ g_print$out<>() = out
 val () =
 (
 prerrs
-("fperr20_d2pat:");
+("f2perr0_d2pat:");
 prerrsln
 ("auxmain: d2p = ", d2p))
 *)
@@ -116,7 +116,7 @@ D2Psym0
 (drpt,d1p1,dpis) =>
 let
 val () =
-fperr20_d2pat
+f2perr0_d2pat
 (out, drpt.dpat((*void*))) end
 *)
 //
@@ -126,9 +126,9 @@ D2Pdapp
 , npf1, d2ps) =>
 let
 val () =
-fperr20_d2pat(out, d2f0)
+f2perr0_d2pat(out, d2f0)
 val () =
-fperr20_d2patlst(out, d2ps) end
+f2perr0_d2patlst(out, d2ps) end
 //
 |
 D2Prfpt
@@ -137,39 +137,39 @@ D2Prfpt
 let
 val () =
 (
-  fperr20_d2pat(out, d2p1))
+  f2perr0_d2pat(out, d2p1))
 val () =
 (
-  fperr20_d2pat(out, d2p2)) end
+  f2perr0_d2pat(out, d2p2)) end
 //
 |
 D2Ptup0
 ( npf1, d2ps) =>
 let
 val () =
-fperr20_d2patlst(out, d2ps) end
+f2perr0_d2patlst(out, d2ps) end
 |
 D2Ptup1
 ( tknd
 , npf1, d2ps) =>
 let
 val () =
-fperr20_d2patlst(out, d2ps) end
+f2perr0_d2patlst(out, d2ps) end
 |
 D2Prcd2
 ( tknd
 , npf1, ldps) =>
 let
 val () =
-fperr20_l2d2plst(out, ldps) end
+f2perr0_l2d2plst(out, ldps) end
 //
 |
 D2Pannot
 (d2p1,s1e2,s2e2) =>
 let
-val () = fperr20_d2pat(out, d2p1)
+val () = f2perr0_d2pat(out, d2p1)
 (*
-val () = fperr20_s2exp(out, s2e2)
+val () = f2perr0_s2exp(out, s2e2)
 *)
 endlet
 //
@@ -177,13 +177,13 @@ endlet
 D2Pt2pck
 (d2p1, t2p2) =>
 let
-val () = fperr20_d2pat(out, d2p1)
+val () = f2perr0_d2pat(out, d2p1)
 endlet
 //
 |D2Pnone0 _ => (   (*void*)   )
 |D2Pnone1 _ => () | D2Pnone2 _ => ()
 |
-D2Perrck(_,_) => fperr20_d2pat(out, d2p)
+D2Perrck(_,_) => f2perr0_d2pat(out, d2p)
 //
 |
 _(*otherwise*) =>
@@ -191,9 +191,9 @@ let
   val
   loc = d2p.lctn()
   val () = prerrsln
-  ("fperr20_d2pat:auxmain: loc = ", loc)
+  ("f2perr0_d2pat:auxmain: loc = ", loc)
   val () = prerrsln
-  ("fperr20_d2pat:auxmain: d2p = ", d2p)
+  ("f2perr0_d2pat:auxmain: d2p = ", d2p)
 endlet
 //
 end (*let*) // end-of-[ auxmain(out, d2p) ]
@@ -201,7 +201,7 @@ end (*let*) // end-of-[ auxmain(out, d2p) ]
 in//local
 //
 #implfun
-fperr20_d2pat
+f2perr0_d2pat
 ( out, d2p0 ) =
 let
 //
@@ -214,11 +214,11 @@ let
 val loc0 = d2p0.lctn((*0*))
 in//let
 prerrsln
-("fperr20_d2pat: loc0 = ", loc0)
+("f2perr0_d2pat: loc0 = ", loc0)
 end//let
 val () =
 prerrsln
-("fperr20_d2pat: d2p0 = ", d2p0)
+("f2perr0_d2pat: d2p0 = ", d2p0)
 *)
 //
 in//let
@@ -237,25 +237,25 @@ val loc0 = d2p0.lctn()
 in//let
 printsln();
 printsln("\
-FPERR20-ERROR:", loc0, ":", d2p0)
+F2PERR0-ERROR:", loc0, ":", d2p0)
 end//let
 )
 | _(* otherwise *) => (  (* skipped *)  )
 //
-end(*let*)//end-of(fperr20_d2pat(out,d2p0))
+end(*let*)//end-of(f2perr0_d2pat(out,d2p0))
 //
-endloc(*local*)//end-of(local(fperr20_d2pat))
+endloc(*local*)//end-of(local(f2perr0_d2pat))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_l2d2p
+f2perr0_l2d2p
 (out, ld2p) =
 (
 case+ ld2p of
 |
-D2LAB(lab,d2p1) => fperr20_d2pat(out,d2p1)
-) (*case+*)//end-of-(fperr20_d2pat(out,ld2p))
+D2LAB(lab,d2p1) => f2perr0_d2pat(out,d2p1)
+) (*case+*)//end-of-(f2perr0_d2pat(out,ld2p))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -473,9 +473,9 @@ let
   val
   loc = d2e.lctn((*0*))
   val () = prerrsln
-  ("fperr20_d2exp:auxdexp: loc = ", loc)
+  ("f2perr0_d2exp:auxdexp: loc = ", loc)
   val () = prerrsln
-  ("fperr20_d2exp:auxdexp: d2e = ", d2e)
+  ("f2perr0_d2exp:auxdexp: d2e = ", d2e)
 endlet
 //
 end (*let*) // end-of-[ auxdexp(out, d2e) ]
@@ -502,7 +502,7 @@ d2e.node() of
 (drxp,d1e1,dpis) =>
 let
 val () =
-fperr20_d2exp
+f2perr0_d2exp
 (out, drxp.dexp((*0*)))
 endlet
 //
@@ -512,20 +512,20 @@ endlet
 (d2f0,s2es) =>
 let
 val () =
-fperr20_d2exp(out, d2f0)
+f2perr0_d2exp(out, d2f0)
 (*
 val () =
-fperr20_s2explst(out, s2es)
+f2perr0_s2explst(out, s2es)
 *)
 endlet
 |D2Etapp
 (d2f0,s2es) =>
 let
 val () =
-fperr20_d2exp(out, d2f0)
+f2perr0_d2exp(out, d2f0)
 (*
 val () =
-fperr20_s2explst(out, s2es)
+f2perr0_s2explst(out, s2es)
 *)
 endlet
 //
@@ -534,9 +534,9 @@ endlet
 ,npf1, d2es) =>
 let
 val () =
-fperr20_d2exp(out, d2f0)
+f2perr0_d2exp(out, d2f0)
 val () =
-fperr20_d2explst(out, d2es)
+f2perr0_d2explst(out, d2es)
 endlet
 //
 (* ****** ****** *)
@@ -548,7 +548,7 @@ endlet
 let
 val () =
 (
-  fperr20_d2exp(out, dtup))
+  f2perr0_d2exp(out, dtup))
 end(*let*)//end-of-[D2Eproj]
 //
 (* ****** ****** *)
@@ -556,20 +556,20 @@ end(*let*)//end-of-[D2Eproj]
 |D2Elet0
 (dcls, d2e1) =>
 (
-  fperr20_d2exp(out, d2e1))
+  f2perr0_d2exp(out, d2e1))
 where
 {
 val () =
-fperr20_d2eclist(out, dcls)
+f2perr0_d2eclist(out, dcls)
 }(*where*)//end-of-[D2Elet0]
 |D2Ewhere
 (d2e1, dcls) =>
 (
-  fperr20_d2exp(out, d2e1))
+  f2perr0_d2exp(out, d2e1))
 where
 {
 val () =
-fperr20_d2eclist(out, dcls)
+f2perr0_d2eclist(out, dcls)
 }(*where*)//end-of-[D2Ewhere]
 //
 (* ****** ****** *)
@@ -578,20 +578,20 @@ fperr20_d2eclist(out, dcls)
 (d2e1,dthn,dels) =>
 let
   val () =
-  fperr20_d2exp(out, d2e1)
+  f2perr0_d2exp(out, d2e1)
   val () =
-  fperr20_d2expopt(out, dthn)
+  f2perr0_d2expopt(out, dthn)
   val () =
-  fperr20_d2expopt(out, dels)
+  f2perr0_d2expopt(out, dels)
 endlet
 //
 |D2Ecas0
 (tknd,d2e1,dcls) =>
 let
   val () =
-  fperr20_d2exp(out, d2e1)
+  f2perr0_d2exp(out, d2e1)
   val () =
-  fperr20_d2clslst(out, dcls)
+  f2perr0_d2clslst(out, dcls)
 endlet
 //
 (* ****** ****** *)
@@ -599,11 +599,11 @@ endlet
 |D2Eseqn
 (d2es, d2e1) =>
 (
-fperr20_d2exp
+f2perr0_d2exp
 ( out , d2e1 )) where
 {
 val () =
-fperr20_d2explst(out, d2es) }
+f2perr0_d2explst(out, d2es) }
 //
 (* ****** ****** *)
 //
@@ -611,19 +611,19 @@ fperr20_d2explst(out, d2es) }
 (npf1, d2es) =>
 let
 val () =
-fperr20_d2explst(out, d2es) end
+f2perr0_d2explst(out, d2es) end
 |D2Etup1
 ( tknd
 , npf1, d2es) =>
 let
 val () =
-fperr20_d2explst(out, d2es) end
+f2perr0_d2explst(out, d2es) end
 |D2Ercd2
 ( tknd
 , npf1, ldes) =>
 let
 val () =
-fperr20_l2d2elst(out, ldes) end
+f2perr0_l2d2elst(out, ldes) end
 //
 (* ****** ****** *)
 //
@@ -634,12 +634,12 @@ fperr20_l2d2elst(out, ldes) end
 let
 //
 val () =
-fperr20_f2arglst(out, f2as)
+f2perr0_f2arglst(out, f2as)
 //
 (*
-val () = fperr20_s2res(out, sres)
+val () = f2perr0_s2res(out, sres)
 *)
-val () = fperr20_d2exp(out, dexp)
+val () = f2perr0_d2exp(out, dexp)
 //
 endlet
 //
@@ -651,12 +651,12 @@ endlet
 let
 //
 val () =
-fperr20_f2arglst(out, f2as)
+f2perr0_f2arglst(out, f2as)
 //
 (*
-val () = fperr20_s2res(out, sres)
+val () = f2perr0_s2res(out, sres)
 *)
-val () = fperr20_d2exp(out, dexp)
+val () = f2perr0_d2exp(out, dexp)
 //
 endlet
 //
@@ -666,32 +666,32 @@ endlet
 (tknd,d2e1,dcls) =>
 let
 val () =
-  fperr20_d2exp(out, d2e1)
+  f2perr0_d2exp(out, d2e1)
 val () =
 (
-  fperr20_d2clslst(out, dcls) )
+  f2perr0_d2clslst(out, dcls) )
 endlet
 //
 (* ****** ****** *)
 //
 |D2Eaddr(d2e1) =>
 let
-val () = fperr20_d2exp(out, d2e1)
+val () = f2perr0_d2exp(out, d2e1)
 endlet
 |D2Eview(d2e1) =>
 let
-val () = fperr20_d2exp(out, d2e1)
+val () = f2perr0_d2exp(out, d2e1)
 endlet
 //
 (* ****** ****** *)
 //
 |D2Eeval(d2e1) =>
 let
-val () = fperr20_d2exp(out, d2e1)
+val () = f2perr0_d2exp(out, d2e1)
 endlet
 |D2Efree(d2e1) =>
 let
-val () = fperr20_d2exp(out, d2e1)
+val () = f2perr0_d2exp(out, d2e1)
 endlet
 //
 (* ****** ****** *)
@@ -699,22 +699,22 @@ endlet
 |D2Eassgn
 (d2el, d2er) =>
 let
-val () = fperr20_d2exp(out, d2el)
-val () = fperr20_d2exp(out, d2er)
+val () = f2perr0_d2exp(out, d2el)
+val () = f2perr0_d2exp(out, d2er)
 endlet//endof(D2Eassgn(d2el,d2er))
 //
 |D2Exazgn
 (d2el, d2er) =>
 let
-val () = fperr20_d2exp(out, d2el)
-val () = fperr20_d2exp(out, d2er)
+val () = f2perr0_d2exp(out, d2el)
+val () = f2perr0_d2exp(out, d2er)
 endlet//endof(D2Exazgn(d2el,d2er))
 //
 |D2Exchng
 (d2el, d2er) =>
 let
-val () = fperr20_d2exp(out, d2el)
-val () = fperr20_d2exp(out, d2er)
+val () = f2perr0_d2exp(out, d2el)
+val () = f2perr0_d2exp(out, d2er)
 endlet//endof(D2Exchng(d2el,d2er))
 //
 (* ****** ****** *)
@@ -725,14 +725,14 @@ endlet//endof(D2Exchng(d2el,d2er))
 let
 val () =
 (
-fperr20_d2explst(out, d2es)) end)
+f2perr0_d2explst(out, d2es)) end)
 |D2Ebrset
 (dpis, d2es) =>
 (
 let
 val () =
 (
-fperr20_d2explst(out, d2es)) end)
+f2perr0_d2explst(out, d2es)) end)
 //
 (* ****** ****** *)
 //
@@ -740,7 +740,7 @@ fperr20_d2explst(out, d2es)) end)
 D2Eraise
 (tknd, d2e1) =>
 let
-val () = fperr20_d2exp(out, d2e1)
+val () = f2perr0_d2exp(out, d2e1)
 endlet
 //
 (* ****** ****** *)
@@ -749,17 +749,17 @@ endlet
 D2El0azy
 (dsym, d2e1) =>
 let
-val () = fperr20_d2exp(out, d2e1)
+val () = f2perr0_d2exp(out, d2e1)
 endlet
 |
 D2El1azy
 (dsym
 ,d2e1, d2es) =>
 (
-  fperr20_d2explst(out, d2es)
+  f2perr0_d2explst(out, d2es)
 ) where
 {
-val () = fperr20_d2exp(out, d2e1)
+val () = f2perr0_d2exp(out, d2e1)
 }
 //
 (* ****** ****** *)
@@ -767,19 +767,19 @@ val () = fperr20_d2exp(out, d2e1)
 |D2Elabck
 (d2e1, lab2) =>
 let
-val () = fperr20_d2exp(out, d2e1)
+val () = f2perr0_d2exp(out, d2e1)
 endlet
 //
 |D2Et2pck
 (d2e1, t2p2) =>
 let
-val () = fperr20_d2exp(out, d2e1)
+val () = f2perr0_d2exp(out, d2e1)
 endlet
 //
 |D2Et2ped
 (d2e1, t2p2) =>
 let
-val () = fperr20_d2exp(out, d2e1)
+val () = f2perr0_d2exp(out, d2e1)
 endlet
 //
 (* ****** ****** *)
@@ -788,7 +788,7 @@ endlet
 |D2Enone1 _ => () | D2Enone2 _ => ()
 //
 |
-D2Eerrck(_,_) => fperr20_d2exp(out, d2e)
+D2Eerrck(_,_) => f2perr0_d2exp(out, d2e)
 //
 |
 _(*otherwise*) =>
@@ -796,9 +796,9 @@ let
   val
   loc = d2e.lctn((*0*))
   val () = prerrsln
-  ("fperr20_d2exp:auxmain: loc = ", loc)
+  ("f2perr0_d2exp:auxmain: loc = ", loc)
   val () = prerrsln
-  ("fperr20_d2exp:auxmain: d2e = ", d2e)
+  ("f2perr0_d2exp:auxmain: d2e = ", d2e)
 endlet
 //
 end (*let*) // end-of-[ auxmain(out, d2e) ]
@@ -806,7 +806,7 @@ end (*let*) // end-of-[ auxmain(out, d2e) ]
 in//local
 //
 #implfun
-fperr20_d2exp
+f2perr0_d2exp
 ( out, d2e0 ) =
 let
 //
@@ -819,13 +819,13 @@ val loc0 = d2e0.lctn((*0*))
 in//let
 (*
 prerrsln
-("fperr20_d2exp: loc0 = ", loc0)
+("f2perr0_d2exp: loc0 = ", loc0)
 *)
 end//let
 (*
 val () =
 prerrsln
-("fperr20_d2exp: d2e0 = ", d2e0)
+("f2perr0_d2exp: d2e0 = ", d2e0)
 *)
 //
 in//let
@@ -853,33 +853,33 @@ g_print
 in//let
 printsln();
 printsln("\
-FPERR20-ERROR:", loc0, ":", d2e0)
+F2PERR0-ERROR:", loc0, ":", d2e0)
 end//let
 //
 ) (* end-of-[D2Eerrck(lvl, d2e1)] *)
 | // non-D2Eerrck // ... // ... // ...
 _ (* otherwise *) => (  (* skipped *)  )
 //
-end(*let*)//end-of(fperr20_d2exp(out,d2e0))
+end(*let*)//end-of(f2perr0_d2exp(out,d2e0))
 //
-endloc(*local*)//end-of(local(fperr20_d2exp))
+endloc(*local*)//end-of(local(f2perr0_d2exp))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_l2d2e
+f2perr0_l2d2e
 (out, ld2e) =
 (
 case+ ld2e of
 |
-D2LAB(lab,d2e1) => fperr20_d2exp(out,d2e1)
-) (*case+*)//end-of-(fperr20_d2exp(out,ld2e))
+D2LAB(lab,d2e1) => f2perr0_d2exp(out,d2e1)
+) (*case+*)//end-of-(f2perr0_d2exp(out,ld2e))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-fperr20_f2arg
+f2perr0_f2arg
 (out, farg) =
 (
 case+
@@ -887,137 +887,137 @@ farg.node() of
 //
 |F2ARGdapp
 (npf1, d2ps) =>
-fperr20_d2patlst(out, d2ps)
+f2perr0_d2patlst(out, d2ps)
 //
 |F2ARGsapp
 (s2vs, s2es) => ( (*void*) )
 |F2ARGmets
 (   s2es   ) => ( (*void*) ) )//end-of-fun
-//(*case+*)//end-of-(fperr20_f2arg(out,farg)]
+//(*case+*)//end-of-(f2perr0_f2arg(out,farg)]
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2gua
+f2perr0_d2gua
 (out, dgua) =
 (
 case+
 dgua.node() of
 |
 D2GUAexp(d2e1) =>
-fperr20_d2exp(out, d2e1)
+f2perr0_d2exp(out, d2e1)
 |
 D2GUAmat(d2e1,d2p2) =>
 let
-val () = fperr20_d2exp(out, d2e1)
-val () = fperr20_d2pat(out, d2p2)
+val () = f2perr0_d2exp(out, d2e1)
+val () = f2perr0_d2pat(out, d2p2)
 endlet // end of [D2GUAmat(_,_,_)]
-) (*case*) // end-of(fperr20_d2gua(out,dgua))
+) (*case*) // end-of(f2perr0_d2gua(out,dgua))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2gpt
+f2perr0_d2gpt
 (out, dgpt) =
 (
 case+
 dgpt.node() of
 |
 D2GPTpat(d2p1) =>
-fperr20_d2pat(out, d2p1)
+f2perr0_d2pat(out, d2p1)
 |
 D2GPTgua(d2p1,d2gs) =>
 let
-val () = fperr20_d2pat(out, d2p1)
-val () = fperr20_d2gualst(out, d2gs)
+val () = f2perr0_d2pat(out, d2p1)
+val () = f2perr0_d2gualst(out, d2gs)
 endlet // end of [ D2GPTgua(_,_,_) ]
-) (*case*) // end-of(fperr20_d2gpt(out,dgpt))
+) (*case*) // end-of(f2perr0_d2gpt(out,dgpt))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2cls
+f2perr0_d2cls
 (out, dcls) =
 (
 case+
 dcls.node() of
 |
 D2CLSgpt(dgpt) =>
-fperr20_d2gpt(out, dgpt)
+f2perr0_d2gpt(out, dgpt)
 |
 D2CLScls(dgpt,d2e2) =>
 let
-val () = fperr20_d2gpt(out, dgpt)
-val () = fperr20_d2exp(out, d2e2)
+val () = f2perr0_d2gpt(out, dgpt)
+val () = f2perr0_d2exp(out, d2e2)
 endlet // end of [ D2CLScls(_,_,_) ]
-) (*case*) // end-of(fperr20_d2cls(out,dcls))
+) (*case*) // end-of(f2perr0_d2cls(out,dcls))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2patlst
+f2perr0_d2patlst
   (out, d2ps) =
 (
-  list_fperr20_fnp(out, d2ps, fperr20_d2pat))
+  list_f2perr0_fnp(out, d2ps, f2perr0_d2pat))
 #implfun
-fperr20_d2patopt
+f2perr0_d2patopt
   (out, dopt) =
 (
-  optn_fperr20_fnp(out, dopt, fperr20_d2pat))
+  optn_f2perr0_fnp(out, dopt, f2perr0_d2pat))
 //
 #implfun
-fperr20_l2d2plst
+f2perr0_l2d2plst
   (out, ldps) =
 (
-  list_fperr20_fnp(out, ldps, fperr20_l2d2p))
+  list_f2perr0_fnp(out, ldps, f2perr0_l2d2p))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2explst
+f2perr0_d2explst
   (out, d2es) =
 (
-  list_fperr20_fnp(out, d2es, fperr20_d2exp))
+  list_f2perr0_fnp(out, d2es, f2perr0_d2exp))
 #implfun
-fperr20_d2expopt
+f2perr0_d2expopt
   (out, dopt) =
 (
-  optn_fperr20_fnp(out, dopt, fperr20_d2exp))
+  optn_f2perr0_fnp(out, dopt, f2perr0_d2exp))
 //
 #implfun
-fperr20_l2d2elst
+f2perr0_l2d2elst
   (out, ldes) =
 (
-  list_fperr20_fnp(out, ldes, fperr20_l2d2e))
+  list_f2perr0_fnp(out, ldes, f2perr0_l2d2e))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_f2arglst
+f2perr0_f2arglst
   (out, f2as) =
 (
-  list_fperr20_fnp(out, f2as, fperr20_f2arg))
+  list_f2perr0_fnp(out, f2as, f2perr0_f2arg))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2gualst
+f2perr0_d2gualst
   (out, d2gs) =
 (
-  list_fperr20_fnp(out, d2gs, fperr20_d2gua))
+  list_f2perr0_fnp(out, d2gs, f2perr0_d2gua))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr20_d2clslst
+f2perr0_d2clslst
   (out, d2cs) =
 (
-  list_fperr20_fnp(out, d2cs, fperr20_d2cls))
+  list_f2perr0_fnp(out, d2cs, f2perr0_d2cls))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr20_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_f2perr0_dynexp.dats] *)
 (***********************************************************************)
