@@ -49,7 +49,7 @@ Template resolution is the engine
 of programming productivity for ATS3!
 This implementation is primarily for
 the moment; some form of internet-based
-search will be attempted later :)
+search should surely be attempted later!
 *)
 (* ****** ****** *)
 #absvtbx

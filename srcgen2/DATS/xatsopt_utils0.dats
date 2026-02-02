@@ -91,7 +91,7 @@ SRCGEN2_XATSOPT: It's not needed
 #staload "./../SATS/trans2a.sats"
 #staload "./../SATS/trsym2b.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread20.sats"
+#staload "./../SATS/t2read0.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans23.sats"
 #staload "./../SATS/tread23.sats"
@@ -313,7 +313,7 @@ d0parsed_from_fpath(1(*dyn*), fpth)
 HX-2025-05-24:
 Note that
 [d2parsed_of_trans02]
-does call tread20 to check
+does call t2read0 to check
 before it returns the output!
 *)
 //
@@ -329,7 +329,7 @@ val dpar = d2parsed_of_tread12(dpar)
 //
 val dpar = d2parsed_of_trans2a(dpar)
 val (  ) = d2parsed_by_trsym2b(dpar)
-val dpar = d2parsed_of_tread20(dpar) in dpar
+val dpar = d2parsed_of_t2read0(dpar) in dpar
 //
 end (*let*) // end of [d2parsed_of_trans02(dpar)]
 //

@@ -103,11 +103,11 @@ prerrsln
 //
 val ( ) =
 prerrsln
-("FPERR30_D3PARSED(30):")
+("F3PERR0_D3PARSED(30):")
 //
 val out = g_stderr((*0*))
 val ( ) =
-fperr30_d3parsed(out, dpar)
+f3perr0_d3parsed(out, dpar)
 //
 } where
 {

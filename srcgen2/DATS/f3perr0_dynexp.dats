@@ -59,7 +59,7 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload "./../SATS/fperr30.sats"
+#staload "./../SATS/f3perr0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
@@ -110,16 +110,16 @@ d3p.node() of
 D3Pdap1(d3f0) =>
 let
 val () =
-fperr30_d3pat(out, d3f0) end
+f3perr0_d3pat(out, d3f0) end
 |
 D3Pdapp
 ( d3f0
 , npf1, d3ps) =>
 let
 val () =
-fperr30_d3pat(out, d3f0)
+f3perr0_d3pat(out, d3f0)
 val () =
-fperr30_d3patlst(out, d3ps) end
+f3perr0_d3patlst(out, d3ps) end
 //
 (* ****** ****** *)
 //
@@ -130,17 +130,17 @@ D3Prfpt
 let
 val () =
 (
-  fperr30_d3pat(out, d3p1))
+  f3perr0_d3pat(out, d3p1))
 val () =
 (
-  fperr30_d3pat(out, d3p2)) end
+  f3perr0_d3pat(out, d3p2)) end
 //
 (* ****** ****** *)
 //
 |D3Pnone0 _ => (  (*void*)  )
 |D3Pnone1 _ => () | D3Pnone2 _ => ()
 //
-|D3Perrck _ => fperr30_d3pat(out, d3p)
+|D3Perrck _ => f3perr0_d3pat(out, d3p)
 //
 (* ****** ****** *)
 //
@@ -151,11 +151,11 @@ let
   val loc = d3p.lctn((*void*))
   val t2p = d3p.styp((*void*))
   val ( ) = prerrsln
-  ("fperr30_d3pat:auxmain: loc = ", loc)
+  ("f3perr0_d3pat:auxmain: loc = ", loc)
   val ( ) = prerrsln
-  ("fperr30_d3pat:auxmain: t2p = ", t2p)
+  ("f3perr0_d3pat:auxmain: t2p = ", t2p)
   val ( ) = prerrsln
-  ("fperr30_d3pat:auxmain: d3p = ", d3p)
+  ("f3perr0_d3pat:auxmain: d3p = ", d3p)
 //
 endlet
 //
@@ -164,7 +164,7 @@ end (*let*) // end-of-[ auxmain(out, d3p) ]
 in//local
 //
 #implfun
-fperr30_d3pat
+f3perr0_d3pat
 ( out, d3p0 ) =
 let
 //
@@ -177,13 +177,13 @@ val loc0 = d3p0.lctn()
 in//let
 (*
 prerrsln
-("fperr30_d3pat: loc0 = ", loc0)
+("f3perr0_d3pat: loc0 = ", loc0)
 *)
 end//let
 (*
 val () =
 prerrsln
-("fperr30_d3pat: d3p0 = ", d3p0)
+("f3perr0_d3pat: d3p0 = ", d3p0)
 *)
 //
 in//let
@@ -203,27 +203,27 @@ loc0 = d3p0.lctn((*0*))
 in//let
 printsln();
 printsln("\
-FPERR30-ERROR:", loc0, ":", d3p0)
+F3PERR0-ERROR:", loc0, ":", d3p0)
 end//let
 )
 | _(* otherwise *) => (  (* skipped *)  )
 //
-end(*let*)//end-of(fperr30_d3pat(out,d3p0))
+end(*let*)//end-of(f3perr0_d3pat(out,d3p0))
 //
 (* ****** ****** *)
 //
-endloc(*local*)//end-of(local(fperr30_d3pat))
+endloc(*local*)//end-of(local(f3perr0_d3pat))
 
 (* ****** ****** *)
 //
 #implfun
-fperr30_l3d3p
+f3perr0_l3d3p
 (out, ld3p) =
 (
 case+ ld3p of
 |
-D3LAB(lab,d3p1) => fperr30_d3pat(out,d3p1)
-) (*case+*)//end-of-(fperr30_d3pat(out,ld3p))
+D3LAB(lab,d3p1) => f3perr0_d3pat(out,d3p1)
+) (*case+*)//end-of-(f3perr0_d3pat(out,ld3p))
 //
 (* ****** ****** *)
 
@@ -455,9 +455,9 @@ let
   val
   loc = d3e.lctn((*0*))
   val () = prerrsln
-  ("fperr30_d3exp:auxdexp: loc = ", loc)
+  ("f3perr0_d3exp:auxdexp: loc = ", loc)
   val () = prerrsln
-  ("fperr30_d3exp:auxdexp: d3e = ", d3e)
+  ("f3perr0_d3exp:auxdexp: d3e = ", d3e)
 endlet
 //
 end (*let*) // end-of-[ auxdexp(out, d3e) ]
@@ -482,10 +482,10 @@ d3e.node() of
 (d3f0,s2es) =>
 let
 val () =
-fperr30_d3exp(out, d3f0)
+f3perr0_d3exp(out, d3f0)
 (*
 val () =
-fperr30_s2explst(out, s2es)
+f3perr0_s2explst(out, s2es)
 *)
 endlet
 //
@@ -493,10 +493,10 @@ endlet
 (d3f0,s2es) =>
 let
 val () =
-fperr30_d3exp(out, d3f0)
+f3perr0_d3exp(out, d3f0)
 (*
 val () =
-fperr30_s2explst(out, s2es)
+f3perr0_s2explst(out, s2es)
 *)
 endlet
 //
@@ -505,9 +505,9 @@ endlet
 ,npf1, d3es) =>
 let
 val () =
-fperr30_d3exp(out, d3f0)
+f3perr0_d3exp(out, d3f0)
 val () =
-fperr30_d3explst(out, d3es)
+f3perr0_d3explst(out, d3es)
 endlet//end-of-[D3Edapp]
 //
 |D3Epcon
@@ -515,24 +515,24 @@ endlet//end-of-[D3Edapp]
 ,lab1, d3e1) =>
 let
 val () =
-fperr30_d3exp(out, d3e1)
+f3perr0_d3exp(out, d3e1)
 endlet//end-of-[D3Epcon]
 |D3Eproj
 (tknd
 ,lab1, d3e1) =>
 let
 val () =
-fperr30_d3exp(out, d3e1)
+f3perr0_d3exp(out, d3e1)
 endlet//end-of-[D3Eproj]
 //
 |D3Elet0
 (dcls, d3e1) =>
 (
-fperr30_d3exp(out, d3e1))
+f3perr0_d3exp(out, d3e1))
 where
 {
 val () =
-fperr30_d3eclist(out, dcls)
+f3perr0_d3eclist(out, dcls)
 }(*where*)//end-of-[D3Elet0]
 //
 (* ****** ****** *)
@@ -542,11 +542,11 @@ fperr30_d3eclist(out, dcls)
 ,dthn, dels) =>
 let
 val () =
-fperr30_d3exp(out, d3e1)
+f3perr0_d3exp(out, d3e1)
 val () =
-fperr30_d3expopt(out, dthn)
+f3perr0_d3expopt(out, dthn)
 val () =
-fperr30_d3expopt(out, dels)
+f3perr0_d3expopt(out, dels)
 endlet//end-of-[D3Eift0(...)]
 //
 |D3Ecas0
@@ -554,9 +554,9 @@ endlet//end-of-[D3Eift0(...)]
 ,d3e1, dcls) =>
 let
 val () =
-fperr30_d3exp(out, d3e1)
+f3perr0_d3exp(out, d3e1)
 val () =
-fperr30_d3clslst(out, dcls)
+f3perr0_d3clslst(out, dcls)
 endlet//end-of-[D3Ecas0(...)]
 //
 (* ****** ****** *)
@@ -564,11 +564,11 @@ endlet//end-of-[D3Ecas0(...)]
 |D3Eseqn
 (d3es, d3e1) =>
 (
-fperr30_d3exp(out, d3e1))
+f3perr0_d3exp(out, d3e1))
 where
 {
 val () =
-fperr30_d3explst(out, d3es)}
+f3perr0_d3explst(out, d3es)}
 //(*where*)//end-of-[D3Eseqn]
 //
 (* ****** ****** *)
@@ -578,9 +578,9 @@ fperr30_d3explst(out, d3es)}
 ,d3e1, dcls) =>
 let
 val () =
-fperr30_d3exp(out, d3e1)
+f3perr0_d3exp(out, d3e1)
 val () =
-fperr30_d3clslst(out, dcls)
+f3perr0_d3clslst(out, dcls)
 endlet//end-of-[D3Etry0(...)]
 //
 (* ****** ****** *)
@@ -590,7 +590,7 @@ endlet//end-of-[D3Etry0(...)]
 let
 val () =
 (
-  fperr30_d3exp(out, d3e1))
+  f3perr0_d3exp(out, d3e1))
 endlet//end-of-[D3Edp2tr(...)]
 //
 |D3Edl0az
@@ -598,14 +598,14 @@ endlet//end-of-[D3Edp2tr(...)]
 let
 val () =
 (
-  fperr30_d3exp(out, d3e1))
+  f3perr0_d3exp(out, d3e1))
 endlet//end-of-[D3Edl0az(...)]
 |D3Edl1az
 (   d3e1   ) =>
 let
 val () =
 (
-  fperr30_d3exp(out, d3e1))
+  f3perr0_d3exp(out, d3e1))
 endlet//end-of-[D3Edl1az(...)]
 //
 (* ****** ****** *)
@@ -613,10 +613,10 @@ endlet//end-of-[D3Edl1az(...)]
 |D3Ewhere
 (d3e1, dcls) =>
 (
-  fperr30_d3exp(out, d3e1))
+  f3perr0_d3exp(out, d3e1))
 where
 {val () =
- fperr30_d3eclist(out, dcls)}
+ f3perr0_d3eclist(out, dcls)}
 //(*where*)//endof[D3Ewhere(...)]
 //
 (* ****** ****** *)
@@ -626,10 +626,10 @@ where
 let
 val () =
 (
-  fperr30_d3exp(out, d3el) )
+  f3perr0_d3exp(out, d3el) )
 val () =
 (
-  fperr30_d3exp(out, d3er) )
+  f3perr0_d3exp(out, d3er) )
 end(*let*)//end-of-[D3Eassgn(...)]
 //
 |D3Exazgn
@@ -637,10 +637,10 @@ end(*let*)//end-of-[D3Eassgn(...)]
 let
 val () =
 (
-  fperr30_d3exp(out, d3el) )
+  f3perr0_d3exp(out, d3el) )
 val () =
 (
-  fperr30_d3exp(out, d3er) )
+  f3perr0_d3exp(out, d3er) )
 end(*let*)//end-of-[D3Exazgn(...)]
 //
 |D3Exchng
@@ -648,10 +648,10 @@ end(*let*)//end-of-[D3Exazgn(...)]
 let
 val () =
 (
-  fperr30_d3exp(out, d3el) )
+  f3perr0_d3exp(out, d3el) )
 val () =
 (
-  fperr30_d3exp(out, d3er) )
+  f3perr0_d3exp(out, d3er) )
 end(*let*)//end-of-[D3Exchng(...)]
 //
 (* ****** ****** *)
@@ -661,7 +661,7 @@ end(*let*)//end-of-[D3Exchng(...)]
 let
 val () =
 (
-  fperr30_d3exp(out, d3e1) )
+  f3perr0_d3exp(out, d3e1) )
 end(*let*)//end-of-[D3Eraise(...)]
 //
 (* ****** ****** *)
@@ -671,16 +671,16 @@ end(*let*)//end-of-[D3Eraise(...)]
 let
 val () =
 (
-  fperr30_d3exp(out, d3e1) )
+  f3perr0_d3exp(out, d3e1) )
 end(*let*)//end-of-[D3El0azy(...)]
 |D3El1azy
 (dknd
 ,d3e1, d3es) =>
 let
 val () =
-  fperr30_d3exp(out, d3e1)
+  f3perr0_d3exp(out, d3e1)
 val () =
-  fperr30_d3explst(out, d3es)
+  f3perr0_d3explst(out, d3es)
 end(*let*)//end-of-[D3El1azy(...)]
 //
 (* ****** ****** *)
@@ -691,7 +691,7 @@ end(*let*)//end-of-[D3El1azy(...)]
 let
 val () =
 (
-  fperr30_d3exp(out, d3e1) )
+  f3perr0_d3exp(out, d3e1) )
 end(*let*)//end-of-[D3Eannot(...)]
 //
 (* ****** ****** *)
@@ -701,11 +701,11 @@ end(*let*)//end-of-[D3Eannot(...)]
 let
 val () =
 (
-  fperr30_d3exp(out, d3e1) )
+  f3perr0_d3exp(out, d3e1) )
 (*
 val () =
 (
-  fperr30_label(out, lab2) )
+  f3perr0_label(out, lab2) )
 *)
 end(*let*)//end-of-[D3Elabck(...)]
 //
@@ -714,11 +714,11 @@ end(*let*)//end-of-[D3Elabck(...)]
 let
 val () =
 (
-  fperr30_d3exp(out, d3e1) )
+  f3perr0_d3exp(out, d3e1) )
 (*
 val () =
 (
-  fperr30_s2typ(out, t2p2) )
+  f3perr0_s2typ(out, t2p2) )
 *)
 end(*let*)//end-of-[D3Et2pck(...)]
 |D3Et2ped
@@ -726,11 +726,11 @@ end(*let*)//end-of-[D3Et2pck(...)]
 let
 val () =
 (
-  fperr30_d3exp(out, d3e1) )
+  f3perr0_d3exp(out, d3e1) )
 (*
 val () =
 (
-  fperr30_s2typ(out, t2p2) )
+  f3perr0_s2typ(out, t2p2) )
 *)
 end(*let*)//end-of-[D3Et2ped(...)]
 //
@@ -739,7 +739,7 @@ end(*let*)//end-of-[D3Et2ped(...)]
 |D3Enone0 _ => (  (*void*)  )
 |D3Enone1 _ => () | D3Enone2 _ => ()
 |
-D3Eerrck(_,_) => fperr30_d3exp(out, d3e)
+D3Eerrck(_,_) => f3perr0_d3exp(out, d3e)
 //
 |
 _(*otherwise*) =>
@@ -749,11 +749,11 @@ val loc = d3e.lctn((*void*))
 val t2p = d3e.styp((*void*))
 //
 val ( ) = prerrsln
-("fperr30_d3exp: auxmain: loc = ", loc)
+("f3perr0_d3exp: auxmain: loc = ", loc)
 val ( ) = prerrsln
-("fperr30_d3exp: auxmain: t2p = ", t2p)
+("f3perr0_d3exp: auxmain: t2p = ", t2p)
 val ( ) = prerrsln
-("fperr30_d3exp: auxmain: d3e = ", d3e)
+("f3perr0_d3exp: auxmain: d3e = ", d3e)
 //
 endlet
 //
@@ -764,7 +764,7 @@ end (*let*) // end-of-[ auxmain(out, d3e) ]
 in//local
 //
 #implfun
-fperr30_d3exp
+f3perr0_d3exp
 ( out, d3e0 ) =
 let
 //
@@ -777,13 +777,13 @@ val loc0 = d3e0.lctn()
 in//let
 (*
 prerrsln
-("fperr30_d3exp: loc0 = ", loc0)
+("f3perr0_d3exp: loc0 = ", loc0)
 *)
 end//let
 (*
 val () =
 prerrsln
-("fperr30_d3exp: d3e0 = ", d3e0)
+("f3perr0_d3exp: d3e0 = ", d3e0)
 *)
 //
 in//let
@@ -809,32 +809,32 @@ g_print
 in//let
 printsln();
 printsln("\
-FPERR30-ERROR:", loc0, ":", d3e0)
+F3PERR0-ERROR:", loc0, ":", d3e0)
 end//let
 )
 | _(* otherwise *) => (  (* skipped *)  )
 //
-end(*let*)//end-of(fperr30_d3exp(out,d3e0))
+end(*let*)//end-of(f3perr0_d3exp(out,d3e0))
 //
 (* ****** ****** *)
 //
-endloc(*local*)//end-of(local(fperr30_d3exp))
+endloc(*local*)//end-of(local(f3perr0_d3exp))
 
 (* ****** ****** *)
 //
 #implfun
-fperr30_l3d3e
+f3perr0_l3d3e
 (out, ld3e) =
 (
 case+ ld3e of
 |
-D3LAB(lab,d3e1) => fperr30_d3exp(out,d3e1)
-) (*case+*)//end-of-(fperr30_d3exp(out,ld3e))
+D3LAB(lab,d3e1) => f3perr0_d3exp(out,d3e1)
+) (*case+*)//end-of-(f3perr0_d3exp(out,ld3e))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr30_f3arg
+f3perr0_f3arg
 (out, farg) =
 (
 case+
@@ -842,136 +842,136 @@ farg.node() of
 //
 |F3ARGdapp
 (npf1, d3ps) =>
-fperr30_d3patlst(out, d3ps)
+f3perr0_d3patlst(out, d3ps)
 //
 |F3ARGsapp
 (s2vs, s2es) => ( (*void*) )
 |F3ARGmets
 (   s2es   ) => ( (*void*) ) )//end-of-fun
-//(*case+*)//end-of-(fperr30_f3arg(out,farg)]
+//(*case+*)//end-of-(f3perr0_f3arg(out,farg)]
 //
 (* ****** ****** *)
 //
 #implfun
-fperr30_d3gua
+f3perr0_d3gua
 (out, dgua) =
 (
 case+
 dgua.node() of
 |
 D3GUAexp(d3e1) =>
-fperr30_d3exp(out, d3e1)
+f3perr0_d3exp(out, d3e1)
 |
 D3GUAmat(d3e1,d3p2) =>
 let
-val () = fperr30_d3exp(out, d3e1)
-val () = fperr30_d3pat(out, d3p2)
+val () = f3perr0_d3exp(out, d3e1)
+val () = f3perr0_d3pat(out, d3p2)
 endlet // end of [D3GUAmat(_,_,_)]
-) (*case*) // end-of(fperr30_d3gua(out,dgua))
+) (*case*) // end-of(f3perr0_d3gua(out,dgua))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr30_d3gpt
+f3perr0_d3gpt
 (out, dgpt) =
 (
 case+
 dgpt.node() of
 |
 D3GPTpat(d3p1) =>
-fperr30_d3pat(out, d3p1)
+f3perr0_d3pat(out, d3p1)
 |
 D3GPTgua(d3p1,d3gs) =>
 let
-val () = fperr30_d3pat(out, d3p1)
-val () = fperr30_d3gualst(out, d3gs)
+val () = f3perr0_d3pat(out, d3p1)
+val () = f3perr0_d3gualst(out, d3gs)
 endlet // end of [ D3GPTgua(_,_,_) ]
-) (*case*) // end-of(fperr30_d3gpt(out,dgpt))
+) (*case*) // end-of(f3perr0_d3gpt(out,dgpt))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr30_d3cls
+f3perr0_d3cls
 (out, dcls) =
 (
 case+
 dcls.node() of
 |
 D3CLSgpt(dgpt) =>
-fperr30_d3gpt(out, dgpt)
+f3perr0_d3gpt(out, dgpt)
 |
 D3CLScls(dgpt,d3e2) =>
 let
-val () = fperr30_d3gpt(out, dgpt)
-val () = fperr30_d3exp(out, d3e2)
+val () = f3perr0_d3gpt(out, dgpt)
+val () = f3perr0_d3exp(out, d3e2)
 endlet // end of [ D3CLScls(_,_,_) ]
-) (*case*) // end-of(fperr30_d3cls(out,dcls))
+) (*case*) // end-of(f3perr0_d3cls(out,dcls))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr30_d3patlst
+f3perr0_d3patlst
   (out, d3ps) =
 (
-  list_fperr30_fnp(out, d3ps, fperr30_d3pat))
+  list_f3perr0_fnp(out, d3ps, f3perr0_d3pat))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr30_l3d3plst
+f3perr0_l3d3plst
   (out, ldps) =
 (
-  list_fperr30_fnp(out, ldps, fperr30_l3d3p))
+  list_f3perr0_fnp(out, ldps, f3perr0_l3d3p))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr30_d3explst
+f3perr0_d3explst
   (out, d3es) =
 (
-  list_fperr30_fnp(out, d3es, fperr30_d3exp))
+  list_f3perr0_fnp(out, d3es, f3perr0_d3exp))
 //
 #implfun
-fperr30_d3expopt
+f3perr0_d3expopt
   (out, dopt) =
 (
-  optn_fperr30_fnp(out, dopt, fperr30_d3exp))
+  optn_f3perr0_fnp(out, dopt, f3perr0_d3exp))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr30_l3d3elst
+f3perr0_l3d3elst
   (out, ldes) =
 (
-  list_fperr30_fnp(out, ldes, fperr30_l3d3e))
+  list_f3perr0_fnp(out, ldes, f3perr0_l3d3e))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr30_f3arglst
+f3perr0_f3arglst
   (out, f3as) =
 (
-  list_fperr30_fnp(out, f3as, fperr30_f3arg))
+  list_f3perr0_fnp(out, f3as, f3perr0_f3arg))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr30_d3gualst
+f3perr0_d3gualst
   (out, d3gs) =
 (
-  list_fperr30_fnp(out, d3gs, fperr30_d3gua))
+  list_f3perr0_fnp(out, d3gs, f3perr0_d3gua))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr30_d3clslst
+f3perr0_d3clslst
   (out, d3cs) =
 (
-  list_fperr30_fnp(out, d3cs, fperr30_d3cls))
+  list_f3perr0_fnp(out, d3cs, f3perr0_d3cls))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr30_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_f3perr0_dynexp.dats] *)
 (***********************************************************************)

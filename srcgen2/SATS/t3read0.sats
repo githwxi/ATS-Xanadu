@@ -119,7 +119,7 @@ tr30evn = tr30evn_vtbx
 (* ****** ****** *)
 //
 fun
-d3parsed_of_tread30
+d3parsed_of_t3read0
 (dpar: d3parsed): (d3parsed)
 //
 (* ****** ****** *)
@@ -151,7 +151,7 @@ tr30evn_timp$psh
 (* ****** ****** *)
 //
 #typedef
-ftread30
+ft3read0
 (syn : tbox) =
 (
 ! tr30evn
@@ -161,28 +161,28 @@ ftread30
 (* ****** ****** *)
 //
 fun
-optn_tread30_fnp
+optn_t3read0_fnp
 {x0:tx}
 ( evn:
 ! tr30evn
 , opt: optn(x0)
 , err:
-& sint >> _, frd: ftread30(x0)): optn(x0)
+& sint >> _, frd: ft3read0(x0)): optn(x0)
 //
 fun
-list_tread30_fnp
+list_t3read0_fnp
 {x0:tx}
 ( evn:
 ! tr30evn
 , lst: list(x0)
 , err:
-& sint >> _, frd: ftread30(x0)): list(x0)
+& sint >> _, frd: ft3read0(x0)): list(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-tread30_d3pat
+t3read0_d3pat
 ( evn0:
 ! tr30evn
 , d3p0: d3pat, nerr: &sint >> _): d3pat
@@ -191,7 +191,7 @@ tread30_d3pat
 (* ****** ****** *)
 //
 fun
-tread30_d3exp
+t3read0_d3exp
 ( evn0:
 ! tr30evn
 , d3e0: d3exp, nerr: &sint >> _): d3exp
@@ -199,7 +199,7 @@ tread30_d3exp
 (* ****** ****** *)
 //
 fun
-tread30_d3cls
+t3read0_d3cls
 ( evn0:
 ! tr30evn
 , dcls: d3cls, nerr: &sint >> _): d3cls
@@ -208,7 +208,7 @@ tread30_d3cls
 (* ****** ****** *)
 //
 fun
-tread30_timpl
+t3read0_timpl
 ( evn0:
 ! tr30evn
 , timp: timpl, nerr: &sint >> _): timpl
@@ -216,7 +216,7 @@ tread30_timpl
 (* ****** ****** *)
 //
 fun
-tread30_d3ecl
+t3read0_d3ecl
 ( evn0:
 ! tr30evn
 , d3cl: d3ecl, nerr: &sint >> _): d3ecl
@@ -224,47 +224,47 @@ tread30_d3ecl
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun tread30_d3patlst: ftread30(d3patlst)
-fun tread30_l3d3plst: ftread30(l3d3plst)
+fun t3read0_d3patlst: ft3read0(d3patlst)
+fun t3read0_l3d3plst: ft3read0(l3d3plst)
 //
 (* ****** ****** *)
 //
-fun tread30_d3explst: ftread30(d3explst)
-fun tread30_d3expopt: ftread30(d3expopt)
-fun tread30_l3d3elst: ftread30(l3d3elst)
+fun t3read0_d3explst: ft3read0(d3explst)
+fun t3read0_d3expopt: ft3read0(d3expopt)
+fun t3read0_l3d3elst: ft3read0(l3d3elst)
 //
-fun tread30_d3clslst: ftread30(d3clslst)
-//
-(* ****** ****** *)
-//
-fun tread30_d3eclist: ftread30(d3eclist)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun tread30_teqd3exp: ftread30(teqd3exp)
+fun t3read0_d3clslst: ft3read0(d3clslst)
 //
 (* ****** ****** *)
 //
-fun tread30_d3valdcl: ftread30(d3valdcl)
-fun tread30_d3vardcl: ftread30(d3vardcl)
-fun tread30_d3fundcl: ftread30(d3fundcl)
-//
-(* ****** ****** *)
-//
-fun tread30_d3valdclist: ftread30(d3valdclist)
-fun tread30_d3vardclist: ftread30(d3vardclist)
-fun tread30_d3fundclist: ftread30(d3fundclist)
+fun t3read0_d3eclist: ft3read0(d3eclist)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun tread30_d3explstopt: ftread30(d3explstopt)
-fun tread30_d3eclistopt: ftread30(d3eclistopt)
+fun t3read0_teqd3exp: ft3read0(teqd3exp)
+//
+(* ****** ****** *)
+//
+fun t3read0_d3valdcl: ft3read0(d3valdcl)
+fun t3read0_d3vardcl: ft3read0(d3vardcl)
+fun t3read0_d3fundcl: ft3read0(d3fundcl)
+//
+(* ****** ****** *)
+//
+fun t3read0_d3valdclist: ft3read0(d3valdclist)
+fun t3read0_d3vardclist: ft3read0(d3vardclist)
+fun t3read0_d3fundclist: ft3read0(d3fundclist)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun t3read0_d3explstopt: ft3read0(d3explstopt)
+fun t3read0_d3eclistopt: ft3read0(d3eclistopt)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_SATS_tread30.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_t3read0.sats] *)
 (***********************************************************************)

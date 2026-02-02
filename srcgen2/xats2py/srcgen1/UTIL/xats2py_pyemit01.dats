@@ -100,9 +100,9 @@ val
 out0 = g_stderr((*0*))
 in//let
 prerrsln
-("FPERR30_D3PARSED:");
-fperr30_d3parsed(out0, dpar)
-end//let
+("F3PERR0_D3PARSED:");
+f3perr0_d3parsed(out0,dpar)
+end//let//end-of-(val(...))
 //
 val ipar =
 (

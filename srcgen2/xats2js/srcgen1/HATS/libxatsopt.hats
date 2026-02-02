@@ -82,10 +82,10 @@ Mon 19 Feb 2024 10:54:31 AM
 "./../../../SATS/trtmp3c.sats"
 (* ****** ****** *)
 #staload
-"./../../../SATS/tread30.sats"
+"./../../../SATS/t3read0.sats"
 (* ****** ****** *)
 #staload
-"./../../../SATS/fperr30.sats"
+"./../../../SATS/f3perr0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
