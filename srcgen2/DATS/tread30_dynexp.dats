@@ -120,6 +120,75 @@ d3exp_errvl with d3exp_errvl_a2
 #symload errvl with d3exp_errvl_a2
 //
 (* ****** ****** *)
+//
+#extern
+fun
+d3exp_errvl_lst
+(d3es: d3explst): sint
+//
+#implfun
+d3exp_errvl_lst
+(  d3es  ) =
+(
+case+ d3es of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(d3e1,d3es) =>
+maxs
+(
+errvl(d3e1),d3exp_errvl_lst(d3es))
+endcas // end of [ case+( d3es ) ]
+)
+//
+#symload
+d3exp_errvl with d3exp_errvl_lst
+#symload errvl with d3exp_errvl_lst
+//
+(* ****** ****** *)
+//
+#extern
+fun
+d3exp_errvl_opt
+(dopt: d3expopt): sint
+//
+#implfun
+d3exp_errvl_opt
+(  dopt  ) =
+(
+case+ dopt of
+| optn_nil() => 0
+| optn_cons(d3e1) => errvl(d3e1)
+endcas // end of [ case+( d3es ) ]
+)
+//
+#symload
+d3exp_errvl with d3exp_errvl_opt
+#symload errvl with d3exp_errvl_opt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3exp_dapp_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3f0: d3exp
+,npf1: (sint)
+,d3es: d3explst): d3exp =
+let
+val
+lvl0 = maxs
+(errvl(d3f0), errvl(d3es)) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_tpnd
+( loc0
+, t2p0, D3Edapp(d3f0, npf1, d3es)))
+endlet//end of [d3exp_dapp_errck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -190,7 +259,13 @@ d3e0.node() of
 |
 D3Etimp _ =>
 (
-f0_timp(evn0, d3e0, err0))
+  f0_timp(evn0, d3e0, err0))
+//
+(* ****** ****** *)
+|
+D3Edapp _ =>
+(
+  f0_dapp(evn0, d3e0, err0))
 //
 (* ****** ****** *)
 |
@@ -215,8 +290,6 @@ f0_timp
 let
 //
 val nerr = err0
-val loc0 = d3e0.lctn()
-val t2p0 = d3e0.styp()
 //
 val-
 D3Etimp
@@ -238,6 +311,8 @@ if // if
 then (d3e0) else
 let
 val lvl0 = (  0  )
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
 val tmps = tr30evn_tmps$get(evn0)
 in//let
 d3exp_errck
@@ -247,9 +322,54 @@ d3exp_make_tpnd
 (loc0, t2p0, D3Etimq(d3f0,timp,tmps)))
 end//let
 //
-end(*let*)//end-of-[ f0_timp(env0,d3e0) ]
+end(*let*)//end-of-[f0_timp(env0,d3e0,err0)]
 //
-}(*where*)//end-of-[tread30_d3exp(evn0,...)]
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( evn0:
+! tr30evn
+, d3e0: d3exp
+, err0: &sint >> _): d3exp =
+let
+//
+val nerr = err0
+//
+val-
+D3Edapp
+( d3f0
+, npf1, d3es) = d3e0.node()
+//
+val
+d3f0 =
+tread30_d3exp(evn0,d3f0,err0)
+val
+d3es =
+tread30_d3explst(evn0,d3es,err0)
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+in//let
+(
+  d3exp_dapp_errck
+  ( loc0, t2p0, d3f0, npf1, d3es ))
+end//let
+//
+end(*let*)//end-of-[f0_dapp(evn0,d3e0,err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+}(*where*)//end-of-[tread30_d3exp(evn0,d3e0,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
