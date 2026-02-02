@@ -411,7 +411,7 @@ tr3benv_search_dcst
 (env0: !tr3benv, dcst: d2cst): d3eclist_vt
 //
 fun
-tr3benv_tapq_resolve
+tr3benv_t3apq_resolve
 ( env0:
 ! tr3benv, dcst: d2cst, t2js: t2jaglst): timpl
 //

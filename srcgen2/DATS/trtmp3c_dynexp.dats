@@ -246,9 +246,9 @@ D3Etimp
 , timp ) = d3e0.node()
 //
 val timp =
-tr3cenv_timp_process(env0, timp)
+tr3cenv_timpl_process(env0, timp)
 //
-in
+in//let
 (
   d3exp_make_tpnd
   (loc0, t2p0, D3Etimp(d3f0, timp)) )
@@ -369,24 +369,24 @@ let
 //
 val
 timp =
-tr3cenv_tapq_resolve
-( env0, d2c0, t2js )//val(timp)
+tr3cenv_t3apq_resolve
+( env0 , d2c0 , t2js )//val.
 //
 (*
 (*
 HX:
 It is merged into
-[tr3cenv_tapq_resolve]
+[
+tr3cenv_t3apq_resolve]
 *)
 val
 timp =
-tr3cenv_timp_resolve
-( env0
-, d2c0, t2js, timp )//val(timp)
+tr3cenv_timpl_resolve(
+  env0, d2c0, t2js, timp)//val.
 *)
 //
 val timp =
-tr3cenv_timp_process(env0, timp)
+tr3cenv_timpl_process(env0, timp)
 //
 in//let
 (

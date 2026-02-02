@@ -86,8 +86,9 @@ ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload _ = "./xsymmap_topmap.dats"
 (* ****** ****** *)
-
+//
 local
+//
 (* ****** ****** *)
 (*
 HX-2023-11-17:
@@ -96,17 +97,18 @@ It is implemented in
 tmpmatch_d3cl_t2js(d3cl,t2js)
 *)
 (* ****** ****** *)
-in (*local*)
+in//local
 (* ****** ****** *)
 //
 #implfun
-tr3benv_tapq_resolve
-  (env0, d2c0, t2js) =
+tr3benv_t3apq_resolve
+ ( env0, d2c0, t2js ) =
 let
 //
 val
 stmp =
-tr3benv_getstmp(env0)
+(
+  tr3benv_getstmp(env0))
 //
 val
 dcls =
@@ -116,7 +118,7 @@ tr3benv_search_dcst(env0, d2c0))
 (*
 val () =
 prerrsln("\
-tr3benv_tapq_resolve: dcls(1) = ", dcls)
+tr3benv_t3apq_resolve: dcls(1) = ", dcls)
 *)
 //
 in//let
@@ -128,7 +130,7 @@ val dcls = myfilter(dcls)
 (*
 val (  ) =
 prerrsln("\
-tr3benv_tapq_resolve: dcls(2) = ", dcls)
+tr3benv_t3apq_resolve: dcls(2) = ", dcls)
 *)
 //
 in//let1
@@ -183,7 +185,7 @@ where
 (*
 val (  ) =
 prerrsln("\
-tr3benv_tapq_resolve:myfilter: dcl1 = ", dcl1)
+tr3benv_t3apq_resolve:myfilter: dcl1 = ", dcl1)
 *)
 }(*where*)
 end(*let*)//end-of-[optn_cons(...)]
@@ -194,17 +196,17 @@ end(*let*)//end-of-[list_cons(...)]
 //
 (*
 val () =
-prerrsln("tr3benv_tapq_resolve: d2c0 = ", d2c0)
+prerrsln("tr3benv_t3apq_resolve: d2c0 = ", d2c0)
 val () =
-prerrsln("tr3benv_tapq_resolve: t2js = ", t2js)
+prerrsln("tr3benv_t3apq_resolve: t2js = ", t2js)
 *)
 //
-}(*where*)//end-of-[tr3benv_tapq_resolve(env0,...)]
+}(*where*)//end-of-[tr3benv_t3apq_resolve(env0,...)]
 //
 (* ****** ****** *)
-
-end(*local*) // end-of-[local(tr3benv_tapq_resolve)]
-
+//
+end(*loc*)//end-of-[local(implfun(tr3benv_t3apq_resolve))]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
