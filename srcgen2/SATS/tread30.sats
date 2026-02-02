@@ -81,6 +81,12 @@ tr30evn = tr30evn_vtbx
 #typedef d3parsed = $D3E.d3parsed
 //
 (* ****** ****** *)
+#typedef teqd3exp = $D3E.teqd3exp
+(* ****** ****** *)
+#typedef d3valdcl = $D3E.d3valdcl
+#typedef d3vardcl = $D3E.d3vardcl
+#typedef d3fundcl = $D3E.d3fundcl
+(* ****** ****** *)
 #typedef d3valdclist = $D3E.d3valdclist
 #typedef d3vardclist = $D3E.d3vardclist
 #typedef d3fundclist = $D3E.d3fundclist
@@ -191,6 +197,23 @@ tread30_d3ecl
 fun tread30_d3patlst: ftread30(d3patlst)
 fun tread30_d3explst: ftread30(d3explst)
 fun tread30_d3eclist: ftread30(d3eclist)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun tread30_teqd3exp: ftread30(teqd3exp)
+//
+(* ****** ****** *)
+//
+fun tread30_d3valdcl: ftread30(d3valdcl)
+fun tread30_d3vardcl: ftread30(d3vardcl)
+fun tread30_d3fundcl: ftread30(d3fundcl)
+//
+(* ****** ****** *)
+//
+fun tread30_d3valdclist: ftread30(d3valdclist)
+fun tread30_d3vardclist: ftread30(d3vardclist)
+fun tread30_d3fundclist: ftread30(d3fundclist)
 //
 (* ****** ****** *)
 (* ****** ****** *)
