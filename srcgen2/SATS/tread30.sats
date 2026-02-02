@@ -61,8 +61,8 @@ tr30evn = tr30evn_vtbx
 #typedef d3pat = $D3E.d3pat
 //
 #typedef d3exp = $D3E.d3exp
-#typedef timpl = $D3E.timpl
 //
+#typedef timpl = $D3E.timpl
 #typedef d3ecl = $D3E.d3ecl
 //
 (* ****** ****** *)
@@ -71,8 +71,9 @@ tr30evn = tr30evn_vtbx
 #typedef d3patlst = $D3E.d3patlst
 //
 #typedef d3explst = $D3E.d3explst
-#typedef timplist = $D3E.timplist
+#typedef d3expopt = $D3E.d3expopt
 //
+#typedef timplist = $D3E.timplist
 #typedef d3eclist = $D3E.d3eclist
 //
 (* ****** ****** *)
@@ -195,7 +196,10 @@ tread30_d3ecl
 (* ****** ****** *)
 //
 fun tread30_d3patlst: ftread30(d3patlst)
+//
 fun tread30_d3explst: ftread30(d3explst)
+fun tread30_d3expopt: ftread30(d3expopt)
+//
 fun tread30_d3eclist: ftread30(d3eclist)
 //
 (* ****** ****** *)
