@@ -94,6 +94,39 @@ end (*let*) // end-of(d3ecl_errck)
 (* ****** ****** *)
 //
 fun
+d3ecl_dclst0_errck
+( loc0
+: loc_t
+, dcls
+: d3eclist): d3ecl =
+let
+val
+lvl0 = 0 in//let
+d3ecl_errck
+(lvl0+1, d3ecl(loc0, D3Cdclst0( dcls )))
+end(*let*)//end-of-[d3ecl_dclst0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3ecl_local0_errck
+( loc0
+: loc_t
+, dcs1
+: d3eclist
+, dcs2
+: d3eclist): d3ecl =
+let
+val
+lvl0 = 0 in//let
+d3ecl_errck
+(lvl0+1,d3ecl(loc0,D3Clocal0(dcs1,dcs2)))
+end(*let*)//end-of-[d3ecl_local0_errck(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3ecl_valdclst_errck
 ( loc0
 : loc_t
@@ -192,6 +225,16 @@ d3cl.node() of
 |D3Cextern _ => d3cl
 //
 (* ****** ****** *)
+//
+|D3Cdclst0 _ =>
+(
+  f0_dclst0(evn0, d3cl, err0))
+//
+|D3Clocal0 _ =>
+(
+  f0_local0(evn0, d3cl, err0))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3Cvaldclst _ =>
@@ -221,6 +264,64 @@ end (*let*)//end-of-[_(*otherwise*)]//temp
 //
 ) where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_dclst0
+( evn0:
+! tr30evn
+, dcl0: d3ecl
+, err0: &sint >> _): d3ecl =
+let
+//
+val nerr = err0
+val loc0 = dcl0.lctn()
+//
+val-
+D3Cdclst0
+(  dcls  ) = dcl0.node()
+//
+val dcls =
+tread30_d3eclist(evn0, dcls, err0)
+//
+in//let
+if // if
+(nerr=err0)
+then dcl0 else
+(
+  d3ecl_dclst0_errck( loc0, dcls ) )
+end(*let*)//end-of-[f0_dclst0(evn0,dcl0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_local0
+( evn0:
+! tr30evn
+, dcl0: d3ecl
+, err0: &sint >> _): d3ecl =
+let
+//
+val nerr = err0
+val loc0 = dcl0.lctn()
+//
+val-
+D3Clocal0
+(dcs1, dcs2) = dcl0.node()
+//
+val dcs1 =
+tread30_d3eclist(evn0, dcs1, err0)
+val dcs2 =
+tread30_d3eclist(evn0, dcs2, err0)
+//
+in
+if // if
+(err0=nerr)
+then dcl0 else
+(
+  d3ecl_local0_errck(loc0, dcs1, dcs2))
+end(*let*)//end-of-[f0_local0(evn0,dcl0,err0)]
 //
 (* ****** ****** *)
 //
