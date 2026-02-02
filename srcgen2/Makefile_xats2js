@@ -89,8 +89,8 @@ trans3a.sats \
 tread3a.sats \
 trtmp3b.sats \
 trtmp3c.sats \
-tread30.sats \
-fperr30.sats \
+t3read0.sats \
+f3perr0.sats \
 xglobal.sats \
 xatsopt.sats \
 
@@ -248,13 +248,13 @@ trtmp3c_myenv0.dats \
 trtmp3c_utils0.dats \
 trtmp3c_dynexp.dats \
 trtmp3c_decl00.dats \
-tread30.dats \
-tread30_myenv0.dats \
-tread30_dynexp.dats \
-tread30_decl00.dats \
-fperr30.dats \
-fperr30_dynexp.dats \
-fperr30_decl00.dats \
+t3read0.dats \
+t3read0_myenv0.dats \
+t3read0_dynexp.dats \
+t3read0_decl00.dats \
+f3perr0.dats \
+f3perr0_dynexp.dats \
+f3perr0_decl00.dats \
 xatsopt.dats \
 xatsopt_tmplib.dats \
 xatsopt_utils0.dats \
