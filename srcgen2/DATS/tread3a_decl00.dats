@@ -628,6 +628,7 @@ val () =
 } (*where*) // end-of-[tread3a_d3ecl(d3cl,err)]
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 tread3a_teqd3exp
@@ -653,6 +654,7 @@ then tdxp else TEQD3EXPsome(teq1, d3e2)
 endlet // end of [ TEQD3EXPsome( _,_ ) ]
 ) (*case+*)//end-(tread3a_teqd3exp(tdxp,err))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -764,6 +766,7 @@ then (dfun)
 else d3fundcl(loc,dpid,farg,sres,tdxp,wsxp)
 endlet // end-of-[tread3a_d3fundcl(dfun,err)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

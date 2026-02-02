@@ -10,6 +10,14 @@ For testing xats2js!
 "srcgen2\
 /prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
+////
+(* ****** ****** *)
+#extern
+fun
+foo: sint -> sint
+#implfun foo(x: sint) = x + 1
+(* ****** ****** *)
+////
 (* ****** ****** *)
 fun
 <a:vt>
@@ -20,11 +28,16 @@ case+ xs of
 |list_nil() => 0
 |list_cons(_, xs) => 1 + length(xs)
 )
+(* ****** ****** *)
 ////
+(* ****** ****** *)
 fun
 foo
 (x0: int): int = 0
-
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
 fun
 length
 (xs: list(sint)): sint =
@@ -39,15 +52,13 @@ list_cons // no ys
 ( _ , ys ) => 2+length(xs.1)
 //
 |list_nil _ => 0 |list_cons _ => 1
-)(*case+*)//end-of-[length(xs)]
-
+)(*case+*)//end-of-[length(xs):sint]
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)
-
 val
 xs = list@(1, 2, 3)
-
 (* ****** ****** *)
 
 val
@@ -57,16 +68,16 @@ lam(x: sint): sint => x
 (* ****** ****** *)
 ////
 (* ****** ****** *)
-
+//
 #impltmp
 < x0:t0 >
 < y0:t0 >
 list_map =
 gseq_map_list
 <list(x0)><x0><y0>(*void*)
-
+//
 val ys = list_map<sint><sint>(xs)
-
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)

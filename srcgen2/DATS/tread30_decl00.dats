@@ -136,6 +136,124 @@ end(*let*)//end-of-[tread30_d3ecl(evn0,d3cl,err0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+tread30_teqd3exp
+(evn0, tdxp, err0) =
+(
+case+ tdxp of
+//
+|
+TEQD3EXPnone() => tdxp
+//
+|
+TEQD3EXPsome(teq1, d3e2) =>
+let
+val nerr = err0
+(*
+val ( ) =
+prerrsln("\
+tread30_teqd3exp: d3e2 = ", d3e2)
+*)
+val d3e2 =
+(
+  tread30_d3exp(evn0, d3e2, err0))
+in//letp
+if // if
+(err0=nerr)
+then tdxp else TEQD3EXPsome(teq1, d3e2)
+end(*let*)//end-of-[ TEQD3EXPsome( _,_ ) ]
+//
+)(*case+*)//end(tread30_teqd3exp(evn0,tdxp,err0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tread30_d3valdcl
+(evn0, dval, err0) =
+let
+//
+val nerr = err0
+//
+val loc0 = dval.lctn()
+//
+val
+dpat = d3valdcl_get_dpat(dval)
+val
+tdxp = d3valdcl_get_tdxp(dval)
+val
+wsxp = d3valdcl_get_wsxp(dval)
+//
+val
+tdxp =
+tread30_teqd3exp(evn0,tdxp,err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (dval) else
+(
+  d3valdcl(loc0, dpat, tdxp, wsxp))
+end(*let*)//end(tread30_d3valdcl(evn0,dval,err0))
+//
+(* ****** ****** *)
+//
+#implfun
+tread30_d3vardcl
+(evn0, dvar, err0) =
+let
+//
+val nerr = err0
+//
+val loc0 = dvar.lctn()
+//
+val
+dpid = d3vardcl_get_dpid(dvar)
+val
+vpid = d3vardcl_get_vpid(dvar)
+val
+sres = d3vardcl_get_sres(dvar)
+val
+dini = d3vardcl_get_dini(dvar)
+//
+val
+dini =
+tread30_teqd3exp(evn0,dini,err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (dvar) else
+(
+  d3vardcl(loc0,dpid,vpid,sres,dini))
+end(*let*)//end(tread30_d3vardcl(evn0,dval,err0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tread30_d3valdclist
+( evn0, d3vs, err0 ) =
+(
+list_tread30_fnp(evn0, d3vs, err0, tread30_d3valdcl))
+//
+#implfun
+tread30_d3vardclist
+( evn0, d3vs, err0 ) =
+(
+list_tread30_fnp(evn0, d3vs, err0, tread30_d3vardcl))
+//
+(* ****** ****** *)
+//
+#implfun
+tread30_d3fundclist
+( evn0, d3fs, err0 ) =
+(
+list_tread30_fnp(evn0, d3fs, err0, tread30_d3fundcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_tread30_decl00.dats] *)
 (***********************************************************************)

@@ -197,14 +197,14 @@ end(*end*)//end-of-[list_cons(x1,rs)]
 //
 #implfun
 tread30_d3patlst
-( env0
+( evn0
 , d3ps, err0 ) = d3ps
 (*
 #implfun
 tread30_d3patlst
-( env0
+( evn0
 , d3ps, err0 ) =
-list_tread30_fnp(env0, d3ps, err0, tread30_d3pat)
+list_tread30_fnp(evn0, d3ps, err0, tread30_d3pat)
 *)
 //
 (* ****** ****** *)
@@ -212,32 +212,32 @@ list_tread30_fnp(env0, d3ps, err0, tread30_d3pat)
 //
 #implfun
 tread30_d3explst
-( env0
+( evn0
 , d3es, err0 ) =
-list_tread30_fnp(env0, d3es, err0, tread30_d3exp)
+list_tread30_fnp(evn0, d3es, err0, tread30_d3exp)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 tread30_d3eclist
-( env0, d3cs, err0 ) =
-list_tread30_fnp(env0, d3cs, err0, tread30_d3ecl)
+( evn0, d3cs, err0 ) =
+list_tread30_fnp(evn0, d3cs, err0, tread30_d3ecl)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 tread30_d3explstopt
-( env0, dopt, err0 ) =
-optn_tread30_fnp(env0, dopt, err0, tread30_d3explst)
+( evn0, dopt, err0 ) =
+optn_tread30_fnp(evn0, dopt, err0, tread30_d3explst)
 //
 (* ****** ****** *)
 //
 #implfun
 tread30_d3eclistopt
-( env0, dopt, err0 ) =
-optn_tread30_fnp(env0, dopt, err0, tread30_d3eclist)
+( evn0, dopt, err0 ) =
+optn_tread30_fnp(evn0, dopt, err0, tread30_d3eclist)
 //
 (* ****** ****** *)
 (* ****** ****** *)
