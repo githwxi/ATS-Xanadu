@@ -563,20 +563,22 @@ D3CLScls(dgpt,d3e1) => errvl(d3e1)
 fun
 d3cls_errvl_lst
 (dcls: d3clslst): sint
-#symload errvl with d3cls_errvl_lst
 //
 #implfun
-d3cls_errvl_lst(dcls) =
+d3cls_errvl_lst
+(  dcls  ) =
 (
 case+ dcls of
 |
 list_nil
-((*nil*)) => ( 0 )
+( (*nil*) ) => (  0  )
 |
 list_cons
-(dcl1,dcls) => maxs
-(errvl(dcl1), d3cls_errvl_lst(dcls))
-) (*case+*)//end-of-(d3cls_errvl_lst)
+(dcl1,dcls) => maxs(
+errvl(dcl1), d3cls_errvl_lst(dcls))
+)(*case+*)//end-of-(d3cls_errvl_lst)
+//
+#symload errvl with d3cls_errvl_lst
 //
 (* ****** ****** *)
 //
@@ -3452,7 +3454,7 @@ if
 then (dcls)
 else
 d3cls(dcls.lctn(), D3CLScls(dgpt,d3e1))
-endlet // end-of-[ D3CLScls(_,_,_) ]
+endlet // end-of-[ D3CLScls(dgpt,d3e1) ]
 ) (*case+*)//end-of-[tread3a_d3cls(dcls,err)]
 //
 (* ****** ****** *)

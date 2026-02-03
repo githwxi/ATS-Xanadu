@@ -167,6 +167,39 @@ d3exp_errvl with d3exp_errvl_opt
 #symload errvl with d3exp_errvl_opt
 //
 (* ****** ****** *)
+//
+fun
+d3cls_errvl_a1
+(dcl: d3cls): sint =
+(
+case+ dcl.node() of
+|
+D3CLSgpt
+(   dgpt   ) => (  0  )
+|D3CLScls
+(dgpt, d3e1) => errvl(d3e1))
+#symload errvl with d3cls_errvl_a1
+//
+#extern
+fun
+d3cls_errvl_lst
+(dcls: d3clslst): sint
+//
+#implfun
+d3cls_errvl_lst
+(  dcls  ) =
+(
+case+ dcls of
+|list_nil
+( (*nil*) ) => (  0  )
+|list_cons
+(dcl1,dcls) => maxs(
+errvl(dcl1), d3cls_errvl_lst(dcls))
+)(*case+*)//end-of-(d3cls_errvl_lst)
+//
+#symload errvl with d3cls_errvl_lst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -244,6 +277,27 @@ lvl0+1,
 d3exp_make_tpnd(
 loc0,t2p0,D3Eift0(d3e1,dthn,dels)))
 endlet//end-of-[d3exp_ift0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_cas0_errck
+(loc0: loc_t
+,t2p0: s2typ
+,tknd: token
+,d3e1: d3exp
+,dcls: d3clslst): d3exp =
+let
+val
+lvl0 = maxs
+(errvl(d3e1), errvl(dcls))
+in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_tpnd
+(loc0,t2p0,D3Ecas0(tknd,d3e1,dcls)))
+endlet//end-of-[d3exp_cas0_errck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -337,11 +391,9 @@ d3e0.node() of
 |D3Eift0 _ =>
 (
   f0_ift0(evn0, d3e0, err0))
-(*
 |D3Ecas0 _ =>
 (
   f0_cas0(evn0, d3e0, err0))
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -538,15 +590,12 @@ D3Eift0
 ( d3e1
 , dthn, dels) = d3e0.node()
 //
-val
-d3e1 =
-t3read0_d3exp(evn0, d3e1, err0)
-val
-dthn =
-t3read0_d3expopt(evn0, dthn, err0)
-val
-dels =
-t3read0_d3expopt(evn0, dels, err0)
+val d3e1 =
+t3read0_d3exp(evn0,d3e1,err0)
+val dthn =
+t3read0_d3expopt(evn0,dthn,err0)
+val dels =
+t3read0_d3expopt(evn0,dels,err0)
 //
 in//let
 //
@@ -554,19 +603,97 @@ if // if
 (err0=nerr)
 then (d3e0) else
 let
+val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
 in//let
 (
   d3exp_ift0_errck
-  (d3e0.lctn(),t2p0,d3e1,dthn,dels) )
+  ( loc0, t2p0, d3e1, dthn, dels ))
 end//let
 //
 end(*let*)//end-of-[f0_ift0(evn0,d3e0,err0)]
 //
 (* ****** ****** *)
+//
+fun
+f0_cas0
+( evn0:
+! tr30evn
+, d3e0: d3exp
+, err0: &sint >> _): d3exp =
+let
+//
+val nerr = err0
+//
+val-
+D3Ecas0
+( tknd
+, d3e1, dcls) = d3e0.node()
+//
+val d3e1 =
+t3read0_d3exp(evn0,d3e1,err0)
+val dcls =
+t3read0_d3clslst(evn0,dcls,err0)
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+in//let
+(
+  d3exp_cas0_errck
+  ( loc0, t2p0, tknd, d3e1, dcls ))
+//
+end//let
+//
+end(*let*)//end-of-[f0_cas0(evn0,d3e0,err0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[t3read0_d3exp(evn0,d3e0,err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+t3read0_d3cls
+(evn0, dcls, err0) =
+(
+case+
+dcls.node() of
+//
+|D3CLSgpt
+( dgpt ) => (  dcls )
+//
+|D3CLScls
+(dgpt,d3e1) =>
+let
+//
+val nerr = err0
+//
+val d3e1 =
+t3read0_d3exp(evn0, d3e1, err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (dcls) else
+d3cls(dcls.lctn(), D3CLScls(dgpt,d3e1))
+end(*let*)//end-of-[D3CLScls(dgpt,d3e1)]
+//
+)(*case+*)//end-of-[t3read0_d3cls(evn0,dcls,err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+t3read0_timpl
+(evn0, timp, err0) = timp
 //
 (* ****** ****** *)
 (* ****** ****** *)
