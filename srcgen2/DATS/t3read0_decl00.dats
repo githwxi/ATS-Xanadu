@@ -331,6 +331,15 @@ D3Cabsimpl _ => (    d3cl    )
   f0_staload(evn0, d3cl, err0))
 //
 (* ****** ****** *)
+//
+|D3Cdyninit _ =>
+(
+  f0_dyninit(evn0, d3cl, err0))
+|D3Cextcode _ =>
+(
+  f0_extcode(evn0, d3cl, err0))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3Cvaldclst _ =>
@@ -375,16 +384,16 @@ fun
 f0_tmpsub
 ( evn0:
 ! t3r0evn
-, dcl0: d3ecl
+, d3cl: d3ecl
 , err0: &sint >> _): d3ecl =
 let
 //
 val nerr = err0
-val loc0 = dcl0.lctn()
+val loc0 = d3cl.lctn()
 //
 val-
 D3Ctmpsub
-(svts, dcl1) = dcl0.node()
+(svts, dcl1) = d3cl.node()
 //
 val dcl1 =
 (
@@ -393,10 +402,10 @@ val dcl1 =
 in//let
 if // if
 (nerr=err0)
-then dcl0 else
+then d3cl else
 (
   d3ecl_tmpsub_errck(loc0, svts, dcl1))
-end(*let*)//end-of-[f0_tmpsub(evn0,dcl0,err0)]
+end(*let*)//end-of-[f0_tmpsub(evn0,d3cl,err0)]
 //
 (* ****** ****** *)
 //
@@ -404,16 +413,16 @@ fun
 f0_dclst0
 ( evn0:
 ! t3r0evn
-, dcl0: d3ecl
+, d3cl: d3ecl
 , err0: &sint >> _): d3ecl =
 let
 //
 val nerr = err0
-val loc0 = dcl0.lctn()
+val loc0 = d3cl.lctn()
 //
 val-
 D3Cdclst0
-(   dcls   ) = dcl0.node()
+(   dcls   ) = d3cl.node()
 //
 val dcls =
 t3read0_d3eclist(evn0, dcls, err0)
@@ -421,10 +430,10 @@ t3read0_d3eclist(evn0, dcls, err0)
 in//let
 if // if
 (nerr=err0)
-then dcl0 else
+then d3cl else
 (
   d3ecl_dclst0_errck(  loc0 , dcls  ) )
-end(*let*)//end-of-[f0_dclst0(evn0,dcl0,err0)]
+end(*let*)//end-of-[f0_dclst0(evn0,d3cl,err0)]
 //
 (* ****** ****** *)
 //
@@ -432,16 +441,16 @@ fun
 f0_local0
 ( evn0:
 ! t3r0evn
-, dcl0: d3ecl
+, d3cl: d3ecl
 , err0: &sint >> _): d3ecl =
 let
 //
 val nerr = err0
-val loc0 = dcl0.lctn()
+val loc0 = d3cl.lctn()
 //
 val-
 D3Clocal0
-(dcs1, dcs2) = dcl0.node()
+(dcs1, dcs2) = d3cl.node()
 //
 val dcs1 =
 t3read0_d3eclist(evn0, dcs1, err0)
@@ -451,10 +460,10 @@ t3read0_d3eclist(evn0, dcs2, err0)
 in
 if // if
 (err0=nerr)
-then dcl0 else
+then d3cl else
 (
   d3ecl_local0_errck(loc0, dcs1, dcs2))
-end(*let*)//end-of-[f0_local0(evn0,dcl0,err0)]
+end(*let*)//end-of-[f0_local0(evn0,d3cl,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -463,18 +472,18 @@ fun
 f0_include
 ( evn0:
 ! t3r0evn
-, dcl0: d3ecl
+, d3cl: d3ecl
 , err0: &sint >> _): d3ecl =
 let
 //
 val nerr = err0
-val loc0 = dcl0.lctn()
+val loc0 = d3cl.lctn()
 //
 val-
 D3Cinclude
 (knd0
 ,tknd, gsrc
-,fopt, dopt) = dcl0.node()
+,fopt, dopt) = d3cl.node()
 //
 val dopt =
 (
@@ -491,12 +500,12 @@ in//let
 (
 if // if
 (err0=nerr)
-then (dcl0) else
+then (d3cl) else
 (
   d3ecl_include_errck
   (loc0, knd0, tknd, gsrc, fopt, dopt)))
 //
-end(*let*)//end-of-[f0_include(evn0,dcl0,err0)]
+end(*let*)//end-of-[f0_include(evn0,d3cl,err0)]
 //
 (* ****** ****** *)
 //
@@ -504,7 +513,7 @@ fun
 f0_staload
 ( evn0:
 ! t3r0evn
-, dcl0: d3ecl
+, d3cl: d3ecl
 , err0: &sint >> _): d3ecl =
 let
 //
@@ -518,8 +527,34 @@ val-
 D3Cstaload
 (knd0
 ,tknd, gsrc
-,fopt, dopt) = dcl0.node() in (  dcl0  )
-end(*let*)//end-of-[f0_staload(evn0,dcl0,err0)]
+,fopt, dopt) = d3cl.node() in (  d3cl  )
+end(*let*)//end-of-[f0_staload(evn0,d3cl,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dyninit
+( evn0:
+! t3r0evn
+, d3cl: d3ecl
+, err0: &sint >> _): d3ecl =
+let
+val-
+D3Cdyninit
+(tknd, gexp) = d3cl.node() in (  d3cl  )
+end(*let*)//end-of-[f0_dyninit(evn0,d3cl,err0)]
+//
+fun
+f0_extcode
+( evn0:
+! t3r0evn
+, d3cl: d3ecl
+, err0: &sint >> _): d3ecl =
+let
+val-
+D3Cextcode
+(tknd, gexp) = d3cl.node() in (  d3cl  )
+end(*let*)//end-of-[f0_extcode(evn0,d3cl,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -528,16 +563,16 @@ fun
 f0_valdclst
 ( evn0:
 ! t3r0evn
-, dcl0: d3ecl
+, d3cl: d3ecl
 , err0: &sint >> _): d3ecl =
 let
 //
 val nerr = err0
-val loc0 = dcl0.lctn()
+val loc0 = d3cl.lctn()
 //
 val-
 D3Cvaldclst
-(tknd, d3vs) = dcl0.node()
+(tknd, d3vs) = d3cl.node()
 //
 val d3vs =
 t3read0_d3valdclist(evn0, d3vs, err0)
@@ -545,10 +580,10 @@ t3read0_d3valdclist(evn0, d3vs, err0)
 in//let
 if // if
 (err0=nerr)
-then (dcl0) else
+then (d3cl) else
 (
   d3ecl_valdclst_errck(loc0, tknd, d3vs))
-end(*let*)//end-of-[f0_valdclst(evn0,dcl0,err0)]
+end(*let*)//end-of-[f0_valdclst(evn0,d3cl,err0)]
 //
 (* ****** ****** *)
 //
@@ -556,16 +591,16 @@ fun
 f0_vardclst
 ( evn0:
 ! t3r0evn
-, dcl0: d3ecl
+, d3cl: d3ecl
 , err0: &sint >> _): d3ecl =
 let
 //
 val nerr = err0
-val loc0 = dcl0.lctn()
+val loc0 = d3cl.lctn()
 //
 val-
 D3Cvardclst
-(tknd, d3vs) = dcl0.node()
+(tknd, d3vs) = d3cl.node()
 //
 val d3vs =
 t3read0_d3vardclist(evn0, d3vs, err0)
@@ -573,10 +608,10 @@ t3read0_d3vardclist(evn0, d3vs, err0)
 in//let
 if // if
 (err0=nerr)
-then (dcl0) else
+then (d3cl) else
 (
   d3ecl_vardclst_errck(loc0, tknd, d3vs))
-end(*let*)//end-of-[f0_vardclst(evn0,dcl0,err0)]
+end(*let*)//end-of-[f0_vardclst(evn0,d3cl,err0)]
 //
 (* ****** ****** *)
 //
@@ -584,7 +619,7 @@ fun
 f0_fundclst
 ( evn0:
 ! t3r0evn
-, dcl0: d3ecl
+, d3cl: d3ecl
 , err0: &sint >> _): d3ecl =
 let
 //
@@ -594,7 +629,7 @@ val-
 D3Cfundclst
 (tknd
 ,tqas
-,d2cs, d3fs) = dcl0.node()
+,d2cs, d3fs) = d3cl.node()
 //
 val d3fs =
 t3read0_d3fundclist(evn0, d3fs, err0)
@@ -602,11 +637,11 @@ t3read0_d3fundclist(evn0, d3fs, err0)
 in//let
 if // if
 (err0=nerr)
-then (dcl0) else
+then (d3cl) else
 (
 d3ecl_fundclst_errck
-( dcl0.lctn(), tknd, tqas, d2cs, d3fs ) )
-end(*let*)//end-of-[f0_fundclst(evn0,dcl0,err0)]
+( d3cl.lctn(), tknd, tqas, d2cs, d3fs ) )
+end(*let*)//end-of-[f0_fundclst(evn0,d3cl,err0)]
 //
 (* ****** ****** *)
 //
@@ -614,7 +649,7 @@ fun
 f0_implmnt0
 ( evn0:
 ! t3r0evn
-, dcl0: d3ecl
+, d3cl: d3ecl
 , err0: &sint >> _): d3ecl =
 let
 //
@@ -627,7 +662,7 @@ D3Cimplmnt0
 ,sqas,tqas
 ,dimp
 ,tias,fags
-,sres,dexp) = dcl0.node()
+,sres,dexp) = d3cl.node()
 //
 val dexp =
 t3read0_d3exp(evn0, dexp, err0)
@@ -636,19 +671,19 @@ in//let
 //
 if // if
 (err0=nerr)
-then (dcl0) else
+then (d3cl) else
 d3ecl_implmnt0_errck(
-dcl0.lctn(), tknd, stmp,
+d3cl.lctn(), tknd, stmp,
 sqas, tqas, dimp, tias, fags, sres, dexp)
 //
-end(*let*)//end-of-[f0_implmnt0(evn0,dcl0,err0)]
+end(*let*)//end-of-[f0_implmnt0(evn0,d3cl,err0)]
 //
 (* ****** ****** *)
 //
 (*
 val (  ) =
 (
-  prerrsln(  "t3read0_d3ecl: dcl0 = ", dcl0)  ))
+  prerrsln(  "t3read0_d3ecl: d3cl = ", d3cl)  ))
 *)
 //
 (* ****** ****** *)
