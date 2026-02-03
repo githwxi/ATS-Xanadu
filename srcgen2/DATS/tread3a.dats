@@ -133,10 +133,10 @@ endlet // end of [optn_cons(syn)]
 d3parsed_of_tread3a
   (dpar) = let
 //
-var nerror: sint = 0
-//
 val stadyn =
 d3parsed_get_stadyn(dpar)
+val nerror =
+d3parsed_get_nerror(dpar)
 val source =
 d3parsed_get_source(dpar)
 //
@@ -150,8 +150,13 @@ d3parsed_get_t3penv(dpar)
 val parsed =
 d3parsed_get_parsed(dpar)
 //
+var err0 : sint = (  0  )
 val parsed =
-tread3a_d3eclistopt(parsed, nerror)
+(*
+if // if
+(nerror != 0)
+then parsed else *)
+tread3a_d3eclistopt(parsed, err0)
 //
 (*
 val (    ) = prerrsln
@@ -161,11 +166,14 @@ val (    ) = prerrsln
 in//let
 //
 if // if
-(nerror=0)
+(err0 = 0)
 then (dpar) else
-d3parsed
-(stadyn,
- nerror,source,t1penv,t2penv,t3penv,parsed)
+let
+val nerror = nerror + ( err0 )
+in//let
+d3parsed(stadyn,
+nerror,source,t1penv,t2penv,t3penv,parsed)
+end//let
 //
 end(*let*)//end-of(d3parsed_of_tread3a(dpar))
 //
