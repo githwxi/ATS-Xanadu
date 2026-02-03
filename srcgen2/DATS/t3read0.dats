@@ -99,16 +99,28 @@ var err0
 val evn0 = t3r0evn_make_nil()
 //
 val parsed =
+(*
+if // if
+(nerror != 0)
+then parsed else *)
 t3read0_d3eclistopt(evn0,parsed,err0)
 //
 in//let
 //
-let
-val ((*0*)) = t3r0evn_free_nil( evn0 )
-in//let
+let//1
+val ((*0*)) =
+t3r0evn_free_nil( evn0 )
+in//let1
+if // if
+(err0 = 0)
+then (dpar) else
+let//2
+val nerror = nerror + ( err0 )
+in//let2
 d3parsed(stadyn,
 nerror,source,t1penv,t2penv,t3penv,parsed)
-end//let
+end//let2
+end//let1
 //
 end(*let*)//end-of-[d3parsed_t3read0(dpar)]
 //
