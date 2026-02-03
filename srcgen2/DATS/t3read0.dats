@@ -96,19 +96,21 @@ d3parsed_get_parsed(dpar)
 //
 var err0
   : sint = ( 0 )
-val evn0 = tr30evn_make_nil()
+val evn0 = t3r0evn_make_nil()
 //
 val parsed =
 t3read0_d3eclistopt(evn0,parsed,err0)
 //
 in//let
+//
 let
-val ((*0*)) = tr30evn_free_nil( evn0 )
+val ((*0*)) = t3r0evn_free_nil( evn0 )
 in//let
-d3parsed(stadyn
-,nerror,source,t1penv,t2penv,t3penv,parsed)
+d3parsed(stadyn,
+nerror,source,t1penv,t2penv,t3penv,parsed)
 end//let
-end (*let*) // end of [d3parsed_t3read0(dpar)]
+//
+end(*let*)//end-of-[d3parsed_t3read0(dpar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -126,7 +128,7 @@ where
 fun
 auxopt
 ( e1:
-! tr30evn
+! t3r0evn
 , xs: optn(x0)
 , err0: &sint >> _): optn(x0) =
 (
@@ -166,7 +168,7 @@ where
 fun
 auxlst
 ( e1:
-! tr30evn
+! t3r0evn
 , xs: list(x0)
 , err0: &sint >> _): list(x0) =
 (

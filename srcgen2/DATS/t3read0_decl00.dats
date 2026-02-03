@@ -270,7 +270,7 @@ end (*let*)//end-of-[_(*otherwise*)]//temp
 fun
 f0_dclst0
 ( evn0:
-! tr30evn
+! t3r0evn
 , dcl0: d3ecl
 , err0: &sint >> _): d3ecl =
 let
@@ -298,7 +298,7 @@ end(*let*)//end-of-[f0_dclst0(evn0,dcl0,err0)]
 fun
 f0_local0
 ( evn0:
-! tr30evn
+! t3r0evn
 , dcl0: d3ecl
 , err0: &sint >> _): d3ecl =
 let
@@ -328,7 +328,7 @@ end(*let*)//end-of-[f0_local0(evn0,dcl0,err0)]
 fun
 f0_valdclst
 ( evn0:
-! tr30evn
+! t3r0evn
 , dcl0: d3ecl
 , err0: &sint >> _): d3ecl =
 let
@@ -356,7 +356,7 @@ end(*let*)//end-of-[f0_valdclst(evn0,dcl0,err0)]
 fun
 f0_vardclst
 ( evn0:
-! tr30evn
+! t3r0evn
 , dcl0: d3ecl
 , err0: &sint >> _): d3ecl =
 let
@@ -384,7 +384,7 @@ end(*let*)//end-of-[f0_vardclst(evn0,dcl0,err0)]
 fun
 f0_fundclst
 ( evn0:
-! tr30evn
+! t3r0evn
 , dcl0: d3ecl
 , err0: &sint >> _): d3ecl =
 let

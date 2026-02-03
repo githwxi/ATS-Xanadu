@@ -52,9 +52,9 @@ ATS_PACKNAME // namespace
 (* ****** ****** *)
 (* ****** ****** *)
 #absvtbx
-tr30evn_vtbx
+t3r0evn_vtbx
 #vwtpdef
-tr30evn = tr30evn_vtbx
+t3r0evn = t3r0evn_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
@@ -126,26 +126,26 @@ d3parsed_of_t3read0
 (* ****** ****** *)
 //
 fun
-tr30evn_make_nil
-  ((*void*)): tr30evn
+t3r0evn_make_nil
+  ((*void*)): t3r0evn
 //
 fun
-tr30evn_free_nil
-  ( evn0: tr30evn ): ( void )
+t3r0evn_free_nil
+  ( evn0: t3r0evn ): ( void )
 //
 (* ****** ****** *)
 //
 fun
-tr30evn_tmps$get
-(evn0: !tr30evn): timplist
+t3r0evn_tmps$get
+(evn0: !t3r0evn): timplist
 //
 fun
-tr30evn_timp$pop
-(evn0: !tr30evn): ( void )
+t3r0evn_timp$pop
+(evn0: !t3r0evn): ( void )
 fun
-tr30evn_timp$psh
+t3r0evn_timp$psh
 ( evn0:
-! tr30evn, timp: timpl): void
+! t3r0evn, timp: timpl): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -154,7 +154,7 @@ tr30evn_timp$psh
 ft3read0
 (syn : tbox) =
 (
-! tr30evn
+! t3r0evn
 , syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)
@@ -164,7 +164,7 @@ fun
 optn_t3read0_fnp
 {x0:tx}
 ( evn:
-! tr30evn
+! t3r0evn
 , opt: optn(x0)
 , err:
 & sint >> _, frd: ft3read0(x0)): optn(x0)
@@ -173,7 +173,7 @@ fun
 list_t3read0_fnp
 {x0:tx}
 ( evn:
-! tr30evn
+! t3r0evn
 , lst: list(x0)
 , err:
 & sint >> _, frd: ft3read0(x0)): list(x0)
@@ -184,7 +184,7 @@ list_t3read0_fnp
 fun
 t3read0_d3pat
 ( evn0:
-! tr30evn
+! t3r0evn
 , d3p0: d3pat, nerr: &sint >> _): d3pat
 //
 (* ****** ****** *)
@@ -193,7 +193,7 @@ t3read0_d3pat
 fun
 t3read0_d3exp
 ( evn0:
-! tr30evn
+! t3r0evn
 , d3e0: d3exp, nerr: &sint >> _): d3exp
 //
 (* ****** ****** *)
@@ -201,7 +201,7 @@ t3read0_d3exp
 fun
 t3read0_d3cls
 ( evn0:
-! tr30evn
+! t3r0evn
 , dcls: d3cls, nerr: &sint >> _): d3cls
 //
 (* ****** ****** *)
@@ -209,7 +209,7 @@ t3read0_d3cls
 fun
 t3read0_timpl
 ( evn0:
-! tr30evn
+! t3r0evn
 , timp: timpl, nerr: &sint >> _): timpl
 //
 (* ****** ****** *)
@@ -218,7 +218,7 @@ t3read0_timpl
 fun
 t3read0_d3ecl
 ( evn0:
-! tr30evn
+! t3r0evn
 , d3cl: d3ecl, nerr: &sint >> _): d3ecl
 //
 (* ****** ****** *)
