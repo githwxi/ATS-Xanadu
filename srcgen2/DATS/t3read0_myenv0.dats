@@ -74,8 +74,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 datavwtp
-tr30evn =
-TR30EVN of trdstk(*void*)
+t3r0evn =
+T3R0EVN of trdstk(*void*)
 //
 where
 {
@@ -85,9 +85,9 @@ trdstk =
 |trdstk_nil of ()
 |trdstk_cons of (timpl, trdstk)
 //
-}(*where*)//end(datavwtp(tr30evn))
+}(*where*)//end(datavwtp(t3r0evn))
 //
-#absimpl tr30evn_vtbx = tr30evn
+#absimpl t3r0evn_vtbx = t3r0evn
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -147,28 +147,28 @@ loop(stk1, list_vt_cons(tmp1, tmps)))
 (* ****** ****** *)
 //
 #implfun
-tr30evn_make_nil
+t3r0evn_make_nil
   ((*nil*)) =
 (
-TR30EVN(trdstk_nil((*void*))))
+T3R0EVN(trdstk_nil((*void*))))
 where
 {
 // (*
 val () =
 (
-  prerrsln("tr30evn_make_nil()"))
+  prerrsln("t3r0evn_make_nil()"))
 // *)
-}(*where*)//end of [tr30evn_make_nil(...)]
+}(*where*)//end of [t3r0evn_make_nil(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-tr30evn_free_nil
+t3r0evn_free_nil
   (  evn0  ) =
 let
 //
 val+
-TR30EVN(stk0) = evn0
+T3R0EVN(stk0) = evn0
 //
 in//let
 //
@@ -184,31 +184,31 @@ end where
 // (*
 val () =
 (
-  prerrsln("tr30evn_free_nil(...)"))
+  prerrsln("t3r0evn_free_nil(...)"))
 // *)
-}(*where*)//end-of-[tr30evn_free_nil(evn0)]
+}(*where*)//end-of-[t3r0evn_free_nil(evn0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-tr30evn_tmps$get
+t3r0evn_tmps$get
   ( evn0 ) =
 let
 val+
-TR30EVN
+T3R0EVN
 ( stk0 ) = evn0 in trdstk_tmps$get(stk0)
-end(*let*)//end-of-[ tr30evn_tmps$get(evn0) ]
+end(*let*)//end-of-[ t3r0evn_tmps$get(evn0) ]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-tr30evn_timp$pop
+t3r0evn_timp$pop
   ( evn0 ) =
 let
 val+
-@TR30EVN
+@T3R0EVN
 ( !stk0 ) = evn0
 val nerr =
 trdstk_timp$pop(stk0) in $fold(evn0) end
@@ -216,15 +216,15 @@ trdstk_timp$pop(stk0) in $fold(evn0) end
 (* ****** ****** *)
 //
 #implfun
-tr30evn_timp$psh
+t3r0evn_timp$psh
   (evn0, timp) =
 let
 val+
-@TR30EVN
+@T3R0EVN
 ( !stk0 ) = evn0
 val nerr =
 trdstk_timp$psh(stk0, timp) in $fold(evn0)
-end(*let*)//end-of-[tr30evn_timp$psh(evn0,timp)]
+end(*let*)//end-of-[t3r0evn_timp$psh(evn0,timp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
