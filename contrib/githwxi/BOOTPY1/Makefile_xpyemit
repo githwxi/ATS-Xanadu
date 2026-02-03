@@ -56,8 +56,8 @@ trans12.sats \
 tread12.sats \
 trans2a.sats \
 trsym2b.sats \
-tread20.sats \
-fperr20.sats \
+t2read0.sats \
+f2perr0.sats \
 dynexp3.sats \
 trans23.sats \
 tread23.sats \
@@ -65,7 +65,8 @@ trans3a.sats \
 tread3a.sats \
 trtmp3b.sats \
 trtmp3c.sats \
-fperr30.sats \
+t3read0.sats \
+f3perr0.sats \
 xglobal.sats \
 xatsopt.sats \
 
@@ -181,12 +182,12 @@ trsym2b.dats \
 trsym2b_utils0.dats \
 trsym2b_dynexp.dats \
 trsym2b_decl00.dats \
-tread20.dats \
-tread20_dynexp.dats \
-tread20_decl00.dats \
-fperr20.dats \
-fperr20_dynexp.dats \
-fperr20_decl00.dats \
+t2read0.dats \
+t2read0_dynexp.dats \
+t2read0_decl00.dats \
+f2perr0.dats \
+f2perr0_dynexp.dats \
+f2perr0_decl00.dats \
 dynexp3.dats \
 dynexp3_print0.dats \
 dynexp3_utils0.dats \
@@ -218,9 +219,13 @@ trtmp3c_myenv0.dats \
 trtmp3c_utils0.dats \
 trtmp3c_dynexp.dats \
 trtmp3c_decl00.dats \
-fperr30.dats \
-fperr30_dynexp.dats \
-fperr30_decl00.dats \
+t3read0.dats \
+t3read0_myenv0.dats \
+t3read0_dynexp.dats \
+t3read0_decl00.dats \
+f3perr0.dats \
+f3perr0_dynexp.dats \
+f3perr0_decl00.dats \
 xatsopt.dats \
 xatsopt_tmplib.dats \
 xatsopt_utils0.dats \
