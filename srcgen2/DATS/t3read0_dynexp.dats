@@ -69,7 +69,6 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/t3read0.sats"
 (* ****** ****** *)
-//
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -300,6 +299,43 @@ d3exp_make_tpnd
 endlet//end-of-[d3exp_cas0_errck(...)]
 //
 (* ****** ****** *)
+//
+fun
+d3exp_seqn_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3es: d3explst
+,d3e1
+:d3exp (*last*)): d3exp =
+let
+val
+lvl0 = maxs
+(errvl(d3es), errvl(d3e1)) in//let
+d3exp_errck
+( lvl0+1
+, d3exp_make_tpnd
+  (loc0, t2p0, D3Eseqn(d3es, d3e1)))
+endlet//end-of-[d3exp_seqn_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_tup0_errck
+(loc0: loc_t
+,t2p0: s2typ
+,npf1: (sint)
+,d3es: d3explst): d3exp =
+let
+val
+lvl0 =
+d3exp_errvl(d3es) in//let
+d3exp_errck
+( lvl0+1
+, d3exp_make_tpnd
+  (loc0, t2p0, D3Etup0(npf1, d3es)))
+endlet//end-of-[d3exp_tup0_errck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -394,6 +430,26 @@ d3e0.node() of
 |D3Ecas0 _ =>
 (
   f0_cas0(evn0, d3e0, err0))
+//
+(* ****** ****** *)
+//
+|D3Eseqn _ =>
+(
+  f0_seqn(evn0, d3e0, err0))
+//
+(* ****** ****** *)
+//
+|D3Etup0 _ =>
+(
+  f0_tup0(evn0, d3e0, err0))
+(*
+|D3Etup1 _ =>
+(
+  f0_tup1(evn0, d3e0, err0))
+|D3Ercd2 _ =>
+(
+  f0_rcd2(evn0, d3e0, err0))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -653,6 +709,78 @@ end//let
 end(*let*)//end-of-[f0_cas0(evn0,d3e0,err0)]
 //
 (* ****** ****** *)
+//
+fun
+f0_seqn
+( evn0:
+! tr30evn
+, d3e0: d3exp
+, err0: &sint >> _): d3exp =
+let
+//
+val nerr = err0
+//
+val-
+D3Eseqn
+( d3es, d3e1) = d3e0.node()
+//
+val
+d3es =
+t3read0_d3explst(evn0,d3es,err0)
+val
+d3e1 =
+(
+ t3read0_d3exp(evn0, d3e1, err0))
+//
+in//let
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val
+t2p0 = d3e0.styp()
+in//let
+(
+  d3exp_seqn_errck
+  ( d3e0.lctn(), t2p0, d3es, d3e1))
+end//let
+end(*let*)//end-of-[f0_seqn(evn0,d3e0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+( evn0:
+! tr30evn
+, d3e0: d3exp
+, err0: &sint >> _): d3exp =
+let
+//
+val nerr = err0
+//
+val-
+D3Etup0
+( npf1, d3es) = d3e0.node()
+//
+val
+d3es =
+t3read0_d3explst(evn0,d3es,err0)
+//
+in//let
+if
+(err0=nerr)
+then (d3e0) else
+let
+val
+t2p0 = d3e0.styp()
+in//let
+(
+  d3exp_tup0_errck
+  ( d3e0.lctn(), t2p0, npf1, d3es))
+end//let
+end(*let*)//end-of-[f0_tup0(evn0,d3e0,err0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[t3read0_d3exp(evn0,d3e0,err0)]
@@ -691,9 +819,66 @@ end(*let*)//end-of-[D3CLScls(dgpt,d3e1)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #implfun
 t3read0_timpl
 (evn0, timp, err0) = timp
+*)
+#implfun
+t3read0_timpl
+(evn0, timp, err0) =
+(
+case+
+timp.node() of
+//
+|TIMPLall1
+( dcst
+, t2js, d3cs) =>
+let
+val () =
+(err0 := err0+1) in timp end
+//let//end-of-[|TIMPLall1(...)]
+//
+|TIMPLallx
+( dcst
+, t2js, d3cs) =>
+(
+case+ d3cs of
+|list_nil
+((*void*)) => 
+(*
+HX-2026-02-02:
+Is this case live?
+*)
+let
+val () =
+(err0 := err0+1) in timp end
+//end-of-[TIMPLallx(...,nil())]
+|list_cons
+(dcl1,d3cs) =>
+let
+val nerr = err0
+val dcl1 =
+t3read0_d3ecl(evn0,dcl1,err0)
+in//let
+if // if
+(err0 = nerr)
+then ( timp ) else
+let
+//
+val stmp = timp.stmp((*void*))
+val d3cs = list_cons(dcl1, d3cs)
+//
+in//let
+(
+timpl_make_node
+(stmp, TIMPLallx(dcst, t2js, d3cs)))
+end//let
+end//let//end-of-[TIMPLallx(...,cons()]
+//
+)(*case+*)//end-of-[TIMPLallx(dcst,t2js,d3cs)]
+//
+)(*case+*)//end-of-[t3read0_timpl(evn0,dcls,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
