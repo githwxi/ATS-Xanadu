@@ -716,7 +716,7 @@ t3read0_teqd3exp: d3e2 = ", d3e2)
 val d3e2 =
 (
   t3read0_d3exp(evn0, d3e2, err0))
-in//letp
+in//let
 if // if
 (err0=nerr)
 then tdxp else TEQD3EXPsome(teq1, d3e2)

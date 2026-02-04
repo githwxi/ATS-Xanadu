@@ -39,6 +39,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
+LOC = "./locinfo.sats"
+(* ****** ****** *)
+#staload
 LEX = "./lexing0.sats"
 (* ****** ****** *)
 #staload
@@ -58,6 +61,8 @@ ATS_PACKNAME // namespace
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef loctn = $LOC.loctn
+(* ****** ****** *)
 #typedef token = $LEX.token
 (* ****** ****** *)
 #typedef s2typ = $S2E.s2typ
@@ -72,6 +77,8 @@ ATS_PACKNAME // namespace
 #typedef d3gua = $D3E.d3gua
 #typedef d3gpt = $D3E.d3gpt
 #typedef d3cls = $D3E.d3cls
+(* ****** ****** *)
+#typedef timpl = $D3E.timpl
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
@@ -90,6 +97,8 @@ ATS_PACKNAME // namespace
 (* ****** ****** *)
 #typedef d3gualst = $D3E.d3gualst
 #typedef d3clslst = $D3E.d3clslst
+(* ****** ****** *)
+#typedef timplist = $D3E.timplist
 (* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
@@ -155,7 +164,19 @@ fun f3perr0_d3gua(FILR, d3gua): void
 fun f3perr0_d3gpt(FILR, d3gpt): void
 fun f3perr0_d3cls(FILR, d3cls): void
 (* ****** ****** *)
+//
+fun
+f3perr0_timpl
+( out0: FILR
+, loc0: loctn, timp: timpl): void
+fun
+f3perr0_tmpls
+( out0: FILR
+, loc0: loctn, tmps: timplist): void
+//
+(* ****** ****** *)
 fun f3perr0_d3ecl(FILR, d3ecl): void
+(* ****** ****** *)
 (* ****** ****** *)
 fun f3perr0_s2typlst(FILR, s2typlst): void
 (* ****** ****** *)

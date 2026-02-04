@@ -115,6 +115,15 @@ endlet//end-of(D3Cextern(_,_))
 //
 (* ****** ****** *)
 //
+|D3Ctmpsub
+(s2vts, dcl1) =>
+let
+val () =
+f3perr0_d3ecl(out, dcl1)
+endlet//end-of(D3Ctmpsub(_,_))
+//
+(* ****** ****** *)
+//
 |D3Cdclst0
 (   dcls   ) =>
 let
