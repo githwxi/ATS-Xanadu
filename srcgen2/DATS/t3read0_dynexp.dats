@@ -202,6 +202,44 @@ errvl(dcl1), d3cls_errvl_lst(dcls))
 (* ****** ****** *)
 //
 fun
+d3exp_tapp_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3f0: d3exp
+,s2es: s2explst): d3exp =
+let
+val
+lvl0 =
+d3exp_errvl(d3f0) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_tpnd
+(loc0, t2p0, D3Etapp(d3f0, s2es)) )
+endlet//end-of-[d3exp_tapp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_tapq_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3f0: d3exp
+,t2js: t2jaglst): d3exp =
+let
+val
+lvl0 =
+d3exp_errvl(d3f0) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_tpnd
+(loc0, t2p0, D3Etapq(d3f0, t2js)) )
+endlet//end-of-[d3exp_tapq_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_dap0_errck
 (loc0: loc_t
 ,t2p0: s2typ
@@ -407,6 +445,64 @@ d3exp_make_tpnd
 endlet//end-of-[d3exp_fix0_errck(...)]
 //
 (* ****** ****** *)
+//
+fun
+d3exp_where_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3e1: d3exp
+,dcls: d3eclist): d3exp =
+let
+val
+lvl0 = errvl(d3e1) in//let
+d3exp_errck
+(lvl0+1
+,d3exp_make_tpnd
+ (loc0, t2p0, D3Ewhere(d3e1, dcls)))
+endlet//end-of-[d3exp_where_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_annot_errck
+( loc0: loc_t
+, t2p0: s2typ
+, d3e1: d3exp
+, s1e2: s1exp
+, s2e2
+: s2exp(*annot*)): d3exp =
+let
+val
+lvl0 =
+d3exp_errvl(d3e1) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_tpnd(
+loc0,t2p0,D3Eannot(d3e1,s1e2,s2e2)))
+endlet//end-of-[d3exp_annot_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_t2ped_errck
+( loc0: loc_t
+, t2p0: s2typ
+, d3e1: d3exp
+, t2p2
+: s2typ(*given*)): d3exp =
+let
+val
+lvl0 =
+d3exp_errvl(d3e1) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_tpnd(
+  loc0, t2p0, D3Et2ped(d3e1, t2p2)))
+endlet//end-of-[d3exp_t2ped_errck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -480,6 +576,15 @@ d3e0.node() of
 //
 (* ****** ****** *)
 //
+|D3Etapp _ =>
+(
+  f0_tapp(evn0, d3e0, err0))
+|D3Etapq _ =>
+(
+  f0_tapq(evn0, d3e0, err0))
+//
+(* ****** ****** *)
+//
 |D3Edap0 _ =>
 (
   f0_dap0(evn0, d3e0, err0))
@@ -532,6 +637,22 @@ d3e0.node() of
   f0_fix0(evn0, d3e0, err0))
 //
 (* ****** ****** *)
+//
+|D3Ewhere _ =>
+(
+  f0_where(evn0, d3e0, err0))
+//
+(* ****** ****** *)
+//
+|D3Eannot _ =>
+(
+  f0_annot(evn0, d3e0, err0))
+|D3Et2ped _ =>
+(
+  f0_t2ped(evn0, d3e0, err0))
+//
+(* ****** ****** *)
+//
 |
 _(*otherwise*) =>
 (
@@ -587,6 +708,73 @@ d3exp_make_tpnd
 end//let
 //
 end(*let*)//end-of-[f0_timp(env0,d3e0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tapp
+( evn0:
+! t3r0evn
+, d3e0: d3exp
+, err0: &sint >> _): d3exp =
+let
+//
+val nerr = err0
+//
+val-
+D3Etapp
+( d3f0, s2es) = d3e0.node()
+//
+val
+d3f0 =
+t3read0_d3exp(evn0, d3f0, err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val t2p0 = d3f0.styp()
+in//let
+(
+  d3exp_tapp_errck
+  (d3e0.lctn(), t2p0, d3f0, s2es) )
+end//let
+end(*let*)//end-of-[f0_tapp(evn0,d3e0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tapq
+( evn0:
+! t3r0evn
+, d3e0: d3exp
+, err0: &sint >> _): d3exp =
+let
+//
+val nerr = err0
+//
+val-
+D3Etapq
+( d3f0, t2js) = d3e0.node()
+//
+val
+d3f0 =
+t3read0_d3exp(evn0, d3f0, err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+in//let
+(
+  d3exp_tapq_errck
+  (d3e0.lctn(), t2p0, d3f0, t2js) )
+end//let
+end(*let*)//end-of-[f0_tapq(evn0,d3e0,err0)]
 //
 (* ****** ****** *)
 //
@@ -968,6 +1156,113 @@ t2p0,tknd,dvar,f3as,sres,arrw,dexp))
 end//let
 //
 end(*let*)//end-of-[f0_fix0(evn0,d3e0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_where
+( evn0:
+! t3r0evn
+, d3e0: d3exp
+, err0: &sint >> _): d3exp =
+let
+//
+val nerr = err0
+//
+val-
+D3Ewhere
+( d3e1, dcls) = d3e0.node()
+//
+val
+dcls =
+t3read0_d3eclist(evn0,dcls,err0)
+val
+d3e1 =
+(
+  t3read0_d3exp(evn0, d3e1, err0))
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+in//let
+  d3exp_where_errck
+  ( loc0, t2p0, d3e1(*body*), dcls )
+end//let
+//
+end(*let*)//end-of-[f0_where(evn0,d3e0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_annot
+( evn0:
+! t3r0evn
+, d3e0: d3exp
+, err0: &sint >> _): d3exp =
+let
+//
+val nerr = err0
+//
+val-
+D3Eannot
+( d3e1
+, s1e2, s2e2) = d3e0.node()
+//
+val
+d3e1 =
+t3read0_d3exp(evn0, d3e1, err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+in//let
+(
+  d3exp_annot_errck
+  ( loc0, t2p0, d3e1, s1e2, s2e2 ) )
+end//let
+end(*let*)//end-of-[f0_annot(evn0,d3e0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2ped
+( evn0:
+! t3r0evn
+, d3e0: d3exp
+, err0: &sint >> _): d3exp =
+let
+//
+val nerr = err0
+//
+val-
+D3Et2ped
+( d3e1, t2p2) = d3e0.node()
+//
+val
+d3e1 =
+t3read0_d3exp(evn0, d3e1, err0)
+//
+in//let
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val t2p0 = d3e0.styp()
+in//let
+(
+  d3exp_t2ped_errck
+  ( d3e0.lctn(), t2p0, d3e1, t2p2 ))
+end//let
+end(*let*)//end-of-[f0_t2ped(evn0,d3e0,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

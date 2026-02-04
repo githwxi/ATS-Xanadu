@@ -212,7 +212,7 @@ end(*let*)//end-of(f3perr0_d3pat(out,d3p0))
 //
 (* ****** ****** *)
 //
-endloc(*local*)//end-of(local(f3perr0_d3pat))
+endloc(*loc*)//end-of-(local(f3perr0_d3pat))
 
 (* ****** ****** *)
 //
@@ -223,7 +223,7 @@ f3perr0_l3d3p
 case+ ld3p of
 |
 D3LAB(lab,d3p1) => f3perr0_d3pat(out,d3p1)
-) (*case+*)//end-of-(f3perr0_d3pat(out,ld3p))
+)(*case+*)//end-of-(f3perr0_d3pat(out,ld3p))
 //
 (* ****** ****** *)
 
@@ -276,6 +276,8 @@ d3e.node() of
 //
 |D3Etimp _ =>
 prints("D3Etimp(", "...", ")")
+|D3Etimq _ =>
+prints("D3Etimq(", "...", ")")
 //
 (* ****** ****** *)
 //
@@ -478,6 +480,39 @@ in//let
 case+
 d3e.node() of
 //
+|D3Etimp
+(d3f0,timp) =>
+let
+val
+loc = d3e.lctn((*0*))
+val () =
+printsln("\n\
+F3PERR0-TIMPL:", loc)
+val () =
+f3perr0_timpl(out,loc,timp)
+endlet//endof-[D3Etimp(...)]
+//
+|D3Etimq
+(d3f0
+,timp,tmps) =>
+let
+val
+loc = d3e.lctn((*0*))
+//
+val () =
+printsln("\n\
+F3PERR0-TIMPL:", loc)
+val () =
+f3perr0_timpl(out,loc,timp)
+//
+val () =
+printsln("\n\
+F3PERR0-TMPLS:", loc)
+val () =
+f3perr0_tmpls(out,loc,tmps)
+//
+endlet//endof-[D3Etimq(...)]
+//
 |D3Esapp
 (d3f0,s2es) =>
 let
@@ -487,7 +522,7 @@ f3perr0_d3exp(out, d3f0)
 val () =
 f3perr0_s2explst(out, s2es)
 *)
-endlet
+endlet//endof-[D3Esapp(...)]
 //
 |D3Etapp
 (d3f0,s2es) =>
@@ -498,7 +533,16 @@ f3perr0_d3exp(out, d3f0)
 val () =
 f3perr0_s2explst(out, s2es)
 *)
-endlet
+endlet//endof-[D3Etapp(...)]
+//
+(* ****** ****** *)
+//
+|D3Edap0
+(   d3f0   ) =>
+let
+val () =
+f3perr0_d3exp(out, d3f0)
+endlet//endof-[D3Edap0(...)]
 //
 |D3Edapp
 (d3f0
@@ -508,7 +552,9 @@ val () =
 f3perr0_d3exp(out, d3f0)
 val () =
 f3perr0_d3explst(out, d3es)
-endlet//end-of-[D3Edapp]
+endlet//endof-[D3Edapp(...)]
+//
+(* ****** ****** *)
 //
 |D3Epcon
 (tknd
@@ -516,14 +562,16 @@ endlet//end-of-[D3Edapp]
 let
 val () =
 f3perr0_d3exp(out, d3e1)
-endlet//end-of-[D3Epcon]
+endlet//endof-[D3Epcon(...)]
 |D3Eproj
 (tknd
 ,lab1, d3e1) =>
 let
 val () =
 f3perr0_d3exp(out, d3e1)
-endlet//end-of-[D3Eproj]
+endlet//endof-[D3Eproj(...)]
+//
+(* ****** ****** *)
 //
 |D3Elet0
 (dcls, d3e1) =>
@@ -738,8 +786,12 @@ end(*let*)//end-of-[D3Et2ped(...)]
 //
 |D3Enone0 _ => (  (*void*)  )
 |D3Enone1 _ => () | D3Enone2 _ => ()
-|
-D3Eerrck(_,_) => f3perr0_d3exp(out, d3e)
+//
+(* ****** ****** *)
+//
+|D3Eerrck _ => f3perr0_d3exp(out, d3e)
+//
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
@@ -818,7 +870,7 @@ end(*let*)//end-of(f3perr0_d3exp(out,d3e0))
 //
 (* ****** ****** *)
 //
-endloc(*local*)//end-of(local(f3perr0_d3exp))
+endloc(*loc*)//end-of-(local(f3perr0_d3exp))
 
 (* ****** ****** *)
 //
@@ -829,7 +881,7 @@ f3perr0_l3d3e
 case+ ld3e of
 |
 D3LAB(lab,d3e1) => f3perr0_d3exp(out,d3e1)
-) (*case+*)//end-of-(f3perr0_d3exp(out,ld3e))
+)(*case+*)//end-of-(f3perr0_d3exp(out,ld3e))
 //
 (* ****** ****** *)
 //
@@ -859,15 +911,17 @@ f3perr0_d3gua
 case+
 dgua.node() of
 |
-D3GUAexp(d3e1) =>
+D3GUAexp
+(  d3e1  ) =>
 f3perr0_d3exp(out, d3e1)
 |
-D3GUAmat(d3e1,d3p2) =>
+D3GUAmat
+(d3e1, d3p2) =>
 let
 val () = f3perr0_d3exp(out, d3e1)
 val () = f3perr0_d3pat(out, d3p2)
 endlet // end of [D3GUAmat(_,_,_)]
-) (*case*) // end-of(f3perr0_d3gua(out,dgua))
+)(*case*)//end-of-(f3perr0_d3gua(out,dgua))
 //
 (* ****** ****** *)
 //
@@ -878,15 +932,17 @@ f3perr0_d3gpt
 case+
 dgpt.node() of
 |
-D3GPTpat(d3p1) =>
+D3GPTpat
+(  d3p1  ) =>
 f3perr0_d3pat(out, d3p1)
 |
-D3GPTgua(d3p1,d3gs) =>
+D3GPTgua
+(d3p1, d3gs) =>
 let
 val () = f3perr0_d3pat(out, d3p1)
 val () = f3perr0_d3gualst(out, d3gs)
 endlet // end of [ D3GPTgua(_,_,_) ]
-) (*case*) // end-of(f3perr0_d3gpt(out,dgpt))
+)(*case*)//end-of-(f3perr0_d3gpt(out,dgpt))
 //
 (* ****** ****** *)
 //
@@ -905,69 +961,135 @@ let
 val () = f3perr0_d3gpt(out, dgpt)
 val () = f3perr0_d3exp(out, d3e2)
 endlet // end of [ D3CLScls(_,_,_) ]
-) (*case*) // end-of(f3perr0_d3cls(out,dcls))
+)(*case*)//end-of-(f3perr0_d3cls(out,dcls))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+f3perr0_timpl
+(out, loc, timp) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+//
+case+
+timp.node() of
+//
+|TIMPLall1
+( dcst
+, t2js, dcls) =>
+(
+prints("F3PERR0-ERROR:");
+printsln(loc, "\
+:TIMPLall1(",dcst,";",t2js,")")
+)
+//
+|TIMPLallx
+( dcst
+, t2js, dcls) =>
+(
+case+ dcls of
+|
+list_nil() => ()
+|
+list_cons(dcl1, _) =>
+(
+f3perr0_d3ecl(out, dcl1)
+) where
+{
+val () =
+prints("F3PERR0-ERROR:")
+val () =
+printsln(loc, "\
+:TIMPLallx(",dcst,";",t2js,")")}//cons
+)
+//
+end(*let*)//endof(f3perr0_timpl(out,loc,timp))
 //
 (* ****** ****** *)
 //
 #implfun
-f3perr0_d3patlst
-  (out, d3ps) =
+f3perr0_tmpls
+(out, loc, tmps) =
 (
-  list_f3perr0_fnp(out, d3ps, f3perr0_d3pat))
+case+ tmps of
+|list_nil
+( (*void*) ) => ( (*void*) )
+|list_cons
+(tmp1, tmps) =>
+let
+val () =
+f3perr0_timpl(out, loc, tmp1)
+in//let
+f3perr0_tmpls(out, loc, tmps) end//let
+)(*case+*)//endof[f3perr0_tmpls(out,loc,timp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+f3perr0_d3patlst
+  (out0, d3ps) =
+(
+  list_f3perr0_fnp(out0, d3ps, f3perr0_d3pat))
 //
 (* ****** ****** *)
 //
 #implfun
 f3perr0_l3d3plst
-  (out, ldps) =
+  (out0, ldps) =
 (
-  list_f3perr0_fnp(out, ldps, f3perr0_l3d3p))
+  list_f3perr0_fnp(out0, ldps, f3perr0_l3d3p))
 //
 (* ****** ****** *)
 //
 #implfun
 f3perr0_d3explst
-  (out, d3es) =
+  (out0, d3es) =
 (
-  list_f3perr0_fnp(out, d3es, f3perr0_d3exp))
+  list_f3perr0_fnp(out0, d3es, f3perr0_d3exp))
 //
 #implfun
 f3perr0_d3expopt
-  (out, dopt) =
+  (out0, dopt) =
 (
-  optn_f3perr0_fnp(out, dopt, f3perr0_d3exp))
+  optn_f3perr0_fnp(out0, dopt, f3perr0_d3exp))
 //
 (* ****** ****** *)
 //
 #implfun
 f3perr0_l3d3elst
-  (out, ldes) =
+  (out0, ldes) =
 (
-  list_f3perr0_fnp(out, ldes, f3perr0_l3d3e))
+  list_f3perr0_fnp(out0, ldes, f3perr0_l3d3e))
 //
 (* ****** ****** *)
 //
 #implfun
 f3perr0_f3arglst
-  (out, f3as) =
+  (out0, f3as) =
 (
-  list_f3perr0_fnp(out, f3as, f3perr0_f3arg))
+  list_f3perr0_fnp(out0, f3as, f3perr0_f3arg))
 //
 (* ****** ****** *)
 //
 #implfun
 f3perr0_d3gualst
-  (out, d3gs) =
+  (out0, d3gs) =
 (
-  list_f3perr0_fnp(out, d3gs, f3perr0_d3gua))
+  list_f3perr0_fnp(out0, d3gs, f3perr0_d3gua))
 //
 (* ****** ****** *)
 //
 #implfun
 f3perr0_d3clslst
-  (out, d3cs) =
+  (out0, d3cs) =
 (
-  list_f3perr0_fnp(out, d3cs, f3perr0_d3cls))
+  list_f3perr0_fnp(out0, d3cs, f3perr0_d3cls))
 //
 (* ****** ****** *)
 (* ****** ****** *)

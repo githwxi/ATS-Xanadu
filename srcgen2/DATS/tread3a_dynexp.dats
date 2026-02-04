@@ -203,7 +203,7 @@ lvl0 = 0 in//let
 d3pat_errck
 ( lvl0+1
 , d3pat(loc0, t2p0, D3Pvar(d3v1)))
-endlet//end of [d3pat_var_errck(...)]
+endlet//end-of-[d3pat_var_errck(...)]
 //
 fun
 d3pat_any_errck
@@ -215,7 +215,7 @@ lvl0 = 0 in//let
 d3pat_errck
 ( lvl0+1
 , d3pat(loc0, t2p0, D3Pany((*0*))))
-endlet//end of [d3pat_any_errck(...)]
+endlet//end-of-[d3pat_any_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -376,7 +376,7 @@ d3pat_errck
 lvl0+1,
 d3pat_make_tpnd
 (loc0,t2p0,D3Ptup1(knd0,npf1,d3ps)))
-endlet//end of [d3pat_tup1_errck(...)]
+endlet//end-of-[d3pat_tup1_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -396,7 +396,7 @@ d3pat_errck
 lvl0+1,
 d3pat_make_tpnd
 (loc0,t2p0,D3Prcd2(knd0,npf1,ldps)))
-endlet//end of [d3pat_rcd2_errck(...)]
+endlet//end-of-[d3pat_rcd2_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -414,7 +414,7 @@ d3pat_errck
 (
 lvl0+1,
 d3pat(loc0,t2p0,D3Pargtp(d3p1,t2p2)))
-endlet//end of [d3pat_argtp_errck(...)]
+endlet//end-of-[d3pat_argtp_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -434,7 +434,7 @@ d3pat_errck
 lvl0+1,
 d3pat_make_tpnd
 (loc0,t2p0,D3Pannot(d3p1,s1e2,s2e2)))
-endlet//end of [d3pat_annot_errck(...)]
+endlet//end-of-[d3pat_annot_errck(...)]
 //
 (* ****** ****** *)
 (*
@@ -605,7 +605,7 @@ lvl0 = 0 in//let
 d3exp_errck
 ( lvl0+1
 , d3exp(loc0, t2p0, D3Evar(d3v1)) )
-endlet//end of [d3exp_var_errck(...)]
+endlet//end-of-[d3exp_var_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -620,7 +620,7 @@ lvl0 = 0 in//let
 d3exp_errck
 ( lvl0+1
 , d3exp(loc0, t2p0, D3Etop(sym1)) )
-endlet//end of [d3exp_top_errck(...)]
+endlet//end-of-[d3exp_top_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -639,7 +639,7 @@ d3exp_errck
 lvl0+1,
 d3exp_make_tpnd
 (loc0, t2p0, D3Etimp(dtmp, timp)) )
-endlet//end of [d3exp_timp_errck(...)]
+endlet//end-of-[d3exp_timp_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -658,7 +658,7 @@ d3exp_errck
 lvl0+1,
 d3exp_make_tpnd
 (loc0, t2p0, D3Esapp(d3f0, s2es)) )
-endlet//end of [d3exp_sapp_errck(...)]
+endlet//end-of-[d3exp_sapp_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -677,7 +677,7 @@ d3exp_errck
 lvl0+1,
 d3exp_make_tpnd
 (loc0, t2p0, D3Esapq(d3f0, t2ps)) )
-endlet//end of [d3exp_sapq_errck(...)]
+endlet//end-of-[d3exp_sapq_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -696,7 +696,7 @@ d3exp_errck
 lvl0+1,
 d3exp_make_tpnd
 (loc0, t2p0, D3Etapp(d3f0, s2es)) )
-endlet//end of [d3exp_tapp_errck(...)]
+endlet//end-of-[d3exp_tapp_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -715,7 +715,7 @@ d3exp_errck
 lvl0+1,
 d3exp_make_tpnd
 (loc0, t2p0, D3Etapq(d3f0, t2js)) )
-endlet//end of [d3exp_tapq_errck(...)]
+endlet//end-of-[d3exp_tapq_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -731,7 +731,7 @@ d3exp_errvl(d3f0) in//let
 d3exp_errck
 ( lvl0+1
 , d3exp(loc0, t2p0, D3Edap0(d3f0)))
-endlet//end of [d3exp_dap0_errck(...)]
+endlet//end-of-[d3exp_dap0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -752,7 +752,7 @@ lvl0+1,
 d3exp_make_tpnd
 ( loc0
 , t2p0, D3Edapp(d3f0, npf1, d3es)))
-endlet//end of [d3exp_dapp_errck(...)]
+endlet//end-of-[d3exp_dapp_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -773,7 +773,7 @@ lvl0+1,
 d3exp_make_tpnd
 ( loc0
 , t2p0, D3Epcon(tknd, dlab, dcon)))
-endlet//end of [d3exp_pcon_errck(...)]
+endlet//end-of-[d3exp_pcon_errck(...)]
 //
 fun
 d3exp_proj_errck
@@ -792,7 +792,7 @@ lvl0+1,
 d3exp_make_tpnd
 ( loc0
 , t2p0, D3Eproj(tknd, dlab, dtup)))
-endlet//end of [d3exp_proj_errck(...)]
+endlet//end-of-[d3exp_proj_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -811,7 +811,7 @@ d3exp_errck
 (lvl0+1
 ,d3exp_make_tpnd
  (loc0, t2p0, D3Elet0(dcls, d3e1)))
-endlet//end of [d3exp_let0_errck(...)]
+endlet//end-of-[d3exp_let0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -874,7 +874,7 @@ d3exp_errck
 ( lvl0+1
 , d3exp_make_tpnd
   (loc0, t2p0, D3Eseqn(d3es, d3e1)))
-endlet//end of [d3exp_seqn_errck(...)]
+endlet//end-of-[d3exp_seqn_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -892,7 +892,7 @@ d3exp_errck
 ( lvl0+1
 , d3exp_make_tpnd
   (loc0, t2p0, D3Etup0(npf1, d3es)))
-endlet//end of [d3exp_tup0_errck(...)]
+endlet//end-of-[d3exp_tup0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -912,7 +912,7 @@ d3exp_errck
 lvl0+1,
 d3exp_make_tpnd
 (loc0,t2p0,D3Etup1(knd0,npf1,d3es)))
-endlet//end of [d3exp_tup1_errck(...)]
+endlet//end-of-[d3exp_tup1_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -932,7 +932,7 @@ d3exp_errck
 lvl0+1,
 d3exp_make_tpnd
 (loc0,t2p0,D3Ercd2(knd0,npf1,ldes)))
-endlet//end of [d3exp_rcd2_errck(...)]
+endlet//end-of-[d3exp_rcd2_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -956,7 +956,7 @@ lvl0+1,
 d3exp_make_tpnd
 (loc0, t2p0
 ,D3Elam0(tknd,f3as,sres,arrw,dexp)))
-endlet//end of [d3exp_lam0_errck(...)]
+endlet//end-of-[d3exp_lam0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -983,7 +983,7 @@ d3exp_make_tpnd
 , t2p0,
   D3Efix0
   (tknd,dvar,f3as,sres,arrw,dexp)) )
-endlet//end of [d3exp_fix0_errck(...)]
+endlet//end-of-[d3exp_fix0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1019,7 +1019,7 @@ lvl0 = errvl(d3e1) in//let
 d3exp_errck
 ( lvl0+1
 , d3exp(loc0, t2p0, D3Eaddr(d3e1)) )
-endlet//end of [d3exp_addr_errck(...)]
+endlet//end-of-[d3exp_addr_errck(...)]
 //
 fun
 d3exp_view_errck
@@ -1032,7 +1032,7 @@ lvl0 = errvl(d3e1) in//let
 d3exp_errck
 ( lvl0+1
 , d3exp(loc0, t2p0, D3Eview(d3e1)) )
-endlet//end of [d3exp_view_errck(...)]
+endlet//end-of-[d3exp_view_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1047,7 +1047,7 @@ lvl0 = errvl(d3e1) in//let
 d3exp_errck
 ( lvl0+1
 , d3exp(loc0, t2p0, D3Eflat(d3e1)) )
-endlet//end of [d3exp_flat_errck(...)]
+endlet//end-of-[d3exp_flat_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1062,7 +1062,7 @@ lvl0 = errvl(d3e1) in//let
 d3exp_errck
 ( lvl0+1
 , d3exp(loc0, t2p0, D3Eeval(d3e1)) )
-endlet//end of [d3exp_eval_errck(...)]
+endlet//end-of-[d3exp_eval_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1077,7 +1077,7 @@ lvl0 = errvl(d3e1) in//let
 d3exp_errck
 ( lvl0+1
 , d3exp(loc0, t2p0, D3Efold(d3e1)) )
-endlet//end of [d3exp_fold_errck(...)]
+endlet//end-of-[d3exp_fold_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1092,7 +1092,7 @@ lvl0 = errvl(d3e1) in//let
 d3exp_errck
 ( lvl0+1
 , d3exp(loc0, t2p0, D3Efree(d3e1)) )
-endlet//end of [d3exp_free_errck(...)]
+endlet//end-of-[d3exp_free_errck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1108,7 +1108,7 @@ lvl0 = errvl(d3e1) in//let
 d3exp_errck
 ( lvl0+1
 , d3exp(loc0, t2p0, D3Edp2tr(d3e1)) )
-endlet//end of [d3exp_dp2tr_errck(...)]
+endlet//end-of-[d3exp_dp2tr_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1123,7 +1123,7 @@ lvl0 = errvl(d3e1) in//let
 d3exp_errck
 ( lvl0+1
 , d3exp(loc0, t2p0, D3Edl0az(d3e1)) )
-endlet//end of [d3exp_dl0az_errck(...)]
+endlet//end-of-[d3exp_dl0az_errck(...)]
 //
 fun
 d3exp_dl1az_errck
@@ -1136,7 +1136,7 @@ lvl0 = errvl(d3e1) in//let
 d3exp_errck
 ( lvl0+1
 , d3exp(loc0, t2p0, D3Edl1az(d3e1)) )
-endlet//end of [d3exp_dl1az_errck(...)]
+endlet//end-of-[d3exp_dl1az_errck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1155,7 +1155,7 @@ d3exp_errck
 (lvl0+1
 ,d3exp_make_tpnd
  (loc0, t2p0, D3Ewhere(d3e1, dcls)))
-endlet//end of [d3exp_where_errck(...)]
+endlet//end-of-[d3exp_where_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1174,7 +1174,7 @@ d3exp_errck
 lvl0+1,
 d3exp_make_tpnd
 (loc0, t2p0, D3Eassgn(d3el, d3er)) )
-endlet//end of [d3exp_assgn_errck(...)]
+endlet//end-of-[d3exp_assgn_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1193,7 +1193,7 @@ d3exp_errck
 lvl0+1,
 d3exp_make_tpnd
 (loc0, t2p0, D3Exazgn(d3el, d3er)) )
-endlet//end of [d3exp_xazgn_errck(...)]
+endlet//end-of-[d3exp_xazgn_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1212,7 +1212,7 @@ d3exp_errck
 lvl0+1,
 d3exp_make_tpnd
 (loc0, t2p0, D3Exchng(d3el, d3er)) )
-endlet//end of [d3exp_xchng_errck(...)]
+endlet//end-of-[d3exp_xchng_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1231,7 +1231,7 @@ d3exp_errck
 lvl0+1,
 d3exp_make_tpnd
 (loc0, t2p0, D3Eraise(tknd, dexn)) )
-endlet//end of [d3exp_raise_errck(...)]
+endlet//end-of-[d3exp_raise_errck(...)]
 //
 (* ****** ****** *)
 //

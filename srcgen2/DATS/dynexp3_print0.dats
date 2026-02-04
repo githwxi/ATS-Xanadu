@@ -735,13 +735,21 @@ prints("TIMPLone1(", dcl1 ,")")
 //
 |TIMPLall1
 (d2c1, t2js, dcls) =>
+(*
 prints
 ("TIMPLall1(",d2c1,";",t2js,";",dcls,")")
+*)
+prints
+("TIMPLall1(",d2c1,";",t2js,";","...",")")
 //
 |TIMPLallx
 (d2c1, t2js, dcls) =>
+(*
 prints
 ("TIMPLallx(",d2c1,";",t2js,";",dcls,")")
+*)
+prints
+("TIMPLallx(",d2c1,";",t2js,";","...",")")
 //
 end (*let*) // end of [ timpl_fprint(dimp,out0) ]
 //
