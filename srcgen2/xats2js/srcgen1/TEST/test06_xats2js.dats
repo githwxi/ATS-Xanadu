@@ -81,7 +81,10 @@ where
 { #typedef x0 = sint
   #typedef r0 = sint
   #typedef xs = list(sint)
-  #impltmp folditm$fopr<x0><r0>(r0, x0) = r0+1 }//where
+(*
+  #impltmp folditm$fopr<x0><r0>(r0, x0) = r0+1
+*)
+}(*where*)//end-of-(length4(xs:list(sint)):sint)
 //
 (* ****** ****** *)
 (* ****** ****** *)

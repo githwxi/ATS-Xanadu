@@ -380,6 +380,33 @@ d3exp_make_tpnd
 endlet//end-of-[d3exp_lam0_errck(...)]
 //
 (* ****** ****** *)
+//
+fun
+d3exp_fix0_errck
+(loc0: loc_t
+,t2p0: s2typ
+,tknd: token
+,dvar: d2var
+,f3as: f3arglst
+,sres: s2res
+,arrw: f1unarrw
+,dexp
+:d3exp (*body*)): d3exp =
+let
+val
+lvl0 =
+d3exp_errvl(dexp) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_tpnd
+( loc0
+, t2p0,
+  D3Efix0
+  (tknd,dvar,f3as,sres,arrw,dexp)) )
+endlet//end-of-[d3exp_fix0_errck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -502,7 +529,7 @@ d3e0.node() of
   f0_lam0(evn0, d3e0, err0))
 |D3Efix0 _ =>
 (
-  f0_lam0(evn0, d3e0, err0))
+  f0_fix0(evn0, d3e0, err0))
 //
 (* ****** ****** *)
 |
@@ -901,6 +928,46 @@ d3exp_lam0_errck(
 loc0,t2p0,tknd,f3as,sres,arrw,dexp))
 end//let
 end(*let*)//end-of-[f0_lam0(evn0,d3e0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fix0
+( evn0:
+! t3r0evn
+, d3e0: d3exp
+, err0: &sint >> _): d3exp =
+let
+//
+val nerr = err0
+//
+val-
+D3Efix0
+( tknd
+, dvar
+, f3as, sres
+, arrw, dexp) = d3e0.node()
+//
+val dexp =
+t3read0_d3exp(evn0, dexp, err0)
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+in//let
+(
+d3exp_fix0_errck(loc0,
+t2p0,tknd,dvar,f3as,sres,arrw,dexp))
+end//let
+//
+end(*let*)//end-of-[f0_fix0(evn0,d3e0,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
