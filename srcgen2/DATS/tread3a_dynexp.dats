@@ -1006,7 +1006,7 @@ d3exp_errck
 lvl0+1,
 d3exp_make_tpnd
 (loc0,t2p0,D3Etry0(tknd,d3e1,dcls)))
-endlet // end of [d3exp_try0_errck(...)]
+endlet//end-of-[d3exp_try0_errck(...)]
 //
 (* ****** ****** *)
 //
