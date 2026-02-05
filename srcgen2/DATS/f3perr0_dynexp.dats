@@ -489,7 +489,7 @@ val
 loc = d3e.lctn((*0*))
 val () =
 printsln("\n\
-F3PERR0-TIMPL:", loc)
+F3PERR0-TIMP1:", loc)
 val () =
 f3perr0_timpl(out,loc,timp)
 endlet//endof-[D3Etimp(...)]
@@ -500,19 +500,16 @@ endlet//endof-[D3Etimp(...)]
 let
 val
 loc = d3e.lctn((*0*))
-//
 val () =
 printsln("\n\
-F3PERR0-TIMPL:", loc)
+F3PERR0-TIMQ1:", loc)
 val () =
 f3perr0_timpl(out,loc,timp)
-//
 val () =
 printsln("\n\
-F3PERR0-TMPLS:", loc)
+F3PERR0-TIMPS:", loc)
 val () =
 f3perr0_tmpls(out,loc,tmps)
-//
 endlet//endof-[D3Etimq(...)]
 //
 (* ****** ****** *)
