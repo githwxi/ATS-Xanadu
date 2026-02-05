@@ -480,6 +480,8 @@ in//let
 case+
 d3e.node() of
 //
+(* ****** ****** *)
+//
 |D3Etimp
 (d3f0,timp) =>
 let
@@ -513,27 +515,37 @@ f3perr0_tmpls(out,loc,tmps)
 //
 endlet//endof-[D3Etimq(...)]
 //
+(* ****** ****** *)
+//
 |D3Esapp
 (d3f0,s2es) =>
 let
 val () =
 f3perr0_d3exp(out, d3f0)
-(*
-val () =
-f3perr0_s2explst(out, s2es)
-*)
 endlet//endof-[D3Esapp(...)]
+//
+|D3Esapq
+(d3f0,t2ps) =>
+let
+val () =
+f3perr0_d3exp(out, d3f0)
+endlet//endof-[D3Esapq(...)]
+//
+(* ****** ****** *)
 //
 |D3Etapp
 (d3f0,s2es) =>
 let
 val () =
 f3perr0_d3exp(out, d3f0)
-(*
-val () =
-f3perr0_s2explst(out, s2es)
-*)
 endlet//endof-[D3Etapp(...)]
+//
+|D3Etapq
+(d3f0,t2js) =>
+let
+val () =
+f3perr0_d3exp(out, d3f0)
+endlet//endof-[D3Etapq(...)]
 //
 (* ****** ****** *)
 //
@@ -563,6 +575,7 @@ let
 val () =
 f3perr0_d3exp(out, d3e1)
 endlet//endof-[D3Epcon(...)]
+//
 |D3Eproj
 (tknd
 ,lab1, d3e1) =>
