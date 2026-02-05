@@ -775,6 +775,8 @@ d3exp_make_tpnd
 , t2p0, D3Epcon(tknd, dlab, dcon)))
 endlet//end-of-[d3exp_pcon_errck(...)]
 //
+(* ****** ****** *)
+//
 fun
 d3exp_proj_errck
 (loc0: loc_t
