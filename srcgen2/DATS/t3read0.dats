@@ -122,7 +122,15 @@ nerror,source,t1penv,t2penv,t3penv,parsed)
 end//let2
 end//let1
 //
-end(*let*)//end-of-[d3parsed_t3read0(dpar)]
+end where
+{
+//
+val () =
+val () =
+(prerrs("d3parsed_t3read0: ")
+;prerrsln("template-resolution checking!"))
+//
+}(*where*)//end-of-[d3parsed_t3read0( dpar )]
 //
 (* ****** ****** *)
 (* ****** ****** *)

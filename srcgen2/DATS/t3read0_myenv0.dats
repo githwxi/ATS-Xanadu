@@ -153,11 +153,11 @@ t3r0evn_make_nil
 T3R0EVN(trdstk_nil((*void*))))
 where
 {
-// (*
+(*
 val () =
 (
   prerrsln("t3r0evn_make_nil()"))
-// *)
+*)
 }(*where*)//end of [t3r0evn_make_nil(...)]
 //
 (* ****** ****** *)
@@ -181,11 +181,11 @@ case- stk0 of
 //
 end where
 {
-// (*
+(*
 val () =
 (
   prerrsln("t3r0evn_free_nil(...)"))
-// *)
+*)
 }(*where*)//end-of-[t3r0evn_free_nil(evn0)]
 //
 (* ****** ****** *)
