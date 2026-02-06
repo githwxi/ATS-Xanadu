@@ -87,11 +87,12 @@ d3parsed_of_trtmp3b(dpar)
 val dpar =
 d3parsed_of_trtmp3c(dpar)
 //
+val dpar =
+d3parsed_of_t3read0(dpar)
 (*
 val (  ) =
-(
 prerrsln
-("d3parsed(3a) = ", dpar))
+("dpar(t3read0) = ", dpar)
 *)
 //
 val (  ) =
