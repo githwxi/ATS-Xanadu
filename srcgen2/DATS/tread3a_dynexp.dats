@@ -588,10 +588,12 @@ d3ecl_errvl_lst
 #symload errvl with d3ecl_errvl_lst
 //
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2023-08-01:
 Various d3exp-errck functions
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -623,6 +625,7 @@ d3exp_errck
 endlet//end-of-[d3exp_top_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3exp_timp_errck
@@ -641,6 +644,7 @@ d3exp_make_tpnd
 (loc0, t2p0, D3Etimp(dtmp, timp)) )
 endlet//end-of-[d3exp_timp_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -680,6 +684,7 @@ d3exp_make_tpnd
 endlet//end-of-[d3exp_sapq_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3exp_tapp_errck
@@ -718,6 +723,7 @@ d3exp_make_tpnd
 endlet//end-of-[d3exp_tapq_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3exp_dap0_errck
@@ -754,6 +760,7 @@ d3exp_make_tpnd
 , t2p0, D3Edapp(d3f0, npf1, d3es)))
 endlet//end-of-[d3exp_dapp_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -797,6 +804,7 @@ d3exp_make_tpnd
 endlet//end-of-[d3exp_proj_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3exp_let0_errck
@@ -815,6 +823,7 @@ d3exp_errck
  (loc0, t2p0, D3Elet0(dcls, d3e1)))
 endlet//end-of-[d3exp_let0_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -860,6 +869,7 @@ d3exp_make_tpnd
 endlet // end of [d3exp_cas0_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3exp_seqn_errck
@@ -878,6 +888,7 @@ d3exp_errck
   (loc0, t2p0, D3Eseqn(d3es, d3e1)))
 endlet//end-of-[d3exp_seqn_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -937,6 +948,7 @@ d3exp_make_tpnd
 endlet//end-of-[d3exp_rcd2_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3exp_lam0_errck
@@ -988,6 +1000,7 @@ d3exp_make_tpnd
 endlet//end-of-[d3exp_fix0_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3exp_try0_errck
@@ -1008,6 +1021,7 @@ d3exp_make_tpnd
 (loc0,t2p0,D3Etry0(tknd,d3e1,dcls)))
 endlet//end-of-[d3exp_try0_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1036,6 +1050,7 @@ d3exp_errck
 , d3exp(loc0, t2p0, D3Eview(d3e1)) )
 endlet//end-of-[d3exp_view_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1127,6 +1142,8 @@ d3exp_errck
 , d3exp(loc0, t2p0, D3Edl0az(d3e1)) )
 endlet//end-of-[d3exp_dl0az_errck(...)]
 //
+(* ****** ****** *)
+//
 fun
 d3exp_dl1az_errck
 (loc0: loc_t
@@ -1159,6 +1176,7 @@ d3exp_errck
  (loc0, t2p0, D3Ewhere(d3e1, dcls)))
 endlet//end-of-[d3exp_where_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1217,6 +1235,7 @@ d3exp_make_tpnd
 endlet//end-of-[d3exp_xchng_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3exp_raise_errck
@@ -1235,6 +1254,7 @@ d3exp_make_tpnd
 (loc0, t2p0, D3Eraise(tknd, dexn)) )
 endlet//end-of-[d3exp_raise_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -2964,6 +2984,7 @@ end (*let*)
 end (*let*) // end of [f0_where(d3e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_assgn
@@ -3066,6 +3087,7 @@ end (*let*)
 end (*let*) // end of [f0_xchng(d3e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_raise
@@ -3097,6 +3119,7 @@ d3exp_raise_errck(loc, t2p, tknd, dexn)
 end (*let*)
 end (*let*) // end of [f0_raise(d3e,err)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -3164,6 +3187,7 @@ then (d3e) else
 end (*let*) // end of [f0_l1azy(d3e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_annot
@@ -3229,6 +3253,7 @@ end//let
 end (*let*) // end of [f0_t2ped(d3e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_none0
@@ -3276,8 +3301,9 @@ val-D3Esynext _ = d3e.node() in (d3e) end
 (* ****** ****** *)
 //
 (*
-  val () =
-  prerrsln("tread3a_d3exp: d3e0 = ", d3e0)
+val () =
+(
+prerrsln("tread3a_d3exp: d3e0 = ", d3e0))
 *)
 //
 (* ****** ****** *)
