@@ -197,10 +197,9 @@ in//let
 case+
 d3e0.node() of
 //
-|
-D3E1dapp
-( d3f0
-, npf1, d3es) =>
+|D3E1dapp
+(d3f0
+,npf1, d3es) =>
 let
 val () =
 fpeltck_d3exp1(out0, d3f0)
@@ -208,12 +207,62 @@ val () =
 fpeltck_d3exp1lst(out0, d3es)
 end//let
 //
+(* ****** ****** *)
+//
+|D3E1dvdtp
+(d3e1, dvts) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1))
+end(*let*)//end-of-[D3E1dvdtp(...)]
+//
+|D3E1annot
+(d3e1, s1e2
+,s2e2, t2p2) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1))
+end(*let*)//end-of-[D3E1annot(...)]
+//
+(* ****** ****** *)
+//
+|D3E1labck
+(d3e1, lab2) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1))
+end(*let*)//end-of-[D3E1labck(...)]
+//
+|D3E1t2pck
+(d3e1
+,t2q1, t2q2) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1))
+end(*let*)//end-of-[D3E1t2pck(...)]
+|D3E1t2ped
+(d3e1
+,t2q1, t2q2) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1))
+end(*let*)//end-of-[D3E1t2ped(...)]
+//
+(* ****** ****** *)
+//
 |
 D3E1errck(_, _) =>
 let
 val () =
 (
   fpeltck_d3exp1(out0, d3e0)) end
+//
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
@@ -225,6 +274,8 @@ fpeltck_d3exp1:auxmain: loc0 = ", loc0)
 val (  ) = prerrsln("\
 fpeltck_d3exp1:auxmain: d3e0 = ", d3e0)
 endlet
+//
+(* ****** ****** *)
 //
 end(*let*)//end-of-[auxmain(out0, d3e0)]
 //
@@ -292,6 +343,30 @@ fpeltck_d3exp1opt
   (out0, dopt) =
 (
 optn_fpeltck_fnp(out0, dopt, fpeltck_d3exp1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fpeltck_f3arg1
+  (out0, f3a0) =
+(
+case+
+f3a0.node() of
+//
+|F3ARG1dapp
+(npf1, d3ps) =>
+fpeltck_d3pat1lst(out0, d3ps)
+//
+|F3ARG1sapp _ => () |F3ARG1mets _ => ()
+//
+)(*case+*)//end-of-[fpeltck_f3arg1(out0,f3a0)]
+//
+#implfun
+fpeltck_f3arg1lst
+  (out0, f3as) =
+(
+  list_fpeltck_fnp(out0, f3as, fpeltck_f3arg1))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -230,6 +230,8 @@ endlet//end of [ D3Cimplmnt0(...) ]
 |D3Cnone2
 (  d3cl  ) => f3perr0_d3ecl(out, d3cl)
 //
+(* ****** ****** *)
+//
 |D3Cerrck
 (lvl1,dcl1) => f3perr0_d3ecl(out, dcl0)
 //
