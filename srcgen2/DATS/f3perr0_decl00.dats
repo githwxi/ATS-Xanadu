@@ -167,19 +167,19 @@ D3Cvaldclst
 (tknd, d3vs) => let
 val () =
   f3perr0_d3valdclist(out, d3vs)
-endlet//end-of-(D3Cvaldclst(_,_,_))
+endlet//end-of-(D3Cvaldclst( ... ))
 |
 D3Cvardclst
 (tknd, d3vs) => let
 val () =
   f3perr0_d3vardclist(out, d3vs)
-endlet//end-of-(D3Cvardclst(_,_,_))
+endlet//end-of-(D3Cvardclst( ... ))
 //
 |
 D3Cfundclst
 ( tknd
 , tqas
-, d2cs, d3fs) => let
+, d3cs, d3fs) => let
 (*
 val () =
   f3perr0_t3qaglst(out, tqas)
@@ -188,7 +188,7 @@ val () =
 *)
 val () =
   f3perr0_d3fundclist(out, d3fs)
-endlet//end-of-(D3Cfundclst(_,_,_))
+endlet//end-of-(D3Cfundclst( ... ))
 //
 (* ****** ****** *)
 //
@@ -220,7 +220,7 @@ val () = f3perr0_s2res(out, sres)
 //
 val () = f3perr0_d3exp(out, dexp)
 //
-endlet//end of [ D3Cimplmnt0(...) ]
+endlet//end-of-[D3Cimplmnt0( ... )]
 //
 (* ****** ****** *)
 //
