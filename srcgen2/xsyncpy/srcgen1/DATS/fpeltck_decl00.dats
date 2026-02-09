@@ -113,26 +113,43 @@ endlet // end of [D2Clocal0(...)]
 |D3C1include _ => (  (*void*)  )
 //
 (* ****** ****** *)
-|
-D3C1fundclst
-( tknd
-, tqas
-, d2cs, d3fs) => let
+//
+|D3C1valdclst
+(tknd, d3vs) => let
+val () =
+(
+  fpeltck_d3valdcl1lst(out0, d3vs))
+endlet//end-of-(D3Cvaldcl1lst( ... ))
+|D3C1vardclst
+(tknd, d3vs) => let
+val () =
+(
+  fpeltck_d3vardcl1lst(out0, d3vs))
+endlet//end-of-(D3Cvardcl1lst( ... ))
+//
+|D3C1fundclst
+(tknd
+,tqas
+,d3cs, d3fs) => let
 (*
 val () =
-  f3perr0_t3qaglst(out, tqas)
+  fpeltck_t3qaglst(out0, tqas)
 val () =
-  f3perr0_d3cstlst(out, d3cs)
+  fpeltck_d3cstlst(out0, d3cs)
 *)
 val () =
 (
   fpeltck_d3fundcl1lst(out0, d3fs))
-endlet//end-of-(D3Cfundcl1lst(_,_,_))
+endlet//end-of-(D3Cfundcl1lst(_,_,_,_))
 //
 (* ****** ****** *)
 //
 |D3C1errck
-(lvl0,dcl1) => fpeltck_d3ecl1(out0, dcl0)
+(lvl0, dcl1) =>
+let
+val ( ) =
+(
+  fpeltck_d3ecl1(out0, dcl0))end//let
 //
 (* ****** ****** *)
 //
@@ -243,6 +260,54 @@ endlet//end-of-[TEQD3EXPsome(teq1,d3e2)]
 (* ****** ****** *)
 //
 #implfun
+fpeltck_d3valdcl1
+  (out0, dval) =
+let
+//
+val (  ) =
+fpeltck_d3pat1(out0, dpat)
+//
+val (  ) =
+fpeltck_teqd3exp1(out0, tdxp)
+//
+endlet where // end-of-( let )
+{
+//
+val dpat = d3valdcl1_dpat$get(dval)
+val tdxp = d3valdcl1_tdxp$get(dval)
+//
+(*
+val wsxp = d3valdcl1_wsxp$get(dval)
+*)
+//
+}(*where*)//end-of-[fpeltck_d3valdcl1(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+fpeltck_d3vardcl1
+  (out0, dvar) =
+let
+//
+val (  ) =
+fpeltck_teqd3exp1(out0, dini)
+//
+endlet where // end-of-( let )
+{
+//
+(*
+val dpid = d3vardcl1_dpid$get(dvar)
+val vpid = d3vardcl1_vpid$get(dvar)
+val sres = d3vardcl1_sres$get(dvar)
+*)
+//
+val dini = d3vardcl1_dini$get(dvar)
+//
+}(*where*)//end-of-[fpeltck_d3vardcl1(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 fpeltck_d3fundcl1
   (out0, dfun) =
 let
@@ -257,19 +322,19 @@ end where // end-of-(let(...))
 {
 //
 (*
-  val dpid = d3fundcl1_dpid$get(dfun)
+val dpid = d3fundcl1_dpid$get(dfun)
 *)
-  val fags = d3fundcl1_farg$get(dfun)
+val fags = d3fundcl1_farg$get(dfun)
 (*
-  val sres = d3fundcl1_sres$get(dfun)
+val sres = d3fundcl1_sres$get(dfun)
 *)
-  val tdxp = d3fundcl1_tdxp$get(dfun)
+val tdxp = d3fundcl1_tdxp$get(dfun)
 //
 (*
-  val wsxp = d3fundcl1_wsxp$get(dfun)
+val wsxp = d3fundcl1_wsxp$get(dfun)
 *)
 //
-} (*where*)//end-of-[fpeltck_d3fundcl1(out,dfun)]
+}(*where*)//end-of-[fpeltck_d3fundcl1(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -197,6 +197,8 @@ in//let
 case+
 d3e0.node() of
 //
+(* ****** ****** *)
+//
 |D3E1dapp
 (d3f0
 ,npf1, d3es) =>
@@ -209,12 +211,37 @@ end//let
 //
 (* ****** ****** *)
 //
+|D3E1let0
+(dcls, d3e1) =>
+(
+fpeltck_d3exp1(out0, d3e1))
+where
+{
+val () =
+(
+fpeltck_d3ecl1lst(out0, dcls))
+}(*where*)//end-of-[D3Elet0(...)]
+//
+|D3E1let1
+(dcls
+,d3e1, dvts) =>
+(
+fpeltck_d3exp1(out0, d3e1))
+where
+{
+val () =
+(
+fpeltck_d3ecl1lst(out0, dcls))
+}(*where*)//end-of-[D3Elet1(...)]
+//
+(* ****** ****** *)
+//
 |D3E1dvdtp
 (d3e1, dvts) =>
 let
 val () =
 (
-  fpeltck_d3exp1(out0, d3e1))
+  fpeltck_d3exp1(out0, d3e1) )
 end(*let*)//end-of-[D3E1dvdtp(...)]
 //
 |D3E1annot
@@ -223,7 +250,7 @@ end(*let*)//end-of-[D3E1dvdtp(...)]
 let
 val () =
 (
-  fpeltck_d3exp1(out0, d3e1))
+  fpeltck_d3exp1(out0, d3e1) )
 end(*let*)//end-of-[D3E1annot(...)]
 //
 (* ****** ****** *)
@@ -233,7 +260,7 @@ end(*let*)//end-of-[D3E1annot(...)]
 let
 val () =
 (
-  fpeltck_d3exp1(out0, d3e1))
+  fpeltck_d3exp1(out0, d3e1) )
 end(*let*)//end-of-[D3E1labck(...)]
 //
 |D3E1t2pck
@@ -242,7 +269,7 @@ end(*let*)//end-of-[D3E1labck(...)]
 let
 val () =
 (
-  fpeltck_d3exp1(out0, d3e1))
+  fpeltck_d3exp1(out0, d3e1) )
 end(*let*)//end-of-[D3E1t2pck(...)]
 |D3E1t2ped
 (d3e1
@@ -250,7 +277,7 @@ end(*let*)//end-of-[D3E1t2pck(...)]
 let
 val () =
 (
-  fpeltck_d3exp1(out0, d3e1))
+  fpeltck_d3exp1(out0, d3e1) )
 end(*let*)//end-of-[D3E1t2ped(...)]
 //
 (* ****** ****** *)
@@ -260,7 +287,8 @@ D3E1errck(_, _) =>
 let
 val () =
 (
-  fpeltck_d3exp1(out0, d3e0)) end
+  fpeltck_d3exp1(out0, d3e0) )
+end(*let*)//end-of-[D3E1errck(...)]
 //
 (* ****** ****** *)
 //
