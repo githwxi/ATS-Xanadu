@@ -126,7 +126,7 @@ end where
 {
 //
 val () =
-(prerrs("d3parsed_t3read0: ")
+(prerrs("d3parsed_t3read0: for ")
 ;prerrsln("template-resolution checking!"))
 //
 }(*where*)//end-of-[d3parsed_t3read0( dpar )]
