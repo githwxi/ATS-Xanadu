@@ -914,6 +914,17 @@ d3exp1_trxltck
 (d3e0, env0) =
 let
 //
+val
+loc0 = d3e0.lctn()
+//
+val
+tqxp =
+(
+d3typ1_styp$make(t2q0)
+) where
+{
+val t2q0 = d3e0.styp() }
+//
 (*
 val () =
 prerrsln("\
@@ -925,6 +936,7 @@ d3exp1_trxltck: d3e0 = ", d3e0)
 //
 in//let
 //
+(
 case+
 d3e0.node() of
 //
@@ -1007,25 +1019,11 @@ d3exp1
 //
 |_(*otherwise*) =>
 (
-d3exp1
-(loc0,tqxp,D3E1errck(0(*lvl*),d3e0)))
+d3exp1(
+loc0,tqxp,D3E1errck(0(*lvl*),d3e0)))
 //
-(* ****** ****** *)
-//
-end where//end-of(case-of(d3e0.node())
+) where//end-of-(case+of(d3e0.node())
 {
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val loc0 = d3e0.lctn()
-//
-val tqxp =
-(
-d3typ1_styp$make(t2q0)
-) where
-{
-val t2q0 = d3e0.styp() }
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1984,7 +1982,9 @@ end(*let*)//end-of-[f0_t2ped(d3e0,env0)]
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[d3exp1_trxltck(d3e0,env0)]
+}(*where*)//end-of-(case+of(d3e0.node())
+//
+end(*let*)//end-of-[d3exp1_trxltck(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

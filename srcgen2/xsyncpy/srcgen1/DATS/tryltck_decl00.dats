@@ -473,11 +473,16 @@ val dexp =
 (
   d3exp1_tryltck( dexp, err0 ))
 //
+(*
 val (  ) =
 (
 if // if
 dvstp1lst_linq
-  ( vts1 ) then (err0:=(err0+1)))
+  ( vts1 ) then (err0:=err0+1))
+*)
+val vts1 =
+(
+  dvstp1lst_trylinq(vts1, err0))
 //
 in//let
 //
@@ -577,7 +582,7 @@ case+ dgrt of
 (   dtyp   ) => (
 if // if
 d3typ1_linq
-  ( dtyp ) then (err0:=(err0+1))))
+ ( dtyp ) then (err0:=(err0+1))))
 //
 val
 tdxp = teqd3exp1_tryltck(tdxp, err0)
@@ -676,11 +681,16 @@ val tdxp =
 (
   teqd3exp1_tryltck(tdxp, err0))
 //
+(*
 val (  ) =
 (
 if // if
 dvstp1lst_linq
-  ( vts1 ) then (err0:=(err0+1)))
+  ( vts1 ) then (err0:=err0+1))
+*)
+val vts1 =
+(
+  dvstp1lst_trylinq(vts1, err0))
 //
 in//let
 if // if

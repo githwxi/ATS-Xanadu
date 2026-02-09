@@ -113,6 +113,23 @@ endlet // end of [D2Clocal0(...)]
 |D3C1include _ => (  (*void*)  )
 //
 (* ****** ****** *)
+|
+D3C1fundclst
+( tknd
+, tqas
+, d2cs, d3fs) => let
+(*
+val () =
+  f3perr0_t3qaglst(out, tqas)
+val () =
+  f3perr0_d3cstlst(out, d3cs)
+*)
+val () =
+(
+  fpeltck_d3fundcl1lst(out0, d3fs))
+endlet//end-of-(D3Cfundcl1lst(_,_,_))
+//
+(* ****** ****** *)
 //
 |D3C1errck
 (lvl0,dcl1) => fpeltck_d3ecl1(out0, dcl0)
@@ -204,6 +221,78 @@ fpeltck_d3ecl1opt
   (out0, dopt) =
 (
 optn_fpeltck_fnp(out0, dopt, fpeltck_d3ecl1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fpeltck_teqd3exp1
+  (out, tdxp) =
+(
+case+ tdxp of
+|
+TEQD3EXP1none() => ()
+|
+TEQD3EXP1some(teq1, d3e2) =>
+let
+val (  ) = fpeltck_d3exp1(out, d3e2)
+endlet//end-of-[TEQD3EXPsome(teq1,d3e2)]
+)(*case+*)//end-(fpeltck_teqd3exp1(out,tdxp))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fpeltck_d3fundcl1
+  (out0, dfun) =
+let
+//
+val (  ) =
+fpeltck_f3arg1lst(out0, fags)
+//
+val (  ) =
+fpeltck_teqd3exp1(out0, tdxp)
+//
+end where // end-of-(let(...))
+{
+//
+(*
+  val dpid = d3fundcl1_dpid$get(dfun)
+*)
+  val fags = d3fundcl1_farg$get(dfun)
+(*
+  val sres = d3fundcl1_sres$get(dfun)
+*)
+  val tdxp = d3fundcl1_tdxp$get(dfun)
+//
+(*
+  val wsxp = d3fundcl1_wsxp$get(dfun)
+*)
+//
+} (*where*)//end-of-[fpeltck_d3fundcl1(out,dfun)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fpeltck_d3valdcl1lst
+  (out0, d3fs) =
+(
+list_fpeltck_fnp(out0, d3fs, fpeltck_d3valdcl1))
+//
+#implfun
+fpeltck_d3vardcl1lst
+  (out0, d3fs) =
+(
+list_fpeltck_fnp(out0, d3fs, fpeltck_d3vardcl1))
+//
+(* ****** ****** *)
+//
+#implfun
+fpeltck_d3fundcl1lst
+  (out0, d3fs) =
+(
+list_fpeltck_fnp(out0, d3fs, fpeltck_d3fundcl1))
 //
 (* ****** ****** *)
 (* ****** ****** *)

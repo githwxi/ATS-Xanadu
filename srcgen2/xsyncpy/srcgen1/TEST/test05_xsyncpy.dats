@@ -56,6 +56,26 @@ $tuprc(sint, sint) = $tuprc(x0, x0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+fun
+<a:t0>
+head$raw
+(xs: list(a)): (a) =
+let
+val-list_cons(x1, _) = xs in x1 end
+*)
+fun
+<a:vt>
+head$raw
+(xs: list_vt(a)): (a) =
+let
+val-
+~list_vt_cons(x1, _) = xs in x1 end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 fun
 <a:t0>
 length
@@ -65,6 +85,7 @@ case+ xs of
 |list_nil() => ( 0 )
 |list_cons(_, xs) => 1 + length(xs)
 )
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

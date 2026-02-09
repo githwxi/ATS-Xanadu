@@ -920,9 +920,22 @@ endlet//end-of-[D3E1t2ped(d3e1,t2q1,t2q2)]
 (* ****** ****** *)
 //
 |D3E1errck
-(lvl0, d3e1) =>
+(lvl1, d3e2) =>
+if // if
+(lvl1 >= 2)
+then
 (
-prints("D3E1errck(", lvl0, ";", d3e1, ")"))
+prints(
+  "D3E1errck(", lvl1, ";", d3e2, ")"))
+else // (lvl1<=1)
+let
+val loc0 = d3e0.lctn() in//let
+(
+prints("\
+D3E1errck(",loc0,";",lvl1,";",d3e2,")"))
+end(*let*)//end-of-[ D3Eerrck(lvl1, d3e2) ]
+//
+(* ****** ****** *)
 //
 end(*let*)//end-of-[d3exp1_fprint(d3e0,out0)]
 //
