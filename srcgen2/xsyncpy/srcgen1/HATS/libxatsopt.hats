@@ -58,10 +58,18 @@ Mon May 19 06:07:14 PM EDT 2025
 "./../../../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload
+"./../../../SATS/trans3a.sats"
+#staload
 "./../../../SATS/tread3a.sats"
 (* ****** ****** *)
+(*
+#staload
+"./../../../SATS/trtmp3b.sats"
+#staload
+"./../../../SATS/trtmp3c.sats"
 #staload
 "./../../../SATS/t3read0.sats"
+*)
 (* ****** ****** *)
 #staload
 "./../../../SATS/f3perr0.sats"
