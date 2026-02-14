@@ -171,9 +171,7 @@ s2varlst(*args*), s2typ1(*body*))
 //
 (* ****** ****** *)
 //
-(*
-|T2P1tcon of (d2con, s2typlst)
-*)
+|T2P1tcon of (d2con, s2typ1lst)
 //
 |T2P1trcd of
 (trcdknd, sint(*npf*), l2t2p1lst)
@@ -273,6 +271,13 @@ s2typ1_lft(t2q0: s2typ1): s2typ1
 (* ****** ****** *)
 //
 fun
+s2typ1_tcon
+(
+dcon:d2con,t2qs:s2typ1lst): s2typ1
+//
+(* ****** ****** *)
+//
+fun
 s2typ1_tup0
 (npf1:sint,t2qs:s2typ1lst): s2typ1
 fun
@@ -326,6 +331,30 @@ fun
 l2t2p1lst_lab$fset
 (ltqs
 :l2t2p1lst,lab0:label,t2q0:s2typ1): l2t2p1lst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef
+s2vtp1 = (s2var, s2typ1)
+#typedef // = s2vts
+s2vtp1lst = list(s2vtp1)
+#vwtpdef // = s2vts_vt
+s2vtp1lst_vt = list_vt(s2vtp1)
+//
+#typedef s2vt1s = s2vtp1lst
+#vwtpdef s2vt1s_vt = s2vtp1lst_vt
+//
+fun
+s2typ1_unfold
+(styp: s2typ1, dcon: d2con): s2typ1
+//
+fun
+s2typ_subst1
+(t2p0: s2typ, svts: s2vt1s): s2typ1
+fun
+s2typlst_subst1
+(t2ps: s2typlst, svts: s2vt1s): s2typ1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)

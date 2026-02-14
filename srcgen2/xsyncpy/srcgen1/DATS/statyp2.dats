@@ -73,7 +73,10 @@ with sint_sub$sint of 1099
 "./../../../SATS/staexp2.sats"
 #staload
 "./../../../SATS/statyp2.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
 //
+#symload sort with s2exp_get_sort
 #symload sort with s2typ_get_sort
 //
 (* ****** ****** *)
@@ -163,6 +166,51 @@ s2typ1_make_sort$node
 (* ****** ****** *)
 //
 endloc(*local*)//end-of-[local(s2typ1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-02-11:
+Wed Feb 11 08:05:15 PM EST 2026
+*)
+local
+//
+fun
+f0_sort(
+s2e0: s2exp): sort2 =
+(
+case+
+s2e0.node() of
+//
+|S2Euni0
+(s2vs
+,s2ps,s2e1) => f0_sort(s2e1)
+|S2Efun1
+(f2cl,npf1
+,s2es,s2e1) => f0_sort(s2e1)
+//
+|_(*otherwise*) => s2exp_get_sort(s2e0))
+//
+in//local
+//
+#implfun
+s2typ1_tcon
+(dcon, t2qs) =
+let
+//
+val
+s2t0 =
+f0_sort(
+d2con_get_sexp(dcon))
+//
+in//let
+//
+s2typ1_make_sort$node
+(s2t0, T2P1tcon(dcon, t2qs))
+end(*let*)//end-of-[s2typ1_tcon(...)]
+//
+endloc//end-of-(local(s2typ1_tcon(...))]
 //
 (* ****** ****** *)
 (* ****** ****** *)

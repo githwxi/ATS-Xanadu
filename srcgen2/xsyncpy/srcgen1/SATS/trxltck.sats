@@ -87,21 +87,21 @@ d3parsed1_of_trxltck
 (* ****** ****** *)
 //
 fun
-d3typ1_mkof$d3pat1
+d3typ1_mkof_d3pat1
   (dpat: d3pat1): (  d3typ1  )
 //
 fun
-d3typ1_mkof$d3pt2q
+d3typ1_mkof_d3pt2q
 ( dpat
 : d3pat1, styp: s2typ1): d3typ1
 //
 fun
-d3pat1_mkof$d3pt2q
+d3pat1_mkof_d3pt2q
 ( dpat
 : d3pat1, styp: s2typ1): d3pat1
 //
 fun
-d3pat1_mkof$d3gt2q
+d3pat1_mkof_d3gt2q
 ( dgpt
 : d3gpt1, styp: s2typ1): d3pat1
 //

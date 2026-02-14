@@ -1418,7 +1418,8 @@ t2p0.node() of
 (s2vs, t2p1) =>
 let
 val svts =
-f0_inst_s2vs(s2vs) in//let
+f0_inst_s2vs(s2vs)
+in//let
 s2typ_exi0_inst//recursive
 (
 e1nv,

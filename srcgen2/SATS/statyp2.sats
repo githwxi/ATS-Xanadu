@@ -502,24 +502,27 @@ s2typlst_hnfiz0
 //
 fun
 s2typ_subst0
-(t2p0:s2typ,svts:s2vts): s2typ
+(
+t2p0:
+s2typ, svts:s2vts): s2typ
 fun
 s2typlst_subst0
-( t2ps
-: s2typlst, svts: s2vts): s2typlst
+(
+t2ps:
+s2typlst, svts: s2vts): s2typlst
 //
 (* ****** ****** *)
 //
 fun
 <e1nv:vwtp>
 s2typ_eval$s2cst
-( e1nv: !e1nv
-, s2c0: s2cst): s2typopt_vt
+( e1nv:
+! e1nv, s2c0: s2cst): s2typopt_vt
 fun
 <e1nv:vwtp>
 s2typ_eval$s2var
-( e1nv: !e1nv
-, s2v0: s2var): s2typopt_vt
+( e1nv:
+! e1nv, s2v0: s2var): s2typopt_vt
 //
 (* ****** ****** *)
 //

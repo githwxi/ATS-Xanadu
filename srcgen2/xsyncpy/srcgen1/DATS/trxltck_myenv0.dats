@@ -894,9 +894,10 @@ envltck_dtyp$eval(env0, t3q1)}
 |T3P1tcon
 (dcon, t3qs) =>
 (
-t3q0.styp((*0*))) where
+s2typ1_tcon(dcon, t2qs))
+where
 {
-val t3qs = f0_t3qs(env0, t3qs)
+val t2qs = f0_t3qs(env0, t3qs)
 }(*where*)//end(T3P1tcon(dcon,...))
 //
 |T3P1trcd
@@ -918,7 +919,7 @@ f0_t3qs
 ( env0:
 ! envltck
 , t3qs
-: d3typ1lst): d3typ1lst =
+: d3typ1lst): s2typ1lst =
 (
 case+ t3qs of
 |list_nil
@@ -929,7 +930,7 @@ let
 val t2q1 =
 envltck_dtyp$eval(env0, t3q1)
 in//let
-list_cons(t3q1, f0_t3qs(env0, t3qs))
+list_cons(t2q1, f0_t3qs(env0, t3qs))
 end//let
 )(*case+*)//end-of-[f0_t3qs(env0,t3qs)]
 //
@@ -1966,6 +1967,12 @@ prerrsln("envltck_dlft$updt: t3q0 = ", t3q0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-02-09:
+This one is for
+returning [dgrt] to [dmxp]!
+Mon Feb  9 10:07:21 PM EST 2026
+*)
 #implfun
 envltck_dmxp$updt
 (env0, dmxp, dgrt) =
@@ -2135,23 +2142,51 @@ f0_dexp
 ( env0:
 ! envltck
 , dexp: d3exp1): void =
-if
+let
+//
+val
+lftq =
 d3exp1_lftq(dexp)
-then
+//
+in//let
+//
+(
+if//if
+(lftq)then//then
+let
+val t3q1 =
+d3typ1_styp$make
+(     t2q0     )
+in//let
 (
 envltck_dlft$updt
-(env0, dexp, t3q1))
-where{
+(env0, dexp, t3q1))end//let
+where
+{
 //
 val t3q0 =
 (
-  envltck_dlft$find(env0, dexp))
+ envltck_dlft$find(env0, dexp))
 val t2q0 =
 (
-  envltck_dtyp$eval(env0, t3q0))
-val t3q1 = d3typ1_styp$make(t2q0)
+ envltck_dtyp$eval(env0, t3q0))
+//
+}
+) where // endof(if(lftq)then...)
+{
+//
+val (  ) =
+prerrsln
+("envltck_dval$dtnm: dexp = ", dexp)
+val (  ) =
+prerrsln
+("envltck_dval$dtnm: lftq = ", lftq)
 //
 }(*where*)//end-of-[f0_dexp(env0,dexp)]
+//
+end(*let*)//end-of-[f0_dexp(env0,dexp)]
+//
+(* ****** ****** *)
 //
 fun
 f0_dval

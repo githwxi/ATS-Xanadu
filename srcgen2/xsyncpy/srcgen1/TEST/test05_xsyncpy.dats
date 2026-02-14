@@ -62,15 +62,18 @@ fun
 head$raw
 (xs: list(a)): (a) =
 let
-val-list_cons(x1, _) = xs in x1 end
+val-
+list_cons(x1, _) = xs in x1 end
 *)
 fun
 <a:vt>
 head$raw
-(xs: list_vt(a)): (a) =
+( xs:
+! list_vt(a)): (a) =
 let
 val-
-~list_vt_cons(x1, _) = xs in x1 end
+list_vt_cons
+(  x1 , _  ) = xs in g_copy(x1) end
 //
 (* ****** ****** *)
 ////

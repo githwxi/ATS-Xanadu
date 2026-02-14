@@ -469,8 +469,10 @@ d3valdcl1_tdxp$get(dval)
 val wsxp =
 d3valdcl1_wsxp$get(dval)
 //
-// HX-2025-09-21: non-recursive!
-//
+(*
+HX-2025-09-21:
+Default: non-recursive!
+*)
 val tdxp =
 (
 teqd3exp1_trxltck(tdxp, env0))
@@ -478,6 +480,12 @@ teqd3exp1_trxltck(tdxp, env0))
 in//let
 //
 let
+//
+val (  ) =
+(
+prerrs("\
+d3valdcl1_trxltck: ");
+prerrsln("dpat(1) = ", dpat))
 //
 val dpat =
 (
@@ -487,7 +495,7 @@ case+ tdxp of
 (    dpat    )
 |TEQD3EXP1some
 ( tkeq, dexp ) =>
-d3pat1_mkof$d3pt2q
+d3pat1_mkof_d3pt2q
 (   dpat, t2q0   )
 where{
 val t3q0 =
@@ -496,6 +504,12 @@ val t3q0 =
 val t2q0 =
 envltck_dtyp$eval
 (   env0, t3q0   )}): d3pat1
+//
+val (  ) =
+(
+prerrs("\
+d3valdcl1_trxltck: ");
+prerrsln("dpat(2) = ", dpat))
 //
 val dtyp =
 (
@@ -510,7 +524,7 @@ envltck_dmxq$updt
 (env0, dexp, dtyp))
 where{
 val dtyp =
-d3typ1_mkof$d3pat1
+d3typ1_mkof_d3pat1
 (      dpat      )}): d3typ1
 //
 val dgrt = optn_cons(  dtyp  )
@@ -519,7 +533,7 @@ val (  ) =
 (
   envltck_dpat$push(env0, dpat))
 //
-(*
+// (*
 val (  ) =
 prerrsln("\
 d3valdcl1_trxltck: dpat = ", dpat)
@@ -529,7 +543,7 @@ d3valdcl1_trxltck: dtyp = ", dtyp)
 val (  ) =
 prerrsln("\
 d3valdcl1_trxltck: dgrt = ", dgrt)
-*)
+// *)
 //
 (*
 val (  ) =

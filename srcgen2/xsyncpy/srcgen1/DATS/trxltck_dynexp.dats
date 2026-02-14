@@ -2068,7 +2068,7 @@ val t2q0 =
 envltck_dtyp$eval(env0, t3q0)
 //
 val dpat =
-d3pat1_mkof$d3gt2q(dgpt, t2q0)
+d3pat1_mkof_d3gt2q(dgpt, t2q0)
 //
 val dtyp =
 (
@@ -2076,7 +2076,7 @@ envltck_dmxq$updt
 (env0, dcas, dtyp)) where
 {
 val dtyp =
-d3typ1_mkof$d3pat1(   dpat   )
+d3typ1_mkof_d3pat1(   dpat   )
 }(*where*)//end-of-[val(dtyp)]
 //
 val dgrt = optn_cons(  dtyp  )
