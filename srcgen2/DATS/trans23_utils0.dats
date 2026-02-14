@@ -567,7 +567,8 @@ in//local
 (* ****** ****** *)
 //
 #implfun
-d3pat_sapqize(d3p0) = d3p0
+d3pat_sapqize
+(    d3p0    ) = (   d3p0   )
 //
 (* ****** ****** *)
 //

@@ -1332,12 +1332,12 @@ s2explst_prfq(s2es)
 in//let
 if
 linq
-then
+then//then
 (
 if prfq
    then the_sort2_view
    else the_sort2_vwtp)
-else
+else//else
 (
 if prfq
    then the_sort2_prop

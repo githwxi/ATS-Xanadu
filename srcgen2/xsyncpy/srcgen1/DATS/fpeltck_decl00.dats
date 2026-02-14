@@ -313,7 +313,9 @@ fpeltck_d3fundcl1
 let
 //
 val (  ) =
-fpeltck_f3arg1lst(out0, fags)
+fpeltck_f3arg1lst(out0, farg)
+val (  ) =
+fpeltck_f3axp1lst(out0, faxp)
 //
 val (  ) =
 fpeltck_teqd3exp1(out0, tdxp)
@@ -324,7 +326,8 @@ end where // end-of-(let(...))
 (*
 val dpid = d3fundcl1_dpid$get(dfun)
 *)
-val fags = d3fundcl1_farg$get(dfun)
+val farg = d3fundcl1_farg$get(dfun)
+val faxp = d3fundcl1_faxp$get(dfun)
 (*
 val sres = d3fundcl1_sres$get(dfun)
 *)

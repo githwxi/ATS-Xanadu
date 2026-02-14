@@ -85,10 +85,14 @@ HX: fpeltck for dynamics
 fun
 fpeltck_d3pat1(FILR, d3pat1): void
 fun
+fpeltck_d3axp1(FILR, d3axp1): void
+fun
 fpeltck_d3exp1(FILR, d3exp1): void
 (* ****** ****** *)
 fun
 fpeltck_f3arg1(FILR, f3arg1): void
+fun
+fpeltck_f3axp1(FILR, f3axp1): void
 (* ****** ****** *)
 fun
 fpeltck_d3ecl1(FILR, d3ecl1): void
@@ -96,15 +100,19 @@ fpeltck_d3ecl1(FILR, d3ecl1): void
 fun
 fpeltck_s2typ1lst(FILR, s2typ1lst): void
 (* ****** ****** *)
+//
 fun
 fpeltck_d3pat1lst(FILR, d3pat1lst): void
 fun
-fpeltck_d3pat1opt(FILR, d3pat1opt): void
-(* ****** ****** *)
+fpeltck_d3axp1lst(FILR, d3axp1lst): void
 fun
 fpeltck_d3exp1lst(FILR, d3exp1lst): void
+//
+fun
+fpeltck_d3pat1opt(FILR, d3pat1opt): void
 fun
 fpeltck_d3exp1opt(FILR, d3exp1opt): void
+//
 (* ****** ****** *)
 fun
 fpeltck_l3d3p1lst(FILR, l3d3p1lst): void
@@ -113,6 +121,8 @@ fpeltck_l3d3e1lst(FILR, l3d3e1lst): void
 (* ****** ****** *)
 fun
 fpeltck_f3arg1lst(FILR, f3arg1lst): void
+fun
+fpeltck_f3axp1lst(FILR, f3axp1lst): void
 (* ****** ****** *)
 fun
 fpeltck_teqd3exp1(FILR, teqd3exp1): void

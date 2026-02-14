@@ -79,10 +79,11 @@ in//let
 case+
 d3p0.node() of
 //
-|
-D3P1dapp
-( d3f0
-, npf1, d3ps) =>
+(* ****** ****** *)
+//
+|D3P1dapp
+(d3f0
+,npf1, d3ps) =>
 let
 val () =
 fpeltck_d3pat1(out0, d3f0)
@@ -90,23 +91,40 @@ val () =
 fpeltck_d3pat1lst(out0, d3ps)
 end//let
 //
-|
-D3P1errck(_, _) =>
+(* ****** ****** *)
+//
+|D3P1argtp
+(d3p1, t2q2) =>
 let
 val () =
 (
-  fpeltck_d3pat1(out0, d3p0)) end
+  fpeltck_d3pat1(out0, d3p1))
+end//let
+//
+(* ****** ****** *)
+//
+|D3P1errck(_, _) =>
+let
+val () =
+(
+fpeltck_d3pat1(out0, d3p0))end//let
+//
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
 let
+//
 val loc0 =
 d3p0.lctn((*0*))
 val (  ) = prerrsln("\
 fpeltck_d3pat1:auxmain: loc0 = ", loc0)
 val (  ) = prerrsln("\
 fpeltck_d3pat1:auxmain: d3p0 = ", d3p0)
-endlet
+//
+endlet//end-of-(_______otherwise_______)
+//
+(* ****** ****** *)
 //
 end(*let*)//end-of-[auxmain(out0, d3p0)]
 //
@@ -120,19 +138,17 @@ let
 #impltmp
 g_print$out<>() = out0
 //
+(*
 val () =
 let
 val loc0 = d3p0.lctn((*0*))
 in//let
-(*
 prerrsln
 ("fpeltck_d3pat1: loc0 = ", loc0)
-*)
-end//let
-(*
 val () =
 prerrsln
 ("fpeltck_d3pat1: d3p0 = ", d3p0)
+end//let
 *)
 //
 in//let
@@ -157,7 +173,7 @@ end//let
 )
 | _(* otherwise *) => (  (* skipped *)  )
 //
-end(*let*)//end-of(fpeltck_d3pat1(out,d3p0))
+end(*let*)//end-of(fpeltck_d3pat1(out0,d3p0))
 //
 endloc(*local*)//end-of(local(fpeltck_d3pat1))
 //
@@ -174,6 +190,42 @@ fpeltck_d3pat1opt
   (out0, dopt) =
 (
 optn_fpeltck_fnp(out0, dopt, fpeltck_d3pat1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fpeltck_d3axp1
+( out0, d3a0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+in//let
+//
+case+
+d3a0.node() of
+|
+D3A1errck _ =>
+let
+val loc0 = d3a0.lctn()
+in//let
+printsln();
+printsln("\
+FPELTCK-ERROR:", loc0, ":", d3a0)
+end//let
+| _(* otherwise *) => (  (* skipped *)  )
+//
+end(*let*)//end-of(fpeltck_d3axp1(out0,d3a0))
+//
+(* ****** ****** *)
+//
+#implfun
+fpeltck_d3axp1lst
+  (out0, d3as) =
+(
+list_fpeltck_fnp(out0, d3as, fpeltck_d3axp1))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -199,15 +251,32 @@ d3e0.node() of
 //
 (* ****** ****** *)
 //
+|D3E1dap0
+(   d3f0   ) =>
+let
+val () =
+(
+fpeltck_d3exp1(out0, d3f0))
+end//let//end-of-[D3E1dap0(...)]
+//
 |D3E1dapp
 (d3f0
 ,npf1, d3es) =>
 let
 val () =
-fpeltck_d3exp1(out0, d3f0)
+(
+fpeltck_d3exp1(out0, d3f0))
 val () =
 fpeltck_d3exp1lst(out0, d3es)
-end//let
+end//let//end-of-[D3E1dapp(...)]
+//
+|D3E1daft
+(d3e1, taft) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1))
+end//let//end-of-[D3E1daft(...)]
 //
 (* ****** ****** *)
 //
@@ -354,7 +423,7 @@ end//let
 )
 | _(* otherwise *) => (  (* skipped *)  )
 //
-end(*let*)//end-of(fpeltck_d3exp1(out,d3e0))
+end(*let*)//end-of(fpeltck_d3exp1(out0,d3e0))
 //
 endloc(*local*)//end-of(local(fpeltck_d3exp1))
 //
@@ -395,6 +464,29 @@ fpeltck_f3arg1lst
   (out0, f3as) =
 (
   list_fpeltck_fnp(out0, f3as, fpeltck_f3arg1))
+//
+(* ****** ****** *)
+//
+#implfun
+fpeltck_f3axp1
+  (out0, f3a0) =
+(
+case+
+f3a0.node() of
+//
+|F3AXP1dapp
+(npf1, d3as) =>
+fpeltck_d3axp1lst(out0, d3as)
+//
+|F3AXP1sapp _ => () |F3AXP1mets _ => ()
+//
+)(*case+*)//end-of-[fpeltck_f3axp1(out0,f3a0)]
+//
+#implfun
+fpeltck_f3axp1lst
+  (out0, f3as) =
+(
+  list_fpeltck_fnp(out0, f3as, fpeltck_f3axp1))
 //
 (* ****** ****** *)
 (* ****** ****** *)

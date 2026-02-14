@@ -681,15 +681,19 @@ let
 val
 t2p1 = f0_impr(s2e1)
 val
-s2vs = s2varlst_imprq(s2vs)
+s2vs =
+(
+  s2varlst_imprq(s2vs))
+//
 in//let
+//
 case+ s2vs of
-|
-list_nil() => t2p1
-|
-list_cons _ =>
+|list_nil() => t2p1
+|list_cons _ =>
+(
 s2typ_make_node
-(s2t0, T2Pexi0(s2vs, t2p1))
+(s2t0, T2Pexi0(s2vs, t2p1)))
+//
 end (*let*) // end of [S2Eexi0(...)]
 //
 |
@@ -700,15 +704,19 @@ let
 val
 t2p1 = f0_impr(s2e1)
 val
-s2vs = s2varlst_imprq(s2vs)
+s2vs =
+(
+  s2varlst_imprq(s2vs))
+//
 in//let
+//
 case+ s2vs of
-|
-list_nil() => t2p1
-|
-list_cons _ =>
+|list_nil() => t2p1
+|list_cons _ =>
+(
 s2typ_make_node
-(s2t0, T2Puni0(s2vs, t2p1))
+(s2t0, T2Puni0(s2vs, t2p1)))
+//
 end (*let*) // end of [S2Euni0(...)]
 //
 (* ****** ****** *)

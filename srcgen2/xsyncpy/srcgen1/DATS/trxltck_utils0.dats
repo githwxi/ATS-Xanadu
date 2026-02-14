@@ -82,15 +82,20 @@ d3pat1_argtp
 let
 val loc0 = d3p0.lctn()
 in//let
-d3pat1(loc0,
-styp, D3P1argtp(d3p0, styp))
-end//let//end-of-[d3pat1_argtp]
+d3pat1(
+loc0, styp, D3P1argtp(d3p0, styp))
+end//let//end-of-[d3pat1_argtp(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-02-11:
+For type-skeleton!
+Wed Feb 11 EST 2026
+*)
 #implfun
-d3typ1_mkof$d3pat1
+d3typ1_mkof_d3pat1
   (  d3p0  ) =
 let
 //
@@ -162,14 +167,14 @@ end//let//end-of-[D3P1tup0(...)]
 (d3p1, t2q2) =>
 let
 val dtyp =
-d3typ1_mkof$d3pat1(d3p1) in dtyp
+d3typ1_mkof_d3pat1(d3p1) in dtyp
 end//let//end-of-[D3P1argtp(...)]
 |D3P1annot
 (d3p1, s1e2
 ,s2e2, t2q2) =>
 let
 val dtyp =
-d3typ1_mkof$d3pat1(d3p1) in dtyp
+d3typ1_mkof_d3pat1(d3p1) in dtyp
 end//let//end-of-[D3P1annot(...)]
 //
 |_(*d3pat1*) => d3typ1_styp$make(t2q0)
@@ -194,7 +199,7 @@ list_map
 map$fopr
 <x0><y0>(dpat) =
 (
-  d3typ1_mkof$d3pat1(dpat))
+  d3typ1_mkof_d3pat1(dpat))
 }(*where*)//end-of-[f0_d3ps(d3ps)]
 //
 fun
@@ -215,7 +220,7 @@ let
 val lab1 = LABint(i0)
 val t3q1 =
 (
-  d3typ1_mkof$d3pat1(d3p1))
+  d3typ1_mkof_d3pat1(d3p1))
 //
 val ltq1 = D3LAB(lab1, t3q1)
 //
@@ -229,14 +234,14 @@ end//let//end-of-[list_cons(d3p1,d3ps)]
 val (  ) =
 (
   prerrsln
-  ("d3typ1_mkof$d3pat1: d3p0 = ", d3p0))
+  ("d3typ1_mkof_d3pat1: d3p0 = ", d3p0))
 //
-}(*where*)//end-of-[d3typ1_mkof$d3pat1(d3p0)]
+}(*where*)//end-of-[d3typ1_mkof_d3pat1(d3p0)]
 //
 (* ****** ****** *)
 //
 #implfun
-d3typ1_mkof$d3pt2q
+d3typ1_mkof_d3pt2q
   (d3p0, styp) =
 (
 case+
@@ -268,7 +273,7 @@ T3P1trcd(trcd, npf1, ltqs))
 end//let
 |_(*otherwise*) =>
 (
-  d3typ1_mkof$d3pat1(d3p0)))
+  d3typ1_mkof_d3pat1(d3p0)))
 //
 |D3P1tup1
 (trcd
@@ -288,11 +293,11 @@ end//let
 //
 |_(*otherwise*) =>
 (
-  d3typ1_mkof$d3pat1(d3p0)))
+  d3typ1_mkof_d3pat1(d3p0)))
 //
 |_(*otherwise*) =>
 (
-  d3typ1_mkof$d3pat1(d3p0)))
+  d3typ1_mkof_d3pat1(d3p0)))
 where
 {
 //
@@ -317,7 +322,7 @@ val+
 S2LAB(lab1, t2q1) = ltq1
 val t3q1 =
 (
-d3typ1_mkof$d3pt2q
+d3typ1_mkof_d3pt2q
 (      d3p1 , t2q1      ))
 val ltq1 = D3LAB(lab1, t3q1)
 in//let
@@ -328,17 +333,17 @@ end//let
 )(*case+*)//end-of-[f0_d3ps$ltqs(...)]
 //
 val () =
-prerrsln("d3typ1_mkof$d3pt2q: d3p0 = ", d3p0)
+prerrsln("d3typ1_mkof_d3pt2q: d3p0 = ", d3p0)
 val () =
-prerrsln("d3typ1_mkof$d3pt2q: styp = ", styp)
+prerrsln("d3typ1_mkof_d3pt2q: styp = ", styp)
 //
-}(*where*)//end-of-[d3typ1_mkof$d3pt2q(dpat,styp)]
+}(*where*)//end-of-[d3typ1_mkof_d3pt2q(dpat,styp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-d3pat1_mkof$d3pt2q
+d3pat1_mkof_d3pt2q
   (d3p0, styp) =
 (
 case+
@@ -417,7 +422,7 @@ val+
 S2LAB(lab1, t2q1) = ltq1
 val d3p1 =
 (
-d3pat1_mkof$d3pt2q
+d3pat1_mkof_d3pt2q
 (      d3p1 , t2q1      ))
 in//let
 list_cons
@@ -427,14 +432,14 @@ end//let
 )(*case+*)//end-of-[f0_d3ps$ltqs(...)]
 //
 val (  ) =
-prerrsln("d3pat1_mkof$d3pt2q: d3p0 = ", d3p0)
+prerrsln("d3pat1_mkof_d3pt2q: d3p0 = ", d3p0)
 //
-}(*where*)//end-of-[d3typ1_mkof$d3pt2q(d3p0,styp)]
+}(*where*)//end-of-[d3typ1_mkof_d3pt2q(d3p0,styp)]
 //
 (* ****** ****** *)
 //
 #implfun
-d3pat1_mkof$d3gt2q
+d3pat1_mkof_d3gt2q
   (dgpt, styp) =
 (
 case+
@@ -442,18 +447,18 @@ dgpt.node() of
 |D3GPT1pat
 (   dpat   ) =>
 (
-d3pat1_mkof$d3pt2q(dpat, styp))//D3GPT1pat
+d3pat1_mkof_d3pt2q(dpat, styp))//D3GPT1pat
 |D3GPT1gua
 (dpat, d3gs) =>
 (
-d3pat1_mkof$d3pt2q(dpat, styp))//D3GPT1gua
+d3pat1_mkof_d3pt2q(dpat, styp))//D3GPT1gua
 ) where
 {
 //
 val (  ) =
-prerrsln("d3pat1_mkof$d3gt2q: dgpt = ", dgpt)
+prerrsln("d3pat1_mkof_d3gt2q: dgpt = ", dgpt)
 //
-}(*where*)//end-of-[d3typ1_mkof$d3gt2q(dgpt,styp)]
+}(*where*)//end-of-[d3typ1_mkof_d3gt2q(dgpt,styp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

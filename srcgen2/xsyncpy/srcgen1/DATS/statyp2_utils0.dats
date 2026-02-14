@@ -99,6 +99,8 @@ with sint_neq$sint of 1099
 "./../../../SATS/staexp2.sats"
 #staload
 "./../../../SATS/statyp2.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -417,20 +419,18 @@ t2q1.node() of
 (
 case+
 t2q2.node() of
-|T2P1cst(s2c2) =>
-( s2c1 = s2c2 )
-|_(*non-T2P1cst*) => ( false )
-)
+|T2P1cst
+(   s2c2   ) => (s2c1=s2c2)
+|_(*non-T2P1cst*) => ( false ))
 //
 |T2P1var
 (  s2v1  ) =>
 (
 case+
 t2q2.node() of
-|T2P1var(s2v2) =>
-( s2v1 = s2v2 )
-|_(*non-T2P1var*) => ( false )
-)
+|T2P1var
+(   s2v2   ) => (s2v1=s2v2)
+|_(*non-T2P1var*) => ( false ))
 //
 (* ****** ****** *)
 //
@@ -439,25 +439,26 @@ t2q2.node() of
 (
 case+
 t2q2.node() of
-|T2P1top0(t2q2) =>
+|T2P1top0
+(   t2q2   ) =>
 (
-  s2typ1_lteq(t2q1, t2q2))
-|T2P1top1(t2q2) =>
+  s2typ1_lteq( t2q1, t2q2 ))
+|T2P1top1
+(   t2q2   ) =>
 (
-  s2typ1_lteq(t2q1, t2q2))
-|_(*non-T2P1top?*) => ( false )
-)
+  s2typ1_lteq( t2q1, t2q2 ))
+|_(*non-T2P1top?*) => ( false ))
 //
 |T2P1top1
 (  t2q1  ) =>
 (
 case+
 t2q2.node() of
-|T2P1top1(t2q2) =>
+|T2P1top1
+(   t2q2   ) =>
 (
-  s2typ1_lteq(t2q1, t2q2))
-|_(*non-T2P1top1*) => ( false )
-)
+  s2typ1_lteq( t2q1, t2q2 ))
+|_(*non-T2P1top1*) => ( false ))
 //
 (* ****** ****** *)
 //
@@ -466,21 +467,42 @@ t2q2.node() of
 (
 case+
 t2q2.node() of
-|T2P1apps(t2f2, tqs2) =>
+|T2P1apps
+(t2f2, tqs2) =>
 (
-if
+if // if
 s2typ1_lteq
 (t2f1, t2f2)
-then
+then // then
 s2typ1lst_lteq
-( tqs1, tqs2 ) else false)
-|_(*non-T2P1apps*) => ( false )
-)
+( tqs1, tqs2 ) else (false))
+|_(*non-T2P1apps*) => ( false ))
+//
+(* ****** ****** *)
+//
+|T2P1tcon
+(d2c1, tqs1) =>
+(
+case+
+t2q2.node() of
+|T2P1tcon
+(d2c2, tqs2) =>
+(
+if( // if
+d2c1=d2c2)
+then//then
+s2typ1lst_lteq
+( tqs1, tqs2 ) else (false))
+|_(*non-T2P1tcon*) => ( false ))
+where{
+val//val
+t2q2 = s2typ1_unfold(t2q2, d2c1)}
 //
 (* ****** ****** *)
 //
 |T2P1trcd
-(knd1, npfa, lts1) =>
+(knd1
+,npfa, lts1) =>
 (
 case+
 t2q2.node() of
@@ -510,7 +532,7 @@ if
 (tnm1 = tnm2)
 then
 s2typ1lst_lteq
-( tqs1, tqs2 ) else false)
+( tqs1, tqs2 ) else (false))
 |_(*non-T2P1text*) => ( false )
 )
 //
@@ -522,7 +544,9 @@ case+
 t2q2.node() of
 |T2P1none0() => true | _ => false)
 //
-|_(* otherwise *) => (     false     )
+(* ****** ****** *)
+//
+|_(* otherwise *) => (    false    )
 //
 (* ****** ****** *)
 //
@@ -715,6 +739,134 @@ l2t2p1lst_lab$fset(ltqs, lab0, t2q0))
 end//let//end-of-[list_cons(ltq1,ltqs)]
 //
 )(*case+*)//end-of-[l2t2p1lst_lab$fset(ltqs,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2typ1_unfold
+( styp, dcon ) =
+(
+case+
+styp.node() of
+//
+|T2P1cst
+(   s2c1   ) =>
+(
+s2typ1_tcon(dcon,
+s2typlst_subst1(targ, svts)))
+//
+|T2P1apps
+(t2q1, t2qs) =>
+(
+s2typ1_tcon(dcon,
+s2typlst_subst1(targ, svts)))
+//
+|_(* otherwise *) => (     styp     )
+) where
+{
+//
+val tfun =
+f0_elim(
+d2con_get_styp(dcon))
+where
+{
+fun
+f0_elim
+(t2p0: s2typ): s2typ =
+(
+case+
+t2p0.node() of
+|T2Puni0
+(s2vs, t2p1) => f0_elim(t2p1)
+| _(*non-T2Puni0*) => ( t2p0 ))
+}
+//
+val targ =
+(
+case+
+tfun.node() of
+|T2Pfun1
+(f2cl, npf1
+,targ, tres) => targ | _ => list_nil())
+//
+val svts =
+(
+case+
+tfun.node() of
+|T2Pfun1
+(f2cl, npf1
+,targ, tres) =>
+(
+f0_tres(tres, styp)) | _ => list_nil())
+where
+{
+//
+fun
+f0_t2p1
+(
+t2p1: s2typ,
+t2q1: s2typ1,
+svts: s2vtp1lst): s2vtp1lst =
+(
+case+
+t2p1.node() of
+|
+T2Pvar(s2v1) =>
+(
+list_cons
+((s2v1, t2q1), svts))
+|_(*non-T2Pvar*) => ( svts ))
+//
+and
+f0_t2ps
+(
+t2ps: s2typlst,
+t2qs: s2typ1lst,
+svts: s2vtp1lst): s2vtp1lst =
+(
+case+ t2ps of
+|list_nil
+((*void*)) => ( svts )
+|list_cons
+(t2p1, t2ps) =>
+(
+case+ t2qs of
+|list_nil
+((*void*)) => ( svts )
+|list_cons
+(t2q1, t2qs) =>
+let
+val
+svts =
+f0_t2p1(t2p1, t2q1, svts)
+in//let
+  f0_t2ps(t2ps, t2qs, svts) end))
+//
+fun
+f0_tres
+(t2p0: s2typ
+,t2q0: s2typ1): s2vt1s =
+(
+case+
+t2p0.node() of
+|T2Pcst _ =>
+(
+list_nil((*void*)))
+|T2Papps(s2c1, t2ps) =>
+(
+case+
+t2q0.node() of
+|T2P1apps
+(s2c2, t2qs) =>
+let
+val svts = list_nil() in
+  f0_t2ps(t2ps, t2qs, svts) end//let
+|_(*otherwise*) => list_nil( (*void*) )))
+//
+}
+//
+}(*where*)//end-of-[s2typ1_unfold(styp,dcon)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
