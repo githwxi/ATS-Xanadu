@@ -482,7 +482,17 @@ s2typ1lst_lteq
 //
 |T2P1tcon
 (d2c1, tqs1) =>
-(
+let
+//
+val t2q2 =
+s2typ1_unfold(t2q2, d2c1)
+//
+val (  ) =
+prerrsln("f0_main:\
+T2P1tcon: t2q2(un) = ", t2q2)
+//
+in//let
+//
 case+
 t2q2.node() of
 |T2P1tcon
@@ -493,10 +503,9 @@ d2c1=d2c2)
 then//then
 s2typ1lst_lteq
 ( tqs1, tqs2 ) else (false))
-|_(*non-T2P1tcon*) => ( false ))
-where{
-val//val
-t2q2 = s2typ1_unfold(t2q2, d2c1)}
+|_(*non-T2P1tcon*) => ( false )
+//
+end(*let*)//endof[T2P1tcon(...)]
 //
 (* ****** ****** *)
 //
@@ -516,8 +525,7 @@ if
 npfa != npfb
 then false else
 l2t2p1lst_lteq(lts1, lts2))
-|_(*non-T2P1apps*) => ( false )
-)
+|_(*non-T2P1apps*) => ( false ))
 //
 (* ****** ****** *)
 //
@@ -533,8 +541,7 @@ if
 then
 s2typ1lst_lteq
 ( tqs1, tqs2 ) else (false))
-|_(*non-T2P1text*) => ( false )
-)
+|_(*non-T2P1text*) => ( false ))
 //
 (* ****** ****** *)
 //
@@ -553,14 +560,14 @@ t2q2.node() of
 ) where
 {
 //
-(*
+// (*
 val (  ) =
 (
   prerrsln("f0_main: t2q1 = ", t2q1))
 val (  ) =
 (
   prerrsln("f0_main: t2q2 = ", t2q2))
-*)
+// *)
 //
 }(*where*)//end-of-[f0_main(t2q1,t2q2)]
 //
@@ -867,6 +874,146 @@ val svts = list_nil() in
 }
 //
 }(*where*)//end-of-[s2typ1_unfold(styp,dcon)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2typ_subst1
+ (t2p0, svts) =
+(
+case+
+t2p0.node() of
+//
+|
+T2Pvar
+(   s2v1   ) =>
+(
+  f0_var(s2v1, svts))
+//
+|
+T2Pcst
+(   s2c1   ) =>
+s2typ1(s2t0, T2P1cst(s2c1))
+//
+(* ****** ****** *)
+//
+|
+T2Papps
+(t2f0, t2ps) =>
+let
+val t2g0 =
+s2typ_subst1(t2f0, svts)
+val t2qs =
+s2typlst_subst1(t2ps, svts)
+in//let
+s2typ1(
+s2t0, T2P1apps(t2g0, t2qs))
+end//let
+//
+|T2Plam1
+(s2vs, t2p1) =>
+let
+val t2q1 =
+s2typ_subst1(t2p1, svts)
+in//let
+s2typ1(
+s2t0, T2P1lam1(s2vs, t2q1))
+end//let
+//
+(* ****** ****** *)
+//
+|T2Pf2cl
+(   f2cl   ) =>
+s2typ1(
+  s2t0, T2P1f2cl(f2cl))
+//
+|T2Pfun1
+(f2cl
+,npf1
+,t2ps, tres) =>
+let
+val f2cl =
+s2typ_subst1(f2cl, svts)
+val t2qs =
+s2typlst_subst1(t2ps, svts)
+val tres =
+(
+  s2typ_subst1(tres, svts))
+in//let
+s2typ1(
+s2t0,
+T2P1fun1(
+ f2cl , npf1 , t2qs , tres))
+end//let
+//
+(* ****** ****** *)
+//
+|T2Ptext
+(name, t2ps) =>
+let
+val t2qs =
+s2typlst_subst1(t2ps, svts)
+in//let
+s2typ1(
+  s2t0, T2P1text(name, t2qs))
+end//let
+//
+(* ****** ****** *)
+//
+|T2Pnone0() =>
+(
+s2typ1(s2t0, T2P1none0(*0*)))
+//
+(* ****** ****** *)
+//
+|
+_(*otherwise*) =>
+(
+ s2typ1_make_s2typ(  t2p0  ))
+) where//end-of-(s2typ_subst1)
+{
+//
+val
+s2t0 =
+s2typ_get_sort(t2p0)
+//
+fun
+f0_var
+( s2v1: s2var
+, svts: s2vt1s): s2typ1 =
+(
+case+ svts of
+//
+|
+list_nil((*void*)) =>
+s2typ1(s2t0, T2P1var(s2v1))
+//
+|
+list_cons(svt1, svts) =>
+(
+if // if
+(s2v1 = svt1.0)
+then svt1.1 else f0_var(s2v1, svts)))
+}(*where*)//end-of-[s2typ_subst1(t2p0,svts)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2typlst_subst1
+ (t2ps, svts) =
+(
+list_map$e1nv
+<x0><y0><e1>(t2ps, svts)
+) where
+{
+#typedef x0 = s2typ
+#typedef y0 = s2typ1
+#vwtpdef e1 = s2vt1s
+#impltmp
+map$e1nv$fopr
+<x0><y0><e1>(x0, e1) = s2typ_subst1(x0, e1)
+} (*where*)//end of [s2typlst_subst1(t2ps,svts)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
