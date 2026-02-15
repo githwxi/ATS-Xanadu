@@ -79,6 +79,11 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
+|D3C1d3ecl
+(   d3cl   ) => ( (*void*) )
+//
+(* ****** ****** *)
+//
 |D3C1static
 (tknd, dcl1) =>
 let
