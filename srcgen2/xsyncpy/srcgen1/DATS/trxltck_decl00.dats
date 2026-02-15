@@ -520,6 +520,9 @@ case+ tdxp of
 (    dtyp    )
 |TEQD3EXP1some
 ( tkeq, dexp ) =>
+if // if
+freeq(dpat)
+then (dtyp) else
 envltck_dmxq$updt
 (env0, dexp, dtyp))
 where{

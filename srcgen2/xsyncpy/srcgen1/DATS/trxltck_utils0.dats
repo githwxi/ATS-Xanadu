@@ -117,6 +117,18 @@ d3typ1_styp$make(t2q0))
 d3typ1_make_styp$node
 (t2q0, T3P1dvar(d2v1)))
 //
+(* ****** ****** *)
+//
+|D3P1bang
+(   d3p1   ) =>
+d3typ1_mkof_d3pat1(d3p1)
+//
+|D3P1free
+(   d3p1   ) =>
+d3typ1_mkof_d3pat1(d3p1)
+//
+(* ****** ****** *)
+//
 |D3P1dapp
 (d3f0
 ,npf1, d3ps) =>
@@ -257,6 +269,22 @@ d3typ1_styp$make(styp))
 d3typ1_make_styp$node
 (styp, T3P1dvar(d2v1)))
 //
+(* ****** ****** *)
+//
+|D3P1bang
+(   d3p1   ) =>
+(
+d3typ1_mkof_d3pt2q
+(     d3p1, styp     ))
+//
+|D3P1free
+(   d3p1   ) =>
+(
+d3typ1_mkof_d3pt2q
+(     d3p1, styp     ))
+//
+(* ****** ****** *)
+//
 |D3P1tup0
 (npf1, d3ps) =>
 (
@@ -290,10 +318,11 @@ in//let
 d3typ1(styp,
 T3P1trcd(trcd, npf1, ltqs))
 end//let
-//
 |_(*otherwise*) =>
 (
   d3typ1_mkof_d3pat1(d3p0)))
+//
+(* ****** ****** *)
 //
 |_(*otherwise*) =>
 (
@@ -349,12 +378,44 @@ d3pat1_mkof_d3pt2q
 case+
 d3p0.node() of
 //
+(* ****** ****** *)
+//
 |D3P1any _ =>
 d3pat1_argtp(d3p0, styp)
 //
 |D3P1var
 (   d2v1   ) =>
 d3pat1_argtp(d3p0, styp)
+//
+(* ****** ****** *)
+//
+|D3P1bang
+(   d3p1   ) =>
+let
+val loc0 =
+d3p0.lctn((*0*))
+val d3p1 =
+d3pat1_mkof_d3pt2q
+(   d3p1, styp   )
+in//let
+d3pat1
+(loc0,styp,D3P1bang(d3p1))
+end//let
+//
+|D3P1free
+(   d3p1   ) =>
+let
+val loc0 =
+d3p0.lctn((*0*))
+val d3p1 =
+d3pat1_mkof_d3pt2q
+(   d3p1, styp   )
+in//let
+d3pat1
+(loc0,styp,D3P1free(d3p1))
+end//let
+//
+(* ****** ****** *)
 //
 |D3P1tup0
 (npf1, d3ps) =>
@@ -375,6 +436,8 @@ end//let
 (
   d3pat1_argtp(d3p0, styp)))
 //
+(* ****** ****** *)
+//
 |D3P1tup1
 (tknd
 ,npf1, d3ps) =>
@@ -394,6 +457,8 @@ end//let
 |_(*otherwise*) =>
 (
   d3pat1_argtp(d3p0, styp)))
+//
+(* ****** ****** *)
 //
 |_(*otherwise*) =>
 (
@@ -419,11 +484,11 @@ case+ ltqs of
 (ltq1, ltqs) =>
 let
 val+
-S2LAB(lab1, t2q1) = ltq1
+S2LAB(lab1, t2q1) = (ltq1)
 val d3p1 =
 (
 d3pat1_mkof_d3pt2q
-(      d3p1 , t2q1      ))
+(        d3p1, t2q1        ))
 in//let
 list_cons
 (d3p1, f0_d3ps$ltqs(d3ps, ltqs))

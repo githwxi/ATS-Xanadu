@@ -2070,6 +2070,10 @@ envltck_dtyp$eval(env0, t3q0)
 val dpat =
 d3pat1_mkof_d3gt2q(dgpt, t2q0)
 //
+val (  ) =
+(
+envltck_pshcas0(env0))//enter
+//
 val dtyp =
 (
 envltck_dmxq$updt
@@ -2080,10 +2084,6 @@ d3typ1_mkof_d3pat1(   dpat   )
 }(*where*)//end-of-[val(dtyp)]
 //
 val dgrt = optn_cons(  dtyp  )
-//
-val (  ) =
-(
-  envltck_pshcas0(env0))//enter
 //
 val (  ) =
 (
@@ -2123,10 +2123,10 @@ d31cas_trxltck:D3CLS1cls: vts2 = ", vts2)
 in//let
 (
 d3cls1(loc0,
-  D3CLS1cls(dgpt,dexp),dgrt,vts1,vts2))
+  D3CLS1cls(dgpt,dexp), dgrt, vts1, vts2))
 end//let
 //
-end(*let*)//end-of-[D3CLS1cls(dgpt,dexp)]
+end(*let*)//end-of-[ D3CLS1cls(dgpt,dexp) ]
 //
 end(*let*)//end(d31cas_trxltck(dcl0,env0,...))
 //

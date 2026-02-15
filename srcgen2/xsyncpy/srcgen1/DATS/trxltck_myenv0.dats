@@ -1109,6 +1109,14 @@ end//let//end-of-[D3P1var( d2v1 )]
 //
 (* ****** ****** *)
 //
+|D3P1bang
+(   d3p1   ) => f0_dpat(env0, d3p1)
+//
+|D3P1free
+(   d3p1   ) => f0_dpat(env0, d3p1)
+//
+(* ****** ****** *)
+//
 |D3P1dapp
 (d3f0
 ,npf1, d3ps) => f0_d3ps(env0, d3ps)

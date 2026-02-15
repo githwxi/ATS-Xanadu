@@ -68,6 +68,52 @@ d3typ1_none$make
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+d3pat1_bangq
+  (  dpat  ) =
+(
+case+
+dpat.node() of
+|D3P1bang _ => true
+|D3P1annot
+(d3p1, _, _, _) =>
+(
+  d3pat1_bangq(d3p1))
+|_(*otherwise*) => (false))
+//
+(* ****** ****** *)
+//
+#implfun
+d3pat1_flatq
+  (  dpat  ) =
+(
+case+
+dpat.node() of
+|D3P1flat _ => true
+|D3P1annot
+(d3p1, _, _, _) =>
+(
+  d3pat1_flatq(d3p1))
+|_(*otherwise*) => (false))
+//
+(* ****** ****** *)
+//
+#implfun
+d3pat1_freeq
+  (  dpat  ) =
+(
+case+
+dpat.node() of
+|D3P1free _ => true
+|D3P1annot
+(d3p1, _, _, _) =>
+(
+  d3pat1_freeq(d3p1))
+|_(*otherwise*) => (false))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2025-09-17:
 A convenience function
@@ -90,7 +136,7 @@ d3typ1 =
 D3TYP1 of
 (s2typ1, d3typ1_node)
 datavwtp
-d3pat1_vt =
+d3typ1_vt =
 D3TYP1_vt of
 (s2typ1, d3typ1_node)
 //

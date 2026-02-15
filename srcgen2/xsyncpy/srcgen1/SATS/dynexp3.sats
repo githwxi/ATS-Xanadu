@@ -373,6 +373,8 @@ d3typ1_none0((*0*)): d3typ1
 //
 fun
 d3typ1_linq(d3typ1): (bool)
+fun
+d3typ1_nfrq(d3typ1): (bool)
 //
 (* ****** ****** *)
 //
@@ -490,7 +492,23 @@ d3pat1_node =
 //
 (* ****** ****** *)
 //
-|D3P1errck of (sint(*lvl*), d3pat1(*err*))
+|
+D3P1errck of (sint(*lvl*), d3pat1(*err*))
+//
+(* ****** ****** *)
+//
+fun
+d3pat1_bangq
+(dpat: d3pat1): bool
+#symload bangq with d3pat1_bangq of 1000
+fun
+d3pat1_flatq
+(dpat: d3pat1): bool
+#symload flatq with d3pat1_flatq of 1000
+fun
+d3pat1_freeq
+(dpat: d3pat1): bool
+#symload freeq with d3pat1_freeq of 1000
 //
 (* ****** ****** *)
 //

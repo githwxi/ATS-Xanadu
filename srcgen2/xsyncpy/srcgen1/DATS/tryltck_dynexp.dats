@@ -263,6 +263,38 @@ errvl(dcl1), d3cls1lst_errvl(dcls))
 (* ****** ****** *)
 //
 fun
+d3pat1_bang_errck
+(loc0: loc_t
+,t2q0: s2typ1
+,d3p1: d3pat1   ): d3pat1 =
+let
+val lvl0 = errvl(d3p1) in//let
+d3pat1_errck
+(
+lvl0+1,
+d3pat1_make_lctn$styp$node
+  (loc0, t2q0, D3P1bang(  d3p1  )))
+endlet//end-of-[d3pat1_bang_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3pat1_free_errck
+(loc0: loc_t
+,t2q0: s2typ1
+,d3p1: d3pat1   ): d3pat1 =
+let
+val lvl0 = errvl(d3p1) in//let
+d3pat1_errck
+(
+lvl0+1,
+d3pat1_make_lctn$styp$node
+  (loc0, t2q0, D3P1free(  d3p1  )))
+endlet//end-of-[d3pat1_free_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3pat1_tapq_errck
 (loc0: loc_t
 ,t2q0: s2typ1
@@ -784,6 +816,16 @@ dpat.node() of
 |D3P1con _ => dpat
 (* ****** ****** *)
 //
+|D3P1bang _ =>
+(
+  f0_bang(dpat, err0))
+//
+|D3P1free _ =>
+(
+  f0_free(dpat, err0))
+//
+(* ****** ****** *)
+//
 |D3P1tapq _ =>
 (
   f0_tapq(dpat, err0))
@@ -809,14 +851,84 @@ dpat.node() of
 (
   f0_annot(dpat, err0))
 //
+(* ****** ****** *)
+//
 | _(*otherwise*) =>
 let
 val () = err0 := err0+1 in
 (
   d3pat1_errck(1(*lvl*), dpat)) end
 //
+(* ****** ****** *)
+//
 ) where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_bang
+(d3p0: d3pat1
+,err0: &sint >> _): d3pat1 =
+let
+//
+val nerr = err0
+//
+val t2q0 = d3p0.styp()
+//
+val-
+D3P1bang
+(   d3p1   ) = d3p0.node()
+//
+val d3p1 =
+(
+  d3pat1_tryltck(d3p1, err0))
+in//let
+//
+if // if
+(err0=nerr)
+then (d3p0) else
+let
+val loc0 = d3p0.lctn()
+in//let
+(
+d3pat1_bang_errck(loc0,t2q0,d3p1))
+end//let
+//
+end(*let*)//end-of-[f0_bang(d3p0,err0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_free
+(d3p0: d3pat1
+,err0: &sint >> _): d3pat1 =
+let
+//
+val nerr = err0
+//
+val t2q0 = d3p0.styp()
+//
+val-
+D3P1free
+(   d3p1   ) = d3p0.node()
+//
+val d3p1 =
+(
+  d3pat1_tryltck(d3p1, err0))
+in//let
+//
+if // if
+(err0=nerr)
+then (d3p0) else
+let
+val loc0 = d3p0.lctn()
+in//let
+(
+d3pat1_free_errck(loc0,t2q0,d3p1))
+end//let
+//
+end(*let*)//end-of-[f0_free(d3p0,err0)]
 //
 (* ****** ****** *)
 //
@@ -1875,7 +1987,7 @@ val dgpt =
   d3gpt1_tryltck(dgpt, err0))
 //
 in//let
-if
+if // if
 (err0=nerr)
 then (dcls)
 else
