@@ -69,10 +69,10 @@ fun
 <a:vt>
 head$raw
 ( xs:
-  list_vt(a)): (a) =
+~ list_vt(a)): (a) =
 let
-val-
-~list_vt_cons
+val- ~
+list_vt_cons
 (  x1 , ys  ) = xs in g_free(ys); x1 end
 //
 (* ****** ****** *)
