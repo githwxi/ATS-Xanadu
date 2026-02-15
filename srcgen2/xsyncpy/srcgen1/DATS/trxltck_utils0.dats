@@ -123,6 +123,10 @@ d3typ1_make_styp$node
 (   d3p1   ) =>
 d3typ1_mkof_d3pat1(d3p1)
 //
+|D3P1flat
+(   d3p1   ) =>
+d3typ1_mkof_d3pat1(d3p1)
+//
 |D3P1free
 (   d3p1   ) =>
 d3typ1_mkof_d3pat1(d3p1)
@@ -274,14 +278,17 @@ d3typ1_make_styp$node
 |D3P1bang
 (   d3p1   ) =>
 (
-d3typ1_mkof_d3pt2q
-(     d3p1, styp     ))
+f0_dpat( d3p1 , styp ))
+//
+|D3P1flat
+(   d3p1   ) =>
+(
+f0_dpat( d3p1 , styp ))
 //
 |D3P1free
 (   d3p1   ) =>
 (
-d3typ1_mkof_d3pt2q
-(     d3p1, styp     ))
+f0_dpat( d3p1 , styp ))
 //
 (* ****** ****** *)
 //
@@ -329,6 +336,15 @@ end//let
   d3typ1_mkof_d3pat1(d3p0)))
 where
 {
+//
+fun
+f0_dpat
+( dpat
+: d3pat1
+, styp
+: s2typ1): d3typ1 =
+(
+d3typ1_mkof_d3pt2q(dpat, styp))
 //
 fun
 f0_d3ps$ltqs
@@ -400,6 +416,19 @@ d3pat1_mkof_d3pt2q
 in//let
 d3pat1
 (loc0,styp,D3P1bang(d3p1))
+end//let
+//
+|D3P1flat
+(   d3p1   ) =>
+let
+val loc0 =
+d3p0.lctn((*0*))
+val d3p1 =
+d3pat1_mkof_d3pt2q
+(   d3p1, styp   )
+in//let
+d3pat1
+(loc0,styp,D3P1flat(d3p1))
 end//let
 //
 |D3P1free
