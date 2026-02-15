@@ -210,6 +210,43 @@ val (  ) =
 (* ****** ****** *)
 //
 #implfun
+d3typ1_nfrq
+  (dtyp) =
+(
+case+
+dtyp.node() of
+|
+T3P1tcon
+(dcon, t3qs) => f0_t3qs(t3qs)
+//
+|_(*otherwise*) => (   true   )
+) where
+{
+//
+fun
+f0_t3qs
+(t3qs: d3typ1lst): bool =
+(
+case+ t3qs of
+|list_nil
+( (*void*) ) => ( false )
+|list_cons
+(t3q1, t3qs) =>
+if // if
+d3typ1_linq(t3q1)
+then (true) else f0_t3qs(t3qs))
+//
+val (  ) =
+(
+  prerrsln
+  ( "d3typ1_nfrq: dtyp = ", dtyp ))
+//
+}(*where*)//end-of-[d3typ1_nfrq(dtyp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d3exp1_lftq
   (dexp) =
 (

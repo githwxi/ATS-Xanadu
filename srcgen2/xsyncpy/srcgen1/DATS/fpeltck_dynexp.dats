@@ -81,6 +81,29 @@ d3p0.node() of
 //
 (* ****** ****** *)
 //
+|D3P1bang
+(   d3p1   ) =>
+let
+val () =
+fpeltck_d3pat1(out0, d3p1)
+end//let
+//
+|D3P1flat
+(   d3p1   ) =>
+let
+val () =
+fpeltck_d3pat1(out0, d3p1)
+end//let
+//
+|D3P1free
+(   d3p1   ) =>
+let
+val () =
+fpeltck_d3pat1(out0, d3p1)
+end//let
+//
+(* ****** ****** *)
+//
 |D3P1dapp
 (d3f0
 ,npf1, d3ps) =>

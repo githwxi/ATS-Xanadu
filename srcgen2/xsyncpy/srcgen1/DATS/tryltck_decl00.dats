@@ -366,7 +366,7 @@ d3valdcl1lst_tryltck(d3vs, err0)
 //
 in//let
 //
-if
+if // if
 (err0=nerr)
 then (dcl0) else
 let
@@ -580,6 +580,14 @@ case+ dgrt of
 ( (*void*) ) => ( (*void*) )
 |optn_cons
 (   dtyp   ) => (
+if
+freeq(dpat)
+then
+(
+if // if
+d3typ1_nfrq
+ ( dtyp ) then (err0:=(err0+1)))
+else
 if // if
 d3typ1_linq
  ( dtyp ) then (err0:=(err0+1))))
