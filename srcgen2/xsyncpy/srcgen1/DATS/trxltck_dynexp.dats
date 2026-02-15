@@ -804,16 +804,26 @@ f0_argtp: t2q2 = ", t2q2))
 *)
 //
 in//let
+//
 case+
 t2q2.node() of
 //
 |T2P1arg1
-(knd0, taft) =>
+(knd0, tbef) =>
 let
+//
+val taft =
+(
+if // if
+(knd0 != 0)
+then (tbef) else
+s2typ1_t1pize(tbef))
+//
 val
 d3a1 =
 (
 d3pat1_trxltck(d3p1, env0))
+//
 in//let
 (
 d3axp1_t2pck(d3a1, taft, env0))
@@ -864,12 +874,21 @@ case+
 t2q2.node() of
 //
 |T2P1arg1
-(knd0, taft) =>
+(knd0, tbef) =>
 let
+//
+val taft =
+(
+if // if
+(knd0 != 0)
+then (tbef) else
+s2typ1_t1pize(tbef))
+//
 val
 d3a1 =
 (
 d3pat1_trxltck(d3p1, env0))
+//
 in//let
 (
 d3axp1_t2pck(d3a1, taft, env0))
