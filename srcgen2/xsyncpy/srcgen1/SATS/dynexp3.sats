@@ -327,13 +327,14 @@ different implementation
 HX: for datatype unfolding
 *)
 T3P1tcon of (d2con, d3typ1lst)
+//
 |
 T3P1trcd of (
 trcdknd, sint(*npf*), l3t3p1lst)
 //
 where{
-#typedef trcdknd = $BAS.trcdknd
-}(*where*)//end(datatype(d3typ1))
+  #typedef trcdknd = $BAS.trcdknd
+}(*where*)//endof(datatype(d3typ1))
 //
 (* ****** ****** *)
 //
@@ -1024,7 +1025,8 @@ d3cls1_make_lctn$node
 fun
 d3cls1_make_lctn$node$rest
 (loc0:loc_t
-,node:d3cls1_node
+,node
+:d3cls1_node
 ,dgrt:d3typ1opt
 ,vts1:dvstp1lst, vts2:dvdtp1lst): d3cls1
 //
