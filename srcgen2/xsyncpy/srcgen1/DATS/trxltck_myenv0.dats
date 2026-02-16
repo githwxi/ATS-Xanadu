@@ -2092,6 +2092,50 @@ end//let
 (* ****** ****** *)
 //
 #implfun
+envltck_dcas$dtnm
+( env0 , dcas ) =
+let
+//
+val
+lftq = d3exp1_lftq(dcas)
+//
+in//let
+//
+if//if
+(lftq)then//then
+let//1
+val t3q1 =
+(
+d3typ1_styp$make
+(     t2q0     ))//val...
+in//let1
+(
+envltck_dlft$updt
+(env0, dcas, t3q1))end//let1
+where
+{
+//
+val t3q0 =
+(
+envltck_dlft$find(env0, dcas))
+val t2q0 =
+(
+envltck_dtyp$eval(env0, t3q0)) }
+//
+end where
+{
+//
+(*
+val () =
+prerrsln("envltck_dcas$dtnm: dcas = ", dcas)
+*)
+//
+}(*where*)//end-of-[envltck_dcas$dtnm(env0,dcas)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 envltck_dlet$dtnm
 ( env0 , dcls ) =
 let
@@ -2132,7 +2176,7 @@ val () =
 prerrsln("envltck_dlet$dtnm: dcls = ", dcls)
 *)
 //
-}(*where*)//end-of-[envltck_dlet$dtnm(env0,dexp)]
+}(*where*)//end-of-[envltck_dlet$dtnm(env0,dcls)]
 //
 (* ****** ****** *)
 //
@@ -2158,8 +2202,7 @@ f0_dexp
 let
 //
 val
-lftq =
-d3exp1_lftq(dexp)
+lftq = d3exp1_lftq(dexp)
 //
 in//let
 //
@@ -2168,8 +2211,9 @@ if//if
 (lftq)then//then
 let
 val t3q1 =
+(
 d3typ1_styp$make
-(     t2q0     )
+(     t2q0     ))//val...
 in//let
 (
 envltck_dlft$updt
@@ -2179,21 +2223,23 @@ where
 //
 val t3q0 =
 (
- envltck_dlft$find(env0, dexp))
+envltck_dlft$find(env0, dexp))
 val t2q0 =
 (
- envltck_dtyp$eval(env0, t3q0))
+envltck_dtyp$eval(env0, t3q0))
 //
 }
 ) where // endof(if(lftq)then...)
 {
 //
 val (  ) =
-prerrsln
-("envltck_dval$dtnm: dexp = ", dexp)
+(
+  prerrs("envltck_dval$dtnm:");
+  prerrsln("f0_dexp: dexp = ", dexp))
 val (  ) =
-prerrsln
-("envltck_dval$dtnm: lftq = ", lftq)
+(
+  prerrs("envltck_dval$dtnm:");
+  prerrsln("f0_dexp: lftq = ", lftq))
 //
 }(*where*)//end-of-[f0_dexp(env0,dexp)]
 //

@@ -1438,7 +1438,7 @@ in//
 //
 let
 //
-(*
+// (*
 val (  ) =
 prerrsln("\
 d3exp1_trxltck:\
@@ -1447,7 +1447,7 @@ val (  ) =
 prerrsln("\
 d3exp1_trxltck:\
 f0_let0: vts0 = ", vts0)
-*)
+// *)
 //
 in//let
 (
@@ -1460,14 +1460,14 @@ dvdtp1lst_d2vs$inner(vts0, d2vs)
 val vts2 =
 dvdtp1lst_d2vs$outer(vts0, d2vs)
 //
-(*
+// (*
 val (  ) =
 prerrsln
 ("f0_let0(ltck): vts1 = ", vts1)
 val (  ) =
 prerrsln
 ("f0_let0(ltck): vts2 = ", vts2)
-*)
+// *)
 //
 val vts1 =
 envltck_dvdtp1lst$eval
@@ -1814,7 +1814,7 @@ d3exp1_trxltck(d3er, env0))
 val t3qr =
 (
 envltck_dtyp$dtnm
-(  env0 , t3qr  ))
+(  env0 , t3qr  ))//val...
 where{
 val t3qr = d3er.dtyp((*0*))
 }(*where*)//end-(val(t3qr))
@@ -1870,7 +1870,7 @@ d3exp1_trxltck(d3er, env0))
 val t3qr =
 (
 envltck_dtyp$dtnm
-(  env0 , t3qr  ))
+(  env0 , t3qr  ))//val...
 where{
 val t3qr = d3er.dtyp((*0*))
 }(*where*)//end-(val(t3qr))
@@ -1923,7 +1923,7 @@ d3exp1_trxltck(d3el, env0))
 val t3ql =
 (
 envltck_dtyp$dtnm
-(  env0 , t3ql  ))
+(  env0 , t3ql  ))//val...
 where{
 val t3ql = d3el.dtyp((*0*))
 }(*where*)//end-(val(t3ql))
@@ -1934,7 +1934,7 @@ d3exp1_trxltck(d3er, env0))
 val t3qr =
 (
 envltck_dtyp$dtnm
-(  env0 , t3qr  ))
+(  env0 , t3qr  ))//val...
 where{
 val t3qr = d3er.dtyp((*0*))
 }(*where*)//end-(val(t3qr))
@@ -2084,10 +2084,10 @@ let
 //
 val t3q0 = dcas.dtyp((*0*))
 val t2q0 =
-envltck_dtyp$eval(env0, t3q0)
+envltck_dtyp$eval(env0,t3q0)
 //
 val dpat =
-d3pat1_mkof_d3gt2q(dgpt, t2q0)
+d3pat1_mkof_d3gt2q(dgpt,t2q0)
 //
 val (  ) =
 (
@@ -2095,27 +2095,37 @@ envltck_pshcas0(env0))//enter
 //
 val dtyp =
 (
-envltck_dmxq$updt
-(env0, dcas, dtyp)) where
+if
+freeq(dpat)
+then (dtyp) else
+envltck_dmxq$updt(
+  env0 , dcas , dtyp))//val()
+where
 {
+(*
+HX-2026-02-15:
+[dtyp] is a skelton type!
+*)
 val dtyp =
-d3typ1_mkof_d3pat1(   dpat   )
+(
+d3typ1_mkof_d3pat1(  dpat  ))
 }(*where*)//end-of-[val(dtyp)]
 //
 val dgrt = optn_cons(  dtyp  )
 //
-val (  ) =
-(
-  envltck_dpat$push(env0, dpat))
+val (  ) = (
+envltck_dpat$push(env0, dpat))
 //
-val dexp =
-(
-  d3exp1_trxltck(  dexp, env0  ))
+val dexp = (
+  d3exp1_trxltck( dexp, env0 ))
 //
-val d2vs = envltck_dvscas0( env0 )
-val vts0 = envltck_vtscas0( env0 )
+val (  ) = (
+envltck_dcas$dtnm( env0, dcas ))
 //
-val (  ) = envltck_popcas0( env0 )
+val d2vs = envltck_dvscas0(env0)
+val vts0 = envltck_vtscas0(env0)
+//
+val (  ) = envltck_popcas0(env0)
 //
 in//let
 //
