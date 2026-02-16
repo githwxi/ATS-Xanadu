@@ -743,9 +743,11 @@ token(*casknd*), d3exp1, d3cls1lst)
 //
 (* ****** ****** *)
 //
+(*
 |D3E1where of
 (
 d3exp1(*scope*),d3ecl1lst(*decls*))
+*)
 //
 (* ****** ****** *)
 //

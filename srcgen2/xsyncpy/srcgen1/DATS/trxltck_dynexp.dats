@@ -1440,18 +1440,18 @@ let
 //
 // (*
 val (  ) =
-prerrsln("\
-d3exp1_trxltck:\
-f0_let0: d2vs = ", d2vs)
+( prerrs("d3exp1_trxltck:")
+; prerrsln
+  ("f0_let0: d2vs = ", d2vs))
 val (  ) =
-prerrsln("\
-d3exp1_trxltck:\
-f0_let0: vts0 = ", vts0)
+( prerrs("d3exp1_trxltck:")
+; prerrsln
+  ("f0_let0: vts0 = ", vts0))
 // *)
 //
 in//let
 (
-d3exp1_dvdtp(dexp, vts2))
+  d3exp1_dvdtp( dexp, vts2 ))
 where
 {
 //

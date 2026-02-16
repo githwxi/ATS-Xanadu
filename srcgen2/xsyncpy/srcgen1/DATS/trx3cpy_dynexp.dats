@@ -1287,7 +1287,13 @@ d3eclist_trx3cpy(d3cs, env0)
 //
 in//let
 d3exp1
-(loc0, t3q0, D3E1where(d3e1,d3cs))
+(loc0, t3q0, D3E1let0(d3cs, d3e1))
+(*
+HX-2026-02-15:
+[D3E1where] is not present:
+d3exp1
+(loc0, t3q0, D3E1where(d3e1, d3cs))
+*)
 end(*let*)//end-of-[f0_where(d3e0,env0)]
 //
 (* ****** ****** *)
