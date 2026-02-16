@@ -2070,20 +2070,29 @@ val d3e1 =
 (
   d3exp1_tryltck(d3e1, err0))
 //
+val dgrt =
+  dcls.dgrt((*0*))
+val vts1 =
+  dcls.vts1((*0*))//inner:styp
+val vts2 =
+  dcls.vts2((*0*))//outer:dtyp
+//
+val vts1 =
+(
+  dvstp1lst_trylinq(vts1, err0))
+//
 in//let
+//
 if // if
 (err0=nerr)
 then (dcls) else
-let
-val loc0 = dcls.lctn()
-val dgrt = dcls.dgrt()
-val vts1 = dcls.vts1()//inner:styp
-val vts2 = dcls.vts2()//outer:dtyp
-in//let
-(
+let//1
+val
+loc0 = dcls.lctn() in//let1
 d3cls1(loc0,
-  D3CLS1cls(dgpt,d3e1),dgrt,vts1,vts2))
-end//let
+  D3CLS1cls(dgpt,d3e1),dgrt,vts1,vts2)
+end//let1//endof(else)//endof(if(...))
+//
 end(*let*)//end-of-[D3CLScls(dgpt,d3e1)]
 //
 )(*case+*)//end-of-[d3cls1_tryltck(dcls,err0)]

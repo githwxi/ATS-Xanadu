@@ -58,20 +58,6 @@ $tuprc(sint, sint) = $tuprc(x0, x0)
 //
 fun
 <a:vt>
-head$raw1
-( xs:
-! list_vt(a)): (a) =
-let
-val-
-list_vt_cons
-(  x1 , ys  ) = xs in g_copy<a>(x1) end
-//
-(* ****** ****** *)
-////
-(* ****** ****** *)
-//
-fun
-<a:vt>
 head$raw0
 ( xs:
 ~ list_vt(a)): (a) =
@@ -79,6 +65,18 @@ let
 val- ~
 list_vt_cons
 (  x1 , ys  ) = xs in g_free(ys); x1 end
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+head$raw1
+( xs:
+! list_vt(a)): (a) =
+let
+val-
+list_vt_cons
+(  x1 , ys  ) = xs in g_copy<a>(x1) end
 //
 (* ****** ****** *)
 ////
