@@ -480,6 +480,31 @@ s2typ1lst_lteq
 //
 (* ****** ****** *)
 //
+|T2P1fun1
+(fcl1, npf1
+,tqs1, t2q1) =>
+(
+case+
+t2q2.node() of
+|T2P1fun1
+(fcl2, npf2
+,tqs2, t2q2) =>
+(
+if // if
+targ
+then//then
+s2typ1_lteq
+(t2q1, t2q2) else ( false ))
+where
+{
+val targ =
+(
+  s2arg1lst_lteq(tqs2, tqs1))
+}
+|_(*non-T2P1fun1*) => ( false ))
+//
+(* ****** ****** *)
+//
 |T2P1tcon
 (d2c1, tqs1) =>
 let
@@ -585,6 +610,53 @@ val (  ) =
 (* ****** ****** *)
 //
 #implfun
+s2arg1_lteq
+(t2q1, t2q2) =
+(
+case+
+t2q1.node() of
+//
+|T2P1arg1
+(knd1, t2q1) =>
+(
+case+
+t2q2.node() of
+|T2P1arg1
+(knd2, t2q2) =>
+(
+if // if
+s2typ1_lteq
+(t2q1, t2q2)
+then
+s2typ1_lteq
+(t2q2, t2q1) else (false))
+|_(*otherwise*) =>
+if
+linq(t2q1)
+then (false) else
+(
+  s2typ1_lteq( t2q1, t2q2 ))
+)(*case+*)//end(T2P1arg1(...))
+//
+|_(*otherwise*) =>
+(
+  s2typ1_lteq(  t2q1 , t2q2  ))
+//
+) where
+{
+(*
+val (  ) =
+(
+  prerrsln("s2arg1_lteq: t2q1 = ", t2q1))
+val (  ) =
+(
+  prerrsln("s2arg1_lteq: t2q2 = ", t2q2))
+*)
+}(*where*)//end-of-[s2arg1_lteq(t2q1,t2q2)]
+//
+(* ****** ****** *)
+//
+#implfun
 l2t2p1_lteq
 (ltq1, ltq2) =
 let
@@ -601,6 +673,7 @@ then (false)
 else s2typ1_lteq(t2q1, t2q2)
 end(*let*)//end-of-[l2t2p1_lteq(ltq1,ltq2)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -625,6 +698,34 @@ s2typ1_lteq(t2q1, t2q2)
 then
 s2typ1lst_lteq(tqs1, tqs2) else false))
 )(*case+*)//end-of-[s2typ1lst_lteq(tqs1,tqs2)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2arg1lst_lteq
+(tqs1, tqs2) =
+(
+case+ tqs1 of
+//
+|list_nil() =>
+(
+case+ tqs2 of
+|list_nil() => true
+|list_cons _ => false)
+//
+|list_cons
+(t2q1, tqs1) =>
+(
+case+ tqs2 of
+|list_nil() => false
+|list_cons(t2q2, tqs2) =>
+(
+if
+s2arg1_lteq(t2q1, t2q2)
+then
+s2arg1lst_lteq(tqs1, tqs2) else false))
+//
+)(*case+*)//end-of-[s2arg1lst_lteq(tqs1,tqs2)]
 //
 (* ****** ****** *)
 //

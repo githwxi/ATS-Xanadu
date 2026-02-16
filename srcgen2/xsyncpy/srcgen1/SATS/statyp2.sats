@@ -202,6 +202,8 @@ l2t2p1_linq(l2t2p1): bool
 fun
 l2t2p1_prfq(l2t2p1): bool
 //
+(* ****** ****** *)
+//
 fun
 s2typ1lst_linq(s2typ1lst): bool
 fun
@@ -211,6 +213,13 @@ fun
 l2t2p1lst_linq(l2t2p1lst): bool
 fun
 l2t2p1lst_prfq(l2t2p1lst): bool
+//
+(* ****** ****** *)
+//
+#symload linq s2typ1_linq of 1000
+#symload prfq s2typ1_prfq of 1000
+#symload linq l2t2p1_linq of 1000
+#symload prfq l2t2p1_prfq of 1000
 //
 (* ****** ****** *)
 //
@@ -245,6 +254,9 @@ fun
 s2typ1_lteq
 (t2q1: s2typ1, t2q2: s2typ1): bool
 fun
+s2arg1_lteq
+(t2q1: s2typ1, t2q2: s2typ1): bool
+fun
 l2t2p1_lteq
 (ltq1: l2t2p1, ltq2: l2t2p1): bool
 //
@@ -253,6 +265,9 @@ l2t2p1_lteq
 //
 fun
 s2typ1lst_lteq
+(tqs1: s2typ1lst, tqs2: s2typ1lst): bool
+fun
+s2arg1lst_lteq
 (tqs1: s2typ1lst, tqs2: s2typ1lst): bool
 fun
 l2t2p1lst_lteq
