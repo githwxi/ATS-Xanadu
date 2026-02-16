@@ -95,6 +95,11 @@ fun
 fpeltck_f3axp1(FILR, f3axp1): void
 (* ****** ****** *)
 fun
+fpeltck_d3gpt1(FILR, d3gpt1): void
+fun
+fpeltck_d3cls1(FILR, d3cls1): void
+(* ****** ****** *)
+fun
 fpeltck_d3ecl1(FILR, d3ecl1): void
 (* ****** ****** *)
 fun
@@ -123,6 +128,9 @@ fun
 fpeltck_f3arg1lst(FILR, f3arg1lst): void
 fun
 fpeltck_f3axp1lst(FILR, f3axp1lst): void
+(* ****** ****** *)
+fun
+fpeltck_d3cls1lst(FILR, d3cls1lst): void
 (* ****** ****** *)
 fun
 fpeltck_teqd3exp1(FILR, teqd3exp1): void

@@ -970,7 +970,7 @@ D3CLScls(dgpt,d3e2) =>
 let
 val () = f3perr0_d3gpt(out, dgpt)
 val () = f3perr0_d3exp(out, d3e2)
-endlet // end of [ D3CLScls(_,_,_) ]
+endlet // end of[ D3CLScls(dgpt,d3e2)]
 )(*case*)//end-of-(f3perr0_d3cls(out,dcls))
 //
 (* ****** ****** *)

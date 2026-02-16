@@ -13,14 +13,38 @@ Mon Feb  9 11:03:15 AM EST 2026
 "prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+flen_t0
+( xs:
+~ list(x0)): nint =
+(
+case+ xs of
+| // ~
+list_nil() => 0
+| // ~
+list_cons(x1, xs) => 1+flen_t0(xs))
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 flen_vt
 ( xs:
 ~ list_vt(x0)): nint =
-( case+ xs of
-| ~list_vt_nil() => 0
-| ~list_vt_cons(x1, xs) => 1 + flen_vt(xs))
+(
+case+ xs of
+| ~
+list_vt_nil() => 0
+| ~
+list_vt_cons(x1, xs) =>
+let
+val () =
+  g_free(x1) in (1+flen_vt(xs)) end)
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)

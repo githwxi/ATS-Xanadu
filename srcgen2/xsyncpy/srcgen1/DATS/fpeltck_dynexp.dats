@@ -328,6 +328,35 @@ fpeltck_d3ecl1lst(out0, dcls))
 //
 (* ****** ****** *)
 //
+|D3E1ift0
+(d3e1
+,dthn, dels) =>
+let
+val () =
+(
+fpeltck_d3exp1(out0, d3e1))
+val () =
+(
+fpeltck_d3exp1opt(out0, dthn))
+val () =
+(
+fpeltck_d3exp1opt(out0, dels))
+end(*let*)//end-of-[D3E1ift0(...)]
+//
+|D3E1cas0
+(tknd
+,d3e1, dcls) =>
+let
+val () =
+(
+fpeltck_d3exp1(out0, d3e1))
+val () =
+(
+fpeltck_d3cls1lst(out0, dcls))
+end(*let*)//end-of-[D3E1cas0(...)]
+//
+(* ****** ****** *)
+//
 |D3E1dvdtp
 (d3e1, dvts) =>
 let
@@ -469,7 +498,7 @@ optn_fpeltck_fnp(out0, dopt, fpeltck_d3exp1))
 //
 #implfun
 fpeltck_f3arg1
-  (out0, f3a0) =
+( out0, f3a0 ) =
 (
 case+
 f3a0.node() of
@@ -492,7 +521,7 @@ fpeltck_f3arg1lst
 //
 #implfun
 fpeltck_f3axp1
-  (out0, f3a0) =
+( out0, f3a0 ) =
 (
 case+
 f3a0.node() of
@@ -510,6 +539,70 @@ fpeltck_f3axp1lst
   (out0, f3as) =
 (
   list_fpeltck_fnp(out0, f3as, fpeltck_f3axp1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fpeltck_d3gpt1
+( out0, dgpt ) =
+(
+case+
+dgpt.node() of
+|
+D3GPT1pat
+(  d3p1  ) =>
+(
+  fpeltck_d3pat1(out0, d3p1))
+|
+D3GPT1gua
+(d3p1, d3gs) =>
+let
+val () = fpeltck_d3pat1(out0, d3p1)
+(*
+val () = fpeltck_d3gua1lst(out0, d3gs)
+*)
+end(*let*)//end-of-[D3GPT1gua(d3p1,d3gs)]
+)(*case+*)//end-of-(fpeltck_d3gpt1(out,dgpt))
+//
+#implfun
+fpeltck_d3cls1
+( out0, dcls ) =
+(
+case+
+dcls.node() of
+|
+D3CLS1gpt
+(   dgpt   ) =>
+(
+  fpeltck_d3gpt1(out0, dgpt))
+|
+D3CLS1cls
+(dgpt, d3e2) =>
+let
+val () = fpeltck_d3gpt1(out0, dgpt)
+val () = fpeltck_d3exp1(out0, d3e2)
+end//let//end-of-[D3CLS1cls(dgpt,d3e2)]
+) where
+{
+//
+(*
+val loc0 = dcls.lctn()
+val (  ) =
+(
+  printsln
+  ("FPELTCK-ERROR:", loc0, ":", dcls))
+*)
+//
+}(*where*)//end-of-(fpeltck_d3cls(out,dcls))
+//
+(* ****** ****** *)
+//
+#implfun
+fpeltck_d3cls1lst
+  (out0, dcls) =
+(
+  list_fpeltck_fnp(out0, dcls, fpeltck_d3cls1))
 //
 (* ****** ****** *)
 (* ****** ****** *)

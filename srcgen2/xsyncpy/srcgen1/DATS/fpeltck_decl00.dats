@@ -124,13 +124,13 @@ endlet // end of [D2Clocal0(...)]
 val () =
 (
   fpeltck_d3valdcl1lst(out0, d3vs))
-endlet//end-of-(D3Cvaldcl1lst( ... ))
+endlet//end-of-(D3C1valdclist( ... ))
 |D3C1vardclst
 (tknd, d3vs) => let
 val () =
 (
   fpeltck_d3vardcl1lst(out0, d3vs))
-endlet//end-of-(D3Cvardcl1lst( ... ))
+endlet//end-of-(D3C1vardclist( ... ))
 //
 |D3C1fundclst
 (tknd
@@ -145,7 +145,48 @@ val () =
 val () =
 (
   fpeltck_d3fundcl1lst(out0, d3fs))
-endlet//end-of-(D3Cfundcl1lst(_,_,_,_))
+endlet//end-of-(D3C1fundclist(_,_,_,_))
+//
+(* ****** ****** *)
+|
+D3C1implmnt0
+(tknd
+,stmp
+,sqas,tqas
+,dimp
+,tias,tibs
+,farg,faxp
+,sres,dexp
+,vts1,vts2) =>
+let
+//
+(*
+val () =
+fpeltck_s2qaglst(out0, sqas)
+val () =
+fpeltck_t2qaglst(out0, tqas)
+val () =
+fpeltck_t2iaglst(out0, tias)
+val () =
+fpeltck_t2iag1lst(out0, tibs)
+*)
+//
+val () =
+(
+fpeltck_f3arg1lst(out0, farg))
+val () =
+(
+fpeltck_f3axp1lst(out0, faxp))
+//
+(*
+val () = fpeltck_s2res(out0, sres)
+*)
+//
+val () =
+(
+  fpeltck_d3exp1( out0, dexp ))
+//
+endlet//end-of-(D3C1impltmp0(_,_,...))
 //
 (* ****** ****** *)
 //
@@ -249,7 +290,7 @@ optn_fpeltck_fnp(out0, dopt, fpeltck_d3ecl1))
 //
 #implfun
 fpeltck_teqd3exp1
-  (out, tdxp) =
+  (out0, tdxp) =
 (
 case+ tdxp of
 |
@@ -257,9 +298,9 @@ TEQD3EXP1none() => ()
 |
 TEQD3EXP1some(teq1, d3e2) =>
 let
-val (  ) = fpeltck_d3exp1(out, d3e2)
+val (  ) = fpeltck_d3exp1(out0, d3e2)
 endlet//end-of-[TEQD3EXPsome(teq1,d3e2)]
-)(*case+*)//end-(fpeltck_teqd3exp1(out,tdxp))
+)(*case+*)//end-(fpeltck_teqd3exp1(out0,tdxp))
 //
 (* ****** ****** *)
 (* ****** ****** *)
