@@ -632,6 +632,7 @@ prints
 ;prints(tknd,";",npf1,";",ldes,")"))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3E1lam0
 (tknd
@@ -641,21 +642,22 @@ prints
 prints
 ("D3E1lam0(",tknd,";");
 prints(
-f3as,";",sres,";",arrw,";",body,")")
-)
+f3as,";",sres,";",arrw,";",body,")"))
+//
 |D3E1lam1
 (tknd
 ,farg
 ,faxp, sres
-,arrw
-,body, dvts) =>
+,arrw, body
+,vts1, vts2) =>
 (
-prints
-("D3E1lam1(",tknd,";");
 prints(
-farg,";",faxp,";",
-sres,";",arrw,";",body,";",dvts,")")
-)
+"D3E1lam1(",
+tknd,";",farg,";",faxp,";");
+prints(
+sres,";",arrw,";",body,";",vts1,";",vts2,")"))
+//
+(* ****** ****** *)
 //
 |D3E1fix0
 (tknd, fid0
@@ -665,22 +667,21 @@ sres,";",arrw,";",body,";",dvts,")")
 prints
 ("D3E1fix0(",tknd,";",fid0,";");
 prints(
-f3as,";",sres,";",arrw,";",body,")")
-)
+f3as,";",sres,";",arrw,";",body,")"))
+//
 |D3E1fix1
 (tknd, fid0
 ,farg
 ,faxp, sres
-,arrw
-,body, dvts) =>
+,arrw, body
+,vts1, vts2) =>
 (
-prints
-("D3E1fix1(",tknd,";",fid0,";");
+prints("D3E1fix1(",
+tknd,";",fid0,";",farg,";",faxp,";");
 prints(
-farg,";",faxp,";",
-sres,";",arrw,";",body,";",dvts,")")
-)
+sres,";",arrw,";",body,";",vts1,";",vts2,")"))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3E1try0
@@ -690,6 +691,7 @@ sres,";",arrw,";",body,";",dvts,")")
 ;prints(tknd,";",d3e1,";",dcls,")"))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 |D3E1where
@@ -698,6 +700,7 @@ prints
 ("D3E1where(", d3e1, ";", dcls, ")")
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3E1addr
@@ -729,6 +732,7 @@ prints
   prints("D3E1free(", d3e1, ")") )
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3E1dp2tr
 (   d3e1   ) =>
@@ -743,6 +747,7 @@ prints
 (
   prints("D3E1dl1az(", d3e1, ")") )
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3E1assgn
@@ -801,12 +806,14 @@ prints(
 end//let//end-[D3E1xchng(d3el,d3er)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3E1raise
 (tknd, d3e1) =>
 prints
 ("D3E1raise(", tknd, ";", d3e1, ")")
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3E1l0azy
@@ -830,6 +837,7 @@ prints(dsym,";",d3e1, ";",d3es,")"))
 prints(
 "D3E1dvdtp(", d3e1, ";", vts2, ")"))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3E1annot
@@ -895,6 +903,7 @@ print("D3E1t2pck(");
 prints
 (d3e1,"(",t3q1,");",t2q1,";",t2q2,")"))
 endlet//end-of-[D3E1t2pck(d3e1,t2q1,t2q2)]
+//
 |D3E1t2ped
 (d3e1
 ,t2q1, t2q2) =>

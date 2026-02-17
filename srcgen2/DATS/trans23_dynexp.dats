@@ -946,6 +946,11 @@ d3exp_make_tpnd
 //
 |D2Eaddr _ => f0_addr(env0, d2e0)
 |D2Eview _ => f0_view(env0, d2e0)
+(*
+HX-2026-02-17:
+no D3Eflat; only D3Eflat!
+|D2Eflat _ => f0_flat(env0, d2e0)
+*)
 //
 |D2Eeval _ => f0_eval(env0, d2e0)
 //

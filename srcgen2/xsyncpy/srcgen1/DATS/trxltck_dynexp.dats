@@ -1022,6 +1022,17 @@ d3exp1
 //
 (* ****** ****** *)
 //
+|D3E1lam0 _ => f0_lam0(d3e0, env0)
+(*
+|D3E1lam1 _ => f0_lam1(d3e0, env0)
+*)
+//
+(* ****** ****** *)
+//
+(*
+|D3E1addr _ => f0_addr(d3e0, env0)
+|D3E1view _ => f0_view(d3e0, env0)
+*)
 |D3E1flat _ => f0_flat(d3e0, env0)
 //
 (* ****** ****** *)
@@ -1438,7 +1449,7 @@ in//
 //
 let
 //
-// (*
+(*
 val (  ) =
 ( prerrs("d3exp1_trxltck:")
 ; prerrsln
@@ -1447,7 +1458,7 @@ val (  ) =
 ( prerrs("d3exp1_trxltck:")
 ; prerrsln
   ("f0_let0: vts0 = ", vts0))
-// *)
+*)
 //
 in//let
 (
@@ -1460,14 +1471,14 @@ dvdtp1lst_d2vs$inner(vts0, d2vs)
 val vts2 =
 dvdtp1lst_d2vs$outer(vts0, d2vs)
 //
-// (*
+(*
 val (  ) =
 prerrsln
 ("f0_let0(ltck): vts1 = ", vts1)
 val (  ) =
 prerrsln
 ("f0_let0(ltck): vts2 = ", vts2)
-// *)
+*)
 //
 val vts1 =
 envltck_dvdtp1lst$eval
@@ -1747,9 +1758,117 @@ where
 val
 t3q0 = d3typ1(t2q0, T3P1styp(t2q1)) }
 //
-end(*let*)//end-of-[f0_tup0(d3e0,env0)]
+end(*let*)//end-of-[f0_tup1(d3e0,env0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_lam0
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1lam0
+(tknd,
+,f3as, sres
+,arrw, d3e1) = d3e1.node()
+//
+val (  ) =
+envltck_pshlam0(env0)//enter
+//
+val (  ) =
+envltck_f3as$push(env0, f3as)
+//
+val d3e1 =
+(
+  d3exp1_trxltck(d3e1, env0))
+val f3bs =
+(
+f3arg1lst_trxltck(f3as, env0))
+//
+val d2vs = envltck_dvslam0(env0)
+val vts0 = envltck_vtslam0(env0)
+//
+val (  ) = envltck_poplam0(env0)
+//
+val vts1 =
+(
+dvdtp1lst_d2vs$inner(vts0, d2vs))
+val vts2 =
+(
+dvdtp1lst_d2vs$outer(vts0, d2vs))
+//
+val vts1 =
+envltck_dvdtp1lst$eval(env0, vts1)
+//
+val (  ) = (
+prerrs("d3exp1_trxltck:");
+prerrsln("f0_lam0: f3bs = ", f3bs))
+val (  ) = (
+prerrs("d3exp1_trxltck:");
+prerrsln("f0_lam0: vts1 = ", vts1))
+val (  ) = (
+prerrs("d3exp1_trxltck:");
+prerrsln("f0_lam0: vts2 = ", vts2))
+//
+in//let
+//
+let
+val
+tlam =
+(
+d3typ1_styp$make
+(d3e0.styp((*0*))))
+in//let
+d3exp1_make_lctn$dtyp$node
+(
+loc0,
+tlam,
+D3E1lam1
+(
+tknd,
+f3as,f3bs,sres,arrw,d3e1,vts1,vts2))
+end//let
+//
+end(*let*)//end-of-[f0_lam0(d3e0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+f0_addr
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1view
+(   d3e1   ) = d3e0.node()
+//
+in//let
+  // HX: yet to be implemented
+end(*let*)//end-of-[f0_addr(d3e0,env0)]
+*)
+//
+(*
+fun
+f0_view
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1view
+(   d3e1   ) = d3e0.node()
+//
+in//let
+  // HX: yet to be implemented
+end(*let*)//end-of-[f0_view(d3e0,env0)]
+*)
+//
 (* ****** ****** *)
 //
 fun
@@ -1787,7 +1906,7 @@ in//let
 //
 d3exp1(loc0, t3q2, D3E1flat(d3e1))
 //
-end//let//end-of-[f0_flat(d3e0,env0)]
+end(*let*)//end-of-[f0_flat(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
