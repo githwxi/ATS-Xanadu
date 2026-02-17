@@ -68,7 +68,7 @@ folditm$fopr1
 (r0, x0) = g_add01<x0>(r0, x0)
 in//let
 gseq_folditm1<xs><x0><x0>(xs, r0)
-end(*let*)//end-of-[gseq_sum0(xs)]
+end(*let*)//end-of-[gseq_sum1(xs)]
 //
 (* ****** ****** *)
 //
@@ -149,14 +149,14 @@ gseq$end<xs><x0>()
 //
 in//let
 //
-strn_fmake_env$fwork<xs>
+strn_fmake_env$fwork
+<        xs        >
 (
 xs,
 lam(xs, work) =>
 let
 val () =
-strn_foritm$f1un
-(  xbeg , work  )
+strn_foritm$f1un(xbeg, work)
 //
 val () =
 gseq_iforitm0$f2un
@@ -165,13 +165,15 @@ gseq_iforitm0$f2un
 xs,
 lam(i0, x0) =>
 (
-if (i0 >= 1) then
+if // if
+(i0 >= 1) then
 strn_foritm$f1un(xsep, work)
 ;
 let
-  val
-  xrep = g_torep0<x0>(x0)
-in//let
+val
+xrep =
+(
+  g_torep0<x0>(x0)) in//let
 (
 strn_foritm$f1un(xrep, work))
 end//let

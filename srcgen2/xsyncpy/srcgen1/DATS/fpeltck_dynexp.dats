@@ -357,6 +357,53 @@ end(*let*)//end-of-[D3E1cas0(...)]
 //
 (* ****** ****** *)
 //
+|D3E1seqn
+(d3es, d3e1) =>
+(
+fpeltck_d3exp1(out0, d3e1))
+where
+{
+val () =
+(
+fpeltck_d3exp1lst(out0, d3es))
+}(*where*)//end-of-[D3E1seqn(...)]
+//
+(* ****** ****** *)
+//
+|D3E1lam0
+(tknd
+,farg, sres
+,arrw, d3e1) =>
+(
+fpeltck_d3exp1(out0, d3e1))
+where
+{
+val () =
+(
+fpeltck_f3arg1lst(out0, farg))
+}(*where*)//end-of-[D3E1lam0(...)]
+//
+|D3E1lam1
+(tknd
+,farg, faxp
+,sres, arrw
+,d3e1, dvts) =>
+(
+fpeltck_d3exp1(out0, d3e1))
+where
+{
+//
+val () =
+(
+fpeltck_f3arg1lst(out0, farg))
+val () =
+(
+fpeltck_f3axp1lst(out0, faxp))
+//
+}(*where*)//end-of-[D3E1lam1(...)]
+//
+(* ****** ****** *)
+//
 |D3E1dvdtp
 (d3e1, dvts) =>
 let

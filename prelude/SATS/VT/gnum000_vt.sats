@@ -70,13 +70,25 @@ g_add00(~x0, ~x0): (x0)
 fun
 <x0:vt>
 g_add01(~x0, !x0): (x0)
+fun
+<x0:vt>
+g_add10(!x0, ~x0): (x0)
+fun
+<x0:vt>
+g_add11(!x0, !x0): (x0)
 //
 fun
 <x0:vt>
 g_sub00(~x0, ~x0): (x0)
 fun
 <x0:vt>
-g_sub00(~x0, !x0): (x0)
+g_sub01(~x0, !x0): (x0)
+fun
+<x0:vt>
+g_sub10(!x0, ~x0): (x0)
+fun
+<x0:vt>
+g_sub11(!x0, !x0): (x0)
 //
 fun
 <x0:vt>
@@ -84,6 +96,12 @@ g_mul00(~x0, ~x0): (x0)
 fun
 <x0:vt>
 g_mul01(~x0, !x0): (x0)
+fun
+<x0:vt>
+g_mul10(!x0, ~x0): (x0)
+fun
+<x0:vt>
+g_mul11(!x0, !x0): (x0)
 //
 fun
 <x0:vt>
@@ -91,6 +109,12 @@ g_div00(~x0, ~x0): (x0)
 fun
 <x0:vt>
 g_div01(~x0, !x0): (x0)
+fun
+<x0:vt>
+g_div10(!x0, ~x0): (x0)
+fun
+<x0:vt>
+g_div11(!x0, !x0): (x0)
 //
 fun
 <x0:vt>
@@ -98,6 +122,12 @@ g_mod00(~x0, ~x0): (x0)
 fun
 <x0:vt>
 g_mod01(~x0, !x0): (x0)
+fun
+<x0:vt>
+g_mod10(!x0, ~x0): (x0)
+fun
+<x0:vt>
+g_mod11(!x0, !x0): (x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
