@@ -706,7 +706,8 @@ token(*casknd*), d3exp1, d3cls1lst)
 |D3E1lam1 of
 (token(*knd*)
 ,f3arg1lst
-,f3axp1lst, s2res, f1unarrw, d3exp1, dvstp1lst(*lefts*))
+,f3axp1lst, s2res, f1unarrw, d3exp1
+,dvstp1lst(*inner*), dvdtp1lst(*outer*))
 //
 |D3E1fix0 of
 (token(*knd*), d2var(*fid*)
@@ -714,7 +715,8 @@ token(*casknd*), d3exp1, d3cls1lst)
 |D3E1fix1 of
 (token(*knd*), d2var(*fid*)
 ,f3arg1lst
-,f3axp1lst, s2res, f1unarrw, d3exp1, dvstp1lst(*lefts*))
+,f3axp1lst, s2res, f1unarrw, d3exp1
+,dvstp1lst(*inner*), dvdtp1lst(*outer*))
 //
 (* ****** ****** *)
 //
