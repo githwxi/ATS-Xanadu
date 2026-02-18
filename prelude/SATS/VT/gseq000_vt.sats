@@ -321,12 +321,7 @@ fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
-gseq_append01(xs: ~xs, ys: ~ys): (xs)
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-gseq_append10(xs: !xs, ys: !ys): (xs)
+gseq_append10(xs: !xs, ys: ~ys): (xs)
 fun
 <xs:vt>
 <x0:vt>
