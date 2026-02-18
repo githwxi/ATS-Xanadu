@@ -1029,8 +1029,8 @@ d3exp1
 //
 (* ****** ****** *)
 //
-(*
 |D3E1addr _ => f0_addr(d3e0, env0)
+(*
 |D3E1view _ => f0_view(d3e0, env0)
 *)
 |D3E1flat _ => f0_flat(d3e0, env0)
@@ -1839,7 +1839,6 @@ end(*let*)//end-of-[f0_lam0(d3e0,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 fun
 f0_addr
 ( d3e0: d3exp1
@@ -1847,13 +1846,12 @@ f0_addr
 let
 //
 val-
-D3E1view
+D3E1addr
 (   d3e1   ) = d3e0.node()
 //
 in//let
-  // HX: yet to be implemented
+d3exp1(loc0, tqxp, D3E1addr(d3e1))
 end(*let*)//end-of-[f0_addr(d3e0,env0)]
-*)
 //
 (*
 fun
@@ -1865,6 +1863,10 @@ let
 val-
 D3E1view
 (   d3e1   ) = d3e0.node()
+//
+val d3e1 =
+(
+  d3exp1_trxltck(d3e1, env0))
 //
 in//let
   // HX: yet to be implemented
