@@ -135,33 +135,20 @@ g_fprint<x0>
 (* ****** ****** *)
 //
 #impltmp
-sint_print<> = g_print<sint>
-#impltmp
-bool_print<> = g_print<bool>
-#impltmp
-char_print<> = g_print<char>
-#impltmp
-dflt_print<> = g_print<dflt>
-#impltmp
-strn_print<> = g_print<strn>
-//
-(* ****** ****** *)
-//
-#impltmp
-g_print<sint>(i0) =
+sint_print<>(i0) =
 sint_fprint(i0, g_print$out<>())
 #impltmp
-g_print<bool>(b0) =
+bool_print<>(b0) =
 bool_fprint(b0, g_print$out<>())
 #impltmp
-g_print<char>(c0) =
+char_print<>(c0) =
 char_fprint(c0, g_print$out<>())
 //
 #impltmp
-g_print<dflt>(f0) =
+dflt_print<>(f0) =
 dflt_fprint(f0, g_print$out<>())
 #impltmp
-g_print<strn>(cs) =
+strn_print<>(cs) =
 strn_fprint(cs, g_print$out<>())
 //
 (* ****** ****** *)
