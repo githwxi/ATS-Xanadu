@@ -193,7 +193,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_forall0$f1un
-(xs: xs, test: (~x0)->bool): bool
+(xs: ~xs, test: (~x0)->bool): bool
 //
 (*
 #symload forall0 with gseq_forall0$f1un of 0100
@@ -205,7 +205,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_forall1$f1un
-(xs: xs, test: (!x0)->bool): bool
+(xs: !xs, test: (!x0)->bool): bool
 //
 (*
 #symload forall1 with gseq_forall1$f1un of 0100
@@ -233,7 +233,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_exists0$f1un
-(xs: xs, test: (~x0)->bool): bool
+(xs: ~xs, test: (~x0)->bool): bool
 //
 (*
 #symload exists0 with gseq_exists0$f1un of 0100
@@ -245,7 +245,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_exists1$f1un
-(xs: xs, test: (!x0)->bool): bool
+(xs: !xs, test: (!x0)->bool): bool
 //
 (*
 #symload exists1 with gseq_exists1$f1un of 0100
@@ -274,7 +274,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_rforall0$f1un
-(xs: xs, test: (~x0)->bool): bool
+(xs: ~xs, test: (~x0)->bool): bool
 //
 (*
 #symload rforall0 with gseq_rforall0$f1un of 0100
@@ -286,7 +286,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_rforall1$f1un
-(xs: xs, test: (!x0)->bool): bool
+(xs: !xs, test: (!x0)->bool): bool
 //
 (*
 #symload rforall1 with gseq_rforall1$f1un of 0100
@@ -314,7 +314,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_rexists0$f1un
-(xs: xs, test: (~x0)->bool): bool
+(xs: ~xs, test: (~x0)->bool): bool
 //
 (*
 #symload rexists0 with gseq_rexists0$f1un of 0100
@@ -326,7 +326,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_rexists1$f1un
-(xs: xs, test: (!x0)->bool): bool
+(xs: !xs, test: (!x0)->bool): bool
 //
 (*
 #symload rexists1 with gseq_rexists1$f1un of 0100
@@ -354,7 +354,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_iforall0$f2un
-(xs: xs, test: (ni, ~x0)->bool): bool
+(xs: ~xs, test: (ni, ~x0)->bool): bool
 //
 (*
 #symload iforall0 with gseq_iforall0$f2un of 0100
@@ -366,7 +366,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_iforall1$f2un
-(xs: xs, test: (ni, !x0)->bool): bool
+(xs: !xs, test: (ni, !x0)->bool): bool
 //
 (*
 #symload iforall1 with gseq_iforall1$f2un of 0100
@@ -394,7 +394,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_iexists0$f2un
-(xs: xs, test: (ni, ~x0)->bool): bool
+(xs: ~xs, test: (ni, ~x0)->bool): bool
 //
 (*
 #symload iexists0 with gseq_iexists0$f2un of 0100
@@ -406,7 +406,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_iexists1$f2un
-(xs: xs, test: (ni, !x0)->bool): bool
+(xs: !xs, test: (ni, !x0)->bool): bool
 //
 (*
 #symload iexists1 with gseq_iexists1$f2un of 0100
@@ -434,7 +434,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_irforall0$f2un
-(xs: xs, test: (ni, ~x0)->bool): bool
+(xs: ~xs, test: (ni, ~x0)->bool): bool
 //
 (*
 #symload irforall0 with gseq_irforall0$f2un of 0100
@@ -446,7 +446,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_irforall1$f2un
-(xs: xs, test: (ni, !x0)->bool): bool
+(xs: !xs, test: (ni, !x0)->bool): bool
 //
 (*
 #symload irforall1 with gseq_irforall1$f2un of 0100
@@ -474,7 +474,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_irexists0$f2un
-(xs: xs, test: (ni, ~x0)->bool): bool
+(xs: ~xs, test: (ni, ~x0)->bool): bool
 //
 (*
 #symload irexists0 with gseq_irexists0$f2un of 0100
@@ -486,7 +486,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_irexists1$f2un
-(xs: xs, test: (ni, !x0)->bool): bool
+(xs: !xs, test: (ni, !x0)->bool): bool
 //
 (*
 #symload irexists1 with gseq_irexists1$f2un of 0100
@@ -515,7 +515,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_foritm0$f1un
-(xs: xs, work: (~x0)->void): void
+(xs: ~xs, work: (~x0)->void): void
 //
 (*
 #symload foritm0 with gseq_foritm0$f1un of 0100
@@ -527,7 +527,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_foritm1$f1un
-(xs: xs, work: (!x0)->void): void
+(xs: !xs, work: (!x0)->void): void
 //
 (*
 #symload foritm1 with gseq_foritm1$f1un of 0100
@@ -556,7 +556,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_rforitm0$f1un
-(xs: xs, work: (~x0)->void): void
+(xs: ~xs, work: (~x0)->void): void
 //
 (*
 #symload rforitm0 with gseq_rforitm0$f1un of 0100
@@ -568,7 +568,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_rforitm1$f1un
-(xs: xs, work: (!x0)->void): void
+(xs: !xs, work: (!x0)->void): void
 //
 (*
 #symload rforitm1 with gseq_rforitm1$f1un of 0100
@@ -596,7 +596,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_iforitm0$f2un
-(xs: xs, work: (ni, ~x0)->void): void
+(xs: ~xs, work: (ni, ~x0)->void): void
 //
 (*
 #symload iforitm0 with gseq_iforitm0$f2un of 0100
@@ -608,7 +608,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_iforitm1$f2un
-(xs: xs, work: (ni, !x0)->void): void
+(xs: !xs, work: (ni, !x0)->void): void
 //
 (*
 #symload iforitm1 with gseq_iforitm1$f2un of 0100
@@ -636,7 +636,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_irforitm0$f2un
-(xs: xs, work: (ni, ~x0)->void): void
+(xs: ~xs, work: (ni, ~x0)->void): void
 //
 (*
 #symload irforitm0 with gseq_irforitm0$f2un of 0100
@@ -648,7 +648,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_irforitm1$f2un
-(xs: xs, work: (ni, !x0)->void): void
+(xs: !xs, work: (ni, !x0)->void): void
 //
 (*
 #symload irforitm1 with gseq_irforitm1$f2un of 0100
@@ -1068,7 +1068,7 @@ fun
 <x0:vt>
 <y0:vt>
 gseq_map0$f1un_llist
-(xs: xs, fopr: (~x0)->(y0)): list_vt(y0)
+(xs: ~xs, fopr: (~x0)->(y0)): list_vt(y0)
 #symload
 gseq_map0_llist with gseq_map0$f1un_llist of 0100
 //
@@ -1077,7 +1077,7 @@ fun
 <x0:vt>
 <y0:vt>
 gseq_map1$f1un_llist
-(xs: xs, fopr: (!x0)->(y0)): list_vt(y0)
+(xs: !xs, fopr: (!x0)->(y0)): list_vt(y0)
 #symload
 gseq_map1_llist with gseq_map1$f1un_llist of 0100
 //
@@ -1110,13 +1110,13 @@ fun
 <x0:vt>
 <y0:vt>
 gseq_map0$f1un_lstrm
-(xs: xs, fopr: (~x0)->(y0)): strm_vt(y0)
+(xs: ~xs, fopr: (~x0)->(y0)): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 gseq_map0$f1un_lstrq
-(xs: xs, fopr: (~x0)->(y0)): strq_vt(y0)
+(xs: ~xs, fopr: (~x0)->(y0)): strq_vt(y0)
 //
 #symload
 gseq_map0_lstrm with gseq_map0$f1un_lstrm of 0100
@@ -1128,13 +1128,13 @@ fun
 <x0:vt>
 <y0:vt>
 gseq_map1$f1un_lstrm
-(xs: xs, fopr: (!x0)->(y0)): strm_vt(y0)
+(xs: !xs, fopr: (!x0)->(y0)): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 gseq_map1$f1un_lstrq
-(xs: xs, fopr: (!x0)->(y0)): strq_vt(y0)
+(xs: !xs, fopr: (!x0)->(y0)): strq_vt(y0)
 //
 #symload
 gseq_map1_lstrm with gseq_map1$f1un_lstrm of 0100
@@ -1159,7 +1159,7 @@ fun
 <x0:vt>
 <y0:vt>
 gseq_rmap0$f1un_llist
-(xs: xs, fopr: (~x0)->(y0)): list_vt(y0)
+(xs: ~xs, fopr: (~x0)->(y0)): list_vt(y0)
 //
 #symload
 gseq_rmap0_llist with gseq_rmap0$f1un_llist of 0100
@@ -1169,7 +1169,7 @@ fun
 <x0:vt>
 <y0:vt>
 gseq_rmap1$f1un_llist
-(xs: xs, fopr: (!x0)->(y0)): list_vt(y0)
+(xs: !xs, fopr: (!x0)->(y0)): list_vt(y0)
 //
 #symload
 gseq_rmap1_llist with gseq_rmap1$f1un_llist of 0100
@@ -1203,13 +1203,13 @@ fun
 <x0:vt>
 <y0:vt>
 gseq_rmap0$f1un_lstrm
-(xs: xs, fopr: (~x0)->(y0)): strm_vt(y0)
+(xs: ~xs, fopr: (~x0)->(y0)): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 gseq_rmap0$f1un_lstrq
-(xs: xs, fopr: (~x0)->(y0)): strq_vt(y0)
+(xs: ~xs, fopr: (~x0)->(y0)): strq_vt(y0)
 //
 #symload
 gseq_rmap0_lstrm with gseq_rmap0$f1un_lstrm of 0100
@@ -1221,13 +1221,13 @@ fun
 <x0:vt>
 <y0:vt>
 gseq_rmap1$f1un_lstrm
-(xs: xs, fopr: (!x0)->(y0)): strm_vt(y0)
+(xs: !xs, fopr: (!x0)->(y0)): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 gseq_rmap1$f1un_lstrq
-(xs: xs, fopr: (!x0)->(y0)): strq_vt(y0)
+(xs: !xs, fopr: (!x0)->(y0)): strq_vt(y0)
 //
 #symload
 gseq_rmap1_lstrm with gseq_rmap1$f1un_lstrm of 0100
@@ -1274,13 +1274,13 @@ fun
 <x0:vt>
 <y0:vt>
 gseq_imap0$f1un_lstrm
-(xs: xs, fopr: (ni,~x0)->(y0)): strm_vt(y0)
+(xs: ~xs, fopr: (ni,~x0)->(y0)): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 gseq_imap0$f1un_lstrq
-(xs: xs, fopr: (ni,~x0)->(y0)): strq_vt(y0)
+(xs: ~xs, fopr: (ni,~x0)->(y0)): strq_vt(y0)
 //
 #symload
 gseq_imap0_lstrm with gseq_imap0$f1un_lstrm of 0100
@@ -1292,13 +1292,13 @@ fun
 <x0:vt>
 <y0:vt>
 gseq_imap1$f1un_lstrm
-(xs: xs, fopr: (ni,!x0)->(y0)): strm_vt(y0)
+(xs: !xs, fopr: (ni,!x0)->(y0)): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 gseq_imap1$f1un_lstrq
-(xs: xs, fopr: (ni,!x0)->(y0)): strq_vt(y0)
+(xs: !xs, fopr: (ni,!x0)->(y0)): strq_vt(y0)
 //
 #symload
 gseq_imap1_lstrm with gseq_imap1$f1un_lstrm of 0100
@@ -1351,14 +1351,14 @@ fun
 <x0:vt>
 <y0:vt>
 gseq_irmap0$f1un_lstrm
-(xs: xs, fopr: (ni,~x0)->(y0)): strm_vt(y0)
+(xs: ~xs, fopr: (ni,~x0)->(y0)): strm_vt(y0)
 //
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 gseq_irmap0$f1un_lstrq
-(xs: xs, fopr: (ni,~x0)->(y0)): strq_vt(y0)
+(xs: ~xs, fopr: (ni,~x0)->(y0)): strq_vt(y0)
 //
 #symload
 gseq_irmap0_lstrm with gseq_irmap0$f1un_lstrm of 0100
@@ -1370,13 +1370,13 @@ fun
 <x0:vt>
 <y0:vt>
 gseq_irmap1$f1un_lstrm
-(xs: xs, fopr: (ni,!x0)->(y0)): strm_vt(y0)
+(xs: !xs, fopr: (ni,!x0)->(y0)): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 gseq_irmap1$f1un_lstrq
-(xs: xs, fopr: (ni,!x0)->(y0)): strq_vt(y0)
+(xs: !xs, fopr: (ni,!x0)->(y0)): strq_vt(y0)
 //
 #symload
 gseq_irmap1_lstrm with gseq_irmap1$f1un_lstrm of 0100
@@ -1421,12 +1421,12 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_filter0$f1un_llist
-(xs: xs, fopr: (~x0)->bool): list_vt(x0)
+(xs: ~xs, fopr: (~x0)->bool): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 gseq_filter1$f1un_llist
-(xs: xs, fopr: (!x0)->bool): list_vt(x0)
+(xs: !xs, fopr: (!x0)->bool): list_vt(x0)
 //
 #symload
 gseq_filter0_llist with gseq_filter0$f1un_llist of 0100
@@ -1457,12 +1457,12 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_filter0$f1un_lstrm
-(xs: xs, fopr: (~x0)->bool): strm_vt(x0)
+(xs: ~xs, fopr: (~x0)->bool): strm_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 gseq_filter0$f1un_lstrq
-(xs: xs, fopr: (~x0)->bool): strq_vt(x0)
+(xs: ~xs, fopr: (~x0)->bool): strq_vt(x0)
 //
 #symload
 gseq_filter0_lstrm with gseq_filter0$f1un_lstrm of 0100
@@ -1473,12 +1473,12 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_filter1$f1un_lstrm
-(xs: xs, fopr: (!x0)->bool): strm_vt(x0)
+(xs: !xs, fopr: (!x0)->bool): strm_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 gseq_filter1$f1un_lstrq
-(xs: xs, fopr: (!x0)->bool): strq_vt(x0)
+(xs: !xs, fopr: (!x0)->bool): strq_vt(x0)
 //
 #symload
 gseq_filter1_lstrm with gseq_filter1$f1un_lstrm of 0100
@@ -1500,12 +1500,12 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_rfilter0$f1un_llist
-(xs: xs, fopr: (~x0)->bool): list_vt(x0)
+(xs: ~xs, fopr: (~x0)->bool): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 gseq_rfilter1$f1un_llist
-(xs: xs, fopr: (!x0)->bool): list_vt(x0)
+(xs: !xs, fopr: (!x0)->bool): list_vt(x0)
 //
 #symload
 gseq_rfilter0_llist with gseq_rfilter0$f1un_llist of 0100
@@ -1536,12 +1536,12 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_rfilter0$f1un_lstrm
-(xs: xs, fopr: (~x0)->bool): strm_vt(x0)
+(xs: ~xs, fopr: (~x0)->bool): strm_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 gseq_rfilter0$f1un_lstrq
-(xs: xs, fopr: (~x0)->bool): strq_vt(x0)
+(xs: ~xs, fopr: (~x0)->bool): strq_vt(x0)
 //
 #symload
 gseq_rfilter0_lstrm with gseq_rfilter0$f1un_lstrm of 0100
@@ -1552,12 +1552,12 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_rfilter1$f1un_lstrm
-(xs: xs, fopr: (!x0)->bool): strm_vt(x0)
+(xs: !xs, fopr: (!x0)->bool): strm_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 gseq_rfilter1$f1un_lstrq
-(xs: xs, fopr: (!x0)->bool): strq_vt(x0)
+(xs: !xs, fopr: (!x0)->bool): strq_vt(x0)
 //
 #symload
 gseq_rfilter1_lstrm with gseq_rfilter1$f1un_lstrm of 0100
@@ -1588,12 +1588,12 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_ifilter0$f1un_llist
-(xs: xs, fopr: (ni,~x0)->bool): list_vt(x0)
+(xs: ~xs, fopr: (ni,~x0)->bool): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 gseq_ifilter1$f1un_llist
-(xs: xs, fopr: (ni,!x0)->bool): list_vt(x0)
+(xs: !xs, fopr: (ni,!x0)->bool): list_vt(x0)
 //
 #symload
 gseq_ifilter0_llist with gseq_ifilter0$f1un_llist of 0100
@@ -1624,12 +1624,12 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_ifilter0$f1un_lstrm
-(xs: xs, fopr: (ni,~x0)->bool): strm_vt(x0)
+(xs: ~xs, fopr: (ni,~x0)->bool): strm_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 gseq_ifilter0$f1un_lstrq
-(xs: xs, fopr: (ni,~x0)->bool): strq_vt(x0)
+(xs: ~xs, fopr: (ni,~x0)->bool): strq_vt(x0)
 //
 #symload
 gseq_ifilter0_lstrm with gseq_ifilter0$f1un_lstrm of 0100
@@ -1640,12 +1640,12 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_ifilter1$f1un_lstrm
-(xs: xs, fopr: (ni,!x0)->bool): strm_vt(x0)
+(xs: !xs, fopr: (ni,!x0)->bool): strm_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 gseq_ifilter1$f1un_lstrq
-(xs: xs, fopr: (ni,!x0)->bool): strq_vt(x0)
+(xs: !xs, fopr: (ni,!x0)->bool): strq_vt(x0)
 //
 #symload
 gseq_ifilter1_lstrm with gseq_ifilter1$f1un_lstrm of 0100
@@ -1789,12 +1789,12 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_ord$exists0$f1un
-(xs: xs, tcmp: (~x0)->sint): bool
+(xs: ~xs, tcmp: (~x0)->sint): bool
 fun
 <xs:vt>
 <x0:vt>
 gseq_ord$exists1$f1un
-(xs: xs, tcmp: (!x0)->sint): bool
+(xs: !xs, tcmp: (!x0)->sint): bool
 //
 #symload
 gseq_ord$exists0 with gseq_ord$exists0$f1un of 0100
@@ -1806,12 +1806,12 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_ord$iexists0$f2un
-(xs: xs, tcmp: (ni, ~x0)->sint): bool
+(xs: ~xs, tcmp: (ni, ~x0)->sint): bool
 fun
 <xs:vt>
 <x0:vt>
 gseq_ord$iexists1$f2un
-(xs: xs, tcmp: (ni, !x0)->sint): bool
+(xs: !xs, tcmp: (ni, !x0)->sint): bool
 //
 #symload
 gseq_ord$iexists0 with gseq_ord$iexists0$f2un of 0100
