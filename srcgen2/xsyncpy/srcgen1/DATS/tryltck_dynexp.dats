@@ -1278,6 +1278,8 @@ dexp.node() of
 //
 (* ****** ****** *)
 //
+|D3E1addr _ => (dexp)
+//
 |D3E1flat _ =>
 (
   f0_flat(dexp, err0))

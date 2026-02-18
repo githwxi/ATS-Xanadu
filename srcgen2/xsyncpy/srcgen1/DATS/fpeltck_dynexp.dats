@@ -412,7 +412,7 @@ let
 val () =
 (
   fpeltck_d3exp1(out0, d3e1) )
-end(*let*)//end-of-[D3Eaddr(...)]
+end(*let*)//end-of-[D3E1addr(...)]
 //
 |D3E1view
 (   d3e1   ) =>
@@ -420,7 +420,7 @@ let
 val () =
 (
   fpeltck_d3exp1(out0, d3e1) )
-end(*let*)//end-of-[D3Eview(...)]
+end(*let*)//end-of-[D3E1view(...)]
 //
 |D3E1flat
 (   d3e1   ) =>
@@ -428,7 +428,7 @@ let
 val () =
 (
   fpeltck_d3exp1(out0, d3e1) )
-end(*let*)//end-of-[D3Eflat(...)]
+end(*let*)//end-of-[D3E1flat(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
