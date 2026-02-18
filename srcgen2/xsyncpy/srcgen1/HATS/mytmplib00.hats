@@ -4,18 +4,15 @@
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
-"xatslib\
-/libcats/HATS/libcats_dats.hats"
-//
-(* ****** ****** *)
-//
-#include
 "prelude/HATS/prelude_JS_dats.hats"
 #include
 "prelude/HATS/prelude_NODE_dats.hats"
 //
 (* ****** ****** *)
 //
+#include
+"xatslib\
+/libcats/HATS/libcats_dats.hats"
 #include
 "xatslib\
 /libcats/HATS/libcats_JS_dats.hats"

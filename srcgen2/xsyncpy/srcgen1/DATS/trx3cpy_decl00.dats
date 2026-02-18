@@ -54,6 +54,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
 "./../../../SATS/dynexp2.sats"
 #staload
 "./../../../SATS/dynexp3.sats"
