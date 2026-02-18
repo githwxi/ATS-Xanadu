@@ -614,6 +614,8 @@ D3Eannot _ => f0_annot(d3e0, env0)
 |D3Et2ped _ => f0_t2ped(d3e0, env0)
 //
 (* ****** ****** *)
+|D3Enone0 _ => f0_none0(d3e0, env0)
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
@@ -1550,6 +1552,23 @@ d3exp1
 loc0,
 t3q0, D3E1t2ped(d3e1, t2q1, t2q2))
 end(*let*)//end-of-[f0_t2ped(d3e0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_none0
+(d3e0: d3exp
+,env0: !env3cpy): d3exp1 =
+let
+//
+val-
+D3Enone0(  ) = d3e0.node()
+//
+in//let
+(
+  d3exp1(loc0, t3q0, D3E1none0()))
+end(*let*)//end-of-[f0_none0(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

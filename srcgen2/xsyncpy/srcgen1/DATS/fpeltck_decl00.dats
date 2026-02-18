@@ -205,9 +205,9 @@ let
 val
 loc0 = dcl0.lctn()
 //
-val () = prerrsln("\
+val () = printsln("\
 fpeltck_d3ecl1: auxmain: loc0 = ", loc0)
-val () = prerrsln("\
+val () = printsln("\
 fpeltck_d3ecl1: auxmain: dcl0 = ", dcl0)
 //
 endlet

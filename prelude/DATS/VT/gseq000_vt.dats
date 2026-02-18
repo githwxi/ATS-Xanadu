@@ -163,10 +163,10 @@ gseq_iforitm0$f2un
 <   xs  ><  x0   >
 (
 xs,
-lam(i0, x0) =>
+lam(i0, x0: ~x0) =>
 (
 if // if
-(i0 >= 1) then
+(i0 >= 1) then//then
 strn_foritm$f1un(xsep, work)
 ;
 let
@@ -258,6 +258,7 @@ then
 (
   false ) where
 {
+val () = g_free(x0)
 val () =
 strn_print
 (gseq$omit<xs><x0>()) }

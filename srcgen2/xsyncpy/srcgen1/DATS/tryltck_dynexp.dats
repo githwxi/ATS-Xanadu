@@ -611,6 +611,43 @@ endlet//end-of-[d3exp1_tup1_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp1_lam1_errck
+( loc0
+: loc_t
+, t3q0
+: d3typ1
+, tknd
+: token
+, f3as
+: f3arg1lst
+, f3bs
+: f3axp1lst
+, sres: s2res
+, arrw: f1unarrw
+, d3e1: d3exp1
+, vts1: dvstp1lst
+, vts2: dvdtp1lst): d3exp1 =
+let
+//
+val
+lvl0 = errvl(d3e1)
+//
+in//let
+//
+d3exp1_errck
+(
+lvl0+1,
+d3exp1(
+loc0,t3q0,
+D3E1lam1(tknd,
+f3as,f3bs,sres,arrw,d3e1,vts1,vts2)))
+//
+endlet//end-of-[d3exp1_lam1_errck(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3exp1_flat_errck
 (loc0: loc_t
 ,t3q0: d3typ1
@@ -1234,6 +1271,13 @@ dexp.node() of
 //
 (* ****** ****** *)
 //
+|D3E1lam0 _ => (dexp)
+|D3E1lam1 _ =>
+(
+  f0_lam1(dexp, err0))
+//
+(* ****** ****** *)
+//
 |D3E1flat _ =>
 (
   f0_flat(dexp, err0))
@@ -1276,12 +1320,16 @@ dexp.node() of
   f0_t2ped(dexp, err0))
 //
 (* ****** ****** *)
+|D3E1none0 _ => ( dexp )
+(* ****** ****** *)
 //
 | _(*otherwise*) =>
 let
 val () = err0 := err0+1 in
 (
   d3exp1_errck(1(*lvl*), dexp)) end
+//
+(* ****** ****** *)
 //
 ) where
 {
@@ -1599,6 +1647,71 @@ in//let
 end//let
 //
 end(*let*)//end-of-[f0_tup1(d3e0,err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_lam1
+( d3e0: d3exp1
+, err0
+: &sint >> sint): d3exp1 =
+let
+//
+val nerr = err0
+//
+val-
+D3E1lam1
+(tknd
+,f3as
+,f3bs, sres
+,arrw, d3e1
+,vts1, vts2) = d3e0.node()
+//
+val t3q0 = d3e0.dtyp((*0*))
+//
+(*
+val f3as =
+(
+f3arg1lst_tryltck(f3as, err0))
+*)
+//
+val f3bs =
+(
+f3axp1lst_tryltck(f3bs, err0))
+//
+//
+val d3e1 =
+(
+  d3exp1_tryltck( d3e1, err0 ))
+//
+(*
+val (  ) =
+(
+if // if
+dvstp1lst_linq
+  ( dvts ) then (err0:=err0+1))
+*)
+val vts1 =
+(
+  dvstp1lst_trylinq(vts1, err0))
+//
+in//let
+//
+if // if
+(err0=nerr)
+then (d3e0) else
+let
+val loc0 = d3e0.lctn()
+in//let
+(
+  d3exp1_lam1_errck(
+    loc0, t3q0
+  , tknd, f3as, f3bs
+  , sres, arrw, d3e1, vts1, vts2))
+end//let
+//
+end(*let*)//end-of-[f0_lam1(d3e0,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

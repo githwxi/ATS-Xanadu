@@ -152,12 +152,13 @@ castxy
 {ax:t0}
 {ay:t0}(ax:ax):(ay)
 val
-filr = castxy(g_stdout<>())
+filr =
+castxy(g_stderr<>())
 in//let2
 //
-prints("d3parsed1(ltck) = ");
+prerrs("d3parsed1(ltck) = ");
 d3parsed1_fprint(dpar1, filr);
-printsln((*endof(d3parsed1)*))
+prerrsln((*end-of-(d3parsed1)*))
 //
 end//let2
 //
@@ -171,7 +172,8 @@ castxy
 {ax:t0}
 {ay:t0}(ax:ax):(ay)
 val
-filr = castxy(g_stdout<>())
+filr =
+castxy(g_stderr<>())
 in//let3
 prerrsln
 ("FPELTCK_D3PARSED1:");
