@@ -240,6 +240,7 @@ endlet//end-of-[D3Cimplmnt0( ... )]
 |
 _(*otherwise*) =>
 let
+//
 val
 loc0 = dcl0.lctn()
 //
@@ -247,6 +248,7 @@ val () = prerrsln
 ("f3perr0_d3ecl:auxmain: loc0 = ", loc0)
 val () = prerrsln
 ("f3perr0_d3ecl:auxmain: dcl0 = ", dcl0)
+//
 endlet
 //
 (* ****** ****** *)

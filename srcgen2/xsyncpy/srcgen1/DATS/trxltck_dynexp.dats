@@ -1046,6 +1046,8 @@ d3exp1
 |D3E1t2ped _ => f0_t2ped(d3e0, env0)
 //
 (* ****** ****** *)
+|D3E1none0 _ => f0_none0(d3e0, env0)
+(* ****** ****** *)
 //
 |_(*otherwise*) =>
 (
@@ -1771,9 +1773,9 @@ let
 //
 val-
 D3E1lam0
-(tknd,
+(tknd
 ,f3as, sres
-,arrw, d3e1) = d3e1.node()
+,arrw, d3e1) = d3e0.node()
 //
 val (  ) =
 envltck_pshlam0(env0)//enter
@@ -2118,6 +2120,24 @@ d3exp1
 , tqxp, D3E1t2ped(d3e1, t2q1, t2q2)))
 end(*let*)//end-of-[f0_t2ped(d3e0,env0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_none0
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1none0( ) = d3e0.node()
+//
+in//let
+(
+d3exp1(loc0, tqxp, D3E1none0((*0*))))
+end(*let*)//end-of-[f0_none0(d3e0,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-(case+of(d3e0.node())

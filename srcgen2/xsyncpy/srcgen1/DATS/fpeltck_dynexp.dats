@@ -140,9 +140,9 @@ let
 //
 val loc0 =
 d3p0.lctn((*0*))
-val (  ) = prerrsln("\
+val (  ) = printsln("\
 fpeltck_d3pat1:auxmain: loc0 = ", loc0)
-val (  ) = prerrsln("\
+val (  ) = printsln("\
 fpeltck_d3pat1:auxmain: d3p0 = ", d3p0)
 //
 endlet//end-of-(_______otherwise_______)
@@ -387,7 +387,8 @@ fpeltck_f3arg1lst(out0, farg))
 (tknd
 ,farg, faxp
 ,sres, arrw
-,d3e1, dvts) =>
+,d3e1
+,vts1, vts2) =>
 (
 fpeltck_d3exp1(out0, d3e1))
 where
@@ -465,9 +466,9 @@ _(*otherwise*) =>
 let
 val loc0 =
 d3e0.lctn((*0*))
-val (  ) = prerrsln("\
+val (  ) = printsln("\
 fpeltck_d3exp1:auxmain: loc0 = ", loc0)
-val (  ) = prerrsln("\
+val (  ) = printsln("\
 fpeltck_d3exp1:auxmain: d3e0 = ", d3e0)
 endlet
 //

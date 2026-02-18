@@ -1207,8 +1207,10 @@ let
 //
 #impltmp
 g_print$out<>() = out0
+//
 in//let
-g_print<d3ecl1lstopt>(dopt)
+(
+  g_print<d3ecl1lstopt>(dopt))
 end//let
 where
 {

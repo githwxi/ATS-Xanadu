@@ -22,9 +22,11 @@ FILRopt_vt = optn_vt(FILR)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
 fun
 <a:t0>
 g_prout(obj:(a)): void
+#extern
 fun
 <a:t0>
 g_prerr(obj:(a)): void
@@ -32,6 +34,7 @@ g_prerr(obj:(a)): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
 fun<>
 g_stdin((*void*)): FILR
 //
@@ -132,6 +135,19 @@ g_fprint<x0>
 (* ****** ****** *)
 //
 #impltmp
+sint_print<> = g_print<sint>
+#impltmp
+bool_print<> = g_print<bool>
+#impltmp
+char_print<> = g_print<char>
+#impltmp
+dflt_print<> = g_print<dflt>
+#impltmp
+strn_print<> = g_print<strn>
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print<sint>(i0) =
 sint_fprint(i0, g_print$out<>())
 #impltmp
@@ -143,11 +159,9 @@ char_fprint(c0, g_print$out<>())
 //
 #impltmp
 g_print<dflt>(f0) =
-(
 dflt_fprint(f0, g_print$out<>())
 #impltmp
 g_print<strn>(cs) =
-(
 strn_fprint(cs, g_print$out<>())
 //
 (* ****** ****** *)
