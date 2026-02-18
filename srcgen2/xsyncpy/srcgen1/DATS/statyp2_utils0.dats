@@ -72,6 +72,8 @@ with uint_to$sint of 1099
 //
 (* ****** ****** *)
 //
+#symload =
+with sint_eq$sint of 1099
 #symload !=
 with sint_neq$sint of 1099
 //
@@ -93,6 +95,8 @@ with sint_neq$sint of 1099
 #staload
 "./../../../SATS/xbasics.sats"
 #staload
+"./../../../SATS/xstamp0.sats"
+#staload
 "./../../../SATS/xlabel0.sats"
 //
 #staload
@@ -106,10 +110,50 @@ with sint_neq$sint of 1099
 (* ****** ****** *)
 //
 fun
+s2cst_eq
+(c1: s2cst
+,c2: s2cst): bool =
+(
+stamp_cmp(
+c1.stmp(),c2.stmp())=0)
+#symload = with s2cst_eq
+//
+fun
+s2var_eq
+(v1: s2var
+,v2: s2var): bool =
+(
+stamp_cmp(
+v1.stmp(),v2.stmp())=0)
+#symload = with s2var_eq
+//
+(* ****** ****** *)
+//
+fun
+d2con_eq
+(c1: d2con
+,c2: d2con): bool =
+(
+stamp_cmp(
+c1.stmp(),c2.stmp())=0)
+#symload = with d2con_eq
+//
+(* ****** ****** *)
+//
+fun
+label_eq
+(l1: label
+,l2: label): bool =
+(
+label_cmp(l1, l2) = 0)
+fun
 label_neq
-(lab1: label
-,lab2: label): bool =
-(label_cmp(lab1, lab2) != 0)
+(l1: label
+,l2: label): bool =
+(
+label_cmp(l1, l2) != 0)
+//
+#symload = with label_eq
 #symload != with label_neq
 //
 (* ****** ****** *)
@@ -221,12 +265,18 @@ case+ s2tb of
 |
 T2Bimpr(knd, sym) =>
 let
-  val msk = is2u( 2 )
-  val knd = is2u(knd)
-  val knd =
-    iu2s(knd\ladd(msk))
-in
-  S2Tbas(T2Bimpr(knd, sym))
+//
+val msk = is2u( 2 )
+val knd = is2u(knd)
+val knd =
+(
+  iu2s(knd\ladd(msk)) )
+//
+in//let
+//
+(
+S2Tbas(T2Bimpr(knd, sym)))
+//
 end
 |_(*non-T2Bimpr*) => (s2t0)
 )
@@ -247,15 +297,18 @@ case+ s2tb of
 |
 T2Bimpr(knd, sym) =>
 let
+//
   val msk =
   (
      lnot(is2u(2))  )
   val knd = is2u(knd)
   val knd =
     iu2s(knd\lmul(msk))
-in
-  S2Tbas(T2Bimpr(knd, sym))
-end
+//
+in//let
+(
+S2Tbas(T2Bimpr(knd, sym)))
+end//let
 |_(*non-T2Bimpr*) => (s2t0)
 )
 |_(* non-S2Tbas *) => (s2t0)
@@ -274,7 +327,8 @@ val s2t0 = t2q0.sort()
 in//let
 //
 if
-not(sort2_linq(s2t0))
+(
+  not(sort2_linq(s2t0)))
 then (t2q0) else s2typ1_t1pize(t2q0)
 //
 end(*let*)//end-of-[s2typ1_delin(...)]
@@ -629,13 +683,18 @@ s2typ1_lteq
 (t2q1, t2q2)
 then
 s2typ1_lteq
-(t2q2, t2q1) else (false))
+(t2q2, t2q1) else false)
 |_(*otherwise*) =>
-if
+if // if
+(knd1=0)
+then(
+s2typ1_lteq(t2q1, t2q2))
+else(
+if // if
 linq(t2q1)
 then (false) else
 (
-  s2typ1_lteq( t2q1, t2q2 ))
+  s2typ1_lteq(t2q1, t2q2)))
 )(*case+*)//end(T2P1arg1(...))
 //
 |_(*otherwise*) =>
@@ -1114,7 +1173,7 @@ list_map$e1nv
 #impltmp
 map$e1nv$fopr
 <x0><y0><e1>(x0, e1) = s2typ_subst1(x0, e1)
-} (*where*)//end of [s2typlst_subst1(t2ps,svts)]
+}(*where*)//end of [s2typlst_subst1(t2ps,svts)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
