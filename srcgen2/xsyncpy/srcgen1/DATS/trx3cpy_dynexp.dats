@@ -486,17 +486,17 @@ end(*let*)//end-of-[f0_annot(d3p0,env0)]
 (* ****** ****** *)
 //
 val (  ) =
-printsln("d3pat_trx3cpy: loc0 = ", loc0)
+prerrsln("d3pat_trx3cpy: loc0 = ", loc0)
 //
 (*
 val (  ) =
-printsln("d3pat_trx3cpy: t2p0 = ", t2p0)
+prerrsln("d3pat_trx3cpy: t2p0 = ", t2p0)
 val (  ) =
-printsln("d3pat_trx3cpy: d3p0 = ", d3p0)
+prerrsln("d3pat_trx3cpy: d3p0 = ", d3p0)
 *)
 //
 val (  ) =
-printsln("d3pat_trx3cpy: t2q0 = ", t2q0)
+prerrsln("d3pat_trx3cpy: t2q0 = ", t2q0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1574,17 +1574,17 @@ end(*let*)//end-of-[f0_none0(d3e0,env0)]
 (* ****** ****** *)
 //
 val (  ) =
-printsln("d3exp_trx3cpy: loc0 = ", loc0)
+prerrsln("d3exp_trx3cpy: loc0 = ", loc0)
 //
 (*
 val (  ) =
-printsln("d3exp_trx3cpy: t2p0 = ", t2p0)
+prerrsln("d3exp_trx3cpy: t2p0 = ", t2p0)
 val (  ) =
-printsln("d3exp_trx3cpy: d3e0 = ", d3e0)
+prerrsln("d3exp_trx3cpy: d3e0 = ", d3e0)
 *)
 //
 val (  ) =
-printsln("d3exp_trx3cpy: t3q0 = ", t3q0)
+prerrsln("d3exp_trx3cpy: t3q0 = ", t3q0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

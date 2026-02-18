@@ -404,6 +404,34 @@ fpeltck_f3axp1lst(out0, faxp))
 }(*where*)//end-of-[D3E1lam1(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|D3E1addr
+(   d3e1   ) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1) )
+end(*let*)//end-of-[D3Eaddr(...)]
+//
+|D3E1view
+(   d3e1   ) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1) )
+end(*let*)//end-of-[D3Eview(...)]
+//
+|D3E1flat
+(   d3e1   ) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1) )
+end(*let*)//end-of-[D3Eflat(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |D3E1dvdtp
 (d3e1, dvts) =>

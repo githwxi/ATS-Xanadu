@@ -642,6 +642,52 @@ f3perr0_d3clslst(out, dcls)
 endlet//end-of-[D3Etry0(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Eaddr
+(   d3e1   ) =>
+let
+val () =
+(
+  f3perr0_d3exp(out, d3e1))
+endlet//end-of-[D3Eaddr(...)]
+//
+|D3Eview
+(   d3e1   ) =>
+let
+val () =
+(
+  f3perr0_d3exp(out, d3e1))
+endlet//end-of-[D3Eview(...)]
+//
+|D3Eflat
+(   d3e1   ) =>
+let
+val () =
+(
+  f3perr0_d3exp(out, d3e1))
+endlet//end-of-[D3Eflat(...)]
+//
+(* ****** ****** *)
+//
+|D3Eeval
+(   d3e1   ) =>
+let
+val () =
+(
+  f3perr0_d3exp(out, d3e1))
+endlet//end-of-[D3Eeval(...)]
+//
+|D3Efree
+(   d3e1   ) =>
+let
+val () =
+(
+  f3perr0_d3exp(out, d3e1))
+endlet//end-of-[D3Efree(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Edp2tr
 (   d3e1   ) =>
