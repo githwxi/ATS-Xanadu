@@ -1122,6 +1122,9 @@ end//let//end-of-[D3P1var( d2v1 )]
 //
 (* ****** ****** *)
 //
+|D3P1dap1
+(   d3f0   ) => ( (*void*) )
+//
 |D3P1dapp
 (d3f0
 ,npf1, d3ps) => f0_d3ps(env0, d3ps)

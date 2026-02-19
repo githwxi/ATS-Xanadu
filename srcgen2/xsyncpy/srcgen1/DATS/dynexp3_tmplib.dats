@@ -101,40 +101,46 @@ d3p0.node() of
 |D3P1var
 (d2v1) => foritm$work(d2v1)
 //
-|D3P1bang(d3p1) => f0_main(d3p1)
-|D3P1flat(d3p1) => f0_main(d3p1)
-|D3P1free(d3p1) => f0_main(d3p1)
+|D3P1bang
+(   d3p1   ) => f0_main(d3p1)
+|D3P1flat
+(   d3p1   ) => f0_main(d3p1)
+|D3P1free
+(   d3p1   ) => f0_main(d3p1)
 //
 |D3P1sapp
-( d3p1, s2vs ) => f0_main(d3p1)
+(d3p1, s2vs) => f0_main(d3p1)
 |D3P1sapq
-( d3p1, s2as ) => f0_main(d3p1)
+(d3p1, s2as) => f0_main(d3p1)
 //
 |D3P1tapq
-( d3p1, tjas ) => f0_main(d3p1)
+(d3p1, tjas) => f0_main(d3p1)
 //
-(*
 |D3P1dap1
-(    d3p1    ) => f0_main(d3p1)
-*)
+(   d3p1   ) => f0_main(d3p1)
 |D3P1dapp
-(d3f1,npf1,d3ps) => f0_d3ps(d3ps)
+(d3f1
+,npf1, d3ps) => f0_d3ps(d3ps)
 //
 |D3P1rfpt
-(d3p1,tkas,d3p2) =>
+(d3p1
+,tkas, d3p2) =>
 (
   f0_main(d3p1); f0_main(d3p2)  )
 //
 |D3P1tup0
-(  npf1, d3ps  ) => f0_d3ps(d3ps)
+(npf1, d3ps) => f0_d3ps(d3ps)
 |D3P1tup1
-(tknd,npf1,d3ps) => f0_d3ps(d3ps)
+(tknd
+,npf1, d3ps) => f0_d3ps(d3ps)
 |D3P1rcd2
-(tknd,npf1,ldps) => f0_ldps(ldps)
+(tknd
+,npf1, ldps) => f0_ldps(ldps)
 //
 |D3P1annot
 (d3p1
-,s1e2,s2e2,t2q2) => f0_main(d3p1)
+,s1e2
+,s2e2, t2q2) => f0_main(d3p1)
 //
 | _(*otherwise*) => (  (*void*)  )
 //
