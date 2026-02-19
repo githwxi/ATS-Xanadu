@@ -167,6 +167,7 @@ d3pat1
 //
 |D3Ptapq _ => f0_tapq(d3p0, env0)
 //
+|D3Pdap1 _ => f0_dap1(d3p0, env0)
 |D3Pdapp _ => f0_dapp(d3p0, env0)
 //
 |D3Prfpt _ => f0_rfpt(d3p0, env0)
@@ -325,6 +326,27 @@ d3pat1
 end//let
 //
 (* ****** ****** *)
+//
+fun
+f0_dap1
+(d3p0: d3pat
+,env0: !env3cpy): d3pat1 =
+let
+//
+val-
+D3Pdap1
+(   d3f0   ) = d3p0.node()
+//
+val d3f0 =
+(
+  d3pat_trx3cpy(d3f0, env0))
+in//let
+//
+(
+d3pat1(
+  loc0, t2q0, D3P1dap1( d3f0 )))
+//
+end//let
 //
 fun
 f0_dapp

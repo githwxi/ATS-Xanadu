@@ -982,6 +982,11 @@ d3exp1
 //
 (* ****** ****** *)
 //
+|D3E1sapp _ => f0_sapp(d3e0, env0)
+|D3E1sapq _ => f0_sapq(d3e0, env0)
+//
+(* ****** ****** *)
+//
 |D3E1tapp _ => f0_tapp(d3e0, env0)
 |D3E1tapq _ => f0_tapq(d3e0, env0)
 //
@@ -1095,6 +1100,47 @@ d3exp1(loc0, t3q1, D3E1var(d2v1))
 end//let//end-of-[f0_var(d3e0,env0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_sapp
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1sapp
+(d3f0, s2es) = d3e0.node()
+val d3f0 =
+(
+  d3exp1_trxltck(d3f0, env0))
+//
+in//let
+(
+d3exp1
+(loc0, tqxp, D3E1sapp(d3f0, s2es)))
+end//let//end-of-[f0_sapp(d3e0,env0)]
+//
+fun
+f0_sapq
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1sapq
+(d3f0, t2ps) = d3e0.node()
+val d3f0 =
+(
+  d3exp1_trxltck(d3f0, env0))
+//
+in//let
+(
+d3exp1
+(loc0, tqxp, D3E1sapq(d3f0, t2ps)))
+end//let//end-of-[f0_sapq(d3e0,env0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_tapp
@@ -1134,6 +1180,7 @@ d3exp1
 (loc0, tqxp, D3E1tapq(d3f0, t2js)))
 end//let//end-of-[f0_tapq(d3e0,env0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

@@ -461,6 +461,7 @@ d3pat1_node =
 //
 (* ****** ****** *)
 //
+|D3P1dap1 of (d3pat1(*dcon*))
 |D3P1dapp of
 (d3pat1
 ,sint(*npf*), d3pat1lst(*darg*)

@@ -267,6 +267,11 @@ prints
 //
 (* ****** ****** *)
 //
+|D3P1dap1
+(   d3f0   ) =>
+prints
+("D3P1dap1(", d3f0(*dcon*), ")")
+//
 |D3P1dapp
 (d3f0
 ,npf1, d3ps) =>
