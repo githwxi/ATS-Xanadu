@@ -483,11 +483,13 @@ in//let
 //
 let
 //
+(*
 val (  ) =
 (
 prerrs("\
 d3valdcl1_trxltck: ");
 prerrsln("dpat(1) = ", dpat))
+*)
 //
 val dpat =
 (
@@ -507,11 +509,13 @@ val t2q0 =
 envltck_dtyp$eval
 (   env0, t3q0   )}): d3pat1
 //
+(*
 val (  ) =
 (
 prerrs("\
 d3valdcl1_trxltck: ");
 prerrsln("dpat(2) = ", dpat))
+*)
 //
 val dtyp =
 (
@@ -538,7 +542,7 @@ val (  ) =
 (
   envltck_dpat$push(env0, dpat))
 //
-// (*
+(*
 val (  ) =
 prerrsln("\
 d3valdcl1_trxltck: dpat = ", dpat)
@@ -548,7 +552,7 @@ d3valdcl1_trxltck: dtyp = ", dtyp)
 val (  ) =
 prerrsln("\
 d3valdcl1_trxltck: dgrt = ", dgrt)
-// *)
+*)
 //
 (*
 val (  ) =

@@ -1277,6 +1277,8 @@ d3fundcl1_vts1$get(dfun)
 val vts2 =
 d3fundcl1_vts2$get(dfun)
 //
+#impltmp g_print$out<>() = out0
+//
 in//let
 (
 prints
