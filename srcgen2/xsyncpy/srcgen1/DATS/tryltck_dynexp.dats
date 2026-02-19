@@ -1233,6 +1233,7 @@ dexp.node() of
 //
 (* ****** ****** *)
 //
+|D3E1dap0 _ => (dexp)
 |D3E1dapp _ =>
 (
   f0_dapp(dexp, err0))
@@ -2296,8 +2297,7 @@ f3axp1_tryltck
 (
 case+
 faxp.node() of
-|
-F3AXP1dapp
+|F3AXP1dapp
 (npf1, d3as) =>
 let
 val nerr = err0
@@ -2310,6 +2310,10 @@ then faxp else
 f3axp1_make_lctn$node
 (faxp.lctn(), F3AXP1dapp(npf1, d3as))
 end//let//end-of-[F3AXP1dapp(npf1,d3as)]
+//
+|F3AXP1sapp(s2vs, s2ps) => (  faxp  )
+|F3AXP1mets(s2es(*mets*)) => (  faxp  )
+//
 ) where
 {
 //

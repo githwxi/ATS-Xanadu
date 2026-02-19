@@ -1852,6 +1852,7 @@ dvdtp1lst_d2vs$outer(vts0, d2vs))
 val vts1 =
 envltck_dvdtp1lst$eval(env0, vts1)
 //
+(*
 val (  ) = (
 prerrs("d3exp1_trxltck:");
 prerrsln("f0_lam0: f3bs = ", f3bs))
@@ -1861,6 +1862,7 @@ prerrsln("f0_lam0: vts1 = ", vts1))
 val (  ) = (
 prerrs("d3exp1_trxltck:");
 prerrsln("f0_lam0: vts2 = ", vts2))
+*)
 //
 in//let
 //
@@ -2250,12 +2252,14 @@ let
 //
 val loc0 = dcl0.lctn()
 //
+(*
 val (  ) =
 prerrsln("\
 d31cas_trxltck: dcl0 = ", dcl0)
 val (  ) =
 prerrsln("\
 d31cas_trxltck: dcas = ", dcas)
+*)
 //
 in//let
 //
@@ -2330,12 +2334,14 @@ val vts1 =
 (
   envltck_dvdtp1lst$eval(env0, vts1))
 //
+(*
 val (  ) =
 prerrsln("\
 d31cas_trxltck:D3CLS1cls: vts1 = ", vts1)
 val (  ) =
 prerrsln("\
 d31cas_trxltck:D3CLS1cls: vts2 = ", vts2)
+*)
 //
 in//let
 (
