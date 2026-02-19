@@ -889,6 +889,8 @@ dpat.node() of
 //
 (* ****** ****** *)
 //
+|D3P1dap1 _ => (dpat)
+//
 |D3P1dapp _ =>
 (
   f0_dapp(dpat, err0))

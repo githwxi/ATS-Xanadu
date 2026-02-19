@@ -133,6 +133,15 @@ d3typ1_mkof_d3pat1(d3p1)
 //
 (* ****** ****** *)
 //
+(*
+HX:
+The pattern
+should not be expanded!
+*)
+|D3P1dap1 _ =>
+(
+d3typ1_styp$make(t2q0))
+//
 |D3P1dapp
 (d3f0
 ,npf1, d3ps) =>
@@ -150,7 +159,7 @@ f1_d3f0
 case-
 d3f0.node() of
 |D3P1con
-(  dcon  ) => (dcon)
+(  dcon  ) => ( dcon )
 |D3P1tapq
 (d3f0,tjas) => f1_d3f0(d3f0))
 }
