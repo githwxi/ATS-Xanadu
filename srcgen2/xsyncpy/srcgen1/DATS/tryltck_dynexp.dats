@@ -1221,6 +1221,11 @@ dexp.node() of
 //
 (* ****** ****** *)
 //
+|D3E1sapp _ => dexp
+|D3E1sapq _ => dexp
+//
+(* ****** ****** *)
+//
 |D3E1tapp _ => dexp
 |D3E1tapq _ => dexp
 //

@@ -104,6 +104,13 @@ end//let
 //
 (* ****** ****** *)
 //
+|D3P1dap1
+(   d3f0   ) =>
+let
+val () =
+fpeltck_d3pat1(out0, d3f0)
+end//let
+//
 |D3P1dapp
 (d3f0
 ,npf1, d3ps) =>
