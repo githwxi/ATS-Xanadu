@@ -1229,10 +1229,10 @@ case+
 s1e0.node() of
 //
 |S1Eid0(sid1) =>
- (sid1 = MSGT_symbl)
+(sid1 = MSGT_symbl)
 |S1Earrw(s1es) => (true)
 //
-|_(*non-S1Eid0*) => false )
+|_(*non-S1Eid0*) => false)
 //
 fun
 isAXCG
