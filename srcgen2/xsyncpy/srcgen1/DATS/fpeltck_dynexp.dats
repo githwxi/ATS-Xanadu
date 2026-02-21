@@ -310,6 +310,25 @@ end//let//end-of-[D3E1daft(...)]
 //
 (* ****** ****** *)
 //
+|D3E1pcon
+(tknd
+,dlab, d3e1) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1))
+end//let//end-of-[D3E1pcon(...)]
+|D3E1proj
+(tknd
+,dlab, d3e1) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1))
+end//let//end-of-[D3E1proj(...)]
+//
+(* ****** ****** *)
+//
 |D3E1let0
 (dcls, d3e1) =>
 (
@@ -436,6 +455,20 @@ val () =
 (
   fpeltck_d3exp1(out0, d3e1) )
 end(*let*)//end-of-[D3E1flat(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3E1assgn
+(d3el, d3er) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3el) )
+val () =
+(
+  fpeltck_d3exp1(out0, d3er) )
+end(*let*)//end-of-[D3E1assgn(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

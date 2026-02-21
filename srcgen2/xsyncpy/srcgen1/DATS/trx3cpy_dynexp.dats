@@ -551,40 +551,70 @@ d3exp1
 d3exp1
 (loc0, t3q0, D3E1str(tstr))
 //
+(* ****** ****** *)
+//
+|D3Etop(sym1) =>
+d3exp1
+(loc0, t3q0, D3E1top(sym1))
+//
+(* ****** ****** *)
+//
 |D3Evar(d2v1) =>
 d3exp1
 (loc0, t3q0, D3E1var(d2v1))
+//
 |D3Econ(d2c1) =>
 d3exp1
 (loc0, t3q0, D3E1con(d2c1))
+//
 |D3Ecst(d2c1) =>
 d3exp1
 (loc0, t3q0, D3E1cst(d2c1))
 //
+(* ****** ****** *)
+//
 |D3Esapp _ => f0_sapp(d3e0, env0)
 |D3Esapq _ => f0_sapq(d3e0, env0)
+//
+(* ****** ****** *)
 //
 |D3Etapp _ => f0_tapp(d3e0, env0)
 |D3Etapq _ => f0_tapq(d3e0, env0)
 //
+(* ****** ****** *)
+//
 |D3Edap0 _ => f0_dap0(d3e0, env0)
 |D3Edapp _ => f0_dapp(d3e0, env0)
+//
+(* ****** ****** *)
 //
 |D3Epcon _ => f0_pcon(d3e0, env0)
 |D3Eproj _ => f0_proj(d3e0, env0)
 //
+(* ****** ****** *)
+//
 |D3Elet0 _ => f0_let0(d3e0, env0)
+//
+(* ****** ****** *)
 //
 |D3Eift0 _ => f0_ift0(d3e0, env0)
 |D3Ecas0 _ => f0_cas0(d3e0, env0)
 //
+(* ****** ****** *)
+//
 |D3Eseqn _ => f0_seqn(d3e0, env0)
+//
+(* ****** ****** *)
 //
 |D3Etup0 _ => f0_tup0(d3e0, env0)
 |D3Etup1 _ => f0_tup1(d3e0, env0)
 //
+(* ****** ****** *)
+//
 |D3Elam0 _ => f0_lam0(d3e0, env0)
 |D3Efix0 _ => f0_fix0(d3e0, env0)
+//
+(* ****** ****** *)
 //
 |D3Eaddr _ => f0_addr(d3e0, env0)
 |D3Eview _ => f0_view(d3e0, env0)
@@ -594,12 +624,16 @@ d3exp1
 |D3Efold _ => f0_fold(d3e0, env0)
 |D3Efree _ => f0_free(d3e0, env0)
 //
+(* ****** ****** *)
+//
 |
 D3Edp2tr _ => f0_dp2tr(d3e0, env0)
 |
 D3Edl0az _ => f0_dl0az(d3e0, env0)
 |
 D3Edl1az _ => f0_dl1az(d3e0, env0)
+//
+(* ****** ****** *)
 //
 |
 D3Ewhere _ => f0_where(d3e0, env0)

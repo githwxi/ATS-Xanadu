@@ -334,8 +334,8 @@ and i1ins =
 and
 i1val_node =
 //
+(* ****** ****** *)
 |I1Vnil of ()
-//
 (* ****** ****** *)
 //
 |I1Vint of token
@@ -413,13 +413,13 @@ For consed left-values
 //
 (*
 |I1Vlam0 of
-( token(*knd*)
-, fjarglst(*args*), i1cmp(*body*))
+(token(*knd*)
+,fjarglst(*args*), i1cmp(*body*))
 //
 |I1Vfix0 of
-( token(*knd*)
-, d2var(*fid*)
-, fjarglst(*args*), i1cmp(*body*))
+(token(*knd*)
+,d2var(*fid*)
+,fjarglst(*args*), i1cmp(*body*))
 *)
 //
 (* ****** ****** *)

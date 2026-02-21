@@ -125,6 +125,7 @@ d3cl.node() of
 |D3C1vardclst _ =>
 (
  f0_vardclst(d3cl, env0))
+//
 |D3C1fundclst _ =>
 (
  f0_fundclst(d3cl, env0))
