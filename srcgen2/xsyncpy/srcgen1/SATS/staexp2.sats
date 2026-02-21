@@ -49,13 +49,10 @@ HX: for [FILR]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef s2var = $S2E.s2var
-#typedef s2cst = $S2E.s2cst
-(* ****** ****** *)
 //
 #staload
 S2E = "./\
-../../../SATS/dynexp2.sats"
+../../../SATS/staexp2.sats"
 //
 (* ****** ****** *)
 //
@@ -64,13 +61,11 @@ S2E = "./\
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 fun
 s2exp_fprint
 (sexp: s2exp, out0: FILR): void
 #symload
 fprint with s2exp_fprint of 1000
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

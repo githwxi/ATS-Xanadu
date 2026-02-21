@@ -32,10 +32,12 @@ Mon May 19 06:07:14 PM EDT 2025
 "./../../../SATS/lexing0.sats"
 (* ****** ****** *)
 //
+(*
 #staload
 "./../../../SATS/staexp0.sats"
 #staload
 "./../../../SATS/dynexp0.sats"
+*)
 //
 (* ****** ****** *)
 //

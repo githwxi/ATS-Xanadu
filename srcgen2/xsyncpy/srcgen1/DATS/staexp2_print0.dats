@@ -30,68 +30,44 @@
 //
 (*
 Author: Hongwei Xi
-(*
-Sun May 18 10:48:25 AM EDT 2025
-*)
+Tue May 27 02:22:54 AM EDT 2025
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-(*
-HX: for [FILR]
-*)
+#staload
+"./../SATS/staexp2.sats"
+(* ****** ****** *)
 #include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
-//
+"./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
-D0E = "./\
-../../../SATS/dynexp0.sats"
-//
-(* ****** ****** *)
-//
-#typedef d0pat = $D0E.d2pat
-#typedef d0exp = $D0E.d2exp
-#typedef d0ecl = $D0E.d2ecl
+"prelude/SATS/gsyn000.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#symload
-lctn with $D0E.d0pat_get_lctn
-#symload
-node with $D0E.d0pat_get_node
+local
 //
-#symload
-lctn with $D0E.d0exp_get_lctn
-#symload
-node with $D0E.d0exp_get_node
+#extern
+fcast
+castxy{ax:t0}{ay:t0}(ax:ax):(ay)
 //
-#symload
-lctn with $D0E.d0ecl_get_lctn
-#symload
-node with $D0E.d0ecl_get_node
+in//local
 //
-(* ****** ****** *)
-(* ****** ****** *)
+#implfun
+s2exp_fprint
+(sexp, out0) =
+$S2E.s2exp_fprint(sexp, castxy(out0))
 //
-(*
-fun
-d0exp_fprint
-(dexp: d0exp, out0: FILR): void
-#symload
-fprint with d0exp_fprint of 1000
-*)
+end//local
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_dynexp0.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_staexp2_print0.dats] *)
 (***********************************************************************)

@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun May 18 10:49:45 AM EDT 2025
+Tue May 27 02:22:54 AM EDT 2025
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,44 +39,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX: for [FILR]
-*)
-#include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #staload
-S1E = "./\
-../../../SATS/staexp1.sats"
-//
-(* ****** ****** *)
-//
-#typedef g1exp = $S1E.g1exp
-#typedef s1exp = $S1E.s1exp
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-g1exp_fprint
-(gexp: g1exp, out0: FILR): void
-#symload
-fprint with g1exp_fprint of 1000
-//
-fun
-s1exp_fprint
-(sexp: s1exp, out0: FILR): void
-#symload
-fprint with s1exp_fprint of 1000
+"./../SATS/staexp2.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_staexp1.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_staexp2.dats] *)
 (***********************************************************************)
