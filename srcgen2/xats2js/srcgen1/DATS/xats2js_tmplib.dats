@@ -48,7 +48,20 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-<x0>
+{ x0:t0 }
+g_cmp<i1lab(x0)>
+(  ilx1, ilx2  ) =
+(
+g_cmp<label>(l1, l2) where
+{
+val+I1LAB(l1, itm1) = ilx1
+val+I1LAB(l2, itm2) = ilx2} )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
 i0lab_fprint
  (lab, out) = let
 //
@@ -63,7 +76,7 @@ prints("I0LAB(",l01,";",x02,")")
 end(*let*)//end-of-[i0lab_fprint]
 //
 #impltmp
-{x0:t0}
+{ x0:t0 }
 g_print<i0lab(x0)>(ilab) =
 i0lab_fprint(ilab, g_print$out<>())
 //
@@ -123,7 +136,7 @@ i0dcl_fprint(idcl, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
-<x0>
+< x0:t0 >
 i1lab_fprint
  (lab, out) = let
 //
@@ -138,7 +151,7 @@ prints("I1LAB(",l01,";",x02,")")
 end(*let*)//end-of-[i1lab_fprint]
 //
 #impltmp
-{x0:t0}
+{ x0:t0 }
 g_print<i1lab(x0)>(ilab) =
 i1lab_fprint(ilab, g_print$out<>())
 //

@@ -489,6 +489,8 @@ i1val_rcd2
 i1val_tnm(loc0, itnm)) where
 {
 //
+val livs = f0_orderize(livs)
+//
 val iins = I1INSrcd2(tknd,livs)
 val itnm = i1tnm_new0((*void*))
 val ilet = I1LETnew1(itnm, iins)
@@ -496,6 +498,37 @@ val ilet = I1LETnew1(itnm, iins)
 val (  ) =
 (
   envi0i1_insert_ilet(env0, ilet) )
+} where {
+//
+fun
+f0_orderize
+(livs: l1i1vlst): l1i1vlst =
+let
+//
+#typedef x0 = l1i1v
+//
+fun
+f1_test
+( livs
+: list(x0)): bool =
+(
+  list_sortedq<x0>(livs))
+fun
+f1_sort
+( livs
+: l1i1vlst): l1i1vlst =
+(
+  list_mergesort<x0>(livs))
+//
+in//let
+//
+(
+  if // if
+  f1_test(livs)
+  then livs else f1_sort(livs) )
+//
+end (*let*) // end-[f0_orderize(...)]
+//
 }(*where*)//end-of-[i1val_rcd2(env0,...)]
 //
 (* ****** ****** *)
