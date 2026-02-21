@@ -22,6 +22,24 @@ For testing xats2js!
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val ab = @{a=10, b=20}
+val () =
+printsln("ab(a-b) = ", ab.a - ab.b)
+val () =
+console_log(the_print_store_flush())
+//
+val ba = @{b=10, a="20"}
+val () =
+printsln("ba.a = ", ba.a)
+val () =
+printsln("ba.b = ", ba.b)
+val () =
+console_log(the_print_store_flush())
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
 val multiline1 = "\
 Line 1 of a multiline,
 and line 2 of the multline,
