@@ -26,7 +26,7 @@ cleanall:: ; rm -f BUILD/JS/*_dats_out?.js
 
 SRCSATS := \
 lexing0.sats \
-dynexp0.sats \
+staexp1.sats \
 dynexp1.sats \
 statyp2.sats \
 dynexp2.sats \
@@ -41,11 +41,15 @@ fpeltck.sats \
 SRCDATS := \
 lexing0.dats \
 lexing0_print0.dats \
+staexp1.dats \
+staexp1_print0.dats \
+dynexp1.dats \
+dynexp1_print0.dats \
+staexp2.dats \
+staexp2_print0.dats \
 statyp2.dats \
 statyp2_print0.dats \
 statyp2_utils0.dats \
-dynexp1.dats \
-dynexp1_print0.dats \
 dynexp2.dats \
 dynexp2_print0.dats \
 dynexp3.dats \

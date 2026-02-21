@@ -30,52 +30,54 @@
 //
 (*
 Author: Hongwei Xi
-(*
-Sun May 18 10:48:25 AM EDT 2025
-*)
+Sun May 18 10:49:45 AM EDT 2025
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX: for [FILR]
-*)
+#staload
+"./../SATS/staexp1.sats"
+//
+(* ****** ****** *)
+//
 #include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
+"./../HATS/mytmplib00.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
-S0E = "./\
-../../../SATS/staexp0.sats"
+"prelude/SATS/gsyn000.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#symload
-lctn with $S0E.s0exp_get_lctn
-#symload
-node with $S0E.s0exp_get_node
+local
 //
-(* ****** ****** *)
-(* ****** ****** *)
+#extern
+fcast
+castxy{ax:t0}{ay:t0}(ax:ax):(ay)
 //
-(*
-fun
-s0exp_fprint
-(sexp: s0exp, out0: FILR): void
-#symload
-fprint with s0exp_fprint of 1000
-*)
+in//local
+//
+#implfun
+g1exp_fprint
+(gexp, out0) =
+$S1E.g1exp_fprint(gexp, castxy(out0))
+//
+//
+#implfun
+s1exp_fprint
+(sexp, out0) =
+$S1E.s1exp_fprint(sexp, castxy(out0))
+//
+end//local
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_staexp0.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_staexp1_print0.dats] *)
 (***********************************************************************)
