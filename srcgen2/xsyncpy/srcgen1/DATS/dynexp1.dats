@@ -39,68 +39,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX: for [FILR]
-*)
-#include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #staload
-D1E = "./\
-../../../SATS/dynexp1.sats"
-//
-(* ****** ****** *)
-//
-#typedef d1pat = $D1E.d1pat
-#typedef d1exp = $D1E.d1exp
-#typedef d1ecl = $D1E.d1ecl
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#symload
-lctn with $D1E.d1pat_get_lctn
-#symload
-node with $D1E.d1pat_get_node
-//
-#symload
-lctn with $D1E.d1exp_get_lctn
-#symload
-node with $D1E.d1exp_get_node
-//
-#symload
-lctn with $D1E.d1ecl_get_lctn
-#symload
-node with $D1E.d1ecl_get_node
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-d1pat_fprint
-(dpat: d1pat, out0: FILR): void
-fun
-d1exp_fprint
-(dexp: d1exp, out0: FILR): void
-fun
-d1ecl_fprint
-(d1cl: d1ecl, out0: FILR): void
-//
-#symload
-fprint with d1pat_fprint of 1000
-#symload
-fprint with d1exp_fprint of 1000
-#symload
-fprint with d1ecl_fprint of 1000
+"./../SATS/dynexp1.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_dynexp1.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_dynexp1.dats] *)
 (***********************************************************************)

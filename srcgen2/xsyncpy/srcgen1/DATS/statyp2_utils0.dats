@@ -675,6 +675,7 @@ t2q1.node() of
 (
 case+
 t2q2.node() of
+//
 |T2P1arg1
 (knd2, t2q2) =>
 (
@@ -684,6 +685,7 @@ s2typ1_lteq
 then
 s2typ1_lteq
 (t2q2, t2q1) else false)
+//
 |_(*otherwise*) =>
 if // if
 (knd1=0)
@@ -699,7 +701,25 @@ then (false) else
 //
 |_(*otherwise*) =>
 (
+case+
+t2q2.node() of
+|T2P1arg1
+(knd2, t2q2) =>
+if // if
+(knd2=0)
+then(
+s2typ1_lteq(t2q1, t2q2))
+else(
+if // if
+linq(t2q2)
+then (false) else
+(
+  s2typ1_lteq(t2q1, t2q2)))
+//
+|_(*otherwise*) =>
+(
   s2typ1_lteq(  t2q1 , t2q2  ))
+)
 //
 ) where
 {
