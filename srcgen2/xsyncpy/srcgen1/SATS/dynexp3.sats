@@ -621,6 +621,10 @@ d3exp1_node =
 //
 (* ****** ****** *)
 //
+|D3E1top of (sym_t)
+//
+(* ****** ****** *)
+//
 |D3E1var of (d2var)
 //
 |D3E1con of (d2con)
@@ -961,7 +965,7 @@ datatype
 d3cls1_node =
 |D3CLS1gpt of (d3gpt1)
 |D3CLS1cls of (d3gpt1, d3exp1)
-and
+and//and
 d3gpt1_node =
 |D3GPT1pat of (d3pat1)
 |D3GPT1gua of (d3pat1, d3gua1lst)

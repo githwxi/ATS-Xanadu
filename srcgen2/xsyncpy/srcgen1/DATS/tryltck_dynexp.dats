@@ -1223,6 +1223,10 @@ dexp.node() of
 //
 (* ****** ****** *)
 //
+|D3E1top _ => dexp
+//
+(* ****** ****** *)
+//
 |D3E1sapp _ => dexp
 |D3E1sapq _ => dexp
 //
@@ -2200,6 +2204,10 @@ val vts1 =
 val vts2 =
   dcls.vts2((*0*))//outer:dtyp
 //
+val (  ) =
+(
+dgrt_tryltck(dgpt, dgrt, err0))
+//
 val vts1 =
 (
   dvstp1lst_trylinq(vts1, err0))
@@ -2218,7 +2226,42 @@ end//let1//endof(else)//endof(if(...))
 //
 end(*let*)//end-of-[D3CLScls(dgpt,d3e1)]
 //
-)(*case+*)//end-of-[d3cls1_tryltck(dcls,err0)]
+) where
+{
+//
+fun
+dgpt_freeq
+(dgpt: d3gpt1): bool =
+(
+case+
+dgpt.node() of
+|D3GPT1pat
+(   dpat   ) => d3pat1_freeq(dpat)
+|D3GPT1gua
+(dpat, d3gs) => d3pat1_freeq(dpat))
+//
+fun
+dgrt_tryltck
+( dgpt
+: d3gpt1
+, dgrt
+: optn(d3typ1)
+, err0: &sint >> _): void =
+(
+case+ dgrt of
+|optn_nil((*0*)) => ((*void*))
+|optn_cons(dtyp) => (
+if
+dgpt_freeq(dgpt)
+then
+(
+if // if
+d3typ1_nfrq(dtyp) then (err0:=err0+1))
+else
+if // if
+d3typ1_linq(dtyp) then (err0:=err0+1)))
+//
+}(*where*)//end-of-[d3cls1_tryltck(dcls,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

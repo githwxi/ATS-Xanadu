@@ -977,8 +977,12 @@ d3exp1
 //
 (* ****** ****** *)
 //
-|D3E1cst _ => f0_cst(d3e0, env0)
+|D3E1top _ => f0_top(d3e0, env0)
+//
+(* ****** ****** *)
+//
 |D3E1var _ => f0_var(d3e0, env0)
+|D3E1cst _ => f0_cst(d3e0, env0)
 //
 (* ****** ****** *)
 //
@@ -1010,8 +1014,6 @@ d3exp1
 (* ****** ****** *)
 //
 |D3E1ift0 _ => f0_ift0(d3e0, env0)
-//
-(* ****** ****** *)
 //
 |D3E1cas0 _ => f0_cas0(d3e0, env0)
 //
@@ -1066,19 +1068,31 @@ loc0,tqxp,D3E1errck(0(*lvl*),d3e0)))
 (* ****** ****** *)
 //
 fun
-f0_cst
+f0_top
 ( d3e0: d3exp1
 , env0: !envltck): d3exp1 =
 let
 //
+val
+t2q0 = d3e0.styp()
+val
+t2q0 =
+(
+  s2typ1_t0pize(t2q0))
+val
+tqxp =
+(
+  d3typ1_styp$make(t2q0))
+//
 val-
-D3E1cst
-(   d2c1   ) = d3e0.node()
+D3E1top
+(   sym1   ) = d3e0.node()
 //
 in//let
-d3exp1(loc0, tqxp, D3E1cst(d2c1))
-end//let//end-of-[f0_cst(d3e0,env0)]
+d3exp1(loc0, tqxp, D3E1top(sym1))
+end//let//end-of-[f0_top(d3e0,env0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1098,6 +1112,22 @@ in//let
 //
 d3exp1(loc0, t3q1, D3E1var(d2v1))
 end//let//end-of-[f0_var(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cst
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1cst
+(   d2c1   ) = d3e0.node()
+//
+in//let
+d3exp1(loc0, tqxp, D3E1cst(d2c1))
+end//let//end-of-[f0_cst(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1655,7 +1685,9 @@ case+ dclz of
   d3exp1_dvdtp(dexp, dvts))
 where
 {
-val dvts = d3cls1_vts2$get(dcl1)
+val dvts =
+(
+  d3cls1_vts2$get(dcl1))//(val)
 val (  ) =
 (
   envltck_dvts$updt(env0, dvts)) }
@@ -2291,7 +2323,7 @@ if
 freeq(dpat)
 then (dtyp) else
 envltck_dmxq$updt(
-  env0 , dcas , dtyp))//val()
+  env0 , dcas , dtyp))//(val)
 where
 {
 (*
@@ -2303,7 +2335,8 @@ val dtyp =
 d3typ1_mkof_d3pat1(  dpat  ))
 }(*where*)//end-of-[val(dtyp)]
 //
-val dgrt = optn_cons(  dtyp  )
+val dgrt = (
+  optn_cons(dtyp))//val(dgrt)
 //
 val (  ) = (
 envltck_dpat$push(env0, dpat))

@@ -48,14 +48,16 @@ list_vt_forall0
 {
 fun
 loop
-(xs: list_vt(x0)): bool =
+(xs:
+!list_vt(x0)): bool =
 (
 case+ xs of
 | ~
 list_vt_nil
-  ((*0*)) => (true)
+  ((*0*)) => ( true )
 | ~
-list_vt_cons(x1, xs) =>
+list_vt_cons
+  (x1, xs) =>
 let
 val test =
 forall$test0<x0>(x1) in
