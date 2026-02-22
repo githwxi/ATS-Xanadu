@@ -12,3 +12,5 @@ of XATSOPT.  This is a fear that one often does not see clearly until
 one's codebase becomes large and complex. So many software projects
 have collapsed under their own complexity for the need of further
 development!
+
+[comment]: # HX-2026-02-22: The linearity checker is functioning!

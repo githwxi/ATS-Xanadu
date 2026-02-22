@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,45 +30,19 @@
 //
 (*
 Author: Hongwei Xi
-(*
-Sat Feb 21 09:40:52 PM EST 2026
-*)
+Sun May 18 10:02:26 AM EDT 2025
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX: for [FILR]
-*)
-#include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#abstbox i0typ1_tbox // p0tr
-#typedef i0typ1 = i0typ1_tbox
-//
-(* ****** ****** *)
-//
-#typedef i0typ1lst = list(i0typ1)
-#typedef i0typ1opt = optn(i0typ1)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-datatype
-i0typ1_node =
-|
-I0T1tcon of (d2con, i0typ1lst)
+#staload
+"./../SATS/intrep0.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_intrep0.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_intrep0_print0.dats] *)
 (***********************************************************************)
