@@ -432,8 +432,12 @@ dvdtp1lst_fprint
 datatype
 d3pat1_node =
 //
+(* ****** ****** *)
+//
 |D3P1any of ()
 |D3P1var of d2var
+//
+(* ****** ****** *)
 //
 |D3P1int of token
 |D3P1btf of sym_t
@@ -461,9 +465,10 @@ d3pat1_node =
 //
 (* ****** ****** *)
 //
-|D3P1dap1 of (d3pat1(*dcon*))
+|D3P1dap1 of
+(d3pat1(*dcon*))
 |D3P1dapp of
-(d3pat1
+(d3pat1(*dcon*)
 ,sint(*npf*), d3pat1lst(*darg*)
 ) (* D3P1dapp *)
 //
