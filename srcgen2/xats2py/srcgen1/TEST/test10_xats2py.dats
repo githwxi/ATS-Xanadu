@@ -28,7 +28,8 @@ strm_sint$from: n0 = ", n0)})
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val xs = strm_sint$from(101)
+val xs =
+strm_sint$from(101)
 //
 val () =
 (

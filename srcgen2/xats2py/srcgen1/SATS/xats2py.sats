@@ -121,8 +121,8 @@ xats2py_i1fundclist
 #define envx2py_get_filr = envx2js_get_filr
 #define envx2py_get_nind = envx2js_get_nind
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_xats2py_srcgen1_SATS_xats2py.sats] *)
