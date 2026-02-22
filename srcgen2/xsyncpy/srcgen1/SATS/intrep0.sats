@@ -54,9 +54,47 @@ HX: for [FILR]
 #typedef i0typ1 = i0typ1_tbox
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#abstbox i0pat1_tbox // p0tr
+#typedef i0pat1 = i0pat1_tbox
+//
+(* ****** ****** *)
+//
+#abstbox i0exp1_tbox // p0tr
+#typedef i0exp1 = i0exp1_tbox
+//
+(* ****** ****** *)
+//
+datatype
+i0lab(itm:type) =
+|I0LAB of (label, itm(*elt*))
+//
+fun
+<x0:t0>
+i0lab_get_itm
+(ilab: i0lab(x0)): x0
+#symload itm with i0lab_get_itm
+//
+(* ****** ****** *)
+#typedef l0i0p1 = i0lab(i0pat1)
+#typedef l0i0e1 = i0lab(i0exp1)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #typedef i0typ1lst = list(i0typ1)
 #typedef i0typ1opt = optn(i0typ1)
+//
+(* ****** ****** *)
+//
+#typedef i0pat1lst = list(i0pat1)
+#typedef i0pat1opt = optn(i0pat1)
+#typedef l0i0p1lst = list(l0i0p1)
+(* ****** ****** *)
+//
+#typedef i0exp1lst = list(i0exp1)
+#typedef i0exp1opt = optn(i0exp1)
+#typedef l0i0e1lst = list(l0i0e1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -79,6 +117,46 @@ fun
 i0typ1_fprint
 (ityp: i0typ1, out0: FILR): void
 #symload fprint with i0typ1_fprint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i0pat1_node
+//
+(* ****** ****** *)
+//
+|I0P1any of ()
+|I0P1var of d2var
+//
+(* ****** ****** *)
+//
+|I0P1int of sint
+|I0P1btf of bool
+|I0P1chr of token
+|I0P1flt of token
+|I0P1str of token
+//
+(* ****** ****** *)
+//
+|I0P1dap1 of
+(i0pat1(*dcon*))
+|I0P1dapp of
+(i0pat1(*dcon*)
+,sint(*npf*), i0pat1lst(*darg*))
+//
+(* ****** ****** *)
+//
+|I0P1rfpt of
+(i0pat1,token(*AS*),i0pat1(*aspt*))
+//
+(* ****** ****** *)
+//
+|I0P1tup0 of (sint(*npf*),i0pat1lst)
+|I0P1tup1 of
+(token(*knd*),sint(*npf*),i0pat1lst)
+|I0P1rcd2 of
+(token(*knd*),sint(*npf*),l0i0p1lst)
 //
 (* ****** ****** *)
 (* ****** ****** *)
