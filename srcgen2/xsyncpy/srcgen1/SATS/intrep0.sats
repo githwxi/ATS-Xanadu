@@ -63,8 +63,49 @@ HX: for [FILR]
 //
 datatype
 i0typ1_node =
-|
-I0T1tcon of (d2con, i0typ1lst)
+(* ****** ****** *)
+|I0T1cst of s2cst//constant
+|T0T1var of s2var//variable
+(* ****** ****** *)
+|I0T1lft of s2typ1//lft-value
+(* ****** ****** *)
+//
+|I0T1tcon of (d2con, i0typ1lst)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0typ1_fprint
+(ityp: i0typ1, out0: FILR): void
+#symload fprint with i0typ1_fprint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i0exp1_node =
+//
+(* ****** ****** *)
+//
+|I0E1int of sint
+|I0E1btf of bool
+|I0E1chr of token
+|I0E1flt of token
+|I0E1str of token
+//
+(* ****** ****** *)
+//
+|I0E1seqn of
+(i0exp1lst(*init*), i0exp1(*last*))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0exp1_fprint
+(iexp: i0exp1, out0: FILR): void
+#symload fprint with i0exp1_fprint of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
