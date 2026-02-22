@@ -161,6 +161,8 @@ $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
 test08:: ; \
 $(CAT) $(XATS2PY_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
 test08:: ; \
+$(CAT) $(XATS2PY_XSHARED)/srcgen2_precats.py >> OUTS/$@_out.py
+test08:: ; \
 $(CAT) $(XATS2PY_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test08:: \
