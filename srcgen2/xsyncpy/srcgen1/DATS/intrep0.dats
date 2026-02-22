@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat Feb 21 09:40:52 PM EST 2026
+Sun Feb 22 10:24:37 AM EST 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,36 +39,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX: for [FILR]
-*)
-#include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#abstbox i0typ1_tbox // p0tr
-#typedef i0typ1 = i0typ1_tbox
-//
-(* ****** ****** *)
-//
-#typedef i0typ1lst = list(i0typ1)
-#typedef i0typ1opt = optn(i0typ1)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-datatype
-i0typ1_node =
-|
-I0T1tcon of (d2con, i0typ1lst)
+#staload
+"./../SATS/intrep0.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_intrep0.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_intrep0.dats] *)
 (***********************************************************************)

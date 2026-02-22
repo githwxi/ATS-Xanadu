@@ -35,6 +35,7 @@ trx3cpy.sats \
 trxltck.sats \
 tryltck.sats \
 fpeltck.sats \
+intrep0.sats \
 
 ########################################################################
 
@@ -74,6 +75,8 @@ tryltck_decl00.dats \
 fpeltck.dats \
 fpeltck_dynexp.dats \
 fpeltck_decl00.dats \
+intrep0.dats \
+intrep0_print0.dats \
 
 ########################################################################
 ########################################################################
