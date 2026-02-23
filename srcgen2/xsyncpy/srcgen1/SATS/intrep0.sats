@@ -90,6 +90,7 @@ i0lab_get_itm
 #typedef i0pat1lst = list(i0pat1)
 #typedef i0pat1opt = optn(i0pat1)
 #typedef l0i0p1lst = list(l0i0p1)
+//
 (* ****** ****** *)
 //
 #typedef i0exp1lst = list(i0exp1)
@@ -101,6 +102,7 @@ i0lab_get_itm
 //
 datatype
 i0typ1_node =
+//
 (* ****** ****** *)
 |I0T1cst of s2cst//constant
 |T0T1var of s2var//variable
@@ -184,6 +186,14 @@ fun
 i0exp1_fprint
 (iexp: i0exp1, out0: FILR): void
 #symload fprint with i0exp1_fprint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i0dcl1_node =
+//
+(* ****** ****** *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
