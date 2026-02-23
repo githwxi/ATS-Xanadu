@@ -66,6 +66,11 @@ HX: for [FILR]
 //
 (* ****** ****** *)
 //
+#abstbox i0dcl1_tbox // p0tr
+#typedef i0dcl1 = i0dcl1_tbox
+//
+(* ****** ****** *)
+//
 datatype
 i0lab(itm:type) =
 |I0LAB of (label, itm(*elt*))
@@ -96,6 +101,11 @@ i0lab_get_itm
 #typedef i0exp1lst = list(i0exp1)
 #typedef i0exp1opt = optn(i0exp1)
 #typedef l0i0e1lst = list(l0i0e1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef i0dcl1lst = list(i0dcl1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
