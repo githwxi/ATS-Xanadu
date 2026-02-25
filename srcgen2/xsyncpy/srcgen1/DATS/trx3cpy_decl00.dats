@@ -503,16 +503,17 @@ val (  ) = prerrsln
 ("d3fundcl_trx3cpy: tdxp = ", tdxp)
 *)
 //
-val f3bs = list_nil((*void*))
-val vts1 = list_nil((*void*))
-val vts2 = list_nil((*void*))
+val f3bs = list_nil((*void*))//f3axp1lst
+val vts1 = list_nil((*void*))//dvstp1lst
+val vts2 = list_nil((*void*))//dvdtp1lst
+val evts = list_nil((*void*))//dvdtp1lst
 //
 in//let
 (
 d3fundcl1_make_args
 (loc0
-,dpid
-,t2q1,f3as,f3bs,sres,tdxp,wsxp,vts1,vts2))
+,dpid,t2q1
+,f3as,f3bs,evts,sres,tdxp,wsxp,vts1,vts2))
 end(*let*)//end-of-[d3fundcl_trx3cpy(dfun,env0)]
 //
 (* ****** ****** *)

@@ -1324,7 +1324,8 @@ d3fundcl1_make_args
 ,dpid:d2var
 ,t2q1:s2typ1
 ,farg:f3arg1lst
-,faxp:f3axp1lst,sres:s2res
+,faxp:f3axp1lst
+,evts:dvdtp1lst,sres:s2res
 ,tdxp:teqd3exp1,wsxp:wths2exp,vts1:dvstp1lst,vts2:dvdtp1lst
 ) : d3fundcl1//end-of-[d3fundcl1_make_args]
 //
