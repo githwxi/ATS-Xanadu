@@ -709,7 +709,11 @@ val vts2 =
 dvdtp1lst_d2vs$outer(vts0, d2vs))
 //
 val vts1 =
-envltck_dvdtp1lst$eval(env0, vts1)
+envltck_dvdtp1lst$eval
+(     env0, vts1     )//val(vts1)
+val evts =
+(
+  envltck_dvts$save( env0, vts2 ))
 //
 (*
 val (  ) =
@@ -727,9 +731,10 @@ in//let
 //
 (
 d3fundcl1_make_args
-(loc0
-,dpid, t2q1
-,f3as, f3bs, sres, tdxp,wsxp,vts1,vts2))
+( loc0
+, dpid, t2q1
+, f3as, f3bs
+, evts, sres, tdxp, wsxp, vts1, vts2))
 //
 end//let//end-of-[f0_d3fundcl1(dfun,env0)]
 //
