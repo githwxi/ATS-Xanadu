@@ -712,20 +712,25 @@ token(*casknd*), d3exp1, d3cls1lst)
 //
 |D3E1lam0 of
 (token(*knd*)
-,f3arg1lst, s2res, f1unarrw, d3exp1)
+,f3arg1lst
+,s2res, f1unarrw, d3exp1)
 |D3E1lam1 of
 (token(*knd*)
 ,f3arg1lst
-,f3axp1lst, s2res, f1unarrw, d3exp1
+,f3axp1lst
+,dvdtp1lst, s2res, f1unarrw, d3exp1
 ,dvstp1lst(*inner*), dvdtp1lst(*outer*))
 //
 |D3E1fix0 of
-(token(*knd*), d2var(*fid*)
-,f3arg1lst, s2res, f1unarrw, d3exp1)
-|D3E1fix1 of
-(token(*knd*), d2var(*fid*)
+(token(*knd*)
+,d2var(*fid*)
 ,f3arg1lst
-,f3axp1lst, s2res, f1unarrw, d3exp1
+,s2res, f1unarrw, d3exp1)
+|D3E1fix1 of
+(token(*knd*)
+,d2var(*fid*)
+,f3arg1lst, f3axp1lst
+,dvdtp1lst, s2res, f1unarrw, d3exp1
 ,dvstp1lst(*inner*), dvdtp1lst(*outer*))
 //
 (* ****** ****** *)
@@ -1125,8 +1130,19 @@ for handling bef/aft syntax!
 , dimpl // HX: impl-d2cst
 , t2iaglst // HX: of s2explst
 , t2iag1lst // HX: of s2typ1lst
+, f3arg1lst, s2res, d3exp1(*body*))
+//
+|D3C1implmnt1 of
+( token(*impkind*)
+, stamp(*unicity*)
+, s2qaglst // s2vs
+, t2qaglst // s2vs+t2is
+, dimpl // HX: impl-d2cst
+, t2iaglst // HX: of s2explst
+, t2iag1lst // HX: of s2typ1lst
 , f3arg1lst
 , f3axp1lst
+, dvdtp1lst
 , s2res, d3exp1, dvstp1lst, dvdtp1lst)
 //
 (* ****** ****** *)
@@ -1265,6 +1281,8 @@ fun // d2vs$inner // HX: static types
 d3fundcl1_vts1$get:(d3fundcl1)->dvstp1lst
 fun // d2vs$outer // HX: dynamic types
 d3fundcl1_vts2$get:(d3fundcl1)->dvdtp1lst
+fun // d2vs$outer // HX: dynamic types
+d3fundcl1_evts$get:(d3fundcl1)->dvdtp1lst
 //
 #symload farg with d3fundcl1_farg$get(*lst*)
 #symload faxp with d3fundcl1_faxp$get(*lst*)

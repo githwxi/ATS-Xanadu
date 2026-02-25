@@ -622,6 +622,8 @@ d3exp1_lam1_errck
 : f3arg1lst
 , f3bs
 : f3axp1lst
+, evts
+: dvdtp1lst
 , sres: s2res
 , arrw: f1unarrw
 , d3e1: d3exp1
@@ -638,9 +640,10 @@ d3exp1_errck
 (
 lvl0+1,
 d3exp1(
-loc0,t3q0,
-D3E1lam1(tknd,
-f3as,f3bs,sres,arrw,d3e1,vts1,vts2)))
+loc0, t3q0,
+D3E1lam1(
+tknd, f3as, f3bs,
+evts, sres, arrw, d3e1, vts1, vts2)))
 //
 endlet//end-of-[d3exp1_lam1_errck(...)]
 //
@@ -1653,7 +1656,8 @@ if // if
 (err0=nerr)
 then (d3e0) else
 let
-val loc0 = d3e0.lctn()
+val
+loc0 = d3e0.lctn()
 in//let
 (
   d3exp1_tup1_errck
@@ -1678,7 +1682,8 @@ val-
 D3E1lam1
 (tknd
 ,f3as
-,f3bs, sres
+,f3bs
+,evts, sres
 ,arrw, d3e1
 ,vts1, vts2) = d3e0.node()
 //
@@ -1716,13 +1721,14 @@ if // if
 (err0=nerr)
 then (d3e0) else
 let
-val loc0 = d3e0.lctn()
+val
+loc0 = d3e0.lctn()
 in//let
 (
-  d3exp1_lam1_errck(
-    loc0, t3q0
-  , tknd, f3as, f3bs
-  , sres, arrw, d3e1, vts1, vts2))
+d3exp1_lam1_errck(
+loc0, t3q0,
+tknd, f3as, f3bs,
+evts, sres, arrw, d3e1, vts1, vts2))
 end//let
 //
 end(*let*)//end-of-[f0_lam1(d3e0,err0)]

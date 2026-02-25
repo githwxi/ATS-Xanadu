@@ -135,6 +135,11 @@ d3cl.node() of
 |D3C1implmnt0 _ =>
 (
  f0_implmnt0(d3cl, env0))
+(*
+|D3C1implmnt1 _ =>
+(
+ f0_implmnt1(d3cl, env0))
+*)
 //
 (* ****** ****** *)
 //
@@ -376,9 +381,8 @@ D3C1implmnt0
 , sqas, tqas
 , dimp
 , tias, tibs
-, f3as, f3bs
-, sres, dexp
-, vts1, vts2) = d3cl.node()
+, f3as
+, sres, dexp) = d3cl.node()
 //
 val (  ) =
 envltck_pshlam0(env0)//enter
@@ -407,7 +411,11 @@ val vts2 =
 dvdtp1lst_d2vs$outer(vts0, d2vs))
 //
 val vts1 =
-envltck_dvdtp1lst$eval(env0, vts1)
+envltck_dvdtp1lst$eval
+(     env0, vts1     )//val(vts1)
+val evts =
+(
+  envltck_dvts$save( env0, vts2 ))
 //
 (*
 val (  ) =
@@ -426,11 +434,14 @@ in//let
 d3ecl1
 (
 loc0,
-D3C1implmnt0
+D3C1implmnt1
 ( knd0
-, stmp, sqas, tqas
-, dimp, tias, tibs
-, f3as, f3bs, sres, dexp, vts1, vts2)))
+, stmp
+, sqas, tqas
+, dimp
+, tias, tibs
+, f3as, f3bs
+, evts, sres, dexp, vts1, vts2)))
 end//let//end-of-[f0_implmnt0(d3cl,env0)]
 //
 (* ****** ****** *)

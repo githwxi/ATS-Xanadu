@@ -668,15 +668,22 @@ case+ vts0 of
 if
 (dvtp.0 >= d2v0)
 then
-loop0(vts1, dvs1, res0)
+(
+(*
+HX-2026-02-24:
+[res0]
+cannot change
+from this point on!!!
+*)
+loop0(vts1, dvs1, res0))
 else
-let
+let//1
 val res0 =
 list_vt_cons(dvtp, res0)
 in//let
 (
   loop1(vts1, d2v0, dvs1, res0))
-end//let//end-of-(else)
+end(*let*)//end-of-(else)
 )
 )(*case+*)//end-of-[loop1(vts0,...)]
 //

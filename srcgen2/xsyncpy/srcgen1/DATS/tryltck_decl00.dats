@@ -200,7 +200,7 @@ end(*let*)//end-of-[d3ecl1_fundclst_errck]
 (* ****** ****** *)
 //
 fun
-d3ecl1_implmnt0_errck
+d3ecl1_implmnt1_errck
 ( loc0: loc_t
 , tknd: token
 , stmp: stamp
@@ -210,25 +210,28 @@ d3ecl1_implmnt0_errck
 , tias: t2iaglst
 , tibs: t2iag1lst
 , f3as: f3arg1lst
-, f3bs: f3axp1lst, sres: s2res
+, f3bs: f3axp1lst
+, evts: dvdtp1lst, sres: s2res
 , dexp: d3exp1(*body*)
 , vts1: dvstp1lst, vts2: dvdtp1lst): d3ecl1 =
 let
 val lvl = 0
 in//let
 //
+(
 d3ecl1_errck
 (
 lvl+1,
 d3ecl1_make_lctn$node
-(loc0
-,D3C1implmnt0
- ( tknd, stmp
- , sqas, tqas
- , dimp, tias, tibs
- , f3as, f3bs, sres, dexp, vts1, vts2)))
+(
+loc0,
+D3C1implmnt1
+(tknd
+,stmp,sqas,tqas
+,dimp,tias,tibs
+,f3as,f3bs,evts,sres,dexp,vts1,vts2))))
 //
-end(*let*)//end-of-[d3ecl1_implmnt0_errck]
+end(*let*)//end-of-[d3ecl1_implmnt1_errck]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -273,9 +276,10 @@ d3cl.node() of
 //
 (* ****** ****** *)
 //
-|D3C1implmnt0 _ =>
+|D3C1implmnt0 _ => (d3cl)
+|D3C1implmnt1 _ =>
 (
-  f0_implmnt0(d3cl, err0))
+  f0_implmnt1(d3cl, err0))
 //
 (* ****** ****** *)
 //
@@ -445,7 +449,7 @@ end(*let*)//end-of-[f0_fundclst(dcl0,err0)]
 (* ****** ****** *)
 //
 fun
-f0_implmnt0
+f0_implmnt1
 ( dcl0: d3ecl1
 , err0: &sint >> _): d3ecl1 =
 let
@@ -453,12 +457,14 @@ let
 val nerr = err0
 //
 val-
-D3C1implmnt0
+D3C1implmnt1
 (tknd, stmp
 ,sqas, tqas
-,dimp, tias, tibs
-,f3as, f3bs, sres
-,dexp ,vts1, vts2) =
+,dimp
+,tias, tibs
+,f3as, f3bs
+,evts, sres
+,dexp, vts1, vts2) =
 (
   d3ecl1_node$get( dcl0 ))
 //
@@ -494,15 +500,19 @@ then (dcl0) else
 let
 val loc0 = dcl0.lctn()
 in//let
+//
+d3ecl1_implmnt1_errck
 (
-  d3ecl1_implmnt0_errck
-  ( loc0
-  , tknd, stmp
-  , sqas, tqas
-  , dimp, tias, tibs
-  , f3as, f3bs, sres, dexp, vts1, vts2) )
+loc0,
+tknd,
+stmp,
+sqas, tqas,
+dimp,
+tias, tibs,
+f3as, f3bs, evts, sres, dexp, vts1, vts2)
+//
 end//let
-end(*let*)//end-of-[f0_implmnt0(dcl0,err0)]
+end(*let*)//end-of-[f0_implmnt1(dcl0,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

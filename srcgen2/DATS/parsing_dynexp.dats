@@ -140,9 +140,6 @@ atmd0pat::
 *)
 //
 #extern
-fun p1_l0d0p: p1_fun(l0d0p)
-//
-#extern
 fun
 p1_d0patseq_atm: p1_fun(d0patlst)
 //
@@ -311,7 +308,8 @@ in
 end (*let*) // end of [p1_l0d0p(buf,err)]
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 p1_d0pat_atm
   (buf, err) =
@@ -484,7 +482,41 @@ end (*let*) // end of [ _(* otherwise *) ]
 (* ****** ****** *)
 //
 end (*let*) // end of [p1_d0pat_atm(buf,err)]
-
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+p1_d0pat_app
+  (buf, err) = let
+//
+val
+d0p0 =
+p1_d0pat_atm(buf, err)
+val
+d0ps =
+p1_d0patseq_atm(buf, err)
+//
+in//let
+//
+case+ d0ps of
+|
+list_nil() => d0p0
+|
+list_cons _ => let
+val
+d0p1 =
+list_last(d0ps)
+val
+loc0 = (d0p0.lctn() + d0p1.lctn())
+in//let
+d0pat_make_node
+(loc0, D0Papps(list_cons(d0p0, d0ps)))
+end(*let*)//end-of-[list_cons]
+//
+end(*let*)//end-of-[p1_d0pat_app(buf,err)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -513,6 +545,7 @@ list_vt2t
 (ps_COMMA_p1fun{l0d0p}(buf, err, p1_l0d0p))
 ) (* end of [p1_l0d0pseq_COMMA(buf, err)] *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
@@ -566,7 +599,7 @@ end (*let*) // end of [T_LBRACE() ]
 |
 _(* non-sta-met *) =>
 let
-  val d0p = p1_d0pat_atm(buf, err)
+  val d0p = p1_d0pat_app(buf, err)
 in
   f0arg_make_node(d0p.lctn(), F0ARGdapp(d0p))
 end (*let*) // end of [non-sta-met]
@@ -797,7 +830,7 @@ case+ wdc1 of
 }
 }(*end of [list_cons]*)
 //
-)(*case*)//end-of(f0_whrs(d0e0,wdcs))
+)(*case*)//end-of-(f0_whrs(d0e0,wdcs))
 
 (* ****** ****** *)
 
@@ -805,9 +838,9 @@ case+ wdc1 of
 p1_napp(buf, err) =
 let
 //
-  val e00 = err
-  val tok = buf.getk0()
-  val tnd = tok.tnode()
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
 //
 in//let
 //
@@ -952,11 +985,15 @@ val tknd = tok
 val (  ) = buf.skip1()
 //
 val
-farg = p1_f0argseq(buf, err)
+farg =
+(
+  p1_f0argseq(buf, err))
 //
-val sres = p1_s0res(buf, err)
+val
+sres = p1_s0res(buf, err)
 //
-val arrw = p1_f0unarrw(buf, err)
+val
+arrw = p1_f0unarrw(buf, err)
 //
 val body = p1_d0exp(buf, err)
 //
@@ -1790,7 +1827,7 @@ end(*let*) // end-of-[ (error-processing) ]
 end(*let*) // end-of-[p1_d0exp_atm(buf,err)]
 
 (* ****** ****** *)
-
+//
 #implfun
 p1_d0exp_app
   (buf, err) = let
@@ -1814,13 +1851,13 @@ d0e1 =
 list_last(d0es)
 val
 loc0 = (d0e0.lctn() + d0e1.lctn())
-in
+in//let
 d0exp_make_node
 (loc0, D0Eapps(list_cons(d0e0, d0es)))
 end(*let*)//end-of-[list_cons]
 //
 end(*let*)//end-of-[p1_d0exp_app(buf,err)]
-
+//
 (* ****** ****** *)
 
 #implfun
