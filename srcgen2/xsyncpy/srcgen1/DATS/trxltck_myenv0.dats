@@ -699,6 +699,10 @@ prerrsln("envltck_dvar$find: dvar = ", dvar)
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-02-24:
+Only a lin-type is updated!
+*)
 #implfun
 envltck_dvar$take
   (env0, dvar) =
@@ -710,9 +714,11 @@ linq with d3typ1_linq
 val t3q0 =
 envltck_dvar$find(env0, dvar)
 //
+(*
 val (  ) =
 prerrsln("\
 envltck_dvar$take: t3q0 = ", t3q0)
+*)
 //
 in//let
 //
@@ -737,10 +743,10 @@ end//let
 //
 end where
 {
-// (*
+(*
 val () =
 prerrsln("envltck_dvar$take: dvar = ", dvar)
-// *)
+*)
 }(*where*)//end-of-(envltck_dvar$take(env0,...))
 //
 (* ****** ****** *)
@@ -759,12 +765,12 @@ dtpstk_updt(d2v0, t3q0, dtpstk))
 ) where
 {
 //
-// (*
+(*
 val () =
 prerrsln("envltck_dvar$updt: d2v0 = ", d2v0)
 val () =
 prerrsln("envltck_dvar$updt: t3q0 = ", t3q0)
-// *)
+*)
 //
 }(*where*)//end-of-(envltck_dvar$updt(env0,...))
 //
@@ -1322,12 +1328,40 @@ end//let//end-of-[list_cons(f3a1,f3as)]
 (* ****** ****** *)
 //
 #implfun
+envltck_dvts$save
+  (env0, vts0) =
+(
+list_map$e1nv
+( vts0 , env0 ))
+where
+{
+//
+#typedef x0 = dvdtp1
+#typedef y0 = dvdtp1
+#vwtpdef e1 = envltck
+//
+#impltmp
+map$e1nv$fopr
+<x0><y0><e1>
+(   dvtp   ) =
+let
+val d2v1 = dvtp.0
+val t3q1 =
+(
+envltck_dvar$find
+(  env0 , d2v1  )) in (d2v1, t3q1) end//let
+//
+}(*where*)//end-of-[envltck_dvts$save(env0,...)]
+//
+(* ****** ****** *)
+//
+#implfun
 envltck_dvts$updt
   (env0, vts0) =
 (
 case+ vts0 of
-| list_nil() => ()
-| list_cons(dvtp, vts1) =>
+|list_nil() => ()
+|list_cons(dvtp, vts1) =>
 (
   envltck_dvts$updt(env0, vts1))
 where
@@ -1339,7 +1373,7 @@ case+ env0 of
 !dtpstk, stkmap) =>
 (
 dtpstk :=
-dtpstk_updt(dvtp.0, dvtp.1, dtpstk)) }
+dtpstk_updt(dvtp.0, dvtp.1, dtpstk)) }//whr
 )(*case+*)//end-of-[envltck_dvts$updt(env0,...)]
 //
 (* ****** ****** *)

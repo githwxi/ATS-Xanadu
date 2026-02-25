@@ -41,6 +41,42 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/intrep0.sats"
 //
 (* ****** ****** *)
+//
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0typ1_fprint
+( i0t0, out0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+in//let
+//
+case+
+i0t0.node() of
+//
+|I0T1cst
+(   s2c1   ) =>
+prints("I0T1cst(", s2c1, ")")
+|I0T1var
+(   s2v1   ) =>
+prints("I0T1var(", s2v1, ")")
+//
+end(*let*)//end-of-[i0typ1_fprint(i0t0,out0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)

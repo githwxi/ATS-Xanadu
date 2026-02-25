@@ -658,16 +658,17 @@ f3as,";",sres,";",arrw,";",body,")"))
 //
 |D3E1lam1
 (tknd
-,farg
-,faxp, sres
+,farg, faxp
+,evts, sres
 ,arrw, body
 ,vts1, vts2) =>
 (
+prints
+("D3E1lam1(",tknd,";");
+prints(farg,";",faxp,";");
+prints(evts,";",sres,";");
 prints(
-"D3E1lam1(",
-tknd,";",farg,";",faxp,";");
-prints(
-sres,";",arrw,";",body,";",vts1,";",vts2,")"))
+arrw,";",body,";",vts1,";",vts2,")"))
 //
 (* ****** ****** *)
 //
@@ -683,15 +684,16 @@ f3as,";",sres,";",arrw,";",body,")"))
 //
 |D3E1fix1
 (tknd, fid0
-,farg
-,faxp, sres
+,farg, faxp
+,evts, sres
 ,arrw, body
 ,vts1, vts2) =>
 (
-prints("D3E1fix1(",
-tknd,";",fid0,";",farg,";",faxp,";");
-prints(
-sres,";",arrw,";",body,";",vts1,";",vts2,")"))
+prints("D3E1fix1(");
+prints(tknd,";",fid0,";");
+prints(farg,";",faxp,";");
+prints(evts,";",sres,";");
+prints(arrw,";",body,";",vts1,";",vts2,")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1191,14 +1193,29 @@ prints(tknd,";",tqas,";",d2cs,";",d3fs,")"))
 ,sqas,tqas
 ,dimp
 ,tias,tibs
-,farg,faxp
-,sres,body,vts1,vts2) =>
+,farg,sres,body) =>
 (
 print("D3C1implmnt0(");
 prints(tknd,";",stmp,";");
 prints(sqas,";",tqas,";");
+prints(dimp,";",tias,";");
+prints(tibs,";",farg,";",sres,";",body))
+//
+|D3C1implmnt1
+(tknd
+,stmp
+,sqas,tqas
+,dimp
+,tias,tibs
+,farg,faxp
+,evts,sres
+,body,vts1,vts2) =>
+(
+print("D3C1implmnt1(");
+prints(tknd,";",stmp,";");
+prints(sqas,";",tqas,";");
 prints(dimp,";",tias,";",tibs,";");
-prints(farg,";",faxp,";");
+prints(farg,";",faxp,";",evts,";");
 prints(sres,";",body,";",vts1,";",vts2,")"))
 //
 (* ****** ****** *)

@@ -155,9 +155,18 @@ D3C1implmnt0
 ,sqas,tqas
 ,dimp
 ,tias,tibs
+,farg,sres,dexp) => ()
+//
+|
+D3C1implmnt1
+(tknd
+,stmp
+,sqas,tqas
+,dimp
+,tias,tibs
 ,farg,faxp
-,sres,dexp
-,vts1,vts2) =>
+,evts,sres
+,dexp,vts1,vts2) =>
 let
 //
 (*

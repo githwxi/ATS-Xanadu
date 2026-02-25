@@ -1339,7 +1339,7 @@ strmcon_vt_cons(x0, auxmain1(x1,xs)))
 )(*case*)//end-of(f0_SRP(x0,x1,xs,res))
 
 (* ****** ****** *)
-
+//
 (*
 fun
 f0_LAM
@@ -1373,9 +1373,9 @@ strmcon_vt_cons(x0, auxmain1(x1,xs)))
 //
 end(*let*)//end-of(f0_LAM(x0,x1,xs,res))
 *)
-
+//
 (* ****** ****** *)
-
+//
 (*
 fun
 f0_FIX
@@ -1409,7 +1409,7 @@ strmcon_vt_cons(x0, auxmain1(x1,xs)))
 //
 end(*let*)//end-of(f0_FIX(x0,x1,xs,res))
 *)
-
+//
 (* ****** ****** *)
 
 fun

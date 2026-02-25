@@ -108,6 +108,10 @@ i0lab_get_itm
 #typedef i0dcl1lst = list(i0dcl1)
 //
 (* ****** ****** *)
+//
+#typedef i0dcl1lstopt = optn(i0dcl1lst)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
@@ -115,7 +119,7 @@ i0typ1_node =
 //
 (* ****** ****** *)
 |I0T1cst of s2cst//constant
-|T0T1var of s2var//variable
+|I0T1var of s2var//variable
 (* ****** ****** *)
 |I0T1lft of s2typ1//lft-value
 (* ****** ****** *)
@@ -123,6 +127,18 @@ i0typ1_node =
 |I0T1tcon of (d2con, i0typ1lst)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0typ1_styp$get
+( dtyp: i0typ1 ): s2typ1
+fun
+i0typ1_node$get
+( dtyp: i0typ1 ): i0typ1_node
+//
+#symload styp with i0typ1_styp$get
+#symload node with i0typ1_node$get
+//
 (* ****** ****** *)
 //
 fun
@@ -134,7 +150,7 @@ i0typ1_fprint
 (* ****** ****** *)
 //
 datatype
-i0pat1_node
+i0pat1_node =
 //
 (* ****** ****** *)
 //
@@ -171,6 +187,25 @@ i0pat1_node
 (token(*knd*),sint(*npf*),l0i0p1lst)
 //
 (* ****** ****** *)
+//
+fun
+i0pat1_lctn$get
+( ipat: i0pat1 ): loctn
+fun
+i0pat1_node$get
+( ipat: i0pat1 ): i0pat1_node
+//
+#symload lctn with i0pat1_lctn$get
+#symload node with i0pat1_node$get
+//
+(* ****** ****** *)
+//
+fun
+i0pat1_fprint
+(ipat: i0pat1, out0: FILR): void
+#symload fprint with i0pat1_fprint of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
@@ -193,6 +228,18 @@ i0exp1_node =
 (* ****** ****** *)
 //
 fun
+i0exp1_lctn$get
+( iexp: i0exp1 ): loctn
+fun
+i0exp1_node$get
+( iexp: i0exp1 ): i0exp1_node
+//
+#symload lctn with i0exp1_lctn$get
+#symload node with i0exp1_node$get
+//
+(* ****** ****** *)
+//
+fun
 i0exp1_fprint
 (iexp: i0exp1, out0: FILR): void
 #symload fprint with i0exp1_fprint of 1000
@@ -204,6 +251,44 @@ datatype
 i0dcl1_node =
 //
 (* ****** ****** *)
+|I0D1d3ecl of (d3ecl1)
+(* ****** ****** *)
+//
+|I0D1static of
+(token(*STATIC*), i0dcl1)
+|I0D1extern of
+(token(*EXTERN*), i0dcl1)
+//
+(* ****** ****** *)
+//
+|I0D1dclst0 of
+(
+  i0dcl1lst  )//guarded
+|I0D1local0 of
+( i0dcl1lst(*local-head*)
+, i0dcl1lst(*local-body*))
+//
+(* ****** ****** *)
+//
+|I0Dinclude of
+(sint(*s/d*)
+,token, g1exp // src
+,fpathopt, i0dcl1lstopt)//incl.
+//
+(* ****** ****** *)
+//
+|I0D1valdclst of
+(token(*VAL(vlk)*), i0valdcl1lst)
+|I0D1vardclst of
+(token(*VAR(vrk)*), i0vardcl1lst)
+//
+|I0D1fundclst of
+(token(*FUN(fnk)*)
+,t2qaglst, d2cstlst, i0fundcl1lst)
+//
+(* ****** ****** *)
+//
+|I0D1errck of (sint(*lvl*), i0dcl1(*err*))
 //
 (* ****** ****** *)
 (* ****** ****** *)

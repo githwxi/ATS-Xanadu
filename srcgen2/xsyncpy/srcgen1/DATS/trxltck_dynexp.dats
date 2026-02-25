@@ -1562,7 +1562,6 @@ prerrsln
 val vts1 =
 envltck_dvdtp1lst$eval
 (     env0, vts1     )//val(vts1)
-//
 val (  ) =
 (
   envltck_dvts$updt( env0, vts2 ))
@@ -1881,9 +1880,6 @@ val vts2 =
 (
 dvdtp1lst_d2vs$outer(vts0, d2vs))
 //
-val vts1 =
-envltck_dvdtp1lst$eval(env0, vts1)
-//
 (*
 val (  ) = (
 prerrs("d3exp1_trxltck:");
@@ -1895,6 +1891,28 @@ val (  ) = (
 prerrs("d3exp1_trxltck:");
 prerrsln("f0_lam0: vts2 = ", vts2))
 *)
+//
+val vts1 =
+envltck_dvdtp1lst$eval
+(     env0, vts1     )//val(vts1)
+val evts =
+(
+  envltck_dvts$save( env0, vts2 ))
+val (  ) =
+(
+  envltck_dvts$updt( env0 , evts ))
+//
+// (*
+val (  ) = (
+prerrs("d3exp1_trxltck:");
+prerrsln("f0_lam0: vts1 = ", vts1))
+val (  ) = (
+prerrs("d3exp1_trxltck:");
+prerrsln("f0_lam0: vts2 = ", vts2))
+val (  ) = (
+prerrs("d3exp1_trxltck:");
+prerrsln("f0_lam0: evts = ", evts))
+// *)
 //
 in//let
 //
@@ -1912,7 +1930,8 @@ tlam,
 D3E1lam1
 (
 tknd,
-f3as,f3bs,sres,arrw,d3e1,vts1,vts2))
+f3as, f3bs,
+evts, sres, arrw, d3e1, vts1, vts2))
 end//let
 //
 end(*let*)//end-of-[f0_lam0(d3e0,env0)]
@@ -2363,10 +2382,6 @@ val vts2 =
 (
   dvdtp1lst_d2vs$outer(vts0, d2vs))
 //
-val vts1 =
-(
-  envltck_dvdtp1lst$eval(env0, vts1))
-//
 (*
 val (  ) =
 prerrsln("\
@@ -2375,6 +2390,10 @@ val (  ) =
 prerrsln("\
 d31cas_trxltck:D3CLS1cls: vts2 = ", vts2)
 *)
+//
+val vts1 =
+(
+  envltck_dvdtp1lst$eval(env0, vts1))
 //
 in//let
 (

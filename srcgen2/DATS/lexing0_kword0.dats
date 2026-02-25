@@ -53,7 +53,7 @@ ATS_PACKNAME
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 val
 T0CAS0 = T_CASE(CSKcas0)
 val
@@ -62,7 +62,7 @@ val
 T0CASP = T_CASE(CSKcasp)
 val
 T0CASN = T_CASE(CSKcasn)
-
+//
 (* ****** ****** *)
 //
 val T0FN0 = T_FUN(FNKfn0)

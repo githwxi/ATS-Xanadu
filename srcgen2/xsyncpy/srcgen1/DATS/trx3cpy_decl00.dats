@@ -354,20 +354,16 @@ dexp =
 (
   d3exp_trx3cpy(dexp, env0))
 //
-val f3bs = list_nil((*void*))
-val vts1 = list_nil((*void*))
-val vts2 = list_nil((*void*))
-//
 in//let
-(
+//
 d3ecl1
 (
 loc0,
 D3C1implmnt0
 ( tknd, stmp
 , sqas, tqas
-, dimp, tias, tibs
-, f3as, f3bs, sres, dexp, vts1, vts2)))
+, dimp, tias, tibs, f3as, sres, dexp))
+//
 end//let
 //
 (* ****** ****** *)

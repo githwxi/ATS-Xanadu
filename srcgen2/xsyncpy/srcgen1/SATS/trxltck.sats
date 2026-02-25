@@ -281,6 +281,11 @@ env0: !envltck, f3as: f3arg1lst): void
 (* ****** ****** *)
 //
 fun
+envltck_dvts$save
+( env0:
+! envltck, dvts: dvdtp1lst): dvdtp1lst
+//
+fun
 envltck_dvts$updt
 (env0: !envltck, dvts: dvdtp1lst): void
 //
