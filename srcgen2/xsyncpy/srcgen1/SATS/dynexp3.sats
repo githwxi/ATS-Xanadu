@@ -718,7 +718,8 @@ token(*casknd*), d3exp1, d3cls1lst)
 (token(*knd*)
 ,f3arg1lst
 ,f3axp1lst
-,dvdtp1lst, s2res, f1unarrw, d3exp1
+,dvdtp1lst//envlinvars
+,s2res, f1unarrw, d3exp1
 ,dvstp1lst(*inner*), dvdtp1lst(*outer*))
 //
 |D3E1fix0 of
@@ -730,14 +731,15 @@ token(*casknd*), d3exp1, d3cls1lst)
 (token(*knd*)
 ,d2var(*fid*)
 ,f3arg1lst, f3axp1lst
-,dvdtp1lst, s2res, f1unarrw, d3exp1
+,dvdtp1lst//envlinvars
+,s2res, f1unarrw, d3exp1
 ,dvstp1lst(*inner*), dvdtp1lst(*outer*))
 //
 (* ****** ****** *)
 //
 |D3E1try0 of
 (token(*$TRY*)
-,d3exp1(*norm*),d3cls1lst(*handles*))
+,d3exp1, d3cls1lst(*handles*))
 //
 (* ****** ****** *)
 //
@@ -1142,7 +1144,7 @@ for handling bef/aft syntax!
 , t2iag1lst // HX: of s2typ1lst
 , f3arg1lst
 , f3axp1lst
-, dvdtp1lst
+, dvdtp1lst // environ-linear-vars
 , s2res, d3exp1, dvstp1lst, dvdtp1lst)
 //
 (* ****** ****** *)

@@ -164,6 +164,11 @@ HX-2022-10-01: Various symbols
 //
 (* ****** ****** *)
 //
+#implval DL0CFN_symbl = symbl("$l0cfn")
+#implval DL1CFN_symbl = symbl("$l1cfn")
+//
+(* ****** ****** *)
+//
 #implval DRAISE_symbl = symbl("$raise")
 //
 (* ****** ****** *)
