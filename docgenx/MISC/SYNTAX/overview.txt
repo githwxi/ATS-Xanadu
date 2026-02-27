@@ -22,7 +22,7 @@ and 'expression' interchangeably.
 While types are static terms, not all the static terms are types.
 And sorts are introduced to classify static terms. For instance, some
 of the commonly used built-in sorts in ATS are listed as follows: int,
-bool, type, vtype, prop, and view. The sorts int and bool are
+bool, type, vwtp, prop, and view. The sorts int and bool are
 predicative while the sorts type, vtype, prop and view are impredicative.
 
 ############ end of [overview.txt] ############

@@ -1,6 +1,6 @@
-########################
+############################################################
 Syntax for fixity declarations
-########################
+############################################################
 
 ATS3 supports prefix, infix, and postfix operators.
 For instance, the following expression involving infix
@@ -106,4 +106,6 @@ file:
 
 https://github.com/githwxi/ATS-Xanadu/blob/master/prelude/fixity.sats
 
-############ end of [fixity.txt] ############
+########################################################################
+######################### end of [fixity.txt] ##########################
+########################################################################

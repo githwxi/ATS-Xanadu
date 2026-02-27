@@ -1,8 +1,6 @@
-########################
+##################################################################
 Syntax for the statics of ATS3
-########################
-
-Sorts
+##################################################################
 
 Sorts in ATS are for classifying static terms.
 Note that types (for dynamic terms) are static terms
@@ -106,8 +104,8 @@ stacst-declarations:
 
 Abstract types can be introduced via abstype-declarations:
 
-abstype int2_box <= $(int, int) // represented as a boxed pair of ints
-abstype int2_flat <= @(int, int) // represented as a unboxed pair of ints
+abstype int2_boxd <= $(int, int) // represented as a boxed pair of ints
+abstype int2_flat <= @(int, int) // represented as an native pair of ints
 
 In ATS3, a sexpdef-declaration introduces an alias for a static
 expression.  For intance, the following declaration introduces a
@@ -117,6 +115,6 @@ sexpdef double(a: int) = a + a
 
 Note that NO recursion is allowed in sexpdef-declarations.
 
-########################
-
-############ end of [statics.txt] ############
+##################################################################
+##################### end of [statics.txt] #######################
+##################################################################
