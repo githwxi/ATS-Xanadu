@@ -676,6 +676,9 @@ val
 faxp = d3fundcl1_faxp$get(dfun)
 //
 val
+evts = d3fundcl1_evts$get(dfun)
+//
+val
 sres = d3fundcl1_sres$get(dfun)
 val
 tdxp = d3fundcl1_tdxp$get(dfun)
@@ -720,8 +723,8 @@ let
 val loc0 = dfun.lctn()
 in//let
 (
-d3fundcl1(loc0,dpid,
-  styp,farg,faxp,sres,tdxp,wsxp,vts1,vts2))
+d3fundcl1(loc0,dpid,styp,
+  farg,faxp,evts,sres,tdxp,wsxp,vts1,vts2))
 end//let
 endlet // end-of-[tread3a_d3fundcl(dfun,err)]
 //
