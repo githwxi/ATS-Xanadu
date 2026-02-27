@@ -195,9 +195,13 @@ val DFREE_symbl: symbl //=symbl("$free")
 val DLAZY_symbl: symbl //=symbl("$lazy")
 val DLLAZY_symbl: symbl //=symbl("$llazy")
 (* ****** ****** *)
+//
+val DCFENV_symbl: symbl //=symbl("$cfenv")
 val DCFREF_symbl: symbl //=symbl("$cfref")
+//
 val DL0CFP_symbl: symbl //=symbl("$l0cfp")
 val DL1CFP_symbl: symbl //=symbl("$l1cfp")
+//
 (* ****** ****** *)
 val DRAISE_symbl: symbl //=symbl("$raise")
 (* ****** ****** *)

@@ -166,8 +166,10 @@ HX-2022-10-01: Various symbols
 //
 (*
 HX-2026-02-26:
-Referd closure-functions
+$cfenv flat closure-functions
+$cfref refd closure-functions
 *)
+#implval DCFENV_symbl = symbl("$cfenv")
 #implval DCFREF_symbl = symbl("$cfref")
 (*
 HX-2026-02-26:

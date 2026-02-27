@@ -78,5 +78,12 @@ This one is not present.
 If added, it does type-checking with srcgen2-xtcheck.
 )
 //
+HX-2026-02-27:
+There is one more added:
+Makefile_xpyemit:
+compiling to PY with the srcgen2-xpyemit
+the library code generated is lib2xatopt
+(where lib2 refers to srcgen2)
+//
 ############################################################
 ############################################################
