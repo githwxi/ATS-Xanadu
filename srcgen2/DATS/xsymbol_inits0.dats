@@ -164,8 +164,23 @@ HX-2022-10-01: Various symbols
 //
 (* ****** ****** *)
 //
-#implval DL0CFN_symbl = symbl("$l0cfn")
-#implval DL1CFN_symbl = symbl("$l1cfn")
+(*
+HX-2026-02-26:
+Referd closure-functions
+*)
+#implval DCFREF_symbl = symbl("$cfref")
+(*
+HX-2026-02-26:
+Linear closure-functions
+that is called exactly one time
+*)
+#implval DL0CFP_symbl = symbl("$l0cfp")
+(*
+HX-2026-02-26:
+Linear closure-functions that
+can be called repeatedly and freed
+*)
+#implval DL1CFP_symbl = symbl("$l1cfp")
 //
 (* ****** ****** *)
 //
