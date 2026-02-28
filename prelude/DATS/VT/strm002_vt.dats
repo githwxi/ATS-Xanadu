@@ -251,6 +251,9 @@ auxmain
 : strm_vt(y0)
 ) : strm_vt(z0) = $llazy
 (
+free(xs);
+free(ys);
+//
 case+ !xs of
 | ~
 strmcon_vt_nil() =>
@@ -264,6 +267,8 @@ case+ !ys of
 | ~
 strmcon_vt_nil() =>
 (
+free(x1);
+free(xs);
 strmcon_vt_nil())
 | ~
 strmcon_vt_cons(y1, ys) =>
@@ -315,6 +320,9 @@ auxmain
 : strm_vt(y0)
 ) : strm_vt(z0) = $llazy
 (
+free(xs);
+free(ys);
+//
 case+ !xs of
 | ~
 strmcon_vt_nil() =>
@@ -328,6 +336,8 @@ case+ !ys of
 | ~
 strmcon_vt_nil() =>
 (
+free(x1);
+free(xs);
 strmcon_vt_nil())
 | ~
 strmcon_vt_cons(y1, ys) =>

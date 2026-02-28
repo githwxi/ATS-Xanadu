@@ -449,6 +449,43 @@ val () =
 end(*let*)//end-of-[D3E1flat(...)]
 //
 (* ****** ****** *)
+//
+|D3E1eval
+(   d3e1   ) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1) )
+end(*let*)//end-of-[D3E1eval(...)]
+//
+|D3E1free
+(   d3e1   ) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1) )
+end(*let*)//end-of-[D3E1free(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3E1dl0az
+(   d3e1   ) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1) )
+end(*let*)//end-of-[D3E1dl0az(...)]
+//
+|D3E1dl1az
+(   d3e1   ) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1) )
+end(*let*)//end-of-[D3E1dl1az(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3E1assgn
@@ -461,6 +498,31 @@ val () =
 (
   fpeltck_d3exp1(out0, d3er) )
 end(*let*)//end-of-[D3E1assgn(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3E1l0az1
+(dsym, evts
+,d3e1, vts1) =>
+let
+val () =
+(
+  fpeltck_d3exp1(out0, d3e1) )
+end(*let*)//end-of-[D3E1l0az1(...)]
+//
+|D3E1l1az1
+(dsym, evts
+,d3e1, vts1
+,d3es, vts2) =>
+let
+val () =
+(
+fpeltck_d3exp1(out0, d3e1))
+val () =
+(
+fpeltck_d3exp1lst(out0, d3es))
+end(*let*)//end-of-[D3E1l1az1(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
