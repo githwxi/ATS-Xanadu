@@ -653,21 +653,21 @@ let
 val nerr = err0
 //
 val d2v1 = vtp1.0
-val t2p1 = vtp1.1
-val s2t1 = t2p1.sort()
+val t2q1 = vtp1.1
+val s2t1 = t2q1.sort()
 //
-val t2p1 =
+val t2q1 =
 (
 if // if
 not(
 sort2_linq
 (  s2t1  ))
-then ( t2p1 ) else
+then ( t2q1 ) else
 let
 val () =
 (err0 := err0+1) in
 s2typ1_make_sort$node
-(s2t1, T2P1elnty(t2p1)) end)
+(s2t1, T2P1elnty(t2q1)) end)
 //
 in//let
 //
@@ -681,13 +681,76 @@ if // if
 (
 err0=nerr)
 then (dvts)
-else list_cons((d2v1, t2p1), vts2))
+else list_cons((d2v1, t2q1), vts2))
 end//let2
 //
 end(*let*)
 )(*case+*)//end-of-[auxlst(dvts,err0)]
 //
 }(*where*)//end-of-[dvstp1lst_trylinq(dvts,err0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+dvdtp1lst_trylinq
+  (dvts, err0) =
+(
+auxlst(dvts, err0)) where
+{
+//
+fun
+auxlst
+( dvts: dvdtp1lst
+, err0: &sint >> _): dvdtp1lst =
+(
+case+ dvts of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(vtp1, vts2) =>
+let
+//
+val nerr = err0
+//
+val d2v1 = vtp1.0
+val t3q1 = vtp1.1
+//
+val t3q1 =
+(
+if // if
+not(
+d3typ1_linq
+(  t3q1   ))
+then ( t3q1 ) else
+let
+val
+t2q1 = t3q1.styp()
+in//let
+err0 := err0+1;
+d3typ1_make_styp$node
+(t2q1, T3P1elnty(t3q1)) end)
+//
+in//let
+//
+let//2
+val
+vts2 =
+(
+  auxlst(vts2, err0))in//let2
+(
+if // if
+(
+err0=nerr)
+then (dvts)
+else list_cons((d2v1, t3q1), vts2))
+end//let2
+//
+end(*let*)
+)(*case+*)//end-of-[auxlst(dvts,err0)]
+//
+}(*where*)//end-of-[dvdtp1lst_trylinq(dvts,err0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

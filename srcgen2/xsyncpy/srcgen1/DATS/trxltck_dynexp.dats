@@ -1050,6 +1050,18 @@ d3exp1
 //
 (* ****** ****** *)
 //
+|D3E1l0azy _ => f0_l0azy(d3e0, env0)
+(*
+|D3E1l0az1 _ => f0_l0az1(d3e0, env0)
+*)
+//
+|D3E1l1azy _ => f0_l1azy(d3e0, env0)
+(*
+|D3E1l1az1 _ => f0_l1az1(d3e0, env0)
+*)
+//
+(* ****** ****** *)
+//
 |D3E1t2ped _ => f0_t2ped(d3e0, env0)
 //
 (* ****** ****** *)
@@ -2193,6 +2205,94 @@ d3exp1
 (loc0, tqxp, D3E1xchng(d3el, d3er)))
 //
 end(*let*)//end-of-[f0_xchng(d3e0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_l0azy
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1l0azy
+(dsym, d3e1) = d3e0.node()
+//
+val (  ) =
+envltck_pshlam0(env0)//enter
+val d3e1 =
+(
+  d3exp1_trxltck(d3e1, env0))
+val dvs1 = envltck_dvslam0(env0)
+val vts1 = envltck_vtslam0(env0)
+val (  ) = envltck_poplam0(env0)
+//
+val evts =
+(
+  envltck_dvts$save( env0, vts1 ))
+val (  ) =
+(
+  envltck_dvts$updt( env0 , vts1 ))
+//
+in//let
+//
+(
+d3exp1
+( loc0
+, tqxp
+, D3E1l0az1(dsym, evts, d3e1, vts1)))
+//
+end(*let*)//end-of-[f0_l0azy(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l1azy
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1l1azy
+(dsym
+,d3e1, d3es) = d3e0.node()
+//
+val (  ) =
+envltck_pshlam0(env0)//enter
+val d3e1 =
+(
+  d3exp1_trxltck(d3e1, env0))
+val dvs1 = envltck_dvslam0(env0)
+val vts1 = envltck_vtslam0(env0)
+val (  ) = envltck_poplam0(env0)
+//
+val (  ) =
+envltck_pshlam0(env0)//enter
+val d3es =
+(
+  d3exp1lst_trxltck(d3es, env0))
+val dvs2 = envltck_dvslam0(env0)
+val vts2 = envltck_vtslam0(env0)
+val (  ) = envltck_poplam0(env0)
+//
+val evts =
+(
+  envltck_dvts$save( env0, vts1 ))
+val (  ) =
+(
+  envltck_dvts$updt( env0 , vts1 ))
+//
+in//let
+//
+d3exp1
+(
+loc0,
+tqxp,
+D3E1l1az1
+(dsym, evts, d3e1, vts1, d3es, vts2))
+//
+end(*let*)//end-of-[f0_l1azy(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
