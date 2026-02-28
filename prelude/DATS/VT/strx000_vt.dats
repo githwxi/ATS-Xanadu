@@ -67,7 +67,10 @@ g_ptype<vt>((*0*)); pstrn(")"))
 < a: vt >
 strx_vt_cons(x0, xs) =
 $llazy
-(strxcon_vt_cons(x0, xs))
+(
+free(x0);
+free(xs);
+strxcon_vt_cons(x0, xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)

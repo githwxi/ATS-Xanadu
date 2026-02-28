@@ -47,10 +47,12 @@ strx_vt_strmize0
 {
 fun
 auxmain
-( xs
-: strx_vt(x0)
+(
+xs: strx_vt(x0)
 ) : strm_vt(x0) = $llazy
 (
+free(xs);
+//
 case+ !xs of
 | ~
 strxcon_vt_cons(x0, xs) =>
@@ -179,10 +181,12 @@ strx_vt_map0
 {
 fun
 auxmain
-( xs
-: strx_vt(x0)
+(
+xs: strx_vt(x0)
 ) : strx_vt(y0) = $llazy
 (
+free(xs);
+//
 case+ !xs of
 | ~
 strxcon_vt_cons(x1, xs) =>
@@ -217,11 +221,13 @@ auxmain(0, xs)) where
 {
 fun
 auxmain
-( i0: nint
-, xs
-: strx_vt(x0)
+(
+i0: nint,
+xs: strx_vt(x0)
 ) : strx_vt(y0) = $llazy
 (
+free(xs);
+//
 case+ !xs of
 | ~
 strxcon_vt_cons(x1, xs) =>
@@ -255,17 +261,18 @@ imap$fopr0<x0><y0> = fopr(* ni,x0 *)
 strx_vt_filter0
   ( xs ) =
 $llazy
-(auxloop(!xs)) where
+(
+free(xs);
+auxloop(!xs)) where
 {
 (*
 HX-2024-07-13:
-[auxloop] needs
-to be tail-recursive!
+[auxloop] needs to be tail-recursive!
 *)
 fnx
 auxloop
-( cs
-: strxcon_vt(x0)
+(
+cs: strxcon_vt(x0)
 ) : strxcon_vt(x0) =
 (
 case+ cs of
@@ -277,12 +284,15 @@ val
 test =
 filter$test1<x0>(x1)
 in//let
-if
+if // if
 test
-then
+then // then
 strxcon_vt_cons
-(x1, $llazy(auxloop(!xs)))
-else
+(
+x1,
+$llazy(free(xs); auxloop(!xs))
+)
+else // else
 (g_free<x0>(x1); auxloop(!xs)) end
 )
 }(*where*)//end-of-[strx_vt_filter0(xs)]
@@ -313,7 +323,8 @@ strx_vt(x0)><x0> = strx_vt_filter0<x0>(*xs*)
 strx_vt_ifilter0
   ( xs ) =
 $llazy
-(auxloop(0, !xs)) where
+(free(xs)
+;auxloop(0, !xs)) where
 {
 (*
 HX-2024-07-13:
@@ -335,12 +346,15 @@ val
 test =
 ifilter$test1<x0>(i0, x1)
 in//let
-if
+if // if
 test
-then
+then // then
 strxcon_vt_cons
-(x1, $llazy(auxloop(i0+1, !xs)))
-else
+(
+x1,
+$llazy
+(free(xs); auxloop(i0+1, !xs)))
+else // else
 (
 g_free<x0>(x1); auxloop(i0+1, !xs)) end
 )
