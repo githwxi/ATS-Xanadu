@@ -2340,7 +2340,9 @@ envltck_pshlam0(env0)//enter
 val d3e1 =
 (
   d3exp1_trxltck(d3e1, env0))
+(*
 val dvs1 = envltck_dvslam0(env0)
+*)
 val vts1 = envltck_vtslam0(env0)
 val (  ) = envltck_poplam0(env0)
 //
@@ -2349,7 +2351,9 @@ envltck_pshlam0(env0)//enter
 val d3es =
 (
   d3exp1lst_trxltck(d3es, env0))
+(*
 val dvs2 = envltck_dvslam0(env0)
+*)
 val vts2 = envltck_vtslam0(env0)
 val (  ) = envltck_poplam0(env0)
 //
@@ -2357,16 +2361,41 @@ val (  ) = envltck_poplam0(env0)
 HX-2026-02-28:
 [dvs1] and [dvs2] are sorted
 *)
+val dvs1 =
+list_map
+<x0><y0>(vts1) where
+{
+#typedef x0 = dvdtp1
+#typedef y0 = (d2var)
+#impltmp
+map$fopr
+<x0><y0>(dvtp) = dvtp.0 }
+val dvs2 =
+list_map
+<x0><y0>(vts2) where
+{
+#typedef x0 = dvdtp1
+#typedef y0 = (d2var)
+#impltmp
+map$fopr
+<x0><y0>(dvtp) = dvtp.0 }
+//
 val d2vs =
 (
   d2varset_union(dvs1, dvs2))
-//
 val evts =
 (
-  envltck_d2vs$save( env0, d2vs ))
+  envltck_d2vs$save(env0, d2vs))
+//
+val vts1 =
+(
+  dvdtp1set_union(vts1, evts))
+val vts2 =
+(
+  dvdtp1set_union(vts2, evts))
 val (  ) =
 (
-  envltck_dvts$updt( env0 , vts1 ))
+  envltck_dvts$updt(env0, vts1))
 //
 in//let
 //

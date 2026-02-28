@@ -185,8 +185,17 @@ envltck_free_top(envltck): (void)
 //
 fun
 d2varset_union
-( dvs1: d2varlst
-, dvs2: d2varlst): d2varlst
+(
+dvs1: d2varlst,
+dvs2: d2varlst): d2varlst
+//
+(* ****** ****** *)
+//
+fun
+dvdtp1set_union
+(
+vts0: dvdtp1lst,
+evts: dvdtp1lst): dvdtp1lst
 //
 (* ****** ****** *)
 //
