@@ -2298,10 +2298,9 @@ D3E1l0azy
 //
 val (  ) =
 envltck_pshlam0(env0)//enter
-val d3e1 =
+val d3e1 = // HX: thunk-body
 (
   d3exp1_trxltck(d3e1, env0))
-val dvs1 = envltck_dvslam0(env0)
 val vts1 = envltck_vtslam0(env0)
 val (  ) = envltck_poplam0(env0)
 //
@@ -2337,23 +2336,17 @@ D3E1l1azy
 //
 val (  ) =
 envltck_pshlam0(env0)//enter
-val d3e1 =
+val d3e1 = // HX: thunk-body
 (
   d3exp1_trxltck(d3e1, env0))
-(*
-val dvs1 = envltck_dvslam0(env0)
-*)
 val vts1 = envltck_vtslam0(env0)
 val (  ) = envltck_poplam0(env0)
 //
 val (  ) =
 envltck_pshlam0(env0)//enter
-val d3es =
+val d3es = // HX: frees(...)
 (
-  d3exp1lst_trxltck(d3es, env0))
-(*
-val dvs2 = envltck_dvslam0(env0)
-*)
+d3exp1lst_trxltck(d3es, env0))
 val vts2 = envltck_vtslam0(env0)
 val (  ) = envltck_poplam0(env0)
 //
