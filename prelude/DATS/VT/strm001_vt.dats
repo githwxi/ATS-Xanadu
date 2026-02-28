@@ -225,6 +225,7 @@ auxmain
 : strm_vt(x0)
 ) : strm_vt(y0) = $llazy
 (
+free(xs);
 case+ !xs of
 | ~
 strmcon_vt_nil() =>
@@ -280,6 +281,7 @@ auxmain
 : strm_vt(x0)
 ) : strm_vt(y0) = $llazy
 (
+free(xs);
 case+ !xs of
 | ~
 strmcon_vt_nil() =>
@@ -321,11 +323,10 @@ gseq_imap0_lstrm
 < x0:vt >
 strm_vt_filter0
   ( xs ) =
-$llazy(
-auxloop
+$llazy
 (
-strm_vt_eval(xs)))
-where
+free(xs); auxloop(!xs)
+) where
 {
 (*
 HX-2024-07-13:
@@ -333,14 +334,14 @@ HX-2024-07-13:
 *)
 fnx
 auxloop
-( cs
-: strmcon_vt(x0)
+(
+cs: strmcon_vt(x0)
 ) : strmcon_vt(x0) =
 (
 case+ cs of
 | ~
 strmcon_vt_nil() =>
-strmcon_vt_nil(*void*)
+strmcon_vt_nil((*0*))
 | ~
 strmcon_vt_cons(x1, xs) =>
 let
@@ -348,13 +349,16 @@ val
 test =
 filter$test1<x0>(x1)
 in//let
-if
+if // if
 test
-then
+then//then
 strmcon_vt_cons
-(x1, $llazy(auxloop(!xs)))
-else
-(g_free<x0>(x1); auxloop(!xs)) end
+(
+x1,
+$llazy(free(xs); auxloop(!xs))
+)
+else//else
+(g_free<x0>(x1); auxloop(!xs))end//let
 )
 }(*where*)//end-of-[strm_vt_filter0(xs)]
 //
@@ -392,9 +396,8 @@ gseq_filter0_lstrm
 strm_vt_ifilter0
   ( xs ) =
 $llazy(
-auxloop
-(0, strm_vt_eval(xs))
-) where
+free(xs);
+auxloop(0, !xs)) where
 {
 (*
 HX-2024-07-13:
@@ -402,10 +405,9 @@ HX-2024-07-13:
 *)
 fnx
 auxloop
-( i0
-: nint
-, xs
-: strmcon_vt(x0)
+(
+i0: nint,
+xs: strmcon_vt(x0)
 ) : strmcon_vt(x0) =
 (
 case+ xs of
@@ -423,10 +425,11 @@ if
 test
 then
 strmcon_vt_cons
-(x1, $llazy(auxloop(i0+1, !xs)))
+(x1,
+$llazy(free(xs); auxloop(i0+1, !xs))
+)
 else
-(
-g_free<x0>(x1); auxloop(i0+1, !xs)) end
+(g_free<x0>(x1); auxloop(i0+1, !xs))end
 )
 }(*where*)//end-of-[strm_vt_ifilter0(xs)]
 //
@@ -669,11 +672,15 @@ auxmain(xs, e1)) where
 {
 fun
 auxmain
-( xs
-: strm_vt(x0)
-, e1: ( ~e1 )
+(
+xs: strm_vt(x0)
+,
+e1: (   ~e1   )
 ) : strm_vt(y0) = $llazy
 (
+//
+free(xs);
+free(e1);
 //
 case+ !xs of
 | ~
