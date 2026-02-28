@@ -944,14 +944,14 @@ d3typ1_styp$make(t2q0)
 {
 val t2q0 = d3e0.styp() }
 //
-// (*
+(*
 val () =
 prerrsln("\
 d3exp1_trxltck: loc0 = ", loc0)
 val () =
 prerrsln("\
 d3exp1_trxltck: d3e0 = ", d3e0)
-// *)
+*)
 //
 in//let
 //
@@ -1049,6 +1049,7 @@ d3exp1
 (* ****** ****** *)
 //
 |D3E1dl0az _ => f0_dl0az(d3e0, env0)
+//
 |D3E1dl1az _ => f0_dl1az(d3e0, env0)
 //
 (* ****** ****** *)
@@ -2352,9 +2353,17 @@ val dvs2 = envltck_dvslam0(env0)
 val vts2 = envltck_vtslam0(env0)
 val (  ) = envltck_poplam0(env0)
 //
+(*
+HX-2026-02-28:
+[dvs1] and [dvs2] are sorted
+*)
+val d2vs =
+(
+  d2varset_union(dvs1, dvs2))
+//
 val evts =
 (
-  envltck_dvts$save( env0, vts1 ))
+  envltck_d2vs$save( env0, d2vs ))
 val (  ) =
 (
   envltck_dvts$updt( env0 , vts1 ))

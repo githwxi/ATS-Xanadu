@@ -1328,6 +1328,33 @@ end//let//end-of-[list_cons(f3a1,f3as)]
 (* ****** ****** *)
 //
 #implfun
+envltck_d2vs$save
+  (env0, d2vs) =
+(
+list_map$e1nv
+( d2vs , env0 ))
+where
+{
+//
+#typedef x0 = d2var
+#typedef y0 = dvdtp1
+#vwtpdef e1 = envltck
+//
+#impltmp
+map$e1nv$fopr
+<x0><y0><e1>
+(   d2v1   ) =
+let
+val t3q1 =
+(
+envltck_dvar$find
+(  env0 , d2v1  )) in (d2v1, t3q1) end//let
+//
+}(*where*)//end-of-[envltck_d2vs$save(env0,...)]
+//
+(* ****** ****** *)
+//
+#implfun
 envltck_dvts$save
   (env0, vts0) =
 (
@@ -1353,6 +1380,7 @@ envltck_dvar$find
 //
 }(*where*)//end-of-[envltck_dvts$save(env0,...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
