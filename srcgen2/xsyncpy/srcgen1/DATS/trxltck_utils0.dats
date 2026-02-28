@@ -575,7 +575,7 @@ prerrsln("d3pat1_mkof_d3gt2q: dgpt = ", dgpt)
 //
 #implfun
 d2varset_union
-  (dvs1, dvs2) =
+( dvs1, dvs2 ) =
 (
 case+ dvs1 of
 |list_nil
@@ -609,9 +609,12 @@ list_rappendx0_vt(d2vs, res0))
 fun
 aux11
 (
-dvs1: d2varlst,
-dvs2: d2varlst,
-res0: d2varlst_vt): d2varlst_vt =
+dvs1:
+d2varlst,
+dvs2:
+d2varlst,
+res0:
+d2varlst_vt): d2varlst_vt =
 (
 //
 case+ dvs1 of
@@ -623,11 +626,13 @@ case+ dvs1 of
 (d2v1, dvs1) =>
 (
 case+ dvs2 of
-|list_nil() =>
+|list_nil
+(  (*0*)  ) =>
 (
 aux00(dvs1,
   list_vt_cons(d2v1, res0)))
-|list_cons(d2v2, dvs2) =>
+|list_cons
+(d2v2, dvs2) =>
 (
 aux22
 (d2v1, dvs1, d2v2, dvs2, res0)))
@@ -699,6 +704,150 @@ aux22
 end(*let*)//end-of-[aux22(...,res0)]
 //
 }(*where*)//end-of-[d2varset_union(dvs1,dvs2)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+dvdtp1set_union
+( vts1, vts2 ) =
+(
+case+ vts1 of
+|list_nil
+(  (*0*)  ) => (vts2)
+|list_cons _ =>
+(
+case+ vts2 of
+|list_nil
+(  (*0*)  ) => (vts1)
+|list_cons _ =>
+(
+list_vt2t
+(
+list_vt_reverse0
+(
+aux11(vts1,
+  vts2, list_vt_nil(*0*))))))
+) where//dvdtp1lst_union(...)
+{
+//
+fun
+aux00
+(
+vts0:
+dvdtp1lst,
+res0:
+dvdtp1lst_vt): dvdtp1lst_vt =
+(
+list_rappendx0_vt(vts0, res0))
+//
+fun
+aux11
+(
+vts1:
+dvdtp1lst,
+vts2:
+dvdtp1lst,
+res0:
+dvdtp1lst_vt): dvdtp1lst_vt =
+(
+//
+case+ vts1 of
+|list_nil
+(  (*0*)  ) =>
+(
+  aux00(vts2, res0))
+|list_cons
+(dvt1, vts1) =>
+(
+case+ vts2 of
+|list_nil
+(  (*0*)  ) =>
+(
+aux00(vts1,
+  list_vt_cons(dvt1, res0)))
+|list_cons
+(dvt2, vts2) =>
+(
+aux22
+(dvt1, vts1, dvt2, vts2, res0)))
+//
+)(*case+*)//end-of-[aux11(...,res0)]
+//
+and
+aux22
+(
+dvt1:
+dvdtp1,
+vts1:
+dvdtp1lst,
+dvt2:
+dvdtp1,
+vts2:
+dvdtp1lst,
+res0:
+dvdtp1lst_vt): dvdtp1lst_vt =
+let
+val
+sgn =
+g_cmp
+<d2var>(dvt1.0, dvt2.0)
+in//let
+//
+if // if
+(sgn = 0)
+then//then
+aux11
+(
+vts1, vts2,
+(*
+HX-2026-02-28:
+[dvt1]
+(not [dvt2])
+should be used here!!!
+*)
+list_vt_cons(dvt1, res0))
+else//else
+(
+if//if
+(sgn < 0)
+then//then
+let
+val res0 =
+list_vt_cons(dvt1, res0)
+in//let
+(
+case+ vts1 of
+|list_nil
+(  (*0*)  ) =>
+aux00
+(vts2
+,list_vt_cons(dvt2, res0))
+|list_cons
+(dvt1, vts1) =>
+aux22
+(dvt1, vts1, dvt2, vts2, res0)) end
+else//(sgn>0)
+let
+val res0 =
+list_vt_cons(dvt2, res0)
+in//let
+(
+case+ vts2 of
+|list_nil
+(  (*0*)  ) =>
+aux00
+(vts1
+,list_vt_cons(dvt1, res0))
+|list_cons
+(dvt2, vts2) =>
+aux22
+(dvt1, vts1, dvt2, vts2, res0)) end
+)
+//
+end(*let*)//end-of-[aux22(...,res0)]
+//
+}(*where*)//end-of-[dvdtp1set_union(vts1,vts2)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
