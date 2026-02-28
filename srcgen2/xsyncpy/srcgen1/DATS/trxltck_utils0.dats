@@ -61,6 +61,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload =
+with sint_eq$sint of 1099
+#symload <
+with sint_lt$sint of 1099
+#symload >
+with sint_gt$sint of 1099
+//
 #symload +
 with sint_add$sint of 1099
 #symload -
@@ -567,6 +574,136 @@ prerrsln("d3pat1_mkof_d3gt2q: dgpt = ", dgpt)
 (* ****** ****** *)
 //
 #implfun
+d2varset_union
+  (dvs1, dvs2) =
+(
+case+ dvs1 of
+|list_nil
+(  (*0*)  ) => (dvs2)
+|list_cons _ =>
+(
+case+ dvs2 of
+|list_nil
+(  (*0*)  ) => (dvs1)
+|list_cons _ =>
+(
+list_vt2t
+(
+list_vt_reverse0
+(
+aux11(dvs1,
+  dvs2, list_vt_nil(*0*))))))
+) where // d2varset_union(...)
+{
+//
+fun
+aux00
+(
+d2vs:
+d2varlst,
+res0:
+d2varlst_vt): d2varlst_vt =
+(
+list_rappendx0_vt(d2vs, res0))
+//
+fun
+aux11
+(
+dvs1: d2varlst,
+dvs2: d2varlst,
+res0: d2varlst_vt): d2varlst_vt =
+(
+//
+case+ dvs1 of
+|list_nil
+(  (*0*)  ) =>
+(
+  aux00(dvs2, res0))
+|list_cons
+(d2v1, dvs1) =>
+(
+case+ dvs2 of
+|list_nil() =>
+(
+aux00(dvs1,
+  list_vt_cons(d2v1, res0)))
+|list_cons(d2v2, dvs2) =>
+(
+aux22
+(d2v1, dvs1, d2v2, dvs2, res0)))
+//
+)(*case+*)//end-of-[aux11(...,res0)]
+//
+and
+aux22
+(
+d2v1:
+d2var,
+dvs1:
+d2varlst,
+d2v2:
+d2var,
+dvs2:
+d2varlst,
+res0:
+d2varlst_vt): d2varlst_vt =
+let
+val sgn = d2v1\cmp(d2v2)
+in//let
+//
+if // if
+(sgn = 0)
+then//then
+aux11
+(
+dvs1, dvs2,
+list_vt_cons(d2v1, res0))
+else//else
+(
+if//if
+(sgn < 0)
+then//then
+let
+val res0 =
+list_vt_cons(d2v1, res0)
+in//let
+(
+case+ dvs1 of
+|list_nil
+(  (*0*)  ) =>
+aux00
+(dvs2
+,list_vt_cons(d2v2, res0))
+|list_cons
+(d2v1, dvs1) =>
+aux22
+(d2v1, dvs1, d2v2, dvs2, res0)) end
+else//else
+let
+val res0 =
+list_vt_cons(d2v2, res0)
+in//let
+(
+case+ dvs2 of
+|list_nil
+(  (*0*)  ) =>
+aux00
+(dvs1
+,list_vt_cons(d2v1, res0))
+|list_cons
+(d2v2, dvs2) =>
+aux22
+(d2v1, dvs1, d2v2, dvs2, res0)) end
+)
+//
+end(*let*)//end-of-[aux22(...,res0)]
+//
+}(*where*)//end-of-[d2varset_union(dvs1,dvs2)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 dvdtp1lst_d2vs$inner
   (vts0, dvs0) =
 (
@@ -601,18 +738,29 @@ loop1
 ,res0: dvdtp1lst_vt): dvdtp1lst_vt =
 (
 case+ vts0 of
-|list_nil() => res0
-|list_cons(dvtp, vts1) =>
+|list_nil
+(  (*0*)  ) => res0
+|list_cons
+(dvtp, vts1) =>
 (
-if
-(dvtp.0 < d2v0)
-then
+let
+//
+val
+sgn =
+g_cmp
+<d2var>(d2v0, dvtp.0)
+//
+in//let
+//
+if // if
+(sgn > 0)
+then//then
 loop1(vts1, d2v0, dvs1, res0)
-else
+else//else
 loop0
 (vts1
-,dvs1, list_vt_cons(dvtp, res0)))
-)
+,dvs1, list_vt_cons(dvtp, res0))end)
+)(*case+*)//end-of-[loop1(vts0,d2v0,dvs1,res0)]
 //
 }(*where*)//end-of-[dvdtp1lst_d2vs$inner(vts0,dvs0)]
 //

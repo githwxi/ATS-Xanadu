@@ -183,6 +183,13 @@ envltck_free_top(envltck): (void)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+d2varset_union
+( dvs1: d2varlst
+, dvs2: d2varlst): d2varlst
+//
+(* ****** ****** *)
+//
 fun // local
 dvdtp1lst_d2vs$inner
 ( dvts
@@ -280,6 +287,10 @@ env0: !envltck, f3as: f3arg1lst): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+envltck_d2vs$save
+( env0:
+! envltck, d2vs: d2varlst): dvdtp1lst
 fun
 envltck_dvts$save
 ( env0:
