@@ -86,6 +86,8 @@ strmcon_vt_cons
 < a: vt >
 strm_vt_cons(x0, xs) =
 $llazy(
+free(x0);
+free(xs);
 strmcon_vt_cons(x0, xs))
 //
 (* ****** ****** *)
@@ -113,6 +115,8 @@ strqcon_vt_cons
 < a: vt >
 strq_vt_cons(x0, xs) =
 $llazy(
+free(x0);
+free(xs);
 strqcon_vt_cons(x0, xs))
 //
 (* ****** ****** *)
@@ -250,7 +254,7 @@ strm_vt_head0
 | ~
 strmcon_vt_cons
 (   x1, xs   ) =>
-let val () = $free(xs) in x1 end)
+let val () = free(xs) in x1 end)
 //
 #impltmp
 < x0:vt >
@@ -281,7 +285,7 @@ strmcon_vt_cons
 (   x1, xs   ) =>
 let
 val () =
-$free(xs) in optn_vt_cons(x1) end
+free(xs) in optn_vt_cons(x1) end
 )
 //
 #impltmp
@@ -322,10 +326,11 @@ strm_vt_lstrm$concat0
 {
 fun auxmain(xss) = $llazy
 (
+free(xss);
 case+ !xss of
 | ~
 strmcon_vt_nil() =>
-strmcon_vt_nil()
+strmcon_vt_nil((*0*))
 | ~
 strmcon_vt_cons(xs1, xss) => !
 (
@@ -575,6 +580,7 @@ then xs else
 (
 $llazy
 (
+free(xs);
 case+ !xs of
 | ~
 strmcon_vt_nil
@@ -606,12 +612,14 @@ fun
 auxmain
 (xs: xs, n0: ni): xs = $llazy
 (
-if
+free(xs);
+if // if
 (n0 <= 0)
-then
+then // then
 (
 free(xs);
-strmcon_vt_nil()) else
+strmcon_vt_nil())
+else // else
 (
 case+ !xs of
 | ~

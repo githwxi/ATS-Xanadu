@@ -2203,6 +2203,21 @@ val vts2 =
 (
   dvdtp1lst_trylinq(vts2, err0))
 //
+(*
+val loc0 =
+(
+  d3exp1_lctn$get(d3e0))
+val (  ) =
+prerrsln("\
+tryltck:f0_l1az1: loc0 = ", loc0)
+val (  ) =
+prerrsln("\
+tryltck:f0_l1az1: vts1 = ", vts1)
+val (  ) =
+prerrsln("\
+tryltck:f0_l1az1: vts2 = ", vts2)
+*)
+//
 in//let
 //
 if // if
