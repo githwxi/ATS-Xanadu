@@ -332,6 +332,9 @@ T3P1tcon of (d2con, d3typ1lst)
 T3P1trcd of (
 trcdknd, sint(*npf*), l3t3p1lst)
 //
+|
+T3P1elnty of d3typ1//HX: leakage!
+//
 where{
   #typedef trcdknd = $BAS.trcdknd
 }(*where*)//endof(datatype(d3typ1))
@@ -785,12 +788,20 @@ d3exp1(*scope*),d3ecl1lst(*decls*))
 (* ****** ****** *)
 //
 |D3E1l0azy of // nonlin-lazy-eval
-(
-d1exp(*$L0AZY*), d3exp1(*nlthunk*))
+(d1exp(*$L0AZY*),d3exp1(*thunk*))
+|D3E1l0az1 of // nonlin-lazy-eval
+(d1exp(*$L0AZY*)
+,dvdtp1lst//envlinvars
+,d3exp1(*thunk*),dvdtp1lst(*outer*))
+//
 |D3E1l1azy of // linear-lazy-eval
-(
-d1exp(*$LLAZY*),
-d3exp1(*lnthunk*),d3exp1lst(*frees*))
+(d1exp(*$LLAZY*)
+,d3exp1(*thunk*),d3exp1lst(*frees*))
+|D3E1l1az1 of // linear-lazy-eval
+(d1exp(*$LLAZY*)
+,dvdtp1lst//envlinvars
+,d3exp1(*thunk*),dvdtp1lst(*outer*)
+,d3exp1lst(*frees*),dvdtp1lst(*outer*))
 //
 (* ****** ****** *)
 //
@@ -1440,8 +1451,12 @@ l3t3p1lst_lab$fset
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun dvstp1lst_trylinq
+fun
+dvstp1lst_trylinq
 (dvts: dvstp1lst, err0: &sint >> _): dvstp1lst
+fun
+dvdtp1lst_trylinq
+(dvts: dvdtp1lst, err0: &sint >> _): dvdtp1lst
 //
 (* ****** ****** *)
 (* ****** ****** *)

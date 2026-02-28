@@ -1466,9 +1466,10 @@ val d3e1 =
 d3exp_trx3cpy(d3e1, env0))
 //
 in//let
+//
 (
-d3exp1
-(loc0, t3q0, D3E1l0azy(dsym,d3e1)))
+d3exp1(
+loc0, t3q0, D3E1l0azy(dsym, d3e1)))
 end(*let*)//end-of-[f0_l0azy(d3e0,env0)]
 //
 (* ****** ****** *)
@@ -1491,10 +1492,12 @@ val d3es =
 d3explst_trx3cpy(d3es, env0)
 //
 in//let
+//
 (
 d3exp1
 (loc0
 ,t3q0, D3E1l1azy(dsym, d3e1, d3es)))
+//
 end(*let*)//end-of-[f0_l1azy(d3e0,env0)]
 //
 (* ****** ****** *)

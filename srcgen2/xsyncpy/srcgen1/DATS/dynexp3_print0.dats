@@ -69,30 +69,42 @@ t3q0.node() of
 (
 prints("T3P1none(", ")"))
 //
-|T3P1styp(t2q1) =>
+|T3P1styp
+(   t2q1   ) =>
 (
 prints("T3P1styp(", t2q1, ")"))
 //
-|T3P1dvar(dvar) =>
+|T3P1dvar
+(   dvar   ) =>
 (
 prints("T3P1dvar(", dvar, ")"))
-|T3P1lvar(dvar) =>
+|T3P1lvar
+(   dvar   ) =>
 (
 prints("T3P1lvar(", dvar, ")"))
 //
-|T3P1dlft(t3q1) =>
+|T3P1dlft
+(   t3q1   ) =>
 (
 prints("T3P1dlft(", t3q1, ")"))
 //
-|T3P1tcon(dcon, t3qs) =>
+|T3P1tcon
+(dcon, t3qs) =>
 (
 prints
 ("T3P1tcon(", dcon, ";", t3qs, ")"))
 //
-|T3P1trcd(tknd, npf1, ltqs) =>
+|T3P1trcd
+( tknd
+, npf1, ltqs) =>
 (
-prints
-("T3P1trcd(",tknd,";",npf1,";",ltqs,")"))
+prints(
+"T3P1trcd(",tknd,";",npf1,";",ltqs,")"))
+//
+|T3P1elnty
+(   t3q1   ) =>
+(
+  prints(  "T3P1elnty(",  t3q1,  ")"  ) )
 //
 end(*let*)//end-of-[d3typ1_fprint(t3q0,out0)]
 //
@@ -833,14 +845,31 @@ prints
 |D3E1l0azy
 (dsym, d3e1) =>
 (
+prints("D3E1l0azy(");
+prints(dsym,";",d3e1,")"))
+|D3E1l0az1
+(dsym, evts
+,d3e1, vts1) =>
+(
+prints("D3E1l0az1(");
 prints(
-"D3E1l0azy(", dsym, ";", d3e1, ")"))
+dsym,";",evts,";",d3e1,";",vts1,")"))
+//
 |D3E1l1azy
 (dsym
-,d3e1 , d3es) =>
+,d3e1,d3es) =>
 (
-print("D3E1l1azy(");
-prints(dsym,";",d3e1, ";",d3es,")"))
+prints("D3E1l1azy(");
+prints(dsym,";",d3e1,";",d3es,")"))
+|D3E1l1az1
+(dsym, evts
+,d3e1, vts1
+,d3es, vts2) =>
+(
+prints("D3E1l1az1(");
+prints(dsym,";",evts,";");
+prints(
+d3e1,";",vts1,";",d3es,";",vts2,")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -848,8 +877,8 @@ prints(dsym,";",d3e1, ";",d3es,")"))
 |D3E1dvdtp
 (d3e1, vts2) =>
 (
-prints(
-"D3E1dvdtp(", d3e1, ";", vts2, ")"))
+prints
+("D3E1dvdtp(", d3e1, ";", vts2, ")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
