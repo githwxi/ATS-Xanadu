@@ -121,6 +121,12 @@ strqcon_vt_cons(x0, xs))
 #impltmp
 < a: vt >
 strm_vt_free(xs) = $free(xs)
+//
+(*
+HX-2026-02-28:
+During type-checking,
+[$eval(xs) -> !xs] is done
+*)
 #impltmp
 < a: vt >
 strm_vt_eval(xs) = $eval(xs)
