@@ -63,6 +63,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../../..\
+/DATS/xatsopt_tmplib.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #include
 "./../HATS/mytmplib00.hats"
 //
@@ -71,21 +78,21 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #symload =
 with sint_eq$sint of 1099
+#symload <
+with sint_lt$sint of 1099
+#symload >
+with sint_gt$sint of 1099
 //
 #symload +
 with sint_add$sint of 1099
+#symload -
+with sint_sub$sint of 1099
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
 "./../DATS/dynexp3_tmplib.dats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload
-"./../../../DATS/xatsopt_tmplib.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
