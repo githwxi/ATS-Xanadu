@@ -1034,6 +1034,11 @@ d3exp1
 |D3E1lam1 _ => f0_lam1(d3e0, env0)
 *)
 //
+|D3E1fix0 _ => f0_fix0(d3e0, env0)
+(*
+|D3E1fix1 _ => f0_fix1(d3e0, env0)
+*)
+//
 (* ****** ****** *)
 //
 |D3E1addr _ => f0_addr(d3e0, env0)
@@ -1905,13 +1910,7 @@ dvdtp1lst_d2vs$outer(vts0, d2vs))
 (*
 val (  ) = (
 prerrs("d3exp1_trxltck:");
-prerrsln("f0_lam0: f3bs = ", f3bs))
-val (  ) = (
-prerrs("d3exp1_trxltck:");
 prerrsln("f0_lam0: vts1 = ", vts1))
-val (  ) = (
-prerrs("d3exp1_trxltck:");
-prerrsln("f0_lam0: vts2 = ", vts2))
 *)
 //
 val vts1 =
@@ -1920,15 +1919,21 @@ envltck_dvdtp1lst$eval
 val evts =
 (
   envltck_dvts$save( env0, vts2 ))
+//
 (*
 HX-2026-02-28:
 [vts2 <= evts] is assumed here!!!
+HX-2026-03-01:
+Maybe [vts2=()] shoud be enforced?
 *)
 val (  ) =
 (
-  envltck_dvts$updt( env0 , evts ))
+  envltck_dvts$updt( env0, evts ))
 //
 (*
+val (  ) = (
+prerrs("d3exp1_trxltck:");
+prerrsln("f0_lam0: f3bs = ", f3bs))
 val (  ) = (
 prerrs("d3exp1_trxltck:");
 prerrsln("f0_lam0: vts1 = ", vts1))
@@ -1961,6 +1966,107 @@ evts, sres, arrw, d3e1, vts1, vts2))
 end//let
 //
 end(*let*)//end-of-[f0_lam0(d3e0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_fix0
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1fix0
+(tknd
+,fid0
+,f3as, sres
+,arrw, d3e1) = d3e0.node()
+//
+val (  ) =
+envltck_pshlam0(env0)//enter
+//
+val (  ) =
+envltck_f3as$push(env0, f3as)
+//
+val d3e1 =
+(
+  d3exp1_trxltck(d3e1, env0))
+val f3bs =
+(
+f3arg1lst_trxltck(f3as, env0))
+//
+val d2vs = envltck_dvslam0(env0)
+val vts0 = envltck_vtslam0(env0)
+//
+val (  ) = envltck_poplam0(env0)
+//
+val vts1 =
+(
+dvdtp1lst_d2vs$inner(vts0, d2vs))
+val vts2 =
+(
+dvdtp1lst_d2vs$outer(vts0, d2vs))
+//
+(*
+val (  ) = (
+prerrs("d3exp1_trxltck:");
+prerrsln("f0_fix0: vts1 = ", vts1))
+*)
+//
+val vts1 =
+envltck_dvdtp1lst$eval
+(     env0, vts1     )//val(vts1)
+val evts =
+(
+  envltck_dvts$save( env0, vts2 ))
+//
+(*
+HX-2026-02-28:
+[vts2 <= evts] is assumed here!!!
+HX-2026-03-01:
+Maybe [vts2=()] shoud be enforced?
+*)
+val (  ) =
+(
+  envltck_dvts$updt( env0, evts ))
+//
+(*
+val (  ) = (
+prerrs("d3exp1_trxltck:");
+prerrsln("f0_fix0: f3bs = ", f3bs))
+val (  ) = (
+prerrs("d3exp1_trxltck:");
+prerrsln("f0_fix0: vts1 = ", vts1))
+val (  ) = (
+prerrs("d3exp1_trxltck:");
+prerrsln("f0_fix0: vts2 = ", vts2))
+val (  ) = (
+prerrs("d3exp1_trxltck:");
+prerrsln("f0_fix0: evts = ", evts))
+*)
+//
+in//let
+//
+let
+val
+tfix =
+(
+d3typ1_styp$make
+(d3e0.styp((*0*))))
+in//let
+d3exp1_make_lctn$dtyp$node
+(
+loc0,
+tfix,
+D3E1fix1
+(
+tknd, fid0,
+f3as, f3bs,
+evts, sres, arrw, d3e1, vts1, vts2))
+end//let
+//
+end(*let*)//end-of-[f0_fix0(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

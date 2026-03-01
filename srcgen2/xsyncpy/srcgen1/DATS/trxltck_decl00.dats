@@ -418,6 +418,14 @@ val evts =
   envltck_dvts$save( env0, vts2 ))
 //
 (*
+HX-2026-03-01:
+[vts2 <= evts] is assumed here!!!
+*)
+val (  ) =
+(
+  envltck_dvts$updt( env0, evts ))
+//
+(*
 val (  ) =
 prerrsln("\
 f0_implmnt0(trxltck): f3bs = ", f3bs)
@@ -642,7 +650,7 @@ d3fundcl1_tdxp$get(dfun)
 in//let
 //
 case+ tdxp of
-|TEQD3EXP1none _ => dfun
+|TEQD3EXP1none _ => (dfun)
 |TEQD3EXP1some _ =>
 (
   f0_d3fundcl1(dfun, env0))
@@ -714,6 +722,14 @@ envltck_dvdtp1lst$eval
 val evts =
 (
   envltck_dvts$save( env0, vts2 ))
+//
+(*
+HX-2026-03-01:
+[vts2 <= evts] is assumed here!!!
+*)
+val (  ) =
+(
+  envltck_dvts$updt( env0, evts ))
 //
 (*
 val (  ) =
