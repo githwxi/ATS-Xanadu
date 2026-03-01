@@ -422,6 +422,35 @@ fpeltck_f3axp1lst(out0, faxp))
 }(*where*)//end-of-[D3E1lam1(...)]
 //
 (* ****** ****** *)
+//
+|D3E1fix0
+(tknd
+,fid0
+,farg, sres
+,arrw, d3e1) => ((*0*))
+//
+|D3E1fix1
+(tknd
+,fid0
+,farg, faxp
+,evts, sres
+,arrw, d3e1
+,vts1, vts2) =>
+(
+fpeltck_d3exp1(out0, d3e1))
+where
+{
+//
+val () =
+(
+fpeltck_f3arg1lst(out0, farg))
+val () =
+(
+fpeltck_f3axp1lst(out0, faxp))
+//
+}(*where*)//end-of-[D3E1fix1(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3E1addr
