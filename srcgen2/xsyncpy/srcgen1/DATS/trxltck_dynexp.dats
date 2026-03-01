@@ -1920,11 +1920,15 @@ envltck_dvdtp1lst$eval
 val evts =
 (
   envltck_dvts$save( env0, vts2 ))
+(*
+HX-2026-02-28:
+[vts2 <= evts] is assumed here!!!
+*)
 val (  ) =
 (
   envltck_dvts$updt( env0 , evts ))
 //
-// (*
+(*
 val (  ) = (
 prerrs("d3exp1_trxltck:");
 prerrsln("f0_lam0: vts1 = ", vts1))
@@ -1934,7 +1938,7 @@ prerrsln("f0_lam0: vts2 = ", vts2))
 val (  ) = (
 prerrs("d3exp1_trxltck:");
 prerrsln("f0_lam0: evts = ", evts))
-// *)
+*)
 //
 in//let
 //
