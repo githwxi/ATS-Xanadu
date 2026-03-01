@@ -63,14 +63,18 @@ label_fprint
 ( lab, out ) =
 (
 case+ lab of
-| LABint(int) =>
-  prints("LABint(", int, ")")
-| LABsym(sym) =>
-  prints("LABsym(", sym, ")")
-) where
+|
+LABint(int) =>
+(
+prints("LABint(", int, ")"))
+|
+LABsym(sym) =>
+(
+prints("LABsym(", sym, ")")))
+where
 {
-  #impltmp g_print$out<>() = out
-}
+#impltmp g_print$out<>() = out
+}(*where*)//end-of-[label_fprint(lab,out)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
