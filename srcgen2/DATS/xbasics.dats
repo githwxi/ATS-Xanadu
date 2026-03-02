@@ -256,18 +256,18 @@ f2clknd_equal
 (fcl1, fcl2) =
 (
 case+ fcl1 of
-|
-F2CLfun() =>
+//
+|F2CLfun() =>
 (
 case+ fcl2 of
-|
-F2CLfun() => true | F2CLclo(k2) => false)
-|
-F2CLclo(k1) =>
+|F2CLfun() => true
+|F2CLclo(k2) => (false))
+//
+|F2CLclo(k1) =>
 (
 case+ fcl2 of
-|
-F2CLfun() => false | F2CLclo(k2) => (k1 = k2)))
+|F2CLfun() => false
+|F2CLclo(k2) => (k1 = k2)))//impl
 //
 (* ****** ****** *)
 (* ****** ****** *)
