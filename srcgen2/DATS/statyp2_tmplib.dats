@@ -72,7 +72,7 @@ ATS_PACKNAME
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 < e1nv >
 s2typ_hnfiz0_e1nv
@@ -83,9 +83,9 @@ in//let
 s2typ_hnfizx_e1nv
 <e1nv>(e1nv, t2p0, flag)
 end (*let*) // end of [s2typ_hnfiz0_e1nv]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 < e1nv >
 s2typ_subst0_e1nv
@@ -96,9 +96,10 @@ in//let
 s2typ_substx_e1nv
 <e1nv>(e1nv, t2p0, svts, flag)
 end (*let*) // end of [s2typ_subst0_e1nv]
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #impltmp
 < e1nv >
 s2typ_hnfizx_e1nv
@@ -731,9 +732,10 @@ s2typ_substx
 s2typ_substx_e1nv<e1nv>(e1nv, t2p0, svts, flag)
 //
 } (*where*) // end of [s2typ_hnfizx_e1nv(e1nv,...)]
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #impltmp
 < e1nv >
 s2typ_substx_e1nv
@@ -1283,9 +1285,10 @@ end (*let*)
 (* ****** ****** *)
 //
 } (*where*) // end of [s2typ_subst_e1nv(e1nv,...)]
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #impltmp
 <e1nv:vwtp>
 unify00_s2typ_e1nv
@@ -1294,7 +1297,7 @@ unify00_s2typ_e1nv
 <e1nv:vwtp>
 match00_s2typ_e1nv
 (e1nv, t2p1, t2p2) = false
-
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -1328,7 +1331,8 @@ t2p0 = s2typ_unargx(t2p0)
 *)
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #impltmp
 <e1nv:vwtp>
 unify00_s2typ_e1nv
@@ -1349,12 +1353,32 @@ T2Pxtv _ => true | _ => false)
 //
 (* ****** ****** *)
 //
+fun
+f2clknd_lteq
+(fcl1: f2clknd
+,fcl2: f2clknd): bool =
+(
+case+ fcl1 of
+//
+|F2CLfun() => (true)
+//
+|F2CLclo(knd1) =>
+(
+case+ fcl2 of
+|F2CLfun() => (false)
+|F2CLclo(knd2) => (knd1 = knd2))
+//
+)(*case+*)//end-of-[f2clknd_lteq]
+//
+(* ****** ****** *)
+//
 (*
 fun
 s2typ_hnfiz0
 ( e1nv: !e1nv
 , t2p0: s2typ): s2typ =
-s2typ_hnfiz0_e1nv<e1nv>(e1nv, t2p0)
+s2typ_hnfiz0_e1nv
+<      e1nv      >(e1nv, t2p0)
 *)
 //
 fun
@@ -1362,19 +1386,22 @@ s2typ_subst0
 ( e1nv: !e1nv
 , t2p0: s2typ
 , svts: s2vts): s2typ =
-s2typ_subst0_e1nv<e1nv>(e1nv,t2p0,svts)
+s2typ_subst0_e1nv
+<      e1nv      >(e1nv,t2p0,svts)
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 s2typ_exi0_abst
-( e1nv: !e1nv
-, t2p0: s2typ): s2typ = t2p0
+( e1nv:
+! e1nv
+, t2p0: s2typ): s2typ = (  t2p0  )
+//
 fun
 s2typ_uni0_abst
-( e1nv: !e1nv
-, t2p0: s2typ): s2typ = t2p0
+( e1nv:
+! e1nv
+, t2p0: s2typ): s2typ = (  t2p0  )
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1395,12 +1422,12 @@ list_maprev
 //
 fun
 x2t2p_make() =
-x2t2p_make_lctn(loctn_dummy())
+x2t2p_make_lctn(loctn_dummy((*0*)))
 //
 #impltmp
 map$fopr
 <x0><y0>(s2v1) =
-@(s2v1, s2typ_xtv(x2t2p_make()))
+@(s2v1, s2typ_xtv(x2t2p_make((*0*))))
 //
 }(*where*)//end of [f0_inst_s2vs(s2vs)]
 //
@@ -1426,7 +1453,8 @@ e1nv,
 s2typ_subst0(e1nv,t2p1,svts) )
 endlet // end of [T2Pexi0(...)]
 //
-| _(* non-T2Pexi0 *) => (  t2p0  )
+|
+_(* non-T2Pexi0 *) => (    t2p0    )
 //
 )(*case+*)//end-of-[s2typ_exi0_inst(...)]
 //
@@ -1450,7 +1478,8 @@ s2typ_uni0_inst//recursive
 e1nv,
 s2typ_subst0(e1nv,t2p1,svts) )
 endlet // end of [T2Puni0(...)]
-| _(* non-T2Puni0 *) => (  t2p0  )
+|
+_(* non-T2Puni0 *) => (    t2p0    )
 )(*case+*)//end-of-[s2typ_uni0_inst(...)]
 //
 endloc // end-of-[s2typ_exi0/uni0_inst(...)]
@@ -1515,7 +1544,7 @@ case+
 t2p2.node() of
 |
 T2Pf2cl(fcl2) =>
-f2clknd_equal
+f2clknd_lteq
 (fcl1 , fcl2) | _ => false)
 //
 |
@@ -1972,7 +2001,8 @@ end//let//end-of-[unify00_l2t2plst( ... )]
 (* ****** ****** *)
 //
 } (*where*) // end of [unify00_s2typ_e1nv(e1nv,...)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
