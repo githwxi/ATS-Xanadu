@@ -288,7 +288,7 @@ let
   val loc0 = d2cl.lctn()
 in//let
   d3ecl_make_node(loc0, D3Cnone1( d2cl ))
-end (*let*) // end of [_(*otherwise*)] // temp
+end (*let*) // end-of-[_(*otherwise*)] // temp
 //
 end where {
 //
@@ -356,7 +356,7 @@ val
 dcl1 = trans23_d2ecl(env0, dcl1)
 in//let
   d3ecl(loc0, D3Cstatic(tknd, dcl1))
-end (*let*) // end of [f0_static(env0,d2cl)]
+end (*let*) // end-of-[f0_static(env0,d2cl)]
 //
 fun
 f0_extern
@@ -374,7 +374,7 @@ val
 dcl1 = trans23_d2ecl(env0, dcl1)
 in//let
   d3ecl(loc0, D3Cextern(tknd, dcl1))
-end (*let*) // end of [f0_extern(env0,d2cl)]
+end (*let*) // end-of-[f0_extern(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -404,7 +404,7 @@ val (  ) = tr23env_locjoin(env0)
 //
 in//let
   d3ecl(loc0, D3Clocal0(head, body))
-end (*let*) // end of [f0_local0(env0,d2cl)]
+end (*let*) // end-of-[f0_local0(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -431,7 +431,7 @@ tr23env_insert$any(env0,s2c1)
 //
 in//let
 d3ecl(loc0, D3Cabsopen(tknd, simp))
-end (*let*) // end of [f0_absopen(...)]
+end (*let*) // end-of-[f0_absopen(...)]
 //
 fun
 f0_absimpl
@@ -468,7 +468,7 @@ tr23env_insert$any(env0,s2c1))
 in//let
 d3ecl_make_node
 (loc0, D3Cabsimpl(tknd, simp, sexp))
-end (*let*) // end of [f0_absimpl(...)]
+end (*let*) // end-of-[f0_absimpl(...)]
 //
 (* ****** ****** *)
 //
@@ -501,7 +501,7 @@ d3ecl_make_node
 (loc0,
  D3Cinclude
  (knd0, tknd, gsrc, fopt, dopt))
-end (*let*) // end of [f0_include(...)]
+end (*let*) // end-of-[f0_include(...)]
 //
 (* ****** ****** *)
 //
@@ -571,7 +571,7 @@ in//let
   ( loc0,
     D3Cstaload
     (knd0, tknd, gsrc, fopt, dopt) ) )
-end (*let*) // end of [f0_staload(...)]
+end (*let*) // end-of-[f0_staload(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -604,7 +604,7 @@ val () = prerrsln
 ("trans23_d2ecl: f0_dyninit: d2cl = ", d2cl)
 *)
 //
-} (*where*) // end of [f0_dyninit(env0,d2cl)]
+} (*where*) // end-of-[f0_dyninit(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -636,7 +636,7 @@ val () = prerrsln
 ("trans23_d2ecl: f0_extcode: d2cl = ", d2cl)
 *)
 //
-} (*where*) // end of [f0_extcode(env0,d2cl)]
+} (*where*) // end-of-[f0_extcode(env0,d2cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -667,7 +667,7 @@ val (  ) =
 prerrsln("f0_valdclst(23): d2cl = ", d2cl)
 *)
 //
-}(*where*) // end of [f0_valdclst(env0,d2cl)]
+}(*where*) // end-of-[f0_valdclst(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -697,7 +697,7 @@ val (  ) =
 prerrsln("f0_vardclst(23): d2cl = ", d2cl)
 *)
 //
-}(*where*) // end of [f0_vardclst(env0,d2cl)]
+}(*where*) // end-of-[f0_vardclst(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -731,7 +731,7 @@ val (  ) =
 prerrsln("f0_fundclst(23): d2cl = ", d2cl)
 *)
 //
-}(*where*) // end of [f0_fundclst(env0,d2cl)]
+}(*where*) // end-of-[f0_fundclst(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -778,7 +778,7 @@ val (  ) =
 prerrsln("f0_implmnt0(23): d2cl = ", d2cl)
 *)
 //
-} (*where*) // end of [f0_implmnt0(env0,d2cl)]
+} (*where*) // end-of-[f0_implmnt0(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -795,7 +795,7 @@ D2Cexcptcon
 //
 in//let
 d3ecl_make_node(d2cl.lctn(), D3Cd2ecl(d2cl))
-end (*let*) // end of [f0_excptcon(env0,d2cl)]
+end (*let*) // end-of-[f0_excptcon(env0,d2cl)]
 //
 fun
 f0_datatype
@@ -810,7 +810,7 @@ D2Cdatatype
 //
 in//let
 d3ecl_make_node(d2cl.lctn(), D3Cd2ecl(d2cl))
-end (*let*) // end of [f0_datatype(env0,d2cl)]
+end (*let*) // end-of-[f0_datatype(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -826,11 +826,11 @@ loc0 = d2cl.lctn()
 val-D2Cdynconst _ = d2cl.node()
 in//let
 d3ecl_make_node(d2cl.lctn(), D3Cd2ecl(d2cl))
-end (*let*) // end of [f0_dynconst(env0,d2cl)]
+end (*let*) // end-of-[f0_dynconst(env0,d2cl)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [trans23_d2ecl(env0,d2cl)]
+} (*where*) // end-of-[trans23_d2ecl(env0,d2cl)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -951,14 +951,17 @@ val f2cl = F2CLfun((*void*))
 *)
 //
 (*
-val (  ) = prerrsln
-("trans23_d2fundcl: f3as = ", f3as)
-val (  ) = prerrsln
-("trans23_d2fundcl: tdxp = ", tdxp)
+val (  ) =
+prerrsln("\
+trans23_d2fundcl: f3as = ", f3as)
+val (  ) =
+prerrsln("\
+trans23_d2fundcl: tdxp = ", tdxp)
 *)
 //
 in//let
-d3fundcl(loc0,dvar,f3as,sres,tdxp,wsxp)
+(
+d3fundcl(loc0, dvar, f3as, sres,tdxp,wsxp))
 end//let
 (*let*)//end-of-[trans23_d2fundcl(env0,dfun)]
 //

@@ -928,42 +928,68 @@ d3exp_make_tpnd
 //
 |D2Eproj _ => f0_proj(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Elet0 _ => f0_let0(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |D2Eift0 _ => f0_ift0(env0, d2e0)
 |D2Ecas0 _ => f0_cas0(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Eseqn _ => f0_seqn(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |D2Etup0 _ => f0_tup0(env0, d2e0)
 |D2Etup1 _ => f0_tup1(env0, d2e0)
 |D2Ercd2 _ => f0_rcd2(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Elam0 _ => f0_lam0(env0, d2e0)
 |D2Efix0 _ => f0_fix0(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Etry0 _ => f0_try0(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |D2Eaddr _ => f0_addr(env0, d2e0)
 |D2Eview _ => f0_view(env0, d2e0)
+//
 (*
 HX-2026-02-17:
-no D3Eflat; only D3Eflat!
+no D2Eflat; only D3Eflat!
 |D2Eflat _ => f0_flat(env0, d2e0)
 *)
+//
+(* ****** ****** *)
 //
 |D2Eeval _ => f0_eval(env0, d2e0)
 //
 |D2Efold _ => f0_fold(env0, d2e0)
+//
 |D2Efree _ => f0_free(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Ewhere _ => f0_where(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
 |D2Exazgn _ => f0_xazgn(env0, d2e0)
 |D2Exchng _ => f0_xchng(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Eraise _ => f0_raise(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |D2El0azy _ => f0_l0azy(env0, d2e0)
 |D2El1azy _ => f0_l1azy(env0, d2e0)
@@ -2009,6 +2035,7 @@ end (*let*) // end of [ S2RESsome ]
 //
 val tres = dexp.styp((*void*))
 val tfun =
+// HX: l0cfp; ...; l0cfp; (fun)
 s2typ_fun1_f3arglst(f3as,t2p0,tres)
 //
 in//let

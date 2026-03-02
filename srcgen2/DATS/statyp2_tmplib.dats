@@ -1747,8 +1747,13 @@ unify00_s2typ(e1nv, trs1, trs2)
 val btf3 =
 unify00_s2typlst(e1nv, tps2, tps1)
 in//let
+//
+(
 if btf1 then
-(if btf2 then btf3 else false) else false
+(
+if btf2
+  then btf3 else false) else false)
+//
 end (*let*) // end of [T2Pfun1(...)]
 | _ (* non-T2Pfun1 *) => (  false  )
 //

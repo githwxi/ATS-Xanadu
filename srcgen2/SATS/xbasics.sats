@@ -267,15 +267,28 @@ implknd_fprint(implknd, FILR): void
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-03-01:
+$cfenv, $cfref,
+$l0cfp, $l1cfp, ...
+*)
+#define CFENV = 0  // flat
+#define CFREF = -1 // refd
+#define L0CFP = 01 // one-time
+#define L1CFP = 02 // repeated
+//
+(*
+HX-2026-03-01:
+This is obsolete!!!
 #define CLOFLT = 0 // flat
 #define CLOPTR = 1 // linear-boxed
-(*
-#define CLOREF = -1 // non-linear-boxed
-*)
+#define CLOREF = -1 // nonlin-boxed
 #define LINCLOFLT = 2 // linear-flat
 #define LINCLOPTR = 3 // linear-boxed
+*)
 //
 (* ****** ****** *)
+//
 datatype
 f2clknd =
 //
@@ -286,7 +299,9 @@ f2clknd =
 *)
 | F2CLfun of ((*fun*))
 | F2CLclo of int(*knd*)
-  // closure: knd=1/0/~1: ptr/flt/ref
+// closure:
+// knd=~1/1/0: ref/ptr/flt
+//
 (* ****** ****** *)
 fun
 f2clknd_linq(f2cl: f2clknd): bool

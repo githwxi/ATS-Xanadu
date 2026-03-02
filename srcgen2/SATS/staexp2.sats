@@ -744,16 +744,19 @@ s2exp_lams
 ( svss
 : s2varlstlst, s2e0: s2exp): s2exp
 (* ****** ****** *)
+(* ****** ****** *)
+//
 fun
-s2exp_fun1_nil
+s2exp_fun1_nil0
 ( npf1: sint
 , farg
 : s2explst, fres: s2exp): s2exp
 fun
-s2exp_fun1_all
+s2exp_fun1_all1
 ( npf1: sint
 , farg
 : s2explst, fres: s2exp): s2exp
+//
 fun
 s2exp_fun1_full
 ( f2cl
@@ -761,6 +764,8 @@ s2exp_fun1_full
 , npf1: sint
 , farg
 : s2explst, fres: s2exp): s2exp
+//
+(* ****** ****** *)
 (* ****** ****** *)
 fun
 s2exp_make_node
