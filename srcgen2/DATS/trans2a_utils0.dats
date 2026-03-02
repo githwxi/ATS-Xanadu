@@ -343,15 +343,16 @@ val
 ndyn = f1_ndyn(f2as)
 in//let
 f0_f2as(f2as, ndyn, tres)
-end where
+end where // end-of-(let)
 {
 //
 fun
 f0_f2as
-( f2as
-: f2arglst
-, ndyn: sint
-, tres: s2typ): s2typ =
+(
+f2as:
+f2arglst,
+ndyn: sint,
+tres: s2typ): s2typ =
 (
 case+ f2as of
 |
@@ -361,11 +362,11 @@ list_cons(f2a1, f2as) =>
 (
 case+
 f2a1.node() of
-|
-F2ARGmets _ =>
+//
+|F2ARGmets _ =>
 f0_f2as(f2as, ndyn, tres)
-|
-F2ARGsapp
+//
+|F2ARGsapp
 (s2vs, s2ps) =>
 let
 val
@@ -380,33 +381,49 @@ end where
 {
 //
 val
-s2vs = s2varlst_imprq(s2vs)
+s2vs =
+s2varlst_imprq(s2vs)
 //
 val
-tres = f0_f2as(f2as, ndyn, tres)
+tres =
+f0_f2as(f2as, ndyn, tres)
 }
-|
-F2ARGdapp(npf1, d2ps) =>
+//
+|F2ARGdapp
+(npf1, d2ps) =>
 (
-s2typ_fun1
-(f2cl,npf1,t2ps,tres)) where
+s2typ_fun1(
+  f2cl, npf1, t2ps, tres)
+) where
 {
-val ndyn = ndyn - 1
+//
+val ndyn = (ndyn - 1)
+//
 val tres =
 (
   f0_f2as(f2as, ndyn, tres))
 val t2ps =
 (
   s2typlst_of_d2patlst(d2ps))
+//
 val f2cl =
-if
-(ndyn<=0) then f2cl else F2CLclo(1)
+(
+(*
+HX-2026-03-02:
+L0CFP=1: linear one-time clofun
+L1CFP=2: linear manytime clofun
+*)
+if // if
+(ndyn<=0)
+then( f2cl )else(F2CLclo(L0CFP)))
+//
 }
-)
+)(*case+*)//end-of-[list_cons(...)]
 )(*case+*)//end-of-[f0_f2as(f2as,...)]
 //
 and
-f1_ndyn(xs: f2arglst): sint =
+f1_ndyn
+(xs: f2arglst): sint =
 (
 case+ xs of
 |list_nil() => 0
@@ -414,9 +431,9 @@ case+ xs of
 (
 case+ x1.node() of
 |F2ARGdapp _ =>
- f1_ndyn(xs) + 1 | _ => f1_ndyn(xs)))
+(f1_ndyn(xs) + 1) | _ => f1_ndyn(xs)))
 //
-} (*whr*)//end-[s2typ_fun1_f2arglst(...)]
+}(*where*)//end-[s2typ_fun1_f2arglst(...)]
 //
 (* ****** ****** *)
 //

@@ -661,6 +661,7 @@ end (*let*) // end of [trans12_d1arg(...)]
 end (*local*)//end-of-[local(trans12_d1arg)]
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 process_static
@@ -698,6 +699,8 @@ prerrsln("process_static: d2cl = ", d2cl)
 *)
 }(*where*)//end-of[process_static(env0,...)]
 //
+(* ****** ****** *)
+//
 fun
 process_extern
 ( env0:
@@ -734,6 +737,7 @@ prerrsln("process_extern: d2cl = ", d2cl)
 *)
 }(*where*)//end-of[process_extern(env0,...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -2761,7 +2765,7 @@ f2_d1ts(env0, d1ts, s2ts) end
 } (*where*) // end of [f0_datasort(env0,d1cl)]
 //
 (* ****** ****** *)
-
+//
 fun
 f0_valdclst
 ( env0:
@@ -2810,26 +2814,32 @@ prerrsln("f0_valdclst:d2ps = ", d2ps)
 *)
 //
 val (  ) =
-if
+(
+if//if
 (recq) then
-tr12env_add0_d2ps(env0, d2ps)
+(
+  tr12env_add0_d2ps(env0, d2ps)))
 //
 val d2vs =
-trans12_d1valdclist(env0, d2ps, d1vs)
+trans12_d1valdclist(env0,d2ps,d1vs)
 //
 val (  ) =
-if
+(
+if//if
 not(recq)
-then tr12env_add0_d2ps(env0, d2ps)
+then//then
+(
+  tr12env_add0_d2ps(env0, d2ps) ) )
 //
 in//let
-  d2ecl(loc0, D2Cvaldclst(tknd, d2vs))
-end (*let*) // end of [f0_valdclst(env0,d1cl)]
-
+(
+d2ecl(loc0, D2Cvaldclst(tknd, d2vs)))
+end(*let*)//end-of-[f0_valdclst(env0,d1cl)]
+//
 (* ****** ****** *)
-
+//
 local
-
+//
 fun
 f1_add0_d2vs
 ( env0:
@@ -2852,15 +2862,15 @@ d2vardcl_get_dpid(d2v1)
 val vpid =
 d2vardcl_get_vpid(d2v1)
 //
-val (  ) = //HX:non-recursive
+val (  ) =(*non-recursive*)
 tr12env_add0_d2var(env0, dpid)
-val (  ) = //HX:non-recursive
+val (  ) =(*non-recursive*)
 tr12env_add0_d2varopt(env0, vpid) }
 //
-) (*case+*) // end of [f1_add0_d2vs(...)]
-
+)(*case+*)//end-of-[f1_add0_d2vs(...)]
+//
 in//local
-
+//
 fun
 f0_vardclst
 ( env0:
@@ -2880,11 +2890,12 @@ trans12_d1vardclist(env0, d1vs)
 val (  ) = f1_add0_d2vs(env0, d2vs)
 //
 in//let
-  d2ecl(loc0, D2Cvardclst(tknd, d2vs))
-end (*let*) // end of [f0_vardclst(env0,d1cl)]
-
-end (*local*) // end of [ local(f0_vardclst) ]
-
+(
+d2ecl(loc0, D2Cvardclst(tknd, d2vs)))
+end(*let*)//end-of-[f0_vardclst(env0,d1cl)]
+//
+end(*local*)//end-of-[local(f0_vardclst())]
+//
 (* ****** ****** *)
 //
 fun
@@ -2902,19 +2913,22 @@ D1Cfundclst
 ( tknd
 , tqas, d1fs) = d1cl.node()
 //
-val recq =
+val recq = (
 (
 case+
 tknd.node() of
-| T_FUN(fnk) =>
+|
+T_FUN(fnk) =>
 (
   funkind_recq(fnk) )
-| _(*else*) => false): bool
+|
+_(*else*) => false): bool)
 //
 val d2vs =
 list_trans12_fnp
 (env0, d1fs, f1_dfun) where
 {
+//
 fun
 f1_dfun
 ( env0:
@@ -2926,7 +2940,8 @@ dpid =
 d1fundcl_get_dpid(dfun)
 in//let
 trans12_d1pid(env0,dpid) end
-} (*where*)//end-of-(f1_dfun)
+//
+}(*where*)//end-of-(f1_dfun())
 //
 (*
 val () =
@@ -2981,17 +2996,21 @@ val d2cs =
 //
 #impltmp
 map$fopr
-<x0><y0>
-( dvar )=
+<x0><y0>( dvar ) =
 (
-d2cst_make_dvar(tknd, dvar, tqas))
+d2cst_make_dvar(tknd,dvar,tqas))
 }
 //
 val () =
 (
-if//HX: [d2cs] only for templates!
+if // if
+(*
+HX: [d2cs] only for templates!
+*)
 list_consq(tqas)
-then tr12env_add1_d2cs(env0, d2cs))
+then
+(
+ tr12env_add1_d2cs(env0, d2cs)))
 //
 (*
 val () =
@@ -3004,10 +3023,12 @@ val () =
   f1_d2cs_d2fs_xnam(d2cs, d2fs))
 //
 in//let
+//
 d2ecl_make_node
 ( loc0
 , D2Cfundclst(tknd, tqas, d2cs, d2fs) )
-end (*let*) // end of [f0_fundclst(env0,d1cl)]
+//
+end(*let*)//end-of-[f0_fundclst(env0,d1cl)]
 //
 and
 f1_d2cs_d2fs_xnam
@@ -3983,7 +4004,7 @@ case+ s1is of
 list_nil _ => f1_svss(svss)
 |
 list_cons _ => f0_s1is(env0, s1is)
-) (*case+*) // end of [f0_idxs(env0, ...)]
+)(*case+*)//end-of-[f0_idxs(env0, ...)]
 
 and
 f0_s1is
@@ -4034,9 +4055,9 @@ list_sing
 (trans12_s1exp(env0, s1i0))
 in//let
 list_cons(s2es, f0_s1is(env0, s1is))
-end (*let*) // end of [non-S1Elist(...)]
+end(*let*)//end-of-[non-S1Elist(...)]
 )
-) (*case*) // end of [ f0_s1is(env0,s1is) ]
+)(*case+*)//end-of-[ f0_s1is(env0,s1is) ]
 
 in (* in-of-local *)
 
@@ -4094,7 +4115,7 @@ val s2e0 =
 f1_sres(ltok, s2e0, sess)
 //
 in
-s2exp_fun1_nil(npf1,sarg,s2e0)
+s2exp_fun1_nil0(npf1,sarg,s2e0)
 end (*let*) // end of [list_nil]
 |
 list_cons(s1u1, s1us) =>
@@ -4550,7 +4571,7 @@ list_cons(tqag,
 trans12_t1qaglst_wth(env0,tqs1,tqs2))
 end//let
 )(*end-of-[ list_cons( t1qa, tqs1 ) ]*)
-)(*case+*) // end-of-[trans12_t1qaglst_wth]
+)(*case+*)//end-of-[trans12_t1qaglst_wth]
 //
 (* ****** ****** *)
 //
@@ -4586,7 +4607,7 @@ map$e1nv$fopr
 < x0><y0 ><e1>
 (   x0, e1   ) = trans12_d1typ(e1, x0, s2t0)
 //
-} (*where*) // end of [trans12_d1typlst(...)]
+} (*where*) // end-of-[trans12_d1typlst(...)]
 
 (* ****** ****** *)
 //
@@ -4594,6 +4615,7 @@ map$e1nv$fopr
 trans12_d1tsclst
 (env0, d1ts, s2cs) =
 (
+//
 case+ d1ts of
 |
 list_nil() => ((*void*))
@@ -4607,14 +4629,16 @@ let
 val () =
 trans12_d1tsc(env0, d1t1, s2c1)
 in//let
-trans12_d1tsclst(env0, d1ts, s2cs) end
-)
-) (*case+*) // end of [trans12_d1tsclst(...)]
+trans12_d1tsclst(env0, d1ts, s2cs) end)
+//
+) (*case+*) // end-of-[trans12_d1tsclst(...)]
 //
 (* ****** ****** *)
 
 local
-
+//
+(* ****** ****** *)
+//
 fun
 f1_s2vs
 ( s2vs
@@ -4635,12 +4659,11 @@ s2v1.name()
 =
 the_symbl_nil)
 then f1_s2vs(s2vs)
-else list_cons(s2v1, f1_s2vs(s2vs))
-)
-) (*case+*) // end of [f1_s2vs(s2vs)]
-
+else list_cons(s2v1, f1_s2vs(s2vs)))
+) (*case+*) // end-of-[f1_s2vs(s2vs)]
+//
 (* ****** ****** *)
-
+//
 fun
 f1_tqas
 ( s2c0
@@ -4670,10 +4693,10 @@ val
 tqa1 = t2qag(s2c0.lctn(), s2vs)
 in//let
 list_cons(tqa1, f1_tqas(s2c0, svss))
-end (*let*) // end of [list_cons(_,_)]
+end (*let*) // end-of-[list_cons(_,_)]
 )
-) (*case+*) // end of [f0_tqas(s2c0,svss)]
-
+) (*case+*) // end-of-[f0_tqas(s2c0,svss)]
+//
 in(*in-of-local*)
 
 #implfun
@@ -4695,9 +4718,10 @@ tqas = f1_tqas(s2c0, svss)
 #impltmp
 map$e1nv$fopr
 < x0><y0 ><e1>(x0, e1) =
-trans12_d1tcn(e1, x0, s2c0, tqas, svss)
+(
+  trans12_d1tcn(e1, x0, s2c0, tqas, svss))
 //
-} (*where*) // end of [trans12_d1tcnlst(...)]
+} (*where*) // end-of-[trans12_d1tcnlst(...)]
 
 end (*local*) // end-[local(trans12_d1tcnlst)]
 
@@ -4739,8 +4763,8 @@ in//let
 list_cons
 ( d2f1
 , trans12_d1valdclist(env0, d2ps, d1fs))
-end (*let*) // end of [ list_cons( ... ) ]
-) (*case+*) // end of [trans12_d1valdclist(...)]
+end (*let*) // end-of-[ list_cons( ... ) ]
+) (*case+*) // end-of-[trans12_d1valdclist(...)]
 //
 (* ****** ****** *)
 
@@ -4780,8 +4804,8 @@ in//let
 list_cons
 ( d2f1
 , trans12_d1fundclist(env0, d2vs, d1fs))
-end (*let*) // end of [ list_cons( ... ) ]
-) (*case+*) // end of [trans12_d1fundclist(...)]
+end (*let*) // end-of-[ list_cons( ... ) ]
+) (*case+*) // end-of-[trans12_d1fundclist(...)]
 //
 (* ****** ****** *)
 //
@@ -4808,7 +4832,7 @@ map$e1nv$fopr
 (
   trans12_d1cstdcl(e1, tknd, x0, tqas) )
 //
-} (*where*) // end of [trans12_d1cstdclist(...)]
+} (*where*) // end-of-[trans12_d1cstdclist(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

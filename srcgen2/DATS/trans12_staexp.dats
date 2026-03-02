@@ -1229,6 +1229,9 @@ case+
 s1e0.node() of
 //
 |S1Eid0(sid1) =>
+(*
+HX: MSGT="->"
+*)
 (sid1 = MSGT_symbl)
 |S1Earrw(s1es) => (true)
 //
@@ -1242,8 +1245,11 @@ isAXCG
 case+
 s1e0.node() of
 //
+(*
+HX: AXCG=">>"
+*)
 |S1Eid0(sid1) =>
- (sid1 = AXCG_symbl)
+(sid1 = AXCG_symbl)
 //
 |_(*non-S1Eid0*) => false )
 //
@@ -1346,10 +1352,8 @@ trans12_s1explst_prgm(env0,ses2)
 }
 |
 _(*non-S1El?st*) =>
-list_sing
-(
-  trans12_s1exp_impr(env0, s1e1)
-)
+list_sing(
+  trans12_s1exp_impr(env0, s1e1))
 ) : s2explst // end-of-[val(s2es)]
 //
 val npf1 =
@@ -1363,8 +1367,9 @@ list_length(xs)
 _(*non-S1El2st*) => (-1) ): sint
 //
 in//let
-  s2exp_fun1_all
-  (npf1, s2es, s2e2) where
+(
+s2exp_fun1_all1
+(npf1, s2es, s2e2)) where
 { val
   s2e2 =
   trans12_s1exp_impr(env0, s1e2) }

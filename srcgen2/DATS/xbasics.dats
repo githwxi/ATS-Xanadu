@@ -242,13 +242,12 @@ prerrsln("implknd_recq: knd = ", knd)
 (* ****** ****** *)
 //
 #implfun
-f2clknd_linq(f2cl) =
+f2clknd_linq
+(   f2cl   ) =
 (
 case+ f2cl of
-|
-F2CLfun() => false
-|
-F2CLclo(knd0) => (knd0 >= LINCLOFLT))
+|F2CLfun() => false
+|F2CLclo(knd0) => (knd0 >= 1))
 //
 (* ****** ****** *)
 //
