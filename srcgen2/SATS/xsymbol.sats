@@ -104,6 +104,7 @@ symbl_make_name
 #symload symbl with symbl_make_name
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 val AMP_symbl: symbl//symbl("&")
 val BAR_symbl: symbl//symbl("|")
@@ -195,15 +196,14 @@ val DFREE_symbl: symbl //=symbl("$free")
 val DLAZY_symbl: symbl //=symbl("$lazy")
 val DLLAZY_symbl: symbl //=symbl("$llazy")
 (* ****** ****** *)
+val DRAISE_symbl: symbl //=symbl("$raise")
+(* ****** ****** *)
 //
-val DCFENV_symbl: symbl //=symbl("$cfenv")
-val DCFREF_symbl: symbl //=symbl("$cfref")
-//
-val DL0CFP_symbl: symbl //=symbl("$l0cfp")
-val DL1CFP_symbl: symbl //=symbl("$l1cfp")
+val DLAMENV_symbl: symbl //=symbl("$lamenv")
+val DLLAMENV0_symbl: symbl //=symbl("$llamenv0")
+val DLLAMENV1_symbl: symbl //=symbl("$llamenv1")
 //
 (* ****** ****** *)
-val DRAISE_symbl: symbl //=symbl("$raise")
 (* ****** ****** *)
 //
 fun
@@ -212,6 +212,7 @@ symbl_search$opt
 fun
 symbl_insert$any(sym: symbl): void
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val
@@ -225,25 +226,28 @@ val
 DLR_EXTYPE_symbl: symbl //=symbl("$extype")
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 symbl_wcard_kind
-( sym: symbl ) : sint // HX: true/false: -1|0+
+  (sym: symbl): sint//HX: true/false: -1|0+
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 val
 P1TR_TBOX_symbl: symbl //=symbl("p1tr_tbox")
 val
 P2TR_TBOX_symbl: symbl //=symbl("p2tr_tbox")
-
+//
 (* ****** ****** *)
-
+//
 val
 L0AZY_TBOX_symbl: symbl //=symbl("lazy_t0_tx")
 val
 L1AZY_VTBX_symbl: symbl //=symbl("lazy_vt_vx")
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val
@@ -263,6 +267,7 @@ TOP0_VT_T0_symbl: symbl //=symbl("top0_vt_t0")
 val
 TOP1_VT_T0_symbl: symbl //=symbl("top1_vt_t0")
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

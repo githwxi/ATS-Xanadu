@@ -410,12 +410,12 @@ val f2cl =
 (
 (*
 HX-2026-03-02:
-L0CFP=1: linear one-time clofun
-L1CFP=2: linear manytime clofun
+CFPTR0=10: linear one-time clofun
+CFPTR1=11: linear manytime clofun
 *)
 if // if
 (ndyn<=0)
-then( f2cl )else(F2CLclo(L0CFP)))
+then( f2cl )else(F2CLclo(CFPTR0)))
 //
 }
 )(*case+*)//end-of-[list_cons(...)]

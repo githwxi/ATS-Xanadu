@@ -164,29 +164,13 @@ HX-2022-10-01: Various symbols
 //
 (* ****** ****** *)
 //
-(*
-HX-2026-02-26:
-$cfenv flat closure-functions
-$cfref refd closure-functions
-*)
-#implval DCFENV_symbl = symbl("$cfenv")
-#implval DCFREF_symbl = symbl("$cfref")
-(*
-HX-2026-02-26:
-Linear closure-functions
-that is called exactly one time
-*)
-#implval DL0CFP_symbl = symbl("$l0cfp")
-(*
-HX-2026-02-26:
-Linear closure-functions that
-can be called repeatedly and freed
-*)
-#implval DL1CFP_symbl = symbl("$l1cfp")
+#implval DRAISE_symbl = symbl("$raise")
 //
 (* ****** ****** *)
 //
-#implval DRAISE_symbl = symbl("$raise")
+#implval DLAMENV_symbl = symbl("$lamenv")
+#implval DLLAMENV0_symbl = symbl("$llamenv0")
+#implval DLLAMENV1_symbl = symbl("$llamenv1")
 //
 (* ****** ****** *)
 (* ****** ****** *)
