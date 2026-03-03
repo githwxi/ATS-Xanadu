@@ -241,13 +241,25 @@ prerrsln("implknd_recq: knd = ", knd)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+#define CFREFX = -1 // refd
+#define CFENV0 = 00 // flat
+#define CFENV1 = 01 // flat
+#define CFPTR0 = 10 // one-time
+#define CFPTR1 = 11 // repeated
+HX-2026-03-03:
+F2CLfun is CFREFX;
+[CFREFX] is nonlin;
+and all the others are linear!
+*)
 #implfun
 f2clknd_linq
 (   f2cl   ) =
 (
 case+ f2cl of
 |F2CLfun() => false
-|F2CLclo(knd0) => (knd0 >= 1))
+|F2CLclo(knd0) => ( knd0 >= 0 )
+)(*case+*)//endof(f2clknd_linq())
 //
 (* ****** ****** *)
 //
@@ -261,13 +273,14 @@ case+ fcl1 of
 (
 case+ fcl2 of
 |F2CLfun() => true
-|F2CLclo(k2) => (false))
+|F2CLclo(knd2) => (false))
 //
-|F2CLclo(k1) =>
+|F2CLclo(knd1) =>
 (
 case+ fcl2 of
 |F2CLfun() => false
-|F2CLclo(k2) => (k1 = k2)))//impl
+|F2CLclo(knd2) => (knd1 = knd2))
+)(*case+*)//endof(f2clknd_equal())
 //
 (* ****** ****** *)
 (* ****** ****** *)

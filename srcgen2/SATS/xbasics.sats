@@ -268,14 +268,16 @@ implknd_fprint(implknd, FILR): void
 (* ****** ****** *)
 //
 (*
-HX-2026-03-01:
-$cfenv, $cfref,
-$l0cfp, $l1cfp, ...
+HX-2026-03-03:
+F2CLfun is CFREFX;
+[CFREFX] is nonlin;
+and all the others are linear!
 *)
-#define CFENV = 0  // flat
-#define CFREF = -1 // refd
-#define L0CFP = 01 // one-time
-#define L1CFP = 02 // repeated
+#define CFREFX = -1 // refd
+#define CFENV0 = 00 // flat
+#define CFENV1 = 01 // flat
+#define CFPTR0 = 10 // one-time
+#define CFPTR1 = 11 // repeated
 //
 (*
 HX-2026-03-01:

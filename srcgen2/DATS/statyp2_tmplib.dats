@@ -82,7 +82,7 @@ var flag: sint = 0
 in//let
 s2typ_hnfizx_e1nv
 <e1nv>(e1nv, t2p0, flag)
-end (*let*) // end of [s2typ_hnfiz0_e1nv]
+end(*let*)//end-of-[s2typ_hnfiz0_e1nv]
 //
 (* ****** ****** *)
 //
@@ -95,7 +95,7 @@ var flag: sint = 0
 in//let
 s2typ_substx_e1nv
 <e1nv>(e1nv, t2p0, svts, flag)
-end (*let*) // end of [s2typ_subst0_e1nv]
+end(*let*)//end-of-[s2typ_subst0_e1nv]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -212,7 +212,7 @@ val-T2Pcst(s2c1) = t2p0.node()
 val opt1 =
 s2typ_eval$s2cst<e1nv>(e1nv, s2c1)
 //
-} (*where*) // end of [f0_cst(e1nv,...)]
+}(*where*)//end-of-[f0_cst(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -240,7 +240,7 @@ val-T2Pvar(s2v1) = t2p0.node()
 val opt1 =
 s2typ_eval$s2var<e1nv>(e1nv, s2v1)
 //
-} (*where*) // end of [f0_var(e1nv,...)]
+}(*where*)//end-of-[f0_var(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -265,8 +265,8 @@ s2typ(t2p0.sort(), T2Plft(t2p1))
 //
 end where
 {
-  val-T2Plft(t2p1) = t2p0.node() }
-//(*where*) // end of [f0_lft(e1nv,...)]
+val-T2Plft(t2p1) = t2p0.node((*0*))
+}(*where*)//end-of-[f0_lft(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -302,8 +302,8 @@ end//let
 end//let
 end where
 {
-  val-T2Pxtv(xtp1) = t2p0.node() }
-//(*where*) // end of [f0_xtv(e1nv,...)]
+val-T2Pxtv(xtp1) = t2p0.node((*0*))
+}(*where*)//end-of-[f0_xtv(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -330,7 +330,7 @@ if
 then t2p0 else
 s2typ(t2p0.sort(), T2Ptop0(t2p1))
 //
-end//(*let*) // end of [f0_top0(e1nv,...)]
+end(*let*)//end-of-[f0_top0(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -357,7 +357,7 @@ if
 then t2p0 else
 s2typ(t2p0.sort(), T2Ptop1(t2p1))
 //
-end//(*let*) // end of [f0_top1(e1nv,...)]
+end(*let*)//end-of-[f0_top1(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -379,12 +379,13 @@ if
 (flag <= fval)
 then t2p0 else
 s2typ_make_node
-(t2p0.sort(), T2Parg1( knd0, t2p1 ))
+(t2p0.sort(), T2Parg1(knd0, t2p1))
 //
 end where
 {
-val-T2Parg1(knd0, t2p1) = t2p0.node() }
-//(*where*) // end of [f0_arg1(e1nv,...)]
+  val-
+  T2Parg1(knd0, t2p1) = t2p0.node()
+}(*where*)//end-of-[f0_arg1(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -408,12 +409,13 @@ if
 (flag <= fval)
 then t2p0 else
 s2typ_make_node
-(t2p0.sort(), T2Patx2( t2p1, t2p2 ))
+(t2p0.sort(), T2Patx2(t2p1, t2p2))
 //
 end where
 {
-val-T2Patx2(t2p1, t2p2) = t2p0.node() }
-//(*where*) // end of [f0_atx2(e1nv,...)]
+  val-
+  T2Patx2(t2p1, t2p2) = t2p0.node()
+}(*where*)//end-of-[f0_atx2(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -448,7 +450,7 @@ s2typ_substx
 (e1nv, t2p1, svts, flag)
 in//let
 s2typ_hnfizx(e1nv, tres, flag)
-end (*let*) // end of [T2Plam1]
+end(*let*)//end-of-[T2Plam1(...)]
 //
 |_(*non-T2Plam1*) =>
 if
@@ -459,9 +461,9 @@ s2typ_make_node
 //
 end where
 {
-val-T2Papps(t2f0, t2ps) = t2p0.node()
-}
-//(*where*) // end of [f0_apps(e1nv,...)]
+  val-
+  T2Papps(t2f0, t2ps) = t2p0.node()
+}(*where*)//end-of-[f0_apps(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -483,12 +485,13 @@ if
 (flag <= fval)
 then t2p0 else
 s2typ_make_node
-(t2p0.sort(), T2Plam1( s2vs, t2p1 ))
+(t2p0.sort(), T2Plam1(s2vs, t2p1))
 //
 end where
 {
-val-T2Plam1(s2vs, t2p1) = t2p0.node() }
-//(*where*) // end of [f0_lam1(e1nv,...)]
+  val-
+  T2Plam1(s2vs, t2p1) = t2p0.node()
+}(*where*)//end-of-[f0_lam1(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -521,7 +524,7 @@ val-
 T2Pfun1
 (f2cl,npf1,targ,tres) = t2p0.node()
 }
-//(*where*) // end of [f0_fun1(e1nv,...)]
+//(*where*) // end-of-[f0_fun1(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -546,9 +549,8 @@ s2typ_make_node
 end where
 {
 val-
-T2Ptrcd(tknd, npf1, ltps) = t2p0.node()
-}
-//(*where*) // end of [f0_trcd(e1nv,...)]
+T2Ptrcd(tknd,npf1,ltps) = t2p0.node() }
+//(*where*) // end-of-[f0_trcd(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -572,9 +574,9 @@ s2typ_make_node
 (t2p0.sort(), T2Ptext(tnm1, t2ps))
 end where
 {
-val-T2Ptext(tnm1, t2ps) = t2p0.node()
-}
-//(*where*) // end of [f0_text(e1nv,...)]
+  val-
+  T2Ptext(tnm1, t2ps) = t2p0.node()
+}(*where*)//end-of-[f0_text(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -598,9 +600,9 @@ s2typ_make_node
 (t2p0.sort(), T2Pexi0(s2vs, t2p1))
 end where
 {
-val-T2Pexi0(s2vs, t2p1) = t2p0.node()
-}
-//(*where*) // end of [f0_exi0(e1nv,...)]
+  val-
+  T2Pexi0(s2vs, t2p1) = t2p0.node()
+}(*where*)//end-of-[f0_exi0(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -624,13 +626,13 @@ s2typ_make_node
 (t2p0.sort(), T2Puni0(s2vs, t2p1))
 end where
 {
-val-T2Puni0(s2vs, t2p1) = t2p0.node()
-}
-//(*where*) // end of [f0_uni0(e1nv,...)]
+  val-
+  T2Puni0(s2vs, t2p1) = t2p0.node()
+}(*where*)//end-of-[f0_uni0(e1nv,...)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [s2typ_hnfizx(e1nv,...)]
+}(*where*)//end-of-[s2typ_hnfizx(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -647,9 +649,13 @@ val t2p0 =
 s2typ_hnfizx(e1nv, t2p0, flag)
 //
 in//let
-if
-flag <= fval then ltp0 else S2LAB(l0, t2p0)
-end (*let*) // end of [l2t2p_hnfizx(e1nv,...)]
+//
+(
+if // if
+flag <= fval
+  then (ltp0) else S2LAB(l0, t2p0))//if
+//
+end(*let*)//end-of-[l2t2p_hnfizx(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -678,12 +684,14 @@ tps2 =
 s2typlst_hnfizx(e1nv, tps2, flag)
 //
 in//let
+(
 if // if
-(flag <= fval)
-then t2ps else list_cons(t2p1, tps2)
-end (*let*) // end of [list_cons(...)]
+(flag <= fval) then
+  t2ps else list_cons(t2p1, tps2))
 //
-) (*case+*) // end of [s2typlst_hnfizx(...)]
+end(*let*)//end-of-[list_cons(...)]
+//
+)(*case+*)//end-of-[s2typlst_hnfizx(...)]
 //
 (* ****** ****** *)
 //
@@ -712,12 +720,14 @@ lts2 =
 l2t2plst_hnfizx(e1nv, lts2, flag)
 //
 in//let
+(
 if // if
-(flag <= fval)
-then ltps else list_cons(ltp1, lts2)
-end (*let*) // end of [list_cons(...)]
+(flag <= fval) then
+  ltps else list_cons(ltp1, lts2))
 //
-) (*case+*) // end of [l2t2plst_hnfizx(...)]
+end(*let*)//end-of-[list_cons(...)]
+//
+)(*case+*)//end-of-[l2t2plst_hnfizx(...)]
 //
 (* ****** ****** *)
 //
@@ -729,9 +739,10 @@ s2typ_substx
 , t2p0: s2typ
 , svts: s2vts
 , flag: &sint >> _): s2typ =
-s2typ_substx_e1nv<e1nv>(e1nv, t2p0, svts, flag)
+s2typ_substx_e1nv
+<      e1nv      >(e1nv, t2p0, svts, flag)
 //
-} (*where*) // end of [s2typ_hnfizx_e1nv(e1nv,...)]
+}(*where*)//end-of-[s2typ_hnfizx_e1nv(e1nv,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -854,7 +865,7 @@ in//let
 if
 flag <= fval then t2p0 else t2p1) end
 //
-end (*let*) // end of [f0_cst(e1nv,...)]
+end (*let*) // end-of-[f0_cst(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -882,7 +893,7 @@ optn_vt_cons(t2p1) =>
 (
 let
 val () = flag := flag+1 in t2p1 end)
-end (*let*) // end of [f0_var(e1nv,...)]
+end (*let*) // end-of-[f0_var(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -910,7 +921,7 @@ _(*non-S2Tnone0*) =>
 (
 flag := flag+1;
 s2typ_substx(e1nv, t2p1, svts, flag))
-end (*let*) // end of [f0_xtv(e1nv,...)]
+end (*let*) // end-of-[f0_xtv(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -936,7 +947,7 @@ flag <= fval
 then t2p0 else
 (
   s2typ(t2p0.sort(), T2Ptop0(t2p1)) )
-end (*let*) // end of [f0_top0(e1nv,...)]
+end (*let*) // end-of-[f0_top0(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -962,7 +973,7 @@ flag <= fval
 then t2p0 else
 (
   s2typ(t2p0.sort(), T2Ptop1(t2p1)) )
-end (*let*) // end of [f0_top1(e1nv,...)]
+end (*let*) // end-of-[f0_top1(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -988,7 +999,7 @@ if
 flag <= fval
 then t2p0 else
 s2typ(t2p0.sort(), T2Parg1(knd0, t2p1))
-end (*let*) // end of [f0_arg1(e1nv,...)]
+end (*let*) // end-of-[f0_arg1(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1016,7 +1027,7 @@ if
 flag <= fval
 then t2p0 else
 s2typ(t2p0.sort(), T2Patx2(t2p1, t2p2))
-end (*let*) // end of [f0_atx2(e1nv,...)]
+end (*let*) // end-of-[f0_atx2(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1044,7 +1055,7 @@ if
 flag <= fval
 then t2p0 else
 s2typ(t2p0.sort(), T2Papps(t2f0, t2ps))
-end (*let*) // end of [f0_apps(e1nv,...)]
+end (*let*) // end-of-[f0_apps(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1070,7 +1081,7 @@ if // if
 flag <= fval
 then t2p0 else
 s2typ(t2p0.sort(), T2Plam1(s2vs, t2p1))
-end (*let*) // end of [f0_lam1(e1nv,...)]
+end (*let*) // end-of-[f0_lam1(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1101,7 +1112,7 @@ let
 val s2t0 = t2p0.sort() in
 s2typ(s2t0,T2Pfun1(f2cl,npf1,t2ps,tres))
 end (*let*) // end-of-[else]
-end (*let*) // end of [f0_fun1(e1nv,...)]
+end (*let*) // end-of-[f0_fun1(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1127,7 +1138,7 @@ if
 flag <= fval
 then t2p0 else
 s2typ(t2p0.sort(), T2Ptext(name, t2ps))
-end (*let*) // end of [f0_text(e1nv,...)]
+end (*let*) // end-of-[f0_text(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1153,7 +1164,7 @@ if
 flag <= fval
 then t2p0 else
 s2typ(t2p0.sort(), T2Pexi0(s2vs, t2p1))
-end (*let*) // end of [f0_exi0(e1nv,...)]
+end (*let*) // end-of-[f0_exi0(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1179,7 +1190,7 @@ if
 flag <= fval
 then t2p0 else
 s2typ(t2p0.sort(), T2Puni0(s2vs, t2p1))
-end (*let*) // end of [f0_uni0(e1nv,...)]
+end (*let*) // end-of-[f0_uni0(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1206,11 +1217,11 @@ flag <= fval
 then t2p0 else
 s2typ_make_node
 (t2p0.sort(),T2Ptrcd(knd0, npf1, ltps))
-end (*let*) // end of [f0_trcd(e1nv,...)]
+end (*let*) // end-of-[f0_trcd(e1nv,...)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [s2typ_substx(e1nv,...)]
+} (*where*) // end-of-[s2typ_substx(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1239,7 +1250,7 @@ in//let
 if // if
 flag <= fval then t2ps else list_cons(t2p1,tps2)
 end (*let*)
-) (*case+*) // end of [s2typlst_substx(e1nv,...)]
+) (*case+*) // end-of-[s2typlst_substx(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1271,7 +1282,7 @@ in
   if
   (flag <= fval)
   then ltp1 else S2LAB(lab1, t2p1)
-endlet // end of [ val(ltp1) ]
+endlet // end-of-[ val(ltp1) ]
 //
 val lts2 =
 l2t2plst_substx(e1nv, lts2, svts, flag)
@@ -1280,11 +1291,11 @@ in//let
 if // if
 flag <= fval then ltps else list_cons(ltp1,lts2)
 end (*let*)
-) (*case+*) // end of [l2t2plst_substx(e1nv,...)]
+) (*case+*) // end-of-[l2t2plst_substx(e1nv,...)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [s2typ_subst_e1nv(e1nv,...)]
+} (*where*) // end-of-[s2typ_subst_e1nv(e1nv,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1429,7 +1440,7 @@ map$fopr
 <x0><y0>(s2v1) =
 @(s2v1, s2typ_xtv(x2t2p_make((*0*))))
 //
-}(*where*)//end of [f0_inst_s2vs(s2vs)]
+}(*where*)//end-of-[f0_inst_s2vs(s2vs)]
 //
 in//local
 //
@@ -1451,7 +1462,7 @@ s2typ_exi0_inst//recursive
 (
 e1nv,
 s2typ_subst0(e1nv,t2p1,svts) )
-endlet // end of [T2Pexi0(...)]
+endlet // end-of-[T2Pexi0(...)]
 //
 |
 _(* non-T2Pexi0 *) => (    t2p0    )
@@ -1477,7 +1488,7 @@ s2typ_uni0_inst//recursive
 (
 e1nv,
 s2typ_subst0(e1nv,t2p1,svts) )
-endlet // end of [T2Puni0(...)]
+endlet // end-of-[T2Puni0(...)]
 |
 _(* non-T2Puni0 *) => (    t2p0    )
 )(*case+*)//end-of-[s2typ_uni0_inst(...)]
@@ -1617,7 +1628,7 @@ prerrsln
 *)
 in//let
 unify00_s2typ$xset<>(xtp1, t2p2)
-end (*let*) // end of [f1_xset(...)]
+end (*let*) // end-of-[f1_xset(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1648,7 +1659,7 @@ s2typ_xtpck0
 then false else
 (f1_xset(xtp1, t2p2); true)//endof(IF)
 //
-end (*let*) // end of [f0_xtv1(e1nv,...)]
+end (*let*) // end-of-[f0_xtv1(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1670,7 +1681,7 @@ s2typ_xtpck0
 then false else
 (f1_xset(xtp2, t2p1); true)//endof(IF)
 //
-end (*let*) // end of [f0_xtv2(e1nv,...)]
+end (*let*) // end-of-[f0_xtv2(e1nv,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1692,7 +1703,7 @@ T2Ptop0(tp21) =>
 unify00_s2typ(e1nv, tp11, tp21)
 | _ (* non-T2Ptop0 *) => (  false  )
 //
-end (*let*) // end of [f0_top0(e1nv,...)]
+end (*let*) // end-of-[f0_top0(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1713,7 +1724,7 @@ T2Ptop1(tp21) =>
 unify00_s2typ(e1nv, tp11, tp21)
 | _ (* non-T2Ptop1 *) => (  false  )
 //
-end (*let*) // end of [f0_top1(e1nv,...)]
+end (*let*) // end-of-[f0_top1(e1nv,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1743,10 +1754,10 @@ if btf1
 then
 unify00_s2typlst
 (e1nv, tps1, tps2) else false
-end (*let*) // end of [T2Papps(...)]
+end (*let*) // end-of-[T2Papps(...)]
 | _ (* non-T2Papps *) => (  false  )
 //
-end (*let*) // end of [f0_apps(e1nv,...)]
+end (*let*) // end-of-[f0_apps(e1nv,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1783,10 +1794,10 @@ if btf1 then
 if btf2
   then btf3 else false) else false)
 //
-end (*let*) // end of [T2Pfun1(...)]
+end (*let*) // end-of-[T2Pfun1(...)]
 | _ (* non-T2Pfun1 *) => (  false  )
 //
-end (*let*) // end of [f0_fun1(e1nv,...)]
+end (*let*) // end-of-[f0_fun1(e1nv,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1815,7 +1826,7 @@ unify00_s2typlst
 (e1nv, tps1, tps2) else false)
 | _ (* non-T2Ptext *) => (  false  )
 //
-end (*let*) // end of [f0_text(e1nv,...)]
+end (*let*) // end-of-[f0_text(e1nv,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1849,7 +1860,7 @@ then
 unify00_l2t2plst
 (e1nv, lts1, lts2) else false)
 | _ (* non-T2Ptrcd *) => (  false  )
-end (*let*) // end of [f0_trcd(e1nv,...)]
+end (*let*) // end-of-[f0_trcd(e1nv,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1882,7 +1893,7 @@ prerrsln("unify00_s2typ: t2p2 = ", t2p2)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-} (*where*) // end of [unify00_s2typ(e1nv,...)]
+} (*where*) // end-of-[unify00_s2typ(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1914,7 +1925,7 @@ unify00_s2typ(e1nv, t2p1, t2p2)
 val btf2 =
 unify00_s2typlst(e1nv, tps1, tps2) }
 )
-) (*case+*) // end of [unify00_s2typlst(e1nv,...)]
+) (*case+*) // end-of-[unify00_s2typlst(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1952,7 +1963,7 @@ if
 then false
 else f1_labck(lts1, lts2) endlet
 )
-) (*case+*) // end of [f1_labck(...)]
+) (*case+*) // end-of-[f1_labck(...)]
 //
 fun
 f1_unify
@@ -1990,7 +2001,7 @@ unify00_s2typ(e1nv,t2p1,t2p2))
 val
 btf2 = f1_unify(e1nv,lts1,lts2) }
 )
-) (*case+*) // end of [f1_unify(...)]
+) (*case+*) // end-of-[f1_unify(...)]
 //
 in//let
 if
@@ -2000,7 +2011,7 @@ end//let//end-of-[unify00_l2t2plst( ... )]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [unify00_s2typ_e1nv(e1nv,...)]
+} (*where*) // end-of-[unify00_s2typ_e1nv(e1nv,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2060,7 +2071,7 @@ val+
 @X2STK_vt(!xref) = (xstk)
 in//let
 xref := list_vt_cons(xtp0, xref)
-end (*let*) // end of [x2stk_push]
+end (*let*) // end-of-[x2stk_push]
 //
 (* ****** ****** *)
 //
@@ -2094,13 +2105,15 @@ let
 val t2p0 =
 s2typ_none0() in
 xtp1.styp(t2p0); auxfree(xtps) end) }
-// (*where*) // end of [x2stk_free_all]
+// (*where*) // end-of-[x2stk_free_all]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [match00_s2typ_e1nv]
+}(*where*)//end-of-[match00_s2typ_e1nv(...)]
+//
+(* ****** ****** *)
 
-end (*local*) // end of [match00_s2typ_e1nv]
+endloc(*local*)//end-of-[match00_s2typ_e1nv(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)
