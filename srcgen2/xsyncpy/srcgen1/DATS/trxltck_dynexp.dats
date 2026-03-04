@@ -1925,6 +1925,14 @@ HX-2026-02-28:
 [vts2 <= evts] is assumed here!!!
 HX-2026-03-01:
 Maybe [vts2=()] shoud be enforced?
+HX-2026-03-03:
+[lam(...) => ...] creates a CFREFX
+(closure with a nonlin environment);
+it should be used in the scope where
+it is created!!!
+Please use [lamenv0] or [lamenv1] to
+turn a CFREFX into a CFPTR0 or CFPTR1,
+which can be used outside!!!
 *)
 val (  ) =
 (
