@@ -242,15 +242,36 @@ prerrsln("implknd_recq: knd = ", knd)
 (* ****** ****** *)
 //
 (*
+HX-2026-03-03:
+F2CLfun is CFREFX;
+[CFREFX] is nonlin;
+and all the others are linear!
+//
+(A1, !A2) -> R0 // CFREFX
+(A1, !A2) -<0> R0 // CFPTR0
+(A1, !A2) -<1> R0 // CFPTR1
+//
 #define CFREFX = -1 // refd
 #define CFENV0 = 00 // flat
 #define CFENV1 = 01 // flat
 #define CFPTR0 = 10 // one-time
 #define CFPTR1 = 11 // repeated
-HX-2026-03-03:
-F2CLfun is CFREFX;
-[CFREFX] is nonlin;
-and all the others are linear!
+//
+HX-2026-03-05:
+Some interesting cases:
+//
+fun
+compose0
+(f: (x) -<0> y
+,g: (y) -<0> z): (x) -<0> z =
+$llamenv0( lam(x) => g(f(x)) )
+//
+fun
+compose1
+(f: (x) -<1> y
+,g: (y) -<1> z): (x) -<1> z =
+$llamenv1( lam(x) => g(f(x)) )
+//
 *)
 #implfun
 f2clknd_linq
