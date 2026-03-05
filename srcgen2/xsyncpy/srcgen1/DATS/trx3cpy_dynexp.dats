@@ -1100,6 +1100,9 @@ D3Efix0
 , f3as, sres
 , arrw, dexp) = d3e0.node()
 //
+val styp = dpid.styp()
+val styp =
+s2typ_trx3cpy(styp, env0)
 val f3as =
 f3arglst_trx3cpy(f3as, env0)
 //
@@ -1110,11 +1113,14 @@ val dexp =
 (
   d3exp_trx3cpy(dexp, env0))
 in//let
+//
 d3exp1
-( loc0
-, t3q0
-, D3E1fix0
-  (tknd,dpid,f3as,sres,arrw,dexp))
+(
+loc0,
+t3q0,
+D3E1fix0(tknd,
+  dpid,styp,f3as,sres,arrw,dexp))
+//
 end//let
 //
 end(*let*)//end-of-[f0_fix0(d3e0,env0)]

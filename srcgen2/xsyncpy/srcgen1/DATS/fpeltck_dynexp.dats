@@ -425,13 +425,13 @@ fpeltck_f3axp1lst(out0, faxp))
 //
 |D3E1fix0
 (tknd
-,fid0
+,fid0, styp
 ,farg, sres
 ,arrw, d3e1) => ((*0*))
 //
 |D3E1fix1
 (tknd
-,fid0
+,fid0, styp
 ,farg, faxp
 ,evts, sres
 ,arrw, d3e1

@@ -727,12 +727,12 @@ token(*casknd*), d3exp1, d3cls1lst)
 //
 |D3E1fix0 of
 (token(*knd*)
-,d2var(*fid*)
+,d2var, s2typ1
 ,f3arg1lst
 ,s2res, f1unarrw, d3exp1)
 |D3E1fix1 of
 (token(*knd*)
-,d2var(*fid*)
+,d2var, s2typ1
 ,f3arg1lst, f3axp1lst
 ,dvdtp1lst//envlinvars
 ,s2res, f1unarrw, d3exp1

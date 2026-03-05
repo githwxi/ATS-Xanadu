@@ -1987,13 +1987,16 @@ let
 val-
 D3E1fix0
 (tknd
-,fid0
+,fid0, tid0
 ,f3as, sres
 ,arrw, d3e1) = d3e0.node()
 //
 val (  ) =
 envltck_pshlam0(env0)//enter
 //
+val (  ) =
+envltck_dvar$spsh
+(env0, fid0, tid0)
 val (  ) =
 envltck_f3as$push(env0, f3as)
 //
@@ -2069,7 +2072,8 @@ loc0,
 tfix,
 D3E1fix1
 (
-tknd, fid0,
+tknd,
+fid0, tid0,
 f3as, f3bs,
 evts, sres, arrw, d3e1, vts1, vts2))
 end//let

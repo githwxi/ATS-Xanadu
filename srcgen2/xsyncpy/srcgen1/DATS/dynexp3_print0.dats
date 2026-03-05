@@ -685,24 +685,27 @@ arrw,";",body,";",vts1,";",vts2,")"))
 (* ****** ****** *)
 //
 |D3E1fix0
-(tknd, fid0
+(tknd
+,fid0, styp
 ,f3as, sres
 ,arrw, body) =>
 (
-prints
-("D3E1fix0(",tknd,";",fid0,";");
+print("D3E1fix0(");
+prints(tknd,";",fid0,";",styp,";");
 prints(
 f3as,";",sres,";",arrw,";",body,")"))
 //
 |D3E1fix1
-(tknd, fid0
+(tknd
+,fid0, styp
 ,farg, faxp
 ,evts, sres
 ,arrw, body
 ,vts1, vts2) =>
 (
-prints("D3E1fix1(");
-prints(tknd,";",fid0,";");
+prints
+("D3E1fix1(",tknd,";");
+prints(fid0,";",styp,";");
 prints(farg,";",faxp,";");
 prints(evts,";",sres,";");
 prints(arrw,";",body,";",vts1,";",vts2,")"))

@@ -659,6 +659,8 @@ d3exp1_fix1_errck
 : token
 , fid0
 : d2var
+, styp
+: s2typ1
 , f3as
 : f3arg1lst
 , f3bs
@@ -682,8 +684,8 @@ d3exp1_errck
 lvl0+1,
 d3exp1(
 loc0, t3q0,
-D3E1fix1(
-tknd, fid0, f3as, f3bs,
+D3E1fix1(tknd,
+fid0, styp, f3as, f3bs,
 evts, sres, arrw, d3e1, vts1, vts2)))
 //
 endlet//end-of-[d3exp1_fix1_errck(...)]
@@ -1937,7 +1939,7 @@ val nerr = err0
 val-
 D3E1fix1
 (tknd
-,fid0
+,fid0, tid0
 ,f3as, f3bs
 ,evts, sres
 ,arrw, d3e1
@@ -1981,9 +1983,10 @@ val
 loc0 = d3e0.lctn()
 in//let
 (
-d3exp1_fix1_errck(
-loc0, t3q0,
-tknd, fid0, f3as, f3bs,
+d3exp1_fix1_errck
+(
+loc0, t3q0, tknd,
+fid0, tid0, f3as, f3bs,
 evts, sres, arrw, d3e1, vts1, vts2))
 end//let
 //
