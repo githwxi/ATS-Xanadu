@@ -39,14 +39,11 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-{ x0:t0 }
-g_void<x0>(obj) = ()
-//
-(* ****** ****** *)
-//
-#impltmp
 { x0:vt }
 g_self<x0>(obj) = obj
+#impltmp
+{ x0:vt }
+g_void<x0>(obj) = ( )
 //
 (* ****** ****** *)
 (* ****** ****** *)

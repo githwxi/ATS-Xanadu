@@ -569,37 +569,44 @@ case+ tnd of
 |
 T_DOTLT(_) =>
 let
-  val tbeg = tok
-  val () = buf.skip1()
-  val s0es =
-    p1_s0expseq_COMMA(buf, err)
-  val tend = p1_GTDOT(buf, err)
-  val lres = tbeg.lctn() + tend.lctn()
+val tbeg = tok
+val () = buf.skip1()
+val s0es =
+  p1_s0expseq_COMMA(buf, err)
+val tend = p1_GTDOT(buf, err)
+val lres = tbeg.lctn() + tend.lctn()
 in//let
+(
   err := e00;
   f0arg_make_node
-  (lres, F0ARGmets(tbeg, s0es, tend))
+  (lres, F0ARGmets(tbeg, s0es, tend)))
 end (*let*) // end of [ T_DOTLT() ]
 //
 |
 T_LBRACE() =>
 let
-  val tbeg = tok
-  val () = buf.skip1()
-  val s0qs =
-  p1_s0quaseq_BSCLN(buf, err)
-  val tend = p1_RBRACE(buf, err)
-  val lres = tbeg.lctn() + tend.lctn()
+val tbeg = tok
+val () = buf.skip1()
+val s0qs =
+p1_s0quaseq_BSCLN(buf, err)
+val tend = p1_RBRACE(buf, err)
+val lres = tbeg.lctn() + tend.lctn()
 in//let
+(
   err := e00;
   f0arg_make_node
-  (lres, F0ARGsapp(tbeg, s0qs, tend))
+  (lres, F0ARGsapp(tbeg, s0qs, tend)))
 end (*let*) // end of [T_LBRACE() ]
 //
 |
 _(* non-sta-met *) =>
 let
+(*
+// HX-2026-03-04:
+// This does not handle currying!
   val d0p = p1_d0pat_app(buf, err)
+*)
+  val d0p = p1_d0pat_atm(buf, err)
 in
   f0arg_make_node(d0p.lctn(), F0ARGdapp(d0p))
 end (*let*) // end of [non-sta-met]

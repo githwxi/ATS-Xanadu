@@ -42,11 +42,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<a:t0>
-g_void( a ): void
-fun
 <a:vt>
 g_self( a ): ( a )
+//
+fun
+<a:vt>
+g_void( !a ): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

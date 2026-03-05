@@ -2465,20 +2465,25 @@ S0QUAprop(s0p) =>
 (
 case+
 s0p.node() of
+//
 |
 S0Eid0(sid) =>
 let
-  val loc = s0p.lctn()
-  val opt =
-    optn_nil(*sort0*)
-  val ids = list_sing(sid)
-in
-  s0qua_make_node
-  (loc, S0QUAvars(ids, opt))
+//
+val loc = s0p.lctn()
+val opt =
+(
+  optn_nil((*sort0*)))
+val ids = list_sing(sid)
+//
+in//let
+s0qua_make_node
+(loc, S0QUAvars(ids, opt))
 end
-| _ (* non-S0Eid0 *) => s0q0
+|_(* non-S0Eid0 *) => (s0q0)
 )
-| _(* non-S0QUAprop *) => s0q0
+//
+|_(* non-S0QUAprop *) => s0q0
 )
 fun
 auxs0qs
@@ -2498,20 +2503,20 @@ f0_f0a0
 (
 case+
 f0a0.node() of
-|
-F0ARGsapp
+|F0ARGsapp
 (tbeg, s0qs, tend) =>
 (
-  f0arg_make_node(loc0, node)
+f0arg_make_node(loc0, node)
 ) where
 {
-  val loc0 = f0a0.lctn()
-  val s0qs = auxs0qs(s0qs)
-  val node =
-  F0ARGsapp(tbeg, s0qs, tend)
+val loc0 = f0a0.lctn()
+val s0qs = auxs0qs(s0qs)
+val node =
+(
+  F0ARGsapp(tbeg, s0qs, tend))
 }
-| _ (* non-F0ARGsom_sta *) => f0a0
-)
+|_(*non-F0ARGsapp*) => ( f0a0 ))
+//
 fun
 f0_f0as
 ( xs
@@ -2536,17 +2541,17 @@ list_cons(x1, xs) =>
 (
 case+
 x1.node() of
-|
-S0QUAprop(s0p) =>
+//
+|S0QUAprop(s0p) =>
 (
 case+
 s0p.node() of
-| S0Eid0(sid) => true
-| _(*non-S0Eid0*) => t0_s0qs(xs)
+|S0Eid0(sid) => true
+|_(*non-S0Eid0*) => t0_s0qs(xs))
+//
+|_(*non-S0QUAprop*) => t0_s0qs(xs))
 )
-| _(*non-S0QUAprop*) => t0_s0qs(xs)
-)
-)
+//
 fun
 t0_f0as
 ( xs
@@ -2560,15 +2565,15 @@ list_cons(x1, xs) =>
 (
 case+
 x1.node() of
-|
-F0ARGsapp
+|F0ARGsapp
 (tbeg, s0qs, tend) =>
-if
+(
+if // if
 t0_s0qs(s0qs)
-then true else t0_f0as(xs)
-| _(*non-F0ARGsapp*) => t0_f0as(xs)
-)
-)
+then true else t0_f0as(xs))
+|_(*
+non-F0ARGsapp*) => t0_f0as(xs))
+)(*case+*)//end-of-[t0_f0as(xs)]
 //
 in
 //
@@ -2576,13 +2581,12 @@ in
 p1_f0argsq1
 ( buf, err ) =
 let
-val
-f0as = p1_f0argseq(buf, err)
+val f0as = p1_f0argseq(buf, err)
 in//let
 (
-if
+if // if
 t0_f0as(f0as) then f0_f0as(f0as) else f0as)
-end (*let*) // end of [ p_f0argsq1(buf,err) ]
+end (*let*) // end of [ p1_f0argsq1(buf,err) ]
 //
 end (*local*) // end of [ local(p1_f0argsq1) ]
 
