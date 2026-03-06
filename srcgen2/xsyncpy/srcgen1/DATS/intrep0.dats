@@ -40,6 +40,11 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+//
+#staload
 "./../SATS/intrep0.sats"
 //
 (* ****** ****** *)
@@ -266,6 +271,115 @@ let
 (* ****** ****** *)
 //
 endloc (*local*) // end of [local(i0exp1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i0dcl1 =
+I0DCL1 of
+(loctn, i0dcl1_node)
+datavwtp
+i0dcl1_vt =
+I0DCL1_vt of
+(loctn, i0dcl1_node)
+//
+#absimpl i0dcl1_tbox = i0dcl1
+//
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+#implfun
+i0dcl1_lctn$get
+  ( idcl ) =
+let
+val+
+I0DCL1
+( loc0
+, node) = idcl in loc0
+end//end-of-[i0dcl1_lctn$get]
+//
+#implfun
+i0dcl1_node$get
+  ( idcl ) =
+let
+val+
+I0DCL1
+( loc0
+, node) = idcl in node
+end//end-of-[i0dcl1_node$get]
+//
+(* ****** ****** *)
+//
+#implfun
+i0dcl1_make_lctn$node
+( loc0, node ) =
+(
+  I0DCL1(loc0, node))//implfun
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [local(i0dcl1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i0valdcl1 =
+I0VALDCL1 of
+( loc_t
+, i0pat1
+, d3typ1opt // dgrt
+, teqi0exp1, wths2exp)
+//
+#absimpl
+i0valdcl1_tbox = i0valdcl1
+//
+in//local
+//
+#implfun
+i0valdcl1_lctn$get
+  (  ival  ) = let
+val+
+I0VALDCL1
+( lctn
+, ipat, dgrt
+, tixp, wsxp) = ival in lctn end
+//
+#implfun
+i0valdcl1_ipat$get
+  (  ival  ) = let
+val+
+I0VALDCL1
+( lctn
+, ipat, dgrt
+, tixp, wsxp) = ival in ipat end
+//
+#implfun
+i0valdcl1_tixp$get
+  (  ival  ) = let
+val+
+I0VALDCL1
+( lctn
+, ipat, dgrt
+, tixp, wsxp) = ival in tixp end
+//
+(* ****** ****** *)
+//
+#implfun
+i0valdcl1_make_arg5
+(lctn, ipat, dgrt, tixp, wsxp) =
+(
+I0VALDCL1(lctn, ipat, dgrt, tixp, wsxp))
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end-of-[local(i0valdcl1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
