@@ -109,6 +109,7 @@ fprint with l2t2p_fprint of 1000
 #typedef s2typ1lst = list(s2typ1)
 #typedef l2t2p1lst = list(l2t2p1)
 (* ****** ****** *)
+(* ****** ****** *)
 //
 datatype
 s2typ1_node =
@@ -150,28 +151,32 @@ T2P1top1 of s2typ1//delineared
 //
 |T2P1apps of
 (
-s2typ1(*fun*), s2typ1lst(*args*))
+s2typ1(*fun*),s2typ1lst(*args*))
 |T2P1lam1 of
 (
-s2varlst(*args*), s2typ1(*body*))
+s2varlst(*args*),s2typ1(*body*))
 //
 (* ****** ****** *)
 //
 |T2P1f2cl of $BAS.f2clknd
 |T2P1fun1 of
-(s2typ1(*f2cl*), sint(*npf*)
-,s2typ1lst(*args*), s2typ1(*res*))
+(
+s2typ1(*f2cl*), sint(*npf*),
+s2typ1lst(*args*), s2typ1(*res*))
 //
 (* ****** ****** *)
 //
-|T2P1exi0 of // exists quantifier
-(s2varlst(*vars*), s2typ1(*body*))
-|T2P1uni0 of // forall quantifier
-(s2varlst(*vars*), s2typ1(*body*))
+|T2P1exi0 of//exists.quantifier
+(
+s2varlst(*vars*), s2typ1(*body*))
+|T2P1uni0 of//forall.quantifier
+(
+s2varlst(*vars*), s2typ1(*body*))
 //
 (* ****** ****** *)
 //
-|T2P1tcon of (d2con, s2typ1lst)
+|T2P1tcon of
+(d2con, s2typ1lst(*args*))
 //
 |T2P1trcd of
 (trcdknd, sint(*npf*), l2t2p1lst)

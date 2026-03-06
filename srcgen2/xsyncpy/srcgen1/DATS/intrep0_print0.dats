@@ -67,12 +67,26 @@ in//let
 case+
 i0t0.node() of
 //
+(* ****** ****** *)
+//
 |I0T1cst
 (   s2c1   ) =>
 prints("I0T1cst(", s2c1, ")")
 |I0T1var
 (   s2v1   ) =>
 prints("I0T1var(", s2v1, ")")
+//
+(* ****** ****** *)
+|I0T1lft
+(   i0t1   ) =>
+prints("I0T1lft(", i0t1, ")")
+(* ****** ****** *)
+//
+|I0T1tcon(dcon, i0ts) =>
+prints
+("I0T1tcon(", dcon, ";", i0ts, ")")
+//
+(* ****** ****** *)
 //
 end(*let*)//end-of-[i0typ1_fprint(i0t0,out0)]
 //

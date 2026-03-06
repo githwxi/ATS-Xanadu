@@ -43,6 +43,59 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/intrep0.sats"
 //
 (* ****** ****** *)
+//
+#include
+"./../HATS/mytmplib00.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i0typ1 =
+I0TYP1 of
+(sort2, i0typ1_node)
+datavwtp
+i0typ1_vt =
+I0TYP1_vt of
+(sort2, i0typ1_node)
+//
+#absimpl i0typ1_tbox = i0typ1
+//
+(* ****** ****** *)
+in (* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+i0typ1_sort$get
+  ( ityp ) =
+let
+val+
+I0TYP1
+(s2t0, node) = ityp in s2t0
+end//end-of-[i0typ1_sort$get]
+//
+#implfun
+i0typ1_node$get
+  ( ityp ) =
+let
+val+
+I0TYP1
+(s2t0, node) = ityp in node
+end//end-of-[i0typ1_node$get]
+//
+(* ****** ****** *)
+//
+endloc(*local*)//end-of-[local(i0typ1)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
