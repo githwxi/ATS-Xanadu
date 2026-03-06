@@ -63,6 +63,10 @@ LOC = "./\
 #staload
 D1E = "./\
 ../../../SATS/dynexp1.sats"
+//
+#staload
+S2E = "./\
+../../../SATS/staexp2.sats"
 #staload
 D2E = "./\
 ../../../SATS/dynexp2.sats"
@@ -72,8 +76,10 @@ D2E = "./\
 #typedef loc_t = $LOC.loc_t
 #typedef loctn = $LOC.loctn
 (* ****** ****** *)
-#typedef sort2 = $T2Q.sort2
+#typedef sort2 = $S2E.sort2
+#typedef s2exp = $S2E.s2exp
 (* ****** ****** *)
+#typedef d2var = $D2E.d2var
 (* ****** ****** *)
 //
 #abstbox i0typ1_tbox // p0tr
@@ -500,11 +506,43 @@ i0valdcl1_tixp$get:(i0valdcl1)->teqi0exp1
 //
 (* ****** ****** *)
 //
+#typedef s2expopt = optn(s2exp)
+#typedef d2varopt = optn(d2var)
+//
+fun
+i0vardcl1_dpid$get:(i0vardcl1)->d2var
+fun
+i0vardcl1_ityp$get:(i0vardcl1)->i0typ1
+fun
+i0vardcl1_vpid$get:(i0vardcl1)->d2varopt
+fun
+i0vardcl1_sres$get:(i0vardcl1)->s2expopt
+fun
+i0vardcl1_dini$get:(i0vardcl1)->teqi0exp1
+//
+#symload dpid with i0vardcl1_dpid$get
+#symload styp with i0vardcl1_styp$get
+#symload vpid with i0vardcl1_vpid$get(*opt*)
+#symload sres with i0vardcl1_sres$get(*opt*)
+#symload dini with i0vardcl1_dini$get(*opt*)
+//
+(* ****** ****** *)
+//
 fun
 i0valdcl1_make_arg5
 (lctn: loc_t
 ,ipat: i0pat1, dgrt: d3typ1opt
 ,tixp: teqi0exp1, wsxp: wths2exp): i0valdcl1
+//
+(* ****** ****** *)
+//
+fun
+i0vardcl1_make_args
+(lctn: loc_t
+,dpid: d2var
+,i0t1: i0typ1
+,vpid: d2varopt
+,sres: s2expopt, dini: teqi0exp1): i0vardcl1
 //
 (* ****** ****** *)
 (* ****** ****** *)
