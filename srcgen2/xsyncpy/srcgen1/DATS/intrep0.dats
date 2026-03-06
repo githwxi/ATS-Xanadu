@@ -40,6 +40,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../SATS/statyp2.sats"
+#staload
 "./../SATS/dynexp3.sats"
 //
 (* ****** ****** *)
@@ -380,6 +382,106 @@ I0VALDCL1(lctn, ipat, dgrt, tixp, wsxp))
 (* ****** ****** *)
 //
 endloc (*local*) // end-of-[local(i0valdcl1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+local
+//
+datatype
+i0vardcl1 =
+I0VARDCL1 of
+( loc_t
+, d2var
+, i0typ1
+, d2varopt
+, s2expopt, teqi0exp1)
+//
+#absimpl
+i0vardcl1_tbox = i0vardcl1
+//
+in//local
+//
+#implfun
+i0vardcl1_lctn$get
+  (  ivar  ) = let
+val+
+I0VARDCL1
+( lctn
+, dpid
+, i0t1
+, vpid
+, sres, dini) = ivar in lctn end
+//
+#implfun
+i0vardcl1_dpid$get
+  (  ivar  ) = let
+val+
+I0VARDCL1
+( lctn
+, dpid
+, i0t1
+, vpid
+, sres, dini) = ivar in dpid end
+//
+#implfun
+i0vardcl1_ityp$get
+  (  ivar  ) = let
+val+
+I0VARDCL1
+( lctn
+, dpid
+, i0t1
+, vpid
+, sres, dini) = ivar in i0t1 end
+//
+#implfun
+i0vardcl1_vpid$get
+  (  ivar  ) = let
+val+
+I0VARDCL1
+( lctn
+, dpid
+, i0t1
+, vpid
+, sres, dini) = ivar in vpid end
+//
+#implfun
+i0vardcl1_sres$get
+  (  ivar  ) = let
+val+
+I0VARDCL1
+( lctn
+, dpid
+, i0t1
+, vpid
+, sres, dini) = ivar in sres end
+//
+#implfun
+i0vardcl1_dini$get
+  (  ivar  ) = let
+val+
+I0VARDCL1
+( lctn
+, dpid
+, i0t1
+, vpid
+, sres, dini) = ivar in dini end
+//
+(* ****** ****** *)
+//
+#implfun
+i0vardcl1_make_args
+( lctn
+, dpid, i0t1, vpid, sres, dini) =
+(
+I0VARDCL1
+(lctn, dpid, i0t1, vpid, sres, dini))
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end-of-[local(i0vardcl1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -892,7 +892,8 @@ val+
 D3VARDCL1
 ( lctn
 , dpid
-, t2q1, vpid
+, t2q1
+, vpid
 , sres, dini) = dvar in sres end
 //
 #implfun
