@@ -1072,8 +1072,12 @@ d3cls1_make_lctn$node$rest
 //
 datatype
 teqd3exp1 =
-|TEQD3EXP1none of ((*void*))
-|TEQD3EXP1some of (token(*EQ0*), d3exp1)
+|
+TEQD3EXP1none of
+(   (*void*)   )
+|
+TEQD3EXP1some of
+(token(*EQ0*), d3exp1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1243,6 +1247,7 @@ d3valdcl1_tdxp$get:(d3valdcl1)->teqd3exp1
 //
 #symload dpat with d3valdcl1_dpat$get
 #symload wsxp with d3valdcl1_wsxp$get(*opt*)
+#symload dgrt with d3valdcl1_dgrt$get(*opt*)
 #symload tdxp with d3valdcl1_tdxp$get(*opt*)
 //
 (* ****** ****** *)

@@ -54,9 +54,19 @@ HX: for [FILR]
 T2Q = "./statyp2.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #staload
 LOC = "./\
 ../../../SATS/locinfo.sats"
+//
+#staload
+D1E = "./\
+../../../SATS/dynexp1.sats"
+#staload
+D2E = "./\
+../../../SATS/dynexp2.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef loc_t = $LOC.loc_t
@@ -158,6 +168,9 @@ i0lab_itm$get
 //
 #typedef i0dcl1lst = list(i0dcl1)
 //
+(* ****** ****** *)
+#typedef f1unarrw = $D1E.f1unarrw
+#typedef wths2exp = $D2E.wths2exp
 (* ****** ****** *)
 //
 #typedef i0dcl1lstopt = optn(i0dcl1lst)
@@ -358,6 +371,18 @@ i0exp1_make_lctn$ityp$node
 (* ****** ****** *)
 //
 datatype
+teqi0exp1 =
+|
+TEQI0EXP1none of
+(   (*void*)   )
+|
+TEQI0EXP1some of
+(token(*EQ0*), i0exp1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
 i0dcl1_node =
 //
 (* ****** ****** *)
@@ -399,6 +424,87 @@ i0dcl1_node =
 (* ****** ****** *)
 //
 |I0D1errck of (sint(*lvl*), i0dcl1(*err*))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0dcl1_lctn$get
+(idcl: i0dcl1): loctn
+#symload lctn with i0dcl1_lctn$get
+fun
+i0dcl1_node$get
+(idcl: i0dcl1): i0dcl1_node
+#symload node with i0dcl1_node$get
+//
+fun
+i0dcl1_fprint
+(idcl: i0dcl1, out0: FILR): void
+#symload fprint with i0dcl1_fprint of 1000
+//
+(* ****** ****** *)
+//
+fun
+i0dcl1_make_lctn$node
+(loc0: loctn, node: i0dcl1_node): i0dcl1
+#symload i0dcl1 with i0dcl1_make_lctn$node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0valdcl1_fprint
+(ival: i0valdcl1, out0: FILR): void
+fun
+i0vardcl1_fprint
+(ivar: i0vardcl1, out0: FILR): void
+fun
+i0fundcl1_fprint
+(ifun: i0fundcl1, out0: FILR): void
+//
+#symload
+fprint with i0valdcl1_fprint of 1000
+#symload
+fprint with i0vardcl1_fprint of 1000
+#symload
+fprint with i0fundcl1_fprint of 1000
+//
+(* ****** ****** *)
+//
+fun
+i0valdcl1_lctn$get:(i0valdcl1)->loc_t
+fun
+i0vardcl1_lctn$get:(i0vardcl1)->loc_t
+fun
+i0fundcl1_lctn$get:(i0fundcl1)->loc_t
+//
+#symload lctn with i0valdcl1_lctn$get
+#symload lctn with i0vardcl1_lctn$get
+#symload lctn with i0fundcl1_lctn$get
+//
+(* ****** ****** *)
+//
+fun
+i0valdcl1_ipat$get:(i0valdcl1)->i0pat1
+(*
+fun
+i0valdcl1_wsxp$get:(i0valdcl1)->wths2exp
+fun
+i0valdcl1_dgrt$get:(i0valdcl1)->d3typ1opt
+*)
+fun
+i0valdcl1_tixp$get:(i0valdcl1)->teqi0exp1
+//
+#symload ipat with i0valdcl1_ipat$get
+#symload tixp with i0valdcl1_tixp$get(*opt*)
+//
+(* ****** ****** *)
+//
+fun
+i0valdcl1_make_arg5
+(lctn: loc_t
+,ipat: i0pat1, dgrt: d3typ1opt
+,tixp: teqi0exp1, wsxp: wths2exp): i0valdcl1
 //
 (* ****** ****** *)
 (* ****** ****** *)
