@@ -56,6 +56,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload "\
+./../../../SATS/locinfo.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 local
 //
 datatype
@@ -79,7 +85,8 @@ i0typ1_sort$get
 let
 val+
 I0TYP1
-(s2t0, node) = ityp in s2t0
+( i0t0
+, node) = ityp in i0t0
 end//end-of-[i0typ1_sort$get]
 //
 #implfun
@@ -88,12 +95,177 @@ i0typ1_node$get
 let
 val+
 I0TYP1
-(s2t0, node) = ityp in node
+( i0t0
+, node) = ityp in node
 end//end-of-[i0typ1_node$get]
 //
 (* ****** ****** *)
 //
+#implfun
+i0typ1_make_sort$node
+  ( s2t0, node ) =
+(
+  I0TYP1(s2t0, node) )//implfun
+//
+(* ****** ****** *)
+//
 endloc(*local*)//end-of-[local(i0typ1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i0pat1 =
+I0PAT1 of
+(loctn
+,i0typ1, i0pat1_node)
+datavwtp
+i0pat1_vt =
+I0PAT1_vt of
+(loctn
+,i0typ1, i0pat1_node)
+//
+#absimpl i0pat1_tbox = i0pat1
+//
+(* ****** ****** *)
+in (* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+i0pat1_lctn$get
+  ( ipat ) =
+let
+val+
+I0PAT1
+( loc0
+, i0t0
+, node) = ipat in loc0
+end//end-of-[i0pat1_lctn$get]
+//
+#implfun
+i0pat1_ityp$get
+  ( ipat ) =
+let
+val+
+I0PAT1
+( loc0
+, i0t0
+, node) = ipat in i0t0
+end//end-of-[i0pat1_ityp$get]
+//
+#implfun
+i0pat1_node$get
+  ( ipat ) =
+let
+val+
+I0PAT1
+( loc0
+, i0t0
+, node) = ipat in node
+end//end-of-[i0pat1_node$get]
+//
+(* ****** ****** *)
+//
+(*
+#implfun
+i0pat1_make_lctn$node
+( loc0, node ) =
+let
+val
+i0t0 = i0typ_none0((*0*))
+in//let
+  I0PAT1(loc0, i0t0, node) end
+*)
+//
+#implfun
+i0pat1_make_lctn$ityp$node
+( loc0, i0t0, node ) =
+let
+  I0PAT1(loc0, i0t0, node) end
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [local(i0pat1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i0exp1 =
+I0EXP1 of
+(loctn
+,i0typ1, i0exp1_node)
+datavwtp
+i0exp1_vt =
+I0EXP1_vt of
+(loctn
+,i0typ1, i0exp1_node)
+//
+#absimpl i0exp1_tbox = i0exp1
+//
+(* ****** ****** *)
+in (* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+i0exp1_lctn$get
+  ( iexp ) =
+let
+val+
+I0EXP1
+( loc0
+, i0t0
+, node) = iexp in loc0
+end//end-of-[i0exp1_lctn$get]
+//
+#implfun
+i0exp1_ityp$get
+  ( iexp ) =
+let
+val+
+I0EXP1
+( loc0
+, i0t0
+, node) = iexp in i0t0
+end//end-of-[i0exp1_ityp$get]
+//
+#implfun
+i0exp1_node$get
+  ( iexp ) =
+let
+val+
+I0EXP1
+( loc0
+, i0t0
+, node) = iexp in node
+end//end-of-[i0exp1_node$get]
+//
+(* ****** ****** *)
+//
+(*
+#implfun
+i0exp1_make_lctn$node
+( loc0, node ) =
+let
+val
+i0t0 = i0typ_none0((*0*))
+in//let
+  I0EXP1(loc0, i0t0, node) end
+*)
+//
+#implfun
+i0exp1_make_lctn$ityp$node
+( loc0, i0t0, node ) =
+let
+  I0EXP1(loc0, i0t0, node) end
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [local(i0exp1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

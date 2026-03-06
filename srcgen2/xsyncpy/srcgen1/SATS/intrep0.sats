@@ -50,11 +50,19 @@ HX: for [FILR]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./statyp2.sats"
+#staload
+T2Q = "./statyp2.sats"
 //
 (* ****** ****** *)
+#staload
+LOC = "./\
+../../../SATS/locinfo.sats"
 (* ****** ****** *)
-#typedef sort2 = sort2
+(* ****** ****** *)
+#typedef loc_t = $LOC.loc_t
+#typedef loctn = $LOC.loctn
+(* ****** ****** *)
+#typedef sort2 = $T2Q.sort2
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -218,6 +226,13 @@ i0typ1_fprint
 #symload fprint with i0typ1_fprint of 1000
 //
 (* ****** ****** *)
+//
+fun
+i0typ1_make_sort$node
+(s2t0: sort2, node: i0typ1_node): i0typ1
+#symload i0typ1 with i0typ1_make_sort$node
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
@@ -263,10 +278,14 @@ fun
 i0pat1_lctn$get
 ( ipat: i0pat1 ): loctn
 fun
+i0pat1_ityp$get
+( ipat: i0pat1 ): i0typ1
+fun
 i0pat1_node$get
 ( ipat: i0pat1 ): i0pat1_node
 //
 #symload lctn with i0pat1_lctn$get
+#symload ityp with i0pat1_ityp$get
 #symload node with i0pat1_node$get
 //
 (* ****** ****** *)
@@ -275,6 +294,14 @@ fun
 i0pat1_fprint
 (ipat: i0pat1, out0: FILR): void
 #symload fprint with i0pat1_fprint of 1000
+//
+(* ****** ****** *)
+//
+fun
+i0pat1_make_lctn$ityp$node
+(loc0: loctn
+,i0t0: i0typ1, node: i0pat1_node): i0pat1
+#symload i0pat1 with i0pat1_make_lctn$ityp$node
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -302,10 +329,14 @@ fun
 i0exp1_lctn$get
 ( iexp: i0exp1 ): loctn
 fun
+i0exp1_ityp$get
+( iexp: i0exp1 ): i0typ1
+fun
 i0exp1_node$get
 ( iexp: i0exp1 ): i0exp1_node
 //
 #symload lctn with i0exp1_lctn$get
+#symload ityp with i0exp1_ityp$get
 #symload node with i0exp1_node$get
 //
 (* ****** ****** *)
@@ -314,6 +345,14 @@ fun
 i0exp1_fprint
 (iexp: i0exp1, out0: FILR): void
 #symload fprint with i0exp1_fprint of 1000
+//
+(* ****** ****** *)
+//
+fun
+i0exp1_make_lctn$ityp$node
+(loc0: loctn
+,i0t0: i0typ1, node: i0exp1_node): i0exp1
+#symload i0exp1 with i0exp1_make_lctn$ityp$node
 //
 (* ****** ****** *)
 (* ****** ****** *)
