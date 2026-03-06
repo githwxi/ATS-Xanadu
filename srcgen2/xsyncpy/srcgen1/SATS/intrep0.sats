@@ -50,6 +50,14 @@ HX: for [FILR]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload "./statyp2.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef sort2 = sort2
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #abstbox i0typ1_tbox // p0tr
 #typedef i0typ1 = i0typ1_tbox
 //
@@ -71,25 +79,60 @@ HX: for [FILR]
 //
 (* ****** ****** *)
 //
+#abstbox i0valdcl1_tbox//p0tr
+#abstbox i0vardcl1_tbox//p0tr
+#abstbox i0fundcl1_tbox//p0tr
+//
+(* ****** ****** *)
+//
+#abstbox i0parsed1_tbox//p0tr
+//
+(* ****** ****** *)
+#typedef i0valdcl1 = i0valdcl1_tbox
+#typedef i0vardcl1 = i0vardcl1_tbox
+#typedef i0fundcl1 = i0fundcl1_tbox
+(* ****** ****** *)
+#typedef i0parsed1 = i0parsed1_tbox
+(* ****** ****** *)
+#typedef i0valdcl1lst = list(i0valdcl1)
+#typedef i0vardcl1lst = list(i0vardcl1)
+#typedef i0fundcl1lst = list(i0fundcl1)
+(* ****** ****** *)
+#typedef i0dcl1lstopt = optn(i0dcl1lst)
+(* ****** ****** *)
+(* ****** ****** *)
+//
 datatype
 i0lab(itm:type) =
 |I0LAB of (label, itm(*elt*))
 //
+(* ****** ****** *)
+//
 fun
 <x0:t0>
-i0lab_get_itm
+i0lab_itm$get
 (ilab: i0lab(x0)): x0
-#symload itm with i0lab_get_itm
+#symload itm with i0lab_itm$get
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef l0i0t1 = i0lab(i0typ1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #typedef l0i0p1 = i0lab(i0pat1)
 #typedef l0i0e1 = i0lab(i0exp1)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef i0typ1lst = list(i0typ1)
 #typedef i0typ1opt = optn(i0typ1)
+#typedef l0i0t1lst = list(l0i0t1)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef i0pat1lst = list(i0pat1)
@@ -121,22 +164,50 @@ i0typ1_node =
 |I0T1cst of s2cst//constant
 |I0T1var of s2var//variable
 (* ****** ****** *)
-|I0T1lft of s2typ1//lft-value
+|I0T1lft of i0typ1//lft-value
 (* ****** ****** *)
 //
-|I0T1tcon of (d2con, i0typ1lst)
+|I0T1apps of
+(
+i0typ1(*fun*),i0typ1lst(*args*))
+|I0T1lam1 of
+(
+s2varlst(*args*), i0typ1(*body*))
+//
+(* ****** ****** *)
+//
+|I0T1exi0 of//exists.quantifier
+(
+s2varlst(*vars*), i0typ1(*body*))
+|I0T1uni0 of//forall.quantifier
+(
+s2varlst(*vars*), i0typ1(*body*))
+//
+(* ****** ****** *)
+//
+|I0T1tcon of
+(d2con, i0typ1lst(*args*))
+//
+|I0T1trcd of
+(trcdknd, sint(*npf*), l0i0t1lst)
+//
+(* ****** ****** *)
+//
+|I0T1text of
+(
+string(*name*), i0typ1lst(*args*))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i0typ1_styp$get
-( dtyp: i0typ1 ): s2typ1
+i0typ1_sort$get
+( dtyp: i0typ1 ): sort2
 fun
 i0typ1_node$get
 ( dtyp: i0typ1 ): i0typ1_node
 //
-#symload styp with i0typ1_styp$get
+#symload sort with i0typ1_sort$get
 #symload node with i0typ1_node$get
 //
 (* ****** ****** *)

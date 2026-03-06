@@ -40,6 +40,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../SATS/staexp2.sats"
+#staload
 "./../SATS/dynexp3.sats"
 #staload
 "./../SATS/intrep0.sats"
