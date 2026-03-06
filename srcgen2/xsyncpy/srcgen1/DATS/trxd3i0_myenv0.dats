@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun Feb 22 09:23:05 PM EST 2026
+Fri Mar  6 02:23:20 AM EST 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,49 +39,16 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX: for [FILR]
-*)
-#include
-"xatslib\
-/libcats\
-/HATS/libcats_dats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#absvtbx envd3i0_vtbx // p0tr
-#vwtpdef envd3i0 = envd3i0_vtbx
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-d3pat1_trxd3i0
-(d3p0: d3pat1, env0: !envd3i0): i0pat1
-//
-(* ****** ****** *)
-//
-fun
-d3exp1_trxd3i0
-(d3e0: d3exp1, env0: !envd3i0): i0exp1
-//
-(* ****** ****** *)
-//
-fun
-d3ecl1_trxd3i0
-(d3cl: d3ecl1, env0: !envd3i0): i0dcl1
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-d3ecl1lst_trxd3i0
-(d3cs: d3ecl1lst, env0: !envd3i0): i0dcl1lst
+#staload
+"./../SATS/dynexp3.sats"
+#staload
+"./../SATS/intrep0.sats"
+#staload
+"./../SATS/trxd3i0.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_SATS_trxd3i0.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_trxd3i0_myenv0.dats] *)
 (***********************************************************************)

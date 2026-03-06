@@ -79,7 +79,9 @@ fpeltck_decl00.dats \
 intrep0.dats \
 intrep0_print0.dats \
 trxd3i0.dats \
+trxd3i0_myenv0.dats \
 trxd3i0_dynexp.dats \
+trxd3i0_decl00.dats \
 
 ########################################################################
 ########################################################################
