@@ -355,8 +355,12 @@ d3e0.node() of
 //
 |D3E1var _ =>
 fs_var(d3e0, styp, env0)
+//
 |D3E1flat _ =>
 fs_flat(d3e0, styp, env0)
+//
+|D3E1pcon _ =>
+fs_pcon(d3e0, styp, env0)
 |D3E1proj _ =>
 fs_proj(d3e0, styp, env0)
 //
@@ -407,6 +411,64 @@ s2typ1_lft(styp) in//let
   saftck(dlft, styp, env0)) end
 //
 end//let//end-of-[fs_flat(d3e0,...)]
+//
+(* ****** ****** *)
+//
+and
+fs_pcon
+(d3e0: d3exp1
+,styp: s2typ1
+,env0: !envltck): sint =
+let
+//
+val-
+D3E1pcon
+(tknd
+,lab1, d3e1) = d3e0.node()
+//
+in//let
+//
+let
+val t3q1 =
+d3e1.dtyp((*0*))
+in//let
+//
+case+
+t3q1.node() of
+//
+|
+T3P1styp(t2q1) =>
+let
+val styp =
+s2typ1_lab$fset
+(t2q1, lab1, styp) in//let
+(
+  saftck(d3e1, styp, env0))
+end//let//endof(T3P1styp(...))
+//
+|
+_(*otherwise*) =>
+let
+val dtyp =
+d3typ1_styp$make
+(     styp     )
+val dtyp =
+d3typ1_lab$fset
+(t3q1, lab1, dtyp) in//let
+(
+  daftck(d3e1, dtyp, env0)) end
+//
+end//let
+//
+end where
+{
+//
+(*
+val () =
+prerrsln("fs_pcon: d3e0 = ", d3e0)
+*)
+//
+}(*where*)//end-of-[fs_pcon(d3e0,...)]
 //
 (* ****** ****** *)
 //
@@ -482,6 +544,8 @@ fd_var(d3e0, dtyp, env0)
 |D3E1flat _ =>
 fd_flat(d3e0, dtyp, env0)
 (*
+|D3E1pcon _ =>
+fd_pcon(d3e0, dtyp, env0)
 |D3E1proj _ =>
 fd_proj(d3e0, dtyp, env0)
 *)
@@ -1001,6 +1065,8 @@ d3exp1
 //
 (* ****** ****** *)
 //
+|D3E1pcon _ => f0_pcon(d3e0, env0)
+//
 |D3E1proj _ => f0_proj(d3e0, env0)
 //
 (* ****** ****** *)
@@ -1358,6 +1424,168 @@ loc0,tqxp,D3E1errck(0(*lvl*),d3e0)))
 end//let//end-of-[f0_dapp(d3e0,env0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+fun
+f1_dtyp$updt
+( d3e1: d3exp1
+, trst: d3typ1
+, env0: !envltck): (sint) =
+(
+case+
+d3e1.node() of
+//
+|D3E1var
+(   d2v1   ) =>
+let
+val (  ) =
+envltck_dvar$updt
+(env0, d2v1, trst) in 0 end
+//
+|D3E1flat
+(   dlft   ) =>
+let
+val trst =
+d3typ1_dlft$make(trst)
+in//let
+f1_dtyp$updt(dlft, trst, env0)
+end//let
+//
+|D3E1pcon
+(tknd
+,lab2, d3e2) =>
+let
+val t3q2 =
+d3e2.dtyp((*0*))
+val t3q2 =
+(
+d3typ1_lab$fset
+(t3q2, lab2, trst))//val(t3q2)
+in//let
+(
+f1_dtyp$updt(d3e2, t3q2, env0))
+end(*let*)//end-of-[D3E1pcon(...)]
+//
+|D3E1proj
+(tknd
+,lab2, d3e2) =>
+let
+val t3q2 =
+d3e2.dtyp((*0*))
+val t3q2 =
+(
+d3typ1_lab$fset
+(t3q2, lab2, trst))//val(t3q2)
+in//let
+(
+f1_dtyp$updt(d3e2, t3q2, env0))
+end(*let*)//end-of-[D3E1proj(...)]
+//
+|_(*otherwise*) => (      1      )
+) where
+{
+//
+(*
+//
+val loc1 = d3e1.lctn((*void*))
+//
+val (  ) = prerrsln
+("f1_dtyp$updt(ltck): loc1 = ", loc1)
+val (  ) = prerrsln
+("f1_dtyp$updt(ltck): d3e1 = ", d3e1)
+val (  ) = prerrsln
+("f1_dtyp$updt(ltck): trst = ", trst)
+//
+*)
+//
+}(*where*)//end-of-[f1_dtyp$updt(...)]
+//
+in//local
+//
+fun
+f0_pcon
+( d3e0: d3exp1
+, env0: !envltck): d3exp1 =
+let
+//
+val-
+D3E1pcon
+(tknd
+,lab1, d3e1) = d3e0.node()
+//
+val d3e1 =
+(
+d3exp1_trxltck(d3e1, env0))
+//
+val t3q1 = d3e1.dtyp((*0*))
+//
+val t3q2 =
+(
+  d3typ1_lab$proj(t3q1, lab1))
+//
+val (  ) =
+(
+prerrsln
+("f0_pcon(ltck): d3e1 = ", d3e1))
+val (  ) =
+(
+prerrsln
+("f0_pcon(ltck): t3q1 = ", t3q1))
+val (  ) =
+(
+prerrsln
+("f0_pcon(ltck): t3q2 = ", t3q2))
+//
+in//let
+//
+let//2
+//
+val linq =
+(
+  d3typ1_linq(t3q2))
+//
+val trst =
+(
+if // if
+not(linq)
+then (t3q1) else
+let
+val
+t3q2 = d3typ1_t1pize(t3q2)
+in//let
+d3typ1_lab$fset(t3q1, lab1, t3q2)
+end//let
+)
+//
+in//let2
+//
+(
+if ( // if
+(0)=(*succ*)
+f1_dtyp$updt
+( d3e1
+, trst, env0)
+) then dpcn else
+(
+d3exp1_exlinize
+(dpcn, trst, env0))
+) where // end-of-(if)
+{
+//
+val
+dpcn =
+d3exp1(loc0,
+  t3q2, D3E1pcon(tknd, lab1, d3e1))
+//
+}(*where*)
+//
+end//let2
+//
+end(*let*)//end-of-[f0_pcon(d3e0,env0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_proj
@@ -1426,7 +1654,7 @@ in//let2
 //
 (
 if ( // if
-0 =
+(0)=(*succ*)
 f1_dtyp$updt
 ( d3e1
 , trst, env0)
@@ -1436,77 +1664,22 @@ d3exp1_exlinize
 (dprj, trst, env0))
 ) where // end-of-(if)
 {
+//
 val
 dprj =
-d3exp1(loc0, t3q2,
-  D3E1proj(tknd, lab1, d3e1))}
-//let2
-end//let//end-of-(T3P1trcd(...)
+d3exp1(loc0,
+  t3q2, D3E1proj(tknd, lab1, d3e1))
 //
-end where
-{
+}(*where*)
+end//let2
 //
-fun
-f1_dtyp$updt
-( d3e1: d3exp1
-, trst: d3typ1
-, env0: !envltck): (sint) =
-(
-case+
-d3e1.node() of
+end(*let*)//end-of-[f0_proj(d3e0,env0)]
 //
-|D3E1var
-(   d2v1   ) =>
-let
-val (  ) =
-envltck_dvar$updt
-(env0, d2v1, trst) in 0 end
+(* ****** ****** *)
 //
-|D3E1flat
-(   dlft   ) =>
-let
-val trst =
-d3typ1_dlft$make(trst)
-in//let
-f1_dtyp$updt(dlft, trst, env0)
-end//let
+endloc // end-of-[local(f0_pcon/f0_proj)]
 //
-|D3E1proj
-(tknd
-,lab2, d3e2) =>
-let
-val t3q2 =
-d3e2.dtyp((*0*))
-val t3q2 =
-(
-d3typ1_lab$fset
-(t3q2, lab2, trst))//val
-in//let
-(
-f1_dtyp$updt(d3e2, t3q2, env0))
-end(*let*)//end-of-[D3E1proj(...)]
-//
-|_(*otherwise*) => (      1      )
-) where
-{
-//
-(*
-//
-val loc1 = d3e1.lctn((*void*))
-//
-val (  ) = prerrsln
-("f1_dtyp$updt(ltck): loc1 = ", loc1)
-val (  ) = prerrsln
-("f1_dtyp$updt(ltck): d3e1 = ", d3e1)
-val (  ) = prerrsln
-("f1_dtyp$updt(ltck): trst = ", trst)
-//
-*)
-//
-}(*where*)//end-of-[f1_dtyp$updt(...)]
-//
-}(*where*)//end-of-[f0_proj(d3e0,env0)]
-//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -2632,14 +2805,14 @@ let
 //
 val loc0 = dcl0.lctn()
 //
-(*
+// (*
 val (  ) =
 prerrsln("\
 d31cas_trxltck: dcl0 = ", dcl0)
 val (  ) =
 prerrsln("\
 d31cas_trxltck: dcas = ", dcas)
-*)
+// *)
 //
 in//let
 //
@@ -2670,6 +2843,11 @@ val dtyp =
 if
 freeq(dpat)
 then (dtyp) else
+(*
+HX-2026-03-07:
+If lftq(dcas), then
+[T3P1none] is returned!
+*)
 envltck_dmxq$updt(
   env0 , dcas , dtyp))//(val)
 where
@@ -2681,6 +2859,13 @@ HX-2026-02-15:
 val dtyp =
 (
 d3typ1_mkof_d3pat1(  dpat  ))
+//
+val (  ) =
+// (*
+prerrsln("\
+d31cas_trxltck:D3CLS1cls: dtyp = ", dtyp)
+// *)
+//
 }(*where*)//end-of-[val(dtyp)]
 //
 val dgrt = (

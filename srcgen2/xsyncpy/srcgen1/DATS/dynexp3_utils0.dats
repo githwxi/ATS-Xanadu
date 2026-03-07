@@ -50,6 +50,8 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload "\
 ./../../../SATS/xbasics.sats"
 #staload "\
+./../../../SATS/xlabel0.sats"
+#staload "\
 ./../../../SATS/locinfo.sats"
 #staload "\
 ./../../../SATS/staexp2.sats"
@@ -409,6 +411,7 @@ dtyp.node() of
 (
 case+
 styp.node() of
+//
 |T2P1trcd
 (trcd
 ,npf1, ltqs) =>
@@ -419,9 +422,12 @@ d3typ1_styp$get(dtyp)
 val ltqs = f0_ltqs(ltqs)
 //
 in//let
+(
 d3typ1_make_styp$node
-(t2rt, T3P1trcd(trcd, npf1, ltqs))
+( t2rt
+, T3P1trcd(trcd, npf1, ltqs)))
 end//let
+//
 |_(*otherwise*) => (     dtyp     )
 )
 |_(*otherwise*) => (     dtyp     )
@@ -506,6 +512,11 @@ d3typ1_styp$make(
 |_(*otherwise*) => d3typ1_none0((*0*))
 )
 //
+|T3P1tcon
+(dcon, t3qs) =>
+(
+  d3typ1lst_lab$proj(t3qs, lab0))
+//
 |T3P1trcd
 (trcd
 ,npf1, ltqs) =>
@@ -525,6 +536,48 @@ prerrsln("d3typ1_lab$proj: lab0 = ", lab0)
 // *)
 //
 }(*where*)//end-of-[d3typ1_lab$proj(dtyp,...)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3typ1lst_ind$proj
+  (t3qs, ind0) =
+(
+auxlst
+(t3qs, 0(*ind1*)))
+where
+{
+//
+fun
+auxlst
+( t3qs
+: d3typ1lst
+, ind1: nint): d3typ1 =
+(
+case+ t3qs of
+|list_nil
+( (*void*) ) =>
+(
+d3typ1_none0((*void*)))
+|list_cons
+(t3q1, t3qs) =>
+(
+if // if
+(ind0 = ind1)
+then t3q1 else auxlst(t3qs, ind1+1))
+)(*case+*)//end-of-[auxlst(t3qs,ind1)]
+}(*where*)//end-of-[d3typ1lst_ind$proj(ltqs,...)]
+//
+#implfun
+d3typ1lst_lab$proj
+  (t3qs, lab0) =
+(
+case+ lab0 of
+|LABint(ind0) =>
+(
+  d3typ1lst_ind$proj(t3qs, ind0))
+|LABsym(sym0) => d3typ1_none0((*0*))
+)(*case+*)//end-of-[d3typ1lst_lab$proj(t3qs,...)]
 //
 (* ****** ****** *)
 //
@@ -563,10 +616,29 @@ d3typ1_lab$fset
 case+
 dtyp.node() of
 //
+|T3P1tcon
+(dcon, t3qs) =>
+let
+//
+val t3qs =
+(
+d3typ1lst_lab$fset
+(t3qs, lab0, t3q0))
+val t2rt =
+(
+d3typ1_styp$get(dtyp))
+//
+in//let
+(
+d3typ1(
+  t2rt, T3P1tcon(dcon, t3qs)))
+end//let//end-of-[T3P1tcon(...)]
+//
 |T3P1trcd
 (trcd
 ,npf1, ltqs) =>
 let
+//
 val ltqs =
 (
 l3t3p1lst_lab$fset
@@ -574,6 +646,7 @@ l3t3p1lst_lab$fset
 val t2rt =
 (
 d3typ1_styp$get(dtyp))
+//
 in//let
 (
 d3typ1(t2rt,
@@ -596,7 +669,48 @@ val (  ) =
 prerrsln("d3typ1_lab$fset: t3q0 = ", t3q0)
 // *)
 //
-}(*where*)//end-of-[d3typ1_lab$fset(dtyp,lab0,t3q0)]
+}(*where*)//end-of-[d3typ1_lab$fset(dtyp,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3typ1lst_ind$fset
+(t3qs, ind0, t3q0) =
+(
+case+ t3qs of
+//
+|list_nil
+( (*0*) ) =>
+(
+  list_nil(*void*))
+//
+|list_cons
+(t3q1, t3qs) =>
+if // if
+(ind0 = 0)
+then//then
+list_cons(t3q0, t3qs)
+else//else
+let
+val ind0 = (ind0 - 1)
+in//let
+list_cons(t3q1,
+d3typ1lst_ind$fset(t3qs, ind0, t3q0))
+end//let
+//
+)(*case+*)//end-of-[d3typ1lst_ind$fset(t3qs,...)]
+//
+#implfun
+d3typ1lst_lab$fset
+(t3qs, lab0, t3q0) =
+(
+case+ lab0 of
+|LABsym(sym0) => (t3qs)
+|LABint(ind0) =>
+(
+d3typ1lst_ind$fset(t3qs, ind0, t3q0))
+)(*case+*)//end-of-[d3typ1lst_lab$fset(t3qs,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

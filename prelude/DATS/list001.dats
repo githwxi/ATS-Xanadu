@@ -482,23 +482,28 @@ list_2choose_lstrm
 (
   auxmain(xs)) where
 {
-fun auxmain(xs) = $llazy
-(
+//
+#typedef xs = list(x0)
+#typedef y0 = @(x0, x0)
+//
+fun
+auxmain
+( xs
+: list(x0)): strm_vt(y0) =
+$llazy(
 //
 case+ xs of
 |
 list_nil() =>
-strmcon_vt_nil(*void*)
+(
+strmcon_vt_nil(*0*))
 |
 list_cons(x1, xs) => !
 (
 strm_vt_append00
-<y0>(r1, auxmain(xs))
-) where
+<      y0      >
+(r1, auxmain(xs))) where
 {
-//
-#typedef xs = list(x0)
-#typedef y0 = @(x0, x0)
 //
 val r1 =
 (
@@ -507,8 +512,12 @@ gseq_map_lstrm<xs><x0><y0>(xs)
 {
 #impltmp
 map$fopr<x0><y0>(x2) = @(x1, x2) } }//whr
-)(*case+*)
+//
+)(*case+*)//end-of-[auxmain(xs)=$llazy()]
+//
 }(*where*)//end-of-[list_2choose_lstrm(xs)]
+//
+(* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
@@ -537,6 +546,7 @@ list_2choose$forall<x0>(xs)
 c2hoose$forall$test<x0>(x1, x2) = test(x1, x2)
 }(*where*)//end-of-[list_2choose$forall$f2un(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -577,6 +587,8 @@ map$fopr
 //
 )(*case+*)
 }(*where*)//end-of-[list_3choose_lstrm(xs)]
+//
+(* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
@@ -932,7 +944,7 @@ case+ xs of
 |list_cons(x1, xs) =>
 (
   auxmain(x1, xs, ys))
-) where
+where
 {
 //
 val ys = list_vt_nil(*void*)
@@ -945,23 +957,26 @@ auxmain
 : strm_vt@(x0, list_vt(x0)) =
 $llazy(
 //
+free(ys);
+//
 case+ xs of
-|
-list_nil() =>
+|list_nil() =>
+(
 strmcon_vt_cons
-((x1, rs), strm_vt_nil())
+((x1, rs), strm_vt_nil()))
 where{
   val rs = list_vt_reverse0(ys) }
-|
-list_cons _ =>
+|list_cons(_, _) =>
+(
 strmcon_vt_cons((x1, rs),
-  auxmain(xs.0, xs.1, list_vt_cons(x1, ys)))
+auxmain(xs.0, xs.1, list_vt_cons(x1, ys))))
 where{
   val rs = 
   list_vt_rappend10(ys, list_reverse_vt(xs)) }
 )(*case+*)//end-of-[auxmain(x1, xs, ys)]
 //
-}(*where*)//end-of-[list_1choose$split_lstrm<x0>]
+}(*where*)//end-of-[list_cons( x1, xs )]
+)(*case+*)//end-of-[list_1choose$split_lstrm<x0>]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -575,10 +575,10 @@ d3exp1
 //
 |D3Etimp _ =>
 d3exp1
-(loc0, t3q0, D3E1d3exp(d3e0)))
+(loc0, t3q0, D3E1d3exp(d3e0))
 |D3Etimq _ =>
 d3exp1
-(loc0, t3q0, D3E1d3exp(d3e0)))
+(loc0, t3q0, D3E1d3exp(d3e0))
 //
 (* ****** ****** *)
 //
