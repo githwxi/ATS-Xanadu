@@ -1428,7 +1428,11 @@ d3typ1_lab$proj
 //
 fun
 d3typ1lst_ind$proj
-(t3qs: l3t3p1lst, ind0: sint): d3typ1
+(t3qs: d3typ1lst, ind0: sint): d3typ1
+fun
+d3typ1lst_lab$proj
+(t3qs: d3typ1lst, lab0: label): d3typ1
+//
 fun
 l3t3p1lst_lab$proj
 (ltqs: l3t3p1lst, lab0: label): d3typ1
@@ -1436,18 +1440,19 @@ l3t3p1lst_lab$proj
 (* ****** ****** *)
 //
 fun
-d3typ1_ind$fset
-(styp
-:d3typ1,ind0:sint,t2q0:d3typ1): d3typ1
-fun
-d3typ1lst_ind$fset
-(ltqs
-:d3typ1lst,ind0:sint,t2q0:d3typ1): d2typ1lst
-//
-fun
 d3typ1_lab$fset
 (styp
 :d3typ1,lab0:label,t2q0:d3typ1): d3typ1
+//
+fun
+d3typ1lst_ind$fset
+(t3qs
+:d3typ1lst,ind0:sint,t2q0:d3typ1): d3typ1lst
+fun
+d3typ1lst_lab$fset
+(t3qs
+:d3typ1lst,lab0:label,t2q0:d3typ1): d3typ1lst
+//
 fun
 l3t3p1lst_lab$fset
 (ltqs

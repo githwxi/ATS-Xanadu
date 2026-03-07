@@ -50,9 +50,6 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload
-"./../SATS/intrep0.sats"
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #include
@@ -546,68 +543,6 @@ g_print
 <dvdtp1lst>(vtps) =
 (
   dvdtp1lst_fprint(vtps, g_print$out<>((*0*))))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-{x0:t0}
-g_print
-<
-i0lab(x0)
->
-(   ilab   ) =
-(
-case+ ilab of
-|
-I0LAB(l00, x01) =>
-(
-  prints("I0LAB(", l00, ";", x01, ")")) )
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-g_print
-<i0pat1>(ipat) =
-(
-  i0pat1_fprint(ipat, g_print$out<>((*0*))))
-//
-(* ****** ****** *)
-//
-#impltmp
-g_print
-<i0exp1>(iexp) =
-(
-  i0exp1_fprint(iexp, g_print$out<>((*0*))))
-//
-(* ****** ****** *)
-//
-#impltmp
-g_print
-<i0dcl1>(idcl) =
-(
-  i0dcl1_fprint(idcl, g_print$out<>((*0*))))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-g_print
-<i0valdcl1>(ival) =
-(
-  i0valdcl1_fprint(ival, g_print$out<>((*0*))))
-#impltmp
-g_print
-<i0vardcl1>(ivar) =
-(
-  i0vardcl1_fprint(ivar, g_print$out<>((*0*))))
-//
-#impltmp
-g_print
-<i0fundcl1>(ifun) =
-(
-  i0fundcl1_fprint(ifun, g_print$out<>((*0*))))
 //
 (* ****** ****** *)
 (* ****** ****** *)

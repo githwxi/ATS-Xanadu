@@ -14,6 +14,33 @@ Sun Mar  1 02:12:30 PM EST 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+#typedef u = unit
+//
+fun
+length
+(xs: list(u)): sint =
+(
+case+ xs of
+|list_nil _ => 0
+|list_cons(_, _) => 1 + length(xs.1))
+*)
+//
+(* ****** ****** *)
+//
+#typedef u = unit
+//
+fun
+length
+(xs: !list_vt(u)): sint =
+(
+case+ xs of
+|list_vt_nil _ => 0
+|list_vt_cons(_, _) => 1 + length(xs.1))
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
 fun
 acker
 (m: nint)
