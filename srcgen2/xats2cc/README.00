@@ -3,4 +3,9 @@
 This project attempts to implement a compiler from
 ATS3 to CC (that is, C/C++).
 ############################################################
+HX-2026-02-22: Compiling to C!
+I have just started the phase of compiling ATS3 to C.
+Compared to compiling to JS, compiling to C additionally requires
+handling of types (for data) and closure formation (for functions).
+############################################################
 ############################################################
