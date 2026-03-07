@@ -50,8 +50,8 @@ HX: for [FILR]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-T2Q = "./statyp2.sats"
+#staload "./statyp2.sats"
+#staload "./dynexp3.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -68,6 +68,9 @@ D1E = "./\
 S2E = "./\
 ../../../SATS/staexp2.sats"
 #staload
+T2P = "./\
+../../../SATS/statyp2.sats"
+#staload
 D2E = "./\
 ../../../SATS/dynexp2.sats"
 //
@@ -78,8 +81,13 @@ D2E = "./\
 (* ****** ****** *)
 #typedef sort2 = $S2E.sort2
 #typedef s2exp = $S2E.s2exp
+#typedef s2typ = $T2p.s2typ
 (* ****** ****** *)
 #typedef d2var = $D2E.d2var
+(* ****** ****** *)
+#typedef s2explst = list(s2exp)
+#typedef s2typlst = list(s2typ)
+#typedef d2varlst = list(d2var)
 (* ****** ****** *)
 //
 #abstbox i0typ1_tbox // p0tr
@@ -521,10 +529,29 @@ fun
 i0vardcl1_dini$get:(i0vardcl1)->teqi0exp1
 //
 #symload dpid with i0vardcl1_dpid$get
-#symload styp with i0vardcl1_styp$get
+#symload ityp with i0vardcl1_ityp$get
 #symload vpid with i0vardcl1_vpid$get(*opt*)
 #symload sres with i0vardcl1_sres$get(*opt*)
 #symload dini with i0vardcl1_dini$get(*opt*)
+//
+(* ****** ****** *)
+//
+fun
+i0fundcl1_dpid$get:(i0fundcl1)->d2var
+fun
+i0fundcl1_ityp$get:(i0fundcl1)->i0typ1
+fun
+i0fundcl1_denv$get:(i0fundcl1)->d2varlst
+fun
+i0fundcl1_farg$get:(i0fundcl1)->f3arg1lst
+fun
+i0fundcl1_tixp$get:(i0fundcl1)->teqi0exp1
+//
+#symload dpid with i0fundcl1_dpid$get
+#symload ityp with i0fundcl1_ityp$get
+#symload denv with i0fundcl1_denv$get(*lst*)
+#symload farg with i0fundcl1_farg$get(*lst*)
+#symload tixp with i0fundcl1_tixp$get(*opt*)
 //
 (* ****** ****** *)
 //
@@ -543,6 +570,26 @@ i0vardcl1_make_args
 ,i0t1: i0typ1
 ,vpid: d2varopt
 ,sres: s2expopt, dini: teqi0exp1): i0vardcl1
+//
+(* ****** ****** *)
+//
+fun
+i0fundcl1_make_args
+(lctn:loc_t
+,dpid:d2var
+,i0t1:i0typ1
+,envs:d2varlst
+,farg:f3arg1lst
+,faxp:f3axp1lst
+,evts:dvdtp1lst,sres:s2res
+,tixp:teqi0exp1,wsxp:wths2exp,vts1:dvstp1lst,vts2:dvdtp1lst
+) : i0fundcl1//end-of-[i0fundcl1_make_args]
+//
+(* ****** ****** *)
+//
+#symload i0valdcl1 with i0valdcl1_make_args of 1000
+#symload i0vardcl1 with i0vardcl1_make_args of 1000
+#symload i0fundcl1 with i0fundcl1_make_args of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

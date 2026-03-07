@@ -93,6 +93,46 @@ end(*let*)//end-of-[i0typ1_fprint(i0t0,out0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0valdcl1_fprint
+ ( ival, out0 ) = let
+//
+val ipat =
+i0valdcl1_ipat$get(ival)
+val tixp =
+i0valdcl1_tixp$get(ival)
+//
+#impltmp g_print$out<>() = out0
+//
+in//let
+(
+prints("I0VALDCL1(", ipat, ";", tixp, ")"))
+end(*let*)//end-of-[i0valdcl1_fprint(ival,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0vardcl1_fprint
+ ( ivar, out0 ) = let
+//
+val dpid =
+i0vardcl1_dpid$get(ivar)
+val vpid =
+i0vardcl1_vpid$get(ivar)
+val dini =
+i0vardcl1_dini$get(ivar)
+//
+#impltmp g_print$out<>() = out0
+//
+in//let
+(
+print("I0VARDCL1(");
+prints(dpid,";",vpid,";",sres,";",dini,")"))
+end(*let*)//end-of-[i0vardcl1_fprint(ivar,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_intrep0_print0.dats] *)
 (***********************************************************************)
