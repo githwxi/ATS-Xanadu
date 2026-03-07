@@ -35,8 +35,6 @@ trx3cpy.sats \
 trxltck.sats \
 tryltck.sats \
 fpeltck.sats \
-intrep0.sats \
-trxd3i0.sats \
 
 ########################################################################
 
@@ -76,13 +74,6 @@ tryltck_decl00.dats \
 fpeltck.dats \
 fpeltck_dynexp.dats \
 fpeltck_decl00.dats \
-intrep0.dats \
-intrep0_print0.dats \
-trxd3i0.dats \
-trxd3i0_myenv0.dats \
-trxd3i0_staexp.dats \
-trxd3i0_dynexp.dats \
-trxd3i0_decl00.dats \
 
 ########################################################################
 ########################################################################
