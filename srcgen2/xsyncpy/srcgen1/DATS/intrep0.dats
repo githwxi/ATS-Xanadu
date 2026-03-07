@@ -486,6 +486,164 @@ endloc (*local*) // end-of-[local(i0vardcl1)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+local
+//
+datatype
+i0fundcl1 =
+I0FUNDCL1 of
+( loc_t
+, d2var
+, i0typ1
+//
+, d2varlst // denv
+//
+, f3arg1lst
+, f3axp1lst
+, dvdtp1lst
+, s2res(*return*)
+, teqi0exp1, wths2exp
+, dvstp1lst, dvdtp1lst)
+//
+#absimpl
+i0fundcl1_tbox = i0fundcl1
+//
+in//local
+//
+(* ****** ****** *)
+//
+#implfun
+i0fundcl1_lctn$get
+  (  dfun  ) = let
+val+
+I0FUNDCL1
+( lctn
+, dpid
+, i0t1
+//
+, denv//d2vs
+//
+, farg, faxp
+, evts
+, sres, tixp
+, wsxp, vts1, vts2) = dfun in lctn
+end // end of [i0fundcl1_lctn$get(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0fundcl1_dpid$get
+  (  dfun  ) = let
+val+
+I0FUNDCL1
+( lctn
+, dpid
+, i0t1
+//
+, denv//d2vs
+//
+, farg, faxp
+, evts
+, sres, tixp
+, wsxp, vts1, vts2) = dfun in dpid
+end // end of [i0fundcl1_dpid$get(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0fundcl1_ityp$get
+  (  dfun  ) = let
+val+
+I0FUNDCL1
+( lctn
+, dpid
+, i0t1
+//
+, denv//d2vs
+//
+, farg, faxp
+, evts
+, sres, tixp
+, wsxp, vts1, vts2) = dfun in i0t1
+end // end of [i0fundcl1_ityp$get(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0fundcl1_denv$get
+  (  dfun  ) = let
+val+
+I0FUNDCL1
+( lctn
+, dpid
+, i0t1
+//
+, denv//d2vs
+//
+, farg, faxp
+, evts
+, sres, tixp
+, wsxp, vts1, vts2) = dfun in denv
+end // end of [i0fundcl1_denv$get(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0fundcl1_farg$get
+  (  dfun  ) = let
+val+
+I0FUNDCL1
+( lctn
+, dpid, i0t1
+, denv
+, farg, faxp
+, evts
+, sres, tixp
+, wsxp, vts1, vts2) = dfun in farg
+end // end of [i0fundcl1_farg$get(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0fundcl1_tixp$get
+  (  dfun  ) = let
+val+
+I0FUNDCL1
+( lctn
+, dpid
+, i0t1
+, denv//d2vs
+, farg, faxp
+, evts
+, sres, tixp
+, wsxp, vts1, vts2) = dfun in tixp
+end // end of [i0fundcl1_tixp$get(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0fundcl1_make_args
+( lctn
+, dpid, i0t1
+, denv
+, farg, faxp
+, evts, sres, tixp
+, wsxp, vts1, vts2) =
+(
+I0FUNDCL1
+( lctn
+, dpid, i0t1
+, denv
+, farg, faxp
+, evts, sres, tixp, wsxp,vts1,vts2)
+) // end-of-[i0fundcl1_make_args(...)]
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end-of-[local(i0fundcl1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_xsyncpy_srcgen1_DATS_intrep0.dats] *)
 (***********************************************************************)

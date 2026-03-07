@@ -44,10 +44,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #staload
 "./../SATS/statyp2.sats"
+(* ****** ****** *)
 #staload
 "./../SATS/dynexp2.sats"
 #staload
 "./../SATS/dynexp3.sats"
+(* ****** ****** *)
+#staload
+"./../SATS/intrep0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -542,6 +546,23 @@ g_print
 <dvdtp1lst>(vtps) =
 (
   dvdtp1lst_fprint(vtps, g_print$out<>((*0*))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{x0:t0}
+g_print
+<
+i0lab(x0)
+>
+(   ilab   ) =
+(
+case+ ilab of
+|
+I0LAB(l00, x01) =>
+(
+  prints("I0LAB(", l00, ";", x01, ")")) )
 //
 (* ****** ****** *)
 (* ****** ****** *)

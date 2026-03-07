@@ -1348,8 +1348,10 @@ t2p0 = s2typ_unargx(t2p0)
 <e1nv:vwtp>
 unify00_s2typ_e1nv
 (e1nv, t2p1, t2p2) =
+(
 unify00_s2typ
-(e1nv, t2p1, t2p2) where
+(e1nv, t2p1, t2p2))
+where
 {
 //
 (* ****** ****** *)
