@@ -39,6 +39,18 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-03-07:
+TRX3CPY only applies the level-3 syntax
+obtained BEFORE template resolution (TR)
+is performed. For instance, constructors
+D3Etimp and D3Etimq are not handled as they
+only occur after TR.
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #include
 "xatslib\
 /libcats\
