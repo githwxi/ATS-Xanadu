@@ -404,8 +404,7 @@ d2pat(loc0,
   D2Ptup1(tknd, npf1, d2ps))
 end//let
 //
-|
-D2Prcd2
+|D2Prcd2
 (tknd
 ,npf1, ldps) =>
 let
@@ -415,8 +414,7 @@ d2pat(loc0,
   D2Prcd2(tknd, npf1, ldps))
 end//let
 //
-|
-D2Pannot
+|D2Pannot
 (d2p1
 ,s1e2, s2e2) =>
 let
