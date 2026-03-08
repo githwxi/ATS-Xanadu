@@ -350,6 +350,7 @@ d3pat1(loc0,
 endlet//end-of-[d3pat1_dapp_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3pat1_tup0_errck
@@ -369,6 +370,30 @@ d3pat1_make_lctn$styp$node
   (loc0, t2q0, D3P1tup0(npf1, d3ps)))
 //
 endlet//end-of-[d3pat1_tup0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3pat1_tup1_errck
+(loc0: loc_t
+,t2q0: s2typ1
+,tknd: token
+,npf1: (sint)
+,d3ps: d3pat1lst): d3pat1 =
+let
+//
+val
+lvl0 = errvl(d3ps) in//let
+//
+(
+d3pat1_errck
+(
+lvl0+1,
+d3pat1_make_lctn$styp$node
+( loc0
+, t2q0, D3P1tup1(tknd, npf1, d3ps))))
+//
+endlet//end-of-[d3pat1_tup1_errck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1087,6 +1112,10 @@ dpat.node() of
 (
   f0_tup0(dpat, err0))
 //
+|D3P1tup1 _ =>
+(
+  f0_tup1(dpat, err0))
+//
 (* ****** ****** *)
 //
 |D3P1argtp _ =>
@@ -1277,6 +1306,7 @@ end//let
 end(*let*)//end-of-[f0_dapp(d3p0,err0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_tup0
@@ -1305,6 +1335,43 @@ then (d3p0) else
   (d3p0.lctn(), t2q0, npf1, d3ps))
 end(*let*)//end-of-[f0_tup0(d3p0,err0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_tup1
+(d3p0: d3pat1
+,err0: &sint >> _): d3pat1 =
+let
+//
+val nerr = err0
+//
+val t2q0 = d3p0.styp()
+//
+val-
+D3P1tup1
+( tknd
+, npf1, d3ps) = d3p0.node()
+//
+val d3ps =
+(
+  d3pat1lst_tryltck(d3ps, err0))
+//
+in//let
+if // if
+(err0=nerr)
+then (d3p0) else
+//
+let
+val loc0 = d3p0.lctn()
+in//let
+(
+  d3pat1_tup1_errck(
+    loc0, t2q0, tknd, npf1, d3ps))
+end//let
+//
+end(*let*)//end-of-[f0_tup0(d3p0,err0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
