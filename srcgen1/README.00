@@ -2,6 +2,19 @@
 #######################(beg-of-[README.00])#######################
 ##################################################################
 //
+HX-2026-03-08:
+(*
+Sun Mar  8 03:40:08 PM EDT 2026
+*)
+//
+ATS3/Xanadu/srcgen1 should be frozen and then gradually
+phased out.
+//
+I just removed many external includes from srcgen1/prelude/.
+(and replaced them with the actuall contents being included).
+//
+##################################################################
+//
 HX-2024-07-03:
 (*
 Wed 03 Jul 2024 09:21:50 AM EDT
