@@ -37,11 +37,126 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
 #include
 "./../../../../prelude/SATS/VT/gasq000_vt.sats"
+*)
 (* ****** ****** *)
+(* ****** ****** *)
+#typedef ni = nint
+#typedef si = sint
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasq_length1(xs: !xs): nint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:t0> // HX: t0(not(vt))
+gasq_get$at1
+(xs: !xs, i0: ni): (x0)
+fun
+<xs:vt>
+<x0:t0> // HX: t0(not(vt))
+gasq_set$at1
+(xs: !xs, i0: ni, x0: x0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+(*
 #include
 "./../../../../prelude/SATS/VT/gasq001_vt.sats"
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasq_listize0
+(xs: ~xs): list_vt(x0)//fun
+//
+fun
+<xs:vt>
+<x0:vt>
+gasq_strmize0
+(xs: ~xs): strm_vt(x0)//fun
+fun
+<xs:vt>
+<x0:vt>
+gasq_strqize0
+(xs: ~xs): strq_vt(x0)//fun
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasq_rlistize0
+(xs: ~xs): list_vt(x0)//fun
+//
+fun
+<xs:vt>
+<x0:vt>
+gasq_rstrmize0
+(xs: ~xs): strm_vt(x0)//fun
+fun
+<xs:vt>
+<x0:vt>
+gasq_rstrqize0
+(xs: ~xs): strq_vt(x0)//fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasq_forall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gasq_forall1(xs: !xs): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasq_rforall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gasq_rforall1(xs: !xs): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasq_iforall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gasq_iforall1(xs: !xs): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasq_irforall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gasq_irforall1(xs: !xs): bool
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

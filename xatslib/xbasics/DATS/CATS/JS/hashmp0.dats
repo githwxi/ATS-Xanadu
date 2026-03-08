@@ -853,7 +853,7 @@ end(*let*)//end-of-[auxmain(iter):strm_vt]
 { k: t0
 , x: vt }
 gseq_strmize1
-<jsm1(k,x)><(k,x)> = jshmap_strmize<>{k}{x}
+<jsm1(k,x)><(k,x)> = jshmap_strmize<k><x>
 //
 (* ****** ****** *)
 (* ****** ****** *)

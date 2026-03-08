@@ -38,9 +38,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef ni = nint
+#typedef si = sint
 (* ****** ****** *)
 (* ****** ****** *)
 //

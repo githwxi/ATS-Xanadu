@@ -92,11 +92,11 @@ let
 #vwtpdef xs = jslm(k,x)
 //
 #impltmp
-gseq_sep<xs><x0>() = ","
+gseq$sep<xs><x0>() = ","
 #impltmp
-gseq_beg<xs><x0>() = "jshmap_vt("
+gseq$end<xs><x0>() = ")"
 #impltmp
-gseq_end<xs><x0>() = ")"
+gseq$beg<xs><x0>() = "jshmap_vt("
 in//let
   gseq_print1<xs><x0>(xs)
 end//end-of-[impltmp(g_print1<jslm(k,x)>)]
@@ -105,5 +105,5 @@ end//end-of-[impltmp(g_print1<jslm(k,x)>)]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_DATS_CATS_JS_VT_Hsmap00_vt.dats] *)
+(* end of [ATS3/XANADU_xatslib_DATS_CATS_JS_VT_hashmp0_vt.dats] *)
 (***********************************************************************)
