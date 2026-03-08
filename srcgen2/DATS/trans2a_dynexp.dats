@@ -147,7 +147,7 @@ HX: For leftization!
 *)
 //
 fun
-d2pat_bang
+d2pat_exbang
 (d2p0: d2pat): (void) =
 (
 case+
@@ -162,63 +162,30 @@ in//let
   d2v1.styp(s2typ_bang(t2p1))
 end//let
 //
+(*
 |
 D2Pannot
-(d2p1, _, _) => d2pat_bang(d2p1)
-//
-|
-_(*non-D2Pvar*) => ( (*ignored*) )
-//
-)(*case+*)//end-of-[d2pat_bang(d2p0)]
-//
-(* ****** ****** *)
-//
-(*
-(*
-HX: For leftization!
+(d2p1, _, _) => d2pat_exbang(d2p1)
 *)
+//
+|
+_(*non-D2Pvar*) => (  (*ignored*)  )
+//
+)(*case+*)//end-of-[d2pat_exbang(d2p0)]
+//
 fun
-d2pat_bang
-(d2p0: d2pat): (void) =
-(
-case+
-d2p0.node() of
-//
-|
-D2Pvar(d2v1) =>
-let
-val
-t2p1 = d2v1.styp((*0*))
-in//let
-  d2v1.styp(s2typ_bang(t2p1))
-end//let
-//
-|
-D2Pbang(d2p1) => d2pat_bang(d2p1)
-//
-|
-D2Pdapp
-( d2f0
-, npf1, d2ps) => d2patlst_bang(d2ps)
-//
-|
-_(* otherwise *) => ( (* ignored *) )
-)(*case+*)//end-of-[d2pat_bang(d2p0)]
-//
-and
-d2patlst_bang
+d2patlst_exbang
 (d2ps: d2patlst): void =
 (
 case+ d2ps of
 |
-list_nil() => ()
+list_nil() => ((*0*))
 |
 list_cons(d2p1, d2ps) =>
 (
-d2pat_bang(d2p1); d2patlst_bang(d2ps)
+d2pat_exbang(d2p1); d2patlst_exbang(d2ps)
 )
-)(*case+*)//end-of-[d2patlst_bang(d2ps)]
-*)
+)(*case+*)//end-of-[d2patlst_exbang(d2ps)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -281,7 +248,7 @@ val loc0 = d2p0.lctn() in
 (
 d2pat(loc0,t2p0,D2Pt2pck(d2p0,t2p0)))
 end//let
-end//let//end-of-[d2pat_t2pckify(...)]
+end(*let*)//end-of-[d2pat_t2pckify(...)]
 //
 (* ****** ****** *)
 //
@@ -306,7 +273,7 @@ val loc0 = d2p0.lctn() in
 (
 d2pat(loc0,t2p0,D2Pt2pkc(d2p0,t2p0)))
 end//let
-end//let//end-of-[d2pat_t2pkcify(...)]
+end(*let*)//end-of-[d2pat_t2pkcify(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -341,7 +308,7 @@ val loc0 = d2e0.lctn() in
 (
 d2exp(loc0,t2p0,D2Et2pck(d2e0,t2p0)))
 end//let
-end//let//end-of-[d2exp_t2pckify(...)]
+end(*let*)//end-of-[d2exp_t2pckify(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -654,17 +621,44 @@ val-
 D2Pbang(d2p1) = d2p0.node()
 //
 val
-d2p1 = trans2a_d2pat(env0, d2p1)
+d2p1 =
+(
+  trans2a_d2pat(env0, d2p1))
 //
 in//let
+//
 let
 //
-val (  ) = d2pat_bang(d2p1)
+val loc1 = d2p1.lctn((*0*))
+val t2p1 = d2p1.styp((*0*))
+val (  ) = d2pat_exbang(d2p1)
 //
-val
-t2p1 = d2p1.styp((*void*)) in//let
-  d2pat(loc0, t2p1, D2Pbang( d2p1 ))
+val t2p0 = t2p1
+val t2p1 = s2typ_bang(t2p0)
+val d2p1 =
+(
+d2pat(loc1, t2p1, d2p1.node()))
+//
+(*
+val (  ) =
+(
+prerrsln
+  ("f0_bang(2a): d2p1 = ", d2p1))
+val (  ) =
+(
+prerrsln
+  ("f0_bang(2a): t2p0 = ", t2p0))
+val (  ) =
+(
+prerrsln
+  ("f0_bang(2a): t2p1 = ", t2p1))
+*)
+//
+in//let
+(
+  d2pat(loc0, t2p0, D2Pbang(d2p1)))
 end (*let*)
+//
 end (*let*) // end-of-[f0_bang(env0,d2p0)]
 //
 (* ****** ****** *)

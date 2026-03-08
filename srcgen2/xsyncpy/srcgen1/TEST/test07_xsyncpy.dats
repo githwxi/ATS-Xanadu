@@ -31,12 +31,24 @@ case+ xs of
 #typedef u = unit
 //
 fun
-length
+length0_vt
+(xs: ~list_vt(u)): sint =
+(
+case+ xs of
+| ~
+list_vt_nil() => 0
+| ~
+list_vt_cons(_, xs) => 1 + length0_vt(xs))
+//
+fun
+length1_vt
 (xs: !list_vt(u)): sint =
 (
 case+ xs of
-|list_vt_nil _ => 0
-|list_vt_cons(_, _) => 1 + length(xs.1))
+| !
+list_vt_nil() => 0
+| !
+list_vt_cons(_, xs) => 1 + length1_vt(xs))
 //
 (* ****** ****** *)
 ////

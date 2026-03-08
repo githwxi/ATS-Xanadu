@@ -690,10 +690,10 @@ in//let
 end where
 {
 //
-// (*
+(*
 val () =
 prerrsln("envltck_dvar$find: dvar = ", dvar)
-// *)
+*)
 //
 }(*where*)//end-of-[envltck_dvar$find(env0,...)]
 //
@@ -1116,10 +1116,8 @@ end//let//end-of-[D3P1var( d2v1 )]
 //
 (* ****** ****** *)
 //
-(*
 |D3P1bang
 (   d3p1   ) => f0_dpat(env0, d3p1)
-*)
 //
 |D3P1flat
 (   d3p1   ) => f0_dpat(env0, d3p1)
@@ -1229,7 +1227,20 @@ envltck_dvar$spsh(env0, d2v1, t2q2))
 //
 |
 _(*otherwise*) => (     (*void*)     )
-)(*case+*)//end-of-[f0_dpat(env0,dpat)]
+) where
+{
+//
+(*
+val t2q0 = d3p0.styp((*0*))
+val (  ) =
+(
+  prerrsln("f0_dpat: d3p0 = ", d3p0))
+val (  ) =
+(
+  prerrsln("f0_dpat: t2q0 = ", t2q0))
+*)
+//
+}(*where*)//end-of-[f0_dpat(env0,d3p0)]
 //
 and
 f0_d3ps
@@ -1265,8 +1276,11 @@ val-T2P1arg1(knd0, targ) = t2q0.node()
 (* ****** ****** *)
 //
 (*
-val ((*void*)) =
+val t2q0 = dpat.styp((*0*))
+val (  ) =
 prerrsln("envltck_dpat$push: dpat = ", dpat)
+val (  ) =
+prerrsln("envltck_dpat$push: t2q0 = ", t2q0)
 *)
 //
 (* ****** ****** *)

@@ -324,14 +324,13 @@ t2p0 = d2v0.styp((*0*))
 val
 t2p0 = s2typ_hnfiz0(t2p0)
 //
-//
 (*
 val () =
-prerrsln
-("f0_var(23): d2p0 = ", d2p0)
+prerrsln("\
+f0_var(23): d2p0 = ", d2p0)
 val () =
-prerrsln
-("f0_var(23): t2p0 = ", t2p0)
+prerrsln("\
+f0_var(23): t2p0 = ", t2p0)
 *)
 //
 in//let
@@ -340,12 +339,14 @@ let
 //
 val (  ) = d2v0.styp(t2p0)
 //
+(*
 val t2p0 =
 (
 case+
 t2p0.node() of
-|T2Plft(t2p1) => t2p1
+|T2Plft(t2p1) => (t2p1)
 |_(*otherwise*) => t2p0): s2typ
+*)
 //
 in//let
   d3pat(loc0, t2p0, D3Pvar(d2v0))
@@ -400,13 +401,30 @@ val-
 D2Pbang(d2p1) = d2p0.node()
 //
 val
-d3p1 = trans23_d2pat(env0, d2p1)
+d3p1 =
+(
+  trans23_d2pat(env0, d2p1))
 //
 in//let
+//
 let
-val
-t2p1 = d3p1.styp((*void*)) in//let
-  d3pat(loc0, t2p1, D3Pbang( d3p1 ))
+//
+val t2p1 =
+(
+  d3p1.styp((*void*)))
+val t2p0 =
+(
+case+
+t2p1.node() of
+|T2Plft(t2p0) =>
+(        t2p0        )
+|_(*non-T2Plft*) =>
+(
+  s2typ_none1( t2p1 ))): s2typ
+//
+in//let
+(
+  d3pat(loc0, t2p0, D3Pbang(d3p1)))
 end//let
 end(*let*)//end-of-[f0_bang(env0,d2p0)]
 //
@@ -1068,10 +1086,13 @@ in//let
 (
 case+
 t2p1.node() of
-| T2Plft(t2p1) =>
+|
+T2Plft(t2p1) =>
+(
 d3exp_make_tpnd
-( loc0, t2p1, D3Eflat(d3e1) )
-| _(*non-T2Plft*) => ( d3e1 ) )
+(loc0, t2p1, D3Eflat(d3e1)))
+|
+_(*non-T2Plft*) => (   d3e1   ))
 //
 end (*let*) // end of [f0_var(...)]
 //
@@ -1175,7 +1196,7 @@ D2Esym0
 //
 in//let
   trans23_d2exp(env0, drxp.dexp())
-end (*let*)//end-of-[f0_sym0(env0,d2e0)]
+end(*let*)//end-of-[f0_sym0(env0,d2e0)]
 //
 (* ****** ****** *)
 //
