@@ -113,7 +113,7 @@ where
 #typedef kx = (strn, a)
 #vwtpdef kxs = strm_vt(kx)
 #impltmp
-gseq_beg<kxs><kx>() = "hmap(" }
+gseq$beg<kxs><kx>() = "hmap(" }
 //
 (* ****** ****** *)
 (* ****** ****** *)

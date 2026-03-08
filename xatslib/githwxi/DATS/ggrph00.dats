@@ -62,7 +62,7 @@ else let // else
 //
 val
 (node1, store) =
-$UN.gseq_uncons_raw
+$UN.gseq_uncons$raw
 <store><node0>(store)
 val nodes =
 ggrph_node_neighbors
@@ -118,7 +118,7 @@ else let // else
 //
 val
 (node1, store) =
-$UN.gseq_uncons_raw
+$UN.gseq_uncons$raw
 <store><node0>(store)
 val nodes =
 ggrph_node_neighbors

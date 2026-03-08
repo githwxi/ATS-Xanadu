@@ -10,16 +10,16 @@ Sat May 10 05:29:18 PM EDT 2025
 //
 #extern
 fun<>
-strx_vt_beg(): strn
+strx_vt$beg(): strn
 #extern
 fun<>
-strx_vt_end(): strn
+strx_vt$end(): strn
 #extern
 fun<>
-strx_vt_sep(): strn
+strx_vt$sep(): strn
 #extern
 fun<>
-strx_vt_rst(): strn
+strx_vt$rst(): strn
 //
 #extern
 fun
@@ -51,17 +51,17 @@ strx_vt_print0<x0>(*void*)
 //
 #impltmp
 <>(*tmp*)
-strx_vt_end() = ")"
+strx_vt$end() = ")"
 #impltmp
 <>(*tmp*)
-strx_vt_sep() = ","
+strx_vt$sep() = ","
 #impltmp
 <>(*tmp*)
-strx_vt_rst() = "..."
+strx_vt$rst() = "..."
 //
 #impltmp
 <>(*tmp*)
-strx_vt_beg() = "$strx_vt("
+strx_vt$beg() = "$strx_vt("
 //
 (* ****** ****** *)
 //
@@ -96,7 +96,7 @@ loop
 (xs, 0(*i0*)) where
 {
 val () =
-pstrn(strx_vt_beg<>())
+pstrn(strx_vt$beg<>())
 }
 ) where
 {
@@ -116,7 +116,7 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strx_vt_sep<>())
+pstrn(strx_vt$sep<>())
 //
 in
 (
@@ -139,7 +139,7 @@ loop
 (xs, 0(*i0*)) where
 {
 val () =
-pstrn(strx_vt_beg<>())
+pstrn(strx_vt$beg<>())
 }
 ) where
 {
@@ -169,14 +169,14 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strx_vt_sep<>())
+pstrn(strx_vt$sep<>())
 //
 val () =
-pstrn(strx_vt_rst<>())
+pstrn(strx_vt$rst<>())
 //
 in
 (
-pstrn(strx_vt_end<>()))
+pstrn(strx_vt$end<>()))
 end // end of [if-then]
 else
 let
@@ -185,7 +185,7 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strx_vt_sep<>())
+pstrn(strx_vt$sep<>())
 //
 in//let
 (
