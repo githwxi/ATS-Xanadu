@@ -400,9 +400,22 @@ d3typ1_dlft$make(d3typ1): d3typ1
 fun
 d3typ1_t1pize(d3typ1): d3typ1
 //
+(*
+//
+HX-2026-03-07:
+[d3typ1_tconize]
+and
+[d3typ1_trcdize]
+have been merged together!
+//
+fun
+d3typ1_tconize
+(t3q0: d3typ1(*T2P1tcon*)): d3typ1
+*)
+//
 fun
 d3typ1_trcdize
-(t3q0: d3typ1(*record*)): d3typ1
+(t3q0: d3typ1(*T2P1trcd*)): d3typ1
 //
 (* ****** ****** *)
 //
