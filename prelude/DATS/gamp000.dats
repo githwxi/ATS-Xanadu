@@ -43,17 +43,17 @@ Authoremail: gmhwxiATgmailDOTcom
 < m0:vt >
 < k0:vt >
 < x0:vt >
-gamp_sep((*void*)) = ","
+gamp$sep((*void*)) = ","
 #impltmp
 < m0:vt >
 < k0:vt >
 < x0:vt >
-gamp_end((*void*)) = "}"
+gamp$end((*void*)) = "}"
 #impltmp
 < m0:vt >
 < k0:vt >
 < x0:vt >
-gamp_beg((*void*)) = "gamp{"
+gamp$beg((*void*)) = "gamp{"
 //
 (* ****** ****** *)
 (* ****** ****** *)
