@@ -698,6 +698,10 @@ end//let//end-of-[T3P1trcd(...)]
 ) where
 {
 //
+(*
+HX-2026-03-07:
+This one also does tconizing:
+*)
 val dtyp = d3typ1_trcdize(dtyp)
 //
 // (*

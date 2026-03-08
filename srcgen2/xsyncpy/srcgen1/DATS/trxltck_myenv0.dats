@@ -1141,6 +1141,10 @@ end//let//end-of-[D3P1var( d2v1 )]
 |D3P1tup0
 (npf1, d3ps) => f0_d3ps(env0, d3ps)
 //
+|D3P1tup1
+(tknd
+,npf1, d3ps) => f0_d3ps(env0, d3ps)
+//
 (* ****** ****** *)
 //
 |D3P1argtp

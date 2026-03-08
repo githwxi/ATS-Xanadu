@@ -123,6 +123,23 @@ end//let
 //
 (* ****** ****** *)
 //
+|D3P1tup0
+(npf1, d3ps) =>
+let
+val () =
+fpeltck_d3pat1lst(out0, d3ps)
+end//let
+//
+|D3P1tup1
+(tknd
+,npf1, d3ps) =>
+let
+val () =
+fpeltck_d3pat1lst(out0, d3ps)
+end//let
+//
+(* ****** ****** *)
+//
 |D3P1argtp
 (d3p1, t2q2) =>
 let
