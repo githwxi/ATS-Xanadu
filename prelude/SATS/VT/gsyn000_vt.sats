@@ -40,19 +40,19 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <(*tmp*)>
-gs_print$beg0(): void
+gs_print0$beg(): void
 fun
 <(*tmp*)>
-gs_print$end0(): void
+gs_print0$end(): void
 //
 (* ****** ****** *)
 //
 fun
 <(*tmp*)>
-gs_print$beg1(): void
+gs_print1$beg(): void
 fun
 <(*tmp*)>
-gs_print$end1(): void
+gs_print1$end(): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
