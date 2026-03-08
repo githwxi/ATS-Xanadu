@@ -253,10 +253,12 @@ range_ibtw_union
 range_ibtw_inter
   (r1, r2) =
 let
-val lb = max
+val lb =
+g_max
 (r1.lb(),r2.lb())
-val ub = min
-(r1.ub(),r2.ub()) in range_ibtw(lb, rb)
+val ub =
+g_min
+(r1.ub(),r2.ub()) in range_ibtw(lb, ub)
 end(*let*)//end-of-[range_ibtw_inter(r1,r2)]
 //
 #impltmp
@@ -264,10 +266,12 @@ end(*let*)//end-of-[range_ibtw_inter(r1,r2)]
 range_ibtw_union
   (r1, r2) =
 let
-val lb = min
+val lb =
+g_min
 (r1.lb(),r2.lb())
-val ub = max
-(r1.ub(),r2.ub()) in range_ibtw(lb, rb)
+val ub =
+g_max
+(r1.ub(),r2.ub()) in range_ibtw(lb, ub)
 end(*let*)//end-of-[range_ibtw_union(r1,r2)]
 //
 (* ****** ****** *)

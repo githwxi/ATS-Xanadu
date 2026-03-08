@@ -67,14 +67,14 @@ x0 = optn_vt(a1sz(strn))
 #vwtpdef xs = strm_vt(x0)
 //
 #impltmp
-gseq_sep<xs><x0>() = "\n"
+gseq$sep<xs><x0>() = "\n"
 #impltmp
-gseq_end<xs><x0>() = "\n)"
+gseq$end<xs><x0>() = "\n)"
 #impltmp
-gseq_beg<xs><x0>() = "strm_vt(\n"
+gseq$beg<xs><x0>() = "strm_vt(\n"
 //
 #impltmp
-gseq_prlen<xs><x0>() = (20)
+gseq$prlen<xs><x0>() = (20)
 //
 in//local
 val () = print0s("opts = ", opts, "\n")

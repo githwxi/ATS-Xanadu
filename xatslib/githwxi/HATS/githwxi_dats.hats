@@ -16,7 +16,6 @@ ATS3_XANADU/xatslib/githwxi/DATS
 #staload "./../DATS/range00.dats"
 (* ****** ****** *)
 #staload "./../DATS/ggrph00.dats"
-#staload "./../DATS/gtree00.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../DATS/myfil00.dats"
