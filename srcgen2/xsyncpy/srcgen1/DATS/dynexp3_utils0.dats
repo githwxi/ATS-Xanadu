@@ -412,13 +412,31 @@ dtyp.node() of
 case+
 styp.node() of
 //
+|T2P1tcon
+(dcon, t2qs) =>
+let
+//
+val t2rt =
+(
+d3typ1_styp$get(dtyp))
+//
+val t3qs = f0_t2qs(t2qs)
+//
+in//let
+(
+d3typ1_make_styp$node
+(t2rt, T3P1tcon(dcon, t3qs)))
+end//let
+//
 |T2P1trcd
 (trcd
 ,npf1, ltqs) =>
 let
 //
 val t2rt =
-d3typ1_styp$get(dtyp)
+(
+d3typ1_styp$get(dtyp))
+//
 val ltqs = f0_ltqs(ltqs)
 //
 in//let
@@ -430,9 +448,30 @@ end//let
 //
 |_(*otherwise*) => (     dtyp     )
 )
+//
 |_(*otherwise*) => (     dtyp     )
 ) where
 {
+//
+fun
+f0_t2qs
+( t2qs
+: s2typ1lst): d3typ1lst =
+(
+case+ t2qs of
+|list_nil
+( (*void*) ) => list_nil()
+|list_cons
+(t2q1, t2qs) =>
+let
+val t3q1 =
+(
+  d3typ1_styp$make( t2q1 ))
+in//let
+(
+  list_cons(t3q1, f0_t2qs(t2qs) ) )
+end//let//end-of-[list_cons(t2q1,t2qs)]
+)
 //
 fun
 f0_ltqs
@@ -449,7 +488,8 @@ val+
 S2LAB
 (lab1, t2q1) = ltq1
 val t3q1 =
-d3typ1_styp$make(t2q1)
+(
+  d3typ1_styp$make(t2q1))
 val ltq1 = D3LAB(lab1, t3q1)
 in//let
 (
@@ -462,7 +502,7 @@ val () =
 prerrsln("d3typ1_trcdize: dtyp = ", dtyp)
 *)
 //
-}(*where*)//end-of(d3typ1_trcdize( dtyp ))
+}(*where*)//end-of-(d3typ1_trcdize( dtyp ))
 //
 (* ****** ****** *)
 (* ****** ****** *)
