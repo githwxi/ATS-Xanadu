@@ -40,7 +40,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
-#include
+// #include
 "./../../../prelude/SATS/gasq000.sats"
 *)
 (* ****** ****** *)
@@ -147,7 +147,7 @@ gasq_setf$at$opt
 (* ****** ****** *)
 //
 (*
-#include
+// #include
 "./../../../prelude/SATS/gasq001.sats"
 *)
 (* ****** ****** *)
@@ -498,7 +498,7 @@ gasq_sortedq$f2un
 (* ****** ****** *)
 //
 (*
-#include
+// #include
 "./../../../prelude/SATS/gasq002.sats"
 *)
 //
