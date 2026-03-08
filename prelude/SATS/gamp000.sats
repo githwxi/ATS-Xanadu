@@ -48,17 +48,17 @@ fun
 <amp:vt>
 <key:vt>
 <itm:vt>
-gamp_beg((*void*)): strn
+gamp$beg((*void*)): strn
 fun
 <amp:vt>
 <key:vt>
 <itm:vt>
-gamp_end((*void*)): strn
+gamp$end((*void*)): strn
 fun
 <amp:vt>
 <key:vt>
 <itm:vt>
-gamp_sep((*void*)): strn
+gamp$sep((*void*)): strn
 //
 (* ****** ****** *)
 //
