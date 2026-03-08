@@ -233,15 +233,15 @@ my_d2pat_dapp
 , d2as
 : d2patlst): d2pat =
 let
+//
 (*
 val () =
-println!
-("my_d2pat_dapp: d2f0 = ", d2f0)
+println!("my_d2pat_dapp: d2f0 = ", d2f0)
 val () =
-println!
-("my_d2pat_dapp: d2as = ", d2as)
+println!("my_d2pat_dapp: d2as = ", d2as)
 *)
-in
+//
+in//let
 //
 case+
 d2f0.node() of
@@ -394,8 +394,7 @@ loc0 = d1t0.loc()
 //
 (*
 val () =
-println!
-("trans12_dtyp: d1t0 = ", d1t0)
+println!("trans12_dtyp: d1t0 = ", d1t0)
 *)
 //
 in
@@ -842,21 +841,21 @@ d1p2.node() of
 D1Psarg(s1as) =>
 let
 //
-  val
-  loc0 = d1p0.loc()
+val
+loc0 = d1p0.loc()
 //
-  val d2p1 =
-  trans12_dpat(d1p1)
-  val s2vs =
-  trans12_sarglst(s1as)
+val d2p1 =
+(
+  trans12_dpat(d1p1))
+val s2vs =
+(
+  trans12_sarglst(s1as))
 //
 (*
-  val () =
-  println!
-  ("auxapp1: d2p1 = ", d2p1)
-  val () =
-  println!
-  ("auxapp1: s2vs = ", s2vs)
+val () =
+println!("auxapp1: d2p1 = ", d2p1)
+val () =
+println!("auxapp1: s2vs = ", s2vs)
 (*
 // HX: s2vs needs to be re-sorted!
 *)
@@ -881,11 +880,9 @@ auxapp10
 val
 loc0 = d1p0.loc()
 val () =
-println!
-("auxapp10: loc0 = ", loc0)
+println!("auxapp10: loc0 = ", loc0)
 val () =
-println!
-("auxapp10: d1p0 = ", d1p0)
+println!("auxapp10: d1p0 = ", d1p0)
 *)
 //
 val-
@@ -981,8 +978,7 @@ auxl1st
 //
 (*
 val () =
-println!
-("auxl1st: d1p0 = ", d1p0)
+println!("auxl1st: d1p0 = ", d1p0)
 *)
 //
 val-
@@ -1016,8 +1012,7 @@ auxl2st
 //
 (*
 val () =
-println!
-("auxl2st: d1p0 = ", d1p0)
+println!("auxl2st: d1p0 = ", d1p0)
 *)
 //
 val-
@@ -1183,11 +1178,9 @@ loc0 = d1p0.loc((*void*))
 //
 (*
 val () =
-println!
-("trans12_dpat: loc0 = ", loc0)
+println!("trans12_dpat: loc0 = ", loc0)
 val () =
-println!
-("trans12_dpat: d1p0 = ", d1p0)
+println!("trans12_dpat: d1p0 = ", d1p0)
 *)
 //
 fun
@@ -1323,8 +1316,7 @@ F1ARGsome_sta
 //
 (*
 val () =
-println!
-("auxsta: s1qs = ", s1qs)
+println!("auxsta: s1qs = ", s1qs)
 *)
 //
 var s2vs_
@@ -1593,14 +1585,14 @@ trans12_farglst_wtp0
 (
 trans12_farglst(f1as)) where
 {
-// (*
+(*
 val () =
 println!
 ("trans12_farglst_wtp0: f1as = ", f1as)
 val () =
 println!
 ("trans12_farglst_wtp0: s2f0 = ", s2f0)
-// *)
+*)
 } (*where*)//end-of[trans12_farglst_wtp0]
 //
 (* ****** ****** *)
@@ -1728,8 +1720,10 @@ list_cons _ => auxf2a0(f2as)
 )
 ) where
 {
+(*
 val () =
 println!("auxf2a0: f2as = ", f2as)
+*)
 } (*where*) (* end of [auxf2a0] *)
 
 (* ****** ****** *)
@@ -1860,9 +1854,11 @@ implement
 trans12_stinv
   (tinv) = let
 //
+(*
 val () =
 println!
 ("trans12_stinv: tinv = ", tinv)
+*)
 //
 fun
 auxd1ts
@@ -1973,7 +1969,7 @@ the_gmacenv_find(sym)
 //
 in
 //
-case- opt of
+case+ opt of
 |
 ~None_vt() =>
 (
@@ -2050,7 +2046,14 @@ case- d2i0 of
   auxid0_d2cst(d1e0, xs)
 | D2ITMsym(_, dpis) =>
   auxid0_d2sym(d1e0, dpis)
-) (* end of [auxid0_d2itm] *)
+) where
+{
+(*
+val () =
+println!("auxid0_d2itm: d2i0 = ", d2i0)
+*)
+}(* end of [auxid0_d2itm] *)
+
 and
 auxid0_d2var
 ( d1e0
@@ -2923,11 +2926,9 @@ d2e3 = trans12_dexp(d1e3)
 //
 (*
 val () =
-println!
-("auxapp2: d2e2 = ", d2e2)
+println!("auxapp2: d2e2 = ", d2e2)
 val () =
-println!
-("auxapp2: d2e3 = ", d2e3)
+println!("auxapp2: d2e3 = ", d2e3)
 *)
 //
 in
@@ -3583,8 +3584,7 @@ loc0 = d1e0.loc((*void*))
 //
 (*
 val () =
-println!
-("trans12_dexp: d1e0 = ", d1e0)
+println!("trans12_dexp: d1e0 = ", d1e0)
 *)
 //
 in (* in-of-let *)
@@ -3817,8 +3817,7 @@ trans12_dexpseq
 //
 (*
 val () =
-println!
-("trans12_dexpseq: d1es = ", d1es)
+println!("trans12_dexpseq: d1es = ", d1es)
 *)
 //
 fun
@@ -4367,11 +4366,9 @@ val () = the_sexpenv_add_cst(s2c0)
 //
 (*
 val () =
-println!
-("aux_stacst0: s2t0 = ", s2t0)
+println!("aux_stacst0: s2t0 = ", s2t0)
 val () =
-println!
-("aux_stacst0: s2c0 = ", s2c0)
+println!("aux_stacst0: s2c0 = ", s2c0)
 *)
 //
 in
@@ -4499,11 +4496,9 @@ loc0 = d1cl.loc()
 //
 (*
 val () =
-println!
-("aux_sexpdef: loc0 = ", loc0)
+println!("aux_sexpdef: loc0 = ", loc0)
 val () =
-println!
-("aux_sexpdef: d1cl = ", d1cl)
+println!("aux_sexpdef: d1cl = ", d1cl)
 *)
 //
 val-
@@ -4562,11 +4557,9 @@ the_sexpenv_popfree(pf0|(*void*))
 //
 (*
 val () =
-println!
-("aux_sexpdef: knd = ", knd)
+println!("aux_sexpdef: knd = ", knd)
 val () =
-println!
-("aux_sexpdef: s2e0 = ", s2e0)
+println!("aux_sexpdef: s2e0 = ", s2e0)
 *)
 //
 val
@@ -4861,6 +4854,7 @@ ifcase
 | (knd=VWTPSORT) => the_sort2_vwtp
 //
 | _(* SEXPDEF *) =>
+(
   let
 //
 (*
@@ -4871,6 +4865,7 @@ ifcase
     val () =
     assertloc(false) in the_sort2_vwtp
   end
+)
 //
 end // end-of-let
 )
@@ -5282,8 +5277,7 @@ end : int // end-of-nex
 //
 (*
 val () =
-println!
-("auxf1d0: nex = ", nex)
+println!("auxf1d0: nex = ", nex)
 *)
 //
 val
@@ -5734,8 +5728,7 @@ auxdqid
 //
 (*
 val () =
-println!
-("auxdqid: dqid = ", dqid)
+println!("auxdqid: dqid = ", dqid)
 *)
 //
 val d2cs =
@@ -5937,11 +5930,9 @@ auxsvs
 let
 (*
 val () =
-println!
-("auxsvs: svs0 = ", svs0)
+println!("auxsvs: svs0 = ", svs0)
 val () =
-println!
-("auxsvs: svs1 = ", svs1)
+println!("auxsvs: svs1 = ", svs1)
 *)
 in
 case+ svs0 of
@@ -6007,11 +5998,9 @@ auxsexp_f1as
 let
 (*
 val () =
-println!
-("auxsexp_f1as: s2e0 = ", s2e0)
+println!("auxsexp_f1as: s2e0 = ", s2e0)
 val () =
-println!
-("auxsexp_f1as: f1as = ", f1as)
+println!("auxsexp_f1as: f1as = ", f1as)
 *)
 in
 case+ f1as of
@@ -6068,16 +6057,11 @@ tqas = trans12_tqarglst(tqas)
 //
 (*
 val () =
-println!
-("aux_implmnt0: id2c = ", id2c)
-//
+println!("aux_implmnt0: id2c = ", id2c)
 val () =
-println!
-("aux_implmnt0: sqas = ", sqas)
-//
+println!("aux_implmnt0: sqas = ", sqas)
 val () =
-println!
-("aux_implmnt0: tqas = ", tqas)
+println!("aux_implmnt0: tqas = ", tqas)
 *)
 //
 val () =
@@ -6563,11 +6547,9 @@ let
 //
 (*
 val () =
-println!
-("aux2_datype: s2c0 = ", s2c0)
+println!("aux2_datype: s2c0 = ", s2c0)
 val () =
-println!
-("aux2_datype: d2cs = ", d2cs)
+println!("aux2_datype: d2cs = ", d2cs)
 *)
 in
   the_dexpenv_add_cons(d2cs)
@@ -6759,17 +6741,13 @@ the_sexpenv_popfree( pf0 | (*void*) )
 //
 (*
 val () =
-println!
-("aux_dcstdecl: knd = ", knd)
+println!("aux_dcstdecl: knd = ", knd)
 val () =
-println!
-("aux_dcstdecl: d1cl = ", d1cl)
+println!("aux_dcstdecl: d1cl = ", d1cl)
 val () =
-println!
-("aux_dcstdecl: tqas = ", tqas)
+println!("aux_dcstdecl: tqas = ", tqas)
 val () =
-println!
-("aux_dcstdecl: s2e0 = ", s2e0)
+println!("aux_dcstdecl: s2e0 = ", s2e0)
 *)
 //
 (*
@@ -6778,8 +6756,7 @@ let
 val
 def1 = rcd.def
 in
-println!
-("aux_dcstdecl: def1 = ", def1)
+println!("aux_dcstdecl: def1 = ", def1)
 end // end of [val'
 *)
 //
@@ -7081,11 +7058,9 @@ loc0 = d1cl.loc()
 //
 (*
 val () =
-println!
-("trans12_decl: loc0 = ", loc0)
+println!("trans12_decl: loc0 = ", loc0)
 val () =
-println!
-("trans12_decl: d1cl = ", d1cl)
+println!("trans12_decl: d1cl = ", d1cl)
 *)
 //
 in (* in-of-let *)
@@ -7201,11 +7176,9 @@ val loc0 = d1cl.loc()
 //
 (*
 val (  ) =
-println!
-("trans12_decl: loc0 = ", loc0)
+println!("trans12_decl: loc0 = ", loc0)
 val (  ) =
-println!
-("trans12_decl: d1cl = ", d1cl)
+println!("trans12_decl: d1cl = ", d1cl)
 *)
 //
 val
@@ -7221,8 +7194,7 @@ G1Vbtf
 //
 (*
 val (  ) =
-println!
-("trans12_decl: test = ", test)
+println!("trans12_decl: test = ", test)
 *)
 //
 in//let
@@ -7445,16 +7417,14 @@ d1cl.node((*void*))
 //
 (*
 val () =
-println!
-("trans12_datcon: tok0 = ", tok0)
+println!("trans12_datcon: tok0 = ", tok0)
 *)
 //
 val loc0 = tok0.loc()
 //
 (*
 val () =
-println!
-("trans12_datcon: s2us = ", s2us)
+println!("trans12_datcon: s2us = ", s2us)
 *)
 //
 fun

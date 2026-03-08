@@ -88,11 +88,11 @@ let
 #vwtpdef xs = jsla(a)
 //
 #impltmp
-gseq_sep<xs><x0>() = ","
+gseq$sep<xs><x0>() = ","
 #impltmp
-gseq_beg<xs><x0>() = "jsdasz_vt("
+gseq$end<xs><x0>() = ")"
 #impltmp
-gseq_end<xs><x0>() = ")"
+gseq$beg<xs><x0>() = "jsdasz_vt("
 in//let
   gseq_print1<xs><x0>(xs)
 end//end-of-[g_print1<jsla(a)>]
@@ -501,5 +501,5 @@ jsdasz_sortref$f2un<>(UN_jsdasz_vt2t(A), cmpr))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_DATS_CATS_JS_VT_Array00_vt.dats] *)
+(* end of [ATS3/XANADU_xatslib_DATS_CATS_JS_VT_dynarr0_vt.dats] *)
 (***********************************************************************)

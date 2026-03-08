@@ -186,15 +186,15 @@ gseq_cmp(xs, xs): sint
 fun
 <xs:vt>
 <x0:vt>
-gseq_beg((*0*)): strn
+gseq$beg((*0*)): strn
 fun
 <xs:vt>
 <x0:vt>
-gseq_end((*0*)): strn
+gseq$end((*0*)): strn
 fun
 <xs:vt>
 <x0:vt>
-gseq_sep((*0*)): strn
+gseq$sep((*0*)): strn
 //
 (* ****** ****** *)
 (* ****** ****** *)
