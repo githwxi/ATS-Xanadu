@@ -214,6 +214,7 @@ t2read0.dats \
 t2read0_dynexp.dats \
 t2read0_decl00.dats \
 f2perr0.dats \
+f2perr0_staexp.dats \
 f2perr0_dynexp.dats \
 f2perr0_decl00.dats \
 dynexp3.dats \

@@ -142,58 +142,71 @@ val () =
 (
   f2perr0_d2pat(out, d2p2)) end
 //
-|
-D2Ptup0
+|D2Ptup0
 ( npf1, d2ps) =>
 let
 val () =
 f2perr0_d2patlst(out, d2ps) end
-|
-D2Ptup1
+//
+|D2Ptup1
 ( tknd
 , npf1, d2ps) =>
 let
 val () =
 f2perr0_d2patlst(out, d2ps) end
-|
-D2Prcd2
+//
+|D2Prcd2
 ( tknd
 , npf1, ldps) =>
 let
 val () =
 f2perr0_l2d2plst(out, ldps) end
 //
-|
-D2Pannot
+|D2Pannot
 (d2p1,s1e2,s2e2) =>
 let
-val () = f2perr0_d2pat(out, d2p1)
-(*
-val () = f2perr0_s2exp(out, s2e2)
-*)
-endlet
+//
+val () =
+(
+  f2perr0_d2pat(out, d2p1))
+//
+val () =
+let
+val loc0 = d2p.lctn()
+in//let
+(
+  f2perr0_s2exp(out, s2e2, loc0))
+end//let
+//
+endlet//end-of-[D2Pannot(d2p1,...)]
 //
 |
 D2Pt2pck
 (d2p1, t2p2) =>
 let
 val () = f2perr0_d2pat(out, d2p1)
-endlet
+endlet//end-of-[D2Pt2pck(d2p1,...)]
 //
 |D2Pnone0 _ => (   (*void*)   )
 |D2Pnone1 _ => () | D2Pnone2 _ => ()
+//
 |
 D2Perrck(_,_) => f2perr0_d2pat(out, d2p)
 //
 |
 _(*otherwise*) =>
 let
-  val
-  loc = d2p.lctn()
-  val () = prerrsln
-  ("f2perr0_d2pat:auxmain: loc = ", loc)
-  val () = prerrsln
-  ("f2perr0_d2pat:auxmain: d2p = ", d2p)
+//
+val loc = d2p.lctn()
+val ( ) =
+(
+  prerrsln
+  ("f2perr0_d2pat:auxmain: loc = ", loc))
+val ( ) =
+(
+  prerrsln
+  ("f2perr0_d2pat:auxmain: d2p = ", d2p))
+//
 endlet
 //
 end (*let*) // end-of-[ auxmain(out, d2p) ]
@@ -238,7 +251,7 @@ in//let
 printsln();
 printsln("\
 F2PERR0-ERROR:", loc0, ":", d2p0)
-end//let
+end//let//end-of-[D2Perrck(lvl,d2p1)]
 )
 | _(* otherwise *) => (  (* skipped *)  )
 //
@@ -513,21 +526,31 @@ endlet
 let
 val () =
 f2perr0_d2exp(out, d2f0)
-(*
 val () =
-f2perr0_s2explst(out, s2es)
-*)
-endlet
+let
+val loc0 = d2e.lctn()
+in//let
+f2perr0_s2explst(out, s2es, loc0)
+end//let
+endlet//end-of-[D2Esapp(...)]
+//
 |D2Etapp
 (d2f0,s2es) =>
 let
+//
 val () =
 f2perr0_d2exp(out, d2f0)
-(*
+//
 val () =
-f2perr0_s2explst(out, s2es)
-*)
-endlet
+let
+val loc0 = d2e.lctn()
+in//let
+f2perr0_s2explst(out, s2es, loc0)
+end//let
+//
+endlet//end-of-[D2Etapp(...)]
+//
+(* ****** ****** *)
 //
 |D2Edapp
 (d2f0
@@ -577,21 +600,26 @@ f2perr0_d2eclist(out, dcls)
 |D2Eift0
 (d2e1,dthn,dels) =>
 let
-  val () =
-  f2perr0_d2exp(out, d2e1)
-  val () =
-  f2perr0_d2expopt(out, dthn)
-  val () =
-  f2perr0_d2expopt(out, dels)
+val () =
+(
+  f2perr0_d2exp(out, d2e1))
+val () =
+(
+  f2perr0_d2expopt(out, dthn))
+val () =
+(
+  f2perr0_d2expopt(out, dels))
 endlet
 //
 |D2Ecas0
 (tknd,d2e1,dcls) =>
 let
-  val () =
-  f2perr0_d2exp(out, d2e1)
-  val () =
-  f2perr0_d2clslst(out, dcls)
+val () =
+(
+  f2perr0_d2exp(out, d2e1))
+val () =
+(
+  f2perr0_d2clslst(out, dcls))
 endlet
 //
 (* ****** ****** *)
@@ -603,7 +631,9 @@ f2perr0_d2exp
 ( out , d2e1 )) where
 {
 val () =
-f2perr0_d2explst(out, d2es) }
+(
+  f2perr0_d2explst(out, d2es))
+}(*where*)//endof(D2Eseqn(...)]
 //
 (* ****** ****** *)
 //
@@ -637,11 +667,13 @@ val () =
 f2perr0_f2arglst(out, f2as)
 //
 (*
-val () = f2perr0_s2res(out, sres)
+val () =
+(
+  f2perr0_s2res(out, sres))
 *)
-val () = f2perr0_d2exp(out, dexp)
-//
-endlet
+val () =
+(
+  f2perr0_d2exp(out, dexp)) end
 //
 |D2Efix0
 ( tknd
@@ -654,11 +686,13 @@ val () =
 f2perr0_f2arglst(out, f2as)
 //
 (*
-val () = f2perr0_s2res(out, sres)
+val () =
+(
+  f2perr0_s2res(out, sres))
 *)
-val () = f2perr0_d2exp(out, dexp)
-//
-endlet
+val () =
+(
+  f2perr0_d2exp(out, dexp)) end
 //
 (* ****** ****** *)
 //
@@ -676,63 +710,74 @@ endlet
 //
 |D2Eaddr(d2e1) =>
 let
-val () = f2perr0_d2exp(out, d2e1)
-endlet
+val () =
+(
+  f2perr0_d2exp(out, d2e1)) end
 |D2Eview(d2e1) =>
 let
-val () = f2perr0_d2exp(out, d2e1)
-endlet
+val () =
+(
+  f2perr0_d2exp(out, d2e1)) end
 //
 (* ****** ****** *)
 //
 |D2Eeval(d2e1) =>
 let
-val () = f2perr0_d2exp(out, d2e1)
-endlet
+val () =
+(
+  f2perr0_d2exp(out, d2e1)) end
 |D2Efree(d2e1) =>
 let
-val () = f2perr0_d2exp(out, d2e1)
-endlet
+val () =
+(
+  f2perr0_d2exp(out, d2e1)) end
 //
 (* ****** ****** *)
 //
 |D2Eassgn
 (d2el, d2er) =>
 let
-val () = f2perr0_d2exp(out, d2el)
-val () = f2perr0_d2exp(out, d2er)
-endlet//endof(D2Eassgn(d2el,d2er))
+val () =
+(
+  f2perr0_d2exp(out, d2el))
+val () =
+(
+  f2perr0_d2exp(out, d2er)) end
 //
 |D2Exazgn
 (d2el, d2er) =>
 let
-val () = f2perr0_d2exp(out, d2el)
-val () = f2perr0_d2exp(out, d2er)
-endlet//endof(D2Exazgn(d2el,d2er))
+val () =
+(
+  f2perr0_d2exp(out, d2el))
+val () =
+(
+  f2perr0_d2exp(out, d2er)) end
 //
 |D2Exchng
 (d2el, d2er) =>
 let
-val () = f2perr0_d2exp(out, d2el)
-val () = f2perr0_d2exp(out, d2er)
-endlet//endof(D2Exchng(d2el,d2er))
+val () =
+(
+  f2perr0_d2exp(out, d2el))
+val () =
+(
+  f2perr0_d2exp(out, d2er)) end
 //
 (* ****** ****** *)
 //
 |D2Ebrget
 (dpis, d2es) =>
-(
 let
 val () =
 (
-f2perr0_d2explst(out, d2es)) end)
+f2perr0_d2explst(out,d2es)) end
 |D2Ebrset
 (dpis, d2es) =>
-(
 let
 val () =
 (
-f2perr0_d2explst(out, d2es)) end)
+f2perr0_d2explst(out,d2es)) end
 //
 (* ****** ****** *)
 //
@@ -740,8 +785,9 @@ f2perr0_d2explst(out, d2es)) end)
 D2Eraise
 (tknd, d2e1) =>
 let
-val () = f2perr0_d2exp(out, d2e1)
-endlet
+val () =
+(
+  f2perr0_d2exp(out, d2e1)) end
 //
 (* ****** ****** *)
 //
@@ -749,42 +795,66 @@ endlet
 D2El0azy
 (dsym, d2e1) =>
 let
-val () = f2perr0_d2exp(out, d2e1)
-endlet
+val () =
+(
+  f2perr0_d2exp(out, d2e1)) end
 |
 D2El1azy
 (dsym
 ,d2e1, d2es) =>
+let
+val () =
 (
-  f2perr0_d2explst(out, d2es)
-) where
-{
-val () = f2perr0_d2exp(out, d2e1)
-}
+f2perr0_d2exp(out, d2e1))
+in//let
+f2perr0_d2explst(out, d2es) end
+//
+(* ****** ****** *)
+//
+|D2Eannot
+(d2e1
+,s1e2, s2e2) =>
+let
+//
+val () =
+(
+  f2perr0_d2exp(out, d2e1))
+//
+val () =
+let
+val loc0 = d2e.lctn()
+val (  ) =
+f2perr0_s2exp(out, s2e2, loc0)
+end//let
+//
+end//let//D2Eannot(d2e1,...)
 //
 (* ****** ****** *)
 //
 |D2Elabck
 (d2e1, lab2) =>
 let
-val () = f2perr0_d2exp(out, d2e1)
-endlet
+val () =
+(
+  f2perr0_d2exp(out, d2e1)) end
 //
 |D2Et2pck
 (d2e1, t2p2) =>
 let
-val () = f2perr0_d2exp(out, d2e1)
-endlet
+val () =
+(
+  f2perr0_d2exp(out, d2e1)) end
 //
 |D2Et2ped
 (d2e1, t2p2) =>
 let
-val () = f2perr0_d2exp(out, d2e1)
-endlet
+val () =
+(
+  f2perr0_d2exp(out, d2e1)) end
 //
 (* ****** ****** *)
 //
-|D2Enone0 _ => (   (*void*)   )
+|D2Enone0 _ => (    (*void*)    )
 |D2Enone1 _ => () | D2Enone2 _ => ()
 //
 |
