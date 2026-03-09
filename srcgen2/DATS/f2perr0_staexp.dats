@@ -231,6 +231,76 @@ endlet//end-of-[S2Etext(name,s2es)]
 //
 (* ****** ****** *)
 //
+|S2Eimpr
+(loc1, s2e1) =>
+let
+val () =
+(
+  f2perr0_s2exp(out, s2e1, loc0))
+val () =
+(
+printsln();
+printsln("\
+F2PERR0-ERROR:", loc0, ":", s2e0))
+endlet//end-of-[S2Eimpr(loc1,s2e1)]
+//
+|S2Eprgm
+(loc1, s2e1) =>
+let
+val () =
+(
+  f2perr0_s2exp(out, s2e1, loc0))
+val () =
+(
+printsln();
+printsln("\
+F2PERR0-ERROR:", loc0, ":", s2e0))
+endlet//end-of-[S2Eprgm(loc1,s2e1)]
+//
+|S2Ecast
+(loc1
+,s2e1, s2t2) =>
+let
+val () =
+(
+  f2perr0_s2exp(out, s2e1, loc0))
+val () =
+(
+printsln();
+printsln("\
+F2PERR0-ERROR:", loc0, ":", s2e0))
+endlet//end-of-[S2Ecast(loc1, ...)]
+//
+(* ****** ****** *)
+//
+|S2Enone0
+( (*void*) ) => (   (*void*)   )
+//
+|S2Enone1
+(   s1e1   ) =>
+let
+val () =
+(
+printsln();
+printsln("\
+F2PERR0-ERROR:", loc0, ":", s2e0))
+endlet//end-of-[ S2Enone1( s1e1 ) ]
+//
+|S2Enone2
+(   s2e1   ) =>
+let
+val () =
+(
+  f2perr0_s2exp(out, s2e1, loc0))
+val () =
+(
+printsln();
+printsln("\
+F2PERR0-ERROR:", loc0, ":", s2e0))
+endlet//end-of-[ S2Enone2( s2e1 ) ]
+//
+(* ****** ****** *)
+//
 |S2Eerrck
 ( _(*lvl0*)
 , _(*s2e1*)) =>
