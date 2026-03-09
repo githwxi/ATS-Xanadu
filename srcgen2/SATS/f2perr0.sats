@@ -39,6 +39,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
+LOC = "./locinfo.sats"
+(* ****** ****** *)
+#staload
 LEX = "./lexing0.sats"
 (* ****** ****** *)
 #staload
@@ -56,7 +59,12 @@ ATS_PACKNAME // namespace
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef loc_t = $LOC.loc_t
+#typedef loctn = $LOC.loctn
+(* ****** ****** *)
 #typedef token = $LEX.token
+(* ****** ****** *)
+#typedef s2exp = $S2E.s2exp
 (* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
@@ -70,6 +78,8 @@ ATS_PACKNAME // namespace
 #typedef d2cls = $D2E.d2cls
 (* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
+(* ****** ****** *)
+#typedef s2explst = list(s2exp)
 (* ****** ****** *)
 #typedef d2patlst = $D2E.d2patlst
 #typedef d2patopt = $D2E.d2patopt
@@ -185,6 +195,21 @@ fun
 f2perr0_d2explstopt(FILR, d2explstopt): void
 fun
 f2perr0_d2eclistopt(FILR, d2eclistopt): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+HX-2026-03-08:
+Sun Mar  8 08:25:40 PM EDT 2026
+Adding support for printing [s2exp]
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f2perr0_s2exp(FILR, s2exp, loc_t): void
+fun
+f2perr0_s2explst(FILR, s2explst, loc_t): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
