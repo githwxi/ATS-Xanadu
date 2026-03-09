@@ -31,60 +31,35 @@
 (*
 Author: Hongwei Xi
 //
-Sat Mar  7 09:24:25 AM EST 2026
+Mon Mar  9 02:57:23 PM EDT 2026
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(*
+#define
+XATSOPT "./../../.."
+*)
 (* ****** ****** *)
-//
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dpre.hats"
+(* ****** ****** *)
 #staload
-"./../../../SATS/xbasics.sats"
+"./../../../SATS/dynexp2.sats"
 #staload
-"./../../../SATS/xsymbol.sats"
-#staload
-"./../../../SATS/xlabel0.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-#abstbox i0pat_tbox // p0tr
-#typedef i0pat = i0pat_tbox
-(* ****** ****** *)
-#abstbox i0exp_tbox // p0tr
-#typedef i0exp = i0exp_tbox
-(* ****** ****** *)
-#typedef l0i0p = i0lab(i0pat)
-#typedef l0i0e = i0lab(i0exp)
-(* ****** ****** *)
-#abstbox fiarg_tbox // p0tr
-#typedef fiarg = fiarg_tbox
-(* ****** ****** *)
-#typedef i0patlst = list(i0pat)
-#typedef l0i0plst = list(l0i0p)
-(* ****** ****** *)
-#typedef i0expopt = optn(i0exp)
-#typedef i0explst = list(i0exp)
-#typedef l0i0elst = list(l0i0e)
-(* ****** ****** *)
+"./../../../SATS/dynexp3.sats"
 (* ****** ****** *)
 //
-datatype
-i0lab(x0:type) =
-|
-I0LAB of (label, x0(*elt*))
-//
-(* ****** ****** *)
-//
-fun
-<x0:type>
-i0lab_fprint
-(lab
-:i0lab(x0),out:FILR): void
+#staload "./../SATS/intrep0.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_intrep0.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep0_print0.dats] *)
 (***********************************************************************)
