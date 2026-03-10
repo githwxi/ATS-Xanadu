@@ -256,12 +256,12 @@ fiarg_fprint
 //
 (* ****** ****** *)
 fun
-fiarg_get_lctn(fiarg): loc_t
+fiarg_lctn$get(fiarg): loc_t
 fun
-fiarg_get_node(fiarg): fiarg_node
+fiarg_node$get(fiarg): fiarg_node
 (* ****** ****** *)
-#symload lctn with fiarg_get_lctn
-#symload node with fiarg_get_node
+#symload lctn with fiarg_lctn$get
+#symload node with fiarg_node$get
 (* ****** ****** *)
 fun
 fiarg_make_node
@@ -384,13 +384,13 @@ i0pat_fprint
 (* ****** ****** *)
 //
 fun
-i0pat_get_lctn(i0pat):( loc_t )
+i0pat_lctn$get(i0pat):( loc_t )
 fun
-i0pat_get_node(i0pat):i0pat_node
+i0pat_node$get(i0pat):i0pat_node
 //
 (* ****** ****** *)
-#symload lctn with i0pat_get_lctn
-#symload node with i0pat_get_node
+#symload lctn with i0pat_lctn$get
+#symload node with i0pat_node$get
 (* ****** ****** *)
 fun
 i0pat_var(dvar: d2var): (i0pat)
@@ -568,13 +568,13 @@ i0exp_fprint
 (* ****** ****** *)
 //
 fun
-i0exp_get_lctn(i0exp):( loc_t )
+i0exp_lctn$get(i0exp):( loc_t )
 fun
-i0exp_get_node(i0exp):i0exp_node
+i0exp_node$get(i0exp):i0exp_node
 //
 (* ****** ****** *)
-#symload lctn with i0exp_get_lctn
-#symload node with i0exp_get_node
+#symload lctn with i0exp_lctn$get
+#symload node with i0exp_node$get
 (* ****** ****** *)
 fun
 i0exp_addr(iexp: i0exp): (i0exp)
@@ -620,32 +620,32 @@ i0cls_fprint:(i0cls,FILR)->void
 (* ****** ****** *)
 //
 fun
-i0gua_get_lctn(i0gua): loc_t
+i0gua_lctn$get(i0gua): loc_t
 fun
-i0gua_get_node(i0gua): i0gua_node
+i0gua_node$get(i0gua): i0gua_node
 //
-#symload lctn with i0gua_get_lctn
-#symload node with i0gua_get_node
+#symload lctn with i0gua_lctn$get
+#symload node with i0gua_node$get
 //
 (* ****** ****** *)
 //
 fun
-i0gpt_get_lctn(i0gpt): loc_t
+i0gpt_lctn$get(i0gpt): loc_t
 fun
-i0gpt_get_node(i0gpt): i0gpt_node
+i0gpt_node$get(i0gpt): i0gpt_node
 //
-#symload lctn with i0gpt_get_lctn
-#symload node with i0gpt_get_node
+#symload lctn with i0gpt_lctn$get
+#symload node with i0gpt_node$get
 //
 (* ****** ****** *)
 //
 fun
-i0cls_get_lctn(i0cls): loc_t
+i0cls_lctn$get(i0cls): loc_t
 fun
-i0cls_get_node(i0cls): i0cls_node
+i0cls_node$get(i0cls): i0cls_node
 //
-#symload lctn with i0cls_get_lctn
-#symload node with i0cls_get_node
+#symload lctn with i0cls_lctn$get
+#symload node with i0cls_node$get
 //
 (* ****** ****** *)
 //
@@ -682,14 +682,14 @@ t0imp_fprint
 (* ****** ****** *)
 //
 fun
-t0imp_get_stmp
+t0imp_stmp$get
 (timp: t0imp): stamp
 fun
-t0imp_get_node
+t0imp_node$get
 (timp: t0imp): t0imp_node
 //
-#symload stmp with t0imp_get_stmp
-#symload node with t0imp_get_node
+#symload stmp with t0imp_stmp$get
+#symload node with t0imp_node$get
 //
 fun
 t0imp_make_node
@@ -792,13 +792,13 @@ i0dcl_fprint
 (* ****** ****** *)
 //
 fun
-i0dcl_get_lctn(i0dcl):( loc_t )
+i0dcl_lctn$get(i0dcl):( loc_t )
 fun
-i0dcl_get_node(i0dcl):i0dcl_node
+i0dcl_node$get(i0dcl):i0dcl_node
 //
 (* ****** ****** *)
-#symload lctn with i0dcl_get_lctn
-#symload node with i0dcl_get_node
+#symload lctn with i0dcl_lctn$get
+#symload node with i0dcl_node$get
 (* ****** ****** *)
 fun
 i0dcl_none0(loc0: loctn): (i0dcl)
@@ -825,40 +825,40 @@ i0fundcl_fprint
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-i0valdcl_get_lctn:(i0valdcl)->loc_t
+i0valdcl_lctn$get:(i0valdcl)->loc_t
 fun
-i0vardcl_get_lctn:(i0vardcl)->loc_t
+i0vardcl_lctn$get:(i0vardcl)->loc_t
 fun
-i0fundcl_get_lctn:(i0fundcl)->loc_t
+i0fundcl_lctn$get:(i0fundcl)->loc_t
 (* ****** ****** *)
-#symload lctn with i0valdcl_get_lctn
-#symload lctn with i0vardcl_get_lctn
-#symload lctn with i0fundcl_get_lctn
+#symload lctn with i0valdcl_lctn$get
+#symload lctn with i0vardcl_lctn$get
+#symload lctn with i0fundcl_lctn$get
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-i0valdcl_get_dpat:(i0valdcl)->i0pat
+i0valdcl_dpat$get:(i0valdcl)->i0pat
 fun
-i0valdcl_get_tdxp:(i0valdcl)->teqi0exp
+i0valdcl_tdxp$get:(i0valdcl)->teqi0exp
 (* ****** ****** *)
 #symload dpat with i0valdcl_get_dpat
 #symload tdxp with i0valdcl_get_tdxp(*opt*)
 (* ****** ****** *)
 fun
-i0vardcl_get_dpid:(i0vardcl)->d2var
+i0vardcl_dpid$get:(i0vardcl)->d2var
 fun
-i0vardcl_get_dini:(i0vardcl)->teqi0exp
+i0vardcl_dini$get:(i0vardcl)->teqi0exp
 (* ****** ****** *)
 #symload dpid with i0vardcl_get_dpid
 #symload dini with i0vardcl_get_dini(*opt*)
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-i0fundcl_get_dpid:(i0fundcl)->d2var
+i0fundcl_dpid$get:(i0fundcl)->d2var
 fun
-i0fundcl_get_farg:(i0fundcl)->fiarglst
+i0fundcl_farg$get:(i0fundcl)->fiarglst
 fun
-i0fundcl_get_tdxp:(i0fundcl)->teqi0exp
+i0fundcl_tdxp$get:(i0fundcl)->teqi0exp
 (* ****** ****** *)
 #symload dpid with i0fundcl_get_dpid
 #symload farg with i0fundcl_get_farg(*lst*)
@@ -899,22 +899,22 @@ i0parsed_fprint
 (* ****** ****** *)
 //
 fun
-i0parsed_get_stadyn:(i0parsed)->sint
+i0parsed_stadyn$get:(i0parsed)->sint
 fun
-i0parsed_get_nerror:(i0parsed)->sint
+i0parsed_nerror$get:(i0parsed)->sint
 //
 fun
-i0parsed_get_source:(i0parsed)->lcsrc
+i0parsed_source$get:(i0parsed)->lcsrc
 //
 fun
-i0parsed_get_parsed:(i0parsed)->i0dclistopt
+i0parsed_parsed$get:(i0parsed)->i0dclistopt
 //
 (* ****** ****** *)
 //
-#symload stadyn with i0parsed_get_stadyn
-#symload nerror with i0parsed_get_nerror
-#symload source with i0parsed_get_source
-#symload parsed with i0parsed_get_parsed
+#symload stadyn with i0parsed_stadyn$get
+#symload nerror with i0parsed_nerror$get
+#symload source with i0parsed_source$get
+#symload parsed with i0parsed_parsed$get
 //
 (* ****** ****** *)
 //

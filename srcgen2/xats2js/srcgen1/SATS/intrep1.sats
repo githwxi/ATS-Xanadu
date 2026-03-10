@@ -180,7 +180,7 @@ i1lab_fprint
 (* ****** ****** *)
 //
 fun
-i1tnm_get_stmp(i1tnm): stamp
+i1tnm_stmp$get(i1tnm): stamp
 //
 (* ****** ****** *)
 //
@@ -482,16 +482,16 @@ i1val_fprint:(i1val, FILR)->void
 (* ****** ****** *)
 //
 fun
-i1cmp_get_lctn(i1cmp): ( loc_t )
+i1cmp_lctn$get(i1cmp): ( loc_t )
 //
 fun
-i1cmp_get_ival(i1cmp): ( i1val )
+i1cmp_ival$get(i1cmp): ( i1val )
 fun
-i1cmp_get_ilts(i1cmp): (i1letlst)
+i1cmp_ilts$get(i1cmp): (i1letlst)
 //
-#symload lctn with i1cmp_get_lctn
-#symload ival with i1cmp_get_ival
-#symload ilts with i1cmp_get_ilts
+#symload lctn with i1cmp_lctn$get
+#symload ival with i1cmp_ival$get
+#symload ilts with i1cmp_ilts$get
 //
 (* ****** ****** *)
 fun
@@ -530,12 +530,12 @@ i1val_none1(iexp: i0exp): (i1val)
 (* ****** ****** *)
 //
 fun
-i1val_get_lctn(i1val): ( loc_t )
+i1val_lctn$get(i1val): ( loc_t )
 fun
-i1val_get_node(i1val): i1val_node
+i1val_node$get(i1val): i1val_node
 //
-#symload lctn with i1val_get_lctn
-#symload node with i1val_get_node
+#symload lctn with i1val_lctn$get
+#symload node with i1val_node$get
 //
 (* ****** ****** *)
 //
@@ -566,12 +566,12 @@ fjarg_fprint
 //
 (* ****** ****** *)
 fun
-fjarg_get_lctn(fjarg): loc_t
+fjarg_lctn$get(fjarg): loc_t
 fun
-fjarg_get_node(fjarg): fjarg_node
+fjarg_node$get(fjarg): fjarg_node
 (* ****** ****** *)
-#symload lctn with fjarg_get_lctn
-#symload node with fjarg_get_node
+#symload lctn with fjarg_lctn$get
+#symload node with fjarg_node$get
 (* ****** ****** *)
 fun
 fjarg_make_node
@@ -609,33 +609,33 @@ i1cls_fprint
 (* ****** ****** *)
 //
 fun
-i1gua_get_lctn(i1gua): loc_t
+i1gua_lctn$get(i1gua): loc_t
 fun
-i1gua_get_node(i1gua): i1gua_node
+i1gua_node$get(i1gua): i1gua_node
 //
 (* ****** ****** *)
 //
 fun
-i1gpt_get_lctn(i1gpt): loc_t
+i1gpt_lctn$get(i1gpt): loc_t
 fun
-i1gpt_get_node(i1gpt): i1gpt_node
+i1gpt_node$get(i1gpt): i1gpt_node
 //
 (* ****** ****** *)
 //
 fun
-i1cls_get_lctn(i1cls): loc_t
+i1cls_lctn$get(i1cls): loc_t
 fun
-i1cls_get_node(i1cls): i1cls_node
+i1cls_node$get(i1cls): i1cls_node
 //
 (* ****** ****** *)
 //
-#symload lctn with i1gua_get_lctn
-#symload lctn with i1gpt_get_lctn
-#symload lctn with i1cls_get_lctn
+#symload lctn with i1gua_lctn$get
+#symload lctn with i1gpt_lctn$get
+#symload lctn with i1cls_lctn$get
 //
-#symload node with i1gua_get_node
-#symload node with i1gpt_get_node
-#symload node with i1cls_get_node
+#symload node with i1gua_node$get
+#symload node with i1gpt_node$get
+#symload node with i1cls_node$get
 //
 (* ****** ****** *)
 //
@@ -680,20 +680,20 @@ t1imp_fprint
 (* ****** ****** *)
 //
 fun
-t1imp_get_dcst
+t1imp_dcst$get
 (timp: t1imp): (d2cst)
 //
-#symload dcst with t1imp_get_dcst
+#symload dcst with t1imp_dcst$get
 //
 fun
-t1imp_get_stmp
+t1imp_stmp$get
 (timp: t1imp): (stamp)
 fun
-t1imp_get_node
+t1imp_node$get
 (timp: t1imp): t1imp_node
 //
-#symload stmp with t1imp_get_stmp
-#symload node with t1imp_get_node
+#symload stmp with t1imp_stmp$get
+#symload node with t1imp_node$get
 //
 (* ****** ****** *)
 //
@@ -792,13 +792,13 @@ idcl:i1dcl,out0:FILR): ( void )
 (* ****** ****** *)
 //
 fun
-i1dcl_get_lctn(i1dcl): ( loc_t )
+i1dcl_lctn$get(i1dcl): ( loc_t )
 fun
-i1dcl_get_node(i1dcl): i1dcl_node
+i1dcl_node$get(i1dcl): i1dcl_node
 //
 (* ****** ****** *)
-#symload lctn with i1dcl_get_lctn
-#symload node with i1dcl_get_node
+#symload lctn with i1dcl_lctn$get
+#symload node with i1dcl_node$get
 (* ****** ****** *)
 fun
 i1dcl_none0(loc_t): i1dcl
@@ -825,40 +825,40 @@ i1fundcl_fprint
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-i1valdcl_get_lctn:(i1valdcl)->loc_t
+i1valdcl_lctn$get:(i1valdcl)->loc_t
 fun
-i1vardcl_get_lctn:(i1vardcl)->loc_t
+i1vardcl_lctn$get:(i1vardcl)->loc_t
 fun
-i1fundcl_get_lctn:(i1fundcl)->loc_t
+i1fundcl_lctn$get:(i1fundcl)->loc_t
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-i1valdcl_get_dpat:(i1valdcl)->i1bnd
+i1valdcl_dpat$get:(i1valdcl)->i1bnd
 fun
-i1valdcl_get_tdxp:(i1valdcl)->teqi1cmp
+i1valdcl_tdxp$get:(i1valdcl)->teqi1cmp
 (* ****** ****** *)
-#symload dpat with i1valdcl_get_dpat
-#symload tdxp with i1valdcl_get_tdxp(*opt*)
-(* ****** ****** *)
-fun
-i1vardcl_get_dpid:(i1vardcl)->i1bnd
-fun
-i1vardcl_get_dini:(i1vardcl)->teqi1cmp
-(* ****** ****** *)
-#symload dpid with i1vardcl_get_dpid
-#symload dini with i1vardcl_get_dini(*opt*)
-(* ****** ****** *)
+#symload dpat with i1valdcl_dpat$get
+#symload tdxp with i1valdcl_tdxp$get(*opt*)
 (* ****** ****** *)
 fun
-i1fundcl_get_dpid:(i1fundcl)->d2var
+i1vardcl_dpid$get:(i1vardcl)->i1bnd
 fun
-i1fundcl_get_farg:(i1fundcl)->fjarglst
-fun
-i1fundcl_get_tdxp:(i1fundcl)->teqi1cmp
+i1vardcl_dini$get:(i1vardcl)->teqi1cmp
 (* ****** ****** *)
-#symload dpid with i1fundcl_get_dpid
-#symload farg with i1fundcl_get_farg(*lst*)
-#symload tdxp with i1fundcl_get_tdxp(*opt*)
+#symload dpid with i1vardcl_dpid$get
+#symload dini with i1vardcl_dini$get(*opt*)
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i1fundcl_dpid$get:(i1fundcl)->d2var
+fun
+i1fundcl_farg$get:(i1fundcl)->fjarglst
+fun
+i1fundcl_tdxp$get:(i1fundcl)->teqi1cmp
+(* ****** ****** *)
+#symload dpid with i1fundcl_dpid$get
+#symload farg with i1fundcl_farg$get(*lst*)
+#symload tdxp with i1fundcl_tdxp$get(*opt*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -895,22 +895,22 @@ i1parsed_fprint
 (* ****** ****** *)
 //
 fun
-i1parsed_get_stadyn:(i1parsed)->sint
+i1parsed_stadyn$get:(i1parsed)->sint
 fun
-i1parsed_get_nerror:(i1parsed)->sint
+i1parsed_nerror$get:(i1parsed)->sint
 //
 fun
-i1parsed_get_source:(i1parsed)->lcsrc
+i1parsed_source$get:(i1parsed)->lcsrc
 //
 fun
-i1parsed_get_parsed:(i1parsed)->i1dclistopt
+i1parsed_parsed$get:(i1parsed)->i1dclistopt
 //
 (* ****** ****** *)
 //
-#symload stadyn with i1parsed_get_stadyn
-#symload nerror with i1parsed_get_nerror
-#symload source with i1parsed_get_source
-#symload parsed with i1parsed_get_parsed
+#symload stadyn with i1parsed_stadyn$get
+#symload nerror with i1parsed_nerror$get
+#symload source with i1parsed_source$get
+#symload parsed with i1parsed_parsed$get
 //
 (* ****** ****** *)
 //

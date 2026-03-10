@@ -97,9 +97,9 @@ xats2py_i1valdcl
 (* ****** ****** *)
 //
 val dpat =
-i1valdcl_get_dpat(ival)
+i1valdcl_dpat$get(ival)
 val tdxp =
-i1valdcl_get_tdxp(ival)
+i1valdcl_tdxp$get(ival)
 //
 (* ****** ****** *)
 //
@@ -155,17 +155,81 @@ end//let
 (* ****** ****** *)
 //
 #implfun
+xats2py_i1vardcl
+  (env0, ivar) = let
+//
+(* ****** ****** *)
+//
+val dpid =
+i1vardcl_dpid$get(ivar)
+val tdxp =
+i1vardcl_dini$get(ivar)
+//
+(* ****** ****** *)
+//
+val (  ) =
+xats2py_i1bnd(env0, dpid)
+//
+(* ****** ****** *)
+//
+(*
+val (  ) = prerrsln
+("xats2py_i1vardcl: dvar = ", dvar)
+val (  ) = prerrsln
+("xats2py_i1vardcl: dini = ", tdxp)
+*)
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+val (  ) =
+(
+  xats2py_i1cmp(env0, icmp))
+end//let
+) (*case+*) // end-of-( teqi1exp )
+//
+(* ****** ****** *)
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+envx2py_get_filr(env0)
+val nind =
+envx2py_get_nind(env0)
+in//let
+(
+nindstrnfpr(filr, nind, "// I1VARDCL\n"))
+end//let
+//
+}(*where*)//end-of-[xats2py_i1vardcl(env0,ival)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 xats2py_i1fundcl
   (env0, ifun) = let
 //
 (* ****** ****** *)
 //
 val dvar =
-i1fundcl_get_dpid(ifun)
+i1fundcl_dpid$get(ifun)
 val fjas =
-i1fundcl_get_farg(ifun)
+i1fundcl_farg$get(ifun)
 val tdxp =
-i1fundcl_get_tdxp(ifun)
+i1fundcl_tdxp$get(ifun)
 //
 (* ****** ****** *)
 //
@@ -256,6 +320,14 @@ xats2py_i1valdclist
   (env0, i1vs) =
 (
   list_xats2py_fnp(env0, i1vs, xats2py_i1valdcl))
+//
+(* ****** ****** *)
+//
+#implfun
+xats2py_i1vardclist
+  (env0, i1vs) =
+(
+  list_xats2py_fnp(env0, i1vs, xats2py_i1vardcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -75,8 +75,8 @@ _(*DATS*)="./../DATS/py1emit.dats"
 #symload ilts with i1cmp_get_ilts
 *)
 (* ****** ****** *)
-#symload lctn with i1dcl_get_lctn
-#symload node with i1dcl_get_node
+#symload lctn with i1dcl_lctn$get
+#symload node with i1dcl_node$get
 (* ****** ****** *)
 #symload filr with envx2js_get_filr
 #symload nind with envx2js_get_nind
@@ -582,8 +582,10 @@ f1_i1cmpret
 ! envx2js
 , icmp: i1cmp): void =
 let
-val filr = envx2js_get_filr(env0)
-val nind = envx2js_get_nind(env0)
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
 in//let
 let
 val ival = icmp.ival()
@@ -678,10 +680,16 @@ f0_otherwise
 , dcl0: i1dcl): void =
 let
 //
-val loc0 = dcl0.lctn((*void*))
+val loc0 =
+(
+  dcl0.lctn((*void*)))
 //
-val filr = envx2js_get_filr(env0)
-val nind = envx2js_get_nind(env0)
+val filr =
+(
+  envx2js_get_filr(env0))
+val nind =
+(
+  envx2js_get_nind(env0))
 //
 in//let
 //
@@ -708,9 +716,9 @@ py1emit_i1valdcl
 (* ****** ****** *)
 //
 val dpat =
-i1valdcl_get_dpat(idcl)
+i1valdcl_dpat$get(idcl)
 val tdxp =
-i1valdcl_get_tdxp(idcl)
+i1valdcl_tdxp$get(idcl)
 //
 (* ****** ****** *)
 //
@@ -737,7 +745,7 @@ TEQI1CMPsome
 (teq1, icmp) =>
 let
 //
-val ival = i1cmp_get_ival(icmp)
+val ival = i1cmp_ival$get(icmp)
 val filr = envx2js_get_filr(env0)
 val nind = envx2js_get_nind(env0)
 //
@@ -785,14 +793,16 @@ f0_i1tnmcmp
 let
 //
 val filr =
-envx2js_get_filr(env0)
+(
+envx2js_get_filr(env0))
 val nind =
-envx2js_get_nind(env0)
+(
+envx2js_get_nind(env0))
 //
 val
-ival = i1cmp_get_ival(icmp)
+ival = i1cmp_ival$get(icmp)
 val
-ilts = i1cmp_get_ilts(icmp)
+ilts = i1cmp_ilts$get(icmp)
 //
 val () =
 py1emit_i1letlst(env0, ilts)
@@ -817,9 +827,9 @@ py1emit_i1vardcl
 (* ****** ****** *)
 //
 val dpid =
-i1vardcl_get_dpid(idcl)
+i1vardcl_dpid$get(idcl)
 val tdxp =
-i1vardcl_get_dini(idcl)
+i1vardcl_dini$get(idcl)
 //
 (* ****** ****** *)
 //
@@ -862,7 +872,7 @@ let
 val filr = env0.filr()
 val nind = env0.nind()
 //
-val ival = i1cmp_get_ival(icmp)
+val ival = i1cmp_ival$get(icmp)
 val (  ) = py1emit_i1cmp(env0, icmp)
 //
 in//let
@@ -910,11 +920,11 @@ py1emit_i1fundcl
 (* ****** ****** *)
 //
 val dvar =
-i1fundcl_get_dpid(ifun)
+i1fundcl_dpid$get(ifun)
 val fjas =
-i1fundcl_get_farg(ifun)
+i1fundcl_farg$get(ifun)
 val tdxp =
-i1fundcl_get_tdxp(ifun)
+i1fundcl_tdxp$get(ifun)
 //
 (* ****** ****** *)
 //

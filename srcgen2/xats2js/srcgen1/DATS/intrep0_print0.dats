@@ -77,28 +77,28 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#symload lctn with i0pat_get_lctn
-#symload node with i0pat_get_node
+#symload lctn with i0pat_lctn$get
+#symload node with i0pat_node$get
 (* ****** ****** *)
-#symload lctn with i0exp_get_lctn
-#symload node with i0exp_get_node
+#symload lctn with i0exp_lctn$get
+#symload node with i0exp_node$get
 (* ****** ****** *)
-#symload lctn with fiarg_get_lctn
-#symload node with fiarg_get_node
+#symload lctn with fiarg_lctn$get
+#symload node with fiarg_node$get
 (* ****** ****** *)
-#symload lctn with i0gua_get_lctn
-#symload lctn with i0gpt_get_lctn
-#symload lctn with i0cls_get_lctn
+#symload lctn with i0gua_lctn$get
+#symload lctn with i0gpt_lctn$get
+#symload lctn with i0cls_lctn$get
 (* ****** ****** *)
-#symload node with i0gua_get_node
-#symload node with i0gpt_get_node
-#symload node with i0cls_get_node
+#symload node with i0gua_node$get
+#symload node with i0gpt_node$get
+#symload node with i0cls_node$get
 (* ****** ****** *)
-#symload lctn with t0imp_get_stmp
-#symload node with t0imp_get_node
+#symload lctn with t0imp_stmp$get
+#symload node with t0imp_node$get
 (* ****** ****** *)
-#symload lctn with i0dcl_get_lctn
-#symload node with i0dcl_get_node
+#symload lctn with i0dcl_lctn$get
+#symload node with i0dcl_node$get
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -736,9 +736,9 @@ i0valdcl_fprint
   (ival, out0) = let
 //
 val dpat =
-i0valdcl_get_dpat(ival)
+i0valdcl_dpat$get(ival)
 val tdxp =
-i0valdcl_get_tdxp(ival)
+i0valdcl_tdxp$get(ival)
 //
 #impltmp g_print$out<>() = out0
 //
@@ -754,9 +754,9 @@ i0vardcl_fprint
   (ivar, out0) = let
 //
 val dpid =
-i0vardcl_get_dpid(ivar)
+i0vardcl_dpid$get(ivar)
 val dini =
-i0vardcl_get_dini(ivar)
+i0vardcl_dini$get(ivar)
 //
 #impltmp g_print$out<>() = out0
 //
@@ -772,11 +772,11 @@ i0fundcl_fprint
   (ifun, out0) = let
 //
 val dpid =
-i0fundcl_get_dpid(ifun)
+i0fundcl_dpid$get(ifun)
 val farg =
-i0fundcl_get_farg(ifun)
+i0fundcl_farg$get(ifun)
 val tdxp =
-i0fundcl_get_tdxp(ifun)
+i0fundcl_tdxp$get(ifun)
 //
 #impltmp g_print$out<>() = out0
 //
@@ -795,16 +795,16 @@ i0parsed_fprint
 //
 val
 stadyn =
-i0parsed_get_stadyn(ipar)
+i0parsed_stadyn$get(ipar)
 val
 nerror =
-i0parsed_get_nerror(ipar)
+i0parsed_nerror$get(ipar)
 val
 source =
-i0parsed_get_source(ipar)
+i0parsed_source$get(ipar)
 val
 parsed =
-i0parsed_get_parsed(ipar)
+i0parsed_parsed$get(ipar)
 //
 #impltmp g_print$out<>() = out0
 //

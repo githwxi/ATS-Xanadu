@@ -60,6 +60,36 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0typ_fprint
+(ityp, out0) =
+let
+in//let
+end(*let*)//end-of-[i0typ_fprint(ityp,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0pat_fprint
+(ipat, out0) =
+let
+in//let
+end(*let*)//end-of-[i0pat_fprint(ipat,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0exp_fprint
+(iexp, out0) =
+let
+in//let
+end(*let*)//end-of-[i0exp_fprint(iexp,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep0_print0.dats] *)
 (***********************************************************************)

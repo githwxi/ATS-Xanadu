@@ -78,12 +78,12 @@ _(*DATS*)="./../DATS/trxi0i1.dats"
 (* ****** ****** *)
 #symload node with token_get_node
 (* ****** ****** *)
-#symload lctn with i0dcl_get_lctn
-#symload node with i0dcl_get_node
+#symload lctn with i0dcl_lctn$get
+#symload node with i0dcl_node$get
 (* ****** ****** *)
 (*
-#symload ival with i1cmp_get_ival
-#symload ilts with i1cmp_get_ilts
+#symload ival with i1cmp_ival$get
+#symload ilts with i1cmp_ilts$get
 *)
 (* ****** ****** *)
 //
@@ -458,7 +458,7 @@ list_nil() => ((*0*))
 list_cons(i0f1, i0fs) =>
 mydvsins(env0, i0fs) where
 {
-val d2v1 = i0fundcl_get_dpid(i0f1)
+val d2v1 = i0fundcl_dpid$get(i0f1)
 val (  ) = envi0i1_d2vins_self(env0, d2v1)
 }
 )
@@ -577,11 +577,11 @@ trxi0i1_i0valdcl
   (env0, ival) = let
 //
 val loc0 =
-i0valdcl_get_lctn(ival)
+i0valdcl_lctn$get(ival)
 val ipat =
-i0valdcl_get_dpat(ival)
+i0valdcl_dpat$get(ival)
 val tdxp =
-i0valdcl_get_tdxp(ival)
+i0valdcl_tdxp$get(ival)
 //
 val
 tdxp =
@@ -607,11 +607,11 @@ trxi0i1_i0vardcl
   (env0, ivar) = let
 //
 val loc0 =
-i0vardcl_get_lctn(ivar)
+i0vardcl_lctn$get(ivar)
 val dvar =
-i0vardcl_get_dpid(ivar)
+i0vardcl_dpid$get(ivar)
 val tdxp =
-i0vardcl_get_dini(ivar)
+i0vardcl_dini$get(ivar)
 //
 val tdxp =
 trxi0i1_teqi0exp(env0, tdxp)
@@ -643,14 +643,14 @@ trxi0i1_i0fundcl
   (env0, ifun) = let
 //
 val loc0 =
-i0fundcl_get_lctn(ifun)
+i0fundcl_lctn$get(ifun)
 //
 val dvar =
-i0fundcl_get_dpid(ifun)
+i0fundcl_dpid$get(ifun)
 val fias =
-i0fundcl_get_farg(ifun)
+i0fundcl_farg$get(ifun)
 val tdxp =
-i0fundcl_get_tdxp(ifun)
+i0fundcl_tdxp$get(ifun)
 //
 (*
 val (  ) = prerrsln

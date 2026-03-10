@@ -73,27 +73,27 @@ _(*DATS*)="./../DATS/trxi0i1.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#symload lctn with i0pat_get_lctn
-#symload node with i0pat_get_node
+#symload lctn with i0pat_lctn$get
+#symload node with i0pat_node$get
 (* ****** ****** *)
-#symload lctn with i0exp_get_lctn
-#symload node with i0exp_get_node
+#symload lctn with i0exp_lctn$get
+#symload node with i0exp_node$get
 (* ****** ****** *)
-#symload lctn with fiarg_get_lctn
-#symload node with fiarg_get_node
+#symload lctn with fiarg_lctn$get
+#symload node with fiarg_node$get
 (* ****** ****** *)
 //
-#symload lctn with i0gua_get_lctn
-#symload lctn with i0gpt_get_lctn
-#symload lctn with i0cls_get_lctn
+#symload lctn with i0gua_lctn$get
+#symload lctn with i0gpt_lctn$get
+#symload lctn with i0cls_lctn$get
 //
-#symload node with i0gua_get_node
-#symload node with i0gpt_get_node
-#symload node with i0cls_get_node
+#symload node with i0gua_node$get
+#symload node with i0gpt_node$get
+#symload node with i0cls_node$get
 //
 (* ****** ****** *)
-#symload lctn with i1val_get_lctn
-#symload node with i1val_get_node
+#symload lctn with i1val_lctn$get
+#symload node with i1val_node$get
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -3248,9 +3248,9 @@ trxi0i1_t0imp
 let
 //
 val stmp =
-t0imp_get_stmp(timp)
+t0imp_stmp$get(timp)
 val node =
-t0imp_get_node(timp)
+t0imp_node$get(timp)
 //
 in//let
 //

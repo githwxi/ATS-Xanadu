@@ -63,16 +63,16 @@ i1parsed_of_trxi0i1
 let
 //
 val stadyn =
-i0parsed_get_stadyn(dpar)
+i0parsed_stadyn$get(dpar)
 //
 val nerror =
-i0parsed_get_nerror(dpar)
+i0parsed_nerror$get(dpar)
 //
 val source =
-i0parsed_get_source(dpar)
+i0parsed_source$get(dpar)
 //
 val parsed =
-i0parsed_get_parsed(dpar)
+i0parsed_parsed$get(dpar)
 //
 val env0 = envi0i1_make_nil()
 //

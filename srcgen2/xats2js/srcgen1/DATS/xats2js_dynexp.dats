@@ -61,13 +61,16 @@ _(*DATS*)="./../DATS/xats2js.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#symload lctn with fjarg_get_lctn
-#symload node with fjarg_get_node
+#symload lctn with fjarg_lctn$get
+#symload node with fjarg_node$get
 (* ****** ****** *)
-#symload lctn with i1gpt_get_lctn
-#symload lctn with i1cls_get_lctn
-#symload node with i1gpt_get_node
-#symload node with i1cls_get_node
+//
+#symload lctn with i1gpt_lctn$get
+#symload node with i1gpt_node$get
+//
+#symload lctn with i1cls_lctn$get
+#symload node with i1cls_node$get
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

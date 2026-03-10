@@ -126,6 +126,30 @@ i0typ_node =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+i0typ_fprint
+(ityp:i0typ, out0:FILR): void
+//
+(* ****** ****** *)
+//
+fun
+i0pat_fprint
+(ipat:i0pat, out0:FILR): void
+//
+fun
+i0exp_fprint
+(iexp:i0exp, out0:FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0dcl_fprint
+(idcl:i0dcl, out0:FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_intrep0.sats] *)
 (***********************************************************************)
