@@ -1,19 +1,19 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2024-03-13:
-Wed 13 Mar 2024 06:33:33 PM EDT
-For ATS3/XANADU_srcgen2_xats2js
+HX-2026-03-09:
+Mon Mar  9 07:25:36 PM EDT 2026
+For ATS3/XANADU_srcgen2_xats2cc
 *)
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload _ =
-"./../DATS/xats2js_tmplib.dats"
+"./../DATS/xats2cc_tmplib.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_mytmplib00.hats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_mytmplib00.hats] *)
 (***********************************************************************)

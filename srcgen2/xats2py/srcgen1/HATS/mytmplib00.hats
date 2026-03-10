@@ -13,5 +13,7 @@ For ATS3/XANADU_srcgen2_xats2py
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
-(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_mytmplib00.hats] *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_HATS_mytmplib00.hats] *)
+(***********************************************************************)
