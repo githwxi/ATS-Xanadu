@@ -81,7 +81,7 @@ in//local
 (* ****** ****** *)
 //
 #implfun
-envx2js_get_filr
+envx2js_filr$get
   ( env0 ) =
 let
 val+
@@ -89,7 +89,7 @@ ENVX2JS
 (filr, nind) = env0 in filr end
 //
 #implfun
-envx2js_get_nind
+envx2js_nind$get
   ( env0 ) =
 let
 val+

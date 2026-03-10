@@ -106,9 +106,9 @@ xats2py_i1let
 let
 //
 val filr =
-envx2py_get_filr(env0)
+envx2py_filr$get(env0)
 val nind =
-envx2py_get_nind(env0)
+envx2py_nind$get(env0)
 //
 in//let
 nindfpr(filr, nind);
@@ -126,7 +126,7 @@ i1letfpr
 i1let_fprint(ilet, filr)
 ) where
 {
-  val filr = envx2py_get_filr(env0) }
+  val filr = envx2py_filr$get(env0) }
 //
 (* ****** ****** *)
 //
@@ -148,9 +148,9 @@ xats2py_i1bnd
 let
 //
 val filr =
-envx2py_get_filr(env0)
+envx2py_filr$get(env0)
 val nind =
-envx2py_get_nind(env0)
+envx2py_nind$get(env0)
 //
 in//let
 (
@@ -180,9 +180,9 @@ xats2py_i1cmp
 let
 //
 val filr =
-envx2py_get_filr(env0)
+envx2py_filr$get(env0)
 val nind =
-envx2py_get_nind(env0)
+envx2py_nind$get(env0)
 //
 in//let
 //

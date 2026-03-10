@@ -116,9 +116,9 @@ xats2js_i1let
 let
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 in//let
 nindfpr(filr, nind);
@@ -136,7 +136,7 @@ let
 //
 #impltmp
 g_print$out<>() =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 //
 in//let
 //
@@ -173,9 +173,9 @@ xats2js_i1bnd
 let
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 in//let
 (
@@ -193,9 +193,9 @@ xats2js_i1cmp
 let
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 in//let
 //
@@ -232,9 +232,9 @@ xats2js_i1ins
 let
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 in//let
 nindfpr(filr, nind);
@@ -244,9 +244,9 @@ end where
 {
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 fun
 i1insfpr
@@ -739,9 +739,9 @@ prerrsln
 *)
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 in//let
 //
@@ -759,7 +759,7 @@ fjargfpr
 let
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 #impltmp
 g_print$out<>() = filr
 //
@@ -794,9 +794,9 @@ prerrsln
 *)
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 in//let
 (
@@ -820,9 +820,9 @@ prerrsln
 *)
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 in//let
 //

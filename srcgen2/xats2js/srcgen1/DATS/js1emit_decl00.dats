@@ -93,8 +93,8 @@ _(*DATS*)="./../DATS/js1emit.dats"
 #symload lctn with i1dcl_lctn$get
 #symload node with i1dcl_node$get
 (* ****** ****** *)
-#symload filr with envx2js_get_filr
-#symload nind with envx2js_get_nind
+#symload filr with envx2js_filr$get
+#symload nind with envx2js_nind$get
 (* ****** ****** *)
 #symload
 js1emit_fjas1 with js1emit_fjarglst
@@ -615,12 +615,15 @@ f1_i1cmpret
 ! envx2js
 , icmp: i1cmp): void =
 let
-val filr = envx2js_get_filr(env0)
-val nind = envx2js_get_nind(env0)
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
 in//let
 let
 val ival = icmp.ival()
-val (  ) = js1emit_i1cmp(env0, icmp)
+val (  ) =
+js1emit_i1cmp(env0, icmp)
 in//let
 nindstrnfpr
 (filr, nind, "return ");i1valjs1(filr, ival);fprintln(filr)
@@ -691,10 +694,13 @@ f0_otherwise
 , dcl0: i1dcl): void =
 let
 //
-val loc0 = dcl0.lctn((*void*))
+val loc0 =
+dcl0.lctn((*void*))
 //
-val filr = envx2js_get_filr(env0)
-val nind = envx2js_get_nind(env0)
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
 //
 in//let
 //
@@ -755,9 +761,9 @@ let
 val ival =
 i1cmp_ival$get(icmp)
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 val () =
 (
@@ -788,10 +794,10 @@ val (  ) =
 let
 val filr =
 (
-envx2js_get_filr(env0))
+envx2js_filr$get(env0))
 val nind =
 (
-envx2js_get_nind(env0))
+envx2js_nind$get(env0))
 in//let
 (
  nindstrnfpr(filr, nind, "// I1VALDCL\n"))
@@ -806,9 +812,9 @@ f0_i1tnmcmp
 let
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 val
 ival =
@@ -913,10 +919,10 @@ val (  ) =
 let
 val filr =
 (
-envx2js_get_filr(env0))
+envx2js_filr$get(env0))
 val nind =
 (
-envx2js_get_nind(env0))
+envx2js_nind$get(env0))
 in//let
 (
  nindstrnfpr(filr, nind, "// I1VARDCL\n"))
@@ -1033,10 +1039,10 @@ val (  ) =
 let
 val filr =
 (
-envx2js_get_filr(env0))
+envx2js_filr$get(env0))
 val nind =
 (
-envx2js_get_nind(env0))
+envx2js_nind$get(env0))
 in//let
 (
  nindstrnfpr(filr, nind, "// I1FUNDCL\n"))

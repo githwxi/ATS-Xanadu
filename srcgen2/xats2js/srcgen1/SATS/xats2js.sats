@@ -64,11 +64,11 @@ funtok_prfq
 (* ****** ****** *)
 //
 fun
-envx2js_get_filr
+envx2js_filr$get
 (env0: !envx2js): FILEref
 //
 fun
-envx2js_get_nind
+envx2js_nind$get
 (env0: !envx2js): ( sint )
 //
 (* ****** ****** *)

@@ -78,8 +78,8 @@ _(*DATS*)="./../DATS/py1emit.dats"
 #symload lctn with i1dcl_lctn$get
 #symload node with i1dcl_node$get
 (* ****** ****** *)
-#symload filr with envx2js_get_filr
-#symload nind with envx2js_get_nind
+#symload filr with envx2js_filr$get
+#symload nind with envx2js_nind$get
 (* ****** ****** *)
 #symload
 py1emit_fjas1 with py1emit_fjarglst
@@ -583,12 +583,14 @@ f1_i1cmpret
 , icmp: i1cmp): void =
 let
 val filr =
-envx2js_get_filr(env0)
+(
+envx2js_filr$get(env0))
 val nind =
-envx2js_get_nind(env0)
+(
+envx2js_nind$get(env0))
 in//let
 let
-val ival = icmp.ival()
+val ival = icmp.ival((*0*))
 val (  ) = py1emit_i1cmp(env0, icmp)
 in//let
 nindstrnfpr
@@ -686,10 +688,10 @@ val loc0 =
 //
 val filr =
 (
-  envx2js_get_filr(env0))
+  envx2js_filr$get(env0))
 val nind =
 (
-  envx2js_get_nind(env0))
+  envx2js_nind$get(env0))
 //
 in//let
 //
@@ -745,11 +747,17 @@ TEQI1CMPsome
 (teq1, icmp) =>
 let
 //
-val ival = i1cmp_ival$get(icmp)
-val filr = envx2js_get_filr(env0)
-val nind = envx2js_get_nind(env0)
+val ival =
+(
+  i1cmp_ival$get(icmp))
+val filr =
+(
+  envx2js_filr$get(env0))
+val nind =
+(
+  envx2js_nind$get(env0))
 //
-val () =
+val (  ) =
 (
 nindfpr(filr, nind);
 i1tnmpy1(filr, itnm);strnfpr(filr, " = None\n"))
@@ -775,10 +783,10 @@ val (  ) =
 let
 val filr =
 (
-envx2js_get_filr(env0))
+envx2js_filr$get(env0))
 val nind =
 (
-envx2js_get_nind(env0))
+envx2js_nind$get(env0))
 in//let
 (
  nindstrnfpr(filr, nind, "## I1VALDCL\n"))
@@ -794,10 +802,10 @@ let
 //
 val filr =
 (
-envx2js_get_filr(env0))
+envx2js_filr$get(env0))
 val nind =
 (
-envx2js_get_nind(env0))
+envx2js_nind$get(env0))
 //
 val
 ival = i1cmp_ival$get(icmp)
@@ -899,10 +907,10 @@ val (  ) =
 let
 val filr =
 (
-envx2js_get_filr(env0))
+envx2js_filr$get(env0))
 val nind =
 (
-envx2js_get_nind(env0))
+envx2js_nind$get(env0))
 in//let
 (
  nindstrnfpr(filr, nind, "## I1VARDCL\n"))
@@ -993,10 +1001,10 @@ val (  ) =
 let
 val filr =
 (
-envx2js_get_filr(env0))
+envx2js_filr$get(env0))
 val nind =
 (
-envx2js_get_nind(env0))
+envx2js_nind$get(env0))
 in//let
 (
  nindstrnfpr(filr, nind, "## I1FUNDCL\n"))

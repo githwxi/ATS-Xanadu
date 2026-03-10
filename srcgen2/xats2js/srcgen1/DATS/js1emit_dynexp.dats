@@ -99,8 +99,8 @@ _(*DATS*)="./../DATS/js1emit.dats"
 #symload node with i1dcl_node$get
 (* ****** ****** *)
 (* ****** ****** *)
-#symload filr with envx2js_get_filr
-#symload nind with envx2js_get_nind
+#symload filr with envx2js_filr$get
+#symload nind with envx2js_nind$get
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -1473,9 +1473,9 @@ f0_t1imp
 let
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 val
 dcst =
@@ -1590,9 +1590,9 @@ f0_i1cmpret
 let
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 in//let
 let
@@ -1627,9 +1627,9 @@ f0_i1tnmcmp
 let
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 val ival = icmp.ival()
 val ilts = icmp.ilts()
@@ -1657,9 +1657,9 @@ f0_i1valgpt
 let
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 in//let
 //
@@ -1752,8 +1752,10 @@ end//let//end(I1CLScls(igpt,icmp))
 end where
 {
 //
-val filr = envx2js_get_filr(env0)
-val nind = envx2js_get_nind(env0)
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
 //
 fun
 f1_i1clscls
@@ -1979,9 +1981,9 @@ case+ icls of
 list_nil() =>
 let
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 in//let
 (
 nindstrnfpr
@@ -2430,10 +2432,10 @@ js1emit_fjarglst
 //
 val filr =
 (
-  envx2js_get_filr(env0))
+envx2js_filr$get(env0))
 val nind =
 (
-  envx2js_get_nind(env0))
+envx2js_nind$get(env0))
 //
 fnx
 loop1
