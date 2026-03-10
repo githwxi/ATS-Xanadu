@@ -1,9 +1,11 @@
 (* ****** ****** *)
+(* ****** ****** *)
 (*
-HX-2024-02-19:
+HX-2026-03-09:
 For accessing libxatsopt
 (*
-Mon 19 Feb 2024 10:54:31 AM
+Mon
+Mar 9 07:26:06 PM EDT 2026
 *)
 *)
 (* ****** ****** *)
@@ -96,5 +98,5 @@ Mon 19 Feb 2024 10:54:31 AM
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_HATS_libxatsopt.hats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_HATS_libxatsopt.hats] *)
 (***********************************************************************)

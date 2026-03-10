@@ -313,15 +313,20 @@ T2Ptrcd of
 // end of [s2type_node] // end of [ datatype(...) ]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 s2typ_linq(s2typ): bool
 fun
 s2typ_prfq(s2typ): bool
+//
 (* ****** ****** *)
+//
 fun
 s2typ_cbrfq(s2typ): bool
 fun
 s2typ_dataq(s2typ): bool
+//
 (* ****** ****** *)
 //
 fun

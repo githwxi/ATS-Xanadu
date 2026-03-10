@@ -48,6 +48,9 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#abstbox i0typ_tbox // p0tr
+#typedef i0typ = i0typ_tbox
+(* ****** ****** *)
 #abstbox i0pat_tbox // p0tr
 #typedef i0pat = i0pat_tbox
 (* ****** ****** *)
@@ -81,6 +84,44 @@ fun
 i0lab_fprint
 (lab
 :i0lab(x0),out:FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i0typ_node =
+//
+(*
+|I0Tbas of sym_t // type
+*)
+//
+|I0Tcst of s2cst // constant
+|I0Tvar of s2var // variable
+//
+|I0Tlft of (i0typ) // left-value
+//
+(* ****** ****** *)
+//
+|I0Ttop0 of (i0typ) // uninitized
+|I0Ttop1 of (i0typ) // delineared
+//
+(* ****** ****** *)
+//
+|I0Texi0 of // exists quantifier
+(s2varlst(*vars*), i0typ(*body*))
+|I0Tuni0 of // forall quantifier
+(s2varlst(*vars*), i0typ(*body*))
+//
+(* ****** ****** *)
+//
+|I0Ttcon of (d2con, i0typlst)
+(trcdknd(*knd*), sint(*npf*), l0i0tlst)
+|I0Ttrcd of
+(trcdknd(*knd*), sint(*npf*), l0i0tlst)
+//
+(* ****** ****** *)
+//
+|I0Terrck of (int(*lvl*), i0typ)//HX:tread-error
 //
 (* ****** ****** *)
 (* ****** ****** *)
