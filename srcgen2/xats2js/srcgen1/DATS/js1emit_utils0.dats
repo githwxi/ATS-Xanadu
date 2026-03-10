@@ -462,7 +462,7 @@ prints
 //
 #impltmp g_print$out<>() = filr
 //
-val stmp = i1tnm_get_stmp(itnm)
+val stmp = i1tnm_stmp$get(itnm)
 //
 }(*where*)//end-of-[i1tnmjs1(filr,itnm)]
 //

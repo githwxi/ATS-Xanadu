@@ -66,25 +66,25 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 #symload name with d2var_get_name
 (* ****** ****** *)
-#symload lctn with i1val_get_lctn
-#symload node with i1val_get_node
+#symload lctn with i1val_lctn$get
+#symload node with i1val_node$get
 (* ****** ****** *)
-#symload lctn with fjarg_get_lctn
-#symload node with fjarg_get_node
+#symload lctn with fjarg_lctn$get
+#symload node with fjarg_node$get
 (* ****** ****** *)
-#symload node with i1gua_get_lctn
-#symload node with i1gpt_get_lctn
-#symload node with i1cls_get_lctn
+#symload node with i1gua_lctn$get
+#symload node with i1gpt_lctn$get
+#symload node with i1cls_lctn$get
 (* ****** ****** *)
-#symload node with i1gua_get_node
-#symload node with i1gpt_get_node
-#symload node with i1cls_get_node
+#symload node with i1gua_node$get
+#symload node with i1gpt_node$get
+#symload node with i1cls_node$get
 (* ****** ****** *)
-#symload lctn with t1imp_get_stmp
-#symload node with t1imp_get_node
+#symload lctn with t1imp_stmp$get
+#symload node with t1imp_node$get
 (* ****** ****** *)
-#symload lctn with i1dcl_get_lctn
-#symload node with i1dcl_get_node
+#symload lctn with i1dcl_lctn$get
+#symload node with i1dcl_node$get
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -822,9 +822,9 @@ i1valdcl_fprint
   (ival, out0) = let
 //
 val dpat =
-i1valdcl_get_dpat(ival)
+i1valdcl_dpat$get(ival)
 val tdxp =
-i1valdcl_get_tdxp(ival)
+i1valdcl_tdxp$get(ival)
 //
 #impltmp g_print$out<>() = out0
 //
@@ -840,9 +840,9 @@ i1vardcl_fprint
   (ivar, out0) = let
 //
 val dpid =
-i1vardcl_get_dpid(ivar)
+i1vardcl_dpid$get(ivar)
 val dini =
-i1vardcl_get_dini(ivar)
+i1vardcl_dini$get(ivar)
 //
 #impltmp g_print$out<>() = out0
 //
@@ -859,11 +859,11 @@ i1fundcl_fprint
   (ifun, out0) = let
 //
 val dpid =
-i1fundcl_get_dpid(ifun)
+i1fundcl_dpid$get(ifun)
 val farg =
-i1fundcl_get_farg(ifun)
+i1fundcl_farg$get(ifun)
 val tdxp =
-i1fundcl_get_tdxp(ifun)
+i1fundcl_tdxp$get(ifun)
 //
 #impltmp g_print$out<>() = out0
 //

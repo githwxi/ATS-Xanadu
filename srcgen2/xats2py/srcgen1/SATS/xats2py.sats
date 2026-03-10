@@ -102,12 +102,18 @@ fun
 xats2py_i1valdcl
 (env0: !envx2py, ival: i1valdcl): void
 fun
+xats2py_i1vardcl
+(env0: !envx2py, ivar: i1vardcl): void
+fun
 xats2py_i1fundcl
 (env0: !envx2py, ifun: i1fundcl): void
 //
 fun
 xats2py_i1valdclist
 (env0: !envx2py, i1vs: i1valdclist): void
+fun
+xats2py_i1vardclist
+(env0: !envx2py, i1vs: i1vardclist): void
 fun
 xats2py_i1fundclist
 (env0: !envx2py, i1fs: i1fundclist): void

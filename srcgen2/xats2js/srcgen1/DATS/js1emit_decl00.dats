@@ -90,8 +90,8 @@ _(*DATS*)="./../DATS/js1emit.dats"
 #symload ilts with i1cmp_get_ilts
 *)
 (* ****** ****** *)
-#symload lctn with i1dcl_get_lctn
-#symload node with i1dcl_get_node
+#symload lctn with i1dcl_lctn$get
+#symload node with i1dcl_node$get
 (* ****** ****** *)
 #symload filr with envx2js_get_filr
 #symload nind with envx2js_get_nind
@@ -723,9 +723,9 @@ js1emit_i1valdcl
 (* ****** ****** *)
 //
 val dpat =
-i1valdcl_get_dpat(idcl)
+i1valdcl_dpat$get(idcl)
 val tdxp =
-i1valdcl_get_tdxp(idcl)
+i1valdcl_tdxp$get(idcl)
 //
 (* ****** ****** *)
 //
@@ -753,7 +753,7 @@ TEQI1CMPsome
 let
 //
 val ival =
-i1cmp_get_ival(icmp)
+i1cmp_ival$get(icmp)
 val filr =
 envx2js_get_filr(env0)
 val nind =
@@ -811,9 +811,13 @@ val nind =
 envx2js_get_nind(env0)
 //
 val
-ival = i1cmp_get_ival(icmp)
+ival =
+(
+  i1cmp_ival$get(icmp))
 val
-ilts = i1cmp_get_ilts(icmp)
+ilts =
+(
+  i1cmp_ilts$get(icmp))
 //
 val () =
 js1emit_i1letlst(env0, ilts)
@@ -838,9 +842,9 @@ js1emit_i1vardcl
 (* ****** ****** *)
 //
 val dpid =
-i1vardcl_get_dpid(idcl)
+i1vardcl_dpid$get(idcl)
 val tdxp =
-i1vardcl_get_dini(idcl)
+i1vardcl_dini$get(idcl)
 //
 (* ****** ****** *)
 //
@@ -883,7 +887,7 @@ let
 val filr = env0.filr()
 val nind = env0.nind()
 //
-val ival = i1cmp_get_ival(icmp)
+val ival = i1cmp_ival$get(icmp)
 val (  ) = js1emit_i1cmp(env0, icmp)
 //
 in//let
@@ -930,11 +934,11 @@ js1emit_i1fundcl
 (* ****** ****** *)
 //
 val dvar =
-i1fundcl_get_dpid(ifun)
+i1fundcl_dpid$get(ifun)
 val fjas =
-i1fundcl_get_farg(ifun)
+i1fundcl_farg$get(ifun)
 val tdxp =
-i1fundcl_get_tdxp(ifun)
+i1fundcl_tdxp$get(ifun)
 //
 (* ****** ****** *)
 //

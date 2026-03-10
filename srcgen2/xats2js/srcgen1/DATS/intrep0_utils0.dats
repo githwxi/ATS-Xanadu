@@ -64,8 +64,8 @@ XATSOPT "./../../.."
 #staload "./../SATS/intrep0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-#symload lctn with i0pat_get_lctn
-#symload node with i0pat_get_node
+#symload lctn with i0pat_lctn$get
+#symload node with i0pat_node$get
 (* ****** ****** *)
 (* ****** ****** *)
 

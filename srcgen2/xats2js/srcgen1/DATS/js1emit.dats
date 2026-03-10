@@ -62,13 +62,13 @@ js1emit_i1parsed
   (filr, ipar) = let
 //
 val stadyn =
-i1parsed_get_stadyn(ipar)
+i1parsed_stadyn$get(ipar)
 val nerror =
-i1parsed_get_nerror(ipar)
+i1parsed_nerror$get(ipar)
 val source =
-i1parsed_get_source(ipar)
+i1parsed_source$get(ipar)
 val parsed =
-i1parsed_get_parsed(ipar)
+i1parsed_parsed$get(ipar)
 //
 val
 env0 = envx2js_make_out(filr)

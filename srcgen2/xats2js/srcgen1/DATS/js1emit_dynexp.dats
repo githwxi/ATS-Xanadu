@@ -83,20 +83,20 @@ _(*DATS*)="./../DATS/js1emit.dats"
 #symload lctn with d2con_get_lctn
 #symload lctn with d2cst_get_lctn
 (* ****** ****** *)
-#symload lctn with i1val_get_lctn
+#symload lctn with i1val_lctn$get
 (* ****** ****** *)
-#symload lctn with i1cmp_get_lctn
-#symload ival with i1cmp_get_ival
-#symload ilts with i1cmp_get_ilts
+#symload lctn with i1cmp_lctn$get
+#symload ival with i1cmp_ival$get
+#symload ilts with i1cmp_ilts$get
 (* ****** ****** *)
-#symload node with i1gua_get_node
-#symload node with i1cls_get_node
-#symload node with i1gpt_get_node
+#symload node with i1gua_node$get
+#symload node with i1cls_node$get
+#symload node with i1gpt_node$get
 (* ****** ****** *)
-#symload node with t1imp_get_node
+#symload node with t1imp_node$get
 (* ****** ****** *)
-#symload lctn with i1dcl_get_lctn
-#symload node with i1dcl_get_node
+#symload lctn with i1dcl_lctn$get
+#symload node with i1dcl_node$get
 (* ****** ****** *)
 (* ****** ****** *)
 #symload filr with envx2js_get_filr
@@ -1480,7 +1480,7 @@ envx2js_get_nind(env0)
 val
 dcst =
 (
-  t1imp_get_dcst(timp))
+  t1imp_dcst$get(timp))
 val
 dopt = t1imp_i1dclq(timp)
 //
@@ -1534,7 +1534,7 @@ then
 d2varjs1(filr, d2v1) where
 {
 val
-d2v1 = i1fundcl_get_dpid(i1f1) }
+d2v1 = i1fundcl_dpid$get(i1f1) }
 else
 dcst2varfpr(filr, dcst, d2cs, i1fs)
 //
@@ -1864,7 +1864,7 @@ I1GUAexp(icmp) =>
 let
 //
 val ival =
-i1cmp_get_ival(icmp)
+i1cmp_ival$get(icmp)
 val (  ) =
 js1emit_i1cmp(env0, icmp)
 //

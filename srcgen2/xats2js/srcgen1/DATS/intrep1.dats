@@ -122,20 +122,20 @@ i0e0.lctn(),I1Vnone1(i0e0))
 (* ****** ****** *)
 //
 #implfun
-i1cmp_get_lctn
+i1cmp_lctn$get
 (  icmp  ) =
 (
-i1val_get_lctn(icmp.ival()))
+i1val_lctn$get(icmp.ival()))
 //
 #implfun
-i1cmp_get_ival
+i1cmp_ival$get
 (  icmp  ) =
 (
 case+ icmp of
 |I1CMPcons(ilts, ival) => ival)
 //
 #implfun
-i1cmp_get_ilts
+i1cmp_ilts$get
 (  icmp  ) =
 (
 case+ icmp of
@@ -161,12 +161,12 @@ fjarg_make_node
 (   loc,nod   ) = FJARG(loc,nod)
 //
 #implfun
-fjarg_get_lctn(fja) =
+fjarg_lctn$get(fja) =
 let
   val+FJARG(loc,nod) = fja in loc
 end
 #implfun
-fjarg_get_node(fja) =
+fjarg_node$get(fja) =
 let
   val+FJARG(loc,nod) = fja in nod
 end
@@ -193,12 +193,12 @@ i1gua_make_node
 (   loc,nod   ) = I1GUA(loc,nod)
 //
 #implfun
-i1gua_get_lctn(gua) =
+i1gua_lctn$get(gua) =
 let
   val+I1GUA(loc,nod) = gua in loc
 end
 #implfun
-i1gua_get_node(gua) =
+i1gua_node$get(gua) =
 let
   val+I1GUA(loc,nod) = gua in nod
 end
@@ -224,12 +224,12 @@ i1gpt_make_node
 (   loc,nod   ) = I1GPT(loc,nod)
 //
 #implfun
-i1gpt_get_lctn(gpt) =
+i1gpt_lctn$get(gpt) =
 let
   val+I1GPT(loc,nod) = gpt in loc
 end
 #implfun
-i1gpt_get_node(gpt) =
+i1gpt_node$get(gpt) =
 let
   val+I1GPT(loc,nod) = gpt in nod
 end
@@ -255,12 +255,12 @@ i1cls_make_node
 (   loc,nod   ) = I1CLS(loc,nod)
 //
 #implfun
-i1cls_get_lctn(cls) =
+i1cls_lctn$get(cls) =
 let
   val+I1CLS(loc,nod) = cls in loc
 end
 #implfun
-i1cls_get_node(cls) =
+i1cls_node$get(cls) =
 let
   val+I1CLS(loc,nod) = cls in nod
 end
@@ -271,7 +271,7 @@ endloc(*local*)//end-of-[local(i1cls)]
 (* ****** ****** *)
 //
 #implfun
-t1imp_get_dcst
+t1imp_dcst$get
   (timp) =
 (
 case+ node of
@@ -280,8 +280,8 @@ case+ node of
 |T1IMPallx
 (dcst, t2js, dcls) => dcst)
 where{
- val node = t1imp_get_node(timp)
-}(*where*)//endof(t1imp_get_dcst(timp))
+ val node = t1imp_node$get(timp)
+}(*where*)//endof(t1imp_dcst$get(timp))
 //
 (* ****** ****** *)
 
@@ -310,12 +310,12 @@ t1imp_make_node
 (* ****** ****** *)
 //
 #implfun
-t1imp_get_stmp(tmp) =
+t1imp_stmp$get(tmp) =
 let
   val+T1IMP(stm,nod) = tmp in stm
 end
 #implfun
-t1imp_get_node(tmp) =
+t1imp_node$get(tmp) =
 let
   val+T1IMP(stm,nod) = tmp in nod
 end
@@ -394,7 +394,7 @@ I1TNM of (stamp)
 in//local
 //
 #implfun
-i1tnm_get_stmp
+i1tnm_stmp$get
   ( itnm ) =
 let
 val+
@@ -454,12 +454,12 @@ i1val_make_node
   I1VAL(loc, nod) )
 //
 #implfun
-i1val_get_lctn(i1v) =
+i1val_lctn$get(i1v) =
 let
 val+
 I1VAL(loc,nod) = i1v in loc end
 #implfun
-i1val_get_node(i1v) =
+i1val_node$get(i1v) =
 let
 val+
 I1VAL(loc,nod) = i1v in nod end
@@ -491,12 +491,12 @@ i1dcl_make_node
   I1DCL(loc, nod) )
 //
 #implfun
-i1dcl_get_lctn(i1d) =
+i1dcl_lctn$get(i1d) =
 let
 val+
 I1DCL(loc,nod) = i1d in loc end
 #implfun
-i1dcl_get_node(i1d) =
+i1dcl_node$get(i1d) =
 let
 val+
 I1DCL(loc,nod) = i1d in nod end
@@ -520,7 +520,7 @@ i1valdcl_tbox = i1valdcl
 in//local
 
 #implfun
-i1valdcl_get_lctn
+i1valdcl_lctn$get
   (  ival  ) = let
 val+
 I1VALDCL
@@ -528,7 +528,7 @@ I1VALDCL
 , ibnd, tdxp) = ival in lctn end
 
 #implfun
-i1valdcl_get_dpat
+i1valdcl_dpat$get
   (  ival  ) = let
 val+
 I1VALDCL
@@ -536,7 +536,7 @@ I1VALDCL
 , ibnd, tdxp) = ival in ibnd end
 
 #implfun
-i1valdcl_get_tdxp
+i1valdcl_tdxp$get
   (  ival  ) = let
 val+
 I1VALDCL
@@ -571,7 +571,7 @@ i1vardcl_tbox = i1vardcl
 in//local
 
 #implfun
-i1vardcl_get_lctn
+i1vardcl_lctn$get
   (  ivar  ) = let
 val+
 I1VARDCL
@@ -579,7 +579,7 @@ I1VARDCL
 , dpid, dini) = ivar in lctn end
 
 #implfun
-i1vardcl_get_dpid
+i1vardcl_dpid$get
   (  ivar  ) = let
 val+
 I1VARDCL
@@ -587,7 +587,7 @@ I1VARDCL
 , dpid, dini) = ivar in dpid end
 
 #implfun
-i1vardcl_get_dini
+i1vardcl_dini$get
   (  ivar  ) = let
 val+
 I1VARDCL
@@ -624,7 +624,7 @@ i1fundcl_tbox = i1fundcl
 in//local
 
 #implfun
-i1fundcl_get_lctn
+i1fundcl_lctn$get
   (  ifun  ) = let
 val+
 I1FUNDCL
@@ -633,7 +633,7 @@ I1FUNDCL
 , farg, tdxp) = ifun in lctn end
 
 #implfun
-i1fundcl_get_dpid
+i1fundcl_dpid$get
   (  ifun  ) = let
 val+
 I1FUNDCL
@@ -642,7 +642,7 @@ I1FUNDCL
 , farg, tdxp) = ifun in dpid end
 
 #implfun
-i1fundcl_get_farg
+i1fundcl_farg$get
   (  ifun  ) = let
 val+
 I1FUNDCL
@@ -653,7 +653,7 @@ I1FUNDCL
 (* ****** ****** *)
 
 #implfun
-i1fundcl_get_tdxp
+i1fundcl_tdxp$get
   (  ifun  ) = let
 val+
 I1FUNDCL
@@ -698,7 +698,7 @@ in//local
 (* ****** ****** *)
 //
 #implfun
-i1parsed_get_stadyn
+i1parsed_stadyn$get
   (ipar) =
 (
   stadyn ) where
@@ -707,10 +707,10 @@ val+
 I1PARSED
 ( stadyn
 , nerror, source, parsed) = ipar
-} (*where*)//end-of-[i1parsed_get_stadyn]
+} (*where*)//end-of-[i1parsed_stadyn$get]
 //
 #implfun
-i1parsed_get_nerror
+i1parsed_nerror$get
   (ipar) =
 (
   nerror ) where
@@ -719,10 +719,10 @@ val+
 I1PARSED
 ( stadyn
 , nerror, source, parsed) = ipar
-} (*where*)//end-of-[i1parsed_get_nerror]
+} (*where*)//end-of-[i1parsed_nerror$get]
 //
 #implfun
-i1parsed_get_source
+i1parsed_source$get
   (ipar) =
 (
   source ) where
@@ -731,12 +731,12 @@ val+
 I1PARSED
 ( stadyn
 , nerror, source, parsed) = ipar
-} (*where*)//end-of-[i1parsed_get_source]
+} (*where*)//end-of-[i1parsed_source$get]
 //
 (* ****** ****** *)
 
 #implfun
-i1parsed_get_parsed
+i1parsed_parsed$get
   (ipar) =
 (
   parsed ) where
@@ -745,7 +745,7 @@ val+
 I1PARSED
 ( stadyn
 , nerror, source, parsed) = ipar
-} (*where*)//end-of-[i1parsed_get_parsed]
+} (*where*)//end-of-[i1parsed_parsed$get]
 
 (* ****** ****** *)
 //

@@ -70,11 +70,11 @@ _(*DATS*)="./../DATS/xats2js.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#symload lctn with i1dcl_get_lctn
-#symload node with i1dcl_get_node
+#symload lctn with i1dcl_lctn$get
+#symload node with i1dcl_node$get
 (* ****** ****** *)
-#symload node with t1imp_get_node
-#symload stmp with t1imp_get_stmp
+#symload node with t1imp_node$get
+#symload stmp with t1imp_stmp$get
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -791,7 +791,7 @@ val nind =
 envx2js_get_nind(env0)
 //
 val dpat =
-i1valdcl_get_dpat(iprv)
+i1valdcl_dpat$get(iprv)
 //
 in//let
 nindstrnfpr
@@ -808,9 +808,9 @@ xats2js_i1valdcl
 (* ****** ****** *)
 //
 val dpat =
-i1valdcl_get_dpat(ival)
+i1valdcl_dpat$get(ival)
 val tdxp =
-i1valdcl_get_tdxp(ival)
+i1valdcl_tdxp$get(ival)
 //
 (* ****** ****** *)
 //
@@ -872,9 +872,9 @@ xats2js_i1vardcl
 (* ****** ****** *)
 //
 val dpid =
-i1vardcl_get_dpid(ivar)
+i1vardcl_dpid$get(ivar)
 val tdxp =
-i1vardcl_get_dini(ivar)
+i1vardcl_dini$get(ivar)
 //
 (* ****** ****** *)
 //
@@ -939,7 +939,7 @@ val nind =
 envx2js_get_nind(env0)
 //
 val dvar =
-i1fundcl_get_dpid(iprf)
+i1fundcl_dpid$get(iprf)
 //
 in//let
 nindstrnfpr
@@ -956,11 +956,11 @@ xats2js_i1fundcl
 (* ****** ****** *)
 //
 val dvar =
-i1fundcl_get_dpid(ifun)
+i1fundcl_dpid$get(ifun)
 val fjas =
-i1fundcl_get_farg(ifun)
+i1fundcl_farg$get(ifun)
 val tdxp =
-i1fundcl_get_tdxp(ifun)
+i1fundcl_tdxp$get(ifun)
 //
 (* ****** ****** *)
 //
@@ -1043,7 +1043,7 @@ val nind =
 envx2js_get_nind(env0)
 //
 val dvar =
-i1fundcl_get_dpid(itfn)
+i1fundcl_dpid$get(itfn)
 //
 in//let
 nindstrnfpr
