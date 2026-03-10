@@ -79,7 +79,7 @@ xats2py_i1dcl
 let
 //
 val
-filr = envx2py_get_filr(env0)
+filr = envx2py_filr$get(env0)
 in//let
 //
 strnfpr(filr, "## ");
@@ -141,9 +141,9 @@ end where
 val (  ) =
 let
 val filr =
-envx2py_get_filr(env0)
+envx2py_filr$get(env0)
 val nind =
-envx2py_get_nind(env0)
+envx2py_nind$get(env0)
 in//let
 (
 nindstrnfpr(filr, nind, "## I1VALDCL\n"))
@@ -205,9 +205,9 @@ end where
 val (  ) =
 let
 val filr =
-envx2py_get_filr(env0)
+envx2py_filr$get(env0)
 val nind =
-envx2py_get_nind(env0)
+envx2py_nind$get(env0)
 in//let
 (
 nindstrnfpr(filr, nind, "// I1VARDCL\n"))
@@ -236,9 +236,9 @@ i1fundcl_tdxp$get(ifun)
 val (  ) =
 let
 val filr =
-envx2py_get_filr(env0)
+envx2py_filr$get(env0)
 val nind =
-envx2py_get_nind(env0)
+envx2py_nind$get(env0)
 in//let
 nindfpr(filr,nind);
 strnfpr(filr,"## ");
@@ -291,9 +291,9 @@ end where
 val (  ) =
 let
 val filr =
-envx2py_get_filr(env0)
+envx2py_filr$get(env0)
 val nind =
-envx2py_get_nind(env0)
+envx2py_nind$get(env0)
 in//let
 (
 nindstrnfpr(filr, nind, "## I1FUNDCL\n"))

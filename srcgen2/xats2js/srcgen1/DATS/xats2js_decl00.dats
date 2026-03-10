@@ -174,9 +174,9 @@ dcl0.node() of
 _(* otherwise *) =>
 let
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 in//let
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
@@ -197,9 +197,9 @@ val loc0 = dcl0.lctn()
 val (  ) =
 let
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 in//let
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
@@ -218,10 +218,10 @@ let
 //
 val
 filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val
 nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 val-
 I1Dextern
@@ -264,10 +264,10 @@ let
 //
 val
 filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val
 nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 val-
 I1Dstatic
@@ -341,10 +341,10 @@ let
 //
 val
 filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val
 nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 val-
 I1Dlocal0
@@ -405,10 +405,10 @@ let
 //
 val
 filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val
 nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 val-
 I1Dtmpsub
@@ -454,10 +454,10 @@ let
 //
 val
 filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val
 nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 val-
 I1Dinclude
@@ -617,10 +617,10 @@ let
 //
 val
 filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val
 nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 val-
 I1Dimplmnt0
@@ -705,8 +705,8 @@ dimpl_fprint
 ) where
 {
 //
-val filr = envx2js_get_filr(env0)
-val nind = envx2js_get_nind(env0)
+val filr = envx2js_filr$get(env0)
+val nind = envx2js_nind$get(env0)
 //
 (*
 val (  ) =
@@ -767,8 +767,8 @@ xats2js_i1dcl(env0,idcl(*tmp*))
 ) where
 {
 //
-val filr = envx2js_get_filr(env0)
-val nind = envx2js_get_nind(env0)
+val filr = envx2js_filr$get(env0)
+val nind = envx2js_nind$get(env0)
 //
 (*
 val (  ) =
@@ -786,9 +786,9 @@ xats2js_i1prvdcl
   (env0, iprv) = let
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 val dpat =
 i1valdcl_dpat$get(iprv)
@@ -852,9 +852,9 @@ end where
 val (  ) =
 let
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 in//let
 (
 nindstrnfpr(filr, nind, "// I1VALDCL\n"))
@@ -916,9 +916,9 @@ end where
 val (  ) =
 let
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 in//let
 (
 nindstrnfpr(filr, nind, "// I1VARDCL\n"))
@@ -934,9 +934,9 @@ xats2js_i1prfdcl
   (env0, iprf) = let
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 val dvar =
 i1fundcl_dpid$get(iprf)
@@ -967,9 +967,9 @@ i1fundcl_tdxp$get(ifun)
 val (  ) =
 let
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 in//let
 nindfpr(filr,nind);
 strnfpr(filr,"// ");
@@ -1021,9 +1021,9 @@ end where
 val (  ) =
 let
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 in//let
 (
 nindstrnfpr(filr, nind, "// I1FUNDCL\n"))
@@ -1038,9 +1038,9 @@ xats2js_i1tfndcl
   (env0, itfn) = let
 //
 val filr =
-envx2js_get_filr(env0)
+envx2js_filr$get(env0)
 val nind =
-envx2js_get_nind(env0)
+envx2js_nind$get(env0)
 //
 val dvar =
 i1fundcl_dpid$get(itfn)
