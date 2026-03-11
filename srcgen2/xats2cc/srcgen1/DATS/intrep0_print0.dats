@@ -157,7 +157,54 @@ in//let
 case+
 iexp.node() of
 //
+(* ****** ****** *)
+//
+|I0Eint(int) =>
+(
+ prints("I0Eint(", int, ")"))
+|I0Ebtf(btf) =>
+(
+ prints("I0Ebtf(", btf, ")"))
+|I0Echr(chr) =>
+(
+ prints("I0Echr(", chr, ")"))
+|I0Eflt(flt) =>
+(
+ prints("I0Eflt(", flt, ")"))
+|I0Estr(str) =>
+(
+ prints("I0Estr(", str, ")"))
+//
+(* ****** ****** *)
+//
 end(*let*)//end-of-[i0exp_fprint(iexp,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0dcl_fprint
+(idcl, out0) =
+let
+//
+#impltmp
+g_print$out
+<(*0*)>((*0*)) = out0
+//
+in//let
+//
+case+
+idcl.node() of
+//
+(* ****** ****** *)
+//
+|I0Dd3ecl(d3cl) =>
+(
+ prints("I0Dd3ecl(", d3cl, ")"))
+//
+(* ****** ****** *)
+//
+end(*let*)//end-of-[i0dcl_fprint(idcl,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -223,6 +223,7 @@ in//let
 //
 case+
 i0e0.node() of
+(* ****** ****** *)
 //
 |I0Eint(int) =>
 (
