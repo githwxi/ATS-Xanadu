@@ -60,6 +60,13 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload node with i0typ_node$get
+#symload node with i0pat_node$get
+#symload node with i0exp_node$get
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 i0typ_fprint
 (ityp, out0) =
@@ -70,6 +77,10 @@ g_print$out
 <(*0*)>((*0*)) = out0
 //
 in//let
+//
+case+
+ityp.node() of
+//
 end(*let*)//end-of-[i0typ_fprint(ityp,out0)]
 //
 (* ****** ****** *)
@@ -85,6 +96,10 @@ g_print$out
 <(*0*)>((*0*)) = out0
 //
 in//let
+//
+case+
+ipat.node() of
+//
 end(*let*)//end-of-[i0pat_fprint(ipat,out0)]
 //
 (* ****** ****** *)
@@ -100,6 +115,10 @@ g_print$out
 <(*0*)>((*0*)) = out0
 //
 in//let
+//
+case+
+iexp.node() of
+//
 end(*let*)//end-of-[i0exp_fprint(iexp,out0)]
 //
 (* ****** ****** *)
