@@ -38,6 +38,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #staload
 "./../../../SATS/xbasics.sats"
