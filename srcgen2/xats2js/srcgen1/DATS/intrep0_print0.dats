@@ -131,42 +131,53 @@ prints("I0Pnil(",")")
 (* ****** ****** *)
 //
 |I0Pany() =>
-prints("I0Pany(",")")
+(
+ prints("I0Pany(",")"))
 |I0Pvar(d2v) =>
-prints("I0Pvar(",d2v,")")
+(
+ prints("I0Pvar(",d2v,")"))
 //
 (* ****** ****** *)
 //
 |I0Pint(tok) =>
-prints("I0Pint(",tok,")")
+(
+ prints("I0Pint(",tok,")"))
 |I0Pbtf(sym) =>
-prints("I0Pbtf(",sym,")")
+(
+ prints("I0Pbtf(",sym,")"))
 |I0Pchr(tok) =>
-prints("I0Pchr(",tok,")")
+(
+ prints("I0Pchr(",tok,")"))
 |I0Pstr(tok) =>
-prints("I0Pstr(",tok,")")
+(
+ prints("I0Pstr(",tok,")"))
 //
 (* ****** ****** *)
 |I0Pcon(d2c) =>
-prints("I0Pcon(",d2c,")")
+(
+ prints("I0Pcon(",d2c,")"))
 (* ****** ****** *)
 //
-|I0Pbang i0p1 =>
+|I0Pbang
+(   i0p1   ) =>
 prints("I0Pbang(",i0p1,")")
-|I0Pflat i0p1 =>
+|I0Pflat
+(   i0p1   ) =>
 prints("I0Pflat(",i0p1,")")
-|I0Pfree i0p1 =>
+|I0Pfree
+(   i0p1   ) =>
 prints("I0Pfree(",i0p1,")")
 //
 (* ****** ****** *)
-|
-I0Pdap1
-( i0f0 ) =>
+//
+|I0Pdap1
+(   i0f0   ) =>
 prints("I0Pdap1(",i0f0,")")
+//
 (* ****** ****** *)
 //
 |I0Pdapp
-( i0f0, i0ps ) =>
+(i0f0, i0ps) =>
 prints("I0Pdapp(",i0f0,";",i0ps,")")
 //
 (* ****** ****** *)
