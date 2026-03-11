@@ -106,15 +106,49 @@ d3p.node() of
 //
 (* ****** ****** *)
 //
-|
-D3Pdap1(d3f0) =>
+|D3Pany _ => ((*void*))
+|D3Pvar _ => ((*void*))
+//
+(* ****** ****** *)
+//
+|D3Pint _ => ((*void*))
+|D3Pbtf _ => ((*void*))
+|D3Pchr _ => ((*void*))
+|D3Pflt _ => ((*void*))
+|D3Pstr _ => ((*void*))
+//
+(* ****** ****** *)
+|D3Pcon _ => ((*void*))
+(* ****** ****** *)
+//
+|D3Pbang
+(   d3p1   ) =>
+let
+val () =
+f3perr0_d3pat(out, d3p1) end
+//
+|D3Pflat
+(   d3p1   ) =>
+let
+val () =
+f3perr0_d3pat(out, d3p1) end
+|D3Pfree
+(   d3p1   ) =>
+let
+val () =
+f3perr0_d3pat(out, d3p1) end
+//
+(* ****** ****** *)
+//
+|D3Pdap1
+(   d3f0   ) =>
 let
 val () =
 f3perr0_d3pat(out, d3f0) end
-|
-D3Pdapp
-( d3f0
-, npf1, d3ps) =>
+//
+|D3Pdapp
+(d3f0
+,npf1, d3ps) =>
 let
 val () =
 f3perr0_d3pat(out, d3f0)
@@ -123,10 +157,9 @@ f3perr0_d3patlst(out, d3ps) end
 //
 (* ****** ****** *)
 //
-|
-D3Prfpt
-( d3p1
-, tkas, d3p2) =>
+|D3Prfpt
+(d3p1
+,tkas, d3p2) =>
 let
 val () =
 (
@@ -137,7 +170,24 @@ val () =
 //
 (* ****** ****** *)
 //
-|D3Pnone0 _ => (  (*void*)  )
+|D3Pargtp
+(d3p1, t2p2) =>
+let
+val () =
+(
+  f3perr0_d3pat(out, d3p1)) end
+//
+|D3Pannot
+(d3p1
+,s1e2, s2e2) =>
+let
+val () =
+(
+  f3perr0_d3pat(out, d3p1)) end
+//
+(* ****** ****** *)
+//
+|D3Pnone0 _ => (    (*void*)    )
 |D3Pnone1 _ => () | D3Pnone2 _ => ()
 //
 |D3Perrck _ => f3perr0_d3pat(out, d3p)
