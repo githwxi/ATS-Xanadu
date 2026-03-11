@@ -26,142 +26,105 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 //
-Mon Mar  9 02:57:23 PM EDT 2026
+Wed Mar 11 01:27:57 PM EDT 2026
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-(*
-#define
-XATSOPT "./../../.."
-*)
-(* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
-#include
-"./../../..\
-/HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-#include
-"./../HATS/mytmplib00.hats"
-(* ****** ****** *)
-#staload
-"./../../../SATS/dynexp2.sats"
-#staload
-"./../../../SATS/dynexp3.sats"
-(* ****** ****** *)
-//
 #staload "./../SATS/intrep0.sats"
-//
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#symload node with i0typ_node$get
-#symload node with i0pat_node$get
-#symload node with i0exp_node$get
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-i0typ_fprint
-(ityp, out0) =
-let
 //
 #impltmp
-g_print$out
-<(*0*)>((*0*)) = out0
-//
-in//let
-//
-case+
-ityp.node() of
-//
-end(*let*)//end-of-[i0typ_fprint(ityp,out0)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-i0pat_fprint
-(ipat, out0) =
-let
+< x0:t0 >
+i0lab_fprint
+ (lab, out) = let
 //
 #impltmp
-g_print$out
-<(*0*)>((*0*)) = out0
+g_print$out<>() = out
 //
 in//let
-//
-case+
-ipat.node() of
-//
-|I0Pany() =>
-prints("I0Pany(",")")
-|I0Pvar(d2v) =>
-prints("I0Pvar(",d2v,")")
-//
-(* ****** ****** *)
-//
-|I0Pint(tok) =>
-prints("I0Pint(",tok,")")
-|I0Pbtf(sym) =>
-prints("I0Pbtf(",sym,")")
-|I0Pchr(tok) =>
-prints("I0Pchr(",tok,")")
-|I0Pstr(tok) =>
-prints("I0Pstr(",tok,")")
-//
-(* ****** ****** *)
-|I0Pcon(d2c) =>
-prints("I0Pcon(",d2c,")")
-(* ****** ****** *)
-//
-|I0Pbang
-(   i0p1   ) =>
-prints("I0Pbang(",i0p1,")")
-|I0Pflat
-(   i0p1   ) =>
-prints("I0Pflat(",i0p1,")")
-|I0Pfree
-(   i0p1   ) =>
-prints("I0Pfree(",i0p1,")")
-//
-(* ****** ****** *)
-//
-end(*let*)//end-of-[i0pat_fprint(ipat,out0)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-i0exp_fprint
-(iexp, out0) =
-let
+case+ lab of
+|
+I0LAB(l01, x02) =>
+prints("I0LAB(",l01,";",x02,")")
+end(*let*)//end-of-[i0lab_fprint]
 //
 #impltmp
-g_print$out
-<(*0*)>((*0*)) = out0
+{ x0:t0 }
+g_print<i0lab(x0)>(ilab) =
+i0lab_fprint(ilab, g_print$out<>())
 //
-in//let
+(* ****** ****** *)
+(* ****** ****** *)
 //
-case+
-iexp.node() of
+#impltmp
+g_print
+<i0pat>(i0p0) =
+i0pat_fprint(i0p0, g_print$out<>())
 //
-end(*let*)//end-of-[i0exp_fprint(iexp,out0)]
+#impltmp
+g_print
+<i0exp>(i0e0) =
+i0exp_fprint(i0e0, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+#impltmp
+g_print
+<fiarg>(fia0) =
+fiarg_fprint(fia0, g_print$out<>())
+*)
+//
+(* ****** ****** *)
+//
+(*
+#impltmp
+g_print
+<i0gua>(gua0) =
+i0gua_fprint(gua0, g_print$out<>())
+//
+#impltmp
+g_print
+<i0gpt>(gpt0) =
+i0gpt_fprint(gpt0, g_print$out<>())
+//
+#impltmp
+g_print
+<i0cls>(cls0) =
+i0cls_fprint(cls0, g_print$out<>())
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print<t0imp>(timp) =
+t0imp_fprint(timp, g_print$out<>())
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i0dcl>(idcl) =
+i0dcl_fprint(idcl, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep0_print0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_xats2js_tmplib.dats] *)
 (***********************************************************************)
