@@ -64,6 +64,11 @@ XATSOPT "./../../.."
 i0typ_fprint
 (ityp, out0) =
 let
+//
+#impltmp
+g_print$out
+<(*0*)>((*0*)) = out0
+//
 in//let
 end(*let*)//end-of-[i0typ_fprint(ityp,out0)]
 //
@@ -74,6 +79,11 @@ end(*let*)//end-of-[i0typ_fprint(ityp,out0)]
 i0pat_fprint
 (ipat, out0) =
 let
+//
+#impltmp
+g_print$out
+<(*0*)>((*0*)) = out0
+//
 in//let
 end(*let*)//end-of-[i0pat_fprint(ipat,out0)]
 //
@@ -84,6 +94,11 @@ end(*let*)//end-of-[i0pat_fprint(ipat,out0)]
 i0exp_fprint
 (iexp, out0) =
 let
+//
+#impltmp
+g_print$out
+<(*0*)>((*0*)) = out0
+//
 in//let
 end(*let*)//end-of-[i0exp_fprint(iexp,out0)]
 //
