@@ -450,7 +450,7 @@ printsln
 *)
 endlet // end of [G0Eerrck(lvl,ge1)]
 //
-| _(* otherwise *) => ( (*void*) )
+| _(* otherwise *) => (   (*void*)   )
 //
 end(*let*)//end-of(g0exp_fpemsg(out,g0e))
 //
@@ -510,7 +510,7 @@ if
 printsln
 ("PREAD00-ERROR:",s0t.lctn(),":",s0t)
 )
-| _(* otherwise *) => ( (*void*) )
+| _(* otherwise *) => (   (*void*)   )
 //
 end(*let*)//end-of(sort0_fpemsg(out,s0t))
 //
@@ -593,7 +593,7 @@ if
 printsln
 ("PREAD00-ERROR:",s0e.lctn(),":",s0e)
 )
-| _(* otherwise *) => ( (*void*) )
+| _(* otherwise *) => (   (*void*)   )
 end(*let*)//end-of(s0exp_fpemsg(out,s0e))
 //
 endloc(*local*)//end-of-local(s0exp_fpemsg)
@@ -1976,11 +1976,15 @@ endlet // end-of-(D0Cdynconst(_,_,_))
 //
 (* ****** ****** *)
 //
-| D0Ctkerr _  => ( (*void*) )
-| D0Cerrck
-( lvl1, dcl1)  => d0ecl_fpemsg(out, dcl)
+|D0Ctkerr _  => (   (*void*)   )
+|D0Cerrck
+( _(*lvl1*)
+, _(*dcl1*))  => d0ecl_fpemsg(out, dcl)
 //
-| _(* otherwise *) => ((*void*))
+(* ****** ****** *)
+//
+| _(*otherwise*) => (   (*void*)   )
+//
 end(*let*) // end of [auxmain(out, dcl)]
 //
 in//local
@@ -2003,7 +2007,7 @@ printsln();
 printsln("\
 PREAD00-ERROR:",dcl.lctn(),":",dcl)))
 //
-| _(* otherwise *) => ((*void*))
+| _(*otherwise*) => (   (*skipped*)   )
 end(*let*)//end-of(d0ecl_fpemsg(out,dcl))
 //
 endloc(*local*)//end-of(local(d0ecl_fpemsg))
@@ -2629,7 +2633,7 @@ val loc = sqa.lctn()
 in//let
 printsln
 ("PREAD00-ERROR:", loc, ":", sqa)
-end//let//end-of-[S0QAGnone(tok)]
+end(*let*)//end-of-[S0QAGnone(tok)]
 |
 S0QAGsome
 (tbeg,q0as,tend) =>
@@ -2662,7 +2666,7 @@ val loc = tqa.lctn()
 in//let
 printsln
 ("PREAD00-ERROR:", loc, ":", tqa)
-end//let//end-of-[T0QAGnone(tok)]
+end(*let*)//end-of-[T0QAGnone(tok)]
 |
 T0QAGsome
 (tbeg,q0as,tend) =>
@@ -2691,7 +2695,7 @@ val loc = tia.lctn()
 in//let
 printsln
 ("PREAD00-ERROR:", loc, ":", tia)
-end//let//end-of-[T0IAGnone(tok)]
+end(*let*)//end-of-[T0IAGnone(tok)]
 |
 T0IAGsome
 (tbeg,s0es,tend) =>

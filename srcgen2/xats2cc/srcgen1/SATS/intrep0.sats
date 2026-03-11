@@ -58,6 +58,8 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../../../SATS/statyp2.sats"
 #staload // D2E =
 "./../../../SATS/dynexp2.sats"
+#staload // D3E =
+"./../../../SATS/dynexp3.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -165,12 +167,25 @@ i0typ_fprint
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 datatype
 i0pat_node =
+//
+|I0Pany of ()
+|I0Pvar of d2var
+//
+|I0Pint of token
+|I0Pbtf of sym_t
+|I0Pchr of token
+|I0Pflt of token
+|I0Pstr of token
+//
+|I0Pcon of (d2con)
+//
 (* ****** ****** *)
 //
 fun
-i0pat_sort$get
+i0pat_lctn$get
 (ipat: i0pat): loc_t
 fun
 i0pat_node$get
@@ -191,10 +206,21 @@ i0pat_fprint
 //
 datatype
 i0exp_node =
+//
+(* ****** ****** *)
+//
+|I0Eint of token
+|I0Ebtf of sym_t
+|I0Echr of token
+|I0Eflt of token
+|I0Estr of token
+//
+(* ****** ****** *)
+//
 (* ****** ****** *)
 //
 fun
-i0exp_sort$get
+i0exp_lctn$get
 (iexp: i0exp): loc_t
 fun
 i0exp_node$get
@@ -212,11 +238,24 @@ i0exp_fprint
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 datatype
 i0dcl_node =
+//
+|I0Dd3ecl of (d3ecl)
+//
 (* ****** ****** *)
+//
+fun
+i0dcl_lctn$get
+(idcl: i0dcl): loc_t
+fun
+i0dcl_node$get
+(idcl: i0dcl): i0dcl_node
+//
 #symload lctn with i0dcl_lctn$get
 #symload node with i0dcl_node$get
+//
 (* ****** ****** *)
 //
 fun

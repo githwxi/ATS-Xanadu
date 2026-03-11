@@ -1563,10 +1563,11 @@ if
  FPEMSG_ERRLVL) then () else
 let
 val loc0 = dcl0.lctn() in//let
-printsln
-("TREAD01-ERROR:",loc0,":",dcl0) end)
+printsln();
+printsln("\
+TREAD01-ERROR:",loc0,":",dcl0) end)
 //
-| _(* otherwise *) => (   (*skipped*)   )
+| _(*otherwise*) => (   (*skipped*)   )
 //
 end(*let*)//end-of(d1ecl_fpemsg(out,dcl0))
 //
