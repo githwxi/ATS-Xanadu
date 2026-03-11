@@ -148,25 +148,81 @@ i0typ_node =
 (* ****** ****** *)
 //
 fun
+i0typ_sort$get
+(ityp: i0typ): sort2
+fun
+i0typ_node$get
+(ityp: i0typ): i0typ_node
+//
+#symload sort with i0typ_sort$get
+#symload node with i0typ_node$get
+(* ****** ****** *)
+//
+fun
 i0typ_fprint
-(ityp:i0typ, out0:FILR): void
+(ityp: i0typ, out0: FILR): void
+#symload fprint with i0typ_fprint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+datatype
+i0pat_node =
+(* ****** ****** *)
+//
+fun
+i0pat_sort$get
+(ipat: i0pat): loc_t
+fun
+i0pat_node$get
+(ipat: i0pat): i0pat_node
+//
+#symload lctn with i0pat_lctn$get
+#symload node with i0pat_node$get
 //
 (* ****** ****** *)
 //
 fun
 i0pat_fprint
 (ipat:i0pat, out0:FILR): void
+#symload fprint with i0pat_fprint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i0exp_node =
+(* ****** ****** *)
+//
+fun
+i0exp_sort$get
+(iexp: i0exp): loc_t
+fun
+i0exp_node$get
+(iexp: i0exp): i0exp_node
+//
+#symload lctn with i0exp_lctn$get
+#symload node with i0exp_node$get
+//
+(* ****** ****** *)
 //
 fun
 i0exp_fprint
 (iexp:i0exp, out0:FILR): void
+#symload fprint with i0exp_fprint
 //
 (* ****** ****** *)
+(* ****** ****** *)
+datatype
+i0dcl_node =
+(* ****** ****** *)
+#symload lctn with i0dcl_lctn$get
+#symload node with i0dcl_node$get
 (* ****** ****** *)
 //
 fun
 i0dcl_fprint
 (idcl:i0dcl, out0:FILR): void
+#symload fprint with i0dcl_fprint
 //
 (* ****** ****** *)
 (* ****** ****** *)
