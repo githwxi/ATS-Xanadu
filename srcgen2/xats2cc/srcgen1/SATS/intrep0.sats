@@ -52,6 +52,21 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../../../SATS/xlabel0.sats"
 //
 (* ****** ****** *)
+#staload // S2E =
+"./../../../SATS/staexp2.sats"
+#staload // T2P =
+"./../../../SATS/statyp2.sats"
+#staload // D2E =
+"./../../../SATS/dynexp2.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i0lab(x0:type) =
+|
+I0LAB of (label, x0(*elt*))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #abstbox i0typ_tbox // p0tr
 #typedef i0typ = i0typ_tbox
@@ -62,11 +77,18 @@ Authoremail: gmhwxiATgmailDOTcom
 #abstbox i0exp_tbox // p0tr
 #typedef i0exp = i0exp_tbox
 (* ****** ****** *)
+#abstbox i0dcl_tbox // p0tr
+#typedef i0dcl = i0dcl_tbox
+(* ****** ****** *)
+#typedef l0i0t = i0lab(i0typ)
 #typedef l0i0p = i0lab(i0pat)
 #typedef l0i0e = i0lab(i0exp)
 (* ****** ****** *)
 #abstbox fiarg_tbox // p0tr
 #typedef fiarg = fiarg_tbox
+(* ****** ****** *)
+#typedef i0typlst = list(i0typ)
+#typedef l0i0tlst = list(l0i0t)
 (* ****** ****** *)
 #typedef i0patlst = list(i0pat)
 #typedef l0i0plst = list(l0i0p)
@@ -75,20 +97,15 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef i0explst = list(i0exp)
 #typedef l0i0elst = list(l0i0e)
 (* ****** ****** *)
+#typedef i0dclopt = optn(i0dcl)
+#typedef i0dclist = list(i0dcl)
 (* ****** ****** *)
-//
-datatype
-i0lab(x0:type) =
-|
-I0LAB of (label, x0(*elt*))
-//
 (* ****** ****** *)
 //
 fun
 <x0:type>
 i0lab_fprint
-(lab
-:i0lab(x0),out:FILR): void
+(lab:i0lab(x0), out:FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -120,7 +137,6 @@ i0typ_node =
 (* ****** ****** *)
 //
 |I0Ttcon of (d2con, i0typlst)
-(trcdknd(*knd*), sint(*npf*), l0i0tlst)
 |I0Ttrcd of
 (trcdknd(*knd*), sint(*npf*), l0i0tlst)
 //
