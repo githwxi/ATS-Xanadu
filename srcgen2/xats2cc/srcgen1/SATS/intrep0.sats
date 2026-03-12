@@ -103,11 +103,28 @@ are addressed:
 #typedef d3vardcl = $D3E.d3vardcl
 #typedef d3fundcl = $D3E.d3fundcl
 (* ****** ****** *)
+#typedef d3parsed = $D3E.d3parsed
+(* ****** ****** *)
+#typedef d3valdclist = list(d3valdcl)
+#typedef d3vardclist = list(d3vardcl)
+#typedef d3fundclist = list(d3fundcl)
+(* ****** ****** *)
+#typedef d3explstopt = optn(d3explst)
+#typedef d3eclistopt = optn(d3eclist)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 datatype
 i0lab(x0:type) =
 |
 I0LAB of (label, x0(*elt*))
+//
+(* ****** ****** *)
+//
+fun
+<x0:type>
+i0lab_fprint
+(lab:i0lab(x0), out:FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -123,12 +140,22 @@ I0LAB of (label, x0(*elt*))
 #abstbox i0dcl_tbox // p0tr
 #typedef i0dcl = i0dcl_tbox
 (* ****** ****** *)
+#abstbox t0imp_tbox // p0tr
+#typedef t0imp = t0imp_tbox
+(* ****** ****** *)
 #typedef l0i0t = i0lab(i0typ)
 #typedef l0i0p = i0lab(i0pat)
 #typedef l0i0e = i0lab(i0exp)
 (* ****** ****** *)
 #abstbox fiarg_tbox // p0tr
 #typedef fiarg = fiarg_tbox
+(* ****** ****** *)
+//
+#abstbox i0valdcl_tbox//p0tr
+#abstbox i0vardcl_tbox//p0tr
+#abstbox i0fundcl_tbox//p0tr
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #typedef i0typlst = list(i0typ)
 #typedef l0i0tlst = list(l0i0t)
@@ -145,11 +172,15 @@ I0LAB of (label, x0(*elt*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:type>
-i0lab_fprint
-(lab:i0lab(x0), out:FILR): void
+#abstbox i0parsed_tbox//p0tr
 //
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef i0parsed = i0parsed_tbox
+(* ****** ****** *)
+#typedef i0valdcl = i0valdcl_tbox
+#typedef i0vardcl = i0vardcl_tbox
+#typedef i0fundcl = i0fundcl_tbox
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -209,6 +240,21 @@ i0typ_fprint
 (ityp: i0typ, out0: FILR): void
 #symload fprint with i0typ_fprint
 //
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef i0dclist = list(i0dcl)
+(* ****** ****** *)
+#typedef i0valdcl = i0valdcl_tbox
+#typedef i0vardcl = i0vardcl_tbox
+#typedef i0fundcl = i0fundcl_tbox
+(* ****** ****** *)
+#typedef i0parsed = i0parsed_tbox
+(* ****** ****** *)
+#typedef i0valdclist = list(i0valdcl)
+#typedef i0vardclist = list(i0vardcl)
+#typedef i0fundclist = list(i0fundcl)
+(* ****** ****** *)
+#typedef i0dclistopt = optn(i0dclist)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -327,6 +373,8 @@ i0dcl_node =
 //
 (* ****** ****** *)
 //
+|I0Dnone0 of ((*0*)) |I0Dnone1 of (d3ecl)
+//
 (* ****** ****** *)
 //
 fun
@@ -345,6 +393,58 @@ fun
 i0dcl_fprint
 (idcl:i0dcl, out0:FILR): void
 #symload fprint with i0dcl_fprint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0valdcl_fprint
+(ival: i0valdcl, out0: FILR): void
+fun
+i0vardcl_fprint
+(ivar: i0vardcl, out0: FILR): void
+//
+fun
+i0fundcl_fprint
+(ifun: i0fundcl, out0: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0parsed_fprint
+(ipar: i0parsed, out0: FILR): void
+//
+(* ****** ****** *)
+//
+fun
+i0parsed_stadyn$get:(i0parsed)->sint
+fun
+i0parsed_nerror$get:(i0parsed)->sint
+//
+fun
+i0parsed_source$get:(i0parsed)->lcsrc
+//
+fun
+i0parsed_parsed$get:(i0parsed)->i0dclistopt
+//
+(* ****** ****** *)
+//
+#symload stadyn with i0parsed_stadyn$get
+#symload nerror with i0parsed_nerror$get
+#symload source with i0parsed_source$get
+#symload parsed with i0parsed_parsed$get
+//
+(* ****** ****** *)
+//
+fun
+i0parsed_make_args
+( stadyn:sint
+, nerror:sint
+, source:lcsrc
+, parsed:i0dclistopt): i0parsed//end-fun
+//
+#symload i0parsed with i0parsed_make_args
 //
 (* ****** ****** *)
 (* ****** ****** *)
