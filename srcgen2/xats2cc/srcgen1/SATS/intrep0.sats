@@ -114,6 +114,7 @@ i0lab_fprint
 //
 datatype
 i0typ_node =
+(* ****** ****** *)
 //
 (*
 |I0Tbas of sym_t // type
@@ -275,6 +276,13 @@ datatype
 i0dcl_node =
 //
 |I0Dd3ecl of (d3ecl)
+//
+|I0Dstatic of
+(token(*STATIC*), i0dcl)
+|I0Dextern of
+(token(*EXTERN*), i0dcl)
+//
+(* ****** ****** *)
 //
 (* ****** ****** *)
 //

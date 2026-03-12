@@ -71,13 +71,20 @@ i0lab_fprint(ilab, g_print$out<>())
 //
 #impltmp
 g_print
-<i0pat>(i0p0) =
-i0pat_fprint(i0p0, g_print$out<>())
+<i0typ>(ityp) =
+i0pat_fprint(ityp, g_print$out<>())
+//
+(* ****** ****** *)
 //
 #impltmp
 g_print
-<i0exp>(i0e0) =
-i0exp_fprint(i0e0, g_print$out<>())
+<i0pat>(ipat) =
+i0pat_fprint(ipat, g_print$out<>())
+//
+#impltmp
+g_print
+<i0exp>(iexp) =
+i0exp_fprint(iexp, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -109,12 +116,6 @@ i0cls_fprint(cls0, g_print$out<>())
 *)
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-g_print<t0imp>(timp) =
-t0imp_fprint(timp, g_print$out<>())
-//
 (* ****** ****** *)
 //
 #impltmp
