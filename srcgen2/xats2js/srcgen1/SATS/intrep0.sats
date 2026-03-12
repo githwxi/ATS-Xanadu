@@ -191,11 +191,11 @@ XATSOPT "./../../.."
 #typedef d3vardcl = $D3E.d3vardcl
 #typedef d3fundcl = $D3E.d3fundcl
 (* ****** ****** *)
+#typedef d3parsed = $D3E.d3parsed
+(* ****** ****** *)
 #typedef d3valdclist = $D3E.d3valdclist
 #typedef d3vardclist = $D3E.d3vardclist
 #typedef d3fundclist = $D3E.d3fundclist
-(* ****** ****** *)
-#typedef d3parsed = $D3E.d3parsed
 (* ****** ****** *)
 #typedef d3explstopt = $D3E.d3explstopt
 #typedef d3eclistopt = $D3E.d3eclistopt
@@ -223,51 +223,8 @@ i0lab_fprint
 #abstbox i0exp_tbox // p0tr
 #typedef i0exp = i0exp_tbox
 (* ****** ****** *)
-#typedef l0i0p = i0lab(i0pat)
-#typedef l0i0e = i0lab(i0exp)
-(* ****** ****** *)
 #abstbox fiarg_tbox // p0tr
 #typedef fiarg = fiarg_tbox
-(* ****** ****** *)
-#typedef i0patlst = list(i0pat)
-#typedef l0i0plst = list(l0i0p)
-(* ****** ****** *)
-#typedef i0expopt = optn(i0exp)
-#typedef i0explst = list(i0exp)
-#typedef l0i0elst = list(l0i0e)
-(* ****** ****** *)
-(* ****** ****** *)
-//
-datatype
-fiarg_node =
-|
-FIARGdarg of i0patlst
-//
-#typedef
-fiarglst = list(fiarg)
-#typedef
-fiarglstopt = optn(fiarglst)
-//
-(* ****** ****** *)
-//
-fun
-fiarg_fprint
-(fia0:fiarg,out0:FILR): void
-//
-(* ****** ****** *)
-fun
-fiarg_lctn$get(fiarg): loc_t
-fun
-fiarg_node$get(fiarg): fiarg_node
-(* ****** ****** *)
-#symload lctn with fiarg_lctn$get
-#symload node with fiarg_node$get
-(* ****** ****** *)
-fun
-fiarg_make_node
-(loc:loc_t, nod:fiarg_node):fiarg
-#symload fiarg with fiarg_make_node
-(* ****** ****** *)
 (* ****** ****** *)
 #abstbox i0gua_tbox // p0tr
 #abstbox i0gpt_tbox // p0tr
@@ -276,10 +233,6 @@ fiarg_make_node
 #typedef i0gpt = i0gpt_tbox
 #typedef i0cls = i0cls_tbox
 (* ****** ****** *)
-#typedef i0gualst = list(i0gua)
-#typedef i0clslst = list(i0cls)
-(* ****** ****** *)
-(* ****** ****** *)
 #abstbox i0dcl_tbox // p0tr
 #typedef i0dcl = i0dcl_tbox
 (* ****** ****** *)
@@ -287,15 +240,29 @@ fiarg_make_node
 #typedef t0imp = t0imp_tbox
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#abstbox i0valdcl_tbox//p0tr
-#abstbox i0vardcl_tbox//p0tr
-#abstbox i0fundcl_tbox//p0tr
-//
+#typedef l0i0p = i0lab(i0pat)
+#typedef l0i0e = i0lab(i0exp)
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef i0patlst = list(i0pat)
+#typedef l0i0plst = list(l0i0p)
+(* ****** ****** *)
+#typedef i0expopt = optn(i0exp)
+#typedef i0explst = list(i0exp)
+#typedef l0i0elst = list(l0i0e)
+(* ****** ****** *)
+#typedef i0gualst = list(i0gua)
+#typedef i0clslst = list(i0cls)
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #abstbox i0parsed_tbox//p0tr
+//
+(* ****** ****** *)
+//
+#abstbox i0valdcl_tbox//p0tr
+#abstbox i0vardcl_tbox//p0tr
+#abstbox i0fundcl_tbox//p0tr
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -400,11 +367,46 @@ i0pat_none0(loc0: loctn): (i0pat)
 fun
 i0pat_none1(d3p0: d3pat): (i0pat)
 (* ****** ****** *)
+//
 fun
 i0pat_make_node
 (loc:loctn, nod:i0pat_node): i0pat
-(* ****** ****** *)
 #symload i0pat with i0pat_make_node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+fiarg_node =
+|
+FIARGdarg of i0patlst
+//
+#typedef
+fiarglst = list(fiarg)
+#typedef
+fiarglstopt = optn(fiarglst)
+//
+(* ****** ****** *)
+//
+fun
+fiarg_fprint
+(fia0:fiarg,out0:FILR): void
+//
+(* ****** ****** *)
+fun
+fiarg_lctn$get(fiarg): loc_t
+fun
+fiarg_node$get(fiarg): fiarg_node
+(* ****** ****** *)
+#symload lctn with fiarg_lctn$get
+#symload node with fiarg_node$get
+(* ****** ****** *)
+//
+fun
+fiarg_make_node
+(loc:loc_t, nod:fiarg_node):fiarg
+#symload fiarg with fiarg_make_node
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -812,16 +814,19 @@ i0dcl_make_node
 #symload i0dcl with i0dcl_make_node
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
 i0valdcl_fprint
 (ival: i0valdcl, out0: FILR): void
+//
 fun
 i0vardcl_fprint
 (ivar: i0vardcl, out0: FILR): void
-(* ****** ****** *)
+//
 fun
 i0fundcl_fprint
 (ifun: i0fundcl, out0: FILR): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
 fun
