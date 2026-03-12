@@ -38,6 +38,16 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2026-03-12:
+Thu Mar 12 02:43:33 PM EDT 2026
+In INTREP0, the following issues
+are addressed:
+1. Tail-recursive call marking
+2. Closure-formation preparation
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
@@ -52,15 +62,46 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../../../SATS/xlabel0.sats"
 //
 (* ****** ****** *)
-#staload // S2E =
+#staload S2E =
 "./../../../SATS/staexp2.sats"
-#staload // T2P =
+#staload T2P =
 "./../../../SATS/statyp2.sats"
-#staload // D2E =
+#staload D2E =
 "./../../../SATS/dynexp2.sats"
-#staload // D3E =
+#staload D3E =
 "./../../../SATS/dynexp3.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+#typedef sort0 = $S2E.sort0
+#typedef s2exp = $S2E.s2exp
+#typedef s2typ = $T2P.s2typ
+(* ****** ****** *)
+#typedef d3pat = $D3E.d3pat
+#typedef d3exp = $D3E.d3exp
+(* ****** ****** *)
+#typedef l3d3p = $D3E.l3d3p
+#typedef l3d3e = $D3E.l3d3e
+(* ****** ****** *)
+#typedef d3gua = $D3E.d3gua
+#typedef d3gpt = $D3E.d3gpt
+#typedef d3cls = $D3E.d3cls
+(* ****** ****** *)
+#typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
+#typedef s2explst = list(s2exp)
+#typedef s2typlst = list(s2typ)
+(* ****** ****** *)
+#typedef d3explst = list(d3exp)
+#typedef d3patlst = list(d3pat)
+(* ****** ****** *)
+#typedef d3gualst = list(d3gua)
+#typedef d3clslst = list(d3cls)
+(* ****** ****** *)
+#typedef d3eclist = list(d3ecl)
+(* ****** ****** *)
+#typedef d3valdcl = $D3E.d3valdcl
+#typedef d3vardcl = $D3E.d3vardcl
+#typedef d3fundcl = $D3E.d3fundcl
 (* ****** ****** *)
 //
 datatype
@@ -122,6 +163,8 @@ i0typ_node =
 //
 |I0Tcst of s2cst // constant
 |I0Tvar of s2var // variable
+//
+(* ****** ****** *)
 //
 |I0Tlft of (i0typ) // left-value
 //
