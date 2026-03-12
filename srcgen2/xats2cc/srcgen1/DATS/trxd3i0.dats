@@ -31,14 +31,40 @@
 (*
 Author: Hongwei Xi
 //
-Sat Mar  7 09:25:22 AM EST 2026
+Mon Mar  9 03:14:34 PM EDT 2026
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(*
+#define
+XATSOPT "./../../.."
+*)
+(* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dpre.hats"
+(* ****** ****** *)
+#staload
+"./../../../SATS/staexp2.sats"
+#staload
+"./../../../SATS/statyp2.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
+#staload
+"./../../../SATS/dynexp3.sats"
+(* ****** ****** *)
+//
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/trxd3i0.sats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_trx3di0.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxd3i0.dats] *)
 (***********************************************************************)

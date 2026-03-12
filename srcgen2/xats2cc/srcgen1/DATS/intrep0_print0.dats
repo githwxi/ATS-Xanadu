@@ -94,6 +94,22 @@ prints("I0Tvar(", s2v, ")")
 //
 (* ****** ****** *)
 //
+|I0Tlft
+(   i0t1   ) =>
+(
+prints("I0Tlft(", i0t1, ")"))
+//
+(* ****** ****** *)
+//
+|I0Ttop0
+(   i0t1   ) =>
+prints("I0Ttop0(", i0t1, ")")
+|I0Ttop1
+(   i0t1   ) =>
+prints("I0Ttop1(", i0t1, ")")
+//
+(* ****** ****** *)
+//
 |I0Texi0
 (s2vs, i0t1) =>
 prints

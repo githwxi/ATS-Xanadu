@@ -14,6 +14,6 @@ realized that XSYNCPY does not yet handle template resolution
 and this had to abandon the implementation. As of now, I plan
 to implement XATS2CC based on the systax tree obtained immediately
 after trtmp3a and trtmp3b.
-One major issue that needs to be dealt with is the handling of
-constructor projection (D3Epcon).
+One significant issue that needs to be dealt with is the handling
+of constructor projection (D3Epcon).
 ############################################################
