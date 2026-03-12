@@ -85,6 +85,38 @@ in//let
 //
 case+
 ityp.node() of
+(* ****** ****** *)
+//
+|I0Tcst(s2c) =>
+prints("I0Tcst(", s2c, ")")
+|I0Tvar(s2v) =>
+prints("I0Tvar(", s2v, ")")
+//
+(* ****** ****** *)
+//
+|I0Texi0
+(s2vs, i0t1) =>
+prints
+("I0Texi0(", s2vs, ";", i0t1, ")")
+|I0Tuni0
+(s2vs, i0t1) =>
+prints
+("I0Tuni0(", s2vs, ";", i0t1, ")")
+//
+(* ****** ****** *)
+//
+|I0Ttcon
+(d2c1, i0ts) =>
+prints
+("I0Ttcon(", d2c1, ";", i0ts, ")")
+|I0Ttrcd
+(tknd
+,npf1, lits) =>
+(
+prints("I0Ttcon(",
+  tknd, ";", npf1, ";", lits, ")"))
+//
+(* ****** ****** *)
 //
 end(*let*)//end-of-[i0typ_fprint(ityp,out0)]
 //
@@ -201,6 +233,18 @@ idcl.node() of
 |I0Dd3ecl(d3cl) =>
 (
  prints("I0Dd3ecl(", d3cl, ")"))
+//
+(* ****** ****** *)
+//
+|I0Dstatic
+(tknd, dcl1) =>
+prints("\
+I0Dstatic(", tknd, ";", dcl1, ")")
+//
+|I0Dextern
+(tknd, dcl1) =>
+prints("\
+I0Dextern(", tknd, ";", dcl1, ")")
 //
 (* ****** ****** *)
 //
