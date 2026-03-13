@@ -118,24 +118,48 @@ d3ecl_trxd3i0
 //
 fun
 s2typlst_trxd3i0
-(t2ps: d3patlst, env0: !envd3i0, ): i0typlst
+(t2ps: d3patlst, env0: !envd3i0): i0typlst
 //
 (* ****** ****** *)
 //
 fun
 d3patlst_trxd3i0
-(d3ps: d3patlst, env0: !envd3i0, ): i0patlst
+(d3ps: d3patlst, env0: !envd3i0): i0patlst
+fun
+l3d3plst_trxd3i0
+(ldps: l3d3plst, env0: !envd3i0): l0i0plst
 //
 fun
 d3explst_trxd3i0
-(d3es: d3explst, env0: !envd3i0, ): i0explst
+(d3es: d3explst, env0: !envd3i0): i0explst
+fun
+l3d3elst_trxd3i0
+(ldes: l3d3elst, env0: !envd3i0): l0i0elst
 //
 (* ****** ****** *)
 //
 fun
 d3eclist_trxd3i0
-(dcls: d3eclist, env0: !envd3i0, ): i0dclist
+(dcls: d3eclist, env0: !envd3i0): i0dclist
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3valdclist_trxd3i0
+(d3vs: d3valdclist, env0: !envd3i0): i0valdclist
+fun
+d3vardclist_trxd3i0
+(d3vs: d3vardclist, env0: !envd3i0): i0vardclist
+//
+fun
+d3fundclist_trxd3i0
+(d3fs: d3fundclist, env0: !envd3i0): i0fundclist
+//
+(* ****** ****** *)
+fun
+d3eclistopt_trxd3i0
+(dcls: d3eclistopt, env0: !envd3i0): i0dclistopt
 (* ****** ****** *)
 (* ****** ****** *)
 //
