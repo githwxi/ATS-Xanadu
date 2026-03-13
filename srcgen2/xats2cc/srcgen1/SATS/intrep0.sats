@@ -61,6 +61,9 @@ are addressed:
 #staload
 "./../../../SATS/xlabel0.sats"
 //
+#staload
+"./../../../SATS/lexing0.sats"
+//
 (* ****** ****** *)
 #staload S2E =
 "./../../../SATS/staexp2.sats"
@@ -73,8 +76,13 @@ are addressed:
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef sort0 = $S2E.sort0
+#typedef s2cst = $S2E.s2cst
+#typedef s2var = $S2E.s2var
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $T2P.s2typ
+(* ****** ****** *)
+#typedef d2con = $D2E.d2con
+#typedef d2var = $D2E.d2var
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -88,8 +96,12 @@ are addressed:
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
+#typedef s2cstlst = list(s2cst)
+#typedef s2varlst = list(s2var)
 #typedef s2explst = list(s2exp)
 #typedef s2typlst = list(s2typ)
+(* ****** ****** *)
+#typedef d3varlst = list(d3var)
 (* ****** ****** *)
 #typedef d3explst = list(d3exp)
 #typedef d3patlst = list(d3pat)
