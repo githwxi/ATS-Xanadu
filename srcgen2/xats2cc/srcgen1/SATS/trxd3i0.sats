@@ -200,9 +200,11 @@ d3fundclist_trxd3i0
 (d3fs: d3fundclist, env0: !envd3i0): i0fundclist
 //
 (* ****** ****** *)
+//
 fun
 d3eclistopt_trxd3i0
 (dcls: d3eclistopt, env0: !envd3i0): i0dclistopt
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
