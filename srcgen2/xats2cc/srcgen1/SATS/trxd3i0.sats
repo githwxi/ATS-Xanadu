@@ -175,6 +175,20 @@ d3eclist_trxd3i0
 (* ****** ****** *)
 //
 fun
+d3valdcl_trxd3i0
+(dval: d3valdcl, env0: !envd3i0): i0valdcl
+fun
+d3vardcl_trxd3i0
+(dval: d3vardcl, env0: !envd3i0): i0vardcl
+//
+fun
+d3fundcl_trxd3i0
+(dfun: d3fundcl, env0: !envd3i0): i0fundcl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3valdclist_trxd3i0
 (d3vs: d3valdclist, env0: !envd3i0): i0valdclist
 fun

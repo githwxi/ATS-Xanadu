@@ -142,9 +142,9 @@ d3gualst_trxd3i0
 //
 #implfun
 d3clslst_trxd3i0
-( env0, dcls) =
+( env0, d3cs) =
 (
-  list_trxd3i0_fnp(env0, dcls, d3cls_trxd3i0))
+  list_trxd3i0_fnp(env0, d3cs, d3cls_trxd3i0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -154,6 +154,29 @@ d3eclist_trxd3i0
 ( env0, dcls ) =
 (
   list_trxd3i0_fnp(env0, dcls, d3ecl_trxd3i0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3valdclist_trxd3i0
+( env0, d3vs ) =
+(
+  list_trxd3i0_fnp(env0, d3vs, d3valdcl_trxd3i0))
+//
+#implfun
+d3vardclist_trxd3i0
+( env0, d3vs ) =
+(
+  list_trxd3i0_fnp(env0, d3vs, d3vardcl_trxd3i0))
+//
+(* ****** ****** *)
+//
+#implfun
+d3fundclist_trxd3i0
+( env0, d3fs ) =
+(
+  list_trxd3i0_fnp(env0, d3fs, d3fundcl_trxd3i0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
