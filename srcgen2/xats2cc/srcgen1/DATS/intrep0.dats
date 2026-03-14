@@ -72,6 +72,163 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+local
+//
+datatype
+i0pat =
+I0PAT of
+( loctn
+, i0typ, i0pat_node)
+(*
+datavwtp
+i0pat_vt =
+I0PAT_vt of
+( loctn
+, i0typ, i0pat_node)
+*)
+//
+#absimpl i0pat_tbox = i0pat
+//
+(* ****** ****** *)
+in (* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+i0pat_make_ityp$node
+( loc0, ityp, node ) =
+(
+I0PAT(loc0, ityp, node))
+//
+#implfun
+i0pat_lctn$get
+(   ipat   ) =
+let
+val+
+I0PAT
+(loc0
+,i0t0, node) = ipat in loc0 end
+//
+#implfun
+i0pat_ityp$get(ipat) =
+let
+val+
+I0PAT
+(loc0
+,i0t0, node) = ipat in i0t0 end
+//
+#implfun
+i0pat_node$get(ipat) =
+let
+val+
+I0PAT
+(loc0
+,i0t0, node) = ipat in node end
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end-of-[local(i0pat)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i0exp =
+I0EXP of
+( loctn
+, i0typ, i0exp_node)
+(*
+datavwtp
+i0exp_vt =
+I0EXP_vt of
+( loctn
+, i0typ, i0exp_node)
+*)
+//
+#absimpl i0exp_tbox = i0exp
+//
+(* ****** ****** *)
+in (* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+i0exp_make_ityp$node
+( loc0, ityp, node ) =
+(
+I0EXP(loc0, ityp, node))
+//
+#implfun
+i0exp_lctn$get
+(   iexp   ) =
+let
+val+
+I0EXP
+(loc0
+,i0t0, node) = iexp in loc0 end
+//
+#implfun
+i0exp_ityp$get(iexp) =
+let
+val+
+I0EXP
+(loc0
+,i0t0, node) = iexp in i0t0 end
+//
+#implfun
+i0exp_node$get(iexp) =
+let
+val+
+I0EXP
+(loc0
+,i0t0, node) = iexp in node end
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end-of-[local(i0exp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i0dcl =
+I0DCL of
+( loctn, i0dcl_node)
+//
+#absimpl i0dcl_tbox = i0dcl
+//
+(* ****** ****** *)
+in (* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+i0dcl_make_node
+(  loc0, node  ) =
+(
+I0DCL(loc0, node) )
+//
+#implfun
+i0dcl_lctn$get(dcl0) =
+let
+val+
+I0DCL
+(loc0,node) = dcl0 in loc0 end
+//
+#implfun
+i0dcl_node$get(dcl0) =
+let
+val+
+I0DCL
+(loc0,node) = dcl0 in node end
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end-of-[local(i0dcl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 local
 //

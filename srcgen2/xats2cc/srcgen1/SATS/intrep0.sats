@@ -62,6 +62,8 @@ are addressed:
 "./../../../SATS/xlabel0.sats"
 //
 #staload
+"./../../../SATS/locinfo.sats"
+#staload
 "./../../../SATS/lexing0.sats"
 //
 (* ****** ****** *)
@@ -73,6 +75,10 @@ are addressed:
 "./../../../SATS/dynexp2.sats"
 #staload D3E =
 "./../../../SATS/dynexp3.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef loc_t = loc_t
+#typedef loctn = loctn
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef sort0 = $S2E.sort0
@@ -336,11 +342,25 @@ fun
 i0pat_lctn$get
 (ipat: i0pat): loc_t
 fun
+i0pat_ityp$get
+(ipat: i0pat): i0typ
+fun
 i0pat_node$get
 (ipat: i0pat): i0pat_node
 //
 #symload lctn with i0pat_lctn$get
+#symload ityp with i0pat_ityp$get
 #symload node with i0pat_node$get
+//
+(* ****** ****** *)
+//
+fun
+i0pat_make_ityp$node
+( loc0: loctn
+, ityp: i0typ
+, node: i0pat_node): i0pat
+#symload
+ i0pat with i0pat_make_ityp$node
 //
 (* ****** ****** *)
 //
@@ -365,17 +385,29 @@ i0exp_node =
 //
 (* ****** ****** *)
 //
-(* ****** ****** *)
-//
 fun
 i0exp_lctn$get
 (iexp: i0exp): loc_t
+fun
+i0exp_ityp$get
+(iexp: i0exp): i0typ
 fun
 i0exp_node$get
 (iexp: i0exp): i0exp_node
 //
 #symload lctn with i0exp_lctn$get
+#symload ityp with i0exp_ityp$get
 #symload node with i0exp_node$get
+//
+(* ****** ****** *)
+//
+fun
+i0exp_make_ityp$node
+( loc0: loctn
+, ityp: i0typ
+, node: i0exp_node): i0exp
+#symload
+ i0exp with i0exp_make_ityp$node
 //
 (* ****** ****** *)
 //
@@ -419,6 +451,14 @@ fun
 i0dcl_fprint
 (idcl:i0dcl, out0:FILR): void
 #symload fprint with i0dcl_fprint
+//
+(* ****** ****** *)
+//
+fun
+i0dcl_make_node
+(loc0
+:loctn, node:i0dcl_node): i0dcl
+#symload i0dcl with i0dcl_make_node
 //
 (* ****** ****** *)
 (* ****** ****** *)

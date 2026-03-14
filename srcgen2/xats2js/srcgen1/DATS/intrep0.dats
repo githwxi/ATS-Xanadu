@@ -377,10 +377,6 @@ datatype
 i0dcl =
 I0DCL of
 (loctn, i0dcl_node)
-datavwtp
-i0dcl_vt =
-I0DCL_vt of
-(loctn, i0dcl_node)
 //
 #absimpl i0dcl_tbox = i0dcl
 //
