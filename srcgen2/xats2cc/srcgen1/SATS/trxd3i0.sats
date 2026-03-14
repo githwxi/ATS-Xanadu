@@ -94,17 +94,30 @@ fun
 d3pat_trxd3i0
 (d3p0: d3pat, env0: !envd3i0): i0pat
 fun
-d3exp_trxd3i0
-(d3e0: d3exp, env0: !envd3i0): i0exp
+l3d3p_trxd3i0
+(ld3p: l3d3p, env0: !envd3i0): l0i0p
 //
 (* ****** ****** *)
 //
 fun
-l3d3p_trxd3i0
-(ld3p: l3d3p, env0: !envd3i0): l0i0p
+d3exp_trxd3i0
+(d3e0: d3exp, env0: !envd3i0): i0exp
 fun
 l3d3e_trxd3i0
 (ld3e: l3d3e, env0: !envd3i0): l0i0e
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3gua_trxd3i0
+(dgua: d3gua, env0: !envd3i0): i0gua
+fun
+d3gpt_trxd3i0
+(dgpt: d3gpt, env0: !envd3i0): i0gpt
+fun
+d3cls_trxd3i0
+(dcls: d3cls, env0: !envd3i0): i0cls
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -129,13 +142,29 @@ fun
 l3d3plst_trxd3i0
 (ldps: l3d3plst, env0: !envd3i0): l0i0plst
 //
+(* ****** ****** *)
+//
 fun
 d3explst_trxd3i0
 (d3es: d3explst, env0: !envd3i0): i0explst
 fun
+d3expopt_trxd3i0
+(dopt: d3expopt, env0: !envd3i0): i0expopt
+fun
 l3d3elst_trxd3i0
 (ldes: l3d3elst, env0: !envd3i0): l0i0elst
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3gualst_trxd3i0
+(d3gs: d3gualst, env0: !envd3i0): i0gualst
+fun
+d3clslst_trxd3i0
+(dcls: d3clslst, env0: !envd3i0): i0clslst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

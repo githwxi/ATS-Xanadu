@@ -74,7 +74,7 @@ list_map$e1nv<x0><y0><e1>(xs, e1)) where
 {
 #vwtpdef e1 = envd3i0
 #impltmp
-map$e1nv$fopr<x0><y0><e1>(x0, e1) = fopr(x0, e1)
+map$e1nv$fopr<x0><y0><e1> = fopr(*x0, e1*)
 }(*where*)//end-of-[list_trxd3i0_fnp(xs,e1,fopr)]
 //
 (* ****** ****** *)
@@ -88,8 +88,72 @@ optn_map$e1nv<x0><y0><e1>(xs, e1)) where
 {
 #vwtpdef e1 = envd3i0
 #impltmp
-map$e1nv$fopr<x0><y0><e1>(x0, e1) = fopr(x0, e1)
+map$e1nv$fopr<x0><y0><e1> = fopr(*x0, e1*)
 }(*where*)//end-of-[optn_trxd3i0_fnp(xs,e1,fopr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3patlst_trxd3i0
+( env0, d3ps ) =
+(
+  list_trxd3i0_fnp(env0, d3ps, d3pat_trxd3i0))
+//
+(* ****** ****** *)
+//
+#implfun
+l3d3plst_trxd3i0
+( env0, ldps ) =
+(
+  list_trxd3i0_fnp(env0, ldps, l3d3p_trxd3i0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3explst_trxd3i0
+( env0, d3es ) =
+(
+  list_trxd3i0_fnp(env0, d3es, d3exp_trxd3i0))
+//
+#implfun
+d3expopt_trxd3i0
+( env0, dopt ) =
+(
+  optn_trxd3i0_fnp(env0, dopt, d3exp_trxd3i0))
+//
+(* ****** ****** *)
+//
+#implfun
+l3d3elst_trxd3i0
+( env0, ldes ) =
+(
+  list_trxd3i0_fnp(env0, ldes, l3d3e_trxd3i0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3gualst_trxd3i0
+( env0, d3gs) =
+(
+  list_trxd3i0_fnp(env0, d3gs, d3gua_trxd3i0))
+//
+#implfun
+d3clslst_trxd3i0
+( env0, dcls) =
+(
+  list_trxd3i0_fnp(env0, dcls, d3cls_trxd3i0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3eclist_trxd3i0
+( env0, dcls ) =
+(
+  list_trxd3i0_fnp(env0, dcls, d3ecl_trxd3i0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
