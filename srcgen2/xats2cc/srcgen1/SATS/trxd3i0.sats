@@ -54,10 +54,10 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-envd3i0_make$nil
+envd3i0_make_nil
   ( (*void*) ): envd3i0
 fun
-envd3i0_free$top
+envd3i0_free_top
   ( env0: !envd3i0 ): void
 //
 (* ****** ****** *)
