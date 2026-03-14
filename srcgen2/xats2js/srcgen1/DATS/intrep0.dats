@@ -576,7 +576,7 @@ endloc (*local*) // end of [ local(i0fundcl) ]
 
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -595,7 +595,7 @@ i0dclistopt)//program
 i0parsed_tbox = i0parsed
 //
 in//local
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -635,7 +635,7 @@ I0PARSED
 } (*where*)//end-of-[i0parsed_source$get]
 //
 (* ****** ****** *)
-
+//
 #implfun
 i0parsed_parsed$get
   (ipar) =
@@ -647,7 +647,7 @@ I0PARSED
 ( stadyn
 , nerror, source, parsed) = ipar
 } (*where*)//end-of-[i0parsed_parsed$get]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -670,9 +670,9 @@ prerrsln
 } (*where*) // end-of-[i0parsed_make_args]
 //
 (* ****** ****** *)
-
+//
 endloc (*local*) // end of [ local(i0parsed) ]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
