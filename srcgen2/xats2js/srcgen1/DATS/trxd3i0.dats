@@ -122,6 +122,102 @@ map$e1nv$fopr<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+trxd3i0_d3patlst
+( env0, d3ps ) =
+(
+  list_trxd3i0_fnp(env0, d3ps, trxd3i0_d3pat))
+//
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_l3d3plst
+( env0, ldps ) =
+(
+  list_trxd3i0_fnp(env0, ldps, trxd3i0_l3d3p))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3explst
+( env0, d3es ) =
+(
+  list_trxd3i0_fnp(env0, d3es, trxd3i0_d3exp))
+//
+#implfun
+trxd3i0_d3expopt
+( env0, dopt ) =
+(
+  optn_trxd3i0_fnp(env0, dopt, trxd3i0_d3exp))
+//
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_l3d3elst
+( env0, ldes ) =
+(
+  list_trxd3i0_fnp(env0, ldes, trxd3i0_l3d3e))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3gualst
+( env0, d3gs) =
+(
+  list_trxd3i0_fnp(env0, d3gs, trxd3i0_d3gua))
+//
+#implfun
+trxd3i0_d3clslst
+( env0, dcls) =
+(
+  list_trxd3i0_fnp(env0, dcls, trxd3i0_d3cls))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3eclist
+( env0, dcls ) =
+(
+  list_trxd3i0_fnp(env0, dcls, trxd3i0_d3ecl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3valdclist
+  ( env0 , d3vs ) =
+(
+  list_trxd3i0_fnp(env0, d3vs, trxd3i0_d3valdcl))
+//
+#implfun
+trxd3i0_d3vardclist
+  ( env0 , d3vs ) =
+(
+  list_trxd3i0_fnp(env0, d3vs, trxd3i0_d3vardcl))
+//
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3fundclist
+  ( env0 , d3fs ) =
+(
+  list_trxd3i0_fnp(env0, d3fs, trxd3i0_d3fundcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3eclistopt
+  (env0, dopt) =
+(
+  optn_trxd3i0_fnp(env0, dopt, trxd3i0_d3eclist))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxd3i0.dats] *)
 (***********************************************************************)

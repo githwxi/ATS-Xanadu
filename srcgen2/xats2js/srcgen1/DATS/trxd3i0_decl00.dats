@@ -664,7 +664,7 @@ end//let
 (*let*)//end-of-[trxd3i0_d3valdcl(env0,dval)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 trxd3i0_d3vardcl
   (env0, dvar) = let
@@ -684,9 +684,9 @@ in//let
   i0vardcl_make_args(loc0, dpid, dini))
 end//let
 (*let*)//end-of-[trxd3i0_d3vardcl(env0,dvar)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 trxd3i0_d3fundcl
   (env0, dfun) = let
@@ -725,47 +725,6 @@ in//let
   i0fundcl(loc0, dvar, fias, tdxp))
 end//let
 (*let*)//end-of-[trxd3i0_d3fundcl(env0,dfun)]
-
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-trxd3i0_d3eclist
-( env0, dcls ) =
-(
-  list_trxd3i0_fnp(env0, dcls, trxd3i0_d3ecl))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-trxd3i0_d3valdclist
-  ( env0 , d3vs ) =
-(
-  list_trxd3i0_fnp(env0, d3vs, trxd3i0_d3valdcl))
-//
-#implfun
-trxd3i0_d3vardclist
-  ( env0 , d3vs ) =
-(
-  list_trxd3i0_fnp(env0, d3vs, trxd3i0_d3vardcl))
-//
-(* ****** ****** *)
-//
-#implfun
-trxd3i0_d3fundclist
-  ( env0 , d3fs ) =
-(
-  list_trxd3i0_fnp(env0, d3fs, trxd3i0_d3fundcl))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-trxd3i0_d3eclistopt
-  (env0, dopt) =
-(
-  optn_trxd3i0_fnp(env0, dopt, trxd3i0_d3eclist))
 //
 (* ****** ****** *)
 (* ****** ****** *)

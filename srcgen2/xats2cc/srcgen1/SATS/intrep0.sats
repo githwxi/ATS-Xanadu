@@ -103,8 +103,12 @@ are addressed:
 (* ****** ****** *)
 #typedef d3varlst = list(d3var)
 (* ****** ****** *)
-#typedef d3explst = list(d3exp)
 #typedef d3patlst = list(d3pat)
+#typedef l3d3plst = list(l3d3p)
+(* ****** ****** *)
+#typedef d3explst = list(d3exp)
+#typedef d3expopt = optn(d3exp)
+#typedef l3d3elst = list(l3d3e)
 (* ****** ****** *)
 #typedef d3gualst = list(d3gua)
 #typedef d3clslst = list(d3cls)
@@ -149,6 +153,13 @@ i0lab_fprint
 #abstbox i0exp_tbox // p0tr
 #typedef i0exp = i0exp_tbox
 (* ****** ****** *)
+#abstbox i0gua_tbox // p0tr
+#abstbox i0gpt_tbox // p0tr
+#abstbox i0cls_tbox // p0tr
+#typedef i0gua = i0gua_tbox
+#typedef i0gpt = i0gpt_tbox
+#typedef i0cls = i0cls_tbox
+(* ****** ****** *)
 #abstbox i0dcl_tbox // p0tr
 #typedef i0dcl = i0dcl_tbox
 (* ****** ****** *)
@@ -178,6 +189,9 @@ i0lab_fprint
 #typedef i0expopt = optn(i0exp)
 #typedef i0explst = list(i0exp)
 #typedef l0i0elst = list(l0i0e)
+(* ****** ****** *)
+#typedef i0gualst = list(i0gua)
+#typedef i0clslst = list(i0cls)
 (* ****** ****** *)
 #typedef i0dclopt = optn(i0dcl)
 #typedef i0dclist = list(i0dcl)
