@@ -72,6 +72,106 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+local
+//
+datatype
+i0parsed =
+I0PARSED of
+(
+sint  // stadyn
+,
+sint  // nerror
+,
+lcsrc // source
+,
+i0dclistopt)//program
+//
+#absimpl
+i0parsed_tbox = i0parsed
+//
+in//local
+//
+(* ****** ****** *)
+//
+#implfun
+i0parsed_stadyn$get
+  (ipar) =
+(
+  stadyn ) where
+{
+val+
+I0PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i0parsed_stadyn$get]
+//
+#implfun
+i0parsed_nerror$get
+  (ipar) =
+(
+  nerror ) where
+{
+val+
+I0PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i0parsed_nerror$get]
+//
+#implfun
+i0parsed_source$get
+  (ipar) =
+(
+  source ) where
+{
+val+
+I0PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i0parsed_source$get]
+//
+(* ****** ****** *)
+//
+#implfun
+i0parsed_parsed$get
+  (ipar) =
+(
+  parsed ) where
+{
+val+
+I0PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i0parsed_parsed$get]
+//
+(* ****** ****** *)
+//
+#implfun
+i0parsed_make_args
+( stadyn
+, nerror
+, source, parsed) =
+(
+I0PARSED
+( stadyn
+, nerror, source, parsed)) where
+{
+//
+(*
+val () =
+prerrsln
+("i0parsed_make_args:nerror=",nerror)
+*)
+//
+} (*where*) // end-of-[i0parsed_make_args]
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [ local(i0parsed) ]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_intrep0.dats] *)
 (***********************************************************************)
