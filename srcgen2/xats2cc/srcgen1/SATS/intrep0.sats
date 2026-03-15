@@ -317,7 +317,8 @@ i0pat_node =
 //
 |I0Pdap1 of (i0pat)
 |I0Pdapp of
-( i0pat(*con*)
+( i0pat//fun
+, sint(*npf1*)
 , i0patlst(*arglst*))
 //
 (* ****** ****** *)
