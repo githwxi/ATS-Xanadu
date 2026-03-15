@@ -65,6 +65,80 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+d3pat_trxd3i0
+(d3p0, env0) =
+let
+//
+val () =
+prerrsln("\
+d3pat_trxd3i0: d3p0 = ", d3p0)
+//
+in//let
+//
+case+
+d3p0.node() of
+//
+|D3Pany _ =>
+(
+  f0_any(d3p0, env0))
+|D3Pvar _ =>
+(
+  f0_var(d3p0, env0))
+//
+end where
+{
+//
+fun
+f0_any
+( d3p0: d3pat
+, env0: !envd3i0): i0pat =
+let
+//
+val-
+D3Pany() = d3p0.node()
+//
+val t2p0 = d3p0.styp((*0*))
+val loc0 = d3p0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+in//let
+(
+  i0pat(loc0, i0t0, I0Pany(*0*)))
+end(*let*)//end-of-[f0_any(d3p0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+( d3p0: d3pat
+, env0: !envd3i0): i0pat =
+let
+//
+val-
+D3Pvar
+(   d2v1   ) = d3p0.node()
+//
+val t2p0 = d3p0.styp((*0*))
+val loc0 = d3p0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+in//let
+(
+  i0pat(loc0, i0t0, I0Pvar(d2v1)))
+end(*let*)//end-of-[f0_any(d3p0,env0)]
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[d3pat_trxd3i0(d3p0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxd3i0_dynexp.dats] *)
 (***********************************************************************)
