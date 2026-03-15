@@ -107,9 +107,23 @@ d3p0.node() of
   f0_str(d3p0, env0))
 //
 (* ****** ****** *)
+//
 |D3Pcon _ =>
 (
   f0_con(d3p0, env0))
+//
+(* ****** ****** *)
+//
+|D3Pbang _ =>
+(
+  f0_bang(d3p0, env0))
+|D3Pflat _ =>
+(
+  f0_flat(d3p0, env0))
+|D3Pfree _ =>
+(
+  f0_free(d3p0, env0))
+//
 (* ****** ****** *)
 //
 |D3Pdap1 _ =>
@@ -308,6 +322,80 @@ end(*let*)//end-of-[f0_con(d3p0,env0)]
 (* ****** ****** *)
 //
 fun
+f0_bang
+( d3p0: d3pat
+, env0: !envd3i0): i0pat =
+let
+//
+val-
+D3Pbang
+(   d3p1   ) = d3p0.node()
+//
+val t2p0 = d3p0.styp((*0*))
+val loc0 = d3p0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+val i0p1 =
+(
+  d3pat_trxd3i0(d3p1, env0))
+//
+in//let
+(
+i0pat(loc0, i0t0, I0Pbang(i0p1)))
+end(*let*)//end-of-[f0_bang(d3p0,env0)]
+//
+fun
+f0_flat
+( d3p0: d3pat
+, env0: !envd3i0): i0pat =
+let
+//
+val-
+D3Pflat
+(   d3p1   ) = d3p0.node()
+//
+val t2p0 = d3p0.styp((*0*))
+val loc0 = d3p0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+val i0p1 =
+(
+  d3pat_trxd3i0(d3p1, env0))
+//
+in//let
+(
+i0pat(loc0, i0t0, I0Pflat(i0p1)))
+end(*let*)//end-of-[f0_flat(d3p0,env0)]
+//
+fun
+f0_free
+( d3p0: d3pat
+, env0: !envd3i0): i0pat =
+let
+//
+val-
+D3Pfree
+(   d3p1   ) = d3p0.node()
+//
+val t2p0 = d3p0.styp((*0*))
+val loc0 = d3p0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+val i0p1 =
+(
+  d3pat_trxd3i0(d3p1, env0))
+//
+in//let
+(
+i0pat(loc0, i0t0, I0Pfree(i0p1)))
+end(*let*)//end-of-[f0_free(d3p0,env0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_dap1
 ( d3p0: d3pat
 , env0: !envd3i0): i0pat =
@@ -322,13 +410,13 @@ val loc0 = d3p0.lctn((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
-val i3f0 =
+val i0f0 =
 (
   d3pat_trxd3i0(d3f0, env0))
 //
 in//let
 (
-i0pat(loc0, i0t0, I0Pdap1(i3f0)))
+i0pat(loc0, i0t0, I0Pdap1(i0f0)))
 end(*let*)//end-of-[f0_dap1(d3p0,env0)]
 //
 (* ****** ****** *)
@@ -349,17 +437,17 @@ val loc0 = d3p0.lctn((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
-val i3f0 =
+val i0f0 =
 (
   d3pat_trxd3i0(d3f0, env0))
-val i3ps =
+val i0ps =
 (
   d3patlst_trxd3i0(d3ps, env0))
 //
 in//let
 (
 i0pat_make_ityp$node(loc0,
-  i0t0, I0Pdapp(i3f0,npf1,i3ps)))
+  i0t0, I0Pdapp(i0f0,npf1,i0ps)))
 end(*let*)//end-of-[f0_dapp(d3p0,env0)]
 //
 (* ****** ****** *)
