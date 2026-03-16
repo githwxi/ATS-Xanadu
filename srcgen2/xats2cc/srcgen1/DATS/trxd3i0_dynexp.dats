@@ -569,6 +569,15 @@ d3e0.node() of
   f0_tapq(d3e0, env0))
 //
 (* ****** ****** *)
+//
+|D3Edap0 _ =>
+(
+  f0_dap0(d3e0, env0))
+|D3Edapp _ =>
+(
+  f0_dapp(d3e0, env0))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end where
@@ -902,6 +911,33 @@ i0exp(
 loc0, i0t0, I0Etapq(i0f0, ijgs))
 //
 end(*let*)//end-of-[f0_tapq(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dap0
+( d3e0: d3exp
+, env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Edap0
+(   d3f0   ) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0f0 =
+(
+  d3exp_trxd3i0(d3f0, env0))
+//
+in//let
+(
+i0exp(loc0, i0t0, I0Edap1(i0f0)))
+end(*let*)//end-of-[f0_dap1(d3e0,env0)]
 //
 (* ****** ****** *)
 //

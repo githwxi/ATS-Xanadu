@@ -431,6 +431,13 @@ i0exp_node =
 (i0exp(*fun*), i0jaglst)
 //
 (* ****** ****** *)
+//
+|I0Edap0 of
+(i0exp(*fun*))//HX:nullary?
+|I0Edapp of
+(i0exp,sint(*npf*),i0explst)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
