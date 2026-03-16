@@ -87,8 +87,12 @@ are addressed:
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $T2P.s2typ
 (* ****** ****** *)
-#typedef d2con = $D2E.d2con
 #typedef d2var = $D2E.d2var
+(* ****** ****** *)
+#typedef d2con = $D2E.d2con
+#typedef d2cst = $D2E.d2cst
+(* ****** ****** *)
+#typedef t2jag = $D2E.t2jag
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -107,7 +111,9 @@ are addressed:
 #typedef s2explst = list(s2exp)
 #typedef s2typlst = list(s2typ)
 (* ****** ****** *)
-#typedef d3varlst = list(d3var)
+#typedef d2varlst = list(d2var)
+(* ****** ****** *)
+#typedef t2jaglst = list(t2jag)
 (* ****** ****** *)
 #typedef d3patlst = list(d3pat)
 #typedef l3d3plst = list(l3d3p)
@@ -146,12 +152,17 @@ I0LAB of (label, x0(*elt*))
 fun
 <x0:type>
 i0lab_fprint
-(lab:i0lab(x0), out:FILR): void
+(lab
+:i0lab(x0), out:FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 #abstbox i0typ_tbox // p0tr
 #typedef i0typ = i0typ_tbox
+(* ****** ****** *)
+#abstbox i0jag_tbox // p0tr
+#typedef i0jag = i0jag_tbox
+(* ****** ****** *)
 (* ****** ****** *)
 #abstbox i0pat_tbox // p0tr
 #typedef i0pat = i0pat_tbox
@@ -172,12 +183,16 @@ i0lab_fprint
 #abstbox t0imp_tbox // p0tr
 #typedef t0imp = t0imp_tbox
 (* ****** ****** *)
+#abstbox fiarg_tbox // p0tr
+#typedef fiarg = fiarg_tbox
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #typedef l0i0t = i0lab(i0typ)
 #typedef l0i0p = i0lab(i0pat)
 #typedef l0i0e = i0lab(i0exp)
+//
 (* ****** ****** *)
-#abstbox fiarg_tbox // p0tr
-#typedef fiarg = fiarg_tbox
 (* ****** ****** *)
 //
 #abstbox i0valdcl_tbox//p0tr
@@ -188,6 +203,8 @@ i0lab_fprint
 (* ****** ****** *)
 #typedef i0typlst = list(i0typ)
 #typedef l0i0tlst = list(l0i0t)
+(* ****** ****** *)
+#typedef i0jaglst = list(i0jag)
 (* ****** ****** *)
 #typedef i0patlst = list(i0pat)
 #typedef l0i0plst = list(l0i0p)
@@ -314,6 +331,9 @@ i0pat_node =
 |I0Pfree of (i0pat)
 //
 (* ****** ****** *)
+|I0Ptapq of
+( i0pat, i0jaglst )
+(* ****** ****** *)
 //
 |I0Pdap1 of (i0pat)
 |I0Pdapp of
@@ -384,6 +404,16 @@ i0exp_node =
 |I0Eflt of token
 |I0Estr of token
 //
+(* ****** ****** *)
+|I0Etop of symbl
+(* ****** ****** *)
+|I0Evar of d2var
+(* ****** ****** *)
+//
+|I0Econ of d2con
+|I0Ecst of d2cst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
