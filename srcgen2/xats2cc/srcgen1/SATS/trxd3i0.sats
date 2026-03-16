@@ -88,6 +88,12 @@ s2typ_trxd3i0
 (s2t0: s2typ, env0: !envd3i0): i0typ
 //
 (* ****** ****** *)
+//
+fun
+t2jag_trxd3i0
+(tjag: t2jag, env0: !envd3i0): i0jag
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -133,6 +139,13 @@ fun
 s2typlst_trxd3i0
 (t2ps: d3patlst, env0: !envd3i0): i0typlst
 //
+(* ****** ****** *)
+//
+fun
+t2jaglst_trxd3i0
+(tjgs: t2jaglst, env0: !envd3i0): i0jaglst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
