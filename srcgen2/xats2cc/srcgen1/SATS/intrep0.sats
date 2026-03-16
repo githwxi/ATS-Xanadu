@@ -113,6 +113,9 @@ are addressed:
 (* ****** ****** *)
 #typedef d2varlst = list(d2var)
 (* ****** ****** *)
+#typedef d2conlst = list(d2con)
+#typedef d2cstlst = list(d2cst)
+(* ****** ****** *)
 #typedef t2jaglst = list(t2jag)
 (* ****** ****** *)
 #typedef d3patlst = list(d3pat)
@@ -412,6 +415,13 @@ i0exp_node =
 //
 |I0Econ of d2con
 |I0Ecst of d2cst
+//
+(* ****** ****** *)
+//
+|I0Esapp of
+(i0exp(*fun*), s2explst)
+|I0Esapq of
+(i0exp(*fun*), i0typlst)
 //
 (* ****** ****** *)
 (* ****** ****** *)
