@@ -424,6 +424,13 @@ i0exp_node =
 (i0exp(*fun*), i0typlst)
 //
 (* ****** ****** *)
+//
+|I0Etapp of
+(i0exp(*fun*), s2explst)
+|I0Etapq of
+(i0exp(*fun*), i0jaglst)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
