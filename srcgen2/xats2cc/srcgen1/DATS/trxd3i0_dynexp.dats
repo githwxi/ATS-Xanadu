@@ -936,8 +936,40 @@ val i0f0 =
 //
 in//let
 (
-i0exp(loc0, i0t0, I0Edap1(i0f0)))
+i0exp(loc0, i0t0, I0Edap0(i0f0)))
 end(*let*)//end-of-[f0_dap1(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( d3e0: d3exp
+, env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Edapp
+(d3f0
+,npf1, d3es) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0f0 =
+(
+  d3exp_trxd3i0(d3f0, env0))
+val i0es =
+(
+d3explst_trxd3i0(d3es, env0))
+//
+in//let
+(
+i0exp(loc0,
+i0t0, I0Edapp(i0f0, npf1, i0es)))
+end(*let*)//end-of-[f0_dapp(d3e0,env0)]
 //
 (* ****** ****** *)
 //
