@@ -137,7 +137,7 @@ d3ecl_trxd3i0
 //
 fun
 s2typlst_trxd3i0
-(t2ps: d3patlst, env0: !envd3i0): i0typlst
+(t2ps: s2typlst, env0: !envd3i0): i0typlst
 //
 (* ****** ****** *)
 //

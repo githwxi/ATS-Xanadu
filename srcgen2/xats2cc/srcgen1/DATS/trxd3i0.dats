@@ -95,6 +95,14 @@ map$e1nv$fopr<x0><y0><e1> = fopr(*x0, e1*)
 (* ****** ****** *)
 //
 #implfun
+s2typlst_trxd3i0
+( env0, t2ps ) =
+(
+  list_trxd3i0_fnp(env0, t2ps, s2typ_trxd3i0))
+//
+(* ****** ****** *)
+//
+#implfun
 d3patlst_trxd3i0
 ( env0, d3ps ) =
 (
