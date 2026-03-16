@@ -438,6 +438,13 @@ i0exp_node =
 (i0exp,sint(*npf*),i0explst)
 //
 (* ****** ****** *)
+//
+|I0Epcon of
+(token, label, i0exp(*con*))
+|I0Eproj of
+(token, label, i0exp(*tup*))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
