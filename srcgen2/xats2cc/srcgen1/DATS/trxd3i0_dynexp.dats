@@ -560,6 +560,15 @@ d3e0.node() of
   f0_sapq(d3e0, env0))
 //
 (* ****** ****** *)
+//
+|D3Etapp _ =>
+(
+  f0_tapp(d3e0, env0))
+|D3Etapq _ =>
+(
+  f0_tapq(d3e0, env0))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end where
@@ -832,6 +841,67 @@ i0exp(
 loc0, i0t0, I0Esapq(i0f0, i0ts))
 //
 end(*let*)//end-of-[f0_sapq(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tapp
+( d3e0: d3exp
+, env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Etapp
+(d3f0, s2es) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0f0 =
+(
+  d3exp_trxd3i0(d3f0, env0))
+//
+in//let
+//
+i0exp(
+loc0, i0t0, I0Etapp(i0f0, s2es))
+//
+end(*let*)//end-of-[f0_tapp(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tapq
+( d3e0: d3exp
+, env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Etapq
+(d3f0, tjgs) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0f0 =
+(
+  d3exp_trxd3i0(d3f0, env0))
+val ijgs =
+(
+t2jaglst_trxd3i0(tjgs, env0))
+//
+in//let
+//
+i0exp(
+loc0, i0t0, I0Etapq(i0f0, ijgs))
+//
+end(*let*)//end-of-[f0_tapq(d3e0,env0)]
 //
 (* ****** ****** *)
 //
