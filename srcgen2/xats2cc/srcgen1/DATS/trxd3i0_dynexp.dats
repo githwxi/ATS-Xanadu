@@ -578,6 +578,15 @@ d3e0.node() of
   f0_dapp(d3e0, env0))
 //
 (* ****** ****** *)
+//
+|D3Epcon _ =>
+(
+  f0_pcon(d3e0, env0))
+|D3Eproj _ =>
+(
+  f0_proj(d3e0, env0))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end where
@@ -970,6 +979,64 @@ in//let
 i0exp(loc0,
 i0t0, I0Edapp(i0f0, npf1, i0es)))
 end(*let*)//end-of-[f0_dapp(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_pcon
+( d3e0: d3exp
+, env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Epcon
+(tknd
+,lab1, dcon) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val icon =
+(
+  d3exp_trxd3i0(dcon, env0))
+//
+in//let
+(
+i0exp(loc0,
+i0t0, I0Epcon(tknd, lab1, icon)))
+end(*let*)//end-of-[f0_pcon(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_proj
+( d3e0: d3exp
+, env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Eproj
+(tknd
+,lab1, dtup) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val itup =
+(
+  d3exp_trxd3i0(dtup, env0))
+//
+in//let
+(
+i0exp(loc0,
+i0t0, I0Eproj(tknd, lab1, itup)))
+end(*let*)//end-of-[f0_proj(d3e0,env0)]
 //
 (* ****** ****** *)
 //
