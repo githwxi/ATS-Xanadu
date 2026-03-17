@@ -449,6 +449,10 @@ i0exp_node =
 |I0Elet0 of (i0dclist, i0exp)
 //
 (* ****** ****** *)
+//
+|I0Eseqn of (i0explst, i0exp)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
