@@ -453,6 +453,17 @@ i0exp_node =
 |I0Eseqn of (i0explst, i0exp)
 //
 (* ****** ****** *)
+//
+|I0Etup0 of
+(sint(*npf*), i0explst)//HX:flat
+|I0Etup1 of
+(
+token(*knd*), sint(*npf*), i0explst)
+|I0Ercd2 of
+(
+token(*knd*), sint(*npf*), l0i0elst)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
