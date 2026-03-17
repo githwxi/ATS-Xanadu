@@ -587,6 +587,12 @@ d3e0.node() of
   f0_proj(d3e0, env0))
 //
 (* ****** ****** *)
+//
+|D3Elet0 _ =>
+(
+  f0_let0(d3e0, env0))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end where
@@ -1037,6 +1043,41 @@ in//let
 i0exp(loc0,
 i0t0, I0Eproj(tknd, lab1, itup)))
 end(*let*)//end-of-[f0_proj(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_let0
+( d3e0: d3exp
+, env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Elet0
+(dcls, d3e1) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val icls =
+(
+d3eclist_trxd3i0(dcls, env0))
+//
+in//let
+//
+let
+val
+i0e1 = d3exp_trxd3i0(d3e1, env0)
+in//let
+(
+i0exp(
+loc0, i0t0, I0Elet0(icls, i0e1)))
+end//let
+//
+end(*let*)//end-of-[f0_let0(d3e0,env0)]
 //
 (* ****** ****** *)
 //
