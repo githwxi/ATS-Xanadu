@@ -493,7 +493,19 @@ end(*let*)//end-of-[f0_dapp(d3p0,env0)]
 }(*where*)//end-of-[d3pat_trxd3i0(d3p0,env0)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
+//
+#implfun
+l3d3p_trxd3i0
+(ld3p, env0) =
+let
+//
+val+
+D3LAB
+(lab0, d3p1) = ld3p
+//
+in//let
+I0LAB(lab0, d3pat_trxd3i0(d3p1, env0))
+end(*let*)//end-of-[l3d3p_trxd3i0(ld3p,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1227,6 +1239,24 @@ end(*let*)//end-of-[f0_rcd2(d3e0,env0)]
 (* ****** ****** *)
 //
 }(*where*)//end-of-[d3exp_trxd3i0(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+l3d3e_trxd3i0
+(ld3e, env0) =
+let
+//
+val+
+D3LAB
+(lab0, d3e1) = ld3e
+//
+in//let
+I0LAB(lab0, d3exp_trxd3i0(d3e1, env0))
+end(*let*)//end-of-[l3d3e_trxd3i0(ld3e,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxd3i0_dynexp.dats] *)
