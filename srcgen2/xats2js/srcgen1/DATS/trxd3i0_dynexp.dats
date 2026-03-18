@@ -560,7 +560,7 @@ D3LAB
 //
 in//let
 I0LAB(lab0, trxd3i0_d3pat(env0, d3p1))
-end (*let*)//end-of-[trxd3i0_l3d3p(env0,ld3p)]
+end(*let*)//end-of-[trxd3i0_l3d3p(env0,ld3p)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -923,7 +923,7 @@ val i0es =
 in//let
 (
 i0exp(loc0, I0Edapp(i0f0, i0es)))
-end (*let*) // end of [f0_dapp(env0,d3e0)]
+end(*let*)//end-of-[f0_dapp(env0,d3e0)]
 //
 and
 f0_darg
@@ -1543,7 +1543,7 @@ val i0er =
 in//let
 (
   i0exp(loc0, I0Eassgn(i0el, i0er)))
-end (*let*) // end of [f0_assgn(env0,d3e0)]
+end(*let*)//end-of-[f0_assgn(env0,d3e0)]
 //
 (* ****** ****** *)
 //
@@ -1567,7 +1567,7 @@ val iexn =
 in//let
 (
   i0exp(loc0, I0Eraise(dknd, iexn)))
-end (*let*) // end of [f0_raise(env0,d3e0)]
+end(*let*)//end-of-[f0_raise(env0,d3e0)]
 //
 (* ****** ****** *)
 //
@@ -1591,7 +1591,7 @@ val i0e1 =
 in//let
 (
   i0exp(loc0, I0El0azy(dknd, i0e1)))
-end (*let*) // end of [f0_l0azy(env0,d3e0)]
+end(*let*)//end-of-[f0_l0azy(env0,d3e0)]
 //
 fun
 f0_l1azy
@@ -1616,7 +1616,7 @@ val i0es =
 in//let
 ( i0exp_make_node
   (loc0, I0El1azy(dknd, i0e1, i0es)))
-end (*let*) // end of [f0_l1azy(env0,d3e0)]
+end(*let*)//end-of-[f0_l1azy(env0,d3e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1667,7 +1667,7 @@ D3Eextnam
 in//let
 (
   i0exp(loc0, I0Eextnam(tknd, gnam)))
-end (*let*) // end of [f0_extnam(env0,d3e0)]
+end(*let*)//end-of-[f0_extnam(env0,d3e0)]
 //
 (* ****** ****** *)
 //
@@ -1691,7 +1691,7 @@ D3Esynext
 in//let
 (
   i0exp(loc0, I0Esynext(tknd, gexp)))
-end (*let*) // end of [f0_synext(env0,d3e0)]
+end(*let*)//end-of-[f0_synext(env0,d3e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
