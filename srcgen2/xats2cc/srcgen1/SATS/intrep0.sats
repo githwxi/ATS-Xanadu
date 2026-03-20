@@ -173,6 +173,9 @@ i0lab_fprint
 #abstbox i0exp_tbox // p0tr
 #typedef i0exp = i0exp_tbox
 (* ****** ****** *)
+#abstbox fiarg_tbox // p0tr
+#typedef fiarg = fiarg_tbox
+(* ****** ****** *)
 #abstbox i0gua_tbox // p0tr
 #abstbox i0gpt_tbox // p0tr
 #abstbox i0cls_tbox // p0tr
@@ -185,9 +188,6 @@ i0lab_fprint
 (* ****** ****** *)
 #abstbox t0imp_tbox // p0tr
 #typedef t0imp = t0imp_tbox
-(* ****** ****** *)
-#abstbox fiarg_tbox // p0tr
-#typedef fiarg = fiarg_tbox
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -215,6 +215,8 @@ i0lab_fprint
 #typedef i0expopt = optn(i0exp)
 #typedef i0explst = list(i0exp)
 #typedef l0i0elst = list(l0i0e)
+(* ****** ****** *)
+#typedef fiarglst = list(fiarg)
 (* ****** ****** *)
 #typedef i0gualst = list(i0gua)
 #typedef i0clslst = list(i0cls)
@@ -455,13 +457,23 @@ i0exp_node =
 (* ****** ****** *)
 //
 |I0Etup0 of
-(sint(*npf*), i0explst)//HX:flat
+(sint(*npf*),i0explst)//HX:flat
 |I0Etup1 of
 (
-token(*knd*), sint(*npf*), i0explst)
+token(*knd*),sint(*npf*),i0explst)
 |I0Ercd2 of
 (
-token(*knd*), sint(*npf*), l0i0elst)
+token(*knd*),sint(*npf*),l0i0elst)
+//
+(* ****** ****** *)
+//
+|I0Elam0 of
+(token(*knd*)
+,fiarglst(*arg*), i0exp, d2varlst)
+|I0Efix0 of
+(token(*knd*)
+,d2var(*fid*)
+,fiarglst(*arg*), i0exp, d2varlst)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -496,6 +508,44 @@ fun
 i0exp_fprint
 (iexp:i0exp, out0:FILR): void
 #symload fprint with i0exp_fprint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+fiarg_node =
+|
+FIARGdarg of i0patlst
+//
+#typedef
+fiarglst = list(fiarg)
+#typedef
+fiarglstopt = optn(fiarglst)
+//
+(* ****** ****** *)
+//
+fun
+fiarg_make_node
+( loc0: loc_t,
+  node: fiarg_node): fiarg
+#symload
+  fiarg with fiarg_make_node
+//
+(* ****** ****** *)
+//
+fun
+fiarg_fprint
+(fia0:fiarg,out0:FILR): void
+//
+(* ****** ****** *)
+//
+fun
+fiarg_lctn$get(fiarg): loc_t
+fun
+fiarg_node$get(fiarg): fiarg_node
+//
+#symload lctn with fiarg_lctn$get
+#symload node with fiarg_node$get
 //
 (* ****** ****** *)
 (* ****** ****** *)
