@@ -417,6 +417,7 @@ i0exp_node =
 |I0Etop of symbl
 (* ****** ****** *)
 |I0Evar of d2var
+|I0Eenv of d2var
 (* ****** ****** *)
 //
 |I0Econ of d2con

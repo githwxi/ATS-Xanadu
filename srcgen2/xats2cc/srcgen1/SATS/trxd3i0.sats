@@ -61,6 +61,13 @@ envd3i0_free_top
   ( env0: !envd3i0 ): void
 //
 (* ****** ****** *)
+//
+fun
+envd3i0_dvar$envq
+( env0:
+! envd3i0, dvar: d2var): bool
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

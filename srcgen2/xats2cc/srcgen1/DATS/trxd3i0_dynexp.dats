@@ -793,7 +793,17 @@ val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
 //
+val envq =
+envd3i0_dvar$envq(env0, d2v1)
+//
 in//let
+//
+if // if
+(envq)
+then//then
+(
+i0exp(loc0, i0t0, I0Eenv(d2v1)))
+else//else
 (
 i0exp(loc0, i0t0, I0Evar(d2v1)))
 end(*let*)//end-of-[f0_var(d3e0,env0)]
