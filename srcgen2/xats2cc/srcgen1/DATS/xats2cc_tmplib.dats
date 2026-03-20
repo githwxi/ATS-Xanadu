@@ -89,12 +89,10 @@ i0exp_fprint(iexp, g_print$out<>())
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 #impltmp
 g_print
 <fiarg>(fia0) =
 fiarg_fprint(fia0, g_print$out<>())
-*)
 //
 (* ****** ****** *)
 //
