@@ -237,6 +237,44 @@ iexp.node() of
 //
 (* ****** ****** *)
 //
+|I0Elam0
+(tknd
+,fias
+,body,denv) =>
+(
+print("I0Elam0(");
+prints(
+tknd,";", fias,";", body,";", denv,")"))
+//
+|I0Efix0
+(tknd
+,fid0,fias
+,body,denv) =>
+(
+prints(
+"I0Efix0(",tknd,";");
+prints(
+fid0,";", fias,";", body,";", denv,")"))
+//
+(* ****** ****** *)
+//
+|I0Edp2tr
+(   i0e1    ) =>
+(
+ prints("I0Edp2tr(", i0e1, ")") )//de-p2tr
+//
+|I0Edl0az
+(   i0e1    ) =>
+(
+ prints("I0Edl0az(", i0e1, ")") )//de-l0az
+|I0Edl1az
+(   i0e1    ) =>
+(
+ prints("I0Edl1az(", i0e1, ")") )//de-l1az
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 end(*let*)//end-of-[i0exp_fprint(iexp,out0)]
 //
 (* ****** ****** *)
