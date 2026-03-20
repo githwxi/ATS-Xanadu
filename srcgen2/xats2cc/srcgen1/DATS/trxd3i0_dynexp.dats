@@ -623,6 +623,17 @@ d3e0.node() of
   f0_rcd2(d3e0, env0))
 //
 (* ****** ****** *)
+//
+|D3Elam0 _ =>
+(
+  f0_lam0(d3e0, env0))
+(*
+|D3Efix0 _ =>
+(
+  f0_fix0(d3e0, env0))
+*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end where
@@ -1235,6 +1246,47 @@ i0exp(loc0,
 i0t0, I0Ercd2(tknd, npf1, lies)))
 //
 end(*let*)//end-of-[f0_rcd2(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_lam0
+( d3e0: d3exp
+, env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Elam0
+(tknd
+,f3as, sres
+,arrw, d3e1) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val fias =
+(
+f3arglst_trxd3i0(f3as, env0))
+val i0e1 =
+(
+  d3exp_trxd3i0( d3e1, env0 ))
+//
+in//let
+//
+let
+val denv = list_nil( (*void*) )
+in//let
+(
+i0exp
+(
+loc0, i0t0,
+I0Elam0(tknd, fias, i0e1, denv)))
+end//let
+//
+end(*let*)//end-of-[f0_lam0(d3e0,env0)]
 //
 (* ****** ****** *)
 //
