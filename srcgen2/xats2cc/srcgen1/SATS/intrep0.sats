@@ -300,6 +300,14 @@ i0typ_fprint
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+i0jag_fprint
+(ijag: i0jag, out0: FILR): void
+#symload fprint with i0jag_fprint
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #typedef i0dclist = list(i0dcl)
 (* ****** ****** *)
 #typedef i0valdcl = i0valdcl_tbox
