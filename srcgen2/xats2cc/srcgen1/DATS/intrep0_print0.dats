@@ -221,26 +221,64 @@ iexp.node() of
 //
 |I0Eint(int) =>
 (
- prints("I0Eint(", int, ")"))
+prints("I0Eint(", int, ")"))
 |I0Ebtf(btf) =>
 (
- prints("I0Ebtf(", btf, ")"))
+prints("I0Ebtf(", btf, ")"))
 |I0Echr(chr) =>
 (
- prints("I0Echr(", chr, ")"))
+prints("I0Echr(", chr, ")"))
 |I0Eflt(flt) =>
 (
- prints("I0Eflt(", flt, ")"))
+prints("I0Eflt(", flt, ")"))
 |I0Estr(str) =>
 (
- prints("I0Estr(", str, ")"))
+prints("I0Estr(", str, ")"))
+//
+(* ****** ****** *)
+//
+|I0Evar
+(   d2v1   ) =>
+(
+prints("I0Evar(", d2v1, ")"))
+//
+|I0Eenv
+(   d2v1   ) =>
+(
+prints("I0Eenv(", d2v1, ")"))
+//
+(* ****** ****** *)
+//
+|I0Econ
+(   d2c1   ) =>
+(
+prints("I0Econ(", d2c1, ")"))
+//
+|I0Ecst
+(   d2c1   ) =>
+(
+prints("I0Ecst(", d2c1, ")"))
+//
+(* ****** ****** *)
+//
+|I0Esapp
+(i0f0, s2es) =>
+(
+prints("\
+I0Esapp(", i0f0, ";", s2es, ")"))
+//
+|I0Esapq
+(i0f0, i0ts) =>
+(
+prints("\
+I0Esapq(", i0f0, ";", i0ts, ")"))
 //
 (* ****** ****** *)
 //
 |I0Elam0
 (tknd
 ,fias
-,body,denv) =>
+,body, denv) =>
 (
 print("I0Elam0(");
 prints(
@@ -248,8 +286,8 @@ tknd,";", fias,";", body,";", denv,")"))
 //
 |I0Efix0
 (tknd
-,fid0,fias
-,body,denv) =>
+,fid0, fias
+,body, denv) =>
 (
 prints(
 "I0Efix0(",tknd,";");
