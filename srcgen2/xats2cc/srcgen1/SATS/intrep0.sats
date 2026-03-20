@@ -557,6 +557,85 @@ fiarg_node$get(fiarg): fiarg_node
 (* ****** ****** *)
 //
 datatype
+i0gua_node =
+| I0GUAexp of (i0exp)
+| I0GUAmat of (i0exp, i0pat)
+//
+(* ****** ****** *)
+//
+datatype
+i0cls_node =
+| I0CLSgpt of i0gpt
+| I0CLScls of (i0gpt, i0exp)
+and
+i0gpt_node =
+| I0GPTpat of (i0pat)
+| I0GPTgua of (i0pat, i0gualst)
+//
+(* ****** ****** *)
+//
+fun
+i0gua_make_node
+( loc0: loc_t,
+  node: i0gua_node): i0gua
+#symload
+  i0gua with i0gua_make_node
+fun
+i0gpt_make_node
+( loc0: loc_t,
+  node: i0gpt_node): i0gpt
+#symload
+  i0gpt with i0gpt_make_node
+fun
+i0cls_make_node
+( loc0: loc_t,
+  node: i0cls_node): i0cls
+#symload
+  i0cls with i0cls_make_node
+//
+(* ****** ****** *)
+//
+fun
+i0gua_fprint:(i0gua,FILR)->void
+fun
+i0gpt_fprint:(i0gpt,FILR)->void
+fun
+i0cls_fprint:(i0cls,FILR)->void
+//
+(* ****** ****** *)
+//
+fun
+i0gua_lctn$get(i0gua): loc_t
+fun
+i0gua_node$get(i0gua): i0gua_node
+//
+#symload lctn with i0gua_lctn$get
+#symload node with i0gua_node$get
+//
+(* ****** ****** *)
+//
+fun
+i0gpt_lctn$get(i0gpt): loc_t
+fun
+i0gpt_node$get(i0gpt): i0gpt_node
+//
+#symload lctn with i0gpt_lctn$get
+#symload node with i0gpt_node$get
+//
+(* ****** ****** *)
+//
+fun
+i0cls_lctn$get(i0cls): loc_t
+fun
+i0cls_node$get(i0cls): i0cls_node
+//
+#symload lctn with i0cls_lctn$get
+#symload node with i0cls_node$get
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
 i0dcl_node =
 //
 |I0Dd3ecl of (d3ecl)

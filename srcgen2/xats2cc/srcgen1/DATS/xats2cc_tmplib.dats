@@ -96,7 +96,6 @@ fiarg_fprint(fia0, g_print$out<>())
 //
 (* ****** ****** *)
 //
-(*
 #impltmp
 g_print
 <i0gua>(gua0) =
@@ -111,7 +110,6 @@ i0gpt_fprint(gpt0, g_print$out<>())
 g_print
 <i0cls>(cls0) =
 i0cls_fprint(cls0, g_print$out<>())
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
