@@ -113,6 +113,11 @@ l3d3e_trxd3i0
 (ld3e: l3d3e, env0: !envd3i0): l0i0e
 //
 (* ****** ****** *)
+//
+fun
+f3arg_trxd3i0
+(farg: f3arg, env0: !envd3i0): i0arg
+//
 (* ****** ****** *)
 //
 fun
@@ -168,6 +173,11 @@ l3d3elst_trxd3i0
 (ldes: l3d3elst, env0: !envd3i0): l0i0elst
 //
 (* ****** ****** *)
+//
+fun
+f3arglst_trxd3i0
+(f3as: f3arglst, env0: !envd3i0): i0arglst
+//
 (* ****** ****** *)
 //
 fun
