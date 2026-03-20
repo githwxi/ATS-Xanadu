@@ -100,6 +100,8 @@ are addressed:
 #typedef l3d3p = $D3E.l3d3p
 #typedef l3d3e = $D3E.l3d3e
 (* ****** ****** *)
+#typedef f3arg = $D3E.f3arg
+(* ****** ****** *)
 #typedef d3gua = $D3E.d3gua
 #typedef d3gpt = $D3E.d3gpt
 #typedef d3cls = $D3E.d3cls
@@ -124,6 +126,8 @@ are addressed:
 #typedef d3explst = list(d3exp)
 #typedef d3expopt = optn(d3exp)
 #typedef l3d3elst = list(l3d3e)
+(* ****** ****** *)
+#typedef f3arglst = list(f3arg)
 (* ****** ****** *)
 #typedef d3gualst = list(d3gua)
 #typedef d3clslst = list(d3cls)
@@ -520,11 +524,16 @@ i0exp_fprint
 //
 datatype
 fiarg_node =
-|
-FIARGdarg of i0patlst
+|FIARGsapp of
+(s2varlst(*s2vs*)
+,s2explst(*s2ps*))
+|FIARGmets of
+(s2explst(*mets*))
+|FIARGdapp of
+(sint(*npf*), i0patlst)
 //
 #typedef
-fiarglst = list(fiarg)
+fiarglst = list( fiarg )
 #typedef
 fiarglstopt = optn(fiarglst)
 //

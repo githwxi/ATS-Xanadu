@@ -378,11 +378,19 @@ i0pat_make_node
 //
 datatype
 fiarg_node =
-|
-FIARGdarg of i0patlst
+(*
+|FIARGsapp of
+(s2varlst(*s2vs*)
+,s2explst(*s2ps*))
+|FIARGmets of
+(s2explst(*mets*))
+|FIARGdarg of
+(sint(*npf*), i0patlst)
+*)
+|FIARGdarg of (i0patlst)
 //
 #typedef
-fiarglst = list(fiarg)
+fiarglst = list( fiarg )
 #typedef
 fiarglstopt = optn(fiarglst)
 //
