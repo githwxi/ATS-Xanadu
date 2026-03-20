@@ -281,6 +281,37 @@ end(*let*)//end-of-[i0exp_fprint(iexp,out0)]
 (* ****** ****** *)
 //
 #implfun
+fiarg_fprint
+(farg, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+farg.node() of
+|FIARGsapp
+(s2vs, s2ps) =>
+(
+prints("\
+FIARGsapp(",s2vs,";",s2ps,")"))
+|FIARGmets
+(   s2es   ) =>
+(
+prints("FIARGmets(", s2es, ")"))
+//
+|FIARGdapp
+(npf1, i0ps) =>
+(
+prints("\
+FIARGdapp(", npf1, ";", i0ps, ")"))
+//
+end(*let*)//end-of-[fiarg_fprint(farg,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i0dcl_fprint
 (idcl, out0) =
 let

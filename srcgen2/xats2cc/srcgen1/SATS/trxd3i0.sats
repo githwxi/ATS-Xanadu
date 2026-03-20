@@ -116,7 +116,7 @@ l3d3e_trxd3i0
 //
 fun
 f3arg_trxd3i0
-(farg: f3arg, env0: !envd3i0): i0arg
+(farg: f3arg, env0: !envd3i0): fiarg
 //
 (* ****** ****** *)
 //
@@ -176,7 +176,7 @@ l3d3elst_trxd3i0
 //
 fun
 f3arglst_trxd3i0
-(f3as: f3arglst, env0: !envd3i0): i0arglst
+(f3as: f3arglst, env0: !envd3i0): fiarglst
 //
 (* ****** ****** *)
 //

@@ -1310,6 +1310,44 @@ end(*let*)//end-of-[l3d3e_trxd3i0(ld3e,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+f3arg_trxd3i0
+(f3a0, env0) =
+(
+case+
+f3a0.node() of
+//
+|F3ARGsapp
+(s2vs, s2ps) =>
+let
+val loc0 = f3a0.lctn()
+in//let
+fiarg_make_node
+(loc0, FIARGsapp(s2vs, s2ps))
+end(*let*)//end-of-[F3ARGsapp( ... )]
+|F3ARGmets
+(   s2es   ) =>
+let
+val loc0 = f3a0.lctn()
+in//let
+(
+  fiarg(loc0, FIARGmets(s2es)))
+end(*let*)//end-of-[F3ARGmets( ... )]
+//
+|F3ARGdapp
+(npf1, d3ps) =>
+(
+fiarg_make_node
+(loc0, FIARGdapp(npf1, i0ps)))
+where
+{
+val loc0 = f3a0.lctn()
+val i0ps = d3patlst_trxd3i0(d3ps, env0)}
+)(*case+*)//end-of-[f3arg_trxd3i0(f3a0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxd3i0_dynexp.dats] *)
 (***********************************************************************)
