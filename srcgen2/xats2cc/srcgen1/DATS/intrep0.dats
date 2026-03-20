@@ -190,6 +190,39 @@ endloc (*local*) // end-of-[local(i0exp)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+local
+//
+datatype
+fiarg =
+FIARG of
+(
+loctn, fiarg_node)
+#absimpl
+fiarg_tbox = fiarg
+//
+in (* in-of-local *)
+//
+#implfun
+fiarg_make_node
+( loc0, node ) = FIARG(loc0, node)
+//
+#implfun
+fiarg_lctn$get(fia0) =
+let
+val+FIARG(loc0,node) = fia0 in loc0
+end
+#implfun
+fiarg_node$get(fia0) =
+let
+val+FIARG(loc0,node) = fia0 in node
+end
+//
+endloc (*local*) // end of [local(fiarg)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 local
 //
 datatype
