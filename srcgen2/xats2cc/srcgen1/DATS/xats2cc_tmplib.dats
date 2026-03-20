@@ -72,14 +72,24 @@ i0lab_fprint(ilab, g_print$out<>())
 #impltmp
 g_print
 <i0typ>(ityp) =
-i0pat_fprint(ityp, g_print$out<>())
+i0typ_fprint(ityp, g_print$out<>())
 //
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i0jag>(ijag) =
+i0jag_fprint(ijag, g_print$out<>())
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 g_print
 <i0pat>(ipat) =
 i0pat_fprint(ipat, g_print$out<>())
+//
+(* ****** ****** *)
 //
 #impltmp
 g_print

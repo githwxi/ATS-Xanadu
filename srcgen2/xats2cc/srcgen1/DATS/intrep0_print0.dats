@@ -275,6 +275,20 @@ I0Esapq(", i0f0, ";", i0ts, ")"))
 //
 (* ****** ****** *)
 //
+|I0Etapp
+(i0f0, s2es) =>
+(
+prints(
+"I0Etapp(", i0f0, ";", s2es, ")"))
+//
+|I0Etapq
+(i0f0, ijgs) =>
+(
+prints(
+"I0Etapq(", i0f0, ";", ijgs, ")"))
+//
+(* ****** ****** *)
+//
 |I0Elam0
 (tknd
 ,fias
