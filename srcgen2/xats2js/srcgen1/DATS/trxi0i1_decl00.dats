@@ -231,7 +231,7 @@ trxi0i1_i0dclist(env0, dcls)
 in//let
 (
   i1dcl(loc0, I1Ddclst0( dcls ) ) )
-end(*let*)//end of [f0_local0(env0,d3cl)]
+end(*let*)//end of [f0_dclst0(env0,d3cl)]
 //
 (* ****** ****** *)
 //

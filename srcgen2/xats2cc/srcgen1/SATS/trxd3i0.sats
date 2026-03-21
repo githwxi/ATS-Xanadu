@@ -63,6 +63,22 @@ envd3i0_free_top
 (* ****** ****** *)
 //
 fun
+envd3i0_pshlam0
+  ( env0: !envd3i0 ): void
+fun
+envd3i0_poplam0
+  ( env0: !envd3i0 ): void
+//
+fun
+envd3i0_pshlet0
+  ( env0: !envd3i0 ): void
+fun
+envd3i0_poplet0
+  ( env0: !envd3i0 ): void
+//
+(* ****** ****** *)
+//
+fun
 envd3i0_dvar$locq
 ( env0:
 ! envd3i0, dvar: d2var): bool
@@ -74,9 +90,20 @@ envd3i0_dvar$envq
 (* ****** ****** *)
 //
 fun
-envd3i0_denv$push
+envd3i0_denv$add1
 ( env0:
 ! envd3i0, dvar: d2var): void
+//
+(* ****** ****** *)
+//
+fun
+envd3i0_denv$pops
+( env0:
+! envd3i0 ): d2varlst(*denv*)
+fun
+envd3i0_denv$pshs
+( env0:
+! envd3i0, d2vs: d2varlst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
