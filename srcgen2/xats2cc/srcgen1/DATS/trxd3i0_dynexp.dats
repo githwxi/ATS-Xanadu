@@ -802,7 +802,7 @@ envd3i0_dvar$locq(env0, d2v1)
 val (  ) =
 if // if
 not(locq) then (
-envd3i0_denv$push(env0, d2v1))
+envd3i0_denv$add1(env0, d2v1))
 //
 in//let
 //
@@ -1284,6 +1284,10 @@ val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
 //
+val (  ) =
+(
+  envd3i0_pshlam0(  env0  ))
+//
 val fias =
 (
 f3arglst_trxd3i0(f3as, env0))
@@ -1291,10 +1295,18 @@ val i0e1 =
 (
   d3exp_trxd3i0( d3e1, env0 ))
 //
+val (  ) =
+(
+  envd3i0_poplam0(   env0   ))
+//
 in//let
 //
 let
-val denv = list_nil( (*void*) )
+val denv =
+envd3i0_denv$pops(   env0   )
+val (  ) =
+envd3i0_denv$pshs( env0, denv )
+//
 in//let
 (
 i0exp
