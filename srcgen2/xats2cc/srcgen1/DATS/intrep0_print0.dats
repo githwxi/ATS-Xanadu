@@ -238,14 +238,9 @@ prints("I0Estr(", str, ")"))
 (* ****** ****** *)
 //
 |I0Evar
-(   d2v1   ) =>
+(   i0v1   ) =>
 (
-prints("I0Evar(", d2v1, ")"))
-//
-|I0Eenv
-(   d2v1   ) =>
-(
-prints("I0Eenv(", d2v1, ")"))
+prints("I0Evar(", i0v1, ")"))
 //
 (* ****** ****** *)
 //
