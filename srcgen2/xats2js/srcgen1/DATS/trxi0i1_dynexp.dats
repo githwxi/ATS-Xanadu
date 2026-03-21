@@ -228,7 +228,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_timp(env0,...)]
 //
 (* ****** ****** *)
@@ -251,7 +251,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_dap0(env0,...)]
 //
 (* ****** ****** *)
@@ -273,7 +273,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_dapp(env0,...)]
 //
 (* ****** ****** *)
@@ -298,7 +298,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_pcon(env0,...)]
 //
 (* ****** ****** *)
@@ -322,7 +322,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_pflt(env0,...)]
 //
 (* ****** ****** *)
@@ -346,7 +346,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_proj(env0,...)]
 //
 (* ****** ****** *)
@@ -373,7 +373,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_let0(env0,...)]
 //
 (* ****** ****** *)
@@ -401,7 +401,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_ift0(env0,...)]
 //
 (* ****** ****** *)
@@ -429,7 +429,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_cas0(env0,...)]
 //
 (* ****** ****** *)
@@ -451,7 +451,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_tup0(env0,...)]
 //
 (* ****** ****** *)
@@ -473,7 +473,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_tup1(env0,...)]
 //
 (* ****** ****** *)
@@ -497,7 +497,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 } where {
 //
 fun
@@ -555,7 +555,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_lam0(env0,...)]
 //
 (* ****** ****** *)
@@ -583,7 +583,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_fix0(env0,...)]
 //
 (* ****** ****** *)
@@ -614,7 +614,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_try0(env0,...)]
 //
 (* ****** ****** *)
@@ -684,7 +684,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_flat(env0,...)]
 //
 (* ****** ****** *)
@@ -707,7 +707,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_dl0az(env0,...)]
 //
 fun
@@ -727,7 +727,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_dl1az(env0,...)]
 //
 (* ****** ****** *)
@@ -749,7 +749,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_dp2tr(env0,...)]
 //
 (* ****** ****** *)
@@ -771,7 +771,7 @@ I1LETnew0(I1INSfold(i1v0))
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_fold(env0,...)]
 //
 (* ****** ****** *)
@@ -792,7 +792,7 @@ I1LETnew0(I1INSfree(i1v0))
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_free(env0,...)]
 //
 (* ****** ****** *)
@@ -816,7 +816,7 @@ I1LETnew0
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_assgn(env0,...)]
 //
 (* ****** ****** *)
@@ -843,7 +843,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_raise(env0,...)]
 //
 (* ****** ****** *)
@@ -870,7 +870,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_l0azy(env0,...)]
 //
 (* ****** ****** *)
@@ -900,7 +900,7 @@ val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
-  envi0i1_insert_ilet(env0, ilet) )
+  envi0i1_ilet$insert(env0, ilet) )
 }(*where*)//end-of-[i1val_l1azy(env0,...)]
 //
 (* ****** ****** *)
@@ -1069,7 +1069,7 @@ val-
 I0Pvar(dvar) = ipat.node((*0*))
 //
 val ((*nil*)) =
-envi0i1_insert_dvar(env0, dvar, ival)
+envi0i1_dvar$insert(env0, dvar, ival)
 }(*where*)//end-of-[f0_var(env0, ...)]
 //
 (* ****** ****** *)
@@ -1745,7 +1745,7 @@ val-
 I0Evar(d2v1) = iexp.node()
 //
 in//let
-envi0i1_search_dvar(env0, d2v1)
+envi0i1_dvar$search(env0, d2v1)
 end where
 {
 //
@@ -2867,7 +2867,7 @@ I0Eextnam
 (tknd, gnam) = iexp.node()
 //
 val i1nm =
-envi0i1_search_exnm(env0, loc0)
+envi0i1_exnm$search(env0, loc0)
 //
 in//let
 (

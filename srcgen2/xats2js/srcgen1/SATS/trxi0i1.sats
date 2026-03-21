@@ -111,7 +111,7 @@ iltstk_popcas0
 (* ****** ****** *)
 //
 fun
-iltstk_insert_ilet
+iltstk_ilet$insert
 (stk:
 &iltstk >> _, ilt: i1let):void
 //
@@ -198,25 +198,25 @@ envi0i1_locjoin(!envi0i1): void
 (* ****** ****** *)
 //
 fun
-envi0i1_search_exnm
+envi0i1_exnm$search
 ( env0:
 ! envi0i1, loc0: loc_t): i1val
 fun
-envi0i1_insert_exnm
+envi0i1_exnm$insert
 ( env0: 
 ! envi0i1, ival: i1val): (void)
 //
 fun
-envi0i1_search_dvar
+envi0i1_dvar$search
 ( env0: 
 ! envi0i1, d2v0: d2var): i1val
 fun
-envi0i1_insert_dvar
+envi0i1_dvar$insert
 ( env0: 
 ! envi0i1, d2var,i1val): (void)
 //
 fun
-envi0i1_insert_ilet
+envi0i1_ilet$insert
 ( env0:
 ! envi0i1, ilet: i1let): (void)
 //

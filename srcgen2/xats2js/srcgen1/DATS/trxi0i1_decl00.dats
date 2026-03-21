@@ -620,7 +620,7 @@ val itnm = i1tnm_new0()
 val ival =
 i1val(loc0, I1Vtnm(itnm))
 val (  ) =
-envi0i1_insert_dvar(env0, dvar, ival)
+envi0i1_dvar$insert(env0, dvar, ival)
 //
 in//let
 let
@@ -666,7 +666,7 @@ envi0i1_pshlam0(env0)
 HX-2024-05-25:
 stkmap_nilq()=false! *)
 val (  ) =
-envi0i1_insert_exnm
+envi0i1_exnm$insert
   (env0, i1f0) where
 {
 val i1f0 = i1val_var(dvar)
