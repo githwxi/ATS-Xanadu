@@ -66,10 +66,12 @@ XATSOPT "./../../.."
 iltlst = list(i1let)
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #typedef
 d2vtop = (*$MAP*)topmap(i1val)
 #vwtpdef
 d2vstk = (*$MAP*)stkmap(i1val)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -495,7 +497,7 @@ in//let
 (
 iltstk_pshblk0(iltstk); $fold(env0))
 //
-end (*let*)//end-of-(envi0i1_pshblk0(env0))
+end(*let*)//end-of-(envi0i1_pshblk0(env0))
 //
 #implfun
 envi0i1_popblk0
@@ -533,7 +535,7 @@ in//let
 stkmap_pshlam0(d2vstk);
 iltstk_pshlam0(iltstk); $fold(env0))
 //
-end (*let*)//end-of-(envi0i1_pshlam0(env0))
+end(*let*)//end-of-(envi0i1_pshlam0(env0))
 //
 #implfun
 envi0i1_poplam0
@@ -571,7 +573,7 @@ in//let
 stkmap_pshlet0(d2vstk);
 iltstk_pshlet0(iltstk); $fold(env0))
 //
-end (*let*)//end-of-(envi0i1_pshlet0(env0))
+end(*let*)//end-of-(envi0i1_pshlet0(env0))
 //
 #implfun
 envi0i1_poplet0
@@ -614,7 +616,7 @@ HX-2024:
 *)
 iltstk_pshift0(iltstk); $fold(env0))
 //
-end (*let*)//end-of-(envi0i1_pshift0(env0))
+end(*let*)//end-of-(envi0i1_pshift0(env0))
 *)
 //
 (* ****** ****** *)
@@ -640,7 +642,7 @@ no [stkmap_pshcas0]!
 stkmap_pshlam0(d2vstk);
 iltstk_pshcas0(iltstk); $fold(env0))
 //
-end (*let*)//end-of-(envi0i1_pshcas0(env0))
+end(*let*)//end-of-(envi0i1_pshcas0(env0))
 *)
 //
 (* ****** ****** *)
@@ -660,7 +662,7 @@ in//let
 (
 stkmap_pshloc1(d2vstk); $fold(env0))
 //
-end (*let*)//end-of-(envi0i1_pshloc1(env0))
+end(*let*)//end-of-(envi0i1_pshloc1(env0))
 //
 #implfun
 envi0i1_pshloc2
@@ -676,7 +678,7 @@ in//let
 (
 stkmap_pshloc2(d2vstk); $fold(env0))
 //
-end (*let*)//end-of-(envi0i1_pshloc2(env0))
+end(*let*)//end-of-(envi0i1_pshloc2(env0))
 //
 (* ****** ****** *)
 //
@@ -711,7 +713,7 @@ else // if-else
 val () =
 $MAP.stkmap_insert$kxs(d2vstk, kxs)}
 //
-end (*let*)//end-of-(envi0i1_locjoin(env0))
+end(*let*)//end-of-(envi0i1_locjoin(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -775,7 +777,7 @@ else
 stkmap_insert$any
 (d2vstk,sym1,ival) in $fold(env0) end
 //
-end(*let*)//end-of-( envi0i1_insert_exnm )
+end(*let*)//end-of-(envi0i1_insert_exnm)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -814,9 +816,10 @@ where
 val opt2 =
 topmap_search$opt(d2vtop, sym1)}
 )
-| ~optn_vt_cons(ival) => ( ival )//case+
+| ~
+optn_vt_cons(ival) => (   ival   )
 //
-end(*let*)//end-of-( envi0i1_search_dvar )
+end(*let*)//end-of-(envi0i1_search_dvar)
 //
 (* ****** ****** *)
 //
@@ -846,7 +849,7 @@ else
 stkmap_insert$any
 (d2vstk,sym1,ival) in $fold(env0) end
 //
-end(*let*)//end-of-( envi0i1_insert_dvar )
+end(*let*)//end-of-(envi0i1_insert_dvar)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -867,12 +870,12 @@ val () =
 iltstk_insert_ilet
 (  iltstk, ilet  ) in $fold(env0) end
 //
-end(*let*)//end-of-( envi0i1_insert_ilet )
+end(*let*)//end-of-(envi0i1_insert_ilet)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-endloc (*local*) // end of [ local(envi0i1...) ]
+endloc(*local*)//end-of-[local(envi0i1...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -883,8 +886,11 @@ envi0i1_d2vins_self
 let
 val ival = i1val_var(d2v0)
 in//let
-  envi0i1_insert_dvar(env0, d2v0, ival)
+(
+  envi0i1_insert_dvar(env0, d2v0, ival))
 end//let//end-of-[envi0i1_d2vins_self(env0,d2v0)]
+//
+(* ****** ****** *)
 //
 #implfun
 envi0i1_dvsins_self
@@ -901,7 +907,7 @@ case+ d2vs of
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxi0i1_myenv0.dats] *)
 (***********************************************************************)

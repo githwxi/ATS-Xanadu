@@ -466,8 +466,9 @@ tr23env_insert$any(env0,s2c1))
 (sqid, s2cs) => ((*deadcode*)))
 //
 in//let
-d3ecl_make_node
-(loc0, D3Cabsimpl(tknd, simp, sexp))
+(
+d3ecl_make_node(
+loc0, D3Cabsimpl(tknd, simp, sexp)))
 end (*let*) // end-of-[f0_absimpl(...)]
 //
 (* ****** ****** *)
