@@ -195,16 +195,20 @@ i0lab_fprint
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#typedef l0i0t = i0lab(i0typ)
-#typedef l0i0p = i0lab(i0pat)
-#typedef l0i0e = i0lab(i0exp)
+#abstbox i0parsed_tbox//p0tr
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #abstbox i0valdcl_tbox//p0tr
 #abstbox i0vardcl_tbox//p0tr
 #abstbox i0fundcl_tbox//p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef l0i0t = i0lab(i0typ)
+#typedef l0i0p = i0lab(i0pat)
+#typedef l0i0e = i0lab(i0exp)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -229,16 +233,17 @@ i0lab_fprint
 #typedef i0dclist = list(i0dcl)
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#abstbox i0parsed_tbox//p0tr
-//
-(* ****** ****** *)
-(* ****** ****** *)
 #typedef i0parsed = i0parsed_tbox
 (* ****** ****** *)
 #typedef i0valdcl = i0valdcl_tbox
 #typedef i0vardcl = i0vardcl_tbox
 #typedef i0fundcl = i0fundcl_tbox
+(* ****** ****** *)
+#typedef i0valdclist = list(i0valdcl)
+#typedef i0vardclist = list(i0vardcl)
+#typedef i0fundclist = list(i0fundcl)
+(* ****** ****** *)
+#typedef i0dclistopt = optn(i0dclist)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -272,8 +277,8 @@ i0typ_node =
 (* ****** ****** *)
 //
 |I0Ttcon of (d2con, i0typlst)
-|I0Ttrcd of
-(trcdknd(*knd*), sint(*npf*), l0i0tlst)
+|I0Ttrcd of (
+trcdknd(*knd*), sint(*npf*), l0i0tlst)
 //
 (* ****** ****** *)
 //
@@ -291,7 +296,6 @@ i0typ_node$get
 //
 #symload sort with i0typ_sort$get
 #symload node with i0typ_node$get
-(* ****** ****** *)
 //
 fun
 i0typ_fprint
@@ -302,25 +306,18 @@ i0typ_fprint
 (* ****** ****** *)
 //
 fun
+i0jag_lctn$get:(i0jag)->loc_t
+fun
+i0jag_i0ts$get:(i0jag)->i0typlst
+//
+#symload lctn with i0jag_lctn$get
+#symload i0ts with i0jag_i0ts$get
+//
+fun
 i0jag_fprint
 (ijag: i0jag, out0: FILR): void
 #symload fprint with i0jag_fprint
 //
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef i0dclist = list(i0dcl)
-(* ****** ****** *)
-#typedef i0valdcl = i0valdcl_tbox
-#typedef i0vardcl = i0vardcl_tbox
-#typedef i0fundcl = i0fundcl_tbox
-(* ****** ****** *)
-#typedef i0parsed = i0parsed_tbox
-(* ****** ****** *)
-#typedef i0valdclist = list(i0valdcl)
-#typedef i0vardclist = list(i0vardcl)
-#typedef i0fundclist = list(i0fundcl)
-(* ****** ****** *)
-#typedef i0dclistopt = optn(i0dclist)
 (* ****** ****** *)
 (* ****** ****** *)
 //
