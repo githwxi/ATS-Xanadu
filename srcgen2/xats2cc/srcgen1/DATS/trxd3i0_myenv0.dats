@@ -42,16 +42,43 @@ XATSOPT "./../../.."
 *)
 (* ****** ****** *)
 //
+#include
+"./../HATS/libxatsopt.hats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/trxd3i0.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#vwtpdef
+d2vstk = (*$MAP*)stkmap( i0var )
+(* ****** ****** *)
+(* ****** ****** *)
 //
 local
 //
+(* ****** ****** *)
+//
+datavwtp
+envstk =
+//
+|envstk_nil of ((*void*)) 
+//
+|envstk_lam0 of ( envstk ) 
+|envstk_let0 of ( envstk ) 
+//
+|envstk_cons of (i0var, envstk)
+//
+(* ****** ****** *)
+#absimpl envstk_vtbx = (envstk)
+(* ****** ****** *)
+//
 datavwtp
 envd3i0 =
-ENVD3I0 of ()
+ENVD3I0 of
+(d2vstk, envstk)
 #absimpl envd3i0_vtbx = envd3i0
 //
 (* ****** ****** *)
@@ -60,7 +87,14 @@ in//local
 //
 #implfun
 envd3i0_make_nil
-  ((*void*)) = ENVD3I0( (*void*) )
+  ((*void*)) =
+(
+ENVD3I0
+(d2vstk, envstk)) where
+{
+  val envstk = envstk_nil()
+  val d2vstk = stkmap_make_nil()
+}(*where*) // end of [envd3i0_make_nil]
 //
 (* ****** ****** *)
 //
@@ -68,13 +102,16 @@ envd3i0_make_nil
 envd3i0_free_top
   (  env0  ) =
 (
-case+ env0 of ~ENVD3I0( (*0*) ) => ()
-)
-(*case+*)//end-of-(envd3i0_free_top(env0))
+stkmap_free_nil(d2vstk);
+) where
+{
+val+
+~ENVD3I0(d2vstk, envstk) = env0 }
+(*where*)//end-of-(envd3i0_free_top(env0))
 //
 (* ****** ****** *)
 //
-end (*local*) // end of [ local(envd3i0) ]
+endloc (*local*) // end-of-[ local(envd3i0) ]
 //
 (* ****** ****** *)
 (* ****** ****** *)

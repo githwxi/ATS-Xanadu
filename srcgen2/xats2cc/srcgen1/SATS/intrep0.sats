@@ -174,7 +174,9 @@ i0lab_fprint
 #abstbox i0pat_tbox // p0tr
 #typedef i0pat = i0pat_tbox
 (* ****** ****** *)
+#abstbox i0var_tbox // p0tr
 #abstbox i0exp_tbox // p0tr
+#typedef i0var = i0var_tbox
 #typedef i0exp = i0exp_tbox
 (* ****** ****** *)
 #abstbox fiarg_tbox // p0tr
@@ -219,6 +221,8 @@ i0lab_fprint
 (* ****** ****** *)
 #typedef i0patlst = list(i0pat)
 #typedef l0i0plst = list(l0i0p)
+(* ****** ****** *)
+#typedef i0varlst = list(i0var)
 (* ****** ****** *)
 #typedef i0expopt = optn(i0exp)
 #typedef i0explst = list(i0exp)
@@ -421,8 +425,7 @@ i0exp_node =
 (* ****** ****** *)
 |I0Etop of symbl
 (* ****** ****** *)
-|I0Evar of d2var
-|I0Eenv of d2var
+|I0Evar of i0var
 (* ****** ****** *)
 //
 |I0Econ of d2con
@@ -495,6 +498,22 @@ token(*knd*),sint(*npf*),l0i0elst)
 (* ****** ****** *)
 //
 fun
+i0exp_lvl0$get
+(ivar: i0var): sint
+fun
+i0exp_dvar$get
+(ivar: i0var): d2var
+fun
+i0exp_ityp$get
+(ivar: i0var): i0typ
+//
+#symload lvl0 with i0var_lctn$get
+#symload dvar with i0var_dvar$get
+#symload ityp with i0var_ityp$get
+//
+(* ****** ****** *)
+//
+fun
 i0exp_lctn$get
 (iexp: i0exp): loc_t
 fun
@@ -511,18 +530,31 @@ i0exp_node$get
 (* ****** ****** *)
 //
 fun
+i0var_make_dvar$info
+( dvar: d2var
+, lvl0: ( sint )
+, ityp: ( i0typ )): i0var
+fun
 i0exp_make_ityp$node
 ( loc0: loctn
 , ityp: i0typ
 , node: i0exp_node): i0exp
+//
+#symload
+ i0var with i0var_make_dvar$info
 #symload
  i0exp with i0exp_make_ityp$node
 //
 (* ****** ****** *)
 //
 fun
+i0var_fprint
+(ivar:i0var, out0:FILR): void
+fun
 i0exp_fprint
 (iexp:i0exp, out0:FILR): void
+//
+#symload fprint with i0var_fprint
 #symload fprint with i0exp_fprint
 //
 (* ****** ****** *)

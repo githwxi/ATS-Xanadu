@@ -48,6 +48,34 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#absvtbx envstk_vtbx // ptr
+#vwtpdef envstk = envstk_vtbx
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+envstk_fprint1
+( stk0:
+! envstk, out0: FILR): void
+//
+(* ****** ****** *)
+//
+fun
+envstk_pshlam0
+( stk0: &envstk >> _ ): void
+fun
+envstk_pshlet0
+( stk0: &envstk >> _ ): void
+//
+fun
+envstk_poplam0
+( stk0: &envstk >> _ ): void
+fun
+envstk_poplet0
+( stk0: &envstk >> _ ): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #absvtbx envd3i0_vtbx // p0tr
 #vwtpdef envd3i0 = envd3i0_vtbx
 (* ****** ****** *)
@@ -79,31 +107,16 @@ envd3i0_poplet0
 (* ****** ****** *)
 //
 fun
-envd3i0_dvar$locq
+envd3i0_dvar$search
 ( env0:
-! envd3i0, dvar: d2var): bool
-fun
-envd3i0_dvar$envq
-( env0:
-! envd3i0, dvar: d2var): bool
+! envd3i0, dvar: d2var): i0var
 //
 (* ****** ****** *)
 //
 fun
-envd3i0_denv$add1
+envd3i0_dvar$insert
 ( env0:
 ! envd3i0, dvar: d2var): void
-//
-(* ****** ****** *)
-//
-fun
-envd3i0_denv$pops
-( env0:
-! envd3i0 ): d2varlst(*denv*)
-fun
-envd3i0_denv$pshs
-( env0:
-! envd3i0, d2vs: d2varlst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

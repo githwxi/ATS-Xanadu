@@ -68,9 +68,9 @@ iltlst = list(i1let)
 (* ****** ****** *)
 //
 #typedef
-d2vtop = (*$MAP*)topmap(i1val)
+d2vtop = (*$MAP*)topmap( i1val )
 #vwtpdef
-d2vstk = (*$MAP*)stkmap(i1val)
+d2vstk = (*$MAP*)stkmap( i1val )
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -133,7 +133,7 @@ local
 datavwtp
 iltstk =
 //
-|iltstk_nil of ( (*v0*) ) 
+|iltstk_nil of ((*void*)) 
 //
 |iltstk_blk0 of ( iltstk ) 
 //
@@ -148,7 +148,7 @@ iltstk =
 |iltstk_cons of (i1let, iltstk)
 //
 (* ****** ****** *)
-#absimpl iltstk_vtbx = iltstk
+#absimpl iltstk_vtbx = (iltstk)
 (* ****** ****** *)
 //
 datavwtp
@@ -442,11 +442,11 @@ end//let
 (* ****** ****** *)
 //
 #implfun
-iltstk_insert_ilet
+iltstk_ilet$insert
   (  stk0, ilet  ) =
 (
   stk0 := iltstk_cons(ilet, stk0))
-//(*end of [iltstk_insert_ilet(...)]*)
+//(*end of [iltstk_ilet$insert(...)]*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -719,7 +719,7 @@ end(*let*)//end-of-(envi0i1_locjoin(env0))
 (* ****** ****** *)
 //
 #implfun
-envi0i1_search_exnm
+envi0i1_exnm$search
   (env0, loc0) = let
 //
 val+
@@ -743,12 +743,12 @@ case+ opt1 of
 (
    i1val_none0(loc0))
 | ~optn_vt_cons(ival) => ( ival ))
-end//let//end-of-[envi0i1_search_exnm]
+end//let//end-of-[envi0i1_exnm$search]
 //
 (* ****** ****** *)
 //
 #implfun
-envi0i1_insert_exnm
+envi0i1_exnm$insert
   (env0, ival) = let
 //
 val+
@@ -777,13 +777,13 @@ else
 stkmap_insert$any
 (d2vstk,sym1,ival) in $fold(env0) end
 //
-end(*let*)//end-of-(envi0i1_insert_exnm)
+end(*let*)//end-of-(envi0i1_exnm$insert)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-envi0i1_search_dvar
+envi0i1_dvar$search
   (env0, d2v1) = let
 //
 val+
@@ -819,12 +819,12 @@ topmap_search$opt(d2vtop, sym1)}
 | ~
 optn_vt_cons(ival) => (   ival   )
 //
-end(*let*)//end-of-(envi0i1_search_dvar)
+end(*let*)//end-of-(envi0i1_dvar$search)
 //
 (* ****** ****** *)
 //
 #implfun
-envi0i1_insert_dvar
+envi0i1_dvar$insert
 (env0, d2v1, ival) = let
 //
 val+
@@ -849,13 +849,13 @@ else
 stkmap_insert$any
 (d2vstk,sym1,ival) in $fold(env0) end
 //
-end(*let*)//end-of-(envi0i1_insert_dvar)
+end(*let*)//end-of-(envi0i1_dvar$insert)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-envi0i1_insert_ilet
+envi0i1_ilet$insert
   (env0 , ilet) = let
 //
 val+
@@ -867,10 +867,10 @@ in//let
 //
 let
 val () =
-iltstk_insert_ilet
+iltstk_ilet$insert
 (  iltstk, ilet  ) in $fold(env0) end
 //
-end(*let*)//end-of-(envi0i1_insert_ilet)
+end(*let*)//end-of-(envi0i1_ilet$insert)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -887,7 +887,7 @@ let
 val ival = i1val_var(d2v0)
 in//let
 (
-  envi0i1_insert_dvar(env0, d2v0, ival))
+  envi0i1_dvar$insert(env0, d2v0, ival))
 end//let//end-of-[envi0i1_d2vins_self(env0,d2v0)]
 //
 (* ****** ****** *)
