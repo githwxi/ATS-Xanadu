@@ -93,6 +93,13 @@ i0pat_fprint(ipat, g_print$out<>())
 //
 #impltmp
 g_print
+<i0var>(ivar) =
+i0var_fprint(ivar, g_print$out<>())
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <i0exp>(iexp) =
 i0exp_fprint(iexp, g_print$out<>())
 //

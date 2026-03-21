@@ -796,24 +796,13 @@ val i0t0 =
 (*
 HX: local or envir?
 *)
-val locq =
-envd3i0_dvar$locq(env0, d2v1)
-//
-val (  ) =
-if // if
-not(locq) then (
-envd3i0_denv$add1(env0, d2v1))
+val i0v1 =
+envd3i0_dvar$search(env0, d2v1)
 //
 in//let
 //
-if // if
-(locq)
-then//then
 (
-i0exp(loc0, i0t0, I0Evar(d2v1)))
-else//else
-(
-i0exp(loc0, i0t0, I0Eenv(d2v1)))
+i0exp(loc0, i0t0, I0Evar(i0v1)))
 //
 end(*let*)//end-of-[f0_var(d3e0,env0)]
 //
