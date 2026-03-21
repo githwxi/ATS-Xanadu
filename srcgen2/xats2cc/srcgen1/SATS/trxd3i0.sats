@@ -63,9 +63,20 @@ envd3i0_free_top
 (* ****** ****** *)
 //
 fun
+envd3i0_dvar$locq
+( env0:
+! envd3i0, dvar: d2var): bool
+fun
 envd3i0_dvar$envq
 ( env0:
 ! envd3i0, dvar: d2var): bool
+//
+(* ****** ****** *)
+//
+fun
+envd3i0_denv$push
+( env0:
+! envd3i0, dvar: d2var): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
