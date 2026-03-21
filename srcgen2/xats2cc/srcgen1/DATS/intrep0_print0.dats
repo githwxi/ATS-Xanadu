@@ -204,6 +204,28 @@ end(*let*)//end-of-[i0pat_fprint(ipat,out0)]
 (* ****** ****** *)
 //
 #implfun
+i0var_fprint
+(ivar, out0) =
+let
+//
+#impltmp
+g_print$out
+<(*0*)>((*0*)) = out0
+//
+val lvl0 = ivar.lvl0()
+val dvar = ivar.dvar()
+val ityp = ivar.ityp()
+//
+in//let
+(
+print("I0VAR(");
+prints(lvl0,";",dvar,";",ityp,")"))
+end(*let*)//end-of-[i0var_fprint(ivar,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i0exp_fprint
 (iexp, out0) =
 let

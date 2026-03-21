@@ -498,16 +498,16 @@ token(*knd*),sint(*npf*),l0i0elst)
 (* ****** ****** *)
 //
 fun
-i0exp_lvl0$get
+i0var_lvl0$get
 (ivar: i0var): sint
 fun
-i0exp_dvar$get
+i0var_dvar$get
 (ivar: i0var): d2var
 fun
-i0exp_ityp$get
+i0var_ityp$get
 (ivar: i0var): i0typ
 //
-#symload lvl0 with i0var_lctn$get
+#symload lvl0 with i0var_lvl0$get
 #symload dvar with i0var_dvar$get
 #symload ityp with i0var_ityp$get
 //
