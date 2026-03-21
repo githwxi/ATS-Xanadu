@@ -260,7 +260,7 @@ trxi0i1_i0pat // inserts into [env0]
 ( env0:
 ! envi0i1, ipat: i0pat): i1bnd
 //
-fun // HX: Note that [trxi0i1_i0bnd]
+fun // HX: Note [trxi0i1_i0bnd]
 trxi0i1_i0bnd // inserts into [env0]
 ( env0:
 ! envi0i1

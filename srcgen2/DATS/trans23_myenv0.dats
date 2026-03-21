@@ -248,7 +248,6 @@ end(*let*)//end-of-(tr23env_search$opt(...))
 //
 (* ****** ****** *)
 //
-//
 #implfun
 tr23env_insert$any
   (env0, s2c0) = let
@@ -287,7 +286,7 @@ endlet//end-of(tr23env_insert$any(env0,s2c0))
 endloc (*local*) // end of [ local(tr23env...) ]
 //
 (* ****** ****** *)
-
+//
 #implfun
 tr23env_evstyp_cst
   (env0, s2c0) = let
@@ -305,27 +304,28 @@ prerrsln
 *)
 //
 in//let
+//
 (
-  f0_s2cs(s2cs) ) where
-{
+  f0_s2cs(s2cs) )
+where{
 fun
 f0_s2cs
 ( s2cs
 : s2cstlst): s2typopt_vt =
 (
 case+ s2cs of
-|
-list_nil() =>
-optn_vt_nil((*void*))
-|
-list_cons(s2c1, s2cs) =>
-if
-(s2c0 = s2c1)
-then
-s2abs_get_styp(s2c0) else f0_s2cs(s2cs))
-}
-end(*let*) // end of [tr23env_evstyp_cst(...)]
-
+|list_nil
+( (*void*) ) =>
+(
+optn_vt_nil((* 0 *)))
+|list_cons
+(s2c1, s2cs) =>
+if // if
+(s2c0 = s2c1) then//then
+s2abs_get_styp(s2c0) else f0_s2cs(s2cs))}
+//
+end(*let*) // end-of-[tr23env_evstyp_cst(...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
