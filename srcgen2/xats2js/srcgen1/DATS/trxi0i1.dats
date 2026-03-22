@@ -56,7 +56,7 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 i1parsed_of_trxi0i1
   (dpar) =
@@ -87,7 +87,7 @@ in//let
   i1parsed(stadyn,nerror,source,parsed))
 end//let
 end (*let*) // end of [i1parsed_trxi0i1(dpar)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -119,7 +119,123 @@ map$e1nv$fopr<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+#implfun
+trxi0i1_i0patlst
+( env0, i0ps ) =
+(
+list_trxi0i1_fnp(env0, i0ps, trxi0i1_i0pat))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0explst
+( env0, i0es ) =
+(
+ list_trxi0i1_fnp(env0, i0es, trxi0i1_i0exp))
+//
+#implfun
+trxi0i1_i0blklst
+( env0, i0es ) =
+(
+ list_trxi0i1_fnp(env0, i0es, trxi0i1_i0blk))
+//
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_l0i0elst
+( env0, lies ) =
+let
+fun
+trxi0i1_l0i0e
+(env0:
+!envi0i1, l0x1: l0i0e): l1i1v =
+let
+val
+I0LAB(l0, x1) = l0x1 in//let
+I1LAB(l0, trxi0i1_i0exp(env0, x1)) end
+in//let
+  list_trxi0i1_fnp(env0, lies, trxi0i1_l0i0e)
+end//let//end-of-[trxi0i1_l0i0elst(env0,lies)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0gualst
+( env0, i0gs ) =
+(
+  list_trxi0i1_fnp(env0, i0gs, trxi0i1_i0gua))
+//
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0clslst
+( env0, icls ) =
+(
+  list_trxi0i1_fnp(env0, icls, trxi0i1_i0cls))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+(*
+HX:
+This one is implemented
+directly in [trxi0i1_dynexp.dats]
+*)
+#implfun
+trxi0i1_fiarglst
+( env0, fias ) =
+(
+  list_trxi0i1_fnp(env0, fias, trxi0i1_fiarg))
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0dclist
+( env0, dcls ) =
+(
+  list_trxi0i1_fnp(env0, dcls, trxi0i1_i0dcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0valdclist
+  ( env0 , i0vs ) =
+(
+  list_trxi0i1_fnp(env0, i0vs, trxi0i1_i0valdcl))
+//
+#implfun
+trxi0i1_i0vardclist
+  ( env0 , i0vs ) =
+(
+  list_trxi0i1_fnp(env0, i0vs, trxi0i1_i0vardcl))
+//
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0fundclist
+  ( env0 , i0fs ) =
+(
+  list_trxi0i1_fnp(env0, i0fs, trxi0i1_i0fundcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0dclistopt
+  (env0, dopt) =
+(
+  optn_trxi0i1_fnp(env0, dopt, trxi0i1_i0dclist))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxi0i1.dats] *)
 (***********************************************************************)

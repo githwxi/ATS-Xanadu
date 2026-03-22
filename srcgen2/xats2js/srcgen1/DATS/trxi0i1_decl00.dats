@@ -707,47 +707,6 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#implfun
-trxi0i1_i0dclist
-( env0, dcls ) =
-(
-  list_trxi0i1_fnp(env0, dcls, trxi0i1_i0dcl))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-trxi0i1_i0valdclist
-  ( env0 , i0vs ) =
-(
-  list_trxi0i1_fnp(env0, i0vs, trxi0i1_i0valdcl))
-//
-#implfun
-trxi0i1_i0vardclist
-  ( env0 , i0vs ) =
-(
-  list_trxi0i1_fnp(env0, i0vs, trxi0i1_i0vardcl))
-//
-(* ****** ****** *)
-//
-#implfun
-trxi0i1_i0fundclist
-  ( env0 , i0fs ) =
-(
-  list_trxi0i1_fnp(env0, i0fs, trxi0i1_i0fundcl))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-trxi0i1_i0dclistopt
-  (env0, dopt) =
-(
-  optn_trxi0i1_fnp(env0, dopt, trxi0i1_i0dclist))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxi0i1_decl00.dats] *)
 (***********************************************************************)

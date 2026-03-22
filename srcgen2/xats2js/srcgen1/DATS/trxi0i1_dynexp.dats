@@ -905,7 +905,7 @@ val (  ) =
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 trxi0i1_i0pat
 ( env0, ipat ) =
@@ -975,10 +975,10 @@ prerrsln("trxi0i1_i0pat: ipat = ", ipat)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[trxi0i1_i0pat(env0,ipat)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 trxi0i1_i0bnd
 ( env0
@@ -1390,10 +1390,10 @@ prerrsln("trxi0i1_i0bnd: ival = ", ival)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[trxi0i1_i0bnd(env0,ipat)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 trxi0i1_i0exp
 ( env0, iexp ) =
@@ -2888,7 +2888,8 @@ val () =
 (* ****** ****** *)
 //
 }(*where*)//end-of-[trxi0i1_i0exp(env0,iexp)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -2998,6 +2999,7 @@ i1v1 = trxi0i1_i0exp(env0, i0e1) }
 end//let//end-of-[f0_proj(env0,iexp)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_dp2tr
@@ -3047,6 +3049,7 @@ val () =
 //
 }(*where*)//end-of-[trxi0i1_i0lft(env0,iexp)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -3305,15 +3308,6 @@ end(*let*)//end-of-[trxi0i1_t0imp(env0,timp)]
 (* ****** ****** *)
 //
 #implfun
-trxi0i1_i0patlst
-( env0, i0ps ) =
-(
-list_trxi0i1_fnp(env0, i0ps, trxi0i1_i0pat))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
 trxi0i1_fiarglst
 ( env0, fias ) =
 (
@@ -3364,71 +3358,6 @@ fjarg
 val
 i1bs = trxi0i1_i0patlst(env0, i0ps)} end
 }(*where+*)//end-[trxi0i1_fiarglst(env0,fias)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-trxi0i1_i0explst
-( env0, i0es ) =
-(
- list_trxi0i1_fnp(env0, i0es, trxi0i1_i0exp))
-//
-#implfun
-trxi0i1_i0blklst
-( env0, i0es ) =
-(
- list_trxi0i1_fnp(env0, i0es, trxi0i1_i0blk))
-//
-(* ****** ****** *)
-//
-#implfun
-trxi0i1_l0i0elst
-( env0, lies ) =
-let
-fun
-trxi0i1_l0i0e
-(env0:
-!envi0i1, l0x1: l0i0e): l1i1v =
-let
-val
-I0LAB(l0, x1) = l0x1 in//let
-I1LAB(l0, trxi0i1_i0exp(env0, x1)) end
-in//let
-  list_trxi0i1_fnp(env0, lies, trxi0i1_l0i0e)
-end//let//end-of-[trxi0i1_l0i0elst(env0,lies)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-trxi0i1_i0gualst
-( env0, i0gs ) =
-(
-  list_trxi0i1_fnp(env0, i0gs, trxi0i1_i0gua))
-//
-(* ****** ****** *)
-//
-#implfun
-trxi0i1_i0clslst
-( env0, icls ) =
-(
-  list_trxi0i1_fnp(env0, icls, trxi0i1_i0cls))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-(*
-HX:
-This one is implemented directly
-*)
-#implfun
-trxi0i1_fiarglst
-( env0, fias ) =
-(
-  list_trxi0i1_fnp(env0, fias, trxi0i1_fiarg))
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
