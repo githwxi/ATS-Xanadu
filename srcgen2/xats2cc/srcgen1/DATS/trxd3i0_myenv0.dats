@@ -106,8 +106,9 @@ ENVD3I0
 envd3i0_free_top
   (  env0  ) =
 (
-stkmap_free_nil(d2vstk);
-) where
+stkmap_free_nil(d2vstk)
+;
+envstk_free$top(envstk)) where
 {
 val+
 ~ENVD3I0(d2vstk, envstk) = env0 }
