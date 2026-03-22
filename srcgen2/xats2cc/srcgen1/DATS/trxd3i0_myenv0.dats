@@ -68,9 +68,9 @@ envstk =
 //
 |envstk_lam0 of
 ( sint(*lvl0*), envstk ) 
-|envstk_let0 of ( envstk ) 
+|envstk_let0 of (envstk) 
 //
-|envstk_cons of
+|envstk_denv of
 ( i0var(*denv*), envstk )
 |envstk_ufld of
 ( d2var(*lvrt*), i0typ, envstk)
@@ -87,6 +87,49 @@ ENVD3I0 of
 //
 (* ****** ****** *)
 in//local
+(* ****** ****** *)
+//
+#implfun
+envstk_getlvl0
+  ( stk0 ) =
+(
+  loop(stk0)) where
+{
+fun
+loop
+(stk0: !envstk): sint =
+(
+case+ stk0 of
+//
+|envstk_nil
+(   (*void*)   ) => ( 0 )
+|envstk_lam0
+(
+lvl0, _(*stk0*)) => (lvl0)
+//
+|envstk_let0
+(      stk0      ) => loop(stk0)
+|envstk_denv
+(   ivar, stk0   ) => loop(stk0)
+|envstk_ufld//unfold
+(dvar, ityp, stk0) => loop(stk0)
+)(*case+*)//end-of-[loop(stk0):sint]
+}(*where*)//end-of-[envstk_getlvl0(stk0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envd3i0_getlvl0
+  ( env0 ) =
+(
+envstk_getlvl0(envstk))
+where
+{
+val+
+~ENVD3I0(d2vstk, envstk) = env0 }
+(*where*)//end-of-(envd3i0_getlvl0(env0))
+//
 (* ****** ****** *)
 //
 #implfun
@@ -114,6 +157,7 @@ val+
 ~ENVD3I0(d2vstk, envstk) = env0 }
 (*where*)//end-of-(envd3i0_free_top(env0))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 endloc (*local*) // end-of-[ local(envd3i0) ]
