@@ -52,8 +52,18 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #vwtpdef
 d2vstk = (*$MAP*)stkmap( i0var )
+//
+(* ****** ****** *)
+//
+#symload lctn with d2var_get_lctn
+(*
+#symload name with d2var_get_name
+*)
+#symload unam with d2var_get_unam
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -158,6 +168,22 @@ val+
 (*where*)//end-of-(envd3i0_free_top(env0))
 //
 (* ****** ****** *)
+//
+#implfun
+envd3i0_dvar$insert
+  (env0, dvar, ivar) =
+(
+stkmap_insert$any
+(d2vstk
+,sym1(*k0*), ivar(*x0*))) where
+{
+//
+val sym1 = dvar.unam()
+//
+val+
+!ENVD3I0(d2vstk, envstk) = env0 }
+(*where*)//end-of-(envd3i0_dvar$insert(...))
+//
 (* ****** ****** *)
 //
 endloc (*local*) // end-of-[ local(envd3i0) ]
