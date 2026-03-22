@@ -1291,10 +1291,10 @@ val (  ) =
 in//let
 //
 let
-val denv =
-envd3i0_denv$pops(   env0   )
+val i0vs =
+envd3i0_lamenv$get(   env0   )
 val (  ) =
-envd3i0_denv$pshs( env0, denv )
+envd3i0_i0vs$insert(env0, i0vs)
 //
 in//let
 (
@@ -1302,7 +1302,7 @@ i0exp
 (
 loc0,
 i0t0,
-I0Elam0(tknd, fias, i0e1, denv)))
+I0Elam0(tknd, fias, i0e1, i0vs)))
 end//let
 //
 end(*let*)//end-of-[f0_lam0(d3e0,env0)]
