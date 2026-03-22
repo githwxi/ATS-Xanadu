@@ -125,6 +125,17 @@ envd3i0_poplet0
 (* ****** ****** *)
 //
 fun
+envd3i0_lamenv$get
+( env0: !envd3i0 ): i0varlst
+//
+fun
+envd3i0_i0vs$insert
+( env0:
+! envd3i0, i0vs: i0varlst): void
+//
+(* ****** ****** *)
+//
+fun
 envd3i0_dvar$search
 ( env0:
 ! envd3i0, dvar: d2var): i0var
