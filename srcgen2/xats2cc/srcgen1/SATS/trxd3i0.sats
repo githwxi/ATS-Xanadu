@@ -143,6 +143,13 @@ envd3i0_dvar$search
 (* ****** ****** *)
 //
 fun
+envd3i0_denv$insert
+( env0:
+! envd3i0, ivar: i0var): (void)
+//
+(* ****** ****** *)
+//
+fun
 envd3i0_dvar$insert
 ( env0:
 ! envd3i0

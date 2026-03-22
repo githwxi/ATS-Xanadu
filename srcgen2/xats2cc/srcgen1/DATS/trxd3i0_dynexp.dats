@@ -49,6 +49,9 @@ XATSOPT "./../../.."
 "./../../..\
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
 #staload
 "./../../../SATS/staexp2.sats"
 #staload
@@ -798,6 +801,15 @@ HX: local or envir?
 *)
 val i0v1 =
 envd3i0_dvar$search(env0, d2v1)
+val (  ) =
+envd3i0_denv$insert(env0, i0v1)
+//
+val (  ) =
+prerrsln
+("f0_var(d3i0): d3e0 = ", d3e0)
+val (  ) =
+prerrsln
+("f0_var(d3i0): i0v1 = ", i0v1)
 //
 in//let
 //
