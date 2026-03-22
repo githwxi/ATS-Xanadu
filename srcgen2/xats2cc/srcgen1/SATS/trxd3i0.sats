@@ -60,6 +60,12 @@ envstk_getlvl0
 (* ****** ****** *)
 //
 fun
+envstk_free$top
+  ( env0: !envstk ): void
+//
+(* ****** ****** *)
+//
+fun
 envstk_fprint1
 ( stk0:
 ! envstk, out0: FILR): void
