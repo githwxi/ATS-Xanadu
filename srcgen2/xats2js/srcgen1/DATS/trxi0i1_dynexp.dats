@@ -933,9 +933,10 @@ let
 val
 itnm = i1tnm_new0()
 in//let
+(
 I1BNDcons
-(itnm, ipat, list_nil(*void*))
-end//let//end-of-[f0_nil(ipat)]
+(itnm, ipat, list_nil(*void*)))
+end(*let*)//end-of-[f0_nil(ipat)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -953,15 +954,16 @@ val itnm = i1tnm_new0()
 val ival =
 i1val(loc0, I1Vtnm(itnm))
 //
-in
+in//let
 //
+(
 I1BNDcons
-(itnm, ipat, dvvs) where
-{
+(itnm, ipat, dvvs))
+where{
 val dvvs =
-trxi0i1_i0bnd(env0, ipat, ival) }
+trxi0i1_i0bnd(env0, ipat, ival)}
 //
-end // end-of-[f0_main(env0,ipat)]
+end(*let*)//end-of-[f0_main(env0,ipat)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
