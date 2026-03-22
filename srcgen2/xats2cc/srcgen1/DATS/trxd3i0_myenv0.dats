@@ -64,12 +64,16 @@ local
 datavwtp
 envstk =
 //
-|envstk_nil of ((*void*)) 
+|envstk_nil of ((*0*)) 
 //
-|envstk_lam0 of ( envstk ) 
+|envstk_lam0 of
+( sint(*lvl0*), envstk ) 
 |envstk_let0 of ( envstk ) 
 //
-|envstk_cons of (i0var, envstk)
+|envstk_cons of
+( i0var(*denv*), envstk )
+|envstk_ufld of
+( d2var(*lvrt*), i0typ, envstk)
 //
 (* ****** ****** *)
 #absimpl envstk_vtbx = (envstk)

@@ -54,6 +54,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+envstk_getlvl0
+  ( stk0: !envstk ): sint
+//
+(* ****** ****** *)
+//
+fun
 envstk_fprint1
 ( stk0:
 ! envstk, out0: FILR): void
@@ -87,6 +93,12 @@ envd3i0_make_nil
 fun
 envd3i0_free_top
   ( env0: !envd3i0 ): void
+//
+(* ****** ****** *)
+//
+fun
+envd3i0_getlvl0
+  ( env0: !envd3i0 ): sint
 //
 (* ****** ****** *)
 //
