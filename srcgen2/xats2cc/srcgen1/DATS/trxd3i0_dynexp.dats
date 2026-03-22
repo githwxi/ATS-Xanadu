@@ -1273,7 +1273,10 @@ val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
 //
-val (  ) =
+val lvl0 =
+(
+  envd3i0_getlvl0(  env0  ))
+val (  ) = // HX: lvl0+1
 (
   envd3i0_pshlam0(  env0  ))
 //
@@ -1302,7 +1305,8 @@ i0exp
 (
 loc0,
 i0t0,
-I0Elam0(tknd, fias, i0e1, i0vs)))
+I0Elam0(
+  lvl0, tknd, fias, i0e1, i0vs)))
 end//let
 //
 end(*let*)//end-of-[f0_lam0(d3e0,env0)]
@@ -1328,12 +1332,23 @@ val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
 //
+val lvl0 =
+(
+  envd3i0_getlvl0(  env0  ))
+val (  ) = // HX: lvl0+1
+(
+  envd3i0_pshlam0(  env0  ))
+//
 val fias =
 (
 f3arglst_trxd3i0(f3as, env0))
 val i0e1 =
 (
   d3exp_trxd3i0( d3e1, env0 ))
+//
+val (  ) =
+(
+  envd3i0_poplam0(   env0   ))
 //
 in//let
 //
@@ -1345,7 +1360,7 @@ i0exp
 (
 loc0,
 i0t0,
-I0Efix0(
+I0Efix0(lvl0,
   tknd, fid0, fias, i0e1, denv)))
 end//let
 //

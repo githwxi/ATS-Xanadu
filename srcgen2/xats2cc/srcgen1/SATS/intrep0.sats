@@ -481,10 +481,12 @@ token(*knd*),sint(*npf*),l0i0elst)
 (* ****** ****** *)
 //
 |I0Elam0 of
-(token(*knd*)
+(sint(*lvl*)
+,token(*knd*)
 ,fiarglst(*arg*), i0exp, i0varlst)
 |I0Efix0 of
-(token(*knd*)
+(sint(*lvl*)
+,token(*knd*)
 ,d2var(*fid*)
 ,fiarglst(*arg*), i0exp, i0varlst)
 //

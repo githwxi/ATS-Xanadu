@@ -307,21 +307,25 @@ prints(
 (* ****** ****** *)
 //
 |I0Elam0
-(tknd
+(lvl0
+,tknd
 ,fias
 ,body, denv) =>
 (
 print("I0Elam0(");
 prints(
-tknd,";", fias,";", body,";", denv,")"))
+lvl0,";", tknd,";");
+prints(fias,";", body,";", denv,")"))
 //
 |I0Efix0
-(tknd
+(lvl0
+,tknd
 ,fid0, fias
 ,body, denv) =>
 (
+print("I0Efix0(");
 prints(
-"I0Efix0(",tknd,";");
+lvl0,";", tknd,";");
 prints(
 fid0,";", fias,";", body,";", denv,")"))
 //
