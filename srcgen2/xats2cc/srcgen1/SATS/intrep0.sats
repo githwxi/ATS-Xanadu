@@ -535,7 +535,7 @@ fun
 i0var_make_dvar$info
 ( dvar: d2var
 , lvl0: ( sint )
-, ityp: ( i0typ )): i0var
+, ityp: ( i0typ ) ): i0var
 fun
 i0exp_make_ityp$node
 ( loc0: loctn

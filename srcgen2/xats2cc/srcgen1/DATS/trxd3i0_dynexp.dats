@@ -187,6 +187,16 @@ val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
 //
+val (  ) =
+envd3i0_dvar$insert
+( env0, d2v1, i0v1 )
+where{
+val lvl0 =
+envd3i0_getlvl0(env0)
+val i0v1 =
+i0var_make_dvar$info
+(   d2v1  ,  lvl0  ,  i0t0   )}
+//
 in//let
 (
 i0pat(loc0, i0t0, I0Pvar(d2v1)))
