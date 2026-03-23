@@ -854,16 +854,16 @@ i0valdcl_dpat$get:(i0valdcl)->i0pat
 fun
 i0valdcl_tdxp$get:(i0valdcl)->teqi0exp
 (* ****** ****** *)
-#symload dpat with i0valdcl_get_dpat
-#symload tdxp with i0valdcl_get_tdxp(*opt*)
+#symload dpat with i0valdcl_dpat$get
+#symload tdxp with i0valdcl_tdxp$get(*opt*)
 (* ****** ****** *)
 fun
 i0vardcl_dpid$get:(i0vardcl)->d2var
 fun
 i0vardcl_dini$get:(i0vardcl)->teqi0exp
 (* ****** ****** *)
-#symload dpid with i0vardcl_get_dpid
-#symload dini with i0vardcl_get_dini(*opt*)
+#symload dpid with i0vardcl_dpid$get
+#symload dini with i0vardcl_dini$get(*opt*)
 (* ****** ****** *)
 (* ****** ****** *)
 fun
@@ -873,9 +873,9 @@ i0fundcl_farg$get:(i0fundcl)->fiarglst
 fun
 i0fundcl_tdxp$get:(i0fundcl)->teqi0exp
 (* ****** ****** *)
-#symload dpid with i0fundcl_get_dpid
-#symload farg with i0fundcl_get_farg(*lst*)
-#symload tdxp with i0fundcl_get_tdxp(*opt*)
+#symload dpid with i0fundcl_dpid$get
+#symload farg with i0fundcl_farg$get(*lst*)
+#symload tdxp with i0fundcl_tdxp$get(*opt*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
