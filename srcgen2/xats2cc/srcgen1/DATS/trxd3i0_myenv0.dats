@@ -130,6 +130,33 @@ lvl0, _(*stk0*)) => (lvl0)
 (* ****** ****** *)
 //
 #implfun
+envstk_free$top
+  ( stk0 ) =
+(
+   loop(stk0) )
+where
+{
+//
+fun
+loop(stk0: envstk): void =
+(
+case- stk0 of
+|envstk_nil
+( (*void*) ) => ()
+//
+|envstk_denv
+(ivar, stk1) => loop(stk1)
+|envstk_ufld
+(dvar, ityp, stk1) => loop(stk1)
+//
+)(*case+*)//end-of-[loop(stk0:envstk)]
+//
+}(*where*)//end-of-[envstk_free$top(env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 envd3i0_getlvl0
   ( env0 ) =
 (

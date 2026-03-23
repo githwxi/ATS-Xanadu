@@ -14,6 +14,7 @@ all::
 SRCGEN1=./../../../../srcgen1
 SRCGEN2=./../../../../srcgen2
 XATSJSD=./../../../../srcgen2/xats2js
+XATSCCD=./../../../../srcgen2/xats2cc
 ########################################################################
 S1XSHRD=\
 $(SRCGEN1)/xats2js/srcgenx/xshared/runtime
@@ -24,11 +25,7 @@ clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
 cleanall:: ; \
-rm -f lib2xatsopt2js_ats3.js
-cleanall:: ; \
 rm -f xats2cc_ccemit0?_ats3.js
-cleanall:: ; \
-rm -f lib2xatsopt2js_ats3_opt1.js
 cleanall:: ; \
 rm -f xats2cc_ccemit0?_ats3_opt1.js
 ########################################################################
@@ -48,8 +45,8 @@ rm -f xats2cc_ccemit0?_ats3_opt1.js
 ########################################################################
 #
 all:: \
-xats2cc_ccemit00
-xats2cc_ccemit00: ; \
+xats2cc_ccemit01
+xats2cc_ccemit01: ; \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
 $(CAT) \
@@ -63,14 +60,14 @@ $(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
 $(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
 $(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
-$(XATSJSD)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_ats3.js && \
+$(XATSCCD)/srcgen1/lib/lib2xats2cc.js | $(CAT) - >> $@_ats3.js && \
 $(NODE) \
-  --stack-size=8192 $(XATS2JS_JSEMIT00) xats2cc_ccemit00.dats >> $@_ats3.js
+  --stack-size=8192 $(XATS2JS_JSEMIT00) xats2cc_ccemit01.dats >> $@_ats3.js
 #
-xats2cc_ccemit00_opt1: ; \
+xats2cc_ccemit01_opt1: ; \
 npx google-closure-compiler \
   -W QUIET --compilation_level SIMPLE \
-  --js=xats2cc_ccemit00_ats3.js --js_output_file=xats2cc_ccemit00_ats3_opt1.js
+  --js=xats2cc_ccemit01_ats3.js --js_output_file=xats2cc_ccemit01_ats3_opt1.js
 #
 ########################################################################
 ########################################################################
