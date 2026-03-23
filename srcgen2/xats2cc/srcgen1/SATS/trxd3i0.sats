@@ -48,8 +48,18 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+i0parsed_of_trxd3i0
+( dpar : d3parsed ): i0parsed
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #absvtbx envstk_vtbx // ptr
 #vwtpdef envstk = envstk_vtbx
+(* ****** ****** *)
+#absvtbx envd3i0_vtbx // p0tr
+#vwtpdef envd3i0 = envd3i0_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -86,10 +96,6 @@ fun
 envstk_poplet0
 ( stk0: &envstk >> _ ): void
 //
-(* ****** ****** *)
-(* ****** ****** *)
-#absvtbx envd3i0_vtbx // p0tr
-#vwtpdef envd3i0 = envd3i0_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //

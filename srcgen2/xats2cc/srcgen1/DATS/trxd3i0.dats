@@ -65,6 +65,40 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0parsed_of_trxd3i0
+  (dpar) =
+let
+//
+val stadyn =
+d3parsed_get_stadyn(dpar)
+//
+val nerror =
+d3parsed_get_nerror(dpar)
+//
+val source =
+d3parsed_get_source(dpar)
+//
+val parsed =
+d3parsed_get_parsed(dpar)
+//
+val env0 = envd3i0_make_nil()
+//
+val parsed =
+d3eclistopt_trxd3i0(parsed, env0)
+//
+in//let
+let
+val ((*0*)) = envd3i0_free_top(env0)
+in//let
+(
+  i0parsed(stadyn,nerror,source,parsed))
+end//let
+end(*let*)//end-of-[i0parsed_of_trxd3i0(dpar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <x0><y0>
 list_trxd3i0_fnp

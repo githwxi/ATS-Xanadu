@@ -59,15 +59,15 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#absvtbx envd3i0_vtbx // p0tr
-#vwtpdef envd3i0 = envd3i0_vtbx
-(* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 i0parsed_of_trxd3i0
-( dpar : d3parsed ): (i0parsed)
+( dpar : d3parsed ): i0parsed
 //
+(* ****** ****** *)
+(* ****** ****** *)
+#absvtbx envd3i0_vtbx // p0tr
+#vwtpdef envd3i0 = envd3i0_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //
