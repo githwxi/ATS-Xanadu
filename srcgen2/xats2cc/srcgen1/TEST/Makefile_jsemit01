@@ -1,14 +1,14 @@
 ########################################################################
 ########################################################################
+# HX-2026-03-23:
 # Makefile for JS-emission
+# Mon Mar 23 07:36:55 PM EDT 2026
 ########################################################################
 ########################################################################
 CAT=cat
 ECHO=echo
 PRINTF=printf
 ########################################################################
-BUN=bun
-QJS=qjs
 NODE=node
 ########################################################################
 ########################################################################
@@ -25,8 +25,7 @@ test00; $(NODE) OUTS/$<_out.js
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f OUTS/test??_out.js
-cleanall:: ; rm -f OUTS/test??_out?.js
+cleanall:: ; rm -f OUTS/test??_out.cc
 ########################################################################
 ########################################################################
 XATS2JS_SRCGENX=\
@@ -39,50 +38,16 @@ XATS2CC_CCEMIT01=./../UTIL/xats2cc_ccemit01_ats3.js
 ########################################################################
 ########################################################################
 test00:: ; \
-$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
-############
-test00:: ; \
-$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
-test00:: ; \
-$(CAT) $(XATS2JS_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
-test00:: ; \
-$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.cc
 ############
 # HX: stack overflow
 # test00:: \
 # test00_xats2cc.dats; \
-# $(BUN) run $(XATS2CC_CCEMIT01) $< >> OUTS/$@_out.js
+# $(BUN) run $(XATS2CC_CCEMIT01) $< >> OUTS/$@_out.cc
 ############
 test00:: \
 test00_xats2cc.dats; \
-$(NODE) --stack-size=8800 $(XATS2CC_CCEMIT01) $< >> OUTS/$@_out.js
-############
-test00:: ; \
-npx google-closure-compiler -W QUIET \
-  --compilation_level SIMPLE --js=OUTS/$@_out.js --js_output_file=OUTS/$@_out1.js
-############
-test00:: ; \
-npx google-closure-compiler -W QUIET \
-  --compilation_level ADVANCED --js=OUTS/$@_out.js --js_output_file=OUTS/$@_out2.js
-########################################################################
-########################################################################
-testxx:: ; \
-$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
-############
-testxx:: ; \
-$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
-testxx:: ; \
-$(CAT) $(XATS2JS_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
-testxx:: ; \
-$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
-testxx:: ; \
-$(CAT) $(XATS2JS_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
-testxx:: ; \
-$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
-############
-testxx:: \
-testxx_mydebug.dats; \
-$(NODE) --stack-size=8800 $(XATS2CC_CCEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8800 $(XATS2CC_CCEMIT01) $< >> OUTS/$@_out.cc
 ########################################################################
 ########################################################################
 ###################### end of [Makefile_jsemit01] ######################

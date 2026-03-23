@@ -81,11 +81,79 @@ in//let
 //
 case+
 d3cl.node() of
+(* ****** ****** *)
+//
+|D3Cdclst0 _ =>
+(
+  f0_dclst0(d3cl, env0))
+//
+|D3Clocal0 _ =>
+(
+  f0_local0(d3cl, env0))
+//
+(* ****** ****** *)
 |_(* otherwise *) => i0dcl_none1(d3cl)
+(* ****** ****** *)
 //
 end where//let//endof(d3ecl_trxd3i0(...))
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_dclst0
+(
+d3cl: d3ecl,
+env0: !envd3i0): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+val-
+D3Cdclst0
+(   dcls   ) = d3cl.node()
+//
+val
+dcls =
+d3eclist_trxd3i0(dcls, env0)
+//
+in//let
+//
+(
+  i0dcl(loc0, I0Ddclst0( dcls )))
+//
+end//let//end-of-[f0_dclst0(d3cl, env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_local0
+(
+d3cl: d3ecl,
+env0: !envd3i0): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+val-
+D3Clocal0
+(head, body) = d3cl.node()
+//
+val
+head =
+d3eclist_trxd3i0(head, env0)
+val
+body =
+d3eclist_trxd3i0(body, env0)
+//
+in//let
+//
+i0dcl(loc0, I0Dlocal0(head, body))
+//
+end//let//end-of-[f0_local0(d3cl,env0)]
+//
+(* ****** ****** *)
+//
 }(*where*)//end-of-[d3ecl_trxd3i0(d3cl,env0)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

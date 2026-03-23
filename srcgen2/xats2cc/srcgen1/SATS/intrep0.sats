@@ -686,13 +686,21 @@ i0cls_node$get(i0cls): i0cls_node
 //
 datatype
 i0dcl_node =
+(* ****** ****** *)
 //
 |I0Dd3ecl of (d3ecl)
 //
+(* ****** ****** *)
 |I0Dstatic of
 (token(*STATIC*), i0dcl)
 |I0Dextern of
 (token(*EXTERN*), i0dcl)
+(* ****** ****** *)
+//
+|I0Ddclst0 of (i0dclist)
+|I0Dlocal0 of
+( i0dclist(*local-head*)
+, i0dclist(*local-body*))
 //
 (* ****** ****** *)
 //
