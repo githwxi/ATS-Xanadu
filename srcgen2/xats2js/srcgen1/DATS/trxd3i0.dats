@@ -85,12 +85,14 @@ val parsed =
 trxd3i0_d3eclistopt(env0, parsed)
 //
 in//let
+//
 let
 val ((*0*)) = envd3i0_free_top(env0)
 in//let
 (
   i0parsed(stadyn,nerror,source,parsed))
 end//let
+//
 end(*let*)//end-of-[i0parsed_of_trxd3i0(dpar)]
 //
 (* ****** ****** *)
