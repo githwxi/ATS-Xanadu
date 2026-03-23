@@ -61,7 +61,7 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 i0parsed_of_trxd3i0
   (dpar) =
@@ -91,8 +91,8 @@ in//let
 (
   i0parsed(stadyn,nerror,source,parsed))
 end//let
-end (*let*) // end of [i0parsed_trxd3i0(dpar)]
-
+end(*let*)//end-of-[i0parsed_of_trxd3i0(dpar)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -101,12 +101,14 @@ end (*let*) // end of [i0parsed_trxd3i0(dpar)]
 list_trxd3i0_fnp
 ( e1, xs, fopr ) =
 (
-list_map$e1nv<x0><y0><e1>(xs, e1)) where
+list_map$e1nv
+<x0><y0><e1>(xs, e1)) where
 {
 #vwtpdef e1 = envd3i0
 #impltmp
-map$e1nv$fopr<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_trxd3i0_fnp(e1,xs,fopr)]
+map$e1nv$fopr
+<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+}(*where*)//end of [list_trxd3i0_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
@@ -115,12 +117,14 @@ map$e1nv$fopr<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 optn_trxd3i0_fnp
 ( e1, xs, fopr ) =
 (
-optn_map$e1nv<x0><y0><e1>(xs, e1)) where
+optn_map$e1nv
+<x0><y0><e1>(xs, e1)) where
 {
 #vwtpdef e1 = envd3i0
 #impltmp
-map$e1nv$fopr<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [optn_trxd3i0_fnp(e1,xs,fopr)]
+map$e1nv$fopr
+<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+}(*where*)//end of [optn_trxd3i0_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

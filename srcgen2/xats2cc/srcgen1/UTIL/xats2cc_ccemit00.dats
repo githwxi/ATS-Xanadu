@@ -49,8 +49,10 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
-#staload "./../SATS/intrep1.sats"
 #staload "./../SATS/trxd3i0.sats"
+(*
+#staload "./../SATS/intrep1.sats"
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -108,12 +110,15 @@ val ipar =
 (
   i0parsed_of_trxd3i0(dpar))
 //
+(*
 val ipar =
 (
   i1parsed_of_trxi0i1(ipar))
+*)
 //
 in//let
 //
+(*
 let
 val
 filr = g_stdout<>()
@@ -121,6 +126,7 @@ in//let
 (
   cc1emit_i1parsed(filr, ipar))
 end//let
+*)
 //
 end where
 {
