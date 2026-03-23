@@ -46,13 +46,14 @@ rm -f xats2cc_ccemit0?_ats3_opt1.js
 # the code in [srcgen1/prelude] requires it.
 #
 ########################################################################
+#
 all:: \
 xats2cc_ccemit00
 xats2cc_ccemit00: ; \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/srcgen1_precats.js >> $@_ats3.js && \
+$(S2XSHRD)/srcgen2_precats.js >> $@_ats3.js && \
 $(CAT) \
 $(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
 $(CAT) \
