@@ -144,7 +144,7 @@ d3p0.node() of
 //
 (* ****** ****** *)
 //
-end where
+end where//let//endof(d3pat_trxd3i0)
 {
 //
 (* ****** ****** *)

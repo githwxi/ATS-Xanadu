@@ -72,6 +72,16 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0dcl_none1
+(  d3cl  ) =
+i0dcl_make_node
+(
+d3cl.lctn(),I0Dnone1(d3cl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 local
 //
 datatype

@@ -720,9 +720,13 @@ i0dcl_fprint
 (* ****** ****** *)
 //
 fun
-i0dcl_make_node
-(loc0
-:loctn, node:i0dcl_node): i0dcl
+i0dcl_none0(loc0: loctn): (i0dcl)
+fun
+i0dcl_none1(d3e0: d3ecl): (i0dcl)
+//
+fun
+i0dcl_make_node(
+loc0:loctn, node:i0dcl_node): i0dcl
 #symload i0dcl with i0dcl_make_node
 //
 (* ****** ****** *)

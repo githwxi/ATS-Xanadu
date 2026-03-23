@@ -49,6 +49,9 @@ XATSOPT "./../../.."
 "./../../..\
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
 #staload
 "./../../../SATS/staexp2.sats"
 #staload
@@ -62,6 +65,27 @@ XATSOPT "./../../.."
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/trxd3i0.sats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3ecl_trxd3i0
+(d3cl, env0) =
+let
+//
+val () =
+prerrsln("\
+d3ecl_trxd3i0: d3cl = ", d3cl)
+//
+in//let
+//
+case+
+d3cl.node() of
+|_(* otherwise *) => i0dcl_none1(d3cl)
+//
+end where//let//endof(d3ecl_trxd3i0(...))
+{
+}(*where*)//end-of-[d3ecl_trxd3i0(d3cl,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
