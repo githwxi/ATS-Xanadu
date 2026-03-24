@@ -224,6 +224,71 @@ D3Cstaload
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+f0_valdclst
+( 
+d3cl: d3ecl,
+env0: !envd3i0): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+val-
+D3Cvaldclst
+(tknd, d3vs) = d3cl.node()
+//
+val
+i0vs =
+d3valdclist_trxd3i0(d3vs, env0)
+//
+in//let
+(
+i0dcl(loc0, I0Dvaldclst(tknd, i0vs)))
+end where
+{
+//
+(*
+val loc0 = d3cl.lctn()
+val (  ) =
+prerrsln("f0_valdclst(d3i0): d3cl = ", d3cl)
+*)
+//
+}(*where*) // end of [f0_valdclst(d3cl,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( 
+d3cl: d3ecl,
+env0: !envd3i0): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+val-
+D3Cvardclst
+(tknd, d3vs) = d3cl.node()
+//
+val
+i0vs =
+d3vardclist_trxd3i0(d3vs, env0)
+//
+in//let
+(
+i0dcl(loc0, I0Dvardclst(tknd, i0vs)))
+end where
+{
+//
+(*
+val loc0 = d3cl.lctn()
+val (  ) =
+prerrsln("f0_vardclst(d3i0): d3cl = ", d3cl)
+*)
+//
+}(*where*) // end of [f0_vardclst(env0,d3cl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 }(*where*)//end-of-[d3ecl_trxd3i0(d3cl,env0)]
 //
 (* ****** ****** *)
