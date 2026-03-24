@@ -139,6 +139,19 @@ i0dcl_fprint(idcl, g_print$out<>())
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+g_print<i0valdcl>(ival) =
+i0valdcl_fprint(ival, g_print$out<>())
+#impltmp
+g_print<i0vardcl>(ivar) =
+i0vardcl_fprint(ivar, g_print$out<>())
+#impltmp
+g_print<i0fundcl>(ifun) =
+i0fundcl_fprint(ifun, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_xats2js_tmplib.dats] *)
 (***********************************************************************)

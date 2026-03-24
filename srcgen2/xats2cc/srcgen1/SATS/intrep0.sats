@@ -104,7 +104,14 @@ are addressed:
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
 (* ****** ****** *)
+//
+(*
+#typedef s2qag = $D2E.s2qag
+*)
+#typedef t2qag = $D2E.t2qag
+#typedef t2iag = $D2E.t2iag
 #typedef t2jag = $D2E.t2jag
+//
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -130,6 +137,11 @@ are addressed:
 #typedef d2conlst = list(d2con)
 #typedef d2cstlst = list(d2cst)
 (* ****** ****** *)
+(*
+#typedef s2qaglst = list(s2qag)
+*)
+#typedef t2qaglst = list(t2qag)
+#typedef t2iaglst = list(t2iag)
 #typedef t2jaglst = list(t2jag)
 (* ****** ****** *)
 #typedef d3patlst = list(d3pat)
