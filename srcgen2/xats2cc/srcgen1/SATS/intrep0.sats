@@ -158,6 +158,8 @@ are addressed:
 (* ****** ****** *)
 #typedef d3eclist = list(d3ecl)
 (* ****** ****** *)
+#typedef teqd3exp = $D3E.teqd3exp
+(* ****** ****** *)
 #typedef d3valdcl = $D3E.d3valdcl
 #typedef d3vardcl = $D3E.d3vardcl
 #typedef d3fundcl = $D3E.d3fundcl

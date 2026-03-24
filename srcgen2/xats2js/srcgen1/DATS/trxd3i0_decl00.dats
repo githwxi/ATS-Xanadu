@@ -632,7 +632,7 @@ TEQD3EXPsome(teq1, d3e2) =>
 TEQI0EXPsome(teq1, i0e2) where
 { val
   i0e2 = trxd3i0_d3exp(env0, d3e2) }
-) (*case+*)//end-of(trxd3i0_teqd3exp(...))
+)(*case+*)//end-of(trxd3i0_teqd3exp(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
