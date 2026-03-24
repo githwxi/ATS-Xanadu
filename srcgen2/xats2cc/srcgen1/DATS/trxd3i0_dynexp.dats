@@ -144,6 +144,20 @@ d3p0.node() of
 //
 (* ****** ****** *)
 //
+|D3Ptup0 _ =>
+(
+  f0_tup0(d3p0, env0))
+(*
+|D3Ptup1 _ =>
+(
+  f0_tup1(d3p0, env0))
+|D3Prcd2 _ =>
+(
+  f0_rcd2(d3p0, env0))
+*)
+//
+(* ****** ****** *)
+//
 end where//let//endof(d3pat_trxd3i0)
 {
 //
@@ -151,8 +165,8 @@ end where//let//endof(d3pat_trxd3i0)
 //
 fun
 f0_any
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -173,8 +187,8 @@ end(*let*)//end-of-[f0_any(d3p0,env0)]
 //
 fun
 f0_var
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -206,8 +220,8 @@ end(*let*)//end-of-[f0_var(d3p0,env0)]
 //
 fun
 f0_int
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -229,8 +243,8 @@ end(*let*)//end-of-[f0_int(d3p0,env0)]
 //
 fun
 f0_btf
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -252,8 +266,8 @@ end(*let*)//end-of-[f0_btf(d3p0,env0)]
 //
 fun
 f0_chr
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -275,8 +289,8 @@ end(*let*)//end-of-[f0_chr(d3p0,env0)]
 //
 fun
 f0_flt
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -298,8 +312,8 @@ end(*let*)//end-of-[f0_flt(d3p0,env0)]
 //
 fun
 f0_str
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -321,8 +335,8 @@ end(*let*)//end-of-[f0_str(d3p0,env0)]
 //
 fun
 f0_con
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -344,8 +358,8 @@ end(*let*)//end-of-[f0_con(d3p0,env0)]
 //
 fun
 f0_bang
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -368,8 +382,8 @@ end(*let*)//end-of-[f0_bang(d3p0,env0)]
 //
 fun
 f0_flat
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -392,8 +406,8 @@ end(*let*)//end-of-[f0_flat(d3p0,env0)]
 //
 fun
 f0_free
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -418,8 +432,8 @@ end(*let*)//end-of-[f0_free(d3p0,env0)]
 //
 fun
 f0_tapq
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -448,8 +462,8 @@ end(*let*)//end-of-[f0_tapq(d3p0,env0)]
 //
 fun
 f0_dap1
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -474,8 +488,8 @@ end(*let*)//end-of-[f0_dap1(d3p0,env0)]
 //
 fun
 f0_dapp
-( d3p0: d3pat
-, env0: !envd3i0): i0pat =
+(d3p0: d3pat
+,env0: !envd3i0): i0pat =
 let
 //
 val-
@@ -500,6 +514,39 @@ in//let
 i0pat_make_ityp$node(loc0,
   i0t0, I0Pdapp(i0f0,npf1,i0ps)))
 end(*let*)//end-of-[f0_dapp(d3p0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+(
+d3p0: d3pat,
+env0: !envd3i0): i0pat =
+let
+//
+val-
+D3Ptup0
+(npf1, d3ps) = d3p0.node()
+//
+val t2p0 = d3p0.styp((*0*))
+val loc0 = d3p0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0ps =
+d3patlst_trxd3i0(d3ps, env0)
+//
+in//let
+//
+(
+if // if
+list_singq(i0ps)
+then list_head(i0ps)
+else
+i0pat(loc0, i0t0, I0Ptup0(i0ps)))
+//
+end(*let*)//end-of-[f0_tup0(d3p0,env0)]
 //
 (* ****** ****** *)
 //
@@ -654,8 +701,8 @@ end where
 //
 fun
 f0_int
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -677,8 +724,8 @@ end(*let*)//end-of-[f0_int(d3e0,env0)]
 //
 fun
 f0_btf
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -700,8 +747,8 @@ end(*let*)//end-of-[f0_btf(d3e0,env0)]
 //
 fun
 f0_chr
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -723,8 +770,8 @@ end(*let*)//end-of-[f0_chr(d3e0,env0)]
 //
 fun
 f0_flt
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -746,8 +793,8 @@ end(*let*)//end-of-[f0_flt(d3e0,env0)]
 //
 fun
 f0_str
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -769,8 +816,8 @@ end(*let*)//end-of-[f0_str(d3e0,env0)]
 //
 fun
 f0_top
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -792,8 +839,8 @@ end(*let*)//end-of-[f0_top(d3e0,env0)]
 //
 fun
 f0_var
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -832,8 +879,8 @@ end(*let*)//end-of-[f0_var(d3e0,env0)]
 //
 fun
 f0_con
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -855,8 +902,8 @@ end(*let*)//end-of-[f0_con(d3e0,env0)]
 //
 fun
 f0_cst
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -878,8 +925,8 @@ end(*let*)//end-of-[f0_cst(d3e0,env0)]
 //
 fun
 f0_sapp
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -907,8 +954,8 @@ end(*let*)//end-of-[f0_sapp(d3e0,env0)]
 //
 fun
 f0_sapq
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -939,8 +986,8 @@ end(*let*)//end-of-[f0_sapq(d3e0,env0)]
 //
 fun
 f0_tapp
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -968,8 +1015,8 @@ end(*let*)//end-of-[f0_tapp(d3e0,env0)]
 //
 fun
 f0_tapq
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -1000,8 +1047,8 @@ end(*let*)//end-of-[f0_tapq(d3e0,env0)]
 //
 fun
 f0_dap0
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -1027,8 +1074,8 @@ end(*let*)//end-of-[f0_dap1(d3e0,env0)]
 //
 fun
 f0_dapp
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -1059,8 +1106,8 @@ end(*let*)//end-of-[f0_dapp(d3e0,env0)]
 //
 fun
 f0_pcon
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -1088,8 +1135,8 @@ end(*let*)//end-of-[f0_pcon(d3e0,env0)]
 //
 fun
 f0_proj
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -1117,8 +1164,8 @@ end(*let*)//end-of-[f0_proj(d3e0,env0)]
 //
 fun
 f0_let0
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -1152,8 +1199,8 @@ end(*let*)//end-of-[f0_let0(d3e0,env0)]
 //
 fun
 f0_seqn
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -1187,8 +1234,8 @@ end(*let*)//end-of-[f0_seqn(d3e0,env0)]
 //
 fun
 f0_tup0
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -1217,8 +1264,8 @@ end(*let*)//end-of-[f0_tup0(d3e0,env0)]
 //
 fun
 f0_tup1
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -1248,8 +1295,8 @@ end(*let*)//end-of-[f0_tup1(d3e0,env0)]
 //
 fun
 f0_rcd2
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -1279,8 +1326,8 @@ end(*let*)//end-of-[f0_rcd2(d3e0,env0)]
 //
 fun
 f0_lam0
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-
@@ -1337,8 +1384,8 @@ end(*let*)//end-of-[f0_lam0(d3e0,env0)]
 //
 fun
 f0_fix0
-( d3e0: d3exp
-, env0: !envd3i0): i0exp =
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
 let
 //
 val-

@@ -350,6 +350,72 @@ prerrsln("f0_fundclst(d3i0): d3cl = ", d3cl)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+teqd3exp_trxd3i0
+  (tdxp, env0) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone() =>
+TEQI0EXPnone((*void*))
+|
+TEQD3EXPsome(teq1, d3e2) =>
+TEQI0EXPsome(teq1, i0e2) where
+{ val
+  i0e2 = d3exp_trxd3i0(d3e2, env0) }
+)(*case+*)//end-of-(teqd3exp_trxd3i0(tdxp...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3valdcl_trxd3i0
+  (dval, env0) = let
+//
+val loc0 =
+d3valdcl_get_lctn(dval)
+val dpat =
+d3valdcl_get_dpat(dval)
+val tdxp =
+d3valdcl_get_tdxp(dval)
+//
+val ipat =
+d3pat_trxd3i0(dpat, env0)
+//
+val tdxp =
+teqd3exp_trxd3i0(tdxp, env0)
+//
+in//let
+(
+  i0valdcl_make_args(loc0, ipat, tdxp))
+end//let
+(*let*)//end-of-[d3valdcl_trxd3i0(dval,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3vardcl_trxd3i0
+  (dvar, env0) = let
+//
+val loc0 =
+d3vardcl_get_lctn(dvar)
+val dpid =
+d3vardcl_get_dpid(dvar)
+val dini =
+d3vardcl_get_dini(dvar)
+//
+val dini =
+teqd3exp_trxd3i0(dini, env0)
+//
+in//let
+(
+  i0vardcl_make_args(loc0, dpid, dini))
+end//let
+(*let*)//end-of-[d3vardcl_trxd3i0(dvar,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxd3i0_decl00.dats] *)
 (***********************************************************************)
