@@ -397,13 +397,14 @@ in//let
 //
 case+
 idcl.node() of
-//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I0Dd3ecl(d3cl) =>
 (
  prints("I0Dd3ecl(", d3cl, ")"))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I0Dstatic
@@ -416,6 +417,32 @@ I0Dstatic(", tknd, ";", dcl1, ")")
 prints("\
 I0Dextern(", tknd, ";", dcl1, ")")
 //
+(* ****** ****** *)
+//
+|I0Ddclst0
+(   dcls   ) =>
+(
+  prints("I0Ddclst0(", dcls, ")"))
+//
+|I0Dlocal0
+(head, body) =>
+prints
+("I0Dlocal0(", head, ";", body, ")")
+//
+(* ****** ****** *)
+//
+|I0Dinclude
+(knd0
+,tknd, gsrc
+,fopt, dopt) =>
+(
+print("I0Dinclude(");
+prints
+(
+knd0,";",
+tknd,";",gsrc,";",fopt,";","...",")"))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end(*let*)//end-of-[i0dcl_fprint(idcl,out0)]
