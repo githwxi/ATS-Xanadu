@@ -442,6 +442,32 @@ prints
 knd0,";",
 tknd,";",gsrc,";",fopt,";","...",")"))
 //
+(*
+|I0Dstaload _ => (*HX: I0Dd3ecl(...)*)
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Dvaldclst
+( tknd, i0vs) =>
+(
+prints("I0Dvaldclst(",tknd,";",i0vs,")"))
+//
+|I0Dvardclst
+( tknd, i0vs) =>
+(
+prints("I0Dvardclst(",tknd,";",i0vs,")"))
+//
+(* ****** ****** *)
+//
+|I0Dfundclst
+( tknd, tqas
+, d2cs, i0fs) =>
+( prints
+  ("I0Dfundclst(", tknd, ";")
+; prints(tqas, ";", d2cs, ";", i0fs, ")"))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
