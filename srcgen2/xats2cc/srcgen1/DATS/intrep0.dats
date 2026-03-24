@@ -50,6 +50,8 @@ XATSOPT "./../../.."
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 #staload
+"./../../../SATS/statyp2.sats"
+#staload
 "./../../../SATS/dynexp2.sats"
 #staload
 "./../../../SATS/dynexp3.sats"
@@ -70,6 +72,15 @@ XATSOPT "./../../.."
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0typ_none1
+(  t2p0  ) =
+i0typ_make_node
+(
+t2p0.sort(),I0Tnone1(t2p0))
+//
 (* ****** ****** *)
 //
 #implfun

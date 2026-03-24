@@ -93,7 +93,7 @@ are addressed:
 (* ****** ****** *)
 #typedef d1exp = $D1E.d1exp
 (* ****** ****** *)
-#typedef sort0 = $S2E.sort0
+#typedef sort2 = $S2E.sort2
 #typedef s2cst = $S2E.s2cst
 #typedef s2var = $S2E.s2var
 #typedef s2exp = $S2E.s2exp
@@ -311,9 +311,11 @@ i0typ_node =
 trcdknd(*knd*), sint(*npf*), l0i0tlst)
 //
 (* ****** ****** *)
-//
+|I0Tnone0 of ((*0*)) | I0Tnone1 of (s2typ)
+(* ****** ****** *)
+(*
 |I0Terrck of (int(*lvl*), i0typ)//HX:tread-error
-//
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -327,10 +329,23 @@ i0typ_node$get
 #symload sort with i0typ_sort$get
 #symload node with i0typ_node$get
 //
+(* ****** ****** *)
+//
 fun
 i0typ_fprint
 (ityp: i0typ, out0: FILR): void
 #symload fprint with i0typ_fprint
+//
+(* ****** ****** *)
+//
+fun
+i0typ_none1: s2typ -> i0typ
+//
+fun
+i0typ_make_node
+(s2t0
+:sort2, node:i0typ_node): i0typ
+#symload i0typ with i0typ_make_node
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -401,6 +416,9 @@ i0pat_node =
 |I0Pnone0 of ((*0*)) | I0Pnone1 of (d3pat)
 //
 (* ****** ****** *)
+(*
+|I0Perrck of (int(*lvl*), i0pat)//HX:tread-error
+*)
 (* ****** ****** *)
 //
 fun
@@ -523,6 +541,9 @@ token(*knd*),sint(*npf*),l0i0elst)
 |I0Edl1az of (i0exp)//l1azy-eval-thunk
 //
 (* ****** ****** *)
+(*
+|I0Eerrck of (int(*lvl*), i0exp)//HX:tread-error
+*)
 (* ****** ****** *)
 //
 fun
@@ -617,6 +638,7 @@ fiarg_make_node
 fun
 fiarg_fprint
 (fia0:fiarg,out0:FILR): void
+#symload fprint with fiarg_fprint
 //
 (* ****** ****** *)
 //
@@ -771,6 +793,10 @@ I0Dinclude of
 //
 |I0Dnone0 of ((*0*)) |I0Dnone1 of (d3ecl)
 //
+(* ****** ****** *)
+(*
+|I0Derrck of (int(*lvl*), i0dcl)//HX:tread-error
+*)
 (* ****** ****** *)
 //
 fun
