@@ -53,10 +53,37 @@ XATSOPT "./../../.."
 "./../../../SATS/staexp2.sats"
 #staload
 "./../../../SATS/statyp2.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/trxd3i0.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2typ_trxd3i0
+(t2p0, env0) =
+let
+//
+val () =
+prerrsln("\
+s2typ_trxd3i0: t2p0 = ", t2p0)
+//
+in//let
+//
+case+
+t2p0.node() of
+|
+_(*otherwise*) => i0typ_s2typ(t2p0)
+//
+end where//let//endof(s2typ_trxd3i0)
+{
+//
+//
+}(*where*)//end-of-[s2typ_trxd3i0(d3p0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
