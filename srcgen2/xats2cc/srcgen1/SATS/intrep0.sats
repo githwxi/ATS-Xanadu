@@ -64,8 +64,15 @@ are addressed:
 #staload
 "./../../../SATS/locinfo.sats"
 #staload
+"./../../../SATS/filpath.sats"
+#staload
 "./../../../SATS/lexing0.sats"
 //
+(* ****** ****** *)
+#staload S1E =
+"./../../../SATS/staexp1.sats"
+#staload D1E =
+"./../../../SATS/dynexp1.sats"
 (* ****** ****** *)
 #staload S2E =
 "./../../../SATS/staexp2.sats"
@@ -80,6 +87,11 @@ are addressed:
 #typedef loc_t = loc_t
 #typedef loctn = loctn
 (* ****** ****** *)
+(* ****** ****** *)
+#typedef g1nam = $S1E.g1nam
+#typedef g1exp = $S1E.g1exp
+(* ****** ****** *)
+#typedef d1exp = $D1E.d1exp
 (* ****** ****** *)
 #typedef sort0 = $S2E.sort0
 #typedef s2cst = $S2E.s2cst
@@ -701,6 +713,16 @@ i0dcl_node =
 |I0Dlocal0 of
 ( i0dclist(*local-head*)
 , i0dclist(*local-body*))
+//
+(* ****** ****** *)
+//
+|
+I0Dinclude of
+(sint(*s/d*)
+,token(*knd*)
+,g1exp // src
+,fpathopt
+,i0dclistopt) // inclusion
 //
 (* ****** ****** *)
 //

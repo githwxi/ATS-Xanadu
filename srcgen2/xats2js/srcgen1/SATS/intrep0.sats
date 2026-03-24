@@ -751,7 +751,7 @@ i0dcl_node =
 |
 I0Dinclude of
 (sint(*s/d*)
-,token
+,token(*knd*)
 ,g1exp // src
 ,fpathopt
 ,i0dclistopt) // inclusion

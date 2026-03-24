@@ -172,8 +172,6 @@ end//let//end(D3Cd2ecl)
 (
   f0_include(env0, d3cl))
 //
-(* ****** ****** *)
-//
 |D3Cstaload _ =>
 (
   f0_staload(env0, d3cl))

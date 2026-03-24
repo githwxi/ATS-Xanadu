@@ -663,10 +663,11 @@ prints
 ("I0Dtmpsub(", svts, ";", idcl, ")")
 //
 (* ****** ****** *)
-|
-I0Dinclude
-( knd0, tknd
-, gsrc, fopt, dopt ) =>
+//
+|I0Dinclude
+(knd0
+,tknd, gsrc
+,fopt, dopt) =>
 (
 print("I0Dinclude(");
 prints

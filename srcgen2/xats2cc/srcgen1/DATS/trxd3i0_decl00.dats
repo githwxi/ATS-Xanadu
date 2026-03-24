@@ -82,6 +82,7 @@ in//let
 case+
 d3cl.node() of
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Cdclst0 _ =>
 (
@@ -92,7 +93,19 @@ d3cl.node() of
   f0_local0(d3cl, env0))
 //
 (* ****** ****** *)
+//
+|D3Cinclude _ =>
+(
+  f0_include(d3cl, env0))
+//
+|D3Cstaload _ =>
+(
+  f0_staload(d3cl, env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 |_(* otherwise *) => i0dcl_none1(d3cl)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end where//let//endof(d3ecl_trxd3i0(...))
@@ -150,6 +163,65 @@ i0dcl(loc0, I0Dlocal0(head, body))
 //
 end//let//end-of-[f0_local0(d3cl,env0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_include
+( 
+d3cl: d3ecl,
+env0: !envd3i0): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+//
+val-
+D3Cinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = d3cl.node()
+//
+val dopt =
+(
+case+ dopt of
+|
+optn_nil() => optn_nil(*nil*)
+|
+optn_cons(dcls) =>
+optn_cons
+(d3eclist_trxd3i0(dcls, env0)))
+//
+in//let
+(
+i0dcl_make_node
+( loc0
+, I0Dinclude
+  (knd0, tknd, gsrc, fopt, dopt) ))
+end//let//end-of-[f0_include(d3cl,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_staload
+(
+d3cl: d3ecl,
+env0: !envd3i0): i0dcl =
+(
+i0dcl_make_node
+(loc0, I0Dd3ecl(d3cl))
+) where
+{
+//
+val loc0 = d3cl.lctn((*0*))
+//
+val-
+D3Cstaload
+( knd0
+, tknd, gsrc
+, fopt, sopt) = d3cl.node((*0*)) }
+(*where*)//end-of-[f0_staload(d3cl,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[d3ecl_trxd3i0(d3cl,env0)]
