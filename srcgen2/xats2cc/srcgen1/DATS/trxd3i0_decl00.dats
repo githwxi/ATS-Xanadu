@@ -93,6 +93,7 @@ d3cl.node() of
   f0_local0(d3cl, env0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Cinclude _ =>
 (
@@ -101,6 +102,22 @@ d3cl.node() of
 |D3Cstaload _ =>
 (
   f0_staload(d3cl, env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Cvaldclst _ =>
+(
+  f0_valdclst(d3cl, env0))
+|D3Cvardclst _ =>
+(
+  f0_vardclst(d3cl, env0))
+//
+(* ****** ****** *)
+//
+|D3Cfundclst _ =>
+(
+  f0_fundclst(d3cl, env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

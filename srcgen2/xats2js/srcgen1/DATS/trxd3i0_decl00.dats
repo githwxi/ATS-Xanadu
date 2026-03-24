@@ -198,7 +198,6 @@ end//let//end(D3Cd2ecl)
   f0_vardclst(env0, d3cl))
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 |D3Cfundclst _ =>
 (
