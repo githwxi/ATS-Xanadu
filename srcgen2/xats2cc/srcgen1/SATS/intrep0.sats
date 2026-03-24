@@ -709,6 +709,16 @@ i0cls_node$get(i0cls): i0cls_node
 (* ****** ****** *)
 //
 datatype
+teqi0exp =
+|
+TEQI0EXPnone of ((*void*))
+|
+TEQI0EXPsome of (token(*EQ0*), i0exp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
 i0dcl_node =
 (* ****** ****** *)
 //
@@ -800,10 +810,52 @@ fun
 i0vardcl_fprint
 (ivar: i0vardcl, out0: FILR): void
 //
+(* ****** ****** *)
+fun
+i0valdcl_lctn$get:(i0valdcl)->loc_t
+fun
+i0vardcl_lctn$get:(i0vardcl)->loc_t
+(* ****** ****** *)
+#symload lctn with i0valdcl_lctn$get
+#symload lctn with i0vardcl_lctn$get
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i0valdcl_dpat$get:(i0valdcl)->i0pat
+fun
+i0valdcl_tdxp$get:(i0valdcl)->teqi0exp
+(* ****** ****** *)
+#symload dpat with i0valdcl_dpat$get
+#symload tdxp with i0valdcl_tdxp$get(*opt*)
+(* ****** ****** *)
+fun
+i0vardcl_dpid$get:(i0vardcl)->d2var
+fun
+i0vardcl_dini$get:(i0vardcl)->teqi0exp
+(* ****** ****** *)
+#symload dpid with i0vardcl_dpid$get
+#symload dini with i0vardcl_dini$get(*opt*)
+(* ****** ****** *)
+//
+fun
+i0valdcl_make_args
+( lctn:loc_t
+, ipat:i0pat, tdxp:teqi0exp):i0valdcl
+fun
+i0vardcl_make_args
+( lctn:loc_t
+, dpid:d2var, dini:teqi0exp):i0vardcl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 i0fundcl_fprint
 (ifun: i0fundcl, out0: FILR): void
 //
+(* ****** ****** *)
+fun
+i0fundcl_lctn$get:(i0fundcl)->loc_t
 (* ****** ****** *)
 (* ****** ****** *)
 //
