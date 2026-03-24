@@ -403,7 +403,7 @@ endloc (*local*) // end of [local(i0dcl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -416,7 +416,7 @@ I0VALDCL of
 i0valdcl_tbox = i0valdcl
 //
 in//local
-
+//
 #implfun
 i0valdcl_lctn$get
   (  ival  ) = let
@@ -424,7 +424,7 @@ val+
 I0VALDCL
 ( lctn
 , dpat, tdxp) = ival in lctn end
-
+//
 #implfun
 i0valdcl_dpat$get
   (  ival  ) = let
@@ -432,7 +432,7 @@ val+
 I0VALDCL
 ( lctn
 , dpat, tdxp) = ival in dpat end
-
+//
 #implfun
 i0valdcl_tdxp$get
   (  ival  ) = let
@@ -440,7 +440,7 @@ val+
 I0VALDCL
 ( lctn
 , dpat, tdxp) = ival in tdxp end
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -450,11 +450,11 @@ i0valdcl_make_args
   I0VALDCL(lctn, dpat, tdxp(*opt*)))
 //
 (* ****** ****** *)
-
+//
 endloc (*local*) // end of [local(i0valdcl)]
-
+//
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -467,7 +467,7 @@ I0VARDCL of
 i0vardcl_tbox = i0vardcl
 //
 in//local
-
+//
 #implfun
 i0vardcl_lctn$get
   (  ivar  ) = let
@@ -475,7 +475,7 @@ val+
 I0VARDCL
 ( lctn
 , dpid, dini) = ivar in lctn end
-
+//
 #implfun
 i0vardcl_dpid$get
   (  ivar  ) = let
@@ -483,7 +483,7 @@ val+
 I0VARDCL
 ( lctn
 , dpid, dini) = ivar in dpid end
-
+//
 #implfun
 i0vardcl_dini$get
   (  ivar  ) = let
@@ -491,7 +491,7 @@ val+
 I0VARDCL
 ( lctn
 , dpid, dini) = ivar in dini end
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -501,11 +501,12 @@ i0vardcl_make_args
   I0VARDCL(lctn, dpid, dini(*opt*)) )
 //
 (* ****** ****** *)
-
+//
 endloc (*local*) // end of [ local(i0vardcl) ]
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 local
 //
 datatype
@@ -519,7 +520,7 @@ I0FUNDCL of
 i0fundcl_tbox = i0fundcl
 //
 in//local
-
+//
 #implfun
 i0fundcl_lctn$get
   (  ifun  ) = let
@@ -528,7 +529,7 @@ I0FUNDCL
 ( lctn
 , dpid
 , farg, tdxp) = ifun in lctn end
-
+//
 #implfun
 i0fundcl_dpid$get
   (  ifun  ) = let
@@ -537,7 +538,7 @@ I0FUNDCL
 ( lctn
 , dpid
 , farg, tdxp) = ifun in dpid end
-
+//
 #implfun
 i0fundcl_farg$get
   (  ifun  ) = let
@@ -546,9 +547,9 @@ I0FUNDCL
 ( lctn
 , dpid
 , farg, tdxp) = ifun in farg end
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 i0fundcl_tdxp$get
   (  ifun  ) = let
@@ -557,7 +558,7 @@ I0FUNDCL
 ( lctn
 , dpid
 , farg, tdxp) = ifun in tdxp end
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -567,9 +568,9 @@ i0fundcl_make_args
   I0FUNDCL(lctn, dpid, farg, tdxp))
 //
 (* ****** ****** *)
-
+//
 endloc (*local*) // end of [ local(i0fundcl) ]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
