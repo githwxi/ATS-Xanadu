@@ -110,6 +110,17 @@ prints("I0Ttop1(", i0t1, ")")
 //
 (* ****** ****** *)
 //
+|I0Tapps
+(i0f0, i0ts) =>
+prints
+("I0Tapps(", i0f0, ";", i0ts, ")")
+|I0Tlam1
+(s2vs, i0t1) =>
+prints
+("I0Tlam1(", s2vs, ";", i0t1, ")")
+//
+(* ****** ****** *)
+//
 |I0Texi0
 (s2vs, i0t1) =>
 prints

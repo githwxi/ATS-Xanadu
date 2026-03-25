@@ -89,6 +89,29 @@ i0typ(s2t0, I0Tvar(s2v)))
 //
 (* ****** ****** *)
 //
+|T2Papps
+(t2f0, t2ps) =>
+let
+val i0f0 =
+s2typ_trxd3i0(t2f0, env0)
+val i0ts =
+s2typlst_trxd3i0(t2ps, env0)
+in//let
+i0typ(s2t0, I0Tapps(i0f0, i0ts))
+end(*let*)//end-of-[T2Papps(...)]
+//
+|T2Plam1
+(s2vs, t2p1) =>
+let
+val i0t1 =
+(
+  s2typ_trxd3i0(t2p1, env0))
+in//let
+i0typ(s2t0, I0Tlam1(s2vs, i0t1))
+end(*let*)//end-of-[T2Plam1(...)]
+//
+(* ****** ****** *)
+//
 |
 _(*otherwise*) => i0typ_none1(t2p0)
 (* ****** ****** *)
