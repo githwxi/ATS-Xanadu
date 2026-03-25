@@ -68,7 +68,9 @@ s2typ_trxd3i0
 (t2p0, env0) =
 let
 //
-val () =
+val s2t0 = t2p0.sort()
+//
+val (  ) =
 prerrsln("\
 s2typ_trxd3i0: t2p0 = ", t2p0)
 //
@@ -76,8 +78,20 @@ in//let
 //
 case+
 t2p0.node() of
+(* ****** ****** *)
+//
+|T2Pcst(s2c) =>
+(
+i0typ(s2t0, I0Tcst(s2c)))
+|T2Pvar(s2v) =>
+(
+i0typ(s2t0, I0Tvar(s2v)))
+//
+(* ****** ****** *)
+//
 |
 _(*otherwise*) => i0typ_none1(t2p0)
+(* ****** ****** *)
 //
 end where//let//endof(s2typ_trxd3i0)
 {
