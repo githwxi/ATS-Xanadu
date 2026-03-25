@@ -730,18 +730,25 @@ prints("I0Dvardclst(",tknd,";",i0vs,")"))
 ; prints(dimp, ";", farg, ";", body, ")"))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-|I0Dnone0() =>
-prints("I0Dnone0(", ")")
-//
-|I0Dnone1(d3cl) =>
+|
+I0Dnone0() =>
 let
 val
-loc0 = d3cl.lctn() in//let
-(
-prints("I0Dnone1(", loc0, ";", d3cl, ")"))
-end//let//end-of-[I0Dnone1(d3cl)]
+loc0 = dcl0.lctn() in//let
+prints("I0Dnone0(", loc0, ")") end
 //
+|
+I0Dnone1(d3cl) =>
+let
+val
+loc0 = dcl0.lctn() in//let
+(
+prints
+( "I0Dnone1(", loc0, ";", d3cl, ")") ) end
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end(*let*)//end-of-[i0dcl_fprint(dcl0,out0)]
