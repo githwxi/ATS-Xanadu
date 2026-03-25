@@ -197,6 +197,20 @@ print("I0Pdapp(");
 prints(i0f0,";",npf1,";",i0ps,")"))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Pnone0() =>
+(
+  prints( "I0Pnone0(",")" ))
+//
+|I0Pnone1(d3p1) =>
+let
+val loc0 = d3p1.lctn() in//let
+prints
+("I0Pnone1(", loc0, ";", d3p1, ")") end
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 end(*let*)//end-of-[i0pat_fprint(ipat,out0)]
 //
@@ -334,18 +348,37 @@ fid0,";", fias,";", body,";", denv,")"))
 |I0Edp2tr
 (   i0e1    ) =>
 (
- prints("I0Edp2tr(", i0e1, ")") )//de-p2tr
+prints("I0Edp2tr(", i0e1, ")"))//de-p2tr
 //
 |I0Edl0az
 (   i0e1    ) =>
 (
- prints("I0Edl0az(", i0e1, ")") )//de-l0az
+prints("I0Edl0az(", i0e1, ")"))//de-l0az
 |I0Edl1az
 (   i0e1    ) =>
 (
- prints("I0Edl1az(", i0e1, ")") )//de-l1az
+prints("I0Edl1az(", i0e1, ")"))//de-l1az
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|
+I0Enone0() =>
+let
+val
+loc0 = iexp.lctn() in//let
+(
+prints( "I0Enone0(", loc0, ")" )) end
+//
+|
+I0Enone1(d3e1) =>
+let
+val
+loc0 = iexp.lctn() in//let
+(
+prints
+("I0Enone1(", loc0, ";", d3e1, ")")) end
+//
 (* ****** ****** *)
 //
 end(*let*)//end-of-[i0exp_fprint(iexp,out0)]

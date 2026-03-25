@@ -339,7 +339,8 @@ i0typ_fprint
 (* ****** ****** *)
 //
 fun
-i0typ_none1: s2typ -> i0typ
+i0typ_none1
+(t2p0: s2typ): i0typ
 //
 fun
 i0typ_make_node
@@ -541,6 +542,8 @@ token(*knd*),sint(*npf*),l0i0elst)
 |I0Edl1az of (i0exp)//l1azy-eval-thunk
 //
 (* ****** ****** *)
+|I0Enone0 of ((*0*)) | I0Enone1 of (d3exp)
+(* ****** ****** *)
 (*
 |I0Eerrck of (int(*lvl*), i0exp)//HX:tread-error
 *)
@@ -577,6 +580,10 @@ i0exp_node$get
 #symload node with i0exp_node$get
 //
 (* ****** ****** *)
+//
+fun
+i0exp_none1
+(d3e0: d3exp): i0exp
 //
 fun
 i0var_make_dvar$info

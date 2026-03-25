@@ -78,8 +78,21 @@ XATSOPT "./../../.."
 i0typ_none1
 (  t2p0  ) =
 i0typ_make_node
-(
-t2p0.sort(),I0Tnone1(t2p0))
+(t2p0.sort(),I0Tnone1(t2p0))
+//
+(* ****** ****** *)
+//
+#implfun
+i0exp_none1
+(  d3e0  ) =
+let
+val loc0 = d3e0.lctn()
+val i0t0 =
+i0typ_none1(d3e0.styp())
+in//let
+i0exp_make_ityp$node
+(loc0,i0t0,I0Enone1(d3e0))
+end//let//endof(i0exp_none1)
 //
 (* ****** ****** *)
 //
@@ -87,8 +100,59 @@ t2p0.sort(),I0Tnone1(t2p0))
 i0dcl_none1
 (  d3cl  ) =
 i0dcl_make_node
+(d3cl.lctn(),I0Dnone1(d3cl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i0typ =
+I0TYP of
+(sort2, i0typ_node)
+(*
+datavwtp
+i0typ_vt =
+I0TYP_VT of
+(sort2, i0typ_node)
+*)
+//
+#absimpl i0typ_tbox = i0typ
+//
+(* ****** ****** *)
+in (* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+i0typ_make_node
+( sort, node ) =
 (
-d3cl.lctn(),I0Dnone1(d3cl))
+  I0TYP(sort, node))
+//
+(* ****** ****** *)
+//
+#implfun
+i0typ_sort$get
+(   ityp   ) =
+let
+val+
+I0TYP
+(s2t0, node) = ityp in s2t0 end
+//
+(* ****** ****** *)
+//
+#implfun
+i0typ_node$get
+(   ityp   ) =
+let
+val+
+I0TYP
+(s2t0, node) = ityp in node end
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end-of-[local(i0typ)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -486,16 +486,21 @@ prints("I0Esynext(", tknd, ";", gexp, ")"))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-|I0Enone0() =>
-(
-  prints( "I0Enone0(",")" ))
-|I0Enone1(d3e1) =>
+|
+I0Enone0() =>
 let
 val
-loc0 = d3e1.lctn() in//let
+loc0 = i0e0.lctn() in//let
 (
-prints("I0Enone1(", loc0, ";", d3e1, ")"))
-end//let//end-of-[I0Enone1(d3e1)]
+prints("I0Enone0(", loc0, ")") end
+|
+I0Enone1(d3e1) =>
+let
+val
+loc0 = i0e0.lctn() in//let
+(
+prints
+( "I0Enone1(", loc0, ";", d3e1, ")" )) end
 //
 (* ****** ****** *)
 (* ****** ****** *)
