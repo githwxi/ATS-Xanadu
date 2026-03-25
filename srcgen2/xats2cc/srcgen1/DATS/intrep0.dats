@@ -219,6 +219,63 @@ endloc (*local*) // end-of-[local(i0pat)]
 local
 //
 datatype
+i0var =
+I0VAR of
+( sint
+, d2var, i0typ)
+(*
+datatype
+i0var_vt =
+I0VAR_vt of
+( sint
+, d2var, i0typ)
+*)
+//
+#absimpl i0var_tbox = i0var
+//
+in//local
+//
+#implfun
+i0var_make_dvar$info
+( dvar, lvl0, ityp ) =
+(
+I0VAR(lvl0, dvar, ityp))
+//
+#implfun
+i0var_lvl0$get
+(   ivar   ) =
+let
+val+
+I0VAR
+(lvl0
+,dvar, ityp) = ivar in lvl0 end
+//
+#implfun
+i0var_dvar$get
+(   ivar   ) =
+let
+val+
+I0VAR
+(lvl0
+,dvar, ityp) = ivar in dvar end
+//
+#implfun
+i0var_ityp$get
+(   ivar   ) =
+let
+val+
+I0VAR
+(lvl0
+,dvar, ityp) = ivar in ityp end
+//
+endloc (*local*) // end-of-[local(i0var)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
 i0exp =
 I0EXP of
 ( loctn
