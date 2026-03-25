@@ -571,7 +571,6 @@ trxd3i0_d3exp
 (
 case+
 d3e0.node() of
-//
 (* ****** ****** *)
 //
 |D3Eint
@@ -749,6 +748,7 @@ D3Esynext _ => f0_synext(env0, d3e0)
 //
 |_(* otherwise *) => i0exp_none1(d3e0)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 ) where

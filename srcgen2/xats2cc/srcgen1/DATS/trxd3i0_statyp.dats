@@ -77,7 +77,7 @@ in//let
 case+
 t2p0.node() of
 |
-_(*otherwise*) => i0typ_s2typ(t2p0)
+_(*otherwise*) => i0typ_none1(t2p0)
 //
 end where//let//endof(s2typ_trxd3i0)
 {
