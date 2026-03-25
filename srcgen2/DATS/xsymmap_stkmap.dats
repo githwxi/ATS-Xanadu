@@ -169,12 +169,14 @@ stkmap_loc2 _ => (err := 1; kxs)
 ) (*case+*)//end-of-[loop(kxs, err)]
 //
 in//let
+//
 let
 var
 err: sint = 0
 val
 ( ) =
 (map := loop(map, err)) in err end
+//
 end (*let*)//end-[stkmap_poptop0(map)]
 //
 (* ****** ****** *)

@@ -185,14 +185,25 @@ ENVD3I0
 #implfun
 envd3i0_free_top
   (  env0  ) =
+let
+val+
+ENVD3I0
+(
+! d2vstk
+, envstk
+) = env0
+val nerr =
+stkmap_poptop0(d2vstk)
+in//let
 (
 stkmap_free_nil(d2vstk)
 ;
 envstk_free$top(envstk)) where
 {
 val+
-~ENVD3I0(d2vstk, envstk) = env0 }
-(*where*)//end-of-(envd3i0_free_top(env0))
+~ENVD3I0(d2vstk, envstk) = env0
+}(*where*)
+end(*let*)//end-of-(envd3i0_free_top(env0))
 //
 (* ****** ****** *)
 //
@@ -202,7 +213,9 @@ envd3i0_dvar$insert
 (
 stkmap_insert$any
 (d2vstk
-,sym1(*k0*), ivar(*x0*))) where
+,sym1(*k0*)
+,ivar(*x0*))
+) where
 {
 //
 val sym1 = dvar.unam()
