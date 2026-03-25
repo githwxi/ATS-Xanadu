@@ -290,12 +290,21 @@ i0typ_node =
 //
 (* ****** ****** *)
 //
-|I0Tlft of (i0typ) // left-value
+|I0Tlft of (i0typ)//left-value
 //
 (* ****** ****** *)
 //
-|I0Ttop0 of (i0typ) // uninitized
-|I0Ttop1 of (i0typ) // delineared
+|
+I0Ttop0 of (i0typ)//uninitized
+|
+I0Ttop1 of (i0typ)//delineared
+//
+(* ****** ****** *)
+//
+|I0Tapps of
+(s2typ(*fun*), i0typlst)//inst.
+|I0Tlam1 of
+(s2varlst(*arg*), i0typ)//abst.
 //
 (* ****** ****** *)
 //
