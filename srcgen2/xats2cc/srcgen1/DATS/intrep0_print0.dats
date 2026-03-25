@@ -134,6 +134,16 @@ prints("I0Ttcon(",
 //
 (* ****** ****** *)
 //
+|I0Tnone0() =>
+(
+  prints("I0Tnone0(", ")"))
+|I0Tnone1
+(   t2p1   ) =>
+(
+  prints( "I0Tnone1(", t2p1, ")" ))
+//
+(* ****** ****** *)
+//
 end(*let*)//end-of-[i0typ_fprint(ityp,out0)]
 //
 (* ****** ****** *)

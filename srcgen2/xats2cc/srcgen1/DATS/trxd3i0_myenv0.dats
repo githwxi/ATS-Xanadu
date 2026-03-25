@@ -149,9 +149,18 @@ case- stk0 of
 |envstk_ufld
 (dvar, ityp, stk1) => loop(stk1)
 //
-)(*case+*)//end-of-[loop(stk0:envstk)]
+)(*case+*)//endof(loop(stk0:envstk))
 //
-}(*where*)//end-of-[envstk_free$top(env0)]
+}(*where*)//endof(envstk_free$top(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+envstk_denv$insert
+  (stk0, ivar) =
+(
+stk0 := envstk_denv(ivar, stk0))
+//end-of-[envstk_denv$insert(env0,ivar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -208,21 +217,62 @@ end(*let*)//end-of-(envd3i0_free_top(env0))
 (* ****** ****** *)
 //
 #implfun
+envd3i0_dvar$search
+  (env0, dvar) = let
+//
+val+
+@ENVD3I0
+(d2vstk, iltstk) = env0
+//
+val
+sym1 = dvar.unam((*void*))
+//
+val
+opt1 =
+stkmap_search$opt(d2vstk, sym1)
+//
+in//let
+(
+case+ opt1 of
+| ~optn_vt_nil() =>
+(
+  i0var_none1(dvar) )
+| ~optn_vt_cons(ivar) => ( ivar ))
+end(*let*)//end-of-[envd3i0_dvar$search(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 envd3i0_dvar$insert
   (env0, dvar, ivar) =
 (
 stkmap_insert$any
 (d2vstk
-,sym1(*k0*)
-,ivar(*x0*))
+,sym1(*k*),ivar(*x*))
 ) where
 {
 //
 val sym1 = dvar.unam()
 //
 val+
-!ENVD3I0(d2vstk, envstk) = env0 }
-(*where*)//end-of-(envd3i0_dvar$insert(...))
+!ENVD3I0(d2vstk, envstk) = ( env0 )
+}(*where*)//end-of-(envd3i0_dvar$insert(...))
+//
+(* ****** ****** *)
+//
+#implfun
+envd3i0_denv$insert
+  (env0, ivar) =
+(
+envstk_denv$insert
+(  envstk, ivar  ))
+where
+{
+//
+val+
+!ENVD3I0(d2vstk, envstk) = ( env0 )
+//
+}(*where*)//end-of-(envd3i0_dvar$insert(...))
 //
 (* ****** ****** *)
 //
