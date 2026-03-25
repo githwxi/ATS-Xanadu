@@ -46,6 +46,9 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../HATS/libxatsopt.hats"
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
@@ -109,6 +112,12 @@ end//let//end-of-(val(...))
 val ipar =
 (
   i0parsed_of_trxd3i0(dpar))
+//
+// (*
+val (  ) =
+prerrsln
+("ipar(trxd3i0) = ", (ipar))
+// *)
 //
 (*
 val ipar =

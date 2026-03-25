@@ -850,11 +850,11 @@ i0fundcl_lctn$get:(i0fundcl)->loc_t
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-i0valdcl_dpat$get:(i0valdcl)->i0pat
+i0valdcl_ipat$get:(i0valdcl)->i0pat
 fun
 i0valdcl_tdxp$get:(i0valdcl)->teqi0exp
 (* ****** ****** *)
-#symload dpat with i0valdcl_dpat$get
+#symload ipat with i0valdcl_ipat$get
 #symload tdxp with i0valdcl_tdxp$get(*opt*)
 (* ****** ****** *)
 fun

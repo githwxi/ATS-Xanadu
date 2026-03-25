@@ -152,6 +152,15 @@ i0fundcl_fprint(ifun, g_print$out<>())
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+g_print<i0parsed>(ipar) =
+let
+val () =
+i0parsed_fprint(ipar, g_print$out<>())end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_xats2js_tmplib.dats] *)
 (***********************************************************************)

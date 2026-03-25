@@ -110,6 +110,12 @@ val ipar =
 (
   i0parsed_of_trxd3i0(dpar))
 //
+// (*
+val (  ) =
+prerrsln
+("ipar(trxd3i0) = ", (ipar))
+// *)
+//
 (*
 val ipar =
 (
