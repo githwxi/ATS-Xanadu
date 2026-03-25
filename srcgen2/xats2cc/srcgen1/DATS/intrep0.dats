@@ -50,6 +50,8 @@ XATSOPT "./../../.."
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 #staload
+"./../../../SATS/staexp2.sats"
+#staload
 "./../../../SATS/statyp2.sats"
 #staload
 "./../../../SATS/dynexp2.sats"
@@ -75,12 +77,32 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #implfun
+i0typ_none0
+((*void*)) =
+i0typ_make_node
+(s2t0, I0Tnone0())
+where{
+val s2t0 = sort2_none0()}
+//
+#implfun
 i0typ_none1
 (  t2p0  ) =
 i0typ_make_node
 (t2p0.sort(),I0Tnone1(t2p0))
 //
 (* ****** ****** *)
+//
+#implfun
+i0var_none1
+(  d2v0  ) =
+let
+val lvl0 = ( -1 )
+val i0t0 =
+i0typ_none0((*0*))
+in//let
+(
+  i0var(d2v0, lvl0, i0t0))
+end//let//endof(i0var_none1)
 //
 #implfun
 i0exp_none1
