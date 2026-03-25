@@ -302,7 +302,7 @@ I0Ttop1 of (i0typ)//delineared
 (* ****** ****** *)
 //
 |I0Tapps of
-(s2typ(*fun*), i0typlst)//inst.
+(i0typ(*fun*), i0typlst)//inst.
 |I0Tlam1 of
 (s2varlst(*arg*), i0typ)//abst.
 //
@@ -316,8 +316,8 @@ I0Ttop1 of (i0typ)//delineared
 (* ****** ****** *)
 //
 |I0Ttcon of (d2con, i0typlst)
-|I0Ttrcd of (
-trcdknd(*knd*), sint(*npf*), l0i0tlst)
+|I0Ttrcd of
+(trcdknd(*knd*), sint(*npf*), l0i0tlst)
 //
 (* ****** ****** *)
 |I0Tnone0 of ((*0*)) | I0Tnone1 of (s2typ)
