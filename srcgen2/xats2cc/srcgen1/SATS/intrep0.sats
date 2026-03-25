@@ -582,6 +582,9 @@ i0exp_node$get
 (* ****** ****** *)
 //
 fun
+i0var_none1
+(d2v0: d2var): i0var
+fun
 i0exp_none1
 (d3e0: d3exp): i0exp
 //

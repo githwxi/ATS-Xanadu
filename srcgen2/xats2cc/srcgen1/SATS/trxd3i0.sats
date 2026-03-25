@@ -97,6 +97,13 @@ envstk_poplet0
 ( stk0: &envstk >> _ ): void
 //
 (* ****** ****** *)
+//
+fun
+envstk_denv$insert
+( stk0:
+& envstk >> _, ivar: i0var ): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
