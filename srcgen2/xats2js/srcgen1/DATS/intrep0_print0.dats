@@ -491,7 +491,6 @@ I0Enone0() =>
 let
 val
 loc0 = i0e0.lctn() in//let
-(
 prints("I0Enone0(", loc0, ")") end
 |
 I0Enone1(d3e1) =>
@@ -749,13 +748,13 @@ end(*let*)//end-of-[i0dcl_fprint(dcl0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 i0valdcl_fprint
   (ival, out0) = let
 //
-val dpat =
-i0valdcl_dpat$get(ival)
+val ipat =
+i0valdcl_ipat$get(ival)
 val tdxp =
 i0valdcl_tdxp$get(ival)
 //
@@ -763,9 +762,9 @@ i0valdcl_tdxp$get(ival)
 //
 in//let
 (
-prints("I0VALDCL(", dpat, ";", tdxp, ")"))
+prints("I0VALDCL(", ipat, ";", tdxp, ")"))
 end(*let*)//end-of-[i0valdcl_fprint(ival,out0)]
-
+//
 (* ****** ****** *)
 //
 #implfun

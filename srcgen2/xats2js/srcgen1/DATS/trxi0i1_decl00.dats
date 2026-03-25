@@ -579,7 +579,7 @@ trxi0i1_i0valdcl
 val loc0 =
 i0valdcl_lctn$get(ival)
 val ipat =
-i0valdcl_dpat$get(ival)
+i0valdcl_ipat$get(ival)
 val tdxp =
 i0valdcl_tdxp$get(ival)
 //

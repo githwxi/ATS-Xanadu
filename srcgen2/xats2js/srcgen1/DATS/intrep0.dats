@@ -423,15 +423,15 @@ i0valdcl_lctn$get
 val+
 I0VALDCL
 ( lctn
-, dpat, tdxp) = ival in lctn end
+, ipat, tdxp) = ival in lctn end
 //
 #implfun
-i0valdcl_dpat$get
+i0valdcl_ipat$get
   (  ival  ) = let
 val+
 I0VALDCL
 ( lctn
-, dpat, tdxp) = ival in dpat end
+, ipat, tdxp) = ival in ipat end
 //
 #implfun
 i0valdcl_tdxp$get
@@ -439,15 +439,15 @@ i0valdcl_tdxp$get
 val+
 I0VALDCL
 ( lctn
-, dpat, tdxp) = ival in tdxp end
+, ipat, tdxp) = ival in tdxp end
 //
 (* ****** ****** *)
 //
 #implfun
 i0valdcl_make_args
-(lctn, dpat, tdxp) =
+(lctn, ipat, tdxp) =
 (
-  I0VALDCL(lctn, dpat, tdxp(*opt*)))
+  I0VALDCL(lctn, ipat, tdxp(*opt*)))
 //
 (* ****** ****** *)
 //
