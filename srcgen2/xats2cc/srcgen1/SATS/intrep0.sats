@@ -339,8 +339,9 @@ i0typ_fprint
 (* ****** ****** *)
 //
 fun
-i0typ_none1
-(t2p0: s2typ): i0typ
+i0typ_none0((*void*)): i0typ
+fun
+i0typ_none1(t2p0: s2typ): i0typ
 //
 fun
 i0typ_make_node
