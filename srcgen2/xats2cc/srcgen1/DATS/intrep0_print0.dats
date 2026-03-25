@@ -504,6 +504,25 @@ prints("I0Dvardclst(",tknd,";",i0vs,")"))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|
+I0Dnone0() =>
+let
+val
+loc0 = idcl.lctn() in//let
+prints("I0Dnone0(", loc0, ")") end
+//
+|
+I0Dnone1(d3cl) =>
+let
+val
+loc0 = idcl.lctn() in//let
+(
+prints
+( "I0Dnone1(", loc0, ";", d3cl, ")") ) end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 end(*let*)//end-of-[i0dcl_fprint(idcl,out0)]
 //
 (* ****** ****** *)

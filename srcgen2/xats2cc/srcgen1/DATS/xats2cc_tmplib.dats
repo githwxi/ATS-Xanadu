@@ -153,6 +153,28 @@ i0fundcl_fprint(ifun, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
+g_print
+<teqi0exp>(tdxp) =
+let
+(*
+#impltmp
+g_print$out<>() = out
+*)
+in//let
+(
+case+ tdxp of
+|
+TEQI0EXPnone() =>
+prints("TEQI0EXPnone(", ")")
+|
+TEQI0EXPsome(tok0, i0e1) =>
+prints("TEQI0EXPsome(",tok0,";",i0e1,")"))
+endlet // end-of-[g_print<teqi0exp>(tdxp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 g_print<i0parsed>(ipar) =
 let
 val () =
