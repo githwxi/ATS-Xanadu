@@ -91,6 +91,8 @@ are addressed:
 #typedef g1nam = $S1E.g1nam
 #typedef g1exp = $S1E.g1exp
 (* ****** ****** *)
+#typedef s1exp = $S1E.s1exp
+(* ****** ****** *)
 #typedef d1exp = $D1E.d1exp
 (* ****** ****** *)
 #typedef sort2 = $S2E.sort2
@@ -557,6 +559,18 @@ token(*knd*),sint(*npf*),l0i0elst)
 |I0Edp2tr of (i0exp)//p2tr-dereference
 |I0Edl0az of (i0exp)//l0azy-eval-thunk
 |I0Edl1az of (i0exp)//l1azy-eval-thunk
+//
+(* ****** ****** *)
+//
+|I0Eannot of
+(i0exp, s1exp(*given*), s2exp(*trans*))
+//
+(* ****** ****** *)
+//
+|I0Elabck of (i0exp, label)//HX: casting
+//
+|I0Et2pck of (i0exp, s2typ)//HX: casting
+|I0Et2ped of (i0exp, s2typ)//HX: checked
 //
 (* ****** ****** *)
 |I0Enone0 of ((*0*)) | I0Enone1 of (d3exp)

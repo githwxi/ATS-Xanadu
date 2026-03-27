@@ -55,6 +55,10 @@ XATSOPT "./../../.."
 "./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 #staload
+"./../../../SATS/staexp1.sats"
+#staload
+"./../../../SATS/staexp2.sats"
+#staload
 "./../../../SATS/dynexp2.sats"
 #staload
 "./../../../SATS/dynexp3.sats"
@@ -421,6 +425,47 @@ prints("I0Edl0az(", i0e1, ")"))//de-l0az
 (   i0e1    ) =>
 (
 prints("I0Edl1az(", i0e1, ")"))//de-l1az
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Eannot
+(i0e1
+,s1e2, s2e2) =>
+(
+  print("I0Eannot(")
+; prints( i0e1, ";",s1e2, ";",s2e2,")"))
+//
+(* ****** ****** *)
+//
+|I0Elabck
+(i0e1, lab2) =>
+let
+val
+i0t1 = i0e1.ityp() in
+(
+print("I0Elabck(");
+prints(i0e1, "(",i0t1,");", lab2,")"))
+end(*let*)//end-of-[I0Elabck(i0e1, lab2)]
+//
+|I0Et2pck
+(i0e1, t2p2) =>
+let
+val
+i0t1 = i0e1.ityp() in
+(
+print("I0Et2pck(");
+prints(i0e1, "(",i0t1,");", t2p2,")"))
+end(*let*)//end-of-[I0Et2pck(i0e1, t2p2)]
+|I0Et2ped
+(i0e1, t2p2) =>
+let
+val
+i0t1 = i0e1.ityp() in
+(
+print("I0Et2ped(");
+prints(i0e1, "(",i0t1,");", t2p2,")"))
+end(*let*)//end-of-[I0Et2ped(i0e1, t2p2)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
