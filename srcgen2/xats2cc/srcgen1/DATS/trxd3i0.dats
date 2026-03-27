@@ -179,6 +179,15 @@ l3d3elst_trxd3i0
 (* ****** ****** *)
 //
 #implfun
+f3arglst_trxd3i0
+( env0, f3as) =
+(
+  list_trxd3i0_fnp(env0, f3as, f3arg_trxd3i0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d3gualst_trxd3i0
 ( env0, d3gs) =
 (
