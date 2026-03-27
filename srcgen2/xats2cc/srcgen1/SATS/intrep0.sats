@@ -880,26 +880,27 @@ i0valdcl_ipat$get:(i0valdcl)->i0pat
 fun
 i0valdcl_tdxp$get:(i0valdcl)->teqi0exp
 (* ****** ****** *)
-#symload ipat with i0valdcl_ipat$get
-#symload tdxp with i0valdcl_tdxp$get(*opt*)
-(* ****** ****** *)
 fun
 i0vardcl_dpid$get:(i0vardcl)->d2var
 fun
 i0vardcl_dini$get:(i0vardcl)->teqi0exp
 (* ****** ****** *)
-#symload dpid with i0vardcl_dpid$get
-#symload dini with i0vardcl_dini$get(*opt*)
-(* ****** ****** *)
 //
 fun
 i0valdcl_make_args
-( lctn:loc_t
-, ipat:i0pat, tdxp:teqi0exp):i0valdcl
+(lctn:loc_t
+,ipat:i0pat, tdxp:teqi0exp):i0valdcl
 fun
 i0vardcl_make_args
-( lctn:loc_t
-, dpid:d2var, dini:teqi0exp):i0vardcl
+(lctn:loc_t
+,dpid:d2var, dini:teqi0exp):i0vardcl
+//
+(* ****** ****** *)
+//
+#symload ipat with i0valdcl_ipat$get
+#symload tdxp with i0valdcl_tdxp$get(*opt*)
+#symload dpid with i0vardcl_dpid$get
+#symload dini with i0vardcl_dini$get(*opt*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -911,6 +912,31 @@ i0fundcl_fprint
 (* ****** ****** *)
 fun
 i0fundcl_lctn$get:(i0fundcl)->loc_t
+(* ****** ****** *)
+//
+fun
+i0fundcl_dpid$get:(i0fundcl)->d2var
+fun
+i0fundcl_farg$get:(i0fundcl)->fiarglst
+fun
+i0fundcl_tdxp$get:(i0fundcl)->teqi0exp
+//
+(* ****** ****** *)
+//
+fun
+i0fundcl_make_args
+(lctn:loc_t
+,lvl0:(sint)
+,dpid:(d2var)
+,farg:fiarglst
+,tdxp:teqi0exp, i0vs:i0varlst):i0fundcl
+//
+(* ****** ****** *)
+//
+#symload dpid with i0fundcl_dpid$get
+#symload farg with i0fundcl_farg$get(*lst*)
+#symload tdxp with i0fundcl_tdxp$get(*opt*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

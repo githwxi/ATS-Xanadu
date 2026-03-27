@@ -387,7 +387,7 @@ teqd3exp_trxd3i0(tdxp, env0)
 //
 in//let
 (
-  i0valdcl_make_args(loc0, ipat, tdxp))
+  i0valdcl_make_args(loc0,ipat,tdxp))
 end//let
 (*let*)//end-of-[d3valdcl_trxd3i0(dval,env0)]
 //
@@ -409,9 +409,68 @@ teqd3exp_trxd3i0(dini, env0)
 //
 in//let
 (
-  i0vardcl_make_args(loc0, dpid, dini))
+  i0vardcl_make_args(loc0,dpid,dini))
 end//let
 (*let*)//end-of-[d3vardcl_trxd3i0(dvar,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3fundcl_trxd3i0
+  (dfun, env0) = let
+//
+val loc0 =
+d3fundcl_get_lctn(dfun)
+//
+val dvar =
+d3fundcl_get_dpid(dfun)
+val f3as =
+d3fundcl_get_farg(dfun)
+//
+val tdxp =
+d3fundcl_get_tdxp(dfun)
+//
+(*
+val (  ) = prerrsln
+("d3fundcl_trxd3i0: f3as = ", f3as)
+val (  ) = prerrsln
+("d3fundcl_trxd3i0: tdxp = ", tdxp)
+*)
+//
+val lvl0 =
+(
+  envd3i0_getlvl0(env0))
+//
+val (  ) =
+(
+  envd3i0_pshlam0(env0))
+//
+val fias =
+f3arglst_trxd3i0(f3as, env0)
+val tdxp =
+teqd3exp_trxd3i0(tdxp, env0)
+//
+val i0vs =
+(
+envd3i0_lamenv$get(  env0  ))
+val (  ) =
+(
+  envd3i0_poplam0(   env0   ))
+//
+(*
+val (  ) = prerrsln
+("d3fundcl_trxd3i0: f3as = ", f3as)
+val (  ) = prerrsln
+("d3fundcl_trxd3i0: tdxp = ", tdxp)
+*)
+//
+in//let
+(
+i0fundcl_make_args(
+  loc0, lvl0, dvar, fias, tdxp, i0vs))
+end//let
+(*let*)//end-of-[d3fundcl_trxd3i0(dfun,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
