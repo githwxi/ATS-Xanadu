@@ -626,6 +626,27 @@ prints("I0VARDCL(", dpid, ";", dini, ")"))
 end(*let*)//end-of-[i0vardcl_fprint(ivar,out0)]
 //
 (* ****** ****** *)
+//
+#implfun
+i0fundcl_fprint
+  (ifun, out0) = let
+//
+val dpid =
+i0fundcl_dpid$get(ifun)
+val farg =
+i0fundcl_farg$get(ifun)
+val tdxp =
+i0fundcl_tdxp$get(ifun)
+//
+#impltmp g_print$out<>() = out0
+//
+in//let
+(
+prints
+("I0FUNDCL(",dpid,";",farg,";",tdxp,")"))
+end(*let*)//end-of-[i0fundcl_fprint(ifun,out0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
