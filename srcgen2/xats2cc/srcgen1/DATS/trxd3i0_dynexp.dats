@@ -1411,8 +1411,7 @@ val i0e1 =
   d3exp_trxd3i0( d3e1, env0 ))
 //
 val i0vs =
-envd3i0_lamenv$get(   env0   )
-//
+envd3i0_lamenv$get(  env0  )
 val (  ) =
 (
   envd3i0_poplam0(   env0   ))
@@ -1464,6 +1463,14 @@ val (  ) = // HX: lvl0+1
 (
   envd3i0_pshlam0(  env0  ))
 //
+val (  ) =
+envd3i0_dvar$insert
+( env0, fid0, ivar )
+where{
+val ivar =
+i0var_make_dvar$info
+(    fid0, lvl0+1, i0t0    )}
+//
 val fias =
 (
 f3arglst_trxd3i0(f3as, env0))
@@ -1471,6 +1478,8 @@ val i0e1 =
 (
   d3exp_trxd3i0( d3e1, env0 ))
 //
+val i0vs =
+envd3i0_lamenv$get(  env0  )
 val (  ) =
 (
   envd3i0_poplam0(   env0   ))
@@ -1478,7 +1487,8 @@ val (  ) =
 in//let
 //
 let
-val denv = list_nil( (*void*) )
+val (  ) =
+envd3i0_i0vs$insert(env0, i0vs)
 in//let
 (
 i0exp
@@ -1486,7 +1496,7 @@ i0exp
 loc0,
 i0t0,
 I0Efix0(lvl0,
-  tknd, fid0, fias, i0e1, denv)))
+  tknd, fid0, fias, i0e1, i0vs)))
 end//let
 //
 end(*let*)//end-of-[f0_fix0(d3e0,env0)]

@@ -183,15 +183,16 @@ prints("I0Pdapp(",i0f0,";",i0ps,")")
 (* ****** ****** *)
 //
 |I0Prfpt
-( i0p1, i0p2 ) =>
+(i0p1, i0p2) =>
 prints("I0Prfpt(",i0p1,";",i0p2,")")
 //
 (* ****** ****** *)
 //
-|I0Ptup0(i0ps) =>
+|I0Ptup0
+(   i0ps   ) =>
 prints("I0Ptup0(",i0ps,")")
 |I0Ptup1
-( tknd,i0ps ) =>
+(tknd, i0ps) =>
 prints("I0Ptup1(",tknd,";",i0ps,")")
 //
 (* ****** ****** *)

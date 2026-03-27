@@ -226,6 +226,15 @@ print("I0Pdapp(");
 prints(i0f0,";",npf1,";",i0ps,")"))
 //
 (* ****** ****** *)
+//
+|I0Ptup0
+(   i0ps   ) =>
+prints("I0Ptup0(",i0ps,")")
+|I0Ptup1
+(tknd, i0ps) =>
+prints("I0Ptup1(",tknd,";",i0ps,")")
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I0Pnone0() =>
