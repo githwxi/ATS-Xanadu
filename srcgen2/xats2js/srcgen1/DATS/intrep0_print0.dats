@@ -191,10 +191,17 @@ prints("I0Prfpt(",i0p1,";",i0p2,")")
 |I0Ptup0
 (   i0ps   ) =>
 prints("I0Ptup0(",i0ps,")")
+//
 |I0Ptup1
 (tknd, i0ps) =>
 prints("I0Ptup1(",tknd,";",i0ps,")")
 //
+|I0Prcd2
+(tknd, lips) =>
+(
+prints("I0Prcd2(",tknd,";",lips,")"))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I0Pnone0() =>
@@ -207,6 +214,7 @@ val loc0 = d3p1.lctn() in//let
 prints
 ("I0Pnone1(", loc0, ";", d3p1, ")") end
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end(*let*)//end-of-[i0pat_fprint(i0p0,out0)]
