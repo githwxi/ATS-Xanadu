@@ -25,10 +25,12 @@ val x = 1000
 val y = ( x + x )
 (* ****** ****** *)
 (* ****** ****** *)
-val foo = lam(x:sint) => x + y
-(* ****** ****** *)
+val foo =
+lam(w:sint) => lam(z:sint) => w + x + y + z
 (* ****** ****** *)
 ////
+(* ****** ****** *)
+//
 val () =
 prints
 ("Hello from [test00_xats2cc]!", "\n")
