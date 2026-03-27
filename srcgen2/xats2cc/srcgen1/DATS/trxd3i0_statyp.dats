@@ -112,6 +112,17 @@ end(*let*)//end-of-[T2Plam1(...)]
 //
 (* ****** ****** *)
 //
+|T2Ptext
+(name, t2ps) =>
+let
+val i0ts =
+s2typlst_trxd3i0(t2ps, env0)
+in//let
+i0typ(s2t0, I0Ttext(name, i0ts))
+end(*let*)//end-of-[T2Ptext(...)]
+//
+(* ****** ****** *)
+//
 |
 _(*otherwise*) => i0typ_none1(t2p0)
 (* ****** ****** *)

@@ -290,19 +290,19 @@ knd: 0/1/-1//cbv0/v1/rf
 //
 (* ****** ****** *)
 //
-| // external
-T2Ptext of
+|T2Ptext of // external
 (string(*name*), s2typlst(*arg*))
 //
-|
-T2Pexi0 of // exists quantifier
+(* ****** ****** *)
+//
+|T2Pexi0 of // exists quantifier
 (s2varlst(*vars*), s2typ(*body*))
-|
-T2Puni0 of // forall quantifier
+|T2Puni0 of // forall quantifier
 (s2varlst(*vars*), s2typ(*body*))
 //
-|
-T2Ptrcd of
+(* ****** ****** *)
+//
+|T2Ptrcd of
 (trcdknd(*knd*), sint(*npf*), l2t2plst)
 //
 |T2Pnone0 of ((*0*)) // HX: optional

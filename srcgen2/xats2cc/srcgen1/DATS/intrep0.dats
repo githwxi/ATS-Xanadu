@@ -77,14 +77,6 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #implfun
-i0typ_none0
-((*void*)) =
-i0typ_make_node
-(s2t0, I0Tnone0())
-where{
-val s2t0 = sort2_none0()}
-//
-#implfun
 i0typ_none1
 (  t2p0  ) =
 i0typ_make_node
@@ -98,7 +90,7 @@ i0var_none1
 let
 val lvl0 = ( -1 )
 val i0t0 =
-i0typ_none0((*0*))
+i0typ_none1(d2v0.styp())
 in//let
 (
   i0var(d2v0, lvl0, i0t0))
