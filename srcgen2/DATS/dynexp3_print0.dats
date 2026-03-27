@@ -548,7 +548,7 @@ t2p1 = d3e1.styp() in
 (
 print("D3Elabck(");
 prints(d3e1, "(", t2p1, ");", lab2,")"))
-endlet // end of [ D3Elabck(d3e1, lab2) ]
+end(*let*)//end-of-[D3Elabck(d3e1, lab2)]
 //
 |D3Et2pck
 (d3e1, t2p2) =>
@@ -558,7 +558,7 @@ t2p1 = d3e1.styp() in
 (
 print("D3Et2pck(");
 prints(d3e1, "(", t2p1, ");", t2p2,")"))
-endlet // end of [ D3Et2pck(d3e1, t2p2) ]
+end(*let*)//end-of-[D3Et2pck(d3e1, t2p2)]
 |D3Et2ped
 (d3e1, t2p2) =>
 let
@@ -567,7 +567,7 @@ t2p1 = d3e1.styp() in
 (
 print("D3Et2ped(");
 prints(d3e1, "(", t2p1, ");", t2p2,")"))
-endlet // end of [ D3Et2ped(d3e1, t2p2) ]
+end(*let*)//end-of-[D3Et2ped(d3e1, t2p2)]
 //
 (* ****** ****** *)
 //

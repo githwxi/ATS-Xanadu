@@ -741,6 +741,12 @@ d3e0.node() of
 //
 (* ****** ****** *)
 //
+|D3Et2ped _ =>
+(
+  f0_t2ped(d3e0, env0))
+//
+(* ****** ****** *)
+//
 |
 _(*others*) =>
 (
@@ -1500,6 +1506,36 @@ I0Efix0(lvl0,
 end//let
 //
 end(*let*)//end-of-[f0_fix0(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2ped
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Et2ped
+(d3e1, t2p2) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0e1 =
+(
+  d3exp_trxd3i0(d3e1, env0))
+//
+in//let
+//
+(
+i0exp
+(loc0, i0t0, I0Et2ped(i0e1, t2p2))
+//
+end(*let*)//end-of-[f0_t2ped(d3e0,env0)]
 //
 (* ****** ****** *)
 //
