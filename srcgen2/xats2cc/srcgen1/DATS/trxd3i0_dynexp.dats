@@ -158,6 +158,15 @@ d3p0.node() of
 //
 (* ****** ****** *)
 //
+|D3Pargtp _ =>
+(
+  f0_argtp(d3p0, env0))
+|D3Pannot _ =>
+(
+  f0_annot(d3p0, env0))
+//
+(* ****** ****** *)
+//
 end where//let//endof(d3pat_trxd3i0)
 {
 //
@@ -548,6 +557,45 @@ i0pat(loc0, i0t0, I0Ptup0(i0ps)))
 //
 end(*let*)//end-of-[f0_tup0(d3p0,env0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_argtp
+(
+d3p0: d3pat,
+env0: !envd3i0): i0pat =
+(
+d3pat_trxd3i0(d3p1, env0)
+) where
+{
+//
+val-
+D3Pargtp
+( d3p1, t2p2) = d3p0.node((*0*))
+//
+}(*where*)//end-of-[f0_argtp(d3p0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_annot
+(
+d3p0: d3pat,
+env0: !envd3i0): i0pat =
+(
+d3pat_trxd3i0(d3p1, env0)
+) where
+{
+//
+val-
+D3Pannot
+( d3p1
+, s1e2, s2e2) = d3p0.node((*0*))
+//
+}(*where*)//end-of-[f0_annot(d3p0,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[d3pat_trxd3i0(d3p0,env0)]
@@ -1362,6 +1410,9 @@ val i0e1 =
 (
   d3exp_trxd3i0( d3e1, env0 ))
 //
+val i0vs =
+envd3i0_lamenv$get(   env0   )
+//
 val (  ) =
 (
   envd3i0_poplam0(   env0   ))
@@ -1369,10 +1420,11 @@ val (  ) =
 in//let
 //
 let
-val i0vs =
-envd3i0_lamenv$get(   env0   )
+//
+(*
 val (  ) =
 envd3i0_i0vs$insert(env0, i0vs)
+*)
 //
 in//let
 (

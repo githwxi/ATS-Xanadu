@@ -41,10 +41,40 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
-//
 #include
-"./../HATS/libxatsopt.hats"
-//
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dpre.hats"
+(* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
+#staload
+"./../../../SATS/xbasics.sats"
+#staload
+"./../../../SATS/xstamp0.sats"
+#staload
+"./../../../SATS/xsymbol.sats"
+#staload
+"./../../../SATS/xsymmap.sats"
+#staload
+"./../../../SATS/xlabel0.sats"
+(* ****** ****** *)
+#staload
+"./../../../SATS/locinfo.sats"
+#staload
+"./../../../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload
+"./../../../SATS/staexp2.sats"
+#staload
+"./../../../SATS/statyp2.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
+#staload
+"./../../../SATS/dynexp3.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
@@ -154,28 +184,95 @@ case- stk0 of
 }(*where*)//endof(envstk_free$top(env0))
 //
 (* ****** ****** *)
-//
-#implfun
-envstk_denv$insert
-  (stk0, ivar) =
-(
-stk0 := envstk_denv(ivar, stk0))
-//end-of-[envstk_denv$insert(env0,ivar)]
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-envd3i0_getlvl0
-  ( env0 ) =
+envstk_pshlam0
+  (stk0) =
 (
-envstk_getlvl0(envstk))
-where
+stk0 :=
+(
+  envstk_lam0(lvl0+1, stk0))
+) where
 {
-val+
-~ENVD3I0(d2vstk, envstk) = env0 }
-(*where*)//end-of-(envd3i0_getlvl0(env0))
+  val lvl0 = envstk_getlvl0(stk0)
+}(*where*)//end-of-[envstk_pshlam0(stk0)]
 //
+#implfun
+envstk_pshlet0
+  (stk0) =
+(
+  stk0 := envstk_let0( stk0 )
+) where
+{
+(*
+  val lvl0 = envstk_getlvl0(stk0)
+*)
+}(*where*)//end-of-[envstk_pshlet0(stk0)]
+//
+(* ****** ****** *)
+//
+#implfun
+envstk_poplam0
+  (stk0) =
+(
+  stk0 := loop(  stk0  )
+) where
+{
+//
+fun
+loop
+(stk0: envstk): envstk =
+(
+case- stk0 of
+//
+| ~
+envstk_lam0
+(lvl0, stk1) => stk1
+//
+| ~
+envstk_denv
+(ivar, stk1) => loop(stk1)
+| ~
+envstk_ufld
+(dvar, ityp, stk1) => loop(stk1)
+//
+)(*case+*)//end-of-[loop(stk0:envstk)]
+//
+}(*where*)//end-of-[envstk_poplam0(stk0)]
+//
+(* ****** ****** *)
+//
+#implfun
+envstk_poplet0
+  (stk0) =
+(
+  stk0 := loop(  stk0  )
+) where
+{
+//
+fun
+loop
+(stk0: envstk): envstk =
+(
+case- stk0 of
+//
+| ~
+envstk_let0
+(   stk1   ) => stk1
+//
+| ~
+envstk_denv
+(ivar, stk1) => loop(stk1)
+| ~
+envstk_ufld
+(dvar, ityp, stk1) => loop(stk1)
+//
+)(*case+*)//end-of-[loop(stk0:envstk)]
+//
+}(*where*)//end-of-[envstk_poplet0(stk0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -187,7 +284,7 @@ ENVD3I0
 {
   val envstk = envstk_nil()
   val d2vstk = stkmap_make_nil()
-}(*where*) // end of [envd3i0_make_nil]
+}(*where*)//end-of-[envd3i0_make_nil()]
 //
 (* ****** ****** *)
 //
@@ -212,7 +309,147 @@ envstk_free$top(envstk)) where
 val+
 ~ENVD3I0(d2vstk, envstk) = env0
 }(*where*)
-end(*let*)//end-of-(envd3i0_free_top(env0))
+end(*let*)//end-of-(envd3i0_free_top())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envstk_lamenv$get
+  (  stk0  ) =
+list_vt2t
+(loop(stk0, i0vs))
+where
+{
+//
+#vwtpdef
+i0vs = list_vt(i0var)
+//
+val
+i0vs = list_vt_nil(*0*)
+//
+fun
+loop
+( stk0:
+! envstk, i0vs: i0vs): i0vs =
+(
+case- stk0 of
+//
+(*
+|envstk_nil
+( (*void*) ) => i0vs
+*)
+//
+|envstk_lam0
+(lvl0, stk1) => i0vs
+//
+|envstk_let0
+(   stk1   ) => loop(stk1, i0vs)
+//
+|envstk_denv
+(i0v1, stk1) =>
+let
+val i0vs =
+list_vt_cons
+(i0v1, i0vs) in loop(stk1, i0vs)
+end//let//end-of-[envstk_denv()]
+//
+|envstk_ufld
+(d2v1
+,ityp, stk1) => loop(stk1, i0vs)
+//
+)(*case+*)//end(loop(stk0,i0vs):i0vs)
+//
+}(*where*)//end(envstk_lamenv$get(stk0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envstk_denv$insert
+  (stk0, ivar) =
+(
+stk0 := envstk_denv(ivar, stk0))
+//end-of-[envstk_denv$insert(stk0,ivar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envd3i0_getlvl0
+  ( env0 ) =
+(
+envstk_getlvl0(envstk))
+where
+{
+val+
+ENVD3I0(d2vstk, envstk) = (env0) }
+(*where*)//end-of-(envd3i0_getlvl0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+envd3i0_pshlam0
+  ( env0 ) =
+(
+envstk_pshlam0(envstk))
+where
+{
+val+
+ENVD3I0(d2vstk, !envstk) = env0 }
+(*where*)//end-of-(envd3i0_pshlam0(env0))
+//
+#implfun
+envd3i0_pshlet0
+  ( env0 ) =
+(
+envstk_pshlet0(envstk))
+where
+{
+val+
+ENVD3I0(d2vstk, !envstk) = env0 }
+(*where*)//end-of-(envd3i0_pshlet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+envd3i0_poplam0
+  ( env0 ) =
+(
+envstk_poplam0(envstk))
+where
+{
+val+
+ENVD3I0(d2vstk, !envstk) = env0 }
+(*where*)//end-of-(envd3i0_poplam0(env0))
+//
+#implfun
+envd3i0_poplet0
+  ( env0 ) =
+(
+envstk_poplet0(envstk))
+where
+{
+val+
+ENVD3I0(d2vstk, !envstk) = env0 }
+(*where*)//end-of-(envd3i0_poplet0(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envd3i0_lamenv$get
+  ( env0 ) =
+(
+envstk_lamenv$get
+(    envstk     ))
+where
+{
+//
+val+
+ENVD3I0(d2vstk, envstk) = ( env0 )
+//
+}(*where*)//end-of-(envd3i0_lamenv$get(...))
 //
 (* ****** ****** *)
 //
@@ -255,7 +492,7 @@ stkmap_insert$any
 val sym1 = dvar.unam()
 //
 val+
-!ENVD3I0(d2vstk, envstk) = ( env0 )
+ENVD3I0(!d2vstk, envstk) = ( env0 )
 }(*where*)//end-of-(envd3i0_dvar$insert(...))
 //
 (* ****** ****** *)
@@ -270,7 +507,7 @@ where
 {
 //
 val+
-!ENVD3I0(d2vstk, envstk) = ( env0 )
+ENVD3I0(d2vstk, !envstk) = ( env0 )
 //
 }(*where*)//end-of-(envd3i0_dvar$insert(...))
 //

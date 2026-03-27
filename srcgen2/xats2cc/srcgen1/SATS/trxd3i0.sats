@@ -99,9 +99,20 @@ envstk_poplet0
 (* ****** ****** *)
 //
 fun
+envstk_lamenv$get
+( stk0: !envstk ): i0varlst
+//
+(* ****** ****** *)
+//
+fun
 envstk_denv$insert
 ( stk0:
 & envstk >> _, ivar: i0var ): void
+//
+fun
+envstk_i0vs$insert
+( stk0:
+& envstk >> _, i0vs: i0varlst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
