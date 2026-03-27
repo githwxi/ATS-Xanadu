@@ -423,7 +423,7 @@ d3fundcl_trxd3i0
 val loc0 =
 d3fundcl_get_lctn(dfun)
 //
-val dvar =
+val dpid =
 d3fundcl_get_dpid(dfun)
 val f3as =
 d3fundcl_get_farg(dfun)
@@ -468,7 +468,7 @@ val (  ) = prerrsln
 in//let
 (
 i0fundcl_make_args(
-  loc0, lvl0, dvar, fias, tdxp, i0vs))
+  loc0, lvl0, dpid, fias, tdxp, i0vs))
 end//let
 (*let*)//end-of-[d3fundcl_trxd3i0(dfun,env0)]
 //

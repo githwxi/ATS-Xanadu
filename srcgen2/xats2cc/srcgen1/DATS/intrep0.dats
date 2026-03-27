@@ -548,6 +548,16 @@ I0FUNDCL
 , tdxp, i0vs) = ifun in lctn end
 //
 #implfun
+i0fundcl_lvl0$get
+  (  ifun  ) = let
+val+
+I0FUNDCL
+( lctn
+, lvl0
+, dpid, farg
+, tdxp, i0vs) = ifun in lvl0 end
+//
+#implfun
 i0fundcl_dpid$get
   (  ifun  ) = let
 val+
@@ -578,6 +588,18 @@ I0FUNDCL
 , lvl0
 , dpid, farg
 , tdxp, i0vs) = ifun in tdxp end
+//
+(* ****** ****** *)
+//
+#implfun
+i0fundcl_i0vs$get
+  (  ifun  ) = let
+val+
+I0FUNDCL
+( lctn
+, lvl0
+, dpid, farg
+, tdxp, i0vs) = ifun in i0vs end
 //
 (* ****** ****** *)
 //

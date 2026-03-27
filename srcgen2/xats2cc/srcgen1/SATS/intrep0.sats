@@ -915,11 +915,15 @@ i0fundcl_lctn$get:(i0fundcl)->loc_t
 (* ****** ****** *)
 //
 fun
-i0fundcl_dpid$get:(i0fundcl)->d2var
+i0fundcl_lvl0$get:(i0fundcl)->(sint)
+fun
+i0fundcl_dpid$get:(i0fundcl)->(d2var)
 fun
 i0fundcl_farg$get:(i0fundcl)->fiarglst
 fun
 i0fundcl_tdxp$get:(i0fundcl)->teqi0exp
+fun
+i0fundcl_i0vs$get:(i0fundcl)->i0varlst
 //
 (* ****** ****** *)
 //
