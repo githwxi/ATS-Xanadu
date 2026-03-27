@@ -373,6 +373,47 @@ stk0 := envstk_denv(ivar, stk0))
 //end-of-[envstk_denv$insert(stk0,ivar)]
 //
 (* ****** ****** *)
+//
+#implfun
+envstk_i0vs$insert
+  (stk0, i0vs) =
+(
+loop(stk0, i0vs))
+where
+{
+//
+val lvl0 =
+envstk_getlvl0(stk0)
+//
+fun
+loop
+( stk0:
+& envstk >> _
+, i0vs: i0varlst): void =
+(
+case+ i0vs of
+|
+list_nil() => ()
+|
+list_cons(i0v1, i0vs) =>
+(
+envstk_i0vs$insert(stk0, i0vs))
+where
+{
+//
+val lvl1 =
+i0var_lvl0$get(i0v1)
+//
+val (  ) =
+(
+if
+(lvl1 <= lvl0)
+then(
+envstk_denv$insert(stk0, i0v1))) }
+)(*case+*)//end[loop(stk0,i0vs):void]
+}(*where*)//end(envstk_i0vs$insert(...))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -509,7 +550,23 @@ where
 val+
 ENVD3I0(d2vstk, !envstk) = ( env0 )
 //
-}(*where*)//end-of-(envd3i0_dvar$insert(...))
+}(*where*)//end-of-(envd3i0_denv$insert(...))
+//
+(* ****** ****** *)
+//
+#implfun
+envd3i0_i0vs$insert
+  (env0, i0vs) =
+(
+envstk_i0vs$insert
+(  envstk, i0vs  ))
+where
+{
+//
+val+
+ENVD3I0(d2vstk, !envstk) = ( env0 )
+//
+}(*where*)//end-of-(envd3i0_denv$insert(...))
 //
 (* ****** ****** *)
 //
