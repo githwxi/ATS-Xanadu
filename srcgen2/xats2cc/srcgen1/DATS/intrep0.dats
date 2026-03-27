@@ -520,6 +520,80 @@ i0vardcl_make_args
 endloc (*local*) // end of [ local(i0vardcl) ]
 //
 (* ****** ****** *)
+//
+local
+//
+datatype
+i0fundcl =
+I0FUNDCL of
+( loc_t
+, sint(*lvl0*)
+, d2var
+, fiarglst
+, teqi0exp, i0varlst)
+//
+#absimpl
+i0fundcl_tbox = i0fundcl
+//
+in//local
+//
+#implfun
+i0fundcl_lctn$get
+  (  ifun  ) = let
+val+
+I0FUNDCL
+( lctn
+, lvl0
+, dpid, farg
+, tdxp, i0vs) = ifun in lctn end
+//
+#implfun
+i0fundcl_dpid$get
+  (  ifun  ) = let
+val+
+I0FUNDCL
+( lctn
+, lvl0
+, dpid, farg
+, tdxp, i0vs) = ifun in dpid end
+//
+#implfun
+i0fundcl_farg$get
+  (  ifun  ) = let
+val+
+I0FUNDCL
+( lctn
+, lvl0
+, dpid, farg
+, tdxp, i0vs) = ifun in farg end
+//
+(* ****** ****** *)
+//
+#implfun
+i0fundcl_tdxp$get
+  (  ifun  ) = let
+val+
+I0FUNDCL
+( lctn
+, lvl0
+, dpid, farg
+, tdxp, i0vs) = ifun in tdxp end
+//
+(* ****** ****** *)
+//
+#implfun
+i0fundcl_make_args
+( lctn, lvl0
+, dpid, farg, tdxp, i0vs) =
+(
+I0FUNDCL(
+  lctn, lvl0, dpid, farg, tdxp, i0vs))
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [ local(i0fundcl) ]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
