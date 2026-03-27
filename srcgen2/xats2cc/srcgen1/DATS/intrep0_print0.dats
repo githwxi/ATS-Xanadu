@@ -145,6 +145,14 @@ prints("I0Ttcon(",
 //
 (* ****** ****** *)
 //
+|I0Ttext
+(name, i0ts) =>
+(
+prints
+("I0Ttext(", name, ";", i0ts, ")"))
+//
+(* ****** ****** *)
+//
 |I0Tnone0() =>
 (
   prints("I0Tnone0(", ")"))
@@ -269,6 +277,13 @@ let
 g_print$out
 <(*0*)>((*0*)) = out0
 //
+(*
+val () =
+prints("\
+i0exp_fprint: \
+loc0 = ", iexp.lctn())
+*)
+//
 in//let
 //
 case+
@@ -341,6 +356,18 @@ prints(
 //
 (* ****** ****** *)
 //
+|I0Edap0
+(   i0f0   ) =>
+prints("I0Edap0(", ")")
+|I0Edapp
+(i0f0
+,npf1, i0es) =>
+(
+print("I0Edapp(");
+prints(i0f0,";", npf1,";", i0es,")"))
+//
+(* ****** ****** *)
+//
 |I0Elam0
 (lvl0
 ,tknd
@@ -348,8 +375,7 @@ prints(
 ,body, denv) =>
 (
 print("I0Elam0(");
-prints(
-lvl0,";", tknd,";");
+prints(lvl0,";", tknd,";");
 prints(fias,";", body,";", denv,")"))
 //
 |I0Efix0

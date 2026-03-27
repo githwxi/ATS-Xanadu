@@ -308,6 +308,11 @@ I0Ttop1 of (i0typ)//delineared
 //
 (* ****** ****** *)
 //
+|I0Ttext of // external
+(string(*name*), i0typlst(*arg*))
+//
+(* ****** ****** *)
+//
 |I0Texi0 of // exists quantifier
 (s2varlst(*vars*), i0typ(*body*))
 |I0Tuni0 of // forall quantifier
@@ -347,8 +352,10 @@ i0typ_fprint
 //
 (* ****** ****** *)
 //
+(*
 fun
 i0typ_none0((*void*)): i0typ
+*)
 fun
 i0typ_none1(t2p0: s2typ): i0typ
 //
