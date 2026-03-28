@@ -21,21 +21,6 @@ For testing xats2cc!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-//
-fun
-fact(n: nint): nint =
-(
-  loop(0, 1)) where
-{
-fun loop
-(i: nint, r: nint): nint =
-if i < n
-then loop(i+1, (i+1)*r) else r
-}
-//
-(* ****** ****** *)
-////
-(* ****** ****** *)
 val x = 1000
 val y = ( x + x )
 (* ****** ****** *)
@@ -46,7 +31,8 @@ lam(w:sint) =>
 lam(z:sint) => w + x + y + z
 val bar =
 lam(w:sint) =>
-fix f(z:sint): sint => f(w + x + y + z)
+fix f00
+(z:sint): sint => f00(w+x+y+z)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -58,7 +44,8 @@ fact(n: nint): nint =
 {
 fun loop
 (i: nint, r: nint): nint =
-if i < n then loop(i+1, (i+1)*r) else r
+if (i < n)
+then loop(i+1, (i+1)*r) else (r)
 }
 //
 (* ****** ****** *)
