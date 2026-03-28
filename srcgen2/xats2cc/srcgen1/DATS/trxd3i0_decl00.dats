@@ -120,6 +120,12 @@ d3cl.node() of
   f0_fundclst(d3cl, env0))
 //
 (* ****** ****** *)
+//
+|D3Cimplmnt0 _ =>
+(
+  f0_implmnt0(d3cl, env0))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 |_(* otherwise *) => i0dcl_none1(d3cl)
 (* ****** ****** *)
@@ -313,6 +319,7 @@ env0: !envd3i0): i0dcl =
 let
 //
 val loc0 = d3cl.lctn()
+//
 val-
 D3Cfundclst
 ( tknd
@@ -341,6 +348,67 @@ prerrsln("f0_fundclst(d3i0): d3cl = ", d3cl)
 *)
 //
 }(*where*) // end of [f0_fundclst(d3cl,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+(
+d3cl: d3ecl,
+env0: !envd3i0): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+//
+val-
+D3Cimplmnt0
+( tknd
+, stmp
+, sqas, tqas
+, dimp//dcst
+, tias, f3as
+, sres, dexp) = d3cl.node()
+//
+val lvl0 =
+(
+  envd3i0_getlvl0(  env0  ))
+//
+val (  ) =
+(
+  envd3i0_pshlam0(  env0  ))
+//
+val fias =
+(
+f3arglst_trxd3i0(f3as, env0))
+//
+val dexp =
+(
+  d3exp_trxd3i0( dexp, env0 ))
+//
+val i0vs =
+(
+  envd3i0_lamenv$get(  env0  ))
+val (  ) = envd3i0_poplam0(env0)
+//
+in//let
+//
+(
+i0dcl_make_node
+(
+loc0,
+I0Dimplmnt0(
+  tknd,lvl0,stmp,dimp,fias,dexp,i0vs)))
+//
+end where // end-of-[f0_implmnt0(d3cl,env0)]
+{
+(*
+//
+val loc0 = d3cl.lctn((*void*))
+val (  ) =
+prerrsln("f0_implmnt0(d3i0): d3cl = ", d3cl)
+//
+*)
+}(*where*) // end-of-[f0_implmnt0(d3cl,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

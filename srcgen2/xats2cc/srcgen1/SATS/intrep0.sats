@@ -115,6 +115,8 @@ are addressed:
 #typedef t2jag = $D2E.t2jag
 //
 (* ****** ****** *)
+#typedef dimpl = $D2E.dimpl
+(* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
 (* ****** ****** *)
@@ -827,12 +829,13 @@ I0Dinclude of
 (* ****** ****** *)
 //
 |I0Dimplmnt0 of
-(token(*knd*)
-,stamp, dimpl, fiarglst, i0exp(*body*))
+(
+token(*knd*), sint(*lvl0*),
+stamp, dimpl, fiarglst, i0exp, i0varlst)
 //
 (* ****** ****** *)
 //
-|I0Dnone0 of ((*0*)) |I0Dnone1 of (d3ecl)
+|I0Dnone0 of ((*0*)) |I0Dnone1 of ( d3ecl )
 //
 (* ****** ****** *)
 (*

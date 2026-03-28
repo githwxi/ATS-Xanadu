@@ -1532,8 +1532,8 @@ val i0e1 =
 in//let
 //
 (
-i0exp
-(loc0, i0t0, I0Et2ped(i0e1, t2p2))
+i0exp(
+loc0, i0t0, I0Et2ped(i0e1, t2p2)))
 //
 end(*let*)//end-of-[f0_t2ped(d3e0,env0)]
 //
