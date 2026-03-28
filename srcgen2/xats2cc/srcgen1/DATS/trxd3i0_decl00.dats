@@ -326,8 +326,10 @@ D3Cfundclst
 , tqas
 , d2cs, d3fs) = d3cl.node()
 //
-val
-i0fs =
+val (  ) =
+f0_d3fs$insert(env0, d3fs)
+//
+val i0fs =
 d3fundclist_trxd3i0(d3fs, env0)
 //
 in//let
@@ -339,10 +341,34 @@ i0dcl_make_node
 end where
 {
 //
+fun
+f0_d3fs$insert
+( env0: !envd3i0
+, d3fs: d3fundclist): void =
+(
+case+ d3fs of
+|
+list_nil() => ((*0*))
+|
+list_cons
+(d3f1, d3fs) =>
+(
+f0_d3fs$insert(env0, d3fs)
+) where
+{
+//
+val
+dpid = d3fundcl_get_dpid(d3f1)
+val
+ivar = d2var_trxd3i0(dpid, env0)
+//
+val (  ) =
+envd3i0_dvar$insert(env0, dpid, ivar)}
+)(*case+*)//end(f0_d3fs$insert(env0,d3fs))
+//
 (*
 //
 val loc0 = d3cl.lctn((*void*))
-//
 val (  ) =
 prerrsln("f0_fundclst(d3i0): d3cl = ", d3cl)
 *)
@@ -482,16 +508,11 @@ teqd3exp_trxd3i0(dini, env0)
 //
 val (  ) =
 envd3i0_dvar$insert
-( env0, dpid, ivar )
-where{
-val lvl0 =
-(
-envd3i0_getlvl0(env0))
-val tvar = dpid.styp()
-val ityp =
-s2typ_trxd3i0(tvar, env0)
+( env0, dpid, ivar ) where
+{
 val ivar =
-i0var_make_dvar$info(dpid,lvl0,ityp)
+(
+  d2var_trxd3i0(dpid, env0))
 }(*where*)//end(envd3i0_dvar$insert)
 //
 in//let
@@ -513,17 +534,6 @@ val lvl0 =
 val (  ) =
 (
   envd3i0_pshlam0(env0))
-//
-val (  ) =
-envd3i0_dvar$insert
-( env0, dpid, ivar )
-where{
-val tfun = dpid.styp()
-val ityp =
-s2typ_trxd3i0(tfun, env0)
-val ivar =
-i0var_make_dvar$info
-(   dpid, lvl0+1, ityp   )}
 //
 val fias =
 f3arglst_trxd3i0(f3as, env0)

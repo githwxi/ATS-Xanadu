@@ -388,6 +388,22 @@ prints(i0f0,";", npf1,";", i0es,")"))
 //
 (* ****** ****** *)
 //
+|I0Elet0
+(dcls, i0e1) =>
+(
+prints("I0Elet0(",dcls,";",i0e1,")"))
+//
+(* ****** ****** *)
+//
+|I0Eift0
+(test
+,ithn, iels) =>
+(
+print("I0Eift0(");
+prints(test,";", ithn,";", iels,")"))
+//
+(* ****** ****** *)
+//
 |I0Elam0
 (lvl0
 ,tknd
@@ -425,6 +441,14 @@ prints("I0Edl0az(", i0e1, ")"))//de-l0az
 (   i0e1    ) =>
 (
 prints("I0Edl1az(", i0e1, ")"))//de-l1az
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Ewhere
+(i0e1, dcls) =>
+(
+prints("I0Ewhere(", i0e1,";", dcls,")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -682,13 +706,15 @@ val farg =
 i0fundcl_farg$get(ifun)
 val tdxp =
 i0fundcl_tdxp$get(ifun)
+val i0vs =
+i0fundcl_i0vs$get(ifun)
 //
 #impltmp g_print$out<>() = out0
 //
 in//let
 (
-prints
-("I0FUNDCL(",dpid,";",farg,";",tdxp,")"))
+print("I0FUNDCL(");
+prints(dpid,";",farg,";",tdxp,";",i0vs,")"))
 end(*let*)//end-of-[i0fundcl_fprint(ifun,out0)]
 //
 (* ****** ****** *)

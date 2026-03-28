@@ -231,6 +231,14 @@ i0lab_fprint
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-03-28:
+For funsets of i0var
+*)
+#abstbox i0varset_tbox//p0tr
+//
+(* ****** ****** *)
+//
 #abstbox i0valdcl_tbox//p0tr
 #abstbox i0vardcl_tbox//p0tr
 #abstbox i0fundcl_tbox//p0tr
@@ -268,6 +276,8 @@ i0lab_fprint
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef i0parsed = i0parsed_tbox
+(* ****** ****** *)
+#typedef i0varset = i0varset_tbox
 (* ****** ****** *)
 #typedef i0valdcl = i0valdcl_tbox
 #typedef i0vardcl = i0vardcl_tbox
@@ -531,12 +541,19 @@ i0exp_node =
 //
 (* ****** ****** *)
 //
-|I0Eseqn of (i0explst, i0exp)
+|I0Eift0 of
+(i0exp(*test*)
+,i0expopt(*th*), i0expopt(*el*))
+//
+(* ****** ****** *)
+//
+|I0Eseqn of
+(i0explst(*init*), i0exp(*last*))
 //
 (* ****** ****** *)
 //
 |I0Etup0 of
-(sint(*npf*),i0explst)//HX:flat
+(sint(*npf*),i0explst) // HX:flat
 |I0Etup1 of
 (
 token(*knd*),sint(*npf*),i0explst)
@@ -561,6 +578,11 @@ token(*knd*),sint(*npf*),l0i0elst)
 |I0Edp2tr of (i0exp)//p2tr-dereference
 |I0Edl0az of (i0exp)//l0azy-eval-thunk
 |I0Edl1az of (i0exp)//l1azy-eval-thunk
+//
+(* ****** ****** *)
+//
+|I0Ewhere of
+(i0exp(*scope*), i0dclist)//end-in-let
 //
 (* ****** ****** *)
 //
