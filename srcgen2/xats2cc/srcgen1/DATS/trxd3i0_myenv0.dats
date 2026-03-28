@@ -435,23 +435,29 @@ ENVD3I0(d2vstk, envstk) = (env0) }
 #implfun
 envd3i0_pshlam0
   ( env0 ) =
-(
-envstk_pshlam0(envstk))
-where
+let
+val nerr =
+stkmap_pshlam0(d2vstk)
+val (  ) =
+envstk_pshlam0(envstk)
+end where//end-of-(let)
 {
 val+
-ENVD3I0(d2vstk, !envstk) = env0 }
+ENVD3I0(!d2vstk, !envstk) = env0 }
 (*where*)//end-of-(envd3i0_pshlam0(env0))
 //
 #implfun
 envd3i0_pshlet0
   ( env0 ) =
-(
-envstk_pshlet0(envstk))
-where
+let
+val nerr =
+stkmap_pshlet0(d2vstk)
+val (  ) =
+envstk_pshlet0(envstk)
+end where//end-of-(let)
 {
 val+
-ENVD3I0(d2vstk, !envstk) = env0 }
+ENVD3I0(!d2vstk, !envstk) = env0 }
 (*where*)//end-of-(envd3i0_pshlet0(env0))
 //
 (* ****** ****** *)
@@ -459,23 +465,29 @@ ENVD3I0(d2vstk, !envstk) = env0 }
 #implfun
 envd3i0_poplam0
   ( env0 ) =
-(
-envstk_poplam0(envstk))
-where
+let
+val nerr =
+stkmap_poplam0(d2vstk)
+val (  ) =
+envstk_poplam0(envstk)
+end where//end-of-(let)
 {
 val+
-ENVD3I0(d2vstk, !envstk) = env0 }
+ENVD3I0(!d2vstk, !envstk) = env0 }
 (*where*)//end-of-(envd3i0_poplam0(env0))
 //
 #implfun
 envd3i0_poplet0
   ( env0 ) =
-(
-envstk_poplet0(envstk))
-where
+let
+val nerr =
+stkmap_poplet0(d2vstk)
+val (  ) =
+envstk_poplet0(envstk)
+end where//end-of-(let)
 {
 val+
-ENVD3I0(d2vstk, !envstk) = env0 }
+ENVD3I0(!d2vstk, !envstk) = env0 }
 (*where*)//end-of-(envd3i0_poplet0(env0))
 //
 (* ****** ****** *)

@@ -21,6 +21,21 @@ For testing xats2cc!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+fact(n: nint): nint =
+(
+  loop(0, 1)) where
+{
+fun loop
+(i: nint, r: nint): nint =
+if i < n
+then loop(i+1, (i+1)*r) else r
+}
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
 val x = 1000
 val y = ( x + x )
 (* ****** ****** *)
@@ -36,7 +51,15 @@ fix f(z:sint): sint => f(w + x + y + z)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun foo(z: sint): sint = foo(x + y + z)
+fun
+fact(n: nint): nint =
+(
+  loop(0, 1)) where
+{
+fun loop
+(i: nint, r: nint): nint =
+if i < n then loop(i+1, (i+1)*r) else r
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
