@@ -394,7 +394,7 @@ strm_vt$rst() = "..."
 //
 #impltmp
 <>(*tmp*)
-strm_vt$beg() = "$strm_vt("
+strm_vt$beg() = "strm_vt("
 //
 (* ****** ****** *)
 //
