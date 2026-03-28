@@ -26,6 +26,18 @@ pre2026_dats: \
 ./../DATS/pre2026.dats; \
 $(NODE) --stack-size=8801 $(XATSOPT_TCHECK01) $<
 ########################################################################
+all:: \
+pre2026_vt_sats
+pre2026_vt_sats: \
+./../SATS/VT/pre2026_vt.sats; \
+$(NODE) --stack-size=8801 $(XATSOPT_TCHECK01) $<
+########################################################################
+all:: \
+pre2026_vt_dats
+pre2026_vt_dats: \
+./../DATS/VT/pre2026_vt.dats; \
+$(NODE) --stack-size=8801 $(XATSOPT_TCHECK01) $<
+########################################################################
 ########################################################################
 XATSOPT_TCHECK01=\
 $(MYROOT)/xassets/JS/xatsopt/xatsopt_tcheck01_ats3_opt1.js

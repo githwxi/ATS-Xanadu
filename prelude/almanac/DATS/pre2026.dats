@@ -147,7 +147,6 @@ then strmcon_vt_nil(*0*) else
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 (*
 HX-2026-01-12:
 Given a sint i0,
@@ -155,6 +154,9 @@ sint_gte$strmize(i0)
 yields: (i0, i0+1, i0+2, ...)
 Mon Jan 12 01:30:34 AM EST 2026
 *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
@@ -171,6 +173,8 @@ f0(i0) =>
 $llazy(
 strxcon_vt_cons(i0, f0(i0-1)))
 //
+(* ****** ****** *)
+//
 #impltmp
 <(*tmp*)>
 sint_gte$strmize =
@@ -185,6 +189,8 @@ fix
 f0(i0) =>
 $llazy(
 strxcon_vt_cons(i0, f0(i0+1)))
+//
+(* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
