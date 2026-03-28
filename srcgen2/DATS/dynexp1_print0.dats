@@ -415,11 +415,11 @@ prints
 //
 |
 D1Efix0
-(tknd,fid0,f1as
+(tknd,dpid,f1as
 ,sres,arrw,d1e1) =>
 (
 prints
-("D1Efix0(",tknd,";",fid0,";");
+("D1Efix0(",tknd,";",dpid,";");
 prints
 (f1as,";",sres,";",arrw,";",d1e1,")"))
 //

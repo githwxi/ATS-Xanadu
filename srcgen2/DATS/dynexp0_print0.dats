@@ -377,12 +377,12 @@ prints(sres,";",arrw,";",body,";",tend,")"))
 //
 |
 D0Efix0
-(tknd,fid0
+(tknd,dpid
 ,farg,sres,arrw,body,tend) =>
 (
 print
 ("D0Efix0(");
-prints(tknd,";",fid0,";",farg,";");
+prints(tknd,";",dpid,";",farg,";");
 prints(sres,";",arrw,";",body,";",tend,")"))
 //
 |

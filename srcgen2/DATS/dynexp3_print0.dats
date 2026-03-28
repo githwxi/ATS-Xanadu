@@ -429,11 +429,11 @@ prints
 //
 |
 D3Efix0
-(tknd,fid0,f3as
+(tknd,dpid,f3as
 ,sres,arrw,body) =>
 (
 prints
-("D3Efix0(",tknd,";",fid0,";");
+("D3Efix0(",tknd,";",dpid,";");
 prints
 (f3as,";",sres,";",arrw,";",body,")"))
 //
