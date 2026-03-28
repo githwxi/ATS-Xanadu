@@ -58,61 +58,64 @@ i0parsed_of_trxd3i0
 #absvtbx envstk_vtbx // ptr
 #vwtpdef envstk = envstk_vtbx
 (* ****** ****** *)
+#absvtbx trxstk_vtbx // ptr
+#vwtpdef trxstk = trxstk_vtbx
+(* ****** ****** *)
 #absvtbx envd3i0_vtbx // p0tr
 #vwtpdef envd3i0 = envd3i0_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-envstk_getlvl0
-  ( stk0: !envstk ): sint
+trxstk_getlvl0
+  ( stk0: !trxstk ): sint
 //
 (* ****** ****** *)
 //
 fun
-envstk_free$top
-  ( env0: !envstk ): void
+trxstk_free$top
+  ( env0: !trxstk ): void
 //
 (* ****** ****** *)
 //
 fun
-envstk_fprint1
+trxstk_fprint1
 ( stk0:
-! envstk, out0: FILR): void
+! trxstk, out0: FILR): void
 //
 (* ****** ****** *)
 //
 fun
-envstk_pshlam0
-( stk0: &envstk >> _ ): void
+trxstk_pshlam0
+( stk0: &trxstk >> _ ): void
 fun
-envstk_pshlet0
-( stk0: &envstk >> _ ): void
+trxstk_pshlet0
+( stk0: &trxstk >> _ ): void
 //
 fun
-envstk_poplam0
-( stk0: &envstk >> _ ): void
+trxstk_poplam0
+( stk0: &trxstk >> _ ): void
 fun
-envstk_poplet0
-( stk0: &envstk >> _ ): void
-//
-(* ****** ****** *)
-//
-fun
-envstk_lamenv$get
-( stk0: !envstk ): i0varlst
+trxstk_poplet0
+( stk0: &trxstk >> _ ): void
 //
 (* ****** ****** *)
 //
 fun
-envstk_denv$insert
+trxstk_lamenv$get
+( stk0: !trxstk ): i0varlst
+//
+(* ****** ****** *)
+//
+fun
+trxstk_denv$insert
 ( stk0:
-& envstk >> _, ivar: i0var ): void
+& trxstk >> _, ivar: i0var ): void
 //
 fun
-envstk_i0vs$insert
+trxstk_i0vs$insert
 ( stk0:
-& envstk >> _, i0vs: i0varlst): void
+& trxstk >> _, i0vs: i0varlst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

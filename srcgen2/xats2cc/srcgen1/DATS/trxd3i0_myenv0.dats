@@ -103,26 +103,36 @@ local
 //
 datavwtp
 envstk =
-//
-|envstk_nil of ((*0*)) 
-//
+|envstk_nil of ((*0*))
 |envstk_lam0 of
 ( sint(*lvl0*), envstk ) 
-|envstk_let0 of (envstk) 
-//
-|envstk_denv of
-( i0var(*denv*), envstk )
-|envstk_ufld of
-( d2var(*lvrt*), i0typ, envstk)
+|envstk_cons of
+( d2var, i0varset, envstk)
 //
 (* ****** ****** *)
-#absimpl envstk_vtbx = (envstk)
+//
+datavwtp
+trxstk =
+//
+|trxstk_nil of ((*0*)) 
+//
+|trxstk_lam0 of
+( sint(*lvl0*), trxstk ) 
+|trxstk_let0 of (trxstk) 
+//
+|trxstk_denv of
+( i0var(*denv*), trxstk )
+|trxstk_ufld of
+( d2var(*lvrt*), i0typ, trxstk)
+//
+(* ****** ****** *)
+#absimpl trxstk_vtbx = (trxstk)
 (* ****** ****** *)
 //
 datavwtp
 envd3i0 =
 ENVD3I0 of
-(d2vstk, envstk)
+(d2vstk, trxstk)
 #absimpl envd3i0_vtbx = envd3i0
 //
 (* ****** ****** *)
@@ -130,37 +140,37 @@ in//local
 (* ****** ****** *)
 //
 #implfun
-envstk_getlvl0
+trxstk_getlvl0
   ( stk0 ) =
 (
   loop(stk0)) where
 {
 fun
 loop
-(stk0: !envstk): sint =
+(stk0: !trxstk): sint =
 (
 case+ stk0 of
 //
-|envstk_nil
+|trxstk_nil
 (   (*void*)   ) => ( 0 )
-|envstk_lam0
+|trxstk_lam0
 (
 lvl0, _(*stk0*)) => (lvl0)
 //
-|envstk_let0
+|trxstk_let0
 (      stk0      ) => loop(stk0)
-|envstk_denv
+|trxstk_denv
 (   ivar, stk0   ) => loop(stk0)
-|envstk_ufld//unfold
+|trxstk_ufld//unfold
 (dvar, ityp, stk0) => loop(stk0)
 )(*case+*)//end-of-[loop(stk0):sint]
-}(*where*)//end-of-[envstk_getlvl0(stk0)]
+}(*where*)//end-of-[trxstk_getlvl0(stk0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-envstk_free$top
+trxstk_free$top
   ( stk0 ) =
 (
    loop(stk0) )
@@ -168,52 +178,52 @@ where
 {
 //
 fun
-loop(stk0: envstk): void =
+loop(stk0: trxstk): void =
 (
 case- stk0 of
-|envstk_nil
+|trxstk_nil
 ( (*void*) ) => ()
 //
-|envstk_denv
+|trxstk_denv
 (ivar, stk1) => loop(stk1)
-|envstk_ufld
+|trxstk_ufld
 (dvar, ityp, stk1) => loop(stk1)
 //
-)(*case+*)//endof(loop(stk0:envstk))
+)(*case+*)//endof(loop(stk0:trxstk))
 //
-}(*where*)//endof(envstk_free$top(env0))
+}(*where*)//endof(trxstk_free$top(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-envstk_pshlam0
+trxstk_pshlam0
   (stk0) =
 (
 stk0 :=
 (
-  envstk_lam0(lvl0+1, stk0))
+  trxstk_lam0(lvl0+1, stk0))
 ) where
 {
-  val lvl0 = envstk_getlvl0(stk0)
-}(*where*)//end-of-[envstk_pshlam0(stk0)]
+  val lvl0 = trxstk_getlvl0(stk0)
+}(*where*)//end-of-[trxstk_pshlam0(stk0)]
 //
 #implfun
-envstk_pshlet0
+trxstk_pshlet0
   (stk0) =
 (
-  stk0 := envstk_let0( stk0 )
+  stk0 := trxstk_let0( stk0 )
 ) where
 {
 (*
-  val lvl0 = envstk_getlvl0(stk0)
+  val lvl0 = trxstk_getlvl0(stk0)
 *)
-}(*where*)//end-of-[envstk_pshlet0(stk0)]
+}(*where*)//end-of-[trxstk_pshlet0(stk0)]
 //
 (* ****** ****** *)
 //
 #implfun
-envstk_poplam0
+trxstk_poplam0
   (stk0) =
 (
   stk0 := loop(  stk0  )
@@ -222,29 +232,29 @@ envstk_poplam0
 //
 fun
 loop
-(stk0: envstk): envstk =
+(stk0: trxstk): trxstk =
 (
 case- stk0 of
 //
 | ~
-envstk_lam0
+trxstk_lam0
 (lvl0, stk1) => stk1
 //
 | ~
-envstk_denv
+trxstk_denv
 (ivar, stk1) => loop(stk1)
 | ~
-envstk_ufld
+trxstk_ufld
 (dvar, ityp, stk1) => loop(stk1)
 //
-)(*case+*)//end-of-[loop(stk0:envstk)]
+)(*case+*)//end-of-[loop(stk0:trxstk)]
 //
-}(*where*)//end-of-[envstk_poplam0(stk0)]
+}(*where*)//end-of-[trxstk_poplam0(stk0)]
 //
 (* ****** ****** *)
 //
 #implfun
-envstk_poplet0
+trxstk_poplet0
   (stk0) =
 (
   stk0 := loop(  stk0  )
@@ -253,24 +263,24 @@ envstk_poplet0
 //
 fun
 loop
-(stk0: envstk): envstk =
+(stk0: trxstk): trxstk =
 (
 case- stk0 of
 //
 | ~
-envstk_let0
+trxstk_let0
 (   stk1   ) => stk1
 //
 | ~
-envstk_denv
+trxstk_denv
 (ivar, stk1) => loop(stk1)
 | ~
-envstk_ufld
+trxstk_ufld
 (dvar, ityp, stk1) => loop(stk1)
 //
-)(*case+*)//end-of-[loop(stk0:envstk)]
+)(*case+*)//end-of-[loop(stk0:trxstk)]
 //
-}(*where*)//end-of-[envstk_poplet0(stk0)]
+}(*where*)//end-of-[trxstk_poplet0(stk0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -280,9 +290,9 @@ envd3i0_make_nil
   ((*void*)) =
 (
 ENVD3I0
-(d2vstk, envstk)) where
+(d2vstk, trxstk)) where
 {
-  val envstk = envstk_nil()
+  val trxstk = trxstk_nil()
   val d2vstk = stkmap_make_nil()
 }(*where*)//end-of-[envd3i0_make_nil()]
 //
@@ -296,7 +306,7 @@ val+
 ENVD3I0
 (
 ! d2vstk
-, envstk
+, trxstk
 ) = env0
 val nerr =
 stkmap_poptop0(d2vstk)
@@ -304,10 +314,10 @@ in//let
 (
 stkmap_free_nil(d2vstk)
 ;
-envstk_free$top(envstk)) where
+trxstk_free$top(trxstk)) where
 {
 val+
-~ENVD3I0(d2vstk, envstk) = env0
+~ENVD3I0(d2vstk, trxstk) = env0
 }(*where*)
 end(*let*)//end-of-(envd3i0_free_top())
 //
@@ -315,7 +325,7 @@ end(*let*)//end-of-(envd3i0_free_top())
 (* ****** ****** *)
 //
 #implfun
-envstk_lamenv$get
+trxstk_lamenv$get
   (  stk0  ) =
 list_vt2t
 (loop(stk0, i0vs))
@@ -331,51 +341,51 @@ i0vs = list_vt_nil(*0*)
 fun
 loop
 ( stk0:
-! envstk, i0vs: i0vs): i0vs =
+! trxstk, i0vs: i0vs): i0vs =
 (
 case- stk0 of
 //
 (*
-|envstk_nil
+|trxstk_nil
 ( (*void*) ) => i0vs
 *)
 //
-|envstk_lam0
+|trxstk_lam0
 (lvl0, stk1) => i0vs
 //
-|envstk_let0
+|trxstk_let0
 (   stk1   ) => loop(stk1, i0vs)
 //
-|envstk_denv
+|trxstk_denv
 (i0v1, stk1) =>
 let
 val i0vs =
 list_vt_cons
 (i0v1, i0vs) in loop(stk1, i0vs)
-end//let//end-of-[envstk_denv()]
+end//let//end-of-[trxstk_denv()]
 //
-|envstk_ufld
+|trxstk_ufld
 (d2v1
 ,ityp, stk1) => loop(stk1, i0vs)
 //
 )(*case+*)//end(loop(stk0,i0vs):i0vs)
 //
-}(*where*)//end(envstk_lamenv$get(stk0))
+}(*where*)//end(trxstk_lamenv$get(stk0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-envstk_denv$insert
+trxstk_denv$insert
   (stk0, ivar) =
 (
-stk0 := envstk_denv(ivar, stk0))
-//end-of-[envstk_denv$insert(stk0,ivar)]
+stk0 := trxstk_denv(ivar, stk0))
+//end-of-[trxstk_denv$insert(stk0,ivar)]
 //
 (* ****** ****** *)
 //
 #implfun
-envstk_i0vs$insert
+trxstk_i0vs$insert
   (stk0, i0vs) =
 (
 if
@@ -386,12 +396,12 @@ where
 {
 //
 val lvl0 =
-envstk_getlvl0(stk0)
+trxstk_getlvl0(stk0)
 //
 fun
 loop
 ( stk0:
-& envstk >> _
+& trxstk >> _
 , i0vs: i0varlst): void =
 (
 case+ i0vs of
@@ -400,7 +410,7 @@ list_nil() => ()
 |
 list_cons(i0v1, i0vs) =>
 (
-envstk_i0vs$insert(stk0, i0vs))
+trxstk_i0vs$insert(stk0, i0vs))
 where
 {
 //
@@ -412,9 +422,9 @@ val (  ) =
 if // if
 (lvl1 <= lvl0)
 then(
-envstk_denv$insert(stk0, i0v1))) }
+trxstk_denv$insert(stk0, i0v1))) }
 )(*case+*)//end[loop(stk0,i0vs):void]
-}(*where*)//end(envstk_i0vs$insert(...))
+}(*where*)//end(trxstk_i0vs$insert(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -423,11 +433,11 @@ envstk_denv$insert(stk0, i0v1))) }
 envd3i0_getlvl0
   ( env0 ) =
 (
-envstk_getlvl0(envstk))
+trxstk_getlvl0(trxstk))
 where
 {
 val+
-ENVD3I0(d2vstk, envstk) = (env0) }
+ENVD3I0(d2vstk, trxstk) = (env0) }
 (*where*)//end-of-(envd3i0_getlvl0(env0))
 //
 (* ****** ****** *)
@@ -439,11 +449,11 @@ let
 val nerr =
 stkmap_pshlam0(d2vstk)
 val (  ) =
-envstk_pshlam0(envstk)
+trxstk_pshlam0(trxstk)
 end where//end-of-(let)
 {
 val+
-ENVD3I0(!d2vstk, !envstk) = env0 }
+ENVD3I0(!d2vstk, !trxstk) = env0 }
 (*where*)//end-of-(envd3i0_pshlam0(env0))
 //
 #implfun
@@ -453,11 +463,11 @@ let
 val nerr =
 stkmap_pshlet0(d2vstk)
 val (  ) =
-envstk_pshlet0(envstk)
+trxstk_pshlet0(trxstk)
 end where//end-of-(let)
 {
 val+
-ENVD3I0(!d2vstk, !envstk) = env0 }
+ENVD3I0(!d2vstk, !trxstk) = env0 }
 (*where*)//end-of-(envd3i0_pshlet0(env0))
 //
 (* ****** ****** *)
@@ -469,11 +479,11 @@ let
 val nerr =
 stkmap_poplam0(d2vstk)
 val (  ) =
-envstk_poplam0(envstk)
+trxstk_poplam0(trxstk)
 end where//end-of-(let)
 {
 val+
-ENVD3I0(!d2vstk, !envstk) = env0 }
+ENVD3I0(!d2vstk, !trxstk) = env0 }
 (*where*)//end-of-(envd3i0_poplam0(env0))
 //
 #implfun
@@ -483,11 +493,11 @@ let
 val nerr =
 stkmap_poplet0(d2vstk)
 val (  ) =
-envstk_poplet0(envstk)
+trxstk_poplet0(trxstk)
 end where//end-of-(let)
 {
 val+
-ENVD3I0(!d2vstk, !envstk) = env0 }
+ENVD3I0(!d2vstk, !trxstk) = env0 }
 (*where*)//end-of-(envd3i0_poplet0(env0))
 //
 (* ****** ****** *)
@@ -497,13 +507,13 @@ ENVD3I0(!d2vstk, !envstk) = env0 }
 envd3i0_lamenv$get
   ( env0 ) =
 (
-envstk_lamenv$get
-(    envstk     ))
+trxstk_lamenv$get
+(    trxstk     ))
 where
 {
 //
 val+
-ENVD3I0(d2vstk, envstk) = ( env0 )
+ENVD3I0(d2vstk, trxstk) = ( env0 )
 //
 }(*where*)//end-of-(envd3i0_lamenv$get(...))
 //
@@ -548,7 +558,7 @@ stkmap_insert$any
 val sym1 = dvar.unam()
 //
 val+
-ENVD3I0(!d2vstk, envstk) = ( env0 )
+ENVD3I0(!d2vstk, trxstk) = ( env0 )
 }(*where*)//end-of-(envd3i0_dvar$insert(...))
 //
 (* ****** ****** *)
@@ -557,13 +567,13 @@ ENVD3I0(!d2vstk, envstk) = ( env0 )
 envd3i0_denv$insert
   (env0, ivar) =
 (
-envstk_denv$insert
-(  envstk, ivar  ))
+trxstk_denv$insert
+(  trxstk, ivar  ))
 where
 {
 //
 val+
-ENVD3I0(d2vstk, !envstk) = ( env0 )
+ENVD3I0(d2vstk, !trxstk) = ( env0 )
 //
 }(*where*)//end-of-(envd3i0_denv$insert(...))
 //
@@ -573,13 +583,13 @@ ENVD3I0(d2vstk, !envstk) = ( env0 )
 envd3i0_i0vs$insert
   (env0, i0vs) =
 (
-envstk_i0vs$insert
-(  envstk, i0vs  ))
+trxstk_i0vs$insert
+(  trxstk, i0vs  ))
 where
 {
 //
 val+
-ENVD3I0(d2vstk, !envstk) = ( env0 )
+ENVD3I0(d2vstk, !trxstk) = ( env0 )
 //
 }(*where*)//end-of-(envd3i0_denv$insert(...))
 //
