@@ -1452,7 +1452,7 @@ let
 val-
 D3Efix0
 (tknd
-,fid0
+,dpid
 ,f3as, sres
 ,arrw, d3e1) = d3e0.node()
 //
@@ -1471,11 +1471,14 @@ val (  ) = // HX: lvl0+1
 //
 val (  ) =
 envd3i0_dvar$insert
-( env0, fid0, ivar )
+( env0, dpid, ivar )
 where{
+val tfun = dpid.styp()
+val ityp =
+s2typ_trxd3i0(tfun, env0)
 val ivar =
 i0var_make_dvar$info
-(    fid0, lvl0+1, i0t0    )}
+(    dpid, lvl0+1, ityp    )}
 //
 val fias =
 (
@@ -1502,7 +1505,7 @@ i0exp
 loc0,
 i0t0,
 I0Efix0(lvl0,
-  tknd, fid0, fias, i0e1, i0vs)))
+  tknd, dpid, fias, i0e1, i0vs)))
 end//let
 //
 end(*let*)//end-of-[f0_fix0(d3e0,env0)]
