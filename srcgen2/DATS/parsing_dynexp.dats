@@ -1031,7 +1031,7 @@ let
 val tknd = tok
 val (  ) = buf.skip1()
 //
-val fid0 =
+val dpid =
   p1_d0pid(buf, err)
 val farg =
   p1_f0argseq(buf, err)
@@ -1059,7 +1059,7 @@ d0exp_make_node
 ( lres
 , D0Efix0
   ( tknd // fix|fix@
-  , fid0
+  , dpid
   , farg, sres, arrw, body, tend))
 end (*let*) // end of [ case-of(T_FIX(k0)) ]
 //
@@ -1071,7 +1071,7 @@ in
   d0exp_make_node(tok.lctn(), D0Etkerr(tok))
 end (*let*) // HX: indicating a parsing error
 //
-end (*let*) // end of [fun-p1_napp(buf, err)]
+end (*let*) // end of [fun@p1_napp(buf, err)]
 
 (* ****** ****** *)
 in(* in-of-local *)
@@ -2632,15 +2632,16 @@ val tok = buf.getk0()
 val tnd = tok.tnode()
 //
 in//let
-if
+if // if
 ntk(tnd)
-then
+then//then
 p1_d0exp_atm(buf, err)
-else
+else//else
 let
 val () =
 (err := e00 + 1) in//let
-d0exp(tok.lctn(), D0Etkerr(tok))
+d0exp(
+tok.lctn(), D0Etkerr(tok))
 end (*let*) // end of [else]
 end (*let*) // end of [p1_ntk]
 //
@@ -2912,7 +2913,7 @@ d0exp_make_node
 , D0Elam0
   ( tknd // lam|lam@
   , farg, sres, arrw, body, tend))
-end(*let*)//end(fk_lam0(tok,buf,err))
+end(*let*)//end(pk_lam0(tok,buf,err))
 //
 fun
 pk_fix0
@@ -2929,7 +2930,7 @@ val e00 = err
 val tknd = tok
 val (  ) = buf.skip1()
 //
-val fid0 =
+val dpid =
   p1_d0pid(buf, err)
 val farg =
   p1_f0argseq(buf, err)
@@ -2955,15 +2956,15 @@ d0exp_make_node
 ( lres
 , D0Efix0
   ( tknd // fix|fix@
-  , fid0
+  , dpid
   , farg, sres, arrw, body, tend))
-end(*let*)//end(fk_fix0(tok,buf,err))
+end(*let*)//end(pk_fix0(tok,buf,err))
 //
 in//let
 //
 let
 val tok = buf.getk0()
-in
+in//let
 case+
 tok.node() of
 |

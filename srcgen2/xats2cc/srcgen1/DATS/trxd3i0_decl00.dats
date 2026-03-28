@@ -518,6 +518,14 @@ val (  ) =
 (
   envd3i0_pshlam0(env0))
 //
+val (  ) =
+envd3i0_dvar$insert
+( env0, dpid, ivar )
+where{
+val ivar =
+i0var_make_dvar$info
+(   dpid, lvl0+1, i0t0   )}
+//
 val fias =
 f3arglst_trxd3i0(f3as, env0)
 val tdxp =

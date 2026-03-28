@@ -568,12 +568,12 @@ prints
 |
 D2Efix0
 ( tknd
-, fid0
+, dpid
 , f2as, sres
 , arrw, body) =>
 (
 prints
-("D2Efix0(",tknd,";",fid0,";");
+("D2Efix0(",tknd,";",dpid,";");
 prints
 (f2as,";",sres,";",arrw,";",body,")"))
 //
