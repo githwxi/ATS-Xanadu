@@ -378,7 +378,10 @@ stk0 := envstk_denv(ivar, stk0))
 envstk_i0vs$insert
   (stk0, i0vs) =
 (
-loop(stk0, i0vs))
+if
+(lvl0 >= 1)
+then(
+loop(stk0, i0vs)))
 where
 {
 //
