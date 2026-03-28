@@ -392,12 +392,18 @@ val (  ) = envd3i0_poplam0(env0)
 //
 in//let
 //
+let
+val (  ) =
+(
+  envd3i0_i0vs$insert(env0, i0vs))
+in//let
 (
 i0dcl_make_node
 (
 loc0,
 I0Dimplmnt0(
   tknd,lvl0,stmp,dimp,fias,dexp,i0vs)))
+end//let
 //
 end where // end-of-[f0_implmnt0(d3cl,env0)]
 {
@@ -456,8 +462,7 @@ teqd3exp_trxd3i0(tdxp, env0)
 in//let
 (
   i0valdcl_make_args(loc0,ipat,tdxp))
-end//let
-(*let*)//end-of-[d3valdcl_trxd3i0(dval,env0)]
+end(*let*)//end(d3valdcl_trxd3i0(dval,env0))
 //
 (* ****** ****** *)
 //
@@ -478,8 +483,7 @@ teqd3exp_trxd3i0(dini, env0)
 in//let
 (
   i0vardcl_make_args(loc0,dpid,dini))
-end//let
-(*let*)//end-of-[d3vardcl_trxd3i0(dvar,env0)]
+end(*let*)//end(d3vardcl_trxd3i0(dvar,env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -534,11 +538,18 @@ val (  ) = prerrsln
 *)
 //
 in//let
+//
+let
+val (  ) =
+(
+  envd3i0_i0vs$insert(env0, i0vs))
+in//let
 (
 i0fundcl_make_args(
   loc0, lvl0, dpid, fias, tdxp, i0vs))
 end//let
-(*let*)//end-of-[d3fundcl_trxd3i0(dfun,env0)]
+//
+end(*let*)//end(d3fundcl_trxd3i0(dfun,env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
