@@ -480,9 +480,22 @@ d3vardcl_get_dini(dvar)
 val dini =
 teqd3exp_trxd3i0(dini, env0)
 //
-in//let
+val (  ) =
+envd3i0_dvar$insert
+( env0, dpid, ivar )
+where{
+val lvl0 =
 (
-  i0vardcl_make_args(loc0,dpid,dini))
+envd3i0_getlvl0(env0))
+val tvar = dpid.styp()
+val ityp =
+s2typ_trxd3i0(tvar, env0)
+val ivar =
+i0var_make_dvar$info(dpid,lvl0,ityp)
+}(*where*)//end(envd3i0_dvar$insert)
+//
+in//let
+  i0vardcl_make_args(loc0, dpid, dini)
 end(*let*)//end(d3vardcl_trxd3i0(dvar,env0))
 //
 (* ****** ****** *)
@@ -490,25 +503,8 @@ end(*let*)//end(d3vardcl_trxd3i0(dvar,env0))
 //
 #implfun
 d3fundcl_trxd3i0
-  (dfun, env0) = let
-//
-val loc0 =
-d3fundcl_get_lctn(dfun)
-//
-val dpid =
-d3fundcl_get_dpid(dfun)
-val f3as =
-d3fundcl_get_farg(dfun)
-//
-val tdxp =
-d3fundcl_get_tdxp(dfun)
-//
-(*
-val (  ) = prerrsln
-("d3fundcl_trxd3i0: f3as = ", f3as)
-val (  ) = prerrsln
-("d3fundcl_trxd3i0: tdxp = ", tdxp)
-*)
+  (dfun, env0) =
+let
 //
 val lvl0 =
 (
@@ -522,9 +518,12 @@ val (  ) =
 envd3i0_dvar$insert
 ( env0, dpid, ivar )
 where{
+val tfun = dpid.styp()
+val ityp =
+s2typ_trxd3i0(tfun, env0)
 val ivar =
 i0var_make_dvar$info
-(   dpid, lvl0+1, i0t0   )}
+(   dpid, lvl0+1, ityp   )}
 //
 val fias =
 f3arglst_trxd3i0(f3as, env0)
@@ -538,13 +537,6 @@ val (  ) =
 (
   envd3i0_poplam0(   env0   ))
 //
-(*
-val (  ) = prerrsln
-("d3fundcl_trxd3i0: f3as = ", f3as)
-val (  ) = prerrsln
-("d3fundcl_trxd3i0: tdxp = ", tdxp)
-*)
-//
 in//let
 //
 let
@@ -557,7 +549,26 @@ i0fundcl_make_args(
   loc0, lvl0, dpid, fias, tdxp, i0vs))
 end//let
 //
-end(*let*)//end(d3fundcl_trxd3i0(dfun,env0))
+end where
+{
+//
+val loc0 = d3fundcl_get_lctn(dfun)
+val dpid = d3fundcl_get_dpid(dfun)
+val f3as = d3fundcl_get_farg(dfun)
+val tdxp = d3fundcl_get_tdxp(dfun)
+//
+(*
+val (  ) =
+prerrsln("d3fundcl_trxd3i0: loc0 = ", loc0)
+val (  ) =
+prerrsln("d3fundcl_trxd3i0: dpid = ", dpid)
+val (  ) =
+prerrsln("d3fundcl_trxd3i0: f3as = ", f3as)
+val (  ) =
+prerrsln("d3fundcl_trxd3i0: tdxp = ", tdxp)
+*)
+//
+}(*where*)//endof(d3fundcl_trxd3i0(dfun,env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
