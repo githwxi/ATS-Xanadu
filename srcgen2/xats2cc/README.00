@@ -1,19 +1,25 @@
-############################################################
-############################################################
+##################################################################
+##################################################################
 This project attempts to implement a compiler from
 ATS3 to CC (that is, C/C++).
-############################################################
+##################################################################
 HX-2026-02-22: Compiling to C!
 I have just started the phase of compiling ATS3 to C.
 Compared to compiling to JS, compiling to C additionally requires
 handling of types (for data) and closure formation (for functions).
-############################################################
+##################################################################
 HX-2026-03-11:
+#
 I went ahead to use XSYNCPY for implementing XATS2CC. Soon I
-realized that XSYNCPY does not yet handle template resolution
-and this had to abandon the implementation. As of now, I plan
+realized that XSYNCPY does not yet handle template resolution,
+causing me to abandon the implementation. As of now, I plan
 to implement XATS2CC based on the systax tree obtained immediately
 after trtmp3a and trtmp3b.
+#
 One significant issue that needs to be dealt with is the handling
 of constructor projection (D3Epcon).
-############################################################
+##################################################################
+HX-2026-03-28:
+See ATS3-Xanadu/srcgen2/xats2cc for the work on closure formation.
+##################################################################
+##################################################################
