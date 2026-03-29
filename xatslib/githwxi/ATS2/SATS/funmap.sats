@@ -155,6 +155,13 @@ foritm with funmap_keyval$foritm of 1000
 fun
 <key:t0>
 <itm:t0>
+funmap_search$tst
+(
+map:
+fmap(key, itm), k0: key): (bool)
+fun
+<key:t0>
+<itm:t0>
 funmap_search$any
 (
 map:
