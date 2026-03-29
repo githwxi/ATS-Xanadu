@@ -392,6 +392,11 @@ gte_i0_i0: (i0, i0) -> b0
 #stacst0
 neq_i0_i0: (i0, i0) -> b0
 //
+#stacst0
+max_i0_i0: (i0, i0) -> i0
+#stacst0
+min_i0_i0: (i0, i0) -> i0
+//
 #sexpdef < = lt_i0_i0 // overloading
 #sexpdef > = gt_i0_i0 // overloading
 #sexpdef = = eq_i0_i0 // overloading
@@ -399,6 +404,9 @@ neq_i0_i0: (i0, i0) -> b0
 #sexpdef <= = lte_i0_i0 // overloading
 #sexpdef >= = gte_i0_i0 // overloading
 #sexpdef != = neq_i0_i0 // overloading
+//
+#sexpdef max = max_i0_i0 // overloading
+#sexpdef min = min_i0_i0 // overloading
 //
 (* ****** ****** *)(* ****** ****** *)
 //
