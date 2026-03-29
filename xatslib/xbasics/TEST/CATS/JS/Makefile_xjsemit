@@ -34,10 +34,10 @@ testxx_mydebug.dats; \
 $(NODE)  --stack-size=8001  $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
 ########################################################################
 ########################################################################
-testall:: test00; $(NODE) $<_out.js
-testall:: test01; $(NODE) $<_out.js
-testall:: test02; $(NODE) $<_out.js
-testall:: test99; $(NODE) $<_out.js
+testall:: test00; $(NODE) OUTS/$<_out.js
+testall:: test01; $(NODE) OUTS/$<_out.js
+testall:: test02; $(NODE) OUTS/$<_out.js
+testall:: test99; $(NODE) OUTS/$<_out.js
 ########################################################################
 testall1:: test00; $(NODE) $<_out1.js
 ########################################################################
