@@ -417,9 +417,11 @@ fun
 <x0:vt>
 strm_vt_all$print0(xs: strm_vt(x0)): void
 //
+(*
 fun
 <(*0*)>
 strm_vt$print$len(): ( sint ) // HX: all: -1
+*)
 fun
 <x0:vt>
 strm_vt_len$print0(xs: strm_vt(x0), ln: sint): void

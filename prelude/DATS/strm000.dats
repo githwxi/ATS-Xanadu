@@ -114,25 +114,6 @@ gseq$rst
 gseq$beg
 <strm(x0)><x0>() = "strm("
 //
-(*
-#impltmp
-{ x0:t0 }
-gseq$beg
-<strm(x0)><x0> = strm$beg<>
-#impltmp
-{ x0:t0 }
-gseq$end
-<strm(x0)><x0> = strm$end<>
-#impltmp
-{ x0:t0 }
-gseq$sep
-<strm(x0)><x0> = strm$sep<>
-#impltmp
-{ x0:t0 }
-gseq$rst
-<strm(x0)><x0> = strm$rst<>
-*)
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -297,9 +278,15 @@ strm$beg() = "strm("
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <>(*tmp*)
 strm$print$len() = (10)
+*)
+#impltmp
+{ x0:t0 }
+gseq$prlen
+<strm(x0)><x0>() = ( 10 )
 //
 (* ****** ****** *)
 //
@@ -307,8 +294,9 @@ strm$print$len() = (10)
 <x0>(*tmp*)
 strm_print(xs) =
 let
-val len = 
-strm$print$len<>()
+val len =
+gseq$prlen
+<strm(x0)><x0>((*0*))
 in//let
 if
 (len < 0)
@@ -328,12 +316,28 @@ loop
 (xs, 0(*i0*)) where
 {
 val () =
-pstrn(strmbeg(*0*))
+(
+pstrn(strmbeg(*0*)))
 }
 ) where
 {
+//
 #typedef
 xs = strm(x0)
+//
+val
+strmbeg =
+gseq$beg<xs><x0>()
+val
+strmsep =
+gseq$sep<xs><x0>()
+val
+strmrst =
+gseq$rst<xs><x0>()
+val
+strmend =
+gseq$end<xs><x0>()
+//
 fnx
 loop
 ( xs: xs
@@ -376,7 +380,7 @@ xs, 0(*i0*)) where
 {
 val () =
 (
-pstrn(strmbeg(*0*))
+pstrn(strmbeg(*0*)))
 }
 ) where
 {

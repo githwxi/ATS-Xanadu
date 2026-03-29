@@ -58,7 +58,6 @@ strm_vt$sep() = ","
 #impltmp
 <>(*tmp*)
 strm_vt$rst() = "..."
-//
 #impltmp
 <>(*tmp*)
 strm_vt$beg() = "$strm_vt("
