@@ -35,24 +35,23 @@ Sat Mar 28 09:24:42 PM EDT 2026
 (* ****** ****** *)
 
 (* Author: Hongwei Xi *)
-(* Authoremail: hwxi AT cs DOT bu DOT edu *)
+(* Authoremail:
+   hwxi AT cs DOT bu DOT edu *)
 (* Start time: December, 2012 *)
 
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
-HX-2012-12:
-for maps associating keys with items
-of types [key] and [itm], respectively
+HX-2012-12: For maps
+associating keys with items of
+types [key] and [itm], respectively
 *)
 //
 #abstype
-fmap_tbox
-(key:type
-,itm:type+) = p0tr // HX: boxed
-#sexpdef
-fmap(key:t0,itm:t0) = fmap_tbox(key,itm)
+fmap_tbox // HX: boxed
+(key:type,itm:type+) <= p0tr
+#sexpdef fmap = fmap_tbox(*key,itm*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -60,31 +59,35 @@ fmap(key:t0,itm:t0) = fmap_tbox(key,itm)
 fun
 <key:t0>
 equal_key_key
-(x1: key, x2: key): bool
+(k1: key, k2: key): bool
 fun
 <key:t0>
 compare_key_key
-(x1: key, x2: key): sint
+(k1: key, k2: key): sint
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
 funmap_nil
-{key,itm:t0}((*0*)): fmap(key, itm)
+{key,itm:t0}
+((*void*)): fmap(key, itm)
 fun<>
 funmap_make_nil
-{key,itm:t0}((*0*)): fmap(key, itm)
+{key,itm:t0}
+((*void*)): fmap(key, itm)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
 funmap_nilq
-{key,itm:t0}(map:fmap(key,itm)): bool
+{key,itm:t0}
+(map: fmap(key,itm)): bool
 fun<>
 funmap_consq
-{key,itm:t0}(map:fmap(key,itm)): bool
+{key,itm:t0}
+(map: fmap(key,itm)): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -92,7 +95,8 @@ funmap_consq
 fun
 <key:t0>
 <itm:t0>
-funmap_size(map: fmap(key, itm)): nint
+funmap_size
+(map: fmap(key, itm)): nint
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -101,8 +105,7 @@ fun
 <key:t0>
 <itm:t0>
 funmap_keyval$print
-(
-map: fmap(key, itm)): void
+(map: fmap(key, itm)): void
 #symload print with funmap_keyval$print
 //
 (* ****** ****** *)
@@ -112,15 +115,17 @@ fun
 <itm:t0>
 funmap_key$strmize
 (
-map: fmap(key, itm)): stream_vt(key)
+map: fmap(key, itm)): strm_vt(key)
 //
 fun
 <key:t0>
 <itm:t0>
 funmap_keyval$strmize
 (
-map: fmap(key, itm)): stream_vt(@(key,itm))
-#symload strmize with funmap_keyval$strmize
+map:
+fmap(key, itm)): strm_vt(@(key,itm))
+#symload strmize
+  with funmap_keyval$strmize of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -144,77 +149,124 @@ foritm with funmap_keyval$foritm of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<key:t0>
+<itm:t0>
+funmap_search$any
+(
+map:
+fmap(key, itm), k0: key): itm(*found*)
+fun
+<key:t0>
+<itm:t0>
+funmap_search$opt
+(
+map:
+fmap(key, itm), k0: key): optn_vt(itm)
+//
+(* ****** ****** *)
+//
+fun
+<key:t0>
+<itm:t0>
+funmap_insert$any
+(
+map:
+fmap
+(key, itm), k0: key, x0: itm): fmap(key,itm)
+fun
+<key:t0>
+<itm:t0>
+funmap_insert$opt
+(
+map:
+fmap(key, itm),
+k0: key, x0: itm): (fmap(key,itm), optn_vt(itm))
+//
+fun
+<key:t0>
+<itm:t0>
+funmap$cbr_insert$any
+(
+map: &
+fmap
+(key, itm) >> _, k0: key, x0: itm): (  void  )
+fun
+<key:t0>
+<itm:t0>
+funmap$cbr_insert$opt
+(
+map: &
+fmap(key, itm) >> _, k0: key, x0: itm): optn_vt(itm)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<key:t0>
+<itm:t0>
+funmap_remove$any
+(
+map:
+fmap
+(key, itm), k0: key): fmap(key,itm)
+fun
+<key:t0>
+<itm:t0>
+funmap_remove$opt
+(
+map:
+fmap
+(key, itm), k0: key): (fmap(key,itm),bool)
+//
+fun
+<key:t0>
+<itm:t0>
+funmap$cbr_remove$any
+(
+map: &fmap(key, itm) >> _, k0: key): (void)
+fun
+<key:t0>
+<itm:t0>
+funmap$cbr_remove$opt
+(
+map: &fmap(key, itm) >> _, k0: key): (bool)
+//
+(* ****** ****** *)
+//
+fun
+<key:t0>
+<itm:t0>
+funmap_getout$any
+(
+map:
+fmap
+(key, itm), k0: key): (fmap(key,itm), itm)
+fun
+<key:t0>
+<itm:t0>
+funmap_getout$opt
+(
+map:
+fmap
+(key, itm), k0: key): (fmap(key,itm),optn_vt(itm))
+//
+fun
+<key:t0>
+<itm:t0>
+funmap$cbr_getout$any
+(
+map: &fmap(key, itm) >> _, k0: key): ( itm )
+fun
+<key:t0>
+<itm:t0>
+funmap$cbr_getout$opt
+(
+map: &fmap(key, itm) >> _, k0: key): optn_vt( itm )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_githwxi_ATS2_SATS_funmap.sats] *)
 (***********************************************************************)
-////
-fun{
-key,itm:t0p
-} funmap_search
-(
-  fmap: fmap(key, INV(itm))
-, key: key, res: &itm? >> opt(itm, b)
-) : #[b:bool] bool(b)
-
-fun{
-key,itm:t0p
-} funmap_search_opt
-  (fmap: fmap(key, INV(itm)), k0: key): Option_vt(itm)
-// end of [funmap_search_opt]
-
-(* ****** ****** *)
-//
-// HX-2012-12:
-// if [k0] occurs in [fmap], [x0] replaces the
-// item associated with [k0] in [fmap] while the
-// item is stored in [res] instead.
-//
-fun{
-key,itm:t0p
-} funmap_insert
-(
-  fmap: &fmap(key, INV(itm)) >> _
-, key: key, itm: itm, res: &itm? >> opt(itm, b)
-) : #[b:bool] bool(b)
-
-fun{
-key,itm:t0p
-} funmap_insert_opt
-(
-  fmap: &fmap(key, INV(itm)) >> _, k0: key, x0: itm
-) : Option_vt(itm) // endfun
-
-(* ****** ****** *)
-//
-// HX-2012-12:
-// insertion always happens regardless whether
-// [k0] is associated with some item in [fmap]
-//
-fun{
-key,itm:t0p
-} funmap_insert_any
-  (fmap: &fmap(key, INV(itm)) >> _, k0: key, x0: itm): void
-// end of [funmap_insert_any]
-
-(* ****** ****** *)
-//
-fun{
-key,itm:t0p
-} funmap_takeout (
-  &fmap(key, INV(itm)) >> _, k0: key, res: &itm? >> opt (itm, b)
-) : #[b:bool] bool (b) // end-of-function
-//
-fun{
-key,itm:t0p
-} funmap_takeout_opt
-  (fmap: &fmap(key, INV(itm)) >> _, k0: key) : Option_vt (itm)
-//
-(* ****** ****** *)
-
-fun{
-key,itm:t0p
-} funmap_remove
-  (fmap: &fmap(key, INV(itm)) >> _, k0: key): bool
-// end of [funmap_remove]
-
-(* ****** ****** *)
