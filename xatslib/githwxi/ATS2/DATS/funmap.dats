@@ -120,6 +120,38 @@ funmap_key$strmize<key><itm>(map)))
 #impltmp
 <key:t0>
 <itm:t0>
+funmap_search$tst
+(   kxs, k0   ) =
+(
+case+ opt of
+| ~optn_vt_nil() => false
+| ~optn_vt_cons(x0) => true)
+where
+{
+val opt =
+funmap_search$opt<key><itm>(kxs, k0)
+}(*where*)//end(funmap_search$tst(...))
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmap_search$any
+(   kxs, k0   ) =
+(
+case- opt of
+| ~optn_vt_cons(x0) => ( x0 ))
+where
+{
+val opt =
+funmap_search$opt<key><itm>(kxs, k0)
+}(*where*)//end(funmap_search$any(...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<key:t0>
+<itm:t0>
 funmap_keyval$print
 (     map     ) =
 (
@@ -138,7 +170,7 @@ val kxs =
 funmap_keyval$strmize
 <   key   ><   itm   >(   map   ))
 //
-}(*where*)//end(funmap_keyval$print)
+}(*where*)//end(funmap_keyval$print(map))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -153,7 +185,7 @@ gseq_strmize
 (key,itm)>
 (     map     ) =
 (
-funmap_keyval$strmize<key><itm>(map))
+  funmap_keyval$strmize<key><itm>(map))
 //
 #impltmp
 {key:t0}
@@ -164,7 +196,7 @@ gmap_keyval$strmize
 <key><itm>
 (     map     ) =
 (
-funmap_keyval$strmize<key><itm>(map))
+  funmap_keyval$strmize<key><itm>(map))
 //
 (* ****** ****** *)
 //
@@ -175,12 +207,12 @@ funmap_key$strmize
 (     map     ) =
 (
 strm_vt_map0<kx><k0>(
-funmap_keyval$strmize<key><itm>(map)))
+  funmap_keyval$strmize<key><itm>(map)))
 where
 {
 #typedef k0 = key
 #typedef kx = @(key, itm)
-#impltmp map$fopr0<kx><k0>(kx) = (kx.0)
+#impltmp map$fopr0<kx><k0>(kx) = ( kx.0 )
 }(*where*)//end-of-[funmap_key$strmize(map)]
 //
 (* ****** ****** *)
@@ -207,7 +239,7 @@ gseq_foritm<fmap(key,itm)><t0up(key,itm)>(map)
 <key:t0>
 <itm:t0>
 funmap_insert$any
-(   kxs, k0, x0   ) =
+( kxs, k0, x0 ) =
 (
 case- opt of
 | ~
@@ -247,7 +279,7 @@ funmap_insert$opt
 <key:t0>
 <itm:t0>
 funmap_remove$any
-(     kxs, k0     ) =
+(   kxs, k0   ) =
 (
 case- opt of true => kxs)
 where
@@ -285,7 +317,7 @@ funmap_remove$opt
 <key:t0>
 <itm:t0>
 funmap_getout$any
-(     kxs, k0     ) =
+(   kxs, k0   ) =
 (
 case- opt of
 | ~
