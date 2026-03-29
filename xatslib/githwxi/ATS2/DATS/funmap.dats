@@ -291,6 +291,23 @@ funmap_remove$opt< key >< itm >(kxs, k0)
 #impltmp
 <key:t0>
 <itm:t0>
+funmap_remove$opt
+(   kxs, k0   ) =
+(
+case- opt of
+| ~
+optn_vt_nil() => (kxs, false)
+| ~
+optn_vt_cons(x0) => (kxs, true))
+where
+{
+val (kxs, opt) =
+funmap_getout$opt< key >< itm >(kxs, k0)
+}(*where*)//end(funmap_remove$opt(kxs,k0))
+//
+#impltmp
+<key:t0>
+<itm:t0>
 funmap$cbr_remove$any
 (     map, k0     ) =
 let
@@ -327,6 +344,35 @@ where
 val (kxs, opt) =
 funmap_getout$opt< key >< itm >(kxs, k0)
 }(*where*)//end(funmap_getout$any(kxs,k0))
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmap_getout$opt
+(   kxs, k0   ) =
+let
+//
+val opt =
+funmap_search$opt<key><itm>(kxs, k0)
+//
+in//let
+//
+case+ opt of
+|
+optn_vt_nil
+(  (*0*)  ) => (kxs, opt)
+|
+optn_vt_cons
+(    x0    ) =>
+(
+  kxs, opt ) where
+{
+val kxs =
+funmap_remove$any<key><itm>(kxs, k0) }
+//
+end(*let*)//end(funmap_getout$opt(kxs,k0))
+//
+(* ****** ****** *)
 //
 #impltmp
 <key:t0>

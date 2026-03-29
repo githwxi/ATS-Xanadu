@@ -84,7 +84,7 @@ funmmap_consq
 <key:t0>
 <itm:t0>
 funmmap_search$tst
-(   kxs, k0   ) =
+(   map, k0   ) =
 (
 case+ opt of
 | ~optn_vt_nil() => false
@@ -92,21 +92,21 @@ case+ opt of
 where
 {
 val opt =
-funmmap_search$opt<key><itm>(kxs, k0)
+funmmap_search$opt<key><itm>(map, k0)
 }(*where*)//end(funmmap_search$tst(...))
 //
 #impltmp
 <key:t0>
 <itm:t0>
 funmmap_search$any
-(   kxs, k0   ) =
+(   map, k0   ) =
 (
 case- opt of
 | ~optn_vt_cons(x0) => ( x0 ))
 where
 {
 val opt =
-funmmap_search$opt<key><itm>(kxs, k0)
+funmmap_search$opt<key><itm>(map, k0)
 }(*where*)//end(funmmap_search$any(...))
 //
 (* ****** ****** *)
@@ -203,16 +203,16 @@ gseq_foritm<fmmap(key,itm)><t0up(key,itm)>(map)
 <key:t0>
 <itm:t0>
 funmmap_insert$any
-( kxs, k0, x0 ) =
+( map, k0, x0 ) =
 (
 case- opt of
 | ~
-optn_vt_nil((*0*)) => kxs)
+optn_vt_nil((*0*)) => map)
 where
 {
-val (kxs, opt) =
-funmmap_insert$opt< key >< itm >(kxs, k0, x0)
-}(*where*)//end(funmmap_insert$any(kxs,k0,x0))
+val (map, opt) =
+funmmap_insert$opt< key >< itm >(map, k0, x0)
+}(*where*)//end(funmmap_insert$any(map,k0,x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -221,14 +221,31 @@ funmmap_insert$opt< key >< itm >(kxs, k0, x0)
 <key:t0>
 <itm:t0>
 funmmap_remove$any
-(   kxs, k0   ) =
+(   map, k0   ) =
 (
-case- opt of true => kxs)
+case- opt of true => map)
 where
 {
-val (kxs, opt) =
-funmmap_remove$opt< key >< itm >(kxs, k0)
-}(*where*)//endof(funmmap_remove$any(kxs,k0))
+val (map, opt) =
+funmmap_remove$opt< key >< itm >(map, k0)
+}(*where*)//endof(funmmap_remove$any(map,k0))
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmmap_remove$opt
+(   map, k0   ) =
+(
+case- opt of
+| ~
+optn_vt_nil() => (map, false)
+| ~
+optn_vt_cons(x0) => (map, true))
+where
+{
+val (map, opt) =
+funmmap_getout$opt< key >< itm >(map, k0)
+}(*where*)//end(funmmap_remove$opt(map,k0))
 //
 (* ****** ****** *)
 //
@@ -236,16 +253,43 @@ funmmap_remove$opt< key >< itm >(kxs, k0)
 <key:t0>
 <itm:t0>
 funmmap_getout$any
-(   kxs, k0   ) =
+(   map, k0   ) =
 (
 case- opt of
 | ~
-optn_vt_cons( x0 ) => (kxs, x0))
+optn_vt_cons( x0 ) => (map, x0))
 where
 {
-val (kxs, opt) =
-funmmap_getout$opt< key >< itm >(kxs, k0)
-}(*where*)//endof(funmmap_getout$any(kxs,k0))
+val (map, opt) =
+funmmap_getout$opt< key >< itm >(map, k0)
+}(*where*)//endof(funmmap_getout$any(map,k0))
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmmap_getout$opt
+(   map, k0   ) =
+let
+//
+val opt =
+funmmap_search$opt<key><itm>(map, k0)
+//
+in//let
+//
+case+ opt of
+|
+optn_vt_nil
+(  (*0*)  ) => (map, opt)
+|
+optn_vt_cons
+(    x0    ) =>
+(
+  map, opt ) where
+{
+val map =
+funmmap_remove$any<key><itm>(map, k0) }
+//
+end(*let*)//end(funmmap_getout$opt(map,k0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
