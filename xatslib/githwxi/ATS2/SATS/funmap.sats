@@ -3,6 +3,9 @@
 //
 HX-2026-03-28: Porting ATS2!!!
 Sat Mar 28 09:24:42 PM EDT 2026
+The ported code was written in ATS2
+around year 2012 before Chole was born;
+it was probably ported from ATS1 earlier.
 //
 *)
 (***********************************************************************)

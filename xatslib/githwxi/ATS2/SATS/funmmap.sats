@@ -29,90 +29,147 @@
 (* ****** ****** *)
 (*
 Author: Hongwei Xi
-Sun Mar 29 11:30:05 AM EDT 2026
+Sun Mar 29 01:04:45 PM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#if
-defq(
-_FUNMAP_DETMP00_)
-#then
 (*
-#typedef key = ???
-#typedef itm = ???
+HX-2026-03-29:
+For multi-maps (mmaps)
+associating keys with items of
+types [key] and [itm], respectively.
+Note that a key can be associated
+with multiple items in a multi-map.
 *)
-#else
 //
-#abstype key_type
-#abstype itm_type
-#typedef key = key_type
-#typedef itm = itm_type
-//
-#endif//end-of-(#ifdefq(_DETMP_))
+#abstype
+fmmap_tbox // HX: boxed
+(key:type,itm:type+) <= p0tr
+#sexpdef fmmap = fmmap_tbox(*key,itm*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../SATS/funmap.sats"
-//
-#typedef fmap = fmap(key, itm)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload "./funmap_avltree.dats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#extern
 fun
-funmap_search$opt__
-(map: fmap, k0: key): optn_vt(itm)
-#implfun
-funmap_search$opt__ = funmap_search$opt<key><itm>
-#impltmp
-funmap_search$opt<key><itm> = funmap_search$opt__
+<key:t0>
+equal_key_key
+(k1: key, k2: key): bool
+fun
+<key:t0>
+compare_key_key
+(k1: key, k2: key): sint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+funmmap_nil
+{key,itm:t0}
+((*void*)): fmmap(key, itm)
+fun<>
+funmmap_make_nil
+{key,itm:t0}
+((*void*)): fmmap(key, itm)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+funmmap_nilq
+{key,itm:t0}
+(map: fmmap(key,itm)): bool
+fun<>
+funmmap_consq
+{key,itm:t0}
+(map: fmmap(key,itm)): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<key:t0>
+<itm:t0>
+funmmap_size
+(map: fmmap(key, itm)): nint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<key:t0>
+<itm:t0>
+funmmap_keyval$print
+(map: fmmap(key, itm)): void
+#symload print with funmmap_keyval$print
 //
 (* ****** ****** *)
 //
-#extern
 fun
-funmap_insert$opt__
-( map
-: fmap
-, k0: key, x0: itm): (fmap, optn_vt(itm))
-#implfun
-funmap_insert$opt__ = funmap_insert$opt<key><itm>
-#impltmp
-funmap_insert$opt<key><itm> = funmap_insert$opt__
+<key:t0>
+<itm:t0>
+funmmap_key$strmize
+(
+map: fmmap(key, itm)): strm_vt(key)
+//
+fun
+<key:t0>
+<itm:t0>
+funmmap_keyval$strmize
+(
+map:
+fmmap(key, itm)): strm_vt(@(key,itm))
+#symload strmize
+  with funmmap_keyval$strmize of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-#extern
 fun
-funmap_remove$opt__
-(map: fmap, k0: key): (fmap, bool)
-#implfun
-funmap_remove$opt__ = funmap_remove$opt<key><itm>
-#impltmp
-funmap_remove$opt<key><itm> = funmap_remove$opt__
+<key:t0>
+<itm:t0>
+funmmap_keyval$forall
+(map: fmmap(key, itm)): bool
+#symload
+forall with funmmap_keyval$forall of 1000
 //
-#extern
 fun
-funmap_getout$opt__
-(map: fmap, k0: key): (fmap, optn_vt(itm))
-#implfun
-funmap_getout$opt__ = funmap_getout$opt<key><itm>
-#impltmp
-funmap_getout$opt<key><itm> = funmap_getout$opt__
+<key:t0>
+<itm:t0>
+funmmap_keyval$foritm
+(map: fmmap(key, itm)): void
+#symload
+foritm with funmmap_keyval$foritm of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<key:t0>
+<itm:t0>
+funmmap_search$tst
+(
+map:
+fmmap(key, itm), k0: key): (bool)
+fun
+<key:t0>
+<itm:t0>
+funmmap_search$any
+(
+map:
+fmmap(key, itm), k0: key): itm(*found*)
+fun
+<key:t0>
+<itm:t0>
+funmmap_search$opt
+(
+map:
+fmmap(key, itm), k0: key): optn_vt(itm)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_githwxi_ATS2_DATS_funmap_detmp00.dats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_ATS2_SATS_funmmap.sats] *)
 (***********************************************************************)
