@@ -169,6 +169,9 @@ fmap(key, itm), k0: key): optn_vt(itm)
 fun
 <key:t0>
 <itm:t0>
+(*
+funmap_insert$new
+*)
 funmap_insert$any
 (
 map:
@@ -186,6 +189,9 @@ k0: key, x0: itm): (fmap(key,itm), optn_vt(itm))
 fun
 <key:t0>
 <itm:t0>
+(*
+funmap$cbr_insert$new
+*)
 funmap$cbr_insert$any
 (
 map: &
@@ -205,6 +211,9 @@ fmap(key, itm) >> _, k0: key, x0: itm): optn_vt(itm)
 fun
 <key:t0>
 <itm:t0>
+(*
+funmap_remove$old
+*)
 funmap_remove$any
 (
 map:
@@ -222,6 +231,9 @@ fmap
 fun
 <key:t0>
 <itm:t0>
+(*
+funmap$cbr_remove$old
+*)
 funmap$cbr_remove$any
 (
 map: &fmap(key, itm) >> _, k0: key): (void)
@@ -237,6 +249,9 @@ map: &fmap(key, itm) >> _, k0: key): (bool)
 fun
 <key:t0>
 <itm:t0>
+(*
+funmap_getout$old
+*)
 funmap_getout$any
 (
 map:
@@ -254,6 +269,9 @@ fmap
 fun
 <key:t0>
 <itm:t0>
+(*
+funmap$cbr_getout$old
+*)
 funmap$cbr_getout$any
 (
 map: &fmap(key, itm) >> _, k0: key): ( itm )
