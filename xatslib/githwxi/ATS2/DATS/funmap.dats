@@ -55,7 +55,7 @@ g_ptype
 (
 pstrn
 ("fmap(");
-g_ptype<k>();
+g_ptype<k>(); pstrn(",");
 g_ptype<x>(); pstrn(")"))
 //
 (* ****** ****** *)
@@ -150,6 +150,14 @@ funmap_search$opt<key><itm>(kxs, k0)
 (* ****** ****** *)
 //
 #impltmp
+{key:t0}
+{itm:t0}
+g_print
+<fmap
+(key,itm)> =
+funmap_keyval$print<key><itm>(*map*)
+//
+#impltmp
 <key:t0>
 <itm:t0>
 funmap_keyval$print
@@ -160,7 +168,7 @@ where
 {
 //
 #typedef x0 = (key, itm)
-#typedef xs = strm_vt(x0)
+#vwtpdef xs = strm_vt(x0)
 //
 #impltmp
 gseq$beg<xs><x0>() = "funmap("

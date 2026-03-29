@@ -1,8 +1,8 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2024-09-05:
-Thu 05 Sep 2024 05:36:54 PM EDT
+HX-2026-03-29:
+Sun Mar 29 07:12:56 PM EDT 2026
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -41,7 +41,7 @@ Thu 05 Sep 2024 05:36:54 PM EDT
 (* ****** ****** *)
 //
 val () =
-prints("Hello from [test01_funmmap]!\n")
+prints("Hello from [test02_funmmap]!\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -73,7 +73,14 @@ val map1 =
 funmmap_insert$any(map1, "b", 1)
 val map1 =
 funmmap_insert$any(map1, "c", 2)
-val (  ) = printsln("map1 = ", map1)
+val map1 =
+funmmap_insert$any(map1, "d", 3)
+//
+val (  ) =
+printsln("map1 = ", map1)
+val (  ) =
+printsln
+("size(map1) = ", map1.size())
 //
 val map1 =
 funmmap_remove$any(map1, "a")
@@ -109,5 +116,5 @@ val () = console_log(the_print_store_flush())
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_JS_githwxi_ATS2_TEST_test01_funmmap.dats] *)
+(* end of [ATS3/XANADU_xatslib_JS_githwxi_ATS2_TEST_test02_funmmap.dats] *)
 (***********************************************************************)

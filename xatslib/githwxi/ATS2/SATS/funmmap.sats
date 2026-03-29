@@ -85,6 +85,11 @@ funmmap_consq
 {key,itm:t0}
 (map: fmmap(key,itm)): bool
 //
+#symload
+nilq with funmmap_nilq of 1000
+#symload
+consq with funmmap_consq of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -93,6 +98,7 @@ fun
 <itm:t0>
 funmmap_size
 (map: fmmap(key, itm)): nint
+#symload size with funmmap_size of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -102,7 +108,9 @@ fun
 <itm:t0>
 funmmap_keyval$print
 (map: fmmap(key, itm)): void
+(*
 #symload print with funmmap_keyval$print
+*)
 //
 (* ****** ****** *)
 //

@@ -63,9 +63,9 @@ funmmap_make_nil
 <key:t0>
 <itm:t0>
 funmmap_search$tst
-  ( kxs, k0 ) =
+  ( map, k0 ) =
 (
-  auxloop(kxs)) where
+  auxloop(map)) where
 {
 //
 #typedef
