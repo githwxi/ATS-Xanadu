@@ -57,7 +57,14 @@ gseq$beg((*0*)) = "gseq("
 #impltmp
 < xs:vt >
 < x0:vt >
+gseq$rst((*0*)) = ("...")
+//
+(*
+#impltmp
+< xs:vt >
+< x0:vt >
 gseq$omit((*0*)) = ("...")
+*)
 //
 (* ****** ****** *)
 //

@@ -175,6 +175,7 @@ HX-2025-12-21:
 Sun Dec 21 07:13:28 PM EST 2025
 *)
 //
+(*
 fun<>
 strm$beg(): strn
 fun<>
@@ -183,6 +184,7 @@ fun<>
 strm$sep(): strn
 fun<>
 strm$rst(): strn
+*)
 //
 fun
 <x0:t0>
@@ -192,8 +194,9 @@ fun
 <x0:t0>
 strm_all$print(xs: strm(x0)): void
 //
-fun<>
-strm$print$len(): ( sint )
+fun
+<(*0*)>
+strm$print$len((*void*)): ( sint )
 fun
 <x0:t0>
 strm_len$print(xs: strm(x0), ln: sint): void

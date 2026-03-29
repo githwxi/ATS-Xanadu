@@ -48,6 +48,20 @@ Sat Mar 28 09:24:42 PM EDT 2026
 (* ****** ****** *)
 //
 #impltmp
+{ k:t0 }
+{ x:t0 }
+g_ptype
+<fmap(k,x)>() =
+(
+pstrn
+("fmap(");
+g_ptype<k>();
+g_ptype<x>(); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 <key:t0>
 equal_key_key
 (k1, k2) = g_equal<key>(k1, k2)
@@ -109,13 +123,15 @@ funmap_key$strmize<key><itm>(map)))
 funmap_keyval$print
 (     map     ) =
 (
-strm_vt_print0
-< @(key,itm) >(kxs))
+strm_vt_print0<x0>(kxs))
 where
 {
 //
+#typedef x0 = (key, itm)
+#typedef xs = fmap(key, itm)
+//
 #impltmp
-strm_vt$beg<>() = "funmap("
+gseq$beg<xs><x0>() = "funmap("
 //
 val kxs =
 (
