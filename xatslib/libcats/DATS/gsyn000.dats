@@ -66,6 +66,210 @@ gs_prout$end
   ( (*void*) ): void
 //
 (* ****** ****** *)
+//
+#extern
+fun<>
+gs_prout_a0((*0*)): void
+#extern
+fun<>
+gs_proutln_a0((*0*)): void
+//
+#extern
+fun
+<x0:t0>
+gs_prout_a1(x0:x0): void
+#extern
+fun
+<x0:t0>
+gs_proutln_a1(x0:x0): void
+//
+#extern
+fun
+<x0:t0>
+<x1:t0>
+gs_prout_a2
+  (x0: x0, x1: x1): void
+#extern
+fun
+<x0:t0>
+<x1:t0>
+gs_proutln_a2
+  (x0: x0, x1: x1): void
+//
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+gs_prout_a3
+(x0: x0, x1: x1, x2: x2): void
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+gs_proutln_a3
+(x0: x0, x1: x1, x2: x2): void
+//
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+gs_prout_a4
+(x0:x0, x1:x1, x2:x2, x3:x3): void
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+gs_proutln_a4
+(x0:x0, x1:x1, x2:x2, x3:x3): void
+//
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+gs_prout_a5
+(x0:x0, x1:x1, x2:x2, x3:x3, x4:x4): void
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+gs_proutln_a5
+(x0:x0, x1:x1, x2:x2, x3:x3, x4:x4): void
+//
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+gs_prout_a6
+(x0:x0, x1:x1, x2:x2, x3:x3, x4:x4, x5:x5): void
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+gs_proutln_a6
+(x0:x0, x1:x1, x2:x2, x3:x3, x4:x4, x5:x5): void
+//
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+gs_prout_a7
+(x0:x0, x1:x1, x2:x2, x3:x3, x4:x4, x5:x5, x6:x6): void
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+gs_proutln_a7
+(x0:x0, x1:x1, x2:x2, x3:x3, x4:x4, x5:x5, x6:x6): void
+//
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+gs_prout_a8
+(x0:x0, x1:x1, x2:x2, x3:x3, x4:x4, x5:x5, x6:x6, x7:x7): void
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+gs_proutln_a8
+(x0:x0, x1:x1, x2:x2, x3:x3, x4:x4, x5:x5, x6:x6, x7:x7): void
+//
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+gs_prout_a9
+(x0:x0, x1:x1, x2:x2, x3:x3, x4:x4, x5:x5, x6:x6, x7:x7, x8:x8): void
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+gs_proutln_a9
+(x0:x0, x1:x1, x2:x2, x3:x3, x4:x4, x5:x5, x6:x6, x7:x7, x8:x8): void
+//
+(* ****** ****** *)
+//
+#symload prout with gs_prout_a1
+//
+#symload prouts with gs_prout_a0
+#symload prouts with gs_prout_a1
+#symload prouts with gs_prout_a2
+#symload prouts with gs_prout_a3
+#symload prouts with gs_prout_a4
+#symload prouts with gs_prout_a5
+#symload prouts with gs_prout_a6
+#symload prouts with gs_prout_a7
+#symload prouts with gs_prout_a8
+//
+#symload proutln with gs_proutln_a1
+//
+#symload proutsln with gs_proutln_a0
+#symload proutsln with gs_proutln_a1
+#symload proutsln with gs_proutln_a2
+#symload proutsln with gs_proutln_a3
+#symload proutsln with gs_proutln_a4
+#symload proutsln with gs_proutln_a5
+#symload proutsln with gs_proutln_a6
+#symload proutsln with gs_proutln_a7
+#symload proutsln with gs_proutln_a8
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -82,6 +286,317 @@ gs_prout$end() = ((*void*))
 <(*tmp*)>
 g_prout$end() = strn_prout("\n")
 *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+gs_prout_a0
+ ((*0*) ) =
+(
+gs_prout$beg(); gs_prout$end())
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+gs_prout_a1
+ (  x0  ) =
+let
+val () =
+gs_prout$beg() in//let
+(
+g_prout<x0>(x0); gs_prout$end())
+end//let//end-of-[gs_prout_a1(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+gs_prout_a2
+ (x0, x1) =
+let
+val () =
+gs_prout$beg() in//let
+(
+  g_prout<x0>(x0); gs_prout$sep()
+; g_prout<x1>(x1); gs_prout$end())
+end//let//end-of-[gs_prout_a2(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+gs_prout_a3
+( x0
+, x1, x2) =
+let
+val () =
+gs_prout$beg() in//let
+(
+  g_prout<x0>(x0); gs_prout$sep()
+; g_prout<x1>(x1); gs_prout$sep()
+; g_prout<x2>(x2); gs_prout$end())
+end//let//end-of-[gs_prout_a3(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+gs_prout_a4
+( x0, x1
+, x2, x3) =
+let
+val () =
+gs_prout$beg() in//let
+(
+  g_prout<x0>(x0); gs_prout$sep()
+; g_prout<x1>(x1); gs_prout$sep()
+; g_prout<x2>(x2); gs_prout$sep()
+; g_prout<x3>(x3); gs_prout$end())
+end//let//end-of-[gs_prout_a4(...)]
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+gs_prout_a5
+( x0, x1
+, x2, x3, x4) =
+let
+val () =
+gs_prout$beg() in//let
+(
+  g_prout<x0>(x0); gs_prout$sep()
+; g_prout<x1>(x1); gs_prout$sep()
+; g_prout<x2>(x2); gs_prout$sep()
+; g_prout<x3>(x3); gs_prout$sep()
+; g_prout<x4>(x4); gs_prout$end())
+end//let//end-of-[gs_prout_a5(...)]
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+gs_prout_a6
+( x0, x1, x2
+, x3, x4, x5) =
+let
+val () =
+gs_prout$beg() in//let
+(
+  g_prout<x0>(x0); gs_prout$sep()
+; g_prout<x1>(x1); gs_prout$sep()
+; g_prout<x2>(x2); gs_prout$sep()
+; g_prout<x3>(x3); gs_prout$sep()
+; g_prout<x4>(x4); gs_prout$sep()
+; g_prout<x5>(x5); gs_prout$end())
+end//let//end-of-[gs_prout_a6(...)]
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+gs_prout_a7
+( x0, x1, x2
+, x3, x4, x5, x6) =
+let
+val () =
+gs_prout$beg() in//let
+(
+  g_prout<x0>(x0); gs_prout$sep()
+; g_prout<x1>(x1); gs_prout$sep()
+; g_prout<x2>(x2); gs_prout$sep()
+; g_prout<x3>(x3); gs_prout$sep()
+; g_prout<x4>(x4); gs_prout$sep()
+; g_prout<x5>(x5); gs_prout$sep()
+; g_prout<x6>(x6); gs_prout$end())
+end//let//end-of-[gs_prout_a7(...)]
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+gs_prout_a8
+( x0, x1, x2, x3
+, x4, x5, x6, x7) =
+let
+val () =
+gs_prout$beg() in//let
+(
+  g_prout<x0>(x0); gs_prout$sep()
+; g_prout<x1>(x1); gs_prout$sep()
+; g_prout<x2>(x2); gs_prout$sep()
+; g_prout<x3>(x3); gs_prout$sep()
+; g_prout<x4>(x4); gs_prout$sep()
+; g_prout<x5>(x5); gs_prout$sep()
+; g_prout<x6>(x6); gs_prout$sep()
+; g_prout<x7>(x7); gs_prout$end())
+end//let//end-of-[gs_prout_a8(...)]
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+< x8:t0 >
+gs_prout_a9
+( x0, x1, x2, x3
+, x4, x5, x6, x7, x8) =
+let
+val () =
+gs_prout$beg() in//let
+(
+  g_prout<x0>(x0); gs_prout$sep()
+; g_prout<x1>(x1); gs_prout$sep()
+; g_prout<x2>(x2); gs_prout$sep()
+; g_prout<x3>(x3); gs_prout$sep()
+; g_prout<x4>(x4); gs_prout$sep()
+; g_prout<x5>(x5); gs_prout$sep()
+; g_prout<x6>(x6); gs_prout$sep()
+; g_prout<x7>(x7); gs_prout$sep()
+; g_prout<x8>(x8); gs_prout$end())
+end//let//end-of-[gs_prout_a8(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+gs_proutln_a0
+ ((*00*)) =
+(
+  gs_prout_a0<>((*0*)); g_prout("\n"))
+//
+#impltmp
+< x0:t0 >
+gs_proutln_a1
+ (  x0  ) =
+(
+  gs_prout_a1<x0>( x0 ); g_prout("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+gs_proutln_a2
+ (x0, x1) =
+(
+  gs_prout_a2<x0><x1>(x0,x1); g_prout("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+gs_proutln_a3
+( x0
+, x1, x2) =
+(
+  gs_prout_a3<x0><x1><x2>(x0,x1,x2); g_prout("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+gs_proutln_a4
+( x0, x1
+, x2, x3) =
+(
+  gs_prout_a4<x0><x1><x2><x3>(x0,x1,x2,x3); g_prout("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+gs_proutln_a5
+( x0, x1
+, x2, x3, x4) =
+(
+  gs_prout_a5<x0><x1><x2><x3><x4>(x0,x1,x2,x3,x4); g_prout("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+gs_proutln_a6
+( x0, x1, x2
+, x3, x4, x5) =
+(
+  gs_prout_a6<x0><x1><x2><x3><x4><x5>(x0,x1,x2,x3,x4,x5); g_prout("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+gs_proutln_a7
+( x0, x1, x2
+, x3, x4, x5, x6) =
+(
+  gs_prout_a7<x0><x1><x2><x3><x4><x5><x6>(x0,x1,x2,x3,x4,x5,x6); g_prout("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+gs_proutln_a8
+( x0, x1, x2, x3
+, x4, x5, x6, x7) =
+(
+  gs_prout_a8<x0><x1><x2><x3><x4><x5><x6><x7>(x0,x1,x2,x3,x4,x5,x6,x7); g_prout("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+< x8:t0 >
+gs_proutln_a9
+( x0, x1, x2, x3
+, x4, x5, x6, x7, x8) =
+(
+  gs_prout_a9<x0><x1><x2><x3><x4><x5><x6><x7><x8>(x0,x1,x2,x3,x4,x5,x6,x7,x8); g_prout("\n"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -249,6 +764,33 @@ fun
 <x7:t0>
 gs_prerrln_a8
 (x0:x0, x1:x1, x2:x2, x3:x3, x4:x4, x5:x5, x6:x6, x7:x7): void
+//
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+gs_prerr_a9
+(x0:x0, x1:x1, x2:x2, x3:x3, x4:x4, x5:x5, x6:x6, x7:x7, x8:x8): void
+#extern
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+gs_prerrln_a9
+(x0:x0, x1:x1, x2:x2, x3:x3, x4:x4, x5:x5, x6:x6, x7:x7, x8:x8): void
 //
 (* ****** ****** *)
 //
@@ -457,8 +999,36 @@ gs_prerr$beg() in//let
 ; g_prerr<x3>(x3); gs_prerr$sep()
 ; g_prerr<x4>(x4); gs_prerr$sep()
 ; g_prerr<x5>(x5); gs_prerr$sep()
-; g_prerr<x6>(x5); gs_prerr$sep()
-; g_prerr<x7>(x6); gs_prerr$end())
+; g_prerr<x6>(x6); gs_prerr$sep()
+; g_prerr<x7>(x7); gs_prerr$end())
+end//let//end-of-[gs_prerr_a8(...)]
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+< x8:t0 >
+gs_prerr_a9
+( x0, x1, x2, x3
+, x4, x5, x6, x7, x8) =
+let
+val () =
+gs_prerr$beg() in//let
+(
+  g_prerr<x0>(x0); gs_prerr$sep()
+; g_prerr<x1>(x1); gs_prerr$sep()
+; g_prerr<x2>(x2); gs_prerr$sep()
+; g_prerr<x3>(x3); gs_prerr$sep()
+; g_prerr<x4>(x4); gs_prerr$sep()
+; g_prerr<x5>(x5); gs_prerr$sep()
+; g_prerr<x6>(x6); gs_prerr$sep()
+; g_prerr<x7>(x7); gs_prerr$sep()
+; g_prerr<x8>(x8); gs_prerr$end())
 end//let//end-of-[gs_prerr_a8(...)]
 //
 (* ****** ****** *)
@@ -560,6 +1130,22 @@ gs_prerrln_a8
 , x4, x5, x6, x7) =
 (
   gs_prerr_a8<x0><x1><x2><x3><x4><x5><x6><x7>(x0,x1,x2,x3,x4,x5,x6,x7); g_prerr("\n"))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+< x8:t0 >
+gs_prerrln_a9
+( x0, x1, x2, x3
+, x4, x5, x6, x7, x8) =
+(
+  gs_prerr_a9<x0><x1><x2><x3><x4><x5><x6><x7><x8>(x0,x1,x2,x3,x4,x5,x6,x7,x8); g_prerr("\n"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
