@@ -19,23 +19,32 @@ Mon 09 Sep 2024 11:18:07 AM EDT
 #include
 "prelude/HATS/prelude_JS_dats.hats"
 #include
-"xatslib/xbasics/HATS/xbasics_JS_dats.hats"
+"xatslib\
+/xbasics/HATS/xbasics_JS_dats.hats"
 #include
-"xatslib/libcats/HATS/libcats_JS_dats.hats"
+"xatslib\
+/libcats/HATS/libcats_JS_dats.hats"
 #include
-"xatslib/githwxi/HATS/githwxi_JS_dats.hats"
-//
-#include
-"xatslib/githwxi/HATS/githwxi_detmpxx.hats"
-//
+"xatslib\
+/githwxi/HATS/githwxi_JS_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 #include
 "prelude/HATS/prelude_NODE_dats.hats"
 #include
-"xatslib/libcats/HATS/libcats_NODE_dats.hats"
+"xatslib\
+/libcats/HATS/libcats_NODE_dats.hats"
 #include
-"xatslib/githwxi/HATS/githwxi_NODE_dats.hats"
+"xatslib\
+/githwxi/HATS/githwxi_NODE_dats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+// HX-2026-03-29:
+// this one should be loaded last!!!
+"xatslib/githwxi/HATS/githwxi_detmpxx.hats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
