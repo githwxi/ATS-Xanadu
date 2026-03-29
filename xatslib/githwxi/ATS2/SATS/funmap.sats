@@ -100,6 +100,16 @@ funmap_size(map: fmap(key, itm)): nint
 fun
 <key:t0>
 <itm:t0>
+funmap_keyval$print
+(
+map: fmap(key, itm)): void
+#symload print with funmap_keyval$print
+//
+(* ****** ****** *)
+//
+fun
+<key:t0>
+<itm:t0>
 funmap_key$strmize
 (
 map: fmap(key, itm)): stream_vt(key)
@@ -208,19 +218,3 @@ key,itm:t0p
 // end of [funmap_remove]
 
 (* ****** ****** *)
-//
-fun{}
-fprint_funmap$sep (out: FILEref): void // "; "
-fun{}
-fprint_funmap$fmapto (out: FILEref): void // "->"
-//
-fun{
-key,itm:t@ype
-} fprint_funmap
-  (out: FILEref, fmap: fmap(key, INV(itm))): void
-//
-overload fprint with fprint_funmap
-//
-(* ****** ****** *)
-
-(* end of [funmap.hats] *)

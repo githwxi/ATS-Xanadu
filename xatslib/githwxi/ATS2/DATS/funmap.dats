@@ -94,10 +94,35 @@ This one is O(n) time!!!
 #impltmp
 <key:t0>
 <itm:t0>
-funmap_size(map) =
+funmap_size
+(     map     ) =
 (
 strm_vt_length0(
 funmap_key$strmize<key><itm>(map)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmap_keyval$print
+(     map     ) =
+(
+strm_vt_print0
+< @(key,itm) >(kxs))
+where
+{
+//
+#impltmp
+strm_vt$beg<>() = "funmap("
+//
+val kxs =
+(
+funmap_keyval$strmize
+<   key   ><   itm   >(   map   ))
+//
+}(*where*)//end(funmap_keyval$print)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -111,7 +136,8 @@ gseq_strmize
 <t0up
 (key,itm)>
 (     map     ) =
-funmap_keyval$strmize<key><itm>(map)
+(
+funmap_keyval$strmize<key><itm>(map))
 //
 #impltmp
 {key:t0}
@@ -121,7 +147,8 @@ gmap_keyval$strmize
 (key,itm)>
 <key><itm>
 (     map     ) =
-funmap_keyval$strmize<key><itm>(map)
+(
+funmap_keyval$strmize<key><itm>(map))
 //
 (* ****** ****** *)
 //
@@ -163,92 +190,3 @@ gseq_foritm<fmap(key,itm)><t0up(key,itm)>(map)
 (***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_githwxi_ATS2_DATS_funmap.dats] *)
 (***********************************************************************)
-////
-
-fun{
-key,itm:t0p
-} funmap_search
-(
-  map: map(key, INV(itm))
-, key: key, res: &itm? >> opt(itm, b)
-) : #[b:bool] bool(b)
-
-fun{
-key,itm:t0p
-} funmap_search_opt
-  (map: map(key, INV(itm)), k0: key): Option_vt(itm)
-// end of [funmap_search_opt]
-
-(* ****** ****** *)
-//
-// HX-2012-12:
-// if [k0] occurs in [map], [x0] replaces the
-// item associated with [k0] in [map] while the
-// item is stored in [res] instead.
-//
-fun{
-key,itm:t0p
-} funmap_insert
-(
-  map: &map(key, INV(itm)) >> _
-, key: key, itm: itm, res: &itm? >> opt(itm, b)
-) : #[b:bool] bool(b)
-
-fun{
-key,itm:t0p
-} funmap_insert_opt
-(
-  map: &map(key, INV(itm)) >> _, k0: key, x0: itm
-) : Option_vt(itm) // endfun
-
-(* ****** ****** *)
-//
-// HX-2012-12:
-// insertion always happens regardless whether
-// [k0] is associated with some item in [map]
-//
-fun{
-key,itm:t0p
-} funmap_insert_any
-  (map: &map(key, INV(itm)) >> _, k0: key, x0: itm): void
-// end of [funmap_insert_any]
-
-(* ****** ****** *)
-//
-fun{
-key,itm:t0p
-} funmap_takeout (
-  &map(key, INV(itm)) >> _, k0: key, res: &itm? >> opt (itm, b)
-) : #[b:bool] bool (b) // end-of-function
-//
-fun{
-key,itm:t0p
-} funmap_takeout_opt
-  (map: &map(key, INV(itm)) >> _, k0: key) : Option_vt (itm)
-//
-(* ****** ****** *)
-
-fun{
-key,itm:t0p
-} funmap_remove
-  (map: &map(key, INV(itm)) >> _, k0: key): bool
-// end of [funmap_remove]
-
-(* ****** ****** *)
-//
-fun{}
-fprint_funmap$sep (out: FILEref): void // "; "
-fun{}
-fprint_funmap$mapto (out: FILEref): void // "->"
-//
-fun{
-key,itm:t@ype
-} fprint_funmap
-  (out: FILEref, map: map(key, INV(itm))): void
-//
-overload fprint with fprint_funmap
-//
-(* ****** ****** *)
-(* ****** ****** *)
-
-(* end of [funmap.hats] *)
