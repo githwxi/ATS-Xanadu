@@ -442,16 +442,31 @@ end(*let*)//end-of-[strm_vt_print0(xs)]
 strm_vt_all$print0
   (xs) =
 (
-loop
-(xs, 0(*i0*)) where
+loop(
+xs, 0(*i0*)) where
 {
 val () =
-pstrn(strm_vt$beg<>())
+(
+pstrn(strmbeg(*0*)))
 }
 ) where
 {
 #vwtpdef
 xs = strm_vt(x0)
+//
+val
+strmbeg =
+gseq$beg<xs><x0>()
+val
+strmsep =
+gseq$sep<xs><x0>()
+val
+strmrst =
+gseq$rst<xs><x0>()
+val
+strmend =
+gseq$end<xs><x0>()
+//
 fnx
 loop
 ( xs: xs
@@ -462,8 +477,7 @@ case+ !xs of
 strmcon_vt_nil
 (  (*void*)  ) =>
 (
-pstrn(strmend(*0*))
-)
+pstrn(strmend(*0*)))
 | ~
 strmcon_vt_cons
 (   x0, xs   ) =>
@@ -473,7 +487,8 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strmsep(*0*))
+(
+pstrn(strmsep(*0*)))
 //
 in
 (
@@ -496,7 +511,8 @@ loop
 (xs, 0(*i0*)) where
 {
 val () =
-pstrn(strm_vt$beg<>())
+(
+pstrn(strmbeg(*0*)))
 }
 ) where
 {
@@ -551,7 +567,7 @@ pstrn(strmsep(*0*))
 val () =
 pstrn(strmrst(*0*))
 //
-in
+in//let//then
 (
 pstrn(strmend(*0*)))
 end // end of [if-then]
@@ -565,7 +581,7 @@ then
 (
 pstrn(strmsep(*0*)))
 //
-in//let
+in//let//else
 (
   loop(xs, i0+1)) where
 {

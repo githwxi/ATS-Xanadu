@@ -108,6 +108,7 @@ strx_vt_prepend0__lstrq0
 HX-2026-01-13:
 Tue Jan 13 02:42:01 AM EST 2026
 *)
+(*
 fun<>
 strx_vt$beg(): strn
 fun<>
@@ -116,6 +117,7 @@ fun<>
 strx_vt$sep(): strn
 fun<>
 strx_vt$rst(): strn
+*)
 //
 fun
 <x0:vt>

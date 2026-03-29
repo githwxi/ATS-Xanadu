@@ -22,6 +22,9 @@ Sat 07 Sep 2024 02:40:27 PM EDT
 #include
 "xatslib/githwxi/HATS/githwxi_dats.hats"
 //
+#include
+"xatslib/githwxi/HATS/githwxi_detmpxx.hats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -43,10 +46,6 @@ Sat 07 Sep 2024 02:40:27 PM EDT
 #include
 "xatslib/githwxi/HATS/githwxi_NODE_dats.hats"
 //
-(* ****** ****** *)
-(* ****** ****** *)
-#include
-"xatslib/githwxi/HATS/githwxi_DETMP_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
