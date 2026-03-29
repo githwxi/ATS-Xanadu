@@ -18,12 +18,11 @@ Sat 07 Sep 2024 02:40:27 PM EDT
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
-"xatslib/libcats/HATS/libcats_dats.hats"
+"xatslib\
+/libcats/HATS/libcats_dats.hats"
 #include
-"xatslib/githwxi/HATS/githwxi_dats.hats"
-//
-#include
-"xatslib/githwxi/HATS/githwxi_detmpxx.hats"
+"xatslib\
+/githwxi/HATS/githwxi_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -31,20 +30,33 @@ Sat 07 Sep 2024 02:40:27 PM EDT
 #include
 "prelude/HATS/prelude_JS_dats.hats"
 #include
-"xatslib/xbasics/HATS/xbasics_JS_dats.hats"
+"xatslib\
+/xbasics/HATS/xbasics_JS_dats.hats"
 #include
-"xatslib/libcats/HATS/libcats_JS_dats.hats"
+"xatslib\
+/libcats/HATS/libcats_JS_dats.hats"
 #include
-"xatslib/githwxi/HATS/githwxi_JS_dats.hats"
+"xatslib\
+/githwxi/HATS/githwxi_JS_dats.hats"
 //
 (* ****** ****** *)
 //
 #include
 "prelude/HATS/prelude_NODE_dats.hats"
 #include
-"xatslib/libcats/HATS/libcats_NODE_dats.hats"
+"xatslib\
+/libcats/HATS/libcats_NODE_dats.hats"
 #include
-"xatslib/githwxi/HATS/githwxi_NODE_dats.hats"
+"xatslib\
+/githwxi/HATS/githwxi_NODE_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+// HX-2026-03-29:
+// this one should be loaded last!!!
+"xatslib/githwxi/HATS/githwxi_detmpxx.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

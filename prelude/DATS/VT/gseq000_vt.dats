@@ -261,7 +261,7 @@ then
 val () = g_free(x0)
 val () =
 strn_print
-(gseq$omit<xs><x0>()) }
+(gseq$rst<xs><x0>()) }
 //
 else
 (
