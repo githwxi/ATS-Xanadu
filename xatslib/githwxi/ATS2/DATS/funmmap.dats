@@ -113,6 +113,14 @@ funmmap_search$opt<key><itm>(map, k0)
 (* ****** ****** *)
 //
 #impltmp
+{key:t0}
+{itm:t0}
+g_print
+<fmmap
+(key,itm)> =
+funmmap_keyval$print<key><itm>(*map*)
+//
+#impltmp
 <key:t0>
 <itm:t0>
 funmmap_keyval$print
@@ -123,7 +131,7 @@ where
 {
 //
 #typedef x0 = (key, itm)
-#typedef xs = fmmap(key, itm)
+#vwtpdef xs = strm_vt(x0)
 //
 #impltmp
 gseq$beg<xs><x0>() = "funmmap("

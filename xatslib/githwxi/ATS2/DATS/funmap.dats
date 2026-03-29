@@ -160,7 +160,7 @@ where
 {
 //
 #typedef x0 = (key, itm)
-#typedef xs = fmap(key, itm)
+#typedef xs = strm_vt(x0)
 //
 #impltmp
 gseq$beg<xs><x0>() = "funmap("
