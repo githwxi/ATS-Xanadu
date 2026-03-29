@@ -216,6 +216,14 @@ auxmain(tl1), $llazy(
 (* ****** ****** *)
 //
 #impltmp
+{key:t0}
+{itm:t0}
+gseq_strmize
+<fmap(key,itm)>
+<t0up(key,itm)>(*kxs*) =
+funmap_keyval$strmize<key><itm>(*kxs*)
+//
+#impltmp
 <key:t0>
 <itm:t0>
 funmap_keyval$strmize

@@ -170,6 +170,65 @@ fmmap(key, itm), k0: key): optn_vt(itm)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<key:t0>
+<itm:t0>
+funmmap_insert$any
+(
+map:
+fmmap
+(key, itm), k0: key, x0: itm): fmmap(key,itm)
+fun
+<key:t0>
+<itm:t0>
+funmmap_insert$opt
+(
+map:
+fmmap(key, itm),
+k0: key, x0: itm): (fmmap(key,itm), optn_vt(itm))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<key:t0>
+<itm:t0>
+funmmap_remove$any
+(
+map:
+fmmap
+(key, itm), k0: key): fmmap(key,itm)
+fun
+<key:t0>
+<itm:t0>
+funmmap_remove$opt
+(
+map:
+fmmap
+(key, itm), k0: key): (fmmap(key,itm),bool)
+//
+(* ****** ****** *)
+//
+fun
+<key:t0>
+<itm:t0>
+funmmap_getout$any
+(
+map:
+fmmap
+(key, itm), k0: key): (fmmap(key,itm), itm)
+fun
+<key:t0>
+<itm:t0>
+funmmap_getout$opt
+(
+map:
+fmmap
+(key, itm), k0: key): (fmmap(key,itm),optn_vt(itm))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_githwxi_ATS2_SATS_funmmap.sats] *)
 (***********************************************************************)
