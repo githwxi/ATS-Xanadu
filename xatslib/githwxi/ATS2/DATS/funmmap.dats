@@ -80,6 +80,22 @@ funmmap_consq
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-03-29:
+This one is O(n) time!!!
+*)
+#impltmp
+<key:t0>
+<itm:t0>
+funmmap_size
+(     map     ) =
+(
+strm_vt_length0(
+funmmap_keyval$strmize<key><itm>(map)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <key:t0>
 <itm:t0>
