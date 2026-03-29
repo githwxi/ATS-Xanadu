@@ -398,6 +398,7 @@ list_vt_make_lstrq
 HX-2025-12-21:
 Sun Dec 21 07:15:47 PM EST 2025
 *)
+(*
 fun<>
 strm_vt$beg(): strn
 fun<>
@@ -406,6 +407,7 @@ fun<>
 strm_vt$sep(): strn
 fun<>
 strm_vt$rst(): strn
+*)
 //
 fun
 <x0:vt>
@@ -415,7 +417,8 @@ fun
 <x0:vt>
 strm_vt_all$print0(xs: strm_vt(x0)): void
 //
-fun<>
+fun
+<(*0*)>
 strm_vt$print$len(): ( sint ) // HX: all: -1
 fun
 <x0:vt>

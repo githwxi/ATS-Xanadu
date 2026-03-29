@@ -97,7 +97,6 @@ HX-2025-12-20:
 Sat Dec 20 11:43:16 AM EST 2025
 *)
 //
-(*
 #impltmp
 { x0:t0 }
 gseq$sep
@@ -108,10 +107,14 @@ gseq$end
 <strm(x0)><x0>() = ")"
 #impltmp
 { x0:t0 }
+gseq$rst
+<strm(x0)><x0>() = "..."
+#impltmp
+{ x0:t0 }
 gseq$beg
 <strm(x0)><x0>() = "strm("
-*)
 //
+(*
 #impltmp
 { x0:t0 }
 gseq$beg
@@ -124,6 +127,11 @@ gseq$end
 { x0:t0 }
 gseq$sep
 <strm(x0)><x0> = strm$sep<>
+#impltmp
+{ x0:t0 }
+gseq$rst
+<strm(x0)><x0> = strm$rst<>
+*)
 //
 (* ****** ****** *)
 //
@@ -272,6 +280,7 @@ Sun Dec 21 07:20:03 PM EST 2025
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <>(*tmp*)
 strm$end() = ")"
@@ -281,10 +290,10 @@ strm$sep() = ","
 #impltmp
 <>(*tmp*)
 strm$rst() = "..."
-//
 #impltmp
 <>(*tmp*)
 strm$beg() = "strm("
+*)
 //
 (* ****** ****** *)
 //
@@ -319,7 +328,7 @@ loop
 (xs, 0(*i0*)) where
 {
 val () =
-pstrn(strm$beg<>())
+pstrn(strmbeg(*0*))
 }
 ) where
 {
@@ -334,7 +343,7 @@ case+ !xs of
 |
 strmcon_nil() =>
 (
-pstrn(strm$end<>()))
+pstrn(strmend(*0*)))
 |
 strmcon_cons(x0, xs) =>
 let
@@ -343,7 +352,7 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strm$sep<>())
+pstrn(strmsep(*0*))
 //
 in
 (
@@ -362,17 +371,31 @@ end // end of [strmcon_cons]
 strm_len$print
   (xs, n0) =
 (
-loop
-(xs, 0(*i0*)) where
+loop(
+xs, 0(*i0*)) where
 {
 val () =
-pstrn(strm$beg<>())
+(
+pstrn(strmbeg(*0*))
 }
 ) where
 {
 //
 #typedef
 xs = strm(x0)
+//
+val
+strmbeg =
+gseq$beg<xs><x0>()
+val
+strmsep =
+gseq$sep<xs><x0>()
+val
+strmrst =
+gseq$rst<xs><x0>()
+val
+strmend =
+gseq$end<xs><x0>()
 //
 fnx
 loop
@@ -383,7 +406,7 @@ case+ !xs of
 |
 strmcon_nil() =>
 (
-pstrn(strm$end<>()))
+pstrn(strmend(*0*)))
 |
 strmcon_cons(x0, xs) =>
 if
@@ -396,15 +419,15 @@ if
 (i0 > 0)
 then
 (
-  pstrn(strm$sep<>()))
+  pstrn(strmsep(*0*)))
 //
 val () =
 (
-  pstrn(strm$rst<>()))
+  pstrn(strmrst(*0*)))
 //
 in
 (
-  pstrn(strm$end<>()))
+  pstrn(strmend(*0*)))
 end // end of [if-then]
 else
 let
@@ -414,7 +437,7 @@ if
 (i0 > 0)
 then
 (
-  pstrn(strm$sep<>()))
+  pstrn(strmsep(*0*)))
 //
 in//let
 (

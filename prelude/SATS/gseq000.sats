@@ -136,11 +136,17 @@ fun
 <xs:vt>
 <x0:vt>
 gseq$sep((*0*)): strn
+fun
+<xs:vt>
+<x0:vt>
+gseq$rst((*0*)): strn
 //
+(*
 fun
 <xs:vt>
 <x0:vt>
 gseq$omit((*0*)): strn
+*)
 //
 fun
 <xs:vt>

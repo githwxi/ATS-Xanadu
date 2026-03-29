@@ -155,24 +155,24 @@ HX-2024-07-17:
 Wed 17 Jul 2024 10:27:26 PM EDT
 *)
 //
-(*
 #impltmp
 { x0:vt }
-gseq$sep
-<
+gseq$sep<
 strm_vt(x0)><x0>() = ","
 #impltmp
 { x0:vt }
-gseq$end
-<
+gseq$end<
 strm_vt(x0)><x0>() = ")"
 #impltmp
 { x0:vt }
-gseq$beg
-<
+gseq$rst<
+strm_vt(x0)><x0>() = "..."
+#impltmp
+{ x0:vt }
+gseq$beg<
 strm_vt(x0)><x0>() = "strm_vt("
-*)
 //
+(*
 #impltmp
 { x0:vt }
 gseq$beg<
@@ -185,6 +185,7 @@ strm_vt(x0)><x0> = strm_vt$end<>
 { x0:vt }
 gseq$sep<
 strm_vt(x0)><x0> = strm_vt$sep<>
+*)
 //
 (* ****** ****** *)
 //
@@ -397,6 +398,7 @@ Sun Dec 21 07:20:03 PM EST 2025
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <>(*tmp*)
 strm_vt$end() = ")"
@@ -406,10 +408,10 @@ strm_vt$sep() = ","
 #impltmp
 <>(*tmp*)
 strm_vt$rst() = "..."
-//
 #impltmp
 <>(*tmp*)
 strm_vt$beg() = "strm_vt("
+*)
 //
 (* ****** ****** *)
 //
@@ -460,7 +462,7 @@ case+ !xs of
 strmcon_vt_nil
 (  (*void*)  ) =>
 (
-pstrn(strm_vt$end<>())
+pstrn(strmend(*0*))
 )
 | ~
 strmcon_vt_cons
@@ -471,7 +473,7 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strm_vt$sep<>())
+pstrn(strmsep(*0*))
 //
 in
 (
@@ -502,6 +504,19 @@ pstrn(strm_vt$beg<>())
 #vwtpdef
 xs = strm_vt(x0)
 //
+val
+strmbeg =
+gseq$beg<xs><x0>()
+val
+strmsep =
+gseq$sep<xs><x0>()
+val
+strmrst =
+gseq$rst<xs><x0>()
+val
+strmend =
+gseq$end<xs><x0>()
+//
 fnx
 loop
 ( xs: xs
@@ -511,7 +526,7 @@ case+ !xs of
 | ~
 strmcon_vt_nil
 (  (*void*)  ) =>
-pstrn(strm_vt$end<>())
+pstrn(strmend(*0*))
 | ~
 strmcon_vt_cons
 (   x0, xs   ) =>
@@ -531,14 +546,14 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strm_vt$sep<>())
+pstrn(strmsep(*0*))
 //
 val () =
-pstrn(strm_vt$rst<>())
+pstrn(strmrst(*0*))
 //
 in
 (
-pstrn(strm_vt$end<>()))
+pstrn(strmend(*0*)))
 end // end of [if-then]
 else
 let
@@ -547,7 +562,8 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strm_vt$sep<>())
+(
+pstrn(strmsep(*0*)))
 //
 in//let
 (
