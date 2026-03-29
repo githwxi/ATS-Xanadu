@@ -129,11 +129,11 @@ The semantics is involved
 for a mutable map (hashmap)!
 *)
 fun
-<amp:t0>
+<map:t0>
 <key:t0>
 <itm:t0>
 gmap_strmize
-(kxs: amp): strm_vt@(key, itm)
+(kxs: map): strm_vt@(key, itm)
 //
 (* ****** ****** *)
 (* ****** ****** *)
