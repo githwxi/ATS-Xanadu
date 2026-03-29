@@ -85,6 +85,20 @@ end//let//end(gmap_val$strmize(map))
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-03-28:
+Note that [gmap(key,itm)]
+is treated [gseq@(key,itm)]!
+Sat Mar 28 11:28:12 PM EDT 2026
+*)
+#impltmp
+{map:t0}
+{key:t0}
+{itm:t0}
+gseq_strmize
+<map><(key,itm)> = 
+gmap_keyval$strmize<map><key><itm>
+//
 #impltmp
 <map:t0>
 <key:t0>
