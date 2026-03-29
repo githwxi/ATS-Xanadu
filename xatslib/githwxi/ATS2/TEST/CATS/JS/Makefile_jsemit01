@@ -1,0 +1,76 @@
+########################################################################
+########################################################################
+# Makefile for JS-emission
+########################################################################
+########################################################################
+CAT=cat
+ECHO=echo
+NODE=node
+PRINTF=printf
+########################################################################
+########################################################################
+all:: test00
+all:: test01
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/test??_out.js
+cleanall:: ; rm -f OUTS/test??_out?.js
+########################################################################
+testall:: test00; $(NODE) OUTS/$<_out.js
+testall:: test01; $(NODE) OUTS/$<_out.js
+testall:: test02; $(NODE) OUTS/$<_out.js
+testall:: test03; $(NODE) OUTS/$<_out.js
+testall:: test04; $(NODE) OUTS/$<_out.js
+testall:: test05; $(NODE) OUTS/$<_out.js
+testall:: test06; $(NODE) OUTS/$<_out.js
+testall:: test07; $(NODE) OUTS/$<_out.js
+testall:: test08; $(NODE) --stack-size=4096 OUTS/$<_out.js
+testall:: test99; $(NODE) OUTS/$<_out.js
+########################################################################
+########################################################################
+SRCGEN2_SRCGENX=\
+$(XATSHOME)/srcgen2/xats2js/srcgenx
+XSHARED_RUNTIME=\
+$(SRCGEN2_SRCGENX)/xshared/runtime
+XATS2JS_JSEMIT01=\
+$(SRCGEN2_SRCGENX)/UTIL/xats2js_jsemit01_ats2.js
+XATS2JS_JSEMIT01=\
+$(SRCGEN2_SRCGENX)/UTIL/xats2js_jsemit01_ats3.js
+########################################################################
+########################################################################
+test00:: ; \
+printf "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test00:: ; \
+$(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
+test00:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
+test00:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
+test00:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
+############
+test00:: \
+test00_ATS2.dats; \
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+test01:: ; \
+printf "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test01:: ; \
+$(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
+test01:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
+test01:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
+test01:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
+############
+test01:: \
+test01_funmmap.dats; \
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+############
+########################################################################
+##################### end of [Makefile_jsemit01] #######################
+########################################################################
