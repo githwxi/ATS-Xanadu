@@ -187,6 +187,124 @@ gseq_foritm<fmap(key,itm)><t0up(key,itm)>(map)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<key:t0>
+<itm:t0>
+funmap_insert$any
+(   kxs, k0, x0   ) =
+(
+case- opt of
+| ~
+optn_vt_nil((*0*)) => kxs)
+where
+{
+val (kxs, opt) =
+funmap_insert$opt< key >< itm >(kxs, k0, x0)
+}(*where*)//end(funmap_insert$any(kxs,k0,x0))
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmap$cbr_insert$any
+(   map, k0, x0   ) =
+let
+val kxs = map
+val kxs =
+funmap_insert$any
+< key >< itm >(kxs, k0, x0) in map := kxs end
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmap$cbr_insert$opt
+(   map, k0, x0   ) =
+let
+val kxs = map
+val (kxs, res) =
+funmap_insert$opt
+< key >< itm >(kxs, k0, x0) in map := kxs; res end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmap_remove$any
+(     kxs, k0     ) =
+(
+case- opt of true => kxs)
+where
+{
+val (kxs, opt) =
+funmap_remove$opt< key >< itm >(kxs, k0)
+}(*where*)//end(funmap_remove$any(kxs,k0))
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmap$cbr_remove$any
+(     map, k0     ) =
+let
+val kxs = map
+val kxs =
+funmap_remove$any
+<  key  ><  itm  >(kxs, k0) in map := kxs end
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmap$cbr_remove$opt
+(     map, k0     ) =
+let
+val kxs = map
+val (kxs, res) =
+funmap_remove$opt
+<  key  ><  itm  >(kxs, k0) in map := kxs; res end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmap_getout$any
+(     kxs, k0     ) =
+(
+case- opt of
+| ~
+optn_vt_cons( x0 ) => (kxs, x0))
+where
+{
+val (kxs, opt) =
+funmap_getout$opt< key >< itm >(kxs, k0)
+}(*where*)//end(funmap_getout$any(kxs,k0))
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmap$cbr_getout$any
+(     map, k0     ) =
+let
+val kxs = map
+val (kxs, res) =
+funmap_getout$any
+<  key  ><  itm  >(kxs, k0) in map := kxs; res end
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmap$cbr_getout$opt
+(     map, k0     ) =
+let
+val kxs = map
+val (kxs, res) =
+funmap_getout$opt
+<  key  ><  itm  >(kxs, k0) in map := kxs; res end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_githwxi_ATS2_DATS_funmap.dats] *)
 (***********************************************************************)
