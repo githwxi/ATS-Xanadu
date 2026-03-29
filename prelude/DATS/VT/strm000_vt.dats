@@ -155,6 +155,7 @@ HX-2024-07-17:
 Wed 17 Jul 2024 10:27:26 PM EDT
 *)
 //
+(*
 #impltmp
 { x0:vt }
 gseq$sep
@@ -170,6 +171,20 @@ strm_vt(x0)><x0>() = ")"
 gseq$beg
 <
 strm_vt(x0)><x0>() = "strm_vt("
+*)
+//
+#impltmp
+{ x0:vt }
+gseq$beg<
+strm_vt(x0)><x0> = strm_vt$beg<>
+#impltmp
+{ x0:vt }
+gseq$end<
+strm_vt(x0)><x0> = strm_vt$end<>
+#impltmp
+{ x0:vt }
+gseq$sep<
+strm_vt(x0)><x0> = strm_vt$sep<>
 //
 (* ****** ****** *)
 //

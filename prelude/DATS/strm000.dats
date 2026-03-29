@@ -97,6 +97,7 @@ HX-2025-12-20:
 Sat Dec 20 11:43:16 AM EST 2025
 *)
 //
+(*
 #impltmp
 { x0:t0 }
 gseq$sep
@@ -109,6 +110,20 @@ gseq$end
 { x0:t0 }
 gseq$beg
 <strm(x0)><x0>() = "strm("
+*)
+//
+#impltmp
+{ x0:t0 }
+gseq$beg
+<strm(x0)><x0> = strm$beg<>
+#impltmp
+{ x0:t0 }
+gseq$end
+<strm(x0)><x0> = strm$end<>
+#impltmp
+{ x0:t0 }
+gseq$sep
+<strm(x0)><x0> = strm$sep<>
 //
 (* ****** ****** *)
 //
@@ -269,7 +284,7 @@ strm$rst() = "..."
 //
 #impltmp
 <>(*tmp*)
-strm$beg() = "$strm("
+strm$beg() = "strm("
 //
 (* ****** ****** *)
 //

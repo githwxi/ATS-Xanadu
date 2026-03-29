@@ -48,12 +48,12 @@ gmap$sep((*void*)) = ","
 < m0:vt >
 < k0:vt >
 < x0:vt >
-gmap$end((*void*)) = "}"
+gmap$end((*void*)) = ")"
 #impltmp
 < m0:vt >
 < k0:vt >
 < x0:vt >
-gmap$beg((*void*)) = "gmap{"
+gmap$beg((*void*)) = "gmap("
 //
 (* ****** ****** *)
 (* ****** ****** *)
