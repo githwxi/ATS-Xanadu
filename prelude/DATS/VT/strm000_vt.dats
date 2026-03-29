@@ -172,21 +172,6 @@ strm_vt(x0)><x0>() = "..."
 gseq$beg<
 strm_vt(x0)><x0>() = "strm_vt("
 //
-(*
-#impltmp
-{ x0:vt }
-gseq$beg<
-strm_vt(x0)><x0> = strm_vt$beg<>
-#impltmp
-{ x0:vt }
-gseq$end<
-strm_vt(x0)><x0> = strm_vt$end<>
-#impltmp
-{ x0:vt }
-gseq$sep<
-strm_vt(x0)><x0> = strm_vt$sep<>
-*)
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -415,9 +400,15 @@ strm_vt$beg() = "strm_vt("
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <>(*tmp*)
 strm_vt$print$len() = (10)
+*)
+#impltmp
+{ x0:t0 }
+gseq$prlen
+<strm_vt(x0)><x0>() = ( 10 )
 //
 (* ****** ****** *)
 //
@@ -425,8 +416,13 @@ strm_vt$print$len() = (10)
 <x0>(*tmp*)
 strm_vt_print0(xs) =
 let
+(*
 val len = 
-strm_vt$print$len<>((*void*))
+strm_vt$print$len<>()
+*)
+val len =
+gseq$prlen
+<strm_vt(x0)><x0>((*0*))
 in//let
 if
 (len < 0)

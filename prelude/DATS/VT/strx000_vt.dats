@@ -168,14 +168,20 @@ strx_vt$sep() = ","
 strx_vt$rst() = "..."
 #impltmp
 <>(*tmp*)
-strx_vt$beg() = "$strx_vt("
+strx_vt$beg() = "strx_vt("
 *)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <>(*tmp*)
 strx_vt$print$len() = (10)
+*)
+#impltmp
+{ x0:t0 }
+gseq$prlen
+<strx_vt(x0)><x0>() = ( 10 )
 //
 (* ****** ****** *)
 //
@@ -183,10 +189,15 @@ strx_vt$print$len() = (10)
 <x0>(*tmp*)
 strx_vt_print0(xs) =
 let
+(*
 val len = 
-strx_vt$print$len<>((*void*))
+strx_vt$print$len<>()
+*)
+val len =
+gseq$prlen
+<strx_vt(x0)><x0>((*0*))
 in//let
-if
+if // if
 (len < 0)
 then strx_vt_all$print0<x0>(xs)
 else strx_vt_len$print0<x0>(xs, len)
