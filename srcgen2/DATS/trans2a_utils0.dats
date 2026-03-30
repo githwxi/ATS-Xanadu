@@ -107,6 +107,7 @@ fun
 s2var_copy
 (s2v0: s2var): s2var =
 s2var(s2v0.name(), s2v0.sort())
+//
 (* ****** ****** *)
 //
 fun

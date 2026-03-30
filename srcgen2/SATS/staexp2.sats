@@ -531,7 +531,7 @@ s2arg_get_lctn:(s2arg)->loc_t
 *)
 (* ****** ****** *)
 fun
-s2arg_get_sort:(s2arg)->sort2
+s2arg_get_sort(s2arg):sort2
 fun
 s2arg_get_node(s2arg):s2arg_node
 (* ****** ****** *)
@@ -539,9 +539,11 @@ s2arg_get_node(s2arg):s2arg_node
 #symload node with s2arg_get_node
 (* ****** ****** *)
 fun
-s2arg_make_node
-(s2t0:sort2,node:s2arg_node): s2arg
+s2arg_make_node(
+s2t0:sort2,node:s2arg_node): s2arg
 #symload s2arg with s2arg_make_node
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX:
