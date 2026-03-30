@@ -87,6 +87,13 @@ printsln
 val map1 =
 funmmap_remove$any(map1, "a")
 val (  ) = printsln("map1 = ", map1)
+//
+val map1 =
+funmmap_insert$any(map1, "b", 1)
+val map1 =
+funmmap_insert$any(map1, "c", 2)
+val (  ) = printsln("map1 = ", map1)
+//
 val-
 (map1, true) =
 funmmap_remove$opt(map1, "a")
@@ -107,6 +114,10 @@ val (  ) = printsln("map1 = ", map1)
 val-
 (true) =
 funmmap_search$tst(map1, "c")
+val (  ) = printsln("map1 = ", map1)
+val-
+(true) =
+funmmap_search$tst(map1, "d")
 val (  ) = printsln("map1 = ", map1)
 //
 (* ****** ****** *)

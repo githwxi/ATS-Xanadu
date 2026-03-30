@@ -122,8 +122,8 @@ f2perr0_d2pat
 //
 |
 D2Pdapp
-( d2f0
-, npf1, d2ps) =>
+(d2f0
+,npf1, d2ps) =>
 let
 val () =
 f2perr0_d2pat(out, d2f0)
@@ -132,8 +132,8 @@ f2perr0_d2patlst(out, d2ps) end
 //
 |
 D2Prfpt
-( d2p1
-, tkas, d2p2) =>
+(d2p1
+,tkas, d2p2) =>
 let
 val () =
 (
@@ -142,28 +142,33 @@ val () =
 (
   f2perr0_d2pat(out, d2p2)) end
 //
+(* ****** ****** *)
+//
 |D2Ptup0
-( npf1, d2ps) =>
+(npf1, d2ps) =>
 let
 val () =
 f2perr0_d2patlst(out, d2ps) end
 //
 |D2Ptup1
-( tknd
-, npf1, d2ps) =>
+(tknd
+,npf1, d2ps) =>
 let
 val () =
 f2perr0_d2patlst(out, d2ps) end
 //
 |D2Prcd2
-( tknd
-, npf1, ldps) =>
+(tknd
+,npf1, ldps) =>
 let
 val () =
 f2perr0_l2d2plst(out, ldps) end
 //
+(* ****** ****** *)
+//
 |D2Pannot
-(d2p1,s1e2,s2e2) =>
+(d2p1
+,s1e2, s2e2) =>
 let
 //
 val () =
@@ -180,12 +185,13 @@ end//let
 //
 endlet//end-of-[D2Pannot(d2p1,...)]
 //
-|
-D2Pt2pck
+|D2Pt2pck
 (d2p1, t2p2) =>
 let
 val () = f2perr0_d2pat(out, d2p1)
 endlet//end-of-[D2Pt2pck(d2p1,...)]
+//
+(* ****** ****** *)
 //
 |D2Pnone0 _ => (   (*void*)   )
 |D2Pnone1 _ => () | D2Pnone2 _ => ()
@@ -434,7 +440,14 @@ prints("D2El1azy(", "...", ")")
 (* ****** ****** *)
 //
 |D2Eannot _ =>
-prints("D2Eannot(", "...", ")")
+(
+prints("D2Eannot(", "...", ")"))
+//
+(* ****** ****** *)
+//
+|D2Eg1mac _ =>
+(
+prints("D2Eg1mac(", "...", ")"))
 //
 (* ****** ****** *)
 //
@@ -863,12 +876,15 @@ D2Eerrck(_,_) => f2perr0_d2exp(out, d2e)
 |
 _(*otherwise*) =>
 let
-  val
-  loc = d2e.lctn((*0*))
-  val () = prerrsln
-  ("f2perr0_d2exp:auxmain: loc = ", loc)
-  val () = prerrsln
-  ("f2perr0_d2exp:auxmain: d2e = ", d2e)
+val loc = d2e.lctn((*0*))
+val ( ) =
+(
+  prerrsln
+  ("f2perr0_d2exp:auxmain: loc = ", loc))
+val ( ) =
+(
+  prerrsln
+  ("f2perr0_d2exp:auxmain: d2e = ", d2e))
 endlet
 //
 end (*let*) // end-of-[ auxmain(out, d2e) ]

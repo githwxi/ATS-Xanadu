@@ -410,11 +410,19 @@ sargid_sym(tok1)
 in//let
 //
 case+ topt of
-|
-optn_nil() =>
+//
+|optn_nil
+( (*0*) ) =>
+(
+    s2v1 ) where
+{
+val s2v1 =
 s2var_make_name(sym1)
-|
-optn_cons(s1t2) =>
+val (  ) =
+tr12env_add0_s2var(env0, s2v1)}
+//
+|optn_cons
+(  s1t2  ) =>
 (
     s2v1 ) where
 {

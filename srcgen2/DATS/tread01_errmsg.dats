@@ -398,7 +398,7 @@ endlet where
   val ( ) =
   prerrsln("auxmain: s1e = ", s1e)
 *)
-} (*where*)//end-of-(auxmain(out,s1e))
+}(*where*)//end-of-(auxmain(out,s1e))
 //
 in//local
 //
@@ -713,8 +713,14 @@ d1pat_fpemsg(out, d1p1);
 d1pat_fpemsg(out, d1p2))
 //
 |
+D1Psarg(s1as) =>
+(
+s1arglst_fpemsg(out, s1as))
+//
+|
 D1Pl1st(d1ps) =>
-d1patlst_fpemsg(out, d1ps)
+(
+d1patlst_fpemsg(out, d1ps))
 |
 D1Pl2st(dps1,dps2) =>
 (
@@ -760,7 +766,7 @@ endlet where
   val ( ) =
   prerrsln("auxmain: d1p = ", d1p)
 *)
-} (*where*)//end-of-(auxmain(out,d1p))
+}(*where*)//end-of-(auxmain(out,d1p))
 //
 in//local
 //
@@ -768,8 +774,10 @@ in//local
 d1pat_fpemsg
 ( out, d1p0 ) =
 let
+//
 #impltmp
 g_print$out<>() = out
+//
 in//let
 //
 case+
@@ -1014,7 +1022,7 @@ endlet where
   val ( ) =
   prerrsln("auxmain: d1e = ", d1e)
 *)
-} (*where*)//end-of-(auxmain(out,d1e))
+}(*where*)//end-of-(auxmain(out,d1e))
 //
 (* ****** ****** *)
 in(* in-of-local *)
@@ -2036,7 +2044,7 @@ endlet where
   val tdxp = d1valdcl_get_tdxp(dval)
   val wsxp = d1valdcl_get_wsxp(dval)
 //
-} (*where*)//end-of-[d1valdcl_fpemsg(out,dval)]
+}(*where*)//end-of-[d1valdcl_fpemsg(out,dval)]
 //
 (* ****** ****** *)
 //
@@ -2062,7 +2070,7 @@ endlet where
   val sres = d1vardcl_get_sres(dvar)
   val dini = d1vardcl_get_dini(dvar)
 //
-} (*where*)//end-of-[d1vardcl_fpemsg(out,dval)]
+}(*where*)//end-of-[d1vardcl_fpemsg(out,dval)]
 //
 (* ****** ****** *)
 //
@@ -2095,7 +2103,7 @@ endlet where
   val tdxp = d1fundcl_get_tdxp(dfun)
   val wsxp = d1fundcl_get_wsxp(dfun)
 //
-} (*where*)//end-of-[d1fundcl_fpemsg(out,dfun)]
+}(*where*)//end-of-[d1fundcl_fpemsg(out,dfun)]
 //
 (* ****** ****** *)
 //
@@ -2123,7 +2131,7 @@ endlet where
   val sres = d1cstdcl_get_sres(dcst)
   val dres = d1cstdcl_get_dres(dcst)
 //
-} (*where*)//end-of-[d1cstdcl_fpemsg(out,dcst)]
+}(*where*)//end-of-[d1cstdcl_fpemsg(out,dcst)]
 //
 (* ****** ****** *)
 //

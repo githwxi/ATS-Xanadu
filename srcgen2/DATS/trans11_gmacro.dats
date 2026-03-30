@@ -137,8 +137,8 @@ val
 genv =
 list_cons(@(gid1, g1m1), genv) }
 )
-) (*case+*)
-// end of [g1env_addlst(genv,...)]
+)(*case+*)//endof[list_cons(...)]
+// end-of-[g1env_addlst(genv,...)]
 //
 (* ****** ****** *)
 //
@@ -151,19 +151,23 @@ g1env_search$opt
 case+ genv of
 |
 list_nil() =>
-optn_vt_nil(*void*)
+(
+optn_vt_nil(*0*))
 |
-list_cons((x1, v1), genv) =>
+list_cons
+((xv1), genv) =>
 (
 if
-(gid0 = x1)
-then optn_vt_cons(v1)
-else g1env_search$opt(genv, gid0)))
-// end-[g1env_search$opt(genv, ...)]
+(gid0 = xv1.0)
+then
+optn_vt_cons(xv1.1)
+else
+g1env_search$opt(genv, gid0)))
+//endof[g1env_search$opt(genv, ...)]
 //
 (* ****** ****** *)
 
-end (*local*) // end of [local(g1env)]
+end(*local*) // end-of-[local(g1env)]
 
 (* ****** ****** *)
 //
@@ -179,7 +183,7 @@ prints("G1ENV(", genv, ")")
 end where
 {
   #impltmp g_print$out<>() = out
-} (*where*) // end of [g1env_fprint(...)]
+}(*where*) // end-of-[g1env_fprint(...)]
 //
 (* ****** ****** *)
 
@@ -203,7 +207,7 @@ tok1.node() of
 |T_IDALP(nam1) => symbl(nam1)
 |T_IDSYM(nam1) => symbl(nam1))
 //
-) (*case+*) // end of [f0_garg(g1a0)]
+)(*case+*) // end-of-[f0_garg(g1a0)]
 
 fun
 f0_g1as
@@ -214,16 +218,16 @@ list_map
 <x0><y0>(g1as)) where
 {
 //
-  #typedef x0 = g1arg
-  #typedef y0 = g1id0
+#typedef x0 = g1arg
+#typedef y0 = g1id0
 //
-  #impltmp
-  map$fopr<x0><y0>(x0) = f0_garg(x0)
+#impltmp
+map$fopr<x0><y0>(x0) = f0_garg(x0)
 //
-} (*where*) // end of [f0_g1as(g1as)]
+}(*where*) // end-of-[f0_g1as(g1as)]
 
 (* ****** ****** *)
-
+//
 fun
 f0_gexp
 ( g1e0
@@ -289,7 +293,7 @@ f0_gexp(g1e1) in list_sing(g1m1)
 end//let
 )
 }
-end (*let*) // end of [G1Ea1pp(...)]
+end(*let*) // end-of-[G1Ea1pp(...)]
 //
 |
 G1Ea2pp
@@ -301,7 +305,7 @@ val g1e2 = f0_gexp(g1e2)
 in//let
   G1Mapps
   (g1f0, list_pair(g1e1, g1e2))
-end (*let*) // end of [G1Ea2pp(...)]
+end(*let*) // end-of-[G1Ea2pp(...)]
 //
 |
 G1Elist(g1es) =>
@@ -310,27 +314,42 @@ case+ g1es of
 |
 list_nil() => G1Mnone0()
 |
-list_cons(g1e1, g1es) =>
+list_cons
+(g1e1, g1es) =>
+(
+case+ g1es of
+//
+|
+list_nil _ => f0_gexp(g1e1)
+//
+|
+list_cons _ =>
 let
-val g1m1 = f0_gexp(g1e1)
+//
+val g1m1 =
+(
+  f0_gexp(g1e1))//end(val(g1m1))
+//
 in//let
+//
 G1Mlist
 (list_cons(g1m1, f0_g1es(g1es)))
-end (*let*) // end-(list_cons(...))
-)
+//
+end(*let*)//endof(list_cons(...))
+)(*case+*)//endof(list_cons(...))
+)(*case+*)//end-of-[G1Mlist(...)]
 //
 ) where
 {
 (*
-  val
-  loc0 = g1e0.lctn()
-  val () =
-  prerrsln("f0_gexp: loc0 = ", loc0)
-  val () =
-  prerrsln("f0_gexp: g1e0 = ", g1e0)
+val loc0 = g1e0.lctn()
+val (  ) =
+prerrsln("f0_gexp: loc0 = ", loc0)
+val (  ) =
+prerrsln("f0_gexp: g1e0 = ", g1e0)
 *)
-} (*where*) // end of [f0_gexp(g1e0)]
-
+}(*where*) // end-of-[f0_gexp(g1e0)]
+//
 (* ****** ****** *)
 
 and
@@ -342,13 +361,13 @@ list_map
 <x0><y0>(g1es)) where
 {
 //
-  #typedef x0 = g1exp
-  #typedef y0 = g1mac
+#typedef x0 = g1exp
+#typedef y0 = g1mac
 //
-  #impltmp
-  map$fopr<x0><y0>(x0) = f0_gexp(x0)
+#impltmp
+map$fopr<x0><y0>(x0) = f0_gexp(x0)
 //
-} (*where*) // end of [f0_g1es(g1es)]
+}(*where*) // end-of-[f0_g1es(g1es)]
 
 (* ****** ****** *)
 
@@ -365,7 +384,7 @@ g1ma.node() of
 |G1MAGsarg(g1as) => f0_g1as(g1as)
 |G1MAGdarg(g1as) => f0_g1as(g1as)
 //
-) (*case+*) // end of [f0_gmag(g1ma)]
+)(*case+*) // end-of-[f0_gmag(g1ma)]
 
 (* ****** ****** *)
 
@@ -387,7 +406,7 @@ val gids = f0_gmag(g1ma)
 in//let
 G1Mlam0(gids, f0_gmas(gmas, def1))
 end // end-of-(list_cons(g1ma,gmas))
-) (*case+*) // end of [f0_gmas(gmas,...)]
+)(*case+*) // end-of-[f0_gmas(gmas,...)]
 
 (* ****** ****** *)
 in//local
@@ -411,9 +430,9 @@ f0_gexp(g1e1)
 |
 optn_nil() => G1Mnone0()): g1mac
 //
-} (*where*) // end of [trans11_gmdef(...)]
+}(*where*) // end-of-[trans11_gmdef(...)]
 
-end (*local*) // end of [local(trans11_gmdef)]
+end(*local*) // end-of-[local(trans11_gmdef)]
 
 (* ****** ****** *)
 
@@ -488,12 +507,14 @@ trans11_g1mac_subs
   val genv =
   g1env_addlst(genv, gmas, g1ms)
 }
-| _(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
+|
+_(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
 )
 //
-| _(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
+|
+_(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
 //
-) (*case+*) // end of [f0_apps_els2(...)]
+)(*case+*) // end-of-[f0_apps_els2(...)]
 
 (* ****** ****** *)
 //
@@ -530,10 +551,11 @@ G1Mapps _ => f0_apps(env0, g1m0)
 ) where
 {
 (*
-  val () =
-  prerrsln("f0_gmac: g1m0 = ", g1m0)
+val () =
+(
+  prerrsln("f0_gmac: g1m0 = ", g1m0))
 *)
-} (*where*) // end of [f0_g1m0(env0,g1m0)]
+}(*where*) // end-of-[f0_g1m0(env0,g1m0)]
 //
 and
 f0_gid0
@@ -549,10 +571,12 @@ tr11env_search$opt(env0, sym1)
 in//let
 case+ opt1 of
 | ~
-optn_vt_nil() => g1m0
+optn_vt_nil
+(  (*0*)  ) => ( g1m0 )
 | ~
-optn_vt_cons(g1m0) => f0_gmac(env0, g1m0)
-end (*let*) // end of [f0_gid0(env0,g1m0)]
+optn_vt_cons
+(   g1m0   ) => f0_gmac(env0, g1m0)
+end(*let*) // end-of-[f0_gid0(env0,g1m0)]
 //
 (* ****** ****** *)
 in//local
@@ -567,10 +591,11 @@ f0_gmac(env0, g1m0)) where
 //
 (*
 val () =
-prerrsln("trans11_g1mac: g1m0 = ", g1m0)
+prerrsln
+("trans11_g1mac: g1m0 = ", g1m0)
 *)
 //
-} (*where*) // end of [trans11_g1mac(g1m0)]
+}(*where*) // end-of-[trans11_g1mac(g1m0)]
 //
 (* ****** ****** *)
 //
@@ -586,11 +611,11 @@ prerrsln("trans11_g1mac_apps: g1f0 = ", g1f0)
 val () =
 prerrsln("trans11_g1mac_apps: g1ms = ", g1ms)
 *)
-} (*where*) // end-(trans11_g1mac_apps(g1f0,g1ms))
+}(*where*) // end-(trans11_g1mac_apps(g1f0,g1ms))
 //
 (* ****** ****** *)
 
-end (*local*) // end of [local(trans11_g1mac/apps)]
+end(*local*) // end-of-[local(trans11_g1mac/apps)]
 
 (* ****** ****** *)
 
@@ -626,7 +651,7 @@ f0_apps(env0, g1m0, genv)
 |
 _(*otherwise*) => G1Msubs(g1m0, genv)
 //
-) (*case+*) // end of [f0_g1m0(...)]
+)(*case+*) // end-of-[f0_g1m0(env0,...)]
 //
 and
 f0_g1ms
@@ -648,7 +673,7 @@ list_map$e1nv
 #impltmp
 map$e1nv$fopr
 <x0><y0><e1>(x0, e1) = f0_g1m0(e1, x0, genv)
-} (*where*) // end of [f0_g1ms(...)]
+}(*where*) // end-of-[f0_g1ms(...)]
 //
 (* ****** ****** *)
 //
@@ -686,10 +711,12 @@ case+ opt1 of
 optn_vt_nil() => g1m0
 | ~
 optn_vt_cons
-(   g1m1   ) => trans11_g1mac(env0, g1m1)
-end // end of [None_vt]
+(   g1m1   ) =>
+(
+  trans11_g1mac(  env0, g1m1  ))
+end//let//end-of-[optn_vt_nil(...)]
 //
-end (*let*) // end of [f0_gmid(...)]
+end(*let*) // end-of-[f0_gmid(...)]
 //
 (* ****** ****** *)
 
@@ -746,9 +773,9 @@ G1Mift0
 {
   val g1m2 = G1Msubs(g1m2, genv)
   val g1m3 = G1Msubs(g1m3, genv)
-} (*where*) // end-of-(non-if-redex)
+}(*where*) // end-of-(non-if-redex)
 //
-end (*let*) // end of [f0_cond(...)]
+end(*let*) // end-of-[f0_cond(env0,...)]
 
 (* ****** ****** *)
 //
@@ -771,7 +798,7 @@ g1ms = f0_g1ms(env0, g1ms, genv)
 //
 in//let
 trans11_g1mac_apps(env0, g1f0, g1ms)
-end (*let*) // end of [f0_apps(...)]
+end(*let*) // end-of-[f0_apps(env0,...)]
 //
 (* ****** ****** *)
 in(* in-of-local *)
@@ -794,11 +821,11 @@ val () =
 prerrsln
 ("trans11_g1mac_subs: env0 = ", env0)
 *)
-} (*where*) // end of [trans11_g1mac_subs]
+}(*where*) // end-of-[trans11_g1mac_subs]
 //
 (* ****** ****** *)
 //
-end (*local*) // end of [local(trans11_g1mac_subs)]
+end(*local*)// end-of-[local(trans11_g1mac_subs)]
 
 (* ****** ****** *)
 (* ****** ****** *)

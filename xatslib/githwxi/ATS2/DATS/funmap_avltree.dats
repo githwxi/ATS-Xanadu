@@ -56,13 +56,34 @@ ATS_DYNLOADFLAG 0
 (* ****** ****** *)
 (* ****** ****** *)
 //
-// HX: maximal height difference of two siblings
+fun<>
+imax{x,y:i0}
+( x: sint(x)
+, y: sint(y)): sint(max(x,y)) =
+(
+  if (x >= y) then (x) else (y))
+//
+fun<>
+imin{x,y:i0}
+( x: sint(x)
+, y: sint(y)): sint(max(x,y)) =
+(
+  if (x <= y) then (x) else (y))
+//
+(* ****** ****** *)
+//
+(*
+HX: maximal height
+difference of two siblings
+*)
 //
 #define HTDF = 1
-#sexpdef HTDF = 1
-//
 #define HTDFp1 = (HTDF+1)
 #define HTDFm1 = (HTDF-1)
+//
+#sexpdef HTDF = 1
+#sexpdef HTDFp1 = (HTDF+1)
+#sexpdef HTDFm1 = (HTDF-1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -103,6 +124,104 @@ avltree_dec
 // end of [avltree_dec]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+(*
+HX-2026-03-29:
+Should this kind of macro
+support be made available in ATS3?
+*)
+macdef
+avlht(tx0) =
+(
+case+ ,(tx0) of
+| B(h, _, _, _, _) => h | E() => 0)
+*)
+//
+fun
+<key:t0>
+<itm:t0>
+avltht{h:nat}
+( tx0
+: avltree(key, itm, h)): sint(h) =
+(
+case+ tx0 of
+| B(h, _, _, _, _) => h | E() => 0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX:
+left rotation
+for restoring height invariant
+*)
+fun
+<key:t0>
+<itm:t0>
+avltree_lrotate
+{hl,hr:nat | hl+HTDFp1 = hr}
+(
+  k0: key
+, x0: itm
+, hl: sint hl
+, tl: avltree(key, itm, hl)
+, hr: sint hr
+, tr: avltree(key, itm, hr)
+) : avltree_inc(key, itm, hr) =
+let
+//
+val+
+B{hrl:i0,hrr:i0}
+(_, kr, xr, trl, trr) = tr
+//
+val hrl =
+(
+avltht<key><itm>(trl)): sint hrl
+and hrr =
+(
+avltht<key><itm>(trr)): sint hrr
+//
+in//let
+//
+if // if
+(hrl <= hrr+HTDFm1)
+then let//then
+//
+val hrl1 = (hrl + 1)
+//
+in//let//then
+//
+B(
+1+imax(hrl1,hrr), kr, xr,
+B(hrl1, k0, x0, tl, trl), trr)
+end//let//then
+else let//else
+// HX: [hrl=hrr+2]: deep rotation
+val+
+B{hrll:i0,hrlr:i0}
+(_, krl, xrl, trll, trlr) = trl
+val hrll =
+(
+avltht<key><itm>(trll)): sint hrll
+and hrlr =
+(
+avltht<key><itm>(trlr)): sint hrlr
+//
+in//let//else
+//
+B(
+hr, krl, xrl,
+B(1+imax(hl,hrll), k0, x0, tl, trll),
+B(1+imax(hrlr,hrr), kr, xr, trlr, trr))
+//
+end//let//else
+//
+end(*let*)//end-of-[avltree_lrotate<key><itm>(...)]
+//
+(* ****** ****** *)
+////
 (* ****** ****** *)
 //
 #absimpl
@@ -264,61 +383,101 @@ auxmain(tl1), $llazy(
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<key:t0>
+<itm:t0>
+funmap_search$tst
+  ( map, k0 ) =
+(
+  search(map)) where
+{
+//
+fun
+search{h:nat} .<h>.
+(
+tx0:
+avltree
+(key,itm,h)): bool =
+(
+//
+case+ tx0 of
+|
+E((*0*)) => false
+|
+B(_, k1, x1, tl1, tr2) =>
+let
+val sgn =
+compare_key_key<key>(k0, k1)
+in//let
+//
+if // if
+(sgn < 0)
+then search(tl1) else
+( if // if
+  (sgn > 0)
+  then search(tr2) else true)
+//
+end(*let*)//end-of-[B(h,k1,x1,tl1,tr2)]
+//
+)(*case+*)//end-of-[search( tx0 ):bool]
+}(*where*)//end-of-[funmap_search$tst(map,k0)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmap_search$opt
+  ( map, k0 ) =
+(
+  search(map)) where
+{
+//
+fun
+search{h:nat} .<h>.
+(
+tx0:
+avltree
+(key,itm,h)): optn_vt(itm) =
+(
+//
+case+ tx0 of
+|
+E((*0*)) =>
+(
+  optn_vt_nil(*void*))
+|
+B(_, k1, x1, tl1, tr2) =>
+let
+val sgn =
+compare_key_key<key>(k0, k1)
+in//let
+//
+if // if
+(sgn < 0)
+then
+(
+search(tl1))
+else
+(
+if // if
+(sgn > 0) then
+(
+search(tr2)) else optn_vt_cons(x1))
+//
+end(*let*)//end-of-[B(h,k1,x1,tl1,tr2)]
+//
+)(*case+*)//end-of-[search( tx0 ):optn_vt]
+}(*where*)//end-of-[funmap_search$opt(map,k0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_githwxi_ATS2_DATS_funmap_avltree.dats] *)
 (***********************************************************************)
 ////
 (* ****** ****** *)
-(* ****** ****** *)
-//
-implement
-{key,itm}
-funmap_search
-  (map, k0, res) = let
-//
-fun search{h:nat} .<h>.
-(
-  t0: avltree (key, itm, h)
-, res: &itm? >> opt (itm, b)
-) :<!wrt> #[b:bool] bool(b) = let
-in
-//
-case+ t0 of
-| B (
-    _(*h*), k, x, tl, tr
-  ) => let
-    val sgn =
-      compare_key_key<key> (k0, k)
-    // end of [val]
-  in
-    case+ 0 of
-    | _ when sgn < 0 => search (tl, res)
-    | _ when sgn > 0 => search (tr, res)
-    | _ => let
-        val () = res := x
-        prval () = opt_some{itm}(res) in true
-      end // end of [_]
-  end // end of [B]
-| E () => 
-    let prval () = opt_none{itm}(res) in false end
-  // end of [E]
-//
-end // end of [search]
-//
-in
-  search (map, res)
-end // end of [funmap_search]
-
-(* ****** ****** *)
-
-macdef
-avlht (t) =
-(
-case+ ,(t) of B (h, _, _, _, _) => h | E ((*void*)) => 0
-) // end of [avlht]
-
-(* ****** ****** *)
-
 (*
 ** left rotation for restoring height invariant
 *)
