@@ -122,25 +122,37 @@ d3p0.node() of
 |D3Pflat _ => f0_flat(env0, d3p0)
 |D3Pfree _ => f0_free(env0, d3p0)
 //
-(*
+(* ****** ****** *)
 |D3Psapp _ => f0_sapp(env0, d3p0)
-*)
 |D3Psapq _ => f0_sapq(env0, d3p0)
+(* ****** ****** *)
 //
+(*
+HX-2026-03-30:
+There is NO [D3Ptapp]!!!
+|D3Ptapp _ => f0_tapp(env0, d3p0)
+*)
 |D3Ptapq _ => f0_tapq(env0, d3p0)
 //
+(* ****** ****** *)
 |D3Pdap1 _ => f0_dap1(env0, d3p0)
 |D3Pdapp _ => f0_dapp(env0, d3p0)
+(* ****** ****** *)
 //
 |D3Prfpt _ => f0_rfpt(env0, d3p0)
+//
+(* ****** ****** *)
 //
 |D3Ptup0 _ => f0_tup0(env0, d3p0)
 |D3Ptup1 _ => f0_tup1(env0, d3p0)
 |D3Prcd2 _ => f0_rcd2(env0, d3p0)
 //
+(* ****** ****** *)
+//
 |D3Pargtp _ => f0_argtp(env0, d3p0)
 |D3Pannot _ => f0_annot(env0, d3p0)
 //
+(* ****** ****** *)
 |
 _(* otherwise *) => d3pat_none2(d3p0)
 //
@@ -308,6 +320,36 @@ in//let
 end (*let*) // end of [f0_free(env0,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-03-30:
+Note that [D3Psapp]
+needs to be handled later
+in a dependently typed setting!
+Mon Mar 30 06:24:52 PM EDT 2026
+*)
+fun
+f0_sapp
+( env0:
+! tr3aenv
+, d3p0: d3pat): d3pat =
+let
+//
+val loc0 = d3p0.lctn()
+//
+val-
+D3Psapp
+(d3f0, s2vs) = d3p0.node()
+//
+val
+d3f0 = trans3a_d3pat(env0, d3f0)
+//
+in//let
+d3pat_make_tpnd
+(loc0, d3f0.styp(), D3Psapp(d3f0,s2vs))
+end(*let*)//end-of-[ f0_sapp(env0,d3p0) ]
+//
 (* ****** ****** *)
 //
 fun
@@ -922,6 +964,13 @@ val t2p0 = trans3a_s2typ(env0, t2p0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-03-30:
+Note that [D3Psapp]
+needs to be handled later
+in a dependently typed setting!
+Mon Mar 30 06:24:52 PM EDT 2026
+*)
 fun
 f0_sapp
 ( env0:

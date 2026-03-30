@@ -258,6 +258,22 @@ endlet // end of [d3pat_free_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3pat_sapp_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3f0: d3pat
+,s2vs: s2varlst): d3pat =
+let
+val
+lvl0 = d3pat_errvl(d3f0) in//let
+d3pat_errck
+(lvl0+1
+,d3pat(loc0,t2p0,D3Psapp(d3f0,s2vs)))
+endlet // end of [d3pat_sapp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3pat_sapq_errck
 (loc0: loc_t
 ,t2p0: s2typ
@@ -1361,28 +1377,47 @@ f0_any(d3p0, err)
 //
 |D3Pcon _ => d3p0
 //
+(* ****** ****** *)
+//
 |D3Pbang _ => f0_bang(d3p0, err)
 |D3Pflat _ => f0_flat(d3p0, err)
 |D3Pfree _ => f0_free(d3p0, err)
 //
-(*
+(* ****** ****** *)
+//
 |D3Psapp _ => f0_sapp(d3p0, err)
-*)
 |D3Psapq _ => f0_sapq(d3p0, err)
 //
+(* ****** ****** *)
+//
+(*
+HX-2026-03-30:
+There is NO [D3Ptapp]!!!
+|D3Ptapp _ => f0_tapp(d3p0, err)
+*)
 |D3Ptapq _ => f0_tapq(d3p0, err)
+//
+(* ****** ****** *)
 //
 |D3Pdap1 _ => f0_dap1(d3p0, err)
 |D3Pdapp _ => f0_dapp(d3p0, err)
 //
+(* ****** ****** *)
+//
 |D3Prfpt _ => f0_rfpt(d3p0, err)
+//
+(* ****** ****** *)
 //
 |D3Ptup0 _ => f0_tup0(d3p0, err)
 |D3Ptup1 _ => f0_tup1(d3p0, err)
 |D3Prcd2 _ => f0_rcd2(d3p0, err)
 //
+(* ****** ****** *)
+//
 |D3Pargtp _ => f0_argtp(d3p0, err)
 |D3Pannot _ => f0_annot(d3p0, err)
+//
+(* ****** ****** *)
 //
 | _(*otherwise*) =>
 let
@@ -1535,6 +1570,41 @@ end (*let*) // end of [f0_free(d3p,err)]
 (* ****** ****** *)
 //
 fun
+f0_sapp
+( d3p: d3pat
+, err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+(*
+val t2p = d3p.styp()
+val t2p =
+tread3a_s2typ(t2p, err)
+val ( ) = d3p.styp(t2p)
+*)
+//
+val-
+D3Psapp
+( d3f0, s2vs) = d3p.node()
+//
+val
+d3f0 = tread3a_d3pat(d3f0, err)
+//
+in//let
+//
+if // if
+(err=e00)
+then (d3p) else
+(
+d3pat_sapp_errck(
+  d3p.lctn(),d3f0.styp(),d3f0,s2vs))
+//
+end (*let*) // end of [f0_sapp(d3p,err)]
+//
+(* ****** ****** *)
+//
+fun
 f0_sapq
 ( d3p: d3pat
 , err: &sint >> _): d3pat =
@@ -1560,7 +1630,8 @@ if
 then (d3p) else
 let
 val loc = d3p.lctn() in
-d3pat_sapq_errck(loc, t2p, d3f0,s2as)
+(
+d3pat_sapq_errck(loc,t2p,d3f0,s2as))
 end (*let*)
 end (*let*) // end of [f0_sapq(d3p,err)]
 //
