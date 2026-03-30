@@ -1148,6 +1148,8 @@ d3p0.node() of
 |D3Psapq _ => f0_sapq(d3p0, err)
 *)
 //
+(* ****** ****** *)
+//
 (*
 |D3Ptapp _ => f0_tapp(d3p0, err)
 *)
@@ -1263,7 +1265,7 @@ D3Psapp
 val
 d3f0 = tread23_d3pat(d3f0, err)
 in//let
-if
+if // if
 (err=e00)
 then (d3p) else
 d3pat_sapp_errck(d3p.lctn(),d3f0,s2vs)
