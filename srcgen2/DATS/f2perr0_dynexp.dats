@@ -120,8 +120,18 @@ f2perr0_d2pat
 (out, drpt.dpat((*void*))) end
 *)
 //
-|
-D2Pdapp
+(* ****** ****** *)
+//
+|D2Psapp
+(d2f0, s2vs) =>
+let
+val () =
+(
+  f2perr0_d2pat(out, d2f0)) end
+//
+(* ****** ****** *)
+//
+|D2Pdapp
 (d2f0
 ,npf1, d2ps) =>
 let
@@ -130,8 +140,9 @@ f2perr0_d2pat(out, d2f0)
 val () =
 f2perr0_d2patlst(out, d2ps) end
 //
-|
-D2Prfpt
+(* ****** ****** *)
+//
+|D2Prfpt
 (d2p1
 ,tkas, d2p2) =>
 let
