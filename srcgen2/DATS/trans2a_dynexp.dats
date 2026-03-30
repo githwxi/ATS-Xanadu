@@ -79,6 +79,10 @@ _(*TRANS2A*) = "./trans2a.dats"
 #symload node with s2exp_get_node
 #symload node with s2typ_get_node
 (* ****** ****** *)
+#symload sort with s2var_get_sort
+#symload sort with s2exp_get_sort
+#symload sort with s2typ_get_sort
+(* ****** ****** *)
 #symload styp with d2var_get_styp
 #symload styp with d2var_set_styp
 (* ****** ****** *)
