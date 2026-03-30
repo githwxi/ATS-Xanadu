@@ -76,7 +76,13 @@ _(*TRANS23*) = "./trans23.dats"
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload name with s2var_get_name
+(* ****** ****** *)
 #symload node with s2typ_get_node
+(* ****** ****** *)
+#symload sort with s2var_get_sort
+#symload sort with s2exp_get_sort
+#symload sort with s2typ_get_sort
 (* ****** ****** *)
 #symload lctn with d2var_get_lctn
 #symload styp with d2var_get_styp
