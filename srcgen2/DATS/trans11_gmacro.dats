@@ -150,17 +150,18 @@ g1env_search$opt
 (
 case+ genv of
 |
-list_nil() =>
+list_nil
+( (*nil*) ) =>
 (
-optn_vt_nil(*0*))
+optn_vt_nil())
 |
 list_cons
-((xv1), genv) =>
+((x1, v1), genv) =>
 (
 if
-(gid0 = xv1.0)
+(gid0 = x1)
 then
-optn_vt_cons(xv1.1)
+optn_vt_cons(v1)
 else
 g1env_search$opt(genv, gid0)))
 //endof[g1env_search$opt(genv, ...)]

@@ -121,11 +121,23 @@ _(*TRANS23*) = "./trans23.dats"
 (* ****** ****** *)
 //
 fn0
-s2typ_new0_x2tp
-( loc0: loc_t ): s2typ =
+s2var_copy
+(s2v0: s2var): s2var =
 (
-s2typ_xtv
-(x2t2p_make_lctn(loc0)))
+  s2var(name, s2t0))
+where
+{
+val name = s2v0.name()
+val s2t0 = s2v0.sort() }
+//
+(* ****** ****** *)
+//
+fn0
+s2typ_new0_x2tp
+(loc0: loc_t): s2typ =
+(
+s2typ_xtv(
+x2t2p_make_lctn(loc0)))
 //
 (* ****** ****** *)
 //
@@ -242,15 +254,23 @@ d3pat_make_tpnd
 //
 |D2Pcon _ => f0_con(env0, d2p0)
 //
-(*
-|D2Psym0 _ => f0_sym0(env0, d2p0)
-*)
-//
-|D2Pcons _ => f0_cons(env0, d2p0)
+(* ****** ****** *)
 //
 |D2Pbang _ => f0_bang(env0, d2p0)
 |D2Pflat _ => f0_flat(env0, d2p0)
 |D2Pfree _ => f0_free(env0, d2p0)
+//
+(* ****** ****** *)
+(*
+|D2Psym0 _ => f0_sym0(env0, d2p0)
+*)
+(* ****** ****** *)
+|D2Pcons _ => f0_cons(env0, d2p0)
+(* ****** ****** *)
+(*
+|D2Psapp _ => f0_sapp(env0, d2p0)
+*)
+(* ****** ****** *)
 //
 (*
 HX-2024-10-04:
@@ -261,13 +281,21 @@ been eliminated at this point!
 |D2Pdap1 _ => f0_dap1(env0, d2p0)
 |D2Pdapp _ => f0_dapp(env0, d2p0)
 //
+(* ****** ****** *)
+//
 |D2Prfpt _ => f0_rfpt(env0, d2p0)
+//
+(* ****** ****** *)
 //
 |D2Ptup0 _ => f0_tup0(env0, d2p0)
 |D2Ptup1 _ => f0_tup1(env0, d2p0)
 //
+(* ****** ****** *)
+//
 |D2Pargtp _ => f0_argtp(env0, d2p0)
 |D2Pannot _ => f0_annot(env0, d2p0)
+//
+(* ****** ****** *)
 //
 | _(*otherwise*) => d3pat_none1(d2p0)
 //
@@ -1217,8 +1245,11 @@ val d3f0 =
 (
   trans23_d2exp(env0, d2f0))
 //
+(*
 val tfun = d2f0.styp((*nil*))
 val tfun = s2typ_hnfiz0(tfun)
+*)
+val tfun = d3f0.styp((*nil*))
 //
 val d3f1 =
 (
@@ -1240,13 +1271,17 @@ d3exp_make_tpnd
 (loc0
 ,t2p1, D3Esapq(d3f0, t2ps)))
 endlet//end-of-[T2Puni0(...)]
-|
-_(*non-T2Puni0*) =>
+//
+|_(*non-T2Puni0*) => ( d3f0 )
+(*
+|_(*non-T2Puni0*) =>
+(
 let
 val () =
-d3f0.styp(tfun) in d3f0 end )
+d3f0.styp(tfun) in d3f0 end)*))
 //
-where { // end-of-case
+where//end(caseof(tfun.node()))
+{
 //
 fun
 f1_t2ps
@@ -1271,7 +1306,7 @@ f1_t2ps_cons
 (
 case+ s2es of
 |list_nil
-((*nil*)) =>
+( (*nil*) ) =>
 list_cons
 ( t2p1
 , f1_t2ps(s2vs, s2es)) where
@@ -1281,28 +1316,32 @@ list_cons
 //
 |list_cons
 (s2e1, s2es) =>
-if
-s2exp_imprq(s2e1)
-then
+if // if
+(
+sort2_imprq
+(s2e1.sort()))
+then//then
 list_cons
 ( t2p1
 , f1_t2ps(s2vs, s2es)) where
 {
-  val t2p1 = s2exp_stpize(s2e1) }
-else
+  val t2p1 = s2exp_stpize(s2e1)
+} else//else
 (
-  f1_t2ps_cons(s2v1, s2vs, s2es) )
+  f1_t2ps_cons(s2v1, s2vs, s2es))
 ) (*case+*)//end-of-[f1_t2ps_cons()]
 } (*where*)//end-of-case(tfun.node())
 //
 in//let
+//
 let
 val t2p1 =
 d3f1.styp((*0*)) in
 (
   d3exp_make_tpnd
-  (loc0, t2p1, D3Esapp(d3f1, s2es)) )
+  (loc0, t2p1, D3Esapp(d3f1, s2es)))
 end (*let*)
+//
 end (*let*)//end-of-[f0_sapp(env0,d2e0)]
 //
 (* ****** ****** *)
