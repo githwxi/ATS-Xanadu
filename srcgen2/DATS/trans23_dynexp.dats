@@ -130,6 +130,9 @@ where
 val name = s2v0.name()
 val s2t0 = s2v0.sort() }
 //
+#symload copy
+  with s2var_copy of 1000
+//
 (* ****** ****** *)
 //
 fn0
@@ -137,7 +140,7 @@ s2typ_new0_x2tp
 (loc0: loc_t): s2typ =
 (
 s2typ_xtv(
-x2t2p_make_lctn(loc0)))
+  x2t2p_make_lctn(loc0)))
 //
 (* ****** ****** *)
 //
@@ -150,8 +153,8 @@ case+ svts of
 |list_nil() => ( t2p0 )
 |list_cons _ =>
 (
-s2typ_subst0(t2p0, svts))
-)(*case+*) // s2typ_subst0
+  s2typ_subst0(t2p0, svts))
+)(*case+*)//s2typ_subst0(...)
 //
 (* ****** ****** *)
 (* ****** ****** *)
