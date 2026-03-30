@@ -101,10 +101,17 @@ HX-2022-08-21:
 A placeholder for the moment
 but it may actually just be okay!
 *)
+//
+fun
+s1arg_errvl_lst
+(sas: s1arglst): sint = 0
+#symload errvl with s1arg_errvl_lst
+//
 fun
 s1exp_errvl_lst
 (ses: s1explst): sint = 0
 #symload errvl with s1exp_errvl_lst
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -252,6 +259,20 @@ val lvl = maxs
 d1pat_errck
 (lvl+1,d1pat(loc,D1Pa2pp(dp1,dp2,dp3)))
 endlet // end of [d1pat_a2pp_errck(...)]
+(* ****** ****** *)
+//
+fun
+d1pat_sarg_errck
+( loc
+: loc_t
+, sas
+: s1arglst ): d1pat =
+let
+val lvl = errvl(sas) in//let
+d1pat_errck
+(lvl+1, d1pat( loc , D1Psarg( sas ) ))
+endlet // end of [d1pat_sarg_errck(...)]
+//
 (* ****** ****** *)
 fun
 d1pat_l1st_errck
@@ -401,14 +422,15 @@ then (d1p0) else
 d1pat_aspt_errck(loc0, tknd, d1p1)
 endlet // end of [D1Paspt(tknd,d1p1)]
 //
-| D1Pa0pp() =>
+(* ****** ****** *)
+//
+|D1Pa0pp() =>
 (
 d1pat_a0pp_errck(loc0)
 ) where
 {
 val () = ( err := err + 1 ) }
-|
-D1Pa1pp
+|D1Pa1pp
 ( d1p1, d1p2) =>
 let
 //
@@ -426,8 +448,7 @@ then (d1p0) else
 d1pat_a1pp_errck(loc0, d1p1, d1p2)
 endlet // end of [D1Pa1pp(d1p1,d1p2)]
 //
-|
-D1Pa2pp
+|D1Pa2pp
 ( d1p1
 , d1p2, d1p3) =>
 let
@@ -442,12 +463,34 @@ val
 d1p3 = tread01_d1pat(d1p3, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (d1p0) else
 d1pat_a2pp_errck
 ( loc0  ,  d1p1  ,  d1p2  ,  d1p3 )
 endlet//end(D1Pa2pp(d1p1,d1p2,d1p3))
+//
+(* ****** ****** *)
+//
+|
+D1Psarg(s1as) =>
+let
+//
+val e00 = err
+//
+val s1as =
+(
+tread01_s1arglst(s1as, err))
+in//let
+//
+if // if
+(err=e00)
+then (d1p0)
+else d1pat_sarg_errck(loc0, s1as)
+//
+endlet // end of [ D1Psarg( s1as ) ]
+//
+(* ****** ****** *)
 //
 |
 D1Pl1st(d1ps) =>
@@ -456,13 +499,14 @@ let
 val e00 = err
 //
 val d1ps =
-  tread01_d1patlst(d1ps, err)
+(
+tread01_d1patlst(d1ps, err))
 //
 in//let
-if
+if // if
 (err=e00)
 then (d1p0)
-else d1pat_l1st_errck(loc0, d1ps )
+else d1pat_l1st_errck(loc0, d1ps)
 endlet // end of [ D1Pl1st( d1ps ) ]
 |
 D1Pl2st
@@ -482,6 +526,8 @@ if
 then (d1p0) else
 d1pat_l2st_errck(loc0, dps1, dps2)
 endlet // end of [D1Pl2st(dps1,dps2)]
+//
+(* ****** ****** *)
 //
 |
 D1Pt1up

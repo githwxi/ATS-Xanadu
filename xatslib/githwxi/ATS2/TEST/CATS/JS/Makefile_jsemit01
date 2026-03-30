@@ -12,6 +12,7 @@ PRINTF=printf
 all:: test00
 all:: test01
 all:: test02
+all:: test03
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -21,6 +22,7 @@ cleanall:: ; rm -f OUTS/test??_out?.js
 testall:: test00; $(NODE) OUTS/$<_out.js
 testall:: test01; $(NODE) OUTS/$<_out.js
 testall:: test02; $(NODE) OUTS/$<_out.js
+testall:: test03; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_SRCGENX=\

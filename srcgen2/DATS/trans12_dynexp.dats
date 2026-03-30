@@ -1161,18 +1161,20 @@ trans12_d1pat(env0, d1f0)
 val s2vs =
 trans12_s1arglst(env0, s1as)
 //
-(*
+// (*
 val () =
-println("f0_a1pp: d2f0 = ", d2f0)
+prerrsln("f0_a1pp: d2f0 = ", d2f0)
 val () =
-println("f0_a1pp: s2vs = ", s2vs)
+prerrsln("f0_a1pp: s2vs = ", s2vs)
+// *)
+//
 (*
-//HX: s2vs needs to be re-sorted!
-*)
+//HX: [s2vs] needs to be re-sorted!
 *)
 //
 in//let
-  my_d2pat_sapp(loc0, d2f0, s2vs)
+(
+  my_d2pat_sapp(loc0, d2f0, s2vs))
 end (*let*) // end of [D1Psarg(s1as)]
 //
 |
@@ -1207,7 +1209,7 @@ d2f0.node() of
 D2Pg1mac _ =>
 f0_a1pp_els1(env0, d1p0, d2f0)
 |
-_(*non-D2Eg1mac*) =>
+_(*non-D2Pg1mac*) =>
 f0_a1pp_els2(env0, d1p0, d2f0)
 //
 end (*let*) // end of [f0_a1pp_else(_,_)]
@@ -2467,15 +2469,20 @@ _(*otherwise*) => list_sing(d1e1)
 in//let
 //
 let
-val
-g1ms = trg1mac_d1explst(d1es) in//let
-trd2exp_g1mac
-( env0
-, d1e0.lctn()
-, trans12_g1mac_apps(env0, g1f0, g1ms))
-end (*let*)
 //
-end (*let*) // end of [f0_a1pp_els1(_,_)]
+val g1ms =
+(
+  trg1mac_d1explst(d1es))
+//
+in//let
+trd2exp_g1mac
+(
+env0,
+d1e0.lctn(),
+trans12_g1mac_apps(env0, g1f0, g1ms))
+end//let
+//
+end(*let*) // end-of-[f0_a1pp_els1(_,_)]
 
 and
 f0_a1pp_els2

@@ -133,59 +133,81 @@ D1Pb1sh
 (  d1p  ) =>
 prints("D1Pb1sh(",d1p,")")
 //
-|
-D1Paspt
+(* ****** ****** *)
+//
+|D1Paspt
 (tok, d1p) =>
 prints(
 "D1Paspt(",tok,";",d1p,")")
 //
-|
-D1Pa0pp(   ) =>
+(* ****** ****** *)
+//
+|D1Pa0pp
+( (*void*) ) =>
 (
-  prints(  "D1Pa0pp(",")"  )
-)
-|
-D1Pa1pp
+prints(  "D1Pa0pp(", ")"  ))
+|D1Pa1pp
 (d1f0, d1p1) =>
-prints("D1Pa1pp(",d1f0,";",d1p1,")")
-|
-D1Pa2pp
-(d1f0, d1p1, d1p2) =>
+(
 prints(
-"D1Pa2pp(",d1f0,";",d1p1,";",d1p2,")")
-|
-D1Pl1st(d1ps) =>
-prints( "D1Pl1st(", d1ps ,")" )
-|
-D1Pl2st(dps1, dps2) =>
+"D1Pa1pp(",d1f0,";",d1p1,")"))
+|D1Pa2pp
+(d1f0
+,d1p1, d1p2) =>
+(
+print("D1Pa2pp(");
+prints(
+d1f0,";", d1p1,";", d1p2,")"))
+//
+(* ****** ****** *)
+//
+|D1Psarg
+(   s1as   ) =>
+(
+prints("D1Psarg(", s1as ,")"))
+//
+(* ****** ****** *)
+//
+|D1Pl1st
+(   d1ps   ) =>
+(
+prints("D1Pl1st(", d1ps ,")"))
+|D1Pl2st
+(dps1, dps2) =>
 prints
 ("D1Pl2st(", dps1, ";", dps2 ,")")
 //
-|
-D1Pt1up(tok0, d1ps) =>
+(* ****** ****** *)
+//
+|D1Pt1up
+(tok0, d1ps) =>
 prints
 ("D1Pt1up(", tok0, ";", d1ps ,")")
-|
-D1Pt2up(tok0, dps1, dps2) =>
-prints
-("D1Pt2up(",tok0,";",dps1,";",dps2,")")
+|D1Pt2up
+(tok0
+,dps1, dps2) =>
+(
+print("D1Pt2up(");
+prints(tok0,";",dps1,";",dps2,")"))
 //
 |
-D1Pannot(d1p1,s1e2) =>
+D1Pannot
+(d1p1, s1e2) =>
 prints("D1Pannot(",d1p1,";",s1e2,")")
 |
-D1Pqual0(tok1,d1p2) =>
+D1Pqual0
+(tok1, d1p2) =>
 prints("D1Pqual0(",tok1,";",d1p2,")")
 //
 (*
-|
-D1Pg1mac(gmac) =>
+|D1Pg1mac
+(   gmac   ) =>
 (
-  prints("D1Pg1mac(", gmac ,")"))
+ prints(  "D1Pg1mac(" , gmac , ")"  ))
 *)
 //
 |
-D1Pnone0() => prints("D1Pnone0(", ")")
+D1Pnone0() => prints( "D1Pnone0(", ")" )
 |
 D1Pnone1(dpat) => prints("D1Pnone1(", dpat ,")")
 //
