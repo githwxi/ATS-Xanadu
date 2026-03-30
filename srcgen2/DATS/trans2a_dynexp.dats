@@ -361,6 +361,8 @@ d2p0.node() of
 //
 |D2Pcons _ => f0_cons(env0, d2p0)
 //
+|D2Psapp _ => f0_sapp(env0, d2p0)
+//
 |D2Pdap0 _ => f0_dap0(env0, d2p0)
 |D2Pdap1 _ => f0_dap1(env0, d2p0)
 |D2Pdapp _ => f0_dapp(env0, d2p0)
@@ -758,6 +760,155 @@ d2pat_make_tpnd
   val t2p0 = s2typ_new0_x2tp(loc0) }
 //
 end (*let*) // end-of-[f0_cons(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+(*
+HX-2026-03-30:
+In the types assigned to
+data constructors, impredicative
+quantification is required to occur
+ahead of predicative quantification.
+For instance,
+{a1,a2:vt}{i1,i2:i0} // allowed
+{i1,i2:i0}{a1,a2:vt} // disallowed
+With the above stipulation, we can
+properly handle {..} and {...} (for
+omitted static arguments).
+*)
+fun
+f0_sapp
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+let
+//
+(*
+val loc0 = d2p0.lctn()
+*)
+//
+val-
+D2Psapp
+( d2f0, s2as) = d2p0.node()
+//
+val d2f0 =
+(
+  trans2a_d2pat(env0, d2f0))
+//
+val tfun = d2f0.styp((*nil*))
+(*
+HX-2026-03-30:
+This is not needed
+as [d2f0] is a constructor!
+val tfun = s2typ_hnfiz0(tfun)
+*)
+//
+val tres =
+(
+case+
+tfun.node() of
+|
+T2Puni0
+(s2vs, t2p1) =>
+let
+//
+val
+svts =
+f1_svts
+(s2vs,s2as,list_nil(*0*))
+//
+in//let
+  s2typ_subst0(t2p1, svts) end
+//
+|
+_(*non-T2Puni0*) => (  tfun  ))
+//
+(*
+val () =
+prerrsln("f0_sapp: tfun = ", tfun)
+val () =
+prerrsln("f0_sapp: tres = ", tres)
+*)
+//
+in//let
+//
+(
+d2pat_make_tpnd
+(loc0, tres, D2Psapp(d2f0, s2as)))
+//
+end where // endof(f0_sapp(env0,d2p0))
+{
+//
+val
+loc0 = d2p0.lctn((*0*))
+//
+fun
+f1_svts
+( s2vs
+: s2varlst
+, s2as
+: s2varlst, svts: s2vts): s2vts =
+(
+case+ s2vs of
+|list_nil() => (svts)
+|list_cons(s2v1, s2vs) =>
+(
+ f1_svts_cons(s2v1,s2vs,s2as,svts))
+)(*case+*)//end-of-[f1_svts(s2vs,...)]
+//
+and
+f1_svts_cons
+( s2v1
+: s2var
+, s2vs
+: s2varlst
+, s2as
+: s2varlst, svts: s2vts): s2vts =
+(
+case+ s2as of
+//
+|
+list_nil
+((*void*)) =>
+(
+f1_svts
+(s2vs, s2as, svts))
+where {
+//
+val t2p1 =
+(
+  s2typ_new0_x2tp(loc0))
+val svts =
+(
+  list_cons(@(s2v1,t2p1), svts))
+//
+}(*where*)//end-of-[list_nil(...)]
+//
+|list_cons
+(s2a1, s2as) =>
+(
+if // if
+(
+sort2_imprq
+(s2a1.sort()))
+then // if-then
+let
+val
+t2p1 = s2typ_var(s2a1)
+in//let
+(
+  f1_svts(s2vs, s2as, svts))
+where
+{
+val svts =
+(
+  list_cons(@(s2v1,t2p1),svts))
+} endlet else // else // endof(IF)
+(
+  f1_svts_cons(s2v1,s2vs,s2as,svts)))
+//
+)(*case+*) // end-of-[f1_svts_cons(...)]
+} (*where*) // end-of-[f0_sapp(env0,d2p0)]
 //
 (* ****** ****** *)
 //
@@ -1437,7 +1588,7 @@ val-
 D2Econ(d2c1) = d2e0.node()
 //
 val t2p0 =
-d2con2a_s2typ(loc0, d2c1)
+d2con2a_s2typ( loc0, d2c1 )
 //
 (*
 val (  ) = prerrsln("\
@@ -1638,11 +1789,11 @@ in//let
 d2exp_make_tpnd
 (loc0, tres, D2Esapp(d2f0, s2es)))
 //
-end where // end-of-[let]
+end where // endof(f0_sapp(env0,d2e0))
 {
 //
 val
-loc0 = d2e0.lctn((*void*))
+loc0 = d2e0.lctn((*0*))
 //
 fun
 f1_svts
@@ -1669,8 +1820,7 @@ f1_svts_cons
 (
 case+ s2es of
 //
-|
-list_nil
+|list_nil
 ((*void*)) =>
 (
 f1_svts
@@ -1682,16 +1832,17 @@ val t2p1 =
   s2typ_new0_x2tp(loc0))
 val svts =
 (
-  list_cons(@(s2v1,t2p1),svts))
+  list_cons(@(s2v1,t2p1), svts))
 //
 }(*where*)//end-of-[list_nil(...)]
 //
-|
-list_cons
+|list_cons
 (s2e1, s2es) =>
 (
-if
-s2exp_imprq(s2e1)
+if // if
+(
+sort2_imprq
+(s2e1.sort()))
 then // if-then
 let
 val
