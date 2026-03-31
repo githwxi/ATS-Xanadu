@@ -13,6 +13,7 @@ all:: test00
 all:: test01
 all:: test02
 all:: test03
+all:: test04
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -23,6 +24,7 @@ testall:: test00; $(NODE) OUTS/$<_out.js
 testall:: test01; $(NODE) OUTS/$<_out.js
 testall:: test02; $(NODE) OUTS/$<_out.js
 testall:: test03; $(NODE) OUTS/$<_out.js
+testall:: test04; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_SRCGENX=\
@@ -97,6 +99,22 @@ $(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
 ############
 test03:: \
 test03_funmmap.dats; \
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+test04:: ; \
+printf "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test04:: ; \
+$(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
+test04:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
+test04:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
+test04:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
+############
+test04:: \
+test04_avltree.dats; \
 $(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################

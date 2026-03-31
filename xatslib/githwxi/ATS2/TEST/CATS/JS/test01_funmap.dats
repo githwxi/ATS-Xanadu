@@ -41,7 +41,8 @@ Thu 05 Sep 2024 05:36:54 PM EDT
 (* ****** ****** *)
 //
 val () =
-prints("Hello from [test01_funmap]!\n")
+prints("\
+Hello from [test01_funmap]!\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

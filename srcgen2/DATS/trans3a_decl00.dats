@@ -492,9 +492,16 @@ trans3a_d3fundclist(env0, d3fs)
 //
 in//let
 //
+let
+val
+dfns =
 d3ecl_make_node
-( loc0
-, D3Cfundclst(tknd, tqas, d3cs, d3fs) )
+(loc0
+,D3Cfundclst(tknd, tqas, d3cs, d3fs))
+in//let
+(
+tr3aenv_insert_d3ecl(env0, dfns); dfns)
+end//let
 //
 end(*let*)//end-of-[f0_fundclst(env0,d3cl)]
 //
@@ -528,12 +535,12 @@ in//let
 let
 val
 dimp =
-d3ecl
+d3ecl_make_node
 (
 loc0,
 D3Cimplmnt0
-( tknd,stmp
-, sqas,tqas,dimp,tias,f3as,sres,dexp))
+(tknd,stmp
+,sqas,tqas,dimp,tias,f3as,sres,dexp))
 in//let
 (
 tr3aenv_insert_d3ecl(env0, dimp); dimp)
@@ -671,11 +678,11 @@ val dres =
   list_vt_cons(dtmp, dres))
 //
 val (  ) =
-tr3aenv_insert_d3ecl(env0,dtmp)
+tr3aenv_insert_d3ecl(env0, dtmp)
 //
 in//let
 (
-auxloop(env0, tmps, body, dres))
+  auxloop(env0, tmps, body, dres))
 end//end-of-then
 else
 let
@@ -684,7 +691,7 @@ val dres =
   list_vt_cons(d3cl, dres))
 in//let
 (
-auxloop(env0, tmps, body, dres))
+  auxloop(env0, tmps, body, dres))
 end//end-of-else
 )//end-of-[if(d3ecl_impltmpq(d3cl))]
 )(*case+*)//end of [auxloop(env0,...)]
