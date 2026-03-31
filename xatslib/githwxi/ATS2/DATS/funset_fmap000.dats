@@ -54,8 +54,26 @@ fset_tbox(itm:t0) = fmap(itm, emp)
 (* ****** ****** *)
 //
 #impltmp
+<(*00*)>
+funset_nil() = funmap_nil<>()
+#impltmp
+<(*00*)>
+funset_make_nil
+  ((*void*)) = funmap_make_nil<>()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 <itm:t0>
-funset_strmize =
+funset_size(*set*) =
+  funmap_size<itm><emp>(*set*)
+//
+(* ****** ****** *)
+//
+#impltmp
+<itm:t0>
+funset_strmize(*set*) =
   funmap_key$strmize<itm><emp>(*set*)
 //
 (* ****** ****** *)
@@ -63,7 +81,8 @@ funset_strmize =
 //
 #impltmp
 <itm:t0>
-funset_remove$old =
+funset_remove$old
+  (* set, x0 *) =
   funmap_remove$old<itm><emp>(*set,x0*)
 //
 (* ****** ****** *)
@@ -72,7 +91,7 @@ funset_remove$old =
 #impltmp
 <itm:t0>
 funset_insert$new
-  (set, x0) =
+  (  set, x0  ) =
   funmap_insert$new<itm><emp>(set, x0, ())
 //
 (* ****** ****** *)

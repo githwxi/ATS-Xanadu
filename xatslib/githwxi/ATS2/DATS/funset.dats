@@ -53,6 +53,37 @@ compare_itm_itm
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{itm:t0}
+g_print
+<fset(itm)>
+(*  set  *) =
+funset_print<itm>(*set*)
+//
+#impltmp
+<itm:t0>
+funset_print
+(   set   ) =
+(
+strm_vt_print0<x0>(xs))
+where
+{
+//
+#typedef x0 = itm
+#vwtpdef xs = strm_vt(x0)
+//
+#impltmp
+gseq$beg<xs><x0>() = "funset("
+//
+val xs =
+(
+funset_strmize
+<     itm     >(     set     ))
+//
+}(*where*)//end(funset_print<itm>(set))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 {itm:t0}
