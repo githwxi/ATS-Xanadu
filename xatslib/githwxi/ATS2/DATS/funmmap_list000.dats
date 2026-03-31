@@ -171,7 +171,7 @@ funmmap_keyval$foritm
 #impltmp
 <key:t0>
 <itm:t0>
-funmmap_insert$any
+funmmap_insert$new
   (kxs, k0, x0) =
 (
   list_cons((k0, x0), kxs))
@@ -189,7 +189,7 @@ funmmap_insert$opt
 #impltmp
 <key:t0>
 <itm:t0>
-funmmap_remove$any
+funmmap_remove$old
   (  map, k0  ) =
 (
 auxloop
@@ -238,7 +238,7 @@ equal_key_key
 then rappend(krs, kxs)
 else auxloop(kxs, list_vt_cons(kx1, krs))))
 //
-}(*where*)//end-of-[funmmap_remove$any(kxs,k0)]
+}(*where*)//end-of-[funmmap_remove$old(kxs,k0)]
 //
 (* ****** ****** *)
 //

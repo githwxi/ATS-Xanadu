@@ -169,7 +169,7 @@ optn_vt_nil() =>
 where
 {
 val map =
-funmap_insert$any
+funmap_insert$new
 <key><list(itm)>(
 map, k0, list_sing(x0))}
 | ~
@@ -179,7 +179,7 @@ optn_vt_cons(xs) =>
 where
 {
 val map =
-funmap_insert$any
+funmap_insert$new
 <key><list(itm)>(
 map, k0, list_cons(x0, xs))}
 //
@@ -221,7 +221,7 @@ case+ xs of
 {
 val map =
 (
-funmap_insert$any
+funmap_insert$new
 <key><list(itm)>(map, k0, xs)) }
 //
 end//let//end-of-[optn_vt_cons(xs)]

@@ -68,15 +68,15 @@ prints("Hello from [test03_funmmap]!\n")
 val map1 = funmmap_nil()
 //
 val map1 =
-funmmap_insert$any(map1, "a", 0)
+funmmap_insert$new(map1, "a", 0)
 val map1 =
-funmmap_insert$any(map1, "a", 0)
+funmmap_insert$new(map1, "a", 0)
 val map1 =
-funmmap_insert$any(map1, "b", 1)
+funmmap_insert$new(map1, "b", 1)
 val map1 =
-funmmap_insert$any(map1, "c", 2)
+funmmap_insert$new(map1, "c", 2)
 val map1 =
-funmmap_insert$any(map1, "d", 3)
+funmmap_insert$new(map1, "d", 3)
 //
 val (  ) =
 printsln("map1 = ", map1)
@@ -85,13 +85,13 @@ printsln
 ("size(map1) = ", map1.size())
 //
 val map1 =
-funmmap_remove$any(map1, "a")
+funmmap_remove$old(map1, "a")
 val (  ) = printsln("map1 = ", map1)
 //
 val map1 =
-funmmap_insert$any(map1, "b", 1)
+funmmap_insert$new(map1, "b", 1)
 val map1 =
-funmmap_insert$any(map1, "c", 2)
+funmmap_insert$new(map1, "c", 2)
 val (  ) = printsln("map1 = ", map1)
 //
 val-

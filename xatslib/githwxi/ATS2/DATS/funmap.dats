@@ -135,7 +135,7 @@ funmap_search$opt<key><itm>(kxs, k0)
 #impltmp
 <key:t0>
 <itm:t0>
-funmap_search$any
+funmap_search$old
 (   kxs, k0   ) =
 (
 case- opt of
@@ -144,7 +144,7 @@ where
 {
 val opt =
 funmap_search$opt<key><itm>(kxs, k0)
-}(*where*)//end(funmap_search$any(...))
+}(*where*)//end(funmap_search$old(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -246,7 +246,7 @@ gseq_foritm<fmap(key,itm)><t0up(key,itm)>(map)
 #impltmp
 <key:t0>
 <itm:t0>
-funmap_insert$any
+funmap_insert$new
 ( kxs, k0, x0 ) =
 (
 case- opt of
@@ -256,17 +256,17 @@ where
 {
 val (kxs, opt) =
 funmap_insert$opt< key >< itm >(kxs, k0, x0)
-}(*where*)//end(funmap_insert$any(kxs,k0,x0))
+}(*where*)//end(funmap_insert$new(kxs,k0,x0))
 //
 #impltmp
 <key:t0>
 <itm:t0>
-funmap$cbr_insert$any
+funmap$cbr_insert$new
 (   map, k0, x0   ) =
 let
 val kxs = map
 val kxs =
-funmap_insert$any
+funmap_insert$new
 < key >< itm >(kxs, k0, x0) in map := kxs end
 //
 #impltmp
@@ -286,7 +286,7 @@ funmap_insert$opt
 #impltmp
 <key:t0>
 <itm:t0>
-funmap_remove$any
+funmap_remove$old
 (   kxs, k0   ) =
 (
 case- opt of true => kxs)
@@ -294,7 +294,7 @@ where
 {
 val (kxs, opt) =
 funmap_remove$opt< key >< itm >(kxs, k0)
-}(*where*)//end(funmap_remove$any(kxs,k0))
+}(*where*)//end(funmap_remove$old(kxs,k0))
 //
 #impltmp
 <key:t0>
@@ -316,12 +316,12 @@ funmap_getout$opt< key >< itm >(kxs, k0)
 #impltmp
 <key:t0>
 <itm:t0>
-funmap$cbr_remove$any
+funmap$cbr_remove$old
 (     map, k0     ) =
 let
 val kxs = map
 val kxs =
-funmap_remove$any
+funmap_remove$old
 <  key  ><  itm  >(kxs, k0) in map := kxs end
 //
 #impltmp
@@ -341,7 +341,7 @@ funmap_remove$opt
 #impltmp
 <key:t0>
 <itm:t0>
-funmap_getout$any
+funmap_getout$old
 (   kxs, k0   ) =
 (
 case- opt of
@@ -351,7 +351,7 @@ where
 {
 val (kxs, opt) =
 funmap_getout$opt< key >< itm >(kxs, k0)
-}(*where*)//end(funmap_getout$any(kxs,k0))
+}(*where*)//end(funmap_getout$old(kxs,k0))
 //
 #impltmp
 <key:t0>
@@ -376,7 +376,7 @@ optn_vt_cons
   kxs, opt ) where
 {
 val kxs =
-funmap_remove$any<key><itm>(kxs, k0) }
+funmap_remove$old<key><itm>(kxs, k0) }
 //
 end(*let*)//end(funmap_getout$opt(kxs,k0))
 //
@@ -385,12 +385,12 @@ end(*let*)//end(funmap_getout$opt(kxs,k0))
 #impltmp
 <key:t0>
 <itm:t0>
-funmap$cbr_getout$any
+funmap$cbr_getout$old
 (     map, k0     ) =
 let
 val kxs = map
 val (kxs, res) =
-funmap_getout$any
+funmap_getout$old
 <  key  ><  itm  >(kxs, k0) in map := kxs; res end
 //
 #impltmp

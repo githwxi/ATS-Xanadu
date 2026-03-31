@@ -175,6 +175,24 @@ gmap_search$opt<m0><k0><x0>(map, k0)
 < m0:t0 >
 < k0:t0 >
 < x0:t0 >
+gmap_search$old
+  (map, k0) =
+(
+case- opt of
+| ~
+optn_vt_cons(x0) => ( x0 )
+) where
+{
+val opt =
+gmap_search$opt<m0><k0><x0>(map, k0)
+}(*where*)//end-of-[gmap_search$old(map,k0)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< m0:t0 >
+< k0:t0 >
+< x0:t0 >
 gmap_search$opt
   (map, k0) =
 (
