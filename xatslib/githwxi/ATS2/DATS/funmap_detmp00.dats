@@ -56,15 +56,7 @@ _FUNMAP_DETMP00_)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../SATS/funmap.sats"
-//
 #typedef fmap = fmap(key, itm)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload "./funmap_avltree.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

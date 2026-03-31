@@ -62,6 +62,13 @@ Hello from [test04_avltree]!\n")
 #typedef fmap = fmap(key, itm)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#define _FUNMAP_DETMP00_
+#include "./../../../DATS/funmap_detmp00.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 val map1 =
 funmap_nil<>{key,itm}()
@@ -100,5 +107,5 @@ val () = console_log(the_print_store_flush())
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_JS_githwxi_ATS2_TEST_test04_avltree.dats] *)
+(* end of [ATS3/XANADU_xatslib_JS_githwxi_ATS2_TEST_test03_avltree.dats] *)
 (***********************************************************************)
