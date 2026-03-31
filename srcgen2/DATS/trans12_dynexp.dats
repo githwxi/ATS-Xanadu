@@ -764,7 +764,7 @@ _(* non-D1Pid0 *) => false
 ) (*case+*) // end of [isFREE0]
 //
 fun
-isASPT
+isASPT0
 (d1p: d1pat): bool =
 (
 case+
@@ -773,7 +773,7 @@ d1p.node() of
 D1Paspt _ => ( true )
 |
 _(* non-D1Pid0 *) => false
-) (*case+*) // end of [isASPT]
+) (*case+*) // end of [isASPT0]
 //
 (* ****** ****** *)
 //
@@ -1127,7 +1127,7 @@ end//then//if(isFREE0(d1f0))
 else
 (
 if
-isASPT(d1f0)
+isASPT0(d1f0)
 then
 let
 //
@@ -1146,7 +1146,7 @@ trans12_d1pat(env0, d1p2)
 in//let
 d2pat(loc0,
 D2Prfpt(d2p1, tknd, d2p2))
-end//then//if(isASPT(d1f0))
+end//then//if(isASPT0(d1f0))
 else
 (
 case+
@@ -1178,11 +1178,11 @@ in//let
 end (*let*) // end of [D1Psarg(s1as)]
 //
 |
-_(*d1pat-rest*) => f0_a1pp_else(env0,d1p0)
+_(*others*) => f0_a1pp_else(env0,d1p0)
 )
-) (* end-of-[else] *) // end-of-(if)
-) (* end-of-[else] *) // end-of-(if)
-) (* end-of-[else] *) // end-of-(if)
+) (*if-else*) // end-of-if(isASPT0(d1f0))
+) (*if-else*) // end-of-if(isFREE0(d1f0))
+) (*if-else*) // end-of-if(isFLAT0(d1f0))
 end (*let*) // end of [f0_a1pp(env0,d1p0)]
 //
 and
@@ -1196,10 +1196,11 @@ val loc0 = d1p0.lctn()
 //
 val
 D1Pa1pp
-(d1f0,d1p1) = d1p0.node()
+(d1f0, d1p1) = d1p0.node()
 //
 val d2f0 =
-trans12_d1pat(env0, d1f0)
+(
+  trans12_d1pat(env0, d1f0))
 //
 in//let
 //
@@ -1224,14 +1225,15 @@ let
 //
 val
 D1Pa1pp
-(d1f0,d1p1) = d1p0.node()
+(d1f0, d1p1) = d1p0.node()
 //
 val g1f0 =
+(
 (
 case-
 d2f0.node() of
 |
-D2Pg1mac(g1f0) => g1f0): g1mac
+D2Pg1mac(g1f0) => g1f0): g1mac)
 //
 val d1ps =
 (
@@ -1275,6 +1277,7 @@ D1Pa1pp
 //
 val npf1 =
 (
+(
 case+
 d1p1.node() of
 |
@@ -1282,7 +1285,7 @@ D1Pl2st
 (dps1, dps2) =>
 list_length<d1pat>(dps1)
 |
-_(* non-D2Plist *) => -1): sint
+_(*non-D2Plist*) => (-1)): sint)
 //
 val d2ps =
 (
