@@ -1161,12 +1161,12 @@ trans12_d1pat(env0, d1f0)
 val s2vs =
 trans12_s1arglst(env0, s1as)
 //
-// (*
+(*
 val () =
 prerrsln("f0_a1pp: d2f0 = ", d2f0)
 val () =
 prerrsln("f0_a1pp: s2vs = ", s2vs)
-// *)
+*)
 //
 (*
 //HX: [s2vs] needs to be re-sorted!
