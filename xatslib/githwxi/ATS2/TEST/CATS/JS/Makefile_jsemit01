@@ -117,5 +117,21 @@ test04:: \
 test04_avltree.dats; \
 $(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
+test05:: ; \
+printf "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test05:: ; \
+$(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
+test05:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
+test05:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
+test05:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
+############
+test05:: \
+test05_funmmap.dats; \
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
 ##################### end of [Makefile_jsemit01] #######################
 ########################################################################
