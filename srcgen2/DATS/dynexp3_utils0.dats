@@ -1190,7 +1190,7 @@ case+ tqas of
 |
 list_nil() =>
 (
-  optn_vt_cons(tsub) )
+optn_vt_cons(tsub))
 |
 list_cons
 (tqa1, tqas) =>
@@ -1198,15 +1198,8 @@ let
 val s2vs = tqa1.s2vs()
 in//let
 (
-case+ s2vs of
-|list_nil() =>
-(
-  f1_tqas_t2js
-  (tqas, t2js, tsub) )
-|list_cons _ =>
-(
-  f1_s2vs_tqas_t2js
-  (s2vs, tqas, t2js, tsub)))
+f1_s2vs_tqas_t2js
+(s2vs, tqas, t2js, tsub))
 end//let
 )(*case+*)//end(f1_tqas_t2js(...))
 //
@@ -1226,15 +1219,16 @@ case+ t2js of
 |
 list_nil() =>
 (
-  optn_vt_cons(tsub) )
+optn_vt_cons(tsub))
 |
 list_cons
 (t2j1, t2js) =>
 let
 val tjps = t2j1.t2ps()
 in//let
-f1_s2vs_tqas_tjps_t2js
-(s2vs, tqas, tjps, t2js, tsub)
+(
+f1_s2vs_tqas_tjps_t2js(
+s2vs, tqas, tjps, t2js, tsub))
 end//let
 (*let*) // end-of-[list_cons(...)]
 //
@@ -1254,26 +1248,58 @@ f1_s2vs_tqas_tjps_t2js
 : s2vts_vt): optn_vt(s2vts_vt) =
 (
 //
-case+ tjps of
+case+ s2vs of
+//
 |
 list_nil() =>
 (
-f1_s2vs_tqas_t2js
-(s2vs, tqas, t2js, tsub))
+f1_tqas_t2js(
+tqas, t2js, tsub))
+//
 |
-list_cons(tjp1, tjps) =>
+list_cons _ =>
 (
-f1_s2vs_tqas_tjps_t2js
-(s2vs, tqas, tjps, t2js, tsub))
+case+ tjps of
+//
+|list_nil() =>
+(
+f1_tqas_t2js(
+tqas, t2js, tsub))
+//
+|list_cons
+(tjp1, tjps) =>
+(
+f1_s2vs_tqas_tjps_t2js(
+s2vs, tqas, tjps, t2js, tsub))
 where
 {
 val-
 // HX: consq(s2vs)!
 list_cons(s2v1, s2vs) = s2vs
 val tsub =
-list_vt_cons((s2v1, tjp1), tsub) }
+list_vt_cons((s2v1, tjp1), tsub)
+}
+) // case// end-of-(caseof(tjps))
+) // case // end-of-(caseof(s2vs))
+where // end(f1_s2vs_tqas_tjps_t2js)
+{
 //
-)(*case+*)//end(f1_s2vs_tqas_tjps_t2js)
+(*
+val () =
+prerrsln("\
+f1_s2vs_tqas_tjps_t2js: s2vs = ", s2vs)
+val () =
+prerrsln("\
+f1_s2vs_tqas_tjps_t2js: tqas = ", tqas)
+val () =
+prerrsln("\
+f1_s2vs_tqas_tjps_t2js: tjps = ", tjps)
+val () =
+prerrsln("\
+f1_s2vs_tqas_tjps_t2js: t2js = ", t2js)
+*)
+//
+}(*where*)//end(f1_s2vs_tqas_tjps_t2js)
 //
 }(*where*)//end-of-[f0_tqagmat(svts,...)]
 //
@@ -1969,11 +1995,12 @@ optn_nil() => optn_nil()
 optn_cons(svts) =>
 optn_cons(list_append(svts, tsub))
 //
-end(*let*) // end of [ D3Ctmpsub(...) ]
+end(*let*)//end-of-[D3Ctmpsub(...)]
 //
-| _(* otherwise *) => optn_nil((*void*))
+|
+_(* otherwise *) => optn_nil((*void*))
 //
-) (*case+*) // end-of-[f0_main(d3cl,t2js)]
+)(*case+*)//end-of-[f0_main(d3cl,t2js)]
 //
 (* ****** ****** *)
 //

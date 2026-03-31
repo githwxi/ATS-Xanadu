@@ -291,6 +291,11 @@ i0pat
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|D3Psapp _ => f0_sapp(env0, d3p0)
+|D3Psapq _ => f0_sapq(env0, d3p0)
+//
+(* ****** ****** *)
+//
 |D3Ptapq _ => f0_tapq(env0, d3p0)
 //
 (* ****** ****** *)
@@ -323,6 +328,34 @@ i0pat
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_sapp
+( env0:
+! envd3i0
+, d3p0: d3pat): i0pat =
+(
+trxd3i0_d3pat(env0, d3f0)
+) where
+{
+val-
+D3Psapp
+(d3f0, s2vs) = d3p0.node()}
+//
+fun
+f0_sapq
+( env0:
+! envd3i0
+, d3p0: d3pat): i0pat =
+(
+trxd3i0_d3pat(env0, d3f0)
+) where
+{
+val-
+D3Psapq
+(d3f0, s2as) = d3p0.node()}
+//
 (* ****** ****** *)
 //
 fun

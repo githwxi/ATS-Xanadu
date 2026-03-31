@@ -50,7 +50,8 @@ _FUNMAP_DETMP00_)
 #typedef key = key_type
 #typedef itm = itm_type
 //
-#endif//end-of-(#ifdefq(_DETMP_))
+#endif
+//end(#ifdefq(_FUNMAP_DETMP00_))
 //
 (* ****** ****** *)
 (* ****** ****** *)
