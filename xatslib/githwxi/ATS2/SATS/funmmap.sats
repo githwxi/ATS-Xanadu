@@ -163,7 +163,7 @@ fmmap(key, itm), k0: key): (bool)
 fun
 <key:t0>
 <itm:t0>
-funmmap_search$any
+funmmap_search$old
 (
 map:
 fmmap(key, itm), k0: key): itm(*found*)
@@ -181,7 +181,7 @@ fmmap(key, itm), k0: key): optn_vt(itm)
 fun
 <key:t0>
 <itm:t0>
-funmmap_insert$any
+funmmap_insert$new
 (
 map:
 fmmap
@@ -201,7 +201,7 @@ k0: key, x0: itm): (fmmap(key,itm), optn_vt(itm))
 fun
 <key:t0>
 <itm:t0>
-funmmap_remove$any
+funmmap_remove$old
 (
 map:
 fmmap
@@ -220,7 +220,7 @@ fmmap
 fun
 <key:t0>
 <itm:t0>
-funmmap_getout$any
+funmmap_getout$old
 (
 map:
 fmmap

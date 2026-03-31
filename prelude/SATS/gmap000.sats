@@ -138,12 +138,24 @@ gmap_strmize
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-03-31:
+Using [search$old]
+if [key] is known
+in the given map [map]!
+*)
 fun
 <map:t0>
 <key:t0>
 <itm:t0>
 gmap_search$tst
 (kxs: map, key: key): bool
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
+gmap_search$old
+(kxs: map, key: key): (itm)
 fun
 <map:t0>
 <key:t0>

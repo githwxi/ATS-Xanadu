@@ -114,7 +114,7 @@ funmmap_search$opt<key><itm>(map, k0)
 #impltmp
 <key:t0>
 <itm:t0>
-funmmap_search$any
+funmmap_search$old
 (   map, k0   ) =
 (
 case- opt of
@@ -123,7 +123,7 @@ where
 {
 val opt =
 funmmap_search$opt<key><itm>(map, k0)
-}(*where*)//end(funmmap_search$any(...))
+}(*where*)//end(funmmap_search$old(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -226,7 +226,7 @@ gseq_foritm<fmmap(key,itm)><t0up(key,itm)>(map)
 #impltmp
 <key:t0>
 <itm:t0>
-funmmap_insert$any
+funmmap_insert$new
 ( map, k0, x0 ) =
 (
 case- opt of
@@ -236,7 +236,7 @@ where
 {
 val (map, opt) =
 funmmap_insert$opt< key >< itm >(map, k0, x0)
-}(*where*)//end(funmmap_insert$any(map,k0,x0))
+}(*where*)//end(funmmap_insert$new(map,k0,x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -244,7 +244,7 @@ funmmap_insert$opt< key >< itm >(map, k0, x0)
 #impltmp
 <key:t0>
 <itm:t0>
-funmmap_remove$any
+funmmap_remove$old
 (   map, k0   ) =
 (
 case- opt of true => map)
@@ -252,7 +252,7 @@ where
 {
 val (map, opt) =
 funmmap_remove$opt< key >< itm >(map, k0)
-}(*where*)//endof(funmmap_remove$any(map,k0))
+}(*where*)//endof(funmmap_remove$old(map,k0))
 //
 #impltmp
 <key:t0>
@@ -276,7 +276,7 @@ funmmap_getout$opt< key >< itm >(map, k0)
 #impltmp
 <key:t0>
 <itm:t0>
-funmmap_getout$any
+funmmap_getout$old
 (   map, k0   ) =
 (
 case- opt of
@@ -286,7 +286,7 @@ where
 {
 val (map, opt) =
 funmmap_getout$opt< key >< itm >(map, k0)
-}(*where*)//endof(funmmap_getout$any(map,k0))
+}(*where*)//endof(funmmap_getout$old(map,k0))
 //
 #impltmp
 <key:t0>
@@ -311,7 +311,7 @@ optn_vt_cons
   map, opt ) where
 {
 val map =
-funmmap_remove$any<key><itm>(map, k0) }
+funmmap_remove$old<key><itm>(map, k0) }
 //
 end(*let*)//end(funmmap_getout$opt(map,k0))
 //
