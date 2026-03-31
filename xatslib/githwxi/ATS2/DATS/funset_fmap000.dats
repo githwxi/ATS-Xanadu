@@ -81,6 +81,15 @@ funset_strmize(*set*) =
 //
 #impltmp
 <itm:t0>
+funset_memberq
+  (*set, x0*) = 
+  funmap_search$tst<itm><emp>(*set,x0*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<itm:t0>
 funset_remove$old
   (* set, x0 *) =
   funmap_remove$old<itm><emp>(*set,x0*)

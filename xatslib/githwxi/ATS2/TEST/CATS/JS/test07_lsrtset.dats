@@ -84,11 +84,11 @@ val (  ) = printsln("set1 = ", set1)
 //
 val set2 =
   funset_insert$new(set2, 11)
-val set1 =
+val set2 =
   funset_insert$new(set2, 21)
-val set1 =
+val set2 =
   funset_insert$new(set2, 31)
-val (  ) = printsln("set2 = ", set1)
+val (  ) = printsln("set2 = ", set2)
 //
 (* ****** ****** *)
 //
