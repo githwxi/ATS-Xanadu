@@ -14,6 +14,8 @@ all:: test01
 all:: test02
 all:: test03
 all:: test04
+all:: test05
+all:: test06
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -25,6 +27,8 @@ testall:: test01; $(NODE) OUTS/$<_out.js
 testall:: test02; $(NODE) OUTS/$<_out.js
 testall:: test03; $(NODE) OUTS/$<_out.js
 testall:: test04; $(NODE) OUTS/$<_out.js
+testall:: test05; $(NODE) OUTS/$<_out.js
+testall:: test06; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_SRCGENX=\
@@ -133,5 +137,35 @@ test05:: \
 test05_funmmap.dats; \
 $(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
+test06:: ; \
+printf "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test06:: ; \
+$(CAT) $(XSHARED_RUNTIME)/xats2js_js1emit.js >> OUTS/$@_out.js
+test06:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_precats.js >> OUTS/$@_out.js
+test06:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_prelude.js >> OUTS/$@_out.js
+test06:: ; \
+$(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
+############
+test06:: \
+test06_avltree.dats; \
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+########################################################################
+test04_out1:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level SIMPLE --js=OUTS/test04_out.js --js_output_file=OUTS/test04_out1.js
+test04_out2:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level ADVANCED --js=OUTS/test04_out.js --js_output_file=OUTS/test04_out2.js
+########################################################################
+test06_out1:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level SIMPLE --js=OUTS/test06_out.js --js_output_file=OUTS/test06_out1.js
+test06_out2:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level ADVANCED --js=OUTS/test06_out.js --js_output_file=OUTS/test06_out2.js
 ##################### end of [Makefile_jsemit01] #######################
 ########################################################################
