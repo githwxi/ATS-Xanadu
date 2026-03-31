@@ -29,149 +29,118 @@
 (* ****** ****** *)
 (*
 Author: Hongwei Xi
-Tue Mar 31 10:00:19 AM EDT 2026
+Tue Mar 31 12:13:33 PM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstype
-fset_tbox(itm:type+) <= p0tr
-#sexpdef fset = fset_tbox(*itm*)
+#staload "./../SATS/funset.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
+#impltmp
 <itm:t0>
 equal_itm_itm
-(x1: itm, x2: itm): bool
-fun
+(k1, k2) = g_equal<itm>(k1, k2)
+//
+#impltmp
 <itm:t0>
 compare_itm_itm
-(x1: itm, x2: itm): sint
+( k1, k2 ) = g_cmp<itm>( k1, k2 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
-funset_nil
-{itm:t0}((*void*)): fset(itm)
-fun<>
-funset_make_nil
-{itm:t0}((*void*)): fset(itm)
 //
-(* ****** ****** *)
-(* ****** ****** *)
+#impltmp
+{itm:t0}
+gseq_strmize
+<fset(itm)><itm> = funset_strmize<itm>
 //
-fun<>
-funset_nilq
-{itm:t0}(set: fset(itm)): bool
-fun<>
-funset_consq
-{itm:t0}(set: fset(itm)): bool
-//
-#symload
-nilq with funset_nilq of 1000
-#symload
-consq with funset_consq of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
+#impltmp
 <itm:t0>
-funset_size(set: fset(itm)): nint
-#symload size with funset_size of 1000
+funset_forall = gseq_forall<fset(itm)><itm>
+#impltmp
+<itm:t0>
+funset_foritm = gseq_foritm<fset(itm)><itm>
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
+#impltmp
 <itm:t0>
-funset_print(set: fset(itm)): void
-(*
-#symload print with funset_print of 1000
-*)
+funset_union(xs1, xs2) =
+(
+gseq_folditm
+<xs><x0><r0>(xs2, xs1))
+where
+{
 //
-(* ****** ****** *)
-(* ****** ****** *)
+#typedef x0 = itm
+#typedef xs = fset(itm)
+#typedef r0 = fset(itm)
 //
-fun
-<itm:t0>
-funset_strmize
-(set: fset(itm)): strm_vt(itm)
-#symload
-  strmize with funset_strmize of 1000
+#impltmp
+folditm$fopr
+< x0 >< r0 >
+(  r0, x0  ) = funset_insert$any<x0>(r0, x0)
 //
-(* ****** ****** *)
-//
-fun
-<itm:t0>
-funset_forall(set: fset(itm)): bool
-#symload forall with funset_forall of 1000
-fun
-<itm:t0>
-funset_foritm(set: fset(itm)): void
-#symload foritm with funset_foritm of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<itm:t0>
-funset_memberq
-(set: fset(itm), x0: itm): bool
+}(*where*)//end-of-[funset_union<itm>(xs1,xs2):fset]
 //
 (* ****** ****** *)
 //
-fun
+#impltmp
 <itm:t0>
-funset_union
-(set: fset(itm), xs: fset(itm)): fset(itm)
-fun
-<itm:t0>
-funset_inter
-(set: fset(itm), xs: fset(itm)): fset(itm)
-fun
-<itm:t0>
-funset_diffr
-(set: fset(itm), xs: fset(itm)): fset(itm)
+funset_inter(xs1, xs2) =
+(
+gseq_folditm
+<xs><x0><r0>(xs2, res))
+where
+{
+//
+#typedef x0 = itm
+#typedef xs = fset(itm)
+#typedef r0 = fset(itm)
+//
+val res = funset_nil<>()
+//
+#impltmp
+folditm$fopr
+< x0 >< r0 >
+(  r0, x0  ) =
+if // if
+funset_memberq<x0>(xs1, x0)
+then funset_insert$any<x0>(r0, x0) else (r0)
+//
+}(*where*)//end-of-[funset_inter<itm>(xs1,xs2):fset]
 //
 (* ****** ****** *)
 //
-fun
+#impltmp
 <itm:t0>
-funset_insert$any
-(set: fset(itm), x0: itm): fset(itm)
-fun
-<itm:t0>
-funset_insert$new
-(set: fset(itm), x0: itm): fset(itm)
-fun
-<itm:t0>
-funset_insert$opt
-(set: fset(itm), x0: itm): (fset(itm), bool)
+funset_diffr(xs1, xs2) =
+(
+gseq_folditm
+<xs><x0><r0>(xs2, xs1))
+where
+{
 //
-(* ****** ****** *)
-(* ****** ****** *)
+#typedef x0 = itm
+#typedef xs = fset(itm)
+#typedef r0 = fset(itm)
 //
-fun
-<itm:t0>
-funset_remove$any
-(set: fset(itm), x0: itm): fset(itm)
-fun
-<itm:t0>
-funset_remove$old
-(set: fset(itm), x0: itm): fset(itm)
-fun
-<itm:t0>
-funset_remove$opt
-(set: fset(itm), x0: itm): (fset(itm), bool)
+#impltmp
+folditm$fopr
+< x0 >< r0 >
+(  r0, x0  ) = funset_remove$any<x0>(r0, x0)
+//
+}(*where*)//end-of-[funset_diffr<itm>(xs1,xs2):fset]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_githwxi_ATS2_SATS_funset.sats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_ATS2_DATS_funset.dats] *)
 (***********************************************************************)
