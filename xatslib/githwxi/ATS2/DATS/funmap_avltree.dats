@@ -93,34 +93,34 @@ datatype avltree
 , itm:type+, int(*height*)
 ) =
 |
-E (key, itm, 0) of ((*0*))
+E(key,itm,0) of ((*0*))
 |
 {hl,hr:nat |
  hl <= hr+HTDF;
  hr <= hl+HTDF}
-B (key, itm, 1+max(hl,hr)) of
+B(key,itm,1+max(hl,hr)) of
 (
   sint(1+max(hl,hr)), key, itm
-, avltree(key, itm, hl), avltree(key, itm, hr))
+, avltree(key,itm,hl), avltree(key,itm,hr))
 // end of [datatype avltree(key,itm)]
 //
 (* ****** ****** *)
 //
 #typedef
 avltree
-(key:t0, itm:t0) = [h:nat] avltree(key, itm, h)
+(key:t0,itm:t0) = [h:nat] avltree(key,itm,h)
 // end of [avltree]
 //
 #typedef
 avltree_inc
-(key:t0, itm:t0, h:int) =
-[h1:nat | h <= h1; h1 <= h+1] avltree(key, itm, h1)
+(key:t0,itm:t0,h:int) =
+[h1:nat | h <= h1; h1 <= h+1] avltree(key,itm,h1)
 // end of [avltree_inc]
 //
 #typedef
 avltree_dec
-(key:t0, itm:t0, h:int) =
-[h1:nat | h1 <= h; h <= h1+1] avltree(key, itm, h1)
+(key:t0,itm:t0,h:int) =
+[h1:nat | h1 <= h; h <= h1+1] avltree(key,itm,h1)
 // end of [avltree_dec]
 //
 (* ****** ****** *)
@@ -144,7 +144,7 @@ fun
 <itm:t0>
 avltht{h:nat}
 ( tx0
-: avltree(key, itm, h)): sint(h) =
+: avltree(key,itm,h)): sint(h) =
 (
 case+ tx0 of
 | B(h, _, _, _, _) => h | E() => 0)
@@ -165,11 +165,11 @@ avltree_lrotate
 (
   k0: key
 , x0: itm
-, hl: sint hl
-, tl: avltree(key, itm, hl)
-, hr: sint hr
-, tr: avltree(key, itm, hr)
-) : avltree_inc(key, itm, hr) =
+, hl: sint(hl)
+, tl: avltree(key,itm,hl)
+, hr: sint(hr)
+, tr: avltree(key,itm,hr)
+) : avltree_inc(key,itm,hr) =
 let
 //
 val+
@@ -178,16 +178,17 @@ B{hrl:i0,hrr:i0}
 //
 val hrl =
 (
-avltht<key><itm>(trl)): sint hrl
+avltht<key><itm>(trl)): sint(hrl)
 and hrr =
 (
-avltht<key><itm>(trr)): sint hrr
+avltht<key><itm>(trr)): sint(hrr)
 //
 in//let
 //
 if // if
 (hrl <= hrr+HTDFm1)
 then
+(
 let//then
 //
 val hrl1 = (hrl + 1)
@@ -198,17 +199,20 @@ B(
 1+imax(hrl1,hrr), kr, xr,
 B(hrl1, k0, x0, tl, trl), trr)
 end//let//then
-else let//else
+)
+else
+(
+let//else
 // HX: [hrl=hrr+2]: deep rotation
 val+
 B{hrll:i0,hrlr:i0}
 (_, krl, xrl, trll, trlr) = trl
 val hrll =
 (
-avltht<key><itm>(trll)): sint hrll
+avltht<key><itm>(trll)): sint(hrll)
 and hrlr =
 (
-avltht<key><itm>(trlr)): sint hrlr
+avltht<key><itm>(trlr)): sint(hrlr)
 //
 in//let//else
 //
@@ -218,6 +222,7 @@ B(1+imax(hl  ,hrll), k0, x0, tl, trll ),
 B(1+imax(hrlr,hrr ), kr, xr, trlr, trr))
 //
 end//let//else
+)
 //
 end(*let*)//end-of-[avltree_lrotate<key><itm>(...)]
 //
@@ -231,11 +236,11 @@ avltree_rrotate
 (
   k0: key
 , x0: itm
-, hl: sint hl
-, tl: avltree(key, itm, hl)
-, hr: sint hr
-, tr: avltree(key, itm, hr)
-) : avltree_inc(key, itm, hr) =
+, hl: sint(hl)
+, tl: avltree(key,itm,hl)
+, hr: sint(hr)
+, tr: avltree(key,itm,hr)
+) : avltree_inc(key,itm,hr) =
 let
 //
 val+
@@ -243,16 +248,17 @@ B{hll:i0,hlr:i0}
 (_, kl, xl, tll, tlr) = tl
 val hll =
 (
-avltht<key><itm>(tll)): sint hll
+avltht<key><itm>(tll)): sint(hll)
 and hlr =
 (
-avltht<key><itm>(tlr)): sint hlr
+avltht<key><itm>(tlr)): sint(hlr)
 //
 in//let
 //
 if // if
 (hll+HTDFm1 >= hlr)
 then
+(
 let//then
 //
 val hlr1 = (hlr + 1)
@@ -262,17 +268,20 @@ B(
 1+imax(hll,hlr1), kl, xl,
 tll, B(hlr1, k0, x0, tlr, tr))
 end//let//then
-else let//else
+)
+else
+(
+let//else
 // HX: [hlr=hll+2]: deep rotation
 val+
 B{hlrl:i0,hlrr:i0}
 (_, klr, xlr, tlrl, tlrr) = tlr
 val hlrl =
 (
-avltht<key><itm>(tlrl)): sint hlrl
+avltht<key><itm>(tlrl)): sint(hlrl)
 and hlrr =
 (
-avltht<key><itm>(tlrr)): sint hlrr
+avltht<key><itm>(tlrr)): sint(hlrr)
 //
 in//let//else
 //
@@ -282,6 +291,7 @@ B(1+imax(hll ,hlrl), kl, xl, tll , tlrl),
 B(1+imax(hlrr,hr  ), k0, x0, tlrr, tr  ))
 //
 end//let//else
+)
 //
 end(*let*)//end-of-[avltree_rrotate<key><itm>(...)]
 //
@@ -294,19 +304,19 @@ fun
 avlmaxout{h:pos}
 (
 tx0:
-avltree(key, itm, h)):
+avltree(key,itm,h)):
 (
 avltree_dec(key,itm,h), key, itm) =
 (
-  auxfun( tx0 ) )
+  fnself( tx0 ) )
 where
 {
 //
 fun
-auxfun{h:pos} .<h>.
+fnself{h:pos} .<h>.
 (
 tx0:
-avltree(key, itm, h)):
+avltree(key,itm,h)):
 (
 avltree_dec(key,itm,h), key, itm) =
 let
@@ -324,7 +334,7 @@ let
 val//[hr:int]
 (
 tr2,
-k0,x0) = auxfun(tr2)
+k0,x0) = fnself(tr2)
 val hl = avltht(tl1)//:sint(hl)
 and hr = avltht(tr2)//:sint(hr)
 in//let
@@ -347,7 +357,7 @@ avltree_rrotate
 //
 end(*let*)//end-of-[B _]
 )
-end(*let*)//end-of-[auxfun(tx0):(_,_,_)]
+end(*let*)//end-of-[fnself(tx0):(_,_,_)]
 //
 }(*where*)//end-of-[avlmaxout<key><itm>(tx0):(_,_,_)]
 //
@@ -359,19 +369,19 @@ fun
 avlminout{h:pos}
 (
 tx0:
-avltree(key, itm, h)):
+avltree(key,itm,h)):
 (
 avltree_dec(key,itm,h), key, itm) =
 (
-  auxfun( tx0 ) )
+  fnself( tx0 ) )
 where
 {
 //
 fun
-auxfun{h:pos} .<h>.
+fnself{h:pos} .<h>.
 (
 tx0:
-avltree(key, itm, h)):
+avltree(key,itm,h)):
 (
 avltree_dec(key,itm,h), key, itm) =
 let
@@ -389,7 +399,7 @@ let
 val//[hl:int]
 (
 tl1,
-k0,x0) = auxfun(tl1)
+k0,x0) = fnself(tl1)
 val hl = avltht(tl1)//:sint(hl)
 and hr = avltht(tr2)//:sint(hr)
 in//let
@@ -412,7 +422,7 @@ avltree_lrotate
 //
 end(*let*)//end-of-[B _]
 )
-end(*let*)//end-of-[auxfun(tx0):(_,_,_)]
+end(*let*)//end-of-[fnself(tx0):(_,_,_)]
 //
 }(*where*)//end-of-[avlminout<key><itm>(tx0):(_,_,_)]
 //
@@ -509,7 +519,7 @@ auxmain
 (
 tx0:
 avltree
-(key, itm)): strm_vt(k0) =
+(key,itm)): strm_vt(k0) =
 $llazy(
 //
 case+ tx0 of
@@ -550,14 +560,14 @@ funmap_keyval$strmize
   auxmain(kxs)) where
 {
 //
-#typedef kx = @(key, itm)
+#typedef kx = (key,itm)
 //
 fun
 auxmain
 (
 tx0:
 avltree
-(key, itm)): strm_vt(kx) =
+(key,itm)): strm_vt(kx) =
 $llazy(
 //
 case+ tx0 of
@@ -686,7 +696,7 @@ fun
 insert{h:nat} .<h>.
 (
 tx0:
-avltree(key, itm, h)):
+avltree(key,itm,h)):
 (
 avltree_inc
 (key,itm,h), optn_vt(itm)) =
@@ -796,7 +806,7 @@ fun
 getout{h:nat} .<h>.
 (
 tx0:
-avltree(key, itm, h)):
+avltree(key,itm,h)):
 (
 avltree_dec
 (key,itm,h), optn_vt(itm)) =
@@ -930,16 +940,16 @@ end // end of [B]
 funmap_keyval$forall
   (    map    ) =
 (
-  auxfun( map ) )
+  fnself( map ) )
 where
 {
 //
 fun
-auxfun{h:nat} .<h>.
+fnself{h:nat} .<h>.
 (
 tx0:
 avltree
-(key, itm, h)): bool =
+(key,itm,h)): bool =
 (
 //
 case+ tx0 of
@@ -949,17 +959,52 @@ E((*void*)) => (true)
 B(_, k1, x1, tl1, tr2) =>
 (
 if(
-auxfun(tl1))
+fnself(tl1))
 then
 (
 if // if
 (
 forall$test
 <(key,itm)>( @(k1, x1) ))
-then auxfun(tr2) else false) else false)
+then fnself(tr2) else false) else false)
 //
-)(*case+*)//end-of-[auxfun(tx0):bool]
+)(*case+*)//end-of-[fnself(tx0):bool]
 }(*where*)//end-of-[funmap_keyval$forall(map)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<key:t0>
+<itm:t0>
+funmap_keyval$foritm
+  (    map    ) =
+(
+  fnself( map ) )
+where
+{
+//
+fun
+fnself{h:nat} .<h>.
+(
+tx0:
+avltree
+(key,itm,h)): void =
+(
+//
+case+ tx0 of
+|
+E((*void*)) => ((*0*))
+|
+B(_, k1, x1, tl1, tr2) =>
+(
+fnself(tl1);
+(
+foritm$work
+<(key,itm)>(@(k1, x1)); fnself(tr2)))
+//
+)(*case+*)//end-of-[fnself(tx0):bool]
+}(*where*)//end-of-[funmap_keyval$foritm(map)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -967,126 +1012,3 @@ then auxfun(tr2) else false) else false)
 (***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_githwxi_ATS2_DATS_funmap_avltree.dats] *)
 (***********************************************************************)
-////
-(* ****** ****** *)
-(* ****** ****** *)
-
-(*
-** left join: height(tl) >= height(tr)
-*)
-fun{
-key,itm:t0
-} avltree_ljoin
-  {hl,hr:nat | hl >= hr} .<hl>.
-(
-  k: key, x: itm
-, tl: avltree (key, itm, hl)
-, tr: avltree (key, itm, hr)
-) :<> avltree_inc (key, itm, hl) = let
-  val hl = avlht(tl) : int hl
-  and hr = avlht(tr) : int hr
-in
-//
-if hl >= hr + HTDFp1 then let
-  val+B{..}{hll, hlr}(_, kl, xl, tll, tlr) = tl
-  val [hlr:int] tlr = avltree_ljoin<key,itm> (k, x, tlr, tr)
-  val hll = avlht(tll) : int hll
-  and hlr = avlht(tlr) : int hlr
-in
-  if hlr <= hll + HTDF
-    then B{key,itm}(1+max(hll,hlr), kl, xl, tll, tlr)
-    else avltree_lrotate<key,itm> (kl, xl, hll, tll, hlr, tlr)
-  // end of [if]
-end else B{key,itm}(hl+1, k, x, tl, tr) // end of [if]
-//
-end // end of [avltree_ljoin]
-
-(* ****** ****** *)
-
-(*
-** right join: height(tl) <= height(tr)
-*)
-fun{
-key,itm:t0
-} avltree_rjoin
-  {hl,hr:nat | hl <= hr} .<hr>.
-(
-  k: key, x: itm
-, tl: avltree (key, itm, hl)
-, tr: avltree (key, itm, hr)
-) :<> avltree_inc (key, itm, hr) = let
-  val hl = avlht(tl) : int hl
-  and hr = avlht(tr) : int hr
-in
-//
-if hr >= hl + HTDFp1 then let
-  val+B{..}{hrl,hrr}(_, kr, xr, trl, trr) = tr
-  val [hrl:int] trl = avltree_rjoin<key,itm> (k, x, tl, trl)
-  val hrl = avlht(trl) : int hrl
-  and hrr = avlht(trr) : int hrr
-in
-  if hrl <= hrr + HTDF
-    then B{key,itm}(1+max(hrl,hrr), kr, xr, trl, trr)
-    else avltree_rrotate<key,itm> (kr, xr, hrl, trl, hrr, trr)
-  // end of [if]
-end else B{key,itm}(hr+1, k, x, tl, tr) // end of [if]
-//
-end // end of [avltree_rjoin]
-
-(* ****** ****** *)
-
-fn{
-key,itm:t0
-} avltree_join3
-  {hl,hr:nat}
-(
-  k: key, x: itm
-, tl: avltree (key, itm, hl)
-, tr: avltree (key, itm, hr)
-) :<> [
-  h:int
-| hl <= h
-; hr <= h
-; h <= 1+max(hl,hr)
-] avltree (key, itm, h) = let
-  val hl = avlht(tl) : int hl
-  and hr = avlht(tr) : int hr
-in
-  if hl >= hr then
-    avltree_ljoin<key,itm> (k, x, tl, tr) else avltree_rjoin<key,itm> (k, x, tl, tr)
-  // end of [if]
-end // end of [avltree_join3]
-
-(* ****** ****** *)
-
-fn{
-key,itm:t0
-} avltree_join2
-  {hl,hr:nat}
-(
-  tl: avltree (key, itm, hl)
-, tr: avltree (key, itm, hr)
-) :<> [
-  h:nat
-| h <= 1+max(hl,hr)
-] avltree (key, itm, h) =
-(
-case+
-  (tl, tr) of
-| (E (), _) => tr
-| (_, E ()) => tl
-| (_, _) =>> let
-    var kmin: key // uninitialized
-    var xmin: itm // uninitialized
-    val tr = $effmask_wrt
-      (avlminout<key,itm> (tr, kmin, xmin))
-    // end of [val]
-  in
-    avltree_join3<key,itm> (kmin, xmin, tl, tr)
-  end // end of [_, _]
-) // end of [avltree_join2]
-
-(* ****** ****** *)
-(* ****** ****** *)
-
-(* end of [funmap_avltree.dats] *)
