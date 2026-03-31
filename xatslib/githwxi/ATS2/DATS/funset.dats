@@ -172,6 +172,18 @@ folditm$fopr
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<itm:t0>
+funset_insert$any
+  ( set, x0)  =
+(
+if // if
+funset_memberq<itm>(set, x0)
+then set else funset_insert$new<itm>(set, x0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_githwxi_ATS2_DATS_funset.dats] *)
 (***********************************************************************)
