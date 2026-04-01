@@ -93,6 +93,10 @@ consq with funmmap_consq of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-01:
+It counts the number of keyvals.
+*)
 fun
 <key:t0>
 <itm:t0>

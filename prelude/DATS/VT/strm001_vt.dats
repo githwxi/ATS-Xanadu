@@ -319,6 +319,54 @@ gseq_imap0_lstrm
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-01:
+Note <x0:t0> (not vt)!!!
+It should be interesting to implement
+the version for <x0:vt>, where copying
+(via g_copy<x0>) is likely to be needed.
+*)
+#impltmp
+< x0:t0 >
+strm_vt_dedup0
+  ( xs ) =
+(
+  dedup0(xs) )
+where
+{
+//
+fun
+dedup0(
+xs:
+strm_vt(x0)): strm_vt(x0) =
+$llazy(
+//
+case+ !xs of
+| ~
+strmcon_vt_nil
+ ( (*0*) ) => strmcon_vt_nil()
+| ~
+strmcon_vt_cons
+ ( x1, xs ) =>
+strmcon_vt_cons
+(x1, dedup0(xs)) where
+{
+val xs =
+strm_vt_filter0<x0>(xs) where
+{
+#impltmp
+filter$test1//HX: [x1] is nonlin!
+< x0 >( x2 ) = g_noteq<x0>(x1, x2)
+}
+}(*where*)//end(strmcon_vt_cons(...))
+//
+)(*case+*)//end-of-(dedup0(xs)=llazy)
+//
+}(*where*)//end-of-(strm_vt_dedup0(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < x0:vt >
 strm_vt_filter0

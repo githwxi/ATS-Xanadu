@@ -194,8 +194,9 @@ gmap_keyval$strmize
 funmmap_key$strmize
 (     map     ) =
 (
+strm_vt_dedup0<k0>(
 strm_vt_map0<kx><k0>(
-  funmmap_keyval$strmize<key><itm>(map)))
+funmmap_keyval$strmize<key><itm>(map))))
 where
 {
 #typedef k0 = key

@@ -70,6 +70,21 @@ funmset_make_nil
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun<>
+funmset_nilq
+{itm:t0}(set: fmset(itm)): bool
+fun<>
+funmset_consq
+{itm:t0}(set: fmset(itm)): bool
+//
+#symload
+nilq with funmset_nilq of 1000
+#symload
+consq with funmset_consq of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_githwxi_ATS2_SATS_funmset.sats] *)
 (***********************************************************************)
