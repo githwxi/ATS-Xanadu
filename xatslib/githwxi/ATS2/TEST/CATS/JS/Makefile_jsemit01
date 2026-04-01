@@ -16,6 +16,8 @@ all:: test03
 all:: test04
 all:: test05
 all:: test06
+all:: test07
+all:: test08
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -29,6 +31,8 @@ testall:: test03; $(NODE) OUTS/$<_out.js
 testall:: test04; $(NODE) OUTS/$<_out.js
 testall:: test05; $(NODE) OUTS/$<_out.js
 testall:: test06; $(NODE) OUTS/$<_out.js
+testall:: test07; $(NODE) OUTS/$<_out.js
+testall:: test08; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 SRCGEN2_SRCGENX=\
