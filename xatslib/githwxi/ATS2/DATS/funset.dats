@@ -174,6 +174,17 @@ folditm$fopr
 //
 #impltmp
 <itm:t0>
+funset_remove$any
+  ( set, x0)  =
+let
+val (set, opt) =
+funset_remove$opt<itm>(set, x0) in set end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<itm:t0>
 funset_insert$any
   ( set, x0)  =
 (

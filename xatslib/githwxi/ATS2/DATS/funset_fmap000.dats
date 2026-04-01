@@ -94,6 +94,12 @@ funset_remove$old
   (* set, x0 *) =
   funmap_remove$old<itm><emp>(*set,x0*)
 //
+#impltmp
+<itm:t0>
+funset_remove$opt
+  (* set, x0 *) =
+  funmap_remove$opt<itm><emp>(*set,x0*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -101,7 +107,8 @@ funset_remove$old
 <itm:t0>
 funset_insert$new
   (  set, x0  ) =
-  funmap_insert$new<itm><emp>(set, x0, ())
+(
+  funmap_insert$new<itm><emp>(set, x0, ()))
 //
 (* ****** ****** *)
 (* ****** ****** *)
