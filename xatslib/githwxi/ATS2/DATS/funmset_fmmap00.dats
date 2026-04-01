@@ -29,148 +29,108 @@
 (* ****** ****** *)
 (*
 Author: Hongwei Xi
-Wed Apr  1 09:21:22 AM EDT 2026
+Wed Apr  1 04:49:24 PM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2026-03-29:
-For multi-sets (msets), where
-an item can occur multiple times
-*)
+#staload "./../SATS/funmset.sats"
 //
-#abstype
-fmset_tbox(itm:type+) <= p0tr
-#sexpdef fmset = fmset_tbox(*itm*)
+(* ****** ****** *)
+//
+#staload "./../SATS/funmmap.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<itm:t0>
-equal_itm_itm
-(x1: itm, x2: itm): bool
-fun
-<itm:t0>
-compare_itm_itm
-(x1: itm, x2: itm): sint
+#typedef emp = void
+//
+#absimpl
+fmset_tbox(itm:t0) = fmmap(itm, emp)
+// end of [fset_tbox]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
-funmset_nil
-{itm:t0}((*void*)): fmset(itm)
-fun<>
+#impltmp
+<(*00*)>
+funmset_nil() = funmmap_nil<>()
+#impltmp
+<(*00*)>
 funmset_make_nil
-{itm:t0}((*void*)): fmset(itm)
+  ((*void*)) = funmmap_make_nil<>()
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
-funmset_nilq
-{itm:t0}(set: fmset(itm)): bool
-fun<>
-funmset_consq
-{itm:t0}(set: fmset(itm)): bool
-//
-#symload
-nilq with funmset_nilq of 1000
-#symload
-consq with funmset_consq of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-(*
-HX-2026-04-01:
-It counts the number of keyvals.
-*)
-fun
+#impltmp
 <itm:t0>
-funmset_size
-(set: fmset(itm)): nint
-(*
-HX-2026-04-01:
-This one does not count duplicates
-*)
-fun
-<itm:t0>
-funmset_set$size
-(set: fmset(itm)): nint
-//
-#symload
-  size with funmset_size of 1000
+funmset_size(*set*) =
+  funmmap_size<itm><emp>(*set*)
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
-fun
-<itm:t0>
-funmset_print(set: fmset(itm)): void
-(*
-#symload print with funmset_print of 1000
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
+#impltmp
 <itm:t0>
 funmset_strmize
-(set: fmset(itm)): strm_vt(itm)
-(*
-HX-2026-04-01:
-This one does not enumerate duplicates
-*)
-fun
+  (  set  ) =
+(
+strm_vt_map0<kx><k0>
+(
+funmmap_keyval$strmize<itm><emp>(set))
+) where
+{
+#typedef k0 = itm
+#typedef kx = @(itm, emp)
+#impltmp map$fopr0<kx><k0>(kx) = (kx.0)
+}(*where*)//end-of-[funmset_strmize(set)]
+//
+(* ****** ****** *)
+//
+#impltmp
 <itm:t0>
 funmset_set$strmize
-(set: fmset(itm)): strm_vt(itm)
-//
-#symload
-  strmize with funmset_strmize of 1000
+  (* set *) =
+  funmmap_key$strmize<itm><emp>(*set*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
+#impltmp
 <itm:t0>
 funmset_memberq
-  (set: fmset(itm), x0: itm): bool
-fun
-<itm:t0>
-funmset_member$cnt
-  (set: fmset(itm), x0: itm): nint
+  (*set, x0*) = 
+  funmmap_search$tst<itm><emp>(*set,x0*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<itm:t0>
-funmset_insert$any
-(set: fmset(itm), x0: itm): fmset(itm)
-//
-(* ****** ****** *)
-//
-fun
-<itm:t0>
-funmset_remove$any
-(set: fmset(itm), x0: itm): fmset(itm)
-fun
+#impltmp
 <itm:t0>
 funmset_remove$old
-(set: fmset(itm), x0: itm): fmset(itm)
-fun
+  (* set, x0 *) =
+  funmmap_remove$old<itm><emp>(*set,x0*)
+//
+#impltmp
 <itm:t0>
 funmset_remove$opt
-(set: fmset(itm), x0: itm): (fmset(itm), bool)
+  (* set, x0 *) =
+  funmmap_remove$opt<itm><emp>(*set,x0*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<itm:t0>
+funmset_insert$any
+  (  set, x0  ) =
+(
+funmmap_insert$any<itm><emp>(set, x0, ()))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_githwxi_ATS2_SATS_funmset.sats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_ATS2_DATS_funmset_fmmap00.dats] *)
 (***********************************************************************)

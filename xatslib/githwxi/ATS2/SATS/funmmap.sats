@@ -185,19 +185,11 @@ fmmap(key, itm), k0: key): optn_vt(itm)
 fun
 <key:t0>
 <itm:t0>
-funmmap_insert$new
+funmmap_insert$any
 (
 map:
 fmmap
 (key, itm), k0: key, x0: itm): fmmap(key,itm)
-fun
-<key:t0>
-<itm:t0>
-funmmap_insert$opt
-(
-map:
-fmmap(key, itm),
-k0: key, x0: itm): (fmmap(key,itm), optn_vt(itm))
 //
 (* ****** ****** *)
 (* ****** ****** *)

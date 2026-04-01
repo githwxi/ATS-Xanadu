@@ -168,20 +168,15 @@ funmmap_keyval$foritm
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-01:
+It always works!!!
+*)
 #impltmp
 <key:t0>
 <itm:t0>
-funmmap_insert$new
-  (kxs, k0, x0) =
-(
-  list_cons((k0, x0), kxs))
-#impltmp
-<key:t0>
-<itm:t0>
-funmmap_insert$opt
-  (kxs, k0, x0) =
-(
-  list_cons((k0, x0), kxs), optn_vt_nil())
+funmmap_insert$any
+  (kxs, k0, x0) = list_cons((k0, x0), kxs)
 //
 (* ****** ****** *)
 (* ****** ****** *)

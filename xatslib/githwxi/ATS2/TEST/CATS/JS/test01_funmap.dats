@@ -110,5 +110,5 @@ val () = console_log(the_print_store_flush())
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_JS_githwxi_ATS2_TEST_test01_funmmap.dats] *)
+(* end of [ATS3/XANADU_xatslib_JS_githwxi_ATS2_TEST_test01_funmap.dats] *)
 (***********************************************************************)
