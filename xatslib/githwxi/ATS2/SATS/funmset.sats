@@ -109,9 +109,15 @@ funmset_set$size
 //
 fun
 <itm:t0>
-funmset_print(set: fmset(itm)): void
+funmset_print
+(set: fmset(itm)): void
+fun
+<itm:t0>
+funmset_set$print
+(set: fmset(itm)): void
 (*
-#symload print with funmset_print of 1000
+#symload
+  print with funmset_print of 1000
 *)
 //
 (* ****** ****** *)
