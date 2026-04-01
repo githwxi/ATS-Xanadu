@@ -328,6 +328,22 @@ strq_vt_imap0$f1un
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-01:
+For each item,
+the first copy is kept
+and the rest of the copies
+are removed.
+Hence, 'sieve' really is
+just a special case of 'dedup'.
+*)
+fun
+<x0:vt>
+strm_vt_dedup0
+(xs: strm_vt(x0)): strm_vt(x0)
+//
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 strm_vt_filter0
