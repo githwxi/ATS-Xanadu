@@ -55,7 +55,18 @@ Hello from [test09_funmset]!\n")
 #staload "./../../../DATS/funmset.dats"
 #staload "./../../../DATS/funmmap.dats"
 #staload "./../../../DATS/funmset_fmmap00.dats"
+//
 #staload "./../../../DATS/funmmap_list000.dats"
+//
+(*
+(*
+HX-2026-04-01:
+This is not efficient but it works!
+*)
+#staload "./../../../DATS/funmap.dats"
+#staload "./../../../DATS/funmap_avltree.dats"
+#staload "./../../../DATS/funmmap_fmaplst.dats"
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
