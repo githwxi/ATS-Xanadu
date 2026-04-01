@@ -40,15 +40,15 @@ defq(
 _FUNMAP_DETMP00_)
 #then
 (*
-#typedef key = ???
-#typedef itm = ???
+#typedef _key_ = ???
+#typedef _itm_ = ???
 *)
 #else
 //
 #abstype key_type
 #abstype itm_type
-#typedef key = key_type
-#typedef itm = itm_type
+#typedef _key_ = key_type
+#typedef _itm_ = itm_type
 //
 #endif
 //end(#ifdefq(_FUNMAP_DETMP00_))
@@ -56,7 +56,7 @@ _FUNMAP_DETMP00_)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#typedef fmap = fmap(key, itm)
+#typedef _fmap_ = fmap(_key_, _itm_)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -64,11 +64,11 @@ _FUNMAP_DETMP00_)
 #extern
 fun
 funmap_search$opt__
-(map: fmap, k0: key): optn_vt(itm)
+(map: _fmap_, k0: _key_): optn_vt(_itm_)
 #implfun
-funmap_search$opt__ = funmap_search$opt<key><itm>
+funmap_search$opt__ = funmap_search$opt<_key_><_itm_>
 #impltmp
-funmap_search$opt<key><itm> = funmap_search$opt__
+funmap_search$opt<_key_><_itm_> = funmap_search$opt__
 //
 (* ****** ****** *)
 //
@@ -76,32 +76,32 @@ funmap_search$opt<key><itm> = funmap_search$opt__
 fun
 funmap_insert$opt__
 ( map
-: fmap
-, k0: key, x0: itm): (fmap, optn_vt(itm))
+: _fmap_
+, k0: _key_, x0: _itm_): (_fmap_, optn_vt(_itm_))
 #implfun
-funmap_insert$opt__ = funmap_insert$opt<key><itm>
+funmap_insert$opt__ = funmap_insert$opt<_key_><_itm_>
 #impltmp
-funmap_insert$opt<key><itm> = funmap_insert$opt__
+funmap_insert$opt<_key_><_itm_> = funmap_insert$opt__
 //
 (* ****** ****** *)
 //
 #extern
 fun
 funmap_remove$opt__
-(map: fmap, k0: key): (fmap, bool)
+(map: _fmap_, k0: _key_): (_fmap_, bool)
 #implfun
-funmap_remove$opt__ = funmap_remove$opt<key><itm>
+funmap_remove$opt__ = funmap_remove$opt<_key_><_itm_>
 #impltmp
-funmap_remove$opt<key><itm> = funmap_remove$opt__
+funmap_remove$opt<_key_><_itm_> = funmap_remove$opt__
 //
 #extern
 fun
 funmap_getout$opt__
-(map: fmap, k0: key): (fmap, optn_vt(itm))
+(map: _fmap_, k0: _key_): (_fmap_, optn_vt(_itm_))
 #implfun
-funmap_getout$opt__ = funmap_getout$opt<key><itm>
+funmap_getout$opt__ = funmap_getout$opt<_key_><_itm_>
 #impltmp
-funmap_getout$opt<key><itm> = funmap_getout$opt__
+funmap_getout$opt<_key_><_itm_> = funmap_getout$opt__
 //
 (* ****** ****** *)
 (* ****** ****** *)
