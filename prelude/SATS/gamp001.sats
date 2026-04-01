@@ -52,6 +52,12 @@ fun
 <key:t0>
 <itm:vt>
 gamp_key$strmize(amp): strm_vt(key)
+//
+(*
+HX-2026-03-31:
+The following ones usually seem to
+require that g_copy<itm> be called?
+*)
 fun
 <amp:t0>
 <key:t0>

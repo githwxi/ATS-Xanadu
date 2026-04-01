@@ -208,6 +208,11 @@ fun
 gamp_insert$any
 (kxs: amp
 ,key: key, itm: itm): void
+(*
+HX-2026-03-31:
+This one does not indicate whether
+insertion is performed successfully!
+*)
 *)
 fun
 <amp:t0>
