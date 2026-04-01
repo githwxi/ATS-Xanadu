@@ -181,6 +181,16 @@ val (set, opt) =
 funset_remove$opt<itm>(set, x0) in set end
 //
 (* ****** ****** *)
+//
+#impltmp
+<itm:t0>
+funset_remove$old
+  ( set, x0)  =
+let
+val-(set, (true)) =
+funset_remove$opt<itm>(set, x0) in set end
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -202,6 +212,17 @@ funset_insert$any
 { val//val
   (set, opt) = funset_insert$opt<itm>(set, x0)
 }(*where*)//endof(funset_insert$any<itm>(set,x0))
+//
+(* ****** ****** *)
+//
+#impltmp
+<itm:t0>
+funset_insert$new
+  ( set, x0 )  =
+  (   set   ) where
+{ val-//val
+  (set, false) = funset_insert$opt<itm>(set, x0)
+}(*where*)//endof(funset_insert$new<itm>(set,x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

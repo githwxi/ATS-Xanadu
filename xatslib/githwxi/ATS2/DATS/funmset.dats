@@ -110,6 +110,27 @@ strm_vt_dedup0(funmset_strmize<itm>(set))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<itm:t0>
+funmset_remove$any
+  ( set, x0)  =
+let
+val (set, opt) =
+funmset_remove$opt<itm>(set, x0) in set end
+//
+(* ****** ****** *)
+//
+#impltmp
+<itm:t0>
+funmset_remove$old
+  ( set, x0)  =
+let
+val-(set, (true)) =
+funmset_remove$opt<itm>(set, x0) in set end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_githwxi_ATS2_DATS_funmset.dats] *)
 (***********************************************************************)
