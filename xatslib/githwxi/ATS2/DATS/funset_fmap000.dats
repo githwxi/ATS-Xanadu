@@ -110,6 +110,22 @@ funset_insert$new
 (
   funmap_insert$new<itm><emp>(set, x0, ()))
 //
+#impltmp
+<itm:t0>
+funset_insert$opt
+  (  set, x0  ) =
+(
+case+ opt of
+| ~
+optn_vt_nil() => (set, false)
+| ~
+optn_vt_cons _ => (set, (true))
+) where {
+val (set, opt) =
+(
+  funmap_insert$opt<itm><emp>(set, x0, ()))
+}(*where*)//end-of-[funset_insert$opt(set,x0)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
