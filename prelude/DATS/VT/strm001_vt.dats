@@ -261,7 +261,7 @@ There is not harm to keep it here as a reference.
 { x0:vt }
 { y0:vt }
 gseq_map0_lstrm
-<strm_vt(x0)><x0><y0> = strm_vt_map0<x0><y0>(*void*)
+<strm_vt(x0)><x0><y0> = strm_vt_map0<x0><y0>(*0*)
 //
 (* ****** ****** *)
 //
@@ -285,7 +285,8 @@ free(xs);
 case+ !xs of
 | ~
 strmcon_vt_nil() =>
-strmcon_vt_nil(*void*)
+(
+strmcon_vt_nil(*0*))
 | ~
 strmcon_vt_cons(x1, xs) =>
 let
@@ -314,7 +315,7 @@ imap$fopr0<x0><y0>(*x0*) = fopr(*x0*)
 { x0:vt }
 { y0:vt }
 gseq_imap0_lstrm
-<strm_vt(x0)><x0><y0> = strm_vt_imap0<x0><y0>(*void*)
+<strm_vt(x0)><x0><y0> = strm_vt_imap0<x0><y0>(*0*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -322,6 +323,7 @@ gseq_imap0_lstrm
 (*
 HX-2026-04-01:
 Note <x0:t0> (not vt)!!!
+This one is tested in XATSHOME.
 It should be interesting to implement
 the version for <x0:vt>, where copying
 (via g_copy<x0>) is likely to be needed.
@@ -441,7 +443,7 @@ It is not harm to keep it here as a reference.
 #impltmp
 { x0:vt }
 gseq_filter0_lstrm
-<strm_vt(x0)><x0> = strm_vt_filter0<x0>(*void*)
+<strm_vt(x0)><x0> = strm_vt_filter0<x0>(*0*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -742,7 +744,7 @@ case+ !xs of
 strmcon_vt_nil() =>
 (
 g_free<e1>(e1);
-strmcon_vt_nil(*void*))
+strmcon_vt_nil(*0*))
 | ~
 strmcon_vt_cons(x1, xs) =>
 let
