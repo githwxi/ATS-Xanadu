@@ -1,0 +1,75 @@
+(***********************************************************************)
+(*                                                                     *)
+(*                         Applied Type System                         *)
+(*                                                                     *)
+(***********************************************************************)
+
+(*
+** ATS/Postiats - Unleashing the Potential of Types!
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
+** All rights reserved
+**
+** ATS is free software;  you can  redistribute it and/or modify it under
+** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
+** Free Software Foundation; either version 3, or (at  your  option)  any
+** later version.
+** 
+** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
+** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
+** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
+** for more details.
+** 
+** You  should  have  received  a  copy of the GNU General Public License
+** along  with  ATS;  see the  file COPYING.  If not, please write to the
+** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
+** 02110-1301, USA.
+*)
+
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+Author: Hongwei Xi
+Wed Apr  1 09:21:22 AM EDT 2026
+Authoremail: gmhwxiATgmailDOTcom
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-03-29:
+For multi-sets (msets), where
+an item can occur multiple times
+*)
+//
+#abstype
+fmset_tbox(itm:type+) <= p0tr
+#sexpdef fmset = fmset_tbox(*itm*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<itm:t0>
+equal_itm_itm
+(x1: itm, x2: itm): bool
+fun
+<itm:t0>
+compare_itm_itm
+(x1: itm, x2: itm): sint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+funmset_nil
+{itm:t0}((*void*)): fmset(itm)
+fun<>
+funmset_make_nil
+{itm:t0}((*void*)): fmset(itm)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_xatslib_githwxi_ATS2_SATS_funmset.sats] *)
+(***********************************************************************)

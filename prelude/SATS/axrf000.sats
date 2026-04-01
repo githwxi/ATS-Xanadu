@@ -214,11 +214,17 @@ a1rf_length
 fun
 <a:t0>
 a1rf_get$at
+(*
+a1rf_get$at$dml
+*)
 {n:n0}
 (A:a1rf(a,n), i:nintlt(n)): a
 fun
 <a:t0>
 a1rf_set$at
+(*
+a1rf_set$at$dml
+*)
 {n:n0}
 (A:a1rf(a,n), i:nintlt(n), x:a): void
 //
@@ -232,11 +238,17 @@ a1rf_set$at
 fun
 <a:vt>
 a1rf_cget$at
+(*
+a1rf_cget$at$dml
+*)
 {n:n0}
 (A:a1rf(a,n), i:nintlt(n)): a
 fun
 <a:vt>
 a1rf_setf$at
+(*
+a1rf_setf$at$dml
+*)
 {n:n0}
 (A:a1rf(a,n), i:nintlt(n), x:a): void
 //
@@ -248,12 +260,18 @@ a1rf_setf$at
 fun
 <a:vt>
 a1rf_lget$at
+(*
+a1rf_lget$at$dml
+*)
 {n:n0}
 ( A: a1rf(a,n)
 , i: nintlt(n)): (owed(a) | a)
 fun
 <a:vt>
 a1rf_lset$at
+(*
+a1rf_lset$at$dml
+*)
 {n:n0}
 (f: owed(a)
 |A: a1rf(a,n), i:nintlt(n), x:a): void
