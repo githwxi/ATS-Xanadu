@@ -306,7 +306,7 @@ case- opt of
 | ~
 optn_vt_nil() => (kxs, false)
 | ~
-optn_vt_cons(x0) => (kxs, true))
+optn_vt_cons(x0) => (kxs, (true)))
 where
 {
 val (kxs, opt) =
