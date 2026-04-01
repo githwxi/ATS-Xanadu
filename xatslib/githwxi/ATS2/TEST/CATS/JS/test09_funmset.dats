@@ -1,9 +1,8 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2026-03-29:
-HX-2024-09-05:
-Thu 05 Sep 2024 05:36:54 PM EDT
+HX-2025-04-01:
+Wed Apr  1 04:51:55 PM EDT 2026
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -43,63 +42,59 @@ Thu 05 Sep 2024 05:36:54 PM EDT
 //
 val () =
 prints("\
-Hello from [test04_avltree]!\n")
+Hello from [test09_funmset]!\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../../../SATS/funmap.sats"
+#staload "./../../../SATS/funmset.sats"
+#staload "./../../../SATS/funmmap.sats"
 //
 (* ****** ****** *)
 //
-#staload "./../../../DATS/funmap.dats"
-#staload "./../../../DATS/funmap_avltree.dats"
+#staload "./../../../DATS/funmset.dats"
+#staload "./../../../DATS/funmmap.dats"
+#staload "./../../../DATS/funmset_fmmap00.dats"
+#staload "./../../../DATS/funmmap_list000.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#typedef key = strn
 #typedef itm = sint
-#typedef fmap = fmap(key, itm)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#typedef _key_ = key
-#typedef _itm_ = itm
-#define _FUNMAP_DETMP00_
-#include "./../../../DATS/funmap_detmp00.dats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val map1 =
-funmap_nil<>{key,itm}()
-//
-val map1 =
-funmap_insert$new(map1, "b", 1)
-val map1 =
-funmap_insert$new(map1, "a", 0)
-val map1 =
-funmap_insert$new(map1, "d", 3)
-val map1 =
-funmap_insert$new(map1, "c", 2)
-//
-val (  ) =
-printsln("map1 = ", map1)
-val (  ) =
-printsln("size(map1) = ", map1.size())
+val set1 =
+  funmset_nil{itm}()
+val (  ) = printsln("set1 = ", set1)
 //
 (* ****** ****** *)
 //
-val map1 =
-funmap_remove$old(map1, "b")
-val map1 =
-funmap_remove$old(map1, "c")
-val (  ) =
-printsln("map1 = ", map1)
-val (  ) =
-printsln("size(map1) = ", map1.size())
+val set1 =
+  funmset_insert$any(set1, 1)
+val set1 =
+  funmset_insert$any(set1, 1)
+val set1 =
+  funmset_insert$any(set1, 2)
+val set1 =
+  funmset_insert$any(set1, 2)
+val set1 =
+  funmset_insert$any(set1, 3)
+val set1 =
+  funmset_insert$any(set1, 3)
+//
+val (  ) = printsln("set1 = ", set1)
+//
+(* ****** ****** *)
+//
+val set1 =
+  funmset_remove$old(set1, 1)
+val set1 =
+  funmset_remove$old(set1, 2)
+val set1 =
+  funmset_remove$old(set1, 3)
+val (  ) = printsln("set1 = ", set1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -110,5 +105,5 @@ val () = console_log(the_print_store_flush())
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_JS_githwxi_ATS2_TEST_test03_avltree.dats] *)
+(* end of [ATS3/XANADU_xatslib_JS_githwxi_ATS2_TEST_test09_funmset.dats] *)
 (***********************************************************************)

@@ -227,24 +227,6 @@ gseq_foritm<fmmap(key,itm)><t0up(key,itm)>(map)
 #impltmp
 <key:t0>
 <itm:t0>
-funmmap_insert$new
-( map, k0, x0 ) =
-(
-case- opt of
-| ~
-optn_vt_nil((*0*)) => map)
-where
-{
-val (map, opt) =
-funmmap_insert$opt< key >< itm >(map, k0, x0)
-}(*where*)//end(funmmap_insert$new(map,k0,x0))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<key:t0>
-<itm:t0>
 funmmap_remove$old
 (   map, k0   ) =
 (

@@ -157,38 +157,30 @@ val opt =
 #impltmp
 <key:t0>
 <itm:t0>
-funmmap_insert$opt
+funmmap_insert$any
   (map, k0, x0) =
 (
 //
 case+ opt of
 | ~
 optn_vt_nil() =>
-( map
-, optn_vt_nil())
-where
-{
-val map =
+(
 funmap_insert$new
 <key><list(itm)>(
-map, k0, list_sing(x0))}
+map, k0, list_sing(x0)))
 | ~
 optn_vt_cons(xs) =>
-( map
-, optn_vt_nil())
-where
-{
-val map =
+(
 funmap_insert$new
 <key><list(itm)>(
-map, k0, list_cons(x0, xs))}
+map, k0, list_cons(x0, xs)))
 //
 ) where
 {
 val (map, opt) =
 (
-  funmap_getout$opt<key><list(itm)>(map, k0))
-}(*where*)//end-of-[funmmap_getout$opt(map,k0)]
+funmap_getout$opt<key><list(itm)>(map, k0))}
+(*where*)//endof[funmmap_insert$any(map,k0,x0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

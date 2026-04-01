@@ -103,6 +103,38 @@ strm_vt_length0(
 (* ****** ****** *)
 //
 #impltmp
+{itm:t0}
+g_print
+<fmset(itm)>
+(*  set  *) =
+funmset_print<itm>(*set*)
+//
+#impltmp
+<itm:t0>
+funmset_print
+(   set   ) =
+(
+strm_vt_print0<x0>(xs))
+where
+{
+//
+#typedef x0 = itm
+#vwtpdef xs = strm_vt(x0)
+//
+#impltmp
+gseq$beg<xs><x0>() = "funmset("
+//
+val xs =
+(
+funmset_strmize
+<     itm     >(     set     ))
+//
+}(*where*)//end(funmset_print<itm>(set))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 <itm:t0>
 funmset_set$strmize(set) =
 strm_vt_dedup0(funmset_strmize<itm>(set))
