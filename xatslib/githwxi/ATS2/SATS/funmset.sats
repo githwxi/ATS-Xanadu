@@ -125,6 +125,37 @@ funmset_set$strmize
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<itm0:t0>
+funmset_member$cnt
+  (set: fmset(itm), x0: itm): nint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<itm0:t0>
+funmset_insert$any
+  (set: fmset(itm), x0: itm): fmset(itm)
+//
+(* ****** ****** *)
+//
+fun
+<itm:t0>
+funmset_remove$any
+(set: fmset(itm), x0: itm): fmset(itm)
+fun
+<itm:t0>
+funmset_remove$old
+(set: fmset(itm), x0: itm): fmset(itm)
+fun
+<itm:t0>
+funmset_remove$opt
+(set: fmset(itm), x0: itm): (fmset(itm), bool)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_githwxi_ATS2_SATS_funmset.sats] *)
 (***********************************************************************)
