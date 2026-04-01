@@ -210,6 +210,17 @@ irsearch$tcmp(pos: ni, itm: x0): sint
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-01:
+For removing duplicates
+Apr 1 01:17:24 PM EDT 2026
+*)
+fun
+<x0:t0>
+dedup$equal(x1: x0, x2: x0): bool
+//
+(* ****** ****** *)
+//
 fun
 <x0:t0>
 filter$test(itm: x0): bool

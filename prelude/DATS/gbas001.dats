@@ -500,7 +500,20 @@ Mon Jan  5 12:17:18 PM EST 2026
 //
 #impltmp
 < x0:t0 >
-sortedq$lteq(*x1,x2*) = g_lte<x0>(*x1,x2*)
+sortedq$lteq
+  (*x1,x2*) = g_lte<x0>(*x1,x2*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-04-01:
+Wed Apr  1 01:23:00 PM EDT 2026
+*)
+//
+#impltmp
+< x0:t0 >
+dedup$equal(*x1,x2*) = g_equal<x0>(*x1,x2*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
