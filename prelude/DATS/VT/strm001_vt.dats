@@ -344,19 +344,26 @@ $llazy(
 case+ !xs of
 | ~
 strmcon_vt_nil
- ( (*0*) ) => strmcon_vt_nil()
+  ( (*0*) ) =>
+(
+strmcon_vt_nil())
 | ~
 strmcon_vt_cons
- ( x1, xs ) =>
+  ( x1, xs ) =>
+(
 strmcon_vt_cons
-(x1, dedup0(xs)) where
+(x1, dedup0(xs))) where
 {
 val xs =
-strm_vt_filter0<x0>(xs) where
+(
+strm_vt_filter0<x0>(xs))
+where
 {
 #impltmp
 filter$test1//HX: [x1] is nonlin!
-< x0 >( x2 ) = g_noteq<x0>(x1, x2)
+< x0 >( x2 ) =
+(
+not(dedup$equal<x0>(x1, x2)))
 }
 }(*where*)//end(strmcon_vt_cons(...))
 //

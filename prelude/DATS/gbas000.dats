@@ -64,6 +64,21 @@ g_copy<x0>(obj) = obj
 (* ****** ****** *)
 //
 #impltmp
+< x0:t0 >
+g_equal(x1, x2) =
+(
+not(g_noteq<x0>(x1, x2)))
+//
+#impltmp
+< x0:t0 >
+g_noteq(x1, x2) =
+(
+not(g_equal<x0>(x1, x2)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 g_print
 <unit>(ut) = strn_print("unit")
 //
