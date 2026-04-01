@@ -132,6 +132,30 @@ funmset_strmize
 }(*where*)//end(funmset_print<itm>(set))
 //
 (* ****** ****** *)
+//
+#impltmp
+<itm:t0>
+funmset_set$print
+(   set   ) =
+(
+strm_vt_print0<x0>(xs))
+where
+{
+//
+#typedef x0 = itm
+#vwtpdef xs = strm_vt(x0)
+//
+#impltmp
+gseq$beg
+<xs><x0>() = "funmset$set("
+//
+val xs =
+(
+funmset_set$strmize
+<     itm     >(     set     )) }
+(*where*)//(funmset_set$print<itm>(set))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

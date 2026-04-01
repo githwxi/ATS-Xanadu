@@ -76,15 +76,19 @@ val set1 =
 val set1 =
   funmset_insert$any(set1, 1)
 val set1 =
-  funmset_insert$any(set1, 2)
+  funmset_insert$any(set1, 1)
 val set1 =
   funmset_insert$any(set1, 2)
 val set1 =
-  funmset_insert$any(set1, 3)
+  funmset_insert$any(set1, 2)
 val set1 =
   funmset_insert$any(set1, 3)
 //
-val (  ) = printsln("set1 = ", set1)
+val (  ) =
+  printsln("set1 = ", set1)
+val (  ) =
+( prints("set1 = ")
+; funmset_set$print(set1); printsln())
 //
 (* ****** ****** *)
 //
@@ -94,7 +98,14 @@ val set1 =
   funmset_remove$old(set1, 2)
 val set1 =
   funmset_remove$old(set1, 3)
-val (  ) = printsln("set1 = ", set1)
+val set1 =
+  funmset_remove$any(set1, 3)
+//
+val (  ) =
+  printsln("set1 = ", set1)
+val (  ) =
+( prints("set1 = ")
+; funmset_set$print(set1); printsln())
 //
 (* ****** ****** *)
 (* ****** ****** *)

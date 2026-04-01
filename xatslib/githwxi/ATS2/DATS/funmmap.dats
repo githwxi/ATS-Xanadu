@@ -247,7 +247,7 @@ case- opt of
 | ~
 optn_vt_nil() => (map, false)
 | ~
-optn_vt_cons(x0) => (map, true))
+optn_vt_cons(x0) => (map, (true)))
 where
 {
 val (map, opt) =

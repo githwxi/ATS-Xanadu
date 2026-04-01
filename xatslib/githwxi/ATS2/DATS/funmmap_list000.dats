@@ -184,62 +184,6 @@ funmmap_insert$any
 #impltmp
 <key:t0>
 <itm:t0>
-funmmap_remove$old
-  (  map, k0  ) =
-(
-auxloop
-(map, list_vt_nil())
-) where
-{
-//
-#typedef kx = (key, itm)
-//
-fnx
-rappend
-(krs
-:list_vt(kx)
-,kxs: list(kx)): list(kx) =
-(
-case+ krs of
-| ~
-list_vt_nil
-( (*void*) ) => kxs
-| ~
-list_vt_cons
-( kr1, krs ) =>
-(
-rappend
-(krs, list_cons(kr1, kxs))))
-//
-fnx
-auxloop
-(kxs: list(kx)
-,krs: list_vt(kx)): list(kx) =
-(
-case+ kxs of
-|list_nil
-( (*0*) ) =>
-(
-  map ) where
-{
-val () =
-list_vt_free(krs) }
-|list_cons
-(kx1, kxs) =>
-(
-if // if
-equal_key_key
-( k0, kx1.0 )
-then rappend(krs, kxs)
-else auxloop(kxs, list_vt_cons(kx1, krs))))
-//
-}(*where*)//end-of-[funmmap_remove$old(kxs,k0)]
-//
-(* ****** ****** *)
-//
-#impltmp
-<key:t0>
-<itm:t0>
 funmmap_remove$opt
   (  map, k0  ) =
 (
