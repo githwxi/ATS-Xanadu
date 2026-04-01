@@ -29,102 +29,87 @@
 (* ****** ****** *)
 (*
 Author: Hongwei Xi
-Wed Apr  1 09:21:22 AM EDT 2026
+Wed Apr  1 10:49:34 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2026-03-29:
-For multi-sets (msets), where
-an item can occur multiple times
-*)
-//
-#abstype
-fmset_tbox(itm:type+) <= p0tr
-#sexpdef fmset = fmset_tbox(*itm*)
+#staload "./../SATS/funmset.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
+#impltmp
 <itm:t0>
 equal_itm_itm
-(x1: itm, x2: itm): bool
-fun
+(x1, x2) = g_equal<itm>(x1, x2)
+//
+#impltmp
 <itm:t0>
 compare_itm_itm
-(x1: itm, x2: itm): sint
+( x1, x2 ) = g_cmp<itm>( x1, x2 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
+#impltmp
+<(*tmp*)>
 funmset_nil
-{itm:t0}((*void*)): fmset(itm)
-fun<>
-funmset_make_nil
-{itm:t0}((*void*)): fmset(itm)
+{itm:t0}((*nil*)) =
+(
+funmset_make_nil<>{itm}((*nil*)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
+#impltmp
+<(*tmp*)>
 funmset_nilq
-{itm:t0}(set: fmset(itm)): bool
-fun<>
+{itm:t0}(set) =
+(
+not(funmset_consq<>{itm}(set)))
+//
+#impltmp
+<(*tmp*)>
 funmset_consq
-{itm:t0}(set: fmset(itm)): bool
-//
-#symload
-nilq with funmset_nilq of 1000
-#symload
-consq with funmset_consq of 1000
+{itm:t0}(set) =
+(
+  not(funmset_nilq<>{itm}(set)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 (*
-HX-2026-04-01:
-It counts the number of keyvals.
+HX-2026-03-29:
+This one is O(n) time!!!
 *)
-fun
+#impltmp
 <itm:t0>
 funmset_size
-(set: fmset(itm)): nint
-(*
-HX-2026-04-01:
-This one does not count duplicates
-*)
-fun
+(     set     ) =
+(
+strm_vt_length0(
+  funmset_strmize<itm>(set)))
+#impltmp
 <itm:t0>
 funmset_set$size
-(set: fmset(itm)): nint
-//
-#symload
-  size with funmset_size of 1000
+(     set     ) =
+(
+strm_vt_length0(
+  funmset_set$strmize<itm>(set)))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-fun
+#impltmp
 <itm:t0>
-funmset_strmize
-(set: fmset(itm)): strm_vt(itm)
-(*
-HX-2026-04-01:
-This one does not enumerate duplicates
-*)
-fun
-<itm:t0>
-funmset_set$strmize
-(set: fmset(itm)): strm_vt(itm)
-//
-#symload
-  strmize with funmset_strmize of 1000
+funmset_set$strmize(set) =
+strm_vt_dedup0(funmset_strmize<itm>(set))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_githwxi_ATS2_SATS_funmset.sats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_ATS2_DATS_funmset.dats] *)
 (***********************************************************************)
