@@ -43,12 +43,12 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 <itm:t0>
 equal_itm_itm
-(k1, k2) = g_equal<itm>(k1, k2)
+(x1, x2) = g_equal<itm>(x1, x2)
 //
 #impltmp
 <itm:t0>
 compare_itm_itm
-( k1, k2 ) = g_cmp<itm>( k1, k2 )
+( x1, x2 ) = g_cmp<itm>( x1, x2 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
