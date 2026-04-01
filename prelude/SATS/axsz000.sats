@@ -165,11 +165,17 @@ a1sz_length
 fun
 <a:t0>
 a1sz_get$at
+(*
+a1sz_get$at$dml
+*)
 {n:i0}
 (a1sz(a, n), nint(n)): ( a )
 fun
 <a:t0>
 a1sz_set$at
+(*
+a1sz_set$at$dml
+*)
 {n:i0}
 (a1sz(a, n), nint(n), a): void
 //
@@ -183,11 +189,17 @@ a1sz_set$at
 fun
 <a:vt>
 a1sz_cget$at
+(*
+a1sz_cget$at$dml
+*)
 {n:i0}
 (A:a1sz(a,n), i:nintlt(n)): (a)
 fun
 <a:vt>
 a1sz_setf$at
+(*
+a1sz_setf$at$dml
+*)
 {n:i0}
 (A:a1sz(a,n), i:nintlt(n), x:a): void
 //
@@ -199,12 +211,18 @@ a1sz_setf$at
 fun
 <a:vt>
 a1sz_lget$at
+(*
+a1sz_lget$at$dml
+*)
 {n:i0}
 ( A: a1sz(a,n)
 , i: nintlt(n)): (owed(a) | a)
 fun
 <a:vt>
 a1sz_lset$at
+(*
+a1sz_lset$at$dml
+*)
 {n:i0}
 (f: owed(a)
 |A: a1sz(a,n), i:nintlt(n), x:a): void
