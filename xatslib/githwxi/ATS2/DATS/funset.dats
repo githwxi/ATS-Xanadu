@@ -183,6 +183,7 @@ funset_remove$opt<itm>(set, x0) in set end
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 <itm:t0>
 funset_insert$any
@@ -191,6 +192,16 @@ funset_insert$any
 if // if
 funset_memberq<itm>(set, x0)
 then set else funset_insert$new<itm>(set, x0))
+*)
+//
+#impltmp
+<itm:t0>
+funset_insert$any
+  ( set, x0 )  =
+  (   set   ) where
+{ val//val
+  (set, opt) = funset_insert$opt<itm>(set, x0)
+}(*where*)//endof(funset_insert$any<itm>(set,x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
