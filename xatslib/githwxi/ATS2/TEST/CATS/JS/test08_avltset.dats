@@ -62,6 +62,14 @@ Hello from [test08_avltset]!\n")
 //
 #typedef itm = sint
 //
+local
+#typedef _key_ = itm
+#typedef _itm_ = emp
+#define _FUNMAP_DETMP00_
+in//local
+#include "./../../../DATS/funmap_detmp00.dats"
+end//local
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

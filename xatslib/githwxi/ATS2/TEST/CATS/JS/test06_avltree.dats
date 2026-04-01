@@ -64,6 +64,8 @@ Hello from [test04_avltree]!\n")
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef _key_ = key
+#typedef _itm_ = itm
 #define _FUNMAP_DETMP00_
 #include "./../../../DATS/funmap_detmp00.dats"
 //
