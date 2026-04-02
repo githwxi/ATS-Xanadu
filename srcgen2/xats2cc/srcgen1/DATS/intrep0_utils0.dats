@@ -49,11 +49,84 @@ XATSOPT "./../../.."
 "./../../..\
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
 #staload // HX: [d2var]
 "./../../../SATS/dynexp2.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+#staload
+"xatslib\
+/githwxi/ATS2/SATS/funset.sats"
+//
+#absimpl
+i0varfst_tbox(*0*) = fset(i0var)
+//
+#staload
+"xatslib\
+/githwxi/ATS2/DATS/funset.dats"
+#staload
+"xatslib\
+/githwxi/ATS2/DATS/funmap.dats"
+#staload
+"xatslib\
+/githwxi/ATS2/DATS/funset_fmap000.dats"
+#staload
+"xatslib\
+/githwxi/ATS2/DATS/funmap_avltree.dats"
+//
+in//let
+//
+#implfun
+i0varfst_mknil
+( (*void*) ) = funset_nil<>((*0*))
+//
+#implfun
+i0varfst_mklst
+(   i0vs   ) =
+let
+//
+#typedef x0 = i0var
+(*
+HX:
+Fixing this?
+No match is found!!!
+#typedef r0 = i0varfst
+*)
+#typedef r0 = fset(i0var)
+//
+in//let
+(
+list_foldl
+< x0 >< r0 >(xs, r0)
+) where
+{
+//
+val xs = i0vs
+val r0 = i0varfst_mknil()
+//
+#impltmp
+foldl$fopr
+< x0 >< r0 >
+(  r0, x0  ) = i0varfst_addvar(r0, x0)
+}
+end//let//end-of-[i0varfst_mklst(i0vs):fst]
+//
+#implfun
+i0varfst_addvar
+( i0vt, ivar ) =
+(
+  funset_insert$any<i0var>(i0vt, ivar))
+//
+end//local//end-of-[local(absimpl(i0varfst))]
 //
 (* ****** ****** *)
 (* ****** ****** *)
