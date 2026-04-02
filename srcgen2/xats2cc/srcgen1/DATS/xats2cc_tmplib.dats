@@ -47,6 +47,15 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+g_cmp<i0var>
+  (x1, x2) =
+(
+g_cmp<d2var>(x1.dvar(), x2.dvar()))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 < x0:t0 >
 i0lab_fprint
  (lab, out) = let

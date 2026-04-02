@@ -235,7 +235,7 @@ i0lab_fprint
 HX-2026-03-28:
 For funsets of i0var
 *)
-#abstbox i0varset_tbox//p0tr
+#abstbox i0varfst_tbox//p0tr
 //
 (* ****** ****** *)
 //
@@ -277,7 +277,10 @@ For funsets of i0var
 (* ****** ****** *)
 #typedef i0parsed = i0parsed_tbox
 (* ****** ****** *)
-#typedef i0varset = i0varset_tbox
+(*
+HX: fst: functional set
+*)
+#typedef i0varfst = i0varfst_tbox
 (* ****** ****** *)
 #typedef i0valdcl = i0valdcl_tbox
 #typedef i0vardcl = i0vardcl_tbox
@@ -1017,6 +1020,32 @@ i0parsed_make_args
 , parsed:i0dclistopt): i0parsed//end-fun
 //
 #symload i0parsed with i0parsed_make_args
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-04-02:
+Some fset operations
+Thu Apr  2 12:07:41 PM EDT 2026
+*)
+//
+fun
+i0varfst_mknil
+( (* void *) ): i0varfst
+fun
+i0varfst_mklst
+( i0vs: i0varlst ): i0varfst
+fun
+i0varfst_membrq
+( i0vs: i0varlst, ivar: i0var): bool
+//
+fun
+i0varfst_addvar
+( i0vt: i0varfst, ivar: i0var): i0varfst
+fun
+i0varfst_addset
+( fst1: i0varfst, fst2: i0varfst): i0varfst
 //
 (* ****** ****** *)
 (* ****** ****** *)

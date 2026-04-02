@@ -1074,11 +1074,11 @@ endlet // end of[ D3CLScls(dgpt,d3e2)]
 //
 #implfun
 f3perr0_timpl
-(out, loc, timp) =
+(out0, loc0, timp) =
 let
 //
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = out0
 //
 in//let
 //
@@ -1088,11 +1088,15 @@ timp.node() of
 |TIMPLall1
 ( dcst
 , t2js, dcls) =>
-(
+let
+val
+lcst = dcst.lctn()
+in//let
 prints("F3PERR0-ERROR:");
-printsln(loc, "\
-:TIMPLall1(",dcst,";",t2js,")")
-)
+printsln(
+loc0, ":TIMPLall1(",
+dcst, "(", lcst, ");", t2js, ")")
+end(*let*)//end-of-[TIMPLall1(...)]
 //
 |TIMPLallx
 ( dcst
@@ -1104,14 +1108,16 @@ list_nil() => ()
 |
 list_cons(dcl1, _) =>
 (
-f3perr0_d3ecl(out, dcl1)
+f3perr0_d3ecl(out0, dcl1)
 ) where
 {
-val () =
+val (  ) =
 prints("F3PERR0-ERROR:")
-val () =
-printsln(loc, "\
-:TIMPLallx(",dcst,";",t2js,")")}//cons
+val (  ) =
+prints(loc0, ":TIMPLallx(")
+val lcst = dcst.lctn((*void*))
+val (  ) =
+printsln(dcst,"(",lcst,");",t2js,")")}
 )
 //
 end(*let*)//endof(f3perr0_timpl(out,loc,timp))
