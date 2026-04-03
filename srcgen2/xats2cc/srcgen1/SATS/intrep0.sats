@@ -624,6 +624,16 @@ token(*knd*),sint(*npf*),l0i0elst)
 (* ****** ****** *)
 //
 fun
+i0var_lamq
+(ivar: i0var): bool
+fun
+i0var_letq
+(ivar: i0var): bool
+fun
+i0var_fixq
+(ivar: i0var): bool
+//
+fun
 i0var_lvl0$get
 (ivar: i0var): sint
 fun
@@ -636,8 +646,9 @@ fun
 i0var_ityp$get
 (ivar: i0var): i0typ
 //
-#symload lvl0 with i0var_lvl0$get
 #symload dvar with i0var_dvar$get
+#symload lvl0 with i0var_lvl0$get
+#symload bvk0 with i0var_bvk0$get
 #symload ityp with i0var_ityp$get
 //
 (* ****** ****** *)

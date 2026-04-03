@@ -229,6 +229,9 @@ t2jag_trxd3i0
 fun
 d2var_trxd3i0
 (dvar: d2var, env0: !envd3i0): i0var
+fun
+d2fix_trxd3i0
+(dvar: d2var, env0: !envd3i0): i0var
 //
 fun
 d3pat_trxd3i0

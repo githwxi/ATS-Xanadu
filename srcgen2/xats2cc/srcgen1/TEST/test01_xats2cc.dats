@@ -42,10 +42,14 @@ fact(n: nint): nint =
 (
   loop(0, 1)) where
 {
-fun loop
+fun
+loop
 (i: nint, r: nint): nint =
-if (i < n)
-then loop(i+1, (i+1)*r) else (r)
+if (i >= n)
+then (r) else
+let
+val i1 = i+1 in loop(i1, i1*r)
+end
 }
 //
 (* ****** ****** *)
