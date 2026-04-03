@@ -73,12 +73,16 @@ d2var_trxd3i0
 (dvar, env0) =
 (
 i0var_make_dvar$info
-( dvar, lvl0, ityp ))
+( dvar
+, lvl0, bvk0, ityp ))
 where
 {
 val lvl0 =
 (
 envd3i0_getlvl0(env0))
+val bvk0 =
+(
+envd3i0_getbvk0(env0))
 val t2p0 = dvar.styp()
 val ityp = s2typ_trxd3i0(t2p0, env0)
 }(*where*)//endof(d2var_trxd3i0(...))
@@ -229,14 +233,17 @@ val i0t0 =
   s2typ_trxd3i0(t2p0, env0))
 //
 val (  ) =
+(
 envd3i0_dvar$insert
-( env0, d2v1, i0v1 )
-where{
-val lvl0 =
-envd3i0_getlvl0(env0)
+( env0, d2v1, i0v1 )) where
+{
+val
+lvl0 = envd3i0_getlvl0(env0)
+val
+bvk0 = envd3i0_getbvk0(env0)
 val i0v1 =
-i0var_make_dvar$info
-(   d2v1  ,  lvl0  ,  i0t0   )}
+(
+i0var(d2v1, lvl0, bvk0, i0t0))}
 //
 in//let
 (

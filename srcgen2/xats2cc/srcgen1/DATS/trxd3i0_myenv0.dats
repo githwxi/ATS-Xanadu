@@ -102,28 +102,29 @@ local
 (* ****** ****** *)
 //
 datavwtp
-envstk =
-|envstk_nil of ((*0*))
-|envstk_lam0 of
-( sint(*lvl0*), envstk ) 
-|envstk_cons of
-( d2var, i0varset, envstk)
+funstk =
+|funstk_nil of ()
+|funstk_lvl0 of
+(sint(*lvl0*), funstk)
+|funstk_cons of
+(d2var, i0varfst, funstk)
 //
 (* ****** ****** *)
 //
 datavwtp
 trxstk =
 //
-|trxstk_nil of ((*0*)) 
+|trxstk_nil of () 
 //
 |trxstk_lam0 of
-( sint(*lvl0*), trxstk ) 
-|trxstk_let0 of (trxstk) 
+(sint(*lvl0*), trxstk) 
+|trxstk_let0 of 
+(sint(*lvl0*), trxstk)
 //
 |trxstk_denv of
-( i0var(*denv*), trxstk )
+(i0var(*denv*), trxstk)
 |trxstk_ufld of
-( d2var(*lvrt*), i0typ, trxstk)
+(d2var(*lvrt*), i0typ, trxstk)
 //
 (* ****** ****** *)
 #absimpl trxstk_vtbx = (trxstk)
@@ -153,18 +154,51 @@ case+ stk0 of
 //
 |trxstk_nil
 (   (*void*)   ) => ( 0 )
+//
 |trxstk_lam0
 (
 lvl0, _(*stk0*)) => (lvl0)
-//
 |trxstk_let0
-(      stk0      ) => loop(stk0)
+(
+lvl0, _(*stk0*)) => (lvl0)
+//
 |trxstk_denv
 (   ivar, stk0   ) => loop(stk0)
 |trxstk_ufld//unfold
 (dvar, ityp, stk0) => loop(stk0)
 )(*case+*)//end-of-[loop(stk0):sint]
 }(*where*)//end-of-[trxstk_getlvl0(stk0)]
+//
+(* ****** ****** *)
+//
+#implfun
+trxstk_getbvk0
+  ( stk0 ) =
+(
+  loop(stk0)) where
+{
+fun
+loop
+(stk0: !trxstk): sint =
+(
+case+ stk0 of
+//
+|trxstk_nil
+(   (*void*)   ) => I0BVKtop
+//
+|trxstk_lam0
+(
+lvl0, _(*stk0*)) => I0BVKlam
+|trxstk_let0
+(
+lvl0, _(*stk0*)) => I0BVKlet
+//
+|trxstk_denv
+(   ivar, stk0   ) => loop(stk0)
+|trxstk_ufld//unfold
+(dvar, ityp, stk0) => loop(stk0)
+)(*case+*)//end-of-[loop(stk0):sint]
+}(*where*)//end-of-[trxstk_getbvk0(stk0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -212,12 +246,12 @@ stk0 :=
 trxstk_pshlet0
   (stk0) =
 (
-  stk0 := trxstk_let0( stk0 )
+stk0 :=
+(
+  trxstk_let0(lvl0+0, stk0))
 ) where
 {
-(*
   val lvl0 = trxstk_getlvl0(stk0)
-*)
 }(*where*)//end-of-[trxstk_pshlet0(stk0)]
 //
 (* ****** ****** *)
@@ -269,7 +303,7 @@ case- stk0 of
 //
 | ~
 trxstk_let0
-(   stk1   ) => stk1
+(lvl0, stk1) => stk1
 //
 | ~
 trxstk_denv
@@ -354,7 +388,7 @@ case- stk0 of
 (lvl0, stk1) => i0vs
 //
 |trxstk_let0
-(   stk1   ) => loop(stk1, i0vs)
+(lvl0, stk1) => loop(stk1, i0vs)
 //
 |trxstk_denv
 (i0v1, stk1) =>

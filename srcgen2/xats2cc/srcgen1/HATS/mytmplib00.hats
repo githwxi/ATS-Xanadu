@@ -8,8 +8,7 @@ For ATS3/XANADU_srcgen2_xats2cc
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload _ =
-"./../DATS/xats2cc_tmplib.dats"
+#staload _ = "./../DATS/xats2cc_tmplib.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
