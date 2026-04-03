@@ -490,6 +490,22 @@ i0pat_fprint
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-02:
+BVK:
+bound variable kind!
+*)
+#define I0BVKtop 0
+(*
+#define I0BVKarg 1
+*)
+#define I0BVKlam 1
+#define I0BVKlet 2
+#define I0BVKfix 3
+#define I0BVKerr -1
+//
+(* ****** ****** *)
+//
 datatype
 i0exp_node =
 //
@@ -611,6 +627,9 @@ fun
 i0var_lvl0$get
 (ivar: i0var): sint
 fun
+i0var_bvk0$get
+(ivar: i0var): sint
+fun
 i0var_dvar$get
 (ivar: i0var): d2var
 fun
@@ -650,11 +669,12 @@ fun
 i0var_make_dvar$info
 ( dvar: d2var
 , lvl0: ( sint )
+, bvk0: ( sint )
 , ityp: ( i0typ ) ): i0var
 fun
 i0exp_make_ityp$node
 ( loc0: loctn
-, ityp: i0typ
+, ityp: ( i0typ )
 , node: i0exp_node): i0exp
 //
 #symload
@@ -1033,16 +1053,22 @@ Thu Apr  2 12:07:41 PM EDT 2026
 fun
 i0varfst_mknil
 ( (* void *) ): i0varfst
+(*
 fun
 i0varfst_mklst
-( i0vs: i0varlst ): i0varfst
+(i0vs: i0varlst): i0varfst
+*)
 fun
 i0varfst_membrq
-( i0vs: i0varlst, ivar: i0var): bool
+(i0vs: i0varlst, ivar: i0var): bool
+//
+fun
+i0varfst_strmize
+( fst0: i0varfst ): strm_vt( i0var )
 //
 fun
 i0varfst_addvar
-( i0vt: i0varfst, ivar: i0var): i0varfst
+( fst0: i0varfst, ivar: i0var): i0varfst
 fun
 i0varfst_addset
 ( fst1: i0varfst, fst2: i0varfst): i0varfst

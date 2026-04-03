@@ -70,6 +70,10 @@ fun
 trxstk_getlvl0
   ( stk0: !trxstk ): sint
 //
+fun
+trxstk_getbvk0
+  ( stk0: !trxstk ): sint
+//
 (* ****** ****** *)
 //
 fun
@@ -131,6 +135,10 @@ envd3i0_free_top
 //
 fun
 envd3i0_getlvl0
+  ( env0: !envd3i0 ): sint
+//
+fun
+envd3i0_getbvk0
   ( env0: !envd3i0 ): sint
 //
 (* ****** ****** *)

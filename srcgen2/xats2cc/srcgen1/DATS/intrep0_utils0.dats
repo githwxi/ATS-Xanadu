@@ -70,6 +70,17 @@ local
 #absimpl
 i0varfst_tbox(*0*) = fset(i0var)
 //
+(* ****** ****** *)
+//
+#include
+"prelude/HATS/prelude_dats.hats"
+#include
+"prelude/HATS/prelude_JS_dats.hats"
+#include
+"prelude/HATS/prelude_NODE_dats.hats"
+//
+(* ****** ****** *)
+//
 #staload
 "xatslib\
 /githwxi/ATS2/DATS/funset.dats"
@@ -83,12 +94,15 @@ i0varfst_tbox(*0*) = fset(i0var)
 "xatslib\
 /githwxi/ATS2/DATS/funmap_avltree.dats"
 //
+(* ****** ****** *)
+//
 in//let
 //
 #implfun
 i0varfst_mknil
 ( (*void*) ) = funset_nil<>((*0*))
 //
+(*
 #implfun
 i0varfst_mklst
 (   i0vs   ) =
@@ -105,7 +119,7 @@ No match is found!!!
 //
 in//let
 (
-list_foldl
+list_folditm
 < x0 >< r0 >(xs, r0)
 ) where
 {
@@ -114,17 +128,28 @@ val xs = i0vs
 val r0 = i0varfst_mknil()
 //
 #impltmp
-foldl$fopr
+folditm$fopr
 < x0 >< r0 >
 (  r0, x0  ) = i0varfst_addvar(r0, x0)
 }
-end//let//end-of-[i0varfst_mklst(i0vs):fst]
+end//let//endof(i0varfst_mklst(i0vs):fset)
+*)
+//
+#implfun
+i0varfst_strmize
+(    ivst    ) =
+(
+  funset_strmize<i0var>(ivst))
 //
 #implfun
 i0varfst_addvar
-( i0vt, ivar ) =
+( ivst, ivar ) =
 (
-  funset_insert$any<i0var>(i0vt, ivar))
+funset_insert$any<i0var>(ivst, ivar))
+//
+#implfun
+i0varfst_addset
+( ivst, fst2 ) = funset_union(ivst, fst2)
 //
 end//local//end-of-[local(absimpl(i0varfst))]
 //

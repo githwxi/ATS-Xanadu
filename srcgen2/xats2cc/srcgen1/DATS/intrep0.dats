@@ -89,11 +89,13 @@ i0var_none1
 (  d2v0  ) =
 let
 val lvl0 = ( -1 )
+val bvk0 = ( -1 )
 val i0t0 =
 i0typ_none1(d2v0.styp())
 in//let
 (
-  i0var(d2v0, lvl0, i0t0))
+i0var
+(d2v0, lvl0, bvk0, i0t0))
 end//let//endof(i0var_none1)
 //
 #implfun
@@ -235,25 +237,32 @@ local
 datatype
 i0var =
 I0VAR of
-( sint
-, d2var, i0typ)
+(
+d2var,
+sint(*lvl0*),
+sint(*bvk0*), i0typ)
 (*
 datatype
 i0var_vt =
 I0VAR_vt of
-( sint
-, d2var, i0typ)
+(
+d2var
+sint(*lvl0*),
+sint(*bvk0*), i0typ)
 *)
 //
-#absimpl i0var_tbox = i0var
+#absimpl
+  i0var_tbox = i0var
 //
 in//local
 //
 #implfun
 i0var_make_dvar$info
-( dvar, lvl0, ityp ) =
+( dvar
+, lvl0, bvk0, ityp ) =
 (
-I0VAR(lvl0, dvar, ityp))
+I0VAR
+(dvar, lvl0, bvk0, ityp))
 //
 #implfun
 i0var_lvl0$get
@@ -261,8 +270,19 @@ i0var_lvl0$get
 let
 val+
 I0VAR
-(lvl0
-,dvar, ityp) = ivar in lvl0 end
+(dvar
+,lvl0
+,bvk0, ityp) = ivar in lvl0 end
+//
+#implfun
+i0var_bvk0$get
+(   ivar   ) =
+let
+val+
+I0VAR
+(dvar
+,lvl0
+,bvk0, ityp) = ivar in bvk0 end
 //
 #implfun
 i0var_dvar$get
@@ -270,8 +290,9 @@ i0var_dvar$get
 let
 val+
 I0VAR
-(lvl0
-,dvar, ityp) = ivar in dvar end
+(dvar
+,lvl0
+,bvk0, ityp) = ivar in dvar end
 //
 #implfun
 i0var_ityp$get
@@ -279,8 +300,9 @@ i0var_ityp$get
 let
 val+
 I0VAR
-(lvl0
-,dvar, ityp) = ivar in ityp end
+(dvar
+,lvl0
+,bvk0, ityp) = ivar in ityp end
 //
 endloc (*local*) // end-of-[local(i0var)]
 //

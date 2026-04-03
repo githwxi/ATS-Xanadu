@@ -65,6 +65,8 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with d2cst_get_lctn
+(* ****** ****** *)
 #symload lctn with d3pat_get_lctn
 #symload node with d3pat_get_node
 #symload lctn with d3exp_get_lctn
@@ -1115,9 +1117,14 @@ val (  ) =
 prints("F3PERR0-ERROR:")
 val (  ) =
 prints(loc0, ":TIMPLallx(")
+val (  ) =
+printsln(dcst,"(...);",t2js,")")
+(*
 val lcst = dcst.lctn((*void*))
 val (  ) =
-printsln(dcst,"(",lcst,");",t2js,")")}
+printsln(dcst,"(",lcst,");",t2js,")")
+*)
+}
 )
 //
 end(*let*)//endof(f3perr0_timpl(out,loc,timp))
