@@ -360,7 +360,7 @@ f0_d3fs$insert(env0, d3fs)
 val
 dpid = d3fundcl_get_dpid(d3f1)
 val
-ivar = d2var_trxd3i0(dpid, env0)
+ivar = d2fix_trxd3i0(dpid, env0)
 //
 val (  ) =
 envd3i0_dvar$insert(env0, dpid, ivar)}

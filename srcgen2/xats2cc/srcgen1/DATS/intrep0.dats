@@ -232,6 +232,24 @@ endloc (*local*) // end-of-[local(i0pat)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0var_lamq
+(  ivar  ) =
+(
+ivar.bvk0() = I0BVKlam)
+#implfun
+i0var_letq
+(  ivar  ) =
+(
+ivar.bvk0() = I0BVKlet)
+#implfun
+i0var_fixq
+(  ivar  ) =
+(
+ivar.bvk0() = I0BVKfix)
+//
+(* ****** ****** *)
+//
 local
 //
 datatype

@@ -87,6 +87,23 @@ val t2p0 = dvar.styp()
 val ityp = s2typ_trxd3i0(t2p0, env0)
 }(*where*)//endof(d2var_trxd3i0(...))
 //
+#implfun
+d2fix_trxd3i0
+(dvar, env0) =
+(
+i0var_make_dvar$info
+( dvar
+, lvl0, bvk0, ityp ))
+where
+{
+val bvk0 = I0BVKfix
+val lvl0 =
+(
+envd3i0_getlvl0(env0))
+val t2p0 = dvar.styp()
+val ityp = s2typ_trxd3i0(t2p0, env0)
+}(*where*)//endof(d2fix_trxd3i0(...))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -1275,6 +1292,9 @@ val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
 //
+val (  ) = // HX: lvl0+0
+(
+  envd3i0_pshlet0(  env0  ))
 val icls =
 (
 d3eclist_trxd3i0(dcls, env0))
@@ -1282,8 +1302,12 @@ d3eclist_trxd3i0(dcls, env0))
 in//let
 //
 let
-val
-i0e1 = d3exp_trxd3i0(d3e1, env0)
+val i0e1 =
+(
+  d3exp_trxd3i0(d3e1, env0))
+val (  ) =
+(
+  envd3i0_poplet0(   env0   ))
 in//let
 (
 i0exp(
@@ -1544,12 +1568,13 @@ val (  ) = // HX: lvl0+1
   envd3i0_pshlam0(  env0  ))
 //
 val (  ) =
+(
 envd3i0_dvar$insert
-( env0, dpid, ivar ) where
+( env0, dpid, ivar )) where
 {
 val ivar =
 (
-  d2var_trxd3i0(dpid, env0))}
+  d2fix_trxd3i0(dpid, env0))}
 //
 val fias =
 (

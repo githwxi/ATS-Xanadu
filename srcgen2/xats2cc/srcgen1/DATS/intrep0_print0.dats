@@ -275,14 +275,16 @@ let
 g_print$out
 <(*0*)>((*0*)) = out0
 //
-val lvl0 = ivar.lvl0()
 val dvar = ivar.dvar()
+val lvl0 = ivar.lvl0()
+val bvk0 = ivar.bvk0()
 val ityp = ivar.ityp()
 //
 in//let
 (
 print("I0VAR(");
-prints(lvl0,";",dvar,";",ityp,")"))
+prints(
+dvar,";",lvl0,";",bvk0,";","...",")"))
 end(*let*)//end-of-[i0var_fprint(ivar,out0)]
 //
 (* ****** ****** *)
