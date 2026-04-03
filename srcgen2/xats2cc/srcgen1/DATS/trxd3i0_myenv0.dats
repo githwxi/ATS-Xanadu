@@ -474,6 +474,17 @@ val+
 ENVD3I0(d2vstk, trxstk) = (env0) }
 (*where*)//end-of-(envd3i0_getlvl0(env0))
 //
+#implfun
+envd3i0_getbvk0
+  ( env0 ) =
+(
+trxstk_getbvk0(trxstk))
+where
+{
+val+
+ENVD3I0(d2vstk, trxstk) = (env0) }
+(*where*)//end-of-(envd3i0_getbvk0(env0))
+//
 (* ****** ****** *)
 //
 #implfun
