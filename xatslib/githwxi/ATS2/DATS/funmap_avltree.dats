@@ -714,7 +714,7 @@ B{hl:i0,hr:i0}
 (h, k1, x1, tl1, tr2) =>
 let
 val sgn =
-compare_key_key<key> (k0, k1)
+compare_key_key<key>(k0, k1)
 in//let
 //
 if // if

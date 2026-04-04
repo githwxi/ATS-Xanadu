@@ -85,12 +85,26 @@ val (  ) = printsln("set2 = ", set1)
 val set1 =
   funset_insert$new(set1, 0)
 val set1 =
-  funset_insert$new(set1, 1)
-val set1 =
   funset_insert$new(set1, 2)
+val set1 =
+  funset_insert$new(set1, 1)
 val set1 =
   funset_insert$new(set1, 3)
 val (  ) = printsln("set1 = ", set1)
+//
+val set1 =
+  funset_insert$any(set1, 0)
+val set1 =
+  funset_insert$any(set1, 2)
+val set1 =
+  funset_insert$any(set1, 1)
+val set1 =
+  funset_insert$any(set1, 3)
+val (  ) = printsln("set1 = ", set1)
+//
+val () = console_log(the_print_store_flush())
+//
+(* ****** ****** *)
 //
 val set2 =
   funset_insert$new(set2, 0)

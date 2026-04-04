@@ -1862,17 +1862,19 @@ list_vt_print$sep<(*0*)>() = print(xsep)
 (* ****** ****** *)
 //HX: strm(vt)-printing
 (* ****** ****** *)
+//
 #impltmp
 {a:vt}//tmp
 g_print0
-<strm_vt(a)> = strm_vt_print0<a>
+<strm_vt(a)> =
+strm_vt_print0<a>(*xs*)
 #impltmp
 {a:vt}
 g_print1
 <strm_vt(a)>(xs) =
 (
-  strn_print(  "$strm_vt(...)"  )
-)
+strn_print("$strm_vt(...)"))
+//
 (* ****** ****** *)
 //
 #impltmp

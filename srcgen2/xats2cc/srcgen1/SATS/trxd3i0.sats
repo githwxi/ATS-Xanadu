@@ -108,6 +108,9 @@ trxstk_poplet0
 fun
 trxstk_lamenv$get
 ( stk0: !trxstk ): i0varlst
+fun
+trxstk_letenv$get
+( stk0: !trxstk ): i0varlst
 //
 (* ****** ****** *)
 //
@@ -161,6 +164,9 @@ envd3i0_poplet0
 //
 fun
 envd3i0_lamenv$get
+( env0: !envd3i0 ): i0varlst
+fun
+envd3i0_letenv$get
 ( env0: !envd3i0 ): i0varlst
 //
 fun

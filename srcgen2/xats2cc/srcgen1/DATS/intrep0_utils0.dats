@@ -42,18 +42,34 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+(*
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
 #include
 "./../../..\
 /HATS/xatsopt_dpre.hats"
+*)
 (* ****** ****** *)
+//
 #include
 "./../HATS/mytmplib00.hats"
+//
 (* ****** ****** *)
+//
+#staload
+"prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload // HX: [d2var]
+"./../../../SATS/xstamp0.sats"
+//
 #staload // HX: [d2var]
 "./../../../SATS/dynexp2.sats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
@@ -81,6 +97,18 @@ i0varfst_tbox(*0*) = fset(i0var)
 //
 (* ****** ****** *)
 //
+#include
+"xatslib\
+/libcats/HATS/libcats_dats.hats"
+#include
+"xatslib\
+/libcats/HATS/libcats_JS_dats.hats"
+#include
+"xatslib\
+/libcats/HATS/libcats_NODE_dats.hats"
+//
+(* ****** ****** *)
+//
 #staload
 "xatslib\
 /githwxi/ATS2/DATS/funset.dats"
@@ -98,11 +126,46 @@ i0varfst_tbox(*0*) = fset(i0var)
 //
 in//let
 //
+(* ****** ****** *)
+//
+#extern
+fcast
+castxy
+{ax:t0}{ay:t0}(ax:ax):(ay)
+//
+#impltmp
+g_print
+<d2var>(obj) =
+d2var_fprint
+(obj, castxy(g_print$out<>()))
+//
+#impltmp
+g_print
+<i0var>(obj) =
+i0var_fprint
+(obj, castxy(g_print$out<>()))
+//
+(* ****** ****** *)
+//
+#impltmp
+g_cmp<d2var>
+(d2v1, d2v2) =
+(
+stamp_cmp
+(d2v1.stmp(), d2v2.stmp()))
+//
+#impltmp
+g_cmp<i0var>
+(i0v1, i0v2) =
+(
+i0v1.dvar()\cmp(i0v2.dvar()))
+//
+(* ****** ****** *)
+//
 #implfun
 i0varfst_mknil
 ( (*void*) ) = funset_nil<>((*0*))
 //
-(*
 #implfun
 i0varfst_mklst
 (   i0vs   ) =
@@ -133,13 +196,16 @@ folditm$fopr
 (  r0, x0  ) = i0varfst_addvar(r0, x0)
 }
 end//let//endof(i0varfst_mklst(i0vs):fset)
-*)
+//
+(* ****** ****** *)
 //
 #implfun
 i0varfst_strmize
 (    ivst    ) =
 (
   funset_strmize<i0var>(ivst))
+//
+(* ****** ****** *)
 //
 #implfun
 i0varfst_addvar
@@ -150,6 +216,8 @@ funset_insert$any<i0var>(ivst, ivar))
 #implfun
 i0varfst_addset
 ( ivst, fst2 ) = funset_union(ivst, fst2)
+//
+(* ****** ****** *)
 //
 end//local//end-of-[local(absimpl(i0varfst))]
 //
