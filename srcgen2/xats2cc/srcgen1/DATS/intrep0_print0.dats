@@ -723,6 +723,37 @@ end(*let*)//end-of-[i0fundcl_fprint(ifun,out0)]
 (* ****** ****** *)
 //
 #implfun
+i0varfst_fprint
+(ivst, out0) =
+(
+strm_vt_print0(i0vs))
+where
+{
+//
+#impltmp
+g_print$out<>() = out0
+//
+(*
+HX-2026-04-03:
+This works for srcgen1;
+it does not work for srcgen2!
+*)
+#impltmp
+strm_vt_print$len<>() = -1
+#impltmp
+strm_vt_print$beg<>
+  ( (*0*) ) = strn_print("IVST(")
+//
+val i0vs =
+(
+  i0varfst_strmize(       ivst       ))
+//
+}(*where*)//end-of-(i0varfst_fprint(ivst,out0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i0parsed_fprint
   (ipar, out0) = let
 //

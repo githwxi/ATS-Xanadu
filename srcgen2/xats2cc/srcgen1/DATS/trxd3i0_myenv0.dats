@@ -407,6 +407,56 @@ end//let//end-of-[trxstk_denv()]
 }(*where*)//end(trxstk_lamenv$get(stk0))
 //
 (* ****** ****** *)
+//
+#implfun
+trxstk_letenv$get
+  (  stk0  ) =
+list_vt2t
+(loop(stk0, i0vs))
+where
+{
+//
+#vwtpdef
+i0vs = list_vt(i0var)
+//
+val
+i0vs = list_vt_nil(*0*)
+//
+fun
+loop
+( stk0:
+! trxstk, i0vs: i0vs): i0vs =
+(
+case- stk0 of
+//
+(*
+|trxstk_nil
+( (*void*) ) => i0vs
+*)
+//
+|trxstk_let0
+(lvl0, stk1) => i0vs
+//
+|trxstk_lam0
+(lvl0, stk1) => loop(stk1, i0vs)
+//
+|trxstk_denv
+(i0v1, stk1) =>
+let
+val i0vs =
+list_vt_cons
+(i0v1, i0vs) in loop(stk1, i0vs)
+end//let//end-of-[trxstk_denv()]
+//
+|trxstk_ufld
+(d2v1
+,ityp, stk1) => loop(stk1, i0vs)
+//
+)(*case+*)//end(loop(stk0,i0vs):i0vs)
+//
+}(*where*)//end(trxstk_letenv$get(stk0))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -561,6 +611,20 @@ val+
 ENVD3I0(d2vstk, trxstk) = ( env0 )
 //
 }(*where*)//end-of-(envd3i0_lamenv$get(...))
+//
+#implfun
+envd3i0_letenv$get
+  ( env0 ) =
+(
+trxstk_letenv$get
+(    trxstk     ))
+where
+{
+//
+val+
+ENVD3I0(d2vstk, trxstk) = ( env0 )
+//
+}(*where*)//end-of-(envd3i0_letenv$get(...))
 //
 (* ****** ****** *)
 //

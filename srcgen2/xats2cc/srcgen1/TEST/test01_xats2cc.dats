@@ -49,7 +49,25 @@ if (i >= n)
 then (r) else
 let
 val i1 = i+1 in loop(i1, i1*r)
-end
+end//let
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fact(n: nint): nint =
+(
+  loop(0, 1)) where
+{
+val loop =
+fix loop
+(i: nint, r: nint): nint =>
+if (i >= n)
+then (r) else
+let
+val i1 = suc(i) in loop(i1, i1*r)
+end//let
 }
 //
 (* ****** ****** *)

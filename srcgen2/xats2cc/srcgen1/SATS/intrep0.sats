@@ -585,12 +585,12 @@ token(*knd*),sint(*npf*),l0i0elst)
 |I0Elam0 of
 (sint(*lvl*)
 ,token(*knd*)
-,fiarglst(*arg*), i0exp, i0varlst)
+,fiarglst(*arg*), i0exp, i0varfst)
 |I0Efix0 of
 (sint(*lvl*)
 ,token(*knd*)
 ,d2var(*fid*)
-,fiarglst(*arg*), i0exp, i0varlst)
+,fiarglst(*arg*), i0exp, i0varfst)
 //
 (* ****** ****** *)
 //
@@ -1064,15 +1064,17 @@ Thu Apr  2 12:07:41 PM EDT 2026
 fun
 i0varfst_mknil
 ( (* void *) ): i0varfst
-(*
 fun
 i0varfst_mklst
 (i0vs: i0varlst): i0varfst
-*)
+//
 fun
 i0varfst_membrq
 (i0vs: i0varlst, ivar: i0var): bool
 //
+fun
+i0varfst_fprint
+(ivst:i0varfst, out0:FILR): void
 fun
 i0varfst_strmize
 ( fst0: i0varfst ): strm_vt( i0var )

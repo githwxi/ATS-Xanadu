@@ -99,12 +99,13 @@ g_cmp<x0>(x1, x2) != 0)
 < x0:t0 >
 g_cmp(x1, x2) =
 (
-if
-g_lt<x0>(x1, x2)
-then -1 else
-if
-g_lt<x0>(x2, x1) then -1 else 0
-)
+if // if
+g_lt<x0>
+(x1, x2) then -1 else
+(
+if // if
+g_lt<x0>
+(x2, x1) then (1) else (0)))
 //
 (* ****** ****** *)
 (* ****** ****** *)

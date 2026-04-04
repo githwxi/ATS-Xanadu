@@ -50,7 +50,8 @@ Authoremail: gmhwxiATgmailDOTcom
 g_cmp<i0var>
   (x1, x2) =
 (
-g_cmp<d2var>(x1.dvar(), x2.dvar()))
+g_cmp<
+d2var>(x1.dvar(), x2.dvar()))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -177,7 +178,8 @@ TEQI0EXPnone() =>
 prints("TEQI0EXPnone(", ")")
 |
 TEQI0EXPsome(tok0, i0e1) =>
-prints("TEQI0EXPsome(",tok0,";",i0e1,")"))
+prints("\
+TEQI0EXPsome(",tok0,";",i0e1,")"))
 endlet // end-of-[g_print<teqi0exp>(tdxp)]
 //
 (* ****** ****** *)
@@ -188,6 +190,17 @@ g_print<i0parsed>(ipar) =
 let
 val () =
 i0parsed_fprint(ipar, g_print$out<>())end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i0varfst>
+(   ivst   ) =
+let
+val () =
+i0varfst_fprint(ivst, g_print$out<>())end
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -1305,9 +1305,16 @@ let
 val i0e1 =
 (
   d3exp_trxd3i0(d3e1, env0))
+val i0vs =
+(
+  envd3i0_letenv$get( env0 ))
 val (  ) =
 (
   envd3i0_poplet0(   env0   ))
+//
+val (  ) =
+envd3i0_i0vs$insert(env0, i0vs)
+//
 in//let
 (
 i0exp(
@@ -1515,7 +1522,8 @@ val i0e1 =
   d3exp_trxd3i0( d3e1, env0 ))
 //
 val i0vs =
-envd3i0_lamenv$get(  env0  )
+(
+  envd3i0_lamenv$get( env0 ))
 val (  ) =
 (
   envd3i0_poplam0(   env0   ))
@@ -1526,6 +1534,14 @@ let
 //
 val (  ) =
 envd3i0_i0vs$insert(env0, i0vs)
+val i0vt = i0varfst_mklst(i0vs)
+//
+val (  ) =
+prerrsln
+("f0_lam0(d3i0): i0vs = ", i0vs)
+val (  ) =
+prerrsln
+("f0_lam0(d3i0): i0vt = ", i0vt)
 //
 in//let
 (
@@ -1534,7 +1550,7 @@ i0exp
 loc0,
 i0t0,
 I0Elam0(
-  lvl0, tknd, fias, i0e1, i0vs)))
+  lvl0, tknd, fias, i0e1, i0vt)))
 end//let
 //
 end(*let*)//end-of-[f0_lam0(d3e0,env0)]
@@ -1585,7 +1601,7 @@ val i0e1 =
 //
 val i0vs =
 (
-envd3i0_lamenv$get(  env0  ))
+  envd3i0_lamenv$get( env0 ))
 val (  ) =
 (
   envd3i0_poplam0(   env0   ))
@@ -1593,8 +1609,18 @@ val (  ) =
 in//let
 //
 let
+//
 val (  ) =
 envd3i0_i0vs$insert(env0, i0vs)
+val i0vt = i0varfst_mklst(i0vs)
+//
+val (  ) =
+prerrsln
+("f0_fix0(d3i0): i0vs = ", i0vs)
+val (  ) =
+prerrsln
+("f0_fix0(d3i0): i0vt = ", i0vt)
+//
 in//let
 (
 i0exp
@@ -1602,7 +1628,7 @@ i0exp
 loc0,
 i0t0,
 I0Efix0(lvl0,
-  tknd, dpid, fias, i0e1, i0vs)))
+  tknd, dpid, fias, i0e1, i0vt)))
 end//let
 //
 end(*let*)//end-of-[f0_fix0(d3e0,env0)]
