@@ -215,8 +215,21 @@ HX-2026-04-01:
 For removing duplicates
 Apr 1 01:17:24 PM EDT 2026
 *)
+//
 fun
 <x0:t0>
+(*
+HX-2026-04-04:
+For deduping sorted sequences
+*)
+dedup$cmp(x1: x0, x2: x0): sint
+//
+fun
+<x0:t0>
+(*
+HX-2026-04-04:
+There is no assumed ordering!!!
+*)
 dedup$equal(x1: x0, x2: x0): bool
 //
 (* ****** ****** *)

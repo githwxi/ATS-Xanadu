@@ -627,6 +627,62 @@ map$fopr0<x0><y0>(x0) =
 (* ****** ****** *)
 //
 (*
+HX-2026-04-04:
+Sat Apr  4 03:30:59 AM EDT 2026
+*)
+#impltmp
+< x0:t0 >
+strm_vt_ord$dedup0
+  ( xs ) =
+(
+  dedup1(xs) ) where
+{
+//
+fnx
+dedup1(
+xs:
+strm_vt(x0)): strm_vt(x0) =
+$llazy(
+//
+case+ !xs of
+| ~
+strmcon_vt_nil
+  ( (*0*) ) =>
+(
+strmcon_vt_nil())
+| ~
+strmcon_vt_cons
+  ( x1, xs ) => dedup2(x1, xs))
+//
+and
+dedup2(
+x1: x0,
+xs: strm_vt(x0)): strmcon_vt(x0) =
+(
+case+ !xs of
+|
+strmcon_vt_nil() =>
+(
+strmcon_vt_sing(x1))
+|
+strmcon_vt_cons(x2, xs) =>
+if // if
+(
+dedup$cmp
+(x1 , x2)) >= 0
+then(//then
+  dedup2(x1, xs))
+else(//else
+  strmcon_vt_cons
+  (x1, $llazy(dedup2(x2, xs))))//end(if)
+)(*case+*)//end-of-(dedup2(x1,xs)=llazy())
+//
+}(*where*)//end-of-(strm_vt_ord$dedup0(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2025-12-26:
 Fri Dec 26 01:13:30 PM EST 2025
 *)
