@@ -1532,16 +1532,19 @@ in//let
 //
 let
 //
-val (  ) =
-envd3i0_i0vs$insert(env0, i0vs)
-val i0vt = i0varfst_mklst(i0vs)
+val i0vt =
+i0varfst_mklst(i0vs)
+val i0vs =
+list_make_lstrm
+(i0varfst_strmize(i0vt))
 //
 val (  ) =
-prerrsln
-("f0_lam0(d3i0): i0vs = ", i0vs)
+prerrsln("\
+f0_lam0(d3i0): i0vs = ", i0vs)
+//
 val (  ) =
-prerrsln
-("f0_lam0(d3i0): i0vt = ", i0vt)
+(
+envd3i0_i0vs$insert(env0, i0vs))
 //
 in//let
 (
@@ -1550,7 +1553,7 @@ i0exp
 loc0,
 i0t0,
 I0Elam0(
-  lvl0, tknd, fias, i0e1, i0vt)))
+  lvl0, tknd, fias, i0e1, i0vs)))
 end//let
 //
 end(*let*)//end-of-[f0_lam0(d3e0,env0)]
@@ -1610,16 +1613,19 @@ in//let
 //
 let
 //
-val (  ) =
-envd3i0_i0vs$insert(env0, i0vs)
-val i0vt = i0varfst_mklst(i0vs)
+val i0vt =
+i0varfst_mklst(i0vs)
+val i0vs =
+list_make_lstrm
+(i0varfst_strmize(i0vt))
 //
 val (  ) =
-prerrsln
-("f0_fix0(d3i0): i0vs = ", i0vs)
+prerrsln("\
+f0_fix0(d3i0): i0vs = ", i0vs)
+//
 val (  ) =
-prerrsln
-("f0_fix0(d3i0): i0vt = ", i0vt)
+(
+envd3i0_i0vs$insert(env0, i0vs))
 //
 in//let
 (
@@ -1628,7 +1634,7 @@ i0exp
 loc0,
 i0t0,
 I0Efix0(lvl0,
-  tknd, dpid, fias, i0e1, i0vt)))
+  tknd, dpid, fias, i0e1, i0vs)))
 end//let
 //
 end(*let*)//end-of-[f0_fix0(d3e0,env0)]
