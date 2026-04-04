@@ -428,6 +428,56 @@ case+ xs of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-04:
+Sat Apr  4 02:08:05 AM EDT 2026
+*)
+//
+#impltmp
+< x0:t0 >
+list_prepend =
+list_append<x0>(*xs,ys*)
+//
+#impltmp
+< x0:t0 >
+list_prependx0
+  ( xs, ys ) =
+(
+list_prependrx0<x0>
+(
+xs,
+list_vt_reverse0<x0>(ys)))
+//
+#impltmp
+< x0:t0 >
+list_prependrx0
+  ( xs, ys ) =
+(
+  loop(xs, ys)) where
+{
+//
+fnx
+loop{m,n:i0}
+( xs:
+  list
+  (x0, m)
+, ys:
+~ list_vt
+  (x0, n)): list(x0, m+n) =
+(
+case+ ys of
+| ~
+list_vt_nil() => xs
+| ~
+list_vt_cons(y1, ys) =>
+(
+  loop(list_cons(y1, xs), ys)))
+//
+}(*where*)//end(list_prependrx0(xs,ys)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < x0:t0 >
 list_make_1val

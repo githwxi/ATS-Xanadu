@@ -29,7 +29,7 @@
 (* ****** ****** *)
 (*
 Author: Hongwei Xi
-Wed Apr  1 04:49:24 PM EDT 2026
+Sat Apr  4 01:17:40 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 (* ****** ****** *)
@@ -38,36 +38,27 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload "./../SATS/funmset.sats"
 //
 (* ****** ****** *)
-//
-#staload "./../SATS/funmmap.sats"
-//
 (* ****** ****** *)
-(* ****** ****** *)
-//
-#typedef emp = void
-//
 #absimpl
-fmset_tbox(itm:t0) = fmmap(itm, emp)
+fmset_tbox(itm:t0) = list(itm)
 // end of [fmset_tbox]
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*00*)>
-funmset_nil() = funmmap_nil<>()
+funmset_nil() = list_nil()
 #impltmp
 <(*00*)>
-funmset_make_nil
-  ((*void*)) = funmmap_make_nil<>()
+funmset_make_nil() = list_nil()
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <itm:t0>
-funmset_size(*set*) =
-  funmmap_size<itm><emp>(*set*)
+funmset_size
+  (* set *) = list_length<itm>(*0*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -75,25 +66,21 @@ funmset_size(*set*) =
 #impltmp
 <itm:t0>
 funmset_strmize
-  (  set  ) =
-(
-strm_vt_map0<kx><k0>
-(
-funmmap_keyval$strmize<itm><emp>(set))
-) where
-{
-#typedef k0 = itm
-#typedef kx = @(itm, emp)
-#impltmp map$fopr0<kx><k0>(kx) = (kx.0)
-}(*where*)//end-of-[funmset_strmize(set)]
-//
-(* ****** ****** *)
+  (* set *) = list_strmize<itm>(*0*)
 //
 #impltmp
 <itm:t0>
 funmset_set$strmize
-  (* set *) =
-  funmmap_key$strmize<itm><emp>(*set*)
+  (  set  ) =
+(
+strm_vt_dedup0<itm>(
+  funmset_strmize<itm>(set)))
+where
+{
+#impltmp
+dedup$equal
+<   itm   > = equal_itm_itm<itm>
+}(*where*)//endof(funmset_set$strmize)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -101,23 +88,14 @@ funmset_set$strmize
 #impltmp
 <itm:t0>
 funmset_memberq
-  (*set, x0*) = 
-  funmmap_search$tst<itm><emp>(*set,x0*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
+  ( set, x0 ) =
+(
+  list_memberq<itm>(set, x0))
+where
+{
 #impltmp
-<itm:t0>
-funmset_remove$old
-  (* set, x0 *) =
-  funmmap_remove$old<itm><emp>(*set,x0*)
-//
-#impltmp
-<itm:t0>
-funmset_remove$opt
-  (* set, x0 *) =
-  funmmap_remove$opt<itm><emp>(*set,x0*)
+g_equal<itm> = equal_itm_itm<itm>
+}(*where*)//endof(funmset_memberq(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -125,13 +103,90 @@ funmset_remove$opt
 #impltmp
 <itm:t0>
 funmset_insert$any
-  (  set, x0  ) =
+  ( set, x0 ) = list_cons( x0, set )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<itm:t0>
+funmset_remove$opt
+  ( set, x0 ) =
 (
-funmmap_insert$any<itm><emp>(set, x0, ()))
+loop(
+set, list_vt_nil())
+) where
+{
+fnx loop
+( xs: list(itm)
+, ys: list_vt(itm))
+: (list(itm), bool) =
+(
+case+ xs of
+|
+list_nil
+( (*0*) ) =>
+(
+  set, false)
+|
+list_cons
+( x1, xs ) =>
+if // if
+equal_itm_itm
+<    itm    >(x0, x1)
+then//then
+(set, (true)) where
+{
+val set =
+list_prependrx0<itm>(xs, ys)}
+else//else
+loop(xs, list_vt_cons(x1, ys))
+)(*case+*)//endof(loop(xs,ys))
+}(*where*)//endof[funmset_remove$opt(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<itm:t0>
+funmset_getout$opt
+  ( set, x0 ) =
+(
+loop(
+set, list_vt_nil())
+) where
+{
+fnx loop
+( xs: list(itm)
+, ys: list_vt(itm))
+: (list(itm), optn_vt(itm)) =
+(
+case+ xs of
+|
+list_nil
+( (*0*) ) =>
+(
+set, optn_vt_nil())
+|
+list_cons
+( x1, xs ) =>
+if // if
+equal_itm_itm
+<    itm    >(x0, x1)
+then//then
+(
+set, optn_vt_cons(x1)) where
+{
+val set =
+list_prependrx0<itm>(xs, ys)}
+else//else
+loop(xs, list_vt_cons(x1, ys))
+)(*case+*)//endof(loop(xs,ys))
+}(*where*)//endof[funmset_getout$opt(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_githwxi_ATS2_DATS_funmset_fmmap00.dats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_ATS2_DATS_funmset_list000.dats] *)
 (***********************************************************************)
