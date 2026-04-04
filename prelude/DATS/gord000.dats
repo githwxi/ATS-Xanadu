@@ -109,11 +109,11 @@ Apr 03 10:48:00 PM EDT 2026
 g_cmp(x1, x2) =
 (
 if // if
-g_lt<x0>//x1<x2
+g_lt<x0> // HX:x1<x2
 (x1, x2) then -1 else
 (
 if // if
-g_lt<x0>//x1>x2//x1=x2
+g_lt<x0> // HX:x1>x2
 (x2, x1) then (1) else (0)))
 //
 (* ****** ****** *)
