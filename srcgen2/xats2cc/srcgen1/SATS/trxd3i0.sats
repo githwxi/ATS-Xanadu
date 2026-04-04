@@ -251,6 +251,16 @@ l3d3p_trxd3i0
 fun
 d3exp_trxd3i0
 (d3e0: d3exp, env0: !envd3i0): i0exp
+//
+(*
+HX-2026-04-04:
+For marking up tail-calls
+Sat Apr  4 11:00:40 AM EDT 2026
+*)
+fun
+d3ret_trxd3i0
+(d3e0: d3exp, env0: !envd3i0): i0exp
+//
 fun
 l3d3e_trxd3i0
 (ld3e: l3d3e, env0: !envd3i0): l0i0e

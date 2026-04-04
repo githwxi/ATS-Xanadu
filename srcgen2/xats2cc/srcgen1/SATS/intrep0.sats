@@ -507,6 +507,15 @@ bound variable kind!
 (* ****** ****** *)
 //
 datatype
+i0cal =
+|
+I0CALimp of dimpl
+|
+I0CALfun of d2varlst
+//
+(* ****** ****** *)
+//
+datatype
 i0exp_node =
 //
 (* ****** ****** *)
@@ -614,6 +623,10 @@ token(*knd*),sint(*npf*),l0i0elst)
 //
 |I0Et2pck of (i0exp, s2typ)//HX: casting
 |I0Et2ped of (i0exp, s2typ)//HX: checked
+//
+(* ****** ****** *)
+//
+|I0Erturn of (i0cal, i0exp)//HX: call-ret
 //
 (* ****** ****** *)
 |I0Enone0 of ((*0*)) | I0Enone1 of (d3exp)
