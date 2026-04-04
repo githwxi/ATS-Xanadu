@@ -419,9 +419,21 @@ val (  ) = envd3i0_poplam0(env0)
 in//let
 //
 let
+//
+val i0vt =
+i0varfst_mklst(i0vs)
+val i0vs =
+list_make_lstrm
+(i0varfst_strmize(i0vt))
+//
 val (  ) =
 (
-  envd3i0_i0vs$insert(env0, i0vs))
+envd3i0_i0vs$insert(env0, i0vs))
+//
+val (  ) =
+prerrsln("\
+f0_implmnt0(d3i0): i0vs = ", i0vs)
+//
 in//let
 (
 i0dcl_make_node

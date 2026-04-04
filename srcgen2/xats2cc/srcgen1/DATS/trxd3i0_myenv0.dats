@@ -101,6 +101,10 @@ local
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-04:
+This is needed in the
+following translation!
 datavwtp
 funstk =
 |funstk_nil of ()
@@ -108,6 +112,8 @@ funstk =
 (sint(*lvl0*), funstk)
 |funstk_cons of
 (d2var, i0varfst, funstk)
+Sat Apr  4 10:55:46 AM EDT 2026
+*)
 //
 (* ****** ****** *)
 //

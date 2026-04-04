@@ -1518,6 +1518,18 @@ D2Cvaldclst of
 |
 D2Cvardclst of
 (token(*VAR(vrk)*), d2vardclist)
+//
+(*
+HX-2026-04-04:
+Please note that
+each fundcl is given a d2cst and
+also a d2var; the d2cst is used for
+the external name of the fundcl while
+the d2var is used for recursive calls!
+The d2cst and d2var for a fundcl have
+the SAME symbolic name.
+Sat Apr  4 12:06:19 PM EDT 2026
+*)
 |
 D2Cfundclst of
 ( token(*FUN(fnk)*)
@@ -1580,9 +1592,12 @@ SIMPLopt2 of
 and
 dimpl_node =
 //
-|DIMPLnon1 of (d1qid)
-|DIMPLone1 of (d2cst(*res*))
-|DIMPLone2 of
+|
+DIMPLnon1 of (d1qid)
+|
+DIMPLone1 of (d2cst(*res*))
+|
+DIMPLone2 of
 (d2cst(*res*), s2vts(*arg*))
 //
 (* ****** ****** *)
