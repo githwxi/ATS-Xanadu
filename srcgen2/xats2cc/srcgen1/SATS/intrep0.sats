@@ -496,11 +496,15 @@ BVK:
 bound variable kind!
 *)
 #define I0BVKtop 0
+//
 (*
 #define I0BVKarg 1
 *)
 #define I0BVKlam 1
+//
 #define I0BVKlet 2
+#define I0BVKcas 2
+//
 #define I0BVKfix 3
 #define I0BVKerr -1
 //

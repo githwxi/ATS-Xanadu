@@ -90,12 +90,23 @@ funset_strmize
 gseq_strmize
 <fset(itm)><itm> = funset_strmize<itm>
 //
+(* ****** ****** *)
+//
 #impltmp
 <itm:t0>
-funset_forall = gseq_forall<fset(itm)><itm>
+funset_forall
+  (* set *) = gseq_forall<fset(itm)><itm>
 #impltmp
 <itm:t0>
-funset_foritm = gseq_foritm<fset(itm)><itm>
+funset_foritm
+  (* set *) = gseq_foritm<fset(itm)><itm>
+//
+(* ****** ****** *)
+//
+#impltmp
+<itm:t0>
+funset_listize
+  (* set *) = gseq_listize<fset(itm)><itm>
 //
 (* ****** ****** *)
 (* ****** ****** *)

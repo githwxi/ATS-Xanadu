@@ -104,8 +104,20 @@ funset_strmize
 #symload
   strmize with funset_strmize of 1000
 //
+fun
+<itm:t0>
+funset_listize
+(set: fset(itm)): list_vt(itm)
+#symload
+  listize with funset_listize of 1000
+//
 (* ****** ****** *)
 //
+(*
+HX-2026-04-04:
+This is a BAD design;
+Should be using GSEQ instead!!!
+*)
 fun
 <itm:t0>
 funset_forall(set: fset(itm)): bool
