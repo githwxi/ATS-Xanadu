@@ -95,16 +95,25 @@ g_cmp<x0>(x1, x2) != 0)
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-03:
+A bug is fixed:
+(1) was incorrectly written
+as (-1), causing a rather
+mysterious failure surfacing
+quite remotely.
+Apr 03 10:48:00 PM EDT 2026
+*)
 #impltmp
 < x0:t0 >
 g_cmp(x1, x2) =
 (
 if // if
-g_lt<x0>
+g_lt<x0>//x1<x2
 (x1, x2) then -1 else
 (
 if // if
-g_lt<x0>
+g_lt<x0>//x1>x2//x1=x2
 (x2, x1) then (1) else (0)))
 //
 (* ****** ****** *)

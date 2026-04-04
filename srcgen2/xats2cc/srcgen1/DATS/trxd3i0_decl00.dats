@@ -550,9 +550,21 @@ val (  ) =
 in//let
 //
 let
+//
+val i0vt =
+i0varfst_mklst(i0vs)
+val i0vs =
+list_make_lstrm
+(i0varfst_strmize(i0vt))
+//
 val (  ) =
 (
-  envd3i0_i0vs$insert(env0, i0vs))
+envd3i0_i0vs$insert(env0, i0vs))
+//
+val (  ) =
+prerrsln("\
+d3fundcl_trxd3i0: i0vs = ", i0vs)
+//
 in//let
 (
 i0fundcl_make_args(
