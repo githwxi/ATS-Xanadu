@@ -509,9 +509,16 @@ bound variable kind!
 datatype
 i0cal =
 |
-I0CALimp of dimpl
+(*
+HX-2026-04-04:
+For non-tmp d2cst
+*)
+I0CALimp of (dimpl)
 |
-I0CALfun of d2varlst
+I0CALfun of
+(
+d2var(*self*),
+d2varlst(*mutuals*))
 //
 (* ****** ****** *)
 //
@@ -707,6 +714,10 @@ i0exp_make_ityp$node
  i0exp with i0exp_make_ityp$node
 //
 (* ****** ****** *)
+//
+fun
+i0cal_fprint
+(ical:i0cal, out0:FILR): void
 //
 fun
 i0var_fprint
