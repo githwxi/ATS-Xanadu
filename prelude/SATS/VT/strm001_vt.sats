@@ -564,6 +564,20 @@ strq_vt_map$e1nv0
 (* ****** ****** *)
 //
 (*
+HX-2026-04-04:
+For sorted linear stream ...
+Sat Apr  4 03:20:45 AM EDT 2026
+*)
+//
+fun
+<x0:t0>
+strm_vt_ord$dedup0
+(xs: strm_vt(x0)): strm_vt(x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2025-12-26:
 Fri Dec 26 12:28:51 PM EST 2025
 *)
