@@ -43,6 +43,8 @@ XATSOPT "./../../.."
 *)
 (* ****** ****** *)
 (*
+HX-2026-04-03:
+This one uses srcgen2!
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
@@ -128,6 +130,12 @@ in//let
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-03:
+Note that [castxy]
+is needed for bridging
+[srcgen1] and [srcgen2]!
+*)
 #extern
 fcast
 castxy
