@@ -120,6 +120,11 @@ i0varfst_tbox(*0*) = fset(i0var)
 #staload
 "xatslib\
 /githwxi/ATS2/DATS/funset_fmap000.dats"
+(*
+#staload
+"xatslib\
+/githwxi/ATS2/DATS/funmap_lsrt000.dats"
+*)
 #staload
 "xatslib\
 /githwxi/ATS2/DATS/funmap_avltree.dats"

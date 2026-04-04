@@ -312,6 +312,47 @@ rappendx0_vt with list_rappendx0_vt of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<a:t0>
+list_prepend
+{m,n:i0}
+( xs: list(a, m)
+, ys: list(a, n)): list(a, m+n)
+fun
+<a:t0>
+list_prepend_vt
+{m,n:i0}
+( xs: list(a, m)
+, ys: list(a, n)): list(a, m+n)
+//
+fun
+<a:t0>
+list_prependx0
+{m,n:i0}
+( xs: list(a, m)
+, ys: ~list_vt(a, n)): list(a, m+n)
+fun
+<a:t0>
+list_prependrx0
+{m,n:i0}
+( xs: list(a, m)
+, ys: ~list_vt(a, n)): list(a, m+n)
+//
+(* ****** ****** *)
+//
+#symload
+prepend with list_prepend of 1000
+#symload
+prepend_vt with list_prepend_vt of 1000
+//
+#symload
+prependx0 with list_prependrx0 of 1000
+#symload
+prependrx0 with list_prependrx0 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-08-04:
 Is GSEQ coming of age?
