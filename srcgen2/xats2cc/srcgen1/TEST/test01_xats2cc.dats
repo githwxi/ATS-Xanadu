@@ -66,7 +66,7 @@ fix loop
 if (i >= n)
 then (r) else
 let
-val i1 = suc(i) in loop(i1, i1*r)
+val i = suc(i) in loop(i, i*r)
 end//let
 }
 //
