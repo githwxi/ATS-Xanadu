@@ -29,6 +29,9 @@ XATSJSD=./../../../srcgen2/xats2js
 SRCSATS := \
 intrep0.sats \
 trxd3i0.sats \
+tryd3i0.sats \
+intrep1.sats \
+trcmp01.sats \
 #
 ########################################################################
 #
