@@ -204,7 +204,7 @@ optn_vt_nil() => 0
 | ~
 optn_vt_cons(x0) =>
 let
-val () = g_free<x0>(x0)in(1)end)
+val () = g_free<a>(x0)in(1)end)
 (*case+*)//endof(optn_vt_length0)
 //
 (* ****** ****** *)
