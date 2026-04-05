@@ -137,6 +137,14 @@ g_print1(x0) =
 //
 #impltmp
 g_ptype
+< unit >
+( (*void*) ) = pstrn("unit")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_ptype
 < sint >
 ( (*void*) ) = pstrn("sint")
 #impltmp

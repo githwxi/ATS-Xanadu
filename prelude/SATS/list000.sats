@@ -244,7 +244,13 @@ fun
 list_appendx0_vt
 {m,n:i0}
 ( xs: list(a, m)
-, ys: list_vt(a, n)): list_vt(a, m+n)
+, ys: ~list_vt(a, n)): list_vt(a, m+n)
+fun
+<a:t0>
+list_appendx1_vt
+{m,n:i0}
+( xs: list(a, m)
+, ys: !list_vt(a, n)): list_vt(a, m+n)
 //
 (* ****** ****** *)
 //
@@ -254,6 +260,8 @@ append with list_append of 1000
 append_vt with list_append_vt of 1000
 #symload
 appendx0_vt with list_appendx0_vt of 1000
+#symload
+appendx1_vt with list_appendx1_vt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

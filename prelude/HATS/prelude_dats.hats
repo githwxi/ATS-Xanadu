@@ -14,6 +14,20 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-05:
+This one should be
+loaded first; so it
+is then searched over
+after the following ones!
+*)
+#staload
+_(*DBG*) =
+"prelude/DATS/gdbg000.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload
 _(*BAS*) =
 "prelude/DATS/gbas000.dats"
@@ -23,12 +37,6 @@ _(*BAS*) =
 #staload
 _(*BAS*) =
 "prelude/DATS/gbas002.dats"
-//
-(* ****** ****** *)
-//
-#staload
-_(*DBG*) =
-"prelude/DATS/gdbg000.dats"
 //
 (* ****** ****** *)
 //

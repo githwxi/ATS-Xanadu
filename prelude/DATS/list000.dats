@@ -275,12 +275,40 @@ gseq_length
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 <a>(*tmp*)
 list_copy_vt = list_listize<a>
 #impltmp
 <a>(*tmp*)
 list_rcopy_vt = list_rlistize<a>
+*)
+(*
+HX-2026-04-05:
+This one can be implemented
+in C more efficiently:
+it only needs to do one pass
+over the given list [xs]!
+Sun Apr  5 01:12:30 PM EDT 2026
+*)
+#impltmp
+<a>(*tmp*)
+list_copy_vt
+  ( xs  ) =
+(
+list_appendx0_vt<a>
+  (xs, list_vt_nil((*0*))))
+//
+#impltmp
+<a>(*tmp*)
+list_listize = list_copy_vt<a>
+//
+#impltmp
+<a>(*tmp*)
+list_rlistize = list_rcopy_vt<a>
+#impltmp
+<a>(*tmp*)
+list_rcopy_vt = list_reverse_vt<a>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -320,6 +348,8 @@ list_append<a>(xs, ys)
   val ys = list_sing<a>(y0)
 }(*where*)//end-of-[list_extend]
 //
+(* ****** ****** *)
+//
 #impltmp
 <a>(*tmp*)
 list_append
@@ -339,8 +369,9 @@ case+ xs of
   (r0 := ys)
 | list_cons(x0, xs) =>
   let
-    val () =
-    r0 := list_cons(x0, _)
+    val () = (
+      r0 :=
+      list_cons(x0, _))
   in
     loop(xs, r0.1); $fold(r0)
   end
@@ -348,11 +379,78 @@ endcas // end of [ case+(xs) ]
 )
 in
 let
-var r0: list(a) in loop(xs, r0); r0
+var r0
+  : list(a) in loop(xs, r0); (r0)
 end(*let*)
 end(*let*)//end-of(list_append(xs,ys))
 //
 (* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+list_append_vt
+  (xs, ys) =
+let
+val ys =
+(
+  list_copy_vt<a>(ys)) in
+(
+  list_appendx0_vt<a>(xs, ys)) end
+//(*let*)//endof[list_append_vt(xs,ys)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+list_appendx0_vt
+{m,n}
+(xs, ys) = let
+fnx
+loop
+{m:nat} .<m>.
+( xs
+: list(a, m)
+, r0: &
+(
+?list_vt(a)>>list_vt(a,m+n))
+) : void =
+(
+case+ xs of
+| list_nil() =>
+  (r0 := ys)
+| list_cons(x0, xs) =>
+  let
+    val () = (
+      r0 :=
+      list_vt_cons(x0, _))
+  in
+    loop(xs, r0.1); $fold(r0)
+  end
+endcas // end of [ case+(xs) ]
+)
+in//let
+//
+let
+var r0
+  : list_vt(a) in loop(xs, r0); (r0)
+end(*let*)
+//
+end(*let*)//end(list_appendx0_vt(...))
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+list_appendx1_vt
+  (xs, ys) =
+let
+val ys =
+(
+  list_vt_copy<a>(ys)) in
+(
+  list_appendx0_vt<a>(xs, ys)) end
+//(*let*)//end(list_appendx1_vt(xs,ys))
+//
 (* ****** ****** *)
 //
 (*

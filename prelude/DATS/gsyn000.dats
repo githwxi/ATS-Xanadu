@@ -1277,7 +1277,7 @@ gs_print$end() = ()
 (*
 #impltmp
 <(*tmp*)>
-g_print$end() = strn_print("\n")
+g_print$end() = pstrn("\n")
 *)
 //
 (* ****** ****** *)
