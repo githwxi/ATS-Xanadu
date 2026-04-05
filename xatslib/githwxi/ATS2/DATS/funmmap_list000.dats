@@ -130,6 +130,17 @@ fmmap(key,itm)>
 funmmap_keyval$strmize<key><itm>(*kxs*)
 //
 #impltmp
+{key:t0}
+{itm:t0}
+gmap_keyval$strmize
+<fmmap
+(key,itm)>
+<key><itm>
+(     map     ) =
+(
+  funmmap_keyval$strmize<key><itm>(map))
+//
+#impltmp
 <key:t0>
 <itm:t0>
 funmmap_keyval$strmize

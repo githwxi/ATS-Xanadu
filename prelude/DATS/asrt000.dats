@@ -163,7 +163,7 @@ fnx
 loop
 (li: nint
 ,ui: nint): sint =
-if
+if // if
 (li >= ui)
 then ( li ) else
 let

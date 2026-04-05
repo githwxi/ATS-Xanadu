@@ -115,8 +115,7 @@ funset_listize
 //
 (*
 HX-2026-04-04:
-This is a BAD design;
-Should be using GSEQ instead!!!
+Should be using GSEQ instead?
 *)
 fun
 <itm:t0>

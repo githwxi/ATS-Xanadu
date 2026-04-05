@@ -85,13 +85,32 @@ funset_strmize
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+#impltmp
+{itm:t0}
+gseq_forall
+<fset(itm)><itm> = funset_forall<itm>
+#impltmp
+{itm:t0}
+gseq_foritm
+<fset(itm)><itm> = funset_foritm<itm>
+#impltmp
+{itm:t0}
+gseq_listize
+<fset(itm)><itm> = funset_listize<itm>
 #impltmp
 {itm:t0}
 gseq_strmize
 <fset(itm)><itm> = funset_strmize<itm>
+*)
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-04:
+These should not be
+needed if GSEQ is always used!!!
+*)
 #impltmp
 <itm:t0>
 funset_forall
@@ -101,12 +120,15 @@ funset_forall
 funset_foritm
   (* set *) = gseq_foritm<fset(itm)><itm>
 //
-(* ****** ****** *)
-//
 #impltmp
 <itm:t0>
 funset_listize
   (* set *) = gseq_listize<fset(itm)><itm>
+//
+#impltmp
+<itm:t0>
+funset_strmize
+  (* set *) = gseq_strmize<fset(itm)><itm>
 //
 (* ****** ****** *)
 (* ****** ****** *)

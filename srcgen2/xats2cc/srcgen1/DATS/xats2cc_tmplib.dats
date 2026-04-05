@@ -103,10 +103,13 @@ i0pat_fprint(ipat, g_print$out<>())
 //
 #impltmp
 g_print
+<i0cal>(ical) =
+i0cal_fprint(ical, g_print$out<>())
+//
+#impltmp
+g_print
 <i0var>(ivar) =
 i0var_fprint(ivar, g_print$out<>())
-//
-(* ****** ****** *)
 //
 #impltmp
 g_print

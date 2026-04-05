@@ -45,6 +45,7 @@ In INTREP0, the following issues
 are addressed:
 1. Tail-recursive call marking
 2. Closure-formation preparation
+3. Type annotation for D3Epcon
 *)
 (* ****** ****** *)
 (* ****** ****** *)

@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -26,106 +26,19 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(*
-Mon Dec 29 09:01:30 AM EST 2025
-*)
+//
+Sat Apr  4 08:20:20 PM EDT 2026
+//
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef igtz = sintgt(0)
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2025-12-25:
-It is for sorted [a1sz]
-*)
-//
-#abstbox
-asrt_vt_i0_tx
-( a:vt,n:i0 ) <= a1sz(a)
-//
-#sexpdef
-asrt = asrt_vt_i0_tx
-#typedef
-asrt(a:vt) = [n:i0] asrt(a,n)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fcast
-asrt_decd
-{a:vt}
-(asrt(a, n)): a1sz(a, n)
-//
-fcast
-UN_asrt_encd
-{a:vt}
-(a1sz(a, n)): asrt(a, n)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-asrt_length
-{n:i0}
-(xs: asrt(a, n)): sint(n)
-//
-#symload
-length with asrt_length of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2025-12-29:
-Array-based binary search:
-asrt_exists:
-This one uses [exists$tcmp1]
-asrt_search:
-This one uses [search$tcmp1]
-Mon Dec 29 12:30:42 PM EST 2025
-*)
-fun
-<x0:vt>
-asrt_exists
-(xs: asrt(x0)): ( bool )
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2025-12-29:
-[asrt_search$idx(xs)]
-returns the least [i0]
-satisfying (search(xs[i0])<=0)
-Note that xs[ln] is infinity.
-Mon Dec 29 02:53:44 PM EST 2025
-*)
-fun
-<x0:vt>
-asrt_search$idx
-{ln:i0}
-(xs: asrt(x0, ln)): nintlte(ln)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2026-01-06:
-Tue Jan  6 01:11:19 AM EST 2026
-*)
-fun
-<x0:vt>
-asrt_memberq
-(xs: asrt(x0), x0: !x0): (bool)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_asrt000.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_intrep1.sats] *)
 (***********************************************************************)
