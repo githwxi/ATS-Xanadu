@@ -267,6 +267,33 @@ end(*let*)//end-of-[i0pat_fprint(ipat,out0)]
 (* ****** ****** *)
 //
 #implfun
+i0cal_fprint
+(ical, out0) =
+let
+//
+#impltmp
+g_print$out
+<(*0*)>((*0*)) = out0
+//
+in//let
+//
+case+ ical of
+|
+I0CALimp(dimp) =>
+(
+prints
+("I0CALimp(", dimp, ")"))
+|
+I0CALfun(d2v1, d2vs) =>
+(
+prints
+("I0CALfun(", d2v1, ";", d2vs, ")"))
+//
+end(*let*)//end-of-[i0cal_fprint(ical,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
 i0var_fprint
 (ivar, out0) =
 let
@@ -287,7 +314,6 @@ prints(
 dvar,";",lvl0,";",bvk0,";","...",")"))
 end(*let*)//end-of-[i0var_fprint(ivar,out0)]
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -492,6 +518,14 @@ i0t1 = i0e1.ityp() in
 print("I0Et2ped(");
 prints(i0e1, "(",i0t1,");", t2p2,")"))
 end(*let*)//end-of-[I0Et2ped(i0e1, t2p2)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Erturn
+(ical, i0e1) =>
+(
+prints("I0Erturn(",ical,";",i0e1,")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)

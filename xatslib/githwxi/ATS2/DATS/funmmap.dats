@@ -162,7 +162,7 @@ funmmap_keyval$strmize
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
+(*
 #impltmp
 {key:t0}
 {itm:t0}
@@ -174,7 +174,9 @@ gseq_strmize
 (     map     ) =
 (
   funmmap_keyval$strmize<key><itm>(map))
+*)
 //
+(*
 #impltmp
 {key:t0}
 {itm:t0}
@@ -185,6 +187,7 @@ gmap_keyval$strmize
 (     map     ) =
 (
   funmmap_keyval$strmize<key><itm>(map))
+*)
 //
 (* ****** ****** *)
 //

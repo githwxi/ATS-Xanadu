@@ -5,7 +5,7 @@
 (***********************************************************************)
 
 (*
-** ATS/Postiats - Unleashing the Potential of Types!
+** ATS/Xanadu - Unleashing the Potential of Types!
 ** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
@@ -27,113 +27,40 @@
 
 (* ****** ****** *)
 (* ****** ****** *)
+//
 (*
 Author: Hongwei Xi
-Tue Mar 31 12:27:13 PM EDT 2026
+//
+Sat Apr  4 08:22:03 PM EDT 2026
+//
 Authoremail: gmhwxiATgmailDOTcom
 *)
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload "./../SATS/funset.sats"
-//
-(* ****** ****** *)
-//
-#staload "./../SATS/funmap.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#typedef emp = void
-//
-#absimpl
-fset_tbox(itm:t0) = fmap(itm, emp)
-// end of [fset_tbox]
-//
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-<(*00*)>
-funset_nil() = funmap_nil<>()
-#impltmp
-<(*00*)>
-funset_make_nil
-  ((*void*)) = funmap_make_nil<>()
+#staload "./intrep0.sats"
+#staload "./intrep1.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#impltmp
-<itm:t0>
-funset_size(*set*) =
-  funmap_size<itm><emp>(*set*)
-//
-(* ****** ****** *)
-//
-#impltmp
-<itm:t0>
-funset_strmize(*set*) =
-  funmap_key$strmize<itm><emp>(*set*)
-//
-#impltmp
-{itm:t0}
-gseq_strmize
-<fset(itm)><itm> = funset_strmize<itm>
-//
+#absvtbx envi0i1_vtbx // p0tr
+#vwtpdef envi0i1 = envi0i1_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-<itm:t0>
-funset_memberq
-  (*set, x0*) = 
-  funmap_search$tst<itm><emp>(*set,x0*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<itm:t0>
-funset_remove$old
-  (* set, x0 *) =
-  funmap_remove$old<itm><emp>(*set,x0*)
-//
-#impltmp
-<itm:t0>
-funset_remove$opt
-  (* set, x0 *) =
-  funmap_remove$opt<itm><emp>(*set,x0*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<itm:t0>
-funset_insert$new
-  (  set, x0  ) =
-(
-  funmap_insert$new<itm><emp>(set, x0, ()))
-//
-#impltmp
-<itm:t0>
-funset_insert$opt
-  (  set, x0  ) =
-(
-case+ opt of
-| ~
-optn_vt_nil() => (set, false)
-| ~
-optn_vt_cons _ => (set, (true))
-) where {
-val (set, opt) =
-(
-  funmap_insert$opt<itm><emp>(set, x0, ()))
-}(*where*)//end-of-[funset_insert$opt(set,x0)]
+fun
+i0dclistopt_trxi0i1
+(i0ds: i0dclistopt, env0: !envi0i1): i1dclistopt
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_githwxi_ATS2_DATS_funset_fmap000.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_trxi0i1.sats] *)
 (***********************************************************************)

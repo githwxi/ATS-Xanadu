@@ -404,7 +404,7 @@ For flat/boxed left-values
 //
 (*
 HX-2024-07-18:
-For consed left-values
+For data-consed left-values
 *)
 |I1Vlpcn of (label, i1val)//consd
 //
