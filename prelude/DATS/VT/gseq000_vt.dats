@@ -621,9 +621,9 @@ $UN.p2tr_set<x0>(p0, x0); false)
 in//let
 (
 if (b0)
-then optn_nil(*0*) else
+then optn_vt_nil(*0*) else
 (
-  optn_cons($UN.p2tr_get<x0>(p0)))
+optn_vt_cons($UN.p2tr_get<x0>(p0)))
 end//let//endof(gseq_get$at$opt0(xs,i0))
 //
 (* ****** ****** *)
