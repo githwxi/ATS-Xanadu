@@ -980,10 +980,12 @@ where{
 |list_cons(_, _) =>
 (
 strmcon_vt_cons((x1, rs),
-auxmain(xs.0, xs.1, list_vt_cons(x1, ys))))
+auxmain(
+  xs.0, xs.1, list_vt_cons(x1, ys))))
 where{
-  val rs = 
-  list_vt_rappend10(ys, list_reverse_vt(xs)) }
+  val rs = list_copy_vt<x0>(xs)
+  val rs = list_vt_rappend10<x0>(ys,rs)
+}(*where*)
 )(*case+*)//end-of-[auxmain(x1, xs, ys)]
 //
 }(*where*)//end-of-[list_cons( x1, xs )]

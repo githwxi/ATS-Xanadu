@@ -80,7 +80,7 @@ not(g_equal<x0>(x1, x2)))
 //
 #impltmp
 g_print
-<unit>(ut) = strn_print("unit")
+<unit>(ut) = pstrn( "_" )
 //
 (* ****** ****** *)
 (* ****** ****** *)

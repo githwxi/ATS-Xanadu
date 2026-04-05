@@ -65,6 +65,12 @@ val () = print1s
 ("rlistize(",N,") = ",rlistize(GSEQ_nint0(N)),"\n")
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+val x_xs_s =
+list_1choose$split_lstrm<sint>(list@(1,2,3,4))
+val () =
+print0s("1choose$split@(1,2,3) = ", x_xs_s, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -461,6 +461,19 @@ end // end of [list_vt_cons(...)]
 //
 #impltmp
 < a: vt >
+list_vt_rappend10
+  (xs, ys) =
+(
+list_vt_rappend00<a>(xs, ys)
+) where
+{
+  val xs = list_vt_copy<a>(xs)
+}(*where*)//end-of-[list_vt_rappend01(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
 list_vt_reverse0(xs) =
 list_vt_rappend00<a>(xs, list_vt_nil(*void*))
 //

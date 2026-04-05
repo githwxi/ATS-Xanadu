@@ -134,6 +134,18 @@ end // end of [g_print1<t0up3>(tup)]
 (* ****** ****** *)
 //
 #impltmp
+{ a0:vt
+, a1:vt }
+g_free<
+t0up_vt(a0,a1)>(tup) =
+let
+val (x0, x1) = tup in//let
+g_free<a0>(x0); g_free<a1>(x1) end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 { a0:t0
 , a1:t0 }
 g_copy<t0up_vt(a0,a1)>(tup) = (tup)
