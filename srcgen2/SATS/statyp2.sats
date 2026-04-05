@@ -547,6 +547,14 @@ fun<>
 unify00_s2typ$xset
 (xt2p: x2t2p, t2p2: s2typ): (void)
 //
+(*
+HX-2026-04-04:
+Sat Apr  4 10:09:38 PM EDT 2026
+[unify00_s2typ$hnfz]
+is expected to perform
+[s2typ_untopx] and [s2typ_unargx]
+(which [s2typ_hnfiz0] does not do!)
+*)
 fun
 <e1nv:vwtp>
 unify00_s2typ$hnfz
