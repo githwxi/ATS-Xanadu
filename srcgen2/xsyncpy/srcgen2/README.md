@@ -1,9 +1,9 @@
 # XSYNCPY/srcgen2
 
-<!--
-Type-checking for linearly dependent types (LDTK) is to be
-implemented here.
--->
+Type-checking for linearly dependent types (LDTK) is planned to be
+implemented here. But it will probably wait for some time.  The
+priority for now is to obtain a compiler from ATS3 to CC (i.e., C/C++)
+ready to work.
 
 The name *XSYNCPY* refers to the act of copying abstract syntax
 trees. The purpose of copying is to ensure that no changes are made
