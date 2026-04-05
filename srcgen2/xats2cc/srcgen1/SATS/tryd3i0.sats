@@ -45,22 +45,21 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload "./intrep0.sats"
-#staload "./intrep1.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#absvtbx envi0i1_vtbx // p0tr
-#vwtpdef envi0i1 = envi0i1_vtbx
+#absvtbx enwd3i0_vtbx // p0tr
+#vwtpdef enwd3i0 = enwd3i0_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i0dclistopt_trxi0i1
-(i0ds: i0dclistopt, env0: !envi0i1): i1dclistopt
+i0dclistopt_tryd3i0
+(i0ds: i0dclistopt, env0: !enwd3i0): i0dclistopt
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_trxi0i1.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_tryd3i0.sats] *)
 (***********************************************************************)
