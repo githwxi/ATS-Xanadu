@@ -40,11 +40,57 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef ni = nint
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2026-04-04:
+For reversing one seq
+*)
+#abstype
+r1tup_type
+(  xs:t0  ) <= (  xs  )
+#sexpdef r1tup = r1tup_type
+//
+fun
+<xs:t0>
+r1tup_make
+( xs: xs ): r1tup(xs)
+fun
+<xs:t0>
+r1tup_unmk
+( rxs: r1tup(xs) ): (  xs  )
+//
+(* ****** ****** *)
+//
+(*
+HX-2026-04-04:
+For appending two seqs
+*)
+#abstype
+a2tup_type
+(xs:t0,ys:t0) <= (xs,ys)
+#sexpdef a2tup = a2tup_type
+//
+fun
+<xs:t0>
+<ys:t0>
+a2tup_make
+(xs:xs, ys:ys): a2tup(xs, ys)
+fun
+<xs:t0>
+<ys:t0>
+a2tup_unmk
+( xsys
+: a2tup(xs, ys)): @( xs, ys )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-07-13:
 We should probably
 not go higher to handle z3!!!
 *)
+//
 #abstype
 z2tup_type
 (xs:t0,ys:t0) <= (xs,ys)
@@ -59,7 +105,7 @@ fun
 <xs:t0>
 <ys:t0>
 z2tup_unmk
-( ztup
+( xsys
 : z2tup(xs, ys)): @( xs, ys )
 //
 (* ****** ****** *)
