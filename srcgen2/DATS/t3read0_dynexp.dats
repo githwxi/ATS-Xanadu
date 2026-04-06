@@ -264,9 +264,12 @@ d3exp_dapp_errck
 ,npf1: (sint)
 ,d3es: d3explst): d3exp =
 let
+//
 val
 lvl0 = maxs
-(errvl(d3f0), errvl(d3es)) in//let
+(errvl(d3f0), errvl(d3es))
+//
+in//let
 d3exp_errck
 (
 lvl0+1,
@@ -748,6 +751,73 @@ lvl0+1,
 d3exp_make_tpnd
 (loc0, t2p0, D3Eraise(tknd, dexn)) )
 endlet//end-of-[d3exp_raise_errck(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3exp_l0azy_errck
+(loc0: loc_t
+,t2p0: s2typ
+,dknd: d1exp
+,d3e1: d3exp): d3exp =
+let
+val
+lvl0 =
+d3exp_errvl(d3e1) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_tpnd
+(loc0, t2p0, D3El0azy(dknd, d3e1)) )
+endlet//end-of-[d3exp_l0azy_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_l1azy_errck
+(loc0: loc_t
+,t2p0: s2typ
+,dknd: d1exp
+,d3e1: d3exp
+,d3es: d3explst): d3exp =
+let
+//
+val
+lvl0 = maxs
+(errvl(d3e1), errvl(d3es))
+//
+in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_tpnd(loc0,
+  t2p0, D3El1azy(dknd, d3e1, d3es)))
+endlet//end-of-[d3exp_l1azy_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_elazy_errck
+(loc0: loc_t
+,t2p0: s2typ
+,dknd: d1exp
+,d3e1: d3exp
+,d3es: d3explst): d3exp =
+let
+//
+val
+lvl0 = maxs
+(errvl(d3e1), errvl(d3es))
+//
+in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_tpnd(loc0,
+  t2p0, D3Eelazy(dknd, d3e1, d3es)))
+endlet//end-of-[d3exp_elazy_errck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2101,7 +2171,7 @@ val nerr = err0
 //
 val-
 D3Eraise
-(  d3e1  ) = d3e0.node()
+( tknd, d3e1) = d3e0.node()
 //
 val
 d3e1 =
@@ -2112,11 +2182,11 @@ if // if
 (err0=nerr)
 then (d3e0) else
 let
-val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
 in//let
 (
-d3exp_raise_errck(loc0, t2p0, d3e1))
+  d3exp_raise_errck
+  ( d3e0.lctn(), t2p0, tknd, d3e1 ))
 end//let
 end(*let*)//end-of-[f0_raise(evn0,d3e0,err0)]
 //
@@ -2146,11 +2216,11 @@ if // if
 (err0=nerr)
 then (d3e0) else
 let
-val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
 in//let
 (
-d3exp_l0azy_errck(loc0, t2p0, d3e1))
+  d3exp_l0azy_errck
+  ( d3e0.lctn(), t2p0, dknd, d3e1 ))
 end//let
 end(*let*)//end-of-[f0_l0azy(evn0,d3e0,err0)]
 //
@@ -2187,8 +2257,8 @@ val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
 in//let
 (
-  d3exp_l1azy_errck
-  (loc0, t2p0, d3e1, d3es(*frees*)))
+  d3exp_l1azy_errck(loc0,
+    t2p0, dknd, d3e1, d3es(*free*)))
 end//let
 end(*let*)//end-of-[f0_l1azy(evn0,d3e0,err0)]
 //
@@ -2225,8 +2295,8 @@ val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
 in//let
 (
-  d3exp_elazy_errck
-  (loc0, t2p0, d3e1, d3es(*frees*)))
+  d3exp_elazy_errck(loc0,
+    t2p0, dknd, d3e1, d3es(*free*)))
 end//let
 end(*let*)//end-of-[f0_elazy(evn0,d3e0,err0)]
 //
