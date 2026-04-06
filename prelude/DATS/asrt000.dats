@@ -84,7 +84,7 @@ asrt_exists
   (  xs  ) =
 (
 asrt_length<x0>(xs) >
-asrt_search$idx<0>(xs))
+asrt_bin$search<0>(xs))
 where
 {
 //
@@ -120,13 +120,15 @@ then false else
 let
 val mi =
 (
-li+(ui-li) / 2)
-val (pf | mx) =
+li+(ui-li)/2)
+val
+(pf | mx) =
 a1sz_lget$at(xs, mi)
 //
-val
-sgn = exists$tcmp1(mx)
-pvx () =
+val sgn =
+(
+  exists$tcmp1( mx ))
+pvx ( ) =
 owed_vt_return0(pf, mx)
 //
 in//let
@@ -148,7 +150,7 @@ end(*let*)//end-of-[loop(li,ui)]
 //
 #impltmp
 < x0: vt >
-asrt_search$idx
+asrt_bin$search
   (  xs  ) =
 (
   loop(0, ln)) where
@@ -165,19 +167,22 @@ loop
 ,ui: nint): sint =
 if // if
 (li >= ui)
-then ( li ) else
+then ( ui ) else
 let
 val mi =
-(
-li + (ui-li) / 2)
+( li
++ (ui-li)/2)
 val (pf | mx) =
-a1sz_lget$at(xs, mi)
+(
+a1sz_lget$at(xs, mi))
 //
 val
 sgn =
-search$tcmp1<x0>(mx)
+(
+  search$tcmp1<x0>(mx))
 pvx () =
-owed_vt_return0(pf, mx)
+(
+  owed_vt_return0(pf, mx))
 //
 in//let
 //
@@ -188,7 +193,7 @@ loop(li,mi) else loop(mi+1,ui))
 //
 end(*let*)//end-of-[loop(li,ui)]
 //
-}(*where*)//end-of-[asrt_search$idx(xs)]
+}(*where*)//end-of-[asrt_bin$search(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

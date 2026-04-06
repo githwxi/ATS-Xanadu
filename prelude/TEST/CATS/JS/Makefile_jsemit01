@@ -23,6 +23,7 @@ all:: test07
 all:: test08
 all:: test09
 all:: test10
+all:: test11
 all:: test99
 ########################################################################
 clean:: ; rm -f *~
@@ -41,6 +42,7 @@ testall:: test07; $(NODE) OUTS/$<_out.js
 testall:: test08; $(NODE) OUTS/$<_out.js
 testall:: test09; $(NODE) OUTS/$<_out.js
 testall:: test10; $(NODE) OUTS/$<_out.js
+testall:: test11; $(NODE) OUTS/$<_out.js
 ########################################################################
 testall1:: test00; $(NODE) OUTS/$<_out1.js
 testall1:: test06; $(NODE) OUTS/$<_out1.js
@@ -219,6 +221,20 @@ $(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 ############
 test10:: \
 test10_xcptn00.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
+########################################################################
+test11:: ; \
+printf "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test11:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test11:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
+test11:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+############
+test11:: \
+test11_gasq000.dats; \
 $(NODE) --stack-size=8192 $(SRCGEN2_XATS2JS) $< >> OUTS/$@_out.js
 ########################################################################
 test99:: ; \

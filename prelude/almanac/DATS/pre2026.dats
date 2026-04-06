@@ -223,6 +223,10 @@ strmcon_vt_cons(i0, auxdn(i0-1)))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-05:
+Sun Apr  5 09:12:01 PM EDT 2026
+*)
 #impltmp
 < x0:t0 >
 list_all$permute
@@ -235,9 +239,9 @@ where
 #vwtpdef
 xs = list_vt(x0)
 #vwtpdef
+xz = strm_vt(xs)
+#vwtpdef
 y0 = (x0, list_vt(x0))
-//
-#vwtpdef xz = strm_vt(xs)
 //
 fun
 auxmain

@@ -370,7 +370,27 @@ fun
 <x0:t0>
 gasq_sortedq$f2un
 (xs: xs, lteq: (x0, x0) -> bool): bool
-#symload gasq_sortedq with gasq_sortedq$f2un of 0100
+#symload
+gasq_sortedq with gasq_sortedq$f2un of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-04-05:
+Sun Apr  5 10:25:26 PM EDT 2026
+*)
+fun
+<xs:t0>
+<x0:vt>
+gasq_bin$search(xs: xs): nint
+fun
+<xs:t0>
+<x0:vt>
+gasq_bin$search$f1un
+(xs: xs, tcmp: (!x0) -> sint): nint
+#symload
+gasq_bin$search with gasq_bin$search$f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

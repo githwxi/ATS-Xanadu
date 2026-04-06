@@ -102,7 +102,7 @@ asrt_exists
 //
 (*
 HX-2025-12-29:
-[asrt_search$idx(xs)]
+[asrt_bin$search(xs)]
 returns the least [i0]
 satisfying (search(xs[i0])<=0)
 Note that xs[ln] is infinity.
@@ -110,7 +110,7 @@ Mon Dec 29 02:53:44 PM EST 2025
 *)
 fun
 <x0:vt>
-asrt_search$idx
+asrt_bin$search
 {ln:i0}
 (xs: asrt(x0, ln)): nintlte(ln)
 //
