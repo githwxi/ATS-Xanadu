@@ -278,13 +278,21 @@ g_print$out
 in//let
 //
 case+ ical of
-|
-I0CALimp(dimp) =>
+//
+|I0CALlam() =>
+(
+prints("I0CALlam(", ")"))
+|I0CALfix(d2v1) =>
+(
+prints
+("I0CALfix(", d2v1, ")"))
+//
+|I0CALimp(dimp) =>
 (
 prints
 ("I0CALimp(", dimp, ")"))
-|
-I0CALfun(d2v1, d2vs) =>
+//
+|I0CALfun(d2v1, d2vs) =>
 (
 prints
 ("I0CALfun(", d2v1, ";", d2vs, ")"))
