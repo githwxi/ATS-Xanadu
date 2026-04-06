@@ -556,6 +556,9 @@ it may be of other uses in the future
 |D3El1azy of // linear-lazy-eval
 ( d1exp(*$LLAZY*)
 , d3exp(*lin-thunk*), d3explst(*frees*))
+|D3Eelazy of // linear-lazy-eval
+( d1exp(*$ELAZY*)
+, d3exp(*lin-cfptr*), d3explst(*frees*))
 //
 (* ****** ****** *)
 //

@@ -170,6 +170,11 @@ d3e0.node() of
 //
 |D3Edl0az _ => f0_dl0az(env0, d3e0)
 |D3Edl1az _ => f0_dl1az(env0, d3e0)
+(*
+HX-2026-04-06:
+There is no [D3Edelaz]!!!
+|D3Edelaz _ => f0_delaz(env0, d3e0)
+*)
 //
 (* ****** ****** *)
 //
@@ -187,8 +192,13 @@ d3e0.node() of
 //
 |D3Eraise _ => f0_raise(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |D3El0azy _ => f0_l0azy(env0, d3e0)
 |D3El1azy _ => f0_l1azy(env0, d3e0)
+|D3Eelazy _ => f0_elazy(env0, d3e0)
+//
+(* ****** ****** *)
 //
 (* ****** ****** *)
 //
@@ -1099,6 +1109,7 @@ in//let
 end (*let*) // end of [f0_raise(env0,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_l0azy
@@ -1158,6 +1169,39 @@ d3exp_make_tpnd
 (loc0, t2p0, D3El1azy(knd0,d3e1,d3es)))
 end (*let*) // end of [f0_l1azy(env0,...)]
 //
+(* ****** ****** *)
+//
+fun
+f0_elazy
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Eelazy
+( knd0
+, d3e1
+, d3es ) = d3e0.node((*0*))
+//
+val
+d3e1 =
+(
+  trtmp3b_d3exp(env0, d3e1) )
+val d3es =
+(
+  trtmp3b_d3explst(env0, d3es) )
+//
+in//let
+(
+d3exp_make_tpnd
+(loc0, t2p0, D3Eelazy(knd0,d3e1,d3es)))
+end (*let*) // end of [f0_elazy(env0,...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

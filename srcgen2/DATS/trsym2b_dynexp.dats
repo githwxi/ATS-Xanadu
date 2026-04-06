@@ -980,6 +980,8 @@ let
 val () =
 trsym2b_d2exp(env0, d2e1) endlet
 //
+(* ****** ****** *)
+//
 |
 D2El0azy
 (dsym, d2e1) =>
@@ -995,6 +997,17 @@ val () =
 trsym2b_d2exp(env0, d2e1)
 val () =
 trsym2b_d2explst(env0, d2es) endlet
+|
+D2Eelazy
+( dsym
+, d2e1, d2es) =>
+let
+val () =
+trsym2b_d2exp(env0, d2e1)
+val () =
+trsym2b_d2explst(env0, d2es) endlet
+//
+(* ****** ****** *)
 //
 |
 D2Eannot

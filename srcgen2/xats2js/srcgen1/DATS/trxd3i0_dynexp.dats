@@ -735,9 +735,15 @@ i0exp
 //
 (* ****** ****** *)
 //
+|D3Edp2tr _ => f0_dp2tr(env0, d3e0)
+//
 |D3Edl0az _ => f0_dl0az(env0, d3e0)
 |D3Edl1az _ => f0_dl1az(env0, d3e0)
-|D3Edp2tr _ => f0_dp2tr(env0, d3e0)
+(*
+HX-2026-04-06:
+There is no [D3Edelaz]!!!
+|D3Edelaz _ => f0_delaz(env0, d3e0)
+*)
 //
 (* ****** ****** *)
 //
@@ -747,6 +753,8 @@ i0exp
 //
 |D3Eassgn _ => f0_assgn(env0, d3e0)
 |D3Eraise _ => f0_raise(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |D3El0azy _ => f0_l0azy(env0, d3e0)
 |D3El1azy _ => f0_l1azy(env0, d3e0)
