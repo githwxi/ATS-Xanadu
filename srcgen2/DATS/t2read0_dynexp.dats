@@ -992,6 +992,23 @@ endlet // end of [d2exp_l1azy_errck(...)]
 (* ****** ****** *)
 //
 fun
+d2exp_elazy_errck
+( loc0: loc_t
+, dsym: d1exp
+, d2e1: d2exp
+, d2es: d2explst): d2exp =
+let
+val
+lvl0 = maxs
+(errvl(d2e1), errvl(d2es)) in//let
+d2exp_errck
+( lvl0+1
+, d2exp(loc0,D2Eelazy(dsym,d2e1,d2es)))
+endlet // end of [d2exp_elazy_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d2exp_annot_errck
 ( loc0: loc_t
 , d2e1: d2exp
@@ -1569,8 +1586,13 @@ d2e0.node() of
 //
 |D2Eraise _ => f0_raise(d2e0, err)
 //
+(* ****** ****** *)
+//
 |D2El0azy _ => f0_l0azy(d2e0, err)
 |D2El1azy _ => f0_l1azy(d2e0, err)
+|D2Eelazy _ => f0_elazy(d2e0, err)
+//
+(* ****** ****** *)
 //
 |D2Eannot _ => f0_annot(d2e0, err)
 //
@@ -2401,6 +2423,36 @@ val loc = d2e.lctn() in
 d2exp_l1azy_errck(loc,dsym,d2e1,d2es)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_l1azy(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_elazy
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Eelazy
+(dsym
+,d2e1,d2es) = d2e.node()
+//
+val
+d2e1 = t2read0_d2exp(d2e1, err)
+val
+d2es = t2read0_d2explst(d2es, err)
+//
+in//let
+if
+(err=e00)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_elazy_errck(loc,dsym,d2e1,d2es)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_elazy(d2e,err)]
 //
 (* ****** ****** *)
 //

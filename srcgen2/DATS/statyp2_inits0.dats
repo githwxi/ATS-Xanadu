@@ -69,15 +69,16 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
-
+//
 #symload name with s2cst_get_name
 #symload sort with s2cst_get_sort
 #symload stmp with s2cst_get_stmp
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 local
-
+//
 (* ****** ****** *)
 //
 val
@@ -260,9 +261,10 @@ s2typ_name_t2pr(ullint_name, ullint_t2pr)
 (* ****** ****** *)
 //
 end (*local*) // end of [local(the_s2typs)]
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 local
 //
 (* ****** ****** *)
@@ -312,9 +314,10 @@ end//let//end-of-[s2cst_set_styp(s2c0,styp)]
 (* ****** ****** *)
 //
 end (*local*) // end of [local(the_s2cst_s2typ)]
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 local
 //
 (* ****** ****** *)
@@ -341,7 +344,8 @@ tmpmap_insert$any(mymap, s2c0.stmp(), styp)
 (* ****** ****** *)
 //
 end (*local*) // end of [local(the_s2abs_s2typ)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
@@ -379,6 +383,7 @@ end (*let*) // end of [the_s2typ_p1tr0()]
 //
 end (*local*) // end of [local(the_s2typ_p1tr0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
@@ -453,6 +458,7 @@ end (*let*) // end of [the_s2typ_p2at0()]
 end (*local*) // end of [local(the_s2typ_p2at0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 local
 //
@@ -483,6 +489,7 @@ end (*let*) // end of [the_s2typ_p2at1(telt)]
 //
 end (*local*) // end of [local(the_s2typ_p2tr1)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
@@ -519,9 +526,9 @@ in//let
 //
 |_(*non-T2Pnone0*) => (   t2p0   )
 //
-end (*let*) // end of [the_s2typ_l0azy0()]
+end(*let*)//end-of-[the_s2typ_l0azy0()]
 //
-end (*local*) // end of [local(the_s2typ_l0azy0)]
+end(*local*)//end-of-[local(the_s2typ_l0azy0)]
 //
 (* ****** ****** *)
 //
@@ -537,6 +544,7 @@ s2typ(s2t0, T2Papps(tfun, list_sing(telt)))
 end (*let*) // end of [the_s2typ_l0azy1(telt)]
 end (*local*) // end of [local(the_s2typ_l0azy1)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
@@ -558,6 +566,7 @@ val
 t2p0 = l1azy0_t2pr[(*0*)]
 //
 in//let
+//
 case+
 t2p0.node() of
 //
@@ -573,9 +582,9 @@ in//let
 //
 |_(*non-T2Pnone0*) => (   t2p0   )
 //
-end (*let*) // end of [the_s2typ_l1azy0()]
+end(*let*)//end-of-[the_s2typ_l1azy0()]
 //
-end (*local*) // end of [local(the_s2typ_l1azy0)]
+end(*local*)//end-of-[local(the_s2typ_l1azy0)]
 //
 (* ****** ****** *)
 //
@@ -591,6 +600,90 @@ s2typ(s2t0, T2Papps(tfun, list_sing(telt)))
 end (*let*) // end of [the_s2typ_l1azy1(telt)]
 end (*local*) // end of [local(the_s2typ_l1azy1)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+val
+t2p0 =
+s2typ_none0((*0*))
+val
+elazy0_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+//
+in//local
+//
+#implfun
+the_s2typ_elazy0() =
+let
+//
+val
+t2p0 = elazy0_t2pr[(*0*)]
+//
+in//let
+//
+case+
+t2p0.node() of
+//
+|T2Pnone0() =>
+let
+val t2p1 =
+s2typ_cst(s2c1) where
+{
+val
+s2c1 = the_s2cst_elazy0() }
+in//let
+(elazy0_t2pr[] := t2p1; t2p1) end
+//
+|_(*non-T2Pnone0*) => (   t2p0   )
+//
+end(*let*)//end-of-[the_s2typ_elazy0()]
+//
+end(*local*)//end-of-[local(the_s2typ_elazy0)]
+//
+(* ****** ****** *)
+//
+local
+in//local
+#implfun
+the_s2typ_elazy1(tlam) =
+let
+val s2t0 = the_sort2_tbox
+val tfun = the_s2typ_elazy0()
+//
+val targ =
+(
+case+
+tlam.node() of
+|T2Pfun1
+( f2cl, npf1
+, t2ps, tres) =>
+(
+if
+list_singq(t2ps) then
+list_head(t2ps) else s2typ_none0()
+)
+|_(*non-T2Pfun1*) => s2typ_none0())
+//
+val tres =
+(
+case+
+tlam.node() of
+|T2Pfun1
+( f2cl, npf1
+, t2ps, tres) => tres
+| _(*non-T2Pfun1*) => s2typ_none0())
+//
+in//let
+(
+s2typ
+(
+s2t0, T2Papps(tfun, list_pair(targ,tres))))
+end (*let*) // end of [the_s2typ_elazy1(tlam)]
+end (*local*) // end of [local(the_s2typ_elazy1)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local

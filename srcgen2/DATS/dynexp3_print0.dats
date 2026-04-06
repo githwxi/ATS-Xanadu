@@ -531,6 +531,12 @@ prints("D3Edelaz(",d3e1,")") // de-elaz
 (
   print("D3El1azy(")
 ; prints( dsym, ";",d3e1, ";",d3es,")"))
+|D3Eelazy
+(dsym
+,d3e1, d3es) =>
+(
+  print("D3Eelazy(")
+; prints( dsym, ";",d3e1, ";",d3es,")"))
 //
 (* ****** ****** *)
 //

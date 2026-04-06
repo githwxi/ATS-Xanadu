@@ -224,6 +224,7 @@ fun
 the_s2typ_ullint((*void*)): s2typ
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 the_s2typ_l0azy0((*void*)): s2typ
@@ -231,13 +232,29 @@ fun
 the_s2typ_l0azy1(elt:s2typ): s2typ
 //
 (* ****** ****** *)
+//
 fun
 the_s2typ_l1azy0((*void*)): s2typ
 fun
 the_s2typ_l1azy1(elt:s2typ): s2typ
+//
 (* ****** ****** *)
+//
+fun
+the_s2typ_elazy0((*void*)): s2typ
+(*
+HX-2026-04-06: [tfn]:
+it is the type of lam(env) => ...
+*)
+fun
+the_s2typ_elazy1(tfn:s2typ): s2typ
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 the_s2typ_excptn( (*void*) ): s2typ
+//
 (* ****** ****** *)
 //
 datatype

@@ -455,6 +455,8 @@ fun
 the_s2cst_l0azy0:((*void*)) -> s2cst
 fun
 the_s2cst_l1azy0:((*void*)) -> s2cst
+fun
+the_s2cst_elazy0:((*void*)) -> s2cst
 //
 (* ****** ****** *)
 //

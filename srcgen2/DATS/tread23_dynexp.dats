@@ -1055,6 +1055,22 @@ endlet // end of [d3exp_l1azy_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_elazy_errck
+( loc0: loc_t
+, dsym: d1exp
+, d3e1: d3exp
+, d3es: d3explst): d3exp =
+let
+val lvl0 = maxs
+(errvl(d3e1), errvl(d3es)) in//let
+d3exp_errck
+( lvl0+1
+, d3exp(loc0,D3Eelazy(dsym,d3e1,d3es)))
+endlet // end of [d3exp_elazy_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_annot_errck
 ( loc0: loc_t
 , d3e1: d3exp
@@ -1674,6 +1690,11 @@ d3e0.node() of
 //
 |D3Edl0az _ => f0_dl0az(d3e0, err)
 |D3Edl1az _ => f0_dl1az(d3e0, err)
+(*
+HX-2026-04-06:
+There is no [D3Edelaz]!!!
+|D3Edelaz _ => f0_delaz(d3e0, err)
+*)
 //
 (* ****** ****** *)
 //
@@ -1693,6 +1714,7 @@ d3e0.node() of
 //
 |D3El0azy _ => f0_l0azy(d3e0, err)
 |D3El1azy _ => f0_l1azy(d3e0, err)
+|D3Eelazy _ => f0_elazy(d3e0, err)
 //
 (* ****** ****** *)
 //
@@ -2644,6 +2666,36 @@ val loc = d3e.lctn() in
 d3exp_l1azy_errck(loc,dsym,d3e1,d3es)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_l1azy(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_elazy
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Eelazy
+(dsym
+,d3e1, d3es) = d3e.node()
+//
+val
+d3e1 = tread23_d3exp(d3e1, err)
+val
+d3es = tread23_d3explst(d3es, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_elazy_errck(loc,dsym,d3e1,d3es)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_elazy(d3e,err)]
 //
 (* ****** ****** *)
 //

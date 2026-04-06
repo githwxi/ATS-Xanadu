@@ -1207,6 +1207,7 @@ no D2Eflat; only D3Eflat!
 //
 |D2El0azy _ => f0_l0azy(env0, d2e0)
 |D2El1azy _ => f0_l1azy(env0, d2e0)
+|D2Eelazy _ => f0_elazy(env0, d2e0)
 //
 (* ****** ****** *)
 //
@@ -2859,6 +2860,40 @@ d3exp_make_tpnd
   t2p0 = the_s2typ_l1azy1(d3e1.styp())
 }
 end(*let*)//end-of-[f0_l1azy(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_elazy
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Eelazy
+(dsym
+,d2e1, d2es) = d2e0.node()
+//
+val
+d3e1 = trans23_d2exp(env0, d2e1)
+val
+d3es =
+trans23_d2explst_tpck1
+(env0, d2es, the_s2typ_void((*0*)))
+//
+in//let
+(
+d3exp_make_tpnd
+( loc0
+, t2p0, D3Eelazy(dsym,d3e1,d3es))
+) where
+{
+  val
+  t2p0 = the_s2typ_elazy1(d3e1.styp())
+}
+end(*let*)//end-of-[f0_elazy(env0,d2e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
