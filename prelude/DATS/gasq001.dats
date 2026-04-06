@@ -759,7 +759,10 @@ lb+(ub-lb)/2)
 val
 (pf | xm) =
 (
+(*
 gasq_lget$at
+*)
+$UN.gasq_lget$at$raw
 < xs >< x0 >(xs, mb))
 val sgn =
 (

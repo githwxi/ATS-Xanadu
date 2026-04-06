@@ -34,11 +34,6 @@ gasq_bin$search
 #typedef xs = nint
 //
 #impltmp
-gasq_lget$at
-< xs >< x0 >
-(  xs, mb  ) =
-(owed_t0_make() | mb)
-#impltmp
 gasq_length<xs>(xs) = N
 //
 #impltmp
@@ -52,6 +47,13 @@ val () = printsln("isqrt(82) = ", isqrt(82))
 val () = printsln("isqrt(99) = ", isqrt(99))
 val () = printsln("isqrt(100) = ", isqrt(100))
 val () = printsln("isqrt(101) = ", isqrt(101))
+//
+val () =
+printsln("isqrt(10000000) = ", isqrt(10000000))
+val () =
+printsln("isqrt(100000000) = ", isqrt(100000000))
+val () =
+printsln("isqrt(1000000000) = ", isqrt(1000000000))
 //
 (* ****** ****** *)
 (* ****** ****** *)
