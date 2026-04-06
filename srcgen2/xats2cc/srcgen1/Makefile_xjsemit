@@ -44,6 +44,8 @@ trxd3i0_myenv0.dats \
 trxd3i0_statyp.dats \
 trxd3i0_dynexp.dats \
 trxd3i0_decl00.dats \
+tryd3i0.dats \
+tryd3i0_myenv0.dats \
 xats2cc_tmplib.dats \
 #
 ########################################################################
