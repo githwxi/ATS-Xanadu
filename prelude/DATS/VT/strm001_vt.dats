@@ -255,7 +255,7 @@ HX-2024-07-10:
 Implementing the most specific one.
 HX-2024-07-13:
 This one is already added as the default!
-There is not harm to keep it here as a reference.
+There is no harm to keep it here as a reference.
 *)
 #impltmp
 { x0:vt }

@@ -416,7 +416,7 @@ CFPTR1=11: linear manytime clofun
 *)
 if // if
 (ndyn<=0)
-then( f2cl )else(F2CLclo(CFPTR0)))
+then( f2cl )else(F2CLclo(C0FPTR)))
 //
 }
 )(*case+*)//end-of-[list_cons(...)]

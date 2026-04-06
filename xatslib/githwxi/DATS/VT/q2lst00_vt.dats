@@ -16,14 +16,14 @@ For implementing operations on so-called
 (* ****** ****** *)
 //
 #absvtbx
-qlist_vt_vx(a:vt) <= p0tr
+q2lst_vt_vx(a:vt) <= p0tr
 (*
 #absvtbx
-qlist_vt_i0_vx(a:t0) <= p0tr
+q2lst_vt_i0_vx(a:t0) <= p0tr
 *)
 //
 #vwtpdef
-qlist_vt(a:vt) = qlist_vt_vx(a)
+q2lst_vt(a:vt) = q2lst_vt_vx(a)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -31,21 +31,21 @@ qlist_vt(a:vt) = qlist_vt_vx(a)
 #impltmp
 { a:vt }
 g_ptcon
-<qlist_vt(a)>() =
+<q2lst_vt(a)>() =
 (
-pstrn("qlist_vt"))
+pstrn("q2lst_vt"))
 #impltmp
 { a:vt }
 g_ptype
-<qlist_vt(a)>() =
+<q2lst_vt(a)>() =
 (
 pstrn
-("qlist_vt(");
+("q2lst_vt(");
 g_ptype<a>(); pstrn(")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_githwxi_DATS_VT_qlist00_vt.dats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_DATS_VT_q2lst00_vt.dats] *)
 (***********************************************************************)

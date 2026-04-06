@@ -2226,6 +2226,20 @@ then true else false
 |
 _(* non-D1Eid0 *) => false
 ) (*case+*) // end of [isL1AZY]
+fun
+isELAZY
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid0(sym) =>
+if
+(sym=DELAZY_symbl)
+then true else false
+|
+_(* non-D1Eid0 *) => false
+) (*case+*) // end of [isELAZY]
 //
 fun
 f1_mklaz0
@@ -2256,6 +2270,27 @@ d2exp_make_node
 (loc0, D2El1azy(d1f0, d2e1, d2es))
 endlet
 )(*case+*)//end of [f1_mklaz1(...)]
+//
+fun
+f1_mkelaz
+( loc0: loc_t
+, d1f0: d1exp
+, d2e1: d2exp): d2exp =
+(
+case+
+d2e1.node() of
+|
+D2Eseqn(d2es, d2e1) =>
+d2exp_make_node
+(loc0, D2Eelazy(d1f0, d2e1, d2es))
+|_(* non-D2Eseqn *) =>
+let
+val
+d2es = list_nil() in//let
+d2exp_make_node
+(loc0, D2Eelazy(d1f0, d2e1, d2es))
+endlet
+)(*case+*)//end of [f1_mkelaz(...)]
 //
 fun
 f0_a1pp
@@ -2371,6 +2406,17 @@ f1_mklaz1(loc0, d1f0, d2e1)
 end (*let*) // end-of-then
 else
 (
+if
+isELAZY(d1f0)
+then
+let
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+in//let
+f1_mkelaz(loc0, d1f0, d2e1)
+end (*let*) // end-of-then
+else
+(
 case+
 d1e1.node() of
 //
@@ -2396,6 +2442,7 @@ in
 end (*let*) // end of [D1Etarg(s1es)]
 | _ // HX: for regular level-2 dynexps
 (*d1exp-rest*) => f0_a1pp_else(env0,d1e0)
+) (*end-of-else*) // end-of-if( isELAZY )
 ) (*end-of-else*) // end-of-if( isL1AZY )
 ) (*end-of-else*) // end-of-if( isL0AZY )
 ) (*end-of-else*) // end-of-if( isFREE0 )
