@@ -223,6 +223,70 @@ strmcon_vt_cons(i0, auxdn(i0-1)))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0:t0 >
+list_all$permute
+  (  xs  ) =
+(
+  auxmain(xs) )
+where
+{
+//
+#vwtpdef
+xs = list_vt(x0)
+#vwtpdef
+y0 = (x0, list_vt(x0))
+//
+#vwtpdef xz = strm_vt(xs)
+//
+fun
+auxmain
+( xs
+: list(x0))
+: strm_vt(list_vt(x0)) =
+(
+case+ xs of
+|
+list_nil() =>
+(
+strm_vt_sing
+(list_vt_nil(*0*)))
+|
+list_cons _ =>
+(
+strm_vt_lstrm$concat0
+<         xs         >
+(
+(
+strm_vt_map0<y0><xz>
+(
+list_1choose$split_lstrm
+<          x0          >
+(          xs          )))
+where
+{
+#impltmp
+map$fopr0
+<y0><xz>(y0) =
+strm_vt_map0
+< xs >< xs >
+(
+  auxmain(list_vt2t(y0.1)))
+where
+{
+#impltmp
+map$fopr0
+<xs >< xs>
+(   xs   ) = list_vt_cons(y0.0, xs) }
+}
+)
+)
+)
+}(*where*)//end-of-[list_all$permute( xs )]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_almanac_DATS_pre2026.dats] *)
 (***********************************************************************)

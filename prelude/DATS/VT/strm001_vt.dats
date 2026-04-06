@@ -333,12 +333,13 @@ the version for <x0:vt>, where copying
 strm_vt_dedup0
   ( xs ) =
 (
-  dedup0(xs) )
+  auxmain(xs) )
 where
 {
 //
 fun
-dedup0(
+auxmain
+(
 xs:
 strm_vt(x0)): strm_vt(x0) =
 $llazy(
@@ -354,11 +355,11 @@ strmcon_vt_cons
   ( x1, xs ) =>
 (
 strmcon_vt_cons
-(x1, dedup0(xs))) where
+(x1, auxmain(xs))) where
 {
 val xs =
 (
-strm_vt_filter0<x0>(xs))
+  strm_vt_filter0<x0>(xs))
 where
 {
 #impltmp
@@ -369,7 +370,7 @@ not(dedup$equal<x0>(x1, x2)))
 }
 }(*where*)//end(strmcon_vt_cons(...))
 //
-)(*case+*)//end-of-(dedup0(xs)=llazy)
+)(*case+*)//end-of-(auxmain(xs)=llazy)
 //
 }(*where*)//end-of-(strm_vt_dedup0(xs))
 //

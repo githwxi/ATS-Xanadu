@@ -70,6 +70,25 @@ val () = print0s("strm_vt(range(0, 1000000)) = ", xs, "\n")
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val xs =
+list@(1, 2, 3, 4)
+val xz =
+list_all$permute(xs)
+val () =
+(
+strm_vt_foritm0<xs>(xz)
+) where
+{
+#typedef x0 = sint
+#vwtpdef xs = list_vt(x0)
+#vwtpdef xz = strm_vt(xs)
+#impltmp
+foritm$work0<xs>(xs) = print0s(xs, "\n")
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () = console_log(the_print_store_flush((*void*)))
 //
 (* ****** ****** *)

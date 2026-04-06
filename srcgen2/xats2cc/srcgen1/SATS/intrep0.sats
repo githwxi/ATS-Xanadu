@@ -513,17 +513,21 @@ bound variable kind!
 //
 datatype
 i0cal =
-|
+//
+|I0CALlam of
+( (*void*) )
+|I0CALfix of
+(d2var(*self*)
+//
 (*
 HX-2026-04-04:
 For non-tmp d2cst
 *)
-I0CALimp of (dimpl)
-|
-I0CALfun of
-(
-d2var(*self*),
-d2varlst(*mutuals*))
+|I0CALimp of
+(dimpl(*dcst*))
+|I0CALfun of
+(d2var(*self*)
+,d2varlst(*mutuals*))
 //
 (* ****** ****** *)
 //

@@ -155,6 +155,22 @@ sint_from$to with sint_gte$strmize of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-05:
+Sun Apr  5 07:39:39 PM EDT 2026
+For enumerating all the permutations
+of a given list [xs].
+*)
+//
+fun
+<x0:t0>
+list_all$permute
+{n:i0}
+(xs: list(x0, n)): strm_vt(list_vt(x0, n))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_almanac_SATS_pre2026.sats] *)
 (***********************************************************************)

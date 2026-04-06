@@ -375,7 +375,7 @@ case+ xs of
   in
     loop(xs, r0.1); $fold(r0)
   end
-endcas // end of [ case+(xs) ]
+endcas // end of [case+of(xs)]
 )
 in
 let
@@ -426,7 +426,7 @@ case+ xs of
   in
     loop(xs, r0.1); $fold(r0)
   end
-endcas // end of [ case+(xs) ]
+endcas // end of [case+of(xs)]
 )
 in//let
 //
