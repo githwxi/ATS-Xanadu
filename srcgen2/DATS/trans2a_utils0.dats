@@ -411,8 +411,8 @@ val f2cl =
 (
 (*
 HX-2026-03-02:
-CFPTR0=10: linear one-time clofun
-CFPTR1=11: linear manytime clofun
+C0FPTR=10: linear one-time clofun
+C1FPTR=11: linear manytime clofun
 *)
 if // if
 (ndyn<=0)

@@ -96,6 +96,7 @@ estrm_vt_foritm0
 (
 xs:
 estrm_vt(x0, e1), e1: e1): (e1)
+//
 fun
 <x0:vt>
 <e1:vt>

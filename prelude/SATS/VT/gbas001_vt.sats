@@ -554,6 +554,31 @@ c3hoose$forall$test0(~x0, ~x0, ~x0): bool
 (* ****** ****** *)
 //
 (*
+HX-2026-04-06:
+Mon Apr  6 03:26:51 PM EDT 2026
+*)
+fun
+<x0:vt>
+<e1:vt>
+forall$e1nv$work0(x0: ~x0, e1: !e1): bool
+fun
+<x0:vt>
+<e1:vt>
+forall$e1nv$work1(x0: !x0, e1: !e1): bool
+//
+fun
+<x0:vt>
+<e1:vt>
+foritm$e1nv$work0(x0: ~x0, e1: !e1): void
+fun
+<x0:vt>
+<e1:vt>
+foritm$e1nv$work1(x0: !x0, e1: !e1): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2025-05-31:
 Sat May 31 08:14:34 PM EDT 2025
 *)
