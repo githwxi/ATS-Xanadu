@@ -273,11 +273,11 @@ F2CLfun is CFREFX;
 [CFREFX] is nonlin;
 and all the others are linear!
 *)
-#define CFREFX = -1 // refd
-#define CFENV0 = 00 // flat
-#define CFENV1 = 01 // flat
-#define CFPTR0 = 10 // one-time
-#define CFPTR1 = 11 // repeated
+#define CXFREF = -1 // refd
+#define C0FENV = 00 // flat
+#define C1FENV = 01 // flat
+#define C0FPTR = 10 // one-time
+#define C1FPTR = 11 // repeated
 //
 (*
 HX-2026-03-01:

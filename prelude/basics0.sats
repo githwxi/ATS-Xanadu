@@ -1210,6 +1210,8 @@ lazy(a:t0) = lazy_t0_tx(a)
 lazy_vt_vx
 (elt:vwtp+) <= p0tr
 #vwtpdef
+llazy(a:vt) = lazy_vt_vx(a)
+#vwtpdef
 lazy_vt(a:vt) = lazy_vt_vx(a)
 //
 (* ****** ****** *)(* ****** ****** *)

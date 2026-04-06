@@ -529,6 +529,7 @@ it may be of other uses in the future
 //
 |D3Edl0az of (d3exp)//l0azy-eval-thunk
 |D3Edl1az of (d3exp)//l1azy-eval-thunk
+|D3Edelaz of (d3exp)//elazy-eval-cfptr
 //
 (* ****** ****** *)
 //

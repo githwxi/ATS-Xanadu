@@ -1092,10 +1092,10 @@ This one may not be added:
 (* ****** ****** *)
 //
 |D2Edtsel of
-( token
-, label
-, d2ptmlst
-, sint(*npf*), d2explstopt(*args*) )
+(token
+,label
+,d2ptmlst
+,sint(*npf*), d2explstopt(*args*))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1103,7 +1103,7 @@ This one may not be added:
 |
 D2Eraise of
 (
- token(*$RAISE*), d2exp(*lin-exn*) )
+token(*$RAISE*), d2exp(*lin-exn*))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1111,12 +1111,17 @@ D2Eraise of
 |
 D2El0azy of // nonlin-lazy-eval
 (
-d1exp(*$LAZY0*), d2exp(*non-thunk*))
+d1exp(*$lazy*), d2exp(*non-thunk*))
 |
 D2El1azy of // linear-lazy-eval
 (
-d1exp(*$LLAZY*),
+d1exp(*$llazy*),
 d2exp(*lin-thunk*), d2explst(*frees*))
+|
+D2Eelazy of // linear-lazyenv-eval
+(
+d1exp(*$elazy*),
+d2exp(*lin-cfptr*), d2explst(*frees*))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -486,6 +486,9 @@ prints("D3Edl0az(",d3e1,")") // de-l0az
 |D3Edl1az
 (   d3e1   ) =>
 prints("D3Edl1az(",d3e1,")") // de-l1az
+|D3Edelaz
+(   d3e1   ) =>
+prints("D3Edelaz(",d3e1,")") // de-elaz
 //
 (* ****** ****** *)
 //

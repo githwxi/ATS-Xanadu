@@ -683,6 +683,13 @@ D2El1azy
 (
 print("D2El1azy(");
 prints(dsym, ";",d2e1, ";",d2es, ")"))
+|
+D2Eelazy
+( dsym
+, d2e1, d2es) =>
+(
+print("D2Eelazy(");
+prints(dsym, ";",d2e1, ";",d2es, ")"))
 //
 (* ****** ****** *)
 //

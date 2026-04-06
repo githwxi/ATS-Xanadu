@@ -161,6 +161,7 @@ HX-2022-10-01: Various symbols
 //
 #implval DLAZY_symbl = symbl("$lazy")
 #implval DLLAZY_symbl = symbl("$llazy")
+#implval DELAZY_symbl = symbl("$elazy")
 //
 (* ****** ****** *)
 //
@@ -174,9 +175,12 @@ $lamenv((...) => ...): nonlin
 $llamenv0((...) => ...): linear
 $llamenv1((...) => ...): linear
 *)
-#implval DLAMENV_symbl = symbl("$lamenv")
-#implval DLLAMENV0_symbl = symbl("$llamenv0")
-#implval DLLAMENV1_symbl = symbl("$llamenv1")
+#implval
+  DLAMENV_symbl = symbl( "$lamenv" )
+#implval
+  DLLAMENV0_symbl = symbl( "$llamenv0" )
+#implval
+  DLLAMENV1_symbl = symbl( "$llamenv1" )
 //
 (* ****** ****** *)
 (* ****** ****** *)
