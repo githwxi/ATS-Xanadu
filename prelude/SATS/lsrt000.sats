@@ -226,6 +226,9 @@ lsrt_msetize_vt
 HX-2025-12-26:
 The keys in a lsrt-map
 are assumed to be distinct!!!
+On the other hand, a key can
+have repeated occurrences in
+a multi-map (mmap).
 Fri Dec 26 10:27:50 AM EST 2025
 *)
 //

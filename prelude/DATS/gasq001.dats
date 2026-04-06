@@ -717,6 +717,85 @@ sortedq$lteq<x0>(*x1,x2*) = lteq(*x1,x2*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-05:
+Sun Apr  5 10:25:26 PM EDT 2026
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasq_bin$search
+  (  xs  ) =
+(
+bsearch
+(
+0(*lb*),
+gseq_length
+< xs >< x0 >(xs)))
+where
+{
+//
+fnx
+bsearch
+(
+lb: nint,
+ub: nint): nint =
+if // if
+(lb >= ub)
+then ( ub ) else
+let
+//
+(*
+HX:
+[lb, ub):
+left-inclusive
+right-exclusive
+xs[lb-1]<key<=xs[ub]
+*)
+val mb =
+(
+lb+(ub-lb)/2)
+val
+(pf | xm) =
+(
+gasq_lget$at
+< xs >< x0 >(xs, mb))
+val sgn =
+(
+  search$tcmp1<x0>(xm))
+pvx ( ) =
+(
+  owed_vt_return0(pf, xm))
+//
+in//let
+//
+if // if
+(sgn <= 0) then
+bsearch(lb, mb) else bsearch(mb+1, ub)
+//
+end(*let*)//else//endof(bsearch(lb,ub))
+//
+}(*where*)//end-of-[gasq_bin$search(xs):nint]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gasq_bin$search$f1un
+  (xs, tcmp) =
+(
+gasq_bin$search<xs><x0>(xs))
+where
+{
+#impltmp
+search$tcmp<x0>(*x1,x2*) = tcmp(*x1,x2*)
+}(*where*)//end-of-[gasq_bin$search$f1un(xs,tcmp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_gasq001.dats] *)
 (***********************************************************************)
