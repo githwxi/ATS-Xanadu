@@ -2131,6 +2131,8 @@ f0_l0azy
 , err0: &sint >> _): d3exp =
 let
 //
+val nerr = err0
+//
 val-
 D3El0azy
 ( dknd, d3e1) = d3e0.node()
@@ -2139,7 +2141,7 @@ val
 d3e1 =
 t3read0_d3exp(evn0, d3e1, err0)
 //
-in//et
+in//let
 if // if
 (err0=nerr)
 then (d3e0) else
@@ -2162,6 +2164,8 @@ f0_l1azy
 , err0: &sint >> _): d3exp =
 let
 //
+val nerr = err0
+//
 val-
 D3El1azy
 ( dknd
@@ -2174,7 +2178,7 @@ val
 d3es =
 t3read0_d3explst(evn0,d3es,err0)
 //
-in//et
+in//let
 if // if
 (err0=nerr)
 then (d3e0) else
@@ -2198,6 +2202,8 @@ f0_elazy
 , err0: &sint >> _): d3exp =
 let
 //
+val nerr = err0
+//
 val-
 D3Eelazy
 ( dknd
@@ -2210,7 +2216,7 @@ val
 d3es =
 t3read0_d3explst(evn0,d3es,err0)
 //
-in//et
+in//let
 if // if
 (err0=nerr)
 then (d3e0) else
