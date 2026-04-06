@@ -1656,6 +1656,46 @@ gseq_ifilter1_lstrq with gseq_ifilter1$f1un_lstrq of 0100
 (* ****** ****** *)
 //
 (*
+HX-2026-04-06:
+Mon Apr  6 03:16:13 PM EDT 2026
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+<e1:vt>
+gseq_forall$e1nv0
+( xs: ~xs, e1: !e1 ): bool
+fun
+<xs:vt>
+<x0:vt>
+<e1:vt>
+gseq_forall$e1nv0$f2un_llist
+( xs: ~xs
+, e1: !e1, fopr: (~x0, !e1)->bool): bool
+#symload
+gseq_forall$e1nv0 with gseq_forall$e1nv0$f2un of 0100
+//
+fun
+<xs:vt>
+<x0:vt>
+<e1:vt>
+gseq_foritm$e1nv0
+( xs: ~xs, e1: !e1 ): void
+fun
+<xs:vt>
+<x0:vt>
+<e1:vt>
+gseq_foritm$e1nv0$f2un_llist
+( xs: ~xs
+, e1: !e1, fopr: (~x0, !e1)->void): void
+#symload
+gseq_foritm$e1nv0 with gseq_foritm$e1nv0$f2un of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2025-06-01:
 Sun Jun  1 07:39:56 PM EDT 2025
 *)
@@ -1683,8 +1723,10 @@ fun
 gseq_map$e1nv0$f2un_llist
 ( xs: ~xs
 , e1: !e1, fopr: (~x0, !e1)->(y0)): list_vt(y0)
+(*
 #symload
 gseq_map0_llist with gseq_map$e1nv0$f2un_llist of 0100
+*)
 #symload
 gseq_map$e1nv0_llist with gseq_map$e1nv0$f2un_llist of 0100
 //
@@ -1696,8 +1738,10 @@ fun
 gseq_map$e1nv1$f2un_llist
 ( xs: !xs
 , e1: !e1, fopr: (!x0, !e1)->(y0)): list_vt(y0)
+(*
 #symload
 gseq_map1_llist with gseq_map$e1nv1$f2un_llist of 0100
+*)
 #symload
 gseq_map$e1nv1_llist with gseq_map$e1nv1$f2un_llist of 0100
 //
@@ -1742,8 +1786,10 @@ fun
 gseq_map$e1nv0$f2un_lstrm
 ( xs: ~xs
 , e1: !e1, fopr: (~x0, !e1)->(y0)): strm_vt(y0)
+(*
 #symload
 gseq_map0_lstrm with gseq_map$e1nv0$f2un_lstrm of 0100
+*)
 #symload
 gseq_map$e1nv0_lstrm with gseq_map$e1nv0$f2un_lstrm of 0100
 fun
@@ -1754,8 +1800,10 @@ fun
 gseq_map$e1nv0$f2un_lstrq
 ( xs: ~xs
 , e1: !e1, fopr: (~x0, !e1)->(y0)): strq_vt(y0)
+(*
 #symload
 gseq_map0_lstrq with gseq_map$e1nv0$f2un_lstrq of 0100
+*)
 #symload
 gseq_map$e1nv0_lstrq with gseq_map$e1nv0$f2un_lstrq of 0100
 //
