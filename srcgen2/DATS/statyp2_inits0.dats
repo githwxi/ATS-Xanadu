@@ -681,7 +681,7 @@ in//let
 (
 s2typ
 (
-s2t0, T2Papps(tcon, list_pair(tenv,telt))))
+s2t0, T2Papps(tcon, list_pair(telt,tenv))))
 end (*let*) // end of [the_s2typ_elazy1(tlam)]
 end (*local*) // end of [local(the_s2typ_elazy1)]
 //
