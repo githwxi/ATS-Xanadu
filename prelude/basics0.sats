@@ -1524,8 +1524,9 @@ estream_vt
 elazy_vt(
   estrmcon_vt(a, env), env) }
 //
+(* ****** ****** *)
 #sexpdef estrm_vt = estream_vt
-#sexpdef estcn_vt = estrmcon_vt
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

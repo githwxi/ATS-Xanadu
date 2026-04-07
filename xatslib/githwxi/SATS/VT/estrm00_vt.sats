@@ -26,10 +26,11 @@ fun
 <x0:vt>
 <e1:vt>
 estrm_vt_eval
-( xs
-: estrm_vt
-  (x0, e1)
-, e1: (e1)): estcn_vt(x0, e1)
+(
+xs:
+estrm_vt
+(x0, e1),
+e1: (e1)): estrmcon_vt(x0, e1)
 #symload eval with estrm_vt_eval
 //
 (* ****** ****** *)
