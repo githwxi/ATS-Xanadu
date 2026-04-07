@@ -784,6 +784,7 @@ d3e0.node() of
 //
 |D3El0azy _ => f0_l0azy(env0, d3e0)
 |D3El1azy _ => f0_l1azy(env0, d3e0)
+|D3Eelazy _ => f0_elazy(env0, d3e0)
 //
 (* ****** ****** *)
 //
@@ -2063,6 +2064,7 @@ in//let
 end (*let*) // end of [f0_raise(env0,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_l0azy
@@ -2129,6 +2131,43 @@ in//let
   , t2p0, D3El1azy(dknd,d3e1,d3es)) )
 end (*let*) // end of [f0_l1azy(env0,...)]
 //
+(* ****** ****** *)
+//
+fun
+f0_elazy
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Eelazy
+( dknd
+, d3e1
+, d3es ) = d3e0.node((*0*))
+//
+val t2p0 =
+  d3e0.styp((*0*))
+val t2p0 =
+  s2typ_hnfiz0(t2p0)
+val t2p0 =
+  trans3a_s2typ(env0, t2p0)
+//
+val
+d3e1 = trans3a_d3exp(env0, d3e1)
+val
+d3es = trans3a_d3explst(env0, d3es)
+//
+in//let
+(
+  d3exp_make_tpnd
+  ( loc0
+  , t2p0, D3Eelazy(dknd,d3e1,d3es)) )
+end (*let*) // end of [f0_elazy(env0,...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
