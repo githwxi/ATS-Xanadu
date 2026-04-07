@@ -514,12 +514,12 @@ d2pat_errck
 endlet // end of [d2pat_annot_errck(...)]
 //
 (* ****** ****** *)
-//
 (* ****** ****** *)
 (*
 Various
 errck-functions for d2exp-values
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -544,6 +544,7 @@ d2exp_errck
 (lvl0+1,d2exp(loc0,D2Etapp(d2f0,s2es)))
 endlet // end of [d2exp_tapp_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -575,6 +576,7 @@ d2exp_errck
 endlet // end of [d2exp_dapp_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2exp_proj_errck
@@ -592,6 +594,7 @@ d2exp_errck
 endlet // end of [d2exp_proj_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2exp_let0_errck
@@ -608,6 +611,7 @@ d2exp_errck
 (lvl0+1,d2exp(loc0,D2Elet0(dcls,d2e1)))
 endlet // end of [d2exp_let0_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -646,6 +650,7 @@ d2exp_errck
 endlet // end of [d2exp_cas0_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2exp_seqn_errck
@@ -663,6 +668,7 @@ d2exp_errck
 , d2exp( loc0, D2Eseqn( d2es, d2e1 )))
 endlet // end of [d2exp_seqn_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -707,6 +713,7 @@ d2exp_errck
 , d2exp(loc0,D2Ercd2(knd0,npf1,ldes)))
 endlet // end of [d2exp_rcd2_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -756,6 +763,7 @@ D2Efix0
 endlet // end of [d2exp_fix0_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2exp_try0_errck
@@ -773,6 +781,7 @@ d2exp_errck
 , d2exp(loc0,D2Etry0(tknd,d2e1,d2cs)))
 endlet // end of [d2exp_try0_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -832,6 +841,7 @@ d2exp_errck
 endlet // end of [d2exp_free_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2exp_where_errck
@@ -848,6 +858,7 @@ d2exp_errck
 , d2exp( loc0, D2Ewhere( d2e1, dcls ) ))
 endlet // end of [d2exp_where_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -895,6 +906,7 @@ d2exp_errck
 , d2exp( loc0, D2Exchng( d2el, d2er ) ))
 endlet // end of [d2exp_xchng_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -951,6 +963,7 @@ D2Edtsel(tknd,lab1,dpis,npf1,dopt)) )
 endlet // end of [d2exp_dtsel_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2exp_raise_errck
@@ -964,6 +977,7 @@ d2exp_errck
 , d2exp(loc0, D2Eraise(tknd, d2e1)) )
 endlet // end of [d2exp_raise_errck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -991,6 +1005,20 @@ d2exp_errck
 ,d2exp(loc0,D2El1azy(dsym,d2e1,d2es)))
 endlet // end of [d2exp_l1azy_errck(...)]
 //
+fun
+d2exp_elazy_errck
+(loc0: loc_t
+,dsym: d1exp
+,d2e1: d2exp
+,d2es: d2explst): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+(lvl0+1
+,d2exp(loc0,D2Eelazy(dsym,d2e1,d2es)))
+endlet // end of [d2exp_elazy_errck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1580,8 +1608,11 @@ d2e0.node() of
 //
 |D2Eraise _ => f0_raise(d2e0, err)
 //
+(* ****** ****** *)
 |D2El0azy _ => f0_l0azy(d2e0, err)
 |D2El1azy _ => f0_l1azy(d2e0, err)
+|D2Eelazy _ => f0_elazy(d2e0, err)
+(* ****** ****** *)
 //
 |D2Eannot _ => f0_annot(d2e0, err)
 //
@@ -1607,6 +1638,7 @@ endlet // end-of-[ _(***otherwise***) ]
 ) where // end-of-[ (*case+(d2e0)of*) ]
 {
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1655,6 +1687,7 @@ then (d2e) else
 d2exp_tapp_errck(d2e.lctn(),d2f0,s2es)
 end (*let*) // end of [f0_tapp(d2e,err)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1705,6 +1738,7 @@ end (*let*) // end-of-[else]
 end (*let*) // end of [f0_dapp(d2e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_proj
@@ -1727,8 +1761,9 @@ if
 then (d2e) else
 d2exp_proj_errck
 (d2e.lctn(), tknd, drxp, dlab, dtup)
-end (*let*) // end of [f0_dapp(d2e,err)]
+end (*let*) // end of [f0_proj(d2e,err)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1759,6 +1794,7 @@ d2exp_let0_errck(loc, dcls, d2e1)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_let0(d2e,err)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1822,6 +1858,7 @@ end (*let*) // end-of-[else]
 end (*let*) // end of [f0_cas0(d2e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_seqn
@@ -1851,6 +1888,7 @@ d2exp_seqn_errck(loc, d2es, d2e1)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_seqn(d2e,err)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1938,6 +1976,7 @@ end (*let*) // end-of-[else]
 end (*let*) // end of [f0_rcd2(d2e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_lam0
@@ -2001,8 +2040,9 @@ then (d2e) else
 d2exp_fix0_errck
 ( d2e.lctn()
 , tknd, d2v0, f2as, sres, arrw, d2e1)
-end (*let*) // end of [f0_lam0(d2e,err)]
+end (*let*) // end of [f0_fix0(d2e,err)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -2036,6 +2076,7 @@ end (*let*) // end-of-[else]
 end (*let*) // end of [f0_try0(d2e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_addr
@@ -2055,6 +2096,8 @@ if
 then (d2e) else
 d2exp_addr_errck(d2e.lctn(), d2e1)
 end (*let*) // end of [f0_addr(d2e,err)]
+//
+(* ****** ****** *)
 //
 fun
 f0_view
@@ -2139,6 +2182,7 @@ d2exp_free_errck(d2e.lctn(), d2e1)
 end (*let*) // end of [f0_free(d2e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_where
@@ -2169,6 +2213,7 @@ d2exp_where_errck(loc, d2e1, dcls)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_where(d2e,err)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -2257,6 +2302,7 @@ end (*let*) // end-of-[else]
 end (*let*) // end of [f0_xchng(d2e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_brget
@@ -2340,6 +2386,7 @@ d2exp_dtsel_errck
 end (*let*) // end of [f0_dtsel(d2e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_raise
@@ -2361,6 +2408,7 @@ then (d2e) else
 d2exp_raise_errck(d2e.lctn(),tknd,d2e1)
 end (*let*) // end of [f0_raise(d2e,err)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -2410,6 +2458,36 @@ d2exp_l1azy_errck(loc, dsym, d2e1, d2es)
 end (*let*)
 end (*let*) // end of [f0_l1azy(d2e,err)]
 //
+(* ****** ****** *)
+//
+fun
+f0_elazy
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Eelazy
+( dsym
+, d2e1, d2es) = d2e.node()
+val
+d2e1 = tread12_d2exp(d2e1, err)
+val
+d2es = tread12_d2explst(d2es, err)
+in//let
+if
+(err=e00)
+then (d2e) else
+let
+val loc = d2e.lctn()
+in//let
+d2exp_elazy_errck(loc, dsym, d2e1, d2es)
+end (*let*)
+end (*let*) // end of [f0_elazy(d2e,err)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

@@ -473,18 +473,18 @@ in//local
 the_s2typ_p2tr1(telt) =
 let
 val s2t0 = the_sort2_tbox
-val tfun = the_s2typ_p2tr0()
+val tcon = the_s2typ_p2tr0()
 in//let
-s2typ(s2t0, T2Papps(tfun, list_sing(telt)))
+s2typ(s2t0, T2Papps(tcon, list_sing(telt)))
 end (*let*) // end of [the_s2typ_p2tr1(telt)]
 //
 #implfun
 the_s2typ_p2at1(telt) =
 let
 val s2t0 = the_sort2_tbox
-val tfun = the_s2typ_p2at0()
+val tcon = the_s2typ_p2at0()
 in//let
-s2typ(s2t0, T2Papps(tfun, list_sing(telt)))
+s2typ(s2t0, T2Papps(tcon, list_sing(telt)))
 end (*let*) // end of [the_s2typ_p2at1(telt)]
 //
 end (*local*) // end of [local(the_s2typ_p2tr1)]
@@ -538,9 +538,9 @@ in//local
 the_s2typ_l0azy1(telt) =
 let
 val s2t0 = the_sort2_tbox
-val tfun = the_s2typ_l0azy0()
+val tcon = the_s2typ_l0azy0()
 in//let
-s2typ(s2t0, T2Papps(tfun, list_sing(telt)))
+s2typ(s2t0, T2Papps(tcon, list_sing(telt)))
 end (*let*) // end of [the_s2typ_l0azy1(telt)]
 end (*local*) // end of [local(the_s2typ_l0azy1)]
 //
@@ -594,9 +594,9 @@ in//local
 the_s2typ_l1azy1(telt) =
 let
 val s2t0 = the_sort2_tbox
-val tfun = the_s2typ_l1azy0()
+val tcon = the_s2typ_l1azy0()
 in//let
-s2typ(s2t0, T2Papps(tfun, list_sing(telt)))
+s2typ(s2t0, T2Papps(tcon, list_sing(telt)))
 end (*let*) // end of [the_s2typ_l1azy1(telt)]
 end (*local*) // end of [local(the_s2typ_l1azy1)]
 //
@@ -650,9 +650,9 @@ in//local
 the_s2typ_elazy1(tlam) =
 let
 val s2t0 = the_sort2_tbox
-val tfun = the_s2typ_elazy0()
+val tcon = the_s2typ_elazy0()
 //
-val targ =
+val tenv =
 (
 case+
 tlam.node() of
@@ -660,13 +660,15 @@ tlam.node() of
 ( f2cl, npf1
 , t2ps, tres) =>
 (
-if
-list_singq(t2ps) then
+if // if
+(
+list_singq
+(  t2ps  )) then
 list_head(t2ps) else s2typ_none0()
 )
 |_(*non-T2Pfun1*) => s2typ_none0())
 //
-val tres =
+val telt =
 (
 case+
 tlam.node() of
@@ -679,7 +681,7 @@ in//let
 (
 s2typ
 (
-s2t0, T2Papps(tfun, list_pair(targ,tres))))
+s2t0, T2Papps(tcon, list_pair(tenv,telt))))
 end (*let*) // end of [the_s2typ_elazy1(tlam)]
 end (*local*) // end of [local(the_s2typ_elazy1)]
 //

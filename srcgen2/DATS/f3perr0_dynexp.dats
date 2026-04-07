@@ -450,6 +450,8 @@ prints("D3Eraise(", "...", ")")
 prints("D3El0azy(", "...", ")")
 |D3El1azy _ =>
 prints("D3El1azy(", "...", ")")
+|D3Eelazy _ =>
+prints("D3Eelazy(", "...", ")")
 //
 (* ****** ****** *)
 //
@@ -838,6 +840,15 @@ val () =
 val () =
   f3perr0_d3explst(out, d3es)
 end(*let*)//end-of-[D3El1azy(...)]
+|D3Eelazy
+(dknd
+,d3e1, d3es) =>
+let
+val () =
+  f3perr0_d3exp(out, d3e1)
+val () =
+  f3perr0_d3explst(out, d3es)
+end(*let*)//end-of-[D3Eelazy(...)]
 //
 (* ****** ****** *)
 //

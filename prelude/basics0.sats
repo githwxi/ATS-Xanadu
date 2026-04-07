@@ -1479,7 +1479,60 @@ owed_vt_return0
 (* ****** ****** *)(* ****** ****** *)
 //
 (*
+HX-2026-04-06:
+[estream]: stream
+carrying an environment
+*)
+#absvtbx
+elazy_vt_vt_vx
+(a:vwtp+,env:vwtp)<=p0tr
+(*
+Mon Apr  6 08:49:03 PM EDT 2026
+*)
+//
+(* ****** ****** *)
+//
+#vwtpdef
+ellazy
+(a:vt,env:vt) =
+  elazy_vt_vt_vx( a, env )
+#vwtpdef
+elazy_vt
+(a:vt,env:vt) =
+  elazy_vt_vt_vx( a, env )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datavwtp
+estrmcon_vt
+( a: vwtp+
+, env: vwtp) =
+|
+estrmcon_vt_nil of
+(     env     )
+|
+estrmcon_vt_cons of
+(
+a, env, estream_vt(a, env))
+//endof-(estrmcon_vt(a,env))
+where
+{
+#vwtpdef
+estream_vt
+(a: vt, env: vt) =
+elazy_vt(
+  estrmcon_vt(a, env), env) }
+//
+#sexpdef estrm_vt = estream_vt
+#sexpdef estcn_vt = estrmcon_vt
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
+//
+(*
 HX-2024-07-29:
+For type annotation?
 Mon 29 Jul 2024 04:56:14 PM EDT
 *)
 //
@@ -1517,11 +1570,16 @@ fc_strn_vt
 {n:i0}(strn_vt(n)): strn_vt(n)
 //
 fcast
-fc_list{a:t0}
+fc_list
+{a:t0}
 {n:i0}(list(a, n)): list(a, n)
 fcast
-fc_list_vt{a:vt}
+fc_list_vt
+{a:vt}
 {n:i0}(list_vt(a, n)): list_vt(a, n)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
