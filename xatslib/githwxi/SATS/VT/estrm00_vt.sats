@@ -12,46 +12,6 @@ how programming is done in ATS3!
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#absvtbx
-elazy_vt_vt_vx
-(a:vwtp+,env:vwtp)<=p0tr
-//
-(* ****** ****** *)
-//
-#vwtpdef
-ellazy
-(a:vt,env:vt) =
-  elazy_vt_vt_vx( a, env )
-#vwtpdef
-elazy_vt
-(a:vt,env:vt) =
-  elazy_vt_vt_vx( a, env )
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-datavwtp
-estrmcon_vt
-( a: vwtp+
-, env: vwtp) =
-|estrmcon_vt_nil of
-(       env       )
-|estrmcon_vt_cons of
-(a, env, estream_vt(a, env))
-where
-{
-#vwtpdef
-estream_vt
-( a: vt, env: vt) =
-elazy_vt
-( estrmcon_vt(a, env), env )}
-//
-#sexpdef estrm_vt = estream_vt
-#sexpdef estcn_vt = estrmcon_vt
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 fun
 <x0:vt>
 <e1:vt>

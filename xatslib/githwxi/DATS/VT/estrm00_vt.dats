@@ -46,7 +46,7 @@ estrm_vt_foritm0
 <  x0  ><  e1  >(xs, e1))
 pvx(  ) = owed_vt_return0(pf, e1) end
 end//let//end-of-[gseq_foritm$e1nv0(xs,e1)]
-////
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -68,9 +68,11 @@ estrm_vt
 case+
 xs.eval(e1) of
 | ~
-estrmcon_vt_nil(e1) => e1
+estrmcon_vt_nil
+(      e1      ) => e1
 | ~
-estrmcon_vt_cons(x1, e1) =>
+estrmcon_vt_cons
+(  x1, e1, xs  ) =>
 (foritm$work0<x0>(x1); auxloop(xs, e1)))
 //
 }(*where*)//end-of-[estrm_vt_foritm0(xs,e1)]
@@ -80,6 +82,7 @@ estrmcon_vt_cons(x1, e1) =>
 //
 #impltmp
 < x0:vt >
+< y0:vt >
 < e1:vt >
 estrm_vt_map0
   (  xs  ) =

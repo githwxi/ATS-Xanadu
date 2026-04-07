@@ -168,7 +168,8 @@ in//local
 //
 #implfun
 the_s2cst_p1tr0
-  ( (*void*) ) =
+(
+(* void *)) =
 (
 case+ s2cr[] of
 //
@@ -226,7 +227,8 @@ in//local
 //
 #implfun
 the_s2cst_p2tr0
-  ( (*void*) ) =
+(
+(* void *)) =
 (
 case+ s2cr[] of
 //
@@ -284,7 +286,8 @@ in//local
 //
 #implfun
 the_s2cst_p2at0
-  ( (*void*) ) =
+(
+(* void *)) =
 (
 case+ s2cr[] of
 //
@@ -342,18 +345,21 @@ in//local
 //
 #implfun
 the_s2cst_l0azy0
-  ( (*void*) ) =
 (
-case+ s2cr[] of
+(* void *)) =
+(
+case+
+s2cr[(*0*)] of
 //
-|
-optn_nil() =>
+|optn_nil() =>
+(
 let
 val s2c1 =
 (
 case- opt1 of
 | ~
-optn_vt_cons(s2i1) =>
+optn_vt_cons
+(   s2i1   ) =>
 (
 case+ s2i1 of
 |
@@ -379,10 +385,11 @@ the_sexpenv_pvsfind(name) }
 in//let
 (s2cr[] := optn_cons(s2c1); s2c1)
 end (*let*) // end of [optn_nil()]
+)
 //
-| optn_cons(  s2c1  ) => (  s2c1  )
+|optn_cons(s2c1) => (     s2c1     )
 //
-) (*case+*) // end of [the_s2cst_l0azy0]
+)(*case+*)//end-of-[the_s2cst_l0azy0()]
 //
 end(*local*)//end-of-[local(the_s2cst_l0azy0)]
 
@@ -400,18 +407,21 @@ in//local
 //
 #implfun
 the_s2cst_l1azy0
-  ( (*void*) ) =
 (
-case+ s2cr[] of
+(* void *)) =
+(
+case+
+s2cr[(*0*)] of
 //
-|
-optn_nil() =>
+|optn_nil() =>
+(
 let
 val s2c1 =
 (
 case- opt1 of
 | ~
-optn_vt_cons(s2i1) =>
+optn_vt_cons
+(   s2i1   ) =>
 (
 case+ s2i1 of
 |
@@ -420,7 +430,7 @@ S2ITMcst(s2cs) =>
   s2c1 ) where
 {
 val-
-list_cons(s2c1, _) = s2cs } )
+list_cons(s2c1, _) = s2cs })
 ) where // end of [val(s2c1)]
 {
 //
@@ -432,15 +442,17 @@ name =
 symbl("the_s2exp_llazy0")
 //
 val opt1 =
-the_sexpenv_pvsfind(name) }
+(
+  the_sexpenv_pvsfind(name)) }
 //
 in//let
 (s2cr[] := optn_cons(s2c1); s2c1)
 end (*let*) // end of [optn_nil()]
+)
 //
-| optn_cons(  s2c1  ) => (  s2c1  )
+|optn_cons(s2c1) => (     s2c1     )
 //
-) (*case+*) // end of [the_s2cst_l1azy0]
+)(*case+*)//end-of-[the_s2cst_l1azy0()]
 //
 end(*local*)//end-of-[local(the_s2cst_l1azy0)]
 
@@ -455,6 +467,70 @@ a0ref_make_1val
 (optn_nil(*void*))
 //
 in//local
+//
+#implfun
+the_s2cst_elazy0
+(
+(* void *)) =
+(
+case+
+s2cr[(*0*)] of
+//
+|optn_nil() =>
+(
+let
+val s2c1 =
+(
+case- opt1 of
+| ~
+optn_vt_cons
+(   s2i1   ) =>
+(
+case+ s2i1 of
+|
+S2ITMcst(s2cs) =>
+(
+  s2c1 ) where
+{
+val-
+list_cons(s2c1, _) = s2cs })
+) where // end of [val(s2c1)]
+{
+//
+val
+loc0 =
+loctn_dummy((*void*))
+val
+name =
+symbl("the_s2exp_elazy0")
+//
+val opt1 =
+the_sexpenv_pvsfind(name) }
+//
+in//let
+(s2cr[] := optn_cons(s2c1); s2c1)
+end (*let*) // end of [optn_nil()]
+)
+//
+|optn_cons(s2c1) => (     s2c1     )
+//
+)(*case+*)//end-of-[the_s2cst_elazy0()]
+//
+end(*local*)//end-of-[local(the_s2cst_elazy0)]
+
+(* ****** ****** *)
+
+local
+//
+val
+s2cr =
+a0ref_make_1val
+<s2cstopt>
+(optn_nil(*void*))
+//
+in//local
+//
+(* ****** ****** *)
 //
 #implfun
 the_s2cst_excptn
@@ -486,6 +562,8 @@ in//let
 (s2cr[] := optn_cons(s2c1); s2c1)
 end (*let*) // end of [optn_nil()]
 ) (*case+*) // end of [the_s2cst_excptn]
+//
+(* ****** ****** *)
 //
 endloc (*local*) // end of [local(predefined)]
 

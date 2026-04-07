@@ -309,6 +309,7 @@ in//let
 //
 case+
 d2e.node() of
+//
 |D2Eint _ => print(d2e)
 |D2Ebtf _ => print(d2e)
 |D2Echr _ => print(d2e)
@@ -447,6 +448,8 @@ prints("D2Edtsel(", "...", ")")
 prints("D2El0azy(", "...", ")")
 |D2El1azy _ =>
 prints("D2El1azy(", "...", ")")
+|D2Eelazy _ =>
+prints("D2Eelazy(", "...", ")")
 //
 (* ****** ****** *)
 //
@@ -817,14 +820,24 @@ val () =
 //
 |
 D2El0azy
-(dsym, d2e1) =>
+(dknd, d2e1) =>
 let
 val () =
 (
   f2perr0_d2exp(out, d2e1)) end
 |
 D2El1azy
-(dsym
+(dknd
+,d2e1, d2es) =>
+let
+val () =
+(
+f2perr0_d2exp(out, d2e1))
+in//let
+f2perr0_d2explst(out, d2es) end
+|
+D2Eelazy
+(dknd
 ,d2e1, d2es) =>
 let
 val () =
