@@ -535,6 +535,7 @@ case+
 d3e.node() of
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Etimp
 (d3f0,timp) =>
@@ -567,6 +568,7 @@ f3perr0_tmpls(out,loc,tmps)
 endlet//endof-[D3Etimq(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Esapp
 (d3f0,s2es) =>
@@ -583,6 +585,7 @@ f3perr0_d3exp(out, d3f0)
 endlet//endof-[D3Esapq(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Etapp
 (d3f0,s2es) =>
@@ -598,6 +601,7 @@ val () =
 f3perr0_d3exp(out, d3f0)
 endlet//endof-[D3Etapq(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3Edap0
@@ -618,6 +622,7 @@ f3perr0_d3explst(out, d3es)
 endlet//endof-[D3Edapp(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Epcon
 (tknd
@@ -636,6 +641,7 @@ f3perr0_d3exp(out, d3e1)
 endlet//endof-[D3Eproj(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Elet0
 (dcls, d3e1) =>
@@ -647,6 +653,7 @@ val () =
 f3perr0_d3eclist(out, dcls)
 }(*where*)//end-of-[D3Elet0]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3Eift0
@@ -672,6 +679,7 @@ f3perr0_d3clslst(out, dcls)
 endlet//end-of-[D3Ecas0(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Eseqn
 (d3es, d3e1) =>
@@ -683,6 +691,7 @@ val () =
 f3perr0_d3explst(out, d3es)}
 //(*where*)//end-of-[D3Eseqn]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3Elam0
@@ -708,8 +717,9 @@ where
 {
 val () =
 f3perr0_f3arglst(out, f3as)}
-//(*where*)//end-of-[D3Elam0]
+//(*where*)//end-of-[D3Efix0]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3Etry0
@@ -794,6 +804,7 @@ val () =
 endlet//end-of-[D3Edl1az(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Ewhere
 (d3e1, dcls) =>
@@ -804,6 +815,7 @@ where
  f3perr0_d3eclist(out, dcls)}
 //(*where*)//endof[D3Ewhere(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3Eassgn
@@ -840,6 +852,7 @@ val () =
 end(*let*)//end-of-[D3Exchng(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Eraise
 (tknd, d3e1) =>
@@ -849,6 +862,7 @@ val () =
   f3perr0_d3exp(out, d3e1) )
 end(*let*)//end-of-[D3Eraise(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3El0azy
@@ -878,6 +892,7 @@ val () =
 end(*let*)//end-of-[D3Eelazy(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Eannot
 (d3e1
@@ -888,6 +903,7 @@ val () =
   f3perr0_d3exp(out, d3e1) )
 end(*let*)//end-of-[D3Eannot(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3Elabck
@@ -929,14 +945,17 @@ val () =
 end(*let*)//end-of-[D3Et2ped(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Enone0 _ => (  (*void*)  )
 |D3Enone1 _ => () | D3Enone2 _ => ()
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Eerrck _ => f3perr0_d3exp(out, d3e)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |
