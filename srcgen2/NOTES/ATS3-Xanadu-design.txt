@@ -111,6 +111,16 @@ We have that !C(x1, !x2) translates to C(!x1, x2).
 A possible use of !C is that @(!C(x1, x2)) = @C(!x1, !x2).
 
 ########################################################################
+#
+HX-2026-04-08:
+How about using @C for uflat?
+How about using ! for W-aliasing?
+So ! should be idemponent (i.e., ! = !!)
+#
+HX-2026-04-08: Yes: ! is idemponent:
+case d2p0.node() of D2Pbang(d2p1) => d2p0
+#
+########################################################################
 
 HX-2024-01-07:
 

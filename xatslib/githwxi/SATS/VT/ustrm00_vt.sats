@@ -15,12 +15,14 @@ usefulness of 'ubxd'.
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #abstype
-ubxd_tx_t0(a: tx)
+uflat_tx_t0(a: tx)
+#sexpdef uflat = uflat_tx_t0
+*)
 #absvwtp
-ubxd_vx_vt(a: vx)
-#sexpdef ubxd = ubxd_vx_vt
-#sexpdef ubxd = ubxd_tx_t0
+uflat_vx_vt(a: vx)
+#sexpdef uflat = uflat_vx_vt
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -41,13 +43,28 @@ where
 #vwtpdef
 ustream_vt
 ( a0: vt ) =
-lazy_vt(ubxd(ustrmcon_vt(a0)))
+lazy_vt(uflat(ustrmcon_vt(a0)))
 }
 //
 (* ****** ****** *)
 #vwtpdef
 ustrm_vt(a:vt) = ustream_vt(a)
 (* ****** ****** *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+ustrm_vt_forall0
+(xs: ustrm_vt(x0)): bool
+fun
+<x0:vt>
+ustrm_vt_foritm0
+(xs: ustrm_vt(x0)): void
+//
+#symload forall0 with ustrm_vt_forall0
+#symload foritm0 with ustrm_vt_foritm0
 //
 (* ****** ****** *)
 (* ****** ****** *)
