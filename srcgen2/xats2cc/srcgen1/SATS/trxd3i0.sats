@@ -318,9 +318,14 @@ l3d3plst_trxd3i0
 fun
 d3explst_trxd3i0
 (d3es: d3explst, env0: !envd3i0): i0explst
+//
 fun
 d3expopt_trxd3i0
 (dopt: d3expopt, env0: !envd3i0): i0expopt
+fun
+d3retopt_trxd3i0
+(dopt: d3expopt, env0: !envd3i0): i0expopt
+//
 fun
 l3d3elst_trxd3i0
 (ldes: l3d3elst, env0: !envd3i0): l0i0elst

@@ -1672,7 +1672,7 @@ i0exp(
 loc0, i0t0, I0Ewhere(i0e1, icls)))
 end//let
 //
-end(*let*)//end-of-[f0_let0(d3e0,env0)]
+end(*let*)//end-of-[f0_where(d3e0,env0)]
 //
 (* ****** ****** *)
 //
@@ -1770,6 +1770,32 @@ d3ret_trxd3i0
 (
 case+
 d3e0.node() of
+(* ****** ****** *)
+//
+|D3Elet0 _ =>
+(
+  f0_let0(d3e0, env0))
+//
+(* ****** ****** *)
+//
+|D3Eift0 _ =>
+(
+  f0_ift0(d3e0, env0))
+//
+(* ****** ****** *)
+//
+|D3Ewhere _ =>
+(
+  f0_where(d3e0, env0))
+//
+(* ****** ****** *)
+//
+|D3Et2ped _ =>
+(
+  f0_t2ped(d3e0, env0))
+//
+(* ****** ****** *)
+//
 |
 _(*otherwise*) =>
 let
@@ -1778,11 +1804,170 @@ in//let
 i0exp_rturn(
   ical, d3exp_trxd3i0(d3e0, env0))
 end//let
+//
+(* ****** ****** *)
+//
 ) where//end-of-(case+(d3e0.node()))
 {
 //
+(* ****** ****** *)
+//
+//
+fun
+f0_let0
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Elet0
+(dcls, d3e1) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val (  ) = // HX: lvl0+0
+(
+  envd3i0_pshlet0(  env0  ))
+val icls =
+(
+d3eclist_trxd3i0(dcls, env0))
+//
+in//let
+//
+let
+val i0e1 =
+(
+  d3ret_trxd3i0(d3e1, env0))
+val i0vs =
+(
+  envd3i0_letenv$get( env0 ))
+val (  ) =
+(
+  envd3i0_poplet0(   env0   ))
+//
+val (  ) =
+envd3i0_i0vs$insert(env0, i0vs)
+//
+in//let
+(
+i0exp(
+loc0, i0t0, I0Elet0(icls, i0e1)))
+end//let
+//
+end(*let*)//end-of-[f0_let0(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_ift0
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Eift0
+(d3e1
+,dthn, dels) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0e1 =
+(
+  d3exp_trxd3i0(d3e1, env0))
+val ithn =
+(
+  d3retopt_trxd3i0(dthn, env0))
+val iels =
+(
+  d3retopt_trxd3i0(dels, env0))
+//
+in//let
+//
+(
+i0exp(loc0,
+i0t0, I0Eift0(i0e1, ithn, iels)))
+//
+end(*let*)//end-of-[f0_ift0(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_where
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Ewhere
+(d3e1, dcls) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val icls =
+(
+d3eclist_trxd3i0(dcls, env0))
+//
+in//let
+//
+let
+val
+i0e1 = d3exp_trxd3i0(d3e1, env0)
+in//let
+(
+i0exp(
+loc0, i0t0, I0Ewhere(i0e1, icls)))
+end//let
+//
+end(*let*)//end-of-[f0_where(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2ped
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Et2ped
+(d3e1, t2p2) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0e1 =
+(
+  d3ret_trxd3i0(d3e1, env0))
+//
+in//let
+//
+(
+i0exp(
+loc0, i0t0, I0Et2ped(i0e1, t2p2)))
+//
+end(*let*)//end-of-[f0_t2ped(d3e0,env0)]
+//
+(* ****** ****** *)
+//
 val () =
 prerrsln("d3ret_trxd3i0: d3e0 = ", d3e0)
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[d3ret_trxd3i0(d3e0,env0)]
 //
