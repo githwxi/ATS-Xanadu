@@ -683,6 +683,7 @@ val () =
 f2perr0_l2d2elst(out, ldes) end
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D2Elam0
 ( tknd
@@ -722,6 +723,7 @@ val () =
   f2perr0_d2exp(out, dexp)) end
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D2Etry0
 (tknd,d2e1,dcls) =>
@@ -733,6 +735,7 @@ val () =
   f2perr0_d2clslst(out, dcls) )
 endlet
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D2Eaddr(d2e1) =>
@@ -759,6 +762,7 @@ val () =
 (
   f2perr0_d2exp(out, d2e1)) end
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D2Eassgn
@@ -792,6 +796,7 @@ val () =
   f2perr0_d2exp(out, d2er)) end
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D2Ebrget
 (dpis, d2es) =>
@@ -807,9 +812,9 @@ val () =
 f2perr0_d2explst(out,d2es)) end
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-|
-D2Eraise
+|D2Eraise
 (tknd, d2e1) =>
 let
 val () =
@@ -817,16 +822,15 @@ val () =
   f2perr0_d2exp(out, d2e1)) end
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-|
-D2El0azy
+|D2El0azy
 (dknd, d2e1) =>
 let
 val () =
 (
   f2perr0_d2exp(out, d2e1)) end
-|
-D2El1azy
+|D2El1azy
 (dknd
 ,d2e1, d2es) =>
 let
@@ -835,8 +839,7 @@ val () =
 f2perr0_d2exp(out, d2e1))
 in//let
 f2perr0_d2explst(out, d2es) end
-|
-D2Eelazy
+|D2Eelazy
 (dknd
 ,d2e1, d2es) =>
 let
@@ -846,6 +849,7 @@ f2perr0_d2exp(out, d2e1))
 in//let
 f2perr0_d2explst(out, d2es) end
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D2Eannot
@@ -866,6 +870,7 @@ end//let
 //
 end//let//D2Eannot(d2e1,...)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D2Elabck
@@ -890,13 +895,18 @@ val () =
   f2perr0_d2exp(out, d2e1)) end
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D2Enone0 _ => (    (*void*)    )
 |D2Enone1 _ => () | D2Enone2 _ => ()
 //
+(* ****** ****** *)
+(* ****** ****** *)
 |
 D2Eerrck(_,_) => f2perr0_d2exp(out, d2e)
 //
+(* ****** ****** *)
+(* ****** ****** *)
 |
 _(*otherwise*) =>
 let
@@ -910,6 +920,9 @@ val ( ) =
   prerrsln
   ("f2perr0_d2exp:auxmain: d2e = ", d2e))
 endlet
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 end (*let*) // end-of-[ auxmain(out, d2e) ]
 //

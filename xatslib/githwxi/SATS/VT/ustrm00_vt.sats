@@ -19,8 +19,8 @@ usefulness of 'ubxd'.
 ubxd_tx_t0(a: tx)
 #absvwtp
 ubxd_vx_vt(a: vx)
+#sexpdef ubxd = ubxd_vx_vt
 #sexpdef ubxd = ubxd_tx_t0
-#sexpdef ubxd_vt = ubxd_vx_vt
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -41,8 +41,13 @@ where
 #vwtpdef
 ustream_vt
 ( a0: vt ) =
-lazy_vt(ubxd_vt(ustrmcon_vt(a0)))
+lazy_vt(ubxd(ustrmcon_vt(a0)))
 }
+//
+(* ****** ****** *)
+#vwtpdef
+ustrm_vt(a:vt) = ustream_vt(a)
+(* ****** ****** *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
