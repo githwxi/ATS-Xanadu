@@ -327,6 +327,19 @@ endloc (*local*) // end-of-[local(i0var)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0exp_rturn
+(ical, iexp) =
+let
+val loc0 = iexp.lctn()
+val ityp = iexp.ityp()
+in//let
+i0exp_make_ityp$node
+(loc0,ityp, I0Erturn(ical, iexp))
+end//let//end-of-(i0exp_rturn(ical,iexp)]
+//
+(* ****** ****** *)
+//
 local
 //
 datatype
