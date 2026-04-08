@@ -28,13 +28,50 @@
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-08:
+This one is likely no
+longer needed as [uopt] can
+be implemented as uflat(optn)!
+Wed Apr  8 02:51:46 AM EDT 2026
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #abstype
-uopt_t0_i0_t0
-( a:t0,b:b0 ) <= @(a, sint)
-#sexpdef uopt = uopt_t0_i0_t0
+uopt_t0_b0_t0
+( a:t0,b:b0 ) <= @(sint, a)
+#sexpdef uopt = uopt_t0_b0_t0
 //
 #typedef
 uopt(a:t0) = [b:b0] uopt(a, b)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+uopt_nil
+((*0*)): uopt(x0, false)
+fun
+<x0:t0>
+uopt_cons
+(x0: a): uopt(x0, (true))
+fun
+<x0:t0>
+uopt_uncons
+(xs: uopt(x0, true)): (x0)
+//
+fun
+<x0:t0>
+uopt_nilq
+{b1:b0}(uopt(x0, b1)): bool(~b1)
+fun
+<x0:t0>
+uopt_consq
+{b1:b0}(uopt(x0, b1)): bool( b1)
+//
 //
 (* ****** ****** *)
 (* ****** ****** *)
