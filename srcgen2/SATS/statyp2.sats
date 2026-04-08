@@ -243,8 +243,12 @@ the_s2typ_l1azy1(elt:s2typ): s2typ
 fun
 the_s2typ_elazy0((*void*)): s2typ
 (*
-HX-2026-04-06: [tfn]:
+HX-2026-04-06:
+tfn = tenv -> telt
 it is the type of lam(env) => ...
+And we have:
+elazy1
+(tenv->telt)=elazy_vt(telt, tenv)
 *)
 fun
 the_s2typ_elazy1(tfn:s2typ): s2typ

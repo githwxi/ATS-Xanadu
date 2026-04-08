@@ -685,6 +685,33 @@ f3perr0_d3explst(out, d3es)}
 //
 (* ****** ****** *)
 //
+|D3Elam0
+(tknd
+,f3as, sres
+,arrw, d3e1) =>
+(
+f3perr0_d3exp(out, d3e1))
+where
+{
+val () =
+f3perr0_f3arglst(out, f3as)}
+//(*where*)//end-of-[D3Elam0]
+//
+|D3Efix0
+(tknd
+,dpid
+,f3as, sres
+,arrw, d3e1) =>
+(
+f3perr0_d3exp(out, d3e1))
+where
+{
+val () =
+f3perr0_f3arglst(out, f3as)}
+//(*where*)//end-of-[D3Elam0]
+//
+(* ****** ****** *)
+//
 |D3Etry0
 (tknd
 ,d3e1, dcls) =>
