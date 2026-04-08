@@ -344,8 +344,12 @@ fun
 d2pat_bangize
 (d2p0: d2pat): d2pat =
 let
+//
 val
-loc0 = d2p0.lctn()
+loc0 =
+(
+  d2p0.lctn((*0*)))
+//
 in//let
 //
 case+
@@ -353,11 +357,19 @@ d2p0.node() of
 //
 |D2Pvar _ =>
 (
-d2pat(loc0, D2Pbang(d2p0)))
+d2pat(
+  loc0, D2Pbang(d2p0)))
 //
-// HX: !!dpid = dpid
+(* ****** ****** *)
+//
+(*
+HX-2026-04-08:
+[!] is idemponent: ! = !!
+*)
 |D2Pbang
-(   d2p1   ) => (  d2p1   )
+(   d2p1   ) => (  d2p0  )
+//
+(* ****** ****** *)
 //
 |D2Pdapp
 (d2f0
@@ -1095,38 +1107,43 @@ d2p1 =
 trans12_d1pat(env0, d1p1)
 in
 (
-  d2pat_bangize( d2p1 ) )
+  d2pat_bangize(  d2p1  ))
 (*
 d2pat(loc0, D2Pbang(d2p1))
 *)
 end//then//if(isBANG0(d1f0))
 else
 (
-if
+//
+if // if
 isFLAT0(d1f0)
 then
 let
 val
 d2p1 =
 trans12_d1pat(env0, d1p1)
-in
-d2pat(loc0, D2Pflat(d2p1))
+in//let
+(
+d2pat(loc0, D2Pflat(d2p1)))
 end//then//if(isFLAT0(d1f0))
 else
 (
-if
+//
+if // if
 isFREE0(d1f0)
 then
 let
 val
 d2p1 =
 trans12_d1pat(env0, d1p1)
-in
-d2pat(loc0, D2Pfree(d2p1))
+in//let
+(
+d2pat(loc0, D2Pfree(d2p1)))
 end//then//if(isFREE0(d1f0))
 else
 (
-if
+//
+if // if
 isASPT0(d1f0)
 then
 let
@@ -1149,6 +1166,7 @@ D2Prfpt(d2p1, tknd, d2p2))
 end//then//if(isASPT0(d1f0))
 else
 (
+//
 case+
 d1p1.node() of
 //
@@ -1175,15 +1193,20 @@ prerrsln("f0_a1pp: s2vs = ", s2vs)
 in//let
 (
   my_d2pat_sapp(loc0, d2f0, s2vs))
-end (*let*) // end of [D1Psarg(s1as)]
+end(*let*) // end-of-[D1Psarg(s1as)]
 //
 |
-_(*others*) => f0_a1pp_else(env0,d1p0)
-)
-) (*if-else*) // end-of-if(isASPT0(d1f0))
-) (*if-else*) // end-of-if(isFREE0(d1f0))
-) (*if-else*) // end-of-if(isFLAT0(d1f0))
-end (*let*) // end of [f0_a1pp(env0,d1p0)]
+_(*rests*) => f0_a1pp_else(env0, d1p0)
+//
+)(*case+*) // | D1Psarg | _(*rests*)
+//
+)(*ifels*) // end-of-if( isASPT0(d1f0) )
+//
+)(*ifels*) // end-of-if( isFREE0(d1f0) )
+//
+)(*ifels*) // end-of-if( isFLAT0(d1f0) )
+//
+end(*let*) // end-of-[f0_a1pp(env0,d1p0)]
 //
 and
 f0_a1pp_else
