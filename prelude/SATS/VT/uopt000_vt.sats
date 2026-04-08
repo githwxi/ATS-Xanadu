@@ -50,45 +50,46 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstype
-uopt_t0_b0_t0
-( a:t0,b:b0 ) <= @(sint, a)
-#sexpdef uopt = uopt_t0_b0_t0
+#absvwtp
+uopt_vt_b0_vt
+( a:vt,b:b0 ) <= @(sint, a)
+#sexpdef uopt_vt = uopt_vt_b0_vt
 //
 #vwtpdef
-uopt(a:t0) = [b:b0] uopt(a, b)
+uopt_vt(a:vt) = [b:b0] uopt_vt(a, b)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<x0:t0>
-uopt_none
-((*0*)): uopt(x0, ff)
+<x0:vt>
+uopt_vt_none
+((*0*)): uopt_vt(x0, ff)
 fun
-<x0:t0>
-uopt_some
-(x0: x0): uopt(x0, tt)
-fun
-<x0:t0>
-uopt_unsome
-(xs: uopt(x0, tt)): (x0)
+<x0:vt>
+uopt_vt_some
+(x0: x0): uopt_vt(x0, tt)
 //
 fun
-<x0:t0>
-uopt_nilq
-{b1:b0}
-(xs: uopt(x0, b1)): bool(~b1)
+<x0:vt>
+uopt_vt_unsome0
+(xs: uopt_vt(x0, tt)): (x0)
+//
 fun
-<x0:t0>
-uopt_consq
+<x0:vt>
+uopt_vt_nilq1
 {b1:b0}
-(xs: uopt(x0, b1)): bool( b1)
+(xs: !uopt_vt(x0, b1)): bool(~b1)
+fun
+<x0:vt>
+uopt_vt_consq1
+{b1:b0}
+(xs: !uopt_vt(x0, b1)): bool( b1)
 //
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_uopt000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_uopt_vt000.sats] *)
 (***********************************************************************)
