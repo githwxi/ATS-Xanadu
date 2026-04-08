@@ -94,6 +94,8 @@
 //
 #include "prelude/SATS/tupl000.sats"
 //
+(* ****** ****** *)
+//
 #include "prelude/SATS/list000.sats"
 #include "prelude/SATS/list001.sats"
 #include "prelude/SATS/list002.sats"
@@ -108,12 +110,14 @@
 #include "prelude/SATS/strx000.sats"
 #include "prelude/SATS/strx001.sats"
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX: for viewtypes (that is, linear types)
 *)
+//
+(* ****** ****** *)
 //
 #include "prelude/SATS/VT/gbas000_vt.sats"
 #include "prelude/SATS/VT/gbas001_vt.sats"
@@ -138,11 +142,19 @@ HX: for viewtypes (that is, linear types)
 #include "prelude/SATS/VT/gsyn000_vt.sats"
 #include "prelude/SATS/VT/gsyn001_vt.sats"
 //
+(* ****** ****** *)
+//
 #include "prelude/SATS/VT/strn000_vt.sats"
 #include "prelude/SATS/VT/strn001_vt.sats"
 //
 #include "prelude/SATS/VT/axrf000_vt.sats"
 #include "prelude/SATS/VT/axsz000_vt.sats"
+//
+(* ****** ****** *)
+//
+#include "prelude/SATS/VT/tupl000_vt.sats"
+//
+(* ****** ****** *)
 //
 #include "prelude/SATS/VT/list000_vt.sats"
 #include "prelude/SATS/VT/list001_vt.sats"
@@ -159,9 +171,9 @@ HX: for viewtypes (that is, linear types)
 #include "prelude/SATS/VT/strx000_vt.sats"
 #include "prelude/SATS/VT/strx001_vt.sats"
 //
-#include "prelude/SATS/VT/tupl000_vt.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
-(* ********* ********* *)(* ********* ********* *)
-(* ********* ********* *)(* ********* ********* *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_INIT_prelude_sats.hats] *)
+(***********************************************************************)
