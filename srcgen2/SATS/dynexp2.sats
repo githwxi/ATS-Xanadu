@@ -998,31 +998,29 @@ D2Eseqn of
 //
 |
 D2Etup1 of // HX: tuple
-(
-token(*knd*), sint(*npf*), d2explst)
+(token(*knd*),sint(*npf*),d2explst)
 |
 D2Ercd2 of // HX: record
-(
-token(*knd*), sint(*npf*), l2d2elst)
+(token(*knd*),sint(*npf*),l2d2elst)
 //
 (* ****** ****** *)
 //
 |
 D2Elam0 of
 ( token(*knd*)
-, f2arglst, s2res, f1unarrw, d2exp )
+, f2arglst, s2res, f1unarrw, d2exp)
 |
 D2Efix0 of
 ( token(*knd*)
 , d2var(*fid*)
-, f2arglst, s2res, f1unarrw, d2exp )
+, f2arglst, s2res, f1unarrw, d2exp)
 //
 (* ****** ****** *)
 //
 |
 D2Etry0 of
-( token(*$TRY*)
-, d2exp(*norm*), d2clslst(*handles*))
+(token(*$TRY*)
+,d2exp(*norm*), d2clslst(*handles*))
 //
 (* ****** ****** *)
 //
@@ -1036,11 +1034,9 @@ HX-2024-10-05: there is only D3Eflat!
 //
 (* ****** ****** *)
 //
-|
-D2Eeval of (d2exp)//eval-builtin-fun
+|D2Eeval of (d2exp)//eval-builtin-fun
 //
-|
-D2Efold of (d2exp)//open-con-folding
+|D2Efold of (d2exp)//open-con-folding
 //
 (*
 HX-2024-01-01:
@@ -1048,7 +1044,7 @@ This one is special for
 freeing datacons and linear streams;
 it may be of other uses in the future
 *)
-|D2Efree of (d2exp)//free-fun//$free
+|D2Efree of (d2exp)//$free//free(...)
 //
 (* ****** ****** *)
 //
@@ -1061,19 +1057,19 @@ d2exp//let(binds)in(scope)end
 (* ****** ****** *)
 //
 |D2Eassgn of // l-val := r-val
-( d2exp(*l-val*), d2exp(*r-val*))
+(d2exp(*l-val*), d2exp(*r-val*))
 //
 |D2Exazgn of // l-val :=> r-val
-( d2exp(*l-val*), d2exp(*r-val*))
+(d2exp(*l-val*), d2exp(*r-val*))
 |D2Exchng of // l-val :=: r-val
-( d2exp(*l-val*), d2exp(*r-val*))
+(d2exp(*l-val*), d2exp(*r-val*))
 //
 (* ****** ****** *)
 //
 |D2Ebrget of// HX: arr[idx]
-( d2ptmlst, d2explst(*arr+idx*) )
+(d2ptmlst, d2explst(*arr+idx*))
 |D2Ebrset of// HX: arr[idx] := val
-( d2ptmlst, d2explst(*arr+idx+val*))
+(d2ptmlst, d2explst(*arr+idx+val*))
 //
 (*
 HX-2025-12-08:
