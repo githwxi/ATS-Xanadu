@@ -1519,7 +1519,7 @@ val fias =
 f3arglst_trxd3i0(f3as, env0))
 val i0e1 =
 (
-  d3exp_trxd3i0( d3e1, env0 ))
+  d3ret_trxd3i0( d3e1, env0 ))
 //
 val i0vs =
 (
@@ -1600,7 +1600,7 @@ val fias =
 f3arglst_trxd3i0(f3as, env0))
 val i0e1 =
 (
-  d3exp_trxd3i0( d3e1, env0 ))
+  d3ret_trxd3i0( d3e1, env0 ))
 //
 val i0vs =
 (
@@ -1760,6 +1760,31 @@ where
 val loc0 = f3a0.lctn()
 val i0ps = d3patlst_trxd3i0(d3ps, env0)}
 )(*case+*)//end-of-[f3arg_trxd3i0(f3a0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3ret_trxd3i0
+(d3e0, env0) =
+(
+case+
+d3e0.node() of
+|
+_(*otherwise*) =>
+let
+val ical = I0CALlam()
+in//let
+i0exp_rturn(
+  ical, d3exp_trxd3i0(d3e0, env0))
+end//let
+) where//end-of-(case+(d3e0.node()))
+{
+//
+val () =
+prerrsln("d3ret_trxd3i0: d3e0 = ", d3e0)
+//
+}(*where*)//end-of-[d3ret_trxd3i0(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

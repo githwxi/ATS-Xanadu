@@ -706,6 +706,11 @@ i0exp_none1
 (d3e0: d3exp): i0exp
 //
 fun
+i0exp_rturn
+( ical: i0cal
+, i0e0: i0exp): i0exp
+//
+fun
 i0var_make_dvar$info
 ( dvar: d2var
 , lvl0: ( sint )
