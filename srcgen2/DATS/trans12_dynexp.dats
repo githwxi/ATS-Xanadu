@@ -364,10 +364,10 @@ d2pat(
 //
 (*
 HX-2026-04-08:
-[!] is idemponent: ! = !!
+Cancel out like negation
 *)
 |D2Pbang
-(   d2p1   ) => (  d2p0  )
+(   d2p1   ) => (  d2p1  )
 //
 (* ****** ****** *)
 //
