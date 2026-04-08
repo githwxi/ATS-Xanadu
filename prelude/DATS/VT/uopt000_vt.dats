@@ -29,77 +29,69 @@
 (* ****** ****** *)
 //
 (*
-HX-2026-04-08:
-This one is likely no
-longer needed as [uopt] can
-be implemented as uflat(optn)!
-Wed Apr  8 02:51:46 AM EDT 2026
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
 Author: Hongwei Xi
-Wed Apr  8 09:15:52 AM EDT 2026
+Wed Apr  8 11:10:37 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
-#abstype
-uopt_t0_b0_t0
-( a:t0,b:b0 ) <= @(sint, a)
-#sexpdef uopt = uopt_t0_b0_t0
-//
-#vwtpdef
-uopt(a:t0) = [b:b0] uopt(a, b)
+#absimpl
+uopt_vt_b0_vt
+ (a:vt,b:b0) = uflat(optn_vt(a, b))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:t0>
-uopt_none
-((*0*)): uopt(x0, ff)
-fun
-<x0:t0>
-uopt_some
-(x0: x0): uopt(x0, tt)
-fun
-<x0:t0>
-uopt_unsome
-(xs: uopt(x0, tt)): (x0)
+#impltmp
+< x0:vt >
+uopt_vt_none
+( (*0*) ) = $debox(optn_vt_nil(*0*))
+#impltmp
+< x0:vt >
+uopt_vt_some
+(   x0   ) = $debox(optn_vt_cons(x0))
 //
 (* ****** ****** *)
 //
-fun
-<x0:t0>
-uopt_nilq
-{b1:b0}
-(xs: uopt(x0, b1)): bool(~b1)
-fun
-<x0:t0>
-uopt_noneq
-{b1:b0}
-(xs: uopt(x0, b1)): bool(~b1)
+#impltmp
+< x0:vt >
+uopt_vt_unsome(xs) =
+(case- xs of @optn_vt_cons(x0) => x0)
 //
-fun
-<x0:t0>
-uopt_consq
-{b1:b0}
-(xs: uopt(x0, b1)): bool( b1)
-fun
-<x0:t0>
-uopt_someq
-{b1:b0}
-(xs: uopt(x0, b1)): bool( b1)
+(* ****** ****** *)
+(* ****** ****** *)
 //
+#impltmp
+< x0:vt >
+uopt_vt_nilq1(xs) =
+( case+ xs of
+| @optn_vt_nil() => true | _ => false)
+#impltmp
+< x0:vt >
+uopt_noneq1(xs) =
+( case+ xs of
+| @optn_vt_nil() => true | _ => false)
+//
+#impltmp
+< x0:vt >
+uopt_consq1(xs) =
+( case+ xs of
+| @optn_vt_cons _ => true | _ => false)
+#impltmp
+< x0:vt >
+uopt_someq1(xs) =
+( case+ xs of
+| @optn_vt_cons _ => true | _ => false)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_uopt000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_VT_uopt000_vt.dats] *)
 (***********************************************************************)

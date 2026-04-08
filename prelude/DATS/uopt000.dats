@@ -29,17 +29,6 @@
 (* ****** ****** *)
 //
 (*
-HX-2026-04-08:
-This one is likely no
-longer needed as [uopt] can
-be implemented as uflat(optn)!
-Wed Apr  8 02:51:46 AM EDT 2026
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
 Author: Hongwei Xi
 Wed Apr  8 09:15:52 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
@@ -47,59 +36,62 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
-#abstype
+#absimpl
 uopt_t0_b0_t0
-( a:t0,b:b0 ) <= @(sint, a)
-#sexpdef uopt = uopt_t0_b0_t0
-//
-#vwtpdef
-uopt(a:t0) = [b:b0] uopt(a, b)
+ (a:t0,b:b0) = uflat(optn(a, b))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:t0>
+#impltmp
+< x0:t0 >
 uopt_none
-((*0*)): uopt(x0, ff)
-fun
-<x0:t0>
+( (*0*) ) = $debox(optn_nil(*0*))
+#impltmp
+< x0:t0 >
 uopt_some
-(x0: x0): uopt(x0, tt)
-fun
-<x0:t0>
-uopt_unsome
-(xs: uopt(x0, tt)): (x0)
+(   x0   ) = $debox(optn_cons(x0))
 //
 (* ****** ****** *)
 //
-fun
-<x0:t0>
-uopt_nilq
-{b1:b0}
-(xs: uopt(x0, b1)): bool(~b1)
-fun
-<x0:t0>
-uopt_noneq
-{b1:b0}
-(xs: uopt(x0, b1)): bool(~b1)
+#impltmp
+< x0:t0 >
+uopt_unsome(xs) =
+(case- xs of @optn_cons(x0) => x0)
 //
-fun
-<x0:t0>
-uopt_consq
-{b1:b0}
-(xs: uopt(x0, b1)): bool( b1)
-fun
-<x0:t0>
-uopt_someq
-{b1:b0}
-(xs: uopt(x0, b1)): bool( b1)
+(* ****** ****** *)
+(* ****** ****** *)
 //
+#impltmp
+< x0:t0 >
+uopt_nilq(xs) =
+( case+ xs of
+| @optn_nil() => true | _ => false)
+#impltmp
+< x0:t0 >
+uopt_noneq(xs) =
+( case+ xs of
+| @optn_nil() => true | _ => false)
+//
+#impltmp
+< x0:t0 >
+uopt_consq(xs) =
+( case+ xs of
+| @optn_cons _ => true | _ => false)
+#impltmp
+< x0:t0 >
+uopt_someq(xs) =
+( case+ xs of
+| @optn_cons _ => true | _ => false)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_uopt000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_uopt000.dats] *)
 (***********************************************************************)
