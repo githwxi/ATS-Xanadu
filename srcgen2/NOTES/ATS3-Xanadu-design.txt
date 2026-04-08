@@ -115,10 +115,13 @@ A possible use of !C is that @(!C(x1, x2)) = @C(!x1, !x2).
 HX-2026-04-08:
 How about using @C for uflat?
 How about using ! for W-aliasing?
-So ! should be idemponent (i.e., ! = !!)
+How about not supporting R-aliasing?
 #
-HX-2026-04-08: Yes: ! is idemponent:
-case d2p0.node() of D2Pbang(d2p1) => d2p0
+HX-2026-04-08:
+Note that ! cancels out like negation:
+fun
+d2pat_bangize(d2p0) =
+case d2p0.node() of D2Pbang(d2p1) => d2p1
 #
 ########################################################################
 
