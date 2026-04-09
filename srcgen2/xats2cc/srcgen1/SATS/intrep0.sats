@@ -514,6 +514,9 @@ bound variable kind!
 datatype
 i0cal =
 //
+|I0CALnil of
+( (*void*) )
+//
 |I0CALlam of
 ( (*void*) )
 |I0CALfix of
@@ -525,7 +528,10 @@ For non-tmp d2cst
 *)
 |I0CALimp of
 (dimpl(*dcst*))
-|I0CALfun of
+//
+|I0CALfns of
+(d2varlst(*mutuals*))
+|I0CALfn1 of
 (d2var(*self*)
 ,d2varlst(*mutuals*))
 //

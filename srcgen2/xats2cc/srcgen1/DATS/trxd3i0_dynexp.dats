@@ -1558,7 +1558,7 @@ val fias =
 f3arglst_trxd3i0(f3as, env0))
 val i0e1 =
 (
-  d3ret_trxd3i0( d3e1, env0 ))
+  d3rex_trxd3i0( d3e1, env0 ))
 //
 val i0vs =
 (
@@ -1639,7 +1639,7 @@ val fias =
 f3arglst_trxd3i0(f3as, env0))
 val i0e1 =
 (
-  d3ret_trxd3i0( d3e1, env0 ))
+  d3rex_trxd3i0( d3e1, env0 ))
 //
 val i0vs =
 (
@@ -1804,7 +1804,7 @@ val i0ps = d3patlst_trxd3i0(d3ps, env0)}
 (* ****** ****** *)
 //
 #implfun
-d3ret_trxd3i0
+d3rex_trxd3i0
 (d3e0, env0) =
 (
 case+
@@ -1884,7 +1884,7 @@ in//let
 let
 val i0e1 =
 (
-  d3ret_trxd3i0(d3e1, env0))
+  d3rex_trxd3i0(d3e1, env0))
 val i0vs =
 (
   envd3i0_letenv$get( env0 ))
@@ -1927,10 +1927,10 @@ val i0e1 =
   d3exp_trxd3i0(d3e1, env0))
 val ithn =
 (
-  d3retopt_trxd3i0(dthn, env0))
+  d3rexopt_trxd3i0(dthn, env0))
 val iels =
 (
-  d3retopt_trxd3i0(dels, env0))
+  d3rexopt_trxd3i0(dels, env0))
 //
 in//let
 //
@@ -2030,7 +2030,7 @@ val i0t0 =
 //
 val i0e1 =
 (
-  d3ret_trxd3i0(d3e1, env0))
+  d3rex_trxd3i0(d3e1, env0))
 //
 in//let
 //
@@ -2043,11 +2043,11 @@ end(*let*)//end-of-[f0_t2ped(d3e0,env0)]
 (* ****** ****** *)
 //
 val () =
-prerrsln("d3ret_trxd3i0: d3e0 = ", d3e0)
+prerrsln("d3rex_trxd3i0: d3e0 = ", d3e0)
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[d3ret_trxd3i0(d3e0,env0)]
+}(*where*)//end-of-[d3rex_trxd3i0(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

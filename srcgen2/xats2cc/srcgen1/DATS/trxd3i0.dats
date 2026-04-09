@@ -168,10 +168,10 @@ d3expopt_trxd3i0
   optn_trxd3i0_fnp(env0, dopt, d3exp_trxd3i0))
 //
 #implfun
-d3retopt_trxd3i0
+d3rexopt_trxd3i0
 ( env0, dopt ) =
 (
-  optn_trxd3i0_fnp(env0, dopt, d3ret_trxd3i0))
+  optn_trxd3i0_fnp(env0, dopt, d3rex_trxd3i0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
