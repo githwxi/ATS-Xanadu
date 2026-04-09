@@ -279,6 +279,10 @@ in//let
 //
 case+ ical of
 //
+|I0CALnil() =>
+(
+prints("I0CALnil(", ")"))
+//
 |I0CALlam() =>
 (
 prints("I0CALlam(", ")"))
