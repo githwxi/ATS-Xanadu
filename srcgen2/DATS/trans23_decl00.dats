@@ -919,12 +919,13 @@ end//let
 //
 #implfun
 trans23_d2fundcl
-  (env0, dfun) = let
+ ( env0
+ , dfun, d2vs) = let
 //
 val loc0 =
 d2fundcl_get_lctn(dfun)
 //
-val dvar =
+val dpid =
 d2fundcl_get_dpid(dfun)
 val f2as =
 d2fundcl_get_farg(dfun)
@@ -934,13 +935,6 @@ val tdxp =
 d2fundcl_get_tdxp(dfun)
 val wsxp =
 d2fundcl_get_wsxp(dfun)
-//
-(*
-val (  ) = prerrsln
-("trans23_d2fundcl: f2as = ", f2as)
-val (  ) = prerrsln
-("trans23_d2fundcl: tdxp = ", tdxp)
-*)
 //
 val f3as =
 trans23_f2arglst(env0, f2as)
@@ -954,7 +948,22 @@ val f2cl = F2CLfun((*void*))
 (*
 val (  ) =
 prerrsln("\
+trans23_d2fundcl: d2vs = ", d2vs)
+*)
+//
+(*
+val (  ) =
+prerrsln("\
+trans23_d2fundcl: f2as = ", f2as)
+val (  ) =
+prerrsln("\
 trans23_d2fundcl: f3as = ", f3as)
+*)
+//
+(*
+val (  ) =
+prerrsln("\
+trans23_d2fundcl: tdxp = ", tdxp)
 val (  ) =
 prerrsln("\
 trans23_d2fundcl: tdxp = ", tdxp)
@@ -962,7 +971,8 @@ trans23_d2fundcl: tdxp = ", tdxp)
 //
 in//let
 (
-d3fundcl(loc0, dvar, f3as, sres,tdxp,wsxp))
+d3fundcl(
+  loc0, dpid, d2vs, f3as, sres, tdxp, wsxp))
 end//let
 (*let*)//end-of-[trans23_d2fundcl(env0,dfun)]
 //
@@ -992,11 +1002,43 @@ list_trans23_fnp(env0, d2vs, trans23_d2vardcl))
 //
 (* ****** ****** *)
 //
+(*
 #implfun
 trans23_d2fundclist
   (env0, d2fs) =
 (
 list_trans23_fnp(env0, d2fs, trans23_d2fundcl))
+*)
+//
+#implfun
+trans23_d2fundclist
+  (env0, d2fs) =
+let
+val d2vs =
+(
+list_map(d2fs)
+) where
+{
+#typedef y0 = d2var
+#typedef x0 = d2fundcl
+#impltmp
+map$fopr
+<x0><y0>(x0) = d2fundcl_get_dpid(x0)
+}
+in//let
+(
+  list_map$e1nv<x0><y0><e1>(d2fs, env0))
+where
+{
+#vwtpdef e1 = tr23env
+#typedef x0 = d2fundcl
+#typedef y0 = d3fundcl
+#impltmp
+map$e1nv$fopr
+<x0><y0><e1>
+(  x0, e1  ) = trans23_d2fundcl(e1, x0, d2vs)
+}
+end(*let*)//end(trans23_d2fundclist(env0,d2fs))
 //
 (* ****** ****** *)
 (* ****** ****** *)

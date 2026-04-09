@@ -1110,8 +1110,11 @@ d3vardcl_get_dini:(d3vardcl)->teqd3exp
 #symload dini with d3vardcl_get_dini(*opt*)
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
 d3fundcl_get_dpid:(d3fundcl)->d2var
+fun
+d3fundcl_get_d2vs:(d3fundcl)->d2varlst
 fun
 d3fundcl_get_farg:(d3fundcl)->f3arglst
 fun
@@ -1120,8 +1123,10 @@ fun
 d3fundcl_get_tdxp:(d3fundcl)->teqd3exp
 fun
 d3fundcl_get_wsxp:(d3fundcl)->wths2exp
+//
 (* ****** ****** *)
 #symload dpid with d3fundcl_get_dpid
+#symload d2vs with d3fundcl_get_d2vs
 #symload farg with d3fundcl_get_farg(*lst*)
 #symload sres with d3fundcl_get_sres(*opt*)
 #symload tdxp with d3fundcl_get_tdxp(*opt*)
@@ -1148,6 +1153,7 @@ fun
 d3fundcl_make_args
 ( lctn:loc_t
 , dpid:d2var
+, d2vs:d2varlst
 , farg:f3arglst, sres:s2res
 , tdxp:teqd3exp, wsxp:wths2exp):d3fundcl
 //

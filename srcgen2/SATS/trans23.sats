@@ -460,10 +460,18 @@ trans23_d2vardcl
 //
 (* ****** ****** *)
 //
+(*
 fun
 trans23_d2fundcl
 ( env0: 
 ! tr23env, dfun: d2fundcl): d3fundcl
+*)
+fun
+trans23_d2fundcl
+( env0: 
+! tr23env
+, dfun
+: d2fundcl, d2vs: d2varlst): d3fundcl
 //
 (* ****** ****** *)
 //

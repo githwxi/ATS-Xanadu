@@ -529,9 +529,7 @@ For non-tmp d2cst
 |I0CALimp of
 (dimpl(*dcst*))
 //
-|I0CALfns of
-(d2varlst(*mutuals*))
-|I0CALfn1 of
+|I0CALfun of
 (d2var(*self*)
 ,d2varlst(*mutuals*))
 //
@@ -1040,6 +1038,8 @@ i0fundcl_lvl0$get:(i0fundcl)->(sint)
 fun
 i0fundcl_dpid$get:(i0fundcl)->(d2var)
 fun
+i0fundcl_d2vs$get:(i0fundcl)->d2varlst
+fun
 i0fundcl_farg$get:(i0fundcl)->fiarglst
 fun
 i0fundcl_tdxp$get:(i0fundcl)->teqi0exp
@@ -1053,6 +1053,7 @@ i0fundcl_make_args
 (lctn:loc_t
 ,lvl0:(sint)
 ,dpid:(d2var)
+,d2vs:d2varlst
 ,farg:fiarglst
 ,tdxp:teqi0exp, i0vs:i0varlst):i0fundcl
 //
