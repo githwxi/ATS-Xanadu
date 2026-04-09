@@ -589,6 +589,10 @@ i0exp_node =
 (i0exp(*test*)
 ,i0expopt(*th*), i0expopt(*el*))
 //
+|I0Ecas0 of
+(
+  token, i0exp(*val*), i0clslst)
+//
 (* ****** ****** *)
 //
 |I0Eseqn of
