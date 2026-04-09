@@ -292,14 +292,10 @@ prints
 prints
 ("I0CALimp(", dimp, ")"))
 //
-|I0CALfns(d2vs) =>
+|I0CALfun(d2v1, d2vs) =>
 (
 prints
-("I0CALfns(", d2vs, ")"))
-|I0CALfn1(d2v1, d2vs) =>
-(
-prints
-("I0CALfn1(", d2v1, ";", d2vs, ")"))
+("I0CALfun(", d2v1, ";", d2vs, ")"))
 //
 end(*let*)//end-of-[i0cal_fprint(ical,out0)]
 //

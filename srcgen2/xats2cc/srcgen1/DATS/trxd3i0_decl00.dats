@@ -594,8 +594,8 @@ d3fundcl_trxd3i0: i0vs = ", i0vs)
 //
 in//let
 (
-i0fundcl_make_args(
-  loc0, lvl0, dpid, fias, tdxp, i0vs))
+i0fundcl_make_args(loc0,
+  lvl0, dpid, d2vs, fias, tdxp, i0vs))
 end//let
 //
 end where
@@ -603,6 +603,7 @@ end where
 //
 val loc0 = d3fundcl_get_lctn(dfun)
 val dpid = d3fundcl_get_dpid(dfun)
+val d2vs = d3fundcl_get_d2vs(dfun)
 val f3as = d3fundcl_get_farg(dfun)
 val tdxp = d3fundcl_get_tdxp(dfun)
 //

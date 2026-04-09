@@ -581,7 +581,8 @@ i0fundcl =
 I0FUNDCL of
 ( loc_t
 , sint(*lvl0*)
-, d2var
+, d2var//dpid
+, d2varlst//d2vs
 , fiarglst
 , teqi0exp, i0varlst)
 //
@@ -597,7 +598,8 @@ val+
 I0FUNDCL
 ( lctn
 , lvl0
-, dpid, farg
+, dpid, d2vs
+, farg
 , tdxp, i0vs) = ifun in lctn end
 //
 #implfun
@@ -607,7 +609,8 @@ val+
 I0FUNDCL
 ( lctn
 , lvl0
-, dpid, farg
+, dpid, d2vs
+, farg
 , tdxp, i0vs) = ifun in lvl0 end
 //
 #implfun
@@ -617,8 +620,20 @@ val+
 I0FUNDCL
 ( lctn
 , lvl0
-, dpid, farg
+, dpid, d2vs
+, farg
 , tdxp, i0vs) = ifun in dpid end
+//
+#implfun
+i0fundcl_d2vs$get
+  (  ifun  ) = let
+val+
+I0FUNDCL
+( lctn
+, lvl0
+, dpid, d2vs
+, farg
+, tdxp, i0vs) = ifun in d2vs end
 //
 #implfun
 i0fundcl_farg$get
@@ -627,7 +642,8 @@ val+
 I0FUNDCL
 ( lctn
 , lvl0
-, dpid, farg
+, dpid, d2vs
+, farg
 , tdxp, i0vs) = ifun in farg end
 //
 (* ****** ****** *)
@@ -639,7 +655,8 @@ val+
 I0FUNDCL
 ( lctn
 , lvl0
-, dpid, farg
+, dpid, d2vs
+, farg
 , tdxp, i0vs) = ifun in tdxp end
 //
 (* ****** ****** *)
@@ -651,7 +668,8 @@ val+
 I0FUNDCL
 ( lctn
 , lvl0
-, dpid, farg
+, dpid, d2vs
+, farg
 , tdxp, i0vs) = ifun in i0vs end
 //
 (* ****** ****** *)
@@ -659,10 +677,10 @@ I0FUNDCL
 #implfun
 i0fundcl_make_args
 ( lctn, lvl0
-, dpid, farg, tdxp, i0vs) =
+, dpid, d2vs, farg, tdxp, i0vs) =
 (
-I0FUNDCL(
-  lctn, lvl0, dpid, farg, tdxp, i0vs))
+I0FUNDCL(lctn,
+  lvl0, dpid, d2vs, farg, tdxp, i0vs))
 //
 (* ****** ****** *)
 //

@@ -365,6 +365,50 @@ list_vt_llist$concat0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-08:
+Wed Apr  8 10:37:32 PM EDT 2026
+*)
+fun
+<x0:vt>
+list_vt_make_lt0up1
+(tup: t0up_vt(x0)): list_vt(x0,1)
+fun
+<x0:vt>
+list_vt_make_lt0up2
+(tup: t0up_vt(x0,x0)): list_vt(x0,2)
+//
+fun
+<x0:vt>
+list_vt_make_lt0up3
+(tup: t0up_vt(x0,x0,x0)): list_vt(x0,3)
+//
+fun
+<x0:vt>
+list_vt_make_lt0up4
+(tup: t0up_vt(x0,x0,x0,x0)): list_vt(x0,4)
+fun
+<x0:vt>
+list_vt_make_lt0up5
+(tup: t0up_vt(x0,x0,x0,x0,x0)): list_vt(x0,5)
+fun
+<x0:vt>
+list_vt_make_lt0up6
+(tup: t0up_vt(x0,x0,x0,x0,x0,x0)): list_vt(x0,6)
+//
+(* ****** ****** *)
+//
+#symload list_vt with list_vt_make_lt0up1 of 1000
+#symload list_vt with list_vt_make_lt0up2 of 1000
+#symload list_vt with list_vt_make_lt0up3 of 1000
+//
+#symload list_vt with list_vt_make_lt0up4 of 1000
+#symload list_vt with list_vt_make_lt0up5 of 1000
+#symload list_vt with list_vt_make_lt0up6 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_list000_vt.sats] *)
 (***********************************************************************)

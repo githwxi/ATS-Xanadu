@@ -668,6 +668,7 @@ d3fundcl =
 D3FUNDCL of
 ( loc_t
 , d2var
+, d2varlst
 , f3arglst
 , s2res
 , teqd3exp, wths2exp)
@@ -683,7 +684,7 @@ d3fundcl_get_lctn
 val+
 D3FUNDCL
 ( lctn
-, dpid
+, dpid, d2vs
 , farg, sres
 , tdxp, wsxp) = dfun in lctn end
 
@@ -693,9 +694,19 @@ d3fundcl_get_dpid
 val+
 D3FUNDCL
 ( lctn
-, dpid
+, dpid, d2vs
 , farg, sres
 , tdxp, wsxp) = dfun in dpid end
+
+#implfun
+d3fundcl_get_d2vs
+  (  dfun  ) = let
+val+
+D3FUNDCL
+( lctn
+, dpid, d2vs
+, farg, sres
+, tdxp, wsxp) = dfun in d2vs end
 
 #implfun
 d3fundcl_get_farg
@@ -703,7 +714,7 @@ d3fundcl_get_farg
 val+
 D3FUNDCL
 ( lctn
-, dpid
+, dpid, d2vs
 , farg, sres
 , tdxp, wsxp) = dfun in farg end
 
@@ -713,7 +724,7 @@ d3fundcl_get_sres
 val+
 D3FUNDCL
 ( lctn
-, dpid
+, dpid, d2vs
 , farg, sres
 , tdxp, wsxp) = dfun in sres end
 
@@ -725,7 +736,7 @@ d3fundcl_get_tdxp
 val+
 D3FUNDCL
 ( lctn
-, dpid
+, dpid, d2vs
 , farg, sres
 , tdxp, wsxp) = dfun in tdxp end
 
@@ -735,20 +746,21 @@ d3fundcl_get_wsxp
 val+
 D3FUNDCL
 ( lctn
-, dpid
+, dpid, d2vs
 , farg, sres
 , tdxp, wsxp) = dfun in wsxp end
 
 (* ****** ****** *)
-
+//
 #implfun
 d3fundcl_make_args
 ( lctn
-, dpid, farg, sres, tdxp, wsxp) =
+, dpid, d2vs
+, farg, sres, tdxp, wsxp) =
 (
-D3FUNDCL
-(lctn, dpid, farg, sres, tdxp, wsxp))
-
+D3FUNDCL(lctn,
+  dpid, d2vs, farg, sres, tdxp, wsxp))
+//
 (* ****** ****** *)
 
 endloc (*local*) // end of [ local(d3fundcl) ]
