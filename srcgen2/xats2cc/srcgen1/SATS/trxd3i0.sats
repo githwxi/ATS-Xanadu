@@ -74,6 +74,10 @@ fun
 trxstk_getbvk0
   ( stk0: !trxstk ): sint
 //
+fun
+trxstk_getical
+  ( stk0: !trxstk ): i0cal
+//
 (* ****** ****** *)
 //
 fun
@@ -149,30 +153,36 @@ fun
 envd3i0_getbvk0
   ( env0: !envd3i0 ): sint
 //
+fun
+envd3i0_getical
+  ( env0: !envd3i0 ): i0cal
+//
 (* ****** ****** *)
 //
 fun
 envd3i0_pshlam0
-  ( env0: !envd3i0 ): void
+  ( env0: !envd3i0 ): (void)
 fun
 envd3i0_poplam0
-  ( env0: !envd3i0 ): void
+  ( env0: !envd3i0 ): (void)
 //
 fun
 envd3i0_pshlet0
-  ( env0: !envd3i0 ): void
+  ( env0: !envd3i0 ): (void)
 fun
 envd3i0_poplet0
-  ( env0: !envd3i0 ): void
+  ( env0: !envd3i0 ): (void)
 //
 (* ****** ****** *)
 //
 fun
 envd3i0_lamenv$get
-( env0: !envd3i0 ): i0varlst
+  ( env0: !envd3i0 ): i0varlst
 fun
 envd3i0_letenv$get
-( env0: !envd3i0 ): i0varlst
+  ( env0: !envd3i0 ): i0varlst
+//
+(* ****** ****** *)
 //
 fun
 envd3i0_ical$insert
