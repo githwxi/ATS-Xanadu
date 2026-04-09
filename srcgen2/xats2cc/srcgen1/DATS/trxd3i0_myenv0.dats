@@ -179,6 +179,7 @@ trxstk_ical
 (   ivar, stk1   ) => loop(stk1)
 |trxstk_ufld//unfold
 (dvar, ityp, stk1) => loop(stk1)
+//
 )(*case+*)//end-of-[loop(stk0):sint]
 }(*where*)//end-of-[trxstk_getlvl0(stk0)]
 //
@@ -201,10 +202,10 @@ case+ stk0 of
 //
 |trxstk_lam0
 (
-lvl0, _(*stk0*)) => I0BVKlam
+lvl0, _(*stk0*)) => (I0BVKlam)
 |trxstk_let0
 (
-lvl0, _(*stk0*)) => I0BVKlet
+lvl0, _(*stk0*)) => (I0BVKlet)
 //
 |
 trxstk_ical
@@ -213,8 +214,45 @@ trxstk_ical
 (   ivar, stk1   ) => loop(stk1)
 |trxstk_ufld//unfold
 (dvar, ityp, stk1) => loop(stk1)
+//
 )(*case+*)//end-of-[loop(stk0):sint]
 }(*where*)//end-of-[trxstk_getbvk0(stk0)]
+//
+(* ****** ****** *)
+//
+#implfun
+trxstk_getical
+  ( stk0 ) =
+(
+  loop(stk0)) where
+{
+fun
+loop
+(stk0: !trxstk): i0cal =
+(
+case+ stk0 of
+//
+|trxstk_nil
+(   (*void*)   ) => (I0CALnil)
+//
+|
+trxstk_ical
+(
+ical, _(*stk1*)) => (  ical  )
+//
+|trxstk_lam0
+(
+lvl0, _(*stk0*)) => (I0CALnil)
+//
+|trxstk_let0
+(   lvl0, stk1   ) => loop(stk1)
+|trxstk_denv
+(   ivar, stk1   ) => loop(stk1)
+|trxstk_ufld//unfold
+(dvar, ityp, stk1) => loop(stk1)
+//
+)(*case+*)//end-of-[loop(stk0):sint]
+}(*where*)//end-of-[trxstk_getical(stk0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -572,6 +610,17 @@ val+
 ENVD3I0(d2vstk, trxstk) = (env0) }
 (*where*)//end-of-(envd3i0_getbvk0(env0))
 //
+#implfun
+envd3i0_getical
+  ( env0 ) =
+(
+trxstk_getical(trxstk))
+where
+{
+val+
+ENVD3I0(d2vstk, trxstk) = (env0) }
+(*where*)//end-of-(envd3i0_getbvk0(env0))
+//
 (* ****** ****** *)
 //
 #implfun
@@ -681,6 +730,7 @@ ENVD3I0(d2vstk, !trxstk) = ( env0 )
 }(*where*)//end-of-(envd3i0_ical$insert(...))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 envd3i0_i0vs$insert
@@ -705,7 +755,7 @@ envd3i0_dvar$search
 //
 val+
 @ENVD3I0
-(d2vstk, iltstk) = env0
+(d2vstk, trxstk) = env0
 //
 val
 sym1 = dvar.unam((*void*))

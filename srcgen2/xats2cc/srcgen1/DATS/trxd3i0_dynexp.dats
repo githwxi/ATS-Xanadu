@@ -1842,7 +1842,9 @@ d3e0.node() of
 |
 _(*otherwise*) =>
 let
-val ical = I0CALlam()
+val ical =
+(
+  envd3i0_getical(env0))
 in//let
 i0exp_rturn(
   ical, d3exp_trxd3i0(d3e0, env0))
