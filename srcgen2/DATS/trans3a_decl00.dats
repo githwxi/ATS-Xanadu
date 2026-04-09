@@ -760,8 +760,11 @@ trans3a_d3fundcl
 val loc0 =
 d3fundcl_get_lctn(dfun)
 //
-val dvar =
+val dpid =
 d3fundcl_get_dpid(dfun)
+val d2vs =
+d3fundcl_get_d2vs(dfun)
+//
 val f3as =
 d3fundcl_get_farg(dfun)
 val sres =
@@ -778,14 +781,17 @@ trans3a_teqd3exp(env0, tdxp)
 //
 in//let
 //
-d3fundcl(loc0,dvar,f3as,sres,tdxp,wsxp)
+(
+d3fundcl(
+  loc0, dpid, d2vs, f3as, sres, tdxp, wsxp))
 //
 end where
 {
 //
 (*
 val () =
-prerrsln("trans3a_d3fundcl: dfun = ", dfun)
+(
+  prerrsln("trans3a_d3fundcl: dfun = ", dfun))
 *)
 //
 }(*where*)//end-of-[trans3a_d3fundcl(env0,dfun)]
