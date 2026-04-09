@@ -115,6 +115,11 @@ trxstk_letenv$get
 (* ****** ****** *)
 //
 fun
+trxstk_ical$insert
+( stk0:
+& trxstk >> _, ical: i0cal ): void
+//
+fun
 trxstk_denv$insert
 ( stk0:
 & trxstk >> _, ivar: i0var ): void
@@ -168,6 +173,11 @@ envd3i0_lamenv$get
 fun
 envd3i0_letenv$get
 ( env0: !envd3i0 ): i0varlst
+//
+fun
+envd3i0_ical$insert
+( env0:
+! envd3i0, ical: i0cal): void
 //
 fun
 envd3i0_i0vs$insert
