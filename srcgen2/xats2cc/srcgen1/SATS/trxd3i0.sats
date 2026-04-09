@@ -258,7 +258,7 @@ For marking up tail-calls
 Sat Apr  4 11:00:40 AM EDT 2026
 *)
 fun
-d3ret_trxd3i0
+d3rex_trxd3i0
 (d3e0: d3exp, env0: !envd3i0): i0exp
 //
 fun
@@ -327,7 +327,7 @@ fun
 d3expopt_trxd3i0
 (dopt: d3expopt, env0: !envd3i0): i0expopt
 fun
-d3retopt_trxd3i0
+d3rexopt_trxd3i0
 (dopt: d3expopt, env0: !envd3i0): i0expopt
 //
 fun
@@ -367,7 +367,7 @@ fun
 teqd3exp_trxd3i0
 (tdxp: teqd3exp, env0: !envd3i0): teqi0exp
 fun
-teqd3ret_trxd3i0
+teqd3rex_trxd3i0
 (tdxp: teqd3exp, env0: !envd3i0): teqi0exp
 //
 (* ****** ****** *)

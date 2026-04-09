@@ -478,7 +478,7 @@ TEQI0EXPsome(teq1, i0e2) where
 )(*case+*)//end-of-(teqd3exp_trxd3i0(tdxp...))
 //
 #implfun
-teqd3ret_trxd3i0
+teqd3rex_trxd3i0
   (tdxp, env0) =
 (
 case+ tdxp of
@@ -489,8 +489,8 @@ TEQI0EXPnone((*void*))
 TEQD3EXPsome(teq1, d3e2) =>
 TEQI0EXPsome(teq1, i0e2) where
 { val
-  i0e2 = d3ret_trxd3i0(d3e2, env0) }
-)(*case+*)//end-of-(teqd3ret_trxd3i0(tdxp...))
+  i0e2 = d3rex_trxd3i0(d3e2, env0) }
+)(*case+*)//end-of-(teqd3rex_trxd3i0(tdxp...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -565,7 +565,7 @@ val (  ) =
 val fias =
 f3arglst_trxd3i0(f3as, env0)
 val tdxp =
-teqd3ret_trxd3i0(tdxp, env0)
+teqd3rex_trxd3i0(tdxp, env0)
 //
 val i0vs =
 (
