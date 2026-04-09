@@ -206,6 +206,12 @@ d3clslst_trxd3i0
 (
   list_trxd3i0_fnp(env0, d3cs, d3cls_trxd3i0))
 //
+#implfun
+d3rclist_trxd3i0
+( env0, d3cs) =
+(
+  list_trxd3i0_fnp(env0, d3cs, d3rcl_trxd3i0))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

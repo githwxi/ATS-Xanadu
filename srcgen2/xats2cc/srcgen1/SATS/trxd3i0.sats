@@ -283,6 +283,10 @@ fun
 d3cls_trxd3i0
 (dcls: d3cls, env0: !envd3i0): i0cls
 //
+fun
+d3rcl_trxd3i0
+(dcls: d3cls, env0: !envd3i0): i0cls
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -343,6 +347,10 @@ d3gualst_trxd3i0
 (d3gs: d3gualst, env0: !envd3i0): i0gualst
 fun
 d3clslst_trxd3i0
+(dcls: d3clslst, env0: !envd3i0): i0clslst
+//
+fun
+d3rclist_trxd3i0
 (dcls: d3clslst, env0: !envd3i0): i0clslst
 //
 (* ****** ****** *)
