@@ -801,6 +801,9 @@ val loc0 = dfun.lctn()
 val
 dpid = d3fundcl_get_dpid(dfun)
 val
+d2vs = d3fundcl_get_d2vs(dfun)
+//
+val
 farg = d3fundcl_get_farg(dfun)
 val
 sres = d3fundcl_get_sres(dfun)
@@ -814,11 +817,13 @@ tdxp =
 t3read0_teqd3exp(evn0,tdxp,err0)
 //
 in//let
-if
+(
+if // if
 (err0=nerr)
 then (dfun) else
 (
-  d3fundcl(loc0,dpid,farg,sres,tdxp,wsxp))
+d3fundcl(
+  loc0, dpid, d2vs, farg, sres, tdxp, wsxp)))
 end(*let*)//end(t3read0_d3fundcl(evn0,dfun,err0))
 //
 (* ****** ****** *)

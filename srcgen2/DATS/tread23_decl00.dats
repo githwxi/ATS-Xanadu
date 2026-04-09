@@ -772,9 +772,13 @@ val loc = dfun.lctn()
 val
 dpid = d3fundcl_get_dpid(dfun)
 val
+d2vs = d3fundcl_get_d2vs(dfun)
+//
+val
 farg = d3fundcl_get_farg(dfun)
 val
 sres = d3fundcl_get_sres(dfun)
+//
 val
 tdxp = d3fundcl_get_tdxp(dfun)
 val
@@ -795,10 +799,12 @@ wsxp = tread23_wths2exp(wsxp,err)
 *)
 //
 in//let
-if
+(
+if // if
 (err=e00)
-then (dfun)
-else d3fundcl(loc,dpid,farg,sres,tdxp,wsxp)
+then (dfun) else
+d3fundcl(
+  loc, dpid, d2vs, farg, sres, tdxp, wsxp))
 endlet // end-of-[tread23_d3fundcl(out,dfun)]
 //
 (* ****** ****** *)
