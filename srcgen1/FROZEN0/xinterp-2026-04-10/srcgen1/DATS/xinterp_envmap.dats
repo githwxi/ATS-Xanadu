@@ -50,7 +50,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #define
 XATSOPT_targetloc
-"./../../.."
+"./../../../.."
 //
 (* ****** ****** *)
 //
@@ -75,6 +75,8 @@ with $D2E.eq_d2var_d2var
 
 overload
 print with $D2E.print_d2cst
+overload
+print with $D2E.print_d2var
 
 overload
 .stamp with $D2E.d2cst_get_stamp
@@ -586,8 +588,15 @@ intpstk_cons(D2Kcst(d2c0), irv0, xs)
 )
 } (* non-intpstk_nil *)
 //
-end // end of [xinterp_insert_d2cst]
-
+end where
+{
+(*
+val ( ) =
+println!("\
+xinterp_insert_d2cst: d2c0 = ", d2c0)
+*)
+}(*where*)//endof(xinterp_insert_d2cst)
+//
 (* ****** ****** *)
 
 implement
@@ -620,7 +629,14 @@ intpstk_cons(D2Kvar(d2v0), irv0, xs)
 )
 } (* non-intpstk_nil *)
 //
-end // end of [xinterp_insert_d2var]
+end where
+{
+(*
+val ( ) =
+println!("\
+xinterp_insert_d2var: d2v0 = ", d2v0)
+*)
+}(*where*)//endof(xinterp_insert_d2var)
 
 (* ****** ****** *)
 
@@ -1560,11 +1576,23 @@ hashtbl_search<key,itm>(the_d2vardef_map, k0)
 implement
 the_d2vardef_insert
   (k0, x0) =
+let
+//
+(*
+val () =
+println!
+("the_d2vardef_insert: k0 = ", k0)
+val () =
+println!
+("the_d2vardef_insert: x0 = ", x0)
+*)
+//
+in//let
 {
 val-
 ~None_vt() =
 hashtbl_insert<key,itm>(the_d2vardef_map, k0, x0)
-} (* end of [the_d2vardef_insert] *)
+} end (* end of [the_d2vardef_insert] *)
 
 (* ****** ****** *)
 

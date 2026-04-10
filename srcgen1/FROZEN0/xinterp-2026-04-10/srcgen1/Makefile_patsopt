@@ -13,7 +13,7 @@ RMF=rm -f
 MAKE=make
 
 ######
-XATSOPT="./../.."
+XATSOPT="./../../.."
 ######
 
 PATSCC=$(PATSHOME)/bin/patscc
@@ -130,10 +130,8 @@ $(SED) -i -e 's/^SATS/BUILD\/CC/' -e 's/^DATS/BUILD\/CC/' .depend
 #
 ######
 
-clean:: ; $(RMF) BUILD/*_?ats.c
-clean:: ; $(RMF) BUILD/*_?ats.o
-clean:: ; $(RMF) xinterp_dats.o
-clean:: ; $(RMF) xinterp_dats.c
+clean:: ; $(RMF) BUILD/CC/*_?ats.c
+clean:: ; $(RMF) BUILD/CC/*_?ats.o
 
 ######
 

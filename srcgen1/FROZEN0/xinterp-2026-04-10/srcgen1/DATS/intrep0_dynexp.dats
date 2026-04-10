@@ -1045,6 +1045,12 @@ let
 //
 val loc0 = d3cl.loc()
 //
+(*
+val (  ) =
+println!("\
+irerase_decl: d3cl = ", d3cl)
+*)
+//
 in
 //
 case+

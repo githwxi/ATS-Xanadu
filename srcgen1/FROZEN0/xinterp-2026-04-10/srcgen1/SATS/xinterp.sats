@@ -45,7 +45,7 @@ HX-2019-11-02: level-1 interpreter
 (* ****** ****** *)
 #define
 XATSOPT_targetloc
-"./../../.."
+"./../../../.."
 (* ****** ****** *)
 //
 #staload LAB =
