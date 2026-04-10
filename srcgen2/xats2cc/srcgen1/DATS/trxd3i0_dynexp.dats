@@ -1540,18 +1540,27 @@ D3Elam0
 ,f3as, sres
 ,arrw, d3e1) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
-val loc0 = d3e0.lctn((*0*))
-val i0t0 =
+val
+t2p0 = d3e0.styp((*void*))
+val
+loc0 = d3e0.lctn((*void*))
+val
+i0t0 =
 (
-  s2typ_trxd3i0(t2p0, env0))
+s2typ_trxd3i0(t2p0, env0))
 //
 val lvl0 =
 (
   envd3i0_getlvl0(  env0  ))
+//
 val (  ) = // HX: lvl0+1
 (
   envd3i0_pshlam0(  env0  ))
+//
+val (  ) =
+(
+envd3i0_ical$insert
+  (env0, I0CALlam()))//val()
 //
 val fias =
 (
@@ -1612,11 +1621,14 @@ D3Efix0
 ,f3as, sres
 ,arrw, d3e1) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
-val loc0 = d3e0.lctn((*0*))
-val i0t0 =
+val
+t2p0 = d3e0.styp((*0*))
+val
+loc0 = d3e0.lctn((*0*))
+val
+i0t0 =
 (
-  s2typ_trxd3i0(t2p0, env0))
+s2typ_trxd3i0(t2p0, env0))
 //
 val lvl0 =
 (
@@ -1627,8 +1639,14 @@ val (  ) = // HX: lvl0+1
 //
 val (  ) =
 (
+envd3i0_ical$insert
+  ( env0
+  , I0CALfix(dpid)))//val()
+//
+val (  ) =
+(
 envd3i0_dvar$insert
-( env0, dpid, ivar )) where
+  (env0, dpid, ivar)) where
 {
 val ivar =
 (
