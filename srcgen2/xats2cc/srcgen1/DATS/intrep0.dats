@@ -171,6 +171,50 @@ I0TYP
 endloc (*local*) // end-of-[local(i0typ)]
 //
 (* ****** ****** *)
+//
+local
+//
+datatype
+i0jag =
+I0JAG of (loc_t, i0typlst)
+//
+#absimpl i0jag_tbox = i0jag
+//
+(*
+datatype
+i0jag_vt =
+I0JAG_vt of (loc_t, i0typlst)
+*)
+//
+in (* in-of-local *)
+//
+#implfun
+i0jag_lctn$get
+  (  ijag  ) =
+let
+val+
+I0JAG
+(loc0, i0ts) = ijag in loc0 end
+//
+#implfun
+i0jag_i0ts$get
+  (  ijag  ) =
+let
+val+
+I0JAG
+(loc0, i0ts) = ijag in i0ts end
+//
+(* ****** ****** *)
+//
+#implfun
+i0jag_make_i0ts
+( loc0 , i0ts ) = I0JAG(loc0, i0ts)
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end-of-[local(i0jag)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
