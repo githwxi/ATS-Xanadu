@@ -73,6 +73,26 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+isevn(n: nint): bool =
+if n = 0 then true else isodd(n-1)
+and
+isodd(n: nint): bool =
+if n = 0 then false else isevn(n-1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun fact(n0: nint): nint
+//
+#implfun
+fact(n0) =
+if n0 > 0 then n0 * fact(n0-1) else 1
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_TEST_test01_xats2cc.dats] *)
 (***********************************************************************)
