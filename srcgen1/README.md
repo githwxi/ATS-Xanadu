@@ -6,7 +6,7 @@ HX-2025-05-24: Let's document ATS3-Xanadu/srcgen1!
 
 I probably started to think about designing and implementing ATS3,
 the third edition of ATS, in the middle of 2016. By April of 2018,
-I finally made up my mind to go ahead with the project ATS3/Xanadu.
+I finally made up my mind to go ahead with the project ATS3-Xanadu.
 
 ATS3-Xanadu/srcgen1 is the first implementation of ATS3.  Clearly,
 this implementation cannot be done in ATS3 itself.  Implementing a
