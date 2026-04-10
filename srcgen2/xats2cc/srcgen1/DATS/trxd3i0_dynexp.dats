@@ -69,6 +69,26 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #implfun
+t2jag_trxd3i0
+(tjag, env0) =
+(
+i0jag(loc0, i0ts))
+where
+{
+//
+val loc0 = tjag.lctn()
+val t2ps = tjag.t2ps()
+//
+val i0ts =
+(
+  s2typlst_trxd3i0(t2ps, env0))
+//
+}(*where*)//endof(t2jag_trxd3i0(...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d2var_trxd3i0
 (dvar, env0) =
 (
@@ -501,7 +521,7 @@ val i0f0 =
   d3pat_trxd3i0(d3f0, env0))
 val ijgs =
 (
-  t2jaglst_trxd3i0(tjgs, env0))
+t2jaglst_trxd3i0(tjgs, env0))
 //
 in//let
 (
@@ -712,6 +732,12 @@ d3e0.node() of
 |D3Ecst _ =>
 (
   f0_cst(d3e0, env0))
+(* ****** ****** *)
+//
+|D3Etimp _ =>
+(
+  f0_timp(d3e0, env0))
+//
 (* ****** ****** *)
 //
 |D3Esapp _ =>
@@ -1042,6 +1068,35 @@ end(*let*)//end-of-[f0_cst(d3e0,env0)]
 (* ****** ****** *)
 //
 fun
+f0_timp
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Etimp
+(d3e1, timp) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val loc0 = d3e0.lctn((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0e1 = // HX: d2cst
+(
+  d3exp_trxd3i0(d3e1, env0))
+//
+in//let
+//
+i0exp(
+loc0, i0t0, I0Etimp(i0e1, timp))
+//
+end(*let*)//end-of-[f0_timp(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_sapp
 (d3e0: d3exp
 ,env0: !envd3i0): i0exp =
@@ -1156,7 +1211,7 @@ t2jaglst_trxd3i0(tjgs, env0))
 //
 in//let
 //
-i0exp(
+i0exp_make_ityp$node(
 loc0, i0t0, I0Etapq(i0f0, ijgs))
 //
 end(*let*)//end-of-[f0_tapq(d3e0,env0)]

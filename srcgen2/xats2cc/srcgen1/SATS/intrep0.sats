@@ -132,6 +132,8 @@ are addressed:
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
+#typedef timpl = $D3E.timpl
+(* ****** ****** *)
 #typedef s2cstlst = list(s2cst)
 #typedef s2varlst = list(s2var)
 #typedef s2explst = list(s2exp)
@@ -400,6 +402,13 @@ i0jag_fprint
 #symload fprint with i0jag_fprint
 //
 (* ****** ****** *)
+//
+fun
+i0jag_make_i0ts
+(loc0:loc_t,i0ts:i0typlst):i0jag
+#symload i0jag with i0jag_make_i0ts
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
@@ -554,6 +563,11 @@ i0exp_node =
 //
 |I0Econ of d2con
 |I0Ecst of d2cst
+//
+(* ****** ****** *)
+//
+|I0Etimp of
+(i0exp(*cst*), timpl)
 //
 (* ****** ****** *)
 //

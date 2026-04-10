@@ -411,7 +411,6 @@ envd3i0_ical$insert
 val fias =
 (
 f3arglst_trxd3i0(f3as, env0))
-//
 val dexp =
 (
   d3rex_trxd3i0( dexp, env0 ))
@@ -585,9 +584,11 @@ val
 ical = I0CALfun(dpid, d2vs)}
 //
 val fias =
-f3arglst_trxd3i0(f3as, env0)
+(
+f3arglst_trxd3i0(f3as, env0))
 val tdxp =
-teqd3rex_trxd3i0(tdxp, env0)
+(
+teqd3rex_trxd3i0(tdxp, env0))
 //
 val i0vs =
 (

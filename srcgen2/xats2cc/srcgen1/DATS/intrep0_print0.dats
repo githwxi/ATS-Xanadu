@@ -170,6 +170,17 @@ prints
 end(*let*)//end-of-[i0typ_fprint(ityp,out0)]
 //
 (* ****** ****** *)
+//
+#implfun
+i0jag_fprint
+(ijag, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//in-of-let
+  prints("I0JAG(", ijag.i0ts(), ")")
+end (*let*) // end of [ i0jag_fprint(ijag,out0) ]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -385,6 +396,15 @@ prints("I0Econ(", d2c1, ")"))
 (   d2c1   ) =>
 (
 prints("I0Ecst(", d2c1, ")"))
+//
+(* ****** ****** *)
+//
+//
+|I0Etimp
+(i0e1, timp) =>
+(
+prints("\
+I0Etimp(", i0e1, ";", timp, ")"))
 //
 (* ****** ****** *)
 //

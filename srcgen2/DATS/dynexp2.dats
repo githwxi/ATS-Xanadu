@@ -459,7 +459,7 @@ F2ENV
 , g1mac, s2tex
 , s2itm, d2itm) = f2env in d2itm end
 //
-endloc (*local*) // end of [ local(f2env) ]
+endloc (*local*) // end-of-[ local(f2env) ]
 //
 (* ****** ****** *)
 //
@@ -706,7 +706,7 @@ S2Efun1
 *)
 //
 )
-} (*where*) // end of [d2con_get_narg]
+} (*where*) // end-of-[d2con_get_narg]
 //
 (* ****** ****** *)
 //
@@ -746,7 +746,7 @@ S2Efun1
 *)
 //
 )
-} (*where*) // end of [d2con_get_nprg]
+} (*where*) // end-of-[d2con_get_nprg]
 //
 (* ****** ****** *)
 //
@@ -766,7 +766,7 @@ val+
  s2e0,
  stmp,
  t2p0,xt2p) = d2c0 in (ctag := tag0)
-end (*let*) // end of [d2con_set_ctag]
+end (*let*) // end-of-[d2con_set_ctag]
 //
 (* ****** ****** *)
 //
@@ -786,7 +786,7 @@ val+
  s2e0,
  stmp,
 !styp,xt2p) = d2c0 in (styp := t2p0)
-end (*let*) // end of [d2con_set_styp]
+end (*let*) // end-of-[d2con_set_styp]
 //
 (* ****** ****** *)
 //
@@ -806,7 +806,7 @@ val+
 !sexp,
  stmp,
  t2p0,xt2p) = d2c0 in (sexp := s2e0)
-end (*let*) // end of [d2con_set_sexp]
+end (*let*) // end-of-[d2con_set_sexp]
 //
 (* ****** ****** *)
 //
@@ -835,11 +835,11 @@ D2CON
 ( loc0
 , sym0
 , ctag, tqas, sexp, stmp, t2p0, xt2p)
-end (*let*) // end of [d2con_make_idtp]
+end (*let*) // end-of-[d2con_make_idtp]
 //
 (* ****** ****** *)
 //
-end (*local*) // end of [local(d2con_tbox)]
+end (*local*) // end-of-[local(d2con_tbox)]
 
 (* ****** ****** *)
 
@@ -1017,7 +1017,7 @@ val+
   stmp,
 ! styp,
   x2tp ) = d2v0 in styp := t2p0
-end (*let*) // end of [d2cst_set_styp]
+end (*let*) // end-of-[d2cst_set_styp]
 //
 (* ****** ****** *)
 //
@@ -1038,7 +1038,7 @@ val+
   stmp,
   t2p0,
 ! xtyp ) = d2v0 in xtyp := xt2p
-end (*let*) // end of [d2cst_set_xtyp]
+end (*let*) // end-of-[d2cst_set_xtyp]
 //
 (* ****** ****** *)
 //
@@ -1081,7 +1081,7 @@ D2CST
 ( loc0
 , sym0
 , tknd, tqas, sexp, stmp, t2p0, xt2p) )
-end (*let*) // end of [d2cst_make_dvar]
+end (*let*) // end-of-[d2cst_make_dvar]
 //
 (* ****** ****** *)
 //
@@ -1112,9 +1112,9 @@ D2CST
 ( loc0
 , sym0
 , tknd, tqas, sexp, stmp, t2p0, xt2p) )
-end (*let*) // end of [d2cst_make_idtp]
+end (*let*) // end-of-[d2cst_make_idtp]
 //
-end (*local*) // end of [local(d2cst_tbox)]
+end (*local*) // end-of-[local(d2cst_tbox)]
 
 (* ****** ****** *)
 
@@ -1242,7 +1242,7 @@ val+
   t2p0,
   stmp,
   unam ) = d2v0 in sexp := s2e0
-end (*let*) // end of [d2var_set_sexp]
+end (*let*) // end-of-[d2var_set_sexp]
 //
 (* ****** ****** *)
 //
@@ -1262,7 +1262,7 @@ val+
 ! styp,
   stmp,
   unam ) = d2v0 in styp := t2p0
-end (*let*) // end of [d2var_set_styp]
+end (*let*) // end-of-[d2var_set_styp]
 //
 (* ****** ****** *)
 //
@@ -1285,9 +1285,9 @@ in//let
 D2VAR
 ( loc0
 , sym0,tqas,s2e0,t2p0,stmp,unam) )
-end (*let*) // end of [d2var_new2_name]
+end (*let*) // end-of-[d2var_new2_name]
 //
-end (*local*) // end of [local(d2var_tbox)]
+end (*local*) // end-of-[local(d2var_tbox)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1354,11 +1354,11 @@ val+
 @D2PAT_vt
 (loc0,
 !styp,node) = d2p0 in styp := t2p0
-end (*let*) // end of [d2pat_set_styp]
+end (*let*) // end-of-[d2pat_set_styp]
 //
 (* ****** ****** *)
 //
-endloc (*local*) // end of [local(d2pat)]
+endloc (*local*) // end-of-[local(d2pat)]
 
 (* ****** ****** *)
 //
@@ -1424,11 +1424,11 @@ val+
 @D2EXP_vt
 (loc0,
 !styp,node) = d2e0 in styp := t2p0
-end (*let*) // end of [d2exp_set_styp]
+end (*let*) // end-of-[d2exp_set_styp]
 //
 (* ****** ****** *)
 //
-endloc (*local*) // end of [local(d2exp)]
+endloc (*local*) // end-of-[local(d2exp)]
 //
 (* ****** ****** *)
 
@@ -1466,9 +1466,9 @@ $UN.castlin10{d2rpt_vt}(drpt)
 val+
 @D2RPT_vt
 ( !dpat ) = drpt in dpat := d2p0
-end (*let*) // end of [d2rpt_set_dpat]
+end (*let*) // end-of-[d2rpt_set_dpat]
 //
-endloc (*local*) // end of [local(d2rpt)]
+endloc (*local*) // end-of-[local(d2rpt)]
 
 (* ****** ****** *)
 
@@ -1506,9 +1506,9 @@ $UN.castlin10{d2rxp_vt}(drxp)
 val+
 @D2RXP_vt
 ( !dexp ) = drxp in dexp := d2e0
-end (*let*) // end of [d2rxp_set_dexp]
+end (*let*) // end-of-[d2rxp_set_dexp]
 //
-endloc (*local*) // end of [local(d2rxp)]
+endloc (*local*) // end-of-[local(d2rxp)]
 
 (* ****** ****** *)
 
@@ -1539,7 +1539,7 @@ let
   val+F2ARG(loc,nod) = f2a in nod
 end
 //
-endloc (*local*) // end of [local(f2arg)]
+endloc (*local*) // end-of-[local(f2arg)]
 
 (* ****** ****** *)
 
@@ -1570,7 +1570,7 @@ let
   val+D2GUA(loc,nod) = d2g in nod
 end
 //
-endloc (*local*) // end of [local(d2gua)]
+endloc (*local*) // end-of-[local(d2gua)]
 
 (* ****** ****** *)
 
@@ -1601,7 +1601,7 @@ let
   val+D2GPT(loc,nod) = gpt in nod
 end
 //
-endloc (*local*) // end of [local(d2gpt)]
+endloc (*local*) // end-of-[local(d2gpt)]
 
 (* ****** ****** *)
 
@@ -1632,7 +1632,7 @@ let
   val+D2CLS(loc,nod) = cls in nod
 end
 //
-endloc (*local*) // end of [local(d2cls)]
+endloc (*local*) // end-of-[local(d2cls)]
 
 (* ****** ****** *)
 //
@@ -1675,7 +1675,7 @@ let
   val+D2ECL(loc,nod) = dcl in nod
 end
 //
-endloc (*local*) // end of [local(d2ecl)]
+endloc (*local*) // end-of-[local(d2ecl)]
 
 (* ****** ****** *)
 
@@ -1709,7 +1709,7 @@ S2QAG
 s2qag_make_s2vs
 ( loc0 , s2vs ) = S2QAG(loc0, s2vs)
 //
-end (*local*) // end of [local(s2qag)]
+end (*local*) // end-of-[local(s2qag)]
 
 (* ****** ****** *)
 
@@ -1743,7 +1743,7 @@ T2QAG
 t2qag_make_s2vs
 ( loc0 , s2vs ) = T2QAG(loc0, s2vs)
 //
-end (*local*) // end of [local(t2qag)]
+end (*local*) // end-of-[local(t2qag)]
 
 (* ****** ****** *)
 
@@ -1793,11 +1793,11 @@ $UN.castlin10{t2iag_vt}(t2ia)
 val+
 @T2IAG_vt
 (loc0, !s2es) = t2ia in s2es := ses2
-end (*let*) // end of [t2iag_set_s2es]
+end (*let*) // end-of-[t2iag_set_s2es]
 //
 (* ****** ****** *)
 //
-end (*local*) // end of [local(t2iag)]
+end (*local*) // end-of-[local(t2iag)]
 
 (* ****** ****** *)
 
@@ -1817,19 +1817,19 @@ in (* in-of-local *)
 //
 #implfun
 t2jag_get_lctn
-  (  t2ja  ) =
+  (  tjag  ) =
 let
 val+
 T2JAG
-(loc0, t2ps) = t2ja in loc0 end
+(loc0, t2ps) = tjag in loc0 end
 //
 #implfun
 t2jag_get_t2ps
-  (  t2ja  ) =
+  (  tjag  ) =
 let
 val+
 T2JAG
-(loc0, t2ps) = t2ja in t2ps end
+(loc0, t2ps) = tjag in t2ps end
 //
 #implfun
 t2jag_make_t2ps
@@ -1839,19 +1839,19 @@ t2jag_make_t2ps
 //
 #implfun
 t2jag_set_t2ps
-(t2ja, ses2) =
+(tjag, ses2) =
 let
 val
-t2ja =
-$UN.castlin10{t2jag_vt}(t2ja)
+tjag =
+$UN.castlin10{t2jag_vt}(tjag)
 val+
 @T2JAG_vt
-(loc0, !t2ps) = t2ja in t2ps := ses2
-end (*let*) // end of [t2jag_set_t2ps]
+(loc0, !t2ps) = tjag in t2ps := ses2
+end (*let*) // end-of-[t2jag_set_t2ps]
 //
 (* ****** ****** *)
 //
-end (*local*) // end of [local(t2jag)]
+end (*local*) // end-of-[local(t2jag)]
 
 (* ****** ****** *)
 
@@ -1882,7 +1882,7 @@ let
   val+SIMPL(loc,nod) = s2i in nod
 end
 //
-end (*local*) // end of [local(simpl)]
+end (*local*) // end-of-[local(simpl)]
 
 (* ****** ****** *)
 
@@ -1932,11 +1932,11 @@ $UN.castlin10{dimpl_vt}(dimp)
 val+
 @DIMPL_vt
 (loc0, !node) = dimp in node := ndx2
-end (*let*) // end of [dimpl_set_node]
+end (*let*) // end-of-[dimpl_set_node]
 //
 (* ****** ****** *)
 //
-end (*local*) // end of [local(dimpl)]
+end (*local*) // end-of-[local(dimpl)]
 
 (* ****** ****** *)
 
@@ -1967,7 +1967,7 @@ let
   val+D2ARG(loc,nod) = d2a in nod
 end
 //
-endloc (*local*) // end of [local(d2arg)]
+endloc (*local*) // end-of-[local(d2arg)]
 
 (* ****** ****** *)
 
@@ -2030,7 +2030,7 @@ d2valdcl_make_args
   D2VALDCL(lctn, dpat, tdxp, wsxp)
 )
 
-endloc (*local*) // end of [local(d2valdcl)]
+endloc (*local*) // end-of-[local(d2valdcl)]
 
 (* ****** ****** *)
 
@@ -2104,7 +2104,7 @@ d2vardcl_make_args
 D2VARDCL(lctn, dpid, vpid, sres, dini)
 )
 
-endloc (*local*) // end of [ local(d2vardcl) ]
+endloc (*local*) // end-of-[ local(d2vardcl) ]
 
 (* ****** ****** *)
 
@@ -2196,7 +2196,7 @@ d2fundcl_make_args
 D2FUNDCL
 (lctn, dpid, farg, sres, tdxp, wsxp))
 
-endloc (*local*) // end of [ local(d2fundcl) ]
+endloc (*local*) // end-of-[ local(d2fundcl) ]
 
 (* ****** ****** *)
 
@@ -2280,7 +2280,7 @@ d2cstdcl_make_args
 (loc0, d2c1, d2as, sres, dres) =
 D2CSTDCL(loc0, d2c1, d2as, sres, dres)
 
-endloc (*local*) // end of [ local(d2cstdcl) ]
+endloc (*local*) // end-of-[ local(d2cstdcl) ]
 
 (* ****** ****** *)
 
@@ -2419,7 +2419,7 @@ prerrsln
 //
 (* ****** ****** *)
 
-endloc (*local*) // end of [ local(d2parsed) ]
+endloc (*local*) // end-of-[ local(d2parsed) ]
 
 (* ****** ****** *)
 (* ****** ****** *)

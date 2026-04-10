@@ -84,11 +84,24 @@ if n = 0 then false else isevn(n-1)
 (* ****** ****** *)
 //
 #extern
-fun fact(n0: nint): nint
-//
+fun
+fact(n0: nint): nint
 #implfun
 fact(n0) =
-if n0 > 0 then n0 * fact(n0-1) else 1
+if(
+n0 > 0)
+then n0 * fact(n0-1) else 1
+//
+(* ****** ****** *)
+//
+#extern
+fun fact2
+(n0: nint, r0: nint): nint
+#implfun
+fact2(n0, r0) =
+if(
+n0 > 0)
+then fact2(n0-1, n0*r0) else r0
 //
 (* ****** ****** *)
 (* ****** ****** *)
