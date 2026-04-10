@@ -2699,9 +2699,14 @@ xinterp_irdcl
 let
 //
 (*
-val () =
-println!
-("xinterp_irdcl: x0 = ", x0)
+val dcl = x0
+val loc = x0.loc()
+val ( ) =
+println!("\
+xinterp_irdcl: loc = ", loc)
+val ( ) =
+println!("\
+xinterp_irdcl: dcl = ", dcl)
 *)
 //
 in

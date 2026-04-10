@@ -2,7 +2,7 @@
 //
 #define
 XATSOPT_targetloc
-"./../../.."
+"./../../../.."
 //
 (* ****** ****** *)
 #staload STM =
