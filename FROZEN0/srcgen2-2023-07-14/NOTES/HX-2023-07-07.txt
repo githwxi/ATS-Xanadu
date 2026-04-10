@@ -18,7 +18,7 @@ HX-2023-02-26:
 >> estimate is that some kind of running compiler can be produced when
 >> the total line number reaches 150K.
 
-I have been working on trans23 adn tread23. The total number of lines of
+I have been working on trans23 and tread23. The total number of lines of
 ATS3 code is now above 120K. The next major phase is TEMPLATE RESOLUTION!
 
 ##################################################################
