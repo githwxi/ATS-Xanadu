@@ -684,12 +684,25 @@ prints("I0Dvardclst(",tknd,";",i0vs,")"))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I0Dimplmnt0
+( tknd
+, lvl0, stmp
+, dimp, fias
+, iexp, i0vs) =>
+( prints
+  ("I0Dimplmnt0(", tknd, ";")
+; prints(lvl0, ";", stmp, ";", dimp, ")")
+; prints(fias, ";", iexp, ";", i0vs, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |
 I0Dnone0() =>
 let
 val
 loc0 = idcl.lctn() in//let
-prints("I0Dnone0(", loc0, ")") end
+prints("I0Dnone0(", loc0, ")") end//let
 //
 |
 I0Dnone1(d3cl) =>

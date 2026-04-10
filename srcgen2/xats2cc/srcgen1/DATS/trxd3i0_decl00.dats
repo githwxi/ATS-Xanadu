@@ -402,6 +402,11 @@ val lvl0 =
 val (  ) =
 (
   envd3i0_pshlam0(  env0  ))
+val (  ) =
+(
+envd3i0_ical$insert
+  ( env0
+  , I0CALimp(dimp)))//val...
 //
 val fias =
 (
@@ -409,12 +414,14 @@ f3arglst_trxd3i0(f3as, env0))
 //
 val dexp =
 (
-  d3exp_trxd3i0( dexp, env0 ))
+  d3rex_trxd3i0( dexp, env0 ))
 //
 val i0vs =
 (
-  envd3i0_lamenv$get(  env0  ))
-val (  ) = envd3i0_poplam0(env0)
+envd3i0_lamenv$get(  env0  ))
+val (  ) =
+(
+  envd3i0_poplam0(   env0   ))
 //
 in//let
 //
@@ -561,6 +568,21 @@ val lvl0 =
 val (  ) =
 (
   envd3i0_pshlam0(env0))
+val (  ) =
+(
+envd3i0_ical$insert
+(   env0 , ical   )) where
+{
+//
+val dpid =
+(
+  d3fundcl_get_dpid(dfun))
+val d2vs =
+(
+  d3fundcl_get_d2vs(dfun))
+//
+val
+ical = I0CALfun(dpid, d2vs)}
 //
 val fias =
 f3arglst_trxd3i0(f3as, env0)

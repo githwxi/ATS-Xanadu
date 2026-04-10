@@ -1544,8 +1544,8 @@ val
 t2p0 = d3e0.styp((*void*))
 val
 loc0 = d3e0.lctn((*void*))
-val
-i0t0 =
+//
+val i0t0 =
 (
 s2typ_trxd3i0(t2p0, env0))
 //
@@ -1556,7 +1556,6 @@ val lvl0 =
 val (  ) = // HX: lvl0+1
 (
   envd3i0_pshlam0(  env0  ))
-//
 val (  ) =
 (
 envd3i0_ical$insert
@@ -1571,7 +1570,7 @@ val i0e1 =
 //
 val i0vs =
 (
-  envd3i0_lamenv$get( env0 ))
+envd3i0_lamenv$get(  env0  ))
 val (  ) =
 (
   envd3i0_poplam0(   env0   ))
@@ -1622,26 +1621,26 @@ D3Efix0
 ,arrw, d3e1) = d3e0.node()
 //
 val
-t2p0 = d3e0.styp((*0*))
+t2p0 = d3e0.styp((*void*))
 val
-loc0 = d3e0.lctn((*0*))
-val
-i0t0 =
+loc0 = d3e0.lctn((*void*))
+//
+val i0t0 =
 (
 s2typ_trxd3i0(t2p0, env0))
 //
 val lvl0 =
 (
   envd3i0_getlvl0(  env0  ))
+//
 val (  ) = // HX: lvl0+1
 (
   envd3i0_pshlam0(  env0  ))
-//
 val (  ) =
 (
 envd3i0_ical$insert
   ( env0
-  , I0CALfix(dpid)))//val()
+  , I0CALfix(dpid)))//val...
 //
 val (  ) =
 (
@@ -1661,7 +1660,7 @@ val i0e1 =
 //
 val i0vs =
 (
-  envd3i0_lamenv$get( env0 ))
+envd3i0_lamenv$get(  env0  ))
 val (  ) =
 (
   envd3i0_poplam0(   env0   ))
