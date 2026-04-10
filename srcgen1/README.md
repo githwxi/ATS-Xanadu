@@ -1,4 +1,4 @@
-# [ATS3-Xanadu](http://www.ats-lang.org/)/srcgen1
+# [ATS3](http://www.ats-lang.org/)/srcgen1
 
 <!--
 HX-2025-05-24: Let's document ATS3-Xanadu/srcgen1!

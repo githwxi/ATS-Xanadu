@@ -1,4 +1,4 @@
-# [ATS3-Xanadu](http://www.ats-lang.org/)/srcgen2/xats2js
+# [ATS3](http://www.ats-lang.org/)/srcgen2/xats2js
 
 This directory contains versions of XATS2JS (ATS3-to-JS compiler)
 written in ATS3.
@@ -10,7 +10,7 @@ in ATS3, which can be referred to as xats2js/srcgen1. (Note that the first
 version of XATS2jS was written earlier in ATS2, which played a pivotal
 role in bootstrapping ATS3.)
 
-Yes, xats2js/srcgen1 can be used to boostrap ATS3. However, this
+Yes, xats2js/srcgen1 can be used to bootstrap ATS3. However, this
 compiler does not do tail-recursion optimization. As a consequence,
 `node` (or `nodejs`) needs the flag `--stack-size=8000` (where 8000 is
 just a ballpark number) when running it to compile ATS3.
