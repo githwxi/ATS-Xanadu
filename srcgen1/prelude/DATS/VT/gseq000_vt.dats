@@ -1222,5 +1222,8 @@ gseq_filter0_lstrm<xs><x0>(xs)
 //(*where*)//end-of[gseq_filter0$f1un_lstrm(xs,f0)]
 //
 (* ****** ****** *)
-
-(* end of [ATS3/XANADU_prelude_gseq000_vt.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_VT_gseq000_vt.dats] *)
+(***********************************************************************)

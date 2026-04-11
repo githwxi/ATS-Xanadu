@@ -51,6 +51,10 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 #include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#include
 "./../HATS/libxatsopt.hats"
 (* ****** ****** *)
 (* ****** ****** *)
@@ -175,9 +179,57 @@ stk0 of ~iltstk_nil() => ())
 (* ****** ****** *)
 //
 #impltmp
-g_print1<iltstk>(stk0) =
+g_print1
+<iltstk>(stk0) =
 iltstk_fprint1
-(g_print$out<>( (*nil*) ), stk0)
+(
+stk0,
+g_print$out<>((*0*)))
+//
+#impltmp
+iltstk_fprint1
+  (stk0, out0) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+in//let
+//
+case+ stk0 of
+//
+|iltstk_nil
+( (*void*) ) =>
+print1s
+("iltstk_nil(", ")")
+//
+|
+iltstk_blk0
+(   stk1   ) =>
+(
+print1s("\
+iltstk_blk0(", stk1, ")"))
+//
+|
+iltstk_lam0
+(   stk1   ) =>
+(
+print1s("\
+iltstk_lam0(", stk1, ")"))
+|
+iltstk_let0
+(   stk1   ) =>
+(
+print1s("\
+iltstk_let0(", stk1, ")"))
+//
+|
+iltstk_cons
+(ilet, stk1) =>
+print1s("\
+iltstk_cons(", ilet, ";", stk1, ")")
+//
+end(*let*)//end-of-[iltstk_fprint1(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

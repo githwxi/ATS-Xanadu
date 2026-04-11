@@ -60,8 +60,8 @@ XATSOPT "./../../.."
 //
 fun
 iltstk_fprint1
-( out
-: FILR, stk: !iltstk): void
+(stk:
+!iltstk, out: FILR): void
 //
 (* ****** ****** *)
 //
@@ -394,7 +394,7 @@ trxi0i1_i0dclistopt
 (env0: !envi0i1, dcls: i0dclistopt): i1dclistopt
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_trxi0i1.sats] *)
 (***********************************************************************)
