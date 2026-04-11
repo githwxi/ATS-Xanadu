@@ -65,7 +65,7 @@ XATS2JS_XSHARED=\
 $(XATSHOME)/srcgen2/xats2js/srcgenx/xshared/runtime
 ########################################################################
 XATS2JS_JSEMIT01=./../UTIL/xats2js_jsemit01_ats2.js
-XATS2JS_JSEMIT01=./../UTIL/xats2js_jsemit01_ats3.js
+# XATS2JS_JSEMIT01=./../UTIL/xats2js_jsemit01_ats3.js
 ########################################################################
 ########################################################################
 test00:: ; \

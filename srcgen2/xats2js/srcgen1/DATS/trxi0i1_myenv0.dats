@@ -186,7 +186,7 @@ iltstk_fprint1
 stk0,
 g_print$out<>((*0*)))
 //
-#impltmp
+#implfun
 iltstk_fprint1
   (stk0, out0) =
 let
