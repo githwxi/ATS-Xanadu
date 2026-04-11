@@ -70,15 +70,15 @@ XATSOPT "./../../.."
 datatype
 i1lab(x0:type) =
 |
-I1LAB of (label, x0(*elt*))
+I1LAB of (label,x0(*elt*))
 //
 (* ****** ****** *)
 //
 fun
 <x0:type>
 i1lab_fprint
-( lab
-: i1lab(x0),out:FILR): void
+(lab
+:i1lab(x0),out:FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
