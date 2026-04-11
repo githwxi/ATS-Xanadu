@@ -85,8 +85,12 @@ are addressed:
 "./../../../SATS/dynexp3.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef sym_t = sym_t
+#typedef label = label
 #typedef loc_t = loc_t
 #typedef loctn = loctn
+#typedef lcsrc = lcsrc
+#typedef fpath = fpath
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef g1nam = $S1E.g1nam

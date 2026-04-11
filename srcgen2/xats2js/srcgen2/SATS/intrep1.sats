@@ -55,13 +55,14 @@ XATSOPT/xats2cc/srcgen1"
 //
 #staload
 ".\
-/../../..\
-/xats2cc/srcgen1/SATS/intrep0.sats"
+/../../../xats2cc\
+/srcgen1/SATS/intrep0.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef sym_t = sym_t
+#typedef label = label
 #typedef loc_t = loc_t
 #typedef loctn = loctn
 #typedef lcsrc = lcsrc
@@ -69,23 +70,130 @@ XATSOPT/xats2cc/srcgen1"
 #typedef g1nam = g1nam
 //
 (* ****** ****** *)
-#typedef fpathopt=fpathopt
+//
+#typedef
+  fpathopt= optn(fpath)
+#typedef
+  fpathlst= list(fpath)
+//
+(* ****** ****** *)
+
 (* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
 i1lab(x0:type) =
 |
-I1LAB of (label, x0(*elt*))
+I1LAB of (label,x0(*elt*))
 //
 (* ****** ****** *)
 //
 fun
 <x0:type>
 i1lab_fprint
-( lab
-: i1lab(x0),out:FILR): void
+(lab
+:i1lab(x0),out:FILR): void
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+#abstype i1arg_tbox // p0tr
+#abstype i1env_tbox // p0tr
+*)
+#abstype i1opr_tbox // p0tr
+#abstype i1tnm_tbox // p0tr
+//
+(* ****** ****** *)
+//
+(*
+#typedef i1arg = i1arg_tbox
+#typedef i1env = i1env_tbox
+*)
+#typedef i1opr = i1opr_tbox
+#typedef i1tnm = i1tnm_tbox
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#abstype i1val_tbox // p0tr
+(* ****** ****** *)
+#abstype fjarg_tbox // p0tr
+(* ****** ****** *)
+#abstbox i1gua_tbox // p0tr
+#abstbox i1gpt_tbox // p0tr
+#abstbox i1cls_tbox // p0tr
+(* ****** ****** *)
+#abstype i1dcl_tbox // p0tr
+(* ****** ****** *)
+#abstbox t1imp_tbox // p0tr
+(* ****** ****** *)
+//
+#typedef i1val = i1val_tbox
+#typedef fjarg = fjarg_tbox
+//
+#typedef i1cls = i1cls_tbox
+#typedef i1gua = i1gua_tbox
+#typedef i1gpt = i1gpt_tbox
+//
+#typedef i1dcl = i1dcl_tbox
+//
+#typedef t1imp = t1imp_tbox
+//
+(* ****** ****** *)
+//
+#abstbox i1valdcl_tbox//p0tr
+#abstbox i1vardcl_tbox//p0tr
+#abstbox i1fundcl_tbox//p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#abstbox i1parsed_tbox//p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef l1i1v = i1lab(i1val)
+(* ****** ****** *)
+#typedef d2sub = (d2var, i1val)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+#typedef i1arglst = list(i1arg)
+#typedef i1envlst = list(i1env)
+*)
+//
+#typedef i1tnmlst = list(i1tnm)
+//
+(* ****** ****** *)
+//
+#typedef i1valist = list(i1val)
+#typedef i1valopt = optn(i1val)
+//
+#typedef l1i1vlst = list(l1i1v)
+//
+#typedef fjarglst = list(fjarg)
+//
+(* ****** ****** *)
+#typedef i1gualst = list(i1gua)
+#typedef i1clslst = list(i1cls)
+(* ****** ****** *)
+//
+#typedef i1dclist = list(i1dcl)
+#typedef i1dclopt = optn(i1dcl)
+//
+(* ****** ****** *)
+#typedef i1valdcl = i1valdcl_tbox
+#typedef i1vardcl = i1vardcl_tbox
+#typedef i1fundcl = i1fundcl_tbox
+(* ****** ****** *)
+#typedef i1parsed = i1parsed_tbox
+(* ****** ****** *)
+#typedef i1valdclist = list(i1valdcl)
+#typedef i1vardclist = list(i1vardcl)
+#typedef i1fundclist = list(i1fundcl)
+(* ****** ****** *)
+#typedef i1dclistopt = optn(i1dclist)
 (* ****** ****** *)
 (* ****** ****** *)
 //
