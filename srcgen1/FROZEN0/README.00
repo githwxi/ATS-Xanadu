@@ -3,9 +3,14 @@
 HX-2026-04-10:
 Fri Apr 10 09:33:43 PM EDT 2026
 xinterp-2026-04-10:
-This interpreter was written in ATS2.
-It did serve well its purpose of testing various ATS3 designs
-made at the very beginning of ATS3 development.
+This interpreter was implemented in ATS2.
+And the primary implementation work was done in 2022
+(and some in 2023).
+It did serve well its purpose of testing various ATS3 designs made
+at the very beginning of the ATS3 development. In particular, it
+helped tremedously to clarify the semantics of templates. For
+instance, it gave a reference implementation for template resolution,
+that is, resolving the issue of locating the template implementation
+for each template use.
 ##################################################################
 ##################################################################
-
