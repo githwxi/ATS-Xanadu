@@ -7,4 +7,9 @@ it makes use of some IR of XATS2CC (xats2cc/srcgen1/intrep0).
 It does tail-recursion optimization and should be superseding
 XATS2JS-srcgen2.1 for pretty much every common purpose.
 ##################################################################
+HX-2026-04-11:
+Sat Apr 11 01:42:05 PM EDT 2026
+Every declared function is translated into a top-level function
+while every lambda-function is not lifted and translated in-situ.
+##################################################################
 ##################################################################
