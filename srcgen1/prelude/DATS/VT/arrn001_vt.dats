@@ -59,5 +59,8 @@ val+A1PSZ(A0, n0) = AZ in (n0) end
 end (*local*) // end of [local(a1psz)]
 
 (* ****** ****** *)
-
-(* end of [ATS3/XANADU_prelude_arrn001_vt.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_VT_arrn001_vt.dats] *)
+(***********************************************************************)

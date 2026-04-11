@@ -1045,7 +1045,8 @@ end (*let*) // end of [gs_fred2r1_n10]
 //
 (*
 HX:
-Implementing print0/println0
+Implementing
+print0s/print0sln
 *)
 //
 (* ****** ****** *)
@@ -1203,7 +1204,7 @@ g_fproc0<a00> = g_print0<a00>
 (* ****** ****** *)
 //
 #impltmp
-gs_println0_n0
+gs_print0ln_n0
 <>(*tmp*)
 ( (*_*) ) = g_print( "\n" )
 //
@@ -1211,46 +1212,46 @@ gs_println0_n0
 //
 #impltmp
 <a1>
-gs_println0_n1
+gs_print0ln_n1
 ( x1 ) =
 (
 gs_print0_n1
-(   x1   ) ; gs_println0_n0<>()
-) (* end of [gs_println0_n1] *)
+(   x1   ) ; gs_print0ln_n0<>()
+) (* end of [gs_print0ln_n1] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
-gs_println0_n2
+gs_print0ln_n2
 ( x1
 , x2 ) =
 (
 gs_print0_n2
-( x1, x2 ) ; gs_println0_n0<>()
-) (* end of [gs_println0_n2] *)
+( x1, x2 ) ; gs_print0ln_n0<>()
+) (* end of [gs_print0ln_n2] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1>
 <a2><a3>
-gs_println0_n3
+gs_print0ln_n3
 ( x1
 , x2
 , x3 ) =
 (
 gs_print0_n3
 ( x1
-, x2, x3 ) ; gs_println0_n0<>()
-) (* end of [gs_println0_n3] *)
+, x2, x3 ) ; gs_print0ln_n0<>()
+) (* end of [gs_print0ln_n3] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-gs_println0_n4
+gs_print0ln_n4
 ( x1
 , x2
 , x3
@@ -1258,8 +1259,8 @@ gs_println0_n4
 (
 gs_print0_n4
 ( x1, x2
-, x3, x4 ) ; gs_println0_n0<>()
-) (* end of [gs_println0_n4] *)
+, x3, x4 ) ; gs_print0ln_n0<>()
+) (* end of [gs_print0ln_n4] *)
 //
 (* ****** ****** *)
 //
@@ -1267,7 +1268,7 @@ gs_print0_n4
 <a1>
 <a2><a3>
 <a4><a5>
-gs_println0_n5
+gs_print0ln_n5
 ( x1
 , x2
 , x3
@@ -1277,8 +1278,8 @@ gs_println0_n5
 gs_print0_n5
 ( x1
 , x2, x3
-, x4, x5 ) ; gs_println0_n0<>()
-) (* end of [gs_println0_n5] *)
+, x4, x5 ) ; gs_print0ln_n0<>()
+) (* end of [gs_print0ln_n5] *)
 //
 (* ****** ****** *)
 //
@@ -1286,7 +1287,7 @@ gs_print0_n5
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gs_println0_n6
+gs_print0ln_n6
 ( x1
 , x2
 , x3
@@ -1297,8 +1298,8 @@ gs_println0_n6
 gs_print0_n6
 ( x1, x2
 , x3, x4
-, x5, x6 ) ; gs_println0_n0<>()
-) (* end of [gs_println0_n6] *)
+, x5, x6 ) ; gs_print0ln_n0<>()
+) (* end of [gs_print0ln_n6] *)
 //
 (* ****** ****** *)
 //
@@ -1307,7 +1308,7 @@ gs_print0_n6
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gs_println0_n7
+gs_print0ln_n7
 ( x1
 , x2, x3
 , x4, x5
@@ -1317,8 +1318,8 @@ gs_print0_n7
 ( x1
 , x2, x3
 , x4, x5
-, x6, x7 ) ; gs_println0_n0<>()
-) (* end of [gs_println0_n7] *)
+, x6, x7 ) ; gs_print0ln_n0<>()
+) (* end of [gs_print0ln_n7] *)
 //
 (* ****** ****** *)
 //
@@ -1327,7 +1328,7 @@ gs_print0_n7
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gs_println0_n8
+gs_print0ln_n8
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -1337,8 +1338,8 @@ gs_print0_n8
 ( x1, x2
 , x3, x4
 , x5, x6
-, x7, x8 ) ; gs_println0_n0<>()
-) (* end of [gs_println0_n8] *)
+, x7, x8 ) ; gs_print0ln_n0<>()
+) (* end of [gs_print0ln_n8] *)
 //
 (* ****** ****** *)
 //
@@ -1348,7 +1349,7 @@ gs_print0_n8
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gs_println0_n9
+gs_print0ln_n9
 ( x1
 , x2, x3
 , x4, x5
@@ -1360,8 +1361,8 @@ gs_print0_n9
 , x2, x3
 , x4, x5
 , x6, x7
-, x8, x9 ) ; gs_println0_n0<>()
-) (* end of [gs_println0_n9] *)
+, x8, x9 ) ; gs_print0ln_n0<>()
+) (* end of [gs_print0ln_n9] *)
 //
 (* ****** ****** *)
 //
@@ -1371,7 +1372,7 @@ gs_print0_n9
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_println0_n10
+gs_print0ln_n10
 ( x01
 , x02, x03, x04
 , x05, x06, x07
@@ -1381,14 +1382,15 @@ gs_print0_n10
 ( x01
 , x02, x03, x04
 , x05, x06, x07
-, x08, x09, x10 ) ; gs_println0_n0<>()
-) (* end of [gs_println0_n10] *)
+, x08, x09, x10 ) ; gs_print0ln_n0<>()
+) (* end of [gs_print0ln_n10] *)
 //
 (* ****** ****** *)
 //
 (*
 HX:
-Implementing print1/println1
+Implementing
+print1s/print1sln
 *)
 //
 (* ****** ****** *)
@@ -1546,7 +1548,7 @@ g_fproc1<a00> = g_print1<a00>
 (* ****** ****** *)
 //
 #impltmp
-gs_println1_n0
+gs_print1ln_n0
 <>(*tmp*)
 ( (*_*) ) = g_print( "\n" )
 //
@@ -1554,46 +1556,46 @@ gs_println1_n0
 //
 #impltmp
 <a1>
-gs_println1_n1
+gs_print1ln_n1
 ( x1 ) =
 (
 gs_print1_n1
-(   x1   ) ; gs_println1_n0<>()
-) (* end of [gs_println1_n1] *)
+(   x1   ) ; gs_print1ln_n0<>()
+) (* end of [gs_print1ln_n1(...)] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
-gs_println1_n2
+gs_print1ln_n2
 ( x1
 , x2 ) =
 (
 gs_print1_n2
-( x1, x2 ) ; gs_println1_n0<>()
-) (* end of [gs_println1_n2] *)
+( x1, x2 ) ; gs_print1ln_n0<>()
+) (* end of [gs_print1ln_n2(...)] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1>
 <a2><a3>
-gs_println1_n3
+gs_print1ln_n3
 ( x1
 , x2
 , x3 ) =
 (
 gs_print1_n3
 ( x1
-, x2, x3 ) ; gs_println1_n0<>()
-) (* end of [gs_println1_n3] *)
+, x2, x3 ) ; gs_print1ln_n0<>()
+) (* end-of-[gs_print1ln_n3(...)] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-gs_println1_n4
+gs_print1ln_n4
 ( x1
 , x2
 , x3
@@ -1601,8 +1603,8 @@ gs_println1_n4
 (
 gs_print1_n4
 ( x1, x2
-, x3, x4 ) ; gs_println1_n0<>()
-) (* end of [gs_println1_n4] *)
+, x3, x4 ) ; gs_print1ln_n0<>()
+) (* end-of-[gs_print1ln_n4(...)] *)
 //
 (* ****** ****** *)
 //
@@ -1610,7 +1612,7 @@ gs_print1_n4
 <a1>
 <a2><a3>
 <a4><a5>
-gs_println1_n5
+gs_print1ln_n5
 ( x1
 , x2
 , x3
@@ -1620,8 +1622,8 @@ gs_println1_n5
 gs_print1_n5
 ( x1
 , x2, x3
-, x4, x5 ) ; gs_println1_n0<>()
-) (* end of [gs_println1_n5] *)
+, x4, x5 ) ; gs_print1ln_n0<>()
+) (* end-of-[gs_print1ln_n5(...)] *)
 //
 (* ****** ****** *)
 //
@@ -1629,7 +1631,7 @@ gs_print1_n5
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gs_println1_n6
+gs_print1ln_n6
 ( x1
 , x2
 , x3
@@ -1640,8 +1642,8 @@ gs_println1_n6
 gs_print1_n6
 ( x1, x2
 , x3, x4
-, x5, x6 ) ; gs_println1_n0<>()
-) (* end of [gs_println1_n6] *)
+, x5, x6 ) ; gs_print1ln_n0<>()
+) (* end-of-[gs_print1ln_n6(...)] *)
 //
 (* ****** ****** *)
 //
@@ -1650,7 +1652,7 @@ gs_print1_n6
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gs_println1_n7
+gs_print1ln_n7
 ( x1
 , x2, x3
 , x4, x5
@@ -1660,8 +1662,8 @@ gs_print1_n7
 ( x1
 , x2, x3
 , x4, x5
-, x6, x7 ) ; gs_println1_n0<>()
-) (* end of [gs_println1_n7] *)
+, x6, x7 ) ; gs_print1ln_n0<>()
+) (* end-of-[gs_print1ln_n7(...)] *)
 //
 (* ****** ****** *)
 //
@@ -1670,7 +1672,7 @@ gs_print1_n7
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gs_println1_n8
+gs_print1ln_n8
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -1680,8 +1682,8 @@ gs_print1_n8
 ( x1, x2
 , x3, x4
 , x5, x6
-, x7, x8 ) ; gs_println1_n0<>()
-) (* end of [gs_println1_n8] *)
+, x7, x8 ) ; gs_print1ln_n0<>()
+) (* end-of-[gs_print1ln_n8(...)] *)
 //
 (* ****** ****** *)
 //
@@ -1691,7 +1693,7 @@ gs_print1_n8
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gs_println1_n9
+gs_print1ln_n9
 ( x1
 , x2, x3
 , x4, x5
@@ -1703,8 +1705,8 @@ gs_print1_n9
 , x2, x3
 , x4, x5
 , x6, x7
-, x8, x9 ) ; gs_println1_n0<>()
-) (* end of [gs_println1_n9] *)
+, x8, x9 ) ; gs_print1ln_n0<>()
+) (* end-of-[gs_print1ln_n9(...)] *)
 //
 (* ****** ****** *)
 //
@@ -1714,7 +1716,7 @@ gs_print1_n9
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_println1_n10
+gs_print1ln_n10
 ( x01
 , x02, x03, x04
 , x05, x06, x07
@@ -1724,8 +1726,8 @@ gs_print1_n10
 ( x01
 , x02, x03, x04
 , x05, x06, x07
-, x08, x09, x10 ) ; gs_println1_n0<>()
-) (* end of [gs_println1_n10] *)
+, x08, x09, x10 ) ; gs_print1ln_n0<>()
+) (* end-of-[gs_print1ln_n10(x01,...)] *)
 //
 (* ****** ****** *)
 (*
@@ -1888,7 +1890,7 @@ if
 (len < 0)
 then strm_vt_print0_all(xs)
 else strm_vt_print0_len(xs, len)
-end (*let*) // end of [strm_vt_print0]
+end (*let*) // end-of-[strm_vt_print0]
 //
 #impltmp
 <>(*tmp*)
@@ -1950,7 +1952,7 @@ loop(xs, suc(i0)) where
 {
   val () = g_print0<a0>(x0)
 }
-end // end of [strmcon_vt_cons]
+end // end-of-[strmcon_vt_cons]
 )
 }(*where*)//end-of(strm_vt_print0_all)
 //
@@ -2004,7 +2006,7 @@ strm_vt_print$rst<>()
 //
 in
   strm_vt_print$end<>()
-end // end of [then]
+end // end-of-[then]
 else
 let
 //
@@ -2019,7 +2021,7 @@ loop(xs, suc(i0)) where
 {
   val () = g_print0<a0>(x0)
 }
-end // end of [else]
+end // end-of-[else]
 ) (* strmcon_vt_cons *)
 }(*where*)//end-of(strm_vt_print0_len)
 //
@@ -2067,7 +2069,7 @@ val len =
 strx_vt_print$len<>()
 in
   strx_vt_print0_len(xs, len)
-end (*let*) // end of [strx_vt_print0]
+end (*let*) // end-of-[strx_vt_print0]
 //
 #impltmp
 <>(*tmp*)
@@ -2133,7 +2135,7 @@ strx_vt_print$rst<>()
 //
 in
   strx_vt_print$end<>()
-end // end of [then]
+end // end-of-[then]
 else
 let
 //
@@ -2148,7 +2150,7 @@ loop(xs, suc(i0)) where
 {
   val () = g_print0<a0>(x0)
 }
-end // end of [else]
+end // end-of-[else]
 ) (* strxcon_vt_cons *)
 }(*where*)//end-of(strx_vt_print0_len)
 //
@@ -2487,5 +2489,8 @@ gs_fred2r1_n10<list_vt(a0)> where
 g_fred21<list_vt(a0)> = list_vt_append1<a0> }
 //
 (* ****** ****** *)
-
-(* end of [ATS3/XANADU_prelude_synoug0_vt.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end-of-[ATS3/XANADU_srcgen1_prelude_DATS_VT_synoug0_vt.dats] *)
+(***********************************************************************)

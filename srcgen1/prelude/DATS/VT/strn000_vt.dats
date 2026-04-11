@@ -592,5 +592,8 @@ gseq_forall1<xs><x0> = strn_vt_forall1<>
 end // end of [local]
 
 (* ****** ****** *)
-
-(* end of [ATS3/XANADU_prelude_strn000_vt.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_VT_strn000_vt.dats] *)
+(***********************************************************************)
