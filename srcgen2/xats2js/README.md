@@ -25,8 +25,8 @@ consequently serving as a `guinea pig` for testing the IR. Also, this
 version performs tail-recursion optimization (i.e., it translates a
 tail-recursive call into a jump, eliminating the need for allocating a
 new frame on the call stack), which makes it suitable for generating
-JS code that runs inside a browser (which often greatly limits the
-call stack size).
+JS code that runs inside a browser (where the call stack size is often
+greatly limited).
 
 <!--
 ########################################################################
