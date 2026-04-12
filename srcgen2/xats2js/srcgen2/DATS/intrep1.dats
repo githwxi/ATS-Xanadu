@@ -71,6 +71,85 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#implfun
+i1val_nil
+(  loc0  ) =
+i1val_make_node
+(loc0,I1Vnil((*void*)))
+//
+(* ****** ****** *)
+//
+#implfun
+i1val_con(dcon) =
+let
+val loc0 =
+d2con_get_lctn(dcon)
+in//let
+i1val(loc0, I1Vcon(dcon))
+end//let//i1val_con(dcon)
+//
+#implfun
+i1val_cst(dcst) =
+let
+val loc0 =
+d2cst_get_lctn(dcst)
+in//let
+i1val(loc0, I1Vcst(dcst))
+end//let//i1val_cst(dcst)
+//
+(* ****** ****** *)
+//
+#implfun
+i1val_var(dvar) =
+let
+val loc0 =
+d2var_get_lctn(dvar)
+in//let
+i1val(loc0, I1Vvar(dvar))
+end//let//i1val_var(dvar)
+//
+(* ****** ****** *)
+//
+#implfun
+i1val_none0
+(  loc0  ) =
+i1val_make_node
+(loc0,I1Vnone0((*void*)))
+#implfun
+i1val_none1
+(  i0e0  ) =
+i1val_make_node
+(
+i0e0.lctn(),I1Vnone1(i0e0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+#implfun
+i1cmp_lctn$get
+(  icmp  ) =
+(
+i1val_lctn$get(icmp.ival()))
+//
+#implfun
+i1cmp_ival$get
+(  icmp  ) =
+(
+case+ icmp of
+|I1CMPcons(ilts, ival) => ival)
+//
+#implfun
+i1cmp_ilts$get
+(  icmp  ) =
+(
+case+ icmp of
+|I1CMPcons(ilts, ival) => ilts)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_intrep1.dats] *)
 (***********************************************************************)
