@@ -137,7 +137,7 @@ i1lab_fprint
 (* ****** ****** *)
 #typedef l1i1v = i1lab(i1val)
 (* ****** ****** *)
-#typedef d2sub = (d2var, i1val)
+#typedef d2sub = (d2var,i1val)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -216,8 +216,7 @@ i1let =
 (* ****** ****** *)
 //
 and i1bnd =
-|
-I1BNDcons of
+|I1BNDcons of
 (i1tnm, i0pat, d2sublst)
 //
 and i1cmp =
@@ -252,7 +251,8 @@ and i1ins =
 (* ****** ****** *)
 //
 |I1INSlet0 of
-(i1dclist, i1cmp )//letinend
+(i1dclist
+,i1cmp(*scp-val*))//letinend
 //
 (* ****** ****** *)
 //
