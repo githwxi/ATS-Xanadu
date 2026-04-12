@@ -55,44 +55,47 @@ are addressed:
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../../../SATS/xbasics.sats"
-#staload
-"./../../../SATS/xsymbol.sats"
-#staload
-"./../../../SATS/xlabel0.sats"
+#staload "./\
+../../../SATS/xbasics.sats"
+#staload "./\
+../../../SATS/xstamp0.sats"
+#staload "./\
+../../../SATS/xsymbol.sats"
+#staload "./\
+../../../SATS/xlabel0.sats"
 //
-#staload
-"./../../../SATS/locinfo.sats"
-#staload
-"./../../../SATS/filpath.sats"
-#staload
-"./../../../SATS/lexing0.sats"
+#staload "./\
+../../../SATS/locinfo.sats"
+#staload "./\
+../../../SATS/filpath.sats"
 //
 (* ****** ****** *)
-#staload S1E =
-"./../../../SATS/staexp1.sats"
-#staload D1E =
-"./../../../SATS/dynexp1.sats"
 (* ****** ****** *)
-#staload S2E =
-"./../../../SATS/staexp2.sats"
-#staload T2P =
-"./../../../SATS/statyp2.sats"
-#staload D2E =
-"./../../../SATS/dynexp2.sats"
-#staload D3E =
-"./../../../SATS/dynexp3.sats"
+//
+#typedef stamp = stamp(*0*)
+#typedef sym_t = sym_t(*0*)
+#typedef label = label(*0*)
+//
+#typedef loc_t = loc_t(*0*)
+#typedef loctn = loctn(*0*)
+//
+#typedef lcsrc = lcsrc(*0*)
+#typedef fpath = fpath(*0*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef sym_t = sym_t
-#typedef label = label
-#typedef loc_t = loc_t
-#typedef loctn = loctn
-#typedef lcsrc = lcsrc
-#typedef fpath = fpath
-#typedef token = token
+//
+#staload LEX = "./\
+../../../SATS/lexing0.sats"
+//
+#typedef token = $LEX.token
+//
 (* ****** ****** *)
+(* ****** ****** *)
+#staload S1E = ".\
+/../../../SATS/staexp1.sats"
+#staload D1E = "./\
+../../../SATS/dynexp1.sats"
 (* ****** ****** *)
 #typedef g1nam = $S1E.g1nam
 #typedef g1exp = $S1E.g1exp
@@ -100,6 +103,14 @@ are addressed:
 #typedef s1exp = $S1E.s1exp
 (* ****** ****** *)
 #typedef d1exp = $D1E.d1exp
+(* ****** ****** *)
+(* ****** ****** *)
+#staload S2E = "./\
+../../../SATS/staexp2.sats"
+#staload T2P = "./\
+../../../SATS/statyp2.sats"
+#staload D2E = "./\
+../../../SATS/dynexp2.sats"
 (* ****** ****** *)
 #typedef sort2 = $S2E.sort2
 #typedef s2cst = $S2E.s2cst
@@ -123,6 +134,10 @@ are addressed:
 (* ****** ****** *)
 #typedef dimpl = $D2E.dimpl
 (* ****** ****** *)
+(* ****** ****** *)
+#staload D3E = "./\
+../../../SATS/dynexp3.sats"
+(* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
 (* ****** ****** *)
@@ -138,6 +153,7 @@ are addressed:
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 #typedef timpl = $D3E.timpl
+(* ****** ****** *)
 (* ****** ****** *)
 #typedef s2cstlst = list(s2cst)
 #typedef s2varlst = list(s2var)

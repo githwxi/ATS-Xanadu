@@ -382,6 +382,7 @@ in//let
 end (*local*) // end of [local(i1opr_tbox)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 local
 //
@@ -408,7 +409,7 @@ i1tnm_new0() =
   I1TNM(stmp)) where
 { val
   stmp = the_i1tnm_stamp_new()
-}(*where*)//end-of-[i1tnm_new0]
+}(*where*)//end-of-[i1tnm_new0()]
 //
 (* ****** ****** *)
 //

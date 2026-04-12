@@ -61,6 +61,7 @@ XATSOPT/xats2cc/srcgen1"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef stamp = stamp
 #typedef sym_t = sym_t
 #typedef label = label
 #typedef loc_t = loc_t
@@ -200,7 +201,7 @@ i1lab_fprint
 (* ****** ****** *)
 //
 fun
-i1tnm_stmp$get(i1tnm): stamp
+i1tnm_stmp$get:(i1tnm)->stamp
 //
 (* ****** ****** *)
 //
