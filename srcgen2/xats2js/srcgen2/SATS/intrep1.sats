@@ -266,6 +266,14 @@ i1val_node =
 //
 (* ****** ****** *)
 //
+|I1Vi00 of (sint)
+|I1Vb00 of (bool)
+|I1Vc00 of (char)
+|I1Vf00 of (dflt)
+|I1Vs00 of (strn)
+//
+(* ****** ****** *)
+//
 |I1Vtop of (sym_t)
 //
 (* ****** ****** *)

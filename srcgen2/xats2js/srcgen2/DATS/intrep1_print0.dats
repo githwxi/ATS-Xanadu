@@ -134,6 +134,73 @@ end(*let*)//end-of-[i1cmp_fprint(icmp,out0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1val_fprint
+(i1v0, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+i1v0.node() of
+//
+(* ****** ****** *)
+//
+|I1Vnil() =>
+(
+prints("I1Vnil(",")"))
+//
+(* ****** ****** *)
+//
+|I1Vint(int) =>
+prints("I1Vint(",int,")")
+|I1Vbtf(btf) =>
+prints("I1Vbtf(",btf,")")
+|I1Vchr(chr) =>
+prints("I1Vchr(",chr,")")
+|I1Vflt(flt) =>
+prints("I1Vflt(",flt,")")
+|I1Vstr(str) =>
+prints("I1Vstr(",str,")")
+//
+(* ****** ****** *)
+//
+|I1Vi00(i00) =>
+prints("I1Vi00(",i00,")")
+|I1Vb00(b00) =>
+prints("I1Vb00(",b00,")")
+|I1Vc00(c00) =>
+prints("I1Vc00(",c00,")")
+|I1Vf00(f00) =>
+prints("I1Vf00(",f00,")")
+|I1Vs00(s00) =>
+prints("I1Vs00(",s00,")")
+//
+(* ****** ****** *)
+//
+|I1Vtnm(itnm) =>
+prints("I1Vtnm(",itnm,")")
+//
+(* ****** ****** *)
+//
+|I1Vcon(dcon) =>
+prints("I1Vcon(",dcon,")")
+|I1Vcst(dcst) =>
+prints("I1Vcst(",dcst,")")
+//
+(* ****** ****** *)
+//
+|I1Vnone0() => prints( "I1Vnone0(",")" )
+|I1Vnone1(i0e1) => prints("I1Vnone1(", i0e1, ")")
+//
+(* ****** ****** *)
+//
+end(*let*)//end-of-[i1val_fprint(i1v0,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_intrep1_print0.dats] *)
 (***********************************************************************)

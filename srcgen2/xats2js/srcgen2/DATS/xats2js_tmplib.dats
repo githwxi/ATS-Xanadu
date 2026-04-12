@@ -129,12 +129,17 @@ i1val_fprint(ival, g_print$out<>())
 //
 (*
 HX-2026-04-11:
-It is already in [xats2cc_tmplib]:
+These are from [xats2cc_tmplib]:
 *)
 #impltmp
 g_print
 <i0pat>(ipat) =
 i0pat_fprint(ipat, g_print$out<>())
+//
+#impltmp
+g_print
+<i0exp>(iexp) =
+i0exp_fprint(iexp, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
