@@ -150,6 +150,98 @@ case+ icmp of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+local
+//
+val
+stamper = stamper_new((*0*))
+//
+in//local
+fun//fun
+the_i1tnm_stamp_new
+  ((*void*)): stamp = stamper.getinc()
+endloc // end-of-[the_i1tnm_stamp_new()]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+local
+//
+datatype
+i1opr =
+I1OPR of (symbl)
+#absimpl
+i1opr_tbox = i1opr
+//
+in//local
+//
+#implfun
+i1opr_fprint
+(iopr, out0) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+val+I1OPR(name) = iopr
+//
+in//let
+  prints("I1OPR(", name, ")") endlet
+//
+end(*local*)//end-of-[local(i1opr_tbox)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1tnm =
+I1TNM of (stamp)
+//
+#absimpl i1tnm_tbox = i1tnm
+//
+in//local
+//
+#implfun
+i1tnm_stmp$get
+  ( itnm ) =
+let
+val+
+I1TNM(stmp) = itnm in stmp end
+//
+(* ****** ****** *)
+//
+#implfun
+i1tnm_new0() =
+(
+  I1TNM(stmp)) where
+{ val
+  stmp = the_i1tnm_stamp_new()
+}(*where*)//end-of-[i1tnm_new0()]
+//
+(* ****** ****** *)
+//
+#implfun
+i1tnm_fprint
+(itnm, out0) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+val+I1TNM(stmp) = itnm
+//
+in//let
+  prints("I1TNM(", stmp, ")") endlet
+//
+(* ****** ****** *)
+//
+end(*local*)//end-of-[local(i1tnm_tbox)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_intrep1.dats] *)
 (***********************************************************************)
