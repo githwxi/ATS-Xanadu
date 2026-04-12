@@ -156,7 +156,7 @@ i1lab_fprint
 (* ****** ****** *)
 #typedef l1i1v = i1lab(i1val)
 (* ****** ****** *)
-#typedef d2sub = (d2var, i1val)
+#typedef d2sub = (d2var,i1val)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -214,6 +214,15 @@ and i1ins =
 //
 (* ****** ****** *)
 //
+and i1bnd =
+|I1BNDcons of
+(i1tnm, i0pat, d2sublst)
+//
+and i1cmp =
+|I1CMPcons of (i1letlst, i1val)
+//
+(* ****** ****** *)
+//
 and
 i1val_node =
 //
@@ -232,11 +241,34 @@ i1val_node =
 |I1Vnone0 of () | I1Vnone1 of (i0exp)
 //
 (* ****** ****** *)
+//
+where
+{
+//
+  #typedef d2sublst = list(d2sub)
+//
+  #typedef i1bndlst = list(i1bnd)
+//
+  #typedef i1cmplst = list(i1cmp)
+  #typedef i1cmpopt = optn(i1cmp)
+//
+  #typedef i1letlst = list(i1let)
+//
+} //(*where*)//end-of-(i1let/ins/val)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 i1let_fprint
 (ilet: i1let, out0: FILR): void
+//
+fun
+i1bnd_fprint
+(ibnd: i1bnd, out0: FILR): void
+fun
+i1cmp_fprint
+(icmp: i1cmp, out0: FILR): void
 //
 fun
 i1ins_fprint
@@ -245,6 +277,72 @@ i1ins_fprint
 fun
 i1val_fprint
 (ival: i1val, out0: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1cmp_lctn$get:(i1cmp)->(loc_t)
+fun
+i1cmp_ival$get:(i1cmp)->(i1val)
+fun
+i1cmp_ilts$get:(i1cmp)->i1letlst
+//
+#symload lctn with i1cmp_lctn$get
+#symload ival with i1cmp_ival$get
+#symload ilts with i1cmp_ilts$get
+//
+(* ****** ****** *)
+fun
+i1val_nil(loc0: loc_t): ( i1val )
+(* ****** ****** *)
+//
+fun
+i1val_con(dcon: d2con): ( i1val )
+fun
+i1val_cst(dcst: d2cst): ( i1val )
+//
+fun
+i1val_var(dvar: d2var): ( i1val )
+//
+(* ****** ****** *)
+//
+fun
+i1val_conq(ival: i1val): ( bool )
+//
+fun
+i1val_cstq(ival: i1val): ( bool )
+//
+fun
+i1val_cfnq(ival: i1val): ( bool )
+//
+fun
+i1val_varq(ival: i1val): ( bool )
+//
+(* ****** ****** *)
+//
+fun
+i1val_lctn$get
+  ( ival: i1val ): ( loc_t )
+fun
+i1val_node$get
+  ( ival: i1val ): ( i1val_node )
+//
+#symload lctn with i1val_lctn$get
+#symload node with i1val_node$get
+//
+(* ****** ****** *)
+//
+fun
+i1val_none0(loc0: loc_t): (i1val)
+fun
+i1val_none1(iexp: i0exp): (i1val)
+//
+fun
+i1val_make_node
+(loc0:loc_t,node:i1val_node):i1val
+//
+#symload i1val with i1val_make_node
 //
 (* ****** ****** *)
 (* ****** ****** *)
