@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,7 +30,7 @@
 //
 (*
 Author: Hongwei Xi
-Sun 11 Aug 2024 05:30:58 PM EDT
+Sun Apr 12 01:09:27 PM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -42,144 +42,39 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-{ vt:vt }
+{ t0:t0 }
 g_ptype
-<a1sz(vt)>
+<a1at(t0)>
 ( (*void*) ) =
 (
-pstrn("a1sz(");
-g_ptype<vt>((*0*)); pstrn(")"))
+pstrn("a1at(");
+g_ptype<t0>((*0*)); pstrn(")"))
 //
-#impltmp
-{ vt:vt }
-g_ptype
-<a2sz(vt)>
-( (*void*) ) =
-(
-pstrn("a2sz(");
-g_ptype<vt>((*0*)); pstrn(")"))
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-{ x0:vt }
+{ x0:t0 }
 g_print
-<a1sz(x0)>
+<a1at(x0)>
 (   xs   ) =
 let
 //
-#typedef xs = a1sz(x0)
+#typedef xs = a1at(x0)
 //
 #impltmp
 gseq$sep<xs><x0>() = ","
 #impltmp
 gseq$end<xs><x0>() = ")"
 #impltmp
-gseq$beg<xs><x0>() = "a1sz("
-//
+gseq$beg<xs><x0>() = "a1at("
 in//let
 (
   gseq_print1<xs><x0>( xs ) )
-end(*let*)//end(g_print<a1sz(x0)>())
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-{ x0:t0 }
-gasq_length
-<a1sz(x0)><x0> = a1sz_length<x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:t0 >
-a1sz_get$at =
-$UN.gasq_get$at$raw<a1sz(x0)><x0>
-#impltmp
-< x0:t0 >
-a1sz_set$at =
-$UN.gasq_set$at$raw<a1sz(x0)><x0>
-//
-(* ****** ****** *)
-//
-#impltmp
-< x0:vt >
-a1sz_cget$at =
-$UN.gasq_cget$at$raw<a1sz(x0)><x0>
-#impltmp
-< x0:vt >
-a1sz_setf$at =
-$UN.gasq_setf$at$raw<a1sz(x0)><x0>
-//
-(* ****** ****** *)
-//
-#impltmp
-{ x0:vt }
-$UN.gasq_lget$at$raw
-<  a1sz(x0)  >< x0 >
- ( A, i ) = a1sz_lget$at<x0>(A, i)
-#impltmp
-{ x0:vt }
-$UN.gasq_lset$at$raw
-<  a1sz(x0)  >< x0 >
-( pf | A,i,x ) = a1sz_lset$at<x0>(pf | A,i,x)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-09-06:
-Fri 06 Sep 2024 04:39:23 PM EDT
-*)
-//
-#impltmp
-< a: t0 >
-a1sz_make_list
-  ( xs ) =
-a1sz_fmake_fwork<a>
-(
-lam(work) =>
-gseq_foritm<list(a)><a>(xs, work))
-//
-(* ****** ****** *)
-//
-#impltmp
-< a: t0 >
-a1sz_make_ncpy
-  (n, x) =
-a1sz_fmake_fwork<a>
-(
-lam(work) =>
-nint_foritm<>(n, lam(i) => work(x)))
-//
-#impltmp
-< a: vt >
-a1sz_make_nfun
-  (n, f) =
-a1sz_fmake_fwork<a>(
-lam(work) =>
-nint_foritm<>(n, lam(i) => work(f(i)))
-)(*...*)//end-of-[a1sz_make_nfun(n,f)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< a: vt >
-a1sz_make_lstrm
-  ( xs ) =
-(
-a1sz_fmake_fwork<a>(
-lam(work) =>
-(
-  strm_vt_foritm0$f1un<a>(xs, work))))
+end(*let*)//end(g_print<a1at(x0)>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_axsz000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_axat000.dats] *)
 (***********************************************************************)
