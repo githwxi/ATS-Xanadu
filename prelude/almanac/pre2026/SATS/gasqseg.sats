@@ -62,6 +62,16 @@ gasq$seg_encd
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fcast // fun
+GASQ_make_gasq$seg
+{xs:t0}{x0:vt}
+(seg
+:gasq$seg(xs,x0)): GASQ(gasq$seg(xs,x0), x0)
+#symload GASQ with GASQ_make_gasq$seg of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_almanac_pre2026_SATS_gasqseg.sats] *)
 (***********************************************************************)

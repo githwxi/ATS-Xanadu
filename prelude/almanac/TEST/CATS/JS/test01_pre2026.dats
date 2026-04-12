@@ -91,33 +91,29 @@ foritm$work0<xs>(xs) = print0s(xs, "\n")
 //
 val abcde = "abcde"
 val
-abcde$1$4 =
-gasq$seg_encd@(GASQ(abcde), 1, 4)
+abcde$1$10 =
+gasq$seg_encd@(GASQ(abcde), 1, 10)
 val (   ) =
-printsln("abcde$1$4 = ", abcde$1$4)
+printsln("abcde$1$10 = ", abcde$1$10)
+//
 val (   ) =
 (
 gasq_foritm$f1un
 <gasq$seg(strn,char)><char>
-(abcde$1$4, lam(c) => print(c)); println())
+(abcde$1$10, lam(c) => print(c)); println())
 val (   ) =
 (
 gasq_rforitm$f1un
 <gasq$seg(strn,char)><char>
-(abcde$1$4, lam(c) => print(c)); println())
+(abcde$1$10, lam(c) => print(c)); println())
+//
 val (   ) =
 (
-gasq_iforitm$f2un
-<gasq$seg(strn,char)><char>
-(
-abcde$1$4,
+GASQ(abcde$1$10).iforitm(
 lam(i, c) => prints("(",i,":",c,")")); println())
 val (   ) =
 (
-gasq_irforitm$f2un
-<gasq$seg(strn,char)><char>
-(
-abcde$1$4,
+GASQ(abcde$1$10).irforitm(
 lam(i, c) => prints("(",i,":",c,")")); println())
 //
 (* ****** ****** *)
