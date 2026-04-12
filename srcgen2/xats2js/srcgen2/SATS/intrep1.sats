@@ -67,8 +67,10 @@ XATSOPT/xats2cc/srcgen1"
 #typedef loctn = loctn
 #typedef lcsrc = lcsrc
 #typedef fpath = fpath
-#typedef g1nam = g1nam
+#typedef token = token
 //
+(* ****** ****** *)
+#typedef g1nam = g1nam
 (* ****** ****** *)
 //
 #typedef
@@ -194,6 +196,56 @@ i1lab_fprint
 #typedef i1fundclist = list(i1fundcl)
 (* ****** ****** *)
 #typedef i1dclistopt = optn(i1dclist)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i1let =
+|I1LETnew0 of (i1ins)
+|I1LETnew1 of (i1tnm, i1ins)
+//
+(* ****** ****** *)
+//
+and i1ins =
+//
+|I1INSopr of
+(i1opr(*opnm*)
+,i1valist(*args*))//primopr
+//
+(* ****** ****** *)
+//
+and
+i1val_node =
+//
+(* ****** ****** *)
+|I1Vnil of ()
+(* ****** ****** *)
+//
+|I1Vint of token
+|I1Vbtf of sym_t
+|I1Vchr of token
+|I1Vflt of token
+|I1Vstr of token
+//
+(* ****** ****** *)
+//
+|I1Vnone0 of () | I1Vnone1 of (i0exp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1let_fprint
+(ilet: i1let, out0: FILR): void
+//
+fun
+i1ins_fprint
+(iins: i1ins, out0: FILR): void
+//
+fun
+i1val_fprint
+(ival: i1val, out0: FILR): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
