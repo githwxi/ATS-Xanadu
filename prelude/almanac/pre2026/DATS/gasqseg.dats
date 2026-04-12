@@ -52,6 +52,26 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+< xs:t0 >
+< x0:vt >
+gasq$seg_make
+(xs, lb, ub) =
+(
+gasq$seg_encd@(xs, lb, ub)
+) where
+{
+//
+val ln = xs.length((*void*))
+//
+val lb = sint_max$sint<>(lb, 0)
+val ub = sint_min$sint<>(ub, ln)
+//
+}(*where*)//end-of-[gasq$seg(xs,lb,ub)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 { xs:t0 }
 { x0:vt }
 g_print
@@ -86,16 +106,7 @@ val
 , ub ) =
 gasq$seg_decd(sg)
 val xs =
-GASQ_unmk<xs><x0>(xs)
-val ln =
-gasq_length<xs><x0>(xs)
-//
-val lb =
-(
-sint_max$sint<>(lb, 0))
-val ub =
-(
-sint_min$sint<>(ub, ln)) in (ub - lb)
+GASQ_unmk<xs><x0>(xs) in (ub - lb)
 end(*let*)//end(gasq_length<gasq$seg(xs,x0)>)
 //
 (* ****** ****** *)
@@ -118,16 +129,6 @@ val
 gasq$seg_decd(sg)
 val xs =
 GASQ_unmk<xs><x0>(xs)
-val ln =
-gasq_length<xs><x0>(xs)
-//
-val lb =
-(
-sint_max$sint<>(lb, 0))
-val ub =
-(
-sint_min$sint<>(ub, ln))
-//
 in//let
 (
   nint_forall<>(ub - lb))
@@ -171,15 +172,6 @@ val
 gasq$seg_decd(sg)
 val xs =
 GASQ_unmk<xs><x0>(xs)
-val ln =
-gasq_length<xs><x0>(xs)
-//
-val lb =
-(
-sint_max$sint<>(lb, 0))
-val ub =
-(
-sint_min$sint<>(ub, ln))
 //
 in//let
 (
@@ -224,15 +216,6 @@ val
 gasq$seg_decd(sg)
 val xs =
 GASQ_unmk<xs><x0>(xs)
-val ln =
-gasq_length<xs><x0>(xs)
-//
-val lb =
-(
-sint_max$sint<>(lb, 0))
-val ub =
-(
-sint_min$sint<>(ub, ln))
 //
 in//let
 (
@@ -246,6 +229,26 @@ $UN.gasq_cget$at$raw
 <   xs   ><   x0   >( xs, lb+i0 ))
 }
 end(*let*)//end(gasq_strmize<gasq$seg(xs,x0)>)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, x0:t0 }
+$UN.gasq_lget$at$raw
+<
+gasq$seg(xs, x0)><x0>
+(      sg , i0      ) =
+let
+val
+( xs
+, lb
+, ub ) = gasq$seg_decd(sg)
+val xs = GASQ_unmk<xs><x0>(xs) in
+(
+  $UN.gasq_lget$at$raw<xs><x0>(xs, lb+i0))
+end(*let*)//end($UN.gasq_lget$at$raw<gasq$seg>)
 //
 (* ****** ****** *)
 (* ****** ****** *)

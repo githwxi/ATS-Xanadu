@@ -93,7 +93,7 @@ val abcde = "abcde"
 //
 val
 abcde$1$10 =
-gasq$seg_encd@(GASQ(abcde), 1, 10)
+gasq$seg_make(GASQ(abcde), 1, 10)
 val (   ) =
 printsln("abcde$1$10 = ", abcde$1$10)
 //
@@ -121,13 +121,13 @@ lam(i, c) => prints("(",i,":",c,")")); println())
 //
 val
 abcde$1$10_0$2 =
-gasq$seg_encd@(
-gasq$seg_encd@(GASQ(abcde), 1, 10), 0, 2)
+gasq$seg_encd@(GASQ(abcde$1$10), 0, 2)
 val (   ) =
 (
 GASQ(abcde$1$10_0$2).iforitm(
 lam(i, c) => prints("(",i,":",c,")")); println())
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val () = console_log(the_print_store_flush((*void*)))
