@@ -69,6 +69,28 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1let_fprint
+(ilet, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+ ilet of
+|I1LETnew0(iins) =>
+(
+prints("I1LETnew0(", iins, ")"))
+|I1LETnew1(itnm, iins) =>
+(
+prints
+("I1LETnew1(", itnm, ";", iins, ")"))
+//
+end(*let*)//end-of-[i1let_fprint(ilet,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_intrep1_print0.dats] *)
 (***********************************************************************)

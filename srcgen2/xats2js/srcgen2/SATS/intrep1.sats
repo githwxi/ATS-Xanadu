@@ -199,6 +199,34 @@ i1lab_fprint
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+i1tnm_stmp$get(i1tnm): stamp
+//
+(* ****** ****** *)
+//
+fun
+i1opr_make(name:sym_t): i1opr
+//
+fun
+i1tnm_new0( (*void*) ): i1tnm
+//
+(* ****** ****** *)
+//
+(*
+fun
+i1arg_fprint(i1arg, FILR): void
+fun
+i1env_fprint(i1env, FILR): void
+*)
+//
+fun
+i1opr_fprint(i1opr, FILR): void
+fun
+i1tnm_fprint(i1tnm, FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 datatype
 i1let =
 |I1LETnew0 of (i1ins)
