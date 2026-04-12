@@ -91,6 +91,49 @@ end(*let*)//end-of-[i1let_fprint(ilet,out0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1bnd_fprint
+(ibnd, out0) =
+let
+//
+#impltmp
+g_print$out
+<(*0*)>((*0*)) = out0
+//
+#impltmp
+g_print
+<d2var>( dvar ) =
+d2var_fprint(dvar, out0)
+//
+in//let
+//
+case+ ibnd of
+|I1BNDcons
+(itnm, ipat, dsub) =>
+( print("I1BNDcons(")
+; prints(itnm, ";", ipat, ";", dsub, ")"))
+//
+end(*let*)//end-of-[i1bnd_fprint(ibnd,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1cmp_fprint
+(icmp, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+ icmp of
+|I1CMPcons(ilts, ival) =>
+prints("I1CMPcons(", ilts, ";", ival, ")")
+//
+end(*let*)//end-of-[i1cmp_fprint(icmp,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_intrep1_print0.dats] *)
 (***********************************************************************)

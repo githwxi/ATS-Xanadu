@@ -127,6 +127,18 @@ i1val_fprint(ival, g_print$out<>())
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-11:
+It is already in [xats2cc_tmplib]:
+*)
+#impltmp
+g_print
+<i0pat>(ipat) =
+i0pat_fprint(ipat, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_xats2js_tmplib.dats] *)
 (***********************************************************************)

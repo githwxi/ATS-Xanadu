@@ -266,6 +266,21 @@ i1val_node =
 //
 (* ****** ****** *)
 //
+|I1Vtop of (sym_t)
+//
+(* ****** ****** *)
+(*
+|I1Varg of (i1arg)
+|I1Venv of (i1env)
+*)
+(* ****** ****** *)
+|I1Vtnm of (i1tnm)
+(* ****** ****** *)
+|I1Vcon of (d2con)
+|I1Vcst of (d2cst)
+|I1Vvar of (d2var)
+(* ****** ****** *)
+//
 |I1Vnone0 of () | I1Vnone1 of (i0exp)
 //
 (* ****** ****** *)
