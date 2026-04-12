@@ -124,6 +124,21 @@ sint_cmp$sint
 (* ****** ****** *)
 //
 fun<>
+sint_max$sint
+{i,j:i0}
+(x:sint(i), y:sint(j)): sint(max(i,j))
+fun<>
+sint_min$sint
+{i,j:i0}
+(x:sint(i), y:sint(j)): sint(min(i,j))
+//
+#symload cmp with sint_max$sint of 1000
+#symload cmp with sint_min$sint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
 sint_add$sint
 {i,j:i0}
 (x: sint(i), y: sint(j)): sint(i+j)

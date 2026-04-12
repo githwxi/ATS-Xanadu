@@ -130,7 +130,25 @@ sint_cmp$sint
 (
 if
 (i1 < i2) then -1 else
-(if (i1 > i2) then 1 else 0))
+(
+if (i1 > i2) then 1 else 0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+sint_max$sint
+  (i1, i2) =
+(
+if i1 >= i2 then i1 else i2)
+//
+#impltmp
+<(*tmp*)>
+sint_min$sint
+  (i1, i2) =
+(
+if i1 <= i2 then i1 else i2)
 //
 (* ****** ****** *)
 (* ****** ****** *)
