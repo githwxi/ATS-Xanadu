@@ -51,6 +51,42 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{ x0:t0 }
+g_cmp<i1lab(x0)>
+(  ilx1, ilx2  ) =
+(
+g_cmp<label>(l1, l2) where
+{
+val+I1LAB(l1, itm1) = ilx1
+val+I1LAB(l2, itm2) = ilx2} )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+i1lab_fprint
+ (lab, out) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ lab of
+|
+I1LAB(l01, x02) =>
+prints("I1LAB(",l01,";",x02,")")
+end(*let*)//end-of-[i1lab_fprint]
+//
+#impltmp
+{ x0:t0 }
+g_print<i1lab(x0)>(ilab) =
+i1lab_fprint(ilab, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_xats2js_tmplib.dats] *)
 (***********************************************************************)
