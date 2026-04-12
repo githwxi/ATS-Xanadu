@@ -68,6 +68,9 @@ _(*DATS*)="./../DATS/py1emit.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
+(* ****** ****** *)
 #symload node with dimpl_get_node
 (* ****** ****** *)
 (*

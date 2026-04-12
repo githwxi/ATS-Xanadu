@@ -76,6 +76,11 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload lctn with token_get_lctn
+#symload node with token_get_node
+//
+(* ****** ****** *)
+//
 #symload lctn with d2con_get_lctn
 #symload lctn with d2cst_get_lctn
 #symload lctn with d2var_get_lctn
@@ -85,8 +90,10 @@ Authoremail: gmhwxiATgmailDOTcom
 #symload name with d2var_get_name
 //
 (* ****** ****** *)
+//
 #symload lctn with d2exp_get_lctn
 #symload node with d2exp_get_node
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
