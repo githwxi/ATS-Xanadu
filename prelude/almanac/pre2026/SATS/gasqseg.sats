@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Wed Jan 14 04:31:21 PM EST 2026
+Sun Apr 12 10:17:00 AM EDT 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,51 +39,29 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../SATS/trec000.sats"
+#abstype
+gasq$seg
+(xs:t0, x0:vt) ==
+(GASQ(xs, x0), si, si)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-<
-state:t0>
-g_state$trans
-  ( st0 ) =
-let
+fcast
+gasq$seg_decd
+{xs:t0}{x0:vt}
+( seg
+: gasq$seg(xs, x0)): (GASQ(xs, x0), si, si)
 //
-val sts =
-(
-  mytrans(st0))
-//
-#impltmp
-search$test1<state> =
-state$trans$test<state>
-//
-in//let
-strx_vt_search0<state>(sts)
-end where // end-of-(let...)
-{
-//
-fun
-mytrans
-( st0
-: state)
-: strx_vt(state) = $llazy
-let
-val st1 =
-(
-state$trans$fupdt<state>(st0))
-in//let
-(
-  strxcon_vt_cons(st0, mytrans(st1)))
-end(*let*)//end-of-[mytrans(st0:state)]
-//
-}(*where*)//end-of-[g_state$trans<state>(st0)]
+fcast
+gasq$seg_encd
+{xs:t0}{x0:vt}
+( rep
+: (GASQ(xs, x0), si, si)): gasq$seg(xs, x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_pre2026_DATS_trec000.dats] *)
+(* end of [ATS3/XANADU_prelude_almanac_pre2026_SATS_gasqseg.sats] *)
 (***********************************************************************)
