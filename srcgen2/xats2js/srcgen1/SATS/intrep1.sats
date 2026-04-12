@@ -192,16 +192,13 @@ i1tnm_new0( (*void*) ): i1tnm
 //
 (* ****** ****** *)
 //
-fun
-i1opr_fprint(i1opr, FILR): void
-//
-(* ****** ****** *)
-//
 (*
 fun
 i1arg_fprint(i1arg, FILR): void
 *)
 //
+fun
+i1opr_fprint(i1opr, FILR): void
 fun
 i1tnm_fprint(i1tnm, FILR): void
 //

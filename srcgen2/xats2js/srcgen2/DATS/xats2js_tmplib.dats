@@ -87,6 +87,46 @@ i1lab_fprint(ilab, g_print$out<>())
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+g_print
+<i1opr>(iopr) =
+i1opr_fprint(iopr, g_print$out<>())
+//
+#impltmp
+g_print
+<i1tnm>(itnm) =
+i1tnm_fprint(itnm, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i1let>(ilet) =
+i1let_fprint(ilet, g_print$out<>())
+//
+#impltmp
+g_print
+<i1bnd>(ibnd) =
+i1bnd_fprint(ibnd, g_print$out<>())
+#impltmp
+g_print
+<i1cmp>(icmp) =
+i1cmp_fprint(icmp, g_print$out<>())
+//
+#impltmp
+g_print
+<i1ins>(iins) =
+i1ins_fprint(iins, g_print$out<>())
+//
+#impltmp
+g_print
+<i1val>(ival) =
+i1val_fprint(ival, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_xats2js_tmplib.dats] *)
 (***********************************************************************)
