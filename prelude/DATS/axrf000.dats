@@ -72,14 +72,13 @@ g_ptype<vt>((*0*)); pstrn(")"))
 (* ****** ****** *)
 //
 #impltmp
-{ a: vt }
+{ x0:vt }
 g_print
-<a0rf(a)>
+<a0rf(x0)>
 (   xs   ) =
 let
 //
-#vwtpdef x0 = (a)
-#typedef xs = a0rf(a)
+#typedef xs = a0rf(x0)
 //
 #impltmp
 gseq$sep<xs><x0>() = ","
@@ -90,20 +89,19 @@ gseq$beg<xs><x0>() = "a0rf("
 in//let
 (
   gseq_print1<xs><x0>( xs ) )
-end(*let*)//end(g_print<a0rf(a)>())
+end(*let*)//end(g_print<a0rf(x0)>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-{ a: vt }
+{ x0:vt }
 g_print
-<a1rf(a)>
+<a1rf(x0)>
 (   xs   ) =
 let
 //
-#vwtpdef x0 = (a)
-#typedef xs = a1rf(a)
+#typedef xs = a1rf(x0)
 //
 #impltmp
 gseq$sep<xs><x0>() = ","
@@ -114,7 +112,7 @@ gseq$beg<xs><x0>() = "a1rf("
 in//let
 (
   gseq_print1<xs><x0>( xs ) )
-end(*let*)//end(g_print<a1rf(a)>())
+end(*let*)//end(g_print<a1rf(x0)>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
