@@ -164,7 +164,6 @@ endloc // end-of-[the_i1tnm_stamp_new()]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 local
 //
 datatype
@@ -238,6 +237,89 @@ in//let
 (* ****** ****** *)
 //
 end(*local*)//end-of-[local(i1tnm_tbox)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1val =
+I1VAL of
+(loctn, i1val_node)
+datavwtp
+i1val_vt =
+I1VAL_vt of
+(loctn, i1val_node)
+//
+#absimpl i1val_tbox = i1val
+//
+in (* in-of-local *)
+//
+#implfun
+i1val_make_node
+( loc0, node ) =
+(
+  I1VAL(loc0, node))
+//
+#implfun
+i1val_lctn$get
+(    i1v0    ) =
+let
+val+
+I1VAL
+(loc0, node) = i1v0 in loc0 endlet
+#implfun
+i1val_node$get
+(    i1v0    ) =
+let
+val+
+I1VAL
+(loc0, node) = i1v0 in node endlet
+//
+endloc(*local*)//end-of-[local(i1val_tbox)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+local
+//
+datatype
+i1dcl =
+I1DCL of
+(loctn, i1dcl_node)
+(*
+datavwtp
+i1dcl_vt =
+I1DCL_vt of
+(loctn, i1dcl_node)
+*)
+//
+#absimpl i1dcl_tbox = i1dcl
+//
+in (* in-of-local *)
+//
+#implfun
+i1dcl_make_node
+( loc0, node ) =
+(
+  I1DCL(loc0, node))
+//
+#implfun
+i1dcl_lctn$get
+(    i1d0    ) =
+let
+val+
+I1DCL(loc0, node) = i1d0 in loc0 endlet
+#implfun
+i1dcl_node$get
+(    i1d0    ) =
+let
+val+
+I1DCL(loc0, node) = i1d0 in node endlet
+//
+endloc(*local*)//end-of-[local(i1dcl_tbox)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

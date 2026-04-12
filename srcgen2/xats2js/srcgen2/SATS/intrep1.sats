@@ -399,6 +399,54 @@ i1val_make_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
+datatype
+i1dcl_node =
+//
+(* ****** ****** *)
+//
+|I1Di0dcl of (i0dcl)
+//
+(* ****** ****** *)
+//
+|I1Dnone0 of ((*0*)) |I1Dnone1 of (i0dcl)
+//
+where
+{
+  #typedef i1dclistopt = optn(i1dclist) }
+//(*where*) // end-of-[datatype(i1dcl_node)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1dcl_fprint
+(
+idcl:i1dcl,out0:FILR): ( void )
+//
+(* ****** ****** *)
+//
+fun
+i1dcl_lctn$get(i1dcl): ( loc_t )
+fun
+i1dcl_node$get(i1dcl): i1dcl_node
+//
+(* ****** ****** *)
+#symload lctn with i1dcl_lctn$get
+#symload node with i1dcl_node$get
+(* ****** ****** *)
+fun
+i1dcl_none0(loc_t): i1dcl
+fun
+i1dcl_none1(idcl: i0dcl): i1dcl
+(* ****** ****** *)
+fun
+i1dcl_make_node
+(loc0:loc_t,node:i1dcl_node):i1dcl
+(* ****** ****** *)
+#symload i1dcl with i1dcl_make_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_SATS_intrep1.sats] *)
 (***********************************************************************)
