@@ -91,6 +91,7 @@ are addressed:
 #typedef loctn = loctn
 #typedef lcsrc = lcsrc
 #typedef fpath = fpath
+#typedef token = token
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef g1nam = $S1E.g1nam
