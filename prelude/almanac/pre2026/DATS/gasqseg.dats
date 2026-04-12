@@ -52,6 +52,56 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+{ xs:t0 }
+{ x0:vt }
+g_print
+<
+gasq$seg
+(xs, x0)>(sg) =
+(
+prints("\
+gasq$seg(",
+xs, ";", lb, ";", ub, ")"))
+where
+{
+val (xs, lb, ub) = gasq$seg_decd(sg)
+}(*where*)//end(g_print<gasq$seg(xs,x0)>)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, x0:vt }
+gasq_length
+<
+gasq$seg(xs,x0)>
+<      x0      >
+(      sg      ) =
+let
+//
+val
+( xs
+, lb
+, ub ) =
+gasq$seg_decd(sg)
+val xs =
+GASQ_unmk<xs><x0>(xs)
+val ln =
+gasq_length<xs><x0>(xs)
+//
+val lb =
+(
+sint_max$sint<>(lb, 0))
+val ub =
+(
+sint_min$sint<>(ub, ln)) in (ub - lb)
+end(*let*)//end(gasq_length<gasq$seg(xs,x0)>)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 { xs:t0
 , x0:vt }
 gasq_forall
@@ -99,7 +149,60 @@ val
 $UN.gasq_lget$at$raw<xs><x0>(xs, lb+i0)
 }(*where*)
 }(*where*)
-end(*let*)//end-of-[gasq_forall<xs><x0>(sg)]
+end(*let*)//end(gasq_forall<gasq$seg(xs,x0)>)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, x0:vt }
+gasq_rforall
+<
+gasq$seg(xs,x0)>
+<      x0      >
+(      sg      ) =
+let
+//
+val
+( xs
+, lb
+, ub ) =
+gasq$seg_decd(sg)
+val xs =
+GASQ_unmk<xs><x0>(xs)
+val ln =
+gasq_length<xs><x0>(xs)
+//
+val lb =
+(
+sint_max$sint<>(lb, 0))
+val ub =
+(
+sint_min$sint<>(ub, ln))
+//
+in//let
+(
+  nint_rforall<>(ub - lb))
+where
+{
+#impltmp
+rforall$test<ni>(i0) =
+let
+val b0 =
+(
+  rforall$test1<x0>(x0))
+pvx () =
+(
+  owed_vt_return0(pf, x0)) in b0 end
+where
+{
+val
+(pf|x0) =
+$UN.gasq_lget$at$raw<xs><x0>(xs, lb+i0)
+}(*where*)
+}(*where*)
+end(*let*)//end(gasq_rforall<gasq$seg(xs,x0)>)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -142,7 +245,7 @@ map$fopr<ni><x0>(i0) =
 $UN.gasq_cget$at$raw
 <   xs   ><   x0   >( xs, lb+i0 ))
 }
-end(*let*)//end-of-[gasq_strmize<xs><x0>(sg)]
+end(*let*)//end(gasq_strmize<gasq$seg(xs,x0)>)
 //
 (* ****** ****** *)
 (* ****** ****** *)

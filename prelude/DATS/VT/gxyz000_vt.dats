@@ -156,6 +156,7 @@ rforall$test<x0> = rforall$test1<x0>
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -179,9 +180,11 @@ where
 #impltmp
 iforall$test<x0> = iforall$test1<x0>
 }
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -205,9 +208,11 @@ where
 #impltmp
 irforall$test<x0> = irforall$test1<x0>
 }
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -222,9 +227,11 @@ gseq_forall1$f1un
   (xs, test) =
 (
   gseq_forall$f1un<xs><x0>(xs, test))
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -239,9 +246,11 @@ gseq_rforall1$f1un
   (xs, test) =
 (
   gseq_rforall$f1un<xs><x0>(xs, test))
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -256,9 +265,11 @@ gseq_iforall1$f2un
   (xs, test) =
 (
   gseq_iforall$f2un<xs><x0>(xs, test))
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -273,6 +284,7 @@ gseq_irforall1$f2un
   (xs, test) =
 (
   gseq_irforall$f2un<xs><x0>(xs, test))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -282,6 +294,7 @@ HX-2024-08-03:
 Sat 03 Aug 2024 05:37:49 PM EDT
 *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -305,27 +318,12 @@ where
 #impltmp
 foritm$work<x0> = foritm$work1<x0>
 }
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_foritm0$f1un
-  (xs, work) =
-(
-  gseq_foritm$f1un<xs><x0>(xs, work))
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_foritm1$f1un
-  (xs, work) =
-(
-  gseq_foritm$f1un<xs><x0>(xs, work))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -349,27 +347,12 @@ where
 #impltmp
 rforitm$work<x0> = rforitm$work1<x0>
 }
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_rforitm0$f1un
-  (xs, work) =
-(
-  gseq_rforitm$f1un<xs><x0>(xs, work))
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_rforitm1$f1un
-  (xs, work) =
-(
-  gseq_rforitm$f1un<xs><x0>(xs, work))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -393,27 +376,12 @@ where
 #impltmp
 iforitm$work<x0> = iforitm$work1<x0>
 }
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_iforitm0$f2un
-  (xs, work) =
-(
-  gseq_iforitm$f2un<xs><x0>(xs, work))
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_iforitm1$f2un
-  (xs, work) =
-(
-  gseq_iforitm$f2un<xs><x0>(xs, work))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -425,7 +393,9 @@ where
 #impltmp
 irforitm$work<x0> = irforitm$work0<x0>
 }
+*)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -437,27 +407,17 @@ where
 #impltmp
 irforitm$work<x0> = irforitm$work1<x0>
 }
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_irforitm0$f2un
-  (xs, work) =
-(
-  gseq_irforitm$f2un<xs><x0>(xs, work))
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_irforitm1$f2un
-  (xs, work) =
-(
-  gseq_irforitm$f2un<xs><x0>(xs, work))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-12:
+These will probably be removed:
+[folditm0] should be based on [forall0]
+[folditm1] should be based on [forall1]
+*)
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -484,6 +444,7 @@ where
 folditm$fopr<x0><r0> = folditm$fopr1<x0><r0>
 }
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -500,6 +461,7 @@ gseq_folditm1$f2un
   (xs, r0, fopr) =
 (
 gseq_folditm$f2un<xs><x0><r0>(xs, r0, fopr))
+*)
 //
 (* ****** ****** *)
 //
@@ -529,6 +491,7 @@ where
 rfolditm$fopr<x0><r0> = rfolditm$fopr1<x0><r0>
 }
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -545,6 +508,7 @@ gseq_rfolditm1$f2un
   (xs, r0, fopr) =
 (
 gseq_rfolditm$f2un<xs><x0><r0>(xs, r0, fopr))
+*)
 //
 (* ****** ****** *)
 //
@@ -574,6 +538,7 @@ where
 ifolditm$fopr<x0><r0> = ifolditm$fopr1<x0><r0>
 }
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -590,6 +555,7 @@ gseq_ifolditm1$f3un
   (xs, r0, fopr) =
 (
 gseq_ifolditm$f3un<xs><x0><r0>(xs, r0, fopr))
+*)
 //
 (* ****** ****** *)
 //
@@ -619,6 +585,7 @@ where
 irfolditm$fopr<x0><r0> = irfolditm$fopr1<x0><r0>
 }
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -635,6 +602,7 @@ gseq_irfolditm1$f3un
   (xs, r0, fopr) =
 (
 gseq_irfolditm$f3un<xs><x0><r0>(xs, r0, fopr))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -690,7 +658,7 @@ Mon Dec 15 05:52:57 PM EST 2025
 < y0:vt >
 gseq_map0_lstrm(xs) =
 (
- gseq_map_lstrm<xs><x0><y0>(xs))
+  gseq_map_lstrm<xs><x0><y0>(xs))
 where
 {
 #impltmp
@@ -703,15 +671,14 @@ map$fopr<x0><y0> = map$fopr0<x0><y0>
 < y0:vt >
 gseq_map1_lstrm(xs) =
 (
- gseq_map_lstrm<xs><x0><y0>(xs))
+  gseq_map_lstrm<xs><x0><y0>(xs))
 where
 {
 #impltmp
 map$fopr<x0><y0> = map$fopr1<x0><y0>
 }
 //
-(* ****** ****** *)
-//
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -719,8 +686,7 @@ map$fopr<x0><y0> = map$fopr1<x0><y0>
 gseq_map0$f1un_lstrm
   (xs, fopr) =
 (
- gseq_map$f1un_lstrm<xs><x0><y0>(xs, fopr))
-//
+gseq_map$f1un_lstrm<xs><x0><y0>(xs, fopr))
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -728,7 +694,8 @@ gseq_map0$f1un_lstrm
 gseq_map1$f1un_lstrm
   (xs, fopr) =
 (
- gseq_map$f1un_lstrm<xs><x0><y0>(xs, fopr))
+gseq_map$f1un_lstrm<xs><x0><y0>(xs, fopr))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -766,23 +733,22 @@ where
 filter$test<x0> = filter$test1<x0>
 }
 //
-(* ****** ****** *)
-//
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
 gseq_filter0$f1un_lstrm
   (xs, test) =
 (
- gseq_filter$f1un_lstrm<xs><x0>(xs, test))
-//
+gseq_filter$f1un_lstrm<xs><x0>(xs, test))
 #impltmp
 < xs:t0 >
 < x0:t0 >
 gseq_filter1$f1un_lstrm
   (xs, test) =
 (
- gseq_filter$f1un_lstrm<xs><x0>(xs, test))
+gseq_filter$f1un_lstrm<xs><x0>(xs, test))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

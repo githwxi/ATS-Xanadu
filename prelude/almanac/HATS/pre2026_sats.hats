@@ -55,6 +55,8 @@ HX-2026-01-11: For LFP
 "./../pre2026/SATS/i1range.sats"
 #staload
 "./../pre2026/SATS/trec000.sats"
+#staload
+"./../pre2026/SATS/gasqseg.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

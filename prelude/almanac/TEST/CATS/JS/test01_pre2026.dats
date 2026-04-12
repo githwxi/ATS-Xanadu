@@ -89,6 +89,40 @@ foritm$work0<xs>(xs) = print0s(xs, "\n")
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val abcde = "abcde"
+val
+abcde$1$4 =
+gasq$seg_encd@(GASQ(abcde), 1, 4)
+val (   ) =
+printsln("abcde$1$4 = ", abcde$1$4)
+val (   ) =
+(
+gasq_foritm$f1un
+<gasq$seg(strn,char)><char>
+(abcde$1$4, lam(c) => print(c)); println())
+val (   ) =
+(
+gasq_rforitm$f1un
+<gasq$seg(strn,char)><char>
+(abcde$1$4, lam(c) => print(c)); println())
+val (   ) =
+(
+gasq_iforitm$f2un
+<gasq$seg(strn,char)><char>
+(
+abcde$1$4,
+lam(i, c) => prints("(",i,":",c,")")); println())
+val (   ) =
+(
+gasq_irforitm$f2un
+<gasq$seg(strn,char)><char>
+(
+abcde$1$4,
+lam(i, c) => prints("(",i,":",c,")")); println())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () = console_log(the_print_store_flush((*void*)))
 //
 (* ****** ****** *)
