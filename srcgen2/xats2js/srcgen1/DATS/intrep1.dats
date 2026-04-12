@@ -506,7 +506,7 @@ endloc (*local*) // end of [local(i1dcl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -519,7 +519,7 @@ I1VALDCL of
 i1valdcl_tbox = i1valdcl
 //
 in//local
-
+//
 #implfun
 i1valdcl_lctn$get
   (  ival  ) = let
@@ -527,7 +527,7 @@ val+
 I1VALDCL
 ( lctn
 , ibnd, tdxp) = ival in lctn end
-
+//
 #implfun
 i1valdcl_dpat$get
   (  ival  ) = let
@@ -535,7 +535,7 @@ val+
 I1VALDCL
 ( lctn
 , ibnd, tdxp) = ival in ibnd end
-
+//
 #implfun
 i1valdcl_tdxp$get
   (  ival  ) = let
@@ -543,7 +543,7 @@ val+
 I1VALDCL
 ( lctn
 , ibnd, tdxp) = ival in tdxp end
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -553,9 +553,9 @@ i1valdcl_make_args
   I1VALDCL(lctn, ibnd, tdxp(*opt*)))
 //
 (* ****** ****** *)
-
+//
 endloc (*local*) // end of [local(i1valdcl)]
-
+//
 (* ****** ****** *)
 
 local
