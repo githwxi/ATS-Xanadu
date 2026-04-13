@@ -294,7 +294,7 @@ gseq_iforall$f2un
 gseq_iforall
 <xs><x0>(xs)) where {
 #impltmp
-iforall$test<x0>(*i0,x0*) = test(*i0,x0*)
+iforall$test<x0> = test(*i0,x0*)
 }(*where*)//end-of-[gseq_iforall$f2un(xs)]
 //
 (* ****** ****** *)
@@ -325,7 +325,7 @@ gseq_iexists$f2un
 gseq_iexists
 <xs><x0>(xs)) where {
 #impltmp
-iexists$test<x0>(*i0,x0*) = test(*i0,x0*)
+iexists$test<x0> = test(*i0,x0*)
 }(*where*)//end-of-[gseq_iexists$f2un(xs)]
 //
 (* ****** ****** *)
@@ -367,7 +367,7 @@ gseq_irforall$f2un
 gseq_irforall
 <xs><x0>(xs)) where {
 #impltmp
-irforall$test<x0>(*i0,x0*) = test(*i0,x0*)
+irforall$test<x0> = test(*i0,x0*)
 }(*where*)//end-of-[gseq_irforall$f2un(xs)]
 //
 (* ****** ****** *)
@@ -398,7 +398,7 @@ gseq_irexists$f2un
 gseq_irexists
 <xs><x0>(xs)) where {
 #impltmp
-irexists$test<x0>(*i0,x0*) = test(*i0,x0*)
+irexists$test<x0> = test(*i0,x0*)
 }(*where*)//end-of-[gseq_irexists$f2un(xs)]
 //
 (* ****** ****** *)
@@ -1026,7 +1026,7 @@ gseq_map_llist<xs><x0><y0>(xs))
 where
 {
 #impltmp
-map$fopr<x0><y0>( x0 ) = fopr( x0 )
+map$fopr<x0><y0>(*x0*) = fopr(*x0*)
 }(*where*)//end-of-[gseq_map$f1un_llist]
 //
 (* ****** ****** *)
@@ -1043,7 +1043,8 @@ gseq_strmize<xs><x0>(xs))
 where {
 #impltmp
 map$fopr0<x0><y0> = map$fopr<x0><y0>
-}(*where*)
+}(*where*)//endof(gseq_map_lstrm(xs))
+//
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -1056,7 +1057,7 @@ gseq_strqize<xs><x0>(xs))
 where {
 #impltmp
 map$fopr0<x0><y0> = map$fopr<x0><y0>
-}(*where*)
+}(*where*)//endof(gseq_map_lstrq(xs))
 //
 #impltmp
 < xs:t0 >
@@ -1069,7 +1070,7 @@ gseq_map_lstrm<xs><x0><y0>(xs))
 where
 {
 #impltmp
-map$fopr<x0><y0>( x0 ) = fopr( x0 )
+map$fopr<x0><y0>(*x0*) = fopr(*x0*)
 }(*where*)//end-of-[gseq_map$f1un_lstrm]
 #impltmp
 < xs:t0 >
@@ -1082,7 +1083,7 @@ gseq_map_lstrq<xs><x0><y0>(xs))
 where
 {
 #impltmp
-map$fopr<x0><y0>( x0 ) = fopr( x0 )
+map$fopr<x0><y0>(*x0*) = fopr(*x0*)
 }(*where*)//end-of-[gseq_map$f1un_lstrq]
 //
 (* ****** ****** *)
@@ -1128,7 +1129,7 @@ gseq_map_rllist<xs><x0><y0>(xs))
 where
 {
 #impltmp
-map$fopr<x0><y0>( x0 ) = fopr( x0 )
+map$fopr<x0><y0>(*x0*) = fopr(*x0*)
 }(*where*)//end-of-[gseq_map$f1un_rllist]
 //
 (* ****** ****** *)
@@ -1175,7 +1176,7 @@ gseq_rmap_llist<xs><x0><y0>(xs))
 where
 {
 #impltmp
-rmap$fopr<x0><y0>( x0 ) = fopr( x0 )
+rmap$fopr<x0><y0>(*x0*) = fopr(*x0*)
 }(*where*)//end-of-[gseq_rmap$f1un_llist]
 //
 (* ****** ****** *)
@@ -1220,7 +1221,7 @@ gseq_rmap_lstrm<xs><x0><y0>(xs))
 where
 {
 #impltmp
-rmap$fopr<x0><y0>( x0 ) = fopr( x0 )
+rmap$fopr<x0><y0>(*x0*) = fopr(*x0*)
 }(*where*)//end-of-[gseq_rmap$f1un_lstrm]
 #impltmp
 < xs:t0 >
@@ -1233,7 +1234,7 @@ gseq_rmap_lstrq<xs><x0><y0>(xs))
 where
 {
 #impltmp
-rmap$fopr<x0><y0>( x0 ) = fopr( x0 )
+rmap$fopr<x0><y0>(*x0*) = fopr(*x0*)
 }(*where*)//end-of-[gseq_rmap$f1un_lstrq]
 //
 (* ****** ****** *)
@@ -1281,7 +1282,7 @@ gseq_rmap_rllist<xs><x0><y0>(xs))
 where
 {
 #impltmp
-rmap$fopr<x0><y0>( x0 ) = fopr( x0 )
+rmap$fopr<x0><y0>(*x0*) = fopr(*x0*)
 }(*where*)//end-of-[gseq_rmap$f1un_rllist]
 //
 (* ****** ****** *)
@@ -1330,8 +1331,8 @@ gseq_imap_llist<xs><x0><y0>(xs)
 ) where
 {
 #impltmp
-imap$fopr<x0><y0>(i0, x0) = fopr(i0, x0)
-}
+imap$fopr<x0><y0> = fopr(*i0,x0*)
+}(*where*)//end-of-(gseq_imap$f2un_llist)
 //
 (* ****** ****** *)
 //
@@ -1347,7 +1348,8 @@ gseq_strmize<xs><x0>(xs))
 where {
 #impltmp
 imap$fopr0<x0><y0> = imap$fopr<x0><y0>
-}(*where*)
+}(*where*)//end-of-(gseq_imap_lstrm(xs))
+//
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -1360,7 +1362,7 @@ gseq_strqize0<xs><x0>(xs))
 where {
 #impltmp
 imap$fopr0<x0><y0> = imap$fopr<x0><y0>
-}(*where*)
+}(*where*)//end-of-(gseq_imap_lstrq(xs))
 //
 #impltmp
 < xs:t0 >
@@ -1373,8 +1375,9 @@ gseq_imap_lstrm<xs><x0><y0>(xs)
 ) where
 {
 #impltmp
-imap$fopr<x0><y0>(i0, x0) = fopr(i0, x0)
-}
+imap$fopr<x0><y0> = fopr(*i0,x0*)
+}(*where*)//end-of-(gseq_imap$f2un_lstrm)
+//
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -1386,8 +1389,8 @@ gseq_imap_lstrq<xs><x0><y0>(xs)
 ) where
 {
 #impltmp
-imap$fopr<x0><y0>(i0, x0) = fopr(i0, x0)
-}
+imap$fopr<x0><y0> = fopr(*i0,x0*)
+}(*where*)//end-of-(gseq_imap$f2un_lstrq)
 //
 (* ****** ****** *)
 //
@@ -1434,8 +1437,8 @@ gseq_imap_rllist<xs><x0><y0>(xs)
 ) where
 {
 #impltmp
-imap$fopr<x0><y0>(i0, x0) = fopr(i0, x0)
-}
+imap$fopr<x0><y0> = fopr(*i0,x0*)
+}(*where*)//end-of-(gseq_imap$f2un_rllist)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1476,8 +1479,8 @@ gseq_irmap_llist<xs><x0><y0>(xs)
 ) where
 {
 #impltmp
-irmap$fopr<x0><y0>(i0, x0) = fopr(i0, x0)
-}
+irmap$fopr<x0><y0> = fopr(*i0,x0*)
+}(*where*)//end-of-[gseq_irmap$f2un_llist]
 //
 (* ****** ****** *)
 //
@@ -2194,31 +2197,40 @@ then true else
 let
 //
 val x0 =
-$UN.gseq_head$raw<xs><x0>(xs)
+(
+$UN.gseq_head$raw
+<  xs  ><  x0  >(  xs  ))
 val xs =
-$UN.gseq_tail$raw<xs><x0>(xs)
+(
+$UN.gseq_tail$raw
+<  xs  ><  x0  >(  xs  ))
 //
 in//let1
 (
-  auxloop(xs, x0))
-where
+auxloop(xs, x0)
+) where
 {
 //
 fun
 auxloop
 (xs: xs, x0: x0): bool =
 (
-if
+if//if
 nilq(xs)
 then true else
 let
 val x1 =
-$UN.gseq_head$raw<xs><x0>(xs)
+(
+$UN.gseq_head$raw
+<  xs  ><  x0  >(  xs  ))
 val xs =
-$UN.gseq_tail$raw<xs><x0>(xs)
+(
+$UN.gseq_tail$raw
+<  xs  ><  x0  >(  xs  ))
 in//let
 if // if
-sortedq$lteq<x0>(x0, x1)
+(
+sortedq$lteq<x0>(x0, x1))
 then auxloop(xs, x1) else false end)
 //
 }(*where*)
@@ -2250,21 +2262,23 @@ let
 //
 val xs =
 (
-gseq_strmize<xs><x0>(xs))
+gseq_strmize
+< xs >< x0 >( xs ))
+//
 val ~
 strmcon_vt_cons
-(   x0 , xs   ) = (  !xs  )
+(   x0 , xs   ) = ( !xs )
 //
 in//let1
 (
-  auxloop(xs, x0)
-) where
+auxloop(xs, x0))
+where
 {
 //
 #vwtpdef
-xs = strm_vt( x0 )
+xs = strm_vt(x0)
 //
-fun
+fnx
 auxloop
 (xs: xs, x0: x0): bool =
 (
@@ -2297,7 +2311,7 @@ gseq_sortedq<xs><x0>(xs))
 where
 {
 #impltmp
-sortedq$lteq<x0>(*x1,x2*) = lteq
+sortedq$lteq<x0> = lteq(*x1,x2*)
 }(*where*)//end-of-[gseq_sortedq$f2un(xs,lteq)]
 //
 (* ****** ****** *)
