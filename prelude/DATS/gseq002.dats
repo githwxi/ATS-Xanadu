@@ -79,8 +79,7 @@ z2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
 < y0:t0 >
 GSEQ_z2make
 (xgsq, ygsq) =
-$UN.castxy//GSEQ_make
-(z2tup_make(xgsq, ygsq))
+$UN.castxy(z2tup_make(xgsq, ygsq))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -101,16 +100,18 @@ gseq_z2forall
 <xs><x0><ys><y0>(xs, ys))
 where
 {
+//
 val
-@(xs, ys) =
-z2tup_unmk(xsys)
-val xs =
-GSEQ_unmk<xs><x0>(xs)
-and ys =
-GSEQ_unmk<ys><y0>(ys)
+( xs
+, ys ) = z2tup_unmk(xsys)
+val xs = GSEQ_unmk<xs><x0>(xs)
+and ys = GSEQ_unmk<ys><y0>(ys)
+//
 #impltmp
-z2forall$test<x0><y0>(x0, y0) = forall$test@(x0, y0)
-}
+z2forall$test
+<x0><y0>(x0, y0) = forall$test@(x0, y0)
+//
+}(*where*)//end-of-[gseq_forall<gz2seq(...)>]
 //
 #impltmp
 { xs:t0
@@ -129,17 +130,16 @@ where
 {
 //
 val
-@(xs, ys) =
-z2tup_unmk(xsys)
-val xs =
-GSEQ_unmk<xs><x0>(xs)
-and ys =
-GSEQ_unmk<ys><y0>(ys)
+( xs
+, ys ) = z2tup_unmk(xsys)
+val xs = GSEQ_unmk<xs><x0>(xs)
+and ys = GSEQ_unmk<ys><y0>(ys)
 //
 #impltmp
-z2rforall$test<x0><y0>(x0, y0) = rforall$test@(x0, y0)
+z2rforall$test
+<x0><y0>(x0, y0) = rforall$test@(x0, y0)
 //
-}
+}(*where*)//end-of-[gseq_rforall<gz2seq(...)>]
 //
 (* ****** ****** *)
 //
@@ -157,12 +157,10 @@ gz2seq
 let
 //
 val
-@(xs, ys) =
-z2tup_unmk(xsys)
-val xs =
-GSEQ_unmk<xs><x0>(xs)
-and ys =
-GSEQ_unmk<ys><y0>(ys)
+( xs
+, ys ) = z2tup_unmk(xsys)
+val xs = GSEQ_unmk<xs><x0>(xs)
+and ys = GSEQ_unmk<ys><y0>(ys)
 //
 val xs = gseq_strmize<xs><x0>(xs)
 val ys = gseq_strmize<ys><y0>(ys)
@@ -175,10 +173,11 @@ strm_vt_z2map0
 where
 {
 #impltmp
-z2map$fopr0<x0><y0><(x0,y0)>(x0, y0) = (x0, y0)
-}
+z2map$fopr0
+<x0><y0><(x0,y0)>(x0, y0) = (x0, y0)
+}(*where*)
 //
-end//let
+end(*let*)//end-of-[gseq_strmize<gz2seq(...)>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -203,8 +202,7 @@ x2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
 < y0:t0 >
 GSEQ_x2make
 (xgsq, ygsq) = 
-$UN.castxy//GSEQ_make
-(x2tup_make(xgsq, ygsq))
+$UN.castxy(x2tup_make(xgsq, ygsq))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -227,16 +225,15 @@ where
 {
 //
 val
-@(xs, ys) =
-x2tup_unmk(xsys)
-val xs =
-GSEQ_unmk<xs><x0>(xs)
-and ys =
-GSEQ_unmk<ys><y0>(ys)
+( xs
+, ys ) = x2tup_unmk(xsys)
+val xs = GSEQ_unmk<xs><x0>(xs)
+and ys = GSEQ_unmk<ys><y0>(ys)
 //
 #impltmp
-x2forall$test<x0><y0>(x0, y0) = forall$test@(x0, y0)
-}
+x2forall$test
+<x0><y0>(x0, y0) = forall$test@(x0, y0)
+}(*where*)//end-of-[gseq_forall<gx2seq(...)>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -261,12 +258,10 @@ let
 xy = @(x0, y0)
 //
 val
-@(xs, ys) =
-x2tup_unmk(xsys)
-val xs =
-GSEQ_unmk<xs><x0>(xs)
-and ys =
-GSEQ_unmk<ys><y0>(ys)
+( xs
+, ys ) = x2tup_unmk(xsys)
+val xs = GSEQ_unmk<xs><x0>(xs)
+and ys = GSEQ_unmk<ys><y0>(ys)
 //
 in//let
 //
@@ -276,9 +271,10 @@ gseq_map$f1un_lstrm<xs><x0><strm_vt(xy)>
 (
 xs,
 lam(x0) =>
-gseq_map$f1un_lstrm<ys><y0><xy>(ys,lam(y0)=>(x0,y0))))
+gseq_map$f1un_lstrm
+< ys >< y0 >< xy >(ys, lam(y0)=>(x0,y0))))
 //
-end//let//end-of-[gseq_strmize<gx2seq(...)><...>(xsys)]
+end(*let*)//end-of-[gseq_strmize<gx2seq(...)>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -318,7 +314,7 @@ val () =
 (
   prints("gseq_z2forall: ys = ", ys, "\n"))
 *)
-}(*where*)//let//end-of-[gseq_z2forall(xs, ys)]
+}(*where*)//let//end-of-[gseq_z2forall<xs><x0><ys><y0>]
 //
 (* ****** ****** *)
 //
@@ -360,7 +356,7 @@ val () =
 (
   prints("gseq_z2rforall: ys = ", ys, "\n"))
 *)
-}(*where*)//let//end-of-[gseq_z2rforall(xs, ys)]
+}(*where*)//end-of-[gseq_z2rforall<xs><x0><ys><y0>]
 *)
 //
 #impltmp
@@ -387,7 +383,7 @@ forall$test<(x0,y0)>(xy) =
 (
   z2rforall$test<x0><y0>(xy.0, xy.1))
 }
-end//let//end-of-[gseq_z2rforall(xs,ys)]
+end(*let*)//end-of-[gseq_z2rforall<xs><x0><ys><y0>]
 //
 (* ****** ****** *)
 //
@@ -422,7 +418,7 @@ val b0 = z2iforall$test<x0>(i0, x0, y0)
 }(*where*)
 }(*where*)
 //
-}(*where*)//end-of-[gseq_z2iforall(xs,ys)]
+}(*where*)//end-of-[gseq_z2iforall<xs><x0><ys><y0>]
 //
 (* ****** ****** *)
 //
@@ -457,7 +453,7 @@ val b0 = z2irforall$test<x0>(i0, x0, y0)
 }(*where*)
 }(*where*)
 //
-}(*where*)//end-of-[gseq_z2irforall(xs, ys)]
+}(*where*)//end-of-[gseq_z2irforall<xs><x0><ys><y0>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -479,7 +475,7 @@ where
 {
 #impltmp
 z2forcmp$tcmp<x0> = g_cmp<x0>
-}(*where*)//end-of-[gseq_cmp(xs,ys)]
+}(*where*)//end-of-[gseq_cmp<xs><x0>(xs,ys)]
 //
 #impltmp
 < xs:t0 >
@@ -495,7 +491,7 @@ z2forcmp$tcmp<x0>(x1, y1) =
 (
 if // if
 g_equal<x0>(x1, y1) then 0 else 1)
-}(*where*)//end-of-[gseq_equal(...)]
+}(*where*)//end-of-[gseq_equal<xs><x0>(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -530,7 +526,7 @@ val () =
 (
   prints("gseq_z2forcmp: ys = ", ys, "\n"))
 *)
-}(*where*)//let//end-of-[gseq_z2forcmp(xs, ys)]
+}(*where*)//let//end-of-[gseq_z2forcmp<xs><x0><ys><y0>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -556,7 +552,7 @@ z2forall$test
 where
 { val () =
   z2foritm$work<x0><y0>(x0, y0) }
-}(*where*)//end-of-[gseq_z2foritm(xs,ys)]
+}(*where*)//end-of-[gseq_z2foritm<xs><x0><ys><y0>]
 //
 #impltmp
 < xs:t0 >
@@ -579,7 +575,7 @@ z2rforall$test
 where
 { val () =
   z2rforitm$work<x0><y0>(x0, y0) }
-}(*where*)//end-of-[gseq_z2rforitm(xs,ys)]
+}(*where*)//end-of-[gseq_z2rforitm<xs><x0><ys><y0>]
 //
 (* ****** ****** *)
 //
@@ -605,7 +601,7 @@ where
 {
 val () =
 z2iforitm$work<x0><y0>(i0, x0, y0) }
-}(*where*)//end-of-[gseq_z2iforitm(xs,ys)]
+}(*where*)//end-of-[gseq_z2iforitm<xs><x0><ys><y0>]
 //
 #impltmp
 < xs:t0 >
@@ -629,7 +625,7 @@ where
 {
 val () =
 z2irforitm$work<x0><y0>(i0, x0, y0) }
-}(*where*)//end-of-[gseq_z2iforitm(xs,ys)]
+}(*where*)//end-of-[gseq_z2iforitm<xs><x0><ys><y0>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -670,7 +666,7 @@ forall$test<y0>(y0) =
 (
   x2forall$test<x0><y0>(x0, y0))
 }(*where*)
-}(*where*)//end-of-[gseq_x2forall(xs, ys)]
+}(*where*)//end-of-[gseq_x2forall<xs><x0><ys><y0>]
 *)
 //
 #impltmp
@@ -699,7 +695,7 @@ in//let
 #impltmp
 forall$test<x0> = forall$test_x0(*x0*)
 }
-end//(*let*)//end-of-[gseq_x2forall(xs, ys)]
+end//(*let*)//end-of-[gseq_x2forall<xs><x0><ys><y0>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -731,7 +727,7 @@ in//let
 #impltmp
 iforall$test<x0> = iforall$test_x0(*i0,x0*)
 }
-end//(*let*)//end-of-[gseq_ix2forall(xs, ys)]
+end//(*let*)//end-of-[gseq_ix2forall<xs><x0><ys><y0>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
