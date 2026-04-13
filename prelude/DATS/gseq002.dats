@@ -625,7 +625,7 @@ where
 {
 val () =
 z2irforitm$work<x0><y0>(i0, x0, y0) }
-}(*where*)//end-of-[gseq_z2iforitm<xs><x0><ys><y0>]
+}(*where*)//end-of-[gseq_z2irforitm<xs><x0><ys><y0>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -695,7 +695,7 @@ in//let
 #impltmp
 forall$test<x0> = forall$test_x0(*x0*)
 }
-end//(*let*)//end-of-[gseq_x2forall<xs><x0><ys><y0>]
+end(*let*)//end-of-[gseq_x2forall<xs><x0><ys><y0>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -727,7 +727,7 @@ in//let
 #impltmp
 iforall$test<x0> = iforall$test_x0(*i0,x0*)
 }
-end//(*let*)//end-of-[gseq_ix2forall<xs><x0><ys><y0>]
+end(*let*)//end-of-[gseq_ix2forall<xs><x0><ys><y0>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
