@@ -50,14 +50,16 @@ gasq$seg
 fcast
 gasq$seg_decd
 {xs:t0}{x0:vt}
-( seg
-: gasq$seg(xs, x0)): (GASQ(xs, x0), si, si)
+(
+seg:
+gasq$seg(xs, x0)): (GASQ(xs, x0), si, si)
 //
 fcast
 gasq$seg_encd
 {xs:t0}{x0:vt}
-( rep
-: (GASQ(xs, x0), si, si)): gasq$seg(xs, x0)
+(
+rep:
+(GASQ(xs, x0), si, si)): gasq$seg(xs, x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -68,6 +70,13 @@ GASQ_make_gasq$seg
 (seg
 :gasq$seg(xs,x0)): GASQ(gasq$seg(xs,x0), x0)
 #symload GASQ with GASQ_make_gasq$seg of 1000
+//
+fcast // fun
+GSEQ_make_gasq$seg
+{xs:t0}{x0:t0}
+(seg
+:gasq$seg(xs,x0)): GSEQ(gasq$seg(xs,x0), x0)
+#symload GSEQ with GSEQ_make_gasq$seg of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

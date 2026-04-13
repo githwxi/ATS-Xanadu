@@ -114,6 +114,23 @@ end(*let*)//end(gasq_length<gasq$seg(xs,x0)>)
 //
 #impltmp
 { xs:t0
+, x0:t0 }
+gseq_forall
+<
+gasq$seg(xs,x0)>
+<      x0      >
+(      sg      ) =
+(
+gasq_forall
+<gasq$seg(xs,x0)><x0>(sg)
+) where
+{
+#impltmp
+forall$test1<x0> = forall$test<x0>
+}
+//
+#impltmp
+{ xs:t0
 , x0:vt }
 gasq_forall
 <
@@ -154,6 +171,23 @@ end(*let*)//end(gasq_forall<gasq$seg(xs,x0)>)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, x0:t0 }
+gseq_rforall
+<
+gasq$seg(xs,x0)>
+<      x0      >
+(      sg      ) =
+(
+gasq_rforall
+<gasq$seg(xs,x0)><x0>(sg)
+) where
+{
+#impltmp
+rforall$test1<x0> = rforall$test<x0>
+}
 //
 #impltmp
 { xs:t0
@@ -201,6 +235,17 @@ end(*let*)//end(gasq_rforall<gasq$seg(xs,x0)>)
 //
 #impltmp
 { xs:t0
+, x0:t0 }
+gseq_strmize
+<
+gasq$seg(xs,x0)>
+<      x0      >
+(      sg      ) =
+gasq_strmize
+<gasq$seg(xs,x0)><x0>(sg)
+//
+#impltmp
+{ xs:t0
 , x0:vt }
 gasq_strmize
 <
@@ -229,6 +274,51 @@ $UN.gasq_cget$at$raw
 <   xs   ><   x0   >( xs, lb+i0 ))
 }
 end(*let*)//end(gasq_strmize<gasq$seg(xs,x0)>)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, x0:t0 }
+gseq_rstrmize
+<
+gasq$seg(xs,x0)>
+<      x0      >
+(      sg      ) =
+gasq_rstrmize
+<gasq$seg(xs,x0)><x0>(sg)
+//
+#impltmp
+{ xs:t0
+, x0:vt }
+gasq_rstrmize
+<
+gasq$seg(xs,x0)>
+<      x0      >
+(      sg      ) =
+let
+//
+val
+( xs
+, lb
+, ub ) =
+gasq$seg_decd(sg)
+val xs =
+GASQ_unmk<xs><x0>(xs)
+//
+in//let
+(
+nint_map_lstrm<x0>(ub-lb))
+where
+{
+#impltmp
+map$fopr<ni><x0>(i0) =
+(
+$UN.gasq_cget$at$raw
+<   xs   ><   x0   >( xs, ub-1-i0 ))
+}
+end(*let*)//end(gasq_rstrmize<gasq$seg(xs,x0)>)
 //
 (* ****** ****** *)
 (* ****** ****** *)

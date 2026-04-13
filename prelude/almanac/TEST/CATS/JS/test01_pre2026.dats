@@ -124,7 +124,7 @@ abcde$1$10_0$2 =
 gasq$seg_encd@(GASQ(abcde$1$10), 0, 2)
 val (   ) =
 (
-GASQ(abcde$1$10_0$2).iforitm(
+GSEQ(abcde$1$10_0$2).iforitm(
 lam(i, c) => prints("(",i,":",c,")")); println())
 //
 (* ****** ****** *)
