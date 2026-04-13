@@ -62,8 +62,7 @@ z2tup(GASQ(xs, x0), GASQ(ys, y0)))
 < y0:vt >
 GASQ_z2make
 (xseq, yseq) =
-$UN.castxy//GASQ_make
-(z2tup_make(xseq, yseq))
+$UN.castxy(z2tup_make(xseq, yseq))
 //
 (* ****** ****** *)
 (* ****** ****** *)
