@@ -418,6 +418,8 @@ These will probably be removed:
 [folditm0] should be based on [forall0]
 [folditm1] should be based on [forall1]
 *)
+//
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -443,6 +445,7 @@ where
 #impltmp
 folditm$fopr<x0><r0> = folditm$fopr1<x0><r0>
 }
+*)
 //
 (*
 #impltmp
@@ -465,6 +468,7 @@ gseq_folditm$f2un<xs><x0><r0>(xs, r0, fopr))
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -490,6 +494,7 @@ where
 #impltmp
 rfolditm$fopr<x0><r0> = rfolditm$fopr1<x0><r0>
 }
+*)
 //
 (*
 #impltmp
@@ -512,6 +517,7 @@ gseq_rfolditm$f2un<xs><x0><r0>(xs, r0, fopr))
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -537,6 +543,7 @@ where
 #impltmp
 ifolditm$fopr<x0><r0> = ifolditm$fopr1<x0><r0>
 }
+*)
 //
 (*
 #impltmp
@@ -559,6 +566,7 @@ gseq_ifolditm$f3un<xs><x0><r0>(xs, r0, fopr))
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -584,6 +592,7 @@ where
 #impltmp
 irfolditm$fopr<x0><r0> = irfolditm$fopr1<x0><r0>
 }
+*)
 //
 (*
 #impltmp
@@ -710,7 +719,7 @@ Mon Dec 15 06:39:59 PM EST 2025
 < x0:t0 >
 gseq_filter0_lstrm(xs) =
 (
- gseq_filter_lstrm<xs><x0>(xs))
+gseq_filter_lstrm<xs><x0>(xs))
 where
 {
 (*
@@ -726,7 +735,7 @@ filter$test<x0> = filter$test1<x0>
 < x0:t0 >
 gseq_filter1_lstrm(xs) =
 (
- gseq_filter_lstrm<xs><x0>(xs))
+gseq_filter_lstrm<xs><x0>(xs))
 where
 {
 #impltmp
