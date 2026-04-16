@@ -548,7 +548,7 @@ Mon Jan  5 06:44:09 PM EST 2026
 //
 #impltmp
 < xs:t0 >
-< x0:t0 >
+< x0:vt >
 gasq_sortedq
   ( xs ) =
 let
@@ -558,30 +558,43 @@ gasq_length<xs><x0>(xs)
 //
 fun
 auxloop
-(i0: nint, x0: x0): bool =
+(i0: nint, x0: !x0): bool =
 (
 if // if
 (i0 >= ln)
 then true else
+let
+val res =
 (
 if // if
-sortedq$lteq<x0>(x0, x1)
+sortedq$lteq1<x0>(x0, x1)
 then
 auxloop(i0+1, x1) else false)
-where
+pvx ( ) =
+owed_vt_return0(pf, x1) in res
+end where
 {
-val x1 =
-$UN.gasq_get$at$raw<xs><x0>(xs, i0)}
+val
+(pf | x1) =
+$UN.gasq_lget$at$raw<xs><x0>(xs, i0)}
 )
 //
 in//let
 //
-(
 if // if
 (ln <= 1)
 then true else
-auxloop(1, 
-  $UN.gasq_get$at$raw<xs><x0>(xs, 0)))
+let
+val res =
+auxloop(1, x0)
+pvx ( ) =
+owed_vt_return0(pf, x0) in res
+end where // end-of-(let)
+{
+val
+(pf | x0) =
+(
+  $UN.gasq_lget$at$raw<xs><x0>(xs, 0))}
 //
 end(*let*)//end-of-[gasq_sortedq<xs><x0>(xs)]
 //
@@ -589,7 +602,7 @@ end(*let*)//end-of-[gasq_sortedq<xs><x0>(xs)]
 //
 #impltmp
 < xs:t0 >
-< x0:t0 >
+< x0:vt >
 gasq_sortedq$f2un
   (xs, lteq) =
 (
@@ -597,7 +610,7 @@ gasq_sortedq<xs><x0>(xs))
 where
 {
 #impltmp
-sortedq$lteq<x0>(*x1,x2*) = lteq(*x1,x2*)
+sortedq$lteq1<x0>(*x1,x2*) = lteq(*x1,x2*)
 }(*where*)//end-of-[gasq_sortedq$f2un(xs,lteq)]
 //
 (* ****** ****** *)
@@ -671,7 +684,7 @@ end(*let*)//else//endof(bsearch(lb,ub))
 //
 #impltmp
 < xs:t0 >
-< x0:t0 >
+< x0:vt >
 gasq_bin$search$f1un
   (xs, tcmp) =
 (
@@ -679,7 +692,7 @@ gasq_bin$search<xs><x0>(xs))
 where
 {
 #impltmp
-search$tcmp<x0>(*x1,x2*) = tcmp(*x1,x2*)
+search$tcmp1<x0>(*x1,x2*) = tcmp(*x1,x2*)
 }(*where*)//end-of-[gasq_bin$search$f1un(xs,tcmp)]
 //
 (* ****** ****** *)
