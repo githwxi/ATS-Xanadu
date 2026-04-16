@@ -331,6 +331,13 @@ rforall$test1<x0>(x0) = test(x0)
 (* ****** ****** *)
 //
 (*
+HX-2026-04-16:
+This is a POOR choice!
+iforall0
+should depend pn forall0
+iforall1
+should depend pn forall1
+Thu Apr 16 01:08:35 AM EDT 2026
 #impltmp
 < xs:vt >
 < x0:vt >
