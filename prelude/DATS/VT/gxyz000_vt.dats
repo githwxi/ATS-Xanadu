@@ -157,6 +157,12 @@ rforall$test<x0> = rforall$test1<x0>
 (* ****** ****** *)
 //
 (*
+HX-2026-04-16:
+iforall0->forall0
+iforall1->forall1
+Thu Apr 16 12:45:07 AM EDT 2026
+*)
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -184,6 +190,12 @@ iforall$test<x0> = iforall$test1<x0>
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-16:
+irforall0->rforall0
+irforall1->rforall1
+Thu Apr 16 12:45:07 AM EDT 2026
+*)
 (*
 #impltmp
 < xs:t0 >
@@ -213,6 +225,12 @@ irforall$test<x0> = irforall$test1<x0>
 (* ****** ****** *)
 //
 (*
+HX-2026-04-16:
+forall0$f1un->forall0
+forall1$f1un->forall1
+Thu Apr 16 12:45:07 AM EDT 2026
+*)
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -231,6 +249,12 @@ gseq_forall1$f1un
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-16:
+rforall0$f1un->rforall0
+rforall1$f1un->rforall1
+Thu Apr 16 12:45:07 AM EDT 2026
+*)
 (*
 #impltmp
 < xs:t0 >
@@ -251,6 +275,12 @@ gseq_rforall1$f1un
 (* ****** ****** *)
 //
 (*
+HX-2026-04-16:
+iforall0$f2un->iforall0
+iforall1$f2un->iforall1
+Thu Apr 16 12:45:07 AM EDT 2026
+*)
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -269,6 +299,12 @@ gseq_iforall1$f2un
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-16:
+irforall0$f1un->irforall0
+irforall1$f1un->irforall1
+Thu Apr 16 12:45:07 AM EDT 2026
+*)
 (*
 #impltmp
 < xs:t0 >
@@ -291,7 +327,10 @@ gseq_irforall1$f2un
 //
 (*
 HX-2024-08-03:
+foritm0->forall0
+foritm1->forall1
 Sat 03 Aug 2024 05:37:49 PM EDT
+Thu Apr 16 12:49:54 AM EDT 2026
 *)
 //
 (*
@@ -323,6 +362,15 @@ foritm$work<x0> = foritm$work1<x0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+(*
+HX-2024-08-03:
+rforitm0->rforall0
+rforitm1->rforall1
+Sat 03 Aug 2024 05:37:49 PM EDT
+Thu Apr 16 12:49:54 AM EDT 2026
+*)
+//
 (*
 #impltmp
 < xs:t0 >
@@ -353,6 +401,14 @@ rforitm$work<x0> = rforitm$work1<x0>
 (* ****** ****** *)
 //
 (*
+HX-2024-08-03:
+iforitm0->foritm0
+iforitm1->foritm1
+Sat 03 Aug 2024 05:37:49 PM EDT
+Thu Apr 16 12:49:54 AM EDT 2026
+*)
+//
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -380,6 +436,14 @@ iforitm$work<x0> = iforitm$work1<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2024-08-03:
+irforitm0->rforitm0
+irforitm1->rforitm1
+Sat 03 Aug 2024 05:37:49 PM EDT
+Thu Apr 16 12:49:54 AM EDT 2026
+*)
 //
 (*
 #impltmp
@@ -742,6 +806,12 @@ where
 filter$test<x0> = filter$test1<x0>
 }
 //
+(*
+HX-2026-04-16:
+Thu Apr 16 12:49:54 AM EDT 2026
+filter0$f1un_lstrm->filter0_lstrm
+filter1$f1un_lstrm->filter1_lstrm
+*)
 (*
 #impltmp
 < xs:t0 >
