@@ -707,15 +707,19 @@ gasq_forall1 = gasq_forall<xs><x0>
 < x0:vt >
 gasq_rforall1 = gasq_rforall<xs><x0>
 //
+(*
+HX-2026-04-16:
+iforall1->forall1
+irforall1->rforall1
 #impltmp
 < xs:t0 >
 < x0:vt >
 gasq_iforall1 = gasq_iforall<xs><x0>
-//
 #impltmp
 < xs:t0 >
 < x0:vt >
 gasq_irforall1 = gasq_irforall<xs><x0>
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
