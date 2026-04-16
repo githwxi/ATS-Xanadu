@@ -120,11 +120,15 @@ lam(i, c) => prints("(",i,":",c,")")); println())
 (* ****** ****** *)
 //
 val
-abcde$1$10_0$2 =
-gasq$seg_encd@(GASQ(abcde$1$10), 0, 2)
+abcde$1$10_0$3 =
+gasq$seg_encd@(GASQ(abcde$1$10), 0, 3)
 val (   ) =
 (
-GSEQ(abcde$1$10_0$2).iforitm(
+GSEQ(abcde$1$10_0$3).iforitm(
+lam(i, c) => prints("(",i,":",c,")")); println())
+val (   ) =
+(
+GSEQ(abcde$1$10_0$3).irforitm(
 lam(i, c) => prints("(",i,":",c,")")); println())
 //
 (* ****** ****** *)
