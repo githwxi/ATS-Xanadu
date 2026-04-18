@@ -137,6 +137,19 @@ strm_vt_make_i1range(i1range): strm_vt(si)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fcast // fun
+GASQ_make_i1range
+  (xs: i1range): GASQ(i1range, sint(*x0*))
+fcast // fun
+GSEQ_make_i1range
+  (xs: i1range): GSEQ(i1range, sint(*x0*))
+//
+#symload GASQ with GASQ_make_i1range of 1000
+#symload GSEQ with GSEQ_make_i1range of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_almanac_pre2026_SATS_i1range.sats] *)
 (***********************************************************************)
