@@ -400,6 +400,15 @@ i1val_make_node
 (* ****** ****** *)
 //
 datatype
+teqi1cmp =
+|
+TEQI1CMPnone of ((*void*))
+|
+TEQI1CMPsome of (token(*EQ0*), i1cmp)
+//
+(* ****** ****** *)
+//
+datatype
 i1dcl_node =
 //
 (* ****** ****** *)

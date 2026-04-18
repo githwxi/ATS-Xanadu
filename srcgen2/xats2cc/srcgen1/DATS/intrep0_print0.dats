@@ -711,7 +711,7 @@ prints("I0Dvardclst(",tknd,";",i0vs,")"))
 , iexp, i0vs) =>
 ( prints
   ("I0Dimplmnt0(", tknd, ";")
-; prints(lvl0, ";", stmp, ";", dimp, ")")
+; prints(lvl0, ";", stmp, ";", dimp, ";")
 ; prints(fias, ";", iexp, ";", i0vs, ")"))
 //
 (* ****** ****** *)
