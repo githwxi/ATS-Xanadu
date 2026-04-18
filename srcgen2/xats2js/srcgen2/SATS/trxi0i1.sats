@@ -52,14 +52,14 @@ XATSOPT/xats2cc/srcgen1"
 "./../../..\
 /HATS/xatsopt_sats.hats"
 //
-#staload
-".\
-/../../..\
-/xats2cc/srcgen1/SATS/intrep0.sats"
-//
 (* ****** ****** *)
 //
 #staload "./intrep1.sats"
+//
+#staload
+".\
+/../../../xats2cc\
+/srcgen1/SATS/intrep0.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -222,6 +222,13 @@ i0dclist_trxi0i1
 fun
 teqi0exp_trxi0i1
 (tdxp: teqi0exp, env0: !envi0i1): teqi1cmp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0dclistopt_trxi0i1
+(dopt: i0dclistopt, env0: !envi0i1): i1dclistopt
 //
 (* ****** ****** *)
 (* ****** ****** *)

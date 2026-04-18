@@ -456,6 +456,44 @@ i1dcl_make_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+i1parsed_fprint
+(ipar:i1parsed, out0:FILR): void
+//
+(* ****** ****** *)
+//
+fun
+i1parsed_stadyn$get:(i1parsed)->sint
+fun
+i1parsed_nerror$get:(i1parsed)->sint
+//
+fun
+i1parsed_source$get:(i1parsed)->lcsrc
+//
+fun
+i1parsed_parsed$get:(i1parsed)->i1dclistopt
+//
+(* ****** ****** *)
+//
+#symload stadyn with i1parsed_stadyn$get
+#symload nerror with i1parsed_nerror$get
+#symload source with i1parsed_source$get
+#symload parsed with i1parsed_parsed$get
+//
+(* ****** ****** *)
+//
+fun
+i1parsed_make_args
+( stadyn:sint
+, nerror:sint
+, source:lcsrc
+, parsed:i1dclistopt): i1parsed//end-fun
+//
+#symload i1parsed with i1parsed_make_args
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_SATS_intrep1.sats] *)
 (***********************************************************************)

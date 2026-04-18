@@ -62,7 +62,7 @@ XATSOPT "./../../.."
 //
 #implfun
 i1parsed_of_trxi0i1
-  (dpar) =
+  (   dpar   ) =
 let
 //
 val stadyn =
