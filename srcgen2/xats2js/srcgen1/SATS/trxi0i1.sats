@@ -391,7 +391,7 @@ trxi0i1_i0fundclist
 (* ****** ****** *)
 fun
 trxi0i1_i0dclistopt
-(env0: !envi0i1, dcls: i0dclistopt): i1dclistopt
+(env0: !envi0i1, dopt: i0dclistopt): i1dclistopt
 (* ****** ****** *)
 (* ****** ****** *)
 //
