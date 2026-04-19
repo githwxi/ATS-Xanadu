@@ -979,7 +979,8 @@ stamp, dimpl, fiarglst, i0exp, i0varlst)
 //
 (* ****** ****** *)
 //
-|I0Dnone0 of ((*0*)) |I0Dnone1 of ( d3ecl )
+|I0Dnone0 of ((*0*))
+|I0Dnone1 of (d3ecl) |I0Dnone2 of (i0dcl)
 //
 (* ****** ****** *)
 (*
@@ -1009,7 +1010,9 @@ i0dcl_fprint
 fun
 i0dcl_none0(loc0: loctn): (i0dcl)
 fun
-i0dcl_none1(d3e0: d3ecl): (i0dcl)
+i0dcl_none1(d3cl: d3ecl): (i0dcl)
+fun
+i0dcl_none2(idcl: i0dcl): (i0dcl)
 //
 fun
 i0dcl_make_node(

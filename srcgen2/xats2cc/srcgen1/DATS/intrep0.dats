@@ -131,10 +131,21 @@ end//let//endof(i0exp_none1)
 (* ****** ****** *)
 //
 #implfun
+i0dcl_none0
+(  loc0  ) =
+i0dcl(loc0,I0Dnone0(*0*))
+//
+#implfun
 i0dcl_none1
 (  d3cl  ) =
 i0dcl_make_node
 (d3cl.lctn(),I0Dnone1(d3cl))
+//
+#implfun
+i0dcl_none2
+(  idcl  ) =
+i0dcl_make_node
+(idcl.lctn(),I0Dnone2(idcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)

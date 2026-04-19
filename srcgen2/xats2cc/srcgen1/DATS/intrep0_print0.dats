@@ -745,14 +745,23 @@ val
 loc0 = idcl.lctn() in//let
 prints("I0Dnone0(", loc0, ")") end//let
 //
-|
-I0Dnone1(d3cl) =>
+|I0Dnone1(d3cl) =>
+(
 let
 val
 loc0 = idcl.lctn() in//let
 (
-prints
-( "I0Dnone1(", loc0, ";", d3cl, ")") ) end
+prints(
+  "I0Dnone1(", loc0, ";", d3cl, ")")) end)
+//
+|I0Dnone2(dcl1) =>
+(
+let
+val
+loc0 = idcl.lctn() in//let
+(
+prints(
+  "I0Dnone2(", loc0, ";", dcl1, ")")) end)
 //
 (* ****** ****** *)
 (* ****** ****** *)

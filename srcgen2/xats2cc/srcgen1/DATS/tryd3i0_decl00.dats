@@ -75,6 +75,31 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0dcl_tryd3i0
+(idcl, enw0) =
+let
+//
+val () =
+prerrsln("\
+i0dcl_tryd3i0: idcl = ", idcl)
+//
+in//let
+//
+case+
+idcl.node() of
+//
+(* ****** ****** *)
+|_(* otherwise *) => i0dcl_none2(idcl)
+(* ****** ****** *)
+//
+end where//let//endof(i0dcl_tryd3i0(...))
+{
+}(*where*)//end-of-[i0dcl_tryd3i0(d3cl,enw0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_tryd3i0_decl00.dats] *)
 (***********************************************************************)
