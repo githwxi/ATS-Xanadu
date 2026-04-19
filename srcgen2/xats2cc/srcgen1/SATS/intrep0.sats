@@ -650,6 +650,12 @@ token(*knd*),sint(*npf*),l0i0elst)
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-19:
+FV(i0exp) = i0varlst
+*)
+|I0Eclsd of (i0exp, i0varlst)
+//
 |I0Elam0 of
 (sint(*lvl*)
 ,token(*knd*)
@@ -965,8 +971,7 @@ I0Dinclude of
 //
 (* ****** ****** *)
 //
-|I0Dimplmnt0 of
-(
+|I0Dimplmnt0 of (
 token(*knd*), sint(*lvl0*),
 stamp, dimpl, fiarglst, i0exp, i0varlst)
 //

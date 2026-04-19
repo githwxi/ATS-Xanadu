@@ -64,8 +64,16 @@ fun
 enwd3i0_make_nil
   ( (*void*) ): enwd3i0
 fun
-enwd3i0_free_top
+enwd3i0_free$top
   ( enw0: !enwd3i0 ): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+enwd3i0_dfun$search
+( env0:
+! enwd3i0, dfun: d2var): i0varlst
 //
 (* ****** ****** *)
 (* ****** ****** *)

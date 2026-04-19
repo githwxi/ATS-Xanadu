@@ -397,7 +397,7 @@ ENVD3I0
 (* ****** ****** *)
 //
 #implfun
-envd3i0_free_top
+envd3i0_free$top
   (  env0  ) =
 let
 val+
@@ -417,7 +417,7 @@ trxstk_free$top(trxstk)) where
 val+
 ~ENVD3I0(d2vstk, trxstk) = env0
 }(*where*)
-end(*let*)//end-of-(envd3i0_free_top())
+end(*let*)//end-of-(envd3i0_free$top())
 //
 (* ****** ****** *)
 (* ****** ****** *)

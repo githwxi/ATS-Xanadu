@@ -140,7 +140,7 @@ fun
 envd3i0_make_nil
   ( (*void*) ): envd3i0
 fun
-envd3i0_free_top
+envd3i0_free$top
   ( env0: !envd3i0 ): void
 //
 (* ****** ****** *)
