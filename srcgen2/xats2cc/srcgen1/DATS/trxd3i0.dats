@@ -90,7 +90,7 @@ d3eclistopt_trxd3i0(parsed, env0)
 in//let
 //
 let
-val ((*0*)) = envd3i0_free_top(env0)
+val ((*0*)) = envd3i0_free$top(env0)
 in//let
 (
   i0parsed(stadyn,nerror,source,parsed))

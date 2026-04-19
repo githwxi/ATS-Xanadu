@@ -464,6 +464,17 @@ prints(test,";", ithn,";", iels,")"))
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-19:
+FV(i0e1) = i0vs!
+Sun Apr 19 02:45:21 AM EDT 2026
+*)
+|I0Eclsd
+(i0e1, i0vs) =>
+(
+prints
+("I0Eclsd(", i0e1,";", i0vs,")"))
+//
 |I0Elam0
 (lvl0
 ,tknd
