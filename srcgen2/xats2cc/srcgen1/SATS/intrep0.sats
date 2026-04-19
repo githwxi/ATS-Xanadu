@@ -393,10 +393,8 @@ i0typ_fprint
 //
 (* ****** ****** *)
 //
-(*
 fun
 i0typ_none0((*void*)): i0typ
-*)
 fun
 i0typ_none1(t2p0: s2typ): i0typ
 //
@@ -694,7 +692,8 @@ FV(i0exp) = i0varlst
 |I0Erturn of (i0cal, i0exp)//HX: call-ret
 //
 (* ****** ****** *)
-|I0Enone0 of ((*0*)) | I0Enone1 of (d3exp)
+|I0Enone0 of ((*0*))
+|I0Enone1 of (d3exp) |I0Enone2 of (i0exp)
 (* ****** ****** *)
 (*
 |I0Eerrck of (int(*lvl*), i0exp)//HX:tread-error
@@ -753,6 +752,9 @@ i0var_none1
 fun
 i0exp_none1
 (d3e0: d3exp): i0exp
+fun
+i0exp_none2
+(i0e0: i0exp): i0exp
 //
 fun
 i0exp_rturn
