@@ -67,10 +67,55 @@ XATSOPT "./../../.."
 #staload
 "./../../../SATS/lexing0.sats"
 (* ****** ****** *)
+#staload
+"./../../../SATS/dynexp2.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/tryd3i0.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#vwtpdef
+dfnstk = (*$MAP*)stkmap(i0varlst)
+//
+(* ****** ****** *)
+//
+#symload lctn with d2var_get_lctn
+(*
+#symload name with d2var_get_name
+*)
+#symload unam with d2var_get_unam
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datavwtp
+enwd3i0 =
+ENWD3I0 of (dfnstk)
+//
+#absimpl enwd3i0_vtbx = enwd3i0
+//
+in//local
+//
+(* ****** ****** *)
+//
+#implfun
+enwd3i0_make_nil
+  ((*void*)) =
+(
+ENWD3I0(dfnstk)) where
+{
+  val dfnstk = stkmap_make_nil()
+}(*where*)//end-of-[enwd3i0_make_nil()]
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end-of-[ local(enwd3i0_vtbx) ]
 //
 (* ****** ****** *)
 (* ****** ****** *)

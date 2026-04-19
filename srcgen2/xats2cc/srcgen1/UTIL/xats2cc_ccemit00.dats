@@ -49,7 +49,10 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
+//
 #staload "./../SATS/trxd3i0.sats"
+#staload "./../SATS/tryd3i0.sats"
+//
 (*
 #staload "./../SATS/intrep1.sats"
 *)
@@ -109,11 +112,14 @@ end//let//end-of-(val(...))
 val ipar =
 (
   i0parsed_of_trxd3i0(dpar))
+val ipar =
+(
+  i0parsed_of_tryd3i0(ipar))
 //
 // (*
 val (  ) =
 prerrsln
-("ipar(trxd3i0) = ", (ipar))
+("ipar(tryd3i0) = ", (ipar))
 // *)
 //
 (*
