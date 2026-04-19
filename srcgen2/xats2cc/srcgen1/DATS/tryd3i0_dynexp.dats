@@ -75,17 +75,48 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-<x0><y0>
-list_tryd3i0_fnp
-( xs, e1, fopr ) =
-(
-list_map$e1nv<x0><y0><e1>(xs, e1)) where
+#implfun
+i0exp_tryd3i0
+(i0e0, env0) =
+let
+//
+val () =
+prerrsln("\
+i0exp_tryd3i0: i0e0 = ", i0e0)
+//
+in//let
+//
+case+
+i0e0.node() of
+//
+|I0Eint _ => ( i0e0 )
+|I0Ebtf _ => ( i0e0 )
+|I0Echr _ => ( i0e0 )
+|I0Eflt _ => ( i0e0 )
+|I0Estr _ => ( i0e0 )
+//
+|I0Elam0 _ => f0_lam0(i0e0, enw0)
+|I0Efix0 _ => f0_fix0(i0e0, enw0)
+//
+|
+_(*otherwise*) => i0exp_none2(i0e0)
+//
+(* ****** ****** *)
+//
+end where
 {
-#vwtpdef e1 = enwd3i0
-#impltmp
-map$e1nv$fopr<x0><y0><e1> = fopr(*x0, e1*)
-}(*where*)//end-of-[list_tryd3i0_fnp(xs,e1,fopr)]
+//
+fun
+f0_lam0
+( i0e0: i0exp
+, enw0: !enwd3i0): i1exp = i0exp_none2(i0e0)
+//
+fun
+f0_fix0
+( i0e0: i0exp
+, enw0: !enwd3i0): i1exp = i0exp_none2(i0e0)
+//
+}(*where*)//end-of-[i0exp_tryd3i0(i0e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

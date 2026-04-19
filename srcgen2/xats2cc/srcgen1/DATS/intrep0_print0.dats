@@ -575,20 +575,30 @@ prints("I0Erturn(",ical,";",i0e1,")"))
 //
 |
 I0Enone0() =>
+(
 let
 val
 loc0 = iexp.lctn() in//let
 (
-prints( "I0Enone0(", loc0, ")" )) end
+prints( "I0Enone0(", loc0, ")" )) end)
 //
-|
-I0Enone1(d3e1) =>
+|I0Enone1(d3e1) =>
+(
 let
 val
 loc0 = iexp.lctn() in//let
 (
 prints
-("I0Enone1(", loc0, ";", d3e1, ")")) end
+("I0Enone1(", loc0, ";", d3e1, ")")) end)
+//
+|I0Enone2(i0e1) =>
+(
+let
+val
+loc0 = iexp.lctn() in//let
+(
+prints
+("I0Enone2(", loc0, ";", i0e1, ")")) end)
 //
 (* ****** ****** *)
 //
