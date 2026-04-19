@@ -77,7 +77,7 @@ XATSOPT "./../../.."
 //
 #implfun
 i0exp_tryd3i0
-(i0e0, env0) =
+(i0e0, enw0) =
 let
 //
 val () =
@@ -108,15 +108,68 @@ end where
 //
 fun
 f0_lam0
-( i0e0: i0exp
-, enw0: !enwd3i0): i1exp = i0exp_none2(i0e0)
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Elam0
+(lvl0
+,tknd, fias
+,i0e1, i0vs) = i0e0.node()
+//
+val i0e1 =
+(
+  i0exp_tryd3i0(i0e1, enw0))
+//
+in//let
+//
+i0exp(loc0, i0t0,
+  I0Elam0(lvl0,tknd,fias,i0e1,i0vs))
+//
+end(*let*)//end-of-[f0_lam0(i0e0,enw0)]
 //
 fun
 f0_fix0
-( i0e0: i0exp
-, enw0: !enwd3i0): i1exp = i0exp_none2(i0e0)
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
 //
-}(*where*)//end-of-[i0exp_tryd3i0(i0e0,env0)]
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Efix0
+(lvl0
+,tknd
+,dpid, fias
+,i0e1, i0vs) = i0e0.node()
+//
+val i0e1 =
+(
+  i0exp_tryd3i0(i0e1, enw0))
+//
+in//let
+//
+i0exp
+(
+loc0,
+i0t0,
+I0Efix0(
+  lvl0, tknd, dpid,fias,i0e1, i0vs))
+//
+end(*let*)//end-of-[f0_fix0(i0e0,enw0)]
+//
+}(*where*)//end-of-[i0exp_tryd3i0(i0e0,enw0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

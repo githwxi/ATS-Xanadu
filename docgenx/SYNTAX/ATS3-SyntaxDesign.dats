@@ -42,13 +42,42 @@ else
 endif // if (i0 = f0)
 //
 in//let
+(
   if s1 > f2
   then
     list_vt_nil()
   else
     list_vt_reverse0<a>(loop(s1,list_vt_nil))
-end
+)
+end(*let*)
 //
+(* ****** ****** *)
+//
+(*
+HX-2026-04-19:
+Suggestions for loop syntax:
+Sun Apr 19 11:14:18 AM EDT 2026
+*)
+//
+$forall x in xs with ( ... )
+$foritm x in xs with ( ... )
+$rforall x in xs with ( ... )
+$rforitm x in xs with ( ... )
+$iforall i, x in xs with ( ... )
+$iforitm i, x in xs with ( ... )
+$irforall i, x in xs with ( ... )
+$irforitm i, x in xs with ( ... )
+//
+$z2forall x, y in xs, ys with ( ... )
+//
+$map_list x in xs with ( ... )
+$map_strm x in xs with ( ... )
+$map_strx x in xs with ( ... )
+$map_llist x in xs with ( ... )
+$map_lstrm x in xs with ( ... )
+$map_lstrx x in xs with ( ... )
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3-Xanadu/docgenx/SYNTAX/ATS3-SyntaxDesign.dats] *)
