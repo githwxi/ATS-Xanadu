@@ -75,6 +75,21 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<x0><y0>
+list_tryd3i0_fnp
+( xs, e1, fopr ) =
+(
+list_map$e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = enwd3i0
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = fopr(*x0, e1*)
+}(*where*)//end-of-[list_tryd3i0_fnp(xs,e1,fopr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_tryd3i0_dynexp.dats] *)
 (***********************************************************************)
