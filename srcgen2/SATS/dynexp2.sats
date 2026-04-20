@@ -1024,8 +1024,10 @@ D2Etry0 of
 //
 (* ****** ****** *)
 //
-|D2Eaddr of (d2exp)//left-val//$addr
-|D2Eview of (d2exp)//left-val//$view
+|D2Eaddr of (d2exp)//left-val: $addr
+|D2Eview of (d2exp)//left-val: $view
+//
+|D2Elval of (d2exp)//left-val: $lval
 //
 (*
 HX-2024-10-05: there is only D3Eflat!

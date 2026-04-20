@@ -598,6 +598,10 @@ D2Eaddr(d2e1) =>
 D2Eview(d2e1) =>
 (
   prints("D2Eview(", d2e1, ")"))
+|
+D2Elval(d2e1) =>
+(
+  prints("D2Elval(", d2e1, ")"))
 //
 |
 D2Eeval(d2e1) =>

@@ -451,10 +451,14 @@ prints( tknd, ";",d3e1, ";",dcls,")"))
 //
 |D3Eaddr
 (   d3e1   ) =>
-prints("D3Eaddr(",d3e1,")") // left-val
+prints("D3Eaddr(",d3e1,")")//lval:addr
 |D3Eview
 (   d3e1   ) =>
-prints("D3Eview(",d3e1,")") // left-val
+prints("D3Eview(",d3e1,")")//lval:view
+|D3Elval
+(   d3e1   ) =>
+prints("D3Elval(",d3e1,")")//lval:both
+//
 |D3Eflat
 (   d3e1   ) =>
 prints("D3Eflat(",d3e1,")") // left-val
