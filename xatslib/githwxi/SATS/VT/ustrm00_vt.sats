@@ -5,12 +5,12 @@ HX-2026-04-07:
 [ustream]:
 stream with
 unboxed constructors!
-Introducing 'ubxd' is
+Introducing 'uflat' is
 a big step towards supporting
 C-style of programming in ATS3.
 In particular, ustrm_vt should
 be a very telling example of the
-usefulness of 'ubxd'.
+usefulness of 'uflat'.
 *)
 (* ****** ****** *)
 (* ****** ****** *)

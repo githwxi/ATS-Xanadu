@@ -761,6 +761,8 @@ d2e0.node() of
 | D2Ecsts _ => ()
 *)
 //
+(* ****** ****** *)
+//
 |D2Esym0 _ =>
 f0_sym0(env0, d2e0)
 //
@@ -775,6 +777,8 @@ trsym2b_s2explst(env0, s2es)
 *)
 endlet // end of [D2Esapp(...)]
 //
+(* ****** ****** *)
+//
 |D2Etapp
 (d2f0, s2es) =>
 let
@@ -786,12 +790,21 @@ trsym2b_s2explst(env0, s2es)
 *)
 endlet // end of [D2Etapp(...)]
 //
-(*
-|D2Edap0 _ => ...
-*)
+(* ****** ****** *)
+//
+|
+D2Edap0
+(   d2f0   ) =>
+let
+//
+val () =
+trsym2b_d2exp(env0, d2f0)
+endlet // end-of-[D2Edap0(...)]
+//
 |
 D2Edapp
-(d2f0,npf1,d2es) =>
+(d2f0
+,npf1, d2es) =>
 let
 //
 val () =
@@ -817,8 +830,12 @@ val () =
 //
 } (*where*) // end of [D2Edapp]
 //
+(* ****** ****** *)
+//
 |
 D2Eproj _ => f0_proj(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |
 D2Elet0
@@ -828,9 +845,13 @@ trsym2b_d2exp(env0, d2e1))
 where
 { val () =
   trsym2b_d2eclist(env0, dcls) }
+//
+(* ****** ****** *)
+//
 |
 D2Eift0
-(d2e1,dthn,dels) =>
+(d2e1
+,dthn, dels) =>
 let
 val () =
 trsym2b_d2exp(env0, d2e1)
@@ -841,13 +862,15 @@ trsym2b_d2expopt(env0, dels) end
 //
 |
 D2Ecas0
-(tknd,d2e1,d2cs) =>
+(tknd
+,d2e1, d2cs) =>
 let
 val () =
 trsym2b_d2exp(env0, d2e1)
 val () =
 trsym2b_d2clslst(env0, d2cs) end
 //
+(* ****** ****** *)
 |
 D2Eseqn
 (d2es, d2e1) =>
@@ -857,32 +880,35 @@ where
 { val () =
   trsym2b_d2explst(env0, d2es) }
 //
+(* ****** ****** *)
 |
 D2Etup0
-( npf1, d2es) =>
+(npf1, d2es) =>
 let
 val () =
 trsym2b_d2explst(env0, d2es) end
 |
 D2Etup1
-( tknd
-, npf1, d2es) =>
+(tknd
+,npf1, d2es) =>
 let
 val () =
 trsym2b_d2explst(env0, d2es) end
 |
 D2Ercd2
-( tknd
-, npf1, ldes) =>
+(tknd
+,npf1, ldes) =>
 let
 val () =
 trsym2b_l2d2elst(env0, ldes) end
 //
+(* ****** ****** *)
+//
 |
 D2Elam0
-( tknd
-, f2as, sres
-, arrw, dexp) =>
+(tknd
+,f2as, sres
+,arrw, dexp) =>
 let
 //
 val () =
@@ -894,10 +920,10 @@ val () =
 //
 |
 D2Efix0
-( tknd
-, d2v0
-, f2as, sres
-, arrw, dexp) =>
+(tknd
+,d2v0
+,f2as, sres
+,arrw, dexp) =>
 let
 //
 val () =
@@ -907,6 +933,7 @@ val () =
 (
   trsym2b_d2exp(env0, dexp)) end
 //
+(* ****** ****** *)
 |
 D2Etry0
 ( tknd
@@ -917,6 +944,8 @@ trsym2b_d2exp(env0, d2e1)//val
 val () =
 trsym2b_d2clslst(env0, dcls)//val
 endlet // end-[D2Etry0(tknd,...)]
+//
+(* ****** ****** *)
 //
 |
 D2Eaddr
@@ -930,7 +959,14 @@ D2Eview
 let
 val () =
   trsym2b_d2exp(env0 , d2e1) end
+|
+D2Elval
+(   d2e1   ) =>
+let
+val () =
+  trsym2b_d2exp(env0 , d2e1) end
 //
+(* ****** ****** *)
 |
 D2Eeval
 (   d2e1   ) =>
@@ -951,6 +987,8 @@ let
 val () =
   trsym2b_d2exp(env0 , d2e1) end
 //
+(* ****** ****** *)
+//
 |
 D2Ewhere
 (d2e1, dcls) =>
@@ -959,6 +997,8 @@ trsym2b_d2exp(env0, d2e1))
 where
 { val () =
   trsym2b_d2eclist(env0, dcls) }
+//
+(* ****** ****** *)
 //
 |
 D2Eassgn
@@ -990,8 +1030,8 @@ val () =
 trsym2b_d2exp(env0, d2e1) endlet
 |
 D2El1azy
-( dsym
-, d2e1, d2es) =>
+(dsym
+,d2e1, d2es) =>
 let
 val () =
 trsym2b_d2exp(env0, d2e1)
@@ -999,8 +1039,8 @@ val () =
 trsym2b_d2explst(env0, d2es) endlet
 |
 D2Eelazy
-( dsym
-, d2e1, d2es) =>
+(dsym
+,d2e1, d2es) =>
 let
 val () =
 trsym2b_d2exp(env0, d2e1)
@@ -1011,8 +1051,8 @@ trsym2b_d2explst(env0, d2es) endlet
 //
 |
 D2Eannot
-( d2e1
-, s1e2, s2e2) =>
+(d2e1
+,s1e2, s2e2) =>
 (
 trsym2b_d2exp(env0, d2e1)) where
 {

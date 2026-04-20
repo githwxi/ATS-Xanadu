@@ -508,6 +508,8 @@ two attributes of left values
 *)
 |D3Eaddr of (d3exp)//left-val-addr
 |D3Eview of (d3exp)//left-val-view
+|D3Elval of (d3exp)//left-val-both
+//
 |D3Eflat of (d3exp)//left-val-content
 //
 (* ****** ****** *)

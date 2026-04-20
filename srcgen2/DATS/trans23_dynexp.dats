@@ -1176,6 +1176,10 @@ d3exp_make_tpnd
 |D2Eview _ => f0_view(env0, d2e0)
 //
 (*
+|D2Elval _ => f0_lval(env0, d2e0)
+*)
+//
+(*
 HX-2026-02-17:
 no D2Eflat; only D3Eflat!
 |D2Eflat _ => f0_flat(env0, d2e0)

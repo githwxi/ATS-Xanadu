@@ -1286,6 +1286,9 @@ d2e0.node() of
 //
 |D2Eaddr _ => f0_addr(env0, d2e0)
 |D2Eview _ => f0_view(env0, d2e0)
+(*
+|D2Elval _ => f0_lval(env0, d2e0)
+*)
 //
 (* ****** ****** *)
 //
