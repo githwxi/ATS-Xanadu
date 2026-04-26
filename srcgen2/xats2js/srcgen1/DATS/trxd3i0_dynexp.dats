@@ -1842,7 +1842,6 @@ i0p1 = trxd3i0_d3pat(env0, d3p1)
 val
 i0gs = trxd3i0_d3gualst(env0, d3gs) }
 //
-//
 end(*let*)//end-of-[trxd3i0_d3gpt(env0,dgpt)]
 //
 (* ****** ****** *)

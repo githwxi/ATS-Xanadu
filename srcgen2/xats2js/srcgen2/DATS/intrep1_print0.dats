@@ -241,7 +241,6 @@ end(*let*)//end-of-[i1val_fprint(i1v0,out0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #implfun
 i1ins_fprint
 (iins, out0) =
@@ -457,7 +456,6 @@ end(*let*)//end-of-[i1ins_fprint(iins,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 #implfun
 i1dcl_fprint
