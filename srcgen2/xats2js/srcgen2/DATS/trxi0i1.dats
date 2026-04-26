@@ -52,10 +52,10 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #staload ".\
 /../../../xats2cc\
 /srcgen1/SATS/intrep0.sats"//...
+//
 #staload "./../SATS/intrep1.sats"
 #staload "./../SATS/trxi0i1.sats"
 //
