@@ -116,7 +116,9 @@ are addressed:
 #typedef s2cst = $S2E.s2cst
 #typedef s2var = $S2E.s2var
 #typedef s2exp = $S2E.s2exp
-#typedef s2typ = $T2P.s2typ
+#typedef s2typ = $S2E.s2typ
+(* ****** ****** *)
+#typedef s2vts = $T2P.s2vts
 (* ****** ****** *)
 #typedef d2var = $D2E.d2var
 (* ****** ****** *)
@@ -941,6 +943,11 @@ i0dcl_node =
 (token(*STATIC*), i0dcl)
 |I0Dextern of
 (token(*EXTERN*), i0dcl)
+(* ****** ****** *)
+//
+|I0Dtmpsub of
+(s2vts(*tmpsub*), i0dcl)
+//
 (* ****** ****** *)
 //
 |I0Ddclst0 of (i0dclist)

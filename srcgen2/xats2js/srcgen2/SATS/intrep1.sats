@@ -642,7 +642,60 @@ i1dcl_node =
 //
 (* ****** ****** *)
 //
+|I1Dextern of
+(token(*kind*), i1dcl)
+|I1Dstatic of
+(token(*kind*), i1dcl)
+//
+(* ****** ****** *)
+//
+|
+I1Ddclst0 of (i1dclist)
+|
+I1Dlocal0 of
+(i1dclist(*local-head*)
+,i1dclist(*local-body*))
+//
+(* ****** ****** *)
+//
+|I1Dtmpsub of
+(s2vts(*tmpsub*), i1dcl)
+//
+(* ****** ****** *)
+//
+|
+I1Dinclude of
+( sint(*s/d*)
+, token
+, g1exp // src
+, fpathopt
+, i1dclistopt) // inclusion
+//
+(* ****** ****** *)
+//
+|
+I1Dvaldclst of
+(token(*VAL(vlk)*), i1valdclist)
+|
+I1Dvardclst of
+(token(*VAR(vlk)*), i1vardclist)
+//
+|
+I1Dfundclst of
+( token(*FUN(fnk)*)
+, t2qaglst, d2cstlst, i1fundclist)
+//
+(* ****** ****** *)
+//
+|I1Dimplmnt0 of
+( token(*knd*)
+, stamp, dimpl, fjarglst, i1cmp(*body*))
+//
+(* ****** ****** *)
+//
 |I1Dnone0 of ((*0*)) |I1Dnone1 of (i0dcl)
+//
+(* ****** ****** *)
 //
 where
 {
@@ -678,6 +731,18 @@ i1dcl_make_node
 (loc0:loc_t,node:i1dcl_node):i1dcl
 (* ****** ****** *)
 #symload i1dcl with i1dcl_make_node
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i1valdcl_fprint
+(ival:i1valdcl, out0:FILR): void
+fun
+i1vardcl_fprint
+(ivar:i1vardcl, out0:FILR): void
+(* ****** ****** *)
+fun
+i1fundcl_fprint
+(ifun:i1fundcl, out0:FILR): void
 (* ****** ****** *)
 (* ****** ****** *)
 //

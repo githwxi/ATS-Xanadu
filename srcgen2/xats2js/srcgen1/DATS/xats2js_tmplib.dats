@@ -253,6 +253,7 @@ g_print<i0fundcl>(ifun) =
 i0fundcl_fprint(ifun, g_print$out<>())
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 g_print<i1valdcl>(ival) =

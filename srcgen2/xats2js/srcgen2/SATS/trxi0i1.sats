@@ -216,6 +216,12 @@ fiarg_trxi0i1
 (farg: fiarg, env0: !envi0i1): fjarg
 //
 (* ****** ****** *)
+//
+fun
+i0dcl_trxi0i1
+(idcl: i0dcl, env0: !envi0i1): i1dcl
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
