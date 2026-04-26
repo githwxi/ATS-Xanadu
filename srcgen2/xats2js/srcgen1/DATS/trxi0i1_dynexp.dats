@@ -1063,8 +1063,8 @@ f0_var
 , ipat: i0pat
 , ival: i1val): d2sublst =
 (
-list_sing(@(dvar, ival))
-) where
+list_sing(@(dvar, ival)))
+where
 {
 //
 val-

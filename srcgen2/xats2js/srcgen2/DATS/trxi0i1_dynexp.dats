@@ -908,6 +908,497 @@ val (  ) =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0pat_trxi0i1
+( ipat, env0 ) =
+(
+case+
+ipat.node() of
+//
+|I0Pint _ => f0_nil(ipat)
+|I0Pbtf _ => f0_nil(ipat)
+|I0Pchr _ => f0_nil(ipat)
+|I0Pflt _ => f0_nil(ipat)
+|I0Pstr _ => f0_nil(ipat)
+//
+|_(*else*) => f0_main(ipat, env0)
+//
+) where
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_nil(ipat: i0pat) =
+let
+val
+itnm = i1tnm_new0()
+in//let
+(
+I1BNDcons
+(itnm, ipat, list_nil(*void*)))
+end(*let*)//end-of-[f0_nil(ipat)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_main
+(
+ipat: i0pat,
+env0: !envi0i1): i1bnd =
+let
+//
+val loc0 = ipat.lctn()
+//
+val itnm = i1tnm_new0()
+val ival =
+i1val(loc0, I1Vtnm(itnm))
+//
+in//let
+//
+(
+I1BNDcons
+(itnm, ipat, dvvs))
+where{
+val dvvs =
+i0bnd_trxi0i1(ipat, ival, env0)}
+//
+end(*let*)//end-of-[f0_main(ipat,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+val () =
+prerrsln("i0pat_trxi0i1: ipat = ", ipat)
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+}(*where*)//end-of-[i0pat_trxi0i1(ipat,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0bnd_trxi0i1
+( ipat
+, ival, env0 ) =
+(
+case+
+ipat.node() of
+//
+|I0Pint _ => list_nil()
+|I0Pbtf _ => list_nil()
+|I0Pchr _ => list_nil()
+|I0Pflt _ => list_nil()
+|I0Pstr _ => list_nil()
+//
+|
+I0Pvar _ =>
+(
+f0_var(ipat, ival, env0))
+|
+I0Pany _ => list_nil((*0*))
+//
+(* ****** ****** *)
+//
+|I0Pbang _ =>
+(
+  f0_bang(ipat, ival, env0))
+//
+|I0Pflat _ =>
+(
+  f0_flat(ipat, ival, env0))
+//
+|I0Pfree _ =>
+(
+  f0_free(ipat, ival, env0))
+//
+(* ****** ****** *)
+//
+|I0Pdap1 _ =>
+(
+  f0_dap1(ipat, ival, env0))
+//
+|
+I0Pdapp _ =>
+(
+  f0_dapp(ipat, ival, env0))
+//
+(* ****** ****** *)
+|
+I0Prfpt _ =>
+(
+  f0_rfpt(ipat, ival, env0))
+//
+(* ****** ****** *)
+//
+|
+I0Ptup0 _ =>
+(
+  f0_tup0(ipat, ival, env0))
+|
+I0Ptup1 _ =>
+(
+  f0_tup1(ipat, ival, env0))
+//
+(* ****** ****** *)
+//
+|_(*else*) => list_nil( (*void*) )
+//
+(* ****** ****** *)
+//
+) where
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_var
+(
+ipat: i0pat,
+ival: i1val,
+env0: !envi0i1): d2sublst =
+(
+  list_sing(@(dpid, ival)))
+where
+{
+//
+val-
+I0Pvar(dpid) = ipat.node((*0*))
+//
+val ((*nil*)) =
+(
+envi0i1_dvar$insert(env0,dpid,ival))
+}(*where*)//end-of-[f0_var(ipat, ...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_bang
+(
+ipat: i0pat,
+ival: i1val,
+env0: !envi0i1): d2sublst =
+let
+//
+val-
+I0Pbang i0p1 = ipat.node()
+//
+(*
+val () =
+prerrsln
+("f0_bang: ipat = ", ipat)
+val () =
+prerrsln
+("f0_bang: ival = ", ival)
+*)
+//
+in//let
+//
+case+
+i0p1.node() of
+|
+I0Pvar _ =>
+(
+i0bnd_trxi0i1
+(i0p1, ival, env0)
+) where
+{
+val ival = f1_addr(ival)}
+|
+_(*non-I0Pvar*) =>
+i0bnd_trxi0i1(i0p1,ival,env0)
+//
+end where
+{
+//
+fun
+f1_addr
+(ival: i1val): i1val =
+(
+case+
+ival.node() of
+//
+|I1Vp1cn
+(_, i1v0, idx1) =>
+let
+//
+val lctn = ival.lctn()
+val lab1 = LABint(idx1)
+//
+in//let
+(
+  i1val_make_node
+  (lctn, I1Vlpcn(lab1, i1v0)))
+end//let
+//
+|I1Vp1rj
+(_, i1v0, idx1) =>
+let
+val lctn = ival.lctn()
+val lab1 = LABint(idx1)
+in//let
+(
+  i1val_make_node
+  (lctn, I1Vlpbx(lab1, i1v0)))
+end//let
+//
+|I1Vp2rj
+(_, i1v0, lab1) =>
+let
+val lctn = ival.lctn()
+in//let
+(
+  i1val_make_node
+  (lctn, I1Vlpbx(lab1, i1v0)))
+end//let
+//
+| _(*otherwise: non-proj*) => (ival)
+//
+) (*case+*) // end of [f1_addr(ival)]
+//
+}(*where*)//end-of-[f0_bang(ipat, ...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_flat
+(
+ipat: i0pat,
+ival: i1val,
+env0: !envi0i1): d2sublst =
+let
+//
+val-
+I0Pflat i0p1 = ipat.node()
+//
+in//let
+  i0bnd_trxi0i1(i0p1, ival, env0)
+end(*let*)//end-of-[f0_flat(ipat, ...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_free
+(
+ipat: i0pat,
+ival: i1val,
+env0: !envi0i1): d2sublst =
+let
+//
+val-
+I0Pfree i0p1 = ipat.node()
+//
+in//let
+  i0bnd_trxi0i1(i0p1, ival, env0)
+end(*let*)//end-of-[f0_free(ipat, ...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dap1
+(
+ipat: i0pat,
+ival: i1val,
+env0: !envi0i1): d2sublst =
+(
+  list_nil((*void*))) where
+{
+  val-I0Pdap1 i0f0 = ipat.node()}
+(*where*)//end-of-[f0_dap1(ipat, ...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+(
+ipat: i0pat,
+ival: i1val,
+env0: !envi0i1): d2sublst =
+let
+//
+val-
+I0Pdapp
+(i0f0
+,npf1, i0ps) = ipat.node()
+//
+fun
+f1_i0ps(
+i0ps:
+i0patlst,
+ipcn: sint,
+env0: !envi0i1): d2sublst =
+(
+case+ i0ps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(i0p1, i0ps) =>
+let
+val i1v1 =
+i1val_p1cn
+(env0, i0f0, ival, ipcn)
+val dvvs =
+i0bnd_trxi0i1(i0p1,i1v1,env0)
+in//let
+(
+list_append
+( dvvs
+, f1_i0ps(i0ps, ipcn+1, env0)))
+end//let
+)(*case+*)//end-of-[f0_i0ps(...)]
+//
+in//let
+(
+  f1_i0ps(i0ps, 0(*ipcn*), env0) )
+end(*let*)//end-of-[f0_dapp(ipat, ...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_rfpt
+(
+ipat: i0pat,
+ival: i1val,
+env0: !envi0i1): d2sublst =
+let
+//
+val-
+I0Prfpt
+(i0p1, i0p2) = ipat.node()
+//
+in//let
+//
+(
+  list_append(sub1, sub2))
+where
+{
+val sub1 =
+i0bnd_trxi0i1(i0p1,ival,env0)
+val sub2 =
+i0bnd_trxi0i1(i0p2,ival,env0) }
+//
+end(*let*)//end-of-[f0_rfpt(ipat, ...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_tup0
+(
+ipat: i0pat,
+ival: i1val,
+env0: !envi0i1): d2sublst =
+let
+//
+val-
+I0Ptup0 i0ps = ipat.node()
+//
+fun
+f1_i0ps( 
+i0ps:
+i0patlst,
+iprj: sint,
+env0: !envi0i1): d2sublst =
+(
+case+ i0ps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(i0p1, i0ps) =>
+let
+val i1v1 =
+i1val_p0rj(env0,ival,iprj)
+val dvvs =
+i0bnd_trxi0i1(i0p1,i1v1,env0)
+in//let
+(
+list_append
+( dvvs
+, f1_i0ps(i0ps, iprj+1, env0)))
+end//let
+)(*case+*)//end-of-[f0_i0ps(...)]
+//
+in//let
+(
+  f1_i0ps(i0ps, 0(*iprj*), env0) )
+end(*let*)//end-of-[f0_tup0(ipat, ...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+(
+ipat: i0pat,
+ival: i1val,
+env0: !envi0i1): d2sublst =
+let
+//
+val-
+I0Ptup1
+(tknd, i0ps) = ipat.node()
+//
+fun
+f1_i0ps(
+i0ps:
+i0patlst,
+iprj: sint,
+env0: !envi0i1): d2sublst =
+(
+case+ i0ps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(i0p1, i0ps) =>
+let
+val i1v1 =
+i1val_p1rj
+(env0, tknd, ival, iprj)
+val dvvs =
+i0bnd_trxi0i1(i0p1,i1v1,env0)
+in//let
+(
+list_append
+( dvvs
+, f1_i0ps(i0ps, iprj+1, env0)))
+end//let
+)(*case+*)//end-of-[f0_i0ps(...)]
+//
+in//let
+(
+  f1_i0ps(i0ps, 0(*iprj*), env0) )
+end(*let*)//end-of-[f0_tup1(ipat, ...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+val () =
+prerrsln("i0bnd_trxi0i1: ipat = ", ipat)
+val () =
+prerrsln("i0bnd_trxi0i1: ival = ", ival)
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+}(*where*)//end-of-[i0bnd_trxi0i1(ipat,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_trxi0i1_dynexp.dats] *)
 (***********************************************************************)
