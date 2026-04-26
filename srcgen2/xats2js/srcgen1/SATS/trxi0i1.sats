@@ -383,15 +383,19 @@ fun
 trxi0i1_i0vardclist
 (env0: !envi0i1, i0vs: i0vardclist): i1vardclist
 //
+(* ****** ****** *)
+//
 fun
 trxi0i1_i0fundclist
 (env0: !envi0i1, i0fs: i0fundclist): i1fundclist
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
 trxi0i1_i0dclistopt
 (env0: !envi0i1, dopt: i0dclistopt): i1dclistopt
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

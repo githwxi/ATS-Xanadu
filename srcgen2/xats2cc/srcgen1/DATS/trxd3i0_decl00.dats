@@ -536,20 +536,18 @@ d3vardcl_get_dpid(dvar)
 val dini =
 d3vardcl_get_dini(dvar)
 //
+val ivar =
+(
+d2var_trxd3i0(dpid, env0))
+//
 val dini =
 teqd3exp_trxd3i0(dini, env0)
 //
 val (  ) =
-envd3i0_dvar$insert
-( env0, dpid, ivar ) where
-{
-val ivar =
-(
-  d2var_trxd3i0(dpid, env0))
-}(*where*)//end(envd3i0_dvar$insert)
+envd3i0_dvar$insert(env0,dpid,ivar)
 //
 in//let
-  i0vardcl_make_args(loc0, dpid, dini)
+  i0vardcl_make_args(loc0, ivar, dini)
 end(*let*)//end(d3vardcl_trxd3i0(dvar,env0))
 //
 (* ****** ****** *)

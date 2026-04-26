@@ -192,6 +192,17 @@ envi0i1_ilet$insert
 ! envi0i1, ilet: i1let): (void)
 //
 (* ****** ****** *)
+//
+fun
+envi0i1_d2vins_self
+( env0: 
+! envi0i1, d2v0: d2var): (void)
+fun
+envi0i1_dvsins_self
+( env0: 
+! envi0i1, d2vs: d2varlst): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -253,6 +264,36 @@ i0dclist_trxi0i1
 fun
 teqi0exp_trxi0i1
 (tdxp: teqi0exp, env0: !envi0i1): teqi1cmp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0valdcl_trxi0i1
+(i0v0: i0valdcl, env0: !envi0i1): i1valdcl
+fun
+i0vardcl_trxi0i1
+(i0v0: i0vardcl, env0: !envi0i1): i1vardcl
+//
+fun
+i0fundcl_trxi0i1
+(i0f0: i0fundcl, env0: !envi0i1): i1fundcl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0valdclist_trxi0i1
+(i0vs: i0valdclist, env0: !envi0i1): i1valdclist
+fun
+i0vardclist_trxi0i1
+(i0vs: i0vardclist, env0: !envi0i1): i1vardclist
+//
+(* ****** ****** *)
+//
+fun
+i0fundclist_trxi0i1
+(i0fs: i0fundclist, env0: !envi0i1): i1fundclist
 //
 (* ****** ****** *)
 (* ****** ****** *)

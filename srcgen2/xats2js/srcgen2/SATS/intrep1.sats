@@ -747,6 +747,32 @@ i1fundcl_fprint
 (* ****** ****** *)
 //
 fun
+i1valdcl_make_args
+( lctn:loc_t
+, dpat:i1bnd, tdxp:teqi1cmp):i1valdcl
+fun
+i1vardcl_make_args
+( lctn:loc_t
+, dpid:i1bnd, dini:teqi1cmp):i1vardcl
+//
+(* ****** ****** *)
+//
+fun
+i1fundcl_make_args
+( lctn:loc_t
+, dpid:d2var
+, farg:fjarglst, tdxp:teqi1cmp):i1fundcl
+//
+(* ****** ****** *)
+//
+#symload i1valdcl with i1valdcl_make_args
+#symload i1vardcl with i1vardcl_make_args
+#symload i1fundcl with i1fundcl_make_args
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1parsed_fprint
 (ipar:i1parsed, out0:FILR): void
 //
