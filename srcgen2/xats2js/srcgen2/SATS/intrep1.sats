@@ -399,6 +399,14 @@ i1val_node =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I1Vp0rj of (i1val, sint)
+|I1Vp1cn of (i0pat, i1val, sint)
+|I1Vp1rj of (token, i1val, sint)
+|I1Vp2rj of (token, i1val, label)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |I1Vnone0 of () | I1Vnone1 of (i0exp)
 //
 (* ****** ****** *)
@@ -504,6 +512,114 @@ i1val_make_node
 (loc0:loc_t,node:i1val_node):i1val
 //
 #symload i1val with i1val_make_node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+fjarg_node =
+|
+FJARGdarg of i1bndlst
+//
+#typedef
+fjarglst = list(fjarg)
+#typedef
+fjarglstopt = optn(fjarglst)
+//
+(* ****** ****** *)
+//
+fun
+fjarg_fprint
+(farg:fjarg,out0:FILR): void
+//
+(* ****** ****** *)
+fun
+fjarg_lctn$get(fjarg): loc_t
+fun
+fjarg_node$get(fjarg): fjarg_node
+(* ****** ****** *)
+#symload lctn with fjarg_lctn$get
+#symload node with fjarg_node$get
+(* ****** ****** *)
+fun
+fjarg_make_node
+(loc:loc_t, nod:fjarg_node):fjarg
+#symload fjarg with fjarg_make_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i1gua_node =
+| I1GUAexp of (i1cmp)
+| I1GUAmat of (i1cmp, i1bnd)
+//
+datatype
+i1cls_node =
+| I1CLSgpt of (i1gpt)
+| I1CLScls of (i1gpt, i1cmp)
+and
+i1gpt_node =
+| I1GPTpat of (i1bnd)
+| I1GPTgua of (i1bnd, i1gualst)
+//
+(* ****** ****** *)
+//
+fun
+i1gua_fprint
+(igua:i1gua, out0:FILR): void
+fun
+i1gpt_fprint
+(igpt:i1gpt, out0:FILR): void
+fun
+i1cls_fprint
+(icls:i1cls, out0:FILR): void
+//
+(* ****** ****** *)
+//
+fun
+i1gua_lctn$get(i1gua): loc_t
+fun
+i1gua_node$get(i1gua): i1gua_node
+//
+(* ****** ****** *)
+//
+fun
+i1gpt_lctn$get(i1gpt): loc_t
+fun
+i1gpt_node$get(i1gpt): i1gpt_node
+//
+(* ****** ****** *)
+//
+fun
+i1cls_lctn$get(i1cls): loc_t
+fun
+i1cls_node$get(i1cls): i1cls_node
+//
+(* ****** ****** *)
+//
+#symload lctn with i1gua_lctn$get
+#symload lctn with i1gpt_lctn$get
+#symload lctn with i1cls_lctn$get
+//
+#symload node with i1gua_node$get
+#symload node with i1gpt_node$get
+#symload node with i1cls_node$get
+//
+(* ****** ****** *)
+//
+fun
+i1gua_make_node
+(loc0:loc_t,node:i1gua_node):i1gua
+fun
+i1gpt_make_node
+(loc0:loc_t,node:i1gpt_node):i1gpt
+fun
+i1cls_make_node
+(loc0:loc_t,node:i1cls_node):i1cls
+//
+#symload i1gua with i1gua_make_node
+#symload i1gpt with i1gpt_make_node
+#symload i1cls with i1cls_make_node
 //
 (* ****** ****** *)
 (* ****** ****** *)

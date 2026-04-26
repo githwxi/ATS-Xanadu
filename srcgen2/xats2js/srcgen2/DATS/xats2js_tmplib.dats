@@ -146,6 +146,32 @@ i0exp_fprint(iexp, g_print$out<>())
 //
 #impltmp
 g_print
+<fjarg>(farg) =
+fjarg_fprint(farg, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i1gua>(gua) =
+i1gua_fprint(gua, g_print$out<>())
+//
+#impltmp
+g_print
+<i1gpt>(gpt) =
+i1gpt_fprint(gpt, g_print$out<>())
+//
+#impltmp
+g_print
+<i1cls>(cls) =
+i1cls_fprint(cls, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <i1dcl>(idcl) =
 i1dcl_fprint(idcl, g_print$out<>())
 //
