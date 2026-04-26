@@ -1399,6 +1399,187 @@ prerrsln("i0bnd_trxi0i1: ival = ", ival)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0exp_trxi0i1
+( env0, iexp ) =
+(
+case+
+iexp.node() of
+//
+(* ****** ****** *)
+//
+|I0Eint _ => f0_int(env0, iexp)
+|I0Ebtf _ => f0_btf(env0, iexp)
+|I0Echr _ => f0_chr(env0, iexp)
+|I0Eflt _ => f0_flt(env0, iexp)
+|I0Estr _ => f0_str(env0, iexp)
+//
+(* ****** ****** *)
+//
+|I0Ei00 _ => f0_i00(env0, iexp)
+|I0Eb00 _ => f0_b00(env0, iexp)
+|I0Ec00 _ => f0_c00(env0, iexp)
+|I0Ef00 _ => f0_f00(env0, iexp)
+|I0Es00 _ => f0_s00(env0, iexp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+| _(*otherwise*) => i1val_none1(iexp)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+) where
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_int
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_int(loc, tok) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Eint(tok) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_btf
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_btf(loc, sym) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Ebtf(sym) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_chr
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_chr(loc, tok) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Echr(tok) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_flt
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_flt(loc, tok) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Eflt(tok) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_str
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_str(loc, tok) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Estr(tok) = iexp.node() }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_i00
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_i00(loc, i00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Ei00(i00) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_b00
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_b00(loc, b00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Eb00(b00) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_c00
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_c00(loc, c00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Ec00(c00) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_f00
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_f00(loc, f00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Ef00(f00) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_s00
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_s00(loc, s00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Es00(s00) = iexp.node() }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+val () =
+(
+prerrsln("i0exp_trxi0i1: iexp = ", iexp))
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+}(*where*)//end-of-[i0exp_trxi0i1(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_trxi0i1_dynexp.dats] *)
 (***********************************************************************)

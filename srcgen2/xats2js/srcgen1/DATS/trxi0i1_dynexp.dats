@@ -2883,7 +2883,7 @@ end(*let*)//end-of-[f0_extnam(env0,iexp)]
 (*
 val () =
 (
- prerrsln("trxi0i1_i0exp: iexp = ", iexp))
+prerrsln("trxi0i1_i0exp: iexp = ", iexp))
 *)
 //
 (* ****** ****** *)
