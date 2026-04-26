@@ -602,7 +602,7 @@ datatype
 i0vardcl =
 I0VARDCL of
 ( loc_t
-, d2var, teqi0exp)
+, i0var, teqi0exp)
 //
 #absimpl
 i0vardcl_tbox = i0vardcl
@@ -635,6 +635,10 @@ I0VARDCL
 //
 (* ****** ****** *)
 //
+(*
+HX: dpid: i0var
+HX: dini: i0exp
+*)
 #implfun
 i0vardcl_make_args
 ( lctn, dpid, dini) =

@@ -980,9 +980,9 @@ I0Dinclude of
 //
 (* ****** ****** *)
 //
-|I0Dimplmnt0 of (
-token(*knd*), sint(*lvl0*),
-stamp, dimpl, fiarglst, i0exp, i0varlst)
+|I0Dimplmnt0 of
+(token(*knd*), sint(*lvl0*)
+,stamp, dimpl, fiarglst, i0exp, i0varlst)
 //
 (* ****** ****** *)
 //
@@ -1052,7 +1052,7 @@ fun
 i0valdcl_tdxp$get:(i0valdcl)->teqi0exp
 (* ****** ****** *)
 fun
-i0vardcl_dpid$get:(i0vardcl)->d2var
+i0vardcl_dpid$get:(i0vardcl)->i0var
 fun
 i0vardcl_dini$get:(i0vardcl)->teqi0exp
 (* ****** ****** *)
@@ -1064,7 +1064,7 @@ i0valdcl_make_args
 fun
 i0vardcl_make_args
 (lctn:loc_t
-,dpid:d2var, dini:teqi0exp):i0vardcl
+,dpid:i0var, dini:teqi0exp):i0vardcl
 //
 (* ****** ****** *)
 //
