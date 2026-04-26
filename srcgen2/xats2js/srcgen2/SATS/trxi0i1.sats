@@ -206,6 +206,26 @@ envi0i1_dvsins_self
 (* ****** ****** *)
 //
 fun
+<x0:t0>
+<y0:t0>
+list_trxi0i1_fnp
+(
+xs: list(x0),
+e1: !envi0i1,
+fopr: (x0, !envi0i1)->y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_trxi0i1_fnp
+(
+xs: optn(x0),
+e1: !envi0i1,
+fopr: (x0, !envi0i1)->y0): optn(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i0pat_trxi0i1
 (ipat: i0pat, env0: !envi0i1): i1bnd
 //

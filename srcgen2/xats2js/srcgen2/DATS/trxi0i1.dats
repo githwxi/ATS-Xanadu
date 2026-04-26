@@ -96,6 +96,76 @@ end (*let*) // end of [i1parsed_trxi0i1(dpar)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<x0><y0>
+list_trxi0i1_fnp
+( xs, e1, fopr ) =
+(
+list_map$e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = envi0i1
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = fopr(*x0, e1*)
+}(*where*)//end-of-[list_trxi0i1_fnp(xs,e1,fopr)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+optn_trxi0i1_fnp
+( xs, e1, fopr ) =
+(
+optn_map$e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = envi0i1
+#impltmp
+map$e1nv$fopr<x0><y0><e1> = fopr(*x0, e1*)
+}(*where*)//end-of-[optn_trxi0i1_fnp(xs,e1,fopr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0dclist_trxi0i1
+( dcls, env0 ) =
+(
+  list_trxi0i1_fnp(dcls, env0, i0dcl_trxi0i1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0valdclist_trxi0i1
+  ( i0vs, env0 ) =
+(
+  list_trxi0i1_fnp(i0vs, env0, i0valdcl_trxi0i1))
+//
+#implfun
+i0vardclist_trxi0i1
+  ( i0vs, env0 ) =
+(
+  list_trxi0i1_fnp(i0vs, env0, i0vardcl_trxi0i1))
+//
+(* ****** ****** *)
+//
+#implfun
+i0fundclist_trxi0i1
+  ( i0fs, env0 ) =
+(
+  list_trxi0i1_fnp(i0fs, env0, i0fundcl_trxi0i1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0dclistopt_trxi0i1
+  ( dopt, env0 ) =
+(
+  optn_trxi0i1_fnp(dopt, env0, i0dclist_trxi0i1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_trxi0i1.dats] *)
 (***********************************************************************)
