@@ -127,6 +127,20 @@ i0e0.lctn(),I1Vnone1(i0e0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1dcl_none0
+(  loc0  ) =
+i1dcl_make_node
+(loc0,I1Dnone0((*void*)))
+#implfun
+i1dcl_none1
+(  dcl0  ) =
+i1dcl_make_node
+(
+dcl0.lctn(),I1Dnone1(dcl0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 i1cmp_lctn$get
@@ -282,7 +296,6 @@ endloc(*local*)//end-of-[local(i1val_tbox)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 local
 //

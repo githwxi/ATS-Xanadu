@@ -405,6 +405,21 @@ i1val_node =
 |I1Vp2rj of (token, i1val, label)
 //
 (* ****** ****** *)
+//
+(*
+HX-2024-05-15:
+For flat/boxed left-values
+*)
+|I1Vlpft of (label, i1val)//flat
+|I1Vlpbx of (label, i1val)//boxed
+//
+(*
+HX-2024-07-18:
+For data-consed left-values
+*)
+|I1Vlpcn of (label, i1val)//consd
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1Vnone0 of () | I1Vnone1 of (i0exp)
