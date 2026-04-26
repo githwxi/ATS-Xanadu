@@ -126,6 +126,24 @@ map$e1nv$fopr<x0><y0><e1> = fopr(*x0, e1*)
 (* ****** ****** *)
 //
 #implfun
+i0patlst_trxi0i1
+( i0ps, env0 ) =
+(
+  list_trxi0i1_fnp(i0ps, env0, i0pat_trxi0i1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0explst_trxi0i1
+( i0es, env0 ) =
+(
+  list_trxi0i1_fnp(i0es, env0, i0exp_trxi0i1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i0dclist_trxi0i1
 ( dcls, env0 ) =
 (

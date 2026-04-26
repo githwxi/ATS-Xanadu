@@ -3428,7 +3428,9 @@ sres = trans12_s1res(env0, sres)
 val
 dexp = trans12_d1exp(env0, dexp)
 //
-// HX: poplam0: pshlam0 exit
+(*
+HX: poplam0: pshlam0 exit
+*)
 val (  ) = tr12env_poplam0(env0)
 //
 (*

@@ -2757,7 +2757,9 @@ tknd.node() of
 |T_TRCD20(4) => TRCDbox1(*void*)
 |T_TRCD20(5) => TRCDbox2(*void*))
 //
-// HX: [s2typ_rcd2] does orderization!
+(*
+HX: [s2typ_rcd2] does orderization!
+*)
 val t2p0 = s2typ_rcd2(trcd, npf1, ltps)
 } (*where*) // end-of-[f0_rcd2(env0,d2e0)]
 //
