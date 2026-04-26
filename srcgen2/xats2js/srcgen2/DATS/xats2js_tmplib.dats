@@ -105,6 +105,8 @@ g_print
 <i1let>(ilet) =
 i1let_fprint(ilet, g_print$out<>())
 //
+(* ****** ****** *)
+//
 #impltmp
 g_print
 <i1bnd>(ibnd) =
@@ -118,6 +120,8 @@ i1cmp_fprint(icmp, g_print$out<>())
 g_print
 <i1ins>(iins) =
 i1ins_fprint(iins, g_print$out<>())
+//
+(* ****** ****** *)
 //
 #impltmp
 g_print
