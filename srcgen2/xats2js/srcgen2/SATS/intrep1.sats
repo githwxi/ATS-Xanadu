@@ -235,14 +235,6 @@ i1let =
 //
 (* ****** ****** *)
 //
-and i1ins =
-//
-|I1INSopr of
-(i1opr(*opnm*)
-,i1valist(*args*))//primopr
-//
-(* ****** ****** *)
-//
 and i1bnd =
 |I1BNDcons of
 (i1tnm, i0pat, d2sublst)
@@ -250,6 +242,118 @@ and i1bnd =
 and i1cmp =
 |I1CMPcons of (i1letlst, i1val)
 //
+(* ****** ****** *)
+//
+and i1ins =
+//
+|I1INSopr of
+(i1opr(*opnm*)
+,i1valist(*args*))//primopr
+//
+|I1INSdapp of
+(i1val(*fun0*)
+,i1valist(*args*))//funcall
+//
+|I1INStimp of
+(i0exp(*tapp*)
+,t1imp(*tmpinst*))//impltmp
+//
+|I1INSpcon of
+(label(*int/sym*)
+,i1val(*conroot*))//conproj
+|I1INSpflt of
+(label(*int/sym*)
+,i1val(*tuproot*))//tfltprj
+|I1INSproj of
+(label(*int/sym*)
+,i1val(*tuproot*))//tptrprj
+//
+(* ****** ****** *)
+//
+|I1INSlet0 of
+(i1dclist
+,i1cmp(*scp-val*))//letinend
+//
+(* ****** ****** *)
+//
+|I1INSift0 of
+(i1val(*test*)
+,i1cmpopt(*then*)
+,i1cmpopt(*else*))//ifthnels
+//
+|I1INScas0 of
+( token(*casknd*)
+, i1val(*casval*), i1clslst)
+//
+(* ****** ****** *)
+//
+|I1INStup0 of (i1valist)//flat
+|I1INStup1 of (token, i1valist)
+|I1INSrcd2 of (token, l1i1vlst)
+//
+(* ****** ****** *)
+//
+|I1INSlam0 of
+(token // kind
+,fjarglst(*args*),i1cmp(*body*))
+//
+|I1INSfix0 of
+(token // kind
+,d2var // fix-var
+,fjarglst(*args*),i1cmp(*body*))
+//
+(* ****** ****** *)
+//
+|I1INStry0 of
+(token(*$TRY*)
+,i1cmp
+ (*normal*)
+,i1val // HX: caught exception!
+ (*excptn*),i1clslst(*handles*))
+//
+(* ****** ****** *)
+//
+|I1INSflat of
+(i1val(*leftval*)) // de-leftval
+//
+(* ****** ****** *)
+//
+|I1INSfold of
+(i1val(*datacon*)) // fold:no-op
+//
+|I1INSfree of
+(i1val(*datacon*)) // malloc-free
+//
+(* ****** ****** *)
+//
+|I1INSdp2tr of (i1val(*addr-of*))
+//
+(* ****** ****** *)
+//
+|I1INSdl0az of (i1val)//l0azy-fun
+|I1INSdl1az of (i1val)//l1azy-fun
+//
+(* ****** ****** *)
+//
+|I1INSl0azy of 
+(
+d1exp(*dknd*), i1cmp(*thunk*))
+|I1INSl1azy of
+(
+d1exp(*dknd*),
+i1cmp(*thunk*), i1cmplst(*frees*))
+//
+(* ****** ****** *)
+//
+|I1INSraise of
+(
+  token(*tknd*), i1val(*excptcon*) )
+//
+|I1INSassgn of
+(
+  i1val(*left-v*), i1val(*right-v*) )
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 and
@@ -288,6 +392,11 @@ i1val_node =
 |I1Vcon of (d2con)
 |I1Vcst of (d2cst)
 |I1Vvar of (d2var)
+(* ****** ****** *)
+(* ****** ****** *)
+|I1Vaddr of (i1val(*addr*))
+|I1Vaexp of (i0exp(*flat*))
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1Vnone0 of () | I1Vnone1 of (i0exp)

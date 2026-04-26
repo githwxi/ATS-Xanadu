@@ -360,7 +360,8 @@ prints(i1f0, ";", i1vs, ")"))
 ( i0e1,timp ) =>
 (
 print("I1INStimp(");
-prints(i0e1, ";", "...", ")"))
+prints
+(i0e1, ";", "...", ")"))
 where
 {
 val
@@ -488,6 +489,13 @@ prints
 //
 (* ****** ****** *)
 //
+|I1INSdp2tr
+(   iptr   ) =>
+(
+prints("I1INSdp2tr(",iptr,")"))
+//
+(* ****** ****** *)
+//
 |I1INSdl0az
 (   i1f0   ) =>
 (
@@ -496,11 +504,6 @@ prints("I1INSdl0az(",i1f0,")"))
 (   i1f0   ) =>
 (
 prints("I1INSdl1az(",i1f0,")"))
-//
-|I1INSdp2tr
-(   iptr   ) =>
-(
-prints("I1INSdp2tr(",iptr,")"))
 //
 (* ****** ****** *)
 //
