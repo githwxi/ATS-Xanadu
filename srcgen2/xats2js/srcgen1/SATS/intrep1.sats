@@ -775,6 +775,8 @@ I1Dfundclst of
 //
 |I1Dnone0 of ((*0*)) |I1Dnone1 of (i0dcl)
 //
+(* ****** ****** *)
+//
 where
 {
   #typedef i1dclistopt = optn(i1dclist) }

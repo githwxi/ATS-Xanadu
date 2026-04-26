@@ -146,6 +146,13 @@ g_print
 i0exp_fprint(iexp, g_print$out<>())
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print
+<i0dcl>(idcl) =
+i0dcl_fprint(idcl, g_print$out<>())
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -178,6 +185,32 @@ i1cls_fprint(cls, g_print$out<>())
 g_print
 <i1dcl>(idcl) =
 i1dcl_fprint(idcl, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print<i0valdcl>(ival) =
+i0valdcl_fprint(ival, g_print$out<>())
+#impltmp
+g_print<i0vardcl>(ivar) =
+i0vardcl_fprint(ivar, g_print$out<>())
+#impltmp
+g_print<i0fundcl>(ifun) =
+i0fundcl_fprint(ifun, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print<i1valdcl>(ival) =
+i1valdcl_fprint(ival, g_print$out<>())
+#impltmp
+g_print<i1vardcl>(ivar) =
+i1vardcl_fprint(ivar, g_print$out<>())
+#impltmp
+g_print<i1fundcl>(ifun) =
+i1fundcl_fprint(ifun, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)

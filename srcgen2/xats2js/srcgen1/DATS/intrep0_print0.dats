@@ -648,13 +648,20 @@ prints("I0Dd3ecl(", d3cl, ")")
 //
 |I0Dstatic
 (tknd, dcl1) =>
-prints
-("I0Dstatic(", tknd, ";", dcl1, ")")
+prints("\
+I0Dstatic(", tknd, ";", dcl1, ")")
 //
 |I0Dextern
 (tknd, dcl1) =>
-prints
-("I0Dextern(", tknd, ";", dcl1, ")")
+prints("\
+I0Dextern(", tknd, ";", dcl1, ")")
+//
+(* ****** ****** *)
+//
+|I0Dtmpsub
+(svts, idcl) =>
+prints("\
+I0Dtmpsub(", svts, ";", idcl, ")")
 //
 (* ****** ****** *)
 //
@@ -667,13 +674,6 @@ prints
 (head, body) =>
 prints
 ("I0Dlocal0(", head, ";", body, ")")
-//
-(* ****** ****** *)
-//
-|I0Dtmpsub
-(svts, idcl) =>
-prints
-("I0Dtmpsub(", svts, ";", idcl, ")")
 //
 (* ****** ****** *)
 //

@@ -458,6 +458,111 @@ end(*let*)//end-of-[i1ins_fprint(iins,out0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#implfun
+i1dcl_fprint
+(dcl0, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+dcl0.node() of
+//
+(* ****** ****** *)
+//
+|I1Di0dcl
+(  dcl1  ) =>
+(
+prints("I1Di0dcl(", dcl1, ")"))
+//
+(* ****** ****** *)
+//
+|I1Dextern
+(tknd, dcl1) =>
+prints
+("I1Dextern(", tknd, ";", dcl1, ")")
+|I1Dstatic
+(tknd, dcl1) =>
+prints
+("I1Dstatic(", tknd, ";", dcl1, ")")
+//
+(* ****** ****** *)
+//
+|I1Ddclst0
+(   dcls   ) =>
+(
+  prints("I1Ddclst0(", dcls, ")"))
+//
+|I1Dlocal0
+(head, body) =>
+prints
+("I1Dlocal0(", head, ";", body, ")")
+//
+(* ****** ****** *)
+//
+|I1Dtmpsub
+(svts, idcl) =>
+prints
+("I1Dtmpsub(", svts, ";", idcl, ")")
+//
+(* ****** ****** *)
+//
+|I1Dinclude
+( knd0, tknd
+, gsrc, fopt, dopt ) =>
+(
+print("I1Dinclude(");
+prints
+(
+knd0,";",
+tknd,";",gsrc,";",fopt,";","...",")"))
+//
+(* ****** ****** *)
+//
+|
+I1Dvaldclst
+(tknd, i1vs) =>
+prints
+("I1Dvaldclst(", tknd, ";", i1vs, ")")
+|
+I1Dvardclst
+(tknd, i1vs) =>
+prints
+("I1Dvardclst(", tknd, ";", i1vs, ")")
+//
+|
+I1Dfundclst
+( tknd, tqas
+, d2cs, i1fs) =>
+( prints
+  ("I1Dfundclst(", tknd, ";")
+; prints(tqas, ";", d2cs, ";", i1fs,")"))
+//
+(* ****** ****** *)
+//
+|
+I1Dimplmnt0
+(tknd
+,stmp, dimp
+,farg, body) =>
+( print("I1Dimplmnt0(")
+; prints(tknd,";",stmp,";")
+; prints(dimp, ";", farg, ";", body, ")"))
+//
+(* ****** ****** *)
+//
+|I1Dnone0() => prints( "I1Dnone0(",")" )
+|I1Dnone1(dcl1) => prints("I1Dnone1(", dcl1, ")")
+//
+(* ****** ****** *)
+//
+end(*let*)//end-of-[i1dcl_fprint(dcl0,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_intrep1_print0.dats] *)
 (***********************************************************************)
