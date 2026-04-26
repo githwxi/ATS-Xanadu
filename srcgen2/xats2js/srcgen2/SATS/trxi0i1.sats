@@ -167,6 +167,31 @@ envi0i1_locjoin
 (env0: !envi0i1): void//end-fun
 //
 (* ****** ****** *)
+//
+fun
+envi0i1_exnm$search
+( env0:
+! envi0i1, loc0: loc_t): i1val
+fun
+envi0i1_exnm$insert
+( env0: 
+! envi0i1, ival: i1val): (void)
+//
+fun
+envi0i1_dvar$search
+( env0: 
+! envi0i1, d2v0: d2var): i1val
+fun
+envi0i1_dvar$insert
+( env0: 
+! envi0i1, d2var,i1val): (void)
+//
+fun
+envi0i1_ilet$insert
+( env0:
+! envi0i1, ilet: i1let): (void)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
