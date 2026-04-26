@@ -198,6 +198,39 @@ prints("I1Vaddr(", ival, ")")
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I1Vp0rj
+(i1v1, idx2) =>
+(
+print("I1Vp0rj(");
+prints(i1v1, ";", idx2, ")"))
+//
+|I1Vp1cn
+(i0f0
+,i1v1, idx2) =>
+(
+print("I1Vp1cn(");
+prints(
+i0f0, ";", i1v1, ";", idx2, ")"))
+//
+|I1Vp1rj
+(tknd
+,i1v1, idx2) =>
+(
+print("I1Vp1rj(");
+prints(
+tknd, ";", i1v1, ";", idx2, ")"))
+//
+|I1Vp2rj
+(tknd
+,i1v1, lab2) =>
+(
+print("I1Vp2rj(");
+prints(
+tknd, ";", i1v1, ";", lab2, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |I1Vnone0() => prints( "I1Vnone0(",")" )
 |I1Vnone1(i0e1) => prints("I1Vnone1(", i0e1, ")")
 //
@@ -311,16 +344,18 @@ prints
 |I1INSift0
 (test
 ,ithn, iels) =>
-(print("I1INSift0(");
- prints
- (test,";",ithn,";",iels,")"))
+(
+print("I1INSift0(");
+prints(
+test,";", ithn,";", iels,")"))
 //
 |I1INScas0
 (cask
 ,i1v1, icls) =>
-(print("I1INScas0(");
- prints
- (cask,";",i1v1,";",icls,")"))
+(
+print("I1INScas0(");
+prints(
+cask,";", i1v1,";", icls,")"))
 //
 (* ****** ****** *)
 //
