@@ -35,6 +35,7 @@ SRCDATS := \
 intrep1.dats \
 intrep1_print0.dats \
 trxi0i1.dats \
+trxi0i1_myenv0.dats \
 trxi0i1_dynexp.dats \
 trxi0i1_decl00.dats \
 xats2js_tmplib.dats \
