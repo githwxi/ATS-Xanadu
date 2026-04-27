@@ -577,6 +577,14 @@ i0exp_node =
 |I0Estr of token
 //
 (* ****** ****** *)
+//
+|I0Ei00 of (sint)
+|I0Eb00 of (bool)
+|I0Ec00 of (char)
+|I0Ef00 of (dflt)
+|I0Es00 of (strn)
+//
+(* ****** ****** *)
 |I0Etop of symbl
 (* ****** ****** *)
 |I0Evar of i0var

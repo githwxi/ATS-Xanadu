@@ -337,6 +337,275 @@ endloc(*local*)//end-of-[local(i1dcl_tbox)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+local
+//
+datatype
+i1valdcl =
+I1VALDCL of
+( loc_t
+, i1bnd, teqi1cmp)
+//
+#absimpl
+i1valdcl_tbox = i1valdcl
+//
+in//local
+//
+#implfun
+i1valdcl_lctn$get
+  (  ival  ) = let
+val+
+I1VALDCL
+( lctn
+, ibnd, tdxp) = ival in lctn end
+//
+#implfun
+i1valdcl_dpat$get
+  (  ival  ) = let
+val+
+I1VALDCL
+( lctn
+, ibnd, tdxp) = ival in ibnd end
+//
+#implfun
+i1valdcl_tdxp$get
+  (  ival  ) = let
+val+
+I1VALDCL
+( lctn
+, ibnd, tdxp) = ival in tdxp end
+//
+(* ****** ****** *)
+//
+#implfun
+i1valdcl_make_args
+(lctn, ibnd, tdxp) =
+(
+  I1VALDCL(lctn, ibnd, tdxp(*opt*)))
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [local(i1valdcl)]
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1vardcl =
+I1VARDCL of
+( loc_t
+, i1bnd, teqi1cmp)
+//
+#absimpl
+i1vardcl_tbox = i1vardcl
+//
+in//local
+//
+#implfun
+i1vardcl_lctn$get
+  (  ivar  ) = let
+val+
+I1VARDCL
+( lctn
+, dpid, dini) = ivar in lctn end
+//
+#implfun
+i1vardcl_dpid$get
+  (  ivar  ) = let
+val+
+I1VARDCL
+( lctn
+, dpid, dini) = ivar in dpid end
+//
+#implfun
+i1vardcl_dini$get
+  (  ivar  ) = let
+val+
+I1VARDCL
+( lctn
+, dpid, dini) = ivar in dini end
+//
+(* ****** ****** *)
+//
+#implfun
+i1vardcl_make_args
+( lctn, dpid, dini) =
+(
+  I1VARDCL(lctn, dpid, dini(*opt*)) )
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [ local(i1vardcl) ]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1fundcl =
+I1FUNDCL of
+( loc_t
+, d2var
+, fjarglst, teqi1cmp)
+//
+#absimpl
+i1fundcl_tbox = i1fundcl
+//
+in//local
+//
+#implfun
+i1fundcl_lctn$get
+  (  ifun  ) = let
+val+
+I1FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in lctn end
+//
+#implfun
+i1fundcl_dpid$get
+  (  ifun  ) = let
+val+
+I1FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in dpid end
+//
+#implfun
+i1fundcl_farg$get
+  (  ifun  ) = let
+val+
+I1FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in farg end
+//
+(* ****** ****** *)
+//
+#implfun
+i1fundcl_tdxp$get
+  (  ifun  ) = let
+val+
+I1FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in tdxp end
+//
+(* ****** ****** *)
+//
+#implfun
+i1fundcl_make_args
+(lctn, dpid, farg, tdxp) =
+(
+  I1FUNDCL(lctn, dpid, farg, tdxp))
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [ local(i1fundcl) ]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1parsed =
+I1PARSED of
+(
+sint  // stadyn
+,
+sint  // nerror
+,
+lcsrc // source
+,
+i1dclistopt)//program
+//
+#absimpl
+i1parsed_tbox = i1parsed
+//
+in//local
+//
+(* ****** ****** *)
+//
+#implfun
+i1parsed_stadyn$get
+  (ipar) =
+(
+  stadyn ) where
+{
+val+
+I1PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i1parsed_stadyn$get]
+//
+#implfun
+i1parsed_nerror$get
+  (ipar) =
+(
+  nerror ) where
+{
+val+
+I1PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i1parsed_nerror$get]
+//
+#implfun
+i1parsed_source$get
+  (ipar) =
+(
+  source ) where
+{
+val+
+I1PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i1parsed_source$get]
+//
+(* ****** ****** *)
+//
+#implfun
+i1parsed_parsed$get
+  (ipar) =
+(
+  parsed ) where
+{
+val+
+I1PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i1parsed_parsed$get]
+//
+(* ****** ****** *)
+//
+#implfun
+i1parsed_make_args
+( stadyn
+, nerror
+, source, parsed) =
+(
+I1PARSED
+( stadyn
+, nerror, source, parsed)) where
+{
+//
+(*
+val () =
+prerrsln
+("i1parsed_make_args:nerror=",nerror)
+*)
+//
+} (*where*) // end-of-[i1parsed_make_args]
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [ local(i1parsed) ]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_intrep1.dats] *)
 (***********************************************************************)

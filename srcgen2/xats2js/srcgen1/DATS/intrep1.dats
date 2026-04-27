@@ -557,7 +557,7 @@ i1valdcl_make_args
 endloc (*local*) // end of [local(i1valdcl)]
 //
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -570,7 +570,7 @@ I1VARDCL of
 i1vardcl_tbox = i1vardcl
 //
 in//local
-
+//
 #implfun
 i1vardcl_lctn$get
   (  ivar  ) = let
@@ -578,7 +578,7 @@ val+
 I1VARDCL
 ( lctn
 , dpid, dini) = ivar in lctn end
-
+//
 #implfun
 i1vardcl_dpid$get
   (  ivar  ) = let
@@ -586,7 +586,7 @@ val+
 I1VARDCL
 ( lctn
 , dpid, dini) = ivar in dpid end
-
+//
 #implfun
 i1vardcl_dini$get
   (  ivar  ) = let
@@ -594,7 +594,7 @@ val+
 I1VARDCL
 ( lctn
 , dpid, dini) = ivar in dini end
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -604,12 +604,12 @@ i1vardcl_make_args
   I1VARDCL(lctn, dpid, dini(*opt*)) )
 //
 (* ****** ****** *)
-
+//
 endloc (*local*) // end of [ local(i1vardcl) ]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -623,7 +623,7 @@ I1FUNDCL of
 i1fundcl_tbox = i1fundcl
 //
 in//local
-
+//
 #implfun
 i1fundcl_lctn$get
   (  ifun  ) = let
@@ -632,7 +632,7 @@ I1FUNDCL
 ( lctn
 , dpid
 , farg, tdxp) = ifun in lctn end
-
+//
 #implfun
 i1fundcl_dpid$get
   (  ifun  ) = let
@@ -641,7 +641,7 @@ I1FUNDCL
 ( lctn
 , dpid
 , farg, tdxp) = ifun in dpid end
-
+//
 #implfun
 i1fundcl_farg$get
   (  ifun  ) = let
@@ -650,9 +650,9 @@ I1FUNDCL
 ( lctn
 , dpid
 , farg, tdxp) = ifun in farg end
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 i1fundcl_tdxp$get
   (  ifun  ) = let
@@ -661,7 +661,7 @@ I1FUNDCL
 ( lctn
 , dpid
 , farg, tdxp) = ifun in tdxp end
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -671,12 +671,12 @@ i1fundcl_make_args
   I1FUNDCL(lctn, dpid, farg, tdxp))
 //
 (* ****** ****** *)
-
+//
 endloc (*local*) // end of [ local(i1fundcl) ]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -695,7 +695,7 @@ i1dclistopt)//program
 i1parsed_tbox = i1parsed
 //
 in//local
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -735,7 +735,7 @@ I1PARSED
 } (*where*)//end-of-[i1parsed_source$get]
 //
 (* ****** ****** *)
-
+//
 #implfun
 i1parsed_parsed$get
   (ipar) =
@@ -747,7 +747,7 @@ I1PARSED
 ( stadyn
 , nerror, source, parsed) = ipar
 } (*where*)//end-of-[i1parsed_parsed$get]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -770,9 +770,9 @@ prerrsln
 } (*where*) // end-of-[i1parsed_make_args]
 //
 (* ****** ****** *)
-
+//
 endloc (*local*) // end of [ local(i1parsed) ]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

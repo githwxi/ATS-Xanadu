@@ -379,6 +379,23 @@ prints("I0Eflt(", flt, ")"))
 prints("I0Estr(", str, ")"))
 //
 (* ****** ****** *)
+|I0Ei00(i00) =>
+(
+prints("I0Ei00(", i00, ")"))
+|I0Eb00(b00) =>
+(
+prints("I0Eb00(", b00, ")"))
+|I0Ec00(c00) =>
+(
+prints("I0Ec00(", c00, ")"))
+|I0Ef00(f00) =>
+(
+prints("I0Ef00(", f00, ")"))
+|I0Es00(s00) =>
+(
+prints("I0Es00(", s00, ")"))
+//
+(* ****** ****** *)
 //
 |I0Evar
 (   i0v1   ) =>
