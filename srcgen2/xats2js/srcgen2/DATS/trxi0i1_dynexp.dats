@@ -1401,34 +1401,34 @@ prerrsln("i0bnd_trxi0i1: ival = ", ival)
 //
 #implfun
 i0exp_trxi0i1
-( env0, iexp ) =
+( iexp, env0 ) =
 (
 case+
 iexp.node() of
 //
 (* ****** ****** *)
 //
-|I0Eint _ => f0_int(env0, iexp)
-|I0Ebtf _ => f0_btf(env0, iexp)
-|I0Echr _ => f0_chr(env0, iexp)
-|I0Eflt _ => f0_flt(env0, iexp)
-|I0Estr _ => f0_str(env0, iexp)
+|I0Eint _ => f0_int(iexp, env0)
+|I0Ebtf _ => f0_btf(iexp, env0)
+|I0Echr _ => f0_chr(iexp, env0)
+|I0Eflt _ => f0_flt(iexp, env0)
+|I0Estr _ => f0_str(iexp, env0)
 //
 (* ****** ****** *)
 //
-|I0Ei00 _ => f0_i00(env0, iexp)
-|I0Eb00 _ => f0_b00(env0, iexp)
-|I0Ec00 _ => f0_c00(env0, iexp)
-|I0Ef00 _ => f0_f00(env0, iexp)
-|I0Es00 _ => f0_s00(env0, iexp)
+|I0Ei00 _ => f0_i00(iexp, env0)
+|I0Eb00 _ => f0_b00(iexp, env0)
+|I0Ec00 _ => f0_c00(iexp, env0)
+|I0Ef00 _ => f0_f00(iexp, env0)
+|I0Es00 _ => f0_s00(iexp, env0)
 //
 (* ****** ****** *)
-|I0Etop _ => f0_top(env0, iexp)
+|I0Etop _ => f0_top(iexp, env0)
 (* ****** ****** *)
 //
-|I0Econ _ => f0_con(env0, iexp)
-|I0Ecst _ => f0_cst(env0, iexp)
-|I0Evar _ => f0_var(env0, iexp)
+|I0Econ _ => f0_con(iexp, env0)
+|I0Ecst _ => f0_cst(iexp, env0)
+|I0Evar _ => f0_var(iexp, env0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1444,9 +1444,9 @@ iexp.node() of
 //
 fun
 f0_int
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 (
   i1val_int(loc, tok) ) where
 {
@@ -1457,9 +1457,9 @@ f0_int
 //
 fun
 f0_btf
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 (
   i1val_btf(loc, sym) ) where
 {
@@ -1470,9 +1470,9 @@ f0_btf
 //
 fun
 f0_chr
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 (
   i1val_chr(loc, tok) ) where
 {
@@ -1483,9 +1483,9 @@ f0_chr
 //
 fun
 f0_flt
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 (
   i1val_flt(loc, tok) ) where
 {
@@ -1496,9 +1496,9 @@ f0_flt
 //
 fun
 f0_str
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 (
   i1val_str(loc, tok) ) where
 {
@@ -1510,9 +1510,9 @@ f0_str
 //
 fun
 f0_i00
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 (
   i1val_i00(loc, i00) ) where
 {
@@ -1523,9 +1523,9 @@ f0_i00
 //
 fun
 f0_b00
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 (
   i1val_b00(loc, b00) ) where
 {
@@ -1536,9 +1536,9 @@ f0_b00
 //
 fun
 f0_c00
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 (
   i1val_c00(loc, c00) ) where
 {
@@ -1549,9 +1549,9 @@ f0_c00
 //
 fun
 f0_f00
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 (
   i1val_f00(loc, f00) ) where
 {
@@ -1562,9 +1562,9 @@ f0_f00
 //
 fun
 f0_s00
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 (
   i1val_s00(loc, s00) ) where
 {
@@ -1576,9 +1576,9 @@ f0_s00
 //
 fun
 f0_top
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 (
   i1val_top(loc, sym) ) where
 {
@@ -1590,9 +1590,9 @@ f0_top
 //
 fun
 f0_con
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 let
 //
 val loc0 = iexp.lctn()
@@ -1619,9 +1619,9 @@ prerrsln("f0_con(01): iexp = ", iexp))
 //
 fun
 f0_cst
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 let
 //
 val loc0 = iexp.lctn()
@@ -1648,19 +1648,25 @@ prerrsln("f0_cst(01): iexp = ", iexp))
 //
 fun
 f0_var
-( env0:
-! envi0i1
-, iexp: i0exp): i1val =
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
 let
 //
 val loc0 = iexp.lctn()
 //
 val-
-I0Evar(d2v1) = iexp.node()
+I0Evar(i0v1) = iexp.node()
 //
 in//let
+//
+let
+val d2v1 = i0v1.dvar()
+in//let
 envi0i1_dvar$search(env0, d2v1)
-end where
+end//let
+//
+end where // end-of-[let...]
 {
 //
 (*

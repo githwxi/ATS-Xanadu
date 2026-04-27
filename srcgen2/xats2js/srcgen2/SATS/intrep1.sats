@@ -759,6 +759,44 @@ fun
 i1fundcl_fprint
 (ifun:i1fundcl, out0:FILR): void
 (* ****** ****** *)
+//
+fun
+i1valdcl_lctn$get:(i1valdcl)->loc_t
+fun
+i1vardcl_lctn$get:(i1vardcl)->loc_t
+fun
+i1fundcl_lctn$get:(i1fundcl)->loc_t
+//
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i1valdcl_dpat$get:(i1valdcl)->i1bnd
+fun
+i1valdcl_tdxp$get:(i1valdcl)->teqi1cmp
+(* ****** ****** *)
+#symload dpat with i1valdcl_dpat$get
+#symload tdxp with i1valdcl_tdxp$get(*opt*)
+(* ****** ****** *)
+fun
+i1vardcl_dpid$get:(i1vardcl)->i1bnd
+fun
+i1vardcl_dini$get:(i1vardcl)->teqi1cmp
+(* ****** ****** *)
+#symload dpid with i1vardcl_dpid$get
+#symload dini with i1vardcl_dini$get(*opt*)
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i1fundcl_dpid$get:(i1fundcl)->d2var
+fun
+i1fundcl_farg$get:(i1fundcl)->fjarglst
+fun
+i1fundcl_tdxp$get:(i1fundcl)->teqi1cmp
+(* ****** ****** *)
+#symload dpid with i1fundcl_dpid$get
+#symload farg with i1fundcl_farg$get(*lst*)
+#symload tdxp with i1fundcl_tdxp$get(*opt*)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

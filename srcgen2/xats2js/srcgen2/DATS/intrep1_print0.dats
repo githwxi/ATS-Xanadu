@@ -561,6 +561,94 @@ end(*let*)//end-of-[i1dcl_fprint(dcl0,out0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1valdcl_fprint
+  (ival, out0) = let
+//
+val dpat =
+i1valdcl_dpat$get(ival)
+val tdxp =
+i1valdcl_tdxp$get(ival)
+//
+#impltmp g_print$out<>() = out0
+//
+in//let
+(
+prints("I1VALDCL(", dpat, ";", tdxp, ")"))
+end(*let*)//end-of-[i1valdcl_fprint(ival,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1vardcl_fprint
+  (ivar, out0) = let
+//
+val dpid =
+i1vardcl_dpid$get(ivar)
+val dini =
+i1vardcl_dini$get(ivar)
+//
+#impltmp g_print$out<>() = out0
+//
+in//let
+(
+prints("I1VARDCL(", dpid, ";", dini, ")"))
+end(*let*)//end-of-[i1vardcl_fprint(ivar,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1fundcl_fprint
+  (ifun, out0) = let
+//
+val dpid =
+i1fundcl_dpid$get(ifun)
+val farg =
+i1fundcl_farg$get(ifun)
+val tdxp =
+i1fundcl_tdxp$get(ifun)
+//
+#impltmp g_print$out<>() = out0
+//
+in//let
+(
+prints
+("I1FUNDCL(",dpid,";",farg,";",tdxp,")"))
+end(*let*)//end-of-[i1fundcl_fprint(ifun,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1parsed_fprint
+  (ipar, out0) = let
+//
+val
+stadyn =
+i1parsed_stadyn$get(ipar)
+val
+nerror =
+i1parsed_nerror$get(ipar)
+val
+source =
+i1parsed_source$get(ipar)
+val
+parsed =
+i1parsed_parsed$get(ipar)
+//
+#impltmp g_print$out<>() = out0
+//
+in//let
+(
+print("I1PARSED(");
+prints
+(stadyn,";",nerror,";",source,";",parsed,")"))
+end(*let*)//end-of-[i1parsed_fprint(ipar,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_intrep1_print0.dats] *)
 (***********************************************************************)

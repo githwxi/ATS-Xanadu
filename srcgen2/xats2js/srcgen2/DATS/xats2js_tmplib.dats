@@ -215,6 +215,68 @@ i1fundcl_fprint(ifun, g_print$out<>())
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+g_print
+<teqi0exp>(tdxp) =
+let
+(*
+#impltmp
+g_print$out<>() = out
+*)
+in//let
+(
+case+ tdxp of
+|
+TEQI0EXPnone() =>
+prints("TEQI0EXPnone(", ")")
+|
+TEQI0EXPsome(tok0, i0e1) =>
+prints("TEQI0EXPsome(",tok0,";",i0e1,")"))
+endlet // end-of-[g_print<teqi0exp>(tdxp)]
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<teqi1cmp>(tdxp) =
+let
+(*
+#impltmp
+g_print$out<>() = out
+*)
+in//let
+(
+case+ tdxp of
+|
+TEQI1CMPnone() =>
+prints("TEQI1CMPnone(", ")")
+|
+TEQI1CMPsome(tok0, icmp) =>
+prints("TEQI1CMPsome(",tok0,";",icmp,")"))
+endlet // end-of-[g_print<teqi1cmp>(tdxp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i0parsed>(ipar) =
+let
+val () =
+i0parsed_fprint(ipar, g_print$out<>())end
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i1parsed>(ipar) =
+let
+val () =
+i1parsed_fprint(ipar, g_print$out<>())end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_xats2js_tmplib.dats] *)
 (***********************************************************************)

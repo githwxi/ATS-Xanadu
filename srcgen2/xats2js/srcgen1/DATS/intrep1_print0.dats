@@ -879,6 +879,35 @@ end(*let*)//end-of-[i1fundcl_fprint(ifun,out0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1parsed_fprint
+  (ipar, out0) = let
+//
+val
+stadyn =
+i1parsed_stadyn$get(ipar)
+val
+nerror =
+i1parsed_nerror$get(ipar)
+val
+source =
+i1parsed_source$get(ipar)
+val
+parsed =
+i1parsed_parsed$get(ipar)
+//
+#impltmp g_print$out<>() = out0
+//
+in//let
+(
+print("I1PARSED(");
+prints
+(stadyn,";",nerror,";",source,";",parsed,")"))
+end(*let*)//end-of-[i1parsed_fprint(ipar,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep1_print0.dats] *)
 (***********************************************************************)
