@@ -57,13 +57,12 @@ test00:: \
 test00_xats2js.dats; \
 $(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ############
-test00:: ; \
-npx google-closure-compiler -W QUIET \
-  --compilation_level SIMPLE --js=OUTS/$@_out.js --js_output_file=OUTS/$@_out1.js
-############
-test00:: ; \
-npx google-closure-compiler -W QUIET \
-  --compilation_level ADVANCED --js=OUTS/$@_out.js --js_output_file=OUTS/$@_out2.js
+# test00:: ; \
+# npx google-closure-compiler -W QUIET \
+#   --compilation_level SIMPLE --js=OUTS/$@_out.js --js_output_file=OUTS/$@_out1.js
+# test00:: ; \
+# npx google-closure-compiler -W QUIET \
+#   --compilation_level ADVANCED --js=OUTS/$@_out.js --js_output_file=OUTS/$@_out2.js
 ########################################################################
 ########################################################################
 ###################### end of [Makefile_jsemit01] ######################
