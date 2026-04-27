@@ -1431,6 +1431,11 @@ iexp.node() of
 |I0Evar _ => f0_var(iexp, env0)
 //
 (* ****** ****** *)
+//
+|I0Edap0 _ => f0_dap0(iexp, env0)
+|I0Edapp _ => f0_dapp(iexp, env0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 | _(*otherwise*) => i1val_none1(iexp)
 (* ****** ****** *)
@@ -1609,11 +1614,11 @@ end where
 (*
 val () =
 (
-prerr("trxi0i1_i0exp:");
+prerr("i0exp_trxi0i1:");
 prerrsln("f0_con(01): iexp = ", iexp))
 *)
 //
-}(*where*)//end-of-[f0_con(env0,iexp)]
+}(*where*)//end-of-[f0_con(iexp,env0)]
 //
 (* ****** ****** *)
 //
@@ -1638,11 +1643,11 @@ end where
 (*
 val () =
 (
-prerr("trxi0i1_i0exp:");
+prerr("i0exp_trxi0i1:");
 prerrsln("f0_cst(01): iexp = ", iexp))
 *)
 //
-}(*where*)//end-of-[f0_cst(env0,iexp)]
+}(*where*)//end-of-[f0_cst(iexp,env0)]
 //
 (* ****** ****** *)
 //
@@ -1672,11 +1677,81 @@ end where // end-of-[let...]
 (*
 val () =
 (
-prerr("trxi0i1_i0exp:");
+prerr("i0exp_trxi0i1:");
 prerrsln("f0_var(01): iexp = ", iexp))
 *)
 //
-}(*where*)//end-of-[f0_var(env0,iexp)]
+}(*where*)//end-of-[f0_var(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dap0
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Edap0(i0f0) = iexp.node()
+//
+val i1f0 =
+(
+  i0exp_trxi0i1(i0f0, env0))
+//
+in//let
+(
+i1val_dap0(env0, loc0, i1f0))
+end where
+{
+//
+(*
+val () =
+(
+prerr("i0exp_trxi0i1:");
+prerrsln("f0_dap0(01): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_dap0(iexp,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Edapp
+(i0f0
+,npf1, i0es) = iexp.node()
+//
+val i1f0 =
+i0exp_trxi0i1(i0f0, env0)
+val i1vs =
+i0explst_trxi0i1(i0es, env0)
+//
+in//let
+(
+i1val_dapp(env0,loc0,i1f0,i1vs))
+end where
+{
+//
+(*
+val () =
+(
+prerr("i0exp_trxi0i1:");
+prerrsln("f0_dapp(01): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_dapp(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
