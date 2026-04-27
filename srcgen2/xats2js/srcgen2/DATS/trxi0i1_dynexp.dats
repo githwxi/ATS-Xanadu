@@ -1432,6 +1432,11 @@ iexp.node() of
 //
 (* ****** ****** *)
 //
+|I0Etapp _ => f0_tapp(iexp, env0)
+|I0Etapq _ => f0_tapq(iexp, env0)
+//
+(* ****** ****** *)
+//
 |I0Edap0 _ => f0_dap0(iexp, env0)
 |I0Edapp _ => f0_dapp(iexp, env0)
 //
@@ -1682,6 +1687,41 @@ prerrsln("f0_var(01): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_var(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_tapp
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Etapp
+(i0f0, s2es) = iexp.node()
+in//let
+(
+  i0exp_trxi0i1(i0f0, env0)) end//let
+//
+fun
+f0_tapq
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Etapq
+(i0f0, tjas) = iexp.node()
+in//let
+(
+  i0exp_trxi0i1(i0f0, env0)) end//let
 //
 (* ****** ****** *)
 (* ****** ****** *)
