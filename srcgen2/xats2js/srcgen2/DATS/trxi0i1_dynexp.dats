@@ -1875,6 +1875,28 @@ val () =
 (* ****** ****** *)
 //
 #implfun
+i0blk_trxi0i1
+( iexp, env0 ) =
+(
+I1CMPcons(ilts, ival)
+) where
+{
+val () =
+(
+  envi0i1_pshblk0(env0))
+//
+val ival =
+(
+  i0exp_trxi0i1(iexp, env0))
+//
+val ilts = envi0i1_popblk0(env0)
+//
+}(*where*)//end-of-[i0blk_trxi0i1(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 fiarglst_trxi0i1
 ( fias, env0 ) =
 (
