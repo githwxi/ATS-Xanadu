@@ -273,7 +273,7 @@ fun // HX: [trxi0i1_i0exp]
 trxi0i1_i0exp // insert into [env0]
 (env0: !envi0i1, i0e0: i0exp): i1val
 //
-fun // HX: [trxi0i1_i0exp]
+fun // HX: [trxi0i1_i0lft]
 trxi0i1_i0lft // insert into [env0]
 (env0: !envi0i1, i0e0: i0exp): i1val
 //

@@ -23,6 +23,10 @@ Sun Apr 26 12:02:34 PM EDT 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+foo(tf: bool): sint =
+if tf then 10 else foo(not(tf))
+////
 val nil =
 list_nil<sint>()
 ////

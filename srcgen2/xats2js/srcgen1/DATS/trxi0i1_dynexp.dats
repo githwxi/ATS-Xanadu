@@ -2038,6 +2038,7 @@ in//let
 end(*let*)//end-of-[f0_let0(env0,iexp)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_ift0
@@ -2093,7 +2094,6 @@ prerrsln("f0_ift0(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_ift0(env0,iexp)]
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

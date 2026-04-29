@@ -458,6 +458,25 @@ end(*let*)//end-of-[i1ins_fprint(iins,out0)]
 (* ****** ****** *)
 //
 #implfun
+fjarg_fprint
+(farg, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+farg.node() of
+|FJARGdarg(i1bs) =>
+(
+  prints("FJARGdarg(", i1bs, ")"))
+//
+end(*let*)//end-of-[fjarg_fprint(farg,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i1dcl_fprint
 (dcl0, out0) =
 let

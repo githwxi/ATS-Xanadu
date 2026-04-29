@@ -236,9 +236,17 @@ i0bnd_trxi0i1
 //
 (* ****** ****** *)
 //
-fun
-i0exp_trxi0i1
+fun // HX: [trxi0i1_i0exp]
+i0exp_trxi0i1 // insert into [env0]
 (i0e0: i0exp, env0: !envi0i1): i1val
+//
+fun // HX: [trxi0i1_i0lft]
+i0lft_trxi0i1 // insert into [env0]
+(i0e0: i0exp, env0: !envi0i1): i1val
+//
+fun // HX: [trxi0i1_i0blk]: not
+i0blk_trxi0i1 // insert into [env0]
+(i0e0: i0exp, env0: !envi0i1): i1cmp
 //
 (* ****** ****** *)
 //
