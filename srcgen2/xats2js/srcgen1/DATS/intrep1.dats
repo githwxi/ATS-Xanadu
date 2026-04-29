@@ -147,38 +147,6 @@ case+ icmp of
 local
 //
 datatype
-fjarg =
-FJARG of
-(
-loctn, fjarg_node)
-#absimpl
-fjarg_tbox = fjarg
-//
-in (* in-of-local *)
-//
-#implfun
-fjarg_make_node
-(   loc,nod   ) = FJARG(loc,nod)
-//
-#implfun
-fjarg_lctn$get(fja) =
-let
-  val+FJARG(loc,nod) = fja in loc
-end
-#implfun
-fjarg_node$get(fja) =
-let
-  val+FJARG(loc,nod) = fja in nod
-end
-//
-endloc (*local*) // end of [local(fjarg)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-
-local
-//
-datatype
 i1gua =
 I1GUA of
 (
@@ -204,9 +172,9 @@ let
 end
 //
 endloc (*local*) // end of [local(i1gua)]
-
+//
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -235,9 +203,9 @@ let
 end
 //
 endloc (*local*) // end of [local(i1gpt)]
-
+//
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -266,7 +234,41 @@ let
 end
 //
 endloc(*local*)//end-of-[local(i1cls)]
-
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+fjarg =
+FJARG of
+(
+loctn, fjarg_node)
+#absimpl
+fjarg_tbox = fjarg
+//
+in (* in-of-local *)
+//
+#implfun
+fjarg_make_node
+( loc0, node ) = FJARG(loc0,node)
+//
+#implfun
+fjarg_lctn$get
+  (  fja0  ) =
+let
+val+FJARG(loc0, _) = fja0 in loc0
+end
+#implfun
+fjarg_node$get
+  (  fja0  ) =
+let
+val+FJARG(_, node) = fja0 in node
+end
+//
+endloc(*local*)//end-of-[local(fjarg)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

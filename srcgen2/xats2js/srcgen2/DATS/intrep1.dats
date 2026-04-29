@@ -299,6 +299,40 @@ endloc(*local*)//end-of-[local(i1val_tbox)]
 local
 //
 datatype
+fjarg =
+FJARG of
+(
+loctn, fjarg_node)
+#absimpl
+fjarg_tbox = fjarg
+//
+in (* in-of-local *)
+//
+#implfun
+fjarg_make_node
+( loc0, node ) = FJARG(loc0,node)
+//
+#implfun
+fjarg_lctn$get
+  (  fja0  ) =
+let
+val+FJARG(loc0, _) = fja0 in loc0
+end
+#implfun
+fjarg_node$get
+  (  fja0  ) =
+let
+val+FJARG(_, node) = fja0 in node
+end
+//
+endloc(*local*)//end-of-[local(fjarg_tbox)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
 i1dcl =
 I1DCL of
 (loctn, i1dcl_node)

@@ -1441,6 +1441,13 @@ iexp.node() of
 |I0Edapp _ => f0_dapp(iexp, env0)
 //
 (* ****** ****** *)
+//
+|I0Eift0 _ => f0_ift0(iexp, env0)
+(*
+|I0Ecas0 _ => f0_cas0(iexp, env0)
+*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 | _(*otherwise*) => i1val_none1(iexp)
 (* ****** ****** *)
@@ -1796,6 +1803,63 @@ prerrsln("f0_dapp(01): iexp = ", iexp))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+f0_ift0
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Eift0
+(
+i0e1,
+ithn, iels) = iexp.node()
+//
+val i1v1 =
+i0exp_trxi0i1(i0e1, env0)
+//
+val ithn =
+(
+case+ ithn of
+|
+optn_nil() => optn_nil()
+|
+optn_cons(i0e2) =>
+optn_cons
+(i0blk_trxi0i1(i0e2, env0)))
+//
+val iels =
+(
+case+ iels of
+|
+optn_nil() => optn_nil()
+|
+optn_cons(i0e2) =>
+optn_cons
+(i0blk_trxi0i1(i0e2, env0)))
+//
+in//let
+(
+  i1val_ift0
+  (env0, loc0, i1v1, ithn, iels))
+end where
+{
+//
+(*
+val () =
+(
+prerr("i0exp_trxi0i1:");
+prerrsln("f0_ift0(01): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_ift0(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 // (*
 val () =
 (
@@ -1806,6 +1870,67 @@ val () =
 (* ****** ****** *)
 //
 }(*where*)//end-of-[i0exp_trxi0i1(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fiarglst_trxi0i1
+( fias, env0 ) =
+(
+case+ fias of
+|list_nil
+( (*0*) ) =>
+list_nil((*void*))
+|list_cons
+(fia1, fias) =>
+(
+case+
+fia1.node() of
+//
+|FIARGsapp _ =>
+fiarglst_trxi0i1(fias, env0)
+|FIARGmets _ =>
+fiarglst_trxi0i1(fias, env0)
+//
+|FIARGdapp _ =>
+(
+  list_cons(fja1, fjas))
+where
+{
+//
+val fja1 = f0_dapp(fia1, env0)
+//
+val fjas =
+(
+  fiarglst_trxi0i1(fias, env0))
+//
+}(*where*)//end-[FIARGdapp(...)]
+)
+) where // end-of-[case+of(fia1)]
+{
+//
+fun
+f0_dapp
+(
+fia1: fiarg,
+env0: !envi0i1): fjarg =
+let
+//
+val loc0 = fia1.lctn()
+//
+val-
+FIARGdapp
+(npf1, i0ps) = fia1.node()
+//
+in//let
+(
+fjarg
+(loc0, FJARGdarg(i1bs))) where
+{
+val
+i1bs = i0patlst_trxi0i1(i0ps, env0)} end
+}(*where+*)//end-[fiarglst_trxi0i1(fias,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
