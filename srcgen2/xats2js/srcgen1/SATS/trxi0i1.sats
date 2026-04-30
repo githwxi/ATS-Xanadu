@@ -133,7 +133,7 @@ fun
 envi0i1_make_nil
   ((*nil*)):(envi0i1)//end-fun
 fun
-envi0i1_free_top
+envi0i1_free_nil
   (envi0i1):(  void  )//end-fun
 //
 (* ****** ****** *)

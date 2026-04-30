@@ -86,7 +86,7 @@ i0dclistopt_trxi0i1(parsed, env0)
 //
 in//let
 let
-val ((*0*)) = envi0i1_free$top(env0)
+val ((*0*)) = envi0i1_free_nil(env0)
 in//let
 (
   i1parsed(stadyn,nerror,source,parsed))

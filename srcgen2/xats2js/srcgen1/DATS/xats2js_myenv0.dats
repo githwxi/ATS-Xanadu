@@ -105,13 +105,13 @@ envx2js_make_out
 (* ****** ****** *)
 //
 #implfun
-envx2js_free_top
+envx2js_free_nil
   (  env0  ) =
 (
 case+ env0 of
 | ~
 ENVX2JS(filr, nind) => ((*void*)))
-(*case+*)//end-of-(envx2js_free_top(env0))
+(*case+*)//end-of-(envx2js_free_nil(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

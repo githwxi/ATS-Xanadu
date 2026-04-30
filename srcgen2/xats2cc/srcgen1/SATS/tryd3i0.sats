@@ -64,7 +64,7 @@ fun
 enwd3i0_make_nil
   ( (*void*) ): enwd3i0
 fun
-enwd3i0_free$top
+enwd3i0_free_nil
   ( enw0: !enwd3i0 ): void
 //
 (* ****** ****** *)

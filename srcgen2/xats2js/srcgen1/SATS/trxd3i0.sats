@@ -73,8 +73,9 @@ i0parsed_of_trxd3i0
 //
 fun
 envd3i0_make_nil(): envd3i0
+//
 fun
-envd3i0_free_top(envd3i0): void
+envd3i0_free_nil(envd3i0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

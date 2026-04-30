@@ -81,7 +81,7 @@ trxstk_getical
 (* ****** ****** *)
 //
 fun
-trxstk_free$top
+trxstk_free_nil
   ( env0: !trxstk ): void
 //
 (* ****** ****** *)
@@ -140,7 +140,7 @@ fun
 envd3i0_make_nil
   ( (*void*) ): envd3i0
 fun
-envd3i0_free$top
+envd3i0_free_nil
   ( env0: !envd3i0 ): void
 //
 (* ****** ****** *)

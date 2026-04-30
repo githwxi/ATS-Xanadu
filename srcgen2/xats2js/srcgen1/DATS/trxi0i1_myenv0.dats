@@ -518,7 +518,7 @@ ENVI0I1
 (* ****** ****** *)
 //
 #implfun
-envi0i1_free_top
+envi0i1_free_nil
   (  env0  ) =
 let
 //
@@ -530,7 +530,7 @@ in//let
   stkmap_free_nil(d2vstk);
   iltstk_free_nil(iltstk); ((*void*))
 end//let
-(*case+*)//end-of-(envi0i1_free_top(env0))
+(*case+*)//end-of-(envi0i1_free_nil(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
