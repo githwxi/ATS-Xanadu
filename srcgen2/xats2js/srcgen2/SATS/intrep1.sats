@@ -326,6 +326,11 @@ and i1ins =
 //
 (* ****** ****** *)
 //
+|I1INSrturn of
+(i0cal(*funkind*), i1cmp(*ret*))
+//
+(* ****** ****** *)
+//
 |I1INSdp2tr of (i1val(*addr-of*))
 //
 (* ****** ****** *)
