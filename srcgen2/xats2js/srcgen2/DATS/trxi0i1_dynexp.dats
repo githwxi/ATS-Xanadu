@@ -693,6 +693,29 @@ val (  ) =
 (* ****** ****** *)
 //
 fun
+i1val_rturn
+( env0:
+! envi0i1
+, loc0: loc_t
+, ical: (i0cal)
+, icmp: (i1cmp)): i1val =
+(
+i1val_nil(loc0)) where
+{
+val (  ) =
+let
+//
+val ilet =
+I1LETnew0(
+  I1INSrturn(ical, icmp)) in
+//
+envi0i1_ilet$insert(env0, ilet) end
+}(*where*)//end-of-[i1val_rturn(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1val_dp2tr
 ( env0:
 ! envi0i1
@@ -1448,6 +1471,15 @@ iexp.node() of
 *)
 //
 (* ****** ****** *)
+//
+|I0Erturn _ => f0_rturn(iexp, env0)
+//
+(* ****** ****** *)
+//
+|I0Eannot _ => f0_annot(iexp, env0)
+|I0Et2ped _ => f0_t2ped(iexp, env0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 | _(*otherwise*) => i1val_none1(iexp)
 (* ****** ****** *)
@@ -1856,6 +1888,61 @@ prerrsln("f0_ift0(01): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_ift0(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_rturn
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Erturn
+(
+ical, i0e1) = iexp.node()
+//
+val icmp =
+(
+  i0blk_trxi0i1(i0e1, env0))
+//
+in//let
+(
+i1val_rturn(env0,loc0,ical,icmp))
+end(*let*)//end-of-[f0_rturn(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_annot
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+(
+i0exp_trxi0i1(i0e1, env0)
+) where
+{
+val-
+I0Eannot(i0e1, _, _) = iexp.node()
+}(*where*)//end-of-[f0_annot(iexp,env0)]
+//
+fun
+f0_t2ped
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+(
+i0exp_trxi0i1(i0e1, env0)
+) where
+{
+val-
+I0Et2ped(i0e1, t2p2) = iexp.node()
+}(*where*)//end-of-[f0_t2ped(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

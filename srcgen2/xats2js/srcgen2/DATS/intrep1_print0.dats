@@ -110,8 +110,9 @@ in//let
 case+ ibnd of
 |I1BNDcons
 (itnm, ipat, dsub) =>
-( print("I1BNDcons(")
-; prints(itnm, ";", ipat, ";", dsub, ")"))
+(
+print("I1BNDcons(");
+prints(itnm, ";", ipat, ";", dsub, ")"))
 //
 end(*let*)//end-of-[i1bnd_fprint(ibnd,out0)]
 //
@@ -179,15 +180,34 @@ prints("I1Vs00(",s00,")")
 //
 (* ****** ****** *)
 //
+|I1Vtop(sym) =>
+prints("I1Vtop(",sym,")")
+//
+(* ****** ****** *)
+//
 |I1Vtnm(itnm) =>
 prints("I1Vtnm(",itnm,")")
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1Vcon(dcon) =>
 prints("I1Vcon(",dcon,")")
 |I1Vcst(dcst) =>
 prints("I1Vcst(",dcst,")")
+//
+(* ****** ****** *)
+//
+|I1Vvar(dvar) =>
+prints("I1Vvar(",dvar,")")
+(*
+|I1Vvar(dvar) =>
+let
+val name = dvar.name()
+in//end
+prints("I1Vvar(",name,")")
+end//let//end-[I1Vvar(dvar)]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -402,6 +422,13 @@ cask,";", i1v1,";", icls,")"))
 |I1INSfree
 (   i1v0   ) =>
 (prints("I1INSfree(",i1v0,")"))
+//
+(* ****** ****** *)
+//
+|I1INSrturn
+(ical, icmp) =>
+( print("I1INSrturn(")
+; prints(ical, ";", icmp, ")"))
 //
 (* ****** ****** *)
 //

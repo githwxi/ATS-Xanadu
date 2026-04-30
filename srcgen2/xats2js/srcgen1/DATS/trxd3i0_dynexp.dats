@@ -762,7 +762,6 @@ There is no [D3Edelaz]!!!
 (* ****** ****** *)
 //
 |D3Eannot _ => f0_annot(env0, d3e0)
-//
 |D3Et2ped _ => f0_t2ped(env0, d3e0)
 //
 (* ****** ****** *)
