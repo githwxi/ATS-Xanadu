@@ -115,6 +115,26 @@ ENWD3I0(dfnstk)) where
 //
 (* ****** ****** *)
 //
+#implfun
+enwd3i0_free_nil
+  (  env0  ) =
+(
+case+ env0 of
+| ~
+ENWD3I0(dfnstk) =>
+let
+//
+var
+dfnstk = dfnstk
+val nerr =
+stkmap_poptop0(dfnstk)
+//
+val (  ) =
+stkmap_free_nil(dfnstk) in () end//let
+)(*case+*)//end-of-(enwd3i0_free_nil(env0))
+//
+(* ****** ****** *)
+//
 endloc (*local*) // end-of-[ local(enwd3i0_vtbx) ]
 //
 (* ****** ****** *)

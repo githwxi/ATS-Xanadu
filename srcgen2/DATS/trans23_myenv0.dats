@@ -118,7 +118,8 @@ tr23env_free_nil
   (  env0  ) =
 (
 case+ env0 of
-~TR23ENV(stkmap) =>
+| ~
+TR23ENV(stkmap) =>
 let
 //
 var

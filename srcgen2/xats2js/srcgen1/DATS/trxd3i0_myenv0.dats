@@ -65,12 +65,12 @@ envd3i0_make_nil
 (* ****** ****** *)
 //
 #implfun
-envd3i0_free_top
+envd3i0_free_nil
   (  env0  ) =
 (
 case+ env0 of ~ENVD3I0( (*0*) ) => ()
 )
-(*case+*)//end-of-(envd3i0_free_top(env0))
+(*case+*)//end-of-(envd3i0_free_nil(env0))
 //
 (* ****** ****** *)
 //

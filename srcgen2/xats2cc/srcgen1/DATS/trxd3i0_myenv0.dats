@@ -258,7 +258,7 @@ lvl0, _(*stk0*)) => (I0CALnil)
 (* ****** ****** *)
 //
 #implfun
-trxstk_free$top
+trxstk_free_nil
   ( stk0 ) =
 (
    loop(stk0) )
@@ -279,7 +279,7 @@ case- stk0 of
 //
 )(*case+*)//endof(loop(stk0:trxstk))
 //
-}(*where*)//endof(trxstk_free$top(env0))
+}(*where*)//endof(trxstk_free_nil(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -397,7 +397,7 @@ ENVD3I0
 (* ****** ****** *)
 //
 #implfun
-envd3i0_free$top
+envd3i0_free_nil
   (  env0  ) =
 let
 val+
@@ -412,12 +412,12 @@ in//let
 (
 stkmap_free_nil(d2vstk)
 ;
-trxstk_free$top(trxstk)) where
+trxstk_free_nil(trxstk)) where
 {
 val+
 ~ENVD3I0(d2vstk, trxstk) = env0
 }(*where*)
-end(*let*)//end-of-(envd3i0_free$top())
+end(*let*)//end-of-(envd3i0_free_nil())
 //
 (* ****** ****** *)
 (* ****** ****** *)

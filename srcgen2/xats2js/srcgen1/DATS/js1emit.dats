@@ -75,7 +75,7 @@ env0 = envx2js_make_out(filr)
 //
 in//let
 (
-  envx2js_free_top(env0)) where
+  envx2js_free_nil(env0)) where
 { val () =
   js1emit_i1dclistopt(env0, parsed) }
 end(*let*)//end-of-[js1emit_i1parsed(filr,ipar)]

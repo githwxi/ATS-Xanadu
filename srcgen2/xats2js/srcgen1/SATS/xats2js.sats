@@ -77,7 +77,7 @@ fun
 envx2js_make_out
 (  out: FILR   ): envx2js
 fun
-envx2js_free_top
+envx2js_free_nil
 ( env0: ~envx2js ): void//fun
 //
 (* ****** ****** *)

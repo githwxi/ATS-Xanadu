@@ -90,7 +90,7 @@ i0dclistopt_tryd3i0(parsed, enw0)
 in//let
 //
 let
-val ((*0*)) = enwd3i0_free$top(enw0)
+val ((*0*)) = enwd3i0_free_nil(enw0)
 in//let
 (
   i0parsed(stadyn,nerror,source,parsed))
