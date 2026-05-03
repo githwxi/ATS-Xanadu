@@ -94,6 +94,12 @@ idcl.node() of
 |I0Dextern _ => (idcl)
 (* ****** ****** *)
 //
+|I0Dtmpsub _ =>
+(
+  f0_tmpsub(idcl, enw0))
+//
+(* ****** ****** *)
+//
 |I0Ddclst0 _ =>
 (
   f0_dclst0(idcl, enw0))
@@ -107,6 +113,35 @@ idcl.node() of
 //
 end where//let//endof(i0dcl_tryd3i0(...))
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_tmpsub
+(
+idcl: i0dcl,
+enw0: !enwd3i0): i0dcl =
+let
+//
+val loc0 = idcl.lctn()
+//
+val-
+I0Dtmpsub
+(svts, dcl1) = idcl.node()
+//
+in//let
+//
+let
+val dcl1 =
+(
+  i0dcl_tryd3i0(dcl1, enw0))
+in//let
+i0dcl(loc0, I0Dtmpsub(svts, dcl1))
+end//let
+//
+end(*let*)//end-of-[f0_tmpsub(idcl,enw0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_dclst0
@@ -128,7 +163,6 @@ in//let
 (
   i0dcl(loc0, I0Ddclst0( dcls )))
 end(*let*)//end-of-[f0_dclst0(idcl,enw0)]
-//
 //
 fun
 f0_local0
@@ -153,6 +187,8 @@ in//let
 (
 i0dcl(loc0, I0Dlocal0(ids1, ids2)))
 end(*let*)//end-of-[f0_local0(idcl,enw0)]
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[i0dcl_tryd3i0(d3cl,enw0)]
 //
