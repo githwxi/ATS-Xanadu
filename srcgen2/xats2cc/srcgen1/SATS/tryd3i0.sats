@@ -182,7 +182,7 @@ i0clslst_tryd3i0
 //
 fun
 i0dclist_tryd3i0
-(icls: i0dclist, enw0: !enwd3i0): i0dclist
+(dcls: i0dclist, enw0: !enwd3i0): i0dclist
 //
 (* ****** ****** *)
 (* ****** ****** *)
