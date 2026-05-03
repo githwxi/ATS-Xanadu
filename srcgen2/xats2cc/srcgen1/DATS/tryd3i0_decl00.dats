@@ -90,11 +90,70 @@ case+
 idcl.node() of
 //
 (* ****** ****** *)
+|I0Dstatic _ => (idcl)
+|I0Dextern _ => (idcl)
+(* ****** ****** *)
+//
+|I0Ddclst0 _ =>
+(
+  f0_dclst0(idcl, enw0))
+|I0Dlocal0 _ =>
+(
+  f0_dclst0(idcl, enw0))
+//
+(* ****** ****** *)
 |_(* otherwise *) => i0dcl_none2(idcl)
 (* ****** ****** *)
 //
 end where//let//endof(i0dcl_tryd3i0(...))
 {
+//
+fun
+f0_dclst0
+(
+idcl: i0dcl,
+enw0: !enwd3i0): i0dcl =
+let
+//
+val loc0 = idcl.lctn()
+//
+val-
+I0Ddclst0
+(   dcls   ) = idcl.node()
+//
+val dcls =
+(
+  i0dclist_tryd3i0(dcls, enw0))
+in//let
+(
+  i0dcl(loc0, I0Ddclst0( dcls )))
+end(*let*)//end-of-[f0_dclst0(idcl,enw0)]
+//
+//
+fun
+f0_local0
+(
+idcl: i0dcl,
+enw0: !enwd3i0): i0dcl =
+let
+//
+val loc0 = idcl.lctn()
+//
+val-
+I0Dlocal0
+(ids1, ids2) = idcl.node()
+//
+val ids1 =
+(
+  i0dclist_tryd3i0(ids1, enw0))
+val ids2 =
+(
+  i0dclist_tryd3i0(ids2, enw0))
+in//let
+(
+i0dcl(loc0, I0Dlocal0(ids1, ids2)))
+end(*let*)//end-of-[f0_local0(idcl,enw0)]
+//
 }(*where*)//end-of-[i0dcl_tryd3i0(d3cl,enw0)]
 //
 (* ****** ****** *)
