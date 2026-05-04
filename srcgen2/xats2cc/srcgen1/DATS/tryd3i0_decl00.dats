@@ -108,12 +108,41 @@ idcl.node() of
   f0_dclst0(idcl, enw0))
 //
 (* ****** ****** *)
-|_(* otherwise *) => i0dcl_none2(idcl)
+//
+|I0Dinclude _ =>
+(
+  f0_include(idcl, enw0))
+//
+(* ****** ****** *)
+//
+|I0Dvaldclst _ =>
+(
+  f0_valdclst(idcl, enw0))
+|I0Dvardclst _ =>
+(
+  f0_vardclst(idcl, enw0))
+//
+(*
+|I0Dfundclst _ =>
+(
+  f0_fundclst(idcl, enw0))
+*)
+//
+(* ****** ****** *)
+|
+I0Dnone0 _ => idcl
+|
+I0Dnone1 _ => idcl |I0Dnone2 _ => idcl
+(* ****** ****** *)
+//
+|_(* otherwise *) => i0dcl_none2( idcl )
+//
 (* ****** ****** *)
 //
 end where//let//endof(i0dcl_tryd3i0(...))
 {
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -141,6 +170,7 @@ end//let
 //
 end(*let*)//end-of-[f0_tmpsub(idcl,enw0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -183,14 +213,161 @@ val ids1 =
 val ids2 =
 (
   i0dclist_tryd3i0(ids2, enw0))
+//
 in//let
+//
 (
-i0dcl(loc0, I0Dlocal0(ids1, ids2)))
+i0dcl
+(
+loc0,
+I0Dlocal0(ids1(*hd*), ids2(*bd*))))
+//
 end(*let*)//end-of-[f0_local0(idcl,enw0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-}(*where*)//end-of-[i0dcl_tryd3i0(d3cl,enw0)]
+fun
+f0_include
+(
+idcl: i0dcl,
+enw0: !enwd3i0): i0dcl =
+let
+//
+val loc0 = idcl.lctn()
+//
+val-
+I0Dinclude
+(sd00
+,tknd, gsrc
+,fopt, dopt) = idcl.node()
+//
+val dopt =
+(
+i0dclistopt_tryd3i0(dopt, enw0))
+//
+in//let
+//
+i0dcl
+(
+loc0,
+I0Dinclude
+  (sd00, tknd, gsrc, fopt, dopt))
+end(*let*)//end-of-[f0_include(idcl,enw0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( 
+idcl: i0dcl,
+enw0: !enwd3i0): i0dcl =
+let
+//
+val loc0 = idcl.lctn()
+val-
+I0Dvaldclst
+(tknd, i0vs) = idcl.node()
+//
+val
+i0vs =
+i0valdclist_tryd3i0(i0vs, enw0)
+//
+in//let
+(
+i0dcl(loc0, I0Dvaldclst(tknd, i0vs)))
+end where
+{
+//
+(*
+val loc0 = idcl.lctn()
+val (  ) =
+prerrsln("f0_valdclst(d3i0): idcl = ", idcl)
+*)
+//
+}(*where*) // end of [f0_valdclst(idcl,enw0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( 
+idcl: i0dcl,
+enw0: !enwd3i0): i0dcl =
+let
+//
+val loc0 = idcl.lctn()
+val-
+I0Dvardclst
+(tknd, i0vs) = idcl.node()
+//
+val
+i0vs =
+i0vardclist_tryd3i0(i0vs, enw0)
+//
+in//let
+(
+i0dcl(loc0, I0Dvardclst(tknd, i0vs)))
+end where
+{
+//
+(*
+val loc0 = idcl.lctn()
+val (  ) =
+prerrsln("f0_vardclst(d3i0): idcl = ", idcl)
+*)
+//
+}(*where*) // end of [f0_vardclst(idcl,enw0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+}(*where*)//end-of-[i0dcl_tryd3i0(idcl,enw0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0valdcl_tryd3i0
+  (ival, env0) = let
+//
+val loc0 =
+i0valdcl_lctn$get(ival)
+val ipat =
+i0valdcl_ipat$get(ival)
+val tdxp =
+i0valdcl_tdxp$get(ival)
+//
+val tdxp =
+(
+  teqi0exp_tryd3i0(tdxp, env0))
+//
+in//let
+(
+  i0valdcl_make_args(loc0,ipat,tdxp))
+end(*let*)//end(i0valdcl_tryd3i0(dval,env0))
+//
+(* ****** ****** *)
+//
+#implfun
+i0vardcl_tryd3i0
+  (ivar, env0) = let
+//
+val loc0 =
+i0vardcl_lctn$get(ivar)
+val dpid =
+i0vardcl_dpid$get(ivar)
+val dini =
+i0vardcl_dini$get(ivar)
+//
+val dini =
+(
+  teqi0exp_tryd3i0(dini, env0))
+//
+in//let
+  i0vardcl_make_args(loc0, dpid, dini)
+end(*let*)//end(i0vardcl_tryd3i0(ivar,env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
