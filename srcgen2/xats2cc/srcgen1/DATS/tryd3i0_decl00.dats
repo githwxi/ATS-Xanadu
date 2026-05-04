@@ -90,6 +90,10 @@ case+
 idcl.node() of
 //
 (* ****** ****** *)
+//
+|I0Dd3ecl _ => (idcl)
+//
+(* ****** ****** *)
 |I0Dstatic _ => (idcl)
 |I0Dextern _ => (idcl)
 (* ****** ****** *)
@@ -141,6 +145,21 @@ I0Dnone1 _ => idcl |I0Dnone2 _ => idcl
 //
 end where//let//endof(i0dcl_tryd3i0(...))
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+f0_d3ecl
+(
+idcl: i0dcl,
+enw0: !enwd3i0): i0dcl =
+let
+val-
+I0Dd3ecl _ = idcl.node() in idcl
+end(*let*)//end-of-[f0_d3ecl(idcl,enw0)]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -324,6 +343,24 @@ prerrsln("f0_vardclst(d3i0): idcl = ", idcl)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[i0dcl_tryd3i0(idcl,enw0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+teqi0exp_tryd3i0
+  (tdxp, env0) =
+(
+case+ tdxp of
+|
+TEQI0EXPnone() =>
+TEQI0EXPnone((*void*))
+|
+TEQI0EXPsome(teq1, i0e2) =>
+TEQI0EXPsome(teq1, i0e2) where
+{ val
+  i0e2 = i0exp_tryd3i0(i0e2, env0) }
+)(*case+*)//end-of-(teqi0exp_tryd3i0(tdxp...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
