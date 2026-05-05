@@ -213,14 +213,26 @@ I0Elam0
 ,tknd, fias
 ,i0e1, i0vs) = i0e0.node()
 //
-val i0e1 =
-(
-  i0exp_tryd3i0(i0e1, enw0))
+val (  ) =
+prerrsln("\
+f0_lam0(d3i0): lvl0 = ", lvl0)
+val (  ) =
+prerrsln("\
+f0_lam0(d3i0): i0vs = ", i0vs)
+val (  ) =
+prerrsln("\
+f0_lam0(d3i0): i0e0 = ", i0e0)
 //
 in//let
 //
+let
+val i0e1 =
+(
+  i0exp_tryd3i0(i0e1, enw0))
+in//let
 i0exp(loc0, i0t0,
   I0Elam0(lvl0,tknd,fias,i0e1,i0vs))
+end//let
 //
 end(*let*)//end-of-[f0_lam0(i0e0,enw0)]
 //
@@ -243,18 +255,30 @@ I0Efix0
 ,dpid, fias
 ,i0e1, i0vs) = i0e0.node()
 //
-val i0e1 =
-(
-  i0exp_tryd3i0(i0e1, enw0))
+val (  ) =
+prerrsln("\
+f0_fix0(d3i0): lvl0 = ", lvl0)
+val (  ) =
+prerrsln("\
+f0_fix0(d3i0): i0vs = ", i0vs)
+val (  ) =
+prerrsln("\
+f0_fix0(d3i0): i0e0 = ", i0e0)
 //
 in//let
 //
+let
+val i0e1 =
+(
+  i0exp_tryd3i0(i0e1, enw0))
+in//let
 i0exp
 (
 loc0,
 i0t0,
 I0Efix0(
-  lvl0, tknd, dpid,fias,i0e1, i0vs))
+lvl0, tknd, dpid, fias, i0e1, i0vs))
+end//let
 //
 end(*let*)//end-of-[f0_fix0(i0e0,enw0)]
 //
