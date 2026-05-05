@@ -445,6 +445,58 @@ end(*let*)//end(i0vardcl_tryd3i0(ivar,env0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0fundcl_tryd3i0
+  (ifun, env0) =
+let
+//
+val loc0 =
+i0fundcl_lctn$get(ifun)
+//
+val lvl0 =
+i0fundcl_lvl0$get(ifun)
+//
+val dpid =
+i0fundcl_dpid$get(ifun)
+val d2vs =
+i0fundcl_d2vs$get(ifun)
+//
+val fias =
+i0fundcl_farg$get(ifun)
+//
+val tdxp =
+i0fundcl_tdxp$get(ifun)
+//
+val i0vs =
+i0fundcl_i0vs$get(ifun)
+//
+val tdxp =
+(
+  teqi0exp_tryd3i0(tdxp, env0))
+//
+in//let
+(
+i0fundcl_make_args(loc0,
+  lvl0, dpid, d2vs, fias, tdxp, i0vs))
+end where
+{
+//
+(*
+val (  ) =
+prerrsln("i0fundcl_tryd3i0: loc0 = ", loc0)
+val (  ) =
+prerrsln("i0fundcl_tryd3i0: dpid = ", dpid)
+val (  ) =
+prerrsln("i0fundcl_tryd3i0: fias = ", fias)
+val (  ) =
+prerrsln("i0fundcl_tryd3i0: tdxp = ", tdxp)
+*)
+//
+}(*where*)//end(i0fundcl_tryd3i0(ifun,env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_tryd3i0_decl00.dats] *)
 (***********************************************************************)
