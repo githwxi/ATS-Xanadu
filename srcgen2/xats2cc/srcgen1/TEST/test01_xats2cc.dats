@@ -29,6 +29,7 @@ val y = ( x + x )
 val foo =
 lam(w:sint) =>
 lam(z:sint) => w + x + y + z
+////
 val bar =
 lam(w:sint) =>
 fix f00
