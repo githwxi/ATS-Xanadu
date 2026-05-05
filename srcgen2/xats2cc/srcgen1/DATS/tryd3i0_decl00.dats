@@ -126,17 +126,17 @@ idcl.node() of
 (
   f0_vardclst(idcl, enw0))
 //
-(*
 |I0Dfundclst _ =>
 (
   f0_fundclst(idcl, enw0))
-*)
 //
 (* ****** ****** *)
+//
 |
 I0Dnone0 _ => idcl
 |
 I0Dnone1 _ => idcl |I0Dnone2 _ => idcl
+//
 (* ****** ****** *)
 //
 |_(* otherwise *) => i0dcl_none2( idcl )
@@ -338,6 +338,42 @@ prerrsln("f0_vardclst(d3i0): idcl = ", idcl)
 *)
 //
 }(*where*) // end of [f0_vardclst(idcl,enw0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+(
+idcl: i0dcl,
+enw0: !enwd3i0): i0dcl =
+let
+//
+val loc0 = idcl.lctn()
+//
+val-
+I0Dfundclst
+( tknd
+, tqas
+, d2cs, i0fs) = idcl.node()
+//
+val i0fs =
+i0fundclist_tryd3i0(i0fs, enw0)
+//
+in//let
+(
+i0dcl_make_node
+( loc0
+, I0Dfundclst(tknd, tqas, d2cs, i0fs)))
+end where
+{
+//
+(*
+val loc0 = idcl.lctn()
+val (  ) =
+prerrsln("f0_fundclst(d3i0): idcl = ", idcl)
+*)
+//
+}(*where*) // end of [f0_fundclst(idcl,enw0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

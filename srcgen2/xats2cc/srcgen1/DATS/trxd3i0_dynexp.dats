@@ -1354,7 +1354,7 @@ val i0t0 =
 val (  ) = // HX: lvl0+0
 (
   envd3i0_pshlet0(  env0  ))
-val icls =
+val dcls =
 (
 d3eclist_trxd3i0(dcls, env0))
 //
@@ -1377,7 +1377,7 @@ envd3i0_i0vs$insert(env0, i0vs)
 in//let
 (
 i0exp(
-loc0, i0t0, I0Elet0(icls, i0e1)))
+loc0, i0t0, I0Elet0(dcls, i0e1)))
 end//let
 //
 end(*let*)//end-of-[f0_let0(d3e0,env0)]
@@ -1768,7 +1768,7 @@ val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
 //
-val icls =
+val dcls =
 (
 d3eclist_trxd3i0(dcls, env0))
 //
@@ -1780,7 +1780,7 @@ i0e1 = d3exp_trxd3i0(d3e1, env0)
 in//let
 (
 i0exp(
-loc0, i0t0, I0Ewhere(i0e1, icls)))
+loc0, i0t0, I0Ewhere(i0e1, dcls)))
 end//let
 //
 end(*let*)//end-of-[f0_where(d3e0,env0)]
@@ -1949,7 +1949,7 @@ val i0t0 =
 val (  ) = // HX: lvl0+0
 (
   envd3i0_pshlet0(  env0  ))
-val icls =
+val dcls =
 (
 d3eclist_trxd3i0(dcls, env0))
 //
@@ -1972,7 +1972,7 @@ envd3i0_i0vs$insert(env0, i0vs)
 in//let
 (
 i0exp(
-loc0, i0t0, I0Elet0(icls, i0e1)))
+loc0, i0t0, I0Elet0(dcls, i0e1)))
 end//let
 //
 end(*let*)//end-of-[f0_let0(d3e0,env0)]
@@ -2067,7 +2067,7 @@ val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
 //
-val icls =
+val dcls =
 (
 d3eclist_trxd3i0(dcls, env0))
 //
@@ -2079,7 +2079,7 @@ i0e1 = d3exp_trxd3i0(d3e1, env0)
 in//let
 (
 i0exp(
-loc0, i0t0, I0Ewhere(i0e1, icls)))
+loc0, i0t0, I0Ewhere(i0e1, dcls)))
 end//let
 //
 end(*let*)//end-of-[f0_where(d3e0,env0)]

@@ -135,6 +135,39 @@ stkmap_free_nil(dfnstk) in () end//let
 //
 (* ****** ****** *)
 //
+#implfun
+enwd3i0_poplet0
+(     enw0     ) = let
+//
+val+
+@ENWD3I0(!stkmap) = enw0
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplet0(stkmap) in $fold(enw0)
+end(*let*)
+//
+end(*let*)//end-of-(enwd3i0_poplet0(enw0))
+//
+(* ****** ****** *)
+//
+#implfun
+enwd3i0_pshlet0
+(     enw0     ) = let
+//
+val+
+@ENWD3I0(!stkmap) = enw0
+//
+in//let
+//
+(stkmap_pshlet0(stkmap); $fold(enw0))
+//
+end(*let*)//end-of-(enwd3i0_pshlet0(enw0))
+//
+(* ****** ****** *)
+//
 endloc (*local*) // end-of-[ local(enwd3i0_vtbx) ]
 //
 (* ****** ****** *)

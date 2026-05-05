@@ -68,12 +68,20 @@ enwd3i0_free_nil
   ( enw0: !enwd3i0 ): void
 //
 (* ****** ****** *)
+//
+fun
+enwd3i0_pshlet0
+  (enw0: !enwd3i0): void//endfun
+fun
+enwd3i0_poplet0
+  (enw0: !enwd3i0): void//endfun
+//
 (* ****** ****** *)
 //
 fun
-enwd3i0_dfun$search
+enwd3i0_dvfn$search
 ( env0:
-! enwd3i0, dfun: d2var): i0varlst
+! enwd3i0, dvfn: d2var): i0varlst
 //
 (* ****** ****** *)
 (* ****** ****** *)
