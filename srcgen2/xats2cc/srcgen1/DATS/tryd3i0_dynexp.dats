@@ -129,6 +129,10 @@ i0e0.node() of
 //
 (* ****** ****** *)
 //
+|I0Elet0 _ => f0_let0(i0e0, enw0)
+//
+(* ****** ****** *)
+//
 |I0Elam0 _ => f0_lam0(i0e0, enw0)
 |I0Efix0 _ => f0_fix0(i0e0, enw0)
 //
@@ -147,6 +151,49 @@ _(*otherwise*) => i0exp_none2(i0e0)
 //
 end where
 {
+//
+//
+fun
+f0_let0
+(i0e0: i0exp
+,enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Elet0
+(dcls, i0e1) = i0e0.node()
+//
+val (  ) = // HX: lvl0+0
+(
+  enwd3i0_pshlet0(  enw0  ))
+val dcls =
+(
+i0dclist_tryd3i0(dcls, enw0))
+//
+in//let
+//
+let
+val i0e1 =
+(
+  i0exp_tryd3i0(i0e1, enw0))
+val (  ) =
+(
+  enwd3i0_poplet0(   enw0   ))
+in//let
+(
+i0exp(
+loc0, i0t0, I0Elet0(dcls, i0e1)))
+end//let
+//
+end(*let*)//end-of-[f0_let0(d3e0,enw0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_lam0
