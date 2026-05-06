@@ -33,8 +33,8 @@ lam(z:sint) => w + x + y + z
 val bar =
 lam(w:sint) =>
 fix f00
-(z:sint): sint => f00(w+x+y+z)+(lam()=>f00(1000))()
-////
+(z:sint): sint => f00(w+x+y+z)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

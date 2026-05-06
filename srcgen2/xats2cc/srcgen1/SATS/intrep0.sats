@@ -950,14 +950,19 @@ i0dcl_node =
 |I0Dd3ecl of (d3ecl)
 //
 (* ****** ****** *)
+//
 |I0Dstatic of
 (token(*STATIC*), i0dcl)
 |I0Dextern of
 (token(*EXTERN*), i0dcl)
+//
 (* ****** ****** *)
 //
 |I0Dtmpsub of
 (s2vts(*tmpsub*), i0dcl)
+//
+|I0Dclsenv of
+(i0varlst(*env*), i0dcl)
 //
 (* ****** ****** *)
 //

@@ -234,7 +234,7 @@ tr3aenv_d2crch$opt
 val k0 = d2c0.name()
 //
 val+
-~TR3AENV
+@TR3AENV
 (topmap, stkmap) = env0
 //
 val opt0 =

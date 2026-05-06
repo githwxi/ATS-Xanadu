@@ -361,6 +361,10 @@ val i0ws =
 (
 lvl0$i0vs_tryd3i0
 (lvl0, i0vs, enw0))//val(i0ws)
+val (  ) =
+(
+enwd3i0_dfix$insert
+(enw0, dpid, i0ws))//val((__))
 //
 val (  ) =
 prerrsln("\

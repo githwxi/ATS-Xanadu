@@ -227,6 +227,19 @@ i0varfst_addvar
 funset_insert$any<i0var>(ivst, ivar))
 //
 #implfun
+i0varfst_addlst
+( ivst, fst2 ) =
+(
+list_folditm<x0><r0>(fst2, ivst))
+where
+{
+#typedef x0 = i0var
+#typedef r0 = fset(i0var)
+#impltmp
+folditm$fopr<x0><r0> = i0varfst_addvar
+}
+//
+#implfun
 i0varfst_addset
 ( ivst, fst2 ) = funset_union(ivst, fst2)
 //
