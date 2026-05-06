@@ -129,6 +129,11 @@ i0e0.node() of
 //
 (* ****** ****** *)
 //
+|I0Edap0 _ => f0_dap0(i0e0, enw0)
+|I0Edapp _ => f0_dapp(i0e0, enw0)
+//
+(* ****** ****** *)
+//
 |I0Elet0 _ => f0_let0(i0e0, enw0)
 //
 (* ****** ****** *)
@@ -152,11 +157,73 @@ _(*otherwise*) => i0exp_none2(i0e0)
 end where
 {
 //
+(* ****** ****** *)
+//
+fun
+f0_dap0
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Edap0
+(   i0e1   ) = i0e0.node()
+//
+val i0e1 =
+(
+  i0exp_tryd3i0(i0e1, enw0))
+//
+in//let
+(
+i0exp(loc0, i0t0, I0Edap0(i0e1)))
+end(*let*)//end-of-[f0_dap0(d3e0,enw0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Edapp
+(i0f0
+,npf1, i0es) = i0e0.node()
+//
+val i0f0 =
+(
+  i0exp_tryd3i0(i0f0, enw0))
+val i0es =
+(
+  i0explst_tryd3i0(i0es, enw0))
+//
+in//let
+//
+i0exp(loc0,
+  i0t0, I0Edapp(i0f0, npf1, i0es))
+//
+end(*let*)//end-of-[f0_dapp(d3e0,enw0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_let0
-(i0e0: i0exp
-,enw0: !enwd3i0): i0exp =
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
 let
 //
 val
@@ -223,15 +290,32 @@ val (  ) =
 prerrsln("\
 f0_lam0(d3i0): i0e0 = ", i0e0)
 //
+val i0ws =
+(
+lvl0$i0vs_tryd3i0
+(lvl0, i0vs, enw0))//val(i0ws)
+//
+val (  ) =
+prerrsln("\
+f0_lam0(d3i0): i0ws = ", i0ws)
+//
 in//let
 //
 let
 val i0e1 =
 (
-  i0exp_tryd3i0(i0e1, enw0))
+  i0exp_tryd3i0( i0e1, enw0 ))
 in//let
+//
+i0exp(
+loc0, i0t0, I0Eclsd(i0e0, i0ws))
+where
+{
+val
+i0e0 =
 i0exp(loc0, i0t0,
-  I0Elam0(lvl0,tknd,fias,i0e1,i0vs))
+  I0Elam0(lvl0,tknd,fias,i0e1,i0vs))}
+//
 end//let
 //
 end(*let*)//end-of-[f0_lam0(i0e0,enw0)]
@@ -255,6 +339,14 @@ I0Efix0
 ,dpid, fias
 ,i0e1, i0vs) = i0e0.node()
 //
+(*
+HX-2026-05-06:
+[dpid] is a let-bound name!
+*)
+val (  ) = // HX: lvl0+0
+(
+  enwd3i0_pshlet0(  enw0  ))
+//
 val (  ) =
 prerrsln("\
 f0_fix0(d3i0): lvl0 = ", lvl0)
@@ -265,19 +357,37 @@ val (  ) =
 prerrsln("\
 f0_fix0(d3i0): i0e0 = ", i0e0)
 //
+val i0ws =
+(
+lvl0$i0vs_tryd3i0
+(lvl0, i0vs, enw0))//val(i0ws)
+//
+val (  ) =
+prerrsln("\
+f0_fix0(d3i0): i0ws = ", i0ws)
+//
 in//let
 //
 let
 val i0e1 =
 (
-  i0exp_tryd3i0(i0e1, enw0))
-in//let
-i0exp
+  i0exp_tryd3i0( i0e1, enw0 ))
+val (  ) =
 (
-loc0,
-i0t0,
+  enwd3i0_poplet0(   enw0   ))
+in//let
+//
+i0exp(
+loc0, i0t0, I0Eclsd(i0e0, i0ws))
+where
+{
+val
+i0e0 =
+i0exp(
+loc0, i0t0,
 I0Efix0(
-lvl0, tknd, dpid, fias, i0e1, i0vs))
+lvl0, tknd, dpid, fias, i0e1, i0vs))}
+//
 end//let
 //
 end(*let*)//end-of-[f0_fix0(i0e0,enw0)]
@@ -315,6 +425,75 @@ end(*let*)//end-of-[f0_rturn(i0e0,enw0)]
 (* ****** ****** *)
 //
 }(*where*)//end-of-[i0exp_tryd3i0(i0e0,enw0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+lvl0$i0vs_tryd3i0
+(lvl0, i0vs, enw0) =
+let
+val i0ws =
+i0varfst_mknil((*0*))
+val i0ws =
+f0_main(i0vs, i0ws, enw0)
+in//let
+list_make_lstrm(i0varfst_strmize(i0ws))
+end where
+{
+//
+fun
+f0_main
+( i0vs: i0varlst
+, i0ws: i0varfst
+, enw0: !enwd3i0): i0varfst =
+(
+case+ i0vs of
+|
+list_nil() => i0ws
+|
+list_cons(i0v1, i0vs) =>
+(
+f0_main(i0vs, i0ws, enw0))
+where
+{
+//
+val lvl1 =
+i0var_lvl0$get(i0v1)
+//
+val i0ws =
+(
+if
+(lvl1 > lvl0)
+then i0ws else
+let
+val bvk1 =
+i0var_bvk0$get(i0v1)
+in//let
+if // if
+not(
+i0var_fixq(i0v1))
+then
+(
+if // if
+i0var_topq(i0v1)
+then (i0ws) else
+  i0varfst_addvar(i0ws, i0v1))
+else
+(
+(
+  i0varfst_addlst(i0ws, ivs2))
+where
+{
+val dfix = i0v1.dvar((*0*))
+val ivs2 =
+enwd3i0_dfix$search(enw0, dfix)})
+end(*let*)//else//end-of-(val(i0ws))
+)
+}(*where*)//end-of-[list_cons(i0v1,i0vs)]
+)(*case+*)//end-of-[f0_main(i0vs,i0ws,enw0)]
+//
+}(*where*)//end-of-[lvl0$i0vs_tryd3i0(i0vs,enw0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
