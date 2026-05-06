@@ -95,6 +95,14 @@ enwd3i0_dfix$search
 ! enwd3i0, dfix: d2var): i0varlst
 //
 (* ****** ****** *)
+//
+fun
+enwd3i0_dfix$insert
+( env0:
+! enwd3i0
+, dfix: d2var, i0vs: i0varlst): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

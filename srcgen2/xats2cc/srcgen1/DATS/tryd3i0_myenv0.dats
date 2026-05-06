@@ -171,6 +171,52 @@ end(*let*)//end-of-(enwd3i0_pshlet0(enw0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+enwd3i0_dfix$search
+  (enw0, dfix) = let
+//
+val k0 = dfix.name()
+//
+val+
+@ENWD3I0(!stkmap) = enw0
+//
+val opt0 =
+stkmap_search$opt(stkmap, k0)
+//
+(*
+val () =
+prerrsln
+("enwd3i0_dfix$search: k0 = ", k0)
+*)
+//
+in//let
+//
+(
+case+ opt0 of
+| ~optn_vt_nil((*0*)) => list_nil()
+| ~optn_vt_cons(i0vs) => (   i0vs   ))
+//
+end(*let*)//end-of-(enwd3i0_dfix$search(...))
+//
+(* ****** ****** *)
+//
+#implfun
+enwd3i0_dfix$insert
+(enw0, dfix, i0vs) = let
+//
+val k0 = dfix.name()
+//
+val+
+@ENWD3I0(!stkmap) = enw0
+//
+in//let
+(
+  stkmap_insert$any(stkmap, k0, i0vs))
+end(*let*)//end-of-(enwd3i0_dfix$insert(...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 endloc (*local*) // end-of-[ local(enwd3i0_vtbx) ]
 //
 (* ****** ****** *)

@@ -695,6 +695,11 @@ I0Dextern(", tknd, ";", dcl1, ")")
 prints("\
 I0Dtmpsub(", svts, ";", idcl, ")")
 //
+|I0Dclsenv
+(i0vs, idcl) =>
+prints("\
+I0Dclsenv(", i0vs, ";", idcl, ")")
+//
 (* ****** ****** *)
 //
 |I0Ddclst0
