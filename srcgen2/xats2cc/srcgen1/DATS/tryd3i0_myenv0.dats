@@ -103,6 +103,7 @@ ENWD3I0 of (dfnstk)
 in//local
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 enwd3i0_make_nil
@@ -133,6 +134,7 @@ val (  ) =
 stkmap_free_nil(dfnstk) in () end//let
 )(*case+*)//end-of-(enwd3i0_free_nil(env0))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -166,6 +168,7 @@ in//let
 //
 end(*let*)//end-of-(enwd3i0_pshlet0(enw0))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 endloc (*local*) // end-of-[ local(enwd3i0_vtbx) ]

@@ -69,6 +69,17 @@ enwd3i0_free_nil
 //
 (* ****** ****** *)
 //
+(*
+fun
+enwd3i0_pshlam0
+  (enw0: !enwd3i0): void//endfun
+fun
+enwd3i0_poplam0
+  (enw0: !enwd3i0): void//endfun
+*)
+//
+(* ****** ****** *)
+//
 fun
 enwd3i0_pshlet0
   (enw0: !enwd3i0): void//endfun
@@ -79,9 +90,9 @@ enwd3i0_poplet0
 (* ****** ****** *)
 //
 fun
-enwd3i0_dvfn$search
+enwd3i0_dfix$search
 ( env0:
-! enwd3i0, dvfn: d2var): i0varlst
+! enwd3i0, dfix: d2var): i0varlst
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -232,6 +243,13 @@ i0fundclist_tryd3i0
 fun
 i0dclistopt_tryd3i0
 (i0ds: i0dclistopt, enw0: !enwd3i0): i0dclistopt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+lvl0$i0vs_tryd3i0(
+  lvl0: sint, i0vs: i0varlst, enw0: !enwd3i0): i0varlst
 //
 (* ****** ****** *)
 (* ****** ****** *)

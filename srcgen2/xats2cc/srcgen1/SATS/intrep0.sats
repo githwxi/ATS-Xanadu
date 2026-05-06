@@ -711,6 +711,9 @@ FV(i0exp) = i0varlst
 (* ****** ****** *)
 //
 fun
+i0var_topq
+(ivar: i0var): bool
+fun
 i0var_lamq
 (ivar: i0var): bool
 fun
@@ -1191,6 +1194,9 @@ i0varfst_strmize
 fun
 i0varfst_addvar
 ( fst0: i0varfst, ivar: i0var): i0varfst
+fun
+i0varfst_addlst
+( fst1: i0varfst, fst2: i0varlst): i0varfst
 fun
 i0varfst_addset
 ( fst1: i0varfst, fst2: i0varfst): i0varfst

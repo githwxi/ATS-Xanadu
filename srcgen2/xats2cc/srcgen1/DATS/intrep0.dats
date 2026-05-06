@@ -306,6 +306,11 @@ endloc (*local*) // end-of-[local(i0pat)]
 (* ****** ****** *)
 //
 #implfun
+i0var_topq
+(  ivar  ) =
+(
+ivar.bvk0() = I0BVKtop)
+#implfun
 i0var_lamq
 (  ivar  ) =
 (
