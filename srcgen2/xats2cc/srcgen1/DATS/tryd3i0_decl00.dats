@@ -132,6 +132,12 @@ idcl.node() of
 //
 (* ****** ****** *)
 //
+|I0Dimplmnt0 _ =>
+(
+  f0_implmnt0(idcl, enw0))
+//
+(* ****** ****** *)
+//
 |
 I0Dnone0 _ => idcl
 |
@@ -374,6 +380,56 @@ prerrsln("f0_fundclst(d3i0): idcl = ", idcl)
 *)
 //
 }(*where*) // end of [f0_fundclst(idcl,enw0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+(
+idcl: i0dcl,
+enw0: !enwd3i0): i0dcl =
+let
+//
+val loc0 = idcl.lctn()
+//
+val-
+I0Dimplmnt0
+(tknd
+,lvl0, stmp
+,dimp, fias
+,iexp, i0vs) = idcl.node()
+//
+val i0ws =
+(
+lvl0$i0vs_tryd3i0
+(lvl0, i0vs, enw0))//val(i0ws)
+//
+in//let
+//
+(
+i0dcl(
+loc0, I0Dclsenv(i0ws, idcl)))
+where{
+//
+val iexp =
+(
+  i0exp_tryd3i0( iexp, enw0 ))
+//
+val idcl =
+i0dcl(loc0,
+I0Dimplmnt0(tknd,
+  lvl0, stmp, dimp, fias, iexp, i0vs))}
+//
+end where
+{
+//
+(*
+val loc0 = idcl.lctn()
+val (  ) =
+prerrsln("f0_implmnt0(d3i0): idcl = ", idcl)
+*)
+//
+}(*where*) // end of [f0_implmnt0(idcl,enw0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
