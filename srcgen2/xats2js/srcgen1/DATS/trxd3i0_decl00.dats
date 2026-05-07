@@ -92,7 +92,16 @@ t0imp_make_node
 ) where
 {
 val dcls =
-trxd3i0_d3eclist(env0, dcls)}
+(
+case+ dcls of
+|
+list_nil() =>
+optn_nil((*void*))
+|
+list_cons(dcl1, _) =>
+optn_cons(
+  trxd3i0_d3ecl(env0, dcl1)))
+}(*where*)//end(TIMPLall1(...))
 //
 |TIMPLallx
 (d2c1
@@ -104,7 +113,16 @@ t0imp_make_node
 ) where
 {
 val dcls =
-trxd3i0_d3eclist(env0, dcls)}
+(
+case+ dcls of
+|
+list_nil() =>
+optn_nil((*void*))
+|
+list_cons(dcl1, _) =>
+optn_cons(
+  trxd3i0_d3ecl(env0, dcl1)))
+}(*where*)//end(TIMPLallx(...))
 //
 ) where
 {

@@ -3274,11 +3274,14 @@ case+ node of
 ,t2js, dcls) =>
 (
 case+ dcls of
-|list_nil() =>
-T1IMPall1(dcst, t2js, optn_nil())
-|list_cons(dcl1, _) =>
+|optn_nil() =>
+(
+T1IMPall1(dcst, t2js, optn_nil()))
+|optn_cons(dcl1) =>
+(
 T1IMPall1(dcst, t2js,
 optn_cons(trxi0i1_i0dcl(env0, dcl1))))
+)
 //
 |T0IMPallx
 (dcst
@@ -3286,8 +3289,7 @@ optn_cons(trxi0i1_i0dcl(env0, dcl1))))
 (
 case+ dcls of
 //
-|
-list_nil() =>
+|optn_nil() =>
 (
 T1IMPallx(dcst, t2js, optn_nil()))
 //
@@ -3295,11 +3297,9 @@ T1IMPallx(dcst, t2js, optn_nil()))
 HX-202-01-30:
 ONLY the first one is chosen!
 *)
-|
-list_cons(dcl1, _) =>
+|optn_cons(dcl1) =>
 (
-T1IMPallx
-(
+T1IMPallx(
 dcst, t2js,
 optn_cons(trxi0i1_i0dcl(env0, dcl1)))))
 ) : t1imp_node // end-of-[  val(node)  ]

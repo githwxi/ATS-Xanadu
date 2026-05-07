@@ -273,6 +273,7 @@ i0lab_fprint
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef i0dclist = list(i0dcl)
+#typedef i0dclopt = optn(i0dcl)
 (* ****** ****** *)
 #typedef i0valdcl = i0valdcl_tbox
 #typedef i0vardcl = i0vardcl_tbox
@@ -685,9 +686,9 @@ i0cls_make_node
 datatype
 t0imp_node =
 |T0IMPall1 of
-(d2cst, t2jaglst, i0dclist)
+(d2cst, t2jaglst, i0dclopt)
 |T0IMPallx of
-(d2cst, t2jaglst, i0dclist)
+(d2cst, t2jaglst, i0dclopt)
 //
 (* ****** ****** *)
 //
