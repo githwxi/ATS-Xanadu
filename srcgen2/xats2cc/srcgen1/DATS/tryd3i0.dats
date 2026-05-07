@@ -155,9 +155,9 @@ i0explst_tryd3i0
 //
 #implfun
 i0expopt_tryd3i0
-( enw0, dopt ) =
+( enw0, iopt ) =
 (
-  optn_tryd3i0_fnp(enw0, dopt, i0exp_tryd3i0))
+  optn_tryd3i0_fnp(enw0, iopt, i0exp_tryd3i0))
 //
 (* ****** ****** *)
 //

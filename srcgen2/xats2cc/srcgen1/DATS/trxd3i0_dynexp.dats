@@ -1407,12 +1407,13 @@ val i0t0 =
 val i0e1 =
 (
   d3exp_trxd3i0(d3e1, env0))
+//
 val ithn =
 (
-  d3expopt_trxd3i0(dthn, env0))
+d3expopt_trxd3i0(dthn, env0))
 val iels =
 (
-  d3expopt_trxd3i0(dels, env0))
+d3expopt_trxd3i0(dels, env0))
 //
 in//let
 //
