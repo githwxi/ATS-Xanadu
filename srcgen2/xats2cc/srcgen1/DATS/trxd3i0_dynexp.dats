@@ -1086,6 +1086,9 @@ val i0t0 =
 val i0e1 = // HX: d2cst
 (
   d3exp_trxd3i0(d3e1, env0))
+val timp =
+(
+  timpl_trxd3i0(timp, env0))
 //
 in//let
 //

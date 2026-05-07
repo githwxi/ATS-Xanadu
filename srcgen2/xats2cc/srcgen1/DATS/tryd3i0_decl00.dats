@@ -74,6 +74,77 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload stmp with t0imp_stmp$get
+#symload node with t0imp_node$get
+(* ****** ****** *)
+#symload lctn with i0dcl_lctn$get
+#symload node with i0dcl_node$get
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+t0imp_tryd3i0
+(timp, enw0) =
+(
+case+
+timp.node() of
+//
+|T0IMPall1
+(d2c1
+,t2js, dcls) =>
+(
+t0imp_make_node(
+stmp,
+T0IMPall1(d2c1,t2js,dcls))
+) where
+{
+val dcls =
+(
+case+ dcls of
+|
+optn_nil() =>
+optn_nil((*void*))
+|
+optn_cons(dcl1) =>
+optn_cons(
+  i0dcl_tryd3i0(dcl1, enw0)))
+}(*where*)//end(T0IMPall1(...))
+//
+|T0IMPallx
+(d2c1
+,t2js, dcls) =>
+(
+t0imp_make_node(
+stmp,
+T0IMPallx(d2c1,t2js,dcls))
+) where
+{
+val dcls =
+(
+case+ dcls of
+|
+optn_nil() =>
+optn_nil((*void*))
+|
+optn_cons(dcl1) =>
+optn_cons(
+  i0dcl_tryd3i0(dcl1, enw0)))
+}(*where*)//end(T0IMPallx(...))
+//
+) where
+{
+//
+val stmp = timp.stmp((*void*))
+//
+(*
+val (  ) =
+prerrsln("t0imp_tryd3i0: timp = ", timp)
+*)
+//
+}(*where*)//end-of-[t0mpl_tryd3i0(timp,enw0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 i0dcl_tryd3i0

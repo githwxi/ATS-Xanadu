@@ -596,7 +596,7 @@ i0exp_node =
 (* ****** ****** *)
 //
 |I0Etimp of
-(i0exp(*cst*), timpl)
+(i0exp(*tapp*), t0imp)
 //
 (* ****** ****** *)
 //
@@ -929,6 +929,40 @@ i0cls_node$get(i0cls): i0cls_node
 //
 #symload lctn with i0cls_lctn$get
 #symload node with i0cls_node$get
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+t0imp_node =
+|T0IMPall1 of
+(d2cst, t2jaglst, i0dclopt)
+|T0IMPallx of
+(d2cst, t2jaglst, i0dclopt)
+//
+(* ****** ****** *)
+//
+fun
+t0imp_fprint
+(timp:t0imp, out0:FILR):(void)
+//
+(* ****** ****** *)
+//
+fun
+t0imp_stmp$get
+(timp: t0imp): stamp
+fun
+t0imp_node$get
+(timp: t0imp): t0imp_node
+//
+#symload stmp with t0imp_stmp$get
+#symload node with t0imp_node$get
+//
+fun
+t0imp_make_node
+(stm:stamp,nod:t0imp_node): t0imp
+//
+#symload t0imp with t0imp_make_node
 //
 (* ****** ****** *)
 (* ****** ****** *)

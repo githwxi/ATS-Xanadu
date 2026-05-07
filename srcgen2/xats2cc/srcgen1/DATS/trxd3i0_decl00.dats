@@ -67,6 +67,77 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload stmp with timpl_get_stmp
+#symload node with timpl_get_node
+(* ****** ****** *)
+#symload lctn with d3ecl_get_lctn
+#symload node with d3ecl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+timpl_trxd3i0
+(timp, env0) =
+(
+case+
+timp.node() of
+//
+|TIMPLall1
+(d2c1
+,t2js, dcls) =>
+(
+t0imp_make_node(
+stmp,
+T0IMPall1(d2c1,t2js,dcls))
+) where
+{
+val dcls =
+(
+case+ dcls of
+|
+list_nil() =>
+optn_nil((*void*))
+|
+list_cons(dcl1, _) =>
+optn_cons(
+  d3ecl_trxd3i0(dcl1, env0)))
+}(*where*)//end(TIMPLall1(...))
+//
+|TIMPLallx
+(d2c1
+,t2js, dcls) =>
+(
+t0imp_make_node(
+stmp,
+T0IMPallx(d2c1,t2js,dcls))
+) where
+{
+val dcls =
+(
+case+ dcls of
+|
+list_nil() =>
+optn_nil((*void*))
+|
+list_cons(dcl1, _) =>
+optn_cons(
+  d3ecl_trxd3i0(dcl1, env0)))
+}(*where*)//end(TIMPLallx(...))
+//
+) where
+{
+//
+val stmp = timp.stmp((*void*))
+//
+(*
+val (  ) =
+prerrsln("timpl_trxd3i0: timp = ", timp)
+*)
+//
+}(*where*)//end-of-[timpl_trxd3i0(timp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 d3ecl_trxd3i0
@@ -81,6 +152,17 @@ in//let
 //
 case+
 d3cl.node() of
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Cstatic _ =>
+(
+  f0_static(d3cl, env0))
+//
+|D3Cextern _ =>
+(
+  f0_extern(d3cl, env0))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -134,6 +216,88 @@ d3cl.node() of
 end where//let//endof(d3ecl_trxd3i0(...))
 {
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_static
+(
+d3cl: d3ecl,
+env0: !envd3i0): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+//
+val-
+D3Cstatic
+(tknd, dcl1) = d3cl.node()
+//
+val dcl1 =
+(
+  d3ecl_trxd3i0(dcl1, env0))
+//
+in//let
+//
+(
+i0dcl(
+  loc0, I0Dstatic( tknd, dcl1 )))
+//
+end//let//end-of-[f0_static(d3cl, env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_extern
+(
+d3cl: d3ecl,
+env0: !envd3i0): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+val-
+D3Cextern
+(tknd, dcl1) = d3cl.node()
+//
+val dcl1 =
+(
+  d3ecl_trxd3i0(dcl1, env0))
+//
+in//let
+//
+(
+i0dcl(
+  loc0, I0Dextern( tknd, dcl1 )))
+//
+end//let//end-of-[f0_extern(d3cl, env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_tmpsub
+(
+d3cl: d3ecl,
+env0: !envd3i0): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+val-
+D3Ctmpsub
+(svts, dcl1) = d3cl.node()
+//
+val dcl1 =
+(
+  d3ecl_trxd3i0(dcl1, env0))
+//
+in//let
+//
+(
+i0dcl(
+  loc0, I0Dtmpsub( svts, dcl1 )))
+//
+end//let//end-of-[f0_tmpsub(d3cl, env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
