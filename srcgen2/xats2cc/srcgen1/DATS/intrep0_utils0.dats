@@ -213,6 +213,14 @@ end//let//endof(i0varfst_mklst(i0vs):fset)
 (* ****** ****** *)
 //
 #implfun
+i0varfst_listize
+(    ivst    ) =
+(
+strm_vt_listize0
+<     i0var     >
+(i0varfst_strmize(ivst)))
+//
+#implfun
 i0varfst_strmize
 (    ivst    ) =
 (

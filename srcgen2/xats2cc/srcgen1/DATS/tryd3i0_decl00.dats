@@ -362,14 +362,25 @@ I0Dfundclst
 , tqas
 , d2cs, i0fs) = idcl.node()
 //
-val i0fs =
-i0fundclist_tryd3i0(i0fs, enw0)
+val (  ) =
+f1_i0fs$nil(i0fs)//val((__))
+val i0ws =
+f1_i0fs_i0ws(enw0, i0fs)//val.
+val (  ) =
+f1_i0fs$i0ws(i0fs, i0ws)//val.
 //
 in//let
 (
-i0dcl_make_node
-( loc0
-, I0Dfundclst(tknd, tqas, d2cs, i0fs)))
+i0dcl(
+loc0, I0Dclsenv(i0ws, idcl)))
+where{
+//
+val i0fs =
+i0fundclist_tryd3i0(i0fs, enw0)
+//
+val idcl =
+i0dcl_make_node(loc0,
+  I0Dfundclst(tknd, tqas, d2cs, i0fs))}
 end where
 {
 //
@@ -378,6 +389,155 @@ val loc0 = idcl.lctn()
 val (  ) =
 prerrsln("f0_fundclst(d3i0): idcl = ", idcl)
 *)
+//
+fun
+f1_i0fs$nil
+( i0fs
+: i0fundclist): void =
+(
+case+ i0fs of
+|list_nil
+( (*0*) ) => ()
+|list_cons
+(i0f1, i0fs) =>
+(
+f1_i0fs$nil(i0fs))
+where
+{
+val dpid =
+i0fundcl_dpid$get
+(       i0f1       )
+val (  ) =
+enwd3i0_dfix$insert
+(enw0, dpid, list_nil(*0*))}
+)
+//
+fun
+f1_i0fs$i0ws
+( i0fs
+: i0fundclist
+, i0ws: i0varlst): void =
+(
+case+ i0fs of
+|list_nil
+( (*0*) ) => ()
+|list_cons
+(i0f1, i0fs) =>
+let
+val dpid =
+i0fundcl_dpid$get
+(       i0f1       )
+val (  ) =
+enwd3i0_dfix$insert
+( enw0, dpid, i0ws )
+in
+  f1_i0fs$i0ws(i0fs, i0ws)
+end//let//endof(list_cons(...))
+)
+//
+fun
+f1_i0fs_i0ws
+( enw0:
+! enwd3i0
+, i0fs
+: i0fundclist): i0varlst =
+let
+val ivst =
+i0varfst_mknil() in
+list_vt2t
+(
+i0varfst_listize
+(
+f1_i0fs$ivst(enw0, i0fs, ivst)))
+end//let//end-of-[f1_i0fs_i0ws()]
+//
+and
+f1_i0fs$ivst
+( enw0:
+! enwd3i0
+, i0fs
+: i0fundclist
+, ivst: i0varfst): i0varfst =
+(
+case+ i0fs of
+|
+list_nil
+( (*0*) ) => (ivst)
+|
+list_cons
+(i0f1, i0fs) =>
+let
+val lvl0 =
+i0fundcl_lvl0$get(i0f1)
+val i0vs =
+i0fundcl_i0vs$get(i0f1)
+val ivst =
+(
+f2_lvl0$i0vs$ivst(
+  enw0, lvl0, i0vs, ivst))
+in//let
+f1_i0fs$ivst(enw0, i0fs, ivst)
+end//let
+)
+where
+{
+//
+fun
+f2_lvl0$i0vs$ivst
+( enw0:
+! enwd3i0
+, lvl0: sint
+, i0vs: i0varlst
+, ivst: i0varfst): i0varfst =
+(
+//
+case+ i0vs of
+|list_nil
+( (*0*) ) => (ivst)
+|list_cons
+(i0v1, i0vs) =>
+(
+f2_lvl0$i0vs$ivst
+(enw0, lvl0, i0vs, ivst)
+) where
+{
+//
+val lvl1 =
+i0var_lvl0$get(i0v1)
+val ivst =
+(
+if
+(lvl1 > lvl0)
+then ivst else
+let
+val bvk1 =
+i0var_bvk0$get(i0v1)
+in//let
+if // if
+not(
+i0var_fixq(i0v1))
+then
+(
+if // if
+i0var_topq(i0v1)
+then (ivst) else
+  i0varfst_addvar(ivst, i0v1)
+) else // end-of-(then)
+(
+(
+  i0varfst_addlst(ivst, ivs2))
+where
+{
+val dfix = i0v1.dvar((*0*))
+val ivs2 =
+enwd3i0_dfix$search(enw0, dfix)})
+end(*let*)//else//end-of-(val(ivst))
+)
+}(*where*) // end of [list_cons(...)]
+//
+)(*case+*) // end of [f2_lvl0$i0vs$ivst]
+//
+}(*where*) // end of [f1_i0fs$ivst(...)]
 //
 }(*where*) // end of [f0_fundclst(idcl,enw0)]
 //
