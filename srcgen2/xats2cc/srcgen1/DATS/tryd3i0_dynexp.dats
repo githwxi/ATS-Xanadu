@@ -137,9 +137,7 @@ i0e0.node() of
 (* ****** ****** *)
 //
 |I0Eift0 _ => f0_ift0(i0e0, enw0)
-(*
 |I0Ecas0 _ => f0_cas0(i0e0, enw0)
-*)
 //
 (* ****** ****** *)
 //
@@ -348,7 +346,42 @@ in//let
 i0exp(loc0,
 i0t0, I0Eift0(i0e1, ithn, iels)))
 //
-end(*let*)//end-of-[f0_ift0(i0e0,env0)]
+end(*let*)//end-of-[f0_ift0(i0e0,enw0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cas0
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Ecas0
+(tknd
+,i0e1, icls) = i0e0.node()
+//
+val i0e1 =
+(
+  i0exp_trxd3i0(i0e1, enw0))
+//
+val icls =
+(
+i0clslst_trxd3i0(icls, enw0))
+//
+in//let
+//
+(
+i0exp(loc0,
+  i0t0, I0Ecas0(tknd,i0e1,icls)))
+//
+end(*let*)//end-of-[f0_cas0(i0e0,enw0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -592,7 +625,7 @@ in//let
 i0exp(
 loc0, i0t0, I0Et2ped(i0e1, t2p2)))
 //
-end(*let*)//end-of-[f0_t2ped(i0e0,env0)]
+end(*let*)//end-of-[f0_t2ped(i0e0,enw0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
