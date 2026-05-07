@@ -702,14 +702,15 @@ I1Dvardclst of
 //
 |
 I1Dfundclst of
-( token(*FUN(fnk)*)
+( token
+(*FUN(fnk)*), sint(*lvl0*)
 , t2qaglst, d2cstlst, i1fundclist)
 //
 (* ****** ****** *)
 //
 |I1Dimplmnt0 of
-( token(*knd*)
-, stamp, dimpl, fjarglst, i1cmp(*body*))
+(token(*knd*), sint(*lvl0*)
+,stamp, dimpl, fjarglst, i1cmp(*body*))
 //
 (* ****** ****** *)
 //

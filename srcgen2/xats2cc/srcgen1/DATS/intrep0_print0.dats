@@ -754,7 +754,7 @@ prints
 , d2cs, i0fs) =>
 (
 print("I0Dfundclst(");
-prints(lvl0, ";", tknd, ";");
+prints(tknd, ";", lvl0, ";");
 prints(tqas, ";", d2cs, ";", i0fs, ")"))
 //
 (* ****** ****** *)
