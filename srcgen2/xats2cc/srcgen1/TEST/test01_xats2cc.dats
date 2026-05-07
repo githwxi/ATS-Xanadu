@@ -74,16 +74,6 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-isevn(n: nint): bool =
-if n = 0 then true else isodd(n-1)
-and
-isodd(n: nint): bool =
-if n = 0 then false else isevn(n-1)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #extern
 fun
 fact(n0: nint): nint
@@ -103,6 +93,25 @@ fact2(n0, r0) =
 if(
 n0 > 0)
 then fact2(n0-1, n0*r0) else r0
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fxyz
+(nn: nint
+,tt: bool
+,ff: bool): bool =
+(
+  isevn(nn)) where
+{
+fun
+isevn(n: nint): bool =
+if n = 0 then tt else isodd(n-1)
+and
+isodd(n: nint): bool =
+if n = 0 then ff else isevn(n-1)
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)

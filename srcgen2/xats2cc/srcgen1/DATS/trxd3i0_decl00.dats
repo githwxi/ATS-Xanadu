@@ -217,9 +217,10 @@ optn_cons
 in//let
 (
 i0dcl_make_node
-( loc0
-, I0Dinclude
-  (knd0, tknd, gsrc, fopt, dopt) ))
+(
+loc0,
+I0Dinclude(
+  knd0, tknd, gsrc, fopt, dopt)))
 end//let//end-of-[f0_include(d3cl,env0)]
 //
 (* ****** ****** *)
@@ -265,7 +266,8 @@ d3valdclist_trxd3i0(d3vs, env0)
 //
 in//let
 (
-i0dcl(loc0, I0Dvaldclst(tknd, i0vs)))
+i0dcl_make_node(
+  loc0, I0Dvaldclst(tknd, i0vs)))
 end where
 {
 //
@@ -297,7 +299,8 @@ d3vardclist_trxd3i0(d3vs, env0)
 //
 in//let
 (
-i0dcl(loc0, I0Dvardclst(tknd, i0vs)))
+i0dcl_make_node(
+  loc0, I0Dvardclst(tknd, i0vs)))
 end where
 {
 //
@@ -329,14 +332,21 @@ D3Cfundclst
 val (  ) =
 f0_d3fs$insert(env0, d3fs)
 //
+val lvl0 =
+(
+  envd3i0_getlvl0(  env0  ))
+//
 val i0fs =
 d3fundclist_trxd3i0(d3fs, env0)
 //
 in//let
+//
 (
-i0dcl_make_node
-( loc0
-, I0Dfundclst(tknd, tqas, d2cs, i0fs)))
+i0dcl
+(
+loc0,
+I0Dfundclst(
+  tknd, lvl0, tqas, d2cs, i0fs)))
 //
 end where
 {
@@ -445,8 +455,8 @@ in//let
 i0dcl_make_node
 (
 loc0,
-I0Dimplmnt0(
-  tknd,lvl0,stmp,dimp,fias,dexp,i0vs)))
+I0Dimplmnt0(tknd,
+lvl0, stmp, dimp, fias, dexp, i0vs)))
 end//let
 //
 end where // end-of-[f0_implmnt0(d3cl,env0)]
