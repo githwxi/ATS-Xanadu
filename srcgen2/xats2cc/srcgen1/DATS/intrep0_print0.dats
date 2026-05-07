@@ -486,11 +486,11 @@ HX-2026-04-19:
 FV(i0e1) = i0vs!
 Sun Apr 19 02:45:21 AM EDT 2026
 *)
-|I0Eclsd
-(i0e1, i0vs) =>
+|I0Ecenv
+(i0e1, i0ws) =>
 (
 prints
-("I0Eclsd(", i0e1,";", i0vs,")"))
+("I0Ecenv(", i0e1,";", i0ws,")"))
 //
 |I0Elam0
 (lvl0
@@ -690,15 +690,17 @@ I0Dextern(", tknd, ";", dcl1, ")")
 //
 (* ****** ****** *)
 //
+|I0Ddclenv
+(idcl, i0ws) =>
+prints("\
+I0Ddclenv(", idcl, ";", i0ws, ")")
+//
+(* ****** ****** *)
+//
 |I0Dtmpsub
 (svts, idcl) =>
 prints("\
 I0Dtmpsub(", svts, ";", idcl, ")")
-//
-|I0Dclsenv
-(i0vs, idcl) =>
-prints("\
-I0Dclsenv(", i0vs, ";", idcl, ")")
 //
 (* ****** ****** *)
 //
@@ -733,23 +735,27 @@ tknd,";",gsrc,";",fopt,";","...",")"))
 (* ****** ****** *)
 //
 |I0Dvaldclst
-( tknd, i0vs) =>
+( tknd, dcls) =>
 (
-prints("I0Dvaldclst(",tknd,";",i0vs,")"))
+prints
+("I0Dvaldclst(", tknd, ";", dcls, ")"))
 //
 |I0Dvardclst
-( tknd, i0vs) =>
+( tknd, dcls) =>
 (
-prints("I0Dvardclst(",tknd,";",i0vs,")"))
+prints
+("I0Dvardclst(", tknd, ";", dcls, ")"))
 //
 (* ****** ****** *)
 //
 |I0Dfundclst
-( tknd, tqas
+( tknd
+, lvl0, tqas
 , d2cs, i0fs) =>
-( prints
-  ("I0Dfundclst(", tknd, ";")
-; prints(tqas, ";", d2cs, ";", i0fs, ")"))
+(
+print("I0Dfundclst(");
+prints(lvl0, ";", tknd, ";");
+prints(tqas, ";", d2cs, ";", i0fs, ")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)

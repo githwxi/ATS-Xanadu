@@ -359,28 +359,37 @@ val loc0 = idcl.lctn()
 val-
 I0Dfundclst
 ( tknd
-, tqas
+, lvl0, tqas
 , d2cs, i0fs) = idcl.node()
 //
 val (  ) =
 f1_i0fs$nil(i0fs)//val((__))
 val i0ws =
+(
+if
+(lvl0 <= 0)
+then list_nil() else
 f1_i0fs_i0ws(enw0, i0fs)//val.
+)
 val (  ) =
 f1_i0fs$i0ws(i0fs, i0ws)//val.
 //
 in//let
 (
 i0dcl(
-loc0, I0Dclsenv(i0ws, idcl)))
+loc0, I0Ddclenv(idcl, i0ws)))
 where{
 //
 val i0fs =
 i0fundclist_tryd3i0(i0fs, enw0)
 //
 val idcl =
-i0dcl_make_node(loc0,
-  I0Dfundclst(tknd, tqas, d2cs, i0fs))}
+i0dcl_make_node
+(
+loc0,
+I0Dfundclst(
+tknd(*fnk*), lvl0, tqas, d2cs, i0fs))}
+//
 end where
 {
 //
@@ -508,7 +517,7 @@ val ivst =
 (
 if
 (lvl1 > lvl0)
-then ivst else
+then (ivst) else
 let
 val bvk1 =
 i0var_bvk0$get(i0v1)
@@ -568,7 +577,7 @@ in//let
 //
 (
 i0dcl(
-loc0, I0Dclsenv(i0ws, idcl)))
+loc0, I0Ddclenv(idcl, i0ws)))
 where{
 //
 val iexp =

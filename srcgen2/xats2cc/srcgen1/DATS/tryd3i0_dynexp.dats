@@ -142,9 +142,18 @@ i0e0.node() of
 |I0Efix0 _ => f0_fix0(i0e0, enw0)
 //
 (* ****** ****** *)
-//
 |
 I0Erturn _ => f0_rturn(i0e0, enw0)
+//
+(* ****** ****** *)
+//
+|
+I0Ewhere _ => f0_where(i0e0, enw0)
+//
+(* ****** ****** *)
+//
+|
+I0Et2ped _ => f0_t2ped(i0e0, enw0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -182,7 +191,7 @@ val i0e1 =
 in//let
 (
 i0exp(loc0, i0t0, I0Edap0(i0e1)))
-end(*let*)//end-of-[f0_dap0(d3e0,enw0)]
+end(*let*)//end-of-[f0_dap0(i0e0,enw0)]
 //
 (* ****** ****** *)
 //
@@ -215,7 +224,7 @@ in//let
 i0exp(loc0,
   i0t0, I0Edapp(i0f0, npf1, i0es))
 //
-end(*let*)//end-of-[f0_dapp(d3e0,enw0)]
+end(*let*)//end-of-[f0_dapp(i0e0,enw0)]
 //
 (* ****** ****** *)
 //
@@ -257,7 +266,7 @@ i0exp(
 loc0, i0t0, I0Elet0(dcls, i0e1)))
 end//let
 //
-end(*let*)//end-of-[f0_let0(d3e0,enw0)]
+end(*let*)//end-of-[f0_let0(i0e0,enw0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -308,7 +317,7 @@ val i0e1 =
 in//let
 //
 i0exp(
-loc0, i0t0, I0Eclsd(i0e0, i0ws))
+loc0, i0t0, I0Ecenv(i0e0, i0ws))
 where
 {
 val
@@ -382,7 +391,7 @@ val (  ) =
 in//let
 //
 i0exp(
-loc0, i0t0, I0Eclsd(i0e0, i0ws))
+loc0, i0t0, I0Ecenv(i0e0, i0ws))
 where
 {
 val
@@ -428,6 +437,78 @@ end(*let*)//end-of-[f0_rturn(i0e0,enw0)]
 //
 (* ****** ****** *)
 //
+fun
+f0_where
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Ewhere
+(i0e1, dcls) = i0e0.node()
+//
+val (  ) = // HX: lvl0+0
+(
+  enwd3i0_pshlet0(  enw0  ))
+val dcls =
+(
+i0dclist_tryd3i0(dcls, enw0))
+//
+in//let
+//
+let
+val i0e1 =
+(
+  i0exp_tryd3i0(i0e1, enw0))
+val (  ) =
+(
+  enwd3i0_poplet0(   enw0   ))
+in//let
+(
+i0exp(
+loc0, i0t0, I0Ewhere(i0e1, dcls)))
+end//let
+//
+end(*let*)//end-of-[f0_where(i0e0,enw0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2ped
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Et2ped
+(i0e1, t2p2) = i0e0.node()
+//
+val i0e1 =
+(
+  i0exp_tryd3i0(i0e1, enw0))
+//
+in//let
+//
+(
+i0exp(
+loc0, i0t0, I0Et2ped(i0e1, t2p2)))
+//
+end(*let*)//end-of-[f0_t2ped(i0e0,env0)]
+//
+(* ****** ****** *)
+//
 }(*where*)//end-of-[i0exp_tryd3i0(i0e0,enw0)]
 //
 (* ****** ****** *)
@@ -448,9 +529,10 @@ end where
 //
 fun
 f0_main
-( i0vs: i0varlst
-, i0ws: i0varfst
-, enw0: !enwd3i0): i0varfst =
+(
+i0vs: i0varlst,
+i0ws: i0varfst,
+enw0: !enwd3i0): i0varfst =
 (
 case+ i0vs of
 |list_nil
@@ -469,7 +551,7 @@ val i0ws =
 (
 if
 (lvl1 > lvl0)
-then i0ws else
+then (i0ws) else
 let
 val bvk1 =
 i0var_bvk0$get(i0v1)

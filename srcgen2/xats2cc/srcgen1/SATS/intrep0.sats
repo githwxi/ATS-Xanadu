@@ -662,7 +662,7 @@ token(*knd*),sint(*npf*),l0i0elst)
 HX-2026-04-19:
 FV(i0exp) = i0varlst
 *)
-|I0Eclsd of (i0exp, i0varlst)
+|I0Ecenv of (i0exp, i0varlst)
 //
 |I0Elam0 of
 (sint(*lvl*)
@@ -958,11 +958,11 @@ i0dcl_node =
 //
 (* ****** ****** *)
 //
+|I0Ddclenv of
+(i0dcl, i0varlst(*env*))
+//
 |I0Dtmpsub of
 (s2vts(*tmpsub*), i0dcl)
-//
-|I0Dclsenv of
-(i0varlst(*env*), i0dcl)
 //
 (* ****** ****** *)
 //
@@ -991,7 +991,8 @@ I0Dinclude of
 (* ****** ****** *)
 //
 |I0Dfundclst of
-(token(*FUN(fnk)*)
+(token
+(*FUN(fnk)*), sint(*lvl0*)
 ,t2qaglst, d2cstlst, i0fundclist)
 //
 (* ****** ****** *)
