@@ -116,6 +116,18 @@ if n = 0 then ff else isevn(n-1)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+list_length
+(xs: list(sint)): nint =
+(
+case+ xs of
+| list_nil() => 0
+| list_cons(_, xs) => 1 + list_length(xs)
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_TEST_test01_xats2cc.dats] *)
 (***********************************************************************)

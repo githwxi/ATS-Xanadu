@@ -495,17 +495,84 @@ fiarg_make_node
 ( loc0, node ) = FIARG(loc0, node)
 //
 #implfun
-fiarg_lctn$get(fia0) =
+fiarg_lctn$get(farg) =
 let
-val+FIARG(loc0,node) = fia0 in loc0
+val+FIARG(loc0,node) = farg in loc0
 end
 #implfun
-fiarg_node$get(fia0) =
+fiarg_node$get(farg) =
 let
-val+FIARG(loc0,node) = fia0 in node
+val+FIARG(loc0,node) = farg in node
 end
 //
 endloc (*local*) // end of [local(fiarg)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i0gua =
+I0GUA of
+(
+loctn, i0gua_node)
+#absimpl
+i0gua_tbox = i0gua
+//
+in (* in-of-local *)
+//
+#implfun
+i0gua_make_node
+( loc0, node ) = I0GUA(loc0, node)
+//
+#implfun
+i0gua_lctn$get
+  (  igua  ) =
+let
+val+I0GUA(loc0,node) = igua in loc0
+end
+#implfun
+i0gua_node$get
+  (  igua  ) =
+let
+val+I0GUA(loc0,node) = igua in node
+end//let//end-of-[i0gua_node$get(igua)]
+//
+endloc (*local*) // end of [local(i0gua)]
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+i0gpt =
+I0GPT of
+(
+loctn, i0gpt_node)
+#absimpl
+i0gpt_tbox = i0gpt
+//
+in (* in-of-local *)
+//
+#implfun
+i0gpt_make_node
+( loc0, node ) = I0GPT(loc0, node)
+//
+#implfun
+i0gpt_lctn$get
+  (  igpt  ) =
+let
+val+I0GPT(loc0,node) = igpt in loc0
+end
+#implfun
+i0gpt_node$get
+  (  igpt  ) =
+let
+val+I0GPT(loc0,node) = igpt in node
+end//let//end-of-[i0gpt_node$get(igpt)]
+//
+endloc (*local*) // end of [local(i0gpt)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

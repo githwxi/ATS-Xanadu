@@ -2414,7 +2414,8 @@ trans3a_d3gua
 case+
 dgua.node() of
 |
-D3GUAexp(d3e1) =>
+D3GUAexp
+(   d3e1   ) =>
 let
 val d3e1 =
 trans3a_d3exp(env0, d3e1)
@@ -2422,7 +2423,8 @@ in//let
 d3gua(loc0, D3GUAexp(d3e1))
 end//let//end-of-[D3GUAexp(...)]
 |
-D3GUAmat(d3e1,d3p2) =>
+D3GUAmat
+(d3e1, d3p2) =>
 let
 val d3e1 =
 trans3a_d3exp(env0, d3e1)
@@ -2430,7 +2432,7 @@ val d3p2 =
 trans3a_d3pat(env0, d3p2)
 in//let
 d3gua(loc0, D3GUAmat(d3e1, d3p2))
-end//let//end-of-[D3GUAmat(...)]
+end(*let*)//end-of-[D3GUAmat(...)]
 ) where
 {
 //
@@ -2464,16 +2466,18 @@ case+
 dgpt.node() of
 //
 |
-D3GPTpat(d3p1) =>
+D3GPTpat
+(   d3p1   ) =>
 d3gpt_make_node
 ( loc0
 , D3GPTpat(d3p1)) where
 {
 val d3p1 =
-trans3a_d3pat(env0, d3p1)
-}
+trans3a_d3pat(env0, d3p1) }
+//
 |
-D3GPTgua(d3p1, d3gs) =>
+D3GPTgua
+(d3p1, d3gs) =>
 d3gpt_make_node
 ( loc0
 , D3GPTgua(d3p1, d3gs)) where
@@ -2515,12 +2519,14 @@ d3cls_make_node
 //
 val
 dgpt =
-trans3a_d3gpt(env0, dgpt)
+(
+  trans3a_d3gpt(env0, dgpt))
 //
 }(*where*)//end-of-[D3CLSgpt(...)]
+//
 |
 D3CLScls
-(dgpt,d3e1) =>
+(dgpt, d3e1) =>
 (
 d3cls_make_node
 ( loc0
