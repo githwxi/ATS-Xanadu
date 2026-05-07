@@ -641,8 +641,12 @@ I0Dimplmnt0
 //
 val i0ws =
 (
+if // if
+(lvl0 = 0)
+then list_nil()
+else (
 lvl0$i0vs_tryd3i0
-(lvl0, i0vs, enw0))//val(i0ws)
+(lvl0, i0vs, enw0)))//val...
 //
 in//let
 //
