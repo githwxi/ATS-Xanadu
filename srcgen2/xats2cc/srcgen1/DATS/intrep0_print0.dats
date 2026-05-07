@@ -416,7 +416,6 @@ prints("I0Ecst(", d2c1, ")"))
 //
 (* ****** ****** *)
 //
-//
 |I0Etimp
 (i0e1, timp) =>
 (
@@ -651,6 +650,39 @@ prints("\
 FIARGdapp(", npf1, ";", i0ps, ")"))
 //
 end(*let*)//end-of-[fiarg_fprint(farg,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+t0imp_fprint
+(timp, out0) =
+let
+#implfun
+g_print$out<>() = out0
+in//let
+case+
+timp.node() of
+//
+(*
+|T0IMPone1
+(  dcl1  ) =>
+prints("T0IMPone1(", dcl1 ,")")
+*)
+//
+|T0IMPall1
+(d2c1
+,t2js, i0ds) =>
+prints
+("T0IMPall1(",d2c1,";",t2js,";",i0ds,")")
+//
+|T0IMPallx
+(d2c1
+,t2js, i0ds) =>
+prints
+("T0IMPallx(",d2c1,";",t2js,";",i0ds,")")
+//
+end(*let*)//end-of-[t0imp_fprint(timp,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

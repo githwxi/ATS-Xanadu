@@ -116,9 +116,7 @@ i0e0.node() of
 //
 (* ****** ****** *)
 //
-(*
 |I0Etimp _ => f0_timp(i0e0, enw0)
-*)
 //
 (* ****** ****** *)
 //
@@ -166,6 +164,43 @@ _(*otherwise*) => i0exp_none2(i0e0)
 end where
 {
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_timp
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Etimp
+(i0e1, timp) = i0e0.node()
+//
+(*
+val i0e1 =
+(
+  i0exp_tryd3i0(i0e1, enw0))
+*)
+val timp =
+(
+  t0imp_tryd3i0(timp, enw0))
+//
+in//let
+//
+(
+i0exp(
+loc0, i0t0, I0Etimp(i0e1, timp)))
+//
+end(*let*)//end-of-[f0_timp(i0e0,enw0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -226,6 +261,7 @@ i0exp(loc0,
 //
 end(*let*)//end-of-[f0_dapp(i0e0,enw0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -329,6 +365,8 @@ end//let
 //
 end(*let*)//end-of-[f0_lam0(i0e0,enw0)]
 //
+(* ****** ****** *)
+//
 fun
 f0_fix0
 (
@@ -406,6 +444,7 @@ end//let
 end(*let*)//end-of-[f0_fix0(i0e0,enw0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_rturn
@@ -435,6 +474,7 @@ i0exp(
 //
 end(*let*)//end-of-[f0_rturn(i0e0,enw0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -478,6 +518,7 @@ end//let
 end(*let*)//end-of-[f0_where(i0e0,enw0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_t2ped
@@ -507,6 +548,7 @@ loc0, i0t0, I0Et2ped(i0e1, t2p2)))
 //
 end(*let*)//end-of-[f0_t2ped(i0e0,env0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[i0exp_tryd3i0(i0e0,enw0)]

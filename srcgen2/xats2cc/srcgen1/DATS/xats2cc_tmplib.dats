@@ -146,6 +146,14 @@ i0cls_fprint(cls0, g_print$out<>())
 //
 #impltmp
 g_print
+<t0imp>(timp) =
+t0imp_fprint(timp, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <i0dcl>(idcl) =
 i0dcl_fprint(idcl, g_print$out<>())
 //

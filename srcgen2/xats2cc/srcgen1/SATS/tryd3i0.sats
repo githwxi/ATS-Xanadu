@@ -164,6 +164,13 @@ i0cls_tryd3i0
 (* ****** ****** *)
 //
 fun
+t0imp_tryd3i0
+(timp: t0imp, enw0: !enwd3i0): t0imp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i0dcl_tryd3i0
 (idcl: i0dcl, enw0: !enwd3i0): i0dcl
 //

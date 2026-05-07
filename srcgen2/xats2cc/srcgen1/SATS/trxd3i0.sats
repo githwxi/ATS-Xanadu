@@ -311,6 +311,13 @@ d3rcl_trxd3i0
 (* ****** ****** *)
 //
 fun
+timpl_trxd3i0
+(timp: timpl, env0: !envd3i0): t0imp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d3ecl_trxd3i0
 (d3cl: d3ecl, env0: !envd3i0): i0dcl
 //

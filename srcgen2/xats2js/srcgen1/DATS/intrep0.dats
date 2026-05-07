@@ -234,7 +234,7 @@ endloc (*local*) // end of [local(fiarg)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -263,9 +263,9 @@ let
 end
 //
 endloc (*local*) // end of [local(i0gua)]
-
+//
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -294,9 +294,9 @@ let
 end
 //
 endloc (*local*) // end of [local(i0gpt)]
-
+//
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -325,10 +325,10 @@ let
 end
 //
 endloc (*local*) // end of [local(i0cls)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -367,7 +367,7 @@ end
 (* ****** ****** *)
 //
 end (*local*) // end of [local(t0imp)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
