@@ -442,7 +442,7 @@ i0varfst_mknil((*0*))
 val i0ws =
 f0_main(i0vs, i0ws, enw0)
 in//let
-list_make_lstrm(i0varfst_strmize(i0ws))
+list_vt2t(i0varfst_listize(i0ws))
 end where
 {
 //
@@ -453,10 +453,10 @@ f0_main
 , enw0: !enwd3i0): i0varfst =
 (
 case+ i0vs of
-|
-list_nil() => i0ws
-|
-list_cons(i0v1, i0vs) =>
+|list_nil
+( (*0*) ) => (i0ws)
+|list_cons
+(i0v1, i0vs) =>
 (
 f0_main(i0vs, i0ws, enw0))
 where
@@ -482,8 +482,8 @@ then
 if // if
 i0var_topq(i0v1)
 then (i0ws) else
-  i0varfst_addvar(i0ws, i0v1))
-else
+  i0varfst_addvar(i0ws, i0v1)
+) else // end-of-(then)
 (
 (
   i0varfst_addlst(i0ws, ivs2))

@@ -1637,8 +1637,8 @@ let
 val i0vt =
 i0varfst_mklst(i0vs)
 val i0vs =
-list_make_lstrm
-(i0varfst_strmize(i0vt))
+list_vt2t
+(i0varfst_listize(i0vt))
 //
 val (  ) =
 prerrsln("\
@@ -1727,8 +1727,8 @@ let
 val i0vt =
 i0varfst_mklst(i0vs)
 val i0vs =
-list_make_lstrm
-(i0varfst_strmize(i0vt))
+list_vt2t
+(i0varfst_listize(i0vt))
 //
 val (  ) =
 prerrsln("\

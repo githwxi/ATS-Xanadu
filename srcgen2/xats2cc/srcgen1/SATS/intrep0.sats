@@ -1193,6 +1193,9 @@ fun
 i0varfst_fprint
 (ivst:i0varfst, out0:FILR): void
 fun
+i0varfst_listize
+( fst0: i0varfst ): list_vt( i0var )
+fun
 i0varfst_strmize
 ( fst0: i0varfst ): strm_vt( i0var )
 //
