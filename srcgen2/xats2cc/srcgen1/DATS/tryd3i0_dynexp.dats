@@ -369,11 +369,11 @@ I0Ecas0
 //
 val i0e1 =
 (
-  i0exp_trxd3i0(i0e1, enw0))
+  i0exp_tryd3i0(i0e1, enw0))
 //
 val icls =
 (
-i0clslst_trxd3i0(icls, enw0))
+i0clslst_tryd3i0(icls, enw0))
 //
 in//let
 //

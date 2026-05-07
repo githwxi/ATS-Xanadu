@@ -132,9 +132,11 @@ d3pat_trxd3i0
 (d3p0, env0) =
 let
 //
+(*
 val () =
 prerrsln("\
 d3pat_trxd3i0: d3p0 = ", d3p0)
+*)
 //
 in//let
 //
@@ -1005,12 +1007,14 @@ envd3i0_dvar$search(env0, d2v1)
 val (  ) =
 envd3i0_denv$insert(env0, i0v1)
 //
+(*
 val (  ) =
 prerrsln
 ("f0_var(d3i0): d3e0 = ", d3e0)
 val (  ) =
 prerrsln
 ("f0_var(d3i0): i0v1 = ", i0v1)
+*)
 //
 in//let
 //
@@ -2128,6 +2132,192 @@ prerrsln("d3rex_trxd3i0: d3e0 = ", d3e0)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[d3rex_trxd3i0(d3e0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3gua_trxd3i0
+(dgua, env0) =
+(
+case+
+dgua.node() of
+|
+D3GUAexp
+(   d3e1   ) =>
+let
+val i0e1 =
+d3exp_trxd3i0(d3e1, env0)
+in//let
+i0gua(loc0, I0GUAexp(i0e1))
+end//let//end-of-[D3GUAexp(...)]
+|
+D3GUAmat
+(d3e1, d3p2) =>
+let
+val i0e1 =
+d3exp_trxd3i0(d3e1, env0)
+val i0p2 =
+d3pat_trxd3i0(d3p2, env0)
+in//let
+i0gua(loc0, I0GUAmat(i0e1, i0p2))
+end(*let*)//end-of-[D3GUAmat(...)]
+) where
+{
+//
+  val loc0 = dgua.lctn()
+//
+(*
+  val (  ) =
+  prerrsln("d3gua_trxd3i0: dgua = ", dgua)
+*)
+//
+}(*where*)//end-of-[d3gua_trxd3i0(dgua,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3gpt_trxd3i0
+(dgpt, env0) = let
+//
+val loc0 = dgpt.lctn()
+//
+(*
+val
+val () =
+prerrsln
+("d3gpt_trxd3i0: dgpt = ", dgpt)
+*)
+//
+in//let
+//
+case+
+dgpt.node() of
+//
+|
+D3GPTpat
+(   d3p1   ) =>
+i0gpt_make_node
+( loc0
+, I0GPTpat(i0p1)) where
+{
+val i0p1 =
+d3pat_trxd3i0(d3p1, env0) }
+//
+|
+D3GPTgua
+(d3p1, d3gs) =>
+i0gpt_make_node
+( loc0
+, I0GPTgua(i0p1, i0gs)) where
+{
+val i0p1 =
+(
+  d3pat_trxd3i0(d3p1, env0))
+val i0gs =
+(
+  d3gualst_trxd3i0(d3gs, env0)) }
+//
+end(*let*)//end-of-[d3gpt_trxd3i0(dgpt,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3cls_trxd3i0
+(d3c0, env0) = let
+//
+val loc0 = d3c0.lctn()
+//
+(*
+val
+val () =
+prerrsln
+("d3cls_trxd3i0: d3c0 = ", d3c0)
+*)
+//
+in//let
+//
+case+
+d3c0.node() of
+|
+D3CLSgpt
+(   dgpt   ) =>
+(
+i0cls_make_node
+( loc0
+, I0CLSgpt(igpt))) where
+{
+//
+val igpt =
+(
+  d3gpt_trxd3i0(dgpt, env0))
+//
+}(*where*)//end-of-[D3CLSgpt(...)]
+|
+D3CLScls
+(dgpt, d3e1) =>
+(
+i0cls_make_node
+( loc0
+, I0CLScls(igpt, i0e1))) where
+{
+//
+val igpt = d3gpt_trxd3i0(dgpt, env0)
+val i0e1 = d3exp_trxd3i0(d3e1, env0)
+//
+}(*where*)//end of [D3CLScls(dgpt,d3e1)]
+//
+end(*let*)//end-of-[d3cls_trxd3i0(d3c0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3rcl_trxd3i0
+(d3c0, env0) = let
+//
+val loc0 = d3c0.lctn()
+//
+(*
+val
+val () =
+prerrsln
+("d3rcl_trxd3i0: d3c0 = ", d3c0)
+*)
+//
+in//let
+//
+case+
+d3c0.node() of
+|
+D3CLSgpt
+(   dgpt   ) =>
+(
+i0cls_make_node
+( loc0
+, I0CLSgpt(igpt))) where
+{
+//
+val igpt =
+(
+  d3gpt_trxd3i0(dgpt, env0))
+//
+}(*where*)//end-of-[D3CLSgpt(...)]
+|
+D3CLScls
+(dgpt, d3e1) =>
+(
+i0cls_make_node
+( loc0
+, I0CLScls(igpt, i0e1))) where
+{
+//
+val igpt = d3gpt_trxd3i0(dgpt, env0)
+val i0e1 = d3rex_trxd3i0(d3e1, env0)
+//
+}(*where*)//end of [D3CLScls(dgpt,d3e1)]
+//
+end(*let*)//end-of-[d3rcl_trxd3i0(d3c0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
