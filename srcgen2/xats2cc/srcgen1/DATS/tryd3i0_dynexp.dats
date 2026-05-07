@@ -636,6 +636,42 @@ end(*let*)//end-of-[f0_t2ped(i0e0,enw0)]
 (* ****** ****** *)
 //
 #implfun
+i0cls_tryd3i0
+(icls, enw0) = let
+//
+val loc0 = icls.lctn()
+//
+(*
+val
+val () =
+prerrsln
+("i0cls_tryd3i0: icls = ", icls)
+*)
+//
+in//let
+//
+case+
+icls.node() of
+|I0CLSgpt
+(   igpt   ) => (icls)
+|I0CLScls
+(igpt, i0e1) =>
+(
+i0cls_make_node
+( loc0
+, I0CLScls(igpt, i0e1))) where
+{
+//
+val i0e1 = i0exp_tryd3i0(i0e1, enw0)
+//
+}(*where*)//end of [I0CLScls(igpt,i0e1)]
+//
+end(*let*)//end-of-[i0cls_tryd3i0(d3c0,enw0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 lvl0$i0vs_tryd3i0
 (lvl0, i0vs, enw0) =
 let

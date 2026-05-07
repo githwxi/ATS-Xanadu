@@ -2270,7 +2270,6 @@ val i0e1 = d3exp_trxd3i0(d3e1, env0)
 end(*let*)//end-of-[d3cls_trxd3i0(d3c0,env0)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #implfun
 d3rcl_trxd3i0

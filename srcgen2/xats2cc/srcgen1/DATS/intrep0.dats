@@ -575,6 +575,39 @@ end//let//end-of-[i0gpt_node$get(igpt)]
 endloc (*local*) // end of [local(i0gpt)]
 //
 (* ****** ****** *)
+//
+local
+//
+datatype
+i0cls =
+I0CLS of
+(
+loctn, i0cls_node)
+#absimpl
+i0cls_tbox = i0cls
+//
+in (* in-of-local *)
+//
+#implfun
+i0cls_make_node
+( loc0, node ) = I0CLS(loc0, node)
+//
+#implfun
+i0cls_lctn$get
+ (  icls  ) =
+let
+val+I0CLS(loc0, node) = icls in loc0
+end
+#implfun
+i0cls_node$get
+ (  icls  ) =
+let
+val+I0CLS(loc0, node) = icls in node
+end//let//end-of-[i0cls_node$get(icls)]
+//
+endloc (*local*) // end of [local(i0cls)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local

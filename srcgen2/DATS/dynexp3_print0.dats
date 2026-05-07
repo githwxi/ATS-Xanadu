@@ -385,8 +385,7 @@ prints("D3Elet0(",dcls,";",d3e1,")"))
 ( print("D3Eift0(")
 ; prints(d3e1,";",dthn,";",dels,")"))
 //
-|
-D3Ecas0
+|D3Ecas0
 (tknd,d3e1,dcls) =>
 ( print("D3Ecas0(");
   prints(tknd,";",d3e1,";",dcls,")"))
@@ -632,7 +631,8 @@ end (*let*) // end-of-[ D3Eerrck(lvl1,d3e2) ]
 end (*let*) // end of [ d3exp_fprint(d3e0,out0) ]
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 f3arg_fprint
 (farg, out0) =
@@ -663,7 +663,8 @@ F3ARGsapq
 *)
 //
 end (*let*) // end-of-[ f3arg_fprint(farg,out0) ]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
