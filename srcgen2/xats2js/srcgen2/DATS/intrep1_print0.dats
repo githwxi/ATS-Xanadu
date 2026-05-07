@@ -578,21 +578,24 @@ prints
 //
 |
 I1Dfundclst
-( tknd, tqas
+( tknd
+, lvl0, tqas
 , d2cs, i1fs) =>
-( prints
-  ("I1Dfundclst(", tknd, ";")
-; prints(tqas, ";", d2cs, ";", i1fs,")"))
+(
+print("I1Dfundclst(");
+prints(tknd, ";", lvl0, ";");
+prints(tqas, ";", d2cs, ";", i1fs,")"))
 //
 (* ****** ****** *)
 //
 |
 I1Dimplmnt0
 (tknd
+,lvl0
 ,stmp, dimp
 ,farg, body) =>
 ( print("I1Dimplmnt0(")
-; prints(tknd,";",stmp,";")
+; prints(tknd, ";", lvl0, ";", stmp, ";")
 ; prints(dimp, ";", farg, ";", body, ")"))
 //
 (* ****** ****** *)

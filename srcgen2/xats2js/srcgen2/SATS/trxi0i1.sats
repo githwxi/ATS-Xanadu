@@ -125,7 +125,7 @@ fun
 envi0i1_make_nil
  ((*void*)): envi0i1//end-fun
 fun
-envi0i1_free_top
+envi0i1_free_nil
  (env0: envi0i1): void//end-fun
 //
 (* ****** ****** *)

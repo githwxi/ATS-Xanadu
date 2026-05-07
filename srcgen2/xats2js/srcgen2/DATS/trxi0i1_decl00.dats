@@ -420,7 +420,8 @@ loc0 = dcl0.lctn((*void*))
 //
 val-
 I0Dfundclst
-(tknd, tqas
+(tknd
+,lvl0, tqas
 ,d2cs, i0fs) = dcl0.node()
 //
 val recq =
@@ -449,7 +450,8 @@ in//let
 i1dcl_make_node
 (
 loc0,
-I1Dfundclst(tknd, tqas, d2cs, i1fs))
+I1Dfundclst(
+  tknd(*fnk*),lvl0,tqas,d2cs,i1fs))
 //
 end where
 {
@@ -520,7 +522,8 @@ in//let
 i1dcl_make_node
 (
 loc0,
-I1Dimplmnt0(tknd,stmp,dimp,fjas,icmp))
+I1Dimplmnt0(
+  tknd, lvl0, stmp, dimp, fjas, icmp))
 end where
 {
 //
