@@ -231,6 +231,14 @@ prints("I0Pfree(",i0p1,")")
 //
 (* ****** ****** *)
 //
+|I0Ptapq
+(i0p1, ijas) =>
+(
+prints("\
+I0Ptapq(", i0p1, ";", ijas, ")"))
+//
+(* ****** ****** *)
+//
 |I0Pdap1
 (   i0f0   ) =>
 prints("I0Pdap1(",i0f0,")")
@@ -478,6 +486,12 @@ prints("I0Elet0(",dcls,";",i0e1,")"))
 print("I0Eift0(");
 prints(test,";", ithn,";", iels,")"))
 //
+|I0Ecas0
+(tknd,i0e1,icls) =>
+(
+print("I0Ecas0(");
+prints(tknd,";", i0e1,";", icls,")"))
+//
 (* ****** ****** *)
 //
 (*
@@ -650,6 +664,74 @@ prints("\
 FIARGdapp(", npf1, ";", i0ps, ")"))
 //
 end(*let*)//end-of-[fiarg_fprint(farg,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0gua_fprint
+(dgua, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+dgua.node() of
+|
+I0GUAexp(i0e1) =>
+(
+  prints("I0GUAexp(",i0e1,")"))
+|
+I0GUAmat(i0e1,i0p2) =>
+(
+  prints("I0GUAmat(",i0e1,";",i0p2,")"))
+//
+end(*let*)//end-of-[i0gua_fprint(dgua,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0gpt_fprint
+(igpt, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+igpt.node() of
+|
+I0GPTpat(i0p1) =>
+(
+  prints("I0GPTpat(",i0p1,")"))
+|
+I0GPTgua(i0p1,i0gs) =>
+(
+  prints("I0GPTgua(",i0p1,";",i0gs,")"))
+//
+end(*let*)//end-of-[i0gpt_fprint(igpt,out0)]
+//
+#implfun
+i0cls_fprint
+(icls, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+icls.node() of
+|
+I0CLSgpt(igpt) =>
+(
+  prints("I0CLSgpt(",igpt,")"))
+|
+I0CLScls(i0g1,i0e2) =>
+(
+  prints("I0CLScls(",i0g1,";",i0e2,")"))
+//
+end(*let*)//end-of-[i0cls_fprint(igua,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
