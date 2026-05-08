@@ -144,9 +144,11 @@ d3ecl_trxd3i0
 (d3cl, env0) =
 let
 //
+(*
 val () =
 prerrsln("\
 d3ecl_trxd3i0: d3cl = ", d3cl)
+*)
 //
 in//let
 //
@@ -617,9 +619,11 @@ val (  ) =
 (
 envd3i0_i0vs$insert(env0, i0vs))
 //
+(*
 val (  ) =
 prerrsln("\
 f0_implmnt0(d3i0): i0vs = ", i0vs)
+*)
 //
 in//let
 (
@@ -790,9 +794,11 @@ val (  ) =
 (
 envd3i0_i0vs$insert(env0, i0vs))
 //
+(*
 val (  ) =
 prerrsln("\
 d3fundcl_trxd3i0: i0vs = ", i0vs)
+*)
 //
 in//let
 (

@@ -687,9 +687,11 @@ d3exp_trxd3i0
 (d3e0, env0) =
 let
 //
+(*
 val () =
 prerrsln("\
 d3exp_trxd3i0: d3e0 = ", d3e0)
+*)
 //
 in//let
 //
@@ -1650,9 +1652,11 @@ val i0vs =
 list_vt2t
 (i0varfst_listize(i0vt))
 //
+(*
 val (  ) =
 prerrsln("\
 f0_lam0(d3i0): i0vs = ", i0vs)
+*)
 //
 val (  ) =
 (
@@ -1740,9 +1744,11 @@ val i0vs =
 list_vt2t
 (i0varfst_listize(i0vt))
 //
+(*
 val (  ) =
 prerrsln("\
 f0_fix0(d3i0): i0vs = ", i0vs)
+*)
 //
 val (  ) =
 (
@@ -2126,8 +2132,10 @@ end(*let*)//end-of-[f0_t2ped(d3e0,env0)]
 //
 (* ****** ****** *)
 //
+(*
 val () =
 prerrsln("d3rex_trxd3i0: d3e0 = ", d3e0)
+*)
 //
 (* ****** ****** *)
 //
@@ -2165,11 +2173,11 @@ end(*let*)//end-of-[D3GUAmat(...)]
 ) where
 {
 //
-  val loc0 = dgua.lctn()
+val loc0 = dgua.lctn((*void*))
 //
 (*
-  val (  ) =
-  prerrsln("d3gua_trxd3i0: dgua = ", dgua)
+val (  ) =
+prerrsln("d3gua_trxd3i0: dgua = ", dgua)
 *)
 //
 }(*where*)//end-of-[d3gua_trxd3i0(dgua,env0)]
@@ -2178,19 +2186,8 @@ end(*let*)//end-of-[D3GUAmat(...)]
 //
 #implfun
 d3gpt_trxd3i0
-(dgpt, env0) = let
-//
-val loc0 = dgpt.lctn()
-//
-(*
-val
-val () =
-prerrsln
-("d3gpt_trxd3i0: dgpt = ", dgpt)
-*)
-//
-in//let
-//
+(dgpt, env0) =
+(
 case+
 dgpt.node() of
 //
@@ -2218,7 +2215,17 @@ val i0gs =
 (
   d3gualst_trxd3i0(d3gs, env0)) }
 //
-end(*let*)//end-of-[d3gpt_trxd3i0(dgpt,env0)]
+) where
+{
+//
+val loc0 = dgpt.lctn((*void*))
+//
+(*
+val
+val (  ) =
+prerrsln("d3gpt_trxd3i0: dgpt = ", dgpt)
+*)
+}(*where*)//end-of-[d3gpt_trxd3i0(dgpt,env0)]
 //
 (* ****** ****** *)
 //

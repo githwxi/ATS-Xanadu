@@ -487,7 +487,8 @@ print("I0Eift0(");
 prints(test,";", ithn,";", iels,")"))
 //
 |I0Ecas0
-(tknd,i0e1,icls) =>
+(tknd
+,i0e1, icls) =>
 (
 print("I0Ecas0(");
 prints(tknd,";", i0e1,";", icls,")"))
@@ -1033,8 +1034,8 @@ i0parsed_parsed$get(ipar)
 in//let
 (
 print("I0PARSED(");
-prints
-(stadyn,";",nerror,";",source,";",parsed,")"))
+prints(
+stadyn,";",nerror,";",source,";",parsed,")"))
 end(*let*)//end-of-[i0parsed_fprint(ipar,out0)]
 //
 (* ****** ****** *)
