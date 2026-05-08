@@ -27,13 +27,23 @@ val y = ( x + x )
 (* ****** ****** *)
 //
 val foo =
-lam(w:sint) =>
-lam(z:sint) => w + x + y + z
+lam
+(w:sint) =>
+lam
+(z:sint) => w + x + y + z
 //
 val bar =
-lam(w:sint) =>
+lam
+(w:sint) =>
 fix f00
 (z:sint): sint => f00(w+x+y+z)
+//
+val baz =
+lam
+(w:sint) =>
+fix f00
+(z:sint): sint =>
+f00(x+y+w)+(lam()=>f00(x+y+z))()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -121,9 +131,8 @@ list_length
 (xs: list(sint)): nint =
 (
 case+ xs of
-| list_nil() => 0
-| list_cons(_, xs) => 1 + list_length(xs)
-)
+list_nil() => 0 |
+list_cons(_, xs) => 1 + list_length(xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)

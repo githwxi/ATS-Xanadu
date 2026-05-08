@@ -70,9 +70,11 @@ let
 //
 val s2t0 = t2p0.sort()
 //
+(*
 val (  ) =
 prerrsln("\
 s2typ_trxd3i0: t2p0 = ", t2p0)
+*)
 //
 in//let
 //
