@@ -65,6 +65,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload "./../SATS/intrep1.sats"
 #staload "./../SATS/trxi0i1.sats"
+#staload "./../SATS/xats2js.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -132,15 +133,13 @@ prerrsln
 //
 in//let
 //
-(*
 let
 val
 filr = g_stdout<>()
 in//let
 (
-  js1emit_i1parsed(filr, ipar))
+  xats2js_i1parsed(filr, ipar))
 end//let
-*)
 //
 end where
 {
