@@ -269,8 +269,8 @@ implknd_fprint(implknd, FILR): void
 //
 (*
 HX-2026-03-03:
-F2CLfun is CFREFX;
-[CFREFX] is nonlin;
+F2CLfun is CXFREF;
+[CXFREF] is nonlin;
 and all the others are linear!
 *)
 #define CXFREF = -1 // refd
