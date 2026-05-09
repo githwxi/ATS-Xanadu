@@ -327,7 +327,7 @@ and i1ins =
 (* ****** ****** *)
 //
 |I1INSrturn of
-(i0cal(*funkind*), i1cmp(*ret*))
+(i0cal(*icalknd*), i1cmp(*rtnv*))
 //
 (* ****** ****** *)
 //
