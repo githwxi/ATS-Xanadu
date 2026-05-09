@@ -1053,68 +1053,6 @@ end(*let*)//end-of-[xats2js_i1tfndcl(env0,itfn)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#implfun
-xats2js_i1dclist
-  (env0, dcls) =
-(
-  list_xats2js_fnp(env0, dcls, xats2js_i1dcl))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-xats2js_i1prvdclist
-  (env0, i1vs) =
-(
-  list_xats2js_fnp(env0, i1vs, xats2js_i1prvdcl))
-//
-#implfun
-xats2js_i1valdclist
-  (env0, i1vs) =
-(
-  list_xats2js_fnp(env0, i1vs, xats2js_i1valdcl))
-//
-(* ****** ****** *)
-//
-#implfun
-xats2js_i1vardclist
-  (env0, i1vs) =
-(
-  list_xats2js_fnp(env0, i1vs, xats2js_i1vardcl))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-xats2js_i1prfdclist
-  (env0, i1fs) =
-(
-  list_xats2js_fnp(env0, i1fs, xats2js_i1prfdcl))
-//
-#implfun
-xats2js_i1fundclist
-  (env0, i1fs) =
-(
-  list_xats2js_fnp(env0, i1fs, xats2js_i1fundcl))
-//
-#implfun
-xats2js_i1tfndclist
-  (env0, i1fs) =
-(
-  list_xats2js_fnp(env0, i1fs, xats2js_i1tfndcl))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-xats2js_i1dclistopt
-  (env0, dopt) =
-(
-  optn_xats2js_fnp(env0, dopt, xats2js_i1dclist))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_xats2js_decl00.dats] *)
 (***********************************************************************)
