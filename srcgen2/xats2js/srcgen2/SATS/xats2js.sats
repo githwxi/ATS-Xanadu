@@ -70,6 +70,30 @@ XATSOPT/xats2cc/srcgen1"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+envx2js_filr$get
+(env0: !envx2js): FILEref
+//
+fun
+envx2js_nind$get
+(env0: !envx2js): ( sint )
+//
+fun
+envx2js_lvl0$get
+(env0: !envx2js): ( sint )
+//
+(* ****** ****** *)
+//
+fun
+envx2js_make_out
+(  out0: FILR  ): envx2js
+fun
+envx2js_free_nil
+(  env0: ~envx2js  ): void//fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_SATS_xats2js.sats] *)
 (***********************************************************************)
