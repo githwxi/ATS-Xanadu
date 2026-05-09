@@ -92,11 +92,45 @@ envx2js_free_nil
 (  env0: ~envx2js  ): void//fun
 //
 (* ****** ****** *)
+//
+fun
+envx2js_incnind
+( env0:
+! envx2js, ninc: sint): void
+fun
+envx2js_decnind
+( env0:
+! envx2js, ndec: sint): void
+//
+(* ****** ****** *)
+//
+fun
+envx2js_pshlam0
+(env0: !envx2js): void//end-fun
+fun
+envx2js_poplam0
+(env0: !envx2js): void//end-fun
+//
+fun
+envx2js_pshlet0
+(env0: !envx2js): void//end-fun
+fun
+envx2js_poplet0
+(env0: !envx2js): void//end-fun
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 xats2js_i1parsed
-(filr: FILR, ipar: i1parsed): void
+(ipar: i1parsed, filr: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xats2js_i1dclistopt
+(dopt: i1dclistopt, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

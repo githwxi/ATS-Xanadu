@@ -182,7 +182,7 @@ end (*let*)//end-of-(envx2js_poplam0(env0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-end (*local*) // end of [ local(envx2js) ]
+end (*local*) // end of [local(envx2js_vtbx)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
