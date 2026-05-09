@@ -63,6 +63,32 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+xats2js_i1parsed
+  (ipar, filr) = let
+//
+val stadyn =
+i1parsed_stadyn$get(ipar)
+val nerror =
+i1parsed_nerror$get(ipar)
+val source =
+i1parsed_source$get(ipar)
+val parsed =
+i1parsed_parsed$get(ipar)
+//
+val
+env0 = envx2js_make_out(filr)
+//
+in//let
+(
+  envx2js_free_nil(env0)) where
+{ val () =
+  xats2js_i1dclistopt(parsed, env0) }
+end(*let*)//end-of-[xats2js_i1parsed(ipar,filr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_xats2js.dats] *)
 (***********************************************************************)
