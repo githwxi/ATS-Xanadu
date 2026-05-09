@@ -28,6 +28,8 @@ XATSJSD=./../../../srcgen2/xats2js
 #
 SRCSATS := \
 intrep1.sats \
+trxi0i1.sats \
+xats2js.sats \
 #
 ########################################################################
 #
@@ -38,6 +40,9 @@ trxi0i1.dats \
 trxi0i1_myenv0.dats \
 trxi0i1_dynexp.dats \
 trxi0i1_decl00.dats \
+xats2js.dats \
+xats2js_dynexp.dats \
+xats2js_decl00.dats \
 xats2js_tmplib.dats \
 #
 ########################################################################

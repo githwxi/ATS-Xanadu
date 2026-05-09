@@ -185,7 +185,7 @@ js1emit_i1cmp
 //
 (*
 HX-2024-05-27:
-This fuction is
+This function is
 merged into [js1emit_i1let]!
 fun
 js1emit_i1ins
