@@ -141,8 +141,60 @@ fopr: (x0, !envx2js)->void): void
 (* ****** ****** *)
 //
 fun
+nindfpr
+(filr: FILR, nind: sint): void
+//
+fun
+strnfpr
+(filr: FILR, strn: strn): void
+//
+fun
+nindstrnfpr
+(filr: FILR
+,nind: sint, strn: strn): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 xats2js_i1parsed
 (ipar: i1parsed, filr: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xats2js_i1let
+(ilet: i1let, env0: !envx2js): void
+//
+fun
+xats2js_i1bnd
+(ibnd: i1bnd, env0: !envx2js): void
+//
+fun
+xats2js_i1cmp
+(icmp: i1cmp, env0: !envx2js): void
+//
+fun
+xats2js_i1ins
+(iins: i1ins, env0: !envx2js): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xats2js_fjarg
+(farg: fjarg, env0: !envx2js): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xats2js_i1gpt
+(igpt: i1gpt, env0: !envx2js): void
+fun
+xats2js_i1cls
+(icls: i1cls, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -51,6 +51,10 @@ XATSOPT "./../../.."
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #staload ".\
 /../../../xats2cc\
@@ -59,6 +63,57 @@ XATSOPT "./../../.."
 #staload "./../SATS/intrep1.sats"
 #staload "./../SATS/trxi0i1.sats"
 #staload "./../SATS/xats2js.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fprintln
+(out0: FILR): void =
+(
+ strn_fprint("\n",out0))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1dcl
+(dcl0, env0) =
+let
+// (*
+//
+val () =
+prerrsln("\
+xats2js_i1dcl: dcl0 = ", dcl0)
+//
+// *)
+in//let
+//
+case+
+dcl0.node() of
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|
+_(* otherwise *) =>
+let
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+in//let
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+i1dcl_fprint(dcl0, filr); fprintln(filr)
+end//let
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+end where
+{
+}(*where*)//end-of-[xats2js_i1dcl(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

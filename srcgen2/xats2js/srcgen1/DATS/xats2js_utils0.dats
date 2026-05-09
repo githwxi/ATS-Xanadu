@@ -121,14 +121,14 @@ tok.node() of
 (* ****** ****** *)
 //
 #implfun
-strnfpr
-(filr, strn) =
+strnfpr(
+filr, strn) =
 (
 strn_fprint(strn, filr))//end-fun
 //
 #implfun
-nindfpr
-(filr, nind) =
+nindfpr(
+filr, nind) =
 if nind > 0 then
 (
 strn_fprint
