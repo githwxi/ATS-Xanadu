@@ -54,12 +54,14 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
 valtok_prvq
 (tknd: token): ( bool )
 fun
 funtok_prfq
 (tknd: token): ( bool )
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
