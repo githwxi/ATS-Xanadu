@@ -75,11 +75,11 @@ envx2js_filr$get
 (env0: !envx2js): FILEref
 //
 fun
-envx2js_nind$get
+envx2js_lvl0$get
 (env0: !envx2js): ( sint )
 //
 fun
-envx2js_lvl0$get
+envx2js_nind$get
 (env0: !envx2js): ( sint )
 //
 (* ****** ****** *)
@@ -89,7 +89,7 @@ envx2js_make_out
 (  out0: FILR  ): envx2js
 fun
 envx2js_free_nil
-(  env0: ~envx2js  ): void//fun
+(  env0: ~envx2js  ): void
 //
 (* ****** ****** *)
 //
@@ -122,8 +122,41 @@ envx2js_poplet0
 (* ****** ****** *)
 //
 fun
+<x0:t0>
+list_xats2js_fnp
+(
+xs: list(x0),
+e1: !envx2js,
+fopr: (x0, !envx2js)->void): void
+//
+fun
+<x0:t0>
+optn_xats2js_fnp
+( 
+xs: optn(x0),
+e1: !envx2js,
+fopr: (x0, !envx2js)->void): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 xats2js_i1parsed
 (ipar: i1parsed, filr: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xats2js_i1dcl
+(dcl0: i1dcl, env0: !envx2js): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xats2js_i1dclist
+(dcls: i1dclist, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

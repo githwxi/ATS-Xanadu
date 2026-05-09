@@ -89,6 +89,53 @@ end(*let*)//end-of-[xats2js_i1parsed(ipar,filr)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<x0>(*tmp*)
+list_xats2js_fnp
+( xs, e1, fopr ) =
+(
+list_foritm$e1nv
+<x0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = envx2js
+#impltmp
+foritm$e1nv$work
+<x0><e1>(x0, e1) = fopr(x0, e1)
+}(*where*)//end(list_xats2js_fnp(e1,xs,fopr))
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+optn_xats2js_fnp
+( xs, e1, fopr ) =
+(
+case+ xs of
+| optn_nil() => ()
+| optn_cons(x1) => fopr(x1, e1)
+)(*case+*)//end(optn_xats2js_fnp(e1,xs,fopr))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1dclist
+  (dcls, env0) =
+(
+  list_xats2js_fnp(dcls, env0, xats2js_i1dcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1dclistopt
+  (dopt, env0) =
+(
+  optn_xats2js_fnp(dopt, env0, xats2js_i1dclist))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_xats2js.dats] *)
 (***********************************************************************)
