@@ -30,9 +30,9 @@
 //
 (*
 Author: Hongwei Xi
-//
-Sat May  9 03:15:00 PM EDT 2026
-//
+(*
+Sat May  9 05:24:37 PM EDT 2026
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -51,6 +51,10 @@ XATSOPT "./../../.."
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #staload ".\
 /../../../xats2cc\
@@ -63,107 +67,30 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)
-// local
-(* ****** ****** *)
-//
-datavwtp
-envx2js =
-ENVX2JS of
-( FILR(*output*)
-, sint(*level0*)
-, sint(*indent*))
-//
-#absimpl envx2js_vtbx = envx2js
-//
-(* ****** ****** *)
-// in//local
-(* ****** ****** *)
-//
 #implfun
-envx2js_filr$get
-  ( env0 ) =
-let
-val+
-ENVX2JS
-(filr
-,lvl0, nind) = env0 in filr end
-//
-#implfun
-envx2js_lvl0$get
-  ( env0 ) =
-let
-val+
-ENVX2JS
-(filr
-,lvl0, nind) = env0 in lvl0 end
-//
-#implfun
-envx2js_nind$get
-  ( env0 ) =
-let
-val+
-ENVX2JS
-(filr
-,lvl0, nind) = env0 in nind end
-//
-(* ****** ****** *)
-//
-#implfun
-envx2js_make_out
-  ( filr ) = ENVX2JS(filr, 0, 0)
-//
-(* ****** ****** *)
-//
-#implfun
-envx2js_free_nil
-  (  env0  ) =
+strnfpr(
+filr, strn) =
 (
-case+ env0 of
-| ~
-ENVX2JS
-(filr, lvl0, nind) => ((*void*)))
-(*case+*)//end-of-(envx2js_free_nil(env0))
-//
-(* ****** ****** *)
-(* ****** ****** *)
+strn_fprint(strn, filr))//end-fun
 //
 #implfun
-envx2js_incnind
-(  env0, ninc  ) = let
-//
-val+
-@ENVX2JS
-(filr, lvl0, !nind) = env0
-//
-in//let
-//
+nindfpr(
+filr, nind) =
+if nind > 0 then
 (
-nind := nind + ninc; $fold(env0))
-//
-end (*let*)//end-of-(envx2js_incnind(env0))
+strn_fprint
+(" ", filr); nindfpr(filr, nind-1))
 //
 #implfun
-envx2js_decnind
-(  env0, ndec  ) = let
-//
-val+
-@ENVX2JS
-(filr, lvl0, !nind) = env0
-//
-in//let
-//
+nindstrnfpr
+(filr
+,nind, strn) =
 (
-nind := nind - ndec; $fold(env0))
+nindfpr(filr, nind);strnfpr(filr, strn))
 //
-end (*let*)//end-of-(envx2js_decnind(env0))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-// end (*local*) // end of [local(envx2js_vtbx)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_xats2js_myenv0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_xats2js_utils0.dats] *)
 (***********************************************************************)

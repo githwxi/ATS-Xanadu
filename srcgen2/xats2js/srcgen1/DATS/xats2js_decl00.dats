@@ -110,7 +110,7 @@ let
 //
 val () =
 prerrsln("\
-xats2js_i1dcl: dcl0 = ", dcl0))
+xats2js_i1dcl: dcl0 = ", dcl0)
 //
 *)
 in//let

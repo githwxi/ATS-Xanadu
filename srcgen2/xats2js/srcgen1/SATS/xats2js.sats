@@ -235,17 +235,21 @@ xats2js_i1ins
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
 xats2js_fjarg
 (env0: !envx2js, farg: fjarg): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
 xats2js_i1gpt
 (env0: !envx2js, igpt: i1gpt): void
 fun
 xats2js_i1cls
 (env0: !envx2js, icls: i1cls): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
