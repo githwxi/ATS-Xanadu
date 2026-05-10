@@ -108,5 +108,5 @@ d3exp$D3Elet0_work(dexp: d3exp): void
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-XANADU/srcgen2/xsyntmp/srcgen1/xsyntmp.sats] *)
+(* end of [ATS3-XANADU/srcgen2/xsyntmp/srcgen1/SATS/xsyntmp.sats] *)
 (***********************************************************************)

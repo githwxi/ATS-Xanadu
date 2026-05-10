@@ -112,5 +112,5 @@ D2Elet0(dcls, d2e1) = d2e0.node()
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-XANADU/srcgen2/xsyntmp/srcgen1/xsyntmp_d2exp.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xsyntmp/srcgen1/DATS/xsyntmp_d2exp.dats] *)
 (***********************************************************************)
