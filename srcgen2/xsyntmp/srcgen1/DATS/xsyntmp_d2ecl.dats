@@ -82,5 +82,5 @@ D2Clocal0(head, body) = dcl0.node()
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-XANADU/srcgen2/xsyntmp/srcgen1/xsyntmp_d2ecl.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xsyntmp/srcgen1/DATS/xsyntmp_d2ecl.dats] *)
 (***********************************************************************)
