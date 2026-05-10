@@ -275,11 +275,11 @@ xats2js_i1valist
 //
 fun
 xats2js_i1letlst
-(env0: !envx2js, i1vs: i1letlst): void
+(env0: !envx2js, ilts: i1letlst): void
 //
 fun
 xats2js_i1cmplst
-(env0: !envx2js, i1fs: i1cmplst): void
+(env0: !envx2js, cmps: i1cmplst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

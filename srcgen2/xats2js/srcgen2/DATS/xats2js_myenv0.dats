@@ -160,6 +160,43 @@ end (*let*)//end-of-(envx2js_decnind(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+envx2js_pshlam0
+(     env0     ) = let
+//
+val+
+@ENVX2JS
+(filr, !lvl0, !nind) = env0
+//
+in//let
+//
+(
+  lvl0 := lvl0 + 1;
+  nind := nind + 2; $fold(env0))
+//
+end (*let*)//end-of-(envx2js_pshlam0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+envx2js_poplam0
+(     env0     ) = let
+//
+val+
+@ENVX2JS
+(filr, !lvl0, !nind) = env0
+//
+in//let
+//
+(
+  lvl0 := lvl0 - 1;
+  nind := nind - 2; $fold(env0))
+//
+end (*let*)//end-of-(envx2js_poplam0(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 // end (*local*) // end of [local(envx2js_vtbx)]
 (* ****** ****** *)
 (* ****** ****** *)
