@@ -153,12 +153,12 @@ envx2js_decnind(env0,2(*dec*)))
 (
 envx2js_incnind(env0,2(*inc*));
 xats2js_i1ins(  env0 , iins  );
-envx2js_decnind(env0,2(*dec*))) where
-{
+envx2js_decnind(env0,2(*dec*)))
+where{
 val () =
-prints
-("I1LETnew1(", itnm, ";", "...", ")\n")
-}
+prints("\
+I1LETnew1(", itnm, ";", "...", ")\n")
+}(*where*)
 //
 end//let//end-of-[ i1letfpr(env0,ilet) ]
 //
