@@ -190,7 +190,7 @@ _(* otherwise *) =>
 //
 where
 {
-}
+}(*where*)//end-of-[i1insfpr(env0,iins)]
 //
 }(*where*)//end-of-[xats2js_i1ins(iins,env0)]
 //
