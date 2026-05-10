@@ -382,10 +382,14 @@ nindfpr
 //
 (* ****** ****** *)
 //
-|_(*rest-of-I1INS...*) =>
+|
+_(* otherwise *) =>
 (
-  i1ins_fprint(iins, filr)))
-(*case+*)//end-of-[i1insfpr(...)]
+  i1ins_fprint(iins(*rest*), filr))
+//
+(* ****** ****** *)
+//
+)(*case+*)//end-of-[i1insfpr(env0,iins)]
 //
 (* ****** ****** *)
 //

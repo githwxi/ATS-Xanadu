@@ -119,6 +119,15 @@ case+ xs of
 (* ****** ****** *)
 //
 #implfun
+i1letlst_xats2js
+  (ilts, env0) =
+(
+  list_xats2js_fnp(ilts, env0, i1let_xats2js))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 fjarglst_xats2js
   (fjas, env0) =
 (
