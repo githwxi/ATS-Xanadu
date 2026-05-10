@@ -574,15 +574,16 @@ let
 //
 val-
 I1Dfundclst
-( tknd, tqas
+( tknd
+, tqas
 , d2cs, i1fs) = dcl0.node()
 //
 val (  ) =
-if
+if // if
 funtok_prfq(tknd)
-then
+then//then
 xats2js_i1prfdclist(env0, i1fs)
-else
+else//else
 (
 case+ tqas of
 |

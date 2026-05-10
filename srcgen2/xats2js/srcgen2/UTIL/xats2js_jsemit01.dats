@@ -138,7 +138,7 @@ val
 filr = g_stdout<>()
 in//let
 (
-  xats2js_i1parsed(ipar, filr))
+  i1parsed_xats2js(ipar, filr))
 end//let
 //
 end where

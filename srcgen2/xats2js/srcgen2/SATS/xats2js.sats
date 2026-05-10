@@ -157,64 +157,111 @@ nindstrnfpr
 (* ****** ****** *)
 //
 fun
-xats2js_i1parsed
+i1parsed_xats2js
 (ipar: i1parsed, filr: FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-xats2js_i1let
+i1let_xats2js
 (ilet: i1let, env0: !envx2js): void
 //
 fun
-xats2js_i1bnd
+i1bnd_xats2js
 (ibnd: i1bnd, env0: !envx2js): void
 //
 fun
-xats2js_i1cmp
+i1cmp_xats2js
 (icmp: i1cmp, env0: !envx2js): void
 //
 fun
-xats2js_i1ins
+i1ins_xats2js
 (iins: i1ins, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-xats2js_fjarg
+fjarg_xats2js
 (farg: fjarg, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-xats2js_i1gpt
+i1gpt_xats2js
 (igpt: i1gpt, env0: !envx2js): void
 fun
-xats2js_i1cls
+i1cls_xats2js
 (icls: i1cls, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-xats2js_i1dcl
+i1dcl_xats2js
 (dcl0: i1dcl, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-xats2js_i1dclist
+i1dclist_xats2js
 (dcls: i1dclist, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-xats2js_i1dclistopt
+i1valdcl_xats2js
+(ival: i1valdcl, env0: !envx2js): void
+fun
+i1vardcl_xats2js
+(ivar: i1vardcl, env0: !envx2js): void
+//
+fun
+i1fundcl_xats2js
+(ifun: i1fundcl, env0: !envx2js): void
+fun
+i1tfndcl_xats2js
+(ifun: i1fundcl, env0: !envx2js): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1prvdclist_xats2js
+(
+i1vs: i1valdclist, env0: !envx2js): void
+fun
+i1valdclist_xats2js
+(
+i1vs: i1valdclist, env0: !envx2js): void
+//
+fun
+i1vardclist_xats2js
+(
+i1vs: i1vardclist, env0: !envx2js): void
+//
+fun
+i1prfdclist_xats2js
+(
+i1fs: i1fundclist, env0: !envx2js): void
+fun
+i1fundclist_xats2js
+(
+i1fs: i1fundclist, env0: !envx2js): void
+fun
+i1tfndclist_xats2js
+(
+i1fs: i1fundclist, env0: !envx2js): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1dclistopt_xats2js
 (dopt: i1dclistopt, env0: !envx2js): void
 //
 (* ****** ****** *)

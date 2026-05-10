@@ -64,7 +64,7 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #implfun
-xats2js_i1parsed
+i1parsed_xats2js
   (ipar, filr) = let
 //
 val stadyn =
@@ -83,8 +83,8 @@ in//let
 (
   envx2js_free_nil(env0)) where
 { val () =
-  xats2js_i1dclistopt(parsed, env0) }
-end(*let*)//end-of-[xats2js_i1parsed(ipar,filr)]
+  i1dclistopt_xats2js(parsed, env0) }
+end(*let*)//end-of-[i1parsed_xats2js(ipar,filr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -119,19 +119,44 @@ case+ xs of
 (* ****** ****** *)
 //
 #implfun
-xats2js_i1dclist
+i1dclist_xats2js
   (dcls, env0) =
 (
-  list_xats2js_fnp(dcls, env0, xats2js_i1dcl))
+  list_xats2js_fnp(dcls, env0, i1dcl_xats2js))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2js_i1dclistopt
+i1valdclist_xats2js
+  (i1vs, env0) =
+(
+  list_xats2js_fnp(i1vs, env0, i1valdcl_xats2js))
+//
+(* ****** ****** *)
+//
+#implfun
+i1vardclist_xats2js
+  (i1vs, env0) =
+(
+  list_xats2js_fnp(i1vs, env0, i1vardcl_xats2js))
+//
+(* ****** ****** *)
+//
+#implfun
+i1fundclist_xats2js
+  (i1vs, env0) =
+(
+  list_xats2js_fnp(i1vs, env0, i1fundcl_xats2js))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1dclistopt_xats2js
   (dopt, env0) =
 (
-  optn_xats2js_fnp(dopt, env0, xats2js_i1dclist))
+  optn_xats2js_fnp(dopt, env0, i1dclist_xats2js))
 //
 (* ****** ****** *)
 (* ****** ****** *)
