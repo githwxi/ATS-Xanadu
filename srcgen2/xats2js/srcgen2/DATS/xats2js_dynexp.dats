@@ -104,6 +104,64 @@ i1val_fprint(ival, filr))//endfun
 (* ****** ****** *)
 //
 #implfun
+fjarg_xats2js
+(farg, env0) =
+let
+(*
+//
+val () =
+prerrsln("\
+fjarg_xats2js: farg = ", farg))
+//
+*)
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+in//let
+//
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+fjargfpr(env0, farg); fprintln(filr)
+//
+end where
+{
+//
+fun
+fjargfpr
+( env0:
+! envx2js
+, farg: fjarg): void =
+let
+//
+val filr =
+envx2js_filr$get(env0)
+#impltmp
+g_print$out<>() = filr
+//
+#impltmp
+g_print
+<i1bnd>
+( ibnd ) = i1bndfpr(filr, ibnd)
+//
+in//let
+//
+case+
+farg.node() of
+|
+FJARGdarg(i1bs) =>
+(
+  prints("FJARGdarg(", i1bs, ")"))
+end//let
+//
+}(*where*)//end-of-[fjarg_xats2js(farg,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i1let_xats2js
 (ilet, env0) =
 let
