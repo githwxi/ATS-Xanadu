@@ -56,6 +56,27 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../../../SATS/xbasics.sats"
+//
+#staload // SYM =
+"./../../../SATS/xsymbol.sats"
+//
+#staload // LOC =
+"./../../../SATS/locinfo.sats"
+//
+#staload // LEX =
+"./../../../SATS/lexing0.sats"
+//
+#staload // D2E =
+"./../../../SATS/dynexp2.sats"
+//
+#staload // XGL =
+"./../../../SATS/xglobal.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload ".\
 /../../../xats2cc\
 /srcgen1/SATS/intrep0.sats"//...
@@ -87,6 +108,26 @@ nindstrnfpr
 ,nind, strn) =
 (
 nindfpr(filr, nind);strnfpr(filr, strn))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d2varfpr
+(filr, dvar) =
+let
+//
+val
+name = dvar.name((*0*))
+//
+in//let
+(
+symbl_fprint
+(name, filr);
+strnfpr(filr, "_");
+fprint_loctn_as_stamp
+(filr, dvar.lctn((*void*))))
+end(*let*)//end-of-[d2varfpr(env0,dvar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

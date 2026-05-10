@@ -154,6 +154,24 @@ nindstrnfpr
 ,nind: sint, strn: strn): void
 //
 (* ****** ****** *)
+//
+fun
+tokenfpr
+(filr: FILR, tok0: token): void
+//
+(* ****** ****** *)
+//
+fun
+d2confpr
+(filr: FILR, dcon: d2con): void
+fun
+d2cstfpr
+(filr: FILR, dcst: d2cst): void
+fun
+d2varfpr
+(filr: FILR, dvar: d2var): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -202,6 +220,29 @@ i1cls_xats2js
 fun
 i1dcl_xats2js
 (dcl0: i1dcl, env0: !envx2js): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1letlst_xats2js
+(ilts: i1letlst, env0: !envx2js): void
+//
+fun
+i1cmplst_xats2js
+(cmps: i1cmplst, env0: !envx2js): void
+//
+(* ****** ****** *)
+//
+fun
+fjarglst_xats2js
+(fjas: fjarglst, env0: !envx2js): void
+//
+(* ****** ****** *)
+//
+fun
+i1clslst_xats2js
+(icls: i1clslst, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

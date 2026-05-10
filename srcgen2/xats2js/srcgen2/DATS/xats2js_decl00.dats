@@ -287,6 +287,90 @@ f0_fundclst(xats2js): dcl0 = ", dcl0)
 (* ****** ****** *)
 //
 #implfun
+i1fundcl_xats2js
+  (ifun, env0) = let
+//
+(* ****** ****** *)
+//
+val dvar =
+i1fundcl_dpid$get(ifun)
+val fjas =
+i1fundcl_farg$get(ifun)
+val tdxp =
+i1fundcl_tdxp$get(ifun)
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+in//let
+nindfpr(filr,nind);
+strnfpr(filr,"// ");
+d2varfpr(filr,dvar);fprintln(filr)
+end//let
+//
+(* ****** ****** *)
+//
+(*
+val (  ) = prerrsln
+("i1fundcl_xats2js: dvar = ", dvar)
+val (  ) = prerrsln
+("i1fundcl_xats2js: fjas = ", fjas)
+val (  ) = prerrsln
+("i1fundcl_xats2js: tdxp = ", tdxp)
+*)
+//
+(* ****** ****** *)
+//
+val (  ) = // enter
+(
+  envx2js_pshlam0(env0) )
+//
+val (  ) =
+(
+fjarglst_xats2js(fjas, env0))
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ( (*void*) )
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+val (  ) =
+(
+  i1cmp_xats2js(icmp, env0) )
+end // end-of-[let]
+) (*case+*) // end-of-( teqi1exp )
+//
+val (  ) = envx2js_poplam0(env0)//leave
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+in//let
+(
+nindstrnfpr(filr, nind, "// I1FUNDCL\n"))
+end//let
+//
+}(*where*)//end-of-[i1fundcl_xats2js(ifun,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
 i1tfndcl_xats2js
   (itfn, env0) = let
 //
@@ -302,7 +386,7 @@ in//let
 nindstrnfpr
 (filr, nind, "// I1TFNDCL: ");
 d2var_fprint(dvar, filr); fprintln(filr)
-end(*let*)//end-of-[xats2js_i1tfndcl(env0,itfn)]
+end(*let*)//end-of-[i1tfndcl_xats2js(itfn,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
