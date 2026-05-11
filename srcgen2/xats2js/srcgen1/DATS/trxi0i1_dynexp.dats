@@ -928,7 +928,8 @@ ipat.node() of
 (* ****** ****** *)
 //
 fun
-f0_nil(ipat: i0pat) =
+f0_nil
+(ipat: i0pat) =
 let
 val
 itnm = i1tnm_new0()
