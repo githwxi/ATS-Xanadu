@@ -189,6 +189,21 @@ i1env_tbox = i1env
 in//local
 //
 #implfun
+i1env_make
+  ( enum ) = I1ENV(enum)
+//
+(* ****** ****** *)
+//
+#implfun
+i1env_enum$get
+  ( ienv ) =
+let
+val+
+I1ENV(enum) = ienv in enum end
+//
+(* ****** ****** *)
+//
+#implfun
 i1env_fprint
 (ienv, out0) =
 let
@@ -216,6 +231,23 @@ i1opr_tbox = i1opr
 //
 in//local
 //
+(* ****** ****** *)
+//
+#implfun
+i1opr_make
+  ( opnm ) = I1OPR(opnm)
+//
+(* ****** ****** *)
+//
+#implfun
+i1opr_name$get
+  ( iopr ) =
+let
+val+
+I1OPR(opnm) = iopr in opnm end
+//
+(* ****** ****** *)
+//
 #implfun
 i1opr_fprint
 (iopr, out0) =
@@ -224,10 +256,10 @@ let
 #impltmp
 g_print$out<>() = out0
 //
-val+I1OPR(name) = iopr
+val+I1OPR(opnm) = iopr
 //
 in//let
-  prints("I1OPR(", name, ")") endlet
+  prints("I1OPR(", opnm, ")") endlet
 //
 end(*local*)//end-of-[local(i1opr_tbox)]
 //
