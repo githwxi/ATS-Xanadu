@@ -1,19 +1,20 @@
-############################################################
-############################################################
+##################################################################
+##################################################################
+ATS3/Xanadu:
 A Programming Language System to
 Unleash the Potentials of Types and Templates!
-############################################################
+##################################################################
 This project attempts to implement ATS3 in ATS3 and then
 implement ATS3-extensions for meta-programming and beyond.
-############################################################
-############################################################
+##################################################################
+##################################################################
 
 HX-2022-06-16:
 For the time being, ATS3-Xanadu/srcgen1/xats2js
 (from ATS3 to JavaScript) is employed for compiling
 the implementation.
 
-############################################################
+##################################################################
 
 HX-2024-02-06:
 Trying to use Mac for ATS3/Xanadu development!
@@ -23,7 +24,7 @@ I did not go very far in terms of using Mac as my
 Linux machine was fixed quickly.
 )
 
-############################################################
+##################################################################
 //
 (*
 Sat Mar 29 12:50:35 PM EDT 2025
@@ -51,7 +52,7 @@ As the current design is primarily "forced" due to the need for
 bootstrapping, I intend to re-implement the prelude-loading part
 of ATS3 so as to better accommodate programming for general-purpose.
 //
-############################################################
+##################################################################
 //
 (*
 Wed Apr  9 01:11:53 PM EDT 2025
@@ -60,30 +61,31 @@ HX-2025-04-09:
 There are 3 Makefiles:
 //
 Makefile_xatsopt:
-type-checking with the srcgen1-xatsopt
-//
-Makefile_xats2js:
-compiling to JS with the srcgen1-xats2js;
-the library code generated is lib1xatopt
-(where lib1 refers to srcgen1)
-//
-Makefile_xjsemit:
-compiling to JS with the srcgen2-xjsemit
-the library code generated is lib2xatopt
-(where lib2 refers to srcgen2)
+type-checking with srcgen1-xatsopt
 //
 (
 Makefile_xtcheck:
 This one is not present.
-If added, it does type-checking with srcgen2-xtcheck.
+If added, it does type-checking with
+srcgen2-xtcheck.
 )
+//
+Makefile_xats2js:
+compiling to JS with srcgen1-xats2js;
+the library code generated is lib1xatopt
+(where lib1 refers to srcgen1)
+//
+Makefile_xjsemit:
+compiling to JS with srcgen2-xjsemit;
+the library code generated is lib2xatopt
+(where lib2 refers to srcgen2)
 //
 HX-2026-02-27:
 There is one more added:
 Makefile_xpyemit:
-compiling to PY with the srcgen2-xpyemit
-the library code generated is lib2xatopt
-(where lib2 refers to srcgen2)
+compiling to PY with srcgen2-xpyemit;
+the library code generated is lib2xatopt (where lib2
+refers to srcgen2)
 //
-############################################################
-############################################################
+##################################################################
+##################################################################
