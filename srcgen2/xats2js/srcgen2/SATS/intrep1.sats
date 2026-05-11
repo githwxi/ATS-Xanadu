@@ -196,12 +196,19 @@ i1lab_fprint
 (* ****** ****** *)
 //
 fun
-i1tnm_stmp$get:(i1tnm)->stamp
+i1env_enum$get(i1env): sint
+fun
+i1opr_name$get(i1opr): sym_t
+fun
+i1tnm_stmp$get(i1tnm): stamp
 //
 (* ****** ****** *)
 //
 fun
-i1opr_make(name:sym_t): i1opr
+i1env_make(num: sint): i1env
+//
+fun
+i1opr_make(nam: sym_t): i1opr
 //
 fun
 i1tnm_new0( (*void*) ): i1tnm
