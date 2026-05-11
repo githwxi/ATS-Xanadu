@@ -257,10 +257,14 @@ i1insfpr
 case+ iins of
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I1INSdapp _ =>
 (
 f0_dapp(env0, iins))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |I1INStimp _ =>
 (
@@ -273,6 +277,7 @@ nindfpr
 )
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I1INSlet0 _ =>
 (
@@ -284,6 +289,7 @@ nindfpr
 (filr, "// I1INSlet0-end");
 )
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1INSift0 _ =>
@@ -381,12 +387,14 @@ nindfpr
 )
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |
 _(* otherwise *) =>
 (
   i1ins_fprint(iins(*rest*), filr))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 )(*case+*)//end-of-[i1insfpr(env0,iins)]
@@ -395,6 +403,8 @@ _(* otherwise *) =>
 //
 where
 {
+//
+(* ****** ****** *)
 //
 fun
 f0_dapp
@@ -410,6 +420,7 @@ in//let
 //
 prints
 ("I1INSdapp(",i1f0,";",i1vs,")")
+//
 end//let//end-of-[f0_dapp(env0,iins)]
 //
 (* ****** ****** *)

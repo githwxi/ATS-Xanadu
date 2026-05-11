@@ -176,12 +176,47 @@ i1insfpr
 case+ iins of
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSdapp _ =>
+(
+f0_dapp(env0, iins))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSift0 _ =>
+(
+//
+f0_ift0(env0, iins);
+//
+nindfpr
+(filr, nind); strnfpr
+(filr, "// I1INSift0-end");
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSrturn _ =>
+(
+//
+f0_rturn(env0, iins);
+//
+nindfpr
+(filr, nind); strnfpr
+(filr, "// I1INSrturn-end");
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |
 _(* otherwise *) =>
 (
   i1ins_fprint(iins(*rest*), filr))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 )(*case+*)//end-of-[i1insfpr(env0,iins)]
@@ -190,6 +225,102 @@ _(* otherwise *) =>
 //
 where
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( env0:
+! envx2js
+, iins: i1ins): void =
+let
+//
+val-
+I1INSdapp
+(i1f0, i1vs) = iins
+in//let
+//
+prints
+("I1INSdapp(",i1f0,";",i1vs,")")
+//
+end//let//end-of-[f0_dapp(env0,iins)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_ift0
+( env0:
+! envx2js
+, iins: i1ins): void =
+let
+//
+val-
+I1INSift0
+( test
+, ithn, iels) = iins
+//
+#impltmp
+g_print$out<>() = filr
+//
+val () =
+(
+prints
+("I1INSift0(",test,";");
+prints("...",";","...",")\n"))
+//
+val () =
+envx2js_incnind(env0, 2)
+val () =
+(
+case+ ithn of
+|
+optn_nil() => ()
+|
+optn_cons(icmp) =>
+i1cmp_xats2js(icmp, env0))//case
+val () = envx2js_decnind(env0, 2)
+//
+val () =
+envx2js_incnind(env0, 2)
+val () =
+(
+case+ iels of
+|
+optn_nil() => ()
+|
+optn_cons(icmp) =>
+i1cmp_xats2js(icmp, env0))//case
+val () = envx2js_decnind(env0, 2)
+//
+end//let//end-of-[f0_ift0(env0,iins)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_rturn
+( env0:
+! envx2js
+, iins: i1ins): void =
+let
+//
+val-
+I1INSrturn
+(ical, icmp) = iins
+in//let
+//
+prints
+("I1INSrturn(",ical,")\n");
+(
+  i1cmp_xats2js(icmp, env0))
+//
+end//let//end-of-[f0_rturn(env0,iins)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 }(*where*)//end-of-[i1insfpr(env0,iins)]
 //
 }(*where*)//end-of-[xats2js_i1ins(iins,env0)]
