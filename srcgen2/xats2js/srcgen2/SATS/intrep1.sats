@@ -102,8 +102,8 @@ i1lab_fprint
 //
 (*
 #abstype i1arg_tbox // p0tr
-#abstype i1env_tbox // p0tr
 *)
+#abstype i1env_tbox // p0tr
 #abstype i1opr_tbox // p0tr
 #abstype i1tnm_tbox // p0tr
 //
@@ -111,8 +111,8 @@ i1lab_fprint
 //
 (*
 #typedef i1arg = i1arg_tbox
-#typedef i1env = i1env_tbox
 *)
+#typedef i1env = i1env_tbox
 #typedef i1opr = i1opr_tbox
 #typedef i1tnm = i1tnm_tbox
 //
@@ -160,11 +160,6 @@ i1lab_fprint
 #typedef d2sub = (d2var,i1val)
 (* ****** ****** *)
 (* ****** ****** *)
-//
-(*
-#typedef i1arglst = list(i1arg)
-#typedef i1envlst = list(i1env)
-*)
 //
 #typedef i1tnmlst = list(i1tnm)
 //
@@ -216,12 +211,14 @@ i1tnm_new0( (*void*) ): i1tnm
 (*
 fun
 i1arg_fprint(i1arg, FILR): void
-fun
-i1env_fprint(i1env, FILR): void
 *)
 //
 fun
+i1env_fprint(i1env, FILR): void
+//
+fun
 i1opr_fprint(i1opr, FILR): void
+//
 fun
 i1tnm_fprint(i1tnm, FILR): void
 //
@@ -387,16 +384,22 @@ i1val_node =
 |I1Vtop of (sym_t)
 //
 (* ****** ****** *)
+//
 (*
 |I1Varg of (i1arg)
-|I1Venv of (i1env)
 *)
+|I1Venv of (i1env)
+//
 (* ****** ****** *)
+//
 |I1Vtnm of (i1tnm)
+//
 (* ****** ****** *)
+//
 |I1Vcon of (d2con)
 |I1Vcst of (d2cst)
 |I1Vvar of (d2var)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 |I1Vaddr of (i1val(*addr*))

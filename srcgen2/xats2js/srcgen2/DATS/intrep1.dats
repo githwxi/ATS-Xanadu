@@ -181,6 +181,34 @@ endloc // end-of-[the_i1tnm_stamp_new()]
 local
 //
 datatype
+i1env =
+I1ENV of (sint)
+#absimpl
+i1env_tbox = i1env
+//
+in//local
+//
+#implfun
+i1env_fprint
+(ienv, out0) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+val+I1ENV(enum) = ienv
+//
+in//let
+  prints("I1ENV(", enum, ")") endlet
+//
+end(*local*)//end-of-[local(i1env_tbox)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
 i1opr =
 I1OPR of (symbl)
 #absimpl

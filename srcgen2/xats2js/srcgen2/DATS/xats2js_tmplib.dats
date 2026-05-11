@@ -87,6 +87,18 @@ i1lab_fprint(ilab, g_print$out<>())
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+#impltmp
+g_print
+<i1arg>(ienv) =
+i1arg_fprint(iarg, g_print$out<>())
+*)
+//
+#impltmp
+g_print
+<i1env>(ienv) =
+i1env_fprint(ienv, g_print$out<>())
+//
 #impltmp
 g_print
 <i1opr>(iopr) =
