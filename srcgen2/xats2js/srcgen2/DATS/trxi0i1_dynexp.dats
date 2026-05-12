@@ -1455,6 +1455,10 @@ iexp.node() of
 //
 (* ****** ****** *)
 //
+|I0Etimp _ => f0_timp(iexp, env0)
+//
+(* ****** ****** *)
+//
 |I0Etapp _ => f0_tapp(iexp, env0)
 |I0Etapq _ => f0_tapq(iexp, env0)
 //
@@ -1726,6 +1730,42 @@ prerrsln("f0_var(01): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_var(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_timp
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Etimp
+(i0e1, timp) = iexp.node()
+//
+val
+timp =
+(
+  t0imp_trxi0i1(timp, env0))
+//
+in//let
+(
+i1val_timp(env0,loc0,i0e1,timp))
+end where
+{
+//
+(*
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrsln("f0_timp(01): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_timp(env0,iexp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2040,6 +2080,68 @@ fjarg
 val
 i1bs = i0patlst_trxi0i1(i0ps, env0)} end
 }(*where+*)//end-[fiarglst_trxi0i1(fias,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+t0imp_trxi0i1
+(timp, env0) =
+let
+//
+val stmp =
+t0imp_stmp$get(timp)
+val node =
+t0imp_node$get(timp)
+//
+in//let
+//
+(
+t1imp_make_node(stmp, node)
+) where
+{
+//
+val node =
+(
+case+ node of
+|T0IMPall1
+(dcst
+,t2js, dcls) =>
+(
+case+ dcls of
+|optn_nil() =>
+(
+T1IMPall1(dcst, t2js, optn_nil()))
+|optn_cons(dcl1) =>
+(
+T1IMPall1(dcst, t2js,
+optn_cons(i0dcl_trxi0i1(dcl1, env0))))
+)
+//
+|T0IMPallx
+(dcst
+,t2js, dcls) =>
+(
+case+ dcls of
+//
+|optn_nil() =>
+(
+T1IMPallx(dcst, t2js, optn_nil()))
+//
+(*
+HX-202-01-30:
+ONLY the first one is chosen!
+*)
+|optn_cons(dcl1) =>
+(
+T1IMPallx(
+dcst, t2js,
+optn_cons(i0dcl_trxi0i1(dcl1, env0)))))
+) : t1imp_node // end-of-[  val(node)  ]
+//
+}(*where*)//end(t1imp_make_node(stmp,node))
+//
+end(*let*)//end-of-[t0imp_trxi0i1(timp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

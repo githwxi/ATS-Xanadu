@@ -134,6 +134,10 @@ end//let//end(I0Dd3ecl)
 //
 (* ****** ****** *)
 //
+|I0Ddclenv _ =>
+(
+  f0_dclenv(dcl0, env0))
+//
 |I0Dtmpsub _ =>
 (
   f0_tmpsub(dcl0, env0))
@@ -281,6 +285,29 @@ in//let
 (
   i1dcl(loc0, I1Dlocal0(head, body)))
 end(*let*)//end of [f0_local0(d3cl,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dclenv
+(
+dcl0: i0dcl,
+env0: !envi0i1): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*0*))
+val-
+I0Ddclenv
+(dcl1, i0ws) = dcl0.node()
+val
+dcl1 = i0dcl_trxi0i1(dcl1, env0)
+//
+in//let
+(
+  i1dcl(loc0, I1Ddclenv(dcl1, i0ws)))
+end(*let*)//end of [f0_dclenv(d3cl,env0)]
 //
 (* ****** ****** *)
 //

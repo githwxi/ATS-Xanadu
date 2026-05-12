@@ -504,6 +504,39 @@ end(*let*)//end-of-[fjarg_fprint(farg,out0)]
 (* ****** ****** *)
 //
 #implfun
+t1imp_fprint
+(timp, out0) =
+let
+#implfun
+g_print$out<>() = out0
+in//let
+case+
+timp.node() of
+//
+(*
+|T1IMPone1
+(   dcl1   ) =>
+prints("T1IMPone1(", dcl1 ,")")
+*)
+//
+|T1IMPall1
+(d2c1
+,t2js, dopt) =>
+prints
+("T1IMPall1(",d2c1,";",t2js,";",dopt,")")
+//
+|T1IMPallx
+(d2c1
+,t2js, dopt) =>
+prints
+("T1IMPallx(",d2c1,";",t2js,";",dopt,")")
+//
+end(*let*)//end-of-[t1imp_fprint(timp,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i1dcl_fprint
 (dcl0, out0) =
 let
@@ -545,6 +578,11 @@ prints
 ("I1Dlocal0(", head, ";", body, ")")
 //
 (* ****** ****** *)
+//
+|I1Ddclenv
+(idcl, i0ws) =>
+prints
+("I1Ddclenv(", idcl, ";", i0ws, ")")
 //
 |I1Dtmpsub
 (svts, idcl) =>

@@ -695,7 +695,7 @@ timp.node() of
 //
 (*
 |T1IMPone1
-(  dcl1  ) =>
+(   dcl1   ) =>
 prints("T1IMPone1(", dcl1 ,")")
 *)
 //

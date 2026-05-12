@@ -3251,6 +3251,61 @@ val (  ) =
 (* ****** ****** *)
 //
 #implfun
+trxi0i1_fiarglst
+( env0, fias ) =
+(
+case+ fias of
+|
+list_nil
+( (*0*) ) =>
+list_nil((*void*))
+|
+list_cons
+(fia1, fias) =>
+(
+case+
+fia1.node() of
+|
+FIARGdarg _ =>
+list_cons(fja1, fjas) where
+{
+//
+val
+fja1 = f0_dapp(env0, fia1)
+val
+fjas =
+trxi0i1_fiarglst(env0, fias)
+//
+}(*where*)//end-[FIARGdapp(...)]
+)
+) where // end-of-[case+of(fia1)]
+{
+//
+fun
+f0_dapp
+( env0:
+! envi0i1
+, fia1: fiarg): fjarg =
+let
+//
+val loc0 = fia1.lctn()
+//
+val-
+FIARGdarg(i0ps) = fia1.node()
+//
+in//let
+(
+fjarg
+(loc0, FJARGdarg(i1bs))) where
+{
+val
+i1bs = trxi0i1_i0patlst(env0, i0ps)} end
+}(*where+*)//end-[trxi0i1_fiarglst(env0,fias)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 trxi0i1_t0imp
 ( env0, timp ) =
 let
@@ -3308,61 +3363,6 @@ optn_cons(trxi0i1_i0dcl(env0, dcl1)))))
 }(*where*)//end(t1imp_make_node(stmp,node))
 //
 end(*let*)//end-of-[trxi0i1_t0imp(env0,timp)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-trxi0i1_fiarglst
-( env0, fias ) =
-(
-case+ fias of
-|
-list_nil
-( (*0*) ) =>
-list_nil((*void*))
-|
-list_cons
-(fia1, fias) =>
-(
-case+
-fia1.node() of
-|
-FIARGdarg _ =>
-list_cons(fja1, fjas) where
-{
-//
-val
-fja1 = f0_dapp(env0, fia1)
-val
-fjas =
-trxi0i1_fiarglst(env0, fias)
-//
-}(*where*)//end-[FIARGdapp(...)]
-)
-) where // end-of-[case+of(fia1)]
-{
-//
-fun
-f0_dapp
-( env0:
-! envi0i1
-, fia1: fiarg): fjarg =
-let
-//
-val loc0 = fia1.lctn()
-//
-val-
-FIARGdarg(i0ps) = fia1.node()
-//
-in//let
-(
-fjarg
-(loc0, FJARGdarg(i1bs))) where
-{
-val
-i1bs = trxi0i1_i0patlst(env0, i0ps)} end
-}(*where+*)//end-[trxi0i1_fiarglst(env0,fias)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

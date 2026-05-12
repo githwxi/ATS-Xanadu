@@ -132,6 +132,13 @@ dcl0.node() of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I1Ddclenv _ =>
+(
+  f0_dclenv(dcl0, env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |I1Dvaldclst _ =>
 (
   f0_valdclst(dcl0, env0))
@@ -168,6 +175,37 @@ end//let
 //
 end where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_dclenv
+(
+dcl0: i1dcl,
+env0: !envx2js): void =
+let
+//
+val-
+I1Ddclenv
+(dcl1, i0ws) = dcl0.node()
+//
+val (  ) =
+(
+  i1dcl_xats2js(dcl1, env0))
+//
+end where // end-of-[let]
+{
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrsln("\
+f0_dclenv(xats2js): dcl0 = ", dcl0)
+*)
+//
+}(*where*)//end-of-[f0_dclenv(dcl0,env0)]
 //
 (* ****** ****** *)
 //
@@ -301,20 +339,6 @@ i1fundcl_tdxp$get(ifun)
 //
 (* ****** ****** *)
 //
-val (  ) =
-let
-val filr =
-envx2js_filr$get(env0)
-val nind =
-envx2js_nind$get(env0)
-in//let
-nindfpr(filr,nind);
-strnfpr(filr,"// ");
-d2varfpr(filr,dvar);fprintln(filr)
-end//let
-//
-(* ****** ****** *)
-//
 (*
 val (  ) = prerrsln
 ("i1fundcl_xats2js: dvar = ", dvar)
@@ -323,6 +347,22 @@ val (  ) = prerrsln
 val (  ) = prerrsln
 ("i1fundcl_xats2js: tdxp = ", tdxp)
 *)
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+in//let
+(
+nindfpr(filr,nind);
+strnfpr(filr,"// ");
+d2varfpr//HX:name+offset
+(filr,dvar);strnfpr(filr,"(...)\n"))
+end//let
 //
 (* ****** ****** *)
 //
@@ -361,9 +401,14 @@ val filr =
 envx2js_filr$get(env0)
 val nind =
 envx2js_nind$get(env0)
+//
+val dvar =
+i1fundcl_dpid$get(ifun)
+//
 in//let
-(
-nindstrnfpr(filr, nind, "// I1FUNDCL\n"))
+nindstrnfpr
+(filr, nind, "// I1FUNDCL: ");
+d2var_fprint(dvar, filr); fprintln(filr)
 end//let
 //
 }(*where*)//end-of-[i1fundcl_xats2js(ifun,env0)]

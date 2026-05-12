@@ -255,6 +255,14 @@ fiarg_trxi0i1
 (farg: fiarg, env0: !envi0i1): fjarg
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+t0imp_trxi0i1
+(timp: t0imp, env0: !envi0i1): t1imp
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 i0dcl_trxi0i1
