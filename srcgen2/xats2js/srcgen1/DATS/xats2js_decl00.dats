@@ -957,6 +957,7 @@ xats2js_i1fundcl
 //
 val dvar =
 i1fundcl_dpid$get(ifun)
+//
 val fjas =
 i1fundcl_farg$get(ifun)
 val tdxp =
@@ -966,14 +967,19 @@ i1fundcl_tdxp$get(ifun)
 //
 val (  ) =
 let
+//
 val filr =
-envx2js_filr$get(env0)
+(
+envx2js_filr$get(env0))
 val nind =
-envx2js_nind$get(env0)
+(
+envx2js_nind$get(env0))
+//
 in//let
+(
 nindfpr(filr,nind);
 strnfpr(filr,"// ");
-d2varfpr(filr,dvar);fprintln(filr)
+d2varfpr(filr,dvar);fprintln(filr))
 end//let
 //
 (* ****** ****** *)
@@ -1020,13 +1026,23 @@ end where
 //
 val (  ) =
 let
+//
 val filr =
-envx2js_filr$get(env0)
+(
+envx2js_filr$get(env0))
 val nind =
-envx2js_nind$get(env0)
+(
+envx2js_nind$get(env0))
+//
+val dvar =
+(
+i1fundcl_dpid$get(ifun))
+//
 in//let
 (
-nindstrnfpr(filr, nind, "// I1FUNDCL\n"))
+nindstrnfpr
+(filr, nind, "// I1FUNDCL: ");
+d2var_fprint(dvar, filr); fprintln(filr))
 end//let
 //
 }(*where*)//end-of-[xats2js_i1fundcl(env0,ifun)]
@@ -1037,18 +1053,21 @@ end//let
 xats2js_i1tfndcl
   (env0, itfn) = let
 //
-val filr =
-envx2js_filr$get(env0)
-val nind =
-envx2js_nind$get(env0)
-//
 val dvar =
 i1fundcl_dpid$get(itfn)
 //
+val filr =
+(
+  envx2js_filr$get(env0))
+val nind =
+(
+  envx2js_nind$get(env0))
+//
 in//let
+(
 nindstrnfpr
 (filr, nind, "// I1TFNDCL: ");
-d2var_fprint(dvar, filr); fprintln(filr)
+d2var_fprint(dvar, filr); fprintln(filr))
 end(*let*)//end-of-[xats2js_i1tfndcl(env0,itfn)]
 //
 (* ****** ****** *)

@@ -571,10 +571,12 @@ fjarg_node$get(fjarg): fjarg_node
 #symload lctn with fjarg_lctn$get
 #symload node with fjarg_node$get
 (* ****** ****** *)
+//
 fun
 fjarg_make_node
 (loc:loc_t, nod:fjarg_node):fjarg
 #symload fjarg with fjarg_make_node
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -655,6 +657,56 @@ i1cls_make_node
 (* ****** ****** *)
 //
 datatype
+t1imp_node =
+|T1IMPall1 of
+(d2cst, t2jaglst, i1dclopt)
+|T1IMPallx of
+(d2cst, t2jaglst, i1dclopt)
+//
+(* ****** ****** *)
+//
+fun
+t1imp_i1cmpq(t1imp): i1cmpopt
+//
+fun
+t1imp_i1dclq(t1imp): i1dclopt
+//
+(* ****** ****** *)
+//
+fun
+t1imp_fprint
+(timp:t1imp, out0:FILR):(void)
+//
+(* ****** ****** *)
+//
+fun
+t1imp_dcst$get
+(timp: t1imp): (d2cst)
+//
+#symload dcst with t1imp_dcst$get
+//
+fun
+t1imp_stmp$get
+(timp: t1imp): (stamp)
+fun
+t1imp_node$get
+(timp: t1imp): t1imp_node
+//
+#symload stmp with t1imp_stmp$get
+#symload node with t1imp_node$get
+//
+(* ****** ****** *)
+//
+fun
+t1imp_make_node
+(stm:stamp,nod:t1imp_node): t1imp
+//
+#symload t1imp with t1imp_make_node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
 teqi1cmp =
 |
 TEQI1CMPnone of ((*void*))
@@ -687,6 +739,9 @@ I1Dlocal0 of
 ,i1dclist(*local-body*))
 //
 (* ****** ****** *)
+//
+|I1Ddclenv of
+(i1dcl, i0varlst(*env*))
 //
 |I1Dtmpsub of
 (s2vts(*tmpsub*), i1dcl)

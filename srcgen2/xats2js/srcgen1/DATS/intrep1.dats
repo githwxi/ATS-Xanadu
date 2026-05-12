@@ -281,8 +281,9 @@ case+ node of
 (dcst, t2js, dcls) => dcst
 |T1IMPallx
 (dcst, t2js, dcls) => dcst)
-where{
- val node = t1imp_node$get(timp)
+where
+{
+  val node = t1imp_node$get(timp)
 }(*where*)//endof(t1imp_dcst$get(timp))
 //
 (* ****** ****** *)
