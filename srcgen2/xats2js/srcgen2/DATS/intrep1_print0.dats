@@ -198,22 +198,26 @@ prints("I1Vcst(",dcst,")")
 //
 (* ****** ****** *)
 //
-|I1Vvar(dvar) =>
-prints("I1Vvar(",dvar,")")
+|
+I1Vfid(dvar) =>
+prints("I1Vfid(",dvar,")")
 (*
-|I1Vvar(dvar) =>
+|
+I1Vfid(dvar) =>
 let
 val name = dvar.name()
 in//end
-prints("I1Vvar(",name,")")
-end//let//end-[I1Vvar(dvar)]
+prints("I1Vfid(",name,")")
+end//let//end-[I1Vfid(dvar)]
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-|I1Vaexp(iexp) =>
+|
+I1Vaexp(iexp) =>
 prints("I1Vaexp(", iexp, ")")
-|I1Vaddr(ival) =>
+|
+I1Vaddr(ival) =>
 prints("I1Vaddr(", ival, ")")
 (* ****** ****** *)
 (* ****** ****** *)

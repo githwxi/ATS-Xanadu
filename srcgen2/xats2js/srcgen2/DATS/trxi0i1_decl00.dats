@@ -493,11 +493,16 @@ case+ i0fs of
 list_nil() => ((*0*))
 |
 list_cons(i0f1, i0fs) =>
-mydvsins(env0, i0fs) where
+(
+  mydvsins(env0, i0fs)) where
 {
-val d2v1 = i0fundcl_dpid$get(i0f1)
-val (  ) = envi0i1_d2vins_self(env0, d2v1)
-}
+val d2v1 =
+(
+  i0fundcl_dpid$get(i0f1))
+val (  ) =
+(
+  envi0i1_d2vins_self(env0, d2v1))
+}(*where*)//end-of-[list_cons(i0f1,i0fs)]
 )
 //
 (*
@@ -719,7 +724,7 @@ val (  ) =
 envi0i1_exnm$insert
   (env0, i1f0) where
 {
-val i1f0 = i1val_var(dvar)
+val i1f0 = i1val_fid(dvar)
 }(*where*)//end-of-[val()]
 //
 val fjas =

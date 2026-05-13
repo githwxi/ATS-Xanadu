@@ -168,10 +168,15 @@ envi0i1_locjoin
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-05-13:
+Needed for [I0Eextnam]
+*)
 fun
 envi0i1_exnm$search
 ( env0:
 ! envi0i1, loc0: loc_t): i1val
+//
 fun
 envi0i1_exnm$insert
 ( env0: 
