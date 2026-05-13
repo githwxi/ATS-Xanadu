@@ -405,7 +405,10 @@ i1val_node =
 //
 |I1Vcon of (d2con)
 |I1Vcst of (d2cst)
-|I1Vvar of (d2var)
+//
+(* ****** ****** *)
+//
+|I1Vfid of (d2var)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -501,8 +504,10 @@ i1val_con(dcon: d2con): ( i1val )
 fun
 i1val_cst(dcst: d2cst): ( i1val )
 //
+(* ****** ****** *)
+//
 fun
-i1val_var(dvar: d2var): ( i1val )
+i1val_fid(dvar: d2var): ( i1val )
 //
 (* ****** ****** *)
 //
@@ -516,7 +521,7 @@ fun
 i1val_cfnq(ival: i1val): ( bool )
 //
 fun
-i1val_varq(ival: i1val): ( bool )
+i1val_fidq(ival: i1val): ( bool )
 //
 (* ****** ****** *)
 //

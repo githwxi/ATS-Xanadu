@@ -68,15 +68,20 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#typedef
+i0env = ( i0varlst )
+//
 #typedef
 iltlst = list(i1let)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef
-d2vtop = (*$MAP*)topmap( i1val )
+d2vtop = (*$MAP*)topmap(i1val)
 #vwtpdef
-d2vstk = (*$MAP*)stkmap( i1val )
+d2vstk = (*$MAP*)stkmap(i1val)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -93,7 +98,6 @@ d2vstk = (*$MAP*)stkmap( i1val )
 local
 //
 (* ****** ****** *)
-//
 datavwtp
 iltstk =
 //
@@ -110,6 +114,8 @@ iltstk =
 *)
 //
 |iltstk_cons of (i1let, iltstk)
+//
+|iltstk_ienv of (i0env, iltstk)
 //
 (* ****** ****** *)
 #absimpl iltstk_vtbx = (iltstk)
@@ -188,6 +194,12 @@ iltstk_cons
 (ilet, stk1) =>
 print1s("\
 iltstk_cons(", ilet, ";", stk1, ")")
+//
+|
+iltstk_ienv
+(ienv, stk1) =>
+print1s("\
+iltstk_ienv(", ienv, ";", stk1, ")")
 //
 end(*let*)//end-of-[iltstk_fprint1(...)]
 //
@@ -292,6 +304,11 @@ let
 val () = err:=1 in (kxs,res) end
 *)
 //
+| !
+iltstk_ienv _ =>
+let
+val () = err:=1 in (kxs,res) end
+//
 )(*case+*)//end-[loop(kxs,res,err)]
 //
 in//let
@@ -363,6 +380,11 @@ let
 val () = err:=1 in (kxs,res) end
 *)
 //
+| !
+iltstk_ienv _ =>
+let
+val () = err:=1 in (kxs,res) end
+//
 )(*case+*)//end-[loop(kxs,res,err)]
 //
 in//let
@@ -433,6 +455,11 @@ iltstk_cas0 _ =>
 let
 val () = err:=1 in (kxs,res) end
 *)
+//
+| !
+iltstk_ienv _ =>
+let
+val () = err:=1 in (kxs,res) end
 //
 )(*case+*)//end-[loop(kxs,res,err)]
 //
@@ -679,6 +706,12 @@ end(*let*)//end-of-(envi0i1_locjoin(env0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-05-13:
+Needed for [I0Eextnam]
+Wed May 13 02:42:19 PM EDT 2026
+*)
+//
 #implfun
 envi0i1_exnm$search
   (env0, loc0) = let
@@ -845,7 +878,7 @@ endloc(*local*)//end-of-[local(envi0i1...)]
 envi0i1_d2vins_self
   (env0, d2v0) =
 let
-val ival = i1val_var(d2v0)
+val ival = i1val_fid(d2v0)
 in//let
 (
   envi0i1_dvar$insert(env0, d2v0, ival))

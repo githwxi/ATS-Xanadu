@@ -72,9 +72,9 @@ iltlst = list(i1let)
 (* ****** ****** *)
 //
 #typedef
-d2vtop = (*$MAP*)topmap( i1val )
+d2vtop = (*$MAP*)topmap(i1val)
 #vwtpdef
-d2vstk = (*$MAP*)stkmap( i1val )
+d2vstk = (*$MAP*)stkmap(i1val)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -769,6 +769,13 @@ end(*let*)//end-of-(envi0i1_locjoin(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+//
+(*
+HX-2026-05-13:
+This is needed for (I0Eextnam)
+Wed May 13 02:42:19 PM EDT 2026
+*)
 //
 #implfun
 envi0i1_exnm$search

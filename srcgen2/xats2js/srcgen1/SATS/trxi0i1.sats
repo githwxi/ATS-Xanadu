@@ -197,10 +197,16 @@ envi0i1_locjoin(!envi0i1): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-05-13:
+This is needed for (I0Eextnam)
+Wed May 13 02:42:19 PM EDT 2026
+*)
 fun
 envi0i1_exnm$search
 ( env0:
 ! envi0i1, loc0: loc_t): i1val
+//
 fun
 envi0i1_exnm$insert
 ( env0: 
