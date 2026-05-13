@@ -1484,6 +1484,11 @@ iexp.node() of
 |I0Et2ped _ => f0_t2ped(iexp, env0)
 //
 (* ****** ****** *)
+//
+|
+I0Eextnam _ => f0_extnam(iexp, env0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 | _(*otherwise*) => i1val_none1(iexp)
 (* ****** ****** *)
@@ -1765,7 +1770,7 @@ prerr("trxi0i1_i0exp:");
 prerrsln("f0_timp(01): iexp = ", iexp))
 *)
 //
-}(*where*)//end-of-[f0_timp(env0,iexp)]
+}(*where*)//end-of-[f0_timp(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1983,6 +1988,31 @@ i0exp_trxi0i1(i0e1, env0)
 val-
 I0Et2ped(i0e1, t2p2) = iexp.node()
 }(*where*)//end-of-[f0_t2ped(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_extnam
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Eextnam
+(tknd, gnam) = iexp.node()
+//
+val i1nm =
+envi0i1_exnm$search(env0, loc0)
+//
+in//let
+(
+i1val_make_node
+(loc0, I1Vextnam(tknd, i1nm, gnam)))
+end(*let*)//end-of-[f0_extnam(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

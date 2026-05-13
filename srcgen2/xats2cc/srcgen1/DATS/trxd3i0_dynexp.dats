@@ -834,12 +834,35 @@ d3e0.node() of
   f0_t2ped(d3e0, env0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |
-_(*others*) =>
+D3Eextnam _ =>
 (
-  i0exp_none1(  d3e0  ))
+  f0_extnam(d3e0, env0))
 //
+|
+D3Esynext _ =>
+(
+  f0_synext(d3e0, env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Enone0 _ =>
+(
+  i0exp_none0(d3e0.lctn()))
+//
+|D3Enone1 _ => i0exp_none1(d3e0)
+|D3Enone2 _ => i0exp_none1(d3e0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|
+_(*otherwise*) => i0exp_none1(d3e0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end where

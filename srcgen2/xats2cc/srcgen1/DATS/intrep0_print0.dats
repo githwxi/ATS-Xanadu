@@ -54,14 +54,19 @@ XATSOPT "./../../.."
 #include
 "./../HATS/mytmplib00.hats"
 (* ****** ****** *)
+//
 #staload
 "./../../../SATS/staexp1.sats"
+#staload
+"./../../../SATS/dynexp1.sats"
+//
 #staload
 "./../../../SATS/staexp2.sats"
 #staload
 "./../../../SATS/dynexp2.sats"
 #staload
 "./../../../SATS/dynexp3.sats"
+//
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
@@ -613,7 +618,8 @@ loc0 = iexp.lctn() in//let
 (
 prints( "I0Enone0(", loc0, ")" )) end)
 //
-|I0Enone1(d3e1) =>
+|I0Enone1
+(   d3e1   ) =>
 (
 let
 val
@@ -622,7 +628,8 @@ loc0 = iexp.lctn() in//let
 prints
 ("I0Enone1(", loc0, ";", d3e1, ")")) end)
 //
-|I0Enone2(i0e1) =>
+|I0Enone2
+(   i0e1   ) =>
 (
 let
 val
@@ -631,6 +638,22 @@ loc0 = iexp.lctn() in//let
 prints
 ("I0Enone2(", loc0, ";", i0e1, ")")) end)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Eextnam
+(tknd, gnam) =>
+(
+prints("I0Eextnam(", tknd, ";", gnam, ")"))
+//
+(* ****** ****** *)
+//
+|I0Esynext
+(tknd, gexp) =>
+(
+prints("I0Esynext(", tknd, ";", gexp, ")"))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end(*let*)//end-of-[i0exp_fprint(iexp,out0)]
