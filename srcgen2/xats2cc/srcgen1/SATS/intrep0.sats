@@ -702,8 +702,16 @@ FV(i0exp) = i0varlst
 |I0Erturn of (i0cal, i0exp)//HX: call-ret
 //
 (* ****** ****** *)
+(* ****** ****** *)
 |I0Enone0 of ((*0*))
 |I0Enone1 of (d3exp) |I0Enone2 of (i0exp)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Eextnam of (token, g1nam)//HX: external
+|I0Esynext of (token, g1exp)//HX: external
+//
+(* ****** ****** *)
 (* ****** ****** *)
 (*
 |I0Eerrck of (int(*lvl*), i0exp)//HX:tread-error
