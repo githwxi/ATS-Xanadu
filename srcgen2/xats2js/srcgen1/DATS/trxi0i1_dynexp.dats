@@ -569,7 +569,7 @@ i1val_fix0
 , dvar: d2var
 , fjas: fjarglst
 , icmp: i1cmp
-  (*lam0-fbody*)): i1val =
+  (*fix0-fbody*)): i1val =
 (
 i1val_tnm(loc0, itnm)) where
 {
@@ -2152,11 +2152,12 @@ I0Eseqn
 //
 val () =
 (
-  feach(env0, i0es)) where
+  f1_i0es(env0, i0es))
+where
 {
 //
 fun
-feach
+f1_i0es
 ( env0:
 ! envi0i1
 , i0es: i0explst): void =
@@ -2169,8 +2170,8 @@ list_nil
 list_cons
 (i0e1, i0es) =>
 (
-  feach(env0, i0es)) where
-{
+  f1_i0es(env0, i0es))
+where{
   val _(*i1v1*) =
   trxi0i1_i0exp(env0, i0e1) }
 )

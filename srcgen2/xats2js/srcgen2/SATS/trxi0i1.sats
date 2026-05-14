@@ -114,10 +114,12 @@ iltstk_ilet$insert
 //
 (* ****** ****** *)
 //
+(*
 fun
 iltstk_ienv$insert
 (stk0:
 &iltstk >> _, ivs: i0env): void
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -214,14 +216,15 @@ envi0i1_ilet$insert
 //
 (* ****** ****** *)
 //
+(*
 fun
 envi0i1_ienv$search
 (  env0: !envi0i1  ) : i0env
-//
 fun
 envi0i1_ienv$insert
 ( env0:
 ! envi0i1, ienv: i0env): (void)
+*)
 //
 (* ****** ****** *)
 //

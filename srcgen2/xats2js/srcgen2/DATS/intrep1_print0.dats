@@ -222,6 +222,21 @@ prints("I1Vaddr(", ival, ")")
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I1Vfid0
+(d2v1, i1vs) =>
+(
+print("I1Vfid0(");
+prints(d2v1, ";", i1vs, ")"))
+//
+|I1Vfid1
+(d2v1, i1vs) =>
+(
+print("I1Vfid1(");
+prints(d2v1, ";", i1vs, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |I1Vp0rj
 (i1v1, idx2) =>
 (
