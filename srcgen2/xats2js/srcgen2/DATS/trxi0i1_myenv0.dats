@@ -111,7 +111,9 @@ iltstk =
 //
 |iltstk_cons of (i1let, iltstk)
 //
+(*
 |iltstk_ienv of (i0env, iltstk)
+*)
 //
 (* ****** ****** *)
 #absimpl iltstk_vtbx = (iltstk)
@@ -191,11 +193,13 @@ iltstk_cons
 print1s("\
 iltstk_cons(", ilet, ";", stk1, ")")
 //
+(*
 |
 iltstk_ienv
 (ienv, stk1) =>
 print1s("\
 iltstk_ienv(", ienv, ";", stk1, ")")
+*)
 //
 end(*let*)//end-of-[iltstk_fprint1(...)]
 //
@@ -300,10 +304,12 @@ let
 val () = err:=1 in (kxs,res) end
 *)
 //
+(*
 | !
 iltstk_ienv _ =>
 let
 val () = err:=1 in (kxs,res) end
+*)
 //
 )(*case+*)//end-[loop(kxs,res,err)]
 //
@@ -376,10 +382,12 @@ let
 val () = err:=1 in (kxs,res) end
 *)
 //
+(*
 | !
 iltstk_ienv _ =>
 let
 val () = err:=1 in (kxs,res) end
+*)
 //
 )(*case+*)//end-[loop(kxs,res,err)]
 //
@@ -452,10 +460,12 @@ let
 val () = err:=1 in (kxs,res) end
 *)
 //
+(*
 | !
 iltstk_ienv _ =>
 let
 val () = err:=1 in (kxs,res) end
+*)
 //
 )(*case+*)//end-[loop(kxs,res,err)]
 //
@@ -482,15 +492,6 @@ iltstk_ilet$insert
 (
   stk0 := iltstk_cons(ilet, stk0))
 //(*end of [iltstk_ilet$insert(...)]*)
-//
-(* ****** ****** *)
-//
-#implfun
-iltstk_ienv$insert
-  (  stk0, i0vs  ) =
-(
-  stk0 := iltstk_ienv(i0vs, stk0))
-//(*end of [iltstk_ienv$insert(...)]*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -870,26 +871,6 @@ iltstk_ilet$insert
 (  iltstk, ilet  ) in $fold(env0) end
 //
 end(*let*)//end-of-(envi0i1_ilet$insert)
-//
-(* ****** ****** *)
-//
-#implfun
-envi0i1_ienv$insert
-  (env0 , ienv) = let
-//
-val+
-@ENVI0I1
-(d2vtop,
-!d2vstk,!iltstk) = env0
-//
-in//let
-//
-let
-val () =
-iltstk_ienv$insert
-(  iltstk, ienv  ) in $fold(env0) end
-//
-end(*let*)//end-of-(envi0i1_ienv$insert)
 //
 (* ****** ****** *)
 (* ****** ****** *)

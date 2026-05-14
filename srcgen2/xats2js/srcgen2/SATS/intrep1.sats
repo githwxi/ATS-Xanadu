@@ -416,6 +416,10 @@ i1val_node =
 |I1Vaexp of (i0exp(*flat*))
 (* ****** ****** *)
 (* ****** ****** *)
+|I1Vfid0 of (d2var, i1valist)
+|I1Vfid1 of (d2var, i1valist)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |I1Vp0rj of (i1val, sint)
 |I1Vp1cn of (i0pat, i1val, sint)
