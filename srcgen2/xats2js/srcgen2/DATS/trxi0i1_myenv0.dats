@@ -69,11 +69,7 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#typedef
-i0env = ( i0varlst )
-//
-#typedef
-iltlst = list(i1let)
+#typedef iltlst = list(i1let)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -488,6 +484,15 @@ iltstk_ilet$insert
 //(*end of [iltstk_ilet$insert(...)]*)
 //
 (* ****** ****** *)
+//
+#implfun
+iltstk_ienv$insert
+  (  stk0, i0vs  ) =
+(
+  stk0 := iltstk_ienv(i0vs, stk0))
+//(*end of [iltstk_ienv$insert(...)]*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -865,6 +870,26 @@ iltstk_ilet$insert
 (  iltstk, ilet  ) in $fold(env0) end
 //
 end(*let*)//end-of-(envi0i1_ilet$insert)
+//
+(* ****** ****** *)
+//
+#implfun
+envi0i1_ienv$insert
+  (env0 , ienv) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+let
+val () =
+iltstk_ienv$insert
+(  iltstk, ienv  ) in $fold(env0) end
+//
+end(*let*)//end-of-(envi0i1_ienv$insert)
 //
 (* ****** ****** *)
 (* ****** ****** *)

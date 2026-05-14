@@ -255,6 +255,15 @@ tknd, ";", i1v1, ";", lab2, ")"))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I1Vextnam
+(tknd
+,i1v1, g1ns) =>
+( print("I1Vextnam(")
+; prints(tknd, ";", i1v1, ";", g1ns, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |I1Vnone0() => prints( "I1Vnone0(",")" )
 |I1Vnone1(i0e1) => prints("I1Vnone1(", i0e1, ")")
 //

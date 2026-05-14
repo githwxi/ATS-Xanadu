@@ -242,8 +242,8 @@ let
 val-
 D3Pany() = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -265,8 +265,8 @@ val-
 D3Pvar
 (   d2v1   ) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -301,8 +301,8 @@ val-
 D3Pint
 (   tint   ) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -324,8 +324,8 @@ val-
 D3Pbtf
 (   sym1   ) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -347,8 +347,8 @@ val-
 D3Pchr
 (   tchr   ) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -370,8 +370,8 @@ val-
 D3Pflt
 (   tflt   ) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -393,8 +393,8 @@ val-
 D3Pstr
 (   tstr   ) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -416,8 +416,8 @@ val-
 D3Pcon
 (   dcon   ) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -439,8 +439,8 @@ val-
 D3Pbang
 (   d3p1   ) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -463,8 +463,8 @@ val-
 D3Pflat
 (   d3p1   ) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -487,8 +487,8 @@ val-
 D3Pfree
 (   d3p1   ) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -513,8 +513,8 @@ val-
 D3Ptapq
 (d3f0, tjgs) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -543,8 +543,8 @@ val-
 D3Pdap1
 (   d3f0   ) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -570,8 +570,8 @@ D3Pdapp
 (d3f0
 ,npf1, d3ps) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -601,8 +601,8 @@ val-
 D3Ptup0
 (npf1, d3ps) = d3p0.node()
 //
-val t2p0 = d3p0.styp((*0*))
 val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -841,10 +841,12 @@ D3Eextnam _ =>
 (
   f0_extnam(d3e0, env0))
 //
+(*
 |
 D3Esynext _ =>
 (
   f0_synext(d3e0, env0))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -880,8 +882,8 @@ val-
 D3Eint
 (   tint   ) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -903,8 +905,8 @@ val-
 D3Ebtf
 (   sym1   ) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -926,8 +928,8 @@ val-
 D3Echr
 (   tchr   ) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -949,8 +951,8 @@ val-
 D3Eflt
 (   tflt   ) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -972,8 +974,8 @@ val-
 D3Estr
 (   tstr   ) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -995,8 +997,8 @@ val-
 D3Etop
 (   sym1   ) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1018,8 +1020,8 @@ val-
 D3Evar
 (   d2v1   ) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1060,8 +1062,8 @@ val-
 D3Econ
 (   d2c1   ) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1083,8 +1085,8 @@ val-
 D3Ecst
 (   d2c1   ) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1106,8 +1108,8 @@ val-
 D3Etimp
 (d3e1, timp) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1138,8 +1140,8 @@ val-
 D3Esapp
 (d3f0, s2es) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1167,8 +1169,8 @@ val-
 D3Esapq
 (d3f0, t2ps) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1199,8 +1201,8 @@ val-
 D3Etapp
 (d3f0, s2es) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1228,8 +1230,8 @@ val-
 D3Etapq
 (d3f0, tjgs) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1260,8 +1262,8 @@ val-
 D3Edap0
 (   d3f0   ) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1288,8 +1290,8 @@ D3Edapp
 (d3f0
 ,npf1, d3es) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1320,8 +1322,8 @@ D3Epcon
 (tknd
 ,lab1, dcon) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1349,8 +1351,8 @@ D3Eproj
 (tknd
 ,lab1, dtup) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1377,8 +1379,8 @@ val-
 D3Elet0
 (dcls, d3e1) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1428,8 +1430,8 @@ D3Eift0
 (d3e1
 ,dthn, dels) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1466,8 +1468,8 @@ D3Ecas0
 (tknd
 ,d3e1, d3cs) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1501,8 +1503,8 @@ val-
 D3Eseqn
 (d3es, d3e1) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1536,8 +1538,8 @@ val-
 D3Etup0
 (npf1, d3es) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1567,8 +1569,8 @@ D3Etup1
 (tknd
 ,npf1, d3es) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1598,8 +1600,8 @@ D3Ercd2
 (tknd
 ,npf1, ldes) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1631,9 +1633,9 @@ D3Elam0
 ,arrw, d3e1) = d3e0.node()
 //
 val
-t2p0 = d3e0.styp((*void*))
-val
 loc0 = d3e0.lctn((*void*))
+val
+t2p0 = d3e0.styp((*void*))
 //
 val i0t0 =
 (
@@ -1713,9 +1715,9 @@ D3Efix0
 ,arrw, d3e1) = d3e0.node()
 //
 val
-t2p0 = d3e0.styp((*void*))
-val
 loc0 = d3e0.lctn((*void*))
+val
+t2p0 = d3e0.styp((*void*))
 //
 val i0t0 =
 (
@@ -1801,8 +1803,8 @@ val-
 D3Ewhere
 (d3e1, dcls) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1836,8 +1838,8 @@ val-
 D3Et2ped
 (d3e1, t2p2) = d3e0.node()
 //
-val t2p0 = d3e0.styp((*0*))
 val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
@@ -1854,6 +1856,33 @@ loc0, i0t0, I0Et2ped(i0e1, t2p2)))
 //
 end(*let*)//end-of-[f0_t2ped(d3e0,env0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_extnam
+(
+d3e0: d3exp,
+env0: !envd3i0): i0exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val-
+D3Eextnam
+(tknd, gnam) = d3e0.node()
+//
+in//let
+(
+i0exp(
+loc0, i0t0, I0Eextnam(tknd, gnam)))
+end(*let*)//end-of-[f0_extnam(d3e0,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[d3exp_trxd3i0(d3e0,env0)]

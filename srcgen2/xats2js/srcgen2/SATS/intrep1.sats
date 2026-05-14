@@ -440,6 +440,13 @@ For data-consed left-values
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I1Vextnam of
+(
+token(*$EXTNAM*), i1val, g1nam)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |I1Vnone0 of () | I1Vnone1 of (i0exp)
 //
 (* ****** ****** *)

@@ -91,6 +91,17 @@ i0typ_make_node
 (t2p0.sort(),I0Tnone1(t2p0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0exp_none0
+(  loc0  ) =
+let
+val i0t0 = i0typ_none0()
+in//let
+i0exp_make_ityp$node
+(loc0,i0t0,I0Enone0(*0*))
+end//let//endof(i0exp_none0)
 //
 #implfun
 i0var_none1
