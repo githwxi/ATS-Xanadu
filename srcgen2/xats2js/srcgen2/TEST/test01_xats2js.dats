@@ -24,6 +24,17 @@ Wed Apr 29 06:59:33 PM EDT 2026
 (* ****** ****** *)
 //
 fun
+f00
+(tf: bool):
+() -> sint = lam() =>
+(
+  if tf then 10 else f00(not(tf))())
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
+fun
 foo(tf: bool): sint =
 (
   if tf then 10 else foo(not(tf)))
