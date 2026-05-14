@@ -768,6 +768,10 @@ i0exp_node$get
 (* ****** ****** *)
 //
 fun
+i0exp_none0
+(loc0: loc_t): i0exp
+//
+fun
 i0var_none1
 (d2v0: d2var): i0var
 fun
@@ -776,6 +780,8 @@ i0exp_none1
 fun
 i0exp_none2
 (i0e0: i0exp): i0exp
+//
+(* ****** ****** *)
 //
 fun
 i0exp_rturn

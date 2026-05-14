@@ -309,6 +309,7 @@ prints("I1Vl0azy(", dknd, ";", icmp, ")"))
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I1Vextnam
 (tknd
@@ -317,10 +318,12 @@ prints("I1Vl0azy(", dknd, ";", icmp, ")"))
 ; prints(tknd, ";", i1v1, ";", g1ns, ")"))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I1Vnone0() => prints( "I1Vnone0(",")" )
 |I1Vnone1(i0e1) => prints("I1Vnone1(", i0e1, ")")
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end(*let*)//end-of-[i1val_fprint(i1v0,out0)]
