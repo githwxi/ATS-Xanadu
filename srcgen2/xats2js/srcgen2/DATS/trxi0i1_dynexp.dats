@@ -537,6 +537,31 @@ end (*let*) // end-[f0_orderize(...)]
 (* ****** ****** *)
 //
 fun
+i1val_cenv
+( env0:
+! envi0i1
+, loc0: loc_t
+, ival: i1val
+, ilts: i1letlst): i1val =
+(
+case+ ilts of
+|
+list_nil() => ival
+|
+list_cons(ilt1, ilts) =>
+(
+i1val_cenv
+(env0, loc0, ival, ilts))
+where{
+val (  ) =
+(
+  envi0i1_ilet$insert(env0, ilt1) )
+}(*where*)//end-of-[list_cons(ilt1,...)]
+)(*case+*)//end-of-[i1val_cenv(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 i1val_lam0
 ( env0:
 ! envi0i1
@@ -1480,6 +1505,8 @@ iexp.node() of
 //
 (* ****** ****** *)
 //
+|I0Ecenv _ => f0_cenv(iexp, env0)
+//
 |I0Elam0 _ => f0_lam0(iexp, env0)
 |I0Efix0 _ => f0_fix0(iexp, env0)
 //
@@ -1999,6 +2026,42 @@ prerrsln("f0_seqn(01): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_seqn(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_cenv
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Ecenv
+(i0e1, i0ws) = iexp.node()
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+//
+val ival = 
+(
+  i0exp_trxi0i1(i0e1, env0))
+//
+in//let
+//
+let
+val ilts =
+(
+  envi0i1_poplam0(env0))
+in//let
+(
+  i1val_cenv
+  ( env0, loc0, ival, ilts )) end
+//
+end(*let*)//end-of-[f0_cenv(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
