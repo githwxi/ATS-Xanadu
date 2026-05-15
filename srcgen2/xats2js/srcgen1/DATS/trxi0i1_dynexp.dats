@@ -2349,7 +2349,7 @@ envi0i1_pshlam0(env0)
 //
 val (  ) =
 (
-envi0i1_d2vins_self
+envi0i1_dfix$insert
 ( env0, dvar(*recursive*)))
 //
 val fjas =

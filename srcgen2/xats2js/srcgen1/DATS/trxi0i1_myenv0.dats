@@ -940,29 +940,29 @@ endloc(*local*)//end-of-[local(envi0i1...)]
 (* ****** ****** *)
 //
 #implfun
-envi0i1_d2vins_self
+envi0i1_dfix$insert
   (env0, d2v0) =
 let
 val ival = i1val_var(d2v0)
 in//let
 (
   envi0i1_dvar$insert(env0, d2v0, ival))
-end//let//end-of-[envi0i1_d2vins_self(env0,d2v0)]
+end//let//end-of-[envi0i1_dfix$insert(env0,d2v0)]
 //
 (* ****** ****** *)
 //
 #implfun
-envi0i1_dvsins_self
+envi0i1_dfxs$insert
   (env0, d2vs) =
 (
 case+ d2vs of
 | list_nil() => ((*0*))
 | list_cons(d2v1, d2vs) =>
 (
-  envi0i1_dvsins_self(env0, d2vs)) where
+  envi0i1_dfxs$insert(env0, d2vs)) where
 {
-  val () = envi0i1_d2vins_self(env0, d2v1) }
-)(*case+*)//end-of-[envi0i1_dvsins_self(env0,d2vs)]
+  val () = envi0i1_dfix$insert(env0, d2v1) }
+)(*case+*)//end-of-[envi0i1_dfxs$insert(env0,d2vs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

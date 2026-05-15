@@ -576,7 +576,8 @@ i1val_tnm(loc0, itnm)) where
 //
 val itnm = i1tnm_new0((*0*))
 val iins =
-  I1INSlam0(tknd, fjas, icmp)
+(
+  I1INSlam0(tknd, fjas, icmp))
 //
 val ilet = I1LETnew1(itnm, iins)
 //
@@ -2125,7 +2126,7 @@ envi0i1_pshlam0(env0)
 //
 val (  ) =
 (
-envi0i1_d2vins_self
+envi0i1_dfix$insert
 ( env0, dvar(*recursive*)))
 //
 val fjas =
