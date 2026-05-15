@@ -229,11 +229,11 @@ envi0i1_ienv$insert
 (* ****** ****** *)
 //
 fun
-envi0i1_d2vins_self
+envi0i1_dfix$insert
 ( env0: 
 ! envi0i1, d2v0: d2var): (void)
 fun
-envi0i1_dvsins_self
+envi0i1_dfxs$insert
 ( env0: 
 ! envi0i1, d2vs: d2varlst): void
 //

@@ -464,7 +464,7 @@ val d2v1 =
   i0fundcl_dpid$get(i0f1))
 val (  ) =
 (
-  envi0i1_d2vins_self(env0, d2v1))
+  envi0i1_dfix$insert(env0, d2v1))
 }(*where*)//end-of-[list_cons(i0f1,i0fs)]
 )
 //
