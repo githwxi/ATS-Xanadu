@@ -301,12 +301,27 @@ loc0 = dcl0.lctn((*0*))
 val-
 I0Ddclenv
 (dcl1, i0ws) = dcl0.node()
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+val (  ) =
+envi0i1_i0ws$insert
+(   env0 , i0ws(*envs*)   )
+//
 val
 dcl1 = i0dcl_trxi0i1(dcl1, env0)
 //
 in//let
+//
+let
+val
+_(*ilts*) =
 (
-  i1dcl(loc0, I1Ddclenv(dcl1, i0ws)))
+  envi0i1_poplam0(env0))//val(ilts)
+in//let
+  i1dcl(loc0, I1Ddclenv(dcl1, i0ws))
+end//let
+//
 end(*let*)//end of [f0_dclenv(d3cl,env0)]
 //
 (* ****** ****** *)
@@ -462,15 +477,16 @@ tknd.node() of
 //
 val (  ) =
 if // if
-recq then mydvsins(env0, i0fs)
+recq then f1_dfxsins(env0, i0fs)
 //
 val
 i1fs =
-i0fundclist_trxi0i1(i0fs, env0)
+(
+  i0fundclist_trxi0i1(i0fs, env0))
 //
 val (  ) =
 if // if
-~(recq) then mydvsins(env0, i0fs)
+~(recq) then f1_dfxsins(env0, i0fs)
 //
 in//let
 //
@@ -484,7 +500,7 @@ end where
 {
 //
 fun
-mydvsins
+f1_dfxsins
 ( env0: !envi0i1
 , i0fs: i0fundclist): void =
 (
@@ -494,7 +510,8 @@ list_nil() => ((*0*))
 |
 list_cons(i0f1, i0fs) =>
 (
-  mydvsins(env0, i0fs)) where
+  f1_dfxsins(env0, i0fs)
+) where
 {
 val d2v1 =
 (

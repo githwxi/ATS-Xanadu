@@ -24,20 +24,36 @@ Wed Apr 29 06:59:33 PM EDT 2026
 (* ****** ****** *)
 //
 fun
-f00
-(tf: bool):
-() -> sint = lam() =>
+fac(n: nint): nint =
 (
-  if tf then 10 else f00(not(tf))())
+  loop(0, 1)) where
+{
+fun
+loop
+(i: nint, r: nint): nint =
+(
+if i < n
+then loop(i+1, (i+1)*r) else r)
+}
 //
 (* ****** ****** *)
 ////
 (* ****** ****** *)
 //
 fun
-foo(tf: bool): sint =
+f00(tf: bool): sint =
 (
-  if tf then 10 else foo(not(tf)))
+  if tf then 10 else f00(not(tf)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f01
+(tf: bool):
+() -> sint = lam() =>
+(
+  if tf then 10 else f01(not(tf))())
 //
 (* ****** ****** *)
 (* ****** ****** *)
