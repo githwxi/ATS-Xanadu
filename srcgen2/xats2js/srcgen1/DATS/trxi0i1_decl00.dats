@@ -426,15 +426,16 @@ tknd.node() of
 //
 val (  ) =
 if // if
-recq then mydvsins(env0, i0fs)
+recq then f1_dfxsins(env0, i0fs)
 //
 val
 i1fs =
-trxi0i1_i0fundclist(env0, i0fs)
+(
+  trxi0i1_i0fundclist(env0, i0fs))
 //
 val (  ) =
 if // if
-~(recq) then mydvsins(env0, i0fs)
+~(recq) then f1_dfxsins(env0, i0fs)
 //
 in//let
 //
@@ -447,7 +448,7 @@ end where
 {
 //
 fun
-mydvsins
+f1_dfxsins
 ( env0: !envi0i1
 , i0fs: i0fundclist): void =
 (
@@ -457,7 +458,7 @@ list_nil() => ((*0*))
 |
 list_cons(i0f1, i0fs) =>
 (
-  mydvsins(env0, i0fs)) where
+  f1_dfxsins(env0, i0fs)) where
 {
 val d2v1 =
 (
