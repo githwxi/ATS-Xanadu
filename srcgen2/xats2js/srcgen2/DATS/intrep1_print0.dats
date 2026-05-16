@@ -184,6 +184,17 @@ prints("I1Vs00(",s00,")")
 prints("I1Vtop(",sym,")")
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+|I1Varg(iarg) =>
+prints("I1Varg(",iarg,")")
+*)
+//
+|I1Venv(ienv) =>
+prints("I1Venv(",ienv,")")
+//
+(* ****** ****** *)
 //
 |I1Vtnm(itnm) =>
 prints("I1Vtnm(",itnm,")")
