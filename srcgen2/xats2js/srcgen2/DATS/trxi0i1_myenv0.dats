@@ -881,6 +881,47 @@ endloc(*local*)//end-of-[local(envi0i1...)]
 (* ****** ****** *)
 //
 #implfun
+envi0i1_i0ws$insert
+  (env0, i0ws) =
+(
+loop(
+env0, i0ws, 0(*ienv*))
+) where
+{
+fun loop
+( env0:
+! envi0i1
+, i0ws
+: i0varlst
+, ienv: sint): void =
+(
+case+ i0ws of
+|
+list_nil
+( (*void*) ) => ((*void*))
+|
+list_cons
+(i0w1, i0ws) =>
+(
+loop(env0, i0ws, ienv+1)
+) where
+{
+val d2v1 =
+i0var_dvar$get(i0w1)
+val loc1 = d2v1.lctn()
+val i0e1 = i1env_make(ienv)
+val i0v1 =
+i1val_make_node(loc1, I1Venv(i0e1))
+val (  ) =
+envi0i1_dvar$insert(env0, d2v1, i0v1)
+}(*where*)
+)(*case+*)//end-of-[loop(env0,i0ws,ienv)]
+}(*where*)//end-of-[envi0i1_i0ws$insert(env0,d2v0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 envi0i1_dfix$insert
   (env0, d2v0) =
 let
@@ -888,7 +929,7 @@ val ival = i1val_fid(d2v0)
 in//let
 (
   envi0i1_dvar$insert(env0, d2v0, ival))
-end//let//end-of-[envi0i1_dfix$insert(env0,d2v0)]
+end(*let*)//end-of-[envi0i1_dfix$insert(env0,d2v0)]
 //
 (* ****** ****** *)
 //

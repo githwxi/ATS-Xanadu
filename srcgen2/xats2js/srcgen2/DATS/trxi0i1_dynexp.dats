@@ -2047,6 +2047,9 @@ I0Ecenv
 val (  ) =
 envi0i1_pshlam0(env0)
 //
+val (  ) =
+envi0i1_i0ws$insert
+(   env0 , i0ws(*envs*)   )
 val ival = 
 (
   i0exp_trxi0i1(i0e1, env0))

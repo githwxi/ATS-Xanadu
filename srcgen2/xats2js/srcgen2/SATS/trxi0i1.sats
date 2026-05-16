@@ -64,7 +64,8 @@ XATSOPT/xats2cc/srcgen1"
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#typedef i0env = i0varlst
+#typedef i0env = i0var
+#typedef ienvs = i0varlst
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -111,15 +112,6 @@ fun
 iltstk_ilet$insert
 (stk0:
 &iltstk >> _, ilt: i1let): void
-//
-(* ****** ****** *)
-//
-(*
-fun
-iltstk_ienv$insert
-(stk0:
-&iltstk >> _, ivs: i0env): void
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -202,10 +194,12 @@ fun
 envi0i1_dvar$search
 ( env0: 
 ! envi0i1, d2v0: d2var): i1val
+//
 fun
 envi0i1_dvar$insert
 ( env0: 
-! envi0i1, d2var,i1val): (void)
+! envi0i1
+, dvar: d2var, ival: i1val): (void)
 //
 (* ****** ****** *)
 //
@@ -216,15 +210,10 @@ envi0i1_ilet$insert
 //
 (* ****** ****** *)
 //
-(*
 fun
-envi0i1_ienv$search
-(  env0: !envi0i1  ) : i0env
-fun
-envi0i1_ienv$insert
+envi0i1_i0ws$insert
 ( env0:
-! envi0i1, ienv: i0env): (void)
-*)
+! envi0i1, i0ws: ienvs): (void)
 //
 (* ****** ****** *)
 //
