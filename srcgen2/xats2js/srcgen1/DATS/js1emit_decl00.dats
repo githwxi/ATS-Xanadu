@@ -173,6 +173,7 @@ case+
 dcl0.node() of
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I1Dextern _ =>
 (
@@ -181,6 +182,7 @@ dcl0.node() of
 (
   f0_static(env0, dcl0))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1Ddclst0 _ =>
@@ -191,11 +193,13 @@ dcl0.node() of
   f0_local0(env0, dcl0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I1Dinclude _ =>
 (
   f0_include(env0, dcl0))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1Dvaldclst _ =>
@@ -211,6 +215,7 @@ dcl0.node() of
 (
   f0_fundclst(env0, dcl0))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1Dimplmnt0 _ =>
@@ -283,8 +288,7 @@ val-
 I1Dstatic
 (tknd, dcl1) = dcl0.node()
 //
-val
-(  ) =
+val (  ) =
 let
 //
 #impltmp
