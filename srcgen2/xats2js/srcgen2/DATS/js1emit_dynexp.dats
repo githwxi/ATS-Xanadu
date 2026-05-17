@@ -38,6 +38,31 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+#define
+XATSOPT "./../../.."
+*)
+(* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dpre.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload ".\
+/../../../xats2cc\
+/srcgen1/SATS/intrep0.sats"//...
+//
+#staload "./../SATS/intrep1.sats"
+#staload "./../SATS/trxi0i1.sats"
+#staload "./../SATS/xats2js.sats"
+#staload "./../SATS/js1emit.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_js1emit_dynexp.dats] *)
