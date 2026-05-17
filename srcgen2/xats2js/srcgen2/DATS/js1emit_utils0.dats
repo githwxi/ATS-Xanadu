@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun May 17 11:50:46 AM EDT 2026
+Sun May 17 12:23:22 PM EDT 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -65,5 +65,5 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_js1emit_decl00.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_js1emit_utils0.dats] *)
 (***********************************************************************)
