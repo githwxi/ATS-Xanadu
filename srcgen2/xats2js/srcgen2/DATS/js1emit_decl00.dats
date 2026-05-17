@@ -85,6 +85,10 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload filr with envx2js_filr$get
+#symload nind with envx2js_nind$get
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 fprintln
@@ -122,6 +126,16 @@ dcl0.node() of
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+|I1Dextern _ =>
+(
+  f0_extern(dcl0, env0))
+|I1Dstatic _ =>
+(
+  f0_static(dcl0, env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 |
 _(*otherwise*) => f0_otherwise(dcl0, env0)
 (* ****** ****** *)
@@ -129,6 +143,81 @@ _(*otherwise*) => f0_otherwise(dcl0, env0)
 //
 end where//end-of-[i1dcl_js1emit(dcl0,env0)]
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_extern
+(
+dcl0: i1dcl,
+env0: !envx2js): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dextern
+(tknd, dcl1) = dcl0.node()
+//
+val
+(  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+nindfpr(filr, nind);
+prints
+("// I1Dextern(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+  i1dcl_xats2js( dcl1, env0 ))
+//
+end(*let*)//end-of-[f0_extern(dcl0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_static
+(
+dcl0: i1dcl,
+env0: !envx2js): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dstatic
+(tknd, dcl1) = dcl0.node()
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+nindfpr(filr, nind);
+prints
+("// I1Dstatic(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+  i1dcl_xats2js( dcl1, env0 ))
+//
+end(*let*)//end-of-[f0_static(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
