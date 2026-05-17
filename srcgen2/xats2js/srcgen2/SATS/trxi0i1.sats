@@ -215,16 +215,25 @@ envi0i1_i0ws$insert
 ( env0:
 ! envi0i1, i0ws: ienvs): (void)
 //
+fun
+envi0i1_i0ws$search
+( env0:
+! envi0i1, i0ws: ienvs): i1valist
+//
 (* ****** ****** *)
 //
 fun
 envi0i1_dfix$insert
 ( env0: 
 ! envi0i1, d2v0: d2var): (void)
+//
+(* ****** ****** *)
+//
 fun
-envi0i1_dfxs$insert
-( env0: 
-! envi0i1, d2vs: d2varlst): void
+envi0i1_fenv$insert
+(
+env0: !envi0i1,
+d2v0: d2var, i0ws: ienvs): (void)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -260,15 +269,15 @@ i0bnd_trxi0i1
 //
 (* ****** ****** *)
 //
-fun // HX: [trxi0i1_i0exp]
+fun // HX: [i0exp_trxi0i1]
 i0exp_trxi0i1 // insert into [env0]
 (i0e0: i0exp, env0: !envi0i1): i1val
 //
-fun // HX: [trxi0i1_i0lft]
+fun // HX: [i0lft_trxi0i1]
 i0lft_trxi0i1 // insert into [env0]
 (i0e0: i0exp, env0: !envi0i1): i1val
 //
-fun // HX: [trxi0i1_i0blk]: not
+fun // HX: [i0blk_trxi0i1]: not
 i0blk_trxi0i1 // insert into [env0]
 (i0e0: i0exp, env0: !envi0i1): i1cmp
 //
@@ -361,6 +370,21 @@ i0fundclist_trxi0i1
 fun
 i0dclistopt_trxi0i1
 (dopt: i0dclistopt, env0: !envi0i1): i1dclistopt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun // HX: [i0expenv_trxi0i1]
+i0expenv_trxi0i1 // insert into [env0]
+(iexp: i0exp, i0ws: ienvs, env0: !envi0i1): i1val
+//
+fun // HX: [i0dclenv_trxi0i1]
+i0dclenv_trxi0i1 // insert into [env0]
+(idcl: i0dcl, i0ws: ienvs, env0: !envi0i1): i1dcl
+//
+fun // HX: [i0dclenv_trxi0i1]
+i1dclenv_fenvins // insert into [env0]
+(idcl: i1dcl, i0ws: ienvs, env0: !envi0i1): (void)
 //
 (* ****** ****** *)
 (* ****** ****** *)

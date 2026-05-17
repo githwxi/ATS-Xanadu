@@ -233,16 +233,10 @@ prints("I1Vaddr(", ival, ")")
 (* ****** ****** *)
 (* ****** ****** *)
 //
-|I1Vfid0
+|I1Vfenv
 (d2v1, i1vs) =>
 (
-print("I1Vfid0(");
-prints(d2v1, ";", i1vs, ")"))
-//
-|I1Vfid1
-(d2v1, i1vs) =>
-(
-print("I1Vfid1(");
+print("I1Vfenv(");
 prints(d2v1, ";", i1vs, ")"))
 //
 (* ****** ****** *)

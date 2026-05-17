@@ -101,17 +101,32 @@ i1val(
 end//let//i1val_cst(dcst)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
-i1val_fid(dvar) =
+i1val_fid(dfix) =
 let
 val loc0 =
-d2var_get_lctn(dvar)
+d2var_get_lctn(dfix)
 in//let
 i1val(
-  loc0, I1Vfid(dvar))
-end//let//i1val_fid(dvar)
+  loc0, I1Vfid(dfix))
+end//let//i1val_fid(dfix)
 //
+(* ****** ****** *)
+//
+#implfun
+i1val_fenv
+(dfix, envs) =
+let
+val loc0 =
+d2var_get_lctn(dfix)
+in//let
+i1val(loc0,
+  I1Vfenv(dfix, envs))
+end//let//i1val_fenv(...)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

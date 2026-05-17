@@ -916,35 +916,56 @@ val (  ) =
 envi0i1_dvar$insert(env0, d2v1, i0v1)
 }(*where*)
 )(*case+*)//end-of-[loop(env0,i0ws,ienv)]
-}(*where*)//end-of-[envi0i1_i0ws$insert(env0,d2v0)]
+}(*where*)//end-of-[envi0i1_i0ws$insert(env0,i0ws)]
+//
+(* ****** ****** *)
+//
+#implfun
+envi0i1_i0ws$search
+  (env0, i0ws) =
+(
+list_map$e1nv
+<x0><y0><e1>(i0ws, env0)) where
+{
+//
+#typedef x0 = i0var
+#typedef y0 = i1val
+#vwtpdef e1 = envi0i1
+//
+#impltmp
+map$e1nv$fopr
+<x0><y0><e1>(x0, e1) =
+(
+  envi0i1_dvar$search(e1, x0.dvar()))
+//
+}(*where*)//end-of-[envi0i1_i0ws$search(env0,i0ws)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 envi0i1_dfix$insert
-  (env0, d2v0) =
+  (env0, dfix) =
 let
-val ival = i1val_fid(d2v0)
+val ival = i1val_fid(dfix)
 in//let
 (
-  envi0i1_dvar$insert(env0, d2v0, ival))
-end(*let*)//end-of-[envi0i1_dfix$insert(env0,d2v0)]
+  envi0i1_dvar$insert(env0, dfix, ival))
+end(*let*)//end-of-[envi0i1_dfix$insert(env0,dfix)]
 //
 (* ****** ****** *)
 //
 #implfun
-envi0i1_dfxs$insert
-  (env0, d2vs) =
+envi0i1_fenv$insert
+(env0, dfix, i0ws) =
+let
+val i0vs =
+envi0i1_i0ws$search(env0, i0ws)
+val ival = i1val_fenv(dfix, i0vs)
+in//let
 (
-case+ d2vs of
-| list_nil() => ((*0*))
-| list_cons(d2v1, d2vs) =>
-(
-  envi0i1_dfxs$insert(env0, d2vs)) where
-{
-  val () = envi0i1_dfix$insert(env0, d2v1) }
-)(*case+*)//end-of-[envi0i1_dfxs$insert(env0,d2vs)]
+  envi0i1_dvar$insert(env0, dfix, ival))
+end(*let*)//end-of-[envi0i1_dfix$insert(env0,dfix)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
