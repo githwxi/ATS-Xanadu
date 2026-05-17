@@ -115,6 +115,50 @@ case+ xs of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1dclist_js1emit
+  (env0, dcls) =
+(
+  list_js1emit_fnp(env0, dcls, i1dcl_js1emit))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1valdclist_js1emit
+  (env0, i1vs) =
+(
+  list_js1emit_fnp(env0, i1vs, i1valdcl_js1emit))
+//
+(* ****** ****** *)
+//
+#implfun
+i1vardclist_js1emit
+  (env0, i1vs) =
+(
+  list_js1emit_fnp(env0, i1vs, i1vardcl_js1emit))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1fundclist_js1emit
+  (env0, i1fs) =
+(
+  list_js1emit_fnp(env0, i1fs, i1fundcl_js1emit))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1dclistopt_js1emit
+  (dopt, env0) =
+(
+  optn_js1emit_fnp(dopt, env0, i1dclist_js1emit))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_js1emit.dats] *)
 (***********************************************************************)

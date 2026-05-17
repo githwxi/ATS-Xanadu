@@ -108,6 +108,52 @@ case+ xs of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#implfun
+js1emit_i1dclist
+  (env0, dcls) =
+(
+  list_js1emit_fnp(env0, dcls, js1emit_i1dcl))
+(*where*)//end-of-[js1emit_i1dclist(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1valdclist
+  (env0, i1vs) =
+(
+  list_js1emit_fnp(env0, i1vs, js1emit_i1valdcl))
+//
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1vardclist
+  (env0, i1vs) =
+(
+  list_js1emit_fnp(env0, i1vs, js1emit_i1vardcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1fundclist
+  (env0, i1fs) =
+(
+  list_js1emit_fnp(env0, i1fs, js1emit_i1fundcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1dclistopt
+  (env0, dopt) =
+(
+  optn_js1emit_fnp(env0, dopt, js1emit_i1dclist))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_js1emit.dats] *)
 (***********************************************************************)
