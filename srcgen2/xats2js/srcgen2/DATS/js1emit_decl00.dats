@@ -51,6 +51,28 @@ XATSOPT "./../../.."
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload // BAS =
+"./../../../SATS/xbasics.sats"
+//
+#staload // SYM =
+"./../../../SATS/xsymbol.sats"
+#staload // LOC =
+"./../../../SATS/locinfo.sats"
+#staload // LEX =
+"./../../../SATS/lexing0.sats"
+//
+#staload // S1E =
+"./../../../SATS/staexp1.sats"
+#staload // D2E =
+"./../../../SATS/dynexp2.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #staload ".\
 /../../../xats2cc\
@@ -60,6 +82,88 @@ XATSOPT "./../../.."
 #staload "./../SATS/trxi0i1.sats"
 #staload "./../SATS/xats2js.sats"
 #staload "./../SATS/js1emit.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fprintln
+(filr: FILR): void =
+(
+strn_fprint("\n", filr))//endfun
+//
+(* ****** ****** *)
+//
+fun
+lctnfpr
+(filr: FILR
+,loc0: loc_t): void =
+(
+loctn_fprint(loc0,filr))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1dcl_js1emit
+(dcl0, env0) =
+let
+(*
+//
+val () =
+prerrsln
+("i1dcl_js1emit: dcl0 = ", dcl0))
+//
+*)
+in//let
+//
+case+
+dcl0.node() of
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|
+_(*otherwise*) => f0_otherwise(dcl0, env0)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+end where//end-of-[i1dcl_js1emit(dcl0,env0)]
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_otherwise
+(
+dcl0: i1dcl,
+env0: !envx2js): void =
+let
+//
+val loc0 =
+dcl0.lctn((*void*))
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+in//let
+//
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+loctn_fprint
+(loc0, filr); fprintln(filr);
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+i1dcl_fprint(dcl0, filr); fprintln(filr)
+//
+end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+}(*where*)//end-of-[js1emit_i1dcl(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

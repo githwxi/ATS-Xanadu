@@ -108,7 +108,7 @@ fun
 fprintln
 (filr: FILR): void =
 (
- strn_fprint("\n", filr))//endfun
+strn_fprint("\n", filr))//endfun
 //
 (* ****** ****** *)
 //
@@ -117,7 +117,7 @@ lctnfpr
 (filr: FILR
 ,loc0: loc_t): void =
 (
- loctn_fprint(loc0,filr))//endfun
+loctn_fprint(loc0,filr))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1052,51 +1052,6 @@ in//let
 end//let//end-of-[val()]
 //
 }(*where*)//end-of-[js1emit_i1fundcl(env0,ifun)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-js1emit_i1dclist
-  (env0, dcls) =
-(
-  list_js1emit_fnp(env0, dcls, js1emit_i1dcl))
-(*where*)//end-of-[js1emit_i1dclist(env0,dcl0)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-js1emit_i1valdclist
-  (env0, i1vs) =
-(
-  list_js1emit_fnp(env0, i1vs, js1emit_i1valdcl))
-//
-(* ****** ****** *)
-//
-#implfun
-js1emit_i1vardclist
-  (env0, i1vs) =
-(
-  list_js1emit_fnp(env0, i1vs, js1emit_i1vardcl))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-js1emit_i1fundclist
-  (env0, i1fs) =
-(
-  list_js1emit_fnp(env0, i1fs, js1emit_i1fundcl))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-js1emit_i1dclistopt
-  (env0, dopt) =
-(
-  optn_js1emit_fnp(env0, dopt, js1emit_i1dclist))
 //
 (* ****** ****** *)
 (* ****** ****** *)
