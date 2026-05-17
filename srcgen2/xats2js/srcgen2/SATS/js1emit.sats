@@ -165,24 +165,25 @@ l1i1vjs1
 fun
 <x0:t0>
 list_js1emit_fnp
-( e1:
-! envx2js
-, xs: list(x0)
-, (!envx2js, x0) -> void): void
+(
+xs: list(x0),
+e1: !envx2js,
+fopr: (x0, !envx2js)->void): void
+//
 fun
 <x0:t0>
 optn_js1emit_fnp
-( e1:
-! envx2js
-, xs: optn(x0)
-, (!envx2js, x0) -> void): void
+(
+xs: optn(x0),
+e1: !envx2js,
+fopr: (x0, !envx2js)->void): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 i1parsed_js1emit
-(filr: FILR, ipar: i1parsed): void
+(ipar: i1parsed, filr: FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

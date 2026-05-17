@@ -65,8 +65,8 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #implfun
-js1emit_i1parsed
-  (filr, ipar) = let
+i1parsed_js1emit
+  (ipar, filr) = let
 //
 val stadyn =
 i1parsed_stadyn$get(ipar)
@@ -84,8 +84,8 @@ in//let
 (
   envx2js_free_nil(env0)) where
 { val () =
-  js1emit_i1dclistopt(env0, parsed) }
-end(*let*)//end-of-[js1emit_i1parsed(filr,ipar)]
+  i1dclistopt_js1emit(parsed, env0) }
+end(*let*)//end-of-[i1parsed_js1emit(ipar,filr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -93,13 +93,13 @@ end(*let*)//end-of-[js1emit_i1parsed(filr,ipar)]
 #impltmp
 <x0>(*tmp*)
 list_js1emit_fnp
-( e1, xs, fopr ) =
+( xs, e1, fopr ) =
 (
 list_foritm$e1nv<x0><e1>(xs, e1)) where
 {
 #vwtpdef e1 = envx2js
 #impltmp
-foritm$e1nv$work<x0><e1>(x0, e1) = fopr(e1, x0)
+foritm$e1nv$work<x0><e1>(*x0,e1*) = fopr(*0*)
 } (*where*)//end of [list_js1emit_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
@@ -107,10 +107,10 @@ foritm$e1nv$work<x0><e1>(x0, e1) = fopr(e1, x0)
 #impltmp
 <x0>(*tmp*)
 optn_js1emit_fnp
-( e1, xs, fopr ) =
+( xs, e1, fopr ) =
 (
 case+ xs of
-| optn_nil() => () | optn_cons(x1) => fopr(e1, x1))
+| optn_nil() => () | optn_cons(x1) => fopr(x1, e1))
 //
 (* ****** ****** *)
 (* ****** ****** *)
