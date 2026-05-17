@@ -2092,11 +2092,13 @@ val (  ) =
 envi0i1_pshlam0(env0)
 val (  ) =
 envi0i1_i0ws$insert
-(   env0 , i0ws(*envs*)   )
+(   env0, i0ws(*envs*)   )
 //
-val ival = 
+val
+ival =
+i0expenv_trxi0i1
 (
-  i0exp_trxi0i1(i0e1, env0))
+  i0e1, i0ws(*envs*), env0)
 //
 in//let
 //
@@ -2174,7 +2176,7 @@ envi0i1_pshlam0(env0)
 val (  ) =
 (
 envi0i1_dfix$insert
-( env0, dvar(*recursive*)))
+(env0, dvar(*fixedpoint*)))
 //
 val fjas =
 fiarglst_trxi0i1(fias, env0)
@@ -2467,6 +2469,120 @@ optn_cons(i0dcl_trxi0i1(dcl1, env0)))))
 }(*where*)//end(t1imp_make_node(stmp,node))
 //
 end(*let*)//end-of-[t0imp_trxi0i1(timp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0expenv_trxi0i1
+(
+iexp: i0exp,
+i0ws: ienvs,
+env0: !envi0i1): i1val =
+(
+case+
+iexp.node() of
+//
+|I0Elam0 _ =>
+(
+f0_lam0(iexp, i0ws(*envs*), env0))
+//
+|I0Efix0 _ =>
+(
+f0_fix0(iexp, i0ws(*envs*), env0))
+//
+|
+_(*otherwise*) => i0exp_trxi0i1(iexp, env0)
+//
+) where
+{
+//
+(* ****** ****** *)
+//
+fun
+f0_lam0
+(
+iexp: i0exp,
+i0ws: ienvs,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Elam0
+(lvl0
+,tknd,fias
+,body,i0vs) = iexp.node()
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+//
+val fjas =
+fiarglst_trxi0i1(fias, env0)
+//
+val iret =
+(
+  i0exp_trxi0i1( body, env0 ))
+//
+val
+ilts = envi0i1_poplam0( env0 )
+//
+val icmp = I1CMPcons(ilts, iret)
+//
+in//let
+(
+  i1val_lam0
+  (env0, loc0, tknd, fjas, icmp))
+end(*let*)//end-of-[f0_lam0(iexp,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fix0
+(
+iexp: i0exp,
+i0ws: ienvs,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Efix0
+(l0v0
+,tknd
+,dvar,fias
+,body,i0vs) = iexp.node()
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+//
+val (  ) =
+(
+envi0i1_fenv$insert
+(env0, dvar, i0ws(*envs*)))
+//
+val fjas =
+fiarglst_trxi0i1(fias, env0)
+val iret =
+(
+  i0exp_trxi0i1( body, env0 ))
+//
+val
+ilts = envi0i1_poplam0( env0 )
+//
+val icmp = I1CMPcons(ilts, iret)
+//
+in//let
+(
+  i1val_fix0
+  (env0,loc0,tknd,dvar,fjas,icmp))
+end(*let*)//end-of-[f0_fix0(iexp,env0)]
+//
+(* ****** ****** *)
+//
+}(*where*)//end[i0expenv_trxi0i1(iexp,i0ws,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

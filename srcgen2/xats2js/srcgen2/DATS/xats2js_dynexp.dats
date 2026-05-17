@@ -185,6 +185,19 @@ f0_dapp(env0, iins))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I1INSlet0 _ =>
+(
+//
+f0_let0(env0, iins);
+//
+nindfpr
+(filr, nind); strnfpr
+(filr, "// I1INSlet0-end");
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |I1INSift0 _ =>
 (
 //
@@ -250,6 +263,42 @@ end//let//end-of-[f0_dapp(env0,iins)]
 (* ****** ****** *)
 //
 fun
+f0_let0
+( env0:
+! envx2js
+, iins: i1ins): void =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+val-
+I1INSlet0
+(dcls, icmp) = iins
+//
+val () =
+(
+print("I1INSlet0(");
+prints("...",";","...",")\n"))
+//
+val () =
+envx2js_incnind(env0, 2)
+//
+val () =
+(
+  i1cmp_xats2js(icmp, env0)
+) where
+{ val () =
+  i1dclist_xats2js(dcls, env0) }
+//
+val () = envx2js_decnind(env0, 2)
+//
+end//let//end-of-[f0_let0(iins,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_ift0
 ( env0:
 ! envx2js
@@ -258,8 +307,8 @@ let
 //
 val-
 I1INSift0
-( test
-, ithn, iels) = iins
+(test
+,ithn, iels) = iins
 //
 #impltmp
 g_print$out<>() = filr

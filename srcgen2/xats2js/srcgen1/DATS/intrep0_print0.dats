@@ -270,6 +270,12 @@ prints("I0Es00(", s00, ")"))
 //
 (* ****** ****** *)
 //
+|I0Etop(sym) =>
+(
+prints("I0Etop(", sym, ")"))
+//
+(* ****** ****** *)
+//
 |I0Evar(d2v) =>
 (
  prints("I0Evar(", d2v, ")"))

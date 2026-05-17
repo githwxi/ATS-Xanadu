@@ -416,8 +416,7 @@ i1val_node =
 |I1Vaexp of (i0exp(*flat*))
 (* ****** ****** *)
 (* ****** ****** *)
-|I1Vfid0 of (d2var, i1valist)
-|I1Vfid1 of (d2var, i1valist)
+|I1Vfenv of (d2var, i1valist)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -518,7 +517,13 @@ i1val_cst(dcst: d2cst): ( i1val )
 (* ****** ****** *)
 //
 fun
-i1val_fid(dvar: d2var): ( i1val )
+i1val_fid(dfix: d2var): ( i1val )
+//
+fun
+i1val_fenv
+(
+dfix:
+d2var, envs: i1valist): ( i1val )
 //
 (* ****** ****** *)
 //
