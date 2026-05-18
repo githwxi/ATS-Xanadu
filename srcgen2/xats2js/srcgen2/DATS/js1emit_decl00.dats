@@ -85,8 +85,13 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #symload filr with envx2js_filr$get
 #symload nind with envx2js_nind$get
+//
+(* ****** ****** *)
+#symload
+fjas1_js1emit with fjarglst_js1emit
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -304,7 +309,7 @@ end//let
 //
 val (  ) =
 (
-  i1dcl_xats2js( dcl1, env0 ))
+  i1dcl_js1emit( dcl1, env0 ))
 //
 end(*let*)//end-of-[f0_dclenv(dcl0,env0)]
 //
@@ -514,7 +519,127 @@ end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-}(*where*)//end-of-[js1emit_i1dcl(dcl0,env0)]
+}(*where*)//end-of-[i1dcl_js1emit(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1fundcl_js1emit
+  (ifun, env0) = let
+//
+(* ****** ****** *)
+//
+val dvar =
+i1fundcl_dpid$get(ifun)
+val fjas =
+i1fundcl_farg$get(ifun)
+val tdxp =
+i1fundcl_tdxp$get(ifun)
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+(
+nindfpr(filr, nind);
+strnfpr(filr, "function ");
+d2varfpr(filr, dvar);
+fjas1js1(filr, fjas);fprintln(filr))
+end//let
+//
+(* ****** ****** *)
+//
+val ( ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+val (  ) =
+(
+nindfpr(filr, nind);strnfpr(filr, "{ // fun\n"))
+end//let
+//
+(* ****** ****** *)
+//
+val (  ) = // enter
+(
+  envx2js_pshlam0(env0) )
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+//
+val ival = icmp.ival()
+//
+val (  ) =
+(
+  fjas1_js1emit(fjas, env0))
+val (  ) =
+(
+  i1cmp_js1emit(icmp, env0))
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+(
+nindfpr(filr, nind);
+strnfpr(filr, "return ");i1valjs1(filr, ival);fprintln(filr))
+end//let
+//
+(* ****** ****** *)
+end//let
+(* ****** ****** *)
+) (*case+*) // end-of-(teqi1exp)
+//
+val (  ) = envx2js_poplam0(env0)//leave
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+//
+nindstrnfpr
+(filr, nind, "} // endfun(");
+d2varfpr(filr, dvar);strnfpr(filr, ")\n")
+//
+end//let
+//
+(* ****** ****** *)
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+(
+envx2js_filr$get(env0))
+val nind =
+(
+envx2js_nind$get(env0))
+in//let
+(
+ nindstrnfpr(filr, nind, "// I1FUNDCL\n"))
+end//let//end-of-[val()]
+//
+}(*where*)//end-of-[i1fundcl_js1emit(ifun,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
