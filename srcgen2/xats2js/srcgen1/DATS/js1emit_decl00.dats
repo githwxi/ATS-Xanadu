@@ -461,10 +461,10 @@ if
 prvq
 then
 (
- xats2js_i1valdclist(env0, i1vs))
+  xats2js_i1valdclist(env0, i1vs))
 else
 (
- js1emit_i1valdclist(env0, i1vs))
+  js1emit_i1valdclist(env0, i1vs))
 //
 end(*let*)//end-of-[f0_valdclst(env0,dcl0)]
 //
@@ -500,7 +500,7 @@ end//let
 //
 val (  ) =
 (
- js1emit_i1vardclist(env0, i1vs))
+  js1emit_i1vardclist(env0, i1vs))
 //
 end(*let*)//end of [f0_vardclst(env0,dcl0)]
 //
@@ -543,10 +543,10 @@ in//let
 //
 if
 prfq
-then
+then//then
 prints
 ("// I1Dprfdclist(",loc0,")\n")
-else
+else//else
 (
 case+ tqas of
 |
@@ -563,20 +563,20 @@ end//let
 val (  ) =
 if
 prfq
-then // HX: proofs
+then//then
 (
- xats2js_i1fundclist(env0, i1fs))
-else
+  xats2js_i1fundclist(env0, i1fs))
+else//else
 (
 case+ tqas of
 |
 list_nil() => // HX: functions
 (
- js1emit_i1fundclist(env0, i1fs))
+  js1emit_i1fundclist(env0, i1fs))
 |
 list_cons _ => // HX: templates
 (
- xats2js_i1tfndclist(env0, i1fs)))
+  xats2js_i1tfndclist(env0, i1fs)))
 //
 end(*let*)//end-of-[f0_fundclst(env0,dcl0)]
 //

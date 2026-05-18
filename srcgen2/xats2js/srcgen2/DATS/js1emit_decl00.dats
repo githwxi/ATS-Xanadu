@@ -108,6 +108,29 @@ loctn_fprint(loc0,filr))//endfun
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+valtok_prvq
+(tok: token): bool =
+(
+case-
+tok.node() of
+|T_VAL
+( vlk ) => valkind_prvq(vlk))
+(*case-*)//end(valtok_prvq(tok))
+//
+fun
+funtok_prfq
+(tok: token): bool =
+(
+case-
+tok.node() of
+|T_FUN
+( fnk ) => funkind_prfq(fnk))
+(*case-*)//end(funtok_prfq(tok))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 i1dcl_js1emit
 (dcl0, env0) =
@@ -133,6 +156,24 @@ dcl0.node() of
 |I1Dstatic _ =>
 (
   f0_static(dcl0, env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Dvaldclst _ =>
+(
+  f0_valdclst(dcl0, env0))
+|I1Dvardclst _ =>
+(
+  f0_vardclst(dcl0, env0))
+//
+(* ****** ****** *)
+//
+(*
+|I1Dfundclst _ =>
+(
+  f0_fundclst(dcl0, env0))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -218,6 +259,179 @@ val (  ) =
   i1dcl_xats2js( dcl1, env0 ))
 //
 end(*let*)//end-of-[f0_static(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+(
+dcl0: i1dcl,
+env0: !envx2js): void =
+let
+//
+val filr =
+  env0.filr((*void*))
+val nind =
+  env0.nind((*void*))
+val loc0 =
+  dcl0.lctn((*void*))
+//
+val-
+I1Dvaldclst
+(tknd, i1vs) = dcl0.node()
+//
+val
+prvq =
+(
+  valtok_prvq( tknd ))
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+(
+  nindfpr(filr, nind));
+//
+if
+prvq
+then//then
+prints
+("// I1Dprvdclist(",loc0,")\n")
+else//else
+prints
+("// I1Dvaldclist(",loc0,")\n")
+//
+end//let
+//
+val (  ) =
+if
+prvq
+then//then
+(
+  i1valdclist_xats2js(i1vs, env0))
+else//else
+(
+  i1valdclist_js1emit(i1vs, env0))
+//
+end(*let*)//end-of-[f0_valdclst(dcl0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+(
+dcl0: i1dcl,
+env0: !envx2js): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dvardclst
+(tknd, i1vs) = dcl0.node()
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+nindfpr(filr, nind);
+prints
+("// I1Dvardclist(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+  i1vardclist_js1emit(i1vs, env0))
+//
+end(*let*)//end of [f0_vardclst(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+(
+dcl0: i1dcl,
+env0: !envx2js): void =
+let
+//
+val filr =
+  env0.filr((*void*))
+val nind =
+  env0.nind((*void*))
+val loc0 =
+  dcl0.lctn((*void*))
+//
+val-
+I1Dfundclst
+(tknd
+,lvl0, tqas
+,d2cs, i1fs) = dcl0.node()
+//
+val prfq =
+(
+  funtok_prfq( tknd ))
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+(
+  nindfpr(filr, nind));
+//
+if
+prfq
+then//then
+prints
+("// I1Dprfdclist(",loc0,")\n")
+else//else
+(
+case+ tqas of
+|
+list_nil() =>
+prints
+("// I1Dfundclist(",loc0,")\n")
+|
+list_cons _ =>
+prints
+("// I1Dtfndclist(",loc0,")\n"))
+//
+end//let
+//
+val (  ) =
+if
+prfq
+then//then
+(
+  i1fundclist_xats2js(i1fs, env0))
+else//else
+(
+case+ tqas of
+|
+list_nil() => // HX: functions
+(
+  i1fundclist_js1emit(i1fs, env0))
+|
+list_cons _ => // HX: templates
+(
+  i1tfndclist_xats2js(i1fs, env0)))
+//
+end(*let*)//end-of-[f0_fundclst(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
