@@ -92,7 +92,8 @@ fprintln
 //
 fun
 valtok_prvq
-(tok: token) =
+( tok
+: token): bool =
 (
 case-
 tok.node() of
@@ -102,7 +103,8 @@ tok.node() of
 //
 fun
 funtok_prfq
-(tok: token) =
+( tok
+: token): bool =
 (
 case-
 tok.node() of
