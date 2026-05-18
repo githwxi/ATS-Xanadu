@@ -176,11 +176,9 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
-(*
 |I1Dfundclst _ =>
 (
   f0_fundclst(dcl0, env0))
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -293,9 +291,15 @@ let
 g_print$out<>() = filr
 //
 in//let
+//
 nindfpr(filr, nind);
 prints
 ("// I1Ddclenv(",loc0,")\n")
+; //
+nindfpr(filr, nind);
+prints
+("// I1Ddclenv(",i0ws,")\n")
+//
 end//let
 //
 val (  ) =

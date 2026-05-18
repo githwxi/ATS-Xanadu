@@ -91,6 +91,20 @@ fprintln
 (* ****** ****** *)
 //
 fun
+i0varlst_fprint
+( i0vs
+: i0varlst
+, out0: FILR): void =
+(
+  g_print(i0vs)) where
+{
+#impltmp
+g_print$out<>() = out0}//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 valtok_prvq
 ( tok
 : token): bool =
@@ -192,19 +206,33 @@ I1Ddclenv
 (dcl1, i0ws) = dcl0.node()
 //
 val (  ) =
+let
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+in//let
+//
+nindfpr(filr, nind);
+strnfpr(filr, "// I1Ddclenv: ");
+i0varlst_fprint(
+i0ws(*envs*), filr); fprintln(filr)
+//
+end//let
+//
+val (  ) =
 (
   i1dcl_xats2js(dcl1, env0))
 //
-end where // end-of-[let]
+end where//end(f0_dclenv(dcl0,env0))
 {
 //
 (*
 //
 val loc0 = dcl0.lctn((*void*))
-//
 val (  ) =
-prerrsln("\
-f0_dclenv(xats2js): dcl0 = ", dcl0)
+prerrsln
+("f0_dclenv(xats2js): dcl0 = ", dcl0)
 *)
 //
 }(*where*)//end-of-[f0_dclenv(dcl0,env0)]
@@ -408,8 +436,9 @@ val dvar =
 i1fundcl_dpid$get(ifun)
 //
 in//let
-nindstrnfpr
-(filr, nind, "// I1FUNDCL: ");
+nindfpr(filr, nind);
+strnfpr
+(filr, "// I1FUNDCL: ");
 d2var_fprint(dvar, filr); fprintln(filr)
 end//let
 //
@@ -430,8 +459,9 @@ val dvar =
 i1fundcl_dpid$get(itfn)
 //
 in//let
-nindstrnfpr
-(filr, nind, "// I1TFNDCL: ");
+nindfpr(filr, nind);
+strnfpr
+(filr, "// I1TFNDCL: ");
 d2var_fprint(dvar, filr); fprintln(filr)
 end(*let*)//end-of-[i1tfndcl_xats2js(itfn,env0)]
 //
