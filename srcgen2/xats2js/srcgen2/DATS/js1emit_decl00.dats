@@ -160,6 +160,13 @@ dcl0.node() of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I1Ddclenv _ =>
+(
+  f0_dclenv(dcl0, env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |I1Dvaldclst _ =>
 (
   f0_valdclst(dcl0, env0))
@@ -259,6 +266,43 @@ val (  ) =
   i1dcl_xats2js( dcl1, env0 ))
 //
 end(*let*)//end-of-[f0_static(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dclenv
+(
+dcl0: i1dcl,
+env0: !envx2js): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Ddclenv
+(dcl1, i0ws) = dcl0.node()
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+nindfpr(filr, nind);
+prints
+("// I1Ddclenv(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+  i1dcl_xats2js( dcl1, env0 ))
+//
+end(*let*)//end-of-[f0_dclenv(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
