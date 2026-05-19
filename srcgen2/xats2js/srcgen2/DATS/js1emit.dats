@@ -57,7 +57,6 @@ XATSOPT "./../../.."
 /srcgen1/SATS/intrep0.sats"//...
 //
 #staload "./../SATS/intrep1.sats"
-#staload "./../SATS/trxi0i1.sats"
 #staload "./../SATS/xats2js.sats"
 #staload "./../SATS/js1emit.sats"
 //
@@ -116,36 +115,45 @@ case+ xs of
 (* ****** ****** *)
 //
 #implfun
-i1dclist_js1emit
-  (env0, dcls) =
+i1letlst_js1emit
+  (ilts, env0) =
 (
-  list_js1emit_fnp(env0, dcls, i1dcl_js1emit))
+  list_js1emit_fnp(ilts, env0, i1let_js1emit))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1dclist_js1emit
+  (dcls, env0) =
+(
+  list_js1emit_fnp(dcls, env0, i1dcl_js1emit))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 i1valdclist_js1emit
-  (env0, i1vs) =
+  (i1vs, env0) =
 (
-  list_js1emit_fnp(env0, i1vs, i1valdcl_js1emit))
+  list_js1emit_fnp(i1vs, env0, i1valdcl_js1emit))
 //
 (* ****** ****** *)
 //
 #implfun
 i1vardclist_js1emit
-  (env0, i1vs) =
+  (i1vs, env0) =
 (
-  list_js1emit_fnp(env0, i1vs, i1vardcl_js1emit))
+  list_js1emit_fnp(i1vs, env0, i1vardcl_js1emit))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 i1fundclist_js1emit
-  (env0, i1fs) =
+  (i1fs, env0) =
 (
-  list_js1emit_fnp(env0, i1fs, i1fundcl_js1emit))
+  list_js1emit_fnp(i1fs, env0, i1fundcl_js1emit))
 //
 (* ****** ****** *)
 (* ****** ****** *)

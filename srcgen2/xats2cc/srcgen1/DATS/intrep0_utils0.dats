@@ -79,6 +79,71 @@ This one uses srcgen2!
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0pat_allq
+(  i0p0  ) =
+(
+case+
+i0p0.node() of
+//
+|I0Pvar _ => true
+|I0Pany _ => true
+//
+|I0Pint _ => false
+|I0Pbtf _ => false
+|I0Pchr _ => false
+|I0Pflt _ => false
+|I0Pstr _ => false
+//
+|
+I0Ptup0
+( i0ps ) => f0_i0ps(i0ps)
+|
+I0Ptup1
+(tknd, i0ps) => f0_i0ps(i0ps)
+|
+I0Prcd2
+(tknd, lips) => f0_lips(lips)
+//
+| _(*otherwise*) => (  false  ))
+//
+where
+{
+fun
+f0_i0ps
+(i0ps: i0patlst): bool =
+(
+case+ i0ps of
+|
+list_nil() => true
+|
+list_cons(i0p1, i0ps) =>
+if // if
+i0pat_allq(i0p1)
+then f0_i0ps(i0ps) else false)
+//
+fun
+f0_lips
+(lips: l0i0plst): bool =
+(
+case+ lips of
+|
+list_nil() => true
+|
+list_cons(lip1, lips) =>
+let
+val+
+I0LAB(l0, i0p1) = lip1
+in//let
+if // if
+i0pat_allq(i0p1)
+then f0_lips(lips) else false end)
+//
+}(*where*)//end-of-[i0pat_allq(i0p0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 local
 //
 #staload

@@ -108,7 +108,7 @@ _(*DATS*)="./../DATS/js1emit.dats"
 (* ****** ****** *)
 //
 val
-EXCPTCON_BASE = 10000
+EXCPTCON_BASE = 1000
 //
 (* ****** ****** *)
 //
@@ -2430,7 +2430,8 @@ js1emit_i1letlst
 js1emit_fjarglst
   (env0, fjas) =
 (
-  loop1(1(*i0*), fjas)) where
+  loop1(1(*i0*), fjas)
+) where
 {
 //
 val filr =

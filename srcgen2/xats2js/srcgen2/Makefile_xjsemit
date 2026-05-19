@@ -37,6 +37,7 @@ js1emit.sats \
 SRCDATS := \
 intrep1.dats \
 intrep1_print0.dats \
+intrep1_utils0.dats \
 trxi0i1.dats \
 trxi0i1_myenv0.dats \
 trxi0i1_dynexp.dats \

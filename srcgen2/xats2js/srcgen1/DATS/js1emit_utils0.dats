@@ -65,10 +65,6 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-#staload // S2E =
-"./../../../SATS/staexp2.sats"
-#staload // T2P =
-"./../../../SATS/statyp2.sats"
 #staload // D2E =
 "./../../../SATS/dynexp2.sats"
 //
@@ -170,7 +166,7 @@ xsymjs1
 strnfpr(filr, "_");
 fprint_loctn_as_stamp
 (filr, dcon.lctn((*void*))))
-end(*let*)//end-of-[d2conjs1(env0,dcon)]
+end(*let*)//endof[d2conjs1(filr,dcon)]
 //
 (* ****** ****** *)
 //
@@ -215,11 +211,12 @@ val lctn = dcst.lctn((*0*))
 val name = dcst.name((*0*))
 //
 in//let
+(
 xsymjs1
 (filr, name);
 strnfpr(filr, "_");
-fprint_loctn_as_stamp(filr, lctn)
-end//let//end-of-[f0_none]
+fprint_loctn_as_stamp(filr,lctn))
+end(*let*)//end-of-[f0_none(dcst)]
 //
 fun
 f0_some
@@ -234,13 +231,14 @@ D2Eextnam
 (tknd, gnam) = dexp.node((*0*))
 //
 in//let
+(
 case+ gnam of
 |
-_(* else *) => xsymjs1(filr, name)
-end(*let*)//end-of-[f0_some(dcst,dexp)]
+_(* else *) => xsymjs1(filr, name))
+end(*let*)//endof[f0_some(dcst,dexp)]
 //
 }(*where*)
-end(*let*)//end-of-[d2cstjs1(env0,dcst)]
+end(*let*)//endof[d2cstjs1(filr,dcst)]
 //
 (* ****** ****** *)
 //
@@ -261,7 +259,24 @@ xsymjs1
 strnfpr(filr, "_");
 fprint_loctn_as_stamp
 (filr, dvar.lctn((*void*))))
-end(*let*)//end-of-[d2varjs1(env0,dvar)]
+end(*let*)//endof[d2varjs1(filr,dvar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1tnmjs1
+( filr,itnm ) =
+(
+prints
+("jsx", "tnm", stmp)) where
+{
+//
+#impltmp g_print$out<>() = filr
+//
+val stmp = i1tnm_stmp$get(itnm)
+//
+}(*where*)//endof[i1tnmjs1(filr,itnm)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -275,7 +290,7 @@ prints
 ) where
 {
 #impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i0i00js1(...)]
+}(*where*)//end-of-[i0i00js1(filr,i00)]
 //
 #implfun
 i0b00js1
@@ -286,7 +301,7 @@ prints
 ) where
 {
 #impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i0b00js1(...)]
+}(*where*)//end-of-[i0b00js1(filr,b00)]
 //
 (* ****** ****** *)
 //
@@ -336,7 +351,7 @@ prints
 ) where
 {
 #impltmp g_print$out<>() = filr
-}(*where*)//end-of-[i0f00js1(filr,f00)]
+}(*where*)//end-of-[i0f00js1(filr, f00)]
 //
 (* ****** ****** *)
 //
@@ -455,23 +470,6 @@ tflt.node() of
 {
 #impltmp g_print$out<>() = filr
 }(*where*)//end-of-[i0fltjs1(filr,tflt)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-i1tnmjs1
-( filr,itnm ) =
-(
-prints
-("jsx", "tnm", stmp)) where
-{
-//
-#impltmp g_print$out<>() = filr
-//
-val stmp = i1tnm_stmp$get(itnm)
-//
-}(*where*)//end-of-[i1tnmjs1(filr,itnm)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

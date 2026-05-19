@@ -68,7 +68,7 @@ XATSOPT "./../../.."
 #symload node with i0pat_node$get
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 i0pat_allq
 (  i0p0  ) =
@@ -129,7 +129,7 @@ if // if
 i0pat_allq(i0p1)
 then f0_lips(lips) else false end)
 //
-}(*where*)//end-of-[ i0pat_allq(i0p0) ]
+}(*where*)//end-of-[i0pat_allq(i0p0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
