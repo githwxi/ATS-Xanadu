@@ -117,7 +117,7 @@ of // case+
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 t1imp_i1cmpq
 (   timp   ) =
@@ -181,10 +181,10 @@ prerrsln("t1imp_i1cmpq: timp = ", timp)
 *)
 //
 }(*where*)//end-of-[t1imp_i1cmpq( timp )]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 t1imp_i1dclq
 (   timp   ) =
@@ -237,7 +237,7 @@ prerrsln("t1imp_i1dclq: timp = ", timp)
 *)
 //
 }(*where*)//end-of-[t1imp_i1dclq( timp )]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

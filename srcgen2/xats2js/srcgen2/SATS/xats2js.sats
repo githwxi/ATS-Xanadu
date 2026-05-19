@@ -172,6 +172,16 @@ d2varfpr
 (filr: FILR, dvar: d2var): void
 //
 (* ****** ****** *)
+//
+fun
+i0chrfpr
+(filr: FILR, tchr: token): void
+//
+fun
+i0strfpr
+(filr: FILR, tstr: token): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
