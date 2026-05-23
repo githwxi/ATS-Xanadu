@@ -310,6 +310,8 @@ f0_ipat
 case+
 ipat.node() of
 //
+(* ****** ****** *)
+//
 |I0Pany _ => ((*void*))
 |I0Pvar _ => ((*void*))
 //
@@ -317,19 +319,19 @@ ipat.node() of
 //
 |I0Pint _ =>
 (
- f0_int0(b0, ival, ipat))
+f0_int0(b0, ival, ipat))
 |I0Pbtf _ =>
 (
- f0_btf0(b0, ival, ipat))
+f0_btf0(b0, ival, ipat))
 |I0Pchr _ =>
 (
- f0_chr0(b0, ival, ipat))
+f0_chr0(b0, ival, ipat))
 |I0Pflt _ =>
 (
- f0_flt0(b0, ival, ipat))
+f0_flt0(b0, ival, ipat))
 |I0Pstr _ =>
 (
- f0_str0(b0, ival, ipat))
+f0_str0(b0, ival, ipat))
 //
 (* ****** ****** *)
 //
@@ -696,12 +698,15 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
-in
-( if
-  i0pat_allq(ipat)
-  then print("true")
-  else f0_ipat(0(*conj*), ival, ipat) )
-end(*let*)//end-(i0pckjs1(filr,ival,ipat))
+in//let
+//
+(
+if // if
+i0pat_allq(ipat)
+then print("true")
+else f0_ipat(0(*conj*), ival, ipat)))
+//
+end(*let*)//end-of-[i0pckjs1(filr, ...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -842,8 +847,8 @@ end//let
 |
 optn_cons(idcl) =>
 let
-val (  ) = prints
-("T1IMPall1(",dcst,"<",t2js,">",";",idcl,")")
+val (  ) = prints("\
+T1IMPall1(",dcst,"<",t2js,">",";",idcl,")")
 end//let
 )
 //
