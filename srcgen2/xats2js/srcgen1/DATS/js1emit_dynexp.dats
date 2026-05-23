@@ -108,7 +108,7 @@ _(*DATS*)="./../DATS/js1emit.dats"
 (* ****** ****** *)
 //
 val
-EXCPTCON_BASE = 1000
+EXCPTCON_BASE = 1000000(*1M*)
 //
 (* ****** ****** *)
 //
@@ -132,7 +132,7 @@ EXCPTCON_BASE +
 postn_get_ntot(loc0.pbeg())
 end//let
 //
-end//end-of-[d2con_ctag$get]
+end//end-of-[d2con_ctag$get(.)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

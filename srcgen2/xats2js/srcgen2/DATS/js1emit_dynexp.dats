@@ -89,7 +89,7 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 val
-EXCPTCON_BASE = 1000
+EXCPTCON_BASE = 1000000(*1M*)
 //
 (* ****** ****** *)
 //
@@ -113,7 +113,7 @@ EXCPTCON_BASE +
 postn_get_ntot(loc0.pbeg())
 end//let
 //
-end//end-of-[d2con_ctag$get]
+end//end-of-[d2con_ctag$get(.)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -704,7 +704,7 @@ in//let
 if // if
 i0pat_allq(ipat)
 then print("true")
-else f0_ipat(0(*conj*), ival, ipat)))
+else f0_ipat(0(*conj*), ival, ipat))
 //
 end(*let*)//end-of-[i0pckjs1(filr, ...)]
 //
@@ -841,8 +841,8 @@ case+ dopt of
 |
 optn_nil() =>
 let
-val (  ) = prints
-("T1IMPall1(",dcst,"<",t2js,">",")")
+val (  ) = prints("\
+T1IMPall1(",dcst,"<",t2js,">",")")
 end//let
 |
 optn_cons(idcl) =>
@@ -860,14 +860,14 @@ case+ dopt of
 |
 optn_nil() =>
 let
-val (  ) = prints
-("T1IMPallx(",dcst,"<",t2js,">",")")
+val (  ) = prints("\
+T1IMPallx(",dcst,"<",t2js,">",")")
 end//let
 |
 optn_cons(idcl) =>
 let
-val (  ) = prints
-("T1IMPallx(",dcst,"<",t2js,">",";",idcl,")")
+val (  ) = prints("\
+T1IMPallx(",dcst,"<",t2js,">",";",idcl,")")
 end//let
 )
 //
@@ -1350,13 +1350,15 @@ strnfpr(filr, "XATS000_raise(");
 i1valjs1(filr, i1v0);strnfpr(filr, ")"))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |
 _(*otherwise*) => i1ins_fprint(iins,filr)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-end(*let*) // end-of-[i1insjs1(filr,iins)]
+end(*let*)//end-of-[i1insjs1( filr,iins )]
 //
 (* ****** ****** *)
 //
@@ -1373,11 +1375,13 @@ prerrsln
 *)
 //
 in//let
+//
 case+ icmp of
 (* ****** ****** *)
 |
 _(*otherwise*) => i1cmp_fprint(icmp,filr)
 (* ****** ****** *)
+//
 end(*let*) // end-of-[i1cmpjs1(filr,icmp)]
 //
 (* ****** ****** *)
