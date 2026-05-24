@@ -24,36 +24,22 @@ Wed Apr 29 06:59:33 PM EDT 2026
 (* ****** ****** *)
 //
 fun
-fac(n: nint): nint =
+fact(n: nint): nint =
 (
-  loop(0, 1)) where
+  auxlp(0, 1)) where
 {
 fun
-loop
+auxlp
 (i: nint, r: nint): nint =
 (
 if i < n
-then loop(i+1, (i+1)*r) else r)
+then auxlp(i+1, (i+1)*r) else r)
 }
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
-fun
-f00(tf: bool): sint =
-(
-  if tf then 10 else f00(not(tf)))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-f01
-(tf: bool):
-() -> sint = lam() =>
-(
-  if tf then 10 else f01(not(tf))())
+// val () = prints("fact(10) = ", fact(10), "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
