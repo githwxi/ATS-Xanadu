@@ -889,13 +889,22 @@ case+
 idcl.node() of
 //
 |
-I1Dtmpsub
-(svts, idcl) =>
+I1Ddclenv
+(dcl1, envs) =>
 (
-print(
-"I1Dtmpsub(");
+print("\
+I1Ddclenv(");
+prints(envs, ";");
+auxpr(dcl1); print(")"))//dclenv
+//
+|
+I1Dtmpsub
+(svts, dcl1) =>
+(
+print("\
+I1Dtmpsub(");
 prints(svts, ";");
-auxpr(idcl); print(")"))//tmpsub
+auxpr(dcl1); print(")"))//tmpsub
 //
 |
 I1Dfundclst
@@ -903,8 +912,8 @@ I1Dfundclst
 ,lvl0, tqas
 ,d2cs, i1fs) =>
 (
-prints(
-"I1Dfundclst(", d2cs, ")"))//funs
+prints("\
+I1Dfundclst(", d2cs, ")"))//funs
 //
 |
 I1Dimplmnt0
@@ -912,14 +921,14 @@ I1Dimplmnt0
 ,lvl0, stmp
 ,dimp, fjas, icmp) =>
 (
-prints(
-"I1Dimplmnt0(", dimp, ")"))//impl
+prints("\
+I1Dimplmnt0(", dimp, ")"))//impl
 //
 |
 _(* else *) => print("...I1DCL...")
 )
 //
-}(*where*)//end-of-[g_print<i1dcl>]
+}(*where*)//end-of-[g_print<i1dcl>()]
 //
 }(*where*)//end-of(t1impdcl(filr,timp))
 //
@@ -1045,6 +1054,11 @@ ival.node() of
 //
 |I1Vtop
 ( sym0 ) => print( "XATSTOP0" )
+//
+(* ****** ****** *)
+//
+|I1Venv
+( ienv ) => i1envjs1(filr,ienv)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1579,7 +1593,7 @@ envx2js_decnind(env0,2(*--*));
 nindstrnfpr(filr, nind, "} // endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")"))
 )
 //
-end//let//end-of-[f0_t1imp(...)]
+end(*let*)//end-of-[f0_t1imp(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1597,7 +1611,12 @@ val nind =
 envx2js_nind$get(env0)
 //
 in//let
+//
 let
+//
+val retq =
+(
+  i1cmp_retq(icmp))
 //
 val ival = icmp.ival()
 val (  ) =
@@ -1605,12 +1624,15 @@ i1cmp_js1emit(icmp, env0)
 //
 in//let
 //
+if retq then () else
+(
 nindstrnfpr
 (filr, nind, "return ");
-i1valjs1(filr, ival);fprintln(filr)
+i1valjs1(filr, ival);fprintln(filr))
 //
 end//let
-end//let//end-of-[f0_i1cmpret(...)]
+//
+end(*let*)//end-of-[f0_i1cmpret(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1633,6 +1655,10 @@ envx2js_filr$get(env0)
 val nind =
 envx2js_nind$get(env0)
 //
+val retq =
+(
+  i1cmp_retq(icmp))
+//
 val ival = icmp.ival()
 val ilts = icmp.ilts()
 //
@@ -1640,10 +1666,11 @@ val () =
 i1letlst_js1emit(ilts, env0)
 //
 val () =
+if retq then () else
 let
 nindfpr(filr, nind);i1tnmjs1(filr, itnm);
 strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
-end//let
+end//let//end-of-[if(retq)]
 //
 end//let//end-of-[f0_i1tnmcmp(...)]
 //
@@ -2042,11 +2069,22 @@ i1valjs1(filr, i1vl);strnfpr(filr, ", ");
 i1valjs1(filr, i1vr);strnfpr(filr, ")\n"))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSrturn
+(ical, icmp) =>
+(
+f0_i1cmpret(env0, icmp)
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |_(*otherwise*) =>
 (
 nindfpr(filr, nind);i1insjs1(filr, iins);fprintln(filr))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 )(*case+*)//end-of-[I1LETnew0(iins)]
@@ -2237,6 +2275,7 @@ end//let//end-of-[I1INSift0(...)]
 (cask
 ,i1v1, icls) =>
 let
+//
 val () =
 (
 nindstrnfpr
@@ -2392,6 +2431,15 @@ envx2js_incnind
 (
 envx2js_decnind
 ( env0,2(*--*) );nindstrnfpr(filr, nind, "}) // endfun(l1azy)\n")))
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSrturn
+(ical, icmp) =>
+(
+f0_i1cmpret(env0, icmp)
 )
 //
 (* ****** ****** *)

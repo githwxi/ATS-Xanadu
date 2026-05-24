@@ -269,6 +269,22 @@ end(*let*)//endof[d2varjs1(filr,dvar)]
 (* ****** ****** *)
 //
 #implfun
+i1envjs1
+(filr, ienv) =
+(
+prints
+("env", enum+1)) where
+{
+//
+#impltmp g_print$out<>() = filr
+//
+val enum = i1env_enum$get(ienv)
+//
+}(*where*)//endof[i1envjs1(filr,ienv)]
+//
+(* ****** ****** *)
+//
+#implfun
 i1tnmjs1
 (filr, itnm) =
 (

@@ -131,6 +131,12 @@ i0strjs1
 (* ****** ****** *)
 //
 fun
+i1envjs1
+(filr:FILR,ienv:i1env): void
+//
+(* ****** ****** *)
+//
+fun
 i1tnmjs1
 (filr:FILR,itnm:i1tnm): void
 //
