@@ -937,7 +937,7 @@ _(* else *) => print("...I1DCL...")
 //
 #implfun
 fjas1js1
-(filr,fjas) =
+(filr, fjas) =
 let
 //
 #impltmp
@@ -997,6 +997,93 @@ in
 (print("(")
 ;loop1(1(*i0*),fjas);print(")"))
 end(*let*)//end-of-[fjas1js1(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+fjas2js1
+(filr
+,fjas, i0ws) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+fnx
+loop1
+(i0: sint
+,fjas: fjarglst): void =
+(
+case+ fjas of
+|
+list_nil
+((*void*)) =>
+( if
+  (i0 >= 2)
+  then print(", ")
+; loop4(1(*i0*), i0ws))
+|
+list_cons
+(fja1, fjas) =>
+(
+  loop2(i0, fja1, fjas))
+)
+//
+and
+loop2
+(i0: sint
+,fja1: fjarg
+,fjas: fjarglst): void =
+(
+case+
+fja1.node() of
+|FJARGdarg(i1bs) =>
+(
+  loop3(i0, i1bs, fjas))
+)
+//
+and
+loop3
+(i0: sint
+,i1bs: i1bndlst
+,fjas: fjarglst): void =
+(
+case+ i1bs of
+|
+list_nil() =>
+(
+  loop1(i0, fjas))
+|
+list_cons(_, i1bs) =>
+( if
+  (i0 >= 2)
+  then print(", ")
+; prints("arg", i0)
+; loop3(i0+1, i1bs, fjas))
+)
+//
+and
+loop4
+(
+i0: sint,
+i0ws: i0varlst): void =
+(
+case+ i0ws of
+|list_nil() => ()
+|list_cons(_, i0ws) =>
+( if
+  (i0 >= 2)
+  then print(", ")
+; prints("env", i0)
+; loop4(i0+1, i0ws(*envs*)))
+)
+//
+in//
+//
+(print("(")
+;loop1(1(*i0*),fjas);print(")"))
+//
+end(*let*)//end-of-[fjas2js1(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
