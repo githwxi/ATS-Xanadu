@@ -554,16 +554,22 @@ end//let
 //
 val ( ) =
 let
+//
 val filr = env0.filr()
 val nind = env0.nind()
 val (  ) =
 (
-nindfpr(filr, nind);strnfpr(filr, "{ // fun\n"))
-end//let
+nindfpr(filr, nind);
+strnfpr(filr, "{ // fun\n");
+nindfpr(filr, nind);
+strnfpr
+(filr, "while(true) { // fun\n"))
+//
+end//let//end(val())
 //
 (* ****** ****** *)
 //
-val (  ) = // enter
+val (  ) = // lam-enter
 (
   envx2js_pshlam0(env0) )
 //
@@ -615,7 +621,8 @@ val nind = env0.nind()
 in//let
 //
 nindstrnfpr
-(filr, nind, "} // endfun(");
+(filr, nind, "} // endfun(while)\n");
+nindstrnfpr(filr, nind, "} // endfun(");
 d2varfpr(filr, dvar);strnfpr(filr, ")\n")
 //
 end//let

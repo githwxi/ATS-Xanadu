@@ -526,7 +526,12 @@ dfix:
 d2var, envs: i1valist): ( i1val )
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
+fun
+i1cmp_retq(icmp: i1cmp): ( bool )
+//
+(* ****** ****** *)
 fun
 i1val_conq(ival: i1val): ( bool )
 //
@@ -539,6 +544,7 @@ i1val_cfnq(ival: i1val): ( bool )
 fun
 i1val_fidq(ival: i1val): ( bool )
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
