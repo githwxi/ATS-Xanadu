@@ -279,6 +279,14 @@ i1clslst_js1emit
 (* ****** ****** *)
 //
 fun
+i1dclenv_js1emit
+(dcl0: i1dcl
+,i0ws: i0varlst, env0: !envx2js): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1dclist_js1emit
 (dcls: i1dclist, env0: !envx2js): void
 //
@@ -295,6 +303,9 @@ i1vardcl_js1emit
 fun
 i1fundcl_js1emit
 (ifun: i1fundcl, env0: !envx2js): void
+fun
+i1tfndcl_js1emit
+(ifun: i1fundcl, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -309,6 +320,9 @@ i1vardclist_js1emit
 fun
 i1fundclist_js1emit
 (i1fs: i1fundclist, env0: !envx2js): void
+fun
+i1tfndclist_js1emit
+(i1fs: i1fundclist, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -316,6 +330,30 @@ i1fundclist_js1emit
 fun
 i1dclistopt_js1emit
 (dopt: i1dclistopt, env0: !envx2js): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1fundcl_i0ws$js1emit
+(ifun
+:i1fundcl, i0ws: i0varlst, env0: !envx2js): void
+fun
+i1tfndcl_i0ws$js1emit
+(ifun
+:i1fundcl, i0ws: i0varlst, env0: !envx2js): void
+//
+(* ****** ****** *)
+//
+fun
+i1fundclist_i0ws$js1emit
+(i1fs
+:i1fundclist, i0ws: i0varlst, env0: !envx2js): void
+//
+fun
+i1tfndclist_i0ws$js1emit
+(i1fs
+:i1fundclist, i0ws: i0varlst, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
