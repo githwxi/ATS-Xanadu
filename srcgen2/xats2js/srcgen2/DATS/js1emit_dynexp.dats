@@ -1015,15 +1015,13 @@ loop1
 ,fjas: fjarglst): void =
 (
 case+ fjas of
-|
-list_nil
+|list_nil
 ((*void*)) =>
 ( if
   (i0 >= 2)
   then print(", ")
 ; loop4(1(*i0*), i0ws))
-|
-list_cons
+|list_cons
 (fja1, fjas) =>
 (
   loop2(i0, fja1, fjas))
@@ -1285,6 +1283,61 @@ strnfpr(filr,", ");i1valjs1(filr, x0))
 (* ****** ****** *)
 //
 fun
+i1valjs1_lst2
+( filr: FILR
+, i1vs: i1valist
+, envs: i1valist): void =
+(
+  loop1(0(*i0*), i1vs)
+) where
+{
+//
+fun loop1
+( i0: sint
+, i1vs: i1valist): void =
+(
+case+ i1vs of
+|list_nil() =>
+(
+  loop2(i0, envs))
+|list_cons(i1v1, i1vs) =>
+(
+  loop1(i0+1, i1vs)) where
+{
+val () =
+(
+if // if
+(i0 >= 1)
+then
+strnfpr
+(filr, ", "); i1valjs1(filr, i1v1))}
+)
+//
+and loop2
+( i0: sint
+, envs: i1valist): void =
+(
+case+ envs of
+|list_nil() => ()
+|list_cons
+(env1, envs) =>
+(
+  loop2(i0+1, envs)) where
+{
+val () =
+(
+if // if
+(i0 >= 1)
+then
+strnfpr
+(filr, ", "); i1valjs1(filr, env1))}
+)
+//
+}(*where*)//end-of-[i1valjs1_lst2(...)]
+//
+(* ****** ****** *)
+//
+fun
 l1i1vjs1_list
 ( filr: FILR
 , livs: l1i1vlst): void =
@@ -1368,10 +1421,25 @@ strnfpr(filr,", [");
 i1valjs1_list(filr,i1vs);strnfpr(filr,"])"))
 else // else
 (
+case+
+i1f0.node() of
+|I1Vfenv
+(d2f0, envs) =>
+(
+strnfpr
+(filr,"XATSDAPP(");
+d2varjs1(
+  filr,d2f0);strnfpr(filr,"(");
+i1valjs1_lst2(
+  filr,i1vs,envs);strnfpr(filr,"))"))
+|
+_(*otherwise*) =>
+(
 strnfpr
 (filr,"XATSDAPP(");
 i1valjs1(filr,i1f0);strnfpr(filr,"(");
 i1valjs1_list(filr,i1vs);strnfpr(filr,"))"))
+)
 )
 )
 //
