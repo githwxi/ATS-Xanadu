@@ -142,8 +142,8 @@ let
 (*
 //
 val () =
-prerrsln
-("i1dcl_js1emit: dcl0 = ", dcl0))
+prerrsln("\
+i1dcl_js1emit: dcl0 = ", dcl0))
 //
 *)
 in//let
@@ -308,7 +308,11 @@ end//let
 //
 val (  ) =
 (
-  i1dcl_js1emit( dcl1, env0 ))
+case+ i0ws of
+|list_nil() =>
+i1dcl_js1emit(dcl1, env0)
+|list_cons _ =>
+i1dclenv_js1emit(dcl1, i0ws, env0))
 //
 end(*let*)//end-of-[f0_dclenv(dcl0,env0)]
 //
@@ -481,7 +485,7 @@ list_nil() => // HX: functions
 |
 list_cons _ => // HX: templates
 (
-  i1tfndclist_xats2js(i1fs, env0)))
+  i1tfndclist_js1emit(i1fs, env0)))
 //
 end(*let*)//end-of-[f0_fundclst(dcl0,env0)]
 //
@@ -521,6 +525,22 @@ end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
 }(*where*)//end-of-[i1dcl_js1emit(dcl0,env0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+#implfun
+i1fundcl_js1emit
+  (ifun, env0) =
+(
+i1fundcl_xats2js(ifun, env0))
+*)
+//
+#implfun
+i1tfndcl_js1emit
+  (ifun, env0) =
+(
+i1tfndcl_xats2js(ifun, env0))
+//
 (* ****** ****** *)
 //
 #implfun
@@ -646,6 +666,112 @@ in//let
 end//let//end-of-[val()]
 //
 }(*where*)//end-of-[i1fundcl_js1emit(ifun,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1dclenv_js1emit
+(
+dcl0, i0ws, env0) =
+let
+(*
+//
+val () =
+prerrsln("\
+i1dcl_js1emit: dcl0 = ", dcl0))
+//
+*)
+in//let
+//
+case+
+dcl0.node() of
+//
+|
+I1Dfundclst _ =>
+(
+  f0_fundclst(dcl0, i0ws, env0))
+//
+|
+_(*otherwise*) => i1dcl_js1emit(dcl0, env0)
+//
+end where
+{
+//
+fun
+f0_fundclst
+(
+dcl0: i1dcl,
+i0ws: i0varlst,
+env0: !envx2js): void =
+let
+//
+val filr =
+  env0.filr((*void*))
+val nind =
+  env0.nind((*void*))
+val loc0 =
+  dcl0.lctn((*void*))
+//
+val-
+I1Dfundclst
+(tknd
+,lvl0, tqas
+,d2cs, i1fs) = dcl0.node()
+//
+val prfq =
+(
+  funtok_prfq( tknd ))
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+(
+  nindfpr(filr, nind));
+//
+if
+prfq
+then//then
+prints
+("// I1Dprfdclist(",loc0,")\n")
+else//else
+(
+case+ tqas of
+|
+list_nil() =>
+prints
+("// I1Dfundclist(",loc0,")\n")
+|
+list_cons _ =>
+prints
+("// I1Dtfndclist(",loc0,")\n"))
+//
+end//let
+//
+val (  ) =
+if
+prfq
+then//then
+(
+  i1fundclist_xats2js(i1fs, env0))
+else//else
+(
+case+ tqas of
+|list_nil() => // HX: functions
+(
+i1fundclist_i0ws$js1emit(i1fs, i0ws, env0))
+|list_cons _ => // HX: templates
+(
+i1tfndclist_i0ws$js1emit(i1fs, i0ws, env0)))
+//
+end(*let*)//end-of-[f0_fundclst(dcl0,i0ws,env0)]
+//
+}(*where*)//end-of-[i1dclenv_js1emit(dcl0,o0ws,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

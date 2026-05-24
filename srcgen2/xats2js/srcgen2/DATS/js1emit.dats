@@ -99,7 +99,7 @@ list_foritm$e1nv<x0><e1>(xs, e1)) where
 #vwtpdef e1 = envx2js
 #impltmp
 foritm$e1nv$work<x0><e1>(*x0,e1*) = fopr(*0*)
-} (*where*)//end of [list_js1emit_fnp(e1,xs,fopr)]
+}(*where*)//end-of-[list_js1emit_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
@@ -109,7 +109,8 @@ optn_js1emit_fnp
 ( xs, e1, fopr ) =
 (
 case+ xs of
-| optn_nil() => () | optn_cons(x1) => fopr(x1, e1))
+|
+optn_nil() => () | optn_cons(x1) => fopr(x1, e1))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -155,6 +156,12 @@ i1fundclist_js1emit
 (
   list_js1emit_fnp(i1fs, env0, i1fundcl_js1emit))
 //
+#implfun
+i1tfndclist_js1emit
+  (i1fs, env0) =
+(
+  list_js1emit_fnp(i1fs, env0, i1tfndcl_js1emit))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -163,6 +170,43 @@ i1dclistopt_js1emit
   (dopt, env0) =
 (
   optn_js1emit_fnp(dopt, env0, i1dclist_js1emit))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1fundclist_i0ws$js1emit
+  (i1fs, i0ws, env0) =
+(
+list_foritm$e1nv<x0><e1>(i1fs, env0)
+) where
+{
+#vwtpdef e1 = envx2js
+#typedef x0 = i1fundcl
+#impltmp
+foritm$e1nv$work
+<x0><e1>(ifun, env0) =
+(
+  i1fundcl_i0ws$js1emit(ifun, i0ws, env0))//impltmp
+}(*where*)//end-of-[i1fundclist_i0ws$js1emit(i1fs,...)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1tfndclist_i0ws$js1emit
+  (i1fs, i0ws, env0) =
+(
+list_foritm$e1nv<x0><e1>(i1fs, env0)
+) where
+{
+#vwtpdef e1 = envx2js
+#typedef x0 = i1fundcl
+#impltmp
+foritm$e1nv$work
+<x0><e1>(ifun, env0) =
+(
+  i1tfndcl_i0ws$js1emit(ifun, i0ws, env0))//impltmp
+}(*where*)//end-of-[i1tfndclist_i0ws$js1emit(i1fs,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
