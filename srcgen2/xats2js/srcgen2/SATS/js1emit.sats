@@ -170,6 +170,16 @@ l1i1vjs1
 (* ****** ****** *)
 //
 fun
+fjas2js1
+( filr
+: FILR
+, fjas
+: fjarglst, i0ws:i0varlst): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 list_js1emit_fnp
 (

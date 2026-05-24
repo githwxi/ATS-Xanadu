@@ -776,6 +776,135 @@ end(*let*)//end-of-[f0_fundclst(dcl0,i0ws,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1fundcl_i0ws$js1emit
+( ifun
+, i0ws, env0) = let
+//
+(* ****** ****** *)
+//
+val dvar =
+i1fundcl_dpid$get(ifun)
+val fjas =
+i1fundcl_farg$get(ifun)
+val tdxp =
+i1fundcl_tdxp$get(ifun)
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+(
+nindfpr(filr, nind);
+strnfpr(filr, "function ");
+d2varfpr(filr, dvar);
+fjas2js1(
+filr, fjas, i0ws);fprintln(filr))
+end//let
+//
+(* ****** ****** *)
+//
+val ( ) =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+val (  ) =
+(
+nindfpr(filr, nind);
+strnfpr(filr, "{ // fun\n");
+nindfpr(filr, nind);
+strnfpr
+(filr, "while(true) { // fun\n"))
+//
+end//let//end(val())
+//
+(* ****** ****** *)
+//
+val (  ) = // lam-enter
+(
+  envx2js_pshlam0(env0) )
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+//
+val ival = icmp.ival()
+//
+val (  ) =
+(
+  fjas1_js1emit(fjas, env0))
+val (  ) =
+(
+  i1cmp_js1emit(icmp, env0))
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+(
+nindfpr(filr, nind);
+strnfpr(filr, "return ");i1valjs1(filr, ival);fprintln(filr))
+end//let
+//
+(* ****** ****** *)
+end//let
+(* ****** ****** *)
+) (*case+*) // end-of-(teqi1exp)
+//
+val (  ) = envx2js_poplam0(env0)//leave
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+//
+nindstrnfpr
+(filr, nind, "} // endfun(while)\n");
+nindstrnfpr(filr, nind, "} // endfun(");
+d2varfpr(filr, dvar);strnfpr(filr, ")\n")
+//
+end//let
+//
+(* ****** ****** *)
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+(
+envx2js_filr$get(env0))
+val nind =
+(
+envx2js_nind$get(env0))
+in//let
+(
+ nindstrnfpr(filr, nind, "// I1FUNDCL\n"))
+end//let//end-of-[val()]
+//
+}(*where*)//end-of-[i1fundcl_i0ws$js1emit(ifun,i0ws,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_js1emit_decl00.dats] *)
 (***********************************************************************)
