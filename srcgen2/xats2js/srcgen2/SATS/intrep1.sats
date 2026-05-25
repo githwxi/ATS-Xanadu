@@ -560,9 +560,23 @@ i1val_node$get
 (* ****** ****** *)
 //
 fun
+d2var_tailq
+(dvar: d2var, ical: i0cal): bool
+fun
+i1val_tailq
+(ival: i1val, ical: i0cal): bool
+fun
+i1cmp_tailq
+(icmp: i1cmp, ical: i0cal): bool
+//
+(* ****** ****** *)
+//
+fun
 i1val_none0(loc0: loc_t): (i1val)
 fun
 i1val_none1(iexp: i0exp): (i1val)
+//
+(* ****** ****** *)
 //
 fun
 i1val_make_node

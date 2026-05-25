@@ -1751,7 +1751,8 @@ case+ fjas of
 (
 nindstrnfpr
 (filr, nind, "} // endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")"))
-|_(*list_nil()*) =>
+|
+_(*list_nil()*) =>
 (
 nindstrnfpr
 (filr, nind, "} () // endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")"))
@@ -1799,6 +1800,129 @@ i1valjs1(filr, ival);fprintln(filr))
 end//let
 //
 end(*let*)//end-of-[f0_i1cmpret(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_i1cmprtn
+( env0:
+! envx2js
+, icmp: i1cmp): void =
+let
+//
+fun
+auxlp1
+( env0:
+! envx2js
+, ilts
+: i1letlst): void =
+(
+case+ ilts of
+|list_nil
+(  (*0*)  ) => ()
+|list_cons
+(ilt1, ilts) =>
+(
+auxlp2(env0, ilts, ilt1))
+)
+//
+and
+auxlp2
+( env0:
+! envx2js
+, ilts
+: i1letlst
+, ilt1: i1let): void =
+(
+case+ ilts of
+//
+|list_nil
+(   (*0*)  ) =>
+(
+case- ilt1 of
+|I1LETnew1
+(itnm, iins) =>
+(
+case- iins of
+|I1INSdapp
+(i1f0, i1vs) =>
+auxlp3(env0, i1vs, i1f0))
+)
+//
+|list_cons
+(ilt2, ilts) =>
+(
+auxlp2(env0, ilts, ilt2))
+where
+{
+val () =
+(
+  i1let_js1emit(ilt1, env0))
+}
+)
+//
+and
+auxlp3
+( env0:
+! envx2js
+, i1vs
+: i1valist
+, i1f0: i1val): void =
+let
+//
+val i0 = 1
+//
+val nind =
+envx2js_nind$get(env0)
+val filr =
+envx2js_filr$get(env0)
+//
+val (  ) =
+(
+  nindfpr(filr, nind))
+//
+in//let
+(
+auxlp4(filr, i0, i1vs, i1f0))
+end//let
+//
+and
+auxlp4
+( filr
+: FILR
+, i0: sint
+, i1vs
+: i1valist
+, i1f0: i1val): void =
+(
+case+ i1vs of
+//
+|list_nil
+(  (*0*)  ) =>
+(
+prints(
+"continue // ", i1f0, "\n"))
+//
+|list_cons
+(i1v1, i1vs) =>
+(
+prints(
+"arg", i0, " = ", i1v1, "; ");
+auxlp4(filr, i0+1, i1vs, i1f0))
+//
+) where
+{
+//
+#impltmp
+g_print$out<>() = filr
+#impltmp
+g_print<i1val>(x) = i1valjs1(filr, x)
+//
+}
+//
+in//let
+  auxlp1(env0, icmp.ilts((*void*)))
+end(*let*)//end-of-[f0_i1cmprtn(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2240,8 +2364,10 @@ i1valjs1(filr, i1vr);strnfpr(filr, ")\n"))
 |I1INSrturn
 (ical, icmp) =>
 (
-f0_i1cmpret(env0, icmp)
-)
+if // if
+i1cmp_tailq
+(icmp, ical) then
+f0_i1cmprtn(env0, icmp) else f0_i1cmpret(env0, icmp))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2605,8 +2731,10 @@ envx2js_decnind
 |I1INSrturn
 (ical, icmp) =>
 (
-f0_i1cmpret(env0, icmp)
-)
+if // if
+i1cmp_tailq
+(icmp, ical) then
+f0_i1cmprtn(env0, icmp) else f0_i1cmpret(env0, icmp))
 //
 (* ****** ****** *)
 (* ****** ****** *)

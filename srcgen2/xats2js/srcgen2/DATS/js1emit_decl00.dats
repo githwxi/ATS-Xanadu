@@ -742,7 +742,8 @@ val nind = env0.nind()
 in//let
 (
 nindfpr(filr, nind);
-strnfpr(filr, "return ");i1valjs1(filr, ival);fprintln(filr))
+strnfpr(filr, "// return ");
+i1valjs1(filr, ival);fprintln(filr))
 end//let
 //
 (* ****** ****** *)
@@ -977,7 +978,8 @@ val nind = env0.nind()
 in//let
 (
 nindfpr(filr, nind);
-strnfpr(filr, "return ");i1valjs1(filr, ival);fprintln(filr))
+strnfpr(filr, "// return ");
+i1valjs1(filr, ival);fprintln(filr))
 end//let
 //
 (* ****** ****** *)
