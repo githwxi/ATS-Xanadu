@@ -2037,7 +2037,6 @@ end//let
 //
 (* ****** ****** *)
 //
-//
 fun
 f0_let0
 (d3e0: d3exp
@@ -2183,7 +2182,7 @@ in//let
 //
 let
 val
-i0e1 = d3exp_trxd3i0(d3e1, env0)
+i0e1 = d3rex_trxd3i0(d3e1, env0)
 in//let
 (
 i0exp(
