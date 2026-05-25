@@ -686,17 +686,22 @@ gseq_foldr<list(x0)><x0><r0>(*(xs,r0)*)
 list_exists(xs) =
   (loop(xs)) where
 {
+//
 fnx
 loop
 (xs: list(x0)): bool =
 (
 case+ xs of
-| list_nil() => false
-| list_cons(x0, xs) =>
-  if
-  exists$test<x0>(x0)
-  then true else loop(xs)
+|
+list_nil() => false
+|
+list_cons(x0, xs) =>
+(
+if // if
+exists$test<x0>(x0)
+then (true) else loop(xs))
 )
+//
 }(*where*)//end-of-[list_exists(xs)]
 //
 (* ****** ****** *)

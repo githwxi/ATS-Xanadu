@@ -2503,6 +2503,175 @@ val ilts = envi0i1_popblk0(env0)
 (* ****** ****** *)
 //
 #implfun
+i0gua_trxi0i1
+(igua, env0) =
+(
+case+
+igua.node() of
+//
+|I0GUAexp
+(  iexp  ) =>
+i1gua
+(
+loc0, I1GUAexp(icmp)
+) where
+{
+val icmp =
+i0blk_trxi0i1(iexp, env0)
+}(*where*)//end(I0GUAexp)
+//
+|I0GUAmat
+(iexp, ipat) =>
+let
+//
+val icmp =
+i0blk_trxi0i1(iexp, env0)
+val ibnd =
+i0pat_trxi0i1(ipat, env0)
+//
+in//let
+i1gua(
+  loc0, I1GUAmat(icmp, ibnd))
+end//let
+) where
+{
+//
+val loc0 = igua.lctn((*void*))
+//
+(*
+val (  ) =
+(
+prerrsln("i0gua_trxi0i1: igua = ", igua))
+*)
+//
+}(*where*)//end-of-[i0gua_trxi0i1(igua,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0gpt_trxi0i1
+(igpt, env0) =
+(
+case+
+igpt.node() of
+//
+|I0GPTpat
+(  ipat  ) =>
+(
+i1gpt
+(
+loc0,
+I1GPTpat(ibnd))) where
+{
+//
+val loc0 = igpt.lctn()
+//
+val ibnd =
+i0pat_trxi0i1(ipat, env0)
+}(*where*)//endof(I0GPTpat)
+//
+|I0GPTgua
+(ipat, i0gs) =>
+let
+//
+val ibnd =
+i0pat_trxi0i1(ipat, env0)
+val i1gs =
+i0gualst_trxi0i1(i0gs, env0)
+//
+in//let
+//
+let
+val loc0 = igpt.lctn()
+in//let
+i1gpt(loc0, I1GPTgua(ibnd, i1gs))
+end//let
+//
+end//let//endof[I0GPTgua(ipat,i0gs)]
+//
+) where
+{
+//
+(*
+val (  ) =
+(
+prerrsln("i0gpt_trxi0i1: igpt = ", igpt))
+*)
+//
+}(*where*)//end-of-[i0gpt_trxi0i1(igpt,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0cls_trxi0i1
+(icls, env0) =
+(
+case+
+icls.node() of
+//
+|I0CLSgpt
+(  igpt  ) =>
+(
+i1cls
+(
+loc0,
+I1CLSgpt(igpt))) where
+{
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+//
+val loc0 = icls.lctn()
+//
+val igpt =
+i0gpt_trxi0i1(igpt, env0)
+//
+val // HX: [ilts] is empty
+ilts = envi0i1_poplam0( env0 )
+//
+}(*where*)//end of [I0CLSgpt(igpt)]
+//
+|I0CLScls
+(igpt, iexp) =>
+let
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+//
+val igpt =
+i0gpt_trxi0i1(igpt, env0)
+//
+val ival =
+i0exp_trxi0i1(iexp, env0)
+//
+val
+ilts = envi0i1_poplam0( env0 )
+//
+val icmp = I1CMPcons(ilts, ival)
+//
+in
+let
+val loc0 = icls.lctn()
+in//let
+  i1cls(loc0, I1CLScls(igpt, icmp))
+end//let
+end//let//end of [I0CLScls(igpt,iexp)]
+//
+) where
+{
+//
+(*
+val (  ) =
+(
+prerrsln("i0cls_trxi0i1: icls = ", icls))
+*)
+//
+}(*where*)//end-of-[i0cls_trxi0i1(icls,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 fiarglst_trxi0i1
 ( fias, env0 ) =
 (
