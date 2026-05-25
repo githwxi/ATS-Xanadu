@@ -1505,9 +1505,7 @@ iexp.node() of
 (* ****** ****** *)
 //
 |I0Eift0 _ => f0_ift0(iexp, env0)
-(*
 |I0Ecas0 _ => f0_cas0(iexp, env0)
-*)
 //
 (* ****** ****** *)
 //
@@ -2063,6 +2061,45 @@ prerrsln("f0_ift0(01): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_ift0(iexp,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cas0
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Ecas0
+(
+cask,
+i0e1, icls) = iexp.node()
+//
+val i1v1 =
+i0exp_trxi0i1(i0e1, env0)
+//
+val icls =
+i0clslst_trxi0i1(icls, env0)
+//
+in//let
+(
+  i1val_cas0
+  (env0, loc0, cask, i1v1, icls))
+end where
+{
+//
+(*
+val () =
+(
+prerr("i0exp_trxi0i1:");
+prerrsln("f0_cas0(01): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_cas0(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

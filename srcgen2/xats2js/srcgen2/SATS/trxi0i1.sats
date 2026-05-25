@@ -291,6 +291,18 @@ fiarg_trxi0i1
 (* ****** ****** *)
 //
 fun
+i0gua_trxi0i1
+(igua: i0gua, env0: !envi0i1): i1gua
+fun
+i0gpt_trxi0i1
+(igua: i0gpt, env0: !envi0i1): i1gpt
+fun
+i0cls_trxi0i1
+(icls: i0cls, env0: !envi0i1): i1cls
+//
+(* ****** ****** *)
+//
+fun
 t0imp_trxi0i1
 (timp: t0imp, env0: !envi0i1): t1imp
 //
@@ -322,6 +334,17 @@ fun
 fiarglst_trxi0i1
 (fias: fiarglst, env0: !envi0i1): fjarglst
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0gualst_trxi0i1
+(i0gs: i0gualst, env0: !envi0i1): i1gualst
+fun
+i0clslst_trxi0i1
+(icls: i0clslst, env0: !envi0i1): i1clslst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
