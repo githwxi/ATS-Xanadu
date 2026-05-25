@@ -144,6 +144,21 @@ i0explst_trxi0i1
 (* ****** ****** *)
 //
 #implfun
+i0gualst_trxi0i1
+( i0gs, env0 ) =
+(
+  list_trxi0i1_fnp(i0gs, env0, i0gua_trxi0i1))
+//
+#implfun
+i0clslst_trxi0i1
+( icls, env0 ) =
+(
+  list_trxi0i1_fnp(icls, env0, i0cls_trxi0i1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i0dclist_trxi0i1
 ( dcls, env0 ) =
 (

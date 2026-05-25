@@ -3121,7 +3121,7 @@ val (  ) =
  prerrsln("trxi0i1_i0gua: igua = ", igua))
 *)
 //
-}(*where*)//end-of-[trxi0i1_i0cls(env0,iexp)]
+}(*where*)//end-of-[trxi0i1_i0gua(env0,igua)]
 //
 (* ****** ****** *)
 //
@@ -3176,7 +3176,7 @@ val (  ) =
  prerrsln("trxi0i1_i0gpt: igpt = ", igpt))
 *)
 //
-}(*where*)//end-of-[trxi0i1_i0cls(env0,iexp)]
+}(*where*)//end-of-[trxi0i1_i0gpt(env0,igpt)]
 //
 (* ****** ****** *)
 //
@@ -3246,7 +3246,7 @@ val (  ) =
  prerrsln("trxi0i1_i0cls: icls = ", icls))
 *)
 //
-}(*where*)//end-of-[trxi0i1_i0cls(env0,iexp)]
+}(*where*)//end-of-[trxi0i1_i0cls(env0,icls)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

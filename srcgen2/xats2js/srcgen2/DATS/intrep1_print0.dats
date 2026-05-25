@@ -537,6 +537,68 @@ end(*let*)//end-of-[fjarg_fprint(farg,out0)]
 (* ****** ****** *)
 //
 #implfun
+i1gua_fprint
+(igua, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+igua.node() of
+|I1GUAexp(icmp) =>
+(
+prints("I1GUAexp(",icmp,")"))
+|I1GUAmat(icmp,ibnd) =>
+(
+prints("I1GUAmat(", icmp,";", ibnd,")"))
+//
+end(*let*)//end-of-[i1gua_fprint(igua,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1gpt_fprint
+(igpt, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+igpt.node() of
+|I1GPTpat(ibnd) =>
+(
+prints("I1GPTpat(", ibnd, ")"))
+|I1GPTgua(ibnd,i1gs) =>
+(
+prints("I1GPTgua(", ibnd,";", i1gs,")"))
+//
+end(*let*)//end-of-[i1gpt_fprint(igpt,out0)]
+//
+#implfun
+i1cls_fprint
+(icls, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+icls.node() of
+|I1CLSgpt(igpt) =>
+(
+prints("I1CLSgpt(", igpt, ")"))
+|I1CLScls(igpt,icmp) =>
+(
+prints("I1CLScls(", igpt,";", icmp,")"))
+//
+end(*let*)//end-of-[i1cls_fprint(icls,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 t1imp_fprint
 (timp, out0) =
 let

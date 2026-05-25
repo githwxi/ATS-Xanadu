@@ -171,7 +171,7 @@ let
   val+I1GUA(loc,nod) = gua in nod
 end
 //
-endloc (*local*) // end of [local(i1gua)]
+endloc(*local*)//end-of-[local(i1gua)]
 //
 (* ****** ****** *)
 //
@@ -202,7 +202,7 @@ let
   val+I1GPT(loc,nod) = gpt in nod
 end
 //
-endloc (*local*) // end of [local(i1gpt)]
+endloc(*local*)//end-of-[local(i1gpt)]
 //
 (* ****** ****** *)
 //

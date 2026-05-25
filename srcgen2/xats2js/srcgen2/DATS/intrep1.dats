@@ -377,6 +377,119 @@ endloc(*local*)//end-of-[local(i1val_tbox)]
 local
 //
 datatype
+i1gua =
+I1GUA of
+(
+loctn, i1gua_node)
+#absimpl
+i1gua_tbox = i1gua
+//
+in (* in-of-local *)
+//
+#implfun
+i1gua_make_node
+( loc0, node ) =
+(
+  I1GUA(loc0, node))
+//
+#implfun
+i1gua_lctn$get
+  (igua) =
+let
+val+
+I1GUA
+(loc0, node) = igua in loc0 endlet
+#implfun
+i1gua_node$get
+  (igua) =
+let
+val+
+I1GUA
+(loc0, node) = igua in node endlet
+//
+endloc(*local*)//end-of-[local(i1gua_tbox)]
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1gpt =
+I1GPT of
+(
+loctn, i1gpt_node)
+#absimpl
+i1gpt_tbox = i1gpt
+//
+in (* in-of-local *)
+//
+#implfun
+i1gpt_make_node
+( loc0, node ) =
+(
+  I1GPT(loc0, node))
+//
+#implfun
+i1gpt_lctn$get
+  (igpt) =
+let
+val+
+I1GPT
+(loc0, node) = igpt in loc0 endlet
+#implfun
+i1gpt_node$get
+  (igpt) =
+let
+val+
+I1GPT
+(loc0, node) = igpt in node endlet
+//
+endloc(*local*)//end-of-[local(i1gpt_tbox)]
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1cls =
+I1CLS of
+(
+loctn, i1cls_node)
+#absimpl
+i1cls_tbox = i1cls
+//
+in (* in-of-local *)
+//
+#implfun
+i1cls_make_node
+( loc0, node ) =
+(
+  I1CLS(loc0, node))
+//
+#implfun
+i1cls_lctn$get
+  (icls) =
+let
+val+
+I1CLS
+(loc0, node) = icls in loc0 endlet
+//
+#implfun
+i1cls_node$get
+  (icls) =
+let
+val+
+I1CLS
+(loc0, node) = icls in node endlet
+//
+endloc(*local*)//end-of-[local(i1cls_tbox)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
 fjarg =
 FJARG of
 (

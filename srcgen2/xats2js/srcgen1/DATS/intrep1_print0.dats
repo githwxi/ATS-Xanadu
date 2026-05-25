@@ -681,7 +681,7 @@ I1CLSgpt(igpt) =>
 I1CLScls(igpt,icmp) =>
 (
   prints("I1CLScls(",igpt,";",icmp,")"))
-end (*let*) // end of [i1cls_fprint(icls,out0)]
+end(*let*)//end-of-[i1cls_fprint(icls,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
