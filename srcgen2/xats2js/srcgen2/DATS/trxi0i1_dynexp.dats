@@ -1485,6 +1485,11 @@ iexp.node() of
 //
 (* ****** ****** *)
 //
+|I0Esapp _ => f0_sapp(iexp, env0)
+|I0Esapq _ => f0_sapq(iexp, env0)
+//
+(* ****** ****** *)
+//
 |I0Etapp _ => f0_tapp(iexp, env0)
 |I0Etapq _ => f0_tapq(iexp, env0)
 //
@@ -1507,6 +1512,14 @@ iexp.node() of
 (* ****** ****** *)
 //
 |I0Eseqn _ => f0_seqn(iexp, env0)
+//
+(* ****** ****** *)
+//
+|I0Etup0 _ => f0_tup0(iexp, env0)
+(*
+|I0Etup1 _ => f0_tup1(iexp, env0)
+|I0Ercd2 _ => f0_rcd2(iexp, env0)
+*)
 //
 (* ****** ****** *)
 //
@@ -1821,6 +1834,41 @@ prerrsln("f0_timp(01): iexp = ", iexp))
 (* ****** ****** *)
 //
 fun
+f0_sapp
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Esapp
+(i0f0, s2es) = iexp.node()
+in//let
+(
+  i0exp_trxi0i1(i0f0, env0)) end//let
+//
+fun
+f0_sapq
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Esapq
+(i0f0, i0ts) = iexp.node()
+in//let
+(
+  i0exp_trxi0i1(i0f0, env0)) end//let
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_tapp
 (
 iexp: i0exp,
@@ -1847,7 +1895,7 @@ val loc0 = iexp.lctn()
 //
 val-
 I0Etapq
-(i0f0, tjas) = iexp.node()
+(i0f0, i0js) = iexp.node()
 in//let
 (
   i0exp_trxi0i1(i0f0, env0)) end//let
@@ -1904,8 +1952,9 @@ I0Edapp
 //
 val i1f0 =
 i0exp_trxi0i1(i0f0, env0)
+//
 val i1vs =
-i0explst_trxi0i1(i0es, env0)
+f1_npf1$i0es(npf1, i0es, env0)
 //
 in//let
 (
@@ -2059,7 +2108,7 @@ where{
 //
 in//let
 (
-  i0exp_trxi0i1(i0e1, env0) )
+  i0exp_trxi0i1( i0e1, env0 ))
 end where
 {
 //
@@ -2071,6 +2120,40 @@ prerrsln("f0_seqn(01): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_seqn(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_tup0
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Etup0
+(npf1, i0es) = iexp.node()
+//
+val i1vs =
+f1_npf1$i0es(npf1, i0es, env0)
+//
+in
+(
+  i1val_tup0(env0, loc0, i1vs) )
+end where
+{
+//
+(*
+val () =
+(
+prerr("i0exp_trxi0i1:");
+prerrsln("f0_tup0(01): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_tup0(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2322,6 +2405,38 @@ val () =
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+} where
+{
+//
+fun
+f1_npf1$i0es
+(
+npf1: sint,
+i0es: i0explst,
+env0: !envi0i1): i1valist =
+(
+if
+(npf1 <= 0)
+then
+i0explst_trxi0i1(i0es, env0)
+else
+(
+case+ i0es of
+|list_nil
+( (*0*) ) => list_nil(*0*)
+|list_cons
+(i0e1, i0es) =>
+let
+//
+val npf1 = npf1-1
+//
+in//let
+(
+f1_npf1$i0es(npf1, i0es, env0))
+end//let//end-of-[list_cons(...)]
+)
+)
 //
 }(*where*)//end-of-[i0exp_trxi0i1(iexp,env0)]
 //

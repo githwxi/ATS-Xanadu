@@ -1299,9 +1299,9 @@ val i0t0 =
 val i0f0 =
 (
   d3exp_trxd3i0(d3f0, env0))
+//
 val i0es =
-(
-d3explst_trxd3i0(d3es, env0))
+f1_npf1$d3es(npf1, d3es, env0)
 //
 in//let
 (
@@ -1545,8 +1545,7 @@ val i0t0 =
   s2typ_trxd3i0(t2p0, env0))
 //
 val i0es =
-(
-d3explst_trxd3i0(d3es, env0))
+f1_npf1$d3es(npf1, d3es, env0)
 //
 in//let
 //
@@ -1576,8 +1575,7 @@ val i0t0 =
   s2typ_trxd3i0(t2p0, env0))
 //
 val i0es =
-(
-d3explst_trxd3i0(d3es, env0))
+f1_npf1$d3es(npf1, d3es, env0)
 //
 in//let
 //
@@ -1884,6 +1882,48 @@ end(*let*)//end-of-[f0_extnam(d3e0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+} where
+{
+//
+fun
+f1_npf1$d3es
+(
+npf1: sint,
+d3es: d3explst,
+env0: !envd3i0): i0explst =
+(
+if
+(npf1 <= 0)
+then
+d3explst_trxd3i0(d3es, env0)
+else
+(
+case+ d3es of
+|list_nil
+( (*0*) ) => list_nil(*0*)
+|list_cons
+(d3e1, d3es) =>
+let
+//
+val npf1 = npf1-1
+//
+val loc1 = d3e0.lctn((*0*))
+val t2p1 = d3e0.styp((*0*))
+val i0t1 =
+(
+  s2typ_trxd3i0(t2p1, env0))
+val i0e1 =
+i0exp_make_ityp$node
+(
+  loc1, i0t1, I0Edexp(d3e1))
+//
+in//let
+list_cons(i0e1,
+f1_npf1$d3es(npf1, d3es, env0))
+end//let//end-of-[list_cons(...)]
+)
+)
 //
 }(*where*)//end-of-[d3exp_trxd3i0(d3e0,env0)]
 //

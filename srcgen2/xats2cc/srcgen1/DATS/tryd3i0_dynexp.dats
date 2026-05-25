@@ -122,10 +122,13 @@ i0e0.node() of
 //
 (* ****** ****** *)
 //
-(*
 |I0Esapp _ => f0_sapp(i0e0, enw0)
 |I0Esapq _ => f0_sapq(i0e0, enw0)
-*)
+//
+(* ****** ****** *)
+//
+|I0Etapp _ => f0_tapp(i0e0, enw0)
+|I0Etapq _ => f0_tapq(i0e0, enw0)
 //
 (* ****** ****** *)
 //
@@ -140,6 +143,20 @@ i0e0.node() of
 //
 |I0Eift0 _ => f0_ift0(i0e0, enw0)
 |I0Ecas0 _ => f0_cas0(i0e0, enw0)
+//
+(* ****** ****** *)
+//
+|I0Eseqn _ => f0_seqn(i0e0, enw0)
+//
+(* ****** ****** *)
+//
+|I0Edexp _ => f0_dexp(i0e0, enw0)
+//
+|I0Etup0 _ => f0_tup0(i0e0, enw0)
+(*
+|I0Etup1 _ => f0_tup1(i0e0, enw0)
+|I0Ercd2 _ => f0_rcd2(i0e0, enw0)
+*)
 //
 (* ****** ****** *)
 //
@@ -206,6 +223,128 @@ i0exp(
 loc0, i0t0, I0Etimp(i0e1, timp)))
 //
 end(*let*)//end-of-[f0_timp(i0e0,enw0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_sapp
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Esapp
+(i0f0, s2es) = i0e0.node()
+//
+val i0f0 =
+(
+  i0exp_tryd3i0(i0f0, enw0))
+//
+in//let
+//
+(
+i0exp(
+loc0, i0t0, I0Esapp(i0f0, s2es)))
+//
+end(*let*)//end-of-[f0_sapp(i0e0,enw0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_sapq
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Esapq
+(i0f0, i0ts) = i0e0.node()
+//
+val i0f0 =
+(
+  i0exp_tryd3i0(i0f0, enw0))
+//
+in//let
+//
+(
+i0exp(
+loc0, i0t0, I0Esapq(i0f0, i0ts)))
+//
+end(*let*)//end-of-[f0_sapq(i0e0,enw0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_tapp
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Etapp
+(i0f0, s2es) = i0e0.node()
+//
+val i0f0 =
+(
+  i0exp_tryd3i0(i0f0, enw0))
+//
+in//let
+//
+(
+i0exp(
+loc0, i0t0, I0Etapp(i0f0, s2es)))
+//
+end(*let*)//end-of-[f0_tapp(i0e0,enw0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tapq
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Etapq
+(i0f0, i0js) = i0e0.node()
+//
+val i0f0 =
+(
+  i0exp_tryd3i0(i0f0, enw0))
+//
+in//let
+//
+(
+i0exp(
+loc0, i0t0, I0Etapq(i0f0, i0js)))
+//
+end(*let*)//end-of-[f0_tapq(i0e0,enw0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -384,6 +523,78 @@ i0exp(loc0,
   i0t0, I0Ecas0(tknd,i0e1,icls)))
 //
 end(*let*)//end-of-[f0_cas0(i0e0,enw0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_seqn
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Eseqn
+(i0es, i0e1) = i0e0.node()
+//
+val i0es =
+(
+i0explst_tryd3i0(i0es, enw0))
+//
+in//let
+//
+let
+val i0e1 =
+(
+  i0exp_tryd3i0( i0e1, enw0 ))
+in//let
+(
+i0exp(
+loc0, i0t0, I0Eseqn(i0es, i0e1)))
+end//let
+//
+end(*let*)//end-of-[f0_seqn(i0e0,enw0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dexp
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp = i0e0
+//
+fun
+f0_tup0
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Etup0
+(npf1, i0es) = i0e0.node()
+//
+val i0es =
+(
+i0explst_tryd3i0(i0es, enw0))
+//
+in//let
+(
+i0exp(
+loc0, i0t0, I0Etup0(npf1, i0es)))
+end(*let*)//end-of-[f0_tup0(i0e0,enw0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

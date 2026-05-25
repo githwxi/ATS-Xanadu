@@ -33,13 +33,21 @@ auxlp
 (i: nint, r: nint): nint =
 (
 if i < n
-then auxlp(i+1, (i+1)*r) else r)
+then
+auxlp(i+1, (i+1)*r) else r)
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-// val () = prints("fact(10) = ", fact(10), "\n")
+val () =
+prints("\
+fact(10) = ", fact(10), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () = the_print_store_log( (*void*) )
 //
 (* ****** ****** *)
 (* ****** ****** *)
