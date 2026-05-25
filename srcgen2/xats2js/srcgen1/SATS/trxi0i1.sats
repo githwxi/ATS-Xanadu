@@ -296,6 +296,7 @@ trxi0i1_fiarg
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
 trxi0i1_i0gua
 (env0: !envi0i1, igua: i0gua): i1gua
@@ -305,6 +306,7 @@ trxi0i1_i0gpt
 fun
 trxi0i1_i0cls
 (env0: !envi0i1, icls: i0cls): i1cls
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -24,7 +24,7 @@ Wed Apr 29 06:59:33 PM EDT 2026
 (* ****** ****** *)
 //
 fun
-fact(n: nint): nint =
+fact1(n: nint): nint =
 (
   auxlp(0, 1)) where
 {
@@ -32,17 +32,42 @@ fun
 auxlp
 (i: nint, r: nint): nint =
 (
-if i < n
-then
-auxlp(i+1, (i+1)*r) else r)
+if
+(i < n) then
+auxlp(i+1, (i+1)*r) else (r))
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+fact2(n: nint): nint =
+(
+  auxlp(0, 1)) where
+{
+fun
+auxlp
+(i: nint, r: nint): nint =
+(
+case+
+(i >= n) of
+|true => (r)
+|false => auxlp(i+1, (i+1)*r))
+}
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
 val () =
 prints("\
-fact(10) = ", fact(10), "\n")
+fact1(10) = ", fact1(10), "\n")
+//
+(* ****** ****** *)
+//
+val () =
+prints("\
+fact2(10) = ", fact2(10), "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
