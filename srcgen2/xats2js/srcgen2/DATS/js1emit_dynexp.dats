@@ -1745,8 +1745,19 @@ envx2js_incnind(env0,2(*++*));
 fjarglst_js1emit(fjas, env0);f0_i1cmpret(env0, icmp));
 envx2js_decnind(env0,2(*--*));
 //
-nindstrnfpr(filr, nind, "} // endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")"))
+(
+case+ fjas of
+|list_cons _ =>
+(
+nindstrnfpr
+(filr, nind, "} // endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")"))
+|_(*list_nil()*) =>
+(
+nindstrnfpr
+(filr, nind, "} () // endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")"))
 )
+)//end-of-(I1Dimplmnt0())
+)//end-of-(optn_cons(...))
 //
 end(*let*)//end-of-[f0_t1imp(...)]
 //

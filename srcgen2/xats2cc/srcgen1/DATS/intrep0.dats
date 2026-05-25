@@ -424,8 +424,8 @@ val loc0 = iexp.lctn()
 val ityp = iexp.ityp()
 in//let
 i0exp_make_ityp$node
-(loc0,ityp, I0Erturn(ical, iexp))
-end//let//end-of-(i0exp_rturn(ical,iexp)]
+(loc0, ityp, I0Erturn(ical,iexp))
+end//let//end-of-[i0exp_rturn(ical,iexp)]
 //
 (* ****** ****** *)
 //

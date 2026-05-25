@@ -653,6 +653,8 @@ i0exp_node =
 //
 (* ****** ****** *)
 //
+|I0Edexp of (d3exp) // HX:erased
+//
 |I0Etup0 of
 (sint(*npf*),i0explst) // HX:flat
 |I0Etup1 of

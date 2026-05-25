@@ -476,19 +476,22 @@ prints(
 |I0Edap0
 (   i0f0   ) =>
 prints("I0Edap0(", ")")
+//
 |I0Edapp
 (i0f0
 ,npf1, i0es) =>
 (
 print("I0Edapp(");
-prints(i0f0,";", npf1,";", i0es,")"))
+prints
+(i0f0, ";", npf1, ";", i0es, ")"))
 //
 (* ****** ****** *)
 //
 |I0Elet0
 (dcls, i0e1) =>
 (
-prints("I0Elet0(",dcls,";",i0e1,")"))
+prints
+("I0Elet0(", dcls, ";", i0e1, ")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -498,14 +501,16 @@ prints("I0Elet0(",dcls,";",i0e1,")"))
 ,ithn, iels) =>
 (
 print("I0Eift0(");
-prints(test,";", ithn,";", iels,")"))
+prints(
+  test, ";", ithn, ";", iels, ")"))
 //
 |I0Ecas0
 (tknd
 ,i0e1, icls) =>
 (
 print("I0Ecas0(");
-prints(tknd,";", i0e1,";", icls,")"))
+prints(
+  tknd, ";", i0e1, ";", icls, ")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -513,7 +518,38 @@ prints(tknd,";", i0e1,";", icls,")"))
 |I0Eseqn
 (i0es, i0e1) =>
 (
-prints("I0Eseqn(",i0es,";",i0e1,")"))
+prints
+("I0Eseqn(", i0es, ";", i0e1, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Edexp
+(   dexp   ) =>
+(
+  prints("I0Edexp(", dexp, ")"))
+//
+|I0Etup0
+(npf1, i0es) =>
+(
+prints
+("I0Etup0(", npf1, ";", i0es, ")"))
+//
+|I0Etup1
+(tknd
+,npf1, i0es) =>
+(
+print("I0Etup1(");
+prints(
+  tknd, ";", npf1, ";", i0es, ")"))
+//
+|I0Ercd2
+(tknd
+,npf1, lies) =>
+(
+print("I0Ercd2(");
+prints(
+  tknd, ";", npf1, ";", lies, ")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)

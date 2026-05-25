@@ -527,6 +527,126 @@ end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#implfun
+i1valdcl_js1emit
+(idcl, env0) = let
+//
+(* ****** ****** *)
+//
+val dpat =
+i1valdcl_dpat$get(idcl)
+val tdxp =
+i1valdcl_tdxp$get(idcl)
+//
+(* ****** ****** *)
+//
+val ipat =
+(
+case+ dpat of
+|I1BNDcons(_,ipat,_) => ipat)
+val itnm =
+(
+case+ dpat of
+|I1BNDcons(itnm,_,_) => itnm)
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+case+ tdxp of
+//
+|
+TEQI1CMPnone
+( (*void*) ) => ( (*void*) )
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+//
+val ival =
+i1cmp_ival$get(icmp)
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+val () =
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmjs1
+(filr, itnm);fprintln(filr))
+//
+// HX: for computing ival
+val () =
+f0_i1tnmcmp(env0, itnm, icmp)
+//
+val () =
+(
+nindstrnfpr
+(filr, nind, "XATS000_patck(");
+i0pckjs1(filr, ival, ipat);
+strnfpr(filr, ")");fprintln(filr))
+//
+endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
+//
+(* ****** ****** *)
+//
+end where//end-of-let(i1valdcl_js1emit(...)]
+{
+//
+val (  ) =
+let
+val filr =
+(
+envx2js_filr$get(env0))
+val nind =
+(
+envx2js_nind$get(env0))
+in//let
+(
+ nindstrnfpr(filr, nind, "// I1VALDCL\n"))
+end//let//end-of-[val()]
+//
+fun
+f0_i1tnmcmp
+( env0:
+! envx2js
+, itnm: i1tnm
+, icmp: i1cmp): void =
+let
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+val
+ival =
+(
+  i1cmp_ival$get(icmp))
+val
+ilts =
+(
+  i1cmp_ilts$get(icmp))
+//
+val () =
+i1letlst_js1emit(ilts, env0)
+//
+val () =
+let
+nindfpr(filr, nind);
+i1tnmjs1(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
+end//let
+//
+end//let//end-of-[f0_i1tnmcmp(...)]
+//
+}(*where*)//end-of-[i1valdcl_js1emit(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 #implfun
 i1fundcl_js1emit

@@ -151,8 +151,7 @@ f1_idcl
 case+
 idcl.node() of
 //
-|
-I1Dtmpsub
+|I1Dtmpsub
 (svts, dcl1) => f1_idcl(dcl1)
 //
 |
