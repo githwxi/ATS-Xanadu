@@ -2416,7 +2416,8 @@ let
 val loc0 = iexp.lctn()
 //
 val-
-I0Eaddr(i0e1) = iexp.node()
+I0Eaddr
+(   i0e1   ) = iexp.node()
 //
 in
 //
@@ -2447,7 +2448,8 @@ let
 val loc0 = iexp.lctn()
 //
 val-
-I0Eflat(i0e1) = iexp.node()
+I0Eflat
+(   i0e1   ) = iexp.node()
 //
 val i1v1 =
 (
@@ -2481,7 +2483,8 @@ let
 val loc0 = iexp.lctn()
 //
 val-
-I0Efold(i0e1) = iexp.node()
+I0Efold
+(   i0e1   ) = iexp.node()
 //
 val i1v1 =
 (
@@ -2514,7 +2517,8 @@ let
 val loc0 = iexp.lctn()
 //
 val-
-I0Efree(i0e1) = iexp.node()
+I0Efree
+(   i0e1   ) = iexp.node()
 //
 val i1v1 =
 (
@@ -2548,7 +2552,8 @@ let
 val loc0 = iexp.lctn()
 //
 val-
-I0Edl0az i0f0 = iexp.node()
+I0Edl0az
+(   i0f0   ) = iexp.node()
 //
 val i1f0 =
 (
@@ -2581,7 +2586,8 @@ let
 val loc0 = iexp.lctn()
 //
 val-
-I0Edl1az i0f0 = iexp.node()
+I0Edl1az
+(   i0f0   ) = iexp.node()
 //
 val i1f0 =
 (
@@ -2614,7 +2620,8 @@ let
 val loc0 = iexp.lctn()
 //
 val-
-I0Edp2tr i0e1 = iexp.node()
+I0Edp2tr
+(   i0e1   ) = iexp.node()
 //
 val i1e1 =
 (
@@ -2649,7 +2656,7 @@ val loc0 = iexp.lctn()
 //
 val-
 I0Ewhere
-( body, dcls) = iexp.node()
+(body, dcls) = iexp.node()
 //
 val (  ) =
 envi0i1_pshlet0(env0)
@@ -2684,7 +2691,7 @@ val loc0 = iexp.lctn()
 //
 val-
 I0Eassgn
-( i0el, i0er) = iexp.node()
+(i0el, i0er) = iexp.node()
 //
 val i1vl =
 (

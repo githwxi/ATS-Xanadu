@@ -353,9 +353,11 @@ d3explst_trxd3i0
 fun
 d3expopt_trxd3i0
 (dopt: d3expopt, env0: !envd3i0): i0expopt
+(*
 fun
 d3rexopt_trxd3i0
 (dopt: d3expopt, env0: !envd3i0): i0expopt
+*)
 //
 fun
 l3d3elst_trxd3i0

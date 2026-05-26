@@ -541,6 +541,7 @@ i0exp_node =
 |I0Edl1az of (i0exp)//l1azy-eval-thunk
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I0Ewhere of
 (i0exp(*scope*), i0dclist)//end-in-let
@@ -548,11 +549,11 @@ i0exp_node =
 (* ****** ****** *)
 //
 |I0Eassgn of
-(i0exp(*l-val*),i0exp(*r-val*))//assign
+(i0exp(*lval*), i0exp(*rval*))//assign
 //
 (* ****** ****** *)
 //
-|I0Eraise of (token, i0exp(*lin-exn*) )
+|I0Eraise of (token, i0exp(*l-excptn*))
 //
 (* ****** ****** *)
 //

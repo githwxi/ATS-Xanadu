@@ -486,6 +486,34 @@ prints
 (i0f0, ";", npf1, ";", i0es, ")"))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Epcon
+(tknd
+,lab0, i0e1) =>
+(
+print("I0Epcon(");
+prints
+(tknd, ";", lab0, ";", i0e1, ")"))
+//
+|I0Epflt
+(tknd
+,lab0, i0e1) =>
+(
+print("I0Epflt(");
+prints
+(tknd, ";", lab0, ";", i0e1, ")"))
+//
+|I0Eproj
+(tknd
+,lab0, i0e1) =>
+(
+print("I0Eproj(");
+prints
+(tknd, ";", lab0, ";", i0e1, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |I0Elet0
 (dcls, i0e1) =>
@@ -524,10 +552,10 @@ prints
 (* ****** ****** *)
 (* ****** ****** *)
 //
-|I0Edexp
+|I0Edprf
 (   dexp   ) =>
 (
-  prints("I0Edexp(", dexp, ")"))
+  prints("I0Edprf(", dexp, ")"))
 //
 |I0Etup0
 (npf1, i0es) =>
@@ -588,6 +616,35 @@ prints(
 fid0,";", fias,";", body,";", denv,")"))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Eaddr
+( i0e1 ) =>
+(
+prints("I0Eaddr(", i0e1, ")") )//I0Eaddr
+//
+|I0Eflat
+( i0e1 ) =>
+(
+prints("I0Eflat(", i0e1, ")") )//I0Eflat
+//
+|I0Eeval
+( i0e1 ) =>
+(
+prints("I0Eeval(", i0e1, ")") )//I0Eeval
+//
+|I0Efold
+( i0e1 ) =>
+(
+prints("I0Efold(", i0e1, ")") )//I0Efold
+//
+|I0Efree
+( i0e1 ) =>
+(
+prints("I0Efree(", i0e1, ")") )//I0Efree
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |I0Edp2tr
 (   i0e1    ) =>
@@ -610,6 +667,19 @@ prints("I0Edl1az(", i0e1, ")"))//de-l1az
 (i0e1, dcls) =>
 (
 prints("I0Ewhere(", i0e1,";", dcls,")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Eassgn
+(i0el, i0er) =>
+(
+prints("I0Eassgn(", i0el,";", i0er,")"))
+//
+|I0Eraise
+(tknd, iexn) =>
+(
+prints("I0Eraise(", tknd,";", iexn,")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -900,7 +900,7 @@ let
 val filr = env0.filr()
 val nind = env0.nind()
 //
-val ival = i1cmp_ival$get(icmp)
+val ival = icmp.ival()
 val (  ) = js1emit_i1cmp(env0, icmp)
 //
 in//let

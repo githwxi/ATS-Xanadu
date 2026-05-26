@@ -68,6 +68,31 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+i0typ_lft
+(i0t1: i0typ): i0typ =
+let
+val s0t1 = i0t1.sort()
+in//let
+i0typ(s0t1, I0Tlft(i0t1))
+end(*let*)//endof(i0typ_lft(i0t1))
+//
+(* ****** ****** *)
+//
+fun
+i0exp_talf
+(i0e1: i0exp): i0exp =
+let
+val loc1 = i0e1.lctn()
+val i0t1 = i0e1.ityp()
+val i0t0 = i0typ_lft(i0t1)
+in//let
+i0exp(loc1, i0t1, I0Eaddr(i0e1))
+end(*let*)//endof(i0exp_talf(i0e1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 t2jag_trxd3i0
 (tjag, env0) =
@@ -682,6 +707,24 @@ end(*let*)//end-of-[l3d3p_trxd3i0(ld3p,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+d3prf_trxd3i0
+(
+d3e0: d3exp,
+env0: !envd3i0): i0exp =
+let
+val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+in//let
+(
+i0exp(loc0, i0t0, I0Edprf(d3e0)))
+end//let//endof(d3prf_trxd3i0(...))
+//
+(* ****** ****** *)
+//
 #implfun
 d3exp_trxd3i0
 (d3e0, env0) =
@@ -823,9 +866,24 @@ d3e0.node() of
 //
 (* ****** ****** *)
 //
+|D3Eaddr _ =>
+(
+  f0_addr(d3e0, env0))
+|D3Eflat _ =>
+(
+  f0_flat(d3e0, env0))
+//
+(* ****** ****** *)
+//
 |D3Ewhere _ =>
 (
   f0_where(d3e0, env0))
+//
+(* ****** ****** *)
+//
+|D3Eassgn _ =>
+(
+  f0_assgn(d3e0, env0))
 //
 (* ****** ****** *)
 //
@@ -867,7 +925,7 @@ _(*otherwise*) => i0exp_none1(d3e0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-end where
+end where//endof(d3exp_trxd3i0(...))
 {
 //
 (* ****** ****** *)
@@ -1251,6 +1309,7 @@ loc0, i0t0, I0Etapq(i0f0, ijgs))
 end(*let*)//end-of-[f0_tapq(d3e0,env0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_dap0
@@ -1275,10 +1334,11 @@ val i0f0 =
 in//let
 (
 i0exp(loc0, i0t0, I0Edap0(i0f0)))
-end(*let*)//end-of-[f0_dap1(d3e0,env0)]
+end(*let*)//end-of-[f0_dap0(d3e0,env0)]
 //
 (* ****** ****** *)
 //
+(*
 fun
 f0_dapp
 (d3e0: d3exp
@@ -1308,7 +1368,107 @@ in//let
 i0exp(loc0,
 i0t0, I0Edapp(i0f0, npf1, i0es)))
 end(*let*)//end-of-[f0_dapp(d3e0,env0)]
+*)
 //
+fun
+f0_dapp
+(
+d3e0: d3exp,
+env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Edapp
+(d3f0
+,npf1, d3es) = d3e0.node()
+//
+val loc0 = d3e0.lctn((*0*))
+val tfun = d3f0.styp((*0*))
+val t2p0 = d3e0.styp((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val t2ps =
+(
+case+
+tfun.node() of
+|T2Pfun1
+( f2cl, npf1
+, targ, tres) => ( targ )
+|_(*otherwise*) => list_nil())
+//
+val i0f0 =
+d3exp_trxd3i0(d3f0, env0)//val
+//
+val i0es =
+(
+f0_npf1$darg$targ(
+  npf1, d3es, t2ps, env0))//val
+//
+in//let
+(
+i0exp(loc0,
+  i0t0, I0Edapp(i0f0, npf1, i0es)))
+end(*let*)//end-of-[f0_dapp(d3e0,env0)]
+//
+and
+f0_npf1$darg$targ
+(
+npf1: sint,
+d3es: d3explst,
+t2ps: s2typlst,
+env0: !envd3i0): i0explst =
+(
+case+ d3es of
+|
+list_nil
+( (*0*) ) =>
+list_nil((*void*))
+|
+list_cons
+(d3e1, d3es) =>
+(
+case+ t2ps of
+|
+list_nil
+( (*0*) ) =>
+let
+val i0e1 =
+(
+d3exp_trxd3i0(d3e1, env0))
+in//let
+list_cons
+(
+i0e1,
+f0_npf1$darg$targ(
+  npf1-1, d3es, t2ps, env0))
+end//let
+|
+list_cons
+(t2p1, t2ps) =>
+(
+list_cons
+(
+i0e1,
+f0_npf1$darg$targ(
+  npf1-1, d3es, t2ps, env0))
+) where
+{
+val i0e1 =
+(
+  d3exp_trxd3i0(d3e1, env0))
+val i0e1 =
+(
+if // if
+s2typ_cbrfq(t2p1)
+then
+i0exp_talf(i0e1) else (i0e1)): i0exp
+}
+)
+)(*case+*)//endof(f0_npf1$darg$targ(.))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1790,6 +1950,64 @@ end//let
 end(*let*)//end-of-[f0_fix0(d3e0,env0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_addr
+(
+d3e0: d3exp,
+env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Eaddr
+(   d3e1   ) = d3e0.node()
+//
+val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0e1 =
+(
+  d3exp_trxd3i0(d3e1, env0))
+//
+in//let
+(
+i0exp(loc0, i0t0, I0Eaddr(i0e1)))
+end(*let*)//end-of-[f0_addr(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_flat
+(
+d3e0: d3exp,
+env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Eflat
+(   d3e1   ) = d3e0.node()
+//
+val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0e1 =
+(
+  d3exp_trxd3i0(d3e1, env0))
+//
+in//let
+(
+i0exp(loc0, i0t0, I0Eflat(i0e1)))
+end(*let*)//end-of-[f0_flat(d3e0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_where
@@ -1824,6 +2042,41 @@ end//let
 //
 end(*let*)//end-of-[f0_where(d3e0,env0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_assgn
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Eassgn
+(d3el, d3er) = d3e0.node()
+//
+val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0el =
+(
+  d3exp_trxd3i0(d3el, env0))
+val i0er =
+(
+  d3exp_trxd3i0(d3er, env0))
+//
+in//let
+//
+(
+i0exp(
+loc0, i0t0, I0Eassgn(i0el, i0er)))
+//
+end(*let*)//end-of-[f0_assgn(d3e0,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1908,15 +2161,9 @@ let
 //
 val npf1 = npf1-1
 //
-val loc1 = d3e0.lctn((*0*))
-val t2p1 = d3e0.styp((*0*))
-val i0t1 =
-(
-  s2typ_trxd3i0(t2p1, env0))
 val i0e1 =
-i0exp_make_ityp$node
 (
-  loc1, i0t1, I0Edexp(d3e1))
+  d3prf_trxd3i0(d3e1, env0))
 //
 in//let
 list_cons(i0e1,
@@ -2004,6 +2251,12 @@ d3e0.node() of
 |D3Ecas0 _ =>
 (
   f0_cas0(d3e0, env0))
+//
+(* ****** ****** *)
+//
+|D3Eseqn _ =>
+(
+  f0_seqn(d3e0, env0))
 //
 (* ****** ****** *)
 //
@@ -2106,12 +2359,15 @@ val i0t0 =
 val i0e1 =
 (
   d3exp_trxd3i0(d3e1, env0))
-val ithn =
+//
+val
+ithn =
 (
-  d3rexopt_trxd3i0(dthn, env0))
-val iels =
+f1_lctn$dopt(loc0, dthn, env0))
+val
+iels =
 (
-  d3rexopt_trxd3i0(dels, env0))
+f1_lctn$dopt(loc0, dels, env0))
 //
 in//let
 //
@@ -2119,7 +2375,35 @@ in//let
 i0exp(loc0,
 i0t0, I0Eift0(i0e1, ithn, iels)))
 //
-end(*let*)//end-of-[f0_ift0(d3e0,env0)]
+end where
+{
+fun
+f1_lctn$dopt
+(
+loc0: loc_t,
+dopt: d3expopt,
+env0: !envd3i0): i0expopt =
+let
+val dexp =
+(
+(
+case+ dopt of
+//
+|optn_nil
+( (*0*) ) =>
+(
+d3exp_none0(loc0))
+//
+|optn_cons
+(  dexp  ) => dexp): d3exp)
+//
+in//let
+(
+optn_cons(
+  d3rex_trxd3i0(dexp, env0)))
+end(*let*)//end-of-[f1_lctn$dopt()]
+//
+}(*where*)//end-of-[f0_ift0(d3e0,env0)]
 //
 (* ****** ****** *)
 //
@@ -2155,6 +2439,41 @@ i0exp(loc0,
   i0t0, I0Ecas0(tknd,i0e1,i0cs)))
 //
 end(*let*)//end-of-[f0_cas0(d3e0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_seqn
+(d3e0: d3exp
+,env0: !envd3i0): i0exp =
+let
+//
+val-
+D3Eseqn
+(d3es, d3e1) = d3e0.node()
+//
+val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0es =
+(
+d3explst_trxd3i0(d3es, env0))
+//
+in//let
+//
+let
+val
+i0e1 = d3rex_trxd3i0(d3e1, env0)
+in//let
+(
+i0exp(
+loc0, i0t0, I0Eseqn(i0es, i0e1)))
+end//let
+//
+end(*let*)//end-of-[f0_seqn(d3e0,env0)]
 //
 (* ****** ****** *)
 //

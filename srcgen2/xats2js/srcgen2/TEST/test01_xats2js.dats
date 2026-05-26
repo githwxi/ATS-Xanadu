@@ -58,6 +58,27 @@ case+
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+fact3
+(x: sint): sint =
+(
+auxlp(x, r); r) where
+{
+//
+var x: sint = x
+var r: sint = 1
+//
+fun
+auxlp(x: &sint, r: &sint): void =
+(
+if (x > 0) then (
+r := x * r; x := x - 1; auxlp(x, r)))
+//
+}(*where*)//end-of-[fact3(x:sint):sint]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () =
 prints("\
 fact1(10) = ", fact1(10), "\n")
@@ -67,6 +88,13 @@ fact1(10) = ", fact1(10), "\n")
 val () =
 prints("\
 fact2(10) = ", fact2(10), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () =
+prints("\
+fact3(10) = ", fact3(10), "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
