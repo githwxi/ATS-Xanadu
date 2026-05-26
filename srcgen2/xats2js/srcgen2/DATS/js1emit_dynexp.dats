@@ -1164,18 +1164,22 @@ ival.node() of
 |I1Vaddr(i1v1) =>
 (
   prints("XATSADDR(", i1v1, ")") )
+//
 |I1Vaexp(i0e1) =>
 (
   prints("XATSAEXP(", i0e1, ")") )
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 |I1Vp0rj
 ( itup,pind ) =>
 (
 prints
 ("XATSP0RJ(",itup,"[",pind,"]", ")"))
+//
 (* ****** ****** *)
+//
 |I1Vp1cn
 ( ipat
 , icon, pind) =>
@@ -1186,7 +1190,9 @@ prints
 ) where
 { #impltmp
   g_print<i0pat>(x) = i0pcnjs1(filr,x) }
+//
 (* ****** ****** *)
+//
 |I1Vp1rj
 ( trcd
 , itup, pind) =>
@@ -1197,6 +1203,7 @@ prints
 ) where
 { #impltmp
   g_print<token>(x) = xtrcdjs1(filr,x) }
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

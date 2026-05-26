@@ -527,7 +527,6 @@ end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #implfun
 i1valdcl_js1emit
 (idcl, env0) = let
@@ -643,6 +642,98 @@ end//let
 end//let//end-of-[f0_i1tnmcmp(...)]
 //
 }(*where*)//end-of-[i1valdcl_js1emit(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1vardcl_js1emit
+(idcl, env0) = let
+//
+(* ****** ****** *)
+//
+val dpid =
+i1vardcl_dpid$get(idcl)
+val tdxp =
+i1vardcl_dini$get(idcl)
+//
+(* ****** ****** *)
+//
+val itnm =
+(
+case+ dpid of
+|I1BNDcons(itnm,_,_) => itnm)
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+case+ tdxp of
+//
+|
+TEQI1CMPnone
+( (*void*) ) =>
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+in//let
+//
+(*
+HX-2024-06-07:
+w/o initialization
+*)
+nindfpr(filr, nind);
+strnfpr(filr, "let ");i1tnmjs1(filr, itnm);
+strnfpr(filr, " = XATSVAR0(");strnfpr(filr, ")\n")
+//
+end//let//end-of-[TEQI1CMPnone]
+//
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val ival = icmp.ival()
+val (  ) = i1cmp_js1emit(icmp, env0)
+//
+in//let
+//
+(*
+HX-2024-06-07:
+with initialization
+*)
+nindfpr(filr, nind);
+strnfpr(filr, "let ");i1tnmjs1(filr, itnm);
+strnfpr(filr, " = XATSVAR1(");i1valjs1(filr, ival);strnfpr(filr, ")\n")
+//
+end//let//end-of-[TEQI1CMPsome]
+//
+) (*case+*) // end-of-( teqi1exp )
+//
+(* ****** ****** *)
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+(
+envx2js_filr$get(env0))
+val nind =
+(
+envx2js_nind$get(env0))
+in//let
+(
+ nindstrnfpr(filr, nind, "// I1VARDCL\n"))
+end//let//end-of-[val()]
+//
+}(*where*)//end-of-[i1vardcl_js1emit(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

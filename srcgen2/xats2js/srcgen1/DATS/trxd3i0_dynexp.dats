@@ -143,6 +143,7 @@ list_cons
 }
 //
 (* ****** ****** *)
+//
 fun
 pfrmv_npf1_t2ps
 ( npf1
@@ -150,6 +151,7 @@ pfrmv_npf1_t2ps
 , t2ps
 : s2typlst): s2typlst =
 pfrmv_npf1_itms<s2typ>(npf1, t2ps)
+//
 (* ****** ****** *)
 //
 fun
@@ -189,10 +191,10 @@ pfrmv_npf1_itms<l3d3e>(npf1, ldes)
 //
 fun
 i0exp_talf
-(i0e0: i0exp): i0exp =
+(i0e1: i0exp): i0exp =
 (
 case+
-i0e0.node() of
+i0e1.node() of
 (*
 HX-2024-06-23:
 This does not
@@ -201,10 +203,10 @@ support [cbref]
 *)
 |_(*otherwise*) =>
 let
-val loc0 = i0e0.lctn()
+val loc0 = i0e1.lctn()
 in//let
-  i0exp(loc0, I0Eaddr(i0e0)) endlet
-)(*case+*)//end-of-[i0exp_talf(i0e0)]
+  i0exp(loc0, I0Eaddr(i0e1)) endlet
+)(*case+*)//end-of-[i0exp_talf(i0e1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -897,6 +899,7 @@ i0exp(loc0, I0Etapq(i0f0, tjas)))
 end//let//end-of-[f0_tapq(env0,d3e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_dap0
@@ -958,7 +961,7 @@ pfrmv_npf1_d3es(npf1, d3es)
 //
 val i0es =
 (
-  f0_darg(env0, darg, targ))
+f0_darg$targ(env0, darg, targ))
 //
 in//let
 (
@@ -966,54 +969,57 @@ i0exp(loc0, I0Edapp(i0f0, i0es)))
 end(*let*)//end-of-[f0_dapp(env0,d3e0)]
 //
 and
-f0_darg
+f0_darg$targ
 ( env0:
 ! envd3i0
-, d3es
-: d3explst
-, t2ps
-: s2typlst): i0explst =
+, d3es: d3explst
+, t2ps: s2typlst): i0explst =
 (
 case+ d3es of
 |
-list_nil() =>
+list_nil
+( (*0*) ) =>
 list_nil((*void*))
 |
-list_cons(d3e1, d3es) =>
+list_cons
+(d3e1, d3es) =>
 (
 case+ t2ps of
-|
-list_nil() =>
+//
+|list_nil
+( (*0*) ) =>
 let
-val i0e1 =
-trxd3i0_d3exp(env0, d3e1)
-in//let
-list_cons
-(i0e1
-,f0_darg(env0, d3es, t2ps))
-end//let
-|
-list_cons
-(t2p1, t2ps) =>
-(
-list_cons
-(
-i0e1,
-f0_darg(env0, d3es, t2ps))
-) where
-{
 val i0e1 =
 (
   trxd3i0_d3exp(env0, d3e1))
+in//let
+list_cons(i0e1,
+f0_darg$targ(env0, d3es, t2ps))
+end//let
+//
+|list_cons
+(t2p1, t2ps) =>
+(
+list_cons(i0e1,
+f0_darg$targ(env0, d3es, t2ps))
+) where
+{
+val i0e1 =
+let
 val i0e1 =
 (
-if
+  trxd3i0_d3exp(env0, d3e1))
+in//let
+(
+if // if
 s2typ_cbrfq(t2p1)
 then i0exp_talf(i0e1) else i0e1): i0exp
+end//let//end-of-[val(i0e1)]
 }
 )
-)(*case+*)//end-of[f0_darg(env0,d3es,t2ps)]
+)(*case+*)//endof[f0_darg$targ(env0,...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

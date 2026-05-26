@@ -629,6 +629,9 @@ i0exp_node =
 //
 |I0Epcon of
 (token, label, i0exp(*con*))
+//
+|I0Epflt of
+(token, label, i0exp(*tup*))
 |I0Eproj of
 (token, label, i0exp(*tup*))
 //
@@ -653,7 +656,7 @@ i0exp_node =
 //
 (* ****** ****** *)
 //
-|I0Edexp of (d3exp) // HX:erased
+|I0Edprf of (d3exp) // HX:erased
 //
 |I0Etup0 of
 (sint(*npf*),i0explst) // HX:flat
@@ -684,6 +687,16 @@ FV(i0exp) = i0varlst
 //
 (* ****** ****** *)
 //
+|I0Eaddr of (i0exp)//left-val-address
+|I0Eflat of (i0exp)//left-val-content
+//
+|I0Eeval of (i0exp)//eval-builtin-fun
+|I0Efold of (i0exp)//open-con-folding
+//
+|I0Efree of (i0exp)//free-builtin-fun
+//
+(* ****** ****** *)
+//
 |I0Edp2tr of (i0exp)//p2tr-dereference
 |I0Edl0az of (i0exp)//l0azy-eval-thunk
 |I0Edl1az of (i0exp)//l1azy-eval-thunk
@@ -692,6 +705,15 @@ FV(i0exp) = i0varlst
 //
 |I0Ewhere of
 (i0exp(*scope*), i0dclist)//end-in-let
+//
+(* ****** ****** *)
+//
+|I0Eassgn of
+(i0exp(*lval*), i0exp(*rval*))//assign
+//
+(* ****** ****** *)
+//
+|I0Eraise of (token, i0exp(*l-excptn*))
 //
 (* ****** ****** *)
 //
