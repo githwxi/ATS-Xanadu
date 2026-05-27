@@ -107,11 +107,11 @@ d3parsed_of_trtmp3c(dpar)
 //
 val dpar =
 d3parsed_of_t3read0(dpar)
-// (*
+(*
 val (  ) =
 prerrsln
 ("dpar(t3read0) = ", dpar)
-// *)
+*)
 //
 val (  ) =
 let
@@ -129,18 +129,22 @@ val ipar =
 val ipar =
 (
   i0parsed_of_tryd3i0(ipar))
+(*
 val (  ) =
 (
-prerrsln
-("ipar(tryd3i0) = ", (ipar)))
+prerrsln(
+"ipar(tryd3i0) = ", (ipar)))
+*)
 //
 val ipar =
 (
   i1parsed_of_trxi0i1(ipar))
+(*
 val (  ) =
 (
-prerrsln
-("ipar(trxi0i1) = ", (ipar)))
+prerrsln(
+"ipar(trxi0i1) = ", (ipar)))
+*)
 //
 in//let
 //

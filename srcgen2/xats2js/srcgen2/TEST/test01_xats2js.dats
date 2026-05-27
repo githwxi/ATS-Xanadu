@@ -62,6 +62,16 @@ fun
 fact3
 (x: sint): sint =
 (
+case+ x of _
+when(x>0) => x*fact3(x-1) | _ => 1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fact4
+(x: sint): sint =
+(
 auxlp(x, r); r) where
 {
 //
@@ -69,12 +79,13 @@ var x: sint = x
 var r: sint = 1
 //
 fun
-auxlp(x: &sint, r: &sint): void =
+auxlp
+(x: &sint, r: &sint): void =
 (
 if (x > 0) then (
 r := x * r; x := x - 1; auxlp(x, r)))
 //
-}(*where*)//end-of-[fact3(x:sint):sint]
+}(*where*)//end-of-[fact4(x:sint):sint]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -95,6 +106,13 @@ fact2(10) = ", fact2(10), "\n")
 val () =
 prints("\
 fact3(10) = ", fact3(10), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () =
+prints("\
+fact4(10) = ", fact4(10), "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

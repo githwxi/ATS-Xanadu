@@ -133,13 +133,13 @@ tok.node() of
 i1dcl_xats2js
 (dcl0, env0) =
 let
-// (*
 //
+(*
 val () =
 prerrsln("\
 i1dcl_xats2js: dcl0 = ", dcl0)
+*)
 //
-// *)
 in//let
 //
 case+
