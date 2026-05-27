@@ -2566,11 +2566,11 @@ end(*let*)//end-of-[f0_extnam(iexp,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-// (*
+(*
 val () =
 (
   prerrsln("i0exp_trxi0i1: iexp = ", iexp))
-// *)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2763,7 +2763,7 @@ end where
 (*
 val () =
 (
-prerrsln("i0lft_trxi0i1: iexp = ", iexp))
+  prerrsln("i0lft_trxi0i1: iexp = ", iexp))
 *)
 //
 (* ****** ****** *)
@@ -2835,7 +2835,7 @@ val loc0 = igua.lctn((*void*))
 (*
 val (  ) =
 (
-prerrsln("i0gua_trxi0i1: igua = ", igua))
+  prerrsln("i0gua_trxi0i1: igua = ", igua))
 *)
 //
 }(*where*)//end-of-[i0gua_trxi0i1(igua,env0)]
@@ -2889,7 +2889,7 @@ end//let//endof[I0GPTgua(ipat,i0gs)]
 (*
 val (  ) =
 (
-prerrsln("i0gpt_trxi0i1: igpt = ", igpt))
+  prerrsln("i0gpt_trxi0i1: igpt = ", igpt))
 *)
 //
 }(*where*)//end-of-[i0gpt_trxi0i1(igpt,env0)]
@@ -2957,7 +2957,7 @@ end//let//end of [I0CLScls(igpt,iexp)]
 (*
 val (  ) =
 (
-prerrsln("i0cls_trxi0i1: icls = ", icls))
+  prerrsln("i0cls_trxi0i1: icls = ", icls))
 *)
 //
 }(*where*)//end-of-[i0cls_trxi0i1(icls,env0)]
