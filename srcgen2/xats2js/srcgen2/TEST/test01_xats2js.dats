@@ -60,10 +60,18 @@ case+
 //
 fun
 fact3
-(x: sint): sint =
+(n: sint): sint =
 (
-case+ x of _
-when(x>0) => x*fact3(x-1) | _ => 1)
+  auxlp(0, 1)) where
+{
+fun
+auxlp
+(i: nint, r: nint): nint =
+(
+case+ i of
+_ when(i < n) =>
+auxlp(i+1, (i+1)*r) | _ => r)
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
