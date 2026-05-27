@@ -46,7 +46,8 @@ in//let
     list_vt_nil()
   else
     list_vt_reverse0<a>(loop(s1,list_vt_nil))
-end//let
+  //endof(if(s1>f2))
+end//let//end(list_btw_vt<a>(s1,f2):list_vt(a))
 //
 (* ****** ****** *)
 val list_btw_vt_sint = list_btw_vt<sint>(*void*)
