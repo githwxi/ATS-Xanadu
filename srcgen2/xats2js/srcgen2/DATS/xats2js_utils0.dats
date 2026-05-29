@@ -106,13 +106,21 @@ i0p0.node() of
 //
 |
 I0Ptup0
-( i0ps ) => f0_i0ps(i0ps)
+(npf1, i0ps) => 
+(
+  f0_i0ps(npf1, i0ps))
 |
 I0Ptup1
-(tknd, i0ps) => f0_i0ps(i0ps)
+(tknd
+,npf1, i0ps) =>
+(
+  f0_i0ps(npf1, i0ps))
 |
 I0Prcd2
-(tknd, lips) => f0_lips(lips)
+(tknd
+,npf1, lips) =>
+(
+  f0_lips(npf1, lips))
 //
 | _(*otherwise*) => (  false  ))
 //
@@ -120,34 +128,57 @@ where
 {
 fun
 f0_i0ps
-(i0ps: i0patlst): bool =
+(npf1: sint
+,i0ps: i0patlst): bool =
 (
 case+ i0ps of
 |
 list_nil() => true
 |
-list_cons(i0p1, i0ps) =>
+list_cons
+(i0p1, i0ps) =>
+if // of
+(npf1 > 0)
+then
+f0_i0ps(npf1-1, i0ps)
+else
+(
 if // if
 i0pat_allq(i0p1)
-then f0_i0ps(i0ps) else false)
+then
+f0_i0ps(npf1, i0ps) else false)
+)(*case+*)//end-of-[f0_i0ps(...)]
 //
 fun
 f0_lips
-(lips: l0i0plst): bool =
+(npf1: sint
+,lips: l0i0plst): bool =
 (
 case+ lips of
 |
 list_nil() => true
 |
-list_cons(lip1, lips) =>
+list_cons
+(lip1, lips) =>
 let
 val+
 I0LAB(l0, i0p1) = lip1
 in//let
+//
+if // if
+(npf1 > 0)
+then
+(
+  f0_lips(npf1-1, lips))
+else
+(
 if // if
 i0pat_allq(i0p1)
-then f0_lips(lips) else false end
-)(*case+*)//endof(f0_lips( lips ))
+then
+f0_lips(npf1, lips) else false)
+end//let
+//
+)(*case+*)//end-of-(f0_lips(...))
 //
 }(*where*)//endof(i0pat_allq(i0p0))
 //
