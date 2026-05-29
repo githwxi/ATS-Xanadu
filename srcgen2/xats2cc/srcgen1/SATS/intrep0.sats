@@ -473,9 +473,16 @@ i0pat_node =
 //
 (* ****** ****** *)
 //
-|I0Ptup0 of (i0patlst)
-|I0Ptup1 of (token, i0patlst)
-|I0Prcd2 of (token, l0i0plst)
+|I0Pdprf of (d3pat) // HX:erased
+//
+|I0Ptup0 of
+(sint(*npf*), i0patlst)//HX:flat
+|I0Ptup1 of
+(
+token(*knd*), sint(*npf*), i0patlst)
+|I0Prcd2 of
+(
+token(*knd*), sint(*npf*), l0i0plst)
 //
 (* ****** ****** *)
 //

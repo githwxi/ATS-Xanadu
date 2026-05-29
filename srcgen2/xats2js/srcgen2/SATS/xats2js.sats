@@ -64,6 +64,13 @@ XATSOPT/xats2cc/srcgen1"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+// HX-2024-06-06:
+fun // it matches all!
+i0pat_allq(i0pat): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #absvwtp envx2js_vtbx // p0tr
 #vwtpdef envx2js = envx2js_vtbx
 //

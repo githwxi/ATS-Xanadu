@@ -142,8 +142,8 @@ case+ c0 of
 in//let
 (
   char_fprint(c0, filr)) end
-}
-end // end of [xsymjs1(filr,xsym)]
+}(*where*)
+end(*let*)//endof[xsymjs1(filr,xsym)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

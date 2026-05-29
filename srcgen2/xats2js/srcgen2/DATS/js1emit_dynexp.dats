@@ -282,15 +282,17 @@ ipat.node() of
 |I0Pdapp
 (i0f0
 ,npf1, i0ps) =>
-i1val(loc0,
-  I1Vp1cn(i0f0, ival, i0))
+i1val
+(loc0
+,I1Vp1cn(i0f0, ival, i0))
 //
 |I0Ptup0 _ =>
 (
 i1val
 (loc0, I1Vp0rj(ival, i0)))
 //
-|I0Ptup1(tknd, _) =>
+|I0Ptup1
+(tknd, _, _) =>
 i1val(loc0,
   I1Vp1rj(tknd, ival, i0))
 //
@@ -597,11 +599,33 @@ f0_tup0
 let
 //
 val-
-I0Ptup0 i0ps = ipat.node()
+I0Ptup0
+(npf1, i0ps) = ipat.node()
+//
+fun
+f1_drop
+( npf1
+: sint
+, i0ps
+: i0patlst): i0patlst =
+if // if
+(npf1 <= 0)
+then i0ps else
+(
+case+ i0ps of
+|list_nil
+( (*0*) ) => list_nil()
+|list_cons
+(i0p1, i0ps) =>
+(
+  f1_drop(npf1-1, i0ps)))
+//
+val i0ps = f1_drop(npf1, i0ps)
 //
 in//let
 (
-f0_ipatlst(b0+0,0,ival,ipat,i0ps))
+f0_ipatlst(
+  b0+0, 0, ival, ipat, i0ps))
 end(*let*)//end-of-[f0_tup0(...)]
 //
 (* ****** ****** *)
@@ -615,7 +639,28 @@ let
 //
 val-
 I0Ptup1
-(tknd, i0ps) = ipat.node()
+(tknd
+,npf1, i0ps) = ipat.node()
+//
+fun
+f1_drop
+( npf1
+: sint
+, i0ps
+: i0patlst): i0patlst =
+if // if
+(npf1 <= 0)
+then i0ps else
+(
+case+ i0ps of
+|list_nil
+( (*0*) ) => list_nil()
+|list_cons
+(i0p1, i0ps) =>
+(
+  f1_drop(npf1-1, i0ps)))
+//
+val i0ps = f1_drop(npf1, i0ps)
 //
 in//let
 (
