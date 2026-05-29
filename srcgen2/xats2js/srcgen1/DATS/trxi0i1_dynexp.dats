@@ -1701,7 +1701,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_con(01): iexp = ", iexp))
+prerrsln(
+  "f0_con(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_con(env0,iexp)]
@@ -1730,7 +1731,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_cst(01): iexp = ", iexp))
+prerrsln(
+  "f0_cst(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_cst(env0,iexp)]
@@ -1758,7 +1760,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_var(01): iexp = ", iexp))
+prerrsln(
+  "f0_var(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_var(env0,iexp)]
@@ -1794,7 +1797,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_timp(01): iexp = ", iexp))
+prerrsln(
+  "f0_timp(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_timp(env0,iexp)]
@@ -1862,7 +1866,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_dap0(01): iexp = ", iexp))
+prerrsln(
+  "f0_dap0(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_dap0(env0,iexp)]
@@ -1897,7 +1902,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_dapp(01): iexp = ", iexp))
+prerrsln(
+  "f0_dapp(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_dapp(env0,iexp)]
@@ -1931,7 +1937,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_pcon(01): iexp = ", iexp))
+prerrsln(
+  "f0_pcon(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_pcon(env0,iexp)]
@@ -1964,7 +1971,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_pflt(01): iexp = ", iexp))
+prerrsln(
+  "f0_pflt(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_pflt(env0,iexp)]
@@ -1997,7 +2005,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_proj(01): iexp = ", iexp))
+prerrsln(
+  "f0_proj(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_proj(env0,iexp)]
@@ -2090,7 +2099,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_ift0(01): iexp = ", iexp))
+prerrsln(
+  "f0_ift0(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_ift0(env0,iexp)]
@@ -2129,7 +2139,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_cas0(01): iexp = ", iexp))
+prerrsln(
+  "f0_cas0(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_cas0(env0,iexp)]
@@ -2188,7 +2199,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_seqn(01): iexp = ", iexp))
+prerrsln(
+  "f0_seqn(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_seqn(env0,iexp)]
@@ -2220,7 +2232,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_tup0(01): iexp = ", iexp))
+prerrsln(
+  "f0_tup0(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_tup0(env0,iexp)]
@@ -2252,7 +2265,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_tup1(01): iexp = ", iexp))
+prerrsln(
+  "f0_tup1(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_tup1(env0,iexp)]
@@ -2284,7 +2298,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_rcd2(01): iexp = ", iexp))
+prerrsln(
+  "f0_rcd2(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_rcd2(env0,iexp)]
@@ -2431,7 +2446,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_addr(01): iexp = ", iexp))
+prerrsln(
+  "f0_addr(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_addr(env0,iexp)]
@@ -2465,7 +2481,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_flat(01): iexp = ", iexp))
+prerrsln(
+  "f0_flat(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_flat(env0,iexp)]
@@ -2500,7 +2517,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_fold(01): iexp = ", iexp))
+prerrsln(
+  "f0_fold(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_fold(env0,iexp)]
@@ -2534,7 +2552,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_free(01): iexp = ", iexp))
+prerrsln(
+  "f0_free(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_free(env0,iexp)]
@@ -2569,7 +2588,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_dl0az(01): iexp = ", iexp))
+prerrsln(
+  "f0_dl0az(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_dl0az(env0,iexp)]
@@ -2603,7 +2623,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_dl1az(01): iexp = ", iexp))
+prerrsln(
+  "f0_dl1az(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_dl1az(env0,iexp)]
@@ -2637,7 +2658,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_dp2tr(01): iexp = ", iexp))
+prerrsln(
+  "f0_dp2tr(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_dp2tr(env0,iexp)]
@@ -2710,7 +2732,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_assgn(01): iexp = ", iexp))
+prerrsln(
+  "f0_assgn(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_assgn(env0,iexp)]
@@ -2745,7 +2768,8 @@ end where // end-of-[let]
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_raise(01): iexp = ", iexp))
+prerrsln(
+  "f0_raise(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_raise(env0,iexp)]
@@ -2787,7 +2811,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_l0azy(01): iexp = ", iexp))
+prerrsln(
+  "f0_l0azy(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_l0azy(env0,iexp)]
@@ -2832,7 +2857,8 @@ end where
 val () =
 (
 prerr("trxi0i1_i0exp:");
-prerrsln("f0_l1azy(01): iexp = ", iexp))
+prerrsln(
+  "f0_l1azy(i0i1): iexp = ", iexp))
 *)
 //
 }(*where*)//end-of-[f0_l1azy(env0,iexp)]

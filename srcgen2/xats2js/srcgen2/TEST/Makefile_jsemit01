@@ -72,5 +72,18 @@ test01:: \
 test01_xats2js.dats; \
 $(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
+test02:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test02:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test02:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
+test02:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+test02:: \
+test02_xats2js.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
 ###################### end of [Makefile_jsemit01] ######################
 ########################################################################

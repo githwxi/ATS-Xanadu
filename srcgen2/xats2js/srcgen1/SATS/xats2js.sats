@@ -65,6 +65,12 @@ funtok_prfq
 (* ****** ****** *)
 (* ****** ****** *)
 //
+// HX-2024-06-06:
+fun // it matches all!
+i0pat_allq(i0pat): bool
+//
+(* ****** ****** *)
+//
 fun
 envx2js_filr$get
 (env0: !envx2js): FILEref

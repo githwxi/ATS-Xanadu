@@ -226,13 +226,13 @@ prints("I0Pcon(",d2c,")")
 //
 |I0Pbang
 (   i0p1   ) =>
-prints("I0Pbang(",i0p1,")")
+prints("I0Pbang(", i0p1, ")")
 |I0Pflat
 (   i0p1   ) =>
-prints("I0Pflat(",i0p1,")")
+prints("I0Pflat(", i0p1, ")")
 |I0Pfree
 (   i0p1   ) =>
-prints("I0Pfree(",i0p1,")")
+prints("I0Pfree(", i0p1, ")")
 //
 (* ****** ****** *)
 //
@@ -246,7 +246,7 @@ I0Ptapq(", i0p1, ";", ijas, ")"))
 //
 |I0Pdap1
 (   i0f0   ) =>
-prints("I0Pdap1(",i0f0,")")
+prints("I0Pdap1(", i0f0, ")")
 |I0Pdapp
 (i0f0
 ,npf1, i0ps) =>
@@ -256,18 +256,29 @@ prints(i0f0,";",npf1,";",i0ps,")"))
 //
 (* ****** ****** *)
 //
+|I0Pdprf
+(   dpat   ) =>
+(
+prints("I0Pdprf(", dpat, ")"))
+//
 |I0Ptup0
-(   i0ps   ) =>
-prints("I0Ptup0(",i0ps,")")
+(npf1, i0ps) =>
+prints
+("I0Ptup0(", npf1,";", i0ps,")")
 //
 |I0Ptup1
-(tknd, i0ps) =>
-prints("I0Ptup1(",tknd,";",i0ps,")")
+(tknd
+,npf1, i0ps) =>
+(
+print("I0Ptup1(");
+prints(tknd,";",npf1,";",i0ps,")"))
 //
 |I0Prcd2
-(tknd, lips) =>
+(tknd
+,npf1,lips) =>
 (
-prints("I0Prcd2(",tknd,";",lips,")"))
+print("I0Prcd2(");
+prints(tknd,";",npf1,";",lips,")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -279,8 +290,9 @@ prints("I0Prcd2(",tknd,";",lips,")"))
 |I0Pnone1(d3p1) =>
 let
 val loc0 = d3p1.lctn() in//let
+(
 prints
-("I0Pnone1(", loc0, ";", d3p1, ")") end
+("I0Pnone1(", loc0, ";", d3p1, ")")) end
 //
 (* ****** ****** *)
 (* ****** ****** *)

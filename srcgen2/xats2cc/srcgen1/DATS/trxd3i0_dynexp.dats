@@ -157,11 +157,11 @@ d3pat_trxd3i0
 (d3p0, env0) =
 let
 //
-(*
+// (*
 val () =
 prerrsln("\
 d3pat_trxd3i0: d3p0 = ", d3p0)
-*)
+// *)
 //
 in//let
 //
@@ -233,10 +233,10 @@ d3p0.node() of
 |D3Ptup0 _ =>
 (
   f0_tup0(d3p0, env0))
-(*
 |D3Ptup1 _ =>
 (
   f0_tup1(d3p0, env0))
+(*
 |D3Prcd2 _ =>
 (
   f0_rcd2(d3p0, env0))
@@ -640,11 +640,51 @@ in//let
 (
 if // if
 list_singq(i0ps)
-then list_head(i0ps)
-else
-i0pat(loc0, i0t0, I0Ptup0(i0ps)))
+then list_head(i0ps) else
+i0pat(
+loc0, i0t0, I0Ptup0(npf1, i0ps)))
 //
 end(*let*)//end-of-[f0_tup0(d3p0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+(
+d3p0: d3pat,
+env0: !envd3i0): i0pat =
+let
+//
+val-
+D3Ptup1
+( tknd
+, npf1, d3ps) = d3p0.node()
+//
+val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val i0ps =
+d3patlst_trxd3i0(d3ps, env0)
+//
+in//let
+//
+(*
+if
+(
+if
+not(
+list_singq(i0ps))
+then (false) else
+trcdtok_fltq(tknd))
+then list_head(i0ps) else*)
+(
+i0pat(loc0,
+i0t0, I0Ptup1(tknd, npf1, i0ps)))
+// else // end-of-[if]
+end(*let*)//end-of-[f0_tup1(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -687,6 +727,61 @@ D3Pannot
 (* ****** ****** *)
 (* ****** ****** *)
 //
+} where//endof(d3pat_trxd3i0(d3e0,env0))
+{
+//
+fun
+f1_d3prf
+(
+d3p0: d3pat,
+env0: !envd3i0): i0pat =
+let
+val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+in//let
+(
+i0pat(
+  loc0, i0t0, I0Pdprf(d3p0)))
+end//let//endof(f1_d3prf(...))
+//
+(* ****** ****** *)
+//
+fun
+f1_npf1$d3ps
+(
+npf1: sint,
+d3ps: d3patlst,
+env0: !envd3i0): i0patlst =
+(
+if
+(npf1 <= 0)
+then
+d3patlst_trxd3i0(d3ps, env0)
+else
+(
+case+ d3ps of
+|list_nil
+( (*0*) ) => list_nil(*0*)
+|list_cons
+(d3p1, d3ps) =>
+let
+//
+val npf1 = npf1-1
+//
+val i0p1 =
+(
+  f1_d3prf(d3p1(*prf*), env0))
+//
+in//let
+list_cons(i0p1,
+f1_npf1$d3ps(npf1, d3ps, env0))
+end//let//end-of-[list_cons(...)]
+)
+)
+//
 }(*where*)//end-of-[d3pat_trxd3i0(d3p0,env0)]
 //
 (* ****** ****** *)
@@ -705,24 +800,6 @@ I0LAB(lab0, d3pat_trxd3i0(d3p1, env0))
 end(*let*)//end-of-[l3d3p_trxd3i0(ld3p,env0)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-d3prf_trxd3i0
-(
-d3e0: d3exp,
-env0: !envd3i0): i0exp =
-let
-val loc0 = d3e0.lctn((*0*))
-val t2p0 = d3e0.styp((*0*))
-val i0t0 =
-(
-  s2typ_trxd3i0(t2p0, env0))
-in//let
-(
-i0exp(loc0, i0t0, I0Edprf(d3e0)))
-end//let//endof(d3prf_trxd3i0(...))
-//
 (* ****** ****** *)
 //
 #implfun
@@ -2136,8 +2213,27 @@ end(*let*)//end-of-[f0_extnam(d3e0,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-} where
+} where//end-of-(d3exp_trxd3i0(d3e0,env0))
 {
+//
+fun
+f1_d3prf
+(
+d3e0: d3exp,
+env0: !envd3i0): i0exp =
+let
+val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+in//let
+(
+i0exp(
+  loc0, i0t0, I0Edprf(d3e0)))
+end//let//endof(f1_d3prf(...))
+//
+(* ****** ****** *)
 //
 fun
 f1_npf1$d3es
@@ -2163,7 +2259,7 @@ val npf1 = npf1-1
 //
 val i0e1 =
 (
-  d3prf_trxd3i0(d3e1, env0))
+  f1_d3prf(d3e1(*prf*), env0))
 //
 in//let
 list_cons(i0e1,
