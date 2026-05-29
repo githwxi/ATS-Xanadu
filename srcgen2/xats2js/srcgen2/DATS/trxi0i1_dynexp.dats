@@ -287,6 +287,7 @@ i1val_pcon
 ( env0:
 ! envi0i1
 , loc0: loc_t
+, tknd: token
 , dlab: label
 , icon:
   i1val(*tuple*)): i1val =
@@ -311,6 +312,7 @@ i1val_pflt
 ( env0:
 ! envi0i1
 , loc0: loc_t
+, tknd: token
 , dlab: label
 , itup:
   i1val(*tuple*)): i1val =
@@ -335,6 +337,7 @@ i1val_proj
 ( env0:
 ! envi0i1
 , loc0: loc_t
+, tknd: token
 , dlab: label
 , itup:
   i1val(*tuple*)): i1val =
@@ -1550,6 +1553,14 @@ iexp.node() of
 //
 (* ****** ****** *)
 //
+(*
+|I0Epcon _ => f0_pcon(iexp, env0)
+|I0Epflt _ => f0_pflt(iexp, env0)
+*)
+|I0Eproj _ => f0_proj(iexp, env0)
+//
+(* ****** ****** *)
+//
 |I0Elet0 _ => f0_let0(iexp, env0)
 //
 (* ****** ****** *)
@@ -2038,6 +2049,44 @@ prerrsln(
 *)
 //
 }(*where*)//end-of-[f0_dapp(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_proj
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Eproj
+(tknd
+,dlab, itup) = iexp.node()
+//
+val itup =
+(
+  i0exp_trxi0i1(itup, env0))
+//
+in//let
+(
+i1val_proj(
+  env0, loc0, tknd, dlab, itup))
+end where
+{
+//
+(*
+val () =
+(
+prerr("i0exp_trxi0i1:");
+prerrsln(
+  "f0_proj(i0i1): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_proj(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
