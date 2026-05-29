@@ -161,9 +161,7 @@ i0e0.node() of
 //
 |I0Etup0 _ => f0_tup0(i0e0, enw0)
 |I0Etup1 _ => f0_tup1(i0e0, enw0)
-(*
 |I0Ercd2 _ => f0_rcd2(i0e0, enw0)
-*)
 //
 (* ****** ****** *)
 //
@@ -740,6 +738,35 @@ i0t0, I0Etup1(tknd, npf1, i0es)))
 end(*let*)//end-of-[f0_tup1(i0e0,enw0)]
 //
 (* ****** ****** *)
+//
+fun
+f0_rcd2
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Ercd2
+(tknd
+,npf1, lies) = i0e0.node()
+//
+val lies =
+(
+l0i0elst_tryd3i0(lies, enw0))
+//
+in//let
+(
+i0exp(loc0,
+i0t0, I0Ercd2(tknd, npf1, lies)))
+end(*let*)//end-of-[f0_rcd2(i0e0,enw0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1088,6 +1115,21 @@ end(*let*)//end-of-[f0_t2ped(i0e0,enw0)]
 (* ****** ****** *)
 //
 }(*where*)//end-of-[i0exp_tryd3i0(i0e0,enw0)]
+//
+(* ****** ****** *)
+//
+#implfun
+l0i0e_tryd3i0
+(lie0, env0) =
+let
+//
+val+
+I0LAB
+(lab0, i0e1) = lie0
+//
+in//let
+I0LAB(lab0, i0exp_tryd3i0(i0e1, env0))
+end(*let*)//end-of-[l0i0e_tryd3i0(ld3e,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

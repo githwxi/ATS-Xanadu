@@ -1576,9 +1576,7 @@ iexp.node() of
 //
 |I0Etup0 _ => f0_tup0(iexp, env0)
 |I0Etup1 _ => f0_tup1(iexp, env0)
-(*
 |I0Ercd2 _ => f0_rcd2(iexp, env0)
-*)
 //
 (* ****** ****** *)
 //
@@ -2351,6 +2349,41 @@ prerrsln(
 }(*where*)//end-of-[f0_tup1(iexp,env0)]
 //
 (* ****** ****** *)
+//
+fun
+f0_rcd2
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Ercd2
+(tknd
+,npf1,lies) = iexp.node()
+//
+val livs =
+f1_npf1$lies(npf1, lies, env0)
+//
+in
+(
+i1val_rcd2(env0,loc0,tknd,livs))
+end where
+{
+//
+(*
+val () =
+(
+prerr("i0exp_trxi0i1:");
+prerrsln(
+  "f0_tup1(i0i1): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_tup1(iexp,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -2754,7 +2787,48 @@ end//let//end-of-[list_cons(...)]
 )
 )
 //
+fun
+f1_npf1$lies
+(
+npf1: sint,
+lies: l0i0elst,
+env0: !envi0i1): l1i1vlst =
+(
+if
+(npf1 <= 0)
+then
+l0i0elst_trxi0i1(lies, env0)
+else
+(
+case+ lies of
+|list_nil
+( (*0*) ) => list_nil(*0*)
+|list_cons
+(lie1, lies) =>
+let
+//
+val npf1 = npf1-1
+//
+in//let
+(
+f1_npf1$lies(npf1, lies, env0))
+end//let//end-of-[list_cons(...)]
+)
+)
+//
 }(*where*)//end-of-[i0exp_trxi0i1(iexp,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+l0i0e_trxi0i1
+(lie0, env0) =
+let
+val+
+I0LAB(l0, i0e1) = lie0
+in//let
+I1LAB(l0, i0exp_trxi0i1(i0e1, env0))
+end(*let*)//end-of-[l0i0e_trxi0i1(lie0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

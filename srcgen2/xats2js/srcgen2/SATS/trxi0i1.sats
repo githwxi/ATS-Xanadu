@@ -272,6 +272,9 @@ i0bnd_trxi0i1
 fun // HX: [i0exp_trxi0i1]
 i0exp_trxi0i1 // insert into [env0]
 (i0e0: i0exp, env0: !envi0i1): i1val
+fun // HX: [i0exp_trxi0i1]
+l0i0e_trxi0i1 // insert into [env0]
+(lie0: l0i0e, env0: !envi0i1): l1i1v
 //
 fun // HX: [i0lft_trxi0i1]
 i0lft_trxi0i1 // insert into [env0]
