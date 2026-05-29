@@ -160,8 +160,8 @@ i0e0.node() of
 |I0Edprf _ => f0_dprf(i0e0, enw0)
 //
 |I0Etup0 _ => f0_tup0(i0e0, enw0)
-(*
 |I0Etup1 _ => f0_tup1(i0e0, enw0)
+(*
 |I0Ercd2 _ => f0_rcd2(i0e0, enw0)
 *)
 //
@@ -709,6 +709,35 @@ in//let
 i0exp(
 loc0, i0t0, I0Etup0(npf1, i0es)))
 end(*let*)//end-of-[f0_tup0(i0e0,enw0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+(
+i0e0: i0exp,
+enw0: !enwd3i0): i0exp =
+let
+//
+val
+loc0 = i0e0.lctn((*0*))
+val
+i0t0 = i0e0.ityp((*0*))
+//
+val-
+I0Etup1
+(tknd
+,npf1, i0es) = i0e0.node()
+//
+val i0es =
+(
+i0explst_tryd3i0(i0es, enw0))
+//
+in//let
+(
+i0exp(loc0,
+i0t0, I0Etup1(tknd, npf1, i0es)))
+end(*let*)//end-of-[f0_tup1(i0e0,enw0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
