@@ -141,6 +141,14 @@ i0explst_trxi0i1
   list_trxi0i1_fnp(i0es, env0, i0exp_trxi0i1))
 //
 (* ****** ****** *)
+//
+#implfun
+l0i0elst_trxi0i1
+( lies, env0 ) =
+(
+  list_trxi0i1_fnp(lies, env0, l0i0e_trxi0i1))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

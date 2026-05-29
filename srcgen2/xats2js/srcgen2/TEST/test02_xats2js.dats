@@ -119,8 +119,40 @@ prints("fibo3(10) = ", fibo3(10), "\n")
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () = the_print_store_log( (*void*) )
+fun
+fibo4
+(x: sint): sint =
+(
+loop@{x=x, rr=(0, 1)}) where
+{
+fun
+loop
+(xrr:
+@{x=sint, rr=(sint, sint)}) =
+if
+xrr.x >= 2
+then // if-then
+(
+loop
+@{
+x=
+(xrr.x)-1,
+rr=
+(xrr.rr.1, xrr.rr.0+xrr.rr.1)})
+else // if-else
+(
+if
+xrr.x >= 1
+then (xrr.rr.1) else (xrr.rr.0))
+}
 //
+(* ****** ****** *)
+(* ****** ****** *)
+val () =
+prints("fibo4(10) = ", fibo4(10), "\n")
+(* ****** ****** *)
+(* ****** ****** *)
+val () = the_print_store_log( (*void*) )
 (* ****** ****** *)
 (* ****** ****** *)
 //
