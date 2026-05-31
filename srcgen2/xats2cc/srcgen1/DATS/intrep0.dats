@@ -208,8 +208,9 @@ I0TYP
 //
 (* ****** ****** *)
 //
-endloc (*local*) // end-of-[local(i0typ)]
+endloc(*local*)//end-of-[local(i0typ)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
@@ -252,7 +253,7 @@ i0jag_make_i0ts
 //
 (* ****** ****** *)
 //
-endloc (*local*) // end-of-[local(i0jag)]
+endloc(*local*)//end-of-[local(i0jag)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -311,7 +312,7 @@ I0PAT
 //
 (* ****** ****** *)
 //
-endloc (*local*) // end-of-[local(i0pat)]
+endloc(*local*)//end-of-[local(i0pat)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -411,7 +412,7 @@ I0VAR
 ,lvl0
 ,bvk0, ityp) = ivar in ityp end
 //
-endloc (*local*) // end-of-[local(i0var)]
+endloc(*local*)//end-of-[local(i0var)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -483,7 +484,7 @@ I0EXP
 //
 (* ****** ****** *)
 //
-endloc (*local*) // end-of-[local(i0exp)]
+endloc(*local*)//end-of-[local(i0exp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -698,7 +699,7 @@ I0DCL
 //
 (* ****** ****** *)
 //
-endloc (*local*) // end-of-[local(i0dcl)]
+endloc(*local*)//end-of-[local(i0dcl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
