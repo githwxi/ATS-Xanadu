@@ -158,10 +158,17 @@ d3pat_trxd3i0
 let
 //
 // (*
-val () =
+val loc0 = d3p0.lctn()
+val t2p0 = d3p0.styp()
+val (  ) =
+prerrsln
+("d3pat(",loc0,"): ", t2p0)
+// *)
+(*
+val (  ) =
 prerrsln("\
 d3pat_trxd3i0: d3p0 = ", d3p0)
-// *)
+*)
 //
 in//let
 //
@@ -807,8 +814,15 @@ d3exp_trxd3i0
 (d3e0, env0) =
 let
 //
+// (*
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+val (  ) =
+prerrsln
+("d3exp(",loc0,"): ", t2p0)
+// *)
 (*
-val () =
+val (  ) =
 prerrsln("\
 d3exp_trxd3i0: d3e0 = ", d3e0)
 *)
