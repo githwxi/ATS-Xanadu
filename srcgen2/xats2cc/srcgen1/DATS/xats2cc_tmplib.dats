@@ -217,5 +217,5 @@ i0varfst_fprint(ivst, g_print$out<>())end
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_xats2js_tmplib.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_xats2cc_tmplib.dats] *)
 (***********************************************************************)

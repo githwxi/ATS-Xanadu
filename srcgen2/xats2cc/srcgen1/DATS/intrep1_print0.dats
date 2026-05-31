@@ -31,44 +31,85 @@
 (*
 Author: Hongwei Xi
 //
-Sat Apr  4 08:20:20 PM EDT 2026
+Mon Mar  9 02:57:23 PM EDT 2026
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#abstbox i1typ_tbox // p0tr
-#typedef i1typ = i1typ_tbox
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-datatype
-i1typ_node =
-(* ****** ****** *)
-//
 (*
-|I1Tbas of sym_t // type
+#define
+XATSOPT "./../../.."
 *)
+(* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dpre.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
 //
-|I1Tcst of s2cst // constant
-|I1Tvar of s2var // variable
+#staload
+"./../../../SATS/staexp2.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
-|I1Tnone0 of ((*0*)) | I1Tnone1 of (i0typ)
+//
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
+#symload node with i1typ_node$get
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i1typ_fprint
-(ityp: i1typ, out0: FILR): void
-#symload fprint with i1typ_fprint
+(ityp, out0) =
+let
+//
+#impltmp
+g_print$out
+<(*0*)>((*0*)) = out0
+//
+in//let
+//
+case+
+ityp.node() of
+(* ****** ****** *)
+//
+|I1Tcst(s2c) =>
+prints("I1Tcst(", s2c, ")")
+|I1Tvar(s2v) =>
+prints("I1Tvar(", s2v, ")")
+//
+(* ****** ****** *)
+//
+|I1Tnone0() =>
+(
+  prints("I1Tnone0(", ")"))
+|I1Tnone1
+(   i0t1   ) =>
+(
+  prints( "I1Tnone1(", i0t1, ")" ))
+//
+(* ****** ****** *)
+//
+end(*let*)//end-of-[i1typ_fprint(ityp,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_intrep1.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_intrep1_print0.dats] *)
 (***********************************************************************)

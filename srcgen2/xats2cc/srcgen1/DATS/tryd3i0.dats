@@ -236,5 +236,5 @@ i0dclistopt_tryd3i0
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_tryd3i0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_tryd3i0.dats] *)
 (***********************************************************************)
