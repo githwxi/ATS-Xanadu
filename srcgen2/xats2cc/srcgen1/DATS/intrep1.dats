@@ -37,7 +37,6 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-(* ****** ****** *)
 (*
 #define
 XATSOPT "./../../.."
@@ -50,16 +49,14 @@ XATSOPT "./../../.."
 "./../../..\
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
-(* ****** ****** *)
-#include
-"./../HATS/mytmplib00.hats"
-(* ****** ****** *)
-//
 #staload
 "./../../../SATS/staexp2.sats"
 #staload
+"./../../../SATS/statyp2.sats"
+#staload
 "./../../../SATS/dynexp2.sats"
-//
+#staload
+"./../../../SATS/dynexp3.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
@@ -68,48 +65,75 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#symload node with i1typ_node$get
+#implfun
+i1typ_none0
+((*void*)) =
+i1typ_make_node
+(s2t0,I1Tnone0())
+where{
+val s2t0 = sort2_none0()}
+//
+#implfun
+i1typ_none1
+(  i0t0  ) =
+i1typ_make_node
+(i0t0.sort(),I1Tnone1(i0t0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1typ =
+I1TYP of
+(sort2, i1typ_node)
+(*
+datavwtp
+i1typ_vt =
+I1TYP_VT of
+(sort2, i1typ_node)
+*)
+//
+#absimpl i1typ_tbox = i1typ
+//
+(* ****** ****** *)
+in (* in-of-local *)
 (* ****** ****** *)
 //
 #implfun
-i1typ_fprint
-(ityp, out0) =
+i1typ_make_node
+( sort, node ) =
+(
+  I1TYP(sort, node))
+//
+(* ****** ****** *)
+//
+#implfun
+i1typ_sort$get
+(   ityp   ) =
 let
-//
-#impltmp
-g_print$out
-<(*0*)>((*0*)) = out0
-//
-in//let
-//
-case+
-ityp.node() of
-(* ****** ****** *)
-//
-|I1Tcst(s2c) =>
-prints("I1Tcst(", s2c, ")")
-|I1Tvar(s2v) =>
-prints("I1Tvar(", s2v, ")")
+val+
+I1TYP
+(s2t0, node) = ityp in s2t0 end
 //
 (* ****** ****** *)
 //
-|I1Tnone0() =>
-(
-  prints("I1Tnone0(", ")"))
-|I1Tnone1
-(   i0t1   ) =>
-(
-  prints( "I1Tnone1(", i0t1, ")" ))
+#implfun
+i1typ_node$get
+(   ityp   ) =
+let
+val+
+I1TYP
+(s2t0, node) = ityp in node end
 //
 (* ****** ****** *)
 //
-end(*let*)//end-of-[i1typ_fprint(ityp,out0)]
+endloc(*local*)//end-of-[local(i1typ)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_intrep1_print0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_intrep1.dats] *)
 (***********************************************************************)

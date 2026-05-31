@@ -38,6 +38,43 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#staload "./intrep0.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./\
+../../../SATS/xbasics.sats"
+#staload "./\
+../../../SATS/xstamp0.sats"
+#staload "./\
+../../../SATS/xsymbol.sats"
+#staload "./\
+../../../SATS/xlabel0.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload S2E = "./\
+../../../SATS/staexp2.sats"
+#staload T2P = "./\
+../../../SATS/statyp2.sats"
+#staload D2E = "./\
+../../../SATS/dynexp2.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef sort2 = $S2E.sort2
+#typedef s2cst = $S2E.s2cst
+#typedef s2var = $S2E.s2var
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #abstbox i1typ_tbox // p0tr
 #typedef i1typ = i1typ_tbox
@@ -62,9 +99,34 @@ i1typ_node =
 (* ****** ****** *)
 //
 fun
+i1typ_sort$get
+(ityp: i1typ): sort2
+fun
+i1typ_node$get
+(ityp: i1typ): i1typ_node
+//
+#symload sort with i1typ_sort$get
+#symload node with i1typ_node$get
+//
+(* ****** ****** *)
+//
+fun
 i1typ_fprint
 (ityp: i1typ, out0: FILR): void
 #symload fprint with i1typ_fprint
+//
+(* ****** ****** *)
+//
+fun
+i1typ_none0((*void*)): i1typ
+fun
+i1typ_none1(i0t0: i0typ): i1typ
+//
+fun
+i1typ_make_node
+(s2t0
+:sort2, node:i1typ_node): i1typ
+#symload i1typ with i1typ_make_node
 //
 (* ****** ****** *)
 (* ****** ****** *)
