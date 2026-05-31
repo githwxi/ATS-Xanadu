@@ -97,13 +97,15 @@ i0p0.node() of
 //
 |
 I0Ptup0
-( i0ps ) => f0_i0ps(i0ps)
+(npf1, i0ps) => f0_i0ps(i0ps)
 |
 I0Ptup1
-(tknd, i0ps) => f0_i0ps(i0ps)
+(tknd
+,npf1, i0ps) => f0_i0ps(i0ps)
 |
 I0Prcd2
-(tknd, lips) => f0_lips(lips)
+(tknd
+,npf1, lips) => f0_lips(lips)
 //
 | _(*otherwise*) => (  false  ))
 //
