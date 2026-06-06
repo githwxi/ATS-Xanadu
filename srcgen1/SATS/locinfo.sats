@@ -38,7 +38,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 %{#
-#include "CATS/locinfo.cats"
+#include "CATS/CC/locinfo.cats"
 %} // end of [%{#]
 //
 (* ****** ****** *)

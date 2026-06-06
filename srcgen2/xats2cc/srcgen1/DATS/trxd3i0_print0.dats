@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -26,112 +26,79 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: May, 2018
-// Authoremail: gmhwxiATgmailDOTcom
+(*
+Author: Hongwei Xi
+//
+Sun May 31 08:17:09 PM EDT 2026
+//
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+(*
 #define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt"
-(* ****** ****** *)
-//
-%{#
-#include "CATS/CC/lexbuf0.cats"
-%} // end of [%{#]
-//
-(* ****** ****** *)
-//
-#staload CBS =
-"./../UTIL/SATS/cblist0.sats"
-//
-typedef cblist = $CBS.cblist
-//
-(* ****** ****** *)
-//
-#staload LOC = "./locinfo.sats"
-//
-typedef pos_t = $LOC.pos_t
-typedef loc_t = $LOC.loc_t
-typedef position = $LOC.position
-typedef location = $LOC.location
-//
-(* ****** ****** *)
-//
-abstflt
-lexbuf_tflt =
-$extype"xats_lexbuf_struct"
-//
-typedef lexbuf = lexbuf_tflt
-//
-(* ****** ****** *)
-
-fun
-lexbuf_initize_cblist
-(
-  buf: &lexbuf? >> _, cbs: cblist
-) : void // end of [lexbuf_initize_cblist]
-
-(* ****** ****** *)
-//
-(*
-fun
-lexbuf_get_ntot(buf: &lexbuf): int
-fun
-lexbuf_get_nspc(buf: &lexbuf): int
+XATSOPT "./../../.."
 *)
+(* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dpre.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/staexp1.sats"
+#staload
+"./../../../SATS/dynexp1.sats"
+//
+#staload
+"./../../../SATS/staexp2.sats"
+#staload
+"./../../../SATS/statyp2.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
+#staload
+"./../../../SATS/dynexp3.sats"
 //
 (* ****** ****** *)
 //
-fun
-lexbuf_get_none
-  (buf: &lexbuf >> _): void
-fun
-lexbuf_get_fullseg
-  (buf: &lexbuf >> _): string
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/trxd3i0.sats"
 //
 (* ****** ****** *)
-//
-// HX-2018-05-27:
-// [lexbuf_getc] is like getc
-// [lexbuf_unget] can be safely
-// applied only once at a given
-// position!
-//
-fun
-lexbuf_getc(buf: &lexbuf >> _): int
-fun
-lexbuf_unget
-  (buf: &lexbuf >> _, i0: int): void
-//
 (* ****** ****** *)
 //
-(*
-fun
-lexbuf_get_pos
-(
-  buf: &lexbuf, pos: &pos_t? >> _
-) : void // end-of-fun
-*)
+#implfun
+s2typ_fpprnt
+(styp, out0) =
+let
 //
-(*
-fun
-lexbuf_set_pos
-(buf: &lexbuf >> _, pos: &pos_t): void
-*)
+#impltmp
+g_print$out
+<(*0*)>((*0*)) = out0
 //
-(* ****** ****** *)
-(*
+in//let
 //
-fun
-lexbufpos_get_loc
-  (buf: &lexbuf, pos: &pos_t): loc_t
+case+
+styp.node() of
 //
-*)
+|
+_(*otherwise*) => s2typ_fprint(styp, out0)
+//
+end(*let*)//end-of-[s2typ_fpprnt(styp,out0)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen1_SATS_lexbuf0.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_trxd3i0_print0.dats] *)
 (***********************************************************************)

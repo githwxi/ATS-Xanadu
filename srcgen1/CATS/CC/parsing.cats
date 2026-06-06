@@ -28,64 +28,43 @@
 /* ****** ****** */
 //
 // Author: Hongwei Xi
-// Start Time: May, 2018
+// Start Time: June, 2018
 // Authoremail: gmhwxi@gmail.com
 //
 /* ****** ****** */
-
-#ifndef XANADU_SRCGEN_CATS_LEXBUF0
-#define XANADU_SRCGEN_CATS_LEXBUF0
-
+//
+#ifndef \
+ATS3_SRCGEN_CATS_XATS_PARSING
+#define \
+ATS3_SRCGEN_CATS_XATS_PARSING
+//
 /* ****** ****** */
 
 /*
 typedef
-lexbuf_tflt =
+tokbuf_tflat =
 $extype_struct
-"xats_lexbuf_struct" of
+"xats_tokbuf_struct" of
 {
-  base_ntot= int
-, base_nrow= int
-, base_ncol= int
-(*
-, char= int
-*)
-, cbuf= string
-//
-, begp= ptr
-, endp= ptr, curp= ptr
-//
-, cbhead= cblist, cbtail= cblist
-//
-} (* end of [xats_lexbuf_tflt] *)
+  token *begp;
+  token *endp;
+  token *curp;
+} (* end of [tokbuf] *)
 */
-
-/* ****** ****** */
 
 typedef struct {
-//
-  atstype_int ntot ; // char number
-  atstype_int nrow ; // line number
-  atstype_int ncol ; // line offset
-//
-/*
-  atstype_int char ; // ungetc
-*/
-  atstype_ptr cbuf ; // prefix
 //
   atstype_ptr begp ; // start
   atstype_ptr endp ; // finish
   atstype_ptr curp ; // current
 //
-  atstype_ptr cbhead ; // 1st cblock
-  atstype_ptr cbtail ; // rest of cblocks
+} xats_tokbuf_struct ;
+
+/* ****** ****** */
 //
-} xats_lexbuf_struct ;
-
+#endif // end if [ifndef]
+// [ATS3_SRCGEN_CATS_XATS_PARSING]
+//
 /* ****** ****** */
 
-#endif // end of [XANADU_SRCGEN_CATS_LEXBUF0]
-
-/* ****** ****** */
-
-/* end of [xats_lexbuf0.cats] */
+/* end of [ATS-Xanadu/srcgen1/CATS/CC/xats_parsing.cats] */

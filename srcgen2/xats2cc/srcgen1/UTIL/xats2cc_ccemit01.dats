@@ -119,11 +119,11 @@ val ipar =
 (
   i0parsed_of_tryd3i0(ipar))
 //
-// (*
+(*
 val (  ) =
 prerrsln
 ("ipar(tryd3i0) = ", (ipar))
-// *)
+*)
 //
 (*
 val ipar =
