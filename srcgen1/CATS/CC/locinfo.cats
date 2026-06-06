@@ -28,43 +28,29 @@
 /* ****** ****** */
 //
 // Author: Hongwei Xi
-// Start Time: June, 2018
+// Start Time: May, 2018
 // Authoremail: gmhwxi@gmail.com
 //
 /* ****** ****** */
-//
+
 #ifndef \
-ATS3_SRCGEN_CATS_XATS_PARSING
+ATS3_SRCGEN_CATS_XATS_LOCINFO
 #define \
-ATS3_SRCGEN_CATS_XATS_PARSING
-//
+ATS3_SRCGEN_CATS_XATS_LOCINFO
+
 /* ****** ****** */
 
-/*
-typedef
-tokbuf_tflat =
-$extype_struct
-"xats_tokbuf_struct" of
-{
-  token *begp;
-  token *endp;
-  token *curp;
-} (* end of [tokbuf] *)
-*/
-
 typedef struct {
-//
-  atstype_ptr begp ; // start
-  atstype_ptr endp ; // finish
-  atstype_ptr curp ; // current
-//
-} xats_tokbuf_struct ;
+  atstype_int ntot ; // char number
+  atstype_int nrow ; // line number
+  atstype_int ncol ; // line offset
+} xats_position_struct ;
 
 /* ****** ****** */
 //
 #endif // end if [ifndef]
-// [ATS3_SRCGEN_CATS_XATS_PARSING]
+// [ATS3_SRCGEN_CATS_XATS_LOCINFO]
 //
 /* ****** ****** */
 
-/* end of [xats_parsing.cats] */
+/* end of [ATS-Xanadu/srcgen1/CATS/CC/xats_locinfo.cats] */

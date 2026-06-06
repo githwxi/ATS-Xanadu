@@ -157,13 +157,13 @@ d3pat_trxd3i0
 (d3p0, env0) =
 let
 //
-// (*
+(*
 val loc0 = d3p0.lctn()
 val t2p0 = d3p0.styp()
 val (  ) =
-prerrsln
+printsln
 ("d3pat(",loc0,"): ", t2p0)
-// *)
+*)
 (*
 val (  ) =
 prerrsln("\
@@ -818,8 +818,16 @@ let
 val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
 val (  ) =
-prerrsln
+printsln
 ("d3exp(",loc0,"): ", t2p0)
+where
+{
+#impltmp
+g_print
+<s2typ>
+( styp ) =
+s2typ_fpprnt
+(styp, g_print$out<>((*0*)))}
 // *)
 (*
 val (  ) =

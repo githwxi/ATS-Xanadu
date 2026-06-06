@@ -240,6 +240,13 @@ fopr: (x0, !envd3i0)->y0): optn(y0)
 (* ****** ****** *)
 //
 fun
+s2typ_fpprnt
+(styp: s2typ, out0: FILR): void
+#symload fpprnt with s2typ_fpprnt
+//
+(* ****** ****** *)
+//
+fun
 s2typ_trxd3i0
 (s2t0: s2typ, env0: !envd3i0): i0typ
 //

@@ -63,6 +63,8 @@ XATSOPT "./../../.."
 #staload
 "./../../../SATS/staexp2.sats"
 #staload
+"./../../../SATS/statyp2.sats"
+#staload
 "./../../../SATS/dynexp2.sats"
 #staload
 "./../../../SATS/dynexp3.sats"
@@ -174,6 +176,28 @@ prints
 //
 end(*let*)//end-of-[i0typ_fprint(ityp,out0)]
 //
+(* ****** ****** *)
+//
+#implfun
+s2typ_fpprnt
+(styp, out0) =
+let
+//
+#impltmp
+g_print$out
+<(*0*)>((*0*)) = out0
+//
+in//let
+//
+case+
+styp.node() of
+//
+|
+_(*otherwise*) => s2typ_fprint(styp, out0)
+//
+end(*let*)//end-of-[s2typ_fpprnt(styp,out0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

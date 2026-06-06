@@ -44,7 +44,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 %{#
-#include "CATS/parsing.cats"
+#include "CATS/CC/parsing.cats"
 %} // end of [%{#]
 //
 (* ****** ****** *)
