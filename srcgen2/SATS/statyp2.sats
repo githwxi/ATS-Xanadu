@@ -326,10 +326,16 @@ knd: 0/1/-1//cbv0/v1/rf
 |T2Ptrcd of
 (trcdknd(*knd*), sint(*npf*), l2t2plst)
 //
+(* ****** ****** *)
+//
 |T2Pnone0 of ((*0*)) // HX: optional
 |T2Pnone1 of (s2typ) | T2Ps2exp of (s2exp)
 //
+(* ****** ****** *)
+//
 |T2Perrck of (int(*lvl*), s2typ)//HX:tread-error
+//
+(* ****** ****** *)
 //
 // end of [s2type_node] // end of [ datatype(...) ]
 //
