@@ -1438,6 +1438,10 @@ d0parsed_get_parsed:(d0parsed)->d0eclistopt
 #symload source with d0parsed_get_source
 #symload parsed with d0parsed_get_parsed
 //
+(*
+HX:2026-06-13:
+(sta<=0)and(dyn>=1)
+*)
 fun
 d0parsed_make_args
 ( stadyn:sint

@@ -670,6 +670,7 @@ d0parsed_from_atext
 (*
 HX-2024-07-07:
 These two functions are the same!
+HX:2026-06-13:(sta<=0)and(dyn>=1)
 *)
 //
 fun

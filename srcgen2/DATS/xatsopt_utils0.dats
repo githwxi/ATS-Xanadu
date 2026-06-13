@@ -375,6 +375,176 @@ end (*let*) // end of [d3parsed_of_trans03(dpar)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+xatsopt_args$filxats_d2parsed
+  (args, xats, fpth) =
+let
+//
+fun
+f0_args
+(
+args:
+list(strn)): void =
+(
+case+ args of
+|
+list_nil() => ((*0*))
+|
+list_cons(arg1, args) =>
+(
+  f0_args(args)) where
+{
+val () =
+xatsopt_flag$pvsadd0(arg1)
+}
+)(*case+*)//end(f0_args())
+//
+val ret1 =
+the_fxtyenv_pvsl00d((*0*))
+val (  ) =
+if // if
+(ret1 > 0)
+then
+prerrsln("\
+// The fixity-defs loaded!")
+val ret2 =
+the_tr12env_pvsl01d((*nil*))
+val (  ) =
+if // if
+(ret2 > 0)
+then prerrsln("\
+// The trans12-defs loaded!")
+in//let
+//
+let
+val () = f0_args(args)
+in//let
+(
+if
+(xats >= 1)
+then
+(
+  d2parsed_of_fildats( fpth ))
+else
+(
+  d2parsed_of_filsats( fpth )))//endof(if)
+end(*let*)//end-of-[d2parsed_of_filsats(fpth)]
+//
+end where
+{
+//
+val (  ) =
+prerrsln("// Welcome from ATS3/Xanadu!")
+val (  ) =
+prerrsln("// XATSHOME = ", the_XATSHOME())
+//
+}(*where*)//end-of-[xatsopt_args$filxats_d2parsed(...)]
+//
+(*
+HX:2026-06-13:
+static: (xats <= 0 )
+dynamic: (xats >= 1 )
+Sat Jun 13 03:09:44 PM EDT 2026
+*)
+#implfun
+xatsopt_args$filsats_d2parsed
+  ( args, fpth ) =
+(
+  xatsopt_args$filxats_d2parsed(args, 0(*sats*), fpth))
+#implfun
+xatsopt_args$fildats_d2parsed
+  ( args, fpth ) =
+(
+  xatsopt_args$filxats_d2parsed(args, 1(*dats*), fpth))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xatsopt_args$filxats_d3parsed
+  (args, xats, fpth) =
+let
+//
+fun
+f0_args
+(
+args:
+list(strn)): void =
+(
+case+ args of
+|
+list_nil() => ((*0*))
+|
+list_cons(arg1, args) =>
+(
+  f0_args(args)) where
+{
+val () =
+xatsopt_flag$pvsadd0(arg1)
+}
+)(*case+*)//end(f0_args())
+//
+val ret1 =
+the_fxtyenv_pvsl00d((*0*))
+val (  ) =
+if // if
+(ret1 > 0)
+then
+prerrsln("\
+// The fixity-defs loaded!")
+val ret2 =
+the_tr12env_pvsl01d((*nil*))
+val (  ) =
+if // if
+(ret2 > 0)
+then prerrsln("\
+// The trans12-defs loaded!")
+in//let
+//
+let
+val () = f0_args(args)
+in//let
+(
+if
+(xats >= 1)
+then
+(
+  d3parsed_of_fildats( fpth ))
+else
+(
+  d3parsed_of_filsats( fpth )))//endof(if)
+end(*let*)//end-of-[d3parsed_of_filsats(fpth)]
+//
+end where
+{
+//
+val (  ) =
+prerrsln("// Welcome from ATS3/Xanadu!")
+val (  ) =
+prerrsln("// XATSHOME = ", the_XATSHOME())
+//
+}(*where*)//end-of-[xatsopt_args$filxats_d3parsed(...)]
+//
+(*
+HX:2026-06-13:
+static: (xats <= 0 )
+dynamic: (xats >= 1 )
+Sat Jun 13 03:09:44 PM EDT 2026
+*)
+#implfun
+xatsopt_args$filsats_d3parsed
+  ( args, fpth ) =
+(
+  xatsopt_args$filxats_d3parsed(args, 0(*sats*), fpth))
+#implfun
+xatsopt_args$fildats_d3parsed
+  ( args, fpth ) =
+(
+  xatsopt_args$filxats_d3parsed(args, 1(*dats*), fpth))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xatsopt_utils0.dats] *)
 (***********************************************************************)
