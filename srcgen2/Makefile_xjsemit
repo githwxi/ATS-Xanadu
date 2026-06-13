@@ -284,9 +284,8 @@ BUILD/JS/%_dats_out0.js; \
 $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
-lib2xatsopt: \
-$(OUT1DATS); \
-$(CAT) $(OUT1DATS) > lib/lib2xatsopt.js
+lib2xatsopt:: \
+$(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt.js
 ########################################################################
 ifndef XATS2JS_TCHECK00
 XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js

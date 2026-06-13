@@ -545,6 +545,23 @@ xatsopt_args$fildats_d3parsed
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#if
+defq(_XATS2JS_)
+#then
+#include "./CATS/JS/xatsopt_utils0.dats"//HX: ATS3_JSDEV
+#endif//if(__XATS2JS__)
+//
+(* ****** ****** *)
+//
+#if
+defq(_XATS2PY_)
+#then
+#include "./CATS/PY/xatsopt_utils0.dats"//HX: ATS3_PYDEV
+#endif//if(__XATS2PY__)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xatsopt_utils0.dats] *)
 (***********************************************************************)
