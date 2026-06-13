@@ -42,30 +42,39 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
+#staload D2E =
+  "./../../../SATS/dynexp2.sats"
+#staload D3E =
+  "./../../../SATS/dynexp3.sats"
+(* ****** ****** *)
 #staload XATSOPT =
   "./../../../SATS/xatsopt.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef d2parsed = $D2E.d2parsed
+#typedef d3parsed = $D3E.d3parsed
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #extern
 fun
 PYDEV_xatsopt_args_filsats_d2parsed
 ( args
-: list(strn), fpth: strn): d3parsed
+: list(strn), fpth: strn): d2parsed = $extnam()
 #implfun
-PYDEV_xatsopt_args_filsats_d2parsed =
-  (args, fpth)
-XATSOPT.xatsopt_args_filsats_d2parsed(args, fpth)
+PYDEV_xatsopt_args_filsats_d2parsed
+  (args, fpth) =
+$XATSOPT.xatsopt_args$filsats_d2parsed(args, fpth)
 //
 #extern
 fun
-PYDEV_xatsopt_args_filsats_d2parsed
+PYDEV_xatsopt_args_fildats_d2parsed
 ( args
-: list(strn), fpth: strn): d3parsed
+: list(strn), fpth: strn): d2parsed = $extnam()
 #implfun
-PYDEV_xatsopt_args_fildats_d2parsed =
-  (args, fpth)
-XATSOPT.xatsopt_args_fildats_d2parsed(args, fpth)
+PYDEV_xatsopt_args_fildats_d2parsed
+  (args, fpth) =
+$XATSOPT.xatsopt_args$fildats_d2parsed(args, fpth)
 //
 (* ****** ****** *)
 //
@@ -74,11 +83,11 @@ fun
 PYDEV_xatsopt_args_filxats_d2parsed
 ( args
 : list(strn)
-, xats: sint, fpth: strn): d3parsed
+, xats: sint, fpth: strn): d2parsed = $extnam()
 #implfun
-PYDEV_xatsopt_args_filxats_d2parsed =
-  (args, xats(*0/1*), fpth)
-XATSOPT.xatsopt_args_filxats_d2parsed(args, xats, fpth)
+PYDEV_xatsopt_args_filxats_d2parsed
+  (args, xats(*0/1*), fpth) =
+$XATSOPT.xatsopt_args$filxats_d2parsed(args, xats, fpth)
 //
 (* ****** ****** *)
 (* ****** ****** *)
