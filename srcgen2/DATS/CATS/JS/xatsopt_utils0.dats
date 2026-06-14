@@ -43,15 +43,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload D2E =
-  "./../../../SATS/dynexp2.sats"
-#staload D3E =
-  "./../../../SATS/dynexp3.sats"
 #staload XATSOPT =
   "./../../../SATS/xatsopt.sats"
-//
-#typedef d2parsed = $D2E.d2parsed
-#typedef d3parsed = $D3E.d3parsed
 //
 (* ****** ****** *)
 (* ****** ****** *)

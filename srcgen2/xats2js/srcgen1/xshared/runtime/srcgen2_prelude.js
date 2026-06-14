@@ -912,7 +912,7 @@ XATS000_strn_get$at$raw
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_strn_fmake_fwork
+XATS2JS_strn_make_fwork
   (fwork)
 {
   var cs = []
@@ -921,10 +921,10 @@ XATS2JS_strn_fmake_fwork
 }
 //
 function
-XATS000_strn_fmake_fwork
+XATS000_strn_make_fwork
   (fwork)
 {
-  return XATS2JS_strn_fmake_fwork(fwork)
+  return XATS2JS_strn_make_fwork(fwork)
 }
 //
 ////////////////////////////////////////////////////////////////////////.
@@ -1513,7 +1513,7 @@ XATS2JS_a1sz_make_nfun
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_a1sz_fmake_fwork
+XATS2JS_a1sz_make_fwork
   (fwork)
 {
   var A0 = []
