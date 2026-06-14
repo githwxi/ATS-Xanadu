@@ -42,17 +42,17 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #staload D2E =
   "./../../../SATS/dynexp2.sats"
 #staload D3E =
   "./../../../SATS/dynexp3.sats"
-(* ****** ****** *)
 #staload XATSOPT =
   "./../../../SATS/xatsopt.sats"
-(* ****** ****** *)
-(* ****** ****** *)
+//
 #typedef d2parsed = $D2E.d2parsed
 #typedef d3parsed = $D3E.d3parsed
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -74,7 +74,7 @@ JSDEV_xatsopt_args_filsats_d2parsed
   (farg, fpth) =
 let
 val xats = 0(*sats*)
-val args = list_make_fwork<strn>(farg)
+val args = strnlst_make_fwork(farg)
 in//let
 $XATSOPT.xatsopt_args$filxats_d2parsed(args, xats, fpth)
 end(*let*)//end-of-[JSDEV_xatsopt_args_filsats_d2parsed(farg,fpth)]
@@ -84,7 +84,7 @@ JSDEV_xatsopt_args_fildats_d2parsed
   (farg, fpth) =
 let
 val xats = 1(*dats*)
-val args = list_make_fwork<strn>(farg)
+val args = strnlst_make_fwork(farg)
 in//let
 $XATSOPT.xatsopt_args$filxats_d2parsed(args, xats, fpth)
 end(*let*)//end-of-[JSDEV_xatsopt_args_fildats_d2parsed(farg,fpth)]
@@ -110,7 +110,7 @@ JSDEV_xatsopt_args_filsats_d3parsed
   (farg, fpth) =
 let
 val xats = 0(*sats*)
-val args = list_make_fwork<strn>(farg)
+val args = strnlst_make_fwork(farg)
 in//let
 $XATSOPT.xatsopt_args$filxats_d3parsed(args, xats, fpth)
 end(*let*)//end-of-[JSDEV_xatsopt_args_filsats_d3parsed(farg,fpth)]
@@ -120,7 +120,7 @@ JSDEV_xatsopt_args_fildats_d3parsed
   (farg, fpth) =
 let
 val xats = 1(*dats*)
-val args = list_make_fwork<strn>(farg)
+val args = strnlst_make_fwork(farg)
 in//let
 $XATSOPT.xatsopt_args$filxats_d3parsed(args, xats, fpth)
 end(*let*)//end-of-[JSDEV_xatsopt_args_fildats_d3parsed(farg,fpth)]
