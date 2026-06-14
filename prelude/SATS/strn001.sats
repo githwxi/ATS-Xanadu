@@ -182,17 +182,17 @@ fun<>
 strn_fmake((*void*)): strn
 *)
 fun<>
-strn_fmake_fwork
+strn_make_fwork
 (fwork: (cgtz->void)->void): strn//HX:3rd-order!
 //
 fun
 <env:vt>
-strn_fmake_env$fwork
+strn_make_env$fwork
 ( env: env
 , fwork: (env, cgtz->void)->void): strn//HX:3rd-order!
 fun
 <env:vt>
-strn_fmake1_env$fwork
+strn_make1_env$fwork
 ( env: !env
 , fwork: (!env, cgtz->void)->void): strn//HX:3rd-order!
 //

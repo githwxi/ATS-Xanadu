@@ -1522,7 +1522,7 @@ gseq_uncons$strqize(xs: xs): strq_vt(x0)//uncons
 fun
 <xs:t0>
 <x0:t0>
-gseq_fmake_fwork(fwork: ((x0)->void)->void): (xs)
+gseq_make_fwork(fwork: ((x0)->void)->void): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)

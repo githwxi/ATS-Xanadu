@@ -607,7 +607,7 @@ Mon 02 Sep 2024 06:16:45 PM EDT
 < x0:t0 >
 list_make_ncpy
   (n0, x0) =
-list_fmake_fwork<>
+list_make_fwork<>
 (
 lam(work) =>
 foritm(n0, //HX:it may not be
@@ -617,7 +617,7 @@ foritm(n0, //HX:it may not be
 < x0:t0 >
 list_make_nfun
   (n0, f0) =
-list_fmake_fwork<>
+list_make_fwork<>
 (
 lam(work) =>
 foritm(n0, //HX:it may not be
@@ -628,7 +628,7 @@ foritm(n0, //HX:it may not be
 (*
 HX-2024-08-16:
 Note that
-[list_fmake] and list_fmake_fwork]
+[list_fmake] and list_make_fwork]
 are both implemented in [list001.dats]
 *)
 //
