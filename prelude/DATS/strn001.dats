@@ -388,7 +388,7 @@ xs = strm_vt(strn)
 //
 in//let
 //
-strn_fmake_env$fwork<xs>
+strn_make_env$fwork<xs>
 (
 xs,
 lam(xs, work) =>
