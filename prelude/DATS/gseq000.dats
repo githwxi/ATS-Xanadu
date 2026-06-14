@@ -194,7 +194,7 @@ gseq_append00<xs><x0><ys>(*void*)
 < ys:vt >
 gseq_append
   (xs, ys) =
-gseq_fmake_fwork<xs><x0>
+gseq_make_fwork<xs><x0>
 (
 lam(work) =>
 (
@@ -223,7 +223,7 @@ gseq_prepend00<xs><x0><ys>(*void*)
 < ys:vt >
 gseq_prepend
   (xs, ys) =
-gseq_fmake_fwork<xs><x0>
+gseq_make_fwork<xs><x0>
 (
 lam(work) =>
 (
@@ -256,7 +256,7 @@ gseq_rappend00<xs><x0><ys>(*void*)
 < x0:t0 >
 gseq_reverse
   ( xs ) =
-gseq_fmake_fwork<xs><x0>
+gseq_make_fwork<xs><x0>
 (
 lam(work) =>
 (
@@ -268,7 +268,7 @@ gseq_rforitm$f1un<xs><x0>(xs, work)))
 < ys:vt >
 gseq_rappend
   (xs, ys) =
-gseq_fmake_fwork<xs><x0>
+gseq_make_fwork<xs><x0>
 (
 lam(work) =>
 (

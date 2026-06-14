@@ -191,7 +191,7 @@ g_append
 <(*tmp*)>
 strn_append
   (xs, ys) =
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) =>
 (foritm(xs, work); foritm(ys, work)))
@@ -202,13 +202,13 @@ lam(work) =>
 <(*tmp*)>
 strn_reverse
   ( xs ) =
-strn_fmake_fwork<>
+strn_make_fwork<>
 (lam(work) => rforitm(xs, work))
 #impltmp
 <(*tmp*)>
 strn_rappend
   (xs, ys) =
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) => (
 rforitm(xs, work); foritm(ys, work)))
@@ -296,7 +296,7 @@ Sat 17 Aug 2024 08:32:31 AM EDT
 <(*tmp*)>
 strn_make_ncpy
   (n0, c0) =
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) =>
 foritm(n0, //HX:it may not be
@@ -306,7 +306,7 @@ foritm(n0, //HX:it may not be
 <(*tmp*)>
 strn_make_nfun
   (n0, f0) =
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) =>
 foritm(n0, //HX:it may not be
@@ -347,7 +347,7 @@ strn_map$make_gseq
 let
 #typedef c0=cgtz
 in//let
-strn_fmake_fwork<> 
+strn_make_fwork<> 
 (
 lam(work) => // HX: inefficent?
 gseq_foritm$f1un<xs><x0>
@@ -466,7 +466,7 @@ end//let
 <(*tmp*)>
 $UN.strn_fset$at$raw
   (cs, i0, c0) =
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) =>
 strn_iforitm$f2un

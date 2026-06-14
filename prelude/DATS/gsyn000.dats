@@ -1098,7 +1098,7 @@ gs_tostr_a1
 < x1:t0 >
 gs_tostr_a2
  (x0, x1) =
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) =>
 (
@@ -1117,7 +1117,7 @@ where
 gs_tostr_a3
 ( x0
 , x1, x2) =
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) =>
 (
@@ -1138,7 +1138,7 @@ where
 gs_tostr_a4
 ( x0, x1
 , x2, x3) =
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) =>
 (
@@ -1161,7 +1161,7 @@ where
 gs_tostr_a5
 ( x0, x1
 , x2, x3, x4) =
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) =>
 (
@@ -1186,7 +1186,7 @@ where
 gs_tostr_a6
 ( x0, x1, x2
 , x3, x4, x5) =
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) =>
 (
@@ -1214,7 +1214,7 @@ gs_tostr_a7
 ( x0
 , x1, x2, x3
 , x4, x5, x6) =
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) =>
 (
@@ -1244,7 +1244,7 @@ gs_tostr_a8
 ( x0, x1
 , x2, x3, x4
 , x5, x6, x7) =
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) =>
 (

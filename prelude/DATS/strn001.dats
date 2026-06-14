@@ -348,7 +348,7 @@ gseq_strn$concat
 #typedef x0 = strn
 //
 in//let
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) =>
 gseq_foritm$f1un<xs><x0>(xs,
@@ -363,7 +363,7 @@ gseq_strn$rconcat
 #typedef x0 = strn
 //
 in//let
-strn_fmake_fwork<>
+strn_make_fwork<>
 (
 lam(work) =>
 gseq_rforitm$f1un<xs><x0>(xs,

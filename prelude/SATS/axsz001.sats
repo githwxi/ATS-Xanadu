@@ -173,7 +173,7 @@ a1sz_fmake((*void*)): a1sz(x0)
 *)
 fun
 <x0:vt>
-a1sz_fmake_fwork
+a1sz_make_fwork
 (
 fwork:
 ((~x0)->void)->void): a1sz(x0)//HX:3rd-order!
