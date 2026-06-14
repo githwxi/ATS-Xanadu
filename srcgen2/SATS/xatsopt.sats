@@ -145,25 +145,12 @@ d3parsed_of_trans03(dpar: d0parsed): d3parsed
 (* ****** ****** *)
 //
 fun
-xatsopt_args$filsats_d2parsed
-(args: list(string), fpth: string): d2parsed
-fun
-xatsopt_args$fildats_d2parsed
-(args: list(string), fpth: string): d2parsed
-fun
 xatsopt_args$filxats_d2parsed
 ( args
 : list(string), xats: sint, fpth: string): d2parsed
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
-fun
-xatsopt_args$filsats_d3parsed
-(args: list(string), fpth: string): d3parsed
-fun
-xatsopt_args$fildats_d3parsed
-(args: list(string), fpth: string): d3parsed
 fun
 xatsopt_args$filxats_d3parsed
 ( args
