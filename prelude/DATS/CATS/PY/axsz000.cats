@@ -63,7 +63,7 @@ def XATS2PY_a1sz_make_nfun(n0, fopr):
 ##
 ########################################################################.
 ##
-def XATS2PY_a1sz_fmake_fwork(fwork):
+def XATS2PY_a1sz_make_fwork(fwork):
   A0 = []
   fwork(lambda x0: A0.append(x0)); return A0
 ##

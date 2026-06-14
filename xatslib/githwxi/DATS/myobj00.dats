@@ -420,13 +420,13 @@ myobj_make_nil
 //
 #extern
 fun<>
-myobj_fmake_fwork
+myobj_make_fwork
 ( fwork
 : ((strn, dtval)->void)->void): myobj
 //
 #impltmp
 <(*tmp*)>
-myobj_fmake_fwork
+myobj_make_fwork
   (fwork) =
 let
 val obj =
@@ -435,7 +435,7 @@ in//let
 fwork(
 lam(k0, x0) =>
   hmap_insert$new(obj, k0, x0)); (obj)
-end//let//end-of-[myobj_fmake_fwork(fwork)]
+end//let//end-of-[myobj_make_fwork(fwork)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

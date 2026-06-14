@@ -112,7 +112,7 @@ XATS2JS_jsdasz_make_3val
 // Thu 25 Jul 2024 06:03:30 PM EDT
 //
 function
-XATS2JS_jsdasz_fmake_fwork
+XATS2JS_jsdasz_make_fwork
   (fwork)
 {
   let A = []

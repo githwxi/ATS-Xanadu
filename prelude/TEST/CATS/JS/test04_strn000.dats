@@ -72,7 +72,7 @@ val () = printsln("ABABAB = ", ABABAB)
 //
 val wrd0 = "hello"
 val wrds =
-list_fmake_fwork<strn>
+list_make_fwork<strn>
 (//11111111111111111111111111111111
 lam(work) =>
 GSEQ(wrd0).iforitm(//22222222222222
@@ -96,7 +96,7 @@ val (  ) = printsln("wrds = ", wrds)
 (* ****** ****** *)
 //
 val wrds =
-list_fmake_fwork<strn>
+list_make_fwork<strn>
 (//1111111111111111111111111111111
 lam(work) =>
 GASQ(wrd0).iforitm
@@ -114,7 +114,7 @@ if
 then () else work
 ($UN.strn_fset$at$raw(wrd0,i,cj))
 //
-end)))//end(list_fmake_fwork<strn>)
+end)))//end(list_make_fwork<strn>)
 //
 val (  ) = printsln("wrds = ", wrds)
 //

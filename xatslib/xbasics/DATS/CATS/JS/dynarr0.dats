@@ -210,12 +210,12 @@ fwork(a:vt) =
 //
 #extern
 fun<>
-jsdasz_fmake_fwork
+jsdasz_make_fwork
 {a:vt}
 (fwork: fwork(a)): jsa1(a)
 //
 #symload
-jsdasz with jsdasz_fmake_fwork of 1000
+jsdasz with jsdasz_make_fwork of 1000
 //
 (* ****** ****** *)
 //
@@ -791,7 +791,7 @@ Thu 25 Jul 2024 03:08:18 PM EDT
 jsdasz_make_lstrm
   {a:vt}( xs ) =
 (
-jsdasz_fmake_fwork<>
+jsdasz_make_fwork<>
 (
 lam(work) => xs.foritm0(work))
 )
@@ -807,15 +807,15 @@ g_make_lstrm
 //
 #impltmp
 <(*tmp*)>
-jsdasz_fmake_fwork
+jsdasz_make_fwork
   (fwork) =
 (
-XATS2JS_jsdasz_fmake_fwork
+XATS2JS_jsdasz_make_fwork
   (fwork)) where
 {
 #extern
 fun
-XATS2JS_jsdasz_fmake_fwork
+XATS2JS_jsdasz_make_fwork
  {a:vt}
 (fwork: fwork(a)): jsa1(a) = $extnam()
 }

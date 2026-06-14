@@ -49,7 +49,7 @@ g_parse$opt
 ( rep0 ) =
 list_head$opt
 (
-list_fmake_fwork
+list_make_fwork
 (
 lam(work) =>
 strn_sint$parse$fwork(rep0, work)))
@@ -82,7 +82,7 @@ g_parse$opt
 ( rep0 ) =
 list_head$opt
 (
-list_fmake_fwork
+list_make_fwork
 (
 lam(work) =>
 strn_dflt$parse$fwork(rep0, work)))

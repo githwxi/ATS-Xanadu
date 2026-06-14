@@ -176,12 +176,12 @@ val ( ) = (prints("rb1 = ", rb1, "\n"))
 (* ****** ****** *)
 //
 val An2 =
-jsdasz_fmake_fwork{sint}
+jsdasz_make_fwork{sint}
 (
 lam(work)=>(
-gseq_foritm(An, work);gseq_rforitm(An, work)))
+gseq_foritm(An,work);gseq_rforitm(An,work)))
 val ( ) =
-prints("jsdasz_fmake_fwork(...) = ", An2, "\n")
+prints("jsdasz_make_fwork(...) = ", An2, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
