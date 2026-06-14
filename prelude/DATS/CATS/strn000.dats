@@ -125,15 +125,15 @@ Fri 16 Aug 2024 05:22:41 PM EDT
 //
 #impltmp
 <(*tmp*)>
-strn_fmake_fwork
+strn_make_fwork
   (fwork) =
 (
-XATS000_strn_fmake_fwork
+XATS000_strn_make_fwork
   (fwork)) where
 {
 #extern
 fun
-XATS000_strn_fmake_fwork
+XATS000_strn_make_fwork
 ( fwork
 : ((cgtz)->void)->void): strn = $extnam()
 }

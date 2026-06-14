@@ -76,7 +76,7 @@ row = a1sz(strn)
 fun
 myrow_make
 (row: row): myobj =
-myobj_fmake_fwork
+myobj_make_fwork
 (
 lam(work) =>
 (
@@ -112,7 +112,7 @@ myrows_opts$make
 ( opts
 : strm_vt(
   optn_vt(row))): a1sz(myobj) =
-a1sz_fmake_fwork(
+a1sz_make_fwork(
 lam(work) =>
 strm_vt_foritm0$f1un
 (
@@ -121,11 +121,12 @@ lam(opt) =>
 (
 case+ opt of
 | ~
-optn_vt_nil() => ()
+optn_vt_nil
+(  (*0*)  ) => ()
 | ~
 optn_vt_cons
-(    row    ) => work(myrow_make(row)))))
-//a1sz_fmake_fwork//end(myrows_opts$make)
+(   row   ) => work(myrow_make(row)))))
+//a1sz_make_fwork//end(myrows_opts$make)
 //
 (* ****** ****** *)
 (* ****** ****** *)

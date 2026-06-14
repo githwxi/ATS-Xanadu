@@ -76,9 +76,9 @@ print0s("1choose$split@(1,2,3) = ", x_xs_s, "\n")
 (* ****** ****** *)
 //
 val xs2 =
-list_fmake_fwork<sint>
+list_make_fwork<sint>
 (lam(work)=>(foritm(xs, work);rforitm(xs, work)))
-val ( ) = prints("list_fmake_fwork(...) = ", xs2, "\n")
+val ( ) = prints("list_make_fwork(...) = ", xs2, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

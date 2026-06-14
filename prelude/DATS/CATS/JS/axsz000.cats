@@ -104,7 +104,7 @@ XATS2JS_a1sz_make_nfun
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_a1sz_fmake_fwork
+XATS2JS_a1sz_make_fwork
   (fwork)
 {
   var A0 = []

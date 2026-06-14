@@ -72,12 +72,12 @@ def XATS000_strn_get_at_raw(cs, i0):
 ##
 ########################################################################.
 ##
-def XATS2PY_strn_fmake_fwork(fwork):
+def XATS2PY_strn_make_fwork(fwork):
   res = []
   fwork(lambda ch: res.append(chr(ch)))
   return "".join(res)
-def XATS000_strn_fmake_fwork(fwork):
-  return XATS2PY_strn_fmake_fwork(fwork)
+def XATS000_strn_make_fwork(fwork):
+  return XATS2PY_strn_make_fwork(fwork)
 ##
 ########################################################################.
 ##

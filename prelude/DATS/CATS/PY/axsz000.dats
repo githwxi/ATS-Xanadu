@@ -143,15 +143,15 @@ Sun Apr 27 07:00:55 PM EDT 2025
 //
 #impltmp
 < x0:vt >
-a1sz_fmake_fwork
+a1sz_make_fwork
   (fwork) =
 (
-XATS2PY_a1sz_fmake_fwork
+XATS2PY_a1sz_make_fwork
   (fwork)) where
 {
 #extern
 fun
-XATS2PY_a1sz_fmake_fwork
+XATS2PY_a1sz_make_fwork
 { x0:vt }
 (
 fwork:

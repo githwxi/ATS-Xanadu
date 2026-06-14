@@ -1031,10 +1031,6 @@ fmake$fwork$work(x0: x0): void
 fun
 <x0:t0>
 list_fmake((*void*)): list(x0)
-fun
-<x0:t0>
-list_fmake_fwork
-(fwork: (x0->void)->void): list(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1553,9 +1549,11 @@ gseq_uncons$strqize(xs:xs): strq_vt(x0)//uncons
 //
 fun<>
 strn_fmake((*void*)): strn
+(*
 fun<>
-strn_fmake_fwork
+strn_make_fwork
 (fwork: (cgtz->void)->void): strn//HX:3rd-order!
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1661,10 +1659,12 @@ list_make_t0up6
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 <xs:t0>
 <x0:t0>
-gseq_fmake_fwork(fwork: ((x0)->void)->void): xs
+gseq_make_fwork(fwork: ((x0)->void)->void): xs
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

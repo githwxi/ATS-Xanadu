@@ -86,7 +86,7 @@ strmcon_vt_cons(cs, auxmain())
 where
 {
 val cs =
-strn_fmake_fwork
+strn_make_fwork
 (
 lam(work) =>
 g_void(
