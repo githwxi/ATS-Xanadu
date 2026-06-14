@@ -950,7 +950,7 @@ Sat Apr 26 08:48:02 PM EDT 2025
 */
 //
 function
-XATS2JS_strn_fmake_env$fwork
+XATS2JS_strn_make_env$fwork
   (env, fwork)
 {
   var cs = []
@@ -958,7 +958,7 @@ XATS2JS_strn_fmake_env$fwork
   return String.fromCharCode.apply(null, cs)
 }
 function
-XATS2JS_strn_fmake1_env$fwork
+XATS2JS_strn_make1_env$fwork
   (env, fwork)
 {
   var cs = []
@@ -967,16 +967,16 @@ XATS2JS_strn_fmake1_env$fwork
 }
 //
 function
-XATS000_strn_fmake_env$fwork
+XATS000_strn_make_env$fwork
   (env, fwork)
 {
-  return XATS2JS_strn_fmake_env$fwork(env, fwork)
+  return XATS2JS_strn_make_env$fwork(env, fwork)
 }
 function
-XATS000_strn_fmake1_env$fwork
+XATS000_strn_make1_env$fwork
   (env, fwork)
 {
-  return XATS2JS_strn_fmake1_env$fwork(env, fwork)
+  return XATS2JS_strn_make1_env$fwork(env, fwork)
 }
 //
 ////////////////////////////////////////////////////////////////////////.
