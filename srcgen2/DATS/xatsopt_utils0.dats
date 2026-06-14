@@ -525,6 +525,17 @@ prerrsln("// XATSHOME = ", the_XATSHOME())
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+strnlst_make_fwork
+(
+fwork:
+(strn->void)->void):list(strn) =
+(
+  list_make_fwork<strn>( fwork ))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #if
 defq(_XATS2JS_)
 #then
@@ -533,11 +544,13 @@ defq(_XATS2JS_)
 //
 (* ****** ****** *)
 //
+(*
 #if
 defq(_XATS2PY_)
 #then
 #include "./CATS/PY/xatsopt_utils0.dats"//HX: ATS3_PYDEV
 #endif//if(__XATS2PY__)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
