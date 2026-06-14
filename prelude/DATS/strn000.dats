@@ -381,7 +381,7 @@ list_vt_cons(c1, cs) =>
 in//let
 //
 (
-strn_fmake_env$fwork<env>(cs, fwork))
+strn_make_env$fwork<env>(cs, fwork))
 end(*let*)//end-of-[strn_make_llist(cs)]
 //
 (* ****** ****** *)
@@ -409,7 +409,7 @@ strmcon_vt_cons(c1, cs) =>
 in//let
 //
 (
-strn_fmake_env$fwork<env>(cs, fwork))
+strn_make_env$fwork<env>(cs, fwork))
 end(*let*)//end-of-[strn_make_lstrm(cs)]
 //
 (* ****** ****** *)
@@ -438,7 +438,7 @@ list_vt_cons(c1, cs) =>
 in//let
 //
 (
-strn_fmake1_env$fwork<env>(cs, fwork))
+strn_make1_env$fwork<env>(cs, fwork))
 end(*let*)//end-of-[strn_make1_llist(cs)]
 //
 (* ****** ****** *)
