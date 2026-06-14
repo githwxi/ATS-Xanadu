@@ -59,35 +59,34 @@ ATS_PACKNAME
 #extern
 fun
 JSDEV_xatsopt_args_filsats_d2parsed
-( args
-: list(strn), fpth: strn): d2parsed = $extnam()
+(
+farg:
+(strn->void)->void, fpth: strn): d2parsed = $extnam()
+#extern
+fun
+JSDEV_xatsopt_args_fildats_d2parsed
+(
+farg:
+(strn->void)->void, fpth: strn): d2parsed = $extnam()
+//
 #implfun
 JSDEV_xatsopt_args_filsats_d2parsed
-  (args, fpth) =
-$XATSOPT.xatsopt_args$filsats_d2parsed(args, fpth)
-//
-#extern
-fun
-JSDEV_xatsopt_args_fildats_d2parsed
-( args
-: list(strn), fpth: strn): d2parsed = $extnam()
-#implfun
-JSDEV_xatsopt_args_fildats_d2parsed
-  (args, fpth) =
-$XATSOPT.xatsopt_args$fildats_d2parsed(args, fpth)
-//
-(* ****** ****** *)
-//
-#extern
-fun
-JSDEV_xatsopt_args_filxats_d2parsed
-( args
-: list(strn)
-, xats: sint, fpth: strn): d2parsed = $extnam()
-#implfun
-JSDEV_xatsopt_args_filxats_d2parsed
-  (args, xats(*0/1*), fpth) =
+  (farg, fpth) =
+let
+val xats = 0(*sats*)
+val args = list_make_fwork<strn>(farg)
+in//let
 $XATSOPT.xatsopt_args$filxats_d2parsed(args, xats, fpth)
+end//let
+#implfun
+JSDEV_xatsopt_args_fildats_d2parsed
+  (farg, fpth) =
+let
+val xats = 1(*dats*)
+val args = list_make_fwork<strn>(farg)
+in//let
+$XATSOPT.xatsopt_args$filxats_d2parsed(args, xats, fpth)
+end//let
 //
 (* ****** ****** *)
 (* ****** ****** *)

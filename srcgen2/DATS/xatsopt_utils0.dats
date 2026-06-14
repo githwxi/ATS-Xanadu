@@ -375,6 +375,13 @@ end (*let*) // end of [d3parsed_of_trans03(dpar)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX:2026-06-13:
+static: (xats <= 0 )
+dynamic: (xats >= 1 )
+Sat Jun 13 03:09:44 PM EDT 2026
+*)
+//
 #implfun
 xatsopt_args$filxats_d2parsed
   (args, xats, fpth) =
@@ -440,25 +447,15 @@ prerrsln("// XATSHOME = ", the_XATSHOME())
 //
 }(*where*)//end-of-[xatsopt_args$filxats_d2parsed(...)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX:2026-06-13:
 static: (xats <= 0 )
 dynamic: (xats >= 1 )
 Sat Jun 13 03:09:44 PM EDT 2026
 *)
-#implfun
-xatsopt_args$filsats_d2parsed
-  ( args, fpth ) =
-(
-  xatsopt_args$filxats_d2parsed(args, 0(*sats*), fpth))
-#implfun
-xatsopt_args$fildats_d2parsed
-  ( args, fpth ) =
-(
-  xatsopt_args$filxats_d2parsed(args, 1(*dats*), fpth))
-//
-(* ****** ****** *)
-(* ****** ****** *)
 //
 #implfun
 xatsopt_args$filxats_d3parsed
@@ -524,23 +521,6 @@ val (  ) =
 prerrsln("// XATSHOME = ", the_XATSHOME())
 //
 }(*where*)//end-of-[xatsopt_args$filxats_d3parsed(...)]
-//
-(*
-HX:2026-06-13:
-static: (xats <= 0 )
-dynamic: (xats >= 1 )
-Sat Jun 13 03:09:44 PM EDT 2026
-*)
-#implfun
-xatsopt_args$filsats_d3parsed
-  ( args, fpth ) =
-(
-  xatsopt_args$filxats_d3parsed(args, 0(*sats*), fpth))
-#implfun
-xatsopt_args$fildats_d3parsed
-  ( args, fpth ) =
-(
-  xatsopt_args$filxats_d3parsed(args, 1(*dats*), fpth))
 //
 (* ****** ****** *)
 (* ****** ****** *)

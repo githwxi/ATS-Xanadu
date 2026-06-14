@@ -359,7 +359,11 @@ fun
 list_fmake((*void*)): list(x0)
 fun
 <x0:t0>
-list_fmake_fwork
+list_make_fwork
+(fwork: (x0 -> void) -> void): list(x0)
+fun
+<x0:t0>
+list_rmake_fwork
 (fwork: (x0 -> void) -> void): list(x0)
 //
 (* ****** ****** *)

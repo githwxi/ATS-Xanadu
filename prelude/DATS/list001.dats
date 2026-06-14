@@ -646,19 +646,58 @@ $UN.p2tr_set
 //
 }(*where*)//end-of-[list_fmake((*000*))]
 //
+(* ****** ****** *)
+//
 #impltmp
 < x0:t0 >
-list_fmake_fwork
+list_make_fwork
   (fwork) =
+let
+var r0:
+list_vt(x0) =
 (
-  list_fmake<x0>()) where
+list_vt_nil(*0*))
+val p0 = $addr(r0)
+in//let
+(
+list_vt2t{x0}
+(
+list_vt_reverse0<x0>(r0)))
+where
 {
-#impltmp
-fmake$fwork<x0>
-  ((*void*)) =
+val () =
+fwork(
+lam x0 =>
 (
-fwork(lam(x0) => fmake$fwork$work<x0>(x0)))
-}(*where*)//end-of-[list_fmake_fwork(fwork)]
+$UN.p2tr_set
+(p0,list_vt_cons(x0, $UN.p2tr_get(p0)))))
+}
+end(*let*)//end-of-[list_make_fwork(fwork)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_rmake_fwork
+  (fwork) =
+let
+var r0:
+list_vt(x0) =
+(
+list_vt_nil(*0*))
+val p0 = $addr(r0)
+in//let
+(
+list_vt2t{x0}(r0)) where
+{
+val () =
+fwork(
+lam x0 =>
+(
+$UN.p2tr_set
+(p0,list_vt_cons(x0, $UN.p2tr_get(p0)))))
+}
+end(*let*)//end-of-[list_rmake_fwork(fwork)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
