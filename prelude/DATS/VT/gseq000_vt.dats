@@ -149,7 +149,7 @@ gseq$end<xs><x0>()
 //
 in//let
 //
-strn_fmake_env$fwork
+strn_make_env$fwork
 <        xs        >
 (
 xs,
