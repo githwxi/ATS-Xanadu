@@ -594,7 +594,7 @@ val dcls =
 tread12_d2eclist(dcls, err)
 //
 in
-if
+if // if
 (err=e00)
 then dcl else
 let
@@ -618,7 +618,7 @@ val dcls =
 tread12_d2eclist(dcls, err)
 //
 in
-if
+if // if
 (err=e00)
 then dcl else
 let
@@ -645,7 +645,7 @@ val dcl1 =
   tread12_d2ecl(dcl1, err))
 //
 in
-if
+if // if
 (err=e00)
 then dcl else
 d2ecl_static_errck(dcl.lctn(),tknd,dcl1)
@@ -668,7 +668,7 @@ D2Cextern
 val dcl1 = tread12_d2ecl(dcl1, err)
 //
 in
-if
+if // if
 (err=e00)
 then dcl else
 d2ecl_extern_errck(dcl.lctn(),tknd,dcl1)
@@ -695,7 +695,7 @@ val dcs2 =
 tread12_d2eclist(dcs2, err)
 //
 in
-if
+if // if
 (err=e00)
 then dcl else
 d2ecl_local0_errck( loc, dcs1, dcs2 )
@@ -720,7 +720,7 @@ HX-2022-11-26: checking symbol-error!
 *)
 //
 in//let
-if
+if // if
 (err=e00)
 then dcl else
 d2ecl_abssort_errck( dcl.lctn(), sym1 )
@@ -745,7 +745,7 @@ val
 s2t2 = tread12_sort2(s2t2, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then dcl else
 d2ecl_stacst0_errck(loc, s2c1, s2t2)
@@ -770,7 +770,7 @@ val
 def2 = tread12_s2tex(def2, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_sortdef_errck( loc, sym1, def2 )
@@ -795,7 +795,7 @@ val
 def2 = tread12_s2exp(def2, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_sexpdef_errck( loc, s2c1, def2 )
@@ -820,7 +820,7 @@ val
 atdf = tread12_a2tdf(atdf, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_abstype_errck( loc, s2c1, atdf )
@@ -845,7 +845,7 @@ val
 simp = tread12_simpl(simp, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_absopen_errck( loc, tknd, simp )
@@ -873,7 +873,7 @@ val
 sdef = tread12_s2exp(sdef, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_absimpl_errck(loc,tknd,simp,sdef)
@@ -905,7 +905,7 @@ D2PTMsome(pval,d2i1) => ((*void*))
 ) (*case+*) // end of [val(*void*)]
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_symload_errck(loc,tknd,sym1,dptm)
@@ -954,7 +954,7 @@ case+ dopt of
 //
 in//let
 (
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_include_errck
@@ -1005,7 +1005,7 @@ prerrsln
 *)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_staload_errck
@@ -1130,7 +1130,7 @@ s2ts = tread12_sort2lst(s2ts, err)
 *)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_datasort_errck( loc, d1cl, s2ts )
@@ -1156,7 +1156,7 @@ val d2vs =
 tread12_d2valdclist(d2vs, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_valdclst_errck(dcl.lctn(),tknd,d2vs)
@@ -1180,7 +1180,7 @@ val d2vs =
 tread12_d2vardclist(d2vs, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_vardclst_errck(dcl.lctn(),tknd,d2vs)
@@ -1210,7 +1210,7 @@ val d2fs =
 tread12_d2fundclist(d2fs, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_fundclst_errck
@@ -1255,7 +1255,7 @@ val
 body = tread12_d2exp(body, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_implmnt0_errck
@@ -1281,7 +1281,7 @@ val d2cs =
 tread12_d2conlst(d2cs, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_excptcon_errck(dcl.lctn(),d1cl,d2cs)
@@ -1305,7 +1305,7 @@ val s2cs =
 tread12_s2cstlst(s2cs, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_datatype_errck(dcl.lctn(),d1cl,s2cs)
@@ -1333,7 +1333,7 @@ val d2cs =
   tread12_d2cstdclist(d2cs, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcl) else
 d2ecl_dynconst_errck(loc, tknd, tqas, d2cs)
@@ -1385,7 +1385,7 @@ in//let
   t2i0 ) where
 {
 val () =
-if
+if // if
 (e00 != err) then t2iag_set_s2es(t2i0,s2es) }
 end (*let*) // end-of-[tread12_t2iag(t2i0,err)]
 //
@@ -1479,7 +1479,7 @@ val e00 = err
 val sdef =
 tread12_s2exp(sdef, err)
 in//let
-if
+if // if
 (err=e00)
 then atdf else A2TDFlteq(sdef) end
 //
@@ -1490,7 +1490,7 @@ val e00 = err
 val sdef =
 tread12_s2exp(sdef, err)
 in//let
-if
+if // if
 (err=e00)
 then atdf else A2TDFeqeq(sdef) end
 //
@@ -1516,7 +1516,7 @@ prerrsln
 *)
 val d2e2 = tread12_d2exp(d2e2, err)
 in//letp
-if
+if // if
 (err=e00)
 then tdxp else TEQD2EXPsome(teq1, d2e2)
 endlet // end of [ TEQD2EXPsome( _,_ ) ]
@@ -1542,7 +1542,7 @@ prerrsln
 *)
 val s2e1 = tread12_s2exp(s2e1, err)
 in//let
-if
+if // if
 (err=e00)
 then wsxp else WTHS2EXPsome(twth, s2e1)
 endlet // end of [ WTHS2EXPsome( _,_ ) ]
@@ -1574,7 +1574,7 @@ val
 wsxp = tread12_wths2exp(wsxp,err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dval)
 else d2valdcl( loc, dpat, tdxp, wsxp )
@@ -1606,7 +1606,7 @@ val
 dini = tread12_teqd2exp(dini,err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dvar)
 else d2vardcl(loc,dpid,vpid,sres,dini)
@@ -1684,7 +1684,7 @@ val
 dres = tread12_teqd2exp(dres, err)
 //
 in//let
-if
+if // if
 (err=e00)
 then (dcst)
 else d2cstdcl(loc, dpid, darg, sres, dres)
