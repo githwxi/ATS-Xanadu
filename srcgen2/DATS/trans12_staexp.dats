@@ -1750,7 +1750,7 @@ end (*let*)//end of [f0_qual0(env0,s1e0)]
 } (*where*)//end of [trans12_s1exp(env0,s1e0)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 trans12_s1exp_impr
 ( env0,s1e0 ) = let
@@ -1761,13 +1761,13 @@ trans12_s1exp
 val
 s2t0 = s2e0.sort((*0*))
 in//let
-if
+if // if
 lte_sort2_sort2
 ( s2t0, the_sort2_view )
 then s2e0 else
 s2exp_impr(s1e0.lctn(), s2e0)
 end (*let*)//end-of[trans12_s1exp_impr(env0,s1e0)]
-
+//
 #implfun
 trans12_l1s1e_impr
 ( env0,ls1e ) =
@@ -1779,7 +1779,7 @@ S1LAB(l0, s1e0) = ls1e
 val s2e0 =
 trans12_s1exp_impr(env0, s1e0)
 } (*where*)//end-of[trans12_l1s1e_impr(env0,ls1e)]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1812,7 +1812,7 @@ trans12_s1exp_prgm(env0, s1e0)
 } (*where*)//end-of[trans12_l1s1e_prgm(env0,ls1e)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 trans12_s1exp_stck
 (env0, s1e1, s2t2) =
@@ -1830,7 +1830,7 @@ if subq
 then s2e1 else
 s2exp_cast(s1e1.lctn(), s2e1, s2t2)
 end (*let*)//end-of[trans12_s1exp_stck(env0,...)]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1843,33 +1843,33 @@ trans12_sort1opt
 optn_trans12_fnp(env0, sopt, trans12_sort1)
 //
 (* ****** ****** *)
-
+//
 #implfun
 trans12_s1arglst
   (env0, s1as) =
 list_trans12_fnp(env0, s1as, trans12_s1arg)
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 trans12_s1maglst
   (env0, smas) =
 list_trans12_fnp(env0, smas, trans12_s1mag)
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 trans12_t1arglst
   (env0, t1as) =
 list_trans12_fnp(env0, t1as, trans12_t1arg)
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 trans12_t1maglst
   (env0, tmas) =
 list_trans12_fnp(env0, tmas, trans12_t1mag)
-
+//
 (* ****** ****** *)
 //
 #implfun

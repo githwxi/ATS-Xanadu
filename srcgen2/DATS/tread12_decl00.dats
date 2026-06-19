@@ -1636,20 +1636,23 @@ wsxp = d2fundcl_get_wsxp(dfun)
 //
 val
 farg =
-tread12_f2arglst(farg, err)
+(
+  tread12_f2arglst(farg, err))
 //
 val
-sres = tread12_s2res(sres,err)
+sres = tread12_s2res(sres, err)
 val
-tdxp = tread12_teqd2exp(tdxp,err)
+tdxp = tread12_teqd2exp(tdxp, err)
 val
-wsxp = tread12_wths2exp(wsxp,err)
+wsxp = tread12_wths2exp(wsxp, err)
 //
 in//let
-if
+//
+if // if
 (err=e00)
 then (dfun)
 else d2fundcl(loc,dpid,farg,sres,tdxp,wsxp)
+//
 endlet // end-of-[tread12_d2fundcl(out,dfun)]
 //
 (* ****** ****** *)

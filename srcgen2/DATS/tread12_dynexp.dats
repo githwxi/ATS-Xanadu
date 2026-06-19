@@ -2848,11 +2848,13 @@ tread12_s2eff(seff, err)
 *)
 val s2e1 =
 tread12_s2exp(s2e1, err)
-in
-if
+in//let
+//
+if // if
 (err=e00)
 then (sres) else S2RESsome(seff, s2e1)
 endlet // end of [S2RESsome(seff,s2e1)]
+//
 ) (*case+*)//end-of[tread12_s2res(sres,err)]
 //
 (* ****** ****** *)

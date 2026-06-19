@@ -819,6 +819,8 @@ in//let
 case+
 d1cl.node() of
 //
+(* ****** ****** *)
+//
 |D1Cd0ecl _ =>
 let
 val loc0 = d1cl.lctn()
@@ -839,6 +841,7 @@ process_static(env0, dcl1)
 in//let
 d2ecl(loc0, D2Cstatic(tknd, dcl1))
 end (*let*) // end of [D1Cstatic]
+//
 |D1Cextern
 (tknd, dcl1) =>
 let
@@ -1047,6 +1050,8 @@ let
 in//let
   d2ecl_make_node(loc0, D2Cnone1( d1cl ))
 end (*let*) // end of [_(*otherwise*)] // temp
+//
+(* ****** ****** *)
 //
 end where
 {
@@ -3183,7 +3188,7 @@ WD1CSsome
 ) (*case+*) // end of [f0_wdeclseq(env0,wdcs)]
 //
 (* ****** ****** *)
-
+//
 local
 //
 fun
@@ -3362,9 +3367,9 @@ prerrsln("f0_implmnt0(12): d2cl = ", d1cl)
 *)
 //
 } (*where*)//end-of-[f0_implmnt0(env0,d1cl)]
-
+//
 (* ****** ****** *)
-
+//
 and
 f0_implmnt0_dimp
 ( env0:
@@ -3467,7 +3472,7 @@ prerrsln("f0_implmnt0_dimp: d1cl = ", d1cl)
 } (*where*)//end-[f0_implmnt0_dimp(env0,...)]
 //
 end (*local*) // end of [local(f0_implmnt0...)]
-
+//
 (* ****** ****** *)
 //
 fun
