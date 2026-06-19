@@ -10,6 +10,10 @@ For testing xats2js!
 "srcgen2\
 /prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
+#sexpdef gt0 = list0
+#extern fun g((*void*)): gt0 = $extnam()  // list0 is UNDER-APPLIED (needs 1 arg)
+val x = g()                                  // calling it forces the unify
+(* ****** ****** *)
 ////
 (* ****** ****** *)
 #extern

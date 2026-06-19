@@ -9,8 +9,8 @@ ECHO=echo
 MAKE=make
 NODE=node
 ########################################################################
-SRCGEN2=./../srcgen2
-XATSPYD=./../srcgen2/xats2py
+SRCGEN2=.
+XATSPYD=./xats2py
 ########################################################################
 ########################################################################
 all:: lib2xatsopt
@@ -253,12 +253,10 @@ $(patsubst %.dats, \
 ########################################################################
 ########################################################################
 #
-BUILD/PY/%_sats_out0.py: \
-$(SRCGEN2)/SATS/%.sats; \
+BUILD/PY/%_sats_out0.py: SATS/%.sats; \
 $(NODE) --stack-size=8801 $(XATSOPT_TCHECK00) $< > $@
 #
-BUILD/PY/%_dats_out0.py: \
-$(SRCGEN2)/DATS/%.dats; \
+BUILD/PY/%_dats_out0.py: DATS/%.dats; \
 $(NODE) --stack-size=8801 $(XATS2PY_PYEMIT00) $< > $@
 #
 ########################################################################
@@ -285,13 +283,19 @@ $(CAT) $(OUT1DATS) > lib/lib2xatsopt.py
 lib2xatsopt_opt0: lib2xatsopt; \
 $(SED) '/^[ ]*##/d' lib/lib2xatsopt.py > lib/lib2xatsopt_opt0.py
 ########################################################################
-ifndef XATS2PY_TCHECK00
-XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.py
-endif ## (ifeq($(XATS2PY_TCHECK00),""))
+ifndef \
+XATSOPT_TCHECK00
+XATSOPT_TCHECK00=\
+$(XATSHOME)/xassets/JS/xatsopt/xatsopt_tcheck00_ats2_opt1.js
+endif ## (ifeq($(XATSOPT_TCHECK00),""))
 ########################################################################
-ifndef XATS2PY_PYEMIT00
-XATS2PY_PYEMIT00=$(XATSPYD)/srcgen1/UTIL/xats2py_pyemit00_ats2.js
+ifndef \
+XATS2PY_PYEMIT00
+XATS2PY_PYEMIT00=\
+$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit00_ats2_opt1.js
 endif ## (ifeq($(XATS2PY_PYEMIT00),""))
 ########################################################################
 ########################################################################
 #######################(end-of-[Makefile_xpyemit])######################
+########################################################################
+########################################################################

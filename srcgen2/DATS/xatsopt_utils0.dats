@@ -544,13 +544,11 @@ defq(_XATS2JS_)
 //
 (* ****** ****** *)
 //
-(*
 #if
 defq(_XATS2PY_)
 #then
 #include "./CATS/PY/xatsopt_utils0.dats"//HX: ATS3_PYDEV
 #endif//if(__XATS2PY__)
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

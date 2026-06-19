@@ -220,7 +220,7 @@ tread12_sort2lst(s2ts, err)
 val
 s2t1 = tread12_sort2(s2t1, err)
 in//let
-if
+if // if
 (err=e00)
 then (s2t0)
 else (sort2_fun1_errck(s2ts, s2t1))
@@ -659,8 +659,8 @@ val
 s2t = tread12_sort2(s2t, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val lvl = errvl(s2t) in//let
@@ -687,8 +687,8 @@ val
 s2t = tread12_sort2(s2t, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val lvl = errvl(s2t) in//let
@@ -713,8 +713,8 @@ val
 s2e1 = tread12_s2exp(s2e1, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val s2t = s2e.sort() in
@@ -736,8 +736,8 @@ val
 s2e1 = tread12_s2exp(s2e1, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val s2t = s2e.sort() in
@@ -770,7 +770,7 @@ s2t = tread12_sort2(s2t, err)
 //
 in//let
 if // if
-(e00 = err)
+(e00=err)
 then (s2e) else
 let
 val lvl = errvl(s2t) in//let
@@ -796,8 +796,8 @@ val
 s2e1 = tread12_s2exp(s2e1, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val s2t = s2e.sort() in
@@ -823,8 +823,8 @@ val
 s2e2 = tread12_s2exp(s2e2, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val s2t = s2e.sort() in
@@ -852,8 +852,8 @@ val s2es =
 tread12_s2explst(s2es, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val s2t = s2e.sort() in
@@ -879,8 +879,8 @@ val
 s2e1 = tread12_s2exp(s2e1, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val s2t = s2e.sort() in
@@ -910,8 +910,8 @@ val
 sres = tread12_s2exp(sres, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val s2t = s2e.sort() in
@@ -941,8 +941,8 @@ val
 s2e1 = tread12_s2exp(s2e1, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val s2t = s2e.sort() in
@@ -972,8 +972,8 @@ val
 s2e1 = tread12_s2exp(s2e1, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val s2t = s2e.sort() in
@@ -1003,8 +1003,8 @@ val
 s2e1 = tread12_s2exp(s2e1, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val s2t = s2e.sort() in
@@ -1030,8 +1030,8 @@ val
 s2es = tread12_s2explst(s2es, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val s2t = s2e.sort() in
@@ -1064,8 +1064,8 @@ val
 lses = tread12_l2s2elst(lses, err)
 //
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 let
 val s2t = s2e.sort() in
@@ -1092,13 +1092,22 @@ s2e1 = tread12_s2exp(s2e1, err)
 //
 in//let
 //
-if
-(e00 = err)
+let
+val () =
+(err := err + 1)
+in//let
+//
+(*
+if // if
+(e00=err)
 then (s2e) else
+*)
 let
 val s2t = s2e.sort() in
 s2exp_impr_errck(s2t, loc1, s2e1)
 end (*let*) // else // end-of-(if)
+//
+end // let
 //
 end (*let*) // end of [ f0_impr(s2e,err) ]
 //
@@ -1121,13 +1130,22 @@ s2e1 = tread12_s2exp(s2e1, err)
 //
 in//let
 //
-if
-(e00 = err)
+let
+val () =
+(err := err + 1)
+in//let
+//
+(*
+if // if
+(e00=err)
 then (s2e) else
+*)
 let
 val s2t = s2e.sort() in
 s2exp_prgm_errck(s2t, loc1, s2e1)
 end (*let*) // else // end-of-(if)
+//
+end // let
 //
 end (*let*) // end of [ f0_prgm(s2e,err) ]
 //
@@ -1153,8 +1171,8 @@ s2t2 = tread12_sort2(s2t2, err)
 //
 in//let
 (*
-if
-(e00 = err)
+if // if
+(e00=err)
 then (s2e) else
 *)
 let
@@ -1194,7 +1212,7 @@ S2LAB(lab,s2e) = ls2e
 val s2e = tread12_s2exp(s2e, err)
 //
 in//let
-if
+if // if
 (err=e00) then ls2e else S2LAB(lab,s2e)
 endlet // end of [tread12_l2s2e(ls2e,err)]
 //
@@ -1215,8 +1233,8 @@ val e00 = err
 val s2t1 =
 tread12_sort2(s2t1, err)
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then s2tx else S2TEXsrt(s2t1)
 end (*let*) // end of [S2TEXsrt(...)]
 |
@@ -1228,8 +1246,8 @@ tread12_s2var(s2v1, err)
 val s2es = 
 tread12_s2explst(s2es, err)
 in//let
-if
-(e00 = err)
+if // if
+(e00=err)
 then s2tx else S2TEXsub(s2v1, s2es)
 end (*let*) // end of [S2TEXsub(...)]
 //

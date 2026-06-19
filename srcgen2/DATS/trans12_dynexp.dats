@@ -3947,8 +3947,12 @@ S1RESnone() => S2RESnone()
 S1RESsome(seff,s1e1) =>
 S2RESsome(seff,s2e1) where
 {
-val seff = trans12_s1eff(env0, seff)
-val s2e1 = trans12_s1exp(env0, s1e1)
+val seff =
+(
+  trans12_s1eff(env0, seff))
+val s2e1 =
+(
+  trans12_s1exp_impr(env0, s1e1))
 }
 ) (*case+*) // end of [trans12_s1res(...)]
 //

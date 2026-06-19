@@ -13,9 +13,6 @@ ECHO=echo
 MAKE=make
 NODE=node
 ########################################################################
-SRCGEN2=./../srcgen2
-XATSJSD=./../srcgen2/xats2js
-########################################################################
 ########################################################################
 all:: lib2xatsopt
 ########################################################################
@@ -257,12 +254,10 @@ $(patsubst %.dats, \
 ########################################################################
 ########################################################################
 #
-BUILD/JS/%_sats_out0.js: \
-$(SRCGEN2)/SATS/%.sats; \
+BUILD/JS/%_sats_out0.js: SATS/%.sats; \
 $(NODE) --stack-size=8801 $(XATSOPT_TCHECK00) $< > $@
 #
-BUILD/JS/%_dats_out0.js: \
-$(SRCGEN2)/DATS/%.dats; \
+BUILD/JS/%_dats_out0.js: DATS/%.dats; \
 $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT00) $< > $@
 #
 ########################################################################
@@ -287,13 +282,19 @@ $(SED) -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' $< > $@
 lib2xatsopt:: \
 $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt.js
 ########################################################################
-ifndef XATS2JS_TCHECK00
-XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js
-endif ## (ifeq($(XATS2JS_TCHECK00),""))
+ifndef \
+XATSOPT_TCHECK00
+XATSOPT_TCHECK00=\
+$(XATSHOME)/xassets/JS/xatsopt/xatsopt_tcheck00_ats2_opt1.js
+endif ## (ifeq($(XATSOPT_TCHECK00),""))
 ########################################################################
-ifndef XATS2JS_JSEMIT00
-XATS2JS_JSEMIT00=$(XATSJSD)/srcgen1/UTIL/xats2js_jsemit00_ats2.js
+ifndef \
+XATS2JS_JSEMIT00
+XATS2JS_JSEMIT00=\
+$(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit00_ats2_opt1.js
 endif ## (ifeq($(XATS2JS_JSEMIT00),""))
 ########################################################################
 ########################################################################
 #######################(end of [Makefile_xjsemit])######################
+########################################################################
+########################################################################
