@@ -203,7 +203,7 @@ case+ s2t0 of
 *)
 ) (* end of [optn_vt_cons] *)
 //
-end (*let*) // end of [f0_id0(env0,s1t0)]
+end(*let*) // end of [f0_id0(env0,s1t0)]
 //
 (* ****** ****** *)
 //
@@ -251,9 +251,9 @@ list_sing(trans12_sort1(env0,s1t2))
 //
 in
   S2Tapps(s2t1, s2ts)
-end (*let*) // end-of-[else]
+end(*let*) // end-of-[else]
 //
-end (*let*) // end-of-[f0_a1pp(env0,s1t0)]
+end(*let*) // end-of-[f0_a1pp(env0,s1t0)]
 //
 (* ****** ****** *)
 //
@@ -295,16 +295,16 @@ trans12_sort1lst(env0, s1ts)
 list_sing(trans12_sort1(env0, s1t2))
 ) : sort2lst // [val s2ts]
 val s2t3 = trans12_sort1(env0, s1t3)
-} (*where*) // end-of-then
+}(*where*) // end-of-then
 else let
 val s2t1 = trans12_sort1(env0, s1t1)
 val s2t2 = trans12_sort1(env0, s1t2)
 val s2t3 = trans12_sort1(env0, s1t3)
 in//let
   S2Tapps(s2t1, list_pair(s2t2, s2t3))
-end (*let*) // end of-else
+end(*let*) // end of-else
 //
-end (*let*) // end-of-[f0_a2pp(env0,s1t0)]
+end(*let*) // end-of-[f0_a2pp(env0,s1t0)]
 //
 (* ****** ****** *)
 //
@@ -333,11 +333,11 @@ else
 S2Ttup
 (trans12_sort1lst(env0, s1ts))
 )
-end (*let*) // end of [f0_list(env0,s1t0)]
+end(*let*) // end of [f0_list(env0,s1t0)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [trans12_sort1(env0,s1t0)]
+}(*where*) // end of [trans12_sort1(env0,s1t0)]
 
 (* ****** ****** *)
 
@@ -378,13 +378,13 @@ optn_vt_cons(s2tx) => s2tx
 val
 topt =
 tr12env_find_s2tex(env0,tid1)
-} (*where*) // end of [S1Tid0]
+}(*where*) // end of [S1Tid0]
 //
 |
 _(*non-S1Tid0*) =>
 S2TEXsrt(trans12_sort1(env0, s1t0))
 //
-end (*let*) // end of [trans12_s1tex(env0,s1t0)]
+end(*let*) // end of [trans12_s1tex(env0,s1t0)]
 
 (* ****** ****** *)
 
@@ -428,11 +428,11 @@ s2var_make_idst(sym1, s2t2)
 val (  ) =
 tr12env_add0_s2var(env0, s2v1)}
 //
-end (*let*) // end of [S1ARGsome]
+end(*let*) // end of [S1ARGsome]
 ) where
 {
   // HX-2022-10-24: nothing
-} (*where*) // end of [trans12_s1arg(env0,s1a0)
+}(*where*) // end of [trans12_s1arg(env0,s1a0)
 
 (* ****** ****** *)
 
@@ -454,7 +454,7 @@ val () =
 prerrsln("trans12_s1mag: s1ma = ", s1ma)
 *)
 //
-} (*where*) // end of [trans12_s1mag(env0,s1ma)
+}(*where*) // end of [trans12_s1mag(env0,s1ma)
 
 (* ****** ****** *)
 
@@ -477,7 +477,7 @@ val () =
 prerrsln("trans12_t1arg: t1a0 = ", t1a0)
 *)
 //
-} (*where*) // end of [trans12_t1arg(env0,t1a0)
+}(*where*) // end of [trans12_t1arg(env0,t1a0)
 
 (* ****** ****** *)
 
@@ -499,7 +499,7 @@ val () =
 prerrsln("trans12_t1mag: t1ma = ", t1ma)
 *)
 //
-} (*where*) // end of [trans12_t1mag(env0,t1ma)
+}(*where*) // end of [trans12_t1mag(env0,t1ma)
 
 (* ****** ****** *)
 
@@ -636,8 +636,10 @@ in//let
 end//let//end-of-[optn_vt_nil()]
 | ~
 optn_vt_cons
-  ( s2i0 ) => f0_id0_s2i(env0,s1e0,s2i0)
-end (*let*) // end of [f0_id0(env0,s1e0)]
+  ( s2i0 ) =>
+(
+  f0_id0_s2i(env0, s1e0, s2i0))
+end(*let*) // end of [f0_id0(env0,s1e0)]
 //
 and
 f0_id0_s2i
@@ -650,11 +652,15 @@ f0_id0_s2i
 case-
 s2i0 of
 |S2ITMvar
-(  s2v0  ) => f0_id0_s2v(env0,s1e0,s2v0)
+(  s2v0  ) =>
+(
+  f0_id0_s2v(env0, s1e0, s2v0))
 |S2ITMcst
-(  s2cs  ) => f0_id0_s2c(env0,s1e0,s2cs)
+(  s2cs  ) =>
+(
+  f0_id0_s2c(env0, s1e0, s2cs))
 //
-) (*case-*) // end of [f0_id0_s2i(env0,...)]
+)(*case-*) // end of [f0_id0_s2i(env0,...)]
 //
 and
 f0_id0_s2v
@@ -688,7 +694,7 @@ case+ opt0 of
 optn_vt_nil() => s2exp_none1(s1e0)
 | ~
 optn_vt_cons(s2c0) => s2exp_cst(s2c0)
-end (*let*) // end of [f0_id0_cst(env0,...)]
+end(*let*) // end of [f0_id0_cst(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -701,7 +707,7 @@ f0_b1sh
 trans12_s1exp(env0, s1e1)) where
 {
   val-S1Eb1sh(s1e1) = s1e0.node((*0*))
-} (*where*) // end of [f0_b1sh(env0, s1e0)]
+}(*where*) // end of [f0_b1sh(env0, s1e0)]
 //
 (* ****** ****** *)
 //
@@ -738,13 +744,13 @@ val-
 list_cons(s1e1, _) = s1es
 in//let
   trans12_s1exp(env0, s1e1)
-end (*let*) // end of [then]
+end(*let*) // end of [then]
 else
 (
 s2exp_l1st
 (loc0, trans12_s1explst(env0, s1es)))
 //
-end (*let*) // end of [f0_l1st(env0, s1e0)]
+end(*let*) // end of [f0_l1st(env0, s1e0)]
 //
 (* ****** ****** *)
 //
@@ -790,7 +796,7 @@ val ses1 =
 val ses2 =
   trans12_s1explst_prgm(env0, ses2) }
 )
-end (*let*) // end of [f0_l2st(env0, s1e0)]
+end(*let*) // end of [f0_l2st(env0, s1e0)]
 //
 (* ****** ****** *)
 //
@@ -803,14 +809,14 @@ case+
 s1e0.node() of
 | S1Eid0(sid1) =>
 (
-if
+if//if
 (sid1 =
  DLR_EXTBOX_symbl)
 then true else
 (sid1 =
  DLR_EXTYPE_symbl) )
 | _(*non-S1Eid0*) => false
-) (*case+*) // end-of-(isEXTP)
+)(*case+*) // end-of-(isEXTP)
 //
 fun
 f0_a1pp
@@ -843,7 +849,7 @@ s1f0.node() of
 |
 _(*S1E...*) => f0_a1pp_else(env0, s1e0)
 //
-end (*let*) // end of [f0_a1pp(env0, s1e0)]
+end(*let*) // end of [f0_a1pp(env0, s1e0)]
 
 (* ****** ****** *)
 
@@ -884,7 +890,7 @@ val () = tr12env_poplam0(env0)
 in
 //
 s2exp_uni0(s2vs, s2ps, s2e1(*body*))
-end (*let*) // end of [f0_a1pp_uni0(...)]
+end(*let*) // end of [f0_a1pp_uni0(...)]
 
 (* ****** ****** *)
 
@@ -926,7 +932,7 @@ val () = tr12env_poplam0(env0)
 in
 //
 s2exp_exi0(s2vs, s2ps, s2e1(*body*))
-end (*let*) // end of [f0_a1pp_exi0(...)]
+end(*let*) // end of [f0_a1pp_exi0(...)]
 
 (* ****** ****** *)
 //
@@ -950,7 +956,7 @@ val s2t1 = s2e1.sort()
 //
 in//let
 s2exp_make_node(s2t1,S2Earg1(knd0,s2e1))
-end (*let*) // end of [f0_a1pp_cbv0(...)]
+end(*let*) // end of [f0_a1pp_cbv0(...)]
 *)
 //
 (*
@@ -973,7 +979,7 @@ val s2t1 = s2e1.sort()
 //
 in//let
 s2exp_make_node(s2t1,S2Earg1(knd0,s2e1))
-end (*let*) // end of [f0_a1pp_cbv1(...)]
+end(*let*) // end of [f0_a1pp_cbv1(...)]
 *)
 //
 (* ****** ****** *)
@@ -1045,7 +1051,7 @@ trans12_s1explst_stck1(env0,s1es,targ))
 //
 in//let
 s2exp_make_node(tres,S2Etext(tnm1,s2es))
-end (*let*) // end of [f0_a1pp_extp(...)]
+end(*let*) // end of [f0_a1pp_extp(...)]
 
 (* ****** ****** *)
 
@@ -1091,13 +1097,13 @@ let
   val s2f0 = s2exp_cst(s2c1)
 in//let
   f0_a1pp_els1(env0, s1e0, s2f0)
-end (*let*) // then
+end(*let*)//then
 else
 (
   f0_a1pp_els2(env0, s1e0, s2cs)
-) (* end of [else] *)
+)(* end of [else] *)
 )
-end (*let*) // end of [f0_a1pp_else(env0,s1e0)]
+end(*let*) // end of [f0_a1pp_else(env0,s1e0)]
 
 and
 f0_a1pp_els0
@@ -1115,7 +1121,7 @@ val s2f0 =
 //
 in//let
   f0_a1pp_els1(env0, s1e0, s2f0)
-end (*let*) // end of [f0_a1pp_els0(...)]
+end(*let*) // end of [f0_a1pp_els0(...)]
 
 and
 f0_a1pp_els1
@@ -1180,7 +1186,7 @@ trans12_s1exp_stck(env0, s1e1, s2t1)
 trans12_s1explst_stcks(env0,s1es,s2ts)
 }
 //
-end (*let*) // end of [f0_a1pp_els1(...)]
+end(*let*) // end of [f0_a1pp_els1(...)]
 
 and
 f0_a1pp_els2
@@ -1219,7 +1225,7 @@ f0_a1pp_els0(env0, s1e0)
 |list_cons _ =>
 f0_a1pp_els1(env0,s1e0,s2exp_csts(scs1))
 //
-end (*let*) // end of [f0_a1pp_els2(...)]
+end(*let*) // end of [f0_a1pp_els2(...)]
 
 (* ****** ****** *)
 //
@@ -1313,7 +1319,7 @@ else
   f0_a2pp_els2(env0, s1e0, s2cs))
 ) (* end of [list_cons] *)
 //
-end (*let*) // end of [f0_a2pp(env0, s1e0)]
+end(*let*) // end of [f0_a2pp(env0, s1e0)]
 //
 (* ****** ****** *)
 
@@ -1408,11 +1414,11 @@ s2f0 =
 trans12_s1exp(env0, s1f0)
 in//let
   f0_a2pp_els1(env0, s1e0, s2f0)
-end (*let*) // end of [non-S2Earrw]
+end(*let*) // end of [non-S2Earrw]
 ) // end-of-else // end-of-if(isAXCG)
 ) // end-of-else // end-of-if(isARRW)
 //
-end (*let*) // end of [f0_a2pp_els0(...)]
+end(*let*) // end of [f0_a2pp_els0(...)]
 
 (* ****** ****** *)
 
@@ -1456,7 +1462,7 @@ trans12_s1exp_stck(env0, s1e2, s2t2)
 //
 in
   s2exp_a2pp(loc0, s2f0, s2e1, s2e2)
-end (*let*) // end of [f0_a2pp_els1(...)]
+end(*let*) // end of [f0_a2pp_els1(...)]
 
 (* ****** ****** *)
 
@@ -1482,18 +1488,22 @@ val scs1 =
 s2cst_selects_bin
 (s2cs, s2t1, s2t2) where
 {
-val
-s2t1=s2e1.sort() and s2t2=s2e2.sort()}
+val s2t1=
+s2e1.sort() and s2t2=s2e2.sort()
+}
 //
 in//let
 //
 case+ scs1 of
 |list_nil() =>
-f0_a2pp_els0(env0, s1e0)
+(
+f0_a2pp_els0(env0, s1e0))
 |list_cons _ =>
-f0_a2pp_els1(env0,s1e0,s2exp_csts(scs1))
+(
+f0_a2pp_els1(
+  env0, s1e0, s2exp_csts(scs1)))
 //
-end (*let*) // end of [f0_a2pp_els2(...)]
+end(*let*) // end of [f0_a2pp_els2(...)]
 
 (* ****** ****** *)
 //
@@ -1528,7 +1538,7 @@ in//let
 {
   val s2es =
   trans12_s1explst_impr(env0, s1es) }
-end (*let*) // end of [f0_t1up(env0, s1e0)]
+end(*let*) // end of [f0_t1up(env0, s1e0)]
 //
 (* ****** ****** *)
 //
@@ -1566,7 +1576,7 @@ in//let
   trans12_s1explst_impr(env0, ses1)
   val ses2 =
   trans12_s1explst_prgm(env0, ses2) }
-end (*let*) // end of [f0_t2up(env0, s1e0)]
+end(*let*) // end of [f0_t2up(env0, s1e0)]
 //
 (* ****** ****** *)
 //
@@ -1605,8 +1615,8 @@ trans12_l1s1elst_impr(env0, lses)
 val () = prerrsln
 ("trans12_s1exp: f0_r1cd: lses = ", lses)
 *)
-} (*where*) // end of [s2exp_r1cd(...)]
-end (*let*) // end of [f0_r1cd(env0, s1e0)]
+}(*where*) // end of [s2exp_r1cd(...)]
+end(*let*) // end of [f0_r1cd(env0, s1e0)]
 //
 (* ****** ****** *)
 //
@@ -1640,7 +1650,7 @@ in//let
   trans12_l1s1elst_impr(env0, lss1)
   val lss2 =
   trans12_l1s1elst_prgm(env0, lss2) }
-end (*let*) // end of [f0_r2cd(env0, s1e0)]
+end(*let*) // end of [f0_r2cd(env0, s1e0)]
 //
 (* ****** ****** *)
 //
@@ -1684,8 +1694,8 @@ trans12_s1exp(env0, s1e1)
 optn_cons(s2t1) =>
 trans12_s1exp_stck(env0, s1e1, s2t1)
 ) : s2exp // case+ // end of [val(s2e1)]
-} (*where*)
-end (*let*) // end of [f0_lams(env0, s1e0)]
+}(*where*)
+end(*let*) // end of [f0_lams(env0, s1e0)]
 //
 (* ****** ****** *)
 //
@@ -1703,7 +1713,7 @@ val
 s2t2 = trans12_sort1(env0, s1t2)
 in//let
   trans12_s1exp_stck(env0, s1e1, s2t2)
-end (*let*) // end of [f0_annot(env0, s1e0)]
+end(*let*) // end of [f0_annot(env0, s1e0)]
 //
 (* ****** ****** *)
 //
@@ -1743,11 +1753,11 @@ case+ sopt of
 optn_vt_nil() => s2exp_none1(s1e0)
 | ~
 optn_vt_cons(scst) => s2exp_cst(scst)
-end (*let*)//end of [f0_qual0(env0,s1e0)]
+end(*let*)//end of [f0_qual0(env0,s1e0)]
 //
 (* ****** ****** *)
 //
-} (*where*)//end of [trans12_s1exp(env0,s1e0)]
+}(*where*)//end-of-[trans12_s1exp(env0,s1e0)]
 //
 (* ****** ****** *)
 //
@@ -1761,12 +1771,21 @@ trans12_s1exp
 val
 s2t0 = s2e0.sort((*0*))
 in//let
+//
 if // if
-lte_sort2_sort2
-( s2t0, the_sort2_view )
+(
+lte_sort2_sort2(
+  s2t0, the_sort2_view))
 then s2e0 else
-s2exp_impr(s1e0.lctn(), s2e0)
-end (*let*)//end-of[trans12_s1exp_impr(env0,s1e0)]
+(
+case+
+s2e0.node() of
+|S2Eany _ => s2e0
+|_(*other*) =>
+(
+s2exp_impr(s1e0.lctn(), s2e0)))
+//
+end(*let*)//end-of[trans12_s1exp_impr(env0,s1e0)]
 //
 #implfun
 trans12_l1s1e_impr
@@ -1778,7 +1797,7 @@ val+
 S1LAB(l0, s1e0) = ls1e
 val s2e0 =
 trans12_s1exp_impr(env0, s1e0)
-} (*where*)//end-of[trans12_l1s1e_impr(env0,ls1e)]
+}(*where*)//end-of[trans12_l1s1e_impr(env0,ls1e)]
 //
 (* ****** ****** *)
 //
@@ -1792,12 +1811,21 @@ trans12_s1exp
 val
 s2t0 = s2e0.sort((*0*))
 in//let
-if
-lte_sort2_sort2
-( s2t0, the_sort2_vwtp )
+//
+if // if
+(
+lte_sort2_sort2(
+  s2t0, the_sort2_vwtp))
 then s2e0 else
-s2exp_prgm(s1e0.lctn(), s2e0)
-end (*let*)//end-of[trans12_s1exp_impr(env0,s1e0)]
+(
+case+
+s2e0.node() of
+|S2Eany _ => s2e0
+|_(*other*) =>
+(
+s2exp_prgm(s1e0.lctn(), s2e0)))
+//
+end(*let*)//end-of[trans12_s1exp_impr(env0,s1e0)]
 //
 #implfun
 trans12_l1s1e_prgm
@@ -1809,7 +1837,7 @@ val
 S1LAB(l0, s1e0) = ls1e
 val s2e0 =
 trans12_s1exp_prgm(env0, s1e0)
-} (*where*)//end-of[trans12_l1s1e_prgm(env0,ls1e)]
+}(*where*)//end-of[trans12_l1s1e_prgm(env0,ls1e)]
 //
 (* ****** ****** *)
 //
@@ -1829,7 +1857,7 @@ in//let
 if subq
 then s2e1 else
 s2exp_cast(s1e1.lctn(), s2e1, s2t2)
-end (*let*)//end-of[trans12_s1exp_stck(env0,...)]
+end(*let*)//end-of[trans12_s1exp_stck(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -1900,7 +1928,8 @@ list_map$e1nv
 map$e1nv$fopr
 <x0><y0><e1>(s1e1, env0) =
 trans12_s1exp_stck(env0, s1e1, s2t2)
-} (*where*)//end of [trans12_s1explst_stck1]
+//
+}(*where*)//end of [trans12_s1explst_stck1]
 //
 (* ****** ****** *)
 //
@@ -1964,9 +1993,9 @@ trans12_s1exp_stck
 ( env0, s1e1, s2t1 )
 val s2es = auxlst(env0, s1es, s2ts) }
 )
-) (*case+*)//end of [auxlst(env0,s1es,s2ts)]
+)(*case+*)//end of [auxlst(env0,s1es,s2ts)]
 //
-} (*where*)//end of [trans12_s1explst_stck1]
+}(*where*)//end of [trans12_s1explst_stck1]
 //
 (* ****** ****** *)
 //
@@ -2016,10 +2045,8 @@ auxs2vs
 : s2varlst_vt): s2varlst_vt =
 (
 case+ toks of
-|
-list_nil() => s2vs
-|
-list_cons(tok1, toks) =>
+|list_nil() => (s2vs)
+|list_cons(tok1, toks) =>
 (
 auxs2vs
 ( env0, toks, tvar
@@ -2029,7 +2056,7 @@ val sym1 = sargid_sym(tok1)
 val s2v1 = s2var_make_idst(sym1, tvar)
 val (  ) = tr12env_add0_s2var(env0, s2v1)
 }
-) (*case+*) // end of [auxs2vs[env0,toks,...])
+)(*case+*) // end of [auxs2vs[env0,toks,...])
 //
 (* ****** ****** *)
 //
@@ -2074,8 +2101,9 @@ val s2ps =
 list_vt_cons(s2p1, s2ps)
 //
 in//let
-  auxloop(env0, s1qs, s2vs, s2ps)
-end (*let*) // end-of-(S1QUAprop)
+(
+auxloop(env0, s1qs, s2vs, s2ps))
+end(*let*) // end-of-(S1QUAprop(...))
 |
 S1QUAvars(toks, topt) =>
 let
@@ -2100,10 +2128,11 @@ s2vs =
 auxs2vs(env0, toks, tvar, s2vs)
 //
 in//let
-  auxloop(env0, s1qs, s2vs, s2ps)
-end (*let*) // end of [S1QUAvars(...)]
+(
+auxloop(env0, s1qs, s2vs, s2ps))
+end(*let*) // end of [S1QUAvars(...)]
 )
-) (*case+*) // end of [auxloop(env0,s1qs,...)]
+)(*case+*) // end of [auxloop(env0,s1qs,...)]
 //
 (* ****** ****** *)
 in//local
@@ -2118,9 +2147,9 @@ auxloop
 , s2vs, s2ps)) where
 {
 val s2vs = list_vt_nil() and s2ps = list_vt_nil()
-} (*where*) // end of [trans12_s1qualst(env0, s1qs)]
+}(*where*) // end of [trans12_s1qualst(env0, s1qs)]
 //
-end (*local*) // end of [local(trans12_s1qualst(...))]
+end(*local*) // end of [local(trans12_s1qualst(...))]
 //
 (* ****** ****** *)
 
@@ -2177,15 +2206,15 @@ S2TEXsub
   val sps1 =
   s2explst_revar0(sps0,s2v0,s2v1) }
 //
-end (*let*) // end of [optn_cons(...)]
-end (*let*) // end of [S1ARGsome(...)]
+end(*let*) // end of [optn_cons(...)]
+end(*let*) // end of [S1ARGsome(...)]
 //
 ) where {
 (*
   val () =
   prerrsln("trans12_s1arg_tsub: s1a0 = ", s1a0)
 *)
-} (*where*) // end of [trans12_s1arg_tsub(env0,s1a0)]
+}(*where*) // end of [trans12_s1arg_tsub(env0,s1a0)]
 
 (* ****** ****** *)
 (* ****** ****** *)
