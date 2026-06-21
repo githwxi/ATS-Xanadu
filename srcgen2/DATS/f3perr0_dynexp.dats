@@ -505,19 +505,37 @@ prints("D3Et2ped(", "...", ")"))
 //
 (* ****** ****** *)
 //
-|
-_(*otherwise*) =>
+|D3Eextnam
+(tknd, g1nm) =>
+(
+  prints("D3Eextnam(", g1nm, ")"))
+|D3Esynext
+(tknd, gexp) =>
+(
+  prints("D3Eextnam(", gexp, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+| _
+(*otherwise*) =>
 let
-  val
-  loc = d3e.lctn((*0*))
-  val () = prerrsln
-  ("f3perr0_d3exp:auxdexp: loc = ", loc)
-  val () = prerrsln
-  ("f3perr0_d3exp:auxdexp: d3e = ", d3e)
+//
+val loc = d3e.lctn((*0*))
+val ( ) =
+prerrsln
+("f3perr0_d3exp:auxdexp: loc = ", loc)
+val ( ) =
+prerrsln
+("f3perr0_d3exp:auxdexp: d3e = ", d3e)
+//
 endlet
+//
+(* ****** ****** *)
 //
 end (*let*) // end-of-[ auxdexp(out, d3e) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -958,6 +976,11 @@ end(*let*)//end-of-[D3Et2ped(...)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|D3Eextnam _ => () | D3Esynext _ => ()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |
 _(*otherwise*) =>
 let
@@ -965,17 +988,21 @@ let
 val loc = d3e.lctn((*void*))
 val t2p = d3e.styp((*void*))
 //
-val ( ) = prerrsln
-("f3perr0_d3exp: auxmain: loc = ", loc)
-val ( ) = prerrsln
-("f3perr0_d3exp: auxmain: t2p = ", t2p)
-val ( ) = prerrsln
-("f3perr0_d3exp: auxmain: d3e = ", d3e)
+val ( ) =
+prerrsln("\
+f3perr0_d3exp:auxmain: loc = ", loc)
+val ( ) =
+prerrsln("\
+f3perr0_d3exp:auxmain: t2p = ", t2p)
+val ( ) =
+prerrsln("\
+f3perr0_d3exp:auxmain: d3e = ", d3e)
 //
 endlet
 //
 end (*let*) // end-of-[ auxmain(out, d3e) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 in//local
