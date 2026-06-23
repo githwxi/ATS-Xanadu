@@ -1,15 +1,13 @@
 (* ****** ****** *)
 (* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsfx00.sats"
-(* ****** ****** *)
-(* ****** ****** *)
 //
 #include
-"prelude/HATS/prelude_dats.hats"
+"prelude\
+/HATS/prelude_dats.hats"
 //
 #include
-"prelude/HATS/prelude_JS_dats.hats"
+"prelude\
+/HATS/prelude_JS_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -43,8 +41,10 @@ fun
 fact3
 (x: sint): sint =
 (
-case+ x of _
-when(x>0) => x*fact3(x-1) | _ => 1)
+case+ x of
+|
+_ when(x>0) =>
+( x*fact3(x-1) ) | _ => (1))
 //
 (* ****** ****** *)
 (* ****** ****** *)

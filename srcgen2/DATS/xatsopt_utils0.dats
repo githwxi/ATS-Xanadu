@@ -276,6 +276,7 @@ d0parsed_from_fpath(1(*dyn*), fpth)
 }(*where*)//end-of-[d2parsed_of_fildats]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2025-05-24:
@@ -287,17 +288,31 @@ does not check the output!
 #implfun
 d3parsed_of_filsats
   ( fpth ) =
+(*
+let
+val dpar =
+*)
 d3parsed_of_trans03
 (
 d0parsed_of_pread00(dpar)) where
 {
 val dpar =
 d0parsed_from_fpath(0(*sta*), fpth)
-}
+}(*where*)//end-of-[d3parsed_of_filsats]
+(*
+in//let
+prerrsln("\
+d3parsed_of_filsats: dpar = ", dpar); dpar
+end//let
+*)
 //
 #implfun
 d3parsed_of_fildats
   ( fpth ) =
+(*
+let
+val dpar =
+*)
 d3parsed_of_trans03
 (
 d0parsed_of_pread00(dpar)) where
@@ -305,6 +320,12 @@ d0parsed_of_pread00(dpar)) where
 val dpar =
 d0parsed_from_fpath(1(*dyn*), fpth)
 }(*where*)//end-of-[d3parsed_of_fildats]
+(*
+in//let
+prerrsln("\
+d3parsed_of_fildats: dpar = ", dpar); dpar
+end//let
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -435,7 +456,7 @@ then
 else
 (
   d2parsed_of_filsats( fpth )))//endof(if)
-end(*let*)//end-of-[d2parsed_of_filsats(fpth)]
+end(*let*)//end-of-[d2parsed_of_filxats(fpth)]
 //
 end where
 {
@@ -510,7 +531,7 @@ then
 else
 (
   d3parsed_of_filsats( fpth )))//endof(if)
-end(*let*)//end-of-[d3parsed_of_filsats(fpth)]
+end(*let*)//end-of-[d3parsed_of_filxats(fpth)]
 //
 end where
 {

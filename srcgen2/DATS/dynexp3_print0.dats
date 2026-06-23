@@ -68,6 +68,7 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #symload lctn with d3pat_get_lctn
 #symload node with d3pat_get_node
 #symload styp with d3pat_get_styp
@@ -92,7 +93,8 @@ _(*?*) = "./lexing0_print0.dats"
 #symload stmp with timpl_get_stmp
 #symload node with timpl_get_node
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 d3pat_fprint
 (d3p0, out0) =
@@ -253,9 +255,10 @@ end (*let*) // end-of-[ D3Perrck(lvl1,d3p2) ]
 (* ****** ****** *)
 //
 end (*let*) // end of [ d3pat_fprint(d3p0,out0) ]
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 d3exp_fprint
 (d3e0, out0) =
@@ -629,7 +632,7 @@ val loc0 = d3e0.lctn() in//let
 end (*let*) // end-of-[ D3Eerrck(lvl1,d3e2) ]
 //
 end (*let*) // end of [ d3exp_fprint(d3e0,out0) ]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -769,7 +772,7 @@ end (*let*) // end of [ timpl_fprint(dimp,out0) ]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 d3ecl_fprint
 (dcl0, out0) =
@@ -929,7 +932,7 @@ val loc0 = dcl0.lctn() in//let
 end (*let*) // end-of-[ D3Cerrck(lvl1,d3cl) ]
 //
 end (*let*) // end of [ d3ecl_fprint(dcl0,out0) ]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
