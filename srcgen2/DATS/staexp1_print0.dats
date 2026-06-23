@@ -60,6 +60,7 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #symload lctn with g1arg_get_lctn
 #symload node with g1arg_get_node
 (* ****** ****** *)
@@ -104,7 +105,8 @@ _(*?*) = "./lexing0_print0.dats"
 #symload lctn with d1typ_get_lctn
 #symload node with d1typ_get_node
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 g1arg_fprint
 ( g1a, out ) =
@@ -117,7 +119,7 @@ prints("G1ARGnode(",tok,")")
 {
   #impltmp g_print$out<>() = out
 } (*where*) // end of [g1arg_fprint]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -174,7 +176,7 @@ prints("G1MAGdarg(",g1as,")")
 } (*where*) // end of [g1mag_fprint]
 //
 (* ****** ****** *)
-
+//
 #implfun
 g1nam_fprint
 ( g1n, out ) =
@@ -211,9 +213,9 @@ case+ g1n of
   prints("G1Nnone1(",g1n1,")")
 //
 end (*let*) // end of [g1nam_fprint(g1n,out)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 g1exp_fprint
 ( g1e, out ) =
@@ -281,9 +283,9 @@ G1Eerrck
 (lvl(*err*),g1e1) => prints("G1Eerrck(",lvl,";",g1e1,")")
 //
 end (*let*) // end of [g1exp_fprint(g1e,out)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 sort1_fprint
 ( s1t, out ) =
@@ -344,8 +346,9 @@ S1Terrck
 (lvl(*err*),s1t1) => prints("S1Terrck(",lvl,";",s1t1,")")
 //
 end (*let*) // end of [sort1_fprint(s1t,out)]
-
+//
 (* ****** ****** *)
+//
 #implfun
 s1tcn_fprint
 ( tcn, out ) =
@@ -360,7 +363,9 @@ tcn.node() of
 S1TCNnode(id0, stq) =>
 prints("S1TCNnode(",id0,";",stq,")")
 end (*let*) // end of [s1tcn_fprint]
+//
 (* ****** ****** *)
+//
 #implfun
 d1tst_fprint
 ( dst, out ) =
@@ -377,7 +382,7 @@ D1TSTnode(tid0,stcs) =>
 prints("D1TSTnode(",tid0,";",stcs,")"))
 end (*let*) // end of [d1tst_fprint(...)]
 (* ****** ****** *)
-
+//
 #implfun
 s1arg_fprint
 ( s1a, out ) =
@@ -393,7 +398,7 @@ S1ARGsome(sid0, tres) =>
 prints("S1ARGsome(",sid0,";",tres,")")
 //
 end (*let*) // end of [s1arg_fprint(...)]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -413,7 +418,7 @@ prints("S1MAGlist(",s1as,")")
 end (*let*)//end of [s1mag_fprint(s1m,out)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 t1arg_fprint
 ( t1a, out ) =
@@ -429,7 +434,7 @@ T1ARGsome(s1t1, topt) =>
 prints("T1ARGsome(",s1t1,";",topt,")")
 //
 end (*let*) // end of [t1arg_fprint(...)]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -470,7 +475,7 @@ prints("S1QUAvars(",toks,";",topt,")")
 end (*let*) // end-of-[s1qua_fprint(err,out)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 s1exp_fprint
 ( s1e, out ) =
@@ -580,7 +585,7 @@ S1Eerrck
 (lvl(*err*),s1e1) => prints("S1Eerrck(",lvl,";",s1e1,")")
 //
 end (*let*) // end of [s1exp_fprint(s1e,out)]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -598,7 +603,7 @@ prints("S1UNIsome(",s1qs,")")
 end (*let*) // end-of-[s1uni_fprint(err,out)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 s1tdf_fprint
 (stdf, out0) =
@@ -621,9 +626,9 @@ S1TDFtsub(s1a1,s1es) =>
 )
 //
 end (*let*) // end of [s1tdf_fprint(stdf,out)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 d1tcn_fprint
 (dtcn, out0) =
@@ -643,9 +648,9 @@ print("D1TCNnode(");
 prints(s1us,";",deid,";",s1es,";",sres,")"))
 //
 end (*let*) // end of [d1tcn_fprint(dtcn,out)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 d1typ_fprint
 (dtyp, out0) =
@@ -665,7 +670,7 @@ print("D1TYPnode(");
 prints(deid,";",tmas,";",tres,";",tcns,")"))
 //
 end (*let*) // end of [d1typ_fprint(dtyp,out)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
