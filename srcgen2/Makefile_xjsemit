@@ -279,8 +279,10 @@ BUILD/JS/%_dats_out0.js; \
 $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
-lib2xatsopt:: \
+lib2xatsopt: \
 $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt.js
+lib2xatsopt_opt0: ; \
+$(SED) '/^[ ]*\/\//d' lib/lib2xatsopt.js > lib/lib2xatsopt_opt0.js
 ########################################################################
 ifndef \
 XATSOPT_TCHECK00

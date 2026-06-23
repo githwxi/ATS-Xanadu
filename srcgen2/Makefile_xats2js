@@ -272,8 +272,10 @@ all:: $(OBJDATS)
 ########################################################################
 cleanall:: ; rm -f BUILD/JS/*_dats.js
 ########################################################################
-lib1xatsopt:: $(OBJDATS); \
-$(CAT) $(OBJDATS) > lib/lib1xatsopt.js
+lib1xatsopt: \
+$(OBJDATS); $(CAT) $(OBJDATS) > lib/lib1xatsopt.js
+lib1xatsopt_opt0: ; \
+$(SED) '/^[ ]*\/\//d' lib/lib1xatsopt.js > lib/lib1xatsopt_opt0.js
 ########################################################################
 BUILD/JS/%_dats.js: DATS/%.dats; $(XATS2JS) --output-w $@ --dynamic $<
 ########################################################################

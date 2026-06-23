@@ -278,9 +278,9 @@ BUILD/PY/%_dats_out0.py; \
 $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/pyxtnm/pyx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
-lib2xatsopt: $(OUT1DATS); \
-$(CAT) $(OUT1DATS) > lib/lib2xatsopt.py
-lib2xatsopt_opt0: lib2xatsopt; \
+lib2xatsopt: \
+$(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt.py
+lib2xatsopt_opt0: ; \
 $(SED) '/^[ ]*##/d' lib/lib2xatsopt.py > lib/lib2xatsopt_opt0.py
 ########################################################################
 ifndef \
