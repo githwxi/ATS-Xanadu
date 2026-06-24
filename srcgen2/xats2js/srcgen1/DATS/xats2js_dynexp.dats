@@ -218,7 +218,7 @@ val () =
 (
   xats2js_i1letlst(env0, ilts)) };
 //
-strnfpr(filr, " // I1CMP:return\n");
+strnfpr(filr, "// I1CMP:return\n");
 )
 //
 end(*let*)//end-of-[xats2js_i1cmp(env0,icmp)]

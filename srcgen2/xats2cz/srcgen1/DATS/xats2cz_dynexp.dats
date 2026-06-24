@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun Apr 27 02:29:07 PM EDT 2025
+Wed Jun 24 11:34:58 AM EDT 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -56,11 +56,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/xats2py.sats"
+#staload "./../SATS/xats2cz.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-_(*DATS*)="./../DATS/xats2py.dats"
+_(*DATS*)="./../DATS/xats2cz.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -101,18 +101,18 @@ i1valfpr
 (* ****** ****** *)
 //
 #implfun
-xats2py_i1let
+xats2cz_i1let
 ( env0,ilet ) =
 let
 //
 val filr =
-envx2py_filr$get(env0)
+envx2cz_filr$get(env0)
 val nind =
-envx2py_nind$get(env0)
+envx2cz_nind$get(env0)
 //
 in//let
 nindfpr(filr, nind);
-strnfpr(filr, "## ");
+strnfpr(filr, ";; ");
 i1letfpr(env0, ilet); fprintln(filr)
 end where
 {
@@ -120,42 +120,42 @@ end where
 fun
 i1letfpr
 ( env0:
-! envx2py
+! envx2cz
 , ilet: i1let): void =
 (
 i1let_fprint(ilet, filr)
 ) where
 {
-  val filr = envx2py_filr$get(env0) }
+  val filr = envx2cz_filr$get(env0) }
 //
 (* ****** ****** *)
 //
 (*
 val (  ) =
-printsln("xats2py_i1let: ilet = ", ilet)
+printsln("xats2cz_i1let: ilet = ", ilet)
 *)
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[xats2py_i1let(env0,ilet)]
+}(*where*)//end-of-[xats2cz_i1let(env0,ilet)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2py_i1bnd
+xats2cz_i1bnd
 ( env0,ibnd ) =
 let
 //
 val filr =
-envx2py_filr$get(env0)
+envx2cz_filr$get(env0)
 val nind =
-envx2py_nind$get(env0)
+envx2cz_nind$get(env0)
 //
 in//let
 (
 nindfpr(filr, nind);
-strnfpr(filr, "## ");
+strnfpr(filr, ";; ");
 i1bndfpr(filr, ibnd); fprintln(filr))
 end where
 {
@@ -164,25 +164,25 @@ end where
 //
 (*
 val (  ) =
-printsln("xats2py_i1bnd: ibnd = ", ibnd)
+printsln("xats2cz_i1bnd: ibnd = ", ibnd)
 *)
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[xats2py_i1bnd(env0,ibnd)]
+}(*where*)//end-of-[xats2cz_i1bnd(env0,ibnd)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2py_i1cmp
+xats2cz_i1cmp
 ( env0,icmp ) =
 let
 //
 val filr =
-envx2py_filr$get(env0)
+envx2cz_filr$get(env0)
 val nind =
-envx2py_nind$get(env0)
+envx2cz_nind$get(env0)
 //
 in//let
 //
@@ -193,19 +193,19 @@ I1CMPcons
 (
 nindfpr(filr, nind);
 strnfpr
-(filr,"## I1CMP:start\n");
+(filr,";; I1CMP:start\n");
 //
 (
 nindfpr(filr, nind);
 strnfpr
-(filr, "## I1CMP(ival):");
+(filr, ";; I1CMP(ival):");
 i1valfpr(  filr , ival  )) where
 {
 val () =
 (
-  xats2py_i1letlst(env0, ilts)) };
+  xats2cz_i1letlst(env0, ilts)) };
 //
-strnfpr(filr, "## I1CMP:return\n");
+strnfpr(filr, ";; I1CMP:return\n");
 )
 //
 end where
@@ -215,26 +215,26 @@ end where
 //
 (*
 val (  ) =
-printsln("xats2py_i1cmp: icmp = ", icmp)
+printsln("xats2cz_i1cmp: icmp = ", icmp)
 *)
 //
 (* ****** ****** *)
 //
 fun
-xats2py_i1letlst
+xats2cz_i1letlst
 ( env0:
-! envx2py
+! envx2cz
 , ilts: i1letlst): void =
 (
-list_xats2py_fnp(env0, ilts, xats2py_i1let))
+list_xats2cz_fnp(env0, ilts, xats2cz_i1let))
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[xats2py_i1cmp(env0,icmp)]
+}(*where*)//end-of-[xats2cz_i1cmp(env0,icmp)]
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_DATS_xats2py_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cz_srcgen1_DATS_xats2cz_dynexp.dats] *)
 (***********************************************************************)
