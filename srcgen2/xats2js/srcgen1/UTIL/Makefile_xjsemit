@@ -109,9 +109,9 @@ $(CAT) \
 $(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
 $(CAT) \
 $(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
-$(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
+$(SED) -E 's/jsx(...)tnm/jsxa\1tnm/g' \
 $(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
-$(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
+$(SED) -E 's/jsx(...)tnm/jsxb\1tnm/g' \
 $(XATSJSD)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_ats3.js
 #
 lib2xatsopt2js_opt1: lib2xatsopt2js; \
@@ -130,5 +130,6 @@ XATS2JS_JSEMIT00=$(XATSJSD)/srcgen1/UTIL/xats2js_jsemit00_ats2.js
 endif ## (ifeq($(XATS2JS_JSEMIT00),""))
 ########################################################################
 ########################################################################
-###################### end of [Makefile_xjsemit] #######################
+######################(end-of-[Makefile_xjsemit])#######################
+########################################################################
 ########################################################################
