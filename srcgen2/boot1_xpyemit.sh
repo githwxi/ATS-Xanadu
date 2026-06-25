@@ -23,12 +23,12 @@ case $prog in
     ${MAKE} -f Makefile_xpyemit lib2xatsopt
     ${MAKE} -C xats2py/srcgen1 -f Makefile_xpyemit lib2xats2py
     ${MAKE} -C xats2py/srcgen1/UTIL -f Makefile_xpyemit xats2py_pyemit00
-    echo "Please find: (./xats2js/srcgen1/UTIL/xats2js_jsemit00_ats3.js)!"
+    echo "Please find: (./xats2py/srcgen1/UTIL/xats2py_pyemit00_ats3.py)!"
     exit 0
     ;;
   *)
     echo "prog: " $prog
-    echo "This is a script for build_xjsemit."
+    echo "This is a script for build_xpyemit."
     echo "The script should be symbolically named as [boot1_xpyemit.sh]."
     exit 1
     ;;
