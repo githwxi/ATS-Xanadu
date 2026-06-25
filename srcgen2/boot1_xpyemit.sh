@@ -21,8 +21,8 @@ fi
 case $prog in
   boot1_xpyemit.sh)
     ${MAKE} -f Makefile_xpyemit lib2xatsopt
-    ${MAKE} -C xats2js/srcgen1 -f Makefile_xpyemit lib2xats2py
-    ${MAKE} -C xats2js/srcgen1/UTIL -f Makefile_xpyemit xats2py_pyemit00
+    ${MAKE} -C xats2py/srcgen1 -f Makefile_xpyemit lib2xats2py
+    ${MAKE} -C xats2py/srcgen1/UTIL -f Makefile_xpyemit xats2py_pyemit00
     echo "Please find: (./xats2js/srcgen1/UTIL/xats2js_jsemit00_ats3.js)!"
     exit 0
     ;;
