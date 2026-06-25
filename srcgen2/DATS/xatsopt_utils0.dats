@@ -97,8 +97,12 @@ SRCGEN2_XATSOPT: It's not needed
 #staload "./../SATS/tread23.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
-(* ****** ****** *)
 #staload "./../SATS/tread3a.sats"
+(* ****** ****** *)
+#staload "./../SATS/trtmp3b.sats"
+#staload "./../SATS/trtmp3c.sats"
+(* ****** ****** *)
+#staload "./../SATS/t3read0.sats"
 (* ****** ****** *)
 #staload "./../SATS/xatsopt.sats"
 (* ****** ****** *)
@@ -246,13 +250,6 @@ end(*let*)//end-of-[xatsopt_flag$addenv]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2025-05-24:
-Note that
-[d2parsed_of_fil?ats]
-does not check the output!
-*)
-//
 #implfun
 d2parsed_of_filsats
   ( fpth ) =
@@ -282,7 +279,7 @@ d0parsed_from_fpath(1(*dyn*), fpth)
 HX-2025-05-24:
 Note that
 [d3parsed_of_fil?...]
-does not check the output!
+does not t3read0 the output!
 *)
 //
 #implfun
@@ -361,6 +358,7 @@ Note that
 [d3parsed_of_trans03]
 does call tread3a to check
 before it returns the output!
+But it does not call t3read0!
 *)
 //
 #implfun
@@ -392,6 +390,20 @@ val dpar = d3parsed_of_trans3a(dpar)
 val dpar = d3parsed_of_tread3a(dpar) in dpar
 //
 end (*let*) // end of [d3parsed_of_trans03(dpar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3parsdz_of_trans03(dpar) =
+let
+//
+val dpar = d3parsed_of_trans03(dpar)
+val dpar = d3parsed_of_trtmp3b(dpar)
+val dpar = d3parsed_of_trtmp3c(dpar)
+val dpar = d3parsed_of_t3read0(dpar) in dpar
+//
+end (*let*) // end of [d3parsdz_of_trans03(dpar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
