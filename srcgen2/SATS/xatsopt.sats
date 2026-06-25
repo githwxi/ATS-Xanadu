@@ -142,7 +142,23 @@ fun
 d3parsed_of_trans03(dpar: d0parsed): d3parsed
 //
 (* ****** ****** *)
+//
+fun
+d3parsdz_of_filsats(fpth: string): d3parsed
+fun
+d3parsdz_of_fildats(fpth: string): d3parsed
+//
+fun
+d3parsdz_of_trans03(dpar: d0parsed): d3parsed
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-06-25:
+This one performs
+(tread12+trans2a+trsym2b+t2read0)!
+*)
 //
 fun
 xatsopt_args$filxats_d2parsed
@@ -151,8 +167,21 @@ xatsopt_args$filxats_d2parsed
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-06-25:
+This one performs (trans3a+tread3a)!
+*)
 fun
 xatsopt_args$filxats_d3parsed
+( args
+: list(string), xats: sint, fpth: string): d3parsed
+//
+(*
+HX-2026-06-25:
+d3parsdz = d3parsed+trtmp3b/3c+t3read0
+*)
+fun
+xatsopt_args$filxats_d3parsdz
 ( args
 : list(string), xats: sint, fpth: string): d3parsed
 //
