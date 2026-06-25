@@ -76,6 +76,7 @@ SRCDATS := \
 xbasics.dats \
 xbasics_print0.dats \
 xlibext.dats \
+xlibext_tmplib.dats \
 xlibext_jsemit.dats \
 xlibext_pyemit.dats \
 xsynoug.dats \
@@ -93,6 +94,7 @@ xsymmap.dats \
 xsymmap_topmap.dats \
 xsymmap_stkmap.dats \
 xglobal.dats \
+xglobal_ext000.dats \
 filpath.dats \
 filpath_print0.dats \
 filpath_drpth0.dats \
@@ -110,6 +112,7 @@ lexing0_kword0.dats \
 lexing0_token0.dats \
 lexing0_utils1.dats \
 lexing0_utils2.dats \
+lexing0_ext000.dats \
 staexp0.dats \
 staexp0_print0.dats \
 dynexp0.dats \
@@ -158,6 +161,7 @@ statyp2_tmplib.dats \
 dynexp2.dats \
 dynexp2_print0.dats \
 dynexp2_utils0.dats \
+dynexp2_tmplib.dats \
 nmspace.dats \
 trans12.dats \
 trans11_myenv0.dats \
@@ -186,11 +190,13 @@ t2read0.dats \
 t2read0_dynexp.dats \
 t2read0_decl00.dats \
 f2perr0.dats \
+f2perr0_staexp.dats \
 f2perr0_dynexp.dats \
 f2perr0_decl00.dats \
 dynexp3.dats \
 dynexp3_print0.dats \
 dynexp3_utils0.dats \
+dynexp3_tmplib.dats \
 trans23.dats \
 trans23_myenv0.dats \
 trans23_utils0.dats \
