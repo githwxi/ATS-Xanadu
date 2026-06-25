@@ -261,6 +261,8 @@ val dpar =
 d0parsed_from_fpath(0(*sta*), fpth)
 }
 //
+(* ****** ****** *)
+//
 #implfun
 d2parsed_of_fildats
   ( fpth ) =
@@ -321,6 +323,27 @@ d0parsed_from_fpath(1(*dyn*), fpth)
 in//let
 prerrsln("\
 d3parsed_of_fildats: dpar = ", dpar); dpar
+end//let
+*)
+//
+#implfun
+d3parsdz_of_fildats
+  ( fpth ) =
+(*
+let
+val dpar =
+*)
+d3parsdz_of_trans03
+(
+d0parsed_of_pread00(dpar)) where
+{
+val dpar =
+d0parsed_from_fpath(1(*dyn*), fpth)
+}(*where*)//end-of-[d2parsdz_of_fildats]
+(*
+in//let
+prerrsln("\
+d3parsdz_of_fildats: dpar = ", dpar); dpar
 end//let
 *)
 //
@@ -542,6 +565,74 @@ then
   d3parsed_of_fildats( fpth ))
 else
 (
+  d3parsed_of_filsats( fpth )))//endof(if)
+end(*let*)//end-of-[d3parsed_of_filxats(fpth)]
+//
+end where
+{
+//
+val (  ) =
+prerrsln("// Welcome from ATS3/Xanadu!")
+val (  ) =
+prerrsln("// XATSHOME = ", the_XATSHOME())
+//
+}(*where*)//end-of-[xatsopt_args$filxats_d3parsed(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+xatsopt_args$filxats_d3parsdz
+  (args, xats, fpth) =
+let
+//
+fun
+f0_args
+(
+args:
+list(strn)): void =
+(
+case+ args of
+|
+list_nil() => ((*0*))
+|
+list_cons(arg1, args) =>
+(
+  f0_args(args)) where
+{
+val () =
+xatsopt_flag$pvsadd0(arg1)
+}
+)(*case+*)//end(f0_args())
+//
+val ret1 =
+the_fxtyenv_pvsl00d((*0*))
+val (  ) =
+if // if
+(ret1 > 0)
+then
+prerrsln("\
+// The fixity-defs loaded!")
+val ret2 =
+the_tr12env_pvsl01d((*nil*))
+val (  ) =
+if // if
+(ret2 > 0)
+then prerrsln("\
+// The trans12-defs loaded!")
+in//let
+//
+let
+val () = f0_args(args)
+in//let
+(
+if
+(xats >= 1)
+then
+(
+  d3parsdz_of_fildats( fpth ))
+else
+(
+// HX: no d3parsdz version:
   d3parsed_of_filsats( fpth )))//endof(if)
 end(*let*)//end-of-[d3parsed_of_filxats(fpth)]
 //
