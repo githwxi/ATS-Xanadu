@@ -21,9 +21,10 @@ fi
 #
 case $prog in
   boot1_xjsemit.sh)
-    exec ${MAKE} -f Makefile_xjsemit lib2xatsopt
-    exec ${MAKE} -C xats2js/srcgen1 -f Makefile_xjsemit lib2xatsopt
-    exec ${MAKE} -C xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit00
+    ${MAKE} -f Makefile_xjsemit lib2xatsopt
+    ${MAKE} -C xats2js/srcgen1 -f Makefile_xjsemit lib2xatsopt
+    ${MAKE} -C xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit00
+    exit 0
     ;;
   *)
     echo "prog: " $prog
