@@ -973,13 +973,17 @@ D3Ctmplocal of
 D3Cimpltmpr of
 ( stamp(*unicity*), d3ecl(*impltmpr*) )
 //
-|
-D3Cnone0 of ((*nil*))
-|
-D3Cnone1 of ( d2ecl ) | D3Cnone2 of ( d3ecl )
+(* ****** ****** *)
+//
+|D3Cnone0 of ((*nil*))
+|D3Cnone1 of ( d2ecl ) | D3Cnone2 of ( d3ecl )
+//
+(* ****** ****** *)
 //
 |
 D3Cerrck of (sint(*lvl*), d3ecl)//tread23-error
+//
+(* ****** ****** *)
 //
 //HX-2023-??-??: end-of-[datatype( d3ecl_node )]
 //

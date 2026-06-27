@@ -327,23 +327,23 @@ end//let
 *)
 //
 #implfun
-d3parsdz_of_fildats
+d3parsdx_of_fildats
   ( fpth ) =
 (*
 let
 val dpar =
 *)
-d3parsdz_of_trans03
+d3parsdx_of_trans03
 (
 d0parsed_of_pread00(dpar)) where
 {
 val dpar =
 d0parsed_from_fpath(1(*dyn*), fpth)
-}(*where*)//end-of-[d2parsdz_of_fildats]
+}(*where*)//end-of-[d2parsdx_of_fildats]
 (*
 in//let
 prerrsln("\
-d3parsdz_of_fildats: dpar = ", dpar); dpar
+d3parsdx_of_fildats: dpar = ", dpar); dpar
 end//let
 *)
 //
@@ -418,7 +418,7 @@ end (*let*) // end of [d3parsed_of_trans03(dpar)]
 (* ****** ****** *)
 //
 #implfun
-d3parsdz_of_trans03(dpar) =
+d3parsdx_of_trans03(dpar) =
 let
 //
 val dpar = d3parsed_of_trans03(dpar)
@@ -426,7 +426,7 @@ val dpar = d3parsed_of_trtmp3b(dpar)
 val dpar = d3parsed_of_trtmp3c(dpar)
 val dpar = d3parsed_of_t3read0(dpar) in dpar
 //
-end (*let*) // end of [d3parsdz_of_trans03(dpar)]
+end (*let*) // end of [d3parsdx_of_trans03(dpar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -581,7 +581,7 @@ prerrsln("// XATSHOME = ", the_XATSHOME())
 (* ****** ****** *)
 //
 #implfun
-xatsopt_args$filxats_d3parsdz
+xatsopt_args$filxats_d3parsdx
   (args, xats, fpth) =
 let
 //
@@ -629,10 +629,10 @@ if
 (xats >= 1)
 then
 (
-  d3parsdz_of_fildats( fpth ))
+  d3parsdx_of_fildats( fpth ))
 else
 (
-// HX: no d3parsdz version:
+// HX: no d3parsdx version:
   d3parsed_of_filsats( fpth )))//endof(if)
 end(*let*)//end-of-[d3parsed_of_filxats(fpth)]
 //

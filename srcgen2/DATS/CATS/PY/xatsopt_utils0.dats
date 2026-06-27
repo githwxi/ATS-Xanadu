@@ -50,6 +50,7 @@ PYDEV_xatsopt_args_filsats_d2parsed
 (
 farg:
 (strn->void)->void, fpth: strn): d2parsed = $extnam()
+//
 #extern
 fun
 PYDEV_xatsopt_args_fildats_d2parsed
@@ -88,9 +89,17 @@ PYDEV_xatsopt_args_filsats_d3parsed
 (
 farg:
 (strn->void)->void, fpth: strn): d3parsed = $extnam()
+//
 #extern
 fun
 PYDEV_xatsopt_args_fildats_d3parsed
+(
+farg:
+(strn->void)->void, fpth: strn): d3parsed = $extnam()
+//
+#extern
+fun
+PYDEV_xatsopt_args_fildats_d3parsdx
 (
 farg:
 (strn->void)->void, fpth: strn): d3parsed = $extnam()
@@ -116,6 +125,16 @@ val args = strnlst_make_fwork(farg)
 in//let
 $XATSOPT.xatsopt_args$filxats_d3parsed(args, xats, fpth)
 end(*let*)//end-of-[PYDEV_xatsopt_args_fildats_d3parsed(farg,fpth)]
+//
+#implfun
+PYDEV_xatsopt_args_fildats_d3parsdx
+  (farg, fpth) =
+let
+val xats = 1(*dats*)
+val args = strnlst_make_fwork(farg)
+in//let
+$XATSOPT.xatsopt_args$filxats_d3parsdx(args, xats, fpth)
+end(*let*)//end-of-[PYDEV_xatsopt_args_fildats_d3parsdx(farg,fpth)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
