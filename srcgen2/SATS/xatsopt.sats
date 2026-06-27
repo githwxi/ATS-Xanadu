@@ -139,14 +139,14 @@ d3parsed_of_filsats(fpth: string): d3parsed
 fun
 d3parsed_of_fildats(fpth: string): d3parsed
 fun
-d3parsdz_of_fildats(fpth: string): d3parsed
+d3parsdx_of_fildats(fpth: string): d3parsed
 //
 (* ****** ****** *)
 //
 fun
 d3parsed_of_trans03(dpar: d0parsed): d3parsed
 fun
-d3parsdz_of_trans03(dpar: d0parsed): d3parsed
+d3parsdx_of_trans03(dpar: d0parsed): d3parsed
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -175,10 +175,10 @@ xatsopt_args$filxats_d3parsed
 //
 (*
 HX-2026-06-25:
-d3parsdz = d3parsed+trtmp3b/3c+t3read0
+d3parsdx = d3parsed+trtmp3b/3c+t3read0
 *)
 fun
-xatsopt_args$filxats_d3parsdz
+xatsopt_args$filxats_d3parsdx
 ( args
 : list(string), xats: sint, fpth: string): d3parsed
 //
