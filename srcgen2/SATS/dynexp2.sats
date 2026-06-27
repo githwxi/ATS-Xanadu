@@ -624,11 +624,14 @@ where
 }(*where*) // end-of-(  d2ptm  )
 //
 (* ****** ****** *)
+//
 fun
 d2itm_fprint:(d2itm, FILR)->void
 fun
 d2ptm_fprint:(d2ptm, FILR)->void
+//
 (* ****** ****** *)
+//
 fun
 s2qag_fprint:(s2qag, FILR)->void
 fun
@@ -637,6 +640,7 @@ fun
 t2iag_fprint:(t2iag, FILR)->void
 fun
 t2jag_fprint:(t2jag, FILR)->void
+//
 (* ****** ****** *)
 //
 fun
@@ -686,6 +690,7 @@ t2jag_set_t2ps
 #symload t2ps with t2jag_set_t2ps
 //
 (* ****** ****** *)
+//
 fun
 s2qag_make_s2vs
 (loc0:loc_t,s2vs:s2varlst):s2qag
@@ -702,6 +707,7 @@ fun
 t2jag_make_t2ps
 (loc0:loc_t,t2ps:s2typlst):t2jag
 #symload t2jag with t2jag_make_t2ps
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
