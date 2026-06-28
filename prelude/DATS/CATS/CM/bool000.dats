@@ -30,156 +30,121 @@
 //
 (*
 Author: Hongwei Xi
-Wed Jan  1 03:28:47 PM EST 2025
+Wed Jan  8 02:48:44 AM EST 2025
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#absimpl
-a0rf_vt_tx
-(  a:vt  ) = $extbox("a0rf_tx")
-#absimpl
-a0rf_vt_vx
-(  a:vt  ) = $extbox("a0rf_vx")
-//
-(* ****** ****** *)
-//
-#absimpl
-a1rf_vt_i0_tx
-( a:vt,n:i0 ) = $extbox("a1rf_tx")
-#absimpl
-a1rf_vt_i0_vx
-( a:vt,n:i0 ) = $extbox("a1rf_vx")
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-//
 #impltmp
-< a: vt >
-a0rf_lget
-  ( A ) =
+<(*tmp*)>
+bool_lt
+(b1, b2) =
 (
-XATS2PY_a0rf_lget
-  ( A )) where
+XATS2CM_bool_lt
+  (b1, b2)) where
 {
 #extern
 fun
-XATS2PY_a0rf_lget
-{a:vt}
-( A
-: a0rf(a))
-: (owed(a) | a) = $extnam()
-}
-//
-#impltmp
-< a: vt >
-a0rf_lset
-(f | A, x) =
-(
-XATS2PY_a0rf_lset
-  (f | A, x)) where
-{
-#extern
-fun
-XATS2PY_a0rf_lset
-{a:vt}
-(f:owed(a)
-|A:a0rf(a), x:a): void = $extnam()
+XATS2CM_bool_lt
+(b1: bool, b2: bool): bool = $extnam()
 }
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #impltmp
-< a: vt >
-a0rf_make_1val
-  ( x1 ) =
+<(*tmp*)>
+bool_gt
+(b1, b2) =
 (
-XATS2PY_a0rf_make_1val
-  ( x1 )) where
+XATS2CM_bool_gt
+  (b1, b2)) where
 {
 #extern
 fun
-XATS2PY_a0rf_make_1val
-{a:vt}( x1: a ): a0rf(a) = $extnam()
+XATS2CM_bool_gt
+(b1: bool, b2: bool): bool = $extnam()
 }
 //
 (* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_eq
+(b1, b2) =
+(
+XATS2CM_bool_eq
+  (b1, b2)) where
+{
+#extern
+fun
+XATS2CM_bool_eq
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
 (* ****** ****** *)
 //
 #impltmp
-< a: vt >
-a1rf_lget$at
-  (A, i) =
+<(*tmp*)>
+bool_lte
+(b1, b2) =
 (
-XATS2PY_a1rf_lget$at
-  (A, i)) where
+XATS2CM_bool_lte
+  (b1, b2)) where
 {
 #extern
 fun
-XATS2PY_a1rf_lget$at
-{a:vt}
-( A
-: a1rf(a)
-, i: nint): (owed(a) | a) = $extnam()
+XATS2CM_bool_lte
+(b1: bool, b2: bool): bool = $extnam()
 }
 //
+(* ****** ****** *)
+//
 #impltmp
-< a: vt >
-a1rf_lset$at
-  (f | A, i, x) =
+<(*tmp*)>
+bool_gte
+(b1, b2) =
 (
-XATS2PY_a1rf_lset$at
-  (f | A, i, x)) where
+XATS2CM_bool_gte
+  (b1, b2)) where
 {
 #extern
 fun
-XATS2PY_a1rf_lset$at
-{a:vt}
-(f:owed(a)
-|A:a1rf(a),i:nint,x:a): void = $extnam()
+XATS2CM_bool_gte
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_neq
+(b1, b2) =
+(
+XATS2CM_bool_neq
+  (b1, b2)) where
+{
+#extern
+fun
+XATS2CM_bool_neq
+(b1: bool, b2: bool): bool = $extnam()
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-< a: t0 >
-a1rf_make_ncpy
-  (n, x) =
+<(*tmp*)>
+bool_print(b0) =
 (
-XATS2PY_a1rf_make_ncpy
-  (n, x)) where
-{
-#extern
-fun
-XATS2PY_a1rf_make_ncpy
-{a:t0}(n:nint, x:a): a1rf(a) = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-< a: vt >
-a1rf_make_nfun
-  (n, f) =
-(
-XATS2PY_a1rf_make_nfun
-  (n, f)) where
-{
-#extern
-fun
-XATS2PY_a1rf_make_nfun
-{a:t0}
-(n:nint, f:(nint)->(a)): a1rf(a) = $extnam()
-}
+if b0
+then strn_print<>("true")
+else strn_print<>("false"))//end(impl)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_axrf000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_CM_bool000.dats] *)
 (***********************************************************************)
