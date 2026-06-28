@@ -55,28 +55,28 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2cz.sats"
+#staload "./../SATS/xats2cm.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <x0>(*tmp*)
-list_xats2cz_fnp
+list_xats2cm_fnp
 ( e1, xs, fopr ) =
 (
 list_foritm$e1nv<x0><e1>(xs, e1)) where
 {
-#vwtpdef e1 = envx2cz
+#vwtpdef e1 = envx2cm
 #impltmp
 foritm$e1nv$work<x0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_xats2cz_fnp(e1,xs,fopr)]
+} (*where*)//end of [list_xats2cm_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <x0>(*tmp*)
-optn_xats2cz_fnp
+optn_xats2cm_fnp
 ( e1, xs, fopr ) =
 (
 case+ xs of
@@ -86,5 +86,5 @@ case+ xs of
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cz_srcgen1_DATS_xats2cz.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cm_srcgen1_DATS_xats2cm.dats] *)
 (***********************************************************************)
