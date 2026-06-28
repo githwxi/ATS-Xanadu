@@ -55,15 +55,76 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+i0i00cm1(
+filr:FILR,int0:sint): void
+fun
+i0b00cm1(
+filr:FILR,btf0:bool): void
+fun
+i0c00cm1(
+filr:FILR,chr0:char): void
+fun
+i0f00cm1(
+filr:FILR,flt0:dflt): void
+fun
+i0s00cm1(
+filr:FILR,str0:strn): void
+//
+(* ****** ****** *)
+//
+fun
+i0intcm1(
+filr:FILR,tint:token): void
+fun
+i0btfcm1(
+filr:FILR,btf0:sym_t): void
+fun
+i0chrcm1(
+filr:FILR,tchr:token): void
+fun
+i0fltcm1(
+filr:FILR,tflt:token): void
+fun
+i0strcm1(
+filr:FILR,tstr:token): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d2concm1(
-filr: FILR, dcon: d2con): void
+filr:FILR,dcon:d2con): void
 fun
 d2cstcm1(
-filr: FILR, dcst: d2cst): void
+filr:FILR,dcst:d2cst): void
 //
 fun
 d2varcm1(
-filr: FILR, dvar: d2var): void
+filr:FILR,dvar:d2var): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1tnmcm1(
+filr:FILR,itnm:i1tnm): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fjas1cm1
+( filr
+: FILR, fjas:fjarglst): void
+//
+(* ****** ****** *)
+//
+fun
+i1valcm1
+(filr:FILR,ival:i1val): void
+fun
+l1i1vcm1
+(filr:FILR,liv0:l1i1v): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -90,6 +151,13 @@ fopr: (x0, !envx2cm)->void): void
 fun
 i1parsed_cm1emit
 (ipar: i1parsed, filr: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1cmp_cm1emit
+(icmp: i1cmp, env0: !envx2cm): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
