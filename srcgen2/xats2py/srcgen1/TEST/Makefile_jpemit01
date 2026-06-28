@@ -46,8 +46,7 @@ testall:: \
 test10; $(PYTHON) OUTS/$<_out.py
 ########################################################################
 ########################################################################
-XATS2PY_SRCGENX=\
-$(XATSHOME)/srcgen2/xats2py/srcgenx
+XATS2PY_SRCGENX="./.."
 XATS2PY_XSHARED=$(XATS2PY_SRCGENX)/xshared/runtime
 ########################################################################
 XATS2PY_PYEMIT01="./../UTIL/xats2py_pyemit01_ats2.js"
@@ -182,7 +181,8 @@ test10_xats2py.dats; \
 $(NODE) --stack-size=8800 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
 ########################################################################
 ########################################################################
-testxx:: ; $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+testxx:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
 ############
 testxx:: ; \
 $(CAT) $(XATS2PY_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
