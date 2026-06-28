@@ -30,7 +30,7 @@
 //
 (*
 Author: Hongwei Xi
-Wed Jan  8 02:50:04 AM EST 2025
+Wed Jan  8 02:50:50 AM EST 2025
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -39,129 +39,104 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 <(*tmp*)>
-char_lt
-(c1, c2) =
+sint_neg
+  ( i1 ) =
 (
-XATS2PY_char_lt
-  (c1, c2)) where
+XATS2CM_sint_neg
+  ( i1 )) where
 {
 #extern
 fun
-XATS2PY_char_lt
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_gt
-(c1, c2) =
-(
-XATS2PY_char_gt
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2PY_char_gt
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_eq
-(c1, c2) =
-(
-XATS2PY_char_eq
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2PY_char_eq
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_lte
-(c1, c2) =
-(
-XATS2PY_char_lte
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2PY_char_lte
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_gte
-(c1, c2) =
-(
-XATS2PY_char_gte
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2PY_char_gte
-(c1: char, c2: char): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-char_neq
-(c1, c2) =
-(
-XATS2PY_char_neq
-  (c1, c2)) where
-{
-#extern
-fun
-XATS2PY_char_neq
-(c1: char, c2: char): bool = $extnam()
-}
+XATS2CM_sint_neg
+(i1: sint): sint = $extnam() }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-char_add$sint
-  (c1, i2) =
+sint_lt$sint
+  (i1, i2) =
 (
-XATS2PY_char_add$sint
-  (c1, i2)) where
+XATS2CM_sint_lt$sint
+  (i1, i2)) where
 {
 #extern
 fun
-XATS2PY_char_add$sint
-(c1: char, i2: sint): char = $extnam()
+XATS2CM_sint_lt$sint
+(i1: sint, i2: sint): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_gt$sint
+  (i1, i2) =
+(
+XATS2CM_sint_gt$sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2CM_sint_gt$sint
+(i1: sint, i2: sint): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_eq$sint
+  (i1, i2) =
+(
+XATS2CM_sint_eq$sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2CM_sint_eq$sint
+(i1: sint, i2: sint): bool = $extnam()
 }
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-char_sub$char
-  (c1, c2) =
+sint_lte$sint
+  (i1, i2) =
 (
-XATS2PY_char_sub$char
-  (c1, c2)) where
+XATS2CM_sint_lte$sint
+  (i1, i2)) where
 {
 #extern
 fun
-XATS2PY_char_sub$char
-(c1: char, c2: char): sint = $extnam()
+XATS2CM_sint_lte$sint
+(i1: sint, i2: sint): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_gte$sint
+  (i1, i2) =
+(
+XATS2CM_sint_gte$sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2CM_sint_gte$sint
+(i1: sint, i2: sint): bool = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_neq$sint
+  (i1, i2) =
+(
+XATS2CM_sint_neq$sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2CM_sint_neq$sint
+(i1: sint, i2: sint): bool = $extnam()
 }
 //
 (* ****** ****** *)
@@ -169,58 +144,93 @@ XATS2PY_char_sub$char
 //
 #impltmp
 <(*tmp*)>
-char_print
-  ( c0 ) =
+sint_add$sint
+  (i1, i2) =
 (
-XATS2PY_char_print
-  ( c0 )) where
+XATS2CM_sint_add$sint
+  (i1, i2)) where
 {
 #extern
 fun
-XATS2PY_char_print(c0: char): void = $extnam()
+XATS2CM_sint_add$sint
+(i1: sint, i2: sint): sint = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_sub$sint
+  (i1, i2) =
+(
+XATS2CM_sint_sub$sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2CM_sint_sub$sint
+(i1: sint, i2: sint): sint = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_mul$sint
+  (i1, i2) =
+(
+XATS2CM_sint_mul$sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2CM_sint_mul$sint
+(i1: sint, i2: sint): sint = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_div$sint
+  (i1, i2) =
+(
+XATS2CM_sint_div$sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2CM_sint_div$sint
+(i1: sint, i2: sint): sint = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+sint_mod$sint
+  (i1, i2) =
+(
+XATS2CM_sint_mod$sint
+  (i1, i2)) where
+{
+#extern
+fun
+XATS2CM_sint_mod$sint
+(i1: sint, i2: sint): sint = $extnam()
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2026-01-17:
-Sat Jan 17 09:47:35 PM EST 2026
-*)
 #impltmp
 <(*tmp*)>
-sint_make_char(ch) =
+sint_print
+  ( i0 ) =
 (
-XATS2PY_sint_make_char(ch))
-where
+XATS2CM_sint_print
+  ( i0 )) where
 {
 #extern
 fun
-XATS2PY_sint_make_char(ch: char): sint = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2026-01-17:
-Sat Jan 17 09:47:35 PM EST 2026
-*)
-#impltmp
-<(*tmp*)>
-char_make_sint(i0) =
-(
-XATS2PY_char_make_sint(i0))
-where
-{
-#extern
-fun
-XATS2PY_char_make_sint(i0: sint): char = $extnam()
+XATS2CM_sint_print(i0: sint): void = $extnam()
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_char000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_CM_gint000.dats] *)
 (***********************************************************************)
