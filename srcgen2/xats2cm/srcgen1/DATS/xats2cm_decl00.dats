@@ -56,11 +56,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/xats2cz.sats"
+#staload "./../SATS/xats2cm.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-_(*DATS*)="./../DATS/xats2cz.dats"
+_(*DATS*)="./../DATS/xats2cm.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -74,24 +74,24 @@ fprintln
 (* ****** ****** *)
 //
 #implfun
-xats2cz_i1dcl
+xats2cm_i1dcl
   (env0, idcl) =
 let
 //
 val
-filr = envx2cz_filr$get(env0)
+filr = envx2cm_filr$get(env0)
 in//let
 //
 strnfpr(filr, ";; ");
 i1dcl_fprint(idcl,filr);fprintln(filr)
 //
-end(*let*)//end-of-[xats2cz_i1dcl(...)]
+end(*let*)//end-of-[xats2cm_i1dcl(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2cz_i1valdcl
+xats2cm_i1valdcl
   (env0, ival) = let
 //
 (* ****** ****** *)
@@ -104,15 +104,15 @@ i1valdcl_tdxp$get(ival)
 (* ****** ****** *)
 //
 val (  ) =
-xats2cz_i1bnd(env0, dpat)
+xats2cm_i1bnd(env0, dpat)
 //
 (* ****** ****** *)
 //
 (*
 val (  ) = prerrsln
-("xats2cz_i1valdcl: dpat = ", dpat)
+("xats2cm_i1valdcl: dpat = ", dpat)
 val (  ) = prerrsln
-("xats2cz_i1valdcl: tdxp = ", tdxp)
+("xats2cm_i1valdcl: tdxp = ", tdxp)
 *)
 //
 (* ****** ****** *)
@@ -129,7 +129,7 @@ TEQI1CMPsome
 let
 val (  ) =
 (
-  xats2cz_i1cmp(env0, icmp))
+  xats2cm_i1cmp(env0, icmp))
 end//let
 ) (*case+*) // end-of-( teqi1exp )
 //
@@ -141,21 +141,21 @@ end where
 val (  ) =
 let
 val filr =
-envx2cz_filr$get(env0)
+envx2cm_filr$get(env0)
 val nind =
-envx2cz_nind$get(env0)
+envx2cm_nind$get(env0)
 in//let
 (
 nindstrnfpr(filr, nind, ";; I1VALDCL\n"))
 end//let
 //
-}(*where*)//end[xats2cz_i1valdcl(env0,ival)]
+}(*where*)//end[xats2cm_i1valdcl(env0,ival)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2cz_i1vardcl
+xats2cm_i1vardcl
   (env0, ivar) = let
 //
 (* ****** ****** *)
@@ -168,15 +168,15 @@ i1vardcl_dini$get(ivar)
 (* ****** ****** *)
 //
 val (  ) =
-xats2cz_i1bnd(env0, dpid)
+xats2cm_i1bnd(env0, dpid)
 //
 (* ****** ****** *)
 //
 (*
 val (  ) = prerrsln
-("xats2cz_i1vardcl: dvar = ", dvar)
+("xats2cm_i1vardcl: dvar = ", dvar)
 val (  ) = prerrsln
-("xats2cz_i1vardcl: dini = ", tdxp)
+("xats2cm_i1vardcl: dini = ", tdxp)
 *)
 //
 (* ****** ****** *)
@@ -193,7 +193,7 @@ TEQI1CMPsome
 let
 val (  ) =
 (
-  xats2cz_i1cmp(env0, icmp))
+  xats2cm_i1cmp(env0, icmp))
 end//let
 ) (*case+*) // end-of-( teqi1exp )
 //
@@ -205,21 +205,21 @@ end where
 val (  ) =
 let
 val filr =
-envx2cz_filr$get(env0)
+envx2cm_filr$get(env0)
 val nind =
-envx2cz_nind$get(env0)
+envx2cm_nind$get(env0)
 in//let
 (
 nindstrnfpr(filr, nind, "// I1VARDCL\n"))
 end//let
 //
-}(*where*)//end-of-[xats2cz_i1vardcl(env0,ival)]
+}(*where*)//end-of-[xats2cm_i1vardcl(env0,ival)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2cz_i1fundcl
+xats2cm_i1fundcl
   (env0, ifun) = let
 //
 (* ****** ****** *)
@@ -236,9 +236,9 @@ i1fundcl_tdxp$get(ifun)
 val (  ) =
 let
 val filr =
-envx2cz_filr$get(env0)
+envx2cm_filr$get(env0)
 val nind =
-envx2cz_nind$get(env0)
+envx2cm_nind$get(env0)
 in//let
 nindfpr(filr,nind);
 strnfpr(filr,";; ");
@@ -249,22 +249,22 @@ end//let
 //
 (*
 val (  ) = prerrsln
-("xats2cz_i1fundcl: dvar = ", dvar)
+("xats2cm_i1fundcl: dvar = ", dvar)
 val (  ) = prerrsln
-("xats2cz_i1fundcl: fjas = ", fjas)
+("xats2cm_i1fundcl: fjas = ", fjas)
 val (  ) = prerrsln
-("xats2cz_i1fundcl: tdxp = ", tdxp)
+("xats2cm_i1fundcl: tdxp = ", tdxp)
 *)
 //
 (* ****** ****** *)
 //
 val (  ) = // enter
 (
-  envx2cz_pshlam0(env0) )
+  envx2cm_pshlam0(env0) )
 //
 val (  ) =
 (
-xats2cz_fjarglst(env0,fjas)
+xats2cm_fjarglst(env0,fjas)
 )
 //
 val (  ) =
@@ -279,11 +279,11 @@ TEQI1CMPsome
 let
 val (  ) =
 (
-  xats2cz_i1cmp(env0, icmp) )
+  xats2cm_i1cmp(env0, icmp) )
 end // end-of-[let]
 ) (*case+*) // end-of-( teqi1exp )
 //
-val (  ) = envx2cz_poplam0(env0)//leave
+val (  ) = envx2cm_poplam0(env0)//leave
 //
 end where
 {
@@ -291,56 +291,56 @@ end where
 val (  ) =
 let
 val filr =
-envx2cz_filr$get(env0)
+envx2cm_filr$get(env0)
 val nind =
-envx2cz_nind$get(env0)
+envx2cm_nind$get(env0)
 in//let
 (
 nindstrnfpr(filr, nind, ";; I1FUNDCL\n"))
 end//let
 //
-#define xats2cz_fjarglst = xats2js_fjarglst
+#define xats2cm_fjarglst = xats2js_fjarglst
 //
-}(*where*)//end-of-[xats2cz_i1fundcl(env0,ifun)]
+}(*where*)//end-of-[xats2cm_i1fundcl(env0,ifun)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2cz_i1dclist
+xats2cm_i1dclist
   (env0, dcls) =
 (
-  list_xats2cz_fnp(env0, dcls, xats2cz_i1dcl))
+  list_xats2cm_fnp(env0, dcls, xats2cm_i1dcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2cz_i1valdclist
+xats2cm_i1valdclist
   (env0, i1vs) =
 (
-  list_xats2cz_fnp(env0, i1vs, xats2cz_i1valdcl))
+  list_xats2cm_fnp(env0, i1vs, xats2cm_i1valdcl))
 //
 (* ****** ****** *)
 //
 #implfun
-xats2cz_i1vardclist
+xats2cm_i1vardclist
   (env0, i1vs) =
 (
-  list_xats2cz_fnp(env0, i1vs, xats2cz_i1vardcl))
+  list_xats2cm_fnp(env0, i1vs, xats2cm_i1vardcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2cz_i1fundclist
+xats2cm_i1fundclist
   (env0, i1fs) =
 (
-  list_xats2cz_fnp(env0, i1fs, xats2cz_i1fundcl))
+  list_xats2cm_fnp(env0, i1fs, xats2cm_i1fundcl))
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cz_srcgen1_DATS_xats2cz_decl00.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cm_srcgen1_DATS_xats2cm_decl00.dats] *)
 (***********************************************************************)
