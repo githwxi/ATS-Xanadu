@@ -29,51 +29,50 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 ;; Author: Hongwei Xi
-;; Sun Jun 28 10:15:28 AM EDT 2026
+;; Sun Jun 28 09:48:20 AM EDT 2026
 ;; Authoremail: gmhwxiATgmailDOTcom
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
-(define (XATS2CM_sint_neg i1) (- i1))
+(define
+ (XATS2CM_char_lt c1 c2) (< c1 c2)
+(define
+ (XATS2CM_char_gt c1 c2) (> c1 c2)
+(define
+ (XATS2CM_char_eq c1 c2) (= c1 c2)
+;;
+(define
+ (XATS2CM_char_lte c1 c2) (<= c1 c2))
+(define
+ (XATS2CM_char_gte c1 c2) (>= c1 c2))
+(define
+ (XATS2CM_char_neq c1 c2) (not (= c1 c2))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_sint_lt_sint i1 i2) (< i1 i2))
+ (XATS2CM_char_sub_char c1 c2) (- c1 c2))
 (define
- (XATS2CM_sint_gt_sint i1 i2) (> i1 i2))
-(define
- (XATS2CM_sint_eq_sint i1 i2) (= i1 i2))
-;;
-(define
- (XATS2CM_sint_lte_sint i1 i2) (<= i1 i2))
-(define
- (XATS2CM_sint_gte_sint i1 i2) (>= i1 i2))
-(define
- (XATS2CM_sint_neq_sint i1 i2) (not (= i1 i2))
+ (XATS2CM_char_add_sint c1 i2) (modulo (+ c1 i2)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_sint_add_sint i1 i2) (+ i1 i2))
-(define
- (XATS2CM_sint_sub_sint i1 i2) (- i1 i2))
-(define
- (XATS2CM_sint_mul_sint i1 i2) (* i1 i2))
-;;
-(define
- (XATS2CM_sint_mod_sint i1 i2) (modulo i1 i2))
-(define
- (XATS2CM_sint_div_sint i1 i2) (quotient i1 i2))
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;;
-(define
- (XATS2CM_sint_print i0) (XATS2CM_strn_print (number->string i0)))
+ (XATS2CM_char_print c0)
+ (XATS2CM_strn_print (string (integer->char c0))))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;; end of [ATS3/XANADU_prelude_DATS_CATS_CM_gint000.cats]
+;;
+;; HX-2026-01-17:
+;; Sat Jan 17 09:51:13 PM EST 2026
+;;
+(define (XATS2CM_char_make_sint i0) i0)
+(define (XATS2CM_sint_make_char ch) ch)
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;; end of [ATS3/XANADU_prelude_DATS_CATS_CM_char000.cats]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.

@@ -39,96 +39,96 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 <(*tmp*)>
-bool_lt
-(b1, b2) =
+char_lt
+(c1, c2) =
 (
-XATS2CM_bool_lt
-  (b1, b2)) where
+XATS2PY_char_lt
+  (c1, c2)) where
 {
 #extern
 fun
-XATS2CM_bool_lt
-(b1: bool, b2: bool): bool = $extnam()
+XATS2PY_char_lt
+(c1: char, c2: char): bool = $extnam()
 }
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-bool_gt
-(b1, b2) =
+char_gt
+(c1, c2) =
 (
-XATS2CM_bool_gt
-  (b1, b2)) where
+XATS2PY_char_gt
+  (c1, c2)) where
 {
 #extern
 fun
-XATS2CM_bool_gt
-(b1: bool, b2: bool): bool = $extnam()
+XATS2PY_char_gt
+(c1: char, c2: char): bool = $extnam()
 }
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-bool_eq
-(b1, b2) =
+char_eq
+(c1, c2) =
 (
-XATS2CM_bool_eq
-  (b1, b2)) where
+XATS2PY_char_eq
+  (c1, c2)) where
 {
 #extern
 fun
-XATS2CM_bool_eq
-(b1: bool, b2: bool): bool = $extnam()
+XATS2PY_char_eq
+(c1: char, c2: char): bool = $extnam()
 }
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-bool_lte
-(b1, b2) =
+char_lte
+(c1, c2) =
 (
-XATS2CM_bool_lte
-  (b1, b2)) where
+XATS2PY_char_lte
+  (c1, c2)) where
 {
 #extern
 fun
-XATS2CM_bool_lte
-(b1: bool, b2: bool): bool = $extnam()
+XATS2PY_char_lte
+(c1: char, c2: char): bool = $extnam()
 }
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-bool_gte
-(b1, b2) =
+char_gte
+(c1, c2) =
 (
-XATS2CM_bool_gte
-  (b1, b2)) where
+XATS2PY_char_gte
+  (c1, c2)) where
 {
 #extern
 fun
-XATS2CM_bool_gte
-(b1: bool, b2: bool): bool = $extnam()
+XATS2PY_char_gte
+(c1: char, c2: char): bool = $extnam()
 }
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-bool_neq
-(b1, b2) =
+char_neq
+(c1, c2) =
 (
-XATS2CM_bool_neq
-  (b1, b2)) where
+XATS2PY_char_neq
+  (c1, c2)) where
 {
 #extern
 fun
-XATS2CM_bool_neq
-(b1: bool, b2: bool): bool = $extnam()
+XATS2PY_char_neq
+(c1: char, c2: char): bool = $extnam()
 }
 //
 (* ****** ****** *)
@@ -136,15 +136,91 @@ XATS2CM_bool_neq
 //
 #impltmp
 <(*tmp*)>
-bool_print(b0) =
+char_add$sint
+  (c1, i2) =
 (
-if b0
-then strn_print<>("true")
-else strn_print<>("false"))//end(impl)
+XATS2PY_char_add$sint
+  (c1, i2)) where
+{
+#extern
+fun
+XATS2PY_char_add$sint
+(c1: char, i2: sint): char = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_sub$char
+  (c1, c2) =
+(
+XATS2PY_char_sub$char
+  (c1, c2)) where
+{
+#extern
+fun
+XATS2PY_char_sub$char
+(c1: char, c2: char): sint = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_print
+  ( c0 ) =
+(
+XATS2PY_char_print
+  ( c0 )) where
+{
+#extern
+fun
+XATS2PY_char_print(c0: char): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-17:
+Sat Jan 17 09:47:35 PM EST 2026
+*)
+#impltmp
+<(*tmp*)>
+sint_make_char(ch) =
+(
+XATS2PY_sint_make_char(ch))
+where
+{
+#extern
+fun
+XATS2PY_sint_make_char(ch: char): sint = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-17:
+Sat Jan 17 09:47:35 PM EST 2026
+*)
+#impltmp
+<(*tmp*)>
+char_make_sint(i0) =
+(
+XATS2PY_char_make_sint(i0))
+where
+{
+#extern
+fun
+XATS2PY_char_make_sint(i0: sint): char = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_CM_bool000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_char000.dats] *)
 (***********************************************************************)
