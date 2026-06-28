@@ -55,6 +55,20 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+d2concm1(
+filr: FILR, dcon: d2con): void
+fun
+d2cstcm1(
+filr: FILR, dcst: d2cst): void
+//
+fun
+d2varcm1(
+filr: FILR, dvar: d2var): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 list_cm1emit_fnp
 (
@@ -83,6 +97,13 @@ i1parsed_cm1emit
 fun
 i1dcl_cm1emit
 (idcl: i1dcl, env0: !envx2cm): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fjarglst_cm1emit
+(fjas: fjarglst, env0: !envx2cm): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
