@@ -29,45 +29,67 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 ;; Author: Hongwei Xi
-;; Sun Jun 28 09:48:20 AM EDT 2026
+;; Sun Jun 28 10:31:58 AM EDT 2026
 ;; Authoremail: gmhwxiATgmailDOTcom
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
-#|
-def XATS2CM_bool_lt(b1, b2):
-  return (b1 < b2) ;; HX: lt
-def XATS2CM_bool_gt(b1, b2):
-  return (b1 > b2) ;; HX: gt
-def XATS2CM_bool_eq(b1, b2):
-  return (b1 == b2) ;; HX: eq
-def XATS2CM_bool_lte(b1, b2):
-  return (b1 <= b2) ;; HX: lte
-def XATS2CM_bool_gte(b1, b2):
-  return (b1 >= b2) ;; HX: gte
-def XATS2CM_bool_neq(b1, b2):
-  return (b1 != b2) ;; HX: neq
-|#
+(define
+ (XATS2CM_dflt_neg df) (- df))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_bool_lt b1 b2) (if b1 #f b2))
-(define
- (XATS2CM_bool_gt b1 b2) (if b2 #f b1))
-(define
- (XATS2CM_bool_eq b1 b2) (if b1 b2 (not b2)))
+ (XATS2CM_dflt_abs df) (abs df))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_bool_lte b1 b2) (if b1 b2 #t))
+ (XATS2CM_dflt_sqrt df) (sqrt df)
 (define
- (XATS2CM_bool_gte b1 b2) (if b2 b1 #t))
+ (XATS2CM_dflt_cbrt df) (expt df 1.0/3.0))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
 (define
- (XATS2CM_bool_neq b1 b2) (if b1 (not b2) b2))
+ (XATS2CM_dflt_lt_dflt f1 f2) (< f1 f2))
+(define
+ (XATS2CM_dflt_gt_dflt f1 f2) (> f1 f2))
+(define
+ (XATS2CM_dflt_eq_dflt f1 f2) (= f1 f2))
+;;
+(define
+ (XATS2CM_dflt_lte_dflt f1 f2) (<= f1 f2))
+(define
+ (XATS2CM_dflt_gte_dflt f1 f2) (>= f1 f2))
+(define
+ (XATS2CM_dflt_neq_dflt f1 f2) (not (= f1 f2)))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define
+ (XATS2CM_dflt_add_dflt f1 f2) (+ f1 f2))
+(define
+ (XATS2CM_dflt_sub_dflt f1 f2) (- f1 f2))
+(define
+ (XATS2CM_dflt_mul_dflt f1 f2) (* f1 f2))
+;;
+(define
+ (XATS2CM_dflt_div_dflt f1 f2) (/ f1 f2))
+(define
+ (XATS2CM_dflt_mod_dflt f1 f2) (- f1 (* f2 (floor (/ f1 f2)))))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;; end of [ATS3/XANADU_prelude_DATS_CATS_CM_bool000.cats]
+;;
+(define (XATS2CM_dflt_ceil df) (ceiling df)
+(define (XATS2CM_dflt_floor df) (floor df)
+(define (XATS2CM_dflt_round df) (round df)
+(define (XATS2CM_dflt_trunc df) (truncate df)
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;; end of [ATS3/XANADU_prelude_DATS_CATS_CM_gflt000.cats]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
