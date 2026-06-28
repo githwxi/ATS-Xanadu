@@ -136,20 +136,25 @@ l1i1vpy1
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#vwtpdef envx2py = envx2js
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <x0:t0>
 list_py1emit_fnp
 ( e1:
-! envx2js
+! envx2py
 , xs: list(x0)
-, (!envx2js, x0) -> void): void
+, (!envx2py, x0) -> void): void
 fun
 <x0:t0>
 optn_py1emit_fnp
 ( e1:
-! envx2js
+! envx2py
 , xs: optn(x0)
-, (!envx2js, x0) -> void): void
+, (!envx2py, x0) -> void): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -163,17 +168,17 @@ py1emit_i1parsed
 //
 fun
 py1emit_i1let
-(env0: !envx2js, ilet: i1let): void
+(env0: !envx2py, ilet: i1let): void
 //
 (* ****** ****** *)
 //
 fun
 py1emit_i1bnd
-(env0: !envx2js, ibnd: i1bnd): void
+(env0: !envx2py, ibnd: i1bnd): void
 //
 fun
 py1emit_i1cmp
-(env0: !envx2js, icmp: i1cmp): void
+(env0: !envx2py, icmp: i1cmp): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -181,7 +186,7 @@ py1emit_i1cmp
 (*
 fun
 py1emit_i1gpt
-(env0: !envx2js, igpt: i1gpt): void
+(env0: !envx2py, igpt: i1gpt): void
 *)
 //
 (* ****** ****** *)
@@ -189,14 +194,14 @@ py1emit_i1gpt
 //
 fun
 py1emit_i1dcl
-(env0: !envx2js, dcl0: i1dcl): void
+(env0: !envx2py, dcl0: i1dcl): void
 //
 fun
 py1emit_dimpl
-(env0: !envx2js, dimp: dimpl): void
+(env0: !envx2py, dimp: dimpl): void
 fun
 py1emit_t1imp
-(env0: !envx2js, timp: t1imp): void
+(env0: !envx2py, timp: t1imp): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -204,30 +209,30 @@ py1emit_t1imp
 (*
 fun
 py1emit_i1valist
-(env0: !envx2js, i1vs: i1valist): void
+(env0: !envx2py, i1vs: i1valist): void
 *)
 //
 fun
 py1emit_i1letlst
-(env0: !envx2js, i1vs: i1letlst): void
+(env0: !envx2py, i1vs: i1letlst): void
 //
 fun
 py1emit_i1cmplst
-(env0: !envx2js, i1fs: i1cmplst): void
+(env0: !envx2py, i1fs: i1cmplst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 py1emit_fjarglst
-(env0: !envx2js, fjas: fjarglst): void
+(env0: !envx2py, fjas: fjarglst): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
 fun
 py1emit_i1clslst
-(env0: !envx2js, icls: i1clslst): void
+(env0: !envx2py, icls: i1clslst): void
 *)
 //
 (* ****** ****** *)
@@ -235,42 +240,42 @@ py1emit_i1clslst
 //
 fun
 py1emit_i1dclist
-(env0: !envx2js, dcls: i1dclist): void
+(env0: !envx2py, dcls: i1dclist): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 py1emit_i1valdcl
-(env0: !envx2js, ival: i1valdcl): void
+(env0: !envx2py, ival: i1valdcl): void
 fun
 py1emit_i1vardcl
-(env0: !envx2js, ivar: i1vardcl): void
+(env0: !envx2py, ivar: i1vardcl): void
 //
 fun
 py1emit_i1fundcl
-(env0: !envx2js, ifun: i1fundcl): void
+(env0: !envx2py, ifun: i1fundcl): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 py1emit_i1valdclist
-(env0: !envx2js, i1vs: i1valdclist): void
+(env0: !envx2py, i1vs: i1valdclist): void
 fun
 py1emit_i1vardclist
-(env0: !envx2js, i1vs: i1vardclist): void
+(env0: !envx2py, i1vs: i1vardclist): void
 //
 fun
 py1emit_i1fundclist
-(env0: !envx2js, i1fs: i1fundclist): void
+(env0: !envx2py, i1fs: i1fundclist): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 py1emit_i1dclistopt
-(env0: !envx2js, dopt: i1dclistopt): void
+(env0: !envx2py, dopt: i1dclistopt): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

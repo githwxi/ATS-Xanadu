@@ -26,109 +26,125 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(*
-Wed Jun 24 11:23:49 AM EDT 2026
-*)
+Sun Jun 28 11:52:26 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#include
-"./../../..\
-/HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-(* ****** ****** *)
 //
-#include
-"./../HATS/libxats2js.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#vwtpdef envx2cm = envx2js
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-list_cm1emit_fnp
+#impltmp
+<(*tmp*)>
+bool_lt
+(b1, b2) =
 (
-xs: list(x0),
-e1: !envx2cm,
-fopr: (x0, !envx2cm)->void): void
-//
+XATS2PL_bool_lt
+  (b1, b2)) where
+{
+#extern
 fun
-<x0:t0>
-optn_cm1emit_fnp
+XATS2PL_bool_lt
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_gt
+(b1, b2) =
 (
-xs: optn(x0),
-e1: !envx2cm,
-fopr: (x0, !envx2cm)->void): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
+XATS2PL_bool_gt
+  (b1, b2)) where
+{
+#extern
 fun
-i1parsed_cm1emit
-(ipar: i1parsed, filr: FILR): void
+XATS2PL_bool_gt
+(b1: bool, b2: bool): bool = $extnam()
+}
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+bool_eq
+(b1, b2) =
+(
+XATS2PL_bool_eq
+  (b1, b2)) where
+{
+#extern
 fun
-i1dcl_cm1emit
-(idcl: i1dcl, env0: !envx2cm): void
+XATS2PL_bool_eq
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_lte
+(b1, b2) =
+(
+XATS2PL_bool_lte
+  (b1, b2)) where
+{
+#extern
+fun
+XATS2PL_bool_lte
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_gte
+(b1, b2) =
+(
+XATS2PL_bool_gte
+  (b1, b2)) where
+{
+#extern
+fun
+XATS2PL_bool_gte
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_neq
+(b1, b2) =
+(
+XATS2PL_bool_neq
+  (b1, b2)) where
+{
+#extern
+fun
+XATS2PL_bool_neq
+(b1: bool, b2: bool): bool = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-i1dclist_cm1emit
-(dcls: i1dclist, env0: !envx2cm): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-i1valdcl_cm1emit
-(ival: i1valdcl, env0: !envx2cm): void
-fun
-i1vardcl_cm1emit
-(ivar: i1vardcl, env0: !envx2cm): void
-//
-fun
-i1fundcl_cm1emit
-(ifun: i1fundcl, env0: !envx2cm): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-i1valdclist_cm1emit
-(i1vs: i1valdclist, env0: !envx2cm): void
-fun
-i1vardclist_cm1emit
-(i1vs: i1vardclist, env0: !envx2cm): void
-//
-fun
-i1fundclist_cm1emit
-(i1fs: i1fundclist, env0: !envx2cm): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-i1dclistopt_cm1emit
-(dopt: i1dclistopt, env0: !envx2cm): void
+#impltmp
+<(*tmp*)>
+bool_print(b0) =
+(
+if b0
+then strn_print<>("true")
+else strn_print<>("false"))//end(impl)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen1_xats2cm_srcgen1_SATS_cm1emit.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_PL_bool000.dats] *)
 (***********************************************************************)
