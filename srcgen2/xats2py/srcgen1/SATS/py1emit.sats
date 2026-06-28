@@ -68,53 +68,53 @@ d2varpy1
 (* ****** ****** *)
 //
 fun
-i0i00py1
-(filr:FILR,int0:sint): void
+i0i00py1(
+filr:FILR,int0:sint): void
 fun
-i0b00py1
-(filr:FILR,btf0:bool): void
+i0b00py1(
+filr:FILR,btf0:bool): void
 fun
-i0c00py1
-(filr:FILR,chr0:char): void
+i0c00py1(
+filr:FILR,chr0:char): void
 fun
-i0f00py1
-(filr:FILR,flt0:dflt): void
+i0f00py1(
+filr:FILR,flt0:dflt): void
 fun
-i0s00py1
-(filr:FILR,str0:strn): void
+i0s00py1(
+filr:FILR,str0:strn): void
 //
 (* ****** ****** *)
 //
 fun
-i0intpy1
-(filr:FILR,tint:token): void
+i0intpy1(
+filr:FILR,tint:token): void
 fun
-i0btfpy1
-(filr:FILR,btf0:sym_t): void
+i0btfpy1(
+filr:FILR,btf0:sym_t): void
 fun
-i0chrpy1
-(filr:FILR,tchr:token): void
+i0chrpy1(
+filr:FILR,tchr:token): void
 fun
-i0fltpy1
-(filr:FILR,tflt:token): void
+i0fltpy1(
+filr:FILR,tflt:token): void
 fun
-i0strpy1
-(filr:FILR,tstr:token): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-i1tnmpy1
-(filr:FILR,itnm:i1tnm): void
+i0strpy1(
+filr:FILR,tstr:token): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i0pckpy1
-(filr:FILR
-,ival:i1val,ipat:i0pat): void
+i1tnmpy1(
+filr:FILR,itnm:i1tnm): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0pckpy1(
+filr:FILR,
+ival:i1val,ipat:i0pat): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

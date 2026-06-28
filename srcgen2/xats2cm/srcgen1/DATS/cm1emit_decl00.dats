@@ -138,7 +138,6 @@ dimplfpr
  dimpl_fprint(dimp, filr))//endfun
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 #implfun
@@ -217,9 +216,9 @@ end where
 //
 fun
 f0_extern
-( env0:
-! envx2js
-, dcl0: i1dcl): void =
+(
+dcl0: i1dcl,
+env0: envx2js): void =
 let
 //
 val filr = env0.filr()
@@ -256,8 +255,9 @@ end(*let*)//end-of-[f0_extern(dcl0,env0)]
 //
 fun
 f0_static
-( dcl0: i1dcl
-, env0: envx2js): void =
+(
+dcl0: i1dcl,
+env0: envx2js): void =
 let
 //
 val filr = env0.filr()
@@ -284,7 +284,7 @@ end//let
 //
 val (  ) =
 (
-  xats2cm_i1dcl( dcl1, env0 ))
+  xats2cm_i1dcl( env0, dcl1 ))
 //
 end(*let*)//end-of-[f0_static(dcl0,env0)]
 //
@@ -293,8 +293,9 @@ end(*let*)//end-of-[f0_static(dcl0,env0)]
 //
 fun
 f0_dclst0
-( dcl0: i1dcl
-, env0: envx2js): void =
+(
+dcl0: i1dcl,
+env0: envx2js): void =
 let
 //
 val-
@@ -352,8 +353,9 @@ end(*let*)//end-of-[f0_local0(dcl0,env0)]
 //
 fun
 f0_include
-( dcl0: i1dcl
-, env0: envx2js): void =
+(
+dcl0: i1dcl,
+env0: envx2js): void =
 let
 //
 val filr = env0.filr()
@@ -394,8 +396,9 @@ end(*let*)//end-of-[f0_include(dcl0,env0)]
 //
 fun
 f0_valdclst
-( dcl0: i1dcl
-, env0: envx2js): void =
+(
+dcl0: i1dcl,
+env0: envx2js): void =
 let
 //
 val filr =
@@ -439,7 +442,7 @@ if
 prvq
 then
 (
- xats2cm_i1valdclist(i1vs, env0))
+ xats2cm_i1valdclist(env0, i1vs))
 else
 (
  i1valdclist_cm1emit(i1vs, env0))
@@ -450,8 +453,9 @@ end(*let*)//end-of-[f0_valdclst(dcl0,env0)]
 //
 fun
 f0_vardclst
-( dcl0: i1dcl
-, env0: envx2js): void =
+(
+dcl0: i1dcl,
+env0: envx2js): void =
 let
 //
 val filr = env0.filr()
@@ -486,8 +490,9 @@ end(*let*)//end of [f0_vardclst(dcl0,env0)]
 //
 fun
 f0_fundclst
-( dcl0: i1dcl
-, env0: envx2js): void =
+(
+dcl0: i1dcl,
+env0: envx2js): void =
 let
 //
 val filr =
@@ -531,7 +536,7 @@ if
 prfq
 then
 (
- xats2cm_i1fundclist(i1fs, env0))
+ xats2cm_i1fundclist(env0, i1fs))
 else
 (
  i1fundclist_cm1emit(i1fs, env0))
@@ -543,8 +548,9 @@ end(*let*)//end-of-[f0_fundclst(dcl0,env0)]
 //
 fun
 f0_implmnt0
-( dcl0: i1dcl
-, env0: envx2js): void =
+(
+dcl0: i1dcl,
+env0: envx2js): void =
 let
 //
 val filr = env0.filr()
@@ -575,24 +581,11 @@ let
 //
 fun
 f1_i1cmpret
-( env0:
-! envx2js
-, icmp: i1cmp): void =
+( icmp: i1cmp
+, env0: !envx2js): void =
 let
-val filr =
 (
-envx2js_filr$get(env0))
-val nind =
-(
-envx2js_nind$get(env0))
-in//let
-let
-val ival = icmp.ival((*0*))
-val (  ) = i1cmp_cm1emit(icmp, env0)
-in//let
-nindstrnfpr
-(filr, nind, "return ");i1valcm1(filr, ival);fprintln(filr)
-end//let
+  i1cmp_cm1emit(icmp, env0))
 end//let//end-of-[f1_i1cmpret(...)]
 //
 in//let
@@ -674,8 +667,9 @@ end(*let*)//end-of-[f0_implmnt0(dcl0,env0)]
 //
 fun
 f0_otherwise
-( dcl0: i1dcl
-, env0: envx2js): void =
+(
+dcl0: i1dcl,
+env0: envx2js): void =
 let
 //
 val loc0 =
@@ -705,6 +699,7 @@ end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
 }(*where*)//end-of-[i1dcl_cm1emit(dcl0,env0)]
 //
 (* ****** ****** *)
+////
 (* ****** ****** *)
 //
 #implfun
