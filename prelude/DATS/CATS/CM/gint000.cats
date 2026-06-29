@@ -51,7 +51,7 @@
 (define
  (XATS2CM_sint_gte_sint i1 i2) (>= i1 i2))
 (define
- (XATS2CM_sint_neq_sint i1 i2) (not (= i1 i2))
+ (XATS2CM_sint_neq_sint i1 i2) (not (= i1 i2)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;

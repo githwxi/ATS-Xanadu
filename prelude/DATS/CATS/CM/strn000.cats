@@ -29,67 +29,37 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 ;; Author: Hongwei Xi
-;; Sun Jun 28 10:31:58 AM EDT 2026
+;; Sun Jun 28 08:00:53 PM EDT 2026
 ;; Authoremail: gmhwxiATgmailDOTcom
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_dflt_neg df) (- df))
+ (XATS2CM_strn_cmp x1 x2)
+ (cond
+  ((string>? x1 x2) 1)
+  ((string<? x1 x2) -1) (else 0)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_dflt_abs df) (abs df))
+ (XATS2CM_strn_length cs) (string-length xs))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define (XATS2CM_strn_print cs) (display cs))
+(define (XATS000_strn_print cs) (display cs))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_dflt_sqrt df) (sqrt df))
+ (XATS2CM_strn_get_at_raw cs i0) (string-ref cs i0))
 (define
- (XATS2CM_dflt_cbrt df) (expt df 1.0/3.0))
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;;
-(define
- (XATS2CM_dflt_lt_dflt f1 f2) (< f1 f2))
-(define
- (XATS2CM_dflt_gt_dflt f1 f2) (> f1 f2))
-(define
- (XATS2CM_dflt_eq_dflt f1 f2) (= f1 f2))
-;;
-(define
- (XATS2CM_dflt_lte_dflt f1 f2) (<= f1 f2))
-(define
- (XATS2CM_dflt_gte_dflt f1 f2) (>= f1 f2))
-(define
- (XATS2CM_dflt_neq_dflt f1 f2) (not (= f1 f2)))
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;;
-(define
- (XATS2CM_dflt_add_dflt f1 f2) (+ f1 f2))
-(define
- (XATS2CM_dflt_sub_dflt f1 f2) (- f1 f2))
-(define
- (XATS2CM_dflt_mul_dflt f1 f2) (* f1 f2))
-;;
-(define
- (XATS2CM_dflt_div_dflt f1 f2) (/ f1 f2))
-(define
- (XATS2CM_dflt_mod_dflt f1 f2) (- f1 (* f2 (floor (/ f1 f2)))))
+ (XATS000_strn_get_at_raw cs i0) (string-ref cs i0))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;;
-(define (XATS2CM_dflt_ceil df) (ceiling df))
-(define (XATS2CM_dflt_floor df) (floor df))
-(define (XATS2CM_dflt_round df) (round df))
-(define (XATS2CM_dflt_trunc df) (truncate df))
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;; end of [ATS3/XANADU_prelude_DATS_CATS_CM_gflt000.cats]
+;; end of [ATS3/XANADU_prelude_DATS_CATS_CM_strn000.cats]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
