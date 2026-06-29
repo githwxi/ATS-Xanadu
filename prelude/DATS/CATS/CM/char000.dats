@@ -42,12 +42,12 @@ Authoremail: gmhwxiATgmailDOTcom
 char_lt
 (c1, c2) =
 (
-XATS2PY_char_lt
+XATS2CM_char_lt
   (c1, c2)) where
 {
 #extern
 fun
-XATS2PY_char_lt
+XATS2CM_char_lt
 (c1: char, c2: char): bool = $extnam()
 }
 //
@@ -58,12 +58,12 @@ XATS2PY_char_lt
 char_gt
 (c1, c2) =
 (
-XATS2PY_char_gt
+XATS2CM_char_gt
   (c1, c2)) where
 {
 #extern
 fun
-XATS2PY_char_gt
+XATS2CM_char_gt
 (c1: char, c2: char): bool = $extnam()
 }
 //
@@ -74,12 +74,12 @@ XATS2PY_char_gt
 char_eq
 (c1, c2) =
 (
-XATS2PY_char_eq
+XATS2CM_char_eq
   (c1, c2)) where
 {
 #extern
 fun
-XATS2PY_char_eq
+XATS2CM_char_eq
 (c1: char, c2: char): bool = $extnam()
 }
 //
@@ -90,12 +90,12 @@ XATS2PY_char_eq
 char_lte
 (c1, c2) =
 (
-XATS2PY_char_lte
+XATS2CM_char_lte
   (c1, c2)) where
 {
 #extern
 fun
-XATS2PY_char_lte
+XATS2CM_char_lte
 (c1: char, c2: char): bool = $extnam()
 }
 //
@@ -106,12 +106,12 @@ XATS2PY_char_lte
 char_gte
 (c1, c2) =
 (
-XATS2PY_char_gte
+XATS2CM_char_gte
   (c1, c2)) where
 {
 #extern
 fun
-XATS2PY_char_gte
+XATS2CM_char_gte
 (c1: char, c2: char): bool = $extnam()
 }
 //
@@ -122,12 +122,12 @@ XATS2PY_char_gte
 char_neq
 (c1, c2) =
 (
-XATS2PY_char_neq
+XATS2CM_char_neq
   (c1, c2)) where
 {
 #extern
 fun
-XATS2PY_char_neq
+XATS2CM_char_neq
 (c1: char, c2: char): bool = $extnam()
 }
 //
@@ -139,12 +139,12 @@ XATS2PY_char_neq
 char_add$sint
   (c1, i2) =
 (
-XATS2PY_char_add$sint
+XATS2CM_char_add$sint
   (c1, i2)) where
 {
 #extern
 fun
-XATS2PY_char_add$sint
+XATS2CM_char_add$sint
 (c1: char, i2: sint): char = $extnam()
 }
 //
@@ -155,12 +155,12 @@ XATS2PY_char_add$sint
 char_sub$char
   (c1, c2) =
 (
-XATS2PY_char_sub$char
+XATS2CM_char_sub$char
   (c1, c2)) where
 {
 #extern
 fun
-XATS2PY_char_sub$char
+XATS2CM_char_sub$char
 (c1: char, c2: char): sint = $extnam()
 }
 //
@@ -172,12 +172,12 @@ XATS2PY_char_sub$char
 char_print
   ( c0 ) =
 (
-XATS2PY_char_print
+XATS2CM_char_print
   ( c0 )) where
 {
 #extern
 fun
-XATS2PY_char_print(c0: char): void = $extnam()
+XATS2CM_char_print(c0: char): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -191,12 +191,12 @@ Sat Jan 17 09:47:35 PM EST 2026
 <(*tmp*)>
 sint_make_char(ch) =
 (
-XATS2PY_sint_make_char(ch))
+XATS2CM_sint_make_char(ch))
 where
 {
 #extern
 fun
-XATS2PY_sint_make_char(ch: char): sint = $extnam()
+XATS2CM_sint_make_char(ch: char): sint = $extnam()
 }
 //
 (* ****** ****** *)
@@ -210,17 +210,17 @@ Sat Jan 17 09:47:35 PM EST 2026
 <(*tmp*)>
 char_make_sint(i0) =
 (
-XATS2PY_char_make_sint(i0))
+XATS2CM_char_make_sint(i0))
 where
 {
 #extern
 fun
-XATS2PY_char_make_sint(i0: sint): char = $extnam()
+XATS2CM_char_make_sint(i0: sint): char = $extnam()
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_char000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_CM_char000.dats] *)
 (***********************************************************************)
