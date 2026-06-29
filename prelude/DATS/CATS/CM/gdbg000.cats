@@ -6,7 +6,7 @@
 
 ;;
 ;; ATS/Xanadu - Unleashing the Potential of Types!
-;; Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
+;; Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
 ;; All rights reserved
 ;;
 ;; ATS is free software;  you can  redistribute it and/or modify it under
@@ -29,37 +29,19 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 ;; Author: Hongwei Xi
-;; Sun Jun 28 08:00:53 PM EDT 2026
+;; Mon Jun 29 08:17:01 AM EDT 2026
 ;; Authoremail: gmhwxiATgmailDOTcom
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_strn_cmp x1 x2)
- (cond
-  ((string<? x1 x2) -1)
-  ((string=? x1 x2)  0) (else 1)))
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;;
-(define
- (XATS2CM_strn_length cs) (string-length xs))
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;;
-(define (XATS2CM_strn_print cs) (display cs))
-(define (XATS000_strn_print cs) (display cs))
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;;
-(define
- (XATS2CM_strn_get_at_raw cs i0) (string-ref cs i0))
-(define
- (XATS000_strn_get_at_raw cs i0) (string-ref cs i0))
+ (XATS2CM_bool_assert_errmsg cond emsg)
+ (if (not cond)
+  (error (string-append "XATS2CM_bool_assert_errmsg: emsg = " emsg))))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;; end of [ATS3/XANADU_prelude_DATS_CATS_CM_strn000.cats]
+;; end of [ATS3/XANADU_prelude_DATS_CATS_CM_gdbg000.cats]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
