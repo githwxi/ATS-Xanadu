@@ -36,18 +36,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_char_lt c1 c2) (< c1 c2)
+ (XATS2CM_char_lt c1 c2) (< c1 c2))
 (define
- (XATS2CM_char_gt c1 c2) (> c1 c2)
+ (XATS2CM_char_gt c1 c2) (> c1 c2))
 (define
- (XATS2CM_char_eq c1 c2) (= c1 c2)
+ (XATS2CM_char_eq c1 c2) (= c1 c2))
 ;;
 (define
  (XATS2CM_char_lte c1 c2) (<= c1 c2))
 (define
  (XATS2CM_char_gte c1 c2) (>= c1 c2))
 (define
- (XATS2CM_char_neq c1 c2) (not (= c1 c2))
+ (XATS2CM_char_neq c1 c2) (not (= c1 c2)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;

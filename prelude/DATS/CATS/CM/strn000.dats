@@ -1,0 +1,114 @@
+(***********************************************************************)
+(*                                                                     *)
+(*                         Applied Type System                         *)
+(*                                                                     *)
+(***********************************************************************)
+
+(*
+** ATS/Xanadu - Unleashing the Potential of Types!
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
+** All rights reserved
+**
+** ATS is free software;  you can  redistribute it and/or modify it under
+** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
+** Free Software Foundation; either version 3, or (at  your  option)  any
+** later version.
+** 
+** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
+** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
+** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
+** for more details.
+** 
+** You  should  have  received  a  copy of the GNU General Public License
+** along  with  ATS;  see the  file COPYING.  If not, please write to the
+** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
+** 02110-1301, USA.
+*)
+
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+Author: Hongwei Xi
+Sun Jun 28 08:00:53 PM EDT 2026
+Authoremail: gmhwxiATgmailDOTcom
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_length
+  ( cs ) =
+(
+XATS2CM_strn_length
+  ( cs )) where
+{
+#extern
+fun
+XATS2CM_strn_length
+  (cs: strn): nint = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_cmp
+  (x1, x2) =
+(
+XATS2CM_strn_cmp
+  (x1, x2)) where
+{
+#extern
+fun
+XATS2CM_strn_cmp
+(x1: strn, x2: strn): nint = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_print
+  ( cs ) =
+(
+XATS2CM_strn_print
+  ( cs )) where
+{
+#extern
+fun
+XATS2CM_strn_print(cs: strn): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-17:
+Sat Jan 17 09:57:35 PM EST 2026
+*)
+#impltmp
+<(*tmp*)>
+strn_get$at
+  (cs, i0) =
+(
+XATS2CM_strn_get$at$raw
+(     cs   ,   i0     ))
+where
+{
+#extern
+fun
+XATS2CM_strn_get$at$raw
+(    cs: strn, i0: nint    ): char = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_CM_strn000.dats] *)
+(***********************************************************************)
