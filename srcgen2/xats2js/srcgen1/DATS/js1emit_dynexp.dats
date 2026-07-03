@@ -2491,9 +2491,11 @@ list_cons(ibnd, i1bs) =>
 {
 //
 #impltmp
-g_print$out<>() = filr
+g_print$out
+<(*0*)>(    ) = filr
 //
-#impltmp g_print
+#impltmp
+g_print
 <i1tnm>(itnm) = i1tnmjs1(filr, itnm)
 //
 val () =

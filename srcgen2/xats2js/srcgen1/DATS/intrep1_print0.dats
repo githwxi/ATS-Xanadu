@@ -343,11 +343,13 @@ case+ iins of
 //
 (* ****** ****** *)
 //
+(*
 |I1INSopr
 ( iopr, i1vs) =>
 (
 print("I1INSopr(");
 prints(iopr, ";", i1vs, ")"))
+*)
 //
 (* ****** ****** *)
 //

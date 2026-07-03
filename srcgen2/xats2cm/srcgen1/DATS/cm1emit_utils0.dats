@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun Jun 28 02:28:06 PM EDT 2026
+Thu Jul  2 11:24:48 PM EDT 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -106,15 +106,12 @@ let
 val c0 =
 (
 case+ c0 of
-|
-'$' => '_'
-|
-'\'' => '_' | _ => c0)
+|'\'' => '$'| _ => c0)
 in//let
 (
   char_fprint(c0, filr)) end
-}
-end // end of [xsymcm1(filr,xsym)]
+}(*where*)
+end(*let*)//endof[xsymcm1(filr,xsym)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -242,7 +239,7 @@ i0i00cm1
 (filr, i00) =
 (
 prints
-("XATSINT0(", i00, ")")
+("(XATSINT0 ", i00, ")")
 ) where
 {
 #impltmp g_print$out<>() = filr
@@ -253,7 +250,7 @@ i0b00cm1
 (filr, b00) =
 (
 prints
-("XATSBTF0(", b00, ")")
+("(XATSBTF0 ", b00, ")")
 ) where
 {
 #impltmp g_print$out<>() = filr
@@ -266,7 +263,7 @@ i0c00cm1
 (filr, c00) =
 (
 print(
-"XATSCHR0(\"");
+"(XATSCHR0 \"");
 f0_char( c00 );print("\")")
 ) where
 {
@@ -305,7 +302,7 @@ i0f00cm1
 (filr, f00) =
 (
 prints
-("XATSFLT0(", f00, ")")
+("(XATSFLT0 ", f00, ")")
 ) where
 {
 #impltmp g_print$out<>() = filr
@@ -318,7 +315,7 @@ i0s00cm1
 (filr, s00) =
 (
 print(
-"XATSSTR0(\"");
+"(XATSSTR0 \"");
 f0_strn( s00 ); print("\")")
 ) where
 {
@@ -346,15 +343,15 @@ case-
 tint.node() of
 |T_INT01
 (  rep  ) => prints
-("XATSINT1(", rep, ")")
+("(XATSINT1 ", rep, ")")
 |T_INT02
 (bas,rep) => prints
-("XATSINT2(",bas,",",rep,")")
+("(XATSINT2 ",bas," ",rep,")")
 |T_INT03
 (bas
 ,rep,sfx) => prints
-("XATSINT3("
-,bas, ",", rep, ",", sfx, ")")
+("(XATSINT3 "
+,bas, " ", rep, " ", sfx, ")")
 ) where
 {
 #impltmp g_print$out<>() = filr
@@ -369,8 +366,8 @@ i0btfcm1
 (
 if
 (btf0 = TRUE_symbl)
-then print("XATSBOOL(True)")
-else print("XATSBOOL(False)")
+then print("(XATSBOOL #t)")
+else print("(XATSBOOL #f)")
 ) where
 {
 #impltmp g_print$out<>() = filr
@@ -415,15 +412,15 @@ case-
 tflt.node() of
 |T_FLT01
 (  rep  ) => prints
-("XATSFLT1(", rep, ")")
+("(XATSFLT1 ", rep, ")")
 |T_FLT02
 (bas,rep) => prints
-("XATSFLT2(",bas,",",rep,")")
+("(XATSFLT2 ",bas," ",rep,")")
 |T_FLT03
 (bas
 ,rep,sfx) => prints
-("XATSFLT3("
-,bas, ",", rep, ",", sfx, ")")
+("(XATSFLT3 "
+,bas, " ", rep, " ", sfx, ")")
 ) where
 {
 #impltmp g_print$out<>() = filr
@@ -465,11 +462,11 @@ tstr.node() of
 //
 |T_STRN1_clsd
 ( rep1,len2 ) =>
-( print("XATSSTRN(\"");
+( print("(XATSSTRN \"");
   f0_strn(rep1, len2-1); print("\")"))
 |T_STRN2_ncls
 ( rep1,len2 ) =>
-( print("XATSSTRN(\"");
+( print("(XATSSTRN \"");
   f0_strn(rep1, len2-0); print("\")"))
 //
 end where

@@ -224,9 +224,11 @@ and i1cmp =
 //
 and i1ins =
 //
+(*
 |I1INSopr of
 (i1opr(*opnm*)
 ,i1valist(*args*))//primopr
+*)
 //
 |I1INSdapp of
 (i1val(*fun0*)
