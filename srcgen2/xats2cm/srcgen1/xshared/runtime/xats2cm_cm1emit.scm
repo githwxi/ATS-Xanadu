@@ -129,6 +129,37 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
+(define (XATS000_casef)
+  (error "XATS000_casef" #f))
+;;
+(define (XATS000_patck pck)
+  (if (not pck) (error "XATS000_patck" #f)))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define (XATS000_fold pcon) #f)
+(define (XATS000_free pcon) #f)
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define
+  (XATS000_dp2tr p2tr)
+  (XATS000_lvget p2tr))
+;;
+(define (XATS000_l0azy lfun) (vector 0 lfun))
+;;
+(define (XATS000_dl0az l0az)
+  (let ((t (vector-ref l0az 0)))
+    (if (> t 0)
+	(let ((_ (vector-set! l0az 0 (+ t 1))))
+	  (vector-ref l0az 1))
+	(let ((_ (vector-set! l0az 0 (+ 0 1))))
+	  (let* ((res ((vector-ref l0az 1))) (_ (vector-set! l0az 1 res))) res)))))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
 ;; the end of
 ;; [ATS3-XANADU/srcgen2/xats2cm/srcgen1/xshared/runtime/xats2cm_cm1emit.cm]
 ;;
