@@ -35,7 +35,7 @@ test00:: ; \
 $(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.scm
 ############
 # test00:: ; \
-# $(CAT) $(XATS2CM_XSHARED)/xats2cm_py1emit.scm >> OUTS/$@_out.scm
+# $(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.scm >> OUTS/$@_out.scm
 # test00:: ; \
 # $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.scm >> OUTS/$@_out.scm
 ############
@@ -48,7 +48,7 @@ test01:: ; \
 $(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.scm
 ############
 # test01:: ; \
-# $(CAT) $(XATS2CM_XSHARED)/xats2cm_py1emit.scm >> OUTS/$@_out.scm
+# $(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.scm >> OUTS/$@_out.scm
 # test01:: ; \
 # $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.scm >> OUTS/$@_out.scm
 ############
@@ -61,7 +61,7 @@ test02:: ; \
 $(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.scm
 ############
 # test02:: ; \
-# $(CAT) $(XATS2CM_XSHARED)/xats2cm_py1emit.scm >> OUTS/$@_out.scm
+# $(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.scm >> OUTS/$@_out.scm
 # test02:: ; \
 # $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.scm >> OUTS/$@_out.scm
 ############
@@ -74,7 +74,7 @@ testxx:: ; \
 $(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.scm
 ############
 testxx:: ; \
-$(CAT) $(XATS2CM_XSHARED)/xats2cm_py1emit.scm >> OUTS/$@_out.scm
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.scm >> OUTS/$@_out.scm
 testxx:: ; \
 $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.scm >> OUTS/$@_out.scm
 ############

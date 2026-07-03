@@ -26,21 +26,25 @@ def XATSCHR2(ch):
   return ord(ch[0]) ## acsii
 ##
 def XATSCHR3(ch):
-  c1 = ord(ch[1])
+  x1 = ch[1]
+  c1 = ord(x1)
   ## ord('0') = 48
   ## ord('7') = 55
-  if (c1 < 48 or c1 > 55):
-    ## for example: '\(', '\)'
-    return ord(ch[1]) ## acsii
-  else:
+  if c1 < 48:
+    ## EG: '\(', '\)'
+    return c1 ## acsii
+  elif c1 > 55:
+    return c1 ## acsii
+  else: ## '\ddd': octal
     i1 = 2
     d1 = c1 - 48
     while (i1 < len(ch)):
-      c1 = ch[i1]
-      if (c1 == "'"):
+      x1 = ch[i1]
+      if (x1 == "'"):
         return d1
       else:
-        d1 = 8*d1 + ord(c1)-48
+        i1 = i1 + 1
+        d1 = 8*d1 + ord(x1)-48
     return d1 ## ascii code of [ch]
 ##
 def XATSFLT0(f0): return (f0)

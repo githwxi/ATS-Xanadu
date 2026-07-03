@@ -244,6 +244,21 @@ end(*let*)//end-of-[i0pcncm1(filr,ipat)]
 (* ****** ****** *)
 //
 #implfun
+i0pckcm1
+( filr
+, ival, ipat) =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+(
+prints("i0pckcm1(",ival,",",ipat, ")"))
+end//let//endof(i0pckcm1(filr,ival,ipat))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i1valcm1(filr, ival) =
 let
 //

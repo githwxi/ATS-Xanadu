@@ -56,6 +56,7 @@ let XATSCHR3 = (ch) => {
 	    {
 		return d1; // ascii
 	    } else {
+		i1 = i1 + 1
 		d1 = 8*d1 + (c1 - 48)
 	    }
 	}
