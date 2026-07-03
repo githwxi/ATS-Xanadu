@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun Jun 28 02:28:06 PM EDT 2026
+Thu Jul  2 11:24:48 PM EDT 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -186,19 +186,16 @@ dcl0.node() of
 |I1Dvaldclst _ =>
 (
   f0_valdclst(dcl0, env0))
-(*
+//
 |I1Dvardclst _ =>
 (
   f0_vardclst(dcl0, env0))
-*)
 //
 (* ****** ****** *)
 //
-(*
 |I1Dfundclst _ =>
 (
   f0_fundclst(dcl0, env0))
-*)
 //
 (* ****** ****** *)
 //
@@ -696,7 +693,8 @@ i1letlst_cm1emit(ilts, env0)
 val () =
 let
 nindfpr(filr, nind);
-i1tnmcm1(filr, itnm);strnfpr(filr, " = ");i1valcm1(filr, ival);fprintln(filr)
+strnfpr(filr, "(");i1tnmcm1(filr, itnm);
+strnfpr(filr, " ");i1valcm1(filr, ival);strnfpr(filr, ")");fprintln(filr)
 end//let
 //
 end//let//end-of-[f0_i1tnmcmp(...)]
@@ -704,7 +702,6 @@ end//let//end-of-[f0_i1tnmcmp(...)]
 }(*where*)//end-of-[i1valdcl_cm1emit(dcl0,env0)]
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 #implfun
@@ -851,10 +848,10 @@ val ival = icmp.ival()
 //
 val (  ) =
 (
-  fjas1_cm1emit(env0, fjas))
+  fjas1_cm1emit(fjas, env0))
 val (  ) =
 (
-  i1cmp_cm1emit(env0, icmp))
+  i1cmp_cm1emit(icmp, env0))
 //
 (* ****** ****** *)
 //

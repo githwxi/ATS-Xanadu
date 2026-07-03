@@ -28,12 +28,12 @@ xats2cm.sats \
 #
 SRCDATS := \
 xats2cm.dats \
-xats2cm_dynexp.dats \
 xats2cm_decl00.dats \
+xats2cm_dynexp.dats \
 cm1emit.dats \
 cm1emit_utils0.dats \
-cm1emit_dynexp.dats \
 cm1emit_decl00.dats \
+cm1emit_dynexp.dats \
 #
 ########################################################################
 ########################################################################
