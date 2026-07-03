@@ -147,6 +147,10 @@
   (XATS000_dp2tr p2tr)
   (XATS000_lvget p2tr))
 ;;
+(define
+  (XATS000_assgn lval rval)
+  (XATS000_lvset lval rval))
+;;
 (define (XATS000_l0azy lfun) (vector 0 lfun))
 ;;
 (define (XATS000_dl0az l0az)
@@ -155,7 +159,58 @@
 	(let ((_ (vector-set! l0az 0 (+ t 1))))
 	  (vector-ref l0az 1))
 	(let ((_ (vector-set! l0az 0 (+ 0 1))))
-	  (let* ((res ((vector-ref l0az 1))) (_ (vector-set! l0az 1 res))) res)))))
+	  (let* ((res ((vector-ref l0az 1)))
+		 (_ (vector-set! l0az 1 res))) res)))))
+;;
+(define (XATS000_l1azy lfun) lfun)
+(define (XATS000_dl1az l1az) (l1az 1))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define
+  (XATS000_lvget lval)
+  (let ((ctag (vector-ref lval 0)))
+    (cond
+     ((= ctag 0)
+      (vector-ref (vector-ref lval 1) 0))
+     ((= ctag (+ 1 0))
+      (let* (
+       (val1 (vector-ref lval 1))
+       (idx2 (vector-ref lval 2)))
+       (vector-ref (XATS000_lvget val1) idx2)))
+     ((= ctag (+ 1 1))
+      (let* ((val1 (vector-ref lval 1))
+	     (idx2 (vector-ref lval 2))) (vector-ref val1 idx2)))
+     ((= ctag (+ 1 2))
+      (let* ((val1 (vector-ref lval 1))
+	     (idx2 (vector-ref lval 2))) (vector-ref val1 idx2)))
+     (else (error "XATS000_lvget" lval)))))
+;;
+(define
+  (XATS000_lvset! lval rval)
+  (let ((ctag (vector-ref lval 0)))
+    (cond
+     ((= ctag 0)
+      (let (
+	(val1 (vector-ref lval 1)))
+	(vector-set! val1 0 rval)))
+     ((= ctag (+ 1 0))
+      (let* ((val1 (vector-ref lval 1))
+	     (idx2 (vector-ref lval 2))
+	     (lvl1 (XATS000_lvget val1)))
+	(XATS000_lvset! lvl1 idx2 (XATS000_ftset lvl1 idx2 rval))))
+     ((= ctag (+ 1 1))
+      (let* ((val1 (vector-ref lval 1))
+	     (idx2 (vector-ref lval 2))) (vector-set! val1 idx2 rval)))
+     ((= ctag (+ 1 2))
+      (let* ((val1 (vector-ref lval 1))
+	     (idx2 (vector-ref lval 2))) (vector-set! val1 idx2 rval)))
+     (else (error "XATS000_lvset!" lval rval)))))
+;;
+(define (XATS000_ftset tpl0 idx1 rval)
+  (let ((tpl1 (vector-copy tpl0)))
+    (begin (vector-set! tpl1 idx1 rval) tpl1)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
