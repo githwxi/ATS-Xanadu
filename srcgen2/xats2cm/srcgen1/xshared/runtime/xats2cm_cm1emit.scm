@@ -31,15 +31,10 @@
     (cond
       ;; ord('0') = 48
       ;; ord('7') = 55
-
-      ;; e.g. "'(" or "')"
-      ((< c1 48)
-       c1)
-
-      ((> c1 55)
-       c1)
-
-      ;; "'ddd" : octal
+      ;; e.g. "\(" or "\)"
+      ((< c1 48) c1)
+      ((> c1 55) c1)
+      ;; "\ddd" : octal
       (else
        (let loop ((i1 2)
                   (d1 (- c1 48)))
@@ -58,17 +53,15 @@
 (define (XATSSTR0 cs) cs)
 (define (XATSSTRN cs) cs)
 ;;
-(define
- (XATSSFLT sf) (string->number sf))
-(define
- (XATSDFLT df) (string->number df))
+(define (XATSSFLT sf) (string->number sf))
+(define (XATSDFLT df) (string->number df))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-
-def XATSDAPP(dapp): return dapp
-def XATSCAPP(_, capp): return capp
-def XATSCAST(_, args): return args[0]
-
+;;
+(define (XATSDAPP dapp) dapp)
+(define (XATSCAPP _ capp) capp)
+(define (XATSCAST _ args) (vector-ref args 0))
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 def XATSPFLT(pflt): return pflt
