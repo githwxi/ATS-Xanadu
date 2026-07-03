@@ -214,11 +214,11 @@ py1emit_i1valist
 //
 fun
 py1emit_i1letlst
-(env0: !envx2py, i1vs: i1letlst): void
+(env0: !envx2py, ilts: i1letlst): void
 //
 fun
 py1emit_i1cmplst
-(env0: !envx2py, i1fs: i1cmplst): void
+(env0: !envx2py, cmps: i1cmplst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

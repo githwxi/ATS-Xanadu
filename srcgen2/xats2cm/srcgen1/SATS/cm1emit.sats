@@ -110,6 +110,12 @@ i1tnmcm1(
 filr:FILR,itnm:i1tnm): void
 //
 (* ****** ****** *)
+//
+fun
+i0pckcm1(
+filr:FILR,
+ival:i1val,ipat:i0pat): void
+//
 (* ****** ****** *)
 //
 fun
@@ -156,6 +162,13 @@ i1parsed_cm1emit
 (* ****** ****** *)
 //
 fun
+i1let_cm1emit
+(ilet: i1let, env0: !envx2cm): void
+//
+fun
+i1bnd_cm1emit
+(ibnd: i1bnd, env0: !envx2cm): void
+fun
 i1cmp_cm1emit
 (icmp: i1cmp, env0: !envx2cm): void
 //
@@ -167,6 +180,16 @@ i1dcl_cm1emit
 (idcl: i1dcl, env0: !envx2cm): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1letlst_cm1emit
+(ilts: i1letlst, env0: !envx2cm): void
+//
+fun
+i1cmplst_cm1emit
+(cmps: i1cmplst, env0: !envx2cm): void
+//
 (* ****** ****** *)
 //
 fun
@@ -190,6 +213,8 @@ fun
 i1vardcl_cm1emit
 (ivar: i1vardcl, env0: !envx2cm): void
 //
+(* ****** ****** *)
+//
 fun
 i1fundcl_cm1emit
 (ifun: i1fundcl, env0: !envx2cm): void
@@ -203,6 +228,8 @@ i1valdclist_cm1emit
 fun
 i1vardclist_cm1emit
 (i1vs: i1vardclist, env0: !envx2cm): void
+//
+(* ****** ****** *)
 //
 fun
 i1fundclist_cm1emit

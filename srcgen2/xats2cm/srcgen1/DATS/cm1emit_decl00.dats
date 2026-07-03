@@ -183,10 +183,10 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
-(*
 |I1Dvaldclst _ =>
 (
   f0_valdclst(dcl0, env0))
+(*
 |I1Dvardclst _ =>
 (
   f0_vardclst(dcl0, env0))
@@ -318,8 +318,9 @@ end(*let*)//end-of-[f0_dclst0(dcl0,env0)]
 //
 fun
 f0_local0
-( dcl0: i1dcl
-, env0: envx2js): void =
+(
+dcl0: i1dcl,
+env0: envx2js): void =
 let
 //
 val filr = env0.filr()
@@ -586,7 +587,6 @@ end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
 }(*where*)//end-of-[i1dcl_cm1emit(dcl0,env0)]
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 #implfun
@@ -672,10 +672,10 @@ end//let//end-of-[val()]
 //
 fun
 f0_i1tnmcmp
-( env0:
-! envx2js
-, itnm: i1tnm
-, icmp: i1cmp): void =
+(
+itnm: i1tnm,
+icmp: i1cmp,
+env0: !envx2js): void =
 let
 //
 val filr =
@@ -704,6 +704,7 @@ end//let//end-of-[f0_i1tnmcmp(...)]
 }(*where*)//end-of-[i1valdcl_cm1emit(dcl0,env0)]
 //
 (* ****** ****** *)
+////
 (* ****** ****** *)
 //
 #implfun
