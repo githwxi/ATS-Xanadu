@@ -64,52 +64,73 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
-def XATSPFLT(pflt): return pflt
-def XATSPROJ(proj): return proj
-def XATSP0RJ(p0rj): return p0rj
-def XATSP1RJ(_, p1rj): return p1rj
-def XATSP1CN(_, p1cn): return p1cn
+(define (XATSPFLT pflt) pflt)
+(define (XATSPROJ proj) proj)
+(define (XATSP0RJ p0rj) p0rj)
+(define (XATSP1RJ _ p1rj) p1rj)
+(define (XATSP1CN _ p1cn) p1cn)
 ;;
-def XATSPCON(pcon, argi): return pcon[argi+1]
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;;
-def XATSTRCD(knd0): return knd0
-;;
-def XATSTUP0(tpl0): return tpl0
-def XATSTUP1(knd0, tpl1): return tpl1
-def XATSRCD2(knd0, rcd2): return rcd2
+(define (XATSPCON pcon argi) (vector-ref pcon (+ argi 1)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
-def XATSROOT(x): return [0, x]
-def XATSLPFT(i, x): return [1+0, x, i]
-def XATSLPBX(i, x): return [1+1, x, i]
-def XATSLPCN(i, x): return [1+2, x, i+1]
-;;
-def XATSVAR0(    ): return XATSROOT([None])
-def XATSVAR1(init): return XATSROOT([init])
-;;
-def XATSADDR(addr): return addr ;; HX: no-op
-def XATSFLAT(addr): return XATS000_lvget(addr)
+(define (XATSTRCD knd0) knd0)
+(define (XATSTUP0 tpl0) tpl0)
+(define (XATSTUP1 _ tpl1) tpl1)
+(define (XATSRCD2 _ rcd2) rcd2)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
-def XATSCTAG(_, t): return t
+(define (XATSROOT x) (vector 0 x))
+(define (XATSLPFT i x) (vector (+ 1 0) x i))
+(define (XATSLPBX i x) (vector (+ 1 1) x i))
+(define (XATSLPCN i x) (vector (+ 1 2) x (+ i 1)))
 ;;
-def XATS000_inteq(x, y): return (x == y)
-def XATS000_btfeq(x, y): return (x == y)
-def XATS000_chreq(x, y): return (x == y)
+(define (XATSVAR0) (XATSROOT (vector #f)))
+(define (XATSVAR1 init) (XATSROOT (vector init)))
 ;;
-def XATS000_streq(x, y): return (x == y)
+(define (XATSADDR addr) addr)
+(define (XATSFLAT addr) (XATS000_lvget addr))
 ;;
-def XATS000_ctgeq(v, t): return (v[0] == t)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define (XATSCTAG _ t) t)
+;;
+(define (XATS000_inteq x y) (= x y))
+(define (XATS000_chreq x y) (= x y))
+(define (XATS000_btfeq x y) (eq? x y))
+;;
+(define (XATS000_streq x y) (string=? x y))
+(define (XATS000_ctgeq v t) (= (vector-ref v 0) t))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define (XATS2CM_optn_nil)
+  (XATSCAPP "optn_nil" (vector 0)))
+(define (XATS2CM_optn_cons x0)
+  (XATSCAPP "optn_cons" (vector 1 x0)))
+;;
+(define (XATS2CM_list_nil)
+  (XATSCAPP "list_nil" (vector 0)))
+(define (XATS2CM_list_cons x0 xs)
+  (XATSCAPP "list_cons" (vector 1 x0 xs)))
+;;
+(define (XATS2CM_optn_vt_nil)
+  (XATSCAPP "optn_vt_nil" (vector 0)))
+(define (XATS2CM_optn_vt_cons x0)
+  (XATSCAPP "optn_vt_cons" (vector 1 x0)))
+;;
+(define (XATS2CM_list_vt_nil)
+  (XATSCAPP "list_vt_nil" (vector 0)))
+(define (XATS2CM_list_vt_cons x0 xs)
+  (XATSCAPP "list_vt_cons" (vector 1 x0 xs)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 ;; the end of
-;; [ATS3-XANADU/srcgen2/xats2py/srcgen1/xshared/runtime/xats2py_py1emit.py]
+;; [ATS3-XANADU/srcgen2/xats2cm/srcgen1/xshared/runtime/xats2cm_cm1emit.cm]
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
