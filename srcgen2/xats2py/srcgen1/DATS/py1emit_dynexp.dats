@@ -138,7 +138,6 @@ loctnfpr
 loctn_fprint(loc0,filr))//endfun
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 i0expfpr
@@ -2107,7 +2106,6 @@ let
 //
 val
 loc1 = i0f1.lctn((*0*))
-//
 val
 iopt = t1imp_i1cmpq(timp)
 //
