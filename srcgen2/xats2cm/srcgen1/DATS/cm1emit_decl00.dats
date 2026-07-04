@@ -635,23 +635,32 @@ val nind =
 val (  ) =
 (
 nindfpr(filr, nind);
-i1tnmcm1(filr, itnm);strnfpr(filr, " = None\n"))
 //
-// HX: for computing ival
-val () =
-f0_i1tnmcmp(itnm, icmp, env0)
+(
+if (nind > 0)
+then strnfpr(filr, "(")
+else strnfpr(filr, "(define "));
 //
-val () =
+i1tnmcm1(filr, itnm);strnfpr(filr, "\n"))
+//
+val (  ) =
+(
+  i1cmp_ind$cm1emit(icmp, env0))
+val (  ) =
+(
+  strnfpr(filr, ")"); fprintln(filr))
+//
+val (  ) =
 (
 nindstrnfpr
-(filr, nind, "XATS000_patck(");
+(filr, nind, "(XATS000_patck ");
 i0pckcm1(filr, ival, ipat);strnfpr(filr, ")\n"))
 //
 endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
 //
 (* ****** ****** *)
 //
-end where // end-of-let( i1valdcl_cm1emit(...) ]
+end where//end-of-let(i1valdcl_cm1emit(ival,...)]
 {
 //
 val (  ) =
@@ -693,8 +702,9 @@ i1letlst_cm1emit(ilts, env0)
 val () =
 let
 nindfpr(filr, nind);
-strnfpr(filr, "(");i1tnmcm1(filr, itnm);
-strnfpr(filr, " ");i1valcm1(filr, ival);strnfpr(filr, ")");fprintln(filr)
+strnfpr(filr, "(set! ");
+i1tnmcm1(filr, itnm);strnfpr(filr, " ");
+i1valcm1(filr, ival);strnfpr(filr, ")");fprintln(filr)
 end//let
 //
 end//let//end-of-[f0_i1tnmcmp(...)]

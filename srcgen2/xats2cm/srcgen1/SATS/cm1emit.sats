@@ -132,6 +132,13 @@ fun
 l1i1vcm1
 (filr:FILR,liv0:l1i1v): void
 //
+fun
+i1vlsif1(
+filr:FILR,i1vs:i1valist): void
+fun
+i1vlscm1(
+filr:FILR,i1vs:i1valist): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -168,9 +175,20 @@ i1let_cm1emit
 fun
 i1bnd_cm1emit
 (ibnd: i1bnd, env0: !envx2cm): void
+//
 fun
 i1cmp_cm1emit
 (icmp: i1cmp, env0: !envx2cm): void
+fun
+i1cmp_ind$cm1emit
+(icmp: i1cmp, env0: !envx2cm): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+t1imp_cm1emit
+(timp: t1imp, env0: !envx2cm): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -58,9 +58,14 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
-(define (XATSDAPP dapp) dapp)
-(define (XATSCAPP _ capp) capp)
-(define (XATSCAST _ args) (vector-ref args 0))
+(define
+(XATSCAST name arg1 . args) arg1)
+;;
+(define
+(XATSDAPP dfun . args) (apply dfun args))
+;;
+(define
+(XATSCAPP name ctag . args) (apply vector ctag args))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
