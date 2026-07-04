@@ -139,7 +139,6 @@ loctnfpr
 loctn_fprint(loc0,filr))//endfun
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 i0expfpr
@@ -554,7 +553,24 @@ i1vlscm1(filr, i1vs);strnfpr(filr, ")"))
 (* ****** ****** *)
 //
 |I1INStimp
-(i0f1, timp) => t1imp_cm1emit(timp, env0)
+(i0f1, timp) =>
+(
+t1imp_cm1emit(timp, env0))
+where
+{
+//
+val
+loc1 = i0f1.lctn((*0*))
+//
+val () = (
+nindstrnfpr
+(filr, nind, ";; ");
+loctnfpr(filr, loc1);fprintln(filr))
+val () = (
+nindstrnfpr
+(filr, nind, ";; ");
+i0expfpr(filr, i0f1);fprintln(filr))
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -153,7 +153,6 @@ loctnfpr
 loctn_fprint(loc0,filr))//endfun
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 i0expfpr
