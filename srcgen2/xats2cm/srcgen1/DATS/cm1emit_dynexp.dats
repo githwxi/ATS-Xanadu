@@ -257,8 +257,238 @@ end//let//endof(i0pckcm1(filr,ival,ipat))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+t1imploc
+(filr: FILR
+,timp: t1imp): void =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+case+
+timp.node() of
+//
+|T1IMPall1
+(dcst
+,tjas, dopt) =>
+(
+case+ dopt of
+|
+optn_nil() =>
+let
+val (  ) =
+prints("T1IMPall1(",dcst,")")
+end//let
+|
+optn_cons(idcl) =>
+let
+val loc0 = idcl.lctn((*0*))
+val (  ) =
+prints("T1IMPall1(",dcst,";",loc0,")")
+end//let
+)
+//
+|T1IMPallx
+(dcst
+,tjas, dopt) =>
+(
+case+ dopt of
+|
+optn_nil() =>
+let
+val (  ) =
+prints("T1IMPallx(",dcst,")")
+end//let
+|
+optn_cons(idcl) =>
+let
+val loc0 = idcl.lctn((*0*))
+val (  ) =
+prints("T1IMPallx(",dcst,";",loc0,")")
+end//let
+)
+//
+end(*let*)//end-of(t1imploc(filr,timp))
+//
+(* ****** ****** *)
+//
+fun
+t1impdcl
+(filr: FILR
+,timp: t1imp): void =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+case+
+timp.node() of
+//
+|T1IMPall1
+(dcst
+,tjas, dopt) =>
+(
+case+ dopt of
+|
+optn_nil() =>
+let
+val (  ) = prints
+("T1IMPall1(",dcst,"<",tjas,">",")")
+end//let
+|
+optn_cons(idcl) =>
+let
+val (  ) = prints
+("T1IMPall1(",dcst,"<",tjas,">",";",idcl,")")
+end//let
+)
+//
+|T1IMPallx
+(dcst
+,tjas, dopt) =>
+(
+case+ dopt of
+|
+optn_nil() =>
+let
+val (  ) = prints
+("T1IMPallx(",dcst,"<",tjas,">",")")
+end//let
+|
+optn_cons(idcl) =>
+let
+val (  ) = prints
+("T1IMPallx(",dcst,"<",tjas,">",";",idcl,")")
+end//let
+)
+//
+end where
+{
+//
+#impltmp
+g_print
+<i1dcl>(idcl) =
+(
+  auxpr(idcl)) where
+{
+//
+fun
+auxpr
+(idcl: i1dcl): void =
+(
+case+
+idcl.node() of
+//
+|
+I1Dtmpsub
+(svts, idcl) =>
+(
+print(
+"I1Dtmpsub(");
+prints(svts, ";");
+auxpr(idcl); print(")"))//tmpsub
+//
+|
+I1Dfundclst
+(tknd, tqas
+,d2cs, i1fs) =>
+(
+prints(
+"I1Dfundclst(", d2cs, ")"))//funs
+//
+|
+I1Dimplmnt0
+(tknd, stmp
+,dimp, fjas, icmp) =>
+(
+prints(
+"I1Dimplmnt0(", dimp, ")"))//impl
+//
+|
+_(* else *) => print("...I1DCL...")
+)
+//
+}(*where*)//end-of-[g_print<i1dcl>]
+//
+}(*where*)//end-of(t1impdcl(filr,timp))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
-i1valcm1(filr, ival) =
+fjas1cm1
+(filr, fjas) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+fnx
+loop1
+(i0: sint
+,fjas: fjarglst): void =
+(
+case+ fjas of
+|
+list_nil
+((*void*)) => ((*0*))
+|
+list_cons
+(fja1, fjas) =>
+(
+  loop2(i0, fja1, fjas))
+)
+//
+and
+loop2
+(i0: sint
+,fja1: fjarg
+,fjas: fjarglst): void =
+(
+case+
+fja1.node() of
+|FJARGdarg(i1bs) =>
+(
+  loop3(i0, i1bs, fjas))
+)
+//
+and
+loop3
+(i0: sint
+,i1bs: i1bndlst
+,fjas: fjarglst): void =
+(
+case+ i1bs of
+|
+list_nil() =>
+(
+  loop1(i0, fjas))
+|
+list_cons(_, i1bs) =>
+( if
+  (i0 > 1)
+  then
+  print(", ")
+; prints("arg", i0)
+; loop3(i0+1, i1bs, fjas))
+)
+//
+in
+(print("(")
+;loop1(1(*i0*),fjas);print(")"))
+end(*let*)//end-of-[fjas1js1(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1valcm1
+(filr, ival) =
 let
 //
 (*
@@ -661,6 +891,165 @@ val () =
 val () = envx2js_decnind(env0, 2)
 //
 end(*let*)//end(i1cmp_ind$cm1emit(icmp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+t1imp_cm1emit
+(timp, env0) =
+let
+//
+val
+iopt = t1imp_i1cmpq(timp)
+//
+in//let
+//
+(
+case+ iopt of
+//
+|optn_nil() =>
+(
+f0_t1imp(env0, timp))
+//
+|optn_cons(icmp) =>
+(
+i1cmp_cm1emit(icmp, env0)))
+where
+{
+val () =
+(
+nindstrnfpr
+(filr, nind, "// ");
+t1imploc(filr, timp);fprintln(filr);
+nindstrnfpr
+(filr, nind, "// ");
+t1impdcl(filr, timp);fprintln(filr))}
+//
+end where
+{
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+fun
+f0_t1imp
+( env0:
+! envx2cm
+, timp: t1imp): void =
+let
+//
+val dcst = timp.dcst((*0*))
+val dopt = t1imp_i1dclq(timp)
+//
+in//let
+//
+case+ dopt of
+//
+|optn_nil
+((*void*)) =>
+(
+d2cst_fprint
+(dcst, filr)) where
+{
+val () =
+strnfpr(filr,
+"(XATS000_undef) ;; timp: ")}
+//
+|optn_cons
+(  idcl  ) =>
+(
+case+
+idcl.node() of
+//
+|I1Dfundclst
+( tknd, tqas
+, d2cs, i1fs) =>
+let
+//
+fun
+dcst2varfpr
+(filr: FILR
+,dcst: d2cst
+,d2cs: d2cstlst
+,i1fs: i1fundclist): void =
+(
+case+ d2cs of
+|
+list_nil() => ((*0*))
+|
+list_cons(d2c1, d2cs) =>
+let
+//
+val-
+list_cons(i1f1, i1fs) = i1fs 
+//
+in//let
+//
+if
+(dcst = d2c1)
+then
+d2varcm1(filr, d2v1) where
+{
+val
+d2v1 = i1fundcl_dpid$get(i1f1) }
+else
+dcst2varfpr(filr, dcst, d2cs, i1fs)
+//
+end//let
+)
+//
+in//let
+//
+strnfpr
+(filr,"function () {\n");
+//
+(
+envx2js_incnind(env0,2(*++*));
+(
+envx2js_decnind(env0,2(*--*)))
+where
+{
+val () =
+i1fundclist_cm1emit(i1fs, env0)});
+//
+nindstrnfpr
+(filr, nind+2, "return ");
+dcst2varfpr(filr, dcst, d2cs, i1fs);fprintln(filr);
+nindstrnfpr
+(filr, nind+0, "} () // endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")")
+//
+end//let
+//
+|I1Dimplmnt0
+( tknd
+, stmp, dimp
+, fjas, icmp) =>
+(
+strnfpr
+(filr,"function ");fjas1cm1(filr, fjas);
+(
+strnfpr(filr," { // timp: ");
+d2cst_fprint(dcst, filr);fprintln(filr));
+//
+(
+envx2js_incnind(env0,2(*++*));
+(
+envx2js_decnind(env0,2(*--*)))
+where
+{
+val () =
+(
+fjas1cm1(filr, fjas);i1cmp_cm1emit(icmp, env0))});
+//
+nindstrnfpr(filr, nind, "} // endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")"))
+)
+//
+end//let//end-of-[f0_t1imp(...)]
+//
+}(*where*)//end-of-[t1imp_cm1emit(timp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
