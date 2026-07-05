@@ -423,7 +423,10 @@ _(* else *) => print("...I1DCL...")
 #implfun
 fjas1cm1
 (filr, fjas) =
-let
+(
+loop1(1(*i0*), fjas)
+) where
+{
 //
 #impltmp
 g_print$out<>() = filr
@@ -442,7 +445,7 @@ list_cons
 (fja1, fjas) =>
 (
   loop2(i0, fja1, fjas))
-)
+)(*case+*)//end-of-[loop1(...)]
 //
 and
 loop2
@@ -454,8 +457,8 @@ case+
 fja1.node() of
 |FJARGdarg(i1bs) =>
 (
-  loop3(i0, i1bs, fjas))
-)
+loop3(i0, i1bs, fjas))
+)(*case+*)//end-of-[loop2(...)]
 //
 and
 loop3
@@ -471,18 +474,17 @@ list_nil() =>
 |
 list_cons(_, i1bs) =>
 (
-if//if
-(i0 > 1)
-then print(" ");
-prints("arg", i0);
-loop3(i0+1, i1bs, fjas)))
-//
-in//let
-//
 (
-print("(");
-loop1(1(*i0*),fjas);print(")"))
-end(*let*)//end-of-[fjas1js1(...)]
+  if//if
+  (i0 > 1)
+  then print(" "));
+  prints("arg", i0);
+  loop3(i0+1, i1bs, fjas)
+)
+//
+)(*case+*)//end-of-[loop3(...)]
+//
+}(*where*)//end-of-[fjas1cm1(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1095,8 +1097,8 @@ end//let
 nindfpr
 (filr, nind);
 strnfpr
-(filr, "(lambda ");
-fjas1cm1(filr, fjas);
+(filr, "(lambda (");
+fjas1cm1(filr, fjas);strnfpr(filr, ")");
 (
 strnfpr(filr," ;; timp: ");
 d2cst_fprint(dcst, filr);fprintln(filr));
@@ -1105,17 +1107,30 @@ d2cst_fprint(dcst, filr);fprintln(filr));
 envx2js_incnind(env0,2(*++*));
 (
 envx2js_decnind(env0,2(*--*)))
-where
-{
+where{
+//
+#symload
+fjags_cm1emit
+with fjarglst_cm1emit
+//
+val
+nind = (nind+2)
+//
 val () =
 (
-(*
+nindstrnfpr
+(filr
+,nind, "(let\n");
+nindstrnfpr
+(filr, nind, "(\n");
 fjags_cm1emit(fjas, env0);
-*)
-i1cmp_cm1emit(icmp, env0))});
+nindstrnfpr(filr, nind, ")\n"))
+//
+val () = i1cmp_cm1emit(icmp, env0)}//where
+);
 //
 nindstrnfpr
-(filr, nind, ") ;; endtimp(");
+(filr, nind, ")) ;; endtimp(");
 d2cst_fprint(dcst, filr);strnfpr(filr, ")");fprintln(filr))
 )
 //
@@ -1131,6 +1146,87 @@ i1letlst_cm1emit
   (ilts, env0) =
 (
   list_cm1emit_fnp(ilts, env0, i1let_cm1emit))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fjarglst_cm1emit
+  (fjas, env0) =
+(
+  loop1(1(*i0*), fjas)
+) where
+{
+//
+val filr =
+(
+envx2js_filr$get(env0))
+val nind =
+(
+envx2js_nind$get(env0))
+//
+fnx
+loop1
+( i0: sint
+, fjas: fjarglst): void =
+(
+case+ fjas of
+|
+list_nil
+( (*void*) ) => ( (*void*) )
+|
+list_cons
+(fja1, fjas) => loop2(i0, fja1, fjas)
+)
+//
+and
+loop2
+( i0: sint
+, fja1: fjarg
+, fjas: fjarglst): void =
+(
+case+
+fja1.node() of
+|
+FJARGdarg(i1bs) => loop3(i0, i1bs, fjas)
+)
+//
+and
+loop3
+( i0: sint
+, i1bs: i1bndlst
+, fjas: fjarglst): void =
+(
+case+ i1bs of
+|
+list_nil() =>
+loop1(i0, fjas)
+|
+list_cons(ibnd, i1bs) =>
+(
+  loop3(i0+1, i1bs, fjas)) where
+{
+//
+#impltmp
+g_print$out
+<(*0*)>(    ) = filr
+//
+#impltmp
+g_print
+<i1tnm>(itnm) = i1tnmcm1(filr, itnm)
+//
+val () =
+case+ ibnd of
+|
+I1BNDcons(itnm, i0p1, dvvs) =>
+(
+nindfpr(filr,nind);
+(
+prints(" (", itnm, " ", "arg", i0, ")\n")))
+}
+)
+//
+}(*where*)//end-of-[fjarglst_cm1emit(fjas,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

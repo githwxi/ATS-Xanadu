@@ -85,7 +85,7 @@ _(*DATS*)="./../DATS/cm1emit.dats"
 #symload nind with envx2js_nind$get
 (* ****** ****** *)
 #symload
-fjas1_cm1emit with fjarglst_cm1emit
+fjags_cm1emit with fjarglst_cm1emit
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -653,7 +653,7 @@ val (  ) =
 val (  ) =
 (
 nindstrnfpr
-(filr, nind, "(XATS000_patck ");
+(filr, nind, ";; (XATS000_patck ");
 i0pckcm1(filr, ival, ipat);strnfpr(filr, ")\n"))
 //
 endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
@@ -828,13 +828,12 @@ i1fundcl_tdxp$get(ifun)
 //
 val (  ) =
 let
-val filr = env0.filr()
-val nind = env0.nind()
 in//let
 (
-nindfpr(filr, nind);strnfpr(filr, "def ");
-d2varcm1(filr, dvar);
-fjas1cm1(filr, fjas);strnfpr(filr, ": ;; fun\n"))
+nindfpr(filr, nind);
+strnfpr(filr, "(define (");
+d2varcm1(filr, dvar);strnfpr(filr, " ");
+fjas1cm1(filr, fjas);strnfpr(filr, ") ;; fun\n"))
 end//let
 //
 (* ****** ****** *)
@@ -858,47 +857,38 @@ val ival = icmp.ival()
 //
 val (  ) =
 (
-  fjas1_cm1emit(fjas, env0))
+  fjags_cm1emit(fjas, env0))
 val (  ) =
 (
   i1cmp_cm1emit(icmp, env0))
 //
 (* ****** ****** *)
-//
-val (  ) =
-let
-val filr = env0.filr()
-val nind = env0.nind()
-in//let
-(
-nindfpr(filr, nind);
-strnfpr(filr, "return ");i1valcm1(filr, ival);fprintln(filr))
-end//let
-//
+end//let//end[TEQI1DEXPsome(...)]
 (* ****** ****** *)
-end//let
-(* ****** ****** *)
-) (*case+*) // end-of-(teqi1exp)
+)(*case+*)//end-of-(case+of(tdxp))
 //
 val (  ) = envx2js_poplam0(env0)//leave
+//
+val (  ) =
+(
+nindstrnfpr
+(filr, nind, ") ;; ");d2varcm1(filr, dvar);fprintln(filr))
 //
 (* ****** ****** *)
 //
 end where
 {
 //
-val (  ) =
-let
 val filr =
 (
-envx2js_filr$get(env0))
+  envx2js_filr$get(env0))
 val nind =
 (
-envx2js_nind$get(env0))
-in//let
+  envx2js_nind$get(env0))
+//
+val (  ) =
 (
- nindstrnfpr(filr, nind, ";; I1FUNDCL\n"))
-end//let//end-of-[val()]
+  nindstrnfpr(filr, nind, ";; I1FUNDCL\n"))
 //
 }(*where*)//end-of-[i1fundcl_cm1emit(ifun,env0)]
 //
