@@ -58,14 +58,24 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
+#|
 (define
 (XATSCAST name arg1 . args) arg1)
-;;
-(define
-(XATSDAPP dfun . args) (apply dfun args))
-;;
 (define
 (XATSCAPP name ctag . args) (apply vector ctag args))
+|#
+(define-syntax XATSCAST
+  (syntax-rules () ((_ name arg1 args ...) arg1)))
+(define-syntax XATSCAPP
+  (syntax-rules ()
+    ((_ name ctag args ...) (vector ctag args ...))))
+;;
+#|
+(define
+(XATSDAPP dfun . args) (apply dfun args))
+|#
+(define-syntax XATSDAPP
+  (syntax-rules () ((_ dfun args ...) (dfun args ...))))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
