@@ -2107,7 +2107,6 @@ let
 //
 val
 loc1 = i0f1.lctn((*0*))
-//
 val
 iopt = t1imp_i1cmpq(timp)
 //
@@ -2139,7 +2138,8 @@ strnfpr(filr, " = ");f0_t1imp(env0, timp);fprintln(filr))
 |
 optn_cons(icmp) =>
 (
-f0_i1tnmcmp(env0, itnm, icmp)) where
+f0_i1tnmcmp
+(env0, itnm, icmp)) where
 {
 val () =
 (
