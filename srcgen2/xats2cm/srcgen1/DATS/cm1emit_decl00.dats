@@ -831,9 +831,12 @@ let
 in//let
 (
 nindfpr(filr, nind);
-strnfpr(filr, "(define (");
-d2varcm1(filr, dvar);strnfpr(filr, " ");
-fjas1cm1(filr, fjas);strnfpr(filr, ") ;; fun\n"))
+(
+if (nind > 0)
+then strnfpr(filr, "(")
+else strnfpr(filr, "(define "));
+d2varcm1(filr, dvar);strnfpr(filr, " ;; fun(...)\n");
+nindstrnfpr(filr, nind+1, "(lambda (");fjas1cm1(filr, fjas);strnfpr(filr, ")\n"))
 end//let
 //
 (* ****** ****** *)
@@ -853,14 +856,25 @@ TEQI1CMPsome
 (teq1, icmp) =>
 let
 //
-val ival = icmp.ival()
+val (  ) =
+let
+val nind = nind+2
+in//let
+nindstrnfpr
+(filr
+,nind, "(let\n");
+nindstrnfpr
+(filr, nind, "(\n");
+fjags_cm1emit(fjas, env0);
+nindstrnfpr(filr, nind, ")\n")
+end//let
 //
 val (  ) =
 (
-  fjags_cm1emit(fjas, env0))
+  i1cmp_cm1emit(icmp, env0))
 val (  ) =
 (
-  i1cmp_cm1emit(icmp, env0))
+strnfpr(filr, "))");fprintln(filr))
 //
 (* ****** ****** *)
 end//let//end[TEQI1DEXPsome(...)]

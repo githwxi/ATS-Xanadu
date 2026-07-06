@@ -91,6 +91,10 @@ _(*DATS*)="./../DATS/cm1emit.dats"
 #symload filr with envx2js_filr$get
 #symload nind with envx2js_nind$get
 (* ****** ****** *)
+//
+#symload
+fjags_cm1emit with fjarglst_cm1emit
+//
 (* ****** ****** *)
 //
 val
@@ -829,12 +833,56 @@ i1dclist_cm1emit(dcls, env0)
 val (  ) =
 nindstrnfpr(filr, nind, ")\n")
 //
-val (  ) = i1cmp_cm1emit(icmp, env0)
 val (  ) =
 (
-nindstrnfpr(filr, nind, ")");fprintln(filr))
+i1cmp_cm1emit(icmp, env0);strnfpr(filr, ")");fprintln(filr))
 //
 end(*let*)//end-of-[I1INSlet0(dcls,icmp)]
+//
+(* ****** ****** *)
+//
+|I1INSift0
+(ival
+,ithn, iels) =>
+let
+//
+val (  ) =
+(
+fprintln(filr))
+val (  ) =
+(
+nindstrnfpr
+(filr, nind, "(if ");
+i1valcm1
+(filr, ival);strnfpr(filr, "\n"))
+//
+val (  ) =
+(
+case ithn of
+|optn_nil() =>
+(
+nindstrnfpr(filr, nind, "()"))
+|optn_cons(icmp) =>
+(
+i1cmp_cm1emit(icmp, env0);fprintln(filr))
+)
+//
+val (  ) =
+(
+case iels of
+|optn_nil() =>
+(
+nindstrnfpr(filr, nind, "()"))
+|optn_cons(icmp) =>
+(
+i1cmp_cm1emit(icmp, env0);fprintln(filr))
+)
+//
+val (  ) =
+(
+nindstrnfpr(filr, nind, ") ;; if(...)");fprintln(filr))
+//
+end(*let*)//end-of-[I1INSift0(ival, ...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -863,10 +911,16 @@ val nind =
 in//let
 //
 case+ iins of
+//
 |I1INStimp _ =>
 (
   nindstrnfpr(filr, nind, ")"))
+//
 |I1INSlet0 _ =>
+(
+  nindstrnfpr(filr, nind, ")"))
+//
+|I1INSift0 _ =>
 (
   nindstrnfpr(filr, nind, ")"))
 //
@@ -923,6 +977,13 @@ case+ icmp of
 I1CMPcons
 (ilts, ival) =>
 (
+case+ ilts of
+|list_nil() =>
+(
+nindfpr
+(filr, nind);i1valcm1(filr, ival))
+|list_cons _ =>
+(
 nindfpr(filr, nind);
 strnfpr(filr, "(let*\n");
 nindfpr(filr, nind);strnfpr(filr, "(\n");
@@ -935,8 +996,7 @@ where
 { val () =
   i1letlst_cm1emit(ilts, env0)});
 //
-nindfpr(filr, nind);strnfpr(filr, ") ");
-i1valcm1(filr, ival);strnfpr(filr, ")");fprintln(filr)
+nindstrnfpr(filr, nind, ") ");i1valcm1(filr, ival);strnfpr(filr, ")"))
 )
 end(*let*)//end-of-[i1cmp_cm1emit(icmp,env0)]
 //
@@ -1109,10 +1169,6 @@ envx2js_incnind(env0,2(*++*));
 envx2js_decnind(env0,2(*--*)))
 where{
 //
-#symload
-fjags_cm1emit
-with fjarglst_cm1emit
-//
 val
 nind = (nind+2)
 //
@@ -1129,8 +1185,7 @@ nindstrnfpr(filr, nind, ")\n"))
 val () = i1cmp_cm1emit(icmp, env0)}//where
 );
 //
-nindstrnfpr
-(filr, nind, ")) ;; endtimp(");
+strnfpr(filr, ")) ;; endtimp(");
 d2cst_fprint(dcst, filr);strnfpr(filr, ")");fprintln(filr))
 )
 //
