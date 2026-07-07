@@ -35,37 +35,37 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
-def XATS2CM_a1sz_length(A0):
-  return len(A0)
+(define
+ (XATS2CM_a1sz_length A0) (vector-length A1))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
-def XATS2CM_a1sz_lget_at(A0, i0):
-  return A0[i0]
-def XATS2CM_a1sz_lset_at(A0, i0, x1):
-  A0[i0] = x1; return
+(define
+ (XATS2CM_a1sz_lget_at A0 i0) (vector-ref A0 i0))
+(define
+ (XATS2CM_a1sz_lset_at A0 i0 x1) (vector-set! A0 i0 x1))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
-def XATS2CM_a1sz_make_nccm(n0, x0):
-  i0 = 0
-  A0 = []
-  while (i0 < n0):
-    A0.append(x0); i0 = i0 + 1
-  return A0 ;; HX: A0 = [x0, ..., x0]
+(define
+ (XATS2CM_a1sz_make_ncpy n0 x0) (make-vector n0 x0))
 ;;
-def XATS2CM_a1sz_make_nfun(n0, fopr):
-  i0 = 0
-  A0 = []
-  while (i0 < n0):
-    A0.append(fopr(i0)); i0 = i0 + 1
-  return A0 ;; HX: A0 = [fopr(0),...,fopr(n-1)]
+(define
+ (XATS2CM_a1sz_make_nfun n0 fopr)
+ (let loop
+     ((i0 0)
+      (A0 (make-vector n0 #f)))
+   (if (>= i0 n0) A0
+       (begin (vector-set! A0 i0 (fopr i0)) (loop (+ i0 1) A0)))))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
-def XATS2CM_a1sz_make_fwork(fwork):
-  A0 = []
-  fwork(lambda x0: A0.append(x0)); return A0
+(define
+ (XATS2CM_a1sz_make_fwork fwork)
+ (let ((A '())) 
+   (begin
+     (fwork (lambda (x0) (set! A0 (cons x0 A0))))
+     (list-vector reverse! A0))))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
