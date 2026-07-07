@@ -886,6 +886,36 @@ end(*let*)//end-of-[I1INSift0(ival, ...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+|I1INStup0
+(   i1vs   ) =>
+let
+//
+fun
+i1vlsfpr
+( filr: FILR
+, i1vs: i1valist): void =
+(
+case+ i1vs of
+|list_nil() => ()
+|list_cons(i1v1, i1vs) =>
+(
+strnfpr(filr, " ");
+i1valcm1(filr, i1v1); i1vlscm1(filr, i1vs)))
+//
+in//let
+(
+case+ i1vs of
+|
+list_nil() => strnfpr(filr, "#f")
+|
+list_cons _ => (
+strnfpr(filr, "(XATSTUP0");
+i1vlsfpr(filr, i1vs);strnfpr(filr, ")");fprintln(filr)))
+end(*let*)//end-of-[I1INStup0(ival, ...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 | _(*otherwise*) => i1ins_fprint(iins, filr)
 (* ****** ****** *)
 (* ****** ****** *)

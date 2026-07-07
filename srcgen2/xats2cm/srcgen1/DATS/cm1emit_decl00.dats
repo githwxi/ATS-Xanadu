@@ -648,7 +648,15 @@ val (  ) =
   i1cmp_ind$cm1emit(icmp, env0))
 val (  ) =
 (
-  strnfpr(filr, ")"); fprintln(filr))
+if // if
+(nind > 0)
+then//then
+(
+strnfpr(filr, ")");fprintln(filr))
+else//else
+(
+nindstrnfpr(
+filr, nind, "\n) ;; val(...)");fprintln(filr)))
 //
 val (  ) =
 (
@@ -656,7 +664,7 @@ nindstrnfpr
 (filr, nind, ";; (XATS000_patck ");
 i0pckcm1(filr, ival, ipat);strnfpr(filr, ")\n"))
 //
-endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
+endlet(*TEQI1CMPsome*))(*case+of(tdxp)*)
 //
 (* ****** ****** *)
 //
@@ -871,10 +879,7 @@ end//let
 //
 val (  ) =
 (
-  i1cmp_cm1emit(icmp, env0))
-val (  ) =
-(
-strnfpr(filr, "))");fprintln(filr))
+i1cmp_cm1emit(icmp, env0); strnfpr(filr, "))"))
 //
 (* ****** ****** *)
 end//let//end[TEQI1DEXPsome(...)]
@@ -885,8 +890,16 @@ val (  ) = envx2js_poplam0(env0)//leave
 //
 val (  ) =
 (
-nindstrnfpr
-(filr, nind, ") ;; ");d2varcm1(filr, dvar);fprintln(filr))
+if // if
+(nind > 0)
+then//then
+(
+strnfpr(
+filr, ") ;; ");d2varcm1(filr, dvar);fprintln(filr))
+else//else
+(
+nindstrnfpr(
+filr, nind, "\n) ;; ");d2varcm1(filr, dvar);fprintln(filr)))
 //
 (* ****** ****** *)
 //
