@@ -36,6 +36,18 @@ then x * fact1(x-1) else 1
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+fact2
+(x: sint): sint =
+(
+case+ x <= 0 of
+| true => 1
+| false => x * fact2(x-1))
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
 val () =
 prints("fact1(10) = ", fact1(10), "\n")
 //
