@@ -2259,7 +2259,7 @@ envx2js_incnind(env0,2(*++*))
 //
 val () =
 f0_i1tnmvalclslst
-( env0,itnm,i1v1,icls(*list*) )
+(env0,itnm,i1v1,icls(*clslst*))
 //
 val () =
 (

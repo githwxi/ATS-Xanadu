@@ -885,6 +885,27 @@ nindstrnfpr(filr, nind, ") ;; if(...)");fprintln(filr))
 end(*let*)//end-of-[I1INSift0(ival, ...)]
 //
 (* ****** ****** *)
+//
+|I1INScas0
+(cknd
+,ival, iclz) =>
+let
+//
+val (  ) =
+(
+fprintln(filr))
+val (  ) =
+(
+nindstrnfpr
+(filr, nind, "(cond\n"))
+//
+val (  ) =
+(
+nindstrnfpr(filr, nind, ") ;; case(...)");fprintln(filr))
+//
+end(*let*)//end-of-[I1INScas0(cknd, ...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1INStup0
@@ -951,6 +972,9 @@ case+ iins of
   nindstrnfpr(filr, nind, ")"))
 //
 |I1INSift0 _ =>
+(
+  nindstrnfpr(filr, nind, ")"))
+|I1INScas0 _ =>
 (
   nindstrnfpr(filr, nind, ")"))
 //
