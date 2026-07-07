@@ -85,14 +85,15 @@
 (define (XATSP1RJ _ p1rj) p1rj)
 (define (XATSP1CN _ p1cn) p1cn)
 ;;
-(define (XATSPCON pcon argi) (vector-ref pcon (+ argi 1)))
+(define
+(XATSPCON pcon argi) (vector-ref pcon (+ argi 1)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define (XATSTRCD knd0) knd0)
-(define (XATSTUP0 tpl0) tpl0)
-(define (XATSTUP1 _ tpl1) tpl1)
-(define (XATSRCD2 _ rcd2) rcd2)
+(define (XATSTUP0 . tpl0) (apply vector tpl0))
+(define (XATSTUP1 _ . tpl1) (apply vector tpl1))
+(define (XATSRCD2 _ . rcd2) (apply vector rcd2))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
