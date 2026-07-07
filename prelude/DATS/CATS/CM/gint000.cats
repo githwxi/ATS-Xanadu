@@ -40,32 +40,32 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_sint_lt_sint i1 i2) (< i1 i2))
+ (XATS2CM_sint_lt$sint i1 i2) (< i1 i2))
 (define
- (XATS2CM_sint_gt_sint i1 i2) (> i1 i2))
+ (XATS2CM_sint_gt$sint i1 i2) (> i1 i2))
 (define
- (XATS2CM_sint_eq_sint i1 i2) (= i1 i2))
+ (XATS2CM_sint_eq$sint i1 i2) (= i1 i2))
 ;;
 (define
- (XATS2CM_sint_lte_sint i1 i2) (<= i1 i2))
+ (XATS2CM_sint_lte$sint i1 i2) (<= i1 i2))
 (define
- (XATS2CM_sint_gte_sint i1 i2) (>= i1 i2))
+ (XATS2CM_sint_gte$sint i1 i2) (>= i1 i2))
 (define
- (XATS2CM_sint_neq_sint i1 i2) (not (= i1 i2)))
+ (XATS2CM_sint_neq$sint i1 i2) (not (= i1 i2)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_sint_add_sint i1 i2) (+ i1 i2))
+ (XATS2CM_sint_add$sint i1 i2) (+ i1 i2))
 (define
- (XATS2CM_sint_sub_sint i1 i2) (- i1 i2))
+ (XATS2CM_sint_sub$sint i1 i2) (- i1 i2))
 (define
- (XATS2CM_sint_mul_sint i1 i2) (* i1 i2))
+ (XATS2CM_sint_mul$sint i1 i2) (* i1 i2))
 ;;
 (define
- (XATS2CM_sint_mod_sint i1 i2) (modulo i1 i2))
+ (XATS2CM_sint_mod$sint i1 i2) (modulo i1 i2))
 (define
- (XATS2CM_sint_div_sint i1 i2) (quotient i1 i2))
+ (XATS2CM_sint_div$sint i1 i2) (quotient i1 i2))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;

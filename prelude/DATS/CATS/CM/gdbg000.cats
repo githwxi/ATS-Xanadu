@@ -38,7 +38,7 @@
 (define
  (XATS2CM_bool_assert_errmsg cond emsg)
  (if (not cond)
-  (error (string-append "XATS2CM_bool_assert_errmsg: emsg = " emsg))))
+  (error "XATS2CM_bool_assert_errmsg" emsg)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.

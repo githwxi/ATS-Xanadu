@@ -47,10 +47,10 @@ $(NODE) --stack-size=8800 $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.scm
 test01:: ; \
 $(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.scm
 ############
-# test01:: ; \
-# $(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.scm >> OUTS/$@_out.scm
-# test01:: ; \
-# $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.scm >> OUTS/$@_out.scm
+test01:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.scm >> OUTS/$@_out.scm
+test01:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.scm >> OUTS/$@_out.scm
 ############
 test01:: \
 test01_xats2cm.dats; \
