@@ -80,6 +80,8 @@ _(*DATS*)="./../DATS/cm1emit.dats"
 #symload ival with i1cmp_ival$get
 #symload ilts with i1cmp_ilts$get
 (* ****** ****** *)
+#symload node with i1gua_node$get
+#symload node with i1gpt_node$get
 #symload node with i1cls_node$get
 (* ****** ****** *)
 #symload node with t1imp_node$get
@@ -246,10 +248,12 @@ end(*let*)//end-of-[i0pcncm1(filr,ipat)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#implfun
+(*
+fun
 i0pckcm1
-( filr
-, ival, ipat) =
+(filr: FILR
+,ival: i1val
+,ipat: i0pat): void =
 let
 #impltmp
 g_print$out<>() = filr
@@ -257,6 +261,150 @@ in//let
 (
 prints("i0pckcm1(",ival,",",ipat, ")"))
 end//let//endof(i0pckcm1(filr,ival,ipat))
+*)
+//
+#implfun
+i0pckcm1
+( filr
+, ival, ipat) =
+let
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print$out<>() = filr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+conj
+(b0: sint): void =
+print(" ")//endfun
+//
+fun
+proj
+(i0: sint
+,ival: i1val
+,ipat: i0pat): i1val =
+(
+case-
+ipat.node() of
+//
+|I0Pdapp(i0f0, _) =>
+i1val(loc0,
+  I1Vp1cn(i0f0, ival, i0))
+//
+|I0Ptup0 _ =>
+(
+i1val
+(loc0, I1Vp0rj(ival, i0)))
+//
+|I0Ptup1(tknd, _) =>
+i1val(loc0,
+  I1Vp1rj(tknd, ival, i0))
+//
+) where
+{
+  val loc0 = ival.lctn((*0*))
+}(*where*)//end-of-[proj(...)]
+//
+//
+fun
+f0_ipat
+(
+b0: sint,
+ival: i1val,
+ipat: i0pat): void =
+case+
+ipat.node() of
+//
+(* ****** ****** *)
+|I0Pany _ => ((*void*))
+|I0Pvar _ => ((*void*))
+(* ****** ****** *)
+//
+|I0Pint _ =>
+(
+ f0_int0(b0, ival, ipat))
+|I0Pbtf _ =>
+(
+ f0_btf0(b0, ival, ipat))
+//
+(* ****** ****** *)
+//
+|
+_(*otherwise*) =>
+(
+conj(b0); prints('"',ipat,'"'))
+//
+(* ****** ****** *)
+//end-of-[f0_ipat(b0,ival,ipat)]
+(* ****** ****** *)
+//
+and
+f0_int0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pint
+(  tint  ) = ipat.node()
+//
+#impltmp
+g_print
+<token>(x) = i0intcm1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valcm1(filr, x)
+//
+in//let
+(
+conj(b0);
+prints("(XATS000_inteq ", ival, " ", tint, ")"))
+end(*let*)//end-of-[f0_int0(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_btf0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pbtf
+(  btf0  ) = ipat.node()
+//
+#impltmp
+g_print
+<sym_t>(x) = i0btfcm1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valcm1(filr, x)
+//
+in//let
+(
+conj(b0);prints("(XATS000_btfeq ", ival, " ", btf0, ")"))
+end(*let*)//end-of-[f0_btf0(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+in//let
+//
+(
+if // if
+(
+i0pat_allq(ipat))
+  then print("#t")
+  else f0_ipat(0(*conj*), ival, ipat))
+//
+end(*let*)//end-(i0pckcm1(filr,ival,ipat))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1045,13 +1193,7 @@ nindfpr(filr, nind);
 strnfpr(filr, "(let*\n");
 nindfpr(filr, nind);strnfpr(filr, "(\n");
 //
-(
-envx2js_incnind(env0,1(*++*));
-(
-envx2js_decnind(env0,1(*--*)))
-where
-{ val () =
-  i1letlst_cm1emit(ilts, env0)});
+i1letlst_ind$cm1emit(ilts, 1(*d*), env0);
 //
 nindstrnfpr(filr, nind, ") ");i1valcm1(filr, ival);strnfpr(filr, ")"))
 )
@@ -1340,6 +1482,25 @@ val () = envx2js_decnind(env0, dlta)
 end(*let*)//end-of-(i1cmp_ind$cm1emit(icmp,...)]
 //
 (* ****** ****** *)
+//
+#implfun
+i1letlst_ind$cm1emit
+(ilts, dlta, env0) =
+let
+//
+val () =
+(
+  envx2js_incnind(env0, dlta))
+//
+val () =
+(
+  i1letlst_cm1emit(ilts, env0))
+//
+val () = envx2js_decnind(env0, dlta)
+//
+end(*let*)//endof(i1letlst_ind$cm1emit(ilts,...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -1383,11 +1544,37 @@ i1valcls_cm1emit(", ival, ";", icls, ")\n"))
 (igpt, icmp) =>
 let
 //
-val () =
+val (  ) =
 (
 nindstrnfpr(filr, nind, "(\n"))
 //
-val () =
+val (  ) =
+(
+nindstrnfpr
+(filr, nind+1, ";; ");
+prints(ival, " AS ", igpt);fprintln(filr))
+//
+val (  ) =
+nindstrnfpr
+(filr, nind+1, "(and")
+//
+val ibnd =
+(
+case+
+igpt.node() of
+|I1GPTpat(ibnd) => ibnd
+|I1GPTgua(ibnd, i1gs) => ibnd)
+val ipat =
+(
+case+ ibnd of
+|I1BNDcons(_, ipat, _) => ipat)
+//
+val (  ) =
+(
+i0pckcm1(filr, ival, ipat);
+  strnfpr(filr, ")");fprintln(filr))
+//
+val (  ) =
 (
 i1cmp_ind$cm1emit
 (icmp, 1(*d*), env0); strnfpr(filr, ")");fprintln(filr))
