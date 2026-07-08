@@ -900,6 +900,9 @@ nindstrnfpr
 (filr, nind, "(cond\n"))
 //
 val (  ) =
+i1valclslst_cm1emit(ival, iclz, env0)
+//
+val (  ) =
 (
 nindstrnfpr(filr, nind, ") ;; case(...)");fprintln(filr))
 //
@@ -1053,24 +1056,6 @@ where
 nindstrnfpr(filr, nind, ") ");i1valcm1(filr, ival);strnfpr(filr, ")"))
 )
 end(*let*)//end-of-[i1cmp_cm1emit(icmp,env0)]
-//
-(* ****** ****** *)
-//
-#implfun
-i1cmp_ind$cm1emit
-(icmp, env0) =
-let
-//
-val () =
-(
-  envx2js_incnind(env0, 2))
-val () =
-(
-  i1cmp_cm1emit(icmp, env0))
-//
-val () = envx2js_decnind(env0, 2)
-//
-end(*let*)//end(i1cmp_ind$cm1emit(icmp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1336,6 +1321,97 @@ prints(" (", itnm, " ", "arg", i0, ")\n")))
 )
 //
 }(*where*)//end-of-[fjarglst_cm1emit(fjas,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1cmp_ind$cm1emit
+(icmp, dlta, env0) =
+let
+//
+val () =
+(
+  envx2js_incnind(env0, dlta))
+//
+val () = i1cmp_cm1emit(icmp, env0)
+val () = envx2js_decnind(env0, dlta)
+//
+end(*let*)//end-of-(i1cmp_ind$cm1emit(icmp,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1valcls_cm1emit
+(ival, icls, env0) =
+let
+//
+val
+nind =
+envx2js_nind$get(env0)
+val
+filr =
+envx2js_filr$get(env0)
+//
+#impltmp
+g_print$out<>() = (filr)
+//
+in//let
+//
+case+
+icls.node() of
+//
+|I1CLSgpt
+(   igpt   ) =>
+let
+val () =
+(
+nindstrnfpr(filr,
+nind, ";; I1CLSgpt(...)\n"))
+end//let//end(I1CLSigpt(igpt))
+//
+(*
+|I1CLScls
+(igpt, icmp) =>
+(
+nindfpr(filr, nind);
+prints("\
+i1valcls_cm1emit(", ival, ";", icls, ")\n"))
+*)
+|I1CLScls
+(igpt, icmp) =>
+let
+//
+val () =
+(
+nindstrnfpr(filr, nind, "(\n"))
+//
+val () =
+(
+i1cmp_ind$cm1emit
+(icmp, 1(*d*), env0); strnfpr(filr, ")");fprintln(filr))
+//
+end(*let*)//end-of-[I1CLScls(igpt, icmp)]
+//
+end(*let*)//end(i1valcls_cm1emit(ival,icls,env0))
+//
+(* ****** ****** *)
+//
+#implfun
+i1valclslst_cm1emit
+(ival, iclz, env0) =
+(
+case+ iclz of
+|
+list_nil() => ((*0*))
+|
+list_cons(icls, iclz) =>
+let
+val () = i1valcls_cm1emit(ival, icls, env0)
+val () = i1valclslst_cm1emit(ival, iclz, env0)
+end//let//end-of-[list_cons]
+)(*case+*)//end(i1valclslst_cm1emit(ival,iclz,env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

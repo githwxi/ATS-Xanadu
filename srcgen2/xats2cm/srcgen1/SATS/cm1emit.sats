@@ -179,9 +179,6 @@ i1bnd_cm1emit
 fun
 i1cmp_cm1emit
 (icmp: i1cmp, env0: !envx2cm): void
-fun
-i1cmp_ind$cm1emit
-(icmp: i1cmp, env0: !envx2cm): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -259,6 +256,22 @@ i1fundclist_cm1emit
 fun
 i1dclistopt_cm1emit
 (dopt: i1dclistopt, env0: !envx2cm): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1cmp_ind$cm1emit
+(icmp: i1cmp, dlta: sint, env0: !envx2cm): void
+//
+(* ****** ****** *)
+//
+fun
+i1valcls_cm1emit(
+ival: i1val, icls: i1cls, env0: !envx2cm): void
+fun
+i1valclslst_cm1emit(
+ival: i1val, iclz: i1clslst, env0: !envx2cm): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

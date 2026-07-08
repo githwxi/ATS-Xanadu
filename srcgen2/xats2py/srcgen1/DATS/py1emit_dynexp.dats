@@ -1741,13 +1741,23 @@ in//let
 //
 case+
 icl0.node() of
-|
-I1CLScls(igpt, icmp) =>
+//
+|I1CLSgpt
+(   igpt   ) =>
 let
 val () =
 (
-nindfpr(filr, nind);
-strnfpr(filr, "## { // cls\n"))
+nindstrnfpr(filr,
+nind, "## I1CLSgpt(...)\n"))
+end//let//end(I1CLSigpt(igpt))
+//
+|I1CLScls
+(igpt, icmp) =>
+let
+val () =
+(
+nindstrnfpr(
+filr, nind, "## { // cls\n"))
 //
 val () =
 (
