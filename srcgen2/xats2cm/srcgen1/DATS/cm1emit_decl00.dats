@@ -645,7 +645,7 @@ i1tnmcm1(filr, itnm);strnfpr(filr, "\n"))
 //
 val (  ) =
 (
-  i1cmp_ind$cm1emit(icmp, env0))
+i1cmp_ind$cm1emit(icmp, 2, env0))
 val (  ) =
 (
 if // if

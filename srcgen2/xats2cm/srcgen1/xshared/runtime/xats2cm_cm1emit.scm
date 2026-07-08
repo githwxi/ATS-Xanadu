@@ -185,7 +185,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS000_lvget lval)
+(XATS000_lvget lval)
   (let ((ctag (vector-ref lval 0)))
     (cond
      ((= ctag 0)
@@ -204,7 +204,7 @@
      (else (error "XATS000_lvget" lval)))))
 ;;
 (define
-  (XATS000_lvset! lval rval)
+(XATS000_lvset! lval rval)
   (let ((ctag (vector-ref lval 0)))
     (cond
      ((= ctag 0)
@@ -224,7 +224,8 @@
 	     (idx2 (vector-ref lval 2))) (vector-set! val1 idx2 rval)))
      (else (error "XATS000_lvset!" lval rval)))))
 ;;
-(define (XATS000_ftset tpl0 idx1 rval)
+(define
+(XATS000_ftset tpl0 idx1 rval)
   (let ((tpl1 (vector-copy tpl0)))
     (begin (vector-set! tpl1 idx1 rval) tpl1)))
 ;;
