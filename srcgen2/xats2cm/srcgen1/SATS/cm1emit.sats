@@ -263,6 +263,9 @@ i1dclistopt_cm1emit
 fun
 i1cmp_ind$cm1emit
 (icmp: i1cmp, dlta: sint, env0: !envx2cm): void
+fun
+i1letlst_ind$cm1emit
+(ilts: i1letlst, dlta: sint, env0: !envx2cm): void
 //
 (* ****** ****** *)
 //
