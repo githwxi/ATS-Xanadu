@@ -9,6 +9,8 @@
 ;;
 (define XATSTOP0 #f)
 ;;
+(define XATSVOID #f)
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define (XATSCNUL) 0)
@@ -165,7 +167,7 @@
 ;;
 (define
   (XATS000_assgn lval rval)
-  (XATS000_lvset lval rval))
+  (XATS000_lvset! lval rval))
 ;;
 (define (XATS000_l0azy lfun) (vector 0 lfun))
 ;;

@@ -645,7 +645,7 @@ i1tnmcm1(filr, itnm);strnfpr(filr, "\n"))
 //
 val (  ) =
 (
-i1cmp_ind$cm1emit(icmp, 2, env0))
+i1cmp_ind$cm1emit(icmp, 1, env0))
 val (  ) =
 (
 if // if
@@ -655,8 +655,7 @@ then//then
 strnfpr(filr, ")");fprintln(filr))
 else//else
 (
-nindstrnfpr(
-filr, nind, "\n) ;; val(...)");fprintln(filr)))
+nindstrnfpr(filr, nind, "\n) ;; val(...)");fprintln(filr)))
 //
 val (  ) =
 (
@@ -671,6 +670,8 @@ endlet(*TEQI1CMPsome*))(*case+of(tdxp)*)
 end where//end-of-let(i1valdcl_cm1emit(ival,...)]
 {
 //
+(* ****** ****** *)
+//
 val (  ) =
 let
 val filr =
@@ -684,38 +685,7 @@ in//let
  nindstrnfpr(filr, nind, ";; I1VALDCL\n"))
 end//let//end-of-[val()]
 //
-fun
-f0_i1tnmcmp
-(
-itnm: i1tnm,
-icmp: i1cmp,
-env0: !envx2js): void =
-let
-//
-val filr =
-(
-envx2js_filr$get(env0))
-val nind =
-(
-envx2js_nind$get(env0))
-//
-val
-ival = i1cmp_ival$get(icmp)
-val
-ilts = i1cmp_ilts$get(icmp)
-//
-val () =
-i1letlst_cm1emit(ilts, env0)
-//
-val () =
-let
-nindfpr(filr, nind);
-strnfpr(filr, "(set! ");
-i1tnmcm1(filr, itnm);strnfpr(filr, " ");
-i1valcm1(filr, ival);strnfpr(filr, ")");fprintln(filr)
-end//let
-//
-end//let//end-of-[f0_i1tnmcmp(...)]
+(* ****** ****** *)
 //
 }(*where*)//end-of-[i1valdcl_cm1emit(dcl0,env0)]
 //
@@ -757,12 +727,16 @@ val nind = env0.nind()
 in//let
 //
 (*
-HX-2024-06-07:
+HX-2026-07-08:
 w/o initialization
 *)
 nindfpr(filr, nind);
-i1tnmcm1(filr, itnm);
-strnfpr(filr, " = XATSVAR0()\n")
+(
+if (nind > 0)
+then strnfpr(filr, "(")
+else strnfpr(filr, "(define "));
+//
+i1tnmcm1(filr, itnm);strnfpr(filr, " (XATSVAR0))");fprintln(filr)
 //
 end//let//end-of-[TEQI1CMPnone]
 //
@@ -774,23 +748,29 @@ let
 val filr = env0.filr()
 val nind = env0.nind()
 //
-val ival =
-(
-  i1cmp_ival$get(icmp))
-val (  ) =
-(
-  i1cmp_cm1emit(icmp, env0))
-//
 in//let
 //
 (*
-HX-2024-06-07:
+HX-2026-07-08:
 with initialization
 *)
+(
 nindfpr(filr, nind);
-i1tnmcm1(filr, itnm);
-strnfpr(filr, " = XATSVAR1(");
-i1valcm1(filr, ival);strnfpr(filr, ")\n")
+if (nind > 0)
+then strnfpr(filr, "(")
+else strnfpr(filr, "(define "));
+i1tnmcm1(filr, itnm);strnfpr(filr, "\n");
+nindstrnfpr(filr, nind+1, "(XATSVAR1\n");
+i1cmp_ind$cm1emit(icmp, 2, env0);strnfpr(filr, ")");
+//
+if // if
+(nind > 0)
+then//then
+(
+strnfpr(filr, ")");fprintln(filr))
+else//else
+(
+nindstrnfpr(filr, nind, "\n) ;; var(...)");fprintln(filr))
 //
 end//let//end-of-[TEQI1CMPsome]
 //
