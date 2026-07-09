@@ -211,12 +211,6 @@ i1cmplst_cm1emit
 (cmps: i1cmplst, env0: !envx2cm): void
 //
 (* ****** ****** *)
-//
-fun
-fjarglst_cm1emit
-(fjas: fjarglst, env0: !envx2cm): void
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -266,30 +260,49 @@ i1dclistopt_cm1emit
 (* ****** ****** *)
 //
 fun
-i1cmp_ind$cm1emit
-(icmp: i1cmp, dlta: sint, env0: !envx2cm): void
-fun
-i1letlst_ind$cm1emit
-(ilts: i1letlst, dlta: sint, env0: !envx2cm): void
-//
-(* ****** ****** *)
-//
-fun
 i1gua_cm1emit
 (igua: i1gua, env0: !envx2cm): void
 fun
 i1gualst_cm1emit
 (i1gs: i1gualst, env0: !envx2cm): void
-fun
-i1gualst_ind$cm1emit
-(i1gs: i1gualst, dlta: sint, env0: !envx2cm): void
+//
+(* ****** ****** *)
 //
 fun
-i1valcls_cm1emit(
-ival: i1val, icls: i1cls, env0: !envx2cm): void
+fjletlst_cm1emit
+(fjas: fjarglst, env0: !envx2cm): void
+//
+(* ****** ****** *)
+//
 fun
-i1valclslst_cm1emit(
-ival: i1val, iclz: i1clslst, env0: !envx2cm): void
+i1cmp_ind$cm1emit
+( icmp
+: i1cmp, dlta: sint, env0: !envx2cm): void
+//
+fun
+i1letlst_ind$cm1emit
+( ilts
+: i1letlst, dlta: sint, env0: !envx2cm): void
+//
+fun
+i1gualst_ind$cm1emit
+( i1gs
+: i1gualst, dlta: sint, env0: !envx2cm): void
+//
+fun
+fjletlst_ind$cm1emit
+( fjas
+: fjarglst, dlta: sint, env0: !envx2cm): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1valcls_cm1emit
+(ival: i1val, icls: i1cls, env0: !envx2cm): void
+fun
+i1valclslst_cm1emit
+(ival: i1val, iclz: i1clslst, env0: !envx2cm): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
