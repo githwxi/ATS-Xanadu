@@ -714,10 +714,10 @@ ival.node() of
 //
 |I1Vaddr(i1v1) =>
 (
-  prints("XATSADDR(", i1v1, ")") )
+  prints("(XATSADDR ", i1v1, ")"))
 |I1Vaexp(i0e1) =>
 (
-  prints("XATSAEXP(", i0e1, ")") )
+  prints("(XATSAEXP ", i0e1, ")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -850,7 +850,7 @@ case+ ilet of
 fprintln(filr))
 where{
 val () =
-f0_i1ins(env0, iins)}
+f0_i1anyins(env0, iins)}
 //
 |I1LETnew1
 (itnm, iins) =>
@@ -971,7 +971,7 @@ val (  ) =
 (
 nindstrnfpr
 (filr
-,nind, "(let*\n");
+,nind, "(letrec\n");
 nindstrnfpr
 (filr, nind, "(\n"))
 //
@@ -1009,7 +1009,8 @@ val (  ) =
 case ithn of
 |optn_nil() =>
 (
-nindstrnfpr(filr, nind, "()"))
+nindstrnfpr
+(filr, nind, "XATSVOID");fprintln(filr))
 |optn_cons(icmp) =>
 (
 i1cmp_cm1emit(icmp, env0);fprintln(filr))
@@ -1020,7 +1021,8 @@ val (  ) =
 case iels of
 |optn_nil() =>
 (
-nindstrnfpr(filr, nind, "()"))
+nindstrnfpr
+(filr, nind, "XATSVOID");fprintln(filr))
 |optn_cons(icmp) =>
 (
 i1cmp_cm1emit(icmp, env0);fprintln(filr))
@@ -1076,19 +1078,46 @@ strnfpr(filr, " ");
 i1valcm1(filr, i1v1); i1vlscm1(filr, i1vs)))
 //
 in//let
-(
+//
 case+ i1vs of
-|
-list_nil() => strnfpr(filr, "#f")
-|
-list_cons _ => (
-strnfpr(filr, "(XATSTUP0");
-i1vlsfpr(filr, i1vs);strnfpr(filr, ")");fprintln(filr)))
+|list_nil() =>
+(
+strnfpr(filr, "XATSVOID"))
+|list_cons _ =>
+(
+strnfpr(
+filr, "(XATSTUP0");i1vlsfpr(filr, i1vs);strnfpr(filr, ")"))
+//
 end(*let*)//end-of-[I1INStup0(ival, ...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-| _(*otherwise*) => i1ins_fprint(iins, filr)
+//
+|I1INSflat
+(   i1v1   ) =>
+(
+strnfpr(filr, "(XATSFLAT");
+strnfpr(filr, " ");i1valcm1(filr, i1v1);strnfpr(filr, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSassgn
+(i1vl, i1vr) =>
+(
+strnfpr(filr, "(XATS000_assgn");
+strnfpr(filr, " ");i1valcm1(filr, i1vl);
+strnfpr(filr, " ");i1valcm1(filr, i1vr);strnfpr(filr, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|
+_(*otherwise*) =>
+(
+let
+val ((*0*)) = i1ins_fprint(iins, filr) in (*otherwise*) end)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -1136,6 +1165,28 @@ end(*let*)//end-of-[f0_close(env0,iins)]
 (* ****** ****** *)
 //
 fun
+f0_i1anyins
+( env0:
+! envx2cm
+, iins: i1ins): void =
+let
+//
+val filr =
+(
+  envx2js_filr$get(env0))
+val nind =
+(
+  envx2js_nind$get(env0))
+//
+in//let
+(
+nindfpr
+(filr, nind);strnfpr(filr, "(");
+i1anycm1(filr);strnfpr(filr, " ");
+f0_i1ins(env0, iins);f0_close(env0, iins))
+end(*let*)//end[f0_i1anyins(env0,iins)]
+//
+fun
 f0_i1tnmins
 ( env0:
 ! envx2cm
@@ -1157,6 +1208,8 @@ nindfpr
 i1tnmcm1(filr, itnm);strnfpr(filr, " ");
 f0_i1ins(env0, iins);f0_close(env0, iins))
 end(*let*)//end[f0_i1tnmins(env0,itnm,iins)]
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[i1let_cm1emit(ilet,env0)]
 //

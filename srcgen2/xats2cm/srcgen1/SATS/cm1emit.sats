@@ -55,6 +55,11 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+i1anycm1(filr:FILR): void
+//
+(* ****** ****** *)
+//
+fun
 i0i00cm1(
 filr:FILR,int0:sint): void
 fun

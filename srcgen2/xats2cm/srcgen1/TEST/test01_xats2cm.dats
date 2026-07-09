@@ -45,11 +45,30 @@ case+ x <= 0 of
 | false => x * fact2(x-1))
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 val () =
 prints("fact1(10) = ", fact1(10), "\n")
+val () =
+prints("fact2(10) = ", fact2(10), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+fun
+fact4(x: sint): sint =
+(
+loop(x, r); r) where
+{
+var x: sint = x
+var r: sint = 1
+fun
+loop(x: &sint, r: &sint): void =
+(
+if (x > 0) then
+(r := x * r; x := x - 1; loop(x, r)))
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)

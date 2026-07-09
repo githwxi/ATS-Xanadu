@@ -235,6 +235,20 @@ end(*let*)//end-of-[d2varcm1(env0,dvar)]
 (* ****** ****** *)
 //
 #implfun
+i1anycm1
+( filr ) =
+(
+prints(
+"_cmx", "tnm", "__")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i1anycm1(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i0i00cm1
 (filr, i00) =
 (
