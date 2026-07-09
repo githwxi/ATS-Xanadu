@@ -93,15 +93,42 @@ _(*DATS*)="./../DATS/cm1emit.dats"
 #symload filr with envx2js_filr$get
 #symload nind with envx2js_nind$get
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #symload
 fjags_cm1emit with fjarglst_cm1emit
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 val
 EXCPTCON_BASE = 10000
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fjags_nilq
+(fjas: fjarglst): bool =
+(
+//
+case+ fjas of
+|list_nil
+( (*void*) ) => ( true )
+|list_cons
+(fja0, fjas) =>
+(
+case+
+fja0.node() of
+|FJARGdarg(bnds) =>
+if // if
+list_nilq(bnds)
+then//then
+fjags_nilq(fjas) else false)
+//
+)(*case+*)//end-of-[fjags_nilq]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -355,11 +382,23 @@ ipat.node() of
 //
 (* ****** ****** *)
 //
+|I0Pbang _ =>
+(
+ f0_bang(b0, ival, ipat))
+//
+|I0Pfree _ =>
+(
+ f0_free(b0, ival, ipat))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |
 _(*otherwise*) =>
 (
 conj(b0); prints('"',ipat,'"'))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //end-of-[f0_ipat(b0,ival,ipat)]
 (* ****** ****** *)
@@ -412,6 +451,33 @@ in//let
 (
 conj(b0);prints("(XATS000_btfeq ", ival, " ", btf0, ")"))
 end(*let*)//end-of-[f0_btf0(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and
+f0_bang
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+(
+f0_ipat(b0, ival, i0p1)
+) where
+{
+val-I0Pbang(i0p1) = ipat.node()
+}(*where*)//end-of-[f0_bang(...)]
+//
+and
+f0_free
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+(
+f0_ipat(b0, ival, i0p1)
+) where
+{
+val-I0Pfree(i0p1) = ipat.node()
+}(*where*)//end-of-[f0_free(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1408,7 +1474,10 @@ end//let
 ( tknd
 , stmp, dimp
 , fjas, icmp) =>
-(
+let
+val fjsq = fjags_nilq(fjas)
+in//let
+//
 nindfpr
 (filr, nind);
 strnfpr
@@ -1419,32 +1488,45 @@ strnfpr(filr," ;; timp: ");
 d2cst_fprint(dcst, filr);fprintln(filr));
 //
 (
-envx2js_incnind(env0,2(*++*));
+let
+//
+val nind = (nind+2)
+//
+in//let
+//
 (
-envx2js_decnind(env0,2(*--*)))
-where{
-//
-val
-nind = (nind+2)
-//
-val () =
+if fjsq then () else
 (
 nindstrnfpr
-(filr
-,nind, "(let\n");
-nindstrnfpr
-(filr, nind, "(\n");
+(filr, nind, "(let\n");
+nindstrnfpr(filr, nind, "(\n");
 fjags_cm1emit(fjas, env0);
 nindstrnfpr(filr, nind, ")\n"))
-//
-val () = i1cmp_cm1emit(icmp, env0)}//where
+)
+end//let
 );
 //
-strnfpr(filr, ")) ;; endtimp(");
-d2cst_fprint(dcst, filr);strnfpr(filr, ")");fprintln(filr))
-)
+i1cmp_ind$cm1emit(icmp, 2, env0);
 //
-end//let//end-of-[f0_t1imp(...)]
+(
+if
+fjsq
+then//then
+(
+  strnfpr(filr, ") ;; endtimp("))
+else//else
+(
+  strnfpr(filr, ")) ;; endtimp(")));
+//
+(
+d2cst_fprint
+(dcst, filr);strnfpr(filr, ")");fprintln(filr))
+//
+end(*let*)
+//
+)(*case+*)//end-of-[optn_cons]
+//
+end(*let*)//end-of-[f0_t1imp(...)]
 //
 }(*where*)//end-of-[t1imp_cm1emit(timp,env0)]
 //
