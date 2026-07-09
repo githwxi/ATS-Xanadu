@@ -529,6 +529,7 @@ in//let
 end(*let*)//end-of-[f0_str0(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 and
 f0_dap1
@@ -553,6 +554,8 @@ in//let
 ;print("XATS000_ctgeq(")
 ;prints(ival, ", ", i0f0, ")"))
 end(*let*)//end-of-[f0_dap1(...)]
+//
+(* ****** ****** *)
 //
 and
 f0_dapp
@@ -580,6 +583,7 @@ prints(ival,", ",i0f0, ")");
 f0_ipatlst(b0+1,0,ival,ipat,i0ps))
 end(*let*)//end-of-[f0_dapp(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 and
@@ -763,7 +767,7 @@ symbl_get_name(sym) in//let
 ) where
 {
 //
-  #impltmp g_print$out<>() = filr
+#impltmp g_print$out<>((*0*)) = filr
 //
 }(*where*)//end-of-[labeljs1(filr,lab0)]
 //

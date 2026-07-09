@@ -84,9 +84,6 @@ _(*DATS*)="./../DATS/cm1emit.dats"
 #symload filr with envx2js_filr$get
 #symload nind with envx2js_nind$get
 (* ****** ****** *)
-#symload
-fjags_cm1emit with fjarglst_cm1emit
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -849,11 +846,9 @@ let
 val nind = nind+2
 in//let
 nindstrnfpr
-(filr
-,nind, "(let\n");
-nindstrnfpr
-(filr, nind, "(\n");
-fjags_cm1emit(fjas, env0);
+(filr, nind, "(let\n");
+nindstrnfpr(filr, nind, "(\n");
+fjletlst_ind$cm1emit(fjas, 0, env0);
 nindstrnfpr(filr, nind, ")\n")
 end//let
 //
