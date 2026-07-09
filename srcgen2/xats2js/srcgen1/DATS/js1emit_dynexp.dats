@@ -2447,8 +2447,8 @@ js1emit_i1letlst
 js1emit_fjarglst
   (env0, fjas) =
 (
-  loop1(1(*i0*), fjas)
-) where
+loop1(1(*i0*), fjas))
+where
 {
 //
 val filr =

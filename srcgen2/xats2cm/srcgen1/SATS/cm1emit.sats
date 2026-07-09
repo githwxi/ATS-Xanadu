@@ -275,6 +275,16 @@ i1letlst_ind$cm1emit
 (* ****** ****** *)
 //
 fun
+i1gua_cm1emit
+(igua: i1gua, env0: !envx2cm): void
+fun
+i1gualst_cm1emit
+(i1gs: i1gualst, env0: !envx2cm): void
+fun
+i1gualst_ind$cm1emit
+(i1gs: i1gualst, dlta: sint, env0: !envx2cm): void
+//
+fun
 i1valcls_cm1emit(
 ival: i1val, icls: i1cls, env0: !envx2cm): void
 fun
