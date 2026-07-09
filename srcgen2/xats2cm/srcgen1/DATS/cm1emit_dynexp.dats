@@ -130,6 +130,27 @@ end//end-of-[d2con_ctag$get]
 (* ****** ****** *)
 //
 fun
+i1gpt_ibnd$get
+(igpt: i1gpt): i1bnd =
+(
+case+
+igpt.node() of
+|I1GPTpat(ibnd) => ibnd
+|I1GPTgua(ibnd, i1gs) => ibnd)
+//
+fun
+i1gpt_i1gs$get
+(igpt: i1gpt): i1gualst =
+(
+case+
+igpt.node() of
+|I1GPTpat(ibnd) => list_nil
+|I1GPTgua(ibnd, i1gs) => i1gs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 fprintln
 (filr: FILR): void =
 (
@@ -401,7 +422,7 @@ in//let
 if // if
 (
 i0pat_allq(ipat))
-  then print("#t")
+  then print(" #t")
   else f0_ipat(0(*conj*), ival, ipat))
 //
 end(*let*)//end-(i0pckcm1(filr,ival,ipat))
@@ -1557,6 +1578,68 @@ end(*let*)//endof(i1letlst_ind$cm1emit(ilts,...)]
 (* ****** ****** *)
 //
 #implfun
+i1gua_cm1emit
+(igua, env0) =
+let
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+#impltmp
+g_print$out<>((*void*)) = filr
+//
+in//let
+//
+case+
+igua.node() of
+//
+|I1GUAexp(icmp) =>
+(
+fprintln(filr);i1cmp_cm1emit(icmp, env0))
+//
+|I1GUAmat(icmp, ibnd) =>
+let
+val () = fprintln(filr)
+in//let
+(
+nindfpr(filr, nind);prints(";; I1GUAmat: igua = ", igua))
+end//let
+//
+end(*let*)//end-of-[i1gua_cm1emit(igua,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1gualst_cm1emit
+  (i1gs, env0) =
+(
+  list_cm1emit_fnp(i1gs, env0, i1gua_cm1emit))
+//
+(* ****** ****** *)
+//
+#implfun
+i1gualst_ind$cm1emit
+(i1gs, dlta, env0) =
+let
+//
+val () =
+(
+  envx2js_incnind(env0, dlta))
+//
+val () =
+(
+  i1gualst_cm1emit(i1gs, env0))
+//
+val () = envx2js_decnind(env0, dlta)
+//
+end(*let*)//endof(i1gualst_ind$cm1emit(i1gs,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i1valcls_cm1emit
 (ival, icls, env0) =
 let
@@ -1607,24 +1690,30 @@ nindstrnfpr
 (filr, nind+1, ";; ");
 prints(ival, " AS ", igpt);fprintln(filr))
 //
+val ibnd =
+(
+  i1gpt_ibnd$get(igpt))
+val i1gs = 
+(
+  i1gpt_i1gs$get(igpt))
+//
+val ipat =
+(
+case+ ibnd of
+|I1BNDcons
+(itnm, ipat, dvvs) => ipat)
+//
 val (  ) =
 nindstrnfpr
 (filr, nind+1, "(and")
 //
-val ibnd =
-(
-case+
-igpt.node() of
-|I1GPTpat(ibnd) => ibnd
-|I1GPTgua(ibnd, i1gs) => ibnd)
-val ipat =
-(
-case+ ibnd of
-|I1BNDcons(_, ipat, _) => ipat)
+val (  ) =
+i0pckcm1(filr, ival, ipat)
+val (  ) =
+i1gualst_ind$cm1emit(i1gs, 2, env0)
 //
 val (  ) =
 (
-i0pckcm1(filr, ival, ipat);
   strnfpr(filr, ")");fprintln(filr))
 //
 val (  ) =
