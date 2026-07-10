@@ -36,7 +36,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_a1sz_length A0) (vector-length A1))
+ (XATS2CM_a1sz_length A0) (vector-length A0))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
@@ -62,10 +62,10 @@
 ;;
 (define
  (XATS2CM_a1sz_make_fwork fwork)
- (let ((A '())) 
+ (let ((xs '())) 
    (begin
-     (fwork (lambda (x0) (set! A0 (cons x0 A0))))
-     (list-vector reverse! A0))))
+     (fwork (lambda (x0) (set! xs (cons x0 xs))))
+     (list->vector (reverse! xs)))))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.

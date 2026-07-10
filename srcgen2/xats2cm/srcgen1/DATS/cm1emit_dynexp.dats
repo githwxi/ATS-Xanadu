@@ -869,10 +869,9 @@ ival.node() of
 (* ****** ****** *)
 (* ****** ****** *)
 //
-|I1Vnil
-((*0*)) =>
+|I1V000
 (
-  prints("(XATSNIL)"))
+(*000*)) => prints("XATSVOID")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1190,8 +1189,9 @@ fprintln(filr))
 val (  ) =
 (
 nindstrnfpr
-(filr
-,nind, "(letrec\n");
+(
+filr,
+nind, "(letrec*\n");
 nindstrnfpr
 (filr, nind, "(\n"))
 //
@@ -1948,6 +1948,11 @@ val ipat =
 case+ ibnd of
 |I1BNDcons
 (itnm, ipat, dvvs) => ipat)
+val itnm =
+(
+case+ ibnd of
+|I1BNDcons
+(itnm, ipat, dvvs) => itnm)
 //
 val (  ) =
 nindstrnfpr
@@ -1962,10 +1967,21 @@ val (  ) =
 (
   strnfpr(filr, ")");fprintln(filr))
 //
+(*
+val (  ) =
+prints(";; ", itnm, " = ", ival, "\n")
+*)
+val (  ) =
+(
+nindstrnfpr
+(filr, nind, "(let ((");
+i1tnmcm1(filr, itnm);strnfpr(filr, " ");
+i1valcm1(filr, ival);strnfpr(filr, "))\n"))
+//
 val (  ) =
 (
 i1cmp_ind$cm1emit
-(icmp, 1(*d*), env0); strnfpr(filr, ")");fprintln(filr))
+(icmp, 1(*d*), env0); strnfpr(filr, "))");fprintln(filr))
 //
 end(*let*)//end-of-[I1CLScls(igpt, icmp)]
 //

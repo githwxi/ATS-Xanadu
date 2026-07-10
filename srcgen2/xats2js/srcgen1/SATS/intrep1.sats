@@ -334,7 +334,7 @@ and
 i1val_node =
 //
 (* ****** ****** *)
-|I1Vnil of ()
+|I1V000 of ()
 (* ****** ****** *)
 //
 |I1Vint of token
