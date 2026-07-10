@@ -84,8 +84,10 @@
 (define (XATSPFLT pflt) pflt)
 (define (XATSPROJ proj) proj)
 (define (XATSP0RJ p0rj) p0rj)
+;;
 (define (XATSP1RJ _ p1rj) p1rj)
-(define (XATSP1CN _ p1cn) p1cn)
+(define
+(XATSP1CN _ p1cn offs) (vector-ref p1cn offs))
 ;;
 (define
 (XATSPCON pcon argi) (vector-ref pcon (+ argi 1)))
@@ -217,7 +219,7 @@
       (let* ((val1 (vector-ref lval 1))
 	     (idx2 (vector-ref lval 2))
 	     (lvl1 (XATS000_lvget val1)))
-	(XATS000_lvset! lvl1 idx2 (XATS000_ftset lvl1 idx2 rval))))
+	(XATS000_lvset! lvl1 (XATS000_ftset lvl1 idx2 rval))))
      ((= ctag (+ 1 1))
       (let* ((val1 (vector-ref lval 1))
 	     (idx2 (vector-ref lval 2))) (vector-set! val1 idx2 rval)))

@@ -48,7 +48,7 @@
 (define
  (XATS2CM_dflt_sqrt df) (sqrt df))
 (define
- (XATS2CM_dflt_cbrt df) (expt df 1.0/3.0))
+ (XATS2CM_dflt_cbrt df) (expt df (/ 1.0 3.0)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
