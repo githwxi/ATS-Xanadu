@@ -604,10 +604,8 @@ case+ lab0 of
 LABint(int) => print(int)
 |
 LABsym(sym) =>
-let
-val nam =
-symbl_get_name(sym) in//let
-  prints('"', nam, '"') end//let
+(
+prints("'", sym.name((*0*))))
 ) where
 {
 //
@@ -1281,6 +1279,23 @@ end(*let*)//end-of-[I1INScas0(cknd, ...)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I1INSpflt
+(lab0, i1v1) =>
+(
+strnfpr(filr, "(XATSPFLT ");
+i1valcm1(filr, i1v1);strnfpr(filr, " ");
+labelcm1(filr, lab0);strnfpr(filr, ")"))
+//
+|I1INSproj
+(lab0, i1v1) =>
+(
+strnfpr(filr, "(XATSPROJ ");
+i1valcm1(filr, i1v1);strnfpr(filr, " ");
+labelcm1(filr, lab0);strnfpr(filr, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |I1INStup0
 (   i1vs   ) =>
 let
@@ -1295,7 +1310,7 @@ case+ i1vs of
 |list_cons(i1v1, i1vs) =>
 (
 strnfpr(filr, " ");
-i1valcm1(filr, i1v1); i1vlscm1(filr, i1vs)))
+i1valcm1(filr, i1v1); i1vlsfpr(filr, i1vs)))
 //
 in//let
 //

@@ -70,6 +70,19 @@ test02_xats2cm.dats; \
 $(NODE) --stack-size=8800 $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.scm
 ########################################################################
 ########################################################################
+test03:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.scm
+############
+test03:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.scm >> OUTS/$@_out.scm
+test03:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.scm >> OUTS/$@_out.scm
+############
+test03:: \
+test03_xats2cm.dats; \
+$(NODE) --stack-size=8800 $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.scm
+########################################################################
+########################################################################
 testxx:: ; \
 $(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.scm
 ############

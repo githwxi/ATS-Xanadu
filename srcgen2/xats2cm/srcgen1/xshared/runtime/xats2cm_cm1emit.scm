@@ -81,16 +81,40 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
-(define (XATSPFLT pflt) pflt)
-(define (XATSPROJ proj) proj)
+(define
+(XATSPFLT tflt offs)
+(cond
+ ((vector? tflt)
+  (vector-ref tflt offs))
+ (else
+  (let search ((kxs tflt))
+    (if (pair? kxs)
+	(let ((kx (car kxs)))
+	  (if (eq? (car kx) offs)
+	      (cdr kx) (loop (cdr kxs)))) #f)))))
+;;
+(define
+(XATSPROJ tbox offs)
+(cond
+ ((vector? tbox)
+  (vector-ref tbox offs))
+ (else
+  (let search ((kxs tbox))
+    (if (pair? kxs)
+	(let ((kx (car kxs)))
+	  (if (eq? (car kx) offs)
+	      (cdr kx) (loop (cdr kxs)))) #f))))
+)
+;;
 (define (XATSP0RJ p0rj) p0rj)
-;;
 (define (XATSP1RJ _ p1rj) p1rj)
-(define
-(XATSP1CN _ p1cn offs) (vector-ref p1cn offs))
 ;;
 (define
-(XATSPCON pcon argi) (vector-ref pcon (+ argi 1)))
+(XATSPCON pcon argi)
+(let ((offs (+ argi 1))) (vector-ref pcon offs)))
+;;
+(define
+(XATSP1CN tknd p1cn offs) (vector-ref p1cn offs))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
