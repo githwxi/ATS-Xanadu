@@ -87,11 +87,11 @@
  ((vector? tflt)
   (vector-ref tflt offs))
  (else
-  (let search ((kxs tflt))
+  (let srch ((kxs tflt))
     (if (pair? kxs)
 	(let ((kx (car kxs)))
 	  (if (eq? (car kx) offs)
-	      (cdr kx) (loop (cdr kxs)))) #f)))))
+	      (cdr kx) (srch (cdr kxs)))) #f)))))
 ;;
 (define
 (XATSPROJ tbox offs)
@@ -99,15 +99,17 @@
  ((vector? tbox)
   (vector-ref tbox offs))
  (else
-  (let search ((kxs tbox))
+  (let srch ((kxs tbox))
     (if (pair? kxs)
 	(let ((kx (car kxs)))
 	  (if (eq? (car kx) offs)
-	      (cdr kx) (loop (cdr kxs)))) #f))))
+	      (cdr kx) (srch (cdr kxs)))) #f))))
 )
 ;;
-(define (XATSP0RJ p0rj) p0rj)
-(define (XATSP1RJ _ p1rj) p1rj)
+(define
+(XATSP0RJ p0rj offs) (vector-ref p0rj offs))
+(define
+(XATSP1RJ _ p1rj offs) (vector-ref p1rj offs))
 ;;
 (define
 (XATSPCON pcon argi)
@@ -119,9 +121,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define (XATSTRCD knd0) knd0)
-(define (XATSTUP0 . tpl0) (apply vector tpl0))
-(define (XATSTUP1 _ . tpl1) (apply vector tpl1))
-(define (XATSRCD2 _ . rcd2) (apply vector rcd2))
+;;
+(define
+(XATSTUP0 . tpl0) (apply vector tpl0))
+(define
+(XATSTUP1 tknd . tpl1) (apply vector tpl1))
+;;
+(define (XATSRCD2 tknd . rcd2) (apply list rcd2))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
