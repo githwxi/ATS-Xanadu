@@ -595,6 +595,33 @@ end(*let*)//end-(i0pckcm1(filr,ival,ipat))
 (* ****** ****** *)
 //
 fun
+xtrcdcm1
+(filr: FILR
+,tknd: token): void =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+case+
+tknd.node() of
+//
+|T_TRCD10(knd0) =>
+(
+prints("(XATSTRCD ", knd0, ")"))
+|T_TRCD20(knd0) =>
+(
+prints("(XATSTRCD ", knd0, ")"))
+//
+|_(*otherwise*) =>
+(
+prints
+("(XATSTRCD ", '"', tknd, '"', ")"))
+//
+end(*let*)//end-of-[xtrcdcm1(filr,tknd)]
+//
+(* ****** ****** *)
+//
+fun
 labelcm1
 (filr: FILR
 ,lab0: label): void =
@@ -943,38 +970,41 @@ prints(
 |I1Vp1cn
 ( ipat
 , icon, pind) =>
+let
+#impltmp
+g_print<i0pat>(x) = i0pcncm1(filr,x)
+in//let
 (
 prints(
-"(XATSP1CN ", ipat,
-" ", icon, " ", "(+ ",pind," 1)", ")")
-) where
-{ #impltmp
-  g_print<i0pat>(x) = i0pcncm1(filr,x) }
+"(XATSP1CN ",
+ipat, " ",icon, " ","(+ ",pind," 1)", ")"))
+end//let
 //
-(*
+(* ****** ****** *)
+//
 |I1Vp1rj
 ( trcd
 , itup, pind) =>
+let
+#impltmp
+g_print<token>(x) = xtrcdcm1(filr,x)
+in//let
 (
-print("XATSP1RJ(");
 prints(
-trcd, ", ", itup, "[", pind, "]", ")")
-) where
-{ #impltmp
-  g_print<token>(x) = xtrcdcm1(filr,x) }
-*)
+"(XATSP1RJ ",trcd, " ",itup, " ",pind, ")"))
+end//let
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 |I1Vlpcn
 (plab, itup) =>
-(
-prints(
-  "(XATSLPCN ", plab, " ", itup, ")")
-) where
-{ #impltmp
-  g_print<label>(x) = labelcm1(filr,x) }
+let
+#impltmp
+g_print<label>(x) = labelcm1(filr,x)
+in//let
+prints("(XATSLPCN ", plab, " ", itup, ")")
+end//let
 //
 (*
 |I1Vlpft
@@ -1000,7 +1030,7 @@ prints(
 (* ****** ****** *)
 //
 |
-_(*otherwise*) => i1val_fprint(ival,filr)
+_(*otherwise*) => i1val_fprint(ival, filr)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1008,12 +1038,36 @@ _(*otherwise*) => i1val_fprint(ival,filr)
 end where
 {
 //
-  #impltmp g_print$out<>() = ( filr )
+#impltmp g_print$out<>() = ( filr )
 //
-  #impltmp
-  g_print<i1val>(x) = i1valcm1(filr, x)
+#impltmp
+g_print<i1val>(ival) = i1valcm1(filr, ival)
 //
-}(*where*)//end-of-[ i1valcm1(filr,ival) ]
+}(*where*)//end-of-[i1valcm1(filr,ival)]
+//
+(* ****** ****** *)
+//
+#implfun
+l1i1vcm1
+(filr, liv0) =
+let
+//
+val+
+I1LAB(lab0, ival) = liv0
+//
+in//let
+prints("(cons ", lab0, " ", ival, ")")
+end where
+{
+//
+#impltmp g_print$out<>() = filr
+//
+#impltmp
+g_print<label>(lab0) = labelcm1(filr, lab0)
+#impltmp
+g_print<i1val>(ival) = i1valcm1(filr, ival)
+//
+}(*where*)//end-of-[l1i1vcm1(filr,liv0)]
 //
 (* ****** ****** *)
 //
@@ -1298,6 +1352,21 @@ labelcm1(filr, lab0);strnfpr(filr, ")"))
 //
 |I1INStup0
 (   i1vs   ) =>
+(
+case+ i1vs of
+|list_nil() =>
+(
+strnfpr(filr, "XATSVOID"))
+|list_cons _ =>
+(
+strnfpr(filr,"(XATSTUP0");
+i1vlsif1(filr,i1vs);i1vlscm1(filr,i1vs);strnfpr(filr,")"))
+)(*case+*)//end-of-[I1INStup0(ival, ...)]
+//
+(* ****** ****** *)
+//
+|I1INStup1
+(tknd, i1vs) =>
 let
 //
 fun
@@ -1313,17 +1382,32 @@ strnfpr(filr, " ");
 i1valcm1(filr, i1v1); i1vlsfpr(filr, i1vs)))
 //
 in//let
-//
-case+ i1vs of
-|list_nil() =>
 (
-strnfpr(filr, "XATSVOID"))
-|list_cons _ =>
-(
-strnfpr(
-filr, "(XATSTUP0");i1vlsfpr(filr, i1vs);strnfpr(filr, ")"))
+strnfpr(filr, "(XATSTUP1 ");
+xtrcdcm1(filr,tknd);i1vlsfpr(filr,i1vs);strnfpr(filr,")"))
+end(*let*)//end-of-[I1INStup1(ival, ...)]
 //
-end(*let*)//end-of-[I1INStup0(ival, ...)]
+(* ****** ****** *)
+//
+|I1INSrcd2
+(tknd, livs) =>
+let
+fun
+livlsfpr
+( filr: FILR
+, livs: l1i1vlst): void =
+(
+case+ livs of
+|list_nil() => ()
+|list_cons(liv1, livs) =>
+(
+strnfpr(filr, " ");
+l1i1vcm1(filr, liv1); livlsfpr(filr, livs)))
+in//let
+(
+strnfpr(filr, "(XATSRCD2 ");
+xtrcdcm1(filr,tknd);livlsfpr(filr,livs);strnfpr(filr,")"))
+end(*let*)//end-of-[I1INSrcd2(ival, ...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1331,8 +1415,8 @@ end(*let*)//end-of-[I1INStup0(ival, ...)]
 |I1INSflat
 (   i1v1   ) =>
 (
-strnfpr(filr, "(XATSFLAT");
-strnfpr(filr, " ");i1valcm1(filr, i1v1);strnfpr(filr, ")"))
+strnfpr(
+filr, "(XATSFLAT ");i1valcm1(filr,i1v1);strnfpr(filr,")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
