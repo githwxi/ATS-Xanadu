@@ -656,9 +656,8 @@ nindstrnfpr(filr, nind, "\n) ;; val(...)");fprintln(filr)))
 //
 val (  ) =
 (
-nindstrnfpr
-(filr, nind, ";; (XATS000_patck ");
-i0pckcm1(filr, ival, ipat);strnfpr(filr, ")\n"))
+nindfpr(filr, nind);strnfpr(filr, "(XATS000_patck");
+i0pckcm1(filr, ival, ipat);strnfpr(filr, ")");fprintln(filr))
 //
 endlet(*TEQI1CMPsome*))(*case+of(tdxp)*)
 //
