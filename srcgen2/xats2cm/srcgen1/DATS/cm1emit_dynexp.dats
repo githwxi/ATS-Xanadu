@@ -993,7 +993,7 @@ in//let
 (
 prints(
 "(XATSP1CN ",
-ipat, " ",icon, " ","(+ ",pind," 1)", ")"))
+ipat," ",icon," ","(+ ",pind," 1)",")"))
 end//let
 //
 (* ****** ****** *)
@@ -1007,7 +1007,7 @@ g_print<token>(x) = xtrcdcm1(filr,x)
 in//let
 (
 prints(
-"(XATSP1RJ ",trcd, " ",itup, " ",pind, ")"))
+"(XATSP1RJ ",trcd," ",itup," ",pind,")"))
 end//let
 //
 (* ****** ****** *)
@@ -1019,28 +1019,29 @@ let
 #impltmp
 g_print<label>(x) = labelcm1(filr,x)
 in//let
-prints("(XATSLPCN ", plab, " ", itup, ")")
+(
+prints("(XATSLPCN ",plab, " ",itup, ")"))
 end//let
 //
-(*
 |I1Vlpft
 (plab, itup) =>
-( prints
-  ("XATSLPFT(", plab, ", ", itup, ")")
-) where
-{ #impltmp
-  g_print<label>(x) = labelcm1(filr,x) }
-*)
+let
+#impltmp
+g_print<label>(x) = labelcm1(filr,x)
+in//let
+(
+prints("(XATSLPFT ",plab, " ",itup, ")"))
+end//let
 //
-(*
 |I1Vlpbx
 (plab, itup) =>
-( prints
-  ("XATSLPBX(", plab, ", ", itup, ")")
-) where
-{ #impltmp
-  g_print<label>(x) = labelcm1(filr,x) }
-*)
+let
+#impltmp
+g_print<label>(x) = labelcm1(filr,x)
+in//let
+(
+prints("(XATSLPBX ",plab, " ",itup, ")"))
+end//let
 //
 (* ****** ****** *)
 (* ****** ****** *)
