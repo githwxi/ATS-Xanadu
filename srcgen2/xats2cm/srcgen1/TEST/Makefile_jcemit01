@@ -18,11 +18,11 @@ all:: test02
 ########################################################################
 ########################################################################
 testall:: \
-test00; $(SCHEME) OUTS/$<_out.scm
+test00; $(SCHEME) --script OUTS/$<_out.scm
 testall:: \
-test01; $(SCHEME) OUTS/$<_out.scm
+test01; $(SCHEME) --script OUTS/$<_out.scm
 testall:: \
-test02; $(SCHEME) OUTS/$<_out.scm
+test02; $(SCHEME) --script OUTS/$<_out.scm
 ########################################################################
 ########################################################################
 XATS2CM_SRCGENX="./.."
@@ -34,10 +34,10 @@ XATS2CM_CMEMIT01="./../UTIL/xats2cm_cmemit01_ats3.js"
 test00:: ; \
 $(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.scm
 ############
-# test00:: ; \
-# $(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.scm >> OUTS/$@_out.scm
-# test00:: ; \
-# $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.scm >> OUTS/$@_out.scm
+test00:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.scm >> OUTS/$@_out.scm
+test00:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.scm >> OUTS/$@_out.scm
 ############
 test00:: \
 test00_xats2cm.dats; \

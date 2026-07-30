@@ -290,7 +290,7 @@ D3Cerrck(lvl, d3cl)  =>
 (
 (
 auxmain(out, d3cl));
-if
+if // if
 (lvl>=ERRLVL)
 then ((*void*)) else
 let
@@ -298,7 +298,7 @@ val loc0 = dcl0.lctn() in
 printsln();
 printsln("\
 F3PERR0-ERROR:", loc0, ":", dcl0)
-end
+end//let//endof(else)//end-of-(if)
 )
 //
 | _(* otherwise *) => (   (*skipped*)   )
