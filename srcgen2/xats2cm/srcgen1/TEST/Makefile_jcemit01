@@ -16,6 +16,7 @@ all:: test00
 all:: test01
 all:: test02
 all:: test03
+all:: test04
 ########################################################################
 ########################################################################
 testall:: \
@@ -26,6 +27,8 @@ testall:: \
 test02; $(SCHEME) --script OUTS/$<_out.scm
 testall:: \
 test03; $(SCHEME) --script OUTS/$<_out.scm
+testall:: \
+test04; $(SCHEME) --script OUTS/$<_out.scm
 ########################################################################
 ########################################################################
 XATS2CM_SRCGENX="./.."
@@ -83,6 +86,19 @@ $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.scm >> OUTS/$@_out.scm
 ############
 test03:: \
 test03_xats2cm.dats; \
+$(NODE) --stack-size=8800 $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.scm
+########################################################################
+########################################################################
+test04:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.scm
+############
+test04:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.scm >> OUTS/$@_out.scm
+test04:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.scm >> OUTS/$@_out.scm
+############
+test04:: \
+test04_xats2cm.dats; \
 $(NODE) --stack-size=8800 $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.scm
 ########################################################################
 ########################################################################
