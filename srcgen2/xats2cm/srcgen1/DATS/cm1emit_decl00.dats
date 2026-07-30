@@ -655,9 +655,20 @@ else//else
 nindstrnfpr(filr, nind, "\n) ;; val(...)");fprintln(filr)))
 //
 val (  ) =
+if // if
+(nind <= 0)
+then//then
 (
-nindfpr(filr, nind);strnfpr(filr, "(XATS000_patck");
+// HX: top-level
+nindfpr(filr, nind);
+strnfpr(filr, "(XATS000_patck");
 i0pckcm1(filr, ival, ipat);strnfpr(filr, ")");fprintln(filr))
+else//else
+(
+// HX: inner-level
+nindfpr(filr, nind);strnfpr(filr, "(");
+i1anycm1(filr);strnfpr(filr, " (XATS000_patck");
+i0pckcm1(filr, ival, ipat);strnfpr(filr, "))");fprintln(filr))
 //
 endlet(*TEQI1CMPsome*))(*case+of(tdxp)*)
 //

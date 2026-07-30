@@ -86,6 +86,20 @@ _(*DATS*)="./../DATS/cm1emit.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+local
+val
+stamper =
+stamper_new((*0*))
+in//local
+fun
+the_i1any_stamp_new
+  ((*0*)): stamp =
+  stamper.getinc((*void*))
+endloc//end-of-[the_i1any_stamp_new]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 xsymcm1
 ( filr: FILR
@@ -239,10 +253,15 @@ i1anycm1
 ( filr ) =
 (
 prints(
-"_cmx", "tnm", "__")
+"cm0", "any", stmp)
 ) where
 {
+//
+val stmp =
+the_i1any_stamp_new()
+//
 #impltmp g_print$out<>() = filr
+//
 }(*where*)//end-of-[i1anycm1(...)]
 //
 (* ****** ****** *)

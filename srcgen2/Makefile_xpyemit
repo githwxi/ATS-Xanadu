@@ -283,6 +283,7 @@ $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt.py
 lib2xatsopt_opt0: ; \
 $(SED) '/^[ ]*##/d' lib/lib2xatsopt.py > lib/lib2xatsopt_opt0.py
 ########################################################################
+########################################################################
 ifndef \
 XATSOPT_TCHECK00
 XATSOPT_TCHECK00=\
