@@ -622,6 +622,7 @@ let
 val ival =
 (
   i1cmp_ival$get(icmp))
+//
 val filr =
 (
   envx2js_filr$get(env0))
@@ -655,20 +656,29 @@ else//else
 nindstrnfpr(filr, nind, "\n) ;; val(...)");fprintln(filr)))
 //
 val (  ) =
+let
+//
+val ivl1 =
+i1val(ival.lctn(), I1Vtnm(itnm))
+//
+in//let
+//
 if // if
 (nind <= 0)
-then//then
+then // then
 (
 // HX: top-level
 nindfpr(filr, nind);
-strnfpr(filr, "(XATS000_patck");
-i0pckcm1(filr, ival, ipat);strnfpr(filr, ")");fprintln(filr))
-else//else
+strnfpr(filr, " (XATS000_patck");
+i0pckcm1(filr, ivl1, ipat);strnfpr(filr, ")");fprintln(filr))
+else // else
 (
 // HX: inner-level
 nindfpr(filr, nind);strnfpr(filr, "(");
 i1anycm1(filr);strnfpr(filr, " (XATS000_patck");
-i0pckcm1(filr, ival, ipat);strnfpr(filr, "))");fprintln(filr))
+i0pckcm1(filr, ivl1, ipat);strnfpr(filr, "))");fprintln(filr))
+//
+end//let
 //
 endlet(*TEQI1CMPsome*))(*case+of(tdxp)*)
 //
