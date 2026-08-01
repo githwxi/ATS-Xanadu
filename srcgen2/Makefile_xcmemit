@@ -19,8 +19,8 @@ all:: lib2xatsopt
 clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f BUILD/CM/*_sats_out0.scm
-cleanall:: ; rm -f BUILD/CM/*_dats_out?.scm
+cleanall:: ; rm -f BUILD/CM/*_sats_out0.cm
+cleanall:: ; rm -f BUILD/CM/*_dats_out?.cm
 ########################################################################
 ########################################################################
 
@@ -243,20 +243,20 @@ xatsopt_utils0.dats \
 ########################################################################
 OUT0SATS := \
 $(patsubst %.sats, \
-  BUILD/CM/%_sats_out0.scm, $(SRCSATS))
+  BUILD/CM/%_sats_out0.cm, $(SRCSATS))
 OUT0DATS := \
 $(patsubst %.dats, \
-  BUILD/CM/%_dats_out0.scm, $(SRCDATS))
+  BUILD/CM/%_dats_out0.cm, $(SRCDATS))
 OUT1DATS := \
 $(patsubst %.dats, \
-  BUILD/CM/%_dats_out1.scm, $(SRCDATS))
+  BUILD/CM/%_dats_out1.cm, $(SRCDATS))
 ########################################################################
 ########################################################################
 #
-BUILD/CM/%_sats_out0.scm: SATS/%.sats; \
+BUILD/CM/%_sats_out0.cm: SATS/%.sats; \
 $(NODE) --stack-size=8801 $(XATSOPT_TCHECK00) $< > $@
 #
-BUILD/CM/%_dats_out0.scm: DATS/%.dats; \
+BUILD/CM/%_dats_out0.cm: DATS/%.dats; \
 $(NODE) --stack-size=8801 $(XATS2CM_CMEMIT00) $< > $@
 #
 ########################################################################
@@ -273,15 +273,15 @@ N256=$(N128) $(N128)
 N512=$(N256) $(N256)
 NFILE=$(N064) $(N032) $(N004) # 100=064+032+004
 ########################################################################
-BUILD/CM/%_dats_out1.scm: \
-BUILD/CM/%_dats_out0.scm; \
+BUILD/CM/%_dats_out1.cm: \
+BUILD/CM/%_dats_out0.cm; \
 $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/cmxtnm/cmx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
 lib2xatsopt: \
-$(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt.scm
+$(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt.cm
 lib2xatsopt_opt0: ; \
-$(SED) '/^[ ]*##/d' lib/lib2xatsopt.scm > lib/lib2xatsopt_opt0.scm
+$(SED) '/^[ ]*##/d' lib/lib2xatsopt.cm > lib/lib2xatsopt_opt0.cm
 ########################################################################
 ########################################################################
 ifndef \
