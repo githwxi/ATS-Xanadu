@@ -196,11 +196,9 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
-(*
 |I1Dimplmnt0 _ =>
 (
   f0_implmnt0(dcl0, env0))
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -496,12 +494,10 @@ dcl0: i1dcl,
 env0: envx2js): void =
 let
 //
-val filr =
-  env0.filr((*void*))
-val nind =
-  env0.nind((*void*))
-val loc0 =
-  dcl0.lctn((*void*))
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
 //
 val-
 I1Dfundclst
@@ -543,6 +539,76 @@ else
  i1fundclist_cm1emit(i1fs, env0))
 //
 end(*let*)//end-of-[f0_fundclst(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+(
+dcl0: i1dcl,
+env0: !envx2js): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dimplmnt0
+( tknd
+, stmp, dimp
+, fjas, icmp) = dcl0.node()
+//
+fun
+implfunq
+( tknd: token): bool =
+(
+case+ iknd of
+|
+IMPLfun() => true | _ => false
+) where
+{ val-
+  T_IMPLMNT(iknd) = tknd.node() }
+//
+in//let
+//
+nindstrnfpr
+(filr,nind,";; I1Dimplmnt0(");
+lctnfpr(filr,loc0);strnfpr(filr,")\n");
+//
+(
+if // if
+(nind > 0)
+then//then
+nindstrnfpr
+(filr, nind, "(")
+else//else
+nindstrnfpr
+(filr, nind, "(define "));
+//
+dicstcm1(filr, dimp);strnfpr(filr, "\n");
+//
+nindstrnfpr
+(filr, nind+1, "(lambda (");
+fjas1cm1(filr, fjas);strnfpr(filr, ")\n");
+//
+(
+nindstrnfpr
+(filr, nind+2, "(let\n");
+nindstrnfpr(filr, nind+2, "(\n");
+fjletlst_ind$cm1emit(fjas, 2(*d*), env0);
+nindstrnfpr(filr, nind+2, ")\n"));
+//
+(
+i1cmp_ind$cm1emit
+(icmp, 2(*d*), env0); strnfpr(filr, "))\n"));
+//
+(
+nindstrnfpr(filr, nind, ") ;; endfun(impl)");fprintln(filr))
+//
+end(*let*)//end-of-[f0_implmnt0(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -846,10 +912,6 @@ end//let
 //
 (* ****** ****** *)
 //
-val (  ) = // enter
-(
-  envx2js_pshlam0(env0) )
-//
 val (  ) =
 (
 case+ tdxp of
@@ -868,20 +930,19 @@ in//let
 nindstrnfpr
 (filr, nind, "(let\n");
 nindstrnfpr(filr, nind, "(\n");
-fjletlst_ind$cm1emit(fjas, 0, env0);
+fjletlst_ind$cm1emit(fjas, 2, env0);
 nindstrnfpr(filr, nind, ")\n")
 end//let
 //
 val (  ) =
 (
-i1cmp_cm1emit(icmp, env0); strnfpr(filr, "))"))
+i1cmp_ind$cm1emit
+(icmp, 2(*d*), env0); strnfpr(filr, "))"))
 //
 (* ****** ****** *)
 end//let//end[TEQI1DEXPsome(...)]
 (* ****** ****** *)
 )(*case+*)//end-of-(case+of(tdxp))
-//
-val (  ) = envx2js_poplam0(env0)//leave
 //
 val (  ) =
 (

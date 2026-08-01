@@ -1864,13 +1864,14 @@ strnfpr
 (filr, "(lambda (");
 fjas1cm1(filr, fjas);strnfpr(filr, ")");
 (
-strnfpr(filr," ;; timp: ");
+strnfpr
+(filr, " ;; timp: ");
 d2cst_fprint(dcst, filr);fprintln(filr));
 //
 (
 let
 //
-val nind = (nind+2)
+val nind = (nind+1)
 //
 in//let
 //
@@ -1880,13 +1881,13 @@ if fjsq then () else
 nindstrnfpr
 (filr, nind, "(let\n");
 nindstrnfpr(filr, nind, "(\n");
-fjletlst_ind$cm1emit(fjas, 2, env0);
+fjletlst_ind$cm1emit(fjas, 1, env0);
 nindstrnfpr(filr, nind, ")\n"))
 )
 end//let
 );
 //
-i1cmp_ind$cm1emit(icmp, 2, env0);
+i1cmp_ind$cm1emit(icmp, 1, env0);
 //
 (
 if

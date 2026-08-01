@@ -43,9 +43,12 @@ then x * fact1(x-1) else 1
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
 fun
-fibo1
-(x: sint): sint =
+fibo1(x: sint): sint
+//
+#implfun
+fibo1(x: sint): sint =
 if (x >= 2)
 then
 fibo1(x-2)+fibo1(x-1) else x
