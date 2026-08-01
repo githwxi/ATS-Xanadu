@@ -574,9 +574,15 @@ IMPLfun() => true | _ => false
 //
 in//let
 //
+if // if
+dimpl_tempq(dimp)
+then // template
+(
 nindstrnfpr
 (filr,nind,";; I1Dimplmnt0(");
-lctnfpr(filr,loc0);strnfpr(filr,")\n");
+dimplfpr(filr,dimp);strnfpr(filr,"):timp\n"))
+else // non-template
+(
 //
 (
 if // if
@@ -589,6 +595,12 @@ nindstrnfpr
 (filr, nind, "(define "));
 //
 dicstcm1(filr, dimp);strnfpr(filr, "\n");
+//
+(
+if
+list_nilq(fjas)
+then
+nindstrnfpr(filr, nind+1, "(\n"));
 //
 nindstrnfpr
 (filr, nind+1, "(lambda (");
@@ -605,8 +617,24 @@ nindstrnfpr(filr, nind+2, ")\n"));
 i1cmp_ind$cm1emit
 (icmp, 2(*d*), env0); strnfpr(filr, "))\n"));
 //
+if
+implfunq(tknd)
+then//then
+(
+if // if
+list_consq(fjas)
+then
 (
 nindstrnfpr(filr, nind, ") ;; endfun(impl)");fprintln(filr))
+else
+(
+nindstrnfpr(filr, nind, ")) ;; endfun(impl)");fprintln(filr))
+)
+else//else
+(
+nindstrnfpr(filr, nind, ")) ;; endnfn(impl)");fprintln(filr))
+//
+)//else(non-template)//end-of-(if)
 //
 end(*let*)//end-of-[f0_implmnt0(dcl0,env0)]
 //
