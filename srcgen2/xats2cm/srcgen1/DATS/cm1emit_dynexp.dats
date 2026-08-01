@@ -1262,13 +1262,16 @@ nindstrnfpr
 filr,
 nind, "(letrec*\n");
 nindstrnfpr
-(filr, nind, "(\n"))
+(filr, nind+1, "(\n"))
 //
 val (  ) =
-i1dclist_cm1emit(dcls, env0)
+(
+i1dclist_ind$cm1emit
+(dcls, 1(*delta*), env0))
 //
 val (  ) =
-nindstrnfpr(filr, nind, ")\n")
+(
+nindstrnfpr(filr, nind+1, ")\n"))
 //
 val (  ) =
 (
@@ -1287,9 +1290,11 @@ val (  ) =
 (
 fprintln(filr))
 val (  ) =
-(
 nindstrnfpr
-(filr, nind, "(if ");
+(filr, nind+1, "(if\n")
+//
+val (  ) =
+(
 i1valcm1
 (filr, ival);strnfpr(filr, "\n"))
 //
@@ -1298,28 +1303,28 @@ val (  ) =
 case ithn of
 |optn_nil() =>
 (
-nindstrnfpr
-(filr, nind, "XATSVOID");fprintln(filr))
+nindstrnfpr(filr,
+  nind+2, "XATSVOID");fprintln(filr))
 |optn_cons(icmp) =>
 (
-i1cmp_cm1emit(icmp, env0);fprintln(filr))
-)
+i1cmp_ind$cm1emit
+(icmp, 2(*delta*), env0);fprintln(filr)))
 //
 val (  ) =
 (
 case iels of
 |optn_nil() =>
 (
-nindstrnfpr
-(filr, nind, "XATSVOID");fprintln(filr))
+nindstrnfpr(filr,
+  nind+2, "XATSVOID");fprintln(filr))
 |optn_cons(icmp) =>
 (
-i1cmp_cm1emit(icmp, env0);fprintln(filr))
-)
+i1cmp_ind$cm1emit
+(icmp, 2(*delta*), env0);fprintln(filr)))
 //
 val (  ) =
 (
-nindstrnfpr(filr, nind, ") ;; if(...)");fprintln(filr))
+nindstrnfpr(filr, nind+1, ") ;; if(...)");fprintln(filr))
 //
 end(*let*)//end-of-[I1INSift0(ival, ...)]
 //
@@ -1335,19 +1340,19 @@ val (  ) =
 fprintln(filr))
 val (  ) =
 (
-nindstrnfpr
-(filr, nind, "(cond\n"))
+nindstrnfpr(
+filr, nind+1, "(cond\n"))
 //
 val (  ) =
-envx2js_incnind(env0,1(*++*))
+envx2js_incnind(env0,2(*++*))
 val (  ) =
 i1valclslst_cm1emit(ival, iclz, env0)
 val (  ) =
-envx2js_decnind(env0,1(*--*))
+envx2js_decnind(env0,2(*--*))
 //
 val (  ) =
 (
-nindstrnfpr(filr, nind, ") ;; case(...)");fprintln(filr))
+nindstrnfpr(filr, nind+1, ") ;; case(...)");fprintln(filr))
 //
 end(*let*)//end-of-[I1INScas0(cknd, ...)]
 //
@@ -1436,6 +1441,49 @@ in//let
 strnfpr(filr, "(XATSRCD2 ");
 xtrcdcm1(filr,tknd);livlsfpr(filr,livs);strnfpr(filr,")"))
 end(*let*)//end-of-[I1INSrcd2(ival, ...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSlam0
+(tknd
+,fjas, icmp) =>
+let
+//
+val (  ) =
+(
+fprintln(filr))
+//
+val (  ) =
+(
+nindstrnfpr
+(filr, nind+1, "(lambda (");
+fjas1cm1
+(filr, fjas);strnfpr(filr, ")\n"))
+//
+val (  ) =
+let
+val nind = nind+2
+in//let
+(
+nindstrnfpr
+(filr, nind, "(let\n");
+nindstrnfpr(filr, nind, "(\n");
+fjletlst_ind$cm1emit(fjas, 2, env0);
+nindstrnfpr(filr, nind, ")\n"))
+end//let
+//
+val (  ) =
+(
+i1cmp_ind$cm1emit
+(icmp, 2(*d*), env0);strnfpr(filr, ")\n"))
+//
+val (  ) =
+(
+nindstrnfpr
+(filr, nind+1, ") ;; lam0(...)");fprintln(filr))
+//
+end(*let*)//end-of-[I1INSlam0(tknd, ...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1541,6 +1589,33 @@ i1cmp_cm1emit
 end(*let*)//end-of-[I1INSl0azy(dknd, ...)]
 //
 (* ****** ****** *)
+//
+|I1INSl1azy
+(dknd
+,icmp, cmps) =>
+let
+//
+val (  ) =
+(
+fprintln(filr))
+val (  ) =
+(
+nindstrnfpr
+(filr
+,nind, "(XATS000_l1azy\n"))
+val (  ) =
+(
+nindstrnfpr
+(filr, nind, "(lambda ()\n"))
+//
+val (  ) =
+(
+i1cmp_cm1emit
+(icmp , env0);strnfpr(filr, ")) ;; l1azy(...)\n"))
+//
+end(*let*)//end-of-[I1INSl1azy(dknd, ...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1INSdp2tr
@@ -1616,10 +1691,19 @@ case+ iins of
 |I1INScas0 _ =>
 (
   nindstrnfpr(filr, nind, ")"))
+|I1INSlam0 _ =>
+(
+  nindstrnfpr(filr, nind, ")"))
+|I1INSfix0 _ =>
+(
+  nindstrnfpr(filr, nind, ")"))
 |I1INStry0 _ =>
 (
   nindstrnfpr(filr, nind, ")"))
 |I1INSl0azy _ =>
+(
+  nindstrnfpr(filr, nind, ")"))
+|I1INSl1azy _ =>
 (
   nindstrnfpr(filr, nind, ")"))
 //
@@ -1733,13 +1817,19 @@ in//let
 (
 case+ iopt of
 //
-|optn_nil() =>
+|optn_nil
+( (*void*) ) =>
 (
+(*
+HX: end-of-newline!
+*)
 f0_t1imp(env0, timp))
 //
-|optn_cons(icmp) =>
+|optn_cons
+(   icmp   ) =>
 (
-i1cmp_cm1emit(icmp, env0)))
+i1cmp_ind$cm1emit
+(icmp,1(*d*),env0);fprintln(filr)))
 where
 {
 val () =
@@ -1777,7 +1867,8 @@ case+ dopt of
 ((*void*)) =>
 (
 d2cst_fprint
-(dcst, filr)) where
+(dcst, filr);fprintln(filr))
+where
 {
 val () =
 strnfpr(filr,

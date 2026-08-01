@@ -298,6 +298,14 @@ fjletlst_ind$cm1emit
 (* ****** ****** *)
 //
 fun
+i1dclist_ind$cm1emit
+( dcls
+: i1dclist, dlta: sint, env0: !envx2cm): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1valcls_cm1emit
 (ival: i1val, icls: i1cls, env0: !envx2cm): void
 fun
