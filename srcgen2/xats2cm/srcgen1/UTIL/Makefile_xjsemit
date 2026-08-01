@@ -33,6 +33,7 @@ $(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 # the code in [srcgen1/prelude] requires it.
 #
 ########################################################################
+#
 xats2cm_cmemit00: ; \
 printf "// %s\n" "`date`" > $@_ats3.js && \
 $(CAT) \
