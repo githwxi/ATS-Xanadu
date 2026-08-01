@@ -34,6 +34,8 @@ $(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 #
 ########################################################################
 #
+all:: \
+xats2cm_cmemit00
 xats2cm_cmemit00: ; \
 printf "// %s\n" "`date`" > $@_ats3.js && \
 $(CAT) \

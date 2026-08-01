@@ -628,11 +628,15 @@ then
 nindstrnfpr(filr, nind, ") ;; endfun(impl)");fprintln(filr))
 else
 (
-nindstrnfpr(filr, nind, ")) ;; endfun(impl)");fprintln(filr))
+nindstrnfpr
+(filr, nind+1, ")\n");
+nindstrnfpr(filr, nind, ") ;; endfun(impl)");fprintln(filr))
 )
 else//else
 (
-nindstrnfpr(filr, nind, ")) ;; endnfn(impl)");fprintln(filr))
+nindstrnfpr
+(filr, nind+1, ")\n");
+nindstrnfpr(filr, nind, ") ;; endnfn(impl)");fprintln(filr))
 //
 )//else(non-template)//end-of-(if)
 //
@@ -1002,6 +1006,27 @@ val (  ) =
   nindstrnfpr(filr, nind, ";; I1FUNDCL\n"))
 //
 }(*where*)//end-of-[i1fundcl_cm1emit(ifun,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1dclist_ind$cm1emit
+(
+  dcls, dlta, env0) =
+let
+//
+val () =
+(
+  envx2js_incnind(env0, dlta))
+//
+val () =
+(
+  i1dclist_cm1emit(dcls, env0))
+//
+val () = envx2js_decnind(env0, dlta)
+//
+end(*let*)//endof(i1dclist_ind$cm1emit(dcls,dlta,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
