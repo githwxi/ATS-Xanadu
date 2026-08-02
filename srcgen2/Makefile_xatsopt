@@ -111,6 +111,7 @@ xbasics_print0.dats \
 xlibext.dats \
 xlibext_tmplib.dats \
 xlibext_jsemit.dats \
+xlibext_cmemit.dats \
 xlibext_pyemit.dats \
 xsynoug.dats \
 xerrory.dats \
