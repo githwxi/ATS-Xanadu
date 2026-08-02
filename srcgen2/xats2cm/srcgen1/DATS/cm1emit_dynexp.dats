@@ -1457,6 +1457,9 @@ fprintln(filr))
 val (  ) =
 (
 nindstrnfpr
+(filr
+,nind+1, "(XATSLAM0\n");
+nindstrnfpr
 (filr, nind+1, "(lambda (");
 fjas1cm1
 (filr, fjas);strnfpr(filr, ")\n"))
@@ -1476,7 +1479,7 @@ end//let
 val (  ) =
 (
 i1cmp_ind$cm1emit
-(icmp, 2(*d*), env0);strnfpr(filr, ")\n"))
+(icmp, 2(*d*), env0);strnfpr(filr, "))\n"))
 //
 val (  ) =
 (
@@ -1484,6 +1487,55 @@ nindstrnfpr
 (filr, nind+1, ") ;; lam0(...)");fprintln(filr))
 //
 end(*let*)//end-of-[I1INSlam0(tknd, ...)]
+//
+(* ****** ****** *)
+//
+|I1INSfix0
+(tknd
+,dpid
+,fjas, icmp) =>
+let
+//
+val (  ) =
+(
+fprintln(filr))
+//
+val (  ) =
+(
+nindstrnfpr
+(filr, nind+1, "(XATSFIX0 ");
+d2varfpr
+(filr, dpid);strnfpr(filr, "\n"))
+val (  ) =
+(
+nindstrnfpr(
+  filr, nind+1, "(lambda (");
+fjas1cm1
+(filr, fjas);strnfpr(filr, ")\n"))
+//
+val (  ) =
+let
+val nind = nind+2
+in//let
+(
+nindstrnfpr
+(filr, nind, "(let\n");
+nindstrnfpr(filr, nind, "(\n");
+fjletlst_ind$cm1emit(fjas, 2, env0);
+nindstrnfpr(filr, nind, ")\n"))
+end//let
+//
+val (  ) =
+(
+i1cmp_ind$cm1emit
+(icmp, 2(*d*), env0);strnfpr(filr, "))\n"))
+//
+val (  ) =
+(
+nindstrnfpr
+(filr, nind+1, ") ;; fix0(...)");fprintln(filr))
+//
+end(*let*)//end-of-[I1INSfix0(tknd, ...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

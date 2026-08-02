@@ -2321,7 +2321,7 @@ nindstrnfpr
 (filr, nind, "let ");
 i1tnmjs1(filr, itnm);
 strnfpr(filr," = function ");
-d2varfpr(filr, dvar); //fvar
+d2varfpr(filr, dvar); //fnam
 fjas1js1(filr, fjas); //farg
 strnfpr(filr, " { // fix0(");
 tokenfpr(filr, tknd);strnfpr(filr, ")\n");
