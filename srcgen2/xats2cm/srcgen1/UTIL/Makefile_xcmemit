@@ -2,84 +2,75 @@
 ########################################################################
 # Makefile for bootstrapping
 ########################################################################
-all::
 ########################################################################
 CAT=cat
 SED=sed
 ECHO=echo
+NODE=node
 PRINTF=printf
-SCHEME=scheme
 ########################################################################
-SRCGEN1=./../../../../srcgen1
 SRCGEN2=./../../../../srcgen2
 XATSJSD=./../../../../srcgen2/xats2js
 XATSCMD=./../../../../srcgen2/xats2cm
 ########################################################################
-S1XSHRD=\
-$(SRCGEN1)/xats2cm/srcgenx/xshared/runtime
 S2XSHRD=\
 $(SRCGEN2)/xats2cm/srcgenx/xshared/runtime
 ########################################################################
 ########################################################################
 #
-# HX-2025-03-29:
-# HX-2026-08-02:
-# $(S1XSHRD) is used since the library code for
-# ATS3-Xanadu/source2 is largely shared with ATS3-Xanadu/source1
-#
-########################################################################
-#
-# HX-2025-04-05:
-# HX-2025-08-02:
-# The [S1XSHRD] is used here as
-# the code in [srcgen1/prelude] requires it.
-#
-########################################################################
-#
 all:: \
 xats2cm_cmemit00
 xats2cm_cmemit00: ; \
-printf ";; %s\n" "`date`" > $@_ats3.cm && \
+printf ";; %s\n" "`date`" > $@_ats3.js && \
 $(CAT) \
 $(S2XSHRD)/xats2cm_cm1emit.cm >> $@_ats3.cm && \
 $(CAT) \
-$(S1XSHRD)/srcgen1_precats.cm >> $@_ats3.cm && \
+$(S2XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
 $(CAT) \
-$(S1XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
+$(S2XSHRD)/srcgen1_xatslib.cm >> $@_ats3.cm && \
 $(SED) -E 's/cmx(...)tnm/cm1\1tnm/g' \
 $(SRCGEN2)/lib/lib2xatsopt.cm | $(CAT) - >> $@_ats3.cm && \
 $(SED) -E 's/cmx(...)tnm/cm2\1tnm/g' \
 $(XATSJSD)/srcgen1/lib/lib2xats2js.cm | $(CAT) - >> $@_ats3.cm && \
 $(SED) -E 's/cmx(...)tnm/cm3\1tnm/g' \
 $(XATSCMD)/srcgen1/lib/lib2xats2cm.cm | $(CAT) - >> $@_ats3.cm && \
-$(SCHEME) \
-  --script $(XATS2CM_CMEMIT00) xats2cm_cmemit00.dats >> $@_ats3.cm
+$(NODE) \
+  --stack-size=8192 $(XATS2CM_CMEMIT00) xats2cm_cmemit00.dats >> $@_ats3.cm
 #
 all:: \
 xats2cm_cmemit01
 xats2cm_cmemit01: ; \
-printf "// %s\n" "`date`" > $@_ats3.cm && \
+printf ";; %s\n" "`date`" > $@_ats3.js && \
 $(CAT) \
 $(S2XSHRD)/xats2cm_cm1emit.cm >> $@_ats3.cm && \
 $(CAT) \
-$(S1XSHRD)/srcgen1_precats.cm >> $@_ats3.cm && \
+$(S2XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
 $(CAT) \
-$(S1XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
+$(S2XSHRD)/srcgen1_xatslib.cm >> $@_ats3.cm && \
 $(SED) -E 's/cmx(...)tnm/cm1\1tnm/g' \
 $(SRCGEN2)/lib/lib2xatsopt.cm | $(CAT) - >> $@_ats3.cm && \
 $(SED) -E 's/cmx(...)tnm/cm2\1tnm/g' \
 $(XATSJSD)/srcgen1/lib/lib2xats2js.cm | $(CAT) - >> $@_ats3.cm && \
 $(SED) -E 's/cmx(...)tnm/cm3\1tnm/g' \
 $(XATSCMD)/srcgen1/lib/lib2xats2cm.cm | $(CAT) - >> $@_ats3.cm && \
-$(SCHEME) \
-  --script $(XATS2CM_CMEMIT00) xats2cm_cmemit01.dats >> $@_ats3.cm
+$(NODE) \
+  --stack-size=8192 $(XATS2CM_CMEMIT00) xats2cm_cmemit01.dats >> $@_ats3.cm
+#
+xats2cm_cmemit00_opt0: ; \
+$(SED) '/^[ ]*;;/d' xats2cm_cmemit00_ats3.cm > xats2cm_cmemit00_ats3_opt0.cm
+#
+xats2cm_cmemit01_opt0: ; \
+$(SED) '/^[ ]*;;/d' xats2cm_cmemit01_ats3.cm > xats2cm_cmemit01_ats3_opt0.cm
 #
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; rm -f xats2cm_cmemit0?_ats3.cm
+cleanall:: ; \
+rm -f xats2cm_cmemit00_ats3.cm
+cleanall:: ; \
+rm -f xats2cm_cmemit01_ats3.cm
 ########################################################################
 ########################################################################
 XASSETS=\
@@ -90,8 +81,8 @@ XATSOPT_TCHECK00=$(XASSETS)/JS/xatsopt/xatsopt_tcheck00_ats2_opt1.js
 endif ## (ifeq($(XATSOPT_TCHECK00),""))
 ########################################################################
 ifndef XATS2CM_CMEMIT00
-XATS2CM_CMEMIT00=$(XASSETS)/JS/xats2cm/xats2cm_cmemit00_ats3_opt1.js
-endif ## (ifeq($(XATS2CM_JSEMIT00),""))
+XATS2CM_CMEMIT00=$(XASSETS)/JS/xats2cm/xats2cm_cmemit00_ats2_opt1.js
+endif ## (ifeq($(XATS2CM_CMEMIT00),""))
 ########################################################################
 ########################################################################
 ###################### end of [Makefile_xcmemit] #######################
