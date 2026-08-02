@@ -1658,12 +1658,14 @@ nindstrnfpr
 val (  ) =
 (
 nindstrnfpr
-(filr, nind, "(lambda ()\n"))
+(filr
+,nind, "(lambda (_tlaz_)\n"))
 //
 val (  ) =
 (
 i1cmp_cm1emit
-(icmp , env0);strnfpr(filr, ")) ;; l1azy(...)\n"))
+(
+  icmp, env0);strnfpr(filr, ")) ;; l1azy(...)\n"))
 //
 end(*let*)//end-of-[I1INSl1azy(dknd, ...)]
 //
