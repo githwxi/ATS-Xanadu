@@ -648,7 +648,8 @@ LABint(int) => print(int)
 |
 LABsym(sym) =>
 (
-prints("'", sym.name((*0*))))
+prints
+("'", symbl_get_name(sym)))
 ) where
 {
 //
