@@ -503,6 +503,16 @@
         (let ((i1 (- i0 1)))
           (if (test (vector-ref cs i1)) (loop i1) #f)) #t)))
 ;;
+(define
+  XATS2CM_strn_vt_forall0_f1un XATS2CM_strn_vt_forall_f1un)
+(define
+  XATS2CM_strn_vt_forall1_f1un XATS2CM_strn_vt_forall_f1un)
+;;
+(define
+  XATS2CM_strn_vt_rforall0_f1un XATS2CM_strn_vt_rforall_f1un)
+(define
+  XATS2CM_strn_vt_rforall1_f1un XATS2CM_strn_vt_rforall_f1un)
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;

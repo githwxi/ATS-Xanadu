@@ -983,6 +983,19 @@ XATS2JS_strn_vt_forall$f1un
   return res; // strn_vt_forall$f1un(cs,f0)
 }
 //
+function
+XATS2JS_strn_vt_forall0$f1un
+  (cs, f0)
+{
+  return XATS2JS_strn_vt_forall$f1un(cs, f0)
+}
+function
+XATS2JS_strn_vt_forall1$f1un
+  (cs, f0)
+{
+  return XATS2JS_strn_vt_forall$f1un(cs, f0)
+}
+//
 /* ****** ****** */
 //
 function
@@ -998,6 +1011,19 @@ XATS2JS_strn_vt_rforall$f1un
     if(!f0(cs[i0-1])){res = false; break;}
   }
   return res; // strn_vt_rforall$f1un(cs,f0)
+}
+//
+function
+XATS2JS_strn_vt_rforall0$f1un
+  (cs, f0)
+{
+  return XATS2JS_strn_vt_rforall$f1un(cs, f0)
+}
+function
+XATS2JS_strn_vt_rforall1$f1un
+  (cs, f0)
+{
+  return XATS2JS_strn_vt_rforall$f1un(cs, f0)
 }
 //
 //////////////////////////////////////////////////////////////////.
@@ -1086,6 +1112,6 @@ XATS2JS_sint_div$sint
 //
 //////////////////////////////////////////////////////////////////.
 //////////////////////////////////////////////////////////////////.
-////////////////////////////////////////////////////////////////////////.
 /* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics1.cats] */
-////////////////////////////////////////////////////////////////////////.
+//////////////////////////////////////////////////////////////////.
+//////////////////////////////////////////////////////////////////.
