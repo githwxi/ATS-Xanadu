@@ -144,6 +144,13 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
+(define-syntax XATSLAM0
+  (syntax-rules () ((_ f) f)))
+(define-syntax XATSFIX0
+  (syntax-rules () ((_ f fdef) (letrec ((f fdef)) f))))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
 (define (XATSCTAG _ t) t)
 ;;
 (define (XATS000_inteq x y) (= x y))
