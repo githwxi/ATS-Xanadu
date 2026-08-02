@@ -48,7 +48,6 @@ val-strmcon_cons(x1, ys) = (!xs)}
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 fun
 strm_vt_sint$from
 ( n0
@@ -71,7 +70,6 @@ val () =
 printsln("x1 = ", x1)
 where{
 val-strmcon_vt_cons(x1, ys) = (!xs)}
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

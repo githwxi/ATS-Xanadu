@@ -769,13 +769,14 @@ if // if
 then // then
 (
 // HX: top-level
-nindfpr(filr, nind);
-strnfpr(filr, " (XATS000_patck");
+nindfpr
+(filr, nind);strnfpr(filr, "(XATS000_patck");
 i0pckcm1(filr, ivl1, ipat);strnfpr(filr, ")");fprintln(filr))
 else // else
 (
 // HX: inner-level
-nindfpr(filr, nind);strnfpr(filr, "(");
+nindfpr
+(filr, nind);strnfpr(filr, "(");
 i1anycm1(filr);strnfpr(filr, " (XATS000_patck");
 i0pckcm1(filr, ivl1, ipat);strnfpr(filr, "))");fprintln(filr))
 //
