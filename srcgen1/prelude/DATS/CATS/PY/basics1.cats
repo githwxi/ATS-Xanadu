@@ -104,7 +104,7 @@ def XATS2PY_char_uphexq(ch):
   A = 65
   F = 70
   return ((A <= ch) and (ch <= F))
-def XATS2PY_sint_lohexq(ch):
+def XATS2PY_sint_uphexq(ch):
   A = 65
   F = 70
   return ((A <= ch) and (ch <= F))
@@ -429,6 +429,7 @@ def XATS2PY_strn_vt_rforall_f1un(cs, test):
 ##
 ##################################################################.
 ##################################################################.
+##
 def XATS2PY_sint_neg(x0):
   return XATS2PY_gint_neg_sint(x0)
 def XATS2PY_sint_abs(x0):
