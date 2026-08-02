@@ -281,7 +281,7 @@ $(SED) -e 's/cmxtnm/cmx$(words $(NFILE))tnm/g' $< > $@
 lib2xatsopt: \
 $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt.cm
 lib2xatsopt_opt0: ; \
-$(SED) '/^[ ]*##/d' lib/lib2xatsopt.cm > lib/lib2xatsopt_opt0.cm
+$(SED) '/^[ ]*;;/d' lib/lib2xatsopt.cm > lib/lib2xatsopt_opt0.cm
 ########################################################################
 ########################################################################
 ifndef \
