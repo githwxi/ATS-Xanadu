@@ -1,0 +1,57 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; HX-2026-08-02:
+;; Sun Aug  2 11:09:58 PM EDT 2026
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Basics for XATS2CM
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+(define
+  (XATS2CM_g_stdin)
+  (current-input-port))
+;;
+(define
+  (XATS2CM_g_stderr)
+  (current-error-port))
+(define
+  (XATS2CM_g_stdout)
+  (current-output-port))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; HX-2026-08-02:
+;;
+(define
+  (XATS2CM_g_fprint x0 out) (display x0 out))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+(define
+  (XATS2CM_sint_fprint i0 out) (display i0 out))
+(define
+  (XATS2CM_bool_fprint b0 out) (display b0 out))
+(define
+  (XATS2CM_char_fprint c0 out) (display c0 out))
+(define
+  (XATS2CM_dflt_fprint f0 out) (display f0 out))
+(define
+  (XATS2CM_strn_fprint cs out) (display cs out))
+;;
+(define
+  (XATS2CM_gint_fprint_sint i0 out) (display i0 out))
+(define
+  (XATS2CM_gint_fprint_uint i0 out) (display i0 out))
+;;
+(define
+  (XATS2CM_gint_fprint_sflt f0 out) (display f0 out))
+(define
+  (XATS2CM_gint_fprint_dflt f0 out) (display f0 out))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;end of [ATS3/XANADU_srcgen1_xatslib_libcats_DATS_CATS_CM_libcats.cats]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.

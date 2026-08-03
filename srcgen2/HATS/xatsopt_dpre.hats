@@ -171,6 +171,25 @@ defq(_XATS2JS_)
 (* ****** ****** *)
 //
 (*
+HX-2026-08-02: For compiling to CM
+*)
+#if
+defq(_XATS2CM_)
+#then
+//
+#include
+"srcgen1/prelude/DATS/CATS/CM/basics1.dats"
+#include
+"srcgen1/prelude/DATS/CATS/CM/basics2.dats"
+#include
+"srcgen1/prelude/DATS/CATS/CM/basics3.dats"
+//
+#endif // end-of-[------ifdef(_XATS2CM_)------]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2025-04-28: For compiling to PY
 *)
 //
@@ -229,6 +248,8 @@ defq(_XATS2JS_)
 /xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
 #endif//end-of-[--------#ifdef(_XATS2JS_)--------]
 //
+(* ****** ****** *)
+//
 (*
 HX-2025-05-22: For compiling to Python3
 *)
@@ -257,11 +278,18 @@ defq(_XATS2JS_)
 #endif//#ifdefq(_XATS2JS_)(staload(xlibext_jsemit.dats))
 //
 #if
+defq(_XATS2CM_)
+// HX-2025-05:
+// for function templates
+#staload _(*local*) = "./../DATS/xlibext_cmemit.dats"
+#endif//#ifdefq(_XATS2CM_)(staload(xlibext_cmemit.dats))
+//
+#if
 defq(_XATS2PY_)
 // HX-2025-05:
 // for function templates
 #staload _(*local*) = "./../DATS/xlibext_pyemit.dats"
-#endif//#ifdefq(_XATS2JS_)(staload(xlibext_pyemit.dats))
+#endif//#ifdefq(_XATS2PY_)(staload(xlibext_pyemit.dats))
 //
 (* ****** ****** *)
 (* ****** ****** *)
