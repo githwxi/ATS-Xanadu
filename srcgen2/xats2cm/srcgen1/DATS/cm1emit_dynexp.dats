@@ -1926,6 +1926,8 @@ d2cst_fprint
 where
 {
 val () =
+nindfpr(filr, nind)
+val () =
 strnfpr(filr,
 "(XATS000_undef) ;; timp: ")}
 //
@@ -1941,7 +1943,7 @@ idcl.node() of
 let
 //
 fun
-dcst2varfpr
+d2c2vfpr
 (filr: FILR
 ,dcst: d2cst
 ,d2cs: d2cstlst
@@ -1951,7 +1953,8 @@ case+ d2cs of
 |
 list_nil() => ((*0*))
 |
-list_cons(d2c1, d2cs) =>
+list_cons
+(d2c1, d2cs) =>
 let
 //
 val-
@@ -1962,12 +1965,15 @@ in//let
 if
 (dcst = d2c1)
 then
-d2varcm1(filr, d2v1) where
+(
+d2varcm1(filr, d2v1))
+where
 {
 val
-d2v1 = i1fundcl_dpid$get(i1f1) }
+d2v1 = i1fundcl_dpid$get(i1f1)}
 else
-dcst2varfpr(filr, dcst, d2cs, i1fs)
+(
+d2c2vfpr(filr, dcst, d2cs, i1fs))
 //
 end//let
 )
@@ -1988,7 +1994,7 @@ i1fundclist_cm1emit(i1fs, env0)});
 //
 nindstrnfpr
 (filr, nind+2, "return ");
-dcst2varfpr(filr, dcst, d2cs, i1fs);fprintln(filr);
+d2c2vfpr(filr, dcst, d2cs, i1fs);fprintln(filr);
 nindstrnfpr
 (filr, nind+0, "} () // endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")")
 //
