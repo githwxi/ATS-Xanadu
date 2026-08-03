@@ -99,6 +99,7 @@ XATS2PY_list_cons(x0, xs) = list_cons(x0, xs)
 *)
 //
 (* ****** ****** *)
+//
 #extern
 fun
 XATS2PY_list_uncons_funs
@@ -116,6 +117,7 @@ XATS2PY_list_uncons_funs
   | list_nil() => f0()
   | list_cons(x0, xs) => f1(x0, xs)
 ) (* end of [XATS2PY_list_uncons_funs] *)
+//
 (* ****** ****** *)
 //
 // prelude/strm000.sats
@@ -161,6 +163,7 @@ XATS2PY_strm_cons(x0, xs) = strm_cons(x0, xs)
 //
 *)
 (* ****** ****** *)
+//
 #extern
 fun
 XATS2PY_strm_uncons_funs
@@ -178,7 +181,9 @@ XATS2PY_strm_uncons_funs
   | strmcon_nil() => f0((*void*))
   | strmcon_cons(x0, xs) => f1(x0, xs)
 ) (* end of [XATS2PY_strm_uncons_funs] *)
+//
 (* ****** ****** *)
+//
 #extern
 fun
 XATS2PY_streax_uncons_funs
@@ -193,6 +198,7 @@ XATS2PY_streax_uncons_funs
 ( case+ !xs of
   | strxcon_cons(x0, xs) => f1(x0, xs)
 ) (* end of [XATS2PY_streax_uncons_funs] *)
+//
 (* ****** ****** *)
 //
 // prelude/optn_vt.sats

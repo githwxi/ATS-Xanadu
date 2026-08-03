@@ -2,7 +2,7 @@
 ##################################################################.
 ##
 ## HX-2025-04-29:
-## PY code for xatsopt
+## Python code for xatsopt
 ## Tue Apr 29 09:32:47 PM EDT 2025
 ##
 ##################################################################.
@@ -36,6 +36,7 @@ XATSOPT_strn_append_uint(name, stmp):
   return (name+str(stmp)) ## end(strn_append_uint)
 ##
 ##################################################################.
+##
 def \
 XATSOPT_strn_dflt_parse(rep):
   try:
@@ -44,6 +45,7 @@ XATSOPT_strn_dflt_parse(rep):
     return 0.0 ## default in case of errors
 def \
 XATSOPT_strn_dflt_parse_exn(rep): return float(rep)
+##
 ##################################################################.
 ## end-of-[ATS3/XANADU_srcgen1_prelude_DATS_CATS_PY_xatsopt.cats]
 ##################################################################.

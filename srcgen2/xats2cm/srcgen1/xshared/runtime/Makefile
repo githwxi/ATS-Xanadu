@@ -17,18 +17,18 @@ SRCGEN1_XATSLIBD=\
 $(XATSHOME)/srcgen1/xatslib
 ##################################################################
 PRELUDE_CM=srcgen2_prelude.cm
-# XATSLIB_CM=srcgen2_xatslib.cm
+XATSLIB_CM=srcgen2_xatslib.cm
 ##################################################################
 SRCGEN1_PRELUDE_CM=srcgen1_prelude.cm
-# SRCGEN1_XATSLIB_CM=srcgen1_xatslib.cm
+SRCGEN1_XATSLIB_CM=srcgen1_xatslib.cm
 ##################################################################
 ##################################################################
 all::
 ##################################################################
 all:: prelude
-# all:: xatslib
-# all:: srcgen1_prelude
-# all:: srcgen1_xatslib
+all:: xatslib
+all:: srcgen1_prelude
+all:: srcgen1_xatslib
 ##################################################################
 ##################################################################
 prelude:: ; \
