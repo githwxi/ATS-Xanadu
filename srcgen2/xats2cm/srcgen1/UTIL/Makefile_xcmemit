@@ -21,7 +21,7 @@ $(SRCGEN2)/xats2cm/srcgenx/xshared/runtime
 all:: \
 xats2cm_cmemit00
 xats2cm_cmemit00: ; \
-printf ";; %s\n" "`date`" > $@_ats3.js && \
+printf ";; %s\n" "`date`" > $@_ats3.cm && \
 $(CAT) \
 $(S2XSHRD)/xats2cm_cm1emit.cm >> $@_ats3.cm && \
 $(CAT) \
@@ -40,7 +40,7 @@ $(NODE) \
 all:: \
 xats2cm_cmemit01
 xats2cm_cmemit01: ; \
-printf ";; %s\n" "`date`" > $@_ats3.js && \
+printf ";; %s\n" "`date`" > $@_ats3.cm && \
 $(CAT) \
 $(S2XSHRD)/xats2cm_cm1emit.cm >> $@_ats3.cm && \
 $(CAT) \
