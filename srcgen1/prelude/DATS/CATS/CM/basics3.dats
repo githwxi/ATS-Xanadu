@@ -639,5 +639,5 @@ XATS2CM_cma1sz_strmize(XATS2CM_cmhmap_get_keys(kxs)))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_CMy_basics3.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_CM_basics3.dats] *)
 (***********************************************************************)
