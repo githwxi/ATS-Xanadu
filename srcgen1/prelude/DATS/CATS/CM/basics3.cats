@@ -65,6 +65,19 @@ def XATS2CM_cmhmap_make_nil(): return {}
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
+#|
+HX-2026-08-04:
+See following code
+(inside xglobal.dats):
+//
+val
+the_fxtyenv =
+a0ref_make_1val
+($UN.cast10{fxtyenv}(0))
+//
+where '0' is used for the null map!!!
+|#
+;;
 ;; HX: listizing a view
 #|
 def XATS2CM_cmhmap_keyq(dct, key):
