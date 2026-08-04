@@ -855,7 +855,8 @@ if (nind > 0)
 then strnfpr(filr, "(")
 else strnfpr(filr, "(define "));
 //
-i1tnmcm1(filr, itnm);strnfpr(filr, " (XATSVAR0))");fprintln(filr)
+i1tnmcm1(filr, itnm);
+(strnfpr(filr, " (XATSVAR0))");fprintln(filr))
 //
 end//let//end-of-[TEQI1CMPnone]
 //

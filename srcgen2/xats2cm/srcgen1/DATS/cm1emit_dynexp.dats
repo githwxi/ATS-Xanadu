@@ -1261,14 +1261,14 @@ val (  ) =
 nindstrnfpr
 (
 filr,
-nind, "(letrec*\n");
+nind+1, "(letrec*\n");
 nindstrnfpr
 (filr, nind+1, "(\n"))
 //
 val (  ) =
 (
 i1dclist_ind$cm1emit
-(dcls, 1(*delta*), env0))
+(dcls, 2(*delta*), env0))
 //
 val (  ) =
 (
@@ -1276,7 +1276,8 @@ nindstrnfpr(filr, nind+1, ")\n"))
 //
 val (  ) =
 (
-i1cmp_cm1emit(icmp, env0);strnfpr(filr, ")");fprintln(filr))
+i1cmp_ind$cm1emit
+(icmp, 1(*d*), env0);strnfpr(filr, ")");fprintln(filr))
 //
 end(*let*)//end-of-[I1INSlet0(dcls,icmp)]
 //
@@ -1296,6 +1297,7 @@ nindstrnfpr
 //
 val (  ) =
 (
+nindfpr(filr, nind+2);
 i1valcm1
 (filr, ival);strnfpr(filr, "\n"))
 //
@@ -1926,7 +1928,7 @@ d2cst_fprint
 where
 {
 val () =
-nindfpr(filr, nind)
+nindfpr(filr, nind+1)
 val () =
 strnfpr(filr,
 "(XATS000_undef) ;; timp: ")}
@@ -2011,7 +2013,7 @@ val fjsq = fjags_nilq(fjas)
 in//let
 //
 nindfpr
-(filr, nind);
+(filr, nind+1);
 strnfpr
 (filr, "(lambda (");
 fjas1cm1(filr, fjas);strnfpr(filr, ")");
@@ -2023,7 +2025,7 @@ d2cst_fprint(dcst, filr);fprintln(filr));
 (
 let
 //
-val nind = (nind+1)
+val nind = (nind+2)
 //
 in//let
 //
@@ -2033,13 +2035,13 @@ if fjsq then () else
 nindstrnfpr
 (filr, nind, "(let\n");
 nindstrnfpr(filr, nind, "(\n");
-fjletlst_ind$cm1emit(fjas, 1, env0);
+fjletlst_ind$cm1emit(fjas, 2, env0);
 nindstrnfpr(filr, nind, ")\n"))
 )
 end//let
 );
 //
-i1cmp_ind$cm1emit(icmp, 1, env0);
+i1cmp_ind$cm1emit(icmp, 2, env0);
 //
 (
 if
@@ -2053,7 +2055,7 @@ else//else
 //
 (
 d2cst_fprint
-(dcst, filr);strnfpr(filr, ")");fprintln(filr))
+(dcst, filr);strnfpr(filr,")");fprintln(filr))
 //
 end(*let*)
 //
@@ -2094,15 +2096,19 @@ case+
 igua.node() of
 //
 |I1GUAexp(icmp) =>
-(
-fprintln(filr);i1cmp_cm1emit(icmp, env0))
+let
+val () = fprintln(filr)
+val () = i1cmp_cm1emit(icmp, env0)
+end
 //
 |I1GUAmat(icmp, ibnd) =>
 let
-val () = fprintln(filr)
-in//let
+val () =
+fprintln(filr)
+val () =
 (
-nindfpr(filr, nind);prints(";; I1GUAmat: igua = ", igua))
+nindfpr
+(filr, nind);prints(";; I1GUAmat: igua = ", igua))
 end//let
 //
 end(*let*)//end-of-[i1gua_cm1emit(igua,env0)]
