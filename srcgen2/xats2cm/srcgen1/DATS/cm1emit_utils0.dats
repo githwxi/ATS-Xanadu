@@ -416,14 +416,24 @@ i0chrcm1
 //
 case-
 tchr.node() of
-|T_CHAR1_nil0 _ =>
+//
+|
+T_CHAR1_nil0 _ =>
 prints("(XATSCNUL)")
-|T_CHAR2_char(rep) =>
-prints
-("(XATSCHR2 ", rep, ")")
-|T_CHAR3_blsh(rep) =>
+//
+|
+T_CHAR2_char(rep) =>
+(
+prints(
+"(XATSCHR2 ",
+'"', rep[1], '"', ")"))
+//
+|
+T_CHAR3_blsh(rep) =>
 let
- val()=f1_char3_blsh_rep(rep)
+val ()=
+(
+f1_char3_blsh_rep(rep))
 end
 //
 ) where
