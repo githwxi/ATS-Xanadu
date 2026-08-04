@@ -63,6 +63,13 @@ _(*tmp*) =
 /prelude/DATS/CATS/JS/basics3.dats"
 #endif//end-of-(#ifdefq(_XATS2JS_))
 #if
+defq(_XATS2CM_)
+#staload
+_(*tmp*) =
+"srcgen1\
+/prelude/DATS/CATS/CM/basics3.dats"
+#endif//end-of-(#ifdefq(_XATS2CM_))
+#if
 defq(_XATS2PY_)
 #staload
 _(*tmp*) =
