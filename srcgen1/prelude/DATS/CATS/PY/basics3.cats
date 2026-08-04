@@ -35,7 +35,17 @@ def XATS2PY_pya1sz_set_at(xs, i0, x0):
 ##
 ##################################################################.
 ##
+## HX-2026-08-04:
+## See following code
+## (inside xglobal.dats):
+## val
+## the_fxtyenv =
+## a0ref_make_1val
+## ($UN.cast10{fxtyenv}(0))
+## where '0' is used for the null map!!!
+##
 ## HX: listizing a view
+##
 def XATS2PY_pyhmap_keyq(dct, key):
   if (dct == 0):
     return False ## for null map
@@ -50,6 +60,7 @@ def XATS2PY_pyhmap_get_keys( dct ):
 ##################################################################.
 def XATS2PY_pyhmap_make_nil(): return {}
 ##################################################################.
+##
 def XATS2PY_pyhmap_search_opt(dct, key):
   if (dct == 0):
     return XATS2PY_optn_vt_nil() ## null map
@@ -57,9 +68,12 @@ def XATS2PY_pyhmap_search_opt(dct, key):
     return XATS2PY_optn_vt_cons(dct[key])
   else:
     return XATS2PY_optn_vt_nil() ## not found
+##
 ##################################################################.
+##
 def XATS2PY_pyhmap_insert_any(dct, key, itm):
-  dct[key] = itm ## end of [pyhmap_insert_any(dct,...)]
+  dct[key] = itm ## end-of-(pyhmap_insert_any(dct,...))
+##
 ##################################################################.
 ##################################################################.
 ## end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_PY_basics3.cats]
