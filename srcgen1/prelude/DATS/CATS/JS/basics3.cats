@@ -61,10 +61,24 @@ XATS2JS_jsa1sz_set$at
 //
 //////////////////////////////////////////////////////////////////.
 //
+/*
+HX-2026-08-04:
+See following code
+(inside xglobal.dats):
+//
+val
+the_fxtyenv =
+a0ref_make_1val
+($UN.cast10{fxtyenv}(0))
+//
+where '0' is used for the null map!!!
+*/
+//
 function
 XATS2JS_jshmap_keyq
    (map, key)
 {
+  if (map===0) return false;
   return map.hasOwnProperty(key);
 } // [XATS2JS_jshmap_keyq(map,key)]
 //
@@ -74,6 +88,7 @@ function
 XATS2JS_jshmap_get_keys
    (map)
 {
+  if (map===0) return [];
   return Object.keys(map);
 } // [XATS2JS_jshmap_get_keys(map)]
 //
@@ -93,7 +108,8 @@ XATS2JS_jshmap_search$opt
    (map, key)
 {
 //
-  var itm0 = map[key];
+  var itm0 =
+  (map===0?undefined:map[key]);
 //
   if(itm0===undefined)
   {
