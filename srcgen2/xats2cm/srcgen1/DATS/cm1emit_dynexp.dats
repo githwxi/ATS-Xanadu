@@ -374,6 +374,15 @@ ipat.node() of
 |I0Pbtf _ =>
 (
  f0_btf0(b0, ival, ipat))
+|I0Pchr _ =>
+(
+ f0_chr0(b0, ival, ipat))
+|I0Pflt _ =>
+(
+ f0_flt0(b0, ival, ipat))
+|I0Pstr _ =>
+(
+ f0_str0(b0, ival, ipat))
 //
 (* ****** ****** *)
 //
@@ -457,8 +466,85 @@ g_print
 //
 in//let
 (
-conj(b0);prints("(XATS000_btfeq ", ival, " ", btf0, ")"))
+conj(b0);
+prints("(XATS000_btfeq ", ival, " ", btf0, ")"))
 end(*let*)//end-of-[f0_btf0(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_chr0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pchr
+(  tchr  ) = ipat.node()
+//
+#impltmp
+g_print
+<token>(x) = i0chrcm1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valcm1(filr, x)
+//
+in//let
+(
+conj(b0);
+prints("(XATS000_chreq ", ival, " ", tchr, ")"))
+end(*let*)//end-of-[f0_chr0(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_flt0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pflt
+(  tflt  ) = ipat.node()
+//
+#impltmp
+g_print
+<token>(x) = i0fltcm1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valcm1(filr, x)
+//
+in//let
+(
+conj(b0);
+prints("(XATS000_flteq ", ival, " ", tflt, ")"))
+end(*let*)//end-of-[f0_flt0(...)]
+//
+and
+f0_str0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pstr
+(  tstr  ) = ipat.node()
+//
+#impltmp
+g_print
+<token>(x) = i0strcm1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valcm1(filr, x)
+//
+in//let
+(
+conj(b0);
+prints("(XATS000_streq ", ival, " ", tstr, ")"))
+end(*let*)//end-of-[f0_str0(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -524,6 +610,43 @@ end(*let*)//end-of-[f0_dapp(...)]
 (* ****** ****** *)
 //
 and
+f0_tup0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Ptup0
+(   i0ps   ) = ipat.node()
+//
+in//let
+(
+f0_ipatlst(b0+0,0,ival,ipat,i0ps))
+end(*let*)//end-of-[f0_tup0(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_tup1
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Ptup1
+(tknd, i0ps) = ipat.node()
+//
+in//let
+(
+f0_ipatlst(b0+0,0,ival,ipat,i0ps))
+end(*let*)//end-of-[f0_tup1(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and
 f0_bang
 ( b0: sint
 , ival: i1val
@@ -534,6 +657,8 @@ f0_ipat(b0, ival, i0p1)
 {
 val-I0Pbang(i0p1) = ipat.node()
 }(*where*)//end-of-[f0_bang(...)]
+//
+(* ****** ****** *)
 //
 and
 f0_flat
@@ -546,6 +671,8 @@ f0_ipat(b0, ival, i0p1)
 {
 val-I0Pflat(i0p1) = ipat.node()
 }(*where*)//end-of-[f0_flat(...)]
+//
+(* ****** ****** *)
 //
 and
 f0_free
