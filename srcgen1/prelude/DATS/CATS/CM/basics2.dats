@@ -272,6 +272,7 @@ XATS2CM_a1ptr_dtget$at1
 HX-2026-08-02:
 Sun Aug  2 07:07:25 PM EDT 2026
 *)
+(*
 #extern
 fun
 XATS2CM_strm_vt_forall0$f1un
@@ -281,7 +282,9 @@ XATS2CM_strm_vt_forall0$f1un
 , test
 : (~x0) -> bool): bool
 = $extnam()//extern(./strm000.cats)
+*)
 //
+(*
 #impltmp
 < x0:vt >
 strm_vt_forall0
@@ -294,6 +297,7 @@ test(x0: ~x0): bool =
 in//let
 XATS2CM_strm_vt_forall0$f1un{x0}(xs, test)
 end(*let*)//end-of-[strm_vt_forall0<x0>(xs)]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -302,6 +306,7 @@ end(*let*)//end-of-[strm_vt_forall0<x0>(xs)]
 HX-2026-08-02:
 Sun Aug  2 07:07:25 PM EDT 2026
 *)
+(*
 #extern
 fun
 XATS2CM_strm_vt_filter0$f1un
@@ -313,7 +318,9 @@ XATS2CM_strm_vt_filter0$f1un
 , free
 : (~x0) -> void): strm_vt(x0)
 = $extnam()//extern(./strm000.cats)
+*)
 //
+(*
 #impltmp
 < x0:vt >
 strm_vt_filter0
@@ -328,6 +335,7 @@ free(x0: ~x0): void = g_free<x0>(x0)
 in//let
 XATS2CM_strm_vt_filter0$f1un{x0}(xs,test,free)
 end(*let*)//end-of-[strm_vt_filter0<x0>(xs:lsm)]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -337,6 +345,7 @@ HX-2026-08-02:
 Sun Aug  2 07:07:25 PM EDT 2026
 *)
 //
+(*
 #extern
 fun
 XATS2CM_strx_vt_forall0$f1un
@@ -346,7 +355,9 @@ XATS2CM_strx_vt_forall0$f1un
 , test
 : (~x0) -> bool): bool
 = $extnam()//extern(./strx000.cats)
+*)
 //
+(*
 #impltmp
 < x0:vt >
 strx_vt_forall0
@@ -359,6 +370,7 @@ test(x0: ~x0): bool =
 in//let
 XATS2CM_strx_vt_forall0$f1un{x0}(xs, test)
 end(*let*)//end-of-[strx_vt_forall0<x0>(xs)]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -368,6 +380,7 @@ HX-2026-08-02:
 Sun Aug  2 07:07:25 PM EDT 2026
 *)
 //
+(*
 #extern
 fun
 XATS2CM_strx_vt_filter0$f1un
@@ -379,7 +392,9 @@ XATS2CM_strx_vt_filter0$f1un
 , free
 : (~x0) -> void): strx_vt(x0)
 = $extnam()//extern(./strx000.cats)
+*)
 //
+(*
 #impltmp
 < x0:vt >
 strx_vt_filter0
@@ -394,6 +409,7 @@ free(x0: ~x0): void = g_free<x0>(x0)
 in//let
 XATS2CM_strx_vt_filter0$f1un{x0}(xs,test,free)
 end(*let*)//end-of-[strx_vt_filter0<x0>(xs:lsx)]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

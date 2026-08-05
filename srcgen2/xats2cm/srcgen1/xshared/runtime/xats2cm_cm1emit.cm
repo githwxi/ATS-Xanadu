@@ -19,6 +19,8 @@
 (define (XATSBTF0 b0) b0)
 (define (XATSBOOL b0) b0)
 ;;
+(define (XATSCHAR c0) c0)
+;;
 (define
   (XATSCNUL) (integer->char 0))
 (define
@@ -165,25 +167,33 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
-(define (XATS2CM_optn_nil)
-  (XATSCAPP "optn_nil" (vector 0)))
-(define (XATS2CM_optn_cons x0)
-  (XATSCAPP "optn_cons" (vector 1 x0)))
+(define
+  (XATS2CM_optn_nil)
+  (XATSCAPP "optn_nil" 0))
+(define
+  (XATS2CM_optn_cons x0)
+  (XATSCAPP "optn_cons" 1 x0))
 ;;
-(define (XATS2CM_list_nil)
-  (XATSCAPP "list_nil" (vector 0)))
-(define (XATS2CM_list_cons x0 xs)
-  (XATSCAPP "list_cons" (vector 1 x0 xs)))
+(define
+  (XATS2CM_list_nil)
+  (XATSCAPP "list_nil" 0))
+(define
+  (XATS2CM_list_cons x0 xs)
+  (XATSCAPP "list_cons" 1 x0 xs))
 ;;
-(define (XATS2CM_optn_vt_nil)
-  (XATSCAPP "optn_vt_nil" (vector 0)))
-(define (XATS2CM_optn_vt_cons x0)
-  (XATSCAPP "optn_vt_cons" (vector 1 x0)))
+(define
+  (XATS2CM_optn_vt_nil)
+  (XATSCAPP "optn_vt_nil" 0))
+(define
+  (XATS2CM_optn_vt_cons x0)
+  (XATSCAPP "optn_vt_cons" 1 x0))
 ;;
-(define (XATS2CM_list_vt_nil)
-  (XATSCAPP "list_vt_nil" (vector 0)))
-(define (XATS2CM_list_vt_cons x0 xs)
-  (XATSCAPP "list_vt_cons" (vector 1 x0 xs)))
+(define
+  (XATS2CM_list_vt_nil)
+  (XATSCAPP "list_vt_nil" 0))
+(define
+  (XATS2CM_list_vt_cons x0 xs)
+  (XATSCAPP "list_vt_cons" 1 x0 xs))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
@@ -210,9 +220,11 @@
   (XATS000_assgn lval rval)
   (XATS000_lvset! lval rval))
 ;;
-(define (XATS000_l0azy lfun) (vector 0 lfun))
+(define
+  (XATS000_l0azy lfun) (vector 0 lfun))
 ;;
-(define (XATS000_dl0az l0az)
+(define
+  (XATS000_dl0az l0az)
   (let ((t (vector-ref l0az 0)))
     (if (> t 0)
 	(let ((_ (vector-set! l0az 0 (+ t 1))))
