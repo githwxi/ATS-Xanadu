@@ -60,12 +60,12 @@
 (define
   (XATS2CM_a1ref_get$at A0 i0) (vector-ref A0 i0))
 (define
-  (XATS2CM_a1ref_get$at1 A0 i0) (vector-ref A0 i0))
+  (XATS2CM_a1ptr_get$at1 A0 i0) (vector-ref A0 i0))
 ;;
 (define
   (XATS2CM_a1ref_set$at A0 i0 x0) (vector-set! A0 i0 x0))
 (define
-  (XATS2CM_a1ref_set$at1 A0 i0 x0) (vector-set! A0 i0 x0))
+  (XATS2CM_a1ptr_set$at1 A0 i0 x0) (vector-set! A0 i0 x0))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;

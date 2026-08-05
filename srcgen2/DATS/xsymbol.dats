@@ -208,7 +208,7 @@ loop(cs, r0+1) else (g_free(cs); -1)
 //
 #extern
 fun
-strn_append_uint
+strn_append$uint
 ( name: strn
 , stmp: uint): strn
 //
@@ -222,19 +222,19 @@ val uint =
   stamp_get_uint(stmp)
 in//let
 symbl_make_name
-(strn_append_uint(name, uint))
+(strn_append$uint(name, uint))
 end//let//end-of-[symbl_extend_stamp]
 //
 #implfun
-strn_append_uint
+strn_append$uint
   (name, stmp) =
 (
-XATSOPT_strn_append_uint
+XATSOPT_strn_append$uint
   (name, stmp)) where
 {
 #extern
 fun
-XATSOPT_strn_append_uint
+XATSOPT_strn_append$uint
 (name: strn, stmp: uint): strn = $extnam()
 }
 //

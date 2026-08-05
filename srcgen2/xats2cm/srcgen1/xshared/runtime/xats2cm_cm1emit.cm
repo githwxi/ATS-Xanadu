@@ -19,39 +19,39 @@
 (define (XATSBTF0 b0) b0)
 (define (XATSBOOL b0) b0)
 ;;
+(define (XATSCNUL) 0)
+(define (XATSCHR1) 0)
 (define (XATSCHAR c0) c0)
 ;;
 (define
-  (XATSCNUL) (integer->char 0))
+  (XATSCHR0 ch)
+  (char->integer (string-ref ch 0)))
 (define
-  (XATSCHR1) (integer->char 0))
-;;
-(define
-  (XATSCHR0 ch) (string-ref ch 0))
-(define
-  (XATSCHR2 ch) (string-ref ch 0))
+  (XATSCHR2 ch)
+  (char->integer (string-ref ch 0)))
 ;;
 (define (XATSCHR3 ch)
   (let* ((c1 (string-ref ch 1))
-         (d1 (integer->char c1)))
+         (d1 (char->integer c1))
+         (n1 (string-length ch)))
     (cond
       ;; ord('0') = 48
       ;; ord('7') = 55
       ;; e.g. "\(" or "\)"
-      ((< d1 48) c1)
-      ((> d1 55) c1)
+      ((< d1 48) d1)
+      ((> d1 55) d1)
       ;; "\ddd" : octal
       (else
        (let loop ((i1 2)
-                  (d1 (- c1 48)))
-         (if (>= i1 (string-length ch))
-             (integer->char d1)
-             (let ((c1 (string-ref ch i1)))
+                  (ds (- c1 48)))
+         (if (>= i1 n1)
+             ds ;; (integer->char ds)
+             (let* ((c1 (string-ref ch i1))
+		    (d1 (char->integer c1)))
                (if (char=? c1 #\')
-                   d1
+                   ds ;; (integer->char ds)
                    (loop (+ i1 1)
-                         (+ (* 8 d1)
-                            (- (char->integer c1) 48)))))))))))
+                         (+ (* 8 ds) (- d1 48)))))))))))
 ;;
 (define (XATSFLT0 f0) f0)
 (define (XATSFLT1 f0) f0)

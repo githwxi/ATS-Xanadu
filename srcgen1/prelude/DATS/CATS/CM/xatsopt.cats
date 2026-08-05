@@ -24,7 +24,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATSOPT_fpath_full_read fpx)
+  (XATSOPT_fpath_full$read fpx)
   (with-exception-handler
     (lambda (exn) #f)
     (lambda ()
@@ -34,17 +34,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATSOPT_strn_append_uint name stmp)
+  (XATSOPT_strn_append$uint name stmp)
   (string-append name (number->string stmp)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATSOPT_strn_dflt_parse rep)
+  (XATSOPT_strn_dflt$parse rep)
   (or (string->number rep) 0.0))
 ;;
 (define
-  (XATSOPT_strn_dflt_parse rep) (string->number rep))
+  (XATSOPT_strn_dflt$parse$exn rep)
+  (or (string->number rep) (error 'XATSOPT_strn_dflt$parse$exn rep)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;; end-of-[ATS3/XANADU_srcgen1_prelude_DATS_CATS_CM_xatsopt.cats]

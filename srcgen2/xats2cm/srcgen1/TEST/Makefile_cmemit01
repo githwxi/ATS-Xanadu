@@ -1,0 +1,203 @@
+########################################################################
+########################################################################
+# Makefile for CM-emission
+########################################################################
+########################################################################
+CAT=cat
+ECHO=echo
+PRINTF=printf
+########################################################################
+NODE=node
+SCHEME=scheme
+########################################################################
+########################################################################
+all:: test00
+all:: test01
+all:: test02
+all:: test03
+all:: test04
+all:: test05
+all:: test06
+all:: test07
+all:: test09
+all:: test10
+########################################################################
+########################################################################
+testall:: \
+test00; $(SCHEME) --script OUTS/$<_out.cm
+testall:: \
+test01; $(SCHEME) --script OUTS/$<_out.cm
+testall:: \
+test02; $(SCHEME) --script OUTS/$<_out.cm
+testall:: \
+test03; $(SCHEME) --script OUTS/$<_out.cm
+testall:: \
+test04; $(SCHEME) --script OUTS/$<_out.cm
+testall:: \
+test05; $(SCHEME) --script OUTS/$<_out.cm
+testall:: \
+test06; $(SCHEME) --script OUTS/$<_out.cm
+testall:: \
+test07; $(SCHEME) --script OUTS/$<_out.cm
+testall:: \
+test09; $(SCHEME) --script OUTS/$<_out.cm
+testall:: \
+test10; $(SCHEME) --script OUTS/$<_out.cm
+########################################################################
+########################################################################
+XATS2CM_SRCGENX="./.."
+XATS2CM_XSHARED=$(XATS2CM_SRCGENX)/xshared/runtime
+########################################################################
+XATS2CM_CMEMIT01="./../UTIL/xats2cm_cmemit01_ats3.cm"
+########################################################################
+########################################################################
+test00:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.cm
+############
+test00:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.cm >> OUTS/$@_out.cm
+test00:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
+############
+test00:: \
+test00_xats2cm.dats; \
+$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+########################################################################
+########################################################################
+test01:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.cm
+############
+test01:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.cm >> OUTS/$@_out.cm
+test01:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
+############
+test01:: \
+test01_xats2cm.dats; \
+$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+########################################################################
+########################################################################
+test02:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.cm
+############
+test02:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.cm >> OUTS/$@_out.cm
+test02:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
+############
+test02:: \
+test02_xats2cm.dats; \
+$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+########################################################################
+########################################################################
+test03:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.cm
+############
+test03:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.cm >> OUTS/$@_out.cm
+test03:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
+############
+test03:: \
+test03_xats2cm.dats; \
+$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+########################################################################
+########################################################################
+test04:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.cm
+############
+test04:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.cm >> OUTS/$@_out.cm
+test04:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
+############
+test04:: \
+test04_xats2cm.dats; \
+$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+########################################################################
+########################################################################
+test05:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.cm
+############
+test05:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.cm >> OUTS/$@_out.cm
+test05:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
+############
+test05:: \
+test05_xats2cm.dats; \
+$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+########################################################################
+########################################################################
+test06:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.cm
+############
+test06:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.cm >> OUTS/$@_out.cm
+test06:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
+############
+test06:: \
+test06_xats2cm.dats; \
+$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+########################################################################
+########################################################################
+test07:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.cm
+############
+test07:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.cm >> OUTS/$@_out.cm
+test07:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
+############
+test07:: \
+test07_xats2cm.dats; \
+$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+########################################################################
+########################################################################
+test09:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.cm
+############
+test09:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.cm >> OUTS/$@_out.cm
+test09:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
+############
+test09:: \
+test09_xats2cm.dats; \
+$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+########################################################################
+########################################################################
+test10:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.cm
+############
+test10:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.cm >> OUTS/$@_out.cm
+test10:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
+############
+test10:: \
+test10_xats2cm.dats; \
+$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+########################################################################
+########################################################################
+testxx:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.cm
+############
+testxx:: ; \
+$(CAT) $(XATS2CM_XSHARED)/xats2cm_cm1emit.cm >> OUTS/$@_out.cm
+testxx:: ; \
+$(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
+############
+testxx:: \
+testxx_mydebug.dats; \
+$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+########################################################################
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/test??_out.cm
+########################################################################
+########################################################################
+###################### end of [Makefile_cmemit01] ######################
+########################################################################

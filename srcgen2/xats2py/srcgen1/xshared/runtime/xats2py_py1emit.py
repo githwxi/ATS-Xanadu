@@ -38,14 +38,14 @@ def XATSCHR3(ch):
     return c1 ## acsii
   else: ## '\ddd': octal
     i1 = 2
-    d1 = c1 - 48
+    ds = c1 - 48
     while (i1 < len(ch)):
       x1 = ch[i1]
       if (x1 == "'"):
-        return d1
+        return ds
       else:
         i1 = i1 + 1
-        d1 = 8*d1 + ord(x1)-48
+        ds = 8*ds + ord(x1)-48
     return d1 ## ascii code of [ch]
 ##
 def XATSFLT0(f0): return (f0)

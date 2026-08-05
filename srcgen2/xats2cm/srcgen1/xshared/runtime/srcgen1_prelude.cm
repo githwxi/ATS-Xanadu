@@ -1,9 +1,9 @@
-;; Tue Aug  4 08:45:43 PM EDT 2026
+;; Wed Aug  5 03:26:11 PM EDT 2026
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-#|
-Basics0 for XATS2PY
-|#
+;;
+;; Basics0 for XATS2PY
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;; end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_PY_basics0.cats]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
@@ -40,99 +40,106 @@ Basics0 for XATS2PY
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
+;; HX-2026-08-05:
+;; 'char' is a "small" integer
+;; whose size is not specified!
+;;
 (define
   (XATS2CM_char_eq c1 c2)
-  (char=? c1 c2)) ;; char!=ascii
+  (= c1 c2)) ;; HX: char=ascii
 ;;
 (define
   (XATS2CM_char_neq c1 c2)
-  (not (XATS2CM_char_eq c1 c2))) ;; char!=ascii
+  (not (XATS2CM_char_eq c1 c2))) ;; char=ascii
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
   (XATS2CM_char_cmp c1 c2)
-  (cond ((char<? c1 c2) -1)
-        ((char>? c1 c2)  1) (else 0)))
+  (cond ((< c1 c2) -1) ((> c1 c2)  1) (else 0)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_char_eqz c0)
-  (= (char->integer c0) 0)) ;; char(null=0)
+  (XATS2CM_char_eqz c0) (= c0 0)) ;; CNUL
 ;;
 (define
-  (XATS2CM_char_neqz c0)
-  (not (= (char->integer c0) 0))) ;; char(null=0)
+  (XATS2CM_char_neqz c0) (not (= c0 0))) ;; ~CNUL
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_char_equal c1 c2)
-  (char=? c1 c2)) ;; char!=ascii
+  (XATS2CM_char_equal c1 c2) (= c1 c2))
 ;;
 (define
-  (XATS2CM_char_noteq c1 c2)
-  (not (XATS2CM_char_equal c1 c2))) ;; char!=ascii
+  (XATS2CM_char_noteq c1 c2) (not (= c1 c2)))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define (XATS2CM_char_code i0) i0)
+;;
+(define (XATS2CM_char_make_code i0) i0)
+(define (XATS2CM_char_make_sint i0) i0)
+(define (XATS2CM_char_make_uint i0) i0)
+;;
+(define (XATS2CM_sint_make_char i0) i0)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
   (XATS2CM_char_lowerq ch)
-  (and (char<=? #\a ch) (char<=? ch #\z)))
+  (and (<= 97 ch) (<= ch 122)))
 (define
   (XATS2CM_sint_lowerq ch)
-  (XATS2CM_char_lowerq (integer->char ch)))
+  (and (<= 97 ch) (<= ch 122)))
 ;;
 (define
   (XATS2CM_char_upperq ch)
-  (and (char<=? #\A ch) (char<=? ch #\Z)))
+  (let ((A 65) (Z 90)) (and (<= A ch) (<= ch Z))))
 (define
   (XATS2CM_sint_upperq ch)
-  (XATS2CM_char_upperq (integer->char ch)))
+  (let ((A 65) (Z 90)) (and (<= A ch) (<= ch Z))))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_char_isdigit ch)
-  (and (char<=? #\0 ch) (char<=? ch #\9)))
+(XATS2CM_char_isdigit ch) (and (<= 48 ch) (<= ch 57)))
 (define
-  (XATS2CM_sint_isdigit ch)
-  (XATS2CM_char_isdigit (integer->char ch)))
+(XATS2CM_sint_isdigit ch) (and (<= 48 ch) (<= ch 57)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_char_isalpha ch)
-  (or (XATS2CM_char_lowerq ch) (XATS2CM_char_upperq ch)))
+(XATS2CM_char_isalpha ch)
+(or (XATS2CM_char_lowerq ch) (XATS2CM_char_upperq ch)))
 (define
-  (XATS2CM_sint_isalpha ch)
-  (or (XATS2CM_sint_lowerq ch) (XATS2CM_sint_upperq ch)))
+(XATS2CM_sint_isalpha ch)
+(or (XATS2CM_sint_lowerq ch) (XATS2CM_sint_upperq ch)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_char_isalnum ch)
-  (or (XATS2CM_char_isalpha ch) (XATS2CM_char_isdigit ch)))
+(XATS2CM_char_isalnum ch)
+(or (XATS2CM_char_isalpha ch) (XATS2CM_char_isdigit ch)))
 (define
-  (XATS2CM_sint_isalnum ch)
-  (or (XATS2CM_sint_isalpha ch) (XATS2CM_sint_isdigit ch)))
+(XATS2CM_sint_isalnum ch)
+(or (XATS2CM_sint_isalpha ch) (XATS2CM_sint_isdigit ch)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
   (XATS2CM_char_lohexq ch)
-  (and (char<=? #\a ch) (char<=? ch #\f)))
+  (and (<= 97 ch) (<= ch 102)))
 (define
   (XATS2CM_sint_lohexq ch)
-  (XATS2CM_char_lohexq (integer->char ch)))
+  (and (<= 97 ch) (<= ch 102)))
 ;;
 (define
   (XATS2CM_char_uphexq ch)
-  (and (char<=? #\A ch) (char<=? ch #\F)))
+  (let ((A 65) (F 70)) (and (<= A ch) (<= ch F))))
 (define
   (XATS2CM_sint_uphexq ch)
-  (XATS2CM_char_uphexq (integer->char ch)))
+  (let ((A 65) (F 70)) (and (<= A ch) (<= ch F))))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
@@ -380,8 +387,8 @@ Basics0 for XATS2PY
 ;;
 ;; HX-2020-09-28:
 ;; Please note that:
-;; A (strn)-val is a PY-string
-;; A (lstrn)-val is a PY-array
+;; A (strn)-val is a SCM-string of chars
+;; A (lstrn)-val is a SCM-vector of sints
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
@@ -401,7 +408,8 @@ Basics0 for XATS2PY
     (let* ((n1 (- n0 1))
 	   (rs (make-string n1)))
       (do ((i0 0 (+ i0 1))) ((>= i0 n1) rs)
-	(string-set! rs i0 (vector-ref cs i0))))))
+	(string-set! rs i0
+	  (integer->char (vector-ref cs i0)))))))
 ;;
 (define
   (XATS2CM_stropt_nilq opt)
@@ -434,19 +442,20 @@ Basics0 for XATS2PY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_strn_head_raw cs)
-  (string-ref cs 0)) ;; HX: |cs| >= 1
+  (XATS2CM_strn_head$raw cs)
+  ;; HX: |cs| >= 1 is assumed!
+  (char->integer (string-ref cs 0)))
 ;;
 (define
-  (XATS2CM_strn_head_opt cs)
+  (XATS2CM_strn_head$opt cs)
   (let ((ln (string-length cs)))
     (if (> ln 0)
-	(string-ref cs 0)) (integer->char 0)))
+	(char->integer (string-ref cs 0)) 0)))
 ;;
 (define
-  (XATS2CM_strn_tail_raw cs)
-  ;; Return the substring starting at index 1.
-  (substring cs 1 (string-length cs)))
+  (XATS2CM_strn_tail$raw cs)
+  ;; HX: return the substring starting 
+  (substring cs 1 (string-length cs))) ;; at index 1
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
@@ -462,7 +471,8 @@ Basics0 for XATS2PY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_strn_get$at cs i0) (string-ref cs i0))
+  (XATS2CM_strn_get$at cs i0)
+  (char->integer (string-ref cs i0)))
 ;;
 (define
   (XATS2CM_strn_vt_get$at cs i0) (vector-ref cs i0))
@@ -472,8 +482,7 @@ Basics0 for XATS2PY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_strtmp_vt_alloc bsz)
-  (make-vector (+ bsz 1) (integer->char 0)))
+  (XATS2CM_strtmp_vt_alloc bsz) (make-vector (+ bsz 1) 0))
 ;;
 (define
   (XATS2CM_strtmp_vt_set$at cs i0 c0) (vector-set! cs i0 c0))
@@ -485,15 +494,17 @@ Basics0 for XATS2PY
   (let loop ((i0 0)
 	     (ln (string-length cs)))
     (if (< i0 ln)
-	(let ((c0 (string-ref cs i0)))
-          (if (test c0) (loop (+ i0 1) ln) #f)) #t)))
+	(let* ((c0 (string-ref cs i0))
+	       (d0 (char->integer c0)))
+          (if (test d0) (loop (+ i0 1) ln) #f)) #t)))
 ;;
 (define
   (XATS2CM_strn_rforall$f1un cs test)
   (let loop ((i0 (string-length cs)))
     (if (> i0 0)
-        (let ((i1 (- i0 1)))
-          (if (test (string-ref cs i1)) (loop i1) #f)) #t)))
+        (let* ((i1 (- i0 1))
+	       (c1 (string-ref cs i1)))
+          (if (test (char->integer c1)) (loop i1) #f)) #t)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
@@ -532,44 +543,32 @@ Basics0 for XATS2PY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_sint_neg x0)
-  (XATS2CM_gint_neg$sint x0))
+(XATS2CM_sint_neg x0) (XATS2CM_gint_neg$sint x0))
 (define
-  (XATS2CM_sint_abs x0)
-  (XATS2CM_gint_abs$sint x0))
+(XATS2CM_sint_abs x0) (XATS2CM_gint_abs$sint x0))
 ;;
 (define
-  (XATS2CM_sint_lt_sint x0 y0)
-  (XATS2CM_gint_lt$sint$sint x0 y0))
+(XATS2CM_sint_lt_sint x0 y0) (XATS2CM_gint_lt$sint$sint x0 y0))
 (define
-  (XATS2CM_sint_gt_sint x0 y0)
-  (XATS2CM_gint_gt$sint$sint x0 y0))
+(XATS2CM_sint_gt_sint x0 y0) (XATS2CM_gint_gt$sint$sint x0 y0))
 (define
-  (XATS2CM_sint_eq_sint x0 y0)
-  (XATS2CM_gint_eq$sint$sint x0 y0))
+(XATS2CM_sint_eq_sint x0 y0) (XATS2CM_gint_eq$sint$sint x0 y0))
 ;;
 (define
-  (XATS2CM_sint_lte_sint x0 y0)
-  (XATS2CM_gint_lte$sint$sint x0 y0))
+(XATS2CM_sint_lte_sint x0 y0) (XATS2CM_gint_lte$sint$sint x0 y0))
 (define
-  (XATS2CM_sint_gte_sint x0 y0)
-  (XATS2CM_gint_gte$sint$sint x0 y0))
+(XATS2CM_sint_gte_sint x0 y0) (XATS2CM_gint_gte$sint$sint x0 y0))
 (define
-  (XATS2CM_sint_neq_sint x0 y0)
-  (XATS2CM_gint_neq$sint$sint x0 y0))
+(XATS2CM_sint_neq_sint x0 y0) (XATS2CM_gint_neq$sint$sint x0 y0))
 ;;
 (define
-  (XATS2CM_sint_add_sint x0 y0)
-  (XATS2CM_gint_add$sint$sint x0 y0))
+(XATS2CM_sint_add_sint x0 y0) (XATS2CM_gint_add$sint$sint x0 y0))
 (define
-  (XATS2CM_sint_sub_sint x0 y0)
-  (XATS2CM_gint_sub$sint$sint x0 y0))
+(XATS2CM_sint_sub_sint x0 y0) (XATS2CM_gint_sub$sint$sint x0 y0))
 (define
-  (XATS2CM_sint_mul_sint x0 y0)
-  (XATS2CM_gint_mul$sint$sint x0 y0))
+(XATS2CM_sint_mul_sint x0 y0) (XATS2CM_gint_mul$sint$sint x0 y0))
 (define
-  (XATS2CM_sint_div_sint x0 y0)
-  (XATS2CM_gint_div$sint$sint x0 y0))
+(XATS2CM_sint_div_sint x0 y0) (XATS2CM_gint_div$sint$sint x0 y0))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
@@ -638,12 +637,12 @@ Basics0 for XATS2PY
 (define
   (XATS2CM_a1ref_get$at A0 i0) (vector-ref A0 i0))
 (define
-  (XATS2CM_a1ref_get$at1 A0 i0) (vector-ref A0 i0))
+  (XATS2CM_a1ptr_get$at1 A0 i0) (vector-ref A0 i0))
 ;;
 (define
   (XATS2CM_a1ref_set$at A0 i0 x0) (vector-set! A0 i0 x0))
 (define
-  (XATS2CM_a1ref_set$at1 A0 i0 x0) (vector-set! A0 i0 x0))
+  (XATS2CM_a1ptr_set$at1 A0 i0 x0) (vector-set! A0 i0 x0))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
@@ -823,8 +822,8 @@ def XATS2CM_cmhmap_insert_any(dct, key, itm):
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATSOPT_argv_get)
-  (current-command-line-arguments))
+  (XATSOPT_argv$get)
+  (list->vector (command-line)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;

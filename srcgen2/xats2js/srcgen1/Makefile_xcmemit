@@ -110,7 +110,7 @@ XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js
 endif ## (ifeq($(XATSOPT_TCHECK00),""))
 ########################################################################
 ifndef XATS2CM_CMEMIT00
-XATS2CM_CMEMIT00=$(XATSCMD)/srcgen1/UTIL/xats2cm_cmemit00_ats2.js
+XATS2CM_CMEMIT00=$(XATSCMD)/srcgen1/UTIL/xats2cm_cmemit00_ats3.js
 endif ## (ifeq($(XATS2CM_CMEMIT00),""))
 ########################################################################
 ########################################################################
