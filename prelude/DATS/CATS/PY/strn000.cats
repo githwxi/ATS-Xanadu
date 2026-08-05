@@ -82,20 +82,20 @@ def XATS000_strn_make_fwork(fwork):
 ########################################################################.
 ##
 def \
-XATS2PY_strn_fmake_env_fwork(env, fwork):
+XATS2PY_strn_make_env_fwork(env, fwork):
   res = []
   fwork(env, lambda ch: res.append(chr(ch)))
   return "".join(res)
 def \
-XATS2PY_strn_fmake1_env_fwork(env, fwork):
+XATS2PY_strn_make1_env_fwork(env, fwork):
   res = []
   fwork(env, lambda ch: res.append(chr(ch)))
   return "".join(res)
 ##
-def XATS000_strn_fmake_env_fwork(env, fwork):
-  return XATS2PY_strn_fmake_env_fwork(env, fwork)
-def XATS000_strn_fmake1_env_fwork(env, fwork):
-  return XATS2PY_strn_fmake1_env_fwork(env, fwork)
+def XATS000_strn_make_env_fwork(env, fwork):
+  return XATS2PY_strn_make_env_fwork(env, fwork)
+def XATS000_strn_make1_env_fwork(env, fwork):
+  return XATS2PY_strn_make1_env_fwork(env, fwork)
 ##
 ########################################################################.
 ########################################################################.
