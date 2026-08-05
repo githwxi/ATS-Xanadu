@@ -1589,18 +1589,19 @@ strnfpr
 (filr,"(XATSFLAT ");i1valcm1(filr,i1v1);strnfpr(filr,")"))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I1INSfold
 (   i1v1   ) =>
 (
-strnfpr
-(filr,"(XATSFOLD ");i1valcm1(filr,i1v1);strnfpr(filr,")"))
+strnfpr(filr,"(XATS000_fold ");
+strnfpr(filr, " ");i1valcm1(filr, i1v1);strnfpr(filr, ")"))
 //
 |I1INSfree
 (   i1v1   ) =>
 (
-strnfpr
-(filr,"(XATSFREE ");i1valcm1(filr,i1v1);strnfpr(filr,")"))
+strnfpr(filr,"(XATS000_free");
+strnfpr(filr, " ");i1valcm1(filr, i1v1);strnfpr(filr, ")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -54,9 +54,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_strn_get_at_raw cs i0) (string-ref cs i0))
+ (XATS2CM_strn_get$at$raw cs i0) (string-ref cs i0))
 (define
- (XATS000_strn_get_at_raw cs i0) (string-ref cs i0))
+ (XATS000_strn_get$at$raw cs i0) (string-ref cs i0))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.

@@ -67,7 +67,8 @@ bool_mul = XATS2CM_bool_mul
 //prelude/SATS/char000.sats
 *)
 //
-// [char] is a (small) number
+// HX-2026-08-05:
+// [char] is a "small" number
 //
 (* ****** ****** *)
 //

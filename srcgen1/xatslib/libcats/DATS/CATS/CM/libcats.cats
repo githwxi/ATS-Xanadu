@@ -41,14 +41,14 @@
   (XATS2CM_strn_fprint cs out) (display cs out))
 ;;
 (define
-  (XATS2CM_gint_fprint_sint i0 out) (display i0 out))
+  (XATS2CM_gint_fprint$sint i0 out) (display i0 out))
 (define
-  (XATS2CM_gint_fprint_uint i0 out) (display i0 out))
+  (XATS2CM_gint_fprint$uint i0 out) (display i0 out))
 ;;
 (define
-  (XATS2CM_gint_fprint_sflt f0 out) (display f0 out))
+  (XATS2CM_gint_fprint$sflt f0 out) (display f0 out))
 (define
-  (XATS2CM_gint_fprint_dflt f0 out) (display f0 out))
+  (XATS2CM_gint_fprint$dflt f0 out) (display f0 out))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.

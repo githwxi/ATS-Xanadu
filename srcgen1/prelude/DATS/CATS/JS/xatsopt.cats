@@ -9,7 +9,7 @@ Thu 08 Aug 2024 10:42:49 PM EDT
 //////////////////////////////////////////////////////////////////.
 //
 function
-XATSOPT_strn_append_uint
+XATSOPT_strn_append$uint
   (name, stmp)
 {
   return name + stmp.toString();
@@ -35,7 +35,7 @@ XATSOPT_strn_dflt$parse$exn
   {
     return flt;
   } else {
-    throw new Error("XATSOPT_strn_dflt$parse$exn: rep = " + rep);    
+    throw new Error("XATSOPT_strn_dflt$parse$exn: rep = " + rep);
   } // end-of-(if(!isNaN(res)))
 }
 //

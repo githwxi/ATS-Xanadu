@@ -50,18 +50,18 @@ let XATSCHR3 = (ch) => {
       return c1 ; // ascii
     } else {
 	var i1 = 2;
-	var d1 = (c1 - 48);
+	var ds = (c1 - 48);
 	while (i1 < ch.length) {
 	    c1 = ch.charCodeAt(i1);
 	    if (c1===39) // SQUOTE=39
 	    {
-		return d1; // ascii
+		return ds // HX: ascii
 	    } else {
 		i1 = i1 + 1
-		d1 = 8*d1 + (c1 - 48)
+		ds = (8*ds) + (c1-48)
 	    }
 	}
-	return d1 ; // ascii code of [ch]
+	return ds ; // ascii code of [ch]
     }
 }
 //

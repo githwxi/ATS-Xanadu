@@ -27,8 +27,15 @@
 
 (* ****** ****** *)
 //
+// HX-2026-08-05:
+(*
 // For characters
 // that is, sint8 and uint8
+*)
+// In general, char is just
+// a "small" integer whose size
+// is NOT actually specified!!!
+//
 //
 (* ****** ****** *)
 //
