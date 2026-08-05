@@ -168,7 +168,6 @@ defq(_XATS2JS_)
 #endif // end-of-[------ifdef(_XATS2JS_)------]
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 HX-2026-08-02: For compiling to CM
@@ -186,7 +185,6 @@ defq(_XATS2CM_)
 //
 #endif // end-of-[------ifdef(_XATS2CM_)------]
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -247,6 +245,19 @@ defq(_XATS2JS_)
 "srcgen1\
 /xatslib/githwxi/DATS/CATS/JS/NODE/basics0.dats"
 #endif//end-of-[--------#ifdef(_XATS2JS_)--------]
+//
+(* ****** ****** *)
+//
+(*
+HX-2026-08-04: For compiling to Scheme
+*)
+#if
+defq
+(_XATS2CM_)
+#then
+#include
+"srcgen1/xatslib/libcats/DATS/CATS/CM/libcats.dats"
+#endif//end-of-[---------#ifdef(_XATS2CM_)---------]
 //
 (* ****** ****** *)
 //

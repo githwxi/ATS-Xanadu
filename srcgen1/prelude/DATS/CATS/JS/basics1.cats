@@ -613,7 +613,7 @@ XATS2JS_gflt_si_dflt
 }
 /* ****** ****** */
 function
-XATS2JS_gflt_neg_dflt
+XATS2JS_gflt_neg$dflt
   (  x0  )
 {
   return (-x0); // neg
@@ -621,7 +621,7 @@ XATS2JS_gflt_neg_dflt
 /* ****** ****** */
 //
 function
-XATS2JS_gflt_abs_dflt
+XATS2JS_gflt_abs$dflt
   (  x0  )
 {
   if (x0 >= 0.0)
@@ -634,13 +634,13 @@ XATS2JS_gflt_abs_dflt
 /* ****** ****** */
 //
 function
-XATS2JS_gflt_suc_dflt
+XATS2JS_gflt_suc$dflt
   (  x0  )
 {
   return (x0 + 1); // +1
 }
 function
-XATS2JS_gflt_pre_dflt
+XATS2JS_gflt_pre$dflt
   (  x0  )
 {
   return (x0 - 1); // -1
@@ -649,37 +649,37 @@ XATS2JS_gflt_pre_dflt
 /* ****** ****** */
 //
 function
-XATS2JS_gflt_lt_dflt_dflt
+XATS2JS_gflt_lt$dflt$dflt
   (x1, x2)
 {
   return (x1 < x2); // lt
 }
 function
-XATS2JS_gflt_gt_dflt_dflt
+XATS2JS_gflt_gt$dflt$dflt
   (x1, x2)
 {
   return (x1 > x2); // gt
 }
 function
-XATS2JS_gflt_eq_dflt_dflt
+XATS2JS_gflt_eq$dflt$dflt
   (x1, x2)
 {
   return (x1 === x2); // eq
 }
 function
-XATS2JS_gflt_lte_dflt_dflt
+XATS2JS_gflt_lte$dflt$dflt
   (x1, x2)
 {
   return (x1 <= x2); // lte
 }
 function
-XATS2JS_gflt_gte_dflt_dflt
+XATS2JS_gflt_gte$dflt$dflt
   (x1, x2)
 {
   return (x1 >= x2); // gte
 }
 function
-XATS2JS_gflt_neq_dflt_dflt
+XATS2JS_gflt_neq$dflt$dflt
   (x1, x2)
 {
   return (x1 !== x2); // neq
@@ -688,7 +688,7 @@ XATS2JS_gflt_neq_dflt_dflt
 //////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_gflt_cmp_dflt_dflt
+XATS2JS_gflt_cmp$dflt$dflt
   (x1, x2)
 {
   if (x1 < x2)
@@ -700,28 +700,28 @@ XATS2JS_gflt_cmp_dflt_dflt
 //////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_gflt_add_dflt_dflt
+XATS2JS_gflt_add$dflt$dflt
   (x1, x2)
 {
   return (x1 + x2); // add
 }
 //
 function
-XATS2JS_gflt_sub_dflt_dflt
+XATS2JS_gflt_sub$dflt$dflt
   (x1, x2)
 {
   return (x1 - x2); // sub
 }
 //
 function
-XATS2JS_gflt_mul_dflt_dflt
+XATS2JS_gflt_mul$dflt$dflt
   (x1, x2)
 {
   return (x1 * x2); // mul
 }
 //
 function
-XATS2JS_gflt_div_dflt_dflt
+XATS2JS_gflt_div$dflt$dflt
   (x1, x2)
 {
   return (x1 / x2); // div

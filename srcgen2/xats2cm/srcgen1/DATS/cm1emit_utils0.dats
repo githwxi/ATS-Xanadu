@@ -322,8 +322,6 @@ case+ ch of
 | '\f' => strn_fprint("\\f", filr)
 | '\v' => strn_fprint("\\v", filr)
 //
-| '\0' => strn_fprint("\\x00", filr)
-//
 | _(*else*) => char_fprint(ch, filr)
 )
 }(*where*)//end-of-[i0c00cm1(filr,c00)]
@@ -419,25 +417,42 @@ tchr.node() of
 //
 |
 T_CHAR1_nil0 _ =>
-prints("(XATSCNUL)")
+print("(XATSCNUL)")
 //
 |
 T_CHAR2_char(rep) =>
+let
+val () =
 (
-prints(
-"(XATSCHR2 ",
-'"', rep[1], '"', ")"))
+f1_char2_char_rep(rep))
+end
 //
 |
 T_CHAR3_blsh(rep) =>
 let
-val ()=
+val () =
 (
 f1_char3_blsh_rep(rep))
 end
 //
 ) where
 {
+//
+fun
+f1_char2_char_rep
+  (rep: strn): void =
+let
+val c1 = rep[1]
+in//let
+if // if
+(c1 = '"')
+then
+prints
+("(XATSCHR2 \"\\\"\")")
+else
+prints
+("(XATSCHR2 \"",c1,"\")")
+end//let
 //
 fun
 f1_char3_blsh_rep
@@ -470,6 +485,9 @@ print("(XATSCHR2 \"\\f\")")
 | 'v' =>
 print("(XATSCHR2 \"\\v\")")
 //
+| '"' =>
+print("(XATSCHR2 \"\\\"\")")
+//
 | '\'' =>
 print("(XATSCHR2 \"'\")")
 | '\\' =>
@@ -477,12 +495,11 @@ print("(XATSCHR2 \"\\\\\")")
 //
 | _(*otherwise*) =>
 (
-print("XATSCHR3(\"\\\\");
-f2_rep(2(*i0*)); print("\")")
+print("(XATSCHR3 \"\\\\");f2_loop(2(*i0*));print("\")")
 ) where
 {
 fun
-f2_rep
+f2_loop
 (i0: sint): void =
 if
 (i0 < n0) then
@@ -490,7 +507,9 @@ let
 val c0 = rep[i0]
 in//let
 (
-if c0 != '\'' then print(c0))
+if // if
+(c0 != '\'')
+then(print(c0);f2_loop(i0+1)))
 end//let
 }
 //

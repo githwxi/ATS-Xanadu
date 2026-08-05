@@ -660,18 +660,30 @@ fwork:
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #if
 defq(_XATS2JS_)
 #then
-#include "./CATS/JS/xatsopt_utils0.dats"//HX: ATS3_JSDEV
+#include "./CATS/JS/xatsopt_utils0.dats"//ATS3_JSDEV
 #endif//if(__XATS2JS__)
+*)
+//
+(* ****** ****** *)
+//
+(*
+#if
+defq(_XATS2CM_)
+#then
+#include "./CATS/CM/xatsopt_utils0.dats"//ATS3_CMDEV
+#endif//if(__XATS2CM__)
+*)
 //
 (* ****** ****** *)
 //
 #if
 defq(_XATS2PY_)
 #then
-#include "./CATS/PY/xatsopt_utils0.dats"//HX: ATS3_PYDEV
+#include "./CATS/PY/xatsopt_utils0.dats"//ATS3_PYDEV
 #endif//if(__XATS2PY__)
 //
 (* ****** ****** *)

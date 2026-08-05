@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2022 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -26,12 +26,11 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Wed 04 Jan 2023 12:36:34 AM EST
+Tue Aug  4 08:59:36 PM EDT 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -44,110 +43,88 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include
-"./../HATS/xatsopt_sats.hats"
-#include
-"./../HATS/xatsopt_dpre.hats"
+#staload XATSOPT =
+  "./../../../SATS/xatsopt.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/xlibext.sats"
-#staload "./../SATS/xstamp0.sats"
-(* ****** ****** *)
-(* ****** ****** *)
 //
-#if
-defq(_XATS2JS_)
-#staload
-_(*tmp*) =
-"srcgen1\
-/prelude/DATS/CATS/JS/basics3.dats"
-#endif//end-of-(#ifdefq(_XATS2JS_))
-#if
-defq(_XATS2CM_)
-#staload
-_(*tmp*) =
-"srcgen1\
-/prelude/DATS/CATS/CM/basics3.dats"
-#endif//end-of-(#ifdefq(_XATS2CM_))
-#if
-defq(_XATS2PY_)
-#staload
-_(*tmp*) =
-"srcgen1\
-/prelude/DATS/CATS/PY/basics3.dats"
-#endif//end-of-(#ifdefq(_XATS2PY_))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-
-local
-//
-(* ****** ****** *)
-#typedef key = sint
-(* ****** ****** *)
-//
-#absimpl
-tmpmap_tbox
-(itm:type) = mydict(key, itm)
-//
-(* ****** ****** *)
-in//local
-(* ****** ****** *)
-
-#implfun
-tmpmap_make_nil
-  ( (*nil*) ) =
-mydict_make_nil<key>((*void*))
-
-(* ****** ****** *)
-//
-#implfun
-tmpmap_strmize
-  {itm:tbox}(map) =
+#extern
+fun
+CMDEV_xatsopt_args_filsats_d2parsed
 (
-gmap_strmize
-<gmap><key><itm>(map)) where
-{
-#typedef gmap = mydict(key, itm) }
+farg:
+(strn->void)->void, fpth: strn): d2parsed = $extnam()
+#extern
+fun
+CMDEV_xatsopt_args_fildats_d2parsed
+(
+farg:
+(strn->void)->void, fpth: strn): d2parsed = $extnam()
 //
 (* ****** ****** *)
 //
 #implfun
-tmpmap_search$opt
-  {itm:tbox}(map,key) =
+CMDEV_xatsopt_args_filsats_d2parsed
+  (farg, fpth) =
 let
-//
-val key = g0u2s(uint(key))
-//
+val xats = 0(*sats*)
+val args = strnlst_make_fwork(farg)
 in//let
+$XATSOPT.xatsopt_args$filxats_d2parsed(args, xats, fpth)
+end(*let*)//end-of-[CMDEV_xatsopt_args_filsats_d2parsed(farg,fpth)]
 //
-mydict_search$opt<key><itm>(map, key)
+#implfun
+CMDEV_xatsopt_args_fildats_d2parsed
+  (farg, fpth) =
+let
+val xats = 1(*dats*)
+val args = strnlst_make_fwork(farg)
+in//let
+$XATSOPT.xatsopt_args$filxats_d2parsed(args, xats, fpth)
+end(*let*)//end-of-[CMDEV_xatsopt_args_fildats_d2parsed(farg,fpth)]
 //
-end(*let*)//end-of-[tmpmap_search$opt(...)]
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+CMDEV_xatsopt_args_filsats_d3parsed
+(
+farg:
+(strn->void)->void, fpth: strn): d3parsed = $extnam()
+#extern
+fun
+CMDEV_xatsopt_args_fildats_d3parsed
+(
+farg:
+(strn->void)->void, fpth: strn): d3parsed = $extnam()
 //
 (* ****** ****** *)
 //
 #implfun
-tmpmap_insert$any
-{itm:tbox}(map,key,itm) =
+CMDEV_xatsopt_args_filsats_d3parsed
+  (farg, fpth) =
 let
-//
-val key = g0u2s(uint(key))
-//
+val xats = 0(*sats*)
+val args = strnlst_make_fwork(farg)
 in//let
+$XATSOPT.xatsopt_args$filxats_d3parsed(args, xats, fpth)
+end(*let*)//end-of-[CMDEV_xatsopt_args_filsats_d3parsed(farg,fpth)]
 //
-mydict_insert$any<key><itm>(map,key,itm)
+#implfun
+CMDEV_xatsopt_args_fildats_d3parsed
+  (farg, fpth) =
+let
+val xats = 1(*dats*)
+val args = strnlst_make_fwork(farg)
+in//let
+$XATSOPT.xatsopt_args$filxats_d3parsed(args, xats, fpth)
+end(*let*)//end-of-[CMDEV_xatsopt_args_fildats_d3parsed(farg,fpth)]
 //
-end(*let*)//end-of-[tmpmap_insert$any(...)]
-//
-(* ****** ****** *)
-
-endloc (*local*) // end of [  local(topmap)  ]
-
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XATSOPT_srcgen2_DATS_xstamp0_tmpmap.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_CATS_CM_xatsopt_utils0.dats] *)
 (***********************************************************************)

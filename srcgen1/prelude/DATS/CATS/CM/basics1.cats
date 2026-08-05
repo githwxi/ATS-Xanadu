@@ -147,52 +147,52 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 (define
-  (XATS2CM_gint_neg_sint x0) (- x0)) ;; sint_neg(x0)
+  (XATS2CM_gint_neg$sint x0) (- x0)) ;; sint_neg(x0)
 
 (define
-  (XATS2CM_gint_abs_sint x0) (if (>= x0 0) x0 (- x0)))
+  (XATS2CM_gint_abs$sint x0) (if (>= x0 0) x0 (- x0)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_gint_suc_sint x0) (+ x0 1)) ;; plus one
+  (XATS2CM_gint_suc$sint x0) (+ x0 1)) ;; plus one
 (define
-  (XATS2CM_gint_suc_uint x0) (+ x0 1)) ;; plus one
+  (XATS2CM_gint_suc$uint x0) (+ x0 1)) ;; plus one
 ;;
 (define
-  (XATS2CM_gint_pre_sint x0) (- x0 1)) ;; minus one
+  (XATS2CM_gint_pre$sint x0) (- x0 1)) ;; minus one
 (define
-  (XATS2CM_gint_pre_uint x0) (- x0 1)) ;; minus one
+  (XATS2CM_gint_pre$uint x0) (- x0 1)) ;; minus one
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_gint_lnot_uint x0)
+  (XATS2CM_gint_lnot$uint x0)
   (bitwise-not x0)) ;; bitwise NEG
 ;;
 (define
-  (XATS2CM_gint_lor2_uint x0 y0)
+  (XATS2CM_gint_lor2$uint x0 y0)
   (bitwise-ior x0 y0)) ;; bitwise OR
 ;;
 (define
-  (XATS2CM_gint_land_uint x0 y0)
+  (XATS2CM_gint_land$uint x0 y0)
   (bitwise-and x0 y0)) ;; bitwise AND
 ;;
 (define
-  (XATS2CM_gint_lxor_uint x0 y0)
+  (XATS2CM_gint_lxor$uint x0 y0)
   (bitwise-xor x0 y0)) ;; bitwise XOR
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_gint_lsln_uint x0 n0)
+  (XATS2CM_gint_lsln$uint x0 n0)
   (arithmetic-shift x0 n0)) ;; logic-lshift
 ;;
 (define
-  (XATS2CM_gint_asln_sint x0 n0)
+  (XATS2CM_gint_asln$sint x0 n0)
   (arithmetic-shift x0 n0)) ;; arith-lshift
 (define
-  (XATS2CM_gint_asrn_sint x0 n0)
+  (XATS2CM_gint_asrn$sint x0 n0)
   (let ((n1 (- n0)))
     (arithmetic-shift x0 n1))) ;; arith-rshift
 ;;
@@ -201,85 +201,85 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_gint_lt_sint_sint x1 x2)
-  (< x1 x2)) ; sint_lt$sint(x1, x2)
+  (XATS2CM_gint_lt$sint$sint x1 x2)
+  (< x1 x2)) ;; sint_lt$sint(x1, x2)
 (define
-  (XATS2CM_gint_lt_uint_uint x1 x2)
-  (< x1 x2)) ; uint_lt$uint(x1, x2)
+  (XATS2CM_gint_lt$uint$uint x1 x2)
+  (< x1 x2)) ;; uint_lt$uint(x1, x2)
 ;;
 (define
-  (XATS2CM_gint_gt_sint_sint x1 x2)
-  (> x1 x2)) ; sint_gt$sint(x1, x2)
+  (XATS2CM_gint_gt$sint$sint x1 x2)
+  (> x1 x2)) ;; sint_gt$sint(x1, x2)
 (define
-  (XATS2CM_gint_gt_uint_uint x1 x2)
-  (> x1 x2)) ; uint_gt$uint(x1, x2)
+  (XATS2CM_gint_gt$uint$uint x1 x2)
+  (> x1 x2)) ;; uint_gt$uint(x1, x2)
 ;;
 (define
-  (XATS2CM_gint_eq_sint_sint x1 x2)
-  (= x1 x2)) ; sint_eq$sint(x1, x2)
+  (XATS2CM_gint_eq$sint$sint x1 x2)
+  (= x1 x2)) ;; sint_eq$sint(x1, x2)
 (define
-  (XATS2CM_gint_eq_uint_uint x1 x2)
-  (= x1 x2)) ; uint_eq$uint(x1, x2)
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
-;;
-(define
-  (XATS2CM_gint_lte_sint_sint x1 x2)
-  (<= x1 x2)) ; sint_lte$sint(x1, x2)
-(define
-  (XATS2CM_gint_lte_uint_uint x1 x2)
-  (<= x1 x2)) ; uint_lte$uint(x1, x2)
-;;
-(define
-  (XATS2CM_gint_gte_sint_sint x1 x2)
-  (>= x1 x2)) ; sint_gte$sint(x1, x2)
-(define
-  (XATS2CM_gint_gte_uint_uint x1 x2)
-  (>= x1 x2)) ; uint_gte$uint(x1, x2)
-;;
-(define
-  (XATS2CM_gint_neq_sint_sint x1 x2)
-  (not (= x1 x2))) ; sint_neq$sint(x1, x2)
-(define
-  (XATS2CM_gint_neq_uint_uint x1 x2)
-  (not (= x1 x2))) ; uint_neq$uint(x1, x2)
+  (XATS2CM_gint_eq$uint$uint x1 x2)
+  (= x1 x2)) ;; uint_eq$uint(x1, x2)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_gint_cmp_sint_sint x1 x2)
+  (XATS2CM_gint_lte$sint$sint x1 x2)
+  (<= x1 x2)) ;; sint_lte$sint(x1, x2)
+(define
+  (XATS2CM_gint_lte$uint$uint x1 x2)
+  (<= x1 x2)) ;; uint_lte$uint(x1, x2)
+;;
+(define
+  (XATS2CM_gint_gte$sint$sint x1 x2)
+  (>= x1 x2)) ;; sint_gte$sint(x1, x2)
+(define
+  (XATS2CM_gint_gte$uint$uint x1 x2)
+  (>= x1 x2)) ;; uint_gte$uint(x1, x2)
+;;
+(define
+  (XATS2CM_gint_neq$sint$sint x1 x2)
+  (not (= x1 x2))) ;; sint_neq$sint(x1, x2)
+(define
+  (XATS2CM_gint_neq$uint$uint x1 x2)
+  (not (= x1 x2))) ;; uint_neq$uint(x1, x2)
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define
+  (XATS2CM_gint_cmp$sint$sint x1 x2)
   (cond ((< x1 x2) -1) ((> x1 x2) 1) (else 0)))
 (define
-  (XATS2CM_gint_cmp_uint_uint x1 x2)
+  (XATS2CM_gint_cmp$uint$uint x1 x2)
   (cond ((< x1 x2) -1) ((> x1 x2) 1) (else 0)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_gint_add_sint_sint x1 x2)
+  (XATS2CM_gint_add$sint$sint x1 x2)
   (+ x1 x2)) ;; sint_add$sint(x1, x2)
 (define
-  (XATS2CM_gint_sub_sint_sint x1 x2)
+  (XATS2CM_gint_sub$sint$sint x1 x2)
   (- x1 x2)) ;; sint_sub$sint(x1, x2)
 (define
-  (XATS2CM_gint_mul_sint_sint x1 x2)
+  (XATS2CM_gint_mul$sint$sint x1 x2)
   (* x1 x2)) ;; sint_mul$sint(x1, x2)
 (define
-  (XATS2CM_gint_mod_sint_sint x1 x2)
+  (XATS2CM_gint_mod$sint$sint x1 x2)
   (modulo x1 x2)) ;; sint_mod$sint(x1, x2)
 (define
-  (XATS2CM_gint_div_sint_sint x1 x2)
-  (floor (/ x1 x2))) ; sint_div$sint(x1, x2)
+  (XATS2CM_gint_div$sint$sint x1 x2)
+  (floor (/ x1 x2))) ;; sint_div$sint(x1, x2)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_gint_add_uint_uint x1 x2)
-  (+ x1 x2)) ; uint_add$uint(x1, x2)
+  (XATS2CM_gint_add$uint$uint x1 x2)
+  (+ x1 x2)) ;; uint_add$uint(x1, x2)
 ;;
 (define
-  (XATS2CM_gint_sub_uint_uint x1 x2)
-  (- x1 x2)) ; uint_sub$uint(x1, x2)
+  (XATS2CM_gint_sub$uint$uint x1 x2)
+  (- x1 x2)) ;; uint_sub$uint(x1, x2)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
@@ -309,61 +309,61 @@
   x0) ;; integer-to-float
 ;;
 (define
-  (XATS2CM_gflt_neg_dflt x0)
+  (XATS2CM_gflt_neg$dflt x0)
   (- x0)) ;; negation-of-float
 ;;
 (define
-  (XATS2CM_gflt_abs_dflt x0)
+  (XATS2CM_gflt_abs$dflt x0)
   (if (>= x0 0.0) x0 (- x0)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_gflt_suc_dflt x0) (+ x0 1))
+  (XATS2CM_gflt_suc$dflt x0) (+ x0 1.0))
 (define
-  (XATS2CM_gflt_pre_dflt x0) (- x0 1))
+  (XATS2CM_gflt_pre$dflt x0) (- x0 1.0))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_gflt_lt_dflt_dflt x1 x2)
+  (XATS2CM_gflt_lt$dflt$dflt x1 x2)
   (< x1 x2)) ;; dflt_lt$dflt(x1, x2)
 (define
-  (XATS2CM_gflt_gt_dflt_dflt x1 x2)
+  (XATS2CM_gflt_gt$dflt$dflt x1 x2)
   (> x1 x2)) ;; dflt_gt$dflt(x1, x2)
 (define
-  (XATS2CM_gflt_eq_dflt_dflt x1 x2)
+  (XATS2CM_gflt_eq$dflt$dflt x1 x2)
   (= x1 x2)) ;; dflt_eq$dflt(x1, x2)
 ;;
 (define
-  (XATS2CM_gflt_lte_dflt_dflt x1 x2)
+  (XATS2CM_gflt_lte$dflt$dflt x1 x2)
   (<= x1 x2)) ;; dflt_lte$dflt(x1, x2)
 (define
-  (XATS2CM_gflt_gte_dflt_dflt x1 x2)
+  (XATS2CM_gflt_gte$dflt$dflt x1 x2)
   (>= x1 x2)) ;; dflt_gte$dflt(x1, x2)
 (define
-  (XATS2CM_gflt_neq_dflt_dflt x1 x2)
+  (XATS2CM_gflt_neq$dflt$dflt x1 x2)
   (not (= x1 x2))) ;; dflt_neq$dflt(x1, x2)
 ;;
 (define
-  (XATS2CM_gflt_cmp_dflt_dflt x1 x2)
+  (XATS2CM_gflt_cmp$dflt$dflt x1 x2)
   (cond ((< x1 x2) -1) ((> x1 x2) 1) (else 0)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_gflt_add_dflt_dflt x1 x2)
-  (+ x1 x2)) ; dflt_add$dflt(x1, x2)
+  (XATS2CM_gflt_add$dflt$dflt x1 x2)
+  (+ x1 x2)) ;; dflt_add$dflt(x1, x2)
 (define
-  (XATS2CM_gflt_sub_dflt_dflt x1 x2)
-  (- x1 x2)) ; dflt_sub$dflt(x1, x2)
+  (XATS2CM_gflt_sub$dflt$dflt x1 x2)
+  (- x1 x2)) ;; dflt_sub$dflt(x1, x2)
 ;;
 (define
-  (XATS2CM_gflt_mul_dflt_dflt x1 x2)
-  (* x1 x2)) ; dflt_mul$dflt(x1, x2)
+  (XATS2CM_gflt_mul$dflt$dflt x1 x2)
+  (* x1 x2)) ;; dflt_mul$dflt(x1, x2)
 (define
-  (XATS2CM_gflt_div_dflt_dflt x1 x2)
-  (/ x1 x2)) ; dflt_div$dflt(x1, x2)
+  (XATS2CM_gflt_div$dflt$dflt x1 x2)
+  (/ x1 x2)) ;; dflt_div$dflt(x1, x2)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
@@ -453,12 +453,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_strn_get_at cs i0) (string-ref cs i0))
+  (XATS2CM_strn_get$at cs i0) (string-ref cs i0))
 ;;
 (define
-  (XATS2CM_strn_vt_get_at cs i0) (vector-ref cs i0))
+  (XATS2CM_strn_vt_get$at cs i0) (vector-ref cs i0))
 (define
-  (XATS2CM_strn_vt_set_at cs i0 c0) (vector-set! cs i0 c0))
+  (XATS2CM_strn_vt_set$at cs i0 c0) (vector-set! cs i0 c0))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
@@ -467,12 +467,12 @@
   (make-vector (+ bsz 1) (integer->char 0)))
 ;;
 (define
-  (XATS2CM_strtmp_vt_set_at cs i0 c0) (vector-set! cs i0 c0))
+  (XATS2CM_strtmp_vt_set$at cs i0 c0) (vector-set! cs i0 c0))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_strn_forall_f1un cs test)
+  (XATS2CM_strn_forall$f1un cs test)
   (let loop ((i0 0)
 	     (ln (string-length cs)))
     (if (< i0 ln)
@@ -480,7 +480,7 @@
           (if (test c0) (loop (+ i0 1) ln) #f)) #t)))
 ;;
 (define
-  (XATS2CM_strn_rforall_f1un cs test)
+  (XATS2CM_strn_rforall$f1un cs test)
   (let loop ((i0 (string-length cs)))
     (if (> i0 0)
         (let ((i1 (- i0 1)))
@@ -489,7 +489,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_strn_vt_forall_f1un cs test)
+  (XATS2CM_strn_vt_forall$f1un cs test)
   (let loop ((i0 0)
 	     (ln (- (vector-length cs) 1)))
     (if (< i0 ln)
@@ -497,21 +497,21 @@
           (if (test c0) (loop (+ i0 1) ln) #f)) #t)))
 ;;
 (define
-  (XATS2CM_strn_vt_rforall_f1un cs test)
+  (XATS2CM_strn_vt_rforall$f1un cs test)
   (let loop ((i0 (- (vector-length cs) 1)))
     (if (> i0 0)
         (let ((i1 (- i0 1)))
           (if (test (vector-ref cs i1)) (loop i1) #f)) #t)))
 ;;
 (define
-  XATS2CM_strn_vt_forall0_f1un XATS2CM_strn_vt_forall_f1un)
+  XATS2CM_strn_vt_forall0$f1un XATS2CM_strn_vt_forall$f1un)
 (define
-  XATS2CM_strn_vt_forall1_f1un XATS2CM_strn_vt_forall_f1un)
+  XATS2CM_strn_vt_forall1$f1un XATS2CM_strn_vt_forall$f1un)
 ;;
 (define
-  XATS2CM_strn_vt_rforall0_f1un XATS2CM_strn_vt_rforall_f1un)
+  XATS2CM_strn_vt_rforall0$f1un XATS2CM_strn_vt_rforall$f1un)
 (define
-  XATS2CM_strn_vt_rforall1_f1un XATS2CM_strn_vt_rforall_f1un)
+  XATS2CM_strn_vt_rforall1$f1un XATS2CM_strn_vt_rforall$f1un)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
@@ -524,43 +524,43 @@
 ;;
 (define
   (XATS2CM_sint_neg x0)
-  (XATS2CM_gint_neg_sint x0))
+  (XATS2CM_gint_neg$sint x0))
 (define
   (XATS2CM_sint_abs x0)
-  (XATS2CM_gint_abs_sint x0))
+  (XATS2CM_gint_abs$sint x0))
 ;;
 (define
   (XATS2CM_sint_lt_sint x0 y0)
-  (XATS2CM_gint_lt_sint_sint x0 y0))
+  (XATS2CM_gint_lt$sint$sint x0 y0))
 (define
   (XATS2CM_sint_gt_sint x0 y0)
-  (XATS2CM_gint_gt_sint_sint x0 y0))
+  (XATS2CM_gint_gt$sint$sint x0 y0))
 (define
   (XATS2CM_sint_eq_sint x0 y0)
-  (XATS2CM_gint_eq_sint_sint x0 y0))
+  (XATS2CM_gint_eq$sint$sint x0 y0))
 ;;
 (define
   (XATS2CM_sint_lte_sint x0 y0)
-  (XATS2CM_gint_lte_sint_sint x0 y0))
+  (XATS2CM_gint_lte$sint$sint x0 y0))
 (define
   (XATS2CM_sint_gte_sint x0 y0)
-  (XATS2CM_gint_gte_sint_sint x0 y0))
+  (XATS2CM_gint_gte$sint$sint x0 y0))
 (define
   (XATS2CM_sint_neq_sint x0 y0)
-  (XATS2CM_gint_neq_sint_sint x0 y0))
+  (XATS2CM_gint_neq$sint$sint x0 y0))
 ;;
 (define
   (XATS2CM_sint_add_sint x0 y0)
-  (XATS2CM_gint_add_sint_sint x0 y0))
+  (XATS2CM_gint_add$sint$sint x0 y0))
 (define
   (XATS2CM_sint_sub_sint x0 y0)
-  (XATS2CM_gint_sub_sint_sint x0 y0))
+  (XATS2CM_gint_sub$sint$sint x0 y0))
 (define
   (XATS2CM_sint_mul_sint x0 y0)
-  (XATS2CM_gint_mul_sint_sint x0 y0))
+  (XATS2CM_gint_mul$sint$sint x0 y0))
 (define
   (XATS2CM_sint_div_sint x0 y0)
-  (XATS2CM_gint_div_sint_sint x0 y0))
+  (XATS2CM_gint_div$sint$sint x0 y0))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
