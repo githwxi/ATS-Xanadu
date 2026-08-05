@@ -7,8 +7,6 @@
 /*
 Basics0 for XATS2JS
 */
-//////////////////////////////////////////////////////////////////.
-//////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 /* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics0.cats] */
 ////////////////////////////////////////////////////////////////////////.
@@ -627,7 +625,7 @@ XATS2JS_gflt_si_dflt
 }
 /* ****** ****** */
 function
-XATS2JS_gflt_neg_dflt
+XATS2JS_gflt_neg$dflt
   (  x0  )
 {
   return (-x0); // neg
@@ -635,7 +633,7 @@ XATS2JS_gflt_neg_dflt
 /* ****** ****** */
 //
 function
-XATS2JS_gflt_abs_dflt
+XATS2JS_gflt_abs$dflt
   (  x0  )
 {
   if (x0 >= 0.0)
@@ -648,13 +646,13 @@ XATS2JS_gflt_abs_dflt
 /* ****** ****** */
 //
 function
-XATS2JS_gflt_suc_dflt
+XATS2JS_gflt_suc$dflt
   (  x0  )
 {
   return (x0 + 1); // +1
 }
 function
-XATS2JS_gflt_pre_dflt
+XATS2JS_gflt_pre$dflt
   (  x0  )
 {
   return (x0 - 1); // -1
@@ -663,37 +661,37 @@ XATS2JS_gflt_pre_dflt
 /* ****** ****** */
 //
 function
-XATS2JS_gflt_lt_dflt_dflt
+XATS2JS_gflt_lt$dflt$dflt
   (x1, x2)
 {
   return (x1 < x2); // lt
 }
 function
-XATS2JS_gflt_gt_dflt_dflt
+XATS2JS_gflt_gt$dflt$dflt
   (x1, x2)
 {
   return (x1 > x2); // gt
 }
 function
-XATS2JS_gflt_eq_dflt_dflt
+XATS2JS_gflt_eq$dflt$dflt
   (x1, x2)
 {
   return (x1 === x2); // eq
 }
 function
-XATS2JS_gflt_lte_dflt_dflt
+XATS2JS_gflt_lte$dflt$dflt
   (x1, x2)
 {
   return (x1 <= x2); // lte
 }
 function
-XATS2JS_gflt_gte_dflt_dflt
+XATS2JS_gflt_gte$dflt$dflt
   (x1, x2)
 {
   return (x1 >= x2); // gte
 }
 function
-XATS2JS_gflt_neq_dflt_dflt
+XATS2JS_gflt_neq$dflt$dflt
   (x1, x2)
 {
   return (x1 !== x2); // neq
@@ -702,7 +700,7 @@ XATS2JS_gflt_neq_dflt_dflt
 //////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_gflt_cmp_dflt_dflt
+XATS2JS_gflt_cmp$dflt$dflt
   (x1, x2)
 {
   if (x1 < x2)
@@ -714,28 +712,28 @@ XATS2JS_gflt_cmp_dflt_dflt
 //////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_gflt_add_dflt_dflt
+XATS2JS_gflt_add$dflt$dflt
   (x1, x2)
 {
   return (x1 + x2); // add
 }
 //
 function
-XATS2JS_gflt_sub_dflt_dflt
+XATS2JS_gflt_sub$dflt$dflt
   (x1, x2)
 {
   return (x1 - x2); // sub
 }
 //
 function
-XATS2JS_gflt_mul_dflt_dflt
+XATS2JS_gflt_mul$dflt$dflt
   (x1, x2)
 {
   return (x1 * x2); // mul
 }
 //
 function
-XATS2JS_gflt_div_dflt_dflt
+XATS2JS_gflt_div$dflt$dflt
   (x1, x2)
 {
   return (x1 / x2); // div
@@ -997,6 +995,19 @@ XATS2JS_strn_vt_forall$f1un
   return res; // strn_vt_forall$f1un(cs,f0)
 }
 //
+function
+XATS2JS_strn_vt_forall0$f1un
+  (cs, f0)
+{
+  return XATS2JS_strn_vt_forall$f1un(cs, f0)
+}
+function
+XATS2JS_strn_vt_forall1$f1un
+  (cs, f0)
+{
+  return XATS2JS_strn_vt_forall$f1un(cs, f0)
+}
+//
 /* ****** ****** */
 //
 function
@@ -1012,6 +1023,19 @@ XATS2JS_strn_vt_rforall$f1un
     if(!f0(cs[i0-1])){res = false; break;}
   }
   return res; // strn_vt_rforall$f1un(cs,f0)
+}
+//
+function
+XATS2JS_strn_vt_rforall0$f1un
+  (cs, f0)
+{
+  return XATS2JS_strn_vt_rforall$f1un(cs, f0)
+}
+function
+XATS2JS_strn_vt_rforall1$f1un
+  (cs, f0)
+{
+  return XATS2JS_strn_vt_rforall$f1un(cs, f0)
 }
 //
 //////////////////////////////////////////////////////////////////.
@@ -1098,8 +1122,6 @@ XATS2JS_sint_div$sint
   return XATS2JS_gint_div$sint$sint(x0, y0);
 }
 //
-//////////////////////////////////////////////////////////////////.
-//////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 /* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics1.cats] */
 ////////////////////////////////////////////////////////////////////////.
@@ -1382,7 +1404,6 @@ XATS2JS_strxcon_vt_filter0$f1un
   }
 }
 //
-//////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 /* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics2.cats] */
 ////////////////////////////////////////////////////////////////////////.
@@ -1449,10 +1470,24 @@ XATS2JS_jsa1sz_set$at
 //
 //////////////////////////////////////////////////////////////////.
 //
+/*
+HX-2026-08-04:
+See following code
+(inside xglobal.dats):
+//
+val
+the_fxtyenv =
+a0ref_make_1val
+($UN.cast10{fxtyenv}(0))
+//
+where '0' is used for the null map!!!
+*/
+//
 function
 XATS2JS_jshmap_keyq
    (map, key)
 {
+  if (map===0) return false;
   return map.hasOwnProperty(key);
 } // [XATS2JS_jshmap_keyq(map,key)]
 //
@@ -1462,6 +1497,7 @@ function
 XATS2JS_jshmap_get_keys
    (map)
 {
+  if (map===0) return [];
   return Object.keys(map);
 } // [XATS2JS_jshmap_get_keys(map)]
 //
@@ -1481,7 +1517,8 @@ XATS2JS_jshmap_search$opt
    (map, key)
 {
 //
-  var itm0 = map[key];
+  var itm0 =
+  (map===0?undefined:map[key]);
 //
   if(itm0===undefined)
   {
@@ -1549,8 +1586,6 @@ XATS2JS_jshmap_insert$opt
 //
 /* ****** ****** *//* ****** ****** *//* ****** ****** */
 //
-//////////////////////////////////////////////////////////////////.
-//////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 // end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics3.cats]
 ////////////////////////////////////////////////////////////////////////.
@@ -1698,7 +1733,7 @@ Thu 08 Aug 2024 10:42:49 PM EDT
 //////////////////////////////////////////////////////////////////.
 //
 function
-XATSOPT_strn_append_uint
+XATSOPT_strn_append$uint
   (name, stmp)
 {
   return name + stmp.toString();
@@ -1724,11 +1759,13 @@ XATSOPT_strn_dflt$parse$exn
   {
     return flt;
   } else {
-    throw new Error("XATSOPT_strn_dflt$parse$exn: rep = " + rep);    
+    throw new Error("XATSOPT_strn_dflt$parse$exn: rep = " + rep);
   } // end-of-(if(!isNaN(res)))
 }
-//////////////////////////////////////////////////////////////////.
-//////////////////////////////////////////////////////////////////.
+//
+/* ****** ****** */
+/* ****** ****** */
+//
 ////////////////////////////////////////////////////////////////////////.  
 /* end-of-[ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_xatsopt.cats] */
 ////////////////////////////////////////////////////////////////////////.  
