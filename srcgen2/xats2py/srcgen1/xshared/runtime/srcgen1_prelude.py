@@ -1,12 +1,12 @@
-## Sat Jan 17 10:31:57 PM EST 2026
-################################################################
-################################################################
+## Wed Aug  5 06:17:56 PM EDT 2026
+################################################################.
+################################################################.
 ##
 ## Basics0 for XATS2PY
 ##
-################################################################
+######################################################################.
 ## end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_PY_basics0.cats]
-################################################################
+######################################################################.
 ##################################################################.
 ##################################################################.
 ##
@@ -113,7 +113,7 @@ def XATS2PY_char_uphexq(ch):
   A = 65
   F = 70
   return ((A <= ch) and (ch <= F))
-def XATS2PY_sint_lohexq(ch):
+def XATS2PY_sint_uphexq(ch):
   A = 65
   F = 70
   return ((A <= ch) and (ch <= F))
@@ -393,7 +393,8 @@ def XATS2PY_strtmp_vt_set_at(cs, i0, c0):
 ##
 ##################################################################.
 ##
-def XATS2PY_strn_forall_f1un(cs, test):
+def \
+XATS2PY_strn_forall_f1un(cs, test):
   c0 = 0
   i0 = 0
   ln = len(cs)
@@ -402,7 +403,8 @@ def XATS2PY_strn_forall_f1un(cs, test):
     if not(test(c0)): return False
   return True ## test passes for every c0
 ##
-def XATS2PY_strn_rforall_f1un(cs, test):
+def \
+XATS2PY_strn_rforall_f1un(cs, test):
   c0 = 0
   i0 = len(cs)
   while (i0 > 0):
@@ -412,7 +414,8 @@ def XATS2PY_strn_rforall_f1un(cs, test):
 ##
 ##################################################################.
 ##
-def XATS2PY_strn_vt_forall_f1un(cs, test):
+def \
+XATS2PY_strn_vt_forall_f1un(cs, test):
   c0 = 0
   i0 = 0
   ln1 = len(cs)-1
@@ -421,7 +424,8 @@ def XATS2PY_strn_vt_forall_f1un(cs, test):
     if not(test(c0)): return False
   return True ## test passes for every c0
 ##
-def XATS2PY_strn_vt_rforall_f1un(cs, test):
+def \
+XATS2PY_strn_vt_rforall_f1un(cs, test):
   c0 = 0
   ln = len(cs)
   i0 = ln - 1
@@ -429,6 +433,16 @@ def XATS2PY_strn_vt_rforall_f1un(cs, test):
     i0 = i0 - 1; c0 = cs[i0]
     if not(test(c0)): return False
   return True ## test passes for every c0
+##
+def XATS2PY_strn_vt_forall0_f1un(cs, test)
+  return XATS2PY_strn_vt_forall_f1un(cs, test)
+def XATS2PY_strn_vt_forall1_f1un(cs, test)
+  return XATS2PY_strn_vt_forall_f1un(cs, test)
+##
+def XATS2PY_strn_vt_rforall0_f1un(cs, test)
+  return XATS2PY_strn_vt_rforall_f1un(cs, test)
+def XATS2PY_strn_vt_rforall1_f1un(cs, test)
+  return XATS2PY_strn_vt_rforall_f1un(cs, test)
 ##
 ##################################################################.
 ##################################################################.
@@ -438,6 +452,7 @@ def XATS2PY_strn_vt_rforall_f1un(cs, test):
 ##
 ##################################################################.
 ##################################################################.
+##
 def XATS2PY_sint_neg(x0):
   return XATS2PY_gint_neg_sint(x0)
 def XATS2PY_sint_abs(x0):
@@ -594,7 +609,17 @@ def XATS2PY_pya1sz_set_at(xs, i0, x0):
 ##
 ##################################################################.
 ##
+## HX-2026-08-04:
+## See following code
+## (inside xglobal.dats):
+## val
+## the_fxtyenv =
+## a0ref_make_1val
+## ($UN.cast10{fxtyenv}(0))
+## where '0' is used for the null map!!!
+##
 ## HX: listizing a view
+##
 def XATS2PY_pyhmap_keyq(dct, key):
   if (dct == 0):
     return False ## for null map
@@ -609,6 +634,7 @@ def XATS2PY_pyhmap_get_keys( dct ):
 ##################################################################.
 def XATS2PY_pyhmap_make_nil(): return {}
 ##################################################################.
+##
 def XATS2PY_pyhmap_search_opt(dct, key):
   if (dct == 0):
     return XATS2PY_optn_vt_nil() ## null map
@@ -616,9 +642,12 @@ def XATS2PY_pyhmap_search_opt(dct, key):
     return XATS2PY_optn_vt_cons(dct[key])
   else:
     return XATS2PY_optn_vt_nil() ## not found
+##
 ##################################################################.
+##
 def XATS2PY_pyhmap_insert_any(dct, key, itm):
-  dct[key] = itm ## end of [pyhmap_insert_any(dct,...)]
+  dct[key] = itm ## end-of-(pyhmap_insert_any(dct,...))
+##
 ##################################################################.
 ##################################################################.
 ## end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_PY_basics3.cats]
@@ -628,7 +657,7 @@ def XATS2PY_pyhmap_insert_any(dct, key, itm):
 ##################################################################.
 ##
 ## HX-2025-04-29:
-## PY code for xatsopt
+## Python code for xatsopt
 ## Tue Apr 29 09:32:47 PM EDT 2025
 ##
 ##################################################################.
@@ -659,9 +688,10 @@ def XATSOPT_fpath_full_read(fpx):
 ##
 def \
 XATSOPT_strn_append_uint(name, stmp):
-  return (name+str(stmp)) ## end(strn_append_uint)
+  return (name+str(stmp)) ## end(strn_append$uint)
 ##
 ##################################################################.
+##
 def \
 XATSOPT_strn_dflt_parse(rep):
   try:
@@ -670,6 +700,7 @@ XATSOPT_strn_dflt_parse(rep):
     return 0.0 ## default in case of errors
 def \
 XATSOPT_strn_dflt_parse_exn(rep): return float(rep)
+##
 ##################################################################.
 ## end-of-[ATS3/XANADU_srcgen1_prelude_DATS_CATS_PY_xatsopt.cats]
 ##################################################################.
