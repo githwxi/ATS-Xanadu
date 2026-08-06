@@ -25,6 +25,7 @@ all:: srcgen2_xats2js_xats2py_pyemit01
 #
 all:: srcgen2_lib2xatsopt
 all:: srcgen2_lib2xats2js
+all:: srcgen2_lib2xats2cm
 all:: srcgen2_lib2xats2py
 all:: srcgen2_xjsemit_xatsopt_tcheck00
 all:: srcgen2_xjsemit_xatsopt_tcheck01
@@ -150,6 +151,8 @@ srcgen2_lib2xatsopt: ; \
 time make -C srcgen2 -f Makefile_xjsemit lib2xatsopt
 srcgen2_lib2xats2js: ; \
 time make -C srcgen2/xats2js/srcgen1 -f Makefile_xjsemit lib2xats2js
+srcgen2_lib2xats2cm: ; \
+time make -C srcgen2/xats2cm/srcgen1 -f Makefile_xjsemit lib2xats2cm
 srcgen2_lib2xats2py: ; \
 time make -C srcgen2/xats2py/srcgen1 -f Makefile_xjsemit lib2xats2py
 #
