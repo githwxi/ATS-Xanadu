@@ -156,6 +156,15 @@ then
 (
   loop(i0+1)) where
 {
+//
+(*
+val () =
+(
+prerrsln("\
+argv$loop: \
+argv[", i0, "] = ", argv[i0]))
+*)
+//
 val () =
 xatsopt_flag$pvsadd0(argv[i0])
 }
@@ -226,10 +235,10 @@ prerrsln("// XATSHOME = ", the_XATSHOME())
 //
 val argv =
   XATSOPT_argv$get((*0*)) // end(val(argv))
-(*
+// (*
 val (  ) =
 prerrsln("xats2cm_cmemit01: argv = ", argv)
-*)
+// *)
 //
 }(*where*)//end-of-[mymain_main( (*void*) )]
 //

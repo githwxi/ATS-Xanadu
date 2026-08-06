@@ -144,7 +144,15 @@ time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xats2js xats2js_jsemit01
 #
 ##################################################################
 #
+# STEP~4 for building xats2py_cmemit00
 # STEP~4 for building xats2py_pyemit00
+#
+srcgen2_lib1xats2cm: ; \
+time make -C srcgen2/xats2cm/srcgen1 -f Makefile_xats2js lib1xats2cm
+srcgen2_xats2js_xats2cm_cmemit00: ; \
+time make -C srcgen2/xats2cm/srcgen1/UTIL -f Makefile_xats2js xats2cm_cmemit00
+srcgen2_xats2js_xats2cm_cmemit01: ; \
+time make -C srcgen2/xats2cm/srcgen1/UTIL -f Makefile_xats2js xats2cm_cmemit01
 #
 srcgen2_lib1xats2py: ; \
 time make -C srcgen2/xats2py/srcgen1 -f Makefile_xats2js lib1xats2py

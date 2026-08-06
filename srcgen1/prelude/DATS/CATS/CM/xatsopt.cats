@@ -11,6 +11,11 @@
 (define
   (XATSOPT_argv$get)
   (list->vector (command-line)))
+#|
+HX-2026-08-06:
+command-line: script name included
+command-line-arguments: no script name
+|#
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
