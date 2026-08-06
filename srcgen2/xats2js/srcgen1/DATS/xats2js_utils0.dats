@@ -397,9 +397,11 @@ print("XATSCHR2('\\f')")
 print("XATSCHR2('\\v')")
 //
 | '\'' =>
-print("XATSCHR2('\\\'')")
+(
+print("XATSCHR2('\\'')"))
 | '\\' =>
-print("XATSCHR2('\\\\')")
+(
+print("XATSCHR2('\\\\')"))
 //
 | _(*otherwise*) =>
 (

@@ -48,9 +48,9 @@
   (XATS2CM_gint_fprint$uint i0 out) (display i0 out))
 ;;
 (define
-  (XATS2CM_gint_fprint$sflt f0 out) (display f0 out))
+  (XATS2CM_gflt_fprint$sflt f0 out) (display f0 out))
 (define
-  (XATS2CM_gint_fprint$dflt f0 out) (display f0 out))
+  (XATS2CM_gflt_fprint$dflt f0 out) (display f0 out))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
