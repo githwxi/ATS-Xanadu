@@ -19,6 +19,10 @@ all:: srcgen2_lib1xats2js
 all:: srcgen2_xats2js_xats2js_jsemit00
 all:: srcgen2_xats2js_xats2js_jsemit01
 #
+all:: srcgen2_lib1xats2cm
+all:: srcgen2_xats2js_xats2cm_cmemit00
+all:: srcgen2_xats2js_xats2cm_cmemit01
+#
 all:: srcgen2_lib1xats2py
 all:: srcgen2_xats2js_xats2py_pyemit00
 all:: srcgen2_xats2js_xats2py_pyemit01
@@ -31,6 +35,8 @@ all:: srcgen2_xjsemit_xatsopt_tcheck00
 all:: srcgen2_xjsemit_xatsopt_tcheck01
 all:: srcgen2_xjsemit_xats2js_jsemit00
 all:: srcgen2_xjsemit_xats2js_jsemit01
+all:: srcgen2_xjsemit_xats2cm_cmemit00
+all:: srcgen2_xjsemit_xats2cm_cmemit01
 all:: srcgen2_xjsemit_xats2py_pyemit00
 all:: srcgen2_xjsemit_xats2py_pyemit01
 #
@@ -41,6 +47,8 @@ all:: srcgen2_xjsemit_xatsopt_tcheck00_opt1
 all:: srcgen2_xjsemit_xatsopt_tcheck01_opt1
 all:: srcgen2_xjsemit_xats2js_jsemit00_opt1
 all:: srcgen2_xjsemit_xats2js_jsemit01_opt1
+all:: srcgen2_xjsemit_xats2cm_cmemit00_opt1
+all:: srcgen2_xjsemit_xats2cm_cmemit01_opt1
 all:: srcgen2_xjsemit_xats2py_pyemit00_opt1
 all:: srcgen2_xjsemit_xats2py_pyemit01_opt1
 #
@@ -73,6 +81,13 @@ cleanall:: ; \
 make -C srcgen2/xats2js/srcgen1 -f Makefile_xats2js cleanall
 cleanall:: ; \
 make -C srcgen2/xats2js/srcgen1 -f Makefile_xjsemit cleanall
+#
+cleanall:: ; \
+make -C srcgen2/xats2cm/srcgen1 -f Makefile_xats2js cleanall
+cleanall:: ; \
+make -C srcgen2/xats2cm/srcgen1 -f Makefile_xjsemit cleanall
+cleanall:: ; \
+make -C srcgen2/xats2cm/srcgen1 -f Makefile_xcmemit cleanall
 #
 cleanall:: ; \
 make -C srcgen2/xats2py/srcgen1 -f Makefile_xats2js cleanall
@@ -173,6 +188,15 @@ srcgen2_xjsemit_xats2js_jsemit00_opt1: ; \
 time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit00_opt1
 srcgen2_xjsemit_xats2js_jsemit01_opt1: ; \
 time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit01_opt1
+#
+srcgen2_xjsemit_xats2cm_cmemit00: ; \
+time make -C srcgen2/xats2cm/srcgen1/UTIL -f Makefile_xjsemit xats2cm_cmemit00
+srcgen2_xjsemit_xats2cm_cmemit01: ; \
+time make -C srcgen2/xats2cm/srcgen1/UTIL -f Makefile_xjsemit xats2cm_cmemit01
+srcgen2_xjsemit_xats2cm_cmemit00_opt1: ; \
+time make -C srcgen2/xats2cm/srcgen1/UTIL -f Makefile_xjsemit xats2cm_cmemit00_opt1
+srcgen2_xjsemit_xats2cm_cmemit01_opt1: ; \
+time make -C srcgen2/xats2cm/srcgen1/UTIL -f Makefile_xjsemit xats2cm_cmemit01_opt1
 #
 srcgen2_xjsemit_xats2py_pyemit00: ; \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xjsemit xats2py_pyemit00
