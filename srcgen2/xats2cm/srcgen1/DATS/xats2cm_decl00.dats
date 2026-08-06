@@ -65,10 +65,11 @@ _(*DATS*)="./../DATS/xats2cm.dats"
 (* ****** ****** *)
 //
 fun
-fprintln
+X2CMDECL_fprintln
 (out0: FILR): void =
 (
  strn_fprint("\n",out0))//endfun
+#define fprintln X2CMDECL_fprintln
 //
 (* ****** ****** *)
 (* ****** ****** *)
