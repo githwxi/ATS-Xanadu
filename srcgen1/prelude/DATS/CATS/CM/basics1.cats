@@ -192,6 +192,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 #|
+;; HX: (import (rnrs))
 (define
   (XATS2CM_gint_lsln$uint x0 n0)
   (arithmetic-shift x0 n0)) ;; logic-lshift
@@ -205,6 +206,7 @@
     (arithmetic-shift x0 n1))) ;; arith-rshift
 |#
 ;;
+;; HX: (import (chezscheme))
 (define ;; logic-lshift
   (XATS2CM_gint_lsln$uint x0 n0) (ash x0 n0))
 ;;
