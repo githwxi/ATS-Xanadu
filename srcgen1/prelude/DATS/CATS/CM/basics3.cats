@@ -58,10 +58,12 @@ def XATS2CM_cmobj_set$at(obj, key, itm):
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 #|
-def XATS2CM_cmhmap_make_nil(): return {}
+def \
+XATS2CM_cmhmap_make_nil(): return {}
 |#
 (define
-(XATS2CM_cmhmap_make_nil) (make-eqv-hashtable))
+(XATS2CM_cmhmap_make_nil)
+  (make-hashtable equal-hash equal?))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
@@ -125,8 +127,8 @@ def XATS2CM_cmhmap_search$opt(dct, key):
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 #|
-def XATS2CM_cmhmap_insert_any(dct, key, itm):
-  dct[key] = itm ;; end of [cmhmap_insert_any(dct,...)]
+def XATS2CM_cmhmap_insert$any(dct, key, itm):
+  dct[key] = itm ;; end of [cmhmap_insert$any(dct,...)]
 |#
 ;;
 (define

@@ -1,4 +1,4 @@
-;; Wed Aug  5 03:26:11 PM EDT 2026
+;; Thu Aug  6 08:59:17 AM EDT 2026
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; HX-2026-08-02:
@@ -35,21 +35,23 @@
 (define
   (XATS2CM_bool_fprint b0 out) (display b0 out))
 (define
-  (XATS2CM_char_fprint c0 out) (display c0 out))
-(define
   (XATS2CM_dflt_fprint f0 out) (display f0 out))
 (define
   (XATS2CM_strn_fprint cs out) (display cs out))
 ;;
 (define
-  (XATS2CM_gint_fprint_sint i0 out) (display i0 out))
-(define
-  (XATS2CM_gint_fprint_uint i0 out) (display i0 out))
+  (XATS2CM_char_fprint c0 out)
+  (let ((d0 (integer->char c0))) (display d0 out)))
 ;;
 (define
-  (XATS2CM_gint_fprint_sflt f0 out) (display f0 out))
+  (XATS2CM_gint_fprint$sint i0 out) (display i0 out))
 (define
-  (XATS2CM_gint_fprint_dflt f0 out) (display f0 out))
+  (XATS2CM_gint_fprint$uint i0 out) (display i0 out))
+;;
+(define
+  (XATS2CM_gint_fprint$sflt f0 out) (display f0 out))
+(define
+  (XATS2CM_gint_fprint$dflt f0 out) (display f0 out))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.

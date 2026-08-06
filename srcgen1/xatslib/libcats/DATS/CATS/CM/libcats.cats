@@ -34,11 +34,13 @@
 (define
   (XATS2CM_bool_fprint b0 out) (display b0 out))
 (define
-  (XATS2CM_char_fprint c0 out) (display c0 out))
-(define
   (XATS2CM_dflt_fprint f0 out) (display f0 out))
 (define
   (XATS2CM_strn_fprint cs out) (display cs out))
+;;
+(define
+  (XATS2CM_char_fprint c0 out)
+  (let ((d0 (integer->char c0))) (display d0 out)))
 ;;
 (define
   (XATS2CM_gint_fprint$sint i0 out) (display i0 out))

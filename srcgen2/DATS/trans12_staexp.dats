@@ -1845,6 +1845,7 @@ trans12_s1exp_prgm(env0, s1e0)
 trans12_s1exp_stck
 (env0, s1e1, s2t2) =
 let
+//
 val
 s2e1 =
 trans12_s1exp(env0, s1e1)
@@ -1857,7 +1858,26 @@ in//let
 if subq
 then s2e1 else
 s2exp_cast(s1e1.lctn(), s2e1, s2t2)
-end(*let*)//end-of[trans12_s1exp_stck(env0,...)]
+end where
+{
+//
+(*
+val (  ) =
+let
+val lctn = s1e1.lctn()
+in//let
+prerrsln
+("trans12_s1exp_stck: lctn = ", lctn)
+end//let
+val (  ) =
+prerrsln
+("trans12_s1exp_stck: s1e1 = ", s1e1)
+val (  ) =
+prerrsln
+("trans12_s1exp_stck: s2t2 = ", s2t2)
+*)
+//
+}(*where*)//end-of[trans12_s1exp_stck(env0,...)]
 //
 (* ****** ****** *)
 //

@@ -191,6 +191,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
+#|
 (define
   (XATS2CM_gint_lsln$uint x0 n0)
   (arithmetic-shift x0 n0)) ;; logic-lshift
@@ -202,6 +203,15 @@
   (XATS2CM_gint_asrn$sint x0 n0)
   (let ((n1 (- n0)))
     (arithmetic-shift x0 n1))) ;; arith-rshift
+|#
+;;
+(define ;; logic-lshift
+  (XATS2CM_gint_lsln$uint x0 n0) (ash x0 n0))
+;;
+(define ;; arith-lshift
+  (XATS2CM_gint_asln$sint x0 n0) (ash x0 n0))
+(define ;; arith-rshift
+  (XATS2CM_gint_asrn$sint x0 n0) (ash x0 (- n0)))
 ;;
 ;; HX: there is no logic-rshift >>> in Scheme
 ;;
@@ -427,8 +437,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
-  (XATS2CM_strn_cmp x1 x2)
-  (cond ((string<? x1 x2) -1) ((string>? x1 x2) 1) (else 0)))
+(XATS2CM_strn_cmp x1 x2)
+(cond
+ ((string<? x1 x2) -1) ((string>? x1 x2) 1) (else 0)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
