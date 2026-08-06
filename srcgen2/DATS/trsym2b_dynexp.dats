@@ -55,6 +55,14 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun // HX-2026-08-06:
+simax // max not in srcgen1!
+(i1: sint, i2: sint): sint =
+(if i1 >= i2 then i1 else i2)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #staload
 _(*TRSYM2B*) = "./trsym2b.dats"
 (* ****** ****** *)
@@ -484,7 +492,7 @@ list_cons(dpi1, dpis) =>
 case- dpi1 of
 |
 D2PTMsome(pval, _) =>
-auxpmax(max(pmax, pval), dpis))
+auxpmax(simax(pmax, pval), dpis))
 ) (*case+*) // end of [auxpmax( ... )]
 //
 and
@@ -1223,11 +1231,14 @@ case+ dpis of
 |
 list_nil() => pmax
 |
-list_cons(dpi1, dpis) =>
+list_cons
+(dpi1, dpis) =>
 (
 case- dpi1 of
-| D2PTMsome(pval, _) =>
-  auxpmax(max(pmax, pval), dpis))
+|
+D2PTMsome(pval, _) =>
+(
+  auxpmax(simax(pmax, pval), dpis)))
 ) (*case+*) // end of [auxpmax( ... )]
 //
 and
