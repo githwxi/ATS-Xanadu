@@ -395,6 +395,21 @@ ipat.node() of
 //
 (* ****** ****** *)
 //
+|I0Prfpt _ =>
+(
+  f0_rfpt(b0, ival, ipat))
+//
+(* ****** ****** *)
+//
+|I0Ptup0 _ =>
+(
+  f0_tup0(b0, ival, ipat))
+|I0Ptup1 _ =>
+(
+  f0_tup1(b0, ival, ipat))
+//
+(* ****** ****** *)
+//
 |I0Pbang _ =>
 (
   f0_bang(b0, ival, ipat))
@@ -605,6 +620,25 @@ conj(b0);
 prints("(XATS000_ctgeq ", ival, " ", i0f0, ")"))
 }(*where*)
 end(*let*)//end-of-[f0_dapp(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and
+f0_rfpt
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Prfpt
+(i0p1, i0p2) = ipat.node()
+//
+val () = f0_ipat(b0,ival,i0p1)
+val () = f0_ipat(b0,ival,i0p2)
+//
+end(*let*)//end-of-[f0_rfpt(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -107,7 +107,15 @@ then
  a1ptr_get$at1(A0, i0))
 else
 (
- a1ptr_get$at1(A0, n0-1))) }
+ a1ptr_get$at1(A0, n0-1)))
+//
+(*
+val ( ) =
+prerrsln
+("tokbuf_getk0: tok = ", tok)
+*)
+//
+} (*where*) // end-of-(let-scope)
 end (*let*) // end of [tokbuf_getk0]
 //
 (* ****** ****** *)
@@ -138,6 +146,11 @@ else
 ) : token // end-[val(tok)]
 //
 in
+//
+(*
+prerrsln
+("tokbuf_getk1: tok = ", tok);
+*)
 //
 let
 val () =
@@ -222,7 +235,7 @@ prerr1sln
 //
 (* ****** ****** *)
 
-end (*local*) // end of [local]
+end (*local*) // end of [local(tkbf0_vtbx)]
 
 (* ****** ****** *)
 (* ****** ****** *)

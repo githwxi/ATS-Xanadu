@@ -80,7 +80,7 @@ let
 val+
 TOKEN(loc,tnd) = tok in tnd end
 //
-end (*local*) // end-of( local )
+end(*local*)//end-of-local(token)
 
 (* ****** ****** *)
 //

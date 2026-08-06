@@ -61,7 +61,7 @@ $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
 ############
 test00:: \
 test00_xats2cm.dats; \
-$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+$(SCHEME) --script $(XATS2CM_CMEMIT01) _dummy_ $< >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
 test01:: ; \
@@ -74,7 +74,7 @@ $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
 ############
 test01:: \
 test01_xats2cm.dats; \
-$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+$(SCHEME) --script $(XATS2CM_CMEMIT01) _dummy_ $< >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
 test02:: ; \
@@ -87,7 +87,7 @@ $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
 ############
 test02:: \
 test02_xats2cm.dats; \
-$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+$(SCHEME) --script $(XATS2CM_CMEMIT01) _dummy_ $< >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
 test03:: ; \
@@ -100,7 +100,7 @@ $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
 ############
 test03:: \
 test03_xats2cm.dats; \
-$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+$(SCHEME) --script $(XATS2CM_CMEMIT01) _dummy_ $< >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
 test04:: ; \
@@ -113,7 +113,7 @@ $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
 ############
 test04:: \
 test04_xats2cm.dats; \
-$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+$(SCHEME) --script $(XATS2CM_CMEMIT01) _dummy_ $< >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
 test05:: ; \
@@ -126,7 +126,7 @@ $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
 ############
 test05:: \
 test05_xats2cm.dats; \
-$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+$(SCHEME) --script $(XATS2CM_CMEMIT01) _dummy_ $< >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
 test06:: ; \
@@ -139,7 +139,7 @@ $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
 ############
 test06:: \
 test06_xats2cm.dats; \
-$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+$(SCHEME) --script $(XATS2CM_CMEMIT01) _dummy_ $< >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
 test07:: ; \
@@ -152,7 +152,7 @@ $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
 ############
 test07:: \
 test07_xats2cm.dats; \
-$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+$(SCHEME) --script $(XATS2CM_CMEMIT01) _dummy_ $< >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
 test09:: ; \
@@ -165,7 +165,7 @@ $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
 ############
 test09:: \
 test09_xats2cm.dats; \
-$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+$(SCHEME) --script $(XATS2CM_CMEMIT01) _dummy_ $< >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
 test10:: ; \
@@ -178,7 +178,7 @@ $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
 ############
 test10:: \
 test10_xats2cm.dats; \
-$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+$(SCHEME) --script $(XATS2CM_CMEMIT01) _dummy_ $< >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
 testxx:: ; \
@@ -191,7 +191,7 @@ $(CAT) $(XATS2CM_XSHARED)/srcgen2_prelude.cm >> OUTS/$@_out.cm
 ############
 testxx:: \
 testxx_mydebug.dats; \
-$(SCHEME) --script $(XATS2CM_CMEMIT01) $< >> OUTS/$@_out.cm
+$(SCHEME) --script $(XATS2CM_CMEMIT01) _dummy_ $< >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
