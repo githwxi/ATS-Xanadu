@@ -235,10 +235,10 @@ prerrsln("// XATSHOME = ", the_XATSHOME())
 //
 val argv =
   XATSOPT_argv$get((*0*)) // end(val(argv))
-// (*
+(*
 val (  ) =
 prerrsln("xats2cm_cmemit01: argv = ", argv)
-// *)
+*)
 //
 }(*where*)//end-of-[mymain_main( (*void*) )]
 //

@@ -67,10 +67,8 @@ $(SED) '/^[ ]*;;/d' xats2cm_cmemit01_ats3.cm > xats2cm_cmemit01_ats3_opt0.cm
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; \
-rm -f xats2cm_cmemit00_ats3.cm
-cleanall:: ; \
-rm -f xats2cm_cmemit01_ats3.cm
+cleanall:: ; rm -f xats2cm_cmemit00_ats3.cm
+cleanall:: ; rm -f xats2cm_cmemit01_ats3.cm
 ########################################################################
 ########################################################################
 XASSETS=\
