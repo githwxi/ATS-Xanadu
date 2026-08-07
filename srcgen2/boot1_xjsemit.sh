@@ -23,6 +23,7 @@ case $prog in
     ${MAKE} -f Makefile_xjsemit lib2xatsopt
     ${MAKE} -C xats2js/srcgen1 -f Makefile_xjsemit lib2xats2js
     ${MAKE} -C xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit00
+    ${MAKE} -C xats2js/srcgen1/UTIL -f Makefile_xjsemit xats2js_jsemit01
     echo "Please find: (./xats2js/srcgen1/UTIL/xats2js_jsemit00_ats3.js)!"
     exit 0
     ;;
