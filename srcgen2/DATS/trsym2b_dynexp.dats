@@ -61,6 +61,11 @@ simax // max not in srcgen1!
 (i1: sint, i2: sint): sint =
 (if i1 >= i2 then i1 else i2)
 //
+fun // HX-2026-08-06:
+simin // min not in srcgen1!
+(i1: sint, i2: sint): sint =
+(if i1 <= i2 then i1 else i2)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
