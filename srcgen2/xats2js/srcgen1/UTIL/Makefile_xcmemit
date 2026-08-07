@@ -1,0 +1,99 @@
+########################################################################
+########################################################################
+# Makefile for bootstrapping
+########################################################################
+########################################################################
+CAT=cat
+SED=sed
+ECHO=echo
+NODE=node
+########################################################################
+all::
+########################################################################
+SRCGEN2=./../../../../srcgen2
+XATSJSD=./../../../../srcgen2/xats2js
+XATSCMD=./../../../../srcgen2/xats2cm
+########################################################################
+S2XSHRD=\
+$(SRCGEN2)/xats2cm/srcgenx/xshared/runtime
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+########################################################################
+cleanall:: ; \
+rm -f lib2xatsopt2js_ats3.cm
+cleanall:: ; \
+rm -f xats2js_jsemit0?_ats3.cm
+cleanall:: ; \
+rm -f xats2js_jsemit0?_ats3_opt0.cm
+########################################################################
+########################################################################
+ifndef XATSOPT_TCHECK00
+XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats2.js
+endif ## (ifeq($(XATSOPT_TCHECK00),""))
+########################################################################
+ifndef XATS2CM_CMEMIT00
+XATS2CM_CMEMIT00=$(XATSCMD)/srcgen1/UTIL/xats2cm_cmemit00_ats2.js
+endif ## (ifeq($(XATS2CM_CMEMIT00),""))
+########################################################################
+########################################################################
+all:: \
+xats2js_jsemit00
+xats2js_jsemit00: ; \
+printf ";; %s\n" "`date`" > $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/xats2cm_cm1emit.cm >> $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_xatslib.cm >> $@_ats3.cm && \
+$(SED) -E 's/cmx(...)tnm/cm1\1tnm/g' \
+$(SRCGEN2)/lib/lib2xatsopt.cm | $(CAT) - >> $@_ats3.cm && \
+$(SED) -E 's/cmx(...)tnm/cm2\1tnm/g' \
+$(XATSJSD)/srcgen1/lib/lib2xats2js.cm | $(CAT) - >> $@_ats3.cm && \
+$(NODE) \
+  --stack-size=8192 $(XATS2CM_CMEMIT00) xats2js_jsemit00.dats >> $@_ats3.cm
+#
+all:: \
+xats2js_jsemit01
+xats2js_jsemit01: ; \
+printf ";; %s\n" "`date`" > $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/xats2cm_cm1emit.cm >> $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_xatslib.cm >> $@_ats3.cm && \
+$(SED) -E 's/cmx(...)tnm/cm1\1tnm/g' \
+$(SRCGEN2)/lib/lib2xatsopt.cm | $(CAT) - >> $@_ats3.cm && \
+$(SED) -E 's/cmx(...)tnm/cm2\1tnm/g' \
+$(XATSJSD)/srcgen1/lib/lib2xats2js.cm | $(CAT) - >> $@_ats3.cm && \
+$(NODE) \
+  --stack-size=8192 $(XATS2CM_CMEMIT00) xats2js_jsemit01.dats >> $@_ats3.cm
+#
+xats2js_jsemit00_opt0: ; \
+$(SED) '/^[ ]*;;/d' xats2js_jsemit00_ats3.cm > xats2js_jsemit00_ats3_opt0.cm
+#
+xats2js_jsemit01_opt0: ; \
+$(SED) '/^[ ]*;;/d' xats2js_jsemit01_ats3.cm > xats2js_jsemit01_ats3_opt0.cm
+#
+########################################################################
+#
+lib2xatsopt2js: ; \
+printf ";; %s\n" "`date`" > $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/xats2cm_cm1emit.cm >> $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_xatslib.cm >> $@_ats3.cm && \
+$(SED) -E 's/cmx(...)tnm/cmxa\1tnm/g' \
+$(SRCGEN2)/lib/lib2xatsopt.cm | $(CAT) - >> $@_ats3.cm && \
+$(SED) -E 's/cmx(...)tnm/cmxb\1tnm/g' \
+$(XATSJSD)/srcgen1/lib/lib2xats2js.cm | $(CAT) - >> $@_ats3.cm
+#
+########################################################################
+########################################################################
+######################(end-of-[Makefile_xcmemit])#######################
+########################################################################
+########################################################################
