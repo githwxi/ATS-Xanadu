@@ -487,11 +487,13 @@ let
   fp_d0eclseq( f00, buf, err )
   val tend = p1_ENDLOC(buf, err)
   val lres = tbeg.lctn() + tend.lctn()
-in
+in//let
+//
 err := e00;
 d0ecl_make_node
 ( lres
 , D0Clocal0(tbeg, head, tmid, body, tend))
+//
 end (*let*) // end of [ T_LOCAL() ]
 //
 |

@@ -3,7 +3,7 @@
 (*
 HX-2026-06-24:
 Wed Jun 24 11:30:22 AM EDT 2026
-For ATS3/XANADU_srcgen2_xats2cz
+For ATS3/XANADU_srcgen2_xats2cm
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -15,5 +15,5 @@ For ATS3/XANADU_srcgen2_xats2cz
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cz_srcgen1_HATS_mytmplib00.hats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cm_srcgen1_HATS_mytmplib00.hats] *)
 (***********************************************************************)
