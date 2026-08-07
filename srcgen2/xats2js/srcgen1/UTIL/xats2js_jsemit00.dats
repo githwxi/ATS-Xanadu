@@ -69,6 +69,11 @@ defq(_XATS2JS_)
 #endif//#if(defq(_XATS2JS_))
 //
 #if
+defq(_XATS2CM_)
+#typedef argv=cma1sz(strn)
+#endif//#if(defq(_XATS2CM_))
+//
+#if
 defq(_XATS2PY_)
 #typedef argv=pya1sz(strn)
 #endif//#if(defq(_XATS2PY_))
