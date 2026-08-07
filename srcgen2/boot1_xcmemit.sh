@@ -19,24 +19,24 @@ fi
 ##################################################################
 #
 case $prog in
-  boot1_xpyemit.sh)
-    ${MAKE} -f Makefile_xpyemit lib2xatsopt
-    ${MAKE} -C xats2py/srcgen1 -f Makefile_xpyemit lib2xats2py
-    ${MAKE} -C xats2py/srcgen1/UTIL -f Makefile_xpyemit xats2py_pyemit01
-    ${MAKE} -C xats2py/srcgen1/UTIL -f Makefile_xpyemit xats2py_pyemit00
-    echo "Please find: (./xats2py/srcgen1/UTIL/xats2py_pyemit00_ats3.py)!"
+  boot1_xcmemit.sh)
+    ${MAKE} -f Makefile_xcmemit lib2xatsopt
+    ${MAKE} -C xats2cm/srcgen1 -f Makefile_xcmemit lib2xats2cm
+    ${MAKE} -C xats2cm/srcgen1/UTIL -f Makefile_xcmemit xats2cm_cmemit00
+    ${MAKE} -C xats2cm/srcgen1/UTIL -f Makefile_xcmemit xats2cm_cmemit01
+    echo "Please find: (./xats2cm/srcgen1/UTIL/xats2cm_cmemit00_ats3.cm)!"
     exit 0
     ;;
   *)
     echo "prog: " $prog
-    echo "This is a script for build_xpyemit."
-    echo "The script should be symbolically named as [boot1_xpyemit.sh]."
+    echo "This is a script for build_xcmemit."
+    echo "The script should be symbolically named as [boot1_xcmemit.sh]."
     exit 1
     ;;
 esac
 #
 ##################################################################
 #
-# end of [ATS-Xanadu/srcgen2/boot1_xpyemit.sh]
+# end of [ATS-Xanadu/srcgen2/boot1_xcmemit.sh]
 #
 ##################################################################
