@@ -8,7 +8,7 @@ the assets stored here are intended for the purpose of further
 developing ATS3.
 
 For someone who is just interested in using ATS3 as a programming
-language, please visit [XATSHOME](https://github.com/xatshome)
+language, please visit [XATSHOME](https://github.com/xatshome).
 
 ## XATSOPT
 
@@ -80,15 +80,24 @@ For compiling ATS3 into Python3.
 
 ### JS/xats2py/xats2py_pyemit01_ats3_opt1.js
 
-This compiler is built for compiling ATS3 source into PY.  It needs to
-be run with Python3.12 (or a later version).  The word `pyemit01` in
-the name of the compiler indicates that the compiler emits PY code
-after loading (via a call to the function `the_tr12env_pvsl01d` in
-`xglobal.dats`) some prelude-files (inside XATSHOME/prelude) made for
-general-purpose programming.  The word `ats3` in the name indicates
-that this compiler is built via the direct use of a bootstrapped ATS3
-compiler. Also, the word `opt1` in the name indicates that the JS code
-for the compiler is transpiled (from JS to JS) by the closure-compiler
-(produced by Google).
+This compiler is built for compiling ATS3 source into PY.  The
+generated PY code needs to be run with Python3.12 (or a later
+version).  The word `pyemit01` in the name of the compiler indicates
+that the compiler emits PY code after loading (via a call to the
+function `the_tr12env_pvsl01d` in `xglobal.dats`) some prelude-files
+(inside XATSHOME/prelude) made for general-purpose programming.  The
+word `ats3` in the name indicates that this compiler is built via the
+direct use of a bootstrapped ATS3 compiler. Also, the word `opt1` in
+the name indicates that the JS code for the compiler is transpiled
+(from JS to JS) by the closure-compiler (produced by Google).
 
 This one (pyemit01) is also stored at XATSHOME.
+
+## XATS2CM
+
+For compiling ATS3 into Scheme.
+
+### JS/xats2cm/xats2cm_cmemit01_ats3_opt1.js
+
+This compiler is built for compiling ATS3 source into Scheme. Its
+development and usage is parallel to XATS2PY.
