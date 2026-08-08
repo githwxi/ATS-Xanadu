@@ -2,6 +2,7 @@
 ########################################################################
 #
 # For compiling with xats2js
+# Sat Aug  8 02:19:31 PM EDT 2026
 # Sun May 25 09:09:02 PM EDT 2025
 # Mon Jan 13 11:25:29 PM EST 2025
 # Sat Nov 30 03:23:22 PM EST 2024
@@ -44,19 +45,19 @@ XATS2JS=\
 ########################################################################
 
 SRCSATS := \
-xats2py.sats \
-py1emit.sats \
+xats2cm.sats \
+cm1emit.sats \
 
 ######
 
 SRCDATS := \
-xats2py.dats \
-xats2py_dynexp.dats \
-xats2py_decl00.dats \
-py1emit.dats \
-py1emit_utils0.dats \
-py1emit_dynexp.dats \
-py1emit_decl00.dats \
+xats2cm.dats \
+xats2cm_dynexp.dats \
+xats2cm_decl00.dats \
+cm1emit.dats \
+cm1emit_utils0.dats \
+cm1emit_dynexp.dats \
+cm1emit_decl00.dats \
 
 ########################################################################
 ########################################################################
@@ -70,13 +71,13 @@ all:: $(OBJDATS)
 ########################################################################
 cleanall:: ; rm -f BUILD/JS/*_dats.js
 ########################################################################
-libxats2py:: \
-$(OBJDATS); $(CAT) $(OBJDATS) > lib/libxats2py.js
+libxats2cm:: \
+$(OBJDATS); $(CAT) $(OBJDATS) > lib/libxats2cm.js
 ########################################################################
-XATS2PY_SRCGEN1=$(SRCGEN2)/xats2py/srcgen1
+XATS2CM_SRCGEN1=$(SRCGEN2)/xats2cm/srcgen1
 ########################################################################
 BUILD/JS/%_dats.js: \
-$(XATS2PY_SRCGEN1)/DATS/%.dats; $(XATS2JS) --output-w $@ --dynamic $<
+$(XATS2CM_SRCGEN1)/DATS/%.dats; $(XATS2JS) --output-w $@ --dynamic $<
 ########################################################################
 ########################################################################
 ####################(end-of(Makefile_xats2js))##########################

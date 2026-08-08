@@ -1,0 +1,92 @@
+########################################################################
+########################################################################
+#
+# For compiling with xats2js
+# Mon 25 Mar 2024 06:06:29 PM EDT
+# The compiler is srcgen1/xats2js
+# Mon Jan 13 11:48:40 PM EST 2025
+#
+########################################################################
+########################################################################
+CAT=cat
+CPF=cp -f
+ECHO=echo
+NODE=node
+NODE=node \
+--stack-size=4096
+NODE=node \
+--stack-size=4096 \
+--max-old-space-size=4096
+########################################################################
+########################################################################
+all::
+########################################################################
+#
+# HX: for cleaning up
+#
+clean:: ; rm -f *~
+#
+cleanall:: clean
+cleanall:: ; \
+rm -f ./xats2cm_cmemit00_ats2.js
+cleanall:: ; \
+rm -f ./xats2cm_cmemit01_ats2.js
+#
+########################################################################
+########################################################################
+XSHARED=${XATSJSD}/xshared
+XATSJSD=$(SRCGEN1)/xats2js/srcgenx
+########################################################################
+SRCGEN1=./../../../../../../srcgen1
+SRCGEN2=./../../../../../../srcgen2
+########################################################################
+XATS2JS=./../../../../srcgen1/xats2js/srcgen1/bin/xats2js
+########################################################################
+LIBXATSOPT_JS="./../../../lib/libxatsopt.js"
+LIBXATS2JS_JS="./../../../xats2js/srcgen1/lib/libxats2js.js"
+LIBXATS2CM_JS="./../../../xats2cm/srcgen1/lib/libxats2cm.js"
+########################################################################
+XATS2JS_JS1EMIT="$(XSHARED)/runtime/xats2js_js1emit.js"
+SRCGEN1_PRELUDE="$(XSHARED)/runtime/srcgen1_prelude.js"
+SRCGEN1_PRELUDE_NODE="$(XSHARED)/runtime/srcgen1_prelude_node.js"
+SRCGEN1_XATSLIB_NODE="$(XSHARED)/runtime/srcgen1_xatslib_node.js"
+########################################################################
+XATS2CM_CMEMIT00_DATS=$(SRCGEN2)/xats2cm/srcgen1/UTIL/xats2cm_cmemit00.dats
+XATS2CM_CMEMIT01_DATS=$(SRCGEN2)/xats2cm/srcgen1/UTIL/xats2cm_cmemit01.dats
+########################################################################
+#
+all:: \
+xats2cm_cmemit00
+xats2cm_cmemit00:: \
+$(XATS2CM_CMEMIT00_DATS) ; \
+$(CAT) \
+$(XATS2JS_JS1EMIT) > $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_PRELUDE) >> $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_PRELUDE_NODE) >> $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_XATSLIB_NODE) >> $@_ats2.js && \
+$(CAT) $(LIBXATSOPT_JS) >> $@_ats2.js && \
+$(CAT) $(LIBXATS2JS_JS) >> $@_ats2.js && \
+$(CAT) $(LIBXATS2CM_JS) >> $@_ats2.js && $(XATS2JS) --output-a $@_ats2.js --dynamic $<
+#
+all:: \
+xats2cm_cmemit01
+xats2cm_cmemit01:: \
+$(XATS2CM_CMEMIT01_DATS) ; \
+$(CAT) \
+$(XATS2JS_JS1EMIT) > $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_PRELUDE) >> $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_PRELUDE_NODE) >> $@_ats2.js && \
+$(CAT) \
+$(SRCGEN1_XATSLIB_NODE) >> $@_ats2.js && \
+$(CAT) $(LIBXATSOPT_JS) >> $@_ats2.js && \
+$(CAT) $(LIBXATS2JS_JS) >> $@_ats2.js && \
+$(CAT) $(LIBXATS2CM_JS) >> $@_ats2.js && $(XATS2JS) --output-a $@_ats2.js --dynamic $<
+#
+########################################################################
+########################################################################
+######################(end-of-[Makefile_xats2js])#######################
