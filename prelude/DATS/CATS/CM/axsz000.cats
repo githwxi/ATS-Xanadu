@@ -41,9 +41,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_a1sz_lget_at A0 i0) (vector-ref A0 i0))
+ (XATS2CM_a1sz_lget$at A0 i0) (vector-ref A0 i0))
 (define
- (XATS2CM_a1sz_lset_at A0 i0 x1) (vector-set! A0 i0 x1))
+ (XATS2CM_a1sz_lset$at A0 i0 x1) (vector-set! A0 i0 x1))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;

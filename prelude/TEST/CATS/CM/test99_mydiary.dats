@@ -1,7 +1,8 @@
 (* ****** ****** *)
 (*
-HX-2025-04-27:
-For testing prelude/PY!
+HX-2026-08-07:
+For testing prelude/CM!
+Fri Aug  7 06:22:31 PM EDT 2026
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -13,7 +14,7 @@ For testing prelude/PY!
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
-"prelude/HATS/prelude_PY_dats.hats"
+"prelude/HATS/prelude_CM_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -73,5 +74,5 @@ endloc//local
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_TEST_CATS_PY_test99_mydiary.dats] *)
+(* end of [ATS3/XANADU_prelude_TEST_CATS_CM_test99_mydiary.dats] *)
 (***********************************************************************)
