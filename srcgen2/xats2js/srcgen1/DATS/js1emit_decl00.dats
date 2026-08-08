@@ -569,12 +569,10 @@ then//then
 else//else
 (
 case+ tqas of
-|
-list_nil() => // HX: functions
+|list_nil() => // HX: functions
 (
   js1emit_i1fundclist(env0, i1fs))
-|
-list_cons _ => // HX: templates
+|list_cons _ => // HX: templates
 (
   xats2js_i1tfndclist(env0, i1fs)))
 //
