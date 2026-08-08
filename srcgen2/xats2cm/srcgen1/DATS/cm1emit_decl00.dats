@@ -524,10 +524,21 @@ in//let
 //
 if
 prfq
-then prints
-(";; I1Dprfdclist(",loc0,")\n")
-else prints
+then
+(
+prints
+(";; I1Dprfdclist(",loc0,")\n"))
+else
+(
+case+ tqas of
+|
+list_nil() =>
+prints
 (";; I1Dfundclist(",loc0,")\n")
+|
+list_cons _ =>
+prints
+(";; I1Dtfndclist(",loc0,")\n"))
 //
 end//let
 //
@@ -536,10 +547,16 @@ if
 prfq
 then
 (
- xats2cm_i1fundclist(env0, i1fs))
+  xats2cm_i1fundclist(env0, i1fs))
 else
 (
- i1fundclist_cm1emit(i1fs, env0))
+case+ tqas of
+|list_nil() =>
+(
+  i1fundclist_cm1emit(i1fs, env0))
+|list_cons _ => // HX: templates
+(
+  xats2js_i1tfndclist(env0, i1fs)))
 //
 end(*let*)//end-of-[f0_fundclst(dcl0,env0)]
 //
