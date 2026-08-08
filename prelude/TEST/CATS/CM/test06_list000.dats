@@ -20,7 +20,7 @@ Fri Aug  7 06:22:31 PM EDT 2026
 (* ****** ****** *)
 //
 val ns =
-list_nccm(10, 1)
+list_ncpy(10, 1)
 val () =
 prints("ns = ", ns, "\n")
 val () = prints
