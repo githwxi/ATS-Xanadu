@@ -15,6 +15,10 @@ all:: lib2xats2js
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
+cleanall:: ; rm -f lib/lib2xats2js.py
+cleanall:: ; rm -f UTIL/xats2js_jsemit0?_ats3.py
+cleanall:: ; rm -f TEST/xats2js_jsemit0?_ats3.py
+cleanall:: ; rm -f TEST/xats2js_jsemit0?_test.py
 ########################################################################
 cleanall:: ; \
 rm -f BUILD/*_sats_out0.js

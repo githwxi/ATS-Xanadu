@@ -15,6 +15,10 @@ all:: lib2xats2cm
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
+cleanall:: ; rm -f lib/lib2xats2cm.cm
+cleanall:: ; rm -f UTIL/xats2cm_cmemit0?_ats3.cm
+cleanall:: ; rm -f TEST/xats2cm_cmemit0?_ats3.cm
+cleanall:: ; rm -f TEST/xats2cm_cmemit0?_test.cm
 ########################################################################
 cleanall:: ; \
 rm -f BUILD/*_sats_out0.cm
