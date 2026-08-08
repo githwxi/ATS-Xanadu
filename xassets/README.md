@@ -1,12 +1,14 @@
-# [ATS3-Xanadu](http://www.ats-lang.org/)/xassets
+# [ATS3-Xanadu](https://www.ats-lang.org/)/xassets
 
 This directory primarily contains some pre-built "assets" (e.g.,
 compilers with accompanying files). One can use such assets, for
 instance, to turn ATS3 source code into a form (such as JS code, PY
 code, etc.) that can be interpreted, compiled, or executed. Mostly,
 the assets stored here are intended for the purpose of further
-developing ATS3. For someone who is interested in using ATS3 as a
-programming language, please visit XATSHOME.
+developing ATS3.
+
+For someone who is just interested in using ATS3 as a programming
+language, please visit [XATSHOME](https://github.com/xatshome)
 
 ## XATSOPT
 
