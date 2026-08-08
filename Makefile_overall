@@ -240,6 +240,7 @@ contrib_githwxi_BOOTPY1_lib2xats2py: ; \
 ##################################################################
 #
 prelude_TEST_CATS_JS: ; make -C prelude/TEST/CATS/JS -f Makefile_jsemit01 testall
+prelude_TEST_CATS_CM: ; make -C prelude/TEST/CATS/CM -f Makefile_cmemit01 testall
 prelude_TEST_CATS_PY: ; make -C prelude/TEST/CATS/PY -f Makefile_pyemit01 testall
 #
 ##################################################################

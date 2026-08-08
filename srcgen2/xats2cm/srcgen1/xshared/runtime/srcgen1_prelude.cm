@@ -1,4 +1,4 @@
-;; Thu Aug  6 11:25:00 AM EDT 2026
+;; Fri Aug  7 09:12:22 PM EDT 2026
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
@@ -201,6 +201,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 #|
+;; HX: (import (rnrs))
 (define
   (XATS2CM_gint_lsln$uint x0 n0)
   (arithmetic-shift x0 n0)) ;; logic-lshift
@@ -214,6 +215,7 @@
     (arithmetic-shift x0 n1))) ;; arith-rshift
 |#
 ;;
+;; HX: (import (chezscheme))
 (define ;; logic-lshift
   (XATS2CM_gint_lsln$uint x0 n0) (ash x0 n0))
 ;;
@@ -834,9 +836,15 @@ def XATS2CM_cmhmap_insert$any(dct, key, itm):
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
+;; HX: (import (chezscheme))
 (define
   (XATSOPT_argv$get)
   (list->vector (command-line)))
+#|
+HX-2026-08-06:
+command-line: script name included
+command-line-arguments: no script name
+|#
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;

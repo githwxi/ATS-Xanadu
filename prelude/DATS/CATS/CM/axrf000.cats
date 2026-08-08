@@ -36,12 +36,30 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_a0rf_lget A) (vector-ref A 0))
+  (XATS2CM_a0rf_lget A) (vector-ref A 0))
 (define
- (XATS2CM_a0rf_lset A x1) (vector-set! A 0 x1))
+  (XATS2CM_a0rf_lset A x1) (vector-set! A 0 x1))
 ;;
 (define
  (XATS2CM_a0rf_make_1val x0) (vector x0))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define
+  (XATS2CM_a1rf_lget$at A i0) (vector-ref A i0))
+(define
+  (XATS2CM_a1rf_lset$at A i0 x1) (vector-set! A i0 x1))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define
+  (XATS2CM_a1rf_make_ncpy n0 x0) (make-vector n0 x0))
+;;
+(define
+  (XATS2CM_a1rf_make_nfun n0 fopr)
+  (let ((A0 (make-vector n0)))
+    (do ((i0 0 (+ i0 1)))
+	((= i0 n0) A0) (vector-set! A0 i0 (fopr i0)))))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.

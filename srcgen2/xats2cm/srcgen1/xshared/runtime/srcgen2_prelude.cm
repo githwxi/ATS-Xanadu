@@ -1,4 +1,4 @@
-;; Thu Aug  6 11:25:00 AM EDT 2026
+;; Fri Aug  7 09:12:22 PM EDT 2026
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -339,9 +339,9 @@ def XATS2CM_bool_neq(b1, b2):
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_char_sub_char c1 c2) (- c1 c2))
+ (XATS2CM_char_sub$char c1 c2) (- c1 c2))
 (define
- (XATS2CM_char_add_sint c1 i2) (modulo (+ c1 i2) 256))
+ (XATS2CM_char_add$sint c1 i2) (modulo (+ c1 i2) 256))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
@@ -500,15 +500,15 @@ def XATS2CM_bool_neq(b1, b2):
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_strn_cmp x1 x2)
- (cond
-  ((string<? x1 x2) -1)
-  ((string=? x1 x2)  0) (else 1)))
+  (XATS2CM_strn_cmp x1 x2)
+  (cond
+   ((string<? x1 x2) -1)
+   ((string=? x1 x2)  0) (else 1)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_strn_length cs) (string-length cs))
+(XATS2CM_strn_length cs) (string-length cs))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
@@ -518,9 +518,73 @@ def XATS2CM_bool_neq(b1, b2):
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_strn_get$at$raw cs i0) (string-ref cs i0))
+  (XATS2CM_strn_get$at$raw cs i0)
+  (let ((c0 (string-ref cs i0))) (char->integer c0)))
 (define
- (XATS000_strn_get$at$raw cs i0) (string-ref cs i0))
+  (XATS000_strn_get$at$raw cs i0)
+  (let ((c0 (string-ref cs i0))) (char->integer c0)))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define
+  (XATS000_strn_make_fwork fwork)
+  (XATS2CM_strn_make_fwork fwork))
+;;
+#|
+def \
+XATS2PY_strn_make_fwork(fwork):
+  res = []
+  fwork(lambda ch: res.append(chr(ch)))
+  return "".join(res)
+def \
+XATS000_strn_make_fwork(fwork):
+  return XATS2PY_strn_make_fwork(fwork)
+|#
+;;
+(define
+  (XATS2CM_strn_make_fwork fwork)
+  (let ((res '()))
+    (fwork (lambda (ch)
+             (set! res (cons (integer->char ch) res))))
+    (list->string (reverse res))))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define
+  (XATS000_strn_make_env$fwork env fwork)
+  (XATS2CM_strn_make_env$fwork env fwork))
+(define
+  (XATS000_strn_make1_env$fwork env fwork)
+  (XATS2CM_strn_make1_env$fwork env fwork))
+;;
+#|
+def \
+XATS2PY_strn_make_env_fwork(env, fwork):
+  res = []
+  fwork(env, lambda ch: res.append(chr(ch)))
+  return "".join(res)
+def \
+XATS2PY_strn_make1_env_fwork(env, fwork):
+  res = []
+  fwork(env, lambda ch: res.append(chr(ch)))
+  return "".join(res)
+|#
+;;
+(define
+  (XATS2CM_strn_make_env$fwork env fwork)
+  (let ((res '()))
+    (fwork env
+	   (lambda (ch)
+	     (set! res (cons (integer->char ch) res))))
+    (list->string (reverse res))))
+;;
+(define
+  (XATS2CM_strn_make1_env$fwork env fwork)
+  (let ((res '()))
+    (fwork env
+	   (lambda (ch)
+	     (set! res (cons (integer->char ch) res))))
+    (list->string (reverse res))))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
@@ -736,12 +800,30 @@ def XATS2CM_bool_neq(b1, b2):
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_a0rf_lget A) (vector-ref A 0))
+  (XATS2CM_a0rf_lget A) (vector-ref A 0))
 (define
- (XATS2CM_a0rf_lset A x1) (vector-set! A 0 x1))
+  (XATS2CM_a0rf_lset A x1) (vector-set! A 0 x1))
 ;;
 (define
  (XATS2CM_a0rf_make_1val x0) (vector x0))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define
+  (XATS2CM_a1rf_lget$at A i0) (vector-ref A i0))
+(define
+  (XATS2CM_a1rf_lset$at A i0 x1) (vector-set! A i0 x1))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define
+  (XATS2CM_a1rf_make_ncpy n0 x0) (make-vector n0 x0))
+;;
+(define
+  (XATS2CM_a1rf_make_nfun n0 fopr)
+  (let ((A0 (make-vector n0)))
+    (do ((i0 0 (+ i0 1)))
+	((= i0 n0) A0) (vector-set! A0 i0 (fopr i0)))))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
@@ -791,9 +873,9 @@ def XATS2CM_bool_neq(b1, b2):
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_a1sz_lget_at A0 i0) (vector-ref A0 i0))
+ (XATS2CM_a1sz_lget$at A0 i0) (vector-ref A0 i0))
 (define
- (XATS2CM_a1sz_lset_at A0 i0 x1) (vector-set! A0 i0 x1))
+ (XATS2CM_a1sz_lset$at A0 i0 x1) (vector-set! A0 i0 x1))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;

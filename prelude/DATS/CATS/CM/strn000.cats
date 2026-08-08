@@ -36,15 +36,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_strn_cmp x1 x2)
- (cond
-  ((string<? x1 x2) -1)
-  ((string=? x1 x2)  0) (else 1)))
+  (XATS2CM_strn_cmp x1 x2)
+  (cond
+   ((string<? x1 x2) -1)
+   ((string=? x1 x2)  0) (else 1)))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_strn_length cs) (string-length cs))
+(XATS2CM_strn_length cs) (string-length cs))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
@@ -54,9 +54,73 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;
 (define
- (XATS2CM_strn_get$at$raw cs i0) (string-ref cs i0))
+  (XATS2CM_strn_get$at$raw cs i0)
+  (let ((c0 (string-ref cs i0))) (char->integer c0)))
 (define
- (XATS000_strn_get$at$raw cs i0) (string-ref cs i0))
+  (XATS000_strn_get$at$raw cs i0)
+  (let ((c0 (string-ref cs i0))) (char->integer c0)))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define
+  (XATS000_strn_make_fwork fwork)
+  (XATS2CM_strn_make_fwork fwork))
+;;
+#|
+def \
+XATS2PY_strn_make_fwork(fwork):
+  res = []
+  fwork(lambda ch: res.append(chr(ch)))
+  return "".join(res)
+def \
+XATS000_strn_make_fwork(fwork):
+  return XATS2PY_strn_make_fwork(fwork)
+|#
+;;
+(define
+  (XATS2CM_strn_make_fwork fwork)
+  (let ((res '()))
+    (fwork (lambda (ch)
+             (set! res (cons (integer->char ch) res))))
+    (list->string (reverse res))))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
+;;
+(define
+  (XATS000_strn_make_env$fwork env fwork)
+  (XATS2CM_strn_make_env$fwork env fwork))
+(define
+  (XATS000_strn_make1_env$fwork env fwork)
+  (XATS2CM_strn_make1_env$fwork env fwork))
+;;
+#|
+def \
+XATS2PY_strn_make_env_fwork(env, fwork):
+  res = []
+  fwork(env, lambda ch: res.append(chr(ch)))
+  return "".join(res)
+def \
+XATS2PY_strn_make1_env_fwork(env, fwork):
+  res = []
+  fwork(env, lambda ch: res.append(chr(ch)))
+  return "".join(res)
+|#
+;;
+(define
+  (XATS2CM_strn_make_env$fwork env fwork)
+  (let ((res '()))
+    (fwork env
+	   (lambda (ch)
+	     (set! res (cons (integer->char ch) res))))
+    (list->string (reverse res))))
+;;
+(define
+  (XATS2CM_strn_make1_env$fwork env fwork)
+  (let ((res '()))
+    (fwork env
+	   (lambda (ch)
+	     (set! res (cons (integer->char ch) res))))
+    (list->string (reverse res))))
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.
