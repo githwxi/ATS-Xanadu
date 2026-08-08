@@ -2144,8 +2144,10 @@ end//let
 //
 in//let
 //
-strnfpr
-(filr,"function () {\n");
+(
+nindfpr(filr, nind+1);
+strnfpr(filr,"(letrec\n");
+nindstrnfpr(filr, nind+1, "(\n"));
 //
 (
 envx2js_incnind(env0,2(*++*));
@@ -2157,10 +2159,10 @@ val () =
 i1fundclist_cm1emit(i1fs, env0)});
 //
 nindstrnfpr
-(filr, nind+2, "return ");
-d2c2vfpr(filr, dcst, d2cs, i1fs);fprintln(filr);
+(filr, nind+2, ") ");d2c2vfpr(filr, dcst, d2cs, i1fs);fprintln(filr);
+//
 nindstrnfpr
-(filr, nind+0, "} () // endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")")
+(filr, nind+1, ") ;; endtimp(");d2cst_fprint(dcst, filr);fprintln(filr)
 //
 end//let
 //
