@@ -6,13 +6,14 @@ Sat Apr  5 02:21:27 PM EDT 2025
 ##################################################################
 Bootstrapping for ATS3 can be demonstrated as follows:
 ##################################################################
-Makefile_xjsemit uses a boostrapped [xats2js_jsemit00_dats_out.js]
-to generate [libxatsopt_libxats2js] from the source and then uses it
-to generate [xats2js_jsemit00_dats_out.js]
+Makefile_xpyemit uses a boostrapped [xats2py_pyemit00_dats_out.py]
+to generate [libxatsopt_libxats2py] from the source and then uses it
+to generate [xats2py_pyemit00_dats_out.py]
 ##################################################################
 Makefile_testall then uses the freshly generated
-[xats2js_jsemit00_dats_out.js] to generate [libxatsopt_libxats2js]
+[xats2py_pyemit00_dats_out.py] to generate [libxatsopt_libxats2py]
 from the source and then uses it to generate an identical copy of
-[xats2js_jsemit00_dats_out.js], demonstrating boostrapping for ATS3.
+[xats2py_pyemit00_dats_out.py], demonstrating boostrapping for ATS3
+(via Python).
 ##################################################################
 ##################################################################
