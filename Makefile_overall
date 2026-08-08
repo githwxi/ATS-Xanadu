@@ -55,6 +55,7 @@ all:: srcgen2_xjsemit_xats2py_pyemit01_opt1
 ##################################################################
 #
 testall:: prelude_TEST_CATS_JS
+testall:: prelude_TEST_CATS_CM
 testall:: prelude_TEST_CATS_PY
 #
 ##################################################################
