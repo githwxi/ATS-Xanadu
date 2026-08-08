@@ -1,0 +1,19 @@
+##################################################################
+##################################################################
+(*
+Sat Aug  8 04:16:34 PM EDT 2026
+*)
+##################################################################
+Bootstrapping for ATS3 can be demonstrated as follows:
+##################################################################
+Makefile_xcmemit uses a boostrapped [xats2cm_cmemit00_dats_out.cm]
+to generate [libxatsopt_libxats2cm] from the source and then uses it
+to generate [xats2cm_cmemit00_dats_out.cm]
+##################################################################
+Makefile_testall then uses the freshly generated
+[xats2cm_cmemit00_dats_out.cm] to generate [libxatsopt_libxats2cm]
+from the source and then uses it to generate an identical cocm of
+[xats2cm_cmemit00_dats_out.cm], demonstrating boostrapping for ATS3
+(via Scheme).
+##################################################################
+##################################################################

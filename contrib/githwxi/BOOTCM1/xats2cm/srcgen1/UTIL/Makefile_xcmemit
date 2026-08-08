@@ -1,0 +1,72 @@
+########################################################################
+########################################################################
+# Makefile for bootstrapping
+########################################################################
+########################################################################
+CAT=cat
+SED=sed
+ECHO=echo
+NODE=node
+########################################################################
+BOOTCM1=./../../..
+########################################################################
+SRCGEN1=./../../../../../../srcgen1
+SRCGEN2=./../../../../../../srcgen2
+XATS2CM=./../../../../../../srcgen2/xats2cm
+########################################################################
+S2XSHRD=\
+$(SRCGEN2)/xats2cm/srcgenx/xshared/runtime
+########################################################################
+########################################################################
+#
+all:: \
+xats2cm_cmemit00
+xats2cm_cmemit00: ; \
+printf ";; %s\n" "`date`" > $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/xats2cm_cm1emit.cm >> $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_xatslib.cm >> $@_ats3.cm && \
+$(SED) -E 's/cmx(...)tnm/cm1\1tnm/g' \
+$(BOOTCM1)/lib/lib2xatsopt.cm | $(CAT) - >> $@_ats3.cm && \
+$(SED) -E 's/cmx(...)tnm/cm2\1tnm/g' \
+$(BOOTCM1)/xats2js/srcgen1/lib/lib2xats2js.cm | $(CAT) - >> $@_ats3.cm && \
+$(SED) -E 's/cmx(...)tnm/cm3\1tnm/g' \
+$(BOOTCM1)/xats2cm/srcgen1/lib/lib2xats2cm.cm | $(CAT) - >> $@_ats3.cm && \
+$(NODE) --stack-size=8800 \
+$(XATS2CM_CMEMIT00) $(SRCGEN2)/xats2cm/srcgen1/UTIL/xats2cm_cmemit00.dats >> $@_ats3.cm
+#
+all:: \
+xats2cm_cmemit01
+xats2cm_cmemit01: ; \
+printf ";; %s\n" "`date`" > $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/xats2cm_cm1emit.cm >> $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
+$(CAT) \
+$(S2XSHRD)/srcgen1_xatslib.cm >> $@_ats3.cm && \
+$(SED) -E 's/cmx(...)tnm/cm1\1tnm/g' \
+$(BOOTCM1)/lib/lib2xatsopt.cm | $(CAT) - >> $@_ats3.cm && \
+$(SED) -E 's/cmx(...)tnm/cm2\1tnm/g' \
+$(BOOTCM1)/xats2js/srcgen1/lib/lib2xats2js.cm | $(CAT) - >> $@_ats3.cm && \
+$(SED) -E 's/cmx(...)tnm/cm3\1tnm/g' \
+$(BOOTCM1)/xats2cm/srcgen1/lib/lib2xats2cm.cm | $(CAT) - >> $@_ats3.cm && \
+$(NODE) --stack-size=8800 \
+$(XATS2CM_CMEMIT00) $(SRCGEN2)/xats2cm/srcgen1/UTIL/xats2cm_cmemit01.dats >> $@_ats3.cm
+#
+########################################################################
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+########################################################################
+cleanall:: ; rm -f xats2cm_cmemit00_ats3.cm
+cleanall:: ; rm -f xats2cm_cmemit01_ats3.cm
+########################################################################
+########################################################################
+XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats3.js
+XATS2CM_CMEMIT00=$(XATS2CM)/srcgen1/UTIL/xats2cm_cmemit00_ats3.js
+########################################################################
+########################################################################
