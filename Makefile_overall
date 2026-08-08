@@ -41,6 +41,7 @@ all:: srcgen2_xjsemit_xats2py_pyemit00
 all:: srcgen2_xjsemit_xats2py_pyemit01
 #
 all:: contrib_githwxi_BOOTJS1_lib2xatsopt
+all:: contrib_githwxi_BOOTCM1_lib2xatsopt
 all:: contrib_githwxi_BOOTPY1_lib2xatsopt
 #
 all:: srcgen2_xjsemit_xatsopt_tcheck00_opt1
@@ -101,6 +102,13 @@ cleanall:: ; \
 make -C contrib/githwxi/BOOTJS1 -f Makefile_xjsemit cleanall
 cleanall:: ; \
 make -C contrib/githwxi/BOOTJS1/xats2js/srcgen1 -f Makefile_xjsemit cleanall
+#
+cleanall:: ; \
+make -C contrib/githwxi/BOOTCM1 -f Makefile_xcmemit cleanall
+cleanall:: ; \
+make -C contrib/githwxi/BOOTCM1/xats2js/srcgen1 -f Makefile_xcmemit cleanall
+cleanall:: ; \
+make -C contrib/githwxi/BOOTCM1/xats2cm/srcgen1 -f Makefile_xcmemit cleanall
 #
 cleanall:: ; \
 make -C contrib/githwxi/BOOTPY1 -f Makefile_xpyemit cleanall
