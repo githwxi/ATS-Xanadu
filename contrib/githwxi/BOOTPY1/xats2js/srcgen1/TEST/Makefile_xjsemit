@@ -3,7 +3,6 @@
 CAT=cat
 SED=sed
 ########################################################################
-NODE=node
 PYTHON=python3
 ########################################################################
 #
@@ -234,6 +233,7 @@ S1XSHRD=$(SRCGEN1)/xats2js/srcgenx/xshared/runtime
 S2XSHRD=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
 ########################################################################
+#
 # HX-2025-03-29:
 # bootstrapped verison
 XATS2JS_JSEMIT00=./../UTIL/xats2js_jsemit00_ats3.py
