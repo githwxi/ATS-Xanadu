@@ -257,8 +257,6 @@ XATS2PY_PYEMIT00=./../UTIL/xats2py_pyemit00_ats3.py
 # The [S1XSHRD] is used here as
 # the code in [srcgen1/prelude] requires it.
 #
-all:: \
-xats2py_pyemit00
 xats2py_pyemit00: ; \
 printf "\
 ## %s\n%s\n%s\n%s\n%s\n" \
