@@ -13,21 +13,19 @@ NODE=node
 all:: lib2xats2js
 ########################################################################
 ########################################################################
-clean:: ; rm -f *~
-########################################################################
-cleanall:: ; rm -f *~
-cleanall:: ; rm -f BUILD/*_sats_out0.py
-cleanall:: ; rm -f BUILD/*_dats_out?.py
-cleanall:: ; rm -f TEST/OUTS/*_dats_out?.py
-cleanall:: ; rm -f lib/lib2xats2js.py
-cleanall:: ; rm -f UTIL/xats2js_jsemit0?_ats3.py
-cleanall:: ; rm -f TEST/xats2js_jsemit0?_ats3.py
-cleanall:: ; rm -f TEST/xats2js_jsemit0?_test.py
-########################################################################
-########################################################################
 SRCGEN2=./../../../../../srcgen2
 XATS2JS=./../../../../../srcgen2/xats2js
 XATS2PY=./../../../../../srcgen2/xats2py
+########################################################################
+########################################################################
+clean:: ; rm -f *~
+########################################################################
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f lib/lib2xats2js.js
+cleanall:: ; rm -f BUILD/*_sats_out0.js
+cleanall:: ; rm -f BUILD/*_dats_out?.js
+cleanall:: ; $(MAKE) -C TEST -f Makefile_xjsemit cleanall
+########################################################################
 ########################################################################
 #
 SRCSATS := \
@@ -95,8 +93,6 @@ BUILD/%_dats_out0.py: \
 $(XATS2JS)/srcgen1/DATS/%.dats; \
 $(NODE) --stack-size=8800 $(XATS2PY_PYEMIT00) $< > $@
 ########################################################################
-########################################################################
-SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
 XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats3.js
 XATS2PY_PYEMIT00=$(XATS2PY)/srcgen1/UTIL/xats2py_pyemit00_ats3.js
