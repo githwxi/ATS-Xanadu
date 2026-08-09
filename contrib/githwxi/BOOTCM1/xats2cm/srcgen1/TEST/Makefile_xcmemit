@@ -233,15 +233,15 @@ cleanall:: ; rm -f xats2cm_cmemit01_ats3.cm
 #
 OUTS/%_dats_out0.cm: \
 $(SRCGEN2)/DATS/%.dats; \
-$(CMTHON) $(XATS2CM_CMEMIT00) __void__ $< > $@
+$(SCHEME) --script $(XATS2CM_CMEMIT00) __void__ $< > $@
 #
 OUTS/%_dats_out0.cm: \
 $(SRCGEN2)/xats2js/srcgen1/DATS/%.dats; \
-$(CMTHON) $(XATS2CM_CMEMIT00) __void__ $< > $@
+$(SCHEME) --script $(XATS2CM_CMEMIT00) __void__ $< > $@
 #
 OUTS/%_dats_out0.cm: \
 $(SRCGEN2)/xats2cm/srcgen1/DATS/%.dats; \
-$(CMTHON) $(XATS2CM_CMEMIT00) __void__ $< > $@
+$(SCHEME) --script $(XATS2CM_CMEMIT00) __void__ $< > $@
 #
 ########################################################################
 ########################################################################
@@ -268,7 +268,7 @@ $(S2XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
 $(CAT) \
 $(S2XSHRD)/srcgen1_xatslib.cm >> $@_ats3.cm && \
 $(CAT) lib/lib2xatsopt2js2cm.cm >> $@_ats3.cm && \
-$(CMTHON) \
+$(SCHEME) --script \
 $(XATS2CM_CMEMIT00) __void__ \
 $(SRCGEN2)/xats2cm/srcgen1/UTIL/xats2cm_cmemit00.dats >> $@_ats3.cm
 #
@@ -283,7 +283,7 @@ $(S2XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
 $(CAT) \
 $(S2XSHRD)/srcgen1_xatslib.cm >> $@_ats3.cm && \
 $(CAT) lib/lib2xatsopt2js2cm.cm >> $@_ats3.cm && \
-$(CMTHON) \
+$(SCHEME) --script \
 $(XATS2CM_CMEMIT00) __void__ \
 $(SRCGEN2)/xats2cm/srcgen1/UTIL/xats2cm_cmemit01.dats >> $@_ats3.cm
 #
