@@ -19,8 +19,14 @@ all:: lib2xatsopt
 clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
+cleanall:: ; rm -f lib/lib2xatsopt.cm
 cleanall:: ; rm -f BUILD/CM/*_sats_out0.cm
 cleanall:: ; rm -f BUILD/CM/*_dats_out?.cm
+cleanall:: ; rm -f UTIL/xatsopt_tcheck0?_ats3.cm
+cleanall:: ; \
+$(MAKE) -C xats2js/srcgen1 -f Makefile_xcmemit cleanall
+cleanall:: ; \
+$(MAKE) -C xats2cm/srcgen1 -f Makefile_xcmemit cleanall
 ########################################################################
 ########################################################################
 

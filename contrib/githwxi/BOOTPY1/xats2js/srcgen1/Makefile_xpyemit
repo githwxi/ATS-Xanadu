@@ -24,6 +24,7 @@ cleanall:: ; rm -f *~
 cleanall:: ; rm -f lib/lib2xats2js.py
 cleanall:: ; rm -f BUILD/*_sats_out0.py
 cleanall:: ; rm -f BUILD/*_dats_out?.py
+cleanall:: ; $(MAKE) -C UTIL -f Makefile_xpyemit cleanall
 cleanall:: ; $(MAKE) -C TEST -f Makefile_xjsemit cleanall
 ########################################################################
 ########################################################################
