@@ -272,21 +272,6 @@ $(SCHEME) --script \
 $(XATS2CM_CMEMIT00) __void__ \
 $(SRCGEN2)/xats2cm/srcgen1/UTIL/xats2cm_cmemit00.dats >> $@_ats3.cm
 #
-all:: \
-xats2cm_cmemit01
-xats2cm_cmemit01: ; \
-printf ";; %s\n" "`date`" > $@_ats3.cm && \
-$(CAT) \
-$(S2XSHRD)/xats2cm_cm1emit.cm >> $@_ats3.cm && \
-$(CAT) \
-$(S2XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
-$(CAT) \
-$(S2XSHRD)/srcgen1_xatslib.cm >> $@_ats3.cm && \
-$(CAT) lib/lib2xatsopt2js2cm.cm >> $@_ats3.cm && \
-$(SCHEME) --script \
-$(XATS2CM_CMEMIT00) __void__ \
-$(SRCGEN2)/xats2cm/srcgen1/UTIL/xats2cm_cmemit01.dats >> $@_ats3.cm
-#
 ########################################################################
 ########################################################################
 N001="X"
