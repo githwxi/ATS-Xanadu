@@ -272,11 +272,13 @@ OUTS/%_dats_out0.cm; \
 $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/cmxtnm/cmx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
-# HX-2025-05-05:
+#
+# HX-2026-08-09:
 # This one should be identical to lib/lib2xatsopt2js2cm.cm
 all:: \
-lib2xatsopt2js2cm
-lib2xatsopt2js2cm: \
+OUTS_lib2xatsopt2js2cm
+OUTS_lib2xatsopt2js2cm: \
 $(OUT1DATS); $(CAT) $(OUT1DATS) > OUTS/lib2xatsopt2js2cm.cm
+#
 ########################################################################
 ########################################################################

@@ -19,9 +19,6 @@ $(SRCGEN1)/xats2js/srcgenx/xshared/runtime
 S2XSHRD=\
 $(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
-all:: xats2js_jsemit00
-all:: xats2js_jsemit01
-########################################################################
 ########################################################################
 #
 # HX-2025-03-29:
@@ -34,6 +31,8 @@ all:: xats2js_jsemit01
 # The [S1XSHRD] is used here as
 # the code in [srcgen1/prelude] requires it.
 #
+all:: \
+xats2js_jsemit00
 xats2js_jsemit00: ; \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
@@ -50,6 +49,8 @@ $(BOOTJS1)/xats2js/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_ats3.js && \
 $(NODE) --stack-size=8800 \
 $(XATS2JS_JSEMIT00) $(SRCGEN2)/xats2js/srcgen1/UTIL/xats2js_jsemit00.dats >> $@_ats3.js
 #
+all:: \
+xats2js_jsemit01
 xats2js_jsemit01: ; \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js > $@_ats3.js && \
