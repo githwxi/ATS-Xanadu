@@ -306,7 +306,9 @@ OUTS/%_dats_out0.cm; \
 $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/cmxtnm/cmx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
-lib/lib2xatsopt2js2cm.cm: \
+all:: \
+lib_lib2xatsopt2js2cm
+lib_lib2xatsopt2js2cm: \
 $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt2js2cm.cm
 ########################################################################
 ########################################################################

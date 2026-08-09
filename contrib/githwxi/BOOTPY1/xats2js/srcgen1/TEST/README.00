@@ -15,7 +15,9 @@ the source and then uses it to generate [xats2js_jsemit00_ats3.js]
 
 Makefile_testall then uses the freshly generated
 [xats2js_jsemit00_ats3.js] to generate [libxatsopt2js] again from
-the source that should be identical to the previous [libxatsopt2js]
+the source that should be identical to the previous [libxatsopt2js],
+demonstrating the following two compilers offer the same functionality:
+[xats2js_jsemit00_ats3.py] and [xats2js_jsemit00_ats3.js]
 
 ##################################################################
 ##################################################################
