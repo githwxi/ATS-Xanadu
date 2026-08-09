@@ -279,28 +279,6 @@ $(PYTHON) \
 $(XATS2PY_PYEMIT00) __void__ \
 $(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit00.dats >> $@_ats3.py
 #
-all:: \
-xats2py_pyemit01
-xats2py_pyemit01: ; \
-printf "\
-## %s\n%s\n%s\n%s\n%s\n" \
-"`date`" \
-"import os" \
-"import sys" \
-"import math" \
-"sys.setrecursionlimit(66000)" \
-> $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/xats2py_py1emit.py >> $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
-$(CAT) \
-$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
-$(CAT) lib/lib2xatsopt2js2py.py >> $@_ats3.py && \
-$(PYTHON) \
-$(XATS2PY_PYEMIT00) __void__ \
-$(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit01.dats >> $@_ats3.py
-#
 ########################################################################
 ########################################################################
 N001="X"

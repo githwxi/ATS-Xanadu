@@ -278,7 +278,7 @@ $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
 all:: \
-lib_lib2xatsopt2js: \
+lib_lib2xatsopt2js
 lib_lib2xatsopt2js: \
 $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt2js.js
 ########################################################################
