@@ -226,6 +226,7 @@ clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f OUTS/*_dats_out0.py
 cleanall:: ; rm -f OUTS/*_dats_out1.py
+cleanall:: ; rm -f OUTS/lib2xatsopt2js2py.py
 ########################################################################
 ########################################################################
 #
