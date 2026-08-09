@@ -216,6 +216,10 @@ clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f OUTS/*_dats_out0.js
+cleanall:: ; rm -f OUTS/*_dats_out1.js
+cleanall:: ; rm -f lib/lib2xatsopt2js.js
+cleanall:: ; rm -f OUTS/lib2xatsopt2js.js
+cleanall:: ; rm -f xats2js_jsemit00_ats3.js
 ########################################################################
 ########################################################################
 #
