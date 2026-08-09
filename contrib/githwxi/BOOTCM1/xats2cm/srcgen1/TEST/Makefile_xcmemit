@@ -257,8 +257,6 @@ XATS2CM_CMEMIT00=./../UTIL/xats2cm_cmemit00_ats3.cm
 # The [S1XSHRD] is used here as
 # the code in [srcgen1/prelude] requires it.
 #
-all:: \
-xats2cm_cmemit00
 xats2cm_cmemit00: ; \
 printf ";; %s\n" "`date`" > $@_ats3.cm && \
 $(CAT) \
