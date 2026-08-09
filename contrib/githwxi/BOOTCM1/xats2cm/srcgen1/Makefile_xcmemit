@@ -16,6 +16,7 @@ all:: lib2xats2cm
 clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
+cleanall:: ; rm -f lib/lib2xats2cm.cm
 cleanall:: ; rm -f BUILD/*_sats_out0.cm
 cleanall:: ; rm -f BUILD/*_dats_out?.cm
 cleanall:: ; $(MAKE) -C TEST -f Makefile_xcmemit cleanall

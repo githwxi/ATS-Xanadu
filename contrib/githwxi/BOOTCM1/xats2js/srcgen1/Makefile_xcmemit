@@ -21,9 +21,9 @@ XATS2CM=./../../../../../srcgen2/xats2cm
 clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f lib/lib2xats2js.js
-cleanall:: ; rm -f BUILD/*_sats_out0.js
-cleanall:: ; rm -f BUILD/*_dats_out?.js
+cleanall:: ; rm -f lib/lib2xats2js.cm
+cleanall:: ; rm -f BUILD/*_sats_out0.cm
+cleanall:: ; rm -f BUILD/*_dats_out?.cm
 cleanall:: ; $(MAKE) -C TEST -f Makefile_xjsemit cleanall
 ########################################################################
 ########################################################################
