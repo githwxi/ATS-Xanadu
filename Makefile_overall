@@ -60,9 +60,21 @@ testall:: prelude_TEST_CATS_PY
 bootall:: \
 contrib_githwxi_BOOTJS1_lib2xatsopt
 bootall:: \
+contrib_githwxi_BOOTJS1_lib2xats2js
+#
+bootall:: \
 contrib_githwxi_BOOTCM1_lib2xatsopt
 bootall:: \
+contrib_githwxi_BOOTCM1_lib2xats2js
+bootall:: \
+contrib_githwxi_BOOTCM1_lib2xats2cm
+#
+bootall:: \
 contrib_githwxi_BOOTPY1_lib2xatsopt
+bootall:: \
+contrib_githwxi_BOOTPY1_lib2xats2js
+bootall:: \
+contrib_githwxi_BOOTPY1_lib2xats2py
 #
 ########################################################################
 #
