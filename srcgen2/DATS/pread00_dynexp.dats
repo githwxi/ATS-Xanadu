@@ -122,8 +122,7 @@ fun
 d0pat_errvl_a2
 (de1: d0pat
 ,de2: d0pat): sint =
-maxs
-(errvl(de1),errvl(de2))
+maxs(errvl(de1), errvl(de2))
 //
 #symload
 d0pat_errvl with d0pat_errvl_a2
@@ -143,11 +142,9 @@ d0pat_errvl with d0pat_errvl_d0ps
 d0pat_errvl_d0ps(d0ps) =
 (
 case+ d0ps of
-|
-list_nil
+|list_nil
 ((*nil*)) => 0
-|
-list_cons
+|list_cons
 (d0p1,d0ps) =>
 maxs(errvl(d0p1), errvl(d0ps)))
 //
@@ -291,7 +288,7 @@ d0pat_lpar_errck
 : d0pat_RPAREN): d0pat =
 let
 val lvl =
-maxs(errvl(d0ps),errvl(drp0))
+maxs(errvl(d0ps), errvl(drp0))
 in//let
 d0pat_errck
 ( lvl+1
@@ -315,7 +312,7 @@ d0pat_tup1_errck
 let
 val lvl =
 (
-  maxs(errvl(d0ps),errvl(tend)))
+maxs(errvl(d0ps), errvl(tend)))
 in//let
 d0pat_errck
 (lvl+1,
@@ -340,7 +337,7 @@ d0pat_rcd2_errck
 let
 val lvl =
 (
-  maxs(errvl(ldps),errvl(tend)))
+maxs(errvl(ldps), errvl(tend)))
 in//let
 d0pat_errck
 (lvl+1,
@@ -393,8 +390,8 @@ fun
 d0exp_errvl_a2
 (de1: d0exp
 ,de2: d0exp): sint =
-maxs
-(errvl(de1),errvl(de2))
+(
+maxs(errvl(de1), errvl(de2)))
 //
 #symload
 d0exp_errvl with d0exp_errvl_a2
@@ -408,8 +405,8 @@ d0exp_errvl_a3
 ,de2: d0exp
 ,de3: d0exp): sint =
 maxs
-(errvl(de1)
-,errvl(de2),errvl(de3))
+( errvl(de1)
+, errvl(de2), errvl(de3))
 //
 #symload
 d0exp_errvl with d0exp_errvl_a3
@@ -434,7 +431,7 @@ list_nil((*nil*)) => 0
 |
 list_cons(d0e1,d0es) =>
 (
-  maxs(errvl(d0e1), errvl(d0es)))
+maxs(errvl(d0e1), errvl(d0es)))
 ) (*case+*)//end-of-[d0exp_errvl_d0es]
 //
 (* ****** ****** *)
@@ -742,7 +739,7 @@ d0exp_lpar_errck
 let
 val lvl =
 (
-  maxs(errvl(des),errvl(drp)))
+maxs(errvl(des), errvl(drp)))
 in//let
 d0exp_errck
 (lvl+1, d0exp(loc,D0Elpar(tkb,des,drp)))
@@ -761,8 +758,8 @@ let
 val lvl =
 (
 maxs
-(errvl(d0e1)
-,errvl(dthn),errvl(dels)))
+( errvl(d0e1)
+, errvl(dthn), errvl(dels)))
 in//let
 d0exp_errck
 ( lvl+1
@@ -784,8 +781,8 @@ let
 val lvl =
 (
 maxs
-(errvl(d0e1)
-,errvl(dthn),errvl(dels)))
+( errvl(d0e1)
+, errvl(dthn), errvl(dels)))
 in//let
 d0exp_errck
 ( lvl+1
@@ -813,8 +810,7 @@ d0exp_cas0_errck
 let
 val lvl =
 (
-maxs
-(errvl(d0e1),errvl(dcls)))
+maxs(errvl(d0e1), errvl(dcls)))
 in//let
 d0exp_errck
 ( lvl+1
@@ -843,8 +839,7 @@ d0exp_cas1_errck
 let
 val lvl =
 (
-maxs
-(errvl(d0e1),errvl(dcls)))
+maxs(errvl(d0e1), errvl(dcls)))
 in//let
 d0exp_errck
 ( lvl+1
@@ -871,7 +866,7 @@ d0exp_tup1_errck
 let
 val lvl =
 (
-  maxs(errvl(d0es),errvl(tend)))
+maxs(errvl(d0es), errvl(tend)))
 in//let
 d0exp_errck
 (lvl+1,
@@ -896,7 +891,7 @@ d0exp_rcd2_errck
 let
 val lvl =
 (
-  maxs(errvl(ldes),errvl(tend)))
+maxs(errvl(ldes), errvl(tend)))
 in//let
 d0exp_errck
 (lvl+1,
@@ -922,7 +917,7 @@ d0exp_let0_errck
 let
 val lvl =
 (
-  maxs(errvl(dcls),errvl(d0es)))
+maxs(errvl(dcls), errvl(d0es)))
 in//let
 d0exp_errck
 (lvl+1,
@@ -949,7 +944,7 @@ case+ dcls of
 |
 d0eclseq_WHERE
 (tbeg,topt,d0cs,tend) =>
-maxs(errvl(d0e1),errvl(d0cs)))
+maxs(errvl(d0e1), errvl(d0cs)))
 //
 in//let
 d0exp_errck
@@ -1002,7 +997,7 @@ d0exp_try0_errck
 let
 val lvl =
 (
-  maxs(errvl(d0es),errvl(dcls)))
+maxs(errvl(d0es), errvl(dcls)))
 in//let
 d0exp_errck
 ( lvl+1,

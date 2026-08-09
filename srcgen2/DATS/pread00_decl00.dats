@@ -138,12 +138,11 @@ d0ecl_errvl with d0ecl_errvl_dcls
 d0ecl_errvl_dcls(dcls) =
 (
 case+ dcls of
-|
-list_nil
+|list_nil
 ((*nil*)) => 0(*lvl*)
-|
-list_cons
-(dcl1,dcls) => max(errvl(dcl1),errvl(dcls)))
+|list_cons
+(dcl1,dcls) =>
+maxs(errvl(dcl1), errvl(dcls)))
 //
 (* ****** ****** *)
 
