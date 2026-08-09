@@ -14,18 +14,15 @@ all:: lib2xats2cm
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
+########################################################################
 cleanall:: ; rm -f *~
+cleanall:: ; rm -f BUILD/*_sats_out0.cm
+cleanall:: ; rm -f BUILD/*_dats_out?.cm
+cleanall:: ; rm -f TEST/OUTS/*_dats_out?.cm
 cleanall:: ; rm -f lib/lib2xats2cm.cm
 cleanall:: ; rm -f UTIL/xats2cm_cmemit0?_ats3.cm
 cleanall:: ; rm -f TEST/xats2cm_cmemit0?_ats3.cm
 cleanall:: ; rm -f TEST/xats2cm_cmemit0?_test.cm
-########################################################################
-cleanall:: ; \
-rm -f BUILD/*_sats_out0.cm
-cleanall:: ; \
-rm -f BUILD/*_dats_out?.cm
-cleanall:: ; \
-rm -f TEST/OUTS/*_dats_out?.cm
 ########################################################################
 ########################################################################
 SRCGEN2=./../../../../../srcgen2
@@ -79,7 +76,7 @@ $(NODE) --stack-size=8800 $(XATS2CM_CMEMIT00) $< > $@
 ########################################################################
 SRCGEN2_XSHARED=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
-XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_dats.js
+XATSOPT_TCHECK00=$(SRCGEN2)/UTIL/xatsopt_tcheck00_ats3.js
 XATS2CM_CMEMIT00=$(XATS2CM)/srcgen1/UTIL/xats2cm_cmemit00_ats3.js
 ########################################################################
 ########################################################################
@@ -98,7 +95,7 @@ NFILE=$(N064) $(N032) $(N004) # 100=064+032+004
 BUILD/%_dats_out1.cm: \
 BUILD/%_dats_out0.cm; \
 $(eval NFILE=$(NFILE) X) \
-$(SED) -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' $< > $@
+$(SED) -e 's/cmxtnm/cmx$(words $(NFILE))tnm/g' $< > $@
 ##################################################################
 lib2xats2cm: $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xats2cm.cm
 ########################################################################

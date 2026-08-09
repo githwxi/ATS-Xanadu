@@ -14,18 +14,15 @@ all:: lib2xats2js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
+########################################################################
 cleanall:: ; rm -f *~
+cleanall:: ; rm -f BUILD/*_sats_out0.cm
+cleanall:: ; rm -f BUILD/*_dats_out?.cm
+cleanall:: ; rm -f TEST/OUTS/*_dats_out?.cm
 cleanall:: ; rm -f lib/lib2xats2js.cm
 cleanall:: ; rm -f UTIL/xats2js_jsemit0?_ats3.cm
 cleanall:: ; rm -f TEST/xats2js_jsemit0?_ats3.cm
 cleanall:: ; rm -f TEST/xats2js_jsemit0?_test.cm
-########################################################################
-cleanall:: ; \
-rm -f BUILD/*_sats_out0.js
-cleanall:: ; \
-rm -f BUILD/*_dats_out?.js
-cleanall:: ; \
-rm -f TEST/OUTS/*_dats_out?.js
 ########################################################################
 ########################################################################
 SRCGEN2=./../../../../../srcgen2
@@ -71,7 +68,7 @@ js1emit_decl00.dats \
 #
 ########################################################################
 ########################################################################
-OUTSATS := \
+OUT0SATS := \
 $(patsubst %.sats, \
   BUILD/%_sats_out0.cm, $(SRCSATS))
 OUT0DATS := \
@@ -84,7 +81,7 @@ $(patsubst %.dats, \
 ########################################################################
 boot:: \
 boot_sats
-boot_sats:: $(OUTSATS)
+boot_sats:: $(OUT0SATS)
 ########################################################################
 boot:: \
 boot_dats
