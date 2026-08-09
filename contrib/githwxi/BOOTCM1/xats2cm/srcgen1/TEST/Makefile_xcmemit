@@ -3,7 +3,7 @@
 CAT=cat
 SED=sed
 ########################################################################
-PYTHON=python3
+SCHEME=scheme
 ########################################################################
 #
 SRCDATS := \
@@ -198,13 +198,13 @@ js1emit_dynexp.dats \
 js1emit_decl00.dats \
 #
 SRCDATS += \
-xats2py.dats \
-xats2py_dynexp.dats \
-xats2py_decl00.dats \
-py1emit.dats \
-py1emit_utils0.dats \
-py1emit_dynexp.dats \
-py1emit_decl00.dats \
+xats2cm.dats \
+xats2cm_dynexp.dats \
+xats2cm_decl00.dats \
+cm1emit.dats \
+cm1emit_utils0.dats \
+cm1emit_dynexp.dats \
+cm1emit_decl00.dats \
 #
 ########################################################################
 SRCGEN1=./../../../../../../srcgen1
@@ -212,10 +212,10 @@ SRCGEN2=./../../../../../../srcgen2
 ########################################################################
 OUT0DATS := \
 $(patsubst %.dats, \
-  OUTS/%_dats_out0.py, $(SRCDATS))
+  OUTS/%_dats_out0.cm, $(SRCDATS))
 OUT1DATS := \
 $(patsubst %.dats, \
-  OUTS/%_dats_out1.py, $(SRCDATS))
+  OUTS/%_dats_out1.cm, $(SRCDATS))
 ########################################################################
 ########################################################################
 all:: all_dats
@@ -224,32 +224,32 @@ all_dats:: $(OUT0DATS)
 clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f OUTS/*_dats_out0.py
-cleanall:: ; rm -f OUTS/*_dats_out1.py
-cleanall:: ; rm -f xats2py_pyemit00_ats3.py
-cleanall:: ; rm -f xats2py_pyemit01_ats3.py
+cleanall:: ; rm -f OUTS/*_dats_out0.cm
+cleanall:: ; rm -f OUTS/*_dats_out1.cm
+cleanall:: ; rm -f xats2cm_cmemit00_ats3.cm
+cleanall:: ; rm -f xats2cm_cmemit01_ats3.cm
 ########################################################################
 ########################################################################
 #
-OUTS/%_dats_out0.py: \
+OUTS/%_dats_out0.cm: \
 $(SRCGEN2)/DATS/%.dats; \
-$(PYTHON) $(XATS2PY_PYEMIT00) __void__ $< > $@
+$(CMTHON) $(XATS2CM_CMEMIT00) __void__ $< > $@
 #
-OUTS/%_dats_out0.py: \
+OUTS/%_dats_out0.cm: \
 $(SRCGEN2)/xats2js/srcgen1/DATS/%.dats; \
-$(PYTHON) $(XATS2PY_PYEMIT00) __void__ $< > $@
+$(CMTHON) $(XATS2CM_CMEMIT00) __void__ $< > $@
 #
-OUTS/%_dats_out0.py: \
-$(SRCGEN2)/xats2py/srcgen1/DATS/%.dats; \
-$(PYTHON) $(XATS2PY_PYEMIT00) __void__ $< > $@
+OUTS/%_dats_out0.cm: \
+$(SRCGEN2)/xats2cm/srcgen1/DATS/%.dats; \
+$(CMTHON) $(XATS2CM_CMEMIT00) __void__ $< > $@
 #
 ########################################################################
 ########################################################################
 S2XSHRD=\
-$(SRCGEN2)/xats2py/srcgenx/xshared/runtime
+$(SRCGEN2)/xats2cm/srcgenx/xshared/runtime
 ########################################################################
 ########################################################################
-XATS2PY_PYEMIT00=./../UTIL/xats2py_pyemit00_ats3.py
+XATS2CM_CMEMIT00=./../UTIL/xats2cm_cmemit00_ats3.cm
 ########################################################################
 ########################################################################
 #
@@ -258,48 +258,34 @@ XATS2PY_PYEMIT00=./../UTIL/xats2py_pyemit00_ats3.py
 # the code in [srcgen1/prelude] requires it.
 #
 all:: \
-xats2py_pyemit00
-xats2py_pyemit00: ; \
-printf "\
-## %s\n%s\n%s\n%s\n%s\n" \
-"`date`" \
-"import os" \
-"import sys" \
-"import math" \
-"sys.setrecursionlimit(66000)" \
-> $@_ats3.py && \
+xats2cm_cmemit00
+xats2cm_cmemit00: ; \
+printf ";; %s\n" "`date`" > $@_ats3.cm && \
 $(CAT) \
-$(S2XSHRD)/xats2py_py1emit.py >> $@_ats3.py && \
+$(S2XSHRD)/xats2cm_cm1emit.cm >> $@_ats3.cm && \
 $(CAT) \
-$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
+$(S2XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
 $(CAT) \
-$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
-$(CAT) lib/lib2xatsopt2js2py.py >> $@_ats3.py && \
-$(PYTHON) \
-$(XATS2PY_PYEMIT00) __void__ \
-$(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit00.dats >> $@_ats3.py
+$(S2XSHRD)/srcgen1_xatslib.cm >> $@_ats3.cm && \
+$(CAT) lib/lib2xatsopt2js2cm.cm >> $@_ats3.cm && \
+$(CMTHON) \
+$(XATS2CM_CMEMIT00) __void__ \
+$(SRCGEN2)/xats2cm/srcgen1/UTIL/xats2cm_cmemit00.dats >> $@_ats3.cm
 #
 all:: \
-xats2py_pyemit01
-xats2py_pyemit01: ; \
-printf "\
-## %s\n%s\n%s\n%s\n%s\n" \
-"`date`" \
-"import os" \
-"import sys" \
-"import math" \
-"sys.setrecursionlimit(66000)" \
-> $@_ats3.py && \
+xats2cm_cmemit01
+xats2cm_cmemit01: ; \
+printf ";; %s\n" "`date`" > $@_ats3.cm && \
 $(CAT) \
-$(S2XSHRD)/xats2py_py1emit.py >> $@_ats3.py && \
+$(S2XSHRD)/xats2cm_cm1emit.cm >> $@_ats3.cm && \
 $(CAT) \
-$(S2XSHRD)/srcgen1_prelude.py >> $@_ats3.py && \
+$(S2XSHRD)/srcgen1_prelude.cm >> $@_ats3.cm && \
 $(CAT) \
-$(S2XSHRD)/srcgen1_xatslib.py >> $@_ats3.py && \
-$(CAT) lib/lib2xatsopt2js2py.py >> $@_ats3.py && \
-$(PYTHON) \
-$(XATS2PY_PYEMIT00) __void__ \
-$(SRCGEN2)/xats2py/srcgen1/UTIL/xats2py_pyemit01.dats >> $@_ats3.py
+$(S2XSHRD)/srcgen1_xatslib.cm >> $@_ats3.cm && \
+$(CAT) lib/lib2xatsopt2js2cm.cm >> $@_ats3.cm && \
+$(CMTHON) \
+$(XATS2CM_CMEMIT00) __void__ \
+$(SRCGEN2)/xats2cm/srcgen1/UTIL/xats2cm_cmemit01.dats >> $@_ats3.cm
 #
 ########################################################################
 ########################################################################
@@ -315,12 +301,12 @@ N256=$(N128) $(N128)
 N512=$(N256) $(N256)
 NFILE=$(N064) $(N032) $(N004) # 100=064+032+004
 ########################################################################
-OUTS/%_dats_out1.py: \
-OUTS/%_dats_out0.py; \
+OUTS/%_dats_out1.cm: \
+OUTS/%_dats_out0.cm; \
 $(eval NFILE=$(NFILE) X) \
-$(SED) -e 's/pyxtnm/pyx$(words $(NFILE))tnm/g' $< > $@
+$(SED) -e 's/cmxtnm/cmx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
-lib/lib2xatsopt2js2py.py: \
-$(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt2js2py.py
+lib/lib2xatsopt2js2cm.cm: \
+$(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt2js2cm.cm
 ########################################################################
 ########################################################################
