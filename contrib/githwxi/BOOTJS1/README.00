@@ -5,4 +5,9 @@ This project presents a way to bootstrap ATS3 that leads
 to the generation of a compiler-in-js for translating ATS3
 to JavaScript.
 ########################################################################
+Step1: compiling XATSOPT into JS code
+Step2: compiling XATS2JS into JS code
+Step4: Building xats2js_jsemit00_ats3.js
+Step5: Compiling everything with xats2js_jsemit00_ats3.js
+########################################################################
 ########################################################################

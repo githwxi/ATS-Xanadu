@@ -12,4 +12,10 @@ for translating ATS3 to Scheme. Doing so requires that
 the JS specifics in the compiler source be replaced with
 the corresponding SCM specifics.
 ########################################################################
+Step1: compiling XATSOPT into SCM code
+Step2: compiling XATS2JS into SCM code
+Step3: compiling XATS2CM into SCM code
+Step4: Building xats2cm_cmemit00_ats3.cm
+Step5: Compiling everything with xats2cm_cmemit00_ats3.cm
+########################################################################
 ########################################################################

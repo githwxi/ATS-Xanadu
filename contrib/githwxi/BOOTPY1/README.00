@@ -12,4 +12,10 @@ for translating ATS3 to Python. Doing so requires that
 the JS specifics in the compiler source be replaced with
 the corresponding PY specifics.
 ########################################################################
+Step1: compiling XATSOPT into PY code
+Step2: compiling XATS2JS into PY code
+Step3: compiling XATS2PY into PY code
+Step4: Building xats2py_pyemit00_ats3.py
+Step5: Compiling everything with xats2py_pyemit00_ats3.py
+########################################################################
 ########################################################################
