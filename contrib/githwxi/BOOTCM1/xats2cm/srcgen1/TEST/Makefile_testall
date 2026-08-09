@@ -238,15 +238,15 @@ XATS2CM_CMEMIT00=./xats2cm_cmemit00_ats3.cm
 #
 OUTS/%_dats_out0.cm: \
 $(SRCGEN2)/DATS/%.dats; \
-$(SCHEME) $(XATS2CM_CMEMIT00) __void__ $< > $@
+$(SCHEME) --script $(XATS2CM_CMEMIT00) __void__ $< > $@
 #
 OUTS/%_dats_out0.cm: \
 $(SRCGEN2)/xats2js/srcgen1/DATS/%.dats; \
-$(SCHEME) $(XATS2CM_CMEMIT00) __void__ $< > $@
+$(SCHEME) --script $(XATS2CM_CMEMIT00) __void__ $< > $@
 #
 OUTS/%_dats_out0.cm: \
 $(SRCGEN2)/xats2cm/srcgen1/DATS/%.dats; \
-$(SCHEME) $(XATS2CM_CMEMIT00) __void__ $< > $@
+$(SCHEME) --script $(XATS2CM_CMEMIT00) __void__ $< > $@
 #
 ########################################################################
 ########################################################################
