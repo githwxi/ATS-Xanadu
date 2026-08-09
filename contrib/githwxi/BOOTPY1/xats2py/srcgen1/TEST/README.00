@@ -4,16 +4,19 @@
 Sat Apr  5 02:21:27 PM EDT 2025
 *)
 ##################################################################
+##################################################################
 Bootstrapping for ATS3 can be demonstrated as follows:
 ##################################################################
-Makefile_xpyemit uses a boostrapped [xats2py_pyemit00_dats_out.py]
-to generate [libxatsopt_libxats2py] from the source and then uses it
-to generate [xats2py_pyemit00_dats_out.py]
+Makefile_xpyemit:
+This Makefile uses a boostrapped [xats2py_pyemit00_dats.py]
+(stored in ./../UTIL) to generate [lib/libxatsopt2js2py] from
+the source and then uses it to generate another version of the
+compiler [xats2py_pyemit00_dats.py].
 ##################################################################
-Makefile_testall then uses the freshly generated
-[xats2py_pyemit00_dats_out.py] to generate [libxatsopt_libxats2py]
-from the source and then uses it to generate an identical copy of
-[xats2py_pyemit00_dats_out.py], demonstrating boostrapping for ATS3
-(via Python).
+Makefile_testall:
+This Makefile uses the generated [xats2py_pyemit00_dats.py]
+(stored here) to generate [OUTS/libxatsopt2js2py] from the source
+which should be identical to [lib/libxatsopt2js2py], demonstrating
+a successful boostrapping for ATS3 (via Python3).
 ##################################################################
 ##################################################################
