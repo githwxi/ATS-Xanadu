@@ -274,15 +274,18 @@ cleanall:: ; rm -f OUTS/*_dats_out0.js
 # HX-2025-04-04:
 # *freshly* bootstrapped verison
 #
-XATS2JS_JSEMIT00=./../TEST/xats2js_jsemit00_ats3.js
+XATS2JS_JSEMIT00=./xats2js_jsemit00_ats3.js
+#
 ########################################################################
 ########################################################################
 #
 OUTS/%_dats_out0.js: \
-$(SRCGEN2)/DATS/%.dats; $(NODE) --stack-size=8800 $(XATS2JS_JSEMIT00) $< > $@
+$(SRCGEN2)/DATS/%.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT00) $< > $@
 #
 OUTS/%_dats_out0.js: \
-$(SRCGEN2)/xats2js/srcgen1/DATS/%.dats; $(NODE) --stack-size=8800 $(XATS2JS_JSEMIT00) $< > $@
+$(SRCGEN2)/xats2js/srcgen1/DATS/%.dats; \
+$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT00) $< > $@
 #
 ########################################################################
 ########################################################################
