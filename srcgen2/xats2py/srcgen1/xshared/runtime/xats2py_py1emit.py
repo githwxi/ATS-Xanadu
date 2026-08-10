@@ -46,7 +46,7 @@ def XATSCHR3(ch):
       else:
         i1 = i1 + 1
         ds = 8*ds + ord(x1)-48
-    return d1 ## ascii code of [ch]
+    return ds ## ascii code of [ch]
 ##
 def XATSFLT0(f0): return (f0)
 def XATSFLT1(f0): return (f0)
