@@ -425,14 +425,18 @@ XATS2PY_strn_vt_rforall_f1un(cs, test):
     if not(test(c0)): return False
   return True ## test passes for every c0
 ##
-def XATS2PY_strn_vt_forall0_f1un(cs, test)
+def \
+XATS2PY_strn_vt_forall0_f1un(cs, test):
   return XATS2PY_strn_vt_forall_f1un(cs, test)
-def XATS2PY_strn_vt_forall1_f1un(cs, test)
+def \
+XATS2PY_strn_vt_forall1_f1un(cs, test):
   return XATS2PY_strn_vt_forall_f1un(cs, test)
 ##
-def XATS2PY_strn_vt_rforall0_f1un(cs, test)
+def \
+XATS2PY_strn_vt_rforall0_f1un(cs, test):
   return XATS2PY_strn_vt_rforall_f1un(cs, test)
-def XATS2PY_strn_vt_rforall1_f1un(cs, test)
+def \
+XATS2PY_strn_vt_rforall1_f1un(cs, test):
   return XATS2PY_strn_vt_rforall_f1un(cs, test)
 ##
 ##################################################################.
