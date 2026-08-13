@@ -795,7 +795,7 @@ s2typ_fpprnt
 //
 (*
 val (  ) =
-prerrsln("\
+printsln("\
 d3exp_trxd3i0: d3e0 = ", d3e0)
 *)
 //
