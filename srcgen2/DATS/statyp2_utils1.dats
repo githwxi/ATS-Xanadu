@@ -88,6 +88,13 @@ s2typ_prfq(t2p0) =
 (* ****** ****** *)
 //
 #implfun
+s2typ_prgmq(t2p0) =
+(
+  sort2_prgmq(t2p0.sort()))
+//
+(* ****** ****** *)
+//
+#implfun
 s2typ_cbrfq(t2p0) =
 (
 case+
