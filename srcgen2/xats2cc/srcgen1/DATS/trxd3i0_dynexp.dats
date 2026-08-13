@@ -177,92 +177,110 @@ d3p0.node() of
 //
 (* ****** ****** *)
 //
-|D3Pany _ =>
-(
-  f0_any(d3p0, env0))
-|D3Pvar _ =>
-(
-  f0_var(d3p0, env0))
+|D3Pany _ => f0_any(d3p0, env0)
+|D3Pvar _ => f0_var(d3p0, env0)
 //
 (* ****** ****** *)
 //
-|D3Pint _ =>
-(
-  f0_int(d3p0, env0))
-|D3Pbtf _ =>
-(
-  f0_btf(d3p0, env0))
-|D3Pchr _ =>
-(
-  f0_chr(d3p0, env0))
-|D3Pflt _ =>
-(
-  f0_flt(d3p0, env0))
-|D3Pstr _ =>
-(
-  f0_str(d3p0, env0))
+|D3Pint _ => f0_int(d3p0, env0)
+|D3Pbtf _ => f0_btf(d3p0, env0)
+|D3Pchr _ => f0_chr(d3p0, env0)
+|D3Pflt _ => f0_flt(d3p0, env0)
+|D3Pstr _ => f0_str(d3p0, env0)
 //
 (* ****** ****** *)
 //
-|D3Pcon _ =>
-(
-  f0_con(d3p0, env0))
+|D3Pcon _ => f0_con(d3p0, env0)
 //
 (* ****** ****** *)
 //
-|D3Pbang _ =>
-(
-  f0_bang(d3p0, env0))
-|D3Pflat _ =>
-(
-  f0_flat(d3p0, env0))
-|D3Pfree _ =>
-(
-  f0_free(d3p0, env0))
+|D3Pbang _ => f0_bang(d3p0, env0)
+|D3Pflat _ => f0_flat(d3p0, env0)
+|D3Pfree _ => f0_free(d3p0, env0)
 //
 (* ****** ****** *)
 //
-|D3Ptapq _ =>
-(
-  f0_tapq(d3p0, env0))
+|D3Ptapq _ => f0_tapq(d3p0, env0)
 //
 (* ****** ****** *)
 //
-|D3Pdap1 _ =>
-(
-  f0_dap1(d3p0, env0))
-|D3Pdapp _ =>
-(
-  f0_dapp(d3p0, env0))
+|D3Pdap1 _ => f0_dap1(d3p0, env0)
+|D3Pdapp _ => f0_dapp(d3p0, env0)
 //
 (* ****** ****** *)
 //
-|D3Ptup0 _ =>
-(
-  f0_tup0(d3p0, env0))
-|D3Ptup1 _ =>
-(
-  f0_tup1(d3p0, env0))
+|D3Ptup0 _ => f0_tup0(d3p0, env0)
+|D3Ptup1 _ => f0_tup1(d3p0, env0)
 (*
-|D3Prcd2 _ =>
-(
-  f0_rcd2(d3p0, env0))
+|D3Prcd2 _ => f0_rcd2(d3p0, env0)
 *)
 //
 (* ****** ****** *)
 //
-|D3Pargtp _ =>
-(
-  f0_argtp(d3p0, env0))
-|D3Pannot _ =>
-(
-  f0_annot(d3p0, env0))
+|D3Pargtp _ => f0_argtp(d3p0, env0)
+|D3Pannot _ => f0_annot(d3p0, env0)
 //
 (* ****** ****** *)
 //
 end where//let//endof(d3pat_trxd3i0)
 {
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f1_d3prf
+(
+d3p0: d3pat,
+env0: !envd3i0): i0pat =
+let
+val loc0 = d3p0.lctn((*0*))
+val t2p0 = d3p0.styp((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+in//let
+(
+i0pat(
+  loc0, i0t0, I0Pdprf(d3p0)))
+end//let//endof(f1_d3prf(...))
+//
+(* ****** ****** *)
+//
+fun
+f1_npf1$d3ps
+(
+npf1: sint,
+d3ps: d3patlst,
+env0: !envd3i0): i0patlst =
+(
+if
+(npf1 <= 0)
+then
+d3patlst_trxd3i0(d3ps, env0)
+else
+(
+case+ d3ps of
+|list_nil
+( (*0*) ) => list_nil(*0*)
+|list_cons
+(d3p1, d3ps) =>
+let
+//
+val npf1 = npf1-1
+//
+val i0p1 =
+(
+  f1_d3prf(d3p1(*prf*), env0))
+//
+in//let
+list_cons(i0p1,
+f1_npf1$d3ps(npf1, d3ps, env0))
+end//let//end-of-[list_cons(...)]
+)
+)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -734,61 +752,6 @@ D3Pannot
 (* ****** ****** *)
 (* ****** ****** *)
 //
-} where//endof(d3pat_trxd3i0(d3e0,env0))
-{
-//
-fun
-f1_d3prf
-(
-d3p0: d3pat,
-env0: !envd3i0): i0pat =
-let
-val loc0 = d3p0.lctn((*0*))
-val t2p0 = d3p0.styp((*0*))
-val i0t0 =
-(
-  s2typ_trxd3i0(t2p0, env0))
-in//let
-(
-i0pat(
-  loc0, i0t0, I0Pdprf(d3p0)))
-end//let//endof(f1_d3prf(...))
-//
-(* ****** ****** *)
-//
-fun
-f1_npf1$d3ps
-(
-npf1: sint,
-d3ps: d3patlst,
-env0: !envd3i0): i0patlst =
-(
-if
-(npf1 <= 0)
-then
-d3patlst_trxd3i0(d3ps, env0)
-else
-(
-case+ d3ps of
-|list_nil
-( (*0*) ) => list_nil(*0*)
-|list_cons
-(d3p1, d3ps) =>
-let
-//
-val npf1 = npf1-1
-//
-val i0p1 =
-(
-  f1_d3prf(d3p1(*prf*), env0))
-//
-in//let
-list_cons(i0p1,
-f1_npf1$d3ps(npf1, d3ps, env0))
-end//let//end-of-[list_cons(...)]
-)
-)
-//
 }(*where*)//end-of-[d3pat_trxd3i0(d3p0,env0)]
 //
 (* ****** ****** *)
@@ -829,6 +792,7 @@ g_print
 s2typ_fpprnt
 (styp, g_print$out<>((*0*)))}
 // *)
+//
 (*
 val (  ) =
 prerrsln("\
@@ -842,191 +806,174 @@ d3e0.node() of
 //
 (* ****** ****** *)
 //
-|D3Eint _ =>
-(
-  f0_int(d3e0, env0))
-|D3Ebtf _ =>
-(
-  f0_btf(d3e0, env0))
-|D3Echr _ =>
-(
-  f0_chr(d3e0, env0))
-|D3Eflt _ =>
-(
-  f0_flt(d3e0, env0))
-|D3Estr _ =>
-(
-  f0_str(d3e0, env0))
+|D3Eint _ => f0_int(d3e0, env0)
+|D3Ebtf _ => f0_btf(d3e0, env0)
+|D3Echr _ => f0_chr(d3e0, env0)
+|D3Eflt _ => f0_flt(d3e0, env0)
+|D3Estr _ => f0_str(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Etop _ =>
-(
-  f0_top(d3e0, env0))
+|D3Etop _ => f0_top(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Evar _ =>
-(
-  f0_var(d3e0, env0))
+|D3Evar _ => f0_var(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Econ _ =>
-(
-  f0_con(d3e0, env0))
-|D3Ecst _ =>
-(
-  f0_cst(d3e0, env0))
-(* ****** ****** *)
-//
-|D3Etimp _ =>
-(
-  f0_timp(d3e0, env0))
+|D3Econ _ => f0_con(d3e0, env0)
+|D3Ecst _ => f0_cst(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Esapp _ =>
-(
-  f0_sapp(d3e0, env0))
-|D3Esapq _ =>
-(
-  f0_sapq(d3e0, env0))
+|D3Etimp _ => f0_timp(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Etapp _ =>
-(
-  f0_tapp(d3e0, env0))
-|D3Etapq _ =>
-(
-  f0_tapq(d3e0, env0))
+|D3Esapp _ => f0_sapp(d3e0, env0)
+|D3Esapq _ => f0_sapq(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Edap0 _ =>
-(
-  f0_dap0(d3e0, env0))
-|D3Edapp _ =>
-(
-  f0_dapp(d3e0, env0))
+|D3Etapp _ => f0_tapp(d3e0, env0)
+|D3Etapq _ => f0_tapq(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Epcon _ =>
-(
-  f0_pcon(d3e0, env0))
-|D3Eproj _ =>
-(
-  f0_proj(d3e0, env0))
+|D3Edap0 _ => f0_dap0(d3e0, env0)
+|D3Edapp _ => f0_dapp(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Elet0 _ =>
-(
-  f0_let0(d3e0, env0))
+|D3Epcon _ => f0_pcon(d3e0, env0)
+|D3Eproj _ => f0_proj(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Eift0 _ =>
-(
-  f0_ift0(d3e0, env0))
-//
-|D3Ecas0 _ =>
-(
-  f0_cas0(d3e0, env0))
+|D3Elet0 _ => f0_let0(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Eseqn _ =>
-(
-  f0_seqn(d3e0, env0))
+|D3Eift0 _ => f0_ift0(d3e0, env0)
+//
+|D3Ecas0 _ => f0_cas0(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Etup0 _ =>
-(
-  f0_tup0(d3e0, env0))
-|D3Etup1 _ =>
-(
-  f0_tup1(d3e0, env0))
-|D3Ercd2 _ =>
-(
-  f0_rcd2(d3e0, env0))
+|D3Eseqn _ => f0_seqn(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Elam0 _ =>
-(
-  f0_lam0(d3e0, env0))
-|D3Efix0 _ =>
-(
-  f0_fix0(d3e0, env0))
+|D3Etup0 _ => f0_tup0(d3e0, env0)
+|D3Etup1 _ => f0_tup1(d3e0, env0)
+|D3Ercd2 _ => f0_rcd2(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Eaddr _ =>
-(
-  f0_addr(d3e0, env0))
-|D3Eflat _ =>
-(
-  f0_flat(d3e0, env0))
+|D3Elam0 _ => f0_lam0(d3e0, env0)
+|D3Efix0 _ => f0_fix0(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Ewhere _ =>
-(
-  f0_where(d3e0, env0))
+|D3Eaddr _ => f0_addr(d3e0, env0)
+|D3Eflat _ => f0_flat(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Eassgn _ =>
-(
-  f0_assgn(d3e0, env0))
+|D3Ewhere _ => f0_where(d3e0, env0)
 //
 (* ****** ****** *)
 //
-|D3Et2ped _ =>
-(
-  f0_t2ped(d3e0, env0))
+|D3Eassgn _ => f0_assgn(d3e0, env0)
+//
+(* ****** ****** *)
+//
+|D3Et2ped _ => f0_t2ped(d3e0, env0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Enone0() => f0_none0(d3e0, env0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 |
-D3Eextnam _ =>
-(
-  f0_extnam(d3e0, env0))
+D3Eextnam _ => f0_extnam(d3e0, env0)
 //
 (*
 |
-D3Esynext _ =>
-(
-  f0_synext(d3e0, env0))
+D3Esynext _ => f0_synext(d3e0, env0)
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-|D3Enone0 _ =>
-(
-  i0exp_none0(d3e0.lctn()))
-//
-|D3Enone1 _ => i0exp_none1(d3e0)
-|D3Enone2 _ => i0exp_none1(d3e0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 |
-_(*otherwise*) => i0exp_none1(d3e0)
+_(*otherwise*) => f0_others(d3e0, env0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-end where//endof(d3exp_trxd3i0(...))
+end where//endof-(d3exp_trxd3i0(...))
 {
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f1_d3prf
+(
+d3e0: d3exp,
+env0: !envd3i0): i0exp =
+let
+val loc0 = d3e0.lctn((*0*))
+val t2p0 = d3e0.styp((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+in//let
+(
+i0exp(
+  loc0, i0t0, I0Edprf(d3e0)))
+end//let//endof(f1_d3prf(...))
+//
+(* ****** ****** *)
+//
+fun
+f1_npf1$d3es
+(
+npf1: sint,
+d3es: d3explst,
+env0: !envd3i0): i0explst =
+(
+if
+(npf1 <= 0)
+then
+d3explst_trxd3i0(d3es, env0)
+else
+(
+case+ d3es of
+|list_nil
+( (*0*) ) => list_nil(*0*)
+|list_cons
+(d3e1, d3es) =>
+let
+//
+val npf1 = npf1-1
+//
+val i0e1 =
+(
+  f1_d3prf(d3e1(*prf*), env0))
+//
+in//let
+list_cons(i0e1,
+f1_npf1$d3es(npf1, d3es, env0))
+end//let//end-of-[list_cons(...)]
+)
+)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -2210,6 +2157,31 @@ end(*let*)//end-of-[f0_t2ped(d3e0,env0)]
 (* ****** ****** *)
 //
 fun
+f0_none0
+(
+d3e0: d3exp,
+env0: !envd3i0): i0exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp((*0*))
+val i0t0 =
+(
+  s2typ_trxd3i0(t2p0, env0))
+//
+val-
+D3Enone0
+( (*void*) ) = d3e0.node()
+//
+in//let
+(
+i0exp(loc0, i0t0, I0Enone0((*0*))))
+end(*let*)//end-of-[f0_none0(d3e0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_extnam
 (
 d3e0: d3exp,
@@ -2235,60 +2207,25 @@ end(*let*)//end-of-[f0_extnam(d3e0,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-} where//end-of-(d3exp_trxd3i0(d3e0,env0))
-{
-//
 fun
-f1_d3prf
+f0_others
 (
 d3e0: d3exp,
 env0: !envd3i0): i0exp =
 let
-val loc0 = d3e0.lctn((*0*))
+//
+val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp((*0*))
 val i0t0 =
 (
   s2typ_trxd3i0(t2p0, env0))
+//
 in//let
-(
-i0exp(
-  loc0, i0t0, I0Edprf(d3e0)))
-end//let//endof(f1_d3prf(...))
+i0exp(loc0, i0t0, I0Enone1( d3e0 ))
+end(*let*)//end-of-[f0_others(d3e0,env0)]
 //
 (* ****** ****** *)
-//
-fun
-f1_npf1$d3es
-(
-npf1: sint,
-d3es: d3explst,
-env0: !envd3i0): i0explst =
-(
-if
-(npf1 <= 0)
-then
-d3explst_trxd3i0(d3es, env0)
-else
-(
-case+ d3es of
-|list_nil
-( (*0*) ) => list_nil(*0*)
-|list_cons
-(d3e1, d3es) =>
-let
-//
-val npf1 = npf1-1
-//
-val i0e1 =
-(
-  f1_d3prf(d3e1(*prf*), env0))
-//
-in//let
-list_cons(i0e1,
-f1_npf1$d3es(npf1, d3es, env0))
-end//let//end-of-[list_cons(...)]
-)
-)
+(* ****** ****** *)
 //
 }(*where*)//end-of-[d3exp_trxd3i0(d3e0,env0)]
 //
