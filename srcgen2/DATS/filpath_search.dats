@@ -234,8 +234,8 @@ name[n0-2] != 't'
 )
 //
 in//let
-if
-n0 <= 4
+if // if
+(n0 <= 4)
 then -1 else
 (
 if

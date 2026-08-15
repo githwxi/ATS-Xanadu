@@ -1774,13 +1774,14 @@ in//let
 //
 if // if
 (
-lte_sort2_sort2(
-  s2t0, the_sort2_view))
+lte_sort2_sort2
+( s2t0
+, the_sort2_view))
 then s2e0 else
 (
 case+
 s2e0.node() of
-|S2Eany _ => s2e0
+|S2Eany _ => ( s2e0 )
 |_(*other*) =>
 (
 s2exp_impr(s1e0.lctn(), s2e0)))

@@ -143,8 +143,17 @@ end//let
 end where
 {
 //
-val
-dpar = d3parsed_of_fildats(fpth)
+val fknd =
+fname_stadyn(fpth):sint
+val dpar =
+(
+case+ fknd of
+| 1 =>
+d3parsed_of_fildats(fpth)
+| 0 =>
+d3parsed_of_filsats(fpth)
+| _ => // HX: default
+d3parsed_of_fildats(fpth)):d3parsed
 //
 (*
 val (  ) =

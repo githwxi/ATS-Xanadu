@@ -546,6 +546,8 @@ Sat 20 Jul 2024 01:50:44 PM EDT
 |
 D2Cdatasort _ => f0_datasort(d2cl, err)
 //
+(* ****** ****** *)
+//
 |
 D2Cvaldclst _ => f0_valdclst(d2cl, err)
 |
@@ -556,10 +558,13 @@ D2Cfundclst _ => f0_fundclst(d2cl, err)
 |
 D2Cimplmnt0 _ => f0_implmnt0(d2cl, err)
 //
+(* ****** ****** *)
 |
 D2Cexcptcon _ => f0_excptcon(d2cl, err)
 |
 D2Cdatatype _ => f0_datatype(d2cl, err)
+//
+(* ****** ****** *)
 //
 |
 D2Cdynconst _ => f0_dynconst(d2cl, err)
@@ -570,8 +575,8 @@ let
 val lvl0 = 1
 in//let
 (
-err := err+1; d2ecl_errck(lvl0, d2cl))
-endlet // end of [  _(* otherwise *)  ]
+err := (err+1); d2ecl_errck(lvl0, d2cl))
+endlet // end-of-[ (*___otherwise___*) ]
 //
 ) where// end of [ case+of(d2cl.node()) ]
 {
@@ -1068,7 +1073,7 @@ end (*let*) // end of [list_cons(_,_)]
 ) (*case+*) // end of [f1_s2cstlst(...)]
 //
 (* ****** ****** *)
-
+//
 fun
 f1_sort2lst
 ( s2ts
@@ -1107,7 +1112,7 @@ case+ t2b of
 )
 //
 } (*where*) // end of [f1_sort2lst(...)]
-
+//
 in//local
 //
 fun

@@ -217,9 +217,12 @@ auxmain
 ( out: FILR
 , dcl0: d2ecl): void =
 let
+//
 #impltmp
-g_print$out<>() = out
+g_print$out<>() = (out)
+//
 in//let
+//
 case+
 dcl0.node() of
 //
@@ -260,6 +263,8 @@ val () =
 f2perr0_d2eclist(out, dcs2)
 endlet // end of [D2Clocal0(...)]
 //
+(* ****** ****** *)
+//
 |
 D2Cabssort _ => ( (*nil*) )
 |
@@ -268,18 +273,55 @@ D2Cstacst0
 |
 D2Csortdef
 (sym1, s2tx) => ( (*nil*) )
+//
+(* ****** ****** *)
+//
 |
 D2Csexpdef
-(s2c1, s2e2) => ( (*nil*) )
+(s2c1, s2e2) => let
+//
+val loc0 = dcl0.lctn() 
+val () =
+(
+f2perr0_s2exp(out, s2e2, loc0))
+//
+endlet // end-of-(D2Csexpdef(...)]
+//
+(* ****** ****** *)
+//
+|
+D2Cabstype
+(s2c1, atdf) => let
+(*
+val () =
+(
+  f2perr0_a2tdf(out, atdf))
+*)
+endlet // end-of-(D2Cabstype(...)]
+//
+(* ****** ****** *)
 //
 |
 D2Cinclude
-( knd0
-, tknd, gsrc
-, fopt, dopt) => let
+(knd0,
+tknd, gsrc,
+fopt, dopt) => let
 val () =
 f2perr0_d2eclistopt(out, dopt)
 endlet // end-of-(D2Cinclude(...))
+//
+(* ****** ****** *)
+|
+D2Cdatasort
+(d1cl, s2ts) => let
+(*
+val () =
+(
+  f2perr0_sort2lst(out, s2ts))
+*)
+endlet // end-of-(D2Cdatasort(...))
+//
+(* ****** ****** *)
 //
 |
 D2Cvaldclst
