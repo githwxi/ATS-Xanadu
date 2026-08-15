@@ -469,27 +469,29 @@ ofs(a:vt,l:cs) = offset_vt_cs(a,l)
 (* ****** ****** *)(* ****** ****** *)
 //
 #absvwtp
-cbv0_v0_vt(a: v0) <= a
+cbv0_v0_vt(a: v0)//(a)
 #absvwtp
-cbv1_v0_vt(a: v0) <= a
+cbv1_v0_vt(a: v0)//(a)
 //
 #absvwtp
 cbrf_vt_vt(a: vt) <= a
 //
-#sexpdef ~ = cbv0_v0_vt
-#sexpdef ! = cbv1_v0_vt
-#sexpdef & = cbrf_vt_vt
+#sexpdef ~ = cbv0_v0_vt(*0*)
+#sexpdef ! = cbv1_v0_vt(*0*)
+#sexpdef & = cbrf_vt_vt(*0*)
 //
+(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 //
 #abstype
-top0_vt_t0(a: vt) <= a
+top0_vt_t0(a: vt)//(?a)
 #abstype
-top1_vt_t0(a: vt) <= a
+top1_vt_t0(a: vt)//(?!a)
 //
-#sexpdef ?  = top0_vt_t0
-#sexpdef ?! = top1_vt_t0
+#sexpdef ?  = top0_vt_t0(*0*)
+#sexpdef ?! = top1_vt_t0(*0*)
 //
+(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 (*
 //

@@ -861,8 +861,12 @@ D1Cdefine _ => f0_define(env0, d1cl)
 |
 D1Cmacdef _ => f0_macdef(env0, d1cl)
 //
+(* ****** ****** *)
+//
 |
 D1Clocal0 _ => f0_local0(env0, d1cl)
+//
+(* ****** ****** *)
 //
 |
 D1Cabssort _ => f0_abssort(env0, d1cl)
@@ -875,12 +879,15 @@ D1Csortdef _ => f0_sortdef(env0, d1cl)
 |
 D1Csexpdef _ => f0_sexpdef(env0, d1cl)
 //
+(* ****** ****** *)
 |
 D1Cabstype _ => f0_abstype(env0, d1cl)
 |
 D1Cabsopen _ => f0_absopen(env0, d1cl)
 |
 D1Cabsimpl _ => f0_absimpl(env0, d1cl)
+//
+(* ****** ****** *)
 //
 |
 D1Csymload _ => f0_symload(env0, d1cl)
@@ -3512,28 +3519,52 @@ end (*let*) // end of [f0_dynconst(env0,d1cl)]
 trans12_a1tdf_stck
 (env0, atdf, tres) =
 (
+//
 case+ atdf of
-|
-A1TDFsome() =>
-A2TDFsome()
-|
-A1TDFlteq(s1e1) =>
-A2TDFlteq
-(s2exp_impr(loc0, s2e1)) where
+//
+|A1TDFsome() =>
+(
+A2TDFsome(*0*))
+//
+|A1TDFlteq(s1e1) =>
+(
+A2TDFlteq(s2e1))where
 {
-val loc0 = s1e1.lctn()
+//
+val loc0 = s1e1.lctn((*0*))
+//
+(*
+val (  ) =
+prerrsln("\
+trans12_a1tdf_stck: loc0 = ", loc0)
+val (  ) =
+prerrsln("\
+trans12_a1tdf_stck: tres = ", tres)
+val (  ) =
+prerrsln("\
+trans12_a1tdf_stck: s1e1 = ", s1e1)
+*)
+//
+val s2e1 =
+trans12_s1exp_stck(env0, s1e1, tres)
+//
+(*
+val (  ) =
+prerrsln
+("trans12_a1tdf_stck: s2e1 = ", s2e1)
+*)
+//
+}(*where*)//end-of-[A1TDFlteq(s1e1)]
+//
+|A1TDFeqeq(s1e1) =>
+(
+A2TDFeqeq(s2e1))where
+{
+val loc0 = s1e1.lctn((*0*))
 val s2e1 =
 trans12_s1exp_stck(env0, s1e1, tres)
 }
-|
-A1TDFeqeq(s1e1) =>
-A2TDFeqeq
-(s2exp_impr(loc0, s2e1)) where
-{
-val loc0 = s1e1.lctn()
-val s2e1 =
-trans12_s1exp_stck(env0, s1e1, tres)
-}
+//
 ) (*case+*)
 // end of [trans12_a1tdf_stck(env0,atdf,tres)]
 //
