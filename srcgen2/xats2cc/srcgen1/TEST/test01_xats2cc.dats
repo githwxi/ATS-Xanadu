@@ -51,14 +51,15 @@ f00(x+y+w)+(lam()=>f00(x+y+z))()
 (* ****** ****** *)
 //
 fun
-fact(n: nint): nint =
+fact1(n: nint): nint =
 (
   loop(0, 1)) where
 {
 fun
 loop
 (i: nint, r: nint): nint =
-if (i >= n)
+if//if
+(i >= n)
 then (r) else
 let
 val i1 = i+1 in loop(i1, i1*r)
@@ -79,7 +80,7 @@ fix loop
 if (i >= n)
 then (r) else
 let
-val i = suc(i) in loop(i, i*r)
+val i1 = suc(i) in loop(i1, i1*r)
 end//let
 }
 //
@@ -98,7 +99,8 @@ then n0 * fact(n0-1) else 1
 (* ****** ****** *)
 //
 #extern
-fun fact2
+fun
+fact2
 (n0: nint, r0: nint): nint
 #implfun
 fact2(n0, r0) =
