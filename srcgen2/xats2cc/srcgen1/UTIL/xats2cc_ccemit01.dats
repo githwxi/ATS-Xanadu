@@ -148,17 +148,22 @@ end where
 //
 val fknd =
 fname_stadyn(fpth):sint
+//
+(*
+val (  ) =
+(
+prerrsln("\
+mymain_work: fknd = ", fknd))
+*)
+//
 val dpar =
 (
 case+ fknd of
 | 0 => (
-prerrsln("fknd = ", fknd);
-d3parsed_of_filsats(fpth))
+d3parsed_of_filsats(fpth))//SATS
 | 1 => (
-prerrsln("fknd = ", fknd);
-d3parsed_of_fildats(fpth))
+d3parsed_of_fildats(fpth))//DATS
 | _ => ( // HX: default
-prerrsln("fknd = ", fknd);
 d3parsed_of_fildats(fpth))):d3parsed
 //
 (*

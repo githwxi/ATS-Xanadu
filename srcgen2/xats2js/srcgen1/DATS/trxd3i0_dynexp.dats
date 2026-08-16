@@ -1907,12 +1907,10 @@ trxd3i0_f3arglst
 ( env0, f3as ) =
 (
 case+ f3as of
-|
-list_nil
+|list_nil
 ( (*0*) ) =>
 list_nil((*void*))
-|
-list_cons
+|list_cons
 (f3a1, f3as) =>
 (
 case+

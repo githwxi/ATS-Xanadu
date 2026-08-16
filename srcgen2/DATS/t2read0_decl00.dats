@@ -359,6 +359,10 @@ Sat 20 Jul 2024 08:02:15 PM EDT
 //
 (* ****** ****** *)
 //
+|D2Cdatasort _ => f0_datasort(d2cl, err)
+//
+(* ****** ****** *)
+//
 |D2Cvaldclst _ => f0_valdclst(d2cl, err)
 |D2Cvardclst _ => f0_vardclst(d2cl, err)
 |D2Cfundclst _ => f0_fundclst(d2cl, err)
@@ -599,6 +603,20 @@ val-
 D2Cextcode
 ( tknd, gexp) = dcl.node() in ( dcl )
 end (*let*) // end of [f0_extcode(dcl,err)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_datasort
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val-
+D2Cdatasort
+( d1cl, s2ts) = dcl.node() in ( dcl )
+end (*let*) // end of [f0_datasort(dcl,err)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

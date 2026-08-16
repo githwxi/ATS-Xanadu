@@ -882,6 +882,13 @@ d3ecl_node =
 //
 (* ****** ****** *)
 //
+|D3Csexpdef of
+(s2cst, s2exp(*defined*))
+|D3Cabstype of
+(s2cst, a2tdf(*erasure*))
+//
+(* ****** ****** *)
+//
 |D3Cabsopen of
 (token(*ABSOPEN*), simpl)
 |D3Cabsimpl of
@@ -910,21 +917,17 @@ d3ecl_node =
 HX-2024-07-20:
 Sat 20 Jul 2024 02:17:15 PM EDT
 *)
-|
-D3Cdyninit of
-( token
-(*DYNLOAD*), g1exp(*fpath*) )
-//
-(* ****** ****** *)
+|D3Cdyninit of
+(
+token(*DYNLOAD*),g1exp(*fpath*))
 //
 (*
 HX-2024-07-20:
 Sat 20 Jul 2024 02:17:15 PM EDT
 *)
-|
-D3Cextcode of
-( token
-(*EXTCODE*), g1exp(*srcode*) )
+|D3Cextcode of
+(
+token(*EXTCODE*),g1exp(*xcode*))
 //
 (* ****** ****** *)
 //
