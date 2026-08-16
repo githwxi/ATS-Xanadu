@@ -136,6 +136,8 @@ are addressed:
 (* ****** ****** *)
 #typedef dimpl = $D2E.dimpl
 (* ****** ****** *)
+#typedef a2tdf = $D2E.a2tdf
+(* ****** ****** *)
 (* ****** ****** *)
 #staload D3E = "./\
 ../../../SATS/dynexp3.sats"
@@ -1051,10 +1053,10 @@ i0dcl_node =
 //
 (* ****** ****** *)
 //
-|I0Ddclst0 of (i0dclist)
+|I0Ddclst0 of i0dclist
 |I0Dlocal0 of
-( i0dclist(*local-head*)
-, i0dclist(*local-body*))
+(i0dclist(*local-head*)
+,i0dclist(*local-body*))
 //
 (* ****** ****** *)
 //
@@ -1065,6 +1067,11 @@ I0Dinclude of
 ,g1exp // src
 ,fpathopt
 ,i0dclistopt) // inclusion
+//
+(* ****** ****** *)
+//
+|I0Dsexpdef of (s2cst, s2exp)
+|I0Dabstype of (s2cst, a2tdf)
 //
 (* ****** ****** *)
 //
@@ -1087,14 +1094,17 @@ I0Dinclude of
 ,stamp, dimpl, fiarglst, i0exp, i0varlst)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I0Dnone0 of ((*0*))
 |I0Dnone1 of (d3ecl) |I0Dnone2 of (i0dcl)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 |I0Derrck of (int(*lvl*), i0dcl)//HX:tread-error
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

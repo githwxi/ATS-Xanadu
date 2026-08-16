@@ -1011,6 +1011,21 @@ tknd,";",gsrc,";",fopt,";","...",")"))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I0Dsexpdef
+( s2c1, sexp) =>
+(
+prints
+("I0Dsexpdef(", s2c1, ";", sexp, ")"))
+//
+|I0Dabstype
+( s2c1, atdf) =>
+(
+prints
+("I0Dabstype(", s2c1, ";", atdf, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |I0Dvaldclst
 ( tknd, dcls) =>
 (

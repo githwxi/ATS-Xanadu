@@ -788,33 +788,48 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
-|D3Cd2ecl(d2cl) =>
+|D3Cd2ecl
+(   d2cl   ) =>
 (
   prints("D3Cd2ecl(",d2cl,")"))
 //
 (* ****** ****** *)
 //
-|
-D3Cstatic(tknd,dcl1) =>
+|D3Cstatic
+(tknd, dcl1) =>
 prints("D3Cstatic(",tknd,";",dcl1,")")
-|
-D3Cextern(tknd,dcl1) =>
+|D3Cextern
+(tknd, dcl1) =>
 prints("D3Cextern(",tknd,";",dcl1,")")
 //
 (* ****** ****** *)
 //
-|
-D3Ctmpsub(svts,dcl1) =>
+|D3Ctmpsub
+(svts, dcl1) =>
 prints("D3Ctmpsub(",svts,";",dcl1,")")
 //
 (* ****** ****** *)
 //
-|D3Cdclst0(  dcls  ) =>
+|D3Cdclst0
+(   dcls   ) =>
 (
 prints("D3Cdclst0(", dcls, ")"))
-|
-D3Clocal0(head,body) =>
+//
+|D3Clocal0
+(head, body) =>
 prints("D3Clocal0(",head,";",body,")")
+//
+(* ****** ****** *)
+//
+|
+D3Csexpdef
+( s2c1 , s2e2 ) =>
+prints("D3Csexpdef(",s2c1,";",s2e2,")")
+//
+|
+D3Cabstype
+( s2c1 , atdf ) =>
+prints("D3Cabstype(",s2c1,";",atdf,")")
 //
 (* ****** ****** *)
 //

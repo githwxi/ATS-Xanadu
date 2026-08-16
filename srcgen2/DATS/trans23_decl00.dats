@@ -248,6 +248,11 @@ d3ecl_make_node
 //
 (* ****** ****** *)
 //
+|D2Csexpdef _ => f0_sexpdef(env0, d2cl)
+|D2Cabstype _ => f0_abstype(env0, d2cl)
+//
+(* ****** ****** *)
+//
 |D2Cabsopen _ => f0_absopen(env0, d2cl)
 |D2Cabsimpl _ => f0_absimpl(env0, d2cl)
 //
@@ -260,6 +265,17 @@ d3ecl_make_node
 //
 |D2Cdyninit _ => f0_dyninit(env0, d2cl)
 |D2Cextcode _ => f0_extcode(env0, d2cl)
+//
+(* ****** ****** *)
+//
+|D2Cdatasort _ =>
+d3ecl_make_node
+(d2cl.lctn(), D3Cd2ecl(d2cl))
+(*
+HX-2026-08-15:
+Don't see a need for D3Cdatasort!
+|D2Cdatasort _ => f0_datasort(env0, d2cl)
+*)
 //
 (* ****** ****** *)
 //
@@ -407,6 +423,42 @@ in//let
 end (*let*) // end-of-[f0_local0(env0,d2cl)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_sexpdef
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+val
+loc0 = d2cl.lctn()
+val-
+D2Csexpdef
+(s2c1, sexp) = d2cl.node()
+in//let
+d3ecl(loc0, D3Csexpdef(s2c1, sexp))
+end (*let*) // end-of-[f0_sexpdef(...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_abstype
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+val
+loc0 = d2cl.lctn()
+val-
+D2Cabstype
+(s2c1, atdf) = d2cl.node()
+in//let
+d3ecl(loc0, D3Cabstype(s2c1, atdf))
+end (*let*) // end-of-[f0_abstype(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_absopen
@@ -432,6 +484,8 @@ tr23env_insert$any(env0,s2c1)
 in//let
 d3ecl(loc0, D3Cabsopen(tknd, simp))
 end (*let*) // end-of-[f0_absopen(...)]
+//
+(* ****** ****** *)
 //
 fun
 f0_absimpl
@@ -471,6 +525,7 @@ d3ecl_make_node(
 loc0, D3Cabsimpl(tknd, simp, sexp)))
 end (*let*) // end-of-[f0_absimpl(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

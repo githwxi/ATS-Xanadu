@@ -311,6 +311,13 @@ D3Cextcode _ => f0_extcode(d3cl, err)
 //
 (* ****** ****** *)
 //
+(*
+|
+D3Cdatasort _ => f0_datasort(d3cl, err)
+*)
+//
+(* ****** ****** *)
+//
 |
 D3Cvaldclst _ => f0_valdclst(d3cl, err)
 |
@@ -455,9 +462,9 @@ val loc = dcl.lctn()
 //
 val-
 D3Cinclude
-( knd0
-, tknd, gsrc
-, fopt, dopt) = dcl.node()
+(knd0
+,tknd, gsrc
+,fopt, dopt) = dcl.node()
 //
 (*
 val () =
@@ -503,9 +510,9 @@ Checking for them is done elsewhere
 //
 val-
 D3Cstaload
-( knd0
-, tknd, gsrc
-, fopt, dopt) = dcl.node() in ( dcl )
+(knd0
+,tknd, gsrc
+,fopt, dopt) = dcl.node() in ( dcl )
 end (*let*) // end of [f0_staload(dcl,err)]
 //
 (* ****** ****** *)
@@ -521,14 +528,35 @@ f0_dyninit
 (dcl: d3ecl
 ,err: &sint >> _): d3ecl =
 let
-val-D3Cdyninit _ = dcl.node() in (dcl) end
+val-
+D3Cdyninit
+(tknd, gsrc) = dcl.node() in ( dcl )
+end (*let*) // end of [f0_dyninit(dcl,err)]
 //
 fun
 f0_extcode
 (dcl: d3ecl
 ,err: &sint >> _): d3ecl =
 let
-val-D3Cextcode _ = dcl.node() in (dcl) end
+val-
+D3Cextcode
+(tknd, code) = dcl.node() in ( dcl )
+end (*let*) // end of [f0_extcode(dcl,err)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+f0_datasort
+(dcl: d3ecl
+,err: &sint >> _): d3ecl =
+let
+val-
+D3Cdatasort
+(d2cl, s2ts) = dcl.node() in (dcl)
+end (*let*) // end of [f0_datasort(dcl,err)]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

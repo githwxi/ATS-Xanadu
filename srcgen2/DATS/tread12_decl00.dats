@@ -1053,6 +1053,14 @@ f1_s2cst
 let
 val s2t =
 tread12_sort2(s2c.sort(), err)
+//
+(*
+val ( ) =
+prerrsln("f1_s2cst: s2c = ", s2c)
+val ( ) =
+prerrsln("f1_s2cst: s2t = ", s2t)
+*)
+//
 end (*let*) // end of [f1_s2cst(...)]
 //
 fun
@@ -1081,13 +1089,14 @@ f1_sort2lst
 , err: &sint >> _): void =
 (
 case+ s2ts of
-|
-list_nil() => ()
-|
-list_cons(s2t1, s2ts) =>
-( f1_sort2(s2t1, err)
-; f1_sort2lst(s2ts, err) )
-) where
+|list_nil
+((*void*)) => ((*0*))
+|list_cons
+(s2t1, s2ts) =>
+(
+f1_sort2(s2t1, err);
+f1_sort2lst(s2ts, err)))
+where
 {
 //
 fun
@@ -1138,7 +1147,8 @@ in//let
 if // if
 (err=e00)
 then (dcl) else
-d2ecl_datasort_errck( loc, d1cl, s2ts )
+(
+  d2ecl_datasort_errck(loc, d1cl, s2ts))
 end (*let*) // end of [f0_datasort(dcl,err)]
 //
 end (*local*) // end of [local(f0_datasort)]
