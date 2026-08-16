@@ -49,9 +49,22 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#absvwtp envxcc1_vtbx // p0tr
+#vwtpdef envxcc1 = envxcc1_vtbx
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 i1parsed_cc1emit
 (ipar: i1parsed, filr: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+cc1emit_i1dclistopt
+(env0: !envxcc1, dopt: i1dclistopt): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
