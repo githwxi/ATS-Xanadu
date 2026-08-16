@@ -48,9 +48,77 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#absvwtp envxcc0_vtbx // p0tr
+#vwtpdef envxcc0 = envxcc0_vtbx
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 i0parsed_cc0emit
 (ipar: i0parsed, filr: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+cc0emit_i0exp(
+  iexp: i0exp, env0: !envxcc0): void
+//
+(* ****** ****** *)
+//
+fun
+cc0emit_i0dcl(
+  idcl: i0dcl, env0: !envxcc0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+cc0emit_i0explst(
+  i0es: i0explst, env0: !envxcc0): void
+//
+fun
+cc0emit_i0dclist(
+  dcls: i0dclist, env0: !envxcc0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+cc0emit_i0valdcl(
+  ival: i0valdcl, env0: !envxcc0): void
+fun
+cc0emit_i0vardcl(
+  ivar: i0vardcl, env0: !envxcc0): void
+//
+(* ****** ****** *)
+//
+fun
+cc0emit_i0fundcl(
+  ifun: i0valdcl, env0: !envxcc0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+cc0emit_i0valdclist(
+  i0vs: i0valdclist, env0: !envxcc0): void
+//
+fun
+cc0emit_i0vardclist(
+  i0vs: i0vardclist, env0: !envxcc0): void
+//
+fun
+cc0emit_i0fundclist(
+  i0fs: i0fundclist, env0: !envxcc0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+cc0emit_i0dclistopt(
+  dopt: i0dclistopt, env0: !envxcc0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
