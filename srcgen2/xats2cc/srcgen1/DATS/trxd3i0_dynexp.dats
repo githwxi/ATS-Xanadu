@@ -777,7 +777,7 @@ d3exp_trxd3i0
 (d3e0, env0) =
 let
 //
-(*
+// (*
 val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
 val (  ) =
@@ -791,7 +791,7 @@ g_print
 ( styp ) =
 s2typ_fpprnt
 (styp, g_print$out<>((*0*)))}
-*)
+// *)
 //
 (*
 val (  ) =
