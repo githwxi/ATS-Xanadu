@@ -152,6 +152,9 @@ ATS_PACKNAME
 #typedef simpl = $D2E.simpl
 #typedef dimpl = $D2E.dimpl
 (* ****** ****** *)
+#typedef a2tdf = $D2E.a2tdf
+(* ****** ****** *)
+(* ****** ****** *)
 #abstbox d3pat_tbox // p0tr
 #typedef d3pat = d3pat_tbox
 (* ****** ****** *)
