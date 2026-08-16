@@ -26,35 +26,39 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(*
-Sun Aug 16 10:22:08 AM EDT 2026
-*)
+//
+Sun Aug 16 10:35:24 AM EDT 2026
+//
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+#define
+XATSOPT "./../../.."
+*)
+(* ****** ****** *)
+//
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dpre.hats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./intrep0.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-i0parsed_cc0emit
-(ipar: i0parsed, filr: FILR): void
+#staload "./../SATS/cc0emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen1_xats2cc_srcgen1_SATS_cc0emit.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc0emit.dats] *)
 (***********************************************************************)
