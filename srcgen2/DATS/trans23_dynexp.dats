@@ -357,8 +357,10 @@ D2Pvar
 //
 val
 t2p0 = d2v0.styp((*0*))
+(*
 val
 t2p0 = s2typ_hnfiz0(t2p0)
+*)
 //
 (*
 val () =
@@ -1919,8 +1921,8 @@ val
 ttup = s2typ_hnfiz0(ttup)
 //
 in//let
-
-if
+//
+if // if
 s2typ_dataq(ttup)
 then
 let(*let*)
