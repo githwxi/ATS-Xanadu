@@ -164,18 +164,19 @@ f0_fun1(e1nv, t2p0, flag)
 //
 |
 T2Ptrcd _ =>
-f0_trcd(e1nv, t2p0, flag)
+(
+f0_trcd(e1nv, t2p0, flag))
 //
-|
-T2Ptext _ =>
-f0_text(e1nv, t2p0, flag)
+|T2Ptext _ =>
+(
+f0_text(e1nv, t2p0, flag))
 //
-|
-T2Pexi0 _ =>
-f0_exi0(e1nv, t2p0, flag)
-|
-T2Puni0 _ =>
-f0_uni0(e1nv, t2p0, flag)
+|T2Pexi0 _ =>
+(
+f0_exi0(e1nv, t2p0, flag))
+|T2Puni0 _ =>
+(
+f0_uni0(e1nv, t2p0, flag))
 //
 |_(*otherwise*) => s2typ_none1(t2p0)
 //

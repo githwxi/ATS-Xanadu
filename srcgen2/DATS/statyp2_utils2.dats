@@ -70,7 +70,7 @@ ATS_PACKNAME
 #symload sort with s2var_get_sort
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 s2typ_hnfiz0
 (   t2p0   ) =
@@ -97,9 +97,9 @@ prerrsln
 in//let
 s2typ_hnfiz0_e1nv<e1nv>(env0, t2p0)
 end (*let*) // end of [s2typ_hnfiz0(t2p0)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 s2typlst_hnfiz0
 (    t2ps    ) =
@@ -112,9 +112,9 @@ s2typlst_hnfiz0
 //
 #impltmp map$fopr<x0><y0> = s2typ_hnfiz0
 }(*where*)//end-of-[s2typlst_hnfiz0(t2ps,svts)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 s2typ_subst0
 (t2p0, svts) =
@@ -138,9 +138,9 @@ s2typ_eval$s2var
 in//let
 s2typ_subst0_e1nv<e1nv>(env0, t2p0, svts)
 end (*let*)//end-of-[s2typ_subst0(t2p0,svts)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 s2typlst_subst0
 ( t2ps , svts ) =
@@ -154,7 +154,7 @@ s2typlst_subst0
 #impltmp
 map$fopr<x0><y0>(x0) = s2typ_subst0(x0, svts)
 }(*where*)//end-of-[s2typlst_subst0(t2ps,svts)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
