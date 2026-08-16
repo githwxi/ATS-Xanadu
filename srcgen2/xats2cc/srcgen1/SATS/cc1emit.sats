@@ -43,6 +43,19 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload "./intrep0.sats"
+#staload "./intrep1.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1parsed_cc1emit
+(ipar: i1parsed, filr: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_xats2cc_srcgen1_SATS_cc1emit.sats] *)
 (***********************************************************************)
