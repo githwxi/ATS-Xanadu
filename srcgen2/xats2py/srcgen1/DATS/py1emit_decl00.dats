@@ -524,10 +524,20 @@ in//let
 //
 if
 prfq
-then prints
-("## I1Dprfdclist(",loc0,")\n")
-else prints
-("## I1Dfundclist(",loc0,")\n")
+then
+prints(
+"## I1Dprfdclist(",loc0,")\n")
+else
+(
+case+ tqas of
+|
+list_nil() =>
+prints(
+"## I1Dfundclist(",loc0,")\n")
+|
+list_cons _ =>
+prints(
+"## I1Dtfndclist(",loc0,")\n"))
 //
 end//let
 //
@@ -539,7 +549,13 @@ then
  xats2py_i1fundclist(env0, i1fs))
 else
 (
- py1emit_i1fundclist(env0, i1fs))
+case+ tqas of
+|list_nil() => // HX: functions
+(
+  py1emit_i1fundclist(env0, i1fs))
+|list_cons _ => // HX: templates
+(
+  xats2py_i1tfndclist(env0, i1fs)))
 //
 end(*let*)//end-of-[f0_fundclst(env0,dcl0)]
 //

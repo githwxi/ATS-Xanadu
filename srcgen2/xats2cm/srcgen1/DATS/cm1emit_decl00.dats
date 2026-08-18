@@ -556,7 +556,7 @@ case+ tqas of
   i1fundclist_cm1emit(i1fs, env0))
 |list_cons _ => // HX: templates
 (
-  xats2js_i1tfndclist(env0, i1fs)))
+  xats2cm_i1tfndclist(env0, i1fs)))
 //
 end(*let*)//end-of-[f0_fundclst(dcl0,env0)]
 //

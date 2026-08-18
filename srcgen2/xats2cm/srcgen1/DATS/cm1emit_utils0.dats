@@ -252,8 +252,8 @@ end(*let*)//end-of-[d2varcm1(env0,dvar)]
 i1anycm1
 ( filr ) =
 (
-prints(
-"cm0", "any", stmp)
+prints
+("_cm0_","any",stmp)
 ) where
 {
 //
