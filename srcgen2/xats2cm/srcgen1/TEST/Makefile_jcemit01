@@ -52,6 +52,7 @@ test11; $(SCHEME) --script OUTS/$<_out.cm
 XATS2CM_SRCGENX="./.."
 XATS2CM_XSHARED=$(XATS2CM_SRCGENX)/xshared/runtime
 ########################################################################
+XATS2CM_CMEMIT01="./../UTIL/xats2cm_cmemit01_ats2.js"
 XATS2CM_CMEMIT01="./../UTIL/xats2cm_cmemit01_ats3.js"
 ########################################################################
 ########################################################################

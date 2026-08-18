@@ -107,6 +107,9 @@ xats2py_i1vardcl
 fun
 xats2py_i1fundcl
 (env0: !envx2py, ifun: i1fundcl): void
+fun
+xats2py_i1tfndcl
+(env0: !envx2py, ifun: i1fundcl): void
 //
 fun
 xats2py_i1valdclist
@@ -116,6 +119,9 @@ xats2py_i1vardclist
 (env0: !envx2py, i1vs: i1vardclist): void
 fun
 xats2py_i1fundclist
+(env0: !envx2py, i1fs: i1fundclist): void
+fun
+xats2py_i1tfndclist
 (env0: !envx2py, i1fs: i1fundclist): void
 //
 (* ****** ****** *)

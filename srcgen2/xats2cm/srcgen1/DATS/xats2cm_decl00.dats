@@ -211,7 +211,7 @@ val nind =
 envx2cm_nind$get(env0)
 in//let
 (
-nindstrnfpr(filr, nind, "// I1VARDCL\n"))
+nindstrnfpr(filr, nind, ";; I1VARDCL\n"))
 end//let
 //
 }(*where*)//end-of-[xats2cm_i1vardcl(env0,ival)]
@@ -305,6 +305,29 @@ end//let
 }(*where*)//end-of-[xats2cm_i1fundcl(env0,ifun)]
 //
 (* ****** ****** *)
+//
+#implfun
+xats2cm_i1tfndcl
+  (env0, itfn) = let
+//
+val dvar =
+i1fundcl_dpid$get(itfn)
+//
+val filr =
+(
+  envx2cm_filr$get(env0))
+val nind =
+(
+  envx2cm_nind$get(env0))
+//
+in//let
+(
+nindstrnfpr
+(filr, nind, ";; I1TFNDCL: ");
+d2var_fprint(dvar, filr); fprintln(filr))
+end(*let*)//end-of-[xats2cm_i1tfndcl(env0,itfn)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -339,8 +362,16 @@ xats2cm_i1fundclist
 (
   list_xats2cm_fnp(env0, i1fs, xats2cm_i1fundcl))
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2cm_i1tfndclist
+  (env0, i1fs) =
+(
+  list_xats2cm_fnp(env0, i1fs, xats2cm_i1tfndcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cm_srcgen1_DATS_xats2cm_decl00.dats] *)

@@ -154,6 +154,12 @@ i1fundclist_cm1emit
 (
 list_cm1emit_fnp(i1fs, env0, i1fundcl_cm1emit))
 //
+#implfun
+i1tfndclist_cm1emit
+  (i1fs, env0) =
+(
+list_cm1emit_fnp(i1fs, env0, i1tfndcl_cm1emit))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

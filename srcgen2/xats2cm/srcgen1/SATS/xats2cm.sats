@@ -107,6 +107,9 @@ xats2cm_i1vardcl
 fun
 xats2cm_i1fundcl
 (env0: !envx2cm, ifun: i1fundcl): void
+fun
+xats2cm_i1tfndcl
+(env0: !envx2cm, ifun: i1fundcl): void
 //
 fun
 xats2cm_i1valdclist
@@ -116,6 +119,9 @@ xats2cm_i1vardclist
 (env0: !envx2cm, i1vs: i1vardclist): void
 fun
 xats2cm_i1fundclist
+(env0: !envx2cm, i1fs: i1fundclist): void
+fun
+xats2cm_i1tfndclist
 (env0: !envx2cm, i1fs: i1fundclist): void
 //
 (* ****** ****** *)

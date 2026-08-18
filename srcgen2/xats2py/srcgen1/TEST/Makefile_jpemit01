@@ -21,32 +21,23 @@ all:: test05
 all:: test06
 all:: test07
 all:: test08
+all:: test09
 all:: test10
 all:: test11
 ########################################################################
 ########################################################################
-testall:: \
-test00; $(PYTHON) OUTS/$<_out.py
-testall:: \
-test01; $(PYTHON) OUTS/$<_out.py
-testall:: \
-test02; $(PYTHON) OUTS/$<_out.py
-testall:: \
-test03; $(PYTHON) OUTS/$<_out.py
-testall:: \
-test04; $(PYTHON) OUTS/$<_out.py
-testall:: \
-test05; $(PYTHON) OUTS/$<_out.py
-testall:: \
-test06; $(PYTHON) OUTS/$<_out.py
-testall:: \
-test07; $(PYTHON) OUTS/$<_out.py
-testall:: \
-test08; $(PYTHON) OUTS/$<_out.py
-testall:: \
-test10; $(PYTHON) OUTS/$<_out.py
-testall:: \
-test11; $(PYTHON) OUTS/$<_out.py
+testall:: test00; $(PYTHON) OUTS/$<_out.py
+testall:: test01; $(PYTHON) OUTS/$<_out.py
+testall:: test02; $(PYTHON) OUTS/$<_out.py
+testall:: test03; $(PYTHON) OUTS/$<_out.py
+testall:: test04; $(PYTHON) OUTS/$<_out.py
+testall:: test05; $(PYTHON) OUTS/$<_out.py
+testall:: test06; $(PYTHON) OUTS/$<_out.py
+testall:: test07; $(PYTHON) OUTS/$<_out.py
+testall:: test08; $(PYTHON) OUTS/$<_out.py
+testall:: test09; $(PYTHON) OUTS/$<_out.py
+testall:: test10; $(PYTHON) OUTS/$<_out.py
+testall:: test11; $(PYTHON) OUTS/$<_out.py
 ########################################################################
 ########################################################################
 XATS2PY_SRCGENX="./.."
@@ -169,6 +160,20 @@ $(CAT) $(XATS2PY_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
 ############
 test08:: \
 test08_xats2py.dats; \
+$(NODE) --stack-size=8800 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
+########################################################################
+test09:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+############
+test09:: ; \
+$(CAT) $(XATS2PY_XSHARED)/xats2py_py1emit.py >> OUTS/$@_out.py
+test09:: ; \
+$(CAT) $(XATS2PY_XSHARED)/srcgen2_precats.py >> OUTS/$@_out.py
+test09:: ; \
+$(CAT) $(XATS2PY_XSHARED)/srcgen2_prelude.py >> OUTS/$@_out.py
+############
+test09:: \
+test09_xats2py.dats; \
 $(NODE) --stack-size=8800 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
 ########################################################################
 test10:: ; \

@@ -291,9 +291,11 @@ end where
 val (  ) =
 let
 val filr =
-envx2py_filr$get(env0)
+(
+  envx2py_filr$get(env0))
 val nind =
-envx2py_nind$get(env0)
+(
+  envx2py_nind$get(env0))
 in//let
 (
 nindstrnfpr(filr, nind, "## I1FUNDCL\n"))
@@ -302,6 +304,29 @@ end//let
 #define xats2py_fjarglst = xats2js_fjarglst
 //
 }(*where*)//end-of-[xats2py_i1fundcl(env0,ifun)]
+//
+(* ****** ****** *)
+//
+#implfun
+xats2py_i1tfndcl
+  (env0, itfn) = let
+//
+val dvar =
+i1fundcl_dpid$get(itfn)
+//
+val filr =
+(
+  envx2py_filr$get(env0))
+val nind =
+(
+  envx2py_nind$get(env0))
+//
+in//let
+(
+nindstrnfpr
+(filr, nind, "## I1TFNDCL: ");
+d2var_fprint(dvar, filr); fprintln(filr))
+end(*let*)//end-of-[xats2py_i1tfndcl(env0,itfn)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -338,8 +363,16 @@ xats2py_i1fundclist
 (
   list_xats2py_fnp(env0, i1fs, xats2py_i1fundcl))
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2py_i1tfndclist
+  (env0, i1fs) =
+(
+  list_xats2py_fnp(env0, i1fs, xats2py_i1tfndcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_DATS_xats2py_decl00.dats] *)
