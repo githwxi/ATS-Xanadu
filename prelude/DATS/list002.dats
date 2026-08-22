@@ -61,6 +61,50 @@ gseq_equal<list(x0)><x0>(*...*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-08-22:
+Sat Aug 22 10:51:47 AM EDT 2026
+*)
+#impltmp
+{ x0:t0 }
+gseq_equal
+<list(x0)><x0> = list_equal<x0>
+//
+#impltmp
+< x0:t0 >
+list_equal
+  (xs, ys) =
+(
+  auxloop(xs, ys)) where
+{
+//
+fun
+auxloop(xs, ys): bool =
+(
+case+ xs of
+|
+list_nil() =>
+(
+case+ ys of
+| list_nil() => true
+| list_cons _ => false)
+|
+list_cons(x1, xs) =>
+(
+case+ ys of
+| list_nil() => false
+| list_cons(y1, ys) =>
+(
+  if // if
+  g_equal<x0>(x1, y1)
+  then auxloop(xs, ys) else false))
+)(*case+*)//end-of-[auxloop(xs, ys)]
+//
+}(*where*)//end-of-[list_equal(xs,ys)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < x0:t0 >
 < y0:t0 >
