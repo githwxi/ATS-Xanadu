@@ -27,6 +27,8 @@ all:: test08
 all:: test09
 all:: test10
 all:: test11
+all:: test12
+all:: test13
 ########################################################################
 ########################################################################
 testall::
@@ -55,6 +57,10 @@ testall:: \
 test10; $(NODE) OUTS/$<_out.js
 testall:: \
 test11; $(NODE) OUTS/$<_out.js
+testall:: \
+test12; $(NODE) OUTS/$<_out.js
+testall:: \
+test13; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -265,6 +271,40 @@ $(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
 ############
 test11:: \
 test11_xats2js.dats; \
+$(SCHEME) --script $(XATS2JS_JSEMIT01) _dummy_ $< >> OUTS/$@_out.js
+########################################################################
+test12:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test12:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test12:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+test12:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
+test12:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
+############
+test12:: \
+test12_xats2js.dats; \
+$(SCHEME) --script $(XATS2JS_JSEMIT01) _dummy_ $< >> OUTS/$@_out.js
+########################################################################
+test13:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+############
+test13:: ; \
+$(CAT) $(XATS2JS_XSHARED)/xats2js_js1emit.js >> OUTS/$@_out.js
+test13:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_precats.js >> OUTS/$@_out.js
+test13:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
+test13:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_xatslib.js >> OUTS/$@_out.js
+test13:: ; \
+$(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude_node.js >> OUTS/$@_out.js
+############
+test13:: \
+test13_xats2js.dats; \
 $(SCHEME) --script $(XATS2JS_JSEMIT01) _dummy_ $< >> OUTS/$@_out.js
 ########################################################################
 testxx:: ; \
