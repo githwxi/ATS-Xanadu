@@ -340,11 +340,26 @@ Sat 27 Jul 2024 05:56:34 PM EDT
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+list_vt_extend0 =
+list_vt_extend00<a>(*0*)
+#impltmp
+< a: vt >
+list_vt_extend00
+  (xs, x0) =
+list_vt_append00<a>
+(
+xs, list_vt_sing<a>(x0))
+//
+(* ****** ****** *)
 //
 #impltmp
 < a: vt >
 list_vt_append0 =
-list_vt_append00<a>(*void*)
+list_vt_append00<a>(*0*)
 //
 (* ****** ****** *)
 //
