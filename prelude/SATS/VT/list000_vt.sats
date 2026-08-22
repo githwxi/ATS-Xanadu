@@ -212,6 +212,10 @@ list_vt_copy
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-08-22:
+Sat Aug 22 10:16:42 AM EDT 2026
+*)
 fun
 <x0:vt>
 list_vt_extend0
@@ -219,9 +223,18 @@ list_vt_extend0
 (xs:
 ~list_vt
 ( x0,n0 ), x0:x0): list_vt(x0, n0+1)
+fun
+<x0:vt>
+list_vt_extend00
+ {n0:i0}
+(xs:
+~list_vt
+( x0,n0 ), x0:x0): list_vt(x0, n0+1)
 //
 #symload
 extend0 with list_vt_extend0 of 1000
+#symload
+extend00 with list_vt_extend00 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
