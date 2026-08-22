@@ -40,6 +40,15 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <x0:t0>
+list_equal
+( xs: list(x0)
+, ys: list(x0)): bool//end-of-[fun]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
 <y0:t0>
 list_z2forall
 ( xs: list(x0)
