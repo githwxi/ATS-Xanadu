@@ -108,9 +108,13 @@ then
 let
 val cc1 = char(ci1)
 in//let
+(*
 buf.1 :=
 cons_vt(cc1, buf.1); ci1
-end else ci1 // end-of(if)
+*)
+buf.1 :=
+list_vt_cons(cc1, buf.1); ci1
+end else ci1 // end-of-(if)
 )
 ) where
 {
@@ -158,9 +162,13 @@ then
 let
 val cc1 = char(ci1)
 in//let
+(*
 buf.2 :=
 cons_vt(cc1, buf.2); ci1
-end else ci1 // end-of(if)
+*)
+buf.2 :=
+list_vt_cons(cc1, buf.2); ci1
+end else ci1 // end-of-(if)
 )
 ) where
 {
@@ -182,7 +190,8 @@ let
 val ci1 = char_code(cc1)
 in//let
 buf.1 := ccs;
-buf.2 := cons_vt(cc1, buf.2); ci1
+buf.2 :=
+list_vt_cons(cc1, buf.2); (ci1)
 end//let
 )
 //
@@ -218,7 +227,8 @@ list_vt_cons
 val () = (buf.2 := ccs)
 val () =
 (
-  buf.1 := cons_vt(cc1, buf.1))
+buf.1 :=
+list_vt_cons<char>(cc1, buf.1))
 } (* end-of-[list_vt_cons(...)] *)
 //
 end (* let *) // end-of(lxbf1_unget)

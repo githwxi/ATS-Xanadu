@@ -1296,7 +1296,7 @@ i1valjs1_list(filr,i1vs);strnfpr(filr,"))"))
 |I1INSpcon
 (lab0, i1v1) =>
 (
-prints("XATSPCON(", i1v1, ",", lab0, ")"))
+prints("XATSPCON(", i1v1, ", ", lab0, ")"))
 //
 |I1INSpflt
 (lab0, i1v1) =>
