@@ -414,6 +414,15 @@ fun
 gseq_irforitm(xs: xs): void
 //
 (*
+HX-2026-08-23:
+How about such "sugary" syntax:
+for:foritm i0, x0 in xs do work(i0, x0)
+for:rforitm i0, x0 in xs do work(i0, x0)
+for:iforitm i0, x0 in xs do work(i0, x0)
+for:irforitm i0, x0 in xs do work(i0, x0)
+*)
+//
+(*
 #symload foritm with gseq_foritm of 0100
 #symload rforitm with gseq_rforitm of 0100
 #symload iforitm with gseq_iforitm of 0100

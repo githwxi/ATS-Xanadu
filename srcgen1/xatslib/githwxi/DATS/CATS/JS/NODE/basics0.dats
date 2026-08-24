@@ -48,7 +48,7 @@ opt =
 XATS2JS_NODE_fs_readFileSync
   (fpx)
 in//let
-if
+if // if
 stropt_nilq(opt)
 then
 strm_vt_nil((*void*))

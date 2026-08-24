@@ -12,7 +12,7 @@ Fri Jul  8 15:05:48 EDT 2022
 (* ****** ****** *)
 
 val ( ) =
-prerrln
+proutsln
 (
 $F.fmap<optn>
 (lam(x:int): int => x+1,optn(100)))
@@ -20,7 +20,7 @@ $F.fmap<optn>
 (* ****** ****** *)
 
 val ( ) =
-prerrln
+proutsln
 (
 $F.fmap<list>
 (lam(x:int): int => x+1,list_btw(0,10)))
@@ -28,11 +28,14 @@ $F.fmap<list>
 (* ****** ****** *)
 
 val ( ) =
-prerrln
+proutsln
 (
 $F.fmap<strm>
 (lam(x:int): int => x+1,strm_from( 0 )))
 
 (* ****** ****** *)
-
-(* end of [ATS3_xatslib_haskell_test02_functor.dats] *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3_srcgen1_xatslib_haskell_TEST_test02_functor.dats] *)
+(***********************************************************************)
