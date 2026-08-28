@@ -56,6 +56,8 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload "./../SATS/trxd3i0.sats"
 #staload "./../SATS/tryd3i0.sats"
 //
+#staload "./../SATS/cc0emit.sats"
+//
 (*
 #staload "./../SATS/intrep1.sats"
 *)
