@@ -59,6 +59,65 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<x0>(*tmp*)
+list_cc0emit_fnp
+( xs, e1, fopr ) =
+(
+list_foritm$e1nv
+<  x0  ><  e1  >(xs, e1)) where
+{
+#vwtpdef e1 = envxcc0
+#impltmp
+foritm$e1nv$work
+<  x0  ><  e1  >(x0, e1) = fopr(x0, e1)
+}(*where*)//endof[list_cc0emit_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+optn_cc0emit_fnp
+( xs, e1, fopr ) =
+(
+case+ xs of
+|
+optn_nil() =>
+(  (*0*)  ) | optn_cons(x1) => fopr(x1, e1)
+)(*case+*)//endof[optn_cc0emit_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0explst_cc0emit
+  (i0es, env0) =
+(
+  list_cc0emit_fnp(i0es, env0, i0exp_cc0emit))
+(*where*)//end-of-[i0explst_cc0emit(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0dclist_cc0emit
+  (dcls, env0) =
+(
+  list_cc0emit_fnp(dcls, env0, i0dcl_cc0emit))
+(*where*)//end-of-[i0dclist_cc0emit(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0dclistopt_cc0emit
+  (dopt, env0) =
+(
+  optn_cc0emit_fnp(dopt, env0, i0dclist_cc0emit))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc0emit.dats] *)
 (***********************************************************************)

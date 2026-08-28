@@ -63,8 +63,8 @@ i1parsed_cc1emit
 (* ****** ****** *)
 //
 fun
-cc1emit_i1dclistopt
-(env0: !envxcc1, dopt: i1dclistopt): void
+i1dclistopt_cc1emit(
+  dopt: i1dclistopt, env0: !envxcc1): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

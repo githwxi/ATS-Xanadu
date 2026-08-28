@@ -133,13 +133,25 @@ val ipar =
 //
 in//let
 //
+// (*
+let
+val
+filr = g_stdout<>()
+in//let
+(
+i0parsed_cc0emit(ipar, filr))
+end//let
+// *)
+//
+;
+//
 (*
 let
 val
 filr = g_stdout<>()
 in//let
 (
-  cc1emit_i1parsed(filr, ipar))
+i1parsed_cc1emit(filr, ipar))
 end//let
 *)
 //

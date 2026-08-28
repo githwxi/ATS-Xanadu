@@ -77,7 +77,7 @@ list_foritm$e1nv
 #impltmp
 foritm$e1nv$work
 <  x0  ><  e1  >(x0, e1) = fopr(x0, e1)
-}(*where*)//end of [list_cm1emit_fnp(e1,xs,fopr)]
+}(*where*)//endof[list_cm1emit_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
@@ -90,7 +90,7 @@ case+ xs of
 |
 optn_nil() =>
 (  (*0*)  ) | optn_cons(x1) => fopr(x1, e1)
-)(*case+*)//end of [optn_cm1emit_fnp(e1,xs,fopr)]
+)(*case+*)//endof[optn_cm1emit_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -116,7 +116,7 @@ in//let
   envx2js_free_nil(env0)) where
 { val () =
   i1dclistopt_cm1emit(parsed, env0) }
-end(*let*)//end-of-[cm1emit_i1parsed(ipar, filr)]
+end(*let*)//endof[i1parsed_cm1emit(ipar,filr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -126,7 +126,7 @@ i1dclist_cm1emit
   (dcls, env0) =
 (
   list_cm1emit_fnp(dcls, env0, i1dcl_cm1emit))
-(*where*)//end-of-[cm1emit_i1dclist(env0,dcl0)]
+(*where*)//end-of-[i1dclist_cm1emit(env0,dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

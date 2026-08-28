@@ -13,17 +13,16 @@ NODE=node
 all:: lib2xats2cc
 ########################################################################
 ########################################################################
+SRCGEN2=./../../../srcgen2
+XATSJSD=./../../../srcgen2/xats2js
+########################################################################
+########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; \
-rm -f BUILD/JS/*_sats_out0.js
-cleanall:: ; \
-rm -f BUILD/JS/*_dats_out?.js
+cleanall:: ; rm -f BUILD/JS/*_sats_out0.js
+cleanall:: ; rm -f BUILD/JS/*_dats_out?.js
 ########################################################################
-########################################################################
-SRCGEN2=./../../../srcgen2
-XATSJSD=./../../../srcgen2/xats2js
 ########################################################################
 #
 SRCSATS := \
@@ -70,10 +69,22 @@ OUT1DATS := \
 $(patsubst %.dats, BUILD/JS/%_dats_out1.js, $(SRCDATS))
 ########################################################################
 ########################################################################
-BUILD/JS/%_sats_out0.js: SATS/%.sats; \
-$(NODE) --stack-size=8801 $(XATSOPT_TCHECK00) $< > $@
-BUILD/JS/%_dats_out0.js: DATS/%.dats; \
-$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT00) $< > $@
+#
+# TCHECK00=$(NODE) \
+# --stack-size=8801 $(XATS2JS_JSEMIT00)
+# JSEMIT00=$(NODE) \
+# --stack-size=8801 $(XATS2JS_JSEMIT00)
+# BUILD/JS/%_sats_out0.js: SATS/%.sats; \
+# $(NODE) --stack-size=8801 $(XATSOPT_TCHECK00) $< > $@
+# BUILD/JS/%_dats_out0.js: DATS/%.dats; \
+# $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT00) $< > $@
+#
+TCHECK00=npx @npmhwxi/xatsopt-tcheck00-ats2
+JSEMIT00=npx @npmhwxi/xats2js-jsemit00-ats2
+#
+BUILD/JS/%_sats_out0.js: SATS/%.sats; $(TCHECK00) $< > $@
+BUILD/JS/%_dats_out0.js: DATS/%.dats; $(JSEMIT00) $< > $@
+#
 ########################################################################
 ########################################################################
 ifndef XATSOPT_TCHECK00
