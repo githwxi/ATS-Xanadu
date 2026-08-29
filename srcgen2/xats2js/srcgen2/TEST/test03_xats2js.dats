@@ -88,36 +88,49 @@ where
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 fun foo1(): void =
 let
 //
 var xyz
 //
 val ( ) =
-xyz := #(0,1,@(2,3))
+xyz := $tup_t0(0,1,@(2,3))
 //
 val ( ) = xyz.1 := 10
 //
 val ( ) = (xyz.2).0 := 20
-val ( ) = (xyz.2).1 := 30 endlet // end-of-[fun foo1]
-
+val ( ) = (xyz.2).1 := 30
+in
+(
+printsln("foo1: xyz = ", xyz)) endlet//end(foo1)
+//
 fun foo2(): void =
 let
 //
 var xyz
 //
 val ( ) =
-xyz := @(0,1,#(2,3))
+xyz := @(0,1,$tup_t0(2,3))
 //
 val ( ) = xyz.1 := 10
 //
 val ( ) = (xyz.2).0 := 20
-val ( ) = (xyz.2).1 := 30 endlet // end-of-[fun foo2]
-
+val ( ) = (xyz.2).1 := 30
+in
+(
+printsln("foo2: xyz = ", xyz)) endlet//end(foo2)
+//
 (* ****** ****** *)
 (* ****** ****** *)
-val () = the_print_store_log( (*void*) )
+//
+val ((*void*)) = foo1((*0*))
+val ((*void*)) = foo2((*0*))
+//
+(* ****** ****** *)
+//
+val ((*void*)) = the_print_store_log(  (*void*)  )
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

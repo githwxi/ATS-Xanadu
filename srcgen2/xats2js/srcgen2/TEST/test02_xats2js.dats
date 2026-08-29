@@ -148,11 +148,11 @@ then (xrr.rr.1) else (xrr.rr.0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
-val () =
+val ((*void*)) =
 prints("fibo4(10) = ", fibo4(10), "\n")
 (* ****** ****** *)
 (* ****** ****** *)
-val () = the_print_store_log( (*void*) )
+val ((*void*)) = the_print_store_log( (*void*) )
 (* ****** ****** *)
 (* ****** ****** *)
 //
