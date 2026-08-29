@@ -781,8 +781,8 @@ let
 val loc0 = d3e0.lctn()
 val t2p0 = d3e0.styp()
 val (  ) =
-printsln
-("D3EXP(",loc0,"): ", t2p0)
+printsln("\
+// D3EXP(",loc0,"): ", t2p0)
 where
 {
 #impltmp

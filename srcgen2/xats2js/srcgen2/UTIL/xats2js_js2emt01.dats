@@ -261,7 +261,7 @@ prerrsln("\
 val argv = XATSOPT_argv$get((*0*))
 (*
 val (  ) = prerrsln("\
-// xats2js_jsemit01: argv = ", argv)
+// xats2js_js2emt01: argv = ", argv)
 *)
 //
 }(*where*)//end-of-[mymain_main(...)]
@@ -273,5 +273,5 @@ val ((*the_entry_point*)) = mymain_main((*void*))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_UTIL_xats2js_jsemit01.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_UTIL_xats2js_js2emt01.dats] *)
 (***********************************************************************)

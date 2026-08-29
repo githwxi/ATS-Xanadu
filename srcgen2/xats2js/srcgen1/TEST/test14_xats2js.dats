@@ -68,7 +68,6 @@ let
   (
     case+ qs of
     | list_nil() => true
-
     | list_cons(q, qs) =>
         let
           val dr = r + 1
@@ -82,7 +81,7 @@ let
           if // if
           (col = q)
           then false
-          else (if (dr = dc) then false else loop(r + 1, qs))
+          else if (dr = dc) then false else loop(r + 1, qs)
         end
   )
 in
@@ -173,11 +172,12 @@ let
     case+ qs of
     | list_nil() =>
         row = 8
-
     | list_cons(col, qs) =>
+      (
         if col < 0 then false else
-        (if col >= 8 then false else
-         if queen_safe(row, col, qs) then loop(row + 1, qs) else false)
+        if col >= 8 then false else
+        if queen_safe(row, col, qs) then loop(row + 1, qs) else false
+      )
 in
   loop(0, qs)
 end

@@ -38,8 +38,8 @@ $(XATSHOME)/srcgen2/xats2js/srcgenx
 XATS2JS_XSHARED=\
 $(XATSHOME)/srcgen2/xats2js/srcgenx/xshared/runtime
 ########################################################################
-XATS2JS_JSEMIT01=./../UTIL/xats2js_jsemit01_ats2.js
-XATS2JS_JSEMIT01=./../UTIL/xats2js_jsemit01_ats3.js
+XATS2JS_JS2EMT01=./../UTIL/xats2js_js2emt01_ats2.js
+XATS2JS_JS2EMT01=./../UTIL/xats2js_js2emt01_ats3.js
 ########################################################################
 ########################################################################
 test00:: ; \
@@ -54,7 +54,7 @@ $(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 ############
 test00:: \
 test00_xats2js.dats; \
-$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8800 $(XATS2JS_JS2EMT01) $< >> OUTS/$@_out.js
 ############
 # test00:: ; \
 # npx google-closure-compiler -W QUIET \
@@ -74,7 +74,7 @@ test01:: ; \
 $(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 test01:: \
 test01_xats2js.dats; \
-$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8800 $(XATS2JS_JS2EMT01) $< >> OUTS/$@_out.js
 ########################################################################
 test02:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
@@ -87,7 +87,7 @@ test02:: ; \
 $(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 test02:: \
 test02_xats2js.dats; \
-$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8800 $(XATS2JS_JS2EMT01) $< >> OUTS/$@_out.js
 ########################################################################
 test03:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
@@ -100,7 +100,9 @@ test03:: ; \
 $(CAT) $(XATS2JS_XSHARED)/srcgen2_prelude.js >> OUTS/$@_out.js
 test03:: \
 test03_xats2js.dats; \
-$(NODE) --stack-size=8800 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8800 $(XATS2JS_JS2EMT01) $< >> OUTS/$@_out.js
 ########################################################################
-###################### end of [Makefile_jsemit01] ######################
+########################################################################
+###################### end of [Makefile_js2emt01] ######################
+########################################################################
 ########################################################################
