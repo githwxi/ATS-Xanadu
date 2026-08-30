@@ -52,22 +52,30 @@ almanac/HATS/pre2026_sats.hats"
 (*
 HX-2026-01-05:
 Mon Jan  5 03:06:12 PM EST 2026
+HX-2026-08-30:
+See [pre2026/DATS/gasqseg.dats]
+Sun Aug 30 03:40:14 PM EDT 2026
 *)
 //
+(*
 #impltmp
 < xs:t0 >
 gasq$seg_decd
 (   xsii   ) =
 $UN.castxy(    xsii    )
+//
 #impltmp
 < xs:t0 >
 gasq$seg_encd
 (xs, lb, ub) =
 (
   $UN.castxy(@(xs, lb, ub)))
+*)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
+(*
 #impltmp
 { xs:t0
 , x0:t0 }
@@ -81,7 +89,9 @@ gasq$seg_decd<xs>(xsii) in//let
 (
   $UN.gasq_get$at$raw<xs>(xs, lb)) end
 //let//end-of-[$UN.gseq_head$raw<gasq$seg(xs)><x0>]
+*)
 //
+(*
 #impltmp
 { xs:t0
 , x0:t0 }
@@ -95,6 +105,7 @@ gasq$seg_decd<xs>(xsii) in//let
 (
   gasq$seg_encd<xs>(xs, lb+1, ub)) end
 //let//end-of-[$UN.gseq_tail$raw<gasq$seg(xs)><x0>]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

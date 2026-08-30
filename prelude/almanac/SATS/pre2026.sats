@@ -42,8 +42,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (*
 HX-2026-01-05:
 Mon Jan  5 03:06:12 PM EST 2026
+HX-2026-08-30:
+See [pre2026/SATS/gasqseg.sats]
+Sun Aug 30 03:40:14 PM EDT 2026
 *)
 //
+(*
 #typedef
 gasq$seg_def
 (  xs: t0  ) = (xs, nint, nint)
@@ -53,9 +57,11 @@ gasq$seg_t0_t0
 //
 #typedef
 gasq$seg(xs: t0) = gasq$seg_t0_t0(xs)
+*)
 //
 (* ****** ****** *)
 //
+(*
 fun
 <xs:t0>
 gasq$seg_decd
@@ -64,6 +70,7 @@ fun
 <xs:t0>
 gasq$seg_encd
 (xs: xs, lb: ni, ub: ni): gasq$seg(xs)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
