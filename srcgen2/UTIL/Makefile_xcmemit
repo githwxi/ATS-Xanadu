@@ -49,9 +49,9 @@ $(NODE) \
 ########################################################################
 #
 xatsopt_tcheck00_opt0: ; \
-$(SED) '/^[ ]*##/d' xatsopt_tcheck00_ats3.cm > xatsopt_tcheck00_ats3_opt0.cm
+$(SED) '/^[ ]*;;/d' xatsopt_tcheck00_ats3.cm > xatsopt_tcheck00_ats3_opt0.cm
 xatsopt_tcheck01_opt0: ; \
-$(SED) '/^[ ]*##/d' xatsopt_tcheck01_ats3.cm > xatsopt_tcheck01_ats3_opt0.cm
+$(SED) '/^[ ]*;;/d' xatsopt_tcheck01_ats3.cm > xatsopt_tcheck01_ats3_opt0.cm
 #
 ########################################################################
 ########################################################################
