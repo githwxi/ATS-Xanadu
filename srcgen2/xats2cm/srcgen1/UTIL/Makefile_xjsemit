@@ -43,7 +43,7 @@ printf "// %s\n" "`date`" > $@_ats3.js && \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js >> $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/srcgen1_precats.js >> $@_ats3.js && \
+$(S2XSHRD)/srcgen2_precats.js >> $@_ats3.js && \
 $(CAT) \
 $(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
 $(CAT) \
@@ -66,7 +66,7 @@ printf "// %s\n" "`date`" > $@_ats3.js && \
 $(CAT) \
 $(S2XSHRD)/xats2js_js1emit.js >> $@_ats3.js && \
 $(CAT) \
-$(S1XSHRD)/srcgen1_precats.js >> $@_ats3.js && \
+$(S2XSHRD)/srcgen2_precats.js >> $@_ats3.js && \
 $(CAT) \
 $(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
 $(CAT) \
