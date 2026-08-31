@@ -105,11 +105,11 @@ XASSETS=\
 ./../../../../xassets
 ########################################################################
 ifndef XATSOPT_TCHECK00
-XATSOPT_TCHECK00=$(XASSETS)/JS/xatsopt/xatsopt_tcheck00_ats2_opt1.js
+XATSOPT_TCHECK00=$(XASSETS)/JS/xatsopt/bin/xatsopt_tcheck00_ats2_opt1.js
 endif ## (ifeq($(XATSOPT_TCHECK00),""))
 ########################################################################
 ifndef XATS2JS_JSEMIT00
-XATS2JS_JSEMIT00=$(XASSETS)/JS/xats2js/xats2js_jsemit00_ats2_opt1.js
+XATS2JS_JSEMIT00=$(XASSETS)/JS/xats2js/bin/xats2js_jsemit00_ats2_opt1.js
 endif ## (ifeq($(XATS2JS_JSEMIT00),""))
 ########################################################################
 ########################################################################

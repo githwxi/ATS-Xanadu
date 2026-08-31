@@ -75,11 +75,11 @@ XASSETS=\
 ./../../../../xassets
 ########################################################################
 ifndef XATSOPT_TCHECK00
-XATSOPT_TCHECK00=$(XASSETS)/JS/xatsopt/xatsopt_tcheck00_ats2_opt1.js
+XATSOPT_TCHECK00=$(XASSETS)/JS/xatsopt/bin/xatsopt_tcheck00_ats2_opt1.js
 endif ## (ifeq($(XATSOPT_TCHECK00),""))
 ########################################################################
 ifndef XATS2CM_CMEMIT00
-XATS2CM_CMEMIT00=$(XASSETS)/JS/xats2cm/xats2cm_cmemit00_ats3_opt1.js
+XATS2CM_CMEMIT00=$(XASSETS)/JS/xats2cm/bin/xats2cm_cmemit00_ats3_opt1.js
 endif ## (ifeq($(XATS2CM_CMEMIT00),""))
 ########################################################################
 ########################################################################

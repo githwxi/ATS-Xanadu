@@ -288,13 +288,13 @@ $(SED) '/^[ ]*##/d' lib/lib2xatsopt.py > lib/lib2xatsopt_opt0.py
 ifndef \
 XATSOPT_TCHECK00
 XATSOPT_TCHECK00=\
-$(XATSHOME)/xassets/JS/xatsopt/xatsopt_tcheck00_ats2_opt1.js
+$(XATSHOME)/xassets/JS/xatsopt/bin/xatsopt_tcheck00_ats2_opt1.js
 endif ## (ifeq($(XATSOPT_TCHECK00),""))
 ########################################################################
 ifndef \
 XATS2PY_PYEMIT00
 XATS2PY_PYEMIT00=\
-$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit00_ats2_opt1.js
+$(XATSHOME)/xassets/JS/xats2py/bin/xats2py_pyemit00_ats2_opt1.js
 endif ## (ifeq($(XATS2PY_PYEMIT00),""))
 ########################################################################
 ########################################################################

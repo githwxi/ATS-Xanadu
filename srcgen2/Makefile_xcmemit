@@ -288,13 +288,13 @@ $(SED) '/^[ ]*;;/d' lib/lib2xatsopt.cm > lib/lib2xatsopt_opt0.cm
 ifndef \
 XATSOPT_TCHECK00
 XATSOPT_TCHECK00=\
-$(XATSHOME)/xassets/JS/xatsopt/xatsopt_tcheck00_ats3_opt1.js
+$(XATSHOME)/xassets/JS/xatsopt/bin/xatsopt_tcheck00_ats3_opt1.js
 endif ## (ifeq($(XATSOPT_TCHECK00),""))
 ########################################################################
 ifndef \
 XATS2CM_CMEMIT00
 XATS2CM_CMEMIT00=\
-$(XATSHOME)/xassets/JS/xats2cm/xats2cm_cmemit00_ats3_opt1.js
+$(XATSHOME)/xassets/JS/xats2cm/bin/xats2cm_cmemit00_ats3_opt1.js
 endif ## (ifeq($(XATS2CM_CMEMIT00),""))
 ########################################################################
 ########################################################################
