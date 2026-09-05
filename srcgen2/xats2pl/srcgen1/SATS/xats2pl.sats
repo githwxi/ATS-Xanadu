@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Fri Nov 29 04:00:58 PM EST 2024
+Sat Sep  5 05:55:31 PM EDT 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -47,95 +47,95 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#vwtpdef envx2py = envx2js
+#vwtpdef envx2pl = envx2js
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <x0:t0>
-list_xats2py_fnp
+list_xats2pl_fnp
 ( e1:
-! envx2py
+! envx2pl
 , xs: list(x0)
-, (!envx2py, x0) -> void): void
+, (!envx2pl, x0) -> void): void
 fun
 <x0:t0>
-optn_xats2py_fnp
+optn_xats2pl_fnp
 ( e1:
-! envx2py
+! envx2pl
 , xs: optn(x0)
-, (!envx2py, x0) -> void): void
+, (!envx2pl, x0) -> void): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-xats2py_i1let
-(env0: !envx2py, ilet: i1let): void
+xats2pl_i1let
+(env0: !envx2pl, ilet: i1let): void
 fun
-xats2py_i1ins
-(env0: !envx2py, iins: i1ins): void
+xats2pl_i1ins
+(env0: !envx2pl, iins: i1ins): void
 //
 fun
-xats2py_i1bnd
-(env0: !envx2py, ibnd: i1bnd): void
+xats2pl_i1bnd
+(env0: !envx2pl, ibnd: i1bnd): void
 //
 fun
-xats2py_i1cmp
-(env0: !envx2py, icmp: i1cmp): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-xats2py_i1dcl
-(env0: !envx2py, dcl0: i1dcl): void
-//
-fun
-xats2py_i1dclist
-(env0: !envx2py, dcls: i1dclist): void
-//
-(* ****** ****** *)
-//
-fun
-xats2py_i1valdcl
-(env0: !envx2py, ival: i1valdcl): void
-fun
-xats2py_i1vardcl
-(env0: !envx2py, ivar: i1vardcl): void
-fun
-xats2py_i1fundcl
-(env0: !envx2py, ifun: i1fundcl): void
-fun
-xats2py_i1tfndcl
-(env0: !envx2py, ifun: i1fundcl): void
-//
-fun
-xats2py_i1valdclist
-(env0: !envx2py, i1vs: i1valdclist): void
-fun
-xats2py_i1vardclist
-(env0: !envx2py, i1vs: i1vardclist): void
-fun
-xats2py_i1fundclist
-(env0: !envx2py, i1fs: i1fundclist): void
-fun
-xats2py_i1tfndclist
-(env0: !envx2py, i1fs: i1fundclist): void
+xats2pl_i1cmp
+(env0: !envx2pl, icmp: i1cmp): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#define envx2py_poplam0 = envx2js_poplam0
-#define envx2py_pshlam0 = envx2js_pshlam0
+fun
+xats2pl_i1dcl
+(env0: !envx2pl, dcl0: i1dcl): void
 //
-#define envx2py_filr$get = envx2js_filr$get
-#define envx2py_nind$get = envx2js_nind$get
+fun
+xats2pl_i1dclist
+(env0: !envx2pl, dcls: i1dclist): void
+//
+(* ****** ****** *)
+//
+fun
+xats2pl_i1valdcl
+(env0: !envx2pl, ival: i1valdcl): void
+fun
+xats2pl_i1vardcl
+(env0: !envx2pl, ivar: i1vardcl): void
+fun
+xats2pl_i1fundcl
+(env0: !envx2pl, ifun: i1fundcl): void
+fun
+xats2pl_i1tfndcl
+(env0: !envx2pl, ifun: i1fundcl): void
+//
+fun
+xats2pl_i1valdclist
+(env0: !envx2pl, i1vs: i1valdclist): void
+fun
+xats2pl_i1vardclist
+(env0: !envx2pl, i1vs: i1vardclist): void
+fun
+xats2pl_i1fundclist
+(env0: !envx2pl, i1fs: i1fundclist): void
+fun
+xats2pl_i1tfndclist
+(env0: !envx2pl, i1fs: i1fundclist): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#define envx2pl_poplam0 = envx2js_poplam0
+#define envx2pl_pshlam0 = envx2js_pshlam0
+//
+#define envx2pl_filr$get = envx2js_filr$get
+#define envx2pl_nind$get = envx2js_nind$get
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen1_xats2py_srcgen1_SATS_xats2py.sats] *)
+(* end of [ATS3/XANADU_srcgen1_xats2pl_srcgen1_SATS_xats2pl.sats] *)
 (***********************************************************************)
