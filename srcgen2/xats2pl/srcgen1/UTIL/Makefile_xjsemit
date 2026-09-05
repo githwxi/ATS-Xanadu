@@ -1,0 +1,90 @@
+########################################################################
+########################################################################
+# Makefile for bootstrapping
+########################################################################
+########################################################################
+CAT=cat
+SED=sed
+ECHO=echo
+NODE=node
+PRINTF=printf
+########################################################################
+SRCGEN1=./../../../../srcgen1
+SRCGEN2=./../../../../srcgen2
+XATSJSD=./../../../../srcgen2/xats2js
+XATSPLD=./../../../../srcgen2/xats2pl
+########################################################################
+S1XSHRD=\
+$(SRCGEN1)/xats2js/srcgenx/xshared/runtime
+S2XSHRD=\
+$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
+########################################################################
+########################################################################
+#
+# HX-2025-03-29:
+# $(S1XSHRD) is used since the library code for
+# ATS3-Xanadu/source2 is largely shared with ATS3-Xanadu/source1
+#
+########################################################################
+#
+# HX-2025-04-05:
+# The [S1XSHRD] is used here as
+# the code in [srcgen1/prelude] requires it.
+#
+all:: \
+xats2pl_plemit01
+xats2pl_plemit01: ; \
+printf "// %s\n" "`date`" > $@_ats3.js && \
+$(CAT) \
+$(S2XSHRD)/xats2js_js1emit.js >> $@_ats3.js && \
+$(CAT) \
+$(S2XSHRD)/srcgen2_precats.js >> $@_ats3.js && \
+$(CAT) \
+$(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
+$(CAT) \
+$(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
+$(CAT) \
+$(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
+$(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
+$(SRCGEN2)/lib/lib2xatsopt.js | $(CAT) - >> $@_ats3.js && \
+$(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
+$(XATSJSD)/srcgen1/lib/lib2xats2js.js | $(CAT) - >> $@_ats3.js && \
+$(SED) -E 's/jsx(...)tnm/js3\1tnm/g' \
+$(XATSPLD)/srcgen1/lib/lib2xats2pl.js | $(CAT) - >> $@_ats3.js && \
+$(NODE) \
+  --stack-size=8192 $(XATS2JS_JSEMIT00) xats2pl_plemit01.dats >> $@_ats3.js
+#
+xats2pl_plemit00_opt1: ; \
+npx google-closure-compiler \
+  -W QUIET --compilation_level SIMPLE \
+  --js=xats2pl_plemit00_ats3.js --js_output_file=xats2pl_plemit00_ats3_opt1.js
+#
+xats2pl_plemit01_opt1: ; \
+npx google-closure-compiler \
+  -W QUIET --compilation_level SIMPLE \
+  --js=xats2pl_plemit01_ats3.js --js_output_file=xats2pl_plemit01_ats3_opt1.js
+#
+########################################################################
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+########################################################################
+cleanall:: ; rm -f xats2pl_plemit0?_ats3.js
+cleanall:: ; rm -f xats2pl_plemit0?_ats3_opt1.js
+########################################################################
+########################################################################
+XASSETS=\
+./../../../../xassets
+########################################################################
+ifndef XATSOPT_TCHECK00
+XATSOPT_TCHECK00=$(XASSETS)/JS/xatsopt/bin/xatsopt_tcheck00_ats2_opt1.js
+endif ## (ifeq($(XATSOPT_TCHECK00),""))
+########################################################################
+ifndef XATS2JS_JSEMIT00
+XATS2JS_JSEMIT00=$(XASSETS)/JS/xats2js/bin/xats2js_jsemit00_ats2_opt1.js
+endif ## (ifeq($(XATS2JS_JSEMIT00),""))
+########################################################################
+########################################################################
+###################### end of [Makefile_xjsemit] #######################
+########################################################################
+########################################################################
