@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 //
-Fri Nov 29 04:00:58 PM EST 2024
+Sat Sep  5 05:55:31 PM EDT 2026
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -55,28 +55,28 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2py.sats"
+#staload "./../SATS/xats2pl.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <x0>(*tmp*)
-list_xats2py_fnp
+list_xats2pl_fnp
 ( e1, xs, fopr ) =
 (
 list_foritm$e1nv<x0><e1>(xs, e1)) where
 {
-#vwtpdef e1 = envx2py
+#vwtpdef e1 = envx2pl
 #impltmp
 foritm$e1nv$work<x0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_xats2py_fnp(e1,xs,fopr)]
+} (*where*)//end of [list_xats2pl_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <x0>(*tmp*)
-optn_xats2py_fnp
+optn_xats2pl_fnp
 ( e1, xs, fopr ) =
 (
 case+ xs of
@@ -86,5 +86,5 @@ case+ xs of
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_DATS_xats2py.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_DATS_xats2pl.dats] *)
 (***********************************************************************)
