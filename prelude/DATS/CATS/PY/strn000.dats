@@ -110,5 +110,5 @@ XATS2PY_strn_get$at$raw
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_strn000.dats] *)
+(* end of [ATS3-XANADU/prelude/DATS/CATS/PY/strn000.dats] *)
 (***********************************************************************)

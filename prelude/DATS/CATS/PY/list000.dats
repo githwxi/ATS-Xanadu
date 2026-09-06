@@ -98,5 +98,5 @@ end(*let*)//end-of-[list_vt_forall0<x0>(xs)]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_list000.dats] *)
+(* end of [ATS3-XANADU/prelude/DATS/CATS/PY/list000.dats] *)
 (***********************************************************************)

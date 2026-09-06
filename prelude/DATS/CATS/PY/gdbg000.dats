@@ -55,5 +55,5 @@ XATS2PY_bool_assert$errmsg
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_gdbg000.dats] *)
+(* end of [ATS3-XANADU/prelude/DATS/CATS/PY/gdbg000.dats] *)
 (***********************************************************************)

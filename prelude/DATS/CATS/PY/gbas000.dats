@@ -38,5 +38,5 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_gbas000.dats] *)
+(* end of [ATS3-XANADU/prelude/DATS/CATS/PY/gbas000.dats] *)
 (***********************************************************************)

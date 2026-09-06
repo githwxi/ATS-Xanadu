@@ -98,5 +98,5 @@ end(*let*)//end-of-[strx_vt_filter0<x0>(xs)]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_strx000.dats] *)
+(* end of [ATS3-XANADU/prelude/DATS/CATS/PY/strx000.dats] *)
 (***********************************************************************)

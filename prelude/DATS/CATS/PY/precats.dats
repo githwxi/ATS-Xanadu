@@ -610,5 +610,5 @@ strxcon_vt_cons
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_precats.dats] *)
+(* end of [ATS3-XANADU/prelude/DATS/CATS/PY/precats.dats] *)
 (***********************************************************************)

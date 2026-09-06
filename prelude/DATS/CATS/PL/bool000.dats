@@ -146,5 +146,5 @@ else strn_print<>("false"))//end(impl)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PL_bool000.dats] *)
+(* end of [ATS3-XANADU/prelude/DATS/CATS/PL/bool000.dats] *)
 (***********************************************************************)

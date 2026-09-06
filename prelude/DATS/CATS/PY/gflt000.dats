@@ -348,5 +348,5 @@ XATS2PY_dflt_trunc(df: dflt): dflt = $extnam()
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_gflt000.dats] *)
+(* end of [ATS3-XANADU/prelude/DATS/CATS/PY/gflt000.dats] *)
 (***********************************************************************)

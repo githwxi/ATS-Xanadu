@@ -222,5 +222,5 @@ XATS2PY_char_make_sint(i0: sint): char = $extnam()
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_char000.dats] *)
+(* end of [ATS3-XANADU/prelude/DATS/CATS/PY/char000.dats] *)
 (***********************************************************************)
