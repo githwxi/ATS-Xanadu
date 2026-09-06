@@ -56,45 +56,58 @@ def XATS2PY_dflt_cbrt(df):
 ##
 ########################################################################.
 ##
-def XATS2PY_dflt_lt_dflt(f1, f2):
+def XATS2PY_dflt_round(df):
+  ## HX: (1.2) = 1 ## (1.5) = 2
+  return round(df) ## (-1.5) = 1
+##
+########################################################################.
+##
+def \
+XATS2PY_dflt_lt_dflt(f1, f2):
   return (f1 < f2) ## HX: lt
-def XATS2PY_dflt_gt_dflt(f1, f2):
+def \
+XATS2PY_dflt_gt_dflt(f1, f2):
   return (f1 > f2) ## HX: gt
-def XATS2PY_dflt_eq_dflt(f1, f2):
+def \
+XATS2PY_dflt_eq_dflt(f1, f2):
   return (f1 == f2) ## HX: equal
 ##
-def XATS2PY_dflt_lte_dflt(f1, f2):
+def \
+XATS2PY_dflt_lte_dflt(f1, f2):
   return (f1 <= f2) ## HX: lte
-def XATS2PY_dflt_gte_dflt(f1, f2):
+def \
+XATS2PY_dflt_gte_dflt(f1, f2):
   return (f1 >= f2) ## HX: gte
-def XATS2PY_dflt_neq_dflt(f1, f2):
+def \
+XATS2PY_dflt_neq_dflt(f1, f2):
   return (f1 != f2) ## HX: noteq
 ##
 ########################################################################.
 ##
-def XATS2PY_dflt_add_dflt(f1, f2):
+def \
+XATS2PY_dflt_add_dflt(f1, f2):
   return (f1 + f2) ## HX: add
-def XATS2PY_dflt_sub_dflt(f1, f2):
+def \
+XATS2PY_dflt_sub_dflt(f1, f2):
   return (f1 - f2) ## HX: sub
 ##
-def XATS2PY_dflt_mul_dflt(f1, f2):
+def \
+XATS2PY_dflt_mul_dflt(f1, f2):
   return (f1 * f2) ## HX: mul
 ##
-def XATS2PY_dflt_div_dflt(f1, f2):
+def \
+XATS2PY_dflt_div_dflt(f1, f2):
   return (f1 / f2) ## HX: div
-def XATS2PY_dflt_mod_dflt(f1, f2):
+def \
+XATS2PY_dflt_mod_dflt(f1, f2):
   return (f1 % f2) ## HX: mod
 ##
-########################################################################.
 ########################################################################.
 ##
 def XATS2PY_dflt_ceil(df):
   return math.ceil(df) ## (1.2) = 2
 def XATS2PY_dflt_floor(df):
   return math.floor(df) ## (1.2) = 1
-def XATS2PY_dflt_round(df):
-  ## HX: (1.2) = 1 ## (1.5) = 2
-  return math.round(df) ## (-1.5) = 1
 def XATS2PY_dflt_trunc(df):
   ## HX: (1.2) = 1 ## (1.9) = 1
   return math.trunc(df) ## (-1.2) = -1
