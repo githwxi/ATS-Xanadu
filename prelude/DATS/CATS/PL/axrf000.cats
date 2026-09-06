@@ -29,44 +29,72 @@
 ########################################################################.
 ##
 ## Author: Hongwei Xi
-## Sun Sep  6 10:28:50 AM EDT 2026
+## Sun Sep  6 10:51:25 AM EDT 2026
 ## Authoremail: gmhwxiATgmailDOTcom
 ##
 ########################################################################.
 ########################################################################.
 ##
 ## Translated by Codex
-## from ./../PY/list000.cats
+## from ./../PY/axrf000.cats
 ##
 ########################################################################.
 ##
 sub
-XATS2PL_list_vt_foritm0_f1un {
-  my ($xs, $work) = @_;
-  while (!XATS2PL_list_vt_nilq1($xs)) {
-    my $x1 = XATS2PL_list_vt_head_raw1($xs);
-    $work->($x1);
-    $xs = XATS2PL_list_vt_tail_raw0($xs);
-  }
-  return;
+XATS2PL_a0rf_lget {
+  my ($A) = @_;
+  return $A->[0];
 }
 ##
 sub
-XATS2PL_list_vt_forall0_f1un {
-  my ($xs, $test, $free) = @_;
-  while (!XATS2PL_list_vt_nilq1($xs)) {
-    my $x1 = XATS2PL_list_vt_head_raw1($xs);
-    if ($test->($x1)) {
-      $xs = XATS2PL_list_vt_tail_raw0($xs);
-    } else {
-      $xs = XATS2PL_list_vt_tail_raw0($xs);
-      XATS2PL_list_vt_foritm0_f1un($xs, $free);
-      return 0;
-    }
-  }
-  return 1;
+XATS2PL_a0rf_lset {
+  my ($A, $x1) = @_;
+  $A->[0] = $x1; return;
 }
 ##
 ########################################################################.
-## end of [ATS3-XANADU/prelude/DATS/CATS/PL/list000.cats]
+##
+sub
+XATS2PL_a1rf_lget_at {
+  my ($A, $i0) = @_;
+  return ($A->[$i0]);
+}
+##
+sub
+XATS2PL_a1rf_lset_at {
+  my ($A, $i0, $x1) = @_;
+  $A->[$i0] = $x1; return;
+}
+##
+########################################################################.
+##
+sub
+XATS2PL_a0rf_make_1val {
+  my ($x0) = @_; return [$x0];
+}
+##
+sub
+XATS2PL_a1rf_make_ncpy {
+  my ($n0, $x0) = @_;
+  my $A0 = [];
+  for ## for
+  (my $i0 = 0; $i0 < $n0; $i0 += 1)
+  {
+    push @$A0, $x0;
+  }
+  return $A0;
+}
+##
+sub
+XATS2PL_a1rf_make_nfun {
+  my ($n0, $fopr) = @_;
+  my $A0 = [];
+  for
+  (my $i0 = 0; $i0 < $n0; $i0 += 1) {
+    push @$A0, $fopr->($i0);
+  }
+  return $A0;
+}
+########################################################################.
+## end of [ATS3/XANADU_prelude_DATS_CATS_PL_axrf000.cats]
 ########################################################################.

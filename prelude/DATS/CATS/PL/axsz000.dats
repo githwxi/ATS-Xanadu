@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,7 +30,7 @@
 //
 (*
 Author: Hongwei Xi
-Wed Jan  1 03:28:47 PM EST 2025
+Sun Sep  6 10:51:25 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -38,55 +38,29 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #absimpl
-a0rf_vt_tx
-(  a:vt  ) = $extbox("a0rf_tx")
+a1sz_vt_i0_tx
+(a: vt, n: i0) = $extbox("a1sz_tx")
 #absimpl
-a0rf_vt_vx
-(  a:vt  ) = $extbox("a0rf_vx")
-//
-(* ****** ****** *)
-//
-#absimpl
-a1rf_vt_i0_tx
-( a:vt,n:i0 ) = $extbox("a1rf_tx")
-#absimpl
-a1rf_vt_i0_vx
-( a:vt,n:i0 ) = $extbox("a1rf_vx")
+a1sz_vt_i0_vx
+(a: vt, n: i0) = $extbox("a1sz_vx")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 < a: vt >
-a0rf_lget
-  ( A ) =
+a1sz_length
+ {n:i0}( A ) =
 (
-XATS2PY_a0rf_lget
-  ( A )) where
+XATS2PL_a1sz_length
+ {a}{n}( A )) where
 {
 #extern
 fun
-XATS2PY_a0rf_lget
+XATS2PL_a1sz_length
 {a:vt}
-( A
-: a0rf(a))
-: (owed(a) | a) = $extnam()
-}
-//
-#impltmp
-< a: vt >
-a0rf_lset
-(f | A, x) =
-(
-XATS2PY_a0rf_lset
-  (f | A, x)) where
-{
-#extern
-fun
-XATS2PY_a0rf_lset
-{a:vt}
-(f:owed(a)
-|A:a0rf(a), x:a): void = $extnam()
+{n:i0}
+(A: a1sz(a, n)): sint(n) = $extnam()
 }
 //
 (* ****** ****** *)
@@ -94,52 +68,35 @@ XATS2PY_a0rf_lset
 //
 #impltmp
 < a: vt >
-a0rf_make_1val
-  ( x1 ) =
-(
-XATS2PY_a0rf_make_1val
-  ( x1 )) where
-{
-#extern
-fun
-XATS2PY_a0rf_make_1val
-{a:vt}( x1: a ): a0rf(a) = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< a: vt >
-a1rf_lget$at
+a1sz_lget$at
   (A, i) =
 (
-XATS2PY_a1rf_lget$at
+XATS2PL_a1sz_lget$at
   (A, i)) where
 {
 #extern
 fun
-XATS2PY_a1rf_lget$at
+XATS2PL_a1sz_lget$at
 {a:vt}
 ( A
-: a1rf(a)
+: a1sz(a)
 , i: nint): (owed(a) | a) = $extnam()
 }
 //
 #impltmp
 < a: vt >
-a1rf_lset$at
+a1sz_lset$at
   (f | A, i, x) =
 (
-XATS2PY_a1rf_lset$at
+XATS2PL_a1sz_lset$at
   (f | A, i, x)) where
 {
 #extern
 fun
-XATS2PY_a1rf_lset$at
+XATS2PL_a1sz_lset$at
 {a:vt}
 (f:owed(a)
-|A:a1rf(a),i:nint,x:a): void = $extnam()
+|A:a1sz(a),i:nint,x:a): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -147,38 +104,58 @@ XATS2PY_a1rf_lset$at
 //
 #impltmp
 < a: t0 >
-a1rf_make_ncpy
+a1sz_make_ncpy
   (n, x) =
 (
-XATS2PY_a1rf_make_ncpy
+XATS2PL_a1sz_make_ncpy
   (n, x)) where
 {
 #extern
 fun
-XATS2PY_a1rf_make_ncpy
-{a:t0}(n:nint, x:a): a1rf(a) = $extnam()
+XATS2PL_a1sz_make_ncpy
+{a:t0}(n:nint, x:a): a1sz(a) = $extnam()
 }
 //
 (* ****** ****** *)
 //
 #impltmp
 < a: vt >
-a1rf_make_nfun
+a1sz_make_nfun
   (n, f) =
 (
-XATS2PY_a1rf_make_nfun
+XATS2PL_a1sz_make_nfun
   (n, f)) where
 {
 #extern
 fun
-XATS2PY_a1rf_make_nfun
+XATS2PL_a1sz_make_nfun
 {a:t0}
-(n:nint, f:(nint)->(a)): a1rf(a) = $extnam()
+(n:nint, f:(nint)->(a)): a1sz(a) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+a1sz_make_fwork
+  (fwork) =
+(
+XATS2PL_a1sz_make_fwork
+  (fwork)) where
+{
+#extern
+fun
+XATS2PL_a1sz_make_fwork
+{ x0:vt }
+(
+fwork:
+((~x0) -> void) -> void): a1sz(x0) = $extnam()
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-XANADU/prelude/DATS/CATS/PY/axrf000.dats] *)
+(* end of [ATS3-XANADU/prelude/DATS/CATS/PL/axsz000.dats] *)
 (***********************************************************************)

@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,7 +30,7 @@
 //
 (*
 Author: Hongwei Xi
-Wed Jan  1 03:28:47 PM EST 2025
+Sun Sep  6 10:51:25 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -61,12 +61,12 @@ a1rf_vt_i0_vx
 a0rf_lget
   ( A ) =
 (
-XATS2PY_a0rf_lget
+XATS2PL_a0rf_lget
   ( A )) where
 {
 #extern
 fun
-XATS2PY_a0rf_lget
+XATS2PL_a0rf_lget
 {a:vt}
 ( A
 : a0rf(a))
@@ -78,12 +78,12 @@ XATS2PY_a0rf_lget
 a0rf_lset
 (f | A, x) =
 (
-XATS2PY_a0rf_lset
+XATS2PL_a0rf_lset
   (f | A, x)) where
 {
 #extern
 fun
-XATS2PY_a0rf_lset
+XATS2PL_a0rf_lset
 {a:vt}
 (f:owed(a)
 |A:a0rf(a), x:a): void = $extnam()
@@ -97,12 +97,12 @@ XATS2PY_a0rf_lset
 a0rf_make_1val
   ( x1 ) =
 (
-XATS2PY_a0rf_make_1val
+XATS2PL_a0rf_make_1val
   ( x1 )) where
 {
 #extern
 fun
-XATS2PY_a0rf_make_1val
+XATS2PL_a0rf_make_1val
 {a:vt}( x1: a ): a0rf(a) = $extnam()
 }
 //
@@ -114,12 +114,12 @@ XATS2PY_a0rf_make_1val
 a1rf_lget$at
   (A, i) =
 (
-XATS2PY_a1rf_lget$at
+XATS2PL_a1rf_lget$at
   (A, i)) where
 {
 #extern
 fun
-XATS2PY_a1rf_lget$at
+XATS2PL_a1rf_lget$at
 {a:vt}
 ( A
 : a1rf(a)
@@ -131,12 +131,12 @@ XATS2PY_a1rf_lget$at
 a1rf_lset$at
   (f | A, i, x) =
 (
-XATS2PY_a1rf_lset$at
+XATS2PL_a1rf_lset$at
   (f | A, i, x)) where
 {
 #extern
 fun
-XATS2PY_a1rf_lset$at
+XATS2PL_a1rf_lset$at
 {a:vt}
 (f:owed(a)
 |A:a1rf(a),i:nint,x:a): void = $extnam()
@@ -150,12 +150,12 @@ XATS2PY_a1rf_lset$at
 a1rf_make_ncpy
   (n, x) =
 (
-XATS2PY_a1rf_make_ncpy
+XATS2PL_a1rf_make_ncpy
   (n, x)) where
 {
 #extern
 fun
-XATS2PY_a1rf_make_ncpy
+XATS2PL_a1rf_make_ncpy
 {a:t0}(n:nint, x:a): a1rf(a) = $extnam()
 }
 //
@@ -166,12 +166,12 @@ XATS2PY_a1rf_make_ncpy
 a1rf_make_nfun
   (n, f) =
 (
-XATS2PY_a1rf_make_nfun
+XATS2PL_a1rf_make_nfun
   (n, f)) where
 {
 #extern
 fun
-XATS2PY_a1rf_make_nfun
+XATS2PL_a1rf_make_nfun
 {a:t0}
 (n:nint, f:(nint)->(a)): a1rf(a) = $extnam()
 }
@@ -180,5 +180,5 @@ XATS2PY_a1rf_make_nfun
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-XANADU/prelude/DATS/CATS/PY/axrf000.dats] *)
+(* end of [ATS3-XANADU/prelude/DATS/CATS/PL/axrf000.dats] *)
 (***********************************************************************)

@@ -29,85 +29,146 @@
 ########################################################################.
 ##
 ## Author: Hongwei Xi
-## Sun Sep  6 12:08:27 AM EDT 2026
+## Sun Sep  6 11:33:33 AM EDT 2026
 ## Authoremail: gmhwxiATgmailDOTcom
 ##
 ########################################################################.
 ########################################################################.
 ##
-## Translated by Codex
-## from ./../PY/char000.cats
+use POSIX ();
 ##
 ########################################################################.
 ##
 sub
-XATS2PL_char_lt {
-  my ($c1, $c2) = @_;
-  return ($c1 < $c2);
+XATS2PL_dflt_lt_dflt {
+  my ($f1, $f2) = @_;
+  return ($f1 < $f2);
 }
 ##
 sub
-XATS2PL_char_gt {
-  my ($c1, $c2) = @_;
-  return ($c1 > $c2);
+XATS2PL_dflt_gt_dflt {
+  my ($f1, $f2) = @_;
+  return ($f1 > $f2);
 }
 ##
 sub
-XATS2PL_char_eq {
-  my ($c1, $c2) = @_;
-  return ($c1 == $c2);
+XATS2PL_dflt_eq_dflt {
+  my ($f1, $f2) = @_;
+  return ($f1 == $f2);
 }
 ##
 sub
-XATS2PL_char_lte {
-  my ($c1, $c2) = @_;
-  return ($c1 <= $c2);
+XATS2PL_dflt_lte_dflt {
+  my ($f1, $f2) = @_;
+  return ($f1 <= $f2);
 }
 ##
 sub
-XATS2PL_char_gte {
-  my ($c1, $c2) = @_;
-  return ($c1 >= $c2);
+XATS2PL_dflt_gte_dflt {
+  my ($f1, $f2) = @_;
+  return ($f1 >= $f2);
 }
 ##
 sub
-XATS2PL_char_neq {
-  my ($c1, $c2) = @_;
-  return ($c1 != $c2);
-}
-##
-########################################################################.
-##
-sub
-XATS2PL_char_add_sint {
-  my ($c1, $i2) = @_;
-  return (($c1 + $i2) % 256); ## char=int8
+XATS2PL_dflt_neq_dflt {
+  my ($f1, $f2) = @_;
+  return ($f1 != $f2);
 }
 ##
 sub
-XATS2PL_char_sub_char {
-  my ($c1, $c2) = @_;
-  return ($c1 - $c2);
-}
-##
-sub
-XATS2PL_char_make_sint {
-  my ($i0) = @_; return $i0;
-}
-##
-sub
-XATS2PL_sint_make_char {
-  my ($ch) = @_; return $ch;
+XATS2PL_dflt_neg {
+  my ($f1) = @_;
+  return -$f1;
 }
 ##
 ########################################################################.
 ##
 sub
-XATS2PL_char_print {
-  my ($c0) = @_;
-  XATS2PL_strn_print(chr($c0)); return;
+XATS2PL_dflt_add_dflt {
+  my ($f1, $f2) = @_;
+  return ($f1 + $f2);
+}
+##
+sub
+XATS2PL_dflt_sub_dflt {
+  my ($f1, $f2) = @_;
+  return ($f1 - $f2);
+}
+##
+sub
+XATS2PL_dflt_mul_dflt {
+  my ($f1, $f2) = @_;
+  return ($f1 * $f2);
+}
+##
+sub
+XATS2PL_dflt_abs {
+  my ($df) = @_;
+  return $df >= 0.0 ? $df : -$df;
+}
+##
+sub
+XATS2PL_dflt_sqrt {
+  my ($df) = @_;
+  return sqrt($df);
+}
+##
+sub
+XATS2PL_dflt_cbrt {
+  my ($df) = @_;
+  return POSIX::cbrt($df);
+}
+##
+sub
+XATS2PL_dflt_ceil {
+  my ($df) = @_;
+  return POSIX::ceil($df);
+}
+##
+sub
+XATS2PL_dflt_floor {
+  my ($df) = @_;
+  return POSIX::floor($df);
+}
+##
+sub
+XATS2PL_dflt_trunc {
+  my ($df) = @_;
+  return POSIX::trunc($df);
+}
+##
+sub
+XATS2PL_dflt_div_dflt {
+  my ($f1, $f2) = @_;
+  return ($f1 / $f2);
+}
+##
+sub
+XATS2PL_dflt_mod_dflt {
+  my ($f1, $f2) = @_;
+  ## Perl % coerces to integers;
+  ## [fmod] preserves the fractional part.
+  my $r = POSIX::fmod($f1, $f2);
+  if ($r == 0.0) {
+    $r = POSIX::copysign(0.0, $f2);
+  } else {
+    $r += $f2 if (($r < 0.0) != ($f2 < 0.0));
+  }
+  return $r;
 }
 ##
 ########################################################################.
-## end of [ATS3-XANADU/prelude/DATS/CATS/PL/char000.cats]
+##
+sub
+XATS2PL_dflt_round {
+  my ($df) = @_;
+  my $lo = POSIX::floor($df);
+  my $frac = $df - $lo;
+  return $lo if $frac < 0.5;
+  return $lo + 1 if $frac > 0.5;
+  return POSIX::fmod($lo, 2.0) == 0.0 ? $lo : $lo + 1;
+}
+##
+########################################################################.
+## end of [ATS3/XANADU_prelude_DATS_CATS_PL_gflt000.cats]
 ########################################################################.

@@ -29,44 +29,19 @@
 ########################################################################.
 ##
 ## Author: Hongwei Xi
-## Sun Sep  6 10:28:50 AM EDT 2026
+## Sun Sep  6 11:33:33 AM EDT 2026
 ## Authoremail: gmhwxiATgmailDOTcom
 ##
 ########################################################################.
 ########################################################################.
 ##
-## Translated by Codex
-## from ./../PY/list000.cats
-##
-########################################################################.
-##
 sub
-XATS2PL_list_vt_foritm0_f1un {
-  my ($xs, $work) = @_;
-  while (!XATS2PL_list_vt_nilq1($xs)) {
-    my $x1 = XATS2PL_list_vt_head_raw1($xs);
-    $work->($x1);
-    $xs = XATS2PL_list_vt_tail_raw0($xs);
-  }
+XATS2PL_bool_assert_errmsg {
+  my ($cond, $emsg) = @_;
+  die "XATS2PL_bool_assert_errmsg: emsg = " . $emsg . "\n" unless $cond;
   return;
 }
 ##
-sub
-XATS2PL_list_vt_forall0_f1un {
-  my ($xs, $test, $free) = @_;
-  while (!XATS2PL_list_vt_nilq1($xs)) {
-    my $x1 = XATS2PL_list_vt_head_raw1($xs);
-    if ($test->($x1)) {
-      $xs = XATS2PL_list_vt_tail_raw0($xs);
-    } else {
-      $xs = XATS2PL_list_vt_tail_raw0($xs);
-      XATS2PL_list_vt_foritm0_f1un($xs, $free);
-      return 0;
-    }
-  }
-  return 1;
-}
-##
 ########################################################################.
-## end of [ATS3-XANADU/prelude/DATS/CATS/PL/list000.cats]
+## end of [ATS3-XANADU/prelude/DATS/CATS/PL/gdbg000.cats]
 ########################################################################.
