@@ -33,8 +33,8 @@ xats2pl_dynexp.dats \
 xats2pl_decl00.dats \
 pl1emit.dats \
 pl1emit_utils0.dats \
+pl1emit_dynexp.dats \
 pl1emit_decl00.dats \
-# pl1emit_dynexp.dats \
 #
 ########################################################################
 ########################################################################
