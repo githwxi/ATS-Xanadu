@@ -17,5 +17,5 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3_XANADU_srcgen2_prelude_prelude_JS_dats.hats] *)
+(* end of [ATS3-XANADU/srcgen2/prelude/HATS/prelude_JS_dats.hats] *)
 (***********************************************************************)

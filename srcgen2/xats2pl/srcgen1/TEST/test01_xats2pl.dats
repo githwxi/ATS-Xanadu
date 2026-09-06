@@ -1,8 +1,8 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2024-11-30:
-For testing xats2py!
+HX-2026-09-05:
+For testing xats2pl!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -17,46 +17,44 @@ For testing xats2py!
 //
 #include
 "srcgen2\
-/prelude/HATS/prelude_PY_dats.hats"
+/prelude/HATS/prelude_PL_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+val N1 = 5
+val N2 = (N1+N1)
+val N3 = (N1*N2)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fact1
+(x: sint): sint =
+if (x > 0)
+then x * fact1(x-1) else 1
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-list_vt_inc1by
-(xs: !list_vt(sint)): void =
+fact2
+(x: sint): sint =
 (
-case+ xs of
-|
-list_vt_nil() => ()
-|
-list_vt_cons(!x1, xs) =>
-(x1 := x1 + 1; list_vt_inc1by(xs))
-)
+case+ x <= 0 of
+| true => 1
+| false => x * fact2(x-1))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val xs =
-list_vt_3val(1, 2, 3)
 val () =
-let
-val ys = list_vt2t(xs)
-in
-  prints("xs = ", ys, "\n") end
-//
+prints("fact1(10) = ", fact1(10), "\n")
 val () =
-(
-  list_vt_inc1by(xs))
-val () =
-let
-val ys = list_vt2t(xs)
-in
-  prints("xs = ", ys, "\n") end
+prints("fact2(10) = ", fact2(10), "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_TEST_test02_xats2py.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_TEST_test01_xats2pl.dats] *)
 (***********************************************************************)
