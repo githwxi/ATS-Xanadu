@@ -4,7 +4,7 @@
 HX-2025-01-01:
 This is for loading
 ATS3_XANADU/
-prelude/DATS/CATS/PY
+prelude/DATS/CATS/PL
 (*
 Wed Jan  1 03:18:54 PM EST 2025
 *)
@@ -13,60 +13,60 @@ Wed Jan  1 03:18:54 PM EST 2025
 (* ****** ****** *)
 //
 #staload // XTOP
-"prelude/DATS/CATS/PY/xtop000.dats"
+"prelude/DATS/CATS/PL/xtop000.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload _ =
-"prelude/DATS/CATS/PY/gbas000.dats"
+"prelude/DATS/CATS/PL/gbas000.dats"
 #staload _ =
-"prelude/DATS/CATS/PY/gdbg000.dats"
+"prelude/DATS/CATS/PL/gdbg000.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload _ =
-"prelude/DATS/CATS/PY/bool000.dats"
+"prelude/DATS/CATS/PL/bool000.dats"
 #staload _ =
-"prelude/DATS/CATS/PY/char000.dats"
+"prelude/DATS/CATS/PL/char000.dats"
 #staload _ =
-"prelude/DATS/CATS/PY/gint000.dats"
+"prelude/DATS/CATS/PL/gint000.dats"
 #staload _ =
-"prelude/DATS/CATS/PY/gflt000.dats"
+"prelude/DATS/CATS/PL/gflt000.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload _ =
-"prelude/DATS/CATS/PY/strn000.dats"
+"prelude/DATS/CATS/PL/strn000.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload _ =
-"prelude/DATS/CATS/PY/list000.dats"
+"prelude/DATS/CATS/PL/list000.dats"
 #staload _ =
-"prelude/DATS/CATS/PY/optn000.dats"
+"prelude/DATS/CATS/PL/optn000.dats"
 //
 (* ****** ****** *)
 //
 #staload _ =
-"prelude/DATS/CATS/PY/strm000.dats"
+"prelude/DATS/CATS/PL/strm000.dats"
 #staload _ =
-"prelude/DATS/CATS/PY/strx000.dats"
+"prelude/DATS/CATS/PL/strx000.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload _ =
-"prelude/DATS/CATS/PY/axrf000.dats"
+"prelude/DATS/CATS/PL/axrf000.dats"
 #staload _ =
-"prelude/DATS/CATS/PY/axsz000.dats"
+"prelude/DATS/CATS/PL/axsz000.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-XANADU/prelude/HATS/prelude_PY_dats.hats] *)
+(* end of [ATS3-XANADU/prelude/HATS/prelude_PL_dats.hats] *)
 (***********************************************************************)
