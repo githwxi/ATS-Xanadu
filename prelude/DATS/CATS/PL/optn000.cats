@@ -29,69 +29,15 @@
 ########################################################################.
 ##
 ## Author: Hongwei Xi
-## Sun Sep  6 10:28:50 AM EDT 2026
+## Sat Jan  3 05:24:14 PM EST 2026
 ## Authoremail: gmhwxiATgmailDOTcom
 ##
 ########################################################################.
-########################################################################.
 ##
-## Translated by Codex
-## from ./../PY/strm000.cats
-##
-########################################################################.
-##
-sub
-XATS2PL_strm_vt_forall0_f1un {
-  my ($fxs, $test) = @_;
-  while (1) {
-    my $cxs = XATS2PL_lazy_vt_eval($fxs);
-    last if XATS2PL_strmcon_vt_nilq1($cxs);
-    my $x01 = XATS2PL_strmcon_vt_head_raw1($cxs);
-    if ($test->($x01)) {
-      $fxs = XATS2PL_strmcon_vt_tail_raw0($cxs);
-    } else {
-      $fxs = XATS2PL_strmcon_vt_tail_raw0($cxs);
-      XATS2PL_lazy_vt_free($fxs);
-      return 0;
-    }
-  }
-  return 1;
-}
-##
-########################################################################.
-##
-sub
-XATS2PL_strm_vt_filter0_f1un {
-  my ($fxs, $test, $free) = @_;
-  return XATS2PL_lazy_vt_make_f0un(sub {
-    return XATS2PL_strmcon_vt_filter0_f1un(
-      XATS2PL_lazy_vt_eval($fxs), $test, $free);
-  });
-}
-##
-sub XATS2PL_strmcon_vt_filter0_f1un {
-  my ($cxs, $test, $free) = @_;
-  while (1) {
-    if ## if
-    (
-      XATS2PL_strmcon_vt_nilq1($cxs)
-    ) { ## then
-      return XATS2PL_strmcon_vt_nil();
-    }
-    my $x01 = XATS2PL_strmcon_vt_head_raw1($cxs);
-    my $fxs = XATS2PL_strmcon_vt_tail_raw0($cxs);
-    if ($test->($x01)) {
-      return XATS2PL_strmcon_vt_cons(
-        $x01, XATS2PL_strm_vt_filter0_f1un($fxs, $test, $free));
-    } else {
-      $free->($x01);
-      $cxs = XATS2PL_lazy_vt_eval($fxs);
-    }
-  }
-}
+## HX-2026-09-06: Nothing yet!
 ##
 ########################################################################.
 ########################################################################.
-## end of [ATS3-XANADU/prelude/DATS/CATS/PL/strm000.cats]
+## end of [ATS3/XANADU_prelude_DATS_CATS_PL_optn000.cats]
 ########################################################################.
 ########################################################################.
