@@ -36,35 +36,54 @@
 ########################################################################.
 ##
 ## Translated
-## from ./..PY/list000.cats
+## from ./..PY/strm000.cats
 ##
-sub
-XATS2PL_list_vt_foritm0_f1un {
-  my ($xs, $work) = @_;
-  while (!XATS2PL_list_vt_nilq1($xs)) {
-    my $x1 = XATS2PL_list_vt_head_raw1($xs);
-    $work->($x1);
-    $xs = XATS2PL_list_vt_tail_raw0($xs);
-  }
-  return;
-}
-##
-sub
-XATS2PL_list_vt_forall0_f1un {
-  my ($xs, $test, $free) = @_;
-  while (!XATS2PL_list_vt_nilq1($xs)) {
-    my $x1 = XATS2PL_list_vt_head_raw1($xs);
-    if ($test->($x1)) {
-      $xs = XATS2PL_list_vt_tail_raw0($xs);
+sub XATS2PL_strm_vt_forall0_f1un {
+  my ($fxs, $test) = @_;
+  while (1) {
+    my $cxs = XATS2PL_lazy_vt_eval($fxs);
+    last if XATS2PL_strmcon_vt_nilq1($cxs);
+    my $x01 = XATS2PL_strmcon_vt_head_raw1($cxs);
+    if ($test->($x01)) {
+      $fxs = XATS2PL_strmcon_vt_tail_raw0($cxs);
     } else {
-      $xs = XATS2PL_list_vt_tail_raw0($xs);
-      XATS2PL_list_vt_foritm0_f1un($xs, $free);
+      $fxs = XATS2PL_strmcon_vt_tail_raw0($cxs);
+      XATS2PL_lazy_vt_free($fxs);
       return 0;
     }
   }
   return 1;
 }
 ##
+sub XATS2PL_strm_vt_filter0_f1un {
+  my ($fxs, $test, $free) = @_;
+  return XATS2PL_lazy_vt_make_f0un(sub {
+    return XATS2PL_strmcon_vt_filter0_f1un(
+      XATS2PL_lazy_vt_eval($fxs), $test, $free);
+  });
+}
+##
+sub XATS2PL_strmcon_vt_filter0_f1un {
+  my ($cxs, $test, $free) = @_;
+  while (1) {
+    if ## if
+    (
+      XATS2PL_strmcon_vt_nilq1($cxs)
+    ) { ## then
+      return XATS2PL_strmcon_vt_nil();
+    }
+    my $x01 = XATS2PL_strmcon_vt_head_raw1($cxs);
+    my $fxs = XATS2PL_strmcon_vt_tail_raw0($cxs);
+    if ($test->($x01)) {
+      return XATS2PL_strmcon_vt_cons(
+        $x01, XATS2PL_strm_vt_filter0_f1un($fxs, $test, $free));
+    } else {
+      $free->($x01);
+      $cxs = XATS2PL_lazy_vt_eval($fxs);
+    }
+  }
+}
+##
 ########################################################################.
-## end of [ATS3-XANADU/prelude/DATS/CATS/PL/list000.cats]
+## end of [ATS3-XANADU/prelude/DATS/CATS/PL/strm000.cats]
 ########################################################################.
