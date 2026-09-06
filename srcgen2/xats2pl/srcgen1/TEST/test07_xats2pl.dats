@@ -1,8 +1,8 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2024-11-30:
-For testing xats2py!
+HX-2026-09-05:
+For testing xats2pl!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -14,7 +14,7 @@ For testing xats2py!
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
-"prelude/HATS/prelude_PY_dats.hats"
+"prelude/HATS/prelude_PL_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -107,5 +107,5 @@ val () = prints("isAVL(t6) = ", tree_isAVL(t6), "\n")
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_TEST_test07_xats2py.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_TEST_test07_xats2pl.dats] *)
 (***********************************************************************)

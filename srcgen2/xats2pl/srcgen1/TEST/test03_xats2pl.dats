@@ -1,16 +1,34 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2024-11-30:
-For testing xats2py!
+HX-2026-09-05:
+For testing xats2pl!
 *)
+(* ****** ****** *)
+(* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
-"prelude/HATS/prelude_PY_dats.hats"
+"prelude/HATS/prelude_PL_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+val N1 = 5
+val N2 = (N1+N1)
+val N3 = (N1*N2)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+foo
+( x0
+: &(?int) >> int
+) : void = (x0 := 10)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -25,16 +43,26 @@ then x * fact1(x-1) else 1
 (* ****** ****** *)
 //
 fun
+fibo1
+(x: sint): sint =
+if (x >= 2)
+then
+fibo1(x-2)+fibo1(x-1) else x
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 fact2
 (x: sint): sint =
 (
-  loop(x, 1)) where
+  loop@(x, 1)) where
 {
 fun
 loop
-(x: sint, r: sint): sint =
+@(x: sint, r: sint): sint =
 if (x > 0)
-then loop(x-1, x*r) else (r)
+then loop@(x-1, x*r) else (r)
 }
 //
 (* ****** ****** *)
@@ -85,14 +113,12 @@ fun
 fibo4
 (x: sint): sint =
 (
-loop@{
-x=x, rr=$tpl(0, 1)}) where
+loop@{x=x, rr=(0, 1)}) where
 {
 fun
 loop
 (xrr:
-@{x=sint
- ,rr=$tpl(sint, sint)}) =
+@{x=sint, rr=(sint, sint)}) =
 if
 xrr.x >= 2
 then // if-then
@@ -102,8 +128,7 @@ loop
 x=
 (xrr.x)-1,
 rr=
-$tpl(
-xrr.rr.1, xrr.rr.0+xrr.rr.1)})
+(xrr.rr.1, xrr.rr.0+xrr.rr.1)})
 else // if-else
 (
 if
@@ -114,11 +139,29 @@ then (xrr.rr.1) else (xrr.rr.0))
 (* ****** ****** *)
 (* ****** ****** *)
 val () =
-(
-  prints("fibo4(10) = ", fibo4(10), "\n"))
+prints("fact1(10) = ", fact1(10), "\n")
+(* ****** ****** *)
+val () =
+prints("fibo1(10) = ", fibo1(10), "\n")
+(* ****** ****** *)
+val () =
+prints("fibo2(10) = ", fibo2(10), "\n")
+(* ****** ****** *)
+val () =
+prints("fibo3(10) = ", fibo3(10), "\n")
+(* ****** ****** *)
+val () =
+prints("fibo4(10) = ", fibo4(10), "\n")
+(* ****** ****** *)
+//
+val () =
+let var x0: sint in
+foo(x0);
+prints("fibo1(x0) = ", fibo1(x0), "\n") end
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_TEST_test05_xats2py.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_TEST_test03_xats2pl.dats] *)
 (***********************************************************************)

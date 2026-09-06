@@ -11,18 +11,10 @@ For testing xats2py!
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
+"prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
 #include
-"srcgen2\
-/prelude/HATS/prelude_PY_dats.hats"
-(* ****** ****** *)
-(*
-#include
-"srcgen2\
-/prelude/HATS/prelude_NODE_dats.hats"
-*)
+"prelude/HATS/prelude_PY_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //

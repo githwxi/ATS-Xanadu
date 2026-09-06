@@ -12,11 +12,9 @@ For testing xats2py!
 (* ****** ****** *)
 //
 #include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
+"prelude/HATS/prelude_dats.hats"
 #include
-"srcgen2\
-/prelude/HATS/prelude_PY_dats.hats"
+"prelude/HATS/prelude_PY_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -72,5 +70,5 @@ val () = prints
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test08_xats2js.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_TEST_test08_xats2py.dats] *)
 (***********************************************************************)

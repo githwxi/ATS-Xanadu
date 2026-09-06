@@ -1,8 +1,8 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2024-11-30:
-For testing xats2py!
+HX-2026-09-05:
+For testing xats2pl!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -14,44 +14,43 @@ For testing xats2py!
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
-"prelude/HATS/prelude_PY_dats.hats"
+"prelude/HATS/prelude_PL_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
-val N1 = 5
-val N2 = (N1+N1)
-val N3 = (N1*N2)
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-fact1
-(x: sint): sint =
-if (x > 0)
-then x * fact1(x-1) else 1
-//
+
+#abstbox board_tbox
+#typedef board = board_tbox
+
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-fact2
-(x: sint): sint =
-(
-case+ x <= 0 of
-| true => 1
-| false => x * fact2(x-1))
+<a:vt>
+raiseErrorExn
+  ( (*0*) ): a = $raise ErrorExn()
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () =
-prints("fact1(10) = ", fact1(10), "\n")
-val () =
-prints("fact2(10) = ", fact2(10), "\n")
+#extern
+fun
+board_nil
+((*void*)): board = raiseErrorExn()
+#extern
+fun
+board_cons
+( x0: sint
+, xs: board): board = raiseErrorExn()
+//
+#extern
+fun
+board_forall
+  (xs: board): bool = raiseErrorExn()
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_TEST_test01_xats2py.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_TEST_test09_xats2pl.dats] *)
 (***********************************************************************)

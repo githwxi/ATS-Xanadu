@@ -7,9 +7,8 @@
 //
 #include
 "prelude/HATS/prelude_dats.hats"
-//
 #include
-"prelude/HATS/prelude_PY_dats.hats"
+"prelude/HATS/prelude_PL_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -59,5 +58,5 @@ val () = printsln("x0 = ", x0)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_TEST_testxx_mydebug.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_TEST_testxx_mydebug.dats] *)
 (***********************************************************************)

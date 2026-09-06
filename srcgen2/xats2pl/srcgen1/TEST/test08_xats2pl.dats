@@ -18,40 +18,57 @@ For testing xats2pl!
 //
 (* ****** ****** *)
 (* ****** ****** *)
-val N1 = 5
-val N2 = (N1+N1)
-val N3 = (N1*N2)
-(* ****** ****** *)
-(* ****** ****** *)
 //
-fun
-fact1
-(x: sint): sint =
-if (x > 0)
-then x * fact1(x-1) else 1
+#symload sum0 with gseq_sum0
+#symload prod0 with gseq_prod0
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2024-01-03:
+More than 10 template layers!
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 //
-fun
-fact2
-(x: sint): sint =
+val fact =
+fix f(x:nint): nint =>
 (
-case+ x <= 0 of
-| true => 1
-| false => x * fact2(x-1))
+if
+(x > 0)
+then x * f(x-1) else 1)
+val (  ) =
+prints
+("fact(10) = ", fact(10), "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () =
-prints("fact1(10) = ", fact1(10), "\n")
-val () =
-prints("fact2(10) = ", fact2(10), "\n")
+fun
+nsum0_tail
+  (x: sint): sint =
+(
+  sum0(tail0(nint_strmize(x+1))))
+//
+(* ****** ****** *)
+//
+fun
+fact1_prod_tail
+  (x: sint): sint =
+(
+  prod0(tail0(nint_strmize(x+1))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () = prints
+("nsum0_tail(10)=",nsum0_tail(10),"\n")
+val () = prints
+("fact1_prod_tail(10)=",fact1_prod_tail(10),"\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_TEST_test01_xats2pl.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_TEST_test08_xats2pl.dats] *)
 (***********************************************************************)
