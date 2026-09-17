@@ -40,41 +40,52 @@
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_a0rf_lget {
+my
+$XATS2PL_a0rf_lget =
+sub {
   my ($A) = @_;
   return $A->[0];
 }
+;
 ##
-sub
-XATS2PL_a0rf_lset {
+my
+$XATS2PL_a0rf_lset =
+sub {
   my ($A, $x1) = @_;
   $A->[0] = $x1; return;
 }
+;
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_a1rf_lget_at {
+my
+$XATS2PL_a1rf_lget_at =
+sub {
   my ($A, $i0) = @_;
   return ($A->[$i0]);
 }
+;
 ##
-sub
-XATS2PL_a1rf_lset_at {
+my
+$XATS2PL_a1rf_lset_at =
+sub {
   my ($A, $i0, $x1) = @_;
   $A->[$i0] = $x1; return;
 }
+;
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_a0rf_make_1val {
+my
+$XATS2PL_a0rf_make_1val =
+sub {
   my ($x0) = @_; return [$x0];
 }
+;
 ##
-sub
-XATS2PL_a1rf_make_ncpy {
+my
+$XATS2PL_a1rf_make_ncpy =
+sub {
   my ($n0, $x0) = @_;
   my $A0 = [];
   for ## for
@@ -84,9 +95,11 @@ XATS2PL_a1rf_make_ncpy {
   }
   return $A0;
 }
+;
 ##
-sub
-XATS2PL_a1rf_make_nfun {
+my
+$XATS2PL_a1rf_make_nfun =
+sub {
   my ($n0, $fopr) = @_;
   my $A0 = [];
   for
@@ -95,6 +108,7 @@ XATS2PL_a1rf_make_nfun {
   }
   return $A0;
 }
+;
 ########################################################################.
 ########################################################################.
 ## end of [ATS3/XANADU_prelude_DATS_CATS_PL_axrf000.cats]

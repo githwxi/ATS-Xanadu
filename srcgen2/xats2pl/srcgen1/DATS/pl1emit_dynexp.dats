@@ -127,6 +127,11 @@ fprintln
 (filr: FILR): void =
 (
 strn_fprint("\n",filr))//endfun
+fun
+smiclnln
+(filr: FILR): void =
+(
+strn_fprint(";\n",filr))//endfun
 //
 (* ****** ****** *)
 //
@@ -1650,7 +1655,7 @@ pl1emit_i1letlst(env0, ilts)
 val () =
 let
 nindfpr(filr, nind);i1tnmpl1(filr, itnm);
-strnfpr(filr, " = ");i1valpl1(filr, ival);fprintln(filr)
+strnfpr(filr, " = ");i1valpl1(filr, ival);smiclnln(filr)
 end//let
 //
 end//let//end-of-[f0_i1tnmcmp(...)]
@@ -1689,7 +1694,7 @@ nindstrnfpr(filr, nind, "if (");
 i0pckpl1
 (filr, ival, ipat);strnfpr(filr, "): ## { // gpt\n");
 nindfpr(filr,nind+2);i1tnmpl1(filr, itnm);
-strnfpr(filr,(" = "));i1valpl1(filr, ival);fprintln(filr)
+strnfpr(filr,(" = "));i1valpl1(filr, ival);smiclnln(filr)
 )(* end-of-[I1BNDcons(...)] *)
 )
 //
@@ -1707,7 +1712,7 @@ nindstrnfpr
 i0pckpl1
 (filr, ival, ipat);strnfpr(filr, "): ## { // gpt\n");
 nindfpr(filr,nind+2);i1tnmpl1(filr, itnm);
-strnfpr(filr,(" = "));i1valpl1(filr, ival);fprintln(filr)
+strnfpr(filr,(" = "));i1valpl1(filr, ival);smiclnln(filr)
 )(* end-of-[I1BNDcons(...)] *)
 )
 //
@@ -2081,7 +2086,7 @@ f1_i1ins
 nindfpr(filr, nind);
 i1tnmpl1(filr, itnm);
 strnfpr(filr, " = ");
-i1inspl1(filr, iins);fprintln(filr))
+i1inspl1(filr, iins);smiclnln(filr))
 //
 in//let
 //
@@ -2143,7 +2148,7 @@ nindstrnfpr
 t1impdcl(filr, timp);fprintln(filr);
 //
 nindstrnfpr
-(filr, nind, "def ");
+(filr, nind, "## def(I1INStimp)\n");
 i1tnmpl1(filr, itnm);
 f0_t1imp(env0, timp);fprintln(filr))
 |
@@ -2162,7 +2167,7 @@ nindstrnfpr
 t1impdcl(filr, timp);fprintln(filr);
 //
 nindfpr(filr, nind);
-i1tnmpl1(filr, itnm);strnfpr(filr, " = None\n"))}
+i1tnmpl1(filr, itnm);strnfpr(filr, " = undef;\n"))}
 //
 end//let//end-of-[I1INStimp(...)]
 //
@@ -2181,7 +2186,7 @@ val () =
 (
 nindfpr(filr, nind);
 i1tnmpl1(filr, itnm);
-strnfpr(filr, " = None\n"))
+strnfpr(filr, " = undef;\n"))
 //
 val () =
 (
@@ -2208,7 +2213,7 @@ val () =
 (
 nindfpr(filr, nind);
 i1tnmpl1(filr, itnm);
-strnfpr(filr, " = None\n"))
+strnfpr(filr, " = undef;\n"))
 //
 val () =
 (
@@ -2232,7 +2237,7 @@ case+ iels of
 (
 nindstrnfpr
 (filr, nind,
-"## else: None\n"))//no-else
+"## else: undef\n"))//no-else
 |optn_cons(icmp) =>
 (
 nindstrnfpr
@@ -2256,7 +2261,7 @@ let
 val () =
 (
 nindfpr(filr, nind);
-i1tnmpl1(filr, itnm);strnfpr(filr, " = None\n"))
+i1tnmpl1(filr, itnm);strnfpr(filr, " = undef;\n"))
 //
 val () =
 (
@@ -2314,7 +2319,7 @@ envx2js_decnind
 //
 nindfpr(filr, nind);
 i1tnmpl1(filr, itnm);
-strnfpr(filr," = None\n");
+strnfpr(filr," = undef;\n");
 //
 nindstrnfpr
 (filr, nind, "def ");
@@ -2335,7 +2340,7 @@ envx2js_decnind
 nindstrnfpr(filr, nind, "## } // end(fix0)\n"));
 //
 nindfpr(filr, nind);i1tnmpl1(filr, itnm);
-strnfpr(filr," = ");d2varfpr(filr, dvar);fprintln(filr)
+strnfpr(filr," = ");d2varfpr(filr, dvar);smiclnln(filr)
 )
 //
 (* ****** ****** *)
@@ -2349,7 +2354,7 @@ let
 val () =
 (
 nindfpr(filr, nind);
-i1tnmpl1(filr, itnm);strnfpr(filr, " = None\n"))
+i1tnmpl1(filr, itnm);strnfpr(filr, " = undef;\n"))
 //
 val () =
 (
@@ -2415,7 +2420,7 @@ nindfpr(filr, nind);
 i1tnmpl1(filr, itnm);
 strnfpr(filr, " = ");
 strnfpr(filr, "XATS000_l0azy(");
-i1tnmpl1(filr, itnm);strnfpr(filr, "_)");fprintln(filr)))
+i1tnmpl1(filr, itnm);strnfpr(filr, "_)");smiclnln(filr)))
 )
 //
 (* ****** ****** *)
@@ -2443,7 +2448,7 @@ nindstrnfpr(filr, nind, "## } // end(l1azy)");fprintln(filr)))
 | _(* otherwise *) =>
 (
 nindfpr(filr, nind);
-i1tnmpl1(filr, itnm);strnfpr(filr, " = ");i1inspl1(filr, iins);fprintln(filr))
+i1tnmpl1(filr, itnm);strnfpr(filr, " = ");i1inspl1(filr, iins);smiclnln(filr))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2536,7 +2541,7 @@ case+ ibnd of
 |
 I1BNDcons(itnm, i0p1, dvvs) =>
 (
-nindfpr(filr,nind);prints(itnm, " = ", "arg", i0, "\n"))
+nindfpr(filr,nind);prints(itnm, " = ", "arg", i0, ";\n"))
 }
 )
 //

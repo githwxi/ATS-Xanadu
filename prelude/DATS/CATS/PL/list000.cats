@@ -40,8 +40,9 @@
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_list_vt_foritm0_f1un {
+my
+$XATS2PL_list_vt_foritm0_f1un =
+sub {
   my ($xs, $work) = @_;
   while (!XATS2PL_list_vt_nilq1($xs)) {
     my $x1 = XATS2PL_list_vt_head_raw1($xs);
@@ -50,9 +51,11 @@ XATS2PL_list_vt_foritm0_f1un {
   }
   return;
 }
+;
 ##
-sub
-XATS2PL_list_vt_forall0_f1un {
+my
+$XATS2PL_list_vt_forall0_f1un =
+sub {
   my ($xs, $test, $free) = @_;
   while (!XATS2PL_list_vt_nilq1($xs)) {
     my $x1 = XATS2PL_list_vt_head_raw1($xs);
@@ -66,6 +69,7 @@ XATS2PL_list_vt_forall0_f1un {
   }
   return 1;
 }
+;
 ##
 ########################################################################.
 ########################################################################.

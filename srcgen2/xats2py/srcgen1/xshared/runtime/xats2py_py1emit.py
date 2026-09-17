@@ -184,7 +184,8 @@ def XATS000_lvset(lval, rval):
   if (ctag == 0):
     lval[1][0] = rval; return
   if (ctag == 1+0):
-    return XATS000_lvset(lval[1], XATS000_ftset(XATS000_lvget(lval[1]), lval[2], rval))
+    return XATS000_lvset(lval[1], \
+      XATS000_ftset(XATS000_lvget(lval[1]), lval[2], rval))
   if (ctag == 1+1):
     lval[1][lval[2]] = rval; return
   if (ctag == 1+2):
@@ -194,9 +195,11 @@ def XATS000_ftset(tpl0, idx1, rval):
   tpl1 = tpl0.copy(); tpl1[idx1] = rval; return tpl1
 ##
 ########################################################################.
+##
 class X2PYExcptn(Exception):
     pass
 ## end of [class X2PYExcptn]
+##
 ########################################################################.
 ##
 def XATS000_raise(xcon): raise(X2PYExcptn(xcon))

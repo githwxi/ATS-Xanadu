@@ -39,112 +39,106 @@ use POSIX ();
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_dflt_lt_dflt {
+my
+$XATS2PL_dflt_lt_dflt =
+sub {
   my ($f1, $f2) = @_;
   return ($f1 < $f2);
 }
+;
 ##
-sub
-XATS2PL_dflt_gt_dflt {
+my
+$XATS2PL_dflt_gt_dflt =
+sub {
   my ($f1, $f2) = @_;
   return ($f1 > $f2);
 }
+;
 ##
-sub
-XATS2PL_dflt_eq_dflt {
+my
+$XATS2PL_dflt_eq_dflt =
+sub {
   my ($f1, $f2) = @_;
   return ($f1 == $f2);
 }
+;
 ##
-sub
-XATS2PL_dflt_lte_dflt {
+my
+$XATS2PL_dflt_lte_dflt =
+sub {
   my ($f1, $f2) = @_;
   return ($f1 <= $f2);
 }
+;
 ##
-sub
-XATS2PL_dflt_gte_dflt {
+my
+$XATS2PL_dflt_gte_dflt =
+sub {
   my ($f1, $f2) = @_;
   return ($f1 >= $f2);
 }
+;
 ##
-sub
-XATS2PL_dflt_neq_dflt {
+my
+$XATS2PL_dflt_neq_dflt =
+sub {
   my ($f1, $f2) = @_;
   return ($f1 != $f2);
 }
-##
-sub
-XATS2PL_dflt_neg {
-  my ($f1) = @_;
-  return -$f1;
-}
+;
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_dflt_add_dflt {
-  my ($f1, $f2) = @_;
-  return ($f1 + $f2);
+my
+$XATS2PL_dflt_neg =
+sub {
+  my ($f1) = @_; return -$f1;
 }
+;
 ##
-sub
-XATS2PL_dflt_sub_dflt {
-  my ($f1, $f2) = @_;
-  return ($f1 - $f2);
-}
-##
-sub
-XATS2PL_dflt_mul_dflt {
-  my ($f1, $f2) = @_;
-  return ($f1 * $f2);
-}
-##
-sub
-XATS2PL_dflt_abs {
+my
+$XATS2PL_dflt_abs =
+sub {
   my ($df) = @_;
   return $df >= 0.0 ? $df : -$df;
 }
+;
 ##
-sub
-XATS2PL_dflt_sqrt {
-  my ($df) = @_;
-  return sqrt($df);
+########################################################################.
+##
+my
+$XATS2PL_dflt_add_dflt =
+sub {
+  my ($f1, $f2) = @_; return ($f1 + $f2);
 }
+;
 ##
-sub
-XATS2PL_dflt_cbrt {
-  my ($df) = @_;
-  return POSIX::cbrt($df);
+my
+$XATS2PL_dflt_sub_dflt =
+sub {
+  my ($f1, $f2) = @_; return ($f1 - $f2);
 }
+;
 ##
-sub
-XATS2PL_dflt_ceil {
-  my ($df) = @_;
-  return POSIX::ceil($df);
+my
+$XATS2PL_dflt_mul_dflt =
+sub {
+  my ($f1, $f2) = @_; return ($f1 * $f2);
 }
+;
 ##
-sub
-XATS2PL_dflt_floor {
-  my ($df) = @_;
-  return POSIX::floor($df);
+########################################################################.
+##
+my
+$XATS2PL_dflt_div_dflt =
+sub {
+  my ($f1, $f2) = @_; return ($f1 / $f2);
 }
+;
 ##
-sub
-XATS2PL_dflt_trunc {
-  my ($df) = @_;
-  return POSIX::trunc($df);
-}
-##
-sub
-XATS2PL_dflt_div_dflt {
-  my ($f1, $f2) = @_;
-  return ($f1 / $f2);
-}
-##
-sub
-XATS2PL_dflt_mod_dflt {
+my
+$XATS2PL_dflt_mod_dflt =
+sub {
   my ($f1, $f2) = @_;
   ## Perl % coerces to integers;
   ## [fmod] preserves the fractional part.
@@ -156,11 +150,48 @@ XATS2PL_dflt_mod_dflt {
   }
   return $r;
 }
+;
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_dflt_round {
+my
+$XATS2PL_dflt_sqrt =
+sub {
+  my ($df) = @_; return sqrt($df);
+}
+;
+##
+my
+$XATS2PL_dflt_cbrt =
+sub {
+  my ($df) = @_; return POSIX::cbrt($df);
+}
+;
+##
+my
+$XATS2PL_dflt_ceil =
+sub {
+  my ($df) = @_; return POSIX::ceil($df);
+}
+;
+##
+my
+$XATS2PL_dflt_floor =
+sub {
+  my ($df) = @_; return POSIX::floor($df);
+}
+;
+##
+my
+$XATS2PL_dflt_trunc =
+sub {
+  my ($df) = @_; return POSIX::trunc($df);
+}
+;
+##
+my
+$XATS2PL_dflt_round =
+sub {
   my ($df) = @_;
   my $lo = POSIX::floor($df);
   my $frac = $df - $lo;
@@ -168,6 +199,7 @@ XATS2PL_dflt_round {
   return $lo + 1 if $frac > 0.5;
   return POSIX::fmod($lo, 2.0) == 0.0 ? $lo : $lo + 1;
 }
+;
 ##
 ########################################################################.
 ########################################################################.

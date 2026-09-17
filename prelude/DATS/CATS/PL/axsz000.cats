@@ -40,30 +40,37 @@
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_a1sz_length {
+my
+$XATS2PL_a1sz_length =
+sub {
   my ($A0) = @_;
   return scalar @$A0;
 }
+;
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_a1sz_lget_at {
+my
+$XATS2PL_a1sz_lget_at =
+sub {
   my ($A, $i0) = @_;
   return $A->[$i0];
 }
+;
 ##
-sub
-XATS2PL_a1sz_lset_at {
+my
+$XATS2PL_a1sz_lset_at =
+sub {
   my ($A, $i0, $x1) = @_;
   $A->[$i0] = $x1; return;
 }
+;
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_a1sz_make_ncpy {
+my
+$XATS2PL_a1sz_make_ncpy =
+sub {
   my ($n0, $x0) = @_;
   my $A0 = [];
   for (my $i0 = 0; $i0 < $n0; $i0 += 1) {
@@ -71,9 +78,11 @@ XATS2PL_a1sz_make_ncpy {
   }
   return $A0;
 }
+;
 ##
-sub
-XATS2PL_a1sz_make_nfun {
+my
+$XATS2PL_a1sz_make_nfun =
+sub {
   my ($n0, $fopr) = @_;
   my $A0 = [];
   for (my $i0 = 0; $i0 < $n0; $i0 += 1) {
@@ -81,16 +90,19 @@ XATS2PL_a1sz_make_nfun {
   }
   return $A0;
 }
+;
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_a1sz_make_fwork {
+my
+$XATS2PL_a1sz_make_fwork =
+sub {
   my ($fwork) = @_;
   my $A0 = [];
   $fwork->(sub { push @$A0, $_[0]; return; });
   return $A0;
 }
+;
 ##
 ########################################################################.
 ########################################################################.

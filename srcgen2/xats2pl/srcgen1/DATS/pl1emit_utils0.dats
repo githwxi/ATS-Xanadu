@@ -444,7 +444,7 @@ i1tnmpl1
 ( filr,itnm ) =
 (
 prints
-("plx", "tnm", stmp)) where
+("$plx", "tnm", stmp)) where
 {
 //
 #impltmp g_print$out<>() = filr

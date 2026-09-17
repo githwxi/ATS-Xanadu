@@ -41,31 +41,49 @@
 ##
 ########################################################################.
 ##
-sub XATS2PL_bool_lt {
+my
+$XATS2PL_bool_lt =
+sub {
   my ($b1, $b2) = @_;
   return ($b1 < $b2); ## HX: lt
 }
-sub XATS2PL_bool_gt {
+;
+my
+$XATS2PL_bool_gt =
+sub {
   my ($b1, $b2) = @_;
   return ($b1 > $b2); ## HX: gt
 }
-sub XATS2PL_bool_eq {
+;
+my
+$XATS2PL_bool_eq =
+sub {
   my ($b1, $b2) = @_;
   return ($b1 == $b2); ## HX: eq
 }
+;
 ##
-sub XATS2PL_bool_lte {
+my
+$XATS2PL_bool_lte =
+sub {
   my ($b1, $b2) = @_;
   return ($b1 <= $b2); ## HX: lte
 }
-sub XATS2PL_bool_gte {
+;
+my
+$XATS2PL_bool_gte =
+sub {
   my ($b1, $b2) = @_;
   return ($b1 >= $b2); ## HX: gte
 }
-sub XATS2PL_bool_neq {
+;
+my
+$XATS2PL_bool_neq =
+sub {
   my ($b1, $b2) = @_;
   return ($b1 != $b2); ## HX: neq
 }
+;
 ##
 ########################################################################.
 ########################################################################.

@@ -93,7 +93,12 @@ fun
 fprintln
 (filr: FILR): void =
 (
- strn_fprint("\n", filr))//endfun
+strn_fprint("\n", filr))//endfun
+fun
+smiclnln
+(filr: FILR): void =
+(
+strn_fprint(";\n", filr))//endfun
 //
 (* ****** ****** *)
 //
@@ -613,7 +618,7 @@ val ival = icmp.ival((*0*))
 val (  ) = pl1emit_i1cmp(env0, icmp)
 in//let
 nindstrnfpr
-(filr, nind, "return ");i1valpl1(filr, ival);fprintln(filr)
+(filr, nind, "return ");i1valpl1(filr, ival);smiclnln(filr)
 end//let
 end//let//end-of-[f1_i1cmpret(...)]
 //
@@ -671,7 +676,7 @@ else // if3-else
 (envx2js_decnind(env0,2(*--*))
 ;nindfpr(filr, nind);strnfpr(filr, "## endfun(impl)");fprintln(filr)
 ;nindfpr(filr, nind)
-;dicstpl1(filr, dimp);strnfpr(filr, " = ");dicstpl1(filr, dimp);strnfpr(filr, "_()");fprintln(filr))
+;dicstpl1(filr, dimp);strnfpr(filr, " = ");dicstpl1(filr, dimp);strnfpr(filr, "_()");smiclnln(filr))
 )
 else // if2-else
 (
@@ -679,7 +684,7 @@ else // if2-else
 (envx2js_decnind(env0,2(*--*))
 ;nindfpr(filr, nind);strnfpr(filr, "## endnfn(impl)");fprintln(filr)
 ;nindfpr(filr, nind)
-;dicstpl1(filr, dimp);strnfpr(filr, " = ");dicstpl1(filr, dimp);strnfpr(filr, "_()");fprintln(filr))
+;dicstpl1(filr, dimp);strnfpr(filr, " = ");dicstpl1(filr, dimp);strnfpr(filr, "_()");smiclnln(filr))
 //
 )// HX: end-of-(else)-for-(if2)
 //
@@ -779,7 +784,8 @@ val nind =
 val (  ) =
 (
 nindfpr(filr, nind);
-i1tnmpl1(filr, itnm);strnfpr(filr, " = None\n"))
+i1tnmpl1(filr, itnm);
+strnfpr(filr, " = undef");smiclnln(filr))
 //
 // HX: for computing ival
 val () =
@@ -789,7 +795,8 @@ val () =
 (
 nindstrnfpr
 (filr, nind, "XATS000_patck(");
-i0pckpl1(filr, ival, ipat);strnfpr(filr, ")\n"))
+i0pckpl1
+(filr, ival, ipat);strnfpr(filr, ")");smiclnln(filr))
 //
 endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
 //
@@ -837,7 +844,7 @@ pl1emit_i1letlst(env0, ilts)
 val () =
 let
 nindfpr(filr, nind);
-i1tnmpl1(filr, itnm);strnfpr(filr, " = ");i1valpl1(filr, ival);fprintln(filr)
+i1tnmpl1(filr, itnm);strnfpr(filr, " = ");i1valpl1(filr, ival);smiclnln(filr)
 end//let
 //
 end//let//end-of-[f0_i1tnmcmp(...)]
@@ -1001,7 +1008,7 @@ val nind = env0.nind()
 in//let
 (
 nindfpr(filr, nind);
-strnfpr(filr, "return ");i1valpl1(filr, ival);fprintln(filr))
+strnfpr(filr, "return ");i1valpl1(filr, ival);smiclnln(filr))
 end//let
 //
 (* ****** ****** *)

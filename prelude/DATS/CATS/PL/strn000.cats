@@ -40,8 +40,9 @@
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_strn_cmp {
+my
+$XATS2PL_strn_cmp =
+sub {
   my ($x1, $x2) = @_;
   my $n1 = length($x1);
   my $n2 = length($x2);
@@ -52,81 +53,106 @@ XATS2PL_strn_cmp {
   }
   return ($n1 - $n2);
 }
+;
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_strn_print {
+my
+$XATS2PL_strn_print =
+sub {
   my ($cs) = @_;
   print STDOUT $cs; return;
 }
-sub
-XATS000_strn_print {
+;
+my
+$XATS000_strn_print =
+sub {
   return XATS2PL_strn_print(@_);
 }
+;
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_strn_length {
+my
+$XATS2PL_strn_length =
+sub {
   my ($cs) = @_;
   return length($cs);
 }
-sub
-XATS000_strn_length {
+;
+my
+$XATS000_strn_length =
+sub {
   return XATS2PL_strn_length(@_);
 }
+;
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_strn_get_at_raw {
+my
+$XATS2PL_strn_get_at_raw =
+sub {
   my ($cs, $i0) = @_;
   return ord(substr($cs, $i0, 1));
 }
+;
 ##
-sub
-XATS000_strn_get_at_raw {
+my
+$XATS000_strn_get_at_raw =
+sub {
   return XATS2PL_strn_get_at_raw(@_);
 }
+;
 ##
 ########################################################################.
 ##
-sub
-XATS000_strn_make_fwork {
+my
+$XATS000_strn_make_fwork =
+sub {
   return XATS2PL_strn_make_fwork(@_);
 }
-sub
-XATS2PL_strn_make_fwork {
+;
+my
+$XATS2PL_strn_make_fwork =
+sub {
   my ($fwork) = @_;
   my $res = "";
   $fwork->(sub { $res .= chr($_[0]); return; });
   return $res;
 }
+;
 ##
-sub
-XATS000_strn_make_env_fwork {
+my
+$XATS000_strn_make_env_fwork =
+sub {
   return XATS2PL_strn_make_env_fwork(@_);
 }
-sub
-XATS2PL_strn_make_env_fwork {
+;
+my
+$XATS2PL_strn_make_env_fwork =
+sub {
   my ($env, $fwork) = @_;
   my $res = "";
   $fwork->($env, sub { $res .= chr($_[0]); return; });
   return $res;
 }
+;
 ##
-sub
-XATS000_strn_make1_env_fwork {
+my
+$XATS000_strn_make1_env_fwork =
+sub {
   return XATS2PL_strn_make1_env_fwork(@_);
 }
-sub
-XATS2PL_strn_make1_env_fwork {
+;
+my
+$XATS2PL_strn_make1_env_fwork =
+sub {
   my ($env, $fwork) = @_;
   my $res = "";
   $fwork->($env, sub { $res .= chr($_[0]); return; });
   return $res;
 }
+;
 ##
 ########################################################################.
 ########################################################################.

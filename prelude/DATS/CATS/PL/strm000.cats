@@ -40,8 +40,9 @@
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_strm_vt_forall0_f1un {
+my
+$XATS2PL_strm_vt_forall0_f1un =
+sub {
   my ($fxs, $test) = @_;
   while (1) {
     my $cxs = XATS2PL_lazy_vt_eval($fxs);
@@ -57,19 +58,24 @@ XATS2PL_strm_vt_forall0_f1un {
   }
   return 1;
 }
+;
 ##
 ########################################################################.
 ##
-sub
-XATS2PL_strm_vt_filter0_f1un {
+my
+$XATS2PL_strm_vt_filter0_f1un =
+sub {
   my ($fxs, $test, $free) = @_;
   return XATS2PL_lazy_vt_make_f0un(sub {
     return XATS2PL_strmcon_vt_filter0_f1un(
       XATS2PL_lazy_vt_eval($fxs), $test, $free);
   });
 }
+;
 ##
-sub XATS2PL_strmcon_vt_filter0_f1un {
+my
+$XATS2PL_strmcon_vt_filter0_f1un =
+sub {
   my ($cxs, $test, $free) = @_;
   while (1) {
     if ## if
@@ -89,6 +95,7 @@ sub XATS2PL_strmcon_vt_filter0_f1un {
     }
   }
 }
+;
 ##
 ########################################################################.
 ########################################################################.
