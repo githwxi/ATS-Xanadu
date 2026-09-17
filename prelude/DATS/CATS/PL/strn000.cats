@@ -40,7 +40,7 @@
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS2PL_strn_cmp =
 sub {
   my ($x1, $x2) = @_;
@@ -57,14 +57,14 @@ sub {
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS2PL_strn_print =
 sub {
   my ($cs) = @_;
   print STDOUT $cs; return;
 }
 ;
-my
+my #
 $XATS000_strn_print =
 sub {
   my ($cs) = @_;
@@ -74,14 +74,14 @@ sub {
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS2PL_strn_length =
 sub {
   my ($cs) = @_;
   return length($cs);
 }
 ;
-my
+my #
 $XATS000_strn_length =
 sub {
   my ($cs) = @_;
@@ -92,7 +92,7 @@ sub {
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS2PL_strn_get_at_raw =
 sub {
   my ($cs, $i0) = @_;
@@ -100,7 +100,7 @@ sub {
 }
 ;
 ##
-my
+my #
 $XATS000_strn_get_at_raw =
 sub {
   my ($cs, $i0) = @_;
@@ -111,7 +111,7 @@ sub {
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS000_strn_make_fwork =
 sub {
   my ($fwork) = @_;
@@ -119,7 +119,7 @@ sub {
   $XATS2PL_strn_make_fwork->($fwork);
 }
 ;
-my
+my #
 $XATS2PL_strn_make_fwork =
 sub {
   my ($fwork) = @_;
@@ -132,7 +132,7 @@ sub {
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS2PL_strn_make_env_fwork =
 sub {
   my ($env, $fwork) = @_;
@@ -142,7 +142,7 @@ sub {
   return $res;
 }
 ;
-my
+my #
 $XATS000_strn_make_env_fwork =
 sub {
   my ($env, $fwork) = @_;
@@ -151,7 +151,7 @@ sub {
 }
 ;
 ##
-my
+my #
 $XATS2PL_strn_make1_env_fwork =
 sub {
   my ($env, $fwork) = @_;
@@ -161,7 +161,7 @@ sub {
   return $res;
 }
 ;
-my
+my #
 $XATS000_strn_make1_env_fwork =
 sub {
   my ($env, $fwork) = @_;

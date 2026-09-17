@@ -40,7 +40,7 @@
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS2PL_list_vt_foritm0_f1un =
 sub {
   my ($xs, $work) = @_;
@@ -53,7 +53,7 @@ sub {
 }
 ;
 ##
-my
+my #
 $XATS2PL_list_vt_forall0_f1un =
 sub {
   my ($xs, $test, $free) = @_;

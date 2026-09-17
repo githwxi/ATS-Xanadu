@@ -39,7 +39,7 @@ use POSIX ();
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS2PL_dflt_lt_dflt =
 sub {
   my ($f1, $f2) = @_;
@@ -47,7 +47,7 @@ sub {
 }
 ;
 ##
-my
+my #
 $XATS2PL_dflt_gt_dflt =
 sub {
   my ($f1, $f2) = @_;
@@ -55,7 +55,7 @@ sub {
 }
 ;
 ##
-my
+my #
 $XATS2PL_dflt_eq_dflt =
 sub {
   my ($f1, $f2) = @_;
@@ -63,7 +63,7 @@ sub {
 }
 ;
 ##
-my
+my #
 $XATS2PL_dflt_lte_dflt =
 sub {
   my ($f1, $f2) = @_;
@@ -71,7 +71,7 @@ sub {
 }
 ;
 ##
-my
+my #
 $XATS2PL_dflt_gte_dflt =
 sub {
   my ($f1, $f2) = @_;
@@ -79,7 +79,7 @@ sub {
 }
 ;
 ##
-my
+my #
 $XATS2PL_dflt_neq_dflt =
 sub {
   my ($f1, $f2) = @_;
@@ -89,38 +89,38 @@ sub {
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS2PL_dflt_neg =
 sub {
-  my ($f1) = @_; return -$f1;
+  my ($f1) = @_; return -($f1);
 }
 ;
 ##
-my
+my #
 $XATS2PL_dflt_abs =
 sub {
   my ($df) = @_;
-  return $df >= 0.0 ? $df : -$df;
+  return ($df >= 0.0 ? $df : -$df);
 }
 ;
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS2PL_dflt_add_dflt =
 sub {
   my ($f1, $f2) = @_; return ($f1 + $f2);
 }
 ;
 ##
-my
+my #
 $XATS2PL_dflt_sub_dflt =
 sub {
   my ($f1, $f2) = @_; return ($f1 - $f2);
 }
 ;
 ##
-my
+my #
 $XATS2PL_dflt_mul_dflt =
 sub {
   my ($f1, $f2) = @_; return ($f1 * $f2);
@@ -129,14 +129,14 @@ sub {
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS2PL_dflt_div_dflt =
 sub {
   my ($f1, $f2) = @_; return ($f1 / $f2);
 }
 ;
 ##
-my
+my #
 $XATS2PL_dflt_mod_dflt =
 sub {
   my ($f1, $f2) = @_;
@@ -154,42 +154,44 @@ sub {
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS2PL_dflt_sqrt =
 sub {
   my ($df) = @_; return sqrt($df);
 }
 ;
 ##
-my
+my #
 $XATS2PL_dflt_cbrt =
 sub {
   my ($df) = @_; return POSIX::cbrt($df);
 }
 ;
 ##
-my
+########################################################################.
+##
+my #
 $XATS2PL_dflt_ceil =
 sub {
   my ($df) = @_; return POSIX::ceil($df);
 }
 ;
 ##
-my
+my #
 $XATS2PL_dflt_floor =
 sub {
   my ($df) = @_; return POSIX::floor($df);
 }
 ;
 ##
-my
+my #
 $XATS2PL_dflt_trunc =
 sub {
   my ($df) = @_; return POSIX::trunc($df);
 }
 ;
 ##
-my
+my #
 $XATS2PL_dflt_round =
 sub {
   my ($df) = @_;

@@ -40,7 +40,7 @@
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS2PL_strx_vt_forall0_f1un =
 sub {
   my ($fxs, $test) = @_;
@@ -61,7 +61,7 @@ sub {
 ##
 ########################################################################.
 ##
-my
+my #
 $XATS2PL_strx_vt_filter0_f1un =
 sub {
   my ($fxs, $test, $free) = @_;
@@ -72,7 +72,7 @@ sub {
 }
 ;
 ##
-my
+my #
 $XATS2PL_strxcon_vt_filter0_f1un =
 sub {
   my ($cxs, $test, $free) = @_;
