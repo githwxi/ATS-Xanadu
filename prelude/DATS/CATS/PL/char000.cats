@@ -126,7 +126,7 @@ my
 $XATS2PL_char_print =
 sub {
   my ($c0) = @_;
-  XATS2PL_strn_print(chr($c0)); return;
+  $XATS2PL_strn_print->(chr($c0)); return;
 }
 ;
 ##

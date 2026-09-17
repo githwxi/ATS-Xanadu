@@ -45,9 +45,9 @@ $XATS2PL_list_vt_foritm0_f1un =
 sub {
   my ($xs, $work) = @_;
   while (!XATS2PL_list_vt_nilq1($xs)) {
-    my $x1 = XATS2PL_list_vt_head_raw1($xs);
+    my $x1 = $XATS2PL_list_vt_head_raw1->($xs);
     $work->($x1);
-    $xs = XATS2PL_list_vt_tail_raw0($xs);
+    $xs = $XATS2PL_list_vt_tail_raw0->($xs);
   }
   return;
 }
@@ -58,12 +58,12 @@ $XATS2PL_list_vt_forall0_f1un =
 sub {
   my ($xs, $test, $free) = @_;
   while (!XATS2PL_list_vt_nilq1($xs)) {
-    my $x1 = XATS2PL_list_vt_head_raw1($xs);
+    my $x1 = $XATS2PL_list_vt_head_raw1->($xs);
     if ($test->($x1)) {
-      $xs = XATS2PL_list_vt_tail_raw0($xs);
+      $xs = $XATS2PL_list_vt_tail_raw0->($xs);
     } else {
-      $xs = XATS2PL_list_vt_tail_raw0($xs);
-      XATS2PL_list_vt_foritm0_f1un($xs, $free);
+      $xs = $XATS2PL_list_vt_tail_raw0->($xs);
+      $XATS2PL_list_vt_foritm0_f1un->($xs, $free);
       return 0;
     }
   }

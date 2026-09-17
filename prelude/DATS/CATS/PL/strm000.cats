@@ -45,14 +45,14 @@ $XATS2PL_strm_vt_forall0_f1un =
 sub {
   my ($fxs, $test) = @_;
   while (1) {
-    my $cxs = XATS2PL_lazy_vt_eval($fxs);
-    last if XATS2PL_strmcon_vt_nilq1($cxs);
-    my $x01 = XATS2PL_strmcon_vt_head_raw1($cxs);
+    my $cxs = $XATS2PL_lazy_vt_eval->($fxs);
+    last if $XATS2PL_strmcon_vt_nilq1->($cxs);
+    my $x01 = $XATS2PL_strmcon_vt_head_raw1->($cxs);
     if ($test->($x01)) {
-      $fxs = XATS2PL_strmcon_vt_tail_raw0($cxs);
+      $fxs = $XATS2PL_strmcon_vt_tail_raw0->($cxs);
     } else {
-      $fxs = XATS2PL_strmcon_vt_tail_raw0($cxs);
-      XATS2PL_lazy_vt_free($fxs);
+      $fxs = $XATS2PL_strmcon_vt_tail_raw0->($cxs);
+      $XATS2PL_lazy_vt_free->($fxs);
       return 0;
     }
   }
@@ -66,9 +66,9 @@ my
 $XATS2PL_strm_vt_filter0_f1un =
 sub {
   my ($fxs, $test, $free) = @_;
-  return XATS2PL_lazy_vt_make_f0un(sub {
-    return XATS2PL_strmcon_vt_filter0_f1un(
-      XATS2PL_lazy_vt_eval($fxs), $test, $free);
+  return $XATS2PL_lazy_vt_make_f0un->(sub {
+    return $XATS2PL_strmcon_vt_filter0_f1un->(
+      $XATS2PL_lazy_vt_eval->($fxs), $test, $free);
   });
 }
 ;
@@ -80,18 +80,18 @@ sub {
   while (1) {
     if ## if
     (
-      XATS2PL_strmcon_vt_nilq1($cxs)
+      $XATS2PL_strmcon_vt_nilq1->($cxs)
     ) { ## then
-      return XATS2PL_strmcon_vt_nil();
+      return $XATS2PL_strmcon_vt_nil->();
     }
-    my $x01 = XATS2PL_strmcon_vt_head_raw1($cxs);
-    my $fxs = XATS2PL_strmcon_vt_tail_raw0($cxs);
+    my $x01 = $XATS2PL_strmcon_vt_head_raw1->($cxs);
+    my $fxs = $XATS2PL_strmcon_vt_tail_raw0->($cxs);
     if ($test->($x01)) {
-      return XATS2PL_strmcon_vt_cons(
-        $x01, XATS2PL_strm_vt_filter0_f1un($fxs, $test, $free));
+      return $XATS2PL_strmcon_vt_cons->(
+        $x01, $XATS2PL_strm_vt_filter0_f1un->($fxs, $test, $free));
     } else {
       $free->($x01);
-      $cxs = XATS2PL_lazy_vt_eval($fxs);
+      $cxs = $XATS2PL_lazy_vt_eval->($fxs);
     }
   }
 }
