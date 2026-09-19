@@ -63,10 +63,10 @@ $(NODE) --stack-size=8800 $(XATS2PL_PLEMIT01) $< >> OUTS/$@_out.pl
 test01:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.pl
 ############
-# test01:: ; \
-# $(CAT) $(XATS2PL_XSHARED)/xats2pl_pl1emit.pl >> OUTS/$@_out.pl
-# test01:: ; \
-# $(CAT) $(XATS2PL_XSHARED)/srcgen2_prelude.pl >> OUTS/$@_out.pl
+test01:: ; \
+$(CAT) $(XATS2PL_XSHARED)/xats2pl_pl1emit.pl >> OUTS/$@_out.pl
+test01:: ; \
+$(CAT) $(XATS2PL_XSHARED)/srcgen2_prelude.pl >> OUTS/$@_out.pl
 ############
 test01:: \
 test01_xats2pl.dats; \

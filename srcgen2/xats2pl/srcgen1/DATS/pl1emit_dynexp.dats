@@ -688,7 +688,7 @@ end//let
 in
 ( if
   i0pat_allq(ipat)
-  then print("True")
+  then print("TRUE")
   else f0_ipat(0(*conj*), ival, ipat) )
 end(*let*)//end-(i0pckpl1(filr,ival,ipat))
 //
@@ -963,7 +963,7 @@ list_cons(_, i1bs) =>
   (i0 > 1)
   then
   print(", ")
-; prints("arg", i0)
+; prints("$arg", i0)
 ; loop3(i0+1, i1bs, fjas))
 )
 //
@@ -1402,8 +1402,7 @@ strnfpr
 nindfpr(filr, nind);
 strnfpr
 (filr,"## I1CMP:return:");
-i1valfpr
-(filr,ival);fprintln(filr))
+i1valfpr(filr,ival);fprintln(filr))
 where
 {
 //
@@ -1574,7 +1573,7 @@ envx2js_decnind(env0,2(*--*));
 nindstrnfpr
 (filr, nind+2, "return ");
 dcst2varfpr(filr, dcst, d2cs, i1fs);
-dcst2argfpr(filr, dcst, d2cs, i1fs);fprintln(filr);
+dcst2argfpr(filr, dcst, d2cs, i1fs);smiclnln(filr);
 //
 nindstrnfpr
 (filr, nind+0, "## endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")")
@@ -1624,9 +1623,10 @@ pl1emit_i1cmp(env0, icmp)
 //
 in//let
 //
+(
 nindstrnfpr
 (filr, nind, "return ");
-i1valpl1(filr, ival);fprintln(filr)
+i1valpl1(filr, ival);smiclnln(filr))
 //
 end//let
 end//let//end-of-[f0_i1cmpret(...)]
@@ -1862,9 +1862,9 @@ val () =
 (
 nindfpr(filr, nind+2);
 tbrkpl1(filr, (tbrk));
-strnfpr(filr, " = False\n");
+strnfpr(filr, " = FALSE\n");
 nindfpr(filr, nind+2);
-strnfpr(filr, "while True: ## do { // gua\n")
+strnfpr(filr, "while TRUE: ## do { // gua\n")
 )
 //
 val () =
@@ -1950,7 +1950,7 @@ nindfpr
 (filr, nind+4);
 tbrkpl1(filr, tbrk);
 strnfpr(filr, 
-  " = (True) ## deguarded!\n"))
+  " = (TRUE) ## deguarded!\n"))
 //
 val () =
 (
@@ -1968,7 +1968,7 @@ nindstrnfpr(filr, nind+4, "break\n")
 val () =
 (
 nindfpr(filr, nind+2);
-strnfpr(filr,"## } while True // end-of(do-gua)\n"))
+strnfpr(filr,"## } while TRUE // end-of(do-gua)\n"))
 //
 val () =
 (
@@ -2267,7 +2267,7 @@ val () =
 (
 nindstrnfpr
 (filr, nind,
-"while True: ## do {\n"))
+"while TRUE: ## do {\n"))
 //
 val () = // enter
 envx2js_incnind(env0,2(*++*))
@@ -2283,7 +2283,7 @@ val () =
 val () =
 (
 nindfpr(filr, nind);
-strnfpr(filr,"## } while True // end-of(do-cls)\n"))
+strnfpr(filr,"## } while TRUE // end-of(do-cls)\n"))
 //
 end//let//end-of-[I1INScas0(...)]
 //
@@ -2374,7 +2374,7 @@ val () =
 (
 nindstrnfpr
 (filr, nind+2,
-"while True: ## do {\n"))
+"while TRUE: ## do {\n"))
 //
 val () = // enter
 envx2js_incnind(env0,2+2(*++*))
@@ -2390,7 +2390,7 @@ val () =
 val () =
 (
 nindfpr(filr, nind+2);
-strnfpr(filr,"## } while True // end-of(do-try)\n"))
+strnfpr(filr,"## } while TRUE // end-of(do-try)\n"))
 //
 val () =
 (
@@ -2541,7 +2541,7 @@ case+ ibnd of
 |
 I1BNDcons(itnm, i0p1, dvvs) =>
 (
-nindfpr(filr,nind);prints(itnm, " = ", "arg", i0, ";\n"))
+nindfpr(filr,nind);prints(itnm, " = ", "$arg", i0, ";\n"))
 }
 )
 //

@@ -376,8 +376,8 @@ i0btfpl1
 (
 if
 (btf0 = TRUE_symbl)
-then print("XATSBOOL(True)")
-else print("XATSBOOL(False)")
+then print("XATSBOOL(TRUE)")
+else print("XATSBOOL(FALSE)")
 ) where
 {
 #impltmp g_print$out<>() = filr
