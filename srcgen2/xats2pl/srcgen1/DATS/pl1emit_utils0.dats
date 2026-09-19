@@ -126,6 +126,7 @@ end // end of [xsympl1(filr,xsym)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #implfun
 d2conpl1
 (filr, dcon) =
@@ -144,6 +145,7 @@ strnfpr(filr, "_");
 fprint_loctn_as_stamp
 (filr, dcon.lctn((*void*))))
 end(*let*)//end-of-[d2conpl1(env0,dcon)]
+*)
 //
 (* ****** ****** *)
 //

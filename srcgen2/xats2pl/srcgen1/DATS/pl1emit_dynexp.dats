@@ -1253,7 +1253,7 @@ else // else
 (
 strnfpr
 (filr,"XATSDAPP(");
-i1valpl1(filr,i1f0);strnfpr(filr,"(");
+i1valpl1(filr,i1f0);strnfpr(filr,"->(");
 i1valpl1_list(filr,i1vs);strnfpr(filr,"))"))
 )
 )
@@ -1481,7 +1481,7 @@ d2cst_fprint
 val () =
 strnfpr(filr, "()")
 val () =
-strnfpr(filr, ": ## timp: ")
+strnfpr(filr, " ## timp: ")
 }
 //
 |optn_cons
@@ -1563,12 +1563,12 @@ in//let
 //
 dcst2argfpr
 (filr, dcst, d2cs, i1fs);
-strnfpr(filr, ": ## timp: ");
-d2cst_fprint(dcst, filr);fprintln(filr);
+strnfpr(filr, " ## timp: ");
+d2cst_fprint(dcst, filr);smiclnln(filr);
 //
-envx2js_incnind(env0,2(*++*));
+envx2js_incnind(env0,2(* ++ *));
 pl1emit_i1fundclist(env0, i1fs);
-envx2js_decnind(env0,2(*--*));
+envx2js_decnind(env0,2(* -- *));
 //
 nindstrnfpr
 (filr, nind+2, "return ");
@@ -1586,7 +1586,7 @@ end//let
 , fjas, icmp) =>
 (
 fjas1pl1(filr, fjas);
-strnfpr(filr, ": ## timp: ");
+strnfpr(filr, " ## timp: ");
 d2cst_fprint(dcst, filr);fprintln(filr);
 //
 envx2js_incnind(env0,2(*++*));
@@ -2147,8 +2147,10 @@ nindstrnfpr
 (filr, nind, "## ");
 t1impdcl(filr, timp);fprintln(filr);
 //
+(*
 nindstrnfpr
 (filr, nind, "## def(I1INStimp)\n");
+*)
 i1tnmpl1(filr, itnm);
 f0_t1imp(env0, timp);fprintln(filr))
 |

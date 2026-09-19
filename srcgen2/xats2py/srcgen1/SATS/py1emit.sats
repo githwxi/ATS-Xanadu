@@ -50,10 +50,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 d2conpy1
 (filr
 :FILR, dcon: d2con): void
+*)
+//
 fun
 d2cstpy1
 (filr
