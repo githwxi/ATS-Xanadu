@@ -783,7 +783,8 @@ val nind =
 //
 val (  ) =
 (
-nindfpr(filr, nind);
+nindstrnfpr
+(filr, nind, "my ");
 i1tnmpl1(filr, itnm);
 strnfpr(filr, " = undef");smiclnln(filr))
 //
@@ -843,8 +844,10 @@ pl1emit_i1letlst(env0, ilts)
 //
 val () =
 let
-nindfpr(filr, nind);
-i1tnmpl1(filr, itnm);strnfpr(filr, " = ");i1valpl1(filr, ival);smiclnln(filr)
+nindstrnfpr
+(filr, nind, "my ");
+i1tnmpl1(filr, itnm);
+strnfpr(filr, " = ");i1valpl1(filr, ival);smiclnln(filr)
 end//let
 //
 end//let//end-of-[f0_i1tnmcmp(...)]
@@ -892,7 +895,8 @@ in//let
 HX-2024-06-07:
 w/o initialization
 *)
-nindfpr(filr, nind);
+nindstrnfpr
+(filr, nind, "my ");
 i1tnmpl1(filr, itnm);
 strnfpr(filr, " = XATSVAR0()\n")
 //
@@ -915,7 +919,8 @@ in//let
 HX-2024-06-07:
 with initialization
 *)
-nindfpr(filr, nind);
+nindstrnfpr
+(filr, nind, "my ");
 i1tnmpl1(filr, itnm);
 strnfpr(filr, " = XATSVAR1(");
 i1valpl1(filr, ival);strnfpr(filr, ")\n")

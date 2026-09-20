@@ -170,7 +170,7 @@ xopt of
 optn_vt_nil
  ( (*0*) ) =>
 (
-f0_none(dcst))
+  f0_none(dcst))
 | ~
 optn_vt_cons
  (  xnam  ) =>
@@ -179,27 +179,13 @@ case+ xnam of
 |X2NAMnone
 (  (*0*)  ) =>
 (
-f0_none(dcst))
+  f0_none(dcst))
 |X2NAMsome
 (   dexp   ) =>
 (
-f0_some(dcst, dexp)))
+  f0_some(dcst, dexp)))
 ) where
 {
-//
-fun
-f0_none
-(dcst: d2cst): void =
-let
-val lctn = dcst.lctn((*0*))
-val name = dcst.name((*0*))
-//
-in//let
-xsympl1
-(filr, name);
-strnfpr(filr, "_");
-fprint_loctn_as_stamp(filr, lctn)
-end//let//end-of-[f0_none(dcst)]
 //
 fun
 f0_some
@@ -214,10 +200,28 @@ D2Eextnam
 (tknd, gnam) = dexp.node((*0*))
 //
 in//let
+//
 case+ gnam of
 |
-_(* else *) => xsympl1(filr, name)
-end(*let*)//end-of-[f0_some(dcst,dexp)]
+_(* else *) =>
+(
+strnfpr(filr, "$");xsympl1(filr, name)
+)
+end(*let*)//end-of-[f0_some()]
+//
+fun
+f0_none
+(dcst: d2cst): void =
+let
+//
+val lctn = dcst.lctn((*0*))
+val name = dcst.name((*0*))
+//
+in//let
+(
+strnfpr(filr, "$");xsympl1(filr, name);
+strnfpr(filr, "_");fprint_loctn_as_stamp(filr, lctn))
+end(*let*)//end-of-[f0_none()]
 //
 }(*where*)
 end(*let*)//end-of-[d2cstpl1(env0,dcst)]
@@ -232,15 +236,13 @@ d2varfpr(filr, dvar)
 *)
 let
 //
+val lctn = dvar.lctn((*0*))
 val name = dvar.name((*0*))
 //
 in//let
 (
-xsympl1
-(filr, name);
-strnfpr(filr, "_");
-fprint_loctn_as_stamp
-(filr, dvar.lctn((*void*))))
+strnfpr(filr, "$");xsympl1(filr, name);
+strnfpr(filr, "_");fprint_loctn_as_stamp(filr, lctn))
 end(*let*)//end-of-[d2varpl1(env0,dvar)]
 //
 (* ****** ****** *)

@@ -2151,6 +2151,8 @@ t1impdcl(filr, timp);fprintln(filr);
 nindstrnfpr
 (filr, nind, "## def(I1INStimp)\n");
 *)
+nindstrnfpr
+(filr, nind, "my ");
 i1tnmpl1(filr, itnm);
 f0_t1imp(env0, timp);fprintln(filr))
 |
