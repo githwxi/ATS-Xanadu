@@ -845,7 +845,7 @@ pl1emit_i1letlst(env0, ilts)
 val () =
 let
 nindstrnfpr
-(filr, nind, "my ");
+(filr, nind, "   ");
 i1tnmpl1(filr, itnm);
 strnfpr(filr, " = ");i1valpl1(filr, ival);smiclnln(filr)
 end//let
