@@ -1654,7 +1654,8 @@ pl1emit_i1letlst(env0, ilts)
 //
 val () =
 let
-nindfpr(filr, nind);i1tnmpl1(filr, itnm);
+nindstrnfpr
+(filr, nind, "   ");i1tnmpl1(filr, itnm);
 strnfpr(filr, " = ");i1valpl1(filr, ival);smiclnln(filr)
 end//let
 //
@@ -2083,7 +2084,8 @@ fun
 f1_i1ins
 (iins: i1ins): void =
 (
-nindfpr(filr, nind);
+nindstrnfpr
+(filr, nind, "my ");
 i1tnmpl1(filr, itnm);
 strnfpr(filr, " = ");
 i1inspl1(filr, iins);smiclnln(filr))
@@ -2160,6 +2162,7 @@ optn_cons(icmp) =>
 (
 f0_i1tnmcmp(env0, itnm, icmp)) where
 {
+//
 val () =
 (
 //
@@ -2170,8 +2173,13 @@ nindstrnfpr
 (filr, nind, "## ");
 t1impdcl(filr, timp);fprintln(filr);
 //
-nindfpr(filr, nind);
-i1tnmpl1(filr, itnm);strnfpr(filr, " = undef;\n"))}
+nindstrnfpr
+(filr
+,nind, "my ");i1tnmpl1(filr, itnm);
+strnfpr(filr, " = ");
+strnfpr(filr, "undef");smiclnln(filr))
+//
+}(*where*)
 //
 end//let//end-of-[I1INStimp(...)]
 //
@@ -2188,9 +2196,11 @@ nindstrnfpr
 //
 val () =
 (
-nindfpr(filr, nind);
-i1tnmpl1(filr, itnm);
-strnfpr(filr, " = undef;\n"))
+nindstrnfpr
+(filr
+,nind, "my ");i1tnmpl1(filr, itnm);
+strnfpr(filr, " = ");
+strnfpr(filr, "undef");smiclnln(filr))
 //
 val () =
 (
@@ -2215,9 +2225,11 @@ let
 //
 val () =
 (
-nindfpr(filr, nind);
-i1tnmpl1(filr, itnm);
-strnfpr(filr, " = undef;\n"))
+nindstrnfpr
+(filr
+,nind, "my ");i1tnmpl1(filr, itnm);
+strnfpr(filr, " = ");
+strnfpr(filr, "undef");smiclnln(filr))
 //
 val () =
 (
@@ -2264,8 +2276,11 @@ end//let//end-of-[I1INSift0(...)]
 let
 val () =
 (
-nindfpr(filr, nind);
-i1tnmpl1(filr, itnm);strnfpr(filr, " = undef;\n"))
+nindstrnfpr
+(filr
+,nind, "my ");i1tnmpl1(filr, itnm);
+strnfpr(filr, " = ");
+strnfpr(filr, "undef");smiclnln(filr))
 //
 val () =
 (
@@ -2545,7 +2560,9 @@ case+ ibnd of
 |
 I1BNDcons(itnm, i0p1, dvvs) =>
 (
-nindfpr(filr,nind);prints(itnm, " = ", "$arg", i0, ";\n"))
+nindstrnfpr
+(filr, nind, "my ");
+prints(itnm, " = ", "$arg", i0, ";\n"))
 }
 )
 //
