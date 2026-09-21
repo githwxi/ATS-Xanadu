@@ -907,7 +907,7 @@ w/o initialization
 nindstrnfpr
 (filr, nind, "my ");
 i1tnmpl1(filr, itnm);
-strnfpr(filr, " = XATSVAR0()\n")
+strnfpr(filr, " = XATSVAR0();\n")
 //
 end//let//end-of-[TEQI1CMPnone]
 //
@@ -932,7 +932,7 @@ nindstrnfpr
 (filr, nind, "my ");
 i1tnmpl1(filr, itnm);
 strnfpr(filr, " = XATSVAR1(");
-i1valpl1(filr, ival);strnfpr(filr, ")\n")
+i1valpl1(filr, ival);strnfpr(filr, ");\n")
 //
 end//let//end-of-[TEQI1CMPsome]
 //

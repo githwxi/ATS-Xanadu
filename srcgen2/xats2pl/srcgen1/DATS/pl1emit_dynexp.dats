@@ -1058,7 +1058,7 @@ ival.node() of
 ( itup,pind ) =>
 (
 prints
-("XATSP0RJ(",itup,"[",pind,"]", ")"))
+("XATSP0RJ(",itup,"->[",pind,"]",")"))
 (* ****** ****** *)
 //
 |I1Vp1cn
@@ -1067,7 +1067,8 @@ prints
 (
 print("XATSP1CN(");
 prints
-(ipat, ", ", icon, "[",pind,"+1]", ")")
+( ipat
+, ", ", icon, "->[",pind,"+1]", ")")
 ) where
 { #impltmp
   g_print<i0pat>(x) = i0pcnpl1(filr,x) }
@@ -1078,8 +1079,9 @@ prints
 (
 print("XATSP1RJ(");
 prints
-(trcd, ", ", itup, "[", pind, "]", ")")
-) where
+( trcd
+, ", ", itup, "->[", pind, "]", ")"))
+where
 { #impltmp
   g_print<token>(x) = xtrcdpl1(filr,x) }
 //
@@ -1263,16 +1265,19 @@ i1valpl1_list(filr,i1vs);strnfpr(filr,"))"))
 |I1INSpcon
 (lab0, i1v1) =>
 (
-prints("XATSPCON(", i1v1, ",", lab0, ")"))
+prints
+("XATSPCON(", i1v1, ",", lab0, ")"))
 //
 |I1INSpflt
 (lab0, i1v1) =>
 (
-prints("XATSPFLT(", i1v1, "[", lab0, "]", ")"))
+prints
+("XATSPFLT(", i1v1, "->[", lab0, "]", ")"))
 |I1INSproj
 (lab0, i1v1) =>
 (
-prints("XATSPROJ(", i1v1, "[", lab0, "]", ")"))
+prints
+("XATSPROJ(", i1v1, "->[", lab0, "]", ")"))
 //
 (* ****** ****** *)
 //
@@ -2054,7 +2059,7 @@ case+ iins of
 (
 nindstrnfpr
 (filr, nind, "XATS000_fold(");
-i1valpl1(filr, i1v0);strnfpr(filr, ")\n"))
+i1valpl1(filr, i1v0);strnfpr(filr, ");\n"))
 //
 (* ****** ****** *)
 //
@@ -2063,7 +2068,7 @@ i1valpl1(filr, i1v0);strnfpr(filr, ")\n"))
 (
 nindstrnfpr
 (filr, nind, "XATS000_free(");
-i1valpl1(filr, i1v0);strnfpr(filr, ")\n"))
+i1valpl1(filr, i1v0);strnfpr(filr, ");\n"))
 //
 (* ****** ****** *)
 //
@@ -2073,13 +2078,13 @@ i1valpl1(filr, i1v0);strnfpr(filr, ")\n"))
 nindstrnfpr
 (filr, nind, "XATS000_assgn(");
 i1valpl1(filr, i1vl);strnfpr(filr, ", ");
-i1valpl1(filr, i1vr);strnfpr(filr, ")\n"))
+i1valpl1(filr, i1vr);strnfpr(filr, ");\n"))
 //
 (* ****** ****** *)
 //
 |_(*otherwise*) =>
 (
-nindfpr(filr, nind);i1inspl1(filr, iins);fprintln(filr))
+nindfpr(filr, nind);i1inspl1(filr, iins);smiclnln(filr))
 //
 (* ****** ****** *)
 //
@@ -2220,7 +2225,7 @@ val () =
 //
 val () = 
 (
-nindstrnfpr(filr, nind, "## end-of(let)\n"))
+nindstrnfpr(filr, nind, "## endof(let)\n"))
 //
 end//let//end-of-[I1INSlet0(...)]
 //
@@ -2264,8 +2269,8 @@ case+ iels of
 |optn_nil() =>
 (
 nindstrnfpr
-(filr, nind,
-"}; ## else: undef\n"))//no-else
+(filr
+,nind, "## no-else\n"))
 |optn_cons(icmp) =>
 (
 nindstrnfpr
@@ -2280,7 +2285,7 @@ val () =
 (
 nindstrnfpr
 (filr
-,nind, "}; ## end-of(if)");smiclnln(filr))
+,nind, "}; ## endof(ift)");smiclnln(filr))
 //
 end//let//end-of-[I1INSift0(...)]
 //

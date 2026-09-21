@@ -1062,8 +1062,9 @@ prints
 (
 print("XATSP1CN(");
 prints
-(ipat, ", ", icon, "[",pind,"+1]", ")")
-) where
+( ipat
+, ", ", icon, "[",pind,"+1]", ")"))
+where
 { #impltmp
   g_print<i0pat>(x) = i0pcnpy1(filr,x) }
 //
@@ -1073,8 +1074,9 @@ prints
 (
 print("XATSP1RJ(");
 prints
-(trcd, ", ", itup, "[", pind, "]", ")")
-) where
+( trcd
+, ", ", itup, "[", pind, "]", ")"))
+where
 { #impltmp
   g_print<token>(x) = xtrcdpy1(filr,x) }
 //
