@@ -1701,7 +1701,7 @@ nindstrnfpr(filr, nind, "## ");
 prints(igpt, "\n");
 nindstrnfpr(filr, nind, "if (");
 i0pckpl1
-(filr, ival, ipat);strnfpr(filr, "): ## { // gpt\n");
+(filr, ival, ipat);strnfpr(filr, ") { ## // gpt\n");
 nindfpr(filr,nind+2);i1tnmpl1(filr, itnm);
 strnfpr(filr,(" = "));i1valpl1(filr, ival);smiclnln(filr)
 )(* end-of-[I1BNDcons(...)] *)
@@ -1719,7 +1719,7 @@ nindstrnfpr
 nindstrnfpr
 (filr, nind, "if (");
 i0pckpl1
-(filr, ival, ipat);strnfpr(filr, "): ## { // gpt\n");
+(filr, ival, ipat);strnfpr(filr, ") { ## // gpt\n");
 nindfpr(filr,nind+2);i1tnmpl1(filr, itnm);
 strnfpr(filr,(" = "));i1valpl1(filr, ival);smiclnln(filr)
 )(* end-of-[I1BNDcons(...)] *)
@@ -1831,11 +1831,11 @@ val () =
 in//let
 (
   nindfpr(filr, nind+2);
-  strnfpr(filr, "break ## cls\n"))
+  strnfpr(filr, "last; ## cls\n"))
 end//let
 //
 val () =
-nindstrnfpr(filr, nind, "## } // gpt\n")
+nindstrnfpr(filr, nind, "}; ## gpt\n")
 //
 end//let//end(f1_i1clscls_pat(igpt,icmp))
 //
@@ -1861,7 +1861,7 @@ tbrkpl1
 //
 val () =
 (
-f0_i1valgpt(env0, ival, igpt))
+f0_i1valgpt(env0,ival,igpt))
 //
 val () =
 (
@@ -1873,7 +1873,7 @@ nindfpr(filr, nind+2);
 tbrkpl1(filr, (tbrk));
 strnfpr(filr, " = FALSE\n");
 nindfpr(filr, nind+2);
-strnfpr(filr, "while TRUE: ## do { // gua\n")
+strnfpr(filr, "while (TRUE) { ## do-gua\n")
 )
 //
 val () =
@@ -1909,7 +1909,7 @@ nindfpr
 strnfpr
 (filr, "if not(");
 i1valpl1(filr, ival);
-strnfpr(filr, "): break\n"))
+strnfpr(filr, ") last;\n"))
 end where // end-of-[let]
 {
 val () =
@@ -1972,12 +1972,12 @@ val () =
   envx2js_decnind(env0,2(*--*)))
 //
 val () =
-nindstrnfpr(filr, nind+4, "break\n")
+nindstrnfpr(filr, nind+4, "last;\n")
 //
 val () =
 (
 nindfpr(filr, nind+2);
-strnfpr(filr,"## } while TRUE // end-of(do-gua)\n"))
+strnfpr(filr,"}; ## while TRUE // endof(do-gua)\n"))
 //
 val () =
 (
@@ -1989,7 +1989,7 @@ f2_igptbrk
 , nind: sint): void =
 (
 nindfpr(filr, nind);strnfpr(filr, "if (");
-tbrkpl1(filr, tbrk);strnfpr(filr, "): break ## cls\n"))
+tbrkpl1(filr, tbrk);strnfpr(filr, ") last; ## cls\n"))
 }
 //
 val () =
@@ -2013,8 +2013,9 @@ f0_i1tnmvalclslst
 , icls: i1clslst): void =
 (
 case+ icls of
-|
-list_nil() =>
+//
+|list_nil() =>
+(
 let
 val filr =
 envx2js_filr$get(env0)
@@ -2023,13 +2024,15 @@ envx2js_nind$get(env0)
 in//let
 (
 nindstrnfpr
-(filr,nind,
-"XATS000_cfail()");fprintln(filr))
+(filr,nind
+,"XATS000_cfail()");smiclnln(filr))
 end//let
-|
-list_cons(icl1, icls) =>
+)
+//
+|list_cons(icl1, icls) =>
 ( f0_i1tnmvalcls(env0,itnm,ival,icl1)
-; f0_i1tnmvalclslst(env0,itnm,ival,icls) )
+; f0_i1tnmvalclslst(env0,itnm,ival,icls))
+//
 )(*case+*)//end-of-[f0_i1tnmvalclslst(env0,...)]
 //
 (* ****** ****** *)
@@ -2299,23 +2302,24 @@ val () =
 (
 nindstrnfpr
 (filr, nind,
-"while TRUE: ## do {\n"))
+"while (TRUE) { ## do-cls\n"))
 //
 val () = // enter
-envx2js_incnind(env0,2(*++*))
+(
+envx2js_incnind(env0,2(*dlta*)))
 //
 val () =
 f0_i1tnmvalclslst
-(env0,itnm,i1v1,icls(*clslst*))
+(env0, itnm, i1v1, icls(*clslst*))
 //
 val () =
 (
-  envx2js_decnind(env0,2(*--*)))//leave
+  envx2js_decnind(env0, 2(*dlta*)))//leave
 //
 val () =
 (
 nindfpr(filr, nind);
-strnfpr(filr, "## } while TRUE // end-of(do-cls)\n"))
+strnfpr(filr, "}; ## while TRUE // endof(do-cls)\n"))
 //
 end//let//end-of-[I1INScas0(...)]
 //
@@ -2406,14 +2410,14 @@ val () =
 (
 nindstrnfpr
 (filr, nind+2,
-"while TRUE: ## do {\n"))
+"while (TRUE) { ## do-try\n"))
 //
 val () = // enter
 envx2js_incnind(env0,2+2(*++*))
 //
 val () =
 f0_i1tnmvalclslst
-( env0,itnm,iexn,icls(*list*) )
+(env0, itnm, iexn, icls(*list*))
 //
 val () =
 (
@@ -2422,11 +2426,11 @@ val () =
 val () =
 (
 nindfpr(filr, nind+2);
-strnfpr(filr,"## } while TRUE // end-of(do-try)\n"))
+strnfpr(filr,"}; ## while TRUE // endof(do-try)\n"))
 //
 val () =
 (
-nindstrnfpr(filr, nind, "## } // end(except) // end-of(try)\n"))
+nindstrnfpr(filr, nind, "}; ## // end(except) // end-of(try)\n"))
 end//let//end-of-[I1INStry0(...)]
 //
 (* ****** ****** *)
