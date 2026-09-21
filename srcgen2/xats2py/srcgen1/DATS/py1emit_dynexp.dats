@@ -2194,7 +2194,7 @@ val () =
 //
 val () = 
 (
-nindstrnfpr(filr, nind, "## end-of(let)\n"))
+nindstrnfpr(filr, nind, "## endof(let)\n"))
 //
 end//let//end-of-[I1INSlet0(...)]
 //
@@ -2245,7 +2245,7 @@ nindstrnfpr
 //
 val () =
 (
-nindstrnfpr(filr, nind, "## end-of(if)\n"))
+nindstrnfpr(filr, nind, "## endof(ift)\n"))
 //
 end//let//end-of-[I1INSift0(...)]
 //
@@ -2391,7 +2391,7 @@ strnfpr(filr,"## } while True // endof(do-try)\n"))
 //
 val () =
 (
-nindstrnfpr(filr, nind, "## } // end(except) // end-of(try)\n"))
+nindstrnfpr(filr, nind, "## } // end(except) // endof(try)\n"))
 end//let//end-of-[I1INStry0(...)]
 //
 (* ****** ****** *)
