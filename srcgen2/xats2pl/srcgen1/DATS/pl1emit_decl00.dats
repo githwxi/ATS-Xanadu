@@ -624,9 +624,11 @@ end//let//end-of-[f1_i1cmpret(...)]
 //
 in//let
 //
+(
 nindstrnfpr
 (filr,nind,"## I1Dimplmnt0(");
-lctnfpr(filr,loc0);strnfpr(filr,")\n");
+lctnfpr
+(filr,loc0);strnfpr(filr,")\n"));
 //
 if
 dimpl_tempq(dimp)
@@ -634,13 +636,20 @@ then // if1-then
 (
 nindstrnfpr
 (filr,nind,"## I1Dimplmnt0(");
-dimplfpr(filr,dimp);strnfpr(filr,"):timp\n"))
+dimplfpr
+(filr,dimp);strnfpr(filr,"):timp\n"))
 else // if1-else
 (
 //
 (
-nindfpr(filr, nind);strnfpr(filr, "def ");
+nindfpr(filr, nind);
+strnfpr(filr, "my ##\n");
 //
+nindfpr(filr, nind);
+dicstpl1(filr, dimp);
+strnfpr(filr, " = undef;\n");
+//
+nindfpr(filr, nind);
 dicstpl1(filr, dimp);
 (
 //
@@ -967,22 +976,35 @@ i1fundcl_tdxp$get(ifun)
 //
 (* ****** ****** *)
 //
-val (  ) =
-let
 val filr = env0.filr()
 val nind = env0.nind()
-in//let
+//
+(* ****** ****** *)
+//
+val (  ) =
 (
-nindfpr(filr, nind);strnfpr(filr, "def ");
-d2varpl1(filr, dvar);
-fjas1pl1(filr, fjas);strnfpr(filr, ": ## fun\n"))
-end//let
+//
+nindfpr(filr, nind);
+strnfpr(filr, "my ##\n");
+//
+nindfpr(filr, nind);
+d2varpl1
+(filr, dvar);strnfpr(filr, " = undef;\n");
+//
+nindfpr(filr, nind);
+d2varpl1(filr, dvar);strnfpr(filr, " =\n");
+//
+nindfpr(filr, nind);
+strnfpr(filr, "sub { ## fun\n");
+nindfpr
+(filr, nind+2(*d*));strnfpr(filr, "my ");
+fjas1pl1(filr, fjas);strnfpr(filr, " = @_");smiclnln(filr))
 //
 (* ****** ****** *)
 //
 val (  ) = // enter
 (
-  envx2js_pshlam0(env0) )
+  envx2js_pshlam0(env0))
 //
 val (  ) =
 (
@@ -1008,12 +1030,15 @@ val (  ) =
 //
 val (  ) =
 let
-val filr = env0.filr()
-val nind = env0.nind()
+//
+val nind =
+envx2js_nind$get(env0)
+//
 in//let
 (
-nindfpr(filr, nind);
-strnfpr(filr, "return ");i1valpl1(filr, ival);smiclnln(filr))
+nindstrnfpr
+(filr
+,nind, "return ");i1valpl1(filr, ival);smiclnln(filr))
 end//let
 //
 (* ****** ****** *)
@@ -1022,6 +1047,13 @@ end//let
 ) (*case+*) // end-of-(teqi1exp)
 //
 val (  ) = envx2js_poplam0(env0)//leave
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+nindstrnfpr(filr, nind, "}; ## endfun(");
+d2var_fprint(dvar, filr);strnfpr(filr, ")");smiclnln(filr))
 //
 (* ****** ****** *)
 //

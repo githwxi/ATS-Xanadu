@@ -1566,9 +1566,9 @@ dcst2argfpr
 strnfpr(filr, " ## timp: ");
 d2cst_fprint(dcst, filr);smiclnln(filr);
 //
-envx2js_incnind(env0,2(* ++ *));
+envx2js_incnind(env0,2(*dlta*));
 pl1emit_i1fundclist(env0, i1fs);
-envx2js_decnind(env0,2(* -- *));
+envx2js_decnind(env0,2(*dlta*));
 //
 nindstrnfpr
 (filr, nind+2, "return ");
@@ -2241,16 +2241,19 @@ val () =
 (
 nindstrnfpr
 (filr, nind, "if (");
-i1valpl1(filr, itst);strnfpr(filr, "):\n"))
+i1valpl1(filr, itst);
+strnfpr(filr, ") {\n"))//test
 //
 val () =
 (
 case+ ithn of
 |optn_nil() => ()
 |optn_cons(icmp) =>
-(envx2js_incnind(env0,2(*++*))
-;f0_i1tnmcmp( env0,itnm,icmp )
-;envx2js_decnind(env0,2(*--*))))//then
+(
+envx2js_incnind
+(env0, 2(*dlta*));
+f0_i1tnmcmp(env0, itnm, icmp);
+envx2js_decnind(env0, 2(*dlta*))))
 //
 val () =
 (
@@ -2259,18 +2262,22 @@ case+ iels of
 (
 nindstrnfpr
 (filr, nind,
-"## else: undef\n"))//no-else
+"}; ## else: undef\n"))//no-else
 |optn_cons(icmp) =>
 (
 nindstrnfpr
-(filr, nind, "else:\n");
-(envx2js_incnind(env0,2(*++*))
-;f0_i1tnmcmp( env0,itnm,icmp )
-;envx2js_decnind(env0,2(*--*)))))
+(filr, nind, "} else {\n");
+(
+envx2js_incnind
+(env0, 2(*dlta*));
+f0_i1tnmcmp(env0, itnm, icmp);
+envx2js_decnind(env0, 2(*dlta*)))))
 //
 val () =
 (
-nindstrnfpr(filr, nind, "## end-of(if)\n"))
+nindstrnfpr
+(filr
+,nind, "}; ## end-of(if)");smiclnln(filr))
 //
 end//let//end-of-[I1INSift0(...)]
 //
@@ -2308,7 +2315,7 @@ val () =
 val () =
 (
 nindfpr(filr, nind);
-strnfpr(filr,"## } while TRUE // end-of(do-cls)\n"))
+strnfpr(filr, "## } while TRUE // end-of(do-cls)\n"))
 //
 end//let//end-of-[I1INScas0(...)]
 //
