@@ -50,10 +50,10 @@ XATS2PL_PLEMIT01="./../UTIL/xats2pl_plemit01_ats3.js"
 test00:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.pl
 ############
-# test00:: ; \
-# $(CAT) $(XATS2PL_XSHARED)/xats2pl_pl1emit.pl >> OUTS/$@_out.pl
-# test00:: ; \
-# $(CAT) $(XATS2PL_XSHARED)/srcgen2_prelude.pl >> OUTS/$@_out.pl
+test00:: ; \
+$(CAT) $(XATS2PL_XSHARED)/xats2pl_pl1emit.pl >> OUTS/$@_out.pl
+test00:: ; \
+$(CAT) $(XATS2PL_XSHARED)/srcgen2_prelude.pl >> OUTS/$@_out.pl
 ############
 test00:: \
 test00_xats2pl.dats; \
