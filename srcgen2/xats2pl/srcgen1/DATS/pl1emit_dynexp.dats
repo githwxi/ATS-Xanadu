@@ -1137,7 +1137,7 @@ val+
 I1LAB(lab1, i1v2) = liv0
 in//let
 (
-prints(lab1, ": ", i1v2)) where
+prints(lab1, " => ", i1v2)) where
 {
   #impltmp
   g_print<label>(x) = labelpl1(filr, x)
@@ -1271,13 +1271,29 @@ prints
 |I1INSpflt
 (lab0, i1v1) =>
 (
-prints
-("XATSPFLT(", i1v1, "->[", lab0, "]", ")"))
+case+ lab0 of
+|LABint _ =>
+(
+prints(
+"XATSPFLT(", i1v1, "->[", lab0, "]", ")"))
+|LABsym _ =>
+(
+prints(
+"XATSPFLT(", i1v1, "->{", lab0, "}", ")")))
+//
 |I1INSproj
 (lab0, i1v1) =>
 (
-prints
-("XATSPROJ(", i1v1, "->[", lab0, "]", ")"))
+case+ lab0 of
+|LABint _ =>
+(
+prints(
+"XATSPROJ(", i1v1, "->[", lab0, "]", ")"))
+|
+LABsym _ =>
+(
+prints(
+"XATSPROJ(", i1v1, "->{", lab0, "}", ")")))
 //
 (* ****** ****** *)
 //
