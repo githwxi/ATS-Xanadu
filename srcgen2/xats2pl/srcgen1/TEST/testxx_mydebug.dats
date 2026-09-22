@@ -52,7 +52,7 @@ fun
 foofun((*0*)): sint = footmp<sint>(0)
 //
 val x0 = foofun()
-val () = printsln("x0 = ", x0)
+val ((*void*)) = printsln("x0 = ", x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
