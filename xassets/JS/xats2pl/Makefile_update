@@ -8,18 +8,9 @@ SRCGEN2=./../../../srcgen2
 ########################################################################
 ########################################################################
 all:: \
-xats2py_pyemit00_ats2_opt1
-xats2py_pyemit00_ats2_opt1: ; \
-$(CPF) $(SRCGEN2)/xats2py/srcgen1/UTIL/$@.js ./bin
-all:: \
-xats2py_pyemit01_ats2_opt1
-xats2py_pyemit01_ats2_opt1: ; \
-$(CPF) $(SRCGEN2)/xats2py/srcgen1/UTIL/$@.js ./bin
-########################################################################
-all:: \
-xats2py_pyemit01_ats3_opt1
-xats2py_pyemit01_ats3_opt1: ; \
-$(CPF) $(SRCGEN2)/xats2py/srcgen1/UTIL/$@.js ./bin
+xats2pl_plemit01_ats3_opt1
+xats2pl_plemit01_ats3_opt1: ; \
+$(CPF) $(SRCGEN2)/xats2pl/srcgen1/UTIL/$@.js ./bin
 ########################################################################
 ########################################################################
 ####################### end of [Makefile_update] #######################

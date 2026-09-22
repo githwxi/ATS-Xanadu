@@ -6,19 +6,20 @@ CPF=cp -f
 ########################################################################
 SRCGEN2=./../../../srcgen2
 ########################################################################
+########################################################################
 all:: \
 xats2js_jsemit00_ats2_opt1
 xats2js_jsemit00_ats2_opt1: ; \
-$(CPF) $(SRCGEN2)/xats2js/srcgen1/UTIL/$@.js .
+$(CPF) $(SRCGEN2)/xats2js/srcgen1/UTIL/$@.js ./bin
 ########################################################################
 all:: \
 xats2js_jsemit01_ats2_opt1
 xats2js_jsemit01_ats2_opt1: ; \
-$(CPF) $(SRCGEN2)/xats2js/srcgen1/UTIL/$@.js .
+$(CPF) $(SRCGEN2)/xats2js/srcgen1/UTIL/$@.js ./bin
 all:: \
 xats2js_jsemit01_ats3_opt1
 xats2js_jsemit01_ats3_opt1: ; \
-$(CPF) $(SRCGEN2)/xats2js/srcgen1/UTIL/$@.js .
+$(CPF) $(SRCGEN2)/xats2js/srcgen1/UTIL/$@.js ./bin
 ########################################################################
 ########################################################################
 ####################### end of [Makefile_update] #######################
