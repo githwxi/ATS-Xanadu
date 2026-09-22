@@ -649,8 +649,7 @@ nindfpr(filr, nind);
 dicstpl1(filr, dimp);
 strnfpr(filr, " = undef;\n");
 //
-nindfpr(filr, nind);
-dicstpl1(filr, dimp);
+nindfpr(filr, nind);dicstpl1(filr, dimp);
 (
 //
 (*
@@ -986,12 +985,13 @@ val nind = env0.nind()
 val (  ) =
 (
 //
+(*
 nindfpr(filr, nind);
 strnfpr(filr, "my ##\n");
-//
 nindfpr(filr, nind);
 d2varpl1
 (filr, dvar);strnfpr(filr, " = undef;\n");
+*)
 //
 nindfpr(filr, nind);
 d2varpl1(filr, dvar);strnfpr(filr, " =\n");

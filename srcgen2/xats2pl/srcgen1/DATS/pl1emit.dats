@@ -145,11 +145,54 @@ pl1emit_i1vardclist
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #implfun
 pl1emit_i1fundclist
   (env0, i1fs) =
 (
   list_pl1emit_fnp(env0, i1fs, pl1emit_i1fundcl))
+*)
+//
+#implfun
+pl1emit_i1fundclist
+  (env0, i1fs) =
+let
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+val (  ) =
+(
+list_foritm
+< i1fundcl >(i1fs)) where
+{
+//
+#impltmp
+foritm$work
+< i1fundcl >(ifun) =
+let
+//
+val
+dvar = i1fundcl_dpid$get(ifun)
+//
+in//let
+(
+nindstrnfpr
+(filr
+,nind, "my ##\n");
+nindfpr(filr, nind);
+d2varpl1
+(filr, dvar);strnfpr(filr, " = undef;\n"))
+end//let
+//
+}
+//
+in//let
+(
+  list_pl1emit_fnp(env0, i1fs, pl1emit_i1fundcl))
+end//let
 //
 (* ****** ****** *)
 (* ****** ****** *)
