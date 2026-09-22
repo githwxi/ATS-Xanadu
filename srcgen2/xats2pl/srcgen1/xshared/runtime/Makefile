@@ -16,7 +16,6 @@ $(XATSHOME)/srcgen1/prelude
 SRCGEN1_XATSLIBD=\
 $(XATSHOME)/srcgen1/xatslib
 ##################################################################
-PRECATS_PL=srcgen2_precats.pl
 PRELUDE_PL=srcgen2_prelude.pl
 XATSLIB_PL=srcgen2_xatslib.pl
 ##################################################################
@@ -27,13 +26,6 @@ SRCGEN1_XATSLIB_PL=srcgen1_xatslib.pl
 all::
 ##################################################################
 all:: prelude
-##################################################################
-##################################################################
-precats:: ; \
-$(PRINTF) "## %s\n" "`date`" > $(PRECATS_PL)
-precats:: ; $(CAT) srcgen2_precats_hd >> $(PRECATS_PL)
-precats:: ; $(CAT) \
-$(PRELUDED)/DATS/CATS/PL/OUTS/precats_dats.pl >> $(PRECATS_PL)
 ##################################################################
 ##################################################################
 prelude:: ; \
