@@ -2402,22 +2402,24 @@ end//let//end-of-[I1INStry0(...)]
 (
 nindfpr(filr, nind);
 strnfpr(filr, "def ");
-i1tnmpy1(filr, itnm);
-strnfpr(filr, "_(): ## { // l0azy\n");
+i1tnmpy1
+(filr, itnm); strnfpr
+(filr, "_(): ## { // l0azy\n");
 (
 envx2js_incnind
-( env0,2(*++*) );f0_i1cmpret(env0, icmp);
+(env0, 2(*dlta*) );
+f0_i1cmpret(env0, icmp);
 (
 envx2js_decnind
-( env0,2(*--*) );
+(env0, 2(*dlta*) );
 nindfpr(filr, nind);
-strnfpr(filr, "## } // end(l0azy)\n");
+strnfpr(filr, "## } // end(l0azy)\n"));
 //
 nindfpr(filr, nind);
 i1tnmpy1(filr, itnm);
 strnfpr(filr, " = ");
 strnfpr(filr, "XATS000_l0azy(");
-i1tnmpy1(filr, itnm);strnfpr(filr, "_)");fprintln(filr)))
+i1tnmpy1(filr, itnm);strnfpr(filr, "_)");fprintln(filr))
 )
 //
 (* ****** ****** *)

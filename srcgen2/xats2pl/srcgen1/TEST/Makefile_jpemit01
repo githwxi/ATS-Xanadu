@@ -154,8 +154,6 @@ $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.pl
 test08:: ; \
 $(CAT) $(XATS2PL_XSHARED)/xats2pl_pl1emit.pl >> OUTS/$@_out.pl
 test08:: ; \
-$(CAT) $(XATS2PL_XSHARED)/srcgen2_precats.pl >> OUTS/$@_out.pl
-test08:: ; \
 $(CAT) $(XATS2PL_XSHARED)/srcgen2_prelude.pl >> OUTS/$@_out.pl
 ############
 test08:: \
@@ -167,8 +165,6 @@ $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.pl
 ############
 test09:: ; \
 $(CAT) $(XATS2PL_XSHARED)/xats2pl_pl1emit.pl >> OUTS/$@_out.pl
-test09:: ; \
-$(CAT) $(XATS2PL_XSHARED)/srcgen2_precats.pl >> OUTS/$@_out.pl
 test09:: ; \
 $(CAT) $(XATS2PL_XSHARED)/srcgen2_prelude.pl >> OUTS/$@_out.pl
 ############

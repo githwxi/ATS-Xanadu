@@ -2479,24 +2479,25 @@ end//let//end-of-[I1INStry0(...)]
 |I1INSl0azy
 (dknd, icmp) =>
 (
-nindfpr(filr, nind);
-strnfpr(filr, "def ");
-i1tnmpl1(filr, itnm);
-strnfpr(filr, "_(): ## { // l0azy\n");
+nindstrnfpr
+(filr, nind, "my ");
+i1tnmpl1(filr, itnm); strnfpr
+(filr, "_() = sub { ## // l0azy\n");
 (
 envx2js_incnind
-( env0,2(*++*) );f0_i1cmpret(env0, icmp);
+(env0, 2(*dlta*));
+f0_i1cmpret(env0, icmp);
 (
 envx2js_decnind
-( env0,2(*--*) );
+(env0, 2(*dlta*));
 nindfpr(filr, nind);
-strnfpr(filr, "## } // end(l0azy)\n");
+strnfpr(filr, "}; ## // end(l0azy)\n"));
 //
 nindfpr(filr, nind);
 i1tnmpl1(filr, itnm);
 strnfpr(filr, " = ");
 strnfpr(filr, "XATS000_l0azy(");
-i1tnmpl1(filr, itnm);strnfpr(filr, "_)");smiclnln(filr)))
+i1tnmpl1(filr, itnm);strnfpr(filr, "_)");smiclnln(filr))
 )
 //
 (* ****** ****** *)
@@ -2505,17 +2506,20 @@ i1tnmpl1(filr, itnm);strnfpr(filr, "_)");smiclnln(filr)))
 (dknd
 ,icmp, cmps) =>
 (
-nindfpr(filr, nind);
-strnfpr(filr, "def ");
+nindstrnfpr
+(filr, nind, "my ");
 i1tnmpl1(filr, itnm);
-strnfpr(filr, "(tlaz): ## { // l1azy\n");
+strnfpr(filr, " = sub { ## // l1azy\n");
 (
 envx2js_incnind
-( env0,2(*++*) );f0_i1cmpret(env0, icmp);
+( env0,2(*++*) );
+nindstrnfpr
+( filr, nind
+, "my ($tlaz) = @_;\n");f0_i1cmpret(env0, icmp);
 (
 envx2js_decnind
 ( env0,2(*--*) );
-nindstrnfpr(filr, nind, "## } // end(l1azy)");fprintln(filr)))
+nindstrnfpr(filr, nind, "}; ## // end(l1azy)");fprintln(filr)))
 )
 //
 (* ****** ****** *)
