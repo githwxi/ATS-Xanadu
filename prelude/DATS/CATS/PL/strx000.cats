@@ -44,7 +44,7 @@ my #
 $XATS2PL_strx_vt_forall0_f1un =
 sub {
   my ($fxs, $test) = @_;
-  while (1) {
+  while (TRUE) {
     my $cxs = $XATS2PL_lazy_vt_eval->($fxs);
     my $x01 = $XATS2PL_strxcon_vt_head_raw1->($cxs);
     if ($test->($x01)) {
@@ -52,10 +52,10 @@ sub {
     } else {
       $fxs = $XATS2PL_strxcon_vt_tail_raw0->($cxs);
       $XATS2PL_lazy_vt_free->($fxs);
-      return 0;
+      return FALSE;
     }
   }
-  return 1;
+  return TRUE;
 }
 ;
 ##
@@ -76,7 +76,7 @@ my #
 $XATS2PL_strxcon_vt_filter0_f1un =
 sub {
   my ($cxs, $test, $free) = @_;
-  while (1) {
+  while (TRUE) {
     my $x01 = $XATS2PL_strxcon_vt_head_raw1->($cxs);
     my $fxs = $XATS2PL_strxcon_vt_tail_raw0->($cxs);
     if ($test->($x01)) {

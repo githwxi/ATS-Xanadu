@@ -2351,19 +2351,24 @@ end//let//end-of-[I1INScas0(...)]
 (tknd
 ,fjas, icmp) =>
 (
-nindstrnfpr
-(filr, nind, "def ");
-i1tnmpl1(filr, itnm);
-fjas1pl1(filr, fjas);
-strnfpr(filr, ": ## { // lam0(");
+nindfpr(filr, nind);
+i1tnmpl1
+(filr, itnm); strnfpr
+(filr, " = sub { ## // lam0(");
 tokenfpr(filr, tknd);strnfpr(filr, ")\n");
 (
 envx2js_incnind
-( env0,2(*++*) );
-pl1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
+(env0, 2(*dlta*));
+nindstrnfpr
+(filr, nind, "my ");
+fjas1pl1
+(filr, fjas);strnfpr(filr, " = @_;\n");
+pl1emit_fjarglst
+(env0, fjas(*args*));f0_i1cmpret(env0, icmp));
 (
 envx2js_decnind
-( env0,2(*--*) );nindstrnfpr(filr, nind, "## } // end(lam0)\n"))
+(env0, 2(*dlta*));
+nindstrnfpr(filr, nind, "}; ## // end(lam0)\n"))
 )
 //
 (* ****** ****** *)
@@ -2374,30 +2379,36 @@ envx2js_decnind
 ,fjas, icmp) =>
 (
 //
-nindfpr(filr, nind);
+nindstrnfpr
+( filr
+, nind, "my ");
 i1tnmpl1(filr, itnm);
 strnfpr(filr," = undef;\n");
 //
-nindstrnfpr
-(filr, nind, "def ");
-d2varfpr(filr, dvar); //fvar
-fjas1pl1(filr, fjas); //farg
-strnfpr(filr, ": ## { // fix0(");
-tokenfpr(filr, tknd);strnfpr(filr, ")\n");
+nindfpr(filr, nind);
+d2varpl1
+(filr, dvar); strnfpr
+(filr, " = sub { ## // fix0(");
+tokenfpr
+(filr, tknd);strnfpr(filr, ")\n");
 //
 (
 envx2js_incnind
-(env0, 2(*++*));
+(env0, 2(*dlta*));
+nindstrnfpr
+(filr, nind, "my ");
+fjas1pl1
+(filr, fjas);strnfpr(filr, " = @_;\n");
 pl1emit_fjarglst
 (env0, fjas(*args*));f0_i1cmpret(env0, icmp));
 //
 (
 envx2js_decnind
-(env0, 2(*--*));
-nindstrnfpr(filr, nind, "## } // end(fix0)\n"));
+(env0, 2(*dlta*));
+nindstrnfpr(filr, nind, "}; ## // end(fix0)\n"));
 //
 nindfpr(filr, nind);i1tnmpl1(filr, itnm);
-strnfpr(filr," = ");d2varfpr(filr, dvar);smiclnln(filr)
+strnfpr(filr," = ");d2varpl1(filr, dvar);smiclnln(filr)
 )
 //
 (* ****** ****** *)
@@ -2416,16 +2427,24 @@ i1tnmpl1(filr, itnm);strnfpr(filr, " = undef;\n"))
 val () =
 (
 nindstrnfpr
-(filr, nind, "try:\n");
+( filr
+, nind, "eval { ## try\n");
 //
 envx2js_incnind(env0,2(*++*));
 f0_i1tnmcmp(env0, itnm, icmp);
 envx2js_decnind(env0,2(*--*));
 //
 nindstrnfpr
-(filr, nind, "except X2PLExcptn as exn:\n");
+( filr
+, nind, "}; ## endof(eval)\n");
+//
+nindstrnfpr
+( filr
+, nind
+, "if (blessed($@) && $@->isa('X2PLExcptn')) {\n");
+//
 nindfpr(filr, nind+2);
-i1valpl1(filr, iexn);strnfpr(filr, " = exn.args[0]\n"))
+i1valpl1(filr, iexn);strnfpr(filr, " = $@->{args};\n"))
 //
 val () =
 (
@@ -2451,7 +2470,7 @@ strnfpr(filr,"}; ## while TRUE // endof(do-try)\n"))
 //
 val () =
 (
-nindstrnfpr(filr, nind, "}; ## // end(except) // end-of(try)\n"))
+nindstrnfpr(filr, nind, "}; ## // end(except) // endof(try)\n"))
 end//let//end-of-[I1INStry0(...)]
 //
 (* ****** ****** *)
@@ -2608,7 +2627,7 @@ prints(itnm, " = ", "$arg", i0, ";\n"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_DATS_pl1emit_dynexp.dats] *)
 (***********************************************************************)

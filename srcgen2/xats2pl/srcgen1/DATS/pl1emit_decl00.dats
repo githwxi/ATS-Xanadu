@@ -793,7 +793,9 @@ val nind =
 val (  ) =
 (
 nindstrnfpr
-(filr, nind, "my ");
+(filr
+,nind, "my ##\n");
+nindfpr(filr, nind);
 i1tnmpl1(filr, itnm);
 strnfpr(filr, " = undef");smiclnln(filr))
 //

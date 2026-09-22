@@ -231,9 +231,6 @@ end(*let*)//end-of-[d2cstpl1(env0,dcst)]
 #implfun
 d2varpl1
 (filr, dvar) =
-(*
-d2varfpr(filr, dvar)
-*)
 let
 //
 val lctn = dvar.lctn((*0*))

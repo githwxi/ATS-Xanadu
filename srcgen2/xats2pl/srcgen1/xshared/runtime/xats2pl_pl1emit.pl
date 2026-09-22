@@ -15,6 +15,7 @@ use constant {
     FALSE => 0,
 };
 ########################################################################.
+use Scalar::Util qw(blessed);
 ########################################################################.
 ##
 our $XATSVOID = undef;
@@ -230,7 +231,7 @@ sub XATS000_ftset {
   package X2PLExcptn;
   sub new {
     my ($class, $xcon) = @_;
-    return bless {args => [$xcon]}, $class;
+    return bless {args => $xcon}, $class;
   }
 }
 ##

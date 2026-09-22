@@ -31,7 +31,8 @@ More than 10 template layers!
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val fact =
+val
+fact =
 fix f(x:nint): nint =>
 (
 if
@@ -40,6 +41,15 @@ then x * f(x-1) else 1)
 val (  ) =
 prints
 ("fact(10) = ", fact(10), "\n")
+//
+(* ****** ****** *)
+//
+val
+fact0 =
+lam (x:nint): nint => fact(x)
+val (  ) =
+prints
+("fact0(10) = ", fact0(10), "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -64,10 +64,10 @@ sub {
     } else {
       $xs = $XATS2PL_list_vt_tail_raw0->($xs);
       $XATS2PL_list_vt_foritm0_f1un->($xs, $free);
-      return 0;
+      return FALSE;
     }
   }
-  return 1;
+  return TRUE;
 }
 ;
 ##
