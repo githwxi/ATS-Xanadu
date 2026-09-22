@@ -2482,7 +2482,7 @@ end//let//end-of-[I1INStry0(...)]
 nindstrnfpr
 (filr, nind, "my ");
 i1tnmpl1(filr, itnm); strnfpr
-(filr, "_() = sub { ## // l0azy\n");
+(filr, "_ = sub { ## // l0azy\n");
 (
 envx2js_incnind
 (env0, 2(*dlta*));
