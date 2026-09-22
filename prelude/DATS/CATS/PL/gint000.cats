@@ -45,48 +45,42 @@ $XATS2PL_sint_lt_sint =
 sub {
   my ($i1, $i2) = @_;
   return ($i1 < $i2);
-}
-;
+};
 ##
 my #
 $XATS2PL_sint_gt_sint =
 sub {
   my ($i1, $i2) = @_;
   return ($i1 > $i2);
-}
-;
+};
 ##
 my #
 $XATS2PL_sint_eq_sint =
 sub {
   my ($i1, $i2) = @_;
   return ($i1 == $i2);
-}
-;
+};
 ##
 my #
 $XATS2PL_sint_lte_sint =
 sub {
   my ($i1, $i2) = @_;
   return ($i1 <= $i2);
-}
-;
+};
 ##
 my #
 $XATS2PL_sint_gte_sint =
 sub {
   my ($i1, $i2) = @_;
   return ($i1 >= $i2);
-}
-;
+};
 ##
 my #
 $XATS2PL_sint_neq_sint =
 sub {
   my ($i1, $i2) = @_;
   return ($i1 != $i2);
-}
-;
+};
 ##
 ########################################################################.
 ##
@@ -94,8 +88,7 @@ my #
 $XATS2PL_sint_neg =
 sub {
   my ($i1) = @_;
-  return -( $i1 ); }
-;
+  return -( $i1 ); };
 ##
 my #
 $XATS2PL_sint_abs =
@@ -103,8 +96,7 @@ sub {
   my ($i1) = @_;
   return
   ( $i1 >= 0 ) ?
-  ( $i1 ) : -( $i1 ); }
-;
+  ( $i1 ) : -( $i1 ); };
 ##
 ########################################################################.
 ##
@@ -139,7 +131,6 @@ $XATS2PL_sint_div_sint =
 sub {
   my ($i1, $i2) = @_;
   return int($i1 / $i2); };
-;
 ##
 ########################################################################.
 ##

@@ -45,90 +45,85 @@ $XATS2PL_char_lt =
 sub {
   my ($c1, $c2) = @_;
   return ($c1 < $c2);
-}
-;
+};
 ##
 my
 $XATS2PL_char_gt =
 sub {
   my ($c1, $c2) = @_;
   return ($c1 > $c2);
-}
-;
+};
 ##
 my
 $XATS2PL_char_eq =
 sub {
   my ($c1, $c2) = @_;
   return ($c1 == $c2);
-}
-;
+};
 ##
 my
 $XATS2PL_char_lte =
 sub {
   my ($c1, $c2) = @_;
   return ($c1 <= $c2);
-}
-;
+};
 ##
 my
 $XATS2PL_char_gte =
 sub {
   my ($c1, $c2) = @_;
   return ($c1 >= $c2);
-}
-;
+};
 ##
 my
 $XATS2PL_char_neq =
 sub {
   my ($c1, $c2) = @_;
   return ($c1 != $c2);
-}
-;
+};
 ##
 ########################################################################.
-##
-my
-$XATS2PL_char_add_sint =
-sub {
-  my ($c1, $i2) = @_;
-  return (($c1 + $i2) % 256); ## char=int8
-}
-;
 ##
 my
 $XATS2PL_char_sub_char =
 sub {
   my ($c1, $c2) = @_;
   return ($c1 - $c2);
-}
-;
+};
+##
+my
+$XATS2PL_char_add_sint =
+sub {
+  my ($c1, $i2) = @_;
+  return
+  (($c1 + $i2) % 256);
+};
+##
+########################################################################.
 ##
 my
 $XATS2PL_char_make_sint =
 sub {
   my ($i0) = @_; return $i0;
-}
-;
+};
 ##
 my
 $XATS2PL_sint_make_char =
 sub {
   my ($ch) = @_; return $ch;
-}
-;
+};
 ##
 ########################################################################.
+##
+my
+$XATS2PL_strn_print = undef;
 ##
 my
 $XATS2PL_char_print =
 sub {
   my ($c0) = @_;
   $XATS2PL_strn_print->(chr($c0)); return;
-}
-;
+};
 ##
 ########################################################################.
 ########################################################################.
