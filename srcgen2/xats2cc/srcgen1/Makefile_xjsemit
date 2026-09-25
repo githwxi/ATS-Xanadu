@@ -53,6 +53,8 @@ tryd3i0_decl00.dats \
 cc0emit.dats \
 cc0emit_myenv0.dats \
 cc0emit_staexp.dats \
+cc0emit_dynexp.dats \
+cc0emit_decl00.dats \
 intrep1.dats \
 intrep1_print0.dats \
 xats2cc_tmplib.dats \
