@@ -54,6 +54,39 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+fun
+envxcc0_filr$get
+(env0: !envxcc0): FILEref
+//
+fun
+envxcc0_nind$get
+(env0: !envxcc0): ( sint )
+//
+(* ****** ****** *)
+//
+fun
+envxcc0_make_out
+(  out: FILR   ): envxcc0
+fun
+envxcc0_free_nil
+( env0: ~envxcc0 ): void//fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+envxcc0_incnind
+( env0:
+! envxcc0, ninc: sint): void
+fun
+envxcc0_decnind
+( env0:
+! envxcc0, ndec: sint): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <x0:t0>
 list_cc0emit_fnp

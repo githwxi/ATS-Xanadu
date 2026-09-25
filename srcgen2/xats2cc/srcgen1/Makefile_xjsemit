@@ -51,6 +51,7 @@ tryd3i0_myenv0.dats \
 tryd3i0_dynexp.dats \
 tryd3i0_decl00.dats \
 cc0emit.dats \
+cc0emit_myenv0.dats \
 cc0emit_staexp.dats \
 intrep1.dats \
 intrep1_print0.dats \
