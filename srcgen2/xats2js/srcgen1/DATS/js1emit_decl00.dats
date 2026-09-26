@@ -164,7 +164,7 @@ let
 //
 val () =
 prerrsln
-("js1emit_i1dcl: dcl0 = ", dcl0))
+("js1emit_i1dcl: dcl0 = ", dcl0)
 //
 *)
 in//let

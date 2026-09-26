@@ -26,129 +26,45 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-//
-Fri Sep 25 12:45:24 PM EDT 2026
-//
+(*
+Fri Sep 25 11:00:30 PM EDT 2026
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-(*
-#define
-XATSOPT "./../../.."
-*)
-(* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
-#include
-"./../../..\
-/HATS/xatsopt_dpre.hats"
-(* ****** ****** *)
-#include
-"./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload // BAS =
-"./../../../SATS/xbasics.sats"
-//
-#staload // SYM =
-"./../../../SATS/xsymbol.sats"
-#staload // LOC =
-"./../../../SATS/locinfo.sats"
-#staload // LEX =
-"./../../../SATS/lexing0.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload "./../SATS/intrep0.sats"
-#staload "./../SATS/xats2cc.sats"
-//
-(* ****** ****** *)
-//
-#staload "./../SATS/cc0emit.sats"
+#staload "./intrep0.sats"
+#staload "./intrep1.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-fprintln
-(filr: FILR): void =
-(
-strn_fprint("\n", filr))//endfun
-//
-(* ****** ****** *)
+nindfpr
+(filr: FILR, nind: sint): void
 //
 fun
-lctnfpr
+strnfpr
+(filr: FILR, strn: strn): void
+//
+fun
+nindstrnfpr
 (filr: FILR
-,loc0: loc_t): void =
-(
-loctn_fprint(loc0,filr))//endfun
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-i0dcl_cc0emit
-(dcl0, env0) =
-let
-// (*
-//
-val () =
-prerrsln
-("i0dcl_cc0emit: dcl0 = ", dcl0)
-//
-// *)
-in//let
-//
-case+
-dcl0.node() of
-//
-|_(*otherwise*) => f0_otherwise(dcl0, env0)
-//
-end where
-{
-//
-fun
-f0_otherwise
-(
-dcl0: i0dcl,
-env0: !envxcc0): void =
-let
-//
-val loc0 =
-dcl0.lctn((*void*))
-//
-val filr =
-envxcc0_filr$get(env0)
-val nind =
-envxcc0_nind$get(env0)
-//
-in//let
-//
-nindfpr(filr, nind);
-strnfpr(filr, "// ");
-loctn_fprint
-(loc0, filr); fprintln(filr);
-nindfpr(filr, nind);
-strnfpr(filr, "// ");
-i0dcl_fprint(dcl0, filr); fprintln(filr)
-//
-end(*let*)//end-of-[f0_otherwise(env0,dcl0)]
-//
-}(*where*)//end-of-[i0dcl_cc0emit(dcl0,env0)]
+,nind: sint, strn: strn): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc0emit_decl00.dats] *)
+(* end of [ATS3/XANADU_srcgen1_xats2cc_srcgen1_SATS_xats2cc.sats] *)
 (***********************************************************************)

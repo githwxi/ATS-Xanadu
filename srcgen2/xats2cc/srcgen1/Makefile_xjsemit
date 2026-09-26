@@ -29,9 +29,10 @@ SRCSATS := \
 intrep0.sats \
 trxd3i0.sats \
 tryd3i0.sats \
-cc0emit.sats \
 intrep1.sats \
 trcmp01.sats \
+xats2cc.sats \
+cc0emit.sats \
 cc1emit.sats \
 #
 ########################################################################
@@ -50,14 +51,16 @@ tryd3i0.dats \
 tryd3i0_myenv0.dats \
 tryd3i0_dynexp.dats \
 tryd3i0_decl00.dats \
+intrep1.dats \
+intrep1_print0.dats \
+xats2cc.dats \
+xats2cc_tmplib.dats \
+xats2cc_utils0.dats \
 cc0emit.dats \
 cc0emit_myenv0.dats \
 cc0emit_staexp.dats \
 cc0emit_dynexp.dats \
 cc0emit_decl00.dats \
-intrep1.dats \
-intrep1_print0.dats \
-xats2cc_tmplib.dats \
 cc1emit.dats \
 cc1emit_dynexp.dats \
 cc1emit_decl00.dats \

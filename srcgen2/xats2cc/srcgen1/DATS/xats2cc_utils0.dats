@@ -30,18 +30,13 @@
 //
 (*
 Author: Hongwei Xi
-//
-Fri Sep 25 12:45:24 PM EDT 2026
-//
+(*
+Wed Mar 11 01:27:57 PM EDT 2026
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-(* ****** ****** *)
-(*
-#define
-XATSOPT "./../../.."
-*)
 (* ****** ****** *)
 #include
 "./../../..\
@@ -53,102 +48,49 @@ XATSOPT "./../../.."
 #include
 "./../HATS/mytmplib00.hats"
 (* ****** ****** *)
-(* ****** ****** *)
 //
-#staload // BAS =
+#staload
 "./../../../SATS/xbasics.sats"
 //
 #staload // SYM =
 "./../../../SATS/xsymbol.sats"
+//
 #staload // LOC =
 "./../../../SATS/locinfo.sats"
-#staload // LEX =
-"./../../../SATS/lexing0.sats"
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
 #staload "./../SATS/xats2cc.sats"
-//
-(* ****** ****** *)
-//
-#staload "./../SATS/cc0emit.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-fprintln
-(filr: FILR): void =
-(
-strn_fprint("\n", filr))//endfun
-//
-(* ****** ****** *)
-//
-fun
-lctnfpr
-(filr: FILR
-,loc0: loc_t): void =
-(
-loctn_fprint(loc0,filr))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-i0dcl_cc0emit
-(dcl0, env0) =
-let
-// (*
-//
-val () =
-prerrsln
-("i0dcl_cc0emit: dcl0 = ", dcl0)
-//
-// *)
-in//let
-//
-case+
-dcl0.node() of
-//
-|_(*otherwise*) => f0_otherwise(dcl0, env0)
-//
-end where
-{
-//
-fun
-f0_otherwise
+strnfpr(
+filr, strn) =
 (
-dcl0: i0dcl,
-env0: !envxcc0): void =
-let
+strn_fprint(strn, filr))
 //
-val loc0 =
-dcl0.lctn((*void*))
+#implfun
+nindfpr(
+filr, nind) =
+if nind > 0 then
+(
+strn_fprint
+(" ", filr); nindfpr(filr, nind-1))
 //
-val filr =
-envxcc0_filr$get(env0)
-val nind =
-envxcc0_nind$get(env0)
-//
-in//let
-//
-nindfpr(filr, nind);
-strnfpr(filr, "// ");
-loctn_fprint
-(loc0, filr); fprintln(filr);
-nindfpr(filr, nind);
-strnfpr(filr, "// ");
-i0dcl_fprint(dcl0, filr); fprintln(filr)
-//
-end(*let*)//end-of-[f0_otherwise(env0,dcl0)]
-//
-}(*where*)//end-of-[i0dcl_cc0emit(dcl0,env0)]
+#implfun
+nindstrnfpr
+(filr
+,nind, strn) =
+(
+nindfpr(filr, nind);strnfpr(filr, strn))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc0emit_decl00.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_xats2cc_utils0.dats] *)
 (***********************************************************************)
