@@ -100,17 +100,35 @@ loctn_fprint(loc0,filr))//endfun
 i0dcl_cc0emit
 (dcl0, env0) =
 let
-// (*
+//
+(*
 //
 val () =
 prerrsln
 ("i0dcl_cc0emit: dcl0 = ", dcl0)
 //
-// *)
+*)
+//
 in//let
 //
 case+
 dcl0.node() of
+//
+|I0Ddclst0
+(   dcls   ) =>
+let
+val () =
+  i0dclist_cc0emit(dcls, env0)
+end(*let*)//end-of-[I0Ddclst0(dcls)]
+//
+|I0Dlocal0
+(head, body) =>
+let
+val () =
+  i0dclist_cc0emit(head, env0)
+val () =
+  i0dclist_cc0emit(body, env0)
+end(*let*)//end-of-[I0Dlocal0(head,body)]
 //
 |_(*otherwise*) => f0_otherwise(dcl0, env0)
 //
