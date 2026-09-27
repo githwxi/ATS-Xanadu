@@ -1629,7 +1629,8 @@ XATS2JS_the_print_store = [];
 //////////////////////////////////////////////////////////////////.
 
 function
-XATS2JS_g_print(obj)
+XATS2JS_g_print
+  (obj)
 {
 var
 rep = obj.toString();
@@ -1640,7 +1641,7 @@ return; // XATS2JS_g_print
 /* ****** ****** */
 function
 XATS2JS_bool_print
-  (b0)
+  ( b0 )
 {
 if(b0)
 {
@@ -1655,7 +1656,7 @@ return; // XATS2JS_bool_print
 /* ****** ****** */
 function
 XATS2JS_char_print
-  (c0)
+  ( c0 )
 {
 // c0: number
 XATS2JS_g_print
@@ -1665,14 +1666,14 @@ return; // XATS2JS_char_print
 /* ****** ****** */
 function
 XATS2JS_gint_print$sint
-  (x0)
+  ( x0 )
 {
 XATS2JS_g_print(x0);
 return; // gint_print$sint
 }
 function
 XATS2JS_gint_print$uint
-  (x0)
+  ( x0 )
 {
 XATS2JS_g_print(x0);
 return; // gint_print$uint
@@ -1680,21 +1681,22 @@ return; // gint_print$uint
 /* ****** ****** */
 function
 XATS2JS_gflt_print$sflt
-  (x0)
+  ( x0 )
 {
 XATS2JS_g_print(x0);
 return; // gint_print$sflt
 }
 function
 XATS2JS_gflt_print$dflt
-  (x0)
+  ( x0 )
 {
 XATS2JS_g_print(x0);
 return; // gint_print$dflt
 }
 /* ****** ****** */
 function
-XATS2JS_strn_print(cs)
+XATS2JS_strn_print
+  ( cs )
 {
   return XATS2JS_g_print(cs);
 }
