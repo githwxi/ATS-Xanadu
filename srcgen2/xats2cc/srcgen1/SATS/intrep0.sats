@@ -138,6 +138,8 @@ are addressed:
 (* ****** ****** *)
 #typedef a2tdf = $D2E.a2tdf
 (* ****** ****** *)
+#typedef d2ecl = $D2E.d2ecl
+(* ****** ****** *)
 (* ****** ****** *)
 #staload D3E = "./\
 ../../../SATS/dynexp3.sats"
@@ -1034,6 +1036,7 @@ datatype
 i0dcl_node =
 (* ****** ****** *)
 //
+|I0Dd2ecl of (d2ecl)
 |I0Dd3ecl of (d3ecl)
 //
 (* ****** ****** *)

@@ -948,6 +948,10 @@ idcl.node() of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I0Dd2ecl(d2cl) =>
+(
+ prints("I0Dd2ecl(", d2cl, ")"))
+//
 |I0Dd3ecl(d3cl) =>
 (
  prints("I0Dd3ecl(", d3cl, ")"))

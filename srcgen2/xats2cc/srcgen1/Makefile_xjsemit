@@ -76,20 +76,20 @@ $(patsubst %.dats, BUILD/JS/%_dats_out1.js, $(SRCDATS))
 ########################################################################
 ########################################################################
 #
-# TCHECK00=$(NODE) \
-# --stack-size=8801 $(XATS2JS_JSEMIT00)
-# JSEMIT00=$(NODE) \
-# --stack-size=8801 $(XATS2JS_JSEMIT00)
-# BUILD/JS/%_sats_out0.js: SATS/%.sats; \
-# $(NODE) --stack-size=8801 $(XATSOPT_TCHECK00) $< > $@
-# BUILD/JS/%_dats_out0.js: DATS/%.dats; \
-# $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT00) $< > $@
+TCHECK00=$(NODE) \
+--stack-size=8801 $(XATS2JS_JSEMIT00)
+JSEMIT00=$(NODE) \
+--stack-size=8801 $(XATS2JS_JSEMIT00)
+BUILD/JS/%_sats_out0.js: SATS/%.sats; \
+$(NODE) --stack-size=8801 $(XATSOPT_TCHECK00) $< > $@
+BUILD/JS/%_dats_out0.js: DATS/%.dats; \
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT00) $< > $@
 #
-TCHECK00=npx @npmhwxi/xatsopt-tcheck00-ats2
-JSEMIT00=npx @npmhwxi/xats2js-jsemit00-ats2
+# TCHECK00=npx @npmhwxi/xatsopt-tcheck00-ats2
+# JSEMIT00=npx @npmhwxi/xats2js-jsemit00-ats2
 #
-BUILD/JS/%_sats_out0.js: SATS/%.sats; $(TCHECK00) $< > $@
-BUILD/JS/%_dats_out0.js: DATS/%.dats; $(JSEMIT00) $< > $@
+# BUILD/JS/%_sats_out0.js: SATS/%.sats; $(TCHECK00) $< > $@
+# BUILD/JS/%_dats_out0.js: DATS/%.dats; $(JSEMIT00) $< > $@
 #
 ########################################################################
 ########################################################################

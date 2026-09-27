@@ -410,27 +410,27 @@ min_i0_i0: (i0, i0) -> i0
 //
 (* ****** ****** *)(* ****** ****** *)
 //
-#sortdef n0 = {a:i0 | a >= 0}
+#sortdef n0 = {i:i0 | i >= 0}
 //
 (* ****** ****** *)(* ****** ****** *)
 //
-#sortdef neg = {a:i0 | a < 0}
-#sortdef nat = {a:i0 | a >= 0}
-#sortdef pos = {a:i0 | a >= 1}
+#sortdef neg = {i:i0 | i < 0}
+#sortdef nat = {i:i0 | i >= 0}
+#sortdef pos = {i:i0 | i >= 1}
 //
 (* ****** ****** *)(* ****** ****** *)
 //
-#sortdef agtz = {l:a0 | l > 0}
-#sortdef agez = {l:a0 | l >= 0}
+#sortdef agtz = {a:a0 | a > 0}
+#sortdef agez = {a:a0 | a >= 0}
 //
 (* ****** ****** *)(* ****** ****** *)
 //
 #stacst0
 sizeof_vt_i0: (vt) -> i0
 #sexpdef
-sz(a:vt) = sizeof_vt_i0(a)
+sz(vt:vt) = sizeof_vt_i0(vt)
 #sexpdef
-size(a:vt) = sizeof_vt_i0(a)
+size(vt:vt) = sizeof_vt_i0(vt)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -438,7 +438,7 @@ size(a:vt) = sizeof_vt_i0(a)
 #stacst0
 offset_vt_cs: (vt,cs) -> i0
 #sexpdef
-ofs(a:vt,l:cs) = offset_vt_cs(a,l)
+ofs(t:vt,l:cs) = offset_vt_cs(t,l)
 *)
 //
 (* ****** ****** *)(* ****** ****** *)
@@ -469,12 +469,12 @@ ofs(a:vt,l:cs) = offset_vt_cs(a,l)
 (* ****** ****** *)(* ****** ****** *)
 //
 #absvwtp
-cbv0_v0_vt(a: v0)//(a)
+cbv0_v0_vt(v0: v0)//(v0)
 #absvwtp
-cbv1_v0_vt(a: v0)//(a)
+cbv1_v0_vt(v0: v0)//(v0)
 //
 #absvwtp
-cbrf_vt_vt(a: vt) <= a
+cbrf_vt_vt(vt: vt) <= vt
 //
 #sexpdef ~ = cbv0_v0_vt(*0*)
 #sexpdef ! = cbv1_v0_vt(*0*)
@@ -484,9 +484,9 @@ cbrf_vt_vt(a: vt) <= a
 (* ****** ****** *)(* ****** ****** *)
 //
 #abstype
-top0_vt_t0(a: vt)//(?a)
+top0_vt_t0(vt: vt)//(?vt)
 #abstype
-top1_vt_t0(a: vt)//(?!a)
+top1_vt_t0(vt: vt)//(?!vt)
 //
 #sexpdef ?  = top0_vt_t0(*0*)
 #sexpdef ?! = top1_vt_t0(*0*)
@@ -500,8 +500,8 @@ This is not working due
 to the special use of (_)
 //
 #absvwtp
-atx2_vt_vt_vt(a:vt,b:vt)<=a
-#sexpdef >> = atx2_vt_vt_vt
+atx2_vt_vt_vt(ta:vt,tb:vt)<=ta
+#sexpdef >> = atx2_vt_vt_vt(*0*)
 *)
 (* ****** ****** *)(* ****** ****** *)
 #typedef
@@ -530,15 +530,15 @@ p1tr1(l: a0) = p1tr_tbox(l)
 //
 #typedef
 p2tr0
-(a:vt) = [l:a0] p2tr_tbox(a, l)
+(t: vt) = [l:a0] p2tr_tbox(t, l)
 #typedef
 p2tr1
-(a: vt, l: a0) = p2tr_tbox(a, l)
+(t: vt, l: a0) = p2tr_tbox(t, l)
 //
 #typedef p1tr = p1tr0
 #typedef p1tr(l:a0) = p1tr1(l)
-#typedef p2tr(x:vt) = p2tr0(x)
-#typedef p2tr(x:vt, l:a0) = p2tr1(x, l)
+#typedef p2tr(t:vt) = p2tr0(t)
+#typedef p2tr(t:vt, l:a0) = p2tr1(t, l)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -546,13 +546,13 @@ p2tr1
 p2at_view(vt,a0) // linprop
 #viewdef
 p2at0
-(a:vt) = [l:a0] p2at_view(a, l)
+(t: vt) = [l:a0] p2at_view(t, l)
 #viewdef
 p2at1
-(a: vt, l: a0) = p2at_view(a, l)
+(t: vt, l: a0) = p2at_view(t, l)
 //
-#viewdef p2at(x:vt) = p2tr0(x)
-#viewdef p2at(x:vt, l:a0) = p2tr1(x, l)
+#viewdef p2at(t:vt) = p2tr0(t)
+#viewdef p2at(t:vt, l:a0) = p2tr1(t, l)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -561,7 +561,7 @@ cp1tr_tbox
 (l:a0) <= p1tr_k
 #abstype
 cp2tr_tbox
-(x:vt, l:a0) <= p2tr_k
+(t:vt, l:a0) <= p2tr_k
 //
 #typedef
 cp1tr0 = [l:a0] cp1tr_tbox(l)
@@ -570,15 +570,15 @@ cp1tr1(l: a0) = cp1tr_tbox(l)
 //
 #typedef
 cp2tr0
-(a:vt) = [l:a0] cp2tr_tbox(a, l)
+(t: vt) = [l:a0] cp2tr_tbox(t, l)
 #typedef
 cp2tr1
-(a: vt, l: a0) = cp2tr_tbox(a, l)
+(t: vt, l: a0) = cp2tr_tbox(t, l)
 //
 #typedef cp1tr = cp1tr0
 #typedef cp1tr(l:a0) = cp1tr1(l)
-#typedef cp2tr(x:vt) = cp2tr0(x)
-#typedef cp2tr(x:vt, l:a0) = cp2tr1(x, l)
+#typedef cp2tr(t:vt) = cp2tr0(t)
+#typedef cp2tr(t:vt, l:a0) = cp2tr1(t, l)
 //
 (* ****** ****** *)(* ****** ****** *)
 
@@ -645,15 +645,15 @@ char1(c:c0) = char_type(c)
 (* ****** ****** *)(* ****** ****** *)
 //
 #abstype
-gint_type(a:t0,i0) <= (a)
+gint_type(t:t0,i:i0) <= (t)
 //
 #typedef
-gint0(a:t0)=
-[i:i0] gint_type(a(*k*), i)
+gint0(t:t0)=
+[i:i0] gint_type(t(*k*), i)
 //
 #typedef
 gint1 // HX: indexed int-type
-(a:t0,i:i0) = gint_type(a, i)
+(t:t0,i:i0) = gint_type(t, i)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -694,9 +694,9 @@ ullint1(i:i0) = gint1(ullint_k, i)
 (* ****** ****** *)(* ****** ****** *)
 //
 #typedef
-gint(a:t0) = gint0(a)
+gint(t:t0) = gint0(t)
 #typedef
-gint(a:t0,i:i0) = gint1(a, i)
+gint(t:t0,i:i0) = gint1(t, i)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -811,20 +811,20 @@ unit_vt = unit_vt of ()
 datatype
 optn_t0_i0_tx
 (
-  a:type+, bool ) =
-| optn_nil(a, ff) of ()
-| optn_cons(a, tt) of (a)
+  t:type+, bool ) =
+| optn_nil(t, ff) of ()
+| optn_cons(t, tt) of (t)  
 //
-// end of [optn_t0_i0_tbox]
+// end-of-[optn_t0_i0_tbox()]
 //
 datavwtp
 optn_vt_i0_vx
 (
-  a:vwtp+, bool ) =
-| optn_vt_nil(a, ff) of ()
-| optn_vt_cons(a, tt) of (a)
+  t:vwtp+, bool ) =
+| optn_vt_nil(t, ff) of ()
+| optn_vt_cons(t, tt) of (t)
 //
-// end of [optn_vt_i0_vtbx]
+// end-of-[optn_vt_i0_vtbx()]
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -837,8 +837,8 @@ optn_vt_i0_vx
 //
 fcast
 optn_vt2t
-{a:t0}{b:b0}
-(xs: optn_vt(a, b)): optn(a, b)
+{t:t0}{b:b0}
+(xs: optn_vt(t, b)): optn(t, b)
 //
 #symload vt2t with optn_vt2t of 1000
 //
@@ -869,30 +869,30 @@ optn_vt2t
 //
 #typedef
 optn
-(a:t0) = [b:b0] optn(a, b)
+(t:t0) = [b:b0] optn(t, b)
 #typedef
 optn0
-(a:t0) = [b:b0] optn(a, b)
+(t:t0) = [b:b0] optn(t, b)
 #typedef
-optn1(a:t0,b:b0) = optn(a, b)
+optn1(t:t0,b:b0) = optn(t, b)
 //
 #vwtpdef
 loptn
-(a:vt) = [b:b0] loptn(a, b)
+(t:vt) = [b:b0] loptn(t, b)
 #vwtpdef
 loptn0
-(a:vt) = [b:b0] loptn(a, b)
+(t:vt) = [b:b0] loptn(t, b)
 #vwtpdef
-loptn1(a:vt,b:b0) = loptn(a, b)
+loptn1(t:vt,b:b0) = loptn(t, b)
 //
 #vwtpdef
 optn_vt
-(a:vt) = [b:b0] optn_vt(a, b)
+(t:vt) = [b:b0] optn_vt(t, b)
 #vwtpdef
 optn0_vt
-(a:vt) = [b:b0] optn_vt(a, b)
+(t:vt) = [b:b0] optn_vt(t, b)
 #vwtpdef
-optn1_vt(a:vt,b:b0) = optn_vt(a, b)
+optn1_vt(t:vt,b:b0) = optn_vt(t, b)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -901,36 +901,36 @@ optn1_vt(a:vt,b:b0) = optn_vt(a, b)
 datatype
 list_t0_i0_tx
 (
-  a:type+, int(*len*) ) =
+  t:type+, int(*len*) ) =
 //
 |
 list_nil
-(a, 0(*len*)) of ((*0*))//nil
+(t, 0(*len*)) of ((*0*))//nil
 //
 |
 {n:i0 | n >= 0}
 list_cons
-(a, n+1(*len*)) of
-(a, list_t0_i0_tx(a, n))//cons
+(t, n+1(*len*)) of
+(t, list_t0_i0_tx(t, n))//cons
 //
-// end of [ list_t0_i0_tx(a,n) ]
+// end-of-[ list_t0_i0_tx(t,n) ]
 //
 datavwtp
 list_vt_i0_vx
 (
-  a:vwtp+, int(*len*) ) =
+  t:vwtp+, int(*len*) ) =
 //
 |
 list_vt_nil
-(a, 0(*len*)) of ((*0*))//nil
+(t, 0(*len*)) of ((*0*))//nil
 //
 |
 {n:i0 | n >= 0}
 list_vt_cons
-(a, n+1(*len*)) of
-(a, list_vt_i0_vx(a, n))//cons
+(t, n+1(*len*)) of
+(t, list_vt_i0_vx(t, n))//cons
 //
-// end of [ list_vt_i0_vx(a,n) ]
+// end-of-[ list_vt_i0_vx(t,n) ]
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -943,8 +943,8 @@ list_vt_cons
 //
 fcast
 list_vt2t
-{a:t0}{n:i0}
-(xs: list_vt(a, n)): list(a, n)
+{t:t0}{n:i0}
+(xs: list_vt(t, n)): list(t, n)
 //
 #symload vt2t with list_vt2t of 1000
 //
@@ -967,106 +967,106 @@ list_vt2t
 (* ****** ****** *)(* ****** ****** *)
 //
 #typedef
-list(a:t0) = [n:i0] list(a, n)
+list(t:t0) = [n:i0] list(t, n)
 //
 #typedef
-list0(a:t0) = [n:i0 | n >= 0] list(a, n)
+list0(t:t0) = [n:i0 | n >= 0] list(t, n)
 #typedef
-list1(a:t0) = [n:i0 | n >= 1] list(a, n)
+list1(t:t0) = [n:i0 | n >= 1] list(t, n)
 //
 #typedef
 listlt
-(a:t0, n:i0) = [i:nat | i < n] list(a, i)
+(t:t0, n:i0) = [i:nat | i < n] list(t, i)
 #typedef
 listgt
-(a:t0, n:i0) = [k:int | k > n] list(a, k)
+(t:t0, n:i0) = [k:int | k > n] list(t, k)
 //
 #typedef
 listlte
-(a:t0, n:i0) = [i:nat | i <= n] list(a, i)
+(t:t0, n:i0) = [i:nat | i <= n] list(t, i)
 #typedef
 listgte
-(a:t0, n:i0) = [k:int | k >= n] list(a, k)
+(t:t0, n:i0) = [k:int | k >= n] list(t, k)
 //
 #typedef
 listbtw
-( a:t0
-, m:i0, n:i0) = [i:nat | m <= i; i < n] list(a, i)
+( t:t0
+, m:i0, n:i0) = [i:nat | m <= i; i < n] list(t, i)
 #typedef
 listbtwe
-( a:t0
-, m:i0, n:i0) = [i:nat | m <= i; i <= n] list(a, i)
+( t:t0
+, m:i0, n:i0) = [i:nat | m <= i; i <= n] list(t, i)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
 //
 #vwtpdef
-llist(a:vt) =
-[n:i0] llist(a, n)
+llist(t:vt) =
+[n:i0] llist(t, n)
 //
 #vwtpdef
-llist0(a:vt) =
-[n:i0 | n >= 0] llist(a, n)
+llist0(t:vt) =
+[n:i0 | n >= 0] llist(t, n)
 #vwtpdef
-llist1(a:vt) =
-[n:i0 | n >= 1] llist(a, n)
+llist1(t:vt) =
+[n:i0 | n >= 1] llist(t, n)
 //
 #vwtpdef
 llistlt
-(a:vt, n:i0) = [i:nat | i < n] llist(a, i)
+(t:vt, n:i0) = [i:nat | i < n] llist(t, i)
 #vwtpdef
 llistgt
-(a:vt, n:i0) = [k:int | k > n] llist(a, k)
+(t:vt, n:i0) = [k:int | k > n] llist(t, k)
 #vwtpdef
 llistlte
-(a:vt, n:i0) = [i:nat | i <= n] llist(a, i)
+(t:vt, n:i0) = [i:nat | i <= n] llist(t, i)
 #vwtpdef
 llistgte
-(a:vt, n:i0) = [k:int | k >= n] llist(a, k)
+(t:vt, n:i0) = [k:int | k >= n] llist(t, k)
 //
 #vwtpdef
 llistbtw
-( a:vt
-, m:i0, n:i0) = [i:i0 | m <= i; i < n] llist(a, i)
+( t:vt
+, m:i0, n:i0) = [i:i0 | m <= i; i < n] llist(t, i)
 #vwtpdef
 llistbtwe
-( a:vt
-, m:i0, n:i0) = [i:i0 | m <= i; i <= n] llist(a, i)
+( t:vt
+, m:i0, n:i0) = [i:i0 | m <= i; i <= n] llist(t, i)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
 #vwtpdef
-list_vt(a:vt) =
-[n:i0] list_vt(a, n)
+list_vt(t:vt) =
+[n:i0] list_vt(t, n)
 //
 #vwtpdef
-list0_vt(a:vt) =
-[n:i0 | n >= 0] list_vt(a, n)
+list0_vt(t:vt) =
+[n:i0 | n >= 0] list_vt(t, n)
 #vwtpdef
-list1_vt(a:vt) =
-[n:i0 | n >= 1] list_vt(a, n)
+list1_vt(t:vt) =
+[n:i0 | n >= 1] list_vt(t, n)
 //
 #vwtpdef
 listlt_vt
-(a:vt, n:i0) = [i:nat | i < n] list_vt(a, i)
+(t:vt, n:i0) = [i:nat | i < n] list_vt(t, i)
 #vwtpdef
 listgt_vt
-(a:vt, n:i0) = [k:int | k > n] list_vt(a, k)
+(t:vt, n:i0) = [k:int | k > n] list_vt(t, k)
 #vwtpdef
 listlte_vt
-(a:vt, n:i0) = [i:nat | i <= n] list_vt(a, i)
+(t:vt, n:i0) = [i:nat | i <= n] list_vt(t, i)
 #vwtpdef
 listgte_vt
-(a:vt, n:i0) = [k:int | k >= n] list_vt(a, k)
+(t:vt, n:i0) = [k:int | k >= n] list_vt(t, k)
 //
 #vwtpdef
 listbtw_vt
-( a:vt
-, m:i0, n:i0) = [i:i0 | m <= i; i < n] list_vt(a, i)
+( t:vt
+, m:i0, n:i0) = [i:i0 | m <= i; i < n] list_vt(t, i)
 #vwtpdef
 listbtwe_vt
-( a:vt
-, m:i0, n:i0) = [i:i0 | m <= i; i <= n] list_vt(a, i)
+( t:vt
+, m:i0, n:i0) = [i:i0 | m <= i; i <= n] list_vt(t, i)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -1081,7 +1081,7 @@ ldflt_k =
 $extype("xats_ldflt_t")
 //
 #abstype
-gflt_type(a:t0) <= a
+gflt_type(t:t0) <= t
 //
 #typedef
 sflt = gflt_type(sflt_k)
@@ -1091,7 +1091,7 @@ dflt = gflt_type(dflt_k)
 ldflt = gflt_type(ldflt_k)
 //
 #typedef
-gflt(a:t0) = gflt_type(a)
+gflt(t:t0) = gflt_type(t)
 //
 #typedef
 float = sflt // single precision
@@ -1206,90 +1206,90 @@ strtmp1_vt
 lazy_t0_tx
 (elt:type+) <= p0tr
 #typedef
-lazy(a:t0) = lazy_t0_tx(a)
+lazy(t:t0) = lazy_t0_tx(t)
 //
 #absvtbx
 lazy_vt_vx
 (elt:vwtp+) <= p0tr
 #vwtpdef
-llazy(a:vt) = lazy_vt_vx(a)
+llazy(t:vt) = lazy_vt_vx(t)
 #vwtpdef
-lazy_vt(a:vt) = lazy_vt_vx(a)
+lazy_vt(t:vt) = lazy_vt_vx(t)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
 (*
 fun
-<a1:t0>
-<a2:vt>
+<t1:t0>
+<t2:vt>
 assign
-(x1: &a1 >> a2, x2: a2): void
+(x1: &t1 >> t2, x2: t2): void
 //
 #symload := with assign of 00
 //
 fun
-<a1:v0>
-<a2:v0>
+<v1:v0>
+<v2:v0>
 pfexch
-(pf1: !a0>>a1, pf2: !a2>>a1): void
+(pf1: !v0>>v1, pf2: !v2>>v1): void
 *)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
 #absview
-a0ptr_view(a:vt,l:a0)
+a0ptr_view(t:vt,l:a0)
 #sexpdef @ = a0ptr_view
 //
 #absview
-a1ptr_view(a:vt,l:a0,n:i0)
+a1ptr_view(t:vt,l:a0,n:i0)
 #sexpdef arrvw = a1ptr_view
 //
 (* ****** ****** *)(* ****** ****** *)
 //
 datatype
-strmcon(a:type+) =
+strmcon(t:type+) =
 |strmcon_nil of ((*void*))
-|strmcon_cons of (a, stream(a))
+|strmcon_cons of (t, stream(t))
 and//datatype
-strxcon(a:type+) =
-|strxcon_cons of (a, streax(a))
+strxcon(t:type+) =
+|strxcon_cons of (t, streax(t))
 //
 where
 {
 #typedef
-stream(a:t0) = lazy(strmcon(a))
+stream(t:t0) = lazy(strmcon(t))
 #typedef
-streax(a:t0) = lazy(strxcon(a)) }
+streax(t:t0) = lazy(strxcon(t)) }
 //(* where *) // [strmcon/strxcon]
 //
 (* ****** ****** *)(* ****** ****** *)
 #sexpdef
-strm(* (a,n) *) = stream(*(a,n)*)
+strm(* (t,n) *) = stream(*(t,n)*)
 #sexpdef
-strx(* (a,n) *) = streax(*(a,n)*)
+strx(* (t,n) *) = streax(*(t,n)*)
 (* ****** ****** *)(* ****** ****** *)
 //
 datavwtp
-strmcon_vt(a:vwtp+) =
+strmcon_vt(t:vwtp+) =
 |
 strmcon_vt_nil of ((*void*))
 |
-strmcon_vt_cons of (a, stream_vt(a))
+strmcon_vt_cons of (t, stream_vt(t))
 //
 and//datavwtp
-strxcon_vt(a:vwtp+) =
+strxcon_vt(t:vwtp+) =
 |
-strxcon_vt_cons of (a, streax_vt(a))
+strxcon_vt_cons of (t, streax_vt(t))
 //
 where
 {
 //
 #vwtpdef
 stream_vt
-( a: vt ) = lazy_vt( strmcon_vt(a) )
+( t: vt ) = lazy_vt( strmcon_vt(t) )
 #vwtpdef
 streax_vt
-( a: vt ) = lazy_vt( strxcon_vt(a) )
+( t: vt ) = lazy_vt( strxcon_vt(t) )
 //
 } (*where*)//end-of-[strmcon/strxcon]
 //
@@ -1328,37 +1328,40 @@ strx_vt(*a:vt*) = streax_vt(* a:vt *)
 //
 datatype
 strqcon
-(a:type+, int) =
+(t:type+, int) =
 |
 strqcon_nil
-( a, 0(*len*) ) of ((*void*))
+(t, 0(*len*)) of ((*void*))
 |
 {n:i0 | n >= 0}
 strqcon_cons
-( a, n+1(*len*) ) of (a, streaq(a,n))
+(t, n+1(*len*)) of (t, streaq(t,n))
 where
 {
 #typedef
-streaq(a:t0,n:i0) = lazy(strqcon(a,n))}
+streaq(t:t0,n:i0) = lazy(strqcon(t,n))
+}(*where*)//end-of-[strqcon(t:t0,i:i0)]
 //
 (* ****** ****** *)(* ****** ****** *)
 //
 datavwtp
 strqcon_vt
-(a:vwtp+, int) =
+(t:vwtp+, int) =
 |
 strqcon_vt_nil
-( a, 0(*len*) ) of ((*void*))
+(t, 0(*len*)) of ((*void*))
 |
 {n:i0 | n >= 0}
 strqcon_vt_cons
-( a, n+1(*len*) ) of (a, streaq_vt(a,n))
+(
+t, n+1(*len*)) of (t, streaq_vt(t,n))
 where
 {
 #vwtpdef
 streaq_vt
-( a:vt,n:i0 ) = lazy_vt(strqcon_vt(a,n))
-} (* where *)//end-of-[strqcon_vt(a, n)]
+(
+t:vt,n:i0) = lazy_vt(strqcon_vt(t,n))
+}(*where*)//endof[strqcon_vt(t:vt,i:i0)]
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -1376,54 +1379,54 @@ streaq_vt
 (* ****** ****** *)(* ****** ****** *)
 //
 #sexpdef
-strq(*a:t0,n:i0*) = streaq(*(a, n)*)
+strq(*t:t0,n:i0*) = streaq(*(t,n)*)
 //
 #sexpdef
-lstrq(*a:vt,n:i0*) = streaq_vt(*(a, n)*)
+lstrq(*t:vt,n:i0*) = streaq_vt(*(t,n)*)
 #sexpdef
-strq_vt(*a:vt,n:i0*) = streaq_vt(*(a, n)*)
+strq_vt(*t:vt,n:i0*) = streaq_vt(*(t,n)*)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
 #typedef
-strq(a:t0) = [n:i0] strq(a, n)
+strq(t:t0) = [n:i0] strq(t, n)
 #typedef
-strqcon(a:t0) = [n:i0] strqcon(a, n)
+strqcon(t:t0) = [n:i0] strqcon(t, n)
 //
 #vwtpdef
-strq_vt(a:vt) = [n:i0] strq_vt(a, n)
+strq_vt(t:vt) = [n:i0] strq_vt(t, n)
 #vwtpdef
-strqcon_vt(a:vt) = [n:i0] strqcon_vt(a, n)
+strqcon_vt(t:vt) = [n:i0] strqcon_vt(t, n)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
 #vwtpdef
 strqlt
-(a:t0, n:i0) = [i:nat | i < n] strq(a, i)
+(t:t0, n:i0) = [i:nat | i < n] strq(t, i)
 #vwtpdef
 strqgt
-(a:t0, n:i0) = [k:int | k > n] strq(a, k)
+(t:t0, n:i0) = [k:int | k > n] strq(t, k)
 #vwtpdef
 strqlte
-(a:t0, n:i0) = [i:nat | i <= n] strq(a, i)
+(t:t0, n:i0) = [i:nat | i <= n] strq(t, i)
 #vwtpdef
 strqgte
-(a:t0, n:i0) = [k:int | k >= n] strq(a, k)
+(t:t0, n:i0) = [k:int | k >= n] strq(t, k)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
 #vwtpdef
 strqlt_vt
-(a:vt, n:i0) = [i:nat | i < n] strq_vt(a, i)
+(t:vt, n:i0) = [i:nat | i < n] strq_vt(t, i)
 #vwtpdef
 strqgt_vt
-(a:vt, n:i0) = [k:int | k > n] strq_vt(a, k)
+(t:vt, n:i0) = [k:int | k > n] strq_vt(t, k)
 #vwtpdef
 strqlte_vt
-(a:vt, n:i0) = [i:nat | i <= n] strq_vt(a, i)
+(t:vt, n:i0) = [i:nat | i <= n] strq_vt(t, i)
 #vwtpdef
 strqgte_vt
-(a:vt, n:i0) = [k:int | k >= n] strq_vt(a, k)
+(t:vt, n:i0) = [k:int | k >= n] strq_vt(t, k)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
@@ -1432,26 +1435,26 @@ strqgte_vt
 HX-2024-07-13
 *)
 #typedef
-ilist(a:t0) = list@(nint, a)
+ilist(t:t0) = list@(nint, t)
 #typedef
-istrm(a:t0) = strm@(nint, a)
+istrm(t:t0) = strm@(nint, t)
 #typedef
-istrq(a:t0) = strq@(nint, a)
+istrq(t:t0) = strq@(nint, t)
 #typedef
-ilist(a:t0,n:i0) = list(@(nintlt(n), a), n)
+ilist(t:t0,n:i0) = list(@(nintlt(n), t), n)
 #typedef
-istrq(a:t0,n:i0) = strq(@(nintlt(n), a), n)
+istrq(t:t0,n:i0) = strq(@(nintlt(n), t), n)
 //
 #vwtpdef
-ilist_vt(a:vt) = list_vt@(nint, a)
+ilist_vt(t:vt) = list_vt@(nint, t)
 #vwtpdef
-istrm_vt(a:vt) = strm_vt@(nint, a)
+istrm_vt(t:vt) = strm_vt@(nint, t)
 #vwtpdef
-istrq_vt(a:vt) = strq_vt@(nint, a)
+istrq_vt(t:vt) = strq_vt@(nint, t)
 #vwtpdef
-ilist_vt(a:v0,n:i0) = list_vt(@(nintlt(n), a), n)
+ilist_vt(t:vt,n:i0) = list_vt(@(nintlt(n), t), n)
 #vwtpdef
-istrq_vt(a:v0,n:i0) = strq_vt(@(nintlt(n), a), n)
+istrq_vt(t:vt,n:i0) = strq_vt(@(nintlt(n), t), n)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
@@ -1467,13 +1470,13 @@ owed_view(vt) // linprop
 //
 prfun
 owed_t0_make
-{a:t0}((*void*)): owed(a)
+{t:t0}((*void*)): owed(t)
 prfun
 owed_t0_elim0
-{a:t0}(pf: ~owed(a)): void
+{t:t0}(pf: ~owed(t)): void
 prfun
 owed_vt_return0
-{a:vt}(pf: ~owed(a), x0: a): void
+{t:vt}(pf: ~owed(t), x0: t): void
 //
 #symload return0 with owed_vt_return0
 //
@@ -1487,7 +1490,7 @@ carrying an environment
 *)
 #absvtbx
 elazy_vt_vt_vx
-(a:vwtp+,env:vwtp)<=p0tr
+(elt:vwtp+,env:vwtp)<=p0tr
 (*
 Mon Apr  6 08:49:03 PM EDT 2026
 *)
@@ -1496,38 +1499,38 @@ Mon Apr  6 08:49:03 PM EDT 2026
 //
 #vwtpdef
 ellazy
-(a:vt,env:vt) =
-  elazy_vt_vt_vx( a, env )
+(elt:vt,env:vt) =
+elazy_vt_vt_vx( elt , env )
 #vwtpdef
 elazy_vt
-(a:vt,env:vt) =
-  elazy_vt_vt_vx( a, env )
+(elt:vt,env:vt) =
+elazy_vt_vt_vx( elt , env )
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 datavwtp
 estrmcon_vt
-( a: vwtp+
+( elt: vwtp+
 , env: vwtp) =
 |
 estrmcon_vt_nil of
 (     env     )
 |
 estrmcon_vt_cons of
-(
-a, env, estream_vt(a, env))
-//endof-(estrmcon_vt(a,env))
+( elt
+, env, estream_vt(elt, env))
+//endof(estrmcon_vt(elt,env))
 where
 {
 #vwtpdef
 estream_vt
-(a: vt, env: vt) =
+(elt: vt, env: vt) =
 elazy_vt(
-  estrmcon_vt(a, env), env) }
+  estrmcon_vt(elt, env), env) }
 //
 (* ****** ****** *)
-#sexpdef estrm_vt = estream_vt
+#sexpdef estrm_vt = estream_vt(*0*)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
@@ -1540,16 +1543,16 @@ Mon 29 Jul 2024 04:56:14 PM EDT
 *)
 //
 fcast
-t0_{a:t0}(a): ( a )
+t0_{t:t0}(t): ( t )
 fcast
-tx_{a:tx}(a): ( a )
+tx_{t:tx}(t): ( t )
 fcast
-vt_{a:vt}(a): ( a )
+vt_{t:vt}(t): ( t )
 fcast
-vx_{a:vx}(a): ( a )
+vx_{t:vx}(t): ( t )
 //
 fcast
-fc_sflt(dflt): sflt
+fc_sflt(sflt): sflt
 fcast
 fc_dflt(dflt): dflt
 fcast
@@ -1574,12 +1577,12 @@ fc_strn_vt
 //
 fcast
 fc_list
-{a:t0}
-{n:i0}(list(a, n)): list(a, n)
+{t:t0}
+{n:i0}(list(t, n)): list(t, n)
 fcast
 fc_list_vt
-{a:vt}
-{n:i0}(list_vt(a, n)): list_vt(a, n)
+{t:vt}
+{n:i0}(list_vt(t, n)): list_vt(t, n)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
@@ -1609,7 +1612,7 @@ The very purpose of having them here is for bootstrapping ATS3!
 #abstbox
 a0ref_vt_tx(elem:vwtp)
 #typedef
-a0ref(a:vt) = a0ref_vt_tx(a)
+a0ref(vt:vt) = a0ref_vt_tx(vt)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -1619,9 +1622,9 @@ a1ref_vt_i0_tx(elem:vt,ntot:i0)
 a1rsz_vt_i0_x0(elem:vt, ntot:i0)
 //
 #typedef
-a1ref(a:vt,n:i0) = a1ref_vt_i0_tx(a, n)
+a1ref(t:vt,n:i0) = a1ref_vt_i0_tx(t, n)
 #typedef
-a1rsz(a:vt,n:i0) = a1rsz_vt_i0_x0(a, n)
+a1rsz(t:vt,n:i0) = a1rsz_vt_i0_x0(t, n)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -1631,16 +1634,18 @@ a2ref_vt_i0_i0_tx(elem:vt,nrow:i0,ncol:i0)
 a2rsz_vt_i0_i0_x0(elem:vt,nrow:i0,ncol:i0)
 //
 #typedef
-a2ref(a:vt,m:i0,n:i0) = a2ref_vt_i0_i0_tx(a, m, n)
+a2ref
+(t:vt,m:i0,n:i0) = a2ref_vt_i0_i0_tx(t, m, n)
 #typedef
-a2rsz(a:vt,m:i0,n:i0) = a2rsz_vt_i0_i0_x0(a, m, n)
+a2rsz
+(t:vt,m:i0,n:i0) = a2rsz_vt_i0_i0_x0(t, m, n)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
 #typedef
-a1rsz(a:vt) = [n:i0] a1rsz(a, n)
+a1rsz(t:vt) = [n:i0] a1rsz(t, n)
 #typedef
-a2rsz(a:vt) = [m:i0;n:i0] a2rsz(a, m, n)
+a2rsz(t:vt) = [m:i0;n:i0] a2rsz(t, m, n)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
@@ -1655,7 +1660,7 @@ a2rsz(a:vt) = [m:i0;n:i0] a2rsz(a, m, n)
 a0ptr_vt_vx(elem:vwtp)
 //
 #vwtpdef
-a0ptr(a:vt) = a0ptr_vt_vx(a)
+a0ptr(vt:vt) = a0ptr_vt_vx(vt)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -1665,9 +1670,9 @@ a1ptr_vt_i0_vx(elem:vt,ntot:i0)
 a1psz_vt_i0_vx(elem:vt,ntot:i0)
 //
 #vwtpdef
-a1ptr(a:vt,n:i0) = a1ptr_vt_i0_vx(a, n)
+a1ptr(t:vt,n:i0) = a1ptr_vt_i0_vx(t, n)
 #vwtpdef
-a1psz(a:vt,n:i0) = a1psz_vt_i0_vx(a, n)
+a1psz(t:vt,n:i0) = a1psz_vt_i0_vx(t, n)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -1677,18 +1682,19 @@ a2ptr_vt_i0_i0_vx(elem:vt,nrow:i0,ncol:i0)
 a2psz_vt_i0_i0_vx(elem:vt,nrow:i0,ncol:i0)
 //
 #vwtpdef a2ptr
-(a:vt,m:i0,n:i0) = a2ptr_vt_i0_i0_vx(a,m,n)
+(t:vt,m:i0,n:i0) = a2ptr_vt_i0_i0_vx(t,m,n)
 #vwtpdef a2psz
-(a:vt,m:i0,n:i0) = a2psz_vt_i0_i0_vx(a,m,n)
+(t:vt,m:i0,n:i0) = a2psz_vt_i0_i0_vx(t,m,n)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
-#vwtpdef a1psz(a:vt) = [n:i0] a1psz(a, n)
-#vwtpdef a2psz(a:vt) = [m:i0;n:i0] a2psz(a,m,n)
+#vwtpdef a1psz(t:vt) = [n:i0] a1psz(t, n)
+#vwtpdef a2psz(t:vt) = [m:i0;n:i0] a2psz(t,m,n)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 //
 (***********************************************************************)
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_basics0.sats] *)
+(***********************************************************************)
 (***********************************************************************)

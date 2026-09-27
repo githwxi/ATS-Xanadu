@@ -164,6 +164,7 @@ idcl.node() of
 //
 (* ****** ****** *)
 //
+|I0Dd2ecl _ => (idcl)
 |I0Dd3ecl _ => (idcl)
 //
 (* ****** ****** *)
@@ -189,6 +190,11 @@ idcl.node() of
 |I0Dinclude _ =>
 (
   f0_include(idcl, enw0))
+//
+(* ****** ****** *)
+//
+|I0Dsexpdef _ => ( idcl )
+|I0Dabstype _ => ( idcl )
 //
 (* ****** ****** *)
 //

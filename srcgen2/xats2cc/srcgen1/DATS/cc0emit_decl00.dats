@@ -114,6 +114,8 @@ in//let
 case+
 dcl0.node() of
 //
+(* ****** ****** *)
+//
 |I0Ddclst0
 (   dcls   ) =>
 let
@@ -130,10 +132,71 @@ val () =
   i0dclist_cc0emit(body, env0)
 end(*let*)//end-of-[I0Dlocal0(head,body)]
 //
+(* ****** ****** *)
+//
+|I0Dsexpdef _ => f0_sexpdef(dcl0, env0)
+|I0Dabstype _ => f0_abstype(dcl0, env0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |_(*otherwise*) => f0_otherwise(dcl0, env0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 end where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_sexpdef
+(
+dcl0: i0dcl,
+env0: !envxcc0): void =
+let
+//
+val filr =
+envxcc0_filr$get(env0)
+val nind =
+envxcc0_nind$get(env0)
+//
+in//let
+//
+nindfpr(filr, nind);
+strnfpr
+(filr, "// I0Dsexpdef\n");
+nindstrnfpr(filr, nind, "// ");
+i0dcl_fprint(dcl0, filr); fprintln(filr)
+//
+end(*let*)//end-of-[f0_sexpdef(env0,dcl0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_abstype
+(
+dcl0: i0dcl,
+env0: !envxcc0): void =
+let
+//
+val filr =
+envxcc0_filr$get(env0)
+val nind =
+envxcc0_nind$get(env0)
+//
+in//let
+//
+nindfpr(filr, nind);
+strnfpr
+(filr, "// I0Dabstype\n");
+nindstrnfpr(filr, nind, "// ");
+i0dcl_fprint(dcl0, filr); fprintln(filr)
+//
+end(*let*)//end-of-[f0_abstype(env0,dcl0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_otherwise
@@ -161,6 +224,8 @@ strnfpr(filr, "// ");
 i0dcl_fprint(dcl0, filr); fprintln(filr)
 //
 end(*let*)//end-of-[f0_otherwise(env0,dcl0)]
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[i0dcl_cc0emit(dcl0,env0)]
 //

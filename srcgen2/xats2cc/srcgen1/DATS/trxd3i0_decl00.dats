@@ -157,6 +157,13 @@ d3cl.node() of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|D3Cd2ecl _ =>
+(
+  f0_d2ecl(d3cl, env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |D3Cstatic _ =>
 (
   f0_static(d3cl, env0))
@@ -229,6 +236,52 @@ end where//let//endof(d3ecl_trxd3i0(...))
 (* ****** ****** *)
 //
 fun
+f0_d2ecl
+(
+d3cl: d3ecl,
+env0: !envd3i0): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+//
+val-
+D3Cd2ecl
+(   d2cl   ) = d3cl.node()
+//
+in//let
+//
+(
+case+
+d2cl.node() of
+//
+(* ****** ****** *)
+//
+|D2Csexpdef
+(scst, sexp) =>
+(
+i0dcl(
+  loc0, I0Dsexpdef(scst, sexp)))
+|D2Cabstype
+(scst, atdf) =>
+(
+i0dcl(
+  loc0, I0Dabstype(scst, atdf)))
+//
+(* ****** ****** *)
+//
+|
+_(*otherwise*) =>
+(
+  i0dcl(loc0, I0Dd2ecl( d2cl ))))
+//
+(* ****** ****** *)
+//
+end//let//end-of-[f0_d2ecl(d3cl,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_static
 (
 d3cl: d3ecl,
@@ -251,7 +304,7 @@ in//let
 i0dcl(
   loc0, I0Dstatic( tknd, dcl1 )))
 //
-end//let//end-of-[f0_static(d3cl, env0)]
+end//let//end-of-[f0_static(d3cl,env0)]
 //
 (* ****** ****** *)
 //
@@ -277,7 +330,7 @@ in//let
 i0dcl(
   loc0, I0Dextern( tknd, dcl1 )))
 //
-end//let//end-of-[f0_extern(d3cl, env0)]
+end//let//end-of-[f0_extern(d3cl,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -304,7 +357,7 @@ in//let
 i0dcl(
   loc0, I0Dtmpsub( svts, dcl1 )))
 //
-end//let//end-of-[f0_tmpsub(d3cl, env0)]
+end//let//end-of-[f0_tmpsub(d3cl,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -330,7 +383,7 @@ in//let
 (
   i0dcl(loc0, I0Ddclst0( dcls )))
 //
-end//let//end-of-[f0_dclst0(d3cl, env0)]
+end//let//end-of-[f0_dclst0(d3cl,env0)]
 //
 (* ****** ****** *)
 //
