@@ -15,7 +15,7 @@ all: index.html
 ########################################################################
 #
 clean:: ; rm -f *~
-#                                                                                                                                      
+#
 cleanall:: clean
 cleanall:: ; rm -f index.html
 #

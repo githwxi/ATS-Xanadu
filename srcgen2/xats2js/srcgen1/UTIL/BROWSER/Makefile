@@ -1,34 +1,38 @@
 ########################################################################
 
+NODE ?= node
 PYTHON ?= python3
 
 ########################################################################
 
 .PHONY:: all
+.PHONY:: test
 .PHONY:: build
-.PHONY:: FORCE
 
 ########################################################################
 
-all: index.html
+all: build
 
 ########################################################################
 #
 clean:: ; rm -f *~
-#                                                                                                                                     
+#
 cleanall:: clean
 cleanall:: ; rm -f index.html
 #
 ########################################################################
 
-build: index.html
-
-# Always rescan the source tree
-# to include added, changed, or removed files.
-index.html: build.py template.html FORCE; $(PYTHON) ./build.py
+test: build; $(NODE) test.cjs
 
 ########################################################################
-
-FORCE:
-
+#
+# Always!
+# rescan the prelude and runtime
+# so additions and edits are included.
+#
+build: ; \
+	$(MAKE) -C prelude PYTHON="$(PYTHON)"
+	$(MAKE) -C xshared PYTHON="$(PYTHON)"
+	$(PYTHON) build.py
+#
 ########################################################################
