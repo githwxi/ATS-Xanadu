@@ -182,16 +182,16 @@ function
 XATS2JS_char_lohexq
   (  ch  )
 {
-  var a = 97;
-  var f = 102;
+  let a = 97;
+  let f = 102;
   return ((a <= ch) && (ch <= f));
 }
 function
 XATS2JS_sint_lohexq
   (  ch  )
 {
-  var a = 97;
-  var f = 102;
+  let a = 97;
+  let f = 102;
   return ((a <= ch) && (ch <= f));
 }
 //
@@ -199,16 +199,16 @@ function
 XATS2JS_char_uphexq
   (  ch  )
 {
-  var A = 65;
-  var F = 70;
+  let A = 65;
+  let F = 70;
   return ((A <= ch) && (ch <= F));
 }
 function
-XATS2JS_sint_lohexq
+XATS2JS_sint_uphexq
   (  ch  )
 {
-  var A = 65;
-  var F = 70;
+  let A = 65;
+  let F = 70;
   return ((A <= ch) && (ch <= F));
 }
 //
@@ -1624,36 +1624,42 @@ G_print for Xats2js
 //////////////////////////////////////////////////////////////////.
 //
 var
-XATS2JS_the_print_store = [];
+XATS2JS_the_print_store =
+[      /*empty*/      ] ;
 //
 //////////////////////////////////////////////////////////////////.
-
+//////////////////////////////////////////////////////////////////.
+//
+/* ****** ****** */
+//
 function
 XATS2JS_g_print
   (obj)
 {
-var
-rep = obj.toString();
-XATS2JS_the_print_store.push(rep);
-return; // XATS2JS_g_print
+XATS2JS_the_print_store.push
+(      obj.toString()      );
+return;//XATS2JS_g_print(...)
 }
-
+//
 /* ****** ****** */
+//
 function
 XATS2JS_bool_print
   ( b0 )
 {
 if(b0)
 {
-XATS2JS_g_print("true");
+  XATS2JS_g_print("true");
 }
 else
 {
-XATS2JS_g_print("false");
+  XATS2JS_g_print("false");
 }
-return; // XATS2JS_bool_print
+return;//XATS2JS_bool_print()
 }
+//
 /* ****** ****** */
+//
 function
 XATS2JS_char_print
   ( c0 )
@@ -1661,68 +1667,77 @@ XATS2JS_char_print
 // c0: number
 XATS2JS_g_print
 (String.fromCharCode(c0));
-return; // XATS2JS_char_print
+return;//XATS2JS_char_print()
 }
+//
 /* ****** ****** */
+//
 function
 XATS2JS_gint_print$sint
   ( x0 )
 {
-XATS2JS_g_print(x0);
-return; // gint_print$sint
+  return XATS2JS_g_print(x0);
 }
 function
 XATS2JS_gint_print$uint
   ( x0 )
 {
-XATS2JS_g_print(x0);
-return; // gint_print$uint
+  return XATS2JS_g_print(x0);
 }
+//
 /* ****** ****** */
+//
 function
 XATS2JS_gflt_print$sflt
   ( x0 )
 {
-XATS2JS_g_print(x0);
-return; // gint_print$sflt
+  return XATS2JS_g_print(x0);
 }
 function
 XATS2JS_gflt_print$dflt
   ( x0 )
 {
-XATS2JS_g_print(x0);
-return; // gint_print$dflt
+  return XATS2JS_g_print(x0);
 }
+//
 /* ****** ****** */
+//
 function
 XATS2JS_strn_print
   ( cs )
 {
   return XATS2JS_g_print(cs);
 }
+//
 /* ****** ****** */
-
+/* ****** ****** */
+//
 function
-XATS2JS_the_print_store_join()
+XATS2JS_the_print_store_join
+  ( /*void*/ )
 {
 var
 rep =
 XATS2JS_the_print_store.join("");
 return rep;
-} // XATS2JS_the_print_store_join
-
+}//XATS2JS_the_print_store_join(...)
+//
 /* ****** ****** */
-
+//
 function
-XATS2JS_the_print_store_clear()
+XATS2JS_the_print_store_clear
+  ( /*void*/ )
 {
 XATS2JS_the_print_store = []; return;
-} // XATS2JS_the_print_store_clear
-
-//////////////////////////////////////////////////////////////////.
-//////////////////////////////////////////////////////////////////.
+}//XATS2JS_the_print_store_clear(...)
+//
+/* ****** ****** */
+/* ****** ****** */
+//
+////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 /* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_g_print.cats] */
+////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 //////////////////////////////////////////////////////////////////.
 //////////////////////////////////////////////////////////////////.

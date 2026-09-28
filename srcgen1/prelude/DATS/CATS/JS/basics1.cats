@@ -170,16 +170,16 @@ function
 XATS2JS_char_lohexq
   (  ch  )
 {
-  var a = 97;
-  var f = 102;
+  let a = 97;
+  let f = 102;
   return ((a <= ch) && (ch <= f));
 }
 function
 XATS2JS_sint_lohexq
   (  ch  )
 {
-  var a = 97;
-  var f = 102;
+  let a = 97;
+  let f = 102;
   return ((a <= ch) && (ch <= f));
 }
 //
@@ -187,16 +187,16 @@ function
 XATS2JS_char_uphexq
   (  ch  )
 {
-  var A = 65;
-  var F = 70;
+  let A = 65;
+  let F = 70;
   return ((A <= ch) && (ch <= F));
 }
 function
-XATS2JS_sint_lohexq
+XATS2JS_sint_uphexq
   (  ch  )
 {
-  var A = 65;
-  var F = 70;
+  let A = 65;
+  let F = 70;
   return ((A <= ch) && (ch <= F));
 }
 //
