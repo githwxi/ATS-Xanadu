@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>xats2js runtime snapshot</title>
+<style>
+  body { font: 16px system-ui, sans-serif; margin: 2rem auto; max-width: 70rem; padding: 0 1rem; }
+  input { width: min(70%, 36rem); padding: .5rem; }
+  button { padding: .5rem 1rem; }
+  pre { padding: 1rem; background: #f3f4f6; overflow: auto; border: 1px solid #ddd; }
+</style>
+<h1>xats2js runtime snapshot</h1>
+<p>Embedded JavaScript runtime files. No server required.</p>
+<form id="reader">
+  <label for="path">File path</label>
+  <input id="path" list="paths" value="xats2js_js1emit.js" autocomplete="off">
+  <datalist id="paths"></datalist>
+  <button>Read file</button>
+</form>
+<p id="status" role="status"></p>
+<pre id="content"></pre>
+<script id="embedded-files" type="application/json">/* EMBEDDED_FILES */ {}</script>
+<script>
+(() => {
+  "use strict";
+  const files = JSON.parse(document.getElementById("embedded-files").textContent);
+
+  function normalizePath(path) {
+    if (typeof path !== "string" || !path || path.startsWith("/") ||
+        /^[A-Za-z]:/.test(path) || path.includes("\\") || path.includes("\0")) {
+      throw new TypeError("Expected a relative file path using forward slashes.");
+    }
+    const parts = [];
+    for (const part of path.split("/")) {
+      if (!part || part === ".") continue;
+      if (part === "..") {
+        if (!parts.length) throw new Error("Path escapes the snapshot root.");
+        parts.pop();
+      } else parts.push(part);
+    }
+    return parts.join("/");
+  }
+
+  // Synchronous: returns the exact embedded bytes as a fresh Uint8Array.
+  window.readFileBytes = function readFileBytes(path) {
+    const key = normalizePath(path);
+    if (!Object.prototype.hasOwnProperty.call(files, key)) {
+      throw new Error("File not found: " + path);
+    }
+    return Uint8Array.from(atob(files[key]), character => character.charCodeAt(0));
+  };
+
+  // Synchronous: returns UTF-8 text. Use readFileBytes for binary files.
+  window.readFile = function readFile(path) {
+    return new TextDecoder("utf-8").decode(window.readFileBytes(path));
+  };
+  window.listFiles = () => Object.keys(files).sort();
+
+  const paths = document.getElementById("paths");
+  for (const path of window.listFiles()) {
+    const option = document.createElement("option");
+    option.value = path;
+    paths.appendChild(option);
+  }
+  const status = document.getElementById("status");
+  const content = document.getElementById("content");
+  document.getElementById("reader").addEventListener("submit", event => {
+    event.preventDefault();
+    try {
+      content.textContent = window.readFile(document.getElementById("path").value);
+      status.textContent = "Loaded from the embedded snapshot.";
+    } catch (error) {
+      content.textContent = "";
+      status.textContent = error.message;
+    }
+  });
+  status.textContent = window.listFiles().length + " files available.";
+})();
+</script>
+</html>
