@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ATS3 · In-browser type-checker</title>
+<style>
+:root{color-scheme:light;font:16px/1.5 system-ui,sans-serif;color:#193b32;background:#f3f6f1}*{box-sizing:border-box}body{max-width:1400px;margin:auto;padding:28px}header{border-bottom:1px solid #cbd8ce;padding-bottom:20px;font-weight:750;letter-spacing:.1em}header span{float:right;font-size:12px;color:#537565}h1{font-size:40px;letter-spacing:-.04em;margin-bottom:8px}p{color:#536c61}.toolbar,.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:22px 0}button,select,input{font:inherit}button,select{padding:9px 14px;border:1px solid #bccdc2;border-radius:6px;background:white;color:#193b32;cursor:pointer}button:disabled{opacity:.45;cursor:default}button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid #74ae98;outline-offset:3px}#check{background:#176348;color:white;font-weight:650}.panels{display:grid;grid-template-columns:1fr 1fr;gap:20px}.panel{min-width:0;border:1px solid #cbd8ce;border-radius:8px;overflow:hidden;background:white}.heading{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;min-height:62px;border-bottom:1px solid #cbd8ce;font-weight:650}.heading select{padding:4px 8px}textarea,pre{font:14px/1.65 ui-monospace,Consolas,monospace;tab-size:2;height:410px;margin:0;padding:20px;width:100%;border:0}textarea{display:block;resize:vertical;color:#193b32}pre{overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:#15342d;color:#e1f1e7}.note{font-size:13px}#elapsed{font-size:12px;font-weight:400}footer{margin-top:32px;padding-top:18px;border-top:1px solid #cbd8ce;font-size:12px;color:#536c61}@media(max-width:800px){body{padding:18px}.panels{grid-template-columns:1fr}header span{float:none;display:block;margin-top:8px}h1{font-size:32px}textarea,pre{height:300px}}
+.source-menu{position:relative}.source-menu summary{list-style:none;cursor:pointer;background:white;border:1px solid #bccdc2;border-radius:6px;padding:9px 14px;font-weight:600}.source-menu summary::-webkit-details-marker{display:none}.source-menu summary::after{content:" ▾";margin-left:20px}.source-menu summary:focus-visible{outline:3px solid #74ae98;outline-offset:3px}.source-options{position:absolute;top:calc(100% + 6px);left:0;z-index:2;width:260px;padding:6px;background:white;border:1px solid #bccdc2;border-radius:8px;box-shadow:0 10px 28px #193b3220}.source-options button{display:block;width:100%;border:0;text-align:left}.source-options button:hover{background:#edf3ec}.source-options .group-label{display:block;padding:10px 14px 4px;color:#536c61;font-size:12px;border-top:1px solid #dce5dd;margin-top:6px}#source-name{font-size:14px;color:#536c61}
+.heading{gap:12px;flex-wrap:wrap}.filename-label{display:flex;align-items:center;gap:8px;font-size:12px;color:#536c61}.filename-label input{width: min(220px, 50vw);min-width:0;padding:5px 8px;border:1px solid #bccdc2;border-radius:6px;color:#193b32;background:white;font:14px ui-monospace,monospace}
+</style>
+</head>
+<body>
+<header>ATS / XANADU <span>IN-BROWSER COMPILER</span></header>
+<main>
+<h1>Type-check your ATS3 code.</h1>
+<p>Choose a file, start with Manual Input, or try an example. Then click Type-check. Everything runs inside your browser, offline.</p>
+<div class="toolbar">
+<details id="source-menu" class="source-menu">
+<summary>Choose Source</summary>
+<div class="source-options">
+<button type="button" id="choose-file">Choose File…</button>
+<button type="button" data-source="manual">Manual Input</button>
+<span class="group-label">Examples</span>
+<button type="button" data-source="factorial">Factorial function</button>
+<button type="button" data-source="fibonacci">Fibonacci function</button>
+<button type="button" data-source="valid">Integer function</button>
+<button type="button" data-source="error">Type mismatch</button>
+<button type="button" data-source="syntax">Syntax error</button>
+<button type="button" data-source="static">Static declaration</button>
+</div>
+</details>
+<input id="file" type="file" accept=".dats,.sats,.hats,.txt" hidden>
+<span id="source-name">Integer function</span>
+</div>
+<div class="panels">
+<section class="panel"><div class="heading"><label for="source">Source</label><label class="filename-label" for="filename">Filename <input id="filename" type="text" value="xtmp001.dats" spellcheck="false" autocomplete="off" required aria-label="Source filename"></label></div><textarea id="source" spellcheck="false" autocapitalize="off" autocomplete="off">fun square(x: sint): sint = x * x
+
+val answer: sint = square(6)
+</textarea></section>
+<section class="panel"><div class="heading"><span>Compiler output</span><span id="elapsed"></span></div><pre id="output" tabindex="0" aria-label="Compiler output">Click Type-check to view compiler diagnostics.</pre></section>
+</div>
+<div class="actions"><button id="check">Type-check</button><button id="stop" disabled>Stop</button><button id="save">Save source</button><span id="status" role="status">Ready · No server required</span></div>
+<p class="note">Edit the filename above to rename your source. Use .sats for static declarations or .dats for dynamic source. Ctrl / ⌘ + Enter to check. Type-checking only; your program is not executed. The bundled prelude is available. Other local files are not loaded automatically.</p>
+<noscript>Enable JavaScript to use the in-browser compiler.</noscript>
+</main><footer>Applied Type System · Third edition · Code stays in your browser</footer>
+<script id="compiler-source" type="application/json">@@COMPILER@@</script>
+<script id="prelude-files" type="application/json">@@PRELUDE@@</script>
+<script id="worker-source" type="application/json">@@WORKER@@</script>
+<script>
+@@APP@@
+</script>
+</body>
+</html>
