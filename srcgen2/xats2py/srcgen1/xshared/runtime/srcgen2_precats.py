@@ -1,4 +1,4 @@
-## Mon Aug 10 01:05:55 PM EDT 2026
+## Thu Oct  1 02:45:09 PM EDT 2026
 ########################################################################
 ########################################################################
 ##
@@ -8,11 +8,11 @@
 ##
 ########################################################################
 ########################################################################
-## Sat Jan 17 10:30:51 PM EST 2026
+## Mon Sep 21 08:29:04 PM EDT 2026
 ## LCSRCsome1(precats.dats)@(1291(line=30,offs=1)--1332(line=31,offs=28))
 ## I1Di0dcl(I0Dd3ecl(D3Cstaload(0;T_SRP_STALOAD();G1Ea2pp(G1Eid0(=);G1Eid0(UN);G1Estr(T_STRN1_clsd("prelude/SATS/unsfx00.sats";27)));$optn(FPATH(/home/hwxi/Research/ATS-Xanadu/prelude/SATS/unsfx00.sats));...)))
 ## I1Dextern(LCSRCsome1(precats.dats)@(1978(line=81,offs=1)--2048(line=86,offs=29)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_nilq(2293));$list(I1FUNDCL(XATS2PY_optn_nilq(2);$list(FJARGdarg($list(I1BNDcons(I1TNM(1);I0Pvar(xs(3));$list(@(xs(3),I1Vtnm(I1TNM(1))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_nilq);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_nilq(2344));$list(I1FUNDCL(XATS2PY_optn_nilq(2);$list(FJARGdarg($list(I1BNDcons(I1TNM(1);I0Pvar(xs(3));$list(@(xs(3),I1Vtnm(I1TNM(1))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_nilq);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(2049(line=87,offs=1)--2138(line=91,offs=43)))
 def XATS2PY_optn_nilq(arg1): ## impl
   pyxtnm2 = arg1
@@ -37,11 +37,11 @@ def XATS2PY_optn_nilq(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm5
+  ## I1CMP:return:I1Vtnm(I1TNM(5))
   return pyxtnm5
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(2142(line=93,offs=1)--2213(line=98,offs=29)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_consq(2294));$list(I1FUNDCL(XATS2PY_optn_consq(5);$list(FJARGdarg($list(I1BNDcons(I1TNM(6);I0Pvar(xs(6));$list(@(xs(6),I1Vtnm(I1TNM(6))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_consq);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_consq(2345));$list(I1FUNDCL(XATS2PY_optn_consq(5);$list(FJARGdarg($list(I1BNDcons(I1TNM(6);I0Pvar(xs(6));$list(@(xs(6),I1Vtnm(I1TNM(6))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_consq);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(2214(line=99,offs=1)--2306(line=103,offs=45)))
 def XATS2PY_optn_consq(arg1): ## impl
   pyxtnm7 = arg1
@@ -66,11 +66,11 @@ def XATS2PY_optn_consq(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm10
+  ## I1CMP:return:I1Vtnm(I1TNM(10))
   return pyxtnm10
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(2333(line=107,offs=1)--2406(line=112,offs=28)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_head$raw(2295));$list(I1FUNDCL(XATS2PY_optn_head$raw(8);$list(FJARGdarg($list(I1BNDcons(I1TNM(11);I0Pvar(xs(9));$list(@(xs(9),I1Vtnm(I1TNM(11))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_head$raw);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_head$raw(2346));$list(I1FUNDCL(XATS2PY_optn_head$raw(8);$list(FJARGdarg($list(I1BNDcons(I1TNM(11);I0Pvar(xs(9));$list(@(xs(9),I1Vtnm(I1TNM(11))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_head$raw);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(2407(line=113,offs=1)--2480(line=116,offs=35)))
 def XATS2PY_optn_head_raw(arg1): ## impl
   pyxtnm12 = arg1
@@ -87,11 +87,11 @@ def XATS2PY_optn_head_raw(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm14
+  ## I1CMP:return:I1Vtnm(I1TNM(14))
   return pyxtnm14
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(2484(line=118,offs=1)--2559(line=123,offs=28)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_uncons$raw(2296));$list(I1FUNDCL(XATS2PY_optn_uncons$raw(12);$list(FJARGdarg($list(I1BNDcons(I1TNM(15);I0Pvar(xs(13));$list(@(xs(13),I1Vtnm(I1TNM(15))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_uncons$raw);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_uncons$raw(2347));$list(I1FUNDCL(XATS2PY_optn_uncons$raw(12);$list(FJARGdarg($list(I1BNDcons(I1TNM(15);I0Pvar(xs(13));$list(@(xs(13),I1Vtnm(I1TNM(15))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_uncons$raw);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(2560(line=124,offs=1)--2635(line=127,offs=35)))
 def XATS2PY_optn_uncons_raw(arg1): ## impl
   pyxtnm16 = arg1
@@ -108,11 +108,11 @@ def XATS2PY_optn_uncons_raw(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm18
+  ## I1CMP:return:I1Vtnm(I1TNM(18))
   return pyxtnm18
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(3050(line=162,offs=1)--3120(line=167,offs=29)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_nilq(2297));$list(I1FUNDCL(XATS2PY_list_nilq(16);$list(FJARGdarg($list(I1BNDcons(I1TNM(19);I0Pvar(xs(17));$list(@(xs(17),I1Vtnm(I1TNM(19))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_nilq);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_nilq(2348));$list(I1FUNDCL(XATS2PY_list_nilq(16);$list(FJARGdarg($list(I1BNDcons(I1TNM(19);I0Pvar(xs(17));$list(@(xs(17),I1Vtnm(I1TNM(19))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_nilq);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(3121(line=168,offs=1)--3210(line=172,offs=43)))
 def XATS2PY_list_nilq(arg1): ## impl
   pyxtnm20 = arg1
@@ -137,11 +137,11 @@ def XATS2PY_list_nilq(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm23
+  ## I1CMP:return:I1Vtnm(I1TNM(23))
   return pyxtnm23
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(3214(line=174,offs=1)--3285(line=179,offs=29)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_consq(2298));$list(I1FUNDCL(XATS2PY_list_consq(19);$list(FJARGdarg($list(I1BNDcons(I1TNM(24);I0Pvar(xs(20));$list(@(xs(20),I1Vtnm(I1TNM(24))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_consq);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_consq(2349));$list(I1FUNDCL(XATS2PY_list_consq(19);$list(FJARGdarg($list(I1BNDcons(I1TNM(24);I0Pvar(xs(20));$list(@(xs(20),I1Vtnm(I1TNM(24))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_consq);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(3286(line=180,offs=1)--3378(line=184,offs=45)))
 def XATS2PY_list_consq(arg1): ## impl
   pyxtnm25 = arg1
@@ -166,11 +166,11 @@ def XATS2PY_list_consq(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm28
+  ## I1CMP:return:I1Vtnm(I1TNM(28))
   return pyxtnm28
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(3405(line=188,offs=1)--3478(line=193,offs=28)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_head$raw(2299));$list(I1FUNDCL(XATS2PY_list_head$raw(22);$list(FJARGdarg($list(I1BNDcons(I1TNM(29);I0Pvar(xs(23));$list(@(xs(23),I1Vtnm(I1TNM(29))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_head$raw);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_head$raw(2350));$list(I1FUNDCL(XATS2PY_list_head$raw(22);$list(FJARGdarg($list(I1BNDcons(I1TNM(29);I0Pvar(xs(23));$list(@(xs(23),I1Vtnm(I1TNM(29))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_head$raw);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(3479(line=194,offs=1)--3556(line=197,offs=39)))
 def XATS2PY_list_head_raw(arg1): ## impl
   pyxtnm30 = arg1
@@ -187,11 +187,11 @@ def XATS2PY_list_head_raw(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm32
+  ## I1CMP:return:I1Vtnm(I1TNM(32))
   return pyxtnm32
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(3603(line=202,offs=1)--3681(line=207,offs=32)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_lazy_make_f0un(2300));$list(I1FUNDCL(XATS2PY_lazy_make_f0un(27);$list(FJARGdarg($list(I1BNDcons(I1TNM(33);I0Pvar(f0(28));$list(@(f0(28),I1Vtnm(I1TNM(33))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_lazy_make_f0un);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_lazy_make_f0un(2351));$list(I1FUNDCL(XATS2PY_lazy_make_f0un(27);$list(FJARGdarg($list(I1BNDcons(I1TNM(33);I0Pvar(f0(28));$list(@(f0(28),I1Vtnm(I1TNM(33))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_lazy_make_f0un);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(3682(line=208,offs=1)--3731(line=209,offs=41)))
 def XATS2PY_lazy_make_f0un(arg1): ## impl
   pyxtnm34 = arg1
@@ -199,35 +199,35 @@ def XATS2PY_lazy_make_f0un(arg1): ## impl
   def pyxtnm36_(): ## { // l0azy
     ## I1CMP:start
     pyxtnm35 = XATSDAPP(pyxtnm34())
-    ## I1CMP:return:pyxtnm35
+    ## I1CMP:return:I1Vtnm(I1TNM(35))
     return pyxtnm35
   ## } // end(l0azy)
   pyxtnm36 = XATS000_l0azy(pyxtnm36_)
-  ## I1CMP:return:pyxtnm36
+  ## I1CMP:return:I1Vtnm(I1TNM(36))
   return pyxtnm36
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(3778(line=214,offs=1)--3848(line=218,offs=32)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_nil(2301));$list(I1FUNDCL(XATS2PY_strmcon_nil(30);$list(FJARGdarg($list()));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_nil);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_nil(2352));$list(I1FUNDCL(XATS2PY_strmcon_nil(30);$list(FJARGdarg($list()));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_nil);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(3849(line=219,offs=1)--3895(line=220,offs=38)))
 def XATS2PY_strmcon_nil(): ## impl
   ## I1CMP:start
   pyxtnm37 = XATSCAPP("strmcon_nil", [0])
-  ## I1CMP:return:pyxtnm37
+  ## I1CMP:return:I1Vtnm(I1TNM(37))
   return pyxtnm37
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(3899(line=222,offs=1)--3989(line=227,offs=38)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_cons(2302));$list(I1FUNDCL(XATS2PY_strmcon_cons(31);$list(FJARGdarg($list(I1BNDcons(I1TNM(38);I0Pvar(x1(32));$list(@(x1(32),I1Vtnm(I1TNM(38))))),I1BNDcons(I1TNM(39);I0Pvar(xs(33));$list(@(xs(33),I1Vtnm(I1TNM(39))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_cons);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_cons(2353));$list(I1FUNDCL(XATS2PY_strmcon_cons(31);$list(FJARGdarg($list(I1BNDcons(I1TNM(38);I0Pvar(x1(32));$list(@(x1(32),I1Vtnm(I1TNM(38))))),I1BNDcons(I1TNM(39);I0Pvar(xs(33));$list(@(xs(33),I1Vtnm(I1TNM(39))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_cons);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(3990(line=228,offs=1)--4048(line=229,offs=50)))
 def XATS2PY_strmcon_cons(arg1, arg2): ## impl
   pyxtnm40 = arg1
   pyxtnm41 = arg2
   ## I1CMP:start
   pyxtnm42 = XATSCAPP("strmcon_cons", [1, pyxtnm40, pyxtnm41])
-  ## I1CMP:return:pyxtnm42
+  ## I1CMP:return:I1Vtnm(I1TNM(42))
   return pyxtnm42
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(4075(line=233,offs=1)--4151(line=238,offs=32)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_nilq(2303));$list(I1FUNDCL(XATS2PY_strmcon_nilq(36);$list(FJARGdarg($list(I1BNDcons(I1TNM(43);I0Pvar(xs(37));$list(@(xs(37),I1Vtnm(I1TNM(43))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_nilq);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_nilq(2354));$list(I1FUNDCL(XATS2PY_strmcon_nilq(36);$list(FJARGdarg($list(I1BNDcons(I1TNM(43);I0Pvar(xs(37));$list(@(xs(37),I1Vtnm(I1TNM(43))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_nilq);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(4152(line=239,offs=1)--4250(line=243,offs=49)))
 def XATS2PY_strmcon_nilq(arg1): ## impl
   pyxtnm44 = arg1
@@ -252,11 +252,11 @@ def XATS2PY_strmcon_nilq(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm47
+  ## I1CMP:return:I1Vtnm(I1TNM(47))
   return pyxtnm47
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(4254(line=245,offs=1)--4331(line=250,offs=32)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_consq(2304));$list(I1FUNDCL(XATS2PY_strmcon_consq(39);$list(FJARGdarg($list(I1BNDcons(I1TNM(48);I0Pvar(xs(40));$list(@(xs(40),I1Vtnm(I1TNM(48))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_consq);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_consq(2355));$list(I1FUNDCL(XATS2PY_strmcon_consq(39);$list(FJARGdarg($list(I1BNDcons(I1TNM(48);I0Pvar(xs(40));$list(@(xs(40),I1Vtnm(I1TNM(48))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_consq);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(4332(line=251,offs=1)--4433(line=255,offs=51)))
 def XATS2PY_strmcon_consq(arg1): ## impl
   pyxtnm49 = arg1
@@ -281,11 +281,11 @@ def XATS2PY_strmcon_consq(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm52
+  ## I1CMP:return:I1Vtnm(I1TNM(52))
   return pyxtnm52
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(4460(line=259,offs=1)--4539(line=264,offs=31)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_head$raw(2305));$list(I1FUNDCL(XATS2PY_strmcon_head$raw(42);$list(FJARGdarg($list(I1BNDcons(I1TNM(53);I0Pvar(xs(43));$list(@(xs(43),I1Vtnm(I1TNM(53))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_head$raw);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_head$raw(2356));$list(I1FUNDCL(XATS2PY_strmcon_head$raw(42);$list(FJARGdarg($list(I1BNDcons(I1TNM(53);I0Pvar(xs(43));$list(@(xs(43),I1Vtnm(I1TNM(53))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_head$raw);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(4540(line=265,offs=1)--4623(line=268,offs=42)))
 def XATS2PY_strmcon_head_raw(arg1): ## impl
   pyxtnm54 = arg1
@@ -302,11 +302,11 @@ def XATS2PY_strmcon_head_raw(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm56
+  ## I1CMP:return:I1Vtnm(I1TNM(56))
   return pyxtnm56
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(5084(line=306,offs=1)--5162(line=311,offs=32)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_vt_nilq1(2306));$list(I1FUNDCL(XATS2PY_optn_vt_nilq1(47);$list(FJARGdarg($list(I1BNDcons(I1TNM(57);I0Pvar(xs(48));$list(@(xs(48),I1Vtnm(I1TNM(57))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_vt_nilq1);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_vt_nilq1(2357));$list(I1FUNDCL(XATS2PY_optn_vt_nilq1(47);$list(FJARGdarg($list(I1BNDcons(I1TNM(57);I0Pvar(xs(48));$list(@(xs(48),I1Vtnm(I1TNM(57))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_vt_nilq1);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(5163(line=312,offs=1)--5259(line=316,offs=46)))
 def XATS2PY_optn_vt_nilq1(arg1): ## impl
   pyxtnm58 = arg1
@@ -331,11 +331,11 @@ def XATS2PY_optn_vt_nilq1(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm61
+  ## I1CMP:return:I1Vtnm(I1TNM(61))
   return pyxtnm61
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(5263(line=318,offs=1)--5342(line=323,offs=32)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_vt_consq1(2307));$list(I1FUNDCL(XATS2PY_optn_vt_consq1(51);$list(FJARGdarg($list(I1BNDcons(I1TNM(62);I0Pvar(xs(52));$list(@(xs(52),I1Vtnm(I1TNM(62))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_vt_consq1);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_vt_consq1(2358));$list(I1FUNDCL(XATS2PY_optn_vt_consq1(51);$list(FJARGdarg($list(I1BNDcons(I1TNM(62);I0Pvar(xs(52));$list(@(xs(52),I1Vtnm(I1TNM(62))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_vt_consq1);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(5343(line=324,offs=1)--5442(line=328,offs=48)))
 def XATS2PY_optn_vt_consq1(arg1): ## impl
   pyxtnm63 = arg1
@@ -360,11 +360,11 @@ def XATS2PY_optn_vt_consq1(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm66
+  ## I1CMP:return:I1Vtnm(I1TNM(66))
   return pyxtnm66
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(5469(line=332,offs=1)--5549(line=337,offs=31)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_vt_head$raw0(2308));$list(I1FUNDCL(XATS2PY_optn_vt_head$raw0(55);$list(FJARGdarg($list(I1BNDcons(I1TNM(67);I0Pvar(xs(56));$list(@(xs(56),I1Vtnm(I1TNM(67))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_vt_head$raw0);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_vt_head$raw0(2359));$list(I1FUNDCL(XATS2PY_optn_vt_head$raw0(55);$list(FJARGdarg($list(I1BNDcons(I1TNM(67);I0Pvar(xs(56));$list(@(xs(56),I1Vtnm(I1TNM(67))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_vt_head$raw0);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(5550(line=338,offs=1)--5631(line=341,offs=39)))
 def XATS2PY_optn_vt_head_raw0(arg1): ## impl
   pyxtnm68 = arg1
@@ -381,11 +381,11 @@ def XATS2PY_optn_vt_head_raw0(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm70
+  ## I1CMP:return:I1Vtnm(I1TNM(70))
   return pyxtnm70
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(5635(line=343,offs=1)--5717(line=348,offs=31)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_vt_uncons$raw0(2309));$list(I1FUNDCL(XATS2PY_optn_vt_uncons$raw0(59);$list(FJARGdarg($list(I1BNDcons(I1TNM(71);I0Pvar(xs(60));$list(@(xs(60),I1Vtnm(I1TNM(71))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_vt_uncons$raw0);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_optn_vt_uncons$raw0(2360));$list(I1FUNDCL(XATS2PY_optn_vt_uncons$raw0(59);$list(FJARGdarg($list(I1BNDcons(I1TNM(71);I0Pvar(xs(60));$list(@(xs(60),I1Vtnm(I1TNM(71))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_optn_vt_uncons$raw0);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(5718(line=349,offs=1)--5801(line=352,offs=39)))
 def XATS2PY_optn_vt_uncons_raw0(arg1): ## impl
   pyxtnm72 = arg1
@@ -402,11 +402,11 @@ def XATS2PY_optn_vt_uncons_raw0(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm74
+  ## I1CMP:return:I1Vtnm(I1TNM(74))
   return pyxtnm74
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(6220(line=385,offs=1)--6298(line=390,offs=32)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_vt_nilq1(2310));$list(I1FUNDCL(XATS2PY_list_vt_nilq1(63);$list(FJARGdarg($list(I1BNDcons(I1TNM(75);I0Pvar(xs(64));$list(@(xs(64),I1Vtnm(I1TNM(75))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_vt_nilq1);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_vt_nilq1(2361));$list(I1FUNDCL(XATS2PY_list_vt_nilq1(63);$list(FJARGdarg($list(I1BNDcons(I1TNM(75);I0Pvar(xs(64));$list(@(xs(64),I1Vtnm(I1TNM(75))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_vt_nilq1);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(6299(line=391,offs=1)--6395(line=395,offs=46)))
 def XATS2PY_list_vt_nilq1(arg1): ## impl
   pyxtnm76 = arg1
@@ -431,11 +431,11 @@ def XATS2PY_list_vt_nilq1(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm79
+  ## I1CMP:return:I1Vtnm(I1TNM(79))
   return pyxtnm79
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(6399(line=397,offs=1)--6478(line=402,offs=32)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_vt_consq1(2311));$list(I1FUNDCL(XATS2PY_list_vt_consq1(66);$list(FJARGdarg($list(I1BNDcons(I1TNM(80);I0Pvar(xs(67));$list(@(xs(67),I1Vtnm(I1TNM(80))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_vt_consq1);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_vt_consq1(2362));$list(I1FUNDCL(XATS2PY_list_vt_consq1(66);$list(FJARGdarg($list(I1BNDcons(I1TNM(80);I0Pvar(xs(67));$list(@(xs(67),I1Vtnm(I1TNM(80))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_vt_consq1);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(6479(line=403,offs=1)--6578(line=407,offs=48)))
 def XATS2PY_list_vt_consq1(arg1): ## impl
   pyxtnm81 = arg1
@@ -460,11 +460,11 @@ def XATS2PY_list_vt_consq1(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm84
+  ## I1CMP:return:I1Vtnm(I1TNM(84))
   return pyxtnm84
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(6605(line=411,offs=1)--6685(line=416,offs=31)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_vt_head$raw1(2312));$list(I1FUNDCL(XATS2PY_list_vt_head$raw1(69);$list(FJARGdarg($list(I1BNDcons(I1TNM(85);I0Pvar(xs(70));$list(@(xs(70),I1Vtnm(I1TNM(85))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_vt_head$raw1);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_vt_head$raw1(2363));$list(I1FUNDCL(XATS2PY_list_vt_head$raw1(69);$list(FJARGdarg($list(I1BNDcons(I1TNM(85);I0Pvar(xs(70));$list(@(xs(70),I1Vtnm(I1TNM(85))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_vt_head$raw1);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(6686(line=417,offs=1)--6826(line=426,offs=42)))
 def XATS2PY_list_vt_head_raw1(arg1): ## impl
   pyxtnm86 = arg1
@@ -492,11 +492,11 @@ def XATS2PY_list_vt_head_raw1(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm92
+  ## I1CMP:return:I1Vtnm(I1TNM(92))
   return pyxtnm92
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(6830(line=428,offs=1)--6918(line=433,offs=38)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_vt_tail$raw0(2313));$list(I1FUNDCL(XATS2PY_list_vt_tail$raw0(75);$list(FJARGdarg($list(I1BNDcons(I1TNM(93);I0Pvar(xs(76));$list(@(xs(76),I1Vtnm(I1TNM(93))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_vt_tail$raw0);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_list_vt_tail$raw0(2364));$list(I1FUNDCL(XATS2PY_list_vt_tail$raw0(75);$list(FJARGdarg($list(I1BNDcons(I1TNM(93);I0Pvar(xs(76));$list(@(xs(76),I1Vtnm(I1TNM(93))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_list_vt_tail$raw0);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(6919(line=434,offs=1)--7049(line=441,offs=43)))
 def XATS2PY_list_vt_tail_raw0(arg1): ## impl
   pyxtnm94 = arg1
@@ -523,31 +523,31 @@ def XATS2PY_list_vt_tail_raw0(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm99
+  ## I1CMP:return:I1Vtnm(I1TNM(99))
   return pyxtnm99
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(7096(line=446,offs=1)--7172(line=451,offs=31)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_lazy_vt_eval(2314));$list(I1FUNDCL(XATS2PY_lazy_vt_eval(81);$list(FJARGdarg($list(I1BNDcons(I1TNM(100);I0Pvar(lz(82));$list(@(lz(82),I1Vtnm(I1TNM(100))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_lazy_vt_eval);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_lazy_vt_eval(2365));$list(I1FUNDCL(XATS2PY_lazy_vt_eval(81);$list(FJARGdarg($list(I1BNDcons(I1TNM(100);I0Pvar(lz(82));$list(@(lz(82),I1Vtnm(I1TNM(100))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_lazy_vt_eval);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(7173(line=452,offs=1)--7218(line=453,offs=37)))
 def XATS2PY_lazy_vt_eval(arg1): ## impl
   pyxtnm101 = arg1
   ## I1CMP:start
   pyxtnm102 = XATS000_dl1az(pyxtnm101)
-  ## I1CMP:return:pyxtnm102
+  ## I1CMP:return:I1Vtnm(I1TNM(102))
   return pyxtnm102
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(7222(line=455,offs=1)--7299(line=460,offs=32)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_lazy_vt_free(2315));$list(I1FUNDCL(XATS2PY_lazy_vt_free(84);$list(FJARGdarg($list(I1BNDcons(I1TNM(103);I0Pvar(lz(85));$list(@(lz(85),I1Vtnm(I1TNM(103))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_lazy_vt_free);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_lazy_vt_free(2366));$list(I1FUNDCL(XATS2PY_lazy_vt_free(84);$list(FJARGdarg($list(I1BNDcons(I1TNM(103);I0Pvar(lz(85));$list(@(lz(85),I1Vtnm(I1TNM(103))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_lazy_vt_free);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(7300(line=461,offs=1)--7345(line=462,offs=37)))
 def XATS2PY_lazy_vt_free(arg1): ## impl
   pyxtnm104 = arg1
   ## I1CMP:start
   XATS000_free(pyxtnm104)
-  ## I1CMP:return:[]
-  return []
+  ## I1CMP:return:I1V000()
+  return XATSVOID
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(7372(line=466,offs=1)--7456(line=471,offs=35)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_lazy_vt_make_f0un(2316));$list(I1FUNDCL(XATS2PY_lazy_vt_make_f0un(87);$list(FJARGdarg($list(I1BNDcons(I1TNM(105);I0Pvar(f0(88));$list(@(f0(88),I1Vtnm(I1TNM(105))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_lazy_vt_make_f0un);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_lazy_vt_make_f0un(2367));$list(I1FUNDCL(XATS2PY_lazy_vt_make_f0un(87);$list(FJARGdarg($list(I1BNDcons(I1TNM(105);I0Pvar(f0(88));$list(@(f0(88),I1Vtnm(I1TNM(105))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_lazy_vt_make_f0un);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(7457(line=472,offs=1)--7510(line=473,offs=45)))
 def XATS2PY_lazy_vt_make_f0un(arg1): ## impl
   pyxtnm106 = arg1
@@ -555,65 +555,47 @@ def XATS2PY_lazy_vt_make_f0un(arg1): ## impl
   def pyxtnm108(tlaz): ## { // l1azy
     ## I1CMP:start
     pyxtnm107 = XATSDAPP(pyxtnm106())
-    ## I1CMP:return:pyxtnm107
+    ## I1CMP:return:I1Vtnm(I1TNM(107))
     return pyxtnm107
   ## } // end(l1azy)
-  ## I1CMP:return:pyxtnm108
+  ## I1CMP:return:I1Vtnm(I1TNM(108))
   return pyxtnm108
 ## endfun(impl)
 ## I1Dextern(LCSRCsome1(precats.dats)@(7557(line=478,offs=1)--7633(line=482,offs=35)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_vt_nil(2317));$list(I1FUNDCL(XATS2PY_strmcon_vt_nil(90);$list(FJARGdarg($list()));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_vt_nil);G1Nlist($list())))))))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_vt_nil(2368));$list(I1FUNDCL(XATS2PY_strmcon_vt_nil(90);$list(FJARGdarg($list()));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_vt_nil);G1Nlist($list())))))))
 ## I1Dimplmnt0(LCSRCsome1(precats.dats)@(7634(line=483,offs=1)--7686(line=484,offs=44)))
 def XATS2PY_strmcon_vt_nil(): ## impl
   ## I1CMP:start
   pyxtnm109 = XATSCAPP("strmcon_vt_nil", [0])
-  ## I1CMP:return:pyxtnm109
+  ## I1CMP:return:I1Vtnm(I1TNM(109))
   return pyxtnm109
 ## endfun(impl)
-## I1Dextern(LCSRCsome1(precats.dats)@(7690(line=486,offs=1)--7789(line=491,offs=44)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_vt_cons(2318));$list(I1FUNDCL(XATS2PY_strmcon_vt_cons(91);$list(FJARGdarg($list(I1BNDcons(I1TNM(110);I0Pvar(x1(92));$list(@(x1(92),I1Vtnm(I1TNM(110))))),I1BNDcons(I1TNM(111);I0Pvar(xs(93));$list(@(xs(93),I1Vtnm(I1TNM(111))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_vt_cons);G1Nlist($list())))))))
-## I1Dimplmnt0(LCSRCsome1(precats.dats)@(7790(line=492,offs=1)--7854(line=493,offs=56)))
+## I1Dextern(LCSRCsome1(precats.dats)@(7690(line=486,offs=1)--7799(line=493,offs=41)))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_vt_cons(2369));$list(I1FUNDCL(XATS2PY_strmcon_vt_cons(91);$list(FJARGdarg($list(I1BNDcons(I1TNM(110);I0Pvar(x1(92));$list(@(x1(92),I1Vtnm(I1TNM(110))))),I1BNDcons(I1TNM(111);I0Pvar(xs(93));$list(@(xs(93),I1Vtnm(I1TNM(111))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_vt_cons);G1Nlist($list())))))))
+## I1Dimplmnt0(LCSRCsome1(precats.dats)@(7800(line=494,offs=1)--7864(line=495,offs=56)))
 def XATS2PY_strmcon_vt_cons(arg1, arg2): ## impl
   pyxtnm112 = arg1
   pyxtnm113 = arg2
   ## I1CMP:start
   pyxtnm114 = XATSCAPP("strmcon_vt_cons", [1, pyxtnm112, pyxtnm113])
-  ## I1CMP:return:pyxtnm114
+  ## I1CMP:return:I1Vtnm(I1TNM(114))
   return pyxtnm114
 ## endfun(impl)
-## I1Dextern(LCSRCsome1(precats.dats)@(7881(line=497,offs=1)--7965(line=502,offs=35)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_vt_nilq1(2319));$list(I1FUNDCL(XATS2PY_strmcon_vt_nilq1(96);$list(FJARGdarg($list(I1BNDcons(I1TNM(115);I0Pvar(xs(97));$list(@(xs(97),I1Vtnm(I1TNM(115))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_vt_nilq1);G1Nlist($list())))))))
-## I1Dimplmnt0(LCSRCsome1(precats.dats)@(7966(line=503,offs=1)--8070(line=507,offs=51)))
-def XATS2PY_strmcon_vt_nilq1(arg1): ## impl
-  pyxtnm116 = arg1
+## I1Dextern(LCSRCsome1(precats.dats)@(7871(line=498,offs=1)--7980(line=505,offs=41)))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strxcon_vt_cons(2370));$list(I1FUNDCL(XATS2PY_strxcon_vt_cons(96);$list(FJARGdarg($list(I1BNDcons(I1TNM(115);I0Pvar(x1(97));$list(@(x1(97),I1Vtnm(I1TNM(115))))),I1BNDcons(I1TNM(116);I0Pvar(xs(98));$list(@(xs(98),I1Vtnm(I1TNM(116))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strxcon_vt_cons);G1Nlist($list())))))))
+## I1Dimplmnt0(LCSRCsome1(precats.dats)@(7981(line=506,offs=1)--8045(line=507,offs=56)))
+def XATS2PY_strxcon_vt_cons(arg1, arg2): ## impl
+  pyxtnm117 = arg1
+  pyxtnm118 = arg2
   ## I1CMP:start
-  pyxtnm119 = None
-  while True: ## do {
-    ## { // cls
-    ## I1GPTpat(I1BNDcons(I1TNM(117);I0Pdapp(I0Pcon(strmcon_vt_nil(15));$list());$list()))
-    if (XATS000_ctgeq(pyxtnm116, XATSCTAG("strmcon_vt_nil",0))): ## { // gpt
-      pyxtnm117 = pyxtnm116
-      pyxtnm119 = XATSBOOL(True)
-      break ## cls
-    ## } // gpt
-    ## } // cls
-    ## { // cls
-    ## I1GPTpat(I1BNDcons(I1TNM(118);I0Pdap1(I0Pcon(strmcon_vt_cons(16)));$list()))
-    if (XATS000_ctgeq(pyxtnm116, XATSCTAG("strmcon_vt_cons",1))): ## { // gpt
-      pyxtnm118 = pyxtnm116
-      pyxtnm119 = XATSBOOL(False)
-      break ## cls
-    ## } // gpt
-    ## } // cls
-    XATS000_cfail()
-  ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm119
+  pyxtnm119 = XATSCAPP("strxcon_vt_cons", [0, pyxtnm117, pyxtnm118])
+  ## I1CMP:return:I1Vtnm(I1TNM(119))
   return pyxtnm119
 ## endfun(impl)
-## I1Dextern(LCSRCsome1(precats.dats)@(8074(line=509,offs=1)--8159(line=514,offs=35)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_vt_consq1(2320));$list(I1FUNDCL(XATS2PY_strmcon_vt_consq1(99);$list(FJARGdarg($list(I1BNDcons(I1TNM(120);I0Pvar(xs(100));$list(@(xs(100),I1Vtnm(I1TNM(120))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_vt_consq1);G1Nlist($list())))))))
-## I1Dimplmnt0(LCSRCsome1(precats.dats)@(8160(line=515,offs=1)--8267(line=519,offs=53)))
-def XATS2PY_strmcon_vt_consq1(arg1): ## impl
+## I1Dextern(LCSRCsome1(precats.dats)@(8072(line=511,offs=1)--8156(line=516,offs=35)))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_vt_nilq1(2371));$list(I1FUNDCL(XATS2PY_strmcon_vt_nilq1(101);$list(FJARGdarg($list(I1BNDcons(I1TNM(120);I0Pvar(xs(102));$list(@(xs(102),I1Vtnm(I1TNM(120))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_vt_nilq1);G1Nlist($list())))))))
+## I1Dimplmnt0(LCSRCsome1(precats.dats)@(8157(line=517,offs=1)--8261(line=521,offs=51)))
+def XATS2PY_strmcon_vt_nilq1(arg1): ## impl
   pyxtnm121 = arg1
   ## I1CMP:start
   pyxtnm124 = None
@@ -622,7 +604,7 @@ def XATS2PY_strmcon_vt_consq1(arg1): ## impl
     ## I1GPTpat(I1BNDcons(I1TNM(122);I0Pdapp(I0Pcon(strmcon_vt_nil(15));$list());$list()))
     if (XATS000_ctgeq(pyxtnm121, XATSCTAG("strmcon_vt_nil",0))): ## { // gpt
       pyxtnm122 = pyxtnm121
-      pyxtnm124 = XATSBOOL(False)
+      pyxtnm124 = XATSBOOL(True)
       break ## cls
     ## } // gpt
     ## } // cls
@@ -630,92 +612,110 @@ def XATS2PY_strmcon_vt_consq1(arg1): ## impl
     ## I1GPTpat(I1BNDcons(I1TNM(123);I0Pdap1(I0Pcon(strmcon_vt_cons(16)));$list()))
     if (XATS000_ctgeq(pyxtnm121, XATSCTAG("strmcon_vt_cons",1))): ## { // gpt
       pyxtnm123 = pyxtnm121
-      pyxtnm124 = XATSBOOL(True)
+      pyxtnm124 = XATSBOOL(False)
       break ## cls
     ## } // gpt
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm124
+  ## I1CMP:return:I1Vtnm(I1TNM(124))
   return pyxtnm124
 ## endfun(impl)
-## I1Dextern(LCSRCsome1(precats.dats)@(8294(line=523,offs=1)--8381(line=528,offs=34)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_vt_head$raw1(2321));$list(I1FUNDCL(XATS2PY_strmcon_vt_head$raw1(102);$list(FJARGdarg($list(I1BNDcons(I1TNM(125);I0Pvar(xs(103));$list(@(xs(103),I1Vtnm(I1TNM(125))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_vt_head$raw1);G1Nlist($list())))))))
-## I1Dimplmnt0(LCSRCsome1(precats.dats)@(8382(line=529,offs=1)--8531(line=538,offs=42)))
-def XATS2PY_strmcon_vt_head_raw1(arg1): ## impl
+## I1Dextern(LCSRCsome1(precats.dats)@(8265(line=523,offs=1)--8350(line=528,offs=35)))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_vt_consq1(2372));$list(I1FUNDCL(XATS2PY_strmcon_vt_consq1(104);$list(FJARGdarg($list(I1BNDcons(I1TNM(125);I0Pvar(xs(105));$list(@(xs(105),I1Vtnm(I1TNM(125))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_vt_consq1);G1Nlist($list())))))))
+## I1Dimplmnt0(LCSRCsome1(precats.dats)@(8351(line=529,offs=1)--8458(line=533,offs=53)))
+def XATS2PY_strmcon_vt_consq1(arg1): ## impl
   pyxtnm126 = arg1
   ## I1CMP:start
-  pyxtnm132 = None
+  pyxtnm129 = None
   while True: ## do {
     ## { // cls
-    ## I1GPTpat(I1BNDcons(I1TNM(127);I0Pdapp(I0Pcon(strmcon_vt_cons(16));$list(I0Pvar(x1(105)),I0Pvar(xs(106))));$list(@(x1(105),I1Vp1cn(I0Pcon(strmcon_vt_cons(16));I1Vtnm(I1TNM(127));0)),@(xs(106),I1Vp1cn(I0Pcon(strmcon_vt_cons(16));I1Vtnm(I1TNM(127));1)))))
-    if (XATS000_ctgeq(pyxtnm126, XATSCTAG("strmcon_vt_cons",1))): ## { // gpt
+    ## I1GPTpat(I1BNDcons(I1TNM(127);I0Pdapp(I0Pcon(strmcon_vt_nil(15));$list());$list()))
+    if (XATS000_ctgeq(pyxtnm126, XATSCTAG("strmcon_vt_nil",0))): ## { // gpt
       pyxtnm127 = pyxtnm126
-      ## let
-      pyxtnm131 = None
-      ## I1Dvaldclist(LCSRCsome1(precats.dats)@(8481(line=537,offs=1)--8506(line=538,offs=17)))
-      ## I1VALDCL
-      pyxtnm129 = None
-      pyxtnm128 = XATSCAST("datacopy_1720", [XATSP1CN("strmcon_vt_cons", pyxtnm127[0+1])])
-      pyxtnm129 = pyxtnm128
-      XATS000_patck(True)
-      pyxtnm130 = XATSCAST("enlinear_1756", [pyxtnm129])
-      pyxtnm131 = pyxtnm130
-      ## end-of(let)
-      pyxtnm132 = pyxtnm131
+      pyxtnm129 = XATSBOOL(False)
+      break ## cls
+    ## } // gpt
+    ## } // cls
+    ## { // cls
+    ## I1GPTpat(I1BNDcons(I1TNM(128);I0Pdap1(I0Pcon(strmcon_vt_cons(16)));$list()))
+    if (XATS000_ctgeq(pyxtnm126, XATSCTAG("strmcon_vt_cons",1))): ## { // gpt
+      pyxtnm128 = pyxtnm126
+      pyxtnm129 = XATSBOOL(True)
       break ## cls
     ## } // gpt
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm132
-  return pyxtnm132
+  ## I1CMP:return:I1Vtnm(I1TNM(129))
+  return pyxtnm129
 ## endfun(impl)
-## I1Dextern(LCSRCsome1(precats.dats)@(8535(line=540,offs=1)--8629(line=545,offs=41)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_vt_tail$raw0(2322));$list(I1FUNDCL(XATS2PY_strmcon_vt_tail$raw0(108);$list(FJARGdarg($list(I1BNDcons(I1TNM(133);I0Pvar(xs(109));$list(@(xs(109),I1Vtnm(I1TNM(133))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_vt_tail$raw0);G1Nlist($list())))))))
-## I1Dimplmnt0(LCSRCsome1(precats.dats)@(8630(line=546,offs=1)--8769(line=553,offs=43)))
-def XATS2PY_strmcon_vt_tail_raw0(arg1): ## impl
-  pyxtnm134 = arg1
+## I1Dextern(LCSRCsome1(precats.dats)@(8485(line=537,offs=1)--8572(line=542,offs=34)))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_vt_head$raw1(2373));$list(I1FUNDCL(XATS2PY_strmcon_vt_head$raw1(107);$list(FJARGdarg($list(I1BNDcons(I1TNM(130);I0Pvar(xs(108));$list(@(xs(108),I1Vtnm(I1TNM(130))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_vt_head$raw1);G1Nlist($list())))))))
+## I1Dimplmnt0(LCSRCsome1(precats.dats)@(8573(line=543,offs=1)--8722(line=552,offs=42)))
+def XATS2PY_strmcon_vt_head_raw1(arg1): ## impl
+  pyxtnm131 = arg1
   ## I1CMP:start
-  pyxtnm139 = None
+  pyxtnm137 = None
   while True: ## do {
     ## { // cls
-    ## I1GPTpat(I1BNDcons(I1TNM(135);I0Pfree(I0Pdapp(I0Pcon(strmcon_vt_cons(16));$list(I0Pvar(x1(111)),I0Pvar(xs(112)))));$list(@(x1(111),I1Vp1cn(I0Pcon(strmcon_vt_cons(16));I1Vtnm(I1TNM(135));0)),@(xs(112),I1Vp1cn(I0Pcon(strmcon_vt_cons(16));I1Vtnm(I1TNM(135));1)))))
-    if (XATS000_ctgeq(pyxtnm134, XATSCTAG("strmcon_vt_cons",1))): ## { // gpt
-      pyxtnm135 = pyxtnm134
+    ## I1GPTpat(I1BNDcons(I1TNM(132);I0Pdapp(I0Pcon(strmcon_vt_cons(16));$list(I0Pvar(x1(110)),I0Pvar(xs(111))));$list(@(x1(110),I1Vp1cn(I0Pcon(strmcon_vt_cons(16));I1Vtnm(I1TNM(132));0)),@(xs(111),I1Vp1cn(I0Pcon(strmcon_vt_cons(16));I1Vtnm(I1TNM(132));1)))))
+    if (XATS000_ctgeq(pyxtnm131, XATSCTAG("strmcon_vt_cons",1))): ## { // gpt
+      pyxtnm132 = pyxtnm131
       ## let
-      pyxtnm138 = None
-      ## I1Dvaldclist(LCSRCsome1(precats.dats)@(8733(line=553,offs=7)--8758(line=553,offs=32)))
+      pyxtnm136 = None
+      ## I1Dvaldclist(LCSRCsome1(precats.dats)@(8672(line=551,offs=1)--8697(line=552,offs=17)))
       ## I1VALDCL
-      pyxtnm137 = None
-      pyxtnm136 = XATSCAST("delinear_1667", [XATSP1CN("strmcon_vt_cons", pyxtnm135[0+1])])
-      pyxtnm137 = pyxtnm136
+      pyxtnm134 = None
+      pyxtnm133 = XATSCAST("datacopy_1720", [XATSP1CN("strmcon_vt_cons", pyxtnm132[0+1])])
+      pyxtnm134 = pyxtnm133
       XATS000_patck(True)
-      pyxtnm138 = XATSP1CN("strmcon_vt_cons", pyxtnm135[1+1])
+      pyxtnm135 = XATSCAST("enlinear_1756", [pyxtnm134])
+      pyxtnm136 = pyxtnm135
       ## end-of(let)
-      pyxtnm139 = pyxtnm138
+      pyxtnm137 = pyxtnm136
       break ## cls
     ## } // gpt
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm139
-  return pyxtnm139
+  ## I1CMP:return:I1Vtnm(I1TNM(137))
+  return pyxtnm137
 ## endfun(impl)
-## I1Dextern(LCSRCsome1(precats.dats)@(8816(line=558,offs=1)--8915(line=563,offs=44)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strxcon_vt_cons(2323));$list(I1FUNDCL(XATS2PY_strxcon_vt_cons(114);$list(FJARGdarg($list(I1BNDcons(I1TNM(140);I0Pvar(x1(115));$list(@(x1(115),I1Vtnm(I1TNM(140))))),I1BNDcons(I1TNM(141);I0Pvar(xs(116));$list(@(xs(116),I1Vtnm(I1TNM(141))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strxcon_vt_cons);G1Nlist($list())))))))
-## I1Dimplmnt0(LCSRCsome1(precats.dats)@(8916(line=564,offs=1)--8980(line=565,offs=56)))
-def XATS2PY_strxcon_vt_cons(arg1, arg2): ## impl
-  pyxtnm142 = arg1
-  pyxtnm143 = arg2
+## I1Dextern(LCSRCsome1(precats.dats)@(8726(line=554,offs=1)--8820(line=559,offs=41)))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strmcon_vt_tail$raw0(2374));$list(I1FUNDCL(XATS2PY_strmcon_vt_tail$raw0(113);$list(FJARGdarg($list(I1BNDcons(I1TNM(138);I0Pvar(xs(114));$list(@(xs(114),I1Vtnm(I1TNM(138))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strmcon_vt_tail$raw0);G1Nlist($list())))))))
+## I1Dimplmnt0(LCSRCsome1(precats.dats)@(8821(line=560,offs=1)--8960(line=567,offs=43)))
+def XATS2PY_strmcon_vt_tail_raw0(arg1): ## impl
+  pyxtnm139 = arg1
   ## I1CMP:start
-  pyxtnm144 = XATSCAPP("strxcon_vt_cons", [0, pyxtnm142, pyxtnm143])
-  ## I1CMP:return:pyxtnm144
+  pyxtnm144 = None
+  while True: ## do {
+    ## { // cls
+    ## I1GPTpat(I1BNDcons(I1TNM(140);I0Pfree(I0Pdapp(I0Pcon(strmcon_vt_cons(16));$list(I0Pvar(x1(116)),I0Pvar(xs(117)))));$list(@(x1(116),I1Vp1cn(I0Pcon(strmcon_vt_cons(16));I1Vtnm(I1TNM(140));0)),@(xs(117),I1Vp1cn(I0Pcon(strmcon_vt_cons(16));I1Vtnm(I1TNM(140));1)))))
+    if (XATS000_ctgeq(pyxtnm139, XATSCTAG("strmcon_vt_cons",1))): ## { // gpt
+      pyxtnm140 = pyxtnm139
+      ## let
+      pyxtnm143 = None
+      ## I1Dvaldclist(LCSRCsome1(precats.dats)@(8924(line=567,offs=7)--8949(line=567,offs=32)))
+      ## I1VALDCL
+      pyxtnm142 = None
+      pyxtnm141 = XATSCAST("delinear_1667", [XATSP1CN("strmcon_vt_cons", pyxtnm140[0+1])])
+      pyxtnm142 = pyxtnm141
+      XATS000_patck(True)
+      pyxtnm143 = XATSP1CN("strmcon_vt_cons", pyxtnm140[1+1])
+      ## end-of(let)
+      pyxtnm144 = pyxtnm143
+      break ## cls
+    ## } // gpt
+    ## } // cls
+    XATS000_cfail()
+  ## } while True // end-of(do-cls)
+  ## I1CMP:return:I1Vtnm(I1TNM(144))
   return pyxtnm144
 ## endfun(impl)
-## I1Dextern(LCSRCsome1(precats.dats)@(9029(line=572,offs=1)--9116(line=577,offs=34)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strxcon_vt_head$raw1(2324));$list(I1FUNDCL(XATS2PY_strxcon_vt_head$raw1(119);$list(FJARGdarg($list(I1BNDcons(I1TNM(145);I0Pvar(xs(120));$list(@(xs(120),I1Vtnm(I1TNM(145))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strxcon_vt_head$raw1);G1Nlist($list())))))))
-## I1Dimplmnt0(LCSRCsome1(precats.dats)@(9117(line=578,offs=1)--9266(line=587,offs=42)))
+## I1Dextern(LCSRCsome1(precats.dats)@(9009(line=574,offs=1)--9096(line=579,offs=34)))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strxcon_vt_head$raw1(2375));$list(I1FUNDCL(XATS2PY_strxcon_vt_head$raw1(119);$list(FJARGdarg($list(I1BNDcons(I1TNM(145);I0Pvar(xs(120));$list(@(xs(120),I1Vtnm(I1TNM(145))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strxcon_vt_head$raw1);G1Nlist($list())))))))
+## I1Dimplmnt0(LCSRCsome1(precats.dats)@(9097(line=580,offs=1)--9246(line=589,offs=42)))
 def XATS2PY_strxcon_vt_head_raw1(arg1): ## impl
   pyxtnm146 = arg1
   ## I1CMP:start
@@ -727,7 +727,7 @@ def XATS2PY_strxcon_vt_head_raw1(arg1): ## impl
       pyxtnm147 = pyxtnm146
       ## let
       pyxtnm151 = None
-      ## I1Dvaldclist(LCSRCsome1(precats.dats)@(9216(line=586,offs=1)--9241(line=587,offs=17)))
+      ## I1Dvaldclist(LCSRCsome1(precats.dats)@(9196(line=588,offs=1)--9221(line=589,offs=17)))
       ## I1VALDCL
       pyxtnm149 = None
       pyxtnm148 = XATSCAST("datacopy_1720", [XATSP1CN("strxcon_vt_cons", pyxtnm147[0+1])])
@@ -742,12 +742,12 @@ def XATS2PY_strxcon_vt_head_raw1(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm152
+  ## I1CMP:return:I1Vtnm(I1TNM(152))
   return pyxtnm152
 ## endfun(impl)
-## I1Dextern(LCSRCsome1(precats.dats)@(9292(line=592,offs=1)--9386(line=597,offs=41)))
-## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strxcon_vt_tail$raw0(2325));$list(I1FUNDCL(XATS2PY_strxcon_vt_tail$raw0(125);$list(FJARGdarg($list(I1BNDcons(I1TNM(153);I0Pvar(xs(126));$list(@(xs(126),I1Vtnm(I1TNM(153))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strxcon_vt_tail$raw0);G1Nlist($list())))))))
-## I1Dimplmnt0(LCSRCsome1(precats.dats)@(9387(line=598,offs=1)--9526(line=605,offs=43)))
+## I1Dextern(LCSRCsome1(precats.dats)@(9272(line=594,offs=1)--9366(line=599,offs=41)))
+## I1Dfundclst(T_FUN(FNKfn1);$list();$list(XATS2PY_strxcon_vt_tail$raw0(2376));$list(I1FUNDCL(XATS2PY_strxcon_vt_tail$raw0(125);$list(FJARGdarg($list(I1BNDcons(I1TNM(153);I0Pvar(xs(126));$list(@(xs(126),I1Vtnm(I1TNM(153))))))));TEQI1CMPsome(T_EQ0();I1CMPcons($list();I1Vextnam(T_DLR_EXTNAM();I1Vvar(XATS2PY_strxcon_vt_tail$raw0);G1Nlist($list())))))))
+## I1Dimplmnt0(LCSRCsome1(precats.dats)@(9367(line=600,offs=1)--9506(line=607,offs=43)))
 def XATS2PY_strxcon_vt_tail_raw0(arg1): ## impl
   pyxtnm154 = arg1
   ## I1CMP:start
@@ -759,7 +759,7 @@ def XATS2PY_strxcon_vt_tail_raw0(arg1): ## impl
       pyxtnm155 = pyxtnm154
       ## let
       pyxtnm158 = None
-      ## I1Dvaldclist(LCSRCsome1(precats.dats)@(9490(line=605,offs=7)--9515(line=605,offs=32)))
+      ## I1Dvaldclist(LCSRCsome1(precats.dats)@(9470(line=607,offs=7)--9495(line=607,offs=32)))
       ## I1VALDCL
       pyxtnm157 = None
       pyxtnm156 = XATSCAST("delinear_1667", [XATSP1CN("strxcon_vt_cons", pyxtnm155[0+1])])
@@ -773,10 +773,10 @@ def XATS2PY_strxcon_vt_tail_raw0(arg1): ## impl
     ## } // cls
     XATS000_cfail()
   ## } while True // end-of(do-cls)
-  ## I1CMP:return:pyxtnm159
+  ## I1CMP:return:I1Vtnm(I1TNM(159))
   return pyxtnm159
 ## endfun(impl)
-## LCSRCsome1(precats.dats)@(9782(line=613,offs=1)--9782(line=613,offs=1))
-## I1Dnone1(I0Dnone1(LCSRCsome1(precats.dats)@(9782(line=613,offs=1)--9782(line=613,offs=1));D3Cnone0()))
+## LCSRCsome1(precats.dats)@(9910(line=617,offs=1)--9910(line=617,offs=1))
+## I1Dnone1(I0Dnone1(LCSRCsome1(precats.dats)@(9910(line=617,offs=1)--9910(line=617,offs=1));D3Cnone0()))
 ########################################################################
 ########################################################################
