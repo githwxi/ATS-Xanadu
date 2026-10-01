@@ -13,15 +13,24 @@ PYTHON ?= python3
 all: index.html
 
 ########################################################################
+#
+clean:: ; rm -f *~
+#
+cleanall:: clean
+cleanall:: ; rm -f index.html
+#
+########################################################################
 
 build: index.html
 
 # Always rescan the source tree
 # to include added, changed, or removed files.
-index.html: build.py template.html FORCE; $(PYTHON) ./build.py
+index.html: \
+build.py template.html FORCE; $(PYTHON) ./build.py
 
 ########################################################################
 
 FORCE:
 
+########################################################################
 ########################################################################
