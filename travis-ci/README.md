@@ -54,10 +54,31 @@ compilers. `testall` runs the prelude suites selected by `Makefile_overall`,
 not every test directory in the repository.
 
 The GitHub Actions workflow in `.github/workflows/main.yml` runs these
-scripts on Ubuntu 24.04 for pushes and pull requests. It selects Node.js 24
-after installing system dependencies. Manual runs through the Actions tab
-also offer a `bootstrap` checkbox to build the bootstrap libraries after
-the normal build and tests. Commit the workflow, this directory, and `xassets/ATS2/`
+scripts on Ubuntu 24.04. A daily check at 2:00 a.m. `America/New_York` time
+builds the latest commit on the default branch only if that commit has not
+already passed this workflow on that branch. Failed builds are retried on
+the next scheduled run. Pushes and pull requests do not trigger builds.
+The check uses read-only access to the workflow run history; an API error
+fails the check instead of silently skipping a needed build.
+
+Scheduled builds include the bootstrap libraries on alternating New York
+calendar dates (every two days, continuing across month boundaries).
+Bootstrap runs only when the normal build is needed; it does not force a
+rebuild of an unchanged commit that already passed CI. A commit built on
+a non-bootstrap day is therefore not rebuilt just for bootstrap the next
+day. To retry bootstrap independently of this schedule, use a manual run
+with the `bootstrap` checkbox selected.
+
+The schedule follows daylight saving time; when 2:00 a.m. is skipped in
+spring, GitHub advances it to the next valid time. Scheduled runs may be
+delayed by GitHub. The workflow must be committed to the default branch
+for the schedule to take effect.
+
+The build selects Node.js 24 after installing system dependencies and has
+a six-hour timeout. Manual runs through the Actions tab always build,
+even for an unchanged commit, and offer a `bootstrap` checkbox to build
+the bootstrap libraries after the normal build and tests.
+Commit the workflow, this directory, and `xassets/ATS2/`
 to enable the new setup. The workflow replaces the older Windows/macOS
 jobs; the dependency installer currently supports Ubuntu/Debian.
 

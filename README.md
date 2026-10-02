@@ -8,9 +8,14 @@ and Templates
 [![Build and Test ATS3](https://github.com/githwxi/ATS-Xanadu/actions/workflows/main.yml/badge.svg)](https://github.com/githwxi/ATS-Xanadu/actions/workflows/main.yml)
 
 GitHub Actions builds ATS3 and runs the JavaScript, Scheme, and Python
-prelude tests on Ubuntu 24.04 for pushes and pull requests, using Node.js 24
-and the bundled ATS2 release. Manual workflow runs also offer an optional
-bootstrap-library build. See the [CI scripts and local build instructions](travis-ci/README.md)
+prelude tests on Ubuntu 24.04, using Node.js 24 and the bundled ATS2 release.
+CI checks the default branch daily at 2:00 a.m. America/New_York time and
+skips the build if that commit has already passed CI. Failed builds are
+retried the next day. Pushes and pull requests do not trigger builds.
+Scheduled builds also build the bootstrap libraries on alternating calendar
+days (every two days), provided that the commit needs a build.
+Manual workflow runs always build and offer an optional bootstrap-library
+build. See the [CI scripts and local build instructions](travis-ci/README.md)
 for details.
 
 ## Project Description

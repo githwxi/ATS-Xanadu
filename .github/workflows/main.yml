@@ -1,8 +1,9 @@
 name: Build and Test ATS3
 
 on:
-  push:
-  pull_request:
+  schedule:
+    - cron: '0 2 * * *'
+      timezone: America/New_York
   workflow_dispatch:
     inputs:
       bootstrap:
@@ -18,10 +19,61 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  check-changes:
+    name: Check whether this commit needs a build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      actions: read
+    outputs:
+      build: ${{ steps.check.outputs.build }}
+      bootstrap: ${{ steps.check.outputs.bootstrap }}
+    steps:
+      - name: Check previous successful runs
+        id: check
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MANUAL_BOOTSTRAP: ${{ inputs.bootstrap == true }}
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]; then
+            echo 'build=true' >> "$GITHUB_OUTPUT"
+            echo "bootstrap=$MANUAL_BOOTSTRAP" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Alternate local calendar dates, including across month boundaries.
+          # Count dates in UTC so daylight saving changes do not affect parity.
+          local_date=$(TZ=America/New_York date +%F)
+          calendar_day=$(( $(date -u -d "$local_date" +%s) / 86400 ))
+          if (( calendar_day % 2 == 0 )); then
+            echo 'bootstrap=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'bootstrap=false' >> "$GITHUB_OUTPUT"
+          fi
+
+          # Match the exact commit, so changes are not lost after a missed run.
+          # Failed builds are retried; manual runs always bypass this check.
+          successful_runs=$(gh api --method GET \
+            "repos/$GITHUB_REPOSITORY/actions/workflows/main.yml/runs" \
+            -f branch="$GITHUB_REF_NAME" \
+            -f head_sha="$GITHUB_SHA" \
+            -f status=success \
+            -f per_page=100 \
+            --jq '[.workflow_runs[] | select(.event != "pull_request")] | length')
+          if [[ "$successful_runs" -gt 0 ]]; then
+            echo 'build=false' >> "$GITHUB_OUTPUT"
+            echo 'This commit has already passed CI; skipping the build.' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'build=true' >> "$GITHUB_OUTPUT"
+          fi
+
   build-and-test-linux:
+    needs: check-changes
+    if: needs.check-changes.outputs.build == 'true'
     name: Ubuntu build and prelude tests
     runs-on: ubuntu-24.04
-    timeout-minutes: 120
+    timeout-minutes: 360
     defaults:
       run:
         shell: bash
@@ -47,5 +99,5 @@ jobs:
         run: bash travis-ci/run.sh
 
       - name: Build bootstrap libraries
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.bootstrap }}
+        if: needs.check-changes.outputs.bootstrap == 'true'
         run: bash travis-ci/bootstrap.sh
