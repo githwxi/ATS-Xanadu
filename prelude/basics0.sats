@@ -504,17 +504,25 @@ atx2_vt_vt_vt(ta:vt,tb:vt)<=ta
 #sexpdef >> = atx2_vt_vt_vt(*0*)
 *)
 (* ****** ****** *)(* ****** ****** *)
+//
 #typedef
-void = $extype("xats_void_t")
-(* ****** ****** *)(* ****** ****** *)
-#typedef
-p0tr = $extbox("xats_p0tr_t")
+void =
+$extype("xats_void_t")
+//
 (* ****** ****** *)(* ****** ****** *)
 //
 #typedef
-p1tr_k = $extype("xats_p1tr_t")
+p0tr =
+$extbox("xats_p0tr_t")
+//
+(* ****** ****** *)(* ****** ****** *)
+//
 #typedef
-p2tr_k = $extype("xats_p2tr_t")
+p1tr_k =
+$extype("xats_p1tr_t")
+#typedef
+p2tr_k =
+$extype("xats_p2tr_t")
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -657,24 +665,34 @@ gint1 // HX: indexed int-type
 //
 (* ****** ****** *)(* ****** ****** *)
 //
-#typedef sint0 = gint0(sint_k)
-#typedef uint0 = gint0(uint_k)
+#typedef
+sint0 = gint0(sint_k)
+#typedef
+uint0 = gint0(uint_k)
 //
 #typedef
 sint1(i:i0) = gint1(sint_k, i)
 #typedef
 uint1(i:i0) = gint1(uint_k, i)
 //
-#typedef slint0 = gint0(slint_k)
-#typedef ulint0 = gint0(ulint_k)
+(* ****** ****** *)(* ****** ****** *)
+//
+#typedef
+slint0 = gint0(slint_k)
+#typedef
+ulint0 = gint0(ulint_k)
 //
 #typedef
 slint1(i:i0) = gint1(slint_k, i)
 #typedef
 ulint1(i:i0) = gint1(ulint_k, i)
 //
-#typedef ssize0 = gint0(ssize_k)
-#typedef usize0 = gint0(usize_k)
+(* ****** ****** *)(* ****** ****** *)
+//
+#typedef
+ssize0 = gint0(ssize_k)
+#typedef
+usize0 = gint0(usize_k)
 //
 #typedef
 ssize1(i:i0) = gint1(ssize_k, i)
@@ -800,12 +818,12 @@ sizebtwe
 ,n:i0) = [i:i0 | m <= i; i <= n] size(i)
 //
 (* ****** ****** *)(* ****** ****** *)
-
+//
 datatype
 unit = unit of ()
 datavwtp
 unit_vt = unit_vt of ()
-
+//
 (* ****** ****** *)(* ****** ****** *)
 //
 datatype
@@ -1071,17 +1089,16 @@ listbtwe_vt
 (* ****** ****** *)(* ****** ****** *)
 //
 #typedef
-sflt_k =
-$extype("xats_sflt_t")
+sflt_k = $extype("xats_sflt_t")
 #typedef
-dflt_k =
-$extype("xats_dflt_t")
+dflt_k = $extype("xats_dflt_t")
 #typedef
-ldflt_k =
-$extype("xats_ldflt_t")
+ldflt_k = $extype("xats_ldflt_t")
+//
+(* ****** ****** *)(* ****** ****** *)
 //
 #abstype
-gflt_type(t:t0) <= t
+gflt_type(t:t0) <= (t)
 //
 #typedef
 sflt = gflt_type(sflt_k)
@@ -1091,7 +1108,7 @@ dflt = gflt_type(dflt_k)
 ldflt = gflt_type(ldflt_k)
 //
 #typedef
-gflt(t:t0) = gflt_type(t)
+gflt(t:t0) = gflt_type( t )
 //
 #typedef
 float = sflt // single precision
@@ -1108,18 +1125,14 @@ string_i0_tx(n:i0) <= p0tr
 stropt_i0_tx(n:i0) <= p0tr
 //
 #typedef
-string0 =
-[n:i0] string_i0_tx(n)
+string0 = [n:i0] string_i0_tx(n)
 #typedef
-string1
-(n:i0) = string_i0_tx( n )
+string1(n:i0) = string_i0_tx( n )
 //
 #typedef
-stropt0 =
-[n:i0] stropt_i0_tx(n)
+stropt0 = [n:i0] stropt_i0_tx(n)
 #typedef
-stropt1
-(n:i0) = stropt_i0_tx( n )
+stropt1(n:i0) = stropt_i0_tx( n )
 //
 (* ****** ****** *)(* ****** ****** *)
 //
@@ -1146,49 +1159,53 @@ stropt_i0_vx(n:i0) <= p0tr
 strtmp_i0_vx(n:i0) <= p0tr
 //
 #vwtpdef
-string0_vt =
-[n:i0] string_i0_vx(n)
+string0_vt = [n:i0] string_i0_vx(n)
 #vwtpdef
-string1_vt
-(n:i0) = string_i0_vx( n )
+string1_vt(n:i0) = string_i0_vx( n )
 //
 #vwtpdef
-stropt0_vt =
-[n:i0] stropt_i0_vx(n)
+stropt0_vt = [n:i0] stropt_i0_vx(n)
 #vwtpdef
-stropt1_vt
-(n:i0) = stropt_i0_vx( n )
+stropt1_vt(n:i0) = stropt_i0_vx( n )
 //
 #vwtpdef
-strtmp0_vt =
-[n: i0] strtmp_i0_vx(n)
+strtmp0_vt = [n: i0] strtmp_i0_vx(n)
 #vwtpdef
-strtmp1_vt
-(n: i0) = strtmp_i0_vx( n )
+strtmp1_vt(n: i0) = strtmp_i0_vx( n )
 //
 (* ****** ****** *)(* ****** ****** *)
 //
-#sexpdef lstrn = string0_vt
-#sexpdef lstrn = string1_vt
+#sexpdef
+lstrn = string0_vt
+#sexpdef
+lstrn = string1_vt
 //
 #sexpdef strn_vt = string0_vt
 #sexpdef strn_vt = string1_vt
 //
-#vwtpdef string_vt = string0_vt
-#vwtpdef string_vt(n:i0) = string1_vt(n)
+#vwtpdef
+string_vt = string0_vt
+#vwtpdef
+string_vt(n:i0) = string1_vt(n)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
-#vwtpdef lstropt = stropt0_vt
-#vwtpdef lstropt(n:i0) = stropt1_vt(n)
+#vwtpdef
+lstropt = stropt0_vt
+#vwtpdef
+lstropt(n:i0) = stropt1_vt(n)
 //
-#vwtpdef stropt_vt = stropt0_vt
-#vwtpdef stropt_vt(n:i0) = stropt1_vt(n)
+#vwtpdef
+stropt_vt = stropt0_vt
+#vwtpdef
+stropt_vt(n:i0) = stropt1_vt(n)
 //
 (* ****** ****** *)(* ****** ****** *)
 //
-#vwtpdef strtmp_vt = strtmp0_vt
-#vwtpdef strtmp_vt(n:i0) = strtmp1_vt(n)
+#vwtpdef
+strtmp_vt = strtmp0_vt
+#vwtpdef
+strtmp_vt(n:i0) = strtmp1_vt(n)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
