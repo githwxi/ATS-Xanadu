@@ -5,7 +5,13 @@ and Templates
 
 ## Build Status
 
-![ATS3](https://github.com/githwxi/ATS-Xanadu/actions/workflows/main.yml/badge.svg)
+[![Build and Test ATS3](https://github.com/githwxi/ATS-Xanadu/actions/workflows/main.yml/badge.svg)](https://github.com/githwxi/ATS-Xanadu/actions/workflows/main.yml)
+
+GitHub Actions builds ATS3 and runs the JavaScript, Scheme, and Python
+prelude tests on Ubuntu 24.04 for pushes and pull requests, using Node.js 24
+and the bundled ATS2 release. Manual workflow runs also offer an optional
+bootstrap-library build. See the [CI scripts and local build instructions](travis-ci/README.md)
+for details.
 
 ## Project Description
 
