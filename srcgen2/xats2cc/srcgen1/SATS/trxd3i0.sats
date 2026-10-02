@@ -247,8 +247,12 @@ s2typ_fpprnt
 (* ****** ****** *)
 //
 fun
+s2exp_trxd3i0
+(sexp: s2exp, env0: !envd3i0): i0typ
+//
+fun
 s2typ_trxd3i0
-(s2t0: s2typ, env0: !envd3i0): i0typ
+(styp: s2typ, env0: !envd3i0): i0typ
 //
 (* ****** ****** *)
 //

@@ -1073,7 +1073,7 @@ I0Dinclude of
 //
 (* ****** ****** *)
 //
-|I0Dsexpdef of (s2cst, s2exp)
+|I0Dsexpdef of (s2cst, i0typ)
 |I0Dabstype of (s2cst, a2tdf)
 //
 (* ****** ****** *)

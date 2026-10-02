@@ -258,14 +258,23 @@ d2cl.node() of
 //
 |D2Csexpdef
 (scst, sexp) =>
-(
+let
+val ityp =
+s2exp_trxd3i0(sexp, env0)
+in//let
+//
 i0dcl(
-  loc0, I0Dsexpdef(scst, sexp)))
+  loc0, I0Dsexpdef(scst, ityp))
+//
+end(*let*)//end-of-[D2Csexpdef()]
+//
 |D2Cabstype
 (scst, atdf) =>
+let
 (
 i0dcl(
   loc0, I0Dabstype(scst, atdf)))
+end(*let*)//end-of-[D2Cabstype()]
 //
 (* ****** ****** *)
 //
