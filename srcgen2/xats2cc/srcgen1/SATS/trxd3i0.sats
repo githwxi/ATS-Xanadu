@@ -245,6 +245,7 @@ s2typ_fpprnt
 #symload fpprnt with s2typ_fpprnt
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 s2exp_trxd3i0

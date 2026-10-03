@@ -372,7 +372,10 @@ I0Ttop1 of (i0typ)//delineared
 (trcdknd(*knd*), sint(*npf*), l0i0tlst)
 //
 (* ****** ****** *)
-|I0Tnone0 of ((*0*)) | I0Tnone1 of (s2typ)
+//
+|I0Tnone0 of ((*0*))
+|I0Tnone1 of (s2typ) |I0Ts2exp of (s2exp)
+//
 (* ****** ****** *)
 (*
 |I0Terrck of (int(*lvl*), i0typ)//HX:tread-error
@@ -403,6 +406,8 @@ fun
 i0typ_none0((*void*)): i0typ
 fun
 i0typ_none1(t2p0: s2typ): i0typ
+fun
+i0typ_s2exp(s2e0: s2exp): i0typ
 //
 fun
 i0typ_make_node

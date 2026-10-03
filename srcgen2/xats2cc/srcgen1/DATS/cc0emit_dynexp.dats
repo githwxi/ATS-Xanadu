@@ -54,7 +54,54 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/xats2cc.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/cc0emit.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0exp_cc0emit
+(iexp, env0) =
+let
+//
+(*
+//
+val () =
+prerrsln
+("i0exp_cc0emit: iexp = ", iexp)
+//
+*)
+//
+in//let
+//
+case+
+iexp.node() of
+//
+(* ****** ****** *)
+| _
+(*otherwise*) => f0_otherwise(iexp, env0)
+(* ****** ****** *)
+//
+end where//endof(i0dcl_cc0emit(iexp,env0))
+{
+//
+fun
+f0_otherwise
+(
+iexp: i0exp,
+env0: !envxcc0): void =
+(
+i0exp_fprint(iexp, filr)) where
+{
+val filr = envxcc0_filr$get(env0)
+}(*where*)//end-of-[f0_otherwise(env0,dcl0)]
+//
+}(*where*)//end-of-[i0exp_cc0emit(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

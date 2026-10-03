@@ -163,6 +163,7 @@ prints
 ("I0Ttext(", name, ";", i0ts, ")"))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I0Tnone0() =>
 (
@@ -171,7 +172,12 @@ prints
 (   t2p1   ) =>
 (
   prints( "I0Tnone1(", t2p1, ")" ))
+|I0Ts2exp
+(   s2e1   ) =>
+(
+  prints( "I0Ts2exp(", s2e1, ")" ))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end(*let*)//end-of-[i0typ_fprint(ityp,out0)]

@@ -90,6 +90,12 @@ i0typ_none1
 i0typ_make_node
 (t2p0.sort(),I0Tnone1(t2p0))
 //
+#implfun
+i0typ_s2exp
+(  s2e0  ) =
+i0typ_make_node
+(s2e0.sort(),I0Ts2exp(s2e0))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

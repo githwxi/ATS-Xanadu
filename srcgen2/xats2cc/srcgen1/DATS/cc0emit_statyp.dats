@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 //
-Sun Aug 16 10:35:24 AM EDT 2026
+Sat Oct  3 04:28:18 PM EDT 2026
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -54,11 +54,15 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload "./../SATS/intrep0.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/cc0emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc0emit_staexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc0emit_statyp.dats] *)
 (***********************************************************************)

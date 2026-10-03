@@ -44,6 +44,7 @@ intrep0_utils0.dats \
 trxd3i0.dats \
 trxd3i0_print0.dats \
 trxd3i0_myenv0.dats \
+trxd3i0_staexp.dats \
 trxd3i0_statyp.dats \
 trxd3i0_dynexp.dats \
 trxd3i0_decl00.dats \
@@ -58,7 +59,7 @@ xats2cc_tmplib.dats \
 xats2cc_utils0.dats \
 cc0emit.dats \
 cc0emit_myenv0.dats \
-cc0emit_staexp.dats \
+cc0emit_statyp.dats \
 cc0emit_dynexp.dats \
 cc0emit_decl00.dats \
 cc1emit.dats \

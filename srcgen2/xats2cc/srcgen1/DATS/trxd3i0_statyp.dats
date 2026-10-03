@@ -129,11 +129,11 @@ end(*let*)//end-of-[T2Ptext(...)]
 _(*otherwise*) => i0typ_none1(t2p0)
 (* ****** ****** *)
 //
-end where//let//endof(s2typ_trxd3i0)
+end where//let//endof(s2typ_trxd3i0(...))
 {
 //
 //
-}(*where*)//end-of-[s2typ_trxd3i0(d3p0,env0)]
+}(*where*)//end-of-[s2typ_trxd3i0(t2p0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

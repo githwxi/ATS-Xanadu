@@ -140,12 +140,13 @@ end(*let*)//end-of-[I0Dlocal0(head,body)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-|_(*otherwise*) => f0_otherwise(dcl0, env0)
+| _
+(*otherwise*) => f0_otherwise(dcl0, env0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-end where
+end where//endof(i0dcl_cc0emit(dcl0,env0))
 {
 //
 (* ****** ****** *)
