@@ -52,6 +52,9 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 "./../../../SATS/xbasics.sats"
 //
+#staload // STM =
+"./../../../SATS/xstamp0.sats"
+//
 #staload // SYM =
 "./../../../SATS/xsymbol.sats"
 //
@@ -60,9 +63,21 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
+#staload // S2E =
+"./../../../SATS/staexp2.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
 #staload "./../SATS/xats2cc.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#symload sort with s2cst_get_sort
+#symload name with s2cst_get_name
+#symload stmp with s2cst_get_stmp
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -87,6 +102,23 @@ nindstrnfpr
 ,nind, strn) =
 (
 nindfpr(filr, nind);strnfpr(filr, strn))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2cstfpr
+(filr, scst) =
+let
+//
+val name = scst.name((*0*))
+//
+in//let
+(
+symbl_fprint
+(name, filr);strnfpr(filr, "$");
+stamp_fprint(scst.stmp((*0*)), filr))
+end(*let*)//end-of-[s2cstfpr(env0,scst)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

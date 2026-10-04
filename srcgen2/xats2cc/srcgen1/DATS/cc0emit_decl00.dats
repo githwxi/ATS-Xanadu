@@ -163,13 +163,23 @@ envxcc0_filr$get(env0)
 val nind =
 envxcc0_nind$get(env0)
 //
+val-
+I0Dsexpdef
+(scst, ityp) = dcl0.node()
+//
 in//let
 //
+(*
 nindfpr(filr, nind);
 strnfpr
 (filr, "// I0Dsexpdef\n");
 nindstrnfpr(filr, nind, "// ");
 i0dcl_fprint(dcl0, filr); fprintln(filr)
+*)
+nindfpr(filr, nind);
+strnfpr
+(filr, "#define");s2cstfpr(filr, scst);
+strnfpr(filr, " = ");i0typfpr(filr, ityp);fprintln(filr)
 //
 end(*let*)//end-of-[f0_sexpdef(env0,dcl0)]
 //

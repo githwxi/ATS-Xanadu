@@ -48,12 +48,33 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#absvwtp envxcc0_vtbx // p0tr
-#vwtpdef envxcc0 = envxcc0_vtbx
+fun
+s2cstcc0
+( filr: FILR
+, scst: s2cst): void
+fun
+s2varcc0
+( filr: FILR
+, svar: s2var): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+i0typcc0
+( filr: FILR
+, ityp: i0typ): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#absvwtp
+  envxcc0_vtbx // p0tr
+#vwtpdef
+  envxcc0 = envxcc0_vtbx
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 envxcc0_filr$get
