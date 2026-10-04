@@ -66,13 +66,18 @@ XATSOPT "./../../.."
 "./../../../SATS/lexing0.sats"
 //
 (* ****** ****** *)
+//
+#staload // S2E =
+"./../../../SATS/staexp2.sats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
-#staload "./../SATS/xats2cc.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/xats2cc.sats"
 #staload "./../SATS/cc0emit.sats"
 //
 (* ****** ****** *)
@@ -92,6 +97,42 @@ lctnfpr
 ,loc0: loc_t): void =
 (
 loctn_fprint(loc0,filr))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+tlamscc0
+(filr: FILR
+,npos: nint
+,ityp: i0typ): nint =
+(
+case+
+ityp.node() of
+|I0Tlam1
+(s2vs, i0t1) =>
+(
+tlamscc0
+(filr, npos, i0t1))
+where{
+val npos =
+sargscc0(filr, npos, s2vs) }
+//
+| _(*otherwise*) => (  npos  ))
+//
+(* ****** ****** *)
+//
+fun
+tlamsbd0
+(
+ityp: i0typ): i0typ =
+(
+case+
+ityp.node() of
+|
+I0Tlam1
+(s2vs, i0t1) =>
+tlamsbd0(i0t1) | _(*else*) => ityp)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -169,17 +210,37 @@ I0Dsexpdef
 //
 in//let
 //
-(*
 nindfpr(filr, nind);
-strnfpr
-(filr, "// I0Dsexpdef\n");
+strnfpr(filr, "// I0Dsexpdef\n");
+(*
 nindstrnfpr(filr, nind, "// ");
 i0dcl_fprint(dcl0, filr); fprintln(filr)
 *)
 nindfpr(filr, nind);
-strnfpr
-(filr, "#define");s2cstfpr(filr, scst);
-strnfpr(filr, " = ");i0typfpr(filr, ityp);fprintln(filr)
+strnfpr(
+filr, "#define ");s2cstfpr(filr, scst);
+//
+(
+case+
+ityp.node() of
+|
+I0Tlam1 _ =>
+( (*void*) ) where
+{
+val (  ) =
+strnfpr(filr, "(")
+val npos =
+(
+  tlamscc0(filr,0(*n*),ityp))
+val (  ) = strnfpr(filr, ")") }
+| _
+(*otherwise*) => (    (*void*)    ) );
+//
+let
+val ityp =
+tlamsbd0(ityp) in
+strnfpr(filr, " ");
+i0typcc0(filr, ityp);fprintln(filr) end
 //
 end(*let*)//end-of-[f0_sexpdef(env0,dcl0)]
 //

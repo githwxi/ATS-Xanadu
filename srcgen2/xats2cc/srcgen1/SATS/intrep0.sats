@@ -72,6 +72,11 @@ are addressed:
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef
+trcdknd = trcdknd(*0*)
+//
+(* ****** ****** *)
+//
 #typedef stamp = stamp(*0*)
 #typedef sym_t = sym_t(*0*)
 #typedef label = label(*0*)
@@ -112,11 +117,18 @@ are addressed:
 #staload D2E = "./\
 ../../../SATS/dynexp2.sats"
 (* ****** ****** *)
+//
 #typedef sort2 = $S2E.sort2
+//
 #typedef s2cst = $S2E.s2cst
 #typedef s2var = $S2E.s2var
+//
 #typedef s2exp = $S2E.s2exp
+#typedef l2s2e = $S2E.l2s2e
+//
 #typedef s2typ = $S2E.s2typ
+#typedef l2t2p = $S2E.l2t2p
+//
 (* ****** ****** *)
 #typedef s2vts = $T2P.s2vts
 (* ****** ****** *)
@@ -161,10 +173,16 @@ are addressed:
 #typedef timpl = $D3E.timpl
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #typedef s2cstlst = list(s2cst)
 #typedef s2varlst = list(s2var)
+//
 #typedef s2explst = list(s2exp)
+#typedef l2s2elst = list(l2s2e)
+//
 #typedef s2typlst = list(s2typ)
+#typedef l2t2plst = list(l2t2p)
+//
 (* ****** ****** *)
 #typedef d2varlst = list(d2var)
 (* ****** ****** *)

@@ -250,10 +250,16 @@ s2typ_fpprnt
 fun
 s2exp_trxd3i0
 (sexp: s2exp, env0: !envd3i0): i0typ
+fun
+l2s2e_trxd3i0
+(ls2e: l2s2e, env0: !envd3i0): l0i0t
 //
 fun
 s2typ_trxd3i0
 (styp: s2typ, env0: !envd3i0): i0typ
+fun
+l2t2p_trxd3i0
+(lt2p: l2t2p, env0: !envd3i0): l0i0t
 //
 (* ****** ****** *)
 //
@@ -339,6 +345,10 @@ d3ecl_trxd3i0
 fun
 s2typlst_trxd3i0
 (t2ps: s2typlst, env0: !envd3i0): i0typlst
+//
+fun
+l2t2plst_trxd3i0
+(ltps: l2t2plst, env0: !envd3i0): l0i0tlst
 //
 (* ****** ****** *)
 //

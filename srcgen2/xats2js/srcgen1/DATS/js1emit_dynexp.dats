@@ -938,7 +938,7 @@ _(* else *) => print("...I1DCL...")
 //
 #implfun
 fjas1js1
-(filr,fjas) =
+(filr, fjas) =
 let
 //
 #impltmp
@@ -1411,7 +1411,7 @@ js1emit_i1ins
 //
 #implfun
 js1emit_i1cmp
-( env0,icmp ) =
+(env0, icmp) =
 let
 //
 val filr = env0.filr()
@@ -1469,7 +1469,7 @@ end(*let*)//end-of-[js1emit_i1cmp(env0,icmp)]
 //
 #implfun
 js1emit_i1let
-( env0,ilet ) =
+(env0, ilet) =
 let
 //
 (* ****** ****** *)

@@ -61,9 +61,21 @@ s2varcc0
 (* ****** ****** *)
 //
 fun
-i0typcc0
+sargscc0
 ( filr: FILR
-, ityp: i0typ): void
+, npos: nint
+, s2vs: s2varlst): nint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0typcc0
+(filr: FILR, ityp: i0typ): void
+//
+fun
+l0i0tcc0
+(filr: FILR, li0t: l0i0t): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

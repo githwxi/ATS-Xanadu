@@ -69,6 +69,10 @@ fun
 s2cstfpr
 (filr: FILR, scst: s2cst): void
 //
+fun
+s2varfpr
+(filr: FILR, svar: s2var): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

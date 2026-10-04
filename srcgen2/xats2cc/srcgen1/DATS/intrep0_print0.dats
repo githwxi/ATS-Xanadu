@@ -151,7 +151,7 @@ prints
 (tknd
 ,npf1, lits) =>
 (
-prints("I0Ttcon(",
+prints("I0Ttrcd(",
   tknd, ";", npf1, ";", lits, ")"))
 //
 (* ****** ****** *)
@@ -172,6 +172,7 @@ prints
 (   t2p1   ) =>
 (
   prints( "I0Tnone1(", t2p1, ")" ))
+//
 |I0Ts2exp
 (   s2e1   ) =>
 (

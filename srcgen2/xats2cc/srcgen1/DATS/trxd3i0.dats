@@ -144,6 +144,12 @@ s2typlst_trxd3i0
 (
   list_trxd3i0_fnp(env0, t2ps, s2typ_trxd3i0))
 //
+#implfun
+l2t2plst_trxd3i0
+( env0, ltps ) =
+(
+  list_trxd3i0_fnp(env0, ltps, l2t2p_trxd3i0))
+//
 (* ****** ****** *)
 //
 #implfun

@@ -70,13 +70,17 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/xats2cc.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#symload sort with s2cst_get_sort
 #symload name with s2cst_get_name
+#symload sort with s2cst_get_sort
+#symload lctn with s2cst_get_lctn
 #symload stmp with s2cst_get_stmp
 //
 (* ****** ****** *)
@@ -111,14 +115,41 @@ s2cstfpr
 (filr, scst) =
 let
 //
-val name = scst.name((*0*))
+val
+name = scst.name((*0*))
 //
 in//let
 (
 symbl_fprint
-(name, filr);strnfpr(filr, "$");
-stamp_fprint(scst.stmp((*0*)), filr))
+(name, filr);
+strnfpr(filr, "_");
+fprint_loctn_as_stamp
+(filr, scst.lctn((*void*))))
 end(*let*)//end-of-[s2cstfpr(env0,scst)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2varfpr
+(filr, svar) =
+(
+symbl_fprint(name, filr))
+where
+{
+  val name = s2var_get_name(svar)
+}(*where*)//end-of-[s2varfpr(filr,svar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0typfpr
+(filr, ityp) =
+(
+case+ ityp.node() of
+| _
+(*otherwise*) => i0typ_fprint(ityp, filr)
+)(*case+*)//end-of-[i0typfpr( env0, ityp )]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -80,14 +80,40 @@ in//let
 //
 case+
 t2p0.node() of
+//
 (* ****** ****** *)
 //
-|T2Pcst(s2c) =>
+|T2Pcst
+(   scst   ) =>
 (
-i0typ(s2t0, I0Tcst(s2c)))
-|T2Pvar(s2v) =>
+i0typ(s2t0, I0Tcst(scst)))
+//
+|T2Pvar
+(   svar   ) =>
 (
-i0typ(s2t0, I0Tvar(s2v)))
+i0typ(s2t0, I0Tvar(svar)))
+//
+(* ****** ****** *)
+//
+|T2Ptop0
+(   t2p1   ) =>
+let
+val i0t1 =
+s2typ_trxd3i0(t2p1, env0)
+in//let
+(
+  i0typ(s2t0, I0Ttop0(i0t1)))
+end(*let*)//end-of-[T2Ptop0(...)]
+//
+|T2Ptop1
+(   t2p1   ) =>
+let
+val i0t1 =
+s2typ_trxd3i0(t2p1, env0)
+in//let
+(
+  i0typ(s2t0, I0Ttop1(i0t1)))
+end(*let*)//end-of-[T2Ptop1(...)]
 //
 (* ****** ****** *)
 //
@@ -125,6 +151,28 @@ end(*let*)//end-of-[T2Ptext(...)]
 //
 (* ****** ****** *)
 //
+|T2Ptrcd
+(tknd
+,npf1, ltps) =>
+let
+val lits =
+l2t2plst_trxd3i0(ltps, env0)
+in//let
+//
+i0typ(
+s2t0, I0Ttrcd(tknd, npf1, lits))
+//
+end(*let*)//end-of-[T2Ptrcd(...)]
+//
+(* ****** ****** *)
+//
+|T2Ps2exp
+(   s2e1   ) =>
+(
+  i0typ(s2t0, I0Ts2exp(s2e1)))
+//
+(* ****** ****** *)
+//
 |
 _(*otherwise*) => i0typ_none1(t2p0)
 (* ****** ****** *)
@@ -134,6 +182,22 @@ end where//let//endof(s2typ_trxd3i0(...))
 //
 //
 }(*where*)//end-of-[s2typ_trxd3i0(t2p0,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+l2t2p_trxd3i0
+(ltp0, env0) =
+let
+val
+S2LAB(l0, t2p0) = ltp0
+in//let
+//
+(
+  I0LAB(l0, i0t0)) where
+{
+  val i0t0 = s2typ_trxd3i0(t2p0, env0) }
+end(*let*)//end-of-[l2t2p_trxd3i0(ltp0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
