@@ -31,143 +31,95 @@
 (*
 Author: Hongwei Xi
 //
-Sun Aug 16 10:35:24 AM EDT 2026
+Sat Oct  3 04:43:50 PM EDT 2026
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
-(* ****** ****** *)
 (* ****** ****** *)
 (*
 #define
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
-//
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
 #include
 "./../../..\
 /HATS/xatsopt_dpre.hats"
-//
 (* ****** ****** *)
+#staload
+"./../../../SATS/staexp2.sats"
+#staload
+"./../../../SATS/statyp2.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
-#staload "./../SATS/cc0emit.sats"
+#staload "./../SATS/trxd3i0.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-i0parsed_cc0emit
-  (ipar, filr) = let
+s2exp_trxd3i0
+(s2e0, env0) =
+let
 //
-val stadyn =
-i0parsed_stadyn$get(ipar)
-val nerror =
-i0parsed_nerror$get(ipar)
-val source =
-i0parsed_source$get(ipar)
-val parsed =
-i0parsed_parsed$get(ipar)
+val s2t0 = s2e0.sort()
 //
-val
-env0 = envxcc0_make_out(filr)
+(*
+val (  ) =
+prerrsln("\
+s2exp_trxd3i0: s2e0 = ", s2e0)
+*)
 //
 in//let
-(
-  envxcc0_free_nil(env0)) where
-{ val () =
-  i0dclistopt_cc0emit(parsed, env0) }
-end(*let*)//end-of-[i0parsed_cc0emit(filr,ipar)]
 //
+case+
+s2e0.node() of
 (* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<x0>(*tmp*)
-list_cc0emit_fnp
-( xs, e1, fopr ) =
-(
-list_foritm$e1nv
-<  x0  ><  e1  >(xs, e1)) where
-{
-#vwtpdef e1 = envxcc0
-#impltmp
-foritm$e1nv$work
-<  x0  ><  e1  >(x0, e1) = fopr(x0, e1)
-}(*where*)//endof[list_cc0emit_fnp(e1,xs,fopr)]
-//
-(* ****** ****** *)
-//
-#impltmp
-<x0>(*tmp*)
-optn_cc0emit_fnp
-( xs, e1, fopr ) =
-(
-case+ xs of
 |
-optn_nil() =>
-(  (*0*)  ) | optn_cons(x1) => fopr(x1, e1)
-)(*case+*)//endof[optn_cc0emit_fnp(e1,xs,fopr)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-i0explst_cc0emit
-  (i0es, env0) =
+_(*otherwise*) =>
 (
-  list_cc0emit_fnp(i0es, env0, i0exp_cc0emit))
-(*where*)//end-of-[i0explst_cc0emit(env0,dcl0)]
+s2typ_trxd3i0(t2p0, env0))
+where
+{
+  val t2p0 = s2exp_stpize(s2e0) }
+(*
+|
+_(*otherwise*) => i0typ_s2exp(s2e0)
+*)
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
-#implfun
-i0dclist_cc0emit
-  (dcls, env0) =
-(
-  list_cc0emit_fnp(dcls, env0, i0dcl_cc0emit))
-(*where*)//end-of-[i0dclist_cc0emit(env0,dcl0)]
+end where//let//endof(s2exp_trxd3i0(...))
+{
 //
-(* ****** ****** *)
-(* ****** ****** *)
 //
-#implfun
-i0valdclist_cc0emit
- (i0vs, env0) =
-(
-  list_cc0emit_fnp(i0vs, env0, i0valdcl_cc0emit))
-//
-#implfun
-i0vardclist_cc0emit
- (i0vs, env0) =
-(
-  list_cc0emit_fnp(i0vs, env0, i0vardcl_cc0emit))
+}(*where*)//end-of-[s2exp_trxd3i0(s2e0,env0)]
 //
 (* ****** ****** *)
 //
 #implfun
-i0fundclist_cc0emit
- (i0fs, env0) =
-(
-  list_cc0emit_fnp(i0fs, env0, i0fundcl_cc0emit))
+l2s2e_trxd3i0
+(ls2e, env0) =
+let
+val
+S2LAB(l0, s2e0) = ls2e
+in//let
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-i0dclistopt_cc0emit
-  (dopt, env0) =
 (
-  optn_cc0emit_fnp(dopt, env0, i0dclist_cc0emit))
+  I0LAB(l0, i0t0)) where
+{
+  val i0t0 = s2exp_trxd3i0(s2e0, env0) }
+end(*let*)//end-of-[l2s2e_trxd3i0(ls2e,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc0emit.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_trxd3i0_staexp.dats] *)
 (***********************************************************************)

@@ -170,6 +170,13 @@ i0dclist_cc0emit(
 (* ****** ****** *)
 //
 fun
+teqi0exp_cc0emit(
+  tdxp: teqi0exp, env0: !envxcc0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i0valdcl_cc0emit(
   ival: i0valdcl, env0: !envxcc0): void
 fun
@@ -180,7 +187,7 @@ i0vardcl_cc0emit(
 //
 fun
 i0fundcl_cc0emit(
-  ifun: i0valdcl, env0: !envxcc0): void
+  ifun: i0fundcl, env0: !envxcc0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

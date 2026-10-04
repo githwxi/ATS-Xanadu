@@ -179,6 +179,13 @@ end(*let*)//end-of-[I0Dlocal0(head,body)]
 |I0Dabstype _ => f0_abstype(dcl0, env0)
 //
 (* ****** ****** *)
+//
+|
+I0Dvaldclst _ => f0_valdclst(dcl0, env0)
+|
+I0Dvardclst _ => f0_vardclst(dcl0, env0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 | _
@@ -269,6 +276,64 @@ i0dcl_fprint(dcl0, filr); fprintln(filr)
 end(*let*)//end-of-[f0_abstype(env0,dcl0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( 
+dcl0: i0dcl,
+env0: !envxcc0): void =
+let
+//
+val loc0 = dcl0.lctn()
+val-
+I0Dvaldclst
+(tknd, i0vs) = dcl0.node()
+//
+in//let
+i0valdclist_cc0emit(i0vs, env0)
+end where
+{
+//
+(*
+val loc0 = dcl0.lctn()
+val (  ) =
+prerrsln
+("f0_valdclst(xcc0): dcl0 = ", dcl0)
+*)
+//
+}(*where*)//end-of-[f0_valdclst(dcl0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( 
+dcl0: i0dcl,
+env0: !envxcc0): void =
+let
+//
+val loc0 = dcl0.lctn()
+val-
+I0Dvardclst
+(tknd, i0vs) = dcl0.node()
+//
+in//let
+i0vardclist_cc0emit(i0vs, env0)
+end where
+{
+//
+(*
+val loc0 = dcl0.lctn()
+val (  ) =
+prerrsln
+("f0_vardclst(xcc0): dcl0 = ", dcl0)
+*)
+//
+}(*where*)//end-of-[f0_vardclst(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_otherwise
@@ -298,8 +363,51 @@ i0dcl_fprint(dcl0, filr); fprintln(filr)
 end(*let*)//end-of-[f0_otherwise(env0,dcl0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 }(*where*)//end-of-[i0dcl_cc0emit(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0valdcl_cc0emit
+  (ival, env0) = let
+//
+(*
+val loc0 =
+i0valdcl_lctn$get(ival)
+val ipat =
+i0valdcl_ipat$get(ival)
+*)
+val tdxp =
+i0valdcl_tdxp$get(ival)
+//
+val (  ) =
+(
+  teqi0exp_cc0emit(tdxp, env0))
+end(*let*)//end(i0valdcl_cc0emit(ival,env0))
+//
+(* ****** ****** *)
+//
+#implfun
+i0vardcl_cc0emit
+  (ivar, env0) = let
+//
+(*
+val loc0 =
+i0vardcl_lctn$get(ivar)
+val dpid =
+i0vardcl_dpid$get(ivar)
+*)
+val dini =
+i0vardcl_dini$get(ivar)
+//
+val (  ) =
+(
+  teqi0exp_cc0emit(dini, env0))
+//
+end(*let*)//end(i0vardcl_cc0emit(ivar,env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
