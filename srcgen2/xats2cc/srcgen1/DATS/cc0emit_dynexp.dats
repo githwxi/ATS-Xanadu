@@ -43,14 +43,16 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
-//
+(* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
 #include
 "./../../..\
 /HATS/xatsopt_dpre.hats"
-//
+(* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -121,13 +123,13 @@ i0exp_cc0emit
 (iexp, env0) =
 let
 //
-(*
+// (*
 //
 val () =
-prerrsln
-("i0exp_cc0emit: iexp = ", iexp)
+prerrsln("\
+i0exp_cc0emit: iexp = ", iexp)
 //
-*)
+// *)
 //
 in//let
 //
@@ -138,32 +140,29 @@ iexp.node() of
 //
 |I0Eint _ =>
 (
-  i0exp$typcc0(filr, iexp))
+i0exp$typcc0(filr, iexp))
 |I0Ebtf _ =>
 (
-  i0exp$typcc0(filr, iexp))
+i0exp$typcc0(filr, iexp))
 |I0Echr _ =>
 (
-  i0exp$typcc0(filr, iexp))
+i0exp$typcc0(filr, iexp))
 |I0Eflt _ =>
 (
-  i0exp$typcc0(filr, iexp))
+i0exp$typcc0(filr, iexp))
 |I0Estr _ =>
 (
-  i0exp$typcc0(filr, iexp))
+i0exp$typcc0(filr, iexp))
 //
 (* ****** ****** *)
 //
 |I0Evar _ =>
 (
-  i0exp$typcc0(filr, iexp))
+i0exp$typcc0(filr, iexp))
 //
 (* ****** ****** *)
 //
-|I0Etimp
-(tapp, timp) =>
-(
-  i0exp$typcc0(filr, iexp))
+|I0Etimp _ => f0_timp(iexp, env0)
 //
 (* ****** ****** *)
 //
@@ -174,20 +173,45 @@ iexp.node() of
 |I0Eift0 _ => f0_ift0(iexp, env0)
 //
 (* ****** ****** *)
+//
+|I0Elabck _ => f0_labck(iexp, env0)
+//
+|I0Et2pck _ => f0_t2pck(iexp, env0)
+|I0Et2ped _ => f0_t2ped(iexp, env0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 | _
 (*otherwise*) => f0_otherwise(iexp, env0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-end where//endof(i0dcl_cc0emit(iexp,env0))
+end where//endof(i0exp_cc0emit(iexp,env0))
 {
 //
 (* ****** ****** *)
 //
-val
-filr =
+val filr =
 envxcc0_filr$get(env0)
+//
+(* ****** ****** *)
+//
+fun
+f0_timp
+(
+iexp: i0exp,
+env0: !envxcc0): void =
+let
+//
+val-
+I0Etimp
+(i0f0, timp) = iexp.node()
+//
+val () =
+(
+  i0exp_cc0emit(i0f0, env0))
+//
+end(*ent*)//end-of-[f0_timp(iexp,env0)]
 //
 (* ****** ****** *)
 //
@@ -197,15 +221,21 @@ f0_dapp
 iexp: i0exp,
 env0: !envxcc0): void =
 let
+//
+val () =
+i0exp$typcc0(filr, iexp)
+//
 val-
 I0Edapp
 (i0f0
 ,npf1, i0es) = iexp.node()
+//
 val () =
 (
   i0exp_cc0emit(i0f0, env0))
 val () =
 f1_npf1_i0es(npf1, i0es, env0)
+//
 end where
 {
 //
@@ -253,6 +283,9 @@ iexp: i0exp,
 env0: !envxcc0): void =
 let
 //
+val () =
+i0exp$typcc0(filr, iexp)
+//
 val-
 I0Eift0
 (i0e1
@@ -270,6 +303,70 @@ val () =
   i0expopt_cc0emit(iels, env0))
 //
 end(*let*)//end-pf-[f0_ift0(iexp,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_labck
+(
+iexp: i0exp,
+env0: !envxcc0): void =
+let
+//
+(*
+val () =
+i0exp$typcc0(filr, iexp)
+*)
+//
+val-
+I0Elabck
+(i0e1, lab2) = iexp.node()
+//
+val () = i0exp_cc0emit(i0e1, env0)
+//
+end(*let*)//end-pf-[f0_labck(iexp,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2pck
+(
+iexp: i0exp,
+env0: !envxcc0): void =
+let
+//
+(*
+val () =
+i0exp$typcc0(filr, iexp)
+*)
+//
+val-
+I0Et2pck
+(i0e1, t2p2) = iexp.node()
+//
+val () = i0exp_cc0emit(i0e1, env0)
+//
+end(*let*)//end-pf-[f0_t2pck(iexp,env0)]
+//
+fun
+f0_t2ped
+(
+iexp: i0exp,
+env0: !envxcc0): void =
+let
+//
+(*
+val () =
+i0exp$typcc0(filr, iexp)
+*)
+//
+val-
+I0Et2ped
+(i0e1, t2p2) = iexp.node()
+//
+val () = i0exp_cc0emit(i0e1, env0)
+//
+end(*let*)//end-pf-[f0_t2ped(iexp,env0)]
 //
 (* ****** ****** *)
 //

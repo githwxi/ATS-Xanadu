@@ -43,14 +43,16 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
-//
+(* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
 #include
 "./../../..\
 /HATS/xatsopt_dpre.hats"
-//
+(* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
