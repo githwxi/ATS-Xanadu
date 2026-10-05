@@ -54,12 +54,64 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload // BAS =
+"./../../../SATS/xbasics.sats"
+//
+#staload // SYM =
+"./../../../SATS/xsymbol.sats"
+#staload // LOC =
+"./../../../SATS/locinfo.sats"
+#staload // LEX =
+"./../../../SATS/lexing0.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload "./../SATS/intrep0.sats"
 //
 (* ****** ****** *)
 //
 #staload "./../SATS/xats2cc.sats"
 #staload "./../SATS/cc0emit.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fprintln
+(filr: FILR): void =
+(
+strn_fprint("\n", filr))//endfun
+//
+(* ****** ****** *)
+//
+fun
+lctnfpr
+(filr: FILR
+,loc0: loc_t): void =
+(
+loctn_fprint(loc0,filr))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0exp$typcc0
+( filr: FILR
+, iexp: i0exp): void =
+let
+//
+val lctn = iexp.lctn()
+val ityp = iexp.ityp()
+//
+in//let
+(
+strnfpr(filr, "#define ");
+strnfpr(filr, "_i0exp$typ_");
+fprint_loctn_as_stamp(filr, lctn);
+strnfpr(filr, " ");
+i0typcc0(filr, ityp);fprintln(filr))
+end(*let*)//end-of-[i0exp$typcc0(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -83,12 +135,105 @@ case+
 iexp.node() of
 //
 (* ****** ****** *)
+//
+|I0Eint _ =>
+(
+  i0exp$typcc0(filr, iexp))
+|I0Ebtf _ =>
+(
+  i0exp$typcc0(filr, iexp))
+|I0Echr _ =>
+(
+  i0exp$typcc0(filr, iexp))
+|I0Eflt _ =>
+(
+  i0exp$typcc0(filr, iexp))
+|I0Estr _ =>
+(
+  i0exp$typcc0(filr, iexp))
+//
+(* ****** ****** *)
+//
+|I0Evar _ =>
+(
+  i0exp$typcc0(filr, iexp))
+//
+(* ****** ****** *)
+//
+|I0Edapp _ => f0_dapp(iexp, env0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 | _
 (*otherwise*) => f0_otherwise(iexp, env0)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end where//endof(i0dcl_cc0emit(iexp,env0))
 {
+//
+(* ****** ****** *)
+//
+val
+filr =
+envxcc0_filr$get(env0)
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+(
+iexp: i0exp,
+env0: !envxcc0): void =
+let
+val-
+I0Edapp
+(i0f0
+,npf1, i0es) = iexp.node()
+val () =
+(
+  i0exp_cc0emit(i0f0, env0))
+val () =
+f1_npf1_i0es(npf1, i0es, env0)
+end where
+{
+//
+fun
+f1_npf1_i0es
+( npf1: sint
+, i0es: i0explst
+, env0: !envxcc0): void =
+(
+case+ i0es of
+|
+list_nil() => ()
+|
+list_cons(i0e1, i0es) =>
+if // if
+(npf1 >= 1)
+then
+(
+let
+val npf1 = npf1-1
+in//let
+f1_npf1_i0es(npf1, i0es, env0)
+end//let//then
+)
+else
+(
+let
+val (  ) =
+(
+  i0exp_cc0emit(i0e1, env0))
+in//let
+f1_npf1_i0es(npf1, i0es, env0)
+end//let//else
+)
+)(*case+*)//end-of-[f1_npf1_i0es(...)]
+//
+}(*where*)//end-of-[f0_dapp(iexp,env0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_otherwise
@@ -96,10 +241,21 @@ f0_otherwise
 iexp: i0exp,
 env0: !envxcc0): void =
 (
-i0exp_fprint(iexp, filr)) where
+strnfpr(
+filr, "// I0EXP(");
+lctnfpr(filr, lctn);
+strnfpr(filr, "): ");
+i0typcc0
+(filr, ityp); fprintln(filr)
+) where
 {
-val filr = envxcc0_filr$get(env0)
-}(*where*)//end-of-[f0_otherwise(env0,dcl0)]
+//
+val lctn = i0exp_lctn$get(iexp)
+val ityp = i0exp_ityp$get(iexp)
+//
+}(*where*)//end-of-[f0_otherwise(iexp,env0)]
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[i0exp_cc0emit(iexp,env0)]
 //

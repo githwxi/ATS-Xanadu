@@ -371,6 +371,22 @@ end(*let*)//end-of-[f0_otherwise(env0,dcl0)]
 (* ****** ****** *)
 //
 #implfun
+teqi0exp_cc0emit
+  (tdxp, env0) =
+(
+case+ tdxp of
+|TEQI0EXPnone
+( (*void*) ) => ()
+|TEQI0EXPsome
+(teq1, i0e2) => () where
+{ val
+  i0e2 = i0exp_cc0emit(i0e2, env0) }
+)(*case+*)//end-of-(teqi0exp_cc0emit(tdxp...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i0valdcl_cc0emit
   (ival, env0) = let
 //
