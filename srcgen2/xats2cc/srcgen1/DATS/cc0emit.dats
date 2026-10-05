@@ -121,7 +121,24 @@ i0explst_cc0emit
   (i0es, env0) =
 (
   list_cc0emit_fnp(i0es, env0, i0exp_cc0emit))
-(*where*)//end-of-[i0explst_cc0emit(env0,dcl0)]
+(*where*)//end-of-[i0explst_cc0emit(i0es,env0)]
+//
+#implfun
+i0expopt_cc0emit
+  (iopt, env0) =
+(
+  optn_cc0emit_fnp(iopt, env0, i0exp_cc0emit))
+(*where*)//end-of-[i0expopt_cc0emit(i0es,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fiarglst_cc0emit
+  (fias, env0) =
+(
+  list_cc0emit_fnp(fias, env0, fiarg_cc0emit))
+(*where*)//end-of-[fiarglst_cc0emit(fias,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -131,7 +148,7 @@ i0dclist_cc0emit
   (dcls, env0) =
 (
   list_cc0emit_fnp(dcls, env0, i0dcl_cc0emit))
-(*where*)//end-of-[i0dclist_cc0emit(env0,dcl0)]
+(*where*)//end-of-[i0dclist_cc0emit(dcls,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

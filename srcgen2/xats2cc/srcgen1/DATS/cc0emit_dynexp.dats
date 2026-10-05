@@ -160,7 +160,18 @@ iexp.node() of
 //
 (* ****** ****** *)
 //
+|I0Etimp
+(tapp, timp) =>
+(
+  i0exp$typcc0(filr, iexp))
+//
+(* ****** ****** *)
+//
 |I0Edapp _ => f0_dapp(iexp, env0)
+//
+(* ****** ****** *)
+//
+|I0Eift0 _ => f0_ift0(iexp, env0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -236,6 +247,33 @@ end//let//else
 (* ****** ****** *)
 //
 fun
+f0_ift0
+(
+iexp: i0exp,
+env0: !envxcc0): void =
+let
+//
+val-
+I0Eift0
+(i0e1
+,ithn, iels) = iexp.node()
+//
+val () =
+(
+  i0exp_cc0emit(i0e1, env0))
+//
+val () =
+(
+  i0expopt_cc0emit(ithn, env0))
+val () =
+(
+  i0expopt_cc0emit(iels, env0))
+//
+end(*let*)//end-pf-[f0_ift0(iexp,env0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_otherwise
 (
 iexp: i0exp,
@@ -258,6 +296,56 @@ val ityp = i0exp_ityp$get(iexp)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[i0exp_cc0emit(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fiarg_cc0emit
+(farg, env0) =
+(
+case+
+farg.node() of
+|FIARGsapp _ => ()
+|FIARGmets _ => ()
+|FIARGdapp
+(npf1, i0ps) =>
+let
+val () = f0_npf1_i0ps(npf1, i0ps)
+end
+) where
+{
+//
+val filr =
+envxcc0_filr$get(env0)
+//
+fun
+f0_npf1_i0ps
+(npf1: sint
+,i0ps: i0patlst): void =
+(
+case+ i0ps of
+|list_nil() => ()
+|list_cons(i0p1, i0ps) =>
+if
+(npf1 >= 1)
+then
+let
+val npf1 = npf1 - 1
+in//let
+f0_npf1_i0ps(npf1, i0ps)
+end//let//then
+else
+(
+f0_npf1_i0ps(npf1, i0ps)
+) where
+{
+(*
+val () = i0pat_cc0emit(i0p1, env0)
+*)
+}(*where*)
+)(*case+*)//end-of-[f0_npf1_i0ps(...)]
+}(*where*)//end-of-[fiarg_cc0emit(farg,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

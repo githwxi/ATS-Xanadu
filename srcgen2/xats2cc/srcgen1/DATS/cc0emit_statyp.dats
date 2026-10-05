@@ -87,6 +87,12 @@ s2var_imprq
 (
   sort2_imprq(svar.sort()))
 //
+fun
+i0typ_imprq
+(ityp: i0typ): bool =
+(
+  sort2_imprq(ityp.sort()))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -221,6 +227,113 @@ i0typcc0
 //
 (* ****** ****** *)
 //
+|I0Tapps
+(i0f0, i0ts) =>
+(
+f1_i0f0(i0f0);
+strnfpr(filr, "(");
+f1_ityp(ityp);strnfpr(filr, ")")
+) where
+{
+//
+fun
+f1_i0f0
+(i0f0: i0typ): void =
+(
+case+
+i0f0.node() of
+|
+I0Tapps
+(i0f0, i0ts) => f1_i0f0(i0f0)
+|
+_(*non-apps*) => i0typcc0(filr, i0f0)
+)
+//
+fun
+f1_ityp
+(ityp: i0typ): void =
+let
+val
+npos = g1_ityp(0, ityp)
+end//let//end(f1_ityp(...))
+//
+and
+g1_ityp
+(npos: nint
+,ityp: i0typ): nint =
+(
+case+
+ityp.node() of
+|
+I0Tapps
+(i0f0, i0ts) =>
+(
+f0_i0ts(npos, i0ts))
+where{
+val npos =
+(
+  g1_ityp(npos, i0f0)) }
+|
+_(*non-apps*) => (  npos  ))//g1_ityp
+//
+}(*where*)//end-of-[I0Tapps(i0f0,i0ts)]
+//
+(* ****** ****** *)
+//
+|I0Tf2cl
+(   f2cl   ) =>
+f2clknd_fprint(f2cl, filr)
+//
+|I0Tfun1
+(f2cl, npf1
+,i0ts, tres) =>
+(
+strnfpr
+(filr, "XI0Tfun1(");
+i0typcc0(filr, f2cl);
+strnfpr(filr, ", (");
+f0_npf1_i0ts(0(*npos*), npf1, i0ts);
+strnfpr(filr, "), ");
+i0typcc0(filr, tres);strnfpr(filr, ")")
+)
+//
+(* ****** ****** *)
+//
+|I0Ttext
+(name, i0ts) =>
+(
+case+
+i0ts of
+|
+list_nil() =>
+(
+strnfpr(filr, name))
+|
+list_cons _ =>
+let
+//
+fun
+f1_i0ts
+(
+npos: nint,
+i0ts: i0typlst): void =
+let
+val npos =
+  f0_i0ts(npos, i0ts) end
+//
+in//let
+//
+strnfpr
+(filr, name);strnfpr(filr, "(");
+f1_i0ts
+(0(*npos*), i0ts);strnfpr(filr, ")")
+//
+end(*let*)
+//
+)(*case+*)//endof[I0Ttext(name,i0ts)]
+//
+(* ****** ****** *)
+//
 |
 I0Ttrcd
 (tknd
@@ -232,7 +345,7 @@ strnfpr
 (filr, "(");
 strnfpr
 (filr, "struct{");
-f0_lits(0(*npos*), npf1, lits);
+f0_npf1_lits(0(*npos*), npf1, lits);
 strnfpr(filr, "}");strnfpr(filr, ")"))
 //
 (* ****** ****** *)
@@ -242,11 +355,87 @@ _(*otherwise*) => i0typfpr(filr, ityp)
 //
 (* ****** ****** *)
 //
-) where//end-of-[i0typcc0(filr, ityp)]
+) where // endof-[i0typcc0(filr, ityp)]
 {
 //
+(* ****** ****** *)
+//
 fun
-f0_lits
+f0_i0ts
+(
+npos: nint,
+i0ts: i0typlst): nint =
+(
+case+ i0ts of
+|
+list_nil
+( (*void*) ) => npos
+|
+list_cons
+(i0t1, i0ts) =>
+(
+if // if
+i0typ_imprq(i0t1)
+then
+(
+f0_i0ts(npos+1, i0ts))
+where
+{
+//
+val (  ) =
+(
+if // if
+(npos >= 1)
+then // then
+strnfpr(filr, ", "))
+val (  ) =
+(
+  i0typcc0(filr, i0t1))
+}
+else f0_i0ts(npos, i0ts)//else
+)//end-of-[list_cons(i0t1,i0ts)]
+)(*case+*)//end-of-[f0_i0ts(...,i0ts)]
+//
+(* ****** ****** *)
+//
+fun
+f0_npf1_i0ts
+( npos: nint
+, npf1: sint
+, i0ts: i0typlst): void =
+(
+case+ i0ts of
+|
+list_nil() => ()
+|
+list_cons(i0t1, i0ts) =>
+(
+if // if
+(npf1 >= 1)
+then
+(
+f0_npf1_i0ts
+(npos, npf1-1, i0ts))
+else
+(
+f0_npf1_i0ts
+(npos+1, npf1, i0ts))
+where
+{
+//
+val (  ) =
+if (npos >= 1)
+then strnfpr(filr, ", ")
+//
+val (  ) = i0typcc0(filr, i0t1)
+}(*where*)
+)//end-of-[list_cons(i0t1,i0ts)]
+)(*case+*)//end-of-[f0_npf1_i0ts(...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_npf1_lits
 ( npos: nint
 , npf1: sint
 , lits: l0i0tlst): void =
@@ -255,28 +444,31 @@ case+ lits of
 |
 list_nil() => ()
 |
-list_cons(li0t, lits) =>
+list_cons(lit1, lits) =>
 (
 if // if
 (npf1 >= 1)
 then
 (
-f0_lits
+f0_npf1_lits
 (npos, npf1-1, lits))
 else
 (
-f0_lits
+f0_npf1_lits
 (npos+1, npf1, lits))
 where
 {
 //
-val () =
+val (  ) =
 if (npos >= 1)
 then strnfpr(filr, ", ")
 //
-val () =  l0i0tcc0(filr, li0t) }
-)//end-of-[list_cons(li0t,lits)]
-)(*case+*)//end-of-[f0_i1ts(...,lits)]
+val (  ) = l0i0tcc0(filr, lit1)
+}(*where*)
+)//end-of-[list_cons(lit1,lits)]
+)(*case+*)//end-of-[f0_npf1_lits(...)]
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[i0typcc0( filr, ityp )] 
 //
@@ -298,5 +490,7 @@ strnfpr(filr, " "); labelcc0(filr, l0) end
 (* ****** ****** *)
 //
 (***********************************************************************)
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc0emit_statyp.dats] *)
+(***********************************************************************)
 (***********************************************************************)

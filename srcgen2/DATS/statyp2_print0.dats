@@ -177,7 +177,7 @@ prints
 prints(
 "T2Pfun1(", s2t0, ";", f2cl, ";");
 prints(npf1, ";", t2ps, ";", tres, ")")
-end//let//endof[T1Pfun1(f2cl,npf1,...)]
+end//let//endof[T2Pfun1(f2cl,npf1,...)]
 //
 |
 T2Ptext(name, t2ps) =>

@@ -150,6 +150,14 @@ i0exp_cc0emit(
   iexp: i0exp, env0: !envxcc0): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fiarg_cc0emit(
+  farg: fiarg, env0: !envxcc0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 i0dcl_cc0emit(
@@ -161,6 +169,19 @@ i0dcl_cc0emit(
 fun
 i0explst_cc0emit(
   i0es: i0explst, env0: !envxcc0): void
+fun
+i0expopt_cc0emit(
+  iopt: i0expopt, env0: !envxcc0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fiarglst_cc0emit(
+  fias: fiarglst, env0: !envxcc0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 i0dclist_cc0emit(

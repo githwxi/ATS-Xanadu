@@ -132,6 +132,30 @@ prints
 //
 (* ****** ****** *)
 //
+|I0Tf2cl
+(   f2cl   ) =>
+(
+prints
+("I0Tf2cl(", f2cl, ")"))
+//
+|I0Tfun1
+(f2cl, npf1
+,i0ts, tres) =>
+let
+(*
+val s2t0 = i0t0.sort()
+*)
+in//let
+//
+prints
+("I0Tfun1(", f2cl, ";");
+prints(
+  npf1, ";", i0ts, ";", tres, ")")
+//
+end//let//endof[I0Pfun1(f2cl,npf1,...)]
+//
+(* ****** ****** *)
+//
 |I0Texi0
 (s2vs, i0t1) =>
 prints

@@ -162,7 +162,7 @@ dcl0.node() of
 let
 val () =
   i0dclist_cc0emit(dcls, env0)
-end(*let*)//end-of-[I0Ddclst0(dcls)]
+end(*let*)//end-of-[I0Ddclst0(...)]
 //
 |I0Dlocal0
 (head, body) =>
@@ -171,7 +171,15 @@ val () =
   i0dclist_cc0emit(head, env0)
 val () =
   i0dclist_cc0emit(body, env0)
-end(*let*)//end-of-[I0Dlocal0(head,body)]
+end(*let*)//end-of-[I0Dlocal0(...)]
+//
+(* ****** ****** *)
+//
+|I0Ddclenv
+(dcl1, i0vs) =>
+let
+val () = i0dcl_cc0emit(dcl1, env0)
+end//let//end-of-[I0Ddclenv(dcl1,i0vs)]
 //
 (* ****** ****** *)
 //
@@ -184,6 +192,9 @@ end(*let*)//end-of-[I0Dlocal0(head,body)]
 I0Dvaldclst _ => f0_valdclst(dcl0, env0)
 |
 I0Dvardclst _ => f0_vardclst(dcl0, env0)
+//
+|
+I0Dfundclst _ => f0_fundclst(dcl0, env0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -333,6 +344,36 @@ prerrsln
 }(*where*)//end-of-[f0_vardclst(dcl0,env0)]
 //
 (* ****** ****** *)
+//
+fun
+f0_fundclst
+( 
+dcl0: i0dcl,
+env0: !envxcc0): void =
+let
+//
+val loc0 = dcl0.lctn()
+val-
+I0Dfundclst
+(tknd
+,lvl0, tqas
+,d2cs, i0fs) = dcl0.node()
+//
+in//let
+i0fundclist_cc0emit(i0fs, env0)
+end where
+{
+//
+(*
+val loc0 = dcl0.lctn()
+val (  ) =
+prerrsln
+("f0_fundclst(xcc0): dcl0 = ", dcl0)
+*)
+//
+}(*where*)//end-of-[f0_fundclst(dcl0,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -424,6 +465,30 @@ val (  ) =
   teqi0exp_cc0emit(dini, env0))
 //
 end(*let*)//end(i0vardcl_cc0emit(ivar,env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0fundcl_cc0emit
+  (ifun, env0) = let
+//
+val (  ) =
+(
+  fiarglst_cc0emit(fias, env0))
+//
+val (  ) =
+(
+  teqi0exp_cc0emit(tdxp, env0))
+//
+end where
+{
+//
+val loc0 = i0fundcl_lctn$get(ifun)
+val fias = i0fundcl_farg$get(ifun)
+val tdxp = i0fundcl_tdxp$get(ifun)
+//
+}(*where*)//end(i0fundcl_cc0emit(ivar,env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

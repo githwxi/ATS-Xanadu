@@ -373,6 +373,16 @@ I0Ttop1 of (i0typ)//delineared
 //
 (* ****** ****** *)
 //
+|I0Tf2cl of f2clknd
+//
+|I0Tfun1 of
+( i0typ // f2clknd
+, sint(*npf*)
+, i0typlst(*arg*), i0typ(*res*))
+// (* end of I0Tfun1 *)
+//
+(* ****** ****** *)
+//
 |I0Ttext of // external
 (string(*name*), i0typlst(*arg*))
 //

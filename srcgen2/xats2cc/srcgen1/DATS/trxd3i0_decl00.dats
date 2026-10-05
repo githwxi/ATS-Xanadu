@@ -565,7 +565,8 @@ D3Cfundclst
 , d2cs, d3fs) = d3cl.node()
 //
 val (  ) =
-f0_d3fs$insert(env0, d3fs)
+(
+ f0_d3fs$insert(env0, d3fs))
 //
 val lvl0 =
 (

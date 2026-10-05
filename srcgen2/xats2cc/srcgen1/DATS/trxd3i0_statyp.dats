@@ -140,6 +140,35 @@ end(*let*)//end-of-[T2Plam1(...)]
 //
 (* ****** ****** *)
 //
+|T2Pf2cl
+(   f2cl   ) =>
+i0typ(s2t0, I0Tf2cl(f2cl))
+//
+|T2Pfun1
+(f2cl
+,npf1
+,t2ps, tres) =>
+let
+//
+val f2cl =
+s2typ_trxd3i0(f2cl, env0)
+val i0ts =
+s2typlst_trxd3i0(t2ps, env0)
+//
+in//let
+//
+let
+val tres =
+s2typ_trxd3i0(tres, env0)
+in//let
+i0typ(s2t0,
+I0Tfun1(f2cl, npf1, i0ts, tres))
+end//let
+//
+end(*let*)//end-of-[T2Pfun1(...)]
+//
+(* ****** ****** *)
+//
 |T2Ptext
 (name, t2ps) =>
 let
