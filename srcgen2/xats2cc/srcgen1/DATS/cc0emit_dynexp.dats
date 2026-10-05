@@ -187,9 +187,15 @@ i0exp$typcc0(filr, iexp))
 |I0Et2ped _ => f0_t2ped(iexp, env0)
 //
 (* ****** ****** *)
+//
+|I0Erturn _ => f0_rturn(iexp, env0)
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
 | _
 (*otherwise*) => f0_otherwise(iexp, env0)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -405,6 +411,29 @@ end(*let*)//end-pf-[f0_t2ped(iexp,env0)]
 (* ****** ****** *)
 //
 fun
+f0_rturn
+(
+iexp: i0exp,
+env0: !envxcc0): void =
+let
+//
+(*
+val () =
+i0exp$typcc0(filr, iexp)
+*)
+//
+val-
+I0Erturn
+(ical, i0e1) = iexp.node()
+//
+val () = i0exp_cc0emit(i0e1, env0)
+//
+end(*let*)//end-pf-[f0_rturn(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_otherwise
 (
 iexp: i0exp,
@@ -424,6 +453,7 @@ val ityp = i0exp_ityp$get(iexp)
 //
 }(*where*)//end-of-[f0_otherwise(iexp,env0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[i0exp_cc0emit(iexp,env0)]
