@@ -127,6 +127,9 @@ let
 //
 val () =
 prerrsln("\
+i0exp_cc0emit: lctn = ", lctn)
+val () =
+prerrsln("\
 i0exp_cc0emit: iexp = ", iexp)
 //
 // *)
@@ -166,6 +169,10 @@ i0exp$typcc0(filr, iexp))
 //
 (* ****** ****** *)
 //
+|I0Etapq _ => f0_tapq(iexp, env0)
+//
+(* ****** ****** *)
+//
 |I0Edapp _ => f0_dapp(iexp, env0)
 //
 (* ****** ****** *)
@@ -191,6 +198,9 @@ end where//endof(i0exp_cc0emit(iexp,env0))
 //
 (* ****** ****** *)
 //
+val lctn =
+i0exp_lctn$get(iexp)
+//
 val filr =
 envxcc0_filr$get(env0)
 //
@@ -212,6 +222,30 @@ val () =
   i0exp_cc0emit(i0f0, env0))
 //
 end(*ent*)//end-of-[f0_timp(iexp,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tapq
+(
+iexp: i0exp,
+env0: !envxcc0): void =
+let
+//
+val () =
+i0exp$typcc0(filr, iexp)
+//
+val-
+I0Etapq
+(i0f0, ijas) = iexp.node()
+//
+(*
+val () =
+(
+  i0exp_cc0emit(i0f0, env0))
+*)
+//
+end(*ent*)//end-of-[f0_tapq(iexp,env0)]
 //
 (* ****** ****** *)
 //
