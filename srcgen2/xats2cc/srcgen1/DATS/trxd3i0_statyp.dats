@@ -166,6 +166,16 @@ end(*let*)//end-of-[T2Ptrcd(...)]
 //
 (* ****** ****** *)
 //
+|T2Pnone0
+( (*void*) ) => 
+(
+  i0typ(s2t0, I0Tnone0()))
+//
+|T2Pnone1
+(   t2p1   ) => 
+(
+  i0typ(s2t0, I0Tnone1(t2p1)))
+//
 |T2Ps2exp
 (   s2e1   ) =>
 (
