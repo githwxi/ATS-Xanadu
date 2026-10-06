@@ -105,7 +105,7 @@ test02:: ; \
 $(CAT) $(XSHARED_RUNTIME)/srcgen2_xatslib.js >> OUTS/$@_out.js
 ############
 test02:: \
-test02_qlist00.dats; \
+test02_q2lst00.dats; \
 $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ############
 test02:: ; \

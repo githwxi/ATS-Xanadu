@@ -36,8 +36,8 @@ Thu 05 Sep 2024 05:36:54 PM EDT
 //
 val xs = 
 GSEQ(list@(1,2,3,4,5)).folditm
-( qlist_nil()
-, lam(r0, x0) => qlist_snoc(r0, x0))
+( q2lst_nil()
+, lam(r0, x0) => q2lst_snoc(r0, x0))
 //
 val () =
 prints("xs(type) = ", type(xs), "\n")
@@ -58,5 +58,5 @@ val () = console_log(the_print_store_flush())
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_xatslib_JS_githwxi_TEST_test02_qlist00.dats] *)
+(* end of [ATS3/XANADU_xatslib_JS_githwxi_TEST_test02_q2lst00.dats] *)
 (***********************************************************************)

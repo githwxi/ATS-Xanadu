@@ -11,7 +11,7 @@ ATS3_XANADU/xatslib/githwxi/DATS
 #staload "./../DATS/strn000.dats"
 #staload "./../DATS/list000.dats"
 (* ****** ****** *)
-#staload "./../DATS/qlist00.dats"
+#staload "./../DATS/q2lst00.dats"
 (* ****** ****** *)
 #staload "./../DATS/range00.dats"
 (* ****** ****** *)
@@ -36,7 +36,7 @@ HX: for linearly typed interfaces
 #staload "./../DATS/VT/strm000_vt.dats"
 #staload "./../DATS/VT/strx000_vt.dats"
 (* ****** ****** *)
-#staload "./../DATS/VT/qlist00_vt.dats"
+#staload "./../DATS/VT/q2lst00_vt.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
