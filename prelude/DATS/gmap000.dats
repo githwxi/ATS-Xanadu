@@ -236,7 +236,7 @@ in//let
 gmap_insert$new
 ( map, k0, x0 ) =
 (
-case+ opt of
+case- opt of
 | ~
 optn_vt_nil() => map
 ) where{
@@ -255,7 +255,7 @@ gmap_insert$opt<m0><k0><x0>(map, k0, x0))
 gmap_getout$old
   (map, k0) =
 (
-case+ opt of
+case- opt of
 | ~
 optn_vt_cons(x0) => (map, x0))
 where{

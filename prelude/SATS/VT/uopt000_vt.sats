@@ -30,10 +30,10 @@
 //
 (*
 HX-2026-04-08:
-This one is likely no
-longer needed as [uopt] can
-be implemented as uflat(optn)!
 Wed Apr  8 02:51:46 AM EDT 2026
+This one is likely no
+longer needed as [uopt_vt] can
+be implemented as uflat(optn_vt)!
 *)
 //
 (* ****** ****** *)
@@ -91,5 +91,5 @@ uopt_vt_consq1
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_VT_uopt_vt000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_uopt000_vt.sats] *)
 (***********************************************************************)
