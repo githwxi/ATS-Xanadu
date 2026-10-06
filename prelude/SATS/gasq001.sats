@@ -243,10 +243,6 @@ mapref$fopr1x
 (*
 fun
 <x0:vt>
-mapref$fopr0x
-( ref: &x0 >> ?x0 ): void
-fun
-<x0:vt>
 mapref$fopr01x
 ( ref: &(?x0) >> (x0) ): void
 fun
