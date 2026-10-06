@@ -69,6 +69,7 @@ a0rf_vt_set(A: !a0rf_vt(a), x:a): void
 #symload set with a0rf_vt_set of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <a:vt>
@@ -81,17 +82,18 @@ a0rf_vt_setf(A: !a0rf_vt(a), x:a): void
 #symload setf with a0rf_vt_setf of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <a:vt>
 a0rf_vt_lget
-( A:
-! a0rf_vt( a) >> a0rf_vt(?a)): (a)
+(A:
+!a0rf_vt( a) >> a0rf_vt(?a)): (a)
 fun
 <a:vt>
 a0rf_vt_lset
-( A:
-! a0rf_vt(?a) >> a0rf_vt( a), x:a): void
+(A:
+!a0rf_vt(?a) >> a0rf_vt( a), x:a): void
 //
 #symload lget with a0rf_vt_lget of 1000
 #symload lset with a0rf_vt_lset of 1000
@@ -100,5 +102,7 @@ a0rf_vt_lset
 (* ****** ****** *)
 //
 (***********************************************************************)
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_axrf000_vt.sats] *)
+(***********************************************************************)
 (***********************************************************************)

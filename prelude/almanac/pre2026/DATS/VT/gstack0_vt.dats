@@ -31,66 +31,37 @@
 (*
 Author: Hongwei Xi
 (*
-Tue Oct  6 08:44:22 AM EDT 2026
+Tue Oct  6 06:21:32 PM EDT 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#sexpdef luopt = uopt_vt
-#sexpdef loptn = optn_vt
-(* ****** ****** *)
-(* ****** ****** *)
 //
-fun
-<xs:vt>
-<x0:vt>
-gstack_vt_size1(xs: !xs): nint
-fun
-<xs:vt>
-<x0:vt>
-gstack_vt_capcity1(xs: !xs): nint
+#staload
+"./../../SATS/VT/gstack0_vt.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<xs:vt>
-<x0:vt>
-gstack_vt_remove$opt1(xs: !xs): bool
-//
-fun
-<xs:vt>
-<x0:vt>
-gstack_vt_getout$old1(xs: !xs): (x0)
-fun
-<xs:vt>
-<x0:vt>
-gstack_vt_getout$opt1(xs: !xs): loptn(x0)
-fun
-<xs:vt>
-<x0:vt>
-gstack_vt_getout$upt1(xs: !xs): luopt(x0)
-//
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gstack_vt_insert$new1(xs: !xs, x0: ~x0): void
-fun
-<xs:vt>
-<x0:vt>
-gstack_vt_insert$opt1(xs: !xs, x0: ~x0): loptn(x0)
-fun
-<xs:vt>
-<x0:vt>
-gstack_vt_insert$upt1(xs: !xs, x0: ~x0): luopt(x0)
+#impltmp
+< xs:vt >
+< x0:vt >
+gstack0_insert$new1
+( xs, x0 ) =
+(
+case- opt of
+| @optn_nil() => ( (*0*) ))
+where
+{
+val opt =
+gstack0_insert$upt1<xs><x0>(xs, x0)
+}(*where*)//end-of-[gstack0_insert$new1(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_pre2026_SATS_VT_gstack0_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_almanac_pre2026_DATS_VT_gstack0_vt.dats] *)
 (***********************************************************************)
