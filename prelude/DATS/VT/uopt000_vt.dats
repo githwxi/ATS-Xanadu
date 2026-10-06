@@ -41,6 +41,10 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-10-05:
+[uflat] for flat union!
+*)
 #absimpl
 uopt_vt_b0_vt
  (a:vt,b:b0) = uflat(optn_vt(a, b))
@@ -61,7 +65,8 @@ uopt_vt_some
 //
 #impltmp
 < x0:vt >
-uopt_vt_unsome(xs) =
+uopt_vt_unsome
+(   xs   ) =
 (case- xs of @optn_vt_cons(x0) => x0)
 //
 (* ****** ****** *)
@@ -69,23 +74,27 @@ uopt_vt_unsome(xs) =
 //
 #impltmp
 < x0:vt >
-uopt_vt_nilq1(xs) =
+uopt_vt_nilq1
+(   xs   ) =
 ( case+ xs of
 | @optn_vt_nil() => true | _ => false)
 #impltmp
 < x0:vt >
-uopt_noneq1(xs) =
+uopt_vt_noneq1
+(   xs   ) =
 ( case+ xs of
 | @optn_vt_nil() => true | _ => false)
 //
 #impltmp
 < x0:vt >
-uopt_consq1(xs) =
+uopt_vt_consq1
+(   xs   ) =
 ( case+ xs of
 | @optn_vt_cons _ => true | _ => false)
 #impltmp
 < x0:vt >
-uopt_someq1(xs) =
+uopt_vt_someq1
+(   xs   ) =
 ( case+ xs of
 | @optn_vt_cons _ => true | _ => false)
 //
