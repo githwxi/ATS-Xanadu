@@ -46,11 +46,11 @@ Authoremail: gmhwxiATgmailDOTcom
 fun
 <xs:vt>
 <x0:vt>
-gstack_vt_size1(xs: !xs): nint
+gstack_size1(xs: !xs): nint
 fun
 <xs:vt>
 <x0:vt>
-gstack_vt_capcity1(xs: !xs): nint
+gstack_capcity1(xs: !xs): nint
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -58,35 +58,35 @@ gstack_vt_capcity1(xs: !xs): nint
 fun
 <xs:vt>
 <x0:vt>
-gstack_vt_remove$opt1(xs: !xs): bool
+gstack_remove$opt1(xs: !xs): bool
 //
 fun
 <xs:vt>
 <x0:vt>
-gstack_vt_getout$old1(xs: !xs): (x0)
+gstack_getout$old1(xs: !xs): (x0)
 fun
 <xs:vt>
 <x0:vt>
-gstack_vt_getout$opt1(xs: !xs): loptn(x0)
+gstack_getout$opt1(xs: !xs): loptn(x0)
 fun
 <xs:vt>
 <x0:vt>
-gstack_vt_getout$upt1(xs: !xs): luopt(x0)
+gstack_getout$upt1(xs: !xs): luopt(x0)
 //
 (* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
-gstack_vt_insert$new1(xs: !xs, x0: ~x0): void
+gstack_insert$new1(xs: !xs, x0: ~x0): void
 fun
 <xs:vt>
 <x0:vt>
-gstack_vt_insert$opt1(xs: !xs, x0: ~x0): loptn(x0)
+gstack_insert$opt1(xs: !xs, x0: ~x0): loptn(x0)
 fun
 <xs:vt>
 <x0:vt>
-gstack_vt_insert$upt1(xs: !xs, x0: ~x0): luopt(x0)
+gstack_insert$upt1(xs: !xs, x0: ~x0): luopt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

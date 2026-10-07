@@ -48,6 +48,24 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 < xs:vt >
 < x0:vt >
+gstack0_getout$old1
+( xs, x0 ) =
+(
+case- opt of
+|
+@optn_cons(x0) => ( x0 ))
+where
+{
+val opt =
+gstack0_getout$upt1<xs><x0>(xs, x0)
+}(*where*)//end-of-[gstack0_getout$old1(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
 gstack0_insert$new1
 ( xs, x0 ) =
 (

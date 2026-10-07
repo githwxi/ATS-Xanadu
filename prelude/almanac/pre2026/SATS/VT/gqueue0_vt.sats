@@ -42,11 +42,11 @@ Authoremail: gmhwxiATgmailDOTcom
 fun
 <xs:vt>
 <x0:vt>
-gqueue_vt_size1(xs: !xs): nint
+gqueue_size1(xs: !xs): nint
 fun
 <xs:vt>
 <x0:vt>
-gqueue_vt_capcity1(xs: !xs): nint
+gqueue_capcity1(xs: !xs): nint
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -54,27 +54,27 @@ gqueue_vt_capcity1(xs: !xs): nint
 fun
 <xs:vt>
 <x0:vt>
-gqueue_vt_remove$opt1(xs: !xs): bool
+gqueue_remove$opt1(xs: !xs): bool
 //
 fun
 <xs:vt>
 <x0:vt>
-gqueue_vt_getout$old1(xs: !xs): (x0)
+gqueue_getout$old1(xs: !xs): (x0)
 fun
 <xs:vt>
 <x0:vt>
-gqueue_vt_getout$opt1(xs: !xs): luopt(x0)
+gqueue_getout$opt1(xs: !xs): luopt(x0)
 //
 (* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
-gqueue_vt_insert$new1(xs: !xs, x0: ~x0): void
+gqueue_insert$new1(xs: !xs, x0: ~x0): void
 fun
 <xs:vt>
 <x0:vt>
-gqueue_vt_insert$opt1(xs: !xs, x0: ~x0): luopt(x0)
+gqueue_insert$opt1(xs: !xs, x0: ~x0): luopt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
