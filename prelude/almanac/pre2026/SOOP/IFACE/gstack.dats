@@ -1,6 +1,6 @@
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../gbasis.dats"
+#staload "./gxs.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -13,12 +13,12 @@
 <pf:pf>
 <xs:vt>
 <x0:vt>
-gstack_fullq(pf | xs: !xs): bool
+gstack_nilq1(pf | xs: !xs): bool
 #extern
 <pf:pf>
 <xs:vt>
 <x0:vt>
-gstack_emptyq(pf | xs: !xs): bool
+gstack_fullq1(pf | xs: !xs): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -64,6 +64,7 @@ gstack_insert$upt1(!xs, ~x0): luopt(x0)
 gstack_getout$old1 = g2_getout$old1<STACK(pf)><xs><x0>
 //
 #impltmp
+{ pf:pf }
 { xs:vt
 , x0:vt }
 g2_getout$upt1<STACK(pf)><xs><x0> = gstack_getout$upt1<pf><xs><x0>
@@ -78,6 +79,7 @@ g2_getout$upt1<STACK(pf)><xs><x0> = gstack_getout$upt1<pf><xs><x0>
 gstack_insert$new1 = g2_insert$new1<STACK(pf)><xs><x0>
 //
 #impltmp
+{ pf:pf }
 { xs:vt
 , x0:vt }
 g2_insert$upt1<STACK(pf)><xs><x0> = gstack_insert$upt1<pf><xs><x0>
@@ -87,6 +89,6 @@ g2_insert$upt1<STACK(pf)><xs><x0> = gstack_insert$upt1<pf><xs><x0>
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_pre2026_SOOP_gstack.dats] *)
+(* end of [ATS3/XANADU/prelude/almanac/pre2026/SOOP/FACE/gstack.dats] *)
 (***********************************************************************)
 (***********************************************************************)

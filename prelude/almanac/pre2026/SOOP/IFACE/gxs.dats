@@ -16,20 +16,20 @@ fun
 <pf:pf>
 <xs:vt>
 <x0:vt>
-g2_remove$btf1(pf | !xs): bool
+gxs_remove$btf1(pf | !xs): bool
 //
 #extern
 fun
 <pf:pf>
 <xs:vt>
 <x0:vt>
-g2_getout$old1(pf | !xs): (x0)
+gxs_getout$old1(pf | !xs): (x0)
 #extern
 fun
 <pf:pf>
 <xs:vt>
 <x0:vt>
-g2_getout$upt1(pf | !xs): luopt(x0)
+gxs_getout$upt1(pf | !xs): luopt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -39,13 +39,13 @@ fun
 <pf:pf>
 <xs:vt>
 <x0:vt>
-g2_insert$new1(pf | !xs, ~x0): void
+gxs_insert$new1(pf | !xs, ~x0): void
 #extern
 fun
 <pf:pf>
 <xs:vt>
 <x0:vt>
-g2_insert$upt1(pf | !xs, ~x0): luopt(x0)
+gxs_insert$upt1(pf | !xs, ~x0): luopt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -53,7 +53,7 @@ g2_insert$upt1(pf | !xs, ~x0): luopt(x0)
 #impltmp
 < xs:vt >
 < x0:vt >
-g2_remove$btf1
+gxs_remove$btf1
   ( pf | xs ) =
 (
 case+ opt of
@@ -61,15 +61,15 @@ case+ opt of
 | @optn_cons(x0) => (~x0; true)
 where
 {
-val opt = g2_getout$upt1<xs><x0>(pf | xs)
-}(*where*)//end-of-[g2_getout$old1(...)]
+val opt = gxs_getout$upt1<xs><x0>(pf | xs)
+}(*where*)//end-of-[gxs_getout$old1(...)]
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:vt >
 < x0:vt >
-g2_getout$old1
+gxs_getout$old1
   ( pf | xs ) =
 (
 case- opt of
@@ -77,8 +77,8 @@ case- opt of
 where
 {
 val opt =
-g2_getout$upt1<xs><x0>(pf | xs, x0)
-}(*where*)//end-of-[g2_getout$old1(...)]
+gxs_getout$upt1<xs><x0>(pf | xs, x0)
+}(*where*)//end-of-[gxs_getout$old1(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -87,7 +87,7 @@ g2_getout$upt1<xs><x0>(pf | xs, x0)
 < pf:pf >
 < xs:vt >
 < x0:vt >
-g2_insert$new1
+gxs_insert$new1
 ( pf | xs, x0 ) =
 (
 case- opt of
@@ -95,14 +95,14 @@ case- opt of
 where
 {
 val opt =
-g2_insert$upt1<xs><x0>(pf | xs, x0)
-}(*where*)//end-of-[g2_insert$new1(...)]
+gxs_insert$upt1<xs><x0>(pf | xs, x0)
+}(*where*)//end-of-[gxs_insert$new1(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_pre2026_SOOP_gx.dats] *)
+(* end of [ATS3/XANADU_prelude_almanac_pre2026_SOOP_gxs.dats] *)
 (***********************************************************************)
 (***********************************************************************)

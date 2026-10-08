@@ -1,6 +1,6 @@
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../gbasis.dats"
+#staload "./../gxs.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -61,12 +61,13 @@ gqueue_insert$upt1(!xs, ~x0): luopt(x0)
 < pf:pf >
 < xs:vt >
 < x0:vt >
-gqueue_getout$old1 = g2_getout$old1<QUEUE(pf)><xs><x0>
+gqueue_getout$old1 = gxs_getout$old1<QUEUE(pf)><xs><x0>
 //
 #impltmp
+{ pf:pf }
 { xs:vt
 , x0:vt }
-g2_getout$upt1<QUEUE(pf)><xs><x0> = gqueue_getout$upt1<pf><xs><x0>
+gxs_getout$upt1<QUEUE(pf)><xs><x0> = gqueue_getout$upt1<pf><xs><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -75,18 +76,19 @@ g2_getout$upt1<QUEUE(pf)><xs><x0> = gqueue_getout$upt1<pf><xs><x0>
 < pf:pf >
 < xs:vt >
 < x0:vt >
-gqueue_insert$new1 = g2_insert$new1<QUEUE(pf)><xs><x0>
+gqueue_insert$new1 = gxs_insert$new1<QUEUE(pf)><xs><x0>
 //
 #impltmp
+{ pf:pf }
 { xs:vt
 , x0:vt }
-g2_insert$upt1<QUEUE(pf)><xs><x0> = gqueue_insert$upt1<pf><xs><x0>
+gxs_insert$upt1<QUEUE(pf)><xs><x0> = gqueue_insert$upt1<pf><xs><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_pre2026_SOOP_gqueue.dats] *)
+(* end of [ATS3/XANADU/prelude/almanac/pre2026/SOOP/FACE/gqueue.dats] *)
 (***********************************************************************)
 (***********************************************************************)
