@@ -1,16 +1,43 @@
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../gx.dats"
+(*
+HX-2026-10-06:
+SOOP: Static OOP!!!
+Tue Oct  6 07:04:04 PM EDT 2026
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#absprop GSEQ(pf:pf)
+#extern
+fun
+<xs:vt>
+<x0:vt>
+f$seq_forall0(xs: ~xs): bool
+#extern
+fun
+<xs:vt>
+<x0:vt>
+f$seq_forall1(xs: !xs): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+<xs:vt>
+<x0:vt>
+f$seq_foritm0(xs: ~xs): void
+#extern
+fun
+<xs:vt>
+<x0:vt>
+f$seq_foritm1(xs: !xs): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_pre2026_SOOP_gseq.dats] *)
+(* end of [ATS3/XANADU_prelude/almanac/pre2026/SOOP/IFACE/seq.dats] *)
 (***********************************************************************)
 (***********************************************************************)
