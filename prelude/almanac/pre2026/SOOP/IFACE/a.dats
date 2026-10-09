@@ -1,68 +1,67 @@
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2026-10-06:
+SOOP: Static OOP!!!
+Tue Oct  6 07:04:04 PM EDT 2026
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 //
-#absprop STACK(pf:pf)
+#extern
+fun
+<a:vt>
+f$a_copy1(x: !a): (a)
+//
+#extern
+fun
+<a:vt>
+f$a_free0(x: ~a): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun
-<pf:pf>
-<xs:vt>
-<x0:vt>
-f$stack_nilq1(xs: !xs): bool
+<a:vt>
+f$a_print0(x: ~a): void
 #extern
 fun
-<pf:pf>
-<xs:vt>
-<x0:vt>
-f$stack_fullq1(xs: !xs): bool
+<a:vt>
+f$a_print1(x: !a): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#extern
 fun
-<pf:pf>
-<xs:vt>
-<x0:vt>
-f$stack_remove$btf1(xs: !xs): bool
+<a:vt>
+f$a_torep0(x: ~a): strn
+fun
+<a:vt>
+f$a_torep1(x: !a): strn
 //
-#extern
 fun
-<pf:pf>
-<xs:vt>
-<x0:vt>
-f$stack_getout$old1(xs: !xs): (x0)
-#extern
+<a:vt>
+f$a_tostr0(x: !a): strn
 fun
-<pf:pf>
-<xs:vt>
-<x0:vt>
-f$stack_getout$upt1(xs: !xs): luopt(x0)
+<a:vt>
+f$a_tostr1(x: !a): strn
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#extern
 fun
-<pf:pf>
-<xs:vt>
-<x0:vt>
-f$stack_insert$new1(!xs, ~x0): void
-#extern
+<a:t0>
+f$a_equal00(~a, ~a): bool
 fun
-<pf:pf>
-<xs:vt>
-<x0:vt>
-f$stack_insert$upt1(!xs, ~x0): luopt(x0)
+<a:t0>
+f$a_equal11(!a, !a): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU/prelude/almanac/pre2026/SOOP/IFACE/stack.dats] *)
+(* end of [ATS3/XANADU_prelude/almanac/pre2026/SOOP/IFACE/a.dats] *)
 (***********************************************************************)
 (***********************************************************************)

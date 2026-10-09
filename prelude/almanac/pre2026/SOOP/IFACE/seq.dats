@@ -10,11 +10,13 @@ Tue Oct  6 07:04:04 PM EDT 2026
 //
 #extern
 fun
+<pf:pf>
 <xs:vt>
 <x0:vt>
 f$seq_forall0(xs: ~xs): bool
 #extern
 fun
+<pf:pf>
 <xs:vt>
 <x0:vt>
 f$seq_forall1(xs: !xs): bool
@@ -24,11 +26,13 @@ f$seq_forall1(xs: !xs): bool
 //
 #extern
 fun
+<pf:pf>
 <xs:vt>
 <x0:vt>
 f$seq_foritm0(xs: ~xs): void
 #extern
 fun
+<pf:pf>
 <xs:vt>
 <x0:vt>
 f$seq_foritm1(xs: !xs): void
