@@ -2,14 +2,14 @@
 (***********************************************************************)
 //
 #absprop LIST()
-// HX: LIST <= A
+// HX: LIST <= 1
 // HX: LIST <= SEQ
 //
 (***********************************************************************)
 (***********************************************************************)
 //
 (* ****** ****** *)
-#staload "./../IFACE/a.dats"
+#staload "./../IFACE/1.dats"
 (* ****** ****** *)
 #staload "./../IFACE/seq.dats"
 (* ****** ****** *)
@@ -33,18 +33,19 @@ f1seq_print0<LIST()><list(x0)><x0>
 (***********************************************************************)
 //
 #impltmp
-f0seq_beg<SEQ(LIST())>() = "list("
+f0seq_beg
+<SEQ(LIST())>() = "list("
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 { x0:t0 }
-f$seq_nilq1
+f1seq_nilq1
 <LIST()><list(x0)><(x0)> = list_nilq<x0>
 #impltmp
 { x0:t0 }
-f$seq_consq1
+f1seq_consq1
 <LIST()><list(x0)><(x0)> = list_consq<x0>
 //
 (* ****** ****** *)
@@ -52,11 +53,11 @@ f$seq_consq1
 //
 #impltmp
 { x0:t0 }
-f$seq_forall0
+f1seq_forall0
 <LIST()><list(x0)><(x0)> = list_forall<x0>
 #impltmp
 { x0:t0 }
-f$seq_forall1
+f1seq_forall1
 <LIST()><list(x0)><(x0)> = list_forall<x0>
 //
 (* ****** ****** *)

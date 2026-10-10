@@ -8,40 +8,58 @@ Tue Oct  6 07:04:04 PM EDT 2026
 (***********************************************************************)
 (***********************************************************************)
 //
-#absprop SEQ(pf:pf)
+#absprop SEQ(px:pp)
 //
 (***********************************************************************)
 (***********************************************************************)
 //
 #extern
 fun
-<px:pf>
+<px:pp>
 f0seq_beg(): strn
 #extern
 fun
-<px:pf>
+<px:pp>
 f0seq_end(): strn
 #extern
 fun
-<px:pf>
+<px:pp>
 f0seq_sep(): strn
 #extern
 fun
-<px:pf>
+<px:pp>
 f0seq_rst(): strn
 //
 (***********************************************************************)
 (***********************************************************************)
 //
+(* ****** ****** *)
+//
 #extern
 fun
-<pf:pf>
+<pf:pp>
+<xs:vt>
+<x0:vt>
+f1seq_nilq1(xs: !xs): bool
+#extern
+fun
+<pf:pp>
+<xs:vt>
+<x0:vt>
+f1seq_consq1(xs: !xs): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+<pf:pp>
 <xs:vt>
 <x0:vt>
 f1seq_print0(xs: ~xs): void
 #extern
 fun
-<pf:pf>
+<pf:pp>
 <xs:vt>
 <x0:vt>
 f1seq_print1(xs: !xs): void
@@ -51,13 +69,13 @@ f1seq_print1(xs: !xs): void
 //
 #extern
 fun
-<pf:pf>
+<pf:pp>
 <xs:vt>
 <x0:vt>
 f1seq_forall0(xs: ~xs): bool
 #extern
 fun
-<pf:pf>
+<pf:pp>
 <xs:vt>
 <x0:vt>
 f1seq_forall1(xs: !xs): bool
@@ -67,13 +85,13 @@ f1seq_forall1(xs: !xs): bool
 //
 #extern
 fun
-<pf:pf>
+<pf:pp>
 <xs:vt>
 <x0:vt>
 f1seq_foritm0(xs: ~xs): void
 #extern
 fun
-<pf:pf>
+<pf:pp>
 <xs:vt>
 <x0:vt>
 f1seq_foritm1(xs: !xs): void
@@ -82,16 +100,16 @@ f1seq_foritm1(xs: !xs): void
 (***********************************************************************)
 //
 #impltmp
-< px:pf >
+{ px:pp }
 f0seq_sep<px>() = ","
 #impltmp
-< px:pf >
+{ px:pp }
 f0seq_end<px>() = ")"
 #impltmp
-< px:pf >
+{ px:pp }
 f0seq_rst<px>() = "..."
 #impltmp
-< px:pf >
+{ px:pp }
 f0seq_beg<px>() = "SEQ("
 //
 (***********************************************************************)

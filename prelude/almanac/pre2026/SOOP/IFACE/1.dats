@@ -37,19 +37,23 @@ f1_print1(x: !a): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
 fun
 <p:pf>
 <a:vt>
 f1_torep0(x: ~a): strn
+#extern
 fun
 <p:pf>
 <a:vt>
 f1_torep1(x: !a): strn
 //
+#extern
 fun
 <p:pf>
 <a:vt>
 f1_tostr0(x: !a): strn
+#extern
 fun
 <p:pf>
 <a:vt>
@@ -58,21 +62,25 @@ f1_tostr1(x: !a): strn
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
 fun
 <p:pf>
-<a:t0>
+<a:vt>
 f1_equal00(~a, ~a): bool
+#extern
 fun
 <p:pf>
-<a:t0>
+<a:vt>
 f1_equal00(~a, !a): bool
+#extern
 fun
 <p:pf>
-<a:t0>
+<a:vt>
 f1_equal10(!a, ~a): bool
+#extern
 fun
 <p:pf>
-<a:t0>
+<a:vt>
 f1_equal11(!a, !a): bool
 //
 (* ****** ****** *)

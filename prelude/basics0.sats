@@ -96,17 +96,12 @@ XATSPACK="ATS3-Xanadu@20220500"
 #sortdef c0 = char
 //
 #sortdef p0 = prop
-(*
-#sortdef pf = prop
-*)
 #sortdef pp = prop
 #sortdef v0 = view
 #sortdef vw = view
 #sortdef t0 = type
+#sortdef tp = type
 #sortdef tx = tbox
-(*
-#sortdef x0 = tbox
-*)
 #sortdef vt = vwtp
 #sortdef vx = vtbx
 //
