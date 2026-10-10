@@ -8,6 +8,27 @@ Tue Oct  6 07:04:04 PM EDT 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#absprop SEQ(pf:pf)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+<pf:pf>
+<xs:vt>
+<x0:vt>
+f$seq_print0(xs: ~xs): void
+#extern
+fun
+<pf:pf>
+<xs:vt>
+<x0:vt>
+f$seq_print1(xs: !xs): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #extern
 fun
 <pf:pf>

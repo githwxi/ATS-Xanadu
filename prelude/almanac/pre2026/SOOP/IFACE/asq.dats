@@ -7,50 +7,91 @@ Tue Oct  6 07:04:04 PM EDT 2026
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#absprop ASQ(px:pf)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #sexpdef luopt = uopt_vt
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun
-<pf:pf>
+<px:pf>
 <xs:vt>
 <x0:vt>
-f$asq_length(xs: !xs): nint
+f$asq_length0(xs: ~xs): nint
+#extern
+fun
+<px:pf>
+<xs:vt>
+<x0:vt>
+f$asq_length1(xs: !xs): nint
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun
-<pf:pf>
+<px:pf>
 <xs:vt>
 <x0:vt>
 f$asq_cget$at$raw1(xs: !xs, i0: nint): (x0)
 //
 #extern
 fun
-<pf:pf>
+<px:pf>
 <xs:vt>
 <x0:vt>
 f$asq_cget$at$exn1(xs: !xs, i0: nint): (x0)
 //
 #extern
 fun
-<pf:pf>
+<px:pf>
 <xs:vt>
 <x0:vt>
 f$asq_cget$at$upt1(xs: !xs, i0: nint): luopt(x0)
 //
-(* ****** ****** *)
-(* ****** ****** *)
+(***********************************************************************)
+(***********************************************************************)
 //
-f$seq_foritm1<pf><xs><x0>(xs) = f$seq_forall1<SEQ><xs><x0>(xs)
-f$seq_forall1<ASQ(pf)><xs><x0>(xs) = ...
-f$seq_get$at1<ASQ(A1SZ(pf))><xs><x0>(xs) = ...
-
-(* ****** ****** *)
-(* ****** ****** *)
+#impltmp
+{ px:pf }
+{ xs:vt,
+  x0:vt }
+gseq_forall1
+<ASQ(px)><xs><x0>(xs) =
+(
+  loop(xs, 0(*i0*)))
+where 
+{
+//
+val ln =
+gseq_length1
+<ASQ(px)><xs><x0>(xs)
+//
+fun
+loop
+(xs: !xs, i0: ni): bool =
+if
+(i0 >= ln)
+then true else
+let
+//
+val
+(pf|x1) =
+(
+  gasq_lget$at$raw1(xs, i0))
+//
+val btf = forall$test1<x0>(x1)
+pvl ( ) = owed_vt_return0(pf, x0)
+//
+in//let
+if btf then loop(xs, i0+1) else false
+end(*let*)//end-of-[loop(xs, i0)]
+//
+}(*where*)//end-of-[gseq_forall1<ASQ(px)><xs><x0>(xs)]
 //
 (***********************************************************************)
 (***********************************************************************)
