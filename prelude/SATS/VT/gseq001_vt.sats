@@ -1670,7 +1670,7 @@ fun
 <xs:vt>
 <x0:vt>
 <e1:vt>
-gseq_forall$e1nv0$f2un_llist
+gseq_forall$e1nv0$f2un
 ( xs: ~xs
 , e1: !e1, fopr: (~x0, !e1)->bool): bool
 #symload
@@ -1686,7 +1686,7 @@ fun
 <xs:vt>
 <x0:vt>
 <e1:vt>
-gseq_foritm$e1nv0$f2un_llist
+gseq_foritm$e1nv0$f2un
 ( xs: ~xs
 , e1: !e1, fopr: (~x0, !e1)->void): void
 #symload

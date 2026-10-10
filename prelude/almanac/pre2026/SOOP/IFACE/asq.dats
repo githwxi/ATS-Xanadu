@@ -57,10 +57,17 @@ f$asq_cget$at$upt1(xs: !xs, i0: nint): luopt(x0)
 (***********************************************************************)
 //
 #impltmp
+< px:pf >
+f$0_seq$beg<ASQ(px)>() = "ASQ("
+//
+(***********************************************************************)
+(***********************************************************************)
+//
+#impltmp
 { px:pf }
 { xs:vt,
   x0:vt }
-gseq_forall1
+f$seq_forall1
 <ASQ(px)><xs><x0>(xs) =
 (
   loop(xs, 0(*i0*)))
@@ -68,8 +75,8 @@ where
 {
 //
 val ln =
-gseq_length1
-<ASQ(px)><xs><x0>(xs)
+f$asq_length1
+<px><xs><x0>(xs)
 //
 fun
 loop
@@ -82,16 +89,17 @@ let
 val
 (pf|x1) =
 (
-  gasq_lget$at$raw1(xs, i0))
+f$asq_lget$at$raw1<px>(xs, i0))
 //
 val btf = forall$test1<x0>(x1)
-pvl ( ) = owed_vt_return0(pf, x0)
+pvl ( ) = owed_vt_return0<x0>(pf, x0)
 //
 in//let
-if btf then loop(xs, i0+1) else false
+(
+if btf then loop(xs, i0+1) else false)
 end(*let*)//end-of-[loop(xs, i0)]
 //
-}(*where*)//end-of-[gseq_forall1<ASQ(px)><xs><x0>(xs)]
+}(*where*)//end-of-[f$seq_forall1<ASQ(px)><xs><x0>(xs)]
 //
 (***********************************************************************)
 (***********************************************************************)

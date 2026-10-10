@@ -19,18 +19,24 @@
 //
 #impltmp
 { x0:t0 }
-f$a_print0
+f1_print0
 <LIST()><list(x0)> =
-f$seq_print0<LIST()><list(x0)><x0>
+f1seq_print0<LIST()><list(x0)><x0>
 //
 #impltmp
 { x0:t0 }
-f$a_print1
+f1_print1
 <LIST()><list(x0)> =
-f$seq_print0<LIST()><list(x0)><x0>
+f1seq_print0<LIST()><list(x0)><x0>
 //
 (***********************************************************************)
 (***********************************************************************)
+//
+#impltmp
+f0seq_beg<SEQ(LIST())>() = "list("
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 { x0:t0 }
@@ -41,6 +47,7 @@ f$seq_nilq1
 f$seq_consq1
 <LIST()><list(x0)><(x0)> = list_consq<x0>
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

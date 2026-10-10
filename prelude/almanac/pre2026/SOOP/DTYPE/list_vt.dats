@@ -19,22 +19,44 @@
 //
 #impltmp
 { x0:vt }
-f$seq_nilq1
-<LIST_VT()><list_vt(x0)><(x0)> = list_vt_nilq1<x0>
+f1_print0
+<LIST()><list_vt(x0)> =
+f1seq_print0<LIST_VT()><list_vt(x0)><x0>
+//
 #impltmp
 { x0:vt }
-f$seq_consq1
-<LIST_VT()><list_vt(x0)><(x0)> = list_vt_consq1<x0>
+f1_print1
+<LIST()><list(x0)> =
+f1seq_print0<LIST_VT()><list_vt(x0)><x0>
 //
+(***********************************************************************)
+(***********************************************************************)
+//
+#impltmp
+f0seq_beg<LIST_vt()>() = "list_vt("
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 { x0:vt }
-f$seq_forall0
+f1seq_nilq1
+<LIST_VT()><list_vt(x0)><(x0)> = list_vt_nilq1<x0>
+#impltmp
+{ x0:vt }
+f1seq_consq1
+<LIST_VT()><list_vt(x0)><(x0)> = list_vt_consq1<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+f1seq_forall0
 <LIST_VT()><list_vt(x0)><(x0)> = list_vt_forall0<x0>
 #impltmp
 { x0:vt }
-f$seq_forall1
+f1seq_forall1
 <LIST_VT()><list_vt(x0)><(x0)> = list_vt_forall1<x0>
 //
 (***********************************************************************)
