@@ -42,21 +42,37 @@ fun
 <x0:vt>
 optn_vt_forall0
 (xs: ~optn_vt(x0)): bool
+fun
+<x0:vt>
+optn_vt_forall1
+(xs: !optn_vt(x0)): bool
 //
 fun
 <x0:vt>
 optn_vt_rforall0
 (xs: ~optn_vt(x0)): bool
+fun
+<x0:vt>
+optn_vt_rforall1
+(xs: !optn_vt(x0)): bool
 //
 fun
 <x0:vt>
 optn_vt_iforall0
 (xs: ~optn_vt(x0)): bool
+fun
+<x0:vt>
+optn_vt_iforall1
+(xs: !optn_vt(x0)): bool
 //
 fun
 <x0:vt>
 optn_vt_irforall0
 (xs: ~optn_vt(x0)): bool
+fun
+<x0:vt>
+optn_vt_irforall1
+(xs: !optn_vt(x0)): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
