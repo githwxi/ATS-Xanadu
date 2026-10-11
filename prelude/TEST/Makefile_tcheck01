@@ -91,9 +91,6 @@ unsfx00_vt.sats \
 OUTSATS := \
 $(patsubst %.sats, \
   OUTS/%_sats_out.00, $(PRESATS))
-OUTDATS := \
-$(patsubst %.dats, \
-  OUTS/%_dats_out.00, $(PREDATS))
 OUTSATS_vt := \
 $(patsubst %.sats, \
   OUTS/%_sats_out.00, $(PRESATS_vt))
@@ -101,15 +98,13 @@ $(patsubst %.sats, \
 ########################################################################
 all:: \
 presats
-presats: \
-$(OUTSATS)
+presats: $(OUTSATS)
 OUTS/%_sats_out.00: ../SATS/%.sats; \
 $(NODE) --stack-size=8801 $(XATSOPT_TCHECK01) $<
 ########################################################################
 all:: \
 presats_vt
-presats_vt: \
-$(OUTSATS_vt)
+presats_vt: $(OUTSATS_vt)
 OUTS/%_sats_out.00: ../SATS/VT/%.sats; \
 $(NODE) --stack-size=8801 $(XATSOPT_TCHECK01) $<
 ########################################################################
@@ -140,9 +135,16 @@ prelude_PY_dats_hats
 prelude_PY_dats_hats: ; $(NODE) \
 --stack-size=8801 $(XATSOPT_TCHECK01) ./../HATS/prelude_PY_dats.hats
 ########################################################################
+all:: \
+prelude_CM_dats_hats
+prelude_CM_dats_hats: ; $(NODE) \
+--stack-size=8801 $(XATSOPT_TCHECK01) ./../HATS/prelude_CM_dats.hats
+########################################################################
+########################################################################
 prelude_NODE_dats_hats: ; $(NODE) \
 --stack-size=8801 $(XATSOPT_TCHECK01) ./../HATS/prelude_NODE_dats.hats
 ########################################################################
 ########################################################################
 ###################### end of [Makefile_tcheck01] ######################
+########################################################################
 ########################################################################
