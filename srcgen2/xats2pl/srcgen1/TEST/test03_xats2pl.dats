@@ -13,8 +13,11 @@ For testing xats2pl!
 //
 #include
 "prelude/HATS/prelude_dats.hats"
+//
+(* ****** ****** *)
+//
 #include
-"prelude/HATS/prelude_PL_dats.hats"
+"./../prelude/HATS/prelude_PL_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

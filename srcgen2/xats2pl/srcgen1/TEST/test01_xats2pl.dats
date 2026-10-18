@@ -10,12 +10,11 @@ For testing xats2pl!
 "prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #include
 "prelude/HATS/prelude_dats.hats"
+(* ****** ****** *)
 #include
-"prelude/HATS/prelude_PL_dats.hats"
-//
+"./../prelude/HATS/prelude_PL_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 val N1 = 5

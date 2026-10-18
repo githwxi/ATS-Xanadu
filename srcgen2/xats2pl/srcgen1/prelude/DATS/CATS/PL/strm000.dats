@@ -30,121 +30,79 @@
 //
 (*
 Author: Hongwei Xi
-Sun Jun 28 11:52:26 AM EDT 2026
+Sun Sep  6 10:28:50 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+////
 (* ****** ****** *)
 //
-#impltmp
-<(*tmp*)>
-bool_lt
-(b1, b2) =
-(
-XATS2PL_bool_lt
-  (b1, b2)) where
-{
 #extern
 fun
-XATS2PL_bool_lt
-(b1: bool, b2: bool): bool = $extnam()
-}
+XATS2PL_strm_vt_forall0$f1un
+{x0:vt}
+( xs
+: strm_vt(x0)
+, test
+: (~x0) -> bool): bool
+= $extnam()//extern(./strm000.cats)
 //
 (* ****** ****** *)
 //
 #impltmp
-<(*tmp*)>
-bool_gt
-(b1, b2) =
+< x0:vt >
+strm_vt_forall0
+  (  xs  ) =
+let
+fun
+test(x0: ~x0): bool =
 (
-XATS2PL_bool_gt
-  (b1, b2)) where
-{
+  forall$test0<x0>(x0))
+in//let
+XATS2PL_strm_vt_forall0$f1un{x0}(xs, test)
+end(*let*)//end-of-[strm_vt_forall0<x0>(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #extern
 fun
-XATS2PL_bool_gt
-(b1: bool, b2: bool): bool = $extnam()
-}
+XATS2PL_strm_vt_filter0$f1un
+{x0:vt}
+( xs
+: strm_vt(x0)
+, test
+: (!x0) -> bool
+, free
+: (~x0) -> void): strm_vt(x0)
+= $extnam()//extern(./strm000.cats)
 //
 (* ****** ****** *)
 //
 #impltmp
-<(*tmp*)>
-bool_eq
-(b1, b2) =
-(
-XATS2PL_bool_eq
-  (b1, b2)) where
-{
-#extern
+< x0:vt >
+strm_vt_filter0
+  (  xs  ) =
+let
 fun
-XATS2PL_bool_eq
-(b1: bool, b2: bool): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-bool_lte
-(b1, b2) =
+test(x0: !x0): bool =
 (
-XATS2PL_bool_lte
-  (b1, b2)) where
-{
-#extern
+  filter$test1<x0>(x0))
 fun
-XATS2PL_bool_lte
-(b1: bool, b2: bool): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-bool_gte
-(b1, b2) =
-(
-XATS2PL_bool_gte
-  (b1, b2)) where
-{
-#extern
-fun
-XATS2PL_bool_gte
-(b1: bool, b2: bool): bool = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-bool_neq
-(b1, b2) =
-(
-XATS2PL_bool_neq
-  (b1, b2)) where
-{
-#extern
-fun
-XATS2PL_bool_neq
-(b1: bool, b2: bool): bool = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-bool_print(b0) =
-(
-if b0
-then strn_print<>("true")
-else strn_print<>("false"))//end(impl)
+free(x0: ~x0): void = g_free<x0>(x0)
+in//let
+XATS2PL_strm_vt_filter0$f1un{x0}(xs, test, free)
+end(*let*)//end-of-[strm_vt_filter0<x0>(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-XANADU/prelude/DATS/CATS/PL/bool000.dats] *)
+(***********************************************************************)
+(***********************************************************************)
+(*
+end of [
+ATS3-XANADU/srcgen2/xats2pl/srcgen1/prelude/DATS/CATS/PL/strm000.dats] *)
+(***********************************************************************)
 (***********************************************************************)

@@ -30,30 +30,17 @@
 //
 (*
 Author: Hongwei Xi
-Sun Sep  6 11:25:18 AM EDT 2026
+Sat Jan  3 05:24:14 PM EST 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-<(*tmp*)>
-bool_assert$errmsg
-  (cond, emsg) =
-(
-XATS2PL_bool_assert$errmsg
-  (cond, emsg)) where
-{
-#extern
-fun
-XATS2PL_bool_assert$errmsg
-(cond: bool, emsg: strm): void = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (***********************************************************************)
-(* end of [ATS3-XANADU/prelude/DATS/CATS/PL/gdbg000.dats] *)
+(***********************************************************************)
+(*
+end of [
+ATS3-XANADU/srcgen2/xats2pl/srcgen1/prelude/DATS/CATS/PL/optn000.dats] *)
+(***********************************************************************)
 (***********************************************************************)

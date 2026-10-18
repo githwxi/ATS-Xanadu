@@ -29,182 +29,120 @@
 ########################################################################.
 ##
 ## Author: Hongwei Xi
-## Sun Sep  6 11:33:33 AM EDT 2026
+## Sun Sep  6 12:08:27 AM EDT 2026
 ## Authoremail: gmhwxiATgmailDOTcom
 ##
 ########################################################################.
 ########################################################################.
 ##
-use POSIX ();
+## Translated by Codex
+## from ./../PY/gint000.cats
 ##
 ########################################################################.
 ##
 my #
-$XATS2PL_dflt_lt_dflt =
+$XATS2PL_sint_lt_sint =
 sub {
-  my ($f1, $f2) = @_;
-  return ($f1 < $f2);
-}
-;
+  my ($i1, $i2) = @_;
+  return ($i1 < $i2);
+};
 ##
 my #
-$XATS2PL_dflt_gt_dflt =
+$XATS2PL_sint_gt_sint =
 sub {
-  my ($f1, $f2) = @_;
-  return ($f1 > $f2);
-}
-;
+  my ($i1, $i2) = @_;
+  return ($i1 > $i2);
+};
 ##
 my #
-$XATS2PL_dflt_eq_dflt =
+$XATS2PL_sint_eq_sint =
 sub {
-  my ($f1, $f2) = @_;
-  return ($f1 == $f2);
-}
-;
+  my ($i1, $i2) = @_;
+  return ($i1 == $i2);
+};
 ##
 my #
-$XATS2PL_dflt_lte_dflt =
+$XATS2PL_sint_lte_sint =
 sub {
-  my ($f1, $f2) = @_;
-  return ($f1 <= $f2);
-}
-;
+  my ($i1, $i2) = @_;
+  return ($i1 <= $i2);
+};
 ##
 my #
-$XATS2PL_dflt_gte_dflt =
+$XATS2PL_sint_gte_sint =
 sub {
-  my ($f1, $f2) = @_;
-  return ($f1 >= $f2);
-}
-;
+  my ($i1, $i2) = @_;
+  return ($i1 >= $i2);
+};
 ##
 my #
-$XATS2PL_dflt_neq_dflt =
+$XATS2PL_sint_neq_sint =
 sub {
-  my ($f1, $f2) = @_;
-  return ($f1 != $f2);
-}
-;
+  my ($i1, $i2) = @_;
+  return ($i1 != $i2);
+};
 ##
 ########################################################################.
 ##
 my #
-$XATS2PL_dflt_neg =
+$XATS2PL_sint_neg =
 sub {
-  my ($f1) = @_; return -($f1);
-}
-;
+  my ($i1) = @_;
+  return -( $i1 ); };
 ##
 my #
-$XATS2PL_dflt_abs =
+$XATS2PL_sint_abs =
 sub {
-  my ($df) = @_;
-  return ($df >= 0.0 ? $df : -$df);
-}
-;
+  my ($i1) = @_;
+  return
+  ( $i1 >= 0 ) ?
+  ( $i1 ) : -( $i1 ); };
 ##
 ########################################################################.
 ##
 my #
-$XATS2PL_dflt_add_dflt =
+$XATS2PL_sint_add_sint =
 sub {
-  my ($f1, $f2) = @_; return ($f1 + $f2);
-}
-;
+  my ($i1, $i2) = @_;
+  return ($i1 + $i2); };
 ##
 my #
-$XATS2PL_dflt_sub_dflt =
+$XATS2PL_sint_sub_sint =
 sub {
-  my ($f1, $f2) = @_; return ($f1 - $f2);
-}
-;
+  my ($i1, $i2) = @_;
+  return ($i1 - $i2); };
 ##
 my #
-$XATS2PL_dflt_mul_dflt =
+$XATS2PL_sint_mul_sint =
 sub {
-  my ($f1, $f2) = @_; return ($f1 * $f2);
-}
-;
+  my ($i1, $i2) = @_;
+  return ($i1 * $i2); };
 ##
 ########################################################################.
 ##
 my #
-$XATS2PL_dflt_div_dflt =
+$XATS2PL_sint_mod_sint =
 sub {
-  my ($f1, $f2) = @_; return ($f1 / $f2);
-}
-;
+  my ($i1, $i2) = @_;
+  return ($i1 % $i2); };
 ##
 my #
-$XATS2PL_dflt_mod_dflt =
+$XATS2PL_sint_div_sint =
 sub {
-  my ($f1, $f2) = @_;
-  ## Perl % coerces to integers;
-  ## [fmod] preserves the fractional part.
-  my $r = POSIX::fmod($f1, $f2);
-  if ($r == 0.0) {
-    $r = POSIX::copysign(0.0, $f2);
-  } else {
-    $r += $f2 if (($r < 0.0) != ($f2 < 0.0));
-  }
-  return $r;
-}
-;
+  my ($i1, $i2) = @_;
+  return int($i1 / $i2); };
 ##
 ########################################################################.
 ##
 my #
-$XATS2PL_dflt_sqrt =
+$XATS2PL_sint_print =
 sub {
-  my ($df) = @_; return sqrt($df);
-}
-;
-##
-my #
-$XATS2PL_dflt_cbrt =
-sub {
-  my ($df) = @_; return POSIX::cbrt($df);
-}
-;
-##
-########################################################################.
-##
-my #
-$XATS2PL_dflt_ceil =
-sub {
-  my ($df) = @_; return POSIX::ceil($df);
-}
-;
-##
-my #
-$XATS2PL_dflt_floor =
-sub {
-  my ($df) = @_; return POSIX::floor($df);
-}
-;
-##
-my #
-$XATS2PL_dflt_trunc =
-sub {
-  my ($df) = @_; return POSIX::trunc($df);
-}
-;
-##
-my #
-$XATS2PL_dflt_round =
-sub {
-  my ($df) = @_;
-  my $lo = POSIX::floor($df);
-  my $frac = $df - $lo;
-  return $lo if $frac < 0.5;
-  return $lo + 1 if $frac > 0.5;
-  return POSIX::fmod($lo, 2.0) == 0.0 ? $lo : $lo + 1;
-}
-;
+  my ($i0) = @_; print STDOUT $i0; return; };
 ##
 ########################################################################.
 ########################################################################.
-## end of [ATS3/XANADU_prelude_DATS_CATS_PL_gflt000.cats]
+## end of
+## [ATS3-XANADU
+## /srcgen2/xats2pl/srcgen1/prelude/DATS/CATS/PL/gint000.cats]
 ########################################################################.
 ########################################################################.

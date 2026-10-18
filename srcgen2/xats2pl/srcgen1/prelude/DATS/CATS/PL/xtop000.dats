@@ -30,85 +30,17 @@
 //
 (*
 Author: Hongwei Xi
-Sun Sep  6 02:06:20 PM EDT 2026
+Sat Sep  5 11:32:25 PM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-<(*tmp*)>
-strn_length
-  ( cs ) =
-(
-XATS2PL_strn_length
-  ( cs )) where
-{
-#extern
-fun
-XATS2PL_strn_length
-  (cs: strn): nint = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-strn_cmp
-  (x1, x2) =
-(
-XATS2PL_strn_cmp
-  (x1, x2)) where
-{
-#extern
-fun
-XATS2PL_strn_cmp
-(x1: strn, x2: strn): nint = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-strn_print
-  ( cs ) =
-(
-XATS2PL_strn_print
-  ( cs )) where
-{
-#extern
-fun
-XATS2PL_strn_print(cs: strn): void = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2026-01-17:
-Sat Jan 17 09:57:35 PM EST 2026
-*)
-#impltmp
-<(*tmp*)>
-strn_get$at
-  (cs, i0) =
-(
-XATS2PL_strn_get$at$raw
-(     cs   ,   i0     ))
-where
-{
-#extern
-fun
-XATS2PL_strn_get$at$raw
-(    cs: strn, i0: nint    ): char = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (***********************************************************************)
-(* end of [ATS3-XANADU/prelude/DATS/CATS/PL/strn000.dats] *)
+(***********************************************************************)
+(*
+end of [
+ATS3-XANADU/srcgen2/xats2pl/srcgen1/prelude/DATS/CATS/PL/xtop000.dats] *)
+(***********************************************************************)
 (***********************************************************************)

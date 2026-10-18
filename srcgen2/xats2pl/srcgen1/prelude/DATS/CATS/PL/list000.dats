@@ -40,66 +40,68 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #extern
 fun
-XATS2PL_strm_vt_forall0$f1un
+XATS2PL_list_vt_foritm0$f1un
 {x0:vt}
 ( xs
-: strm_vt(x0)
-, test
-: (~x0) -> bool): bool
-= $extnam()//extern(./strm000.cats)
+: list_vt(x0)
+, work
+: (~x0) -> void): void
+= $extnam()//extern(./list000.cats)
 //
 (* ****** ****** *)
 //
 #impltmp
 < x0:vt >
-strm_vt_forall0
+list_vt_foritm0
   (  xs  ) =
 let
 fun
-test(x0: ~x0): bool =
+work(x0: ~x0): void =
 (
-  forall$test0<x0>(x0))
+  foritm$work0<x0>(x0))
 in//let
-XATS2PL_strm_vt_forall0$f1un{x0}(xs, test)
-end(*let*)//end-of-[strm_vt_forall0<x0>(xs)]
+XATS2PL_list_vt_foritm0$f1un{x0}(xs, work)
+end(*let*)//end-of-[ list_vt_foritm0<x0>(xs) ]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2PL_strm_vt_filter0$f1un
+XATS2PL_list_vt_forall0$f1un
 {x0:vt}
 ( xs
-: strm_vt(x0)
+: list_vt(x0)
 , test
-: (!x0) -> bool
+: (~x0) -> bool
 , free
-: (~x0) -> void): strm_vt(x0)
-= $extnam()//extern(./strm000.cats)
+: (~x0) -> void): bool
+= $extnam()//extern(./list000.cats)
 //
 (* ****** ****** *)
 //
 #impltmp
 < x0:vt >
-strm_vt_filter0
+list_vt_forall0
   (  xs  ) =
 let
 fun
-test(x0: !x0): bool =
+test(x0: ~x0): bool =
 (
-  filter$test1<x0>(x0))
+  forall$test0<x0>(x0))
 fun
 free(x0: ~x0): void = g_free<x0>(x0)
 in//let
-XATS2PL_strm_vt_filter0$f1un{x0}(xs, test, free)
-end(*let*)//end-of-[strm_vt_filter0<x0>(xs)]
+XATS2PL_list_vt_forall0$f1un{x0}(xs, test, free)
+end(*let*)//end-of-[list_vt_forall0<x0>(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3-XANADU/prelude/DATS/CATS/PL/strm000.dats] *)
+(*
+end of [
+ATS3-XANADU/srcgen2/xats2pl/srcgen1/prelude/DATS/CATS/PL/list000.dats] *)
 (***********************************************************************)
 (***********************************************************************)

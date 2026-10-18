@@ -29,23 +29,90 @@
 ########################################################################.
 ##
 ## Author: Hongwei Xi
-## Sun Sep  6 11:33:33 AM EDT 2026
+## Sun Sep  6 10:51:25 AM EDT 2026
 ## Authoremail: gmhwxiATgmailDOTcom
 ##
 ########################################################################.
 ########################################################################.
 ##
+## Translated by Codex
+## from ./../PY/axrf000.cats
+##
+########################################################################.
+##
 my
-$XATS2PL_bool_assert_errmsg =
+$XATS2PL_a0rf_lget =
 sub {
-  my ($cond, $emsg) = @_;
-  die "XATS2PL_bool_assert_errmsg: emsg = " . $emsg . "\n" unless $cond;
-  return;
+  my ($A) = @_;
+  return $A->[0];
+}
+;
+##
+my
+$XATS2PL_a0rf_lset =
+sub {
+  my ($A, $x1) = @_;
+  $A->[0] = $x1; return;
 }
 ;
 ##
 ########################################################################.
+##
+my
+$XATS2PL_a1rf_lget_at =
+sub {
+  my ($A, $i0) = @_;
+  return ($A->[$i0]);
+}
+;
+##
+my
+$XATS2PL_a1rf_lset_at =
+sub {
+  my ($A, $i0, $x1) = @_;
+  $A->[$i0] = $x1; return;
+}
+;
+##
 ########################################################################.
-## end of [ATS3-XANADU/prelude/DATS/CATS/PL/gdbg000.cats]
+##
+my
+$XATS2PL_a0rf_make_1val =
+sub {
+  my ($x0) = @_; return [$x0];
+}
+;
+##
+my
+$XATS2PL_a1rf_make_ncpy =
+sub {
+  my ($n0, $x0) = @_;
+  my $A0 = [];
+  for ## for
+  (my $i0 = 0; $i0 < $n0; $i0 += 1)
+  {
+    push @$A0, $x0;
+  }
+  return $A0;
+}
+;
+##
+my
+$XATS2PL_a1rf_make_nfun =
+sub {
+  my ($n0, $fopr) = @_;
+  my $A0 = [];
+  for
+  (my $i0 = 0; $i0 < $n0; $i0 += 1) {
+    push @$A0, $fopr->($i0);
+  }
+  return $A0;
+}
+;
+########################################################################.
+########################################################################.
+## end of
+## [ATS3-XANADU
+## /srcgen2/xats2pl/srcgen1/prelude/DATS/CATS/PL/axrf000.cats]
 ########################################################################.
 ########################################################################.

@@ -29,88 +29,184 @@
 ########################################################################.
 ##
 ## Author: Hongwei Xi
-## Sun Sep  6 10:51:25 AM EDT 2026
+## Sun Sep  6 11:33:33 AM EDT 2026
 ## Authoremail: gmhwxiATgmailDOTcom
 ##
 ########################################################################.
 ########################################################################.
 ##
-## Translated by Codex
-## from ./../PY/axrf000.cats
+use POSIX ();
 ##
 ########################################################################.
 ##
-my
-$XATS2PL_a0rf_lget =
+my #
+$XATS2PL_dflt_lt_dflt =
 sub {
-  my ($A) = @_;
-  return $A->[0];
+  my ($f1, $f2) = @_;
+  return ($f1 < $f2);
 }
 ;
 ##
-my
-$XATS2PL_a0rf_lset =
+my #
+$XATS2PL_dflt_gt_dflt =
 sub {
-  my ($A, $x1) = @_;
-  $A->[0] = $x1; return;
+  my ($f1, $f2) = @_;
+  return ($f1 > $f2);
+}
+;
+##
+my #
+$XATS2PL_dflt_eq_dflt =
+sub {
+  my ($f1, $f2) = @_;
+  return ($f1 == $f2);
+}
+;
+##
+my #
+$XATS2PL_dflt_lte_dflt =
+sub {
+  my ($f1, $f2) = @_;
+  return ($f1 <= $f2);
+}
+;
+##
+my #
+$XATS2PL_dflt_gte_dflt =
+sub {
+  my ($f1, $f2) = @_;
+  return ($f1 >= $f2);
+}
+;
+##
+my #
+$XATS2PL_dflt_neq_dflt =
+sub {
+  my ($f1, $f2) = @_;
+  return ($f1 != $f2);
 }
 ;
 ##
 ########################################################################.
 ##
-my
-$XATS2PL_a1rf_lget_at =
+my #
+$XATS2PL_dflt_neg =
 sub {
-  my ($A, $i0) = @_;
-  return ($A->[$i0]);
+  my ($f1) = @_; return -($f1);
 }
 ;
 ##
-my
-$XATS2PL_a1rf_lset_at =
+my #
+$XATS2PL_dflt_abs =
 sub {
-  my ($A, $i0, $x1) = @_;
-  $A->[$i0] = $x1; return;
+  my ($df) = @_;
+  return ($df >= 0.0 ? $df : -$df);
 }
 ;
 ##
 ########################################################################.
 ##
-my
-$XATS2PL_a0rf_make_1val =
+my #
+$XATS2PL_dflt_add_dflt =
 sub {
-  my ($x0) = @_; return [$x0];
+  my ($f1, $f2) = @_; return ($f1 + $f2);
 }
 ;
 ##
-my
-$XATS2PL_a1rf_make_ncpy =
+my #
+$XATS2PL_dflt_sub_dflt =
 sub {
-  my ($n0, $x0) = @_;
-  my $A0 = [];
-  for ## for
-  (my $i0 = 0; $i0 < $n0; $i0 += 1)
-  {
-    push @$A0, $x0;
+  my ($f1, $f2) = @_; return ($f1 - $f2);
+}
+;
+##
+my #
+$XATS2PL_dflt_mul_dflt =
+sub {
+  my ($f1, $f2) = @_; return ($f1 * $f2);
+}
+;
+##
+########################################################################.
+##
+my #
+$XATS2PL_dflt_div_dflt =
+sub {
+  my ($f1, $f2) = @_; return ($f1 / $f2);
+}
+;
+##
+my #
+$XATS2PL_dflt_mod_dflt =
+sub {
+  my ($f1, $f2) = @_;
+  ## Perl % coerces to integers;
+  ## [fmod] preserves the fractional part.
+  my $r = POSIX::fmod($f1, $f2);
+  if ($r == 0.0) {
+    $r = POSIX::copysign(0.0, $f2);
+  } else {
+    $r += $f2 if (($r < 0.0) != ($f2 < 0.0));
   }
-  return $A0;
+  return $r;
 }
 ;
 ##
-my
-$XATS2PL_a1rf_make_nfun =
+########################################################################.
+##
+my #
+$XATS2PL_dflt_sqrt =
 sub {
-  my ($n0, $fopr) = @_;
-  my $A0 = [];
-  for
-  (my $i0 = 0; $i0 < $n0; $i0 += 1) {
-    push @$A0, $fopr->($i0);
-  }
-  return $A0;
+  my ($df) = @_; return sqrt($df);
 }
 ;
+##
+my #
+$XATS2PL_dflt_cbrt =
+sub {
+  my ($df) = @_; return POSIX::cbrt($df);
+}
+;
+##
+########################################################################.
+##
+my #
+$XATS2PL_dflt_ceil =
+sub {
+  my ($df) = @_; return POSIX::ceil($df);
+}
+;
+##
+my #
+$XATS2PL_dflt_floor =
+sub {
+  my ($df) = @_; return POSIX::floor($df);
+}
+;
+##
+my #
+$XATS2PL_dflt_trunc =
+sub {
+  my ($df) = @_; return POSIX::trunc($df);
+}
+;
+##
+my #
+$XATS2PL_dflt_round =
+sub {
+  my ($df) = @_;
+  my $lo = POSIX::floor($df);
+  my $frac = $df - $lo;
+  return $lo if $frac < 0.5;
+  return $lo + 1 if $frac > 0.5;
+  return POSIX::fmod($lo, 2.0) == 0.0 ? $lo : $lo + 1;
+}
+;
+##
 ########################################################################.
 ########################################################################.
-## end of [ATS3/XANADU_prelude_DATS_CATS_PL_axrf000.cats]
+## end of
+## [ATS3-XANADU
+## /srcgen2/xats2pl/srcgen1/prelude/DATS/CATS/PL/gflt000.cats]
 ########################################################################.
 ########################################################################.

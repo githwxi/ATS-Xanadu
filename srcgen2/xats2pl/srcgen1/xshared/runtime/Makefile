@@ -8,7 +8,7 @@ ECHO=echo
 PRINTF=printf
 ##################################################################
 PRELUDED=\
-$(XATSHOME)/prelude
+../../prelude
 XATSLIBD=\
 $(XATSHOME)/xatslib
 SRCGEN1_PRELUDED=\

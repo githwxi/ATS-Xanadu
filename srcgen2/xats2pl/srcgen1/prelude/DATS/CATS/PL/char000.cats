@@ -29,50 +29,106 @@
 ########################################################################.
 ##
 ## Author: Hongwei Xi
-## Sun Sep  6 10:28:50 AM EDT 2026
+## Sun Sep  6 12:08:27 AM EDT 2026
 ## Authoremail: gmhwxiATgmailDOTcom
 ##
 ########################################################################.
 ########################################################################.
 ##
 ## Translated by Codex
-## from ./../PY/list000.cats
+## from ./../PY/char000.cats
 ##
 ########################################################################.
 ##
-my #
-$XATS2PL_list_vt_foritm0_f1un =
+my
+$XATS2PL_char_lt =
 sub {
-  my ($xs, $work) = @_;
-  while (!XATS2PL_list_vt_nilq1($xs)) {
-    my $x1 = $XATS2PL_list_vt_head_raw1->($xs);
-    $work->($x1);
-    $xs = $XATS2PL_list_vt_tail_raw0->($xs);
-  }
-  return;
-}
-;
+  my ($c1, $c2) = @_;
+  return ($c1 < $c2);
+};
 ##
-my #
-$XATS2PL_list_vt_forall0_f1un =
+my
+$XATS2PL_char_gt =
 sub {
-  my ($xs, $test, $free) = @_;
-  while (!XATS2PL_list_vt_nilq1($xs)) {
-    my $x1 = $XATS2PL_list_vt_head_raw1->($xs);
-    if ($test->($x1)) {
-      $xs = $XATS2PL_list_vt_tail_raw0->($xs);
-    } else {
-      $xs = $XATS2PL_list_vt_tail_raw0->($xs);
-      $XATS2PL_list_vt_foritm0_f1un->($xs, $free);
-      return FALSE;
-    }
-  }
-  return TRUE;
-}
-;
+  my ($c1, $c2) = @_;
+  return ($c1 > $c2);
+};
+##
+my
+$XATS2PL_char_eq =
+sub {
+  my ($c1, $c2) = @_;
+  return ($c1 == $c2);
+};
+##
+my
+$XATS2PL_char_lte =
+sub {
+  my ($c1, $c2) = @_;
+  return ($c1 <= $c2);
+};
+##
+my
+$XATS2PL_char_gte =
+sub {
+  my ($c1, $c2) = @_;
+  return ($c1 >= $c2);
+};
+##
+my
+$XATS2PL_char_neq =
+sub {
+  my ($c1, $c2) = @_;
+  return ($c1 != $c2);
+};
+##
+########################################################################.
+##
+my
+$XATS2PL_char_sub_char =
+sub {
+  my ($c1, $c2) = @_;
+  return ($c1 - $c2);
+};
+##
+my
+$XATS2PL_char_add_sint =
+sub {
+  my ($c1, $i2) = @_;
+  return
+  (($c1 + $i2) % 256);
+};
+##
+########################################################################.
+##
+my
+$XATS2PL_char_make_sint =
+sub {
+  my ($i0) = @_; return $i0;
+};
+##
+my
+$XATS2PL_sint_make_char =
+sub {
+  my ($ch) = @_; return $ch;
+};
+##
+########################################################################.
+##
+my
+$XATS2PL_strn_print = undef;
+##
+my
+$XATS2PL_char_print =
+sub {
+  my ($c0) = @_;
+  $XATS2PL_strn_print->(chr($c0)); return;
+};
 ##
 ########################################################################.
 ########################################################################.
-## end of [ATS3-XANADU/prelude/DATS/CATS/PL/list000.cats]
+## end of
+## [ATS3-XANADU
+## /srcgen2/xats2pl/srcgen1/prelude/DATS/CATS/PL/char000.cats]
 ########################################################################.
 ########################################################################.

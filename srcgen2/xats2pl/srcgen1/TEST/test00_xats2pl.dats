@@ -10,12 +10,11 @@ For testing xats2pl!
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #include
 "prelude/HATS/prelude_dats.hats"
+(* ****** ****** *)
 #include
-"prelude/HATS/prelude_PL_dats.hats"
-//
+"./../prelude/HATS/prelude_PL_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //

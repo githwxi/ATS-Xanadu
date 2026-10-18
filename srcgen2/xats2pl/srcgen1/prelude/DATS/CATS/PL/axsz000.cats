@@ -29,104 +29,85 @@
 ########################################################################.
 ##
 ## Author: Hongwei Xi
-## Sun Sep  6 12:08:27 AM EDT 2026
+## Sun Sep  6 10:51:25 AM EDT 2026
 ## Authoremail: gmhwxiATgmailDOTcom
 ##
 ########################################################################.
 ########################################################################.
 ##
 ## Translated by Codex
-## from ./../PY/char000.cats
+## from ./../PY/axsz000.cats
 ##
 ########################################################################.
 ##
 my
-$XATS2PL_char_lt =
+$XATS2PL_a1sz_length =
 sub {
-  my ($c1, $c2) = @_;
-  return ($c1 < $c2);
-};
-##
-my
-$XATS2PL_char_gt =
-sub {
-  my ($c1, $c2) = @_;
-  return ($c1 > $c2);
-};
-##
-my
-$XATS2PL_char_eq =
-sub {
-  my ($c1, $c2) = @_;
-  return ($c1 == $c2);
-};
-##
-my
-$XATS2PL_char_lte =
-sub {
-  my ($c1, $c2) = @_;
-  return ($c1 <= $c2);
-};
-##
-my
-$XATS2PL_char_gte =
-sub {
-  my ($c1, $c2) = @_;
-  return ($c1 >= $c2);
-};
-##
-my
-$XATS2PL_char_neq =
-sub {
-  my ($c1, $c2) = @_;
-  return ($c1 != $c2);
-};
+  my ($A0) = @_;
+  return scalar @$A0;
+}
+;
 ##
 ########################################################################.
 ##
 my
-$XATS2PL_char_sub_char =
+$XATS2PL_a1sz_lget_at =
 sub {
-  my ($c1, $c2) = @_;
-  return ($c1 - $c2);
-};
+  my ($A, $i0) = @_;
+  return $A->[$i0];
+}
+;
 ##
 my
-$XATS2PL_char_add_sint =
+$XATS2PL_a1sz_lset_at =
 sub {
-  my ($c1, $i2) = @_;
-  return
-  (($c1 + $i2) % 256);
-};
+  my ($A, $i0, $x1) = @_;
+  $A->[$i0] = $x1; return;
+}
+;
 ##
 ########################################################################.
 ##
 my
-$XATS2PL_char_make_sint =
+$XATS2PL_a1sz_make_ncpy =
 sub {
-  my ($i0) = @_; return $i0;
-};
+  my ($n0, $x0) = @_;
+  my $A0 = [];
+  for (my $i0 = 0; $i0 < $n0; $i0 += 1) {
+    push @$A0, $x0;
+  }
+  return $A0;
+}
+;
 ##
 my
-$XATS2PL_sint_make_char =
+$XATS2PL_a1sz_make_nfun =
 sub {
-  my ($ch) = @_; return $ch;
-};
+  my ($n0, $fopr) = @_;
+  my $A0 = [];
+  for (my $i0 = 0; $i0 < $n0; $i0 += 1) {
+    push @$A0, $fopr->($i0);
+  }
+  return $A0;
+}
+;
 ##
 ########################################################################.
 ##
 my
-$XATS2PL_strn_print = undef;
-##
-my
-$XATS2PL_char_print =
+$XATS2PL_a1sz_make_fwork =
 sub {
-  my ($c0) = @_;
-  $XATS2PL_strn_print->(chr($c0)); return;
-};
+  my ($fwork) = @_;
+  my $A0 = [];
+  $fwork->(sub { push @$A0, $_[0]; return; });
+  return $A0;
+}
+;
 ##
 ########################################################################.
 ########################################################################.
-## end of [ATS3-XANADU/prelude/DATS/CATS/PL/char000.cats]
+## end of
+## [ATS3-XANADU
+## /srcgen2/xats2pl/srcgen1/prelude/DATS/CATS/PL/axsz000.cats]
 ########################################################################.
 ########################################################################.

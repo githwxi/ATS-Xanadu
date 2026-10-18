@@ -9,19 +9,19 @@
 ## Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ## All rights reserved
 ##
-## ATS is free software; you can redistribute it and/or modify it under
-## the terms of the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
-## Free Software Foundation; either version 3, or (at your option) any
+## ATS is free software;  you can  redistribute it and/or modify it under
+## the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
+## Free Software Foundation; either version 3, or (at  your  option)  any
 ## later version.
-##
+## 
 ## ATS is distributed in the hope that it will be useful, but WITHOUT ANY
-## WARRANTY; without even the implied warranty of MERCHANTABILITY or
-## FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+## WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
+## FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
 ## for more details.
-##
-## You should have received a copy of the GNU General Public License
-## along with ATS; see the file COPYING. If not, please write to the
-## Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston, MA
+## 
+## You  should  have  received  a  copy of the GNU General Public License
+## along  with  ATS;  see the  file COPYING.  If not, please write to the
+## Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
 ## 02110-1301, USA.
 ##
 
@@ -29,64 +29,52 @@
 ########################################################################.
 ##
 ## Author: Hongwei Xi
-## Sun Jun 28 11:49:14 AM EDT 2026
+## Sun Sep  6 10:28:50 AM EDT 2026
 ## Authoremail: gmhwxiATgmailDOTcom
 ##
 ########################################################################.
 ########################################################################.
 ##
-## HX-2026-06-28:
-## This one is translate by ChatGPT from
-## [PY/bool000.cats] and then edited by me!
+## Translated by Codex
+## from ./../PY/list000.cats
 ##
 ########################################################################.
 ##
-my
-$XATS2PL_bool_lt =
+my #
+$XATS2PL_list_vt_foritm0_f1un =
 sub {
-  my ($b1, $b2) = @_;
-  return ($b1 < $b2); ## HX: lt
-}
-;
-my
-$XATS2PL_bool_gt =
-sub {
-  my ($b1, $b2) = @_;
-  return ($b1 > $b2); ## HX: gt
-}
-;
-my
-$XATS2PL_bool_eq =
-sub {
-  my ($b1, $b2) = @_;
-  return ($b1 == $b2); ## HX: eq
+  my ($xs, $work) = @_;
+  while (!XATS2PL_list_vt_nilq1($xs)) {
+    my $x1 = $XATS2PL_list_vt_head_raw1->($xs);
+    $work->($x1);
+    $xs = $XATS2PL_list_vt_tail_raw0->($xs);
+  }
+  return;
 }
 ;
 ##
-my
-$XATS2PL_bool_lte =
+my #
+$XATS2PL_list_vt_forall0_f1un =
 sub {
-  my ($b1, $b2) = @_;
-  return ($b1 <= $b2); ## HX: lte
-}
-;
-my
-$XATS2PL_bool_gte =
-sub {
-  my ($b1, $b2) = @_;
-  return ($b1 >= $b2); ## HX: gte
-}
-;
-my
-$XATS2PL_bool_neq =
-sub {
-  my ($b1, $b2) = @_;
-  return ($b1 != $b2); ## HX: neq
+  my ($xs, $test, $free) = @_;
+  while (!XATS2PL_list_vt_nilq1($xs)) {
+    my $x1 = $XATS2PL_list_vt_head_raw1->($xs);
+    if ($test->($x1)) {
+      $xs = $XATS2PL_list_vt_tail_raw0->($xs);
+    } else {
+      $xs = $XATS2PL_list_vt_tail_raw0->($xs);
+      $XATS2PL_list_vt_foritm0_f1un->($xs, $free);
+      return FALSE;
+    }
+  }
+  return TRUE;
 }
 ;
 ##
 ########################################################################.
 ########################################################################.
-## end of [ATS3-XANADU/prelude/DATS/CATS/PL/bool000.cats]
+## end of
+## [ATS3-XANADU
+## /srcgen2/xats2pl/srcgen1/prelude/DATS/CATS/PL/list000.cats]
 ########################################################################.
 ########################################################################.

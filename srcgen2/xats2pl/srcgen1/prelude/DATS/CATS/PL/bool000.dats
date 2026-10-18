@@ -30,74 +30,125 @@
 //
 (*
 Author: Hongwei Xi
-Sun Sep  6 10:28:50 AM EDT 2026
+Sun Jun 28 11:52:26 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+bool_lt
+(b1, b2) =
+(
+XATS2PL_bool_lt
+  (b1, b2)) where
+{
 #extern
 fun
-XATS2PL_list_vt_foritm0$f1un
-{x0:vt}
-( xs
-: list_vt(x0)
-, work
-: (~x0) -> void): void
-= $extnam()//extern(./list000.cats)
+XATS2PL_bool_lt
+(b1: bool, b2: bool): bool = $extnam()
+}
 //
 (* ****** ****** *)
 //
 #impltmp
-< x0:vt >
-list_vt_foritm0
-  (  xs  ) =
-let
-fun
-work(x0: ~x0): void =
+<(*tmp*)>
+bool_gt
+(b1, b2) =
 (
-  foritm$work0<x0>(x0))
-in//let
-XATS2PL_list_vt_foritm0$f1un{x0}(xs, work)
-end(*let*)//end-of-[ list_vt_foritm0<x0>(xs) ]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
+XATS2PL_bool_gt
+  (b1, b2)) where
+{
 #extern
 fun
-XATS2PL_list_vt_forall0$f1un
-{x0:vt}
-( xs
-: list_vt(x0)
-, test
-: (~x0) -> bool
-, free
-: (~x0) -> void): bool
-= $extnam()//extern(./list000.cats)
+XATS2PL_bool_gt
+(b1: bool, b2: bool): bool = $extnam()
+}
 //
 (* ****** ****** *)
 //
 #impltmp
-< x0:vt >
-list_vt_forall0
-  (  xs  ) =
-let
-fun
-test(x0: ~x0): bool =
+<(*tmp*)>
+bool_eq
+(b1, b2) =
 (
-  forall$test0<x0>(x0))
+XATS2PL_bool_eq
+  (b1, b2)) where
+{
+#extern
 fun
-free(x0: ~x0): void = g_free<x0>(x0)
-in//let
-XATS2PL_list_vt_forall0$f1un{x0}(xs, test, free)
-end(*let*)//end-of-[list_vt_forall0<x0>(xs)]
+XATS2PL_bool_eq
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_lte
+(b1, b2) =
+(
+XATS2PL_bool_lte
+  (b1, b2)) where
+{
+#extern
+fun
+XATS2PL_bool_lte
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_gte
+(b1, b2) =
+(
+XATS2PL_bool_gte
+  (b1, b2)) where
+{
+#extern
+fun
+XATS2PL_bool_gte
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_neq
+(b1, b2) =
+(
+XATS2PL_bool_neq
+  (b1, b2)) where
+{
+#extern
+fun
+XATS2PL_bool_neq
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_print(b0) =
+(
+if b0
+then strn_print<>("true")
+else strn_print<>("false"))//end(impl)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-XANADU/prelude/DATS/CATS/PL/list000.dats] *)
+(***********************************************************************)
+(*
+end of [
+ATS3-XANADU/srcgen2/xats2pl/srcgen1/prelude/DATS/CATS/PL/bool000.dats] *)
+(***********************************************************************)
 (***********************************************************************)

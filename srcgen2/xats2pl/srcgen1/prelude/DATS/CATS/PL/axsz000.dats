@@ -30,74 +30,137 @@
 //
 (*
 Author: Hongwei Xi
-Wed Jan 14 02:42:28 PM EST 2026
+Sun Sep  6 10:51:25 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
+#absimpl
+a1sz_vt_i0_tx
+(a: vt, n: i0) = $extbox("a1sz_tx")
+#absimpl
+a1sz_vt_i0_vx
+(a: vt, n: i0) = $extbox("a1sz_vx")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+a1sz_length
+ {n:i0}( A ) =
+(
+XATS2PL_a1sz_length
+ {a}{n}( A )) where
+{
 #extern
 fun
-XATS2PL_strx_vt_forall0$f1un
-{x0:vt}
-( xs
-: strx_vt(x0)
-, test
-: (~x0) -> bool): bool
-= $extnam()//extern(./strx000.cats)
+XATS2PL_a1sz_length
+{a:vt}
+{n:i0}
+(A: a1sz(a, n)): sint(n) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+a1sz_lget$at
+  (A, i) =
+(
+XATS2PL_a1sz_lget$at
+  (A, i)) where
+{
+#extern
+fun
+XATS2PL_a1sz_lget$at
+{a:vt}
+( A
+: a1sz(a)
+, i: nint): (owed(a) | a) = $extnam()
+}
+//
+#impltmp
+< a: vt >
+a1sz_lset$at
+  (f | A, i, x) =
+(
+XATS2PL_a1sz_lset$at
+  (f | A, i, x)) where
+{
+#extern
+fun
+XATS2PL_a1sz_lset$at
+{a:vt}
+(f:owed(a)
+|A:a1sz(a),i:nint,x:a): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+a1sz_make_ncpy
+  (n, x) =
+(
+XATS2PL_a1sz_make_ncpy
+  (n, x)) where
+{
+#extern
+fun
+XATS2PL_a1sz_make_ncpy
+{a:t0}(n:nint, x:a): a1sz(a) = $extnam()
+}
 //
 (* ****** ****** *)
 //
 #impltmp
-< x0:vt >
-strx_vt_forall0
-  (  xs  ) =
-let
-fun
-test(x0: ~x0): bool =
+< a: vt >
+a1sz_make_nfun
+  (n, f) =
 (
-  forall$test0<x0>(x0))
-in//let
-XATS2PL_strx_vt_forall0$f1un{x0}(xs, test)
-end(*let*)//end-of-[strx_vt_forall0<x0>(xs)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
+XATS2PL_a1sz_make_nfun
+  (n, f)) where
+{
 #extern
 fun
-XATS2PL_strx_vt_filter0$f1un
-{x0:vt}
-( xs
-: strx_vt(x0)
-, test
-: (!x0) -> bool
-, free
-: (~x0) -> void): strx_vt(x0)
-= $extnam()//extern(./strx000.cats)
+XATS2PL_a1sz_make_nfun
+{a:t0}
+(n:nint, f:(nint)->(a)): a1sz(a) = $extnam()
+}
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 < x0:vt >
-strx_vt_filter0
-  (  xs  ) =
-let
-fun
-test(x0: !x0): bool =
+a1sz_make_fwork
+  (fwork) =
 (
-  filter$test1<x0>(x0))
+XATS2PL_a1sz_make_fwork
+  (fwork)) where
+{
+#extern
 fun
-free(x0: ~x0): void = g_free<x0>(x0)
-in//let
-XATS2PL_strx_vt_filter0$f1un{x0}(xs, test, free)
-end(*let*)//end-of-[strx_vt_filter0<x0>(xs)]
+XATS2PL_a1sz_make_fwork
+{ x0:vt }
+(
+fwork:
+((~x0) -> void) -> void): a1sz(x0) = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-XANADU/prelude/DATS/CATS/PL/strx000.dats] *)
+(***********************************************************************)
+(***********************************************************************)
+(*
+end of [
+ATS3-XANADU/srcgen2/xats2pl/srcgen1/prelude/DATS/CATS/PL/axsz000.dats] *)
+(***********************************************************************)
 (***********************************************************************)
