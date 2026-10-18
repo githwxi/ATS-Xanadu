@@ -77,6 +77,6 @@ time make -C srcgen2/xats2cm/srcgen1/UTIL -f Makefile_xcmemit xats2cm_cmemit01
 #
 ##################################################################
 ##################################################################
-XATS2CM_CMEMIT00=$(XASSETS)/JS/xats2cm/xats2cm_cmemit00_ats2_opt1.js
+XATS2CM_CMEMIT00=$(XASSETS)/JS/xats2cm/bin/xats2cm_cmemit00_ats2_opt1.js
 ##################################################################
 ##################################################################
