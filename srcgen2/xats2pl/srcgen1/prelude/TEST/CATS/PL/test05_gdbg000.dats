@@ -15,33 +15,44 @@ Tue Sep 22 12:30:52 AM EDT 2026
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
-"prelude/HATS/prelude_PL_dats.hats"
+"./../../../..\
+/prelude/HATS/prelude_PL_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#symload ref
-with a0rf_make_1val of 1000
+fun
+fact(n: nint): sint =
+if
+(n > 0)
+then n * fact(n-1) else 1
 //
 (* ****** ****** *)
-//
-val A0 = ref(0)
-val () =
-prints("A0(", type(A0), ") = ", A0, "\n")
-//
 (* ****** ****** *)
 //
-val x0 = get(A0)
-val () =
-prints("x0(", type(x0), ") = ", x0, "\n")
+val
+fact = trace(fact, "fact")
 //
-val () = set(A0, 10)
-val () =
-prints("A0(", type(A0), ") = ", A0, "\n")
+val (  ) =
+(20).foritm
+(lam(n:nint)=>g_void(fact(n)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
+strn_append =
+trace(strn_append<>, "strn_append")
+val strn_abc = strn_append("a", "bc")
+val strn_xyz = strn_append("x", "yz")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_TEST_CATS_PL_test01_a0rf000.dats] *)
+(*)
+end of [
+ATS3-XANADU/
+srcgen2/xats2pl/srcgen1/prelude/TEST/CATS/PL/test05_gdbg000.dats] *)
+(***********************************************************************)
 (***********************************************************************)

@@ -44,14 +44,12 @@ testall:: test10; $(PERL) OUTS/$<_out.pl
 ########################################################################
 MYROOT=\
 "./../../../.."
-SRCGEN2_SRCGENX=\
-$(MYROOT)/srcgen2/xats2pl/srcgenx
 SRCGEN2_XSHARED=\
-$(MYROOT)/srcgen2/xats2pl/srcgenx/xshared/runtime
+$(MYROOT)/xshared/runtime
 SRCGEN2_XATS2PL=\
-$(MYROOT)/srcgen2/xats2pl/srcgenx/UTIL/xats2pl_plemit01_ats2.js
+$(MYROOT)/UTIL/xats2pl_plemit01_ats2.js
 SRCGEN2_XATS2PL=\
-$(MYROOT)/srcgen2/xats2pl/srcgenx/UTIL/xats2pl_plemit01_ats3.js
+$(MYROOT)/UTIL/xats2pl_plemit01_ats3.js
 ########################################################################
 ########################################################################
 test00:: ; \

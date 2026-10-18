@@ -28,7 +28,8 @@ strn_print
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
-"prelude/HATS/prelude_PL_dats.hats"
+"./../../../..\
+/prelude/HATS/prelude_PL_dats.hats"
 //
 (* ****** ****** *)
 //
@@ -160,5 +161,9 @@ val () = printsln
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_TEST_CATS_PL_test04_strn000.dats] *)
+(*)
+end of [
+ATS3-XANADU/
+srcgen2/xats2pl/srcgen1/prelude/TEST/CATS/PL/test04_strn000.dats] *)
+(***********************************************************************)
 (***********************************************************************)

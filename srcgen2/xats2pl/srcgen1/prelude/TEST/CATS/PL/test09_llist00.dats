@@ -15,7 +15,8 @@ Tue Sep 22 12:30:52 AM EDT 2026
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
-"prelude/HATS/prelude_PL_dats.hats"
+"./../../../..\
+/prelude/HATS/prelude_PL_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -58,5 +59,9 @@ val () = print0s("ns = ", ns, "\n")
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_TEST_CATS_PL_test09_llist00.dats] *)
+(*)
+end of [
+ATS3-XANADU/
+srcgen2/xats2pl/srcgen1/prelude/TEST/CATS/PL/test09_llist00.dats] *)
+(***********************************************************************)
 (***********************************************************************)

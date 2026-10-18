@@ -11,69 +11,64 @@ Tue Sep 22 12:30:52 AM EDT 2026
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
 (* ****** ****** *)
-#symload
-array with a1rf_make_ncpy
-#symload
-array with a1rf_make_nfun
-(* ****** ****** *)
-(* ****** ****** *)
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
-"prelude/HATS/prelude_PL_dats.hats"
+"./../../../..\
+/prelude/HATS/prelude_PL_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 val A0 =
-array(10, 1)
+arrsz(10, 1)
 val () =
 (
   printsln("A0 = ", A0))
-where
-{
-#impltmp
-{ x0:t0 }
-gasq_length
-<a1rf(x0)><x0>(A) = ( 10 ) }
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 val N = 10
-val A1 =
-array
+val A0 =
+arrsz
 (N, lam(i:sint) => (i+1))
 val () =
 printsln
-("A1(", type(A1), ") = ", A1)
-where
-{
-#impltmp
-{ x0:t0 }
-gasq_length<a1rf(x0)><x0>(A1) = (N)
-}
+("A0(", type(A0), ") = ", A0)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 fact(n: nint) =
 GSEQ
 (
-array
+arrsz
 (n, lam(i:sint) => i+1)).prod()
-where
-{
-#impltmp
-{ x0:t0 }
-gasq_length<a1rf(x0)><x0>(A) = n }
 //
 val () =
+printsln("fact(10) = ", fact(10))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val xs =
+list
+(10, lam(i:nint) => i*i)
+val ys = a1sz_make_list(xs)
+val () =
+printsln("ys(", type(ys), ") = ", ys)
+val () =
 (
-  printsln("fact(10) = ", fact(10)))
+GSEQ(ys).foritm
+  (lam(x) => print( x )); printsln())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_TEST_CATS_PL_test02_a1rf000.dats] *)
+(*)
+end of [
+ATS3-XANADU/
+srcgen2/xats2pl/srcgen1/prelude/TEST/CATS/PL/test03_a1sz000.dats] *)
+(***********************************************************************)
 (***********************************************************************)

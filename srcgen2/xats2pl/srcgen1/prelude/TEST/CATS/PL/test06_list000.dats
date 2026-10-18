@@ -15,7 +15,8 @@ Tue Sep 22 12:30:52 AM EDT 2026
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
-"prelude/HATS/prelude_PL_dats.hats"
+"./../../../..\
+/prelude/HATS/prelude_PL_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -80,5 +81,9 @@ val ( ) = prints("list_make_fwork(...) = ", xs2, "\n")
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_TEST_CATS_PL_test06_list000.dats] *)
+(*)
+end of [
+ATS3-XANADU/
+srcgen2/xats2pl/srcgen1/prelude/TEST/CATS/PL/test06_list000.dats] *)
+(***********************************************************************)
 (***********************************************************************)
