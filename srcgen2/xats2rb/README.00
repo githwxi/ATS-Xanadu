@@ -1,6 +1,9 @@
 ############################################################
 ############################################################
-This project attempts to implement a compiler from
-ATS3 to Ruby.
+This project attempts to implement a compiler from ATS3 to Ruby.
+############################################################
+I simply use AI (Codex) to generate xats2rb this time. Given that
+xats2rb is so close to xats2pl, the AI-generated code looks pretty
+much like my own manually written code (in ATS3).
 ############################################################
 ############################################################
