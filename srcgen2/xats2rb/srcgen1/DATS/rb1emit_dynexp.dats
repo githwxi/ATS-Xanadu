@@ -1,0 +1,2661 @@
+(***********************************************************************)
+(*                                                                     *)
+(*                         Applied Type System                         *)
+(*                                                                     *)
+(***********************************************************************)
+
+(*
+** ATS/Xanadu - Unleashing the Potential of Types!
+** Copyright (C) 2024-2026 Hongwei Xi, ATS Trustful Software, Inc.
+** All rights reserved
+**
+** ATS is free software;  you can  redistribute it and/or modify it under
+** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
+** Free Software Foundation; either version 3, or (at  your  option)  any
+** later version.
+** 
+** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
+** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
+** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
+** for more details.
+** 
+** You  should  have  received  a  copy of the GNU General Public License
+** along  with  ATS;  see the  file COPYING.  If not, please write to the
+** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
+** 02110-1301, USA.
+*)
+
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+Author: Codex
+Sun Oct 18 11:21:38 AM EDT 2026
+*)
+(*
+Author: Hongwei Xi
+(*
+Sat Sep  5 08:00:29 PM EDT 2026
+*)
+Authoremail: gmhwxiATgmailDOTcom
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dpre.hats"
+(* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"./../HATS/libxatsopt.hats"
+#include
+"./../HATS/libxats2js.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./../SATS/rb1emit.sats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*DATS*)="./../DATS/rb1emit.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
+(* ****** ****** *)
+#symload lctn with d2con_get_lctn
+#symload lctn with d2cst_get_lctn
+(* ****** ****** *)
+#symload lctn with i1val_lctn$get
+(* ****** ****** *)
+#symload lctn with i1cmp_lctn$get
+#symload ival with i1cmp_ival$get
+#symload ilts with i1cmp_ilts$get
+(* ****** ****** *)
+#symload node with i1cls_node$get
+(* ****** ****** *)
+#symload node with t1imp_node$get
+(* ****** ****** *)
+#symload lctn with i1dcl_lctn$get
+#symload node with i1dcl_node$get
+(* ****** ****** *)
+(* ****** ****** *)
+#symload filr with envx2js_filr$get
+#symload nind with envx2js_nind$get
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
+EXCPTCON_BASE = 10000
+//
+(* ****** ****** *)
+//
+fun
+d2con_ctag$get
+(dcon: d2con): sint =
+let
+//
+val
+ctag =
+d2con_get_ctag(dcon)
+//
+in//let
+//
+if ctag >= 0
+then ctag else
+let
+val loc0 = dcon.lctn()
+in//let
+EXCPTCON_BASE + 
+postn_get_ntot(loc0.pbeg())
+end//let
+//
+end//end-of-[d2con_ctag$get]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fprintln
+(filr: FILR): void =
+(
+strn_fprint("\n",filr))//endfun
+fun
+smiclnln
+(filr: FILR): void =
+(
+strn_fprint("\n",filr))//endfun
+//
+(* ****** ****** *)
+//
+fun
+loctnfpr
+(filr: FILR
+,loc0: loctn): void =
+(
+loctn_fprint(loc0,filr))//endfun
+//
+(* ****** ****** *)
+//
+fun
+i0expfpr
+(filr: FILR
+,iexp: i0exp): void =
+(
+i0exp_fprint(iexp,filr))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2conrb1
+(filr: FILR
+,dcon: d2con): void =
+let
+#impltmp
+g_print$out<>() = filr
+//
+val name =
+(
+  d2con_get_name(dcon))
+//
+in//let
+(
+  prints('"', name, '"') )
+end(*let*)//end-of-[d2conrb1(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2ctgrb1
+(filr: FILR
+,dcon: d2con): void =
+let
+//
+val ctag =
+d2con_ctag$get(dcon)
+//
+in//let
+(
+  print(ctag) ) where
+{
+#impltmp g_print$out<>() = filr
+}
+end(*let*)//end-of-[d2ctgrb1(...)]
+//
+(* ****** ****** *)
+//
+fun
+i0ctgrb1
+(filr: FILR
+,ipat: i0pat): void =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+case+
+ipat.node() of
+//
+|I0Pcon(d2c0) =>
+(
+prints
+("XATSCTAG("
+,'"', name, '"', ",", ctag, ")")
+) where
+{
+  val ctag = d2con_ctag$get(d2c0)
+  val name = d2con_get_name(d2c0) }
+//
+|
+_(*non-I0Pcon*) => prints('"',ipat,'"')
+//
+end(*let*)//end-of-[i0ctgrb1(filr,ipat)]
+//
+(* ****** ****** *)
+//
+fun
+i0pcnrb1
+(filr: FILR
+,ipat: i0pat): void =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+case+
+ipat.node() of
+//
+|I0Pcon(d2c0) =>
+(
+  prints('"', name, '"')) where
+{
+  val name = d2con_get_name(d2c0)
+}
+//
+|
+_(*non-I0Pcon*) => prints('"',ipat,'"')
+//
+end(*let*)//end-of-[i0pcnrb1(filr,ipat)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0pckrb1
+( filr
+, ival, ipat) =
+let
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+conj
+(b0: sint): void =
+(
+if
+(b0 > 0)
+then
+print(" && ") else ())
+//
+(* ****** ****** *)
+//
+fun
+proj
+(i0: sint
+,ival: i1val
+,ipat: i0pat): i1val =
+(
+case-
+ipat.node() of
+//
+|I0Pdapp(i0f0, _) =>
+i1val(loc0,
+  I1Vp1cn(i0f0, ival, i0))
+//
+|I0Ptup0 _ =>
+(
+i1val
+(loc0, I1Vp0rj(ival, i0)))
+//
+|I0Ptup1(tknd, _) =>
+i1val(loc0,
+  I1Vp1rj(tknd, ival, i0))
+//
+) where
+{
+  val loc0 = ival.lctn((*0*))
+}(*where*)//end-of-[proj(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_ipat
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+case+
+ipat.node() of
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Pany _ => ((*void*))
+|I0Pvar _ => ((*void*))
+//
+(* ****** ****** *)
+//
+|I0Pint _ =>
+(
+ f0_int0(b0, ival, ipat))
+|I0Pbtf _ =>
+(
+ f0_btf0(b0, ival, ipat))
+|I0Pchr _ =>
+(
+ f0_chr0(b0, ival, ipat))
+|I0Pflt _ =>
+(
+ f0_flt0(b0, ival, ipat))
+|I0Pstr _ =>
+(
+ f0_str0(b0, ival, ipat))
+//
+(* ****** ****** *)
+//
+|I0Pdap1 _ =>
+(
+  f0_dap1(b0, ival, ipat))
+|I0Pdapp _ =>
+(
+  f0_dapp(b0, ival, ipat))
+//
+(* ****** ****** *)
+//
+|I0Prfpt _ =>
+(
+  f0_rfpt(b0, ival, ipat))
+//
+(* ****** ****** *)
+//
+|I0Ptup0 _ =>
+(
+  f0_tup0(b0, ival, ipat))
+|I0Ptup1 _ =>
+(
+  f0_tup1(b0, ival, ipat))
+(*
+|I0Prcd2 _ =>
+(
+  f0_rcd2(b0, ival, ipat))
+*)
+//
+(* ****** ****** *)
+//
+|I0Pbang _ =>
+(
+  f0_bang(b0, ival, ipat))
+//
+|I0Pflat _ =>
+(
+  f0_flat(b0, ival, ipat))
+//
+|I0Pfree _ =>
+(
+  f0_free(b0, ival, ipat))
+//
+(* ****** ****** *)
+//
+|
+_(*otherwise*) =>
+(
+conj(b0); prints("raise(NotImplementedError, \"unsupported ATS pattern\")"))
+//
+//end-of-[f0_ipat(b0,ival,ipat)]
+//
+(* ****** ****** *)
+//
+and
+f0_int0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pint
+(  tint  ) = ipat.node()
+//
+#impltmp
+g_print
+<token>(x) = i0intrb1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valrb1(filr, x)
+//
+in//let
+(conj(b0)
+;print("XATS000_inteq(")
+;prints(ival, ", ", tint, ")"))
+end(*let*)//end-of-[f0_int0(...)]
+//
+and
+f0_btf0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pbtf
+(  btf0  ) = ipat.node()
+//
+#impltmp
+g_print
+<sym_t>(x) = i0btfrb1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valrb1(filr, x)
+//
+in//let
+(conj(b0)
+;print("XATS000_btfeq(")
+;prints(ival, ", ", btf0, ")"))
+end(*let*)//end-of-[f0_btf0(...)]
+//
+and
+f0_chr0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pchr
+(  tchr  ) = ipat.node()
+//
+#impltmp
+g_print
+<token>(x) = i0chrrb1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valrb1(filr, x)
+//
+in//let
+(conj(b0)
+;print("XATS000_chreq(")
+;prints(ival, ", ", tchr, ")"))
+end(*let*)//end-of-[f0_chr0(...)]
+//
+and
+f0_flt0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pflt
+(  tflt  ) = ipat.node()
+//
+#impltmp
+g_print
+<token>(x) = i0fltrb1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valrb1(filr, x)
+//
+in//let
+(conj(b0)
+;print("XATS000_flteq(")
+;prints(ival, ", ", tflt, ")"))
+end(*let*)//end-of-[f0_flt0(...)]
+//
+and
+f0_str0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pstr
+(  tstr  ) = ipat.node()
+//
+#impltmp
+g_print
+<token>(x) = i0strrb1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valrb1(filr, x)
+//
+in//let
+(conj(b0)
+;print("XATS000_streq(")
+;prints(ival, ", ", tstr, ")"))
+end(*let*)//end-of-[f0_str0(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_dap1
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pdap1
+(  i0f0  ) = ipat.node()
+//
+#impltmp
+g_print
+<i0pat>(x) = i0ctgrb1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valrb1(filr, x)
+//
+in//let
+(conj(b0)
+;print("XATS000_ctgeq(")
+;prints(ival, ", ", i0f0, ")"))
+end(*let*)//end-of-[f0_dap1(...)]
+//
+and
+f0_dapp
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Pdapp
+(i0f0, i0ps) = ipat.node()
+//
+#impltmp
+g_print
+<i0pat>(x) = i0ctgrb1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valrb1(filr, x)
+//
+in//let
+(
+conj(b0);
+print("XATS000_ctgeq(");
+prints(ival,", ",i0f0, ")");
+f0_ipatlst(b0+1,0,ival,ipat,i0ps))
+end(*let*)//end-of-[f0_dapp(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and
+f0_rfpt
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Prfpt
+(i0p1, i0p2) = ipat.node()
+//
+val () = f0_ipat(b0,ival,i0p1)
+val () = f0_ipat(b0,ival,i0p2)
+//
+end(*let*)//end-of-[f0_rfpt(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and
+f0_tup0
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Ptup0 i0ps = ipat.node()
+//
+in//let
+(
+f0_ipatlst(b0+0,0,ival,ipat,i0ps))
+end(*let*)//end-of-[f0_tup0(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_tup1
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+let
+//
+val-
+I0Ptup1
+(tknd, i0ps) = ipat.node()
+//
+in//let
+(
+f0_ipatlst(b0+0,0,ival,ipat,i0ps))
+end(*let*)//end-of-[f0_tup1(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and
+f0_bang
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+(
+f0_ipat(b0, ival, i0p1)
+) where
+{
+val-I0Pbang(i0p1) = ipat.node()
+}(*where*)//end-of-[f0_bang(...)]
+//
+and
+f0_flat
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+(
+f0_ipat(b0, ival, i0p1)
+) where
+{
+val-I0Pflat(i0p1) = ipat.node()
+}(*where*)//end-of-[f0_flat(...)]
+//
+and
+f0_free
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+(
+f0_ipat(b0, ival, i0p1)
+) where
+{
+val-I0Pfree(i0p1) = ipat.node()
+}(*where*)//end-of-[f0_free(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and
+f0_ipatlst
+( b0: sint
+, i0: sint
+, ival: i1val
+, ipat: i0pat
+, i0ps: i0patlst): void =
+(
+case+ i0ps of
+|
+list_nil
+( (*void*) ) => ()
+|
+list_cons
+(i0p1, i0ps) =>
+if
+i0pat_allq(i0p1)
+then
+f0_ipatlst
+(b0, i0+1, ival, ipat, i0ps)
+else
+let
+val i1v1 =
+proj(i0, ival, ipat)
+in//let
+f0_ipat(b0, i1v1, i0p1);
+f0_ipatlst
+(b0+1, i0+1, ival, ipat, i0ps)
+end//let
+)(*case+*)//end-of-[f0_ipatlst(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+in
+( if
+  i0pat_allq(ipat)
+  then print("true")
+  else f0_ipat(0(*conj*), ival, ipat) )
+end(*let*)//end-(i0pckrb1(filr,ival,ipat))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xtrcdrb1
+(filr: FILR
+,tknd: token): void =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+case+
+tknd.node() of
+//
+|T_TRCD10(knd0) =>
+(
+prints("XATSTRCD(", knd0, ")"))
+|T_TRCD20(knd0) =>
+(
+prints("XATSTRCD(", knd0, ")"))
+//
+|_(*otherwise*) =>
+(
+prints
+("XATSTRCD(", "'", tknd, "'", ")"))
+//
+end(*let*)//end-of-[xtrcdrb1(filr,tknd)]
+//
+(* ****** ****** *)
+//
+fun
+labelrb1
+(filr: FILR
+,lab0: label): void =
+(
+case+ lab0 of
+|
+LABint(int) => print(int)
+|
+LABsym(sym) =>
+let
+val nam =
+symbl_get_name(sym) in//let
+  prints("'", nam, "'") end//let
+) where
+{
+//
+  #impltmp g_print$out<>() = filr
+//
+}(*where*)//end-of-[labelrb1(filr,lab0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+t1imploc
+(filr: FILR
+,timp: t1imp): void =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+case+
+timp.node() of
+//
+|T1IMPall1
+(dcst
+,t2js, dopt) =>
+(
+case+ dopt of
+|
+optn_nil() =>
+let
+val (  ) =
+prints("T1IMPall1(", dcst, ")")
+end//let
+|
+optn_cons(idcl) =>
+let
+val loc0 = idcl.lctn((*0*))
+val (  ) = prints("\
+T1IMPall1(", dcst, ", ", loc0, ")")
+end//let
+)
+//
+|T1IMPallx
+(dcst
+,t2js, dopt) =>
+(
+case+ dopt of
+|
+optn_nil() =>
+let
+val (  ) =
+prints("T1IMPallx(", dcst, ")")
+end//let
+|
+optn_cons(idcl) =>
+let
+val loc0 = idcl.lctn((*0*))
+val (  ) = prints
+("T1IMPallx(", dcst, ", ", loc0, ")")
+end//let
+)
+//
+end(*let*)//end-of(t1imploc(filr,timp))
+//
+(* ****** ****** *)
+//
+fun
+t1impdcl
+(filr: FILR
+,timp: t1imp): void =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+case+
+timp.node() of
+//
+|T1IMPall1
+(dcst
+,t2js, dopt) =>
+(
+case+ dopt of
+|
+optn_nil() =>
+let
+val (  ) = prints
+("T1IMPall1(",dcst,"<",t2js,">",")")
+end//let
+|
+optn_cons(idcl) =>
+let
+val (  ) = prints
+("T1IMPall1(",dcst,"<",t2js,">",";",idcl,")")
+end//let
+)
+//
+|T1IMPallx
+(dcst
+,t2js, dopt) =>
+(
+case+ dopt of
+|
+optn_nil() =>
+let
+val (  ) = prints
+("T1IMPallx(",dcst,"<",t2js,">",")")
+end//let
+|
+optn_cons(idcl) =>
+let
+val (  ) = prints
+("T1IMPallx(",dcst,"<",t2js,">",";",idcl,")")
+end//let
+)
+//
+end where
+{
+//
+#impltmp
+g_print
+<i1dcl>(idcl) =
+(
+  praux(idcl)) where
+{
+//
+fun
+praux
+(idcl: i1dcl): void =
+(
+case+
+idcl.node() of
+//
+|
+I1Dtmpsub
+(svts, idcl) =>
+(
+print(
+"I1Dtmpsub(");
+prints(svts, ";");
+praux(idcl); print(")"))//tmpsub
+//
+|
+I1Dfundclst
+(tknd, tqas
+,d2cs, i1fs) =>
+(
+prints(
+"I1Dfundclst(", d2cs, ")"))//funs
+//
+|
+I1Dimplmnt0
+(tknd, stmp
+,dimp, fjas,icmp) =>
+(
+prints(
+"I1Dimplmnt0(", dimp, ")"))//impl
+//
+|
+_(* else *) => print("...I1DCL...")
+)
+//
+}(*where*)//end-of-[g_print<i1dcl>]
+//
+}(*where*)//end-of(t1impdcl(filr,timp))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fjas1rb1
+(filr,fjas) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+fnx
+loop1
+(i0: sint
+,fjas: fjarglst): void =
+(
+case+ fjas of
+|
+list_nil
+((*void*)) => ((*0*))
+|
+list_cons
+(fja1, fjas) =>
+(
+  loop2(i0, fja1, fjas))
+)
+//
+and
+loop2
+(i0: sint
+,fja1: fjarg
+,fjas: fjarglst): void =
+(
+case+
+fja1.node() of
+|FJARGdarg(i1bs) =>
+(
+  loop3(i0, i1bs, fjas))
+)
+//
+and
+loop3
+(i0: sint
+,i1bs: i1bndlst
+,fjas: fjarglst): void =
+(
+case+ i1bs of
+|
+list_nil() =>
+(
+  loop1(i0, fjas))
+|
+list_cons(_, i1bs) =>
+( if
+  (i0 > 1)
+  then
+  print(", ")
+; prints("arg", i0)
+; loop3(i0+1, i1bs, fjas))
+)
+//
+in
+(print("(")
+;loop1(1(*i0*),fjas);print(")"))
+end(*let*)//end-of-[fjas1rb1(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1valrb1(filr, ival) =
+let
+//
+(*
+val () =
+prerrsln
+("i1valrb1: ival = ", ival)
+*)
+//
+in//let
+//
+case+
+ival.node() of
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|I1V000
+((*0*)) => prints("nil")
+(* ****** ****** *)
+(* ****** ****** *)
+|I1Vint
+( tint ) => i0intrb1(filr,tint)
+(* ****** ****** *)
+|I1Vbtf
+( btf0 ) => i0btfrb1(filr,btf0)
+(* ****** ****** *)
+|I1Vchr
+( tchr ) => i0chrrb1(filr,tchr)
+(* ****** ****** *)
+|I1Vflt
+( tflt ) => i0fltrb1(filr,tflt)
+(* ****** ****** *)
+|I1Vstr
+( tstr ) => i0strrb1(filr,tstr)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vi00
+( int0 ) => i0i00rb1(filr,int0)
+|I1Vb00
+( btf0 ) => i0b00rb1(filr,btf0)
+|I1Vc00
+( chr0 ) => i0c00rb1(filr,chr0)
+|I1Vf00
+( flt0 ) => i0f00rb1(filr,flt0)
+|I1Vs00
+( str0 ) => i0s00rb1(filr,str0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vtop
+( sym0 ) => print( "nil" )
+//
+(* ****** ****** *)
+|I1Vtnm
+( itnm ) => i1tnmrb1(filr,itnm)
+(* ****** ****** *)
+|I1Vcon
+( dcon ) => d2conrb1(filr,dcon)
+(* ****** ****** *)
+|I1Vcst
+( dcst ) => d2cstrb1(filr,dcst)
+(* ****** ****** *)
+|I1Vvar
+( dvar ) => d2varrb1(filr,dvar)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vaddr(i1v1) =>
+(
+  prints("XATSADDR(", i1v1, ")") )
+|I1Vaexp(i0e1) =>
+(
+  prints("XATSAEXP(", i0e1, ")") )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|I1Vp0rj
+( itup,pind ) =>
+(
+prints
+("XATSP0RJ(",itup,"[",pind,"]",")"))
+(* ****** ****** *)
+//
+|I1Vp1cn
+( ipat
+, icon, pind) =>
+(
+print("XATSP1CN(");
+prints
+( ipat
+, ", ", icon, "[",pind,"+1]", ")")
+) where
+{ #impltmp
+  g_print<i0pat>(x) = i0pcnrb1(filr,x) }
+//
+|I1Vp1rj
+( trcd
+, itup, pind) =>
+(
+print("XATSP1RJ(");
+prints
+( trcd
+, ", ", itup, "[", pind, "]", ")"))
+where
+{ #impltmp
+  g_print<token>(x) = xtrcdrb1(filr,x) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vlpcn
+(plab, itup) =>
+( prints
+  ("XATSLPCN(", plab, ", ", itup, ")")
+) where
+{ #impltmp
+  g_print<label>(x) = labelrb1(filr,x) }
+//
+|I1Vlpft
+(plab, itup) =>
+( prints
+  ("XATSLPFT(", plab, ", ", itup, ")")
+) where
+{ #impltmp
+  g_print<label>(x) = labelrb1(filr,x) }
+//
+|I1Vlpbx
+(plab, itup) =>
+( prints
+  ("XATSLPBX(", plab, ", ", itup, ")")
+) where
+{ #impltmp
+  g_print<label>(x) = labelrb1(filr,x) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|
+_(*otherwise*) => i1val_fprint(ival,filr)
+//
+end where
+{
+//
+  #impltmp g_print$out<>() = ( filr )
+//
+  #impltmp
+  g_print<i1val>(x) = i1valrb1(filr, x)
+//
+}(*where*)//end-of-[ i1valrb1(filr,ival) ]
+//
+(* ****** ****** *)
+//
+#implfun
+l1i1vrb1
+(filr, liv0) =
+let
+val+
+I1LAB(lab1, i1v2) = liv0
+in//let
+(
+prints(lab1, " => ", i1v2)) where
+{
+  #impltmp
+  g_print<label>(x) = labelrb1(filr, x)
+  #impltmp
+  g_print<i1val>(x) = i1valrb1(filr, x)
+}
+end(*end*)//end-of-[ l1i1vrb1(filr,ival) ]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1valrb1_list
+( filr: FILR
+, i1vs: i1valist): void =
+(
+list_iforitm(i1vs)) where
+{
+#typedef x0 = i1val
+#typedef xs = i1valist
+#impltmp
+iforitm$work<x0>(i0, x0) =
+(
+if
+(i0 >= 1)
+then
+strnfpr(filr,", ");i1valrb1(filr, x0))
+}(*where*)//end-of-[i1valrb1_list(...)]
+//
+(* ****** ****** *)
+//
+fun
+l1i1vrb1_list
+( filr: FILR
+, livs: l1i1vlst): void =
+(
+list_iforitm(livs)) where
+{
+#typedef x0 = l1i1v
+#typedef xs = l1i1vlst
+#impltmp
+iforitm$work<x0>(i0, x0) =
+(
+if
+(i0 >= 1)
+then
+strnfpr(filr,", ");l1i1vrb1(filr, x0))
+}(*where*)//end-of-[l1i1vrb1_list(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1insrb1
+( filr: FILR
+, iins: i1ins): void =
+let
+//
+(*
+val () =
+prerrsln
+("i1insrb1: iins = ", iins)
+*)
+//
+#impltmp
+g_print
+<label>(x) = labelrb1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valrb1(filr, x)
+//
+in//let
+//
+case+ iins of
+//
+(* ****** ****** *)
+//
+|I1INSdapp
+(i1f0, i1vs) =>
+(
+if
+i1val_conq
+(  i1f0  )
+then//then
+let
+val-
+I1Vcon(dcon) = i1f0.node()
+in//let
+(
+//
+strnfpr
+(filr,"XATSCAPP(");
+d2conrb1(filr,dcon);
+strnfpr(filr,", [");d2ctgrb1(filr,dcon);
+//
+if // if
+list_consq(i1vs) then strnfpr(filr,", ");
+//
+i1valrb1_list(filr,i1vs);strnfpr(filr,"])"))
+end//let
+else//else
+(
+if
+i1val_cfnq
+(  i1f0  )
+then // then
+(
+strnfpr
+(filr,"XATSCAST(");
+strnfpr(filr,"\"");
+i1valrb1(filr,i1f0);strnfpr(filr,"\"");
+strnfpr(filr,", [");
+i1valrb1_list(filr,i1vs);strnfpr(filr,"])"))
+else // else
+(
+strnfpr
+(filr,"XATSDAPP(");
+i1valrb1(filr,i1f0);strnfpr(filr,".call(");
+i1valrb1_list(filr,i1vs);strnfpr(filr,"))"))
+)
+)
+//
+(* ****** ****** *)
+//
+|I1INSpcon
+(lab0, i1v1) =>
+(
+prints
+("XATSPCON(", i1v1, ",", lab0, ")"))
+//
+|I1INSpflt
+(lab0, i1v1) =>
+(
+case+ lab0 of
+|LABint _ =>
+(
+prints(
+"XATSPFLT(", i1v1, "[", lab0, "]", ")"))
+|LABsym _ =>
+(
+prints(
+"XATSPFLT(", i1v1, "[", lab0, "]", ")")))
+//
+|I1INSproj
+(lab0, i1v1) =>
+(
+case+ lab0 of
+|LABint _ =>
+(
+prints(
+"XATSPROJ(", i1v1, "[", lab0, "]", ")"))
+|
+LABsym _ =>
+(
+prints(
+"XATSPROJ(", i1v1, "[", lab0, "]", ")")))
+//
+(* ****** ****** *)
+//
+|I1INStup0
+(   i1vs   ) =>
+(
+strnfpr(filr,"XATSTUP0(");
+strnfpr(filr,"[");i1valrb1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
+)
+//
+|I1INStup1
+(tknd, i1vs) =>
+(
+strnfpr(filr,"XATSTUP1(");
+xtrcdrb1(filr,tknd);strnfpr(filr,", ")
+;strnfpr(filr,"[");i1valrb1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
+)
+//
+|I1INSrcd2
+(tknd, livs) =>
+(
+strnfpr(filr,"XATSRCD2(");
+xtrcdrb1(filr,tknd);strnfpr(filr,", ")
+;strnfpr(filr,"{");l1i1vrb1_list(filr,livs);strnfpr(filr,"}");strnfpr(filr,")")
+)
+//
+(* ****** ****** *)
+//
+|I1INSflat
+(   i1v1   ) =>
+(strnfpr(filr,"XATSFLAT(")
+;i1valrb1(filr,i1v1);strnfpr(filr,")"))
+//
+(* ****** ****** *)
+//
+|I1INSdl0az
+(   i1v1   ) =>
+(strnfpr(filr,"XATS000_dl0az(")
+;i1valrb1(filr,i1v1);strnfpr(filr,")"))
+//
+|I1INSdl1az
+(   i1v1   ) =>
+(strnfpr(filr,"XATS000_dl1az(")
+;i1valrb1(filr,i1v1);strnfpr(filr,")"))
+//
+(* ****** ****** *)
+//
+|I1INSdp2tr
+(   i1v1   ) =>
+(strnfpr(filr,"XATS000_dp2tr(")
+;i1valrb1(filr,i1v1);strnfpr(filr,")"))
+//
+(* ****** ****** *)
+//
+|I1INSraise
+(tknd, i1v0) =>
+(
+strnfpr(filr, "XATS000_raise(");
+i1valrb1(filr, i1v0);strnfpr(filr, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|
+_(*otherwise*) => i1ins_fprint(iins,filr)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+end(*let*) // end-of-[i1insrb1(env0,iins)]
+//
+(* ****** ****** *)
+//
+fun
+i1cmprb1
+( filr: FILR
+, icmp: i1cmp): void =
+let
+//
+(*
+val () =
+prerrsln
+("i1cmprb1: icmp = ", icmp)
+*)
+//
+in//let
+case+ icmp of
+(* ****** ****** *)
+|
+_(*otherwise*) => i1cmp_fprint(icmp,filr)
+(* ****** ****** *)
+end(*let*) // end-of-[i1cmprb1(env0,icmp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+#implfun
+rb1emit_i1ins
+( env0,iins ) =
+xats2js_i1ins( env0,iins ) // implfun
+*)
+//
+(* ****** ****** *)
+//
+#implfun
+rb1emit_i1cmp
+( env0,icmp ) =
+let
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+in//let
+//
+case+ icmp of
+|
+I1CMPcons
+(ilts, ival) =>
+(
+nindfpr(filr, nind);
+strnfpr
+(filr,"## I1CMP:start\n");
+//
+(
+nindfpr(filr, nind);
+strnfpr
+(filr,"## I1CMP:return:");
+i1valfpr(filr,ival);fprintln(filr))
+where
+{
+//
+fun
+i1valfpr
+( filr: FILR
+, ival: i1val): void =
+(
+case+
+ival.node() of
+|
+I1Vs00 _ =>
+strnfpr(
+filr, "I1Vs00(...)")
+|
+I1Vstr _ =>
+strnfpr(
+filr, "I1Vstr(...)")
+|
+_(*else*) =>
+(
+i1val_fprint(ival, filr)))
+//
+val () =
+(
+  rb1emit_i1letlst(env0, ilts)) }
+//
+)(*where*)//end-of-[I1CMPcons(ilts,ival)]
+//
+end(*let*)//end-of-[rb1emit_i1cmp(env0,icmp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+rb1emit_i1let
+( env0,ilet ) =
+let
+//
+(* ****** ****** *)
+(* ****** ****** *)
+val filr = env0.filr()
+val nind = env0.nind()
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_t1imp
+( env0:
+! envx2js
+, timp: t1imp): void =
+let
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+val
+dcst =
+(
+  t1imp_dcst$get(timp))
+val
+dopt = t1imp_i1dclq(timp)
+//
+in//let
+//
+case+ dopt of
+//
+|optn_nil
+((*void*)) =>
+(
+d2cst_fprint
+(dcst, filr)) where
+{
+val () =
+strnfpr(filr, "()")
+val () =
+strnfpr(filr, " ## timp: ")
+}
+//
+|optn_cons
+(  idcl  ) =>
+(
+case+
+idcl.node() of
+//
+|I1Dfundclst
+( tknd, tqas
+, d2cs, i1fs) =>
+let
+//
+fun
+dcst2varfpr
+(filr: FILR
+,dcst: d2cst
+,d2cs: d2cstlst
+,i1fs: i1fundclist): void =
+(
+case+ d2cs of
+|
+list_nil() => ((*0*))
+|
+list_cons(d2c1, d2cs) =>
+let
+//
+val-
+list_cons(i1f1, i1fs) = i1fs 
+//
+in//let
+//
+if
+(dcst = d2c1)
+then
+d2varrb1(filr, d2v1) where
+{
+val
+d2v1 = i1fundcl_dpid$get(i1f1) }
+else
+dcst2varfpr(filr, dcst, d2cs, i1fs)
+//
+end//let
+)(*case+*)//end-of-[dcst2varfpr(...)]
+//
+fun
+dcst2argfpr
+(filr: FILR
+,dcst: d2cst
+,d2cs: d2cstlst
+,i1fs: i1fundclist): void =
+(
+case+ d2cs of
+|
+list_nil() => ((*0*))
+|
+list_cons(d2c1, d2cs) =>
+let
+//
+val-
+list_cons(i1f1, i1fs) = i1fs 
+//
+in//let
+//
+if
+(dcst = d2c1)
+then
+fjas1rb1(filr, fjas) where
+{
+val
+fjas = i1fundcl_farg$get(i1f1) }
+else
+dcst2argfpr(filr, dcst, d2cs, i1fs)
+//
+end//let
+)(*case+*)//end-of-[dcst2argfpr(...)]
+//
+in//let
+//
+nindstrnfpr
+( filr
+, nind+0
+, "## timp: ");
+d2cst_fprint(dcst, filr);fprintln(filr);
+nindstrnfpr
+(filr, nind, "->");
+dcst2argfpr
+(filr, dcst, d2cs, i1fs);strnfpr(filr, " do\n");
+//
+envx2js_incnind(env0,2(*dlta*));
+rb1emit_i1fundclist(env0, i1fs);
+envx2js_decnind(env0,2(*dlta*));
+//
+nindstrnfpr
+(filr, nind+2, "return ");
+dcst2varfpr
+(filr, dcst, d2cs, i1fs);strnfpr(filr, ".call");
+dcst2argfpr(filr, dcst, d2cs, i1fs);smiclnln(filr);
+//
+nindstrnfpr
+(filr, nind, "end ## endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")")
+//
+end//let
+//
+|I1Dimplmnt0
+( tknd
+, stmp, dimp
+, fjas, icmp) =>
+let
+//
+nindstrnfpr
+(filr
+,nind
+,"## timp: ");
+d2cst_fprint(dcst, filr);fprintln(filr);
+nindstrnfpr
+(filr
+,nind, "->");
+fjas1rb1(filr, fjas);strnfpr(filr, " do");smiclnln(filr);
+//
+( envx2js_incnind(env0, 2(*dlta*))
+; rb1emit_fjarglst(env0, fjas(*args*))
+; f0_i1cmpret(env0, icmp);envx2js_decnind(env0, 2(*dlta*)));
+//
+nindstrnfpr
+(filr, nind, "end ## endtimp(");d2cst_fprint(dcst, filr);strnfpr(filr, ")")
+//
+end//let
+//
+)//end-of-[optn_cons(idcl)]
+//
+end//let//end-of-[f0_t1imp(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and
+f0_i1cmpret
+( env0:
+! envx2js
+, icmp: i1cmp): void =
+let
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+in//let
+let
+//
+val ival = icmp.ival()
+val (  ) =
+rb1emit_i1cmp(env0, icmp)
+//
+in//let
+//
+(
+nindstrnfpr
+(filr, nind, "return ");
+i1valrb1(filr, ival);smiclnln(filr))
+//
+end//let
+end//let//end-of-[f0_i1cmpret(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_i1tnmcmp
+( env0:
+! envx2js
+, itnm: i1tnm
+, icmp: i1cmp): void =
+let
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+val ival = icmp.ival()
+val ilts = icmp.ilts()
+//
+val () =
+rb1emit_i1letlst(env0, ilts)
+//
+val () =
+let
+nindstrnfpr
+(filr, nind, "   ");i1tnmrb1(filr, itnm);
+strnfpr(filr, " = ");i1valrb1(filr, ival);smiclnln(filr)
+end//let
+//
+end//let//end-of-[f0_i1tnmcmp(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_i1valgpt
+( env0:
+! envx2js
+, ival: i1val
+, igpt: i1gpt): void =
+let
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+in//let
+//
+case+
+igpt.node() of
+//
+|I1GPTpat
+(   ibnd   ) =>
+(
+case+ ibnd of
+I1BNDcons
+(itnm,ipat,dvvs) =>
+(
+nindstrnfpr(filr, nind, "## ");
+prints(igpt, "\n");
+nindstrnfpr(filr, nind, "if (");
+i0pckrb1
+(filr, ival, ipat);strnfpr(filr, ") then ## // gpt\n");
+nindfpr(filr,nind+2);i1tnmrb1(filr, itnm);
+strnfpr(filr,(" = "));i1valrb1(filr, ival);smiclnln(filr)
+)(* end-of-[I1BNDcons(...)] *)
+)
+//
+|I1GPTgua
+(ibnd, i1gs) =>
+(
+case+ ibnd of
+I1BNDcons
+(itnm,ipat,dvvs) =>
+(
+nindstrnfpr
+(filr, nind, "## "); prints(igpt, "\n");
+nindstrnfpr
+(filr, nind, "if (");
+i0pckrb1
+(filr, ival, ipat);strnfpr(filr, ") then ## // gpt\n");
+nindfpr(filr,nind+2);i1tnmrb1(filr, itnm);
+strnfpr(filr,(" = "));i1valrb1(filr, ival);smiclnln(filr)
+)(* end-of-[I1BNDcons(...)] *)
+)
+//
+end(*let*)//end-of-[f0_i1valgpt(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_i1tnmvalcls
+( env0:
+! envx2js
+, itnm: i1tnm
+, ival: i1val
+, icl0: i1cls): void =
+let
+//
+(*
+val () =
+prerrsln
+("f0_i1tnmvalcls: itnm = ", itnm)
+val () =
+prerrsln
+("f0_i1tnmvalcls: ival = ", ival)
+val () =
+prerrsln
+("f0_i1tnmvalcls: icl0 = ", icl0)
+*)
+//
+in//let
+//
+case+
+icl0.node() of
+//
+|I1CLSgpt
+(   igpt   ) =>
+let
+val () =
+(
+nindstrnfpr(filr,
+nind, "## I1CLSgpt(...)\n"))
+end//let//end(I1CLSigpt(igpt))
+//
+|I1CLScls
+(igpt, icmp) =>
+let
+val () =
+(
+nindstrnfpr(
+filr, nind, "## { // cls\n"))
+//
+val () =
+(
+  f1_i1clscls(env0, igpt, icmp))
+//
+val () =
+nindstrnfpr(filr, nind, "## } // cls\n")
+//
+end//let//end(I1CLScls(igpt,icmp))
+//
+end where
+{
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+fun
+f1_i1clscls
+( env0:
+! envx2js
+, igpt: i1gpt
+, icmp: i1cmp): void =
+(
+case+
+igpt.node() of
+|I1GPTpat _ =>
+f1_i1clscls_pat(env0, igpt, icmp)
+|I1GPTgua _ =>
+f1_i1clscls_gua(env0, igpt, icmp))
+//
+and
+f1_i1clscls_pat
+( env0:
+! envx2js
+, igpt: i1gpt
+, icmp: i1cmp): void =
+let
+val () =
+(
+  f0_i1valgpt(env0, ival, igpt))
+//
+val () =
+let
+//
+val () =
+(
+  envx2js_incnind(env0,2(*++*)))
+val () =
+(
+  f0_i1tnmcmp(env0, itnm, icmp))
+val () =
+(
+  envx2js_decnind(env0,2(*--*)))
+//
+in//let
+(
+  nindfpr(filr, nind+2);
+  strnfpr(filr, "break ## cls\n"))
+end//let
+//
+val () =
+nindstrnfpr(filr, nind, "end ## gpt\n")
+//
+end//let//end(f1_i1clscls_pat(igpt,icmp))
+//
+(* ****** ****** *)
+//
+and
+f1_i1clscls_gua
+( env0:
+! envx2js
+, igpt: i1gpt
+, icmp: i1cmp): void =
+let
+//
+val tbrk =
+i1tnm_new0( (*void*) )
+//
+fun
+tbrkrb1
+( filr: FILR
+, tbrk: i1tnm): void =
+(
+  i1tnmrb1(filr, tbrk))
+//
+val () =
+(
+f0_i1valgpt(env0,ival,igpt))
+//
+val () =
+(
+envx2js_incnind(env0,2(*++*)))
+//
+val () =
+(
+nindfpr(filr, nind+2);
+tbrkrb1(filr, (tbrk));
+strnfpr(filr, " = false\n");
+nindfpr(filr, nind+2);
+strnfpr(filr, "while true do ## do-gua\n")
+)
+//
+val () =
+(
+envx2js_incnind(env0,2(*++*)))
+//
+val () =
+(
+f2_i1gualst(env0, i1gs)) where
+{
+//
+fun
+f2_i1gua
+( env0:
+! envx2js
+, igua: i1gua): void =
+(
+case+
+igua.node() of
+|
+I1GUAexp(icmp) =>
+let
+//
+val ival =
+i1cmp_ival$get(icmp)
+val (  ) =
+rb1emit_i1cmp(env0, icmp)
+//
+in//let
+(
+nindfpr
+(filr, nind+4);
+strnfpr
+(filr, "if !(");
+i1valrb1(filr, ival);
+strnfpr(filr, ") then break end\n"))
+end where // end-of-[let]
+{
+val () =
+(
+nindfpr(filr, nind+4); prints
+("## I1GUAexp: igua = ", igua, "\n"))
+}
+|
+I1GUAmat(icmp, ibnd) =>
+let
+val-
+I1BNDcons(itnm, ipat, _) = ibnd
+val nind = envx2js_nind$get(env0)
+(* The lowered guard expression refers to its pattern root temporary. *)
+val () = f0_i1tnmcmp(env0, itnm, icmp)
+val ival = i1val(i1cmp_lctn$get(icmp), I1Vtnm(itnm))
+in//let
+nindstrnfpr(filr, nind, "if !(");
+i0pckrb1(filr, ival, ipat);
+strnfpr(filr, ") then break end\n")
+end//let//end-of-[I1GUAmat(icmp,ibnd)]
+)
+//
+and
+f2_i1gualst
+( env0:
+! envx2js
+, i1gs: i1gualst): void =
+(
+case+ i1gs of
+|
+list_nil() => ()
+|
+list_cons(i1g1, i1gs) =>
+let
+val () =
+  f2_i1gua(env0, i1g1)
+val () =
+  f2_i1gualst(env0, i1gs) end
+)(*case+*)//endof-(f2_i1gualst)
+//
+val-
+I1GPTgua(_, i1gs) = igpt.node()
+//
+}
+//
+(* Guard success remains false on any break in the inner loop. *)
+val () =
+(
+nindfpr(filr, nind+4);
+tbrkrb1(filr, tbrk);
+strnfpr(filr, " = true\n");
+nindfpr(filr, nind+4);
+strnfpr(filr, "break\n"))
+//
+val () =
+(
+  envx2js_decnind(env0,2(*--*)))
+val () =
+(
+  envx2js_decnind(env0,2(*--*)))
+//
+val () =
+(
+nindfpr(filr, nind+2);
+strnfpr(filr,"end ## while true // endof(do-gua)\n"))
+//
+(* On a failed pattern or expression guard, skip this clause. *)
+val () =
+(
+nindstrnfpr(filr, nind+2, "if !(" );
+tbrkrb1(filr, tbrk);
+strnfpr(filr, ") then break end\n"))
+//
+val () =
+(
+  f0_i1tnmcmp(env0, itnm, icmp))
+val () =
+(
+  envx2js_decnind(env0,2(*--*)))
+val () =
+(
+  envx2js_decnind(env0,2(*--*)))
+//
+val () =
+nindstrnfpr(filr, nind+4, "break\n")
+//
+val () =
+(
+nindfpr(filr, nind+2);
+strnfpr(filr,"end ## while true // endof(do-gua)\n"))
+//
+val () =
+(
+nindstrnfpr(filr, nind, "end ## gpt\n"))
+//
+end//let//end(f1_i1clscls_gua(igpt,icmp))
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[f0_i1tnmvalcls(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_i1tnmvalclslst
+( env0:
+! envx2js
+, itnm: i1tnm
+, ival: i1val
+, icls: i1clslst
+, rethrowq: bool): void =
+(
+case+ icls of
+//
+|list_nil() =>
+(
+let
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+in//let
+(
+nindfpr(filr, nind);
+(if rethrowq then strnfpr(filr, "raise rb_exception") else strnfpr(filr, "XATS000_cfail()"));
+smiclnln(filr))
+end//let
+)
+//
+|list_cons(icl1, icls) =>
+( f0_i1tnmvalcls(env0,itnm,ival,icl1)
+; f0_i1tnmvalclslst(env0,itnm,ival,icls,rethrowq))
+//
+)(*case+*)//end-of-[f0_i1tnmvalclslst(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+in//let
+//
+case+ ilet of
+//
+|I1LETnew0
+(   iins   ) =>
+(
+case+ iins of
+//
+(* ****** ****** *)
+//
+|I1INSfold
+(  i1v0  ) =>
+(
+nindstrnfpr
+(filr, nind, "XATS000_fold(");
+i1valrb1(filr, i1v0);strnfpr(filr, ")\n"))
+//
+(* ****** ****** *)
+//
+|I1INSfree
+(  i1v0  ) =>
+(
+nindstrnfpr
+(filr, nind, "XATS000_free(");
+i1valrb1(filr, i1v0);strnfpr(filr, ")\n"))
+//
+(* ****** ****** *)
+//
+|I1INSassgn
+(i1vl, i1vr) =>
+(
+nindstrnfpr
+(filr, nind, "XATS000_assgn(");
+i1valrb1(filr, i1vl);strnfpr(filr, ", ");
+i1valrb1(filr, i1vr);strnfpr(filr, ")\n"))
+//
+(* ****** ****** *)
+//
+|_(*otherwise*) =>
+(
+nindfpr(filr, nind);i1insrb1(filr, iins);smiclnln(filr))
+//
+(* ****** ****** *)
+//
+)(*case+*)//end-of-[I1LETnew0(iins)]
+//
+(* ****** ****** *)
+//
+|I1LETnew1
+(itnm, iins) =>
+let
+//
+fun
+f1_i1ins
+(iins: i1ins): void =
+(
+nindstrnfpr
+(filr, nind, "");
+i1tnmrb1(filr, itnm);
+strnfpr(filr, " = ");
+i1insrb1(filr, iins);smiclnln(filr))
+//
+in//let
+//
+case+ iins of
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|I1INSdapp _ => f1_i1ins(iins)
+(* ****** ****** *)
+|I1INSpcon _ => f1_i1ins(iins)
+|I1INSpflt _ => f1_i1ins(iins)
+|I1INSproj _ => f1_i1ins(iins)
+(* ****** ****** *)
+|I1INStup0 _ => f1_i1ins(iins)
+|I1INStup1 _ => f1_i1ins(iins)
+|I1INSrcd2 _ => f1_i1ins(iins)
+(* ****** ****** *)
+|I1INSflat _ => f1_i1ins(iins)
+(* ****** ****** *)
+|I1INSdl0az _ => f1_i1ins(iins)
+|I1INSdl1az _ => f1_i1ins(iins)
+(* ****** ****** *)
+|I1INSdp2tr _ => f1_i1ins(iins)
+(* ****** ****** *)
+|I1INSraise _ => f1_i1ins(iins)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INStimp
+(i0f1, timp) =>
+let
+//
+val
+loc1 = i0f1.lctn((*0*))
+val
+iopt = t1imp_i1cmpq(timp)
+//
+val () = (
+nindstrnfpr
+(filr, nind, "## ");
+loctnfpr(filr, loc1);fprintln(filr))
+val () = (
+nindstrnfpr
+(filr, nind, "## ");
+i0expfpr(filr, i0f1);fprintln(filr))
+//
+in//let
+//
+case+ iopt of
+//
+|optn_nil() =>
+(
+//
+nindstrnfpr
+(filr, nind, "## ");
+t1imploc(filr, timp);fprintln(filr);
+nindstrnfpr
+(filr, nind, "## ");
+t1impdcl(filr, timp);fprintln(filr);
+//
+nindstrnfpr
+(filr
+,nind, "");i1tnmrb1(filr, itnm);
+strnfpr(filr, " = \n");
+f0_t1imp(env0, timp);fprintln(filr))
+//
+|optn_cons(icmp) =>
+(
+f0_i1tnmcmp
+(env0, itnm, icmp)) where
+{
+//
+val () =
+(
+//
+nindstrnfpr
+(filr, nind, "## ");
+t1imploc(filr, timp);fprintln(filr);
+nindstrnfpr
+(filr, nind, "## ");
+t1impdcl(filr, timp);fprintln(filr);
+//
+nindstrnfpr
+(filr
+,nind, "");i1tnmrb1(filr, itnm);
+strnfpr(filr, " = ");
+strnfpr(filr, "nil");smiclnln(filr))
+//
+}(*where*)
+//
+end//let//end-of-[I1INStimp(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSlet0
+(dcls, icmp) =>
+let
+//
+val () = 
+nindstrnfpr
+(filr, nind, "## let\n")
+//
+val () =
+(
+nindstrnfpr
+(filr
+,nind, "");i1tnmrb1(filr, itnm);
+strnfpr(filr, " = ");
+strnfpr(filr, "nil");smiclnln(filr))
+//
+val () =
+(
+ rb1emit_i1dclist(env0,dcls))
+val () =
+(
+ f0_i1tnmcmp(env0,itnm,icmp))
+//
+val () = 
+(
+nindstrnfpr(filr, nind, "## endof(let)\n"))
+//
+end//let//end-of-[I1INSlet0(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSift0
+(itst
+,ithn, iels) =>
+let
+//
+val () =
+(
+nindstrnfpr
+(filr
+,nind, "");i1tnmrb1(filr, itnm);
+strnfpr(filr, " = ");
+strnfpr(filr, "nil");smiclnln(filr))
+//
+val () =
+(
+nindstrnfpr
+(filr, nind, "if (");
+i1valrb1(filr, itst);
+strnfpr(filr, ") then\n"))//test
+//
+val () =
+(
+case+ ithn of
+|optn_nil() => ()
+|optn_cons(icmp) =>
+(
+envx2js_incnind
+(env0, 2(*dlta*));
+f0_i1tnmcmp(env0, itnm, icmp);
+envx2js_decnind(env0, 2(*dlta*))))
+//
+val () =
+(
+case+ iels of
+|optn_nil() =>
+(
+nindstrnfpr
+(filr
+,nind, "## no-else\n"))
+|optn_cons(icmp) =>
+(
+nindstrnfpr
+(filr, nind, "else\n");
+(
+envx2js_incnind
+(env0, 2(*dlta*));
+f0_i1tnmcmp(env0, itnm, icmp);
+envx2js_decnind(env0, 2(*dlta*)))))
+//
+val () =
+(
+nindstrnfpr
+(filr
+,nind, "end ## endof(ift)");smiclnln(filr))
+//
+end//let//end-of-[I1INSift0(...)]
+//
+(* ****** ****** *)
+//
+|I1INScas0
+(cask
+,i1v1, icls) =>
+let
+val () =
+(
+nindstrnfpr
+(filr
+,nind, "");i1tnmrb1(filr, itnm);
+strnfpr(filr, " = ");
+strnfpr(filr, "nil");smiclnln(filr))
+//
+val () =
+(
+nindstrnfpr
+(filr, nind,
+"while true do ## do-cls\n"))
+//
+val () = // enter
+(
+envx2js_incnind(env0,2(*dlta*)))
+//
+val () =
+f0_i1tnmvalclslst
+(env0, itnm, i1v1, icls(*clslst*), false)
+//
+val () =
+(
+  envx2js_decnind(env0, 2(*dlta*)))//leave
+//
+val () =
+(
+nindfpr(filr, nind);
+strnfpr(filr, "end ## while true // endof(do-cls)\n"))
+//
+end//let//end-of-[I1INScas0(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSlam0
+(tknd
+,fjas, icmp) =>
+(
+nindfpr(filr, nind);
+i1tnmrb1
+(filr, itnm); strnfpr
+(filr, " = ## lam0(");
+tokenfpr(filr, tknd);strnfpr(filr, ")\n");
+(
+envx2js_incnind
+(env0, 2(*dlta*));
+nindstrnfpr
+(filr, nind, "->");
+fjas1rb1
+(filr, fjas);strnfpr(filr, " do\n");
+rb1emit_fjarglst
+(env0, fjas(*args*));f0_i1cmpret(env0, icmp));
+(
+envx2js_decnind
+(env0, 2(*dlta*));
+nindstrnfpr(filr, nind, "end ## // end(lam0)\n"))
+)
+//
+(* ****** ****** *)
+//
+|I1INSfix0
+(tknd
+,dvar
+,fjas, icmp) =>
+(
+//
+nindstrnfpr
+( filr
+, nind, "");
+i1tnmrb1(filr, itnm);
+strnfpr(filr," = nil\n");
+//
+nindfpr(filr, nind);d2varrb1(filr, dvar);strnfpr(filr, " = nil\n");
+nindfpr(filr, nind);
+d2varrb1
+(filr, dvar); strnfpr
+(filr, " = ## fix0(");
+tokenfpr
+(filr, tknd);strnfpr(filr, ")\n");
+//
+(
+envx2js_incnind
+(env0, 2(*dlta*));
+nindstrnfpr
+(filr, nind, "->");
+fjas1rb1
+(filr, fjas);strnfpr(filr, " do\n");
+rb1emit_fjarglst
+(env0, fjas(*args*));f0_i1cmpret(env0, icmp));
+//
+(
+envx2js_decnind
+(env0, 2(*dlta*));
+nindstrnfpr(filr, nind, "end ## // end(fix0)\n"));
+//
+nindfpr(filr, nind);i1tnmrb1(filr, itnm);
+strnfpr(filr," = ");d2varrb1(filr, dvar);smiclnln(filr)
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INStry0
+(tknd
+,icmp
+,iexn, icls) =>
+let
+val () =
+(
+nindfpr(filr, nind);
+i1tnmrb1(filr, itnm);strnfpr(filr, " = nil\n"))
+//
+val () =
+(
+nindstrnfpr
+( filr
+, nind, "begin ## try\n");
+//
+envx2js_incnind(env0,2(*++*));
+f0_i1tnmcmp(env0, itnm, icmp);
+envx2js_decnind(env0,2(*--*));
+//
+nindstrnfpr
+( filr
+, nind, "## endof(try body)\n");
+//
+nindstrnfpr
+( filr
+, nind
+, "rescue X2RBExcptn => rb_exception\n");
+//
+nindfpr(filr, nind+2);
+i1valrb1(filr, iexn);strnfpr(filr, " = rb_exception.args\n"))
+//
+val () =
+(
+nindstrnfpr
+(filr, nind+2,
+"while true do ## do-try\n"))
+//
+val () = // enter
+envx2js_incnind(env0,2+2(*++*))
+//
+val () =
+f0_i1tnmvalclslst
+(env0, itnm, iexn, icls(*list*), true)
+//
+val () =
+(
+  envx2js_decnind(env0,2+2(*--*)))//leave
+//
+val () =
+(
+nindfpr(filr, nind+2);
+strnfpr(filr,"end ## while true // endof(do-try)\n"))
+//
+val () =
+(
+nindstrnfpr(filr, nind, "end ## // end(except) // endof(try)\n"))
+end//let//end-of-[I1INStry0(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSl0azy
+(dknd, icmp) =>
+(
+nindstrnfpr
+(filr, nind, "");
+i1tnmrb1(filr, itnm); strnfpr
+(filr, "_ = ->() do ## l0azy\n");
+(
+envx2js_incnind
+(env0, 2(*dlta*));
+f0_i1cmpret(env0, icmp);
+(
+envx2js_decnind
+(env0, 2(*dlta*));
+nindfpr(filr, nind);
+strnfpr(filr, "end ## // end(l0azy)\n"));
+//
+nindfpr(filr, nind);
+i1tnmrb1(filr, itnm);
+strnfpr(filr, " = ");
+strnfpr(filr, "XATS000_l0azy(");
+i1tnmrb1(filr, itnm);strnfpr(filr, "_)");smiclnln(filr))
+)
+//
+(* ****** ****** *)
+//
+|I1INSl1azy
+(dknd
+,icmp, cmps) =>
+(
+nindstrnfpr
+(filr, nind, "");
+i1tnmrb1(filr, itnm);
+strnfpr(filr, " = ->(tlaz) do ## l1azy\n");
+(
+envx2js_incnind
+( env0,2(*++*) );
+nindstrnfpr
+( filr, nind
+, "## linear lazy argument: tlaz\n");f0_i1cmpret(env0, icmp);
+(
+envx2js_decnind
+( env0,2(*--*) );
+nindstrnfpr(filr, nind, "end ## // end(l1azy)");fprintln(filr)))
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+| _(* otherwise *) =>
+(
+nindfpr(filr, nind);
+i1tnmrb1(filr, itnm);strnfpr(filr, " = ");i1insrb1(filr, iins);smiclnln(filr))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+end(*let*)//end-of-[I1LETnew1(itnm,iins)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+end(*let*)//end-of-[rb1emit_i1let(env0,ilet)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+rb1emit_i1letlst
+  (env0, ilts) =
+(
+  list_rb1emit_fnp(env0, ilts, rb1emit_i1let))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+rb1emit_fjarglst
+  (env0, fjas) =
+(
+  loop1(1(*i0*), fjas)) where
+{
+//
+val filr =
+(
+envx2js_filr$get(env0))
+val nind =
+(
+envx2js_nind$get(env0))
+//
+fnx
+loop1
+( i0: sint
+, fjas: fjarglst): void =
+(
+case+ fjas of
+|
+list_nil
+( (*void*) ) => ( (*void*) )
+|
+list_cons
+(fja1, fjas) => loop2(i0, fja1, fjas)
+)
+//
+and
+loop2
+( i0: sint
+, fja1: fjarg
+, fjas: fjarglst): void =
+(
+case+
+fja1.node() of
+|
+FJARGdarg(i1bs) => loop3(i0, i1bs, fjas)
+)
+//
+and
+loop3
+( i0: sint
+, i1bs: i1bndlst
+, fjas: fjarglst): void =
+(
+case+ i1bs of
+|
+list_nil() =>
+loop1(i0, fjas)
+|
+list_cons(ibnd, i1bs) =>
+(
+  loop3(i0+1, i1bs, fjas)) where
+{
+//
+#impltmp
+g_print$out
+<(*0*)>(    ) = filr
+//
+#impltmp
+g_print
+<i1tnm>(itnm) = i1tnmrb1(filr, itnm)
+//
+val () =
+case+ ibnd of
+|
+I1BNDcons(itnm, i0p1, dvvs) =>
+(
+nindstrnfpr
+(filr, nind, "");
+prints(itnm, " = ", "arg", i0, "\n"))
+}
+)
+//
+}(*where*)//end-of-[rb1emit_fjarglst(env0,fjas)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen2_xats2rb_srcgen1_DATS_rb1emit_dynexp.dats] *)
+(***********************************************************************)

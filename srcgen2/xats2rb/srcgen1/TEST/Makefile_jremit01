@@ -1,0 +1,39 @@
+########################################################################
+########################################################################
+# Makefile for Ruby emission
+########################################################################
+########################################################################
+PRINTF=printf
+RUBY=ruby
+XATS2RB=./../bin/xats2rb
+########################################################################
+.PHONY: all testall clean cleanall
+all:: test00 test01 test02 test03 test04 test05
+all:: test06 test07 test08 test09 test10 test11
+########################################################################
+testall:: test00; $(RUBY) OUTS/$<_out.rb
+testall:: test01; $(RUBY) OUTS/$<_out.rb
+testall:: test02; $(RUBY) OUTS/$<_out.rb
+testall:: test03; $(RUBY) OUTS/$<_out.rb
+testall:: test04; $(RUBY) OUTS/$<_out.rb
+testall:: test05; $(RUBY) OUTS/$<_out.rb
+testall:: test06; $(RUBY) OUTS/$<_out.rb
+testall:: test07; $(RUBY) OUTS/$<_out.rb
+testall:: test08; $(RUBY) OUTS/$<_out.rb
+testall:: test09; $(RUBY) OUTS/$<_out.rb
+testall:: test10; $(RUBY) OUTS/$<_out.rb
+testall:: test11; $(RUBY) OUTS/$<_out.rb
+########################################################################
+test00 test01 test02 test03 test04 test05 test06 test07 test08 test09 test10 test11: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.rb && \
+$(XATS2RB) $@_xats2rb.dats >> OUTS/$@_out.rb
+########################################################################
+testxx: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.rb && \
+$(XATS2RB) testxx_mydebug.dats >> OUTS/$@_out.rb
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~ OUTS/test??_out.rb
+########################################################################
+###################### end of [Makefile_jremit01] ######################
+########################################################################

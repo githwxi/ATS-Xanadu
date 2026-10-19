@@ -1,0 +1,44 @@
+########################################################################
+########################################################################
+# Makefile for bootstrapping
+########################################################################
+########################################################################
+CAT=cat
+SED=sed
+NODE=node
+########################################################################
+SRCGEN1=./../../../../srcgen1
+SRCGEN2=./../../../../srcgen2
+XATSJSD=./../../../../srcgen2/xats2js
+XATSRBD=./../../../../srcgen2/xats2rb
+########################################################################
+S1XSHRD=$(SRCGEN1)/xats2js/srcgenx/xshared/runtime
+S2XSHRD=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
+########################################################################
+.PHONY: all clean cleanall
+all:: xats2rb_rbemit01
+########################################################################
+xats2rb_rbemit01: ; \
+printf "// %s\n" "`date`" > $@_ats3.js && \
+$(CAT) $(S2XSHRD)/xats2js_js1emit.js >> $@_ats3.js && \
+$(CAT) $(S2XSHRD)/srcgen2_precats.js >> $@_ats3.js && \
+$(CAT) $(S1XSHRD)/srcgen1_prelude.js >> $@_ats3.js && \
+$(CAT) $(S1XSHRD)/srcgen1_prelude_node.js >> $@_ats3.js && \
+$(CAT) $(S1XSHRD)/srcgen1_xatslib_node.js >> $@_ats3.js && \
+$(SED) -E 's/jsx(...)tnm/js1\1tnm/g' \
+$(SRCGEN2)/lib/lib2xatsopt.js >> $@_ats3.js && \
+$(SED) -E 's/jsx(...)tnm/js2\1tnm/g' \
+$(XATSJSD)/srcgen1/lib/lib2xats2js.js >> $@_ats3.js && \
+$(SED) -E 's/jsx(...)tnm/js3\1tnm/g' \
+$(XATSRBD)/srcgen1/lib/lib2xats2rb.js >> $@_ats3.js && \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT00) xats2rb_rbemit01.dats >> $@_ats3.js
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~ xats2rb_rbemit01_ats3.js
+########################################################################
+XASSETS=./../../../../xassets
+ifndef XATS2JS_JSEMIT00
+XATS2JS_JSEMIT00=$(XASSETS)/JS/xats2js/bin/xats2js_jsemit00_ats2_opt1.js
+endif
+########################################################################
+#######################(end-of-[UTIL/Makefile])#########################

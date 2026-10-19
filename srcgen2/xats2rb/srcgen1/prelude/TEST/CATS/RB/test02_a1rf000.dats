@@ -1,0 +1,85 @@
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+HX-2026-09-22:
+For testing prelude/RB!
+Tue Sep 22 12:30:52 AM EDT 2026
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+#staload _ =
+"prelude/DATS/gdbg000.dats"
+(* ****** ****** *)
+(* ****** ****** *)
+#symload
+array with a1rf_make_ncpy
+#symload
+array with a1rf_make_nfun
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"prelude/HATS/prelude_dats.hats"
+(* ****** ****** *)
+#include
+"./../../../..\
+/prelude/HATS/prelude_RB_dats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val A0 =
+array(10, 1)
+val () =
+(
+  printsln("A0 = ", A0))
+where
+{
+#impltmp
+{ x0:t0 }
+gasq_length
+<a1rf(x0)><x0>(A) = ( 10 ) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val N = 10
+val A1 =
+array
+(N, lam(i:sint) => (i+1))
+val () =
+printsln
+("A1(", type(A1), ") = ", A1)
+where
+{
+#impltmp
+{ x0:t0 }
+gasq_length<a1rf(x0)><x0>(A1) = (N)
+}
+//
+(* ****** ****** *)
+//
+fun
+fact(n: nint) =
+GSEQ
+(
+array
+(n, lam(i:sint) => i+1)).prod()
+where
+{
+#impltmp
+{ x0:t0 }
+gasq_length<a1rf(x0)><x0>(A) = n }
+//
+val () =
+(
+  printsln("fact(10) = ", fact(10)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(*)
+end of [
+ATS3-XANADU/
+srcgen2/xats2rb/srcgen1/prelude/TEST/CATS/RB/test02_a1rf000.dats] *)
+(***********************************************************************)
+(***********************************************************************)

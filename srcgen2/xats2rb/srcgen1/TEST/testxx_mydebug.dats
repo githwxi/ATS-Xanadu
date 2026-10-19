@@ -1,0 +1,62 @@
+(* ****** ****** *)
+(* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"prelude/HATS/prelude_dats.hats"
+#include
+"./../prelude/HATS/prelude_RB_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val multiline1 = "\
+Line 1 of a multiline,
+and line 2 of the multline,
+and line 3 of the multline!
+"
+val multiline2 = "\
+Line 1 of a multiline,\n\
+and line 2 of the multline,\n\
+and line 3 of the multline!\n\
+"
+//
+val () =
+printsln("multiline1 = ", multiline1)
+val () =
+printsln("multiline2 = ", multiline2)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val xs as
+list_cons
+( x1, _ ) = list_sing(1)
+//
+val-list_cons(x2, _) = xs
+//
+val (   ) = printsln("x1 = ", x1)
+val (   ) = printsln("x2 = ", x2)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:t0>
+footmp(x: a): a = x
+//
+fun
+foofun((*0*)): sint = footmp<sint>(0)
+//
+val x0 = foofun()
+val ((*void*)) = printsln("x0 = ", x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen2_xats2rb_srcgen1_TEST_testxx_mydebug.dats] *)
+(***********************************************************************)

@@ -1,0 +1,200 @@
+########################################################################
+########################################################################
+# Makefile for RB-emission
+########################################################################
+########################################################################
+CAT=cat
+ECHO=echo
+PRINTF=printf
+########################################################################
+NODE=node
+RUBY=ruby
+########################################################################
+########################################################################
+all:: test00
+all:: test01
+all:: test02
+all:: test03
+all:: test04
+all:: test05
+all:: test06
+all:: test07
+all:: test08
+all:: test09
+all:: test10
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/test??_out.rb
+########################################################################
+#
+testall:: test00; $(RUBY) OUTS/$<_out.rb
+testall:: test01; $(RUBY) OUTS/$<_out.rb
+testall:: test02; $(RUBY) OUTS/$<_out.rb
+testall:: test03; $(RUBY) OUTS/$<_out.rb
+testall:: test04; $(RUBY) OUTS/$<_out.rb
+testall:: test05; $(RUBY) OUTS/$<_out.rb
+testall:: test06; $(RUBY) OUTS/$<_out.rb
+testall:: test07; $(RUBY) OUTS/$<_out.rb
+testall:: test08; $(RUBY) OUTS/$<_out.rb
+testall:: test09; $(RUBY) OUTS/$<_out.rb
+testall:: test10; $(RUBY) OUTS/$<_out.rb
+#
+########################################################################
+########################################################################
+MYROOT=\
+"./../../../.."
+SRCGEN2_XSHARED=\
+$(MYROOT)/xshared/runtime
+SRCGEN2_XATS2RB=\
+$(MYROOT)/UTIL/xats2rb_rbemit01_ats3.js
+########################################################################
+########################################################################
+test00:: ; \
+printf "## %s\n" "`date`" > OUTS/$@_out.rb
+############
+test00:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2rb_rb1emit.rb >> OUTS/$@_out.rb
+test00:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.rb >> OUTS/$@_out.rb
+############
+test00:: \
+test00_prelude.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2RB) $< >> OUTS/$@_out.rb
+########################################################################
+test01:: ; \
+printf "## %s\n" "`date`" > OUTS/$@_out.rb
+############
+test01:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2rb_rb1emit.rb >> OUTS/$@_out.rb
+test01:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.rb >> OUTS/$@_out.rb
+############
+test01:: \
+test01_a0rf000.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2RB) $< >> OUTS/$@_out.rb
+########################################################################
+test02:: ; \
+printf "## %s\n" "`date`" > OUTS/$@_out.rb
+############
+test02:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2rb_rb1emit.rb >> OUTS/$@_out.rb
+test02:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.rb >> OUTS/$@_out.rb
+############
+test02:: \
+test02_a1rf000.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2RB) $< >> OUTS/$@_out.rb
+########################################################################
+test03:: ; \
+printf "## %s\n" "`date`" > OUTS/$@_out.rb
+############
+test03:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2rb_rb1emit.rb >> OUTS/$@_out.rb
+test03:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.rb >> OUTS/$@_out.rb
+############
+test03:: \
+test03_a1sz000.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2RB) $< >> OUTS/$@_out.rb
+########################################################################
+test04:: ; \
+printf "## %s\n" "`date`" > OUTS/$@_out.rb
+############
+test04:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2rb_rb1emit.rb >> OUTS/$@_out.rb
+test04:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.rb >> OUTS/$@_out.rb
+############
+test04:: \
+test04_strn000.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2RB) $< >> OUTS/$@_out.rb
+########################################################################
+test05:: ; \
+printf "## %s\n" "`date`" > OUTS/$@_out.rb
+############
+test05:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2rb_rb1emit.rb >> OUTS/$@_out.rb
+test05:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.rb >> OUTS/$@_out.rb
+############
+test05:: \
+test05_gdbg000.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2RB) $< >> OUTS/$@_out.rb
+########################################################################
+test06:: ; \
+printf "## %s\n" "`date`" > OUTS/$@_out.rb
+############
+test06:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2rb_rb1emit.rb >> OUTS/$@_out.rb
+test06:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.rb >> OUTS/$@_out.rb
+############
+test06:: \
+test06_list000.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2RB) $< >> OUTS/$@_out.rb
+########################################################################
+test07:: ; \
+printf "## %s\n" "`date`" > OUTS/$@_out.rb
+############
+test07:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2rb_rb1emit.rb >> OUTS/$@_out.rb
+test07:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.rb >> OUTS/$@_out.rb
+############
+test07:: \
+test07_gseq000.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2RB) $< >> OUTS/$@_out.rb
+########################################################################
+test08:: ; \
+printf "## %s\n" "`date`" > OUTS/$@_out.rb
+############
+test08:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2rb_rb1emit.rb >> OUTS/$@_out.rb
+test08:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.rb >> OUTS/$@_out.rb
+############
+test08:: \
+test08_optn000.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2RB) $< >> OUTS/$@_out.rb
+########################################################################
+test09:: ; \
+printf "## %s\n" "`date`" > OUTS/$@_out.rb
+############
+test09:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2rb_rb1emit.rb >> OUTS/$@_out.rb
+test09:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.rb >> OUTS/$@_out.rb
+############
+test09:: \
+test09_llist00.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2RB) $< >> OUTS/$@_out.rb
+########################################################################
+test10:: ; \
+printf "## %s\n" "`date`" > OUTS/$@_out.rb
+############
+test10:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2rb_rb1emit.rb >> OUTS/$@_out.rb
+test10:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.rb >> OUTS/$@_out.rb
+############
+test10:: \
+test10_xcptn00.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2RB) $< >> OUTS/$@_out.rb
+########################################################################
+test99:: ; \
+printf "## %s\n" "`date`" > OUTS/$@_out.rb
+############
+test99:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/xats2rb_rb1emit.rb >> OUTS/$@_out.rb
+test99:: ; \
+$(CAT) $(SRCGEN2_XSHARED)/srcgen2_prelude.rb >> OUTS/$@_out.rb
+############
+test99:: \
+test99_mydiary.dats; \
+$(NODE) --stack-size=8192 $(SRCGEN2_XATS2RB) $< >> OUTS/$@_out.rb
+########################################################################
+########################################################################
+##################### end of [Makefile_plemit01] #######################
+########################################################################
+########################################################################

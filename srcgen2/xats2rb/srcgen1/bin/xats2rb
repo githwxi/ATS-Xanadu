@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+"""Compile ATS3 source to a standalone Ruby program (stdout, or -o FILE)."""
+import argparse
+import os
+from pathlib import Path
+import subprocess
+import sys
+
+root=Path(__file__).resolve().parent.parent
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('source')
+parser.add_argument('-o','--output')
+parser.add_argument('--emit-only', action='store_true', help='omit the Ruby runtime and prelude')
+args,flags=parser.parse_known_args()
+compiler=root/'UTIL/xats2rb_rbemit01_ats3.js'
+if not compiler.exists():
+    parser.error('compiler is not built; run make in '+str(root))
+result=subprocess.run(['node','--stack-size=8800',str(compiler),args.source,*flags],capture_output=True)
+sys.stderr.buffer.write(result.stderr)
+if result.returncode:
+    sys.exit(result.returncode)
+output=result.stdout
+if not args.emit_only:
+    output=b'#!/usr/bin/env ruby\n'+(root/'xshared/runtime/xats2rb_rb1emit.rb').read_bytes()+b'\n'+(root/'xshared/runtime/srcgen2_prelude.rb').read_bytes()+b'\n'+output
+if args.output:
+    Path(args.output).write_bytes(output)
+else:
+    sys.stdout.buffer.write(output)
