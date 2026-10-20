@@ -84,8 +84,14 @@ HX-2026-02-27:
 There is one more added:
 Makefile_xpyemit:
 compiling to PY with srcgen2-xpyemit;
-the library code generated is lib2xatopt (where lib2
-refers to srcgen2)
+the library code generated is lib2xatopt
+(where lib2 refers to srcgen2)
 //
+##################################################################
+##################################################################
+#
+HX-2026-10-18:
+We now have xats2pl (ATS3-to-Perl) and xats2rb (ATS3-to-Ruby).
+#
 ##################################################################
 ##################################################################
