@@ -81,10 +81,8 @@ $(SED) '/^[ ]*##/d' xats2py_pyemit01_ats3.py > xats2py_pyemit01_ats3_opt0.py
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; \
-rm -f xats2py_pyemit00_ats3.py
-cleanall:: ; \
-rm -f xats2py_pyemit01_ats3.py
+cleanall:: ; rm -f xats2py_pyemit0?_ats3.py
+cleanall:: ; rm -f xats2py_pyemit0?_ats3_opt0.py
 ########################################################################
 ########################################################################
 XASSETS=\
