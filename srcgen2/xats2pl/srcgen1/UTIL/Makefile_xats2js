@@ -91,6 +91,7 @@ clean:: ; rm -f *~
 #
 cleanall:: clean
 cleanall:: ; rm -f ./xats2pl_plemit0?_ats2.js
+cleanall:: ; rm -f ./xats2pl_plemit0?_ats2_opt1.js
 cleanall:: ; rm -f ./lib1xatsopt2js2pl_ats2.js
 cleanall:: ; rm -f ./lib1xatsopt2js2pl_ats2_opt1.js
 #

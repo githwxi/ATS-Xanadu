@@ -15,8 +15,9 @@ XATSRBD=./../../../../srcgen2/xats2rb
 S1XSHRD=$(SRCGEN1)/xats2js/srcgenx/xshared/runtime
 S2XSHRD=$(SRCGEN2)/xats2js/srcgenx/xshared/runtime
 ########################################################################
-.PHONY: all clean cleanall
 all:: xats2rb_rbemit01
+########################################################################
+.PHONY: all clean cleanall
 ########################################################################
 xats2rb_rbemit01: ; \
 printf "// %s\n" "`date`" > $@_ats3.js && \
@@ -40,12 +41,25 @@ npx google-closure-compiler \
   --js=xats2rb_rbemit01_ats3.js --js_output_file=xats2rb_rbemit01_ats3_opt1.js
 #
 ########################################################################
-clean:: ; rm -f *~
-cleanall:: ; rm -f *~ xats2rb_rbemit01_ats3.js
 ########################################################################
+#
+clean:: ; rm -f *~
+#
+cleanall:: clean
+cleanall:: ; rm -f xats2rb_rbemit01_ats3.js
+cleanall:: ; rm -f xats2rb_rbemit01_ats3_opt1.js
+#
+########################################################################
+########################################################################
+#
 XASSETS=./../../../../xassets
-ifndef XATS2JS_JSEMIT00
+#
+ifndef \
+XATS2JS_JSEMIT00
 XATS2JS_JSEMIT00=$(XASSETS)/JS/xats2js/bin/xats2js_jsemit00_ats2_opt1.js
-endif
+endif # end(ifndef)
+########################################################################
 ########################################################################
 #######################(end-of-[UTIL/Makefile])#########################
+########################################################################
+########################################################################
