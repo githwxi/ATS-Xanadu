@@ -2,7 +2,7 @@
 #
 # HX-2026-08-02:
 # For compiling
-# xats2cm_cmemit00 to Scheme
+# xats2cm_cmemit0? to Scheme
 # The compiler is srcgen1/xats2js,
 # which does perform tail-recursive
 # call optimization!

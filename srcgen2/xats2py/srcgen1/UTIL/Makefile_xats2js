@@ -2,8 +2,10 @@
 #
 # HX-2024-11-30:
 # For compiling
-# xats2py_pyemit00 to JavaScript
+# xats2py_pyemit0? to JavaScript
 # The compiler is srcgen1/xats2js
+# which does perform tail-recursive
+# call optimization!
 #
 ########################################################################
 CAT=cat

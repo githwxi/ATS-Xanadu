@@ -1,0 +1,85 @@
+########################################################################
+########################################################################
+#
+# For compiling with xats2js
+# Tue Oct 20 10:48:53 PM EDT 2026
+#
+########################################################################
+########################################################################
+
+AR=ar
+CP=cp
+MV=mv
+CC=gcc
+SED=sed
+CPF=cp -f
+MVF=mv -f
+RMF=rm -f
+WCL=wc -l
+
+########################################################################
+
+######
+CAT=cat
+CPF=cp -f
+ECHO=echo
+NODE=node
+NODE=node \
+--stack-size=6601
+######
+MYTEST="."
+######
+XSHARED=${XATSJSD}/xshared
+XATS2JS=${XATSJSD}/bin/xats2js
+######
+# XATS2JS=\
+# nix run \
+# github:GZGavinZhao/ATS-Xanadu/nixify\#xats2js \
+# --extra-experimental-features flakes \
+# --extra-experimental-features nix-command --
+######
+XATSJSD=\
+./../../../srcgen1/xats2js/srcgen1
+######
+XATS2JS_PRELUDE=\
+"$(XSHARED)/runtime/xats2js_prelude.js"
+XATS2JS_PRELUDE_NODE=\
+"$(XSHARED)/runtime/xats2js_prelude_node.js"
+XATS2JS_XATSLIB_NODE=\
+"$(XSHARED)/runtime/xats2js_xatslib_node.js"
+######
+
+SRCSATS := \
+xats2rb.sats \
+rb1emit.sats \
+
+######
+
+SRCDATS := \
+xats2rb.dats \
+xats2rb_dynexp.dats \
+xats2rb_decl00.dats \
+rb1emit.dats \
+rb1emit_utils0.dats \
+rb1emit_dynexp.dats \
+rb1emit_decl00.dats \
+
+########################################################################
+OBJSATS := \
+$(patsubst %.sats, BUILD/JS/%_sats.js, $(SRCSATS))
+OBJDATS := \
+$(patsubst %.dats, BUILD/JS/%_dats.js, $(SRCDATS))
+########################################################################
+all:: $(OBJDATS)
+-include .depend_xats2js
+########################################################################
+cleanall:: ; rm -f BUILD/JS/*_dats.js
+########################################################################
+lib1xats2rb:: $(OBJDATS); $(CAT) $(OBJDATS) > lib/lib1xats2rb.js
+########################################################################
+BUILD/JS/%_dats.js: DATS/%.dats; $(XATS2JS) --output-w $@ --dynamic $<
+########################################################################
+########################################################################
+####################### end of [Makefile_xats2js] ######################
+########################################################################
+########################################################################

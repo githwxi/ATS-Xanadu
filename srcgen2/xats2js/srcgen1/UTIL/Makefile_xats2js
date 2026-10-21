@@ -2,9 +2,10 @@
 #
 # HX-2024-09-01:
 # For compiling
-# xats2js_jsemit00 to JavaScript
-# For compiling
-# xats2js_jsemit01 to JavaScript
+# xats2js_jsemit0? to JavaScript
+# The compiler is srcgen1/xats2js
+# which does perform tail-recursive
+# call optimization!
 #
 ########################################################################
 #

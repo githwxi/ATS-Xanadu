@@ -44,7 +44,7 @@ XATS2PL_SRCGENX="./.."
 XATS2PL_XSHARED=$(XATS2PL_SRCGENX)/xshared/runtime
 ########################################################################
 XATS2PL_PLEMIT01="./../UTIL/xats2pl_plemit01_ats2.js"
-XATS2PL_PLEMIT01="./../UTIL/xats2pl_plemit01_ats3.js"
+# XATS2PL_PLEMIT01="./../UTIL/xats2pl_plemit01_ats3.js"
 ########################################################################
 ########################################################################
 test00:: ; \

@@ -27,6 +27,14 @@ all:: srcgen2_lib1xats2py
 all:: srcgen2_xats2js_xats2py_pyemit00
 all:: srcgen2_xats2js_xats2py_pyemit01
 #
+all:: srcgen2_lib1xats2pl
+all:: srcgen2_xats2js_xats2pl_plemit01
+#
+all:: srcgen2_lib1xats2rb
+all:: srcgen2_xats2js_xats2rb_rbemit01
+#
+########################################################################
+#
 all:: srcgen2_lib2xatsopt
 all:: srcgen2_lib2xats2js
 all:: srcgen2_lib2xats2cm
@@ -39,7 +47,6 @@ all:: srcgen2_xjsemit_xats2cm_cmemit00
 all:: srcgen2_xjsemit_xats2cm_cmemit01
 all:: srcgen2_xjsemit_xats2py_pyemit00
 all:: srcgen2_xjsemit_xats2py_pyemit01
-#
 all:: srcgen2_xjsemit_xatsopt_tcheck00_opt1
 all:: srcgen2_xjsemit_xatsopt_tcheck01_opt1
 all:: srcgen2_xjsemit_xats2js_jsemit00_opt1
@@ -48,6 +55,13 @@ all:: srcgen2_xjsemit_xats2cm_cmemit00_opt1
 all:: srcgen2_xjsemit_xats2cm_cmemit01_opt1
 all:: srcgen2_xjsemit_xats2py_pyemit00_opt1
 all:: srcgen2_xjsemit_xats2py_pyemit01_opt1
+#
+all:: srcgen2_lib2xats2pl
+all:: srcgen2_lib2xats2rb
+all:: srcgen2_xjsemit_xats2pl_plemit01
+all:: srcgen2_xjsemit_xats2rb_rbemit01
+all:: srcgen2_xjsemit_xats2pl_plemit01_opt1
+all:: srcgen2_xjsemit_xats2rb_rbemit01_opt1
 #
 ########################################################################
 #
@@ -150,7 +164,7 @@ time make -C srcgen1/xats2js/srcgen1 -f Makefile_patsopt xats2js
 #
 # HX-2026-08-08:
 # Building with Makefile_xats2js
-# STEP~2 for building xatsopt_tcheck00
+# STEP~2 for building xatsopt_tcheck0?
 #
 srcgen2_lib1xatsopt: ; \
 time make -C srcgen2 -f Makefile_xats2js lib1xatsopt
@@ -163,7 +177,7 @@ time make -C srcgen2/UTIL -f Makefile_xats2js xatsopt_tcheck01
 #
 # HX-2026-08-08:
 # Building with Makefile_xats2js
-# STEP~3 for building xats2js_jsemit00
+# STEP~3 for building xats2js_jsemit0?
 #
 srcgen2_lib1xats2js: ; \
 time make -C srcgen2/xats2js/srcgen1 -f Makefile_xats2js lib1xats2js
@@ -176,8 +190,8 @@ time make -C srcgen2/xats2js/srcgen1/UTIL -f Makefile_xats2js xats2js_jsemit01
 #
 # HX-2026-08-08:
 # Building with Makefile_xats2js
-# STEP~4 for building xats2py_cmemit00
-# STEP~4 for building xats2py_pyemit00
+# STEP~4 for building xats2py_cmemit0?
+# STEP~4 for building xats2py_pyemit0?
 #
 srcgen2_lib1xats2cm: ; \
 time make -C srcgen2/xats2cm/srcgen1 -f Makefile_xats2js lib1xats2cm
@@ -193,6 +207,16 @@ time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xats2js xats2py_pyemit00
 srcgen2_xats2js_xats2py_pyemit01: ; \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xats2js xats2py_pyemit01
 #
+srcgen2_lib1xats2pl: ; \
+time make -C srcgen2/xats2pl/srcgen1 -f Makefile_xats2js lib1xats2pl
+srcgen2_xats2js_xats2pl_plemit01: ; \
+time make -C srcgen2/xats2pl/srcgen1/UTIL -f Makefile_xats2js xats2pl_plemit01
+#
+srcgen2_lib1xats2rb: ; \
+time make -C srcgen2/xats2rb/srcgen1 -f Makefile_xats2js lib1xats2rb
+srcgen2_xats2js_xats2rb_rbemit01: ; \
+time make -C srcgen2/xats2rb/srcgen1/UTIL -f Makefile_xats2js xats2rb_rbemit01
+#
 ########################################################################
 #
 # HX-2026-08-08:
@@ -205,6 +229,8 @@ time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xats2js xats2py_pyemit01
 # STEP~5 for boostrapping xats2js_cmemit01
 # STEP~5 for boostrapping xats2js_pyemit00
 # STEP~5 for boostrapping xats2js_pyemit01
+# STEP~5 for boostrapping xats2js_plemit01
+# STEP~5 for boostrapping xats2js_rbemit01
 #
 srcgen2_lib2xatsopt: ; \
 time make -C srcgen2 -f Makefile_xjsemit lib2xatsopt
@@ -250,6 +276,16 @@ srcgen2_xjsemit_xats2py_pyemit00_opt1: ; \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xjsemit xats2py_pyemit00_opt1
 srcgen2_xjsemit_xats2py_pyemit01_opt1: ; \
 time make -C srcgen2/xats2py/srcgen1/UTIL -f Makefile_xjsemit xats2py_pyemit01_opt1
+#
+srcgen2_xjsemit_xats2pl_plemit01: ; \
+time make -C srcgen2/xats2pl/srcgen1/UTIL -f Makefile_xjsemit xats2pl_plemit01
+srcgen2_xjsemit_xats2pl_plemit01_opt1: ; \
+time make -C srcgen2/xats2pl/srcgen1/UTIL -f Makefile_xjsemit xats2pl_plemit01_opt1
+#
+srcgen2_xjsemit_xats2rb_rbemit01: ; \
+time make -C srcgen2/xats2rb/srcgen1/UTIL -f Makefile_xjsemit xats2rb_rbemit01
+srcgen2_xjsemit_xats2rb_rbemit01_opt1: ; \
+time make -C srcgen2/xats2rb/srcgen1/UTIL -f Makefile_xjsemit xats2rb_rbemit01_opt1
 #
 ########################################################################
 #

@@ -12,7 +12,10 @@ parser.add_argument('source')
 parser.add_argument('-o','--output')
 parser.add_argument('--emit-only', action='store_true', help='omit the Ruby runtime and prelude')
 args,flags=parser.parse_known_args()
-compiler=root/'UTIL/xats2rb_rbemit01_ats3.js'
+compiler=root/'UTIL/xats2rb_rbemit01_ats2.js'
+#
+# compiler=root/'UTIL/xats2rb_rbemit01_ats3.js'
+#
 if not compiler.exists():
     parser.error('compiler is not built; run make in '+str(root))
 result=subprocess.run(['node','--stack-size=8800',str(compiler),args.source,*flags],capture_output=True)
