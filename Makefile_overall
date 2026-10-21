@@ -240,6 +240,10 @@ srcgen2_lib2xats2cm: ; \
 time make -C srcgen2/xats2cm/srcgen1 -f Makefile_xjsemit lib2xats2cm
 srcgen2_lib2xats2py: ; \
 time make -C srcgen2/xats2py/srcgen1 -f Makefile_xjsemit lib2xats2py
+srcgen2_lib2xats2pl: ; \
+time make -C srcgen2/xats2pl/srcgen1 -f Makefile_xjsemit lib2xats2pl
+srcgen2_lib2xats2rb: ; \
+time make -C srcgen2/xats2rb/srcgen1 -f Makefile_xjsemit lib2xats2rb
 #
 srcgen2_xjsemit_xatsopt_tcheck00: ; \
 time make -C srcgen2/UTIL -f Makefile_xjsemit xatsopt_tcheck00
