@@ -18,14 +18,12 @@ S2XSHRD=\
 $(SRCGEN2)/xats2py/srcgenx/xshared/runtime
 ########################################################################
 clean:: ; rm -f *~
-cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; \
-rm -f lib2xatsopt2js_ats3.py
-cleanall:: ; \
-rm -f xats2js_jsemit0?_ats3.py
-cleanall:: ; \
-rm -f xats2js_jsemit0?_ats3_opt0.py
+cleanall:: clean
+cleanall:: ; rm -f lib2xatsopt2js_ats3.py
+cleanall:: ; rm -f lib2xatsopt2js_ats3_opt0.py
+cleanall:: ; rm -f xats2js_jsemit0?_ats3.py
+cleanall:: ; rm -f xats2js_jsemit0?_ats3_opt0.py
 ########################################################################
 ########################################################################
 ifndef XATSOPT_TCHECK00

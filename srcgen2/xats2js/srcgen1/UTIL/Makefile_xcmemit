@@ -18,14 +18,12 @@ S2XSHRD=\
 $(SRCGEN2)/xats2cm/srcgenx/xshared/runtime
 ########################################################################
 clean:: ; rm -f *~
-cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; \
-rm -f lib2xatsopt2js_ats3.cm
-cleanall:: ; \
-rm -f xats2js_jsemit0?_ats3.cm
-cleanall:: ; \
-rm -f xats2js_jsemit0?_ats3_opt0.cm
+cleanall:: clean
+cleanall:: ; rm -f lib2xatsopt2js_ats3.cm
+cleanall:: ; rm -f lib2xatsopt2js_ats3_opt0.cm
+cleanall:: ; rm -f xats2js_jsemit0?_ats3.cm
+cleanall:: ; rm -f xats2js_jsemit0?_ats3_opt0.cm
 ########################################################################
 ########################################################################
 ifndef XATSOPT_TCHECK00
