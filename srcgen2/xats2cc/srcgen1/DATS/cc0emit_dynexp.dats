@@ -98,6 +98,27 @@ loctn_fprint(loc0,filr))//endfun
 (* ****** ****** *)
 //
 fun
+i0pat$typcc0
+( filr: FILR
+, ipat: i0pat): void =
+let
+//
+val lctn = ipat.lctn()
+val ityp = ipat.ityp()
+//
+in//let
+(
+strnfpr(filr, "#define ");
+strnfpr(filr, "_i0pat$typ_");
+fprint_loctn_as_stamp(filr, lctn);
+strnfpr(filr, " ");
+i0typcc0(filr, ityp);fprintln(filr))
+end(*let*)//end-of-[i0pat$typcc0(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i0exp$typcc0
 ( filr: FILR
 , iexp: i0exp): void =
@@ -114,6 +135,73 @@ fprint_loctn_as_stamp(filr, lctn);
 strnfpr(filr, " ");
 i0typcc0(filr, ityp);fprintln(filr))
 end(*let*)//end-of-[i0exp$typcc0(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0pat_cc0emit
+(ipat, env0) =
+let
+//
+// (*
+//
+val () =
+prerrsln("\
+i0pat_cc0emit: lctn = ", lctn)
+val () =
+prerrsln("\
+i0pat_cc0emit: ipat = ", ipat)
+//
+// *)
+//
+in//let
+//
+case+
+ipat.node() of
+//
+| _
+(*otherwise*) => f0_otherwise(ipat, env0)
+//
+end where//endof(i0pat_cc0emit(ipat,env0))
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+val lctn =
+i0pat_lctn$get(ipat)
+val filr =
+envxcc0_filr$get(env0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_otherwise
+(
+ipat: i0pat,
+env0: !envxcc0): void =
+(
+strnfpr(
+filr, "// I0PAT(");
+lctnfpr(filr, lctn);
+strnfpr(filr, "): ");
+i0typcc0
+(filr, ityp); fprintln(filr)
+) where
+{
+//
+val lctn = i0pat_lctn$get(ipat)
+val ityp = i0pat_ityp$get(ipat)
+//
+}(*where*)//end-of-[f0_otherwise(ipat,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+}(*where*)//end-of-[i0pat_cc0emit(ipat,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -203,13 +291,14 @@ end where//endof(i0exp_cc0emit(iexp,env0))
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 val lctn =
 i0exp_lctn$get(iexp)
-//
 val filr =
 envxcc0_filr$get(env0)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -501,9 +590,9 @@ else
 f0_npf1_i0ps(npf1, i0ps)
 ) where
 {
-(*
+//
 val () = i0pat_cc0emit(i0p1, env0)
-*)
+//
 }(*where*)
 )(*case+*)//end-of-[f0_npf1_i0ps(...)]
 }(*where*)//end-of-[fiarg_cc0emit(farg,env0)]
