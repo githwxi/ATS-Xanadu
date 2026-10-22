@@ -160,8 +160,35 @@ in//let
 case+
 ipat.node() of
 //
+(* ****** ****** *)
+//
+|I0Pint _ =>
+(
+i0pat$typcc0(filr, ipat))
+|I0Pbtf _ =>
+(
+i0pat$typcc0(filr, ipat))
+|I0Pchr _ =>
+(
+i0pat$typcc0(filr, ipat))
+|I0Pflt _ =>
+(
+i0pat$typcc0(filr, ipat))
+|I0Pstr _ =>
+(
+i0pat$typcc0(filr, ipat))
+//
+(* ****** ****** *)
+//
+|I0Pvar _ =>
+(
+i0pat$typcc0(filr, ipat))
+//
+(* ****** ****** *)
 | _
 (*otherwise*) => f0_otherwise(ipat, env0)
+//
+(* ****** ****** *)
 //
 end where//endof(i0pat_cc0emit(ipat,env0))
 {
