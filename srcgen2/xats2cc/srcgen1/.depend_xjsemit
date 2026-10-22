@@ -1,0 +1,26 @@
+########################################################################
+########################################################################
+BUILD/JS/intrep0_dats_out0.js: SATS/intrep0.sats
+BUILD/JS/intrep0_print0_dats_out0.js: SATS/intrep0.sats
+BUILD/JS/intrep0_utils0_dats_out0.js: SATS/intrep0.sats
+########################################################################
+BUILD/JS/intrep1_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats
+BUILD/JS/intrep1_print0_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats
+BUILD/JS/intrep1_utils0_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats
+########################################################################
+BUILD/JS/trxd3i0_dats_out0.js: SATS/intrep0.sats SATS/trxd3i0.sats
+BUILD/JS/trxd3i0_myenv0_dats_out0.js: SATS/intrep0.sats SATS/trxd3i0.sats
+BUILD/JS/trxd3i0_dynexp_dats_out0.js: SATS/intrep0.sats SATS/trxd3i0.sats
+BUILD/JS/trxd3i0_decl00_dats_out0.js: SATS/intrep0.sats SATS/trxd3i0.sats
+########################################################################
+BUILD/JS/cc0emit_dats_out0.js: SATS/intrep0.sats SATS/cc0emit.sats
+BUILD/JS/cc0emit_utils0_dats_out0.js: SATS/intrep0.sats SATS/cc0emit.sats
+BUILD/JS/cc0emit_dynexp_dats_out0.js: SATS/intrep0.sats SATS/cc0emit.sats
+BUILD/JS/cc0emit_decl00_dats_out0.js: SATS/intrep0.sats SATS/cc0emit.sats
+########################################################################
+BUILD/JS/xats2cc_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats
+BUILD/JS/xats2cc_myenv0_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats
+BUILD/JS/xats2cc_dynexp_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats
+BUILD/JS/xats2cc_decl00_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats
+########################################################################
+########################################################################

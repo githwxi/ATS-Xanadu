@@ -54,6 +54,12 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/xats2cc.sats"
 #staload "./../SATS/cc1emit.sats"
 //
 (* ****** ****** *)

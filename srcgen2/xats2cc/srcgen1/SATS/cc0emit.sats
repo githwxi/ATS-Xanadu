@@ -146,6 +146,12 @@ i0parsed_cc0emit
 (* ****** ****** *)
 //
 fun
+i0pat_cc0emit(
+  ipat: i0pat, env0: !envxcc0): void
+//
+(* ****** ****** *)
+//
+fun
 i0exp_cc0emit(
   iexp: i0exp, env0: !envxcc0): void
 //
@@ -164,6 +170,12 @@ i0dcl_cc0emit(
   idcl: i0dcl, env0: !envxcc0): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0patlst_cc0emit(
+  i0ps: i0patlst, env0: !envxcc0): void
+//
 (* ****** ****** *)
 //
 fun
