@@ -2,6 +2,7 @@
 (* ****** ****** *)
 (*
 HX-2026-10-23:
+koka-amb.dats:
 This was written around 2020?
 *)
 (* ****** ****** *)
@@ -24,7 +25,7 @@ This was written around 2020?
 fun
 xor(p: bool, q: bool): bool =
 if (p)
-then q
+then (q)
 else (if q then false else true)
 
 (* ****** ****** *)
@@ -77,7 +78,8 @@ kxor0
 kxor<ans>
 (
 lam(x) =>
-list_cons(x, list_nil())
+
+  list_cons(x, list_nil())
 )
 ) where
 {
