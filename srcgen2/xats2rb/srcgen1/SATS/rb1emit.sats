@@ -50,6 +50,16 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+the_timplvl_get(): nint
+fun
+the_timplvl_inc(): void
+fun
+the_timplvl_dec(): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 fun
 d2conrb1

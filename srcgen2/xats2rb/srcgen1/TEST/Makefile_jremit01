@@ -21,6 +21,7 @@ all:: test08
 all:: test09
 all:: test10
 all:: test11
+all:: test12
 ########################################################################
 .PHONY:: all testall
 .PHONY:: clean cleanall
@@ -40,6 +41,7 @@ testall:: test08; $(RUBY) OUTS/$<_out.rb
 testall:: test09; $(RUBY) OUTS/$<_out.rb
 testall:: test10; $(RUBY) OUTS/$<_out.rb
 testall:: test11; $(RUBY) OUTS/$<_out.rb
+testall:: test12; $(RUBY) OUTS/$<_out.rb
 ########################################################################
 test00 \
 test01 \

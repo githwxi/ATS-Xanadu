@@ -90,6 +90,16 @@ _(*DATS*)="./../DATS/rb1emit.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+sintfpr
+( filr: FILR
+, sint: sint): void =
+(
+gint_fprint$sint(sint, filr))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 //
 HX-2026-09-05:
@@ -206,9 +216,15 @@ D2Eextnam
 in//let
 //
 case+ gnam of
-| G1Nid0(xsym) => (strnfpr(filr, "$"); xsymrb1(filr, xsym))
-| G1Nstr(xname) => (strnfpr(filr, "$"); strn_fprint(xname, filr))
-| _(* otherwise *) => (strnfpr(filr, "$"); xsymrb1(filr, name))
+| G1Nid0(xsym) =>
+( strnfpr(filr, "$");
+  xsymrb1(filr, xsym))
+| G1Nstr(xname) =>
+( strnfpr(filr, "$");
+  strn_fprint(xname, filr))
+| _(* otherwise *) =>
+(
+  strnfpr(filr, "$"); xsymrb1(filr, name))
 end(*let*)//end-of-[f0_some()]
 //
 fun
@@ -216,12 +232,20 @@ f0_none
 (dcst: d2cst): void =
 let
 //
+val tlvl =
+the_timplvl_get((*void*))
+//
 val lctn = dcst.lctn((*0*))
 val name = dcst.name((*0*))
 //
 in//let
 (
-strnfpr(filr, "rbv_");xsymrb1(filr, name);
+strnfpr
+(filr, "dcst");
+(
+if (tlvl >= 1)
+then sintfpr(filr, tlvl));
+strnfpr(filr, "_");xsymrb1(filr, name);
 strnfpr(filr, "_");fprint_loctn_as_stamp(filr, lctn))
 end(*let*)//end-of-[f0_none()]
 //
@@ -235,12 +259,20 @@ d2varrb1
 (filr, dvar) =
 let
 //
+val tlvl =
+the_timplvl_get((*void*))
+//
 val lctn = dvar.lctn((*0*))
 val name = dvar.name((*0*))
 //
 in//let
 (
-strnfpr(filr, "rbv_");xsymrb1(filr, name);
+strnfpr
+(filr, "dvar");
+(
+if (tlvl >= 1)
+then sintfpr(filr, tlvl));
+strnfpr(filr, "_");xsymrb1(filr, name);
 strnfpr(filr, "_");fprint_loctn_as_stamp(filr, lctn))
 end(*let*)//end-of-[d2varrb1(env0,dvar)]
 //
@@ -294,11 +326,24 @@ case+ c0 of
 let
 val code = char_code(c0)
 in//let
-if code < 32
-then prints("\\", code / 64, (code / 8) % 8, code % 8)
-else (if code = 127
-then prints("\\", code / 64, (code / 8) % 8, code % 8)
-else char_fprint(c0, filr))
+if // if
+(code < 32)
+then//then
+(
+prints
+( "\\"
+, code / 64
+, (code / 8) % 8, code % 8))
+else//else
+(
+if code = 127
+then//then
+(
+prints
+( "\\"
+, code / 64
+, (code / 8) % 8, code % 8)
+) else char_fprint(c0, filr))
 end//let
 ) where
 {
@@ -309,10 +354,12 @@ end//let
 i0c00rb1
 (filr, c00) =
 (
-strn_fprint("XATSCHR0(\"", filr);
+strn_fprint
+("XATSCHR0(\"", filr);
 rb1emit_char_content(filr, c00);
-char_fprint('"', filr); char_fprint(')', filr)
-)//end-of-[i0c00rb1(filr,c00)]
+char_fprint
+('"', filr); char_fprint(')', filr))
+//end-of-[i0c00rb1(filr,c00)]//implfun(...)
 //
 (* ****** ****** *)
 //
@@ -537,6 +584,39 @@ char_fprint('"', filr); char_fprint(')', filr)
 end//let
 //
 }(*where*)//end-of-[i0strrb1(filr,tstr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+val mylvl =
+(
+a0ref_make_1val(0))
+//
+in//local
+//
+#implfun
+the_timplvl_get
+(  (*mylvl*)  ) = a0ref_get(mylvl)
+//
+#implfun
+the_timplvl_inc
+(  (*mylvl*)  ) =
+let
+val lvl =
+  a0ref_get(mylvl) in a0ref_set(mylvl, lvl+1)
+end
+//
+#implfun
+the_timplvl_dec()
+(  (*mylvl*)  ) =
+let
+val lvl =
+  a0ref_get(mylvl) in a0ref_set(mylvl, lvl-1)
+end
+//
+end//local//end-of-[the_timplvl_get/inc/dec(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
