@@ -1731,7 +1731,8 @@ prints(igpt, "\n");
 nindstrnfpr(filr, nind, "if (");
 i0pckpl1
 (filr, ival, ipat);strnfpr(filr, ") { ## // gpt\n");
-nindfpr(filr,nind+2);i1tnmpl1(filr, itnm);
+nindstrnfpr
+(filr, nind+2, "my ");i1tnmpl1(filr, itnm);
 strnfpr(filr,(" = "));i1valpl1(filr, ival);smiclnln(filr)
 )(* end-of-[I1BNDcons(...)] *)
 )
@@ -1749,7 +1750,8 @@ nindstrnfpr
 (filr, nind, "if (");
 i0pckpl1
 (filr, ival, ipat);strnfpr(filr, ") { ## // gpt\n");
-nindfpr(filr,nind+2);i1tnmpl1(filr, itnm);
+nindstrnfpr
+(filr, nind+2, "my ");i1tnmpl1(filr, itnm);
 strnfpr(filr,(" = "));i1valpl1(filr, ival);smiclnln(filr)
 )(* end-of-[I1BNDcons(...)] *)
 )
@@ -2359,23 +2361,23 @@ end//let//end-of-[I1INScas0(...)]
 (tknd
 ,fjas, icmp) =>
 (
-nindfpr(filr, nind);
+//
+nindstrnfpr
+(filr, nind, "my ");
 i1tnmpl1
 (filr, itnm); strnfpr
 (filr, " = sub { ## // lam0(");
 tokenfpr(filr, tknd);strnfpr(filr, ")\n");
+//
+nindstrnfpr(
+filr, nind+2, "my ");
+fjas1pl1(filr, fjas);strnfpr(filr, " = @_;\n");
 (
-envx2js_incnind
-(env0, 2(*dlta*));
-nindstrnfpr
-(filr, nind, "my ");
-fjas1pl1
-(filr, fjas);strnfpr(filr, " = @_;\n");
+envx2js_incnind(env0, 2(*dlta*));
 pl1emit_fjarglst
-(env0, fjas(*args*));f0_i1cmpret(env0, icmp));
+(env0, fjas(*args*));f0_i1cmpret( env0, icmp ));
 (
-envx2js_decnind
-(env0, 2(*dlta*));
+envx2js_decnind(env0, 2(*dlta*));
 nindstrnfpr(filr, nind, "}; ## // end(lam0)\n"))
 )
 //

@@ -29,20 +29,45 @@ list_permutations
 (
 case+ xs of
 |
-list_nil () =>
-list_cons(list_nil (), list_nil ())
+list_nil() =>
+list_cons
+(list_nil (), list_nil ())
 |
-list_cons (x, xs) =>
+list_cons(x, xs) =>
 let
-  val ps = list_permutations(xs)
+//
+(*
+val () =
+printsln("\
+list_permutations: list_cons: x = ", x)
+val () =
+printsln("\
+list_permutations: list_cons: xs = ", xs)
+*)
+//
+val ps = list_permutations(xs)
+//
+(*
+val () =
+printsln("\
+list_permutations: list_cons: x = ", x)
+val () =
+printsln("\
+list_permutations: list_cons: xs = ", xs)
+val () =
+printsln("\
+list_permutations: list_cons: ps = ", ps)
+*)
+//
 in//let
+//
 list_list$concat
 (
 list_map(
   ps
-, lam p => insert_everywhere(x, p))
-)
-end
+, lam p => insert_everywhere(x, p)))
+//
+end//end-of-[list_cons(x, xs)]
 ) where//end-of-[list_permutations(xs)]
 {
 //
@@ -50,6 +75,10 @@ fun
 insert_everywhere
 (x: a, xs: list(a)): list(list(a)) =
 (
+(*
+printsln("insert_everywhere: x = ", x);
+printsln("insert_everywhere: xs = ", xs);
+*)
 case+ xs of
 |
 list_nil () =>
