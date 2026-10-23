@@ -24,6 +24,7 @@ all:: test08
 all:: test09
 all:: test10
 all:: test11
+all:: test12
 ########################################################################
 ########################################################################
 testall:: test00; $(PERL) OUTS/$<_out.pl
@@ -38,13 +39,14 @@ testall:: test08; $(PERL) OUTS/$<_out.pl
 testall:: test09; $(PERL) OUTS/$<_out.pl
 testall:: test10; $(PERL) OUTS/$<_out.pl
 testall:: test11; $(PERL) OUTS/$<_out.pl
+testall:: test12; $(PERL) OUTS/$<_out.pl
 ########################################################################
 ########################################################################
 XATS2PL_SRCGENX="./.."
 XATS2PL_XSHARED=$(XATS2PL_SRCGENX)/xshared/runtime
 ########################################################################
 XATS2PL_PLEMIT01="./../UTIL/xats2pl_plemit01_ats2.js"
-# XATS2PL_PLEMIT01="./../UTIL/xats2pl_plemit01_ats3.js"
+XATS2PL_PLEMIT01="./../UTIL/xats2pl_plemit01_ats3.js"
 ########################################################################
 ########################################################################
 test00:: ; \
@@ -194,6 +196,18 @@ $(CAT) $(XATS2PL_XSHARED)/srcgen2_prelude.pl >> OUTS/$@_out.pl
 ############
 test11:: \
 test11_xats2pl.dats; \
+$(NODE) --stack-size=8800 $(XATS2PL_PLEMIT01) $< >> OUTS/$@_out.pl
+########################################################################
+test12:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.pl
+############
+test12:: ; \
+$(CAT) $(XATS2PL_XSHARED)/xats2pl_pl1emit.pl >> OUTS/$@_out.pl
+test12:: ; \
+$(CAT) $(XATS2PL_XSHARED)/srcgen2_prelude.pl >> OUTS/$@_out.pl
+############
+test12:: \
+test12_xats2pl.dats; \
 $(NODE) --stack-size=8800 $(XATS2PL_PLEMIT01) $< >> OUTS/$@_out.pl
 ########################################################################
 ########################################################################

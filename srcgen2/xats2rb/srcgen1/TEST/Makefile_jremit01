@@ -41,20 +41,25 @@ testall:: test09; $(RUBY) OUTS/$<_out.rb
 testall:: test10; $(RUBY) OUTS/$<_out.rb
 testall:: test11; $(RUBY) OUTS/$<_out.rb
 ########################################################################
-test00 test01 \
-test02 test03 \
-test04 test05 \
-test06 test07 \
-test08 test09 \
-test10 test11: ; \
+test00 \
+test01 \
+test02 \
+test03 \
+test04 \
+test05 \
+test06 \
+test07 \
+test08 \
+test09 \
+test10 \
+test11 \
+test12: ; \
 $(PRINTF) \
-"## %s\n" "`date`" > OUTS/$@_out.rb && \
-$(XATS2RB) $@_xats2rb.dats >> OUTS/$@_out.rb
+"## %s\n" "`date`" > OUTS/$@_out.rb && $(XATS2RB) $@_xats2rb.dats >> OUTS/$@_out.rb
 ########################################################################
 testxx: ; \
 $(PRINTF) \
-"## %s\n" "`date`" > OUTS/$@_out.rb && \
-$(XATS2RB) testxx_mydebug.dats >> OUTS/$@_out.rb
+"## %s\n" "`date`" > OUTS/$@_out.rb && $(XATS2RB) testxx_mydebug.dats >> OUTS/$@_out.rb
 ########################################################################
 ########################################################################
 ###################### end of [Makefile_jremit01] ######################
