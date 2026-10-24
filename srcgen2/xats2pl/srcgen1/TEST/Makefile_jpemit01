@@ -25,6 +25,9 @@ all:: test09
 all:: test10
 all:: test11
 all:: test12
+all:: test13
+all:: test14
+all:: test15
 ########################################################################
 ########################################################################
 testall:: test00; $(PERL) OUTS/$<_out.pl
@@ -40,6 +43,9 @@ testall:: test09; $(PERL) OUTS/$<_out.pl
 testall:: test10; $(PERL) OUTS/$<_out.pl
 testall:: test11; $(PERL) OUTS/$<_out.pl
 testall:: test12; $(PERL) OUTS/$<_out.pl
+testall:: test13; $(PERL) OUTS/$<_out.pl
+testall:: test14; $(PERL) OUTS/$<_out.pl
+testall:: test15; $(PERL) OUTS/$<_out.pl
 ########################################################################
 ########################################################################
 XATS2PL_SRCGENX="./.."
@@ -211,6 +217,36 @@ test12_xats2pl.dats; \
 $(NODE) --stack-size=8800 $(XATS2PL_PLEMIT01) $< >> OUTS/$@_out.pl
 ########################################################################
 ########################################################################
+test13:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.pl
+############
+test13:: ; \
+$(CAT) $(XATS2PL_XSHARED)/xats2pl_pl1emit.pl >> OUTS/$@_out.pl
+test13:: ; \
+$(CAT) $(XATS2PL_XSHARED)/srcgen2_prelude.pl >> OUTS/$@_out.pl
+############
+test13:: test13_xats2pl.dats; \
+$(NODE) --stack-size=8800 $(XATS2PL_PLEMIT01) $< >> OUTS/$@_out.pl
+test14:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.pl
+############
+test14:: ; \
+$(CAT) $(XATS2PL_XSHARED)/xats2pl_pl1emit.pl >> OUTS/$@_out.pl
+test14:: ; \
+$(CAT) $(XATS2PL_XSHARED)/srcgen2_prelude.pl >> OUTS/$@_out.pl
+############
+test14:: test14_xats2pl.dats; \
+$(NODE) --stack-size=8800 $(XATS2PL_PLEMIT01) $< >> OUTS/$@_out.pl
+test15:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.pl
+############
+test15:: ; \
+$(CAT) $(XATS2PL_XSHARED)/xats2pl_pl1emit.pl >> OUTS/$@_out.pl
+test15:: ; \
+$(CAT) $(XATS2PL_XSHARED)/srcgen2_prelude.pl >> OUTS/$@_out.pl
+############
+test15:: test15_xats2pl.dats; \
+$(NODE) --stack-size=8800 $(XATS2PL_PLEMIT01) $< >> OUTS/$@_out.pl
 testxx:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.pl
 ############
