@@ -27,34 +27,39 @@ all:: test13
 all:: test15
 ########################################################################
 ########################################################################
-testall:: \
-test00; $(SCHEME) --script OUTS/$<_out.cm
-testall:: \
-test01; $(SCHEME) --script OUTS/$<_out.cm
-testall:: \
-test02; $(SCHEME) --script OUTS/$<_out.cm
-testall:: \
-test03; $(SCHEME) --script OUTS/$<_out.cm
-testall:: \
-test04; $(SCHEME) --script OUTS/$<_out.cm
-testall:: \
-test05; $(SCHEME) --script OUTS/$<_out.cm
-testall:: \
-test06; $(SCHEME) --script OUTS/$<_out.cm
-testall:: \
-test07; $(SCHEME) --script OUTS/$<_out.cm
-testall:: \
-test09; $(SCHEME) --script OUTS/$<_out.cm
-testall:: \
-test10; $(SCHEME) --script OUTS/$<_out.cm
-testall:: \
-test11; $(SCHEME) --script OUTS/$<_out.cm
-testall:: \
-test12; $(SCHEME) --script OUTS/$<_out.cm
-testall:: \
-test13; $(SCHEME) --script OUTS/$<_out.cm
-testall:: \
-test15; $(SCHEME) --script OUTS/$<_out.cm
+testall:: test00; \
+$(SCHEME) --script OUTS/$<_out.cm
+testall:: test01; \
+$(SCHEME) --script OUTS/$<_out.cm
+testall:: test02; \
+$(SCHEME) --script OUTS/$<_out.cm
+testall:: test03; \
+$(SCHEME) --script OUTS/$<_out.cm
+testall:: test04; \
+$(SCHEME) --script OUTS/$<_out.cm
+testall:: test05; \
+$(SCHEME) --script OUTS/$<_out.cm
+testall:: test06; \
+$(SCHEME) --script OUTS/$<_out.cm
+testall:: test07; \
+$(SCHEME) --script OUTS/$<_out.cm
+testall:: test09; \
+$(SCHEME) --script OUTS/$<_out.cm
+testall:: test10; \
+$(SCHEME) --script OUTS/$<_out.cm
+testall:: test11; \
+$(SCHEME) --script OUTS/$<_out.cm
+testall:: test12; \
+$(SCHEME) --script OUTS/$<_out.cm
+testall:: test13; \
+$(SCHEME) --script OUTS/$<_out.cm
+testall:: test15; \
+$(SCHEME) --script OUTS/$<_out.cm
+########################################################################
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/test??_out.cm
 ########################################################################
 ########################################################################
 XATS2CM_SRCGENX="./.."
@@ -255,10 +260,6 @@ testxx_mydebug.dats; \
 $(SCHEME) --script $(XATS2CM_CMEMIT01) _dummy_ $< >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
-clean:: ; rm -f *~
-cleanall:: ; rm -f *~
-cleanall:: ; rm -f OUTS/test??_out.cm
-########################################################################
-########################################################################
 ###################### end of [Makefile_cmemit01] ######################
+########################################################################
 ########################################################################
