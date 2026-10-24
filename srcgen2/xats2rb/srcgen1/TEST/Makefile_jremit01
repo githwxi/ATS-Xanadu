@@ -24,6 +24,7 @@ all:: test11
 all:: test12
 all:: test13
 all:: test14
+all:: test15
 ########################################################################
 .PHONY:: all testall
 .PHONY:: clean cleanall
@@ -46,6 +47,7 @@ testall:: test11; $(RUBY) OUTS/$<_out.rb
 testall:: test12; $(RUBY) OUTS/$<_out.rb
 testall:: test13; $(RUBY) OUTS/$<_out.rb
 testall:: test14; $(RUBY) OUTS/$<_out.rb
+testall:: test15; $(RUBY) OUTS/$<_out.rb
 ########################################################################
 test00 \
 test01 \
@@ -61,7 +63,8 @@ test10 \
 test11 \
 test12 \
 test13 \
-test14: ; \
+test14 \
+test15: ; \
 $(PRINTF) \
 "## %s\n" "`date`" > OUTS/$@_out.rb && $(XATS2RB) $@_xats2rb.dats >> OUTS/$@_out.rb
 ########################################################################
