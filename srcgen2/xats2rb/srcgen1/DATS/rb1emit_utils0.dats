@@ -313,16 +313,26 @@ rb1emit_char_content
 (filr: FILR, c0: char): void =
 (
 case+ c0 of
-| '"' => strn_fprint("\\\"", filr)
-| '\\' => strn_fprint("\\\\", filr)
-| '#' => strn_fprint("\\#", filr)
-| '\n' => strn_fprint("\\n", filr)
-| '\t' => strn_fprint("\\t", filr)
-| '\r' => strn_fprint("\\r", filr)
-| '\b' => strn_fprint("\\b", filr)
-| '\f' => strn_fprint("\\f", filr)
-| '\v' => strn_fprint("\\v", filr)
-| _ =>
+|
+'"' => strn_fprint("\\\"", filr)
+|
+'\\' => strn_fprint("\\\\", filr)
+|
+'#' => strn_fprint("\\#", filr)
+|
+'\n' => strn_fprint("\\n", filr)
+|
+'\t' => strn_fprint("\\t", filr)
+|
+'\r' => strn_fprint("\\r", filr)
+|
+'\b' => strn_fprint("\\b", filr)
+|
+'\f' => strn_fprint("\\f", filr)
+|
+'\v' => strn_fprint("\\v", filr)
+|
+_ (*rest*) =>
 let
 val code = char_code(c0)
 in//let
@@ -445,9 +455,12 @@ i0chrrb1
 (filr, tchr) =
 (
 case- tchr.node() of
-| T_CHAR1_nil0 _ => i0c00rb1(filr, '\0')
-| T_CHAR2_char(rep) => i0c00rb1(filr, rep[1])
-| T_CHAR3_blsh(rep) =>
+|
+T_CHAR1_nil0 _ => i0c00rb1(filr, '\0')
+|
+T_CHAR2_char(rep) => i0c00rb1(filr, rep[1])
+|
+T_CHAR3_blsh(rep) =>
 let
 val c0 = rep[2]
 val c1 =
@@ -525,7 +538,8 @@ case- tstr.node() of
 T_STRN1_clsd
 (rep, len) => f0_strn(rep, len-1)
 |
-T_STRN2_ncls(rep, len) => f0_strn(rep, len)
+T_STRN2_ncls
+(rep, len) => f0_strn(rep, len-0)
 ) where
 {
 //
@@ -535,23 +549,33 @@ Do not double-escape \n, numeric escapes, etc.; protect literal Ruby
 metacharacters separately. Use the token length, including embedded NULs.
 *)
 fun
-f0_strn(rep: strn, stop: sint): void =
+f0_strn
+( rep: strn
+, stop: sint): void =
 let
 fnx
 loop1(i0: nint): void =
-if i0 >= stop
-then ()
-else
+if
+(i0 >= stop)
+then () else
+(
 let
 val c0 = rep[i0]
 in//let
 if // if
 (c0 = '\\')
-then loop2(i0+1)
+then
+loop2(i0+1)
 else
 (
-rb1emit_char_content(filr, c0); loop1(i0+1))
+loop1(i0+1)
+where
+{
+val () =
+rb1emit_char_content(filr, c0) }
+)
 end//let
+)
 //
 and
 loop2(i0: nint): void =
