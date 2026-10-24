@@ -521,8 +521,11 @@ i0strrb1
 (filr, tstr) =
 (
 case- tstr.node() of
-| T_STRN1_clsd(rep, len) => f0_strn(rep, len-1)
-| T_STRN2_ncls(rep, len) => f0_strn(rep, len)
+|
+T_STRN1_clsd
+(rep, len) => f0_strn(rep, len-1)
+|
+T_STRN2_ncls(rep, len) => f0_strn(rep, len)
 ) where
 {
 //
@@ -542,7 +545,8 @@ else
 let
 val c0 = rep[i0]
 in//let
-if c0 = '\\'
+if // if
+(c0 = '\\')
 then loop2(i0+1)
 else
 (
@@ -553,7 +557,9 @@ and
 loop2(i0: nint): void =
 if i0 >= stop
 then
-(* Preserve a trailing backslash in an unclosed token. *)
+(*
+Preserve a trailing
+backslash in an unclosed token. *)
 rb1emit_char_content(filr, '\\')
 else
 let
@@ -561,24 +567,39 @@ val c0 = rep[i0]
 val () =
 (
 case+ c0 of
-| '\n' => () // ATS backslash-newline continuation
-| '\\' => rb1emit_char_content(filr, c0)
-| '"' => rb1emit_char_content(filr, c0)
-| '#' => rb1emit_char_content(filr, c0)
-| _ =>
-if char_code(c0) < 32
-then rb1emit_char_content(filr, c0)
-else (if char_code(c0) = 127
-then rb1emit_char_content(filr, c0)
+| '"' =>
+  rb1emit_char_content(filr, c0)
+| '#' =>
+  rb1emit_char_content(filr, c0)
+| '\n' => ()
+// ATS backslash-newline continuation
+| '\\' =>
+  rb1emit_char_content(filr, c0)
+| _ (*rest*) =>
+(
+if // if
+char_code(c0) < 32
+then
+(
+  rb1emit_char_content(filr, c0))
 else
 (
-char_fprint('\\', filr); char_fprint(c0, filr)))
+if // if
+char_code(c0) = 127
+then
+(
+  rb1emit_char_content(filr, c0))
+else
+(
+char_fprint
+('\\', filr); char_fprint(c0, filr))))
 )
 in//let
 loop1(i0+1)
 end//let
 in//let
-strn_fprint("XATSSTRN(", filr); char_fprint('"', filr);
+strn_fprint
+("XATSSTRN(", filr); char_fprint('"', filr);
 loop1(1); // skip the opening quote
 char_fprint('"', filr); char_fprint(')', filr)
 end//let
@@ -609,7 +630,7 @@ val lvl =
 end
 //
 #implfun
-the_timplvl_dec()
+the_timplvl_dec
 (  (*mylvl*)  ) =
 let
 val lvl =
