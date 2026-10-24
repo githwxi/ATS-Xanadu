@@ -172,7 +172,7 @@ XATS2PY_a1rf_make_nfun
 #extern
 fun
 XATS2PY_a1rf_make_nfun
-{a:t0}
+{a:vt}
 (n:nint, f:(nint)->(a)): a1rf(a) = $extnam()
 }
 //

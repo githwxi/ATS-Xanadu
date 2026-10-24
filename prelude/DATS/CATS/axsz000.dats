@@ -152,7 +152,7 @@ XATS000_a1sz_make_nfun
 #extern
 fun
 XATS000_a1sz_make_nfun
-{a:t0}
+{a:vt}
 (n:nint, f:(nint)->(a)): a1sz(a) = $extnam()
 }
 //
