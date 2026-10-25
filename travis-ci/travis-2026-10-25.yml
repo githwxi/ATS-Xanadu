@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "24"
+
+dist: noble
+os: linux
+
+install:
+  - bash travis-ci/install-deps.sh
+  - bash travis-ci/install-ats2.sh
+
+script:
+  - bash travis-ci/run.sh
