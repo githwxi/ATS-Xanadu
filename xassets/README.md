@@ -10,9 +10,11 @@ developing ATS3.
 For someone who is just interested in using ATS3 as a programming
 language, please visit [XATSHOME](https://github.com/xatshome).
 
+<!--
 ## XATSOPT
 
 For type-checking ATS3.
+-->
 
 ## XATS2JS
 
