@@ -15,10 +15,27 @@ destination=$(cd -- "$destination" && pwd -P)
 tar -xzf "$archive" -C "$destination" --strip-components=1
 export PATSHOME="$destination"
 export PATH="$PATSHOME/bin:$PATH"
+# GCC on current Cygwin treats implicit function declarations as errors. The
+# bundled ATS2-generated C predates prototypes for a few dynload functions.
+gcc_wrapper_dir=
+if [[ $(uname -s) == CYGWIN* ]]; then
+    real_gcc=$(command -v gcc)
+    gcc_wrapper_dir=$(mktemp -d "${TMPDIR:-/tmp}/ats2-gcc-wrapper.XXXXXX")
+    cat > "$gcc_wrapper_dir/gcc" <<EOF
+#!/usr/bin/env bash
+exec "$real_gcc" -Wno-error=implicit-function-declaration "\$@"
+EOF
+    chmod +x "$gcc_wrapper_dir/gcc"
+    trap 'rm -r -- "$gcc_wrapper_dir"' EXIT
+fi
 (
     cd -- "$PATSHOME"
     ./configure
-    MAKEFLAGS= MFLAGS= GNUMAKEFLAGS= MAKEOVERRIDES= make -j1 all
+    if [[ -n $gcc_wrapper_dir ]]; then
+        PATH="$gcc_wrapper_dir:$PATH" MAKEFLAGS= MFLAGS= GNUMAKEFLAGS= MAKEOVERRIDES= make -j1 all
+    else
+        MAKEFLAGS= MFLAGS= GNUMAKEFLAGS= MAKEOVERRIDES= make -j1 all
+    fi
 )
 "$PATSHOME/bin/patsopt" --version
 printf '\nATS2 installed in %s\n' "$PATSHOME"
