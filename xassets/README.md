@@ -101,3 +101,27 @@ For compiling ATS3 into Scheme.
 
 This compiler is built for compiling ATS3 source into Scheme. Its
 development and usage is parallel to XATS2PY.
+
+## XATS2PL
+
+For compiling ATS3 into Perl~5.
+
+### JS/xats2pl/xats2pl_plemit01_ats3_opt1.js
+
+This compiler is built for compiling ATS3 source into Perl~5. Its
+development and usage is parallel to XATS2PY.
+
+## XATS2RB
+
+For compiling ATS3 into Ruby~4.
+
+### JS/xats2rb/xats2rb_rbemit01_ats3_opt1.js
+
+This compiler is built for compiling ATS3 source into Ruby~4. Its
+development and usage is parallel to XATS2PY.
+
+<!--
+##################################################################
+#######################(end-of-[README.md])#######################
+##################################################################
+-->
