@@ -10,12 +10,6 @@ developing ATS3.
 For someone who is just interested in using ATS3 as a programming
 language, please visit [XATSHOME](https://github.com/xatshome).
 
-<!--
-## XATSOPT
-
-For type-checking ATS3.
--->
-
 ## XATS2JS
 
 For compiling ATS3 into JS.
@@ -121,6 +115,14 @@ For compiling ATS3 into Ruby~4.
 
 This compiler is built for compiling ATS3 source into Ruby~4. Its
 development and usage is parallel to XATS2PY.
+
+## XATSOPT
+
+For type-checking ATS3 only.
+
+### JS/xatsopt/bin/xatsopt_tcheck01_ats2_opt1.js
+### PY/xatsopt/bin/xatsopt_tcheck01_ats3_opt0.py
+### CM/xatsopt/bin/xatsopt_tcheck01_ats3_opt0.cm
 
 <!--
 ##################################################################
