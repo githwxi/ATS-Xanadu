@@ -57,6 +57,14 @@ Authoremail: gmhwxiATgmailDOTcom
 ../../../SATS/xlabel0.sats"
 //
 (* ****** ****** *)
+//
+#typedef stamp = stamp
+#typedef sym_t = sym_t
+#typedef label = label
+#typedef loc_t = loc_t
+#typedef loctn = loctn
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload S2E = "./\
@@ -76,61 +84,26 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstbox i1typ_tbox // p0tr
-#typedef i1typ = i1typ_tbox
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 datatype
-i1typ_node =
+i1lab(x0:type) =
+|
+I1LAB of (label,x0(*elt*))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
-|I1Tbas of sym_t // type
+#abstype i1arg_tbox // p0tr
 *)
-//
-|I1Tcst of s2cst // constant
-|I1Tvar of s2var // variable
-//
-(* ****** ****** *)
-|I1Tnone0 of ((*0*)) | I1Tnone1 of (i0typ)
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-i1typ_sort$get
-(ityp: i1typ): sort2
-fun
-i1typ_node$get
-(ityp: i1typ): i1typ_node
-//
-#symload sort with i1typ_sort$get
-#symload node with i1typ_node$get
-//
-(* ****** ****** *)
-//
-fun
-i1typ_fprint
-(ityp: i1typ, out0: FILR): void
-#symload fprint with i1typ_fprint
-//
-(* ****** ****** *)
-//
-fun
-i1typ_none0((*void*)): i1typ
-fun
-i1typ_none1(i0t0: i0typ): i1typ
-//
-fun
-i1typ_make_node
-(s2t0
-:sort2, node:i1typ_node): i1typ
-#symload i1typ with i1typ_make_node
+#abstype i1opr_tbox // p0tr
+#abstype i1tnm_tbox // p0tr
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(***********************************************************************)
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_intrep1.sats] *)
 (***********************************************************************)
+(***********************************************************************)
+

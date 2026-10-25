@@ -1,0 +1,13 @@
+image: Visual Studio 2022
+
+build: off
+
+install:
+  - ps: |
+      & 'C:\cygwin64\setup-x86_64.exe' -q -P gcc-core,gcc-g++,make,libgc-devel,libgmp-devel,nodejs
+      if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+build_script:
+  - ps: |
+      & 'C:\cygwin64\bin\bash.exe' --login -c 'cd "$(cygpath "$APPVEYOR_BUILD_FOLDER")" && bash travis-ci/install-ats2.sh && bash travis-ci/build.sh && bash travis-ci/test.sh js'
+      if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

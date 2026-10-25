@@ -65,75 +65,8 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#implfun
-i1typ_none0
-((*void*)) =
-i1typ_make_node
-(s2t0,I1Tnone0())
-where{
-val s2t0 = sort2_none0()}
-//
-#implfun
-i1typ_none1
-(  i0t0  ) =
-i1typ_make_node
-(i0t0.sort(),I1Tnone1(i0t0))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-local
-//
-datatype
-i1typ =
-I1TYP of
-(sort2, i1typ_node)
-(*
-datavwtp
-i1typ_vt =
-I1TYP_VT of
-(sort2, i1typ_node)
-*)
-//
-#absimpl i1typ_tbox = i1typ
-//
-(* ****** ****** *)
-in (* in-of-local *)
-(* ****** ****** *)
-//
-#implfun
-i1typ_make_node
-( sort, node ) =
-(
-  I1TYP(sort, node))
-//
-(* ****** ****** *)
-//
-#implfun
-i1typ_sort$get
-(   ityp   ) =
-let
-val+
-I1TYP
-(s2t0, node) = ityp in s2t0 end
-//
-(* ****** ****** *)
-//
-#implfun
-i1typ_node$get
-(   ityp   ) =
-let
-val+
-I1TYP
-(s2t0, node) = ityp in node end
-//
-(* ****** ****** *)
-//
-endloc(*local*)//end-of-[local(i1typ)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
+(***********************************************************************)
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_intrep1.dats] *)
+(***********************************************************************)
 (***********************************************************************)

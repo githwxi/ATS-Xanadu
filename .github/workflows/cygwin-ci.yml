@@ -1,0 +1,54 @@
+name: Cygwin CI
+
+on:
+  schedule:
+    - cron: "0 2 * * 1"
+      timezone: "America/New_York"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cygwin-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and test on Cygwin x86_64
+    runs-on: windows-2022
+    timeout-minutes: 360
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Install Cygwin and build dependencies
+        uses: cygwin/cygwin-install-action@v6
+        with:
+          install-dir: D:\cygwin
+          packages: |
+            coreutils
+            gcc-core
+            gcc-g++
+            libgc-devel
+            libgmp-devel
+            make
+
+      - name: Build ATS2, build ATS-Xanadu, and run JavaScript tests
+        shell: pwsh
+        run: |
+          $cygwinBin = 'D:\cygwin\bin'
+          $workspace = & "$cygwinBin\cygpath.exe" -u $env:GITHUB_WORKSPACE
+          & "$cygwinBin\bash.exe" --login -eo pipefail -o igncr "$workspace/.github/workflows/ci/cygwin-build.sh"
+
+      - name: Prefer Windows Git for checkout cleanup
+        if: always()
+        shell: pwsh
+        run: Add-Content -Path $env:GITHUB_PATH -Value 'C:\Program Files\Git\cmd'

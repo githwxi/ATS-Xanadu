@@ -51,10 +51,13 @@ XATSOPT "./../../.."
 #staload "./intrep0.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #typedef stamp = stamp
 #typedef sym_t = sym_t
 #typedef loc_t = loc_t
 #typedef loctn = loctn
+//
 (* ****** ****** *)
 #typedef lcsrc = lcsrc
 (* ****** ****** *)

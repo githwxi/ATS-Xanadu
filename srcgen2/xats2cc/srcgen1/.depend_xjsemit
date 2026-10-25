@@ -18,6 +18,11 @@ BUILD/JS/cc0emit_utils0_dats_out0.js: SATS/intrep0.sats SATS/cc0emit.sats
 BUILD/JS/cc0emit_dynexp_dats_out0.js: SATS/intrep0.sats SATS/cc0emit.sats
 BUILD/JS/cc0emit_decl00_dats_out0.js: SATS/intrep0.sats SATS/cc0emit.sats
 ########################################################################
+BUILD/JS/trxi0i1_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/trxi0i1.sats
+BUILD/JS/trxi0i1_myenv0_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/trxi0i1.sats
+BUILD/JS/trxi0i1_dynexp_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/trxi0i1.sats
+BUILD/JS/trxi0i1_decl00_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/trxi0i1.sats
+########################################################################
 BUILD/JS/xats2cc_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats
 BUILD/JS/xats2cc_myenv0_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats
 BUILD/JS/xats2cc_dynexp_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats
