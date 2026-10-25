@@ -120,6 +120,7 @@ development and usage is parallel to XATS2PY.
 
 For type-checking ATS3 only.
 
+### JS/xatsopt/bin/xatsopt_tcheck00_ats2_opt1.js
 ### JS/xatsopt/bin/xatsopt_tcheck01_ats2_opt1.js
 ### PY/xatsopt/bin/xatsopt_tcheck01_ats3_opt0.py
 ### CM/xatsopt/bin/xatsopt_tcheck01_ats3_opt0.cm
