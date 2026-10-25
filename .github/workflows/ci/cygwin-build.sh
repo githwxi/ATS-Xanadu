@@ -21,6 +21,12 @@ for arg in "\$@"; do
         args+=("\$arg")
     fi
 done
+if [[ \${XATSHOME:-} == /* ]]; then
+    export XATSHOME="\$(cygpath -w "\$XATSHOME")"
+fi
+if [[ \${PATSHOME:-} == /* ]]; then
+    export PATSHOME="\$(cygpath -w "\$PATSHOME")"
+fi
 exec "$real_node" "\${args[@]}"
 EOF
 cat > "$node_wrapper_dir/npx" <<'EOF'
