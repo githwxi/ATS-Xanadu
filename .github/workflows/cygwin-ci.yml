@@ -40,9 +40,10 @@ jobs:
             libgc-devel
             libgmp-devel
             make
+            python3
             time
 
-      - name: Build ATS2, build ATS-Xanadu, and run JavaScript tests
+      - name: Build ATS2 and ATS-Xanadu; run JavaScript and Python tests
         shell: pwsh
         run: |
           $cygwinBin = 'D:\cygwin\bin'

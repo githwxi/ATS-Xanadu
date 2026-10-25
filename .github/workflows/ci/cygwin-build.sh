@@ -41,3 +41,4 @@ command -v node >/dev/null
 bash travis-ci/install-ats2.sh
 bash travis-ci/build.sh
 bash travis-ci/test.sh js
+bash travis-ci/test.sh py
