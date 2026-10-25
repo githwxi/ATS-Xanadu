@@ -19,6 +19,10 @@ Manual workflow runs always build and offer an optional bootstrap-library
 build. See the [CI scripts and local build instructions](travis-ci/README.md)
 for details.
 
+The separate Cygwin CI workflow builds ATS-Xanadu on Windows and runs the
+JavaScript and Python prelude tests weekly on Mondays at 2:00 a.m.
+America/New_York time; it can also be started manually.
+
 ## Project Description
 
 ATS3 is an attempt to greatly improve upon ATS2.
