@@ -174,6 +174,43 @@ fopr: (x0, !envi0i1)->y0): optn(y0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun // HX: Note [i0pat_trxi0i1]
+i0pat_trxi0i1 // inserts into [env0]
+(
+ipat: i0pat, env0: !envi0i1): i1bnd
+//
+fun // HX: Note [i0bnd_trxi0i1]
+i0bnd_trxi0i1 // inserts into [env0]
+(
+ipat: i0pat,
+ival: i1val, env0: !envi0i1): d2sublst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+fun // HX: [trxi0i1_i0exp]
+trxi0i1_i0exp // insert into [env0]
+(i0e0: i0exp, env0: !envi0i1): i1val
+//
+fun // HX: [trxi0i1_i0lft]
+trxi0i1_i0lft // insert into [env0]
+(i0e0: i0exp, env0: !envi0i1): i1val
+//
+fun // HX: [trxi0i1_i0blk]: not
+trxi0i1_i0blk // insert into [env0]
+(i0e0: i0exp, env0: !envi0i1): i1cmp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fiarg_trxi0i1
+(env0: !envi0i1, farg: fiarg): fjarg
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_trxi0i1.sats] *)
