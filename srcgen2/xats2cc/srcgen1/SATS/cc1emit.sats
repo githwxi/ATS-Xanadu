@@ -56,6 +56,32 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+<x0:t0>
+list_cc1emit_fnp
+(
+xs: list(x0),
+e1: !envxcc1,
+fopr: (x0, !envxcc1)->void): void
+fun
+<x0:t0>
+optn_cc1emit_fnp
+(
+xs: optn(x0),
+e1: !envxcc1,
+fopr: (x0, !envxcc1)->void): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1dclist_cc1emit(
+  dcls: i1dclist, env0: !envxcc1): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+fun
 i1parsed_cc1emit
 (ipar: i1parsed, filr: FILR): void
 //
@@ -70,5 +96,7 @@ i1dclistopt_cc1emit(
 (* ****** ****** *)
 //
 (***********************************************************************)
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_xats2cc_srcgen1_SATS_cc1emit.sats] *)
+(***********************************************************************)
 (***********************************************************************)

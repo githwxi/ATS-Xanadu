@@ -101,6 +101,44 @@ I1LAB of (label,x0(*elt*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#abstbox i1dcl_tbox // p0tr
+#typedef i1dcl = i1dcl_tbox
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#abstbox i1valdcl_tbox//p0tr
+#abstbox i1vardcl_tbox//p0tr
+#abstbox i1fundcl_tbox//p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#abstbox i1parsed_tbox//p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef i1tnmlst = list(i1tnm)
+//
+(* ****** ****** *)
+//
+#typedef i1valist = list(i1val)
+#typedef i1valopt = optn(i1val)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef i1dclopt = optn(i1dcl)
+#typedef i1dclist = list(i1dcl)
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef i1parsed = i1parsed_tbox
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef i1dclistopt = optn(i1dclist)
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_intrep1.sats] *)

@@ -28,4 +28,9 @@ BUILD/JS/xats2cc_myenv0_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/x
 BUILD/JS/xats2cc_dynexp_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats
 BUILD/JS/xats2cc_decl00_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats
 ########################################################################
+BUILD/JS/cc1emit_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats SATS/cc1emit.sats
+BUILD/JS/cc1emit_myenv0_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats SATS/cc1emit.sats
+BUILD/JS/cc1emit_dynexp_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats SATS/cc1emit.sats
+BUILD/JS/cc1emit_decl00_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats SATS/cc1emit.sats
+########################################################################
 ########################################################################

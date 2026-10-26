@@ -65,6 +65,45 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<x0>(*tmp*)
+list_cc1emit_fnp
+( xs, e1, fopr ) =
+(
+list_foritm$e1nv
+<  x0  ><  e1  >(xs, e1)) where
+{
+#vwtpdef e1 = envxcc1
+#impltmp
+foritm$e1nv$work
+<  x0  ><  e1  >(x0, e1) = fopr(x0, e1)
+}(*where*)//endof[list_cc1emit_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+optn_cc1emit_fnp
+( xs, e1, fopr ) =
+(
+case+ xs of
+|
+optn_nil() =>
+(  (*0*)  ) | optn_cons(x1) => fopr(x1, e1)
+)(*case+*)//endof[optn_cc1emit_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1dclistopt_cc1emit
+  (dopt, env0) =
+(
+  optn_cc1emit_fnp(dopt, env0, i1dclist_cc1emit))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc1emit.dats] *)
