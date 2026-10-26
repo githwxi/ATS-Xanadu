@@ -45,17 +45,137 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload "./intrep0.sats"
+#staload "./intrep1.sats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#absvtbx iltstk_vtbx // ptr
+#vwtpdef iltstk = iltstk_vtbx
+//
+(* ****** ****** *)
+//
+fun
+iltstk_fprint1
+(stk:
+!iltstk, out: FILR): void
+//
+(* ****** ****** *)
+//
+fun
+iltstk_pshblk0
+(stk: &iltstk >> _): void
+fun
+iltstk_popblk0
+(stk: &iltstk >> _): i1letlst
+//
+(* ****** ****** *)
+//
+fun
+iltstk_pshlam0
+(stk: &iltstk >> _): void
+fun
+iltstk_pshlet0
+(stk: &iltstk >> _): void
+//
+fun
+iltstk_poplam0
+(stk: &iltstk >> _): i1letlst
+fun
+iltstk_poplet0
+(stk: &iltstk >> _): i1letlst
+//
+(* ****** ****** *)
+//
+fun
+iltstk_ilet$insert
+(stk:
+&iltstk >> _, ilt: i1let):void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#absvtbx envi0i1_vtbx
+#vwtpdef envi0i1 = envi0i1_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 i0parsed_of_trxi0i1
-( dpar : i0parsed ): i1parsed
+( dpar : i0parsed ): (i1parsed)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+envi0i1_make_nil
+  ((*nil*)):(envi0i1)//end-fun
+fun
+envi0i1_free_nil
+  (envi0i1):(  void  )//end-fun
+//
+(* ****** ****** *)
+//
+fun
+envi0i1_pshblk0
+(env0: !envi0i1): void//end-fun
+fun
+envi0i1_popblk0
+(env0: !envi0i1): i1letlst//fun
+//
+(* ****** ****** *)
+//
+fun
+envi0i1_pshlam0
+(env0: !envi0i1): void//end-fun
+fun
+envi0i1_pshlet0
+(env0: !envi0i1): void//end-fun
+//
+fun
+envi0i1_poplam0
+(env0: !envi0i1): i1letlst//fun
+fun
+envi0i1_poplet0
+(env0: !envi0i1): i1letlst//fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+envi0i1_pshloc1
+(env0: !envi0i1): void//end-fun
+fun
+envi0i1_pshloc2
+(env0: !envi0i1): void//end-fun
+//
+fun // HX: pop1 and psh2
+envi0i1_locjoin(!envi0i1): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_trxi0i1_fnp
+(
+xs: list(x0),
+e1: !envi0i1,
+fopr: (x0, !envi0i1)->y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_trxi0i1_fnp
+(
+xs: optn(x0),
+e1: !envi0i1,
+fopr: (x0, !envi0i1)->y0): optn(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_trxi0i1.sats] *)
+(***********************************************************************)
 (***********************************************************************)
