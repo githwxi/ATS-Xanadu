@@ -302,6 +302,7 @@ srcgen2_xjsemit_xats2rb_rbemit01_opt1: ; \
 time make -C srcgen2/xats2rb/srcgen1/UTIL -f Makefile_xjsemit xats2rb_rbemit01_opt1
 #
 ########################################################################
+########################################################################
 #
 # Step~6: for bootstrapping from BOOTJS1
 # Step~6: for bootstrapping from BOOTCM1
@@ -314,6 +315,8 @@ contrib_githwxi_BOOTJS1_UTIL_tcheck00: ; \
 contrib_githwxi_BOOTJS1_lib2xats2js: ; \
   time make -C contrib/githwxi/BOOTJS1/xats2js/srcgen1 -f Makefile_xjsemit lib2xats2js
 #
+########################################################################
+#
 contrib_githwxi_BOOTCM1_lib2xatsopt: ; \
   time make -C contrib/githwxi/BOOTCM1 -f Makefile_xcmemit lib2xatsopt
 contrib_githwxi_BOOTCM1_UTIL_tcheck00: ; \
@@ -322,6 +325,8 @@ contrib_githwxi_BOOTCM1_lib2xats2js: ; \
   time make -C contrib/githwxi/BOOTCM1/xats2js/srcgen1 -f Makefile_xcmemit lib2xats2js
 contrib_githwxi_BOOTCM1_lib2xats2cm: ; \
   time make -C contrib/githwxi/BOOTCM1/xats2cm/srcgen1 -f Makefile_xcmemit lib2xats2cm
+#
+########################################################################
 #
 contrib_githwxi_BOOTPY1_lib2xatsopt: ; \
   time make -C contrib/githwxi/BOOTPY1 -f Makefile_xpyemit lib2xatsopt
