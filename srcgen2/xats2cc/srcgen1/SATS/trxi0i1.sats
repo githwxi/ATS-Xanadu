@@ -100,7 +100,7 @@ iltstk_ilet$insert
 (* ****** ****** *)
 //
 fun
-i0parsed_of_trxi0i1
+i1parsed_of_trxi0i1
 ( dpar : i0parsed ): (i1parsed)
 //
 (* ****** ****** *)

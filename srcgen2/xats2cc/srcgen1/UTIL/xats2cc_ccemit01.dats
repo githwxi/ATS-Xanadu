@@ -52,15 +52,18 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
+//
+(* ****** ****** *)
 //
 #staload "./../SATS/trxd3i0.sats"
 #staload "./../SATS/tryd3i0.sats"
-//
 #staload "./../SATS/cc0emit.sats"
 //
-(*
-#staload "./../SATS/intrep1.sats"
-*)
+(* ****** ****** *)
+//
+#staload "./../SATS/trxi0i1.sats"
+#staload "./../SATS/cc1emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -114,24 +117,24 @@ prerrsln
 f3perr0_d3parsed(out0,dpar)
 end//let//end-of-(val(...))
 //
-val ipar =
+val i0px =
 (
   i0parsed_of_trxd3i0(dpar))
-val ipar =
-(
-  i0parsed_of_tryd3i0(ipar))
 //
+val i0px =
+(
+  i0parsed_of_tryd3i0(i0px))
 (*
 val (  ) =
 prerrsln
-("ipar(tryd3i0) = ", (ipar))
+("ipar(tryd3i0) = ", (i0px))
 *)
 //
-(*
-val ipar =
+// (*
+val i1px =
 (
-  i1parsed_of_trxi0i1(ipar))
-*)
+  i1parsed_of_trxi0i1(i0px))
+// *)
 //
 in//let
 //
@@ -141,7 +144,7 @@ val
 filr = g_stdout<>()
 in//let
 (
-i0parsed_cc0emit(ipar, filr))
+i0parsed_cc0emit(i0px, filr))
 end//let
 // *)
 //
@@ -153,7 +156,7 @@ val
 filr = g_stdout<>()
 in//let
 (
-i1parsed_cc1emit(filr, ipar))
+i1parsed_cc1emit(filr, i1px))
 end//let
 *)
 //
