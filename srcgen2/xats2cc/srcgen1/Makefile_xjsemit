@@ -29,6 +29,7 @@ SRCSATS := \
 intrep0.sats \
 trxd3i0.sats \
 tryd3i0.sats \
+trxi0i1.sats \
 intrep1.sats \
 trcmp01.sats \
 xats2cc.sats \
@@ -52,6 +53,9 @@ tryd3i0.dats \
 tryd3i0_myenv0.dats \
 tryd3i0_dynexp.dats \
 tryd3i0_decl00.dats \
+trxi0i1.dats \
+trxi0i1_dynexp.dats \
+trxi0i1_decl00.dats \
 intrep1.dats \
 intrep1_print0.dats \
 xats2cc.dats \
