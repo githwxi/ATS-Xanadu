@@ -102,6 +102,7 @@ I1LAB of (label,x0(*elt*))
 (* ****** ****** *)
 #abstype i1val_tbox // p0tr
 (* ****** ****** *)
+(* ****** ****** *)
 #abstype fjarg_tbox // p0tr
 (* ****** ****** *)
 #abstbox i1gua_tbox // p0tr
@@ -111,6 +112,7 @@ I1LAB of (label,x0(*elt*))
 #abstype i1dcl_tbox // p0tr
 (* ****** ****** *)
 #abstbox t1imp_tbox // p0tr
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef i1val = i1val_tbox
@@ -144,6 +146,86 @@ I1LAB of (label,x0(*elt*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+datatype
+i1let =
+|I1LETnew0 of (i1ins)
+|I1LETnew1 of (i1tnm, i1ins)
+//
+(* ****** ****** *)
+//
+and i1bnd =
+I1BNDcons of
+(i1tnm, i0pat, d2sublst)
+//
+and i1cmp =
+I1CMPcons of (i1letlst, i1val)
+//
+(* ****** ****** *)
+//
+and i1ins =
+//
+(*
+|I1INSopr of
+(i1opr(*opnm*)
+,i1valist(*args*))//primopr
+*)
+//
+|I1INSdapp of
+(i1val(*fun0*)
+,i1valist(*args*))//funcall
+//
+|I1INSpcon of
+(label(*int/sym*)
+,i1val(*conroot*))//conproj
+|I1INSpflt of
+(label(*int/sym*)
+,i1val(*tuproot*))//tfltprj
+|I1INSproj of
+(label(*int/sym*)
+,i1val(*tuproot*))//tptrprj
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and
+i1val_node =
+//
+(* ****** ****** *)
+|I1V000 of ()
+(* ****** ****** *)
+//
+|I1Vint of token
+|I1Vbtf of sym_t
+|I1Vchr of token
+|I1Vflt of token
+|I1Vstr of token
+//
+(* ****** ****** *)
+//
+|I1Vp0rj of (i1val, sint)
+|I1Vp1cn of (i0pat, i1val, sint)
+|I1Vp1rj of (token, i1val, sint)
+|I1Vp2rj of (token, i1val, label)
+//
+(* ****** ****** *)
+//
+where
+{
+//
+#typedef d2sublst = list(d2sub)
+//
+#typedef i1bndlst = list(i1bnd)
+//
+#typedef i1cmplst = list(i1cmp)
+#typedef i1cmpopt = optn(i1cmp)
+//
+#typedef i1letlst = list(i1let)
+//
+}(*where*)//end-of-(i1let/ins/val)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #typedef i1tnmlst = list(i1tnm)
 //
 (* ****** ****** *)
@@ -163,6 +245,7 @@ I1LAB of (label,x0(*elt*))
 #typedef i1valdcl = i1valdcl_tbox
 #typedef i1vardcl = i1vardcl_tbox
 #typedef i1fundcl = i1fundcl_tbox
+(* ****** ****** *)
 (* ****** ****** *)
 #typedef i1valdclist = list(i1valdcl)
 #typedef i1vardclist = list(i1vardcl)

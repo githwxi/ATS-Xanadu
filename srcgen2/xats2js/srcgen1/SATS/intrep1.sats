@@ -215,14 +215,16 @@ i1let =
 |I1LETnew1 of (i1tnm, i1ins)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 and i1bnd =
-|I1BNDcons of
+I1BNDcons of
 (i1tnm, i0pat, d2sublst)
 //
 and i1cmp =
-|I1CMPcons of (i1letlst, i1val)
+I1CMPcons of (i1letlst, i1val)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 and i1ins =
@@ -237,9 +239,13 @@ and i1ins =
 (i1val(*fun0*)
 ,i1valist(*args*))//funcall
 //
+(* ****** ****** *)
+//
 |I1INStimp of
 (i0exp(*tapp*)
 ,t1imp(*tmpinst*))//impltmp
+//
+(* ****** ****** *)
 //
 |I1INSpcon of
 (label(*int/sym*)
@@ -315,20 +321,22 @@ and i1ins =
 (* ****** ****** *)
 //
 |I1INSl0azy of 
-(d1exp(*dknd*),i1cmp(*lazy-thunk*))
+(d1exp(*dknd*),i1cmp(*thunk*))
 |I1INSl1azy of
-(d1exp(*dknd*),i1cmp,i1cmplst(*frees*))
+(d1exp(*dknd*)
+,i1cmp(*thunk*),i1cmplst(*frees*))
 //
 (* ****** ****** *)
 //
-|I1INSdp2tr of (i1val(*addof*)) // deref
+|I1INSdp2tr of (i1val(*addr-of*))
 //
 (* ****** ****** *)
 //
 |I1INSraise of
 (token(*tknd*), i1val(*except-con*))
 //
-|I1INSassgn of (i1val(*l-val*),i1val(*r-val*))
+|I1INSassgn of
+(i1val(*left-val*),i1val(*right-val*))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -369,7 +377,6 @@ i1val_node =
 |I1Vcst of (d2cst)
 |I1Vvar of (d2var)
 (* ****** ****** *)
-(* ****** ****** *)
 (*
 //
 |I1Vtimp of
@@ -377,10 +384,8 @@ i1val_node =
 //
 *)
 (* ****** ****** *)
-(* ****** ****** *)
 |I1Vaddr of (i1val(*addr*))
 |I1Vaexp of (i0exp(*flat*))
-(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -389,7 +394,6 @@ i1val_node =
 |I1Vrcd2 of (token, l1i1vlst)
 *)
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1Vp0rj of (i1val, sint)
@@ -413,30 +417,29 @@ For data-consed left-values
 |I1Vlpcn of (label, i1val)//consd
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 |I1Vlam0 of
-(token(*knd*)
+(token(*tknd*)
 ,fjarglst(*args*), i1cmp(*body*))
 //
 |I1Vfix0 of
-(token(*knd*)
-,d2var(*fid*)
+(token(*tknd*)
+,d2var(*fid0*)
 ,fjarglst(*args*), i1cmp(*body*))
 *)
 //
 (* ****** ****** *)
-(* ****** ****** *)
+//
 (*
 |I1Vl0azy of
-(d1exp(*kind*), i1cmp(*body*))
+(d1exp(*dknd*), i1cmp(*body*))
+//
 |I1Vl1azy of
-(d1exp(*kind*)
+(d1exp(*dknd*)
 ,i1cmp(*body*), i1cmplst(*frees*))
 *)
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1Vextnam of
@@ -444,9 +447,8 @@ For data-consed left-values
 token(*$EXTNAM*), i1val, g1nam)
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
-|I1Vnone0 of () | I1Vnone1 of (i0exp)
+|I1Vnone0(*0*)|I1Vnone1 of (i0exp)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -454,16 +456,16 @@ token(*$EXTNAM*), i1val, g1nam)
 where
 {
 //
-  #typedef d2sublst = list(d2sub)
+#typedef d2sublst = list(d2sub)
 //
-  #typedef i1bndlst = list(i1bnd)
+#typedef i1bndlst = list(i1bnd)
 //
-  #typedef i1cmplst = list(i1cmp)
-  #typedef i1cmpopt = optn(i1cmp)
+#typedef i1cmplst = list(i1cmp)
+#typedef i1cmpopt = optn(i1cmp)
 //
-  #typedef i1letlst = list(i1let)
+#typedef i1letlst = list(i1let)
 //
-} //(*where*)//end-of-(i1let/ins/val)
+}(*where*)//end-of-(i1let/ins/val)
 //
 (* ****** ****** *)
 (* ****** ****** *)

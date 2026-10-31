@@ -231,6 +231,19 @@ i0dcl_trxi0i1
 (* ****** ****** *)
 //
 fun
+i0patlst_trxi0i1
+(i0ps: i0patlst, env0: !envi0i1): i1bndlst
+//
+(* ****** ****** *)
+//
+fun
+i0explst_trxi0i1
+(i0es: i0explst, env0: !envi0i1): i1explst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i0dclist_trxi0i1
 (dcls: i0dclist, env0: !envi0i1): i1dclist
 //
