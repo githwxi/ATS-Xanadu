@@ -60,6 +60,40 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1parsed_of_trxi0i1
+  (   dpar   ) =
+let
+//
+val stadyn =
+i0parsed_stadyn$get(dpar)
+//
+val nerror =
+i0parsed_nerror$get(dpar)
+//
+val source =
+i0parsed_source$get(dpar)
+//
+val parsed =
+i0parsed_parsed$get(dpar)
+//
+val env0 = envi0i1_make_nil()
+//
+val parsed =
+i0dclistopt_trxi0i1(parsed, env0)
+//
+in//let
+let
+val ((*0*)) = envi0i1_free_nil(env0)
+in//let
+(
+  i1parsed(stadyn,nerror,source,parsed))
+end//let
+end(*let*)//end-of-[i1parsed_trxi0i1(dpar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <x0><y0>
 list_trxi0i1_fnp

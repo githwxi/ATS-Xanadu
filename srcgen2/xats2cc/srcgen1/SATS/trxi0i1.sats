@@ -238,7 +238,7 @@ i0patlst_trxi0i1
 //
 fun
 i0explst_trxi0i1
-(i0es: i0explst, env0: !envi0i1): i1vallst
+(i0es: i0explst, env0: !envi0i1): i1valist
 //
 (* ****** ****** *)
 (* ****** ****** *)
