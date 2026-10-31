@@ -59,14 +59,82 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/intrep0.sats"
-#staload "./../SATS/intrep1.sats"
+#staload
+(*0*)"./../SATS/intrep0.sats"
+#staload
+(*1*)"./../SATS/intrep1.sats"
+//
+(* ****** ****** *)
+//
+#typedef iltlst = list(i1let)
+//
+#typedef
+d2vtop = (*$MAP*)topmap(i1val)
+#vwtpdef
+d2vstk = (*$MAP*)stkmap(i1val)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload "./../SATS/trxi0i1.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#typedef iltlst = list(i1let)
+local
+//
+(* ****** ****** *)
+//
+datavwtp
+iltstk =
+//
+|iltstk_nil of ((*void*)) 
+//
+|iltstk_blk0 of ( iltstk ) 
+//
+|iltstk_lam0 of ( iltstk ) 
+|iltstk_let0 of ( iltstk ) 
+//
+(*
+|iltstk_ift0 of ( iltstk ) 
+|iltstk_cas0 of ( iltstk ) 
+*)
+//
+|iltstk_cons of (i1let, iltstk)
+//
+(* ****** ****** *)
+#absimpl iltstk_vtbx = (iltstk)
+(* ****** ****** *)
+//
+datavwtp
+envi0i1 =
+ENVI0I1 of
+(d2vtop,d2vstk,iltstk)
+//
+#absimpl envi0i1_vtbx = envi0i1
+//
+(* ****** ****** *)
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envi0i1_make_nil
+  ((*void*)) =
+(
+ENVI0I1
+(d2vtop,d2vstk,iltstk)) where
+{
+  val iltstk = iltstk_nil()
+  val d2vtop = topmap_make_nil()
+  val d2vstk = stkmap_make_nil()
+}(*where*) // end of [envi0i1_make_nil]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+endloc(*local*)//end-of-[local(envi0i1...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -59,22 +59,24 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/intrep0.sats"
-#staload "./../SATS/intrep1.sats"
+#staload
+(*0*)"./../SATS/intrep0.sats"
+#staload
+(*1*)"./../SATS/intrep1.sats"
 //
-#staload "./../SATS/trxi0i1.sats"
+(* ****** ****** *)
 //
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef
-iltlst = list(i1let)
-(* ****** ****** *)
-(* ****** ****** *)
+#typedef iltlst = list(i1let)
 //
 #typedef
 d2vtop = (*$MAP*)topmap(i1val)
 #vwtpdef
 d2vstk = (*$MAP*)stkmap(i1val)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./../SATS/trxi0i1.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
