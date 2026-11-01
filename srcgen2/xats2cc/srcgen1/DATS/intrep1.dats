@@ -171,6 +171,105 @@ endloc (*local*) // end of [local(i1dcl)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+local
+//
+datatype
+i1parsed =
+I1PARSED of
+(
+sint  // stadyn
+,
+sint  // nerror
+,
+lcsrc // source
+,
+i1dclistopt)//program
+//
+#absimpl
+i1parsed_tbox = i1parsed
+//
+in//local
+//
+(* ****** ****** *)
+//
+#implfun
+i1parsed_stadyn$get
+  (ipar) =
+(
+  stadyn ) where
+{
+val+
+I1PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i1parsed_stadyn$get]
+//
+#implfun
+i1parsed_nerror$get
+  (ipar) =
+(
+  nerror ) where
+{
+val+
+I1PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i1parsed_nerror$get]
+//
+#implfun
+i1parsed_source$get
+  (ipar) =
+(
+  source ) where
+{
+val+
+I1PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i1parsed_source$get]
+//
+(* ****** ****** *)
+//
+#implfun
+i1parsed_parsed$get
+  (ipar) =
+(
+  parsed ) where
+{
+val+
+I1PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i1parsed_parsed$get]
+//
+(* ****** ****** *)
+//
+#implfun
+i1parsed_make_args
+( stadyn
+, nerror
+, source, parsed) =
+(
+I1PARSED
+( stadyn
+, nerror, source, parsed)) where
+{
+//
+(*
+val () =
+prerrsln
+("i1parsed_make_args:nerror=",nerror)
+*)
+//
+} (*where*) // end-of-[i1parsed_make_args]
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [ local(i1parsed) ]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_intrep1.dats] *)

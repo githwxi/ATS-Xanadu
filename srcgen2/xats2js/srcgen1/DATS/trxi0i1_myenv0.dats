@@ -515,7 +515,7 @@ ENVI0I1
   val iltstk = iltstk_nil()
   val d2vtop = topmap_make_nil()
   val d2vstk = stkmap_make_nil()
-}(*where*) // end of [envi0i1_make_nil]
+}(*where*)//end-of-[envi0i1_make_nil()]
 //
 (* ****** ****** *)
 //
@@ -531,8 +531,7 @@ val+
 in//let
   stkmap_free_nil(d2vstk);
   iltstk_free_nil(iltstk); ((*void*))
-end//let
-(*case+*)//end-of-(envi0i1_free_nil(env0))
+end(*let*)//endof(envi0i1_free_nil(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -55,15 +55,16 @@
 (defvar ats3-mode-syntax-table
   (let ((table (make-syntax-table)))
     ;; Nested ATS comments: (* ... *).
-    (modify-syntax-entry ?\( "(1n" table)
-    (modify-syntax-entry ?\) ")4n" table)
+    (modify-syntax-entry ?\( "() 1n" table)
+    (modify-syntax-entry ?\) ")( 4n" table)
     (modify-syntax-entry ?* ". 23n" table)
     ;; Strings and character literals.
     (modify-syntax-entry ?\" "\"" table)
     (modify-syntax-entry ?' "'" table)
     ;; ATS identifiers may contain apostrophes and symbolic characters.
     (modify-syntax-entry ?_ "w" table)
-    (dolist (char '(?! ?$ ?% ?& ?* ?+ ?- ?. ?/ ?: ?< ?= ?> ?? ?@ ?^ ?| ?~))
+    ;; Keep *'s comment syntax from the entries above.
+    (dolist (char '(?! ?$ ?% ?& ?+ ?- ?. ?/ ?: ?< ?= ?> ?? ?@ ?^ ?| ?~))
       (modify-syntax-entry char "." table))
     ;; Bracket pairs.
     (modify-syntax-entry ?{ "(}" table)

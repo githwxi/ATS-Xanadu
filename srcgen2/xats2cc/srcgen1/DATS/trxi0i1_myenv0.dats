@@ -119,6 +119,16 @@ in//local
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+iltstk_free_nil
+(stk0: ~iltstk): void =
+(
+case-
+stk0 of ~iltstk_nil() => ())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 envi0i1_make_nil
   ((*void*)) =
@@ -129,7 +139,23 @@ ENVI0I1
   val iltstk = iltstk_nil()
   val d2vtop = topmap_make_nil()
   val d2vstk = stkmap_make_nil()
-}(*where*) // end of [envi0i1_make_nil]
+}(*where*)//endof[envi0i1_make_nil()]
+//
+(* ****** ****** *)
+//
+#implfun
+envi0i1_free_nil
+  (  env0  ) =
+let
+//
+val+
+~ENVI0I1
+(d2vtop,d2vstk,iltstk) = env0
+//
+in//let
+stkmap_free_nil(d2vstk);
+iltstk_free_nil(iltstk); ((*void*))
+end(*let*)//endof(envi0i1_free_nil(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
