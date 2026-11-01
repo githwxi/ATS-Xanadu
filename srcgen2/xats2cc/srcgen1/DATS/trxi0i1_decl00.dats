@@ -51,6 +51,9 @@ XATSOPT "./../../.."
 "./../../..\
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
@@ -143,6 +146,21 @@ in//let
   i1dcl(loc0, I1Dlocal0(head, body)))
 end(*let*)//end-of-[f0_local0(env0,d3cl)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val loc0 = dcl0.lctn((*0*))
+//
+// (*
+val (  ) =
+(
+  prerrsln("i0dcl_trxi0i1: loc0 = ", loc0))
+val (  ) =
+(
+  prerrsln("i0dcl_trxi0i1: dcl0 = ", dcl0))
+// *)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[trxi0i1_i0dcl(dcl0,env0)]

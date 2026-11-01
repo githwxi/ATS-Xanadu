@@ -51,6 +51,9 @@ XATSOPT "./../../.."
 "./../../..\
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"

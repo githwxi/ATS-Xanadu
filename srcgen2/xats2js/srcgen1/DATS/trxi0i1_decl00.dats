@@ -186,7 +186,7 @@ val dcl1 =
 in//let
 (
 i1dcl(loc0, I1Dextern(tknd, dcl1)))
-end(*let*)//end of [f0_extern(env0,d3cl)]
+end(*let*)//end-of-[f0_extern(env0,d3cl)]
 //
 fun
 f0_static
@@ -208,7 +208,7 @@ val dcl1 =
 in//let
 (
 i1dcl(loc0, I1Dstatic(tknd, dcl1)))
-end(*let*)//end of [f0_static(env0,d3cl)]
+end(*let*)//end-of-[f0_static(env0,d3cl)]
 //
 (* ****** ****** *)
 //
@@ -231,7 +231,7 @@ trxi0i1_i0dclist(env0, dcls)
 in//let
 (
   i1dcl(loc0, I1Ddclst0( dcls ) ) )
-end(*let*)//end of [f0_dclst0(env0,d3cl)]
+end(*let*)//end-of-[f0_dclst0(env0,d3cl)]
 //
 (* ****** ****** *)
 //
@@ -272,7 +272,7 @@ val (  ) = envi0i1_locjoin(env0)
 in//let
 (
   i1dcl(loc0, I1Dlocal0(head, body)))
-end(*let*)//end of [f0_local0(env0,d3cl)]
+end(*let*)//end-of-[f0_local0(env0,d3cl)]
 //
 (* ****** ****** *)
 //
@@ -294,7 +294,7 @@ dcl1 = trxi0i1_i0dcl(env0, dcl1)
 in//let
 (
   i1dcl(loc0, I1Dtmpsub(svts, dcl1)))
-end(*let*)//end of [f0_tmpsub(env0,d3cl)]
+end(*let*)//end-of-[f0_tmpsub(env0,d3cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -330,7 +330,7 @@ in//let
   ( loc0
   , I1Dinclude
     (knd0, tknd, gsrc, fopt, dopt)))
-end(*let*)//end of [f0_include(env0,d3cl)]
+end(*let*)//end-of-[f0_include(env0,d3cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -360,10 +360,12 @@ end where
 (*
 val loc0 = dcl0.lctn()
 val (  ) =
-prerrsln("f0_valdclst(i0i1): d3cl = ", d3cl)
+(
+  prerrsln
+  ("f0_valdclst(i0i1): d3cl = ", d3cl))
 *)
 //
-}(*where*) // end of [f0_valdclst(env0,d3cl)]
+}(*where*)//end-of-[f0_valdclst(env0,d3cl)]
 //
 (* ****** ****** *)
 //
@@ -392,10 +394,12 @@ end where
 (*
 val loc0 = dcl0.lctn()
 val (  ) =
-prerrsln("f0_vardclst(i0i1): dcl0 = ", dcl0)
+(
+  prerrsln
+  ("f0_vardclst(i0i1): dcl0 = ", dcl0))
 *)
 //
-}(*where*) // end of [f0_vardclst(env0,dcl0)]
+}(*where*)//end-of-[f0_vardclst(env0,dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -474,10 +478,12 @@ val (  ) =
 val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
-prerrsln("f0_fundclst(i0i1): dcl0 = ", dcl0)
+(
+  prerrsln
+  ("f0_fundclst(i0i1): dcl0 = ", dcl0))
 *)
 //
-}(*where*) // end of [f0_fundclst(env0,dcl0)]
+}(*where*)//end-of-[f0_fundclst(env0,dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -525,10 +531,12 @@ end where
 val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
-prerrsln("f0_implmnt0(i0i1): dcl0 = ", dcl0)
+(
+  prerrsln
+  ("f0_implmnt0(i0i1): dcl0 = ", dcl0))
 *)
 //
-}(*where*) // end of [f0_implmnt0(env0,dcl0)]
+}(*where*)//end-of-[f0_implmnt0(env0,dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -538,16 +546,16 @@ val loc0 = dcl0.lctn((*0*))
 (*
 val (  ) =
 (
-  prerrsln("trxi0i1_i0dcl: loc0 = ", loc0) )
+  prerrsln("trxi0i1_i0dcl: loc0 = ", loc0))
 val (  ) =
 (
-  prerrsln("trxi0i1_i0dcl: dcl0 = ", dcl0) )
+  prerrsln("trxi0i1_i0dcl: dcl0 = ", dcl0))
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-} (*where*) // end of [trxi0i1_i0dcl(env0,...)]
+}(*where*)//end-of-[trxi0i1_i0dcl(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
