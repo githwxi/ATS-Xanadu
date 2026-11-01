@@ -61,6 +61,95 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0dcl_trxi0i1
+(
+  dcl0, env0) =
+(
+case+
+dcl0.node() of
+//
+(* ****** ****** *)
+//
+|I0Ddclst0 _ =>
+(
+  f0_dclst0(dcl0, env0))
+|I0Dlocal0 _ =>
+(
+  f0_local0(dcl0, env0))
+//
+(* ****** ****** *)
+//
+|_(* otherwise *) => i1dcl_none1(dcl0)
+//
+(* ****** ****** *)
+) where
+{
+//
+(* ****** ****** *)
+//
+fun
+f0_dclst0
+(
+dcl0: i0dcl,
+env0: !envi0i1): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*0*))
+val-
+I0Ddclst0
+(   dcls   ) = dcl0.node()
+//
+val dcls =
+i0dclist_trxi0i1(dcls, env0)
+//
+in//let
+(
+  i1dcl(loc0, I1Ddclst0( dcls ) ) )
+end(*let*)//end-of-[f0_dclst0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_local0
+(
+dcl0: i0dcl,
+env0: !envi0i1): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*0*))
+val-
+I0Dlocal0
+(head, body) = dcl0.node()
+//
+(*
+val (  ) =
+envi0i1_pshloc1(env0)
+val (  ) =
+envi0i1_pshloc2(env0)
+*)
+val head =
+i0dclist_trxi0i1(head, env0)
+val body =
+i0dclist_trxi0i1(body, env0)
+(*
+val (  ) = envi0i1_locjoin(env0)
+*)
+//
+in//let
+(
+  i1dcl(loc0, I1Dlocal0(head, body)))
+end(*let*)//end-of-[f0_local0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[trxi0i1_i0dcl(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen2_DATS_trxi0i1_decl00.dats] *)

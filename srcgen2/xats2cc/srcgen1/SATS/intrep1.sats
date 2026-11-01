@@ -272,6 +272,60 @@ itnm: i1tnm, out0: FILR): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+datatype
+i1dcl_node =
+//
+(* ****** ****** *)
+//
+|I1Di0dcl of (i0dcl)
+//
+(* ****** ****** *)
+//
+|I1Dextern of
+(token(*kind*), i1dcl)
+|I1Dstatic of
+(token(*kind*), i1dcl)
+//
+(* ****** ****** *)
+//
+|I1Ddclst0 of i1dclist
+|I1Dlocal0 of
+(i1dclist(*local-head*)
+,i1dclist(*local-body*))
+//
+(* ****** ****** *)
+//
+|I1Dtmpsub of
+(s2vts(*tmpsub*), i1dcl)
+//
+(* ****** ****** *)
+//
+|
+I1Dvaldclst of
+(token(*VAL(vlk)*), i1valdclist)
+|
+I1Dvardclst of
+(token(*VAR(vlk)*), i1vardclist)
+//
+|
+I1Dfundclst of
+( token(*FUN(fnk)*)
+, t2qaglst, d2cstlst, i1fundclist)
+//
+(* ****** ****** *)
+//
+|I1Dnone0 of ((*0*)) |I1Dnone1 of (i0dcl)
+//
+(* ****** ****** *)
+//
+where
+{
+  #typedef i1dclistopt = optn( i1dclist ) }
+//(*where*) // end-of-[datatype(i1dcl_node)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 i1dcl_fprint
 (

@@ -738,7 +738,7 @@ i1dcl_node =
 //
 (* ****** ****** *)
 //
-|I1Ddclst0 of (i1dclist)
+|I1Ddclst0 of i1dclist
 |I1Dlocal0 of
 (i1dclist(*local-head*)
 ,i1dclist(*local-body*))
@@ -786,7 +786,7 @@ I1Dfundclst of
 //
 where
 {
-  #typedef i1dclistopt = optn(i1dclist) }
+  #typedef i1dclistopt = optn( i1dclist ) }
 //(*where*) // end-of-[datatype(i1dcl_node)]
 //
 (* ****** ****** *)
