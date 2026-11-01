@@ -6,8 +6,15 @@ on:
       timezone: America/New_York
   workflow_dispatch:
     inputs:
+      jobs:
+        description: Which build jobs to run
+        type: choice
+        options:
+          - J1 only
+          - J2 only
+        default: J1 only
       bootstrap:
-        description: Also build the bootstrap libraries
+        description: Also build the bootstrap libraries (applies when J1 is selected)
         type: boolean
         default: false
 
@@ -36,11 +43,25 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           MANUAL_BOOTSTRAP: ${{ inputs.bootstrap == true }}
+          MANUAL_JOBS: ${{ inputs.jobs }}
         run: |
           if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]; then
-            echo 'build=true' >> "$GITHUB_OUTPUT"
-            echo "bootstrap=$MANUAL_BOOTSTRAP" >> "$GITHUB_OUTPUT"
-            echo 'boottest=true' >> "$GITHUB_OUTPUT"
+            case "$MANUAL_JOBS" in
+              'J1 only')
+                echo 'build=true' >> "$GITHUB_OUTPUT"
+                echo "bootstrap=$MANUAL_BOOTSTRAP" >> "$GITHUB_OUTPUT"
+                echo 'boottest=false' >> "$GITHUB_OUTPUT"
+                ;;
+              'J2 only')
+                echo 'build=false' >> "$GITHUB_OUTPUT"
+                echo 'bootstrap=false' >> "$GITHUB_OUTPUT"
+                echo 'boottest=true' >> "$GITHUB_OUTPUT"
+                ;;
+              *)
+                echo "Unknown manual job selection: $MANUAL_JOBS" >&2
+                exit 1
+                ;;
+            esac
             exit 0
           fi
 
