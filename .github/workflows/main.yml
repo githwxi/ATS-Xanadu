@@ -119,7 +119,7 @@ jobs:
         run: bash travis-ci/bootstrap.sh
 
   bootstrap-with-test-linux:
-    needs: [check-changes, build-and-test-linux]
+    needs: check-changes
     if: needs.check-changes.outputs.boottest == 'true'
     name: Ubuntu bootstrap with tests
     runs-on: ubuntu-26.04
@@ -145,10 +145,13 @@ jobs:
           node-version: '24'
           package-manager-cache: false
 
-      - name: Build bootstrap libraries and run bootstrap tests
+      - name: Build prerequisites, bootstrap libraries, and run bootstrap tests
         run: |
           source travis-ci/common.sh
           setup_ats2
           require node scheme python3
+          # Jobs use separate runners, so rebuild the generated inputs from J1.
+          export npm_config_yes=true
+          overall all
           overall bootall
           overall boottest
