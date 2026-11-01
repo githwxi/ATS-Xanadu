@@ -10,11 +10,11 @@ on:
         description: Which build jobs to run
         type: choice
         options:
-          - build-and-test
-          - bootstrap-with-tests
-        default: build-and-test
+          - build-with-prelude-tests
+          - build-with-bootstrap-tests
+        default: build-with-prelude-tests
       bootstrap:
-        description: Also build the bootstrap libraries (applies when build-and-test is selected)
+        description: Also build the bootstrap libraries (applies when build-with-prelude-tests is selected)
         type: boolean
         default: false
 
@@ -47,12 +47,12 @@ jobs:
         run: |
           if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]; then
             case "$MANUAL_JOBS" in
-              'build-and-test')
+              'build-with-prelude-tests')
                 echo 'build=true' >> "$GITHUB_OUTPUT"
                 echo "bootstrap=$MANUAL_BOOTSTRAP" >> "$GITHUB_OUTPUT"
                 echo 'boottest=false' >> "$GITHUB_OUTPUT"
                 ;;
-              'bootstrap-with-tests')
+              'build-with-bootstrap-tests')
                 echo 'build=false' >> "$GITHUB_OUTPUT"
                 echo 'bootstrap=false' >> "$GITHUB_OUTPUT"
                 echo 'boottest=true' >> "$GITHUB_OUTPUT"
@@ -65,9 +65,7 @@ jobs:
             exit 0
           fi
 
-          is_monday=false
           if [[ "$(TZ=America/New_York date +%u)" == 1 ]]; then
-            is_monday=true
             echo 'boottest=true' >> "$GITHUB_OUTPUT"
           else
             echo 'boottest=false' >> "$GITHUB_OUTPUT"
@@ -81,12 +79,6 @@ jobs:
             echo 'bootstrap=true' >> "$GITHUB_OUTPUT"
           else
             echo 'bootstrap=false' >> "$GITHUB_OUTPUT"
-          fi
-
-          if [[ "$is_monday" == true ]]; then
-            echo 'build=true' >> "$GITHUB_OUTPUT"
-            echo 'Monday bootstrap tests require a fresh regular build.' >> "$GITHUB_STEP_SUMMARY"
-            exit 0
           fi
 
           # Match the exact commit, so changes are not lost after a missed run.
@@ -142,7 +134,7 @@ jobs:
   bootstrap-with-test-linux:
     needs: check-changes
     if: needs.check-changes.outputs.boottest == 'true'
-    name: Ubuntu bootstrap with tests
+    name: Ubuntu build with bootstrap tests
     runs-on: ubuntu-26.04
     timeout-minutes: 360
     defaults:
