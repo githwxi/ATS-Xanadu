@@ -44,7 +44,9 @@ jobs:
             exit 0
           fi
 
+          is_monday=false
           if [[ "$(TZ=America/New_York date +%u)" == 1 ]]; then
+            is_monday=true
             echo 'boottest=true' >> "$GITHUB_OUTPUT"
           else
             echo 'boottest=false' >> "$GITHUB_OUTPUT"
@@ -58,6 +60,12 @@ jobs:
             echo 'bootstrap=true' >> "$GITHUB_OUTPUT"
           else
             echo 'bootstrap=false' >> "$GITHUB_OUTPUT"
+          fi
+
+          if [[ "$is_monday" == true ]]; then
+            echo 'build=true' >> "$GITHUB_OUTPUT"
+            echo 'Monday bootstrap tests require a fresh regular build.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
           fi
 
           # Match the exact commit, so changes are not lost after a missed run.
@@ -111,7 +119,7 @@ jobs:
         run: bash travis-ci/bootstrap.sh
 
   bootstrap-with-test-linux:
-    needs: check-changes
+    needs: [check-changes, build-and-test-linux]
     if: needs.check-changes.outputs.boottest == 'true'
     name: Ubuntu bootstrap with tests
     runs-on: ubuntu-26.04
