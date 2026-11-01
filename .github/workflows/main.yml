@@ -28,6 +28,7 @@ jobs:
     outputs:
       build: ${{ steps.check.outputs.build }}
       bootstrap: ${{ steps.check.outputs.bootstrap }}
+      boottest: ${{ steps.check.outputs.boottest }}
     steps:
       - name: Check previous successful runs
         id: check
@@ -39,7 +40,14 @@ jobs:
           if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]; then
             echo 'build=true' >> "$GITHUB_OUTPUT"
             echo "bootstrap=$MANUAL_BOOTSTRAP" >> "$GITHUB_OUTPUT"
+            echo 'boottest=true' >> "$GITHUB_OUTPUT"
             exit 0
+          fi
+
+          if [[ "$(TZ=America/New_York date +%u)" == 1 ]]; then
+            echo 'boottest=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'boottest=false' >> "$GITHUB_OUTPUT"
           fi
 
           # Alternate local calendar dates, including across month boundaries.
@@ -101,3 +109,38 @@ jobs:
       - name: Build bootstrap libraries
         if: needs.check-changes.outputs.bootstrap == 'true'
         run: bash travis-ci/bootstrap.sh
+
+  bootstrap-with-test-linux:
+    needs: check-changes
+    if: needs.check-changes.outputs.boottest == 'true'
+    name: Ubuntu bootstrap with tests
+    runs-on: ubuntu-26.04
+    timeout-minutes: 360
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Install dependencies
+        run: bash travis-ci/install-deps.sh
+
+      - name: Build bundled ATS2
+        run: bash travis-ci/install-ats2.sh
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Build bootstrap libraries and run bootstrap tests
+        run: |
+          source travis-ci/common.sh
+          setup_ats2
+          require node scheme python3
+          overall bootall
+          overall boottest
