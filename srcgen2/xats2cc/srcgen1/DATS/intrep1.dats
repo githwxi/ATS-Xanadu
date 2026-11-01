@@ -65,6 +65,112 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1val_nil
+(  loc0  ) =
+i1val_make_node
+(
+loc0, I1V000((*void*)))
+//
+(* ****** ****** *)
+//
+#implfun
+i1val_con(dcon) =
+let
+val loc0 =
+d2con_get_lctn(dcon)
+in//let
+i1val(loc0, I1Vcon(dcon))
+end//let//i1val_con(dcon)
+//
+#implfun
+i1val_cst(dcst) =
+let
+val loc0 =
+d2cst_get_lctn(dcst)
+in//let
+i1val(loc0, I1Vcst(dcst))
+end//let//i1val_cst(dcst)
+//
+(* ****** ****** *)
+//
+#implfun
+i1val_var(dvar) =
+let
+val loc0 =
+d2var_get_lctn(dvar)
+in//let
+i1val(loc0, I1Vvar(dvar))
+end//let//i1val_var(dvar)
+//
+(* ****** ****** *)
+//
+#implfun
+i1val_none0
+(  loc0  ) =
+i1val_make_node
+(loc0,I1Vnone0((*void*)))
+#implfun
+i1val_none1
+(  i0e0  ) =
+i1val_make_node
+(
+i0e0.lctn(),I1Vnone1(i0e0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1dcl_none0
+(  loc0  ) =
+i1dcl_make_node
+(loc0,I1Dnone0((*void*)))
+#implfun
+i1dcl_none1
+(  dcl0  ) =
+i1dcl_make_node
+(
+dcl0.lctn(),I1Dnone1(dcl0))
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1dcl =
+I1DCL of
+(loctn, i1dcl_node)
+datavwtp
+i1dcl_vt =
+I1DCL_vt of
+(loctn, i1dcl_node)
+//
+#absimpl i1dcl_tbox = i1dcl
+//
+in (* in-of-local *)
+//
+#implfun
+i1dcl_make_node
+(   loc,nod   ) =
+(
+  I1DCL(loc, nod) )
+//
+#implfun
+i1dcl_lctn$get(i1d) =
+let
+val+
+I1DCL(loc,nod) = i1d in loc end
+#implfun
+i1dcl_node$get(i1d) =
+let
+val+
+I1DCL(loc,nod) = i1d in nod end
+//
+endloc (*local*) // end of [local(i1dcl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_intrep1.dats] *)

@@ -500,8 +500,11 @@ i1cmp_ilts$get(i1cmp): (i1letlst)
 #symload ilts with i1cmp_ilts$get
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 i1val_nil(loc0: loc_t): ( i1val )
+//
 (* ****** ****** *)
 //
 fun

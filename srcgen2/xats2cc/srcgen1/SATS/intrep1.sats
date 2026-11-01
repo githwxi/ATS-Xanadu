@@ -202,10 +202,36 @@ i1val_node =
 //
 (* ****** ****** *)
 //
+|I1Vi00 of (sint)
+|I1Vb00 of (bool)
+|I1Vc00 of (char)
+|I1Vf00 of (dflt)
+|I1Vs00 of (strn)
+//
+(* ****** ****** *)
+//
+|I1Vtop of (sym_t)
+//
+(* ****** ****** *)
+(*
+|I1Varg of (i1arg)
+*)
+(* ****** ****** *)
+|I1Vtnm of (i1tnm)
+(* ****** ****** *)
+|I1Vcon of (d2con)
+|I1Vcst of (d2cst)
+|I1Vvar of (d2var)
+(* ****** ****** *)
+//
 |I1Vp0rj of (i1val, sint)
 |I1Vp1cn of (i0pat, i1val, sint)
 |I1Vp1rj of (token, i1val, sint)
 |I1Vp2rj of (token, i1val, label)
+//
+(* ****** ****** *)
+//
+|I1Vnone0(*0*)|I1Vnone1 of (i0exp)
 //
 (* ****** ****** *)
 //
@@ -268,6 +294,61 @@ fun
 i1tnm_fprint
 (
 itnm: i1tnm, out0: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1val_nil(loc0: loc_t): ( i1val )
+//
+(* ****** ****** *)
+//
+fun
+i1val_con(dcon: d2con): ( i1val )
+fun
+i1val_cst(dcst: d2cst): ( i1val )
+//
+fun
+i1val_var(dvar: d2var): ( i1val )
+//
+(* ****** ****** *)
+//
+fun
+i1val_conq(ival: i1val): ( bool )
+//
+fun
+i1val_cstq(ival: i1val): ( bool )
+//
+fun
+i1val_cfnq(ival: i1val): ( bool )
+//
+fun
+i1val_varq(ival: i1val): ( bool )
+//
+(* ****** ****** *)
+//
+fun
+i1val_none0(loc0: loc_t): (i1val)
+fun
+i1val_none1(iexp: i0exp): (i1val)
+//
+(* ****** ****** *)
+//
+fun
+i1val_lctn$get(i1val): ( loc_t )
+fun
+i1val_node$get(i1val): i1val_node
+//
+#symload lctn with i1val_lctn$get
+#symload node with i1val_node$get
+//
+(* ****** ****** *)
+//
+fun
+i1val_make_node
+(loc0:loc_t,node:i1val_node):i1val
+//
+#symload i1val with i1val_make_node
 //
 (* ****** ****** *)
 (* ****** ****** *)
