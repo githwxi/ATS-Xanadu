@@ -324,8 +324,7 @@ $(SED) -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' $< > $@
 # This one should be identical to lib/lib2xatsopt2js.js
 all:: \
 OUTS_lib2xatsopt2js
-OUTS_lib2xatsopt2js: \
-$(OUT1DATS); $(CAT) $(OUT1DATS) > OUTS/lib2xatsopt2js.js
+OUTS_lib2xatsopt2js: $(OUT1DATS); $(CAT) $(OUT1DATS) > OUTS/lib2xatsopt2js.js
 #
 ########################################################################
 ########################################################################

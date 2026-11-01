@@ -257,7 +257,8 @@ XATS2PY_PYEMIT00=./../UTIL/xats2py_pyemit00_ats3.py
 # The [S1XSHRD] is used here as
 # the code in [srcgen1/prelude] requires it.
 #
-xats2py_pyemit00: ; \
+xats2py_pyemit00: \
+lib/lib2xatsopt2js2py.py; \
 printf "\
 ## %s\n%s\n%s\n%s\n%s\n" \
 "`date`" \
@@ -300,8 +301,11 @@ $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/pyxtnm/pyx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
 all:: \
-lib_lib2xatsopt2js2py
-lib_lib2xatsopt2js2py: \
-$(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt2js2py.py
+lib_lib2xatsopt2js2py_py
+lib/lib2xatsopt2js2py.py: lib_lib2xatsopt2js2py_py
+lib_lib2xatsopt2js2py_py: $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xatsopt2js2py.py
+########################################################################
+########################################################################
+#######################[end-of-(Makefile_xpyemit)]######################
 ########################################################################
 ########################################################################
