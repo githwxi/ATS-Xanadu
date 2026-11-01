@@ -10,11 +10,11 @@ on:
         description: Which build jobs to run
         type: choice
         options:
-          - J1 only
-          - J2 only
-        default: J1 only
+          - build-and-test
+          - bootstrap-with-tests
+        default: build-and-test
       bootstrap:
-        description: Also build the bootstrap libraries (applies when J1 is selected)
+        description: Also build the bootstrap libraries (applies when build-and-test is selected)
         type: boolean
         default: false
 
@@ -47,12 +47,12 @@ jobs:
         run: |
           if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]; then
             case "$MANUAL_JOBS" in
-              'J1 only')
+              'build-and-test')
                 echo 'build=true' >> "$GITHUB_OUTPUT"
                 echo "bootstrap=$MANUAL_BOOTSTRAP" >> "$GITHUB_OUTPUT"
                 echo 'boottest=false' >> "$GITHUB_OUTPUT"
                 ;;
-              'J2 only')
+              'bootstrap-with-tests')
                 echo 'build=false' >> "$GITHUB_OUTPUT"
                 echo 'bootstrap=false' >> "$GITHUB_OUTPUT"
                 echo 'boottest=true' >> "$GITHUB_OUTPUT"
