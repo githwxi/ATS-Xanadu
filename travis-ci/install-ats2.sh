@@ -13,6 +13,9 @@ destination=${1:-"$CI_DIR/.ats2"}
 mkdir -p -- "$destination"
 destination=$(cd -- "$destination" && pwd -P)
 tar -xzf "$archive" -C "$destination" --strip-components=1
+# glibc exposes bsearch as a _Generic macro under _GNU_SOURCE, which conflicts
+# with ATS2's legacy function declaration in this header.
+sed -i '/^void \*bsearch$/i #undef bsearch' "$destination/prelude/CATS/array.cats"
 export PATSHOME="$destination"
 export PATH="$PATSHOME/bin:$PATH"
 # Newer GCC versions treat implicit function declarations as errors. The
