@@ -301,7 +301,7 @@ in//let
 nindstrnfpr(filr, nind, "## I1FUNDCL\n"))
 end//let
 //
-#define pyaemit_fjarglst = xats2js_fjarglst
+#define pyaemit_fjarglst = jsaemit_fjarglst
 //
 }(*where*)//end-of-[pyaemit_i1fundcl(env0,ifun)]
 //

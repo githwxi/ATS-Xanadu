@@ -305,7 +305,7 @@ in//let
 nindstrnfpr(filr, nind, "## I1FUNDCL\n"))
 end//let
 //
-#define rbaemit_fjarglst = xats2js_fjarglst
+#define rbaemit_fjarglst = jsaemit_fjarglst
 //
 }(*where*)//end-of-[rbaemit_i1fundcl(env0,ifun)]
 //

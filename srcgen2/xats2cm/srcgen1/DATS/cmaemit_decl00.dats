@@ -300,7 +300,7 @@ in//let
 nindstrnfpr(filr, nind, ";; I1FUNDCL\n"))
 end//let
 //
-#define cmaemit_fjarglst = xats2js_fjarglst
+#define cmaemit_fjarglst = jsaemit_fjarglst
 //
 }(*where*)//end-of-[cmaemit_i1fundcl(env0,ifun)]
 //

@@ -301,7 +301,7 @@ in//let
 nindstrnfpr(filr, nind, "## I1FUNDCL\n"))
 end//let
 //
-#define plaemit_fjarglst = xats2js_fjarglst
+#define plaemit_fjarglst = jsaemit_fjarglst
 //
 }(*where*)//end-of-[plaemit_i1fundcl(env0,ifun)]
 //

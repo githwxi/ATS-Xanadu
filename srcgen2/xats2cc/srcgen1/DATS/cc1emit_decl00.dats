@@ -52,27 +52,62 @@ XATSOPT "./../../.."
 /HATS/xatsopt_dpre.hats"
 //
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload // BAS =
+"./../../../SATS/xbasics.sats"
+//
+#staload // STM =
+"./../../../SATS/xstamp0.sats"
+#staload // SYM =
+"./../../../SATS/xsymbol.sats"
+#staload // LOC =
+"./../../../SATS/locinfo.sats"
+#staload // LEX =
+"./../../../SATS/lexing0.sats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
-//
-(* ****** ****** *)
+#staload "./../SATS/xats2cc.sats"
 //
 #staload "./../SATS/cc1emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+endlfpr
+(filr: FILR): void =
+(
+strn_fprint("\n", filr))//endfun
+//
+(* ****** ****** *)
+//
+fun
+lctnfpr
+(filr: FILR
+,loc0: loc_t): void =
+(
+loctn_fprint(loc0,filr))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
-js1emit_i1dcl
-( env0,dcl0 ) =
+i1dcl_cc1emit
+(dcl0, env0) =
 let
 (*
 //
 val () =
 prerrsln
-("js1emit_i1dcl: dcl0 = ", dcl0)
+("i1dcl_cc1emit: dcl0 = ", dcl0)
 //
 *)
 in//let
@@ -80,7 +115,7 @@ in//let
 case+
 dcl0.node() of
 //
-|_(*otherwise*) => f0_otherwise(env0, dcl0)
+|_(*otherwise*) => f0_otherwise(dcl0,env0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -93,7 +128,7 @@ end where
 fun
 f0_otherwise
 (
-dcl0: i1dcl
+dcl0: i1dcl,
 env0: !envxcc1): void =
 let
 //
@@ -108,28 +143,22 @@ envxcc1_nind$get(env0)
 in//let
 //
 nindfpr(filr, nind);
-strnfpr(filr, "// ");
-loctn_fprint
-(loc0, filr); fprintln(filr);
+strnfpr(filr, "// ");lctnfpr(filr, loc0);endlfpr(filr);
 nindfpr(filr, nind);
-strnfpr(filr, "// ");
-i1dcl_fprint(dcl0, filr); fprintln(filr)
+strnfpr(filr, "// ");i1dcl_fprint(dcl0, filr);endlfpr(filr)
 //
-end(*let*)//end-of-[f0_otherwise(env0,dcl0)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-}(*where*)//end-of-[js1emit_i1dcl(env0,dcl0)]
+end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+}(*where*)//end-of-[i1dcl_cc1emit(dcl0,env0)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc1emit_decl00.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2cc/srcgen1/DATS/cc1emit_decl00.dats] *)
 (***********************************************************************)
 (***********************************************************************)

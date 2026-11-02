@@ -15,5 +15,5 @@ For ATS3/XANADU_srcgen2_xats2js
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_mytmplib00.hats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen1/HATS/mytmplib00.hats] *)
 (***********************************************************************)
