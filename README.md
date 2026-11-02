@@ -5,7 +5,7 @@ and Templates
 
 ## Build Status
 
-[![Build and Test ATS3](https://github.com/githwxi/ATS-Xanadu/actions/workflows/main.yml/badge.svg)](https://github.com/githwxi/ATS-Xanadu/actions/workflows/main.yml)
+[![Ubuntu CI](https://github.com/githwxi/ATS-Xanadu/actions/workflows/main.yml/badge.svg)](https://github.com/githwxi/ATS-Xanadu/actions/workflows/main.yml)
 [![Cygwin CI](https://github.com/githwxi/ATS-Xanadu/actions/workflows/cygwin-ci.yml/badge.svg)](https://github.com/githwxi/ATS-Xanadu/actions/workflows/cygwin-ci.yml)
 
 GitHub Actions builds ATS3 and runs the JavaScript, Scheme, and Python
@@ -21,9 +21,9 @@ needs a build.
 
 The build-with-bootstrap-tests job runs weekly on Mondays (with a
 maximum six-hour timeout). A manual workflow run can select either the
-prelude-tests or the bootstrap-tests; the former run also offers an
-optional bootstrap-library build. See the [CI scripts and local build
-instructions](travis-ci/README.md) for details.
+prelude-tests or the bootstrap-tests, and the former run also offers
+an optional bootstrap-library build. See the [CI scripts and local
+build instructions](travis-ci/README.md) for details.
 
 The separate Cygwin CI workflow builds ATS-Xanadu on Windows and runs the
 JavaScript and Python prelude tests weekly on Mondays at 2:00 a.m.
