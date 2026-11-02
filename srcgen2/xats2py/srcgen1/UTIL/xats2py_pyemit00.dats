@@ -50,7 +50,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2py.sats"
+#staload "./../SATS/pyaemit.sats"
 #staload "./../SATS/py1emit.sats"
 //
 (* ****** ****** *)

@@ -56,11 +56,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/xats2py.sats"
+#staload "./../SATS/pyaemit.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-_(*DATS*)="./../DATS/xats2py.dats"
+_(*DATS*)="./../DATS/pyaemit.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -101,7 +101,7 @@ i1valfpr
 (* ****** ****** *)
 //
 #implfun
-xats2py_i1let
+pyaemit_i1let
 ( env0,ilet ) =
 let
 //
@@ -132,18 +132,18 @@ i1let_fprint(ilet, filr)
 //
 (*
 val (  ) =
-printsln("xats2py_i1let: ilet = ", ilet)
+printsln("pyaemit_i1let: ilet = ", ilet)
 *)
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[xats2py_i1let(env0,ilet)]
+}(*where*)//end-of-[pyaemit_i1let(env0,ilet)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2py_i1bnd
+pyaemit_i1bnd
 ( env0,ibnd ) =
 let
 //
@@ -164,18 +164,18 @@ end where
 //
 (*
 val (  ) =
-printsln("xats2py_i1bnd: ibnd = ", ibnd)
+printsln("pyaemit_i1bnd: ibnd = ", ibnd)
 *)
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[xats2py_i1bnd(env0,ibnd)]
+}(*where*)//end-of-[pyaemit_i1bnd(env0,ibnd)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2py_i1cmp
+pyaemit_i1cmp
 ( env0,icmp ) =
 let
 //
@@ -203,7 +203,7 @@ i1valfpr(  filr , ival  )) where
 {
 val () =
 (
-  xats2py_i1letlst(env0, ilts)) };
+  pyaemit_i1letlst(env0, ilts)) };
 //
 strnfpr(filr, "## I1CMP:return\n");
 )
@@ -215,26 +215,26 @@ end where
 //
 (*
 val (  ) =
-printsln("xats2py_i1cmp: icmp = ", icmp)
+printsln("pyaemit_i1cmp: icmp = ", icmp)
 *)
 //
 (* ****** ****** *)
 //
 fun
-xats2py_i1letlst
+pyaemit_i1letlst
 ( env0:
 ! envx2py
 , ilts: i1letlst): void =
 (
-list_xats2py_fnp(env0, ilts, xats2py_i1let))
+list_pyaemit_fnp(env0, ilts, pyaemit_i1let))
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[xats2py_i1cmp(env0,icmp)]
+}(*where*)//end-of-[pyaemit_i1cmp(env0,icmp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_DATS_xats2py_dynexp.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2py/srcgen1/DATS/pyaemit_dynexp.dats] *)
 (***********************************************************************)

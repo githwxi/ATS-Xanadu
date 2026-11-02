@@ -58,7 +58,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2py.sats"
+#staload "./../SATS/pyaemit.sats"
 #staload "./../SATS/py1emit.sats"
 //
 (* ****** ****** *)
@@ -283,7 +283,7 @@ end//let
 //
 val (  ) =
 (
-  xats2py_i1dcl( env0, dcl1 ))
+  pyaemit_i1dcl( env0, dcl1 ))
 //
 end(*let*)//end-of-[f0_static(env0,dcl0)]
 //
@@ -442,7 +442,7 @@ if
 prvq
 then
 (
- xats2py_i1valdclist(env0, i1vs))
+ pyaemit_i1valdclist(env0, i1vs))
 else
 (
  py1emit_i1valdclist(env0, i1vs))
@@ -546,7 +546,7 @@ if
 prfq
 then
 (
- xats2py_i1fundclist(env0, i1fs))
+ pyaemit_i1fundclist(env0, i1fs))
 else
 (
 case+ tqas of
@@ -555,7 +555,7 @@ case+ tqas of
   py1emit_i1fundclist(env0, i1fs))
 |list_cons _ => // HX: templates
 (
-  xats2py_i1tfndclist(env0, i1fs)))
+  pyaemit_i1tfndclist(env0, i1fs)))
 //
 end(*let*)//end-of-[f0_fundclst(env0,dcl0)]
 //

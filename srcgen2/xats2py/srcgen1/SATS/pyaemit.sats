@@ -26,65 +26,116 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-//
+(*
 Fri Nov 29 04:00:58 PM EST 2024
-//
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-(* ****** ****** *)
-(*
-#define
-XATSOPT "./../../.."
-*)
 (* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #include
 "./../HATS/libxats2js.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#vwtpdef envx2py = envx2js
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2py.sats"
+fun
+<x0:t0>
+list_pyaemit_fnp
+( e1:
+! envx2py
+, xs: list(x0)
+, (!envx2py, x0) -> void): void
+fun
+<x0:t0>
+optn_pyaemit_fnp
+( e1:
+! envx2py
+, xs: optn(x0)
+, (!envx2py, x0) -> void): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-<x0>(*tmp*)
-list_xats2py_fnp
-( e1, xs, fopr ) =
-(
-list_foritm$e1nv<x0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = envx2py
-#impltmp
-foritm$e1nv$work<x0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_xats2py_fnp(e1,xs,fopr)]
+fun
+pyaemit_i1let
+(env0: !envx2py, ilet: i1let): void
+fun
+pyaemit_i1ins
+(env0: !envx2py, iins: i1ins): void
+//
+fun
+pyaemit_i1bnd
+(env0: !envx2py, ibnd: i1bnd): void
+//
+fun
+pyaemit_i1cmp
+(env0: !envx2py, icmp: i1cmp): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+pyaemit_i1dcl
+(env0: !envx2py, dcl0: i1dcl): void
+//
+fun
+pyaemit_i1dclist
+(env0: !envx2py, dcls: i1dclist): void
 //
 (* ****** ****** *)
 //
-#impltmp
-<x0>(*tmp*)
-optn_xats2py_fnp
-( e1, xs, fopr ) =
-(
-case+ xs of
-| optn_nil() => () | optn_cons(x1) => fopr(e1, x1))
+fun
+pyaemit_i1valdcl
+(env0: !envx2py, ival: i1valdcl): void
+fun
+pyaemit_i1vardcl
+(env0: !envx2py, ivar: i1vardcl): void
+fun
+pyaemit_i1fundcl
+(env0: !envx2py, ifun: i1fundcl): void
+fun
+pyaemit_i1tfndcl
+(env0: !envx2py, ifun: i1fundcl): void
+//
+fun
+pyaemit_i1valdclist
+(env0: !envx2py, i1vs: i1valdclist): void
+fun
+pyaemit_i1vardclist
+(env0: !envx2py, i1vs: i1vardclist): void
+fun
+pyaemit_i1fundclist
+(env0: !envx2py, i1fs: i1fundclist): void
+fun
+pyaemit_i1tfndclist
+(env0: !envx2py, i1fs: i1fundclist): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#define envx2py_poplam0 = envx2js_poplam0
+#define envx2py_pshlam0 = envx2js_pshlam0
+//
+#define envx2py_filr$get = envx2js_filr$get
+#define envx2py_nind$get = envx2js_nind$get
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_DATS_xats2py.dats] *)
+(* end of [ATS3-XANADU/srcgen1/xats2py/srcgen1/SATS/pyaemit.sats] *)
 (***********************************************************************)

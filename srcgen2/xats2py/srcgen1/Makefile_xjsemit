@@ -22,15 +22,15 @@ cleanall:: ; rm -f BUILD/JS/*_dats_out?.js
 ########################################################################
 #
 SRCSATS := \
-xats2py.sats \
+pyaemit.sats \
 py1emit.sats \
 #
 ########################################################################
 #
 SRCDATS := \
-xats2py.dats \
-xats2py_dynexp.dats \
-xats2py_decl00.dats \
+pyaemit.dats \
+pyaemit_dynexp.dats \
+pyaemit_decl00.dats \
 py1emit.dats \
 py1emit_utils0.dats \
 py1emit_dynexp.dats \
