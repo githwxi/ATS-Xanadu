@@ -102,10 +102,11 @@ contrib_githwxi_BOOTCM1_xats2cm_UTIL_cmemit00
 boottest:: \
 contrib_githwxi_BOOTCM1_xats2cm_TEST_cmemit00
 #
-boottest:: \
-contrib_githwxi_BOOTPY1_xats2py_UTIL_pyemit00
-boottest:: \
-contrib_githwxi_BOOTPY1_xats2py_TEST_pyemit00
+# HX-2026-11-01: It takes too long!!!
+# boottest:: \
+# contrib_githwxi_BOOTPY1_xats2py_UTIL_pyemit00
+# boottest:: \
+# contrib_githwxi_BOOTPY1_xats2py_TEST_pyemit00
 #
 ########################################################################
 #
