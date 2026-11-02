@@ -60,11 +60,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/xats2rb.sats"
+#staload "./../SATS/rbaemit.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-_(*DATS*)="./../DATS/xats2rb.dats"
+_(*DATS*)="./../DATS/rbaemit.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -78,7 +78,7 @@ fprintln
 (* ****** ****** *)
 //
 #implfun
-xats2rb_i1dcl
+rbaemit_i1dcl
   (env0, idcl) =
 let
 //
@@ -89,13 +89,13 @@ in//let
 strnfpr(filr, "## ");
 i1dcl_fprint(idcl,filr);fprintln(filr)
 //
-end(*let*)//end-of-[xats2rb_i1dcl(...)]
+end(*let*)//end-of-[rbaemit_i1dcl(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2rb_i1valdcl
+rbaemit_i1valdcl
   (env0, ival) = let
 //
 (* ****** ****** *)
@@ -108,15 +108,15 @@ i1valdcl_tdxp$get(ival)
 (* ****** ****** *)
 //
 val (  ) =
-xats2rb_i1bnd(env0, dpat)
+rbaemit_i1bnd(env0, dpat)
 //
 (* ****** ****** *)
 //
 (*
 val (  ) = prerrsln
-("xats2rb_i1valdcl: dpat = ", dpat)
+("rbaemit_i1valdcl: dpat = ", dpat)
 val (  ) = prerrsln
-("xats2rb_i1valdcl: tdxp = ", tdxp)
+("rbaemit_i1valdcl: tdxp = ", tdxp)
 *)
 //
 (* ****** ****** *)
@@ -133,7 +133,7 @@ TEQI1CMPsome
 let
 val (  ) =
 (
-  xats2rb_i1cmp(env0, icmp))
+  rbaemit_i1cmp(env0, icmp))
 end//let
 ) (*case+*) // end-of-( teqi1exp )
 //
@@ -153,13 +153,13 @@ in//let
 nindstrnfpr(filr, nind, "## I1VALDCL\n"))
 end//let
 //
-}(*where*)//end[xats2rb_i1valdcl(env0,ival)]
+}(*where*)//end[rbaemit_i1valdcl(env0,ival)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2rb_i1vardcl
+rbaemit_i1vardcl
   (env0, ivar) = let
 //
 (* ****** ****** *)
@@ -172,15 +172,15 @@ i1vardcl_dini$get(ivar)
 (* ****** ****** *)
 //
 val (  ) =
-xats2rb_i1bnd(env0, dpid)
+rbaemit_i1bnd(env0, dpid)
 //
 (* ****** ****** *)
 //
 (*
 val (  ) = prerrsln
-("xats2rb_i1vardcl: dvar = ", dvar)
+("rbaemit_i1vardcl: dvar = ", dvar)
 val (  ) = prerrsln
-("xats2rb_i1vardcl: dini = ", tdxp)
+("rbaemit_i1vardcl: dini = ", tdxp)
 *)
 //
 (* ****** ****** *)
@@ -197,7 +197,7 @@ TEQI1CMPsome
 let
 val (  ) =
 (
-  xats2rb_i1cmp(env0, icmp))
+  rbaemit_i1cmp(env0, icmp))
 end//let
 ) (*case+*) // end-of-( teqi1exp )
 //
@@ -217,13 +217,13 @@ in//let
 nindstrnfpr(filr, nind, "// I1VARDCL\n"))
 end//let
 //
-}(*where*)//end-of-[xats2rb_i1vardcl(env0,ival)]
+}(*where*)//end-of-[rbaemit_i1vardcl(env0,ival)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2rb_i1fundcl
+rbaemit_i1fundcl
   (env0, ifun) = let
 //
 (* ****** ****** *)
@@ -253,11 +253,11 @@ end//let
 //
 (*
 val (  ) = prerrsln
-("xats2rb_i1fundcl: dvar = ", dvar)
+("rbaemit_i1fundcl: dvar = ", dvar)
 val (  ) = prerrsln
-("xats2rb_i1fundcl: fjas = ", fjas)
+("rbaemit_i1fundcl: fjas = ", fjas)
 val (  ) = prerrsln
-("xats2rb_i1fundcl: tdxp = ", tdxp)
+("rbaemit_i1fundcl: tdxp = ", tdxp)
 *)
 //
 (* ****** ****** *)
@@ -268,7 +268,7 @@ val (  ) = // enter
 //
 val (  ) =
 (
-xats2rb_fjarglst(env0,fjas)
+rbaemit_fjarglst(env0,fjas)
 )
 //
 val (  ) =
@@ -283,7 +283,7 @@ TEQI1CMPsome
 let
 val (  ) =
 (
-  xats2rb_i1cmp(env0, icmp) )
+  rbaemit_i1cmp(env0, icmp) )
 end // end-of-[let]
 ) (*case+*) // end-of-( teqi1exp )
 //
@@ -305,14 +305,14 @@ in//let
 nindstrnfpr(filr, nind, "## I1FUNDCL\n"))
 end//let
 //
-#define xats2rb_fjarglst = xats2js_fjarglst
+#define rbaemit_fjarglst = xats2js_fjarglst
 //
-}(*where*)//end-of-[xats2rb_i1fundcl(env0,ifun)]
+}(*where*)//end-of-[rbaemit_i1fundcl(env0,ifun)]
 //
 (* ****** ****** *)
 //
 #implfun
-xats2rb_i1tfndcl
+rbaemit_i1tfndcl
   (env0, itfn) = let
 //
 val dvar =
@@ -330,56 +330,56 @@ in//let
 nindstrnfpr
 (filr, nind, "## I1TFNDCL: ");
 d2var_fprint(dvar, filr); fprintln(filr))
-end(*let*)//end-of-[xats2rb_i1tfndcl(env0,itfn)]
+end(*let*)//end-of-[rbaemit_i1tfndcl(env0,itfn)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2rb_i1dclist
+rbaemit_i1dclist
   (env0, dcls) =
 (
-  list_xats2rb_fnp(env0, dcls, xats2rb_i1dcl))
+  list_rbaemit_fnp(env0, dcls, rbaemit_i1dcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2rb_i1valdclist
+rbaemit_i1valdclist
   (env0, i1vs) =
 (
-  list_xats2rb_fnp(env0, i1vs, xats2rb_i1valdcl))
+  list_rbaemit_fnp(env0, i1vs, rbaemit_i1valdcl))
 //
 (* ****** ****** *)
 //
 #implfun
-xats2rb_i1vardclist
+rbaemit_i1vardclist
   (env0, i1vs) =
 (
-  list_xats2rb_fnp(env0, i1vs, xats2rb_i1vardcl))
+  list_rbaemit_fnp(env0, i1vs, rbaemit_i1vardcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2rb_i1fundclist
+rbaemit_i1fundclist
   (env0, i1fs) =
 (
-  list_xats2rb_fnp(env0, i1fs, xats2rb_i1fundcl))
+  list_rbaemit_fnp(env0, i1fs, rbaemit_i1fundcl))
 //
 (* ****** ****** *)
 //
 #implfun
-xats2rb_i1tfndclist
+rbaemit_i1tfndclist
   (env0, i1fs) =
 (
-  list_xats2rb_fnp(env0, i1fs, xats2rb_i1tfndcl))
+  list_rbaemit_fnp(env0, i1fs, rbaemit_i1tfndcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2rb_srcgen1_DATS_xats2rb_decl00.dats] *)
+(* end of [ATS3/XANADU_srcgen2_rbaemit_srcgen1_DATS_rbaemit_decl00.dats] *)
 (***********************************************************************)
 (***********************************************************************)

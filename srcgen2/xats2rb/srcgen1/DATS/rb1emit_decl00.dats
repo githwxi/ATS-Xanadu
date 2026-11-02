@@ -62,7 +62,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2rb.sats"
+#staload "./../SATS/rbaemit.sats"
 #staload "./../SATS/rb1emit.sats"
 //
 (* ****** ****** *)
@@ -292,7 +292,7 @@ end//let
 //
 val (  ) =
 (
-  xats2rb_i1dcl( env0, dcl1 ))
+  rbaemit_i1dcl( env0, dcl1 ))
 //
 end(*let*)//end-of-[f0_static(env0,dcl0)]
 //
@@ -451,7 +451,7 @@ if
 prvq
 then
 (
- xats2rb_i1valdclist(env0, i1vs))
+ rbaemit_i1valdclist(env0, i1vs))
 else
 (
  rb1emit_i1valdclist(env0, i1vs))
@@ -555,7 +555,7 @@ if
 prfq
 then
 (
- xats2rb_i1fundclist(env0, i1fs))
+ rbaemit_i1fundclist(env0, i1fs))
 else
 (
 case+ tqas of
@@ -564,7 +564,7 @@ case+ tqas of
   rb1emit_i1fundclist(env0, i1fs))
 |list_cons _ => // HX: templates
 (
-  xats2rb_i1tfndclist(env0, i1fs)))
+  rbaemit_i1tfndclist(env0, i1fs)))
 //
 end(*let*)//end-of-[f0_fundclst(env0,dcl0)]
 //

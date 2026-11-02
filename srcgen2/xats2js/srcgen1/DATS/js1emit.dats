@@ -113,7 +113,6 @@ case+ xs of
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #implfun
 js1emit_i1dclist
   (env0, dcls) =

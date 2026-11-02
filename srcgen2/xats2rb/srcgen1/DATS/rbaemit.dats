@@ -26,116 +26,71 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
-Author: Hongwei Xi
-(*
-Sat Sep  5 05:55:31 PM EDT 2026
+Author: Codex
+Sun Oct 18 11:21:38 AM EDT 2026
 *)
+(*
+Author: Hongwei Xi
+//
+Sat Sep  5 05:55:31 PM EDT 2026
+//
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+(*
+#define
+XATSOPT "./../../.."
+*)
 (* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #include
 "./../HATS/libxats2js.hats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#vwtpdef envx2rb = envx2js
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:t0>
-list_xats2rb_fnp
-( e1:
-! envx2rb
-, xs: list(x0)
-, (!envx2rb, x0) -> void): void
-fun
-<x0:t0>
-optn_xats2rb_fnp
-( e1:
-! envx2rb
-, xs: optn(x0)
-, (!envx2rb, x0) -> void): void
+#staload "./../SATS/rbaemit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-xats2rb_i1let
-(env0: !envx2rb, ilet: i1let): void
-fun
-xats2rb_i1ins
-(env0: !envx2rb, iins: i1ins): void
-//
-fun
-xats2rb_i1bnd
-(env0: !envx2rb, ibnd: i1bnd): void
-//
-fun
-xats2rb_i1cmp
-(env0: !envx2rb, icmp: i1cmp): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-xats2rb_i1dcl
-(env0: !envx2rb, dcl0: i1dcl): void
-//
-fun
-xats2rb_i1dclist
-(env0: !envx2rb, dcls: i1dclist): void
+#impltmp
+<x0>(*tmp*)
+list_rbaemit_fnp
+( e1, xs, fopr ) =
+(
+list_foritm$e1nv<x0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = envx2rb
+#impltmp
+foritm$e1nv$work<x0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [list_rbaemit_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
-fun
-xats2rb_i1valdcl
-(env0: !envx2rb, ival: i1valdcl): void
-fun
-xats2rb_i1vardcl
-(env0: !envx2rb, ivar: i1vardcl): void
-fun
-xats2rb_i1fundcl
-(env0: !envx2rb, ifun: i1fundcl): void
-fun
-xats2rb_i1tfndcl
-(env0: !envx2rb, ifun: i1fundcl): void
-//
-fun
-xats2rb_i1valdclist
-(env0: !envx2rb, i1vs: i1valdclist): void
-fun
-xats2rb_i1vardclist
-(env0: !envx2rb, i1vs: i1vardclist): void
-fun
-xats2rb_i1fundclist
-(env0: !envx2rb, i1fs: i1fundclist): void
-fun
-xats2rb_i1tfndclist
-(env0: !envx2rb, i1fs: i1fundclist): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#define envx2rb_poplam0 = envx2js_poplam0
-#define envx2rb_pshlam0 = envx2js_pshlam0
-//
-#define envx2rb_filr$get = envx2js_filr$get
-#define envx2rb_nind$get = envx2js_nind$get
+#impltmp
+<x0>(*tmp*)
+optn_rbaemit_fnp
+( e1, xs, fopr ) =
+(
+case+ xs of
+| optn_nil() => () | optn_cons(x1) => fopr(e1, x1))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen1_xats2rb_srcgen1_SATS_xats2rb.sats] *)
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen2_rbaemit_srcgen1_DATS_rbaemit.dats] *)
+(***********************************************************************)
 (***********************************************************************)

@@ -42,7 +42,12 @@ Authoremail: gmhwxiATgmailDOTcom
 /HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/intrep0.sats"
+//
+#staload
+"./../SATS/intrep0.sats"
+#staload
+"./../SATS/intrep1.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -156,6 +161,14 @@ t0imp_fprint(timp, g_print$out<>())
 g_print
 <i0dcl>(idcl) =
 i0dcl_fprint(idcl, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i1dcl>(idcl) =
+i1dcl_fprint(idcl, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)

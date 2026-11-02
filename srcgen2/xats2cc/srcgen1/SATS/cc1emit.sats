@@ -56,6 +56,38 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+envxcc1_filr$get
+(env0: !envxcc1): FILEref
+//
+fun
+envxcc1_nind$get
+(env0: !envxcc1): ( sint )
+//
+(* ****** ****** *)
+//
+fun
+envxcc1_make_out
+(  out: FILR   ): envxcc1
+fun
+envxcc1_free_nil
+( env0: ~envxcc1 ): void//fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+envxcc1_incnind
+( env0:
+! envxcc1, ninc: sint): void
+fun
+envxcc1_decnind
+( env0:
+! envxcc1, ndec: sint): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 list_cc1emit_fnp
 (
@@ -74,12 +106,18 @@ fopr: (x0, !envxcc1)->void): void
 (* ****** ****** *)
 //
 fun
+i1dcl_cc1emit
+(dcl0: i1dcl, env0: !envxcc1): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1dclist_cc1emit(
   dcls: i1dclist, env0: !envxcc1): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 fun
 i1parsed_cc1emit

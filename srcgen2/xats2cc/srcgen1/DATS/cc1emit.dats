@@ -65,6 +65,32 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1parsed_cc1emit
+  (ipar, filr) = let
+//
+val stadyn =
+i1parsed_stadyn$get(ipar)
+val nerror =
+i1parsed_nerror$get(ipar)
+val source =
+i1parsed_source$get(ipar)
+val parsed =
+i1parsed_parsed$get(ipar)
+//
+val
+env0 = envxcc1_make_out(filr)
+//
+in//let
+(
+  envxcc1_free_nil(env0)) where
+{ val () =
+  i1dclistopt_cc1emit(parsed, env0) }
+end(*let*)//end-of-[i1parsed_cc1emit(ipar,filr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <x0>(*tmp*)
 list_cc1emit_fnp
@@ -77,7 +103,7 @@ list_foritm$e1nv
 #impltmp
 foritm$e1nv$work
 <  x0  ><  e1  >(x0, e1) = fopr(x0, e1)
-}(*where*)//endof[list_cc1emit_fnp(e1,xs,fopr)]
+}(*where*)//endof[list_cc1emit_fnp(xs,e1,fopr)]
 //
 (* ****** ****** *)
 //
@@ -90,7 +116,16 @@ case+ xs of
 |
 optn_nil() =>
 (  (*0*)  ) | optn_cons(x1) => fopr(x1, e1)
-)(*case+*)//endof[optn_cc1emit_fnp(e1,xs,fopr)]
+)(*case+*)//endof[optn_cc1emit_fnp(xs,e1,fopr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1dclist_cc1emit
+  (dcls, env0) =
+(
+  list_cc1emit_fnp(dcls, env0, i1dcl_cc1emit))
 //
 (* ****** ****** *)
 (* ****** ****** *)

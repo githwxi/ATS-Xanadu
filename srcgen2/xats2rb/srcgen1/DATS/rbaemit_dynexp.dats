@@ -58,11 +58,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/xats2rb.sats"
+#staload "./../SATS/rbaemit.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-_(*DATS*)="./../DATS/xats2rb.dats"
+_(*DATS*)="./../DATS/rbaemit.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -103,7 +103,7 @@ i1valfpr
 (* ****** ****** *)
 //
 #implfun
-xats2rb_i1let
+rbaemit_i1let
 ( env0,ilet ) =
 let
 //
@@ -134,18 +134,18 @@ i1let_fprint(ilet, filr)
 //
 (*
 val (  ) =
-printsln("xats2rb_i1let: ilet = ", ilet)
+printsln("rbaemit_i1let: ilet = ", ilet)
 *)
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[xats2rb_i1let(env0,ilet)]
+}(*where*)//end-of-[rbaemit_i1let(env0,ilet)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2rb_i1bnd
+rbaemit_i1bnd
 ( env0,ibnd ) =
 let
 //
@@ -166,18 +166,18 @@ end where
 //
 (*
 val (  ) =
-printsln("xats2rb_i1bnd: ibnd = ", ibnd)
+printsln("rbaemit_i1bnd: ibnd = ", ibnd)
 *)
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[xats2rb_i1bnd(env0,ibnd)]
+}(*where*)//end-of-[rbaemit_i1bnd(env0,ibnd)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2rb_i1cmp
+rbaemit_i1cmp
 ( env0,icmp ) =
 let
 //
@@ -205,7 +205,7 @@ i1valfpr(  filr , ival  )) where
 {
 val () =
 (
-  xats2rb_i1letlst(env0, ilts)) };
+  rbaemit_i1letlst(env0, ilts)) };
 //
 strnfpr(filr, "## I1CMP:return\n");
 )
@@ -217,28 +217,28 @@ end where
 //
 (*
 val (  ) =
-printsln("xats2rb_i1cmp: icmp = ", icmp)
+printsln("rbaemit_i1cmp: icmp = ", icmp)
 *)
 //
 (* ****** ****** *)
 //
 fun
-xats2rb_i1letlst
+rbaemit_i1letlst
 ( env0:
 ! envx2rb
 , ilts: i1letlst): void =
 (
-list_xats2rb_fnp(env0, ilts, xats2rb_i1let))
+list_rbaemit_fnp(env0, ilts, rbaemit_i1let))
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[xats2rb_i1cmp(env0,icmp)]
+}(*where*)//end-of-[rbaemit_i1cmp(env0,icmp)]
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2rb_srcgen1_DATS_xats2rb_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_rbaemit_srcgen1_DATS_rbaemit_dynexp.dats] *)
 (***********************************************************************)
 (***********************************************************************)

@@ -50,9 +50,9 @@ XATSOPT "./../../.."
 "./../../..\
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
-(* ****** ****** *)
 #include
 "./../HATS/mytmplib00.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
@@ -64,6 +64,60 @@ XATSOPT "./../../.."
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1dcl_fprint
+(dcl0, out0) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+in//let
+//
+case+
+dcl0.node() of
+//
+(* ****** ****** *)
+//
+|I1Dnone0() => prints( "I1Dnone0(",")" )
+|I1Dnone1(dcl1) => prints("I1Dnone1(", dcl1, ")")
+//
+(* ****** ****** *)
+//
+end(*let*)//end-of-[i1dcl_fprint(dcl0,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1parsed_fprint
+  (ipar, out0) = let
+//
+val
+stadyn =
+i1parsed_stadyn$get(ipar)
+val
+nerror =
+i1parsed_nerror$get(ipar)
+val
+source =
+i1parsed_source$get(ipar)
+val
+parsed =
+i1parsed_parsed$get(ipar)
+//
+#impltmp g_print$out<>() = out0
+//
+in//let
+(
+print("I1PARSED(");
+prints
+(stadyn,";",nerror,";",source,";",parsed,")"))
+end(*let*)//end-of-[i1parsed_fprint(ipar,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
