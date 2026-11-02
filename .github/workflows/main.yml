@@ -1,4 +1,4 @@
-name: Build and Test ATS3
+name: Ubuntu CI
 
 on:
   schedule:
