@@ -1,8 +1,12 @@
 ########################################################################
 ########################################################################
-BUILD/JS/py1emit_dats.py:: SATS/py1emit.sats
-BUILD/JS/py1emit_utils0_dats.py:: SATS/py1emit.sats
-BUILD/JS/py1emit_dynexp_dats.py:: SATS/py1emit.sats
-BUILD/JS/py1emit_decl00_dats.py:: SATS/py1emit.sats
+BUILD/JS/pyaemit_dats.js: SATS/pyaemit.sats
+BUILD/JS/pyaemit_dynexp_dats.js: SATS/pyaemit.sats
+BUILD/JS/pyaemit_decl00_dats.js: SATS/pyaemit.sats
+########################################################################
+BUILD/JS/py1emit_dats.js: SATS/py1emit.sats
+BUILD/JS/py1emit_utils0_dats.js: SATS/py1emit.sats
+BUILD/JS/py1emit_dynexp_dats.js: SATS/py1emit.sats
+BUILD/JS/py1emit_decl00_dats.js: SATS/pyaemit.sats SATS/py1emit.sats
 ########################################################################
 ########################################################################
