@@ -62,7 +62,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #implfun
-xats2js_i1parsed
+jsaemit_i1parsed
   (filr, ipar) = let
 //
 val stadyn =
@@ -81,15 +81,15 @@ in//let
 (
   envx2js_free_nil(env0)) where
 { val () =
-  xats2js_i1dclistopt(env0, parsed) }
-end(*let*)//end-of-[xats2js_i1parsed(filr,ipar)]
+  jsaemit_i1dclistopt(env0, parsed) }
+end(*let*)//end-of-[jsaemit_i1parsed(filr,ipar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <x0>(*tmp*)
-list_xats2js_fnp
+list_jsaemit_fnp
 ( e1, xs, fopr ) =
 (
 list_foritm$e1nv
@@ -99,85 +99,85 @@ list_foritm$e1nv
 #impltmp
 foritm$e1nv$work
 <x0><e1>(x0, e1) = fopr(e1, x0)
-}(*where*)//end-of-[list_xats2js_fnp(e1,xs,fopr)]
+}(*where*)//end-of-[list_jsaemit_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <x0>(*tmp*)
-optn_xats2js_fnp
+optn_jsaemit_fnp
 ( e1, xs, fopr ) =
 (
 case+ xs of
 | optn_nil() => ()
 | optn_cons(x1) => fopr(e1, x1)
-)(*case+*)//end-of-[optn_xats2js_fnp(e1,xs,fopr)]
+)(*case+*)//end-of-[optn_jsaemit_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2js_i1dclist
+jsaemit_i1dclist
   (env0, dcls) =
 (
-  list_xats2js_fnp(env0, dcls, xats2js_i1dcl))
+  list_jsaemit_fnp(env0, dcls, jsaemit_i1dcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2js_i1prvdclist
+jsaemit_i1prvdclist
   (env0, i1vs) =
 (
-  list_xats2js_fnp(env0, i1vs, xats2js_i1prvdcl))
+  list_jsaemit_fnp(env0, i1vs, jsaemit_i1prvdcl))
 //
 #implfun
-xats2js_i1valdclist
+jsaemit_i1valdclist
   (env0, i1vs) =
 (
-  list_xats2js_fnp(env0, i1vs, xats2js_i1valdcl))
+  list_jsaemit_fnp(env0, i1vs, jsaemit_i1valdcl))
 //
 (* ****** ****** *)
 //
 #implfun
-xats2js_i1vardclist
+jsaemit_i1vardclist
   (env0, i1vs) =
 (
-  list_xats2js_fnp(env0, i1vs, xats2js_i1vardcl))
+  list_jsaemit_fnp(env0, i1vs, jsaemit_i1vardcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2js_i1prfdclist
+jsaemit_i1prfdclist
   (env0, i1fs) =
 (
-  list_xats2js_fnp(env0, i1fs, xats2js_i1prfdcl))
+  list_jsaemit_fnp(env0, i1fs, jsaemit_i1prfdcl))
 //
 #implfun
-xats2js_i1fundclist
+jsaemit_i1fundclist
   (env0, i1fs) =
 (
-  list_xats2js_fnp(env0, i1fs, xats2js_i1fundcl))
+  list_jsaemit_fnp(env0, i1fs, jsaemit_i1fundcl))
 //
 #implfun
-xats2js_i1tfndclist
+jsaemit_i1tfndclist
   (env0, i1fs) =
 (
-  list_xats2js_fnp(env0, i1fs, xats2js_i1tfndcl))
+  list_jsaemit_fnp(env0, i1fs, jsaemit_i1tfndcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2js_i1dclistopt
+jsaemit_i1dclistopt
   (env0, dopt) =
 (
-  optn_xats2js_fnp(env0, dopt, xats2js_i1dclist))
+  optn_jsaemit_fnp(env0, dopt, jsaemit_i1dclist))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_xats2js.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen1/DATS/xats2js.dats] *)
 (***********************************************************************)

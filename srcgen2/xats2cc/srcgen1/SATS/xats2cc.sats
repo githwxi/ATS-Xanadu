@@ -50,6 +50,11 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+endlfpr(filr: FILR): void
+//
+(* ****** ****** *)
+//
+fun
 nindfpr
 (filr: FILR, nind: sint): void
 //
@@ -79,6 +84,20 @@ s2varfpr
 fun
 i0typfpr
 (filr: FILR, ityp: i0typ): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2confpr
+(filr: FILR, dcon: d2con): void
+fun
+d2cstfpr
+(filr: FILR, dcst: d2cst): void
+//
+fun
+d2varfpr
+(filr: FILR, dvar: d2var): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

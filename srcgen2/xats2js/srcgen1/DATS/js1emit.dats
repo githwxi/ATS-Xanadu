@@ -158,5 +158,5 @@ js1emit_i1dclistopt
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_js1emit.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen1/DATS/js1emit.dats] *)
 (***********************************************************************)

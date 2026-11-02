@@ -579,5 +579,5 @@ end(*let*)//end-of-(f0_strn(rep))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_js1emit_utils0.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen1/DATS/js1emit_utils0.dats] *)
 (***********************************************************************)

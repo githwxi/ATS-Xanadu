@@ -1403,7 +1403,7 @@ end(*let*) // end-of-[i1cmpjs1(env0,icmp)]
 (*
 #implfun
 js1emit_i1ins
-  (env0, iins) = xats2js_i1ins(env0, iins)
+  (env0, iins) = jsaemit_i1ins(env0, iins)
 *)
 //
 (* ****** ****** *)
@@ -2529,5 +2529,5 @@ prints("let ", itnm, " = ", "arg", i0, "\n")))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_js1emit_dynexp.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen1/DATS/js1emit_dynexp.dats] *)
 (***********************************************************************)

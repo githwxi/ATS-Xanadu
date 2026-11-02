@@ -266,7 +266,7 @@ end//let
 //
 val (  ) =
 (
-  xats2js_i1dcl( env0, dcl1 ))
+  jsaemit_i1dcl( env0, dcl1 ))
 //
 end(*let*)//end-of-[f0_extern(env0,dcl0)]
 //
@@ -302,7 +302,7 @@ end//let
 //
 val (  ) =
 (
-  xats2js_i1dcl( env0, dcl1 ))
+  jsaemit_i1dcl( env0, dcl1 ))
 //
 end(*let*)//end-of-[f0_static(env0,dcl0)]
 //
@@ -461,7 +461,7 @@ if
 prvq
 then
 (
-  xats2js_i1valdclist(env0, i1vs))
+  jsaemit_i1valdclist(env0, i1vs))
 else
 (
   js1emit_i1valdclist(env0, i1vs))
@@ -565,7 +565,7 @@ if
 prfq
 then//then
 (
-  xats2js_i1fundclist(env0, i1fs))
+  jsaemit_i1fundclist(env0, i1fs))
 else//else
 (
 case+ tqas of
@@ -574,7 +574,7 @@ case+ tqas of
   js1emit_i1fundclist(env0, i1fs))
 |list_cons _ => // HX: templates
 (
-  xats2js_i1tfndclist(env0, i1fs)))
+  jsaemit_i1tfndclist(env0, i1fs)))
 //
 end(*let*)//end-of-[f0_fundclst(env0,dcl0)]
 //
@@ -1059,5 +1059,5 @@ end//let//end-of-[val()]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_js1emit_decl00.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen1/DATS/js1emit_decl00.dats] *)
 (***********************************************************************)
