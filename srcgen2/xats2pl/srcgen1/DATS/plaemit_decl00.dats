@@ -56,11 +56,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/xats2pl.sats"
+#staload "./../SATS/plaemit.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-_(*DATS*)="./../DATS/xats2pl.dats"
+_(*DATS*)="./../DATS/plaemit.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -74,7 +74,7 @@ fprintln
 (* ****** ****** *)
 //
 #implfun
-xats2pl_i1dcl
+plaemit_i1dcl
   (env0, idcl) =
 let
 //
@@ -85,13 +85,13 @@ in//let
 strnfpr(filr, "## ");
 i1dcl_fprint(idcl,filr);fprintln(filr)
 //
-end(*let*)//end-of-[xats2pl_i1dcl(...)]
+end(*let*)//end-of-[plaemit_i1dcl(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2pl_i1valdcl
+plaemit_i1valdcl
   (env0, ival) = let
 //
 (* ****** ****** *)
@@ -104,15 +104,15 @@ i1valdcl_tdxp$get(ival)
 (* ****** ****** *)
 //
 val (  ) =
-xats2pl_i1bnd(env0, dpat)
+plaemit_i1bnd(env0, dpat)
 //
 (* ****** ****** *)
 //
 (*
 val (  ) = prerrsln
-("xats2pl_i1valdcl: dpat = ", dpat)
+("plaemit_i1valdcl: dpat = ", dpat)
 val (  ) = prerrsln
-("xats2pl_i1valdcl: tdxp = ", tdxp)
+("plaemit_i1valdcl: tdxp = ", tdxp)
 *)
 //
 (* ****** ****** *)
@@ -129,7 +129,7 @@ TEQI1CMPsome
 let
 val (  ) =
 (
-  xats2pl_i1cmp(env0, icmp))
+  plaemit_i1cmp(env0, icmp))
 end//let
 ) (*case+*) // end-of-( teqi1exp )
 //
@@ -149,13 +149,13 @@ in//let
 nindstrnfpr(filr, nind, "## I1VALDCL\n"))
 end//let
 //
-}(*where*)//end[xats2pl_i1valdcl(env0,ival)]
+}(*where*)//end[plaemit_i1valdcl(env0,ival)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2pl_i1vardcl
+plaemit_i1vardcl
   (env0, ivar) = let
 //
 (* ****** ****** *)
@@ -168,15 +168,15 @@ i1vardcl_dini$get(ivar)
 (* ****** ****** *)
 //
 val (  ) =
-xats2pl_i1bnd(env0, dpid)
+plaemit_i1bnd(env0, dpid)
 //
 (* ****** ****** *)
 //
 (*
 val (  ) = prerrsln
-("xats2pl_i1vardcl: dvar = ", dvar)
+("plaemit_i1vardcl: dvar = ", dvar)
 val (  ) = prerrsln
-("xats2pl_i1vardcl: dini = ", tdxp)
+("plaemit_i1vardcl: dini = ", tdxp)
 *)
 //
 (* ****** ****** *)
@@ -193,7 +193,7 @@ TEQI1CMPsome
 let
 val (  ) =
 (
-  xats2pl_i1cmp(env0, icmp))
+  plaemit_i1cmp(env0, icmp))
 end//let
 ) (*case+*) // end-of-( teqi1exp )
 //
@@ -213,13 +213,13 @@ in//let
 nindstrnfpr(filr, nind, "// I1VARDCL\n"))
 end//let
 //
-}(*where*)//end-of-[xats2pl_i1vardcl(env0,ival)]
+}(*where*)//end-of-[plaemit_i1vardcl(env0,ival)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2pl_i1fundcl
+plaemit_i1fundcl
   (env0, ifun) = let
 //
 (* ****** ****** *)
@@ -249,11 +249,11 @@ end//let
 //
 (*
 val (  ) = prerrsln
-("xats2pl_i1fundcl: dvar = ", dvar)
+("plaemit_i1fundcl: dvar = ", dvar)
 val (  ) = prerrsln
-("xats2pl_i1fundcl: fjas = ", fjas)
+("plaemit_i1fundcl: fjas = ", fjas)
 val (  ) = prerrsln
-("xats2pl_i1fundcl: tdxp = ", tdxp)
+("plaemit_i1fundcl: tdxp = ", tdxp)
 *)
 //
 (* ****** ****** *)
@@ -264,7 +264,7 @@ val (  ) = // enter
 //
 val (  ) =
 (
-xats2pl_fjarglst(env0,fjas)
+plaemit_fjarglst(env0,fjas)
 )
 //
 val (  ) =
@@ -279,7 +279,7 @@ TEQI1CMPsome
 let
 val (  ) =
 (
-  xats2pl_i1cmp(env0, icmp) )
+  plaemit_i1cmp(env0, icmp) )
 end // end-of-[let]
 ) (*case+*) // end-of-( teqi1exp )
 //
@@ -301,14 +301,14 @@ in//let
 nindstrnfpr(filr, nind, "## I1FUNDCL\n"))
 end//let
 //
-#define xats2pl_fjarglst = xats2js_fjarglst
+#define plaemit_fjarglst = xats2js_fjarglst
 //
-}(*where*)//end-of-[xats2pl_i1fundcl(env0,ifun)]
+}(*where*)//end-of-[plaemit_i1fundcl(env0,ifun)]
 //
 (* ****** ****** *)
 //
 #implfun
-xats2pl_i1tfndcl
+plaemit_i1tfndcl
   (env0, itfn) = let
 //
 val dvar =
@@ -326,54 +326,56 @@ in//let
 nindstrnfpr
 (filr, nind, "## I1TFNDCL: ");
 d2var_fprint(dvar, filr); fprintln(filr))
-end(*let*)//end-of-[xats2pl_i1tfndcl(env0,itfn)]
+end(*let*)//end-of-[plaemit_i1tfndcl(env0,itfn)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2pl_i1dclist
+plaemit_i1dclist
   (env0, dcls) =
 (
-  list_xats2pl_fnp(env0, dcls, xats2pl_i1dcl))
+  list_plaemit_fnp(env0, dcls, plaemit_i1dcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2pl_i1valdclist
+plaemit_i1valdclist
   (env0, i1vs) =
 (
-  list_xats2pl_fnp(env0, i1vs, xats2pl_i1valdcl))
+  list_plaemit_fnp(env0, i1vs, plaemit_i1valdcl))
 //
 (* ****** ****** *)
 //
 #implfun
-xats2pl_i1vardclist
+plaemit_i1vardclist
   (env0, i1vs) =
 (
-  list_xats2pl_fnp(env0, i1vs, xats2pl_i1vardcl))
+  list_plaemit_fnp(env0, i1vs, plaemit_i1vardcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2pl_i1fundclist
+plaemit_i1fundclist
   (env0, i1fs) =
 (
-  list_xats2pl_fnp(env0, i1fs, xats2pl_i1fundcl))
+  list_plaemit_fnp(env0, i1fs, plaemit_i1fundcl))
 //
 (* ****** ****** *)
 //
 #implfun
-xats2pl_i1tfndclist
+plaemit_i1tfndclist
   (env0, i1fs) =
 (
-  list_xats2pl_fnp(env0, i1fs, xats2pl_i1tfndcl))
+  list_plaemit_fnp(env0, i1fs, plaemit_i1tfndcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_DATS_xats2pl_decl00.dats] *)
+(***********************************************************************)
+(* end of [ATS3-XANADU/srcgen2/xats2pl/srcgen1/DATS/plaemit_decl00.dats] *)
+(***********************************************************************)
 (***********************************************************************)

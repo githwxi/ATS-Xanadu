@@ -58,7 +58,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2pl.sats"
+#staload "./../SATS/plaemit.sats"
 #staload "./../SATS/pl1emit.sats"
 //
 (* ****** ****** *)
@@ -288,7 +288,7 @@ end//let
 //
 val (  ) =
 (
-  xats2pl_i1dcl( env0, dcl1 ))
+  plaemit_i1dcl( env0, dcl1 ))
 //
 end(*let*)//end-of-[f0_static(env0,dcl0)]
 //
@@ -447,7 +447,7 @@ if
 prvq
 then
 (
- xats2pl_i1valdclist(env0, i1vs))
+ plaemit_i1valdclist(env0, i1vs))
 else
 (
  pl1emit_i1valdclist(env0, i1vs))
@@ -551,7 +551,7 @@ if
 prfq
 then
 (
- xats2pl_i1fundclist(env0, i1fs))
+ plaemit_i1fundclist(env0, i1fs))
 else
 (
 case+ tqas of
@@ -560,7 +560,7 @@ case+ tqas of
   pl1emit_i1fundclist(env0, i1fs))
 |list_cons _ => // HX: templates
 (
-  xats2pl_i1tfndclist(env0, i1fs)))
+  plaemit_i1tfndclist(env0, i1fs)))
 //
 end(*let*)//end-of-[f0_fundclst(env0,dcl0)]
 //
@@ -1082,6 +1082,6 @@ end//let//end-of-[val()]
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_DATS_pl1emit_decl00.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2pl/srcgen1/DATS/pl1emit_decl00.dats] *)
 (***********************************************************************)
 (***********************************************************************)

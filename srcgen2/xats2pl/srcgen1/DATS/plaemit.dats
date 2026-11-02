@@ -55,14 +55,14 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2pl.sats"
+#staload "./../SATS/plaemit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <x0>(*tmp*)
-list_xats2pl_fnp
+list_plaemit_fnp
 ( e1, xs, fopr ) =
 (
 list_foritm$e1nv<x0><e1>(xs, e1)) where
@@ -70,13 +70,13 @@ list_foritm$e1nv<x0><e1>(xs, e1)) where
 #vwtpdef e1 = envx2pl
 #impltmp
 foritm$e1nv$work<x0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_xats2pl_fnp(e1,xs,fopr)]
+} (*where*)//end of [list_plaemit_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <x0>(*tmp*)
-optn_xats2pl_fnp
+optn_plaemit_fnp
 ( e1, xs, fopr ) =
 (
 case+ xs of
@@ -86,5 +86,5 @@ case+ xs of
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_DATS_xats2pl.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2pl/srcgen1/DATS/plaemit.dats] *)
 (***********************************************************************)

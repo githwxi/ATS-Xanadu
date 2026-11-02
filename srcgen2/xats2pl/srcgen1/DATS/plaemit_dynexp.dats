@@ -56,11 +56,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../SATS/xats2pl.sats"
+#staload "./../SATS/plaemit.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-_(*DATS*)="./../DATS/xats2pl.dats"
+_(*DATS*)="./../DATS/plaemit.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -101,7 +101,7 @@ i1valfpr
 (* ****** ****** *)
 //
 #implfun
-xats2pl_i1let
+plaemit_i1let
 ( env0,ilet ) =
 let
 //
@@ -132,18 +132,18 @@ i1let_fprint(ilet, filr)
 //
 (*
 val (  ) =
-printsln("xats2pl_i1let: ilet = ", ilet)
+printsln("plaemit_i1let: ilet = ", ilet)
 *)
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[xats2pl_i1let(env0,ilet)]
+}(*where*)//end-of-[plaemit_i1let(env0,ilet)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2pl_i1bnd
+plaemit_i1bnd
 ( env0,ibnd ) =
 let
 //
@@ -164,18 +164,18 @@ end where
 //
 (*
 val (  ) =
-printsln("xats2pl_i1bnd: ibnd = ", ibnd)
+printsln("plaemit_i1bnd: ibnd = ", ibnd)
 *)
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[xats2pl_i1bnd(env0,ibnd)]
+}(*where*)//end-of-[plaemit_i1bnd(env0,ibnd)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2pl_i1cmp
+plaemit_i1cmp
 ( env0,icmp ) =
 let
 //
@@ -203,7 +203,7 @@ i1valfpr(  filr , ival  )) where
 {
 val () =
 (
-  xats2pl_i1letlst(env0, ilts)) };
+  plaemit_i1letlst(env0, ilts)) };
 //
 strnfpr(filr, "## I1CMP:return\n");
 )
@@ -215,26 +215,28 @@ end where
 //
 (*
 val (  ) =
-printsln("xats2pl_i1cmp: icmp = ", icmp)
+printsln("plaemit_i1cmp: icmp = ", icmp)
 *)
 //
 (* ****** ****** *)
 //
 fun
-xats2pl_i1letlst
+plaemit_i1letlst
 ( env0:
 ! envx2pl
 , ilts: i1letlst): void =
 (
-list_xats2pl_fnp(env0, ilts, xats2pl_i1let))
+list_plaemit_fnp(env0, ilts, plaemit_i1let))
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[xats2pl_i1cmp(env0,icmp)]
+}(*where*)//end-of-[plaemit_i1cmp(env0,icmp)]
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_DATS_xats2pl_dynexp.dats] *)
+(***********************************************************************)
+(* end of [ATS3-XANADU/srcgen2/xats2pl/srcgen1/DATS/plaemit_dynexp.dats] *)
+(***********************************************************************)
 (***********************************************************************)

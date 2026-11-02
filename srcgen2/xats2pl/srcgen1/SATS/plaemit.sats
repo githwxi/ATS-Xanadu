@@ -54,14 +54,14 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <x0:t0>
-list_xats2pl_fnp
+list_plaemit_fnp
 ( e1:
 ! envx2pl
 , xs: list(x0)
 , (!envx2pl, x0) -> void): void
 fun
 <x0:t0>
-optn_xats2pl_fnp
+optn_plaemit_fnp
 ( e1:
 ! envx2pl
 , xs: optn(x0)
@@ -71,57 +71,57 @@ optn_xats2pl_fnp
 (* ****** ****** *)
 //
 fun
-xats2pl_i1let
+plaemit_i1let
 (env0: !envx2pl, ilet: i1let): void
 fun
-xats2pl_i1ins
+plaemit_i1ins
 (env0: !envx2pl, iins: i1ins): void
 //
 fun
-xats2pl_i1bnd
+plaemit_i1bnd
 (env0: !envx2pl, ibnd: i1bnd): void
 //
 fun
-xats2pl_i1cmp
+plaemit_i1cmp
 (env0: !envx2pl, icmp: i1cmp): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-xats2pl_i1dcl
+plaemit_i1dcl
 (env0: !envx2pl, dcl0: i1dcl): void
 //
 fun
-xats2pl_i1dclist
+plaemit_i1dclist
 (env0: !envx2pl, dcls: i1dclist): void
 //
 (* ****** ****** *)
 //
 fun
-xats2pl_i1valdcl
+plaemit_i1valdcl
 (env0: !envx2pl, ival: i1valdcl): void
 fun
-xats2pl_i1vardcl
+plaemit_i1vardcl
 (env0: !envx2pl, ivar: i1vardcl): void
 fun
-xats2pl_i1fundcl
+plaemit_i1fundcl
 (env0: !envx2pl, ifun: i1fundcl): void
 fun
-xats2pl_i1tfndcl
+plaemit_i1tfndcl
 (env0: !envx2pl, ifun: i1fundcl): void
 //
 fun
-xats2pl_i1valdclist
+plaemit_i1valdclist
 (env0: !envx2pl, i1vs: i1valdclist): void
 fun
-xats2pl_i1vardclist
+plaemit_i1vardclist
 (env0: !envx2pl, i1vs: i1vardclist): void
 fun
-xats2pl_i1fundclist
+plaemit_i1fundclist
 (env0: !envx2pl, i1fs: i1fundclist): void
 fun
-xats2pl_i1tfndclist
+plaemit_i1tfndclist
 (env0: !envx2pl, i1fs: i1fundclist): void
 //
 (* ****** ****** *)
@@ -137,5 +137,7 @@ xats2pl_i1tfndclist
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen1_xats2pl_srcgen1_SATS_xats2pl.sats] *)
+(***********************************************************************)
+(* end of [ATS3-XANADU/srcgen1/xats2pl/srcgen1/SATS/plaemit.sats] *)
+(***********************************************************************)
 (***********************************************************************)

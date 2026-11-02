@@ -50,7 +50,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2pl.sats"
+#staload "./../SATS/plaemit.sats"
 #staload "./../SATS/pl1emit.sats"
 //
 (* ****** ****** *)
@@ -240,5 +240,7 @@ val ((*the_entry_point*)) = mymain_main((*void*))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2pl_srcgen1_UTIL_xats2pl_plemit01.dats] *)
+(***********************************************************************)
+(* end of [ATS3-XANADU/srcgen2/xats2pl/srcgen1/UTIL/xats2pl_plemit01.dats] *)
+(***********************************************************************)
 (***********************************************************************)

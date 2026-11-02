@@ -22,15 +22,15 @@ cleanall:: ; rm -f BUILD/JS/*_dats_out?.js
 ########################################################################
 #
 SRCSATS := \
-xats2pl.sats \
+plaemit.sats \
 pl1emit.sats \
 #
 ########################################################################
 #
 SRCDATS := \
-xats2pl.dats \
-xats2pl_dynexp.dats \
-xats2pl_decl00.dats \
+plaemit.dats \
+plaemit_dynexp.dats \
+plaemit_decl00.dats \
 pl1emit.dats \
 pl1emit_utils0.dats \
 pl1emit_dynexp.dats \
