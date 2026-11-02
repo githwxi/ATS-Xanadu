@@ -58,7 +58,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2cm.sats"
+#staload "./../SATS/cmaemit.sats"
 #staload "./../SATS/cm1emit.sats"
 //
 (* ****** ****** *)
@@ -2567,5 +2567,5 @@ end//let//end-of-[list_cons]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cm_srcgen1_DATS_cm1emit_dynexp.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2cm/srcgen1/DATS/cm1emit_dynexp.dats] *)
 (***********************************************************************)

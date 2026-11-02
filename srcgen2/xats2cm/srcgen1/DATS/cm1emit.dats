@@ -167,5 +167,5 @@ i1dclistopt_cm1emit
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cm_srcgen1_DATS_cm1emit.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2cm/srcgen1/DATS/cm1emit.dats] *)
 (***********************************************************************)

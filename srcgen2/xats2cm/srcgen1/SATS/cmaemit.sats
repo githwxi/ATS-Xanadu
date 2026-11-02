@@ -26,65 +26,116 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-//
-Wed Jun 24 11:33:50 AM EDT 2026
-//
+(*
+Wed Jun 24 11:23:49 AM EDT 2026
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-(* ****** ****** *)
-(*
-#define
-XATSOPT "./../../.."
-*)
 (* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #include
 "./../HATS/libxats2js.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#vwtpdef envx2cm = envx2js
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2cm.sats"
+fun
+<x0:t0>
+list_cmaemit_fnp
+( e1:
+! envx2cm
+, xs: list(x0)
+, (!envx2cm, x0) -> void): void
+fun
+<x0:t0>
+optn_cmaemit_fnp
+( e1:
+! envx2cm
+, xs: optn(x0)
+, (!envx2cm, x0) -> void): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-<x0>(*tmp*)
-list_xats2cm_fnp
-( e1, xs, fopr ) =
-(
-list_foritm$e1nv<x0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = envx2cm
-#impltmp
-foritm$e1nv$work<x0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_xats2cm_fnp(e1,xs,fopr)]
+fun
+cmaemit_i1let
+(env0: !envx2cm, ilet: i1let): void
+fun
+cmaemit_i1ins
+(env0: !envx2cm, iins: i1ins): void
 //
-(* ****** ****** *)
+fun
+cmaemit_i1bnd
+(env0: !envx2cm, ibnd: i1bnd): void
 //
-#impltmp
-<x0>(*tmp*)
-optn_xats2cm_fnp
-( e1, xs, fopr ) =
-(
-case+ xs of
-| optn_nil() => () | optn_cons(x1) => fopr(e1, x1))
+fun
+cmaemit_i1cmp
+(env0: !envx2cm, icmp: i1cmp): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+fun
+cmaemit_i1dcl
+(env0: !envx2cm, dcl0: i1dcl): void
+//
+fun
+cmaemit_i1dclist
+(env0: !envx2cm, dcls: i1dclist): void
+//
+(* ****** ****** *)
+//
+fun
+cmaemit_i1valdcl
+(env0: !envx2cm, ival: i1valdcl): void
+fun
+cmaemit_i1vardcl
+(env0: !envx2cm, ivar: i1vardcl): void
+fun
+cmaemit_i1fundcl
+(env0: !envx2cm, ifun: i1fundcl): void
+fun
+cmaemit_i1tfndcl
+(env0: !envx2cm, ifun: i1fundcl): void
+//
+fun
+cmaemit_i1valdclist
+(env0: !envx2cm, i1vs: i1valdclist): void
+fun
+cmaemit_i1vardclist
+(env0: !envx2cm, i1vs: i1vardclist): void
+fun
+cmaemit_i1fundclist
+(env0: !envx2cm, i1fs: i1fundclist): void
+fun
+cmaemit_i1tfndclist
+(env0: !envx2cm, i1fs: i1fundclist): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#define envx2cm_poplam0 = envx2js_poplam0
+#define envx2cm_pshlam0 = envx2js_pshlam0
+//
+#define envx2cm_filr$get = envx2js_filr$get
+#define envx2cm_nind$get = envx2js_nind$get
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cm_srcgen1_DATS_xats2cm.dats] *)
+(* end of [ATS3-XANADU/srcgen1/xats2cm/srcgen1/SATS/cmaemit.sats] *)
 (***********************************************************************)
