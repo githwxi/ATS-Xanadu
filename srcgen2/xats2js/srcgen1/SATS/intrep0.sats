@@ -946,5 +946,5 @@ i0parsed_make_args
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_intrep0.sats] *)
+(* end of [ATS3-XANADU/srcgen1/xats2js/srcgen1/SATS/intrep0.sats] *)
 (***********************************************************************)

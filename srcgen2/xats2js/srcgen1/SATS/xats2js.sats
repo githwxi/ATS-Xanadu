@@ -367,5 +367,5 @@ xats2js_i1dclistopt
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_SATS_xats2js.sats] *)
+(* end of [ATS3-XANADU/srcgen1/xats2js/srcgen1/SATS/xats2js.sats] *)
 (***********************************************************************)

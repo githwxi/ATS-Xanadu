@@ -408,5 +408,5 @@ trxi0i1_i0dclistopt
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_trxi0i1.sats] *)
+(* end of [ATS3-XANADU/srcgen1/xats2js/srcgen1/SATS/trxi0i1.sats] *)
 (***********************************************************************)

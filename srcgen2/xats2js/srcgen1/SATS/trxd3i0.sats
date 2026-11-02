@@ -214,5 +214,5 @@ trxd3i0_d3eclistopt
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_trxd3i0.sats] *)
+(* end of [ATS3-XANADU/srcgen1/xats2js/srcgen1/SATS/trxd3i0.sats] *)
 (***********************************************************************)
