@@ -79,7 +79,7 @@ XATSOPT "./../../.."
 /srcgen1/SATS/intrep0.sats"//...
 //
 #staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xats2js.sats"
+#staload "./../SATS/jsaemit.sats"
 #staload "./../SATS/js1emit.sats"
 //
 (* ****** ****** *)
@@ -229,7 +229,7 @@ end//let
 //
 val (  ) =
 (
-  i1dcl_xats2js( dcl1, env0 ))
+  i1dcl_jsaemit( dcl1, env0 ))
 //
 end(*let*)//end-of-[f0_extern(dcl0,env0)]
 //
@@ -265,7 +265,7 @@ end//let
 //
 val (  ) =
 (
-  i1dcl_xats2js( dcl1, env0 ))
+  i1dcl_jsaemit( dcl1, env0 ))
 //
 end(*let*)//end-of-[f0_static(dcl0,env0)]
 //
@@ -369,7 +369,7 @@ if
 prvq
 then//then
 (
-  i1valdclist_xats2js(i1vs, env0))
+  i1valdclist_jsaemit(i1vs, env0))
 else//else
 (
   i1valdclist_js1emit(i1vs, env0))
@@ -474,7 +474,7 @@ if
 prfq
 then//then
 (
-  i1fundclist_xats2js(i1fs, env0))
+  i1fundclist_jsaemit(i1fs, env0))
 else//else
 (
 case+ tqas of
@@ -743,14 +743,14 @@ end//let//end-of-[val()]
 i1fundcl_js1emit
   (ifun, env0) =
 (
-i1fundcl_xats2js(ifun, env0))
+i1fundcl_jsaemit(ifun, env0))
 *)
 //
 #implfun
 i1tfndcl_js1emit
   (ifun, env0) =
 (
-i1tfndcl_xats2js(ifun, env0))
+i1tfndcl_jsaemit(ifun, env0))
 //
 (* ****** ****** *)
 //
@@ -970,7 +970,7 @@ if
 prfq
 then//then
 (
-  i1fundclist_xats2js(i1fs, env0))
+  i1fundclist_jsaemit(i1fs, env0))
 else//else
 (
 case+ tqas of
@@ -1119,5 +1119,5 @@ end//let//end-of-[val()]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_js1emit_decl00.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen2/DATS/js1emit_decl00.dats] *)
 (***********************************************************************)

@@ -76,7 +76,7 @@ XATSOPT "./../../.."
 //
 #staload "./../SATS/intrep1.sats"
 #staload "./../SATS/trxi0i1.sats"
-#staload "./../SATS/xats2js.sats"
+#staload "./../SATS/jsaemit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -130,14 +130,14 @@ tok.node() of
 (* ****** ****** *)
 //
 #implfun
-i1dcl_xats2js
+i1dcl_jsaemit
 (dcl0, env0) =
 let
 //
 (*
 val () =
 prerrsln("\
-i1dcl_xats2js: dcl0 = ", dcl0)
+i1dcl_jsaemit: dcl0 = ", dcl0)
 *)
 //
 in//let
@@ -222,7 +222,7 @@ end//let
 //
 val (  ) =
 (
-  i1dcl_xats2js(dcl1, env0))
+  i1dcl_jsaemit(dcl1, env0))
 //
 end where//end(f0_dclenv(dcl0,env0))
 {
@@ -232,7 +232,7 @@ end where//end(f0_dclenv(dcl0,env0))
 val loc0 = dcl0.lctn((*void*))
 val (  ) =
 prerrsln
-("f0_dclenv(xats2js): dcl0 = ", dcl0)
+("f0_dclenv(jsaemit): dcl0 = ", dcl0)
 *)
 //
 }(*where*)//end-of-[f0_dclenv(dcl0,env0)]
@@ -254,9 +254,9 @@ val (  ) =
 if // if
 valtok_prvq(tknd)
 then//then
-i1prvdclist_xats2js(i1vs, env0)
+i1prvdclist_jsaemit(i1vs, env0)
 else//else
-i1valdclist_xats2js(i1vs, env0)
+i1valdclist_jsaemit(i1vs, env0)
 //
 end where // end-of-[let]
 {
@@ -267,7 +267,7 @@ val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
 prerrsln("\
-f0_valdclst(xats2js): dcl0 = ", dcl0)
+f0_valdclst(jsaemit): dcl0 = ", dcl0)
 *)
 //
 }(*where*)//end-of-[f0_valdclst(dcl0,env0)]
@@ -286,7 +286,7 @@ I1Dvardclst
 (tknd, i1vs) = dcl0.node()
 //
 val (  ) =
-i1vardclist_xats2js(i1vs, env0)
+i1vardclist_jsaemit(i1vs, env0)
 //
 end where
 {
@@ -297,7 +297,7 @@ val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
 prerrsln("\
-f0_vardclst(xats2js): dcl0 = ", dcl0)
+f0_vardclst(jsaemit): dcl0 = ", dcl0)
 *)
 //
 }(*where*)//end-of-[f0_vardclst(dcl0,env0)]
@@ -322,16 +322,16 @@ val (  ) =
 if // if
 funtok_prfq(tknd)
 then//then
-i1prfdclist_xats2js(i1fs, env0)
+i1prfdclist_jsaemit(i1fs, env0)
 else//else
 (
 case+ tqas of
 |
 list_nil() =>
-i1fundclist_xats2js(i1fs, env0)
+i1fundclist_jsaemit(i1fs, env0)
 |
 list_cons _ =>
-i1tfndclist_xats2js(i1fs, env0))
+i1tfndclist_jsaemit(i1fs, env0))
 //
 end where // end-of-[let]
 {
@@ -342,20 +342,20 @@ val loc0 = dcl0.lctn((*void*))
 //
 val (  ) =
 prerrsln("\
-f0_fundclst(xats2js): dcl0 = ", dcl0)
+f0_fundclst(jsaemit): dcl0 = ", dcl0)
 *)
 //
 }(*where*) // end of [f0_fundclst(dcl0,env0)]
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[i1dcl_xats2js(dcl0,env0)]
+}(*where*)//end-of-[i1dcl_jsaemit(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-i1fundcl_xats2js
+i1fundcl_jsaemit
   (ifun, env0) = let
 //
 (* ****** ****** *)
@@ -371,11 +371,11 @@ i1fundcl_tdxp$get(ifun)
 //
 (*
 val (  ) = prerrsln
-("i1fundcl_xats2js: dvar = ", dvar)
+("i1fundcl_jsaemit: dvar = ", dvar)
 val (  ) = prerrsln
-("i1fundcl_xats2js: fjas = ", fjas)
+("i1fundcl_jsaemit: fjas = ", fjas)
 val (  ) = prerrsln
-("i1fundcl_xats2js: tdxp = ", tdxp)
+("i1fundcl_jsaemit: tdxp = ", tdxp)
 *)
 //
 (* ****** ****** *)
@@ -402,7 +402,7 @@ val (  ) = // enter
 //
 val (  ) =
 (
-fjarglst_xats2js(fjas, env0))
+fjarglst_jsaemit(fjas, env0))
 //
 val (  ) =
 (
@@ -416,7 +416,7 @@ TEQI1CMPsome
 let
 val (  ) =
 (
-  i1cmp_xats2js(icmp, env0) )
+  i1cmp_jsaemit(icmp, env0) )
 end // end-of-[let]
 ) (*case+*) // end-of-( teqi1exp )
 //
@@ -442,12 +442,12 @@ strnfpr
 d2var_fprint(dvar, filr); fprintln(filr)
 end//let
 //
-}(*where*)//end-of-[i1fundcl_xats2js(ifun,env0)]
+}(*where*)//end-of-[i1fundcl_jsaemit(ifun,env0)]
 //
 (* ****** ****** *)
 //
 #implfun
-i1tfndcl_xats2js
+i1tfndcl_jsaemit
   (itfn, env0) = let
 //
 val filr =
@@ -463,11 +463,11 @@ nindfpr(filr, nind);
 strnfpr
 (filr, "// I1TFNDCL: ");
 d2var_fprint(dvar, filr); fprintln(filr)
-end(*let*)//end-of-[i1tfndcl_xats2js(itfn,env0)]
+end(*let*)//end-of-[i1tfndcl_jsaemit(itfn,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_xats2js_decl00.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen2/DATS/jsaemit_decl00.dats] *)
 (***********************************************************************)

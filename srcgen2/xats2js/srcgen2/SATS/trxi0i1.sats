@@ -416,5 +416,5 @@ i1dclenv_fenvins // insert into [env0]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_SATS_trxi0i1.sats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen2/SATS/trxi0i1.sats] *)
 (***********************************************************************)

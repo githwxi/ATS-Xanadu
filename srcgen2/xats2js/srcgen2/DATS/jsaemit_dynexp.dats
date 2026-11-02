@@ -62,7 +62,7 @@ XATSOPT "./../../.."
 //
 #staload "./../SATS/intrep1.sats"
 #staload "./../SATS/trxi0i1.sats"
-#staload "./../SATS/xats2js.sats"
+#staload "./../SATS/jsaemit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -104,7 +104,7 @@ i1val_fprint(ival, filr))//endfun
 (* ****** ****** *)
 //
 #implfun
-i1cmp_xats2js
+i1cmp_jsaemit
 (icmp, env0) =
 let
 //
@@ -133,20 +133,20 @@ where
 {
 val () =
 (
-  i1letlst_xats2js(ilts, env0)) }
+  i1letlst_jsaemit(ilts, env0)) }
 //
 ;
 //
 strnfpr(filr, " // I1CMP:return\n");
 )
 //
-end(*let*)//end-of-[i1cmp_xats2js(icmp,env0)]
+end(*let*)//end-of-[i1cmp_jsaemit(icmp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-i1ins_xats2js
+i1ins_jsaemit
 (iins, env0) =
 let
 //
@@ -286,10 +286,10 @@ envx2js_incnind(env0, 2)
 //
 val () =
 (
-  i1cmp_xats2js(icmp, env0)
+  i1cmp_jsaemit(icmp, env0)
 ) where
 { val () =
-  i1dclist_xats2js(dcls, env0) }
+  i1dclist_jsaemit(dcls, env0) }
 //
 val () = envx2js_decnind(env0, 2)
 //
@@ -328,7 +328,7 @@ case+ ithn of
 optn_nil() => ()
 |
 optn_cons(icmp) =>
-i1cmp_xats2js(icmp, env0))//case
+i1cmp_jsaemit(icmp, env0))//case
 val () = envx2js_decnind(env0, 2)
 //
 val () =
@@ -340,7 +340,7 @@ case+ iels of
 optn_nil() => ()
 |
 optn_cons(icmp) =>
-i1cmp_xats2js(icmp, env0))//case
+i1cmp_jsaemit(icmp, env0))//case
 val () = envx2js_decnind(env0, 2)
 //
 end//let//end-of-[f0_ift0(env0,iins)]
@@ -363,7 +363,7 @@ in//let
 prints
 ("I1INSrturn(",ical,")\n");
 (
-  i1cmp_xats2js(icmp, env0))
+  i1cmp_jsaemit(icmp, env0))
 //
 end//let//end-of-[f0_rturn(env0,iins)]
 //
@@ -372,13 +372,13 @@ end//let//end-of-[f0_rturn(env0,iins)]
 //
 }(*where*)//end-of-[i1insfpr(env0,iins)]
 //
-}(*where*)//end-of-[xats2js_i1ins(iins,env0)]
+}(*where*)//end-of-[jsaemit_i1ins(iins,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-i1let_xats2js
+i1let_jsaemit
 (ilet, env0) =
 let
 //
@@ -413,13 +413,13 @@ case+ ilet of
 prints
 ("I1LETnew0(", "...", ")\n");
 envx2js_incnind(env0,2(*inc*));
-i1ins_xats2js(  iins , env0  );
+i1ins_jsaemit(  iins , env0  );
 envx2js_decnind(env0,2(*dec*)))
 //
 |I1LETnew1(itnm, iins) =>
 (
 envx2js_incnind(env0,2(*inc*));
-i1ins_xats2js(  iins , env0  );
+i1ins_jsaemit(  iins , env0  );
 envx2js_decnind(env0,2(*dec*)))
 where
 {
@@ -430,20 +430,20 @@ I1LETnew1(", itnm, ";", "...", ")\n")
 //
 end//let//end-of-[ i1letfpr(env0,ilet) ]
 //
-}(*where*)//end-of-[i1let_xats2js(ilet,env0)]
+}(*where*)//end-of-[i1let_jsaemit(ilet,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-fjarg_xats2js
+fjarg_jsaemit
 (farg, env0) =
 let
 (*
 //
 val () =
 prerrsln("\
-fjarg_xats2js: farg = ", farg))
+fjarg_jsaemit: farg = ", farg))
 //
 *)
 //
@@ -488,11 +488,11 @@ FJARGdarg(i1bs) =>
   prints("FJARGdarg(", i1bs, ")"))
 end//let
 //
-}(*where*)//end-of-[fjarg_xats2js(farg,env0)]
+}(*where*)//end-of-[fjarg_jsaemit(farg,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_xats2js_dynexp.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen2/DATS/jsaemit_dynexp.dats] *)
 (***********************************************************************)

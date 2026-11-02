@@ -66,7 +66,7 @@ XATSOPT/xats2cc/srcgen1"
 (* ****** ****** *)
 //
 #staload "./intrep1.sats"
-#staload "./xats2js.sats"
+#staload "./jsaemit.sats"
 //
 #staload
 ".\
@@ -369,5 +369,5 @@ i1tfndclist_i0ws$js1emit
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_SATS_js1emit.sats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen2/SATS/js1emit.sats] *)
 (***********************************************************************)

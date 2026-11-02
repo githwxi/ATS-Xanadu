@@ -57,7 +57,7 @@ XATSOPT "./../../.."
 /srcgen1/SATS/intrep0.sats"//...
 //
 #staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xats2js.sats"
+#staload "./../SATS/jsaemit.sats"
 #staload "./../SATS/js1emit.sats"
 //
 (* ****** ****** *)
@@ -212,5 +212,5 @@ foritm$e1nv$work
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_js1emit.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen2/DATS/js1emit.dats] *)
 (***********************************************************************)

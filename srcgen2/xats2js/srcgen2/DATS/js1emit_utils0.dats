@@ -82,7 +82,7 @@ Authoremail: gmhwxiATgmailDOTcom
 /srcgen1/SATS/intrep0.sats"//...
 //
 #staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xats2js.sats"
+#staload "./../SATS/jsaemit.sats"
 #staload "./../SATS/js1emit.sats"
 //
 (* ****** ****** *)
@@ -599,5 +599,5 @@ end(*let*)//end-of-(f0_strn(rep))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_js1emit_utils0.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen2/DATS/js1emit_utils0.dats] *)
 (***********************************************************************)

@@ -78,7 +78,7 @@ XATSOPT "./../../.."
 /srcgen1/SATS/intrep0.sats"//...
 //
 #staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xats2js.sats"
+#staload "./../SATS/jsaemit.sats"
 #staload "./../SATS/js1emit.sats"
 //
 (* ****** ****** *)
@@ -1611,7 +1611,7 @@ end(*let*) // end-of-[i1cmpjs1(filr,icmp)]
 (*
 #implfun
 i1ins_js1emit
-( iins, env0 ) = i1ins_xats2js(iins, env0)
+( iins, env0 ) = i1ins_jsaemit(iins, env0)
 *)
 //
 (* ****** ****** *)
@@ -2890,5 +2890,5 @@ prints("let ", itnm, " = ", "arg", i0, "\n")))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_DATS_js1emit_dynexp.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen2/DATS/js1emit_dynexp.dats] *)
 (***********************************************************************)

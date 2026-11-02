@@ -130,7 +130,7 @@ envx2js_poplet0
 //
 fun
 <x0:t0>
-list_xats2js_fnp
+list_jsaemit_fnp
 (
 xs: list(x0),
 e1: !envx2js,
@@ -138,7 +138,7 @@ fopr: (x0, !envx2js)->void): void
 //
 fun
 <x0:t0>
-optn_xats2js_fnp
+optn_jsaemit_fnp
 ( 
 xs: optn(x0),
 e1: !envx2js,
@@ -192,126 +192,126 @@ i0strfpr
 (* ****** ****** *)
 //
 fun
-i1parsed_xats2js
+i1parsed_jsaemit
 (ipar: i1parsed, filr: FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1let_xats2js
+i1let_jsaemit
 (ilet: i1let, env0: !envx2js): void
 //
 fun
-i1bnd_xats2js
+i1bnd_jsaemit
 (ibnd: i1bnd, env0: !envx2js): void
 //
 fun
-i1cmp_xats2js
+i1cmp_jsaemit
 (icmp: i1cmp, env0: !envx2js): void
 //
 fun
-i1ins_xats2js
+i1ins_jsaemit
 (iins: i1ins, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-fjarg_xats2js
+fjarg_jsaemit
 (farg: fjarg, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1gpt_xats2js
+i1gpt_jsaemit
 (igpt: i1gpt, env0: !envx2js): void
 fun
-i1cls_xats2js
+i1cls_jsaemit
 (icls: i1cls, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1dcl_xats2js
+i1dcl_jsaemit
 (dcl0: i1dcl, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1letlst_xats2js
+i1letlst_jsaemit
 (ilts: i1letlst, env0: !envx2js): void
 //
 fun
-i1cmplst_xats2js
+i1cmplst_jsaemit
 (cmps: i1cmplst, env0: !envx2js): void
 //
 (* ****** ****** *)
 //
 fun
-fjarglst_xats2js
+fjarglst_jsaemit
 (fjas: fjarglst, env0: !envx2js): void
 //
 (* ****** ****** *)
 //
 fun
-i1clslst_xats2js
+i1clslst_jsaemit
 (icls: i1clslst, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1dclist_xats2js
+i1dclist_jsaemit
 (dcls: i1dclist, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1valdcl_xats2js
+i1valdcl_jsaemit
 (ival: i1valdcl, env0: !envx2js): void
 fun
-i1vardcl_xats2js
+i1vardcl_jsaemit
 (ivar: i1vardcl, env0: !envx2js): void
 //
 fun
-i1fundcl_xats2js
+i1fundcl_jsaemit
 (ifun: i1fundcl, env0: !envx2js): void
 fun
-i1tfndcl_xats2js
+i1tfndcl_jsaemit
 (ifun: i1fundcl, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1prvdclist_xats2js
+i1prvdclist_jsaemit
 (
 i1vs: i1valdclist, env0: !envx2js): void
 fun
-i1valdclist_xats2js
+i1valdclist_jsaemit
 (
 i1vs: i1valdclist, env0: !envx2js): void
 //
 fun
-i1vardclist_xats2js
+i1vardclist_jsaemit
 (
 i1vs: i1vardclist, env0: !envx2js): void
 //
 fun
-i1prfdclist_xats2js
+i1prfdclist_jsaemit
 (
 i1fs: i1fundclist, env0: !envx2js): void
 fun
-i1fundclist_xats2js
+i1fundclist_jsaemit
 (
 i1fs: i1fundclist, env0: !envx2js): void
 fun
-i1tfndclist_xats2js
+i1tfndclist_jsaemit
 (
 i1fs: i1fundclist, env0: !envx2js): void
 //
@@ -319,12 +319,12 @@ i1fs: i1fundclist, env0: !envx2js): void
 (* ****** ****** *)
 //
 fun
-i1dclistopt_xats2js
+i1dclistopt_jsaemit
 (dopt: i1dclistopt, env0: !envx2js): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_SATS_xats2js.sats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen2/SATS/jsaemit.sats] *)
 (***********************************************************************)

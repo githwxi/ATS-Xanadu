@@ -1,0 +1,22 @@
+########################################################################
+########################################################################
+BUILD/JS/intrep1_dats_out0.js: SATS/intrep1.sats
+BUILD/JS/intrep1_print0_dats_out0.js: SATS/intrep1.sats
+BUILD/JS/intrep1_utils0_dats_out0.js: SATS/intrep1.sats
+########################################################################
+BUILD/JS/trxi0i1_dats_out0.js: SATS/intrep1.sats SATS/trxi0i1.sats
+BUILD/JS/trxi0i1_myenv0_dats_out0.js: SATS/intrep1.sats SATS/trxi0i1.sats
+BUILD/JS/trxi0i1_dynexp_dats_out0.js: SATS/intrep1.sats SATS/trxi0i1.sats
+BUILD/JS/trxi0i1_decl00_dats_out0.js: SATS/intrep1.sats SATS/trxi0i1.sats
+########################################################################
+BUILD/JS/jsaemit_dats_out0.js: SATS/intrep1.sats SATS/jsaemit.sats
+BUILD/JS/jsaemit_myenv0_dats_out0.js: SATS/intrep1.sats SATS/jsaemit.sats
+BUILD/JS/jsaemit_dynexp_dats_out0.js: SATS/intrep1.sats SATS/jsaemit.sats
+BUILD/JS/jsaemit_decl00_dats_out0.js: SATS/intrep1.sats SATS/jsaemit.sats
+########################################################################
+BUILD/JS/js1emit_dats_out0.js: SATS/intrep1.sats SATS/jsaemit.sats SATS/js1emit.sats
+BUILD/JS/js1emit_utils0_dats_out0.js: SATS/intrep1.sats SATS/jsaemit.sats SATS/js1emit.sats
+BUILD/JS/js1emit_dynexp_dats_out0.js: SATS/intrep1.sats SATS/jsaemit.sats SATS/js1emit.sats
+BUILD/JS/js1emit_decl00_dats_out0.js: SATS/intrep1.sats SATS/jsaemit.sats SATS/js1emit.sats
+########################################################################
+########################################################################

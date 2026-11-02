@@ -29,7 +29,7 @@ XATSJSD=./../../../srcgen2/xats2js
 SRCSATS := \
 intrep1.sats \
 trxi0i1.sats \
-xats2js.sats \
+jsaemit.sats \
 js1emit.sats \
 #
 ########################################################################
@@ -42,11 +42,11 @@ trxi0i1.dats \
 trxi0i1_myenv0.dats \
 trxi0i1_dynexp.dats \
 trxi0i1_decl00.dats \
-xats2js.dats \
-xats2js_myenv0.dats \
-xats2js_utils0.dats \
-xats2js_dynexp.dats \
-xats2js_decl00.dats \
+jsaemit.dats \
+jsaemit_myenv0.dats \
+jsaemit_utils0.dats \
+jsaemit_dynexp.dats \
+jsaemit_decl00.dats \
 js1emit.dats \
 js1emit_utils0.dats \
 js1emit_dynexp.dats \
@@ -62,6 +62,7 @@ $(patsubst %.dats, BUILD/JS/%_dats_out0.js, $(SRCDATS))
 OUT1DATS := \
 $(patsubst %.dats, BUILD/JS/%_dats_out1.js, $(SRCDATS))
 ########################################################################
+-include .depend_xjsemit
 ########################################################################
 BUILD/JS/%_sats_out0.js: SATS/%.sats; \
 $(NODE) --stack-size=8801 $(XATSOPT_TCHECK00) $< > $@
