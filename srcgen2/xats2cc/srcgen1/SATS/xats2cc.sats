@@ -108,6 +108,38 @@ d2varfpr
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+envx2cc_filr$get
+(env0: !envx2cc): FILEref
+//
+fun
+envx2cc_nind$get
+(env0: !envx2cc): ( sint )
+//
+(* ****** ****** *)
+//
+fun
+envx2cc_make_out
+(   out0: FILR   ): envx2cc
+fun
+envx2cc_free_nil
+( env0: ~envx2cc ): void//fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+envx2cc_incnind
+( env0:
+! envx2cc, ninc: sint): void
+fun
+envx2cc_decnind
+( env0:
+! envx2cc, ndec: sint): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_xats2cc_srcgen1_SATS_xats2cc.sats] *)
 (***********************************************************************)

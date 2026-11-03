@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 //
-Mon Nov  2 09:29:13 AM EST 2026
+Fri Sep 25 11:43:17 AM EDT 2026
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -51,8 +51,7 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
-#staload "./../SATS/intrep1.sats"
-#staload "./../SATS/cc1emit.sats"
+#staload "./../SATS/xats2cc.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -60,59 +59,59 @@ XATSOPT "./../../.."
 local
 //
 datavwtp
-envxcc1 =
-ENVXCC1 of
+envx2cc =
+ENVX2CC of
 ( FILR(*output*)
 , sint(*indent*))
 //
-#absimpl envxcc1_vtbx = envxcc1
+#absimpl envx2cc_vtbx = envx2cc
 //
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
 //
 #implfun
-envxcc1_filr$get
+envx2cc_filr$get
   ( env0 ) =
 let
 val+
-ENVXCC1
+ENVX2CC
 (filr, nind) = env0 in filr end
 //
 #implfun
-envxcc1_nind$get
+envx2cc_nind$get
   ( env0 ) =
 let
 val+
-ENVXCC1
+ENVX2CC
 (filr, nind) = env0 in nind end
 //
 (* ****** ****** *)
 //
 #implfun
-envxcc1_make_out
-  (out: FILR) = ENVXCC1(out, 0)
+envx2cc_make_out
+  (out: FILR) = ENVX2CC(out, 0)
 //
 (* ****** ****** *)
 //
 #implfun
-envxcc1_free_nil
+envx2cc_free_nil
   (  env0  ) =
 (
 case+ env0 of
 | ~
-ENVXCC1(filr, nind) => ((*void*)))
-(*case+*)//end-of-(envxcc1_free_nil(env0))
+ENVX2CC(filr, nind) => ((*void*)))
+(*case+*)//end-of-(envx2cc_free_nil(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-envxcc1_incnind
+envx2cc_incnind
 (  env0, ninc  ) = let
 //
 val+
-@ENVXCC1(filr, !nind) = env0
+@ENVX2CC(filr, !nind) = env0
 //
 in//let
 //
@@ -120,14 +119,14 @@ in//let
   nind :=
   nind + ninc; $fold(env0))
 //
-end (*let*)//end-of-(envxcc1_incnind(env0))
+end (*let*)//end-of-(envx2cc_incnind(env0))
 //
 #implfun
-envxcc1_decnind
+envx2cc_decnind
 (  env0, ndec  ) = let
 //
 val+
-@ENVXCC1(filr, !nind) = env0
+@ENVX2CC(filr, !nind) = env0
 //
 in//let
 //
@@ -135,18 +134,18 @@ in//let
   nind :=
   nind - ndec; $fold(env0))
 //
-end (*let*)//end-of-(envxcc1_decnind(env0))
+end (*let*)//end-of-(envx2cc_decnind(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-end (*local*) // end of [local(envxcc1_vtbx)]
+end (*local*) // end of [local(envx2cc_vtbx)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc1emit_myenv0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_xats2cc_myenv0.dats] *)
 (***********************************************************************)
 (***********************************************************************)

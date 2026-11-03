@@ -60,15 +60,14 @@ trxi0i1_decl00.dats \
 intrep1.dats \
 intrep1_print0.dats \
 xats2cc.dats \
+xats2cc_myenv0.dats \
 xats2cc_tmplib.dats \
 xats2cc_utils0.dats \
 cc0emit.dats \
-cc0emit_myenv0.dats \
 cc0emit_statyp.dats \
 cc0emit_dynexp.dats \
 cc0emit_decl00.dats \
 cc1emit.dats \
-cc1emit_myenv0.dats \
 cc1emit_dynexp.dats \
 cc1emit_decl00.dats \
 #
