@@ -27,5 +27,5 @@ Sat 30 Nov 2024 03:52:49 PM
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2py_srcgen1_HATS_libxats2js.hats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2py/srcgen1/HATS/libxats2js.hats] *)
 (***********************************************************************)

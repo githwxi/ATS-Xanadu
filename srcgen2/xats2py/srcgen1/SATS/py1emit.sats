@@ -285,5 +285,5 @@ py1emit_i1dclistopt
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_py1emit.sats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen1/DATS/py1emit.sats] *)
 (***********************************************************************)

@@ -316,5 +316,5 @@ i1valclslst_cm1emit
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen1_xats2cm_srcgen1_SATS_cm1emit.sats] *)
+(* end of [ATS3-XANADU/srcgen1/xats2cm/srcgen1/SATS/cm1emit.sats] *)
 (***********************************************************************)

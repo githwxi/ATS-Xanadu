@@ -12,6 +12,7 @@ const runtime = JSON.parse($('runtime-source').textContent);
 const runner = JSON.parse($('runner-source').textContent);
 let generated = '';
 let compiledFilename = '';
+let saveKind = 'source';
 let runURL = null;
 const files = JSON.parse($('prelude-files').textContent);
 const workerURL = URL.createObjectURL(new Blob([
@@ -137,13 +138,46 @@ $('file').onchange = async event => {
   } catch (error) { $('status').textContent = `Cannot open file: ${error.message}`; }
   event.target.value = '';
 };
+function validSaveFilename() {
+  const input = $('save-filename');
+  const filename = input.value.trim();
+  const invalid = !filename || filename === '.' || filename === '..' || /[\/\\:*?"<>|\x00-\x1f]/.test(filename);
+  input.setCustomValidity(invalid ? 'Enter a filename without folders or special characters such as /, \\, or :' : '');
+  if (!input.reportValidity()) return null;
+  return filename;
+}
 $('save').onclick = () => {
-  const filename = sourceFilename();
+  saveKind = 'source';
+  $('save-filename').value = $('filename').value.trim();
+  $('save-filename').setCustomValidity('');
+  $('save-dialog').showModal();
+  $('save-filename').focus();
+  $('save-filename').select();
+};
+$('save-js').onclick = () => {
+  if (!generated) return;
+  saveKind = 'javascript';
+  $('save-filename').value = compiledFilename.replace(/\.[^.]*$/, '') + '_dats.js';
+  $('save-filename').setCustomValidity('');
+  $('save-dialog').showModal();
+  $('save-filename').focus();
+  $('save-filename').select();
+};
+$('save-filename').oninput = () => $('save-filename').setCustomValidity('');
+$('cancel-save').onclick = () => $('save-dialog').close();
+$('save-form').onsubmit = event => {
+  event.preventDefault();
+  const filename = validSaveFilename();
   if (!filename) return;
-  const url = URL.createObjectURL(new Blob([$('source').value], { type: 'text/plain;charset=utf-8' }));
+  const content = saveKind === 'source'
+    ? $('source').value
+    : runtime + '\n' + generated + '\nconsole.log(XATS2JS_the_print_store_flush());\n';
+  const type = saveKind === 'source' ? 'text/plain;charset=utf-8' : 'text/javascript;charset=utf-8';
+  const url = URL.createObjectURL(new Blob([content], { type }));
   const link = document.createElement('a');
   link.href = url; link.download = filename; link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+  $('save-dialog').close();
 };
 window.addEventListener('pagehide', () => { if (worker) finish('Stopped.'); });
 
@@ -188,16 +222,6 @@ $('run').onclick = () => {
     $('program-output').textContent = String(error);
     finish('Program could not start.');
   }
-};
-$('save-js').onclick = () => {
-  if (!generated) return;
-  const url = URL.createObjectURL(new Blob([runtime, '\n', generated,
-    '\nconsole.log(XATS2JS_the_print_store_flush());\n'], { type: 'text/javascript;charset=utf-8' }));
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = compiledFilename.replace(/\.[^.]*$/, '') + '.js';
-  link.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
 };
 const printPrelude = '#include "prelude/HATS/prelude_dats.hats"\n#include "prelude/HATS/prelude_JS_dats.hats"\n\n';
 examples.factorial = printPrelude + examples.factorial + 'val () = prints("factorial(5) = ", result, "\\n")\n';
