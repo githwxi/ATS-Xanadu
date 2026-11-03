@@ -28,15 +28,15 @@ XATS2CM=./../../../../../srcgen2/xats2cm
 ########################################################################
 #
 SRCSATS := \
-xats2cm.sats \
+cmaemit.sats \
 cm1emit.sats \
 #
 ########################################################################
 #
 SRCDATS := \
-xats2cm.dats \
-xats2cm_dynexp.dats \
-xats2cm_decl00.dats \
+cmaemit.dats \
+cmaemit_dynexp.dats \
+cmaemit_decl00.dats \
 cm1emit.dats \
 cm1emit_utils0.dats \
 cm1emit_dynexp.dats \
