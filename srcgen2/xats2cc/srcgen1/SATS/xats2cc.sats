@@ -49,6 +49,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#absvwtp envx2cc_vtbx // p0tr
+#vwtpdef envx2cc = envx2cc_vtbx
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 endlfpr(filr: FILR): void
 //

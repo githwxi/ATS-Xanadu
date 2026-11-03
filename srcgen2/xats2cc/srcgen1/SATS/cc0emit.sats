@@ -44,6 +44,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload "./intrep0.sats"
+#staload "./xats2cc.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -71,21 +72,20 @@ sargscc0
 //
 fun
 i0typcc0
-(filr: FILR, ityp: i0typ): void
+( filr
+: FILR, ityp: i0typ): void
 //
 fun
 l0i0tcc0
-(filr: FILR, li0t: l0i0t): void
+( filr
+: FILR, li0t: l0i0t): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#absvwtp
-  envxcc0_vtbx // p0tr
 #vwtpdef
-  envxcc0 = envxcc0_vtbx
+envxcc0 = envx2cc_vtbx
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -100,7 +100,7 @@ envxcc0_nind$get
 //
 fun
 envxcc0_make_out
-(  out: FILR   ): envxcc0
+(   out0: FILR   ): envxcc0
 fun
 envxcc0_free_nil
 ( env0: ~envxcc0 ): void//fun

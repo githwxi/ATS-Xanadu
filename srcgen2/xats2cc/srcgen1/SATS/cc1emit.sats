@@ -45,12 +45,13 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload "./intrep0.sats"
 #staload "./intrep1.sats"
+#staload "./xats2cc.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#absvwtp envxcc1_vtbx // p0tr
-#vwtpdef envxcc1 = envxcc1_vtbx
+#vwtpdef
+envxcc1 = envx2cc_vtbx
 //
 (* ****** ****** *)
 (* ****** ****** *)
