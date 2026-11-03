@@ -66,6 +66,25 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #implfun
+envxcc1_make_out =
+envx2cc_make_out(*out0*)
+#implfun
+envxcc1_free_nil =
+envx2cc_free_nil(*env0*)
+//
+(* ****** ****** *)
+//
+#implfun
+envxcc1_filr$get =
+envx2cc_filr$get(*env0*)
+#implfun
+envxcc1_nind$get =
+envx2cc_nind$get(*env0*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i1parsed_cc1emit
   (ipar, filr) = let
 //

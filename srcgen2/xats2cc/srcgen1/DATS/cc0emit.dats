@@ -55,7 +55,27 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
+#staload "./../SATS/xats2cc.sats"
 #staload "./../SATS/cc0emit.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envxcc0_make_out =
+envx2cc_make_out(*out0*)
+#implfun
+envxcc0_free_nil =
+envx2cc_free_nil(*env0*)
+//
+(* ****** ****** *)
+//
+#implfun
+envxcc0_filr$get =
+envx2cc_filr$get(*env0*)
+#implfun
+envxcc0_nind$get =
+envx2cc_nind$get(*env0*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
