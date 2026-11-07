@@ -48,7 +48,7 @@
 
 (defconst ats3-font-lock-keywords
   `((,(regexp-opt ats3-keywords 'words) . font-lock-keyword-face)
-    (,(regexp-opt ats3-directives 'words) . font-lock-preprocessor-face)
+    (,(regexp-opt ats3-directives) . font-lock-preprocessor-face)
     (,(regexp-opt ats3-special-identifiers 'words) . font-lock-builtin-face)
     ("\\.<[^>\n]*>\\." . font-lock-constant-face)
     ("\\_<\\(true\\|false\\|nil\\)\\_>" . font-lock-constant-face))
