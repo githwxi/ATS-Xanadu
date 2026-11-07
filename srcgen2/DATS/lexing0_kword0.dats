@@ -67,13 +67,15 @@ T0CASN = T_CASE(CSKcasn)
 //
 val T0FN0 = T_FUN(FNKfn0)
 val T0FN1 = T_FUN(FNKfn1)
+val T0FNT = T_FUN(FNKfnt)
 val T0FNX = T_FUN(FNKfnx)
-val T0FUN = T_FUN(FNKfn1)
+val T0FUN = T_FUN(FNKfun)
 //
 val T0VAL = T_VAL(VLKval)
+val T0VRC = T_VAL(VLKvrc)
+//
 val T0VLP = T_VAL(VLKvlp)
 val T0VLN = T_VAL(VLKvln)
-val T0VLR = T_VAL(VLKvlr)
 //
 val T0VAR = T_VAR(VRKvar)
 //
@@ -281,36 +283,42 @@ val () = kwdins("endloc", T_ENDLOC)
 val () = kwdins("endwhere", T_ENDWHR)
 val () = kwdins("endlocal", T_ENDLOC)
 //
+// fn: non-rec
+// fn0: non-rec
+// fn1: recursive
 (*
 val () = kwdins("fn", T0FN)
 *)
-//
-val () = kwdins("val", T0VAL)
-val () = kwdins("vlr", T0VLR)
-val () = kwdins("var", T0VAR)
-//
-// fn0: non-rec
-// fn1: recursive
 val () = kwdins("fn0", T0FN0)
 val () = kwdins("fn1", T0FN1)
-// fnx: tail-rec
-val () = kwdins("fnx", T0FNX)
+// fnt: tail-rec
+// fnx: tail-opt
 // fun: recursive
 val () = kwdins("fun", T0FUN)
+val () = kwdins("fnt", T0FNT)
+val () = kwdins("fnx", T0FNX)
+//
+val () = kwdins("val", T0VAL)
+(*
+val () = kwdins("vlr", T0VRC)
+*)
+val () = kwdins("vrc", T0VRC)
+//
+val () = kwdins("var", T0VAR)
 //
 (*
-val () = kwdins("prv", T0PRVAL)
+val () = kwdins("pra", T0PRAXI)
 val () = kwdins("prf", T0PRFUN)
+val () = kwdins("prv", T0PRVAL)
 *)
 val () = kwdins("pax", T0PRAXI)
 val () = kwdins("pfx", T0PRFUN)
 val () = kwdins("pvx", T0PRVAL)
 //
+val () = kwdins("praxi", T0PRAXI)
 val () = kwdins("prfn0", T0PRFN0)
 val () = kwdins("prfn1", T0PRFN1)
 val () = kwdins("prfun", T0PRFUN)
-val () = kwdins("praxi", T0PRAXI)
-//
 val () = kwdins("prval", T0PRVAL)
 //
 (*

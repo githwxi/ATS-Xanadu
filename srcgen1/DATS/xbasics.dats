@@ -263,8 +263,8 @@ case+ fnk of
 //
 | FNKfn0() => fprint(out, "FNKfn0")
 | FNKfn1() => fprint(out, "FNKfn1")
-| FNKfn2() => fprint(out, "FNKfn2")
 //
+| FNKfnt() => fprint(out, "FNKfnt")
 | FNKfnx() => fprint(out, "FNKfnx")
 | FNKfun() => fprint(out, "FNKfun")
 //

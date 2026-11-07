@@ -192,6 +192,7 @@ overload fprint with fprint_dctkind
 //
 datatype
 valkind =
+//
 | VLKval // val
 //
 | VLKvalp // val+
@@ -216,7 +217,7 @@ funkind =
 //
 | FNKfn0 // nonrec fun
 | FNKfn1 // genrec fun
-| FNKfn2 // tailrec fun
+| FNKfnt // tailrec fun
 | FNKfnx // tailopt fun
 | FNKfun // ex-specified
 //

@@ -92,11 +92,10 @@ in//let
 case+ vlk of
 //
 | VLKval() => print("VLKval")
+| VLKvrc() => print("VLKvrc")
 //
 | VLKvlp() => print("VLKvlp")
 | VLKvln() => print("VLKvln")
-//
-| VLKvlr() => print("VLKvlr")
 //
 | VLKprval() => print("VLKprval")
 //
@@ -132,7 +131,7 @@ in//let
 case+ fnk of
 | FNKfn0() => print("FNKfn0")
 | FNKfn1() => print("FNKfn1")
-| FNKfn2() => print("FNKfn2")
+| FNKfnt() => print("FNKfnt")
 | FNKfnx() => print("FNKfnx")
 | FNKfun() => print("FNKfun")
 //

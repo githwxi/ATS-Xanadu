@@ -148,7 +148,7 @@ valkind =
 | VLKvlp // val+
 | VLKvln // val-
 //
-| VLKvlr // vlr: valrec
+| VLKvrc // vrc: valrec
 //
 (*
 // HX-2023-12-31:
@@ -198,7 +198,7 @@ funkind =
 //
 | FNKfn0 // nonrec fun
 | FNKfn1 // genrec fun
-| FNKfn2 // tailrec fun
+| FNKfnt // tailrec fun
 | FNKfnx // tailopt fun
 | FNKfun // ex-specified
 //

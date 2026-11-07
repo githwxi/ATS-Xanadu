@@ -65,11 +65,13 @@ T_FN_ = T_FUN(FNKfn0)
 macdef
 T_FN0_ = T_FUN(FNKfn0)
 macdef
-T_FNX_ = T_FUN(FNKfnx)
-macdef
 T_FN1_ = T_FUN(FNKfn1)
 macdef
-T_FUN_ = T_FUN(FNKfn1)
+T_FNT_ = T_FUN(FNKfnt)
+macdef
+T_FNX_ = T_FUN(FNKfnx)
+macdef
+T_FUN_ = T_FUN(FNKfun)
 //
 macdef
 T_PRFN_ = T_FUN(FNKprfn0)
@@ -78,7 +80,7 @@ T_PRFN0_ = T_FUN(FNKprfn0)
 macdef
 T_PRFN1_ = T_FUN(FNKprfn1)
 macdef
-T_PRFUN_ = T_FUN(FNKprfn1)
+T_PRFUN_ = T_FUN(FNKprfun)
 macdef
 T_PRAXI_ = T_FUN(FNKpraxi)
 //

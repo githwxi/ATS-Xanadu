@@ -30,14 +30,12 @@ myhead_set
 (* ****** ****** *)
 //
 #extern0
-fun
-<a:t0>
+fun<a:t0>
 myget2_at
 ( xs
 : list(a), i0: nint): a
 #extern0
-fun
-<a:t0>
+fun<a:t0>
 myset2_at
 ( xs: list(a)
 , i0: nint, x0: a): void

@@ -148,12 +148,13 @@ valkind_recq
 case+ vlk of
 //
 | VLKval() => ff
+| VLKvrc() => tt
+//
 | VLKvlp() => ff
 | VLKvln() => ff
 //
-| VLKvlr() => tt
-//
 | _(*otherwise*) => ff
+//
 ) where
 {
   val tt = true and ff = false
@@ -187,7 +188,7 @@ case+ fnk of
 | FNKfn0() => ff
 //
 | FNKfn1() => tt
-| FNKfn2() => tt
+| FNKfnt() => tt
 | FNKfnx() => tt
 | FNKfun() => tt
 //

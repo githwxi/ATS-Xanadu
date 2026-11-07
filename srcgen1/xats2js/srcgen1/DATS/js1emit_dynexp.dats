@@ -3097,7 +3097,7 @@ knd0.node() of
 T_FUN(fnk) =>
 (
   case+ fnk of
-  | FNKfn2() => true
+  | FNKfnt() => true
   | FNKfnx() => true
   | _(*else*) => false
 )
