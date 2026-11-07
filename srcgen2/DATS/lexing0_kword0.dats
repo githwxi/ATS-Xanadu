@@ -477,6 +477,7 @@ val () = kwdins("#nonfix", T_SRP_NONFIX)
 //
 val () = kwdins("#define", T_SRP_DEFINE)
 val () = kwdins("#macdef", T_SRP_MACDEF)
+val () = kwdins("#defmac", T_SRP_MACDEF)
 //
 val () = kwdins("#static", T_SRP_STATIC)
 val () = kwdins("#extern", T_SRP_EXTERN)
@@ -487,6 +488,8 @@ val () = kwdins("#extval", T_SRP_EXTVAL)
 *)
 val () = kwdins("#static0", T_SRP_STAVAL)
 val () = kwdins("#extern0", T_SRP_EXTVAL)
+val () = kwdins("#static1", T_SRP_STATIC)
+val () = kwdins("#extern1", T_SRP_EXTERN)
 //
 val () = kwdins("#include", T_SRP_INCLUDE)
 (*
