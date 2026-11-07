@@ -10,27 +10,29 @@
 
 (defconst ats3-keywords
   '("as" "of" "in" "and" "end" "if" "sif" "then" "else"
-    "when" "with" "case" "scas" "case0" "case1" "lam" "fix"
+    "op" "when" "with" "case" "scas" "case0" "case1" "endst"
+    "lam" "fix"
     "let" "try" "where" "local" "endif" "endcas" "endlam"
     "endlet" "endtry" "endwhr" "endloc" "endwhere" "endlocal"
     "fn0" "fn1" "fnx" "fun" "val" "vlr" "var" "prval"
     "pax" "pfx" "pvx" "prfn0" "prfn1" "prfun" "praxi" "fcast"
     "datasort" "dataprop" "dataview" "datatype" "datavwtp"
     "withtype" "withprop" "withview" "withvwtp"
-    "abstype" "absprop" "absview" "absvwtp" "absimpl"
-    "typedef" "propdef" "viewdef" "sexpdef" "sortdef"
-    "stacst" "stadef" "stavar" "tkindef"
-    "excptcon" "extern" "extype" "extval"
-    "break" "continue" "begin"
-    "prefix" "postfix" "infix" "infixl" "infixr" "nonfix"
-    "overload" "symelim" "symintr")
+    "excptcon")
   "ATS3 reserved words used by the current lexer.")
 
 (defconst ats3-directives
-  '("#assert" "#define" "#elif" "#elifdef" "#elifndef" "#else"
-    "#endif" "#error" "#if" "#ifdef" "#ifndef" "#include"
-    "#print" "#then" "#undef" "#staload" "#dynload" "#symload"
-    "#require")
+  '("#define" "#if" "#ifdef" "#ifexp" "#then" "#then0"
+    "#else" "#else1" "#elif" "#elsif" "#endif" "#include"
+    "#staload" "#symload" "#dyninit" "#extcode"
+    "#infix0" "#infixl" "#infixr" "#prefix" "#pstfix" "#nonfix"
+    "#macdef" "#static" "#extern"
+    "#static0" "#extern0"
+    "#stacst0" "#abssort" "#sortdef" "#sexpdef" "#propdef"
+    "#viewdef" "#tboxdef" "#typedef" "#vwtpdef"
+    "#abstype" "#absprop" "#absview" "#abstbox" "#abstflt"
+    "#absvtbx" "#absvtft" "#absvwtp" "#absimpl" "#absopen"
+    "#implmnt" "#implprf" "#implval" "#implfun" "#impltmp" "#impltmpr")
   "ATS3 preprocessor and loading directives.")
 
 (defconst ats3-special-identifiers

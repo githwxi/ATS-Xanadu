@@ -29,13 +29,13 @@ myhead_set
 
 (* ****** ****** *)
 //
-#extval
+#extern0
 fun
 <a:t0>
 myget2_at
 ( xs
 : list(a), i0: nint): a
-#extval
+#extern0
 fun
 <a:t0>
 myset2_at

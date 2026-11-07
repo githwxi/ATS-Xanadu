@@ -817,67 +817,6 @@ t0_dctkind(tnd) => pk_dynconst(tok, buf, err)
 (* ****** ****** *)
 //
 |
-T_SRP_STATIC( ) => let
-//
-  val tknd = tok
-  val (  ) = buf.skip1()
-//
-  val dcl0 =
-    fp_d0ecl(f00, buf, err)
-  // end of [val]
-  val lres = tknd.lctn()+dcl0.lctn()
-in
-(
-err := e00;
-d0ecl_make_node(lres, D0Cstatic(tknd, dcl0)))
-end // end of [T_SRP_STATIC]
-|
-T_SRP_EXTERN() => let
-//
-  val tknd = tok
-  val (  ) = buf.skip1()
-//
-  val dcl0 =
-    fp_d0ecl(f00, buf, err)
-  // end of [val]
-  val lres = tknd.lctn()+dcl0.lctn()
-in
-(
-err := e00;
-d0ecl_make_node(lres, D0Cextern(tknd, dcl0)))
-end (*let*) // end of [T_SRP_EXTERN]
-//
-(* ****** ****** *)
-//
-|
-T_SRP_STAVAL() => let
-//
-  val tknd = tok
-  val (  ) = buf.skip1()
-  val dcl0 = p1_dynconst(buf, err)
-  val lres = tknd.lctn()+dcl0.lctn()
-in//let
-(
-err := e00;
-d0ecl_make_node(lres, D0Cstatic(tknd, dcl0)))
-end (*let*) // end of [T_SRP_STAVAL]
-//
-|
-T_SRP_EXTVAL() => let
-//
-  val tknd = tok
-  val (  ) = buf.skip1()
-  val dcl0 = p1_dynconst(buf, err)
-  val lres = tknd.lctn()+dcl0.lctn()
-in//let
-(
-err := e00;
-d0ecl_make_node(lres, D0Cextern(tknd, dcl0)))
-end (*let*) // end of [T_SRP_EXTVAL]
-//
-(* ****** ****** *)
-//
-|
 T_SRP_DEFINE() => let
 //
 val tknd = tok
@@ -892,8 +831,9 @@ val gedf = p1_g0edf(buf, err)
 val lres =
 (
 case+ gedf of
-| G0EDFnone
-  ((*void*)) =>
+|
+G0EDFnone
+((*void*)) =>
 (
   case+ gmas of
   |
@@ -910,14 +850,83 @@ case+ gedf of
     val larg = lctn(list_last(gmas))
   }
 )
-| G0EDFsome
-  (topt, g0e1) => gid0.lctn() + g0e1.lctn()
+|
+G0EDFsome
+(topt, g0e1) => gid0.lctn()+g0e1.lctn()
 ) : loc_t // end of [ val(lres) ]
 //
 in
+(
 err := e00;
-d0ecl(lres, D0Cdefine(tknd, gid0, gmas, gedf))
+d0ecl(lres, D0Cdefine(tknd,gid0,gmas,gedf)))
 end (*let*) // end of [T_SRP_DEFINE]
+//
+(* ****** ****** *)
+//
+|
+T_SRP_STATIC( ) => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val dcl0 =
+    fp_d0ecl(f00, buf, err)
+  // end of [val]
+  val lres = tknd.lctn()+dcl0.lctn()
+in//let
+(
+err := e00;
+d0ecl_make_node(lres, D0Cstatic(tknd, dcl0)))
+end // end of [T_SRP_STATIC]
+|
+T_SRP_EXTERN() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val dcl0 =
+    fp_d0ecl(f00, buf, err)
+  // end of [val]
+  val lres = tknd.lctn()+dcl0.lctn()
+in//let
+(
+err := e00;
+d0ecl_make_node(lres, D0Cextern(tknd, dcl0)))
+end (*let*) // end of [T_SRP_EXTERN]
+//
+(* ****** ****** *)
+//
+|
+(*
+#staval = #static0
+*)
+T_SRP_STAVAL() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val dcl0 = p1_dynconst(buf, err)
+  val lres = tknd.lctn()+dcl0.lctn()
+in//let
+(
+err := e00;
+d0ecl_make_node(lres, D0Cstatic(tknd, dcl0)))
+end (*let*) // end of [T_SRP_STAVAL]
+//
+|
+(*
+#extval = #extern0
+*)
+T_SRP_EXTVAL() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val dcl0 = p1_dynconst(buf, err)
+  val lres = tknd.lctn()+dcl0.lctn()
+in//let
+(
+err := e00;
+d0ecl_make_node(lres, D0Cextern(tknd, dcl0)))
+end (*let*) // end of [T_SRP_EXTVAL]
 //
 (* ****** ****** *)
 //

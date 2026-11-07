@@ -281,14 +281,14 @@ Sat Apr 19 02:58:45 PM EDT 2025
   | T_SRP_NONFIX of ()
   | T_SRP_FIXITY of int(*kind*)
 //
+  | T_SRP_DEFINE of () // #define
+  | T_SRP_MACDEF of () // #macdef
+//
   | T_SRP_STATIC of () // #static
   | T_SRP_EXTERN of () // #extern
 //
   | T_SRP_STAVAL of () // #staval
   | T_SRP_EXTVAL of () // #extval
-//
-  | T_SRP_DEFINE of () // #define
-  | T_SRP_MACDEF of () // #macdef
 //
   | T_SRP_SYMLOAD of () // #symload
 //

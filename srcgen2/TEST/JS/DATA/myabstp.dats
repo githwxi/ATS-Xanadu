@@ -4,10 +4,10 @@
 
 (* ****** ****** *)
 
-#extval
+#extern0
 fun
 foo1(T0): @(T0, sint)
-#extval
+#extern0
 fun
 foo2(T0): @(T0, sint)
 

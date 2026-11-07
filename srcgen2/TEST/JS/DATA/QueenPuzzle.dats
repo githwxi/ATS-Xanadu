@@ -22,10 +22,10 @@ board_tbox <= p0tr
 #typedef
 board = board_tbox
 (* ****** ****** *)
-#extval
+#extern0
 fun
 board_nil(): board
-#extval
+#extern0
 fun
 board_cons
 (x0: int, xs: board): board

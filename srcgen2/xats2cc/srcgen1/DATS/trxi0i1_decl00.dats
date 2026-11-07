@@ -74,6 +74,28 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
+|I0Dd3ecl _ =>
+let
+val
+loc0 = dcl0.lctn()
+in//let
+i1dcl_make_node
+(loc0, I1Di0dcl(dcl0))
+end//let//end(I0Dd3ecl)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Dextern _ =>
+(
+  f0_extern(dcl0, env0))
+//
+|I0Dstatic _ =>
+(
+  f0_static(dcl0, env0))
+//
+(* ****** ****** *)
+//
 |I0Ddclst0 _ =>
 (
   f0_dclst0(dcl0, env0))
@@ -88,6 +110,52 @@ dcl0.node() of
 (* ****** ****** *)
 ) where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_extern
+(
+dcl0: i0dcl,
+env0: !envi0i1): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*0*))
+val-
+I0Dextern
+(tknd, dcl1) = dcl0.node()
+//
+val dcl1 =
+(
+  i0dcl_trxi0i1(dcl1, env0))
+//
+in//let
+(
+i1dcl(loc0, I1Dextern(tknd, dcl1)))
+end(*let*)//end-of-[f0_extern(d3cl,env0)]
+//
+fun
+f0_static
+(
+dcl0: i0dcl,
+env0: !envi0i1): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*0*))
+val-
+I0Dstatic
+(tknd, dcl1) = dcl0.node()
+//
+val dcl1 =
+(
+  i0dcl_trxi0i1(dcl1, env0))
+//
+in//let
+(
+i1dcl(loc0, I1Dstatic(tknd, dcl1)))
+end(*let*)//end-of-[f0_static(d3cl,env0)]
 //
 (* ****** ****** *)
 //

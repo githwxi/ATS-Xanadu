@@ -65,7 +65,7 @@ mycprf
 ( x0 :
 & x0 >> x0): x0 = x0
 //
-#extval
+#extern0
 fun
 <a:vt>
 mycprf2
