@@ -198,9 +198,9 @@ js1emit_dynexp.dats \
 js1emit_decl00.dats \
 #
 SRCDATS += \
-xats2py.dats \
-xats2py_dynexp.dats \
-xats2py_decl00.dats \
+pyaemit.dats \
+pyaemit_dynexp.dats \
+pyaemit_decl00.dats \
 py1emit.dats \
 py1emit_utils0.dats \
 py1emit_dynexp.dats \
