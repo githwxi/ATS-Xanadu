@@ -78,7 +78,7 @@ defq(_XATS2PY_)
 #typedef argv=pya1sz(strn)
 #endif//#if(defq(_XATS2PY_))
 //
-#extern
+#static0
 fun
 XATSOPT_argv$get
   ((*0*)): argv = $extnam()

@@ -22,14 +22,16 @@
   "ATS3 reserved words used by the current lexer.")
 
 (defconst ats3-directives
-  '("#define" "#if" "#ifdef" "#ifexp" "#then" "#then0"
-    "#else" "#else1" "#elif" "#elsif" "#endif" "#include"
-    "#staload" "#symload" "#dyninit" "#extcode"
+  '("#if" "#ifdef" "#ifexp" "#then" "#then0"
+    "#else" "#else1" "#elif" "#elsif" "#endif"
     "#infix0" "#infixl" "#infixr" "#prefix" "#pstfix" "#nonfix"
-    "#macdef" "#static" "#extern"
-    "#static0" "#extern0"
-    "#stacst0" "#abssort" "#sortdef" "#sexpdef" "#propdef"
-    "#viewdef" "#tboxdef" "#typedef" "#vwtpdef"
+    "#define" "#defmac" "#macdef"
+    "#static" "#static0" "#static1"
+    "#extern" "#extern0" "#extern1"
+    "#include" "#staload" "#symload" "#dyninit" "#extcode"
+    "#stacst0" "#abssort" "#sortdef"
+    "#sexpdef" "#propdef" "#viewdef"
+    "#tboxdef" "#typedef" "#vwtpdef"
     "#abstype" "#absprop" "#absview" "#abstbox" "#abstflt"
     "#absvtbx" "#absvtft" "#absvwtp" "#absimpl" "#absopen"
     "#implmnt" "#implprf" "#implval" "#implfun" "#impltmp" "#impltmpr")

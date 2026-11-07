@@ -12,8 +12,8 @@ editor as the xatsopt browser page.
 **Stop** interrupts either compilation or execution, including
 infinite loops.  Changing source or filename cancels active work and
 invalidates generated code.  Manual Input preserves its draft when
-switching sources. **Save source** saves the editor; **Save
-JavaScript** includes the runtime and a final ATS print flush.
+switching sources. **Save Source** saves the editor; **Save JavaScript**
+includes the runtime and a final ATS print flush.
 
 The emitter accepts dynamic ATS source (`.dats`). The repository
 prelude is embedded; sibling files and project dependencies are not

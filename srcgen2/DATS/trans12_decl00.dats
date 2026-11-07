@@ -4449,7 +4449,7 @@ end (*let*) // end of [D2ARGdyn2(npf1,s2es)]
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
-
+//
 #implfun
 trans12_d1cstdcl
 ( env0
@@ -4512,16 +4512,41 @@ prerrsln
 *)
 //
 in//let
+//
 let
-val () =
+//
+val stmp =
+d2cst_get_stmp(d2c1)
+//
+val xnam =
 (
-  tr12env_add1_d2cst( env0 , d2c1 ) )
+case+ dres of
+|TEQD2EXPnone
+(  (*nil*)  ) => X2NAMnone()
+|TEQD2EXPsome
+( tkeq,dexp ) =>
+(
+case+
+dexp.node() of
+|
+D2Eextnam _ => X2NAMsome(dexp)
+|
+_(*otherwise*) => X2NAMnone(*0*)))
+//
+val (  ) =
+(
+  tr12env_add1_d2cst(env0, d2c1))
+val (  ) =
+(
+  the_d2cstmap_xnmadd0(stmp, xnam))
+//
 in//let
   d2cstdcl(loc0, d2c1, d2as, sres, dres)
 end//let
+//  
 end//let
 (*let*)//end-of-[trans12_d1cstdcl(env0,...)]
-
+//
 end (*local*)//end-[local(trans12_d1cstdcl)]
 
 (* ****** ****** *)

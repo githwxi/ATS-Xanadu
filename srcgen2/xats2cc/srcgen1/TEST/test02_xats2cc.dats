@@ -87,26 +87,27 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#extern
+#extern0
 fun
-fact(n0: nint): nint
+fact(nint): nint
 #implfun
 fact(n0) =
-if(
-n0 > 0)
-then n0 * fact(n0-1) else 1
+(
+if
+(n0 > 0)
+then n0 * fact(n0-1) else (1))
 //
 (* ****** ****** *)
 //
-#extern
+#extern0
 fun
-fact2
-(n0: nint, r0: nint): nint
+fact2(nint, nint): nint
 #implfun
 fact2(n0, r0) =
-if(
-n0 > 0)
-then fact2(n0-1, n0*r0) else r0
+(
+if
+(n0 > 0)
+then fact2(n0-1, n0*r0) else r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -142,5 +143,5 @@ list_cons(_, xs) => 1 + list_length(xs))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_TEST_test02_xats2cc.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2cc/srcgen1/TEST/test02_xats2cc.dats] *)
 (***********************************************************************)

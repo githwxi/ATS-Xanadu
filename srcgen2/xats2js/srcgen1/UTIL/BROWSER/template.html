@@ -32,7 +32,7 @@
 <input id="file" type="file" accept=".dats,.hats,.txt" hidden>
 <span id="source-name">Integer function</span>
 </div>
-<div class="actions"><button id="check">Compile</button><button id="run" disabled>Run JavaScript</button><button id="save-js" disabled>Save JavaScript</button><button id="stop" disabled>Stop</button><button id="save">Save source</button><span id="status" role="status">Ready · No server required</span></div>
+<div class="actions"><button id="save">Save Source</button><button id="check">Compile</button><button id="run" disabled>Run JavaScript</button><button id="save-js" disabled>Save JavaScript</button><button id="stop" disabled>Stop</button><span id="status" role="status">Ready · No server required</span></div>
 <dialog id="save-dialog" class="save-dialog" aria-labelledby="save-title"><form id="save-form"><h2 id="save-title">Save source</h2><p>Choose the filename for this source file.</p><label for="save-filename">Filename<input id="save-filename" type="text" spellcheck="false" autocomplete="off" required></label><div class="actions"><button id="cancel-save" type="button">Cancel</button><button type="submit">Save</button></div></form></dialog>
 <div class="panels">
 <section class="panel"><div class="heading"><label for="source">Source</label><label class="filename-label" for="filename">Filename <input id="filename" type="text" value="xtmp001.dats" spellcheck="false" autocomplete="off" required aria-label="Source filename"></label></div><textarea id="source" spellcheck="false" autocapitalize="off" autocomplete="off">fun square(x: sint): sint = x * x
