@@ -634,17 +634,17 @@ val itnm = i1tnm_new0()
 val ival =
 i1val(loc0, I1Vtnm(itnm))
 val (  ) =
-envi0i1_dvar$insert(env0, dvar, ival)
+envi0i1_dvar$insert(env0,dvar,ival)
 //
 in//let
 let
-val ipat =
-i0pat_var(dvar)
+val ipat = i0pat_var(dvar)
 val ibnd =
 I1BNDcons
-(itnm, ipat, list_sing@(dvar,ival))
+(itnm, ipat, list_sing@(dvar, ival))
 in//let
-  i1vardcl_make_args(loc0, ibnd, tdxp)
+(
+i1vardcl_make_args(loc0, ibnd, tdxp))
 end//let
 end//let
 (*let*)//end-of-[trxi0i1_i0vardcl(env0,ivar)]
@@ -714,7 +714,7 @@ val ilts = envi0i1_poplam0(env0)}
 //
 in//let
 (
-  i1fundcl(loc0, dvar, fjas, tdxp))
+  i1fundcl( loc0, dvar, fjas, tdxp ))
 end//let
 (*let*)//end-of-[trxi0i1_i0fundcl(env0,ifun)]
 //

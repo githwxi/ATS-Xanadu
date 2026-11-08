@@ -551,6 +551,11 @@ i0pat_node$get
 (* ****** ****** *)
 //
 fun
+i0pat_var(ivar: i0var): (i0pat)
+//
+(* ****** ****** *)
+//
+fun
 i0pat_make_ityp$node
 ( loc0: loctn
 , ityp: i0typ

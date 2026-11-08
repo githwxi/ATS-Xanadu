@@ -390,7 +390,103 @@ val (  ) =
 (* ****** ****** *)
 (* ****** ****** *)
 //
-}(*where*)//end-of-[trxi0i1_i0dcl(dcl0,env0)]
+}(*where*)//end-of-[i0dcl_trxi0i1(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+#implfun
+teqi0exp_trxi0i1
+  (tdxp, env0) =
+(
+case+ tdxp of
+|
+TEQI0EXPnone() =>
+TEQI1CMPnone((*void*))
+|
+TEQI0EXPsome(teq1, i0e2) =>
+TEQI1CMPsome(teq1, icmp) where
+{
+  val (  ) =
+  (
+    envi0i1_pshblk0(env0))
+  val ival =
+  (
+    i0exp_trxi0i1(i0e2, env0) )
+  val ilts = envi0i1_popblk0(env0)
+  val icmp = I1CMPcons(ilts, ival) }
+//
+) (*case+*)//end-of(teqi0exp_trxi0i1(tdxp,env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0valdcl_trxi0i1
+  (ival, env0) = let
+//
+val loc0 =
+i0valdcl_lctn$get(ival)
+val ipat =
+i0valdcl_ipat$get(ival)
+val tdxp =
+i0valdcl_tdxp$get(ival)
+//
+val
+tdxp =
+teqi0exp_trxi0i1(tdxp, env0)
+//
+(*
+HX-2024-07-14:
+For non-recursive declaration!
+*)
+val
+ibnd = i0pat_trxi0i1(ipat, env0)
+//
+in//let
+(
+  i1valdcl_make_args(loc0, ibnd, tdxp))
+end//let
+(*let*)//end-of-[i0valdcl_trxi0i1(ival,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0vardcl_trxi0i1
+  (ivar, env0) = let
+//
+val loc0 =
+i0vardcl_lctn$get(ivar)
+val dpid =
+i0vardcl_dpid$get(ivar)
+val tdxp =
+i0vardcl_dini$get(ivar)
+//
+val tdxp =
+teqi0exp_trxi0i1(tdxp, env0)
+//
+val dvar = dpid.dvar()
+val ityp = dpid.ityp()
+//
+val itnm = i1tnm_new0()
+val ival =
+i1val(loc0, I1Vtnm(itnm))
+val (  ) =
+envi0i1_dvar$insert(env0,dvar,ival)
+//
+in//let
+let
+val ipat = i0pat_var(dpid)
+val ibnd =
+I1BNDcons
+(itnm, ipat, list_sing@(dvar, ival))
+in//let
+(
+  i1vardcl_make_args(loc0, ibnd, tdxp))
+end//let
+end//let
+(*let*)//end-of-[i0vardcl_trxi0i1(ivar,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

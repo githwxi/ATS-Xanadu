@@ -288,6 +288,11 @@ i1tnm_stmp$get(i1tnm): stamp
 (* ****** ****** *)
 //
 fun
+i1tnm_new0( (*void*) ): i1tnm
+//
+(* ****** ****** *)
+//
+fun
 i1opr_fprint
 (
 iopr: i1opr, out0: FILR): void
@@ -350,6 +355,16 @@ i1val_make_node
 (loc0:loc_t,node:i1val_node):i1val
 //
 #symload i1val with i1val_make_node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+teqi1cmp =
+|
+TEQI1CMPnone of ((*void*))
+|
+TEQI1CMPsome of (token(*EQ0*), i1cmp)
 //
 (* ****** ****** *)
 (* ****** ****** *)

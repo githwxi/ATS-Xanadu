@@ -152,6 +152,18 @@ fun // HX: pop1 and psh2
 envi0i1_locjoin(!envi0i1): void
 //
 (* ****** ****** *)
+//
+fun
+envi0i1_dvar$search
+( env0: 
+! envi0i1, d2v0: d2var): i1val
+fun
+envi0i1_dvar$insert
+(
+env0: !envi0i1,
+d2v0:d2var, ival:i1val): (void)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

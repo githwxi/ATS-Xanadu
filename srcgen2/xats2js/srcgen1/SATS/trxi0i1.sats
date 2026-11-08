@@ -218,8 +218,9 @@ envi0i1_dvar$search
 ! envi0i1, d2v0: d2var): i1val
 fun
 envi0i1_dvar$insert
-( env0: 
-! envi0i1, d2var,i1val): (void)
+(
+env0: !envi0i1,
+d2v0:d2var, ival:i1val): (void)
 //
 fun
 envi0i1_ilet$insert
