@@ -127,6 +127,253 @@ case-
 stk0 of ~iltstk_nil() => ())
 //
 (* ****** ****** *)
+//
+#implfun
+iltstk_pshblk0
+  (  stk0  ) =
+(
+  stk0 := iltstk_blk0(stk0))
+//(*end of [iltstk_pshblk0(stk0)]*)
+//
+(* ****** ****** *)
+//
+#implfun
+iltstk_pshlam0
+  (  stk0  ) =
+(
+  stk0 := iltstk_lam0(stk0))
+//(*end of [iltstk_pshlam0(stk0)]*)
+//
+#implfun
+iltstk_pshlet0
+  (  stk0  ) =
+(
+  stk0 := iltstk_let0(stk0))
+//(*end of [iltstk_pshlet0(stk0)]*)
+//
+(* ****** ****** *)
+//
+#implfun
+iltstk_popblk0
+  (  stk0  ) = let
+//
+fnx
+loop
+( kxs
+: iltstk
+, res: iltlst
+, err: &sint >> _):
+  @(iltstk, iltlst) =
+(
+case+ kxs of
+//
+| ~
+iltstk_blk0
+(   kxs   ) => (kxs, res)
+//
+| ~
+iltstk_cons
+(ilt , kxs) =>
+(
+  loop(kxs, res, err)) where
+{
+  val res = list_cons(ilt, res)
+}
+//
+| !
+iltstk_nil() =>
+let
+val () = err:=1 in (kxs,res) end
+//
+| !
+iltstk_lam0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+| !
+iltstk_let0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+//
+(*
+| !
+iltstk_ift0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+| !
+iltstk_cas0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+*)
+//
+)(*case+*)//end-[loop(kxs,res,err)]
+//
+in//let
+//
+let
+var err: int = 0
+val res: iltlst = list_nil()
+val
+(stk1,res) =
+loop
+(stk0,res,err) in stk0 := stk1; res
+end//let
+//
+end//let
+//(* end of [iltstk_popblk0(stk)] *)
+//
+(* ****** ****** *)
+//
+#implfun
+iltstk_poplam0
+  (  stk0  ) = let
+//
+fnx
+loop
+( kxs
+: iltstk
+, res: iltlst
+, err: &sint >> _):
+  @(iltstk, iltlst) =
+(
+case+ kxs of
+//
+| ~
+iltstk_lam0
+(   kxs   ) => (kxs, res)
+//
+| ~
+iltstk_cons
+(ilt , kxs) =>
+(
+  loop(kxs, res, err)) where
+{
+  val res = list_cons(ilt, res)
+}
+//
+| !
+iltstk_nil() =>
+let
+val () = err:=1 in (kxs,res) end
+//
+| !
+iltstk_blk0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+//
+| !
+iltstk_let0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+//
+(*
+| !
+iltstk_ift0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+| !
+iltstk_cas0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+*)
+//
+)(*case+*)//end-[loop(kxs,res,err)]
+//
+in//let
+//
+let
+var err: int = 0
+val res: iltlst = list_nil()
+val
+(stk1,res) =
+loop
+(stk0,res,err) in stk0 := stk1; res
+end//let
+//
+end//let
+//(* end of [iltstk_poplam0(stk)] *)
+//
+(* ****** ****** *)
+//
+#implfun
+iltstk_poplet0
+  (  stk0  ) = let
+//
+fnx
+loop
+( kxs
+: iltstk
+, res: iltlst
+, err: &sint >> _):
+  @(iltstk, iltlst) =
+(
+case+ kxs of
+//
+| ~
+iltstk_let0
+(   kxs   ) => (kxs, res)
+//
+| ~
+iltstk_cons
+(ilt , kxs) =>
+(
+  loop(kxs, res, err)) where
+{
+  val res = list_cons(ilt, res)
+}
+//
+| !
+iltstk_nil() =>
+let
+val () = err:=1 in (kxs,res) end
+//
+| !
+iltstk_blk0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+//
+| !
+iltstk_lam0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+//
+(*
+| !
+iltstk_ift0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+| !
+iltstk_cas0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+*)
+//
+)(*case+*)//end-[loop(kxs,res,err)]
+//
+in//let
+//
+let
+var err: int = 0
+val res: iltlst = list_nil()
+val
+(stk1,res) =
+loop
+(stk0,res,err) in stk0 := stk1; res
+end//let
+//
+end//let
+//(* end of [iltstk_poplet0(stk)] *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+iltstk_ilet$insert
+  (  stk0, ilet  ) =
+(
+  stk0 := iltstk_cons(ilet, stk0))
+//(*end of [iltstk_ilet$insert(...)]*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -156,6 +403,81 @@ in//let
 stkmap_free_nil(d2vstk);
 iltstk_free_nil(iltstk); ((*void*))
 end(*let*)//endof(envi0i1_free_nil(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envi0i1_pshblk0
+(     env0     ) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+(
+iltstk_pshblk0(iltstk); $fold(env0))
+//
+end(*let*)//end-of-(envi0i1_pshblk0(env0))
+//
+#implfun
+envi0i1_popblk0
+(     env0     ) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+(
+$fold(env0); ilts) where
+{
+  val ilts = iltstk_popblk0(iltstk) }
+//
+end(*let*)//end-of-(envi0i1_popblk0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+envi0i1_pshlam0
+(     env0     ) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+(
+stkmap_pshlam0(d2vstk);
+iltstk_pshlam0(iltstk); $fold(env0))
+//
+end(*let*)//end-of-(envi0i1_pshlam0(env0))
+//
+#implfun
+envi0i1_poplam0
+(     env0     ) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+(
+$fold(env0); ilts) where
+{
+  val nerr = stkmap_poplam0(d2vstk)
+  val ilts = iltstk_poplam0(iltstk) }
+//
+end(*let*)//end-of-(envi0i1_poplam0(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

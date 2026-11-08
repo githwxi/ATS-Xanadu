@@ -571,7 +571,6 @@ $fold(env0); ilts) where
 end(*let*)//end-of-(envi0i1_popblk0(env0))
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #implfun
 envi0i1_pshlam0

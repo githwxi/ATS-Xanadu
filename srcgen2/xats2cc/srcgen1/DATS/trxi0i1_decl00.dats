@@ -469,9 +469,11 @@ teqi0exp_trxi0i1(tdxp, env0)
 val dvar = dpid.dvar()
 val ityp = dpid.ityp()
 //
-val itnm = i1tnm_new0()
+val itnm =
+i1tnm_new0(ityp)
 val ival =
 i1val(loc0, I1Vtnm(itnm))
+//
 val (  ) =
 envi0i1_dvar$insert(env0,dvar,ival)
 //

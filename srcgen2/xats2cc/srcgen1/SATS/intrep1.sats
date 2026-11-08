@@ -283,12 +283,12 @@ where
 (* ****** ****** *)
 //
 fun
-i1tnm_stmp$get(i1tnm): stamp
+i1tnm_stmp$get: (i1tnm->stamp)
 //
 (* ****** ****** *)
 //
 fun
-i1tnm_new0( (*void*) ): i1tnm
+i1tnm_new0(ityp: i0typ): i1tnm
 //
 (* ****** ****** *)
 //
@@ -352,7 +352,7 @@ i1val_node$get(i1val): i1val_node
 //
 fun
 i1val_make_node
-(loc0:loc_t,node:i1val_node):i1val
+(loc0:loc_t, node:i1val_node):i1val
 //
 #symload i1val with i1val_make_node
 //
