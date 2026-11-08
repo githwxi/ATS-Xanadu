@@ -384,8 +384,10 @@ i1val_node =
 //
 *)
 (* ****** ****** *)
+//
 |I1Vaddr of (i1val(*addr*))
 |I1Vaexp of (i0exp(*flat*))
+//
 (* ****** ****** *)
 //
 (*

@@ -116,6 +116,7 @@ I1LAB of (label,x0(*elt*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef i1tnm = i1tnm_tbox
 #typedef i1val = i1val_tbox
 #typedef fjarg = fjarg_tbox
 //
@@ -223,6 +224,11 @@ i1val_node =
 |I1Vcon of (d2con)
 |I1Vcst of (d2cst)
 |I1Vvar of (d2var)
+(* ****** ****** *)
+//
+|I1Vaddr of (i1val(*addr*))
+|I1Vaexp of (i0exp(*flat*))
+//
 (* ****** ****** *)
 //
 |I1Vp0rj of (i1val, sint)

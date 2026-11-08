@@ -198,7 +198,7 @@ i1val_addr
 let
 val loc0 = ival.lctn() in
 i1val_make_node(loc0,I1Vaddr(ival))
-end//let//end-of-[i1val_addr(iexp)]
+end//let//end-of-[i1val_addr(ival)]
 //
 fun
 i1val_aexp
