@@ -63,6 +63,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef label = label
 #typedef loc_t = loc_t
 #typedef loctn = loctn
+#typedef fpath = fpath
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -378,6 +379,15 @@ i1dcl_node =
 //
 |I1Dtmpsub of
 (s2vts(*tmpsub*), i1dcl)
+//
+(* ****** ****** *)
+|
+I1Dinclude of
+( sint(*s/d*)
+, token
+, g1exp // src
+, fpathopt
+, i1dclistopt) // inclusion
 //
 (* ****** ****** *)
 //

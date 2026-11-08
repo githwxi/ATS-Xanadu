@@ -59,10 +59,14 @@ envxcc1 = envx2cc_vtbx
 fun
 envxcc1_filr$get
 (env0: !envxcc1): FILEref
-//
 fun
 envxcc1_nind$get
 (env0: !envxcc1): ( sint )
+//
+#symload
+filr with envxcc1_filr$get
+#symload
+nind with envxcc1_nind$get
 //
 (* ****** ****** *)
 //

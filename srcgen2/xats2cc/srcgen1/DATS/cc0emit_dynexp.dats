@@ -110,7 +110,7 @@ in//let
 (
 strnfpr(filr, "#define ");
 strnfpr(filr, "_i0pat$typ_");
-fprint_loctn_as_stamp(filr, lctn);
+fprint_lctn2_as_stamp(filr, lctn);
 strnfpr(filr, " ");
 i0typcc0(filr, ityp);fprintln(filr))
 end(*let*)//end-of-[i0pat$typcc0(...)]
@@ -131,7 +131,7 @@ in//let
 (
 strnfpr(filr, "#define ");
 strnfpr(filr, "_i0exp$typ_");
-fprint_loctn_as_stamp(filr, lctn);
+fprint_lctn2_as_stamp(filr, lctn);
 strnfpr(filr, " ");
 i0typcc0(filr, ityp);fprintln(filr))
 end(*let*)//end-of-[i0exp$typcc0(...)]

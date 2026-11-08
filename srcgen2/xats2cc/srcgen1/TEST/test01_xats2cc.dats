@@ -47,5 +47,5 @@ if x >= 1 then x * fact(x-1) else 1
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_TEST_test01_xats2cc.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2cc/srcgen1/TEST/test01_xats2cc.dats] *)
 (***********************************************************************)

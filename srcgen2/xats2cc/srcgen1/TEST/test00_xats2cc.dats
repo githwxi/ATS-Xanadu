@@ -30,5 +30,5 @@ prints
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_TEST_test00_xats2cc.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2cc/srcgen1/TEST/test00_xats2cc.dats] *)
 (***********************************************************************)

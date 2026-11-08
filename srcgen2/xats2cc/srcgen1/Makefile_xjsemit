@@ -53,12 +53,12 @@ tryd3i0.dats \
 tryd3i0_myenv0.dats \
 tryd3i0_dynexp.dats \
 tryd3i0_decl00.dats \
+intrep1.dats \
+intrep1_print0.dats \
 trxi0i1.dats \
 trxi0i1_myenv0.dats \
 trxi0i1_dynexp.dats \
 trxi0i1_decl00.dats \
-intrep1.dats \
-intrep1_print0.dats \
 xats2cc.dats \
 xats2cc_myenv0.dats \
 xats2cc_tmplib.dats \

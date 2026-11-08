@@ -173,6 +173,8 @@ trcdknd = trcdknd(*0*)
 #typedef timpl = $D3E.timpl
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef fpathopt = optn(fpath)
+(* ****** ****** *)
 //
 #typedef s2cstlst = list(s2cst)
 #typedef s2varlst = list(s2var)

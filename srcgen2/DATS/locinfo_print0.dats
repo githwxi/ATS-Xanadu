@@ -119,14 +119,14 @@ HX-2024-05-18:
 fprint_loctn_as_stamp
   (out, loc) =
 (
-  print(ntot)) where
+  print(nbeg)) where
 {
 //
   #impltmp
   g_print$out<>() = out
 //
   val pbeg = loc.pbeg()
-  val ntot = postn_get_ntot(pbeg)
+  val nbeg = postn_get_ntot(pbeg)
 //
 }(*where*) // end of [fprint_loctn_as_stamp]
 //

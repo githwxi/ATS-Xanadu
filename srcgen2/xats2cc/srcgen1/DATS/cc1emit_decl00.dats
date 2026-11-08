@@ -115,12 +115,64 @@ in//let
 case+
 dcl0.node() of
 //
-|_(*otherwise*) => f0_otherwise(dcl0,env0)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Dinclude _ =>
+(
+  f0_include(dcl0, env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|_(*otherwise*) => f0_otherwise(dcl0, env0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
 end where
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_include
+( 
+dcl0: i1dcl,
+env0: !envxcc1): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = dcl0.node()
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+(
+nindfpr(filr, nind);
+prints
+("// I1Dinclude(",loc0,")\n"))
+end//let
+//
+in//let
+(
+case+ dopt of
+|optn_nil() => ( (*void*) )
+|optn_cons(dcls) =>
+(
+  i1dclist_cc1emit(dcls, env0)))
+end(*let*)//end-of-[f0_include(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

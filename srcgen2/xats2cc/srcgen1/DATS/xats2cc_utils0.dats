@@ -123,7 +123,7 @@ in//let
 symbl_fprint
 (name, filr);
 strnfpr(filr, "_");
-fprint_loctn_as_stamp
+fprint_lctn1_as_stamp
 (filr, scst.lctn((*void*))))
 end(*let*)//end-of-[s2cstfpr(env0,scst)]
 //
@@ -150,6 +150,42 @@ case+ ityp.node() of
 | _
 (*otherwise*) => i0typ_fprint(ityp, filr)
 )(*case+*)//end-of-[i0typfpr( env0, ityp )]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fprint_lctn1_as_stamp
+  (out, loc) =
+(
+  prints(nbeg)) where
+{
+//
+  #impltmp
+  g_print$out<>() = out
+//
+  val pbeg = loc.pbeg()
+  val nbeg = postn_get_ntot(pbeg)
+//
+}(*where*) // end of [fprint_lctn1_as_stamp]
+//
+#implfun
+fprint_lctn2_as_stamp
+  (out, loc) =
+(
+prints(nbeg, "$", nend)
+) where
+{
+//
+  #impltmp
+  g_print$out<>() = out
+//
+  val pbeg = loc.pbeg()
+  val nbeg = postn_get_ntot(pbeg)
+  val pend = loc.pend()
+  val nend = postn_get_ntot(pend)
+//
+}(*where*) // end of [fprint_lctn2_as_stamp]
 //
 (* ****** ****** *)
 (* ****** ****** *)

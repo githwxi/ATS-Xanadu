@@ -140,6 +140,14 @@ envx2cc_decnind
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+fprint_lctn1_as_stamp: (FILR, loctn) -> void
+fun
+fprint_lctn2_as_stamp: (FILR, loctn) -> void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_xats2cc_srcgen1_SATS_xats2cc.sats] *)
 (***********************************************************************)

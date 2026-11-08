@@ -83,6 +83,55 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
+|I1Di0dcl
+(  dcl1  ) =>
+(
+prints("I1Di0dcl(", dcl1, ")"))
+//
+(* ****** ****** *)
+//
+|I1Dextern
+(tknd, dcl1) =>
+prints
+("I1Dextern(", tknd, ";", dcl1, ")")
+|I1Dstatic
+(tknd, dcl1) =>
+prints
+("I1Dstatic(", tknd, ";", dcl1, ")")
+//
+(* ****** ****** *)
+//
+|I1Ddclst0
+(   dcls   ) =>
+(
+  prints("I1Ddclst0(", dcls, ")"))
+//
+|I1Dlocal0
+(head, body) =>
+prints
+("I1Dlocal0(", head, ";", body, ")")
+//
+(* ****** ****** *)
+//
+|I1Dtmpsub
+(svts, idcl) =>
+prints
+("I1Dtmpsub(", svts, ";", idcl, ")")
+//
+(* ****** ****** *)
+//
+|I1Dinclude
+( knd0, tknd
+, gsrc, fopt, dopt ) =>
+(
+print("I1Dinclude(");
+prints
+(
+knd0,";",
+tknd,";",gsrc,";",fopt,";","...",")"))
+//
+(* ****** ****** *)
+//
 |I1Dnone0() => prints( "I1Dnone0(",")" )
 |I1Dnone1(dcl1) => prints("I1Dnone1(", dcl1, ")")
 //

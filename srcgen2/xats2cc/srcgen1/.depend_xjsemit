@@ -10,8 +10,14 @@ BUILD/JS/intrep1_utils0_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats
 ########################################################################
 BUILD/JS/trxd3i0_dats_out0.js: SATS/intrep0.sats SATS/trxd3i0.sats
 BUILD/JS/trxd3i0_myenv0_dats_out0.js: SATS/intrep0.sats SATS/trxd3i0.sats
+BUILD/JS/trxd3i0_staexp_dats_out0.js: SATS/intrep0.sats SATS/trxd3i0.sats
 BUILD/JS/trxd3i0_dynexp_dats_out0.js: SATS/intrep0.sats SATS/trxd3i0.sats
 BUILD/JS/trxd3i0_decl00_dats_out0.js: SATS/intrep0.sats SATS/trxd3i0.sats
+########################################################################
+BUILD/JS/tryd3i0_dats_out0.js: SATS/intrep0.sats SATS/tryd3i0.sats
+BUILD/JS/tryd3i0_myenv0_dats_out0.js: SATS/intrep0.sats SATS/tryd3i0.sats
+BUILD/JS/tryd3i0_dynexp_dats_out0.js: SATS/intrep0.sats SATS/tryd3i0.sats
+BUILD/JS/tryd3i0_decl00_dats_out0.js: SATS/intrep0.sats SATS/tryd3i0.sats
 ########################################################################
 BUILD/JS/trxi0i1_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/trxi0i1.sats
 BUILD/JS/trxi0i1_myenv0_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/trxi0i1.sats
