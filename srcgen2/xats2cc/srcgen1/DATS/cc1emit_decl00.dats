@@ -103,13 +103,13 @@ loctn_fprint(loc0,filr))//endfun
 i1dcl_cc1emit
 (dcl0, env0) =
 let
-(*
+// (*
 //
 val () =
 prerrsln
 ("i1dcl_cc1emit: dcl0 = ", dcl0)
 //
-*)
+// *)
 in//let
 //
 case+
