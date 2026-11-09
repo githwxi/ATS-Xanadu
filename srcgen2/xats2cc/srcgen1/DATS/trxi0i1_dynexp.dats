@@ -207,6 +207,57 @@ end//let//end-of-[i1val_aexp(iexp)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+i1val_dap0
+( env0:
+! envi0i1
+, loc0: loc_t
+, ityp: i0typ
+, i1f0: i1val): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val
+itnm = i1tnm_new0(ityp)
+//
+val i1vs = list_nil((*0*))
+val iins = I1INSdapp(i1f0, i1vs)
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_ilet$insert(env0, ilet) )
+}(*where*)//end-of-[i1val_dap0(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+i1val_dapp
+( env0:
+! envi0i1
+, loc0: loc_t
+, ityp: i0typ
+, i1f0: i1val
+, i1vs: i1valist): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val
+itnm = i1tnm_new0(ityp)
+//
+val iins = I1INSdapp(i1f0, i1vs)
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_ilet$insert(env0, ilet) )
+}(*where*)//end-of-[i1val_dapp(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 i0pat_trxi0i1
 (ipat, env0) =
@@ -371,13 +422,20 @@ iexp.node() of
 |I0Es00 _ => f0_s00(iexp, env0)
 //
 (* ****** ****** *)
+//
+|I0Edap0 _ => f0_dap0(iexp, env0)
+|I0Edapp _ => f0_dapp(iexp, env0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 | _(*otherwise*) => i1val_none1(iexp)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-) where
-{
+) where {
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_int
@@ -509,6 +567,149 @@ env0: !envi0i1): i1val =
   val-I0Es00(s00) = iexp.node() }
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dap0
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+val ityp = iexp.ityp()
+//
+val-
+I0Edap0(i0f0) = iexp.node()
+//
+val i1f0 =
+(
+  i0exp_trxi0i1(i0f0, env0))
+//
+in//let
+(
+i1val_dap0(env0,loc0,ityp,i1f0))
+end where
+{
+//
+(*
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrsln(
+  "f0_dap0(i0i1): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_dap0(env0,iexp)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+val ityp = iexp.ityp()
+//
+val-
+I0Edapp
+(i0f0
+,npf1, i0es) = iexp.node()
+//
+val i1f0 =
+i0exp_trxi0i1(i0f0, env0)
+val i1vs =
+f1_npf1$i0es(npf1, i0es, env0)
+//
+in//let
+(
+i1val_dapp(
+  env0, loc0, ityp, i1f0, i1vs))
+end where
+{
+//
+(*
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrsln(
+  "f0_dapp(i0i1): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_dapp(env0,iexp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+} where {
+//
+(* ****** ****** *)
+//
+fun
+f1_npf1$i0es
+(
+npf1: sint,
+i0es: i0explst,
+env0: !envi0i1): i1valist =
+(
+if
+(npf1 <= 0)
+then
+i0explst_trxi0i1(i0es, env0)
+else
+(
+case+ i0es of
+|list_nil
+( (*0*) ) => list_nil(*0*)
+|list_cons
+(i0e1, i0es) =>
+let
+//
+val npf1 = npf1-1
+//
+in//let
+(
+f1_npf1$i0es(npf1, i0es, env0))
+end//let//end-of-[list_cons(...)]
+)
+)(*end-of-[f1_npf1$i0es(npf1,i0es,env0)]*)
+//
+(* ****** ****** *)
+//
+(*
+fun
+f1_npf1$lies
+(
+npf1: sint,
+lies: l0i0elst,
+env0: !envi0i1): l1i1vlst =
+(
+if
+(npf1 <= 0)
+then
+l0i0elst_trxi0i1(lies, env0)
+else
+(
+case+ lies of
+|list_nil
+( (*0*) ) => list_nil(*0*)
+|list_cons
+(lie1, lies) =>
+let
+//
+val npf1 = npf1-1
+//
+in//let
+(
+f1_npf1$lies(npf1, lies, env0))
+end//let//end-of-[list_cons(...)]
+)
+)(*end-of-[f1_npf1$lies(npf1,lies,env0)]*)
+*)
+//
 (* ****** ****** *)
 //
 }(*where*)//end-of-[i0exp_trxi0i1(iexp,env0)]

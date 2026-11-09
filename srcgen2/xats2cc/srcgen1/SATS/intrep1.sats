@@ -246,6 +246,14 @@ i1val_node =
 where
 {
 //
+(* ****** ****** *)
+//
+#typedef i1tnmlst = list(i1tnm)
+#typedef i1valist = list(i1val)
+#typedef i1valopt = optn(i1val)
+//
+(* ****** ****** *)
+//
 #typedef d2sublst = list(d2sub)
 //
 #typedef i1bndlst = list(i1bnd)
@@ -255,17 +263,9 @@ where
 //
 #typedef i1letlst = list(i1let)
 //
+(* ****** ****** *)
+//
 }(*where*)//end-of-(i1let/ins/val)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#typedef i1tnmlst = list(i1tnm)
-//
-(* ****** ****** *)
-//
-#typedef i1valist = list(i1val)
-#typedef i1valopt = optn(i1val)
 //
 (* ****** ****** *)
 (* ****** ****** *)
