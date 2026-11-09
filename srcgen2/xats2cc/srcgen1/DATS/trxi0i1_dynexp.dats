@@ -364,13 +364,11 @@ iexp.node() of
 //
 (* ****** ****** *)
 //
-(*
 |I0Ei00 _ => f0_i00(iexp, env0)
 |I0Eb00 _ => f0_b00(iexp, env0)
 |I0Ec00 _ => f0_c00(iexp, env0)
 |I0Ef00 _ => f0_f00(iexp, env0)
 |I0Es00 _ => f0_s00(iexp, env0)
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -380,7 +378,6 @@ iexp.node() of
 //
 ) where
 {
-//
 //
 fun
 f0_int
@@ -444,6 +441,72 @@ env0: !envi0i1): i1val =
 {
   val loc = iexp.lctn()
   val-I0Estr(tok) = iexp.node() }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_i00
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+(
+  i1val_i00(loc, i00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Ei00(i00) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_b00
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+(
+  i1val_b00(loc, b00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Eb00(b00) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_c00
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+(
+  i1val_c00(loc, c00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Ec00(c00) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_f00
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+(
+  i1val_f00(loc, f00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Ef00(f00) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_s00
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+(
+  i1val_s00(loc, s00) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Es00(s00) = iexp.node() }
 //
 (* ****** ****** *)
 (* ****** ****** *)
