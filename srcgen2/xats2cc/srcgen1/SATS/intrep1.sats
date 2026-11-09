@@ -116,6 +116,7 @@ I1LAB of (label,x0(*elt*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef i1opr = i1opr_tbox
 #typedef i1tnm = i1tnm_tbox
 #typedef i1val = i1val_tbox
 #typedef fjarg = fjarg_tbox
@@ -289,13 +290,61 @@ where
 (* ****** ****** *)
 //
 fun
-i1tnm_stmp$get: (i1tnm->stamp)
+i1tnm_new0(ityp:i0typ):i1tnm
+//
+fun
+i1tnm_stmp$get:(i1tnm->stamp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1val_nil(loc0: loc_t): (i1val)
 //
 (* ****** ****** *)
 //
 fun
-i1tnm_new0(ityp: i0typ): i1tnm
+i1val_con(dcon: d2con): (i1val)
+fun
+i1val_cst(dcst: d2cst): (i1val)
 //
+fun
+i1val_var(dvar: d2var): (i1val)
+//
+(* ****** ****** *)
+//
+fun
+i1val_conq(ival: i1val): (bool)
+//
+fun
+i1val_cstq(ival: i1val): (bool)
+//
+fun
+i1val_cfnq(ival: i1val): (bool)
+//
+fun
+i1val_varq(ival: i1val): (bool)
+//
+(* ****** ****** *)
+//
+fun
+i1val_none0(loc0: loc_t): i1val
+fun
+i1val_none1(iexp: i0exp): i1val
+//
+(* ****** ****** *)
+//
+fun
+i1val_lctn$get
+  (ival: i1val): loc_t//fun
+fun
+i1val_node$get
+  (ival: i1val): i1val_node//fun
+//
+#symload lctn with i1val_lctn$get
+#symload node with i1val_node$get
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -308,52 +357,22 @@ i1tnm_fprint
 itnm: i1tnm, out0: FILR): void
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 fun
-i1val_nil(loc0: loc_t): ( i1val )
-//
-(* ****** ****** *)
+i1let_fprint:(i1let, FILR)->void
 //
 fun
-i1val_con(dcon: d2con): ( i1val )
+i1bnd_fprint:(i1bnd, FILR)->void
 fun
-i1val_cst(dcst: d2cst): ( i1val )
+i1cmp_fprint:(i1cmp, FILR)->void
 //
 fun
-i1val_var(dvar: d2var): ( i1val )
-//
-(* ****** ****** *)
+i1ins_fprint:(i1ins, FILR)->void
 //
 fun
-i1val_conq(ival: i1val): ( bool )
-//
-fun
-i1val_cstq(ival: i1val): ( bool )
-//
-fun
-i1val_cfnq(ival: i1val): ( bool )
-//
-fun
-i1val_varq(ival: i1val): ( bool )
+i1val_fprint:(i1val, FILR)->void
 //
 (* ****** ****** *)
-//
-fun
-i1val_none0(loc0: loc_t): (i1val)
-fun
-i1val_none1(iexp: i0exp): (i1val)
-//
-(* ****** ****** *)
-//
-fun
-i1val_lctn$get(i1val): ( loc_t )
-fun
-i1val_node$get(i1val): i1val_node
-//
-#symload lctn with i1val_lctn$get
-#symload node with i1val_node$get
-//
 (* ****** ****** *)
 //
 fun
@@ -362,6 +381,38 @@ i1val_make_node
 //
 #symload i1val with i1val_make_node
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+fjarg_node =
+|
+FJARGdarg of i1bndlst
+//
+#typedef
+fjarglst = list(fjarg)
+#typedef
+fjarglstopt = optn(fjarglst)
+//
+(* ****** ****** *)
+//
+fun
+fjarg_fprint
+(farg:fjarg,out0:FILR): void
+//
+(* ****** ****** *)
+fun
+fjarg_lctn$get(fjarg): loc_t
+fun
+fjarg_node$get(fjarg): fjarg_node
+(* ****** ****** *)
+#symload lctn with fjarg_lctn$get
+#symload node with fjarg_node$get
+(* ****** ****** *)
+fun
+fjarg_make_node
+(loc0:loc_t, node:fjarg_node):fjarg
+#symload fjarg with fjarg_make_node
 (* ****** ****** *)
 (* ****** ****** *)
 //

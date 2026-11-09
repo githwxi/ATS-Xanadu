@@ -167,6 +167,53 @@ i0dcl_fprint(idcl, g_print$out<>())
 //
 #impltmp
 g_print
+<i1opr>(iopr) =
+i1opr_fprint(iopr, g_print$out<>())
+//
+#impltmp
+g_print
+<i1tnm>(itnm) =
+i1tnm_fprint(itnm, g_print$out<>())
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i1val>(ival) =
+i1val_fprint(ival, g_print$out<>())
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i1let>(ilet) =
+i1let_fprint(ilet, g_print$out<>())
+#impltmp
+g_print
+<i1ins>(iins) =
+i1ins_fprint(iins, g_print$out<>())
+//
+#impltmp
+g_print
+<i1bnd>(ibnd) =
+i1bnd_fprint(ibnd, g_print$out<>())
+#impltmp
+g_print
+<i1cmp>(icmp) =
+i1cmp_fprint(icmp, g_print$out<>())
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<fjarg>(farg) =
+fjarg_fprint(farg, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <i1dcl>(idcl) =
 i1dcl_fprint(idcl, g_print$out<>())
 //
@@ -182,6 +229,19 @@ i0vardcl_fprint(ivar, g_print$out<>())
 #impltmp
 g_print<i0fundcl>(ifun) =
 i0fundcl_fprint(ifun, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print<i1valdcl>(ival) =
+i1valdcl_fprint(ival, g_print$out<>())
+#impltmp
+g_print<i1vardcl>(ivar) =
+i1vardcl_fprint(ivar, g_print$out<>())
+#impltmp
+g_print<i1fundcl>(ifun) =
+i1fundcl_fprint(ifun, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -205,6 +265,27 @@ TEQI0EXPsome(tok0, i0e1) =>
 prints("\
 TEQI0EXPsome(",tok0,";",i0e1,")"))
 endlet // end-of-[g_print<teqi0exp>(tdxp)]
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<teqi1cmp>(tdxp) =
+let
+(*
+#impltmp
+g_print$out<>() = out
+*)
+in//let
+(
+case+ tdxp of
+|
+TEQI1CMPnone() =>
+prints("TEQI1CMPnone(", ")")
+|
+TEQI1CMPsome(tok0, icmp) =>
+prints("TEQI1CMPsome(",tok0,";",icmp,")"))
+endlet // end-of-[g_print<teqi1cmp>(tdxp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

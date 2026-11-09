@@ -69,6 +69,159 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #implfun
+i1val_fprint
+(i1v0, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+i1v0.node() of
+//
+(* ****** ****** *)
+//
+|I1V000() =>
+prints("I1V000(",")")
+//
+(* ****** ****** *)
+//
+|I1Vint(int) =>
+prints("I1Vint(",int,")")
+|I1Vbtf(btf) =>
+prints("I1Vbtf(",btf,")")
+|I1Vchr(chr) =>
+prints("I1Vchr(",chr,")")
+|I1Vflt(flt) =>
+prints("I1Vflt(",flt,")")
+|I1Vstr(str) =>
+prints("I1Vstr(",str,")")
+//
+(* ****** ****** *)
+//
+|I1Vi00(i00) =>
+prints("I1Vi00(",i00,")")
+|I1Vb00(b00) =>
+prints("I1Vb00(",b00,")")
+|I1Vc00(c00) =>
+prints("I1Vc00(",c00,")")
+|I1Vf00(f00) =>
+prints("I1Vf00(",f00,")")
+|I1Vs00(s00) =>
+prints("I1Vs00(",s00,")")
+//
+(* ****** ****** *)
+//
+|I1Vtop(sym) =>
+prints("I1Vtop(",sym,")")
+//
+(* ****** ****** *)
+//
+|I1Vtnm(itnm) =>
+prints("I1Vtnm(",itnm,")")
+//
+(* ****** ****** *)
+//
+|I1Vaexp(iexp) =>
+prints("I1Vaexp(", iexp, ")")
+|I1Vaddr(ival) =>
+prints("I1Vaddr(", ival, ")")
+//
+(* ****** ****** *)
+//
+|I1Vnone0() => prints( "I1Vnone0(",")" )
+|I1Vnone1(i0e1) => prints("I1Vnone1(", i0e1, ")")
+//
+(* ****** ****** *)
+//
+end(*let*)//end-of-[i1val_fprint(i1v0,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1let_fprint
+(ilet, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+ ilet of
+|I1LETnew0(iins) =>
+(
+  prints("I1LETnew0(", iins, ")"))
+|I1LETnew1(itnm, iins) =>
+( prints
+  ("I1LETnew1(", itnm, ";", iins, ")"))
+//
+end(*let*)//end-of-[i1let_fprint(ilet,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1bnd_fprint
+(ibnd, out0) =
+let
+//
+#impltmp
+g_print$out
+<(*0*)>((*0*)) = out0
+//
+#impltmp
+g_print
+<d2var>( dvar ) =
+d2var_fprint(dvar, out0)
+//
+in//let
+//
+case+ ibnd of
+|I1BNDcons
+(itnm, ipat, dsub) =>
+( print("I1BNDcons(")
+; prints(itnm, ";", ipat, ";", dsub, ")"))
+//
+end(*let*)//end-of-[i1bnd_fprint(ibnd,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1cmp_fprint
+(icmp, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+ icmp of
+|I1CMPcons(ilts, ival) =>
+prints("I1CMPcons(", ilts, ";", ival, ")")
+//
+end(*let*)//end-of-[i1cmp_fprint(icmp,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fjarg_fprint
+(farg, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+farg.node() of
+|FJARGdarg(i1bs) =>
+(
+  prints("FJARGdarg(", i1bs, ")"))
+//
+end(*let*)//end-of-[fjarg_fprint(farg,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i1dcl_fprint
 (dcl0, out0) =
 let
@@ -132,12 +285,62 @@ tknd,";",gsrc,";",fopt,";","...",")"))
 //
 (* ****** ****** *)
 //
+|
+I1Dvaldclst
+(tknd, i1vs) =>
+prints
+("I1Dvaldclst(", tknd, ";", i1vs, ")")
+|
+I1Dvardclst
+(tknd, i1vs) =>
+prints
+("I1Dvardclst(", tknd, ";", i1vs, ")")
+//
+(* ****** ****** *)
+//
 |I1Dnone0() => prints( "I1Dnone0(",")" )
 |I1Dnone1(dcl1) => prints("I1Dnone1(", dcl1, ")")
 //
 (* ****** ****** *)
 //
 end(*let*)//end-of-[i1dcl_fprint(dcl0,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1valdcl_fprint
+  (ival, out0) = let
+//
+val dpat =
+i1valdcl_dpat$get(ival)
+val tdxp =
+i1valdcl_tdxp$get(ival)
+//
+#impltmp g_print$out<>() = out0
+//
+in//let
+(
+prints("I1VALDCL(", dpat, ";", tdxp, ")"))
+end(*let*)//end-of-[i1valdcl_fprint(ival,out0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1vardcl_fprint
+  (ivar, out0) = let
+//
+val dpid =
+i1vardcl_dpid$get(ivar)
+val dini =
+i1vardcl_dini$get(ivar)
+//
+#impltmp g_print$out<>() = out0
+//
+in//let
+(
+prints("I1VARDCL(", dpid, ";", dini, ")"))
+end(*let*)//end-of-[i1vardcl_fprint(ivar,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

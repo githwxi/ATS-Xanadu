@@ -997,6 +997,8 @@ ipat.node() of
 |I0Pflt _ => list_nil()
 |I0Pstr _ => list_nil()
 //
+(* ****** ****** *)
+//
 |
 I0Pvar _ =>
 (

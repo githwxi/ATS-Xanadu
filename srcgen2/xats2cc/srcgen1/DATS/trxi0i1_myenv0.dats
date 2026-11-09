@@ -482,6 +482,78 @@ end(*let*)//end-of-(envi0i1_poplam0(env0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+envi0i1_dvar$search
+  (env0, d2v1) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+ d2vstk,!iltstk) = env0
+//
+val
+sym1 = d2v1.unam((*void*))
+//
+val
+opt1 =
+stkmap_search$opt(d2vstk, sym1)
+//
+in//let
+//
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+(
+(
+case+ opt2 of
+| ~
+optn_vt_nil() =>
+i1val_none0(d2v1.lctn())
+| ~
+optn_vt_cons(ival) => ival)
+where
+{
+val opt2 =
+topmap_search$opt(d2vtop, sym1)}
+)
+| ~
+optn_vt_cons(ival) => (   ival   )
+//
+end(*let*)//end-of-(envi0i1_dvar$search)
+//
+(* ****** ****** *)
+//
+#implfun
+envi0i1_dvar$insert
+(env0, d2v1, ival) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+val
+sym1 = d2v1.unam((*void*))
+//
+in//let
+//
+let
+val () =
+if
+stkmap_nilq
+(  d2vstk  )
+then
+topmap_insert$any
+(d2vtop,sym1,ival)
+else
+stkmap_insert$any
+(d2vstk,sym1,ival) in $fold(env0) end
+//
+end(*let*)//end-of-(envi0i1_dvar$insert)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 endloc(*local*)//end-of-[local(envi0i1...)]
 //
 (* ****** ****** *)

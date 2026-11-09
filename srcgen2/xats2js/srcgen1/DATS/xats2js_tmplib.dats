@@ -84,6 +84,29 @@ i0lab_fprint(ilab, g_print$out<>())
 (* ****** ****** *)
 //
 #impltmp
+< x0:t0 >
+i1lab_fprint
+ (lab, out) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ lab of
+|
+I1LAB(l01, x02) =>
+prints("I1LAB(",l01,";",x02,")")
+end(*let*)//end-of-[i1lab_fprint]
+//
+#impltmp
+{ x0:t0 }
+g_print<i1lab(x0)>(ilab) =
+i1lab_fprint(ilab, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 g_print
 <i0pat>(i0p0) =
 i0pat_fprint(i0p0, g_print$out<>())
@@ -131,29 +154,6 @@ t0imp_fprint(timp, g_print$out<>())
 g_print
 <i0dcl>(idcl) =
 i0dcl_fprint(idcl, g_print$out<>())
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:t0 >
-i1lab_fprint
- (lab, out) = let
-//
-#impltmp
-g_print$out<>() = out
-//
-in//let
-case+ lab of
-|
-I1LAB(l01, x02) =>
-prints("I1LAB(",l01,";",x02,")")
-end(*let*)//end-of-[i1lab_fprint]
-//
-#impltmp
-{ x0:t0 }
-g_print<i1lab(x0)>(ilab) =
-i1lab_fprint(ilab, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)

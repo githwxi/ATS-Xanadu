@@ -352,9 +352,12 @@ val
 stamper = stamper_new((*0*))
 //
 in//local
+//
 fun
 the_i1tnm_stamp_new
-  ((*void*)): stamp = stamper.getinc()
+(      (*0*)      )
+:      stamp      = stamper.getinc()
+//
 endloc // end-of-[the_i1tnm_stamp_new()]
 //
 (* ****** ****** *)

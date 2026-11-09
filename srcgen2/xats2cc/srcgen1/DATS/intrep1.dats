@@ -50,6 +50,9 @@ XATSOPT "./../../.."
 /HATS/xatsopt_dpre.hats"
 (* ****** ****** *)
 #staload
+"./../../../SATS/xstamp0.sats"
+(* ****** ****** *)
+#staload
 "./../../../SATS/staexp2.sats"
 #staload
 "./../../../SATS/statyp2.sats"
@@ -133,6 +136,110 @@ i1dcl_make_node
 dcl0.lctn(),I1Dnone1(dcl0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+val
+stamper = stamper_new((*0*))
+//
+in//local
+//
+fun
+the_i1tnm_stamp_new
+(      (*0*)      )
+:      stamp      = stamper.getinc()
+//
+endloc//end-of-[the_i1tnm_stamp_new()]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1tnm =
+I1TNM of (stamp)
+//
+#absimpl i1tnm_tbox = i1tnm
+//
+in//local
+//
+#implfun
+i1tnm_stmp$get
+  ( itnm ) =
+let
+val+
+I1TNM(stmp) = itnm in stmp end
+//
+(* ****** ****** *)
+//
+#implfun
+i1tnm_new0() =
+(
+  I1TNM(stmp)) where
+{ val
+  stmp = the_i1tnm_stamp_new()
+}(*where*)//end-of-[i1tnm_new0()]
+//
+(* ****** ****** *)
+//
+#implfun
+i1tnm_fprint
+(itnm, out0) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+val+I1TNM(stmp) = itnm
+//
+in//let
+  prints("I1TNM(", stmp, ")") endlet
+//
+(* ****** ****** *)
+//
+end(*local*)//end-of-[local(i1tnm_tbox)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1val =
+I1VAL of
+(loctn, i1val_node)
+datavwtp
+i1val_vt =
+I1VAL_vt of
+(loctn, i1val_node)
+//
+#absimpl i1val_tbox = i1val
+//
+in (* in-of-local *)
+//
+#implfun
+i1val_make_node
+(   loc,nod   ) =
+(
+  I1VAL(loc, nod) )
+//
+#implfun
+i1val_lctn$get(i1v) =
+let
+val+
+I1VAL(loc,nod) = i1v in loc end
+#implfun
+i1val_node$get(i1v) =
+let
+val+
+I1VAL(loc,nod) = i1v in nod end
+//
+endloc(*local*)//end-of-[local(i1val)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 local
 //
@@ -166,7 +273,110 @@ let
 val+
 I1DCL(loc,nod) = i1d in nod end
 //
-endloc (*local*) // end of [local(i1dcl)]
+endloc(*local*)//end-of-[local(i1dcl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1valdcl =
+I1VALDCL of
+( loc_t
+, i1bnd, teqi1cmp)
+//
+#absimpl
+i1valdcl_tbox = i1valdcl
+//
+in//local
+//
+#implfun
+i1valdcl_lctn$get
+  (  ival  ) = let
+val+
+I1VALDCL
+( lctn
+, ibnd, tdxp) = ival in lctn end
+//
+#implfun
+i1valdcl_dpat$get
+  (  ival  ) = let
+val+
+I1VALDCL
+( lctn
+, ibnd, tdxp) = ival in ibnd end
+//
+#implfun
+i1valdcl_tdxp$get
+  (  ival  ) = let
+val+
+I1VALDCL
+( lctn
+, ibnd, tdxp) = ival in tdxp end
+//
+(* ****** ****** *)
+//
+#implfun
+i1valdcl_make_args
+(lctn, ibnd, tdxp) =
+(
+  I1VALDCL(lctn, ibnd, tdxp(*opt*)))
+//
+(* ****** ****** *)
+//
+endloc(*local*)//end-of-[local(i1valdcl)]
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1vardcl =
+I1VARDCL of
+( loc_t
+, i1bnd, teqi1cmp)
+//
+#absimpl
+i1vardcl_tbox = i1vardcl
+//
+in//local
+//
+#implfun
+i1vardcl_lctn$get
+  (  ivar  ) = let
+val+
+I1VARDCL
+( lctn
+, dpid, dini) = ivar in lctn end
+//
+#implfun
+i1vardcl_dpid$get
+  (  ivar  ) = let
+val+
+I1VARDCL
+( lctn
+, dpid, dini) = ivar in dpid end
+//
+#implfun
+i1vardcl_dini$get
+  (  ivar  ) = let
+val+
+I1VARDCL
+( lctn
+, dpid, dini) = ivar in dini end
+//
+(* ****** ****** *)
+//
+#implfun
+i1vardcl_make_args
+( lctn, dpid, dini) =
+(
+  I1VARDCL(lctn, dpid, dini(*opt*)))
+//
+(* ****** ****** *)
+//
+endloc(*local*)//end-of-[local(i1vardcl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -261,11 +471,11 @@ prerrsln
 ("i1parsed_make_args:nerror=",nerror)
 *)
 //
-} (*where*) // end-of-[i1parsed_make_args]
+}(*where*)//end-of-[i1parsed_make_args]
 //
 (* ****** ****** *)
 //
-endloc (*local*) // end of [ local(i1parsed) ]
+endloc(*local*)//end-of-[local( i1parsed )]
 //
 (* ****** ****** *)
 (* ****** ****** *)

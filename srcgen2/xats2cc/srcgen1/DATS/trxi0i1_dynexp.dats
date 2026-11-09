@@ -288,6 +288,66 @@ prerrsln("i0pat_trxi0i1: ipat = ", ipat)
 (* ****** ****** *)
 //
 #implfun
+i0bnd_trxi0i1
+(ipat
+,ival, env0) =
+(
+case+
+ipat.node() of
+//
+(* ****** ****** *)
+//
+|I0Pint _ => list_nil()
+|I0Pbtf _ => list_nil()
+|I0Pchr _ => list_nil()
+|I0Pflt _ => list_nil()
+|I0Pstr _ => list_nil()
+//
+(* ****** ****** *)
+//
+|
+I0Pvar _ =>
+(
+f0_var(ipat, ival, env0))
+|
+I0Pany _ => list_nil((*0*))
+//
+(* ****** ****** *)
+|_(*else*) => list_nil( (*void*) )
+(* ****** ****** *)
+//
+) where
+{
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+(
+ipat: i0pat,
+ival: i1val,
+env0: !envi0i1): d2sublst =
+(
+list_sing(@(dvar, ival)))
+where
+{
+//
+val-
+I0Pvar(dvar) = ipat.node((*0*))
+//
+val ((*nil*)) =
+envi0i1_dvar$insert(env0, dvar, ival)
+}(*where*)//end-of-[f0_var(ipat,ival,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+}(*where*)//end[i0bnd_trxi0i1(ipat,ival,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i0exp_trxi0i1
 ( iexp, env0 ) =
 (
