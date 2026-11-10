@@ -138,6 +138,29 @@ dcl0.lctn(),I1Dnone1(dcl0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1cmp_lctn$get
+(  icmp  ) =
+(
+i1val_lctn$get(icmp.ival()))
+//
+#implfun
+i1cmp_ival$get
+(  icmp  ) =
+(
+case+ icmp of
+|I1CMPcons(ilts, ival) => ival)
+//
+#implfun
+i1cmp_ilts$get
+(  icmp  ) =
+(
+case+ icmp of
+|I1CMPcons(ilts, ival) => ilts)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 local
 //
 val

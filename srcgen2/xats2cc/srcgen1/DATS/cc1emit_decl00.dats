@@ -99,6 +99,36 @@ loctn_fprint(loc0,filr))//endfun
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#static0
+fun
+valtok_prvq(token): bool
+#static0
+fun
+funtok_prfq(token): bool
+//
+#implfun
+valtok_prvq
+(   tok   ) =
+(
+case-
+tok.node() of
+|T_VAL
+( vlk ) => valkind_prvq(vlk))
+(* end-of-[valtok_prvq(tok)] *)
+//
+#implfun
+funtok_prfq
+(   tok   ) =
+(
+case-
+tok.node() of
+|T_FUN
+( fnk ) => funkind_prfq(fnk))
+(* end-of-[funtok_prfq(tok)] *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 i1dcl_cc1emit
 (dcl0, env0) =
@@ -121,6 +151,26 @@ dcl0.node() of
 |I1Dinclude _ =>
 (
   f0_include(dcl0, env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Dvaldclst _ =>
+(
+  f0_valdclst(dcl0, env0))
+(*
+|I1Dvardclst _ =>
+(
+  f0_vardclst(dcl0, env0))
+*)
+//
+(* ****** ****** *)
+//
+(*
+|I1Dfundclst _ =>
+(
+  f0_fundclst(dcl0, env0))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -173,6 +223,68 @@ case+ dopt of
 (
   i1dclist_cc1emit(dcls, env0)))
 end(*let*)//end-of-[f0_include(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+(
+dcl0: i1dcl,
+env0: !envxcc1): void =
+let
+//
+val filr =
+  env0.filr((*void*))
+val nind =
+  env0.nind((*void*))
+val loc0 =
+  dcl0.lctn((*void*))
+//
+val-
+I1Dvaldclst
+(tknd, i1vs) = dcl0.node()
+//
+val
+prvq =
+(
+  valtok_prvq( tknd ))
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+(
+  nindfpr(filr, nind));
+//
+if
+prvq
+then prints
+("// I1Dprvdclist(",loc0,")\n")
+else prints
+("// I1Dvaldclist(",loc0,")\n")
+//
+end//let
+//
+val (  ) =
+if
+prvq
+then
+(
+(*
+(
+  i1valdclist_ccaemit(i1vs, env0))
+*)
+)
+else
+(
+  i1valdclist_cc1emit(i1vs, env0))
+//
+end(*let*)//end-of-[f0_valdclst(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -253,14 +365,12 @@ envxcc1_filr$get(env0)
 val nind =
 envxcc1_nind$get(env0)
 //
-(*
 val () =
 (
-nindstrnfpr
-(filr, nind, "let ");
+nindfpr
+(filr, nind);
 i1tnmcc1
-(filr, itnm);fprintln(filr))
-*)
+(filr, itnm);endlfpr(filr))
 //
 // HX: for computing ival
 val () =
@@ -270,9 +380,10 @@ f0_i1tnmcmp(itnm, icmp, env0)
 val () =
 (
 nindstrnfpr
-(filr, nind, "XATS000_patck(");
+(filr
+,nind, "XATS000_patck(");
 i0pckcc1(filr, ival, ipat);
-strnfpr(filr, ")");fprintln(filr))
+strnfpr(filr, ")");endlfpr(filr))
 *)
 //
 endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
@@ -324,7 +435,7 @@ val () =
 let
 (*
 nindfpr(filr, nind);
-i1tnmcc1(filr, itnm);strnfpr(filr, " = ");i1valcc1(filr, ival);fprintln(filr)
+i1tnmcc1(filr, itnm);strnfpr(filr, " = ");i1valcc1(filr, ival);endlfpr(filr)
 *)
 end//let
 //

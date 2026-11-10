@@ -93,6 +93,22 @@ envxcc1_decnind
 (* ****** ****** *)
 //
 fun
+i1tnmcc1
+(filr:FILR,itnm:i1tnm): void
+//
+(* ****** ****** *)
+//
+fun
+i1valcc1
+(filr:FILR,ival:i1val): void
+fun
+l1i1vcc1
+(filr:FILR,liv0:l1i1v): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 list_cc1emit_fnp
 (
@@ -110,6 +126,10 @@ fopr: (x0, !envxcc1)->void): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+i1let_cc1emit
+(ilet: i1let, env0: !envxcc1): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -125,7 +145,7 @@ i1letlst_cc1emit(
   i1vs: i1letlst, env0: !envxcc1): void
 //
 fun
-js1emit_i1cmplst(
+i1cmplst_cc1emit(
   i1fs: i1cmplst, env0: !envxcc1): void
 //
 (* ****** ****** *)
@@ -159,6 +179,19 @@ i1parsed_cc1emit
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+i1valdclist_cc1emit(
+  i1vs: i1valdclist, env0: !envxcc1): void
+fun
+i1vardclist_cc1emit(
+  i1vs: i1vardclist, env0: !envxcc1): void
+//
+fun
+i1fundclist_cc1emit(
+  i1fs: i1fundclist, env0: !envxcc1): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 fun
 i1dclistopt_cc1emit(
   dopt: i1dclistopt, env0: !envxcc1): void

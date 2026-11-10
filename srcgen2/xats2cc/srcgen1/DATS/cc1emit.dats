@@ -141,10 +141,34 @@ optn_nil() =>
 (* ****** ****** *)
 //
 #implfun
+i1letlst_cc1emit
+  (ilts, env0) =
+(
+  list_cc1emit_fnp(ilts, env0, i1let_cc1emit))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i1dclist_cc1emit
   (dcls, env0) =
 (
   list_cc1emit_fnp(dcls, env0, i1dcl_cc1emit))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1valdclist_cc1emit
+  (i1vs, env0) =
+(
+  list_cc1emit_fnp(i1vs, env0, i1valdcl_cc1emit))
+//
+#implfun
+i1vardclist_cc1emit
+  (i1vs, env0) =
+(
+  list_cc1emit_fnp(i1vs, env0, i1vardcl_cc1emit))
 //
 (* ****** ****** *)
 (* ****** ****** *)
