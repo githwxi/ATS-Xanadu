@@ -158,5 +158,5 @@ prints("fibo1(x0) = ", fibo1(x0), "\n") end
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test03_xats2js.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen1/TEST/test03_xats2js.dats] *)
 (***********************************************************************)

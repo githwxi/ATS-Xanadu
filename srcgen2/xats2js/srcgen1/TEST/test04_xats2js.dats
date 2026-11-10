@@ -55,5 +55,5 @@ val list_btw_vt_sint = list_btw_vt<sint>(*void*)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_test04_xats2js.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen1/TEST/test04_xats2js.dats] *)
 (***********************************************************************)
