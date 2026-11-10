@@ -187,6 +187,8 @@ and i1ins =
 (label(*int/sym*)
 ,i1val(*tuproot*))//tptrprj
 //
+// end-of-[datatype(  i1ins  )]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -265,7 +267,7 @@ where
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-(i1let/ins/val)
+}(*where*)//end-of-(i1let/i1ins/i1val)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -168,6 +168,14 @@ i1fundclist_jsaemit
   list_jsaemit_fnp(i1vs, env0, i1fundcl_jsaemit))
 //
 (* ****** ****** *)
+//
+#implfun
+i1tfndclist_jsaemit
+  (i1vs, env0) =
+(
+  list_jsaemit_fnp(i1vs, env0, i1tfndcl_jsaemit))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

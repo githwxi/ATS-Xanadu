@@ -554,6 +554,27 @@ end(*let*)//end-of-(envi0i1_dvar$insert)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+envi0i1_ilet$insert
+  (env0 , ilet) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+let
+val () =
+iltstk_ilet$insert
+(  iltstk, ilet  ) in $fold(env0) end
+//
+end(*let*)//end-of-(envi0i1_ilet$insert)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 endloc(*local*)//end-of-[local(envi0i1...)]
 //
 (* ****** ****** *)

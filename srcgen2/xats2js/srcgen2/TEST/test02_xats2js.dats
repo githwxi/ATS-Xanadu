@@ -157,5 +157,5 @@ val ((*void*)) = the_print_store_log( (*void*) )
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen2_TEST_test03_xats2js.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2js/srcgen2/TEST/test03_xats2js.dats] *)
 (***********************************************************************)

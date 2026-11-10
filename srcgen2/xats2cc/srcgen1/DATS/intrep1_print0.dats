@@ -139,6 +139,59 @@ end(*let*)//end-of-[i1val_fprint(i1v0,out0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#implfun
+i1ins_fprint
+(iins, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+ iins of
+//
+(* ****** ****** *)
+//
+(*
+|I1INSopr
+( iopr, i1vs) =>
+(
+print("I1INSopr(");
+prints(iopr, ";", i1vs, ")"))
+*)
+//
+(* ****** ****** *)
+//
+|I1INSdapp
+( i1f0, i1vs) =>
+(
+print("I1INSdapp(");
+prints(i1f0, ";", i1vs, ")"))
+//
+(* ****** ****** *)
+//
+|I1INSpcon
+(dlab, icon) =>
+( print("I1INSpcon(")
+; prints(dlab, ";", icon, ")"))
+//
+|I1INSpflt
+(dlab, itup) =>
+( print("I1INSpflt(")
+; prints(dlab, ";", itup, ")"))
+//
+|I1INSproj
+(dlab, itup) =>
+( print("I1INSproj(")
+; prints(dlab, ";", itup, ")"))
+//
+(* ****** ****** *)
+//
+end(*let*)//end-of-[i1val_fprint(i1v0,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 i1let_fprint
 (ilet, out0) =
