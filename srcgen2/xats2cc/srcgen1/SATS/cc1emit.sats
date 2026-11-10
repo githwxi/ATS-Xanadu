@@ -110,6 +110,9 @@ fopr: (x0, !envxcc1)->void): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 i1dcl_cc1emit
 (dcl0: i1dcl, env0: !envxcc1): void
@@ -118,8 +121,33 @@ i1dcl_cc1emit
 (* ****** ****** *)
 //
 fun
+i1letlst_cc1emit(
+  i1vs: i1letlst, env0: !envxcc1): void
+//
+fun
+js1emit_i1cmplst(
+  i1fs: i1cmplst, env0: !envxcc1): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1dclist_cc1emit(
   dcls: i1dclist, env0: !envxcc1): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1valdcl_cc1emit(
+  ival: i1valdcl, env0: !envxcc1): void
+fun
+i1vardcl_cc1emit(
+  ivar: i1vardcl, env0: !envxcc1): void
+//
+fun
+i1fundcl_cc1emit(
+  ifun: i1fundcl, env0: !envxcc1): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

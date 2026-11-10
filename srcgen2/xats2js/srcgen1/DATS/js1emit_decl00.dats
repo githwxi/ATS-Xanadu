@@ -792,7 +792,7 @@ endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
 //
 (* ****** ****** *)
 //
-end where//end-of-let(js1emit_i1valdcl(...)]
+end where//end-of-(js1emit_i1valdcl(...)]
 {
 //
 val (  ) =
@@ -805,7 +805,7 @@ val nind =
 envx2js_nind$get(env0))
 in//let
 (
- nindstrnfpr(filr, nind, "// I1VALDCL\n"))
+  nindstrnfpr(filr, nind, "// I1VALDCL\n"))
 end//let//end-of-[val()]
 //
 fun
@@ -930,7 +930,7 @@ val nind =
 envx2js_nind$get(env0))
 in//let
 (
- nindstrnfpr(filr, nind, "// I1VARDCL\n"))
+  nindstrnfpr(filr, nind, "// I1VARDCL\n"))
 end//let//end-of-[val()]
 //
 }(*where*)//end-of-[js1emit_i1vardcl(env0,dcl0)]

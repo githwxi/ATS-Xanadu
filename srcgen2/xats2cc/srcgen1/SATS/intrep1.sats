@@ -292,10 +292,41 @@ where
 (* ****** ****** *)
 //
 fun
-i1tnm_new0(ityp:i0typ):i1tnm
+i1opr_fprint
+(iopr:i1opr, out0:FILR): void
+fun
+i1tnm_fprint
+(itnm:i1tnm, out0:FILR): void
+//
+(* ****** ****** *)
 //
 fun
-i1tnm_stmp$get:(i1tnm->stamp)
+i1let_fprint
+(ilet:i1let, out0:FILR): void
+//
+fun
+i1bnd_fprint
+(ibnd:i1bnd, out0:FILR): void
+fun
+i1cmp_fprint
+(icmp:i1cmp, out0:FILR): void
+//
+fun
+i1ins_fprint
+(iins:i1ins, out0:FILR): void
+//
+fun
+i1val_fprint
+(ival:i1val, out0:FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1tnm_new0(ityp:i0typ): i1tnm
+//
+fun
+i1tnm_stmp$get:(i1tnm -> stamp)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -350,29 +381,16 @@ i1val_node$get
 (* ****** ****** *)
 //
 fun
-i1opr_fprint
-(
-iopr: i1opr, out0: FILR): void
-fun
-i1tnm_fprint
-(
-itnm: i1tnm, out0: FILR): void
-//
-(* ****** ****** *)
+i1cmp_lctn$get(i1cmp): ( loc_t )
 //
 fun
-i1let_fprint:(i1let, FILR)->void
+i1cmp_ival$get(i1cmp): ( i1val )
+fun
+i1cmp_ilts$get(i1cmp): (i1letlst)
 //
-fun
-i1bnd_fprint:(i1bnd, FILR)->void
-fun
-i1cmp_fprint:(i1cmp, FILR)->void
-//
-fun
-i1ins_fprint:(i1ins, FILR)->void
-//
-fun
-i1val_fprint:(i1val, FILR)->void
+#symload lctn with i1cmp_lctn$get
+#symload ival with i1cmp_ival$get
+#symload ilts with i1cmp_ilts$get
 //
 (* ****** ****** *)
 (* ****** ****** *)

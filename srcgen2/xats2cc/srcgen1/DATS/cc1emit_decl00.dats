@@ -209,6 +209,132 @@ end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#implfun
+i1valdcl_cc1emit
+  (idcl, env0) = let
+//
+(* ****** ****** *)
+//
+val dpat =
+i1valdcl_dpat$get(idcl)
+val tdxp =
+i1valdcl_tdxp$get(idcl)
+//
+(* ****** ****** *)
+//
+val ipat =
+(
+case+ dpat of
+|I1BNDcons(_,ipat,_) => ipat)
+val itnm =
+(
+case+ dpat of
+|I1BNDcons(itnm,_,_) => itnm)
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+case+ tdxp of
+//
+|
+TEQI1CMPnone
+( (*void*) ) => ( (*void*) )
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+//
+val ival =
+i1cmp_ival$get(icmp)
+val filr =
+envxcc1_filr$get(env0)
+val nind =
+envxcc1_nind$get(env0)
+//
+(*
+val () =
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmcc1
+(filr, itnm);fprintln(filr))
+*)
+//
+// HX: for computing ival
+val () =
+f0_i1tnmcmp(itnm, icmp, env0)
+//
+(*
+val () =
+(
+nindstrnfpr
+(filr, nind, "XATS000_patck(");
+i0pckcc1(filr, ival, ipat);
+strnfpr(filr, ")");fprintln(filr))
+*)
+//
+endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
+//
+(* ****** ****** *)
+//
+end where//end-of-(i1valdcl_cc1emit(...)]
+{
+//
+val (  ) =
+let
+val filr =
+(
+envxcc1_filr$get(env0))
+val nind =
+(
+envxcc1_nind$get(env0))
+in//let
+(
+  nindstrnfpr(filr, nind, "// I1VALDCL\n"))
+end//let//end-of-[val()]
+//
+fun
+f0_i1tnmcmp
+(
+itnm: i1tnm,
+icmp: i1cmp,
+env0: !envxcc1): void =
+let
+//
+val filr =
+envxcc1_filr$get(env0)
+val nind =
+envxcc1_nind$get(env0)
+//
+val
+ival =
+(
+  i1cmp_ival$get(icmp))
+val
+ilts =
+(
+  i1cmp_ilts$get(icmp))
+//
+val () =
+i1letlst_cc1emit(ilts, env0)
+//
+val () =
+let
+(*
+nindfpr(filr, nind);
+i1tnmcc1(filr, itnm);strnfpr(filr, " = ");i1valcc1(filr, ival);fprintln(filr)
+*)
+end//let
+//
+end//let//end-of-[f0_i1tnmcmp(...)]
+//
+}(*where*)//end-of-[i1valdcl_cc1emit(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (***********************************************************************)
 (* end of [ATS3-XANADU/srcgen2/xats2cc/srcgen1/DATS/cc1emit_decl00.dats] *)
