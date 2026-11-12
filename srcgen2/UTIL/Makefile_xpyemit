@@ -76,6 +76,10 @@ cleanall:: ; \
 rm -f xatsopt_tcheck00_ats3.py
 cleanall:: ; \
 rm -f xatsopt_tcheck01_ats3.py
+cleanall:: ; \
+rm -f xatsopt_tcheck00_ats3_opt0.py
+cleanall:: ; \
+rm -f xatsopt_tcheck01_ats3_opt0.py
 ########################################################################
 ########################################################################
 XASSETS=./../../xassets

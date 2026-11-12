@@ -62,6 +62,10 @@ cleanall:: ; \
 rm -f xatsopt_tcheck00_ats3.cm
 cleanall:: ; \
 rm -f xatsopt_tcheck01_ats3.cm
+cleanall:: ; \
+rm -f xatsopt_tcheck00_ats3_opt0.cm
+cleanall:: ; \
+rm -f xatsopt_tcheck01_ats3_opt0.cm
 ########################################################################
 ########################################################################
 XASSETS=./../../xassets
