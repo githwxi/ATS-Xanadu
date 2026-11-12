@@ -361,9 +361,12 @@ val () = kwdins("#implmnt", T0IMPLMNT)
 val () = kwdins("#implprf", T0IMPLPRF)
 val () = kwdins("#implval", T0IMPLVAL)
 val () = kwdins("#implfun", T0IMPLFUN)
-//
 val () = kwdins("#impltmp", T0IMPLTMP)
-val () = kwdins("#impltmprec", T0IMPLTMPREC)
+//
+val (  ) =
+   kwdins("#impltmpr", T0IMPLTMPEC)
+val (  ) =
+   kwdins("#impltmprec", T0IMPLTMPREC)
 //
 (* ****** ****** *)
 //
