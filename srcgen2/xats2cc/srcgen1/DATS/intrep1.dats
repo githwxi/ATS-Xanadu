@@ -37,6 +37,7 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 #define
 XATSOPT "./../../.."
@@ -48,6 +49,10 @@ XATSOPT "./../../.."
 #include
 "./../../..\
 /HATS/xatsopt_dpre.hats"
+(* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload
 "./../../../SATS/xstamp0.sats"
@@ -182,28 +187,42 @@ local
 //
 datatype
 i1tnm =
-I1TNM of (stamp)
+I1TNM of (i0typ, stamp)
 //
 #absimpl i1tnm_tbox = i1tnm
 //
 in//local
+//
+(* ****** ****** *)
+//
+#implfun
+i1tnm_ityp$get
+  ( itnm ) =
+let
+val+
+I1TNM
+(ityp, stmp) = itnm in ityp end
+//
+(* ****** ****** *)
 //
 #implfun
 i1tnm_stmp$get
   ( itnm ) =
 let
 val+
-I1TNM(stmp) = itnm in stmp end
+I1TNM
+(ityp, stmp) = itnm in stmp end
 //
 (* ****** ****** *)
 //
 #implfun
-i1tnm_new0() =
+i1tnm_new1
+(  ityp  ) =
 (
-  I1TNM(stmp)) where
-{ val
-  stmp = the_i1tnm_stamp_new()
-}(*where*)//end-of-[i1tnm_new0()]
+  I1TNM(ityp, stmp)) where
+{
+val stmp = the_i1tnm_stamp_new()
+}(*where*)//end-of-[i1tnm_new1(ityp)]
 //
 (* ****** ****** *)
 //
@@ -215,10 +234,12 @@ let
 #impltmp
 g_print$out<>() = out0
 //
-val+I1TNM(stmp) = itnm
+val+
+I1TNM(ityp, stmp) = itnm
 //
 in//let
-  prints("I1TNM(", stmp, ")") endlet
+prints("I1TNM(", ityp, ";", stmp, ")")
+end//let
 //
 (* ****** ****** *)
 //

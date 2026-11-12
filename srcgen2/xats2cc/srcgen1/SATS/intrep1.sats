@@ -323,8 +323,10 @@ i1val_fprint
 (* ****** ****** *)
 //
 fun
-i1tnm_new0(ityp:i0typ): i1tnm
+i1tnm_new1(ityp:i0typ): i1tnm
 //
+fun
+i1tnm_ityp$get:(i1tnm -> i0typ)
 fun
 i1tnm_stmp$get:(i1tnm -> stamp)
 //

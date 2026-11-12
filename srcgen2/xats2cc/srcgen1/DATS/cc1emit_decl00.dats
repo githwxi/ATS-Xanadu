@@ -76,6 +76,7 @@ XATSOPT "./../../.."
 #staload "./../SATS/intrep1.sats"
 #staload "./../SATS/xats2cc.sats"
 //
+#staload "./../SATS/cc0emit.sats"
 #staload "./../SATS/cc1emit.sats"
 //
 (* ****** ****** *)
@@ -358,8 +359,11 @@ TEQI1CMPsome
 (teq1, icmp) =>
 let
 //
+val ityp =
+i1tnm_ityp$get(itnm)
 val ival =
 i1cmp_ival$get(icmp)
+//
 val filr =
 envxcc1_filr$get(env0)
 val nind =
@@ -367,10 +371,10 @@ envxcc1_nind$get(env0)
 //
 val () =
 (
-nindfpr
-(filr, nind);
-i1tnmcc1
-(filr, itnm);endlfpr(filr))
+nindfpr(filr, nind);
+i0typcc0(filr, ityp);endlfpr(filr);
+nindfpr(filr, nind);
+i1tnmcc1(filr, itnm);endlfpr(filr))
 //
 // HX: for computing ival
 val () =

@@ -37,6 +37,7 @@ BUILD/JS/cc0emit_dynexp_dats_out0.js: SATS/intrep0.sats SATS/xats2cc.sats SATS/c
 BUILD/JS/cc0emit_decl00_dats_out0.js: SATS/intrep0.sats SATS/xats2cc.sats SATS/cc0emit.sats
 ########################################################################
 BUILD/JS/cc1emit_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats SATS/cc1emit.sats
+BUILD/JS/cc1emit_utils0_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats SATS/cc1emit.sats
 BUILD/JS/cc1emit_dynexp_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats SATS/cc1emit.sats
 BUILD/JS/cc1emit_decl00_dats_out0.js: SATS/intrep0.sats SATS/intrep1.sats SATS/xats2cc.sats SATS/cc1emit.sats
 ########################################################################

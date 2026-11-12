@@ -470,7 +470,7 @@ val dvar = dpid.dvar()
 val ityp = dpid.ityp()
 //
 val itnm =
-i1tnm_new0(ityp)
+i1tnm_new1(ityp)
 val ival =
 i1val(loc0, I1Vtnm(itnm))
 //

@@ -219,7 +219,7 @@ i1val_tnm(loc0, itnm)) where
 {
 //
 val
-itnm = i1tnm_new0(ityp)
+itnm = i1tnm_new1(ityp)
 //
 val i1vs = list_nil((*0*))
 val iins = I1INSdapp(i1f0, i1vs)
@@ -245,7 +245,7 @@ i1val_tnm(loc0, itnm)) where
 {
 //
 val
-itnm = i1tnm_new0(ityp)
+itnm = i1tnm_new1(ityp)
 //
 val iins = I1INSdapp(i1f0, i1vs)
 val ilet = I1LETnew1(itnm, iins)
@@ -286,7 +286,7 @@ let
 val
 ityp = ipat.ityp()
 val
-itnm = i1tnm_new0(ityp)
+itnm = i1tnm_new1(ityp)
 in//let
 (
 I1BNDcons
@@ -307,7 +307,7 @@ val loc0 = ipat.lctn()
 //
 val ityp = ipat.ityp()
 val
-itnm = i1tnm_new0(ityp)
+itnm = i1tnm_new1(ityp)
 val ival =
 i1val(loc0, I1Vtnm(itnm))
 //
