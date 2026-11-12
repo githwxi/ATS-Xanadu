@@ -1373,7 +1373,7 @@ _(*otherwise*) => i1ins_fprint(iins,filr)
 //
 (* ****** ****** *)
 //
-end(*let*) // end-of-[i1insjs1(env0,iins)]
+end(*let*) // end-of-[i1insjs1(filr,iins)]
 //
 (* ****** ****** *)
 //
@@ -1395,7 +1395,7 @@ case+ icmp of
 |
 _(*otherwise*) => i1cmp_fprint(icmp,filr)
 (* ****** ****** *)
-end(*let*) // end-of-[i1cmpjs1(env0,icmp)]
+end(*let*) // end-of-[i1cmpjs1(filr,icmp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

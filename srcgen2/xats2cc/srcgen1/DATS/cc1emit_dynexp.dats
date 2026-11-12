@@ -59,10 +59,118 @@ XATSOPT "./../../.."
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
+#staload "./../SATS/xats2cc.sats"
+//
 #staload "./../SATS/cc1emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+endlfpr
+(filr: FILR): void =
+(
+strn_fprint("\n", filr))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1inscc1
+( filr: FILR
+, iins: i1ins): void =
+let
+//
+(*
+val () =
+prerrsln
+("i1inscc1: iins = ", iins)
+*)
+//
+in//let
+//
+case+ iins of
+//
+(* ****** ****** *)
+|
+_(*otherwise*) => i1ins_fprint(iins, filr)
+(* ****** ****** *)
+//
+end(*let*)//end-of-[i1inscc1(filr,iins)]
+//
+(* ****** ****** *)
+//
+fun
+i1cmpcc1
+( filr: FILR
+, icmp: i1cmp): void =
+let
+//
+(*
+val () =
+prerrsln
+("i1cmpcc1: icmp = ", icmp)
+*)
+//
+in//let
+//
+case+ icmp of
+//
+(* ****** ****** *)
+|
+_(*otherwise*) => i1cmp_fprint(icmp, filr)
+(* ****** ****** *)
+//
+end(*let*)//end-of-[i1cmpcc1(filr,icmp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1let_cc1emit
+(ilet, env0) =
+let
+//
+val () =
+prerrsln
+("i1let_cc1emit: ilet = ", ilet)
+//
+in//let
+//
+case+ ilet of
+//
+|I1LETnew0
+(   iins   ) =>
+(
+case+ iins of
+|
+_(*otherwise*) =>
+(
+nindfpr(filr, nind);i1inscc1(filr, iins);endlfpr(filr))
+)
+//
+|I1LETnew1
+(itnm, iins) =>
+(
+case+ iins of
+|
+_(*otherwise*) =>
+(
+nindfpr(filr, nind);i1tnmcc1(filr, itnm);
+strnfpr(filr, " = ");i1inscc1(filr, iins);endlfpr(filr))
+)
+end where
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+val filr = env0.filr()
+val nind = env0.nind()
+(* ****** ****** *)
+(* ****** ****** *)
+//
+}(*where*)//end-of-[i1let_cc1emit(ilet,env0)]
+//
 //
 (***********************************************************************)
 (***********************************************************************)

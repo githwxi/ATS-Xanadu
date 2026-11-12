@@ -34,7 +34,7 @@
     "#tboxdef" "#typedef" "#vwtpdef"
     "#abstype" "#absprop" "#absview" "#abstbox" "#abstflt"
     "#absvtbx" "#absvtft" "#absvwtp" "#absimpl" "#absopen"
-    "#implmnt" "#implprf" "#implval" "#implfun" "#impltmp" "#impltmpr")
+    "#implmnt" "#implprf" "#implval" "#implfun" "#impltmp" "#impltmpr" "#impltmprec")
   "ATS3 preprocessor and loading directives.")
 
 (defconst ats3-special-identifiers
