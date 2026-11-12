@@ -181,19 +181,13 @@ in//let
 //
 case+ knd of
 //
-|
-IMPLgen() => print( "IMPLgen" )
-|
-IMPLprf() => print( "IMPLprf" )
-|
-IMPLval() => print( "IMPLval" )
-|
-IMPLfun() => print( "IMPLfun" )
-|
-IMPLtmp() => print( "IMPLtmp" )
+|IMPLgen() => print( "IMPLgen" )
+|IMPLprf() => print( "IMPLprf" )
+|IMPLval() => print( "IMPLval" )
+|IMPLfun() => print( "IMPLfun" )
 //
-|
-IMPLtmpr() => print( "IMPLtmpr" )
+|IMPLtmp() => print( "IMPLtmp" )
+|IMPLtmprec() => print("IMPLtmprec")
 //
 end(*let*)//end-of(implknd_fprint(...))
 //

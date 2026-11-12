@@ -247,13 +247,19 @@ caskind_fprint
 datatype
 implknd =
 //
-| IMPLgen // for non-proof case
-| IMPLprf // proof implementation
-| IMPLval // value implementation
-| IMPLfun // function implementation
-| IMPLtmp // template implementation
+|
+IMPLgen // for non-proof case
+|
+IMPLprf // proof implementation
+|
+IMPLval // value implementation
+|
+IMPLfun // function implementation
+|
+IMPLtmp // template implementation
 //
-| IMPLtmpr // recursive template implementation
+|
+IMPLtmprec // recursive temp. impl.
 //
 (* ****** ****** *)
 //

@@ -229,7 +229,7 @@ implknd_recq(knd) =
 (
 case+ knd of
 |
-IMPLtmpr
+IMPLtmprec
 ( (*0*) ) => true | _ => false)
 where
 {

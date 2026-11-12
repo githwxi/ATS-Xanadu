@@ -131,7 +131,9 @@ val T0IMPLPRF = T_IMPLMNT(IMPLprf)
 val T0IMPLVAL = T_IMPLMNT(IMPLval)
 val T0IMPLFUN = T_IMPLMNT(IMPLfun)
 val T0IMPLTMP = T_IMPLMNT(IMPLtmp)
-val T0IMPLTMPR = T_IMPLMNT(IMPLtmpr)
+//
+val
+T0IMPLTMPREC = T_IMPLMNT(IMPLtmprec)
 //
 (* ****** ****** *)
 //
@@ -359,8 +361,9 @@ val () = kwdins("#implmnt", T0IMPLMNT)
 val () = kwdins("#implprf", T0IMPLPRF)
 val () = kwdins("#implval", T0IMPLVAL)
 val () = kwdins("#implfun", T0IMPLFUN)
+//
 val () = kwdins("#impltmp", T0IMPLTMP)
-val () = kwdins("#impltmpr", T0IMPLTMPR)
+val () = kwdins("#impltmprec", T0IMPLTMPREC)
 //
 (* ****** ****** *)
 //
@@ -371,15 +374,14 @@ val () = kwdins("dataprop", T0DATAPROP)
 val () = kwdins("dataview", T0DATAVIEW)
 val () = kwdins("datatype", T0DATATYPE)
 val () = kwdins("datavwtp", T0DATAVWTP)
-(*
-val () = kwdins("datavtype", T0DATAVTYPE)
-*)
 //
 val () = kwdins("withtype", T0WITHTYPE)
 val () = kwdins("withprop", T0WITHPROP)
 val () = kwdins("withview", T0WITHVIEW)
 val () = kwdins("withvwtp", T0WITHVWTP)
+//
 (*
+val () = kwdins("datavtype", T0DATAVTYPE)
 val () = kwdins("withvtype", T0WITHVTYPE)
 *)
 //
