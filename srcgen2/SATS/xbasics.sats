@@ -249,15 +249,18 @@ implknd =
 //
 |
 IMPLgen // for non-proof case
+//
 |
 IMPLprf // proof implementation
+//
 |
 IMPLval // value implementation
+//
 |
 IMPLfun // function implementation
+//
 |
 IMPLtmp // template implementation
-//
 |
 IMPLtmprec // recursive temp. impl.
 //
