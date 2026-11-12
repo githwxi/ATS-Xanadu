@@ -534,7 +534,7 @@ It is merged into tr3cenv_t3apq_resolve
 //
 fun
 tr3cenv_timpl_resolve
-// return: // HX: handling impltmpr
+// return: // HX: handling impltmprec
 // TIMPLall1(*tmp*) or TIMPLallx(*tmpr*)
 ( env0:
 ! tr3cenv

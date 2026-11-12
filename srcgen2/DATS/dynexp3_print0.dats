@@ -918,6 +918,8 @@ prints(tknd,";",stmp,";");
 prints(sqas,";",tqas,";");
 prints(dqid,";",tias,";",farg,";",sres,";",body,")"))
 //
+(* ****** ****** *)
+//
 |
 D3Ctmplocal
 (  dtmp, dcls ) =>
@@ -925,9 +927,11 @@ D3Ctmplocal
 prints("D3Ctmplocal(",dtmp,";",dcls,")"))
 //
 |
-D3Cimpltmpr(dcl1,t2js) =>
+D3Crimpltmp(dcl1,t2js) =>
 (
-prints("D3Cimpltmpr(",dcl1,";",t2js,")"))
+prints("D3Crimpltmp(",dcl1,";",t2js,")"))
+//
+(* ****** ****** *)
 //
 |D3Cnone0() => prints( "D3Cnone0(", ")" )
 |D3Cnone1(d2cl) => prints( "D3Cnone1(",d2cl,")" )

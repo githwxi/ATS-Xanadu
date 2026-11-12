@@ -612,7 +612,7 @@ d3exp_trcdfltq(d3exp): bool
 fun
 d3ecl_impltmpq(d3ecl): bool
 fun
-d3ecl_impltmprq(d3ecl): bool
+d3ecl_impltmprecq(d3ecl): bool
 //
 (* ****** ****** *)
 fun
@@ -976,8 +976,8 @@ D3Ctmplocal of
 ,d3eclist(*local*))//end(D3Ctmplocal)
 //
 |
-D3Cimpltmpr of
-( stamp(*unicity*), d3ecl(*impltmpr*) )
+D3Crimpltmp of
+(stamp(*unicity*), d3ecl(*impltmprec*))
 //
 (* ****** ****** *)
 //
@@ -1033,17 +1033,17 @@ d3ecl_tmpsub
 //
 (* ****** ****** *)
 fun
-d3ecl_impltmpr
+d3ecl_rimpltmp
 (test:stamp,d3cl:d3ecl):(d3ecl)
 (* ****** ****** *)
 //
 fun
 d3imp_d2csteq
-(d3cl:d3ecl,d2c0:d2cst): bool
+(d3cl:d3ecl,d2c0:d2cst): (bool)
 //
 fun
 d3imp_stampeq
-(d3cl:d3ecl,stmp:stamp): bool
+(d3cl:d3ecl,stmp:stamp): (bool)
 //
 (* ****** ****** *)
 //

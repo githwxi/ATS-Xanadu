@@ -289,11 +289,11 @@ list_cons
 case+
 dcl1.node() of
 |
-D3Cimpltmpr _ =>
+D3Crimpltmp _ =>
 (
   TIMPLallx(d2c0, t2js, dcls))
 |
-_(*non-tmpr*) =>
+_(*non-rimpltmp*) =>
 (
   TIMPLall1(d2c0, t2js, dcls)))
 )
@@ -405,13 +405,13 @@ else
 (
 if
 (
-  d3ecl_impltmprq(dcl1))
+d3ecl_impltmprecq(dcl1))
 then
 (
 list_vt_cons(dcl1, dcls)
 ) where {
 val dcl1 =
-d3ecl_impltmpr(test, dcl1)
+d3ecl_rimpltmp(test, dcl1)
 }(*where*)//end-of-then
 else
 (

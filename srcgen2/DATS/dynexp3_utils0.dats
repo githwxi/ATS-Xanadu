@@ -306,7 +306,7 @@ list_exists(d2cs)
 exists$test
 <  d2cst  >(d2c1) = (d2c0 = d2c1)
 }
-end (*let*) // end of [f0_fundclst(...)]
+end (*let*) // end-of-[f0_fundclst(...)]
 //
 (* ****** ******)
 //
@@ -334,9 +334,9 @@ dimp.node() of
 (d2c1, svts) => (d2c0 = d2c1)
 | _(* otherwise *) => (   false   )
 //
-end (*let*) // end of [f0_implmnt0(...)]
+end (*let*) // end-of-[f0_implmnt0(...)]
 //
-} (*where*) // end of [d3imp_d2csteq(...)]
+} (*where*) // end-of-[d3imp_d2csteq(...)]
 //
 (* ****** ****** *)
 //
@@ -379,9 +379,9 @@ in//let
 //
 if tmp0 = tmp1 then true else false
 //
-end (*let*) // end of [f0_implmnt0(...)]
+end (*let*) // end-of-[f0_implmnt0(...)]
 //
-} (*where*) // end of [d3imp_stampeq(...)]
+} (*where*) // end-of-[d3imp_stampeq(...)]
 //
 (* ****** ****** *)
 //
@@ -416,7 +416,7 @@ D3Ctmplocal
 |
 _(* otherwise *) => the_stamp_nil(*0*)
 //
-)(*case+*) // end of [d3imp_get_stmp(...)]
+)(*case+*) // end-of-[d3imp_get_stmp(...)]
 //
 (* ****** ****** *)
 //
@@ -449,19 +449,19 @@ D3Cimplmnt0
 (* ****** ****** *)
 //
 #implfun
-d3ecl_impltmpr
+d3ecl_rimpltmp
 ( stmp, d3cl ) =
 let
 val loc0 = d3cl.lctn()
 in//let
 (
-  d3ecl(loc0, D3Cimpltmpr(stmp, d3cl)))
-end(*let*) // end-of-[d3ecl_impltmpr(...)]
+  d3ecl(loc0, D3Crimpltmp(stmp, d3cl)))
+end(*let*) // end-of-[d3ecl_rimpltmp(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-d3ecl_impltmprq
+d3ecl_impltmprecq
   ( d3cl ) =
 (
 case+
@@ -470,12 +470,12 @@ d3cl.node() of
 |
 D3Ctmpsub
 (svts, dcl1) =>
-d3ecl_impltmprq(dcl1)
+d3ecl_impltmprecq(dcl1)
 //
 |
 D3Ctmplocal
 (dcl1, dcls) =>
-d3ecl_impltmprq(dcl1)
+d3ecl_impltmprecq(dcl1)
 //
 |
 D3Cimplmnt0
@@ -498,10 +498,10 @@ val-T_IMPLMNT(knd0) = tknd.node()
 val () =
 (
   prerrsln
-  ("d3ecl_impltmprq: d3cl = ", d3cl))
+  ("d3ecl_impltmprecq: d3cl = ", d3cl))
 *)
 //
-}(*where*)//end-of-[d3ecl_impltmprq(d3cl)]
+}(*where*)//end-of-[d3ecl_impltmprecq(d3cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -584,7 +584,7 @@ val () =
 prerrsln("static_search_dcst: d2c0 = ", d2c0)
 *)
 //
-}(*where*) // end of [static_search_dcst(...)]
+}(*where*) // end-of-[static_search_dcst(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -364,7 +364,7 @@ val () = kwdins("#implfun", T0IMPLFUN)
 val () = kwdins("#impltmp", T0IMPLTMP)
 //
 val (  ) =
-   kwdins("#impltmpr", T0IMPLTMPEC)
+   kwdins("#impltmpr", T0IMPLTMPREC)
 val (  ) =
    kwdins("#impltmprec", T0IMPLTMPREC)
 //
