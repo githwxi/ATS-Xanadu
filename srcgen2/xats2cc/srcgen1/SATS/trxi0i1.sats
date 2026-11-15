@@ -50,6 +50,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef i0env = i0var
+#typedef ienvs = i0varlst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #absvtbx iltstk_vtbx // ptr
 #vwtpdef iltstk = iltstk_vtbx
 //
@@ -153,6 +159,22 @@ envi0i1_locjoin(!envi0i1): void
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-05-13:
+Needed for [I0Eextnam]
+*)
+fun
+envi0i1_exnm$search
+( env0:
+! envi0i1, loc0: loc_t): i1val
+//
+fun
+envi0i1_exnm$insert
+( env0: 
+! envi0i1, ival: i1val): (void)
+//
+(* ****** ****** *)
+//
 fun
 envi0i1_dvar$search
 ( env0: 
@@ -163,10 +185,39 @@ envi0i1_dvar$insert
 env0: !envi0i1,
 d2v0:d2var, ival:i1val): (void)
 //
+(* ****** ****** *)
+//
 fun
 envi0i1_ilet$insert
 ( env0:
 ! envi0i1, ilet: i1let): (void)
+//
+(* ****** ****** *)
+//
+fun
+envi0i1_i0ws$insert
+( env0:
+! envi0i1, i0ws: ienvs): (void)
+//
+fun
+envi0i1_i0ws$search
+( env0:
+! envi0i1, i0ws: ienvs): i1valist
+//
+(* ****** ****** *)
+//
+fun
+envi0i1_dfix$insert
+( env0: 
+! envi0i1, d2v0: d2var): (void)
+//
+(* ****** ****** *)
+//
+fun
+envi0i1_fenv$insert
+(
+env0: !envi0i1,
+d2v0: d2var, i0ws: ienvs): (void)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -265,6 +316,12 @@ i0explst_trxi0i1
 (i0es: i0explst, env0: !envi0i1): i1valist
 //
 (* ****** ****** *)
+//
+fun
+fiarglst_trxi0i1
+(fias: fiarglst, env0: !envi0i1): fjarglst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -312,6 +369,21 @@ i0fundclist_trxi0i1
 fun
 i0dclistopt_trxi0i1
 (dopt: i0dclistopt, env0: !envi0i1): i1dclistopt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun // HX: [i0expenv_trxi0i1]
+i0expenv_trxi0i1 // insert into [env0]
+(iexp: i0exp, i0ws: ienvs, env0: !envi0i1): i1val
+//
+fun // HX: [i0dclenv_trxi0i1]
+i0dclenv_trxi0i1 // insert into [env0]
+(idcl: i0dcl, i0ws: ienvs, env0: !envi0i1): i1dcl
+//
+fun // HX: [i0dclenv_trxi0i1]
+i1dclenv_fenvins // insert into [env0]
+(idcl: i1dcl, i0ws: ienvs, env0: !envi0i1): (void)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -634,6 +634,8 @@ i1fundcl_tbox = i1fundcl
 //
 in//local
 //
+(* ****** ****** *)
+//
 #implfun
 i1fundcl_lctn$get
   (  ifun  ) = let

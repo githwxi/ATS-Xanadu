@@ -114,6 +114,31 @@ end//let//i1val_var(dvar)
 (* ****** ****** *)
 //
 #implfun
+i1val_fid(dfix) =
+let
+val loc0 =
+d2var_get_lctn(dfix)
+in//let
+i1val(
+  loc0, I1Vfid(dfix))
+end//let//i1val_fid(dfix)
+//
+(* ****** ****** *)
+//
+#implfun
+i1val_fenv
+(dfix, envs) =
+let
+val loc0 =
+d2var_get_lctn(dfix)
+in//let
+i1val(loc0,
+  I1Vfenv(dfix, envs))
+end//let//i1val_fenv(...)
+//
+(* ****** ****** *)
+//
+#implfun
 i1val_none0
 (  loc0  ) =
 i1val_make_node
@@ -162,6 +187,40 @@ i1cmp_ilts$get
 (
 case+ icmp of
 |I1CMPcons(ilts, ival) => ilts)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+fjarg =
+FJARG of
+(
+loctn, fjarg_node)
+#absimpl
+fjarg_tbox = fjarg
+//
+in (* in-of-local *)
+//
+#implfun
+fjarg_make_node
+( loc0, node ) = FJARG(loc0,node)
+//
+#implfun
+fjarg_lctn$get
+  (  fja0  ) =
+let
+val+FJARG(loc0, _) = fja0 in loc0
+end
+#implfun
+fjarg_node$get
+  (  fja0  ) =
+let
+val+FJARG(_, node) = fja0 in node
+end
+//
+endloc(*local*)//end-of-[local(fjarg_tbox)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -223,6 +282,94 @@ end(*let*)//end(t1imp_dcst$get(...))
 (* ****** ****** *)
 //
 endloc(*local*)//end-of-[local(t1imp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1env =
+I1ENV of (sint)
+#absimpl
+i1env_tbox = i1env
+//
+in//local
+//
+#implfun
+i1env_make
+  ( enum ) = I1ENV(enum)
+//
+(* ****** ****** *)
+//
+#implfun
+i1env_enum$get
+  ( ienv ) =
+let
+val+
+I1ENV(enum) = ienv in enum end
+//
+(* ****** ****** *)
+//
+#implfun
+i1env_fprint
+(ienv, out0) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+val+I1ENV(enum) = ienv
+//
+in//let
+  prints("I1ENV(", enum, ")") endlet
+//
+end(*local*)//end-of-[local(i1env_tbox)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1opr =
+I1OPR of (symbl)
+#absimpl
+i1opr_tbox = i1opr
+//
+in//local
+//
+(* ****** ****** *)
+//
+#implfun
+i1opr_make
+  ( opnm ) = I1OPR(opnm)
+//
+(* ****** ****** *)
+//
+#implfun
+i1opr_name$get
+  ( iopr ) =
+let
+val+
+I1OPR(opnm) = iopr in opnm end
+//
+(* ****** ****** *)
+//
+#implfun
+i1opr_fprint
+(iopr, out0) =
+let
+//
+#impltmp
+g_print$out<>() = out0
+//
+val+I1OPR(opnm) = iopr
+//
+in//let
+  prints("I1OPR(", opnm, ")") endlet
+//
+end(*local*)//end-of-[local(i1opr_tbox)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -482,6 +629,75 @@ i1vardcl_make_args
 (* ****** ****** *)
 //
 endloc(*local*)//end-of-[local(i1vardcl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1fundcl =
+I1FUNDCL of
+( loc_t
+, d2var
+, fjarglst, teqi1cmp)
+//
+#absimpl
+i1fundcl_tbox = i1fundcl
+//
+in//local
+//
+(* ****** ****** *)
+//
+#implfun
+i1fundcl_lctn$get
+  (  ifun  ) = let
+val+
+I1FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in lctn end
+//
+#implfun
+i1fundcl_dpid$get
+  (  ifun  ) = let
+val+
+I1FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in dpid end
+//
+#implfun
+i1fundcl_farg$get
+  (  ifun  ) = let
+val+
+I1FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in farg end
+//
+(* ****** ****** *)
+//
+#implfun
+i1fundcl_tdxp$get
+  (  ifun  ) = let
+val+
+I1FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in tdxp end
+//
+(* ****** ****** *)
+//
+#implfun
+i1fundcl_make_args
+(lctn, dpid, farg, tdxp) =
+(
+  I1FUNDCL(lctn, dpid, farg, tdxp))
+//
+(* ****** ****** *)
+//
+endloc(*local*)//end-of-[local(i1fundcl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

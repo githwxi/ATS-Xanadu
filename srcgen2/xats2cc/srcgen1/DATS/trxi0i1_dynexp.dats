@@ -913,6 +913,67 @@ end(*let*)//end-of-[t0imp_trxi0i1(timp,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+fiarglst_trxi0i1
+( fias, env0 ) =
+(
+case+ fias of
+|list_nil
+( (*0*) ) =>
+list_nil((*void*))
+|list_cons
+(fia1, fias) =>
+(
+case+
+fia1.node() of
+//
+|FIARGsapp _ =>
+fiarglst_trxi0i1(fias, env0)
+|FIARGmets _ =>
+fiarglst_trxi0i1(fias, env0)
+//
+|FIARGdapp _ =>
+(
+  list_cons(fja1, fjas))
+where
+{
+//
+val fja1 = f0_dapp(fia1, env0)
+//
+val fjas =
+(
+  fiarglst_trxi0i1(fias, env0))
+//
+}(*where*)//end-[FIARGdapp(...)]
+)
+) where // end-of-[case+of(fia1)]
+{
+//
+fun
+f0_dapp
+(
+fia1: fiarg,
+env0: !envi0i1): fjarg =
+let
+//
+val loc0 = fia1.lctn()
+//
+val-
+FIARGdapp
+(npf1, i0ps) = fia1.node()
+//
+in//let
+(
+fjarg
+(loc0, FJARGdarg(i1bs))) where
+{
+val
+i1bs = i0patlst_trxi0i1(i0ps, env0)} end
+}(*where+*)//end-[fiarglst_trxi0i1(fias,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen2_DATS_trxi0i1_dynexp.dats] *)

@@ -96,6 +96,7 @@ I1LAB of (label,x0(*elt*))
 (*
 #abstype i1arg_tbox // p0tr
 *)
+#abstype i1env_tbox // p0tr
 #abstype i1opr_tbox // p0tr
 #abstype i1tnm_tbox // p0tr
 //
@@ -116,8 +117,10 @@ I1LAB of (label,x0(*elt*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef i1env = i1env_tbox
 #typedef i1opr = i1opr_tbox
 #typedef i1tnm = i1tnm_tbox
+//
 #typedef i1val = i1val_tbox
 #typedef fjarg = fjarg_tbox
 //
@@ -221,12 +224,15 @@ i1val_node =
 (*
 |I1Varg of (i1arg)
 *)
+|I1Venv of (i1env)
 (* ****** ****** *)
 |I1Vtnm of (i1tnm)
 (* ****** ****** *)
 |I1Vcon of (d2con)
 |I1Vcst of (d2cst)
 |I1Vvar of (d2var)
+(* ****** ****** *)
+|I1Vfid of (d2var)
 (* ****** ****** *)
 //
 |I1Vtimp of
@@ -236,6 +242,10 @@ i1val_node =
 //
 |I1Vaddr of (i1val(*addr*))
 |I1Vaexp of (i0exp(*flat*))
+//
+(* ****** ****** *)
+//
+|I1Vfenv of (d2var, i1valist)
 //
 (* ****** ****** *)
 //
@@ -319,6 +329,9 @@ where
 (* ****** ****** *)
 //
 fun
+i1env_fprint
+(ienv:i1env, out0:FILR): void
+fun
 i1opr_fprint
 (iopr:i1opr, out0:FILR): void
 fun
@@ -350,8 +363,16 @@ i1val_fprint
 (* ****** ****** *)
 //
 fun
+i1env_make(num: sint): i1env
+fun
+i1opr_make(nam: sym_t): i1opr
+fun
 i1tnm_new1(ityp:i0typ): i1tnm
 //
+fun
+i1env_enum$get:(i1env -> sint)
+fun
+i1opr_name$get:(i1opr -> sym_t)
 fun
 i1tnm_ityp$get:(i1tnm -> i0typ)
 fun
@@ -376,6 +397,11 @@ i1val_var(dvar: d2var): (i1val)
 (* ****** ****** *)
 //
 fun
+i1val_fid(dfix: d2var): (i1val)
+//
+(* ****** ****** *)
+//
+fun
 i1val_conq(ival: i1val): (bool)
 //
 fun
@@ -386,6 +412,13 @@ i1val_cfnq(ival: i1val): (bool)
 //
 fun
 i1val_varq(ival: i1val): (bool)
+//
+(* ****** ****** *)
+//
+fun
+i1val_fenv
+( dfix
+: d2var, envs: i1valist): i1val
 //
 (* ****** ****** *)
 //
@@ -547,6 +580,9 @@ i1dcl_node =
 //
 (* ****** ****** *)
 //
+|I1Ddclenv of
+(i1dcl, i0varlst(*env*))
+//
 |I1Dtmpsub of
 (s2vts(*tmpsub*), i1dcl)
 //
@@ -570,7 +606,8 @@ I1Dvardclst of
 //
 |
 I1Dfundclst of
-( token(*FUN(fnk)*)
+( token
+(*FUN(fnk)*), sint(*lvl0*)
 , t2qaglst, d2cstlst, i1fundclist)
 //
 (* ****** ****** *)

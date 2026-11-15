@@ -105,6 +105,16 @@ end//let//end(I0Dd3ecl)
 //
 (* ****** ****** *)
 //
+|I0Ddclenv _ =>
+(
+  f0_dclenv(dcl0, env0))
+//
+|I0Dtmpsub _ =>
+(
+  f0_tmpsub(dcl0, env0))
+//
+(* ****** ****** *)
+//
 |I0Dinclude _ =>
 (
   f0_include(dcl0, env0))
@@ -240,6 +250,74 @@ in//let
   i1dcl(loc0, I1Dlocal0(head, body)))
 end(*let*)//end-of-[f0_local0(d3cl,env0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dclenv
+(
+dcl0: i0dcl,
+env0: !envi0i1): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*0*))
+val-
+I0Ddclenv
+(dcl1, i0ws) = dcl0.node()
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+val (  ) =
+envi0i1_i0ws$insert
+(   env0 , i0ws(*envs*)   )
+//
+val
+dcl1 =
+i0dclenv_trxi0i1
+(
+  dcl1, i0ws(*envs*), env0)
+//
+in//let
+//
+let
+//
+val ilts =
+(
+  envi0i1_poplam0(env0))
+val (  ) =
+(
+i1dclenv_fenvins(dcl1, i0ws, env0))
+//
+in//let
+  i1dcl(loc0, I1Ddclenv(dcl1, i0ws))
+end//let
+//
+end(*let*)//end of [f0_dclenv(d3cl,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tmpsub
+(
+dcl0: i0dcl,
+env0: !envi0i1): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*0*))
+val-
+I0Dtmpsub
+(svts, dcl1) = dcl0.node()
+val
+dcl1 = i0dcl_trxi0i1(dcl1, env0)
+//
+in//let
+(
+  i1dcl(loc0, I1Dtmpsub(svts, dcl1)))
+end(*let*)//end of [f0_tmpsub(d3cl,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -489,6 +567,259 @@ in//let
 end//let
 end//let
 (*let*)//end-of-[i0vardcl_trxi0i1(ivar,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0fundcl_trxi0i1
+  (ifun, env0) = let
+//
+val loc0 =
+i0fundcl_lctn$get(ifun)
+//
+val dvar =
+i0fundcl_dpid$get(ifun)
+val fias =
+i0fundcl_farg$get(ifun)
+val tdxp =
+i0fundcl_tdxp$get(ifun)
+//
+(*
+val (  ) = prerrsln
+("i0fundcl_trxi0i1: fias = ", fias)
+val (  ) = prerrsln
+("i0fundcl_trxi0i1: tdxp = ", tdxp)
+*)
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+//
+(*
+HX-2024-05-25:
+stkmap_nilq()=false! *)
+val (  ) =
+envi0i1_exnm$insert
+  (env0, i1f0) where
+{
+val i1f0 = i1val_fid(dvar)
+}(*where*)//end-of-[val()]
+//
+val fjas =
+fiarglst_trxi0i1(fias, env0)
+//
+val tdxp =
+(
+case+ tdxp of
+|
+TEQI0EXPnone
+( (*void*) ) =>
+TEQI1CMPnone() where
+{
+val
+ilts = envi0i1_poplam0(env0)}
+|
+TEQI0EXPsome
+(teq1, iexp) =>
+TEQI1CMPsome
+( teq1
+, I1CMPcons(ilts, ival)) where
+{
+val ival =
+(
+  i0exp_trxi0i1(iexp, env0) )
+val ilts = envi0i1_poplam0(env0)}
+) (*case+*) // end-of-( teqi0exp )
+//
+in//let
+(
+  i1fundcl(loc0, dvar, fjas, tdxp))
+end//let
+(*let*)//end-of-[i0fundcl_trxi0i1(ifun,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0dclenv_trxi0i1
+(
+idcl, i0ws, env0) =
+(
+case+
+idcl.node() of
+//
+|I0Dfundclst _ =>
+(
+  f0_fundclst
+  (idcl, i0ws, env0))
+//
+|
+_(*otherwise*) =>
+(
+  i0dcl_trxi0i1(idcl, env0))
+) where
+{
+//
+fun
+f0_fundclst
+(
+idcl: i0dcl,
+i0ws: ienvs,
+env0: !envi0i1): i1dcl =
+let
+//
+val
+loc0 = idcl.lctn((*void*))
+//
+val-
+I0Dfundclst
+(tknd
+,lvl0, tqas
+,d2cs, i0fs) = idcl.node()
+//
+val () =
+(
+  f1_fenvins(i0fs, i0ws, env0))
+//
+val
+i1fs =
+(
+  i0fundclist_trxi0i1(i0fs, env0))
+//
+in//let
+//
+i1dcl_make_node
+(
+loc0,
+I1Dfundclst(
+  tknd(*fnk*),lvl0,tqas,d2cs,i1fs))
+//
+end where
+{
+//
+fun
+f1_fenvins
+(
+i0fs:
+i0fundclist,
+i0ws: ienvs,
+env0: !envi0i1): void =
+(
+case+ i0fs of
+|
+list_nil() => ((*0*))
+|
+list_cons(i0f1, i0fs) =>
+(
+f1_fenvins(
+i0fs, i0ws(*envs*), env0)
+) where
+{
+val d2v1 =
+(
+  i0fundcl_dpid$get(i0f1))
+val (  ) =
+(
+  envi0i1_fenv$insert
+  (env0, d2v1, i0ws(*envs*)))
+}(*where*)//end-of-[list_cons(i0f1,i0fs)]
+)
+//
+(*
+//
+val loc0 = idcl.lctn((*void*))
+//
+val (  ) =
+prerrsln("f0_fundclst(i0i1): idcl = ", idcl)
+*)
+//
+}(*where*)//end-of-[f0_fundclst(idcl,i0ws,env0)]
+//
+}(*where*)//end-of-[i0dclenv_trxi0i1(idcl,i0ws,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1dclenv_fenvins
+(
+idcl, i0ws, env0) =
+(
+case+
+idcl.node() of
+//
+|I1Dfundclst _ =>
+(
+  f0_fundclst
+  (idcl, i0ws, env0))
+//
+|
+_(*otherwise*) => ((*void*))
+) where
+{
+//
+fun
+f0_fundclst
+(
+idcl: i1dcl,
+i0ws: ienvs,
+env0: !envi0i1): (void) =
+let
+//
+val
+loc0 = idcl.lctn((*void*))
+//
+val-
+I1Dfundclst
+(tknd
+,lvl0, tqas
+,d2cs, i1fs) = idcl.node()
+//
+in//let
+(
+  f1_fenvins(i1fs, i0ws, env0))
+end where
+{
+//
+fun
+f1_fenvins
+(
+i1fs:
+i1fundclist,
+i0ws: ienvs,
+env0: !envi0i1): void =
+(
+case+ i1fs of
+|
+list_nil() => ((*0*))
+|
+list_cons(i1f1, i1fs) =>
+(
+f1_fenvins(
+i1fs, i0ws(*envs*), env0)
+) where
+{
+val d2v1 =
+(
+  i1fundcl_dpid$get(i1f1))
+val (  ) =
+(
+  envi0i1_fenv$insert
+  (env0, d2v1, i0ws(*envs*)))
+}(*where*)//end-of-[list_cons(i0f1,i0fs)]
+)
+//
+(*
+//
+val loc0 = idcl.lctn((*void*))
+//
+val (  ) =
+prerrsln("f0_fundclst(fins): idcl = ", idcl)
+*)
+//
+}(*where*)//end-of-[f0_fundclst(idcl,i0ws,env0)]
+//
+}(*where*)//end-of-[i1dclenv_fenvins(idcl,i0ws,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

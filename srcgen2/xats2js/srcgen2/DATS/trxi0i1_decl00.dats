@@ -971,7 +971,7 @@ prerrsln("f0_fundclst(fins): idcl = ", idcl)
 //
 }(*where*)//end-of-[f0_fundclst(idcl,i0ws,env0)]
 //
-}(*where*)//end-of-[i1dclenv_trxi0i1(idcl,i0ws,env0)]
+}(*where*)//end-of-[i1dclenv_fenvins(idcl,i0ws,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

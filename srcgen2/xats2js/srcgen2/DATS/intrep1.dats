@@ -184,20 +184,6 @@ case+ icmp of
 //
 local
 //
-val
-stamper = stamper_new((*0*))
-//
-in//local
-fun//fun
-the_i1tnm_stamp_new
-  ((*void*)): stamp = stamper.getinc()
-endloc // end-of-[the_i1tnm_stamp_new()]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-local
-//
 datatype
 i1env =
 I1ENV of (sint)
@@ -282,6 +268,19 @@ in//let
 end(*local*)//end-of-[local(i1opr_tbox)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+val
+stamper = stamper_new((*0*))
+//
+in//local
+fun//fun
+the_i1tnm_stamp_new
+  ((*void*)): stamp = stamper.getinc()
+endloc // end-of-[the_i1tnm_stamp_new()]
+//
 (* ****** ****** *)
 //
 local
@@ -521,22 +520,6 @@ endloc(*local*)//end-of-[local(fjarg_tbox)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#implfun
-t1imp_dcst$get
-  (timp) =
-(
-case+ node of
-|T1IMPall1
-(dcst, t2js, dcls) => dcst
-|T1IMPallx
-(dcst, t2js, dcls) => dcst)
-where
-{
-  val node = t1imp_node$get(timp)
-}(*where*)//endof(t1imp_dcst$get(timp))
-//
-(* ****** ****** *)
-//
 local
 //
 datatype
@@ -573,6 +556,25 @@ t1imp_node$get(timp) =
 let
 val+T1IMP(stmp,node) = timp in node
 end
+//
+(* ****** ****** *)
+//
+#implfun
+t1imp_dcst$get
+  (tmp) =
+let
+val+
+T1IMP(stm,nod) = tmp
+in//let
+//
+(
+case+ nod of
+|T1IMPall1
+(dcst, t2js, dcls) => dcst
+|T1IMPallx
+(dcst, t2js, dcls) => dcst)
+//
+end(*let*)//end(t1imp_dcst$get(...))
 //
 (* ****** ****** *)
 //
@@ -738,6 +740,8 @@ I1FUNDCL of
 i1fundcl_tbox = i1fundcl
 //
 in//local
+//
+(* ****** ****** *)
 //
 #implfun
 i1fundcl_lctn$get

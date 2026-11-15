@@ -167,6 +167,11 @@ i0dcl_fprint(idcl, g_print$out<>())
 //
 #impltmp
 g_print
+<i1env>(ienv) =
+i1env_fprint(ienv, g_print$out<>())
+//
+#impltmp
+g_print
 <i1opr>(iopr) =
 i1opr_fprint(iopr, g_print$out<>())
 //

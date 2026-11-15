@@ -482,6 +482,76 @@ end(*let*)//end-of-(envi0i1_poplam0(env0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-05-13:
+Needed for [I0Eextnam]
+Wed May 13 02:42:19 PM EDT 2026
+*)
+//
+#implfun
+envi0i1_exnm$search
+  (env0, loc0) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+ d2vstk,!iltstk) = env0
+//
+val
+sym1 =
+(
+  $SYM.DLR_EXTNAM_symbl)
+//
+val
+opt1 =
+stkmap_search$opt(d2vstk, sym1)
+//
+in//let
+(
+case+ opt1 of
+| ~optn_vt_nil() =>
+(
+   i1val_none0(loc0))
+| ~optn_vt_cons(ival) => ( ival ))
+end//let//end-of-[envi0i1_exnm$search]
+//
+(* ****** ****** *)
+//
+#implfun
+envi0i1_exnm$insert
+  (env0, ival) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+val
+sym1 =
+(
+  $SYM.DLR_EXTNAM_symbl)
+//
+in//let
+//
+let
+val () =
+(*
+if
+stkmap_nilq
+(  d2vstk  )
+then
+topmap_insert$any
+(d2vtop,sym1,ival)
+else
+*)
+stkmap_insert$any
+(d2vstk,sym1,ival) in $fold(env0) end
+//
+end(*let*)//end-of-(envi0i1_exnm$insert)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 envi0i1_dvar$search
   (env0, d2v1) = let
@@ -576,6 +646,96 @@ end(*let*)//end-of-(envi0i1_ilet$insert)
 (* ****** ****** *)
 //
 endloc(*local*)//end-of-[local(envi0i1...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envi0i1_i0ws$insert
+  (env0, i0ws) =
+(
+loop(
+env0, i0ws, 0(*ienv*))
+) where
+{
+fun loop
+( env0:
+! envi0i1
+, i0ws
+: i0varlst
+, ienv: sint): void =
+(
+case+ i0ws of
+|
+list_nil
+( (*void*) ) => ((*void*))
+|
+list_cons
+(i0w1, i0ws) =>
+(
+loop(env0, i0ws, ienv+1)
+) where
+{
+val d2v1 =
+i0var_dvar$get(i0w1)
+val loc1 = d2v1.lctn()
+val i0e1 = i1env_make(ienv)
+val i0v1 =
+i1val_make_node(loc1, I1Venv(i0e1))
+val (  ) =
+envi0i1_dvar$insert(env0, d2v1, i0v1)
+}(*where*)
+)(*case+*)//end-of-[loop(env0,i0ws,ienv)]
+}(*where*)//end-of-[envi0i1_i0ws$insert(env0,i0ws)]
+//
+(* ****** ****** *)
+//
+#implfun
+envi0i1_i0ws$search
+  (env0, i0ws) =
+(
+list_map$e1nv
+<x0><y0><e1>(i0ws, env0)) where
+{
+//
+#typedef x0 = i0var
+#typedef y0 = i1val
+#vwtpdef e1 = envi0i1
+//
+#impltmp
+map$e1nv$fopr
+<x0><y0><e1>(x0, e1) =
+(
+  envi0i1_dvar$search(e1, x0.dvar()))
+//
+}(*where*)//end-of-[envi0i1_i0ws$search(env0,i0ws)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envi0i1_dfix$insert
+  (env0, dfix) =
+let
+val ival = i1val_fid(dfix)
+in//let
+(
+  envi0i1_dvar$insert(env0, dfix, ival))
+end(*let*)//end-of-[envi0i1_dfix$insert(env0,dfix)]
+//
+(* ****** ****** *)
+//
+#implfun
+envi0i1_fenv$insert
+(env0, dfix, i0ws) =
+let
+val i0vs =
+envi0i1_i0ws$search(env0, i0ws)
+val ival = i1val_fenv(dfix, i0vs)
+in//let
+(
+  envi0i1_dvar$insert(env0, dfix, ival))
+end(*let*)//end-of-[envi0i1_dfix$insert(env0,dfix)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
