@@ -1051,8 +1051,17 @@ fun
 t0imp_node$get
 (timp: t0imp): t0imp_node
 //
+fun
+t0imp_dcst$get
+(timp: t0imp): (d2cst)
+//
+#symload dcst with t1imp_dcst$get
+//
 #symload stmp with t0imp_stmp$get
 #symload node with t0imp_node$get
+#symload dcst with t0imp_dcst$get
+//
+(* ****** ****** *)
 //
 fun
 t0imp_make_node

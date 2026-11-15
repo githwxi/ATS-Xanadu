@@ -288,22 +288,6 @@ endloc(*local*)//end-of-[local(fjarg)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#implfun
-t1imp_dcst$get
-  (timp) =
-(
-case+ node of
-|T1IMPall1
-(dcst, t2js, dcls) => dcst
-|T1IMPallx
-(dcst, t2js, dcls) => dcst)
-where
-{
-  val node = t1imp_node$get(timp)
-}(*where*)//endof(t1imp_dcst$get(timp))
-//
-(* ****** ****** *)
-
 local
 //
 datatype
@@ -338,6 +322,25 @@ t1imp_node$get(tmp) =
 let
   val+T1IMP(stm,nod) = tmp in nod
 end
+//
+(* ****** ****** *)
+//
+#implfun
+t1imp_dcst$get
+  (tmp) =
+let
+val+
+T1IMP(stm,nod) = tmp
+in//let
+//
+(
+case+ nod of
+|T1IMPall1
+(dcst, t2js, dcls) => dcst
+|T1IMPallx
+(dcst, t2js, dcls) => dcst)
+//
+end(*let*)//end(t1imp_dcst$get(...))
 //
 (* ****** ****** *)
 //

@@ -117,14 +117,26 @@ prints("I1Vtop(",sym,")")
 //
 (* ****** ****** *)
 //
-|I1Vtnm(itnm) =>
+|I1Vtnm
+(   itnm   ) =>
 prints("I1Vtnm(",itnm,")")
 //
 (* ****** ****** *)
 //
-|I1Vaexp(iexp) =>
+|I1Vtimp
+(i0f0, timp) =>
+(
+prints(
+"I1Vtimp(",
+i0f0(*tfn*), ";", timp, ")"))
+//
+(* ****** ****** *)
+//
+|I1Vaexp
+(   iexp   ) =>
 prints("I1Vaexp(", iexp, ")")
-|I1Vaddr(ival) =>
+|I1Vaddr
+(   ival   ) =>
 prints("I1Vaddr(", ival, ")")
 //
 (* ****** ****** *)
@@ -345,6 +357,39 @@ farg.node() of
   prints("FJARGdarg(", i1bs, ")"))
 //
 end(*let*)//end-of-[fjarg_fprint(farg,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+t1imp_fprint
+(timp, out0) =
+let
+#implfun
+g_print$out<>() = out0
+in//let
+case+
+timp.node() of
+//
+(*
+|T1IMPone1
+(   dcl1   ) =>
+prints("T1IMPone1(", dcl1 ,")")
+*)
+//
+|T1IMPall1
+(d2c1
+,t2js, dopt) =>
+prints
+("T1IMPall1(",d2c1,";",t2js,";",dopt,")")
+//
+|T1IMPallx
+(d2c1
+,t2js, dopt) =>
+prints
+("T1IMPallx(",d2c1,";",t2js,";",dopt,")")
+//
+end(*let*)//end-of-[t1imp_fprint(timp,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

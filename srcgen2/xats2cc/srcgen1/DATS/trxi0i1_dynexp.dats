@@ -207,6 +207,44 @@ end//let//end-of-[i1val_aexp(iexp)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+fun
+i1val_timp
+( env0:
+! envi0i1
+, loc0: loc_t
+, i0f0: i0exp
+, timp: t1imp
+  (* impltmp *)): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val ityp = i0f0.ityp((*0*))
+val itnm = i1tnm_new1(ityp)
+//
+val iins = I1INStimp(i0f0, timp)
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_ilet$insert(env0, ilet) )
+  }(*where*)//end-of-[i1val_timp(env0,...)]
+*)
+//
+fun
+i1val_timp
+( env0:
+! envi0i1
+, loc0: loc_t
+, i0f0: i0exp
+, timp: t1imp): i1val =
+(
+i1val_make_node(loc0,I1Vtimp(i0f0,timp)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 i1val_dap0
 ( env0:
@@ -433,6 +471,10 @@ iexp.node() of
 //
 (* ****** ****** *)
 //
+|I0Etimp _ => f0_timp(iexp, env0)
+//
+(* ****** ****** *)
+//
 |I0Edap0 _ => f0_dap0(iexp, env0)
 |I0Edapp _ => f0_dapp(iexp, env0)
 //
@@ -626,6 +668,43 @@ prerrsln(
 (* ****** ****** *)
 //
 fun
+f0_timp
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Etimp
+(i0f0, timp) = iexp.node()
+//
+val
+timp =
+(
+  t0imp_trxi0i1(timp, env0))
+//
+in//let
+(
+i1val_timp(env0,loc0,i0f0,timp))
+end where
+{
+//
+(*
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrsln(
+  "f0_timp(i0i1): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_timp(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_dap0
 (
 iexp: i0exp,
@@ -769,6 +848,67 @@ end//let//end-of-[list_cons(...)]
 (* ****** ****** *)
 //
 }(*where*)//end-of-[i0exp_trxi0i1(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+t0imp_trxi0i1
+(timp, env0) =
+let
+//
+val stmp =
+t0imp_stmp$get(timp)
+val node =
+t0imp_node$get(timp)
+//
+in//let
+//
+(
+t1imp_make_node(stmp, node)
+) where
+{
+//
+val node =
+(
+case+ node of
+|T0IMPall1
+(dcst
+,t2js, dcls) =>
+(
+case+ dcls of
+|optn_nil() =>
+(
+T1IMPall1(dcst, t2js, optn_nil()))
+|optn_cons(dcl1) =>
+(
+T1IMPall1(dcst, t2js,
+optn_cons(i0dcl_trxi0i1(dcl1, env0))))
+)
+//
+|T0IMPallx
+(dcst
+,t2js, dcls) =>
+(
+case+ dcls of
+//
+|optn_nil() =>
+(
+T1IMPallx(dcst, t2js, optn_nil()))
+//
+(*
+HX-202-01-30:
+ONLY the first one is chosen!
+*)
+|optn_cons(dcl1) =>
+(
+T1IMPallx(dcst, t2js,
+optn_cons(i0dcl_trxi0i1(dcl1, env0)))))
+) : t1imp_node // end-of-[  val(node)  ]
+//
+}(*where*)//end(t1imp_make_node(stmp,node))
+//
+end(*let*)//end-of-[t0imp_trxi0i1(timp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -1783,7 +1783,7 @@ val loc0 = iexp.lctn()
 //
 val-
 I0Etimp
-(i0e1, timp) = iexp.node()
+(i0f0, timp) = iexp.node()
 //
 val
 timp =
@@ -1792,7 +1792,7 @@ timp =
 //
 in//let
 (
-i1val_timp(env0,loc0,i0e1,timp))
+i1val_timp(env0,loc0,i0f0,timp))
 end where
 {
 //
@@ -3337,10 +3337,11 @@ fjarg
 {
 val
 i1bs = trxi0i1_i0patlst(env0, i0ps)} end
-}(*where+*)//end-[trxi0i1_fiarglst(env0,fias)]
+}(*where+*)//end[trxi0i1_fiarglst(env0,fias)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 //
 #implfun
 trxi0i1_t0imp
@@ -3392,8 +3393,7 @@ ONLY the first one is chosen!
 *)
 |optn_cons(dcl1) =>
 (
-T1IMPallx(
-dcst, t2js,
+T1IMPallx(dcst, t2js,
 optn_cons(trxi0i1_i0dcl(env0, dcl1)))))
 ) : t1imp_node // end-of-[  val(node)  ]
 //

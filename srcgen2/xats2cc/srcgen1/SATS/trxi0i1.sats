@@ -241,6 +241,13 @@ i0cls_trxi0i1
 (* ****** ****** *)
 //
 fun
+t0imp_trxi0i1
+(timp: t0imp, env0: !envi0i1): t1imp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i0dcl_trxi0i1
 (dcl0: i0dcl, env0: !envi0i1): i1dcl
 //

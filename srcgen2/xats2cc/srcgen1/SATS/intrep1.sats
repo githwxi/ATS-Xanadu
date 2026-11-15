@@ -229,6 +229,11 @@ i1val_node =
 |I1Vvar of (d2var)
 (* ****** ****** *)
 //
+|I1Vtimp of
+(i0exp(*tapp*), t1imp)
+//
+(* ****** ****** *)
+//
 |I1Vaddr of (i1val(*addr*))
 |I1Vaexp of (i0exp(*flat*))
 //
@@ -457,6 +462,55 @@ fun
 fjarg_make_node
 (loc0:loc_t, node:fjarg_node):fjarg
 #symload fjarg with fjarg_make_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+t1imp_node =
+|T1IMPall1 of
+(d2cst, t2jaglst, i1dclopt)
+|T1IMPallx of
+(d2cst, t2jaglst, i1dclopt)
+//
+(* ****** ****** *)
+//
+fun
+t1imp_i1cmpq(t1imp): i1cmpopt
+//
+fun
+t1imp_i1dclq(t1imp): i1dclopt
+//
+(* ****** ****** *)
+//
+fun
+t1imp_fprint
+(timp:t1imp, out0:FILR):(void)
+//
+(* ****** ****** *)
+//
+fun
+t1imp_stmp$get
+(timp: t1imp): (stamp)
+fun
+t1imp_node$get
+(timp: t1imp): t1imp_node
+//
+fun
+t1imp_dcst$get
+(timp: t1imp): (d2cst)
+//
+#symload stmp with t1imp_stmp$get
+#symload node with t1imp_node$get
+#symload dcst with t1imp_dcst$get
+//
+(* ****** ****** *)
+//
+fun
+t1imp_make_node
+(stm:stamp,nod:t1imp_node): t1imp
+//
+#symload t1imp with t1imp_make_node
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -222,9 +222,6 @@ end(*let*)//endof[d2conjs1(filr,dcon)]
 #implfun
 d2cstjs1
 (filr, dcst) =
-(*
-d2cstfpr(filr, dcst)
-*)
 let
 //
 val stmp =

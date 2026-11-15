@@ -168,6 +168,67 @@ case+ icmp of
 //
 local
 //
+datatype
+t1imp =
+T1IMP of
+(
+stamp, t1imp_node)
+datatype
+t1imp_vt =
+T1IMP_vt of
+(
+stamp, t1imp_node)
+//
+#absimpl
+t1imp_tbox = t1imp
+//
+in (* in-of-local *)
+//
+#implfun
+t1imp_make_node
+(   stm,nod   ) = T1IMP(stm,nod)
+//
+(* ****** ****** *)
+//
+#implfun
+t1imp_stmp$get(tmp) =
+let
+  val+T1IMP(stm,nod) = tmp in stm
+end
+#implfun
+t1imp_node$get(tmp) =
+let
+  val+T1IMP(stm,nod) = tmp in nod
+end
+//
+(* ****** ****** *)
+//
+#implfun
+t1imp_dcst$get
+  (tmp) =
+let
+val+
+T1IMP(stm,nod) = tmp
+in//let
+//
+(
+case+ nod of
+|T1IMPall1
+(dcst, t2js, dcls) => dcst
+|T1IMPallx
+(dcst, t2js, dcls) => dcst)
+//
+end(*let*)//end(t1imp_dcst$get(...))
+//
+(* ****** ****** *)
+//
+endloc(*local*)//end-of-[local(t1imp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
 val
 stamper = stamper_new((*0*))
 //

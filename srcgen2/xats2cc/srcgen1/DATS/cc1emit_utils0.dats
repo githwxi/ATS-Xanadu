@@ -78,10 +78,15 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
+#staload "./../SATS/xats2cc.sats"
 //
 #staload "./../SATS/cc0emit.sats"
 #staload "./../SATS/cc1emit.sats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+#symload lctn with i1val_lctn$get
+#symload dcst with t1imp_dcst$get
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -206,9 +211,6 @@ end(*let*)//endof[d2concc1(filr,dcon)]
 #implfun
 d2cstcc1
 (filr, dcst) =
-(*
-d2cstfpr(filr, dcst)
-*)
 let
 //
 val stmp =
@@ -425,11 +427,32 @@ ival.node() of
 (* ****** ****** *)
 (* ****** ****** *)
 //
-|I1Vaddr(i1v1) =>
+|I1Vtimp
+(i0f0, timp) =>
+let
+//
+val loc0 = ival.lctn()
+val dcst = timp.dcst()
+//
+in//let
+//
+d2cstcc1
+(filr, dcst);
+strnfpr(filr, "_");
+fprint_lctn1_as_stamp(filr,loc0)
+//
+end(*let*)//end-of-[I1Vtimp(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vaddr
+(   i1v1   ) =>
 (
   prints("XATSADDR(", i1v1, ")") )
 //
-|I1Vaexp(i0e1) =>
+|I1Vaexp
+(   i0e1   ) =>
 (
   prints("XATSAEXP(", i0e1, ")") )
 //
@@ -437,7 +460,7 @@ ival.node() of
 (* ****** ****** *)
 //
 |I1Vp0rj
-( itup,pind ) =>
+(itup, pind) =>
 (
 prints
 ("XATSP0RJ(",itup,"[",pind,"]", ")"))
@@ -445,8 +468,8 @@ prints
 (* ****** ****** *)
 //
 |I1Vp1cn
-( ipat
-, icon, pind) =>
+(ipat
+,icon, pind) =>
 (
 print("XATSP1CN(");
 prints(
@@ -460,8 +483,8 @@ g_print<i0pat>(x0) = i0pcncc1(filr, x0)
 (* ****** ****** *)
 //
 |I1Vp1rj
-( trcd
-, itup, pind) =>
+(trcd
+,itup, pind) =>
 (
 print("XATSP1RJ(");
 prints(
