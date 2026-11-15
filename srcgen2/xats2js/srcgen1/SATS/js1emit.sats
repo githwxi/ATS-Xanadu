@@ -57,6 +57,19 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 fun
+xtrcdjs1
+(filr
+:FILR,tknd: token): void
+//
+fun
+labeljs1
+(filr
+:FILR,lab0: label): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d2conjs1
 (filr
 :FILR, dcon: d2con): void
@@ -118,26 +131,36 @@ i1tnmjs1
 (* ****** ****** *)
 //
 fun
+i0pcnjs1
+(filr:FILR,ipat:i0pat): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1valjs1
+(filr:FILR,ival:i1val): void
+//
+fun
+l1i1vjs1
+(filr:FILR,liv0:l1i1v): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i0pckjs1
-(filr:FILR
-,ival:i1val,ipat:i0pat): void
+(
+filr:FILR,
+ival:i1val,ipat:i0pat): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 fjas1js1
-( filr
-: FILR, fjas:fjarglst): void
-//
-(* ****** ****** *)
-//
-fun
-i1valjs1
-(filr:FILR,ival:i1val): void
-fun
-l1i1vjs1
-(filr:FILR,liv0:l1i1v): void
+(filr
+: FILR, fjas: fjarglst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

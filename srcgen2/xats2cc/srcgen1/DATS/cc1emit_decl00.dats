@@ -83,10 +83,15 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 fun
-endlfpr
+endlnfpr
 (filr: FILR): void =
 (
 strn_fprint("\n", filr))//endfun
+fun
+smclnfpr
+(filr: FILR): void =
+(
+strn_fprint(";\n", filr))//endfun
 //
 (* ****** ****** *)
 //
@@ -308,9 +313,9 @@ envxcc1_nind$get(env0)
 in//let
 //
 nindfpr(filr, nind);
-strnfpr(filr, "// ");lctnfpr(filr, loc0);endlfpr(filr);
+strnfpr(filr, "// ");lctnfpr(filr, loc0);endlnfpr(filr);
 nindfpr(filr, nind);
-strnfpr(filr, "// ");i1dcl_fprint(dcl0, filr);endlfpr(filr)
+strnfpr(filr, "// ");i1dcl_fprint(dcl0, filr);endlnfpr(filr)
 //
 end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
 //
@@ -372,9 +377,9 @@ envxcc1_nind$get(env0)
 val () =
 (
 nindfpr(filr, nind);
-i0typcc0(filr, ityp);endlfpr(filr);
+i0typcc0(filr, ityp);endlnfpr(filr);
 nindfpr(filr, nind);
-i1tnmcc1(filr, itnm);endlfpr(filr))
+i1tnmcc1(filr, itnm);smclnfpr(filr))
 //
 // HX: for computing ival
 val () =
@@ -387,7 +392,7 @@ nindstrnfpr
 (filr
 ,nind, "XATS000_patck(");
 i0pckcc1(filr, ival, ipat);
-strnfpr(filr, ")");endlfpr(filr))
+strnfpr(filr, ")");endlnfpr(filr))
 *)
 //
 endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
@@ -437,10 +442,8 @@ i1letlst_cc1emit(ilts, env0)
 //
 val () =
 let
-(*
-nindfpr(filr, nind);
-i1tnmcc1(filr, itnm);strnfpr(filr, " = ");i1valcc1(filr, ival);endlfpr(filr)
-*)
+nindfpr(filr, nind);i1tnmcc1(filr, itnm);
+strnfpr(filr, " = ");i1valcc1(filr, ival);smclnfpr(filr)
 end//let
 //
 end//let//end-of-[f0_i1tnmcmp(...)]

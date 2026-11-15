@@ -128,10 +128,85 @@ prints("I1Vaexp(", iexp, ")")
 prints("I1Vaddr(", ival, ")")
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vp0rj
+(i1v1, idx2) =>
+(
+print("I1Vp0rj(");
+prints(i1v1, ";", idx2, ")"))
+//
+|I1Vp1cn
+(i0f0
+,i1v1, idx2) =>
+(
+print("I1Vp1cn(");
+prints
+(i0f0, ";", i1v1, ";", idx2, ")"))
+//
+|I1Vp1rj
+(tknd
+,i1v1, idx2) =>
+(
+print("I1Vp1rj(");
+prints
+(tknd, ";", i1v1, ";", idx2, ")"))
+//
+|I1Vp2rj
+(tknd
+,i1v1, lab2) =>
+(
+print("I1Vp2rj(");
+prints
+(tknd, ";", i1v1, ";", lab2, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-05-15:
+For flat left-values
+*)
+//
+|I1Vlpft
+(lab0, i1v1) =>
+(
+prints("I1Vlpft(",lab0,";",i1v1,")"))
+//
+(*
+HX-2024-05-15:
+For boxed left-values
+*)
+|I1Vlpbx
+(lab0, i1v1) =>
+(
+prints("I1Vlpbx(",lab0,";",i1v1,")"))
+//
+(*
+HX-2024-07-18:
+For consd left-values
+*)
+|I1Vlpcn
+(lab0, i1v1) =>
+(
+prints("I1Vlpcn(",lab0,";",i1v1,")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vextnam
+(tknd
+,i1v1, g1ns) =>
+( print("I1Vextnam(")
+; prints(tknd, ";", i1v1, ";", g1ns, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |I1Vnone0() => prints( "I1Vnone0(",")" )
 |I1Vnone1(i0e1) => prints("I1Vnone1(", i0e1, ")")
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end(*let*)//end-of-[i1val_fprint(i1v0,out0)]

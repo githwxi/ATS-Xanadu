@@ -149,6 +149,55 @@ end(*let*)//endof[xsymjs1(filr,xsym)]
 (* ****** ****** *)
 //
 #implfun
+xtrcdjs1
+(filr, tknd) =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+case+
+tknd.node() of
+//
+|T_TRCD10(knd0) =>
+(
+prints("XATSTRCD(", knd0, ")"))
+|T_TRCD20(knd0) =>
+(
+prints("XATSTRCD(", knd0, ")"))
+//
+|_(*otherwise*) =>
+(
+prints
+("XATSTRCD(", "'", tknd, "'", ")"))
+//
+end(*let*)//end-of-[xtrcdjs1(filr,tknd)]
+//
+(* ****** ****** *)
+//
+#implfun
+labeljs1
+(filr, lab0) =
+(
+case+ lab0 of
+|
+LABint(int) => print(int)
+|
+LABsym(sym) =>
+let
+val nam =
+symbl_get_name(sym) in//let
+  prints("'", nam, "'") end//let
+) where
+{
+//
+#impltmp g_print$out<>((*0*)) = filr
+//
+}(*where*)//end-of-[labeljs1(filr,lab0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d2conjs1
 (filr, dcon) =
 (*
@@ -403,7 +452,6 @@ tint.node() of
 }(*where*)//end-of-[i0intjs1(filr,tint)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #implfun
 i0btfjs1
@@ -574,6 +622,223 @@ val i0 = 1 in loop1(i0) end//let
 end(*let*)//end-of-(f0_strn(rep))
 //
 }(* where *)//end-of-[i0strjs1(filr,tstr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0pcnjs1
+(filr, ipat) =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+case+
+ipat.node() of
+//
+|I0Pcon(d2c0) =>
+(
+  prints('"', name, '"')) where
+{
+  val name = d2con_get_name(d2c0)
+}
+//
+|
+_(*non-I0Pcon*) => prints('"',ipat,'"')
+//
+end(*let*)//end-of-[i0pcnjs1(filr,ipat)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1valjs1
+(filr, ival) =
+let
+//
+(*
+val () =
+prerrsln
+("i1valjs1: ival = ", ival)
+*)
+//
+in//let
+//
+case+
+ival.node() of
+(* ****** ****** *)
+(* ****** ****** *)
+|I1V000
+((*0*)) => prints("XATSVOID")
+(* ****** ****** *)
+(* ****** ****** *)
+|I1Vint
+( tint ) => i0intjs1(filr,tint)
+(* ****** ****** *)
+|I1Vbtf
+( btf0 ) => i0btfjs1(filr,btf0)
+(* ****** ****** *)
+|I1Vchr
+( tchr ) => i0chrjs1(filr,tchr)
+(* ****** ****** *)
+|I1Vflt
+( tflt ) => i0fltjs1(filr,tflt)
+(* ****** ****** *)
+|I1Vstr
+( tstr ) => i0strjs1(filr,tstr)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vi00
+( int0 ) => i0i00js1(filr,int0)
+|I1Vb00
+( btf0 ) => i0b00js1(filr,btf0)
+|I1Vc00
+( chr0 ) => i0c00js1(filr,chr0)
+|I1Vf00
+( flt0 ) => i0f00js1(filr,flt0)
+|I1Vs00
+( str0 ) => i0s00js1(filr,str0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vtop
+( sym0 ) => print( "XATSTOP0" )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|I1Vtnm
+( itnm ) => i1tnmjs1(filr,itnm)
+(* ****** ****** *)
+|I1Vcon
+( dcon ) => d2conjs1(filr,dcon)
+(* ****** ****** *)
+|I1Vcst
+( dcst ) => d2cstjs1(filr,dcst)
+(* ****** ****** *)
+|I1Vvar
+( dvar ) => d2varjs1(filr,dvar)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vaddr(i1v1) =>
+(
+  prints("XATSADDR(", i1v1, ")") )
+//
+|I1Vaexp(i0e1) =>
+(
+  prints("XATSAEXP(", i0e1, ")") )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vp0rj
+( itup,pind ) =>
+(
+prints
+("XATSP0RJ(",itup,"[",pind,"]", ")"))
+//
+(* ****** ****** *)
+//
+|I1Vp1cn
+( ipat
+, icon, pind) =>
+(
+print("XATSP1CN(");
+prints
+(ipat, ", ", icon, "[",pind,"+1]", ")")
+) where
+{
+#impltmp
+g_print<i0pat>(x0) = i0pcnjs1(filr, x0)
+}
+//
+(* ****** ****** *)
+//
+|I1Vp1rj
+( trcd
+, itup, pind) =>
+(
+print("XATSP1RJ(");
+prints
+(trcd, ", ", itup, "[", pind, "]", ")")
+) where
+{
+#impltmp
+g_print<token>(x0) = xtrcdjs1(filr, x0)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vlpcn
+(plab, itup) =>
+( prints
+  ("XATSLPCN(", plab, ", ", itup, ")")
+) where
+{
+#impltmp
+g_print<label>(x0) = labeljs1(filr, x0)
+}
+//
+|I1Vlpft
+(plab, itup) =>
+( prints
+  ("XATSLPFT(", plab, ", ", itup, ")")
+) where
+{
+#impltmp
+g_print<label>(x0) = labeljs1(filr, x0)
+}
+//
+|I1Vlpbx
+(plab, itup) =>
+( prints
+  ("XATSLPBX(", plab, ", ", itup, ")")
+) where
+{
+#impltmp
+g_print<label>(x0) = labeljs1(filr, x0)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|
+_(*otherwise*) => i1val_fprint(ival,filr)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+end where
+{
+//
+  #impltmp g_print$out<>() = filr
+//
+  #impltmp
+  g_print<i1val>(x0) = i1valjs1(filr, x0)
+//
+}(*where*)//end-of-[i1valjs1( filr,ival )]
+//
+(* ****** ****** *)
+//
+#implfun
+l1i1vjs1
+(filr, liv0) =
+let
+//
+val+
+I1LAB(lab1, i1v2) = liv0
+in//let
+//
+(
+prints(lab1, ": ", i1v2)) where
+{
+#impltmp
+g_print<label>(x0) = labeljs1(filr, x0)
+#impltmp
+g_print<i1val>(x0) = i1valjs1(filr, x0) }
+//
+end(*end*)//end-of-[l1i1vjs1( filr,ival )]
 //
 (* ****** ****** *)
 (* ****** ****** *)

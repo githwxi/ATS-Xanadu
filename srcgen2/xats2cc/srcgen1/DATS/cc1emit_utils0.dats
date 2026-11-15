@@ -78,14 +78,228 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
+//
+#staload "./../SATS/cc0emit.sats"
 #staload "./../SATS/cc1emit.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+strnfpr
+(filr:FILR
+,strn:strn):void =
+(
+strn_fprint(strn, filr))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+xsymcc1
+( filr: FILR
+, xsym: symbl): void =
+symbl_fprint(xsym, filr)
+*)
+fun
+xsymcc1
+( filr: FILR
+, xsym: symbl): void =
+let
+(
+  strn_foritm(name)
+) where
+{
+//
+val
+name =
+symbl_get_name(xsym)
+//
+#impltmp
+foritm$work<char>(c0) =
+let
+val c0 =
+(
+case+ c0 of
+|'\'' => '$'| _ => c0)
+in//let
+(
+  char_fprint(c0, filr)) end
+}(*where*)
+end(*let*)//endof[xsymcc1(filr,xsym)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xtrcdcc1
+(filr, tknd) =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+case+
+tknd.node() of
+//
+|T_TRCD10(knd0) =>
+(
+prints("XATSTRCD(", knd0, ")"))
+|T_TRCD20(knd0) =>
+(
+prints("XATSTRCD(", knd0, ")"))
+//
+|_(*otherwise*) =>
+(
+prints
+("XATSTRCD(", "'", tknd, "'", ")"))
+//
+end(*let*)//end-of-[xtrcdcc1(filr,tknd)]
+//
+(* ****** ****** *)
+//
+#implfun
+labelcc1
+(filr, lab0) =
+(
+case+ lab0 of
+|
+LABint(int) => print(int)
+|
+LABsym(sym) =>
+let
+val nam =
+symbl_get_name(sym) in//let
+  prints("'", nam, "'") end//let
+) where
+{
+//
+#impltmp g_print$out<>((*0*)) = filr
+//
+}(*where*)//end-of-[labelcc1(filr,lab0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d2concc1
+(filr, dcon) =
+(*
+d2confpr(filr, dcon)
+*)
+let
+//
+val
+name = dcon.name((*0*))
+//
+in//let
+(
+xsymcc1
+(filr, name);
+strnfpr(filr, "_");
+fprint_loctn_as_stamp
+(filr, dcon.lctn((*void*))))
+end(*let*)//endof[d2concc1(filr,dcon)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2cstcc1
+(filr, dcst) =
+(*
+d2cstfpr(filr, dcst)
+*)
+let
+//
+val stmp =
+d2cst_get_stmp(dcst)
+val xopt =
+the_d2cstmap_xnmfind(stmp)
+//
+in//let
+(
+case+
+xopt of
+| ~
+optn_vt_nil
+ ( (*0*) ) => f0_none(dcst)
+| ~
+optn_vt_cons
+ (  xnam  ) =>
+(
+case+ xnam of
+|X2NAMnone
+ ( (*0*) ) => f0_none(dcst)
+|X2NAMsome
+ (  dexp  ) => f0_some(dcst, dexp)
+)
+) where
+{
+//
+fun
+f0_none
+(dcst: d2cst): void =
+let
+val lctn = dcst.lctn((*0*))
+val name = dcst.name((*0*))
+//
+in//let
+(
+xsymcc1
+(filr, name);
+strnfpr(filr, "_");
+fprint_loctn_as_stamp(filr,lctn))
+end(*let*)//end-of-[f0_none(dcst)]
+//
+fun
+f0_some
+(dcst: d2cst
+,dexp: d2exp): void =
+let
+//
+val name = dcst.name((*0*))
+//
+val-
+D2Eextnam
+(tknd, gnam) = dexp.node((*0*))
+//
+in//let
+(
+case+ gnam of
+|
+_(* else *) => xsymcc1(filr, name))
+end(*let*)//endof[f0_some(dcst,dexp)]
+//
+}(*where*)
+end(*let*)//endof[d2cstcc1(filr,dcst)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2varcc1
+(filr, dvar) =
+(*
+d2varfpr(filr, dvar)
+*)
+let
+//
+val name = dvar.name((*0*))
+//
+in//let
+(
+xsymcc1
+(filr, name);
+strnfpr(filr, "_");
+fprint_loctn_as_stamp
+(filr, dvar.lctn((*void*))))
+end(*let*)//endof[d2varcc1(filr,dvar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 i1tnmcc1
-( filr,itnm ) =
+(filr, itnm) =
 (
 prints
 ("ccx", "tnm", stmp)) where
@@ -96,6 +310,236 @@ prints
 val stmp = i1tnm_stmp$get(itnm)
 //
 }(*where*)//endof[i1tnmcc1(filr,itnm)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0intcc1
+(filr, tint) =
+(
+case-
+tint.node() of
+|T_INT01
+(  rep  ) => prints
+("XATSINT1(", rep, ")")
+|T_INT02
+(bas,rep) => prints
+("XATSINT2(",bas,",",rep,")")
+|T_INT03
+(bas
+,rep,sfx) => prints
+("XATSINT3("
+,bas, ",", rep, ",", sfx, ")")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i0intcc1(filr,tint)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0btfcc1
+(filr, btf0) =
+(
+if
+(btf0 = TRUE_symbl)
+then print("XATSBOOL(true)")
+else print("XATSBOOL(false)")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i0btfcc1(filr,btf0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1valcc1
+(filr, ival) =
+let
+//
+(*
+val () =
+prerrsln
+("i1valcc1: ival = ", ival)
+*)
+//
+in//let
+//
+case+
+ival.node() of
+(* ****** ****** *)
+(* ****** ****** *)
+|I1V000
+((*0*)) => prints("XATSVOID")
+(* ****** ****** *)
+(* ****** ****** *)
+|I1Vint
+( tint ) => i0intcc1(filr,tint)
+(* ****** ****** *)
+|I1Vbtf
+( btf0 ) => i0btfcc1(filr,btf0)
+(* ****** ****** *)
+|I1Vchr
+( tchr ) => i0chrcc1(filr,tchr)
+(* ****** ****** *)
+|I1Vflt
+( tflt ) => i0fltcc1(filr,tflt)
+(* ****** ****** *)
+|I1Vstr
+( tstr ) => i0strcc1(filr,tstr)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vi00
+( int0 ) => i0i00cc1(filr,int0)
+|I1Vb00
+( btf0 ) => i0b00cc1(filr,btf0)
+|I1Vc00
+( chr0 ) => i0c00cc1(filr,chr0)
+|I1Vf00
+( flt0 ) => i0f00cc1(filr,flt0)
+|I1Vs00
+( str0 ) => i0s00cc1(filr,str0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vtop
+( sym0 ) => print( "XATSTOP0" )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|I1Vtnm
+( itnm ) => i1tnmcc1(filr,itnm)
+(* ****** ****** *)
+|I1Vcon
+( dcon ) => d2concc1(filr,dcon)
+(* ****** ****** *)
+|I1Vcst
+( dcst ) => d2cstcc1(filr,dcst)
+(* ****** ****** *)
+|I1Vvar
+( dvar ) => d2varcc1(filr,dvar)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vaddr(i1v1) =>
+(
+  prints("XATSADDR(", i1v1, ")") )
+//
+|I1Vaexp(i0e1) =>
+(
+  prints("XATSAEXP(", i0e1, ")") )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vp0rj
+( itup,pind ) =>
+(
+prints
+("XATSP0RJ(",itup,"[",pind,"]", ")"))
+//
+(* ****** ****** *)
+//
+|I1Vp1cn
+( ipat
+, icon, pind) =>
+(
+print("XATSP1CN(");
+prints(
+ipat, ", ", icon, "[",pind,"+1]", ")")
+) where
+{
+#impltmp
+g_print<i0pat>(x0) = i0pcncc1(filr, x0)
+}
+//
+(* ****** ****** *)
+//
+|I1Vp1rj
+( trcd
+, itup, pind) =>
+(
+print("XATSP1RJ(");
+prints(
+trcd, ", ", itup, "[", pind, "]", ")")
+) where
+{
+#impltmp
+g_print<token>(x0) = xtrcdcc1(filr, x0)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vlpcn
+(plab, itup) =>
+( prints
+  ("XATSLPCN(", plab, ", ", itup, ")")
+) where
+{
+#impltmp
+g_print<label>(x0) = labelcc1(filr, x0)
+}
+//
+|I1Vlpft
+(plab, itup) =>
+( prints
+  ("XATSLPFT(", plab, ", ", itup, ")")
+) where
+{
+#impltmp
+g_print<label>(x0) = labelcc1(filr, x0)
+}
+//
+|I1Vlpbx
+(plab, itup) =>
+( prints
+  ("XATSLPBX(", plab, ", ", itup, ")")
+) where
+{
+#impltmp
+g_print<label>(x0) = labelcc1(filr, x0)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|
+_(*otherwise*) => i1val_fprint(ival,filr)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+end where
+{
+//
+  #impltmp g_print$out<>() = filr
+//
+  #impltmp
+  g_print<i1val>(x0) = i1valcc1(filr, x0)
+//
+}(*where*)//end-of-[i1valcc1( filr,ival )]
+//
+(* ****** ****** *)
+//
+#implfun
+l1i1vcc1
+(filr, liv0) =
+let
+val+
+I1LAB(lab1, i1v2) = liv0
+in//let
+(
+prints(lab1, ": ", i1v2)) where
+{
+#impltmp
+g_print<label>(x0) = labelcc1(filr, x0)
+#impltmp
+g_print<i1val>(x0) = i1valcc1(filr, x0) }
+//
+end(*end*)//end-of-[l1i1vcc1( filr,ival )]
 //
 (* ****** ****** *)
 (* ****** ****** *)

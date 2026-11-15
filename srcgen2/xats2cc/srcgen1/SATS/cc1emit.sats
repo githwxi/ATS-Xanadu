@@ -93,9 +93,84 @@ envxcc1_decnind
 (* ****** ****** *)
 //
 fun
+xtrcdcc1
+(filr
+:FILR,tknd: token): void
+//
+fun
+labelcc1
+(filr
+:FILR,lab0: label): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2concc1
+(filr
+:FILR, dcon: d2con): void
+fun
+d2cstcc1
+(filr
+:FILR, dcst: d2cst): void
+//
+fun
+d2varcc1
+(filr
+:FILR, dvar: d2var): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0i00cc1
+(filr:FILR,int0:sint): void
+fun
+i0b00cc1
+(filr:FILR,btf0:bool): void
+fun
+i0c00cc1
+(filr:FILR,chr0:char): void
+fun
+i0f00cc1
+(filr:FILR,flt0:dflt): void
+fun
+i0s00cc1
+(filr:FILR,str0:strn): void
+//
+(* ****** ****** *)
+//
+fun
+i0intcc1
+(filr:FILR,tint:token): void
+fun
+i0btfcc1
+(filr:FILR,btf0:sym_t): void
+fun
+i0chrcc1
+(filr:FILR,tchr:token): void
+fun
+i0fltcc1
+(filr:FILR,tflt:token): void
+fun
+i0strcc1
+(filr:FILR,tstr:token): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1tnmcc1
 (filr:FILR,itnm:i1tnm): void
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0pcncc1
+(filr:FILR,ipat:i0pat): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

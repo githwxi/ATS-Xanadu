@@ -61,16 +61,31 @@ XATSOPT "./../../.."
 #staload "./../SATS/intrep1.sats"
 #staload "./../SATS/xats2cc.sats"
 //
+#staload "./../SATS/cc0emit.sats"
 #staload "./../SATS/cc1emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-endlfpr
+strnfpr
+(filr:FILR
+,strn:strn):void =
+(
+strn_fprint(strn, filr))
+//
+(* ****** ****** *)
+//
+fun
+endlnfpr
 (filr: FILR): void =
 (
 strn_fprint("\n", filr))//endfun
+fun
+smclnfpr
+(filr: FILR): void =
+(
+strn_fprint(";\n", filr))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -146,18 +161,31 @@ case+ iins of
 |
 _(*otherwise*) =>
 (
-nindfpr(filr, nind);i1inscc1(filr, iins);endlfpr(filr))
+nindfpr(filr, nind);i1inscc1(filr, iins);smclnfpr(filr))
 )
 //
 |I1LETnew1
 (itnm, iins) =>
 (
+let
+//
+val ityp =
+i1tnm_ityp$get(itnm)
+//
+in//let
+//
 case+ iins of
 |
 _(*otherwise*) =>
 (
+//
+nindfpr(filr, nind);
+i0typcc0(filr, ityp);endlnfpr(filr);
+//
 nindfpr(filr, nind);i1tnmcc1(filr, itnm);
-strnfpr(filr, " = ");i1inscc1(filr, iins);endlfpr(filr))
+strnfpr(filr, " = ");i1inscc1(filr, iins);smclnfpr(filr))
+//
+end//let
 )
 end where
 {

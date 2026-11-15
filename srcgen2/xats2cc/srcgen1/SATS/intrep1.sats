@@ -241,6 +241,27 @@ i1val_node =
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-05-15:
+For flat/boxed left-values
+*)
+|I1Vlpft of (label, i1val)//flat
+|I1Vlpbx of (label, i1val)//boxed
+//
+(*
+HX-2024-07-18:
+For data-consed left-values
+*)
+|I1Vlpcn of (label, i1val)//consd
+//
+(* ****** ****** *)
+//
+|I1Vextnam of
+(
+token(*$EXTNAM*), i1val, g1nam)
+//
+(* ****** ****** *)
+//
 |I1Vnone0(*0*)|I1Vnone1 of (i0exp)
 //
 (* ****** ****** *)
