@@ -843,6 +843,73 @@ end(*end*)//end-of-[l1i1vjs1( filr,ival )]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+fjas1js1
+(filr, fjas) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+fnx
+loop1
+(i0: sint
+,fjas: fjarglst): void =
+(
+case+ fjas of
+|
+list_nil
+((*void*)) => ((*0*))
+|
+list_cons
+(fja1, fjas) =>
+(
+  loop2(i0, fja1, fjas))
+) (* end-of-[loop1(i0,fjas)] *)
+//
+and
+loop2
+(i0: sint
+,fja1: fjarg
+,fjas: fjarglst): void =
+(
+case+
+fja1.node() of
+|FJARGdarg(i1bs) =>
+(
+  loop3(i0, i1bs, fjas))
+) (* end-of-[loop2(i0,fja1,fjas)] *)
+//
+and
+loop3
+(i0: sint
+,i1bs: i1bndlst
+,fjas: fjarglst): void =
+(
+case+ i1bs of
+|
+list_nil() =>
+(
+  loop1(i0, fjas))
+|
+list_cons(_, i1bs) =>
+( if
+  (i0 > 1)
+  then
+  print(", ")
+; prints("arg", i0)
+; loop3(i0+1, i1bs, fjas))
+) (* end-of-[loop3(i0,i1bs,fjas)] *)
+//
+in//let
+//
+print("(");loop1(1(*i0*),fjas);print(")")
+//
+end(*end*)//end-of-[fjas1js1( filr,ival )]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3-XANADU/srcgen2/xats2js/srcgen1/DATS/js1emit_utils0.dats] *)
 (***********************************************************************)

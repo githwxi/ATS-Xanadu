@@ -274,6 +274,7 @@ where
 #typedef i1tnmlst = list(i1tnm)
 #typedef i1valist = list(i1val)
 #typedef i1valopt = optn(i1val)
+#typedef l1i1vlst = list(l1i1v)
 //
 (* ****** ****** *)
 //
@@ -517,6 +518,13 @@ I1Dvardclst of
 I1Dfundclst of
 ( token(*FUN(fnk)*)
 , t2qaglst, d2cstlst, i1fundclist)
+//
+(* ****** ****** *)
+//
+|I1Dimplmnt0 of
+( token(*kind*)
+, stamp(*unicity*)
+, dimpl, fjarglst, i1cmp, i0varlst)
 //
 (* ****** ****** *)
 //

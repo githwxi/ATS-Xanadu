@@ -55,6 +55,7 @@ tryd3i0_dynexp.dats \
 tryd3i0_decl00.dats \
 intrep1.dats \
 intrep1_print0.dats \
+intrep1_utils0.dats \
 trxi0i1.dats \
 trxi0i1_myenv0.dats \
 trxi0i1_dynexp.dats \

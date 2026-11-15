@@ -57,6 +57,15 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload // LOC =
+"./../../../SATS/locinfo.sats"
+//
+#staload // D2E =
+"./../../../SATS/dynexp2.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
 #staload "./../SATS/xats2cc.sats"
@@ -68,11 +77,39 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 fun
+d2con_ctag$get
+(dcon: d2con): sint =
+let
+//
+val
+ctag =
+d2con_get_ctag(dcon)
+//
+val
+EXN000 = 1000000(*1M*)
+//
+in//let
+//
+if ctag >= 0
+then ctag else
+let
+val loc0 = dcon.lctn()
+in//let
+EXN000 + 
+postn_get_ntot(loc0.pbeg())
+end//let
+//
+end//end-of-[d2con_ctag$get(.)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 strnfpr
 (filr:FILR
 ,strn:strn):void =
 (
-strn_fprint(strn, filr))
+strn_fprint(strn, filr))//endfun
 //
 (* ****** ****** *)
 //
@@ -86,6 +123,114 @@ smclnfpr
 (filr: FILR): void =
 (
 strn_fprint(";\n", filr))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2confpr
+(filr: FILR
+,dcon: d2con): void =
+let
+#impltmp
+g_print$out<>() = filr
+//
+val name =
+(
+  d2con_get_name(dcon))
+//
+in//let
+(
+  prints('"', name, '"') )
+end(*let*)//end-of-[d2confpr(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2ctgfpr
+(filr: FILR
+,dcon: d2con): void =
+let
+//
+val ctag =
+d2con_ctag$get(dcon)
+//
+in//let
+(
+  print(ctag) ) where
+{
+#impltmp g_print$out<>() = filr
+}
+end(*let*)//end-of-[d2ctgfpr(...)]
+//
+(* ****** ****** *)
+//
+fun
+i0ctgfpr
+(filr: FILR
+,ipat: i0pat): void =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+case+
+ipat.node() of
+//
+|I0Pcon(d2c0) =>
+(
+prints
+("XATSCTAG("
+,'"', name, '"', ",", ctag, ")")
+) where
+{
+  val ctag = d2con_ctag$get(d2c0)
+  val name = d2con_get_name(d2c0) }
+//
+|
+_(*non-I0Pcon*) => prints('"',ipat,'"')
+//
+end(*let*)//end-of-[i0ctgfpr(filr,ipat)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1valcc1_list
+( filr: FILR
+, i1vs: i1valist): void =
+(
+list_iforitm(i1vs)) where
+{
+#typedef x0 = i1val
+#typedef xs = i1valist
+#impltmp
+iforitm$work<x0>(i0, x0) =
+(
+if
+(i0 >= 1)
+then
+strnfpr(filr,", ");i1valcc1(filr, x0))
+}(*where*)//end-of-[i1valcc1_list(...)]
+//
+(* ****** ****** *)
+//
+fun
+l1i1vcc1_list
+( filr: FILR
+, livs: l1i1vlst): void =
+(
+list_iforitm(livs)) where
+{
+#typedef x0 = l1i1v
+#typedef xs = l1i1vlst
+#impltmp
+iforitm$work<x0>(i0, x0) =
+(
+if
+(i0 >= 1)
+then
+strnfpr(filr,", ");l1i1vcc1(filr, x0))
+}(*where*)//end-of-[l1i1vcc1_list(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -107,8 +252,61 @@ in//let
 case+ iins of
 //
 (* ****** ****** *)
+//
+|I1INSdapp
+(i1f0, i1vs) =>
+(
+if
+i1val_conq
+(  i1f0  )
+then//then
+let
+val-
+I1Vcon(dcon) = i1f0.node()
+in//let
+(
+//
+strnfpr(
+filr,"XATSCAPP(");d2confpr(filr,dcon);
+strnfpr(filr,", [");d2ctgfpr(filr,dcon);
+//
+if // if
+list_consq(i1vs) then strnfpr(filr,", ");
+//
+i1valcc1_list(filr,i1vs);strnfpr(filr,"])"))
+end//let
+else//else
+(
+if
+i1val_cfnq
+(  i1f0  )
+then // then
+(
+strnfpr
+(filr,"XATSCAST(");
+strnfpr(filr,"\"");
+i1valcc1(filr,i1f0);strnfpr(filr,"\"");
+strnfpr(filr,", [");
+i1valcc1_list(filr,i1vs);strnfpr(filr,"])"))
+else // else
+(
+strnfpr
+(filr,"XATSDAPP(");
+i1valcc1(filr,i1f0);strnfpr(filr,"(");
+i1valcc1_list(filr,i1vs);strnfpr(filr,"))"))
+)
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |
-_(*otherwise*) => i1ins_fprint(iins, filr)
+_(*otherwise*) =>
+let
+// HX: this is temporary
+val () = i1ins_fprint(iins, filr) end
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end(*let*)//end-of-[i1inscc1(filr,iins)]
