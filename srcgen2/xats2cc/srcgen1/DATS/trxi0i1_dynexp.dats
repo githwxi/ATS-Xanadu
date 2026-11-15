@@ -422,6 +422,16 @@ iexp.node() of
 |I0Es00 _ => f0_s00(iexp, env0)
 //
 (* ****** ****** *)
+|I0Etop _ => f0_top(iexp, env0)
+(* ****** ****** *)
+//
+(*
+|I0Econ _ => f0_con(iexp, env0)
+|I0Ecst _ => f0_cst(iexp, env0)
+*)
+|I0Evar _ => f0_var(iexp, env0)
+//
+(* ****** ****** *)
 //
 |I0Edap0 _ => f0_dap0(iexp, env0)
 |I0Edapp _ => f0_dapp(iexp, env0)
@@ -570,6 +580,52 @@ env0: !envi0i1): i1val =
 (* ****** ****** *)
 //
 fun
+f0_top
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+(
+  i1val_top(loc, sym) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Etop(sym) = iexp.node() }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_var
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Evar(i0v1) = iexp.node()
+//
+val d2v1 = i0v1.dvar((*0*))
+//
+in//let
+envi0i1_dvar$search(env0, d2v1)
+end where
+{
+//
+(*
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrsln(
+  "f0_var(i0i1): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_var(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_dap0
 (
 iexp: i0exp,
@@ -600,7 +656,7 @@ prerrsln(
   "f0_dap0(i0i1): iexp = ", iexp))
 *)
 //
-}(*where*)//end-of-[f0_dap0(env0,iexp)]
+}(*where*)//end-of-[f0_dap0(iexp,env0)]
 //
 (* ****** ****** *)
 //
@@ -639,7 +695,7 @@ prerrsln(
   "f0_dapp(i0i1): iexp = ", iexp))
 *)
 //
-}(*where*)//end-of-[f0_dapp(env0,iexp)]
+}(*where*)//end-of-[f0_dapp(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
