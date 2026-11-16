@@ -192,7 +192,9 @@ i0pcncc1
 fun
 fjas1cc1
 ( filr
-: FILR, fjas:fjarglst): void
+: FILR
+, nind
+: sint, fjas:fjarglst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -211,6 +213,7 @@ fun
 fjas2cc1
 (
 filr: FILR,
+nind: sint,
 fjas:
 fjarglst, i0ws:i0varlst): void
 //

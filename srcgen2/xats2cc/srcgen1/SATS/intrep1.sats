@@ -374,11 +374,15 @@ i1env_enum$get:(i1env -> sint)
 fun
 i1opr_name$get:(i1opr -> sym_t)
 fun
-i1tnm_ityp$get:(i1tnm -> i0typ)
-fun
 i1tnm_stmp$get:(i1tnm -> stamp)
 //
 (* ****** ****** *)
+//
+fun
+i1tnm_ityp$get:(i1tnm -> i0typ)
+fun
+i1bnd_ityp$get:(i1bnd -> i0typ)
+//
 (* ****** ****** *)
 //
 fun

@@ -456,6 +456,19 @@ end(*local*)//end-of-[local(i1tnm_tbox)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1bnd_ityp$get
+  ( ibnd ) =
+(
+i1tnm_ityp$get(itnm)) where
+{
+val+
+I1BNDcons(itnm, ipat, dsub) = ibnd
+}(*where*)//end-of-[i1bnd_ityp$get(ibnd)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 local
 //
 datatype

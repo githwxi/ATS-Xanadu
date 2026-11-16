@@ -90,12 +90,36 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload
+sint_fprint
+with gint_fprint$sint
+//
+fun
+sintfpr
+(filr:FILR
+,sint:sint):void =
+(
+sint_fprint(sint, filr))
+//
 fun
 strnfpr
 (filr:FILR
 ,strn:strn):void =
 (
 strn_fprint(strn, filr))
+//
+(* ****** ****** *)
+//
+fun
+endlnfpr
+(filr: FILR): void =
+(
+strn_fprint("\n", filr))//endfun
+fun
+smclnfpr
+(filr: FILR): void =
+(
+strn_fprint(";\n", filr))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -570,7 +594,8 @@ end(*end*)//end-of-[l1i1vcc1( filr,ival )]
 //
 #implfun
 fjas1cc1
-(filr, fjas) =
+(filr
+,nind, fjas) =
 let
 //
 #impltmp
@@ -613,29 +638,50 @@ loop3
 (
 case+ i1bs of
 |
-list_nil() =>
+list_nil
+( (*void*) ) =>
 (
   loop1(i0, fjas))
 |
-list_cons(_, i1bs) =>
+list_cons
+(i1b1, i1bs) =>
 ( if
   (i0 > 1)
   then
-  print(", ")
-; prints("arg", i0)
+  print(",\n")
+; f0_i0ibnd(i0, i1b1)
 ; loop3(i0+1, i1bs, fjas))
 )
 //
+and
+f0_i0ibnd
+(i0: sint
+,ibnd: i1bnd): void =
+let
+//
+val ityp =
+i1bnd_ityp$get(ibnd)
+//
+in//let
+//
+nindfpr(filr,nind);
+i0typcc0(filr,ityp);endlnfpr(filr)
+;nindfpr(filr,nind)
+;strnfpr(filr,"arg");sintfpr(filr,i0)
+//
+end(*let*)//end-of-[f0_i1bnd(i0,ibnd)]
+//
 in
-(print("(")
-;loop1(1(*i0*),fjas);print(")"))
-end(*let*)//end-of-[fjas1cc1(filr,fjas)]
+nindfpr(filr, nind);
+print("(\n");loop1(1(*i0*),fjas);print(")")
+end(*let*)//end-of-[fjas1cc1(filr,nind,fjas)]
 //
 (* ****** ****** *)
 //
 #implfun
 fjas2cc1
 (filr
+,nind
 ,fjas, i0ws) =
 let
 //
@@ -711,10 +757,10 @@ case+ i0ws of
 //
 in//
 //
-(print("(")
-;loop1(1(*i0*),fjas);print(")"))
+nindfpr(filr, nind);
+print("(\n");loop1(1(*i0*),fjas);print(")")
 //
-end(*let*)//end-of-[fjas2cc1(filr,fjas,i0ws)]
+end(*let*)//end-of-[fjas2cc1(filr,nind;fjas,i0ws)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

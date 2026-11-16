@@ -715,8 +715,8 @@ in//let
 (
 nindfpr(filr, nind);
 strnfpr(filr, "// function\n");
-d2varfpr(filr, dvar);
-fjas1cc1(filr, fjas);endlnfpr(filr))
+d2varfpr(filr, dvar);endlnfpr(filr);
+fjas1cc1(filr, nind, fjas);endlnfpr(filr))
 end//let
 //
 (* ****** ****** *)
