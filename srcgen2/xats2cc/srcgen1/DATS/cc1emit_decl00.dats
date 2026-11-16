@@ -82,6 +82,15 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload filr with envxcc1_filr$get
+#symload nind with envxcc1_nind$get
+//
+(* ****** ****** *)
+#symload
+fjags_cc1emit with fjarglst_cc1emit
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 endlnfpr
 (filr: FILR): void =
@@ -154,6 +163,23 @@ dcl0.node() of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I1Dextern _ =>
+(
+  f0_extern(dcl0, env0))
+|I1Dstatic _ =>
+(
+  f0_static(dcl0, env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Ddclenv _ =>
+(
+  f0_dclenv(dcl0, env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |I1Dinclude _ =>
 (
   f0_include(dcl0, env0))
@@ -172,11 +198,9 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
-(*
 |I1Dfundclst _ =>
 (
   f0_fundclst(dcl0, env0))
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -186,6 +210,81 @@ dcl0.node() of
 //
 end where
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_extern
+(
+dcl0: i1dcl,
+env0: !envxcc1): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dextern
+(tknd, dcl1) = dcl0.node()
+//
+val
+(  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+nindfpr(filr, nind);
+prints
+("// I1Dextern(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+  i1dcl_ccaemit( dcl1, env0 ))
+//
+end(*let*)//end-of-[f0_extern(dcl0,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_static
+(
+dcl0: i1dcl,
+env0: !envxcc1): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dstatic
+(tknd, dcl1) = dcl0.node()
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+nindfpr(filr, nind);
+prints
+("// I1Dstatic(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+  i1dcl_ccaemit( dcl1, env0 ))
+//
+end(*let*)//end-of-[f0_static(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -229,6 +328,53 @@ case+ dopt of
 (
   i1dclist_cc1emit(dcls, env0)))
 end(*let*)//end-of-[f0_include(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dclenv
+(
+dcl0: i1dcl,
+env0: !envxcc1): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Ddclenv
+(dcl1, i0ws) = dcl0.node()
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+nindfpr(filr, nind);
+prints
+("// I1Ddclenv(",loc0,")\n")
+; //
+nindfpr(filr, nind);
+prints
+("// I1Ddclenv(",i0ws,")\n")
+//
+end//let
+//
+val (  ) =
+(
+case+ i0ws of
+|list_nil() =>
+i1dcl_cc1emit(dcl1, env0)
+|list_cons _ =>
+i1dclenv_cc1emit(dcl1, i0ws, env0))
+//
+end(*let*)//end-of-[f0_dclenv(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -291,6 +437,83 @@ else
   i1valdclist_cc1emit(i1vs, env0))
 //
 end(*let*)//end-of-[f0_valdclst(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+(
+dcl0: i1dcl,
+env0: !envxcc1): void =
+let
+//
+val filr =
+  env0.filr((*void*))
+val nind =
+  env0.nind((*void*))
+val loc0 =
+  dcl0.lctn((*void*))
+//
+val-
+I1Dfundclst
+(tknd
+,lvl0, tqas
+,d2cs, i1fs) = dcl0.node()
+//
+val prfq =
+(
+  funtok_prfq( tknd ))
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+(
+  nindfpr(filr, nind));
+//
+if
+prfq
+then//then
+prints
+("// I1Dprfdclist(",loc0,")\n")
+else//else
+(
+case+ tqas of
+|
+list_nil() =>
+prints
+("// I1Dfundclist(",loc0,")\n")
+|
+list_cons _ =>
+prints
+("// I1Dtfndclist(",loc0,")\n"))
+//
+end//let
+//
+val (  ) =
+if
+prfq
+then//then
+(
+  i1fundclist_ccaemit(i1fs, env0))
+else//else
+(
+case+ tqas of
+|
+list_nil() => // HX: functions
+(
+  i1fundclist_cc1emit(i1fs, env0))
+|
+list_cons _ => // HX: templates
+(
+  i1tfndclist_cc1emit(i1fs, env0)))
+//
+end(*let*)//end-of-[f0_fundclst(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -449,6 +672,150 @@ end//let
 end//let//end-of-[f0_i1tnmcmp(...)]
 //
 }(*where*)//end-of-[i1valdcl_cc1emit(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+#implfun
+i1fundcl_cc1emit
+  (ifun, env0) =
+(
+i1fundcl_ccaemit(ifun, env0))
+*)
+//
+#implfun
+i1tfndcl_cc1emit
+  (ifun, env0) =
+(
+i1tfndcl_ccaemit(ifun, env0))
+//
+(* ****** ****** *)
+//
+#implfun
+i1fundcl_cc1emit
+  (ifun, env0) = let
+//
+(* ****** ****** *)
+//
+val dvar =
+i1fundcl_dpid$get(ifun)
+val fjas =
+i1fundcl_farg$get(ifun)
+val tdxp =
+i1fundcl_tdxp$get(ifun)
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+(
+nindfpr(filr, nind);
+strnfpr(filr, "// function\n");
+d2varfpr(filr, dvar);
+fjas1cc1(filr, fjas);endlnfpr(filr))
+end//let
+//
+(* ****** ****** *)
+//
+val ( ) =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+val (  ) =
+(
+nindfpr(filr, nind);
+strnfpr(filr, "{ // fun\n");
+nindfpr(filr, nind);
+strnfpr
+(filr, "while(true) { // fun\n"))
+//
+end//let//end(val())
+//
+(* ****** ****** *)
+//
+val (  ) = // lam-enter
+(
+  envxcc1_pshlam0(env0) )
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+//
+val ival = icmp.ival()
+//
+val (  ) =
+(
+  fjags_cc1emit(fjas, env0))
+val (  ) =
+(
+  i1cmp_cc1emit(icmp, env0))
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+(
+nindfpr(filr, nind);
+strnfpr(filr, "// return ");
+i1valcc1(filr, ival);endlnfpr(filr))
+end//let
+//
+(* ****** ****** *)
+end//let
+(* ****** ****** *)
+) (*case+*) // end-of-(teqi1exp)
+//
+val (  ) = envxcc1_poplam0(env0)//leave
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+//
+nindstrnfpr
+(filr, nind, "} // endfun(while)\n");
+nindstrnfpr(filr, nind, "} // endfun(");
+d2varfpr(filr, dvar);strnfpr(filr, ")\n")
+//
+end//let
+//
+(* ****** ****** *)
+//
+end where
+{
+//
+val (  ) =
+let
+//
+val
+filr = envxcc1_filr$get(env0)
+val
+nind = envxcc1_nind$get(env0)
+//
+in//let
+(
+ nindstrnfpr(filr, nind, "// I1FUNDCL\n"))
+end//let//end-of-[val()]
+//
+}(*where*)//end-of-[i1fundcl_cc1emit(ifun,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

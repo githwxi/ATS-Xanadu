@@ -66,6 +66,12 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload // S2E =
 "./../../../SATS/staexp2.sats"
 //
+#staload // D2E =
+"./../../../SATS/dynexp2.sats"
+//
+#staload // XGL =
+"./../../../SATS/xglobal.sats"
+//
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
@@ -82,6 +88,20 @@ Authoremail: gmhwxiATgmailDOTcom
 #symload sort with s2cst_get_sort
 #symload lctn with s2cst_get_lctn
 #symload stmp with s2cst_get_stmp
+//
+(* ****** ****** *)
+//
+#symload lctn with d2con_get_lctn
+#symload name with d2con_get_name
+//
+#symload lctn with d2cst_get_lctn
+#symload name with d2cst_get_name
+//
+#symload lctn with d2var_get_lctn
+#symload name with d2var_get_name
+//
+#symload lctn with d2exp_get_lctn
+#symload node with d2exp_get_node
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -125,7 +145,7 @@ symbl_fprint
 strnfpr(filr, "_");
 fprint_lctn1_as_stamp
 (filr, scst.lctn((*void*))))
-end(*let*)//end-of-[s2cstfpr(env0,scst)]
+end(*let*)//end-of-[s2cstfpr(filr,scst)]
 //
 (* ****** ****** *)
 //
@@ -148,8 +168,116 @@ i0typfpr
 (
 case+ ityp.node() of
 | _
-(*otherwise*) => i0typ_fprint(ityp, filr)
-)(*case+*)//end-of-[i0typfpr( env0, ityp )]
+(*other*) => i0typ_fprint(ityp, filr)
+)(*case+*)//end-of-[i0typfpr(filr,ityp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d2confpr
+(filr, dcon) =
+let
+//
+val name = dcon.name((*0*))
+//
+in//let
+(
+symbl_fprint
+(name, filr);
+strnfpr(filr, "_");
+fprint_loctn_as_stamp
+(filr, dcon.lctn((*void*))))
+end(*let*)//end-of-[d2confpr(filr,dcon)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2cstfpr
+(filr, dcst) =
+let
+//
+val stmp =
+d2cst_get_stmp(dcst)
+val xopt =
+the_d2cstmap_xnmfind(stmp)
+//
+in//let
+(
+case+
+xopt of
+| ~
+optn_vt_nil
+ ( (*0*) ) => f0_none(dcst)
+| ~
+optn_vt_cons
+ (  xnam  ) =>
+(
+case+ xnam of
+|X2NAMnone
+ ( (*0*) ) => f0_none(dcst)
+|X2NAMsome
+ (  dexp  ) => f0_some(dcst, dexp)
+)
+) where
+{
+//
+fun
+f0_none
+(dcst: d2cst): void =
+let
+//
+val
+lctn = dcst.lctn((*0*))
+val
+name = dcst.name((*0*))
+//
+in//let
+symbl_fprint
+(name, filr);strnfpr(filr, "_");
+fprint_loctn_as_stamp(filr, lctn)end
+//
+fun
+f0_some
+(dcst: d2cst
+,dexp: d2exp): void =
+let
+//
+val
+name = dcst.name((*0*))
+//
+val-
+D2Eextnam
+(tknd,gnam) = dexp.node((*0*))
+//
+in//let
+case+
+gnam of
+|
+_(*else*) => symbl_fprint(name,filr)
+end(*let*)//end-of-[f0_some(dcst,dexp)]
+//
+}(*where*)
+end(*let*)//end-of-[d2cstfpr(filr,dcst)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2varfpr
+(filr, dvar) =
+let
+//
+val
+name = dvar.name((*0*))
+//
+in//let
+(
+symbl_fprint
+(name, filr);
+strnfpr(filr, "_");
+fprint_loctn_as_stamp
+(filr, dvar.lctn((*void*))))
+end(*let*)//end-of-[d2varfpr(filr,dvar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -833,7 +833,8 @@ prints(lab1, ": ", i1v2)) where
 #impltmp
 g_print<label>(x0) = labeljs1(filr, x0)
 #impltmp
-g_print<i1val>(x0) = i1valjs1(filr, x0) }
+g_print<i1val>(x0) = i1valjs1(filr, x0)
+}
 //
 end(*end*)//end-of-[l1i1vjs1( filr,ival )]
 //

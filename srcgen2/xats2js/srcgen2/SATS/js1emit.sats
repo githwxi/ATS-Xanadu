@@ -145,8 +145,9 @@ i1tnmjs1
 //
 fun
 i0pckjs1
-(filr:FILR
-,ival:i1val,ipat:i0pat): void
+(
+filr:FILR,
+ival:i1val,ipat:i0pat): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

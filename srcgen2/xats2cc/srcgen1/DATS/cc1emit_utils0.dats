@@ -560,13 +560,167 @@ prints(lab1, ": ", i1v2)) where
 #impltmp
 g_print<label>(x0) = labelcc1(filr, x0)
 #impltmp
-g_print<i1val>(x0) = i1valcc1(filr, x0) }
+g_print<i1val>(x0) = i1valcc1(filr, x0)
+}
 //
 end(*end*)//end-of-[l1i1vcc1( filr,ival )]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+fjas1cc1
+(filr, fjas) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+fnx
+loop1
+(i0: sint
+,fjas: fjarglst): void =
+(
+case+ fjas of
+|
+list_nil
+((*void*)) => ((*0*))
+|
+list_cons
+(fja1, fjas) =>
+(
+  loop2(i0, fja1, fjas))
+)
+//
+and
+loop2
+(i0: sint
+,fja1: fjarg
+,fjas: fjarglst): void =
+(
+case+
+fja1.node() of
+|FJARGdarg(i1bs) =>
+(
+  loop3(i0, i1bs, fjas))
+)
+//
+and
+loop3
+(i0: sint
+,i1bs: i1bndlst
+,fjas: fjarglst): void =
+(
+case+ i1bs of
+|
+list_nil() =>
+(
+  loop1(i0, fjas))
+|
+list_cons(_, i1bs) =>
+( if
+  (i0 > 1)
+  then
+  print(", ")
+; prints("arg", i0)
+; loop3(i0+1, i1bs, fjas))
+)
+//
+in
+(print("(")
+;loop1(1(*i0*),fjas);print(")"))
+end(*let*)//end-of-[fjas1cc1(filr,fjas)]
+//
+(* ****** ****** *)
+//
+#implfun
+fjas2cc1
+(filr
+,fjas, i0ws) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+fnx
+loop1
+(i0: sint
+,fjas: fjarglst): void =
+(
+case+ fjas of
+|list_nil
+((*void*)) =>
+( if
+  (i0 >= 2)
+  then print(", ")
+; loop4(1(*i0*), i0ws))
+|list_cons
+(fja1, fjas) =>
+(
+  loop2(i0, fja1, fjas))
+)
+//
+and
+loop2
+(i0: sint
+,fja1: fjarg
+,fjas: fjarglst): void =
+(
+case+
+fja1.node() of
+|FJARGdarg(i1bs) =>
+(
+  loop3(i0, i1bs, fjas))
+)
+//
+and
+loop3
+(i0: sint
+,i1bs: i1bndlst
+,fjas: fjarglst): void =
+(
+case+ i1bs of
+|
+list_nil() =>
+(
+  loop1(i0, fjas))
+|
+list_cons(_, i1bs) =>
+( if
+  (i0 >= 2)
+  then print(", ")
+; prints("arg", i0)
+; loop3(i0+1, i1bs, fjas))
+)
+//
+and
+loop4
+(
+i0: sint,
+i0ws: i0varlst): void =
+(
+case+ i0ws of
+|list_nil() => ()
+|list_cons(_, i0ws) =>
+( if
+  (i0 >= 2)
+  then print(", ")
+; prints("env", i0)
+; loop4(i0+1, i0ws(*envs*)))
+)
+//
+in//
+//
+(print("(")
+;loop1(1(*i0*),fjas);print(")"))
+//
+end(*let*)//end-of-[fjas2cc1(filr,fjas,i0ws)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (***********************************************************************)
 (* end of [ATS3-XANADU/srcgen2/xats2cc/srcgen1/DATS/cc1emit_utils0.dats] *)
+(***********************************************************************)
 (***********************************************************************)

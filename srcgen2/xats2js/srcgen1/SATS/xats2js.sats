@@ -106,11 +106,11 @@ fun
 envx2js_pshlam0
 (env0: !envx2js): void//end-fun
 fun
-envx2js_pshlet0
+envx2js_poplam0
 (env0: !envx2js): void//end-fun
 //
 fun
-envx2js_poplam0
+envx2js_pshlet0
 (env0: !envx2js): void//end-fun
 fun
 envx2js_poplet0

@@ -340,6 +340,63 @@ end(*let*)//end-of-[i1cmpcc1(filr,icmp)]
 (* ****** ****** *)
 //
 #implfun
+i1cmp_cc1emit
+(icmp, env0) =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+in//let
+//
+case+ icmp of
+|
+I1CMPcons
+(ilts, ival) =>
+(
+nindfpr(filr, nind);
+strnfpr
+(filr,"// I1CMP:start\n");
+//
+(
+nindfpr(filr, nind);
+strnfpr
+(filr,"// I1CMP:return:");
+i1valfpr(filr,ival);endlnfpr(filr))
+where
+{
+//
+fun
+i1valfpr
+( filr: FILR
+, ival: i1val): void =
+(
+case+
+ival.node() of
+|
+I1Vs00 _ =>
+strnfpr(
+filr, "I1Vs00(...)")
+|
+I1Vstr _ =>
+strnfpr(
+filr, "I1Vstr(...)")
+|
+_(*else*) =>
+(
+i1val_fprint(ival, filr)))
+//
+val () =
+(
+  i1letlst_cc1emit(ilts, env0)) }//where
+)(*where*)//end-of-([I1CMPcons(ilts,ival)])
+//
+end(*let*)//end-of-[i1cmp_cc1emit(icmp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i1let_cc1emit
 (ilet, env0) =
 let
@@ -397,6 +454,87 @@ val nind = env0.nind()
 //
 }(*where*)//end-of-[i1let_cc1emit(ilet,env0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fjarglst_cc1emit
+  (fjas, env0) =
+(
+  loop1(1(*i0*), fjas)
+) where
+{
+//
+val filr =
+(
+envxcc1_filr$get(env0))
+val nind =
+(
+envxcc1_nind$get(env0))
+//
+fnx
+loop1
+( i0: sint
+, fjas: fjarglst): void =
+(
+case+ fjas of
+|
+list_nil
+( (*void*) ) => ( (*void*) )
+|
+list_cons
+(fja1, fjas) => loop2(i0, fja1, fjas)
+)
+//
+and
+loop2
+( i0: sint
+, fja1: fjarg
+, fjas: fjarglst): void =
+(
+case+
+fja1.node() of
+|
+FJARGdarg(i1bs) => loop3(i0, i1bs, fjas)
+)
+//
+and
+loop3
+( i0: sint
+, i1bs: i1bndlst
+, fjas: fjarglst): void =
+(
+case+ i1bs of
+|
+list_nil() =>
+loop1(i0, fjas)
+|
+list_cons(ibnd, i1bs) =>
+(
+  loop3(i0+1, i1bs, fjas)) where
+{
+//
+#impltmp
+g_print$out<>() = filr
+//
+#impltmp g_print
+<i1tnm>(itnm) = i1tnmcc1(filr, itnm)
+//
+val () =
+case+ ibnd of
+|
+I1BNDcons(itnm, i0p1, dvvs) =>
+(
+nindfpr(filr,nind);
+(
+prints("let ", itnm, " = ", "arg", i0, "\n")))
+}
+)
+//
+}(*where*)//end-of-[fjarglst_cc1emit(fjas,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)

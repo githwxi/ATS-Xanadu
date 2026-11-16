@@ -90,6 +90,22 @@ envxcc1_decnind
 ! envxcc1, ndec: sint): void
 //
 (* ****** ****** *)
+//
+fun
+envxcc1_pshlam0
+(env0: !envxcc1): void//end-fun
+fun
+envxcc1_pshlet0
+(env0: !envxcc1): void//end-fun
+//
+fun
+envxcc1_poplam0
+(env0: !envxcc1): void//end-fun
+fun
+envxcc1_poplet0
+(env0: !envxcc1): void//end-fun
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -174,11 +190,29 @@ i0pcncc1
 (* ****** ****** *)
 //
 fun
+fjas1cc1
+( filr
+: FILR, fjas:fjarglst): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1valcc1
 (filr:FILR,ival:i1val): void
 fun
 l1i1vcc1
 (filr:FILR,liv0:l1i1v): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fjas2cc1
+(
+filr: FILR,
+fjas:
+fjarglst, i0ws:i0varlst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -206,6 +240,16 @@ i1let_cc1emit
 (ilet: i1let, env0: !envxcc1): void
 //
 (* ****** ****** *)
+//
+fun
+i1bnd_cc1emit
+(ibnd: i1bnd, env0: !envxcc1): void
+//
+fun
+i1cmp_cc1emit
+(icmp: i1cmp, env0: !envxcc1): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -227,6 +271,21 @@ i1cmplst_cc1emit(
 (* ****** ****** *)
 //
 fun
+fjarglst_cc1emit(
+  fjas: fjarglst, env0: !envxcc1): void
+  //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1dclenv_cc1emit(
+  dcl0: i1dcl,
+  i0ws: i0varlst, env0: !envxcc1): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1dclist_cc1emit(
   dcls: i1dclist, env0: !envxcc1): void
 //
@@ -240,8 +299,13 @@ fun
 i1vardcl_cc1emit(
   ivar: i1vardcl, env0: !envxcc1): void
 //
+(* ****** ****** *)
+//
 fun
 i1fundcl_cc1emit(
+  ifun: i1fundcl, env0: !envxcc1): void
+fun
+i1tfndcl_cc1emit(
   ifun: i1fundcl, env0: !envxcc1): void
 //
 (* ****** ****** *)
@@ -261,8 +325,13 @@ fun
 i1vardclist_cc1emit(
   i1vs: i1vardclist, env0: !envxcc1): void
 //
+(* ****** ****** *)
+//
 fun
 i1fundclist_cc1emit(
+  i1fs: i1fundclist, env0: !envxcc1): void
+fun
+i1tfndclist_cc1emit(
   i1fs: i1fundclist, env0: !envxcc1): void
 //
 (* ****** ****** *)

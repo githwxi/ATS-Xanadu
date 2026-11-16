@@ -82,6 +82,22 @@ envxcc1_nind$get =
 envx2cc_nind$get(*env0*)
 //
 (* ****** ****** *)
+//
+#implfun
+envxcc1_pshlam0 =
+envx2cc_pshlam0(* env0 *)
+#implfun
+envxcc1_poplam0 =
+envx2cc_poplam0(* env0 *)
+//
+#implfun
+envxcc1_pshlet0 =
+envx2cc_pshlet0(* env0 *)
+#implfun
+envxcc1_poplet0 =
+envx2cc_poplet0(* env0 *)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -170,6 +186,20 @@ i1vardclist_cc1emit
 (
   list_cc1emit_fnp(i1vs, env0, i1vardcl_cc1emit))
 //
+(* ****** ****** *)
+//
+#implfun
+i1fundclist_cc1emit
+  (i1fs, env0) =
+(
+  list_cc1emit_fnp(i1fs, env0, i1fundcl_cc1emit))
+//
+#implfun
+i1tfndclist_cc1emit
+  (i1fs, env0) =
+(
+  list_cc1emit_fnp(i1fs, env0, i1tfndcl_cc1emit))
+//  
 (* ****** ****** *)
 (* ****** ****** *)
 //

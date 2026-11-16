@@ -100,7 +100,7 @@ _(*DATS*)="./../DATS/js1emit.dats"
 #symload nind with envx2js_nind$get
 (* ****** ****** *)
 #symload
-js1emit_fjas1 with js1emit_fjarglst
+js1emit_fjags with js1emit_fjarglst
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -997,7 +997,7 @@ val ival = icmp.ival()
 //
 val (  ) =
 (
-  js1emit_fjas1(env0, fjas))
+  js1emit_fjags(env0, fjas))
 val (  ) =
 (
   js1emit_i1cmp(env0, icmp))

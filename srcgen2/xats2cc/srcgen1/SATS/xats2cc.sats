@@ -138,16 +138,170 @@ envx2cc_decnind
 ! envx2cc, ndec: sint): void
 //
 (* ****** ****** *)
+//
+fun
+envx2cc_pshlam0
+(env0: !envx2cc): void//end-fun
+fun
+envx2cc_pshlet0
+(env0: !envx2cc): void//end-fun
+//
+fun
+envx2cc_poplam0
+(env0: !envx2cc): void//end-fun
+fun
+envx2cc_poplet0
+(env0: !envx2cc): void//end-fun
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-fprint_lctn1_as_stamp: (FILR, loctn) -> void
+fprint_lctn1_as_stamp
+(filr: FILR, lctn: loctn): void
 fun
-fprint_lctn2_as_stamp: (FILR, loctn) -> void
+fprint_lctn2_as_stamp
+(filr: FILR, lctn: loctn): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1parsed_ccaemit
+(ipar: i1parsed, filr: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1let_ccaemit
+(ilet: i1let, env0: !envx2cc): void
+//
+fun
+i1bnd_ccaemit
+(ibnd: i1bnd, env0: !envx2cc): void
+//
+fun
+i1cmp_ccaemit
+(icmp: i1cmp, env0: !envx2cc): void
+//
+fun
+i1ins_ccaemit
+(iins: i1ins, env0: !envx2cc): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fjarg_ccaemit
+(farg: fjarg, env0: !envx2cc): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1gpt_ccaemit
+(igpt: i1gpt, env0: !envx2cc): void
+fun
+i1cls_ccaemit
+(icls: i1cls, env0: !envx2cc): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1dcl_ccaemit
+(dcl0: i1dcl, env0: !envx2cc): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1letlst_ccaemit
+(ilts: i1letlst, env0: !envx2cc): void
+//
+fun
+i1cmplst_ccaemit
+(cmps: i1cmplst, env0: !envx2cc): void
+//
+(* ****** ****** *)
+//
+fun
+fjarglst_ccaemit
+(fjas: fjarglst, env0: !envx2cc): void
+//
+(* ****** ****** *)
+//
+fun
+i1clslst_ccaemit
+(icls: i1clslst, env0: !envx2cc): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1dclist_ccaemit
+(dcls: i1dclist, env0: !envx2cc): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1valdcl_ccaemit
+(ival: i1valdcl, env0: !envx2cc): void
+fun
+i1vardcl_ccaemit
+(ivar: i1vardcl, env0: !envx2cc): void
+//
+fun
+i1fundcl_ccaemit
+(ifun: i1fundcl, env0: !envx2cc): void
+fun
+i1tfndcl_ccaemit
+(ifun: i1fundcl, env0: !envx2cc): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1prvdclist_ccaemit
+(
+i1vs: i1valdclist, env0: !envx2cc): void
+fun
+i1valdclist_ccaemit
+(
+i1vs: i1valdclist, env0: !envx2cc): void
+//
+fun
+i1vardclist_ccaemit
+(
+i1vs: i1vardclist, env0: !envx2cc): void
+//
+fun
+i1prfdclist_ccaemit
+(
+i1fs: i1fundclist, env0: !envx2cc): void
+fun
+i1fundclist_ccaemit
+(
+i1fs: i1fundclist, env0: !envx2cc): void
+fun
+i1tfndclist_ccaemit
+(
+i1fs: i1fundclist, env0: !envx2cc): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1dclistopt_ccaemit
+(dopt: i1dclistopt, env0: !envx2cc): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
+(***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_xats2cc_srcgen1_SATS_xats2cc.sats] *)
+(***********************************************************************)
 (***********************************************************************)

@@ -139,6 +139,67 @@ end (*let*)//end-of-(envx2cc_decnind(env0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+envx2cc_pshlam0
+(     env0     ) = let
+//
+val+
+@ENVX2CC(filr, !nind) = env0
+//
+in//let
+//
+(
+  nind := nind + 2; $fold(env0))
+//
+end (*let*)//end-of-(envx2cc_pshlam0(env0))
+//
+#implfun
+envx2cc_poplam0
+(     env0     ) = let
+//
+val+
+@ENVX2CC(filr, !nind) = env0
+//
+in//let
+//
+(
+  nind := nind - 2; $fold(env0))
+//
+end (*let*)//end-of-(envx2cc_poplam0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+envx2cc_pshlet0
+(     env0     ) = let
+//
+val+
+@ENVX2CC(filr, !nind) = env0
+//
+in//let
+//
+(
+  nind := nind + 2; $fold(env0))
+//
+end (*let*)//end-of-(envx2cc_pshlet0(env0))
+//
+#implfun
+envx2cc_poplet0
+(     env0     ) = let
+//
+val+
+@ENVX2CC(filr, !nind) = env0
+//
+in//let
+//
+(
+  nind := nind - 2; $fold(env0))
+//
+end (*let*)//end-of-(envx2cc_poplet0(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 end (*local*) // end of [local(envx2cc_vtbx)]
 //
 (* ****** ****** *)

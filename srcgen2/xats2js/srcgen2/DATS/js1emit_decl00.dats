@@ -90,7 +90,7 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 #symload
-fjas1_js1emit with fjarglst_js1emit
+fjags_js1emit with fjarglst_js1emit
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -819,7 +819,7 @@ val ival = icmp.ival()
 //
 val (  ) =
 (
-  fjas1_js1emit(fjas, env0))
+  fjags_js1emit(fjas, env0))
 val (  ) =
 (
   i1cmp_js1emit(icmp, env0))
@@ -1055,7 +1055,7 @@ val ival = icmp.ival()
 //
 val (  ) =
 (
-  fjas1_js1emit(fjas, env0))
+  fjags_js1emit(fjas, env0))
 val (  ) =
 (
   i1cmp_js1emit(icmp, env0))

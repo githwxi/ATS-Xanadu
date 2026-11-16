@@ -235,13 +235,14 @@ let
 val () =
 (
 token_fprint(tok0, filr)) in ()
-end(*let*)//end-of-[tokenfpr(env0,tok0)]
+end(*let*)//end-of-[tokenfpr(filr,tok0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 d2confpr
-( filr,dcon ) =
+(filr, dcon) =
 let
 //
 val name = dcon.name((*0*))
@@ -253,13 +254,13 @@ symbl_fprint
 strnfpr(filr, "_");
 fprint_loctn_as_stamp
 (filr, dcon.lctn((*void*))))
-end(*let*)//end-of-[d2confpr(env0,dcon)]
+end(*let*)//end-of-[d2confpr(filr,dcon)]
 //
 (* ****** ****** *)
 //
 #implfun
 d2cstfpr
-( filr,dcst ) =
+(filr, dcst) =
 let
 //
 val stmp =
@@ -316,19 +317,20 @@ D2Eextnam
 (tknd,gnam) = dexp.node((*0*))
 //
 in//let
-case+ gnam of
+case+
+gnam of
 |
-_(* else *) => symbl_fprint(name,filr)
+_(*else*) => symbl_fprint(name,filr)
 end(*let*)//end-of-[f0_some(dcst,dexp)]
 //
 }(*where*)
-end(*let*)//end-of-[d2cstfpr(env0,dcst)]
+end(*let*)//end-of-[d2cstfpr(filr,dcst)]
 //
 (* ****** ****** *)
 //
 #implfun
 d2varfpr
-( filr,dvar ) =
+(filr, dvar) =
 let
 //
 val
@@ -341,7 +343,7 @@ symbl_fprint
 strnfpr(filr, "_");
 fprint_loctn_as_stamp
 (filr, dvar.lctn((*void*))))
-end(*let*)//end-of-[d2varfpr(env0,dvar)]
+end(*let*)//end-of-[d2varfpr(filr,dvar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -434,7 +436,7 @@ end//end
 //
 #implfun
 i0strfpr
-( filr, tstr) =
+(filr, tstr) =
 let
 //
 #impltmp
@@ -454,7 +456,7 @@ end(*let*)//end-of-[i0strfpr(filr,tstr)]
 //
 #implfun
 i0strfpr
-( filr, tstr) =
+(filr, tstr) =
 let
 //
 #impltmp

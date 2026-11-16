@@ -159,8 +159,8 @@ ival:i1val,ipat:i0pat): void
 //
 fun
 fjas1js1
-(filr
-: FILR, fjas: fjarglst): void
+( filr
+: FILR, fags: fjarglst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
