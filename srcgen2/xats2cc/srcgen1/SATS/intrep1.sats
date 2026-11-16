@@ -190,7 +190,23 @@ and i1ins =
 (label(*int/sym*)
 ,i1val(*tuproot*))//tptrprj
 //
-// end-of-[datatype(  i1ins  )]
+(* ****** ****** *)
+//
+|I1INSift0 of
+(i1val(*test*)
+,i1cmpopt(*then*)
+,i1cmpopt(*else*))//ifthnels
+//
+(* ****** ****** *)
+//
+|I1INSrturn of
+(i0cal(*icalknd*), i1cmp(*rtnv*))
+//
+(* ****** ****** *)
+//
+(*
+//end-of-[datatype(    i1ins    )]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -406,6 +422,11 @@ i1val_fid(dfix: d2var): (i1val)
 (* ****** ****** *)
 //
 fun
+i1cmp_retq(icmp: i1cmp): (bool)
+//
+(* ****** ****** *)
+//
+fun
 i1val_conq(ival: i1val): (bool)
 //
 fun
@@ -416,6 +437,8 @@ i1val_cfnq(ival: i1val): (bool)
 //
 fun
 i1val_varq(ival: i1val): (bool)
+fun
+i1val_fidq(ival: i1val): (bool)
 //
 (* ****** ****** *)
 //

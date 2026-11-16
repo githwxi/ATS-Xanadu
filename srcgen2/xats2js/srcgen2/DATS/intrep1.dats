@@ -76,7 +76,7 @@ XATSOPT "./../../.."
 i1val_nil
 (  loc0  ) =
 i1val_make_node
-(loc0,I1Vnil((*void*)))
+(loc0,I1V000((*void*)))
 //
 (* ****** ****** *)
 //

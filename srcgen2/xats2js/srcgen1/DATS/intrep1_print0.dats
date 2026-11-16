@@ -90,14 +90,14 @@ XATSOPT "./../../.."
 //
 #implfun
 i1val_fprint
-(i1v0, out0) =
+(ival, out0) =
 let
 #impltmp
 g_print$out<>() = out0
 in//let
 //
 case+
-i1v0.node() of
+ival.node() of
 //
 (* ****** ****** *)
 //
@@ -191,10 +191,10 @@ I0Etapq(i0e1) => detapq(i0e1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-|I1Vaexp(iexp) =>
-prints("I1Vaexp(", iexp, ")")
-|I1Vaddr(ival) =>
-prints("I1Vaddr(", ival, ")")
+|I1Vaexp(i0e1) =>
+prints("I1Vaexp(", i0e1, ")")
+|I1Vaddr(i1v1) =>
+prints("I1Vaddr(", i1v1, ")")
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -326,7 +326,7 @@ prints("I1Vl0azy(", dknd, ";", icmp, ")"))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-end(*let*)//end-of-[i1val_fprint(i1v0,out0)]
+end(*let*)//end-of-[i1val_fprint(ival,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -479,18 +479,18 @@ prints
 (* ****** ****** *)
 //
 |I1INSflat
-(   i1v0   ) =>
-(prints("I1INSflat(",i1v0,")"))
+(   i1v1   ) =>
+(prints("I1INSflat(",i1v1,")"))
 //
 (* ****** ****** *)
 //
 |I1INSfold
-(   i1v0   ) =>
-(prints("I1INSfold(",i1v0,")"))
+(   i1v1   ) =>
+(prints("I1INSfold(",i1v1,")"))
 //
 |I1INSfree
-(   i1v0   ) =>
-(prints("I1INSfree(",i1v0,")"))
+(   i1v1   ) =>
+(prints("I1INSfree(",i1v1,")"))
 //
 (* ****** ****** *)
 //

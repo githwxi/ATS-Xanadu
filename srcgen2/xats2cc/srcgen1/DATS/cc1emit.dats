@@ -84,6 +84,15 @@ envx2cc_nind$get(*env0*)
 (* ****** ****** *)
 //
 #implfun
+envxcc1_incnind =
+envx2cc_incnind(* env0 *)
+#implfun
+envxcc1_decnind =
+envx2cc_decnind(* env0 *)
+//
+(* ****** ****** *)
+//
+#implfun
 envxcc1_pshlam0 =
 envx2cc_pshlam0(* env0 *)
 #implfun

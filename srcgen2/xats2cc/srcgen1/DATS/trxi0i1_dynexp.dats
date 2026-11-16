@@ -296,6 +296,57 @@ val (  ) =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+i1val_ift0
+( env0:
+! envi0i1
+, loc0: loc_t
+, i0t1: i0typ
+, i1v1: i1val
+, ithn: i1cmpopt
+, iels: i1cmpopt): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val
+itnm = i1tnm_new1(i0t1)
+val
+iins =
+(
+  I1INSift0(i1v1, ithn, iels))
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_ilet$insert(env0, ilet) )
+}(*where*)//end-of-[i1val_ift0(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+i1val_rturn
+( env0:
+! envi0i1
+, loc0: loc_t
+, ical: (i0cal)
+, icmp: (i1cmp)): i1val =
+(
+i1val_nil(loc0)) where
+{
+val (  ) =
+let
+//
+val ilet =
+I1LETnew0(
+  I1INSrturn(ical, icmp)) in
+//
+envi0i1_ilet$insert(env0, ilet) end
+}(*where*)//end-of-[i1val_rturn(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 i0pat_trxi0i1
 (ipat, env0) =
@@ -477,6 +528,30 @@ iexp.node() of
 //
 |I0Edap0 _ => f0_dap0(iexp, env0)
 |I0Edapp _ => f0_dapp(iexp, env0)
+//
+(* ****** ****** *)
+//
+|I0Eift0 _ => f0_ift0(iexp, env0)
+(*
+|I0Ecas0 _ => f0_cas0(iexp, env0)
+*)
+//
+(* ****** ****** *)
+//
+|I0Eseqn _ => f0_seqn(iexp, env0)
+//
+(* ****** ****** *)
+//
+|I0Erturn _ => f0_rturn(iexp, env0)
+//
+(* ****** ****** *)
+//
+|I0Eannot _ => f0_annot(iexp, env0)
+|I0Et2ped _ => f0_t2ped(iexp, env0)
+//
+(* ****** ****** *)
+//
+|I0Enone0 _ => f0_none0(iexp, env0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -779,6 +854,195 @@ prerrsln(
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+f0_ift0
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 =
+i0exp_lctn$get(iexp)
+val i0t1 =
+i0exp_ityp$get(iexp)
+//
+val-
+I0Eift0
+(
+i0e1,
+ithn, iels) = iexp.node()
+//
+val i1v1 =
+i0exp_trxi0i1(i0e1, env0)
+//
+val ithn =
+(
+case+ ithn of
+|
+optn_nil() => optn_nil()
+|
+optn_cons(i0e2) =>
+optn_cons
+(i0blk_trxi0i1(i0e2, env0)))
+//
+val iels =
+(
+case+ iels of
+|
+optn_nil() => optn_nil()
+|
+optn_cons(i0e2) =>
+optn_cons
+(i0blk_trxi0i1(i0e2, env0)))
+//
+in//let
+(
+i1val_ift0(env0,
+  loc0, i0t1, i1v1, ithn, iels))
+end where
+{
+//
+(*
+val () =
+(
+prerr("i0exp_trxi0i1:");
+prerrsln(
+  "f0_ift0(i0i1): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_ift0(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_seqn
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Eseqn
+(i0es, i0e1) = iexp.node()
+//
+val () =
+(
+  f1_i0es(i0es, env0))
+where{
+//
+fun
+f1_i0es
+( i0es: i0explst
+, env0: !envi0i1): void =
+(
+case+ i0es of
+|
+list_nil
+( (*void*) ) => ((*0*))
+|
+list_cons
+(i0e1, i0es) =>
+(
+  f1_i0es(i0es, env0))
+where{
+  val _(*i1v1*) =
+  i0exp_trxi0i1(i0e1, env0) }
+)
+//
+}(*where*)//end-[val(f1_i0es)]
+//
+in//let
+(
+  i0exp_trxi0i1( i0e1, env0 ))
+end where
+{
+//
+(*
+val () =
+(
+prerr("i0exp_trxi0i1:");
+prerrsln(
+  "f0_seqn(i0i1): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_seqn(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_rturn
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Erturn
+(
+ical, i0e1) = iexp.node()
+//
+val icmp =
+(
+  i0blk_trxi0i1(i0e1, env0))
+//
+in//let
+(
+i1val_rturn(env0,loc0,ical,icmp))
+end(*let*)//end-of-[f0_rturn(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_annot
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+(
+i0exp_trxi0i1(i0e1, env0)
+) where
+{
+val-
+I0Eannot(i0e1, _, _) = iexp.node()
+}(*where*)//end-of-[f0_annot(iexp,env0)]
+//
+fun
+f0_t2ped
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+(
+i0exp_trxi0i1(i0e1, env0)
+) where
+{
+val-
+I0Et2ped(i0e1, t2p2) = iexp.node()
+}(*where*)//end-of-[f0_t2ped(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_none0
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+(
+  i1val_nil(loc0)) where
+{
+  val loc0 = iexp.lctn((*0*))
+  val-I0Enone0() = iexp.node((*0*))
+}(*where*)//end-of-[f0_none0(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 } where {
 //
 (* ****** ****** *)
@@ -909,6 +1173,28 @@ optn_cons(i0dcl_trxi0i1(dcl1, env0)))))
 }(*where*)//end(t1imp_make_node(stmp,node))
 //
 end(*let*)//end-of-[t0imp_trxi0i1(timp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0blk_trxi0i1
+( iexp, env0 ) =
+(
+I1CMPcons(ilts, ival)
+) where
+{
+val () =
+(
+  envi0i1_pshblk0(env0))
+//
+val ival =
+(
+  i0exp_trxi0i1(iexp, env0))
+//
+val ilts = envi0i1_popblk0(env0)
+//
+}(*where*)//end-of-[i0blk_trxi0i1(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -70,14 +70,14 @@ XATSOPT "./../../.."
 //
 #implfun
 i1val_fprint
-(i1v0, out0) =
+(ival, out0) =
 let
 #impltmp
 g_print$out<>() = out0
 in//let
 //
 case+
-i1v0.node() of
+ival.node() of
 //
 (* ****** ****** *)
 //
@@ -152,11 +152,11 @@ i0f0(*tfn*), ";", timp, ")"))
 (* ****** ****** *)
 //
 |I1Vaexp
-(   iexp   ) =>
-prints("I1Vaexp(", iexp, ")")
+(   i0e1   ) =>
+prints("I1Vaexp(", i0e1, ")")
 |I1Vaddr
-(   ival   ) =>
-prints("I1Vaddr(", ival, ")")
+(   i1v1   ) =>
+prints("I1Vaddr(", i1v1, ")")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -201,7 +201,6 @@ prints
 (tknd, ";", i1v1, ";", lab2, ")"))
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 HX-2024-05-15:
@@ -232,13 +231,13 @@ For consd left-values
 prints("I1Vlpcn(",lab0,";",i1v1,")"))
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 |I1Vextnam
 (tknd
 ,i1v1, g1ns) =>
-( print("I1Vextnam(")
-; prints(tknd, ";", i1v1, ";", g1ns, ")"))
+(
+print("I1Vextnam(");
+prints(tknd, ";", i1v1, ";", g1ns, ")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -249,11 +248,10 @@ prints("I1Vlpcn(",lab0,";",i1v1,")"))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-end(*let*)//end-of-[i1val_fprint(i1v0,out0)]
+end(*let*)//end-of-[i1val_fprint(ival,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 #implfun
 i1ins_fprint
@@ -302,7 +300,25 @@ prints(i1f0, ";", i1vs, ")"))
 //
 (* ****** ****** *)
 //
-end(*let*)//end-of-[i1val_fprint(i1v0,out0)]
+|I1INSift0
+(test
+,ithn, iels) =>
+(
+print("I1INSift0(");
+prints
+(test,";", ithn,";", iels,")"))
+//
+(* ****** ****** *)
+//
+|I1INSrturn
+(ical, icmp) =>
+( print("I1INSrturn(")
+; prints(ical, ";", icmp, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+end(*let*)//end-of-[i1ins_fprint(iins,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

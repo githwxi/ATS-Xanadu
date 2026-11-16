@@ -117,7 +117,7 @@ case+
 ival.node()
 of // case+
 | I1Vfid _ => true
-| _(*non-I1Vvar*) => false)
+| _(*non-I1Vfid*) => false)
 //
 (* ****** ****** *)
 (* ****** ****** *)

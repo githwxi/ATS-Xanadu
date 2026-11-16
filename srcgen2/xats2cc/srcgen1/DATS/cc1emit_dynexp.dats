@@ -405,6 +405,47 @@ val () =
 prerrsln
 ("i1let_cc1emit: ilet = ", ilet)
 //
+(* ****** ****** *)
+//
+(*
+HX-2024-06-22:
+Note that the temporary [itnm]
+is assumed to have been introduced
+*)
+fun
+f0_i1tnmcmp
+( env0:
+! envxcc1
+, itnm: i1tnm
+, icmp: i1cmp): void =
+let
+//
+val filr =
+envxcc1_filr$get(env0)
+val nind =
+envxcc1_nind$get(env0)
+//
+val retq =
+(
+  i1cmp_retq(icmp))
+//
+val ival = icmp.ival()
+val ilts = icmp.ilts()
+//
+val () =
+i1letlst_cc1emit(ilts, env0)
+//
+val () =
+if retq then () else
+let
+nindfpr(filr, nind);i1tnmcc1(filr, itnm);
+strnfpr(filr, " = ");i1valcc1(filr, ival);endlnfpr(filr)
+end//let//end-of-[if(retq)]
+//
+end//let//end-of-[f0_i1tnmcmp(...)]
+//
+(* ****** ****** *)
+//
 in//let
 //
 case+ ilet of
@@ -427,9 +468,74 @@ let
 val ityp =
 i1tnm_ityp$get(itnm)
 //
+fun
+f1_i1ins
+(iins: i1ins): void =
+(
+nindfpr(filr, nind);
+i0typcc0(filr, ityp);endlnfpr(filr);
+//
+nindfpr(filr, nind);i1tnmcc1(filr, itnm);
+strnfpr(filr, " = ");i1inscc1(filr, iins);smclnfpr(filr))
+//
 in//let
 //
 case+ iins of
+//
+(* ****** ****** *)
+//
+|I1INSdapp _ => f1_i1ins(iins)
+//
+(* ****** ****** *)
+//
+|I1INSift0
+(itst
+,ithn, iels) =>
+let
+//
+val () =
+(
+nindfpr(filr, nind);
+i0typcc0(filr, ityp);strnfpr(filr, "\n");
+nindfpr(filr, nind);
+i1tnmcc1(filr, itnm);strnfpr(filr, ";\n"))
+//
+val () =
+(
+nindstrnfpr
+(filr, nind, "if (");
+i1valcc1(filr, itst);strnfpr(filr, ") // ift\n"))
+//
+val () =
+(
+nindstrnfpr
+(filr, nind, "{\n");
+case+ ithn of
+|optn_nil() => ()
+|optn_cons(icmp) =>
+(envxcc1_incnind(env0,2(*++*))
+;f0_i1tnmcmp( env0,itnm,icmp )
+;envxcc1_decnind(env0,2(*--*))))//then
+//
+val () =
+(
+nindstrnfpr
+(filr, nind, "} else {\n");
+case+ iels of
+|optn_nil() => ()
+|optn_cons(icmp) =>
+(envxcc1_incnind(env0,2(*++*))
+;f0_i1tnmcmp( env0,itnm,icmp )
+;envxcc1_decnind(env0,2(*--*))))//else
+//
+val () =
+(
+nindstrnfpr(filr, nind, "} // end(if)\n"))
+//
+end//let//end-of-[I1INSift0(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 |
 _(*otherwise*) =>
 (
@@ -439,6 +545,10 @@ i0typcc0(filr, ityp);endlnfpr(filr);
 //
 nindfpr(filr, nind);i1tnmcc1(filr, itnm);
 strnfpr(filr, " = ");i1inscc1(filr, iins);smclnfpr(filr))
+//
+
+(* ****** ****** *)
+(* ****** ****** *)
 //
 end//let
 )
