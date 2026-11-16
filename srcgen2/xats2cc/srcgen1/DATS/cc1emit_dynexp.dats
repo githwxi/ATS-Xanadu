@@ -517,19 +517,36 @@ list_cons(ibnd, i1bs) =>
 #impltmp
 g_print$out<>() = filr
 //
-#impltmp g_print
-<i1tnm>(itnm) = i1tnmcc1(filr, itnm)
+#impltmp
+g_print
+<i1tnm>(itnm) =
+(
+  i1tnmcc1(filr, itnm))
 //
 val () =
 case+ ibnd of
 |
-I1BNDcons(itnm, i0p1, dvvs) =>
-(
-nindfpr(filr,nind);
-(
-prints("let ", itnm, " = ", "arg", i0, "\n")))
+I1BNDcons
+(itnm
+,i0p1, dvvs) =>
+let
+//
+val ityp =
+i1tnm_ityp$get(itnm)
+//
+in//let
+//
+nindfpr
+(filr,nind);
+i0typcc0(filr, ityp);endlnfpr(filr);
+//
+nindfpr
+(filr,nind);prints
+(itnm, " = ", "arg", i0);smclnfpr(filr)
+//
+end//let
 }
-)
+)(*case+*)//end-of-[loop3(i0,i1bs,fjas)]
 //
 }(*where*)//end-of-[fjarglst_cc1emit(fjas,env0)]
 //
