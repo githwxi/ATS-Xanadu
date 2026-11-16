@@ -297,11 +297,39 @@ val (  ) =
 (* ****** ****** *)
 //
 fun
+i1val_let0
+( env0:
+! envi0i1
+, loc0: loc_t
+, ityp: i0typ
+, dcls: i1dclist
+, icmp:
+  i1cmp (*body*)): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val
+itnm = i1tnm_new1(ityp)
+val
+iins = I1INSlet0(dcls, icmp)
+//
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_ilet$insert(env0, ilet) )
+}(*where*)//end-of-[i1val_let0(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1val_ift0
 ( env0:
 ! envi0i1
 , loc0: loc_t
-, i0t1: i0typ
+, ityp: i0typ
 , i1v1: i1val
 , ithn: i1cmpopt
 , iels: i1cmpopt): i1val =
@@ -310,7 +338,7 @@ i1val_tnm(loc0, itnm)) where
 {
 //
 val
-itnm = i1tnm_new1(i0t1)
+itnm = i1tnm_new1(ityp)
 val
 iins =
 (
@@ -531,6 +559,10 @@ iexp.node() of
 //
 (* ****** ****** *)
 //
+|I0Elet0 _ => f0_let0(iexp, env0)
+//
+(* ****** ****** *)
+//
 |I0Eift0 _ => f0_ift0(iexp, env0)
 (*
 |I0Ecas0 _ => f0_cas0(iexp, env0)
@@ -539,6 +571,10 @@ iexp.node() of
 (* ****** ****** *)
 //
 |I0Eseqn _ => f0_seqn(iexp, env0)
+//
+(* ****** ****** *)
+//
+|I0Ewhere _ => f0_where(iexp, env0)
 //
 (* ****** ****** *)
 //
@@ -717,7 +753,8 @@ iexp: i0exp,
 env0: !envi0i1): i1val =
 let
 //
-val loc0 = iexp.lctn()
+val loc0 =
+i0exp_lctn$get(iexp)
 //
 val-
 I0Evar(i0v1) = iexp.node()
@@ -749,7 +786,8 @@ iexp: i0exp,
 env0: !envi0i1): i1val =
 let
 //
-val loc0 = iexp.lctn()
+val loc0 =
+i0exp_lctn$get(iexp)
 //
 val-
 I0Etimp
@@ -786,8 +824,10 @@ iexp: i0exp,
 env0: !envi0i1): i1val =
 let
 //
-val loc0 = iexp.lctn()
-val ityp = iexp.ityp()
+val loc0 =
+i0exp_lctn$get(iexp)
+val ityp =
+i0exp_ityp$get(iexp)
 //
 val-
 I0Edap0(i0f0) = iexp.node()
@@ -821,8 +861,10 @@ iexp: i0exp,
 env0: !envi0i1): i1val =
 let
 //
-val loc0 = iexp.lctn()
-val ityp = iexp.ityp()
+val loc0 =
+i0exp_lctn$get(iexp)
+val ityp =
+i0exp_ityp$get(iexp)
 //
 val-
 I0Edapp
@@ -855,6 +897,49 @@ prerrsln(
 (* ****** ****** *)
 //
 fun
+f0_let0
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 =
+i0exp_lctn$get(iexp)
+val ityp =
+i0exp_ityp$get(iexp)
+//
+val-
+I0Elet0
+(
+dcls, body) = iexp.node()
+//
+val (  ) =
+envi0i1_pshlet0(env0)
+//
+val dcls =
+i0dclist_trxi0i1(dcls, env0)
+//
+val
+iret =
+i0exp_trxi0i1(body, env0)
+val
+ilts = envi0i1_poplet0(env0)
+//
+val
+icmp = I1CMPcons(ilts, iret)
+//
+in//let
+//
+(
+i1val_let0(
+  env0, loc0, ityp, dcls, icmp))
+//
+end(*let*)//end-of-[f0_let0(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_ift0
 (
 iexp: i0exp,
@@ -863,7 +948,7 @@ let
 //
 val loc0 =
 i0exp_lctn$get(iexp)
-val i0t1 =
+val ityp =
 i0exp_ityp$get(iexp)
 //
 val-
@@ -898,7 +983,7 @@ optn_cons
 in//let
 (
 i1val_ift0(env0,
-  loc0, i0t1, i1v1, ithn, iels))
+  loc0, ityp, i1v1, ithn, iels))
 end where
 {
 //
@@ -969,6 +1054,47 @@ prerrsln(
 *)
 //
 }(*where*)//end-of-[f0_seqn(iexp,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_where
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 =
+i0exp_lctn$get(iexp)
+val ityp =
+i0exp_ityp$get(iexp)
+//
+val-
+I0Ewhere
+(
+body, dcls) = iexp.node()
+//
+val (  ) =
+envi0i1_pshlet0(env0)
+//
+val dcls =
+i0dclist_trxi0i1(dcls, env0)
+//
+val
+iret =
+i0exp_trxi0i1(body, env0)
+val
+ilts = envi0i1_poplet0(env0)
+//
+val
+icmp = I1CMPcons(ilts, iret)
+//
+in//let
+(
+i1val_let0(
+  env0, loc0, ityp, dcls, icmp))
+end(*let*)//end-of-[f0_where(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

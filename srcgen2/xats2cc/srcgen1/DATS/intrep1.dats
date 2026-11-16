@@ -102,6 +102,7 @@ end//let//i1val_cst(dcst)
 //
 (* ****** ****** *)
 //
+(*
 #implfun
 i1val_var(dvar) =
 let
@@ -110,6 +111,7 @@ d2var_get_lctn(dvar)
 in//let
 i1val(loc0, I1Vvar(dvar))
 end//let//i1val_var(dvar)
+*)
 //
 (* ****** ****** *)
 //

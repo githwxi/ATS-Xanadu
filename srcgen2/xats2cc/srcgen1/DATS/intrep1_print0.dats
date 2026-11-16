@@ -134,8 +134,10 @@ prints("I1Vtnm(",itnm,")")
 prints("I1Vcon(",dcon,")")
 |I1Vcst(dcst) =>
 prints("I1Vcst(",dcst,")")
+(*
 |I1Vvar(dvar) =>
 prints("I1Vvar(",dvar,")")
+*)
 //
 (* ****** ****** *)
 |I1Vfid(dvar) =>
@@ -297,6 +299,13 @@ prints(i1f0, ";", i1vs, ")"))
 (dlab, itup) =>
 ( print("I1INSproj(")
 ; prints(dlab, ";", itup, ")"))
+//
+(* ****** ****** *)
+//
+|I1INSlet0
+(dcls, icmp) =>
+( print("I1INSlet0(")
+; prints(dcls, ";", icmp, ")"))
 //
 (* ****** ****** *)
 //

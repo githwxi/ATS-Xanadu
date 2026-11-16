@@ -40,16 +40,23 @@ val N3 = N1 * N2
 (* ****** ****** *)
 //
 fun
-fact(x: sint): sint =
-if x >= 1 then x * fact(x-1) else 1
+fact1(x: sint): sint =
+if x >= 1 then x * fact1(x-1) else 1
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 fact2
-(x: sint, r: sint): sint =
-if x >= 1 then fact2(x-1, x*r) else r
+(x: sint): sint =
+(
+loop(0, 1)) where
+{
+fun
+loop
+(i: sint, r: sint): sint =
+if i < 1 then loop(i+1, (i+1)*r) else r
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)

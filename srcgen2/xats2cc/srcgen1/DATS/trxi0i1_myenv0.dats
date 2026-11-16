@@ -480,6 +480,44 @@ $fold(env0); ilts) where
 end(*let*)//end-of-(envi0i1_poplam0(env0))
 //
 (* ****** ****** *)
+//
+#implfun
+envi0i1_pshlet0
+(     env0     ) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+(
+stkmap_pshlet0(d2vstk);
+iltstk_pshlet0(iltstk); $fold(env0))
+//
+end(*let*)//end-of-(envi0i1_pshlet0(env0))
+//
+#implfun
+envi0i1_poplet0
+(     env0     ) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+(
+$fold(env0); ilts) where
+{
+  val nerr = stkmap_poplet0(d2vstk)
+  val ilts = iltstk_poplet0(iltstk) }
+//
+end(*let*)//end-of-(envi0i1_poplet0(env0))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

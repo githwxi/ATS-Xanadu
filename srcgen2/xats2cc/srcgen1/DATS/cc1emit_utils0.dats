@@ -446,8 +446,10 @@ ival.node() of
 |I1Vcst
 ( dcst ) => d2cstcc1(filr,dcst)
 (* ****** ****** *)
+(*
 |I1Vvar
 ( dvar ) => d2varcc1(filr,dvar)
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -732,7 +732,7 @@ nindfpr(filr, nind);
 strnfpr(filr, "{ // fun\n");
 nindfpr(filr, nind);
 strnfpr
-(filr, "while(true) { // fun\n"))
+(filr, "while(XATSBTF1) { // fun\n"))
 //
 end//let//end(val())
 //

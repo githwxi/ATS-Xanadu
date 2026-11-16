@@ -148,7 +148,7 @@ i0exp_fprint(iexp,filr))//endfun
 (* ****** ****** *)
 //
 fun
-d2conjs1
+d2confpr
 (filr: FILR
 ,dcon: d2con): void =
 let
@@ -162,12 +162,12 @@ val name =
 in//let
 (
   prints('"', name, '"') )
-end(*let*)//end-of-[d2conjs1(...)]
+end(*let*)//end-of-[d2confpr(...)]
 //
 (* ****** ****** *)
 //
 fun
-d2ctgjs1
+d2ctgfpr
 (filr: FILR
 ,dcon: d2con): void =
 let
@@ -181,7 +181,7 @@ in//let
 {
 #impltmp g_print$out<>() = filr
 }
-end(*let*)//end-of-[d2ctgjs1(...)]
+end(*let*)//end-of-[d2ctgfpr(...)]
 //
 (* ****** ****** *)
 //
@@ -1196,7 +1196,7 @@ ival.node() of
 ( itnm ) => i1tnmjs1(filr,itnm)
 (* ****** ****** *)
 |I1Vcon
-( dcon ) => d2conjs1(filr,dcon)
+( dcon ) => d2confpr(filr,dcon)
 (* ****** ****** *)
 |I1Vcst
 ( dcst ) => d2cstjs1(filr,dcst)
@@ -1450,8 +1450,8 @@ in//let
 //
 strnfpr
 (filr,"XATSCAPP(");
-d2conjs1(filr,dcon);
-strnfpr(filr,", [");d2ctgjs1(filr,dcon);
+d2confpr(filr,dcon);
+strnfpr(filr,", [");d2ctgfpr(filr,dcon);
 //
 if // if
 list_consq(i1vs) then strnfpr(filr,", ");

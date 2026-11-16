@@ -532,6 +532,7 @@ fun
 i1cmp_retq(icmp: i1cmp): ( bool )
 //
 (* ****** ****** *)
+//
 fun
 i1val_conq(ival: i1val): ( bool )
 //

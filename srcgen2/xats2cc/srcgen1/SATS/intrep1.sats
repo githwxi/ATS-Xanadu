@@ -192,6 +192,12 @@ and i1ins =
 //
 (* ****** ****** *)
 //
+|I1INSlet0 of
+(i1dclist
+,i1cmp(*scp-val*))//letinend
+//
+(* ****** ****** *)
+//
 |I1INSift0 of
 (i1val(*test*)
 ,i1cmpopt(*then*)
@@ -244,9 +250,13 @@ i1val_node =
 (* ****** ****** *)
 |I1Vtnm of (i1tnm)
 (* ****** ****** *)
+//
 |I1Vcon of (d2con)
 |I1Vcst of (d2cst)
+(*
 |I1Vvar of (d2var)
+*)
+//
 (* ****** ****** *)
 |I1Vfid of (d2var)
 (* ****** ****** *)
@@ -319,13 +329,12 @@ where
 #typedef i1letlst = list(i1let)
 //
 (* ****** ****** *)
+#typedef i1dclopt = optn(i1dcl)
+#typedef i1dclist = list(i1dcl)
+(* ****** ****** *)
 //
 }(*where*)//end-of-(i1let/i1ins/i1val)
 //
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef i1dclopt = optn(i1dcl)
-#typedef i1dclist = list(i1dcl)
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef i1parsed = i1parsed_tbox
@@ -411,8 +420,10 @@ i1val_con(dcon: d2con): (i1val)
 fun
 i1val_cst(dcst: d2cst): (i1val)
 //
+(*
 fun
 i1val_var(dvar: d2var): (i1val)
+*)
 //
 (* ****** ****** *)
 //
@@ -435,8 +446,11 @@ i1val_cstq(ival: i1val): (bool)
 fun
 i1val_cfnq(ival: i1val): (bool)
 //
+(*
 fun
 i1val_varq(ival: i1val): (bool)
+*)
+//
 fun
 i1val_fidq(ival: i1val): (bool)
 //
@@ -480,6 +494,19 @@ i1cmp_ilts$get(i1cmp): (i1letlst)
 #symload lctn with i1cmp_lctn$get
 #symload ival with i1cmp_ival$get
 #symload ilts with i1cmp_ilts$get
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2var_tailq
+(dvar: d2var, ical: i0cal): bool
+fun
+i1val_tailq
+(ival: i1val, ical: i0cal): bool
+fun
+i1cmp_tailq
+(icmp: i1cmp, ical: i0cal): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)

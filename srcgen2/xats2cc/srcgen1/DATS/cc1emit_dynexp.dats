@@ -215,6 +215,61 @@ strnfpr(filr,", ");i1valcc1(filr, x0))
 (* ****** ****** *)
 //
 fun
+i1valcc1_lst2
+( filr: FILR
+, i1vs: i1valist
+, envs: i1valist): void =
+(
+  loop1(0(*i0*), i1vs)
+) where
+{
+//
+fun loop1
+( i0: sint
+, i1vs: i1valist): void =
+(
+case+ i1vs of
+|list_nil() =>
+(
+  loop2(i0, envs))
+|list_cons(i1v1, i1vs) =>
+(
+  loop1(i0+1, i1vs)) where
+{
+val () =
+(
+if // if
+(i0 >= 1)
+then
+strnfpr
+(filr, ", "); i1valcc1(filr, i1v1))}
+)
+//
+and loop2
+( i0: sint
+, envs: i1valist): void =
+(
+case+ envs of
+|list_nil() => ()
+|list_cons
+(env1, envs) =>
+(
+  loop2(i0+1, envs)) where
+{
+val () =
+(
+if // if
+(i0 >= 1)
+then
+strnfpr
+(filr, ", "); i1valcc1(filr, env1))}
+)
+//
+}(*where*)//end-of-[i1valcc1_lst2(...)]
+//
+(* ****** ****** *)
+//
+fun
 l1i1vcc1_list
 ( filr: FILR
 , livs: l1i1vlst): void =
@@ -266,8 +321,9 @@ I1Vcon(dcon) = i1f0.node()
 in//let
 (
 //
-strnfpr(
-filr,"XATSCAPP(");d2confpr(filr,dcon);
+strnfpr
+(filr,"XATSCAPP(");
+d2confpr(filr,dcon);
 strnfpr(filr,", [");d2ctgfpr(filr,dcon);
 //
 if // if
@@ -290,10 +346,25 @@ strnfpr(filr,", [");
 i1valcc1_list(filr,i1vs);strnfpr(filr,"])"))
 else // else
 (
+case+
+i1f0.node() of
+|I1Vfenv
+(d2f0, envs) =>
+(
+strnfpr
+(filr,"XATSDAPP(");
+d2varcc1(
+  filr,d2f0);strnfpr(filr,"(");
+i1valcc1_lst2(
+  filr,i1vs,envs);strnfpr(filr,"))"))
+|
+_(*otherwise*) =>
+(
 strnfpr
 (filr,"XATSDAPP(");
 i1valcc1(filr,i1f0);strnfpr(filr,"(");
 i1valcc1_list(filr,i1vs);strnfpr(filr,"))"))
+)
 )
 )
 //
@@ -401,9 +472,172 @@ i1let_cc1emit
 (ilet, env0) =
 let
 //
+(* ****** ****** *)
+//
 val () =
 prerrsln
 ("i1let_cc1emit: ilet = ", ilet)
+//
+(* ****** ****** *)
+//
+fun
+f0_i1cmpret
+( env0:
+! envxcc1
+, icmp: i1cmp): void =
+let
+//
+val filr =
+envxcc1_filr$get(env0)
+val nind =
+envxcc1_nind$get(env0)
+//
+in//let
+//
+let
+//
+val retq =
+(
+  i1cmp_retq(icmp))
+//
+val ival = icmp.ival()
+val (  ) =
+i1cmp_cc1emit(icmp, env0)
+//
+in//let
+//
+if retq then () else
+(
+nindfpr(filr, nind);
+strnfpr(filr, "return ");
+i1valcc1(filr, ival);smclnfpr(filr))
+//
+end//let
+//
+end(*let*)//end-of-[f0_i1cmpret(...)]
+//
+and
+f0_i1cmprtn
+( env0:
+! envxcc1
+, icmp: i1cmp): void =
+let
+//
+fun
+auxlp1
+( env0:
+! envxcc1
+, ilts
+: i1letlst): void =
+(
+case+ ilts of
+|list_nil
+(  (*0*)  ) => ()
+|list_cons
+(ilt1, ilts) =>
+(
+auxlp2(env0, ilts, ilt1))
+)
+//
+and
+auxlp2
+( env0:
+! envxcc1
+, ilts
+: i1letlst
+, ilt1: i1let): void =
+(
+case+ ilts of
+//
+|list_nil
+(   (*0*)  ) =>
+(
+case- ilt1 of
+|I1LETnew1
+(itnm, iins) =>
+(
+case- iins of
+|I1INSdapp
+(i1f0, i1vs) =>
+auxlp3(env0, i1vs, i1f0))
+)
+//
+|list_cons
+(ilt2, ilts) =>
+(
+auxlp2(env0, ilts, ilt2))
+where
+{
+val () =
+(
+  i1let_cc1emit(ilt1, env0))
+}
+)
+//
+and
+auxlp3
+( env0:
+! envxcc1
+, i1vs
+: i1valist
+, i1f0: i1val): void =
+let
+//
+val i0 = 1
+//
+val nind =
+envxcc1_nind$get(env0)
+val filr =
+envxcc1_filr$get(env0)
+//
+val (  ) =
+(
+  nindfpr(filr, nind))
+//
+in//let
+(
+auxlp4(filr, i0, i1vs, i1f0))
+end//let
+//
+and
+auxlp4
+( filr
+: FILR
+, i0: sint
+, i1vs
+: i1valist
+, i1f0: i1val): void =
+(
+case+ i1vs of
+//
+|list_nil
+(  (*0*)  ) =>
+(
+prints
+("continue; // ", i1f0, "\n")
+)
+//
+|list_cons
+(i1v1, i1vs) =>
+(
+prints(
+"arg", i0, " = ", i1v1, "; ");
+auxlp4(filr, i0+1, i1vs, i1f0))
+//
+) where
+{
+//
+#impltmp
+g_print$out<>() = filr
+#impltmp
+g_print
+<i1val>(i1v) = i1valcc1(filr, i1v)
+//
+}
+//
+in//let
+  auxlp1(env0, icmp.ilts((*void*)))
+end(*let*)//end-of-[f0_i1cmprtn(...)]
 //
 (* ****** ****** *)
 //
@@ -454,6 +688,16 @@ case+ ilet of
 (   iins   ) =>
 (
 case+ iins of
+//
+|
+I1INSrturn
+(ical, icmp) =>
+(
+if // if
+i1cmp_tailq
+(icmp, ical) then
+f0_i1cmprtn(env0, icmp) else f0_i1cmpret(env0, icmp))
+//
 |
 _(*otherwise*) =>
 (
