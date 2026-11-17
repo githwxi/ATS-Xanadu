@@ -176,6 +176,10 @@ i0strcc1
 (* ****** ****** *)
 //
 fun
+i1envcc1
+(filr:FILR,ienv:i1env): void
+//
+fun
 i1tnmcc1
 (filr:FILR,itnm:i1tnm): void
 //

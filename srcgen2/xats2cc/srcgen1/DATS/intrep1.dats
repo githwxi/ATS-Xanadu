@@ -448,7 +448,10 @@ val+
 I1TNM(ityp, stmp) = itnm
 //
 in//let
+prints("I1TNM(", stmp, ")")
+(*
 prints("I1TNM(", ityp, ";", stmp, ")")
+*)
 end//let
 //
 (* ****** ****** *)

@@ -213,9 +213,6 @@ symbl_get_name(sym) in//let
 #implfun
 d2concc1
 (filr, dcon) =
-(*
-d2confpr(filr, dcon)
-*)
 let
 //
 val
@@ -304,9 +301,6 @@ end(*let*)//endof[d2cstcc1(filr,dcst)]
 #implfun
 d2varcc1
 (filr, dvar) =
-(*
-d2varfpr(filr, dvar)
-*)
 let
 //
 val name = dvar.name((*0*))
@@ -321,6 +315,22 @@ fprint_loctn_as_stamp
 end(*let*)//endof[d2varcc1(filr,dvar)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1envcc1
+(filr, ienv) =
+(
+prints
+("env", enum+1)) where
+{
+//
+#impltmp g_print$out<>() = filr
+//
+val enum = i1env_enum$get(ienv)
+//
+}(*where*)//endof[i1envcc1(filr,ienv)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -434,6 +444,9 @@ ival.node() of
 //
 |I1Vtop
 ( sym0 ) => print( "XATSTOP0" )
+//
+|I1Venv
+( ienv ) => i1envcc1(filr,ienv)
 //
 (* ****** ****** *)
 (* ****** ****** *)

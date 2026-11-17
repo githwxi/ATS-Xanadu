@@ -1012,18 +1012,19 @@ end//let
 //
 (* ****** ****** *)
 //
-val ( ) =
+val (  ) =
 let
 //
 val filr = env0.filr()
 val nind = env0.nind()
-val (  ) =
+//
+in//let
+//
 (
 nindfpr(filr, nind);
 strnfpr(filr, "{ // fun\n");
 nindfpr(filr, nind);
-strnfpr
-(filr, "while(true) { // fun\n"))
+strnfpr(filr, "while(XATSBTF1) { // fun\n"))
 //
 end//let//end(val())
 //
