@@ -268,15 +268,20 @@ let
 g_print$out<>() = out
 *)
 in//let
-(
+//
 case+ tdxp of
 |
-TEQI0EXPnone() =>
-prints("TEQI0EXPnone(", ")")
+TEQI0EXPnone
+( (*void*) ) =>
+(
+prints("TEQI0EXPnone(", ")"))
 |
-TEQI0EXPsome(tok0, i0e1) =>
-prints("\
-TEQI0EXPsome(",tok0,";",i0e1,")"))
+TEQI0EXPsome
+(tok0, iexp) =>
+(
+prints
+("TEQI0EXPsome(", tok0, ";", iexp, ")"))
+//
 endlet // end-of-[g_print<teqi0exp>(tdxp)]
 //
 (* ****** ****** *)
@@ -285,19 +290,27 @@ endlet // end-of-[g_print<teqi0exp>(tdxp)]
 g_print
 <teqi1cmp>(tdxp) =
 let
-(*
-#impltmp
-g_print$out<>() = out
-*)
+//
+#symload
+print with
+strn_print of 1000000
+//
 in//let
-(
+//
 case+ tdxp of
 |
-TEQI1CMPnone() =>
-prints("TEQI1CMPnone(", ")")
+TEQI1CMPnone
+( (*void*) ) =>
+prints
+("TEQI1CMPnone(", ")")
 |
-TEQI1CMPsome(tok0, icmp) =>
-prints("TEQI1CMPsome(",tok0,";",icmp,")"))
+TEQI1CMPsome
+(tok0
+,ityp, iexp) =>
+(
+print("TEQI1CMPsome(");
+prints(tok0, ";", ityp, ";", iexp, ")"))
+//
 endlet // end-of-[g_print<teqi1cmp>(tdxp)]
 //
 (* ****** ****** *)

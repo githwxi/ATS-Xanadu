@@ -346,6 +346,30 @@ i1dclistopt_cc1emit(
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+i1fundcl_i0ws$cc1emit
+(ifun
+:i1fundcl, i0ws: i0varlst, env0: !envxcc1): void
+fun
+i1tfndcl_i0ws$cc1emit
+(ifun
+:i1fundcl, i0ws: i0varlst, env0: !envxcc1): void
+//
+(* ****** ****** *)
+//
+fun
+i1fundclist_i0ws$cc1emit
+(i1fs
+:i1fundclist, i0ws: i0varlst, env0: !envxcc1): void
+//
+fun
+i1tfndclist_i0ws$cc1emit
+(i1fs
+:i1fundclist, i0ws: i0varlst, env0: !envxcc1): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen1_xats2cc_srcgen1_SATS_cc1emit.sats] *)

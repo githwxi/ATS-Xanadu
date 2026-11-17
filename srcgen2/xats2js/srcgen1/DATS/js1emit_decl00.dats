@@ -770,7 +770,7 @@ envx2js_filr$get(env0)
 val nind =
 envx2js_nind$get(env0)
 //
-val () =
+val (  ) =
 (
 nindstrnfpr
 (filr, nind, "let ");
@@ -778,10 +778,10 @@ i1tnmjs1
 (filr, itnm);fprintln(filr))
 //
 // HX: for computing ival
-val () =
+val (  ) =
 f0_i1tnmcmp(env0, itnm, icmp)
 //
-val () =
+val (  ) =
 (
 nindstrnfpr
 (filr, nind, "XATS000_patck(");
@@ -967,7 +967,7 @@ end//let
 //
 (* ****** ****** *)
 //
-val ( ) =
+val (  ) =
 let
 val filr = env0.filr()
 val nind = env0.nind()

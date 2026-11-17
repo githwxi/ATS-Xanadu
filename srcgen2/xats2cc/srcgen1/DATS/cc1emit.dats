@@ -221,6 +221,43 @@ i1dclistopt_cc1emit
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1fundclist_i0ws$cc1emit
+  (i1fs, i0ws, env0) =
+(
+list_foritm$e1nv<x0><e1>(i1fs, env0)
+) where
+{
+#vwtpdef e1 = envxcc1
+#typedef x0 = i1fundcl
+#impltmp
+foritm$e1nv$work
+<x0><e1>(ifun, env0) =
+(
+  i1fundcl_i0ws$cc1emit(ifun, i0ws, env0))//impltmp
+}(*where*)//end-of-[i1fundclist_i0ws$cc1emit(i1fs,...)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1tfndclist_i0ws$cc1emit
+  (i1fs, i0ws, env0) =
+(
+list_foritm$e1nv<x0><e1>(i1fs, env0)
+) where
+{
+#vwtpdef e1 = envxcc1
+#typedef x0 = i1fundcl
+#impltmp
+foritm$e1nv$work
+<x0><e1>(ifun, env0) =
+(
+  i1tfndcl_i0ws$cc1emit(ifun, i0ws, env0))//impltmp
+}(*where*)//end-of-[i1tfndclist_i0ws$cc1emit(i1fs,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc1emit.dats] *)

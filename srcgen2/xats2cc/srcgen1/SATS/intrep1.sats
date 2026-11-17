@@ -604,9 +604,11 @@ t1imp_make_node
 datatype
 teqi1cmp =
 |
-TEQI1CMPnone of ((*void*))
+TEQI1CMPnone of
+(   (*void*)   )
 |
-TEQI1CMPsome of (token(*EQ0*), i1cmp)
+TEQI1CMPsome of
+(token(*EQ0*), i0typ(*res*), i1cmp)
 //
 (* ****** ****** *)
 (* ****** ****** *)

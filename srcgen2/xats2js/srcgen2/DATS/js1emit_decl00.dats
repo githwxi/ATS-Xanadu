@@ -570,7 +570,7 @@ envx2js_filr$get(env0)
 val nind =
 envx2js_nind$get(env0)
 //
-val () =
+val (  ) =
 (
 nindstrnfpr
 (filr, nind, "let ");
@@ -578,10 +578,10 @@ i1tnmjs1
 (filr, itnm);fprintln(filr))
 //
 // HX: for computing ival
-val () =
+val (  ) =
 f0_i1tnmcmp(env0, itnm, icmp)
 //
-val () =
+val (  ) =
 (
 nindstrnfpr
 (filr, nind, "XATS000_patck(");
@@ -783,7 +783,7 @@ end//let
 //
 (* ****** ****** *)
 //
-val ( ) =
+val (  ) =
 let
 //
 val filr = env0.filr()
@@ -983,7 +983,7 @@ i1tfndclist_i0ws$js1emit(i1fs, i0ws, env0)))
 //
 end(*let*)//end-of-[f0_fundclst(dcl0,i0ws,env0)]
 //
-}(*where*)//end-of-[i1dclenv_js1emit(dcl0,o0ws,env0)]
+}(*where*)//end-of-[i1dclenv_js1emit(dcl0,i0ws,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1104,10 +1104,10 @@ val (  ) =
 let
 val filr =
 (
-envx2js_filr$get(env0))
+  envx2js_filr$get(env0))
 val nind =
 (
-envx2js_nind$get(env0))
+  envx2js_nind$get(env0))
 in//let
 (
  nindstrnfpr(filr, nind, "// I1FUNDCL\n"))

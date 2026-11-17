@@ -727,9 +727,48 @@ in//let
 case+ iins of
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I1INSdapp _ => f1_i1ins(iins)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1INSlet0
+(dcls, icmp) =>
+let
+//
+val () =
+(
+nindfpr(filr, nind);
+i0typcc0(filr, ityp);strnfpr(filr, "\n");
+nindfpr(filr, nind);
+i1tnmcc1(filr, itnm);strnfpr(filr, ";\n"))
+//
+val () =
+(
+nindstrnfpr
+(filr, nind, "{ // let\n"))
+//
+val () =
+envxcc1_incnind(env0,2(*++*))
+val () =
+(
+i1dclist_cc1emit(dcls, env0))
+val () =
+(
+f0_i1tnmcmp(env0, itnm, icmp))
+val () =
+(
+ envxcc1_decnind(env0,2(*--*)))
+//
+val () = 
+(
+nindstrnfpr(filr, nind, "} // endlet\n"))
+//
+end//let//end-of-[I1INSlet0(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I1INSift0

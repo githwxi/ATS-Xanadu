@@ -480,12 +480,18 @@ teqi0exp_trxi0i1
 (
 case+ tdxp of
 |
-TEQI0EXPnone() =>
-TEQI1CMPnone((*void*))
+TEQI0EXPnone
+( (*void*) ) =>
+TEQI1CMPnone
+( (*void*) )
 |
-TEQI0EXPsome(teq1, i0e2) =>
-TEQI1CMPsome(teq1, icmp) where
+TEQI0EXPsome
+(teq1, i0e2) =>
+TEQI1CMPsome
+(teq1, ityp, icmp)
+where
 {
+  val ityp = i0e2.ityp()
   val (  ) =
   (
     envi0i1_pshblk0(env0))
@@ -623,8 +629,12 @@ TEQI0EXPsome
 (teq1, iexp) =>
 TEQI1CMPsome
 ( teq1
+, ityp
 , I1CMPcons(ilts, ival)) where
 {
+val ityp =
+(
+  i0exp_ityp$get(iexp))
 val ival =
 (
   i0exp_trxi0i1(iexp, env0) )

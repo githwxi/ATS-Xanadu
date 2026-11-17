@@ -48,14 +48,14 @@ if x >= 1 then x * fact1(x-1) else 1
 //
 fun
 fact2
-(x: sint): sint =
+(n: sint): sint =
 (
 loop(0, 1)) where
 {
 fun
 loop
 (i: sint, r: sint): sint =
-if i < 1 then loop(i+1, (i+1)*r) else r
+if i < n then loop(i+1, (i+1)*r) else r
 }
 //
 (* ****** ****** *)

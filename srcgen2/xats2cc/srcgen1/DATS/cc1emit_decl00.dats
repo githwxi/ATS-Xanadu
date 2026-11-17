@@ -584,7 +584,8 @@ TEQI1CMPnone
 ( (*void*) ) => ( (*void*) )
 |
 TEQI1CMPsome
-(teq1, icmp) =>
+(teq1
+,ityp, icmp) =>
 let
 //
 val ityp =
@@ -712,16 +713,40 @@ let
 val filr = env0.filr()
 val nind = env0.nind()
 in//let
+//
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) =>
+(
+nindfpr(filr, nind);
+strnfpr(filr, "// function\n"))
+|
+TEQI1CMPsome
+(teq1
+,ityp, icmp) =>
 (
 nindfpr(filr, nind);
 strnfpr(filr, "// function\n");
+nindfpr(filr, nind);
+i0typcc0(filr, ityp);endlnfpr(filr))
+end//let
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+(
 d2varfpr(filr, dvar);endlnfpr(filr);
 fjas1cc1(filr, nind, fjas);endlnfpr(filr))
 end//let
 //
 (* ****** ****** *)
 //
-val ( ) =
+val (  ) =
 let
 //
 val filr = env0.filr()
@@ -731,8 +756,8 @@ val (  ) =
 nindfpr(filr, nind);
 strnfpr(filr, "{ // fun\n");
 nindfpr(filr, nind);
-strnfpr
-(filr, "while(XATSBTF1) { // fun\n"))
+strnfpr(filr,
+  "while(XATSBTF1) { // fun\n"))
 //
 end//let//end(val())
 //
@@ -750,7 +775,8 @@ TEQI1CMPnone
 ( (*void*) ) => ((*void*))
 |
 TEQI1CMPsome
-(teq1, icmp) =>
+(teq1
+,ityp, icmp) =>
 let
 //
 val ival = icmp.ival()
@@ -816,6 +842,272 @@ in//let
 end//let//end-of-[val()]
 //
 }(*where*)//end-of-[i1fundcl_cc1emit(ifun,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+#implfun
+i1dclenv_cc1emit
+(
+dcl0, i0ws, env0) =
+let
+(*
+//
+val () =
+prerrsln("\
+i1dcl_cc1emit: dcl0 = ", dcl0))
+//
+*)
+in//let
+//
+case+
+dcl0.node() of
+//
+|
+I1Dfundclst _ =>
+(
+  f0_fundclst(dcl0, i0ws, env0))
+//
+|
+_(*otherwise*) => i1dcl_cc1emit(dcl0, env0)
+//
+end where
+{
+//
+fun
+f0_fundclst
+(
+dcl0: i1dcl,
+i0ws: i0varlst,
+env0: !envxcc1): void =
+let
+//
+val filr =
+  env0.filr((*void*))
+val nind =
+  env0.nind((*void*))
+val loc0 =
+  dcl0.lctn((*void*))
+//
+val-
+I1Dfundclst
+(tknd
+,lvl0, tqas
+,d2cs, i1fs) = dcl0.node()
+//
+val prfq =
+(
+  funtok_prfq( tknd ))
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+(
+  nindfpr(filr, nind));
+//
+if
+prfq
+then//then
+prints
+("// I1Dprfdclist(",loc0,")\n")
+else//else
+(
+case+ tqas of
+|
+list_nil() =>
+prints
+("// I1Dfundclist(",loc0,")\n")
+|
+list_cons _ =>
+prints
+("// I1Dtfndclist(",loc0,")\n"))
+//
+end//let
+//
+val (  ) =
+if
+prfq
+then//then
+(
+  i1fundclist_ccaemit(i1fs, env0))
+else//else
+(
+case+ tqas of
+|list_nil() => // HX: functions
+(
+i1fundclist_i0ws$cc1emit(i1fs, i0ws, env0))
+|list_cons _ => // HX: templates
+(
+i1tfndclist_i0ws$cc1emit(i1fs, i0ws, env0)))
+//
+end(*let*)//end-of-[f0_fundclst(dcl0,i0ws,env0)]
+//
+}(*where*)//end-of-[i1dclenv_cc1emit(dcl0,i0ws,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+#implfun
+i1fundcl_i0ws$cc1emit
+( ifun
+, i0ws, env0) = let
+//
+(* ****** ****** *)
+//
+val dvar =
+i1fundcl_dpid$get(ifun)
+val fjas =
+i1fundcl_farg$get(ifun)
+val tdxp =
+i1fundcl_tdxp$get(ifun)
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+//
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) =>
+(
+nindfpr(filr, nind);
+strnfpr(filr, "// function\n"))
+|
+TEQI1CMPsome
+(teq1
+,ityp, icmp) =>
+(
+nindfpr(filr, nind);
+strnfpr(filr, "// function\n");
+nindfpr(filr, nind);
+i0typcc0(filr, ityp);endlnfpr(filr))
+end//let
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+//
+(
+nindfpr(filr, nind);
+d2varfpr(filr, dvar);endlnfpr(filr);
+fjas2cc1(
+filr, nind, fjas, i0ws);endlnfpr(filr))
+//
+end//let
+//
+(* ****** ****** *)
+//
+val ( ) =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+val (  ) =
+(
+nindfpr(filr, nind);
+strnfpr(filr, "{ // fun\n");
+nindfpr(filr, nind);
+strnfpr
+(filr, "while(true) { // fun\n"))
+//
+end//let//end(val())
+//
+(* ****** ****** *)
+//
+val (  ) = // lam-enter
+(
+  envxcc1_pshlam0(env0) )
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1
+,ityp, icmp) =>
+let
+//
+val ival = icmp.ival()
+//
+val (  ) =
+(
+  fjags_cc1emit(fjas, env0))
+val (  ) =
+(
+  i1cmp_cc1emit(icmp, env0))
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+(
+nindfpr(filr, nind);
+strnfpr(filr, "// return ");
+i1valcc1(filr, ival);endlnfpr(filr))
+end//let
+//
+(* ****** ****** *)
+end//let
+(* ****** ****** *)
+) (*case+*) // end-of-(teqi1exp)
+//
+val (  ) = envxcc1_poplam0(env0)//leave
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+//
+nindstrnfpr
+(filr, nind, "} // endfun(while)\n");
+nindstrnfpr(filr, nind, "} // endfun(");
+d2varfpr(filr, dvar);strnfpr(filr, ")\n")
+//
+end//let
+//
+(* ****** ****** *)
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+(
+  envxcc1_filr$get(env0))
+val nind =
+(
+  envxcc1_nind$get(env0))
+in//let
+(
+ nindstrnfpr(filr, nind, "// I1FUNDCL\n"))
+end//let//end-of-[val()]
+//
+}(*where*)//end-of-[i1fundcl_i0ws$cc1emit(ifun,i0ws,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

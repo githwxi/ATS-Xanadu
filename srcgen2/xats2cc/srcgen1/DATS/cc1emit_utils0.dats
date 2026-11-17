@@ -648,9 +648,8 @@ list_nil
 list_cons
 (i1b1, i1bs) =>
 ( if
-  (i0 > 1)
-  then
-  print(",\n")
+  (i0 >= 2)
+  then print(",\n")
 ; f0_i0ibnd(i0, i1b1)
 ; loop3(i0+1, i1bs, fjas))
 )
@@ -673,9 +672,11 @@ i0typcc0(filr,ityp);endlnfpr(filr)
 //
 end(*let*)//end-of-[f0_i1bnd(i0,ibnd)]
 //
-in
+in//let
+//
 nindfpr(filr, nind);
 print("(\n");loop1(1(*i0*),fjas);print(")")
+//
 end(*let*)//end-of-[fjas1cc1(filr,nind,fjas)]
 //
 (* ****** ****** *)
@@ -700,7 +701,7 @@ case+ fjas of
 ((*void*)) =>
 ( if
   (i0 >= 2)
-  then print(", ")
+  then print(",\n")
 ; loop4(1(*i0*), i0ws))
 |list_cons
 (fja1, fjas) =>
@@ -729,15 +730,17 @@ loop3
 (
 case+ i1bs of
 |
-list_nil() =>
+list_nil
+( (*void*) ) =>
 (
   loop1(i0, fjas))
 |
-list_cons(_, i1bs) =>
+list_cons
+(i1b1, i1bs) =>
 ( if
   (i0 >= 2)
-  then print(", ")
-; prints("arg", i0)
+  then print(",\n")
+; f0_i0ibnd(i0, i1b1)
 ; loop3(i0+1, i1bs, fjas))
 )
 //
@@ -748,21 +751,59 @@ i0: sint,
 i0ws: i0varlst): void =
 (
 case+ i0ws of
-|list_nil() => ()
-|list_cons(_, i0ws) =>
+|list_nil
+( (*void*) ) => ()
+|list_cons
+(i0w1, i0ws) =>
 ( if
   (i0 >= 2)
-  then print(", ")
-; prints("env", i0)
+  then print(",\n")
+; f0_i0ivar(i0, i0w1)
 ; loop4(i0+1, i0ws(*envs*)))
 )
+//
+and
+f0_i0ibnd
+(i0: sint
+,ibnd: i1bnd): void =
+let
+//
+val ityp =
+i1bnd_ityp$get(ibnd)
+//
+in//let
+//
+nindfpr(filr,nind);
+i0typcc0(filr,ityp);endlnfpr(filr)
+;nindfpr(filr,nind)
+;strnfpr(filr,"arg");sintfpr(filr,i0)
+//
+end(*let*)//end-of-[f0_i1bnd(i0,ibnd)]
+//
+and
+f0_i0ivar
+(i0: sint
+,ivar: i0var): void =
+let
+//
+val ityp =
+i0var_ityp$get(ivar)
+//
+in//let
+//
+nindfpr(filr,nind);
+i0typcc0(filr,ityp);endlnfpr(filr)
+;nindfpr(filr,nind)
+;strnfpr(filr,"env");sintfpr(filr,i0)
+//
+end(*let*)//end-of-[f0_i0var(i0,ivar)]
 //
 in//
 //
 nindfpr(filr, nind);
 print("(\n");loop1(1(*i0*),fjas);print(")")
 //
-end(*let*)//end-of-[fjas2cc1(filr,nind;fjas,i0ws)]
+end(*let*)//end-of-[fjas2cc1(filr,nind,fjas,i0ws)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
