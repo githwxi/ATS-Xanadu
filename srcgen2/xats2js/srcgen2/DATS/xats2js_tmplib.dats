@@ -44,7 +44,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload ".\
-/../../../xats2cc\
+/../../../xats2xc\
 /srcgen1/SATS/intrep0.sats"//...
 #staload "./../SATS/intrep1.sats"
 //
@@ -145,7 +145,7 @@ i1val_fprint(ival, g_print$out<>())
 //
 (*
 HX-2026-04-11:
-These are from [xats2cc_tmplib]:
+These are from [xats2xc_tmplib]:
 *)
 //
 (* ****** ****** *)

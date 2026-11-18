@@ -54,7 +54,7 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 #define
 XATS2CC "\
-XATSOPT/xats2cc/srcgen1"
+XATSOPT/xats2xc/srcgen1"
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -70,7 +70,7 @@ XATSOPT/xats2cc/srcgen1"
 //
 #staload
 ".\
-/../../../xats2cc\
+/../../../xats2xc\
 /srcgen1/SATS/intrep0.sats"
 //
 (* ****** ****** *)

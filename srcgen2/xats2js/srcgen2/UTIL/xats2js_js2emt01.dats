@@ -57,13 +57,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload ".\
-/../../../xats2cc\
+/../../../xats2xc\
 /srcgen1/SATS/intrep0.sats"//...
 #staload ".\
-/../../../xats2cc\
+/../../../xats2xc\
 /srcgen1/SATS/trxd3i0.sats"//...
 #staload ".\
-/../../../xats2cc\
+/../../../xats2xc\
 /srcgen1/SATS/tryd3i0.sats"//...
 //
 #staload "./../SATS/intrep1.sats"
