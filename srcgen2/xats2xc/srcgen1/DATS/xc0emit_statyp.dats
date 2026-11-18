@@ -77,8 +77,8 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2cc.sats"
-#staload "./../SATS/cc0emit.sats"
+#staload "./../SATS/xats2xc.sats"
+#staload "./../SATS/xc0emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -493,6 +493,6 @@ strnfpr(filr, " "); labelcc0(filr, l0) end
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc0emit_statyp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_DATS_xc0emit_statyp.dats] *)
 (***********************************************************************)
 (***********************************************************************)

@@ -78,10 +78,10 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xats2cc.sats"
+#staload "./../SATS/xats2xc.sats"
 //
-#staload "./../SATS/cc0emit.sats"
-#staload "./../SATS/cc1emit.sats"
+#staload "./../SATS/xc0emit.sats"
+#staload "./../SATS/xc1emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -823,6 +823,6 @@ end(*let*)//end-of-[fjas2cc1(filr,nind,fjas,i0ws)]
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3-XANADU/srcgen2/xats2cc/srcgen1/DATS/cc1emit_utils0.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2xc/srcgen1/DATS/xc1emit_utils0.dats] *)
 (***********************************************************************)
 (***********************************************************************)

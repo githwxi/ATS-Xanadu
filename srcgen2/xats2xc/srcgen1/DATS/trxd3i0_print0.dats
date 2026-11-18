@@ -370,5 +370,5 @@ end(*let*)//end-of-[f1_t2ps(i0,t2ps)]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_trxd3i0_print0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_DATS_trxd3i0_print0.dats] *)
 (***********************************************************************)

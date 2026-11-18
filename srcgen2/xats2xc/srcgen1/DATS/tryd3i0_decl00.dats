@@ -806,5 +806,5 @@ prerrsln("i0fundcl_tryd3i0: tdxp = ", tdxp)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_tryd3i0_decl00.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_DATS_tryd3i0_decl00.dats] *)
 (***********************************************************************)

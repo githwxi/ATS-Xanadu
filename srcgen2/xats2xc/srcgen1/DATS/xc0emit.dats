@@ -31,7 +31,7 @@
 (*
 Author: Hongwei Xi
 //
-Sun Aug 16 10:36:26 AM EDT 2026
+Sun Aug 16 10:35:24 AM EDT 2026
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -55,211 +55,158 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
-#staload "./../SATS/intrep1.sats"
-//
-(* ****** ****** *)
-//
-#staload "./../SATS/xats2cc.sats"
-#staload "./../SATS/cc1emit.sats"
+#staload "./../SATS/xats2xc.sats"
+#staload "./../SATS/xc0emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-envxcc1_make_out =
+envxcc0_make_out =
 envx2cc_make_out(*out0*)
 #implfun
-envxcc1_free_nil =
+envxcc0_free_nil =
 envx2cc_free_nil(*env0*)
 //
 (* ****** ****** *)
 //
 #implfun
-envxcc1_filr$get =
+envxcc0_filr$get =
 envx2cc_filr$get(*env0*)
 #implfun
-envxcc1_nind$get =
+envxcc0_nind$get =
 envx2cc_nind$get(*env0*)
 //
 (* ****** ****** *)
-//
-#implfun
-envxcc1_incnind =
-envx2cc_incnind(* env0 *)
-#implfun
-envxcc1_decnind =
-envx2cc_decnind(* env0 *)
-//
 (* ****** ****** *)
 //
 #implfun
-envxcc1_pshlam0 =
-envx2cc_pshlam0(* env0 *)
-#implfun
-envxcc1_poplam0 =
-envx2cc_poplam0(* env0 *)
-//
-#implfun
-envxcc1_pshlet0 =
-envx2cc_pshlet0(* env0 *)
-#implfun
-envxcc1_poplet0 =
-envx2cc_poplet0(* env0 *)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-i1parsed_cc1emit
+i0parsed_xc0emit
   (ipar, filr) = let
 //
 val stadyn =
-i1parsed_stadyn$get(ipar)
+i0parsed_stadyn$get(ipar)
 val nerror =
-i1parsed_nerror$get(ipar)
+i0parsed_nerror$get(ipar)
 val source =
-i1parsed_source$get(ipar)
+i0parsed_source$get(ipar)
 val parsed =
-i1parsed_parsed$get(ipar)
+i0parsed_parsed$get(ipar)
 //
 val
-env0 = envxcc1_make_out(filr)
+env0 = envxcc0_make_out(filr)
 //
 in//let
 (
-  envxcc1_free_nil(env0)) where
+  envxcc0_free_nil(env0)) where
 { val () =
-  i1dclistopt_cc1emit(parsed, env0) }
-end(*let*)//end-of-[i1parsed_cc1emit(ipar,filr)]
+  i0dclistopt_xc0emit(parsed, env0) }
+end(*let*)//end-of-[i0parsed_xc0emit(filr,ipar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <x0>(*tmp*)
-list_cc1emit_fnp
+list_xc0emit_fnp
 ( xs, e1, fopr ) =
 (
 list_foritm$e1nv
 <  x0  ><  e1  >(xs, e1)) where
 {
-#vwtpdef e1 = envxcc1
+#vwtpdef e1 = envxcc0
 #impltmp
 foritm$e1nv$work
 <  x0  ><  e1  >(x0, e1) = fopr(x0, e1)
-}(*where*)//endof[list_cc1emit_fnp(xs,e1,fopr)]
+}(*where*)//endof[list_xc0emit_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <x0>(*tmp*)
-optn_cc1emit_fnp
+optn_xc0emit_fnp
 ( xs, e1, fopr ) =
 (
 case+ xs of
 |
 optn_nil() =>
 (  (*0*)  ) | optn_cons(x1) => fopr(x1, e1)
-)(*case+*)//endof[optn_cc1emit_fnp(xs,e1,fopr)]
+)(*case+*)//endof[optn_xc0emit_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-i1letlst_cc1emit
-  (ilts, env0) =
+i0explst_xc0emit
+  (i0es, env0) =
 (
-  list_cc1emit_fnp(ilts, env0, i1let_cc1emit))
+  list_xc0emit_fnp(i0es, env0, i0exp_xc0emit))
+(*where*)//end-of-[i0explst_xc0emit(i0es,env0)]
+//
+#implfun
+i0expopt_xc0emit
+  (iopt, env0) =
+(
+  optn_xc0emit_fnp(iopt, env0, i0exp_xc0emit))
+(*where*)//end-of-[i0expopt_xc0emit(i0es,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-i1dclist_cc1emit
+fiarglst_xc0emit
+  (fias, env0) =
+(
+  list_xc0emit_fnp(fias, env0, fiarg_xc0emit))
+(*where*)//end-of-[fiarglst_xc0emit(fias,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0dclist_xc0emit
   (dcls, env0) =
 (
-  list_cc1emit_fnp(dcls, env0, i1dcl_cc1emit))
+  list_xc0emit_fnp(dcls, env0, i0dcl_xc0emit))
+(*where*)//end-of-[i0dclist_xc0emit(dcls,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-i1valdclist_cc1emit
-  (i1vs, env0) =
+i0valdclist_xc0emit
+ (i0vs, env0) =
 (
-  list_cc1emit_fnp(i1vs, env0, i1valdcl_cc1emit))
+  list_xc0emit_fnp(i0vs, env0, i0valdcl_xc0emit))
 //
 #implfun
-i1vardclist_cc1emit
-  (i1vs, env0) =
+i0vardclist_xc0emit
+ (i0vs, env0) =
 (
-  list_cc1emit_fnp(i1vs, env0, i1vardcl_cc1emit))
+  list_xc0emit_fnp(i0vs, env0, i0vardcl_xc0emit))
 //
 (* ****** ****** *)
 //
 #implfun
-i1fundclist_cc1emit
-  (i1fs, env0) =
+i0fundclist_xc0emit
+ (i0fs, env0) =
 (
-  list_cc1emit_fnp(i1fs, env0, i1fundcl_cc1emit))
+  list_xc0emit_fnp(i0fs, env0, i0fundcl_xc0emit))
 //
-#implfun
-i1tfndclist_cc1emit
-  (i1fs, env0) =
-(
-  list_cc1emit_fnp(i1fs, env0, i1tfndcl_cc1emit))
-//  
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-i1dclistopt_cc1emit
+i0dclistopt_xc0emit
   (dopt, env0) =
 (
-  optn_cc1emit_fnp(dopt, env0, i1dclist_cc1emit))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-i1fundclist_i0ws$cc1emit
-  (i1fs, i0ws, env0) =
-(
-list_foritm$e1nv<x0><e1>(i1fs, env0)
-) where
-{
-#vwtpdef e1 = envxcc1
-#typedef x0 = i1fundcl
-#impltmp
-foritm$e1nv$work
-<x0><e1>(ifun, env0) =
-(
-  i1fundcl_i0ws$cc1emit(ifun, i0ws, env0))//impltmp
-}(*where*)//end-of-[i1fundclist_i0ws$cc1emit(i1fs,...)]
-//
-(* ****** ****** *)
-//
-#implfun
-i1tfndclist_i0ws$cc1emit
-  (i1fs, i0ws, env0) =
-(
-list_foritm$e1nv<x0><e1>(i1fs, env0)
-) where
-{
-#vwtpdef e1 = envxcc1
-#typedef x0 = i1fundcl
-#impltmp
-foritm$e1nv$work
-<x0><e1>(ifun, env0) =
-(
-  i1tfndcl_i0ws$cc1emit(ifun, i0ws, env0))//impltmp
-}(*where*)//end-of-[i1tfndclist_i0ws$cc1emit(i1fs,...)]
+  optn_xc0emit_fnp(dopt, env0, i0dclist_xc0emit))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc1emit.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_DATS_xc0emit.dats] *)
 (***********************************************************************)
 (***********************************************************************)

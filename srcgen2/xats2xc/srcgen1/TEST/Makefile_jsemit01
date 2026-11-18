@@ -32,34 +32,34 @@ $(XATSHOME)/srcgen2/xats2js/srcgenx
 XATS2JS_XSHARED=\
 $(XATSHOME)/srcgen2/xats2js/srcgenx/xshared/runtime
 ########################################################################
-XATS2CC_CCEMIT01=./../UTIL/xats2cc_ccemit01_ats2.js
-XATS2CC_CCEMIT01=./../UTIL/xats2cc_ccemit01_ats3.js
+XATS2XC_XCEMIT01=./../UTIL/xats2xc_xcemit01_ats2.js
+XATS2XC_XCEMIT01=./../UTIL/xats2xc_xcemit01_ats3.js
 ########################################################################
 ########################################################################
 test00:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.xc
 test00:: \
-test00_xats2cc.dats; \
-$(NODE) --stack-size=8801 $(XATS2CC_CCEMIT01) $< >> OUTS/$@_out.xc
+test00_xats2xc.dats; \
+$(NODE) --stack-size=8801 $(XATS2XC_XCEMIT01) $< >> OUTS/$@_out.xc
 ########################################################################
 test01:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.xc
 test01:: \
-test01_xats2cc.dats; \
-$(NODE) --stack-size=8801 $(XATS2CC_CCEMIT01) $< >> OUTS/$@_out.xc
+test01_xats2xc.dats; \
+$(NODE) --stack-size=8801 $(XATS2XC_XCEMIT01) $< >> OUTS/$@_out.xc
 ########################################################################
 test02:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.xc
 test02:: \
-test02_xats2cc.dats; \
-$(NODE) --stack-size=8801 $(XATS2CC_CCEMIT01) $< >> OUTS/$@_out.xc
+test02_xats2xc.dats; \
+$(NODE) --stack-size=8801 $(XATS2XC_XCEMIT01) $< >> OUTS/$@_out.xc
 ########################################################################
 ########################################################################
 basics:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.xc
 basics:: \
-basics_xats2cc.sats; \
-$(NODE) --stack-size=8801 $(XATS2CC_CCEMIT01) $< >> OUTS/$@_out.xc
+basics_xats2xc.sats; \
+$(NODE) --stack-size=8801 $(XATS2XC_XCEMIT01) $< >> OUTS/$@_out.xc
 ########################################################################
 ########################################################################
 ###################### end of [Makefile_jsemit01] ######################

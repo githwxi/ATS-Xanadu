@@ -1,7 +1,7 @@
 (* ****** ****** *)
 (*
 HX-2026-03-23:
-For testing xats2cc!
+For testing xats2xc!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -62,5 +62,5 @@ if i < n then loop(i+1, (i+1)*r) else r
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-XANADU/srcgen2/xats2cc/srcgen1/TEST/test01_xats2cc.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2xc/srcgen1/TEST/test01_xats2xc.dats] *)
 (***********************************************************************)

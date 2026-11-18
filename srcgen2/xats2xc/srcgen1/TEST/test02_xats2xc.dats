@@ -1,7 +1,7 @@
 (* ****** ****** *)
 (*
 HX-2026-03-23:
-For testing xats2cc!
+For testing xats2xc!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -143,5 +143,5 @@ list_cons(_, xs) => 1 + list_length(xs))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-XANADU/srcgen2/xats2cc/srcgen1/TEST/test02_xats2cc.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2xc/srcgen1/TEST/test02_xats2xc.dats] *)
 (***********************************************************************)

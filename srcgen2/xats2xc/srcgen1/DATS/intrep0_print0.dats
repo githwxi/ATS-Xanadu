@@ -1254,5 +1254,5 @@ end(*let*)//end-of-[i0parsed_fprint(ipar,out0)]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_intrep0_print0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_DATS_intrep0_print0.dats] *)
 (***********************************************************************)

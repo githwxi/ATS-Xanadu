@@ -74,10 +74,10 @@ XATSOPT "./../../.."
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xats2cc.sats"
+#staload "./../SATS/xats2xc.sats"
 //
-#staload "./../SATS/cc0emit.sats"
-#staload "./../SATS/cc1emit.sats"
+#staload "./../SATS/xc0emit.sats"
+#staload "./../SATS/xc1emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -87,7 +87,7 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 #symload
-fjags_cc1emit with fjarglst_cc1emit
+fjags_xc1emit with fjarglst_xc1emit
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -145,14 +145,14 @@ tok.node() of
 (* ****** ****** *)
 //
 #implfun
-i1dcl_cc1emit
+i1dcl_xc1emit
 (dcl0, env0) =
 let
 // (*
 //
 val () =
 prerrsln
-("i1dcl_cc1emit: dcl0 = ", dcl0)
+("i1dcl_xc1emit: dcl0 = ", dcl0)
 //
 // *)
 in//let
@@ -326,7 +326,7 @@ case+ dopt of
 |optn_nil() => ( (*void*) )
 |optn_cons(dcls) =>
 (
-  i1dclist_cc1emit(dcls, env0)))
+  i1dclist_xc1emit(dcls, env0)))
 end(*let*)//end-of-[f0_include(dcl0,env0)]
 //
 (* ****** ****** *)
@@ -370,9 +370,9 @@ val (  ) =
 (
 case+ i0ws of
 |list_nil() =>
-i1dcl_cc1emit(dcl1, env0)
+i1dcl_xc1emit(dcl1, env0)
 |list_cons _ =>
-i1dclenv_cc1emit(dcl1, i0ws, env0))
+i1dclenv_xc1emit(dcl1, i0ws, env0))
 //
 end(*let*)//end-of-[f0_dclenv(dcl0,env0)]
 //
@@ -434,7 +434,7 @@ then
 )
 else
 (
-  i1valdclist_cc1emit(i1vs, env0))
+  i1valdclist_xc1emit(i1vs, env0))
 //
 end(*let*)//end-of-[f0_valdclst(dcl0,env0)]
 //
@@ -507,11 +507,11 @@ case+ tqas of
 |
 list_nil() => // HX: functions
 (
-  i1fundclist_cc1emit(i1fs, env0))
+  i1fundclist_xc1emit(i1fs, env0))
 |
 list_cons _ => // HX: templates
 (
-  i1tfndclist_cc1emit(i1fs, env0)))
+  i1tfndclist_xc1emit(i1fs, env0)))
 //
 end(*let*)//end-of-[f0_fundclst(dcl0,env0)]
 //
@@ -545,14 +545,14 @@ end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-}(*where*)//end-of-[i1dcl_cc1emit(dcl0,env0)]
+}(*where*)//end-of-[i1dcl_xc1emit(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 //
 #implfun
-i1valdcl_cc1emit
+i1valdcl_xc1emit
   (idcl, env0) = let
 //
 (* ****** ****** *)
@@ -623,7 +623,7 @@ endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
 //
 (* ****** ****** *)
 //
-end where//end-of-(i1valdcl_cc1emit(...)]
+end where//end-of-(i1valdcl_xc1emit(...)]
 {
 //
 val (  ) =
@@ -662,7 +662,7 @@ ilts =
   i1cmp_ilts$get(icmp))
 //
 val () =
-i1letlst_cc1emit(ilts, env0)
+i1letlst_xc1emit(ilts, env0)
 //
 val () =
 let
@@ -672,21 +672,21 @@ end//let
 //
 end//let//end-of-[f0_i1tnmcmp(...)]
 //
-}(*where*)//end-of-[i1valdcl_cc1emit(env0,dcl0)]
+}(*where*)//end-of-[i1valdcl_xc1emit(env0,dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
 #implfun
-i1fundcl_cc1emit
+i1fundcl_xc1emit
   (ifun, env0) =
 (
 i1fundcl_ccaemit(ifun, env0))
 *)
 //
 #implfun
-i1tfndcl_cc1emit
+i1tfndcl_xc1emit
   (ifun, env0) =
 (
 i1tfndcl_ccaemit(ifun, env0))
@@ -694,7 +694,7 @@ i1tfndcl_ccaemit(ifun, env0))
 (* ****** ****** *)
 //
 #implfun
-i1fundcl_cc1emit
+i1fundcl_xc1emit
   (ifun, env0) = let
 //
 (* ****** ****** *)
@@ -783,10 +783,10 @@ val ival = icmp.ival()
 //
 val (  ) =
 (
-  fjags_cc1emit(fjas, env0))
+  fjags_xc1emit(fjas, env0))
 val (  ) =
 (
-  i1cmp_cc1emit(icmp, env0))
+  i1cmp_xc1emit(icmp, env0))
 //
 (* ****** ****** *)
 //
@@ -841,14 +841,14 @@ in//let
  nindstrnfpr(filr, nind, "// I1FUNDCL\n"))
 end//let//end-of-[val()]
 //
-}(*where*)//end-of-[i1fundcl_cc1emit(ifun,env0)]
+}(*where*)//end-of-[i1fundcl_xc1emit(ifun,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 //
 #implfun
-i1dclenv_cc1emit
+i1dclenv_xc1emit
 (
 dcl0, i0ws, env0) =
 let
@@ -856,7 +856,7 @@ let
 //
 val () =
 prerrsln("\
-i1dcl_cc1emit: dcl0 = ", dcl0))
+i1dcl_xc1emit: dcl0 = ", dcl0))
 //
 *)
 in//let
@@ -870,7 +870,7 @@ I1Dfundclst _ =>
   f0_fundclst(dcl0, i0ws, env0))
 //
 |
-_(*otherwise*) => i1dcl_cc1emit(dcl0, env0)
+_(*otherwise*) => i1dcl_xc1emit(dcl0, env0)
 //
 end where
 {
@@ -941,21 +941,21 @@ else//else
 case+ tqas of
 |list_nil() => // HX: functions
 (
-i1fundclist_i0ws$cc1emit(i1fs, i0ws, env0))
+i1fundclist_i0ws$xc1emit(i1fs, i0ws, env0))
 |list_cons _ => // HX: templates
 (
-i1tfndclist_i0ws$cc1emit(i1fs, i0ws, env0)))
+i1tfndclist_i0ws$xc1emit(i1fs, i0ws, env0)))
 //
 end(*let*)//end-of-[f0_fundclst(dcl0,i0ws,env0)]
 //
-}(*where*)//end-of-[i1dclenv_cc1emit(dcl0,i0ws,env0)]
+}(*where*)//end-of-[i1dclenv_xc1emit(dcl0,i0ws,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 //
 #implfun
-i1fundcl_i0ws$cc1emit
+i1fundcl_i0ws$xc1emit
 ( ifun
 , i0ws, env0) = let
 //
@@ -1050,10 +1050,10 @@ val ival = icmp.ival()
 //
 val (  ) =
 (
-  fjags_cc1emit(fjas, env0))
+  fjags_xc1emit(fjas, env0))
 val (  ) =
 (
-  i1cmp_cc1emit(icmp, env0))
+  i1cmp_xc1emit(icmp, env0))
 //
 (* ****** ****** *)
 //
@@ -1108,13 +1108,13 @@ in//let
  nindstrnfpr(filr, nind, "// I1FUNDCL\n"))
 end//let//end-of-[val()]
 //
-}(*where*)//end-of-[i1fundcl_i0ws$cc1emit(ifun,i0ws,env0)]
+}(*where*)//end-of-[i1fundcl_i0ws$xc1emit(ifun,i0ws,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3-XANADU/srcgen2/xats2cc/srcgen1/DATS/cc1emit_decl00.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2xc/srcgen1/DATS/xc1emit_decl00.dats] *)
 (***********************************************************************)
 (***********************************************************************)

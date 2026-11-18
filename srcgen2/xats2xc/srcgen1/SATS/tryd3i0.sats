@@ -271,5 +271,5 @@ lvl0$i0vs_tryd3i0(
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_tryd3i0.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_SATS_tryd3i0.sats] *)
 (***********************************************************************)

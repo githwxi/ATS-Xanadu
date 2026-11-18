@@ -242,5 +242,5 @@ end(*let*)//end-of-[l2t2p_trxd3i0(ltp0,env0)]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_trxd3i0_statyp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_DATS_trxd3i0_statyp.dats] *)
 (***********************************************************************)

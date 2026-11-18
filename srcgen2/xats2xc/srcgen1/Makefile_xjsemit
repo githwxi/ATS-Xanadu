@@ -10,7 +10,7 @@ MAKE=make
 NODE=node
 ########################################################################
 ########################################################################
-all:: lib2xats2cc
+all:: lib2xats2xc
 ########################################################################
 ########################################################################
 SRCGEN2=./../../../srcgen2
@@ -32,9 +32,9 @@ tryd3i0.sats \
 trxi0i1.sats \
 intrep1.sats \
 trcmp01.sats \
-xats2cc.sats \
-cc0emit.sats \
-cc1emit.sats \
+xats2xc.sats \
+xc0emit.sats \
+xc1emit.sats \
 #
 ########################################################################
 #
@@ -60,18 +60,18 @@ trxi0i1.dats \
 trxi0i1_myenv0.dats \
 trxi0i1_dynexp.dats \
 trxi0i1_decl00.dats \
-xats2cc.dats \
-xats2cc_myenv0.dats \
-xats2cc_tmplib.dats \
-xats2cc_utils0.dats \
-cc0emit.dats \
-cc0emit_statyp.dats \
-cc0emit_dynexp.dats \
-cc0emit_decl00.dats \
-cc1emit.dats \
-cc1emit_utils0.dats \
-cc1emit_dynexp.dats \
-cc1emit_decl00.dats \
+xats2xc.dats \
+xats2xc_myenv0.dats \
+xats2xc_tmplib.dats \
+xats2xc_utils0.dats \
+xc0emit.dats \
+xc0emit_statyp.dats \
+xc0emit_dynexp.dats \
+xc0emit_decl00.dats \
+xc1emit.dats \
+xc1emit_utils0.dats \
+xc1emit_dynexp.dats \
+xc1emit_decl00.dats \
 #
 ########################################################################
 ########################################################################
@@ -134,7 +134,7 @@ BUILD/JS/%_dats_out0.js; \
 $(eval NFILE=$(NFILE) X) \
 $(SED) -e 's/jsxtnm/jsx$(words $(NFILE))tnm/g' $< > $@
 ########################################################################
-lib2xats2cc: $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xats2cc.js
+lib2xats2xc: $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/lib2xats2xc.js
 ########################################################################
 ########################################################################
 #######################(end-of-[Makefile_xjsemit])######################

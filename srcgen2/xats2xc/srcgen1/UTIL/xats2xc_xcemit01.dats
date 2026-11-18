@@ -46,16 +46,24 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../HATS/libxatsopt.hats"
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
+//
+(* ****** ****** *)
 //
 #staload "./../SATS/trxd3i0.sats"
 #staload "./../SATS/tryd3i0.sats"
+#staload "./../SATS/xc0emit.sats"
 //
-(*
-#staload "./../SATS/intrep1.sats"
-*)
+(* ****** ****** *)
+//
+#staload "./../SATS/trxi0i1.sats"
+#staload "./../SATS/xc1emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -109,57 +117,78 @@ prerrsln
 f3perr0_d3parsed(out0,dpar)
 end//let//end-of-(val(...))
 //
-val ipar =
+val i0px =
 (
   i0parsed_of_trxd3i0(dpar))
-val ipar =
-(
-  i0parsed_of_tryd3i0(ipar))
 //
-// (*
+val i0px =
+(
+  i0parsed_of_tryd3i0(i0px))
+(*
 val (  ) =
 prerrsln
-("ipar(tryd3i0) = ", (ipar))
-// *)
-//
-(*
-val ipar =
-(
-  i1parsed_of_trxi0i1(ipar))
+("ipar(tryd3i0) = ", (i0px))
 *)
+//
+// (*
+val i1px =
+(
+  i1parsed_of_trxi0i1(i0px))
+// *)
 //
 in//let
 //
-(*
+// (*
 let
 val
 filr = g_stdout<>()
 in//let
 (
-  cc1emit_i1parsed(filr, ipar))
+i0parsed_xc0emit(i0px, filr))
 end//let
-*)
+// *)
+//
+;
+//
+// (*
+let
+val
+filr = g_stdout<>()
+in//let
+(
+i1parsed_xc1emit(i1px, filr))
+end//let
+// *)
 //
 end where
 {
 //
 val fknd =
 fname_stadyn(fpth):sint
+//
+(*
+val (  ) =
+(
+prerrsln("\
+mymain_work: fknd = ", fknd))
+*)
+//
 val dpar =
 (
 case+ fknd of
-| 1 =>
-d3parsed_of_fildats(fpth)
-| 0 =>
-d3parsed_of_filsats(fpth)
-| _ => // HX: default
-d3parsed_of_fildats(fpth)):d3parsed
+| 0 => (
+d3parsed_of_filsats(fpth))//SATS
+| 1 => (
+d3parsed_of_fildats(fpth))//DATS
+| _ => ( // HX: default
+d3parsed_of_fildats(fpth))):d3parsed
 //
 (*
 val (  ) =
 prerrsln("mymain_work(allist):")
 val (  ) = the_gmacenv_allist_prerr()
 *)
+//
 }(*where*)//end-of-[mymain_work(fpth)]
 //
 (* ****** ****** *)
@@ -212,7 +241,7 @@ then
 prerrsln("\
 // The fixity-defs loaded!")
 val ret2 =
-the_tr12env_pvsl00d((*nil*))
+the_tr12env_pvsl01d((*nil*))
 val (  ) =
 if // if
 (ret2 > 0)
@@ -220,9 +249,9 @@ then prerrsln("\
 // The trans12-defs loaded!")
 //
 val (  ) =
-xatsopt_flag$pvsadd0("--_XATS2CC_")
+xatsopt_flag$pvsadd0("--_XATS2XC_")
 val (  ) =
-xatsopt_flag$pvsadd0("--_SRCGEN2_XATS2CC_")
+xatsopt_flag$pvsadd0("--_SRCGEN2_XATS2XC_")
 //
 in//let
 (
@@ -253,7 +282,7 @@ val argv =
   XATSOPT_argv$get((*0*)) // end(val(argv))
 (*
 val (  ) =
-prerrsln("xats2cc_ccemit00: argv = ", argv)
+prerrsln("xats2xc_xcemit01: argv = ", argv)
 *)
 //
 }(*where*)//end-of-[mymain_main( (*void*) )]
@@ -265,5 +294,7 @@ val ((*the_entry_point*)) = mymain_main((*void*))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_UTIL_xats2cc_ccemit00.dats] *)
+(***********************************************************************)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_UTIL_xats2xc_xcemit01.dats] *)
+(***********************************************************************)
 (***********************************************************************)

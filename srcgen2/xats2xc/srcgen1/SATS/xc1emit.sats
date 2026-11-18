@@ -45,7 +45,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload "./intrep0.sats"
 #staload "./intrep1.sats"
-#staload "./xats2cc.sats"
+#staload "./xats2xc.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -226,14 +226,14 @@ fjarglst, i0ws:i0varlst): void
 //
 fun
 <x0:t0>
-list_cc1emit_fnp
+list_xc1emit_fnp
 (
 xs: list(x0),
 e1: !envxcc1,
 fopr: (x0, !envxcc1)->void): void
 fun
 <x0:t0>
-optn_cc1emit_fnp
+optn_xc1emit_fnp
 (
 xs: optn(x0),
 e1: !envxcc1,
@@ -243,49 +243,49 @@ fopr: (x0, !envxcc1)->void): void
 (* ****** ****** *)
 //
 fun
-i1let_cc1emit
+i1let_xc1emit
 (ilet: i1let, env0: !envxcc1): void
 //
 (* ****** ****** *)
 //
 fun
-i1bnd_cc1emit
+i1bnd_xc1emit
 (ibnd: i1bnd, env0: !envxcc1): void
 //
 fun
-i1cmp_cc1emit
+i1cmp_xc1emit
 (icmp: i1cmp, env0: !envxcc1): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1dcl_cc1emit
+i1dcl_xc1emit
 (dcl0: i1dcl, env0: !envxcc1): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1letlst_cc1emit(
+i1letlst_xc1emit(
   i1vs: i1letlst, env0: !envxcc1): void
 //
 fun
-i1cmplst_cc1emit(
+i1cmplst_xc1emit(
   i1fs: i1cmplst, env0: !envxcc1): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-fjarglst_cc1emit(
+fjarglst_xc1emit(
   fjas: fjarglst, env0: !envxcc1): void
   //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1dclenv_cc1emit(
+i1dclenv_xc1emit(
   dcl0: i1dcl,
   i0ws: i0varlst, env0: !envxcc1): void
 //
@@ -293,81 +293,81 @@ i1dclenv_cc1emit(
 (* ****** ****** *)
 //
 fun
-i1dclist_cc1emit(
+i1dclist_xc1emit(
   dcls: i1dclist, env0: !envxcc1): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1valdcl_cc1emit(
+i1valdcl_xc1emit(
   ival: i1valdcl, env0: !envxcc1): void
 fun
-i1vardcl_cc1emit(
+i1vardcl_xc1emit(
   ivar: i1vardcl, env0: !envxcc1): void
 //
 (* ****** ****** *)
 //
 fun
-i1fundcl_cc1emit(
+i1fundcl_xc1emit(
   ifun: i1fundcl, env0: !envxcc1): void
 fun
-i1tfndcl_cc1emit(
+i1tfndcl_xc1emit(
   ifun: i1fundcl, env0: !envxcc1): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1parsed_cc1emit
+i1parsed_xc1emit
 (ipar: i1parsed, filr: FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1valdclist_cc1emit(
+i1valdclist_xc1emit(
   i1vs: i1valdclist, env0: !envxcc1): void
 fun
-i1vardclist_cc1emit(
+i1vardclist_xc1emit(
   i1vs: i1vardclist, env0: !envxcc1): void
 //
 (* ****** ****** *)
 //
 fun
-i1fundclist_cc1emit(
+i1fundclist_xc1emit(
   i1fs: i1fundclist, env0: !envxcc1): void
 fun
-i1tfndclist_cc1emit(
+i1tfndclist_xc1emit(
   i1fs: i1fundclist, env0: !envxcc1): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-i1dclistopt_cc1emit(
+i1dclistopt_xc1emit(
   dopt: i1dclistopt, env0: !envxcc1): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1fundcl_i0ws$cc1emit
+i1fundcl_i0ws$xc1emit
 (ifun
 :i1fundcl, i0ws: i0varlst, env0: !envxcc1): void
 fun
-i1tfndcl_i0ws$cc1emit
+i1tfndcl_i0ws$xc1emit
 (ifun
 :i1fundcl, i0ws: i0varlst, env0: !envxcc1): void
 //
 (* ****** ****** *)
 //
 fun
-i1fundclist_i0ws$cc1emit
+i1fundclist_i0ws$xc1emit
 (i1fs
 :i1fundclist, i0ws: i0varlst, env0: !envxcc1): void
 //
 fun
-i1tfndclist_i0ws$cc1emit
+i1tfndclist_i0ws$xc1emit
 (i1fs
 :i1fundclist, i0ws: i0varlst, env0: !envxcc1): void
 //
@@ -376,6 +376,6 @@ i1tfndclist_i0ws$cc1emit
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen1_xats2cc_srcgen1_SATS_cc1emit.sats] *)
+(* end of [ATS3/XANADU_srcgen1_xats2xc_srcgen1_SATS_xc1emit.sats] *)
 (***********************************************************************)
 (***********************************************************************)

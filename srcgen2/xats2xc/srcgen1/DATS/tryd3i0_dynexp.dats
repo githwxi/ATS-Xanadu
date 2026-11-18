@@ -1241,5 +1241,5 @@ end(*let*)//else//end-of-(val(i0ws))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_tryd3i0_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_DATS_tryd3i0_dynexp.dats] *)
 (***********************************************************************)

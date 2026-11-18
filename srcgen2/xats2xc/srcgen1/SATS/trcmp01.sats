@@ -62,5 +62,5 @@ i0dclistopt_trcmp01
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_SATS_trcmp01.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_SATS_trcmp01.sats] *)
 (***********************************************************************)

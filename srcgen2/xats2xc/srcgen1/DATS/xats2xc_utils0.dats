@@ -79,7 +79,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2cc.sats"
+#staload "./../SATS/xats2xc.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -319,5 +319,5 @@ prints(nbeg, "$", nend)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_xats2cc_utils0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_DATS_xats2xc_utils0.dats] *)
 (***********************************************************************)

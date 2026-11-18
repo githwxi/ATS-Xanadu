@@ -1,7 +1,7 @@
 (* ****** ****** *)
 (*
 HX-2026-03-23:
-For testing xats2cc!
+For testing xats2xc!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -24,11 +24,11 @@ For testing xats2cc!
 //
 val () =
 prints
-("Hello from [test00_xats2cc]!", "\n")
+("Hello from [test00_xats2xc]!", "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-XANADU/srcgen2/xats2cc/srcgen1/TEST/test00_xats2cc.dats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2xc/srcgen1/TEST/test00_xats2xc.dats] *)
 (***********************************************************************)

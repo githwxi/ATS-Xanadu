@@ -121,5 +121,5 @@ end(*let*)//end-of-[l2s2e_trxd3i0(ls2e,env0)]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_trxd3i0_staexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_DATS_trxd3i0_staexp.dats] *)
 (***********************************************************************)

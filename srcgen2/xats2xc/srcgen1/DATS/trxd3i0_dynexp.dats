@@ -2794,5 +2794,5 @@ end(*let*)//end-of-[d3rcl_trxd3i0(d3c0,env0)]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_trxd3i0_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_DATS_trxd3i0_dynexp.dats] *)
 (***********************************************************************)

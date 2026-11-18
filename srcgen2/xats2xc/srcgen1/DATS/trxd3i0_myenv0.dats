@@ -816,5 +816,5 @@ endloc (*local*) // end-of-[ local(envd3i0_vtbx) ]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_trxd3i0_myenv0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_DATS_trxd3i0_myenv0.dats] *)
 (***********************************************************************)

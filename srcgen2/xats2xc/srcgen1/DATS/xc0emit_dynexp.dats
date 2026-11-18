@@ -73,8 +73,8 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/xats2cc.sats"
-#staload "./../SATS/cc0emit.sats"
+#staload "./../SATS/xats2xc.sats"
+#staload "./../SATS/xc0emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -140,7 +140,7 @@ end(*let*)//end-of-[i0exp$typcc0(...)]
 (* ****** ****** *)
 //
 #implfun
-i0pat_cc0emit
+i0pat_xc0emit
 (ipat, env0) =
 let
 //
@@ -148,10 +148,10 @@ let
 //
 val () =
 prerrsln("\
-i0pat_cc0emit: lctn = ", lctn)
+i0pat_xc0emit: lctn = ", lctn)
 val () =
 prerrsln("\
-i0pat_cc0emit: ipat = ", ipat)
+i0pat_xc0emit: ipat = ", ipat)
 //
 // *)
 //
@@ -190,7 +190,7 @@ i0pat$typcc0(filr, ipat))
 //
 (* ****** ****** *)
 //
-end where//endof(i0pat_cc0emit(ipat,env0))
+end where//endof(i0pat_xc0emit(ipat,env0))
 {
 //
 (* ****** ****** *)
@@ -228,13 +228,13 @@ val ityp = i0pat_ityp$get(ipat)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-}(*where*)//end-of-[i0pat_cc0emit(ipat,env0)]
+}(*where*)//end-of-[i0pat_xc0emit(ipat,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-i0exp_cc0emit
+i0exp_xc0emit
 (iexp, env0) =
 let
 //
@@ -242,10 +242,10 @@ let
 //
 val () =
 prerrsln("\
-i0exp_cc0emit: lctn = ", lctn)
+i0exp_xc0emit: lctn = ", lctn)
 val () =
 prerrsln("\
-i0exp_cc0emit: iexp = ", iexp)
+i0exp_xc0emit: iexp = ", iexp)
 //
 // *)
 //
@@ -314,7 +314,7 @@ i0exp$typcc0(filr, iexp))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-end where//endof(i0exp_cc0emit(iexp,env0))
+end where//endof(i0exp_xc0emit(iexp,env0))
 {
 //
 (* ****** ****** *)
@@ -341,7 +341,7 @@ I0Etimp
 //
 val () =
 (
-  i0exp_cc0emit(i0f0, env0))
+  i0exp_xc0emit(i0f0, env0))
 //
 end(*ent*)//end-of-[f0_timp(iexp,env0)]
 //
@@ -364,7 +364,7 @@ I0Etapq
 (*
 val () =
 (
-  i0exp_cc0emit(i0f0, env0))
+  i0exp_xc0emit(i0f0, env0))
 *)
 //
 end(*ent*)//end-of-[f0_tapq(iexp,env0)]
@@ -388,7 +388,7 @@ I0Edapp
 //
 val () =
 (
-  i0exp_cc0emit(i0f0, env0))
+  i0exp_xc0emit(i0f0, env0))
 val () =
 f1_npf1_i0es(npf1, i0es, env0)
 //
@@ -421,7 +421,7 @@ else
 let
 val (  ) =
 (
-  i0exp_cc0emit(i0e1, env0))
+  i0exp_xc0emit(i0e1, env0))
 in//let
 f1_npf1_i0es(npf1, i0es, env0)
 end//let//else
@@ -449,14 +449,14 @@ I0Eift0
 //
 val () =
 (
-  i0exp_cc0emit(i0e1, env0))
+  i0exp_xc0emit(i0e1, env0))
 //
 val () =
 (
-  i0expopt_cc0emit(ithn, env0))
+  i0expopt_xc0emit(ithn, env0))
 val () =
 (
-  i0expopt_cc0emit(iels, env0))
+  i0expopt_xc0emit(iels, env0))
 //
 end(*let*)//end-pf-[f0_ift0(iexp,env0)]
 //
@@ -478,7 +478,7 @@ val-
 I0Elabck
 (i0e1, lab2) = iexp.node()
 //
-val () = i0exp_cc0emit(i0e1, env0)
+val () = i0exp_xc0emit(i0e1, env0)
 //
 end(*let*)//end-pf-[f0_labck(iexp,env0)]
 //
@@ -500,7 +500,7 @@ val-
 I0Et2pck
 (i0e1, t2p2) = iexp.node()
 //
-val () = i0exp_cc0emit(i0e1, env0)
+val () = i0exp_xc0emit(i0e1, env0)
 //
 end(*let*)//end-pf-[f0_t2pck(iexp,env0)]
 //
@@ -520,7 +520,7 @@ val-
 I0Et2ped
 (i0e1, t2p2) = iexp.node()
 //
-val () = i0exp_cc0emit(i0e1, env0)
+val () = i0exp_xc0emit(i0e1, env0)
 //
 end(*let*)//end-pf-[f0_t2ped(iexp,env0)]
 //
@@ -542,7 +542,7 @@ val-
 I0Erturn
 (ical, i0e1) = iexp.node()
 //
-val () = i0exp_cc0emit(i0e1, env0)
+val () = i0exp_xc0emit(i0e1, env0)
 //
 end(*let*)//end-pf-[f0_rturn(iexp,env0)]
 //
@@ -572,13 +572,13 @@ val ityp = i0exp_ityp$get(iexp)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-}(*where*)//end-of-[i0exp_cc0emit(iexp,env0)]
+}(*where*)//end-of-[i0exp_xc0emit(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-fiarg_cc0emit
+fiarg_xc0emit
 (farg, env0) =
 (
 case+
@@ -618,15 +618,15 @@ f0_npf1_i0ps(npf1, i0ps)
 ) where
 {
 //
-val () = i0pat_cc0emit(i0p1, env0)
+val () = i0pat_xc0emit(i0p1, env0)
 //
 }(*where*)
 )(*case+*)//end-of-[f0_npf1_i0ps(...)]
-}(*where*)//end-of-[fiarg_cc0emit(farg,env0)]
+}(*where*)//end-of-[fiarg_xc0emit(farg,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc0emit_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_DATS_xc0emit_dynexp.dats] *)
 (***********************************************************************)

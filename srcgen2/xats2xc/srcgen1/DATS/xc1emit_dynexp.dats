@@ -68,10 +68,10 @@ XATSOPT "./../../.."
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xats2cc.sats"
+#staload "./../SATS/xats2xc.sats"
 //
-#staload "./../SATS/cc0emit.sats"
-#staload "./../SATS/cc1emit.sats"
+#staload "./../SATS/xc0emit.sats"
+#staload "./../SATS/xc1emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -411,7 +411,7 @@ end(*let*)//end-of-[i1cmpcc1(filr,icmp)]
 (* ****** ****** *)
 //
 #implfun
-i1cmp_cc1emit
+i1cmp_xc1emit
 (icmp, env0) =
 let
 //
@@ -459,16 +459,16 @@ i1val_fprint(ival, filr)))
 //
 val () =
 (
-  i1letlst_cc1emit(ilts, env0)) }//where
+  i1letlst_xc1emit(ilts, env0)) }//where
 )(*where*)//end-of-([I1CMPcons(ilts,ival)])
 //
-end(*let*)//end-of-[i1cmp_cc1emit(icmp,env0)]
+end(*let*)//end-of-[i1cmp_xc1emit(icmp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-i1let_cc1emit
+i1let_xc1emit
 (ilet, env0) =
 let
 //
@@ -476,7 +476,7 @@ let
 //
 val () =
 prerrsln
-("i1let_cc1emit: ilet = ", ilet)
+("i1let_xc1emit: ilet = ", ilet)
 //
 (* ****** ****** *)
 //
@@ -502,7 +502,7 @@ val retq =
 //
 val ival = icmp.ival()
 val (  ) =
-i1cmp_cc1emit(icmp, env0)
+i1cmp_xc1emit(icmp, env0)
 //
 in//let
 //
@@ -570,7 +570,7 @@ where
 {
 val () =
 (
-  i1let_cc1emit(ilt1, env0))
+  i1let_xc1emit(ilt1, env0))
 }
 )
 //
@@ -667,7 +667,7 @@ val ival = icmp.ival()
 val ilts = icmp.ilts()
 //
 val () =
-i1letlst_cc1emit(ilts, env0)
+i1letlst_xc1emit(ilts, env0)
 //
 val () =
 if retq then () else
@@ -754,7 +754,7 @@ val () =
 envxcc1_incnind(env0,2(*++*))
 val () =
 (
-i1dclist_cc1emit(dcls, env0))
+i1dclist_xc1emit(dcls, env0))
 val () =
 (
 f0_i1tnmcmp(env0, itnm, icmp))
@@ -845,13 +845,13 @@ val nind = env0.nind()
 (* ****** ****** *)
 (* ****** ****** *)
 //
-}(*where*)//end-of-[i1let_cc1emit(ilet,env0)]
+}(*where*)//end-of-[i1let_xc1emit(ilet,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-fjarglst_cc1emit
+fjarglst_xc1emit
   (fjas, env0) =
 (
   loop1(1(*i0*), fjas)
@@ -941,13 +941,13 @@ end//let
 }
 )(*case+*)//end-of-[loop3(i0,i1bs,fjas)]
 //
-}(*where*)//end-of-[fjarglst_cc1emit(fjas,env0)]
+}(*where*)//end-of-[fjarglst_xc1emit(fjas,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2cc_srcgen1_DATS_cc1emit_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2xc_srcgen1_DATS_xc1emit_dynexp.dats] *)
 (***********************************************************************)
 (***********************************************************************)

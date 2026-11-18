@@ -3,18 +3,18 @@
 (*
 HX-2026-03-09:
 Mon Mar  9 07:25:36 PM EDT 2026
-For ATS3/XANADU_srcgen2_xats2cc
+For ATS3/XANADU_srcgen2_xats2xc
 *)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload _ = "./../DATS/xats2cc_tmplib.dats"
+#staload _ = "./../DATS/xats2xc_tmplib.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
 (***********************************************************************)
-(* end of [ATS3-XANADU/srcgen2/xats2cc/srcgen1/HATS/mytmplib00.hats] *)
+(* end of [ATS3-XANADU/srcgen2/xats2xc/srcgen1/HATS/mytmplib00.hats] *)
 (***********************************************************************)
 (***********************************************************************)
