@@ -125,6 +125,21 @@ fact4(10) = ", fact4(10), "\n")
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern0
+fun
+factloop
+(n: nint, r: nint): nint
+#implfun
+factloop(n, r) =
+if n > 0 then factloop(n-1, n*r) else r
+//
+val () =
+prints("\
+factloop(10, 1) = ", factloop(10, 1), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () = the_print_store_log( (*void*) )
 //
 (* ****** ****** *)

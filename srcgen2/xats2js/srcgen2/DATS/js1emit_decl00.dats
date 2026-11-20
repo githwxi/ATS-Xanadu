@@ -113,6 +113,40 @@ loctn_fprint(loc0,filr))//endfun
 (* ****** ****** *)
 //
 fun
+dicstjs1
+(filr: FILR
+,dimp: dimpl): void =
+(
+case+
+dimp.node() of
+|DIMPLone1
+(  dcst  ) =>
+(
+  d2cstjs1(filr, dcst))
+|DIMPLone2
+(dcst, svts) =>
+(
+  d2cstjs1(filr, dcst))
+//
+|DIMPLnon1
+(  dqid  ) =>
+(
+  d1qid_fprint(dqid, filr))
+)(*case+*)//end-of-(dicstjs1())
+//
+(* ****** ****** *)
+//
+fun
+dimplfpr
+(filr: FILR
+,dimp: dimpl): void =
+(
+  dimpl_fprint(dimp, filr))//fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 valtok_prvq
 (tok: token): bool =
 (
@@ -183,6 +217,13 @@ dcl0.node() of
 |I1Dfundclst _ =>
 (
   f0_fundclst(dcl0, env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Dimplmnt0 _ =>
+(
+  f0_implmnt0(dcl0, env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -488,6 +529,138 @@ list_cons _ => // HX: templates
   i1tfndclist_js1emit(i1fs, env0)))
 //
 end(*let*)//end-of-[f0_fundclst(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+(
+dcl0: i1dcl,
+env0: !envx2js): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dimplmnt0
+( tknd, lvl0
+, stmp, dimp
+, fjas, icmp) = dcl0.node()
+//
+fun
+implfunq
+( tknd: token): bool =
+(
+case+ iknd of
+|
+IMPLfun() => true | _ => false
+) where
+{ val-
+  T_IMPLMNT(iknd) = tknd.node() }
+//
+in//let
+//
+let
+//
+fun
+f1_i1cmpret
+( env0:
+! envx2js
+, icmp: i1cmp): void =
+let
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+in//let
+//
+let
+val ival = icmp.ival()
+val (  ) =
+i1cmp_js1emit(icmp, env0)
+in//let
+//
+nindstrnfpr
+(filr, nind, "// return ");
+i1valjs1(filr, ival);fprintln(filr)
+//
+end//let
+//
+end(*let*)//end-of-[f1_i1cmpret(...)]
+//
+in//let
+//
+nindstrnfpr
+(filr,nind,"// I1Dimplmnt0(");
+lctnfpr(filr,loc0);strnfpr(filr,")\n");
+//
+if
+dimpl_tempq(dimp)
+then // template
+(
+nindstrnfpr
+(filr,nind,"// I1Dimplmnt0(");
+dimplfpr(filr,dimp);strnfpr(filr,"):timp\n"))
+else // non-template
+(
+//
+(
+nindfpr(filr, nind);
+strnfpr(filr, "let ");dicstjs1(filr, dimp);
+strnfpr(filr," = function ");fjas1js1(filr, fjas));
+(
+strnfpr(filr," { // impl\n");
+//
+(*
+(
+nindfpr(filr, nind);
+strnfpr(filr, "while(true) { // impl\n"));
+*)
+//
+(
+envx2js_incnind(env0,2(*++*));
+fjarglst_js1emit(fjas, env0);f1_i1cmpret(env0, icmp));
+//
+if
+implfunq(tknd)
+then // then
+(
+envx2js_decnind(env0,2(*--*));
+//
+if
+list_consq(fjas)
+then
+(
+//
+(*
+(
+nindfpr(filr, nind);
+strnfpr(filr, "} // end(while) // impl\n"));
+*)
+//
+nindstrnfpr(filr, nind, "} // endfun(impl)");fprintln(filr))
+else
+(
+nindstrnfpr(filr, nind, "} () // endfun(impl)");fprintln(filr))
+)
+else // if(implfunq(tknd))
+(
+envx2js_decnind(env0,2(*--*));
+nindstrnfpr(filr, nind, "} () // endnfn(impl)");fprintln(filr))
+//
+)
+//
+)//else(non-template)//end-of-(if)
+//
+end(*let*)
+//
+end(*let*)//end-of-[f0_implmnt0(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

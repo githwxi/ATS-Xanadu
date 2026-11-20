@@ -156,26 +156,49 @@ case+ ilts of
 ( (*0*) ) =>
 (
 case+ ilt1 of
+//
 |I1LETnew0
 (   iins   ) =>
 (
 case+ iins of
+|I1INSlet0
+(dcls, icmp) =>
+(
+i1cmp_retq(icmp))
+|I1INSift0 _ =>
+(
+f0_iins$ift0(iins))
+|I1INScas0 _ =>
+(
+f0_iins$cas0(iins))
+|I1INSrturn _ => (true)
+|
+_(*otherwise*) => false)
+//
+|I1LETnew1
+(itnm, iins) =>
+(
+case+ iins of
+|I1INSlet0
+(dcls, icmp) =>
+(
+i1cmp_retq(icmp))
 //
 |I1INSift0 _ =>
 (
 f0_iins$ift0(iins))
-//
 |I1INScas0 _ =>
 (
 f0_iins$cas0(iins))
-//
 |I1INSrturn _ => (true)
 //
 |
 _(*otherwise*) => false)
-|I1LETnew1(_, _) => false)
+)
+//
 |list_cons
 (ilt2, ilts) => auxlp2(ilts, ilt2)
+//
 )
 //
 (* ****** ****** *)

@@ -657,7 +657,7 @@ envd3i0_ical$insert
 val fias =
 (
 f3arglst_trxd3i0(f3as, env0))
-val dexp =
+val iexp =
 (
   d3rex_trxd3i0( dexp, env0 ))
 //
@@ -694,7 +694,7 @@ i0dcl_make_node
 (
 loc0,
 I0Dimplmnt0(tknd,
-lvl0, stmp, dimp, fias, dexp, i0vs)))
+lvl0, stmp, dimp, fias, iexp, i0vs)))
 end//let
 //
 end where // end-of-[f0_implmnt0(d3cl,env0)]

@@ -1829,17 +1829,24 @@ envx2js_filr$get(env0)
 val nind =
 envx2js_nind$get(env0)
 //
+(*
+val () =
+prerrsln("\
+f0_i1cmpret: icmp = ", icmp)
+*)
+//  
 in//let
 //
 let
 //
-val retq =
-(
-  i1cmp_retq(icmp))
+val
+ival = icmp.ival()
+val
+retq = i1cmp_retq(icmp)
 //
-val ival = icmp.ival()
 val (  ) =
-i1cmp_js1emit(icmp, env0)
+(
+  i1cmp_js1emit(icmp, env0))
 //
 in//let
 //
@@ -1862,6 +1869,12 @@ f0_i1cmprtn
 , icmp: i1cmp): void =
 let
 //
+(*
+val () =
+prerrsln("\
+f0_i1cmprtn: icmp = ", icmp)
+*)
+//
 fun
 auxlp1
 ( env0:
@@ -1875,8 +1888,7 @@ case+ ilts of
 |list_cons
 (ilt1, ilts) =>
 (
-auxlp2(env0, ilts, ilt1))
-)
+  auxlp2(env0, ilts, ilt1)))
 //
 and
 auxlp2
@@ -1966,9 +1978,11 @@ auxlp4(filr, i0+1, i1vs, i1f0))
 {
 //
 #impltmp
-g_print$out<>() = filr
+g_print$out
+<>((*nil*)) = filr
 #impltmp
-g_print<i1val>(x) = i1valjs1(filr, x)
+g_print
+<i1val>(x0) = i1valjs1(filr, x0)
 //
 }
 //
