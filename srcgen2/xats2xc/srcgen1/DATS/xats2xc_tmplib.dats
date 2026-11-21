@@ -305,11 +305,10 @@ prints
 ("TEQI1CMPnone(", ")")
 |
 TEQI1CMPsome
-(tok0
-,ityp, iexp) =>
+(tok0, icmp) =>
 (
-print("TEQI1CMPsome(");
-prints(tok0, ";", ityp, ";", iexp, ")"))
+prints
+("TEQI1CMPsome(", tok0, ";", icmp, ")"))
 //
 endlet // end-of-[g_print<teqi1cmp>(tdxp)]
 //

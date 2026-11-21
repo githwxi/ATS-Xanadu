@@ -387,8 +387,11 @@ g_print$out<>() = out0
 in//let
 //
 case+ icmp of
-|I1CMPcons(ilts, ival) =>
-prints("I1CMPcons(", ilts, ";", ival, ")")
+|I1CMPcons
+(ilts, ityp, ival) =>
+(
+print("I1CMPcons(");
+prints(ilts, ";", ityp, ";", ival, ")"))
 //
 end(*let*)//end-of-[i1cmp_fprint(icmp,out0)]
 //

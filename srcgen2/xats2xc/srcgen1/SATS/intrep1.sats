@@ -146,25 +146,23 @@ I1LAB of (label,x0(*elt*))
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef l1i1v = i1lab(i1val)
-(* ****** ****** *)
-#typedef d2sub = (d2var,i1val)
-(* ****** ****** *)
-(* ****** ****** *)
 //
 datatype
 i1let =
-|I1LETnew0 of (i1ins)
-|I1LETnew1 of (i1tnm, i1ins)
+|I1LETnew0 of
+(   i1ins   )//no return
+|I1LETnew1 of
+(i1tnm, i1ins)//i1tnm:return
 //
 (* ****** ****** *)
 //
 and i1bnd =
-I1BNDcons of
-(i1tnm, i0pat, d2sublst)
+I1BNDcons of (
+  i1tnm, i0pat, d2sublst)
 //
 and i1cmp =
-I1CMPcons of (i1letlst, i1val)
+I1CMPcons of (
+  i1letlst, i0typ, i1val)
 //
 (* ****** ****** *)
 //
@@ -310,6 +308,10 @@ token(*$EXTNAM*), i1val, g1nam)
 where
 {
 //
+(* ****** ****** *)
+#typedef l1i1v = i1lab(i1val)
+(* ****** ****** *)
+#typedef d2sub = (d2var,i1val)
 (* ****** ****** *)
 //
 #typedef i1tnmlst = list(i1tnm)
@@ -487,11 +489,14 @@ fun
 i1cmp_lctn$get(i1cmp): ( loc_t )
 //
 fun
+i1cmp_ityp$get(i1cmp): ( i0typ )
+fun
 i1cmp_ival$get(i1cmp): ( i1val )
 fun
 i1cmp_ilts$get(i1cmp): (i1letlst)
 //
 #symload lctn with i1cmp_lctn$get
+#symload ityp with i1cmp_ityp$get
 #symload ival with i1cmp_ival$get
 #symload ilts with i1cmp_ilts$get
 //
@@ -608,7 +613,7 @@ TEQI1CMPnone of
 (   (*void*)   )
 |
 TEQI1CMPsome of
-(token(*EQ0*), i0typ(*res*), i1cmp)
+(token(*EQ0*), i1cmp)
 //
 (* ****** ****** *)
 (* ****** ****** *)

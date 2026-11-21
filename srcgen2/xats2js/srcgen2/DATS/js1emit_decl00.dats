@@ -552,8 +552,8 @@ I1Dimplmnt0
 , fjas, icmp) = dcl0.node()
 //
 fun
-implfunq
-( tknd: token): bool =
+funq
+(tknd: token): bool =
 (
 case+ iknd of
 |
@@ -628,7 +628,7 @@ envx2js_incnind(env0,2(*++*));
 fjarglst_js1emit(fjas, env0);f1_i1cmpret(env0, icmp));
 //
 if
-implfunq(tknd)
+funq(tknd)
 then // then
 (
 envx2js_decnind(env0,2(*--*));
@@ -649,7 +649,7 @@ else
 (
 nindstrnfpr(filr, nind, "} () // endfun(impl)");fprintln(filr))
 )
-else // if(implfunq(tknd))
+else // if(funq(tknd))
 (
 envx2js_decnind(env0,2(*--*));
 nindstrnfpr(filr, nind, "} () // endnfn(impl)");fprintln(filr))

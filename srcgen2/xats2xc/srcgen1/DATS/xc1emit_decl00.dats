@@ -205,11 +205,9 @@ dcl0.node() of
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 |I1Dimplmnt0 _ =>
 (
   f0_implmnt0(dcl0, env0))
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -528,6 +526,35 @@ end(*let*)//end-of-[f0_fundclst(dcl0,env0)]
 (* ****** ****** *)
 //
 fun
+f0_implmnt0
+(
+dcl0: i1dcl,
+env0: !envxcc1): void =
+let
+//
+val loc0 =
+dcl0.lctn((*void*))
+//
+val filr =
+envxcc1_filr$get(env0)
+val nind =
+envxcc1_nind$get(env0)
+//
+val-
+I1Dimplmnt0
+(tknd, stmp
+,dimp, fjas
+,icmp, i0vs) = dcl0.node()
+//
+in//let
+//
+//
+end(*let*)//end-of-[f0_implmnt0(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_otherwise
 (
 dcl0: i1dcl,
@@ -558,7 +585,6 @@ end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 #implfun
 i1valdcl_xc1emit
@@ -593,8 +619,7 @@ TEQI1CMPnone
 ( (*void*) ) => ( (*void*) )
 |
 TEQI1CMPsome
-(teq1
-,ityp, icmp) =>
+(teq1, icmp) =>
 let
 //
 val ityp =
@@ -732,13 +757,18 @@ nindfpr(filr, nind);
 strnfpr(filr, "// function\n"))
 |
 TEQI1CMPsome
-(teq1
-,ityp, icmp) =>
+(teq1, icmp) =>
+let
+val
+ityp = icmp.ityp()
+in//let
 (
 nindfpr(filr, nind);
 strnfpr(filr, "// function\n");
 nindfpr(filr, nind);
 i0typcc0(filr, ityp);endlnfpr(filr))
+end//let
+//
 end//let
 //
 (* ****** ****** *)
@@ -784,10 +814,10 @@ TEQI1CMPnone
 ( (*void*) ) => ((*void*))
 |
 TEQI1CMPsome
-(teq1
-,ityp, icmp) =>
+(teq1, icmp) =>
 let
 //
+val ityp = icmp.ityp()
 val ival = icmp.ival()
 //
 val (  ) =
@@ -994,13 +1024,18 @@ nindfpr(filr, nind);
 strnfpr(filr, "// function\n"))
 |
 TEQI1CMPsome
-(teq1
-,ityp, icmp) =>
+(teq1, icmp) =>
+let
+val
+ityp = icmp.ityp()
+in//let
 (
 nindfpr(filr, nind);
 strnfpr(filr, "// function\n");
 nindfpr(filr, nind);
 i0typcc0(filr, ityp);endlnfpr(filr))
+end//let
+//
 end//let
 //
 (* ****** ****** *)
@@ -1051,10 +1086,10 @@ TEQI1CMPnone
 ( (*void*) ) => ((*void*))
 |
 TEQI1CMPsome
-(teq1
-,ityp, icmp) =>
+(teq1, icmp) =>
 let
 //
+val ityp = icmp.ityp()
 val ival = icmp.ival()
 //
 val (  ) =

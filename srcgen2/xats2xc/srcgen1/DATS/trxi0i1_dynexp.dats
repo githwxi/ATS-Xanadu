@@ -74,6 +74,7 @@ _(*DATS*)="./../DATS/trxi0i1.dats"
 #symload node with i0pat_node$get
 (* ****** ****** *)
 #symload lctn with i0exp_lctn$get
+#symload ityp with i0exp_ityp$get
 #symload node with i0exp_node$get
 (* ****** ****** *)
 #symload lctn with fiarg_lctn$get
@@ -926,7 +927,8 @@ val
 ilts = envi0i1_poplet0(env0)
 //
 val
-icmp = I1CMPcons(ilts, iret)
+icmp =
+I1CMPcons(ilts, ityp, iret)
 //
 in//let
 //
@@ -1088,7 +1090,8 @@ val
 ilts = envi0i1_poplet0(env0)
 //
 val
-icmp = I1CMPcons(ilts, iret)
+icmp =
+I1CMPcons(ilts, ityp, iret)
 //
 in//let
 (
@@ -1307,13 +1310,15 @@ end(*let*)//end-of-[t0imp_trxi0i1(timp,env0)]
 i0blk_trxi0i1
 ( iexp, env0 ) =
 (
-I1CMPcons(ilts, ival)
-) where
+I1CMPcons
+(ilts, ityp, ival))
+where
 {
 val () =
 (
   envi0i1_pshblk0(env0))
 //
+val ityp = iexp.ityp((*0*))  
 val ival =
 (
   i0exp_trxi0i1(iexp, env0))

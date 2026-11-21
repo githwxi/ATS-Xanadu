@@ -423,7 +423,8 @@ in//let
 case+ icmp of
 |
 I1CMPcons
-(ilts, ival) =>
+(ilts
+,ityp, ival) =>
 (
 nindfpr(filr, nind);
 strnfpr
