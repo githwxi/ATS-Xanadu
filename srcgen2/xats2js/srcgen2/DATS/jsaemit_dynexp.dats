@@ -68,6 +68,11 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 fun
+endlfpr
+(out0: FILR): void =
+(
+ strn_fprint("\n",out0))//endfun
+fun
 fprintln
 (out0: FILR): void =
 (

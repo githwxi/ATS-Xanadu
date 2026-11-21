@@ -253,7 +253,7 @@ end//let
 //
 val (  ) =
 (
-  i1dcl_ccaemit( dcl1, env0 ))
+  i1dcl_xcaemit( dcl1, env0 ))
 //
 end(*let*)//end-of-[f0_extern(dcl0,env0)]
 //
@@ -289,7 +289,7 @@ end//let
 //
 val (  ) =
 (
-  i1dcl_ccaemit( dcl1, env0 ))
+  i1dcl_xcaemit( dcl1, env0 ))
 //
 end(*let*)//end-of-[f0_static(dcl0,env0)]
 //
@@ -434,11 +434,7 @@ if
 prvq
 then
 (
-(*
-(
-  i1valdclist_ccaemit(i1vs, env0))
-*)
-)
+  i1valdclist_xcaemit(i1vs, env0))
 else
 (
   i1valdclist_xc1emit(i1vs, env0))
@@ -507,7 +503,7 @@ if
 prfq
 then//then
 (
-  i1fundclist_ccaemit(i1fs, env0))
+  i1fundclist_xcaemit(i1fs, env0))
 else//else
 (
 case+ tqas of
@@ -546,8 +542,15 @@ I1Dimplmnt0
 ,dimp, fjas
 ,icmp, i0vs) = dcl0.node()
 //
+val ityp = icmp.ityp((*0*))
+//
 in//let
 //
+(
+nindfpr(filr, nind);
+strnfpr(filr, "// implement\n");
+nindfpr(filr, nind);
+i0typcc0(filr, ityp);endlnfpr(filr))
 //
 end(*let*)//end-of-[f0_implmnt0(dcl0,env0)]
 //
@@ -716,14 +719,14 @@ end//let//end-of-[f0_i1tnmcmp(...)]
 i1fundcl_xc1emit
   (ifun, env0) =
 (
-i1fundcl_ccaemit(ifun, env0))
+i1fundcl_xcaemit(ifun, env0))
 *)
 //
 #implfun
 i1tfndcl_xc1emit
   (ifun, env0) =
 (
-i1tfndcl_ccaemit(ifun, env0))
+i1tfndcl_xcaemit(ifun, env0))
 //
 (* ****** ****** *)
 //
@@ -974,7 +977,7 @@ if
 prfq
 then//then
 (
-  i1fundclist_ccaemit(i1fs, env0))
+  i1fundclist_xcaemit(i1fs, env0))
 else//else
 (
 case+ tqas of

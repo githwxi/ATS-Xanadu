@@ -62,8 +62,10 @@ trxi0i1_dynexp.dats \
 trxi0i1_decl00.dats \
 xats2xc.dats \
 xats2xc_myenv0.dats \
-xats2xc_tmplib.dats \
 xats2xc_utils0.dats \
+xats2xc_dynexp.dats \
+xats2xc_decl00.dats \
+xats2xc_tmplib.dats \
 xc0emit.dats \
 xc0emit_statyp.dats \
 xc0emit_dynexp.dats \

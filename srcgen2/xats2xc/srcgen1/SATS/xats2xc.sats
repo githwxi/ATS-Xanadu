@@ -167,126 +167,145 @@ fprint_lctn2_as_stamp
 (* ****** ****** *)
 //
 fun
-i1parsed_ccaemit
+<x0:t0>
+list_xcaemit_fnp
+(
+xs: list(x0),
+e1: !envx2cc,
+fopr: (x0, !envx2cc)->void): void
+//
+fun
+<x0:t0>
+optn_xcaemit_fnp
+( 
+xs: optn(x0),
+e1: !envx2cc,
+fopr: (x0, !envx2cc)->void): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1parsed_xcaemit
 (ipar: i1parsed, filr: FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1let_ccaemit
+i1let_xcaemit
 (ilet: i1let, env0: !envx2cc): void
 //
 fun
-i1bnd_ccaemit
+i1bnd_xcaemit
 (ibnd: i1bnd, env0: !envx2cc): void
 //
 fun
-i1cmp_ccaemit
+i1cmp_xcaemit
 (icmp: i1cmp, env0: !envx2cc): void
 //
 fun
-i1ins_ccaemit
+i1ins_xcaemit
 (iins: i1ins, env0: !envx2cc): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-fjarg_ccaemit
+fjarg_xcaemit
 (farg: fjarg, env0: !envx2cc): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1gpt_ccaemit
+i1gpt_xcaemit
 (igpt: i1gpt, env0: !envx2cc): void
 fun
-i1cls_ccaemit
+i1cls_xcaemit
 (icls: i1cls, env0: !envx2cc): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1dcl_ccaemit
+i1dcl_xcaemit
 (dcl0: i1dcl, env0: !envx2cc): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1letlst_ccaemit
+i1letlst_xcaemit
 (ilts: i1letlst, env0: !envx2cc): void
 //
 fun
-i1cmplst_ccaemit
+i1cmplst_xcaemit
 (cmps: i1cmplst, env0: !envx2cc): void
 //
 (* ****** ****** *)
 //
 fun
-fjarglst_ccaemit
+fjarglst_xcaemit
 (fjas: fjarglst, env0: !envx2cc): void
 //
 (* ****** ****** *)
 //
 fun
-i1clslst_ccaemit
+i1clslst_xcaemit
 (icls: i1clslst, env0: !envx2cc): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1dclist_ccaemit
+i1dclist_xcaemit
 (dcls: i1dclist, env0: !envx2cc): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1valdcl_ccaemit
+i1valdcl_xcaemit
 (ival: i1valdcl, env0: !envx2cc): void
 fun
-i1vardcl_ccaemit
+i1vardcl_xcaemit
 (ivar: i1vardcl, env0: !envx2cc): void
 //
 fun
-i1fundcl_ccaemit
+i1fundcl_xcaemit
 (ifun: i1fundcl, env0: !envx2cc): void
 fun
-i1tfndcl_ccaemit
+i1tfndcl_xcaemit
 (ifun: i1fundcl, env0: !envx2cc): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1prvdclist_ccaemit
+i1prvdclist_xcaemit
 (
 i1vs: i1valdclist, env0: !envx2cc): void
 fun
-i1valdclist_ccaemit
+i1valdclist_xcaemit
 (
 i1vs: i1valdclist, env0: !envx2cc): void
 //
 fun
-i1vardclist_ccaemit
+i1vardclist_xcaemit
 (
 i1vs: i1vardclist, env0: !envx2cc): void
 //
 fun
-i1prfdclist_ccaemit
+i1prfdclist_xcaemit
 (
 i1fs: i1fundclist, env0: !envx2cc): void
 fun
-i1fundclist_ccaemit
+i1fundclist_xcaemit
 (
 i1fs: i1fundclist, env0: !envx2cc): void
 fun
-i1tfndclist_ccaemit
+i1tfndclist_xcaemit
 (
 i1fs: i1fundclist, env0: !envx2cc): void
 //
@@ -294,7 +313,7 @@ i1fs: i1fundclist, env0: !envx2cc): void
 (* ****** ****** *)
 //
 fun
-i1dclistopt_ccaemit
+i1dclistopt_xcaemit
 (dopt: i1dclistopt, env0: !envx2cc): void
 //
 (* ****** ****** *)

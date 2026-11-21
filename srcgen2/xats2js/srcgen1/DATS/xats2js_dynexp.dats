@@ -123,12 +123,12 @@ envx2js_nind$get(env0)
 in//let
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-i1letfpr(env0, ilet); fprintln(filr)
+f0_i1let(env0, ilet); fprintln(filr)
 end where
 {
 //
 fun
-i1letfpr
+f0_i1let
 ( env0:
 ! envx2js
 , ilet: i1let): void =
@@ -160,7 +160,7 @@ prints("\
 I1LETnew1(", itnm, ";", "...", ")\n")
 }(*where*)
 //
-end//let//end-of-[ i1letfpr(env0,ilet) ]
+end//let//end-of-[ f0_i1let(env0,ilet) ]
 //
 }(*where*)//end-of-[jsaemit_i1let(env0,ilet)]
 //
@@ -239,7 +239,7 @@ envx2js_nind$get(env0)
 in//let
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-i1insfpr(env0, iins);//fprintln(filr)
+f0_i1ins(env0, iins);//fprintln(filr)
 end where
 {
 //
@@ -249,7 +249,7 @@ val nind =
 envx2js_nind$get(env0)
 //
 fun
-i1insfpr
+f0_i1ins
 ( env0:
 ! envx2js
 , iins: i1ins): void =
@@ -397,7 +397,7 @@ _(* otherwise *) =>
 (* ****** ****** *)
 (* ****** ****** *)
 //
-)(*case+*)//end-of-[i1insfpr(env0,iins)]
+)(*case+*)//end-of-[f0_i1ins(env0,iins)]
 //
 (* ****** ****** *)
 //
@@ -734,7 +734,7 @@ end//let//end-of-[f0_l1azy(env0,iins)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-}(*where*)//end-of-[i1insfpr(env0,iins)]
+}(*where*)//end-of-[f0_i1ins(env0,iins)]
 //
 }(*where*)//end-of-[jsaemit_i1ins(env0,iins)]
 //
@@ -762,12 +762,12 @@ in//let
 //
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-fjargfpr(env0, farg); fprintln(filr)
+f0_fjarg(env0, farg); fprintln(filr)
 //
 end where
 {
 fun
-fjargfpr
+f0_fjarg
 ( env0:
 ! envx2js
 , farg: fjarg): void =

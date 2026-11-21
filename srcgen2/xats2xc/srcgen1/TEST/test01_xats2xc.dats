@@ -61,6 +61,21 @@ if i < n then loop(i+1, (i+1)*r) else r
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern0
+fun
+factloop
+(n: nint, r: nint): nint
+#implfun
+factloop(n, r) =
+if n > 0 then factloop(n-1, n*r) else r
+////
+val () =
+prints("\
+factloop(10, 1) = ", factloop(10, 1), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3-XANADU/srcgen2/xats2xc/srcgen1/TEST/test01_xats2xc.dats] *)
 (***********************************************************************)
