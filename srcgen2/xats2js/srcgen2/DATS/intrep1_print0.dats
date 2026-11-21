@@ -724,12 +724,14 @@ prints(tqas, ";", d2cs, ";", i1fs,")"))
 |
 I1Dimplmnt0
 (tknd
-,lvl0
-,stmp, dimp
-,farg, body) =>
-( print("I1Dimplmnt0(")
-; prints(tknd, ";", lvl0, ";", stmp, ";")
-; prints(dimp, ";", farg, ";", body, ")"))
+,lvl0, stmp
+,dimp, farg
+,icmp, i0vs) =>
+(
+print("I1Dimplmnt0(");
+prints(tknd, ";", lvl0, ";", stmp, ";");
+prints(
+  dimp, ";", farg, ";", icmp, ";", i0vs, ")"))
 //
 (* ****** ****** *)
 //

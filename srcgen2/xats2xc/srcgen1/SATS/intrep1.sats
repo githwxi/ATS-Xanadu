@@ -674,7 +674,9 @@ I1Dfundclst of
 (* ****** ****** *)
 //
 |I1Dimplmnt0 of
-( token(*kind*)
+( token
+(*IMP(knd)*)
+, sint(*lvl0*)
 , stamp(*unicity*)
 , dimpl, fjarglst, i1cmp, i0varlst)
 //

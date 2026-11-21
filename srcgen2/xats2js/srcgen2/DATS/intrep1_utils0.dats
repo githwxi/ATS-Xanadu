@@ -315,9 +315,10 @@ I1Dfundclst
 //
 |
 I1Dimplmnt0
-(tknd, lvl0
-,stmp, dimp
-,fjas, icmp) => optn_nil((*0*))
+(tknd
+,lvl0, stmp
+,dimp, fjas
+,icmp, i0vs) => optn_nil((*0*))
 (*
 case+ fjas of
 |list_nil() => optn_cons(icmp)

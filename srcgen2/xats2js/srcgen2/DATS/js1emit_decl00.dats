@@ -547,9 +547,10 @@ val loc0 = dcl0.lctn()
 //
 val-
 I1Dimplmnt0
-( tknd, lvl0
-, stmp, dimp
-, fjas, icmp) = dcl0.node()
+(tknd
+,lvl0, stmp
+,dimp, fjas
+,icmp, i0vs) = dcl0.node()
 //
 fun
 funq

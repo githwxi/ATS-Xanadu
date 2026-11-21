@@ -542,6 +542,20 @@ prints(tqas, ";", d2cs, ";", i1fs,")"))
 //
 (* ****** ****** *)
 //
+|
+I1Dimplmnt0
+(tknd
+,lvl0, stmp
+,dimp, farg
+,icmp, i0vs) =>
+(
+print("I1Dimplmnt0(");
+prints(tknd, ";", lvl0, ";", stmp, ";");
+prints(
+  dimp, ";", farg, ";", icmp, ";", i0vs, ")"))
+//
+(* ****** ****** *)
+//
 |I1Dnone0() => prints( "I1Dnone0(",")" )
 |I1Dnone1(dcl1) => prints("I1Dnone1(", dcl1, ")")
 //

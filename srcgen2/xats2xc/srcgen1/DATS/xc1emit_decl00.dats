@@ -538,7 +538,8 @@ envxcc1_nind$get(env0)
 //
 val-
 I1Dimplmnt0
-(tknd, stmp
+(tknd
+,lvl0, stmp
 ,dimp, fjas
 ,icmp, i0vs) = dcl0.node()
 //

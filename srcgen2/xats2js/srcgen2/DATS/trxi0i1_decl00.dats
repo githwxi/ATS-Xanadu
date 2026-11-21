@@ -574,7 +574,8 @@ val fjas =
 fiarglst_trxi0i1(fias, env0)
 //
 val iret =
-i0exp_trxi0i1(iexp, env0)
+(
+  i0exp_trxi0i1(iexp, env0))
 val ilts =
 (
   envi0i1_poplam0(  env0  ))
@@ -584,8 +585,8 @@ in//let
 i1dcl_make_node
 (
 loc0,
-I1Dimplmnt0(
-  tknd, lvl0, stmp, dimp, fjas, icmp))
+I1Dimplmnt0(tknd,
+  lvl0, stmp, dimp, fjas, icmp, i0vs))
 end where
 {
 //
@@ -812,6 +813,8 @@ _(*otherwise*) =>
 ) where
 {
 //
+(* ****** ****** *)
+//
 fun
 f0_fundclst
 (
@@ -826,7 +829,8 @@ loc0 = idcl.lctn((*void*))
 val-
 I0Dfundclst
 (tknd
-,lvl0, tqas
+,lvl0
+,tqas
 ,d2cs, i0fs) = idcl.node()
 //
 val () =
@@ -886,6 +890,8 @@ prerrsln("f0_fundclst(i0i1): idcl = ", idcl)
 *)
 //
 }(*where*)//end-of-[f0_fundclst(idcl,i0ws,env0)]
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[i0dclenv_trxi0i1(idcl,i0ws,env0)]
 //

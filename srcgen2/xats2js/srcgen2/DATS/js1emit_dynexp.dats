@@ -964,13 +964,16 @@ I1Dfundclst(", d2cs, ")"))//funs
 I1Dimplmnt0
 (tknd
 ,lvl0, stmp
-,dimp, fjas, icmp) =>
+,dimp, fjas
+,icmp, i0vs) =>
 (
 prints("\
 I1Dimplmnt0(", dimp, ")"))//impl
 //
-|
-_(* else *) => print("...I1DCL...")
+(* ****** ****** *)
+|_(* else *) => print("...I1DCL...")
+(* ****** ****** *)
+//
 )
 //
 }(*where*)//end-of-[g_print<i1dcl>()]
@@ -1782,9 +1785,10 @@ nindstrnfpr
 end//let
 //
 |I1Dimplmnt0
-( tknd, lvl0
-, stmp, dimp
-, fjas, icmp) =>
+(tknd
+,lvl0, stmp
+,dimp, fjas
+,icmp, i0vs) =>
 (
 strnfpr
 (filr,"function ");fjas1js1(filr, fjas);

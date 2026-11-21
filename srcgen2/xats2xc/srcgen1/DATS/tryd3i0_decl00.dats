@@ -650,7 +650,7 @@ I0Dimplmnt0
 val i0ws =
 (
 if // if
-(lvl0 = 0)
+(lvl0 <= 0)
 then list_nil()
 else (
 lvl0$i0vs_tryd3i0

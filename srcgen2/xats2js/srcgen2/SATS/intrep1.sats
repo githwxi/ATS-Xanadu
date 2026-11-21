@@ -816,8 +816,11 @@ I1Dfundclst of
 (* ****** ****** *)
 //
 |I1Dimplmnt0 of
-(token(*knd*), sint(*lvl0*)
-,stamp, dimpl, fjarglst, i1cmp(*body*))
+( token
+(*IMP(knd)*)
+, sint(*lvl0*)
+, stamp(*unicity*)
+, dimpl, fjarglst, i1cmp, i0varlst)
 //
 (* ****** ****** *)
 //

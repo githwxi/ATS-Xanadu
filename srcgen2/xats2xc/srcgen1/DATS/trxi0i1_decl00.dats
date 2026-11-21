@@ -56,6 +56,13 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../../../SATS/xbasics.sats"
+#staload
+"./../../../SATS/lexing0.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
 //
@@ -73,6 +80,15 @@ case+
 dcl0.node() of
 //
 (* ****** ****** *)
+//
+|I0Dd2ecl _ =>
+let
+val
+loc0 = dcl0.lctn()
+in//let
+i1dcl_make_node
+(loc0, I1Di0dcl(dcl0))
+end//let//end(I0Dd2ecl)
 //
 |I0Dd3ecl _ =>
 let
@@ -136,6 +152,18 @@ end//let//end(I0Dd3ecl)
 |I0Dvardclst _ =>
 (
   f0_vardclst(dcl0, env0))
+//
+(* ****** ****** *)
+//
+|I0Dfundclst _ =>
+(
+  f0_fundclst(dcl0, env0))
+//
+(* ****** ****** *)
+//
+|I0Dimplmnt0 _ =>
+(
+  f0_implmnt0(dcl0, env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -452,6 +480,153 @@ val (  ) =
 }(*where*)//end-of-[f0_vardclst(dcl0,env0)]
 //
 (* ****** ****** *)
+//
+fun
+f0_fundclst
+(
+dcl0: i0dcl,
+env0: !envi0i1): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*void*))
+//
+val-
+I0Dfundclst
+(tknd
+,lvl0, tqas
+,d2cs, i0fs) = dcl0.node()
+//
+val recq =
+(
+case+
+tknd.node() of
+| T_FUN(fnk) =>
+(
+  funkind_recq(fnk) )
+| _(*else*) => false): bool
+//
+val (  ) =
+if // if
+recq then f1_dfxsins(i0fs, env0)
+//
+val
+i1fs =
+(
+  i0fundclist_trxi0i1(i0fs, env0))
+//
+val (  ) =
+if // if
+~(recq) then f1_dfxsins(i0fs, env0)
+//
+in//let
+//
+i1dcl_make_node
+(
+loc0,
+I1Dfundclst(
+  tknd(*fnk*),lvl0,tqas,d2cs,i1fs))
+//
+end where
+{
+//
+fun
+f1_dfxsins
+(
+i0fs:
+i0fundclist,
+env0: !envi0i1): void =
+(
+case+ i0fs of
+|
+list_nil() => ((*0*))
+|
+list_cons(i0f1, i0fs) =>
+(
+  f1_dfxsins(i0fs, env0)
+) where
+{
+val d2v1 =
+(
+  i0fundcl_dpid$get(i0f1))
+val (  ) =
+(
+  envi0i1_dfix$insert(env0, d2v1))
+}(*where*)//end-of-[list_cons(i0f1,i0fs)]
+)
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrsln("f0_fundclst(i0i1): dcl0 = ", dcl0)
+*)
+//
+}(*where*) // end of [f0_fundclst(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+(
+dcl0: i0dcl,
+env0: !envi0i1): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*void*))
+//
+val-
+I0Dimplmnt0
+(tknd
+,lvl0
+,stmp
+,dimp, fias
+,iexp, i0vs) = dcl0.node()
+//
+val (  ) =
+(
+  envi0i1_pshlam0(env0))
+//
+val fjas =
+fiarglst_trxi0i1(fias, env0)
+//
+val ityp =
+(
+  i0exp_ityp$get(iexp))
+val iret =
+(
+  i0exp_trxi0i1(iexp, env0))
+//
+val ilts =
+(
+  envi0i1_poplam0(  env0  ))
+val icmp =
+(
+  I1CMPcons(ilts, ityp, iret))
+//
+in//let
+i1dcl_make_node
+(
+loc0,
+I1Dimplmnt0(tknd,
+  lvl0, stmp, dimp, fjas, icmp, i0vs))
+end where
+{
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrsln("f0_implmnt0(i0i1): dcl0 = ", dcl0)
+*)
+//
+}(*where*) // end of [f0_implmnt0(dcl0,env0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val loc0 = dcl0.lctn((*0*))
@@ -660,17 +835,34 @@ idcl, i0ws, env0) =
 case+
 idcl.node() of
 //
+(* ****** ****** *)
+//
 |I0Dfundclst _ =>
 (
   f0_fundclst
   (idcl, i0ws, env0))
 //
+(*
+HX-2026-11-21:
+No envs for implements!
+|I0Dimplmnt0 _ =>
+(
+  f0_implmnt0
+  (idcl, i0ws, env0))
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 |
 _(*otherwise*) =>
 (
   i0dcl_trxi0i1(idcl, env0))
+(* ****** ****** *)
+(* ****** ****** *)
 ) where
 {
+//
+(* ****** ****** *)
 //
 fun
 f0_fundclst
@@ -686,7 +878,8 @@ loc0 = idcl.lctn((*void*))
 val-
 I0Dfundclst
 (tknd
-,lvl0, tqas
+,lvl0
+,tqas
 ,d2cs, i0fs) = idcl.node()
 //
 val () =
@@ -738,14 +931,14 @@ val (  ) =
 )
 //
 (*
-//
 val loc0 = idcl.lctn((*void*))
-//
 val (  ) =
 prerrsln("f0_fundclst(i0i1): idcl = ", idcl)
 *)
 //
 }(*where*)//end-of-[f0_fundclst(idcl,i0ws,env0)]
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[i0dclenv_trxi0i1(idcl,i0ws,env0)]
 //
