@@ -710,7 +710,7 @@ end//let
 //
 end//let//end-of-[f0_i1tnmcmp(...)]
 //
-}(*where*)//end-of-[i1valdcl_xc1emit(env0,dcl0)]
+}(*where*)//end-of-[i1valdcl_xc1emit(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

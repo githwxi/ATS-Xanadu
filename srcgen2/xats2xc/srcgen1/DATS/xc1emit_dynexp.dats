@@ -483,9 +483,9 @@ prerrsln
 //
 fun
 f0_i1cmpret
-( env0:
-! envxcc1
-, icmp: i1cmp): void =
+(
+icmp: i1cmp,
+env0: !envxcc1): void =
 let
 //
 val filr =
@@ -519,9 +519,9 @@ end(*let*)//end-of-[f0_i1cmpret(...)]
 //
 and
 f0_i1cmprtn
-( env0:
-! envxcc1
-, icmp: i1cmp): void =
+(
+icmp: i1cmp,
+env0: !envxcc1): void =
 let
 //
 fun
@@ -649,10 +649,10 @@ is assumed to have been introduced
 *)
 fun
 f0_i1tnmcmp
-( env0:
-! envxcc1
-, itnm: i1tnm
-, icmp: i1cmp): void =
+(
+itnm: i1tnm,
+icmp: i1cmp,
+env0: !envxcc1): void =
 let
 //
 val filr =
@@ -695,9 +695,8 @@ I1INSrturn
 (ical, icmp) =>
 (
 if // if
-i1cmp_tailq
-(icmp, ical) then
-f0_i1cmprtn(env0, icmp) else f0_i1cmpret(env0, icmp))
+i1cmp_tailq(icmp, ical) then
+f0_i1cmprtn(icmp, env0) else f0_i1cmpret(icmp, env0))
 //
 |
 _(*otherwise*) =>
@@ -758,7 +757,7 @@ val () =
 i1dclist_xc1emit(dcls, env0))
 val () =
 (
-f0_i1tnmcmp(env0, itnm, icmp))
+f0_i1tnmcmp(itnm, icmp, env0))
 val () =
 (
  envxcc1_decnind(env0,2(*--*)))
@@ -798,7 +797,7 @@ case+ ithn of
 |optn_nil() => ()
 |optn_cons(icmp) =>
 (envxcc1_incnind(env0,2(*++*))
-;f0_i1tnmcmp( env0,itnm,icmp )
+;f0_i1tnmcmp(itnm, icmp, env0)
 ;envxcc1_decnind(env0,2(*--*))))//then
 //
 val () =
@@ -809,7 +808,7 @@ case+ iels of
 |optn_nil() => ()
 |optn_cons(icmp) =>
 (envxcc1_incnind(env0,2(*++*))
-;f0_i1tnmcmp( env0,itnm,icmp )
+;f0_i1tnmcmp(itnm, icmp, env0)
 ;envxcc1_decnind(env0,2(*--*))))//else
 //
 val () =
