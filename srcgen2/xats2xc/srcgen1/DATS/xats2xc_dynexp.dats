@@ -76,7 +76,7 @@ _(*DATS*)="./../DATS/xats2xc.dats"
 (* ****** ****** *)
 //
 fun
-endlfpr
+endlnfpr
 (out0: FILR): void =
 (
  strn_fprint("\n",out0))//endfun
@@ -126,7 +126,7 @@ envx2cc_nind$get(env0)
 in//let
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-f0_i1let(ilet, env0); endlfpr(filr)
+f0_i1let(ilet, env0);endlnfpr(filr)
 end where
 {
 //
@@ -184,7 +184,7 @@ in//let
 (
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-i1bndfpr(filr, ibnd); endlfpr(filr))
+i1bndfpr(filr, ibnd);endlnfpr(filr))
 end(*let*)//end-of-[i1bnd_xcaemit(ibnd,env0)]
 //
 (* ****** ****** *)
@@ -243,14 +243,24 @@ envx2cc_nind$get(env0)
 in//let
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-f0_i1ins(iins, env0);//endlfpr(filr)
+(*
+HX-2026-11-22:
+[i1let_xcaemit] calls [endlnfpr]
+*)
+f0_i1ins(iins, env0);//endlnfpr(filr)
 end where
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 val filr =
 envx2cc_filr$get(env0)
 val nind =
 envx2cc_nind$get(env0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_i1ins
@@ -275,9 +285,10 @@ f0_dapp(iins, env0))
 //
 f0_let0(iins, env0);
 //
+(
 nindfpr
 (filr, nind); strnfpr
-(filr, "// I1INSlet0-end");
+(filr, "// I1INSlet0-end"))
 )
 //
 (* ****** ****** *)
@@ -288,9 +299,10 @@ nindfpr
 //
 f0_ift0(iins, env0);
 //
+(
 nindfpr
 (filr, nind); strnfpr
-(filr, "// I1INSift0-end");
+(filr, "// I1INSift0-end"))
 )
 //
 (* ****** ****** *)
@@ -416,6 +428,9 @@ end//let//end-of-[f0_ift0(iins,env0)]
 //
 }(*where*)//end-of-[f0_i1ins(iins,env0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
 }(*where*)//end-of-[i1ins_xcaemit(iins,env0)]
 //
 (* ****** ****** *)
@@ -442,10 +457,13 @@ in//let
 //
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-f0_fjarg(farg, env0); endlfpr(filr)
+f0_fjarg(farg, env0);endlnfpr(filr)
 //
 end where
 {
+//
+(* ****** ****** *)
+//
 fun
 f0_fjarg
 (
@@ -464,13 +482,18 @@ g_print
 ( ibnd ) = i1bndfpr(filr, ibnd)
 //
 in//let
+//
 case+
 farg.node() of
 |
 FJARGdarg(i1bs) =>
 (
   prints("FJARGdarg(", i1bs, ")"))
-end//let
+//
+end(*let*)//end-of-[f0_fjarg(farg,env0)]
+//
+(* ****** ****** *)
+//  
 }(*where*)//end-of-[fjarg_xcaemit(farg,env0)]
 //
 (* ****** ****** *)

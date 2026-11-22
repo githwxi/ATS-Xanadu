@@ -322,6 +322,8 @@ fun
 jsaemit_i1vardcl
 (env0: !envx2js, ivar: i1vardcl): void
 //
+(* ****** ****** *)
+//
 fun
 jsaemit_i1prfdcl
 (env0: !envx2js, ifun: i1fundcl): void

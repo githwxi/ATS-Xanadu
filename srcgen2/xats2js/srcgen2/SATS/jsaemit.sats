@@ -272,15 +272,25 @@ i1dclist_jsaemit
 (* ****** ****** *)
 //
 fun
+i1prvdcl_jsaemit
+(ival: i1valdcl, env0: !envx2js): void
+fun
 i1valdcl_jsaemit
 (ival: i1valdcl, env0: !envx2js): void
+//
 fun
 i1vardcl_jsaemit
 (ivar: i1vardcl, env0: !envx2js): void
 //
+(* ****** ****** *)
+//
+fun
+i1prfdcl_jsaemit
+(ifun: i1fundcl, env0: !envx2js): void
 fun
 i1fundcl_jsaemit
 (ifun: i1fundcl, env0: !envx2js): void
+//
 fun
 i1tfndcl_jsaemit
 (ifun: i1fundcl, env0: !envx2js): void

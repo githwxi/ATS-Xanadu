@@ -160,20 +160,25 @@ i1vardclist_jsaemit
   list_jsaemit_fnp(i1vs, env0, i1vardcl_jsaemit))
 //
 (* ****** ****** *)
-//
-#implfun
-i1fundclist_jsaemit
-  (i1vs, env0) =
-(
-  list_jsaemit_fnp(i1vs, env0, i1fundcl_jsaemit))
-//
 (* ****** ****** *)
 //
 #implfun
-i1tfndclist_jsaemit
-  (i1vs, env0) =
+i1prfdclist_jsaemit
+  (i1fs, env0) =
 (
-  list_jsaemit_fnp(i1vs, env0, i1tfndcl_jsaemit))
+  list_jsaemit_fnp(i1fs, env0, i1prfdcl_jsaemit))
+//
+#implfun
+i1fundclist_jsaemit
+  (i1fs, env0) =
+(
+  list_jsaemit_fnp(i1fs, env0, i1fundcl_jsaemit))
+//
+#implfun
+i1tfndclist_jsaemit
+  (i1fs, env0) =
+(
+  list_jsaemit_fnp(i1fs, env0, i1tfndcl_jsaemit))
 //
 (* ****** ****** *)
 (* ****** ****** *)

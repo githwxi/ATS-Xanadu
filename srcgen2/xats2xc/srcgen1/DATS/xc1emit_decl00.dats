@@ -460,8 +460,8 @@ val loc0 =
 //
 val-
 I1Dfundclst
-(tknd
-,lvl0, tqas
+(lvl0
+,tknd, tqas
 ,d2cs, i1fs) = dcl0.node()
 //
 val prfq =
@@ -538,8 +538,8 @@ envxcc1_nind$get(env0)
 //
 val-
 I1Dimplmnt0
-(tknd
-,lvl0, stmp
+(lvl0
+,tknd, stmp
 ,dimp, fjas
 ,icmp, i0vs) = dcl0.node()
 //
@@ -783,6 +783,7 @@ val filr = env0.filr()
 val nind = env0.nind()
 in//let
 (
+nindfpr(filr, nind);
 d2varfpr(filr, dvar);endlnfpr(filr);
 fjas1cc1(filr, nind, fjas);endlnfpr(filr))
 end//let
@@ -935,8 +936,8 @@ val loc0 =
 //
 val-
 I1Dfundclst
-(tknd
-,lvl0, tqas
+(lvl0
+,tknd, tqas
 ,d2cs, i1fs) = dcl0.node()
 //
 val prfq =

@@ -1136,14 +1136,15 @@ I0Dinclude of
 (* ****** ****** *)
 //
 |I0Dfundclst of
-(token
-(*FUN(fnk)*), sint(*lvl0*)
+(sint(*lvl0*)
+,token(*FUN(fnk)*)
 ,t2qaglst, d2cstlst, i0fundclist)
 //
 (* ****** ****** *)
 //
 |I0Dimplmnt0 of
-(token(*knd*), sint(*lvl0*)
+(sint(*lvl0*)
+,token(*knd*)
 ,stamp, dimpl, fiarglst, i0exp, i0varlst)
 //
 (* ****** ****** *)

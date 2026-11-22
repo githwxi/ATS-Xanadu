@@ -2575,7 +2575,14 @@ D1Eid0(tok) =>
 case+
 tok.node() of
 |
-T_IDENT_dlr(x) => (x = "$lazy")
+T_IDENT_dlr(x) =>
+(
+if // if
+(x = "$lazy")
+then true else
+(
+if (x = "$flazy")
+then true else false))
 |
 _(* non-T_IDENT_dlr *) => (false)
 )

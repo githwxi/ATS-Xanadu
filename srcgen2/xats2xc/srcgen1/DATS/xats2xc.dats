@@ -166,20 +166,29 @@ i1vardclist_xcaemit
   list_xcaemit_fnp(i1vs, env0, i1vardcl_xcaemit))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1prfdclist_xcaemit
+  (i1fs, env0) =
+(
+  list_xcaemit_fnp(i1fs, env0, i1prfdcl_xcaemit))
+//
+(* ****** ****** *)
 //
 #implfun
 i1fundclist_xcaemit
-  (i1vs, env0) =
+  (i1fs, env0) =
 (
-  list_xcaemit_fnp(i1vs, env0, i1fundcl_xcaemit))
+  list_xcaemit_fnp(i1fs, env0, i1fundcl_xcaemit))
 //
 (* ****** ****** *)
 //
 #implfun
 i1tfndclist_xcaemit
-  (i1vs, env0) =
+  (i1fs, env0) =
 (
-  list_xcaemit_fnp(i1vs, env0, i1tfndcl_xcaemit))
+  list_xcaemit_fnp(i1fs, env0, i1tfndcl_xcaemit))
 //
 (* ****** ****** *)
 (* ****** ****** *)

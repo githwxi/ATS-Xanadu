@@ -1076,8 +1076,8 @@ prints
 (* ****** ****** *)
 //
 |I0Dfundclst
-( tknd
-, lvl0, tqas
+( lvl0
+, tknd, tqas
 , d2cs, i0fs) =>
 (
 print("I0Dfundclst(");
@@ -1088,8 +1088,8 @@ prints(tqas, ";", d2cs, ";", i0fs, ")"))
 (* ****** ****** *)
 //
 |I0Dimplmnt0
-( tknd
-, lvl0, stmp
+( lvl0
+, tknd, stmp
 , dimp, fias
 , iexp, i0vs) =>
 ( prints

@@ -160,6 +160,7 @@ HX-2022-10-01: Various symbols
 (* ****** ****** *)
 //
 #implval DLAZY_symbl = symbl("$lazy")
+#implval DFLAZY_symbl = symbl("$flazy")
 #implval DLLAZY_symbl = symbl("$llazy")
 #implval DELAZY_symbl = symbl("$elazy")
 //

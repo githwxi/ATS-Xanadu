@@ -61,10 +61,15 @@ XATSOPT "./../../.."
 #staload
 "./../../../SATS/xsymbol.sats"
 //
-#staload
-"./../../../SATS/lexing0.sats"
+(* ****** ****** *)
 //
-#staload
+#staload // LOC =
+"./../../../SATS/locinfo.sats"
+#staload // FIL =
+"./../../../SATS/filpath.sats"
+#staload // LEX =
+"./../../../SATS/lexing0.sats"
+#staload // D2E =
 "./../../../SATS/dynexp2.sats"
 //
 (* ****** ****** *)
@@ -113,7 +118,7 @@ case-
 tok.node() of
 |T_VAL
 ( vlk ) => valkind_prvq(vlk))
-(*case-*)//end(valtok_prvq(tok))
+(*case-*)//endof(valtok_prvq(tok))
 //
 fun
 funtok_prfq
@@ -124,7 +129,7 @@ case-
 tok.node() of
 |T_FUN
 ( fnk ) => funkind_prfq(fnk))
-(*case-*)//end(funtok_prfq(tok))
+(*case-*)//endof(funtok_prfq(tok))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -161,6 +166,8 @@ dcl0.node() of
 |I1Dvardclst _ =>
 (
   f0_vardclst(dcl0, env0))
+//
+(* ****** ****** *)
 //
 |I1Dfundclst _ =>
 (
@@ -313,8 +320,8 @@ let
 //
 val-
 I1Dfundclst
-( tknd
-, lvl0
+( lvl0
+, tknd
 , tqas
 , d2cs, i1fs) = dcl0.node()
 //
@@ -345,13 +352,33 @@ prerrsln("\
 f0_fundclst(jsaemit): dcl0 = ", dcl0)
 *)
 //
-}(*where*) // end of [f0_fundclst(dcl0,env0)]
+}(*where*)//end-of-[f0_fundclst(dcl0,env0)]
 //
 (* ****** ****** *)
 //
 }(*where*)//end-of-[i1dcl_jsaemit(dcl0,env0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1prfdcl_jsaemit
+  (iprf, env0) = let
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+val dvar =
+i1fundcl_dpid$get(iprf)
+//
+in//let
+nindstrnfpr
+(filr, nind, "// I1PRFDCL: ");
+d2var_fprint(dvar, filr); fprintln(filr)
+end(*let*)//end-of-[i1prfdcl_jsaemit(iprf,env0)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -437,8 +464,8 @@ i1fundcl_dpid$get(ifun)
 //
 in//let
 nindfpr(filr, nind);
-strnfpr
-(filr, "// I1FUNDCL: ");
+strnfpr(
+filr, "// I1FUNDCL: ");
 d2var_fprint(dvar, filr); fprintln(filr)
 end//let
 //
@@ -460,8 +487,8 @@ i1fundcl_dpid$get(itfn)
 //
 in//let
 nindfpr(filr, nind);
-strnfpr
-(filr, "// I1TFNDCL: ");
+strnfpr(
+filr, "// I1TFNDCL: ");
 d2var_fprint(dvar, filr); fprintln(filr)
 end(*let*)//end-of-[i1tfndcl_jsaemit(itfn,env0)]
 //

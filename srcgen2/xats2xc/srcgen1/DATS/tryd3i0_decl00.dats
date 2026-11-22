@@ -454,7 +454,11 @@ val (  ) =
 f1_i0fs$i0ws(i0fs, i0ws)//val.
 //
 in//let
+//
 (
+if // if
+(lvl0 <= 0)
+then idcl else
 i0dcl(
 loc0, I0Ddclenv(idcl, i0ws)))
 where{
@@ -659,6 +663,9 @@ lvl0$i0vs_tryd3i0
 in//let
 //
 (
+if // if
+(lvl0 <= 0)
+then idcl else
 i0dcl(
 loc0, I0Ddclenv(idcl, i0ws)))
 where{

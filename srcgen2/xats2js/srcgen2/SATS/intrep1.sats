@@ -809,18 +809,17 @@ I1Dvardclst of
 //
 |
 I1Dfundclst of
-( token
-(*FUN(fnk)*), sint(*lvl0*)
-, t2qaglst, d2cstlst, i1fundclist)
+(sint(*lvl0*)
+,token(*FUNknd*)
+,t2qaglst, d2cstlst, i1fundclist)
 //
 (* ****** ****** *)
 //
 |I1Dimplmnt0 of
-( token
-(*IMP(knd)*)
-, sint(*lvl0*)
-, stamp(*unicity*)
-, dimpl, fjarglst, i1cmp, i0varlst)
+(sint(*lvl0*)
+,token(*IMPknd*)
+,stamp(*unicity*)
+,dimpl, fjarglst, i1cmp, i0varlst)
 //
 (* ****** ****** *)
 //

@@ -49,10 +49,19 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../../../SATS/xbasics.sats"
+#staload
+"./../../../SATS/xsymbol.sats"
+//
+(* ****** ****** *)
+//
 #staload // LOC =
 "./../../../SATS/locinfo.sats"
 #staload // FIL =
 "./../../../SATS/filpath.sats"
+#staload // LEX =
+"./../../../SATS/lexing0.sats"
 #staload // D2E =
 "./../../../SATS/dynexp2.sats"
 //
@@ -79,7 +88,7 @@ _(*DATS*)="./../DATS/xats2xc.dats"
 (* ****** ****** *)
 //
 fun
-endlfpr
+endlnfpr
 (out0: FILR): void =
 (
  strn_fprint("\n",out0))//endfun
@@ -102,6 +111,31 @@ g_print$out
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+valtok_prvq
+( tok
+: token): bool =
+(
+case-
+tok.node() of
+|T_VAL
+( vlk ) => valkind_prvq(vlk))
+(*case-*)//endof(valtok_prvq(tok))
+//
+fun
+funtok_prfq
+( tok
+: token): bool =
+(
+case-
+tok.node() of
+|T_FUN
+( fnk ) => funkind_prfq(fnk))
+(*case-*)//endof(funtok_prfq(tok))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 i1dcl_xcaemit
 (dcl0, env0) =
@@ -120,6 +154,13 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
+|I1Dfundclst _ =>
+(
+  f0_fundclst(dcl0, env0))
+//
+//
+(* ****** ****** *)
+//
 |
 _(* otherwise *) =>
 let
@@ -130,7 +171,7 @@ envx2cc_nind$get(env0)
 in//let
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-i1dcl_fprint(dcl0, filr); endlfpr(filr)
+i1dcl_fprint(dcl0, filr);endlnfpr(filr)
 end//let
 //
 (* ****** ****** *)
@@ -153,13 +194,197 @@ envx2cc_nind$get(env0)
 in//let
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-loctn_fprint(loc0, filr); endlfpr(filr)
+loctn_fprint(loc0, filr);endlnfpr(filr)
 end//let
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+f0_fundclst
+(
+dcl0: i1dcl,
+env0: !envx2cc): void =
+let
+//
+val-
+I1Dfundclst
+( lvl0
+, tknd
+, tqas
+, d2cs, i1fs) = dcl0.node()
+//
+val (  ) =
+if // if
+funtok_prfq(tknd)
+then//then
+i1prfdclist_xcaemit(i1fs, env0)
+else//else
+(
+case+ tqas of
+|
+list_nil() =>
+i1fundclist_xcaemit(i1fs, env0)
+|
+list_cons _ =>
+i1tfndclist_xcaemit(i1fs, env0))
+//
+end where // end-of-[let]
+{
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrsln("\
+f0_fundclst(xcaemit): dcl0 = ", dcl0)
+*)
+//
+}(*where*)//end-of-[f0_fundclst(dcl0,env0)]
+//
+(* ****** ****** *)
+//
 }(*where*)//end-of-[i1dcl_xcaemit(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1prfdcl_xcaemit
+  (iprf, env0) = let
+//
+val filr =
+envx2cc_filr$get(env0)
+val nind =
+envx2cc_nind$get(env0)
+//
+val dvar =
+i1fundcl_dpid$get(iprf)
+//
+in//let
+nindstrnfpr
+(filr, nind, "// I1PRFDCL: ");
+d2var_fprint(dvar, filr); fprintln(filr)
+end(*let*)//end-of-[i1prfdcl_xcaemit(iprf,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1fundcl_xcaemit
+  (ifun, env0) = let
+//
+(* ****** ****** *)
+//
+val dvar =
+i1fundcl_dpid$get(ifun)
+val fjas =
+i1fundcl_farg$get(ifun)
+val tdxp =
+i1fundcl_tdxp$get(ifun)
+//
+(* ****** ****** *)
+//
+(*
+val (  ) = prerrsln
+("i1fundcl_xcaemit: dvar = ", dvar)
+val (  ) = prerrsln
+("i1fundcl_xcaemit: fjas = ", fjas)
+val (  ) = prerrsln
+("i1fundcl_xcaemit: tdxp = ", tdxp)
+*)
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr =
+envx2cc_filr$get(env0)
+val nind =
+envx2cc_nind$get(env0)
+in//let
+(
+nindfpr(filr,nind);
+strnfpr(filr,"// ");
+d2varfpr//HX:name+offset
+(filr,dvar);strnfpr(filr,"(...)\n"))
+end//let
+//
+(* ****** ****** *)
+//
+val (  ) = // enter
+(
+  envx2cc_pshlam0(env0) )
+//
+val (  ) =
+(
+fjarglst_xcaemit(fjas, env0))
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ( (*void*) )
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+val (  ) =
+(
+  i1cmp_xcaemit(icmp, env0) )
+end // end-of-[let]
+) (*case+*) // end-of-( teqi1exp )
+//
+val (  ) = envx2cc_poplam0(env0)//leave
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+envx2cc_filr$get(env0)
+val nind =
+envx2cc_nind$get(env0)
+//
+val dvar =
+i1fundcl_dpid$get(ifun)
+//
+in//let
+//
+(
+nindfpr(filr, nind);
+strnfpr(
+filr, "// I1FUNDCL: ");
+d2var_fprint(dvar, filr); endlnfpr(filr))
+end//let
+//
+}(*where*)//end-of-[i1fundcl_xcaemit(ifun,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1tfndcl_xcaemit
+  (itfn, env0) = let
+//
+val filr =
+envx2cc_filr$get(env0)
+val nind =
+envx2cc_nind$get(env0)
+//
+val dvar =
+i1fundcl_dpid$get(itfn)
+//
+in//let
+//
+(
+nindfpr(filr, nind);
+strnfpr(
+filr, "// I1TFNDCL: ");
+d2var_fprint(dvar, filr); endlnfpr(filr))
+//
+end(*let*)//end-of-[i1tfndcl_xcaemit(itfn,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -266,15 +266,25 @@ i1dclist_xcaemit
 (* ****** ****** *)
 //
 fun
+i1prvdcl_xcaemit
+(ival: i1valdcl, env0: !envx2cc): void
+fun
 i1valdcl_xcaemit
 (ival: i1valdcl, env0: !envx2cc): void
+//
 fun
 i1vardcl_xcaemit
 (ivar: i1vardcl, env0: !envx2cc): void
 //
+(* ****** ****** *)
+//
+fun
+i1prfdcl_xcaemit
+(ifun: i1fundcl, env0: !envx2cc): void
 fun
 i1fundcl_xcaemit
 (ifun: i1fundcl, env0: !envx2cc): void
+//
 fun
 i1tfndcl_xcaemit
 (ifun: i1fundcl, env0: !envx2cc): void

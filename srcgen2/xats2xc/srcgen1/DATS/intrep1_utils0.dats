@@ -303,7 +303,8 @@ I1Dfundclst
 //
 |
 I1Dimplmnt0
-(tknd, stmp
+(lvl0
+,tknd, stmp
 ,dimp, fjas
 ,icmp, i0vs) =>
 (
@@ -367,7 +368,7 @@ idcl.node() of
  _, _, _, _) => optn_cons(idcl)
 //
 |I1Dimplmnt0
-(_, _,
+(_, _, _,
  _, _, _, _) => optn_cons(idcl)
 //
 | _(*otherwise*) => optn_nil((*0*))

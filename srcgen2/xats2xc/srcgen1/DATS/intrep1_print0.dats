@@ -532,25 +532,25 @@ prints
 //
 |
 I1Dfundclst
-( tknd
-, lvl0, tqas
+( lvl0
+, tknd, tqas
 , d2cs, i1fs) =>
 (
 print("I1Dfundclst(");
-prints(tknd, ";", lvl0, ";");
+prints(lvl0, ";", tknd, ";");
 prints(tqas, ";", d2cs, ";", i1fs,")"))
 //
 (* ****** ****** *)
 //
 |
 I1Dimplmnt0
-(tknd
-,lvl0, stmp
+(lvl0
+,tknd, stmp
 ,dimp, farg
 ,icmp, i0vs) =>
 (
 print("I1Dimplmnt0(");
-prints(tknd, ";", lvl0, ";", stmp, ";");
+prints(lvl0, ";", tknd, ";", stmp, ";");
 prints(
   dimp, ";", farg, ";", icmp, ";", i0vs, ")"))
 //

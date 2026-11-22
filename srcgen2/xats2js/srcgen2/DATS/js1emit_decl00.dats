@@ -472,8 +472,8 @@ val loc0 =
 //
 val-
 I1Dfundclst
-(tknd
-,lvl0, tqas
+(lvl0
+,tknd, tqas
 ,d2cs, i1fs) = dcl0.node()
 //
 val prfq =
@@ -547,8 +547,8 @@ val loc0 = dcl0.lctn()
 //
 val-
 I1Dimplmnt0
-(tknd
-,lvl0, stmp
+(lvl0
+,tknd, stmp
 ,dimp, fjas
 ,icmp, i0vs) = dcl0.node()
 //
@@ -1101,8 +1101,8 @@ val loc0 =
 //
 val-
 I1Dfundclst
-(tknd
-,lvl0, tqas
+(lvl0
+,tknd, tqas
 ,d2cs, i1fs) = dcl0.node()
 //
 val prfq =

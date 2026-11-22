@@ -473,8 +473,8 @@ loc0 = dcl0.lctn((*void*))
 //
 val-
 I0Dfundclst
-(tknd
-,lvl0, tqas
+(lvl0
+,tknd, tqas
 ,d2cs, i0fs) = dcl0.node()
 //
 val recq =
@@ -505,7 +505,7 @@ i1dcl_make_node
 (
 loc0,
 I1Dfundclst(
-  tknd(*fnk*),lvl0,tqas,d2cs,i1fs))
+  lvl0,tknd(*fknd*),tqas,d2cs,i1fs))
 //
 end where
 {
@@ -560,8 +560,8 @@ loc0 = dcl0.lctn((*void*))
 //
 val-
 I0Dimplmnt0
-(tknd
-,lvl0
+(lvl0
+,tknd
 ,stmp
 ,dimp, fias
 ,iexp, i0vs) = dcl0.node()
@@ -585,8 +585,8 @@ in//let
 i1dcl_make_node
 (
 loc0,
-I1Dimplmnt0(tknd,
-  lvl0, stmp, dimp, fjas, icmp, i0vs))
+I1Dimplmnt0(lvl0,
+  tknd, stmp, dimp, fjas, icmp, i0vs))
 end where
 {
 //
@@ -828,8 +828,8 @@ loc0 = idcl.lctn((*void*))
 //
 val-
 I0Dfundclst
-(tknd
-,lvl0
+(lvl0
+,tknd
 ,tqas
 ,d2cs, i0fs) = idcl.node()
 //
@@ -848,7 +848,7 @@ i1dcl_make_node
 (
 loc0,
 I1Dfundclst(
-  tknd(*fnk*),lvl0,tqas,d2cs,i1fs))
+  lvl0,tknd(*fknd*),tqas,d2cs,i1fs))
 //
 end where
 {
@@ -929,8 +929,8 @@ loc0 = idcl.lctn((*void*))
 //
 val-
 I1Dfundclst
-(tknd
-,lvl0, tqas
+(lvl0
+,tknd, tqas
 ,d2cs, i1fs) = idcl.node()
 //
 in//let

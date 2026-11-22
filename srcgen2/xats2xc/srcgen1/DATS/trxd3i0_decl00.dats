@@ -582,7 +582,7 @@ i0dcl
 (
 loc0,
 I0Dfundclst(
-  tknd, lvl0, tqas, d2cs, i0fs)))
+  lvl0, tknd, tqas, d2cs, i0fs)))
 //
 end where
 {
@@ -693,8 +693,8 @@ in//let
 i0dcl_make_node
 (
 loc0,
-I0Dimplmnt0(tknd,
-lvl0, stmp, dimp, fias, iexp, i0vs)))
+I0Dimplmnt0(lvl0,
+tknd, stmp, dimp, fias, iexp, i0vs)))
 end//let
 //
 end where // end-of-[f0_implmnt0(d3cl,env0)]

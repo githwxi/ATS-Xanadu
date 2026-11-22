@@ -123,7 +123,7 @@ envx2js_nind$get(env0)
 in//let
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-f0_i1let(env0, ilet); fprintln(filr)
+f0_i1let(env0, ilet);fprintln(filr)
 end where
 {
 //
@@ -239,6 +239,10 @@ envx2js_nind$get(env0)
 in//let
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
+(*
+HX-2026-11-22:
+[jsaemit_i1let] calls [fprintln]
+*)
 f0_i1ins(env0, iins);//fprintln(filr)
 end where
 {

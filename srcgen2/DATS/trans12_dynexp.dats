@@ -2225,9 +2225,14 @@ case+
 d1e.node() of
 |
 D1Eid0(sym) =>
-if
-(sym=DLAZY_symbl)
-then true else false
+if // if
+(sym
+=DLAZY_symbl)
+then true else
+(
+if // if
+(sym=DFLAZY_symbl)
+then true else false)
 |
 _(* non-D1Eid0 *) => false
 ) (*case+*) // end of [isL0AZY]
@@ -2239,7 +2244,7 @@ case+
 d1e.node() of
 |
 D1Eid0(sym) =>
-if
+if // if
 (sym=DLLAZY_symbl)
 then true else false
 |
@@ -2253,7 +2258,7 @@ case+
 d1e.node() of
 |
 D1Eid0(sym) =>
-if
+if // if
 (sym=DELAZY_symbl)
 then true else false
 |

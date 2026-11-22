@@ -1199,7 +1199,7 @@ ival.node() of
 ( itnm ) => i1tnmjs1(filr,itnm)
 (* ****** ****** *)
 |I1Vcon
-( dcon ) => d2confpr(filr,dcon)
+( dcon ) => d2conjs1(filr,dcon)
 (* ****** ****** *)
 |I1Vcst
 ( dcst ) => d2cstjs1(filr,dcst)
