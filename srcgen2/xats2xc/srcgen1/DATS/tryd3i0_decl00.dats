@@ -437,9 +437,9 @@ val loc0 = idcl.lctn()
 //
 val-
 I0Dfundclst
-( tknd
-, lvl0, tqas
-, d2cs, i0fs) = idcl.node()
+(lvl0
+,tknd, tqas
+,d2cs, i0fs) = idcl.node()
 //
 val (  ) =
 f1_i0fs$nil(i0fs)//val((__))
@@ -470,8 +470,8 @@ val idcl =
 i0dcl_make_node
 (
 loc0,
-I0Dfundclst(
-tknd(*fnk*), lvl0, tqas, d2cs, i0fs))}
+I0Dfundclst
+(lvl0, tknd(*fnk*), tqas, d2cs, i0fs))}
 //
 end where
 {
@@ -603,7 +603,9 @@ if
 then (ivst) else
 let
 val bvk1 =
-i0var_bvk0$get(i0v1)
+(
+i0var_bvk0$get
+(    i0v1    ))
 in//let
 if // if
 not(
@@ -611,8 +613,9 @@ i0var_fixq(i0v1))
 then
 (
 if // if
-i0var_topq(i0v1)
-then (ivst) else
+(
+i0var_topq(i0v1))
+then ( ivst ) else
   i0varfst_addvar(ivst, i0v1)
 ) else // end-of-(then)
 (
@@ -646,8 +649,8 @@ val loc0 = idcl.lctn()
 //
 val-
 I0Dimplmnt0
-(tknd
-,lvl0, stmp
+(lvl0
+,tknd, stmp
 ,dimp, fias
 ,iexp, i0vs) = idcl.node()
 //
@@ -676,8 +679,8 @@ val iexp =
 //
 val idcl =
 i0dcl(loc0,
-I0Dimplmnt0(tknd,
-  lvl0, stmp, dimp, fias, iexp, i0vs))}
+I0Dimplmnt0(lvl0,
+  tknd, stmp, dimp, fias, iexp, i0vs))}
 //
 end where
 {

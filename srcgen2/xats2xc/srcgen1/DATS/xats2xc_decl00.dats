@@ -263,9 +263,12 @@ val dvar =
 i1fundcl_dpid$get(iprf)
 //
 in//let
+//
+(
 nindstrnfpr
 (filr, nind, "// I1PRFDCL: ");
-d2var_fprint(dvar, filr); fprintln(filr)
+d2var_fprint(dvar, filr);endlnfpr(filr))
+//
 end(*let*)//end-of-[i1prfdcl_xcaemit(iprf,env0)]
 //
 (* ****** ****** *)
