@@ -362,6 +362,153 @@ f0_fundclst(jsaemit): dcl0 = ", dcl0)
 (* ****** ****** *)
 //
 #implfun
+i1prvdcl_jsaemit
+  (iprv, env0) = let
+//
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+//
+val dpat =
+i1valdcl_dpat$get(iprv)
+//
+in//let
+nindstrnfpr
+(filr, nind, "// I1PRVDCL: ");
+i1bnd_fprint(dpat, filr); fprintln(filr)
+end(*let*)//end-of-[i1prvdcl_jsaemit(iprv,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1valdcl_jsaemit
+  (ival, env0) = let
+//
+(* ****** ****** *)
+//
+val dpat =
+i1valdcl_dpat$get(ival)
+val tdxp =
+i1valdcl_tdxp$get(ival)
+//
+(* ****** ****** *)
+//
+val (  ) =
+i1bnd_jsaemit(dpat, env0)
+//
+(* ****** ****** *)
+//
+(*
+val (  ) = prerrsln
+("i1valdcl_jsaemit: dpat = ", dpat)
+val (  ) = prerrsln
+("i1valdcl_jsaemit: tdxp = ", tdxp)
+*)
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+val (  ) =
+(
+  i1cmp_jsaemit(icmp, env0))
+end//let
+) (*case+*) // end-of-( teqi1exp )
+//
+(* ****** ****** *)
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+in//let
+(
+nindstrnfpr(filr, nind, "// I1VALDCL\n"))
+end//let
+//
+}(*where*)//end-of-[i1valdcl_jsaemit(ival,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1vardcl_jsaemit
+  (ivar, env0) = let
+//
+(* ****** ****** *)
+//
+val dpid =
+i1vardcl_dpid$get(ivar)
+val tdxp =
+i1vardcl_dini$get(ivar)
+//
+(* ****** ****** *)
+//
+val (  ) =
+i1bnd_jsaemit(dpid, env0)
+//
+(* ****** ****** *)
+//
+(*
+val (  ) = prerrsln
+("i1vardcl_jsaemit: dvar = ", dvar)
+val (  ) = prerrsln
+("i1vardcl_jsaemit: dini = ", tdxp)
+*)
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+val (  ) =
+(
+  i1cmp_jsaemit(icmp, env0))
+end//let
+) (*case+*) // end-of-( teqi1exp )
+//
+(* ****** ****** *)
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+envx2js_filr$get(env0)
+val nind =
+envx2js_nind$get(env0)
+in//let
+(
+nindstrnfpr(filr, nind, "// I1VARDCL\n"))
+end//let
+//
+}(*where*)//end-of-[i1vardcl_jsaemit(ivar,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i1prfdcl_jsaemit
   (iprf, env0) = let
 //

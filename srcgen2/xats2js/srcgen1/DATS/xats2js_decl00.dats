@@ -863,7 +863,6 @@ end//let
 }(*where*)//end-of-[jsaemit_i1valdcl(env0,ival)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #implfun
 jsaemit_i1vardcl
@@ -924,7 +923,7 @@ in//let
 nindstrnfpr(filr, nind, "// I1VARDCL\n"))
 end//let
 //
-}(*where*)//end-of-[jsaemit_i1vardcl(env0,ival)]
+}(*where*)//end-of-[jsaemit_i1vardcl(env0,ivar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

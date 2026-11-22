@@ -9,154 +9,176 @@
 ########################################################################
 ########################################################################
 #
-all:: srcgen1_xats2js
-#
-all:: srcgen2_lib1xatsopt
-all:: srcgen2_xats2js_xatsopt_tcheck00
-all:: srcgen2_xats2js_xatsopt_tcheck01
-#
-all:: srcgen2_lib1xats2js
-all:: srcgen2_xats2js_xats2js_jsemit00
-all:: srcgen2_xats2js_xats2js_jsemit01
-#
-all:: srcgen2_lib1xats2cm
-all:: srcgen2_xats2js_xats2cm_cmemit00
-all:: srcgen2_xats2js_xats2cm_cmemit01
-#
-all:: srcgen2_lib1xats2py
-all:: srcgen2_xats2js_xats2py_pyemit00
-all:: srcgen2_xats2js_xats2py_pyemit01
-#
-all:: srcgen2_lib1xats2pl
-all:: srcgen2_xats2js_xats2pl_plemit01
-#
-all:: srcgen2_lib1xats2rb
-all:: srcgen2_xats2js_xats2rb_rbemit01
+all:: all0
+all:: all1
+all:: all2
+all:: all3
 #
 ########################################################################
 #
-all:: srcgen2_lib2xatsopt
-all:: srcgen2_lib2xats2js
-all:: srcgen2_lib2xats2cm
-all:: srcgen2_lib2xats2py
-all:: srcgen2_xjsemit_xatsopt_tcheck00
-all:: srcgen2_xjsemit_xatsopt_tcheck01
-all:: srcgen2_xjsemit_xatsopt_tcheck00_opt1
-all:: srcgen2_xjsemit_xatsopt_tcheck01_opt1
-all:: srcgen2_xjsemit_xats2js_jsemit00
-all:: srcgen2_xjsemit_xats2js_jsemit01
-all:: srcgen2_xjsemit_xats2js_jsemit00_opt1
-all:: srcgen2_xjsemit_xats2js_jsemit01_opt1
-all:: srcgen2_xjsemit_xats2cm_cmemit00
-all:: srcgen2_xjsemit_xats2cm_cmemit01
-all:: srcgen2_xjsemit_xats2cm_cmemit00_opt1
-all:: srcgen2_xjsemit_xats2cm_cmemit01_opt1
-all:: srcgen2_xjsemit_xats2py_pyemit00
-all:: srcgen2_xjsemit_xats2py_pyemit01
-all:: srcgen2_xjsemit_xats2py_pyemit00_opt1
-all:: srcgen2_xjsemit_xats2py_pyemit01_opt1
+all0:: srcgen1_xats2js
 #
-all:: srcgen2_lib2xats2pl
-all:: srcgen2_lib2xats2rb
-all:: srcgen2_xjsemit_xats2pl_plemit01
-all:: srcgen2_xjsemit_xats2pl_plemit01_opt1
-all:: srcgen2_xjsemit_xats2rb_rbemit01
-all:: srcgen2_xjsemit_xats2rb_rbemit01_opt1
+all1:: srcgen2_lib1xatsopt
+all1:: srcgen2_xats2js_xatsopt_tcheck00
+all1:: srcgen2_xats2js_xatsopt_tcheck01
+#
+all1:: srcgen2_lib1xats2js
+all1:: srcgen2_xats2js_xats2js_jsemit00
+all1:: srcgen2_xats2js_xats2js_jsemit01
+#
+all2:: srcgen2_lib1xats2cm
+all2:: srcgen2_xats2js_xats2cm_cmemit00
+all2:: srcgen2_xats2js_xats2cm_cmemit01
+#
+all2:: srcgen2_lib1xats2py
+all2:: srcgen2_xats2js_xats2py_pyemit00
+all2:: srcgen2_xats2js_xats2py_pyemit01
+#
+all3:: srcgen2_lib1xats2pl
+all3:: srcgen2_xats2js_xats2pl_plemit01
+#
+all3:: srcgen2_lib1xats2rb
+all3:: srcgen2_xats2js_xats2rb_rbemit01
 #
 ########################################################################
 #
-testall:: prelude_TEST_CATS_JS
-testall:: prelude_TEST_CATS_CM
-testall:: prelude_TEST_CATS_PY
+all1:: srcgen2_lib2xatsopt
+all1:: srcgen2_lib2xats2js
+all2:: srcgen2_lib2xats2cm
+all2:: srcgen2_lib2xats2py
+all1:: srcgen2_xjsemit_xatsopt_tcheck00
+all1:: srcgen2_xjsemit_xatsopt_tcheck01
+all1:: srcgen2_xjsemit_xatsopt_tcheck00_opt1
+all1:: srcgen2_xjsemit_xatsopt_tcheck01_opt1
+all1:: srcgen2_xjsemit_xats2js_jsemit00
+all1:: srcgen2_xjsemit_xats2js_jsemit01
+all1:: srcgen2_xjsemit_xats2js_jsemit00_opt1
+all1:: srcgen2_xjsemit_xats2js_jsemit01_opt1
+#
+all2:: srcgen2_xjsemit_xats2cm_cmemit00
+all2:: srcgen2_xjsemit_xats2cm_cmemit01
+all2:: srcgen2_xjsemit_xats2cm_cmemit00_opt1
+all2:: srcgen2_xjsemit_xats2cm_cmemit01_opt1
+all2:: srcgen2_xjsemit_xats2py_pyemit00
+all2:: srcgen2_xjsemit_xats2py_pyemit01
+all2:: srcgen2_xjsemit_xats2py_pyemit00_opt1
+all2:: srcgen2_xjsemit_xats2py_pyemit01_opt1
+#
+all3:: srcgen2_lib2xats2pl
+all3:: srcgen2_lib2xats2rb
+all3:: srcgen2_xjsemit_xats2pl_plemit01
+all3:: srcgen2_xjsemit_xats2pl_plemit01_opt1
+all3:: srcgen2_xjsemit_xats2rb_rbemit01
+all3:: srcgen2_xjsemit_xats2rb_rbemit01_opt1
 #
 ########################################################################
 #
-bootall:: \
+testall:: testall1
+testall:: testall2
+#
+testall1:: prelude_TEST_CATS_JS
+testall2:: prelude_TEST_CATS_CM
+testall2:: prelude_TEST_CATS_PY
+#
+########################################################################
+#
+bootall:: bootall1
+bootall:: bootall2
+#
+bootall1:: \
 contrib_githwxi_BOOTJS1_lib2xatsopt
-bootall:: \
+bootall1:: \
 contrib_githwxi_BOOTJS1_lib2xats2js
 #
-bootall:: \
+bootall2:: \
 contrib_githwxi_BOOTCM1_lib2xatsopt
-bootall:: \
+bootall2:: \
 contrib_githwxi_BOOTCM1_lib2xats2js
-bootall:: \
+bootall2:: \
 contrib_githwxi_BOOTCM1_lib2xats2cm
 #
-bootall:: \
+bootall2:: \
 contrib_githwxi_BOOTPY1_lib2xatsopt
-bootall:: \
+bootall2:: \
 contrib_githwxi_BOOTPY1_lib2xats2js
-bootall:: \
+bootall2:: \
 contrib_githwxi_BOOTPY1_lib2xats2py
 #
 ########################################################################
 #
-boottest:: \
+boottest:: boottest1
+boottest:: boottest2
+#
+boottest1:: \
 contrib_githwxi_BOOTJS1_xats2js_UTIL_jsemit00
-boottest:: \
+boottest1:: \
 contrib_githwxi_BOOTJS1_xats2js_TEST_jsemit00
 #
-boottest:: \
+boottest2:: \
 contrib_githwxi_BOOTCM1_xats2cm_UTIL_cmemit00
-boottest:: \
+boottest2:: \
 contrib_githwxi_BOOTCM1_xats2cm_TEST_cmemit00
 #
 # HX-2026-11-01: It takes too long!!!
-# boottest:: \
+# boottest3:: \
 # contrib_githwxi_BOOTPY1_xats2py_UTIL_pyemit00
-# boottest:: \
+# boottest3:: \
 # contrib_githwxi_BOOTPY1_xats2py_TEST_pyemit00
 #
 ########################################################################
 #
-cleanall:: ; \
+cleanall:: cleanall0
+cleanall:: cleanall1
+cleanall:: cleanall2
+cleanall:: cleanall3
+#
+cleanall0:: ; \
 make -C srcgen1 -f Makefile_patsopt cleanall
 #
-cleanall:: ; \
+cleanall1:: ; \
 make -C srcgen2 -f Makefile_xats2js cleanall
-cleanall:: ; \
+cleanall2:: ; \
 make -C srcgen2 -f Makefile_xjsemit cleanall
-cleanall:: ; \
+cleanall2:: ; \
 make -C srcgen2 -f Makefile_xpyemit cleanall
 #
-cleanall:: ; \
+cleanall1:: ; \
 make -C prelude/TEST/CATS/JS -f Makefile_jsemit01 cleanall
-cleanall:: ; \
+cleanall2:: ; \
 make -C prelude/TEST/CATS/CM -f Makefile_cmemit01 cleanall
-cleanall:: ; \
+cleanall2:: ; \
 make -C prelude/TEST/CATS/PY -f Makefile_pyemit01 cleanall
 #
-cleanall:: ; \
+cleanall0:: ; \
 make -C srcgen1/xats2js/srcgen1 -f Makefile_patsopt cleanall
 #
-cleanall:: ; \
+cleanall1:: ; \
 make -C srcgen2/xats2js/srcgen1 -f Makefile_xats2js cleanall
-cleanall:: ; \
+cleanall1:: ; \
 make -C srcgen2/xats2js/srcgen1 -f Makefile_xjsemit cleanall
 #
-cleanall:: ; \
+cleanall2:: ; \
 make -C srcgen2/xats2cm/srcgen1 -f Makefile_xats2js cleanall
-cleanall:: ; \
+cleanall2:: ; \
 make -C srcgen2/xats2cm/srcgen1 -f Makefile_xjsemit cleanall
-cleanall:: ; \
+cleanall2:: ; \
 make -C srcgen2/xats2cm/srcgen1 -f Makefile_xcmemit cleanall
 #
-cleanall:: ; \
+cleanall2:: ; \
 make -C srcgen2/xats2py/srcgen1 -f Makefile_xats2js cleanall
-cleanall:: ; \
+cleanall2:: ; \
 make -C srcgen2/xats2py/srcgen1 -f Makefile_xjsemit cleanall
-cleanall:: ; \
+cleanall2:: ; \
 make -C srcgen2/xats2py/srcgen1 -f Makefile_xpyemit cleanall
 #
-cleanall:: ; \
+cleanall3:: ; \
 make -C srcgen2/xats2pl/srcgen1 -f Makefile_xats2js cleanall
-cleanall:: ; \
+cleanall3:: ; \
 make -C srcgen2/xats2pl/srcgen1 -f Makefile_xjsemit cleanall
 #
-cleanall:: ; \
+cleanall3:: ; \
 make -C srcgen2/xats2rb/srcgen1 -f Makefile_xats2js cleanall
-cleanall:: ; \
+cleanall3:: ; \
 make -C srcgen2/xats2rb/srcgen1 -f Makefile_xjsemit cleanall
 #
 ########################################################################
@@ -364,23 +386,23 @@ contrib_githwxi_BOOTPY1_xats2py_TEST_pyemit00: ; \
 ########################################################################
 ########################################################################
 #
-cleanall:: ; \
+cleanall1:: ; \
 make -C contrib/githwxi/BOOTJS1 -f Makefile_xjsemit cleanall
-cleanall:: ; \
+cleanall1:: ; \
 make -C contrib/githwxi/BOOTJS1/xats2js/srcgen1 -f Makefile_xjsemit cleanall
 #
-cleanall:: ; \
+cleanall2:: ; \
 make -C contrib/githwxi/BOOTCM1 -f Makefile_xcmemit cleanall
-cleanall:: ; \
+cleanall2:: ; \
 make -C contrib/githwxi/BOOTCM1/xats2js/srcgen1 -f Makefile_xcmemit cleanall
-cleanall:: ; \
+cleanall2:: ; \
 make -C contrib/githwxi/BOOTCM1/xats2cm/srcgen1 -f Makefile_xcmemit cleanall
 #
-cleanall:: ; \
+cleanall2:: ; \
 make -C contrib/githwxi/BOOTPY1 -f Makefile_xpyemit cleanall
-cleanall:: ; \
+cleanall2:: ; \
 make -C contrib/githwxi/BOOTPY1/xats2js/srcgen1 -f Makefile_xpyemit cleanall
-cleanall:: ; \
+cleanall2:: ; \
 make -C contrib/githwxi/BOOTPY1/xats2py/srcgen1 -f Makefile_xpyemit cleanall
 #
 ########################################################################
