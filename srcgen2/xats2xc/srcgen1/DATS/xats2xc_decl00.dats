@@ -249,8 +249,151 @@ f0_fundclst(xcaemit): dcl0 = ", dcl0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
-
+//
+#implfun
+i1prvdcl_xcaemit
+  (iprv, env0) = let
+//
+val filr =
+envx2cc_filr$get(env0)
+val nind =
+envx2cc_nind$get(env0)
+//
+val dpat =
+i1valdcl_dpat$get(iprv)
+//
+in//let
+nindstrnfpr
+(filr, nind, "// I1PRVDCL: ");
+i1bnd_fprint(dpat, filr); endlnfpr(filr)
+end(*let*)//end-of-[i1prvdcl_xcaemit(iprv,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1valdcl_xcaemit
+  (ival, env0) = let
+//
+(* ****** ****** *)
+//
+val dpat =
+i1valdcl_dpat$get(ival)
+val tdxp =
+i1valdcl_tdxp$get(ival)
+//
+(* ****** ****** *)
+//
+val (  ) =
+i1bnd_xcaemit(dpat, env0)
+//
+(* ****** ****** *)
+//
+(*
+val (  ) = prerrsln
+("i1valdcl_xcaemit: dpat = ", dpat)
+val (  ) = prerrsln
+("i1valdcl_xcaemit: tdxp = ", tdxp)
+*)
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+val (  ) =
+(
+  i1cmp_xcaemit(icmp, env0))
+end//let
+) (*case+*) // end-of-( teqi1exp )
+//
+(* ****** ****** *)
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+envx2cc_filr$get(env0)
+val nind =
+envx2cc_nind$get(env0)
+in//let
+(
+nindstrnfpr(filr, nind, "// I1VALDCL\n"))
+end//let
+//
+}(*where*)//end-of-[i1valdcl_xcaemit(ival,env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1vardcl_xcaemit
+  (ivar, env0) = let
+//
+(* ****** ****** *)
+//
+val dpid =
+i1vardcl_dpid$get(ivar)
+val tdxp =
+i1vardcl_dini$get(ivar)
+//
+(* ****** ****** *)
+//
+val (  ) =
+i1bnd_xcaemit(dpid, env0)
+//
+(* ****** ****** *)
+//
+(*
+val (  ) = prerrsln
+("i1vardcl_xcaemit: dvar = ", dvar)
+val (  ) = prerrsln
+("i1vardcl_xcaemit: dini = ", tdxp)
+*)
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+val (  ) =
+(
+  i1cmp_xcaemit(icmp, env0))
+end//let
+) (*case+*) // end-of-( teqi1exp )
+//
+(* ****** ****** *)
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+envx2cc_filr$get(env0)
+val nind =
+envx2cc_nind$get(env0)
+in//let
+(
+nindstrnfpr(filr, nind, "// I1VARDCL\n"))
+end//let
+//
+}(*where*)//end-of-[i1vardcl_xcaemit(ivar,env0)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
