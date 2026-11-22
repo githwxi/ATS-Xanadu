@@ -486,11 +486,9 @@ val () = kwdins("#defmac", T_SRP_MACDEF)
 //
 val () = kwdins("#static", T_SRP_STATIC)
 val () = kwdins("#extern", T_SRP_EXTERN)
-//
-(*
 val () = kwdins("#staval", T_SRP_STAVAL)
 val () = kwdins("#extval", T_SRP_EXTVAL)
-*)
+//
 val () = kwdins("#static0", T_SRP_STAVAL)
 val () = kwdins("#extern0", T_SRP_EXTVAL)
 val () = kwdins("#static1", T_SRP_STATIC)

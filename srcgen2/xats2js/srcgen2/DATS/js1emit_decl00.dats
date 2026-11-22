@@ -569,9 +569,9 @@ let
 //
 fun
 f1_i1cmpret
-( env0:
-! envx2js
-, icmp: i1cmp): void =
+(
+icmp: i1cmp,
+env0: !envx2js): void =
 let
 //
 val filr =
@@ -601,7 +601,7 @@ nindstrnfpr
 (filr,nind,"// I1Dimplmnt0(");
 lctnfpr(filr,loc0);strnfpr(filr,")\n");
 //
-if
+if // if
 dimpl_tempq(dimp)
 then // template
 (
@@ -626,7 +626,7 @@ strnfpr(filr, "while(true) { // impl\n"));
 //
 (
 envx2js_incnind(env0,2(*++*));
-fjarglst_js1emit(fjas, env0);f1_i1cmpret(env0, icmp));
+fjarglst_js1emit(fjas, env0);f1_i1cmpret(icmp, env0));
 //
 if
 funq(tknd)
@@ -753,7 +753,7 @@ i1tnmjs1
 //
 // HX: for computing ival
 val (  ) =
-f0_i1tnmcmp(env0, itnm, icmp)
+f0_i1tnmcmp(itnm, icmp, env0)
 //
 val (  ) =
 (
@@ -769,6 +769,8 @@ endlet(*TEQI1CMPsome*))(*case+(tdxp)*)
 end where//end-of-let(i1valdcl_js1emit(...)]
 {
 //
+(* ****** ****** *)
+//
 val (  ) =
 let
 val filr =
@@ -782,12 +784,14 @@ in//let
  nindstrnfpr(filr, nind, "// I1VALDCL\n"))
 end//let//end-of-[val()]
 //
+(* ****** ****** *)
+//
 fun
 f0_i1tnmcmp
-( env0:
-! envx2js
-, itnm: i1tnm
-, icmp: i1cmp): void =
+( 
+itnm: i1tnm,
+icmp: i1cmp,
+env0: !envx2js): void =
 let
 //
 val filr =
@@ -814,6 +818,8 @@ i1tnmjs1(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
 end//let
 //
 end//let//end-of-[f0_i1tnmcmp(...)]
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[i1valdcl_js1emit(dcl0,env0)]
 //
