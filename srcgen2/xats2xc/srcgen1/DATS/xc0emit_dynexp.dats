@@ -296,6 +296,14 @@ i0exp$typcc0(filr, iexp))
 //
 (* ****** ****** *)
 //
+|I0Elet0 _ => f0_let0(iexp, env0)
+//
+(* ****** ****** *)
+//
+|I0Ewhere _ => f0_where(iexp, env0)
+//
+(* ****** ****** *)
+//
 |I0Elabck _ => f0_labck(iexp, env0)
 //
 |I0Et2pck _ => f0_t2pck(iexp, env0)
@@ -458,7 +466,61 @@ val () =
 (
   i0expopt_xc0emit(iels, env0))
 //
-end(*let*)//end-pf-[f0_ift0(iexp,env0)]
+end(*let*)//end-of-[f0_ift0(iexp,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_let0
+(
+iexp: i0exp,
+env0: !envxcc0): void =
+let
+//
+val () =
+i0exp$typcc0(filr, iexp)
+//
+val-
+I0Elet0
+(dcls, i0e1) = iexp.node()
+//
+val () =
+(
+  i0exp_xc0emit(i0e1, env0))
+where{
+val () =
+(
+  i0dclist_xc0emit(dcls, env0))
+}(*where*)//end-of-[val( ... )]
+//
+end(*let*)//end-of-[f0_let0(iexp,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_where
+(
+iexp: i0exp,
+env0: !envxcc0): void =
+let
+//
+val () =
+i0exp$typcc0(filr, iexp)
+//
+val-
+I0Ewhere
+(i0e1, dcls) = iexp.node()
+//
+val () =
+(
+  i0exp_xc0emit(i0e1, env0))
+where{
+val () =
+(
+  i0dclist_xc0emit(dcls, env0))
+}(*where*)//end-of-[val( ... )]
+//
+end(*let*)//end-of-[f0_where(iexp,env0)]
 //
 (* ****** ****** *)
 //
@@ -480,7 +542,7 @@ I0Elabck
 //
 val () = i0exp_xc0emit(i0e1, env0)
 //
-end(*let*)//end-pf-[f0_labck(iexp,env0)]
+end(*let*)//end-of-[f0_labck(iexp,env0)]
 //
 (* ****** ****** *)
 //
@@ -502,7 +564,7 @@ I0Et2pck
 //
 val () = i0exp_xc0emit(i0e1, env0)
 //
-end(*let*)//end-pf-[f0_t2pck(iexp,env0)]
+end(*let*)//end-of-[f0_t2pck(iexp,env0)]
 //
 fun
 f0_t2ped
@@ -522,7 +584,7 @@ I0Et2ped
 //
 val () = i0exp_xc0emit(i0e1, env0)
 //
-end(*let*)//end-pf-[f0_t2ped(iexp,env0)]
+end(*let*)//end-of-[f0_t2ped(iexp,env0)]
 //
 (* ****** ****** *)
 //
@@ -544,7 +606,7 @@ I0Erturn
 //
 val () = i0exp_xc0emit(i0e1, env0)
 //
-end(*let*)//end-pf-[f0_rturn(iexp,env0)]
+end(*let*)//end-of-[f0_rturn(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -554,20 +616,17 @@ f0_otherwise
 (
 iexp: i0exp,
 env0: !envxcc0): void =
+let
+val lctn = i0exp_lctn$get(iexp)
+val ityp = i0exp_ityp$get(iexp)
+in//let
 (
 strnfpr(
 filr, "// I0EXP(");
 lctnfpr(filr, lctn);
 strnfpr(filr, "): ");
-i0typcc0
-(filr, ityp); fprintln(filr)
-) where
-{
-//
-val lctn = i0exp_lctn$get(iexp)
-val ityp = i0exp_ityp$get(iexp)
-//
-}(*where*)//end-of-[f0_otherwise(iexp,env0)]
+i0typcc0(filr, ityp); fprintln(filr))
+end(*let*)//end-of-[f0_otherwise(iexp,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

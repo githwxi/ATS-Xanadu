@@ -5,22 +5,13 @@ For testing xats2xc!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-#staload _ =
-"prelude/DATS/gdbg000.dats"
-(* ****** ****** *)
-(* ****** ****** *)
 #include
 "prelude\
 /HATS/prelude_dats.hats"
 (* ****** ****** *)
 #include
 "prelude\
-/HATS/prelude_JS_dats.hats"
-(* ****** ****** *)
-(*
-#include
-"prelude/HATS/prelude_NODE_dats.hats"
-*)
+/HATS/prelude_XC_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -55,7 +46,8 @@ loop(0, 1)) where
 fun
 loop
 (i: sint, r: sint): sint =
-if i < n then loop(i+1, (i+1)*r) else r
+if//if
+(i < n) then loop(i+1, (i+1)*r) else r
 }
 //
 (* ****** ****** *)
@@ -67,7 +59,8 @@ factloop
 (n: nint, r: nint): nint
 #implfun
 factloop(n, r) =
-if n > 0 then factloop(n-1, n*r) else r
+if//if
+(n > 0) then factloop(n-1, n*r) else r
 ////
 val () =
 prints("\
@@ -77,5 +70,7 @@ factloop(10, 1) = ", factloop(10, 1), "\n")
 (* ****** ****** *)
 //
 (***********************************************************************)
+(***********************************************************************)
 (* end of [ATS3-XANADU/srcgen2/xats2xc/srcgen1/TEST/test01_xats2xc.dats] *)
+(***********************************************************************)
 (***********************************************************************)
