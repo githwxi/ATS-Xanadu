@@ -543,10 +543,8 @@ iexp.node() of
 |I0Etop _ => f0_top(iexp, env0)
 (* ****** ****** *)
 //
-(*
 |I0Econ _ => f0_con(iexp, env0)
 |I0Ecst _ => f0_cst(iexp, env0)
-*)
 |I0Evar _ => f0_var(iexp, env0)
 //
 (* ****** ****** *)
@@ -745,6 +743,66 @@ env0: !envi0i1): i1val =
   val-I0Etop(sym) = iexp.node() }
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_con
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Econ(d2c1) = iexp.node()
+//
+in//let
+(
+  i1val(loc0, I1Vcon(d2c1)))
+end where
+{
+//
+(*
+val () =
+(
+prerr("i0exp_trxi0i1:");
+prerrsln(
+  "f0_con(i0i1): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_con(iexp,env0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cst
+(
+iexp: i0exp,
+env0: !envi0i1): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Ecst(d2c1) = iexp.node()
+//
+in//let
+(
+  i1val(loc0, I1Vcst(d2c1)))
+end where
+{
+//
+(*
+val () =
+(
+prerr("i0exp_trxi0i1:");
+prerrsln(
+  "f0_cst(i0i1): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_cst(iexp,env0)]
+//
 (* ****** ****** *)
 //
 fun
