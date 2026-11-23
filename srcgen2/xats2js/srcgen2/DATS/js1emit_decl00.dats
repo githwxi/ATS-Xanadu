@@ -553,15 +553,18 @@ I1Dimplmnt0
 ,icmp, i0vs) = dcl0.node()
 //
 fun
-funq
+IMPLfunq
 (tknd: token): bool =
 (
 case+ iknd of
 |
-IMPLfun() => true | _ => false
-) where
-{ val-
-  T_IMPLMNT(iknd) = tknd.node() }
+IMPLfun() => true
+|
+_(*non-IMPLfun*) => false)
+where
+{
+val-
+T_IMPLMNT(iknd) = tknd.node() }
 //
 in//let
 //
@@ -597,9 +600,10 @@ end(*let*)//end-of-[f1_i1cmpret(...)]
 //
 in//let
 //
+(
 nindstrnfpr
 (filr,nind,"// I1Dimplmnt0(");
-lctnfpr(filr,loc0);strnfpr(filr,")\n");
+lctnfpr(filr,loc0);strnfpr(filr,")\n"));
 //
 if // if
 dimpl_tempq(dimp)
@@ -628,8 +632,9 @@ strnfpr(filr, "while(true) { // impl\n"));
 envx2js_incnind(env0,2(*++*));
 fjarglst_js1emit(fjas, env0);f1_i1cmpret(icmp, env0));
 //
-if
-funq(tknd)
+if // if
+IMPLfunq
+( tknd )
 then // then
 (
 envx2js_decnind(env0,2(*--*));

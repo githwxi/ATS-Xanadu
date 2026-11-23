@@ -69,6 +69,11 @@ XATSOPT "./../../.."
 #staload // LEX =
 "./../../../SATS/lexing0.sats"
 //
+#staload // S1E =
+"./../../../SATS/staexp1.sats"
+#staload // D2E =
+"./../../../SATS/dynexp2.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -114,6 +119,40 @@ loctn_fprint(loc0,filr))//endfun
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+dicstcc1
+(filr: FILR
+,dimp: dimpl): void =
+(
+case+
+dimp.node() of
+|DIMPLone1
+(  dcst  ) =>
+(
+  d2cstcc1(filr, dcst))
+|DIMPLone2
+(dcst, svts) =>
+(
+  d2cstcc1(filr, dcst))
+//
+|DIMPLnon1
+(  dqid  ) =>
+(
+  d1qid_fprint(dqid, filr))
+)(*case+*)//end-of-(dicstcc1())
+//
+(* ****** ****** *)
+//
+fun
+dimplfpr
+(filr: FILR
+,dimp: dimpl): void =
+(
+dimpl_fprint(dimp,filr))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #static0
 fun
 valtok_prvq(token): bool
@@ -129,7 +168,7 @@ case-
 tok.node() of
 |T_VAL
 ( vlk ) => valkind_prvq(vlk))
-(* end-of-[valtok_prvq(tok)] *)
+(* end-of-[valtok_prvq( tok )] *)
 //
 #implfun
 funtok_prfq
@@ -139,7 +178,7 @@ case-
 tok.node() of
 |T_FUN
 ( fnk ) => funkind_prfq(fnk))
-(* end-of-[funtok_prfq(tok)] *)
+(* end-of-[funtok_prfq( tok )] *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -545,13 +584,88 @@ I1Dimplmnt0
 //
 val ityp = icmp.ityp((*0*))
 //
+fun
+IMPLfunq
+(tknd: token): bool =
+(
+case+ iknd of
+|
+IMPLfun() => true
+|
+_(*non-IMPLfun*) => false)
+where
+{
+val-
+T_IMPLMNT(iknd) = tknd.node()
+}(*where*)//end-of-[IMPLfunq(...)]
+//
+fun
+f1_i1cmpret
+(
+icmp: i1cmp,
+env0: !envxcc1): void =
+let
+//
+val filr =
+envxcc1_filr$get(env0)
+val nind =
+envxcc1_nind$get(env0)
+//
+val ival = icmp.ival()
+val (  ) =
+i1cmp_xc1emit(icmp, env0)
+//
 in//let
+//
+nindstrnfpr
+(filr, nind, "// return ");
+i1valcc1(filr, ival);endlnfpr(filr)
+//
+end(*let*)//end-of-[f1_i1cmpret(...)]
+//
+in//let
+//
+(
+nindfpr(filr, nind);
+strnfpr(
+filr, "// I1Dimplmnt0(");
+lctnfpr(
+filr,loc0);strnfpr(filr,")\n"));
+//
+if // if
+dimpl_tempq(dimp)
+then // template
+(
+nindfpr(filr, nind);
+strnfpr(
+filr, "// I1Dimplmnt0(");
+dimplfpr(
+filr,dimp);strnfpr(filr,"):timp\n"))
+else // nontmplt
+(
 //
 (
 nindfpr(filr, nind);
 strnfpr(filr, "// implement\n");
 nindfpr(filr, nind);
-i0typcc0(filr, ityp);endlnfpr(filr))
+i0typcc0(filr, ityp);endlnfpr(filr));
+//
+(
+nindfpr(filr, nind);
+dicstcc1(filr, dimp);endlnfpr(filr);
+fjas1cc1(filr, nind, fjas);endlnfpr(filr));
+//
+(
+nindfpr(filr, nind);
+strnfpr(filr, "{ // impl\n");
+(
+envxcc1_incnind(env0,2(*++*))
+;fjarglst_xc1emit(fjas, env0);f1_i1cmpret(icmp, env0)
+;envxcc1_decnind(env0,2(*--*)));
+//
+nindstrnfpr(filr, nind, "} // endfun(impl)");endlnfpr(filr))
+//
+) (* end-of-( if(dimpl_tempq(dimp)) ) *)
 //
 end(*let*)//end-of-[f0_implmnt0(dcl0,env0)]
 //
@@ -890,7 +1004,6 @@ end//let//end-of-[val()]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #implfun
 i1dclenv_xc1emit
 (
@@ -996,7 +1109,6 @@ end(*let*)//end-of-[f0_fundclst(dcl0,i0ws,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 #implfun
 i1fundcl_i0ws$xc1emit
