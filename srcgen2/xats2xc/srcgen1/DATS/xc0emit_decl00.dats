@@ -85,10 +85,15 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 fun
-fprintln
+endlnfpr
 (filr: FILR): void =
 (
 strn_fprint("\n", filr))//endfun
+fun
+smclnfpr
+(filr: FILR): void =
+(
+strn_fprint(";\n", filr))//endfun
 //
 (* ****** ****** *)
 //
@@ -260,7 +265,7 @@ let
 val ityp =
 tlamsbd0(ityp) in
 strnfpr(filr, " ");
-i0typcc0(filr, ityp);fprintln(filr) end
+i0typcc0(filr, ityp);endlnfpr(filr) end
 //
 end(*let*)//end-of-[f0_sexpdef(dcl0,env0)]
 //
@@ -284,7 +289,7 @@ nindfpr(filr, nind);
 strnfpr
 (filr, "// I0Dabstype\n");
 nindstrnfpr(filr, nind, "// ");
-i0dcl_fprint(dcl0, filr); fprintln(filr)
+i0dcl_fprint(dcl0, filr);endlnfpr(filr)
 //
 end(*let*)//end-of-[f0_abstype(dcl0,env0)]
 //
@@ -427,13 +432,13 @@ envxcc0_nind$get(env0)
 //
 in//let
 //
+(
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-loctn_fprint
-(loc0, filr); fprintln(filr);
+loctn_fprint(loc0, filr);endlnfpr(filr);
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-i0dcl_fprint(dcl0, filr); fprintln(filr)
+i0dcl_fprint(dcl0, filr);endlnfpr(filr))
 //
 end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
 //
@@ -518,9 +523,27 @@ val (  ) =
 end where
 {
 //
+val filr =
+(
+  envxcc0_filr$get(env0))//filr
+val nind =
+(
+  envxcc0_nind$get(env0))//nind
+//
 val loc0 = i0fundcl_lctn$get(ifun)
+val dpid = i0fundcl_dpid$get(ifun)
+val ityp = i0fundcl_ityp$get(ifun)
 val fias = i0fundcl_farg$get(ifun)
 val tdxp = i0fundcl_tdxp$get(ifun)
+//
+val (  ) =
+(
+nindfpr(filr, nind);
+strnfpr(filr, "// I0FUNDCL\n");
+nindfpr(filr, nind);
+d2varfpr(
+filr, dpid);strnfpr(filr, ": ");
+i0typcc0(filr, ityp);endlnfpr(filr))
 //
 }(*where*)//end(i0fundcl_xc0emit(ivar,env0))
 //

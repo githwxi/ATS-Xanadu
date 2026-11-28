@@ -1256,6 +1256,8 @@ i0fundcl_lvl0$get:(i0fundcl)->(sint)
 fun
 i0fundcl_dpid$get:(i0fundcl)->(d2var)
 fun
+i0fundcl_ityp$get:(i0fundcl)->(i0typ)
+fun
 i0fundcl_d2vs$get:(i0fundcl)->d2varlst
 fun
 i0fundcl_farg$get:(i0fundcl)->fiarglst
@@ -1271,6 +1273,7 @@ i0fundcl_make_args
 (lctn:loc_t
 ,lvl0:(sint)
 ,dpid:(d2var)
+,ityp:(i0typ)
 ,d2vs:d2varlst
 ,farg:fiarglst
 ,tdxp:teqi0exp, i0vs:i0varlst):i0fundcl

@@ -776,6 +776,9 @@ i0fundcl_lvl0$get(ifun)
 //
 val dpid =
 i0fundcl_dpid$get(ifun)
+val ityp =
+i0fundcl_ityp$get(ifun)
+//
 val d2vs =
 i0fundcl_d2vs$get(ifun)
 //
@@ -794,8 +797,9 @@ val tdxp =
 //
 in//let
 (
-i0fundcl_make_args(loc0,
-  lvl0, dpid, d2vs, fias, tdxp, i0vs))
+i0fundcl_make_args
+( loc0, lvl0,
+  dpid, ityp, d2vs, fias, tdxp, i0vs))
 end where
 {
 //

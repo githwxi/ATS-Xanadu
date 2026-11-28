@@ -819,15 +819,13 @@ envd3i0_ical$insert
 (   env0 , ical   )) where
 {
 //
-val dpid =
-(
-  d3fundcl_get_dpid(dfun))
-val d2vs =
-(
-  d3fundcl_get_d2vs(dfun))
-//
 val
 ical = I0CALfun(dpid, d2vs)}
+//
+val styp = dpid.styp((*0*))
+val ityp =
+(
+  s2typ_trxd3i0(styp, env0))
 //
 val fias =
 (
@@ -865,8 +863,9 @@ d3fundcl_trxd3i0: i0vs = ", i0vs)
 //
 in//let
 (
-i0fundcl_make_args(loc0,
-  lvl0, dpid, d2vs, fias, tdxp, i0vs))
+i0fundcl_make_args
+( loc0, lvl0,
+  dpid, ityp, d2vs, fias, tdxp, i0vs))
 end//let
 //
 end where
