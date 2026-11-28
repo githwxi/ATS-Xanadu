@@ -188,20 +188,21 @@ end//let//end-of-[I0Ddclenv(dcl1,i0vs)]
 |I0Dabstype _ => f0_abstype(dcl0, env0)
 //
 (* ****** ****** *)
-//
-|
-I0Dvaldclst _ => f0_valdclst(dcl0, env0)
-|
-I0Dvardclst _ => f0_vardclst(dcl0, env0)
-//
-|
-I0Dfundclst _ => f0_fundclst(dcl0, env0)
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
-| _
-(*otherwise*) => f0_otherwise(dcl0, env0)
+|I0Dvaldclst _ => f0_valdclst(dcl0, env0)
+|I0Dvardclst _ => f0_vardclst(dcl0, env0)
+//
+|I0Dfundclst _ => f0_fundclst(dcl0, env0)
+//
+(* ****** ****** *)
+//
+|I0Dimplmnt0 _ => f0_implmnt0(dcl0, env0)
+//
+(* ****** ****** *)
+//
+|
+_(*otherwise*) => f0_otherwise(dcl0, env0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -261,7 +262,7 @@ tlamsbd0(ityp) in
 strnfpr(filr, " ");
 i0typcc0(filr, ityp);fprintln(filr) end
 //
-end(*let*)//end-of-[f0_sexpdef(env0,dcl0)]
+end(*let*)//end-of-[f0_sexpdef(dcl0,env0)]
 //
 (* ****** ****** *)
 //
@@ -285,7 +286,7 @@ strnfpr
 nindstrnfpr(filr, nind, "// ");
 i0dcl_fprint(dcl0, filr); fprintln(filr)
 //
-end(*let*)//end-of-[f0_abstype(env0,dcl0)]
+end(*let*)//end-of-[f0_abstype(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -378,6 +379,38 @@ prerrsln
 (* ****** ****** *)
 //
 fun
+f0_implmnt0
+(
+dcl0: i0dcl,
+env0: !envxcc0): void =
+(
+i0exp_xc0emit(iexp, env0))
+where
+{
+//
+val-
+I0Dimplmnt0
+( lvl0
+, tknd, stmp
+, dimp, fias
+, iexp, i0vs) = dcl0.node()
+//
+(*
+val loc0 = dcl0.lctn()
+val (  ) =
+prerrsln
+("f0_implmnt0(xcc0): dcl0 = ", dcl0)
+val (  ) =
+prerrsln
+("f0_implmnt0(xcc0): i0vs = ", i0vs)
+*)
+//
+}(*where*)//end-of-[f0_implmnt0(dcl0,env0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_otherwise
 (
 dcl0: i0dcl,
@@ -402,7 +435,7 @@ nindfpr(filr, nind);
 strnfpr(filr, "// ");
 i0dcl_fprint(dcl0, filr); fprintln(filr)
 //
-end(*let*)//end-of-[f0_otherwise(env0,dcl0)]
+end(*let*)//end-of-[f0_otherwise(dcl0,env0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
