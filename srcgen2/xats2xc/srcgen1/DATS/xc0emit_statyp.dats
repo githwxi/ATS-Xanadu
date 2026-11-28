@@ -171,16 +171,16 @@ case+ tknd of
 //
 |TRCDflt0() =>
 (
-strnfpr(filr, "TRCDflt0"))
+strnfpr(filr, "XC0Tflt0"))
 |TRCDbox0() =>
 (
-strnfpr(filr, "TRCDbox0"))
+strnfpr(filr, "XC0Tbox0"))
 |TRCDbox1() =>
 (
-strnfpr(filr, "TRCDbox1"))
+strnfpr(filr, "XC0Tbox1"))
 |TRCDbox2() =>
 (
-strnfpr(filr, "TRCDbox2"))
+strnfpr(filr, "XC0Tbox2"))
 //
 | _(*else*) =>
 (
@@ -215,7 +215,7 @@ s2varcc0(filr, svar))
 (   i0t1   ) =>
 (
 strnfpr(
-filr, "XI0Ttop0(");
+filr, "XC0Ttop0(");
 i0typcc0
 (filr, i0t1);strnfpr(filr, ")"))
 //
@@ -223,7 +223,7 @@ i0typcc0
 (   i0t1   ) =>
 (
 strnfpr(
-filr, "XI0Ttop1(");
+filr, "XC0Ttop1(");
 i0typcc0
 (filr, i0t1);strnfpr(filr, ")"))
 //
@@ -291,13 +291,12 @@ f2clknd_fprint(f2cl, filr)
 ,i0ts, tres) =>
 (
 strnfpr
-(filr, "XI0Tfun1(");
+(filr, "XC0Tfun1(");
 i0typcc0(filr, f2cl);
 strnfpr(filr, ", (");
 f0_npf1_i0ts(0(*npos*), npf1, i0ts);
 strnfpr(filr, "), ");
-i0typcc0(filr, tres);strnfpr(filr, ")")
-)
+i0typcc0(filr, tres);strnfpr(filr, ")"))
 //
 (* ****** ****** *)
 //
@@ -325,10 +324,11 @@ val npos =
 //
 in//let
 //
+(
 strnfpr
 (filr, name);strnfpr(filr, "(");
 f1_i0ts
-(0(*npos*), i0ts);strnfpr(filr, ")")
+(0(*npos*), i0ts);strnfpr(filr, ")"))
 //
 end(*let*)
 //
